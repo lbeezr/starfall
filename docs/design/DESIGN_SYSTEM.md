@@ -64,6 +64,8 @@ Landscape gameplay uses two columns when the available safe-area window is at le
 
 Both arrangements retain one vertical ScrollView. `AnyLayout` changes placement while the board retains its view identity and the same SpriteKit scene; only the stateless HUD changes column. The board marker, rendered scene and accessible cells share one square frame. Sidebar text keeps its natural height, and overflow remains scrollable rather than compressing controls or shrinking text. Portrait windows and accessibility text sizes keep the familiar HUD-before-board stack. No layout transition adds bespoke animation or changes the round.
 
+Menu and gameplay clip scrolled foreground at their outer GeometryReader viewport. The full-bleed backdrop stays outside this boundary. Clipping limits drawing at the viewport edge without changing text measurement, content height or scroll reachability; do not replace it with a smaller font or a fixed status-bar inset.
+
 ## Primitive and component contracts
 
 `StarfallButtonStyle` keeps native Button semantics and a full shaped hit region. It has three roles rather than separate per-screen button implementations:
@@ -95,6 +97,8 @@ Settings opens directly in one large native sheet at every text size, with Done 
 - No ads, purchases, tracking, progression, account/network features, external SDKs or paid assets are introduced.
 
 ## Validation boundary
+
+The outer-viewport clipping revision passed two focused native UI cases each on compact iPhone SE and iPad mini Simulators (iOS 27), with zero failures/skips. Maximum-text menu/game/Settings audits remain unsuppressed; real taps, restart, Settings dismissal and tablet reflow pass. Coordinator and design-system-owner comparison confirms scrolled moves text stops below the status bar while the board and New game remain visible. Tablet landscape and maximum-text portrait captures show no observed clipping regression. Core tests and the Release simulator build passed. Source-bound summaries and capture hashes are in `docs/evidence/safe-area-2026-10-16/`; these checks do not establish human VoiceOver behavior.
 
 The adaptive landscape revision passed four native UI cases on an iPad mini Simulator running iOS 27; automated large-text accessibility audits also passed. The actual initial and post-play landscape screenshots were opened and visually reviewed: the complete square board fits, the sidebar gives HUD, status and New game clear separation, and navigation remains legible above both columns without observed clipping or overlap. The composition matches the shared layout tokens and existing component hierarchy. Four compact iPhone SE (3rd generation) native UI cases also passed, and its full-screen portrait capture was visually reviewed. The Release simulator build passed. These results do not establish human VoiceOver speech/focus behavior, physical-device performance or interaction feel. The earlier results below describe the preceding presentation revision; record the new source-bound runs and captures in `docs/VALIDATION.md`.
 

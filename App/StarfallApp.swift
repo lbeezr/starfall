@@ -106,6 +106,7 @@ struct StarfallView: View {
     }
     // Keep ordinary layouts centered and allow larger text to scroll instead of
     // shrinking the board or compressing essential controls below the viewport.
+    // Clip foreground viewports only; the night-sky backdrop remains full bleed.
     private var menu: some View {
         GeometryReader { geometry in
             ScrollView {
@@ -114,6 +115,7 @@ struct StarfallView: View {
                     .contentShape(Rectangle())
             }
         }
+        .clipped()
     }
     private var menuContent: some View {
         VStack(spacing: StarfallTheme.Spacing.page) {
@@ -184,6 +186,7 @@ struct StarfallView: View {
                     .contentShape(Rectangle())
             }
         }
+        .clipped()
     }
     private func gameContent(in size: CGSize) -> some View {
         let showsSidebar = !dynamicTypeSize.isAccessibilitySize
