@@ -5,6 +5,7 @@ cd "$(dirname "$0")/.."
 mkdir -p artifacts
 SIMULATOR_ID=""
 cleanup() {
+  local original_status=$?
 python3 - <<'PYLOG'
 from pathlib import Path
 for path in Path('artifacts').glob('*.log'):
@@ -13,8 +14,16 @@ for path in Path('artifacts').glob('*.log'):
         path.write_bytes(b'[log truncated to final 2 MB]\n' + data[-2_000_000:])
 PYLOG
   if [[ -n "$SIMULATOR_ID" ]]; then
-    xcrun simctl shutdown "$SIMULATOR_ID" >/dev/null 2>&1 || true
+    python3 - "$SIMULATOR_ID" <<'PY' || true
+import subprocess, sys
+try:
+    subprocess.run(['xcrun', 'simctl', 'shutdown', sys.argv[1]],
+                   timeout=30, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+except (subprocess.TimeoutExpired, OSError):
+    print('Simulator cleanup did not finish within its bounded attempt.', file=sys.stderr)
+PY
   fi
+  return "$original_status"
 }
 trap cleanup EXIT
 
@@ -120,17 +129,40 @@ Path('artifacts/privacy-manifest-result.json').write_text(json.dumps({
 print('PASS: built privacy manifest parses, matches source, and declares UserDefaults CA92.1.')
 PY
 
+# Bound cold simulator preparation and preserve stage timings on failure.
+# stdout remains untouched so launch PID parsing keeps its existing contract.
+timed_simctl() {
+  python3 - "$@" <<'PY'
+import datetime, json, subprocess, sys, time
+label, limit, *command = sys.argv[1:]
+started = datetime.datetime.now(datetime.timezone.utc).isoformat()
+begin = time.monotonic()
+print(f'START simulator stage {label}; timeout={limit}s', file=sys.stderr, flush=True)
+try:
+    status = subprocess.run(command, timeout=int(limit)).returncode
+except subprocess.TimeoutExpired:
+    status = 124
+elapsed = round(time.monotonic() - begin, 3)
+with open('artifacts/simulator-stage-timings.jsonl', 'a') as receipt:
+    receipt.write(json.dumps({'stage': label, 'startedUTC': started,
+                             'elapsedSeconds': elapsed, 'limitSeconds': int(limit),
+                             'exitCode': status}) + '\n')
+print(f'END simulator stage {label}; elapsed={elapsed}s exit={status}', file=sys.stderr, flush=True)
+sys.exit(status if status >= 0 else 1)
+PY
+}
+
 # simctl reports an error when booting a device that is already booted.
 state="$(xcrun simctl list devices --json | python3 -c 'import json,sys; d=json.load(sys.stdin); print(next(x["state"] for xs in d["devices"].values() for x in xs if x["udid"]==sys.argv[1]))' "$SIMULATOR_ID")"
 if [[ "$state" != Booted ]]; then xcrun simctl boot "$SIMULATOR_ID"; fi
 xcrun simctl bootstatus "$SIMULATOR_ID" -b
-xcrun simctl status_bar "$SIMULATOR_ID" override --time '9:41' --batteryState charged --batteryLevel 100
+timed_simctl status-bar 60 xcrun simctl status_bar "$SIMULATOR_ID" override --time '9:41' --batteryState charged --batteryLevel 100
 test -d "$APP"
-xcrun simctl install "$SIMULATOR_ID" "$APP"
+timed_simctl install 300 xcrun simctl install "$SIMULATOR_ID" "$APP"
 capture_state() {
   local state_name="$1"
   shift
-  xcrun simctl launch --terminate-running-process "$SIMULATOR_ID" com.starfall.prototype "$@" | tee "artifacts/${state_name}-launch.log"
+  timed_simctl "${state_name}-launch" 300 xcrun simctl launch --terminate-running-process "$SIMULATOR_ID" com.starfall.prototype "$@" | tee "artifacts/${state_name}-launch.log"
   local pid
   pid="$(awk -F ': ' '/com.starfall.prototype:/ {print $NF}' "artifacts/${state_name}-launch.log" | tail -1)"
   [[ "$pid" =~ ^[0-9]+$ ]]
