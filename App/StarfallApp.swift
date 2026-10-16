@@ -132,9 +132,16 @@ struct StarfallView: View {
         .sheet(isPresented: $store.settings) {
             NavigationStack {
                 Form {
-                    Toggle("Gentle sound", isOn: $store.soundEnabled).accessibilityIdentifier("settings.sound")
-                    Toggle("Calm effects", isOn: $store.calmEffects).accessibilityIdentifier("settings.calm")
+                    // A Form switch reserves trailing width. Let its label wrap to
+                    // its full ideal height instead of clipping at accessibility sizes.
+                    Toggle(isOn: $store.soundEnabled) {
+                        Text("Gentle sound").fixedSize(horizontal: false, vertical: true)
+                    }.accessibilityIdentifier("settings.sound")
+                    Toggle(isOn: $store.calmEffects) {
+                        Text("Calm effects").fixedSize(horizontal: false, vertical: true)
+                    }.accessibilityIdentifier("settings.calm")
                     Text("No timer. No purchases or ads. Your game stays on this device.")
+                        .fixedSize(horizontal: false, vertical: true)
                 }.navigationTitle("Settings").toolbar {
                     Button { store.settings = false } label: {
                         Text("Done").frame(minWidth: 44, minHeight: 44)

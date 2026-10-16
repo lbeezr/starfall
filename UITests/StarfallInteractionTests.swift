@@ -230,8 +230,9 @@ final class StarfallInteractionTests: XCTestCase {
         let done = app.buttons["settings.done"]
         XCTAssertTrue(done.waitForExistence(timeout: 5))
         XCTAssertTrue(done.isHittable)
-        try app.performAccessibilityAudit(for: [.textClipped, .sufficientElementDescription, .hitRegion])
+        // Retain the actual Settings layout even if a later audit finds an issue.
         attachScreenshot(app, name: "accessibility-large-text-settings")
+        try app.performAccessibilityAudit(for: [.textClipped, .sufficientElementDescription, .hitRegion])
         done.tap()
         XCTAssertTrue(settings.waitForExistence(timeout: 5))
     }
