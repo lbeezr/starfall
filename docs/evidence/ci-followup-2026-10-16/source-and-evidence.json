@@ -1,0 +1,84 @@
+{
+  "integrationSourceCommit": "e3a0ee5d388f32ab77d5fada896f39765a2b95ea",
+  "sourceSHA256": {
+    "App/Assets.xcassets/AppIcon.appiconset/Contents.json": "228bdd31b50902d19b9da494b19a63d46b65ede5d9b1ca6330a0765a50db61e1",
+    "App/Assets.xcassets/AppIcon.appiconset/Starfall-1024.png": "de6ef79a761b8833f0898f5014289f606a1b990ede3d94f69593ee37c54e1ea3",
+    "App/Assets.xcassets/Contents.json": "10e3b5dc202f1cd9fad1f688c8fc9fe9e9669bf3f8295e67d216b10fd99b6f49",
+    "App/Assets.xcassets/CrystalPilot.imageset/Contents.json": "3c6e86bbdccc1a0308c723b8870c2cf133d827966139707e248239cae5f02dfe",
+    "App/Assets.xcassets/CrystalPilot.imageset/aqua_tilt_atlas.png": "a7e0d3c5154a3cb3c474307c876f6d87255fe9a38bc1c78f45081abb58490c2f",
+    "App/Assets.xcassets/StarshardFamilyAmber.imageset/Contents.json": "157cdd5deb6903967a83dcd15760109e122b5efe5833bad493824ef279c97ecc",
+    "App/Assets.xcassets/StarshardFamilyAmber.imageset/amber_tilt_atlas.png": "adb70f8ca34ab32aadedb11f102f55a124340ea8d6b85d385460a4f1e067116b",
+    "App/Assets.xcassets/StarshardFamilyAqua.imageset/Contents.json": "821919d0e08e824fbc66c1c08fe5b687c49391d4e80a4bc1fc695c40524562cc",
+    "App/Assets.xcassets/StarshardFamilyAqua.imageset/aqua_tilt_atlas.png": "a7e0d3c5154a3cb3c474307c876f6d87255fe9a38bc1c78f45081abb58490c2f",
+    "App/Assets.xcassets/StarshardFamilyMint.imageset/Contents.json": "142d3c2194b1cb35575484e29cd42ae5f9a39cd10f9a7bb64e38f7527e377251",
+    "App/Assets.xcassets/StarshardFamilyMint.imageset/mint_tilt_atlas.png": "d4d80d0e71d3b9db96ad0dbe11f2a6239b81b90cd0eac792d9bf6b18860a5f0d",
+    "App/Assets.xcassets/StarshardFamilyRose.imageset/Contents.json": "4f6175d194c2e1108e3825105f0504349d77a2b648d41d98c68d7166f775ec33",
+    "App/Assets.xcassets/StarshardFamilyRose.imageset/rose_tilt_atlas.png": "42af8d136a24269ea1f8ea1f4f4b935ebd233b14d4f1a536828ca1f9b8888dbf",
+    "App/Assets.xcassets/StarshardFamilyViolet.imageset/Contents.json": "924eefe4251d0e42ef9e22be8b01a3b7ffbd86e3ecde04242bd095cb19d19994",
+    "App/Assets.xcassets/StarshardFamilyViolet.imageset/violet_tilt_atlas.png": "e5cdaf2275384a821d6ff955a98fbaa88d1cf21a13967682be03900d9bc93a4a",
+    "App/CrystalPilot.swift": "2ea7e4da9fa4bbb8842c8746110b5b9a6459f2666e67ae5b12dbed1401735699",
+    "App/GameFeedback.swift": "ec52d73b7a4331cb7f4f249261680f4406591ac3d109e21346a680ceb4c9535d",
+    "App/GameStore.swift": "8669a3ec8343c52168fd0cecbcd6a71ef390ac53da6957556f0229b67cce63a4",
+    "App/JewelScene.swift": "ec8f551952e0b0de6b82ff54691aedc0c21aef7a96d25d6806e4ca4fbcea17eb",
+    "App/NightSkyBackdrop.swift": "0fc44d2f707e49338b6af3f6d661d1d7d118996ee0cf97df4ac9f28f8193e98a",
+    "App/StarfallApp.swift": "4ded67187e447983302430f3870e8df5b50b7aa183b9bd2421c8d7a60b9d4700",
+    "App/StarfallArrivalEffects.swift": "81ef92bdd93870414a683c1f9341370161bc31d94957316c126269651c640c13",
+    "App/StarfallTheme.swift": "1b14d87e05b408c1382ef96c9354cc9332dd14f0ff1c68ada124b416004f9358",
+    "App/StarlightHUD.swift": "b89f3f72bc6fbbc09fd118411ca350b89077428820f0d32ff0122b9020dc08b7",
+    "App/StarshardArtwork.swift": "bec715a1cb84987a4b03366176484b471af26438ee0a7c4ba44a81966967ceac",
+    "AppTests/CrystalPilotTests.swift": "89bd7978f624b9ec7368605f2ffb06cd3415d6e6122b5acdc4ec9ef79f89a4e7",
+    "AppTests/GameStoreInterruptionTests.swift": "866b0548b5b3561d4d55f7de5c66930754a15eb825566b12e76c7f4b6d07bf50",
+    "AppTests/StarshardArtworkTests.swift": "ec55d46e346c2461252ec0428204d43e75ad78fecd464f02cefde42c2e34247f",
+    "AppTests/StarshardFamilyPilotTests.swift": "e91d2058b179f3e0d096cf6a4a742040ac4dc55be2f69a64ab6296183ad5efea",
+    "Config/Clean.xcconfig": "68cc1235025bb55ddaf55c546c2a1f316c4ca8cafd23bee7de479c4db99c812f",
+    "Config/PrivacyInfo.xcprivacy": "a331d51864743ebe4e00dd22360b4a538b6b3ac26a6b3eb54094e60a36959a12",
+    "Package.swift": "eec5498d6247b9a8f867437a120c72e82c1c7999b694f1b47a546ce3f3207a41",
+    "Sources/StarfallCore/Game.swift": "9ab2d57af8fe0ee804ce56e762eb5833a08ae5f39e8916ffaa0fe708d90e7086",
+    "Sources/StarfallCore/RefillMapping.swift": "608be41f40c945b18aba5512bac16b7c4de4eb8a2747d6fe54a895392b38e5f7",
+    "Starfall.xcodeproj/project.pbxproj": "73f9cfbe04a694d97e4300f52ccd6ebb7be46d2aa3641e2711fe267b477ada41",
+    "Starfall.xcodeproj/xcshareddata/xcschemes/Starfall.xcscheme": "ee76fd824c0a4d5c09251259f95d2469503e0b8546d8b1cd619eb15071dae3ed",
+    "Tests/StarfallCoreTests/GameTests.swift": "d1b7554cc51910299ba417453c16b7a8f73f3d0f7310c607c6cd1d07a5dbbe5c",
+    "Tests/StarfallCoreTests/RefillMappingTests.swift": "aff686f73113607837e075f1f47e5b119fd6cc141f7916d0568621c031f989f6",
+    "UITests/StarfallInteractionTests.swift": "65c0963b8bbb63e81ec7da25e96a987de8959ca0064289a97c65f53598a03931",
+    "scripts/ci-simulator.sh": "b95b03f95548a778006563dea4889bac6e629bff9cc62db52a9a74cf1aac82b6"
+  },
+  "focusedNativeResult": "/tmp/starfall-ci-followup-native.xcresult",
+  "focusedNativeTests": 37,
+  "coreTests": 27,
+  "releaseBuildLog": "/tmp/starfall-ci-followup-release.log",
+  "screenshotsSHA256": {
+    "settings-initial.png": "0e665a1f7764ff1e6f274329974134b2829300dc162566af346e0ef84869c2d8",
+    "settings-largest-footer.png": "64ca31f37ab3b3c52a24892daa7d6a811d18275f44e934a2da193f821c47369e"
+  },
+  "publishedProductionCommit": "0d4ebe6b49034bb43553691b3a9e9830959f410b",
+  "pullRequests": {
+    "renderer": {
+      "number": 5,
+      "head": "dea624bd42326af9b11e79c3163e7c8412d4d8cf",
+      "merge": "cdc68ab02a9c79f6f384f57ad06cc577695b1e52"
+    },
+    "settings": {
+      "number": 7,
+      "head": "8344eea8fe76ae7dcaff0d35f5584ea888a19f2e",
+      "merge": "0d4ebe6b49034bb43553691b3a9e9830959f410b"
+    }
+  },
+  "cloudBaseline": {
+    "run": 38954256452,
+    "sourceCommit": "6c163c58b8949e2741efba0186f9adc42ca4aed0",
+    "result": "success",
+    "coreTests": 27,
+    "hostedTests": 34,
+    "uiTests": 10,
+    "verifiedScreenshotHashes": 32,
+    "elapsedSeconds": 1283
+  },
+  "successorCloudRun": {
+    "run": 38957215784,
+    "sourceCommit": "0d4ebe6b49034bb43553691b3a9e9830959f410b",
+    "statusAtRecord": "in_progress"
+  },
+  "fullUIResult": "/tmp/starfall-ci-followup-ui.xcresult",
+  "fullUITests": 10,
+  "namedScreenshotContractsPassed": 30
+}

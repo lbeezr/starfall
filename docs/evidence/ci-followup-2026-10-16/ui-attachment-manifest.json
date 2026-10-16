@@ -1,0 +1,422 @@
+[
+  {
+    "name": "real-touch-post-clear",
+    "file": "real-touch-post-clear.png",
+    "sha256": "fb7097b96c5ddd2e607be07e417da41559ea6fbfb3928cd18c3e1e231470b835",
+    "export": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "E72F239F-DC11-49F7-8C2F-8473B94D48A3",
+      "deviceName": "Starfall QA iPhone",
+      "exportedFileName": "7072AD99-A246-41A4-A3A2-A43682D60A72.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "real-touch-post-clear_0_11F4CCF9-9386-434D-A732-D49D7E204248.png",
+      "timestamp": 1792179767.723
+    }
+  },
+  {
+    "name": "real-touch-restarted",
+    "file": "real-touch-restarted.png",
+    "sha256": "2ee46cbec624f0b501df01a0567f1a30151f59022ca0e6f9cb1d11ecf729f4bc",
+    "export": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "E72F239F-DC11-49F7-8C2F-8473B94D48A3",
+      "deviceName": "Starfall QA iPhone",
+      "exportedFileName": "62C7FE86-8445-453C-8BF2-2E44D54E020D.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "real-touch-restarted_0_77C794F4-CE07-46B1-99A9-D2AAB5FFA89E.png",
+      "timestamp": 1792179793.542
+    }
+  },
+  {
+    "name": "saved-game-resumed",
+    "file": "saved-game-resumed.png",
+    "sha256": "c85933bc975a36066e7ccb5abeed92c174de9dfb094f072c57674cdd417cfda7",
+    "export": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "E72F239F-DC11-49F7-8C2F-8473B94D48A3",
+      "deviceName": "Starfall QA iPhone",
+      "exportedFileName": "FDCFE8CC-C92F-4F1B-BA0D-6A1823789721.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "saved-game-resumed_0_F018A0C5-3290-4E37-BAA7-234E12251097.png",
+      "timestamp": 1792179827.46
+    }
+  },
+  {
+    "name": "saved-game-calm-turn",
+    "file": "saved-game-calm-turn.png",
+    "sha256": "f033007b0c48dce5a8540ec63ad40cf1671898fcee8be18d0d51731bd0ed5fa6",
+    "export": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "E72F239F-DC11-49F7-8C2F-8473B94D48A3",
+      "deviceName": "Starfall QA iPhone",
+      "exportedFileName": "B888638C-AC30-46C8-A6B8-F11411D479F4.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "saved-game-calm-turn_0_58D02D06-ECFF-4E6A-96C5-D85CC34324F1.png",
+      "timestamp": 1792179849.028
+    }
+  },
+  {
+    "name": "terminal-won-restored",
+    "file": "terminal-won-restored.png",
+    "sha256": "efa0c4e3528210bb5422e4bedfdff67c5b4c470a1d6d8a701cb51ae06902bda9",
+    "export": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "E72F239F-DC11-49F7-8C2F-8473B94D48A3",
+      "deviceName": "Starfall QA iPhone",
+      "exportedFileName": "D189EE6E-0CAF-4CE0-9B1B-DC3FB65E165B.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "terminal-won-restored_0_43FAF948-6E29-49F7-A0AA-D4D33C79D9A4.png",
+      "timestamp": 1792180055.532
+    }
+  },
+  {
+    "name": "terminal-lost-restored",
+    "file": "terminal-lost-restored.png",
+    "sha256": "1aa7c7ac3a20cd7bdf24a09fc7db26cd29ea2fe4fe184275beb791a1ed629ffc",
+    "export": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "E72F239F-DC11-49F7-8C2F-8473B94D48A3",
+      "deviceName": "Starfall QA iPhone",
+      "exportedFileName": "26018D3C-B570-4F03-9E6C-92372E63E20D.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "terminal-lost-restored_0_CF99EAC0-3973-4C92-BE9E-795193114A3D.png",
+      "timestamp": 1792180122.3
+    }
+  },
+  {
+    "name": "terminal-last-move-won-restored",
+    "file": "terminal-last-move-won-restored.png",
+    "sha256": "aa445fdccf7a0bc61e44b43ba8bfb3d10548e42382e62361ae902442d97bfee6",
+    "export": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "E72F239F-DC11-49F7-8C2F-8473B94D48A3",
+      "deviceName": "Starfall QA iPhone",
+      "exportedFileName": "151C4C29-1A28-445A-BA00-1C99557BF02D.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "terminal-last-move-won-restored_0_5F936855-3799-4FB9-B5AA-BB4EB6A8192E.png",
+      "timestamp": 1792180089.036
+    }
+  },
+  {
+    "name": "accessibility-large-text-menu-before-audit",
+    "file": "accessibility-large-text-menu-before-audit.png",
+    "sha256": "230858b96a246e55843f7d18946c9f55b2dcacaea14f362481e0e49a09e2e3fe",
+    "export": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "E72F239F-DC11-49F7-8C2F-8473B94D48A3",
+      "deviceName": "Starfall QA iPhone",
+      "exportedFileName": "DC7DD569-20C6-4962-A2C7-2F32D0FB1866.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "accessibility-large-text-menu-before-audit_0_0990BDA1-69EE-4AA4-A822-6644446D41DD.png",
+      "timestamp": 1792179685.531
+    }
+  },
+  {
+    "name": "accessibility-large-text-game",
+    "file": "accessibility-large-text-game.png",
+    "sha256": "ef19e6484c87a9202bad97370c5e0ac41fd7c0d74bfe7d51584bf48684d29abe",
+    "export": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "E72F239F-DC11-49F7-8C2F-8473B94D48A3",
+      "deviceName": "Starfall QA iPhone",
+      "exportedFileName": "E2C9A700-77AD-4C52-BCE5-A4772CA878BF.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "accessibility-large-text-game_0_486AAD22-6CB6-465F-93AA-571C555D1E87.png",
+      "timestamp": 1792179692.1
+    }
+  },
+  {
+    "name": "accessibility-large-text-settings",
+    "file": "accessibility-large-text-settings.png",
+    "sha256": "51fd2f440b8d4e3db3547efdd9b8bbf4fa2492d0484185496a24cdfcd30970ab",
+    "export": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "E72F239F-DC11-49F7-8C2F-8473B94D48A3",
+      "deviceName": "Starfall QA iPhone",
+      "exportedFileName": "D7EA3E2E-8050-4D5A-B71A-783E5B1E6A02.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "accessibility-large-text-settings_0_ED53F12A-B216-4EB4-97EB-06964B7D6550.png",
+      "timestamp": 1792179703.823
+    }
+  },
+  {
+    "name": "crystal-pilot-before-tap",
+    "file": "crystal-pilot-before-tap.png",
+    "sha256": "0363a23b7adb92301a7cf9d30260e0b2d6d9d28262d5dd281453b4cf8a7d77d2",
+    "export": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "E72F239F-DC11-49F7-8C2F-8473B94D48A3",
+      "deviceName": "Starfall QA iPhone",
+      "exportedFileName": "05BC2522-363F-4A43-B31B-79976BD69E41.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "crystal-pilot-before-tap_0_C1117566-1382-42EE-8225-6B417C78E982.png",
+      "timestamp": 1792179672.499
+    }
+  },
+  {
+    "name": "crystal-pilot-after-tap",
+    "file": "crystal-pilot-after-tap.png",
+    "sha256": "55644bdab674641732c8cbcccbd7f3e5c7737d5de2a8f1f6223bdfcc3d6524b0",
+    "export": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "E72F239F-DC11-49F7-8C2F-8473B94D48A3",
+      "deviceName": "Starfall QA iPhone",
+      "exportedFileName": "314E39C5-5938-4E5E-BD8B-CFEE223B08F9.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "crystal-pilot-after-tap_0_E0A6003B-DD9E-4650-A837-FC2B4251953E.png",
+      "timestamp": 1792179677.442
+    }
+  },
+  {
+    "name": "rapid-input-settled",
+    "file": "rapid-input-settled.png",
+    "sha256": "fb7097b96c5ddd2e607be07e417da41559ea6fbfb3928cd18c3e1e231470b835",
+    "export": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "E72F239F-DC11-49F7-8C2F-8473B94D48A3",
+      "deviceName": "Starfall QA iPhone",
+      "exportedFileName": "976AAFAA-1F48-4085-907D-3E0578C5A547.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "rapid-input-settled_0_4D36F884-9934-40A7-AF57-8D91422934E8.png",
+      "timestamp": 1792179753.389
+    }
+  },
+  {
+    "name": "accessible-board-post-clear",
+    "file": "accessible-board-post-clear.png",
+    "sha256": "61f67e789a0b2a501c8a4a30d66013e4abf5b9a681e282d520ab35baea66fb40",
+    "export": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "E72F239F-DC11-49F7-8C2F-8473B94D48A3",
+      "deviceName": "Starfall QA iPhone",
+      "exportedFileName": "E56F4AFF-B558-44CF-A7C7-85DD36EFFEF9.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "accessible-board-post-clear_0_38579E9B-A7B8-4A84-AD16-D525950EE8C0.png",
+      "timestamp": 1792179657.019
+    }
+  },
+  {
+    "name": "settings-direct-largest-text",
+    "file": "settings-direct-largest-text.png",
+    "sha256": "8868af1e6fb9f36928cae7674508fa336f4be769d1730da8d13a1026017c851e",
+    "export": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "E72F239F-DC11-49F7-8C2F-8473B94D48A3",
+      "deviceName": "Starfall QA iPhone",
+      "exportedFileName": "993D8B2D-9F3E-4918-AF33-351D8630BAC2.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "settings-direct-largest-text_0_1CBDA83D-B985-421B-92C7-2A4428D332F7.png",
+      "timestamp": 1792179732.171
+    }
+  },
+  {
+    "name": "settings-footer-fully-visible",
+    "file": "settings-footer-fully-visible.png",
+    "sha256": "7a73e242be60a89565c56f6d720e89032037dfb06e83b78704ac85cf39cd4738",
+    "export": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "E72F239F-DC11-49F7-8C2F-8473B94D48A3",
+      "deviceName": "Starfall QA iPhone",
+      "exportedFileName": "C7FB4038-E516-498C-8D00-6191629A3B0A.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "settings-footer-fully-visible_0_4B0D3DD6-092C-458F-A52F-FAC8DBDF647D.png",
+      "timestamp": 1792179733.875
+    }
+  },
+  {
+    "name": "settings-default-text",
+    "file": "settings-default-text.png",
+    "sha256": "91a92720817441932ce4b669c2209088f621428103047a1d02b7bb10639768ca",
+    "export": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "E72F239F-DC11-49F7-8C2F-8473B94D48A3",
+      "deviceName": "Starfall QA iPhone",
+      "exportedFileName": "779028CD-27E4-448B-8BF2-FC1100527630.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "settings-default-text_0_ADCF0E75-0320-4709-9A27-4B9606E4AAA0.png",
+      "timestamp": 1792179781.5
+    }
+  },
+  {
+    "name": "settings-default-initial",
+    "file": "settings-default-initial.png",
+    "sha256": "46907fee22cc9b2aefeca40abff9575cecefa8c0d44a16671a125cea3d3f7872",
+    "export": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "E72F239F-DC11-49F7-8C2F-8473B94D48A3",
+      "deviceName": "Starfall QA iPhone",
+      "exportedFileName": "D04E1F7C-7A88-4D05-9A68-DBA18AAB8C1E.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "settings-default-initial_0_F242FFF5-54BB-41B1-9881-6D6FEDDA468D.png",
+      "timestamp": 1792179773.333
+    }
+  },
+  {
+    "name": "family-calm-6-resumed",
+    "file": "family-calm-6-resumed.png",
+    "sha256": "a692def701ada0d1bd9c9383b7db7f621beeff5ea54eff4cff0fcfd9b4dee462",
+    "export": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "E72F239F-DC11-49F7-8C2F-8473B94D48A3",
+      "deviceName": "Starfall QA iPhone",
+      "exportedFileName": "A283BC2D-0E70-4055-9089-C9A29AD836A2.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "family-calm-6-resumed_0_FCB08115-317A-4E9C-BFC7-CD28D27B43AF.png",
+      "timestamp": 1792179986.064
+    }
+  },
+  {
+    "name": "family-calm-0-resumed",
+    "file": "family-calm-0-resumed.png",
+    "sha256": "be49ab2571f303d248506b7f57a956cf2313095786b856efb368ad3330472d52",
+    "export": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "E72F239F-DC11-49F7-8C2F-8473B94D48A3",
+      "deviceName": "Starfall QA iPhone",
+      "exportedFileName": "9C16196F-29EA-4290-A89A-2593DB33DE6D.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "family-calm-0-resumed_0_9B54232B-FFE8-4019-A47E-88D399A95604.png",
+      "timestamp": 1792180016.667
+    }
+  },
+  {
+    "name": "family-rose-before",
+    "file": "family-rose-before.png",
+    "sha256": "23c98defdd20b4170d23f02496a714061bb3c43d54d88f7567e53c65c7d78098",
+    "export": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "E72F239F-DC11-49F7-8C2F-8473B94D48A3",
+      "deviceName": "Starfall QA iPhone",
+      "exportedFileName": "645B47BE-E017-47B9-82F1-BC1B65DB3316.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "family-rose-before_0_0776E135-FC63-4662-B44F-F192CD1E5C35.png",
+      "timestamp": 1792179869.864
+    }
+  },
+  {
+    "name": "family-rose-settled",
+    "file": "family-rose-settled.png",
+    "sha256": "516f164771195999edde0ae6eefb61a6b8f63fb18a71df2e16ccf75588d1d363",
+    "export": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "E72F239F-DC11-49F7-8C2F-8473B94D48A3",
+      "deviceName": "Starfall QA iPhone",
+      "exportedFileName": "C30E0979-B277-4A5B-9A6E-277F7B9342C4.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "family-rose-settled_0_F41FE46B-8FBC-44B0-A187-152081B9BAFE.png",
+      "timestamp": 1792179874.721
+    }
+  },
+  {
+    "name": "family-aqua-before",
+    "file": "family-aqua-before.png",
+    "sha256": "23c98defdd20b4170d23f02496a714061bb3c43d54d88f7567e53c65c7d78098",
+    "export": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "E72F239F-DC11-49F7-8C2F-8473B94D48A3",
+      "deviceName": "Starfall QA iPhone",
+      "exportedFileName": "15B28A80-90B0-483D-805E-C565364CB65D.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "family-aqua-before_0_3798856A-23AC-4148-82F2-7677DFEA9AA0.png",
+      "timestamp": 1792179891.579
+    }
+  },
+  {
+    "name": "family-aqua-settled",
+    "file": "family-aqua-settled.png",
+    "sha256": "7cd8bf404ac2c7c421cd34e143cf75b405c5322b6dfa02a66d943f919116572a",
+    "export": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "E72F239F-DC11-49F7-8C2F-8473B94D48A3",
+      "deviceName": "Starfall QA iPhone",
+      "exportedFileName": "55F76A8E-2D40-43BF-A0A7-5AE3BBF55833.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "family-aqua-settled_0_66FFFAAC-D033-4814-AAD1-623B85D9F7A5.png",
+      "timestamp": 1792179896.416
+    }
+  },
+  {
+    "name": "family-amber-before",
+    "file": "family-amber-before.png",
+    "sha256": "4fffd1670049a5df5c2f599ec56cb75e560c8e09302f07ff60107634031b5367",
+    "export": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "E72F239F-DC11-49F7-8C2F-8473B94D48A3",
+      "deviceName": "Starfall QA iPhone",
+      "exportedFileName": "B67BA739-EE32-48BD-9185-F3092E6162D5.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "family-amber-before_0_DD1F2BFC-6257-4FFA-9FD2-E13D31134978.png",
+      "timestamp": 1792179913.437
+    }
+  },
+  {
+    "name": "family-amber-settled",
+    "file": "family-amber-settled.png",
+    "sha256": "9f504428528015b310955936c63c492d5d30358458aff065d822909d3c08a2cf",
+    "export": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "E72F239F-DC11-49F7-8C2F-8473B94D48A3",
+      "deviceName": "Starfall QA iPhone",
+      "exportedFileName": "EF7F75C6-9414-4673-A924-70C57B1E9523.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "family-amber-settled_0_58E02D47-5B4E-4455-A459-7097D57D07B5.png",
+      "timestamp": 1792179918.295
+    }
+  },
+  {
+    "name": "family-violet-before",
+    "file": "family-violet-before.png",
+    "sha256": "4fffd1670049a5df5c2f599ec56cb75e560c8e09302f07ff60107634031b5367",
+    "export": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "E72F239F-DC11-49F7-8C2F-8473B94D48A3",
+      "deviceName": "Starfall QA iPhone",
+      "exportedFileName": "98AC6085-4441-4CA6-837F-A9DA8C7C7071.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "family-violet-before_0_A39772A1-F4E6-487B-BF9E-4A2D8AEF8E58.png",
+      "timestamp": 1792179935.181
+    }
+  },
+  {
+    "name": "family-violet-settled",
+    "file": "family-violet-settled.png",
+    "sha256": "aa6099412ee5045151ba732cb1b289df04e71954b8812380990129671228496a",
+    "export": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "E72F239F-DC11-49F7-8C2F-8473B94D48A3",
+      "deviceName": "Starfall QA iPhone",
+      "exportedFileName": "6C9394F2-F97A-4E03-B55B-D8E3FF3E19E5.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "family-violet-settled_0_596DB591-C095-4F98-8523-560D189B529B.png",
+      "timestamp": 1792179940.058
+    }
+  },
+  {
+    "name": "family-mint-before",
+    "file": "family-mint-before.png",
+    "sha256": "4fffd1670049a5df5c2f599ec56cb75e560c8e09302f07ff60107634031b5367",
+    "export": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "E72F239F-DC11-49F7-8C2F-8473B94D48A3",
+      "deviceName": "Starfall QA iPhone",
+      "exportedFileName": "A9E19F5B-2930-446D-BF60-5C9EDD34819D.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "family-mint-before_0_BD3F0EDE-F598-4D5A-8466-CEF975D27CBF.png",
+      "timestamp": 1792179956.707
+    }
+  },
+  {
+    "name": "family-mint-settled",
+    "file": "family-mint-settled.png",
+    "sha256": "5956ff621b91088bccd594fcfd02e28b11edefaebcec566382feb8990a4426bf",
+    "export": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "E72F239F-DC11-49F7-8C2F-8473B94D48A3",
+      "deviceName": "Starfall QA iPhone",
+      "exportedFileName": "8704F9DE-EAE2-4F62-B0ED-8F9C87CF3F36.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "family-mint-settled_0_B6166E29-25D0-42A5-83EB-F15EDB4864F4.png",
+      "timestamp": 1792179961.548
+    }
+  }
+]
