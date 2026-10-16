@@ -127,6 +127,59 @@ final class StarfallInteractionTests: XCTestCase {
         app.buttons["settings.done"].tap()
     }
 
+    /// Deterministic legal replays reach the penultimate board; only the final turn
+    /// is real screen input. This exercises terminal UI, not natural-play balance.
+    @MainActor
+    func testTerminalOutcomesPersistAndRestart() throws {
+        executionTimeAllowance = 180
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        defer { app.terminate() }
+        let cases = [
+            (seed: 6, row: 5, column: 3, score: 70, moves: 2,
+             outcome: "Sky illuminated", message: "You lit the sky!", image: "terminal-won-restored"),
+            (seed: 0, row: 0, column: 0, score: 64, moves: 0,
+             outcome: "Out of moves", message: "A lovely attempt. Try a fresh sky", image: "terminal-lost-restored")
+        ]
+        for fixture in cases {
+            app.launchArguments = ["--reset-save", "--endgame-seed=\(fixture.seed)"]
+            app.launch()
+            let play = app.buttons["menu.play"]
+            XCTAssertTrue(play.waitForExistence(timeout: 10))
+            play.tap()
+            XCTAssertFalse(app.staticTexts["game.outcome"].exists)
+            tapBoard(app, row: fixture.row, column: fixture.column)
+            assertLabel(app, "game.outcome", fixture.outcome)
+            assertLabel(app, "game.message", fixture.message)
+            assertLabel(app, "game.score", "\(fixture.score) of 70 jewels cleared")
+            assertLabel(app, "game.moves", "\(fixture.moves) moves")
+            // A second screen tap must neither spend a move nor change terminal copy.
+            tapBoard(app, row: fixture.row, column: fixture.column)
+            assertLabel(app, "game.score", "\(fixture.score) of 70 jewels cleared")
+            assertLabel(app, "game.moves", "\(fixture.moves) moves")
+            assertLabel(app, "game.message", fixture.message)
+            app.terminate()
+
+            // No fixture arguments: the terminal state must come from the real save.
+            app.launchArguments = []
+            app.launch()
+            XCTAssertTrue(play.waitForExistence(timeout: 10))
+            XCTAssertEqual(play.label, "Continue")
+            play.tap()
+            assertLabel(app, "game.outcome", fixture.outcome)
+            assertLabel(app, "game.message", fixture.message)
+            assertLabel(app, "game.score", "\(fixture.score) of 70 jewels cleared")
+            assertLabel(app, "game.moves", "\(fixture.moves) moves")
+            attachScreenshot(app, name: fixture.image)
+            app.buttons["game.restart"].tap()
+            assertLabel(app, "game.moves", "18 moves")
+            assertLabel(app, "game.score", "0 of 70 jewels cleared")
+            assertLabel(app, "game.message", "A fresh sky. Find your first cluster")
+            XCTAssertFalse(app.staticTexts["game.outcome"].exists)
+            app.terminate()
+        }
+    }
+
     @MainActor
     private func tapBoard(_ app: XCUIApplication, row: Int, column: Int) {
         let board = app.descendants(matching: .any)["game.board"].firstMatch

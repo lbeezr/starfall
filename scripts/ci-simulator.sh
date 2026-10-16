@@ -127,7 +127,7 @@ printf '%s\n' 'PASS: both demo launches accepted; each app process alive after 5
 (cd artifacts && shasum -a 256 *.png > screenshot-sha256.txt)
 # Keep artifacts small: no app bundle, DerivedData, simulator disk, or video.
 
-# Two bounded real-input flows, sequentially on the same simulator, without retries.
+# Three bounded real-input flows, sequentially on the same simulator, without retries.
 # Keep the result bundle on ephemeral runner storage; export only compact evidence.
 UI_RESULT="$RUNNER_TEMP/starfall-ui.xcresult"
 UI_EXPORT="$RUNNER_TEMP/starfall-ui-attachments"
@@ -139,9 +139,10 @@ xcodebuild -project Starfall.xcodeproj -scheme Starfall \
   -derivedDataPath "$RUNNER_TEMP/starfall-derived" \
   -only-testing:StarfallUITests/StarfallInteractionTests/testRealBoardTapAndNavigation \
   -only-testing:StarfallUITests/StarfallInteractionTests/testSavedGameRelaunchAndCalmResume \
+  -only-testing:StarfallUITests/StarfallInteractionTests/testTerminalOutcomesPersistAndRestart \
   -parallel-testing-enabled NO -maximum-concurrent-test-simulator-destinations 1 \
   -test-timeouts-enabled YES -default-test-execution-time-allowance 90 \
-  -maximum-test-execution-time-allowance 120 \
+  -maximum-test-execution-time-allowance 180 \
   -resultBundlePath "$UI_RESULT" \
   ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \
   CODE_SIGN_IDENTITY=- CODE_SIGNING_ALLOWED=YES \
@@ -162,9 +163,9 @@ import hashlib, json, shutil, sys
 root = Path(sys.argv[1]).resolve()
 test_passed = int(sys.argv[2]) == 0
 summary = json.loads(Path('artifacts/ui-test-summary.json').read_text())
-if test_passed and (summary.get('passedTests') != 2 or summary.get('failedTests') != 0
-                    or summary.get('skippedTests') != 0 or summary.get('totalTestCount') != 2):
-    raise SystemExit('Expected exactly two passing UI tests, zero failures/skips, and total count two; inspect summary.')
+if test_passed and (summary.get('passedTests') != 3 or summary.get('failedTests') != 0
+                    or summary.get('skippedTests') != 0 or summary.get('totalTestCount') != 3):
+    raise SystemExit('Expected exactly three passing UI tests, zero failures/skips, and total count three; inspect summary.')
 manifest_path = root / 'manifest.json'
 manifest_bytes = manifest_path.read_bytes()
 if len(manifest_bytes) > 250_000:
@@ -183,7 +184,8 @@ def objects(value):
 
 records = []
 for name in ('real-touch-post-clear', 'real-touch-restarted',
-             'saved-game-resumed', 'saved-game-calm-turn'):
+             'saved-game-resumed', 'saved-game-calm-turn',
+             'terminal-won-restored', 'terminal-lost-restored'):
     matches = [x for x in objects(manifest)
                if str(x.get('suggestedHumanReadableName', '')).startswith(name)
                and x.get('exportedFileName')]
@@ -220,7 +222,7 @@ if [[ "$UI_SUMMARY_STATUS" != 0 || "$UI_EXPORT_STATUS" != 0 || "$UI_PARSE_STATUS
   echo 'UI evidence export/validation failed; inspect logs. No complete UI-evidence success claim.' >&2
   exit 1
 fi
-printf '%s\n' 'PASS: two real-input UI tests and four exported XCTest screenshots.' \
+printf '%s\n' 'PASS: three real-input UI tests and six exported XCTest screenshots.' \
   'See ui-test-summary.json and ui-attachment-manifest.json; no VoiceOver or rapid-input validation.' \
   | tee artifacts/ui-result.txt
 (cd artifacts && shasum -a 256 *.png > screenshot-sha256.txt)

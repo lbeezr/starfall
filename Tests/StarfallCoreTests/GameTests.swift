@@ -129,4 +129,34 @@ final class GameTests: XCTestCase {
         XCTAssertNil(restored.tap(Cell(0, 0)))
     }
 
+    /// Contract for DEBUG native endgame replays, including both terminal save states.
+    func testNativeTerminalReplayFixtures() throws {
+        let fixtures: [(UInt64, Cell, Int, Int, Outcome)] = [
+            (6, Cell(5, 3), 70, 2, .won), (0, Cell(0, 0), 64, 0, .lost)
+        ]
+        for (seed, finalCell, score, moves, outcome) in fixtures {
+            var game = Game(seed: seed)
+            var finalTap: Cell?
+            for _ in 0..<Game.startingMoves {
+                let cell = try XCTUnwrap((0..<49).map { Cell($0 / 7, $0 % 7) }
+                    .first { game.group(at: $0).count >= 3 })
+                var next = game
+                next.tap(cell)
+                if next.outcome != .playing { finalTap = cell; break }
+                game = next
+            }
+            XCTAssertEqual(finalTap, finalCell)
+            XCTAssertEqual(game.outcome, .playing)
+            XCTAssertNotNil(game.tap(finalCell))
+            XCTAssertEqual(game.outcome, outcome)
+            XCTAssertEqual(game.score, score)
+            XCTAssertEqual(game.moves, moves)
+            var restored = try JSONDecoder().decode(Game.self, from: JSONEncoder().encode(game))
+            XCTAssertTrue(restored.isValidSave)
+            XCTAssertEqual(restored, game)
+            XCTAssertNil(restored.tap(finalCell))
+            XCTAssertEqual(restored, game)
+        }
+    }
+
 }

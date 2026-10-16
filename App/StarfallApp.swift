@@ -37,11 +37,42 @@ import StarfallCore
                let testSeed = UInt64(argument.dropFirst("--seed=".count)) { seed = testSeed }
             #endif
             game = Game(seed: seed)
+            #if DEBUG
+            if let argument = arguments.first(where: { $0.hasPrefix("--endgame-seed=") }),
+               let testSeed = UInt64(argument.dropFirst("--endgame-seed=".count)) {
+                game = Self.beforeTerminalTurn(seed: testSeed)
+            }
+            #endif
         }
+        if let terminalMessage { message = terminalMessage }
         scene.store = self
         scene.scaleMode = .resizeFill
         scene.backgroundColor = .clear
     }
+    private var terminalMessage: String? {
+        switch game.outcome {
+        case .won: "You lit the sky!"
+        case .lost: "A lovely attempt. Try a fresh sky"
+        case .playing: nil
+        }
+    }
+    #if DEBUG
+    /// Native acceptance fixture: replay legal rules, stopping before the terminal tap.
+    /// This is not a balancing test or a customization surface in Release builds.
+    private static func beforeTerminalTurn(seed: UInt64) -> Game {
+        var game = Game(seed: seed)
+        for _ in 0..<Game.startingMoves {
+            guard let cell = (0..<(Game.side * Game.side)).map({ Cell($0 / Game.side, $0 % Game.side) })
+                .first(where: { game.group(at: $0).count >= 3 }) else { break }
+            var next = game
+            next.tap(cell)
+            if next.outcome != .playing { return game }
+            game = next
+        }
+        assertionFailure("Expected a terminal turn within the move budget")
+        return game
+    }
+    #endif
     func start() {
         save() // Preserve the initial board even if the app closes before the first move.
         playing = true; scene.render(game)
@@ -71,8 +102,7 @@ import StarfallCore
         }
         busy = true; save()
         message = turn.reshuffled ? "A fresh cluster appeared. No extra move used" : "+\(turn.cleared.count) starlight"
-        if game.outcome == .won { message = "You lit the sky!" }
-        if game.outcome == .lost { message = "A lovely attempt. Try a fresh sky" }
+        if let terminalMessage { message = terminalMessage }
         scene.animate(turn: turn, old: old, new: game) { [weak self] in self?.busy = false }
     }
     private func save() {
@@ -148,7 +178,7 @@ struct StarfallView: View {
             }.aspectRatio(1, contentMode: .fit)
             Text(store.message).font(.callout).multilineTextAlignment(.center).frame(minHeight: 44).accessibilityLabel(store.message).accessibilityIdentifier("game.message")
             if store.game.outcome != .playing {
-                Text(store.game.outcome == .won ? "Sky illuminated" : "Out of moves").font(.title2)
+                Text(store.game.outcome == .won ? "Sky illuminated" : "Out of moves").font(.title2).accessibilityIdentifier("game.outcome")
             }
             Button("New game") { store.restart() }.buttonStyle(.bordered).disabled(store.busy).accessibilityIdentifier("game.restart")
             Spacer(minLength: 0)
