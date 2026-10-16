@@ -17,7 +17,7 @@ The first combined UI run passed the background/overflow test but missed a doubl
 
 The native app was played through the local `serve-sim` browser mirror, pinned to the same simulator. A grown mint beside a small mint cleared for **3 starlight** while the automatic sky ran. A five-star preview fitted in the forecast panel, paused sky stayed stationary, settings dismissed, and replay returned to an empty board.
 
-VoiceOver was enabled on the simulator and visible focus plus the native accessibility tree were inspected. The forecast exposed shape/color and column labels; cells exposed position and connected value. This is not a full spoken-navigation or Matching groups rotor validation. Calm effects was validated in the native UI test. Baseline win/last-move precedence remains covered by the unchanged core tests; this accumulation experiment has an overflow outcome and no win target.
+VoiceOver was enabled on the simulator and visible focus plus the native accessibility tree were inspected. The forecast exposed shape/color and column labels; cells exposed position and connected value. This is not a full spoken-navigation or Matching groups rotor validation. Calm effects was validated in the native UI test. System Reduce Motion was then enabled on the simulator and an automatic shower was observed in the final build; see `browser-reduce-motion.png`. The browser manual-play image records the 3-starlight clear and ongoing accumulation. Baseline win/last-move precedence remains covered by the unchanged core tests; this accumulation experiment has an overflow outcome and no win target.
 
 Screenshots exported from native XCTest attachments:
 
@@ -43,3 +43,7 @@ xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug \
 ```
 
 These checks establish mechanics, lifecycle behavior and basic interaction. They do not establish long-session balance, performance on physical hardware, or whether four seconds is the right pace for a relaxing game.
+
+## Handoff
+
+The final Debug build is installed on the dedicated simulator. The local browser mirror is `http://localhost:3200/?chrome=0`, left at an empty, paused sky with Calm effects, system Reduce Motion and VoiceOver off. `browser-ready.png` shows the final live frame. `browser-manual-play.png` shows a scored group clear during accumulation, and `browser-reduce-motion.png` shows automatic arrivals under system Reduce Motion. The mirror occasionally reconnected during background browser inspection; no physical-device or frame-time performance claim is made.
