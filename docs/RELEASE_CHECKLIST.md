@@ -11,7 +11,7 @@ Checked 2026-10-16. This checklist tracks release gates; it is not a claim of Ap
 
 ## Gates before a signed beta
 
-- [ ] **Icon:** independently review the current icon candidate, register its asset catalog/build setting, and verify its appearance and compiled app-icon metadata in a native build. A generated file alone is insufficient.
+- [ ] **Icon:** catalog registration and native app-icon metadata have [historical build evidence](evidence/swarm-2026-10-16/source-and-product.json). Independently review the final icon, verify its actual Home Screen appearance, and recheck compiled metadata in the final signed candidate; the earlier build does not establish acceptance of that candidate.
 - [ ] **Supported devices:** resolve iPhone-first scope explicitly. If retaining current iPad support, verify portrait/landscape layouts and supply required iPad screenshots; do not infer support from compilation.
 - [ ] **Release configuration:** build the exact candidate in Release, verify acceptance-only fixtures are excluded, examine warnings and bundle contents, and rerun applicable regression tests. Retain source SHA/build/toolchain evidence.
 - [ ] **Identity:** confirm publisher/team, production bundle ID, name availability and version/build numbering before upload. Do not silently register the prototype identifier; the bundle ID cannot be changed after the first upload.

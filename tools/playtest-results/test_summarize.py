@@ -215,6 +215,21 @@ class ObservationTests(unittest.TestCase):
         ]))
         self.assertEqual(len(rows), 4)
 
+    def test_partial_measurements_reject_impossible_scores_without_imputing_moves(self):
+        for state in ("unfinished", "not_observed", ""):
+            for moves in ("", "not_observed"):
+                for score in ("1", "2"):
+                    with self.subTest(state=state, moves=moves, score=score), self.assertRaises(summary.InvalidObservations):
+                        summary.read_records(self.write([fictional(round_status=state, score_at_stop=score, moves_at_stop=moves)]))
+        rows = summary.read_records(self.write([
+            fictional("P1", round_status="unfinished", score_at_stop="0"),
+            fictional("P2", round_status="unfinished", score_at_stop="3", moves_at_stop="not_observed"),
+            fictional("P3", score_at_stop="70"),
+            fictional("P4", score_at_stop="not_observed"),
+        ]))
+        self.assertEqual([row["moves_at_stop"] for row in rows], ["", "not_observed", "", ""])
+        self.assertEqual(summary.summarize(rows)["synthetic_not_human_results"]["rounds"], {"missing": 2, "unfinished": 2})
+
     def test_headers_row_width_and_duplicate_ids_rejected(self):
         with self.assertRaises(summary.InvalidObservations):
             summary.read_records(self.write([fictional(), fictional()]))

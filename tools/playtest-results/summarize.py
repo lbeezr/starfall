@@ -76,6 +76,8 @@ def validate_record(row, line):
 
     state = row["round_status"]
     score, moves = number(row["score_at_stop"]), number(row["moves_at_stop"])
+    if score is not None:
+        require(score == 0 or score >= 3, line, "score must be zero or at least three, even when moves were not observed")
     if state == "won" and score is not None:
         require(score >= 70, line, "a won round must have score at least 70")
     if state == "won" and moves is not None:
