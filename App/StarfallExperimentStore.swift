@@ -62,8 +62,8 @@ import StarfallCore
         let scene = StarfallExperimentScene()
         self.scene = scene
         self.presenter = presenter ?? scene
-        if arguments.contains("--starfalls-reset") { defaults.removeObject(forKey: Self.saveKey) }
-        if let data = defaults.data(forKey: Self.saveKey),
+        // SwiftUI may construct stores for discarded view values. Keep initialization read-only.
+        if !arguments.contains("--starfalls-reset"), let data = defaults.data(forKey: Self.saveKey),
            let saved = try? JSONDecoder().decode(StarfallExperiment.self, from: data), saved.isValidSave {
             game = saved
             message = saved.isOver ? "This sky is full. Replay it or try a new sky." : "Your sky is paused. Resume when you're ready."
@@ -74,7 +74,6 @@ import StarfallCore
         }
         remaining = showerInterval
         scene.onLayout = { [weak self] in self?.settlePresentation() }
-        save()
     }
 
     var forecast: [IncomingStar] { pending?.forecast ?? game.incoming }
@@ -202,7 +201,11 @@ import StarfallCore
         guard suspended != value else { return }
         suspended = value
         if value { freezeClock(); settlePresentation() }
-        else { armClock() }
+        else {
+            // Persist the retained store's chosen sky before its clock can run.
+            save()
+            armClock()
+        }
     }
 
     func setReducedMotion(_ value: Bool) {

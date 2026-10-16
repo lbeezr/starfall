@@ -1,0 +1,136 @@
+{
+  "baseCommit": "db71be94ac8ff8083ef308073c41d1523b83a247",
+  "sourceSHA256": {
+    "App/StarfallExperimentStore.swift": "2ebc0098476c327067da58db022ce548df15545cc31bcacdb5355969bc34acaf",
+    "AppTests/StarfallExperimentStoreTests.swift": "d7b7f5527452553ac35609f567dfd909ce8d2d1b68bd2322771f2d12b24bad70",
+    "scripts/ci-simulator.sh": "a8cc54973d9d3d87e17250cf5b64d80f9496db9b948185153ac9a5e69815dc42"
+  },
+  "scriptGitMode": "100755",
+  "local": {
+    "corePassed": 53,
+    "hostedPassed": 59,
+    "uiPassed": 1,
+    "resultBundle": "/tmp/starfall-restore-validation.xcresult",
+    "logs": {
+      "/tmp/starfall-restore-core.log": "a277a4480bdbc31b6f7d4db9156d4b791f496651dda1fe9eaf19e2f0362bf367",
+      "/tmp/starfall-restore-validation.log": "51cd1c301cf69e2000eb7b9b324ace196cd37dfb9d9c8efb563a53477f06c725"
+    },
+    "attachments": [
+      {
+        "test": "StarfallExperimentInteractionTests/testBackgroundRelaunchAndAutomaticOverflow()",
+        "name": "automatic-overflow_0_CAFA9540-D84F-4364-B24C-446D837579DF.png",
+        "path": "/tmp/starfall-restore-images/4A7A96F8-4844-4E67-8E22-60CD60648509.png",
+        "sha256": "f83e67858203191472a6ab368c6229fec418646c8c1a992520b2c4b2039406d2"
+      }
+    ]
+  },
+  "priorCI": {
+    "run": 38976368923,
+    "sourceCommit": "db71be94ac8ff8083ef308073c41d1523b83a247",
+    "job": 117226675973,
+    "conclusion": "cancelled",
+    "cancellationReason": "GitHub check annotation: The job has exceeded the maximum execution time of 25m0s",
+    "corePassed": 53,
+    "uiPassed": 15,
+    "uiFailed": 1,
+    "hostedTestsReached": false,
+    "artifactCount": 0,
+    "assertionFailure": {
+      "test": "testBackgroundRelaunchAndAutomaticOverflow",
+      "source": "UITests/StarfallExperimentInteractionTests.swift:97",
+      "message": "XCTAssertEqual failed: (\"0\") is not equal to (\"1\")",
+      "elapsedSeconds": 46.342,
+      "atUTC": "2026-10-16T22:44:29.8875840Z"
+    },
+    "timing": {
+      "jobStartedUTC": "2026-10-16T22:32:40Z",
+      "firstUITestUTC": "2026-10-16T22:42:33.7216780Z",
+      "uiSuiteFinishedUTC": "2026-10-16T22:57:17.1616900Z",
+      "uiTestSeconds": 883.457,
+      "experimentUITestSeconds": 249.855,
+      "baselineUITestSeconds": 633.602,
+      "stepCancelledUTC": "2026-10-16T22:58:03Z",
+      "jobCompletedUTC": "2026-10-16T22:58:30Z"
+    },
+    "jobLogBytes": 937589,
+    "jobLogSHA256": "d698a78aeb9a8a77fda68a52f92e014975e802009468b9235df4e553cfa2665f",
+    "uiPassedTests": [
+      {
+        "class": "StarfallExperimentInteractionTests",
+        "test": "testAutomaticRainPauseGrowthClearReplayAndSettings",
+        "seconds": 70.314
+      },
+      {
+        "class": "StarfallExperimentInteractionTests",
+        "test": "testBalanceControlsPreserveBoardPersistAndChangeArrivals",
+        "seconds": 81.814
+      },
+      {
+        "class": "StarfallExperimentInteractionTests",
+        "test": "testDarkStarInfluenceRestoreAndAdjacentClear",
+        "seconds": 51.385
+      },
+      {
+        "class": "StarfallInteractionTests",
+        "test": "testAccessibleBoardControlsClearAndExplainInvalidGroups",
+        "seconds": 20.868
+      },
+      {
+        "class": "StarfallInteractionTests",
+        "test": "testAdaptiveLayoutKeepsBoardAndControlsReachable",
+        "seconds": 33.963
+      },
+      {
+        "class": "StarfallInteractionTests",
+        "test": "testCrystalPilotRealTap",
+        "seconds": 20.499
+      },
+      {
+        "class": "StarfallInteractionTests",
+        "test": "testDefaultStarshardFamilyAllFiveRealTaps",
+        "seconds": 103.82
+      },
+      {
+        "class": "StarfallInteractionTests",
+        "test": "testDefaultStarshardFamilyCalmTerminalResumeAndRestart",
+        "seconds": 65.988
+      },
+      {
+        "class": "StarfallInteractionTests",
+        "test": "testLargestTextLayoutAndAccessibilityAudit",
+        "seconds": 62.724
+      },
+      {
+        "class": "StarfallInteractionTests",
+        "test": "testLargestTextSettingsDirectAuditAndDismissal",
+        "seconds": 23.646
+      },
+      {
+        "class": "StarfallInteractionTests",
+        "test": "testQuietTucksDuringPlayCalmResumeAndMute",
+        "seconds": 53.994
+      },
+      {
+        "class": "StarfallInteractionTests",
+        "test": "testRapidTapInvalidTapAndCancelledDrag",
+        "seconds": 16.83
+      },
+      {
+        "class": "StarfallInteractionTests",
+        "test": "testRealBoardTapAndNavigation",
+        "seconds": 50.566
+      },
+      {
+        "class": "StarfallInteractionTests",
+        "test": "testSavedGameRelaunchAndCalmResume",
+        "seconds": 65.939
+      },
+      {
+        "class": "StarfallInteractionTests",
+        "test": "testTerminalOutcomesPersistAndRestart",
+        "seconds": 114.766
+      }
+    ],
+    "limits": "No retained xcresult/screenshots. Assertion is confirmed; exact save-clobber mechanism is a source-based hypothesis. No evidence proves diagnostic collection caused the post-suite gap."
+  }
+}
