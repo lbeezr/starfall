@@ -51,8 +51,12 @@ The final screenshots below were exported from the successful native interaction
 
 [Attachment provenance](attachment-manifest.json) and [tested source hashes](source-sha256.txt) are included. Native result bundles remain locally at `/private/tmp/starfall-accumulation-final-ui.xcresult` and `/private/tmp/starfall-accumulation-final-host.xcresult`.
 
+## Interactive handoff
+
+The native simulator is mirrored into Codex at `http://localhost:3200/` using `serve-sim` 0.1.48. This is a local development helper, not a game dependency or network feature. Xcode 27's touch bridge initially did not forward clicks; the helper's documented `repair-input` command was applied only to the dedicated simulator, then the helper and app were restarted. A browser tap then advanced the empty board to one shower, and a browser tap on Replay returned it to zero. The live tab is left open on the empty sky. [Browser frame proof](browser-preview.png).
+
 ## Accessibility and limits
 
 Every cell uses a native button labeled with jewel type, value and position. Its connected starlight value and clear hint are exposed, and a Matching groups rotor lists legal clears. The three incoming stars each expose type and column. Settings hides the underlying board from accessibility navigation. Calm effects, system Reduce Motion and VoiceOver route to the non-travel presentation.
 
-Native UI tests inspect and operate accessibility elements; they do not enable VoiceOver or validate spoken output, rotor focus, or a person's screen-reader experience. System Reduce Motion wiring is present, but the tested reduced-animation setting is the app's Calm effects toggle. Human playtesting and physical-device accessibility validation remain follow-up work.
+Native UI tests inspect and operate accessibility elements; they do not validate spoken output, rotor focus, or a person's screen-reader experience. An additional browser smoke check enabled system Reduce Motion and advanced one shower successfully. The simulator's VoiceOver setting was also toggled on; its first-use gesture notice was observed and dismissed, but spoken navigation and rotor behavior were not validated. Both system settings were restored off for handoff. The app's Calm effects toggle has the native interaction coverage described above. Human playtesting and physical-device accessibility validation remain follow-up work.
