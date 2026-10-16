@@ -1,0 +1,58 @@
+{
+  "core_sha256": "9ab2d57af8fe0ee804ce56e762eb5833a08ae5f39e8916ffaa0fe708d90e7086",
+  "example_file_sha256": "739a38afeee824a0308ae900ccc2efbf0ba0046e8ba806935c2b0fa4613f4fe1",
+  "generator_sha256": "171fff8d4deb1559d86997bbfd24e38c8014c5ae3e92249bcbf3ff69e695b1b4",
+  "glyph_letter_contrast_ratios": {
+    "A": 10.17,
+    "M": 9.89,
+    "R": 9.21,
+    "T": 10.6,
+    "V": 8.74
+  },
+  "human_observations_collected": 0,
+  "known_followup_player_row_column": [
+    [
+      3,
+      5
+    ],
+    [
+      4,
+      3
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      4,
+      6
+    ],
+    [
+      5,
+      1
+    ],
+    [
+      5,
+      2
+    ],
+    [
+      5,
+      3
+    ],
+    [
+      5,
+      4
+    ],
+    [
+      5,
+      5
+    ]
+  ],
+  "moderator_html_sections": 3,
+  "participant_answer_seed_network_checks": "passed",
+  "participant_html_sections": 1,
+  "print_validation": "Separate optional rendering check; these section counts are not measured printed page counts",
+  "real_core_verification": "PASS: exact 9-tap real-core replay, score 43/moves 9, both first clears, known survivor positions, 125 refill assignments, and actual follow-up of 9 mint.",
+  "status": "passed",
+  "verifier_sha256": "124c586517ba6606252f588b629dd2f5c2391e2f62c925d438932076c912ff03"
+}

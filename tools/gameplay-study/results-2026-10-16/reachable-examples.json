@@ -1,0 +1,358 @@
+[
+  {
+    "best_floor_among_current_largest_actions" : 14,
+    "board_top_to_bottom" : [
+      "MARVRRR",
+      "MMRRMRT",
+      "AVMMMMT",
+      "MMRRMRT",
+      "AAMAMMM",
+      "RMAAAVA",
+      "RRMMTRV"
+    ],
+    "cohort" : "sequential",
+    "largest_action" : {
+      "anchor_bottom_zero_row_column" : [
+        2,
+        4
+      ],
+      "immediate" : 9,
+      "known_next_group_count" : 6,
+      "known_next_largest" : 5,
+      "known_two_clear_floor" : 14,
+      "largest_joined_survivor_group" : 5,
+      "survivors_top_to_bottom" : [
+        "MA?????",
+        "MMRV??R",
+        "AVRR?RT",
+        "MMRR?RT",
+        "AAMARRT",
+        "RMAAAVA",
+        "RRMMTRV"
+      ]
+    },
+    "moves" : 14,
+    "prior_largest_policy_taps_bottom_zero" : [
+      [
+        3,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        4,
+        2
+      ]
+    ],
+    "score" : 21,
+    "seed_provenance_only" : "0",
+    "strict_smaller_setups" : [
+      {
+        "anchor_bottom_zero_row_column" : [
+          0,
+          0
+        ],
+        "immediate" : 3,
+        "known_next_group_count" : 6,
+        "known_next_largest" : 12,
+        "known_two_clear_floor" : 15,
+        "largest_joined_survivor_group" : 12,
+        "survivors_top_to_bottom" : [
+          "??RVRRR",
+          "?ARRMRT",
+          "MMMMMMT",
+          "MVRRMRT",
+          "AMMAMMM",
+          "MAAAAVA",
+          "AMMMTRV"
+        ]
+      }
+    ]
+  },
+  {
+    "best_floor_among_current_largest_actions" : 8,
+    "board_top_to_bottom" : [
+      "AVRVTVV",
+      "AAVAAMR",
+      "MAATVRT",
+      "MMRMVRT",
+      "AVATTRT",
+      "MMTRRVA",
+      "AATVTRV"
+    ],
+    "cohort" : "sequential",
+    "largest_action" : {
+      "anchor_bottom_zero_row_column" : [
+        4,
+        1
+      ],
+      "immediate" : 5,
+      "known_next_group_count" : 3,
+      "known_next_largest" : 3,
+      "known_two_clear_floor" : 8,
+      "largest_joined_survivor_group" : 0,
+      "survivors_top_to_bottom" : [
+        "???VTVV",
+        "??RAAMR",
+        "MVVTVRT",
+        "MMRMVRT",
+        "AVATTRT",
+        "MMTRRVA",
+        "AATVTRV"
+      ]
+    },
+    "moves" : 8,
+    "prior_largest_policy_taps_bottom_zero" : [
+      [
+        3,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        4,
+        2
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        2
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        4,
+        4
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "score" : 55,
+    "seed_provenance_only" : "0",
+    "strict_smaller_setups" : [
+      {
+        "anchor_bottom_zero_row_column" : [
+          3,
+          0
+        ],
+        "immediate" : 3,
+        "known_next_group_count" : 3,
+        "known_next_largest" : 6,
+        "known_two_clear_floor" : 9,
+        "largest_joined_survivor_group" : 6,
+        "survivors_top_to_bottom" : [
+          "??RVTVV",
+          "?VVAAMR",
+          "AAATVRT",
+          "AARMVRT",
+          "AVATTRT",
+          "MMTRRVA",
+          "AATVTRV"
+        ]
+      }
+    ]
+  },
+  {
+    "best_floor_among_current_largest_actions" : 8,
+    "board_top_to_bottom" : [
+      "RTVVARM",
+      "VATTMTM",
+      "AVVTVAR",
+      "MMAVMMA",
+      "AAVTMTA",
+      "VMVVRMT",
+      "RRRVAVR"
+    ],
+    "cohort" : "sequential",
+    "largest_action" : {
+      "anchor_bottom_zero_row_column" : [
+        0,
+        3
+      ],
+      "immediate" : 4,
+      "known_next_group_count" : 4,
+      "known_next_largest" : 4,
+      "known_two_clear_floor" : 8,
+      "largest_joined_survivor_group" : 4,
+      "survivors_top_to_bottom" : [
+        "RT??ARM",
+        "VA??MTM",
+        "AVVVVAR",
+        "MMTTMMA",
+        "AAVTMTA",
+        "VMAVRMT",
+        "RRRTAVR"
+      ]
+    },
+    "moves" : 12,
+    "prior_largest_policy_taps_bottom_zero" : [
+      [
+        0,
+        2
+      ],
+      [
+        4,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        5,
+        0
+      ]
+    ],
+    "score" : 30,
+    "seed_provenance_only" : "1",
+    "strict_smaller_setups" : [
+      {
+        "anchor_bottom_zero_row_column" : [
+          4,
+          3
+        ],
+        "immediate" : 3,
+        "known_next_group_count" : 4,
+        "known_next_largest" : 6,
+        "known_two_clear_floor" : 9,
+        "largest_joined_survivor_group" : 6,
+        "survivors_top_to_bottom" : [
+          "RT??ARM",
+          "VAV?MTM",
+          "AVVVVAR",
+          "MMAVMMA",
+          "AAVTMTA",
+          "VMVVRMT",
+          "RRRVAVR"
+        ]
+      }
+    ]
+  },
+  {
+    "best_floor_among_current_largest_actions" : 9,
+    "board_top_to_bottom" : [
+      "RMMRVRM",
+      "VTATATM",
+      "AAMRMAR",
+      "MMMVMMA",
+      "AAVMMTA",
+      "VMAVRMT",
+      "RRRTAVR"
+    ],
+    "cohort" : "sequential",
+    "largest_action" : {
+      "anchor_bottom_zero_row_column" : [
+        2,
+        3
+      ],
+      "immediate" : 5,
+      "known_next_group_count" : 4,
+      "known_next_largest" : 4,
+      "known_two_clear_floor" : 9,
+      "largest_joined_survivor_group" : 3,
+      "survivors_top_to_bottom" : [
+        "RMM???M",
+        "VTAR?RM",
+        "AAMT?TR",
+        "MMMRVAA",
+        "AAVVATA",
+        "VMAVRMT",
+        "RRRTAVR"
+      ]
+    },
+    "moves" : 9,
+    "prior_largest_policy_taps_bottom_zero" : [
+      [
+        0,
+        2
+      ],
+      [
+        4,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        5,
+        0
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        4,
+        1
+      ],
+      [
+        2,
+        3
+      ]
+    ],
+    "score" : 43,
+    "seed_provenance_only" : "1",
+    "strict_smaller_setups" : [
+      {
+        "anchor_bottom_zero_row_column" : [
+          0,
+          0
+        ],
+        "immediate" : 3,
+        "known_next_group_count" : 1,
+        "known_next_largest" : 9,
+        "known_two_clear_floor" : 12,
+        "largest_joined_survivor_group" : 9,
+        "survivors_top_to_bottom" : [
+          "???RVRM",
+          "RMMTATM",
+          "VTARMAR",
+          "AAMVMMA",
+          "MMMMMTA",
+          "AAVVRMT",
+          "VMATAVR"
+        ]
+      }
+    ]
+  }
+]

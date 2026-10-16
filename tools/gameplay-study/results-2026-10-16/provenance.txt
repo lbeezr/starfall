@@ -1,0 +1,10 @@
+execution_utc=2026-10-16T18:34:02Z
+60f44a0447f644174613370f25302cd5205a8311
+Apple Swift version 6.4 (swiftlang-6.4.0.34.1 clang-2100.3.34.1)
+Target: arm64-apple-macosx26.0
+9ab2d57af8fe0ee804ce56e762eb5833a08ae5f39e8916ffaa0fe708d90e7086  /var/folders/wr/gk31dys95vz4qq6vsmr8pnx40000gn/T//starfall-gameplay.rros31/Game.swift
+b939191cd4c2795bf3e1fa73042bccce08a63f6ff655a26dea453bf088c7e7ca  /var/folders/wr/gk31dys95vz4qq6vsmr8pnx40000gn/T//starfall-gameplay.rros31/main.swift
+43d266a1d768c6941969ec44b738fc4c5321ec9a8361df26df7f20b64cb8681c  /Users/lb/Developer/Starfall/tools/gameplay-study/run.sh
+1458686f8519dd59b01d0c6c1ad73284a08ae86418cc2259eff813fca44b917a  tools/gameplay-study/results-2026-10-16/summary.json
+ab201cc75153271d7617e7035551912d9797a68b1308a5c853a52d86fdb4f80b  tools/gameplay-study/results-2026-10-16/rounds.csv
+739a38afeee824a0308ae900ccc2efbf0ba0046e8ba806935c2b0fa4613f4fe1  tools/gameplay-study/results-2026-10-16/reachable-examples.json
