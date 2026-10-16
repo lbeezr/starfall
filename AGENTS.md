@@ -11,3 +11,6 @@ Keep the prototype small: a 7×7 orthogonal tap-to-clear puzzle, five jewel type
 
 ## Code quality
 Keep rules deterministic and independent from rendering. Keep presentation, saved state and feedback behind small, explicit boundaries; add focused tests for behavioral changes. Prefer incremental reviewed changes over a growing multipurpose module, but do not introduce speculative frameworks or split files solely to meet an arbitrary size. Reuse the bounded jewel material factory rather than duplicating drawing logic.
+
+## Incremental integration
+Merge completed, verified work in small batches as it becomes ready. Do not let an unrelated blocked workstream delay integration or allow a large backlog of changes to accumulate. Keep each commit scoped to its workstream, preserve other agents' in-progress edits, and run the checks appropriate to each batch before integrating it.
