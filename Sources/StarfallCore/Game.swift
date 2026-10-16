@@ -61,9 +61,28 @@ public struct Game: Codable, Equatable, Sendable {
         }
         return found
     }
-    public var hasMove: Bool {
-        (0..<Self.side).contains { row in (0..<Self.side).contains { group(at: Cell(row, $0)).count >= 3 } }
+    /// Each clearable connected group appears once, ordered by its first cell.
+    /// Cells within each group are ordered by row, then column (bottom-to-top).
+    /// This describes the board even after the game ends; `tap` still locks terminal games.
+    public var legalGroups: [[Cell]] {
+        var visited: Set<Cell> = []
+        var groups: [[Cell]] = []
+        for row in 0..<Self.side {
+            for column in 0..<Self.side {
+                let cell = Cell(row, column)
+                guard !visited.contains(cell) else { continue }
+                let connected = group(at: cell)
+                visited.formUnion(connected)
+                if connected.count >= 3 {
+                    groups.append(connected.sorted {
+                        $0.row == $1.row ? $0.column < $1.column : $0.row < $1.row
+                    })
+                }
+            }
+        }
+        return groups
     }
+    public var hasMove: Bool { !legalGroups.isEmpty }
     @discardableResult public mutating func tap(_ cell: Cell) -> Turn? {
         guard outcome == .playing else { return nil }
         let cleared = group(at: cell)
@@ -85,8 +104,14 @@ public struct Game: Codable, Equatable, Sendable {
         board[0] = kind; board[1] = kind; board[2] = kind
     }
     public var isValidSave: Bool {
-        board.count == Self.side * Self.side && (0...Self.startingMoves).contains(moves)
-        && score >= 0 && score <= (Self.startingMoves - moves) * Self.side * Self.side
-        && (outcome != .playing || hasMove)
+        guard board.count == Self.side * Self.side,
+              (0...Self.startingMoves).contains(moves) else { return false }
+        let turnsTaken = Self.startingMoves - moves
+        // Every spent move clears at least three jewels. A game stops as soon as it
+        // wins, so the last clear can add at most one full board to a score of 69.
+        guard score >= turnsTaken * 3,
+              score <= turnsTaken * Self.side * Self.side,
+              score <= Self.target - 1 + Self.side * Self.side else { return false }
+        return outcome != .playing || hasMove
     }
 }

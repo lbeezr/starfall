@@ -45,6 +45,7 @@ final class GameTests: XCTestCase {
         let data = try JSONEncoder().encode(game)
         var restored = try JSONDecoder().decode(Game.self, from: data)
         XCTAssertEqual(game, restored)
+        XCTAssertEqual(game.legalGroups, restored.legalGroups)
         for row in 0..<7 { for col in 0..<7 {
             if game.group(at: Cell(row, col)).count >= 3 {
                 game.tap(Cell(row, col)); restored.tap(Cell(row, col))
@@ -68,6 +69,52 @@ final class GameTests: XCTestCase {
         board[0] = .mint; board[8] = .mint; board[16] = .mint
         let game = Game(board: board)
         XCTAssertEqual(game.group(at: Cell(0, 0)), [Cell(0, 0)])
+    }
+    func testLegalGroupsAreUniqueAndOrderedAcrossDisconnectedSameColorGroups() {
+        var board = Array(repeating: Jewel.aqua, count: 49)
+        let first = [Cell(0, 0), Cell(0, 1), Cell(1, 1), Cell(2, 1)]
+        let last = [Cell(5, 5), Cell(5, 6), Cell(6, 6)]
+        let excluded = [Cell(3, 3), Cell(3, 4), Cell(6, 0)]
+        for cell in first + last { board[cell.row * 7 + cell.column] = .rose }
+        board[3 * 7 + 3] = .mint; board[3 * 7 + 4] = .mint
+        board[6 * 7] = .amber
+        let aqua = (0..<49).map { Cell($0 / 7, $0 % 7) }
+            .filter { !(first + last + excluded).contains($0) }
+        let game = Game(board: board)
+
+        XCTAssertEqual(game.legalGroups, [first, aqua, last])
+        XCTAssertEqual(Set(game.legalGroups.flatMap { $0 }).count, 46)
+        XCTAssertTrue(game.hasMove)
+    }
+    func testLegalGroupsHandleWholeBoardDeadBoardAndTerminalBoard() {
+        let cells = (0..<49).map { Cell($0 / 7, $0 % 7) }
+        let wholeBoard = Game(board: Array(repeating: .mint, count: 49))
+        XCTAssertEqual(wholeBoard.legalGroups, [cells])
+        XCTAssertTrue(Game(board: checker).legalGroups.isEmpty)
+        XCTAssertFalse(Game(board: checker).hasMove)
+
+        var terminal = Game(board: wholeBoard.board, moves: 0, score: 70)
+        XCTAssertEqual(terminal.legalGroups, [cells])
+        XCTAssertNil(terminal.tap(cells[0]))
+    }
+    func testEveryEnumeratedGroupIsOneEquivalentMoveAndEnumerationDoesNotChangeRandomness() throws {
+        for seed in UInt64(0)..<30 {
+            let game = Game(seed: seed)
+            let groups = game.legalGroups
+            let uniqueCells = Set(groups.flatMap { $0 })
+            XCTAssertEqual(uniqueCells.count, groups.reduce(0) { $0 + $1.count })
+            for cells in groups {
+                var firstTap = game, lastTap = game
+                let first = try XCTUnwrap(cells.first), last = try XCTUnwrap(cells.last)
+                XCTAssertEqual(firstTap.tap(first)?.cleared, Set(cells))
+                XCTAssertEqual(lastTap.tap(last)?.cleared, Set(cells))
+                XCTAssertEqual(firstTap, lastTap)
+            }
+            XCTAssertEqual(game, Game(seed: seed))
+            let allClearable = Set((0..<49).map { Cell($0 / 7, $0 % 7) }
+                .filter { game.group(at: $0).count >= 3 })
+            XCTAssertEqual(uniqueCells, allClearable)
+        }
     }
     func testDeadBoardRecoveryIsFreeAndBounded() {
         var board = checker
@@ -97,6 +144,38 @@ final class GameTests: XCTestCase {
     func testMalformedSaveRejected() {
         let game = Game(board: checker, moves: -1)
         XCTAssertFalse(game.isValidSave)
+    }
+    func testSaveValidationRejectsImpossibleScoresAndMoveCounts() {
+        let board = Game(seed: 42).board
+        let invalid: [(moves: Int, score: Int)] = [
+            (-1, 3), (19, 0), (Int.min, 0), (Int.max, 0),
+            (18, -1), (18, 3), (17, 0), (17, 2), (17, 50),
+            (16, 5), (16, 99), (0, 53), (0, 119), (0, Int.max)
+        ]
+        for fixture in invalid {
+            XCTAssertFalse(Game(board: board, moves: fixture.moves, score: fixture.score).isValidSave,
+                           "Accepted impossible save: \(fixture)")
+        }
+        let valid: [(moves: Int, score: Int)] = [
+            (18, 0), (17, 3), (17, 49), (16, 70), (0, 54), (0, 69), (0, 70), (0, 118)
+        ]
+        for fixture in valid {
+            XCTAssertTrue(Game(board: board, moves: fixture.moves, score: fixture.score).isValidSave,
+                          "Rejected valid rule bounds: \(fixture)")
+        }
+    }
+    func testSaveValidationChecksBoardSizeBeforeTraversingAndAllowsDeadTerminalBoards() throws {
+        let data = try JSONEncoder().encode(Game(seed: 42))
+        let object = try XCTUnwrap(JSONSerialization.jsonObject(with: data) as? [String: Any])
+        for count in [0, 48, 50] {
+            var malformed = object
+            malformed["board"] = Array(repeating: Jewel.rose.rawValue, count: count)
+            let decoded = try JSONDecoder().decode(Game.self, from: JSONSerialization.data(withJSONObject: malformed))
+            XCTAssertFalse(decoded.isValidSave)
+        }
+        XCTAssertFalse(Game(board: checker).isValidSave)
+        XCTAssertTrue(Game(board: checker, moves: 0, score: 54).isValidSave)
+        XCTAssertTrue(Game(board: checker, moves: 0, score: 70).isValidSave)
     }
     /// Contract used by native relaunch tests to distinguish saved and fresh boards.
     func testNativePersistenceFixture() {
