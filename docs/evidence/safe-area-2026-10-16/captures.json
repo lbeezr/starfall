@@ -1,0 +1,113 @@
+[
+  {
+    "device": "phone",
+    "test": "StarfallInteractionTests/testLargestTextLayoutAndAccessibilityAudit()",
+    "name": "accessibility-large-text-settings_0_8037C7B8-BEC7-4351-B947-843C6827443D.png",
+    "path": "/tmp/starfall-safearea-phone-images/9DECBE17-F322-4903-9364-8DA649EACC7E.png",
+    "sha256": "47f86303c53ffc4e359a9b906a9dfe4875577ec3822f944f2b0944f4ffe2dc98"
+  },
+  {
+    "device": "phone",
+    "test": "StarfallInteractionTests/testLargestTextLayoutAndAccessibilityAudit()",
+    "name": "accessibility-restart-ready_0_AD36F95F-C7DC-4725-9806-A83B4485EA70.png",
+    "path": "/tmp/starfall-safearea-phone-images/17C7F376-EC5A-49E9-BFD3-EEFBE832416C.png",
+    "sha256": "a4af50ff9c8505f4f267b3aeb80bf9ac7fb2ff1505c5670165cec29eb30a58ee"
+  },
+  {
+    "device": "phone",
+    "test": "StarfallInteractionTests/testLargestTextLayoutAndAccessibilityAudit()",
+    "name": "accessibility-large-text-game_0_0FA3E70C-B18B-4305-BB76-03B28D8CFEDA.png",
+    "path": "/tmp/starfall-safearea-phone-images/5AECB893-B72B-4132-B7C5-0E1854842E69.png",
+    "sha256": "f10d5a944adc08ac646925684c5ad845c635fb3ffc3083fd9b43aac6eb38a0a6"
+  },
+  {
+    "device": "phone",
+    "test": "StarfallInteractionTests/testLargestTextLayoutAndAccessibilityAudit()",
+    "name": "accessibility-large-text-menu-before-audit_0_A63D3BFB-27C9-4FDA-A075-DC7E71F5B391.png",
+    "path": "/tmp/starfall-safearea-phone-images/1530DE51-8076-4C0C-91B4-BF674C634245.png",
+    "sha256": "1bcd4bb142f07e7f81442ed393103881a04e4384a1240a828ff91445a407e40b"
+  },
+  {
+    "device": "phone",
+    "test": "StarfallInteractionTests/testRealBoardTapAndNavigation()",
+    "name": "real-touch-restarted_0_BA35AE4F-DDFE-417E-977F-39E60E5607C1.png",
+    "path": "/tmp/starfall-safearea-phone-images/D2DE2F9B-C254-4A3E-8541-AE4F369BDD9C.png",
+    "sha256": "3b8a0e36b88205abe84bd09c02fa4fb02b706e52ac56e27b62f016024e5337b5"
+  },
+  {
+    "device": "phone",
+    "test": "StarfallInteractionTests/testRealBoardTapAndNavigation()",
+    "name": "settings-default-text_0_9958A0CB-E731-4148-B5C3-DA9A72160460.png",
+    "path": "/tmp/starfall-safearea-phone-images/8487BBB3-B8D1-4C40-8A4A-55C0FB24DF38.png",
+    "sha256": "c565ad5c759e9fa8de24b89794837ad33ec4b28cebf42af10564fdd86ea834c1"
+  },
+  {
+    "device": "phone",
+    "test": "StarfallInteractionTests/testRealBoardTapAndNavigation()",
+    "name": "settings-default-initial_0_7088D2D9-61A4-49D8-9A93-D760BF19C3A0.png",
+    "path": "/tmp/starfall-safearea-phone-images/2985D331-F013-4B4A-94E4-9AA76989B488.png",
+    "sha256": "c565ad5c759e9fa8de24b89794837ad33ec4b28cebf42af10564fdd86ea834c1"
+  },
+  {
+    "device": "phone",
+    "test": "StarfallInteractionTests/testRealBoardTapAndNavigation()",
+    "name": "real-touch-post-clear_0_BD1EB1C4-4BFD-4A5B-A3CA-F5F1B332C4D0.png",
+    "path": "/tmp/starfall-safearea-phone-images/1411F66B-A7AF-480C-BD54-ACF504C55A96.png",
+    "sha256": "703cb454eddfa35a48fd5f94499c3a05347468d98e90033ffa34ad32c7426961"
+  },
+  {
+    "device": "ipad",
+    "test": "StarfallInteractionTests/testAdaptiveLayoutKeepsBoardAndControlsReachable()",
+    "name": "adaptive-layout-restarted_0_9A6F5624-9EE1-4A4C-B0E4-B01B9295DD6A.png",
+    "path": "/tmp/starfall-safearea-ipad-images/5512180C-0FF6-4937-9087-D02751356941.png",
+    "sha256": "8030405099cb98de5d39ab8f409271ec174b30269d8173c780cc3c96e2fe03f3"
+  },
+  {
+    "device": "ipad",
+    "test": "StarfallInteractionTests/testAdaptiveLayoutKeepsBoardAndControlsReachable()",
+    "name": "adaptive-layout-reflowed_0_602FEF94-FC3F-4FD7-B84E-65ABC3D1689C.png",
+    "path": "/tmp/starfall-safearea-ipad-images/40E473BC-48E1-48EA-8F77-FD9011FBEBEE.png",
+    "sha256": "5afd66af244259da8d98421efa7c13d631a6500272c2bdce85a117c397495d93"
+  },
+  {
+    "device": "ipad",
+    "test": "StarfallInteractionTests/testAdaptiveLayoutKeepsBoardAndControlsReachable()",
+    "name": "adaptive-layout-initial_0_3135C199-3C79-4703-BA99-5B86DC5566E0.png",
+    "path": "/tmp/starfall-safearea-ipad-images/AD42FA0B-08CA-4C7D-8A38-B24C95CD65AF.png",
+    "sha256": "3ac7b4de02c66084a9788be861120e52b7b504714b6c752e93de0662e389e91a"
+  },
+  {
+    "device": "ipad",
+    "test": "StarfallInteractionTests/testLargestTextLayoutAndAccessibilityAudit()",
+    "name": "accessibility-large-text-settings_0_8256CD5A-DF17-4A72-91B6-1FE27567A2A8.png",
+    "path": "/tmp/starfall-safearea-ipad-images/E8862520-39AE-44B9-B912-93C92335E2EC.png",
+    "sha256": "17580a7ff1f595f51e050faf0f26c94aa447ac7865ef6f4151866bd3bfc73b92"
+  },
+  {
+    "device": "ipad",
+    "test": "StarfallInteractionTests/testLargestTextLayoutAndAccessibilityAudit()",
+    "name": "accessibility-restart-ready_0_711D48BB-7150-4AC6-97B9-37B8D59906B3.png",
+    "path": "/tmp/starfall-safearea-ipad-images/AF3AAA78-499F-4662-9395-94C9A32FD85A.png",
+    "sha256": "c5b59243db65eea136bc96a4c45c8bb35f099ec75bf5c7f94a5e7b67dd6374cd"
+  },
+  {
+    "device": "ipad",
+    "test": "StarfallInteractionTests/testLargestTextLayoutAndAccessibilityAudit()",
+    "name": "accessibility-large-text-game_0_C40EE69D-B776-4FB7-9D65-4D9FFDE08270.png",
+    "path": "/tmp/starfall-safearea-ipad-images/2ADD0CE4-98A0-4537-968B-65DA6FABD8DB.png",
+    "sha256": "9f73025b709d2e82c6d9f87bc5fd866cc90255f1d368f4b4ba088d4a0e1f46de"
+  },
+  {
+    "device": "ipad",
+    "test": "StarfallInteractionTests/testLargestTextLayoutAndAccessibilityAudit()",
+    "name": "accessibility-large-text-menu-before-audit_0_3BBB07BE-7AF6-4C46-ACD9-3CF2F6B350F5.png",
+    "path": "/tmp/starfall-safearea-ipad-images/43C94728-5B0E-4A08-B917-637172728ADA.png",
+    "sha256": "cf4ade63d680ddfa1f885e9fc9dc05b046b252ecbfcea987ee49fb2b6c8a22da"
+  },
+  {
+    "device": "phone",
+    "role": "preceding-source status-bar overlap baseline",
+    "path": "/tmp/starfall-crystal-debug-images/9F00C9AA-C24C-4C77-9EA1-C2904CC2711E.png",
+    "sha256": "f6aa79c6f9632be1c06fd14eb0b523399bb9e953bfed28659fb77ccc3956cea2"
+  }
+]
