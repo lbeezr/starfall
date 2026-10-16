@@ -12,8 +12,16 @@ from PIL import Image
 
 from inspect_crystals import COUNT, KINDS, NEUTRAL, ROOT, SIDE
 
-# Approved aqua v1 file bytes, also frozen in comparison/baseline/manifest.json.
-APPROVED_AQUA_SHA256 = "a7e0d3c5154a3cb3c474307c876f6d87255fe9a38bc1c78f45081abb58490c2f"
+# The runtime family is adopted byte-for-byte from Artwork/Crystals/v2/manifest.json.
+# The original aqua comparison remains separately frozen in comparison/baseline.
+APPROVED_ATLAS_SHA256 = {
+    "StarshardFamilyRose": "c34e81ad124efe049ade93add918701237cbed9a476ca0e72a8f87b20c0a8879",
+    "StarshardFamilyAqua": "a187d78aba3d0dc2e678ab765a23d6eb424a7991eac64c91ea9b8cad6b0f8d13",
+    "StarshardFamilyAmber": "aaa75c7ae2784923b5b6cffa31247e8e4f463f5005b1f9c8f5acaf809c03debf",
+    "StarshardFamilyViolet": "c0c3f1cf80eeb479041362035c0b717c6a04a35f810d848bfbd17e293c95b2c9",
+    "StarshardFamilyMint": "f40be6ac102cd73ffa946daaf62ab6f6e87f5e1ad942a743c5d8192568fdd984",
+    "CrystalPilot": "a7e0d3c5154a3cb3c474307c876f6d87255fe9a38bc1c78f45081abb58490c2f",
+}
 EXPECTED = {f"StarshardFamily{kind.title()}": f"{kind}_tilt_atlas.png" for kind in KINDS}
 EXPECTED["CrystalPilot"] = "aqua_tilt_atlas.png"
 
@@ -86,11 +94,12 @@ def inspect_set(catalog: Path, asset: str, filename: str) -> dict:
 def validate(catalog: Path) -> dict:
     catalog = catalog.resolve()
     report = {
-        "schema": "starfall.crystal-catalog-preflight.v1",
+        "schema": "starfall.crystal-catalog-preflight.v2",
         "catalog": str(catalog),
         "contract": {"family_kinds": list(KINDS), "frame_count": COUNT,
                      "frame_side_px": SIDE, "neutral_index": NEUTRAL,
-                     "approved_aqua_file_sha256": APPROVED_AQUA_SHA256},
+                     "family_revision": "v2", "legacy_pilot_revision": "aqua-v1",
+                     "approved_atlas_file_sha256": APPROVED_ATLAS_SHA256},
         "sets": {}, "errors": [],
         "limits": "Static catalog files only; no source integration, compiled bundle, UIImage loading, visual or native validation.",
     }
@@ -101,11 +110,12 @@ def validate(catalog: Path) -> dict:
             record = inspect_set(catalog, asset, filename)
             report["sets"][asset] = record
             report["errors"].extend(f"{asset}: {error}" for error in record["errors"])
-        for asset in ("StarshardFamilyAqua", "CrystalPilot"):
+        for asset, approved_digest in APPROVED_ATLAS_SHA256.items():
             record = report["sets"][asset]
             digest = record.get("atlas_sha256")
-            if digest is not None and digest != APPROVED_AQUA_SHA256:
-                report["errors"].append(f"{asset}: PNG bytes differ from pinned approved aqua v1")
+            if digest is not None and digest != approved_digest:
+                revision = "legacy aqua v1" if asset == "CrystalPilot" else "family v2"
+                report["errors"].append(f"{asset}: PNG bytes differ from pinned approved {revision}")
         family_hash = report["sets"]["StarshardFamilyAqua"].get("atlas_sha256")
         pilot_hash = report["sets"]["CrystalPilot"].get("atlas_sha256")
         report["aqua_copies_identical"] = family_hash is not None and family_hash == pilot_hash
@@ -126,7 +136,7 @@ def main() -> int:
         for error in report["errors"]:
             print(f"  - {error}")
         if report["passed"]:
-            print("  Five family image sets (45 frames) and approved aqua reference passed.")
+            print("  Five v2 family image sets (45 frames) and distinct legacy aqua reference passed.")
         print(report["limits"])
     return 0 if report["passed"] else 1
 

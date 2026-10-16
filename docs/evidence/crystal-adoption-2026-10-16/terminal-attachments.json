@@ -1,0 +1,35 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "0F8006D3-274E-431E-B67C-F2CA26381CD4",
+        "deviceName" : "Starfall Adaptive QA Compact",
+        "exportedFileName" : "B163B670-C678-4921-8E5B-9F2E879DDF56.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "terminal-lost-restored_0_30C91D3C-A76D-48C6-B7C1-6EB5C81EB17A.png",
+        "timestamp" : 1792184271.114
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "0F8006D3-274E-431E-B67C-F2CA26381CD4",
+        "deviceName" : "Starfall Adaptive QA Compact",
+        "exportedFileName" : "D244A308-100F-49CF-8D38-9792FFABC3B1.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "terminal-last-move-won-restored_0_9707C260-F794-41E6-920A-BE293484D2D8.png",
+        "timestamp" : 1792184210.745
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "0F8006D3-274E-431E-B67C-F2CA26381CD4",
+        "deviceName" : "Starfall Adaptive QA Compact",
+        "exportedFileName" : "F134B137-C562-4A10-85EA-73CB64B25573.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "terminal-won-restored_0_4A1B44E1-65AB-4F08-A889-B840703846A0.png",
+        "timestamp" : 1792184172.643
+      }
+    ],
+    "testIdentifier" : "StarfallInteractionTests/testTerminalOutcomesPersistAndRestart()",
+    "testIdentifierURL" : "test://com.apple.xcode/Starfall/StarfallUITests/StarfallInteractionTests/testTerminalOutcomesPersistAndRestart"
+  }
+]

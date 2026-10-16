@@ -49,18 +49,24 @@ final class StarshardArtworkTests: XCTestCase {
     @MainActor func testAllFiveRequiredBundledKindsConform() throws {
         let loader = StarshardArtwork()
         let expectedSizes: [Jewel: CGSize] = [
-            .rose: CGSize(width: 183, height: 182), .aqua: CGSize(width: 188, height: 188),
-            .amber: CGSize(width: 162, height: 143), .violet: CGSize(width: 176, height: 196),
+            .rose: CGSize(width: 184, height: 184), .aqua: CGSize(width: 188, height: 188),
+            .amber: CGSize(width: 164, height: 143), .violet: CGSize(width: 174, height: 196),
             .mint: CGSize(width: 144, height: 144)
+        ]
+        let expectedMotionSizes: [Jewel: CGSize] = [
+            .rose: CGSize(width: 184, height: 184), .aqua: CGSize(width: 188, height: 188),
+            .amber: CGSize(width: 165, height: 143), .violet: CGSize(width: 174, height: 196),
+            .mint: CGSize(width: 146, height: 144)
         ]
         for kind in Jewel.allCases {
             _ = try XCTUnwrap(UIImage(named: StarshardArtwork.assetName(for: kind))?.cgImage,
-                              "The family pilot requires the real packaged asset for \(kind)")
+                              "Normal gameplay requires the real packaged asset for \(kind)")
             let frames = try XCTUnwrap(loader.frames(for: kind))
             XCTAssertEqual(frames.textures.count, StarshardArtwork.frameCount)
             for texture in frames.textures { XCTAssertEqual(texture.size(), CGSize(width: 256, height: 256)) }
             XCTAssertTrue(frames.motionAlphaBounds.contains(frames.neutralAlphaBounds))
             XCTAssertEqual(frames.neutralAlphaBounds.size, try XCTUnwrap(expectedSizes[kind]))
+            XCTAssertEqual(frames.motionAlphaBounds.size, try XCTUnwrap(expectedMotionSizes[kind]))
             XCTAssertEqual(frames.fragments.count, 4)
             for texture in frames.fragments { XCTAssertEqual(texture.size(), CGSize(width: 128, height: 128)) }
             let visibleSide = max(frames.neutralAlphaBounds.width, frames.neutralAlphaBounds.height)
@@ -102,14 +108,24 @@ final class StarshardArtworkTests: XCTestCase {
         XCTAssertEqual(Set(allTextures.map(ObjectIdentifier.init)).count, 65)
     }
 
-    @MainActor func testPilotArgumentIsExplicitAndDebugOnly() {
-        XCTAssertFalse(StarshardArtwork.isFamilyPilotEnabled(arguments: []))
-        XCTAssertFalse(StarshardArtwork.isFamilyPilotEnabled(arguments: ["--crystal-pilot"]))
-        #if DEBUG
-        XCTAssertTrue(StarshardArtwork.isFamilyPilotEnabled(arguments: ["--starshard-family-pilot"]))
-        #else
-        XCTAssertFalse(StarshardArtwork.isFamilyPilotEnabled(arguments: ["--starshard-family-pilot"]))
-        #endif
+    @MainActor func testCompleteFamilyUsesSameBoundedCacheWithoutLaunchArguments() throws {
+        var requests: [String] = []
+        let loader = StarshardArtwork { name in
+            requests.append(name)
+            return UIImage(named: name)?.cgImage
+        }
+        let family = try XCTUnwrap(loader.completeFamily)
+        XCTAssertEqual(Set(family.keys), Set(Jewel.allCases))
+        for _ in 0..<49 {
+            let repeated = try XCTUnwrap(loader.completeFamily)
+            for kind in Jewel.allCases {
+                XCTAssertTrue(repeated[kind] === family[kind])
+                XCTAssertTrue(loader.frames(for: kind) === family[kind])
+            }
+        }
+        XCTAssertEqual(requests.count, 5)
+        XCTAssertEqual(loader.cachedKindCount, 5)
+        XCTAssertEqual(loader.cachedTextureCount, StarshardArtwork.maximumTextureCount)
     }
 
     @MainActor func testMissingArtIsCachedWithoutPlaceholderOrRepeatedReads() {

@@ -1,8 +1,16 @@
 # Crystal pixel review
 
-Local inspection of the five existing DEBUG family atlases. This tool reads
+Local inspection of the five default gameplay atlases. This tool reads
 source PNGs and writes comparison sheets plus measurements; it never edits
 the asset catalog, runtime code, source artwork, or release configuration.
+
+Normal Debug and Release gameplay use the recreated five-kind v2 family from
+`Artwork/Crystals/v2/assets`. That sealed package contains newly authored Blender
+source, not recovered original source or alpha-identical v1 artwork. Runtime
+loading keeps all nine full canvases and the authored pivot, and falls back to
+the complete procedural family if any member is missing or malformed. The
+explicit Debug-only `--crystal-pilot` route still selects the original aqua v1
+comparison asset, with procedural art for the other kinds. It does not select v2.
 
 ## Missing-asset preflight
 
@@ -19,14 +27,18 @@ image sets plus `CrystalPilot`. It checks each `Contents.json` for one universal
 entry naming its expected PNG and `info.version` 1; then checks RGBA, 2304 × 256,
 nine nonempty padded frames. Referenced filenames must stay directly inside
 their image set; traversal and symlinks escaping that directory are rejected.
-Both aqua PNGs must match the approved v1 file SHA-256 pinned in the utility
-and the frozen comparison manifest. Even lossless recompression changes those
-approved file bytes and is reported for explicit review.
+Each of the five family PNGs must match its own v2 file SHA-256 pinned in the
+utility and sealed package manifest. `CrystalPilot` must separately match the
+original aqua v1 pin and frozen comparison manifest; the two aqua files are
+intentionally distinct. Even lossless recompression changes approved file bytes
+and is reported for explicit review. The v2 JSON report records all six pins;
+`aqua_copies_identical` is informational and is false for the approved catalog.
 
 Exit **0** means these catalog checks pass; **1** reports catalog/content
 errors; **2** is invalid CLI usage. The default prints concise diagnostics;
 `--json` prints details and input hashes to stdout. No output file is created.
-Tests use temporary catalogs and the frozen reference, preserving real assets.
+Tests use temporary catalogs, the sealed family, and the frozen legacy reference,
+preserving real assets.
 
 This models the existing loader's file/geometry contract. Source integration,
 project resource registration, compiled bundles, `UIImage` loading, appearance
@@ -46,6 +58,14 @@ Requires Python 3.10+ and Pillow with `ImageFont.load_default(size=...)`
 provider, Blender, or Xcode dependencies. The game-development-studio
 capability/doctor checks were consulted for the initial review; its 3D asset
 validation commands do not validate these PNG atlases.
+
+The checked-in `output/` sheets and `comparison/baseline/` remain historical v1
+evidence. The sealed v2 contact sheets are under
+`Artwork/Crystals/v2/review/current/`. Use a separate output directory for any
+new review; do not overwrite either historical record. A strict comparison of
+v2 against the frozen v1 alpha baseline intentionally fails because the geometry
+was recreated. It is not a substitute for the v2 structural checks or native
+acceptance.
 
 ## Contract and output
 

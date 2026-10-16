@@ -1,0 +1,13 @@
+{
+  "productPath": "/tmp/starfall-crystal-release-derived/Build/Products/Release-iphonesimulator/Starfall.app",
+  "configuration": "Release",
+  "testabilityOverride": false,
+  "launchArguments": [],
+  "sha256": {
+    "Starfall": "4ceab88f4b8ce7df7d710a9394c66879f5f9e2b53b4514bf9b53fafeed0a1385",
+    "Assets.car": "1e1c65b0d09897c293b7c9ec149dc04d20deb7b5b6e0dd6982296fc6e1befb34",
+    "Info.plist": "37f8258c25ff0c5d11aff01359454f12e2a4eacda2bd6b9546361294efdc5754"
+  },
+  "bundleIdentifier": "com.starfall.prototype",
+  "minimumOSVersion": "17.0"
+}
