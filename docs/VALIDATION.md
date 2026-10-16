@@ -63,3 +63,14 @@ accessibility are still unverified. Later source changes need their own run.
 - Earlier failures were kept visible: run 38841903130 failed pre-tap score-label assertion; run 38843063380 passed the tap/Continue but failed sound-toggle assertion. Explicit accessible score labeling and switch-control targeting were reviewed and verified by the accepted run.
 - Scope: simulator interaction and settled rendered states. This does not establish physical-device performance, real VoiceOver usability, rapid-input exclusion, animation aesthetic quality, signed distribution or release readiness.
 - Next permitted transition: bounded remaining MVP acceptance, keeping deterministic core separate from presentation. Physical-device/TestFlight delivery depends on separately established Apple signing/account access; no new access or purchases inferred.
+
+## Save/relaunch and Calm Effects acceptance — 2026-10-16
+
+- Owner: resume reliability lane; independently reviewed source `8fa040ba6a092dfbe986522571298f61c17857a3`.
+- Successful exact-head run: https://github.com/lbeezr/starfall/actions/runs/38846694217 . Xcode 26.3, iPhone SE (3rd generation), iOS 26.2 Simulator.
+- 14 core tests passed; native build passed; exactly two UI tests passed, zero failures/skips. Original flow: 45.956 seconds. Persistence/resume flow: 75.828 seconds.
+- Fixed initial-board loss before the first move by saving on Play. Native test proved the original seeded board survives relaunch over a different fallback seed, then verified committed-turn relaunch, settled Home/activate, persisted Calm Effects and another legal move (score 7, moves 16).
+- Shared presentation settlement cancels root/child animation and renders committed rules state when inactive or motion reduction becomes enabled. This does not prove rapid interruption during the 480 ms animation or system accessibility usability.
+- Four named XCTest screenshots exported and SHA-verified. Resumed and Calm-turn captures show legible score/moves and no obvious clipping/error overlay. Evidence checked 2026-10-16 03:50 UTC.
+- Artifact `12023493229`: 2,543,851 bytes, one-day retention; copies retained separately. Existing spending, single-simulator and access boundaries unchanged.
+- Next acceptance gaps: rapid-input/in-flight interruption, actual VoiceOver, broader device/layout coverage and signed physical-device distribution remain separate. No new game features or release-readiness claim implied.
