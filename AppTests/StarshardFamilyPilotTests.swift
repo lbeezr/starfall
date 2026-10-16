@@ -6,18 +6,12 @@ import StarfallCore
 
 /// Real packaged artwork and SpriteKit presentation; requires hosted Apple tests.
 final class StarshardFamilyPilotTests: XCTestCase {
-    @MainActor func testOptInRendersAllFiveRealTexturesWithAuthoredPivots() throws {
+    @MainActor func testDefaultRendersAllFiveRealTexturesWithAuthoredPivots() throws {
         let game = Game(seed: 42)
         XCTAssertEqual(Set(game.board), Set(Jewel.allCases))
         let scene = JewelScene(size: CGSize(width: 350, height: 350))
-        scene.crystalPilotEnabled = false
-        scene.starshardFamilyPilotEnabled = false
         scene.render(game)
-        XCTAssertFalse(scene.starshardFamilyPilotIsActive)
-        let defaultTexture = try XCTUnwrap(scene.renderedTexture(at: Cell(0, 0)))
-        scene.starshardFamilyPilotEnabled = true
-        scene.render(game)
-        XCTAssertTrue(scene.starshardFamilyPilotIsActive)
+        XCTAssertTrue(scene.starshardArtworkIsActive)
         XCTAssertEqual(scene.renderedJewelCount, 49)
         let step: CGFloat = 350 / 7.7
         for row in 0..<7 { for column in 0..<7 {
@@ -35,10 +29,47 @@ final class StarshardFamilyPilotTests: XCTestCase {
             XCTAssertEqual(position.x, 175 + CGFloat(column - 3) * step, accuracy: 0.0001)
             XCTAssertEqual(position.y, 175 + CGFloat(row - 3) * step, accuracy: 0.0001)
         } }
-        scene.starshardFamilyPilotEnabled = false
-        scene.render(game)
-        XCTAssertFalse(scene.starshardFamilyPilotIsActive)
-        XCTAssertTrue(scene.renderedTexture(at: Cell(0, 0)) === defaultTexture)
+    }
+
+    @MainActor func testMissingOrMalformedMemberFallsBackForWholeBoardAndCachesFailure() throws {
+        let game = Game(seed: 42)
+        let reference = JewelScene(size: CGSize(width: 350, height: 350))
+        reference.crystalPilotEnabled = false
+        reference.artwork = StarshardArtwork { _ in nil }
+        reference.render(game)
+        let atlas = try XCTUnwrap(UIImage(named: StarshardArtwork.assetName(for: .mint))?.cgImage)
+        let malformed = try XCTUnwrap(atlas.cropping(to: CGRect(x: 0, y: 0, width: 256, height: 256)))
+        for brokenKind in Jewel.allCases {
+            for malformedMember in [false, true] {
+                var requests: [String] = []
+                let loader = StarshardArtwork { name in
+                    requests.append(name)
+                    if name == StarshardArtwork.assetName(for: brokenKind) {
+                        return malformedMember ? malformed : nil
+                    }
+                    return UIImage(named: name)?.cgImage
+                }
+                let scene = JewelScene(size: CGSize(width: 350, height: 350))
+                scene.crystalPilotEnabled = false
+                scene.artwork = loader
+                for _ in 0..<3 {
+                    scene.render(game)
+                    XCTAssertFalse(scene.starshardArtworkIsActive)
+                    XCTAssertEqual(scene.renderedJewelCount, 49)
+                    for row in 0..<7 { for column in 0..<7 {
+                        let cell = Cell(row, column)
+                        let expected = try XCTUnwrap(reference.renderedTexture(at: cell))
+                        XCTAssertTrue(scene.renderedTexture(at: cell) === expected)
+                        XCTAssertEqual(scene.renderedSize(at: cell), reference.renderedSize(at: cell))
+                    } }
+                }
+                let attempted = try XCTUnwrap(Jewel.allCases.firstIndex(of: brokenKind)) + 1
+                XCTAssertEqual(requests.count, attempted)
+                XCTAssertEqual(Set(requests).count, attempted)
+                XCTAssertEqual(loader.cachedKindCount, attempted)
+                XCTAssertEqual(loader.cachedTextureCount, (attempted - 1) * 13)
+            }
+        }
     }
 
     func testUITapFixturesAreLegalGroupsOfAllFiveKinds() {
@@ -114,7 +145,6 @@ final class StarshardFamilyPilotTests: XCTestCase {
             store.soundEnabled = false
             let scene = store.scene
             scene.size = CGSize(width: 350, height: 350)
-            scene.starshardFamilyPilotEnabled = true
             let view = SKView(frame: CGRect(x: 0, y: 0, width: 350, height: 350))
             view.presentScene(scene); scene.isPaused = true; store.start()
             store.tap(Cell(0, 0))
@@ -186,7 +216,6 @@ final class StarshardFamilyPilotTests: XCTestCase {
         let store = GameStore(defaults: defaults, arguments: ["--reset-save", "--seed=0"])
         let scene = store.scene
         scene.size = CGSize(width: 350, height: 350)
-        scene.starshardFamilyPilotEnabled = true
         let view = SKView(frame: CGRect(x: 0, y: 0, width: 350, height: 350))
         view.presentScene(scene); scene.isPaused = true; store.start()
         let old = store.game
@@ -213,14 +242,14 @@ final class StarshardFamilyPilotTests: XCTestCase {
         }
         let windowScene = try XCTUnwrap(UIApplication.shared.connectedScenes
             .compactMap { $0 as? UIWindowScene }.first)
-        for familyPilot in [false, true] {
+        for familyArtwork in [false, true] {
             let suite = "StarfallInterruptedNudge.\(UUID().uuidString)"
             let defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
             defer { defaults.removePersistentDomain(forName: suite) }
             let store = GameStore(defaults: defaults, arguments: ["--reset-save", "--seed=0"])
             let scene = store.scene
             scene.size = CGSize(width: 350, height: 350)
-            scene.starshardFamilyPilotEnabled = familyPilot
+            if !familyArtwork { scene.artwork = StarshardArtwork { _ in nil } }
             scene.crystalPilotEnabled = false
             let view = SKView(frame: CGRect(x: 0, y: 0, width: 350, height: 350))
             let window = UIWindow(windowScene: windowScene)
@@ -232,7 +261,7 @@ final class StarshardFamilyPilotTests: XCTestCase {
             defer { view.presentScene(nil); window.isHidden = true }
             view.presentScene(scene)
             store.start()
-            XCTAssertEqual(scene.starshardFamilyPilotIsActive, familyPilot)
+            XCTAssertEqual(scene.starshardArtworkIsActive, familyArtwork)
             let old = store.game
             let group = try XCTUnwrap(old.legalGroups.first)
             let invalid = try XCTUnwrap((0..<49).map { Cell($0 / 7, $0 % 7) }
@@ -242,7 +271,7 @@ final class StarshardFamilyPilotTests: XCTestCase {
             let sprite = try XCTUnwrap(allNodes(in: scene).compactMap { $0 as? SKSpriteNode }
                 .first { $0.position == position })
             let neutralTexture = try XCTUnwrap(sprite.texture)
-            let sampledNudge = expectation(description: "Sample actual nudge; family=\(familyPilot)")
+            let sampledNudge = expectation(description: "Sample actual nudge; family=\(familyArtwork)")
             var sampled = false
             store.tap(invalid)
             XCTAssertEqual(store.game, old)
@@ -319,14 +348,14 @@ final class StarshardFamilyPilotTests: XCTestCase {
         } }
     }
 
-    @MainActor func testDefaultClearSparkCountIsBoundedAndRepeatedNudgesReplaceActions() throws {
+    @MainActor func testFallbackClearSparkCountIsBoundedAndRepeatedNudgesReplaceActions() throws {
         if UIAccessibility.isVoiceOverRunning || UIAccessibility.isReduceMotionEnabled {
             throw XCTSkip("System accessibility correctly bypasses motion")
         }
         let (old, new, turn) = try turnFixture(kind: .rose)
         let scene = JewelScene(size: CGSize(width: 350, height: 350))
         scene.crystalPilotEnabled = false
-        scene.starshardFamilyPilotEnabled = false
+        scene.artwork = StarshardArtwork { _ in nil }
         let view = SKView(frame: CGRect(x: 0, y: 0, width: 350, height: 350))
         view.presentScene(scene); scene.isPaused = true; scene.render(old)
         for _ in 0..<20 { scene.nudge(Cell(0, 0)) }
@@ -346,7 +375,6 @@ final class StarshardFamilyPilotTests: XCTestCase {
         defer { defaults.removePersistentDomain(forName: suite) }
         let store = GameStore(defaults: defaults, arguments: ["--reset-save", "--seed=0"])
         let scene = store.scene
-        scene.starshardFamilyPilotEnabled = true
         scene.size = CGSize(width: 350, height: 350)
         let view = SKView(frame: CGRect(x: 0, y: 0, width: 350, height: 350))
         view.presentScene(scene); scene.isPaused = true; store.start()
@@ -374,7 +402,6 @@ final class StarshardFamilyPilotTests: XCTestCase {
         defer { defaults.removePersistentDomain(forName: suite) }
         let store = GameStore(defaults: defaults, arguments: ["--reset-save", "--seed=0"])
         let scene = store.scene
-        scene.starshardFamilyPilotEnabled = true
         scene.size = CGSize(width: 350, height: 350)
         let view = SKView(frame: CGRect(x: 0, y: 0, width: 350, height: 350))
         view.presentScene(scene); scene.isPaused = true; store.start()
@@ -482,7 +509,6 @@ final class StarshardFamilyPilotTests: XCTestCase {
     @MainActor private func makeScene() -> JewelScene {
         let scene = JewelScene(size: CGSize(width: 350, height: 350))
         scene.crystalPilotEnabled = false
-        scene.starshardFamilyPilotEnabled = true
         return scene
     }
 

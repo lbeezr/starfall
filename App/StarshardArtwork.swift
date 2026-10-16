@@ -2,8 +2,8 @@ import SpriteKit
 import UIKit
 import StarfallCore
 
-/// Cached offline artwork, activated only by the scene's DEBUG family pilot.
-/// Original crystals are rendered offline; runtime work is bounded decoding/cropping.
+/// Default five-kind artwork in Debug and Release, rendered offline.
+/// Runtime work is bounded decoding/cropping with a complete-family fallback.
 @MainActor final class StarshardArtwork {
     static let shared = StarshardArtwork()
     static let frameSide = 256
@@ -21,14 +21,6 @@ import StarfallCore
     // RGBA8 base levels only; excludes driver copies, UIKit source caches and mipmaps.
     static let maximumDecodedTextureBytes = Jewel.allCases.count
         * (frameCount * frameSide * frameSide + fragmentCount * fragmentSide * fragmentSide) * 4
-
-    static func isFamilyPilotEnabled(arguments: [String]) -> Bool {
-        #if DEBUG
-        return arguments.contains("--starshard-family-pilot")
-        #else
-        return false
-        #endif
-    }
 
     static func assetName(for kind: Jewel) -> String {
         switch kind {
@@ -87,6 +79,16 @@ import StarfallCore
     }
     private let imageProvider: (String) -> CGImage?
     private var cache: [Jewel: Cached] = [:]
+
+    /// Resolve once, including failure. Never mix a partial family with fallback art.
+    private(set) lazy var completeFamily: [Jewel: FrameSet]? = {
+        var family: [Jewel: FrameSet] = [:]
+        for kind in Jewel.allCases {
+            guard let frames = self.frames(for: kind) else { return nil }
+            family[kind] = frames
+        }
+        return family
+    }()
 
     init(imageProvider: @escaping (String) -> CGImage? = { UIImage(named: $0)?.cgImage }) {
         self.imageProvider = imageProvider

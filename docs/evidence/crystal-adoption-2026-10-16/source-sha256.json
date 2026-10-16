@@ -1,0 +1,80 @@
+{
+  "sourceCommit": "127c05760e8ad11dec899a7c94eb2ed55c79c21e",
+  "base": "a9b7cea2bbfe37cb3542072d63c6403bed9702bd",
+  "files": {
+    "App/Assets.xcassets/StarshardFamilyAmber.imageset/amber_tilt_atlas.png": {
+      "sha256": "aaa75c7ae2784923b5b6cffa31247e8e4f463f5005b1f9c8f5acaf809c03debf",
+      "gitMode": "100644"
+    },
+    "App/Assets.xcassets/StarshardFamilyAqua.imageset/Contents.json": {
+      "sha256": "9c801dfae23819d6c0d5c3d535342c578198a01c3248acfc5cee832f603778c0",
+      "gitMode": "100644"
+    },
+    "App/Assets.xcassets/StarshardFamilyAqua.imageset/aqua_tilt_atlas.png": {
+      "sha256": "a187d78aba3d0dc2e678ab765a23d6eb424a7991eac64c91ea9b8cad6b0f8d13",
+      "gitMode": "100644"
+    },
+    "App/Assets.xcassets/StarshardFamilyMint.imageset/mint_tilt_atlas.png": {
+      "sha256": "f40be6ac102cd73ffa946daaf62ab6f6e87f5e1ad942a743c5d8192568fdd984",
+      "gitMode": "100644"
+    },
+    "App/Assets.xcassets/StarshardFamilyRose.imageset/rose_tilt_atlas.png": {
+      "sha256": "c34e81ad124efe049ade93add918701237cbed9a476ca0e72a8f87b20c0a8879",
+      "gitMode": "100644"
+    },
+    "App/Assets.xcassets/StarshardFamilyViolet.imageset/violet_tilt_atlas.png": {
+      "sha256": "c0c3f1cf80eeb479041362035c0b717c6a04a35f810d848bfbd17e293c95b2c9",
+      "gitMode": "100644"
+    },
+    "App/JewelScene.swift": {
+      "sha256": "189ad8cf38879abc88e66cdfc115ecb7e9f25a3cc05cdb6e6d8f039bdfac5ca0",
+      "gitMode": "100644"
+    },
+    "App/StarshardArtwork.swift": {
+      "sha256": "caaec816dd31c35e023a4cc6c00160bcc8b040053d46cef5be9a21e7070333ac",
+      "gitMode": "100644"
+    },
+    "AppTests/CrystalPilotTests.swift": {
+      "sha256": "403b674e0b8d6f9f5334073768b8760118357de86627ace5b26b9ee95b70117e",
+      "gitMode": "100644"
+    },
+    "AppTests/StarshardArtworkTests.swift": {
+      "sha256": "306ad0000239bb5c369260b849bd9a3618a9b644b81d6383ccd4514cb0800617",
+      "gitMode": "100644"
+    },
+    "AppTests/StarshardFamilyPilotTests.swift": {
+      "sha256": "ebd07e6d800cd6ae772dba02af7517f9d0a6d91ffd95f0cbd12c6da1cd5d1549",
+      "gitMode": "100644"
+    },
+    "README.md": {
+      "sha256": "20ff92cb4b303edcf0e374dbeb0302229402c98f620bf4614386d62dbeac6e2d",
+      "gitMode": "100644"
+    },
+    "UITests/StarfallInteractionTests.swift": {
+      "sha256": "e0ca64625beeef8c30abc52833effc4c6a9e98fee72b7e2409a1aa152e534a9b",
+      "gitMode": "100644"
+    },
+    "docs/design/STARFALL_GAME_BIBLE.md": {
+      "sha256": "03189b7954eeefa6a12edb6957741d7735ad126cadda39008024bee5421ceb84",
+      "gitMode": "100644"
+    },
+    "tools/art-quality/README.md": {
+      "sha256": "3b0f3f9ee3f874bff38a50d016ac061da2c0b7ae738ce85458c749a3c34658fc",
+      "gitMode": "100644"
+    },
+    "tools/art-quality/test_validate_catalog.py": {
+      "sha256": "eca75a5d36aed6be2208047bf14fdb51fb41cfbcac38bd95925e3eab41c7fabf",
+      "gitMode": "100644"
+    },
+    "tools/art-quality/validate_catalog.py": {
+      "sha256": "93fc7d097d462c139bdc1298273ffe65802963e9801f45e475064023a2053334",
+      "gitMode": "100644"
+    }
+  },
+  "terminalHarnessRevision": {
+    "path": "UITests/StarfallInteractionTests.swift",
+    "previousSha256": "e0ca64625beeef8c30abc52833effc4c6a9e98fee72b7e2409a1aa152e534a9b",
+    "sha256": "6c40719d8e4c22f07e13bb5628b530e07dcad8b665ac4086dba5afc2564e7b4d",
+    "description": "Reacquire Continue after argument-free cold launch; all assertions unchanged"
+  }
+}

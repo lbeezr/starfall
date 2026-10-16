@@ -1,0 +1,6 @@
+{
+  "App/StarfallApp.swift": "a52f92258528f1b2fbd54e6abf1216ad8553197495a06dccc617f85687e11d7f",
+  "App/StarfallTheme.swift": "d7de43139d5b92de7a041452863d57bc32bebfb410fe62af6efb83a388444705",
+  "UITests/StarfallInteractionTests.swift": "ae7952dfeceb627e2c1037a387a66106e0e3c1a6c3748b986cb98de5479caddf",
+  "scripts/ci-simulator.sh": "fe0a1a37e50ad67d51fe49c711533cc9106edd59f02f99d73cec6ba29b89dee4"
+}

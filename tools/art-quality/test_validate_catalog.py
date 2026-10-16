@@ -21,13 +21,15 @@ class CatalogTests(unittest.TestCase):
         self.addCleanup(self.temporary.cleanup)
         self.catalog = Path(self.temporary.name) / "Assets.xcassets"
         self.catalog.mkdir()
-        # Reuse immutable approved pixels in temporary fixtures; shape identity is
-        # outside this static layout check, so one atlas can populate every kind.
+        # Reuse the sealed v2 family and distinct immutable v1 pilot in temporary
+        # fixtures. Real assets and the package are never modified by these tests.
         aqua = Path(__file__).parent / "comparison/baseline/StarshardFamilyAqua.imageset/aqua_tilt_atlas.png"
+        family = Path(__file__).resolve().parents[2] / "Artwork/Crystals/v2/assets"
         for asset, filename in validator.EXPECTED.items():
             directory = self.catalog / f"{asset}.imageset"
             directory.mkdir()
-            shutil.copyfile(aqua, directory / filename)
+            source = aqua if asset == "CrystalPilot" else family / f"{asset}.imageset" / filename
+            shutil.copyfile(source, directory / filename)
             self.write_contents(asset, {"images": [{"filename": filename, "idiom": "universal"}],
                                         "info": {"author": "xcode", "version": 1}})
         self.rose = self.catalog / "StarshardFamilyRose.imageset"
@@ -43,8 +45,10 @@ class CatalogTests(unittest.TestCase):
     def test_complete_catalog_and_approved_pin(self):
         report = validator.validate(self.catalog)
         self.assertTrue(report["passed"], report["errors"])
-        self.assertTrue(report["aqua_copies_identical"])
+        self.assertFalse(report["aqua_copies_identical"])
         self.assertEqual(len(report["sets"]), 6)
+        for asset, digest in validator.APPROVED_ATLAS_SHA256.items():
+            self.assertEqual(report["sets"][asset]["atlas_sha256"], digest)
 
     def test_absent_catalog_set_contents_and_atlas(self):
         self.assertFalse(validator.validate(self.catalog / "missing")["passed"])
@@ -101,17 +105,37 @@ class CatalogTests(unittest.TestCase):
         path.write_bytes(b"broken PNG")
         self.assertIn("cannot identify image file", self.errors())
 
-    def test_both_aqua_copies_changed_still_fail_approved_pin(self):
-        for asset in ("StarshardFamilyAqua", "CrystalPilot"):
-            path = self.catalog / f"{asset}.imageset/aqua_tilt_atlas.png"
+    def test_each_adopted_atlas_and_legacy_pilot_has_its_own_pin(self):
+        for asset, filename in validator.EXPECTED.items():
+            path = self.catalog / f"{asset}.imageset" / filename
             with Image.open(path) as image:
                 changed = image.copy()
             changed.putpixel((128, 128), (255, 0, 0, 255))
             changed.save(path)
         report = validator.validate(self.catalog)
-        self.assertTrue(report["aqua_copies_identical"])
+        self.assertEqual(sum("pinned approved" in error for error in report["errors"]), 6)
+        self.assertFalse(report["passed"])
+
+    def test_swapping_current_aqua_and_legacy_pilot_rejects_both(self):
+        family = self.catalog / "StarshardFamilyAqua.imageset/aqua_tilt_atlas.png"
+        pilot = self.catalog / "CrystalPilot.imageset/aqua_tilt_atlas.png"
+        current, legacy = family.read_bytes(), pilot.read_bytes()
+        family.write_bytes(legacy)
+        pilot.write_bytes(current)
+        report = validator.validate(self.catalog)
         self.assertEqual(sum("pinned approved" in error for error in report["errors"]), 2)
         self.assertFalse(report["passed"])
+
+    def test_identical_aqua_copies_cannot_replace_distinct_revision_pins(self):
+        family = self.catalog / "StarshardFamilyAqua.imageset/aqua_tilt_atlas.png"
+        pilot = self.catalog / "CrystalPilot.imageset/aqua_tilt_atlas.png"
+        for raw in (family.read_bytes(), pilot.read_bytes()):
+            family.write_bytes(raw)
+            pilot.write_bytes(raw)
+            report = validator.validate(self.catalog)
+            self.assertTrue(report["aqua_copies_identical"])
+            self.assertEqual(sum("pinned approved" in error for error in report["errors"]), 1)
+            self.assertFalse(report["passed"])
 
     def test_oversized_png_header_is_a_reported_failure(self):
         path = self.rose / "rose_tilt_atlas.png"

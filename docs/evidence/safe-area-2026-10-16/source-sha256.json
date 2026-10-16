@@ -1,0 +1,9 @@
+{
+  "base": "ff9f736c18d8323f6d49fb8082b0f00d5261c366",
+  "sourceCommit": "3f4f4cf5c216dac86b12da40797d956b01563262",
+  "files": {
+    "App/StarfallApp.swift": "a6f1834ab0c5f1d23a51df8f40bee93fdac15f9375d413ee6fd186772a0c21b8",
+    "App/StarfallTheme.swift": "d7de43139d5b92de7a041452863d57bc32bebfb410fe62af6efb83a388444705",
+    "UITests/StarfallInteractionTests.swift": "6c40719d8e4c22f07e13bb5628b530e07dcad8b665ac4086dba5afc2564e7b4d"
+  }
+}

@@ -279,6 +279,7 @@ def objects(value):
 records = []
 required_images = [
     'real-touch-post-clear', 'real-touch-restarted',
+    'adaptive-layout-initial', 'adaptive-layout-reflowed', 'adaptive-layout-restarted',
     'saved-game-resumed', 'saved-game-calm-turn',
     'terminal-won-restored', 'terminal-lost-restored', 'terminal-last-move-won-restored',
     'accessibility-large-text-menu-before-audit',

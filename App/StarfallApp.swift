@@ -112,6 +112,7 @@ struct StarfallView: View {
     }
     // Keep ordinary layouts centered and allow larger text to scroll instead of
     // shrinking the board or compressing essential controls below the viewport.
+    // Clip foreground viewports only; the night-sky backdrop remains full bleed.
     private var menu: some View {
         GeometryReader { geometry in
             ScrollView {
@@ -120,6 +121,7 @@ struct StarfallView: View {
                     .contentShape(Rectangle())
             }
         }
+        .clipped()
     }
     private var menuContent: some View {
         VStack(spacing: StarfallTheme.Spacing.page) {
@@ -190,55 +192,95 @@ struct StarfallView: View {
     private var gameView: some View {
         GeometryReader { geometry in
             ScrollView {
-                gameContent
+                gameContent(in: geometry.size)
                     .frame(minHeight: geometry.size.height, alignment: .top)
                     .frame(maxWidth: .infinity)
                     .contentShape(Rectangle())
             }
         }
+        .clipped()
     }
-    private var gameContent: some View {
-        VStack(spacing: StarfallTheme.Spacing.large) {
+    private func gameContent(in size: CGSize) -> some View {
+        let showsSidebar = !dynamicTypeSize.isAccessibilitySize
+            && size.width > size.height
+            && size.width >= StarfallTheme.Layout.wideGameMinimumWidth
+            && size.height >= StarfallTheme.Layout.wideGameMinimumHeight
+        let pageInsets = StarfallTheme.Spacing.page * 2
+        let boardSide = max(0, min(StarfallTheme.Layout.wideGameBoardMaximum,
+                                  size.width - pageInsets - StarfallTheme.Layout.wideGameSidebarWidth - StarfallTheme.Spacing.section,
+                                  size.height - pageInsets - StarfallTheme.Layout.minimumTarget - StarfallTheme.Spacing.large))
+        let contentWidth = showsSidebar
+            ? boardSide + StarfallTheme.Layout.wideGameSidebarWidth + StarfallTheme.Spacing.section + pageInsets
+            : StarfallTheme.Layout.contentWidth
+        let layout = showsSidebar
+            ? AnyLayout(HStackLayout(alignment: .center, spacing: StarfallTheme.Spacing.section))
+            : AnyLayout(VStackLayout(spacing: StarfallTheme.Spacing.large))
+
+        return VStack(spacing: StarfallTheme.Spacing.large) {
             if dynamicTypeSize.isAccessibilitySize {
                 StarfallTitle()
             }
-            HStack {
-                Button("Menu") { store.playing = false }
-                    .buttonStyle(StarfallButtonStyle(role: .quiet))
-                    .disabled(store.busy).accessibilityIdentifier("game.menu")
-                Spacer()
-                if !dynamicTypeSize.isAccessibilitySize {
-                    StarfallTitle()
-                    Spacer()
+            gameNavigation
+            // AnyLayout changes placement without replacing the board's view
+            // identity. Only the read-only HUD moves between the two columns.
+            layout {
+                VStack(spacing: StarfallTheme.Spacing.large) {
+                    if !showsSidebar {
+                        StarlightHUD(score: store.game.score, moves: store.game.moves)
+                    }
+                    gameBoard
                 }
-                Button { store.settings = true } label: {
-                    Image(systemName: "gearshape")
+                .frame(width: showsSidebar ? boardSide : nil)
+
+                VStack(spacing: StarfallTheme.Spacing.large) {
+                    if showsSidebar {
+                        StarlightHUD(score: store.game.score, moves: store.game.moves)
+                    }
+                    if usesAccessibleBoard && store.game.outcome == .playing {
+                        StarfallStatusText(text: "Use the Matching groups rotor to find a group, or explore each starshard.")
+                    }
+                    roundFeedback
+                    restartButton
                 }
-                .buttonStyle(StarfallButtonStyle(role: .quiet))
-                .accessibilityLabel("Settings").accessibilityIdentifier("game.settings")
+                .frame(width: showsSidebar ? StarfallTheme.Layout.wideGameSidebarWidth : nil)
             }
-            StarlightHUD(score: store.game.score, moves: store.game.moves)
-            ZStack {
-                RoundedRectangle(cornerRadius: StarfallTheme.Radius.board, style: .continuous).fill(StarfallTheme.Colors.surface)
-                    // A frame marker only: coordinate taps still reach the SpriteKit view.
-                    .accessibilityElement().accessibilityLabel("Jewel board")
-                    .accessibilityIdentifier("game.board").accessibilityHidden(usesAccessibleBoard)
-                SpriteView(scene: store.scene, options: [.allowsTransparency])
-                    .clipShape(RoundedRectangle(cornerRadius: StarfallTheme.Radius.board, style: .continuous))
-                    .opacity(usesAccessibleBoard ? 0 : 1)
-                    .accessibilityHidden(true)
-                if usesAccessibleBoard { accessibleBoard }
-            }
-            .aspectRatio(1, contentMode: .fit)
-            if usesAccessibleBoard && store.game.outcome == .playing {
-                StarfallStatusText(text: "Use the Matching groups rotor to find a group, or explore each starshard.")
-            }
-            roundFeedback
-            restartButton
             Spacer(minLength: 0)
         }
         .tint(StarfallTheme.Colors.actionPrimary)
-        .padding(StarfallTheme.Spacing.page).frame(maxWidth: StarfallTheme.Layout.contentWidth)
+        .padding(StarfallTheme.Spacing.page).frame(maxWidth: contentWidth)
+    }
+
+    private var gameNavigation: some View {
+        HStack {
+            Button("Menu") { store.playing = false }
+                .buttonStyle(StarfallButtonStyle(role: .quiet))
+                .disabled(store.busy).accessibilityIdentifier("game.menu")
+            Spacer()
+            if !dynamicTypeSize.isAccessibilitySize {
+                StarfallTitle()
+                Spacer()
+            }
+            Button { store.settings = true } label: {
+                Image(systemName: "gearshape")
+            }
+            .buttonStyle(StarfallButtonStyle(role: .quiet))
+            .accessibilityLabel("Settings").accessibilityIdentifier("game.settings")
+        }
+    }
+
+    private var gameBoard: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: StarfallTheme.Radius.board, style: .continuous).fill(StarfallTheme.Colors.surface)
+                // The marker, scene and accessible controls share this square.
+                .accessibilityElement().accessibilityLabel("Jewel board")
+                .accessibilityIdentifier("game.board").accessibilityHidden(usesAccessibleBoard)
+            SpriteView(scene: store.scene, options: [.allowsTransparency])
+                .clipShape(RoundedRectangle(cornerRadius: StarfallTheme.Radius.board, style: .continuous))
+                .opacity(usesAccessibleBoard ? 0 : 1)
+                .accessibilityHidden(true)
+            if usesAccessibleBoard { accessibleBoard }
+        }
+        .aspectRatio(1, contentMode: .fit)
     }
 
     private var outcomeTitle: String {

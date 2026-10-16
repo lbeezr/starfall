@@ -1,5 +1,6 @@
 import XCTest
 import SpriteKit
+import UIKit
 import StarfallCore
 @testable import Starfall
 
@@ -14,6 +15,45 @@ final class CrystalPilotTests: XCTestCase {
         XCTAssertFalse(CrystalPilot.isEnabled(arguments: []))
         #if DEBUG
         XCTAssertTrue(CrystalPilot.isEnabled(arguments: ["--crystal-pilot"]))
+        #endif
+    }
+
+    @MainActor func testExplicitLegacyComparisonRemainsSeparateFromDefaultFamily() throws {
+        let game = Game(seed: 42)
+        let scene = JewelScene(size: CGSize(width: 350, height: 350))
+        var requests = 0
+        scene.artwork = StarshardArtwork { name in
+            requests += 1
+            return UIImage(named: name)?.cgImage
+        }
+        scene.crystalPilotEnabled = true
+        scene.render(game)
+        #if DEBUG
+        XCTAssertFalse(scene.starshardArtworkIsActive)
+        XCTAssertEqual(requests, 0, "Legacy comparison must not load the current family")
+        let fallback = JewelScene(size: scene.size)
+        fallback.crystalPilotEnabled = false
+        fallback.artwork = StarshardArtwork { _ in nil }
+        fallback.render(game)
+        for row in 0..<7 { for column in 0..<7 {
+            let cell = Cell(row, column)
+            let expected: SKTexture
+            if game.jewel(at: cell) == .aqua {
+                expected = CrystalPilot.frames[CrystalPilot.neutralIndex]
+            } else {
+                expected = try XCTUnwrap(fallback.renderedTexture(at: cell))
+            }
+            XCTAssertTrue(scene.renderedTexture(at: cell) === expected)
+        } }
+        #else
+        XCTAssertTrue(scene.starshardArtworkIsActive)
+        XCTAssertEqual(requests, 5, "Release always uses the complete current family")
+        for row in 0..<7 { for column in 0..<7 {
+            let cell = Cell(row, column)
+            let kind = try XCTUnwrap(game.jewel(at: cell))
+            let expected = try XCTUnwrap(scene.artwork.frames(for: kind))
+            XCTAssertTrue(scene.renderedTexture(at: cell) === expected.neutralFrame)
+        } }
         #endif
     }
 
@@ -37,6 +77,7 @@ final class CrystalPilotTests: XCTestCase {
     }
 
     @MainActor func testLargeAquaClearCapsFragmentsAt48() throws {
+        try requireLegacyPilot()
         let data = try JSONEncoder().encode(Game(seed: 42))
         var fixture = try XCTUnwrap(JSONSerialization.jsonObject(with: data) as? [String: Any])
         fixture["board"] = Array(repeating: Jewel.aqua.rawValue, count: 49)
@@ -82,6 +123,7 @@ final class CrystalPilotTests: XCTestCase {
     }
 
     @MainActor private func fixture() throws -> (JewelScene, SKView, Game, Game, Turn) {
+        try requireLegacyPilot()
         for seed in UInt64(0)..<1000 {
             let old = Game(seed: seed)
             for row in 0..<Game.side { for column in 0..<Game.side {
@@ -100,5 +142,11 @@ final class CrystalPilotTests: XCTestCase {
             } }
         }
         throw NSError(domain: "CrystalPilotTests.NoAquaFixture", code: 1)
+    }
+
+    private func requireLegacyPilot() throws {
+        #if !DEBUG
+        throw XCTSkip("The original aqua comparison route is Debug-only; Release uses the current family")
+        #endif
     }
 }

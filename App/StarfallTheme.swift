@@ -60,6 +60,11 @@ enum StarfallTheme {
         static let actionHeight: CGFloat = 52
         static let contentWidth: CGFloat = 560
         static let menuWidth: CGFloat = 480
+        // A wide window must fit a useful board and an uncompressed reading column.
+        static let wideGameMinimumWidth: CGFloat = 900
+        static let wideGameMinimumHeight: CGFloat = 500
+        static let wideGameSidebarWidth: CGFloat = 300
+        static let wideGameBoardMaximum: CGFloat = 600
         static let brandMarkSize: CGFloat = 48
         static let boardSymbolSize: CGFloat = 24
         // 335pt board minus 12pt padding and 12pt gaps leaves >44pt per cell.

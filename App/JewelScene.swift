@@ -28,23 +28,14 @@ extension Jewel {
     private(set) var previewedCells: Set<Cell> = []
     static let maximumClearSparks = 12
     private var presentationGeneration: UInt64 = 0
-    var starshardFamilyPilotEnabled = StarshardArtwork.isFamilyPilotEnabled(arguments: ProcessInfo.processInfo.arguments)
-    // Load the complete family once, only after the DEBUG opt-in is requested.
-    // A partial family never replaces the existing five-kind material.
-    private lazy var familyFrames: [Jewel: StarshardArtwork.FrameSet]? = {
-        var family: [Jewel: StarshardArtwork.FrameSet] = [:]
-        for kind in Jewel.allCases {
-            guard let frames = StarshardArtwork.shared.frames(for: kind) else { return nil }
-            family[kind] = frames
-        }
-        return family
-    }()
+    // Shared bounded cache in production; injectable to exercise unavailable art.
+    var artwork = StarshardArtwork.shared
     private var activeFamily: [Jewel: StarshardArtwork.FrameSet]? {
         #if DEBUG
-        return starshardFamilyPilotEnabled ? familyFrames : nil
-        #else
-        return nil
+        // Keep the original aqua pilot a separate, explicit comparison route.
+        if crystalPilotEnabled { return nil }
         #endif
+        return artwork.completeFamily
     }
     var crystalPilotEnabled = CrystalPilot.isEnabled(arguments: ProcessInfo.processInfo.arguments)
     private var hasCrystalPilot: Bool {
@@ -63,7 +54,7 @@ extension Jewel {
         return descendants(effectRoot) + boardRoot.children.reduce(0) { $0 + descendants($1) }
     }
     var renderedJewelCount: Int { nodes.count }
-    var starshardFamilyPilotIsActive: Bool { activeFamily != nil }
+    var starshardArtworkIsActive: Bool { activeFamily != nil }
     func renderedTexture(at cell: Cell) -> SKTexture? { (nodes[cell] as? SKSpriteNode)?.texture }
     func renderedSize(at cell: Cell) -> CGSize? { (nodes[cell] as? SKSpriteNode)?.size }
     func renderedPosition(at cell: Cell) -> CGPoint? { nodes[cell]?.position }

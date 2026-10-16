@@ -1,0 +1,20 @@
+[
+  {
+    "name": "ipad-initial",
+    "localPath": "/tmp/starfall-adaptive-ipad-images/C3453884-C22D-4A82-896B-64F675061A34.png",
+    "sha256": "d75b58477f0bbfa390c19a6576804a7fc246e422c35999bc4d545a00ab9fb94c",
+    "visualReview": "Opened and inspected full-screen native capture"
+  },
+  {
+    "name": "ipad-after-rotation-and-play",
+    "localPath": "/tmp/starfall-adaptive-ipad-images/AAEB268C-990D-4858-B06D-3DAF5712CAF7.png",
+    "sha256": "ebbb0c41084a75864d61354c38d2c02069e2e8017376052babee89b410c76480",
+    "visualReview": "Opened and inspected full-screen native capture"
+  },
+  {
+    "name": "phone-initial",
+    "localPath": "/tmp/starfall-adaptive-phone-images/3F7DECFD-2F93-40A3-A2DE-AB7F9B5A06C3.png",
+    "sha256": "687ae0c6382408a7bc96a331ffa1dab781163afeede91fe3a62e615e941a991a",
+    "visualReview": "Opened and inspected full-screen native capture"
+  }
+]
