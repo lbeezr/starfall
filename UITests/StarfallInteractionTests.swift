@@ -173,17 +173,14 @@ final class StarfallInteractionTests: XCTestCase {
 
         app.buttons["game.settings"].tap()
         let sound = app.switches["settings.sound"]
-        XCTAssertTrue(sound.waitForExistence(timeout: 5))
+        assertInitialSettingsViewport(app)
         XCTAssertFalse(app.buttons["game.menu"].exists,
                        "The modal must keep underlying gameplay out of accessibility navigation")
-        let settingsScroll = app.scrollViews.containing(.any, identifier: "settings.sound").firstMatch
-        XCTAssertGreaterThan(settingsScroll.frame.height, app.frame.height * 0.8,
-                             "Settings must open with room for its controls and information")
-        attachScreenshot(app, name: "settings-default-initial")
+        try app.performAccessibilityAudit(for: [.textClipped, .sufficientElementDescription, .hitRegion])
         // End muted regardless of a previous simulator preference.
         setSwitch(sound, to: "1")
         setSwitch(sound, to: "0")
-        try auditSettings(app, screenshotName: "settings-default-text")
+        attachScreenshot(app, name: "settings-default-text")
         app.buttons["settings.done"].tap()
         XCTAssertTrue(waitFor(NSPredicate(format: "exists == false"), on: sound))
         XCTAssertTrue(app.buttons["game.menu"].exists)
@@ -551,6 +548,58 @@ final class StarfallInteractionTests: XCTestCase {
             self.logMenuLayout(app, stage: "audit-issue")
             return false // Diagnostics only. Every issue still fails the audit.
         }
+    }
+
+    @MainActor
+    private func assertInitialSettingsViewport(_ app: XCUIApplication,
+                                               file: StaticString = #filePath, line: UInt = #line) {
+        let sound = app.switches["settings.sound"]
+        let calm = app.switches["settings.calm"]
+        let done = app.buttons["settings.done"]
+        let navigation = app.navigationBars["Settings"]
+        let scroll = app.scrollViews.containing(.any, identifier: "settings.sound").firstMatch
+        let content: [(element: XCUIElement, label: String)] = [
+            (sound, "Gentle sound"),
+            (calm, "Calm effects"),
+            (app.staticTexts["No timer."], "No timer."),
+            (app.staticTexts["No purchases or ads."], "No purchases or ads."),
+            (app.staticTexts["Your game stays on this device."], "Your game stays on this device.")
+        ]
+        let visible = waitFor(NSPredicate { _, _ in
+            guard navigation.exists, scroll.exists, done.exists,
+                  sound.exists, calm.exists, sound.isEnabled, calm.isEnabled else { return false }
+            let scrollViewport = scroll.frame.intersection(app.frame)
+            let navigationViewport = navigation.frame.intersection(app.frame)
+            guard !scrollViewport.isEmpty, !navigationViewport.isEmpty else { return false }
+            let contentTop = max(scrollViewport.minY, navigation.frame.maxY)
+            let contentViewport = CGRect(x: scrollViewport.minX, y: contentTop,
+                                         width: scrollViewport.width,
+                                         height: max(0, scrollViewport.maxY - contentTop))
+                .insetBy(dx: 0, dy: 2)
+            return !contentViewport.isEmpty && done.label == "Done" && done.isEnabled
+                && done.isHittable && !done.frame.isEmpty && navigationViewport.contains(done.frame)
+                && content.allSatisfy {
+                    $0.element.exists && $0.element.label == $0.label && $0.element.isHittable
+                        && !$0.element.frame.isEmpty && contentViewport.contains($0.element.frame)
+                }
+        }, on: app)
+        // Preserve the untouched presentation even when the visibility check fails.
+        attachScreenScreenshot(name: "settings-default-initial")
+        if !visible {
+            print("SETTINGS_INITIAL_APP \(app.frame)")
+            for element in [navigation, scroll] {
+                print("SETTINGS_INITIAL_CONTAINER \(element.identifier) exists=\(element.exists)")
+                if element.exists { print("frame=\(element.frame)") }
+            }
+            for (element, expectedLabel) in content + [(done, "Done")] {
+                print("SETTINGS_INITIAL_ELEMENT expected=\(expectedLabel) exists=\(element.exists)")
+                if element.exists {
+                    print("label=\(element.label) frame=\(element.frame) hittable=\(element.isHittable)")
+                }
+            }
+        }
+        XCTAssertTrue(visible, "Settings controls and all information must be fully visible before any interaction",
+                      file: file, line: line)
     }
 
     @MainActor
