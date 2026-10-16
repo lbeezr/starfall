@@ -133,6 +133,29 @@ class PackageTests(unittest.TestCase):
         (self.root / "unexpected.txt").write_text("unlisted")
         self.fails("manifest inventory differs")
 
+    def test_observed_blender_522_headers_are_accepted(self):
+        for kind in validator.KINDS:
+            scene = self.root / f"renders/scenes/{kind}.blend"
+            scene.write_bytes(validator.BLENDER_522_HEADER + b"REND SYNTHETIC TEST FIXTURE ONLY")
+            self.receipt(self.root, kind)
+        seal(self.root)
+        report = self.report()
+        self.assertTrue(report["passed"], report["errors"])
+        self.assertEqual(report["native_scene_headers_verified"], 5)
+
+    def test_malformed_and_truncated_native_headers_are_rejected(self):
+        header = validator.BLENDER_522_HEADER
+        variants = [header[:length] for length in range(1, len(header) + 1)]
+        variants += [b"BLENDER-v500", b"BLENDER-v50", b"BLENDER-vXYZpayload",
+                     b"BLENDER17-01v0503REND", b"BLENDER17-02v0502REND",
+                     b"BLENDER17-01V0502REND", b"BLENDER16-01v0502REND"]
+        for data in variants:
+            with self.subTest(header=data):
+                (self.root / "renders/scenes/rose.blend").write_bytes(data)
+                self.receipt(self.root, "rose")
+                seal(self.root)
+                self.fails("native Blender header")
+
     def test_manifest_traversal_absolute_and_duplicate_paths(self):
         original = (self.root / "manifest.json").read_bytes()
         for invalid in ("../outside.png", "/tmp/outside.png", "source/../outside.png", "source\\outside.png", "C:/outside.png"):

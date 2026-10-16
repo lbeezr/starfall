@@ -1,0 +1,340 @@
+{
+  "schema": "starfall.crystal-native-reproduction.v1",
+  "blender_version": "5.2.2 LTS",
+  "blender_build_hash": "d13f752e3b9c",
+  "scenes": [
+    {
+      "kind": "rose",
+      "scene_sha256": "152790fb20806b63e02c2d9a2fad7f844a145cf1c4969065f1223c90d107f87c",
+      "mesh_vertices": 144,
+      "mesh_faces": 98,
+      "poses_degrees": [
+        [
+          -7.999999938029066,
+          -4.99999985454646,
+          0.0
+        ],
+        [
+          -6.000000166965211,
+          -3.750000104353257,
+          0.0
+        ],
+        [
+          -3.999999969014533,
+          -2.49999992727323,
+          0.0
+        ],
+        [
+          -1.9999999845072665,
+          -1.249999963636615,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.9999999845072665,
+          1.249999963636615,
+          0.0
+        ],
+        [
+          3.999999969014533,
+          2.49999992727323,
+          0.0
+        ],
+        [
+          6.000000166965211,
+          3.750000104353257,
+          0.0
+        ],
+        [
+          7.999999938029066,
+          4.99999985454646,
+          0.0
+        ]
+      ],
+      "samples": 512,
+      "seed": 1729,
+      "denoising": true,
+      "original_png_sha256": "dae88bb063e4f720112a7a41a245a48c09210a73a0bc7678d3adf968496c5aa8",
+      "reproduced_png_sha256": "a6fb410948f3b96e3d6173eeb3e248c4fa3ee10fa6dbb1c9cb4487913365b161",
+      "byte_identical_png": false,
+      "original_decoded_rgba_float_sha256": "e9c21a580fad98bf2aaf9a8471dbd05be9994f5d7b36fead9e3da396dea42bc5",
+      "reproduced_decoded_rgba_float_sha256": "e9c21a580fad98bf2aaf9a8471dbd05be9994f5d7b36fead9e3da396dea42bc5",
+      "decoded_pixels_identical": true,
+      "png_metadata_note": "Blender embeds date and render timing; file bytes can differ while pixels match.",
+      "scene_file_unchanged": true,
+      "pillow_rgba8_exact": true,
+      "rgba8_sha256": "4f9652fb50eb9b9a11a00dc548286a7a00f1b942772d499b2827a1c912bb7c7f"
+    },
+    {
+      "kind": "aqua",
+      "scene_sha256": "b599564fac3823fa147d7520327b17c006f778c1c67c22daa47294057a452664",
+      "mesh_vertices": 24,
+      "mesh_faces": 18,
+      "poses_degrees": [
+        [
+          -7.999999938029066,
+          -4.99999985454646,
+          0.0
+        ],
+        [
+          -6.000000166965211,
+          -3.750000104353257,
+          0.0
+        ],
+        [
+          -3.999999969014533,
+          -2.49999992727323,
+          0.0
+        ],
+        [
+          -1.9999999845072665,
+          -1.249999963636615,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.9999999845072665,
+          1.249999963636615,
+          0.0
+        ],
+        [
+          3.999999969014533,
+          2.49999992727323,
+          0.0
+        ],
+        [
+          6.000000166965211,
+          3.750000104353257,
+          0.0
+        ],
+        [
+          7.999999938029066,
+          4.99999985454646,
+          0.0
+        ]
+      ],
+      "samples": 512,
+      "seed": 1729,
+      "denoising": true,
+      "original_png_sha256": "e62d0dc4baa494428793d56ee7bdf04c308163a34c84ff433e7ee27451ba22c1",
+      "reproduced_png_sha256": "37f69389d7b0dbf1d5e56ab6aec51bf8a8a51e4a48157a0c504393d6d11fe9de",
+      "byte_identical_png": false,
+      "original_decoded_rgba_float_sha256": "970372e414cfafb8ad833b7f023e43203236589a4943c233f123fb535d8d5150",
+      "reproduced_decoded_rgba_float_sha256": "970372e414cfafb8ad833b7f023e43203236589a4943c233f123fb535d8d5150",
+      "decoded_pixels_identical": true,
+      "png_metadata_note": "Blender embeds date and render timing; file bytes can differ while pixels match.",
+      "scene_file_unchanged": true,
+      "pillow_rgba8_exact": true,
+      "rgba8_sha256": "21b1f49be66bab4037b1ddc25d89d3d88041137430381e04c591467504c4e733"
+    },
+    {
+      "kind": "amber",
+      "scene_sha256": "abb1464e08fb5bd9c0d1d3554d08b4a4d4bd0e14e8a20441f1a72e8facc1d1fc",
+      "mesh_vertices": 18,
+      "mesh_faces": 14,
+      "poses_degrees": [
+        [
+          -7.999999938029066,
+          -4.99999985454646,
+          0.0
+        ],
+        [
+          -6.000000166965211,
+          -3.750000104353257,
+          0.0
+        ],
+        [
+          -3.999999969014533,
+          -2.49999992727323,
+          0.0
+        ],
+        [
+          -1.9999999845072665,
+          -1.249999963636615,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.9999999845072665,
+          1.249999963636615,
+          0.0
+        ],
+        [
+          3.999999969014533,
+          2.49999992727323,
+          0.0
+        ],
+        [
+          6.000000166965211,
+          3.750000104353257,
+          0.0
+        ],
+        [
+          7.999999938029066,
+          4.99999985454646,
+          0.0
+        ]
+      ],
+      "samples": 512,
+      "seed": 1729,
+      "denoising": true,
+      "original_png_sha256": "82a1569a3f33963856529eee684d2dacb36a6698f7aab08bdb530980766a6fe3",
+      "reproduced_png_sha256": "901d3c8565a1b0a92b2261e3658ec01ca0085775894fe9cb59249504f2a5e213",
+      "byte_identical_png": false,
+      "original_decoded_rgba_float_sha256": "80e50c1c81e764133faca92e2f240d957ea69f7bcc600f47532f818c23f244e8",
+      "reproduced_decoded_rgba_float_sha256": "80e50c1c81e764133faca92e2f240d957ea69f7bcc600f47532f818c23f244e8",
+      "decoded_pixels_identical": true,
+      "png_metadata_note": "Blender embeds date and render timing; file bytes can differ while pixels match.",
+      "scene_file_unchanged": true,
+      "pillow_rgba8_exact": true,
+      "rgba8_sha256": "5bc490de290d7a7fc49796b302ae2c6dc66fad3e02907dcfaa86e1eab216e635"
+    },
+    {
+      "kind": "violet",
+      "scene_sha256": "a1240ca81510089f9aa7a0d3a8d0f3d211e21c471156de0ebdcb60dcf1ccf647",
+      "mesh_vertices": 36,
+      "mesh_faces": 26,
+      "poses_degrees": [
+        [
+          -7.999999938029066,
+          -4.99999985454646,
+          0.0
+        ],
+        [
+          -6.000000166965211,
+          -3.750000104353257,
+          0.0
+        ],
+        [
+          -3.999999969014533,
+          -2.49999992727323,
+          0.0
+        ],
+        [
+          -1.9999999845072665,
+          -1.249999963636615,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.9999999845072665,
+          1.249999963636615,
+          0.0
+        ],
+        [
+          3.999999969014533,
+          2.49999992727323,
+          0.0
+        ],
+        [
+          6.000000166965211,
+          3.750000104353257,
+          0.0
+        ],
+        [
+          7.999999938029066,
+          4.99999985454646,
+          0.0
+        ]
+      ],
+      "samples": 512,
+      "seed": 1729,
+      "denoising": true,
+      "original_png_sha256": "102a3f890631ce4536c403a4b59ea7482c3a610906a60b65c855935f5988d889",
+      "reproduced_png_sha256": "b0a9cb8f4edae2a15ab6876a3066ac7b19a123e260f171c70494258664d5aef8",
+      "byte_identical_png": false,
+      "original_decoded_rgba_float_sha256": "8f43e013195b84fd6710246cab5b43e1b3ca834e1a4d2775612670b713735dd8",
+      "reproduced_decoded_rgba_float_sha256": "8f43e013195b84fd6710246cab5b43e1b3ca834e1a4d2775612670b713735dd8",
+      "decoded_pixels_identical": true,
+      "png_metadata_note": "Blender embeds date and render timing; file bytes can differ while pixels match.",
+      "scene_file_unchanged": true,
+      "pillow_rgba8_exact": true,
+      "rgba8_sha256": "abe02a3f993cb950ee958250720427d6e01bf0e43c1873504c6368f330fc4893"
+    },
+    {
+      "kind": "mint",
+      "scene_sha256": "f51b5538327e7403c72c878d41cef3506ce69727599fb2e408708e8bceb47e1d",
+      "mesh_vertices": 24,
+      "mesh_faces": 18,
+      "poses_degrees": [
+        [
+          -7.999999938029066,
+          -4.99999985454646,
+          0.0
+        ],
+        [
+          -6.000000166965211,
+          -3.750000104353257,
+          0.0
+        ],
+        [
+          -3.999999969014533,
+          -2.49999992727323,
+          0.0
+        ],
+        [
+          -1.9999999845072665,
+          -1.249999963636615,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.9999999845072665,
+          1.249999963636615,
+          0.0
+        ],
+        [
+          3.999999969014533,
+          2.49999992727323,
+          0.0
+        ],
+        [
+          6.000000166965211,
+          3.750000104353257,
+          0.0
+        ],
+        [
+          7.999999938029066,
+          4.99999985454646,
+          0.0
+        ]
+      ],
+      "samples": 512,
+      "seed": 1729,
+      "denoising": true,
+      "original_png_sha256": "425edc4f7d9d16bdd03d172b9a4b35ad247b007991eb434c068a517569ba95fa",
+      "reproduced_png_sha256": "4006975e395cc792beb7aec01a2398509e7ee090a6dbe78e695fa3dcfa10efc8",
+      "byte_identical_png": false,
+      "original_decoded_rgba_float_sha256": "7bb9fa13abbfc83bbf9696e1a63f171027bda8f9f0d250d73c4443b1771153cf",
+      "reproduced_decoded_rgba_float_sha256": "7bb9fa13abbfc83bbf9696e1a63f171027bda8f9f0d250d73c4443b1771153cf",
+      "decoded_pixels_identical": true,
+      "png_metadata_note": "Blender embeds date and render timing; file bytes can differ while pixels match.",
+      "scene_file_unchanged": true,
+      "pillow_rgba8_exact": true,
+      "rgba8_sha256": "d5d10dce4cc70d18fb8fac8f3ab7c780eadfd23f4dc5f5dcf06715e53cef9695"
+    }
+  ],
+  "passed": true,
+  "limits": "Offline Blender reproduction only; no native-game or device acceptance.",
+  "verification_script_sha256": "6587c901b9fcd74a06950f3917038c9b315c284a17e4a16e5c2d9ac4e05eb560"
+}

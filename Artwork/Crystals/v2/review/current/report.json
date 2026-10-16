@@ -1,0 +1,1641 @@
+{
+  "schema": "starfall.crystal-quality.v1",
+  "pillow_version": "12.3.0",
+  "inspector_sha256": "e386792b1a9c2d9e99adbd1fb6df10f7d52a88b3460f52fec86b7e0829bd7f93",
+  "contract": {
+    "frame_side_px": 256,
+    "frame_count": 9,
+    "neutral_index": 4,
+    "authored_pivot_px": [
+      128,
+      128
+    ],
+    "longest_neutral_span_pt": 34.0,
+    "raster_coordinates": "top-left origin; bounds right/bottom exclusive",
+    "resampling": "Pillow premultiplied-alpha bilinear; not a SpriteKit capture",
+    "near_white": "alpha >= 128; min RGB >= 235; max RGB - min RGB <= 20",
+    "bright_low_chroma": "alpha >= 128; min RGB >= 210; max RGB - min RGB <= 45",
+    "highlight_denominator": "pixels with alpha >= 128; encoded RGB, not linear luminance",
+    "guarantee": "structural checks only; metrics are advisory, no art or native acceptance"
+  },
+  "structural_pass": true,
+  "errors": [],
+  "kinds": {
+    "rose": {
+      "path": "StarshardFamilyRose.imageset/rose_tilt_atlas.png",
+      "errors": [],
+      "file_sha256": "c34e81ad124efe049ade93add918701237cbed9a476ca0e72a8f87b20c0a8879",
+      "bytes": 260429,
+      "mode": "RGBA",
+      "format": "PNG",
+      "size": [
+        2304,
+        256
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "rgba_sha256": "d2578c327447ff870634c55becf6d988d6244c75ac1453f21f7f8d8a4ea729cb",
+          "alpha_bounds": [
+            37,
+            37,
+            219,
+            219
+          ],
+          "alpha_span_px": [
+            182,
+            182
+          ],
+          "minimum_padding_px": 37,
+          "bounds_center_px": [
+            128.0,
+            128.0
+          ],
+          "alpha_centroid_px": [
+            127.9995,
+            128.0004
+          ],
+          "alpha_area_px": 25310.651,
+          "opaque_pixel_count": 25312,
+          "near_white_pct": 5.0845,
+          "bright_low_chroma_pct": 5.7167,
+          "mean_encoded_luma": 0.465,
+          "mean_hsv_saturation": 0.5996,
+          "nonblack_rgb_under_zero_alpha_pixels": 3349
+        },
+        {
+          "index": 1,
+          "rgba_sha256": "29d02396f8665ebba9feb37a9df726b0118f51a1bbc0a9ae7a03668e9ad22323",
+          "alpha_bounds": [
+            37,
+            37,
+            219,
+            219
+          ],
+          "alpha_span_px": [
+            182,
+            182
+          ],
+          "minimum_padding_px": 37,
+          "bounds_center_px": [
+            128.0,
+            128.0
+          ],
+          "alpha_centroid_px": [
+            127.9996,
+            128.0003
+          ],
+          "alpha_area_px": 25462.2078,
+          "opaque_pixel_count": 25463,
+          "near_white_pct": 6.0833,
+          "bright_low_chroma_pct": 6.751,
+          "mean_encoded_luma": 0.4727,
+          "mean_hsv_saturation": 0.5919,
+          "nonblack_rgb_under_zero_alpha_pixels": 3375
+        },
+        {
+          "index": 2,
+          "rgba_sha256": "463e31ddd7888a000ddd2c0befc36f323353cf5422a677e35960932b60067d97",
+          "alpha_bounds": [
+            36,
+            37,
+            220,
+            219
+          ],
+          "alpha_span_px": [
+            184,
+            182
+          ],
+          "minimum_padding_px": 36,
+          "bounds_center_px": [
+            128.0,
+            128.0
+          ],
+          "alpha_centroid_px": [
+            127.9995,
+            128.0005
+          ],
+          "alpha_area_px": 25570.1451,
+          "opaque_pixel_count": 25571,
+          "near_white_pct": 6.0733,
+          "bright_low_chroma_pct": 6.7577,
+          "mean_encoded_luma": 0.4815,
+          "mean_hsv_saturation": 0.5834,
+          "nonblack_rgb_under_zero_alpha_pixels": 3364
+        },
+        {
+          "index": 3,
+          "rgba_sha256": "43b60f24d23133babb08a8d1921bca51855fe26c83c6487bc654302b90643f0d",
+          "alpha_bounds": [
+            36,
+            36,
+            220,
+            220
+          ],
+          "alpha_span_px": [
+            184,
+            184
+          ],
+          "minimum_padding_px": 36,
+          "bounds_center_px": [
+            128.0,
+            128.0
+          ],
+          "alpha_centroid_px": [
+            127.9994,
+            128.0004
+          ],
+          "alpha_area_px": 25634.9686,
+          "opaque_pixel_count": 25640,
+          "near_white_pct": 6.0374,
+          "bright_low_chroma_pct": 6.6771,
+          "mean_encoded_luma": 0.4811,
+          "mean_hsv_saturation": 0.584,
+          "nonblack_rgb_under_zero_alpha_pixels": 3363
+        },
+        {
+          "index": 4,
+          "rgba_sha256": "4f9652fb50eb9b9a11a00dc548286a7a00f1b942772d499b2827a1c912bb7c7f",
+          "alpha_bounds": [
+            36,
+            36,
+            220,
+            220
+          ],
+          "alpha_span_px": [
+            184,
+            184
+          ],
+          "minimum_padding_px": 36,
+          "bounds_center_px": [
+            128.0,
+            128.0
+          ],
+          "alpha_centroid_px": [
+            127.9997,
+            128.0004
+          ],
+          "alpha_area_px": 25656.7176,
+          "opaque_pixel_count": 25656,
+          "near_white_pct": 6.0064,
+          "bright_low_chroma_pct": 6.6456,
+          "mean_encoded_luma": 0.4796,
+          "mean_hsv_saturation": 0.5856,
+          "nonblack_rgb_under_zero_alpha_pixels": 3355
+        },
+        {
+          "index": 5,
+          "rgba_sha256": "74725f947193c8726c3dca1c4e88eb48cb26a8161d7545ae2de010a5adda6185",
+          "alpha_bounds": [
+            36,
+            36,
+            220,
+            220
+          ],
+          "alpha_span_px": [
+            184,
+            184
+          ],
+          "minimum_padding_px": 36,
+          "bounds_center_px": [
+            128.0,
+            128.0
+          ],
+          "alpha_centroid_px": [
+            127.9994,
+            128.0004
+          ],
+          "alpha_area_px": 25634.9686,
+          "opaque_pixel_count": 25640,
+          "near_white_pct": 5.9048,
+          "bright_low_chroma_pct": 6.564,
+          "mean_encoded_luma": 0.4797,
+          "mean_hsv_saturation": 0.5856,
+          "nonblack_rgb_under_zero_alpha_pixels": 3368
+        },
+        {
+          "index": 6,
+          "rgba_sha256": "baa8f25ad82900a70817b7e769332a1925d4136088ffdefbf21d93a43876192c",
+          "alpha_bounds": [
+            36,
+            37,
+            220,
+            219
+          ],
+          "alpha_span_px": [
+            184,
+            182
+          ],
+          "minimum_padding_px": 36,
+          "bounds_center_px": [
+            128.0,
+            128.0
+          ],
+          "alpha_centroid_px": [
+            127.9995,
+            128.0005
+          ],
+          "alpha_area_px": 25570.1451,
+          "opaque_pixel_count": 25571,
+          "near_white_pct": 5.8817,
+          "bright_low_chroma_pct": 6.4917,
+          "mean_encoded_luma": 0.4712,
+          "mean_hsv_saturation": 0.5933,
+          "nonblack_rgb_under_zero_alpha_pixels": 3360
+        },
+        {
+          "index": 7,
+          "rgba_sha256": "3f0d9f5bfef6367b0ddfb165fa05be128c5b143dcc6da82cdbbca864594b4df3",
+          "alpha_bounds": [
+            37,
+            37,
+            219,
+            219
+          ],
+          "alpha_span_px": [
+            182,
+            182
+          ],
+          "minimum_padding_px": 37,
+          "bounds_center_px": [
+            128.0,
+            128.0
+          ],
+          "alpha_centroid_px": [
+            127.9996,
+            128.0003
+          ],
+          "alpha_area_px": 25462.2078,
+          "opaque_pixel_count": 25463,
+          "near_white_pct": 5.7534,
+          "bright_low_chroma_pct": 6.3936,
+          "mean_encoded_luma": 0.469,
+          "mean_hsv_saturation": 0.5953,
+          "nonblack_rgb_under_zero_alpha_pixels": 3374
+        },
+        {
+          "index": 8,
+          "rgba_sha256": "6bf19c69b923e3caef78eb0b5162fd406e7d90ece33873195066e5abd3e27116",
+          "alpha_bounds": [
+            37,
+            37,
+            219,
+            219
+          ],
+          "alpha_span_px": [
+            182,
+            182
+          ],
+          "minimum_padding_px": 37,
+          "bounds_center_px": [
+            128.0,
+            128.0
+          ],
+          "alpha_centroid_px": [
+            127.9995,
+            128.0004
+          ],
+          "alpha_area_px": 25310.651,
+          "opaque_pixel_count": 25312,
+          "near_white_pct": 4.1443,
+          "bright_low_chroma_pct": 4.6895,
+          "mean_encoded_luma": 0.4579,
+          "mean_hsv_saturation": 0.6072,
+          "nonblack_rgb_under_zero_alpha_pixels": 3347
+        }
+      ],
+      "summary": {
+        "source_px_to_pt": 0.1848,
+        "canvas_side_pt": 47.3043,
+        "neutral_span_pt": [
+          34.0,
+          34.0
+        ],
+        "motion_union_bounds": [
+          36,
+          36,
+          220,
+          220
+        ],
+        "motion_span_pt": [
+          34.0,
+          34.0
+        ],
+        "neutral_bounds_offset_from_pivot_pt": [
+          0.0,
+          0.0
+        ],
+        "neutral_alpha_centroid_offset_from_pivot_pt": [
+          -0.0001,
+          0.0001
+        ],
+        "max_bounds_center_displacement_from_neutral_pt": 0.0,
+        "neutral_alpha_area_pt2": 876.0387,
+        "minimum_padding_px": 36,
+        "near_white_pct_range": [
+          4.1443,
+          6.0833
+        ],
+        "bright_low_chroma_pct_range": [
+          4.6895,
+          6.7577
+        ],
+        "unique_rgba_frames": 9
+      }
+    },
+    "aqua": {
+      "path": "StarshardFamilyAqua.imageset/aqua_tilt_atlas.png",
+      "errors": [],
+      "file_sha256": "a187d78aba3d0dc2e678ab765a23d6eb424a7991eac64c91ea9b8cad6b0f8d13",
+      "bytes": 237725,
+      "mode": "RGBA",
+      "format": "PNG",
+      "size": [
+        2304,
+        256
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "rgba_sha256": "fd194086ee55b3a4d418bdd4008afda43f3454bf49602b2663ea1b01471fbf8b",
+          "alpha_bounds": [
+            34,
+            35,
+            222,
+            221
+          ],
+          "alpha_span_px": [
+            188,
+            186
+          ],
+          "minimum_padding_px": 34,
+          "bounds_center_px": [
+            128.0,
+            128.0
+          ],
+          "alpha_centroid_px": [
+            127.9999,
+            128.0002
+          ],
+          "alpha_area_px": 20207.5098,
+          "opaque_pixel_count": 20216,
+          "near_white_pct": 5.2186,
+          "bright_low_chroma_pct": 6.1239,
+          "mean_encoded_luma": 0.6612,
+          "mean_hsv_saturation": 0.647,
+          "nonblack_rgb_under_zero_alpha_pixels": 3777
+        },
+        {
+          "index": 1,
+          "rgba_sha256": "0e192f6b0539490da908e664aa7838ad7e4076ec8ed16646ac8907c068a32428",
+          "alpha_bounds": [
+            34,
+            34,
+            222,
+            222
+          ],
+          "alpha_span_px": [
+            188,
+            188
+          ],
+          "minimum_padding_px": 34,
+          "bounds_center_px": [
+            128.0,
+            128.0
+          ],
+          "alpha_centroid_px": [
+            127.9992,
+            128.0002
+          ],
+          "alpha_area_px": 20328.3176,
+          "opaque_pixel_count": 20310,
+          "near_white_pct": 5.8641,
+          "bright_low_chroma_pct": 6.7651,
+          "mean_encoded_luma": 0.6628,
+          "mean_hsv_saturation": 0.6442,
+          "nonblack_rgb_under_zero_alpha_pixels": 3758
+        },
+        {
+          "index": 2,
+          "rgba_sha256": "6a052b6ebbc7f321d568ae1bc96a171e43b2fff433d1cce3f9564799f5668d24",
+          "alpha_bounds": [
+            34,
+            34,
+            222,
+            222
+          ],
+          "alpha_span_px": [
+            188,
+            188
+          ],
+          "minimum_padding_px": 34,
+          "bounds_center_px": [
+            128.0,
+            128.0
+          ],
+          "alpha_centroid_px": [
+            127.9991,
+            128.0006
+          ],
+          "alpha_area_px": 20415.0118,
+          "opaque_pixel_count": 20379,
+          "near_white_pct": 5.9571,
+          "bright_low_chroma_pct": 6.7668,
+          "mean_encoded_luma": 0.6609,
+          "mean_hsv_saturation": 0.6469,
+          "nonblack_rgb_under_zero_alpha_pixels": 3700
+        },
+        {
+          "index": 3,
+          "rgba_sha256": "171622f5f6519255d1550b704859ff7b39831ad8a6be08e51889c7b2fa119f2c",
+          "alpha_bounds": [
+            34,
+            34,
+            222,
+            222
+          ],
+          "alpha_span_px": [
+            188,
+            188
+          ],
+          "minimum_padding_px": 34,
+          "bounds_center_px": [
+            128.0,
+            128.0
+          ],
+          "alpha_centroid_px": [
+            127.9995,
+            128.001
+          ],
+          "alpha_area_px": 20466.8471,
+          "opaque_pixel_count": 20378,
+          "near_white_pct": 5.928,
+          "bright_low_chroma_pct": 6.772,
+          "mean_encoded_luma": 0.6575,
+          "mean_hsv_saturation": 0.651,
+          "nonblack_rgb_under_zero_alpha_pixels": 3730
+        },
+        {
+          "index": 4,
+          "rgba_sha256": "21b1f49be66bab4037b1ddc25d89d3d88041137430381e04c591467504c4e733",
+          "alpha_bounds": [
+            34,
+            34,
+            222,
+            222
+          ],
+          "alpha_span_px": [
+            188,
+            188
+          ],
+          "minimum_padding_px": 34,
+          "bounds_center_px": [
+            128.0,
+            128.0
+          ],
+          "alpha_centroid_px": [
+            127.9991,
+            128.0007
+          ],
+          "alpha_area_px": 20484.0549,
+          "opaque_pixel_count": 20497,
+          "near_white_pct": 5.9277,
+          "bright_low_chroma_pct": 6.7229,
+          "mean_encoded_luma": 0.6545,
+          "mean_hsv_saturation": 0.6519,
+          "nonblack_rgb_under_zero_alpha_pixels": 3745
+        },
+        {
+          "index": 5,
+          "rgba_sha256": "98d9eb499842e73dca00e7e8d5399bb19ab650b904df8a89087fa2b2eaf2879e",
+          "alpha_bounds": [
+            34,
+            34,
+            222,
+            222
+          ],
+          "alpha_span_px": [
+            188,
+            188
+          ],
+          "minimum_padding_px": 34,
+          "bounds_center_px": [
+            128.0,
+            128.0
+          ],
+          "alpha_centroid_px": [
+            127.9995,
+            128.001
+          ],
+          "alpha_area_px": 20466.8471,
+          "opaque_pixel_count": 20378,
+          "near_white_pct": 5.9525,
+          "bright_low_chroma_pct": 6.772,
+          "mean_encoded_luma": 0.6551,
+          "mean_hsv_saturation": 0.6514,
+          "nonblack_rgb_under_zero_alpha_pixels": 3717
+        },
+        {
+          "index": 6,
+          "rgba_sha256": "d480f13038065bf5ef60329a88939bebcb0d4e75542a1b51b3573c372c23248a",
+          "alpha_bounds": [
+            34,
+            34,
+            222,
+            222
+          ],
+          "alpha_span_px": [
+            188,
+            188
+          ],
+          "minimum_padding_px": 34,
+          "bounds_center_px": [
+            128.0,
+            128.0
+          ],
+          "alpha_centroid_px": [
+            127.9991,
+            128.0006
+          ],
+          "alpha_area_px": 20415.0118,
+          "opaque_pixel_count": 20379,
+          "near_white_pct": 5.9326,
+          "bright_low_chroma_pct": 6.7864,
+          "mean_encoded_luma": 0.6549,
+          "mean_hsv_saturation": 0.6515,
+          "nonblack_rgb_under_zero_alpha_pixels": 3699
+        },
+        {
+          "index": 7,
+          "rgba_sha256": "000d5ac9eeedac813e4ec883e37aac8f88c7142457679b03cbbe1f329e720dc3",
+          "alpha_bounds": [
+            34,
+            34,
+            222,
+            222
+          ],
+          "alpha_span_px": [
+            188,
+            188
+          ],
+          "minimum_padding_px": 34,
+          "bounds_center_px": [
+            128.0,
+            128.0
+          ],
+          "alpha_centroid_px": [
+            127.9992,
+            128.0002
+          ],
+          "alpha_area_px": 20328.3176,
+          "opaque_pixel_count": 20310,
+          "near_white_pct": 5.8789,
+          "bright_low_chroma_pct": 6.7356,
+          "mean_encoded_luma": 0.6544,
+          "mean_hsv_saturation": 0.6518,
+          "nonblack_rgb_under_zero_alpha_pixels": 3754
+        },
+        {
+          "index": 8,
+          "rgba_sha256": "4ef262c10ab6b1967b00fea6a2c96307237134df54b2d403e0c68988eb9964b5",
+          "alpha_bounds": [
+            34,
+            35,
+            222,
+            221
+          ],
+          "alpha_span_px": [
+            188,
+            186
+          ],
+          "minimum_padding_px": 34,
+          "bounds_center_px": [
+            128.0,
+            128.0
+          ],
+          "alpha_centroid_px": [
+            127.9999,
+            128.0002
+          ],
+          "alpha_area_px": 20207.5098,
+          "opaque_pixel_count": 20216,
+          "near_white_pct": 4.6894,
+          "bright_low_chroma_pct": 5.4858,
+          "mean_encoded_luma": 0.6487,
+          "mean_hsv_saturation": 0.6616,
+          "nonblack_rgb_under_zero_alpha_pixels": 3770
+        }
+      ],
+      "summary": {
+        "source_px_to_pt": 0.1809,
+        "canvas_side_pt": 46.2979,
+        "neutral_span_pt": [
+          34.0,
+          34.0
+        ],
+        "motion_union_bounds": [
+          34,
+          34,
+          222,
+          222
+        ],
+        "motion_span_pt": [
+          34.0,
+          34.0
+        ],
+        "neutral_bounds_offset_from_pivot_pt": [
+          0.0,
+          0.0
+        ],
+        "neutral_alpha_centroid_offset_from_pivot_pt": [
+          -0.0002,
+          0.0001
+        ],
+        "max_bounds_center_displacement_from_neutral_pt": 0.0,
+        "neutral_alpha_area_pt2": 669.9742,
+        "minimum_padding_px": 34,
+        "near_white_pct_range": [
+          4.6894,
+          5.9571
+        ],
+        "bright_low_chroma_pct_range": [
+          5.4858,
+          6.7864
+        ],
+        "unique_rgba_frames": 9
+      }
+    },
+    "amber": {
+      "path": "StarshardFamilyAmber.imageset/amber_tilt_atlas.png",
+      "errors": [],
+      "file_sha256": "aaa75c7ae2784923b5b6cffa31247e8e4f463f5005b1f9c8f5acaf809c03debf",
+      "bytes": 172296,
+      "mode": "RGBA",
+      "format": "PNG",
+      "size": [
+        2304,
+        256
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "rgba_sha256": "844115cac8085151b48bc9665cc70763cf4ee288c261c89e27ae2c5b684a153f",
+          "alpha_bounds": [
+            45,
+            38,
+            210,
+            180
+          ],
+          "alpha_span_px": [
+            165,
+            142
+          ],
+          "minimum_padding_px": 38,
+          "bounds_center_px": [
+            127.5,
+            109.0
+          ],
+          "alpha_centroid_px": [
+            127.9993,
+            128.0008
+          ],
+          "alpha_area_px": 13081.9255,
+          "opaque_pixel_count": 13152,
+          "near_white_pct": 7.6034,
+          "bright_low_chroma_pct": 8.6603,
+          "mean_encoded_luma": 0.6684,
+          "mean_hsv_saturation": 0.6319,
+          "nonblack_rgb_under_zero_alpha_pixels": 4322
+        },
+        {
+          "index": 1,
+          "rgba_sha256": "6c5e9d968c50191383f710aae299bd78f1bd1f4f26b15cb2f230f2df6d4c971d",
+          "alpha_bounds": [
+            45,
+            37,
+            210,
+            180
+          ],
+          "alpha_span_px": [
+            165,
+            143
+          ],
+          "minimum_padding_px": 37,
+          "bounds_center_px": [
+            127.5,
+            108.5
+          ],
+          "alpha_centroid_px": [
+            127.9984,
+            128.0037
+          ],
+          "alpha_area_px": 13160.4745,
+          "opaque_pixel_count": 13195,
+          "near_white_pct": 8.0712,
+          "bright_low_chroma_pct": 9.155,
+          "mean_encoded_luma": 0.6706,
+          "mean_hsv_saturation": 0.6282,
+          "nonblack_rgb_under_zero_alpha_pixels": 4347
+        },
+        {
+          "index": 2,
+          "rgba_sha256": "6efab7f88308983f2a32896ecd19e2f7cf53dbe33c53aace1e26b74f94b6bff7",
+          "alpha_bounds": [
+            46,
+            37,
+            210,
+            180
+          ],
+          "alpha_span_px": [
+            164,
+            143
+          ],
+          "minimum_padding_px": 37,
+          "bounds_center_px": [
+            128.0,
+            108.5
+          ],
+          "alpha_centroid_px": [
+            127.9996,
+            128.0014
+          ],
+          "alpha_area_px": 13216.098,
+          "opaque_pixel_count": 13240,
+          "near_white_pct": 8.3988,
+          "bright_low_chroma_pct": 9.5846,
+          "mean_encoded_luma": 0.6718,
+          "mean_hsv_saturation": 0.6263,
+          "nonblack_rgb_under_zero_alpha_pixels": 4317
+        },
+        {
+          "index": 3,
+          "rgba_sha256": "19478b6a5b4bfe0a4887072b9ddc86e44f32cfee327e03f848588dde085309ff",
+          "alpha_bounds": [
+            46,
+            37,
+            210,
+            180
+          ],
+          "alpha_span_px": [
+            164,
+            143
+          ],
+          "minimum_padding_px": 37,
+          "bounds_center_px": [
+            128.0,
+            108.5
+          ],
+          "alpha_centroid_px": [
+            127.9995,
+            128.0009
+          ],
+          "alpha_area_px": 13249.4863,
+          "opaque_pixel_count": 13258,
+          "near_white_pct": 8.6363,
+          "bright_low_chroma_pct": 9.8431,
+          "mean_encoded_luma": 0.6727,
+          "mean_hsv_saturation": 0.6244,
+          "nonblack_rgb_under_zero_alpha_pixels": 4312
+        },
+        {
+          "index": 4,
+          "rgba_sha256": "5bc490de290d7a7fc49796b302ae2c6dc66fad3e02907dcfaa86e1eab216e635",
+          "alpha_bounds": [
+            46,
+            37,
+            210,
+            180
+          ],
+          "alpha_span_px": [
+            164,
+            143
+          ],
+          "minimum_padding_px": 37,
+          "bounds_center_px": [
+            128.0,
+            108.5
+          ],
+          "alpha_centroid_px": [
+            127.9991,
+            128.0
+          ],
+          "alpha_area_px": 13260.6549,
+          "opaque_pixel_count": 13263,
+          "near_white_pct": 8.9346,
+          "bright_low_chroma_pct": 10.0656,
+          "mean_encoded_luma": 0.6735,
+          "mean_hsv_saturation": 0.6229,
+          "nonblack_rgb_under_zero_alpha_pixels": 4310
+        },
+        {
+          "index": 5,
+          "rgba_sha256": "091943df088bd8d943003b492461116fc44fb23204605f0fe6a6191ffdc4a7f0",
+          "alpha_bounds": [
+            46,
+            37,
+            210,
+            180
+          ],
+          "alpha_span_px": [
+            164,
+            143
+          ],
+          "minimum_padding_px": 37,
+          "bounds_center_px": [
+            128.0,
+            108.5
+          ],
+          "alpha_centroid_px": [
+            127.9995,
+            128.0009
+          ],
+          "alpha_area_px": 13249.4863,
+          "opaque_pixel_count": 13258,
+          "near_white_pct": 9.1417,
+          "bright_low_chroma_pct": 10.2655,
+          "mean_encoded_luma": 0.6729,
+          "mean_hsv_saturation": 0.6229,
+          "nonblack_rgb_under_zero_alpha_pixels": 4312
+        },
+        {
+          "index": 6,
+          "rgba_sha256": "9420866a82f7e89acd5cf7d149654a7a2d6cf67068cc826ac64c0d0c224feda6",
+          "alpha_bounds": [
+            46,
+            37,
+            210,
+            180
+          ],
+          "alpha_span_px": [
+            164,
+            143
+          ],
+          "minimum_padding_px": 37,
+          "bounds_center_px": [
+            128.0,
+            108.5
+          ],
+          "alpha_centroid_px": [
+            127.9996,
+            128.0014
+          ],
+          "alpha_area_px": 13216.098,
+          "opaque_pixel_count": 13240,
+          "near_white_pct": 9.2296,
+          "bright_low_chroma_pct": 10.4683,
+          "mean_encoded_luma": 0.6685,
+          "mean_hsv_saturation": 0.6287,
+          "nonblack_rgb_under_zero_alpha_pixels": 4317
+        },
+        {
+          "index": 7,
+          "rgba_sha256": "4f631ce46e0aee154c90d3daeb141a1ce28fac00f3086fa7925eeb83707c5318",
+          "alpha_bounds": [
+            45,
+            37,
+            210,
+            180
+          ],
+          "alpha_span_px": [
+            165,
+            143
+          ],
+          "minimum_padding_px": 37,
+          "bounds_center_px": [
+            127.5,
+            108.5
+          ],
+          "alpha_centroid_px": [
+            127.9984,
+            128.0037
+          ],
+          "alpha_area_px": 13160.4745,
+          "opaque_pixel_count": 13195,
+          "near_white_pct": 9.1322,
+          "bright_low_chroma_pct": 10.216,
+          "mean_encoded_luma": 0.6668,
+          "mean_hsv_saturation": 0.6308,
+          "nonblack_rgb_under_zero_alpha_pixels": 4346
+        },
+        {
+          "index": 8,
+          "rgba_sha256": "66747290fb112b93bdc5294db168a8c30972c7c59e978f9e4b64f09ff4d0ba7a",
+          "alpha_bounds": [
+            45,
+            38,
+            210,
+            180
+          ],
+          "alpha_span_px": [
+            165,
+            142
+          ],
+          "minimum_padding_px": 38,
+          "bounds_center_px": [
+            127.5,
+            109.0
+          ],
+          "alpha_centroid_px": [
+            127.9993,
+            128.0008
+          ],
+          "alpha_area_px": 13081.9255,
+          "opaque_pixel_count": 13152,
+          "near_white_pct": 6.615,
+          "bright_low_chroma_pct": 7.5046,
+          "mean_encoded_luma": 0.6562,
+          "mean_hsv_saturation": 0.6512,
+          "nonblack_rgb_under_zero_alpha_pixels": 4322
+        }
+      ],
+      "summary": {
+        "source_px_to_pt": 0.2073,
+        "canvas_side_pt": 53.0732,
+        "neutral_span_pt": [
+          34.0,
+          29.6463
+        ],
+        "motion_union_bounds": [
+          45,
+          37,
+          210,
+          180
+        ],
+        "motion_span_pt": [
+          34.2073,
+          29.6463
+        ],
+        "neutral_bounds_offset_from_pivot_pt": [
+          0.0,
+          -4.0427
+        ],
+        "neutral_alpha_centroid_offset_from_pivot_pt": [
+          -0.0002,
+          0.0
+        ],
+        "max_bounds_center_displacement_from_neutral_pt": 0.1466,
+        "neutral_alpha_area_pt2": 569.9478,
+        "minimum_padding_px": 37,
+        "near_white_pct_range": [
+          6.615,
+          9.2296
+        ],
+        "bright_low_chroma_pct_range": [
+          7.5046,
+          10.4683
+        ],
+        "unique_rgba_frames": 9
+      }
+    },
+    "violet": {
+      "path": "StarshardFamilyViolet.imageset/violet_tilt_atlas.png",
+      "errors": [],
+      "file_sha256": "c0c3f1cf80eeb479041362035c0b717c6a04a35f810d848bfbd17e293c95b2c9",
+      "bytes": 253186,
+      "mode": "RGBA",
+      "format": "PNG",
+      "size": [
+        2304,
+        256
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "rgba_sha256": "3658290acc16d380a208e799b4d297038a32d4d235e5dd3be19045d42b245512",
+          "alpha_bounds": [
+            41,
+            31,
+            215,
+            225
+          ],
+          "alpha_span_px": [
+            174,
+            194
+          ],
+          "minimum_padding_px": 31,
+          "bounds_center_px": [
+            128.0,
+            128.0
+          ],
+          "alpha_centroid_px": [
+            127.9991,
+            128.0008
+          ],
+          "alpha_area_px": 25079.0039,
+          "opaque_pixel_count": 25085,
+          "near_white_pct": 5.5332,
+          "bright_low_chroma_pct": 6.0395,
+          "mean_encoded_luma": 0.5064,
+          "mean_hsv_saturation": 0.4873,
+          "nonblack_rgb_under_zero_alpha_pixels": 3345
+        },
+        {
+          "index": 1,
+          "rgba_sha256": "e61d43faa103f044ae07358bdcde5e6112becf23074d80a0a6c0b41c08117c56",
+          "alpha_bounds": [
+            41,
+            30,
+            215,
+            226
+          ],
+          "alpha_span_px": [
+            174,
+            196
+          ],
+          "minimum_padding_px": 30,
+          "bounds_center_px": [
+            128.0,
+            128.0
+          ],
+          "alpha_centroid_px": [
+            127.9991,
+            128.0008
+          ],
+          "alpha_area_px": 25228.7882,
+          "opaque_pixel_count": 25229,
+          "near_white_pct": 6.4727,
+          "bright_low_chroma_pct": 7.0237,
+          "mean_encoded_luma": 0.5126,
+          "mean_hsv_saturation": 0.4819,
+          "nonblack_rgb_under_zero_alpha_pixels": 3347
+        },
+        {
+          "index": 2,
+          "rgba_sha256": "893df7cb0a47f862ee3374c4794beeef5e83a78e10b7597154d2d4b3ee8ee519",
+          "alpha_bounds": [
+            41,
+            30,
+            215,
+            226
+          ],
+          "alpha_span_px": [
+            174,
+            196
+          ],
+          "minimum_padding_px": 30,
+          "bounds_center_px": [
+            128.0,
+            128.0
+          ],
+          "alpha_centroid_px": [
+            127.9994,
+            128.0002
+          ],
+          "alpha_area_px": 25336.7725,
+          "opaque_pixel_count": 25402,
+          "near_white_pct": 6.468,
+          "bright_low_chroma_pct": 6.9758,
+          "mean_encoded_luma": 0.5144,
+          "mean_hsv_saturation": 0.481,
+          "nonblack_rgb_under_zero_alpha_pixels": 3289
+        },
+        {
+          "index": 3,
+          "rgba_sha256": "a1f828af34e540d5b2c41c64804e51292b185da65e0a1f3ed4a4e161e5ef17a7",
+          "alpha_bounds": [
+            41,
+            30,
+            215,
+            226
+          ],
+          "alpha_span_px": [
+            174,
+            196
+          ],
+          "minimum_padding_px": 30,
+          "bounds_center_px": [
+            128.0,
+            128.0
+          ],
+          "alpha_centroid_px": [
+            127.9998,
+            128.0005
+          ],
+          "alpha_area_px": 25401.7451,
+          "opaque_pixel_count": 25455,
+          "near_white_pct": 6.4624,
+          "bright_low_chroma_pct": 6.9849,
+          "mean_encoded_luma": 0.5212,
+          "mean_hsv_saturation": 0.4764,
+          "nonblack_rgb_under_zero_alpha_pixels": 3287
+        },
+        {
+          "index": 4,
+          "rgba_sha256": "abe02a3f993cb950ee958250720427d6e01bf0e43c1873504c6368f330fc4893",
+          "alpha_bounds": [
+            41,
+            30,
+            215,
+            226
+          ],
+          "alpha_span_px": [
+            174,
+            196
+          ],
+          "minimum_padding_px": 30,
+          "bounds_center_px": [
+            128.0,
+            128.0
+          ],
+          "alpha_centroid_px": [
+            127.9997,
+            128.0003
+          ],
+          "alpha_area_px": 25423.3569,
+          "opaque_pixel_count": 25474,
+          "near_white_pct": 6.4811,
+          "bright_low_chroma_pct": 6.9914,
+          "mean_encoded_luma": 0.5213,
+          "mean_hsv_saturation": 0.4766,
+          "nonblack_rgb_under_zero_alpha_pixels": 3284
+        },
+        {
+          "index": 5,
+          "rgba_sha256": "fbdb9fb4f6da53fcdbfc5307575fa365a3dd489dbd223a7f147c184f19caf101",
+          "alpha_bounds": [
+            41,
+            30,
+            215,
+            226
+          ],
+          "alpha_span_px": [
+            174,
+            196
+          ],
+          "minimum_padding_px": 30,
+          "bounds_center_px": [
+            128.0,
+            128.0
+          ],
+          "alpha_centroid_px": [
+            127.9998,
+            128.0005
+          ],
+          "alpha_area_px": 25401.7451,
+          "opaque_pixel_count": 25455,
+          "near_white_pct": 6.4624,
+          "bright_low_chroma_pct": 6.9652,
+          "mean_encoded_luma": 0.5211,
+          "mean_hsv_saturation": 0.4769,
+          "nonblack_rgb_under_zero_alpha_pixels": 3287
+        },
+        {
+          "index": 6,
+          "rgba_sha256": "25a609f15a513e1847341d8856665cabd8760b7f7ded43948ed979e1618b9fbe",
+          "alpha_bounds": [
+            41,
+            30,
+            215,
+            226
+          ],
+          "alpha_span_px": [
+            174,
+            196
+          ],
+          "minimum_padding_px": 30,
+          "bounds_center_px": [
+            128.0,
+            128.0
+          ],
+          "alpha_centroid_px": [
+            127.9994,
+            128.0002
+          ],
+          "alpha_area_px": 25336.7725,
+          "opaque_pixel_count": 25402,
+          "near_white_pct": 6.4444,
+          "bright_low_chroma_pct": 6.9443,
+          "mean_encoded_luma": 0.5201,
+          "mean_hsv_saturation": 0.4774,
+          "nonblack_rgb_under_zero_alpha_pixels": 3289
+        },
+        {
+          "index": 7,
+          "rgba_sha256": "e4ae0d83e56079ddfa290ab5fc8191e8a9c809808e32fd17035cf8818a6b5648",
+          "alpha_bounds": [
+            41,
+            30,
+            215,
+            226
+          ],
+          "alpha_span_px": [
+            174,
+            196
+          ],
+          "minimum_padding_px": 30,
+          "bounds_center_px": [
+            128.0,
+            128.0
+          ],
+          "alpha_centroid_px": [
+            127.9991,
+            128.0008
+          ],
+          "alpha_area_px": 25228.7882,
+          "opaque_pixel_count": 25229,
+          "near_white_pct": 6.4133,
+          "bright_low_chroma_pct": 6.9365,
+          "mean_encoded_luma": 0.5191,
+          "mean_hsv_saturation": 0.4781,
+          "nonblack_rgb_under_zero_alpha_pixels": 3350
+        },
+        {
+          "index": 8,
+          "rgba_sha256": "eb148a6c4bbb8447579b59def39330ff759888e1773ac15aa97ad459950b3c30",
+          "alpha_bounds": [
+            41,
+            31,
+            215,
+            225
+          ],
+          "alpha_span_px": [
+            174,
+            194
+          ],
+          "minimum_padding_px": 31,
+          "bounds_center_px": [
+            128.0,
+            128.0
+          ],
+          "alpha_centroid_px": [
+            127.9991,
+            128.0008
+          ],
+          "alpha_area_px": 25079.0039,
+          "opaque_pixel_count": 25085,
+          "near_white_pct": 4.6442,
+          "bright_low_chroma_pct": 5.0588,
+          "mean_encoded_luma": 0.5085,
+          "mean_hsv_saturation": 0.4882,
+          "nonblack_rgb_under_zero_alpha_pixels": 3344
+        }
+      ],
+      "summary": {
+        "source_px_to_pt": 0.1735,
+        "canvas_side_pt": 44.4082,
+        "neutral_span_pt": [
+          30.1837,
+          34.0
+        ],
+        "motion_union_bounds": [
+          41,
+          30,
+          215,
+          226
+        ],
+        "motion_span_pt": [
+          30.1837,
+          34.0
+        ],
+        "neutral_bounds_offset_from_pivot_pt": [
+          0.0,
+          0.0
+        ],
+        "neutral_alpha_centroid_offset_from_pivot_pt": [
+          -0.0001,
+          0.0001
+        ],
+        "max_bounds_center_displacement_from_neutral_pt": 0.0,
+        "neutral_alpha_area_pt2": 765.0302,
+        "minimum_padding_px": 30,
+        "near_white_pct_range": [
+          4.6442,
+          6.4811
+        ],
+        "bright_low_chroma_pct_range": [
+          5.0588,
+          7.0237
+        ],
+        "unique_rgba_frames": 9
+      }
+    },
+    "mint": {
+      "path": "StarshardFamilyMint.imageset/mint_tilt_atlas.png",
+      "errors": [],
+      "file_sha256": "f40be6ac102cd73ffa946daaf62ab6f6e87f5e1ad942a743c5d8192568fdd984",
+      "bytes": 200107,
+      "mode": "RGBA",
+      "format": "PNG",
+      "size": [
+        2304,
+        256
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "rgba_sha256": "0b3e78029a8e3bbc75b98d81db0f34de14b93b278c0378c6d18789e055052f42",
+          "alpha_bounds": [
+            55,
+            57,
+            201,
+            199
+          ],
+          "alpha_span_px": [
+            146,
+            142
+          ],
+          "minimum_padding_px": 55,
+          "bounds_center_px": [
+            128.0,
+            128.0
+          ],
+          "alpha_centroid_px": [
+            127.9991,
+            128.0007
+          ],
+          "alpha_area_px": 19793.5255,
+          "opaque_pixel_count": 19694,
+          "near_white_pct": 6.3979,
+          "bright_low_chroma_pct": 7.2205,
+          "mean_encoded_luma": 0.7229,
+          "mean_hsv_saturation": 0.5991,
+          "nonblack_rgb_under_zero_alpha_pixels": 3906
+        },
+        {
+          "index": 1,
+          "rgba_sha256": "360d04e6cb103fb77261e2da8cfad39d33c1b622ce593ecd8e2283471666ef38",
+          "alpha_bounds": [
+            56,
+            56,
+            200,
+            200
+          ],
+          "alpha_span_px": [
+            144,
+            144
+          ],
+          "minimum_padding_px": 56,
+          "bounds_center_px": [
+            128.0,
+            128.0
+          ],
+          "alpha_centroid_px": [
+            127.9993,
+            128.0013
+          ],
+          "alpha_area_px": 19914.4353,
+          "opaque_pixel_count": 20024,
+          "near_white_pct": 7.3162,
+          "bright_low_chroma_pct": 8.1602,
+          "mean_encoded_luma": 0.7259,
+          "mean_hsv_saturation": 0.5933,
+          "nonblack_rgb_under_zero_alpha_pixels": 3710
+        },
+        {
+          "index": 2,
+          "rgba_sha256": "5281f3296e00146bf55bec940007990c0ee73eff3eb27eecd97f27ac3cbf2dc8",
+          "alpha_bounds": [
+            56,
+            56,
+            200,
+            200
+          ],
+          "alpha_span_px": [
+            144,
+            144
+          ],
+          "minimum_padding_px": 56,
+          "bounds_center_px": [
+            128.0,
+            128.0
+          ],
+          "alpha_centroid_px": [
+            127.9996,
+            128.0006
+          ],
+          "alpha_area_px": 19999.6,
+          "opaque_pixel_count": 20052,
+          "near_white_pct": 7.2761,
+          "bright_low_chroma_pct": 8.094,
+          "mean_encoded_luma": 0.7273,
+          "mean_hsv_saturation": 0.593,
+          "nonblack_rgb_under_zero_alpha_pixels": 3695
+        },
+        {
+          "index": 3,
+          "rgba_sha256": "1014c41c212a54c55eefbfc96a183b277a115a827114b95f8a8a2cd560ddce08",
+          "alpha_bounds": [
+            56,
+            56,
+            200,
+            200
+          ],
+          "alpha_span_px": [
+            144,
+            144
+          ],
+          "minimum_padding_px": 56,
+          "bounds_center_px": [
+            128.0,
+            128.0
+          ],
+          "alpha_centroid_px": [
+            127.9996,
+            128.0
+          ],
+          "alpha_area_px": 20049.3647,
+          "opaque_pixel_count": 20055,
+          "near_white_pct": 7.1404,
+          "bright_low_chroma_pct": 7.9232,
+          "mean_encoded_luma": 0.7273,
+          "mean_hsv_saturation": 0.5943,
+          "nonblack_rgb_under_zero_alpha_pixels": 3695
+        },
+        {
+          "index": 4,
+          "rgba_sha256": "d5d10dce4cc70d18fb8fac8f3ab7c780eadfd23f4dc5f5dcf06715e53cef9695",
+          "alpha_bounds": [
+            56,
+            56,
+            200,
+            200
+          ],
+          "alpha_span_px": [
+            144,
+            144
+          ],
+          "minimum_padding_px": 56,
+          "bounds_center_px": [
+            128.0,
+            128.0
+          ],
+          "alpha_centroid_px": [
+            127.9993,
+            128.0005
+          ],
+          "alpha_area_px": 20066.051,
+          "opaque_pixel_count": 20065,
+          "near_white_pct": 6.9674,
+          "bright_low_chroma_pct": 7.685,
+          "mean_encoded_luma": 0.7269,
+          "mean_hsv_saturation": 0.5956,
+          "nonblack_rgb_under_zero_alpha_pixels": 3695
+        },
+        {
+          "index": 5,
+          "rgba_sha256": "6623279981adcf1ddf0afac7792d423f6fcdef0a4970585873ae5946bf62838d",
+          "alpha_bounds": [
+            56,
+            56,
+            200,
+            200
+          ],
+          "alpha_span_px": [
+            144,
+            144
+          ],
+          "minimum_padding_px": 56,
+          "bounds_center_px": [
+            128.0,
+            128.0
+          ],
+          "alpha_centroid_px": [
+            127.9996,
+            128.0
+          ],
+          "alpha_area_px": 20049.3647,
+          "opaque_pixel_count": 20055,
+          "near_white_pct": 6.7464,
+          "bright_low_chroma_pct": 7.5592,
+          "mean_encoded_luma": 0.7256,
+          "mean_hsv_saturation": 0.5977,
+          "nonblack_rgb_under_zero_alpha_pixels": 3692
+        },
+        {
+          "index": 6,
+          "rgba_sha256": "2452f3072ef13b0d558d5a854a357fe738bb97bac6235885a69050682e8b5cc5",
+          "alpha_bounds": [
+            56,
+            56,
+            200,
+            200
+          ],
+          "alpha_span_px": [
+            144,
+            144
+          ],
+          "minimum_padding_px": 56,
+          "bounds_center_px": [
+            128.0,
+            128.0
+          ],
+          "alpha_centroid_px": [
+            127.9996,
+            128.0006
+          ],
+          "alpha_area_px": 19999.6,
+          "opaque_pixel_count": 20052,
+          "near_white_pct": 6.548,
+          "bright_low_chroma_pct": 7.2412,
+          "mean_encoded_luma": 0.7229,
+          "mean_hsv_saturation": 0.6013,
+          "nonblack_rgb_under_zero_alpha_pixels": 3693
+        },
+        {
+          "index": 7,
+          "rgba_sha256": "2ad2769436696996b813d1bc2631a36eed806853b23660c65cc0f27a2519b43f",
+          "alpha_bounds": [
+            56,
+            56,
+            200,
+            200
+          ],
+          "alpha_span_px": [
+            144,
+            144
+          ],
+          "minimum_padding_px": 56,
+          "bounds_center_px": [
+            128.0,
+            128.0
+          ],
+          "alpha_centroid_px": [
+            127.9993,
+            128.0013
+          ],
+          "alpha_area_px": 19914.4353,
+          "opaque_pixel_count": 20024,
+          "near_white_pct": 6.1676,
+          "bright_low_chroma_pct": 6.8967,
+          "mean_encoded_luma": 0.7214,
+          "mean_hsv_saturation": 0.6036,
+          "nonblack_rgb_under_zero_alpha_pixels": 3708
+        },
+        {
+          "index": 8,
+          "rgba_sha256": "ccc01d72c10f3172cb0ae6450af6ce1e0a03f1408b2cf366be040fbdda7b0863",
+          "alpha_bounds": [
+            55,
+            57,
+            201,
+            199
+          ],
+          "alpha_span_px": [
+            146,
+            142
+          ],
+          "minimum_padding_px": 55,
+          "bounds_center_px": [
+            128.0,
+            128.0
+          ],
+          "alpha_centroid_px": [
+            127.9991,
+            128.0007
+          ],
+          "alpha_area_px": 19793.5255,
+          "opaque_pixel_count": 19694,
+          "near_white_pct": 4.4074,
+          "bright_low_chroma_pct": 4.9863,
+          "mean_encoded_luma": 0.7153,
+          "mean_hsv_saturation": 0.6169,
+          "nonblack_rgb_under_zero_alpha_pixels": 3896
+        }
+      ],
+      "summary": {
+        "source_px_to_pt": 0.2361,
+        "canvas_side_pt": 60.4444,
+        "neutral_span_pt": [
+          34.0,
+          34.0
+        ],
+        "motion_union_bounds": [
+          55,
+          56,
+          201,
+          200
+        ],
+        "motion_span_pt": [
+          34.4722,
+          34.0
+        ],
+        "neutral_bounds_offset_from_pivot_pt": [
+          0.0,
+          0.0
+        ],
+        "neutral_alpha_centroid_offset_from_pivot_pt": [
+          -0.0002,
+          0.0001
+        ],
+        "max_bounds_center_displacement_from_neutral_pt": 0.0,
+        "neutral_alpha_area_pt2": 1118.6514,
+        "minimum_padding_px": 55,
+        "near_white_pct_range": [
+          4.4074,
+          7.3162
+        ],
+        "bright_low_chroma_pct_range": [
+          4.9863,
+          8.1602
+        ],
+        "unique_rgba_frames": 9
+      }
+    }
+  },
+  "artifacts": {
+    "board-review.png": "0767afb0c8c0099338f330d0a8b8d0203784bbd981c6d6b06f559ad30151880b",
+    "geometry-review.png": "8390d3f210016fb613aca83a73d527c77bcec3a09f44e5bf3798d056719703ec",
+    "neutral-review.png": "d4761561c87f1320e12420cc498cd9df57c1c16ee18e10fe16531913ef5a3626",
+    "tilt-review.png": "12cf50f40882fcda01cac0346ba6f2a3071252d9eb6abe9ae3733f272e5aa65d"
+  }
+}
