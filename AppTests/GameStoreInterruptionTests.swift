@@ -4,6 +4,37 @@ import StarfallCore
 
 /// Store-boundary tests, not claims about real touch delivery or SpriteKit timing.
 final class GameStoreInterruptionTests: XCTestCase {
+    @MainActor func testMuteAndLifecycleStopSoundsWithoutReplayingCommittedTurns() async throws {
+        let suite = "StarfallAudioLifecycleTests.\(UUID().uuidString)"
+        let defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
+        defer { defaults.removePersistentDomain(forName: suite) }
+        let presenter = ControlledPresenter()
+        let feedback = RecordingFeedback()
+        let store = GameStore(defaults: defaults, arguments: ["--demo"],
+                              presenter: presenter, feedback: feedback)
+        XCTAssertFalse(store.soundEnabled)
+        store.soundEnabled = true
+        store.tap(Cell(1, 1))
+        XCTAssertEqual(feedback.clearCounts, [3])
+        store.soundEnabled = false
+        XCTAssertEqual(feedback.stopCount, 1)
+        XCTAssertFalse(defaults.bool(forKey: "soundEnabled"))
+        store.settings = true
+        XCTAssertEqual(feedback.stopCount, 2)
+        store.settings = false
+        presenter.completions[0]()
+        XCTAssertEqual(feedback.clearCounts, [3])
+        XCTAssertTrue(feedback.announcements.isEmpty)
+        store.restart()
+        XCTAssertEqual(feedback.stopCount, 3)
+        store.playing = false
+        XCTAssertEqual(feedback.stopCount, 4)
+        store.start()
+        store.settlePresentation() // Same production path used for backgrounding/detachment.
+        XCTAssertEqual(feedback.stopCount, 5)
+        XCTAssertEqual(feedback.clearCounts, [3])
+    }
+
     @MainActor func testMenuAndSettingsBlockInputAndSettlePendingTurn() async throws {
         try withFixture { store, presenter, defaults in
             store.tap(try legalCell(in: store.game))
@@ -186,12 +217,14 @@ final class GameStoreInterruptionTests: XCTestCase {
     var soundSettings: [Bool] = []
     var calmSettings: [Bool] = []
     var announcements: [String] = []
+    var stopCount = 0
     func cleared(_ turn: Turn, outcome: Outcome, soundEnabled: Bool, calmEffects: Bool) {
         clearCounts.append(turn.cleared.count)
         soundSettings.append(soundEnabled)
         calmSettings.append(calmEffects)
     }
     func announce(_ message: String) { announcements.append(message) }
+    func stopSounds() { stopCount += 1 }
 }
 
 @MainActor private final class ControlledPresenter: TurnPresenting {
