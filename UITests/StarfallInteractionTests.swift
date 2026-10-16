@@ -111,20 +111,14 @@ final class StarfallInteractionTests: XCTestCase {
         XCTAssertTrue(sound.waitForExistence(timeout: 5))
         XCTAssertFalse(app.buttons["game.menu"].exists,
                        "The modal must keep underlying gameplay out of accessibility navigation")
+        let settingsScroll = app.scrollViews.containing(.any, identifier: "settings.sound").firstMatch
+        XCTAssertGreaterThan(settingsScroll.frame.height, app.frame.height * 0.8,
+                             "Settings must open with room for its controls and information")
+        attachScreenshot(app, name: "settings-default-initial")
         // End muted regardless of a previous simulator preference.
         setSwitch(sound, to: "1")
         setSwitch(sound, to: "0")
-        attachScreenshot(app, name: "settings-default-medium")
-        // Exercise the supported expansion gesture before auditing the complete
-        // Settings surface. Keep the compact presentation as visual evidence.
-        let sheetNavigation = app.navigationBars["Settings"]
-        sheetNavigation.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.1))
-            .press(forDuration: 0.05, thenDragTo:
-                app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.12)))
-        let settingsScroll = app.scrollViews.containing(.any, identifier: "settings.sound").firstMatch
-        XCTAssertGreaterThan(settingsScroll.frame.height, app.frame.height * 0.8)
-        try auditSettings(app)
-        attachScreenshot(app, name: "settings-default-text")
+        try auditSettings(app, screenshotName: "settings-default-text")
         app.buttons["settings.done"].tap()
         XCTAssertTrue(waitFor(NSPredicate(format: "exists == false"), on: sound))
         XCTAssertTrue(app.buttons["game.menu"].exists)

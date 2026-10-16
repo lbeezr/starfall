@@ -285,7 +285,7 @@ required_images = [
     'accessibility-large-text-game', 'accessibility-large-text-settings',
     'crystal-pilot-before-tap', 'crystal-pilot-after-tap',
     'rapid-input-settled', 'accessible-board-post-clear', 'settings-direct-largest-text',
-    'settings-footer-fully-visible', 'settings-default-text', 'settings-default-medium',
+    'settings-footer-fully-visible', 'settings-default-text', 'settings-default-initial',
     'family-calm-6-resumed', 'family-calm-0-resumed'
 ]
 required_images += [f'family-{kind}-{stage}'
