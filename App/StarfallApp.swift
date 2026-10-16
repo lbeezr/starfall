@@ -78,7 +78,8 @@ struct StarfallView: View {
             }
         }
         .tint(StarfallTheme.Colors.actionPrimary)
-        .presentationDetents(dynamicTypeSize.isAccessibilitySize ? [.large] : [.medium, .large])
+        // Keep one reading surface at every text size, without an expansion step.
+        .presentationDetents([.large])
     }
     @ViewBuilder
     private func settingsToggle(_ title: String, isOn: Binding<Bool>, identifier: String) -> some View {
