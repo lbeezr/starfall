@@ -22,9 +22,23 @@ extension Jewel {
     var reduceMotion = false
     private var nodes: [Cell: SKNode] = [:]
     private let boardRoot = SKNode()
+    private let effectRoot = SKNode()
+    private var presentationGeneration: UInt64 = 0
+    var crystalPilotEnabled = CrystalPilot.isEnabled(arguments: ProcessInfo.processInfo.arguments)
+    private var hasCrystalPilot: Bool {
+        #if DEBUG
+        return crystalPilotEnabled && CrystalPilot.frames.count == 9 && CrystalPilot.shards.count == 4
+        #else
+        return false
+        #endif
+    }
+    // Read-only renderer diagnostics for focused hosted tests.
+    var transientNodeCount: Int { effectRoot.children.count }
+    var renderedJewelCount: Int { nodes.count }
     private var step: CGFloat { min(size.width, size.height) / 7.7 }
     override func didMove(to view: SKView) {
         if boardRoot.parent == nil { addChild(boardRoot) }
+        if effectRoot.parent == nil { effectRoot.zPosition = 1; addChild(effectRoot) }
         if let game = store?.game { render(game) }
     }
     override func didChangeSize(_ oldSize: CGSize) {
@@ -35,6 +49,7 @@ extension Jewel {
         CGPoint(x: size.width/2 + (CGFloat(cell.column)-3)*step, y: size.height/2 + (CGFloat(cell.row)-3)*step)
     }
     func render(_ game: Game) {
+        effectRoot.removeAllChildren()
         boardRoot.removeAllChildren(); nodes.removeAll()
         for row in 0..<Game.side { for column in 0..<Game.side {
             let cell = Cell(row, column)
@@ -46,6 +61,12 @@ extension Jewel {
     // The artwork has transparent padding; its silhouette still uses radius 0.37 × pitch.
     private static var jewelTextures: [Int: SKTexture] = [:]
     private func jewel(_ kind: Jewel, radius: CGFloat) -> SKNode {
+        if kind == .aqua && hasCrystalPilot {
+            let sprite = SKSpriteNode(texture: CrystalPilot.frames[CrystalPilot.neutralIndex])
+            let side = CrystalPilot.canvasSide(radius: radius)
+            sprite.size = CGSize(width: side, height: side)
+            return sprite
+        }
         let texture: SKTexture
         if let cached = Self.jewelTextures[kind.rawValue] {
             texture = cached
@@ -178,6 +199,9 @@ extension Jewel {
         return texture
     }
     func cancelAnimations() {
+        presentationGeneration &+= 1
+        effectRoot.removeAllChildren()
+        effectRoot.removeAllActions()
         removeAllActions()
         boardRoot.removeAllActions()
         for node in boardRoot.children { node.removeAllActions() }
@@ -187,17 +211,30 @@ extension Jewel {
         nodes[cell]?.run(.sequence([.scale(to: 0.90, duration: 0.07), .scale(to: 1, duration: 0.10)]))
     }
     func animate(turn: Turn, old: Game, new: Game, completion: @escaping () -> Void) {
+        cancelAnimations()
+        let generation = presentationGeneration
         if store?.soundEnabled == true { AudioServicesPlaySystemSound(1104) }
         if reduceMotion || UIAccessibility.isVoiceOverRunning || view == nil { render(new); completion(); return }
-        for cell in turn.cleared {
+        // Stable order makes the global shard cap deterministic without touching gameplay RNG.
+        let cleared = turn.cleared.sorted { $0.row == $1.row ? $0.column < $1.column : $0.row < $1.row }
+        var shardBudget = CrystalPilot.maximumShards
+        for cell in cleared {
+            if hasCrystalPilot && old.jewel(at: cell) == .aqua {
+                nodes[cell]?.run(.sequence([CrystalPilot.tiltAction(), .fadeOut(withDuration: 0.02), .removeFromParent()]))
+                if shardBudget >= 4 {
+                    addCrystalShards(at: cell)
+                    shardBudget -= 4
+                }
+                continue
+            }
             nodes[cell]?.run(.sequence([.scale(to: 1.12, duration: 0.06), .group([.fadeOut(withDuration: 0.13), .scale(to: 0.15, duration: 0.13)]), .removeFromParent()]))
             let spark = SKLabelNode(text: "✦")
             spark.fontSize = 14; spark.fontColor = old.jewel(at: cell)?.color
-            spark.position = point(cell); boardRoot.addChild(spark)
+            spark.position = point(cell); effectRoot.addChild(spark)
             spark.run(.sequence([.group([.moveBy(x: 0, y: 18, duration: 0.28), .fadeOut(withDuration: 0.28)]), .removeFromParent()]))
         }
         run(.sequence([.wait(forDuration: 0.20), .run { [weak self] in
-            guard let self else { completion(); return }
+            guard let self, self.presentationGeneration == generation else { return }
             self.render(new)
             // Survivor offsets follow their actual pre-clear rows; new jewels fall from above.
             for column in 0..<Game.side {
@@ -212,8 +249,26 @@ extension Jewel {
                 }
             }
         }, .wait(forDuration: 0.28), .run { [weak self] in
-            self?.render(new); completion()
+            guard let self, self.presentationGeneration == generation else { return }
+            self.render(new); completion()
         }]))
+    }
+    private func addCrystalShards(at cell: Cell) {
+        let side = CrystalPilot.canvasSide(radius: step * 0.37)
+        for index in 0..<4 {
+            let x: CGFloat = index % 2 == 0 ? -1 : 1
+            let y: CGFloat = index / 2 == 0 ? 1 : -1
+            let shard = SKSpriteNode(texture: CrystalPilot.shards[index])
+            shard.size = CGSize(width: side / 2, height: side / 2)
+            shard.position = CGPoint(x: point(cell).x + x * side / 4,
+                                     y: point(cell).y + y * side / 4)
+            shard.alpha = 0
+            effectRoot.addChild(shard)
+            shard.run(.sequence([.wait(forDuration: 0.06), .fadeIn(withDuration: 0),
+                .group([.moveBy(x: x * step * 0.18, y: y * step * 0.18, duration: 0.13),
+                        .rotate(byAngle: x * y * 0.35, duration: 0.13),
+                        .fadeOut(withDuration: 0.13)]), .removeFromParent()]))
+        }
     }
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let location = touches.first?.location(in: self), step > 0 else { return }

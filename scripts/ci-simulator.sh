@@ -200,7 +200,7 @@ printf '%s\n' 'PASS: both demo launches accepted; each app process alive after 5
 (cd artifacts && shasum -a 256 *.png > screenshot-sha256.txt)
 # Keep artifacts small: no app bundle, DerivedData, simulator disk, or video.
 
-# Four bounded real-input flows, sequentially on the same simulator, without retries.
+# Five bounded real-input flows, sequentially on the same simulator, without retries.
 # Keep the result bundle on ephemeral runner storage; export only compact evidence.
 UI_RESULT="$RUNNER_TEMP/starfall-ui.xcresult"
 UI_EXPORT="$RUNNER_TEMP/starfall-ui-attachments"
@@ -214,6 +214,7 @@ xcodebuild -project Starfall.xcodeproj -scheme Starfall \
   -only-testing:StarfallUITests/StarfallInteractionTests/testSavedGameRelaunchAndCalmResume \
   -only-testing:StarfallUITests/StarfallInteractionTests/testTerminalOutcomesPersistAndRestart \
   -only-testing:StarfallUITests/StarfallInteractionTests/testLargestTextLayoutAndAccessibilityAudit \
+  -only-testing:StarfallUITests/StarfallInteractionTests/testCrystalPilotRealTap \
   -parallel-testing-enabled NO -maximum-concurrent-test-simulator-destinations 1 \
   -test-timeouts-enabled YES -default-test-execution-time-allowance 90 \
   -maximum-test-execution-time-allowance 180 \
@@ -237,9 +238,9 @@ import hashlib, json, shutil, sys
 root = Path(sys.argv[1]).resolve()
 test_passed = int(sys.argv[2]) == 0
 summary = json.loads(Path('artifacts/ui-test-summary.json').read_text())
-if test_passed and (summary.get('passedTests') != 4 or summary.get('failedTests') != 0
-                    or summary.get('skippedTests') != 0 or summary.get('totalTestCount') != 4):
-    raise SystemExit('Expected exactly four passing UI tests, zero failures/skips, and total count four; inspect summary.')
+if test_passed and (summary.get('passedTests') != 5 or summary.get('failedTests') != 0
+                    or summary.get('skippedTests') != 0 or summary.get('totalTestCount') != 5):
+    raise SystemExit('Expected exactly five passing UI tests, zero failures/skips, and total count five; inspect summary.')
 manifest_path = root / 'manifest.json'
 manifest_bytes = manifest_path.read_bytes()
 if len(manifest_bytes) > 250_000:
@@ -260,7 +261,8 @@ records = []
 for name in ('real-touch-post-clear', 'real-touch-restarted',
              'saved-game-resumed', 'saved-game-calm-turn',
              'terminal-won-restored', 'terminal-lost-restored',
-             'accessibility-large-text-game', 'accessibility-large-text-settings'):
+             'accessibility-large-text-game', 'accessibility-large-text-settings',
+             'crystal-pilot-before-tap', 'crystal-pilot-after-tap'):
     matches = [x for x in objects(manifest)
                if str(x.get('suggestedHumanReadableName', '')).startswith(name)
                and x.get('exportedFileName')]
@@ -298,13 +300,13 @@ elif [[ "$UI_SUMMARY_STATUS" != 0 || "$UI_EXPORT_STATUS" != 0 || "$UI_PARSE_STAT
   echo 'UI evidence export/validation failed; inspect logs. No complete UI-evidence success claim.' >&2
   UI_FINAL_STATUS=1
 else
-  printf '%s\n' 'PASS: four real-input UI tests and eight exported XCTest screenshots.' \
+  printf '%s\n' 'PASS: five real-input UI tests and ten exported XCTest screenshots.' \
     'See ui-test-summary.json and ui-attachment-manifest.json; no VoiceOver or rapid-input validation.' \
     | tee artifacts/ui-result.txt
 fi
 
 # Hosted app tests exercise GameStore synchronization without UI gestures.
-# Keep their result separate so they cannot satisfy the four-test UI gate.
+# Keep their result separate so they cannot satisfy the five-test UI gate.
 HOSTED_RESULT="$RUNNER_TEMP/starfall-hosted.xcresult"
 set +e
 xcodebuild -project Starfall.xcodeproj -scheme Starfall \
@@ -312,6 +314,7 @@ xcodebuild -project Starfall.xcodeproj -scheme Starfall \
   -destination "platform=iOS Simulator,arch=arm64,id=$SIMULATOR_ID" \
   -derivedDataPath "$RUNNER_TEMP/starfall-derived" \
   -only-testing:StarfallAppTests/GameStoreInterruptionTests \
+  -only-testing:StarfallAppTests/CrystalPilotTests \
   -parallel-testing-enabled NO -maximum-concurrent-test-simulator-destinations 1 \
   -test-timeouts-enabled YES -default-test-execution-time-allowance 90 \
   -maximum-test-execution-time-allowance 180 \
@@ -337,11 +340,11 @@ python3 - <<'PY'
 import json
 from pathlib import Path
 summary = json.loads(Path('artifacts/hosted-test-summary.json').read_text())
-if (summary.get('passedTests') != 4 or summary.get('failedTests') != 0
-        or summary.get('skippedTests') != 0 or summary.get('totalTestCount') != 4):
-    raise SystemExit('Expected exactly four passing hosted app tests, zero failures/skips, total four.')
+if (summary.get('passedTests') != 9 or summary.get('failedTests') != 0
+        or summary.get('skippedTests') != 0 or summary.get('totalTestCount') != 9):
+    raise SystemExit('Expected exactly nine passing hosted app tests, zero failures/skips, total nine.')
 Path('artifacts/hosted-result.txt').write_text(
-    'PASS: four hosted GameStore interruption tests. No UI gesture or animation playback claim.\n')
+    'PASS: nine hosted GameStore interruption and crystal pilot tests. No UI gesture or animation playback claim.\n')
 PY
 
 # A passing hosted suite never erases a failed UI audit or evidence gate.

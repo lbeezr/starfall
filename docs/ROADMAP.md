@@ -2,13 +2,14 @@
 
 Updated 2026-10-16 UTC. This is the bounded plan from the current prototype to a release candidate. The delivery coordinator owns execution, review, integration, evidence, and the next permitted assignment. Routine work proceeds without another request to continue. A blocked lane must not block independent work, and a running task label is not delivery evidence.
 
-## Current delivery checkpoint — 2026-10-16 12:27 UTC
+## Current delivery checkpoint — 2026-10-16 13:50 UTC
 
-- Published runtime: `2f2bb2081de01a6d31dfe62a694f6005cf7dbe56`; latest run [38898933808](https://github.com/lbeezr/starfall/actions/runs/38898933808).
-- Core tests, three prior native flows and bundled privacy-manifest validation pass. Large-text gameplay audits pass; Settings still reports `Text clipped` for the Calm effects label. The fourth UI flow is not accepted. Retained screenshots are partial evidence.
-- Next executable diagnosis: inspect native accessibility text bounds and row layout for that label, preserve unsuppressed audit assertions, obtain independent review, then rerun exact-head acceptance.
-- Prepared locally, not integrated: presentation-boundary interruption tests, hosted test target, approved icon registration and playtest/release checklists. Final integration review remains pending; no native test or icon compilation pass is claimed for this prepared work.
-- Human playtest, actual VoiceOver and signed physical-device distribution remain separate gates. Independent source preparation does not establish those outcomes.
+- Independently reviewed reliability/icon source `3405595abad1c66181d74ce0ed0c2304007df64c` completed [run 38905933131](https://github.com/lbeezr/starfall/actions/runs/38905933131): 15 core tests, four hosted GameStore interruption tests, native build, icon packaging and bundled privacy checks passed. Three existing UI flows passed; Settings still reported `Text clipped` for Calm effects. This is partial acceptance, not a green build.
+- The hosted tests establish store-boundary repeated-input, settlement and stale-callback behavior, not physical rapid-touch or actual animation-interruption timing.
+- The next reviewed Settings candidate `ae01b99f44d7871e7211861377932e75ed5c05e0` uses full-width native button-style toggles only at accessibility text sizes. Normal switches remain unchanged. Real native off/on/off state and unsuppressed audits are required. [Run 38908327230](https://github.com/lbeezr/starfall/actions/runs/38908327230) passed core/build/icon/privacy but timed out at the bounded first simulator launch. UI and hosted tests never ran; the Settings repair remains unvalidated.
+- The user approved the actual pre-rendered aqua 3D tilt pilot. A procedural three-treatment comparison was preserved locally but superseded before publication. The next reviewed source adds a DEBUG-only aqua pilot, bounded tilt/four-piece fracture and five renderer/asset tests; existing default/Release artwork stays unchanged. Five UI flows (including real aqua input) and nine hosted tests are required. Native rendering and playback are still unverified.
+- Upper-right shooting-star arrival for newly replenished shards and a starlight/constellation presentation are approved design directions, not yet implemented. They must preserve existing rules and readable survivor gravity.
+- Human playtest, actual VoiceOver, icon Home Screen appearance and signed physical-device distribution remain separate gates.
 
 ## Product contract
 

@@ -270,6 +270,36 @@ final class StarfallInteractionTests: XCTestCase {
         XCTAssertTrue(settings.waitForExistence(timeout: 5))
     }
 
+    /// Real aqua-cluster input with the experimental pre-rendered material.
+    /// Still captures prove appearance and settled state, not animation timing.
+    @MainActor
+    func testCrystalPilotRealTap() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchArguments = ["--reset-save", "--seed=0", "--crystal-pilot"]
+        app.launch()
+        defer { app.terminate() }
+        let play = app.buttons["menu.play"]
+        XCTAssertTrue(play.waitForExistence(timeout: 10))
+        app.buttons["menu.settings"].tap()
+        let calm = app.switches["settings.calm"]
+        XCTAssertTrue(calm.waitForExistence(timeout: 5))
+        setSwitch(calm, to: "0")
+        app.buttons["settings.done"].tap()
+        play.tap()
+        let board = app.descendants(matching: .any)["game.board"].firstMatch
+        XCTAssertTrue(board.waitForExistence(timeout: 10))
+        assertLabel(app, "game.score", "0 of 70 jewels cleared")
+        assertLabel(app, "game.moves", "18 moves")
+        attachScreenshot(app, name: "crystal-pilot-before-tap")
+        // Core seed 0 contains three connected aqua jewels at (5,3).
+        tapBoard(app, row: 5, column: 3)
+        assertLabel(app, "game.moves", "17 moves")
+        assertLabel(app, "game.score", "3 of 70 jewels cleared")
+        XCTAssertTrue(waitFor(NSPredicate(format: "enabled == true"), on: app.buttons["game.menu"]))
+        attachScreenshot(app, name: "crystal-pilot-after-tap")
+    }
+
     @MainActor
     private func reveal(_ element: XCUIElement, in app: XCUIApplication,
                         scrollingUp: Bool, fullyVisible: Bool = false,

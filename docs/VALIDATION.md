@@ -96,3 +96,17 @@ accessibility are still unverified. Later source changes need their own run.
 - Artifact `12045617965`: 3,803,271 bytes, expires 2026-10-17 12:24:38 UTC. Source-bound copies retained separately.
 - Prior run 38896574407 hit its 15-minute job limit during cold simulator preparation, before any audit assertion. Current bounded setup timing succeeds: status-bar 15.725 seconds, install 33.567 seconds, first launch 17.77 seconds, second launch 1.084 seconds. Job maximum is now 25 minutes; per-test maximum remains 180 seconds; no retries or broader permissions introduced.
 - Open gate: diagnose accessible text bounds/row sizing, review the minimal repair and rerun all four UI flows. Prepared interruption tests and approved icon registration are not yet integrated or natively validated.
+
+## 2026-10-16 13:25 UTC — reliability and icon native evidence
+
+Exact runtime `3405595abad1c66181d74ce0ed0c2304007df64c`, [run 38905933131](https://github.com/lbeezr/starfall/actions/runs/38905933131): native build, 15 core tests, four hosted tests (zero failures/skips), three prior UI flows, icon catalog packaging and privacy semantic validation passed. The fourth UI flow failed the unsuppressed Settings text-clipping audit on Calm effects. Eight UI screenshots remain partial evidence; the total build is failed.
+
+The hosted tests cover controlled presentation completions, committed saved state and busy-input rejection. They do not establish real rapid-tap delivery or actual frame-timed interruption. Icon Assets.car and AppIcon metadata passed packaging; Home Screen appearance is not yet verified.
+
+Artifact `12048743235` (3,803,747 bytes) expires 2026-10-17 13:24:45 UTC. Retained ZIP SHA-256 `4161c0be585e9c5b97635116c2773ab73fedb9989c428268a014b844fa4d6a33` and all ten PNG hashes verified. Native diagnostics showed Calm effects text frame `(32,355.5,153.5,125.5)` within a `(16,336.5,343,163.5)` switch row. Extra vertical padding did not fix the audit; the next candidate changes actual large-text layout rather than suppressing the issue.
+
+## 2026-10-16 13:42 UTC — cold simulator launch timeout
+
+Exact source `ae01b99f44d7871e7211861377932e75ed5c05e0`, [run 38908327230](https://github.com/lbeezr/starfall/actions/runs/38908327230): 15 core tests, native build, icon packaging and privacy validation passed. The first `simctl launch` exceeded its 300-second bound (300.940 seconds, exit 124); no PID was returned. Status-bar setup (6.731s) and install (18.618s) succeeded. No UI tests, hosted tests or screenshots were reached. This is an infrastructure/launch failure, not evidence that the Settings repair passed or failed its audit; the cause beyond the blocked launch remains unknown.
+
+Compact artifact `12049866811` retained and verified, SHA-256 `e6c9b7aea9ccefa5b68c9a5200ae6791e25de899f483a8ed962d7d39601a477c`, expires 2026-10-17 13:40:05 UTC. The next reviewed source is to be tested on a fresh runner with the same time and evidence limits.
