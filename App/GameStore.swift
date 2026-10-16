@@ -22,7 +22,9 @@ import StarfallCore
     @Published var settings = false {
         didSet { if settings && !oldValue { settlePresentation() } }
     }
-    @AppStorage("soundEnabled") var soundEnabled = false
+    @AppStorage("soundEnabled") var soundEnabled = false {
+        didSet { if !soundEnabled { feedback.stopSounds() } }
+    }
     @AppStorage("calmEffects") var calmEffects = false
     let scene: JewelScene
     private let presenter: any TurnPresenting
@@ -105,6 +107,7 @@ import StarfallCore
     /// Rules commit before animation. Interrupted presentation settles to that committed state.
     func settlePresentation() {
         activeTurnID = nil
+        feedback.stopSounds()
         presenter.cancelAnimations()
         presenter.render(game) // Replaces animated children as well as their pending visual actions.
         busy = false
@@ -115,6 +118,7 @@ import StarfallCore
     }
     func restart() {
         activeTurnID = nil
+        feedback.stopSounds()
         presenter.cancelAnimations(); busy = false
         game = Game(seed: UInt64.random(in: 0...UInt64.max))
         message = "A fresh sky. Find your first cluster"

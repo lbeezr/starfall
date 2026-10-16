@@ -1,0 +1,50 @@
+[
+  {
+    "filename": "sf_quiet_tuck_01.mp3",
+    "generation_id": "a9pkUyoRCdd6K1236GWT",
+    "bytes": 25946,
+    "sha256": "2574fe8949fdec73c9a32313b21141342259f0d56b88a34456f88dcb32deeebf",
+    "sample_rate_hz": 44100,
+    "channels": 2,
+    "valid_frames": 21168,
+    "decoded_duration_seconds": 0.48,
+    "decoded_pcm_sha256": "3ba16854fab3349c1182442627aa49bf00cd0678eeb5e2458db38d55d5a6b713",
+    "decode_check": "Apple afconvert succeeded; decoded PCM is nonzero"
+  },
+  {
+    "filename": "sf_quiet_tuck_02.mp3",
+    "generation_id": "5gQsDv1WzGaXymIdoRC2",
+    "bytes": 25946,
+    "sha256": "176e2613c3f3c61710b7f48d5aa0ceb49ce45c6ee99c01c50b2ffd5176a938cf",
+    "sample_rate_hz": 44100,
+    "channels": 2,
+    "valid_frames": 21168,
+    "decoded_duration_seconds": 0.48,
+    "decoded_pcm_sha256": "7778a5211732acd18099bc13014b5e52938cde8bea5e2228ef284fd162904ea2",
+    "decode_check": "Apple afconvert succeeded; decoded PCM is nonzero"
+  },
+  {
+    "filename": "sf_quiet_tuck_03.mp3",
+    "generation_id": "5uAButrBxwRPLgJfXFri",
+    "bytes": 25946,
+    "sha256": "a7fd3e07a26b84d9d4d26db9069677fa33aa8dc7e4df9d212fee6c28ba4e5ef7",
+    "sample_rate_hz": 44100,
+    "channels": 2,
+    "valid_frames": 21168,
+    "decoded_duration_seconds": 0.48,
+    "decoded_pcm_sha256": "4e5005b7da320a0e60ab1a3239442d584ce59e3003e2fd43e1f6b68cec32f5d3",
+    "decode_check": "Apple afconvert succeeded; decoded PCM is nonzero"
+  },
+  {
+    "filename": "sf_quiet_tuck_04.mp3",
+    "generation_id": "JXGLIkmmOtXGoqfq0yLQ",
+    "bytes": 25946,
+    "sha256": "a3dd9f479aa10e19002f3b8756c6f98aa5a6aaffa71426ee5f8a6e8228b1431b",
+    "sample_rate_hz": 44100,
+    "channels": 2,
+    "valid_frames": 21168,
+    "decoded_duration_seconds": 0.48,
+    "decoded_pcm_sha256": "cfca9f516577e5839b6d49d2d8e929eb30d9e0424cdb6c7ad2d8677117d88d59",
+    "decode_check": "Apple afconvert succeeded; decoded PCM is nonzero"
+  }
+]

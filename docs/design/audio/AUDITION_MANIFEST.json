@@ -1,0 +1,1485 @@
+{
+  "created_date": "2026-10-16",
+  "status": "partial_success_all_jobs_terminal_music_funding_blocked",
+  "flow_id": "wA5xekjp38SbZnBNnC0l",
+  "flow_url": "https://elevenlabs.io/app/flows/wA5xekjp38SbZnBNnC0l",
+  "generation_authorization": "User approved this one audition batch up to USD 2 on 2026-10-16.",
+  "estimate": {
+    "credits": 8087.2,
+    "price_cents": 147.04,
+    "generations_count": 4,
+    "currency": "usd",
+    "estimated_runtime_seconds": 71
+  },
+  "requested_spend_ceiling_usd": 2,
+  "nodes": [
+    {
+      "id": "music_a",
+      "label": "A — Felt Moonlight / gameplay bed",
+      "node_id": "SMgKcjE8zydNUQe8pVOV",
+      "node_type": "music",
+      "model_id": "eleven_music_v2",
+      "parameters": {
+        "duration_seconds": 30,
+        "lyrics_type": "instrumental",
+        "instrumental": true
+      },
+      "prompt": "Original instrumental music for Starfall, a tiny moonlit puzzle about releasing starlight from precious chunky crystals. Quiet wonder, tactile warmth, gentle concentration, intimate scale. Provisional D major pentatonic palette D E F-sharp A B, softly stable D and A harmony. No vocals, words, choir, drums, ticking, rhythmic pressure, bass drops, risers, epic orchestra, casino sparkle, brittle treble, recognizable existing melody, or final-move urgency. Leave generous silence between musical gestures and a clear middle register for soft glass action sounds. Rounded transients, subtle stereo width, centered fundamentals, no hard panning. 30-second restrained gameplay mood sketch. Warm felt piano, softly damped glass mallet and a barely audible breath of warm bowed pad. Unhurried approximate 64 BPM with no audible click or driving pulse; long held chords and very occasional two-note piano answers. Evoke the comfortable weight of a crystal in the hand. Almost static harmony, no build, no obvious intro or closing cadence; the opening and ending should have compatible texture for a later carefully edited loop. This is a quiet background bed, not a foreground performance."
+    },
+    {
+      "id": "music_b",
+      "label": "B — Glass Observatory / gameplay bed",
+      "node_id": "D0tY6ewwfqaForrsz8IK",
+      "node_type": "music",
+      "model_id": "eleven_music_v2",
+      "parameters": {
+        "duration_seconds": 30,
+        "lyrics_type": "instrumental",
+        "instrumental": true
+      },
+      "prompt": "Original instrumental music for Starfall, a tiny moonlit puzzle about releasing starlight from precious chunky crystals. Quiet wonder, tactile warmth, gentle concentration, intimate scale. Provisional D major pentatonic palette D E F-sharp A B, softly stable D and A harmony. No vocals, words, choir, drums, ticking, rhythmic pressure, bass drops, risers, epic orchestra, casino sparkle, brittle treble, recognizable existing melody, or final-move urgency. Leave generous silence between musical gestures and a clear middle register for soft glass action sounds. Rounded transients, subtle stereo width, centered fundamentals, no hard panning. 30-second alternative gameplay mood sketch. Airy softly bowed glass with rounded warm lower body, a faint velvety synthesizer pad, a few isolated plucked glass notes. More suspended and spacious than piano-led music, but comforting rather than cold or mysterious. No discernible pulse, almost static harmony, no build, no cinematic swell. Compatible opening and ending textures for a later edited loop, no composed ending. Preserve empty space: the tactile action sounds will provide the rhythm."
+    },
+    {
+      "id": "music_theme",
+      "label": "Theme — A Little Pocket of Moonlight",
+      "node_id": "jqalk2IkNtKYTzg6goZm",
+      "node_type": "music",
+      "model_id": "eleven_music_v2",
+      "parameters": {
+        "duration_seconds": 12,
+        "lyrics_type": "instrumental",
+        "instrumental": true
+      },
+      "prompt": "Original instrumental music for Starfall, a tiny moonlit puzzle about releasing starlight from precious chunky crystals. Quiet wonder, tactile warmth, gentle concentration, intimate scale. Provisional D major pentatonic palette D E F-sharp A B, softly stable D and A harmony. No vocals, words, choir, drums, ticking, rhythmic pressure, bass drops, risers, epic orchestra, casino sparkle, brittle treble, recognizable existing melody, or final-move urgency. Leave generous silence between musical gestures and a clear middle register for soft glass action sounds. Rounded transients, subtle stereo width, centered fundamentals, no hard panning. 12-second original title-theme sketch in the warm felt-piano and damped-glass palette. A simple, delicate three-note identity using the contour D4, A4, F-sharp4 if musically natural, with pauses between notes, followed by a tender D-major resolution. One statement and a short natural decay. Memorable but understated, like one small constellation becoming visible. No fanfare, rhythmic backing, orchestral swell or dramatic ending. This phrase is intended for a possible title treatment; it is not a recurring reward jingle."
+    },
+    {
+      "id": "sf_clear_small_a",
+      "label": "Clear — Warm glass A",
+      "node_id": "gzfjIHkkAgluPpX1pRZA",
+      "node_type": "sfx",
+      "model_id": "eleven_text_to_sound_v2",
+      "parameters": {
+        "duration_seconds": 0.5,
+        "prompt_influence": 0.7,
+        "loop": false
+      },
+      "prompt": "One isolated soft crystal contact for a calm moonlit puzzle game. A rounded glass note centered on D5, with a warm woody low body, a tiny dry tactile click at the onset and a short silky decay. One clear attack immediately at the start, then silence. Delicate, close and reassuring. No shattering, shards rattling, hiss, sparkle spray, whoosh, bass hit, voices, music bed or repeated notes. Original sound, centered mono-compatible image."
+    },
+    {
+      "id": "sf_clear_small_b",
+      "label": "Clear — Felt glass B",
+      "node_id": "u95Cav7wJEIKKgnStcYE",
+      "node_type": "sfx",
+      "model_id": "eleven_text_to_sound_v2",
+      "parameters": {
+        "duration_seconds": 0.5,
+        "prompt_influence": 0.7,
+        "loop": false
+      },
+      "prompt": "One isolated soft crystal contact for a calm moonlit puzzle game. A rounded glass note centered on D5, with a slightly softer felt-like low body and a small smooth glass overtone. Match the intimate weight and loudness of a gentle wooden bead tap. One clear attack immediately at the start and a short silky decay, then silence. No shattering, rattle, hiss, sparkle spray, whoosh, bass hit, voices, music bed or repeated notes. Original sound, centered mono-compatible image."
+    },
+    {
+      "id": "sf_clear_full_a",
+      "label": "Large group — Full glass body",
+      "node_id": "oLN3HPUSB2aAB5xCHcfa",
+      "node_type": "sfx",
+      "model_id": "eleven_text_to_sound_v2",
+      "parameters": {
+        "duration_seconds": 0.7,
+        "prompt_influence": 0.7,
+        "loop": false
+      },
+      "prompt": "One isolated release of light from a substantial rounded crystal, for a calm moonlit puzzle game. A soft glass note centered on D5 with a fuller warm D4 body, one clean tactile onset and a smooth luminous tail. Richer body than a small contact, never a louder explosion. A single integrated contact, then silence. No broken-glass crash, fragment rattle, rapid arpeggio, rising pitch, reward fanfare, hiss, whoosh, voices or music bed. Original sound, centered mono-compatible image."
+    },
+    {
+      "id": "sf_settle_a",
+      "label": "Settle — Optional quiet tuck",
+      "node_id": "anISs3S5MyDvieWPiFwH",
+      "node_type": "sfx",
+      "model_id": "eleven_text_to_sound_v2",
+      "parameters": {
+        "duration_seconds": 0.5,
+        "prompt_influence": 0.7,
+        "loop": false
+      },
+      "prompt": "One very quiet rounded crystal seating gently into a felt-lined recess. A short muted D4 glass-and-wood tuck, one soft attack immediately at the start and almost no ring. Intimate tactile punctuation, quieter than a normal crystal tap. Then silence. No bounce, multiple contacts, debris, click burst, shattering, swoosh, bell melody, voices or music bed. Original sound, centered mono-compatible image."
+    },
+    {
+      "id": "sf_win_a",
+      "label": "Win — Sky illuminated",
+      "node_id": "RC8tepZyoXfW5Pv0UDk7",
+      "node_type": "sfx",
+      "model_id": "eleven_text_to_sound_v2",
+      "parameters": {
+        "duration_seconds": 1.6,
+        "prompt_influence": 0.7,
+        "loop": false
+      },
+      "prompt": "A tiny original completion phrase for a quiet moonlit puzzle game: one soft rounded D5 crystal contact immediately at the start, followed by two gently spaced warm glass-celesta notes A4 then D5, resting peacefully on D. Warm low body, soft attacks, a short luminous decay and a clean silent ending. Three restrained contacts total, emotionally resolved and unhurried. No triumphant fanfare, drums, cymbals, rising sweep, glitter shower, applause, voices, bass boom or backing music. Centered mono-compatible image."
+    }
+  ],
+  "validation": {
+    "prompt_and_parameter_review": true,
+    "audio_listening": false,
+    "loop_seams": false,
+    "game_integration": false,
+    "apple_simulator": false,
+    "physical_device": false
+  },
+  "generation_started": true,
+  "actual_total_charge_usd": null,
+  "billing_note": "Run starts spend credits. Per-generation reported prices are not a reconciled account bill; failed-job billing/refunds are unverified.",
+  "correction_estimate": {
+    "credits": 123.2,
+    "price_cents": 2.24,
+    "generations_count": 4,
+    "currency": "usd",
+    "estimated_runtime_seconds": 8
+  },
+  "conservative_combined_quote_usd": 1.4928,
+  "corrected_nodes": [
+    {
+      "id": "sf_clear_small_b",
+      "label": "Clear — Felt glass B / concise revision",
+      "node_id": "3Gy3Z5Yk6htoOIuTg0zm",
+      "node_type": "sfx",
+      "model_id": "eleven_text_to_sound_v2",
+      "parameters": {
+        "duration_seconds": 0.5,
+        "prompt_influence": 0.7,
+        "loop": false
+      },
+      "prompt": "One soft rounded glass contact centered on D5, warm felt-like low body and a smooth glass overtone. Immediate single gentle attack, short silky decay, then silence. Intimate wooden-bead weight; centered, mono compatible. No shattering, rattle, hiss, glitter, whoosh, bass hit, voices, backing music or repeated notes.",
+      "revision_reason": "Original prompt rejected by provider's 450-character limit; discovered after successful schema check and estimate."
+    },
+    {
+      "id": "sf_clear_full_a",
+      "label": "Large group — Full glass / concise revision",
+      "node_id": "wLuKzwL45tMStfrZqduA",
+      "node_type": "sfx",
+      "model_id": "eleven_text_to_sound_v2",
+      "parameters": {
+        "duration_seconds": 0.7,
+        "prompt_influence": 0.7,
+        "loop": false
+      },
+      "prompt": "One rounded glass release centered on D5 with a warm D4 body. Immediate soft tactile attack, fuller body and a smooth short luminous tail, then silence. Substantial but no louder than a gentle tap; centered, mono compatible. No crash, fragment rattle, rapid arpeggio, rising sweep, fanfare, hiss, whoosh, voices or backing music.",
+      "revision_reason": "Original prompt rejected by provider's 450-character limit; discovered after successful schema check and estimate."
+    },
+    {
+      "id": "sf_win_a",
+      "label": "Win — Sky illuminated / concise revision",
+      "node_id": "KCxd7MYAOn61UlsVxvNu",
+      "node_type": "sfx",
+      "model_id": "eleven_text_to_sound_v2",
+      "parameters": {
+        "duration_seconds": 1.6,
+        "prompt_influence": 0.7,
+        "loop": false
+      },
+      "prompt": "One tiny resolved glass-celesta phrase: soft rounded D5 contact immediately, then gently spaced A4 and D5, resting peacefully on D. Three restrained notes total, warm low body, rounded attacks, short soft decay, clean silent ending. Intimate, unhurried, centered, mono compatible. No fanfare, drums, cymbals, sweep, glitter shower, applause, voices, bass boom or backing music.",
+      "revision_reason": "Original prompt rejected by provider's 450-character limit; discovered after successful schema check and estimate."
+    }
+  ],
+  "runs": [
+    {
+      "summary": {
+        "nodes_run": 8,
+        "generations_started": 32,
+        "failed": 0,
+        "generations_by_node": {
+          "SMgKcjE8zydNUQe8pVOV": 4,
+          "D0tY6ewwfqaForrsz8IK": 4,
+          "jqalk2IkNtKYTzg6goZm": 4,
+          "gzfjIHkkAgluPpX1pRZA": 4,
+          "u95Cav7wJEIKKgnStcYE": 4,
+          "oLN3HPUSB2aAB5xCHcfa": 4,
+          "anISs3S5MyDvieWPiFwH": 4,
+          "RC8tepZyoXfW5Pv0UDk7": 4
+        }
+      },
+      "session_ids": [
+        "5hOS4T7JcJ6w0qF25sxa",
+        "Cv48OD8O8jyEgDcQ25x4",
+        "N0tMyKI3xnRmnpw4FVoj",
+        "Iy9LlPJh5LvuK4VDjfiA",
+        "kN67FA7kCumGP96BMnOg",
+        "Yrq9EjbZ18HSwQDDoD99",
+        "VIihe1nWiWeHeDJqYgzA",
+        "WaY2ZwQzZGU2tn1IbH2t",
+        "XGXusHIu5pmLtaC4Sxts",
+        "JuvizVH2nh1C5oVRr1uT",
+        "oazicFTJHPxPO5vaXpU0",
+        "GvcYLothqiWd3mNDlhRB",
+        "UTxaViQvpOL4nuVVFHg1",
+        "GOq4C9qdOTB5BfIv7Uq5",
+        "qwJDTaliPc93DBNCgQ5V",
+        "XnhPEFFgHldEWgmC08Cj",
+        "s4UVOaOMFehXsucmSMmd",
+        "7ufhpnRRznTskcfn9KcJ",
+        "wVowcGWHGx9tk7kqf4Zz",
+        "FT83JICmxWKyCCB09ryA",
+        "tNb8xjK5MpsczrAvswNu",
+        "QHJcL8ipLBTTxuXHxL06",
+        "GCet4bb8dmkrZHBGMTIF",
+        "wIbSBbKiRQ0gflCSnlkY",
+        "YFXy4BopLb7OhPEBPlVF",
+        "VQdouqPYXOV251Pz94dQ",
+        "vCc0K1P2GcVzucTT6wgm",
+        "rG3lqIHA7nS6wECOP7xn",
+        "xEm86rdGnq2NKA5EEThB",
+        "BPaoPUy1h10KkQXIU3TG",
+        "VfLNfmLJykTzTbOgNPw0",
+        "PGVTc2NyC78HxtXGzz2A"
+      ],
+      "results": [
+        {
+          "success": true,
+          "node_id": "SMgKcjE8zydNUQe8pVOV",
+          "session_id": "5hOS4T7JcJ6w0qF25sxa",
+          "credit_costs": {
+            "UM0uHC8JPUl8NBdpr4oc": 449.9
+          }
+        },
+        {
+          "success": true,
+          "node_id": "SMgKcjE8zydNUQe8pVOV",
+          "session_id": "Cv48OD8O8jyEgDcQ25x4",
+          "credit_costs": {
+            "xSYEBWSvu9IXRuoExWSX": 449.9
+          }
+        },
+        {
+          "success": true,
+          "node_id": "SMgKcjE8zydNUQe8pVOV",
+          "session_id": "N0tMyKI3xnRmnpw4FVoj",
+          "credit_costs": {
+            "ldvwudGn9EmymPJG1dr4": 449.9
+          }
+        },
+        {
+          "success": true,
+          "node_id": "SMgKcjE8zydNUQe8pVOV",
+          "session_id": "Iy9LlPJh5LvuK4VDjfiA",
+          "credit_costs": {
+            "8U5Sp9kfcfAP9FMTJJsO": 449.9
+          }
+        },
+        {
+          "success": true,
+          "node_id": "D0tY6ewwfqaForrsz8IK",
+          "session_id": "kN67FA7kCumGP96BMnOg",
+          "credit_costs": {
+            "grVYQqoimX2Dn7PuymTV": 449.9
+          }
+        },
+        {
+          "success": true,
+          "node_id": "D0tY6ewwfqaForrsz8IK",
+          "session_id": "Yrq9EjbZ18HSwQDDoD99",
+          "credit_costs": {
+            "Qxc3QI4MUHwjTjWbW3AS": 449.9
+          }
+        },
+        {
+          "success": true,
+          "node_id": "D0tY6ewwfqaForrsz8IK",
+          "session_id": "VIihe1nWiWeHeDJqYgzA",
+          "credit_costs": {
+            "nVq7Df6VQvMiKV8Cy1QT": 449.9
+          }
+        },
+        {
+          "success": true,
+          "node_id": "D0tY6ewwfqaForrsz8IK",
+          "session_id": "WaY2ZwQzZGU2tn1IbH2t",
+          "credit_costs": {
+            "DS4c5w1ZssdVI2WuWvy8": 449.9
+          }
+        },
+        {
+          "success": true,
+          "node_id": "jqalk2IkNtKYTzg6goZm",
+          "session_id": "XGXusHIu5pmLtaC4Sxts",
+          "credit_costs": {
+            "XlhPKpHGuZWPC1fkzGOB": 179.96
+          }
+        },
+        {
+          "success": true,
+          "node_id": "jqalk2IkNtKYTzg6goZm",
+          "session_id": "JuvizVH2nh1C5oVRr1uT",
+          "credit_costs": {
+            "qJFlvj2gErmwaFvdn74o": 179.96
+          }
+        },
+        {
+          "success": true,
+          "node_id": "jqalk2IkNtKYTzg6goZm",
+          "session_id": "oazicFTJHPxPO5vaXpU0",
+          "credit_costs": {
+            "wLtPpSmJX7LpYytrhVWE": 179.96
+          }
+        },
+        {
+          "success": true,
+          "node_id": "jqalk2IkNtKYTzg6goZm",
+          "session_id": "GvcYLothqiWd3mNDlhRB",
+          "credit_costs": {
+            "SNSmbZdAkrceawDhT0Xc": 179.96
+          }
+        },
+        {
+          "success": true,
+          "node_id": "gzfjIHkkAgluPpX1pRZA",
+          "session_id": "UTxaViQvpOL4nuVVFHg1",
+          "credit_costs": {
+            "aEDQH2LLa3PFQ2IuLoeI": 1.6665
+          }
+        },
+        {
+          "success": true,
+          "node_id": "gzfjIHkkAgluPpX1pRZA",
+          "session_id": "GOq4C9qdOTB5BfIv7Uq5",
+          "credit_costs": {
+            "ZBocdLpKI6aupM404gGm": 1.6665
+          }
+        },
+        {
+          "success": true,
+          "node_id": "gzfjIHkkAgluPpX1pRZA",
+          "session_id": "qwJDTaliPc93DBNCgQ5V",
+          "credit_costs": {
+            "hHZxioNvpO7hCSfviEhf": 1.6665
+          }
+        },
+        {
+          "success": true,
+          "node_id": "gzfjIHkkAgluPpX1pRZA",
+          "session_id": "XnhPEFFgHldEWgmC08Cj",
+          "credit_costs": {
+            "L9mnZpFI61AbFlCiE8LB": 1.6665
+          }
+        },
+        {
+          "success": true,
+          "node_id": "u95Cav7wJEIKKgnStcYE",
+          "session_id": "s4UVOaOMFehXsucmSMmd",
+          "credit_costs": {
+            "TJ3ssGFpx7bisqUew7Ev": 1.6665
+          }
+        },
+        {
+          "success": true,
+          "node_id": "u95Cav7wJEIKKgnStcYE",
+          "session_id": "7ufhpnRRznTskcfn9KcJ",
+          "credit_costs": {
+            "Jjpy38KteF12bqjldotT": 1.6665
+          }
+        },
+        {
+          "success": true,
+          "node_id": "u95Cav7wJEIKKgnStcYE",
+          "session_id": "wVowcGWHGx9tk7kqf4Zz",
+          "credit_costs": {
+            "aeeWq7iQoCB6sKbu3j60": 1.6665
+          }
+        },
+        {
+          "success": true,
+          "node_id": "u95Cav7wJEIKKgnStcYE",
+          "session_id": "FT83JICmxWKyCCB09ryA",
+          "credit_costs": {
+            "DE2aMSuY9bdAvTu23QGC": 1.6665
+          }
+        },
+        {
+          "success": true,
+          "node_id": "oLN3HPUSB2aAB5xCHcfa",
+          "session_id": "tNb8xjK5MpsczrAvswNu",
+          "credit_costs": {
+            "jhhlWAJlAVzE4pdDGo5r": 2.3331
+          }
+        },
+        {
+          "success": true,
+          "node_id": "oLN3HPUSB2aAB5xCHcfa",
+          "session_id": "QHJcL8ipLBTTxuXHxL06",
+          "credit_costs": {
+            "zDs4M7V1ySQtV9YhySRG": 2.3331
+          }
+        },
+        {
+          "success": true,
+          "node_id": "oLN3HPUSB2aAB5xCHcfa",
+          "session_id": "GCet4bb8dmkrZHBGMTIF",
+          "credit_costs": {
+            "CzKJs9rlmwspmKgOdckv": 2.3331
+          }
+        },
+        {
+          "success": true,
+          "node_id": "oLN3HPUSB2aAB5xCHcfa",
+          "session_id": "wIbSBbKiRQ0gflCSnlkY",
+          "credit_costs": {
+            "rWJOLK0IZA8P0CllGewx": 2.3331
+          }
+        },
+        {
+          "success": true,
+          "node_id": "anISs3S5MyDvieWPiFwH",
+          "session_id": "YFXy4BopLb7OhPEBPlVF",
+          "credit_costs": {
+            "a9pkUyoRCdd6K1236GWT": 1.6665
+          }
+        },
+        {
+          "success": true,
+          "node_id": "anISs3S5MyDvieWPiFwH",
+          "session_id": "VQdouqPYXOV251Pz94dQ",
+          "credit_costs": {
+            "5gQsDv1WzGaXymIdoRC2": 1.6665
+          }
+        },
+        {
+          "success": true,
+          "node_id": "anISs3S5MyDvieWPiFwH",
+          "session_id": "vCc0K1P2GcVzucTT6wgm",
+          "credit_costs": {
+            "5uAButrBxwRPLgJfXFri": 1.6665
+          }
+        },
+        {
+          "success": true,
+          "node_id": "anISs3S5MyDvieWPiFwH",
+          "session_id": "rG3lqIHA7nS6wECOP7xn",
+          "credit_costs": {
+            "JXGLIkmmOtXGoqfq0yLQ": 1.6665
+          }
+        },
+        {
+          "success": true,
+          "node_id": "RC8tepZyoXfW5Pv0UDk7",
+          "session_id": "xEm86rdGnq2NKA5EEThB",
+          "credit_costs": {
+            "ghJZgkSG4EEtbq8vZpDr": 5.332800000000001
+          }
+        },
+        {
+          "success": true,
+          "node_id": "RC8tepZyoXfW5Pv0UDk7",
+          "session_id": "BPaoPUy1h10KkQXIU3TG",
+          "credit_costs": {
+            "9aNaA4bRZFFixTgsKYhG": 5.332800000000001
+          }
+        },
+        {
+          "success": true,
+          "node_id": "RC8tepZyoXfW5Pv0UDk7",
+          "session_id": "VfLNfmLJykTzTbOgNPw0",
+          "credit_costs": {
+            "JWR9qzY5NoMIiVIubM3S": 5.332800000000001
+          }
+        },
+        {
+          "success": true,
+          "node_id": "RC8tepZyoXfW5Pv0UDk7",
+          "session_id": "PGVTc2NyC78HxtXGzz2A",
+          "credit_costs": {
+            "5l035RNCnQDMuslhR9Mv": 5.332800000000001
+          }
+        }
+      ]
+    },
+    {
+      "summary": {
+        "nodes_run": 3,
+        "generations_started": 12,
+        "failed": 0,
+        "generations_by_node": {
+          "3Gy3Z5Yk6htoOIuTg0zm": 4,
+          "wLuKzwL45tMStfrZqduA": 4,
+          "KCxd7MYAOn61UlsVxvNu": 4
+        }
+      },
+      "session_ids": [
+        "hesNEaH7e9inqqCDHee4",
+        "KYdGUF5fNQBAIlY4DZlM",
+        "vRRDWgaBln58YhYb2s2x",
+        "GHdUayeQxJhqwlI9FB9y",
+        "fPrj2enBErzHQTjz9MOr",
+        "cmpt72pU9q1pUYzaFsAz",
+        "vZi3KYnofMxSxb70vx6g",
+        "b1w03JtYCtfmymVEN3OH",
+        "OQSPPWDUCMzekong2ppt",
+        "ZtHBRRL9t5EoSk1N6bfH",
+        "1maegNLarIShIndZATov",
+        "6xWkt3nm77aURNmBDdiI"
+      ],
+      "results": [
+        {
+          "success": true,
+          "node_id": "3Gy3Z5Yk6htoOIuTg0zm",
+          "session_id": "hesNEaH7e9inqqCDHee4",
+          "credit_costs": {
+            "aEmso3SvwTNTqE6xUNOB": 1.6665
+          }
+        },
+        {
+          "success": true,
+          "node_id": "3Gy3Z5Yk6htoOIuTg0zm",
+          "session_id": "KYdGUF5fNQBAIlY4DZlM",
+          "credit_costs": {
+            "varo75iz6aeND6Y1EtGZ": 1.6665
+          }
+        },
+        {
+          "success": true,
+          "node_id": "3Gy3Z5Yk6htoOIuTg0zm",
+          "session_id": "vRRDWgaBln58YhYb2s2x",
+          "credit_costs": {
+            "XGTFAqkhfS9JceHuRF9g": 1.6665
+          }
+        },
+        {
+          "success": true,
+          "node_id": "3Gy3Z5Yk6htoOIuTg0zm",
+          "session_id": "GHdUayeQxJhqwlI9FB9y",
+          "credit_costs": {
+            "kjxMUFVd1kHrG3NYrlGi": 1.6665
+          }
+        },
+        {
+          "success": true,
+          "node_id": "wLuKzwL45tMStfrZqduA",
+          "session_id": "fPrj2enBErzHQTjz9MOr",
+          "credit_costs": {
+            "jT4GneA04Fn8vNXBCTFs": 2.3331
+          }
+        },
+        {
+          "success": true,
+          "node_id": "wLuKzwL45tMStfrZqduA",
+          "session_id": "cmpt72pU9q1pUYzaFsAz",
+          "credit_costs": {
+            "4t9EoI0eDGmVHrh5bPRP": 2.3331
+          }
+        },
+        {
+          "success": true,
+          "node_id": "wLuKzwL45tMStfrZqduA",
+          "session_id": "vZi3KYnofMxSxb70vx6g",
+          "credit_costs": {
+            "KiQcu1IjJVP8t3kSXotg": 2.3331
+          }
+        },
+        {
+          "success": true,
+          "node_id": "wLuKzwL45tMStfrZqduA",
+          "session_id": "b1w03JtYCtfmymVEN3OH",
+          "credit_costs": {
+            "zu5GUdbDutHeATQWH0Wo": 2.3331
+          }
+        },
+        {
+          "success": true,
+          "node_id": "KCxd7MYAOn61UlsVxvNu",
+          "session_id": "OQSPPWDUCMzekong2ppt",
+          "credit_costs": {
+            "sQFhM4mSwvFdP4P6kowY": 5.332800000000001
+          }
+        },
+        {
+          "success": true,
+          "node_id": "KCxd7MYAOn61UlsVxvNu",
+          "session_id": "ZtHBRRL9t5EoSk1N6bfH",
+          "credit_costs": {
+            "CrENzvOjhUfUgcS9sEmp": 5.332800000000001
+          }
+        },
+        {
+          "success": true,
+          "node_id": "KCxd7MYAOn61UlsVxvNu",
+          "session_id": "1maegNLarIShIndZATov",
+          "credit_costs": {
+            "oQUpORGCgHrSr99FFx2m": 5.332800000000001
+          }
+        },
+        {
+          "success": true,
+          "node_id": "KCxd7MYAOn61UlsVxvNu",
+          "session_id": "6xWkt3nm77aURNmBDdiI",
+          "credit_costs": {
+            "fcOXMZTKjqtmJy08Nmu9": 5.332800000000001
+          }
+        }
+      ]
+    }
+  ],
+  "generations": [
+    {
+      "session_id": "5hOS4T7JcJ6w0qF25sxa",
+      "node_id": "SMgKcjE8zydNUQe8pVOV",
+      "id": "UM0uHC8JPUl8NBdpr4oc",
+      "status": "failed",
+      "model_id": "eleven_music_v2",
+      "price": {
+        "credits": 449.9,
+        "price_cents": 8.18,
+        "cost_fiat_currency": "usd"
+      },
+      "error_message": "Insufficient funds"
+    },
+    {
+      "session_id": "Cv48OD8O8jyEgDcQ25x4",
+      "node_id": "SMgKcjE8zydNUQe8pVOV",
+      "id": "xSYEBWSvu9IXRuoExWSX",
+      "status": "failed",
+      "model_id": "eleven_music_v2",
+      "price": {
+        "credits": 449.9,
+        "price_cents": 8.18,
+        "cost_fiat_currency": "usd"
+      },
+      "error_message": "Insufficient funds"
+    },
+    {
+      "session_id": "N0tMyKI3xnRmnpw4FVoj",
+      "node_id": "SMgKcjE8zydNUQe8pVOV",
+      "id": "ldvwudGn9EmymPJG1dr4",
+      "status": "failed",
+      "model_id": "eleven_music_v2",
+      "price": {
+        "credits": 449.9,
+        "price_cents": 8.18,
+        "cost_fiat_currency": "usd"
+      },
+      "error_message": "Insufficient funds"
+    },
+    {
+      "session_id": "Iy9LlPJh5LvuK4VDjfiA",
+      "node_id": "SMgKcjE8zydNUQe8pVOV",
+      "id": "8U5Sp9kfcfAP9FMTJJsO",
+      "status": "failed",
+      "model_id": "eleven_music_v2",
+      "price": {
+        "credits": 449.9,
+        "price_cents": 8.18,
+        "cost_fiat_currency": "usd"
+      },
+      "error_message": "Insufficient funds"
+    },
+    {
+      "session_id": "kN67FA7kCumGP96BMnOg",
+      "node_id": "D0tY6ewwfqaForrsz8IK",
+      "id": "grVYQqoimX2Dn7PuymTV",
+      "status": "failed",
+      "model_id": "eleven_music_v2",
+      "price": {
+        "credits": 449.9,
+        "price_cents": 8.18,
+        "cost_fiat_currency": "usd"
+      },
+      "error_message": "Insufficient funds"
+    },
+    {
+      "session_id": "Yrq9EjbZ18HSwQDDoD99",
+      "node_id": "D0tY6ewwfqaForrsz8IK",
+      "id": "Qxc3QI4MUHwjTjWbW3AS",
+      "status": "failed",
+      "model_id": "eleven_music_v2",
+      "price": {
+        "credits": 449.9,
+        "price_cents": 8.18,
+        "cost_fiat_currency": "usd"
+      },
+      "error_message": "Insufficient funds"
+    },
+    {
+      "session_id": "VIihe1nWiWeHeDJqYgzA",
+      "node_id": "D0tY6ewwfqaForrsz8IK",
+      "id": "nVq7Df6VQvMiKV8Cy1QT",
+      "status": "failed",
+      "model_id": "eleven_music_v2",
+      "price": {
+        "credits": 449.9,
+        "price_cents": 8.18,
+        "cost_fiat_currency": "usd"
+      },
+      "error_message": "Insufficient funds"
+    },
+    {
+      "session_id": "WaY2ZwQzZGU2tn1IbH2t",
+      "node_id": "D0tY6ewwfqaForrsz8IK",
+      "id": "DS4c5w1ZssdVI2WuWvy8",
+      "status": "failed",
+      "model_id": "eleven_music_v2",
+      "price": {
+        "credits": 449.9,
+        "price_cents": 8.18,
+        "cost_fiat_currency": "usd"
+      },
+      "error_message": "Insufficient funds"
+    },
+    {
+      "session_id": "XGXusHIu5pmLtaC4Sxts",
+      "node_id": "jqalk2IkNtKYTzg6goZm",
+      "id": "XlhPKpHGuZWPC1fkzGOB",
+      "status": "completed",
+      "duration_secs": 12,
+      "model_id": "eleven_music_v2",
+      "price": {
+        "credits": 179.96,
+        "price_cents": 3.2720000000000002,
+        "cost_fiat_currency": "usd"
+      }
+    },
+    {
+      "session_id": "JuvizVH2nh1C5oVRr1uT",
+      "node_id": "jqalk2IkNtKYTzg6goZm",
+      "id": "qJFlvj2gErmwaFvdn74o",
+      "status": "failed",
+      "model_id": "eleven_music_v2",
+      "price": {
+        "credits": 179.96,
+        "price_cents": 3.2720000000000002,
+        "cost_fiat_currency": "usd"
+      },
+      "error_message": "Insufficient funds"
+    },
+    {
+      "session_id": "oazicFTJHPxPO5vaXpU0",
+      "node_id": "jqalk2IkNtKYTzg6goZm",
+      "id": "wLtPpSmJX7LpYytrhVWE",
+      "status": "failed",
+      "model_id": "eleven_music_v2",
+      "price": {
+        "credits": 179.96,
+        "price_cents": 3.2720000000000002,
+        "cost_fiat_currency": "usd"
+      },
+      "error_message": "Insufficient funds"
+    },
+    {
+      "session_id": "GvcYLothqiWd3mNDlhRB",
+      "node_id": "jqalk2IkNtKYTzg6goZm",
+      "id": "SNSmbZdAkrceawDhT0Xc",
+      "status": "failed",
+      "model_id": "eleven_music_v2",
+      "price": {
+        "credits": 179.96,
+        "price_cents": 3.2720000000000002,
+        "cost_fiat_currency": "usd"
+      },
+      "error_message": "Insufficient funds"
+    },
+    {
+      "session_id": "UTxaViQvpOL4nuVVFHg1",
+      "node_id": "gzfjIHkkAgluPpX1pRZA",
+      "id": "aEDQH2LLa3PFQ2IuLoeI",
+      "status": "completed",
+      "duration_secs": 0.48,
+      "model_id": "eleven_text_to_sound_v2",
+      "price": {
+        "credits": 1.6665,
+        "price_cents": 0.0303,
+        "cost_fiat_currency": "usd"
+      }
+    },
+    {
+      "session_id": "GOq4C9qdOTB5BfIv7Uq5",
+      "node_id": "gzfjIHkkAgluPpX1pRZA",
+      "id": "ZBocdLpKI6aupM404gGm",
+      "status": "completed",
+      "duration_secs": 0.48,
+      "model_id": "eleven_text_to_sound_v2",
+      "price": {
+        "credits": 1.6665,
+        "price_cents": 0.0303,
+        "cost_fiat_currency": "usd"
+      }
+    },
+    {
+      "session_id": "qwJDTaliPc93DBNCgQ5V",
+      "node_id": "gzfjIHkkAgluPpX1pRZA",
+      "id": "hHZxioNvpO7hCSfviEhf",
+      "status": "completed",
+      "duration_secs": 0.48,
+      "model_id": "eleven_text_to_sound_v2",
+      "price": {
+        "credits": 1.6665,
+        "price_cents": 0.0303,
+        "cost_fiat_currency": "usd"
+      }
+    },
+    {
+      "session_id": "XnhPEFFgHldEWgmC08Cj",
+      "node_id": "gzfjIHkkAgluPpX1pRZA",
+      "id": "L9mnZpFI61AbFlCiE8LB",
+      "status": "completed",
+      "duration_secs": 0.48,
+      "model_id": "eleven_text_to_sound_v2",
+      "price": {
+        "credits": 1.6665,
+        "price_cents": 0.0303,
+        "cost_fiat_currency": "usd"
+      }
+    },
+    {
+      "session_id": "s4UVOaOMFehXsucmSMmd",
+      "node_id": "u95Cav7wJEIKKgnStcYE",
+      "id": "TJ3ssGFpx7bisqUew7Ev",
+      "status": "failed",
+      "model_id": "eleven_text_to_sound_v2",
+      "price": {
+        "credits": 1.6665,
+        "price_cents": 0.0303,
+        "cost_fiat_currency": "usd"
+      },
+      "error_message": "Prompt must be at most 450 characters, got 475."
+    },
+    {
+      "session_id": "7ufhpnRRznTskcfn9KcJ",
+      "node_id": "u95Cav7wJEIKKgnStcYE",
+      "id": "Jjpy38KteF12bqjldotT",
+      "status": "failed",
+      "model_id": "eleven_text_to_sound_v2",
+      "price": {
+        "credits": 1.6665,
+        "price_cents": 0.0303,
+        "cost_fiat_currency": "usd"
+      },
+      "error_message": "Prompt must be at most 450 characters, got 475."
+    },
+    {
+      "session_id": "wVowcGWHGx9tk7kqf4Zz",
+      "node_id": "u95Cav7wJEIKKgnStcYE",
+      "id": "aeeWq7iQoCB6sKbu3j60",
+      "status": "failed",
+      "model_id": "eleven_text_to_sound_v2",
+      "price": {
+        "credits": 1.6665,
+        "price_cents": 0.0303,
+        "cost_fiat_currency": "usd"
+      },
+      "error_message": "Prompt must be at most 450 characters, got 475."
+    },
+    {
+      "session_id": "FT83JICmxWKyCCB09ryA",
+      "node_id": "u95Cav7wJEIKKgnStcYE",
+      "id": "DE2aMSuY9bdAvTu23QGC",
+      "status": "failed",
+      "model_id": "eleven_text_to_sound_v2",
+      "price": {
+        "credits": 1.6665,
+        "price_cents": 0.0303,
+        "cost_fiat_currency": "usd"
+      },
+      "error_message": "Prompt must be at most 450 characters, got 475."
+    },
+    {
+      "session_id": "tNb8xjK5MpsczrAvswNu",
+      "node_id": "oLN3HPUSB2aAB5xCHcfa",
+      "id": "jhhlWAJlAVzE4pdDGo5r",
+      "status": "failed",
+      "model_id": "eleven_text_to_sound_v2",
+      "price": {
+        "credits": 2.3331,
+        "price_cents": 0.04242,
+        "cost_fiat_currency": "usd"
+      },
+      "error_message": "Prompt must be at most 450 characters, got 482."
+    },
+    {
+      "session_id": "QHJcL8ipLBTTxuXHxL06",
+      "node_id": "oLN3HPUSB2aAB5xCHcfa",
+      "id": "zDs4M7V1ySQtV9YhySRG",
+      "status": "failed",
+      "model_id": "eleven_text_to_sound_v2",
+      "price": {
+        "credits": 2.3331,
+        "price_cents": 0.04242,
+        "cost_fiat_currency": "usd"
+      },
+      "error_message": "Prompt must be at most 450 characters, got 482."
+    },
+    {
+      "session_id": "GCet4bb8dmkrZHBGMTIF",
+      "node_id": "oLN3HPUSB2aAB5xCHcfa",
+      "id": "CzKJs9rlmwspmKgOdckv",
+      "status": "failed",
+      "model_id": "eleven_text_to_sound_v2",
+      "price": {
+        "credits": 2.3331,
+        "price_cents": 0.04242,
+        "cost_fiat_currency": "usd"
+      },
+      "error_message": "Prompt must be at most 450 characters, got 482."
+    },
+    {
+      "session_id": "wIbSBbKiRQ0gflCSnlkY",
+      "node_id": "oLN3HPUSB2aAB5xCHcfa",
+      "id": "rWJOLK0IZA8P0CllGewx",
+      "status": "failed",
+      "model_id": "eleven_text_to_sound_v2",
+      "price": {
+        "credits": 2.3331,
+        "price_cents": 0.04242,
+        "cost_fiat_currency": "usd"
+      },
+      "error_message": "Prompt must be at most 450 characters, got 482."
+    },
+    {
+      "session_id": "YFXy4BopLb7OhPEBPlVF",
+      "node_id": "anISs3S5MyDvieWPiFwH",
+      "id": "a9pkUyoRCdd6K1236GWT",
+      "status": "completed",
+      "duration_secs": 0.48,
+      "model_id": "eleven_text_to_sound_v2",
+      "price": {
+        "credits": 1.6665,
+        "price_cents": 0.0303,
+        "cost_fiat_currency": "usd"
+      }
+    },
+    {
+      "session_id": "VQdouqPYXOV251Pz94dQ",
+      "node_id": "anISs3S5MyDvieWPiFwH",
+      "id": "5gQsDv1WzGaXymIdoRC2",
+      "status": "completed",
+      "duration_secs": 0.48,
+      "model_id": "eleven_text_to_sound_v2",
+      "price": {
+        "credits": 1.6665,
+        "price_cents": 0.0303,
+        "cost_fiat_currency": "usd"
+      }
+    },
+    {
+      "session_id": "vCc0K1P2GcVzucTT6wgm",
+      "node_id": "anISs3S5MyDvieWPiFwH",
+      "id": "5uAButrBxwRPLgJfXFri",
+      "status": "completed",
+      "duration_secs": 0.48,
+      "model_id": "eleven_text_to_sound_v2",
+      "price": {
+        "credits": 1.6665,
+        "price_cents": 0.0303,
+        "cost_fiat_currency": "usd"
+      }
+    },
+    {
+      "session_id": "rG3lqIHA7nS6wECOP7xn",
+      "node_id": "anISs3S5MyDvieWPiFwH",
+      "id": "JXGLIkmmOtXGoqfq0yLQ",
+      "status": "completed",
+      "duration_secs": 0.48,
+      "model_id": "eleven_text_to_sound_v2",
+      "price": {
+        "credits": 1.6665,
+        "price_cents": 0.0303,
+        "cost_fiat_currency": "usd"
+      }
+    },
+    {
+      "session_id": "xEm86rdGnq2NKA5EEThB",
+      "node_id": "RC8tepZyoXfW5Pv0UDk7",
+      "id": "ghJZgkSG4EEtbq8vZpDr",
+      "status": "failed",
+      "model_id": "eleven_text_to_sound_v2",
+      "price": {
+        "credits": 5.332800000000001,
+        "price_cents": 0.09696,
+        "cost_fiat_currency": "usd"
+      },
+      "error_message": "Prompt must be at most 450 characters, got 515."
+    },
+    {
+      "session_id": "BPaoPUy1h10KkQXIU3TG",
+      "node_id": "RC8tepZyoXfW5Pv0UDk7",
+      "id": "9aNaA4bRZFFixTgsKYhG",
+      "status": "failed",
+      "model_id": "eleven_text_to_sound_v2",
+      "price": {
+        "credits": 5.332800000000001,
+        "price_cents": 0.09696,
+        "cost_fiat_currency": "usd"
+      },
+      "error_message": "Prompt must be at most 450 characters, got 515."
+    },
+    {
+      "session_id": "VfLNfmLJykTzTbOgNPw0",
+      "node_id": "RC8tepZyoXfW5Pv0UDk7",
+      "id": "JWR9qzY5NoMIiVIubM3S",
+      "status": "failed",
+      "model_id": "eleven_text_to_sound_v2",
+      "price": {
+        "credits": 5.332800000000001,
+        "price_cents": 0.09696,
+        "cost_fiat_currency": "usd"
+      },
+      "error_message": "Prompt must be at most 450 characters, got 515."
+    },
+    {
+      "session_id": "PGVTc2NyC78HxtXGzz2A",
+      "node_id": "RC8tepZyoXfW5Pv0UDk7",
+      "id": "5l035RNCnQDMuslhR9Mv",
+      "status": "failed",
+      "model_id": "eleven_text_to_sound_v2",
+      "price": {
+        "credits": 5.332800000000001,
+        "price_cents": 0.09696,
+        "cost_fiat_currency": "usd"
+      },
+      "error_message": "Prompt must be at most 450 characters, got 515."
+    },
+    {
+      "session_id": "hesNEaH7e9inqqCDHee4",
+      "node_id": "3Gy3Z5Yk6htoOIuTg0zm",
+      "id": "aEmso3SvwTNTqE6xUNOB",
+      "status": "completed",
+      "duration_secs": 0.48,
+      "model_id": "eleven_text_to_sound_v2",
+      "price": {
+        "credits": 1.6665,
+        "price_cents": 0.0303,
+        "cost_fiat_currency": "usd"
+      }
+    },
+    {
+      "session_id": "KYdGUF5fNQBAIlY4DZlM",
+      "node_id": "3Gy3Z5Yk6htoOIuTg0zm",
+      "id": "varo75iz6aeND6Y1EtGZ",
+      "status": "completed",
+      "duration_secs": 0.48,
+      "model_id": "eleven_text_to_sound_v2",
+      "price": {
+        "credits": 1.6665,
+        "price_cents": 0.0303,
+        "cost_fiat_currency": "usd"
+      }
+    },
+    {
+      "session_id": "vRRDWgaBln58YhYb2s2x",
+      "node_id": "3Gy3Z5Yk6htoOIuTg0zm",
+      "id": "XGTFAqkhfS9JceHuRF9g",
+      "status": "completed",
+      "duration_secs": 0.48,
+      "model_id": "eleven_text_to_sound_v2",
+      "price": {
+        "credits": 1.6665,
+        "price_cents": 0.0303,
+        "cost_fiat_currency": "usd"
+      }
+    },
+    {
+      "session_id": "GHdUayeQxJhqwlI9FB9y",
+      "node_id": "3Gy3Z5Yk6htoOIuTg0zm",
+      "id": "kjxMUFVd1kHrG3NYrlGi",
+      "status": "completed",
+      "duration_secs": 0.48,
+      "model_id": "eleven_text_to_sound_v2",
+      "price": {
+        "credits": 1.6665,
+        "price_cents": 0.0303,
+        "cost_fiat_currency": "usd"
+      }
+    },
+    {
+      "session_id": "fPrj2enBErzHQTjz9MOr",
+      "node_id": "wLuKzwL45tMStfrZqduA",
+      "id": "jT4GneA04Fn8vNXBCTFs",
+      "status": "completed",
+      "duration_secs": 0.6802494331065759,
+      "model_id": "eleven_text_to_sound_v2",
+      "price": {
+        "credits": 2.3331,
+        "price_cents": 0.04242,
+        "cost_fiat_currency": "usd"
+      }
+    },
+    {
+      "session_id": "cmpt72pU9q1pUYzaFsAz",
+      "node_id": "wLuKzwL45tMStfrZqduA",
+      "id": "4t9EoI0eDGmVHrh5bPRP",
+      "status": "completed",
+      "duration_secs": 0.6802494331065759,
+      "model_id": "eleven_text_to_sound_v2",
+      "price": {
+        "credits": 2.3331,
+        "price_cents": 0.04242,
+        "cost_fiat_currency": "usd"
+      }
+    },
+    {
+      "session_id": "vZi3KYnofMxSxb70vx6g",
+      "node_id": "wLuKzwL45tMStfrZqduA",
+      "id": "KiQcu1IjJVP8t3kSXotg",
+      "status": "completed",
+      "duration_secs": 0.6802494331065759,
+      "model_id": "eleven_text_to_sound_v2",
+      "price": {
+        "credits": 2.3331,
+        "price_cents": 0.04242,
+        "cost_fiat_currency": "usd"
+      }
+    },
+    {
+      "session_id": "b1w03JtYCtfmymVEN3OH",
+      "node_id": "wLuKzwL45tMStfrZqduA",
+      "id": "zu5GUdbDutHeATQWH0Wo",
+      "status": "completed",
+      "duration_secs": 0.6802494331065759,
+      "model_id": "eleven_text_to_sound_v2",
+      "price": {
+        "credits": 2.3331,
+        "price_cents": 0.04242,
+        "cost_fiat_currency": "usd"
+      }
+    },
+    {
+      "session_id": "OQSPPWDUCMzekong2ppt",
+      "node_id": "KCxd7MYAOn61UlsVxvNu",
+      "id": "sQFhM4mSwvFdP4P6kowY",
+      "status": "completed",
+      "duration_secs": 1.6,
+      "model_id": "eleven_text_to_sound_v2",
+      "price": {
+        "credits": 5.332800000000001,
+        "price_cents": 0.09696,
+        "cost_fiat_currency": "usd"
+      }
+    },
+    {
+      "session_id": "ZtHBRRL9t5EoSk1N6bfH",
+      "node_id": "KCxd7MYAOn61UlsVxvNu",
+      "id": "CrENzvOjhUfUgcS9sEmp",
+      "status": "completed",
+      "duration_secs": 1.6,
+      "model_id": "eleven_text_to_sound_v2",
+      "price": {
+        "credits": 5.332800000000001,
+        "price_cents": 0.09696,
+        "cost_fiat_currency": "usd"
+      }
+    },
+    {
+      "session_id": "1maegNLarIShIndZATov",
+      "node_id": "KCxd7MYAOn61UlsVxvNu",
+      "id": "oQUpORGCgHrSr99FFx2m",
+      "status": "completed",
+      "duration_secs": 1.6,
+      "model_id": "eleven_text_to_sound_v2",
+      "price": {
+        "credits": 5.332800000000001,
+        "price_cents": 0.09696,
+        "cost_fiat_currency": "usd"
+      }
+    },
+    {
+      "session_id": "6xWkt3nm77aURNmBDdiI",
+      "node_id": "KCxd7MYAOn61UlsVxvNu",
+      "id": "fcOXMZTKjqtmJy08Nmu9",
+      "status": "completed",
+      "duration_secs": 1.6,
+      "model_id": "eleven_text_to_sound_v2",
+      "price": {
+        "credits": 5.332800000000001,
+        "price_cents": 0.09696,
+        "cost_fiat_currency": "usd"
+      }
+    }
+  ],
+  "blockers": [
+    "All eight gameplay-bed takes and three of four theme takes failed with Insufficient funds. One 12-second theme and all 20 intended SFX takes completed. No music retry, account top-up or subscription change."
+  ],
+  "last_checked_utc": "2026-10-16T19:10:59Z",
+  "summary": {
+    "failed": 23,
+    "completed": 21,
+    "successful_sound_effects": 20,
+    "successful_music": 1,
+    "prompt_length_failures": 12,
+    "insufficient_funds_failures": 11
+  },
+  "representative_preview_generation_ids": [
+    "XlhPKpHGuZWPC1fkzGOB",
+    "aEDQH2LLa3PFQ2IuLoeI",
+    "aEmso3SvwTNTqE6xUNOB",
+    "jT4GneA04Fn8vNXBCTFs",
+    "a9pkUyoRCdd6K1236GWT",
+    "sQFhM4mSwvFdP4P6kowY"
+  ],
+  "listening_board": {
+    "flow_id": "6OuJ7O4Fq6mbMSKCc0tG",
+    "url": "https://elevenlabs.io/app/flows/6OuJ7O4Fq6mbMSKCc0tG",
+    "completed_asset_count": 21,
+    "generation_started": false,
+    "additional_spend": 0,
+    "nodes": [
+      {
+        "number": 1,
+        "node_id": "2ZWyEJ0zDlQpdspCUjUM",
+        "generation_id": "XlhPKpHGuZWPC1fkzGOB",
+        "label": "01 · Moonlight theme — take 1"
+      },
+      {
+        "number": 2,
+        "node_id": "Rr3RS85u8hYurMC8SnjW",
+        "generation_id": "aEDQH2LLa3PFQ2IuLoeI",
+        "label": "02 · Warm glass clear — take 1"
+      },
+      {
+        "number": 3,
+        "node_id": "81OXOBPTpnihOSRa4Ukl",
+        "generation_id": "ZBocdLpKI6aupM404gGm",
+        "label": "03 · Warm glass clear — take 2"
+      },
+      {
+        "number": 4,
+        "node_id": "mOz032hsbyASShFYXOn1",
+        "generation_id": "hHZxioNvpO7hCSfviEhf",
+        "label": "04 · Warm glass clear — take 3"
+      },
+      {
+        "number": 5,
+        "node_id": "WGAfLaNLH5ujXAE6wfaW",
+        "generation_id": "L9mnZpFI61AbFlCiE8LB",
+        "label": "05 · Warm glass clear — take 4"
+      },
+      {
+        "number": 6,
+        "node_id": "KtKvlOEMDT95ED7aAmC8",
+        "generation_id": "a9pkUyoRCdd6K1236GWT",
+        "label": "06 · Quiet tuck — take 1 · SELECTED STARTER"
+      },
+      {
+        "number": 7,
+        "node_id": "4H36qUbqeKAZrU0hw1iI",
+        "generation_id": "5gQsDv1WzGaXymIdoRC2",
+        "label": "07 · Quiet tuck — take 2 · SELECTED STARTER"
+      },
+      {
+        "number": 8,
+        "node_id": "1Hg0brXfTbG1IFmhUsje",
+        "generation_id": "5uAButrBxwRPLgJfXFri",
+        "label": "08 · Quiet tuck — take 3 · SELECTED STARTER"
+      },
+      {
+        "number": 9,
+        "node_id": "brMJ0NW1LqEnFqueOGJg",
+        "generation_id": "JXGLIkmmOtXGoqfq0yLQ",
+        "label": "09 · Quiet tuck — take 4 · SELECTED STARTER"
+      },
+      {
+        "number": 10,
+        "node_id": "1FevvZzefBabilfKTiRq",
+        "generation_id": "aEmso3SvwTNTqE6xUNOB",
+        "label": "10 · Felt glass clear — take 1"
+      },
+      {
+        "number": 11,
+        "node_id": "OgQIi5czikCofzWZUR89",
+        "generation_id": "varo75iz6aeND6Y1EtGZ",
+        "label": "11 · Felt glass clear — take 2"
+      },
+      {
+        "number": 12,
+        "node_id": "sWCm9gde8zggyDZc6vgU",
+        "generation_id": "XGTFAqkhfS9JceHuRF9g",
+        "label": "12 · Felt glass clear — take 3"
+      },
+      {
+        "number": 13,
+        "node_id": "C91pTp02RuPZNoP5lPSm",
+        "generation_id": "kjxMUFVd1kHrG3NYrlGi",
+        "label": "13 · Felt glass clear — take 4"
+      },
+      {
+        "number": 14,
+        "node_id": "PASjv6R73xAS0VjBkA3K",
+        "generation_id": "jT4GneA04Fn8vNXBCTFs",
+        "label": "14 · Full glass clear — take 1"
+      },
+      {
+        "number": 15,
+        "node_id": "ksq4RAdwmlgucLZCHpXS",
+        "generation_id": "4t9EoI0eDGmVHrh5bPRP",
+        "label": "15 · Full glass clear — take 2"
+      },
+      {
+        "number": 16,
+        "node_id": "G2bPv0rAPbfeCiPQaMZf",
+        "generation_id": "KiQcu1IjJVP8t3kSXotg",
+        "label": "16 · Full glass clear — take 3"
+      },
+      {
+        "number": 17,
+        "node_id": "u9WTlkTVTuuO5kG6q9wl",
+        "generation_id": "zu5GUdbDutHeATQWH0Wo",
+        "label": "17 · Full glass clear — take 4"
+      },
+      {
+        "number": 18,
+        "node_id": "ugjzJ2l6jXwcpONO0axU",
+        "generation_id": "sQFhM4mSwvFdP4P6kowY",
+        "label": "18 · Win phrase — take 1"
+      },
+      {
+        "number": 19,
+        "node_id": "0NzVvFq4bFzT34q7Kuwl",
+        "generation_id": "CrENzvOjhUfUgcS9sEmp",
+        "label": "19 · Win phrase — take 2"
+      },
+      {
+        "number": 20,
+        "node_id": "BzjIg8SQD3lEOwFNKOt9",
+        "generation_id": "oQUpORGCgHrSr99FFx2m",
+        "label": "20 · Win phrase — take 3"
+      },
+      {
+        "number": 21,
+        "node_id": "e8lT89uAD6W24G8kqhq7",
+        "generation_id": "fcOXMZTKjqtmJy08Nmu9",
+        "label": "21 · Win phrase — take 4"
+      }
+    ]
+  },
+  "user_feedback": [
+    {
+      "date": "2026-10-16",
+      "status": "preferred_family_individual_take_unselected",
+      "family": "Quiet tuck (original brief: optional quiet settle)",
+      "numbers": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "generation_ids": [
+        "a9pkUyoRCdd6K1236GWT",
+        "5gQsDv1WzGaXymIdoRC2",
+        "5uAButrBxwRPLgJfXFri",
+        "JXGLIkmmOtXGoqfq0yLQ"
+      ],
+      "reason_quote": "glassy resonance feels a little bit lightweight and sparkly",
+      "next_audition_recommendation": "Try the preferred dry, muted, warm contact as the primary clear sound, with no extra settle accent. This is a recommendation, not approved runtime integration.",
+      "earlier_positional_guess": "Discarded; neither 20 nor 17 confirmed as favorite."
+    },
+    {
+      "date": "2026-10-16",
+      "status": "all_four_quiet_tucks_selected_as_starter",
+      "user_quote": "I like all of those quiet, tucked takes. I think we use those to begin with and explore an expanded world around that as, like, our core inspiration.",
+      "numbers": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "generation_ids": [
+        "a9pkUyoRCdd6K1236GWT",
+        "5gQsDv1WzGaXymIdoRC2",
+        "5uAButrBxwRPLgJfXFri",
+        "JXGLIkmmOtXGoqfq0yLQ"
+      ],
+      "scope": "All four are the selected starting palette and reference for the expanded sonic direction. Native integration and playback acceptance remain pending. No new generation spend."
+    },
+    {
+      "date": "2026-10-16",
+      "status": "in_game_palette_accepted_for_merge",
+      "user_quote": "Let's get what we have merged. I like the sounds when I touch the little stars in the game.",
+      "numbers": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "scope": "User liked the integrated quiet-tuck sounds during actual play and authorized merging this implementation. This does not establish physical-device, VoiceOver, silent-switch or route validation."
+    }
+  ],
+  "current_selection": {
+    "date": "2026-10-16",
+    "status": "integrated_starter_accepted_in_game",
+    "direction_document": "SONIC_WORLD.md",
+    "starter_role": "Four alternate primary-clear contacts, one per committed clear, shared across all group sizes, jewel kinds and terminal clears. Feedback-only fixed rotation; no separate settling accent.",
+    "files": [
+      {
+        "audition_number": 6,
+        "take": 1,
+        "generation_id": "a9pkUyoRCdd6K1236GWT",
+        "listening_node_id": "KtKvlOEMDT95ED7aAmC8",
+        "path": "selected/sf_quiet_tuck_01.mp3",
+        "bytes": 25946,
+        "sha256": "2574fe8949fdec73c9a32313b21141342259f0d56b88a34456f88dcb32deeebf",
+        "sample_rate_hz": 44100,
+        "channels": 2,
+        "valid_frames": 21168,
+        "decoded_duration_seconds": 0.48,
+        "decoded_pcm_sha256": "3ba16854fab3349c1182442627aa49bf00cd0678eeb5e2458db38d55d5a6b713",
+        "decode_check": "Apple afconvert succeeded; decoded PCM is nonzero",
+        "runtime_path": "App/Audio/sf_quiet_tuck_01.mp3"
+      },
+      {
+        "audition_number": 7,
+        "take": 2,
+        "generation_id": "5gQsDv1WzGaXymIdoRC2",
+        "listening_node_id": "4H36qUbqeKAZrU0hw1iI",
+        "path": "selected/sf_quiet_tuck_02.mp3",
+        "bytes": 25946,
+        "sha256": "176e2613c3f3c61710b7f48d5aa0ceb49ce45c6ee99c01c50b2ffd5176a938cf",
+        "sample_rate_hz": 44100,
+        "channels": 2,
+        "valid_frames": 21168,
+        "decoded_duration_seconds": 0.48,
+        "decoded_pcm_sha256": "7778a5211732acd18099bc13014b5e52938cde8bea5e2228ef284fd162904ea2",
+        "decode_check": "Apple afconvert succeeded; decoded PCM is nonzero",
+        "runtime_path": "App/Audio/sf_quiet_tuck_02.mp3"
+      },
+      {
+        "audition_number": 8,
+        "take": 3,
+        "generation_id": "5uAButrBxwRPLgJfXFri",
+        "listening_node_id": "1Hg0brXfTbG1IFmhUsje",
+        "path": "selected/sf_quiet_tuck_03.mp3",
+        "bytes": 25946,
+        "sha256": "a7fd3e07a26b84d9d4d26db9069677fa33aa8dc7e4df9d212fee6c28ba4e5ef7",
+        "sample_rate_hz": 44100,
+        "channels": 2,
+        "valid_frames": 21168,
+        "decoded_duration_seconds": 0.48,
+        "decoded_pcm_sha256": "4e5005b7da320a0e60ab1a3239442d584ce59e3003e2fd43e1f6b68cec32f5d3",
+        "decode_check": "Apple afconvert succeeded; decoded PCM is nonzero",
+        "runtime_path": "App/Audio/sf_quiet_tuck_03.mp3"
+      },
+      {
+        "audition_number": 9,
+        "take": 4,
+        "generation_id": "JXGLIkmmOtXGoqfq0yLQ",
+        "listening_node_id": "brMJ0NW1LqEnFqueOGJg",
+        "path": "selected/sf_quiet_tuck_04.mp3",
+        "bytes": 25946,
+        "sha256": "a3dd9f479aa10e19002f3b8756c6f98aa5a6aaffa71426ee5f8a6e8228b1431b",
+        "sample_rate_hz": 44100,
+        "channels": 2,
+        "valid_frames": 21168,
+        "decoded_duration_seconds": 0.48,
+        "decoded_pcm_sha256": "cfca9f516577e5839b6d49d2d8e929eb30d9e0424cdb6c7ad2d8677117d88d59",
+        "decode_check": "Apple afconvert succeeded; decoded PCM is nonzero",
+        "runtime_path": "App/Audio/sf_quiet_tuck_04.mp3"
+      }
+    ],
+    "runtime_integrated": true,
+    "music_selected": false,
+    "additional_generations": 0,
+    "additional_spend": 0,
+    "integration_document": "INTEGRATION.md",
+    "runtime_asset_directory": "App/Audio",
+    "playback_gain": 0.7,
+    "maximum_simultaneous_effects": 1,
+    "in_game_user_acceptance": {
+      "date": "2026-10-16",
+      "accepted": true,
+      "merge_authorized": true
+    }
+  }
+}

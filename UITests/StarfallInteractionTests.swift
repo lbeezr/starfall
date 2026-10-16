@@ -2,6 +2,56 @@ import XCTest
 
 /// Native input smoke test. This does not enable or validate VoiceOver.
 final class StarfallInteractionTests: XCTestCase {
+    /// Exercises sound-on gameplay and the same buttons VoiceOver uses, without
+    /// claiming to enable VoiceOver or measure the sound reaching a speaker.
+    @MainActor
+    func testQuietTucksDuringPlayCalmResumeAndMute() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchArguments = ["--demo", "--accessibility-board"]
+        app.launch()
+        defer { app.terminate() }
+        XCTAssertTrue(app.buttons["game.settings"].waitForExistence(timeout: 10))
+        app.buttons["game.settings"].tap()
+        let sound = app.switches["settings.sound"]
+        let calm = app.switches["settings.calm"]
+        XCTAssertTrue(sound.waitForExistence(timeout: 5))
+        setSwitch(sound, to: "1")
+        setSwitch(calm, to: "0")
+        app.buttons["settings.done"].tap()
+
+        for turn in 1...4 {
+            if turn == 3 {
+                app.buttons["game.settings"].tap()
+                XCTAssertTrue(calm.waitForExistence(timeout: 5))
+                setSwitch(calm, to: "1")
+                app.buttons["settings.done"].tap()
+                XCUIDevice.shared.press(.home)
+                app.activate()
+            }
+            let legal = try XCTUnwrap(app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@", "game.cell."))
+                .allElementsBoundByIndex.first { element in
+                    let count = (element.value as? String)?.split(separator: " ").first.flatMap { Int($0) } ?? 0
+                    return count >= 3 && element.isEnabled
+                })
+            legal.tap()
+            assertLabel(app, "game.moves", "\(18 - turn) moves")
+        }
+        attachScreenshot(app, name: "quiet-tuck-four-clears")
+        app.buttons["game.settings"].tap()
+        XCTAssertTrue(sound.waitForExistence(timeout: 5))
+        XCTAssertEqual(sound.value as? String, "1")
+        setSwitch(sound, to: "0")
+        setSwitch(calm, to: "0")
+        app.buttons["settings.done"].tap()
+        app.buttons["game.restart"].tap()
+        assertLabel(app, "game.moves", "18 moves")
+        app.buttons["game.settings"].tap()
+        XCTAssertTrue(sound.waitForExistence(timeout: 5))
+        XCTAssertEqual(sound.value as? String, "0")
+        app.buttons["settings.done"].tap()
+    }
+
     /// Real fast input and cancelled drag delivery, without relying on rule shortcuts.
     @MainActor
     func testRapidTapInvalidTapAndCancelledDrag() throws {

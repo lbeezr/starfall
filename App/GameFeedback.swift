@@ -1,4 +1,3 @@
-import AudioToolbox
 import UIKit
 import StarfallCore
 
@@ -6,14 +5,20 @@ import StarfallCore
 @MainActor protocol GameFeedbackProviding: AnyObject {
     func cleared(_ turn: Turn, outcome: Outcome, soundEnabled: Bool, calmEffects: Bool)
     func announce(_ message: String)
+    func stopSounds()
 }
 
 @MainActor final class GameFeedback: GameFeedbackProviding {
     private let impact = UIImpactFeedbackGenerator(style: .soft)
     private let notification = UINotificationFeedbackGenerator()
+    private let sound: any ClearSoundPlaying
+
+    init(sound: (any ClearSoundPlaying)? = nil) {
+        self.sound = sound ?? QuietTuckPlayer()
+    }
 
     func cleared(_ turn: Turn, outcome: Outcome, soundEnabled: Bool, calmEffects: Bool) {
-        if soundEnabled { AudioServicesPlaySystemSound(1104) }
+        if soundEnabled { sound.play() }
         guard !calmEffects, !UIAccessibility.isReduceMotionEnabled else { return }
         if outcome == .won {
             notification.notificationOccurred(.success)
@@ -24,6 +29,9 @@ import StarfallCore
 
     func announce(_ message: String) {
         guard UIAccessibility.isVoiceOverRunning else { return }
+        stopSounds() // The result announcement never waits for, or competes with, a tail.
         UIAccessibility.post(notification: .announcement, argument: message)
     }
+
+    func stopSounds() { sound.stop() }
 }
