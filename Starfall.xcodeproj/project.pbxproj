@@ -1,19 +1,21 @@
 // !$*UTF8*$!
 { archiveVersion = 1; classes = {}; objectVersion = 56; objects = {
 		000000000000000000000001 = { isa = PBXProject; attributes = { LastUpgradeCheck = 1600; }; buildConfigurationList = 00000000000000000000000E; compatibilityVersion = "Xcode 14.0"; developmentRegion = en; hasScannedForEncodings = 0; knownRegions = (en, Base); mainGroup = 000000000000000000000002; productRefGroup = 000000000000000000000004; projectDirPath = ""; projectRoot = ""; packageReferences = (000000000000000000000014); targets = (00000000000000000000000D, 000000000000000000000020); };
-		000000000000000000000002 = { isa = PBXGroup; children = (000000000000000000000003, 000000000000000000000017, 000000000000000000000021, 000000000000000000000004); sourceTree = "<group>"; };
+		000000000000000000000002 = { isa = PBXGroup; children = (000000000000000000000003, 000000000000000000000017, 000000000000000000000030, 000000000000000000000021, 000000000000000000000004); sourceTree = "<group>"; };
 		000000000000000000000003 = { isa = PBXGroup; path = App; children = (000000000000000000000005, 000000000000000000000006); sourceTree = "<group>"; };
 		000000000000000000000004 = { isa = PBXGroup; name = Products; children = (000000000000000000000007, 000000000000000000000022); sourceTree = "<group>"; };
 		000000000000000000000005 = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarfallApp.swift; sourceTree = "<group>"; };
 		000000000000000000000006 = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JewelScene.swift; sourceTree = "<group>"; };
 		000000000000000000000017 = { isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config/Clean.xcconfig; sourceTree = "<group>"; };
+		000000000000000000000030 = { isa = PBXFileReference; lastKnownFileType = text.xml; path = Config/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		000000000000000000000031 = { isa = PBXBuildFile; fileRef = 000000000000000000000030; };
 		000000000000000000000007 = { isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Starfall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		000000000000000000000008 = { isa = PBXBuildFile; fileRef = 000000000000000000000005; };
 		000000000000000000000009 = { isa = PBXBuildFile; fileRef = 000000000000000000000006; };
 		000000000000000000000016 = { isa = PBXBuildFile; productRef = 000000000000000000000015; };
 		00000000000000000000000A = { isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (000000000000000000000008, 000000000000000000000009); runOnlyForDeploymentPostprocessing = 0; };
 		00000000000000000000000B = { isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (000000000000000000000016); runOnlyForDeploymentPostprocessing = 0; };
-		00000000000000000000000C = { isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		00000000000000000000000C = { isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (000000000000000000000031); runOnlyForDeploymentPostprocessing = 0; };
 		00000000000000000000000D = { isa = PBXNativeTarget; buildConfigurationList = 00000000000000000000000F; buildPhases = (00000000000000000000000A, 00000000000000000000000B, 00000000000000000000000C); buildRules = (); dependencies = (); name = Starfall; packageProductDependencies = (000000000000000000000015); productName = Starfall; productReference = 000000000000000000000007; productType = "com.apple.product-type.application"; };
 		00000000000000000000000E = { isa = XCConfigurationList; buildConfigurations = (000000000000000000000010, 000000000000000000000011); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
 		00000000000000000000000F = { isa = XCConfigurationList; buildConfigurations = (000000000000000000000012, 000000000000000000000013); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };

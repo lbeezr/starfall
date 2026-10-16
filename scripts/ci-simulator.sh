@@ -97,12 +97,34 @@ xcodebuild -project Starfall.xcodeproj -scheme Starfall \
   DEVELOPMENT_TEAM= CODE_SIGN_STYLE=Manual build \
   2>&1 | tee artifacts/native-build.log
 
+# Verify the shipped resource, not merely the source declaration.
+APP="$RUNNER_TEMP/starfall-derived/Build/Products/Debug-iphonesimulator/Starfall.app"
+python3 - "$APP/PrivacyInfo.xcprivacy" <<'PY'
+from pathlib import Path
+import hashlib, json, plistlib, sys
+source = Path('Config/PrivacyInfo.xcprivacy')
+bundled = Path(sys.argv[1])
+source_data = plistlib.loads(source.read_bytes())
+bundled_data = plistlib.loads(bundled.read_bytes())
+if source_data != bundled_data:
+    raise SystemExit('Built privacy manifest differs from source declaration.')
+api_entries = bundled_data.get('NSPrivacyAccessedAPITypes', [])
+if not any(x.get('NSPrivacyAccessedAPIType') == 'NSPrivacyAccessedAPICategoryUserDefaults'
+           and 'CA92.1' in x.get('NSPrivacyAccessedAPITypeReasons', []) for x in api_entries):
+    raise SystemExit('Built privacy manifest lacks app-local UserDefaults reason CA92.1.')
+Path('artifacts/privacy-manifest-result.json').write_text(json.dumps({
+    'passed': True, 'matchesSourcePlist': True, 'userDefaultsReason': 'CA92.1',
+    'sourceSHA256': hashlib.sha256(source.read_bytes()).hexdigest(),
+    'bundledSHA256': hashlib.sha256(bundled.read_bytes()).hexdigest()
+}, indent=2) + '\n')
+print('PASS: built privacy manifest parses, matches source, and declares UserDefaults CA92.1.')
+PY
+
 # simctl reports an error when booting a device that is already booted.
 state="$(xcrun simctl list devices --json | python3 -c 'import json,sys; d=json.load(sys.stdin); print(next(x["state"] for xs in d["devices"].values() for x in xs if x["udid"]==sys.argv[1]))' "$SIMULATOR_ID")"
 if [[ "$state" != Booted ]]; then xcrun simctl boot "$SIMULATOR_ID"; fi
 xcrun simctl bootstatus "$SIMULATOR_ID" -b
 xcrun simctl status_bar "$SIMULATOR_ID" override --time '9:41' --batteryState charged --batteryLevel 100
-APP="$RUNNER_TEMP/starfall-derived/Build/Products/Debug-iphonesimulator/Starfall.app"
 test -d "$APP"
 xcrun simctl install "$SIMULATOR_ID" "$APP"
 capture_state() {
@@ -127,7 +149,7 @@ printf '%s\n' 'PASS: both demo launches accepted; each app process alive after 5
 (cd artifacts && shasum -a 256 *.png > screenshot-sha256.txt)
 # Keep artifacts small: no app bundle, DerivedData, simulator disk, or video.
 
-# Three bounded real-input flows, sequentially on the same simulator, without retries.
+# Four bounded real-input flows, sequentially on the same simulator, without retries.
 # Keep the result bundle on ephemeral runner storage; export only compact evidence.
 UI_RESULT="$RUNNER_TEMP/starfall-ui.xcresult"
 UI_EXPORT="$RUNNER_TEMP/starfall-ui-attachments"
@@ -140,6 +162,7 @@ xcodebuild -project Starfall.xcodeproj -scheme Starfall \
   -only-testing:StarfallUITests/StarfallInteractionTests/testRealBoardTapAndNavigation \
   -only-testing:StarfallUITests/StarfallInteractionTests/testSavedGameRelaunchAndCalmResume \
   -only-testing:StarfallUITests/StarfallInteractionTests/testTerminalOutcomesPersistAndRestart \
+  -only-testing:StarfallUITests/StarfallInteractionTests/testLargestTextLayoutAndAccessibilityAudit \
   -parallel-testing-enabled NO -maximum-concurrent-test-simulator-destinations 1 \
   -test-timeouts-enabled YES -default-test-execution-time-allowance 90 \
   -maximum-test-execution-time-allowance 180 \
@@ -163,9 +186,9 @@ import hashlib, json, shutil, sys
 root = Path(sys.argv[1]).resolve()
 test_passed = int(sys.argv[2]) == 0
 summary = json.loads(Path('artifacts/ui-test-summary.json').read_text())
-if test_passed and (summary.get('passedTests') != 3 or summary.get('failedTests') != 0
-                    or summary.get('skippedTests') != 0 or summary.get('totalTestCount') != 3):
-    raise SystemExit('Expected exactly three passing UI tests, zero failures/skips, and total count three; inspect summary.')
+if test_passed and (summary.get('passedTests') != 4 or summary.get('failedTests') != 0
+                    or summary.get('skippedTests') != 0 or summary.get('totalTestCount') != 4):
+    raise SystemExit('Expected exactly four passing UI tests, zero failures/skips, and total count four; inspect summary.')
 manifest_path = root / 'manifest.json'
 manifest_bytes = manifest_path.read_bytes()
 if len(manifest_bytes) > 250_000:
@@ -185,7 +208,8 @@ def objects(value):
 records = []
 for name in ('real-touch-post-clear', 'real-touch-restarted',
              'saved-game-resumed', 'saved-game-calm-turn',
-             'terminal-won-restored', 'terminal-lost-restored'):
+             'terminal-won-restored', 'terminal-lost-restored',
+             'accessibility-large-text-game', 'accessibility-large-text-settings'):
     matches = [x for x in objects(manifest)
                if str(x.get('suggestedHumanReadableName', '')).startswith(name)
                and x.get('exportedFileName')]
@@ -222,7 +246,7 @@ if [[ "$UI_SUMMARY_STATUS" != 0 || "$UI_EXPORT_STATUS" != 0 || "$UI_PARSE_STATUS
   echo 'UI evidence export/validation failed; inspect logs. No complete UI-evidence success claim.' >&2
   exit 1
 fi
-printf '%s\n' 'PASS: three real-input UI tests and six exported XCTest screenshots.' \
+printf '%s\n' 'PASS: four real-input UI tests and eight exported XCTest screenshots.' \
   'See ui-test-summary.json and ui-attachment-manifest.json; no VoiceOver or rapid-input validation.' \
   | tee artifacts/ui-result.txt
 (cd artifacts && shasum -a 256 *.png > screenshot-sha256.txt)

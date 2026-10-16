@@ -180,6 +180,77 @@ final class StarfallInteractionTests: XCTestCase {
         }
     }
 
+    /// Uses the system Dynamic Type launch preference and Apple's native audit.
+    /// This does not enable VoiceOver or substitute a simulated screen-reader mode.
+    @MainActor
+    func testLargestTextLayoutAndAccessibilityAudit() throws {
+        executionTimeAllowance = 180
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchArguments = ["--reset-save", "--seed=42",
+                               "-UIPreferredContentSizeCategoryName",
+                               "UICTContentSizeCategoryAccessibilityXXXL"]
+        app.launch()
+        defer { app.terminate() }
+        let play = app.buttons["menu.play"]
+        XCTAssertTrue(play.waitForExistence(timeout: 10))
+        reveal(play, in: app, scrollingUp: true)
+        // These are real platform checks. No audit issues are suppressed.
+        try app.performAccessibilityAudit(for: [.textClipped, .sufficientElementDescription, .hitRegion])
+        play.tap()
+        let moves = app.staticTexts["game.moves"]
+        XCTAssertTrue(moves.waitForExistence(timeout: 10))
+        XCTAssertGreaterThan(moves.frame.height, 40,
+                             "The system accessibility text preference must actually enlarge the headline")
+        assertLabel(app, "game.moves", "18 moves")
+        try app.performAccessibilityAudit(for: [.textClipped, .sufficientElementDescription, .hitRegion])
+        attachScreenshot(app, name: "accessibility-large-text-game")
+
+        let board = app.descendants(matching: .any)["game.board"].firstMatch
+        reveal(board, in: app, scrollingUp: true, fullyVisible: true)
+        XCTAssertGreaterThan(board.frame.width, 300, "Text growth must not shrink the puzzle board")
+        XCTAssertEqual(board.frame.width, board.frame.height, accuracy: 2)
+        tapBoard(app, row: 1, column: 1)
+        assertLabel(app, "game.moves", "17 moves")
+        assertLabel(app, "game.score", "3 of 70 jewels cleared")
+        let restart = app.buttons["game.restart"]
+        reveal(restart, in: app, scrollingUp: true)
+        try app.performAccessibilityAudit(for: [.textClipped, .sufficientElementDescription, .hitRegion])
+        restart.tap()
+        assertLabel(app, "game.moves", "18 moves")
+
+        let settings = app.buttons["game.settings"]
+        reveal(settings, in: app, scrollingUp: false)
+        settings.tap()
+        let done = app.buttons["settings.done"]
+        XCTAssertTrue(done.waitForExistence(timeout: 5))
+        XCTAssertTrue(done.isHittable)
+        try app.performAccessibilityAudit(for: [.textClipped, .sufficientElementDescription, .hitRegion])
+        attachScreenshot(app, name: "accessibility-large-text-settings")
+        done.tap()
+        XCTAssertTrue(settings.waitForExistence(timeout: 5))
+    }
+
+    @MainActor
+    private func reveal(_ element: XCUIElement, in app: XCUIApplication,
+                        scrollingUp: Bool, fullyVisible: Bool = false,
+                        file: StaticString = #filePath, line: UInt = #line) {
+        let scroll = app.scrollViews.firstMatch
+        for _ in 0..<12 {
+            let visible = element.isHittable && (!fullyVisible ||
+                scroll.frame.insetBy(dx: 0, dy: 2).contains(element.frame))
+            if visible { return }
+            // Small drags avoid skipping a whole board on the smallest iPhone.
+            let startY = scrollingUp ? 0.75 : 0.25
+            let endY = 0.50
+            scroll.coordinate(withNormalizedOffset: CGVector(dx: 0.95, dy: startY))
+                .press(forDuration: 0.05, thenDragTo:
+                    scroll.coordinate(withNormalizedOffset: CGVector(dx: 0.95, dy: endY)))
+        }
+        XCTFail("Control must be reachable at the largest text size: \(element.identifier)",
+                file: file, line: line)
+    }
+
     @MainActor
     private func tapBoard(_ app: XCUIApplication, row: Int, column: Int) {
         let board = app.descendants(matching: .any)["game.board"].firstMatch

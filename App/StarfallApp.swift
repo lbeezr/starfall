@@ -116,6 +116,8 @@ struct StarfallView: View {
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.accessibilityVoiceOverEnabled) private var voiceOver
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    @ScaledMetric(relativeTo: .largeTitle) private var titleSize = 52.0
     var body: some View {
         ZStack {
             LinearGradient(colors: [Color(red: 0.035, green: 0.055, blue: 0.17), Color(red: 0.18, green: 0.10, blue: 0.29)], startPoint: .top, endPoint: .bottom).ignoresSafeArea()
@@ -133,38 +135,77 @@ struct StarfallView: View {
                     Toggle("Gentle sound", isOn: $store.soundEnabled).accessibilityIdentifier("settings.sound")
                     Toggle("Calm effects", isOn: $store.calmEffects).accessibilityIdentifier("settings.calm")
                     Text("No timer. No purchases or ads. Your game stays on this device.")
-                }.navigationTitle("Settings").toolbar { Button("Done") { store.settings = false }.accessibilityIdentifier("settings.done") }
-            }.presentationDetents([.medium])
+                }.navigationTitle("Settings").toolbar {
+                    Button { store.settings = false } label: {
+                        Text("Done").frame(minWidth: 44, minHeight: 44)
+                    }.accessibilityIdentifier("settings.done")
+                }
+            }.presentationDetents(dynamicTypeSize.isAccessibilitySize ? [.large] : [.medium, .large])
         }
     }
+    // Keep ordinary layouts centered and allow larger text to scroll instead of
+    // shrinking the board or compressing essential controls below the viewport.
     private var menu: some View {
+        GeometryReader { geometry in
+            ScrollView {
+                menuContent
+                    .frame(maxWidth: .infinity, minHeight: geometry.size.height)
+            }
+        }
+    }
+    private var menuContent: some View {
         VStack(spacing: 24) {
             Text("✦").font(.system(size: 72)).foregroundStyle(.cyan.opacity(0.8)).accessibilityHidden(true)
-            Text("Starfall").font(.system(size: 52, weight: .light, design: .rounded))
+            Text("Starfall").font(.system(size: titleSize, weight: .light, design: .rounded))
             Text("A little light, one cluster at a time").foregroundStyle(.secondary)
             Text("Clear 70 jewels in 18 moves.\nTap groups of 3 or more matching jewels\nconnected horizontally or vertically.").multilineTextAlignment(.center)
             Button(store.game.moves < Game.startingMoves ? "Continue" : "Play") { store.start() }.accessibilityIdentifier("menu.play").buttonStyle(.borderedProminent).tint(.indigo).controlSize(.large)
-            Button("Settings") { store.settings = true }.accessibilityIdentifier("menu.settings")
+            Button { store.settings = true } label: {
+                Text("Settings").frame(minWidth: 44, minHeight: 44)
+            }.accessibilityIdentifier("menu.settings")
         }.padding(24)
     }
     private var gameView: some View {
+        GeometryReader { geometry in
+            ScrollView {
+                gameContent
+                    .frame(minHeight: geometry.size.height, alignment: .top)
+                    .frame(maxWidth: .infinity)
+            }
+        }
+    }
+    private var gameContent: some View {
         VStack(spacing: 14) {
-            HStack {
-                Button("Menu") { store.playing = false }.disabled(store.busy).accessibilityIdentifier("game.menu")
-                Spacer()
+            if dynamicTypeSize.isAccessibilitySize {
                 Text("Starfall").font(.title2.weight(.light))
-                Spacer()
-                Button { store.settings = true } label: { Image(systemName: "gearshape") }.accessibilityLabel("Settings").accessibilityIdentifier("game.settings")
             }
             HStack {
+                Button { store.playing = false } label: {
+                    Text("Menu").frame(minWidth: 44, minHeight: 44)
+                }.disabled(store.busy).accessibilityIdentifier("game.menu")
+                Spacer()
+                if !dynamicTypeSize.isAccessibilitySize {
+                    Text("Starfall").font(.title2.weight(.light))
+                    Spacer()
+                }
+                Button { store.settings = true } label: {
+                    Image(systemName: "gearshape").frame(minWidth: 44, minHeight: 44)
+                }.accessibilityLabel("Settings").accessibilityIdentifier("game.settings")
+            }
+            // At larger sizes the two statistics stack without truncation.
+            let statisticsLayout = dynamicTypeSize.isAccessibilitySize
+                ? AnyLayout(VStackLayout(alignment: .leading, spacing: 8))
+                : AnyLayout(HStackLayout())
+            statisticsLayout {
                 Label("\(store.game.score) / 70", systemImage: "sparkle")
                     .accessibilityElement(children: .ignore)
                     .accessibilityLabel("\(store.game.score) of \(Game.target) jewels cleared")
                     .accessibilityIdentifier("game.score")
-                Spacer()
+                if !dynamicTypeSize.isAccessibilitySize { Spacer() }
                 Text("\(store.game.moves) moves").monospacedDigit().accessibilityIdentifier("game.moves")
             }.font(.headline)
-            ProgressView(value: Double(min(store.game.score, Game.target)), total: Double(Game.target)).tint(.cyan)
+            ProgressView(value: Double(min(store.game.score, Game.target)), total: Double(Game.target))
+                .tint(.cyan).accessibilityLabel("Starlight progress")
             ZStack {
                 RoundedRectangle(cornerRadius: 24).fill(.white.opacity(0.04))
                     // A frame marker only: coordinate taps still reach the SpriteKit view.
@@ -180,7 +221,9 @@ struct StarfallView: View {
             if store.game.outcome != .playing {
                 Text(store.game.outcome == .won ? "Sky illuminated" : "Out of moves").font(.title2).accessibilityIdentifier("game.outcome")
             }
-            Button("New game") { store.restart() }.buttonStyle(.bordered).disabled(store.busy).accessibilityIdentifier("game.restart")
+            Button { store.restart() } label: {
+                Text("New game").frame(minWidth: 44, minHeight: 44)
+            }.buttonStyle(.bordered).disabled(store.busy).accessibilityIdentifier("game.restart")
             Spacer(minLength: 0)
         }.padding(20).frame(maxWidth: 560)
     }
