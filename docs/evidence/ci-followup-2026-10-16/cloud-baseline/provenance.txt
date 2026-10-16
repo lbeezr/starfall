@@ -1,0 +1,13 @@
+source_commit=6c163c58b8949e2741efba0186f9adc42ca4aed0
+workflow_run=https://github.com/lbeezr/starfall/actions/runs/38954256452
+runner_arch=arm64
+developer_dir=/Applications/Xcode_26.3.app/Contents/Developer
+Xcode 26.3
+Build version 17C529
+Apple Swift version 6.2.4 (swiftlang-6.2.4.1.4 clang-1700.6.4.2)
+Target: arm64-apple-macosx15.0
+initial_arguments=--demo (seed 42; save writes suppressed)
+settled_arguments=--demo --demo-clear (real first legal clear before render; no animation)
+simulator_udid=48B2DA2E-AF18-4E36-BB25-B25969A4EBCF
+simulator_runtime=com.apple.CoreSimulator.SimRuntime.iOS-26-2
+simulator_name=iPhone SE (3rd generation)

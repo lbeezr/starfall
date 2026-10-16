@@ -1,0 +1,4 @@
+{"stage": "status-bar", "startedUTC": "2026-10-16T19:24:48.074612+00:00", "elapsedSeconds": 33.969, "limitSeconds": 60, "exitCode": 0}
+{"stage": "install", "startedUTC": "2026-10-16T19:25:26.171252+00:00", "elapsedSeconds": 47.441, "limitSeconds": 300, "exitCode": 0}
+{"stage": "initial-board-launch", "startedUTC": "2026-10-16T19:26:16.940611+00:00", "elapsedSeconds": 3.896, "limitSeconds": 300, "exitCode": 0}
+{"stage": "post-clear-settled-board-launch", "startedUTC": "2026-10-16T19:27:38.827774+00:00", "elapsedSeconds": 8.154, "limitSeconds": 300, "exitCode": 0}
