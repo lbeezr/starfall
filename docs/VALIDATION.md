@@ -86,3 +86,13 @@ accessibility are still unverified. Later source changes need their own run.
 - Artifact `12029922915`, 3,328,976 bytes, expires 2026-10-17 06:45:13 UTC. Retained evidence copies exist separately.
 - Coverage nuance: the winning post-terminal tap targets a legal four-jewel group; the losing fixture ends without legal groups, so that repeated tap verifies terminal UI stability but does not isolate the core loss guard.
 - Remaining gates stay separate: actual VoiceOver, rapid/in-flight interruption, broader device/layout coverage, physical-device performance and signed distribution. No new feature or release-readiness claim.
+
+
+## Accessibility and privacy checkpoint — 2026-10-16 12:27 UTC
+
+- Runtime `2f2bb2081de01a6d31dfe62a694f6005cf7dbe56`, run https://github.com/lbeezr/starfall/actions/runs/38898933808 : failed fourth UI flow on Settings `Text clipped`, identifying Calm effects.
+- 15 core tests, native build, three previous UI flows and semantic bundled privacy-manifest comparison passed. Large-text gameplay reached and passed its scoped audits. No complete accessibility or VoiceOver pass is claimed.
+- All eight named UI captures were exported under `partialEvidenceOnly: true`; ZIP and all ten PNG hashes verified. Settings screenshot inspected and retained; visible wrapping alone does not overrule the native audit failure.
+- Artifact `12045617965`: 3,803,271 bytes, expires 2026-10-17 12:24:38 UTC. Source-bound copies retained separately.
+- Prior run 38896574407 hit its 15-minute job limit during cold simulator preparation, before any audit assertion. Current bounded setup timing succeeds: status-bar 15.725 seconds, install 33.567 seconds, first launch 17.77 seconds, second launch 1.084 seconds. Job maximum is now 25 minutes; per-test maximum remains 180 seconds; no retries or broader permissions introduced.
+- Open gate: diagnose accessible text bounds/row sizing, review the minimal repair and rerun all four UI flows. Prepared interruption tests and approved icon registration are not yet integrated or natively validated.

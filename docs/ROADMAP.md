@@ -2,6 +2,14 @@
 
 Updated 2026-10-16 UTC. This is the bounded plan from the current prototype to a release candidate. The delivery coordinator owns execution, review, integration, evidence, and the next permitted assignment. Routine work proceeds without another request to continue. A blocked lane must not block independent work, and a running task label is not delivery evidence.
 
+## Current delivery checkpoint — 2026-10-16 12:27 UTC
+
+- Published runtime: `2f2bb2081de01a6d31dfe62a694f6005cf7dbe56`; latest run [38898933808](https://github.com/lbeezr/starfall/actions/runs/38898933808).
+- Core tests, three prior native flows and bundled privacy-manifest validation pass. Large-text gameplay audits pass; Settings still reports `Text clipped` for the Calm effects label. The fourth UI flow is not accepted. Retained screenshots are partial evidence.
+- Next executable diagnosis: inspect native accessibility text bounds and row layout for that label, preserve unsuppressed audit assertions, obtain independent review, then rerun exact-head acceptance.
+- Prepared locally, not integrated: presentation-boundary interruption tests, hosted test target, approved icon registration and playtest/release checklists. Final integration review remains pending; no native test or icon compilation pass is claimed for this prepared work.
+- Human playtest, actual VoiceOver and signed physical-device distribution remain separate gates. Independent source preparation does not establish those outcomes.
+
 ## Product contract
 
 Make one small, relaxing, polished native iPhone puzzle that is understandable and pleasant to replay. Keep Swift, SpriteKit and SwiftUI; Candy Glass materials within a moonlit atmosphere. Keep the current 7×7 board, five distinct shapes/colors, orthogonal groups of three or more, free invalid taps, bounded dead-board recovery, 70-jewel target and 18 valid moves. Target/move counts remain provisional until playtested.
@@ -71,7 +79,7 @@ The active accessibility slice proceeds first; milestones are acceptance groups 
 
 1. Review release configuration: DEBUG acceptance fixtures absent, no secret/test-only behavior exposed, no ad/IAP/tracking/network dependency introduced, intended device/orientation support explicit.
 2. Add and validate the missing privacy manifest for the app’s actual UserDefaults access, with an applicable approved reason verified against current Apple documentation (release inventory identifies `CA92.1` as the candidate). Do not add tracking or invent disclosures. Prepare production icon/app assets aligned with approved art direction using existing permitted tooling; no asset-credit spend or new external service. Validate required sizes and appearance in an actual build. Keep unrelated private concept documents out of public source unless publication is separately authorized.
-3. Prepare app name/bundle identifier/version, concise metadata, support/privacy information and age-rating answers from actual app behavior. Release inventory currently finds no icon catalog/privacy manifest, a prototype bundle identifier, no signing team and iPad family scope needing resolution. Name availability, seller identity, production identifier and contact/publication details remain user decisions where not established. Do not assert legal/privacy compliance without review of actual requirements.
+3. Prepare app name/bundle identifier/version, concise metadata, support/privacy information and age-rating answers from actual app behavior. The initial release inventory found missing icon resources and a privacy manifest. Privacy packaging is now verified; approved icon registration is prepared locally. Prototype bundle identity, signing team and iPad family scope still need resolution. Name availability, seller identity, production identifier and contact/publication details remain user decisions where not established. Do not assert legal/privacy compliance without review of actual requirements.
 4. Run final exact-head core tests, native tests, Release build and supported-layout checks. Review warnings, save compatibility, app launch/relaunch and clean-build contents. Fix actual release blockers rather than doing a broad refactor.
 5. On an authorized physical iPhone, run the existing complete acceptance script, inspect responsiveness/animation, background/resume, accessibility, audio and memory/energy behavior. Record device/OS and observed results, not invented frame-rate or thermal thresholds.
 6. Prepare a release evidence index with source SHA, build identity, test runs, screenshots, known limitations and unresolved gates. Label an unsigned simulator candidate distinctly from a signed device/TestFlight candidate.
