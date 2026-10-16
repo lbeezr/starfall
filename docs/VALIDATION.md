@@ -74,3 +74,15 @@ accessibility are still unverified. Later source changes need their own run.
 - Four named XCTest screenshots exported and SHA-verified. Resumed and Calm-turn captures show legible score/moves and no obvious clipping/error overlay. Evidence checked 2026-10-16 03:50 UTC.
 - Artifact `12023493229`: 2,543,851 bytes, one-day retention; copies retained separately. Existing spending, single-simulator and access boundaries unchanged.
 - Next acceptance gaps: rapid-input/in-flight interruption, actual VoiceOver, broader device/layout coverage and signed physical-device distribution remain separate. No new game features or release-readiness claim implied.
+
+## Terminal outcome and replay acceptance — 2026-10-16
+
+- Owner: endgame acceptance lane; independently reviewed source `88738c204e8b33698da9de89334893480faa9a94`.
+- Successful run: https://github.com/lbeezr/starfall/actions/runs/38862074669 . Xcode 26.3/17C529, iPhone SE (3rd generation), iOS 26.2 Simulator.
+- 15 core tests, native build and exactly three UI flows passed, zero failures/skips. Terminal flow: 72.342 seconds; total UI execution: 197.139 seconds.
+- Fixed restored terminal saves displaying generic tap instructions. Shared outcome messaging now applies both after a final move and after saved-state restoration.
+- DEBUG-only fixtures replay real legal moves to the penultimate state; native input performs the final tap. Both outcomes retain score/moves/message after an extra tap and argument-free relaunch, then restart successfully. This is deterministic acceptance, not evidence of player difficulty or natural-play balance.
+- Six named UI captures exported; all eight PNGs including smoke images and the ZIP were hash-verified. Human review at 06:47 UTC found clear terminal feedback and visible New game controls without obvious clipping: win 70/70 with 2 moves; loss 64/70 with 0 moves.
+- Artifact `12029922915`, 3,328,976 bytes, expires 2026-10-17 06:45:13 UTC. Retained evidence copies exist separately.
+- Coverage nuance: the winning post-terminal tap targets a legal four-jewel group; the losing fixture ends without legal groups, so that repeated tap verifies terminal UI stability but does not isolate the core loss guard.
+- Remaining gates stay separate: actual VoiceOver, rapid/in-flight interruption, broader device/layout coverage, physical-device performance and signed distribution. No new feature or release-readiness claim.
