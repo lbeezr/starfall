@@ -2,6 +2,73 @@ import XCTest
 
 /// Native input smoke test. This does not enable or validate VoiceOver.
 final class StarfallInteractionTests: XCTestCase {
+    /// Real fast input and cancelled drag delivery, without relying on rule shortcuts.
+    @MainActor
+    func testRapidTapInvalidTapAndCancelledDrag() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchArguments = ["--demo"]
+        app.launch()
+        defer { app.terminate() }
+        let board = app.descendants(matching: .any)["game.board"].firstMatch
+        XCTAssertTrue(board.waitForExistence(timeout: 10))
+        tapBoard(app, row: 0, column: 0)
+        assertLabel(app, "game.moves", "18 moves")
+        let legal = board.coordinate(withNormalizedOffset: CGVector(
+            dx: 0.5 - 2.0 / 7.7, dy: 0.5 + 2.0 / 7.7))
+        let elsewhere = board.coordinate(withNormalizedOffset: CGVector(
+            dx: 0.5 + 2.0 / 7.7, dy: 0.5 + 2.0 / 7.7))
+        legal.press(forDuration: 0.1, thenDragTo: elsewhere)
+        assertLabel(app, "game.moves", "18 moves")
+        legal.doubleTap()
+        assertLabel(app, "game.moves", "17 moves")
+        assertLabel(app, "game.score", "3 of 70 jewels cleared")
+        XCTAssertTrue(waitFor(NSPredicate(format: "enabled == true"), on: app.buttons["game.menu"]))
+        attachScreenshot(app, name: "rapid-input-settled")
+    }
+
+    /// Exercises the production accessible controls; does not enable VoiceOver itself.
+    @MainActor
+    func testAccessibleBoardControlsClearAndExplainInvalidGroups() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchArguments = ["--demo", "--accessibility-board"]
+        app.launch()
+        defer { app.terminate() }
+        let valid = app.buttons["game.cell.1.1"]
+        XCTAssertTrue(valid.waitForExistence(timeout: 10))
+        XCTAssertGreaterThanOrEqual(valid.frame.width, 44)
+        XCTAssertGreaterThanOrEqual(valid.frame.height, 44)
+        XCTAssertTrue(valid.label.contains("row 6, column 2"))
+        app.buttons["game.cell.0.0"].tap()
+        assertLabel(app, "game.moves", "18 moves")
+        valid.tap()
+        assertLabel(app, "game.moves", "17 moves")
+        assertLabel(app, "game.score", "3 of 70 jewels cleared")
+        attachScreenshot(app, name: "accessible-board-post-clear")
+    }
+
+    @MainActor
+    func testLargestTextSettingsDirectAuditAndDismissal() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchArguments = ["--reset-save", "--seed=42",
+                               "-UIPreferredContentSizeCategoryName",
+                               "UICTContentSizeCategoryAccessibilityXXXL"]
+        app.launch()
+        defer { app.terminate() }
+        let settings = app.buttons["menu.settings"]
+        XCTAssertTrue(settings.waitForExistence(timeout: 10))
+        reveal(settings, in: app, scrollingUp: true, fullyVisible: true)
+        settings.tap()
+        let done = app.buttons["settings.done"]
+        XCTAssertTrue(done.waitForExistence(timeout: 5))
+        attachScreenshot(app, name: "settings-direct-largest-text")
+        try auditSettings(app, screenshotName: "settings-footer-fully-visible")
+        done.tap()
+        XCTAssertTrue(waitFor(NSPredicate(format: "exists == false"), on: done))
+    }
+
     @MainActor
     func testRealBoardTapAndNavigation() throws {
         continueAfterFailure = false
@@ -42,11 +109,25 @@ final class StarfallInteractionTests: XCTestCase {
         app.buttons["game.settings"].tap()
         let sound = app.switches["settings.sound"]
         XCTAssertTrue(sound.waitForExistence(timeout: 5))
+        XCTAssertFalse(app.buttons["game.menu"].exists,
+                       "The modal must keep underlying gameplay out of accessibility navigation")
         // End muted regardless of a previous simulator preference.
         setSwitch(sound, to: "1")
         setSwitch(sound, to: "0")
+        attachScreenshot(app, name: "settings-default-medium")
+        // Exercise the supported expansion gesture before auditing the complete
+        // Settings surface. Keep the compact presentation as visual evidence.
+        let sheetNavigation = app.navigationBars["Settings"]
+        sheetNavigation.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.1))
+            .press(forDuration: 0.05, thenDragTo:
+                app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.12)))
+        let settingsScroll = app.scrollViews.containing(.any, identifier: "settings.sound").firstMatch
+        XCTAssertGreaterThan(settingsScroll.frame.height, app.frame.height * 0.8)
+        try auditSettings(app)
+        attachScreenshot(app, name: "settings-default-text")
         app.buttons["settings.done"].tap()
         XCTAssertTrue(waitFor(NSPredicate(format: "exists == false"), on: sound))
+        XCTAssertTrue(app.buttons["game.menu"].exists)
         assertLabel(app, "game.moves", "17 moves")
         app.buttons["game.settings"].tap()
         XCTAssertTrue(sound.waitForExistence(timeout: 5))
@@ -138,6 +219,8 @@ final class StarfallInteractionTests: XCTestCase {
         let cases = [
             (seed: 6, row: 5, column: 3, score: 70, moves: 2,
              outcome: "Sky illuminated", message: "You lit the sky!", image: "terminal-won-restored"),
+            (seed: 12, row: 0, column: 0, score: 73, moves: 0,
+             outcome: "Sky illuminated", message: "You lit the sky!", image: "terminal-last-move-won-restored"),
             (seed: 0, row: 0, column: 0, score: 64, moves: 0,
              outcome: "Out of moves", message: "A lovely attempt. Try a fresh sky", image: "terminal-lost-restored")
         ]
@@ -153,6 +236,8 @@ final class StarfallInteractionTests: XCTestCase {
             assertLabel(app, "game.message", fixture.message)
             assertLabel(app, "game.score", "\(fixture.score) of 70 jewels cleared")
             assertLabel(app, "game.moves", "\(fixture.moves) moves")
+            let progress = app.descendants(matching: .any)["game.progress"].firstMatch
+            XCTAssertEqual(progress.value as? String, "\(min(fixture.score, 70)) of 70")
             // A second screen tap must neither spend a move nor change terminal copy.
             tapBoard(app, row: fixture.row, column: fixture.column)
             assertLabel(app, "game.score", "\(fixture.score) of 70 jewels cleared")
@@ -194,9 +279,12 @@ final class StarfallInteractionTests: XCTestCase {
         defer { app.terminate() }
         let play = app.buttons["menu.play"]
         XCTAssertTrue(play.waitForExistence(timeout: 10))
+        logMenuLayout(app, stage: "before-reveal")
         reveal(play, in: app, scrollingUp: true)
+        logMenuLayout(app, stage: "after-reveal")
+        attachScreenshot(app, name: "accessibility-large-text-menu-before-audit")
         // These are real platform checks. No audit issues are suppressed.
-        try app.performAccessibilityAudit(for: [.textClipped, .sufficientElementDescription, .hitRegion])
+        try auditMenu(app)
         play.tap()
         let moves = app.staticTexts["game.moves"]
         XCTAssertTrue(moves.waitForExistence(timeout: 10))
@@ -219,8 +307,13 @@ final class StarfallInteractionTests: XCTestCase {
         assertLabel(app, "game.moves", "17 moves")
         assertLabel(app, "game.score", "3 of 70 jewels cleared")
         let restart = app.buttons["game.restart"]
-        reveal(restart, in: app, scrollingUp: true)
+        reveal(restart, in: app, scrollingUp: true, fullyVisible: true)
         try app.performAccessibilityAudit(for: [.textClipped, .sufficientElementDescription, .hitRegion])
+        // The audit may scroll content while inspecting it. Locate the live
+        // control again before delivering the real restart tap.
+        reveal(restart, in: app, scrollingUp: true, fullyVisible: true)
+        attachScreenshot(app, name: "accessibility-restart-ready")
+        print("RESTART_READY frame=\(restart.frame) enabled=\(restart.isEnabled) hittable=\(restart.isHittable)")
         restart.tap()
         assertLabel(app, "game.moves", "18 moves")
 
@@ -242,7 +335,7 @@ final class StarfallInteractionTests: XCTestCase {
                 print("SETTINGS_LABEL_BOUNDS \(label): \(text.frame), hittable=\(text.isHittable)")
             }
         }
-        try app.performAccessibilityAudit(for: [.textClipped, .sufficientElementDescription, .hitRegion])
+        try auditSettings(app)
         let calm = app.descendants(matching: .any)["settings.calm"].firstMatch
         XCTAssertTrue(calm.exists)
         XCTAssertTrue(calm.isHittable)
@@ -261,11 +354,11 @@ final class StarfallInteractionTests: XCTestCase {
         calm.tap()
         expectation(for: enabled, evaluatedWith: calm)
         waitForExpectations(timeout: 5)
-        try app.performAccessibilityAudit(for: [.textClipped, .sufficientElementDescription, .hitRegion])
+        try auditSettings(app)
         calm.tap()
         expectation(for: disabled, evaluatedWith: calm)
         waitForExpectations(timeout: 5)
-        try app.performAccessibilityAudit(for: [.textClipped, .sufficientElementDescription, .hitRegion])
+        try auditSettings(app)
         done.tap()
         XCTAssertTrue(settings.waitForExistence(timeout: 5))
     }
@@ -301,6 +394,166 @@ final class StarfallInteractionTests: XCTestCase {
     }
 
     @MainActor
+    private func logMenuLayout(_ app: XCUIApplication, stage: String) {
+        print("MENU_LAYOUT_BEGIN stage=\(stage) appFrame=\(app.frame)")
+        let scroll = app.scrollViews.firstMatch
+        if scroll.exists {
+            print("MENU_SCROLL frame=\(scroll.frame) value=\(String(describing: scroll.value))")
+        }
+        // XCUI does not expose contentOffset. These element frames record the
+        // actual content position relative to the viewport before/after scrolling.
+        let elements: [(String, XCUIElement)] = [
+            ("title", app.staticTexts["Starfall"].firstMatch),
+            ("instructions", app.staticTexts["Clear 70 jewels in 18 moves.\nTap groups of 3 or more matching jewels\nconnected horizontally or vertically."].firstMatch),
+            ("instruction-goal", app.staticTexts["Clear 70 jewels in 18 moves."].firstMatch),
+            ("instruction-group", app.staticTexts["Tap groups of 3 or more matching jewels"].firstMatch),
+            ("instruction-connection", app.staticTexts["connected horizontally or vertically."].firstMatch),
+            ("play", app.buttons["menu.play"]),
+            ("settings", app.buttons["menu.settings"])
+        ]
+        for (name, element) in elements {
+            print("MENU_ELEMENT name=\(name) exists=\(element.exists)")
+            if element.exists {
+                print("MENU_BOUNDS name=\(name) frame=\(element.frame) hittable=\(element.isHittable) label=\(element.label)")
+            }
+        }
+        print("MENU_TREE_BEGIN\n\(app.debugDescription)\nMENU_TREE_END")
+        print("MENU_LAYOUT_END stage=\(stage)")
+    }
+
+    @MainActor
+    private func auditMenu(_ app: XCUIApplication) throws {
+        try app.performAccessibilityAudit(for: [.textClipped, .sufficientElementDescription, .hitRegion]) { issue in
+            print("MENU_AUDIT_ISSUE type=\(issue.auditType.rawValue) compact=\(issue.compactDescription)")
+            print("MENU_AUDIT_DETAILS \(issue.detailedDescription)")
+            if let element = issue.element, element.exists {
+                print("MENU_AUDIT_ELEMENT label=\(element.label) frame=\(element.frame) identifier=\(element.identifier)")
+                print("MENU_AUDIT_ELEMENT_DEBUG \(element.debugDescription)")
+            }
+            self.logMenuLayout(app, stage: "audit-issue")
+            return false // Diagnostics only. Every issue still fails the audit.
+        }
+    }
+
+    @MainActor
+    private func auditSettings(_ app: XCUIApplication, screenshotName: String? = nil) throws {
+        // Reveal the final information paragraph before auditing this reading
+        // position. Keep every audit type; earlier clipping causes are unproven.
+        let scroll = app.scrollViews.containing(.any, identifier: "settings.sound").firstMatch
+        let footer = app.staticTexts["Your game stays on this device."]
+        XCTAssertTrue(scroll.exists)
+        XCTAssertTrue(footer.exists)
+        for _ in 0..<8 {
+            if scroll.frame.insetBy(dx: 0, dy: 2).contains(footer.frame) { break }
+            scroll.coordinate(withNormalizedOffset: CGVector(dx: 0.85, dy: 0.75))
+                .press(forDuration: 0.05, thenDragTo:
+                    scroll.coordinate(withNormalizedOffset: CGVector(dx: 0.85, dy: 0.50)))
+        }
+        XCTAssertTrue(scroll.frame.insetBy(dx: 0, dy: 2).contains(footer.frame),
+                      "Settings information must be fully reachable before its audit")
+        if let screenshotName { attachScreenshot(app, name: screenshotName) }
+        try app.performAccessibilityAudit(for: [.textClipped, .sufficientElementDescription, .hitRegion]) { issue in
+            print("SETTINGS_AUDIT_ISSUE type=\(issue.auditType.rawValue)")
+            print("compact=\(issue.compactDescription)")
+            print("details=\(issue.detailedDescription)")
+            if let element = issue.element {
+                print("elementExists=\(element.exists)")
+                if element.exists {
+                    print("elementType=\(element.elementType) identifier=\(element.identifier)")
+                    print("label=\(element.label) frame=\(element.frame) value=\(String(describing: element.value))")
+                }
+            } else {
+                print("element=nil")
+            }
+            return false // Log only. Every reported issue still fails acceptance.
+        }
+    }
+
+    /// Each fixture starts from the real seed-0 board and taps a different kind.
+    /// Hosted tests independently verify the five kind/group mappings and assets.
+    @MainActor
+    func testStarshardFamilyPilotAllFiveRealTaps() throws {
+        executionTimeAllowance = 240
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        defer { app.terminate() }
+        let fixtures = [
+            (kind: "rose", row: 0, column: 0, count: 3),
+            (kind: "aqua", row: 5, column: 3, count: 3),
+            (kind: "amber", row: 3, column: 6, count: 3),
+            (kind: "violet", row: 3, column: 1, count: 4),
+            (kind: "mint", row: 3, column: 4, count: 3)
+        ]
+        for fixture in fixtures {
+            app.launchArguments = ["--reset-save", "--seed=0", "--starshard-family-pilot"]
+            app.launch()
+            let play = app.buttons["menu.play"]
+            XCTAssertTrue(play.waitForExistence(timeout: 10))
+            app.buttons["menu.settings"].tap()
+            let calm = app.switches["settings.calm"]
+            XCTAssertTrue(calm.waitForExistence(timeout: 5))
+            setSwitch(calm, to: "0")
+            app.buttons["settings.done"].tap()
+            play.tap()
+            assertLabel(app, "game.moves", "18 moves")
+            assertLabel(app, "game.score", "0 of 70 jewels cleared")
+            attachScreenshot(app, name: "family-\(fixture.kind)-before")
+            tapBoard(app, row: fixture.row, column: fixture.column)
+            assertLabel(app, "game.moves", "17 moves")
+            assertLabel(app, "game.score", "\(fixture.count) of 70 jewels cleared")
+            XCTAssertTrue(waitFor(NSPredicate(format: "enabled == true"), on: app.buttons["game.menu"]))
+            attachScreenshot(app, name: "family-\(fixture.kind)-settled")
+            app.buttons["game.restart"].tap()
+            assertLabel(app, "game.moves", "18 moves")
+            assertLabel(app, "game.score", "0 of 70 jewels cleared")
+            app.terminate()
+        }
+    }
+
+    /// Calm terminal flows use the existing legal-replay fixture and real final tap.
+    /// Background/resume is settled-state coverage; hosted tests cancel mid-turn.
+    @MainActor
+    func testStarshardFamilyPilotCalmTerminalResumeAndRestart() throws {
+        executionTimeAllowance = 180
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        defer { app.terminate() }
+        let fixtures = [
+            (seed: 6, row: 5, column: 3, score: 70, moves: 2, outcome: "Sky illuminated"),
+            (seed: 0, row: 0, column: 0, score: 64, moves: 0, outcome: "Out of moves")
+        ]
+        for fixture in fixtures {
+            app.launchArguments = ["--reset-save", "--endgame-seed=\(fixture.seed)", "--starshard-family-pilot"]
+            app.launch()
+            let play = app.buttons["menu.play"]
+            XCTAssertTrue(play.waitForExistence(timeout: 10))
+            app.buttons["menu.settings"].tap()
+            let calm = app.switches["settings.calm"]
+            XCTAssertTrue(calm.waitForExistence(timeout: 5))
+            setSwitch(calm, to: "1")
+            app.buttons["settings.done"].tap()
+            play.tap()
+            tapBoard(app, row: fixture.row, column: fixture.column)
+            assertLabel(app, "game.outcome", fixture.outcome)
+            assertLabel(app, "game.score", "\(fixture.score) of 70 jewels cleared")
+            assertLabel(app, "game.moves", "\(fixture.moves) moves")
+            XCTAssertTrue(waitFor(NSPredicate(format: "enabled == true"), on: app.buttons["game.menu"]))
+            XCUIDevice.shared.press(.home); app.activate()
+            assertLabel(app, "game.outcome", fixture.outcome)
+            attachScreenshot(app, name: "family-calm-\(fixture.seed)-resumed")
+            app.buttons["game.restart"].tap()
+            assertLabel(app, "game.moves", "18 moves")
+            assertLabel(app, "game.score", "0 of 70 jewels cleared")
+            XCTAssertFalse(app.staticTexts["game.outcome"].exists)
+            app.buttons["game.settings"].tap()
+            XCTAssertTrue(calm.waitForExistence(timeout: 5))
+            setSwitch(calm, to: "0")
+            app.buttons["settings.done"].tap()
+            app.terminate()
+        }
+    }
+
+    @MainActor
     private func reveal(_ element: XCUIElement, in app: XCUIApplication,
                         scrollingUp: Bool, fullyVisible: Bool = false,
                         file: StaticString = #filePath, line: UInt = #line) {
@@ -309,13 +562,17 @@ final class StarfallInteractionTests: XCTestCase {
             let visible = element.isHittable && (!fullyVisible ||
                 scroll.frame.insetBy(dx: 0, dy: 2).contains(element.frame))
             if visible { return }
-            // Small drags avoid skipping a whole board on the smallest iPhone.
+            // Small drags avoid skipping a whole board. Stay inside the content:
+            // the outermost 30pt belongs to the native scrollbar's hit region.
             let startY = scrollingUp ? 0.75 : 0.25
             let endY = 0.50
-            scroll.coordinate(withNormalizedOffset: CGVector(dx: 0.95, dy: startY))
+            scroll.coordinate(withNormalizedOffset: CGVector(dx: 0.85, dy: startY))
                 .press(forDuration: 0.05, thenDragTo:
-                    scroll.coordinate(withNormalizedOffset: CGVector(dx: 0.95, dy: endY)))
+                    scroll.coordinate(withNormalizedOffset: CGVector(dx: 0.85, dy: endY)))
         }
+        print("REVEAL_FAILED id=\(element.identifier) element=\(element.frame) scroll=\(scroll.frame) hittable=\(element.isHittable)")
+        print(app.debugDescription)
+        attachScreenshot(app, name: "unreachable-\(element.identifier)")
         XCTFail("Control must be reachable at the largest text size: \(element.identifier)",
                 file: file, line: line)
     }

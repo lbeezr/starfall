@@ -13,11 +13,25 @@ struct StarfallView: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.accessibilityVoiceOverEnabled) private var voiceOver
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
-    @ScaledMetric(relativeTo: .largeTitle) private var titleSize = 52.0
+    @Namespace private var matchingGroups
+
+    private var usesAccessibleBoard: Bool {
+        #if DEBUG
+        // Native structural coverage uses the same controls. This does not
+        // enable VoiceOver or claim to test its focus and spoken behavior.
+        voiceOver || ProcessInfo.processInfo.arguments.contains("--accessibility-board")
+        #else
+        voiceOver
+        #endif
+    }
+
     var body: some View {
         ZStack {
-            LinearGradient(colors: [Color(red: 0.035, green: 0.055, blue: 0.17), Color(red: 0.18, green: 0.10, blue: 0.29)], startPoint: .top, endPoint: .bottom).ignoresSafeArea()
-            if store.playing { gameView } else { menu }
+            NightSkyBackdrop()
+            Group {
+                if store.playing { gameView } else { menu }
+            }
+            .accessibilityHidden(store.settings)
         }
         .preferredColorScheme(.dark)
         .onChange(of: reduceMotion, initial: true) { _, value in store.updateReducedMotion(value || store.calmEffects) }
@@ -25,20 +39,46 @@ struct StarfallView: View {
         .onChange(of: scenePhase) { _, phase in
             if phase != .active { store.settlePresentation() }
         }
-        .sheet(isPresented: $store.settings) {
-            NavigationStack {
-                Form {
-                    settingsToggle("Gentle sound", isOn: $store.soundEnabled, identifier: "settings.sound")
-                    settingsToggle("Calm effects", isOn: $store.calmEffects, identifier: "settings.calm")
-                    Text("No timer. No purchases or ads. Your game stays on this device.")
-                        .fixedSize(horizontal: false, vertical: true)
-                }.navigationTitle("Settings").toolbar {
-                    Button { store.settings = false } label: {
-                        Text("Done").frame(minWidth: 44, minHeight: 44)
-                    }.accessibilityIdentifier("settings.done")
+        .sheet(isPresented: $store.settings) { settingsView }
+    }
+
+    private var settingsView: some View {
+        NavigationStack {
+            ScrollView {
+                VStack(alignment: .leading, spacing: StarfallTheme.Spacing.section) {
+                    VStack(spacing: StarfallTheme.Spacing.page) {
+                        settingsToggle("Gentle sound", isOn: $store.soundEnabled, identifier: "settings.sound")
+                        settingsToggle("Calm effects", isOn: $store.calmEffects, identifier: "settings.calm")
+                    }
+                    .starfallPanel()
+
+                    // Unbounded scrolling provides natural text height. Do not
+                    // turn these statements into row-sized accessibility elements.
+                    VStack(alignment: .leading, spacing: StarfallTheme.Spacing.large) {
+                        Text("No timer.")
+                        Text("No purchases or ads.")
+                        Text("Your game stays on this device.")
+                    }
+                    .font(StarfallTheme.Typography.body)
+                    .foregroundStyle(StarfallTheme.Colors.textSecondary)
                 }
-            }.presentationDetents(dynamicTypeSize.isAccessibilitySize ? [.large] : [.medium, .large])
+                .padding(StarfallTheme.Spacing.page)
+                .frame(maxWidth: StarfallTheme.Layout.contentWidth)
+                .frame(maxWidth: .infinity, alignment: .center)
+                .contentShape(Rectangle())
+            }
+            .background(StarfallTheme.Colors.skyTop)
+            .navigationTitle("Settings")
+            .toolbar {
+                Button { store.settings = false } label: {
+                    Text("Done")
+                        .font(StarfallTheme.Typography.action)
+                        .frame(minWidth: StarfallTheme.Layout.minimumTarget, minHeight: StarfallTheme.Layout.minimumTarget)
+                }.accessibilityIdentifier("settings.done")
+            }
         }
+        .tint(StarfallTheme.Colors.actionPrimary)
+        .presentationDetents(dynamicTypeSize.isAccessibilitySize ? [.large] : [.medium, .large])
     }
     @ViewBuilder
     private func settingsToggle(_ title: String, isOn: Binding<Bool>, identifier: String) -> some View {
@@ -46,13 +86,21 @@ struct StarfallView: View {
             // Give large labels the full row rather than competing with a
             // trailing switch. Native Toggle semantics and state stay intact.
             Toggle(isOn: isOn) {
-                Text(title).fixedSize(horizontal: false, vertical: true)
+                Text(title).font(StarfallTheme.Typography.body)
+                    .fixedSize(horizontal: false, vertical: true)
                     .frame(maxWidth: .infinity, alignment: .leading)
-            }.toggleStyle(.button).accessibilityIdentifier(identifier)
+            }
+            .toggleStyle(.button)
+            .frame(minHeight: StarfallTheme.Layout.minimumTarget)
+            .accessibilityIdentifier(identifier)
         } else {
             Toggle(isOn: isOn) {
-                Text(title).fixedSize(horizontal: false, vertical: true)
-            }.accessibilityIdentifier(identifier)
+                Text(title).font(StarfallTheme.Typography.body)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            .toggleStyle(.switch)
+            .frame(minHeight: StarfallTheme.Layout.minimumTarget)
+            .accessibilityIdentifier(identifier)
         }
     }
     // Keep ordinary layouts centered and allow larger text to scroll instead of
@@ -62,20 +110,69 @@ struct StarfallView: View {
             ScrollView {
                 menuContent
                     .frame(maxWidth: .infinity, minHeight: geometry.size.height)
+                    .contentShape(Rectangle())
             }
         }
     }
     private var menuContent: some View {
-        VStack(spacing: 24) {
-            Text("✦").font(.system(size: 72)).foregroundStyle(.cyan.opacity(0.8)).accessibilityHidden(true)
-            Text("Starfall").font(.system(size: titleSize, weight: .light, design: .rounded))
-            Text("A little light, one cluster at a time").foregroundStyle(.secondary)
-            Text("Clear 70 jewels in 18 moves.\nTap groups of 3 or more matching jewels\nconnected horizontally or vertically.").multilineTextAlignment(.center)
-            Button(store.game.moves < Game.startingMoves ? "Continue" : "Play") { store.start() }.accessibilityIdentifier("menu.play").buttonStyle(.borderedProminent).tint(.indigo).controlSize(.large)
-            Button { store.settings = true } label: {
-                Text("Settings").frame(minWidth: 44, minHeight: 44)
-            }.accessibilityIdentifier("menu.settings")
-        }.padding(24)
+        VStack(spacing: StarfallTheme.Spacing.page) {
+            VStack(spacing: StarfallTheme.Spacing.small) {
+                Text("✦")
+                    .font(.system(size: StarfallTheme.Layout.brandMarkSize))
+                    .foregroundStyle(StarfallTheme.Colors.ambientStar)
+                    .accessibilityHidden(true)
+                StarfallTitle(style: .display)
+                Text("A little pocket of moonlight")
+                    .font(StarfallTheme.Typography.supporting)
+                    .foregroundStyle(StarfallTheme.Colors.textSecondary)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            .multilineTextAlignment(.center)
+
+            if store.game.moves < Game.startingMoves { savedRoundSummary }
+
+            Button(store.game.moves < Game.startingMoves ? "Continue" : "Play") { store.start() }
+                .accessibilityIdentifier("menu.play")
+                .buttonStyle(StarfallButtonStyle(role: .primary, expands: true))
+
+            VStack(alignment: .leading, spacing: StarfallTheme.Spacing.medium) {
+                Text("\(Game.target) starlight · \(Game.startingMoves) moves")
+                    .font(StarfallTheme.Typography.heading)
+                    .foregroundStyle(StarfallTheme.Colors.textPrimary)
+                    .accessibilityAddTraits(.isHeader)
+                Text("Tap 3 or more matching starshards connected horizontally or vertically.")
+                    .font(StarfallTheme.Typography.body)
+                    .foregroundStyle(StarfallTheme.Colors.textSecondary)
+                Text("1 shard = 1 starlight. No timer. Groups of one or two spend no move.")
+                    .font(StarfallTheme.Typography.supporting)
+                    .foregroundStyle(StarfallTheme.Colors.textSecondary)
+            }
+            .fixedSize(horizontal: false, vertical: true)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .starfallPanel()
+
+            Button("Settings") { store.settings = true }
+                .buttonStyle(StarfallButtonStyle(role: .quiet))
+                .accessibilityIdentifier("menu.settings")
+        }
+        .tint(StarfallTheme.Colors.actionPrimary)
+        .padding(StarfallTheme.Spacing.page)
+        .frame(maxWidth: StarfallTheme.Layout.menuWidth)
+    }
+
+    private var savedRoundSummary: some View {
+        VStack(spacing: StarfallTheme.Spacing.small) {
+            Text(store.game.outcome == .playing ? "Your sky is waiting" : outcomeTitle)
+                .font(StarfallTheme.Typography.heading)
+                .foregroundStyle(StarfallTheme.Colors.textPrimary)
+            StarfallStatusText(text: store.game.outcome == .playing
+                              ? "\(store.game.score) of \(Game.target) starlight · \(store.game.moves) \(store.game.moves == 1 ? "move" : "moves") left"
+                              : "\(store.game.score) starlight released")
+        }
+        .multilineTextAlignment(.center)
+        .fixedSize(horizontal: false, vertical: true)
+        .accessibilityElement(children: .combine)
+        .accessibilityIdentifier("menu.saved-round")
     }
     private var gameView: some View {
         GeometryReader { geometry in
@@ -83,85 +180,151 @@ struct StarfallView: View {
                 gameContent
                     .frame(minHeight: geometry.size.height, alignment: .top)
                     .frame(maxWidth: .infinity)
+                    .contentShape(Rectangle())
             }
         }
     }
     private var gameContent: some View {
-        VStack(spacing: 14) {
+        VStack(spacing: StarfallTheme.Spacing.large) {
             if dynamicTypeSize.isAccessibilitySize {
-                Text("Starfall").font(.title2.weight(.light))
+                StarfallTitle()
             }
             HStack {
-                Button { store.playing = false } label: {
-                    Text("Menu").frame(minWidth: 44, minHeight: 44)
-                }.disabled(store.busy).accessibilityIdentifier("game.menu")
+                Button("Menu") { store.playing = false }
+                    .buttonStyle(StarfallButtonStyle(role: .quiet))
+                    .disabled(store.busy).accessibilityIdentifier("game.menu")
                 Spacer()
                 if !dynamicTypeSize.isAccessibilitySize {
-                    Text("Starfall").font(.title2.weight(.light))
+                    StarfallTitle()
                     Spacer()
                 }
                 Button { store.settings = true } label: {
-                    Image(systemName: "gearshape").frame(minWidth: 44, minHeight: 44)
-                }.accessibilityLabel("Settings").accessibilityIdentifier("game.settings")
+                    Image(systemName: "gearshape")
+                }
+                .buttonStyle(StarfallButtonStyle(role: .quiet))
+                .accessibilityLabel("Settings").accessibilityIdentifier("game.settings")
             }
-            // At larger sizes the two statistics stack without truncation.
-            let statisticsLayout = dynamicTypeSize.isAccessibilitySize
-                ? AnyLayout(VStackLayout(alignment: .leading, spacing: 8))
-                : AnyLayout(HStackLayout())
-            statisticsLayout {
-                Label("\(store.game.score) / 70", systemImage: "sparkle")
-                    .accessibilityElement(children: .ignore)
-                    .accessibilityLabel("\(store.game.score) of \(Game.target) jewels cleared")
-                    .accessibilityIdentifier("game.score")
-                if !dynamicTypeSize.isAccessibilitySize { Spacer() }
-                Text("\(store.game.moves) moves").monospacedDigit().accessibilityIdentifier("game.moves")
-            }.font(.headline)
-            ProgressView(value: Double(min(store.game.score, Game.target)), total: Double(Game.target))
-                .tint(.cyan)
-                // The thin bar needs a larger area for accessible touch exploration.
-                .frame(minHeight: 44).contentShape(Rectangle())
-                .accessibilityElement(children: .ignore)
-                .accessibilityLabel("Starlight progress")
-                .accessibilityValue("\(min(store.game.score, Game.target)) of \(Game.target)")
-                .accessibilityIdentifier("game.progress")
+            StarlightHUD(score: store.game.score, moves: store.game.moves)
             ZStack {
-                RoundedRectangle(cornerRadius: 24).fill(.white.opacity(0.04))
+                RoundedRectangle(cornerRadius: StarfallTheme.Radius.board, style: .continuous).fill(StarfallTheme.Colors.surface)
                     // A frame marker only: coordinate taps still reach the SpriteKit view.
                     .accessibilityElement().accessibilityLabel("Jewel board")
-                    .accessibilityIdentifier("game.board").accessibilityHidden(voiceOver)
+                    .accessibilityIdentifier("game.board").accessibilityHidden(usesAccessibleBoard)
                 SpriteView(scene: store.scene, options: [.allowsTransparency])
-                    .clipShape(RoundedRectangle(cornerRadius: 24))
-                    .opacity(voiceOver ? 0 : 1)
+                    .clipShape(RoundedRectangle(cornerRadius: StarfallTheme.Radius.board, style: .continuous))
+                    .opacity(usesAccessibleBoard ? 0 : 1)
                     .accessibilityHidden(true)
-                if voiceOver { accessibleBoard }
-            }.aspectRatio(1, contentMode: .fit)
-            Text(store.message).font(.callout).multilineTextAlignment(.center).frame(minHeight: 44).accessibilityLabel(store.message).accessibilityIdentifier("game.message")
-            if store.game.outcome != .playing {
-                Text(store.game.outcome == .won ? "Sky illuminated" : "Out of moves").font(.title2).accessibilityIdentifier("game.outcome")
+                if usesAccessibleBoard { accessibleBoard }
             }
-            Button { store.restart() } label: {
-                Text("New game").frame(minWidth: 44, minHeight: 44)
-            }.buttonStyle(.bordered).disabled(store.busy).accessibilityIdentifier("game.restart")
+            .aspectRatio(1, contentMode: .fit)
+            if usesAccessibleBoard && store.game.outcome == .playing {
+                StarfallStatusText(text: "Use the Matching groups rotor to find a group, or explore each starshard.")
+            }
+            roundFeedback
+            restartButton
             Spacer(minLength: 0)
-        }.padding(20).frame(maxWidth: 560)
+        }
+        .tint(StarfallTheme.Colors.actionPrimary)
+        .padding(StarfallTheme.Spacing.page).frame(maxWidth: StarfallTheme.Layout.contentWidth)
+    }
+
+    private var outcomeTitle: String {
+        store.game.outcome == .won ? "Sky illuminated" : "Out of moves"
+    }
+
+    @ViewBuilder
+    private var roundFeedback: some View {
+        if store.game.outcome == .playing {
+            statusMessage
+        } else {
+            VStack(spacing: StarfallTheme.Spacing.small) {
+                Text(outcomeTitle)
+                    .font(StarfallTheme.Typography.title)
+                    .foregroundStyle(StarfallTheme.Colors.textPrimary)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .accessibilityAddTraits(.isHeader)
+                    .accessibilityIdentifier("game.outcome")
+                StarfallStatusText(text: store.game.outcome == .won
+                                   ? "\(store.game.score) starlight released"
+                                   : "\(store.game.score) of \(Game.target) starlight released",
+                                   emphasis: store.game.outcome == .won ? .positive : .supporting)
+                    .accessibilityIdentifier("game.result-detail")
+                statusMessage
+            }
+            .multilineTextAlignment(.center)
+            .frame(maxWidth: .infinity)
+            .starfallPanel(inset: StarfallTheme.Spacing.large)
+        }
+    }
+
+    private var statusMessage: some View {
+        StarfallStatusText(text: store.message)
+            .multilineTextAlignment(.center)
+            .frame(maxWidth: .infinity, minHeight: StarfallTheme.Layout.minimumTarget)
+            .accessibilityLabel(store.message)
+            .accessibilityIdentifier("game.message")
+    }
+
+    private var restartButton: some View {
+        Button("New game") { store.restart() }
+            .buttonStyle(StarfallButtonStyle(role: store.game.outcome == .playing ? .secondary : .primary,
+                                            expands: store.game.outcome != .playing))
+            .disabled(store.busy)
+            .accessibilityIdentifier("game.restart")
     }
     private var accessibleBoard: some View {
-        VStack(spacing: 2) {
+        VStack(spacing: StarfallTheme.Spacing.hairline) {
             ForEach((0..<Game.side).reversed(), id: \.self) { row in
-                HStack(spacing: 2) {
+                HStack(spacing: StarfallTheme.Spacing.hairline) {
                     ForEach(0..<Game.side, id: \.self) { column in
                         let cell = Cell(row, column)
                         let kind = store.game.jewel(at: cell)!
+                        let groupSize = store.game.group(at: cell).count
                         Button { store.tap(cell) } label: {
-                            Text(kind.symbol).frame(maxWidth: .infinity, maxHeight: .infinity).foregroundStyle(Color(kind.color))
+                            Text(kind.symbol)
+                                // This is a shape, not reading text; growing it with
+                                // Dynamic Type would merge neighboring silhouettes.
+                                .font(.system(size: StarfallTheme.Layout.boardSymbolSize))
+                                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                .foregroundStyle(Color(kind.color))
+                                .contentShape(Rectangle())
                         }
+                        .buttonStyle(.plain)
                         .accessibilityLabel("\(kind.label), row \(Game.side-row), column \(column+1)")
-                        .accessibilityValue("\(store.game.group(at: cell).count) connected")
-                        .accessibilityHint("Activate to clear a matching group of at least three")
+                        .accessibilityValue("\(groupSize) connected")
+                        .accessibilityHint(groupSize >= 3
+                                           ? "Clear \(groupSize) starshards for one move"
+                                           : "At least 3 are needed. No move will be spent")
+                        .accessibilityIdentifier("game.cell.\(row).\(column)")
+                        .accessibilityRotorEntry(id: cell, in: matchingGroups)
                         .disabled(store.busy || store.game.outcome != .playing)
                     }
                 }
             }
-        }.padding(10)
+        }
+        .padding(StarfallTheme.Layout.accessibleBoardInset)
+        .accessibilityElement(children: .contain)
+        .accessibilityLabel("Starshard board")
+        .accessibilityRotor("Matching groups") {
+            ForEach(matchingGroupChoices) { choice in
+                AccessibilityRotorEntry(
+                    Text("\(choice.kind.label), \(choice.count) starshards, row \(Game.side - choice.id.row), column \(choice.id.column + 1)"),
+                    id: choice.id, in: matchingGroups)
+            }
+        }
+    }
+
+    private struct MatchingGroupChoice: Identifiable {
+        let id: Cell
+        let kind: Jewel
+        let count: Int
+    }
+
+    private var matchingGroupChoices: [MatchingGroupChoice] {
+        guard store.game.outcome == .playing, !store.busy else { return [] }
+        return store.game.legalGroups.compactMap { group in
+            guard let cell = group.first, let kind = store.game.jewel(at: cell) else { return nil }
+            return MatchingGroupChoice(id: cell, kind: kind, count: group.count)
+        }
     }
 }
