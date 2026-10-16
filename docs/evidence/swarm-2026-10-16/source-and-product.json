@@ -169,9 +169,16 @@
   ],
   "runtimeCheckpointCommit": "3424b0924c0e371a0b7b29d0a18821412950d27d",
   "incrementalWorkflowPolicyCommit": "06eb4c862905f69c027afb951702ae4b684250a3",
-  "remoteBranchChangedByThisWave": false,
+  "remoteBranchChangedByThisWave": true,
   "isolatedCheckpoints": {
     "1c34a6a": "Simulator Debug build from git archive passed",
     "1823e5b": "Simulator build and all 34 hosted tests from git archive passed"
+  },
+  "publication": {
+    "method": "Connected GitHub plugin as lbeezr",
+    "validatedPublishedHead": "6c163c58b8949e2741efba0186f9adc42ca4aed0",
+    "validatedTree": "173a32a477f3d01eb923c7ca70f4c428afaf4e3d",
+    "commitMapping": "publication-map.json",
+    "localGitCredentialFailure": "The separate command-line Git identity lbliii received HTTP 403."
   }
 }

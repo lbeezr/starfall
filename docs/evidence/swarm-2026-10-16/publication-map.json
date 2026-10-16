@@ -1,0 +1,57 @@
+{
+  "repository": "lbeezr/starfall",
+  "baseCommit": "60f44a0447f644174613370f25302cd5205a8311",
+  "localHead": "8877b06e2d31ab5cbf84b4421e2a6728dcd4d10c",
+  "remoteHead": "6c163c58b8949e2741efba0186f9adc42ca4aed0",
+  "identicalTree": "173a32a477f3d01eb923c7ca70f4c428afaf4e3d",
+  "checkpoints": [
+    {
+      "localCommit": "06eb4c862905f69c027afb951702ae4b684250a3",
+      "remoteCommit": "db9e32fd1fe2df788cba8c62c971a84dd6be5448",
+      "tree": "1700abeb98de0fdbf3878cc37bcdc8ac007e07d6",
+      "subject": "Document incremental integration workflow"
+    },
+    {
+      "localCommit": "bd4ed7a0201d0962de8d7a64dac6fbd0c619e2c2",
+      "remoteCommit": "435b48303c7f8e76c9480be439e4a7ce86b96f6e",
+      "tree": "3f7a81f8ef9d79640c204ec49626512b44fb42a2",
+      "subject": "Expose deterministic matching groups and reject impossible saves"
+    },
+    {
+      "localCommit": "77342fb96aedd8a2ff7b038ec73369c469c62a77",
+      "remoteCommit": "2e2c2d6ef8c8571f6006833fe5a58322e94a45ba",
+      "tree": "bfc0af78cd8d6f070bad9a8eb57aa74aca7f491f",
+      "subject": "Map survivor gravity and new refill origins deterministically"
+    },
+    {
+      "localCommit": "1c34a6a019232346048eec3029f89c79f251f8e8",
+      "remoteCommit": "a0b5b11f5ac43ac7f5c7b14d9ae0e45b870cec0b",
+      "tree": "266c2f01c3d3a1611e7620642f23e3eab94c0d70",
+      "subject": "Add shared presentation tokens, primitives and HUD foundation"
+    },
+    {
+      "localCommit": "1823e5b81f44882971264516b709145b0c15fecb",
+      "remoteCommit": "bef17430953bd5e52f9aa529685f09e422e3aea7",
+      "tree": "b0385768040336989cb1c62f3ce27b511aac3e27",
+      "subject": "Integrate bounded jewel arrivals, group previews and isolated feedback"
+    },
+    {
+      "localCommit": "3424b0924c0e371a0b7b29d0a18821412950d27d",
+      "remoteCommit": "596e5b853efa8408813c50868efd568584012882",
+      "tree": "a75cfdd736960a3705ca890dd9c0a019dfe0cafd",
+      "subject": "Apply the shared design system across play, results and settings"
+    },
+    {
+      "localCommit": "8d2d1017f725af3be7deed0b13391598a06d48af",
+      "remoteCommit": "7708e7c5d925779515ccd9b1a05daa21a476018a",
+      "tree": "efc57b98ba777b36e006723ebdaca3de9699375b",
+      "subject": "Require complete native targets and named screenshot evidence in CI"
+    },
+    {
+      "localCommit": "8877b06e2d31ab5cbf84b4421e2a6728dcd4d10c",
+      "remoteCommit": "6c163c58b8949e2741efba0186f9adc42ca4aed0",
+      "tree": "173a32a477f3d01eb923c7ca70f4c428afaf4e3d",
+      "subject": "Record native validation, design ownership and incremental checkpoints"
+    }
+  ]
+}

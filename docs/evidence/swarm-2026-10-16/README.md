@@ -1,6 +1,6 @@
 # Local Starfall improvement wave — October 16, 2026
 
-Three disjoint agent lanes worked in the existing checkout using the configured priority (Fast) service tier. Existing artwork, HUD, backdrop, refill mapping and tests were retained and integrated. The user requested incremental integration; verified work is recorded in six scoped local `main` source/CI commits plus a separate evidence checkpoint. Other chats' unfinished research and audio work remain outside these checkpoints. The configured command-line Git account was denied write access to the remote; no remote branch was changed by this wave.
+Three disjoint agent lanes worked in the existing checkout using the configured priority (Fast) service tier. Existing artwork, HUD, backdrop, refill mapping and tests were retained and integrated. The user requested incremental integration; verified work is recorded in six scoped local `main` source/CI commits plus a separate evidence checkpoint. Other chats' unfinished research and audio work remain outside these checkpoints. The configured command-line Git account was denied write access, but the connected GitHub plugin has write access as `lbeezr` and published the checkpoints. Every uploaded blob and checkpoint tree was verified against its local Git object. `publication-map.json` maps the original local commits to the plugin-created commits with identical trees.
 
 | Owner | Responsibility |
 | --- | --- |
@@ -55,4 +55,4 @@ The initial medium-height Settings sheet still has an unresolved native `textCli
 
 Native accessibility-control and audit tests do not establish spoken VoiceOver focus/rotor usability. Haptic feel, audio quality, physical-device performance and human play balance require separate hands-on checks. No physical-device or App Store distribution claim is made.
 
-This wave's complete native run targets iPhone 17 Pro on iOS 27.0. Minimum supported iOS, narrower iPhones, iPad, keyboard focus and Increase Contrast need separate coverage. Calm Effects and controlled reduced-motion settlement are covered; actual system Reduce Motion operation is not established by these tests. No remote CI run was dispatched for this dirty working tree.
+This wave's complete native run targets iPhone 17 Pro on iOS 27.0. Minimum supported iOS, narrower iPhones, iPad, keyboard focus and Increase Contrast need separate coverage. Calm Effects and controlled reduced-motion settlement are covered; actual system Reduce Motion operation is not established by these tests. No manual remote CI run was dispatched. Publishing the code to main starts the existing push-triggered workflow; its result is separate from the local validation above.
