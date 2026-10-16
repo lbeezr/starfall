@@ -101,7 +101,10 @@ struct StarfallView: View {
                 Button { store.settings = true } label: { Image(systemName: "gearshape") }.accessibilityLabel("Settings").accessibilityIdentifier("game.settings")
             }
             HStack {
-                Label("\(store.game.score) / 70", systemImage: "sparkle").accessibilityIdentifier("game.score")
+                Label("\(store.game.score) / 70", systemImage: "sparkle")
+                    .accessibilityElement(children: .ignore)
+                    .accessibilityLabel("\(store.game.score) of \(Game.target) jewels cleared")
+                    .accessibilityIdentifier("game.score")
                 Spacer()
                 Text("\(store.game.moves) moves").monospacedDigit().accessibilityIdentifier("game.moves")
             }.font(.headline)

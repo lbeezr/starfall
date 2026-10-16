@@ -14,7 +14,7 @@ final class StarfallInteractionTests: XCTestCase {
         let board = app.descendants(matching: .any)["game.board"].firstMatch
         XCTAssertTrue(board.waitForExistence(timeout: 10))
         assertLabel(app, "game.moves", "18 moves")
-        assertLabel(app, "game.score", "0 / 70")
+        assertLabel(app, "game.score", "0 of 70 jewels cleared")
         XCTAssertGreaterThan(board.frame.width, 100)
         XCTAssertEqual(board.frame.width, board.frame.height, accuracy: 2)
 
@@ -25,7 +25,7 @@ final class StarfallInteractionTests: XCTestCase {
             dx: 0.5 - 2.0 / 7.7, dy: 0.5 + 2.0 / 7.7))
         point.tap()
         assertLabel(app, "game.moves", "17 moves")
-        assertLabel(app, "game.score", "3 / 70")
+        assertLabel(app, "game.score", "3 of 70 jewels cleared")
         assertLabel(app, "game.message", "+3 starlight")
         let menu = app.buttons["game.menu"]
         XCTAssertTrue(waitFor(NSPredicate(format: "enabled == true"), on: menu))
@@ -37,7 +37,7 @@ final class StarfallInteractionTests: XCTestCase {
         XCTAssertEqual(play.label, "Continue")
         play.tap()
         assertLabel(app, "game.moves", "17 moves")
-        assertLabel(app, "game.score", "3 / 70")
+        assertLabel(app, "game.score", "3 of 70 jewels cleared")
 
         app.buttons["game.settings"].tap()
         let sound = app.switches["settings.sound"]
@@ -57,7 +57,7 @@ final class StarfallInteractionTests: XCTestCase {
 
         app.buttons["game.restart"].tap()
         assertLabel(app, "game.moves", "18 moves")
-        assertLabel(app, "game.score", "0 / 70")
+        assertLabel(app, "game.score", "0 of 70 jewels cleared")
         assertLabel(app, "game.message", "A fresh sky. Find your first cluster")
         attachScreenshot(app, name: "real-touch-restarted")
     }
@@ -67,7 +67,8 @@ final class StarfallInteractionTests: XCTestCase {
                              file: StaticString = #filePath, line: UInt = #line) {
         let element = app.descendants(matching: .any)[id].firstMatch
         XCTAssertTrue(waitFor(NSPredicate(format: "label == %@", label), on: element),
-                      "Expected \(id) to read \(label)", file: file, line: line)
+                      "Expected \(id) to read \(label); actual: \(element.exists ? element.label : "<missing>")",
+                      file: file, line: line)
     }
 
     private func waitFor(_ predicate: NSPredicate, on object: Any) -> Bool {
