@@ -1,0 +1,33 @@
+Unresolved native audit finding; not accepted or suppressed.
+Diagnostic result: /tmp/starfall-modal-isolation.xcresult
+Test: testRealBoardTapAndNavigation before the expanded-sheet audit step was added.
+Production Settings implementation matches the final source; test scope subsequently changed to audit the expanded reading position.
+
+SETTINGS_AUDIT_ISSUE type=131072
+compact=Text clipped
+details=Text of this SwiftUI.AccessibilityNode may be clipped at larger Dynamic Type sizes.
+    t =    28.62s Find the Any (Descendant with identity binding to AX element pid: 52697, elementOrHash.elementID: 4464755328.101)
+    t =    28.65s Checking existence of `"Your game stays on this device." StaticText`
+elementExists=true
+    t =    28.66s Checking existence of `"Your game stays on this device." StaticText`
+    t =    28.68s Find the "Your game stays on this device." StaticText
+    t =    28.72s Find the "Your game stays on this device." StaticText
+elementType=XCUIElementType(rawValue: 48) identifier=
+    t =    28.75s Find the "Your game stays on this device." StaticText
+    t =    28.77s Find the "Your game stays on this device." StaticText
+    t =    28.80s Find the "Your game stays on this device." StaticText
+label=Your game stays on this device. frame=(27.203980099502488, 786.3034825870649, 230.4477611940299, 19.524046434493926) value=Optional()
+    t =    28.82s Find the Any (Descendant with identity binding to AX element pid: 52697, elementOrHash.elementID: 4464755328.101)
+    t =    28.85s Checking existence of `"Your game stays on this device." StaticText`
+    t =    28.87s Find the "Your game stays on this device." StaticText
+/Users/lb/Developer/Starfall/UITests/StarfallInteractionTests.swift:448: error: -[StarfallUITests.StarfallInteractionTests testRealBoardTapAndNavigation] : Text clipped
+    t =    28.97s Tear Down
+Test Case '-[StarfallUITests.StarfallInteractionTests testRealBoardTapAndNavigation]' failed (29.239 seconds).
+Test Suite 'StarfallInteractionTests' failed at 2026-10-16 14:55:59.444.
+	 Executed 2 tests, with 1 failure (0 unexpected) in 47.794 (47.797) seconds
+Test Suite 'StarfallUITests.xctest' failed at 2026-10-16 14:55:59.445.
+	 Executed 2 tests, with 1 failure (0 unexpected) in 47.794 (47.798) seconds
+Test Suite 'Selected tests' failed at 2026-10-16 14:55:59.445.
+	 Executed 2 tests, with 1 failure (0 unexpected) in 47.794 (47.799) seconds
+2026-10-16 14:55:59.746 xcodebuild[52300:576647] [MT] IDETestOperationsObserverDebug: 53.858 elapsed -- Testing started completed.
+2026-10-16 14:55:59.746 xcodebuild[52300:576647] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
