@@ -28,14 +28,8 @@ struct StarfallView: View {
         .sheet(isPresented: $store.settings) {
             NavigationStack {
                 Form {
-                    // A Form switch reserves trailing width. Let its label wrap to
-                    // its full ideal height instead of clipping at accessibility sizes.
-                    Toggle(isOn: $store.soundEnabled) {
-                        Text("Gentle sound").fixedSize(horizontal: false, vertical: true).padding(.vertical, 4)
-                    }.accessibilityIdentifier("settings.sound")
-                    Toggle(isOn: $store.calmEffects) {
-                        Text("Calm effects").fixedSize(horizontal: false, vertical: true).padding(.vertical, 4)
-                    }.accessibilityIdentifier("settings.calm")
+                    settingsToggle("Gentle sound", isOn: $store.soundEnabled, identifier: "settings.sound")
+                    settingsToggle("Calm effects", isOn: $store.calmEffects, identifier: "settings.calm")
                     Text("No timer. No purchases or ads. Your game stays on this device.")
                         .fixedSize(horizontal: false, vertical: true)
                 }.navigationTitle("Settings").toolbar {
@@ -44,6 +38,21 @@ struct StarfallView: View {
                     }.accessibilityIdentifier("settings.done")
                 }
             }.presentationDetents(dynamicTypeSize.isAccessibilitySize ? [.large] : [.medium, .large])
+        }
+    }
+    @ViewBuilder
+    private func settingsToggle(_ title: String, isOn: Binding<Bool>, identifier: String) -> some View {
+        if dynamicTypeSize.isAccessibilitySize {
+            // Give large labels the full row rather than competing with a
+            // trailing switch. Native Toggle semantics and state stay intact.
+            Toggle(isOn: isOn) {
+                Text(title).fixedSize(horizontal: false, vertical: true)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }.toggleStyle(.button).accessibilityIdentifier(identifier)
+        } else {
+            Toggle(isOn: isOn) {
+                Text(title).fixedSize(horizontal: false, vertical: true)
+            }.accessibilityIdentifier(identifier)
         }
     }
     // Keep ordinary layouts centered and allow larger text to scroll instead of

@@ -243,6 +243,29 @@ final class StarfallInteractionTests: XCTestCase {
             }
         }
         try app.performAccessibilityAudit(for: [.textClipped, .sufficientElementDescription, .hitRegion])
+        let calm = app.descendants(matching: .any)["settings.calm"].firstMatch
+        XCTAssertTrue(calm.exists)
+        XCTAssertTrue(calm.isHittable)
+        // Native styles may expose a selected button or a switch value. Both
+        // are actual platform state, not an app-provided testing flag.
+        let enabled = NSPredicate(format: "selected == true OR value == '1'")
+        let disabled = NSPredicate(format: "selected == false AND (value == nil OR value != '1')")
+        // Preferences persist independently of --reset-save. Normalize through
+        // the real control so this flow is independent of preceding test order.
+        if enabled.evaluate(with: calm) {
+            calm.tap()
+            expectation(for: disabled, evaluatedWith: calm)
+            waitForExpectations(timeout: 5)
+        }
+        XCTAssertTrue(disabled.evaluate(with: calm))
+        calm.tap()
+        expectation(for: enabled, evaluatedWith: calm)
+        waitForExpectations(timeout: 5)
+        try app.performAccessibilityAudit(for: [.textClipped, .sufficientElementDescription, .hitRegion])
+        calm.tap()
+        expectation(for: disabled, evaluatedWith: calm)
+        waitForExpectations(timeout: 5)
+        try app.performAccessibilityAudit(for: [.textClipped, .sufficientElementDescription, .hitRegion])
         done.tap()
         XCTAssertTrue(settings.waitForExistence(timeout: 5))
     }
