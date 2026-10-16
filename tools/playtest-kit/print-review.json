@@ -1,0 +1,40 @@
+{
+  "html_sha256": {
+    "moderator-packet.html": "179e9643e6c2e5ce69cc21be54269d50ca833268d905fa80f37111d565bacbd3",
+    "participant-card.html": "3ef66bea011403a9f39f5aba44f7b7cb9d295aaacbbff9efaa882587ed897421"
+  },
+  "human_or_native_game_validation": false,
+  "paper_format_text_equivalence": "passed",
+  "proofs": {
+    "moderator-packet-A4.pdf": {
+      "bytes": 256010,
+      "pages": 3,
+      "path": "/private/tmp/starfall-playtest-print/moderator-packet-A4.pdf",
+      "producer": "Skia/PDF m151",
+      "sha256": "a4616c8810e65478f50730b7effc6ab6a197aa13fb9c4d77c4a226d47aa44462"
+    },
+    "moderator-packet-Letter.pdf": {
+      "bytes": 255992,
+      "pages": 3,
+      "path": "/private/tmp/starfall-playtest-print/moderator-packet-Letter.pdf",
+      "producer": "Skia/PDF m151",
+      "sha256": "07afd5c4fa0401865ea16b7370cb4bcc5c22ba74de029104aaa6231e437bd173"
+    },
+    "participant-card-A4.pdf": {
+      "bytes": 157329,
+      "pages": 1,
+      "path": "/private/tmp/starfall-playtest-print/participant-card-A4.pdf",
+      "producer": "Skia/PDF m151",
+      "sha256": "ecf76e910464cbabb3a6cbd4e584dc5f7ac048189ab518ffe1be1a17a8782286"
+    },
+    "participant-card-Letter.pdf": {
+      "bytes": 157307,
+      "pages": 1,
+      "path": "/private/tmp/starfall-playtest-print/participant-card-Letter.pdf",
+      "producer": "Skia/PDF m151",
+      "sha256": "30d6a24e26b7c14ff80edbf3e6f868e6edd32c13ca7808032ce4fb24ab286d1f"
+    }
+  },
+  "renderer_script_sha256": "795bca4582d29195abd9bab668ebf3ccb8b42ec3eba03a51faed1090d27232b3",
+  "visual_review": "Actual Letter participant and observation PDF pages plus print-style packet inspected; no clipping or overlap; footer spill corrected"
+}
