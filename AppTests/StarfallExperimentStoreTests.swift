@@ -110,6 +110,41 @@ final class StarfallExperimentStoreTests: XCTestCase {
         presenter.finish(); XCTAssertEqual(store.game.turns, 1)
     }
 
+    @MainActor func testDiscardedResetStorePreservesLiveSaveUntilActivation() throws {
+        let (store, presenter, clock, defaults) = makeStore()
+        store.togglePause(); clock.advance(4); presenter.finish()
+        store.setSuspended(true)
+        XCTAssertEqual(store.game.turns, 1)
+        let committed = try XCTUnwrap(defaults.data(forKey: StarfallExperimentStore.saveKey))
+        let resetArguments = ["--starfalls-reset", "--starfalls-seed=5"]
+
+        do {
+            let discarded = StarfallExperimentStore(defaults: defaults, arguments: resetArguments,
+                presenter: ExperimentRecorder(), clock: ManualRainClock())
+            XCTAssertEqual(discarded.game.turns, 0)
+            XCTAssertTrue(discarded.suspended)
+        }
+        XCTAssertEqual(defaults.data(forKey: StarfallExperimentStore.saveKey), committed,
+                       "Constructing a discarded view's store must not replace the live save")
+
+        let restored = StarfallExperimentStore(defaults: defaults, arguments: [],
+            presenter: ExperimentRecorder(), clock: ManualRainClock())
+        XCTAssertEqual(restored.game, store.game)
+        XCTAssertEqual(defaults.data(forKey: StarfallExperimentStore.saveKey), committed)
+
+        let resetClock = ManualRainClock()
+        let reset = StarfallExperimentStore(defaults: defaults, arguments: resetArguments,
+            presenter: ExperimentRecorder(), clock: resetClock)
+        XCTAssertEqual(defaults.data(forKey: StarfallExperimentStore.saveKey), committed)
+        reset.setSuspended(false)
+        let activated = try JSONDecoder().decode(StarfallExperiment.self,
+            from: XCTUnwrap(defaults.data(forKey: StarfallExperimentStore.saveKey)))
+        XCTAssertEqual(activated, StarfallExperiment(seed: 5))
+        XCTAssertEqual(activated, reset.game)
+        XCTAssertTrue(reset.isPaused)
+        XCTAssertNil(resetClock.deadline, "Activation preserves the explicit Start sky boundary")
+    }
+
     @MainActor func testOverflowStopsClockAndPauseCanCancelPendingRain() {
         let (store, presenter, clock, _) = makeStore()
         store.togglePause(); clock.advance(4); clock.advance(4)

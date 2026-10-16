@@ -115,6 +115,11 @@ for runtime, devices in json.load(open(sys.argv[1]))['devices'].items():
             print('simulator_name=' + device['name'])
 PY
 
+# Start the selected simulator before compiling so boot can overlap the app build.
+# simctl reports an error when booting a device that is already booted.
+state="$(xcrun simctl list devices --json | python3 -c 'import json,sys; d=json.load(sys.stdin); print(next(x["state"] for xs in d["devices"].values() for x in xs if x["udid"]==sys.argv[1]))' "$SIMULATOR_ID")"
+if [[ "$state" != Booted ]]; then xcrun simctl boot "$SIMULATOR_ID"; fi
+
 # No provisioning, Apple account, certificate, or physical-device signing.
 # Simulator ad-hoc signing is allowed and uses no private signing credential.
 # This single ARM64 simulator run must use the same architecture for app and package.
@@ -193,9 +198,7 @@ sys.exit(status if status >= 0 else 1)
 PY
 }
 
-# simctl reports an error when booting a device that is already booted.
-state="$(xcrun simctl list devices --json | python3 -c 'import json,sys; d=json.load(sys.stdin); print(next(x["state"] for xs in d["devices"].values() for x in xs if x["udid"]==sys.argv[1]))' "$SIMULATOR_ID")"
-if [[ "$state" != Booted ]]; then xcrun simctl boot "$SIMULATOR_ID"; fi
+# Keep the readiness barrier before status-bar setup, installation and launches.
 xcrun simctl bootstatus "$SIMULATOR_ID" -b
 timed_simctl status-bar 60 xcrun simctl status_bar "$SIMULATOR_ID" override --time '9:41' --batteryState charged --batteryLevel 100
 test -d "$APP"
