@@ -4,6 +4,70 @@ import StarfallCore
 
 /// Store-boundary tests, not claims about real touch delivery or SpriteKit timing.
 final class GameStoreInterruptionTests: XCTestCase {
+    @MainActor func testMenuAndSettingsBlockInputAndSettlePendingTurn() async throws {
+        try withFixture { store, presenter, defaults in
+            store.tap(try legalCell(in: store.game))
+            let committed = store.game
+            store.settings = true
+            XCTAssertFalse(store.busy)
+            XCTAssertEqual(presenter.rendered.last, committed)
+            store.tap(try legalCell(in: committed))
+            XCTAssertEqual(store.game, committed)
+            store.settings = false
+            store.playing = false
+            store.tap(try legalCell(in: committed))
+            XCTAssertEqual(store.game, committed)
+            store.start()
+            store.tap(try legalCell(in: committed))
+            XCTAssertEqual(store.game.moves, committed.moves - 1)
+            XCTAssertEqual(try savedGame(defaults), store.game)
+        }
+    }
+
+    @MainActor func testFeedbackIsOncePerValidTurnAndCancelledAnnouncementStaysSilent() async throws {
+        let suite = "StarfallFeedbackTests.\(UUID().uuidString)"
+        let defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
+        defer { defaults.removePersistentDomain(forName: suite) }
+        let presenter = ControlledPresenter()
+        let feedback = RecordingFeedback()
+        let store = GameStore(defaults: defaults, arguments: ["--demo"],
+                              presenter: presenter, feedback: feedback)
+        store.soundEnabled = true
+        store.calmEffects = true
+        store.tap(Cell(1, 1))
+        XCTAssertEqual(feedback.clearCounts, [3])
+        XCTAssertEqual(feedback.soundSettings, [true])
+        XCTAssertEqual(feedback.calmSettings, [true])
+        store.tap(try legalCell(in: store.game))
+        XCTAssertEqual(feedback.clearCounts, [3])
+        XCTAssertTrue(feedback.announcements.isEmpty)
+        store.settings = true
+        presenter.completions[0]()
+        XCTAssertTrue(feedback.announcements.isEmpty)
+        store.settings = false
+        store.tap(try legalCell(in: store.game))
+        presenter.completions[1]()
+        XCTAssertEqual(feedback.announcements.count, 1)
+        XCTAssertTrue(feedback.announcements[0].contains("16 moves remaining"))
+        presenter.completions[1]()
+        XCTAssertEqual(feedback.announcements.count, 1)
+    }
+
+    @MainActor func testInvalidTapAnnouncesNoMoveWithoutClearFeedback() async throws {
+        let suite = "StarfallFeedbackTests.\(UUID().uuidString)"
+        let defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
+        defer { defaults.removePersistentDomain(forName: suite) }
+        let feedback = RecordingFeedback()
+        let store = GameStore(defaults: defaults, arguments: ["--demo"],
+                              presenter: ControlledPresenter(), feedback: feedback)
+        let initial = store.game
+        store.tap(Cell(0, 0))
+        XCTAssertEqual(store.game, initial)
+        XCTAssertTrue(feedback.clearCounts.isEmpty)
+        XCTAssertEqual(feedback.announcements.count, 1)
+        XCTAssertTrue(feedback.announcements[0].hasSuffix("No move used."))
+    }
+
     @MainActor func testSecondLegalInputWhileBusyDoesNotSpendAnotherMove() async throws {
         try withFixture { store, presenter, defaults in
             let initial = store.game
@@ -101,6 +165,7 @@ final class GameStoreInterruptionTests: XCTestCase {
         let presenter = ControlledPresenter()
         let store = GameStore(defaults: defaults, arguments: [], presenter: presenter)
         XCTAssertEqual(store.game, Game(seed: 42))
+        store.start()
         try body(store, presenter, defaults)
     }
 
@@ -114,6 +179,19 @@ final class GameStoreInterruptionTests: XCTestCase {
         try JSONDecoder().decode(Game.self,
             from: XCTUnwrap(defaults.data(forKey: "starfall.game.v1")))
     }
+}
+
+@MainActor private final class RecordingFeedback: GameFeedbackProviding {
+    var clearCounts: [Int] = []
+    var soundSettings: [Bool] = []
+    var calmSettings: [Bool] = []
+    var announcements: [String] = []
+    func cleared(_ turn: Turn, outcome: Outcome, soundEnabled: Bool, calmEffects: Bool) {
+        clearCounts.append(turn.cleared.count)
+        soundSettings.append(soundEnabled)
+        calmSettings.append(calmEffects)
+    }
+    func announce(_ message: String) { announcements.append(message) }
 }
 
 @MainActor private final class ControlledPresenter: TurnPresenting {

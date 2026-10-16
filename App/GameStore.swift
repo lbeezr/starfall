@@ -16,24 +16,31 @@ import StarfallCore
     @Published private(set) var game: Game
     @Published var message = "Tap 3 or more touching jewels"
     @Published private(set) var busy = false
-    @Published var playing = false
-    @Published var settings = false
+    @Published var playing = false {
+        didSet { if oldValue && !playing { settlePresentation() } }
+    }
+    @Published var settings = false {
+        didSet { if settings && !oldValue { settlePresentation() } }
+    }
     @AppStorage("soundEnabled") var soundEnabled = false
     @AppStorage("calmEffects") var calmEffects = false
     let scene: JewelScene
     private let presenter: any TurnPresenting
+    private let feedback: any GameFeedbackProviding
     private let defaults: UserDefaults
     private let arguments: [String]
     private var activeTurnID: UUID?
     private let saveKey = "starfall.game.v1"
     init(defaults: UserDefaults = .standard,
          arguments: [String] = ProcessInfo.processInfo.arguments,
-         presenter: (any TurnPresenting)? = nil) {
+         presenter: (any TurnPresenting)? = nil,
+         feedback: (any GameFeedbackProviding)? = nil) {
         let scene = JewelScene()
         self.scene = scene
         self.defaults = defaults
         self.arguments = arguments
         self.presenter = presenter ?? scene
+        self.feedback = feedback ?? GameFeedback()
         _soundEnabled = AppStorage(wrappedValue: false, "soundEnabled", store: defaults)
         _calmEffects = AppStorage(wrappedValue: false, "calmEffects", store: defaults)
         if arguments.contains("--reset-save") { defaults.removeObject(forKey: "starfall.game.v1") }
@@ -114,10 +121,11 @@ import StarfallCore
         save(); presenter.render(game)
     }
     func tap(_ cell: Cell) {
-        guard !busy, game.outcome == .playing else { return }
+        guard playing, !settings, !busy, game.outcome == .playing else { return }
         let old = game
         guard let turn = game.tap(cell) else {
             message = "Find at least 3 matching jewels touching sideways or vertically"
+            feedback.announce(message + ". No move used.")
             presenter.nudge(cell); return
         }
         let turnID = UUID()
@@ -125,10 +133,14 @@ import StarfallCore
         busy = true; save()
         message = turn.reshuffled ? "A fresh cluster appeared. No extra move used" : "+\(turn.cleared.count) starlight"
         if let terminalMessage { message = terminalMessage }
+        feedback.cleared(turn, outcome: game.outcome, soundEnabled: soundEnabled,
+                         calmEffects: calmEffects || presenter.reduceMotion)
+        let announcement = "\(message). \(game.score) of \(Game.target) jewels cleared. \(game.moves) moves remaining."
         presenter.animate(turn: turn, old: old, new: game) { [weak self] in
             guard let self, self.activeTurnID == turnID else { return }
             self.activeTurnID = nil
             self.busy = false
+            self.feedback.announce(announcement)
         }
     }
     private func save() {

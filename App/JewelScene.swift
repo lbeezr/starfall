@@ -1,6 +1,5 @@
 import SpriteKit
 import UIKit
-import AudioToolbox
 import StarfallCore
 
 extension Jewel {
@@ -23,7 +22,30 @@ extension Jewel {
     private var nodes: [Cell: SKNode] = [:]
     private let boardRoot = SKNode()
     private let effectRoot = SKNode()
+    private let arrivalEffects = StarfallArrivalEffects()
+    private var activeTouch: UITouch?
+    private var touchStartCell: Cell?
+    private(set) var previewedCells: Set<Cell> = []
+    static let maximumClearSparks = 12
     private var presentationGeneration: UInt64 = 0
+    var starshardFamilyPilotEnabled = StarshardArtwork.isFamilyPilotEnabled(arguments: ProcessInfo.processInfo.arguments)
+    // Load the complete family once, only after the DEBUG opt-in is requested.
+    // A partial family never replaces the existing five-kind material.
+    private lazy var familyFrames: [Jewel: StarshardArtwork.FrameSet]? = {
+        var family: [Jewel: StarshardArtwork.FrameSet] = [:]
+        for kind in Jewel.allCases {
+            guard let frames = StarshardArtwork.shared.frames(for: kind) else { return nil }
+            family[kind] = frames
+        }
+        return family
+    }()
+    private var activeFamily: [Jewel: StarshardArtwork.FrameSet]? {
+        #if DEBUG
+        return starshardFamilyPilotEnabled ? familyFrames : nil
+        #else
+        return nil
+        #endif
+    }
     var crystalPilotEnabled = CrystalPilot.isEnabled(arguments: ProcessInfo.processInfo.arguments)
     private var hasCrystalPilot: Bool {
         #if DEBUG
@@ -33,22 +55,50 @@ extension Jewel {
         #endif
     }
     // Read-only renderer diagnostics for focused hosted tests.
-    var transientNodeCount: Int { effectRoot.children.count }
+    var transientNodeCount: Int {
+        func descendants(_ root: SKNode) -> Int {
+            root.children.reduce(0) { $0 + 1 + descendants($1) }
+        }
+        // Arrival trails are children of jewels; include them in cleanup diagnostics.
+        return descendants(effectRoot) + boardRoot.children.reduce(0) { $0 + descendants($1) }
+    }
     var renderedJewelCount: Int { nodes.count }
+    var starshardFamilyPilotIsActive: Bool { activeFamily != nil }
+    func renderedTexture(at cell: Cell) -> SKTexture? { (nodes[cell] as? SKSpriteNode)?.texture }
+    func renderedSize(at cell: Cell) -> CGSize? { (nodes[cell] as? SKSpriteNode)?.size }
+    func renderedPosition(at cell: Cell) -> CGPoint? { nodes[cell]?.position }
+    func renderedAlpha(at cell: Cell) -> CGFloat? { nodes[cell]?.alpha }
+    func renderedAnchorPoint(at cell: Cell) -> CGPoint? { (nodes[cell] as? SKSpriteNode)?.anchorPoint }
     private var step: CGFloat { min(size.width, size.height) / 7.7 }
+    private var motionIsSuppressed: Bool {
+        reduceMotion || store?.calmEffects == true || UIAccessibility.isReduceMotionEnabled
+            || UIAccessibility.isVoiceOverRunning || view == nil
+    }
     override func didMove(to view: SKView) {
         if boardRoot.parent == nil { addChild(boardRoot) }
         if effectRoot.parent == nil { effectRoot.zPosition = 1; addChild(effectRoot) }
         if let game = store?.game { render(game) }
     }
     override func didChangeSize(_ oldSize: CGSize) {
-        guard store?.busy != true, let game = store?.game else { return }
-        render(game)
+        guard oldSize != size else { return }
+        cancelTouch()
+        if let store {
+            // Layout can change during a turn. Settle both the visuals and store lock.
+            store.settlePresentation()
+        } else {
+            cancelAnimations()
+        }
+    }
+    override func willMove(from view: SKView) {
+        cancelTouch()
+        if let store { store.settlePresentation() } else { cancelAnimations() }
     }
     private func point(_ cell: Cell) -> CGPoint {
         CGPoint(x: size.width/2 + (CGFloat(cell.column)-3)*step, y: size.height/2 + (CGFloat(cell.row)-3)*step)
     }
     func render(_ game: Game) {
+        cancelTouch()
+        arrivalEffects.cancel()
         effectRoot.removeAllChildren()
         boardRoot.removeAllChildren(); nodes.removeAll()
         for row in 0..<Game.side { for column in 0..<Game.side {
@@ -61,6 +111,14 @@ extension Jewel {
     // The artwork has transparent padding; its silhouette still uses radius 0.37 × pitch.
     private static var jewelTextures: [Int: SKTexture] = [:]
     private func jewel(_ kind: Jewel, radius: CGFloat) -> SKNode {
+        if let frames = activeFamily?[kind] {
+            let sprite = SKSpriteNode(texture: frames.neutralFrame)
+            let side = frames.canvasSide(radius: radius)
+            sprite.size = CGSize(width: side, height: side)
+            // Preserve the authored 128/128 pivot, including amber's high silhouette.
+            sprite.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+            return sprite
+        }
         if kind == .aqua && hasCrystalPilot {
             let sprite = SKSpriteNode(texture: CrystalPilot.frames[CrystalPilot.neutralIndex])
             let side = CrystalPilot.canvasSide(radius: radius)
@@ -200,6 +258,8 @@ extension Jewel {
     }
     func cancelAnimations() {
         presentationGeneration &+= 1
+        cancelTouch()
+        arrivalEffects.cancel()
         effectRoot.removeAllChildren()
         effectRoot.removeAllActions()
         removeAllActions()
@@ -207,18 +267,44 @@ extension Jewel {
         for node in boardRoot.children { node.removeAllActions() }
     }
     func nudge(_ cell: Cell) {
-        guard !reduceMotion else { return }
-        nodes[cell]?.run(.sequence([.scale(to: 0.90, duration: 0.07), .scale(to: 1, duration: 0.10)]))
+        guard let node = nodes[cell] else { return }
+        node.removeAction(forKey: "touch-feedback")
+        node.setScale(1)
+        let frames = store?.game.jewel(at: cell).flatMap { activeFamily?[$0] }
+        if let frames { (node as? SKSpriteNode)?.texture = frames.neutralFrame }
+        guard !motionIsSuppressed else { return }
+        if let frames {
+            node.run(.animate(with: frames.tiltSequence(),
+                                     timePerFrame: StarshardArtwork.tiltTimePerFrame,
+                                     resize: false, restore: false), withKey: "touch-feedback")
+            return
+        }
+        node.run(.sequence([.scale(to: 0.94, duration: 0.07), .scale(to: 1, duration: 0.10)]),
+                 withKey: "touch-feedback")
     }
     func animate(turn: Turn, old: Game, new: Game, completion: @escaping () -> Void) {
         cancelAnimations()
         let generation = presentationGeneration
-        if store?.soundEnabled == true { AudioServicesPlaySystemSound(1104) }
-        if reduceMotion || UIAccessibility.isVoiceOverRunning || view == nil { render(new); completion(); return }
+        if motionIsSuppressed { render(new); completion(); return }
+        let mapping = RefillMapping(turn: turn, settled: new)
         // Stable order makes the global shard cap deterministic without touching gameplay RNG.
         let cleared = turn.cleared.sorted { $0.row == $1.row ? $0.column < $1.column : $0.row < $1.row }
-        var shardBudget = CrystalPilot.maximumShards
-        for cell in cleared {
+        let family = activeFamily
+        var shardBudget = family == nil ? CrystalPilot.maximumShards : StarshardArtwork.maximumShards
+        // Large clears share twelve soft sparks instead of filling every cell with effects.
+        let sparkStride = max(1, Int(ceil(Double(cleared.count) / Double(Self.maximumClearSparks))))
+        for (clearIndex, cell) in cleared.enumerated() {
+            if let kind = old.jewel(at: cell), let frames = family?[kind] {
+                nodes[cell]?.run(.sequence([
+                    .animate(with: frames.clearTiltSequence(), timePerFrame: StarshardArtwork.tiltTimePerFrame,
+                             resize: false, restore: false),
+                    .fadeOut(withDuration: 0.02), .removeFromParent()]))
+                if shardBudget >= StarshardArtwork.fragmentCount {
+                    addShards(textures: frames.fragments, side: frames.canvasSide(radius: step * 0.37), at: cell)
+                    shardBudget -= StarshardArtwork.fragmentCount
+                }
+                continue
+            }
             if hasCrystalPilot && old.jewel(at: cell) == .aqua {
                 nodes[cell]?.run(.sequence([CrystalPilot.tiltAction(), .fadeOut(withDuration: 0.02), .removeFromParent()]))
                 if shardBudget >= 4 {
@@ -228,37 +314,39 @@ extension Jewel {
                 continue
             }
             nodes[cell]?.run(.sequence([.scale(to: 1.12, duration: 0.06), .group([.fadeOut(withDuration: 0.13), .scale(to: 0.15, duration: 0.13)]), .removeFromParent()]))
-            let spark = SKLabelNode(text: "✦")
-            spark.fontSize = 14; spark.fontColor = old.jewel(at: cell)?.color
-            spark.position = point(cell); effectRoot.addChild(spark)
-            spark.run(.sequence([.group([.moveBy(x: 0, y: 18, duration: 0.28), .fadeOut(withDuration: 0.28)]), .removeFromParent()]))
+            if clearIndex % sparkStride == 0 {
+                let spark = SKLabelNode(text: "✦")
+                spark.fontSize = step * 0.25
+                spark.fontColor = old.jewel(at: cell)?.color
+                spark.verticalAlignmentMode = .center
+                spark.position = point(cell); effectRoot.addChild(spark)
+                spark.run(.sequence([.group([.moveBy(x: 0, y: step * 0.28, duration: 0.19),
+                                            .fadeOut(withDuration: 0.19)]), .removeFromParent()]))
+            }
         }
         run(.sequence([.wait(forDuration: 0.20), .run { [weak self] in
             guard let self, self.presentationGeneration == generation else { return }
             self.render(new)
-            // Survivor offsets follow their actual pre-clear rows; new jewels fall from above.
-            for column in 0..<Game.side {
-                let survivingRows = (0..<Game.side).filter { !turn.cleared.contains(Cell($0, column)) }
-                for row in 0..<Game.side {
-                    let cell = Cell(row, column)
-                    guard let node = self.nodes[cell] else { continue }
-                    let sourceRow = row < survivingRows.count ? survivingRows[row] : Game.side + row - survivingRows.count
-                    node.position.y += CGFloat(sourceRow-row) * self.step
-                    let move = SKAction.move(to: self.point(cell), duration: 0.26)
-                    move.timingMode = .easeOut; node.run(move)
-                }
+            self.arrivalEffects.play(
+                mapping: mapping, nodes: self.nodes,
+                boardBounds: CGRect(origin: .zero, size: self.size), step: self.step,
+                in: self.effectRoot, calmEffects: self.store?.calmEffects ?? false,
+                reduceMotion: self.reduceMotion, point: { self.point($0) }
+            ) { [weak self] in
+                guard let self, self.presentationGeneration == generation else { return }
+                self.render(new)
+                completion()
             }
-        }, .wait(forDuration: 0.28), .run { [weak self] in
-            guard let self, self.presentationGeneration == generation else { return }
-            self.render(new); completion()
         }]))
     }
     private func addCrystalShards(at cell: Cell) {
-        let side = CrystalPilot.canvasSide(radius: step * 0.37)
-        for index in 0..<4 {
+        addShards(textures: CrystalPilot.shards, side: CrystalPilot.canvasSide(radius: step * 0.37), at: cell)
+    }
+    private func addShards(textures: [SKTexture], side: CGFloat, at cell: Cell) {
+        for (index, texture) in textures.enumerated() {
             let x: CGFloat = index % 2 == 0 ? -1 : 1
             let y: CGFloat = index / 2 == 0 ? 1 : -1
-            let shard = SKSpriteNode(texture: CrystalPilot.shards[index])
+            let shard = SKSpriteNode(texture: texture)
             shard.size = CGSize(width: side / 2, height: side / 2)
             shard.position = CGPoint(x: point(cell).x + x * side / 4,
                                      y: point(cell).y + y * side / 4)
@@ -270,10 +358,59 @@ extension Jewel {
                         .fadeOut(withDuration: 0.13)]), .removeFromParent()]))
         }
     }
+    /// Full-cell hit targets, with explicit bounds before converting coordinates to Int.
+    /// The outer board padding never chooses an edge cell or sends an invalid rule tap.
+    func cell(at location: CGPoint) -> Cell? {
+        guard step.isFinite, step > 0, location.x.isFinite, location.y.isFinite else { return nil }
+        let edge = CGFloat(Game.side) * step / 2
+        let minX = size.width / 2 - edge, minY = size.height / 2 - edge
+        guard location.x >= minX, location.x < minX + edge * 2,
+              location.y >= minY, location.y < minY + edge * 2 else { return nil }
+        return Cell(Int(floor((location.y - minY) / step)), Int(floor((location.x - minX) / step)))
+    }
+
+    /// A still emphasis shows the exact connected group without moving any jewel.
+    /// It carries no exclusive information and is also safe in Calm/Reduce Motion.
+    func showTouchPreview(at cell: Cell?) {
+        let wasPreviewing = !previewedCells.isEmpty
+        previewedCells.removeAll()
+        if wasPreviewing { for node in nodes.values { node.alpha = 1 } }
+        guard let cell, let store, store.playing, !store.settings, !store.busy, store.game.outcome == .playing else { return }
+        let group = store.game.group(at: cell)
+        guard group.count >= 3 else { return }
+        previewedCells = group
+        for (cell, node) in nodes { node.alpha = group.contains(cell) ? 1 : 0.48 }
+    }
+    private func cancelTouch() {
+        activeTouch = nil
+        touchStartCell = nil
+        showTouchPreview(at: nil)
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard activeTouch == nil, touches.count == 1, (event?.allTouches?.count ?? 1) == 1,
+              let store, store.playing, !store.settings, !store.busy, store.game.outcome == .playing,
+              let touch = touches.first, let cell = cell(at: touch.location(in: self)) else {
+            cancelTouch()
+            return
+        }
+        activeTouch = touch
+        touchStartCell = cell
+        showTouchPreview(at: cell)
+    }
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = activeTouch, touches.contains(touch) else { return }
+        if cell(at: touch.location(in: self)) != touchStartCell { cancelTouch() }
+    }
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        cancelTouch()
+    }
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let location = touches.first?.location(in: self), step > 0 else { return }
-        let column = Int(round((location.x-size.width/2)/step + 3))
-        let row = Int(round((location.y-size.height/2)/step + 3))
-        store?.tap(Cell(row, column))
+        let selected = touchStartCell
+        let touch = activeTouch
+        let endsInSameCell = touch.map { cell(at: $0.location(in: self)) == selected } ?? false
+        cancelTouch()
+        guard let touch, touches.count == 1, touches.contains(touch), endsInSameCell,
+              let selected else { return }
+        store?.tap(selected)
     }
 }
