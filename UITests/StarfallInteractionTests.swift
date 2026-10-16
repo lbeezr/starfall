@@ -1,4 +1,5 @@
 import XCTest
+import UIKit
 
 /// Native input smoke test. This does not enable or validate VoiceOver.
 final class StarfallInteractionTests: XCTestCase {
@@ -608,6 +609,153 @@ final class StarfallInteractionTests: XCTestCase {
             setSwitch(calm, to: "0")
             app.buttons["settings.done"].tap()
             app.terminate()
+        }
+    }
+
+    /// One ordinary-text round remains usable across the tablet's two layouts.
+    /// Phones exercise the same real input/navigation flow in supported portrait.
+    @MainActor
+    func testAdaptiveLayoutKeepsBoardAndControlsReachable() throws {
+        continueAfterFailure = false
+        let device = XCUIDevice.shared
+        let previousOrientation = device.orientation
+        let isPad = UIDevice.current.userInterfaceIdiom == .pad
+        let app = XCUIApplication()
+        defer {
+            app.terminate()
+            switch previousOrientation {
+            case .portrait, .portraitUpsideDown, .landscapeLeft, .landscapeRight:
+                device.orientation = previousOrientation
+            default:
+                device.orientation = .portrait
+            }
+        }
+        // Keep the orientation transition in the running app and wait for its
+        // frame before capturing or asserting the landscape layout.
+        device.orientation = .portrait
+        app.launchArguments = ["--demo", "-UIPreferredContentSizeCategoryName",
+                               "UICTContentSizeCategoryL"]
+        app.launch()
+        let board = app.descendants(matching: .any)["game.board"].firstMatch
+        XCTAssertTrue(board.waitForExistence(timeout: 10))
+        XCTAssertTrue(waitFor(NSPredicate { _, _ in app.frame.height > app.frame.width }, on: app))
+        if isPad {
+            device.orientation = .landscapeLeft
+            XCTAssertTrue(waitFor(NSPredicate { _, _ in app.frame.width > app.frame.height }, on: app))
+        }
+        // Keep baseline evidence even when its old stacked landscape layout fails.
+        attachAdaptiveScreenshot(name: "adaptive-layout-initial")
+        XCTAssertEqual(app.frame.width > app.frame.height, isPad)
+        assertAdaptiveGameLayout(app, spacious: isPad)
+        assertLabel(app, "game.moves", "18 moves")
+        assertLabel(app, "game.score", "0 of 70 jewels cleared")
+
+        tapBoard(app, row: 1, column: 1)
+        assertLabel(app, "game.moves", "17 moves")
+        assertLabel(app, "game.score", "3 of 70 jewels cleared")
+        let menu = app.buttons["game.menu"]
+        XCTAssertTrue(waitFor(NSPredicate(format: "enabled == true"), on: menu))
+
+        if isPad {
+            // XCTest waits for idle: this checks settled resize continuity, not
+            // an interruption inside the turn's animation window.
+            device.orientation = .portrait
+            XCTAssertTrue(waitFor(NSPredicate { _, _ in app.frame.height > app.frame.width }, on: app))
+            assertAdaptiveGameLayout(app, spacious: false)
+            assertLabel(app, "game.moves", "17 moves")
+            assertLabel(app, "game.score", "3 of 70 jewels cleared")
+            device.orientation = .landscapeLeft
+            XCTAssertTrue(waitFor(NSPredicate { _, _ in app.frame.width > app.frame.height }, on: app))
+            assertAdaptiveGameLayout(app, spacious: true)
+            assertLabel(app, "game.moves", "17 moves")
+            assertLabel(app, "game.score", "3 of 70 jewels cleared")
+        }
+        // Query the live board again: a resized SpriteView must still map a real
+        // touch to the known four-jewel group on seed 42's post-clear board.
+        tapBoard(app, row: 1, column: 2)
+        assertLabel(app, "game.moves", "16 moves")
+        assertLabel(app, "game.score", "7 of 70 jewels cleared")
+        XCTAssertTrue(waitFor(NSPredicate(format: "enabled == true"), on: menu))
+        attachAdaptiveScreenshot(name: "adaptive-layout-reflowed")
+
+        app.buttons["game.settings"].tap()
+        let done = app.buttons["settings.done"]
+        XCTAssertTrue(done.waitForExistence(timeout: 5))
+        XCTAssertTrue(done.isHittable)
+        XCTAssertFalse(menu.exists, "Settings must isolate the underlying game from accessibility navigation")
+        done.tap()
+        XCTAssertTrue(waitFor(NSPredicate(format: "exists == false"), on: done))
+        XCTAssertTrue(menu.isHittable)
+        assertLabel(app, "game.moves", "16 moves")
+        assertLabel(app, "game.score", "7 of 70 jewels cleared")
+        menu.tap()
+        let play = app.buttons["menu.play"]
+        XCTAssertTrue(play.waitForExistence(timeout: 5))
+        XCTAssertEqual(play.label, "Continue")
+        play.tap()
+        assertLabel(app, "game.moves", "16 moves")
+        assertLabel(app, "game.score", "7 of 70 jewels cleared")
+        assertAdaptiveGameLayout(app, spacious: isPad)
+
+        let restart = app.buttons["game.restart"]
+        if !isPad { reveal(restart, in: app, scrollingUp: true, fullyVisible: true) }
+        XCTAssertTrue(restart.isHittable)
+        restart.tap()
+        assertLabel(app, "game.moves", "18 moves")
+        assertLabel(app, "game.score", "0 of 70 jewels cleared")
+        attachAdaptiveScreenshot(name: "adaptive-layout-restarted")
+    }
+
+    @MainActor
+    private func attachAdaptiveScreenshot(name: String) {
+        // Full-screen capture preserves landscape framing on the iPad runner.
+        let attachment = XCTAttachment(screenshot: XCUIScreen.main.screenshot())
+        attachment.name = name
+        attachment.lifetime = .keepAlways
+        add(attachment)
+    }
+
+    @MainActor
+    private func assertAdaptiveGameLayout(_ app: XCUIApplication, spacious: Bool,
+                                          file: StaticString = #filePath, line: UInt = #line) {
+        let board = app.descendants(matching: .any)["game.board"].firstMatch
+        let score = app.descendants(matching: .any)["game.score"].firstMatch
+        let moves = app.descendants(matching: .any)["game.moves"].firstMatch
+        let progress = app.descendants(matching: .any)["game.progress"].firstMatch
+        let restart = app.buttons["game.restart"]
+        let message = app.descendants(matching: .any)["game.message"].firstMatch
+        print("ADAPTIVE_LAYOUT spacious=\(spacious) app=\(app.frame) board=\(board.frame) score=\(score.frame) moves=\(moves.frame)")
+        XCTAssertTrue(board.exists, file: file, line: line)
+        XCTAssertGreaterThan(board.frame.width, 300, file: file, line: line)
+        XCTAssertEqual(board.frame.width, board.frame.height, accuracy: 2, file: file, line: line)
+        XCTAssertTrue(app.frame.contains(board.frame), "The whole square board must fit the viewport",
+                      file: file, line: line)
+        for control in [app.buttons["game.menu"], app.buttons["game.settings"]] {
+            XCTAssertTrue(control.isHittable, file: file, line: line)
+            XCTAssertTrue(app.frame.contains(control.frame), file: file, line: line)
+            XCTAssertGreaterThanOrEqual(control.frame.width, 44, file: file, line: line)
+            XCTAssertGreaterThanOrEqual(control.frame.height, 44, file: file, line: line)
+        }
+        for statistic in [score, moves, progress] {
+            XCTAssertTrue(statistic.exists, file: file, line: line)
+            XCTAssertTrue(app.frame.contains(statistic.frame), file: file, line: line)
+        }
+        if spacious {
+            for element in [score, moves, progress, message, restart] {
+                XCTAssertTrue(element.exists, file: file, line: line)
+                XCTAssertTrue(app.frame.contains(element.frame),
+                              "Landscape round information and controls must fit without scrolling",
+                              file: file, line: line)
+                XCTAssertGreaterThan(element.frame.minX, board.frame.maxX,
+                                     "Landscape round information and controls must sit beside the board",
+                                     file: file, line: line)
+            }
+            XCTAssertTrue(restart.isHittable, file: file, line: line)
+            XCTAssertGreaterThanOrEqual(restart.frame.height, 44, file: file, line: line)
+        } else {
+            XCTAssertGreaterThanOrEqual(board.frame.minY, max(score.frame.maxY, moves.frame.maxY),
+                                       "Portrait must retain the stacked HUD above the board",
+                                       file: file, line: line)
         }
     }
 

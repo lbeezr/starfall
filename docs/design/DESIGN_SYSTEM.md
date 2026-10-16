@@ -56,9 +56,13 @@ Reading text follows Dynamic Type without a cap, shrinking strategy or line limi
 
 - Spacing scale: 2, 4, 8, 12, 16, 20 and 24 points. Use 20 for page/panel insets, 16 for game sections, 12 for related groups and 8 for tightly related lines. The 2-point board gap is a specific grid constraint.
 - Continuous radii: 16 for controls, 20 for panels, 24 for the board.
-- Reading width: 480 points on the menu; 560 for gameplay and Settings. Larger text scrolls. The HUD stacks its statistics rather than squeezing the board or shrinking labels.
+- Stacked reading width: 480 points on the menu; 560 for gameplay and Settings. Larger text scrolls. The HUD stacks its statistics rather than squeezing the board or shrinking labels.
 - Standard actions have a 52-point minimum height; quiet actions, toolbar Done, Toggle rows and progress exploration have a 44-point minimum. Labels may grow beyond those minima.
 - The accessible board uses 6-point padding and 2-point gaps. At a 335-point board its cells are approximately 44.43 points wide. This is **not a universal 44-point guarantee** for narrower windows; layouts with boards below 332 points need separate inspection. Rotor navigation remains available without precise cell targeting.
+
+Landscape gameplay uses two columns when the available safe-area window is at least 900 points wide and 500 points tall, wider than it is tall, and uses a non-accessibility text size. This follows the available window rather than a device name or physical orientation, so narrower multitasking windows keep the stacked flow. The shared layout tokens reserve a 300-point information column and cap the square board at 600 points, with the existing 24-point section gap and 20-point page insets. Board size also fits the available height below navigation; at the eligibility boundary it is at least 400 points. The board is on the left; the existing HUD, status, result and New game action are on the right. Navigation remains above both columns.
+
+Both arrangements retain one vertical ScrollView. `AnyLayout` changes placement while the board retains its view identity and the same SpriteKit scene; only the stateless HUD changes column. The board marker, rendered scene and accessible cells share one square frame. Sidebar text keeps its natural height, and overflow remains scrollable rather than compressing controls or shrinking text. Portrait windows and accessibility text sizes keep the familiar HUD-before-board stack. No layout transition adds bespoke animation or changes the round.
 
 ## Primitive and component contracts
 
@@ -91,6 +95,8 @@ Settings opens directly in one large native sheet at every text size, with Done 
 - No ads, purchases, tracking, progression, account/network features, external SDKs or paid assets are introduced.
 
 ## Validation boundary
+
+The adaptive landscape revision passed four native UI cases on an iPad mini Simulator running iOS 27; automated large-text accessibility audits also passed. The actual initial and post-play landscape screenshots were opened and visually reviewed: the complete square board fits, the sidebar gives HUD, status and New game clear separation, and navigation remains legible above both columns without observed clipping or overlap. The composition matches the shared layout tokens and existing component hierarchy. Four compact iPhone SE (3rd generation) native UI cases also passed, and its full-screen portrait capture was visually reviewed. The Release simulator build passed. These results do not establish human VoiceOver speech/focus behavior, physical-device performance or interaction feel. The earlier results below describe the preceding presentation revision; record the new source-bound runs and captures in `docs/VALIDATION.md`.
 
 Source review and solid-color calculations were completed for this migration. The follow-up native run (`/tmp/starfall-ci-followup-native.xcresult`) passed 37 tests: 35 hosted tests and the two UI tests `testRealBoardTapAndNavigation` and `testLargestTextSettingsDirectAuditAndDismissal`, with zero failures or skips. Settings passed `textClipped`, `sufficientElementDescription` and `hitRegion` audits in its initial large presentation at normal text size, without a sheet-expansion step, and at the footer-fully-visible reading position at maximum Dynamic Type. All three audit types remained unsuppressed. The tests also exercised sound-toggle changes and persistence, Done dismissal, and exclusion/restoration of underlying gameplay in the accessibility hierarchy.
 
