@@ -1,0 +1,45 @@
+name: Starfall simulator (manual)
+
+# Deliberately no push, pull_request, or schedule triggers.
+on:
+  workflow_dispatch:
+    inputs:
+      budget_confirmed:
+        description: 'I verified included Actions allowance or approved this run’s cost'
+        type: boolean
+        required: true
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: starfall-simulator
+  cancel-in-progress: true
+
+jobs:
+  native-smoke:
+    if: ${{ inputs.budget_confirmed }}
+    runs-on: macos-15
+    timeout-minutes: 15
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Check out the requested source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+      - name: Build, test core, and capture one iPhone simulator
+        run: bash scripts/ci-simulator.sh
+      - name: Upload compact source-bound evidence
+        if: ${{ always() && !cancelled() }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: starfall-simulator-${{ github.sha }}-${{ github.run_attempt }}
+          path: artifacts/
+          retention-days: 1
+          compression-level: 6
+          if-no-files-found: warn
+          include-hidden-files: false
