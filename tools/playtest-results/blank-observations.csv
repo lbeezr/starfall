@@ -1,0 +1,7 @@
+participant_id,evidence_kind,session_state,first_time,session_date,build_source_sha,comprehension_3plus,comprehension_orthogonal,comprehension_goal,comprehension_moves,choice_options,choice_reason,recovery_seen,recovery_understanding,round_status,score_at_stop,moves_at_stop,replay_time,replay_action,replay_start_independent,stated_replay_interest,planning_a,a_extra_help,planning_b,gravity_explanation,b_extra_help,r1_recognition,r1_prior_ab,r1_prior_explanation,r1_extra_prompt,satisfaction,control,calmness
+P1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+P2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+P3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+P4,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+P5,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+P6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
