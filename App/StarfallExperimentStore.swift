@@ -35,14 +35,13 @@ import StarfallCore
 }
 
 @MainActor @Observable final class StarfallExperimentStore {
-    static let showerInterval: TimeInterval = 4
     static let saveKey = "starfall.accumulation.v3"
     private(set) var game: StarfallExperiment
     private(set) var busy = false
     private(set) var suspended = true
     private(set) var isPaused = true
     private(set) var nextShowerDate: Date?
-    private(set) var message = "Start the sky. Stars fall every four seconds; clear matching jewels to make room."
+    private(set) var message = "Start the sky. Clear matching jewels to make room; adjust the balance in Settings."
     private(set) var pending: StarfallExperimentTurn?
     let scene: StarfallExperimentScene
     @ObservationIgnored private let defaults: UserDefaults
@@ -51,7 +50,7 @@ import StarfallCore
     @ObservationIgnored private var generation: UInt64 = 0
     @ObservationIgnored private var rainGeneration: UInt64 = 0
     @ObservationIgnored private var deadline: TimeInterval?
-    @ObservationIgnored private var remaining = showerInterval
+    @ObservationIgnored private var remaining: TimeInterval = 4
     @ObservationIgnored private var rainDue = false
 
     init(defaults: UserDefaults = .standard,
@@ -73,11 +72,13 @@ import StarfallCore
             let seed = argument.flatMap { UInt64($0.dropFirst("--starfalls-seed=".count)) } ?? 5
             game = StarfallExperiment(seed: seed)
         }
+        remaining = showerInterval
         scene.onLayout = { [weak self] in self?.settlePresentation() }
         save()
     }
 
     var forecast: [IncomingStar] { pending?.forecast ?? game.incoming }
+    var showerInterval: TimeInterval { TimeInterval(game.balance.pace.rawValue) }
     var canClear: Bool { !busy && !suspended && !isPaused && !game.isOver && !rainDue }
 
     func clear(_ cell: Cell) {
@@ -115,14 +116,14 @@ import StarfallCore
         clock.schedule(after: remaining) { [weak self] in
             guard let self, self.rainGeneration == ticket, !self.isPaused, !self.suspended, !self.game.isOver else { return }
             self.deadline = nil; self.nextShowerDate = nil
-            self.remaining = Self.showerInterval
+            self.remaining = self.showerInterval
             self.rainDue = true
             self.deliverRainIfReady()
         }
     }
 
     private func freezeClock() {
-        if let deadline { remaining = min(Self.showerInterval, max(0.5, deadline - clock.now)) }
+        if let deadline { remaining = min(showerInterval, max(0.5, deadline - clock.now)) }
         else if rainDue { remaining = 0.5 }
         rainGeneration &+= 1
         clock.cancel()
@@ -135,7 +136,7 @@ import StarfallCore
         let old = game
         guard let turn = game.letStarsFall() else { return }
         if game.isOver { freezeClock() }
-        else { remaining = Self.showerInterval; armClock() }
+        else { remaining = showerInterval; armClock() }
         present(turn, from: old)
     }
 
@@ -167,11 +168,34 @@ import StarfallCore
 
     func restart(sameSky: Bool) {
         isPaused = true
-        freezeClock(); remaining = Self.showerInterval
+        freezeClock(); remaining = showerInterval
         settlePresentation()
-        game = StarfallExperiment(seed: sameSky ? game.seed : UInt64.random(in: 0...UInt64.max))
+        game = StarfallExperiment(seed: sameSky ? game.seed : UInt64.random(in: 0...UInt64.max), balance: game.balance)
         message = sameSky ? "Same sky, a fresh start. Start when you're ready." : "A new sky. Start when you're ready."
         save(); presenter.render(game)
+    }
+
+    func setBalance(_ balance: StarfallBalance) {
+        guard balance != game.balance else { return }
+        freezeClock()
+        game.setBalance(balance)
+        remaining = showerInterval
+        settlePresentation()
+        message = "Balance updated. Your sky is ready when you are."
+        save()
+        armClock()
+    }
+
+    func setPace(_ pace: StarfallBalance.Pace) {
+        var balance = game.balance
+        balance.pace = pace
+        setBalance(balance)
+    }
+
+    func setDarkStarFrequency(_ frequency: StarfallBalance.DarkStarFrequency) {
+        var balance = game.balance
+        balance.darkStars = frequency
+        setBalance(balance)
     }
 
     func setSuspended(_ value: Bool) {

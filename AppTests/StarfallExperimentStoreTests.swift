@@ -147,6 +147,63 @@ final class StarfallExperimentStoreTests: XCTestCase {
         XCTAssertEqual(saved, store.game)
         XCTAssertTrue(saved.isValidSave)
     }
+
+    @MainActor func testPaceChangeSettlesCommittedArrivalAndRejectsOldCallbacks() {
+        let (store, presenter, clock, _) = makeStore()
+        store.togglePause(); clock.advance(4)
+        let oldTimer = clock.action, oldAnimation = presenter.completions.last
+        let board = store.game.board, preview = store.game.incoming
+        store.setPace(.gentle)
+        XCTAssertFalse(store.busy)
+        XCTAssertEqual(store.game.board, board); XCTAssertEqual(store.game.incoming, preview)
+        XCTAssertEqual(clock.deadline, 10)
+        oldTimer?(); oldAnimation?()
+        XCTAssertEqual(store.game.turns, 1)
+        clock.advance(5.9); XCTAssertEqual(store.game.turns, 1)
+        clock.advance(0.1); XCTAssertEqual(store.game.turns, 2)
+        presenter.finish()
+        let deadline = clock.deadline
+        store.setPace(.gentle)
+        XCTAssertEqual(clock.deadline, deadline, "Selecting the current balance does not postpone rain")
+    }
+
+    @MainActor func testSettingsChangesWaitForDismissalAndBackgroundKeepsNewPace() {
+        let (store, presenter, clock, _) = makeStore()
+        store.togglePause(); clock.advance(2)
+        store.setSuspended(true)
+        store.setPace(.brisk); store.setDarkStarFrequency(.frequent)
+        XCTAssertNil(clock.deadline)
+        clock.advance(100); XCTAssertEqual(store.game.turns, 0)
+        store.setSuspended(false)
+        clock.advance(2.9); XCTAssertEqual(store.game.turns, 0)
+        clock.advance(0.1); XCTAssertEqual(store.game.turns, 1)
+        presenter.finish()
+        clock.advance(1); store.setSuspended(true)
+        clock.advance(100); store.setSuspended(false)
+        clock.advance(1.9); XCTAssertEqual(store.game.turns, 1)
+        clock.advance(0.1); XCTAssertEqual(store.game.turns, 2)
+    }
+
+    @MainActor func testBalancePersistsThroughReplayNewSkyAndRelaunch() {
+        let (store, presenter, clock, defaults) = makeStore()
+        let balance = StarfallBalance(pace: .gentle, darkStars: .none)
+        store.setBalance(balance)
+        XCTAssertNil(clock.deadline); XCTAssertTrue(store.isPaused)
+        store.togglePause(); clock.advance(6); presenter.finish()
+        let firstPreview = store.game.incoming
+        store.restart(sameSky: true)
+        XCTAssertEqual(store.game.balance, balance); XCTAssertEqual(store.game.turns, 0)
+        store.togglePause(); clock.advance(6); presenter.finish()
+        XCTAssertEqual(store.game.incoming, firstPreview)
+        store.restart(sameSky: false)
+        XCTAssertEqual(store.game.balance, balance); XCTAssertTrue(store.isPaused)
+        let restored = StarfallExperimentStore(defaults: defaults, arguments: [], presenter: ExperimentRecorder(), clock: ManualRainClock())
+        XCTAssertEqual(restored.game, store.game); XCTAssertEqual(restored.showerInterval, 6)
+        let board = restored.game.board
+        restored.setBalance(StarfallBalance())
+        XCTAssertEqual(restored.showerInterval, 4); XCTAssertEqual(restored.game.board, board)
+        XCTAssertTrue(restored.isPaused)
+    }
 }
 
 @MainActor private final class ManualRainClock: ExperimentRainScheduling {
