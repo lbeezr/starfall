@@ -272,6 +272,90 @@ final class StarfallExperimentTests: XCTestCase {
         }
     }
 
+    func testEveryDarkFrequencyHonorsItsFirstArrivalAndGap() {
+        for frequency in StarfallBalance.DarkStarFrequency.allCases {
+            for seed in UInt64(0)..<20 {
+                var game = StarfallExperiment(seed: seed, balance: .init(darkStars: frequency))
+                var lastDark: Int?
+                for number in 1...30 where !game.isOver {
+                    let dark = game.incoming.filter(\.isDark)
+                    XCTAssertLessThanOrEqual(dark.count, 1)
+                    if !dark.isEmpty {
+                        guard let gap = frequency.showerGap else { XCTFail("Dark stars are off"); break }
+                        if let lastDark { XCTAssertTrue(gap.contains(number - lastDark)) }
+                        else { XCTAssertEqual(number, gap.upperBound) }
+                        lastDark = number
+                    }
+                    game.letStarsFall()
+                    while let cell = game.legalGroups.first?.first, !game.isOver { game.clear(cell) }
+                    XCTAssertTrue(game.isValidSave)
+                }
+                if frequency == .none { XCTAssertNil(lastDark) } else { XCTAssertNotNil(lastDark) }
+            }
+        }
+    }
+
+    func testChangingFrequencyKeepsBoardAndPreviewThenStopsNewDarkStars() {
+        var game = StarfallExperiment(seed: 5)
+        for _ in 0..<5 { game.letStarsFall() }
+        XCTAssertTrue(game.incoming.contains(where: \.isDark))
+        let old = game
+        game.setBalance(.init(darkStars: .none))
+        XCTAssertEqual(game.board, old.board); XCTAssertEqual(game.incoming, old.incoming)
+        XCTAssertEqual(game.score, old.score); XCTAssertEqual(game.turns, old.turns)
+        XCTAssertTrue(game.isValidSave)
+        XCTAssertTrue(game.letStarsFall()!.arrivals.contains { $0.gem.isDark })
+        for _ in 0..<30 where !game.isOver {
+            XCTAssertFalse(game.incoming.contains(where: \.isDark))
+            while let cell = game.legalGroups.first?.first, !game.isOver { game.clear(cell) }
+            game.letStarsFall()
+            XCTAssertTrue(game.isValidSave)
+        }
+    }
+
+    func testPaceChangesDoNotChangeFutureShowerSequence() {
+        var reference = StarfallExperiment(seed: 5), changed = reference
+        changed.setBalance(.init(pace: .gentle))
+        for _ in 0..<25 where !reference.isOver {
+            XCTAssertEqual(changed.incoming, reference.incoming)
+            reference.letStarsFall(); changed.letStarsFall()
+            XCTAssertEqual(changed.board, reference.board)
+            if let cell = reference.legalGroups.first?.first { reference.clear(cell); changed.clear(cell) }
+        }
+    }
+
+    func testAllBalancesReplayAndRestoreDeterministically() throws {
+        for pace in StarfallBalance.Pace.allCases {
+            for frequency in StarfallBalance.DarkStarFrequency.allCases {
+                let balance = StarfallBalance(pace: pace, darkStars: frequency)
+                var game = StarfallExperiment(seed: 5, balance: balance), replay = game
+                for _ in 0..<30 where !game.isOver {
+                    if let cell = game.legalGroups.first?.first { game.clear(cell); replay.clear(cell) }
+                    else { game.letStarsFall(); replay.letStarsFall() }
+                    XCTAssertEqual(game, replay); XCTAssertTrue(game.isValidSave)
+                    replay = try JSONDecoder().decode(StarfallExperiment.self, from: JSONEncoder().encode(game))
+                    XCTAssertEqual(replay.balance, balance)
+                    XCTAssertEqual(replay, game)
+                }
+            }
+        }
+    }
+
+    func testPreTuningSaveKeepsItsBoardAndFutureSequence() throws {
+        var original = StarfallExperiment(seed: 5)
+        for _ in 0..<6 { original.letStarsFall() }
+        var json = try XCTUnwrap(JSONSerialization.jsonObject(with: JSONEncoder().encode(original)) as? [String: Any])
+        json.removeValue(forKey: "savedBalance")
+        var restored = try JSONDecoder().decode(StarfallExperiment.self, from: JSONSerialization.data(withJSONObject: json))
+        XCTAssertEqual(restored.balance, StarfallBalance())
+        XCTAssertEqual(restored.board, original.board); XCTAssertTrue(restored.isValidSave)
+        for _ in 0..<10 where !original.isOver {
+            XCTAssertEqual(restored.incoming, original.incoming)
+            original.letStarsFall(); restored.letStarsFall()
+            XCTAssertEqual(restored.board, original.board)
+        }
+    }
+
     func testRejectsMalformedOrFloatingSavedBoard() throws {
         var game = StarfallExperiment(seed: 42)
         game.letStarsFall()

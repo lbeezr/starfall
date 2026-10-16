@@ -52,11 +52,16 @@ public struct StarfallExperiment: Codable, Equatable, Sendable {
     private var random: SeededRandom
     private var remainingColumns: [Int] = []
     private var showersUntilDark = 5
+    // Optional storage lets pre-tuning v3 saves retain their board and original balance.
+    private var savedBalance: StarfallBalance?
+    public var balance: StarfallBalance { savedBalance ?? StarfallBalance() }
     public var isOver: Bool { blockedColumn != nil }
     public var occupiedCount: Int { board.compactMap { $0 }.count }
 
-    public init(seed: UInt64) {
+    public init(seed: UInt64, balance: StarfallBalance = StarfallBalance()) {
         self.seed = seed
+        savedBalance = balance
+        showersUntilDark = balance.darkStars.showerGap.map { $0.upperBound - 1 } ?? 0
         random = SeededRandom(seed: seed)
         board = Array(repeating: nil, count: Self.side * Self.side)
         incoming = []
@@ -69,6 +74,14 @@ public struct StarfallExperiment: Codable, Equatable, Sendable {
         self.seed = seed; self.board = board; self.incoming = incoming
         starsLanded = board.compactMap { $0 }.reduce(0) { $0 + ($1.isDark ? 1 : $1.value) }
         random = SeededRandom(seed: seed)
+    }
+
+    /// Keep the board and announced preview; new frequency starts with later previews.
+    public mutating func setBalance(_ newBalance: StarfallBalance) {
+        if newBalance.darkStars != balance.darkStars {
+            showersUntilDark = newBalance.darkStars.showerGap.map { $0.upperBound - 1 } ?? 0
+        }
+        savedBalance = newBalance
     }
 
     public func gem(at cell: Cell) -> StarfallGem? {
@@ -178,12 +191,12 @@ public struct StarfallExperiment: Codable, Equatable, Sendable {
         let sizes = [1, 2, 2, 3, 3, 3, 5]
         let count = sizes[Int(random.next() % UInt64(sizes.count))]
         let darkIndex: Int?
-        if showersUntilDark == 0 {
+        if let gap = balance.darkStars.showerGap, showersUntilDark == 0 {
             darkIndex = Int(random.next() % UInt64(count))
-            showersUntilDark = 3 + Int(random.next() % 3)
+            showersUntilDark = gap.lowerBound - 1 + Int(random.next() % UInt64(gap.count))
         } else {
             darkIndex = nil
-            showersUntilDark -= 1
+            if balance.darkStars != .none { showersUntilDark -= 1 }
         }
         return (0..<count).map { offset in
             let kind = random.jewel()
@@ -201,7 +214,8 @@ public struct StarfallExperiment: Codable, Equatable, Sendable {
               remainingColumns.allSatisfy({ (0..<7).contains($0) }),
               Set(remainingColumns).count == remainingColumns.count,
               turns >= 0, turns < Int.max / 6, score >= 0, starsLanded >= 0,
-              (0...5).contains(showersUntilDark), darkStarsCleared >= 0, darkStarsCleared <= starsLanded,
+              (0...(balance.darkStars.showerGap.map { $0.upperBound - 1 } ?? 0)).contains(showersUntilDark),
+              darkStarsCleared >= 0, darkStarsCleared <= starsLanded,
               incoming.allSatisfy({ (0..<7).contains($0.column) && $0.id >= 0 }),
               blockedColumn.map({ (0..<7).contains($0) }) ?? true else { return false }
         let gems = board.compactMap { $0 }
