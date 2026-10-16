@@ -10,14 +10,14 @@ final class StarfallExperimentTests: XCTestCase {
     func testEmptyStartAndInvalidInputNeverAdvanceTheForecast() {
         var game = StarfallExperiment(seed: 42)
         let before = game
-        XCTAssertEqual(game.occupiedCount, 0); XCTAssertEqual(game.incoming.count, 3)
+        XCTAssertEqual(game.occupiedCount, 0); XCTAssertTrue(StarfallExperiment.showerSizes.contains(game.incoming.count))
         XCTAssertTrue(game.isValidSave)
         XCTAssertNil(game.clear(Cell(0, 0))); XCTAssertNil(game.clear(Cell(-1, 7)))
         XCTAssertEqual(game, before)
         let turn = game.letStarsFall()!
         XCTAssertEqual(turn.forecast, before.incoming)
         XCTAssertEqual(turn.arrivals.map(\.star), before.incoming)
-        XCTAssertEqual(game.turns, 1); XCTAssertEqual(game.starsLanded, 3)
+        XCTAssertEqual(game.turns, 1); XCTAssertEqual(game.starsLanded, before.incoming.count)
         XCTAssertEqual(game.score, 0); XCTAssertTrue(game.isValidSave)
     }
 
@@ -54,7 +54,7 @@ final class StarfallExperimentTests: XCTestCase {
     func testForecastVisitsEveryColumnBeforeRepeating() {
         var game = StarfallExperiment(seed: 42)
         var columns: [Int] = []
-        for _ in 0..<7 {
+        while columns.count < 21 {
             columns += game.incoming.map(\.column)
             game.letStarsFall()
         }
@@ -74,7 +74,7 @@ final class StarfallExperimentTests: XCTestCase {
         XCTAssertEqual(turn.cleared, [Cell(0, 0), Cell(1, 0), Cell(2, 0)])
         XCTAssertEqual(turn.collected, 4); XCTAssertEqual(game.score, 4)
         XCTAssertEqual(turn.settled[0], board[21]); XCTAssertEqual(game.gem(at: Cell(0, 0)), board[21])
-        XCTAssertEqual(game.turns, 1); XCTAssertEqual(turn.arrivals.count, 3)
+        XCTAssertEqual(game.turns, 0); XCTAssertTrue(turn.arrivals.isEmpty)
         XCTAssertTrue((1..<7).allSatisfy { game.gem(at: Cell($0, 0)) == nil }, "There is no automatic refill")
     }
 
@@ -120,8 +120,40 @@ final class StarfallExperimentTests: XCTestCase {
         waiting.letStarsFall(); XCTAssertTrue(waiting.isOver)
         var clearing = StarfallExperiment(board: board, incoming: forecast)
         clearing.clear(Cell(0, 0))
+        XCTAssertEqual(clearing.incoming, forecast)
+        XCTAssertEqual(clearing.occupiedCount, 4)
+        clearing.letStarsFall()
         XCTAssertFalse(clearing.isOver); XCTAssertEqual(clearing.occupiedCount, 7)
         XCTAssertEqual(clearing.score, 3)
+    }
+
+    func testClearLeavesForecastAndFutureRandomSequenceUntouched() {
+        var game = StarfallExperiment(seed: 5)
+        for _ in 0..<20 where game.legalGroups.isEmpty && !game.isOver { game.letStarsFall() }
+        let cell = game.legalGroups.first!.first!
+        var waiting = game
+        let preview = game.incoming, showers = game.turns
+        let turn = game.clear(cell)!
+        XCTAssertEqual(turn.forecast, preview); XCTAssertTrue(turn.arrivals.isEmpty)
+        XCTAssertEqual(game.incoming, preview); XCTAssertEqual(game.turns, showers)
+        game.letStarsFall(); waiting.letStarsFall()
+        XCTAssertFalse(waiting.isOver)
+        XCTAssertEqual(game.incoming, waiting.incoming)
+    }
+
+    func testSeededShowersVaryAcrossAllFourSizesAndHaveUniqueIDs() {
+        var sizes: Set<Int> = []
+        for seed in UInt64(0)..<50 {
+            var game = StarfallExperiment(seed: seed)
+            var ids: Set<Int> = []
+            for _ in 0..<10 {
+                sizes.insert(game.incoming.count)
+                for star in game.incoming { XCTAssertTrue(ids.insert(star.id).inserted) }
+                game.letStarsFall()
+                XCTAssertTrue(game.isValidSave)
+            }
+        }
+        XCTAssertEqual(sizes, [1, 2, 3, 5])
     }
 
     func testReplayAndSaveRestorePreserveFutureShowers() throws {

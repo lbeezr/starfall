@@ -1,6 +1,6 @@
 import Foundation
 
-/// Separate, turn-based accumulation experiment. The original Game is unchanged.
+/// Separate accumulation experiment with deterministic shower events. The original Game is unchanged.
 public struct StarfallGem: Codable, Equatable, Sendable, Identifiable {
     public let id: Int
     public let kind: Jewel
@@ -37,7 +37,8 @@ public struct StarfallExperimentTurn: Sendable {
 
 public struct StarfallExperiment: Codable, Equatable, Sendable {
     public static let side = 7
-    public static let showerSize = 3
+    public static let maximumShowerSize = 5
+    public static let showerSizes = [1, 2, 3, 5]
     public private(set) var board: [StarfallGem?]
     public private(set) var incoming: [IncomingStar]
     public private(set) var score = 0
@@ -60,7 +61,7 @@ public struct StarfallExperiment: Codable, Equatable, Sendable {
 
     // Internal deterministic positions for rule tests, not an app customization API.
     init(board: [StarfallGem?], incoming: [IncomingStar], seed: UInt64 = 1) {
-        precondition(board.count == 49 && incoming.count == Self.showerSize)
+        precondition(board.count == 49 && Self.showerSizes.contains(incoming.count))
         self.seed = seed; self.board = board; self.incoming = incoming
         starsLanded = board.compactMap { $0 }.reduce(0) { $0 + $1.value }
         random = SeededRandom(seed: seed)
@@ -108,18 +109,8 @@ public struct StarfallExperiment: Codable, Equatable, Sendable {
         guard !isOver else { return nil }
         let cells = group(at: cell)
         guard value(of: cells) >= 3 else { return nil }
-        return advance(clearing: cells)
-    }
-
-    /// Explicitly invite the previewed shower when no clear is wanted or possible.
-    @discardableResult public mutating func letStarsFall() -> StarfallExperimentTurn? {
-        guard !isOver else { return nil }
-        return advance(clearing: [])
-    }
-
-    private mutating func advance(clearing cells: Set<Cell>) -> StarfallExperimentTurn {
         let collected = value(of: cells)
-        score += collected; turns += 1
+        score += collected
         for cell in cells { board[cell.row * Self.side + cell.column] = nil }
         for column in 0..<Self.side {
             let survivors = (0..<Self.side).compactMap { board[$0 * Self.side + column] }
@@ -127,6 +118,15 @@ public struct StarfallExperiment: Codable, Equatable, Sendable {
                 board[row * Self.side + column] = row < survivors.count ? survivors[row] : nil
             }
         }
+        return .init(cleared: cells, collected: collected, settled: board,
+                     forecast: incoming, arrivals: [], blockedColumn: nil)
+    }
+
+    /// Clock-independent event: the presentation layer decides when the sky advances.
+    /// Clearing never consumes or regenerates this preview.
+    @discardableResult public mutating func letStarsFall() -> StarfallExperimentTurn? {
+        guard !isOver else { return nil }
+        turns += 1
         let settled = board, forecast = incoming
         var arrivals: [StarfallExperimentTurn.Arrival] = []
         for star in forecast {
@@ -149,24 +149,26 @@ public struct StarfallExperiment: Codable, Equatable, Sendable {
             }
         }
         if !isOver { incoming = nextShower() }
-        return .init(cleared: cells, collected: collected, settled: settled,
+        return .init(cleared: [], collected: 0, settled: settled,
                      forecast: forecast, arrivals: arrivals, blockedColumn: blockedColumn)
     }
 
     private mutating func nextShower() -> [IncomingStar] {
-        (0..<Self.showerSize).map { offset in
+        let sizes = [1, 2, 2, 3, 3, 3, 5]
+        let count = sizes[Int(random.next() % UInt64(sizes.count))]
+        return (0..<count).map { offset in
             let kind = random.jewel()
             // Visit all seven columns in random order before repeating a column.
             // This keeps one unlucky column from filling before the field develops.
             if remainingColumns.isEmpty { remainingColumns = Array(0..<Self.side) }
             let index = Int(random.next() % UInt64(remainingColumns.count))
-            return IncomingStar(id: turns * Self.showerSize + offset, kind: kind,
+            return IncomingStar(id: turns * Self.maximumShowerSize + offset, kind: kind,
                                 column: remainingColumns.remove(at: index))
         }
     }
 
     public var isValidSave: Bool {
-        guard board.count == 49, incoming.count == Self.showerSize,
+        guard board.count == 49, Self.showerSizes.contains(incoming.count),
               remainingColumns.allSatisfy({ (0..<7).contains($0) }),
               Set(remainingColumns).count == remainingColumns.count,
               turns >= 0, turns < Int.max / 6, score >= 0, starsLanded >= 0,
@@ -175,7 +177,7 @@ public struct StarfallExperiment: Codable, Equatable, Sendable {
         let gems = board.compactMap { $0 }
         guard Set(gems.map(\.id)).count == gems.count,
               gems.allSatisfy({ $0.id >= 0 && $0.id < starsLanded }),
-              starsLanded <= turns * Self.showerSize,
+              starsLanded <= turns * Self.maximumShowerSize,
               score == starsLanded - gems.reduce(0, { $0 + $1.value }) else { return false }
         for column in 0..<7 {
             var foundSpace = false
