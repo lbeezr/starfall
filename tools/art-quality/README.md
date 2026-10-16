@@ -4,6 +4,37 @@ Local inspection of the five existing DEBUG family atlases. This tool reads
 source PNGs and writes comparison sheets plus measurements; it never edits
 the asset catalog, runtime code, source artwork, or release configuration.
 
+## Missing-asset preflight
+
+Check a checkout's catalog before requesting another artwork handoff:
+
+```sh
+python3 -B tools/art-quality/validate_catalog.py
+python3 -B tools/art-quality/validate_catalog.py --assets /path/to/App/Assets.xcassets --json
+python3 -B tools/art-quality/test_validate_catalog.py -v
+```
+
+The read-only preflight requires the five exact-case `StarshardFamily{Kind}`
+image sets plus `CrystalPilot`. It checks each `Contents.json` for one universal
+entry naming its expected PNG and `info.version` 1; then checks RGBA, 2304 × 256,
+nine nonempty padded frames. Referenced filenames must stay directly inside
+their image set; traversal and symlinks escaping that directory are rejected.
+Both aqua PNGs must match the approved v1 file SHA-256 pinned in the utility
+and the frozen comparison manifest. Even lossless recompression changes those
+approved file bytes and is reported for explicit review.
+
+Exit **0** means these catalog checks pass; **1** reports catalog/content
+errors; **2** is invalid CLI usage. The default prints concise diagnostics;
+`--json` prints details and input hashes to stdout. No output file is created.
+Tests use temporary catalogs and the frozen reference, preserving real assets.
+
+This models the existing loader's file/geometry contract. Source integration,
+project resource registration, compiled bundles, `UIImage` loading, appearance
+and native behavior remain unchecked. The preflight does not locate or require
+editable 3D render sources. It uses the existing Python/Pillow dependencies.
+
+## Pixel review
+
 From the repository root:
 
 ```sh
