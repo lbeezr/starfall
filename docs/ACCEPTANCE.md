@@ -1,27 +1,43 @@
-# MVP acceptance checklist
+# MVP acceptance status
 
-## Automated core
-- Same seed produces same board and subsequent refills
-- Orthogonal same-kind flood fill; no diagonal connection
-- Groups smaller than three and out-of-board taps do not spend moves
-- A successful tap clears its complete group and spends one move
-- Surviving column order remains stable under downward gravity
-- Board refills to 49 cells
-- Target reached on last move wins; terminal states reject taps
-- Every live board has a legal move after bounded free recovery
-- Save round trip preserves RNG continuation; invalid state is rejected
+Reconciled 16 October 2026 against repository head `e84a70d57f2defa8c58ef7cd87ec128e1733fcdb`. This is an evidence summary, not a new test run or release approval. Results below apply to their identified source and environment; earlier passes do not establish acceptance of the current head or another worktree.
 
-## Apple-platform manual checks (not yet executed)
-- Play from menu, tap valid/invalid groups, verify counter and fall animation
-- Rapid repeated taps during clear/settle do not spend extra moves
-- Win at 70+; lose below 70 with zero moves; restart both
-- Open/dismiss settings and menu; resume same game
-- Background during clear and restore app; no frozen input or lost committed move
-- Kill/relaunch after a move; restore exact board/counters
-- Enable VoiceOver before play and during an animation; perform several clears
-- Reduce Motion/Calm Effects produce immediate state updates without motion
-- Sound toggle defaults off and changes optional system tap sound
-- Small and large iPhone and iPad layouts, landscape iPad, large text
-- Clean build contains no ad/purchase UI, SDK, tracking or network requests
+Keep the prototype at 7×7, five kinds, orthogonal groups of 3+, and 70 cleared jewels in 18 valid moves. Invalid taps are free; a last-move win takes precedence; dead-board recovery is free and bounded. Human enjoyment and balance are not established by deterministic tests.
 
-Target and move count are initial tuning values, not validated commercial balance. Device accessibility and aesthetic quality remain acceptance work until a simulator/device run is inspected.
+## Recorded automated results
+
+| Source and environment | Recorded result | Durable evidence and scope |
+| --- | --- | --- |
+| `6c163c58b8949e2741efba0186f9adc42ca4aed0`; cloud run **38954256452**; Xcode 26.3, iPhone SE (3rd generation), iOS 26.2 Simulator | 27 core, 34 hosted app and 10 UI tests passed; zero native failures/skips. 30 named UI captures plus two smoke images had verified hashes. | [Cloud provenance](evidence/ci-followup-2026-10-16/cloud-baseline/provenance.txt), [hosted summary](evidence/ci-followup-2026-10-16/cloud-baseline/hosted-test-summary.json), [UI summary](evidence/ci-followup-2026-10-16/cloud-baseline/ui-test-summary.json). Historical 375-point phone coverage; smoke states alone do not prove a touch or animation. |
+| Renderer/Settings production source `0d4ebe6b49034bb43553691b3a9e9830959f410b`, matching the tested integration files; Xcode 27, iPhone 17 Pro, iOS 27 Simulator | 27 core passed. All 35 hosted tests and all 10 UI tests passed with zero failures/skips; Release simulator build passed. | [Source hashes and publication mapping](evidence/ci-followup-2026-10-16/source-and-evidence.json), [37-test focused result](evidence/ci-followup-2026-10-16/focused-native-summary.json), [full UI result](evidence/ci-followup-2026-10-16/full-ui-summary.json), [review record](evidence/ci-followup-2026-10-16/README.md). The focused run includes two repeated UI cases: there are 45 distinct native tests, not 47. |
+| Quiet-tuck audio published in `4bce2f57bbb7870f4b6b323c992e50fabb2d16f4`; Xcode 27, iPhone 17 Pro, iOS 27 Simulator | Integration note records 27 core tests and a simulator build, an initial 43-hosted/6-UI run, then **18 affected tests** passing after the audio queue correction. | [Committed audio integration record](design/audio/INTEGRATION.md). The final 18 are a focused rerun, not a full-suite pass after that correction. Raw `.xcresult` paths are temporary; this lane has no retained compact test-summary/source-hash receipt equivalent to the rows above. The hung intermediate command is explicitly excluded. |
+
+These checks cover the following acceptance behavior within those runs:
+
+- **Rules and saves:** deterministic boards/refills, complete orthogonal clears, free invalid taps, stable downward survivor order, full refill, bounded free recovery, terminal input rejection, final-move win precedence, and validated save/restore with RNG continuation. See [core tests](../Tests/StarfallCoreTests/GameTests.swift) and [refill mapping tests](../Tests/StarfallCoreTests/RefillMappingTests.swift).
+- **Store and renderer:** busy-input rejection, committed-state settlement, cancellation and stale callbacks, bounded effects, preview cancellation and neutral restoration after an invalid nudge. Hosted tests control these boundaries; they do not establish physical-device timing or frame pacing.
+- **Native UI:** real board input, a rapid double tap, invalid taps and cancelled drag; menu/Continue, restart, saved relaunch, settled background/resume, Calm effects, deterministic win/loss and a real final tap winning at 73/70 with zero moves. Accessible-board controls and modal hierarchy exclusion/restoration are exercised without enabling VoiceOver. The later swipe-dismissal regression is committed at `4685fe68dcfb7f61855f2b1a6622b3b383723e65`; the audio record reports exercising it in its initial native run.
+- **Packaging:** the recorded Release checks found the bundled privacy declaration equal to source and AppIcon metadata present, with no ad/IAP/tracking framework or remote Swift package introduced. This is historical source/bundle evidence, not a network-traffic audit or verification of a later Release candidate.
+
+## Inspected simulator captures
+
+The recorded reviews inspected settled gameplay, large-text screens and terminal feedback. Retained examples include [real-touch post-clear](evidence/swarm-2026-10-16/screenshots/real-touch-post-clear.png), [largest-text gameplay](evidence/swarm-2026-10-16/screenshots/accessibility-large-text-game.png), and [last-move win restored](evidence/swarm-2026-10-16/screenshots/terminal-last-move-won-restored.png), with [capture hashes](evidence/swarm-2026-10-16/screenshot-manifest.json) and [source/product provenance](evidence/swarm-2026-10-16/source-and-product.json). These stills support legibility at the captured states, not animation quality or usability for a person.
+
+The later [initial large Settings sheet](evidence/ci-followup-2026-10-16/settings-initial.png) and [maximum-text footer](evidence/ci-followup-2026-10-16/settings-largest-footer.png) were inspected, and the tested positions passed unsuppressed `textClipped`, `sufficientElementDescription` and `hitRegion` audits. The old medium-sheet [failure diagnostic](evidence/swarm-2026-10-16/known-settings-medium-issue.txt) remains historical evidence: changing the normal presentation to a large sheet does not prove that earlier report false or establish every scroll position. Automated audits do not establish spoken VoiceOver operation.
+
+## Current sound and artwork boundaries
+
+Gentle sound is **off on a fresh install**. When enabled, valid clears rotate through four bundled quiet-tuck MP3s, including terminal clears; invalid taps, refill and navigation add no sounds. This replaces the old system tap sound. Local playback is bounded to one voice, occurs independently of core RNG/gameplay, and cancels stale requests on mute and lifecycle changes. The [audio record](design/audio/INTEGRATION.md) documents native playback-start checks and the user's acceptance of the palette after trying it. That preference is not a formal participant study or physical-device audio certification; silent mode, routes, speaker balance and comfort remain hands-on checks.
+
+The recreated [crystal v2 package](../Artwork/Crystals/v2/README.md), delivered at `ad160d00e45aad04eb6c1dd5c0448c19e40dcabb`, has its own Blender/source/frame evidence. **Its runtime adoption is not yet verified here.** Earlier five-kind simulator tests used the prior DEBUG artwork and do not validate v2 loading, sizing, motion or appearance. Runtime adoption belongs to the active integration workstream. Adaptive layout is also active in a separate worktree; no unfinished layout result is credited in this checklist.
+
+## Open acceptance gates
+
+- [ ] **Human play:** run the [first-playtest protocol](design/FIRST_PLAYTEST_PROTOCOL.md) with the accessible [kit](design/PLAYTEST_KIT.md), preserving anonymous observations and actual denominators through [the results tool](design/PLAYTEST_RESULTS.md). No participant results have been collected; bots do not establish comprehension, satisfaction, replay or balance. Keep 70/18 unchanged.
+- [ ] **Actual accessibility operation:** VoiceOver speech, focus, rotor navigation and activation before/during clears; return from Settings; real system Reduce Motion changes; keyboard focus and Increase Contrast. Calm effects and controlled reduced-motion tests cover narrower behavior.
+- [ ] **Physical-device interaction and feel:** real interruption during a moving clear, resume/relaunch, audio interruptions/routes/silent mode, haptics, first-contact latency, animation readability, frame pacing and sustained performance. Simulator input and API callbacks do not close these gates.
+- [ ] **Layout/OS matrix:** complete the active adaptive-layout work and verify its exact integrated source across supported phone sizes, iPad portrait/landscape, large text and the minimum supported OS. Retain actual captures and audit results; earlier iPhone SE/iPhone 17 Pro passes cover only their tested layouts.
+- [ ] **Crystal v2 integration:** validate all five adopted runtime atlases together, actual loading/pivots/sizing, clears and motion-reduction behavior on the integration commit. Blender reproduction alone is insufficient.
+- [ ] **Final clean candidate and distribution:** rerun applicable core, hosted, UI and Release checks after integration; inspect the exact bundle, privacy declaration, icon and absence of monetization/tracking dependencies. Physical-device signing and distribution remain separate [release gates](RELEASE_CHECKLIST.md).
+
+The [validation history](VALIDATION.md) retains earlier failures and environment limits. Temporary result bundles and expiring cloud artifacts may disappear; use the linked committed summaries, hashes and images to identify what was actually established.
