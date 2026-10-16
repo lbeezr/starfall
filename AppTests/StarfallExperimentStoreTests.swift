@@ -7,7 +7,7 @@ final class StarfallExperimentStoreTests: XCTestCase {
         let defaults = UserDefaults(suiteName: "Starfalls.\(UUID().uuidString)")!
         let presenter = ExperimentRecorder(), clock = ManualRainClock()
         let store = StarfallExperimentStore(defaults: defaults, arguments: ["--starfalls-seed=5"], presenter: presenter, clock: clock)
-        addTeardownBlock { defaults.removeObject(forKey: "starfall.accumulation.v2") }
+        addTeardownBlock { defaults.removeObject(forKey: "starfall.accumulation.v3") }
         store.setSuspended(false)
         return (store, presenter, clock, defaults)
     }
@@ -122,6 +122,30 @@ final class StarfallExperimentStoreTests: XCTestCase {
         let ended = store.game
         clock.advance(100); store.togglePause(); store.clear(Cell(0, 0))
         XCTAssertEqual(store.game, ended)
+    }
+
+    @MainActor func testDarkStarFeedbackClearAndSavedInfluence() throws {
+        let (store, presenter, clock, defaults) = makeStore()
+        store.togglePause()
+        for _ in 0..<6 { clock.advance(4); presenter.finish() }
+        let dark = Cell(1, 1), beside = Cell(0, 1)
+        XCTAssertTrue(store.game.gem(at: dark)?.isDark == true)
+        XCTAssertTrue(store.game.isGrowthBlocked(at: beside))
+        XCTAssertTrue(store.message.contains("dark star blocks nearby growth"))
+        let restored = StarfallExperimentStore(defaults: defaults, arguments: [], presenter: ExperimentRecorder(), clock: ManualRainClock())
+        XCTAssertEqual(restored.game, store.game)
+        XCTAssertTrue(restored.isPaused)
+        let before = store.game
+        store.clear(dark)
+        XCTAssertEqual(store.game, before)
+        XCTAssertTrue(store.message.contains("dissolve"))
+        store.clear(beside)
+        XCTAssertEqual(store.game.darkStarsCleared, 1)
+        XCTAssertEqual(store.game.score, 3)
+        XCTAssertTrue(store.message.contains("Dark star dissolved"))
+        let saved = try JSONDecoder().decode(StarfallExperiment.self, from: XCTUnwrap(defaults.data(forKey: StarfallExperimentStore.saveKey)))
+        XCTAssertEqual(saved, store.game)
+        XCTAssertTrue(saved.isValidSave)
     }
 }
 
