@@ -1,0 +1,48 @@
+[
+  {
+    "attachments": [
+      {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "FBB33D71-C642-4705-B63F-F71A3A7CA62C",
+        "deviceName": "Starfall Accumulation Lab",
+        "exportedFileName": "665C4C1E-1EE4-4E5E-8A08-31E551532641.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "starfalls-calm-after-dismissal_0_37710AA8-488A-4346-8C65-029B0D06527E.png",
+        "timestamp": 1792183965.887,
+        "savedFileName": "starfalls-calm-after-dismissal.png"
+      },
+      {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "FBB33D71-C642-4705-B63F-F71A3A7CA62C",
+        "deviceName": "Starfall Accumulation Lab",
+        "exportedFileName": "68CFC9C8-8D49-4A99-A858-31A2E1E879ED.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "starfalls-after-clear_0_078FAD65-CD61-434F-8EC1-A5AB3A9EB2AC.png",
+        "timestamp": 1792183957.951,
+        "savedFileName": "starfalls-after-clear.png"
+      },
+      {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "FBB33D71-C642-4705-B63F-F71A3A7CA62C",
+        "deviceName": "Starfall Accumulation Lab",
+        "exportedFileName": "D27BD8C1-A078-4B5B-B58E-E4C52D65DF7A.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "starfalls-grown-and-matchable_0_D51888C8-4A11-4F11-B149-F1D5CE021DED.png",
+        "timestamp": 1792183956.304,
+        "savedFileName": "starfalls-grown-and-matchable.png"
+      },
+      {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "FBB33D71-C642-4705-B63F-F71A3A7CA62C",
+        "deviceName": "Starfall Accumulation Lab",
+        "exportedFileName": "B524F0B3-5157-48AE-A485-B5AFBBF05A44.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "starfalls-empty-preview_0_0C87C010-9F5B-43D4-A94F-C8EC7A9849D3.png",
+        "timestamp": 1792183950.893,
+        "savedFileName": "starfalls-empty-preview.png"
+      }
+    ],
+    "testIdentifier": "StarfallExperimentInteractionTests/testPreviewGrowthClearReplayAndSettings()",
+    "testIdentifierURL": "test://com.apple.xcode/Starfall/StarfallUITests/StarfallExperimentInteractionTests/testPreviewGrowthClearReplayAndSettings"
+  }
+]

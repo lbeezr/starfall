@@ -9,6 +9,9 @@ import StarfallCore
 
 struct StarfallView: View {
     @StateObject private var store = GameStore()
+    #if DEBUG
+    @State private var experimentPresented = ProcessInfo.processInfo.arguments.contains("--starfalls")
+    #endif
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.accessibilityVoiceOverEnabled) private var voiceOver
@@ -40,6 +43,9 @@ struct StarfallView: View {
             if phase != .active { store.settlePresentation() }
         }
         .sheet(isPresented: $store.settings) { settingsView }
+        #if DEBUG
+        .fullScreenCover(isPresented: $experimentPresented) { StarfallExperimentView() }
+        #endif
     }
 
     private var settingsView: some View {
@@ -153,6 +159,12 @@ struct StarfallView: View {
             .fixedSize(horizontal: false, vertical: true)
             .frame(maxWidth: .infinity, alignment: .leading)
             .starfallPanel()
+
+            #if DEBUG
+            Button("Try the falling sky") { experimentPresented = true }
+                .buttonStyle(StarfallButtonStyle(role: .secondary, expands: true))
+                .accessibilityIdentifier("menu.starfalls")
+            #endif
 
             Button("Settings") { store.settings = true }
                 .buttonStyle(StarfallButtonStyle(role: .quiet))
