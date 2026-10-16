@@ -85,6 +85,20 @@ final class StarfallInteractionTests: XCTestCase {
         XCTAssertGreaterThan(board.frame.width, 100)
         XCTAssertEqual(board.frame.width, board.frame.height, accuracy: 2)
 
+        // Native interactive dismissal must restore gameplay access without
+        // changing the round. The real board tap below verifies input resumes.
+        app.buttons["game.settings"].tap()
+        let settingsDone = app.buttons["settings.done"]
+        XCTAssertTrue(settingsDone.waitForExistence(timeout: 5))
+        XCTAssertFalse(app.buttons["game.menu"].exists)
+        app.navigationBars["Settings"].coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.1))
+            .press(forDuration: 0.05, thenDragTo:
+                app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.98)))
+        XCTAssertTrue(waitFor(NSPredicate(format: "exists == false"), on: settingsDone))
+        XCTAssertTrue(app.buttons["game.menu"].exists)
+        assertLabel(app, "game.moves", "18 moves")
+        assertLabel(app, "game.score", "0 of 70 jewels cleared")
+
         // Seed 42's first legal group is row 1, column 1 (zero-based, bottom up).
         // Match JewelScene's 7.7-cell layout, flipping SpriteKit's y axis.
         // This is a physical coordinate tap, not an accessibility button action.
