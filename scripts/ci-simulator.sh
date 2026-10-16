@@ -129,6 +129,25 @@ Path('artifacts/privacy-manifest-result.json').write_text(json.dumps({
 print('PASS: built privacy manifest parses, matches source, and declares UserDefaults CA92.1.')
 PY
 
+# Check compiled app icon metadata and asset packaging; visual review is separate.
+python3 - "$APP" <<'PY'
+from pathlib import Path
+import json, plistlib, sys
+app = Path(sys.argv[1])
+info = plistlib.loads((app / 'Info.plist').read_bytes())
+primary = info.get('CFBundleIcons', {}).get('CFBundlePrimaryIcon', {})
+if primary.get('CFBundleIconName') != 'AppIcon' or not primary.get('CFBundleIconFiles'):
+    raise SystemExit('Built app lacks expected AppIcon primary icon metadata.')
+assets = app / 'Assets.car'
+if not assets.is_file() or assets.stat().st_size == 0:
+    raise SystemExit('Built app lacks compiled asset catalog.')
+Path('artifacts/app-icon-result.json').write_text(json.dumps({
+    'passed': True, 'primaryIcon': primary,
+    'compiledAssetCatalogBytes': assets.stat().st_size,
+    'visualInspectionPerformed': False}, indent=2) + '\n')
+print('PASS: built app has AppIcon metadata and nonempty compiled asset catalog.')
+PY
+
 # Bound cold simulator preparation and preserve stage timings on failure.
 # stdout remains untouched so launch PID parsing keeps its existing contract.
 timed_simctl() {
@@ -269,16 +288,61 @@ PY
 UI_PARSE_STATUS=$?
 set -e
 (cd artifacts && shasum -a 256 *.png > screenshot-sha256.txt)
+# Preserve UI failure while still gathering independent hosted-test evidence.
+UI_FINAL_STATUS=0
 if [[ "$UI_STATUS" != 0 ]]; then
   printf '%s\n' "FAIL: native UI test (xcodebuild exit $UI_STATUS). Any exported UI screenshots are partial evidence only." \
     | tee artifacts/ui-result.txt
-  exit "$UI_STATUS"
-fi
-if [[ "$UI_SUMMARY_STATUS" != 0 || "$UI_EXPORT_STATUS" != 0 || "$UI_PARSE_STATUS" != 0 ]]; then
+  UI_FINAL_STATUS="$UI_STATUS"
+elif [[ "$UI_SUMMARY_STATUS" != 0 || "$UI_EXPORT_STATUS" != 0 || "$UI_PARSE_STATUS" != 0 ]]; then
   echo 'UI evidence export/validation failed; inspect logs. No complete UI-evidence success claim.' >&2
+  UI_FINAL_STATUS=1
+else
+  printf '%s\n' 'PASS: four real-input UI tests and eight exported XCTest screenshots.' \
+    'See ui-test-summary.json and ui-attachment-manifest.json; no VoiceOver or rapid-input validation.' \
+    | tee artifacts/ui-result.txt
+fi
+
+# Hosted app tests exercise GameStore synchronization without UI gestures.
+# Keep their result separate so they cannot satisfy the four-test UI gate.
+HOSTED_RESULT="$RUNNER_TEMP/starfall-hosted.xcresult"
+set +e
+xcodebuild -project Starfall.xcodeproj -scheme Starfall \
+  -configuration Debug -sdk iphonesimulator \
+  -destination "platform=iOS Simulator,arch=arm64,id=$SIMULATOR_ID" \
+  -derivedDataPath "$RUNNER_TEMP/starfall-derived" \
+  -only-testing:StarfallAppTests/GameStoreInterruptionTests \
+  -parallel-testing-enabled NO -maximum-concurrent-test-simulator-destinations 1 \
+  -test-timeouts-enabled YES -default-test-execution-time-allowance 90 \
+  -maximum-test-execution-time-allowance 180 \
+  -resultBundlePath "$HOSTED_RESULT" \
+  ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \
+  CODE_SIGN_IDENTITY=- CODE_SIGNING_ALLOWED=YES \
+  DEVELOPMENT_TEAM= CODE_SIGN_STYLE=Manual test \
+  2>&1 | tee artifacts/hosted-tests.log
+HOSTED_STATUS=${PIPESTATUS[0]}
+xcrun xcresulttool get test-results summary --path "$HOSTED_RESULT" --compact \
+  > artifacts/hosted-test-summary.json
+HOSTED_SUMMARY_STATUS=$?
+set -e
+if [[ "$HOSTED_STATUS" != 0 ]]; then
+  echo "FAIL: hosted app tests (xcodebuild exit $HOSTED_STATUS)." | tee artifacts/hosted-result.txt
+  exit "$HOSTED_STATUS"
+fi
+if [[ "$HOSTED_SUMMARY_STATUS" != 0 ]]; then
+  echo 'Hosted summary export failed.' >&2
   exit 1
 fi
-printf '%s\n' 'PASS: four real-input UI tests and eight exported XCTest screenshots.' \
-  'See ui-test-summary.json and ui-attachment-manifest.json; no VoiceOver or rapid-input validation.' \
-  | tee artifacts/ui-result.txt
-(cd artifacts && shasum -a 256 *.png > screenshot-sha256.txt)
+python3 - <<'PY'
+import json
+from pathlib import Path
+summary = json.loads(Path('artifacts/hosted-test-summary.json').read_text())
+if (summary.get('passedTests') != 4 or summary.get('failedTests') != 0
+        or summary.get('skippedTests') != 0 or summary.get('totalTestCount') != 4):
+    raise SystemExit('Expected exactly four passing hosted app tests, zero failures/skips, total four.')
+Path('artifacts/hosted-result.txt').write_text(
+    'PASS: four hosted GameStore interruption tests. No UI gesture or animation playback claim.\n')
+PY
+
+# A passing hosted suite never erases a failed UI audit or evidence gate.
+exit "$UI_FINAL_STATUS"

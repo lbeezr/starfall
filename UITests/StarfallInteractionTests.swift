@@ -232,6 +232,16 @@ final class StarfallInteractionTests: XCTestCase {
         XCTAssertTrue(done.isHittable)
         // Retain the actual Settings layout even if a later audit finds an issue.
         attachScreenshot(app, name: "accessibility-large-text-settings")
+        // Keep platform-reported bounds alongside the image: a visually readable
+        // label can still have an undersized accessibility frame. This is
+        // diagnostic evidence only; the native audit remains unsuppressed.
+        print("SETTINGS_ACCESSIBILITY_TREE_BEGIN\n\(app.debugDescription)\nSETTINGS_ACCESSIBILITY_TREE_END")
+        for label in ["Gentle sound", "Calm effects"] {
+            let text = app.staticTexts[label].firstMatch
+            if text.exists {
+                print("SETTINGS_LABEL_BOUNDS \(label): \(text.frame), hittable=\(text.isHittable)")
+            }
+        }
         try app.performAccessibilityAudit(for: [.textClipped, .sufficientElementDescription, .hitRegion])
         done.tap()
         XCTAssertTrue(settings.waitForExistence(timeout: 5))

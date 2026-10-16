@@ -17,7 +17,7 @@ extension Jewel {
     var symbol: String { ["●", "◆", "▲", "⬡", "■"][rawValue] }
 }
 
-@MainActor final class JewelScene: SKScene {
+@MainActor final class JewelScene: SKScene, TurnPresenting {
     weak var store: GameStore?
     var reduceMotion = false
     private var nodes: [Cell: SKNode] = [:]
@@ -176,6 +176,11 @@ extension Jewel {
         let texture = SKTexture(image: image)
         texture.filteringMode = .linear
         return texture
+    }
+    func cancelAnimations() {
+        removeAllActions()
+        boardRoot.removeAllActions()
+        for node in boardRoot.children { node.removeAllActions() }
     }
     func nudge(_ cell: Cell) {
         guard !reduceMotion else { return }

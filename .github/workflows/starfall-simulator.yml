@@ -10,6 +10,7 @@ on:
       - 'Sources/**'
       - 'Tests/**'
       - 'UITests/**'
+      - 'AppTests/**'
       - 'Config/**'
       - 'Package.swift'
       - 'Package.resolved'

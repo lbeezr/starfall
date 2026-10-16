@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <!-- Original Starfall candidate: one four-point glass star, no borrowed character art. -->
+  <defs>
+    <radialGradient id="night" cx="38%" cy="25%" r="88%">
+      <stop stop-color="#59448c"/><stop offset=".52" stop-color="#292347"/><stop offset="1" stop-color="#131a32"/>
+    </radialGradient>
+    <linearGradient id="rim" x1=".15" y1="0" x2=".85" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#f5ffff"/><stop offset=".3" stop-color="#8ce8ff"/><stop offset=".67" stop-color="#a77aff"/><stop offset="1" stop-color="#ff5999"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2=".8" y2="1">
+      <stop stop-color="#caffff"/><stop offset=".28" stop-color="#47d9ff"/><stop offset=".65" stop-color="#8374ee"/><stop offset="1" stop-color="#ff5999"/>
+    </linearGradient>
+    <linearGradient id="light" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#ffffff" stop-opacity=".82"/><stop offset="1" stop-color="#d4ffff" stop-opacity=".03"/>
+    </linearGradient>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="25"/>
+    </filter>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="58"/>
+    </filter>
+    <path id="star" d="M 512 182 C 547 390 597 455 804 512 C 597 561 547 633 512 842 C 477 633 427 561 220 512 C 427 455 477 390 512 182 Z"/>
+  </defs>
+  <!-- Opaque full bleed; iOS applies its own rounded mask. -->
+  <path fill="url(#night)" d="M0 0H1024V1024H0Z"/>
+  <ellipse cx="504" cy="505" rx="238" ry="262" fill="#8774ff" opacity=".3" filter="url(#glow)"/>
+  <use href="#star" transform="translate(0 28)" fill="#090c23" opacity=".8" filter="url(#shadow)"/>
+  <use href="#star" fill="url(#rim)"/>
+  <use href="#star" transform="translate(512 512) scale(.91) translate(-512 -512)" fill="url(#glass)"/>
+  <!-- Broad facets remain legible at home-screen sizes. -->
+  <path d="M512 218 C539 384 579 451 756 512 L512 491Z" fill="#f0ffff" opacity=".28"/>
+  <path d="M512 218 L512 491 L268 512 C445 451 485 384 512 218Z" fill="url(#light)"/>
+  <path d="M268 512 L512 491 L512 798 C481 623 444 560 268 512Z" fill="#4359b0" opacity=".37"/>
+  <path d="M512 491 L756 512 C579 563 543 631 512 798Z" fill="#f4a6ed" opacity=".15"/>
+  <path d="M490 315 C477 398 451 443 392 470" fill="none" stroke="#fff" stroke-width="14" stroke-linecap="round" opacity=".77"/>
+  <path d="M542 690 C559 606 603 558 672 539" fill="none" stroke="#ffcef7" stroke-width="10" stroke-linecap="round" opacity=".5"/>
+  <!-- One small companion glint suggests starfall without clutter. -->
+  <path d="M752 233 Q760 277 796 285 Q760 294 752 337 Q744 294 708 285 Q744 277 752 233Z" fill="#fff0cd"/>
+</svg>
