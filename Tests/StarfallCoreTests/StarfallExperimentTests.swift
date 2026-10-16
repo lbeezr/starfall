@@ -1,0 +1,158 @@
+import XCTest
+@testable import StarfallCore
+
+final class StarfallExperimentTests: XCTestCase {
+    private func shower(_ kinds: [Jewel], columns: [Int] = [0, 0, 0]) -> [IncomingStar] {
+        zip(kinds, columns).enumerated().map { IncomingStar(id: $0.offset, kind: $0.element.0, column: $0.element.1) }
+    }
+    private var empty: [StarfallGem?] { Array(repeating: nil, count: 49) }
+
+    func testEmptyStartAndInvalidInputNeverAdvanceTheForecast() {
+        var game = StarfallExperiment(seed: 42)
+        let before = game
+        XCTAssertEqual(game.occupiedCount, 0); XCTAssertEqual(game.incoming.count, 3)
+        XCTAssertTrue(game.isValidSave)
+        XCTAssertNil(game.clear(Cell(0, 0))); XCTAssertNil(game.clear(Cell(-1, 7)))
+        XCTAssertEqual(game, before)
+        let turn = game.letStarsFall()!
+        XCTAssertEqual(turn.forecast, before.incoming)
+        XCTAssertEqual(turn.arrivals.map(\.star), before.incoming)
+        XCTAssertEqual(game.turns, 1); XCTAssertEqual(game.starsLanded, 3)
+        XCTAssertEqual(game.score, 0); XCTAssertTrue(game.isValidSave)
+    }
+
+    func testMatchingArrivalGrowsOnceAndTheNextStarStacks() {
+        var game = StarfallExperiment(board: empty, incoming: shower([.rose, .rose, .rose]))
+        let turn = game.letStarsFall()!
+        XCTAssertEqual(turn.arrivals.map(\.grew), [false, true, false])
+        XCTAssertEqual(game.gem(at: Cell(0, 0))?.value, 2)
+        XCTAssertEqual(game.gem(at: Cell(1, 0))?.value, 1)
+        XCTAssertEqual(game.occupiedCount, 2)
+        XCTAssertEqual(game.score, 0, "Growth is collected later, never scored on arrival")
+        XCTAssertEqual(game.legalGroups, [[Cell(0, 0), Cell(1, 0)]])
+        XCTAssertEqual(game.clear(Cell(0, 0))?.collected, 3, "A grown jewel counts as two toward a clear")
+    }
+
+    func testTwoSmallJewelsOrOneGrownJewelCannotClear() {
+        var board = empty
+        board[0] = .init(id: 0, kind: .rose)
+        board[1] = .init(id: 1, kind: .rose)
+        board[2] = .init(id: 2, kind: .mint, grown: true)
+        var game = StarfallExperiment(board: board, incoming: shower([.aqua, .aqua, .aqua]))
+        let before = game
+        XCTAssertNil(game.clear(Cell(0, 0))); XCTAssertNil(game.clear(Cell(0, 2)))
+        XCTAssertTrue(game.legalGroups.isEmpty); XCTAssertEqual(game, before)
+    }
+
+    func testDifferentColorsStackWithoutReplacingExistingJewels() {
+        var game = StarfallExperiment(board: empty, incoming: shower([.rose, .aqua, .mint]))
+        game.letStarsFall()
+        XCTAssertEqual((0..<3).compactMap { game.gem(at: Cell($0, 0))?.kind }, [.rose, .aqua, .mint])
+        XCTAssertEqual(game.occupiedCount, 3)
+    }
+
+    func testForecastVisitsEveryColumnBeforeRepeating() {
+        var game = StarfallExperiment(seed: 42)
+        var columns: [Int] = []
+        for _ in 0..<7 {
+            columns += game.incoming.map(\.column)
+            game.letStarsFall()
+        }
+        for start in stride(from: 0, to: 21, by: 7) {
+            XCTAssertEqual(Set(columns[start..<(start+7)]), Set(0..<7))
+        }
+    }
+
+    func testClearScoresGrownValuesAndGravityPreservesSurvivorIdentity() {
+        var board = empty
+        board[0] = .init(id: 0, kind: .rose, grown: true)
+        board[7] = .init(id: 1, kind: .rose)
+        board[14] = .init(id: 2, kind: .rose)
+        board[21] = .init(id: 3, kind: .mint, grown: true)
+        var game = StarfallExperiment(board: board, incoming: shower([.aqua, .violet, .amber], columns: [6, 6, 6]))
+        let turn = game.clear(Cell(0, 0))!
+        XCTAssertEqual(turn.cleared, [Cell(0, 0), Cell(1, 0), Cell(2, 0)])
+        XCTAssertEqual(turn.collected, 4); XCTAssertEqual(game.score, 4)
+        XCTAssertEqual(turn.settled[0], board[21]); XCTAssertEqual(game.gem(at: Cell(0, 0)), board[21])
+        XCTAssertEqual(game.turns, 1); XCTAssertEqual(turn.arrivals.count, 3)
+        XCTAssertTrue((1..<7).allSatisfy { game.gem(at: Cell($0, 0)) == nil }, "There is no automatic refill")
+    }
+
+    func testOrthogonalOnlyAndEmptyCellsNeverConnect() {
+        var board = empty
+        board[0] = .init(id: 0, kind: .rose)
+        board[8] = .init(id: 1, kind: .rose)
+        board[16] = .init(id: 2, kind: .rose)
+        let game = StarfallExperiment(board: board, incoming: shower([.aqua, .aqua, .aqua]))
+        XCTAssertEqual(game.group(at: Cell(0, 0)), [Cell(0, 0)])
+        XCTAssertTrue(game.group(at: Cell(6, 6)).isEmpty)
+        XCTAssertTrue(game.legalGroups.isEmpty)
+    }
+
+    func testOverflowStopsAtTheBlockedStarAndLocksBothActions() {
+        var board = empty
+        for row in 0..<7 { board[row * 7] = .init(id: row, kind: row.isMultiple(of: 2) ? .mint : .rose) }
+        var game = StarfallExperiment(board: board, incoming: shower([.aqua, .rose, .amber], columns: [1, 0, 2]))
+        let turn = game.letStarsFall()!
+        XCTAssertEqual(turn.arrivals.count, 1)
+        XCTAssertEqual(turn.blockedColumn, 0); XCTAssertTrue(game.isOver)
+        XCTAssertNotNil(game.gem(at: Cell(0, 1))); XCTAssertNil(game.gem(at: Cell(0, 2)))
+        let ended = game
+        XCTAssertNil(game.letStarsFall()); XCTAssertNil(game.clear(Cell(0, 0)))
+        XCTAssertEqual(game, ended)
+    }
+
+    func testFullColumnCanAcceptOneMatchingGrowthBeforeOverflowing() {
+        var board = empty
+        for row in 0..<7 { board[row * 7] = .init(id: row, kind: .mint) }
+        var game = StarfallExperiment(board: board, incoming: shower([.mint, .mint, .mint]))
+        let turn = game.letStarsFall()!
+        XCTAssertEqual(turn.arrivals.count, 1); XCTAssertTrue(turn.arrivals[0].grew)
+        XCTAssertEqual(game.gem(at: Cell(6, 0))?.value, 2)
+        XCTAssertEqual(game.blockedColumn, 0)
+    }
+
+    func testClearingBeforeTheShowerCanPreventForecastOverflow() {
+        var board = empty
+        for row in 0..<7 { board[row * 7] = .init(id: row, kind: row < 3 ? .rose : .mint) }
+        let forecast = shower([.aqua, .violet, .amber])
+        var waiting = StarfallExperiment(board: board, incoming: forecast)
+        waiting.letStarsFall(); XCTAssertTrue(waiting.isOver)
+        var clearing = StarfallExperiment(board: board, incoming: forecast)
+        clearing.clear(Cell(0, 0))
+        XCTAssertFalse(clearing.isOver); XCTAssertEqual(clearing.occupiedCount, 7)
+        XCTAssertEqual(clearing.score, 3)
+    }
+
+    func testReplayAndSaveRestorePreserveFutureShowers() throws {
+        for seed in UInt64(0)..<50 {
+            var game = StarfallExperiment(seed: seed)
+            var replay = StarfallExperiment(seed: seed)
+            for _ in 0..<50 where !game.isOver {
+                if let cell = game.legalGroups.first?.first { game.clear(cell); replay.clear(cell) }
+                else { game.letStarsFall(); replay.letStarsFall() }
+                XCTAssertEqual(game, replay); XCTAssertTrue(game.isValidSave)
+                let restored = try JSONDecoder().decode(StarfallExperiment.self, from: JSONEncoder().encode(game))
+                XCTAssertEqual(game, restored)
+                replay = restored
+            }
+        }
+    }
+
+    func testRejectsMalformedOrFloatingSavedBoard() throws {
+        var game = StarfallExperiment(seed: 42)
+        game.letStarsFall()
+        var json = try XCTUnwrap(JSONSerialization.jsonObject(with: JSONEncoder().encode(game)) as? [String: Any])
+        json["score"] = 99
+        var decoded = try JSONDecoder().decode(StarfallExperiment.self, from: JSONSerialization.data(withJSONObject: json))
+        XCTAssertFalse(decoded.isValidSave)
+        json["score"] = 0
+        var board = try XCTUnwrap(json["board"] as? [Any])
+        let source = try XCTUnwrap(board.indices.first { !(board[$0] is NSNull) })
+        let column = source % 7
+        board[42 + column] = board[source]; board[source] = NSNull()
+        json["board"] = board
+        decoded = try JSONDecoder().decode(StarfallExperiment.self, from: JSONSerialization.data(withJSONObject: json))
+        XCTAssertFalse(decoded.isValidSave)
+    }
+}
