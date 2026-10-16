@@ -1,0 +1,239 @@
+import SwiftUI
+
+/// The shared presentation system. Rules and SpriteKit jewel materials have
+/// separate owners; screens compose these roles rather than invent local tokens.
+enum StarfallTheme {
+    enum Colors {
+        static let skyTop = Palette.midnight
+        static let skyBottom = Palette.plum
+        static let surface = Palette.nightglass
+        static let surfacePressed = Palette.litNightglass
+        static let outline = Palette.slate
+        static let textPrimary = Palette.moonlight
+        static let textSecondary = Palette.lavender
+        static let textDisabled = Palette.mutedLavender
+        static let actionPrimary = Palette.ice
+        static let actionPrimaryPressed = Palette.blueIce
+        static let onActionPrimary = Palette.midnight
+        static let actionDisabled = Palette.litNightglass
+        static let focus = Palette.ice
+        static let progressFill = Palette.ice
+        static let progressTrack = Palette.slate
+        static let positiveStatus = Palette.ice
+        static let ambientStar = Palette.moonlight
+        static let ambientGlow = Palette.ice.opacity(0.07)
+    }
+
+    enum Typography {
+        static let displayBaseSize: CGFloat = 52
+        static let title = Font.system(.title2, design: .serif).weight(.medium)
+        static let heading = Font.headline
+        static let body = Font.body
+        static let supporting = Font.subheadline
+        static let status = Font.callout
+        static let action = Font.headline
+        static let titleTracking: CGFloat = 0.8
+
+        static func display(size: CGFloat) -> Font {
+            .system(size: size, weight: .medium, design: .serif)
+        }
+    }
+
+    enum Spacing {
+        static let hairline: CGFloat = 2
+        static let compact: CGFloat = 4
+        static let small: CGFloat = 8
+        static let medium: CGFloat = 12
+        static let large: CGFloat = 16
+        static let page: CGFloat = 20
+        static let section: CGFloat = 24
+    }
+
+    enum Radius {
+        static let control: CGFloat = 16
+        static let panel: CGFloat = 20
+        static let board: CGFloat = 24
+    }
+
+    enum Layout {
+        static let minimumTarget: CGFloat = 44
+        static let actionHeight: CGFloat = 52
+        static let contentWidth: CGFloat = 560
+        static let menuWidth: CGFloat = 480
+        static let brandMarkSize: CGFloat = 48
+        static let boardSymbolSize: CGFloat = 24
+        // 335pt board minus 12pt padding and 12pt gaps leaves >44pt per cell.
+        static let accessibleBoardInset: CGFloat = 6
+        static let progressHeight: CGFloat = 6
+        static let constellationSize = CGSize(width: 64, height: 24)
+        static let borderWidth: CGFloat = 1
+        static let focusWidth: CGFloat = 2
+    }
+
+    private enum Palette {
+        static let midnight = Color(red: 9 / 255, green: 14 / 255, blue: 43 / 255)
+        static let plum = Color(red: 46 / 255, green: 26 / 255, blue: 74 / 255)
+        static let nightglass = Color(red: 29 / 255, green: 33 / 255, blue: 64 / 255)
+        static let litNightglass = Color(red: 48 / 255, green: 54 / 255, blue: 82 / 255)
+        static let moonlight = Color(red: 244 / 255, green: 241 / 255, blue: 255 / 255)
+        static let lavender = Color(red: 197 / 255, green: 199 / 255, blue: 221 / 255)
+        static let mutedLavender = Color(red: 164 / 255, green: 173 / 255, blue: 199 / 255)
+        static let ice = Color(red: 176 / 255, green: 237 / 255, blue: 255 / 255)
+        static let blueIce = Color(red: 144 / 255, green: 211 / 255, blue: 233 / 255)
+        static let slate = Color(red: 102 / 255, green: 119 / 255, blue: 155 / 255)
+    }
+}
+
+/// A common action contract: native Button semantics, a full hit shape, wrapping
+/// Dynamic Type, and immediate solid-color state changes without scale or motion.
+struct StarfallButtonStyle: ButtonStyle {
+    enum Role { case primary, secondary, quiet }
+
+    let role: Role
+    var expands = false
+    @Environment(\.isEnabled) private var isEnabled
+    @Environment(\.isFocused) private var isFocused
+
+    func makeBody(configuration: Configuration) -> some View {
+        let shape = RoundedRectangle(cornerRadius: StarfallTheme.Radius.control, style: .continuous)
+        configuration.label
+            .font(StarfallTheme.Typography.action)
+            .multilineTextAlignment(.center)
+            .fixedSize(horizontal: false, vertical: true)
+            .padding(.horizontal, role == .quiet ? StarfallTheme.Spacing.small : StarfallTheme.Spacing.large)
+            .padding(.vertical, role == .quiet ? StarfallTheme.Spacing.compact : StarfallTheme.Spacing.small)
+            .frame(minWidth: StarfallTheme.Layout.minimumTarget,
+                   maxWidth: expands ? .infinity : nil,
+                   minHeight: role == .quiet ? StarfallTheme.Layout.minimumTarget : StarfallTheme.Layout.actionHeight)
+            .foregroundStyle(foreground)
+            .background(background(pressed: configuration.isPressed), in: shape)
+            .overlay {
+                shape.strokeBorder(isFocused ? StarfallTheme.Colors.focus : StarfallTheme.Colors.outline,
+                                   lineWidth: isFocused ? StarfallTheme.Layout.focusWidth
+                                   : (role == .secondary ? StarfallTheme.Layout.borderWidth : 0))
+            }
+            .contentShape(shape)
+            // Native VoiceOver and keyboard focus effects remain enabled.
+            .transaction { $0.animation = nil }
+    }
+
+    private var foreground: Color {
+        guard isEnabled else { return StarfallTheme.Colors.textDisabled }
+        return role == .primary ? StarfallTheme.Colors.onActionPrimary : StarfallTheme.Colors.actionPrimary
+    }
+
+    private func background(pressed: Bool) -> Color {
+        guard isEnabled else {
+            return role == .quiet ? .clear : StarfallTheme.Colors.actionDisabled
+        }
+        switch role {
+        case .primary:
+            return pressed ? StarfallTheme.Colors.actionPrimaryPressed : StarfallTheme.Colors.actionPrimary
+        case .secondary:
+            return pressed ? StarfallTheme.Colors.surfacePressed : StarfallTheme.Colors.surface
+        case .quiet:
+            return pressed ? StarfallTheme.Colors.surfacePressed : .clear
+        }
+    }
+}
+
+private struct StarfallPanelStyle: ViewModifier {
+    let inset: CGFloat
+    @Environment(\.colorSchemeContrast) private var contrast
+
+    func body(content: Content) -> some View {
+        content
+            .padding(inset)
+            .background {
+                RoundedRectangle(cornerRadius: StarfallTheme.Radius.panel, style: .continuous)
+                    .fill(StarfallTheme.Colors.surface)
+                    .overlay {
+                        RoundedRectangle(cornerRadius: StarfallTheme.Radius.panel, style: .continuous)
+                            .strokeBorder(StarfallTheme.Colors.outline,
+                                          lineWidth: contrast == .increased ? StarfallTheme.Layout.focusWidth
+                                          : StarfallTheme.Layout.borderWidth)
+                    }
+                    .allowsHitTesting(false)
+                    .accessibilityHidden(true)
+            }
+    }
+}
+
+extension View {
+    /// Passive containment only: no clipping, accessibility grouping, or input.
+    func starfallPanel(inset: CGFloat = StarfallTheme.Spacing.page) -> some View {
+        modifier(StarfallPanelStyle(inset: inset))
+    }
+}
+
+/// Read-only supporting feedback. IDs and labels remain at the call site, and
+/// each Text keeps its own measured accessibility bounds.
+struct StarfallStatusText: View {
+    enum Emphasis { case supporting, positive }
+    let text: String
+    var emphasis: Emphasis = .supporting
+
+    var body: some View {
+        Text(text)
+            .font(StarfallTheme.Typography.status)
+            .foregroundStyle(emphasis == .positive ? StarfallTheme.Colors.positiveStatus : StarfallTheme.Colors.textSecondary)
+            .fixedSize(horizontal: false, vertical: true)
+    }
+}
+
+struct StarfallTitle: View {
+    enum Style { case display, navigation }
+    var style: Style = .navigation
+    @ScaledMetric(relativeTo: .largeTitle) private var displaySize = StarfallTheme.Typography.displayBaseSize
+
+    var body: some View {
+        Text("Starfall")
+            .font(style == .display ? StarfallTheme.Typography.display(size: displaySize) : StarfallTheme.Typography.title)
+            .tracking(StarfallTheme.Typography.titleTracking)
+            .foregroundStyle(StarfallTheme.Colors.textPrimary)
+            .fixedSize(horizontal: false, vertical: true)
+            .accessibilityAddTraits(.isHeader)
+    }
+}
+
+/// A settled fraction, shared with the HUD without importing game rules. The
+/// constellation is a second rendering of the same value, never a new objective.
+struct StarfallProgressStyle: ProgressViewStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        let fraction = min(max(configuration.fractionCompleted ?? 0, 0), 1)
+        return HStack(spacing: StarfallTheme.Spacing.medium) {
+            GeometryReader { geometry in
+                Capsule()
+                    .fill(StarfallTheme.Colors.progressTrack)
+                    .overlay(alignment: .leading) {
+                        Capsule()
+                            .fill(StarfallTheme.Colors.progressFill)
+                            .frame(width: geometry.size.width * CGFloat(fraction))
+                    }
+            }
+            .frame(height: StarfallTheme.Layout.progressHeight)
+
+            Canvas { context, size in
+                let points = [
+                    CGPoint(x: 0.05, y: 0.72), CGPoint(x: 0.25, y: 0.25),
+                    CGPoint(x: 0.50, y: 0.60), CGPoint(x: 0.72, y: 0.15),
+                    CGPoint(x: 0.95, y: 0.38)
+                ].map { CGPoint(x: $0.x * size.width, y: $0.y * size.height) }
+                var trace = Path()
+                trace.addLines(points)
+                context.stroke(trace, with: .color(StarfallTheme.Colors.progressTrack), lineWidth: 1)
+                context.stroke(trace.trimmedPath(from: 0, to: CGFloat(fraction)),
+                               with: .color(StarfallTheme.Colors.progressFill), lineWidth: 1.5)
+                for point in points {
+                    let star = Path(ellipseIn: CGRect(x: point.x - 1.8, y: point.y - 1.8,
+                                                     width: 3.6, height: 3.6))
+                    context.fill(star, with: .color(StarfallTheme.Colors.progressFill.opacity(0.3 + 0.7 * fraction)))
+                }
+            }
+            .frame(width: StarfallTheme.Layout.constellationSize.width,
+                   height: StarfallTheme.Layout.constellationSize.height)
+            .accessibilityHidden(true)
+        }
+        .transaction { $0.animation = nil }
+    }
+}
