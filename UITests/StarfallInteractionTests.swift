@@ -203,6 +203,11 @@ final class StarfallInteractionTests: XCTestCase {
         XCTAssertGreaterThan(moves.frame.height, 40,
                              "The system accessibility text preference must actually enlarge the headline")
         assertLabel(app, "game.moves", "18 moves")
+        let progress = app.descendants(matching: .any)["game.progress"].firstMatch
+        XCTAssertTrue(progress.exists)
+        XCTAssertGreaterThanOrEqual(progress.frame.height, 44)
+        XCTAssertGreaterThanOrEqual(progress.frame.width, 44)
+        XCTAssertEqual(progress.value as? String, "0 of 70")
         try app.performAccessibilityAudit(for: [.textClipped, .sufficientElementDescription, .hitRegion])
         attachScreenshot(app, name: "accessibility-large-text-game")
 

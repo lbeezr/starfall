@@ -205,7 +205,13 @@ struct StarfallView: View {
                 Text("\(store.game.moves) moves").monospacedDigit().accessibilityIdentifier("game.moves")
             }.font(.headline)
             ProgressView(value: Double(min(store.game.score, Game.target)), total: Double(Game.target))
-                .tint(.cyan).accessibilityLabel("Starlight progress")
+                .tint(.cyan)
+                // The thin bar needs a larger area for accessible touch exploration.
+                .frame(minHeight: 44).contentShape(Rectangle())
+                .accessibilityElement(children: .ignore)
+                .accessibilityLabel("Starlight progress")
+                .accessibilityValue("\(min(store.game.score, Game.target)) of \(Game.target)")
+                .accessibilityIdentifier("game.progress")
             ZStack {
                 RoundedRectangle(cornerRadius: 24).fill(.white.opacity(0.04))
                     // A frame marker only: coordinate taps still reach the SpriteKit view.
