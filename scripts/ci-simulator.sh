@@ -86,10 +86,13 @@ PY
 
 # No provisioning, Apple account, certificate, or physical-device signing.
 # Simulator ad-hoc signing is allowed and uses no private signing credential.
+# This single ARM64 simulator run must use the same architecture for app and package.
+# These command-line overrides do not change physical-device/distribution settings.
 xcodebuild -project Starfall.xcodeproj -scheme Starfall \
   -configuration Debug -sdk iphonesimulator \
-  -destination "platform=iOS Simulator,id=$SIMULATOR_ID" \
+  -destination "platform=iOS Simulator,arch=arm64,id=$SIMULATOR_ID" \
   -derivedDataPath "$RUNNER_TEMP/starfall-derived" \
+  ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \
   CODE_SIGN_IDENTITY=- CODE_SIGNING_ALLOWED=YES \
   DEVELOPMENT_TEAM= CODE_SIGN_STYLE=Manual build \
   2>&1 | tee artifacts/native-build.log
