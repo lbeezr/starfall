@@ -307,9 +307,11 @@ final class StarfallInteractionTests: XCTestCase {
             // No fixture arguments: the terminal state must come from the real save.
             app.launchArguments = []
             app.launch()
-            XCTAssertTrue(play.waitForExistence(timeout: 10))
-            XCTAssertEqual(play.label, "Continue")
-            play.tap()
+            // Resolve a new handle after the old application process terminates.
+            let resumedPlay = app.buttons["menu.play"]
+            XCTAssertTrue(resumedPlay.waitForExistence(timeout: 10))
+            XCTAssertEqual(resumedPlay.label, "Continue")
+            resumedPlay.tap()
             assertLabel(app, "game.outcome", fixture.outcome)
             assertLabel(app, "game.message", fixture.message)
             assertLabel(app, "game.score", "\(fixture.score) of 70 jewels cleared")
@@ -531,7 +533,7 @@ final class StarfallInteractionTests: XCTestCase {
     /// Each fixture starts from the real seed-0 board and taps a different kind.
     /// Hosted tests independently verify the five kind/group mappings and assets.
     @MainActor
-    func testStarshardFamilyPilotAllFiveRealTaps() throws {
+    func testDefaultStarshardFamilyAllFiveRealTaps() throws {
         executionTimeAllowance = 240
         continueAfterFailure = false
         let app = XCUIApplication()
@@ -544,7 +546,7 @@ final class StarfallInteractionTests: XCTestCase {
             (kind: "mint", row: 3, column: 4, count: 3)
         ]
         for fixture in fixtures {
-            app.launchArguments = ["--reset-save", "--seed=0", "--starshard-family-pilot"]
+            app.launchArguments = ["--reset-save", "--seed=0"]
             app.launch()
             let play = app.buttons["menu.play"]
             XCTAssertTrue(play.waitForExistence(timeout: 10))
@@ -572,7 +574,7 @@ final class StarfallInteractionTests: XCTestCase {
     /// Calm terminal flows use the existing legal-replay fixture and real final tap.
     /// Background/resume is settled-state coverage; hosted tests cancel mid-turn.
     @MainActor
-    func testStarshardFamilyPilotCalmTerminalResumeAndRestart() throws {
+    func testDefaultStarshardFamilyCalmTerminalResumeAndRestart() throws {
         executionTimeAllowance = 180
         continueAfterFailure = false
         let app = XCUIApplication()
@@ -582,7 +584,7 @@ final class StarfallInteractionTests: XCTestCase {
             (seed: 0, row: 0, column: 0, score: 64, moves: 0, outcome: "Out of moves")
         ]
         for fixture in fixtures {
-            app.launchArguments = ["--reset-save", "--endgame-seed=\(fixture.seed)", "--starshard-family-pilot"]
+            app.launchArguments = ["--reset-save", "--endgame-seed=\(fixture.seed)"]
             app.launch()
             let play = app.buttons["menu.play"]
             XCTAssertTrue(play.waitForExistence(timeout: 10))
