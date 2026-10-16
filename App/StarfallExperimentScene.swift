@@ -73,7 +73,8 @@ import StarfallCore
                  to game: StarfallExperiment, completion: @escaping () -> Void) {
         render(old)
         rendered = game
-        if reduceMotion || UIAccessibility.isReduceMotionEnabled || UIAccessibility.isVoiceOverRunning || view == nil {
+        if view == nil { render(game); completion(); return }
+        if reduceMotion || UIAccessibility.isReduceMotionEnabled || UIAccessibility.isVoiceOverRunning {
             render(game)
             // A short input gate still absorbs an accidental double tap.
             run(.sequence([.wait(forDuration: 0.15), .run(completion)]))
@@ -91,26 +92,48 @@ import StarfallCore
                 node.run(.sequence([.wait(forDuration: 0.12), move]))
             }
         }
-        var sequence: [SKAction] = [.wait(forDuration: 0.34)]
-        for arrival in turn.arrivals {
-            sequence.append(.run { [weak self] in self?.sendStar(arrival) })
-            sequence.append(.wait(forDuration: 0.19))
-            sequence.append(.run { [weak self] in self?.land(arrival) })
-            sequence.append(.wait(forDuration: 0.06))
+        if turn.arrivals.isEmpty {
+            run(.sequence([.wait(forDuration: 0.34), .run { [weak self] in self?.render(game); completion() }]))
+            return
         }
-        sequence.append(.run { [weak self] in self?.render(game); completion() })
-        run(.sequence(sequence))
+        let flights = turn.arrivals.enumerated().map { index, arrival in
+            SKAction.sequence([
+                .wait(forDuration: Double(index) * 0.13),
+                .run { [weak self] in self?.sendStar(arrival) },
+                .wait(forDuration: 0.72),
+                .run { [weak self] in self?.land(arrival) }
+            ])
+        }
+        run(.sequence([.group(flights), .wait(forDuration: 0.28),
+                       .run { [weak self] in self?.render(game); completion() }]))
     }
 
     private func sendStar(_ arrival: StarfallExperimentTurn.Arrival) {
+        let comet = SKNode()
+        let color = arrival.star.kind.color
+        // A bounded handful of shapes per star, with no emitters or accumulating particles.
+        let tailPath = CGMutablePath()
+        tailPath.move(to: CGPoint(x: -step * 0.13, y: 0))
+        tailPath.addQuadCurve(to: CGPoint(x: 0, y: step * 2.7), control: CGPoint(x: -step * 0.08, y: step))
+        tailPath.addQuadCurve(to: CGPoint(x: step * 0.13, y: 0), control: CGPoint(x: step * 0.08, y: step))
+        tailPath.closeSubpath()
+        let tail = SKShapeNode(path: tailPath)
+        tail.fillColor = color.withAlphaComponent(0.3); tail.strokeColor = .clear
+        tail.glowWidth = 4
+        comet.addChild(tail)
+        let halo = SKShapeNode(circleOfRadius: step * 0.20)
+        halo.fillColor = color.withAlphaComponent(0.3); halo.strokeColor = color.withAlphaComponent(0.5)
+        halo.glowWidth = 9
+        comet.addChild(halo)
         let star = SKLabelNode(text: "✦")
-        star.fontSize = step * 0.66; star.fontColor = arrival.star.kind.color
+        star.fontSize = step * 0.55; star.fontColor = .white
         star.verticalAlignmentMode = .center
-        star.position = CGPoint(x: point(arrival.cell).x, y: size.height + step)
-        effects.addChild(star)
-        let fall = SKAction.move(to: point(arrival.cell), duration: 0.18)
+        comet.addChild(star)
+        comet.position = CGPoint(x: point(arrival.cell).x, y: size.height + step)
+        effects.addChild(comet)
+        let fall = SKAction.move(to: point(arrival.cell), duration: 0.72)
         fall.timingMode = .easeIn
-        star.run(.sequence([fall, .removeFromParent()]))
+        comet.run(.sequence([fall, .removeFromParent()]))
     }
 
     private func land(_ arrival: StarfallExperimentTurn.Arrival) {
@@ -119,7 +142,13 @@ import StarfallCore
         node.position = point(arrival.cell)
         pieces.addChild(node); nodes[arrival.gem.id] = node
         node.setScale(0.8)
-        node.run(.scale(to: 1, duration: 0.06))
+        node.run(.sequence([.scale(to: 1.10, duration: 0.12), .scale(to: 1, duration: 0.16)]))
+        let ring = SKShapeNode(circleOfRadius: step * (arrival.grew ? 0.42 : 0.28))
+        ring.position = node.position
+        ring.strokeColor = arrival.star.kind.color.withAlphaComponent(0.85)
+        ring.lineWidth = 1.5; ring.glowWidth = 2
+        effects.addChild(ring)
+        ring.run(.sequence([.group([.scale(to: 1.7, duration: 0.28), .fadeOut(withDuration: 0.28)]), .removeFromParent()]))
     }
 }
 #endif

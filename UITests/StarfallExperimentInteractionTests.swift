@@ -6,12 +6,20 @@ final class StarfallExperimentInteractionTests: XCTestCase {
         let app = XCUIApplication()
         app.launchArguments = ["--starfalls", "--starfalls-reset", "--starfalls-seed=5"]
         app.launch()
-        XCTAssertTrue(app.buttons["experiment.invite"].waitForExistence(timeout: 10))
+        XCTAssertTrue(app.buttons["experiment.pause"].waitForExistence(timeout: 10))
         return app
     }
-    @MainActor private func ready(_ app: XCUIApplication) {
-        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: app.buttons["experiment.invite"])
-            .wait(timeout: 6))
+    @MainActor private func showers(_ app: XCUIApplication) -> Int {
+        Int(app.staticTexts["experiment.turns"].label.split(separator: " ")[0])!
+    }
+    @MainActor private func waitForShowers(_ count: Int, in app: XCUIApplication, timeout: TimeInterval = 12) {
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in self.showers(app) >= count }, object: nil).wait(timeout: timeout))
+    }
+    @MainActor private func remainsPaused(_ app: XCUIApplication) {
+        let initial = showers(app)
+        let changed = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in self.showers(app) != initial }, object: nil)
+        changed.isInverted = true
+        XCTAssertTrue(changed.wait(timeout: 5))
     }
     @MainActor private func capture(_ app: XCUIApplication, _ name: String) {
         let attachment = XCTAttachment(screenshot: app.screenshot())
@@ -21,71 +29,82 @@ final class StarfallExperimentInteractionTests: XCTestCase {
         for _ in 0..<4 where !element.isHittable { app.swipeUp() }
     }
 
-    @MainActor func testPreviewGrowthClearReplayAndSettings() {
+    @MainActor func testAutomaticRainPauseGrowthClearReplayAndSettings() {
         let app = launch(); defer { app.terminate() }
-        XCTAssertEqual(app.staticTexts["experiment.turns"].label, "0 showers")
+        XCTAssertEqual(showers(app), 0)
         XCTAssertEqual(app.staticTexts["experiment.score"].label, "0 starlight")
         let initialPreview = app.descendants(matching: .any)["experiment.incoming.0"].firstMatch.label
         XCTAssertTrue(initialPreview.contains("column"))
-        capture(app, "starfalls-empty-preview")
-        app.buttons["experiment.cell.0.0"].tap()
-        XCTAssertEqual(app.staticTexts["experiment.turns"].label, "0 showers")
-        app.buttons["experiment.invite"].doubleTap()
-        ready(app)
-        XCTAssertEqual(app.staticTexts["experiment.turns"].label, "1 showers")
+        capture(app, "automatic-empty-preview")
+        app.buttons["experiment.pause"].tap()
+        waitForShowers(2, in: app)
+        app.buttons["experiment.pause"].tap()
+        XCTAssertEqual(app.buttons["experiment.pause"].label, "Resume sky")
+        remainsPaused(app)
+        app.buttons["experiment.pause"].tap()
         let legal = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND value MATCHES %@", "experiment.cell.", "([3-9]|[1-9][0-9]) starlight connected")).firstMatch
-        for _ in 0..<10 {
-            if legal.exists { break }
-            app.buttons["experiment.invite"].tap(); ready(app)
-        }
-        XCTAssertTrue(legal.exists)
-        XCTAssertTrue(app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND label CONTAINS %@", "experiment.cell.", "value 2")).firstMatch.exists)
-        capture(app, "starfalls-grown-and-matchable")
-        legal.tap(); ready(app)
-        XCTAssertNotEqual(app.staticTexts["experiment.score"].label, "0 starlight")
-        capture(app, "starfalls-after-clear")
+        XCTAssertTrue(legal.waitForExistence(timeout: 40))
+        // Snapshot while paused, then test rapid input early in a fresh interval.
+        // XCTest hierarchy/screenshot work can otherwise consume the entire clear window.
+        waitForShowers(showers(app) + 1, in: app)
+        app.buttons["experiment.pause"].tap()
+        let clearID = legal.identifier
+        capture(app, "automatic-matchable")
+        app.buttons["experiment.pause"].tap()
+        app.buttons[clearID].doubleTap()
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label != %@", "0 starlight"), object: app.staticTexts["experiment.score"]).wait(timeout: 5))
+        app.buttons["experiment.pause"].tap()
+        capture(app, "automatic-after-clear-paused")
         app.buttons["experiment.settings"].tap()
         let calm = app.switches["experiment.calm"]
         XCTAssertTrue(calm.waitForExistence(timeout: 5))
-        XCTAssertFalse(app.buttons["experiment.cell.0.0"].exists, "Settings must hide the underlying board from accessibility navigation")
+        XCTAssertFalse(app.buttons["experiment.cell.0.0"].exists)
         if calm.value as? String != "1" { calm.tap() }
         app.buttons["experiment.done"].tap()
-        XCTAssertTrue(app.buttons["experiment.invite"].waitForExistence(timeout: 5))
-        ready(app)
-        let beforeCalm = Int(app.staticTexts["experiment.turns"].label.split(separator: " ")[0])!
-        app.buttons["experiment.invite"].doubleTap(); ready(app)
-        XCTAssertEqual(app.staticTexts["experiment.turns"].label, "\(beforeCalm + 1) showers")
-        capture(app, "starfalls-calm-after-dismissal")
+        XCTAssertTrue(app.buttons["experiment.pause"].waitForExistence(timeout: 5))
+        XCTAssertEqual(app.buttons["experiment.pause"].label, "Resume sky")
+        let beforeCalm = showers(app)
+        app.buttons["experiment.pause"].tap()
+        waitForShowers(beforeCalm + 1, in: app)
+        app.buttons["experiment.pause"].tap()
+        capture(app, "automatic-calm-after-dismissal")
         let replay = app.buttons["experiment.replay"]
         reveal(replay, in: app); replay.tap()
-        XCTAssertEqual(app.staticTexts["experiment.turns"].label, "0 showers")
+        XCTAssertEqual(showers(app), 0)
+        XCTAssertEqual(app.buttons["experiment.pause"].label, "Start sky")
         XCTAssertEqual(app.descendants(matching: .any)["experiment.incoming.0"].firstMatch.label, initialPreview)
     }
 
-    @MainActor func testBackgroundRelaunchAndOverflow() {
+    @MainActor func testBackgroundRelaunchAndAutomaticOverflow() {
         let app = launch(); defer { app.terminate() }
-        app.buttons["experiment.invite"].tap(); ready(app)
-        XCUIDevice.shared.press(.home); app.activate()
-        XCTAssertEqual(app.staticTexts["experiment.turns"].label, "1 showers")
+        app.buttons["experiment.pause"].tap()
+        waitForShowers(1, in: app)
+        let before = showers(app)
+        XCUIDevice.shared.press(.home)
+        // Wait through more than a whole shower interval with the app suspended.
+        let background = XCTNSPredicateExpectation(predicate: NSPredicate(value: false), object: nil)
+        background.isInverted = true
+        XCTAssertTrue(background.wait(timeout: 6))
+        app.activate()
+        XCTAssertLessThanOrEqual(showers(app), before + 1, "No catch-up burst on return")
+        app.buttons["experiment.pause"].tap()
+        let saved = showers(app)
         app.terminate()
         app.launchArguments = ["--starfalls"]
         app.launch()
-        XCTAssertTrue(app.buttons["experiment.invite"].waitForExistence(timeout: 10))
-        XCTAssertEqual(app.staticTexts["experiment.turns"].label, "1 showers")
+        XCTAssertTrue(app.buttons["experiment.pause"].waitForExistence(timeout: 10))
+        XCTAssertEqual(showers(app), saved)
+        XCTAssertEqual(app.buttons["experiment.pause"].label, "Resume sky")
+        remainsPaused(app)
+        app.buttons["experiment.pause"].tap()
         let outcome = app.staticTexts["experiment.outcome"]
-        for _ in 0..<25 {
-            if outcome.exists { break }
-            app.buttons["experiment.invite"].tap()
-            let settled = NSPredicate(format: "enabled == true OR exists == false")
-            if !outcome.waitForExistence(timeout: 1.3) {
-                XCTAssertTrue(XCTNSPredicateExpectation(predicate: settled, object: app.buttons["experiment.invite"]).wait(timeout: 5))
-            }
-        }
-        XCTAssertTrue(outcome.exists); XCTAssertFalse(app.buttons["experiment.invite"].isEnabled)
-        capture(app, "starfalls-overflow")
+        XCTAssertTrue(outcome.waitForExistence(timeout: 120))
+        XCTAssertFalse(app.buttons["experiment.pause"].isEnabled)
+        capture(app, "automatic-overflow")
         let newSky = app.buttons["experiment.new"]
         reveal(newSky, in: app); newSky.tap()
-        XCTAssertEqual(app.staticTexts["experiment.turns"].label, "0 showers")
+        XCTAssertEqual(showers(app), 0)
+        XCTAssertEqual(app.buttons["experiment.pause"].label, "Start sky")
     }
 }
 

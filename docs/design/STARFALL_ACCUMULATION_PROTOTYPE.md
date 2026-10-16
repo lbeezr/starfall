@@ -1,37 +1,39 @@
-# Turn based starfall prototype
+# Automatic starfall prototype
 
-The playable experiment starts with an empty 7×7 board. Manage the accumulating stars and collect starlight for as long as possible. This is the accumulation direction selected on 16 October 2026, following the earlier full-board replace-or-grow proposal.
+This Debug experiment starts with an empty 7×7 board. The sky keeps filling it while the player clears matching groups. It follows the user's 16 October 2026 decision to try continuous pressure after the initial turn-based prototype.
 
 ## Play
 
-In a Debug build of the shared Starfall scheme, choose **Try turn-based starfalls** from the menu. The launch argument `--starfalls` opens it directly. The first sky uses seed 5, which demonstrates a grown jewel and a clear after three invitations; **New sky** chooses another seed, and **Replay this sky** returns to the same empty board and shower sequence.
+Choose **Try the falling sky** in the Debug menu, or launch with `--starfalls`. Tap **Start sky** once. A shower arrives every four seconds, independently of clears. Showers contain 1, 2, 3 or 5 stars, weighted 1:2:3:1. Colors are random. Columns visit all seven in a shuffled bag before repeating, spreading early pressure across the field.
 
-The preview shows three stars in arrival order, with the color/shape and numbered column for each. The outlined board columns receive that shower. Tap **Let stars fall** to invite it, or tap a connected orthogonal matching group worth at least three to collect that group first. Either action advances exactly one shower. Invalid taps spend nothing and preserve the preview.
+The preview shows each incoming star's shape/color and numbered column, in arrival order. Outlined columns receive that shower. Most of each four-second interval remains available for clearing; a five-star animation lasts about 1.5 seconds. The forecast changes after the arriving batch settles. The countdown is isolated from the board's observation updates.
 
-Landing columns visit all seven columns in random order before repeating. Colors remain random. This spreads the early accumulation across the field and avoids a few unlucky arrivals immediately filling one column.
-
-Survivors settle downward, leaving empty space above them. There is no automatic refill. Each forecast star then arrives in order:
-
-- A matching small jewel at the top of that column absorbs the star and grows to value two, occupying the same one cell.
+- A star matching the small jewel on top grows it to value two, occupying the same cell.
 - Otherwise, the star stacks as a small jewel worth one. Grown jewels cannot grow again.
-- If a star cannot stack or grow the top jewel of its column, the round ends at that star. Earlier arrivals in the shower remain; later arrivals do not happen.
+- Tap an orthogonal matching group worth at least three to collect its combined value. A large jewel beside one small match can clear. Two small jewels or a lone large jewel cannot.
+- Surviving jewels settle downward. Clearing neither changes the upcoming stars nor resets their deadline. Invalid taps leave the rules and deadline unchanged.
+- If an arrival cannot stack or grow its column's top jewel, the round ends at that star. Earlier arrivals remain and later ones do not happen. A full column can still absorb a matching growth.
 
-Grown jewels count as two toward the clear threshold and score. A large jewel beside one small match can clear; two small jewels or a single large jewel cannot. Growth itself awards no immediate score. A full column can still accept a star if its top jewel can grow. Clearing beneath a column before its shower can prevent overflow.
+The strategy is to make room before a forecast arrives, or preserve a matching top jewel so it absorbs an arrival. There is no win target or move budget in the experiment; collect starlight and keep the sky open. The original 70-in-18 game retains its rules.
 
-This threshold is an intentional experiment-specific change: requiring three physical jewels made absorption work against forming groups. In the initial seed-42 rule check, it produced no legal group before overflow. Counting growth toward the threshold makes absorption useful for both space and future clears.
+## Pace and lifecycle
 
-There is no clock, move budget or win target in this experiment. The goal is to keep room and improve your collected score. A sky with no matching group can still receive a shower; overflow is the loss condition. The original 70-in-18 game retains its existing rules and free dead-board recovery.
+**Pause sky** is always available during play, including mid-animation. Pausing settles any already committed action and freezes the remaining interval. Settings and backgrounding also freeze it. Returning never catches up missed showers. Resume preserves the remaining interval, with at least half a second of grace. Restoring a saved game, Replay and New sky always start paused.
 
-## Controls and presentation
+The scheduler has one cancellable monotonic deadline. If it expires during a clear, one due shower waits for that presentation to finish, then takes priority over another clear. There is no backlog or repeating timer. Old timer and animation callbacks cannot affect a restarted or suspended game. Every committed event is saved before its animation begins.
 
-The main action invites one shower. Replay and New sky start fresh rounds. Close returns to the ordinary game. Settings explains growth and overflow and offers Calm effects. Every board cell is a native button with a shape/color label, value, position and connected starlight value; a Matching groups rotor lists legal clears. The incoming preview includes shape/color and column accessibility labels.
+Seed 5 is the initial sky. Replay restores its empty board and exact future sequence. New sky chooses a different random seed. Save key `starfall.accumulation.v2` separates this experiment from the prior turn-based save and the original game's saved round.
 
-The SpriteKit presentation shows clear, downward settling and three sequential arrivals. Calm effects, system Reduce Motion and VoiceOver suppress travel. Input remains gated during a committed shower to absorb rapid taps. Backgrounding, settings, resizing and leaving the screen settle the presentation to the saved result. The experiment uses its own local save key, `starfall.accumulation.v1`, preserving the original game's saved round.
+## Presentation and access
 
-## Scope and review
+Stars use overlapping, staggered flights with colored tapered trails, white cores and soft landing rings. Growth uses the existing jewel material at a larger size with a value label. Effects are bounded by the five-star batch. Calm effects, system Reduce Motion and VoiceOver suppress travel and landing effects.
 
-Rules are deterministic in `Sources/StarfallCore/StarfallExperiment.swift`. The SwiftUI screen, state/persistence boundary and SpriteKit presenter are separate small files. Jewel rendering reuses the existing five-texture material factory. App access is Debug-only; Release keeps the existing menu. No external SDK, network feature, paid asset or monetization code was added.
+Every cell remains a native button with its shape/color, value, position and connected starlight value. A Matching groups rotor lists legal clears. Forecast stars expose shape/color and column labels. Settings hides the underlying board from accessibility navigation. Input gates during committed animations; Pause remains available.
 
-Three arrivals per action, the growth cap of two and the opening seed are initial tuning choices. This build is for observing whether players read the forecast, make room deliberately and enjoy replaying a sky. Automated tests establish rules and interaction behavior, not enjoyment or long-term balance.
+The rule model remains deterministic and UI-independent in `Sources/StarfallCore`. The scheduler, persistence and SpriteKit presentation have explicit boundaries. Access remains Debug-only. No external SDKs, networking, tracking or monetization were added.
 
-Native validation and its limits are recorded in [the prototype evidence](../evidence/starfalls-prototype-2026-10-16/README.md).
+## Tuning questions
+
+Four seconds, the batch-size weights and growth cap of two are initial choices, not established balance. Playtesting should determine whether the pressure feels satisfying, whether five-star bursts are readable, whether previews influence clears, and whether players want a slower mode. Dark stars and swaps remain outside this iteration so the accumulation loop can be evaluated clearly.
+
+Validation and limitations: [automatic prototype evidence](../evidence/automatic-starfalls-2026-10-16/README.md). Historical turn-based evidence remains in the previous evidence folder.

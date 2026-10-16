@@ -159,7 +159,7 @@ struct StarfallView: View {
             .starfallPanel()
 
             #if DEBUG
-            Button("Try turn-based starfalls") { experimentPresented = true }
+            Button("Try the falling sky") { experimentPresented = true }
                 .buttonStyle(StarfallButtonStyle(role: .secondary, expands: true))
                 .accessibilityIdentifier("menu.starfalls")
             #endif

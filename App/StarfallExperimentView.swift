@@ -28,13 +28,13 @@ import StarfallCore
                             .accessibilityLabel("Settings").accessibilityIdentifier("experiment.settings")
                     }
                     .buttonStyle(StarfallButtonStyle(role: .quiet))
-                    Text("ACCUMULATION EXPERIMENT")
+                    Text("FALLING SKY · EXPERIMENT")
                         .font(StarfallTheme.Typography.supporting)
                         .foregroundStyle(StarfallTheme.Colors.textSecondary)
                     HStack {
                         Text("\(store.game.score) starlight").accessibilityIdentifier("experiment.score")
                         Spacer()
-                        Text("\(store.game.turns) showers").accessibilityIdentifier("experiment.turns")
+                        Text("\(store.game.turns) \(store.game.turns == 1 ? "shower" : "showers")").accessibilityIdentifier("experiment.turns")
                     }
                     .font(StarfallTheme.Typography.heading).monospacedDigit()
                     forecast
@@ -48,11 +48,12 @@ import StarfallCore
                         .font(StarfallTheme.Typography.supporting)
                         .foregroundStyle(StarfallTheme.Colors.textSecondary)
                         .multilineTextAlignment(.center).fixedSize(horizontal: false, vertical: true)
+                        .frame(minHeight: 44)
                         .accessibilityIdentifier("experiment.message")
-                    Button("Let stars fall") { store.inviteShower() }
+                    Button(store.isPaused ? (store.game.turns == 0 ? "Start sky" : "Resume sky") : "Pause sky") { store.togglePause() }
                         .buttonStyle(StarfallButtonStyle(role: .primary, expands: true))
-                        .disabled(store.busy || store.suspended || store.game.isOver)
-                        .accessibilityIdentifier("experiment.invite")
+                        .disabled(store.suspended || store.game.isOver)
+                        .accessibilityIdentifier("experiment.pause")
                     HStack {
                         Button("Replay this sky") { store.restart(sameSky: true) }
                             .accessibilityIdentifier("experiment.replay")
@@ -61,7 +62,7 @@ import StarfallCore
                             .accessibilityIdentifier("experiment.new")
                     }
                     .buttonStyle(StarfallButtonStyle(role: .quiet))
-                    Text("Clear matching jewels worth 3+. Large jewels count as 2. Every clear brings a shower. No timer.")
+                    Text("Clear matching jewels worth 3+. Large jewels count as 2. Stars fall every four seconds. Pause whenever you like.")
                         .font(StarfallTheme.Typography.supporting)
                         .foregroundStyle(StarfallTheme.Colors.textSecondary)
                         .multilineTextAlignment(.center).fixedSize(horizontal: false, vertical: true)
@@ -87,19 +88,27 @@ import StarfallCore
 
     private var forecast: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text(store.game.isOver ? "Replay to try another approach" : "Next shower · left to right")
-                .font(StarfallTheme.Typography.supporting)
+            HStack {
+                Text(store.game.isOver ? "Replay to try another approach" : "\(store.forecast.count) incoming · left to right")
+                Spacer(minLength: 4)
+                if !store.game.isOver {
+                    ShowerCountdown(deadline: store.nextShowerDate,
+                                    paused: store.isPaused || store.suspended,
+                                    arriving: store.pending?.arrivals.isEmpty == false)
+                }
+            }
+            .font(StarfallTheme.Typography.supporting)
             if !store.game.isOver {
-                HStack(spacing: 12) {
+                HStack(spacing: 8) {
                     ForEach(store.forecast) { star in
-                        HStack(spacing: 6) {
+                        VStack(spacing: 2) {
                             Text(star.kind.symbol).font(.title2).foregroundStyle(Color(star.kind.color))
                             Text("↓ \(star.column + 1)").font(.headline).monospacedDigit()
                         }
                         .frame(maxWidth: .infinity)
                         .accessibilityElement(children: .ignore)
                         .accessibilityLabel("\(star.kind.label), column \(star.column + 1)")
-                        .accessibilityIdentifier("experiment.incoming.\(star.id % 3)")
+                        .accessibilityIdentifier("experiment.incoming.\(star.id % StarfallExperiment.maximumShowerSize)")
                     }
                 }
             }
@@ -157,10 +166,10 @@ import StarfallCore
         .buttonStyle(.plain)
         .accessibilityLabel(cellLabel(cell))
         .accessibilityValue("\(value) starlight connected")
-        .accessibilityHint(value >= 3 ? "Clear this group, then the forecast shower arrives" : "Needs matching jewels worth three. Large jewels count as two. No turn will be used")
+        .accessibilityHint(value >= 3 ? "Clear this group to make room for incoming stars" : "Needs matching jewels worth three. Large jewels count as two")
         .accessibilityIdentifier("experiment.cell.\(cell.row).\(cell.column)")
         .accessibilityRotorEntry(id: cell, in: matchingGroups)
-        .disabled(store.busy || store.suspended || store.game.isOver)
+        .disabled(!store.canClear)
     }
 
     private func cellLabel(_ cell: Cell) -> String {
@@ -175,10 +184,10 @@ import StarfallCore
                 VStack(alignment: .leading, spacing: 20) {
                     Toggle("Calm effects", isOn: $calmEffects)
                         .accessibilityIdentifier("experiment.calm")
-                    Text("Three stars arrive after every clear or invitation, in the previewed order and columns.")
+                    Text("After you start, a shower arrives every four seconds. Most bring 1–3 stars; some bring 5. The preview shows their colors, order and columns. Clearing does not delay the sky.")
                     Text("A star matching the small jewel on top grows it to value 2. A grown jewel cannot grow again, so the next star stacks above it.")
                     Text("Clear connected matching jewels worth at least 3. A large jewel counts as 2, so a large jewel beside one small match can clear. Collect their combined value as starlight.")
-                    Text("Make room before a star reaches a full column. There is no timer. Replay a sky to try different choices.")
+                    Text("Make room before a star reaches a full column. Pause whenever you like. Settings and leaving the app freeze the sky; missed showers never accumulate. Replay a sky to try different choices.")
                 }
                 .font(StarfallTheme.Typography.body).padding(20)
                 .fixedSize(horizontal: false, vertical: true)
@@ -188,6 +197,20 @@ import StarfallCore
             .toolbar { Button("Done") { settings = false }.accessibilityIdentifier("experiment.done") }
         }
         .presentationDetents([.large])
+    }
+}
+/// Only this small label refreshes with the clock; the board is event-driven.
+private struct ShowerCountdown: View {
+    let deadline: Date?
+    let paused: Bool
+    let arriving: Bool
+    var body: some View {
+        TimelineView(.periodic(from: .now, by: 0.25)) { context in
+            Text(paused ? "Paused" : arriving ? "Falling…" : "\(max(1, Int(ceil((deadline ?? context.date).timeIntervalSince(context.date)))))s")
+                .monospacedDigit()
+                .foregroundStyle(StarfallTheme.Colors.actionPrimary)
+                .accessibilityLabel(paused ? "Sky paused" : arriving ? "Stars arriving" : "Next shower approaching")
+        }
     }
 }
 #endif
