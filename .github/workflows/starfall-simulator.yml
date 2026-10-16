@@ -1,7 +1,20 @@
-name: Starfall simulator (manual)
+name: Starfall simulator
 
-# Deliberately no push, pull_request, or schedule triggers.
+# Automatic validation is restricted below to public lbeezr/starfall main.
+# No pull_request or schedule triggers; unrelated documentation pushes are ignored.
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'App/**'
+      - 'Sources/**'
+      - 'Tests/**'
+      - 'Config/**'
+      - 'Package.swift'
+      - 'Package.resolved'
+      - 'Starfall.xcodeproj/**'
+      - 'scripts/ci-*'
+      - '.github/workflows/starfall-simulator.yml'
   workflow_dispatch:
     inputs:
       budget_confirmed:
@@ -19,7 +32,13 @@ concurrency:
 
 jobs:
   native-smoke:
-    if: ${{ inputs.budget_confirmed }}
+    # Forks never run this job. Private pushes never run it. Manual runs still
+    # require an explicit budget acknowledgement even in the intended repo.
+    if: >-
+      ${{ github.repository == 'lbeezr/starfall' &&
+          ((github.event_name == 'push' && github.ref == 'refs/heads/main' &&
+            github.event.repository.private == false) ||
+           (github.event_name == 'workflow_dispatch' && inputs.budget_confirmed == true)) }}
     runs-on: macos-15
     timeout-minutes: 15
     defaults:
