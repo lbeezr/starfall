@@ -42,36 +42,140 @@ extension Jewel {
             node.position = point(cell); boardRoot.addChild(node); nodes[cell] = node
         } }
     }
+    // Five size-independent textures are rasterized once, then shared by every cell.
+    // The artwork has transparent padding; its silhouette still uses radius 0.37 × pitch.
+    private static var jewelTextures: [Int: SKTexture] = [:]
     private func jewel(_ kind: Jewel, radius: CGFloat) -> SKNode {
-        let root = SKNode()
-        let path: CGPath
-        if kind == .rose {
-            path = CGPath(ellipseIn: CGRect(x: -radius, y: -radius, width: radius*2, height: radius*2), transform: nil)
+        let texture: SKTexture
+        if let cached = Self.jewelTextures[kind.rawValue] {
+            texture = cached
         } else {
-            let sides = [0, 4, 3, 6, 4][kind.rawValue]
-            let angle: CGFloat = kind == .mint ? .pi/4 : .pi/2
-            let p = CGMutablePath()
-            for index in 0..<sides {
-                let a = angle + CGFloat(index)*2 * .pi/CGFloat(sides)
-                let v = CGPoint(x: cos(a)*radius, y: sin(a)*radius)
-                if index == 0 { p.move(to: v) } else { p.addLine(to: v) }
-            }
-            p.closeSubpath(); path = p
+            texture = Self.makeGlassTexture(kind)
+            Self.jewelTextures[kind.rawValue] = texture
         }
-        let shadow = SKShapeNode(path: path)
-        shadow.fillColor = kind.color.withAlphaComponent(0.12); shadow.strokeColor = .clear
-        shadow.setScale(1.19); shadow.position.y = -3; root.addChild(shadow)
-        let glass = SKShapeNode(path: path)
-        glass.fillColor = kind.color.withAlphaComponent(0.62)
-        glass.strokeColor = kind.color.withAlphaComponent(0.95)
-        glass.lineWidth = 1.5; glass.glowWidth = 1.2; root.addChild(glass)
-        let inset = SKShapeNode(path: path)
-        inset.setScale(0.75); inset.fillColor = .clear; inset.strokeColor = .white.withAlphaComponent(0.27); inset.lineWidth = 0.7
-        root.addChild(inset)
-        let glint = SKShapeNode(ellipseOf: CGSize(width: radius*0.48, height: radius*0.19))
-        glint.fillColor = .white.withAlphaComponent(0.65); glint.strokeColor = .clear
-        glint.position = CGPoint(x: -radius*0.23, y: radius*0.37); glint.zRotation = 0.45; root.addChild(glint)
-        return root
+        let sprite = SKSpriteNode(texture: texture)
+        sprite.size = CGSize(width: radius * 128 / 52, height: radius * 128 / 52)
+        return sprite
+    }
+
+    private static func silhouette(_ kind: Jewel, radius: CGFloat) -> CGPath {
+        if kind == .rose {
+            return CGPath(ellipseIn: CGRect(x: -radius, y: -radius,
+                                           width: radius * 2, height: radius * 2), transform: nil)
+        }
+        let sides = [0, 4, 3, 6, 4][kind.rawValue]
+        let angle: CGFloat = kind == .mint ? .pi / 4 : .pi / 2
+        let path = CGMutablePath()
+        for index in 0..<sides {
+            let a = angle + CGFloat(index) * 2 * .pi / CGFloat(sides)
+            let vertex = CGPoint(x: cos(a) * radius, y: sin(a) * radius)
+            if index == 0 { path.move(to: vertex) } else { path.addLine(to: vertex) }
+        }
+        path.closeSubpath()
+        return path
+    }
+
+    private static func makeGlassTexture(_ kind: Jewel) -> SKTexture {
+        let format = UIGraphicsImageRendererFormat()
+        format.scale = 2
+        format.opaque = false
+        let renderer = UIGraphicsImageRenderer(size: CGSize(width: 128, height: 128), format: format)
+        let image = renderer.image { drawing in
+            let context = drawing.cgContext
+            // Match SpriteKit's upward-positive coordinates for all five original silhouettes.
+            context.translateBy(x: 64, y: 64)
+            context.scaleBy(x: 1, y: -1)
+            let path = silhouette(kind, radius: 52)
+            let innerPath = silhouette(kind, radius: 44)
+            let color = kind.color
+            func tint(_ amount: CGFloat, toward target: UIColor) -> UIColor {
+                var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
+                var tr: CGFloat = 0, tg: CGFloat = 0, tb: CGFloat = 0, ta: CGFloat = 0
+                color.getRed(&r, green: &g, blue: &b, alpha: &a)
+                target.getRed(&tr, green: &tg, blue: &tb, alpha: &ta)
+                return UIColor(red: r + (tr - r) * amount,
+                               green: g + (tg - g) * amount,
+                               blue: b + (tb - b) * amount, alpha: 1)
+            }
+            func gradient(_ colors: [UIColor], from start: CGPoint, to end: CGPoint) {
+                guard let gradient = CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(),
+                                                colors: colors.map { $0.cgColor } as CFArray,
+                                                locations: nil) else { return }
+                context.drawLinearGradient(gradient, start: start, end: end,
+                                           options: [.drawsBeforeStartLocation, .drawsAfterEndLocation])
+            }
+            let midnight = UIColor(red: 0.08, green: 0.06, blue: 0.24, alpha: 1)
+
+            // Soft contact shadow, baked into the texture rather than a live blur node.
+            context.saveGState()
+            context.setShadow(offset: CGSize(width: 0, height: -4), blur: 7,
+                              color: UIColor.black.withAlphaComponent(0.42).cgColor)
+            context.addPath(path)
+            context.setFillColor(tint(0.55, toward: midnight).cgColor)
+            context.fillPath()
+            context.restoreGState()
+
+            // The outer bevel catches moonlight on its upper-left edge.
+            context.saveGState()
+            context.addPath(path); context.clip()
+            gradient([tint(0.80, toward: .white), color, tint(0.56, toward: midnight)],
+                     from: CGPoint(x: -38, y: 52), to: CGPoint(x: 28, y: -52))
+            context.restoreGState()
+
+            // A saturated inset keeps each color legible against the dark board.
+            context.saveGState()
+            context.addPath(innerPath); context.clip()
+            gradient([tint(0.20, toward: .white), color, tint(0.34, toward: midnight)],
+                     from: CGPoint(x: -24, y: 46), to: CGPoint(x: 20, y: -46))
+
+            // Broad transparent reflection, clipped inside the same silhouette.
+            let reflection = CGMutablePath()
+            reflection.move(to: CGPoint(x: -58, y: 8))
+            reflection.addLine(to: CGPoint(x: 10, y: 58))
+            reflection.addLine(to: CGPoint(x: 39, y: 58))
+            reflection.addLine(to: CGPoint(x: -45, y: -22))
+            reflection.closeSubpath()
+            context.saveGState()
+            context.addPath(reflection); context.clip()
+            gradient([UIColor.white.withAlphaComponent(0.36), UIColor.white.withAlphaComponent(0.02)],
+                     from: CGPoint(x: -25, y: 40), to: CGPoint(x: 10, y: -32))
+            context.restoreGState()
+
+            // Low, soft caustic adds depth without another sharp concentric outline.
+            if let glow = CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(),
+                                     colors: [tint(0.50, toward: .white).withAlphaComponent(0.48).cgColor,
+                                              color.withAlphaComponent(0).cgColor] as CFArray,
+                                     locations: [0, 1]) {
+                context.drawRadialGradient(glow, startCenter: CGPoint(x: 12, y: -29), startRadius: 0,
+                                           endCenter: CGPoint(x: 12, y: -29), endRadius: 39,
+                                           options: [])
+            }
+            context.restoreGState()
+
+            context.addPath(innerPath)
+            context.setStrokeColor(UIColor.white.withAlphaComponent(0.30).cgColor)
+            context.setLineWidth(1.2); context.strokePath()
+            context.addPath(path)
+            context.setStrokeColor(tint(0.45, toward: .white).withAlphaComponent(0.85).cgColor)
+            context.setLineWidth(1.4); context.strokePath()
+
+            // Small reflected light source, always clipped so triangles stay triangles.
+            context.saveGState()
+            context.addPath(innerPath); context.clip()
+            context.translateBy(x: -15, y: 24)
+            context.rotate(by: .pi / 5)
+            context.setFillColor(UIColor.white.withAlphaComponent(0.88).cgColor)
+            context.fillEllipse(in: CGRect(x: -10, y: -3, width: 20, height: 6))
+            context.restoreGState()
+            context.saveGState()
+            context.addPath(innerPath); context.clip()
+            context.setFillColor(UIColor.white.withAlphaComponent(0.60).cgColor)
+            context.fillEllipse(in: CGRect(x: 19, y: -27, width: 5, height: 5))
+            context.restoreGState()
+        }
+        let texture = SKTexture(image: image)
+        texture.filteringMode = .linear
+        return texture
     }
     func nudge(_ cell: Cell) {
         guard !reduceMotion else { return }

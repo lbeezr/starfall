@@ -32,3 +32,21 @@ The initial unconfigured invocation failed before compilation because its defaul
 - App Store/device distribution signing
 
 No visual or device quality claim follows from these core test results. See `ACCEPTANCE.md` for remaining runtime checks. The manual cloud workflow describes a future Apple-tooling validation route, not evidence of a completed run.
+
+## Independent exact-head rerun
+
+2026-10-16 01:57:53 UTC: core tests independently rerun at
+`b884b452ff9c2832f19fea0fc85fe4cea662f674` with the same explicit writable-cache
+command above. All 12 XCTest cases passed, zero failures, 0.53 seconds test time.
+No Apple SDK, simulator or physical-device validation was performed.
+
+## First native cloud evidence
+
+Run https://github.com/lbeezr/starfall/actions/runs/38840259665 succeeded at
+source `15d068b6231d7fbb8f5c05867361419c549c5bb6` on Xcode 26.3 / Swift 6.2.4 /
+ARM64 with iPhone SE (3rd generation), iOS 26.2 Simulator. All 12 core tests
+passed and the native app built. Initial and post-clear settled launches stayed
+alive and produced inspected screenshots. Initial HUD: 0/70, 18 moves; settled:
+3/70, 17 moves. These were separately launched deterministic states, not evidence
+of a performed touch gesture or observed animation. Physical-device behavior and
+accessibility are still unverified. Later source changes need their own run.

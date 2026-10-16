@@ -8,3 +8,6 @@ Keep the prototype small: a 7×7 orthogonal tap-to-clear puzzle, five jewel type
 - Do not claim simulator/device or visual validation unless actually run on Apple tooling.
 - Do not change another repository or add network features, purchases or analytics without a new request.
 - Run tests and a simulator build after source changes where tooling exists. Inspect normal play, rapid taps, win/loss, restart, background/resume, VoiceOver, Reduce Motion, and settings dismissal.
+
+## Code quality
+Keep rules deterministic and independent from rendering. Keep presentation, saved state and feedback behind small, explicit boundaries; add focused tests for behavioral changes. Prefer incremental reviewed changes over a growing multipurpose module, but do not introduce speculative frameworks or split files solely to meet an arbitrary size. Reuse the bounded jewel material factory rather than duplicating drawing logic.

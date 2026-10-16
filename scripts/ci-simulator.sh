@@ -126,3 +126,78 @@ printf '%s\n' 'PASS: both demo launches accepted; each app process alive after 5
   'This is a launch/liveness smoke check, not an automated visual or interaction assertion.' | tee artifacts/smoke-result.txt
 (cd artifacts && shasum -a 256 *.png > screenshot-sha256.txt)
 # Keep artifacts small: no app bundle, DerivedData, simulator disk, or video.
+
+# One real coordinate-tap/navigation flow, on the same simulator, without retries.
+# Keep the result bundle on ephemeral runner storage; export only compact evidence.
+UI_RESULT="$RUNNER_TEMP/starfall-ui.xcresult"
+UI_EXPORT="$RUNNER_TEMP/starfall-ui-attachments"
+xcrun xcresulttool help export attachments > artifacts/xcresulttool-attachments-help.txt
+set +e
+xcodebuild -project Starfall.xcodeproj -scheme Starfall \
+  -configuration Debug -sdk iphonesimulator \
+  -destination "platform=iOS Simulator,arch=arm64,id=$SIMULATOR_ID" \
+  -derivedDataPath "$RUNNER_TEMP/starfall-derived" \
+  -only-testing:StarfallUITests/StarfallInteractionTests/testRealBoardTapAndNavigation \
+  -parallel-testing-enabled NO -maximum-concurrent-test-simulator-destinations 1 \
+  -test-timeouts-enabled YES -default-test-execution-time-allowance 90 \
+  -maximum-test-execution-time-allowance 120 \
+  -resultBundlePath "$UI_RESULT" \
+  ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \
+  CODE_SIGN_IDENTITY=- CODE_SIGNING_ALLOWED=YES \
+  DEVELOPMENT_TEAM= CODE_SIGN_STYLE=Manual test \
+  2>&1 | tee artifacts/ui-tests.log
+UI_STATUS=${PIPESTATUS[0]}
+set -e
+# Export the summary even on a failed test when a valid result bundle exists.
+if [[ -d "$UI_RESULT" ]]; then
+  xcrun xcresulttool get test-results summary --path "$UI_RESULT" --compact \
+    > artifacts/ui-test-summary.json
+fi
+if [[ "$UI_STATUS" != 0 ]]; then
+  echo "Native UI test failed (xcodebuild exit $UI_STATUS); see ui-tests.log." >&2
+  exit "$UI_STATUS"
+fi
+xcrun xcresulttool export attachments --path "$UI_RESULT" --output-path "$UI_EXPORT"
+python3 - "$UI_EXPORT" <<'PY'
+from pathlib import Path
+import hashlib, json, shutil, sys
+root = Path(sys.argv[1]).resolve()
+summary = json.loads(Path('artifacts/ui-test-summary.json').read_text())
+if summary.get('passedTests') != 1 or summary.get('failedTests') != 0:
+    raise SystemExit('Expected exactly one passing UI test and zero failures; inspect summary.')
+manifest_path = root / 'manifest.json'
+manifest = json.loads(manifest_path.read_text())
+
+def objects(value):
+    if isinstance(value, dict):
+        yield value
+        for child in value.values():
+            yield from objects(child)
+    elif isinstance(value, list):
+        for child in value:
+            yield from objects(child)
+
+records = []
+for name in ('real-touch-post-clear', 'real-touch-restarted'):
+    matches = [x for x in objects(manifest)
+               if str(x.get('suggestedHumanReadableName', '')).startswith(name)
+               and x.get('exportedFileName')]
+    if len(matches) != 1:
+        raise SystemExit(f'Expected exactly one named attachment {name}; found {len(matches)}.')
+    source = (root / matches[0]['exportedFileName']).resolve()
+    if root not in source.parents or source.is_symlink():
+        raise SystemExit('Unexpected attachment path.')
+    data = source.read_bytes()
+    if not data.startswith(b'\x89PNG\r\n\x1a\n') or len(data) > 5_000_000:
+        raise SystemExit(f'{name}: expected PNG below 5 MB; refusing oversized/unknown evidence.')
+    target = Path('artifacts') / (name + '.png')
+    shutil.copyfile(source, target)
+    records.append({'name': name, 'file': target.name,
+                    'sha256': hashlib.sha256(data).hexdigest(), 'export': matches[0]})
+Path('artifacts/ui-attachment-manifest.json').write_text(json.dumps(records, indent=2) + '\n')
+print('PASS: one real-input UI test passed; both named native PNG attachments exported.')
+PY
+printf '%s\n' 'PASS: one real coordinate-tap/navigation UI test and two exported XCTest screenshots.' \
+  'See ui-test-summary.json and ui-attachment-manifest.json; no VoiceOver or rapid-input validation.' \
+  | tee artifacts/ui-result.txt
+(cd artifacts && shasum -a 256 *.png > screenshot-sha256.txt)

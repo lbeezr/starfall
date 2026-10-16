@@ -9,6 +9,7 @@ on:
       - 'App/**'
       - 'Sources/**'
       - 'Tests/**'
+      - 'UITests/**'
       - 'Config/**'
       - 'Package.swift'
       - 'Package.resolved'
