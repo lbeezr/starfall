@@ -207,6 +207,69 @@ final class StarshardFamilyPilotTests: XCTestCase {
         withExtendedLifetime(view) {}
     }
 
+    @MainActor func testValidTurnRestoresAnInterruptedInvalidNudge() async throws {
+        if UIAccessibility.isVoiceOverRunning || UIAccessibility.isReduceMotionEnabled {
+            throw XCTSkip("Accessibility motion settings correctly bypass animated nudges")
+        }
+        let windowScene = try XCTUnwrap(UIApplication.shared.connectedScenes
+            .compactMap { $0 as? UIWindowScene }.first)
+        for familyPilot in [false, true] {
+            let suite = "StarfallInterruptedNudge.\(UUID().uuidString)"
+            let defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
+            defer { defaults.removePersistentDomain(forName: suite) }
+            let store = GameStore(defaults: defaults, arguments: ["--reset-save", "--seed=0"])
+            let scene = store.scene
+            scene.size = CGSize(width: 350, height: 350)
+            scene.starshardFamilyPilotEnabled = familyPilot
+            scene.crystalPilotEnabled = false
+            let view = SKView(frame: CGRect(x: 0, y: 0, width: 350, height: 350))
+            let window = UIWindow(windowScene: windowScene)
+            window.frame = windowScene.coordinateSpace.bounds
+            let controller = UIViewController()
+            controller.view.addSubview(view)
+            window.rootViewController = controller
+            window.isHidden = false
+            defer { view.presentScene(nil); window.isHidden = true }
+            view.presentScene(scene)
+            store.start()
+            XCTAssertEqual(scene.starshardFamilyPilotIsActive, familyPilot)
+            let old = store.game
+            let group = try XCTUnwrap(old.legalGroups.first)
+            let invalid = try XCTUnwrap((0..<49).map { Cell($0 / 7, $0 % 7) }
+                .first { candidate in old.group(at: candidate).count < 3
+                    && !group.contains(where: { $0.column == candidate.column }) })
+            let position = try XCTUnwrap(scene.renderedPosition(at: invalid))
+            let sprite = try XCTUnwrap(allNodes(in: scene).compactMap { $0 as? SKSpriteNode }
+                .first { $0.position == position })
+            let neutralTexture = try XCTUnwrap(sprite.texture)
+            let sampledNudge = expectation(description: "Sample actual nudge; family=\(familyPilot)")
+            var sampled = false
+            store.tap(invalid)
+            XCTAssertEqual(store.game, old)
+            // Pause on an observed intermediate pose instead of assuming a frame
+            // arrived after a fixed sleep. The next turn cannot tick while paused.
+            scene.run(.customAction(withDuration: 2) { _, _ in
+                guard !sampled,
+                      sprite.xScale < 0.999 || sprite.texture !== neutralTexture else { return }
+                sampled = true
+                scene.isPaused = true
+                sampledNudge.fulfill()
+            }, withKey: "nudge-observer")
+            await fulfillment(of: [sampledNudge], timeout: 5)
+            XCTAssertTrue(sampled)
+            store.tap(try XCTUnwrap(group.first))
+            XCTAssertEqual(store.game.moves, old.moves - 1)
+            XCTAssertTrue(store.busy)
+            XCTAssertNil(sprite.action(forKey: "touch-feedback"))
+            XCTAssertEqual(sprite.xScale, 1, accuracy: 0.0001)
+            XCTAssertEqual(sprite.yScale, 1, accuracy: 0.0001)
+            XCTAssertTrue(sprite.texture === neutralTexture)
+            store.settlePresentation()
+            XCTAssertFalse(store.busy)
+            withExtendedLifetime(window) {}
+        }
+    }
+
     @MainActor func testFullCellHitTargetsRejectPaddingAndNonfiniteLocations() throws {
         let scene = JewelScene(size: CGSize(width: 350, height: 420))
         scene.render(Game(seed: 42))

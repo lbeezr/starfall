@@ -290,6 +290,15 @@ extension Jewel {
         // Stable order makes the global shard cap deterministic without touching gameplay RNG.
         let cleared = turn.cleared.sorted { $0.row == $1.row ? $0.column < $1.column : $0.row < $1.row }
         let family = activeFamily
+        // Cancelling an invalid-tap response freezes its current scale or tilt frame.
+        // Restore the source board's neutral pose before this turn clears any pieces.
+        for (cell, node) in nodes {
+            node.setScale(1)
+            if let kind = old.jewel(at: cell), let frames = family?[kind],
+               let sprite = node as? SKSpriteNode {
+                sprite.texture = frames.neutralFrame
+            }
+        }
         var shardBudget = family == nil ? CrystalPilot.maximumShards : StarshardArtwork.maximumShards
         // Large clears share twelve soft sparks instead of filling every cell with effects.
         let sparkStride = max(1, Int(ceil(Double(cleared.count) / Double(Self.maximumClearSparks))))
@@ -334,7 +343,8 @@ extension Jewel {
                 reduceMotion: self.reduceMotion, point: { self.point($0) }
             ) { [weak self] in
                 guard let self, self.presentationGeneration == generation else { return }
-                self.render(new)
+                // Arrival completion has snapped the final nodes and removed every
+                // arrival action, trail and clock. Keep those already-settled sprites.
                 completion()
             }
         }]))
