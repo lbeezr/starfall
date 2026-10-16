@@ -185,9 +185,11 @@ import StarfallCore
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
+                    balanceControls
                     Toggle("Calm effects", isOn: $calmEffects)
                         .accessibilityIdentifier("experiment.calm")
-                    Text("After you start, a shower arrives every four seconds. Most bring 1–3 stars; some bring 5. The preview shows what is coming. Landing places remain a surprise. Clearing does not delay the sky.")
+                    Text("How to play").font(.headline).accessibilityAddTraits(.isHeader)
+                    Text("After you start, a shower arrives every \(store.game.balance.pace.rawValue) seconds. Most bring 1–3 stars; some bring 5. The preview shows what is coming. Landing places remain a surprise. Clearing does not delay the sky.")
                     Text("A star matching the small jewel on top grows it to value 2. A grown jewel cannot grow again, so the next star stacks above it.")
                     Text("Clear connected matching jewels worth at least 3. A large jewel counts as 2, so a large jewel beside one small match can clear. Collect their combined value as starlight.")
                     Text("An occasional dark star stops the jewels directly above, below, left and right from growing. Existing large jewels stay large. Clear any matching group touching it to dissolve it and free that space. Dark stars are not part of color matches and award no starlight.")
@@ -197,10 +199,71 @@ import StarfallCore
                 .fixedSize(horizontal: false, vertical: true)
             }
             .background(StarfallTheme.Colors.skyTop)
-            .navigationTitle("How starfalls work")
+            .navigationTitle("Sky settings")
             .toolbar { Button("Done") { settings = false }.accessibilityIdentifier("experiment.done") }
         }
+        .tint(StarfallTheme.Colors.actionPrimary)
         .presentationDetents([.large])
+    }
+
+    private var balanceControls: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            Text("Try a balance").font(.headline).accessibilityAddTraits(.isHeader)
+            HStack {
+                Text("Shower pace")
+                Spacer()
+                Picker("Shower pace", selection: Binding(get: { store.game.balance.pace }, set: store.setPace)) {
+                    ForEach(StarfallBalance.Pace.allCases, id: \.self) { pace in
+                        Text(pace.title).tag(pace)
+                    }
+                }
+                .pickerStyle(.menu).labelsHidden().accessibilityIdentifier("experiment.pace")
+            }
+            HStack {
+                Text("Dark stars")
+                Spacer()
+                Picker("Dark stars", selection: Binding(get: { store.game.balance.darkStars }, set: store.setDarkStarFrequency)) {
+                    ForEach(StarfallBalance.DarkStarFrequency.allCases, id: \.self) { frequency in
+                        Text(frequency.title).tag(frequency)
+                    }
+                }
+                .pickerStyle(.menu).labelsHidden().accessibilityIdentifier("experiment.darkFrequency")
+            }
+            Text(store.game.balance.darkStars.detail)
+                .accessibilityIdentifier("experiment.balanceDetail")
+            Text("Changes keep your board and current preview. Existing dark stars stay. Replay this sky to start fresh with this balance.")
+            Button("Reset balance") { store.setBalance(StarfallBalance()) }
+                .buttonStyle(StarfallButtonStyle(role: .quiet))
+                .disabled(store.game.balance == StarfallBalance())
+                .accessibilityIdentifier("experiment.resetBalance")
+        }
+        .font(.subheadline)
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+}
+
+private extension StarfallBalance.Pace {
+    var title: String {
+        switch self {
+        case .gentle: "Gentle · 6s"
+        case .steady: "Steady · 4s"
+        case .brisk: "Brisk · 3s"
+        }
+    }
+}
+
+private extension StarfallBalance.DarkStarFrequency {
+    var title: String {
+        switch self {
+        case .none: "None"
+        case .occasional: "Occasional"
+        case .regular: "Regular"
+        case .frequent: "Frequent"
+        }
+    }
+    var detail: String {
+        guard let gap = showerGap else { return "No new dark stars after the current preview." }
+        return "One dark star every \(gap.lowerBound)–\(gap.upperBound) showers. A fresh sky starts with one in shower \(gap.upperBound)."
     }
 }
 /// Only this small label refreshes with the clock; the board is event-driven.

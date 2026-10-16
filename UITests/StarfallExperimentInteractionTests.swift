@@ -143,6 +143,53 @@ final class StarfallExperimentInteractionTests: XCTestCase {
         XCTAssertEqual(app.buttons.matching(NSPredicate(format: "label CONTAINS %@", "growth blocked by a dark star")).count, 0)
         capture(app, "dark-star-dissolved-by-adjacent-clear")
     }
+
+    @MainActor func testBalanceControlsPreserveBoardPersistAndChangeArrivals() {
+        let app = launch(); defer { app.terminate() }
+        app.buttons["experiment.pause"].tap()
+        waitForShowers(1, in: app)
+        app.buttons["experiment.pause"].tap()
+        let occupied = app.buttons["experiment.cell.0.0"].label
+        app.buttons["experiment.settings"].tap()
+        let pace = app.buttons["experiment.pace"], frequency = app.buttons["experiment.darkFrequency"]
+        XCTAssertTrue(pace.waitForExistence(timeout: 5))
+        pace.tap(); app.buttons["Gentle · 6s"].tap()
+        frequency.tap(); app.buttons["Frequent"].tap()
+        XCTAssertTrue(app.staticTexts["experiment.balanceDetail"].label.contains("2–3 showers"))
+        capture(app, "balance-gentle-frequent-settings")
+        app.buttons["experiment.done"].tap()
+        XCTAssertEqual(showers(app), 1)
+        XCTAssertEqual(app.buttons["experiment.cell.0.0"].label, occupied)
+        XCTAssertEqual(app.buttons["experiment.pause"].label, "Resume sky")
+        let replay = app.buttons["experiment.replay"]
+        reveal(replay, in: app); replay.tap()
+        app.buttons["experiment.pause"].tap()
+        let tooSoon = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in self.showers(app) > 0 }, object: nil)
+        tooSoon.isInverted = true
+        XCTAssertTrue(tooSoon.wait(timeout: 4.5), "Gentle pace does not use the old four-second deadline")
+        waitForShowers(3, in: app, timeout: 20)
+        app.buttons["experiment.pause"].tap()
+        XCTAssertTrue(app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Dark star,")).count > 0)
+        capture(app, "balance-frequent-dark-star-shower-three")
+        app.terminate(); app.launchArguments = ["--starfalls"]; app.launch()
+        XCTAssertTrue(app.buttons["experiment.pause"].waitForExistence(timeout: 10))
+        XCTAssertEqual(app.buttons["experiment.pause"].label, "Resume sky")
+        app.buttons["experiment.settings"].tap()
+        XCTAssertTrue((pace.label + String(describing: pace.value)).contains("Gentle"))
+        XCTAssertTrue((frequency.label + String(describing: frequency.value)).contains("Frequent"))
+        app.buttons["experiment.resetBalance"].tap()
+        XCTAssertTrue((pace.label + String(describing: pace.value)).contains("Steady"))
+        XCTAssertTrue((frequency.label + String(describing: frequency.value)).contains("Regular"))
+        pace.tap(); app.buttons["Brisk · 3s"].tap()
+        frequency.tap(); app.buttons["None"].tap()
+        app.buttons["experiment.done"].tap()
+        reveal(replay, in: app); replay.tap()
+        app.buttons["experiment.pause"].tap()
+        waitForShowers(4, in: app, timeout: 16)
+        app.buttons["experiment.pause"].tap()
+        XCTAssertEqual(app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Dark star,")).count, 0)
+        capture(app, "balance-brisk-no-dark-stars")
+    }
 }
 
 private extension XCTNSPredicateExpectation {
