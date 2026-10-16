@@ -1,0 +1,491 @@
+{
+  "atlases_verified": 5,
+  "errors": [],
+  "files_verified": 91,
+  "frames_verified": 45,
+  "kinds": {
+    "amber": {
+      "frames": [
+        {
+          "alpha_bounds": [
+            45,
+            38,
+            210,
+            180
+          ],
+          "index": 0,
+          "minimum_padding_px": 38
+        },
+        {
+          "alpha_bounds": [
+            45,
+            37,
+            210,
+            180
+          ],
+          "index": 1,
+          "minimum_padding_px": 37
+        },
+        {
+          "alpha_bounds": [
+            46,
+            37,
+            210,
+            180
+          ],
+          "index": 2,
+          "minimum_padding_px": 37
+        },
+        {
+          "alpha_bounds": [
+            46,
+            37,
+            210,
+            180
+          ],
+          "index": 3,
+          "minimum_padding_px": 37
+        },
+        {
+          "alpha_bounds": [
+            46,
+            37,
+            210,
+            180
+          ],
+          "index": 4,
+          "minimum_padding_px": 37
+        },
+        {
+          "alpha_bounds": [
+            46,
+            37,
+            210,
+            180
+          ],
+          "index": 5,
+          "minimum_padding_px": 37
+        },
+        {
+          "alpha_bounds": [
+            46,
+            37,
+            210,
+            180
+          ],
+          "index": 6,
+          "minimum_padding_px": 37
+        },
+        {
+          "alpha_bounds": [
+            45,
+            37,
+            210,
+            180
+          ],
+          "index": 7,
+          "minimum_padding_px": 37
+        },
+        {
+          "alpha_bounds": [
+            45,
+            38,
+            210,
+            180
+          ],
+          "index": 8,
+          "minimum_padding_px": 38
+        }
+      ],
+      "minimum_padding_px": 37
+    },
+    "aqua": {
+      "frames": [
+        {
+          "alpha_bounds": [
+            34,
+            35,
+            222,
+            221
+          ],
+          "index": 0,
+          "minimum_padding_px": 34
+        },
+        {
+          "alpha_bounds": [
+            34,
+            34,
+            222,
+            222
+          ],
+          "index": 1,
+          "minimum_padding_px": 34
+        },
+        {
+          "alpha_bounds": [
+            34,
+            34,
+            222,
+            222
+          ],
+          "index": 2,
+          "minimum_padding_px": 34
+        },
+        {
+          "alpha_bounds": [
+            34,
+            34,
+            222,
+            222
+          ],
+          "index": 3,
+          "minimum_padding_px": 34
+        },
+        {
+          "alpha_bounds": [
+            34,
+            34,
+            222,
+            222
+          ],
+          "index": 4,
+          "minimum_padding_px": 34
+        },
+        {
+          "alpha_bounds": [
+            34,
+            34,
+            222,
+            222
+          ],
+          "index": 5,
+          "minimum_padding_px": 34
+        },
+        {
+          "alpha_bounds": [
+            34,
+            34,
+            222,
+            222
+          ],
+          "index": 6,
+          "minimum_padding_px": 34
+        },
+        {
+          "alpha_bounds": [
+            34,
+            34,
+            222,
+            222
+          ],
+          "index": 7,
+          "minimum_padding_px": 34
+        },
+        {
+          "alpha_bounds": [
+            34,
+            35,
+            222,
+            221
+          ],
+          "index": 8,
+          "minimum_padding_px": 34
+        }
+      ],
+      "minimum_padding_px": 34
+    },
+    "mint": {
+      "frames": [
+        {
+          "alpha_bounds": [
+            55,
+            57,
+            201,
+            199
+          ],
+          "index": 0,
+          "minimum_padding_px": 55
+        },
+        {
+          "alpha_bounds": [
+            56,
+            56,
+            200,
+            200
+          ],
+          "index": 1,
+          "minimum_padding_px": 56
+        },
+        {
+          "alpha_bounds": [
+            56,
+            56,
+            200,
+            200
+          ],
+          "index": 2,
+          "minimum_padding_px": 56
+        },
+        {
+          "alpha_bounds": [
+            56,
+            56,
+            200,
+            200
+          ],
+          "index": 3,
+          "minimum_padding_px": 56
+        },
+        {
+          "alpha_bounds": [
+            56,
+            56,
+            200,
+            200
+          ],
+          "index": 4,
+          "minimum_padding_px": 56
+        },
+        {
+          "alpha_bounds": [
+            56,
+            56,
+            200,
+            200
+          ],
+          "index": 5,
+          "minimum_padding_px": 56
+        },
+        {
+          "alpha_bounds": [
+            56,
+            56,
+            200,
+            200
+          ],
+          "index": 6,
+          "minimum_padding_px": 56
+        },
+        {
+          "alpha_bounds": [
+            56,
+            56,
+            200,
+            200
+          ],
+          "index": 7,
+          "minimum_padding_px": 56
+        },
+        {
+          "alpha_bounds": [
+            55,
+            57,
+            201,
+            199
+          ],
+          "index": 8,
+          "minimum_padding_px": 55
+        }
+      ],
+      "minimum_padding_px": 55
+    },
+    "rose": {
+      "frames": [
+        {
+          "alpha_bounds": [
+            37,
+            37,
+            219,
+            219
+          ],
+          "index": 0,
+          "minimum_padding_px": 37
+        },
+        {
+          "alpha_bounds": [
+            37,
+            37,
+            219,
+            219
+          ],
+          "index": 1,
+          "minimum_padding_px": 37
+        },
+        {
+          "alpha_bounds": [
+            36,
+            37,
+            220,
+            219
+          ],
+          "index": 2,
+          "minimum_padding_px": 36
+        },
+        {
+          "alpha_bounds": [
+            36,
+            36,
+            220,
+            220
+          ],
+          "index": 3,
+          "minimum_padding_px": 36
+        },
+        {
+          "alpha_bounds": [
+            36,
+            36,
+            220,
+            220
+          ],
+          "index": 4,
+          "minimum_padding_px": 36
+        },
+        {
+          "alpha_bounds": [
+            36,
+            36,
+            220,
+            220
+          ],
+          "index": 5,
+          "minimum_padding_px": 36
+        },
+        {
+          "alpha_bounds": [
+            36,
+            37,
+            220,
+            219
+          ],
+          "index": 6,
+          "minimum_padding_px": 36
+        },
+        {
+          "alpha_bounds": [
+            37,
+            37,
+            219,
+            219
+          ],
+          "index": 7,
+          "minimum_padding_px": 37
+        },
+        {
+          "alpha_bounds": [
+            37,
+            37,
+            219,
+            219
+          ],
+          "index": 8,
+          "minimum_padding_px": 37
+        }
+      ],
+      "minimum_padding_px": 36
+    },
+    "violet": {
+      "frames": [
+        {
+          "alpha_bounds": [
+            41,
+            31,
+            215,
+            225
+          ],
+          "index": 0,
+          "minimum_padding_px": 31
+        },
+        {
+          "alpha_bounds": [
+            41,
+            30,
+            215,
+            226
+          ],
+          "index": 1,
+          "minimum_padding_px": 30
+        },
+        {
+          "alpha_bounds": [
+            41,
+            30,
+            215,
+            226
+          ],
+          "index": 2,
+          "minimum_padding_px": 30
+        },
+        {
+          "alpha_bounds": [
+            41,
+            30,
+            215,
+            226
+          ],
+          "index": 3,
+          "minimum_padding_px": 30
+        },
+        {
+          "alpha_bounds": [
+            41,
+            30,
+            215,
+            226
+          ],
+          "index": 4,
+          "minimum_padding_px": 30
+        },
+        {
+          "alpha_bounds": [
+            41,
+            30,
+            215,
+            226
+          ],
+          "index": 5,
+          "minimum_padding_px": 30
+        },
+        {
+          "alpha_bounds": [
+            41,
+            30,
+            215,
+            226
+          ],
+          "index": 6,
+          "minimum_padding_px": 30
+        },
+        {
+          "alpha_bounds": [
+            41,
+            30,
+            215,
+            226
+          ],
+          "index": 7,
+          "minimum_padding_px": 30
+        },
+        {
+          "alpha_bounds": [
+            41,
+            31,
+            215,
+            225
+          ],
+          "index": 8,
+          "minimum_padding_px": 31
+        }
+      ],
+      "minimum_padding_px": 30
+    }
+  },
+  "limits": "Current package bytes and structural checks only. Native .blend headers do not prove Blender editability, a full render reproduction, visual quality or native game acceptance. No equality to the old mesh/alpha is required.",
+  "manifest_sha256": "bc4c53cf13f1e3a68fb1fc13ba55aa9908c13cae791a19c37cf47c161991864c",
+  "native_scene_headers_verified": 5,
+  "package": "/Users/lb/Developer/Starfall/Artwork/Crystals/v2",
+  "passed": true,
+  "provenance_kind": "new-native-recreation",
+  "schema": "starfall.crystal-package-validation.v1",
+  "source_settings": "source/scene_settings.json"
+}

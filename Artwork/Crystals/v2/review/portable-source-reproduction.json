@@ -1,0 +1,20 @@
+{
+  "schema": "starfall.crystal-portable-source-reproduction.v1",
+  "passed": true,
+  "starting_files": [
+    "source/generate_crystals.py",
+    "source/scene_settings.json"
+  ],
+  "kind": "aqua",
+  "frame": 4,
+  "samples": 512,
+  "seed": 1729,
+  "denoising": true,
+  "blender_version": "5.2.2 LTS",
+  "blender_build_hash": "d13f752e3b9c",
+  "generator_sha256": "d2d0fc6b6afdc57d6b857c4cfeaab038162d2a7bdafa107d86d1f602c0681012",
+  "settings_sha256": "013cc7caf60371460ea45549f466ba6125495d5c1ea60f6c2e9845cb8a4247a4",
+  "rgba8_exact": true,
+  "rgba8_sha256": "21b1f49be66bab4037b1ddc25d89d3d88041137430381e04c591467504c4e733",
+  "note": "Fresh directory containing only the two source files; existing scenes/PNGs were not inputs. PNG file metadata varies by time/path."
+}

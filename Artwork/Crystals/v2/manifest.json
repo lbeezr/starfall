@@ -1,0 +1,479 @@
+{
+  "schema": "starfall.crystal-package.v1",
+  "name": "Starfall crystal family",
+  "version": 2,
+  "provenance": {
+    "kind": "new-native-recreation",
+    "authorization": "User authorized recreating the missing-source assets on 2026-10-16.",
+    "authorship": "New procedural Blender geometry, materials and lighting authored for Starfall; no third-party models, textures or paid generation.",
+    "original_source_recovered": false,
+    "runtime_adopted": false
+  },
+  "kind_names": [
+    "rose",
+    "aqua",
+    "amber",
+    "violet",
+    "mint"
+  ],
+  "frame_count": 9,
+  "frame_side": 256,
+  "neutral_index": 4,
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 5440,
+      "sha256": "cbf7d41a83e1979b65dd2c3e914af36ffbb5d1fa07460abe44fd1b89cc2f5e30"
+    },
+    {
+      "path": "assets/StarshardFamilyAmber.imageset/Contents.json",
+      "bytes": 160,
+      "sha256": "157cdd5deb6903967a83dcd15760109e122b5efe5833bad493824ef279c97ecc"
+    },
+    {
+      "path": "assets/StarshardFamilyAmber.imageset/amber_tilt_atlas.png",
+      "bytes": 172296,
+      "sha256": "aaa75c7ae2784923b5b6cffa31247e8e4f463f5005b1f9c8f5acaf809c03debf"
+    },
+    {
+      "path": "assets/StarshardFamilyAqua.imageset/Contents.json",
+      "bytes": 159,
+      "sha256": "9c801dfae23819d6c0d5c3d535342c578198a01c3248acfc5cee832f603778c0"
+    },
+    {
+      "path": "assets/StarshardFamilyAqua.imageset/aqua_tilt_atlas.png",
+      "bytes": 237725,
+      "sha256": "a187d78aba3d0dc2e678ab765a23d6eb424a7991eac64c91ea9b8cad6b0f8d13"
+    },
+    {
+      "path": "assets/StarshardFamilyMint.imageset/Contents.json",
+      "bytes": 159,
+      "sha256": "142d3c2194b1cb35575484e29cd42ae5f9a39cd10f9a7bb64e38f7527e377251"
+    },
+    {
+      "path": "assets/StarshardFamilyMint.imageset/mint_tilt_atlas.png",
+      "bytes": 200107,
+      "sha256": "f40be6ac102cd73ffa946daaf62ab6f6e87f5e1ad942a743c5d8192568fdd984"
+    },
+    {
+      "path": "assets/StarshardFamilyRose.imageset/Contents.json",
+      "bytes": 159,
+      "sha256": "4f6175d194c2e1108e3825105f0504349d77a2b648d41d98c68d7166f775ec33"
+    },
+    {
+      "path": "assets/StarshardFamilyRose.imageset/rose_tilt_atlas.png",
+      "bytes": 260429,
+      "sha256": "c34e81ad124efe049ade93add918701237cbed9a476ca0e72a8f87b20c0a8879"
+    },
+    {
+      "path": "assets/StarshardFamilyViolet.imageset/Contents.json",
+      "bytes": 161,
+      "sha256": "924eefe4251d0e42ef9e22be8b01a3b7ffbd86e3ecde04242bd095cb19d19994"
+    },
+    {
+      "path": "assets/StarshardFamilyViolet.imageset/violet_tilt_atlas.png",
+      "bytes": 253186,
+      "sha256": "c0c3f1cf80eeb479041362035c0b717c6a04a35f810d848bfbd17e293c95b2c9"
+    },
+    {
+      "path": "package.py",
+      "bytes": 3127,
+      "sha256": "251cf7c6b4ee6b6723e32293c488d916868c23b6ac05aeb66755727c82d79b7c"
+    },
+    {
+      "path": "renders/frames/amber/frame_00.png",
+      "bytes": 39255,
+      "sha256": "79473d896f79f7ff861989083d2d59496333b68b166399f2df785b996e9fa4a3"
+    },
+    {
+      "path": "renders/frames/amber/frame_01.png",
+      "bytes": 39038,
+      "sha256": "637f53d0818cbaba29aa0573b342ca3a284e08d3059944f791b8095cee05e97d"
+    },
+    {
+      "path": "renders/frames/amber/frame_02.png",
+      "bytes": 38834,
+      "sha256": "c33332deb1e856f32e84af44383de85dd8f440881a5f82201407fcfab76a71e0"
+    },
+    {
+      "path": "renders/frames/amber/frame_03.png",
+      "bytes": 38926,
+      "sha256": "c6a8714e163356196cfa286541b7f2c0d422b04fe4013c79d1104016d16bff18"
+    },
+    {
+      "path": "renders/frames/amber/frame_04.png",
+      "bytes": 38975,
+      "sha256": "82a1569a3f33963856529eee684d2dacb36a6698f7aab08bdb530980766a6fe3"
+    },
+    {
+      "path": "renders/frames/amber/frame_05.png",
+      "bytes": 38699,
+      "sha256": "beefa20e6d009fdd5c7a15aac2607cf804ab44e548240ef64b07d7c4e327b649"
+    },
+    {
+      "path": "renders/frames/amber/frame_06.png",
+      "bytes": 38578,
+      "sha256": "67bece7dd20111bf07bda20452bb4c158c8f62a7c0c3b331a5628dfc03530a3d"
+    },
+    {
+      "path": "renders/frames/amber/frame_07.png",
+      "bytes": 38505,
+      "sha256": "a6d8b4e3eb5940f27d3fb8d8f03176838e6e84f177c6f72fd782a0a2e16fa2ce"
+    },
+    {
+      "path": "renders/frames/amber/frame_08.png",
+      "bytes": 38330,
+      "sha256": "1ddcad1d6d5be2236b21838a9fe2a5d978dd9f4522454014c267b42b58993c2f"
+    },
+    {
+      "path": "renders/frames/aqua/frame_00.png",
+      "bytes": 47672,
+      "sha256": "30d897d7322e0864e3bd7c451ed9be8abad05ff8c5845a2311e9c481a5d8ef5c"
+    },
+    {
+      "path": "renders/frames/aqua/frame_01.png",
+      "bytes": 46921,
+      "sha256": "6c2a272dffbcac2091555a6da174451373080d062f52811169ccdbe55fd49559"
+    },
+    {
+      "path": "renders/frames/aqua/frame_02.png",
+      "bytes": 46456,
+      "sha256": "e31aaeb7075661fcd10d6786f79fb212bce11a4b0963e5b00a6c1ccced0f7a62"
+    },
+    {
+      "path": "renders/frames/aqua/frame_03.png",
+      "bytes": 46332,
+      "sha256": "fe2c4716d48c538652c10344b5af7c156254893cedbab993c8c1806631d58d8c"
+    },
+    {
+      "path": "renders/frames/aqua/frame_04.png",
+      "bytes": 46305,
+      "sha256": "e62d0dc4baa494428793d56ee7bdf04c308163a34c84ff433e7ee27451ba22c1"
+    },
+    {
+      "path": "renders/frames/aqua/frame_05.png",
+      "bytes": 46309,
+      "sha256": "0d5c4c0f38cbe988b65df25d03b8ab2760ca5ad465962709e38825a4bd8ffd2f"
+    },
+    {
+      "path": "renders/frames/aqua/frame_06.png",
+      "bytes": 46494,
+      "sha256": "ef5d3acbaa604f9ac16b482c88a7e7ceea2b0d085ffac37ed100ae0411c21e40"
+    },
+    {
+      "path": "renders/frames/aqua/frame_07.png",
+      "bytes": 46563,
+      "sha256": "913c5cd3935fa394959646b15e303df6475f0858d32115628d98a22eb275c985"
+    },
+    {
+      "path": "renders/frames/aqua/frame_08.png",
+      "bytes": 46501,
+      "sha256": "a78d5fa6d733076fda7880ae1b92cbd052224f2d4147d2dd8704b8f283089ca0"
+    },
+    {
+      "path": "renders/frames/mint/frame_00.png",
+      "bytes": 43070,
+      "sha256": "a7e49e05a248fc8a784758755fb08b939a7a96ea77610d9f39d56f7c92e59b94"
+    },
+    {
+      "path": "renders/frames/mint/frame_01.png",
+      "bytes": 43209,
+      "sha256": "e2c0415f971b245cd69141f69b557277c1cfabf4bdfe98074083f2003e8fd21e"
+    },
+    {
+      "path": "renders/frames/mint/frame_02.png",
+      "bytes": 42642,
+      "sha256": "b073774969ac519b2f3db28f5da00211fa187951355fe40762cb7fe4ff1751f0"
+    },
+    {
+      "path": "renders/frames/mint/frame_03.png",
+      "bytes": 42337,
+      "sha256": "b56b4a6494272bbc24e39f87674318bf716d98643ab51cc15e923e0e6c44fe2c"
+    },
+    {
+      "path": "renders/frames/mint/frame_04.png",
+      "bytes": 42137,
+      "sha256": "425edc4f7d9d16bdd03d172b9a4b35ad247b007991eb434c068a517569ba95fa"
+    },
+    {
+      "path": "renders/frames/mint/frame_05.png",
+      "bytes": 42260,
+      "sha256": "ba0ab8e6185855e27825b0d0db25c4b8cad5adbb272c896662250f1b634545fe"
+    },
+    {
+      "path": "renders/frames/mint/frame_06.png",
+      "bytes": 41875,
+      "sha256": "f116574cb036608d42ac763f9ad34c0732636f9d3b53e0c6d576c18cf6b20171"
+    },
+    {
+      "path": "renders/frames/mint/frame_07.png",
+      "bytes": 42529,
+      "sha256": "122733ea93701c3209d1e7bf788831caa1b511e2f626247d4f89c288901f00c1"
+    },
+    {
+      "path": "renders/frames/mint/frame_08.png",
+      "bytes": 42209,
+      "sha256": "6a5f4e9cbf558988986cb18b59984e3285835cc64cb1ea9e9274f806de3aaafb"
+    },
+    {
+      "path": "renders/frames/rose/frame_00.png",
+      "bytes": 50048,
+      "sha256": "099353781f700923a7190dc189c31d1610a2d7fb0ef9b93e1f49c58d43cfdb01"
+    },
+    {
+      "path": "renders/frames/rose/frame_01.png",
+      "bytes": 50524,
+      "sha256": "9616196feb220b57ebd276bb12ca34b0c0c0d5aa14210c0ca17502940d8cec8f"
+    },
+    {
+      "path": "renders/frames/rose/frame_02.png",
+      "bytes": 51111,
+      "sha256": "bf62502f3ae871756c662940bb52574d692625d7bd304d9a75c1e21ad63e956f"
+    },
+    {
+      "path": "renders/frames/rose/frame_03.png",
+      "bytes": 50539,
+      "sha256": "994e1f4151075470f9365211befbb9dbcafe3e910a6909561017fd2ffc2921e2"
+    },
+    {
+      "path": "renders/frames/rose/frame_04.png",
+      "bytes": 50878,
+      "sha256": "dae88bb063e4f720112a7a41a245a48c09210a73a0bc7678d3adf968496c5aa8"
+    },
+    {
+      "path": "renders/frames/rose/frame_05.png",
+      "bytes": 50779,
+      "sha256": "310768f1c0a9581c472eee0943b4ab32b1db39dbeccf4b709d777aa377adc7c6"
+    },
+    {
+      "path": "renders/frames/rose/frame_06.png",
+      "bytes": 50237,
+      "sha256": "f8d33d959a115cd0208bf109eae30792cd5bf7e2d1f3f4f4f49ebd6ce497eaba"
+    },
+    {
+      "path": "renders/frames/rose/frame_07.png",
+      "bytes": 49845,
+      "sha256": "a7cf7c8e76e6d1bc253143032a538e067120b78b686f12c90d18e8335fd56e23"
+    },
+    {
+      "path": "renders/frames/rose/frame_08.png",
+      "bytes": 49437,
+      "sha256": "21ad7fa4844fe64db0ed84cafd91c4f4a866b8a1d3b6d0371d54ccc5a4f02be0"
+    },
+    {
+      "path": "renders/frames/violet/frame_00.png",
+      "bytes": 49356,
+      "sha256": "7ba88a5aa5631dc1775587e53ff766264a8e37936b0ec2cb72faec3c04d58593"
+    },
+    {
+      "path": "renders/frames/violet/frame_01.png",
+      "bytes": 50106,
+      "sha256": "29865d8e0012ee201397ae19a8b5df996d3c1211bf36f50eb429bf6920a21866"
+    },
+    {
+      "path": "renders/frames/violet/frame_02.png",
+      "bytes": 50083,
+      "sha256": "e28728f48b925246e1838180292ba8ed4a68e804c91d07cebe61de025aa99679"
+    },
+    {
+      "path": "renders/frames/violet/frame_03.png",
+      "bytes": 50057,
+      "sha256": "455b547bb2b52c360e4b0029562e03403c751610c7f18bc884d2d9bb706d4269"
+    },
+    {
+      "path": "renders/frames/violet/frame_04.png",
+      "bytes": 49859,
+      "sha256": "102a3f890631ce4536c403a4b59ea7482c3a610906a60b65c855935f5988d889"
+    },
+    {
+      "path": "renders/frames/violet/frame_05.png",
+      "bytes": 49900,
+      "sha256": "e7c442c57055c9d45093740f04244d6ed4695e02bcc7f086f2a3830311667d6c"
+    },
+    {
+      "path": "renders/frames/violet/frame_06.png",
+      "bytes": 49683,
+      "sha256": "630bbed8c5fa9942a8919b7a441ce9734f73b05377bcea6ce900feafe72be86f"
+    },
+    {
+      "path": "renders/frames/violet/frame_07.png",
+      "bytes": 49281,
+      "sha256": "7e3ae9095157c4aaf6475b0c244cb696059d564a44ff740f7a12dddbfb91e5c9"
+    },
+    {
+      "path": "renders/frames/violet/frame_08.png",
+      "bytes": 48667,
+      "sha256": "79897c19f8f036e80ef37e2ed03c4809eb7426358976e7a7ffa2115680bffb4c"
+    },
+    {
+      "path": "renders/metadata/amber.json",
+      "bytes": 5870,
+      "sha256": "11ca2a3213ef6d523fec9551738601c4847f678b204197189fefbce4b2978889"
+    },
+    {
+      "path": "renders/metadata/aqua.json",
+      "bytes": 5859,
+      "sha256": "97924399797cfc962f789ca4b9d99e5dd9a1e911f0d7b74a96d33172a0df449b"
+    },
+    {
+      "path": "renders/metadata/mint.json",
+      "bytes": 5859,
+      "sha256": "e50527142583e7459aba57e53d0c0cce4ef2edb8c2356637452a6f164483fc74"
+    },
+    {
+      "path": "renders/metadata/rose.json",
+      "bytes": 5860,
+      "sha256": "a0ca03b3544e88740a4059b29565ee9d641d36a33b833c9de8f3a3d5350c9871"
+    },
+    {
+      "path": "renders/metadata/violet.json",
+      "bytes": 5881,
+      "sha256": "f294243aa7f51dd081af65643bd5f9089a964133955da9a5ccccf642401a8773"
+    },
+    {
+      "path": "renders/scenes/amber.blend",
+      "bytes": 554775,
+      "sha256": "abb1464e08fb5bd9c0d1d3554d08b4a4d4bd0e14e8a20441f1a72e8facc1d1fc"
+    },
+    {
+      "path": "renders/scenes/aqua.blend",
+      "bytes": 555117,
+      "sha256": "b599564fac3823fa147d7520327b17c006f778c1c67c22daa47294057a452664"
+    },
+    {
+      "path": "renders/scenes/mint.blend",
+      "bytes": 555117,
+      "sha256": "f51b5538327e7403c72c878d41cef3506ce69727599fb2e408708e8bceb47e1d"
+    },
+    {
+      "path": "renders/scenes/rose.blend",
+      "bytes": 561957,
+      "sha256": "152790fb20806b63e02c2d9a2fad7f844a145cf1c4969065f1223c90d107f87c"
+    },
+    {
+      "path": "renders/scenes/violet.blend",
+      "bytes": 555801,
+      "sha256": "a1240ca81510089f9aa7a0d3a8d0f3d211e21c471156de0ebdcb60dcf1ccf647"
+    },
+    {
+      "path": "review/REVIEW.md",
+      "bytes": 4410,
+      "sha256": "4b8be86fa7af4134f0b430d16010242f73d1e7f58cd83e04141dca17e07a8e65"
+    },
+    {
+      "path": "review/comparison/all-frames-paired.png",
+      "bytes": 881719,
+      "sha256": "4ca7f00b233490d6119fe30395453d44222606ed82f26f39476acfe994466731"
+    },
+    {
+      "path": "review/comparison/board-frame-1-paired.png",
+      "bytes": 945310,
+      "sha256": "dd51e80f9626f655c7fc0f66baf689e1bad773e8df413e08083a48fe5194c8be"
+    },
+    {
+      "path": "review/comparison/board-frame-4-paired.png",
+      "bytes": 949850,
+      "sha256": "4ec7734fe45609104d2b5e91b285ff9221afe745de311f504321e84973059ca5"
+    },
+    {
+      "path": "review/comparison/manifest.json",
+      "bytes": 523,
+      "sha256": "ee2f5dacad2ab0ac67a98e52af6bf07f553bf3dae54239d80c18021153a2b501"
+    },
+    {
+      "path": "review/comparison/neutral-paired.png",
+      "bytes": 409616,
+      "sha256": "20b9547d5481ec4418650f732e9095c5690720417a465804ff9b8dd31c612801"
+    },
+    {
+      "path": "review/comparison/report.json",
+      "bytes": 142762,
+      "sha256": "334d47da04861358b03ed1000d50f698d526809d29cdb59af4d00d56769b29b4"
+    },
+    {
+      "path": "review/current/board-review.png",
+      "bytes": 657202,
+      "sha256": "0767afb0c8c0099338f330d0a8b8d0203784bbd981c6d6b06f559ad30151880b"
+    },
+    {
+      "path": "review/current/geometry-review.png",
+      "bytes": 135066,
+      "sha256": "8390d3f210016fb613aca83a73d527c77bcec3a09f44e5bf3798d056719703ec"
+    },
+    {
+      "path": "review/current/neutral-review.png",
+      "bytes": 205710,
+      "sha256": "d4761561c87f1320e12420cc498cd9df57c1c16ee18e10fe16531913ef5a3626"
+    },
+    {
+      "path": "review/current/report.json",
+      "bytes": 44084,
+      "sha256": "4cc659e9a56471c549ad39b7168f631c7dbde28b937c6011c7bc43c300907f71"
+    },
+    {
+      "path": "review/current/tilt-review.png",
+      "bytes": 397392,
+      "sha256": "12cf50f40882fcda01cac0346ba6f2a3071252d9eb6abe9ae3733f272e5aa65d"
+    },
+    {
+      "path": "review/family-preview.png",
+      "bytes": 133573,
+      "sha256": "51283e140be498fda0d71a35ed58a7f311f2e1285d9b5e2eec18e2c15628a00f"
+    },
+    {
+      "path": "review/native-reproduction.json",
+      "bytes": 9649,
+      "sha256": "dddd2d18e7775efe2f6081fce2e76a6fa57ace6d990a0a2147b0dd12f091ef1b"
+    },
+    {
+      "path": "review/portable-source-reproduction.json",
+      "bytes": 773,
+      "sha256": "99f4f128e7f137e52dde93eaefc8b2376ce794bd597fd769f2e7dd14d43a2fb5"
+    },
+    {
+      "path": "review/sampling-control/aqua_16_samples_no_denoise_01.png",
+      "bytes": 68984,
+      "sha256": "66ee4b40ad04cccc59de53bff1ce68362d78d576323d45cca7e365810f4fdc62"
+    },
+    {
+      "path": "review/sampling-control/aqua_16_samples_no_denoise_04.png",
+      "bytes": 68113,
+      "sha256": "ab197f82f5c539c5da5fd2a183a26fd9143cf56d4000bd938817602b1cd5c4e6"
+    },
+    {
+      "path": "review/sampling-control/comparison.png",
+      "bytes": 170665,
+      "sha256": "46fa266167c2a2743c610b5212bc6a41320d602080cf2bd6d4ff16c876131afa"
+    },
+    {
+      "path": "review/sampling-control/report.json",
+      "bytes": 2009,
+      "sha256": "7ca40e2de460a4eb925bf8e1b2e22e07acb49ceb907a89414a0e297b9b3f6921"
+    },
+    {
+      "path": "source/generate_crystals.py",
+      "bytes": 13499,
+      "sha256": "d2d0fc6b6afdc57d6b857c4cfeaab038162d2a7bdafa107d86d1f602c0681012"
+    },
+    {
+      "path": "source/scene_settings.json",
+      "bytes": 2354,
+      "sha256": "013cc7caf60371460ea45549f466ba6125495d5c1ea60f6c2e9845cb8a4247a4"
+    },
+    {
+      "path": "test_validate_package.py",
+      "bytes": 12506,
+      "sha256": "1d34a6fedca2fd3bb8a15841a1a4f3753dd549d6a68ad04b13ff35c197a6dc5c"
+    },
+    {
+      "path": "validate_package.py",
+      "bytes": 12291,
+      "sha256": "3c1f3714df5beec6a61ba64ada5973cd33c78827a2dbd696f294eab13af7b61a"
+    },
+    {
+      "path": "verify_scenes.py",
+      "bytes": 5498,
+      "sha256": "6587c901b9fcd74a06950f3917038c9b315c284a17e4a16e5c2d9ac4e05eb560"
+    }
+  ]
+}

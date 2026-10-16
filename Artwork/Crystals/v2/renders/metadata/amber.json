@@ -1,0 +1,265 @@
+{
+  "schema": "starfall.crystal-v2-render.v1",
+  "kind": "amber",
+  "authorship": "New editable 3D geometry authored from visual references; not recovered original source.",
+  "blender_version": "5.2.2 LTS",
+  "blender_build_hash": "d13f752e3b9c",
+  "generator_sha256": "d2d0fc6b6afdc57d6b857c4cfeaab038162d2a7bdafa107d86d1f602c0681012",
+  "settings_sha256": "013cc7caf60371460ea45549f466ba6125495d5c1ea60f6c2e9845cb8a4247a4",
+  "seed": 1729,
+  "samples": 512,
+  "denoising": true,
+  "settings": {
+    "schema": "starfall.crystal-v2-scene.v1",
+    "authorship": "New editable 3D geometry authored from visual references; not recovered original source.",
+    "contract": {
+      "frame_side_px": 256,
+      "frame_count": 9,
+      "neutral_index": 4,
+      "pivot_raster_px": [
+        128,
+        128
+      ]
+    },
+    "camera": {
+      "position": [
+        0,
+        0,
+        8
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "ortho_scale": 2.56
+    },
+    "geometry": {
+      "rings": [
+        {
+          "scale": 0.78,
+          "z": -0.16
+        },
+        {
+          "scale": 1.0,
+          "z": 0.0
+        },
+        {
+          "scale": 0.5,
+          "z": 0.2
+        }
+      ],
+      "flat_faces": true,
+      "kinds": {
+        "rose": {
+          "sides": 48,
+          "radius": 0.905,
+          "angle_degrees": 90,
+          "corner_cut": 0.0,
+          "color_srgb": "#FF5999"
+        },
+        "aqua": {
+          "sides": 4,
+          "radius": 1.02,
+          "angle_degrees": 90,
+          "corner_cut": 0.1273,
+          "color_srgb": "#47D9FF"
+        },
+        "amber": {
+          "sides": 3,
+          "radius": 1.02,
+          "angle_degrees": 90,
+          "corner_cut": 0.14,
+          "color_srgb": "#FFC247"
+        },
+        "violet": {
+          "sides": 6,
+          "radius": 0.99,
+          "angle_degrees": 90,
+          "corner_cut": 0.04,
+          "color_srgb": "#B37DFF"
+        },
+        "mint": {
+          "sides": 4,
+          "radius": 1.0040916293,
+          "angle_degrees": 45,
+          "corner_cut": 0.07,
+          "color_srgb": "#59FFB8"
+        }
+      }
+    },
+    "poses": {
+      "x_degrees": [
+        -8,
+        -6,
+        -4,
+        -2,
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "y_degrees": [
+        -5,
+        -3.75,
+        -2.5,
+        -1.25,
+        0,
+        1.25,
+        2.5,
+        3.75,
+        5
+      ],
+      "z_degrees": 0,
+      "pivot_world": [
+        0,
+        0,
+        0
+      ]
+    },
+    "material": {
+      "roughness": 0.055,
+      "metallic": 0.04,
+      "ior": 1.46,
+      "specular_ior_level": 0.3,
+      "transmission_weight": 0.08,
+      "coat_weight": 0.2,
+      "coat_roughness": 0.04,
+      "coat_tint_fraction": 0.18
+    },
+    "lighting": {
+      "world_strength": 0.18,
+      "key": {
+        "position": [
+          0.05,
+          0.1,
+          4
+        ],
+        "energy": 65,
+        "width": 0.2,
+        "height": 3.2,
+        "rotation_z_degrees": 35,
+        "tint_fraction": 0.03
+      },
+      "fill": {
+        "position": [
+          -3,
+          4,
+          5
+        ],
+        "energy": 90,
+        "width": 4.0,
+        "height": 4.0,
+        "color": [
+          0.88,
+          0.94,
+          1.0
+        ]
+      },
+      "rim": {
+        "position": [
+          3,
+          -2,
+          4
+        ],
+        "energy": 70,
+        "width": 2.0,
+        "height": 3.0,
+        "color": [
+          0.84,
+          0.91,
+          1.0
+        ]
+      }
+    },
+    "render": {
+      "engine": "CYCLES",
+      "device": "CPU",
+      "seed": 1729,
+      "threads": 4,
+      "pilot_samples": 128,
+      "final_samples": 512,
+      "denoising": true,
+      "denoiser": "OPENIMAGEDENOISE",
+      "adaptive_sampling": false,
+      "pixel_filter_width": 1.5,
+      "max_bounces": 8,
+      "diffuse_bounces": 4,
+      "glossy_bounces": 4,
+      "transmission_bounces": 6,
+      "view_transform": "Standard",
+      "look": "None",
+      "exposure": 0,
+      "gamma": 1,
+      "film_transparent": true,
+      "color_mode": "RGBA",
+      "color_depth": "8"
+    }
+  },
+  "mesh_vertices": 18,
+  "mesh_faces": 14,
+  "blend": {
+    "path": "scenes/amber.blend",
+    "sha256": "abb1464e08fb5bd9c0d1d3554d08b4a4d4bd0e14e8a20441f1a72e8facc1d1fc"
+  },
+  "requested_frames": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "frames": [
+    {
+      "index": 0,
+      "path": "frames/amber/frame_00.png",
+      "sha256": "79473d896f79f7ff861989083d2d59496333b68b166399f2df785b996e9fa4a3"
+    },
+    {
+      "index": 1,
+      "path": "frames/amber/frame_01.png",
+      "sha256": "637f53d0818cbaba29aa0573b342ca3a284e08d3059944f791b8095cee05e97d"
+    },
+    {
+      "index": 2,
+      "path": "frames/amber/frame_02.png",
+      "sha256": "c33332deb1e856f32e84af44383de85dd8f440881a5f82201407fcfab76a71e0"
+    },
+    {
+      "index": 3,
+      "path": "frames/amber/frame_03.png",
+      "sha256": "c6a8714e163356196cfa286541b7f2c0d422b04fe4013c79d1104016d16bff18"
+    },
+    {
+      "index": 4,
+      "path": "frames/amber/frame_04.png",
+      "sha256": "82a1569a3f33963856529eee684d2dacb36a6698f7aab08bdb530980766a6fe3"
+    },
+    {
+      "index": 5,
+      "path": "frames/amber/frame_05.png",
+      "sha256": "beefa20e6d009fdd5c7a15aac2607cf804ab44e548240ef64b07d7c4e327b649"
+    },
+    {
+      "index": 6,
+      "path": "frames/amber/frame_06.png",
+      "sha256": "67bece7dd20111bf07bda20452bb4c158c8f62a7c0c3b331a5628dfc03530a3d"
+    },
+    {
+      "index": 7,
+      "path": "frames/amber/frame_07.png",
+      "sha256": "a6d8b4e3eb5940f27d3fb8d8f03176838e6e84f177c6f72fd782a0a2e16fa2ce"
+    },
+    {
+      "index": 8,
+      "path": "frames/amber/frame_08.png",
+      "sha256": "1ddcad1d6d5be2236b21838a9fe2a5d978dd9f4522454014c267b42b58993c2f"
+    }
+  ],
+  "complete": true
+}

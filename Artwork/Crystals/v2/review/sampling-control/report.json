@@ -1,0 +1,52 @@
+{
+  "schema": "starfall.crystal-sampling-review.v1",
+  "same_geometry_and_lighting": true,
+  "generator_sha256": "d2d0fc6b6afdc57d6b857c4cfeaab038162d2a7bdafa107d86d1f602c0681012",
+  "settings_sha256": "013cc7caf60371460ea45549f466ba6125495d5c1ea60f6c2e9845cb8a4247a4",
+  "seed": 1729,
+  "control": {
+    "samples": 16,
+    "denoising": false
+  },
+  "final": {
+    "samples": 512,
+    "denoising": true
+  },
+  "limits": "Advisory neighbor-luma residual also responds to facets and highlight edges. Read alongside actual pixels. This control holds geometry, light, material, pose and seed fixed; sample count and denoising change together.",
+  "frames": [
+    {
+      "index": 4,
+      "control_file": "aqua_16_samples_no_denoise_04.png",
+      "control_file_sha256": "ab197f82f5c539c5da5fd2a183a26fd9143cf56d4000bd938817602b1cd5c4e6",
+      "final_file": "renders/frames/aqua/frame_04.png",
+      "final_file_sha256": "e62d0dc4baa494428793d56ee7bdf04c308163a34c84ff433e7ee27451ba22c1",
+      "control_grain_proxy": {
+        "samples": 19559,
+        "mean_abs_encoded_luma_residual": 0.026213,
+        "p90_abs_encoded_luma_residual": 0.0582245
+      },
+      "final_grain_proxy": {
+        "samples": 19512,
+        "mean_abs_encoded_luma_residual": 0.0022584,
+        "p90_abs_encoded_luma_residual": 0.0038508
+      }
+    },
+    {
+      "index": 1,
+      "control_file": "aqua_16_samples_no_denoise_01.png",
+      "control_file_sha256": "66ee4b40ad04cccc59de53bff1ce68362d78d576323d45cca7e365810f4fdc62",
+      "final_file": "renders/frames/aqua/frame_01.png",
+      "final_file_sha256": "6c2a272dffbcac2091555a6da174451373080d062f52811169ccdbe55fd49559",
+      "control_grain_proxy": {
+        "samples": 19442,
+        "mean_abs_encoded_luma_residual": 0.0292339,
+        "p90_abs_encoded_luma_residual": 0.0755976
+      },
+      "final_grain_proxy": {
+        "samples": 19445,
+        "mean_abs_encoded_luma_residual": 0.0023655,
+        "p90_abs_encoded_luma_residual": 0.0039739
+      }
+    }
+  ]
+}

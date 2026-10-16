@@ -15,6 +15,10 @@ from PIL import Image
 
 KINDS = ("rose", "aqua", "amber", "violet", "mint")
 COUNT, SIDE, NEUTRAL = 9, 256, 4
+# This exact 17-byte header was observed in the delivered Blender 5.2.2 files,
+# independently reopened and re-rendered by verify_scenes.py. Do not infer a
+# broader new-format grammar from it; file headers alone do not prove validity.
+BLENDER_522_HEADER = b"BLENDER17-01v0502"
 
 
 def require(condition, message):
@@ -126,7 +130,9 @@ def validate(root):
         for kind in KINDS:
             scene_path = f"renders/scenes/{kind}.blend"
             scene = file(scene_path)
-            require(len(scene) > 12 and re.fullmatch(rb"BLENDER[_-][vV][0-9]{3}", scene[:12]),
+            legacy_header = len(scene) > 12 and re.fullmatch(rb"BLENDER[_-][vV][0-9]{3}", scene[:12])
+            observed_522_header = len(scene) > len(BLENDER_522_HEADER) and scene.startswith(BLENDER_522_HEADER)
+            require(legacy_header or observed_522_header,
                     f"{scene_path}: expected an uncompressed native Blender header")
             report["native_scene_headers_verified"] += 1
             metadata_path = f"renders/metadata/{kind}.json"
