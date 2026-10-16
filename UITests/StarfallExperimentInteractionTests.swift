@@ -34,7 +34,8 @@ final class StarfallExperimentInteractionTests: XCTestCase {
         XCTAssertEqual(showers(app), 0)
         XCTAssertEqual(app.staticTexts["experiment.score"].label, "0 starlight")
         let initialPreview = app.descendants(matching: .any)["experiment.incoming.0"].firstMatch.label
-        XCTAssertTrue(initialPreview.contains("column"))
+        XCTAssertFalse(initialPreview.contains("column"))
+        XCTAssertFalse(initialPreview.isEmpty)
         capture(app, "automatic-empty-preview")
         app.buttons["experiment.pause"].tap()
         waitForShowers(2, in: app)
@@ -105,6 +106,42 @@ final class StarfallExperimentInteractionTests: XCTestCase {
         reveal(newSky, in: app); newSky.tap()
         XCTAssertEqual(showers(app), 0)
         XCTAssertEqual(app.buttons["experiment.pause"].label, "Start sky")
+    }
+
+    @MainActor func testDarkStarInfluenceRestoreAndAdjacentClear() {
+        let app = launch(); defer { app.terminate() }
+        app.buttons["experiment.settings"].tap()
+        let calm = app.switches["experiment.calm"]
+        XCTAssertTrue(calm.waitForExistence(timeout: 5))
+        if calm.value as? String == "1" { calm.tap() }
+        app.buttons["experiment.done"].tap()
+        app.buttons["experiment.pause"].tap()
+        waitForShowers(6, in: app, timeout: 35)
+        app.buttons["experiment.pause"].tap()
+        let dark = app.buttons["experiment.cell.1.1"]
+        let beside = app.buttons["experiment.cell.0.1"]
+        XCTAssertTrue(dark.label.hasPrefix("Dark star"))
+        XCTAssertTrue(beside.label.contains("growth blocked by a dark star"))
+        XCTAssertEqual(beside.value as? String, "3 starlight connected")
+        XCTAssertTrue(app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Large ")).count > 0)
+        for star in app.descendants(matching: .any).matching(NSPredicate(format: "identifier BEGINSWITH %@", "experiment.incoming.")).allElementsBoundByIndex {
+            XCTAssertFalse(star.label.contains("column"))
+        }
+        capture(app, "dark-star-and-shaded-neighbors")
+        app.terminate()
+        app.launchArguments = ["--starfalls"]
+        app.launch()
+        XCTAssertTrue(app.buttons["experiment.pause"].waitForExistence(timeout: 10))
+        XCTAssertEqual(app.buttons["experiment.pause"].label, "Resume sky")
+        XCTAssertTrue(dark.label.hasPrefix("Dark star"))
+        XCTAssertTrue(beside.label.contains("growth blocked by a dark star"))
+        app.buttons["experiment.pause"].tap()
+        beside.tap()
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "3 starlight"), object: app.staticTexts["experiment.score"]).wait(timeout: 3))
+        app.buttons["experiment.pause"].tap()
+        XCTAssertFalse(dark.label.hasPrefix("Dark star"))
+        XCTAssertEqual(app.buttons.matching(NSPredicate(format: "label CONTAINS %@", "growth blocked by a dark star")).count, 0)
+        capture(app, "dark-star-dissolved-by-adjacent-clear")
     }
 }
 

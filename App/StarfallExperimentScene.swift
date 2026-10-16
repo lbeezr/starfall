@@ -33,15 +33,29 @@ import StarfallCore
     }
 
     private func makeNode(_ gem: StarfallGem) -> SKNode {
-        let node = JewelScene.makeBaseJewel(gem.kind, radius: step * (gem.grown ? 0.42 : 0.32))
-        if gem.grown {
-            let value = SKLabelNode(text: "2")
-            value.fontName = "AvenirNext-DemiBold"; value.fontSize = max(12, step * 0.25)
-            value.fontColor = .white
-            value.position = CGPoint(x: step * 0.29, y: -step * 0.37)
-            node.addChild(value)
+        if let kind = gem.kind {
+            return JewelScene.makeBaseJewel(kind, radius: step * (gem.grown ? 0.42 : 0.32))
         }
+        let node = SKNode()
+        node.name = "dark-star"
+        let corona = SKShapeNode(circleOfRadius: step * 0.36)
+        corona.strokeColor = .systemPurple.withAlphaComponent(0.8)
+        corona.lineWidth = 1.5; corona.glowWidth = 4
+        let core = SKShapeNode(circleOfRadius: step * 0.28)
+        core.fillColor = UIColor(red: 0.06, green: 0.03, blue: 0.12, alpha: 1)
+        core.strokeColor = .white.withAlphaComponent(0.55)
+        core.lineWidth = 1
+        node.addChild(corona); node.addChild(core)
         return node
+    }
+
+    private func shade(_ node: SKNode, at cell: Cell) {
+        node.alpha = 0.65
+        let ring = SKShapeNode(circleOfRadius: step * 0.45)
+        ring.position = point(cell)
+        ring.strokeColor = .systemPurple.withAlphaComponent(0.45)
+        ring.lineWidth = 1; ring.fillColor = .clear
+        grid.addChild(ring)
     }
 
     func render(_ game: StarfallExperiment) {
@@ -56,17 +70,10 @@ import StarfallCore
             square.lineWidth = 1; square.position = point(cell); grid.addChild(square)
             if let gem = game.gem(at: cell) {
                 let node = makeNode(gem); node.position = point(cell)
+                if game.isGrowthBlocked(at: cell) { shade(node, at: cell) }
                 pieces.addChild(node); nodes[gem.id] = node
             }
         } }
-        if !game.isOver {
-            for column in Set(game.incoming.map(\.column)) {
-                let marker = SKShapeNode(rectOf: CGSize(width: step * 0.94, height: step * 7), cornerRadius: 6)
-                marker.position = CGPoint(x: point(Cell(3, column)).x, y: size.height/2)
-                marker.strokeColor = .white.withAlphaComponent(0.35); marker.lineWidth = 1
-                marker.fillColor = .clear; grid.addChild(marker)
-            }
-        }
     }
 
     func animate(_ turn: StarfallExperimentTurn, from old: StarfallExperiment,
@@ -110,7 +117,7 @@ import StarfallCore
 
     private func sendStar(_ arrival: StarfallExperimentTurn.Arrival) {
         let comet = SKNode()
-        let color = arrival.star.kind.color
+        let color = arrival.star.kind?.color ?? .systemPurple
         // A bounded handful of shapes per star, with no emitters or accumulating particles.
         let tailPath = CGMutablePath()
         tailPath.move(to: CGPoint(x: -step * 0.13, y: 0))
@@ -125,10 +132,14 @@ import StarfallCore
         halo.fillColor = color.withAlphaComponent(0.3); halo.strokeColor = color.withAlphaComponent(0.5)
         halo.glowWidth = 9
         comet.addChild(halo)
-        let star = SKLabelNode(text: "✦")
-        star.fontSize = step * 0.55; star.fontColor = .white
-        star.verticalAlignmentMode = .center
-        comet.addChild(star)
+        if arrival.star.isDark {
+            comet.addChild(makeNode(arrival.gem))
+        } else {
+            let star = SKLabelNode(text: "✦")
+            star.fontSize = step * 0.55; star.fontColor = .white
+            star.verticalAlignmentMode = .center
+            comet.addChild(star)
+        }
         comet.position = CGPoint(x: point(arrival.cell).x, y: size.height + step)
         effects.addChild(comet)
         let fall = SKAction.move(to: point(arrival.cell), duration: 0.72)
@@ -145,7 +156,7 @@ import StarfallCore
         node.run(.sequence([.scale(to: 1.10, duration: 0.12), .scale(to: 1, duration: 0.16)]))
         let ring = SKShapeNode(circleOfRadius: step * (arrival.grew ? 0.42 : 0.28))
         ring.position = node.position
-        ring.strokeColor = arrival.star.kind.color.withAlphaComponent(0.85)
+        ring.strokeColor = (arrival.star.kind?.color ?? .systemPurple).withAlphaComponent(0.85)
         ring.lineWidth = 1.5; ring.glowWidth = 2
         effects.addChild(ring)
         ring.run(.sequence([.group([.scale(to: 1.7, duration: 0.28), .fadeOut(withDuration: 0.28)]), .removeFromParent()]))

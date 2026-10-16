@@ -36,7 +36,7 @@ import StarfallCore
 
 @MainActor @Observable final class StarfallExperimentStore {
     static let showerInterval: TimeInterval = 4
-    static let saveKey = "starfall.accumulation.v2"
+    static let saveKey = "starfall.accumulation.v3"
     private(set) var game: StarfallExperiment
     private(set) var busy = false
     private(set) var suspended = true
@@ -84,7 +84,9 @@ import StarfallCore
         guard canClear else { return }
         let old = game
         guard let turn = game.clear(cell) else {
-            message = "Match jewels worth 3 or more. Large jewels count as 2."
+            message = game.gem(at: cell)?.isDark == true
+                ? "Clear a matching group beside the dark star to dissolve it."
+                : "Match jewels worth 3 or more. Large jewels count as 2."
             announce(message)
             return
         }
@@ -142,10 +144,13 @@ import StarfallCore
         let ticket = generation
         busy = true; pending = turn
         let growth = turn.arrivals.filter(\.grew).count
-        if let column = turn.blockedColumn {
-            message = "Column \(column + 1) could not fit the next star. \(game.score) starlight collected."
+        let dissolved = turn.cleared.filter { old.gem(at: $0)?.isDark == true }.count
+        if turn.blockedColumn != nil {
+            message = "There was no room for the next star. \(game.score) starlight collected."
         } else if turn.collected > 0 {
-            message = "+\(turn.collected) starlight. A little more room to breathe."
+            message = "+\(turn.collected) starlight. " + (dissolved > 0 ? "\(dissolved == 1 ? "Dark star dissolved" : "Dark stars dissolved")." : "A little more room to breathe.")
+        } else if turn.arrivals.contains(where: { $0.gem.isDark }) {
+            message = "A dark star blocks nearby growth. Clear beside it to dissolve it."
         } else if growth > 0 {
             message = "\(growth == 1 ? "A jewel grew" : "\(growth) jewels grew") — worth 2 when cleared."
         } else {

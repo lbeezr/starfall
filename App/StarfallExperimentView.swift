@@ -62,7 +62,7 @@ import StarfallCore
                             .accessibilityIdentifier("experiment.new")
                     }
                     .buttonStyle(StarfallButtonStyle(role: .quiet))
-                    Text("Clear matching jewels worth 3+. Large jewels count as 2. Stars fall every four seconds. Pause whenever you like.")
+                    Text("Clear matching jewels worth 3+. Large jewels count as 2. Dark stars stop nearby growth; clear beside one to dissolve it.")
                         .font(StarfallTheme.Typography.supporting)
                         .foregroundStyle(StarfallTheme.Colors.textSecondary)
                         .multilineTextAlignment(.center).fixedSize(horizontal: false, vertical: true)
@@ -89,7 +89,7 @@ import StarfallCore
     private var forecast: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
-                Text(store.game.isOver ? "Replay to try another approach" : "\(store.forecast.count) incoming · left to right")
+                Text(store.game.isOver ? "Replay to try another approach" : "\(store.forecast.count) incoming")
                 Spacer(minLength: 4)
                 if !store.game.isOver {
                     ShowerCountdown(deadline: store.nextShowerDate,
@@ -101,13 +101,17 @@ import StarfallCore
             if !store.game.isOver {
                 HStack(spacing: 8) {
                     ForEach(store.forecast) { star in
-                        VStack(spacing: 2) {
-                            Text(star.kind.symbol).font(.title2).foregroundStyle(Color(star.kind.color))
-                            Text("↓ \(star.column + 1)").font(.headline).monospacedDigit()
+                        Group {
+                            if let kind = star.kind {
+                                Text(kind.symbol).foregroundStyle(Color(kind.color))
+                            } else {
+                                Image(systemName: "moonphase.new.moon").foregroundStyle(.purple)
+                            }
                         }
+                        .font(.title2)
                         .frame(maxWidth: .infinity)
                         .accessibilityElement(children: .ignore)
-                        .accessibilityLabel("\(star.kind.label), column \(star.column + 1)")
+                        .accessibilityLabel(star.kind?.label ?? "Dark star")
                         .accessibilityIdentifier("experiment.incoming.\(star.id % StarfallExperiment.maximumShowerSize)")
                     }
                 }
@@ -121,13 +125,6 @@ import StarfallCore
 
     private var board: some View {
         VStack(spacing: 0) {
-            HStack(spacing: 0) {
-                ForEach(1...7, id: \.self) { column in
-                    Text("\(column)").font(.caption).frame(maxWidth: .infinity)
-                }
-            }
-            .foregroundStyle(StarfallTheme.Colors.textSecondary)
-            .padding(.horizontal, 16).accessibilityHidden(true)
             GeometryReader { geometry in
                 ZStack {
                     RoundedRectangle(cornerRadius: StarfallTheme.Radius.board)
@@ -166,7 +163,11 @@ import StarfallCore
         .buttonStyle(.plain)
         .accessibilityLabel(cellLabel(cell))
         .accessibilityValue("\(value) starlight connected")
-        .accessibilityHint(value >= 3 ? "Clear this group to make room for incoming stars" : "Needs matching jewels worth three. Large jewels count as two")
+        .accessibilityHint(store.game.gem(at: cell)?.isDark == true
+            ? "Clear a matching group directly beside this dark star to dissolve it"
+            : value >= 3
+                ? (store.game.darkStarsBeside(group).isEmpty ? "Clear this group to make room" : "Clear this group and dissolve the dark stars beside it")
+                : "Needs matching jewels worth three. Large jewels count as two")
         .accessibilityIdentifier("experiment.cell.\(cell.row).\(cell.column)")
         .accessibilityRotorEntry(id: cell, in: matchingGroups)
         .disabled(!store.canClear)
@@ -175,7 +176,9 @@ import StarfallCore
     private func cellLabel(_ cell: Cell) -> String {
         let position = "row \(7-cell.row), column \(cell.column+1)"
         guard let gem = store.game.gem(at: cell) else { return "Empty, \(position)" }
-        return "\(gem.kind.label), value \(gem.value), \(position)"
+        guard let kind = gem.kind else { return "Dark star, \(position)" }
+        let shade = store.game.isGrowthBlocked(at: cell) ? ", growth blocked by a dark star" : ""
+        return "\(gem.grown ? "Large " : "")\(kind.label), \(position)\(shade)"
     }
 
     private var settingsView: some View {
@@ -184,9 +187,10 @@ import StarfallCore
                 VStack(alignment: .leading, spacing: 20) {
                     Toggle("Calm effects", isOn: $calmEffects)
                         .accessibilityIdentifier("experiment.calm")
-                    Text("After you start, a shower arrives every four seconds. Most bring 1–3 stars; some bring 5. The preview shows their colors, order and columns. Clearing does not delay the sky.")
+                    Text("After you start, a shower arrives every four seconds. Most bring 1–3 stars; some bring 5. The preview shows what is coming. Landing places remain a surprise. Clearing does not delay the sky.")
                     Text("A star matching the small jewel on top grows it to value 2. A grown jewel cannot grow again, so the next star stacks above it.")
                     Text("Clear connected matching jewels worth at least 3. A large jewel counts as 2, so a large jewel beside one small match can clear. Collect their combined value as starlight.")
+                    Text("An occasional dark star stops the jewels directly above, below, left and right from growing. Existing large jewels stay large. Clear any matching group touching it to dissolve it and free that space. Dark stars are not part of color matches and award no starlight.")
                     Text("Make room before a star reaches a full column. Pause whenever you like. Settings and leaving the app freeze the sky; missed showers never accumulate. Replay a sky to try different choices.")
                 }
                 .font(StarfallTheme.Typography.body).padding(20)
