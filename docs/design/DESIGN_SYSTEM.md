@@ -66,6 +66,8 @@ Both arrangements retain one vertical ScrollView. `AnyLayout` changes placement 
 
 Menu and gameplay clip scrolled foreground at their outer GeometryReader viewport. The full-bleed backdrop stays outside this boundary. Clipping limits drawing at the viewport edge without changing text measurement, content height or scroll reachability; do not replace it with a smaller font or a fixed status-bar inset.
 
+When a round finishes, reveal its existing result and New game region once after presentation settles, including entry into a saved terminal round. Keep natural text height, the same scene and board size, and ordinary scrolling; if large text exceeds the viewport, lead with the outcome rather than hiding it above the action. The destination includes the shared 20-point page inset without adding layout height. An already-visible tablet sidebar needs no repositioning. Restart returns to the initial HUD/board reading position. These scroll changes add no animation or forced accessibility/keyboard focus.
+
 ## Primitive and component contracts
 
 `StarfallButtonStyle` keeps native Button semantics and a full shaped hit region. It has three roles rather than separate per-screen button implementations:
@@ -97,6 +99,8 @@ Settings opens directly in one large native sheet at every text size, with Done 
 - No ads, purchases, tracking, progression, account/network features, external SDKs or paid assets are introduced.
 
 ## Validation boundary
+
+The settled-terminal reveal revision passed two focused native UI cases on the compact-phone Simulator and two on the iPad Simulator, with zero failures or skips. Coverage includes win, loss and last-move win, initial and restored result/action visibility before test-driven scrolling, restart at the initial reading position, maximum-text terminal presentation with unsuppressed accessibility audits, and tablet board-position and adaptive-play checks. The design-system owner reviewed the corrected phone captures: complete result text and New game retain the 20-point bottom inset, and restart shows 0/70 with 18 moves. Tablet win, restored loss and reflowed-play captures retain the complete board, readable sidebar and visible controls without observed clipping or unwanted repositioning. Retain source-bound results and capture hashes in `docs/evidence/terminal-reveal-2026-10-16/`. These focused results do not establish human VoiceOver behavior, physical-device interaction or performance.
 
 The outer-viewport clipping revision passed two focused native UI cases each on compact iPhone SE and iPad mini Simulators (iOS 27), with zero failures/skips. Maximum-text menu/game/Settings audits remain unsuppressed; real taps, restart, Settings dismissal and tablet reflow pass. Coordinator and design-system-owner comparison confirms scrolled moves text stops below the status bar while the board and New game remain visible. Tablet landscape and maximum-text portrait captures show no observed clipping regression. Core tests and the Release simulator build passed. Source-bound summaries and capture hashes are in `docs/evidence/safe-area-2026-10-16/`; these checks do not establish human VoiceOver behavior.
 

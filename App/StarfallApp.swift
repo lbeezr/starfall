@@ -8,7 +8,11 @@ import StarfallCore
 
 
 struct StarfallView: View {
+    private enum GameScrollTarget: Hashable { case top, result }
+
     @StateObject private var store = GameStore()
+    @State private var terminalResultRevealed = false
+    @State private var restartScrollRequest = false
     #if DEBUG
     @State private var experimentPresented = ProcessInfo.processInfo.arguments.contains("--starfalls")
     #endif
@@ -28,6 +32,17 @@ struct StarfallView: View {
         #endif
     }
 
+    private var terminalRoundPresented: Bool {
+        store.playing && store.game.outcome != .playing
+    }
+
+    private var terminalRevealReady: Bool {
+        #if DEBUG
+        if experimentPresented { return false }
+        #endif
+        return terminalRoundPresented && !store.busy && !store.settings && scenePhase == .active
+    }
+
     var body: some View {
         ZStack {
             NightSkyBackdrop()
@@ -41,6 +56,9 @@ struct StarfallView: View {
         .onChange(of: store.calmEffects) { _, value in store.updateReducedMotion(value || reduceMotion) }
         .onChange(of: scenePhase) { _, phase in
             if phase != .active { store.settlePresentation() }
+        }
+        .onChange(of: terminalRoundPresented) { _, presented in
+            if !presented { terminalResultRevealed = false }
         }
         .sheet(isPresented: $store.settings) { settingsView }
         #if DEBUG
@@ -191,16 +209,28 @@ struct StarfallView: View {
     }
     private var gameView: some View {
         GeometryReader { geometry in
-            ScrollView {
-                gameContent(in: geometry.size)
-                    .frame(minHeight: geometry.size.height, alignment: .top)
-                    .frame(maxWidth: .infinity)
-                    .contentShape(Rectangle())
+            ScrollViewReader { proxy in
+                ScrollView {
+                    gameContent(in: geometry.size, scrollProxy: proxy)
+                        .frame(minHeight: geometry.size.height, alignment: .top)
+                        .frame(maxWidth: .infinity)
+                        .contentShape(Rectangle())
+                        .id(GameScrollTarget.top)
+                }
+                .onChange(of: restartScrollRequest) { _, _ in
+                    scrollGame(to: .top, anchor: .top, using: proxy)
+                }
             }
         }
         .clipped()
     }
-    private func gameContent(in size: CGSize) -> some View {
+    private func scrollGame(to target: GameScrollTarget, anchor: UnitPoint?, using proxy: ScrollViewProxy) {
+        var transaction = Transaction(animation: nil)
+        transaction.disablesAnimations = true
+        withTransaction(transaction) { proxy.scrollTo(target, anchor: anchor) }
+    }
+
+    private func gameContent(in size: CGSize, scrollProxy: ScrollViewProxy) -> some View {
         let showsSidebar = !dynamicTypeSize.isAccessibilitySize
             && size.width > size.height
             && size.width >= StarfallTheme.Layout.wideGameMinimumWidth
@@ -239,8 +269,30 @@ struct StarfallView: View {
                     if usesAccessibleBoard && store.game.outcome == .playing {
                         StarfallStatusText(text: "Use the Matching groups rotor to find a group, or explore each starshard.")
                     }
-                    roundFeedback
-                    restartButton
+                    VStack(spacing: StarfallTheme.Spacing.large) {
+                        roundFeedback
+                        restartButton
+                    }
+                    .background {
+                        GeometryReader { resultGeometry in
+                            // Include the existing page inset in the destination,
+                            // without adding height to the board/sidebar layout.
+                            let revealHeight = resultGeometry.size.height + StarfallTheme.Spacing.page
+                            Color.clear
+                                .frame(height: revealHeight)
+                                .id(GameScrollTarget.result)
+                                .onChange(of: terminalRevealReady, initial: true) { _, ready in
+                                    guard ready && !terminalResultRevealed else { return }
+                                    terminalResultRevealed = true
+                                    // Move only as far as needed when the region fits.
+                                    // Oversized text leads with the outcome and remains scrollable.
+                                    let anchor: UnitPoint? = revealHeight > size.height ? .top : nil
+                                    scrollGame(to: .result, anchor: anchor, using: scrollProxy)
+                                }
+                        }
+                        .allowsHitTesting(false)
+                        .accessibilityHidden(true)
+                    }
                 }
                 .frame(width: showsSidebar ? StarfallTheme.Layout.wideGameSidebarWidth : nil)
             }
@@ -321,7 +373,11 @@ struct StarfallView: View {
     }
 
     private var restartButton: some View {
-        Button("New game") { store.restart() }
+        Button("New game") {
+            store.restart()
+            terminalResultRevealed = false
+            restartScrollRequest.toggle()
+        }
             .buttonStyle(StarfallButtonStyle(role: store.game.outcome == .playing ? .secondary : .primary,
                                             expands: store.game.outcome != .playing))
             .disabled(store.busy)
