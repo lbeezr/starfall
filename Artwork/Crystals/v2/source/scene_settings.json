@@ -1,0 +1,43 @@
+{
+  "schema": "starfall.crystal-v2-scene.v1",
+  "authorship": "New editable 3D geometry authored from visual references; not recovered original source.",
+  "contract": {"frame_side_px": 256, "frame_count": 9, "neutral_index": 4, "pivot_raster_px": [128, 128]},
+  "camera": {"position": [0, 0, 8], "target": [0, 0, 0], "ortho_scale": 2.56},
+  "geometry": {
+    "rings": [{"scale": 0.78, "z": -0.16}, {"scale": 1.0, "z": 0.0}, {"scale": 0.50, "z": 0.20}],
+    "flat_faces": true,
+    "kinds": {
+      "rose": {"sides": 48, "radius": 0.905, "angle_degrees": 90, "corner_cut": 0.0, "color_srgb": "#FF5999"},
+      "aqua": {"sides": 4, "radius": 1.02, "angle_degrees": 90, "corner_cut": 0.1273, "color_srgb": "#47D9FF"},
+      "amber": {"sides": 3, "radius": 1.02, "angle_degrees": 90, "corner_cut": 0.14, "color_srgb": "#FFC247"},
+      "violet": {"sides": 6, "radius": 0.99, "angle_degrees": 90, "corner_cut": 0.04, "color_srgb": "#B37DFF"},
+      "mint": {"sides": 4, "radius": 1.0040916293, "angle_degrees": 45, "corner_cut": 0.07, "color_srgb": "#59FFB8"}
+    }
+  },
+  "poses": {
+    "x_degrees": [-8, -6, -4, -2, 0, 2, 4, 6, 8],
+    "y_degrees": [-5, -3.75, -2.5, -1.25, 0, 1.25, 2.5, 3.75, 5],
+    "z_degrees": 0,
+    "pivot_world": [0, 0, 0]
+  },
+  "material": {
+    "roughness": 0.055, "metallic": 0.04, "ior": 1.46,
+    "specular_ior_level": 0.30, "transmission_weight": 0.08,
+    "coat_weight": 0.20, "coat_roughness": 0.04, "coat_tint_fraction": 0.18
+  },
+  "lighting": {
+    "world_strength": 0.18,
+    "key": {"position": [0.05, 0.10, 4], "energy": 65, "width": 0.20, "height": 3.2, "rotation_z_degrees": 35, "tint_fraction": 0.03},
+    "fill": {"position": [-3, 4, 5], "energy": 90, "width": 4.0, "height": 4.0, "color": [0.88, 0.94, 1.0]},
+    "rim": {"position": [3, -2, 4], "energy": 70, "width": 2.0, "height": 3.0, "color": [0.84, 0.91, 1.0]}
+  },
+  "render": {
+    "engine": "CYCLES", "device": "CPU", "seed": 1729, "threads": 4,
+    "pilot_samples": 128, "final_samples": 512,
+    "denoising": true, "denoiser": "OPENIMAGEDENOISE", "adaptive_sampling": false,
+    "pixel_filter_width": 1.5, "max_bounces": 8, "diffuse_bounces": 4,
+    "glossy_bounces": 4, "transmission_bounces": 6,
+    "view_transform": "Standard", "look": "None", "exposure": 0, "gamma": 1,
+    "film_transparent": true, "color_mode": "RGBA", "color_depth": "8"
+  }
+}
