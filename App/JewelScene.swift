@@ -125,6 +125,11 @@ extension Jewel {
             sprite.size = CGSize(width: side, height: side)
             return sprite
         }
+        return Self.makeBaseJewel(kind, radius: radius)
+    }
+
+    /// Shared bounded material factory for the main board and the starfall experiment.
+    static func makeBaseJewel(_ kind: Jewel, radius: CGFloat) -> SKNode {
         let texture: SKTexture
         if let cached = Self.jewelTextures[kind.rawValue] {
             texture = cached

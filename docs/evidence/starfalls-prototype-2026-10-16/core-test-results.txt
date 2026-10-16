@@ -1,0 +1,106 @@
+Building for debugging...
+[1 / 10]
+[2 / 11] StarfallCore
+[4 / 13] StarfallCore
+[9 / 16] StarfallCore
+[12 / 16] StarfallCoreTests-product
+[14 / 18] StarfallCoreTests-product
+[20 / 22] StarfallCoreTests-product
+Build complete! (2.27 sec)
+Test Suite 'All tests' started at 2026-10-16 16:46:48.165.
+Test Suite 'StarfallCoreTests.xctest' started at 2026-10-16 16:46:48.168.
+Test Suite 'GameTests' started at 2026-10-16 16:46:48.168.
+Test Case '-[StarfallCoreTests.GameTests testClearGravityAndRefill]' started.
+Test Case '-[StarfallCoreTests.GameTests testClearGravityAndRefill]' passed (0.002 seconds).
+Test Case '-[StarfallCoreTests.GameTests testDeadBoardRecoveryIsFreeAndBounded]' started.
+Test Case '-[StarfallCoreTests.GameTests testDeadBoardRecoveryIsFreeAndBounded]' passed (0.001 seconds).
+Test Case '-[StarfallCoreTests.GameTests testDiagonalDoesNotConnect]' started.
+Test Case '-[StarfallCoreTests.GameTests testDiagonalDoesNotConnect]' passed (0.000 seconds).
+Test Case '-[StarfallCoreTests.GameTests testEveryEnumeratedGroupIsOneEquivalentMoveAndEnumerationDoesNotChangeRandomness]' started.
+Test Case '-[StarfallCoreTests.GameTests testEveryEnumeratedGroupIsOneEquivalentMoveAndEnumerationDoesNotChangeRandomness]' passed (0.044 seconds).
+Test Case '-[StarfallCoreTests.GameTests testEveryLiveBoardHasMoveAcrossManyGames]' started.
+Test Case '-[StarfallCoreTests.GameTests testEveryLiveBoardHasMoveAcrossManyGames]' passed (0.628 seconds).
+Test Case '-[StarfallCoreTests.GameTests testGeneratorGoldenValues]' started.
+Test Case '-[StarfallCoreTests.GameTests testGeneratorGoldenValues]' passed (0.000 seconds).
+Test Case '-[StarfallCoreTests.GameTests testLegalGroupsAreUniqueAndOrderedAcrossDisconnectedSameColorGroups]' started.
+Test Case '-[StarfallCoreTests.GameTests testLegalGroupsAreUniqueAndOrderedAcrossDisconnectedSameColorGroups]' passed (0.001 seconds).
+Test Case '-[StarfallCoreTests.GameTests testLegalGroupsHandleWholeBoardDeadBoardAndTerminalBoard]' started.
+Test Case '-[StarfallCoreTests.GameTests testLegalGroupsHandleWholeBoardDeadBoardAndTerminalBoard]' passed (0.001 seconds).
+Test Case '-[StarfallCoreTests.GameTests testLossAndNoFurtherMoves]' started.
+Test Case '-[StarfallCoreTests.GameTests testLossAndNoFurtherMoves]' passed (0.000 seconds).
+Test Case '-[StarfallCoreTests.GameTests testMalformedSaveRejected]' started.
+Test Case '-[StarfallCoreTests.GameTests testMalformedSaveRejected]' passed (0.000 seconds).
+Test Case '-[StarfallCoreTests.GameTests testNativePersistenceFixture]' started.
+Test Case '-[StarfallCoreTests.GameTests testNativePersistenceFixture]' passed (0.001 seconds).
+Test Case '-[StarfallCoreTests.GameTests testNativeTerminalReplayFixtures]' started.
+Test Case '-[StarfallCoreTests.GameTests testNativeTerminalReplayFixtures]' passed (0.006 seconds).
+Test Case '-[StarfallCoreTests.GameTests testOrthogonalOnlyAndInvalidTapDoesNotSpendMove]' started.
+Test Case '-[StarfallCoreTests.GameTests testOrthogonalOnlyAndInvalidTapDoesNotSpendMove]' passed (0.000 seconds).
+Test Case '-[StarfallCoreTests.GameTests testRestoreAfterRandomnessAdvanced]' started.
+Test Case '-[StarfallCoreTests.GameTests testRestoreAfterRandomnessAdvanced]' passed (0.001 seconds).
+Test Case '-[StarfallCoreTests.GameTests testRestoreEveryTurnThroughTerminalState]' started.
+Test Case '-[StarfallCoreTests.GameTests testRestoreEveryTurnThroughTerminalState]' passed (0.008 seconds).
+Test Case '-[StarfallCoreTests.GameTests testSaveRoundTripAndFutureRandomness]' started.
+Test Case '-[StarfallCoreTests.GameTests testSaveRoundTripAndFutureRandomness]' passed (0.001 seconds).
+Test Case '-[StarfallCoreTests.GameTests testSaveValidationChecksBoardSizeBeforeTraversingAndAllowsDeadTerminalBoards]' started.
+Test Case '-[StarfallCoreTests.GameTests testSaveValidationChecksBoardSizeBeforeTraversingAndAllowsDeadTerminalBoards]' passed (0.001 seconds).
+Test Case '-[StarfallCoreTests.GameTests testSaveValidationRejectsImpossibleScoresAndMoveCounts]' started.
+Test Case '-[StarfallCoreTests.GameTests testSaveValidationRejectsImpossibleScoresAndMoveCounts]' passed (0.001 seconds).
+Test Case '-[StarfallCoreTests.GameTests testSeedsAreStableAndPlayable]' started.
+Test Case '-[StarfallCoreTests.GameTests testSeedsAreStableAndPlayable]' passed (0.073 seconds).
+Test Case '-[StarfallCoreTests.GameTests testWinTakesPriorityOnFinalMoveAndLocksInput]' started.
+Test Case '-[StarfallCoreTests.GameTests testWinTakesPriorityOnFinalMoveAndLocksInput]' passed (0.000 seconds).
+Test Suite 'GameTests' passed at 2026-10-16 16:46:48.939.
+	 Executed 20 tests, with 0 failures (0 unexpected) in 0.768 (0.771) seconds
+Test Suite 'RefillMappingTests' started at 2026-10-16 16:46:48.939.
+Test Case '-[StarfallCoreTests.RefillMappingTests testActualFreeRecoveryMarksExactlyThreeOverwrittenDestinations]' started.
+Test Case '-[StarfallCoreTests.RefillMappingTests testActualFreeRecoveryMarksExactlyThreeOverwrittenDestinations]' passed (0.001 seconds).
+Test Case '-[StarfallCoreTests.RefillMappingTests testClearSetInsertionOrderCannotChangePresentationOrder]' started.
+Test Case '-[StarfallCoreTests.RefillMappingTests testClearSetInsertionOrderCannotChangePresentationOrder]' passed (0.000 seconds).
+Test Case '-[StarfallCoreTests.RefillMappingTests testFullBoardClearContainsOnlyNewRefillsEvenOnWinningTurn]' started.
+Test Case '-[StarfallCoreTests.RefillMappingTests testFullBoardClearContainsOnlyNewRefillsEvenOnWinningTurn]' passed (0.000 seconds).
+Test Case '-[StarfallCoreTests.RefillMappingTests testInterleavedClearsPreserveExactSourcesDespiteRepeatedColors]' started.
+Test Case '-[StarfallCoreTests.RefillMappingTests testInterleavedClearsPreserveExactSourcesDespiteRepeatedColors]' passed (0.000 seconds).
+Test Case '-[StarfallCoreTests.RefillMappingTests testLegalTurnMapsEachFinalJewelAndOnlyVerticalSurvivors]' started.
+Test Case '-[StarfallCoreTests.RefillMappingTests testLegalTurnMapsEachFinalJewelAndOnlyVerticalSurvivors]' passed (0.000 seconds).
+Test Case '-[StarfallCoreTests.RefillMappingTests testRecoveryIsAReplacementEvenIfColorIsUnchangedOrRefillWasOverwritten]' started.
+Test Case '-[StarfallCoreTests.RefillMappingTests testRecoveryIsAReplacementEvenIfColorIsUnchangedOrRefillWasOverwritten]' passed (0.000 seconds).
+Test Case '-[StarfallCoreTests.RefillMappingTests testRepeatedMappingPreservesCommittedGameAndFutureSeededTurns]' started.
+Test Case '-[StarfallCoreTests.RefillMappingTests testRepeatedMappingPreservesCommittedGameAndFutureSeededTurns]' passed (0.002 seconds).
+Test Suite 'RefillMappingTests' passed at 2026-10-16 16:46:48.944.
+	 Executed 7 tests, with 0 failures (0 unexpected) in 0.004 (0.005) seconds
+Test Suite 'StarfallExperimentTests' started at 2026-10-16 16:46:48.944.
+Test Case '-[StarfallCoreTests.StarfallExperimentTests testClearingBeforeTheShowerCanPreventForecastOverflow]' started.
+Test Case '-[StarfallCoreTests.StarfallExperimentTests testClearingBeforeTheShowerCanPreventForecastOverflow]' passed (0.000 seconds).
+Test Case '-[StarfallCoreTests.StarfallExperimentTests testClearScoresGrownValuesAndGravityPreservesSurvivorIdentity]' started.
+Test Case '-[StarfallCoreTests.StarfallExperimentTests testClearScoresGrownValuesAndGravityPreservesSurvivorIdentity]' passed (0.000 seconds).
+Test Case '-[StarfallCoreTests.StarfallExperimentTests testDifferentColorsStackWithoutReplacingExistingJewels]' started.
+Test Case '-[StarfallCoreTests.StarfallExperimentTests testDifferentColorsStackWithoutReplacingExistingJewels]' passed (0.000 seconds).
+Test Case '-[StarfallCoreTests.StarfallExperimentTests testEmptyStartAndInvalidInputNeverAdvanceTheForecast]' started.
+Test Case '-[StarfallCoreTests.StarfallExperimentTests testEmptyStartAndInvalidInputNeverAdvanceTheForecast]' passed (0.000 seconds).
+Test Case '-[StarfallCoreTests.StarfallExperimentTests testForecastVisitsEveryColumnBeforeRepeating]' started.
+Test Case '-[StarfallCoreTests.StarfallExperimentTests testForecastVisitsEveryColumnBeforeRepeating]' passed (0.000 seconds).
+Test Case '-[StarfallCoreTests.StarfallExperimentTests testFullColumnCanAcceptOneMatchingGrowthBeforeOverflowing]' started.
+Test Case '-[StarfallCoreTests.StarfallExperimentTests testFullColumnCanAcceptOneMatchingGrowthBeforeOverflowing]' passed (0.000 seconds).
+Test Case '-[StarfallCoreTests.StarfallExperimentTests testMatchingArrivalGrowsOnceAndTheNextStarStacks]' started.
+Test Case '-[StarfallCoreTests.StarfallExperimentTests testMatchingArrivalGrowsOnceAndTheNextStarStacks]' passed (0.000 seconds).
+Test Case '-[StarfallCoreTests.StarfallExperimentTests testOrthogonalOnlyAndEmptyCellsNeverConnect]' started.
+Test Case '-[StarfallCoreTests.StarfallExperimentTests testOrthogonalOnlyAndEmptyCellsNeverConnect]' passed (0.000 seconds).
+Test Case '-[StarfallCoreTests.StarfallExperimentTests testOverflowStopsAtTheBlockedStarAndLocksBothActions]' started.
+Test Case '-[StarfallCoreTests.StarfallExperimentTests testOverflowStopsAtTheBlockedStarAndLocksBothActions]' passed (0.000 seconds).
+Test Case '-[StarfallCoreTests.StarfallExperimentTests testRejectsMalformedOrFloatingSavedBoard]' started.
+Test Case '-[StarfallCoreTests.StarfallExperimentTests testRejectsMalformedOrFloatingSavedBoard]' passed (0.001 seconds).
+Test Case '-[StarfallCoreTests.StarfallExperimentTests testReplayAndSaveRestorePreserveFutureShowers]' started.
+Test Case '-[StarfallCoreTests.StarfallExperimentTests testReplayAndSaveRestorePreserveFutureShowers]' passed (0.220 seconds).
+Test Case '-[StarfallCoreTests.StarfallExperimentTests testTwoSmallJewelsOrOneGrownJewelCannotClear]' started.
+Test Case '-[StarfallCoreTests.StarfallExperimentTests testTwoSmallJewelsOrOneGrownJewelCannotClear]' passed (0.000 seconds).
+Test Suite 'StarfallExperimentTests' passed at 2026-10-16 16:46:49.167.
+	 Executed 12 tests, with 0 failures (0 unexpected) in 0.223 (0.223) seconds
+Test Suite 'StarfallCoreTests.xctest' passed at 2026-10-16 16:46:49.167.
+	 Executed 39 tests, with 0 failures (0 unexpected) in 0.995 (0.999) seconds
+Test Suite 'All tests' passed at 2026-10-16 16:46:49.167.
+	 Executed 39 tests, with 0 failures (0 unexpected) in 0.995 (1.002) seconds
+◇ Test run started.
+↳ Testing Library Version: 2084
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

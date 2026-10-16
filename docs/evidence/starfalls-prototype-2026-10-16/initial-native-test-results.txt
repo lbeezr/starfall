@@ -1,0 +1,65 @@
+Test Case '-[StarfallUITests.StarfallExperimentInteractionTests testBackgroundRelaunchAndOverflow]' passed (87.634 seconds).
+/Users/lb/Developer/Starfall/UITests/StarfallExperimentInteractionTests.swift:28: error: -[StarfallUITests.StarfallExperimentInteractionTests testPreviewGrowthClearReplayAndSettings] : Failed to get matching snapshot: No matches found for first query match sequence: `Descendants matching type Any` -> `Elements matching predicate '"experiment.incoming.0" IN identifiers'`, given input App element pid: 19581
+Test Case '-[StarfallUITests.StarfallExperimentInteractionTests testPreviewGrowthClearReplayAndSettings]' failed (12.392 seconds).
+	 Executed 2 tests, with 1 failure (0 unexpected) in 100.025 (100.032) seconds
+Test Case '-[StarfallUITests.StarfallInteractionTests testRealBoardTapAndNavigation]' passed (50.454 seconds).
+Test Case '-[StarfallUITests.StarfallInteractionTests testTerminalOutcomesPersistAndRestart]' passed (104.418 seconds).
+	 Executed 2 tests, with 0 failures (0 unexpected) in 154.872 (154.874) seconds
+	 Executed 4 tests, with 1 failure (0 unexpected) in 254.897 (254.908) seconds
+	 Executed 4 tests, with 1 failure (0 unexpected) in 254.897 (254.910) seconds
+Test Case '-[StarfallAppTests.CrystalPilotTests testActualRendererCancellationRemovesFragmentsAndActions]' passed (0.023 seconds).
+Test Case '-[StarfallAppTests.CrystalPilotTests testAtlasHasNineFramesAndFourFragments]' passed (0.001 seconds).
+Test Case '-[StarfallAppTests.CrystalPilotTests testLargeAquaClearCapsFragmentsAt48]' passed (0.003 seconds).
+Test Case '-[StarfallAppTests.CrystalPilotTests testReducedMotionImmediatelySettlesWithoutFragments]' passed (0.002 seconds).
+Test Case '-[StarfallAppTests.CrystalPilotTests testUnattachedRendererImmediatelySettlesWithoutFragments]' passed (0.002 seconds).
+	 Executed 5 tests, with 0 failures (0 unexpected) in 0.030 (0.033) seconds
+Test Case '-[StarfallAppTests.GameStoreInterruptionTests testFeedbackIsOncePerValidTurnAndCancelledAnnouncementStaysSilent]' passed (0.003 seconds).
+Test Case '-[StarfallAppTests.GameStoreInterruptionTests testInactiveSettlementPreservesCommittedGame]' passed (0.006 seconds).
+Test Case '-[StarfallAppTests.GameStoreInterruptionTests testInvalidTapAnnouncesNoMoveWithoutClearFeedback]' passed (0.001 seconds).
+Test Case '-[StarfallAppTests.GameStoreInterruptionTests testMenuAndSettingsBlockInputAndSettlePendingTurn]' passed (0.004 seconds).
+Test Case '-[StarfallAppTests.GameStoreInterruptionTests testMuteAndLifecycleStopSoundsWithoutReplayingCommittedTurns]' passed (0.004 seconds).
+Test Case '-[StarfallAppTests.GameStoreInterruptionTests testReducedMotionSettlesWithoutChangingCommittedGame]' passed (0.005 seconds).
+Test Case '-[StarfallAppTests.GameStoreInterruptionTests testSecondLegalInputWhileBusyDoesNotSpendAnotherMove]' passed (0.004 seconds).
+Test Case '-[StarfallAppTests.GameStoreInterruptionTests testStaleCompletionCannotUnlockNewerTurn]' passed (0.004 seconds).
+	 Executed 8 tests, with 0 failures (0 unexpected) in 0.031 (0.033) seconds
+Test Case '-[StarfallAppTests.QuietTuckPlayerTests testAllFourShippedFilesDecodeAndNativePlaybackCanStart]' passed (0.298 seconds).
+Test Case '-[StarfallAppTests.QuietTuckPlayerTests testFeedbackUsesOneSelectedContactForEveryOutcomeAndHonorsMute]' passed (0.001 seconds).
+Test Case '-[StarfallAppTests.QuietTuckPlayerTests testHeadphoneDisconnectAndInactivityStopWithoutReplaying]' passed (0.001 seconds).
+Test Case '-[StarfallAppTests.QuietTuckPlayerTests testInterruptedAndInactiveTapsAreDroppedWithoutReplay]' passed (0.001 seconds).
+Test Case '-[StarfallAppTests.QuietTuckPlayerTests testMissingResourcesFailSilently]' passed (0.001 seconds).
+Test Case '-[StarfallAppTests.QuietTuckPlayerTests testMuteInvalidatesQueuedAudioBeforeItCanStart]' passed (0.001 seconds).
+Test Case '-[StarfallAppTests.QuietTuckPlayerTests testRejectedPlaybackRequestDoesNotConsumeSelectedTake]' passed (0.001 seconds).
+Test Case '-[StarfallAppTests.QuietTuckPlayerTests testRotationSurvivesStopsAndNeverQueuesPlayback]' passed (0.001 seconds).
+Test Case '-[StarfallAppTests.QuietTuckPlayerTests testSlowAudioQueueDropsSupersededAndMutedRequests]' passed (0.024 seconds).
+	 Executed 9 tests, with 0 failures (0 unexpected) in 0.328 (0.330) seconds
+Test Case '-[StarfallAppTests.StarfallExperimentStoreTests testCalmChangeSettlesCommittedBoardAndInvalidTapIsFree]' passed (0.006 seconds).
+Test Case '-[StarfallAppTests.StarfallExperimentStoreTests testRapidInputAndLifecycleCommitEachShowerOnce]' passed (0.003 seconds).
+Test Case '-[StarfallAppTests.StarfallExperimentStoreTests testReplayRestoresTheSameEmptySkyAndKeepsOriginalSaveSeparate]' passed (0.005 seconds).
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.014 (0.015) seconds
+Test Case '-[StarfallAppTests.StarshardArtworkTests testAllFiveRequiredBundledKindsConform]' passed (0.292 seconds).
+Test Case '-[StarfallAppTests.StarshardArtworkTests testBundledAquaFramesBoundsScaleAndTilt]' passed (0.058 seconds).
+Test Case '-[StarfallAppTests.StarshardArtworkTests testEmptyOrEdgeClippedFrameRejectsWholeAtlas]' passed (0.412 seconds).
+Test Case '-[StarfallAppTests.StarshardArtworkTests testFiveNamesAreDistinctAndAllRequestsStayWithinCacheBudget]' passed (0.277 seconds).
+Test Case '-[StarfallAppTests.StarshardArtworkTests testMissingArtIsCachedWithoutPlaceholderOrRepeatedReads]' passed (0.001 seconds).
+Test Case '-[StarfallAppTests.StarshardArtworkTests testPilotArgumentIsExplicitAndDebugOnly]' passed (0.001 seconds).
+Test Case '-[StarfallAppTests.StarshardArtworkTests testScaleUsesNeutralBoundsAndMotionUnionWithoutTrimming]' passed (0.097 seconds).
+Test Case '-[StarfallAppTests.StarshardArtworkTests testWrongDimensionsFailBeforeCreatingTexturesAndAreCached]' passed (0.001 seconds).
+	 Executed 8 tests, with 0 failures (0 unexpected) in 1.138 (1.141) seconds
+Test Case '-[StarfallAppTests.StarshardFamilyPilotTests testAnimatedCompletionFiresOnceForEveryKind]' passed (2.813 seconds).
+Test Case '-[StarfallAppTests.StarshardFamilyPilotTests testArrivalPreservesSurvivorRecoveryAndRefillIdentityAndCancelsAllTrails]' passed (0.006 seconds).
+Test Case '-[StarfallAppTests.StarshardFamilyPilotTests testCalmSettingAloneSuppressesValidAndInvalidAnimations]' passed (0.009 seconds).
+Test Case '-[StarfallAppTests.StarshardFamilyPilotTests testDefaultClearSparkCountIsBoundedAndRepeatedNudgesReplaceActions]' passed (0.006 seconds).
+Test Case '-[StarfallAppTests.StarshardFamilyPilotTests testEveryKindUsesOwnBoundedFragmentsAndCancellationCleansActions]' passed (0.015 seconds).
+Test Case '-[StarfallAppTests.StarshardFamilyPilotTests testFullCellHitTargetsRejectPaddingAndNonfiniteLocations]' passed (0.001 seconds).
+Test Case '-[StarfallAppTests.StarshardFamilyPilotTests testGroupPreviewIsStaticExactAndClearedByRendering]' passed (0.004 seconds).
+Test Case '-[StarfallAppTests.StarshardFamilyPilotTests testOptInRendersAllFiveRealTexturesWithAuthoredPivots]' passed (0.001 seconds).
+Test Case '-[StarfallAppTests.StarshardFamilyPilotTests testRapidInvalidNudgesAreReplaceableAndCalmCancelsThem]' passed (0.005 seconds).
+Test Case '-[StarfallAppTests.StarshardFamilyPilotTests testReducedMotionAndUnattachedPresentationCompleteImmediatelyForEveryKind]' passed (0.009 seconds).
+Test Case '-[StarfallAppTests.StarshardFamilyPilotTests testResizeAndDetachmentSettleCommittedStoreAndUnlockInput]' passed (0.006 seconds).
+Test Case '-[StarfallAppTests.StarshardFamilyPilotTests testStoreCancellationResetAndCalmKeepCommittedRules]' passed (0.037 seconds).
+Test Case '-[StarfallAppTests.StarshardFamilyPilotTests testUITapFixturesAreLegalGroupsOfAllFiveKinds]' passed (0.001 seconds).
+Test Case '-[StarfallAppTests.StarshardFamilyPilotTests testUnattachedArrivalCompletesSynchronouslyOnceWithNoEffects]' passed (0.001 seconds).
+Test Case '-[StarfallAppTests.StarshardFamilyPilotTests testValidTurnRestoresAnInterruptedInvalidNudge]' passed (0.094 seconds).
+	 Executed 15 tests, with 0 failures (0 unexpected) in 3.009 (3.014) seconds
+	 Executed 48 tests, with 0 failures (0 unexpected) in 4.550 (4.567) seconds
+	 Executed 48 tests, with 0 failures (0 unexpected) in 4.550 (4.568) seconds
