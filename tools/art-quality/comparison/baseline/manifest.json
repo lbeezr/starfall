@@ -1,0 +1,82 @@
+{
+  "contract": {
+    "authored_pivot_px": [
+      128,
+      128
+    ],
+    "frame_count": 9,
+    "frame_indices_left_to_right": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "frame_side_px": 256,
+    "neutral_index": 4
+  },
+  "kinds": {
+    "amber": {
+      "bytes": 262612,
+      "file_sha256": "adb70f8ca34ab32aadedb11f102f55a124340ea8d6b85d385460a4f1e067116b",
+      "format": "PNG",
+      "mode": "RGBA",
+      "path": "StarshardFamilyAmber.imageset/amber_tilt_atlas.png",
+      "size": [
+        2304,
+        256
+      ]
+    },
+    "aqua": {
+      "bytes": 349758,
+      "file_sha256": "a7e0d3c5154a3cb3c474307c876f6d87255fe9a38bc1c78f45081abb58490c2f",
+      "format": "PNG",
+      "mode": "RGBA",
+      "path": "StarshardFamilyAqua.imageset/aqua_tilt_atlas.png",
+      "size": [
+        2304,
+        256
+      ]
+    },
+    "mint": {
+      "bytes": 324903,
+      "file_sha256": "d4d80d0e71d3b9db96ad0dbe11f2a6239b81b90cd0eac792d9bf6b18860a5f0d",
+      "format": "PNG",
+      "mode": "RGBA",
+      "path": "StarshardFamilyMint.imageset/mint_tilt_atlas.png",
+      "size": [
+        2304,
+        256
+      ]
+    },
+    "rose": {
+      "bytes": 402153,
+      "file_sha256": "42af8d136a24269ea1f8ea1f4f4b935ebd233b14d4f1a536828ca1f9b8888dbf",
+      "format": "PNG",
+      "mode": "RGBA",
+      "path": "StarshardFamilyRose.imageset/rose_tilt_atlas.png",
+      "size": [
+        2304,
+        256
+      ]
+    },
+    "violet": {
+      "bytes": 426092,
+      "file_sha256": "e5cdaf2275384a821d6ff955a98fbaa88d1cf21a13967682be03900d9bc93a4a",
+      "format": "PNG",
+      "mode": "RGBA",
+      "path": "StarshardFamilyViolet.imageset/violet_tilt_atlas.png",
+      "size": [
+        2304,
+        256
+      ]
+    }
+  },
+  "note": "Original PNG bytes; no atlas pixels, metadata, scale or alpha changed.",
+  "schema": "starfall.crystal-baseline.v1",
+  "source": "App/Assets.xcassets"
+}
