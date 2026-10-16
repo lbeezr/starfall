@@ -28,12 +28,34 @@ import StarfallCore
         } else if let data = UserDefaults.standard.data(forKey: "starfall.game.v1"),
            let saved = try? JSONDecoder().decode(Game.self, from: data), saved.isValidSave {
             game = saved
-        } else { game = Game(seed: UInt64.random(in: 0...UInt64.max)) }
+        } else {
+            // A deterministic fresh-game fallback for native tests; never overrides a save.
+            // Release builds always choose a random seed.
+            var seed = UInt64.random(in: 0...UInt64.max)
+            #if DEBUG
+            if let argument = arguments.first(where: { $0.hasPrefix("--seed=") }),
+               let testSeed = UInt64(argument.dropFirst("--seed=".count)) { seed = testSeed }
+            #endif
+            game = Game(seed: seed)
+        }
         scene.store = self
         scene.scaleMode = .resizeFill
         scene.backgroundColor = .clear
     }
-    func start() { playing = true; scene.render(game) }
+    func start() {
+        save() // Preserve the initial board even if the app closes before the first move.
+        playing = true; scene.render(game)
+    }
+    /// Rules commit before animation. Interrupted presentation settles to that committed state.
+    func settlePresentation() {
+        scene.removeAllActions()
+        scene.render(game) // Replaces animated children as well as their pending visual actions.
+        busy = false
+    }
+    func updateReducedMotion(_ enabled: Bool) {
+        scene.reduceMotion = enabled
+        if enabled { settlePresentation() }
+    }
     func restart() {
         scene.removeAllActions(); busy = false
         game = Game(seed: UInt64.random(in: 0...UInt64.max))
@@ -61,6 +83,7 @@ import StarfallCore
 
 struct StarfallView: View {
     @StateObject private var store = GameStore()
+    @Environment(\.scenePhase) private var scenePhase
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.accessibilityVoiceOverEnabled) private var voiceOver
     var body: some View {
@@ -69,8 +92,11 @@ struct StarfallView: View {
             if store.playing { gameView } else { menu }
         }
         .preferredColorScheme(.dark)
-        .onChange(of: reduceMotion, initial: true) { _, value in store.scene.reduceMotion = value || store.calmEffects }
-        .onChange(of: store.calmEffects) { _, value in store.scene.reduceMotion = value || reduceMotion }
+        .onChange(of: reduceMotion, initial: true) { _, value in store.updateReducedMotion(value || store.calmEffects) }
+        .onChange(of: store.calmEffects) { _, value in store.updateReducedMotion(value || reduceMotion) }
+        .onChange(of: scenePhase) { _, phase in
+            if phase != .active { store.settlePresentation() }
+        }
         .sheet(isPresented: $store.settings) {
             NavigationStack {
                 Form {

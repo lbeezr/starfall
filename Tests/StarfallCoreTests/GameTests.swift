@@ -98,4 +98,35 @@ final class GameTests: XCTestCase {
         let game = Game(board: checker, moves: -1)
         XCTAssertFalse(game.isValidSave)
     }
+    /// Contract used by native relaunch tests to distinguish saved and fresh boards.
+    func testNativePersistenceFixture() {
+        var saved = Game(seed: 42)
+        XCTAssertEqual(saved.group(at: Cell(1, 1)).count, 3)
+        XCTAssertEqual(Game(seed: 43).group(at: Cell(1, 1)).count, 2)
+        saved.tap(Cell(1, 1))
+        XCTAssertEqual(saved.group(at: Cell(1, 2)).count, 4)
+        saved.tap(Cell(1, 2))
+        XCTAssertEqual(saved.score, 7)
+        XCTAssertEqual(saved.moves, 16)
+    }
+
+    func testRestoreEveryTurnThroughTerminalState() throws {
+        var uninterrupted = Game(seed: 42)
+        var restored = uninterrupted
+        while uninterrupted.outcome == .playing {
+            restored = try JSONDecoder().decode(Game.self, from: JSONEncoder().encode(restored))
+            XCTAssertTrue(restored.isValidSave)
+            XCTAssertEqual(restored, uninterrupted)
+            let cell = try XCTUnwrap((0..<49).map { Cell($0 / 7, $0 % 7) }
+                .first { uninterrupted.group(at: $0).count >= 3 })
+            uninterrupted.tap(cell)
+            restored.tap(cell)
+            XCTAssertEqual(restored, uninterrupted)
+        }
+        restored = try JSONDecoder().decode(Game.self, from: JSONEncoder().encode(restored))
+        XCTAssertTrue(restored.isValidSave)
+        XCTAssertEqual(restored, uninterrupted)
+        XCTAssertNil(restored.tap(Cell(0, 0)))
+    }
+
 }
