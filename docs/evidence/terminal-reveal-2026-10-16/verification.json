@@ -1,0 +1,183 @@
+{
+  "baseCommit": "80c5a4983067b07e6a7b47c31d28d03802c6a33f",
+  "unchangedCoreTree": "b4579495f739c291bca86f9d803342cbecc14dde",
+  "sourceSHA256": {
+    "App/StarfallApp.swift": "29d1be0a4d1238f7f5ce25ef3dd56492e31ce346e8192e78fbdd04922dacc049",
+    "UITests/StarfallInteractionTests.swift": "fe81062357b9de0f6b1c1adfbec2110938e908dbc8bead09cf1f8f0cca271dba",
+    "docs/design/DESIGN_SYSTEM.md": "a434152e9e269d187469f98b15c5572196d6b3eb7940593e71f6aa0e5f1df813"
+  },
+  "corePassed": 53,
+  "nativeUIPassed": 7,
+  "ordinaryReleaseBuild": "Passed",
+  "logs": {
+    "/tmp/starfall-terminal-core.log": "56003d74845959d1ea33f3ff185da10d6680cae4cfc3c96b4c9645f22ac4a053",
+    "/tmp/starfall-terminal-phone-inset.log": "58e23e82bc0bec93044ad268233782f02ffdfa4feacada3626e172cbc46b3bb6",
+    "/tmp/starfall-terminal-ipad.log": "4e0897140b753414f59076d0b3e4f0f5c79056fc106d0291b75eda4170078627",
+    "/tmp/starfall-terminal-input.log": "47c27e9f0d13c9031c979e49454e707a0e7ae90a67004cdaa6a0476036273659",
+    "/tmp/starfall-terminal-release-build.log": "f81296f4fde3ce488aa8251772b909e9ee74889d0f4d4493de4fc175152171f9"
+  },
+  "captures": [
+    {
+      "batch": "phone",
+      "test": "StarfallInteractionTests/testLargestTextTerminalResultAndRestart()",
+      "name": "terminal-largest-text-restarted_0_89C42941-4DCB-4766-AD81-9DBE9CB9688E.png",
+      "path": "/tmp/starfall-terminal-phone-inset-images/6B1AF07D-DEB3-4EF3-A8B6-3B177FF4D652.png",
+      "sha256": "3b8f6c2505fc5dcf6a16ac19fc0560d4e4c072d820f2fa6d4873bc7b0e107945"
+    },
+    {
+      "batch": "phone",
+      "test": "StarfallInteractionTests/testLargestTextTerminalResultAndRestart()",
+      "name": "terminal-largest-text-restart-ready_0_5B150EFD-B14A-4544-ADAF-598E101463F9.png",
+      "path": "/tmp/starfall-terminal-phone-inset-images/E8CF4A99-FA24-4601-9C9E-69D7EC9CB7E1.png",
+      "sha256": "c78a9e5e937cfd87edc0b8d8914222bfc31dcb3fddea9843b106079b2885945b"
+    },
+    {
+      "batch": "phone",
+      "test": "StarfallInteractionTests/testLargestTextTerminalResultAndRestart()",
+      "name": "terminal-largest-text-result_0_D25E06F0-BD12-4AD7-91E0-75E8AC993915.png",
+      "path": "/tmp/starfall-terminal-phone-inset-images/0D713DB1-BD86-46CB-BE6E-876BD1CD4BEE.png",
+      "sha256": "93c57b500c20b4ffaf731951c259678c253dec87bfe5361a33bf321d46fcdc3d"
+    },
+    {
+      "batch": "phone",
+      "test": "StarfallInteractionTests/testTerminalOutcomesPersistAndRestart()",
+      "name": "terminal-lost-restored_0_DDB6BB80-A822-4F39-A694-9C0936C1B627.png",
+      "path": "/tmp/starfall-terminal-phone-inset-images/61FF52FA-831B-4018-8AC6-3C81DD7B6131.png",
+      "sha256": "9fe74887906aff0f108a2e7b64988c3d62a1fe0f4a168dd2e4ed1a146bbcfe6a"
+    },
+    {
+      "batch": "phone",
+      "test": "StarfallInteractionTests/testTerminalOutcomesPersistAndRestart()",
+      "name": "terminal-0-action-visible_0_4C709166-AB19-4520-8BFB-05259260C556.png",
+      "path": "/tmp/starfall-terminal-phone-inset-images/6C6F4AF7-911A-4BF1-AE1D-AD2F26EC8531.png",
+      "sha256": "9fe74887906aff0f108a2e7b64988c3d62a1fe0f4a168dd2e4ed1a146bbcfe6a"
+    },
+    {
+      "batch": "phone",
+      "test": "StarfallInteractionTests/testTerminalOutcomesPersistAndRestart()",
+      "name": "terminal-last-move-won-restored_0_5E0F92CE-9228-483B-BA55-9B02291F2DF6.png",
+      "path": "/tmp/starfall-terminal-phone-inset-images/A391F014-6E12-4AF0-AF9E-016547EEDD4F.png",
+      "sha256": "42e73f2db473e26a0e21ef142e0923b85917ec5f8ba7b9fc89d6dde3d1231f9f"
+    },
+    {
+      "batch": "phone",
+      "test": "StarfallInteractionTests/testTerminalOutcomesPersistAndRestart()",
+      "name": "terminal-12-action-visible_0_A0521E3B-C9AC-4CF3-AC63-3AEC52711400.png",
+      "path": "/tmp/starfall-terminal-phone-inset-images/4684FE6B-E9FA-4A8C-8185-8A0D228C3E8F.png",
+      "sha256": "42e73f2db473e26a0e21ef142e0923b85917ec5f8ba7b9fc89d6dde3d1231f9f"
+    },
+    {
+      "batch": "phone",
+      "test": "StarfallInteractionTests/testTerminalOutcomesPersistAndRestart()",
+      "name": "terminal-won-restored_0_08BCF284-A25F-4AD1-88DD-7F6990F27031.png",
+      "path": "/tmp/starfall-terminal-phone-inset-images/86A67443-32E5-4D56-A606-97F34A1B7871.png",
+      "sha256": "e1bc6e2ca4c8cafac5c66f5ca2ae7b66a3c8014ce0ae6f6db7e0be5ffe24844d"
+    },
+    {
+      "batch": "phone",
+      "test": "StarfallInteractionTests/testTerminalOutcomesPersistAndRestart()",
+      "name": "terminal-6-action-visible_0_D55A35F2-9A0A-4C5E-A2C6-6A8C717D1366.png",
+      "path": "/tmp/starfall-terminal-phone-inset-images/CEE01EE2-18D2-4DC7-86B0-E3866CE7DE97.png",
+      "sha256": "e1bc6e2ca4c8cafac5c66f5ca2ae7b66a3c8014ce0ae6f6db7e0be5ffe24844d"
+    },
+    {
+      "batch": "ipad",
+      "test": "StarfallInteractionTests/testAdaptiveLayoutKeepsBoardAndControlsReachable()",
+      "name": "adaptive-layout-restarted_0_87813FDB-EF4B-4A87-AA20-9561D3A595DA.png",
+      "path": "/tmp/starfall-terminal-ipad-images/F53C7D40-FC19-493A-A9B3-8AB2676B8461.png",
+      "sha256": "191f54a824d7ddce7693435c7b0634f52a5cda835d3a34c10358f029c6a4a060"
+    },
+    {
+      "batch": "ipad",
+      "test": "StarfallInteractionTests/testAdaptiveLayoutKeepsBoardAndControlsReachable()",
+      "name": "adaptive-layout-reflowed_0_2337AC2C-BE0B-4BA8-9BD8-1DC576F2C1CB.png",
+      "path": "/tmp/starfall-terminal-ipad-images/BC62D59E-EB7A-41ED-89E1-80F536062E46.png",
+      "sha256": "dba29ac8e0c34db601c3e6e8082cd7beb293fa75f27551e15dc4cfa3c7339d0b"
+    },
+    {
+      "batch": "ipad",
+      "test": "StarfallInteractionTests/testAdaptiveLayoutKeepsBoardAndControlsReachable()",
+      "name": "adaptive-layout-initial_0_6E50EBAB-4D13-425B-9FE1-87938DBA85D6.png",
+      "path": "/tmp/starfall-terminal-ipad-images/637A8083-72E4-419E-BB2B-A33E7330D092.png",
+      "sha256": "2da0ae26e4db09bee380d7491088ff62be6094d3cecd60ac26e15acb98431ba7"
+    },
+    {
+      "batch": "ipad",
+      "test": "StarfallInteractionTests/testTerminalOutcomesPersistAndRestart()",
+      "name": "terminal-lost-restored_0_00C2D339-4DE9-47F3-A321-62633F5CFE6C.png",
+      "path": "/tmp/starfall-terminal-ipad-images/F391511C-D54F-47D8-BB53-48071BED76A8.png",
+      "sha256": "972c50f46751b5f49323895386eadf9af41ec6aa0265d26b5d4ba29ebaf4374e"
+    },
+    {
+      "batch": "ipad",
+      "test": "StarfallInteractionTests/testTerminalOutcomesPersistAndRestart()",
+      "name": "terminal-0-action-visible_0_A063AE74-7BA2-4813-A4EC-E3C7B40D2C0B.png",
+      "path": "/tmp/starfall-terminal-ipad-images/118DED17-B063-4795-8642-1CC5B83F7EBE.png",
+      "sha256": "972c50f46751b5f49323895386eadf9af41ec6aa0265d26b5d4ba29ebaf4374e"
+    },
+    {
+      "batch": "ipad",
+      "test": "StarfallInteractionTests/testTerminalOutcomesPersistAndRestart()",
+      "name": "terminal-last-move-won-restored_0_ED976089-2C0B-41F6-8504-8AE43CB96DFD.png",
+      "path": "/tmp/starfall-terminal-ipad-images/36487AEC-1754-431F-9335-F2FBE7576B53.png",
+      "sha256": "f23433725d4995c8ba6d2c8ca0c409ac825b77e15d29a955fe460a730365717f"
+    },
+    {
+      "batch": "ipad",
+      "test": "StarfallInteractionTests/testTerminalOutcomesPersistAndRestart()",
+      "name": "terminal-12-action-visible_0_883CC696-D2DB-4CEB-936B-B3171576EB69.png",
+      "path": "/tmp/starfall-terminal-ipad-images/C8400D6E-9E89-47AE-9EC0-0527A301D255.png",
+      "sha256": "f23433725d4995c8ba6d2c8ca0c409ac825b77e15d29a955fe460a730365717f"
+    },
+    {
+      "batch": "ipad",
+      "test": "StarfallInteractionTests/testTerminalOutcomesPersistAndRestart()",
+      "name": "terminal-won-restored_0_4F784128-A7F2-4958-9AC7-421613A35148.png",
+      "path": "/tmp/starfall-terminal-ipad-images/DA58055E-178D-4F10-B640-A3A5F8206C4F.png",
+      "sha256": "9b706aec463188d0cdc0c58744a6b86946c35380777a83e994b76f776a485f30"
+    },
+    {
+      "batch": "ipad",
+      "test": "StarfallInteractionTests/testTerminalOutcomesPersistAndRestart()",
+      "name": "terminal-6-action-visible_0_4634CE81-EC99-4F24-BCF6-B13DE860C5BA.png",
+      "path": "/tmp/starfall-terminal-ipad-images/85335795-CCED-46A2-AC64-F8258DB7B833.png",
+      "sha256": "9b706aec463188d0cdc0c58744a6b86946c35380777a83e994b76f776a485f30"
+    },
+    {
+      "batch": "input",
+      "test": "StarfallInteractionTests/testAccessibleBoardControlsClearAndExplainInvalidGroups()",
+      "name": "accessible-board-post-clear_0_D5532C7E-64BE-4601-9A91-4500A1A47B28.png",
+      "path": "/tmp/starfall-terminal-input-images/292972B4-E2A0-4E83-ABF5-3F0AC87F3E6B.png",
+      "sha256": "6418fe6002ee4d56daba85e1887f101b5d33a463ce9abe034dcdbdaaf7567370"
+    },
+    {
+      "batch": "input",
+      "test": "StarfallInteractionTests/testDefaultStarshardFamilyCalmTerminalResumeAndRestart()",
+      "name": "family-calm-0-resumed_0_DF7F68AF-0DDC-49C7-8491-299172C77DBD.png",
+      "path": "/tmp/starfall-terminal-input-images/B8E49E47-7E20-4D42-B83F-3798FF6A5DFB.png",
+      "sha256": "fc494c9e54b8ac21e8b332a05e030d66df5112e313102bf2b1625fa2e031e4e1"
+    },
+    {
+      "batch": "input",
+      "test": "StarfallInteractionTests/testDefaultStarshardFamilyCalmTerminalResumeAndRestart()",
+      "name": "family-calm-6-resumed_0_D6AC72D8-17A9-4949-A2B5-25BFC476BC9D.png",
+      "path": "/tmp/starfall-terminal-input-images/208EB2F2-F0AE-4288-A142-8D9160DC365F.png",
+      "sha256": "71e6a1137d13bd5d4759641564aafae3198530baeef20ee6048ecd222cd17393"
+    },
+    {
+      "batch": "input",
+      "test": "StarfallInteractionTests/testRapidTapInvalidTapAndCancelledDrag()",
+      "name": "rapid-input-settled_0_51E92F36-E161-4BD6-8EFF-900B57A0D192.png",
+      "path": "/tmp/starfall-terminal-input-images/19A18A3D-BC87-4CB0-B0D9-958575205A29.png",
+      "sha256": "64c3591385dc1c73110d8911439ee7dd6f048e60c4fb48951923d7e766a6f249"
+    }
+  ],
+  "initialCandidate": {
+    "resultBundle": "/tmp/starfall-terminal-phone.xcresult",
+    "passed": 1,
+    "failed": 1,
+    "failure": "Normal terminal action reached the viewport edge at y667; expected inset visibility failed. Corrected passive destination includes existing20pt page inset; original assertions retained.",
+    "summarySHA256": "a1dd4bd9d0f0d8701b3f6b914e03c1181bd72e4bf719532a5722502574da8d24",
+    "logSHA256": "20c407adff457deb1c0abe94dca75cb59e1914efcd7fd79d50a5a14c4247e726"
+  }
+}

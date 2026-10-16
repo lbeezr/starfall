@@ -274,7 +274,14 @@ final class StarfallInteractionTests: XCTestCase {
         executionTimeAllowance = 180
         continueAfterFailure = false
         let app = XCUIApplication()
-        defer { app.terminate() }
+        let device = XCUIDevice.shared
+        let previousOrientation = device.orientation
+        let isPad = UIDevice.current.userInterfaceIdiom == .pad
+        device.orientation = isPad ? .landscapeLeft : .portrait
+        defer {
+            app.terminate()
+            device.orientation = previousOrientation.isLandscape ? previousOrientation : .portrait
+        }
         let cases = [
             (seed: 6, row: 5, column: 3, score: 70, moves: 2,
              outcome: "Sky illuminated", message: "You lit the sky!", image: "terminal-won-restored"),
@@ -290,8 +297,16 @@ final class StarfallInteractionTests: XCTestCase {
             XCTAssertTrue(play.waitForExistence(timeout: 10))
             play.tap()
             XCTAssertFalse(app.staticTexts["game.outcome"].exists)
+            let board = app.descendants(matching: .any)["game.board"].firstMatch
+            let initialBoardFrame = board.frame
             tapBoard(app, row: fixture.row, column: fixture.column)
             assertLabel(app, "game.outcome", fixture.outcome)
+            assertTerminalActionVisible(app)
+            if isPad {
+                XCTAssertEqual(board.frame.minY, initialBoardFrame.minY, accuracy: 2,
+                               "A visible tablet sidebar must not scroll the board")
+            }
+            attachScreenScreenshot(name: "terminal-\(fixture.seed)-action-visible")
             assertLabel(app, "game.message", fixture.message)
             assertLabel(app, "game.score", "\(fixture.score) of 70 jewels cleared")
             assertLabel(app, "game.moves", "\(fixture.moves) moves")
@@ -316,14 +331,56 @@ final class StarfallInteractionTests: XCTestCase {
             assertLabel(app, "game.message", fixture.message)
             assertLabel(app, "game.score", "\(fixture.score) of 70 jewels cleared")
             assertLabel(app, "game.moves", "\(fixture.moves) moves")
-            attachScreenshot(app, name: fixture.image)
+            assertTerminalActionVisible(app)
+            attachScreenScreenshot(name: fixture.image)
             app.buttons["game.restart"].tap()
             assertLabel(app, "game.moves", "18 moves")
             assertLabel(app, "game.score", "0 of 70 jewels cleared")
             assertLabel(app, "game.message", "A fresh sky. Find your first cluster")
             XCTAssertFalse(app.staticTexts["game.outcome"].exists)
+            XCTAssertTrue(app.scrollViews.firstMatch.frame.contains(app.buttons["game.menu"].frame),
+                          "Restart must return navigation to the viewport")
+            let restartedBoard = app.descendants(matching: .any)["game.board"].firstMatch
+            XCTAssertEqual(restartedBoard.frame.minY, initialBoardFrame.minY, accuracy: 2,
+                           "Restart must restore the initial board position")
             app.terminate()
         }
+    }
+
+    /// Terminal reading starts at the outcome at maximum text size; the native
+    /// audit and restart still use the real scrollable production controls.
+    @MainActor
+    func testLargestTextTerminalResultAndRestart() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchArguments = ["--reset-save", "--endgame-seed=6",
+                               "-UIPreferredContentSizeCategoryName",
+                               "UICTContentSizeCategoryAccessibilityXXXL"]
+        app.launch()
+        defer { app.terminate() }
+        let play = app.buttons["menu.play"]
+        XCTAssertTrue(play.waitForExistence(timeout: 10))
+        reveal(play, in: app, scrollingUp: true)
+        play.tap()
+        let board = app.descendants(matching: .any)["game.board"].firstMatch
+        reveal(board, in: app, scrollingUp: true, fullyVisible: true)
+        tapBoard(app, row: 5, column: 3)
+        assertLabel(app, "game.outcome", "Sky illuminated")
+        assertLabel(app, "game.result-detail", "70 starlight released")
+        XCTAssertTrue(waitFor(NSPredicate { _, _ in
+            app.scrollViews.firstMatch.frame.contains(app.staticTexts["game.outcome"].frame)
+        }, on: app))
+        attachScreenshot(app, name: "terminal-largest-text-result")
+        try app.performAccessibilityAudit(for: [.textClipped, .sufficientElementDescription, .hitRegion])
+        let restart = app.buttons["game.restart"]
+        reveal(restart, in: app, scrollingUp: true, fullyVisible: true)
+        attachScreenshot(app, name: "terminal-largest-text-restart-ready")
+        restart.tap()
+        assertLabel(app, "game.moves", "18 moves")
+        assertLabel(app, "game.score", "0 of 70 jewels cleared")
+        XCTAssertTrue(app.scrollViews.firstMatch.frame.contains(app.buttons["game.menu"].frame))
+        XCTAssertFalse(app.staticTexts["game.outcome"].exists)
+        attachScreenshot(app, name: "terminal-largest-text-restarted")
     }
 
     /// Uses the system Dynamic Type launch preference and Apple's native audit.
@@ -646,7 +703,7 @@ final class StarfallInteractionTests: XCTestCase {
             XCTAssertTrue(waitFor(NSPredicate { _, _ in app.frame.width > app.frame.height }, on: app))
         }
         // Keep baseline evidence even when its old stacked landscape layout fails.
-        attachAdaptiveScreenshot(name: "adaptive-layout-initial")
+        attachScreenScreenshot(name: "adaptive-layout-initial")
         XCTAssertEqual(app.frame.width > app.frame.height, isPad)
         assertAdaptiveGameLayout(app, spacious: isPad)
         assertLabel(app, "game.moves", "18 moves")
@@ -678,7 +735,7 @@ final class StarfallInteractionTests: XCTestCase {
         assertLabel(app, "game.moves", "16 moves")
         assertLabel(app, "game.score", "7 of 70 jewels cleared")
         XCTAssertTrue(waitFor(NSPredicate(format: "enabled == true"), on: menu))
-        attachAdaptiveScreenshot(name: "adaptive-layout-reflowed")
+        attachScreenScreenshot(name: "adaptive-layout-reflowed")
 
         app.buttons["game.settings"].tap()
         let done = app.buttons["settings.done"]
@@ -705,11 +762,11 @@ final class StarfallInteractionTests: XCTestCase {
         restart.tap()
         assertLabel(app, "game.moves", "18 moves")
         assertLabel(app, "game.score", "0 of 70 jewels cleared")
-        attachAdaptiveScreenshot(name: "adaptive-layout-restarted")
+        attachScreenScreenshot(name: "adaptive-layout-restarted")
     }
 
     @MainActor
-    private func attachAdaptiveScreenshot(name: String) {
+    private func attachScreenScreenshot(name: String) {
         // Full-screen capture preserves landscape framing on the iPad runner.
         let attachment = XCTAttachment(screenshot: XCUIScreen.main.screenshot())
         attachment.name = name
@@ -759,6 +816,27 @@ final class StarfallInteractionTests: XCTestCase {
                                        "Portrait must retain the stacked HUD above the board",
                                        file: file, line: line)
         }
+    }
+
+    @MainActor
+    private func assertTerminalActionVisible(_ app: XCUIApplication,
+                                            file: StaticString = #filePath, line: UInt = #line) {
+        let restart = app.buttons["game.restart"]
+        let contents = [app.staticTexts["game.outcome"], app.staticTexts["game.result-detail"],
+                        app.staticTexts["game.message"], restart]
+        let visible = waitFor(NSPredicate { _, _ in
+            let viewport = app.scrollViews.firstMatch.frame.insetBy(dx: 0, dy: 2)
+            return restart.isEnabled && restart.isHittable && contents.allSatisfy {
+                $0.exists && !$0.frame.isEmpty && viewport.contains($0.frame)
+            }
+        }, on: restart)
+        if !visible {
+            print("TERMINAL_VIEWPORT \(app.scrollViews.firstMatch.frame)")
+            for element in contents { print("TERMINAL_ELEMENT \(element.identifier): \(element.frame)") }
+            attachScreenScreenshot(name: "terminal-result-not-visible")
+        }
+        XCTAssertTrue(visible, "The settled result and New game must be visible before any scroll or tap",
+                      file: file, line: line)
     }
 
     @MainActor
