@@ -147,26 +147,28 @@ xcodebuild -project Starfall.xcodeproj -scheme Starfall \
   DEVELOPMENT_TEAM= CODE_SIGN_STYLE=Manual test \
   2>&1 | tee artifacts/ui-tests.log
 UI_STATUS=${PIPESTATUS[0]}
-set -e
-# Export the summary even on a failed test when a valid result bundle exists.
-if [[ -d "$UI_RESULT" ]]; then
-  xcrun xcresulttool get test-results summary --path "$UI_RESULT" --compact \
-    > artifacts/ui-test-summary.json
-fi
-if [[ "$UI_STATUS" != 0 ]]; then
-  echo "Native UI test failed (xcodebuild exit $UI_STATUS); see ui-tests.log." >&2
-  exit "$UI_STATUS"
-fi
-xcrun xcresulttool export attachments --path "$UI_RESULT" --output-path "$UI_EXPORT"
-python3 - "$UI_EXPORT" <<'PY'
+# Attempt compact evidence export even after a test failure. Keep its original
+# exit status; attachment export must never turn a failed test into success.
+xcrun xcresulttool get test-results summary --path "$UI_RESULT" --compact \
+  > artifacts/ui-test-summary.json
+UI_SUMMARY_STATUS=$?
+xcrun xcresulttool export attachments --path "$UI_RESULT" --output-path "$UI_EXPORT" \
+  > artifacts/ui-export.log 2>&1
+UI_EXPORT_STATUS=$?
+python3 - "$UI_EXPORT" "$UI_STATUS" <<'PY'
 from pathlib import Path
 import hashlib, json, shutil, sys
 root = Path(sys.argv[1]).resolve()
+test_passed = int(sys.argv[2]) == 0
 summary = json.loads(Path('artifacts/ui-test-summary.json').read_text())
-if summary.get('passedTests') != 1 or summary.get('failedTests') != 0:
+if test_passed and (summary.get('passedTests') != 1 or summary.get('failedTests') != 0):
     raise SystemExit('Expected exactly one passing UI test and zero failures; inspect summary.')
 manifest_path = root / 'manifest.json'
-manifest = json.loads(manifest_path.read_text())
+manifest_bytes = manifest_path.read_bytes()
+if len(manifest_bytes) > 250_000:
+    raise SystemExit('Attachment manifest exceeds compact evidence limit.')
+Path('artifacts/ui-export-manifest.json').write_bytes(manifest_bytes)
+manifest = json.loads(manifest_bytes)
 
 def objects(value):
     if isinstance(value, dict):
@@ -182,6 +184,8 @@ for name in ('real-touch-post-clear', 'real-touch-restarted'):
     matches = [x for x in objects(manifest)
                if str(x.get('suggestedHumanReadableName', '')).startswith(name)
                and x.get('exportedFileName')]
+    if not matches and not test_passed:
+        continue  # A later stage may not have been reached in the failed test.
     if len(matches) != 1:
         raise SystemExit(f'Expected exactly one named attachment {name}; found {len(matches)}.')
     source = (root / matches[0]['exportedFileName']).resolve()
@@ -195,8 +199,24 @@ for name in ('real-touch-post-clear', 'real-touch-restarted'):
     records.append({'name': name, 'file': target.name,
                     'sha256': hashlib.sha256(data).hexdigest(), 'export': matches[0]})
 Path('artifacts/ui-attachment-manifest.json').write_text(json.dumps(records, indent=2) + '\n')
-print('PASS: one real-input UI test passed; both named native PNG attachments exported.')
+Path('artifacts/ui-evidence-status.json').write_text(json.dumps({
+    'testPassed': test_passed, 'xcodebuildExitCode': int(sys.argv[2]),
+    'namedScreenshotsExported': len(records),
+    'partialEvidenceOnly': not test_passed}, indent=2) + '\n')
+print(f'Exported {len(records)} named screenshot(s); testPassed={test_passed}.')
 PY
+UI_PARSE_STATUS=$?
+set -e
+(cd artifacts && shasum -a 256 *.png > screenshot-sha256.txt)
+if [[ "$UI_STATUS" != 0 ]]; then
+  printf '%s\n' "FAIL: native UI test (xcodebuild exit $UI_STATUS). Any exported UI screenshots are partial evidence only." \
+    | tee artifacts/ui-result.txt
+  exit "$UI_STATUS"
+fi
+if [[ "$UI_SUMMARY_STATUS" != 0 || "$UI_EXPORT_STATUS" != 0 || "$UI_PARSE_STATUS" != 0 ]]; then
+  echo 'UI evidence export/validation failed; inspect logs. No complete UI-evidence success claim.' >&2
+  exit 1
+fi
 printf '%s\n' 'PASS: one real coordinate-tap/navigation UI test and two exported XCTest screenshots.' \
   'See ui-test-summary.json and ui-attachment-manifest.json; no VoiceOver or rapid-input validation.' \
   | tee artifacts/ui-result.txt
