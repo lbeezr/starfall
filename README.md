@@ -93,3 +93,5 @@ The isolated [compact phase HUD trial](docs/evidence/compact-phase-2026-10-17/RE
 The latest [Starfall Lab drawing build](docs/evidence/constellation-trace-2026-10-17/README.md) clears only five or more matching stars traced by the player. It updates one stable isolated app; [development build IDs](docs/DEVELOPMENT_BUILDS.md) distinguish versions. Regular Starfall and its saved round remain intact until verified integration.
 
 The [sky flow](docs/design/SKY_FLOW.md) opens with Welcome/Resume, waits for Begin, and gives First Light wins and full skies their own endings. Cast stars settle while actions emerge. Existing constellation drawing and offline saves are preserved.
+
+The [shower forecast](docs/evidence/shower-forecast-adoption-2026-10-17/README.md) follows the upper camera contour on the calibrated iPhone 17 portrait layout. Other iPhones, tablets and accessible layouts show the same ordered incoming stars along a straight header trail. Physical camera fit remains unverified.

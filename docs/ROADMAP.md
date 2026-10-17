@@ -143,3 +143,5 @@ The [paused-feedback simulated follow-up](evidence/paused-feedback-2026-10-17/pl
 [VoiceOver gameplay flows](evidence/voiceover-gameplay-2026-10-17/README.md) now cover ordinary First Light completion/restore/replay, automatic play/menu/background, and maximum-text overflow/replay on 17e. Automatic nonterminal showers stay quiet during exploration. Keep device/custom-rotor acceptance separate. The [guide-name typography polish](evidence/guide-typography-2026-10-17/README.md) now restrains Sunny while preserving readable primary text and controls.
 
 The selected [overlapping sky flow](design/SKY_FLOW.md) adds Welcome/Resume, explicit Begin and separate win/full-sky endings. It extends the adopted drawing game; integration verification is recorded with the flow evidence.
+
+The user selected the [curved shower forecast](evidence/shower-forecast-adoption-2026-10-17/README.md). It is default on calibrated iPhone 17 portrait; other hardware and accessible layouts retain a complete straight header forecast. Next verify physical fit/system-island expansion and forecast recognition before adding more camera profiles. The lower arc remains unused.

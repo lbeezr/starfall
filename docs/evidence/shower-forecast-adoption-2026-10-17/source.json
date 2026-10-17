@@ -1,0 +1,7 @@
+{
+  "App/FallingSkyHUD.swift": "90eb8e7cec742138a6cedff1c299f4e714372dcabb81db884845f76a79cf014f",
+  "App/FallingSkyView.swift": "6ad378440b6a06d820c6d1050d8a9fe90335f62ea05ded77891886bc267aa53b",
+  "App/StarfallTheme.swift": "7caadcde9ac64f0bbf239573884174ebab647c06986e5afb05af474a09f77faf",
+  "AppTests/ObservatoryGeometryTests.swift": "b6566a416390a882485f4a8d3cec6edb3b97f29c235b81a505cffa4765a059df",
+  "UITests/FallingSkyInteractionTests.swift": "1a3b7b536f1274873484c077aadb226c387095b7b5e5d4d5f2f7a7f9f8bcf665"
+}

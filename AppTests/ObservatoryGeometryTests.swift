@@ -105,3 +105,20 @@ final class ObservatoryGeometryTests: XCTestCase {
     }
     #endif
 }
+
+final class SkyShowerPlacementTests: XCTestCase {
+    func testOnlyCalibratedPortraitUsesCameraMargin() {
+        let phone = CGSize(width: 402, height: 778)
+        XCTAssertTrue(SkyShowerPlacement.usesIsland(hardware: "iPhone18,3", size: phone, topInset: 62, accessible: false))
+        for hardware in ["", "iPhone14,6", "iPhone17,5", "future-device"] {
+            XCTAssertFalse(SkyShowerPlacement.usesIsland(hardware: hardware, size: phone, topInset: 62, accessible: false))
+        }
+        XCTAssertFalse(SkyShowerPlacement.usesIsland(hardware: "iPhone18,3", size: phone, topInset: 62, accessible: true))
+        for (size, inset) in [(CGSize(width: 874, height: 402), CGFloat(0)),
+                              (CGSize(width: 768, height: 1024), CGFloat(62)),
+                              (phone, CGFloat(0)), (phone, CGFloat(82)),
+                              (CGSize(width: 375, height: 667), CGFloat(20))] {
+            XCTAssertFalse(SkyShowerPlacement.usesIsland(hardware: "iPhone18,3", size: size, topInset: inset, accessible: false))
+        }
+    }
+}
