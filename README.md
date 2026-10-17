@@ -91,3 +91,5 @@ The selected [environment art direction and roadmap](docs/design/environments/PR
 The isolated [compact phase HUD trial](docs/evidence/compact-phase-2026-10-17/README.md) makes Surge playable with the committed score/menu layout and no forecast strip. Production generation remains unchanged pending observed comparison. A [matched Observatory pair](docs/evidence/observatory-phases-2026-10-17/README.md) now supports comparison on the integrated interface, with separate save suites and explicit accessibility/layout gaps.
 
 The latest [Starfall Lab drawing build](docs/evidence/constellation-trace-2026-10-17/README.md) clears only five or more matching stars traced by the player. It updates one stable isolated app; [development build IDs](docs/DEVELOPMENT_BUILDS.md) distinguish versions. Regular Starfall and its saved round remain intact until verified integration.
+
+The [sky flow](docs/design/SKY_FLOW.md) opens with Welcome/Resume, waits for Begin, and gives First Light wins and full skies their own endings. Cast stars settle while actions emerge. Existing constellation drawing and offline saves are preserved.

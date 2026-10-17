@@ -37,6 +37,7 @@ import StarfallCore
 @MainActor @Observable final class FallingSkyStore {
     static let saveKey = "starfall.accumulation.v3"
     private(set) var game: FallingSky
+    private(set) var hasSavedSky = false
     private(set) var busy = false
     private(set) var suspended = true
     private(set) var isPaused = true
@@ -79,6 +80,7 @@ import StarfallCore
         if !arguments.contains("--starfalls-reset"), let data = defaults.data(forKey: Self.saveKey),
            let saved = try? JSONDecoder().decode(FallingSky.self, from: data), saved.isValidSave {
             game = saved
+            hasSavedSky = true
             message = saved.outcome == .won ? "First Light complete. Replay it or start a new sky." : saved.isOver ? "This sky is full. Replay it or try a new sky." : "Your sky is paused. Resume when you're ready."
         } else {
             let argument = arguments.first { $0.hasPrefix("--starfalls-seed=") }
@@ -312,7 +314,10 @@ import StarfallCore
     }
 
     private func save() {
-        if let data = try? JSONEncoder().encode(game) { defaults.set(data, forKey: Self.saveKey) }
+        if let data = try? JSONEncoder().encode(game) {
+            hasSavedSky = true
+            defaults.set(data, forKey: Self.saveKey)
+        }
     }
 }
 

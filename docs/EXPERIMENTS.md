@@ -6,6 +6,7 @@ This is the authoritative status register for gameplay and presentation experime
 
 | Work | Status | Production boundary / next decision |
 | --- | --- | --- |
+| Welcome, entry and sky endings | Adopted; user selected overlapping reveal | [Contract](design/SKY_FLOW.md). Production presentation only; seeded rules/saves unchanged. Welcome/Resume, explicit Begin, First Light win, gentle full-sky ending, replay/fresh sky. No reward economy or campaign. [Native verification and limits](evidence/sky-flow-2026-10-17/INTEGRATION.md): 17e/SE3 flow, restore, reduced motion and largest text pass; device/actual VoiceOver remain RC work. |
 | Crystal Glow character refinement | Adopted; user-approved direction and masters | Shared cast factory composes packaged bodies with four expressions and shallow turns; separate body-aware ground shadows. No rule/save/geometry change. [Integration evidence](evidence/crystal-glow-integration-2026-10-17/README.md) records native passes and reproduced baseline accessibility failures. |
 | Falling sky: accumulating stars, showers, growth, dark stars, local balance | Adopted | Default game in Debug and Release. Production owners are `FallingSky`, `FallingSkyStore`, `FallingSkyScene`, and `FallingSkyView`. |
 | Angled arrivals, weighted rebounds, survivor ripples | Adopted | Default presentation, no pilot flag. Rule/save outcomes unchanged. [Evidence](evidence/physical-reactions-2026-10-17/README.md); device/human tuning remains open. |

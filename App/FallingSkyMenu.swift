@@ -15,6 +15,7 @@ struct FallingSkyMenu: View {
     let pause: () -> Void
     let restart: (Bool) -> Void
     let firstLight: () -> Void
+    let observatory: () -> Void
     let setBalance: (StarfallBalance) -> Void
     let done: () -> Void
 
@@ -35,6 +36,10 @@ struct FallingSkyMenu: View {
                 } header: { Text("Moonlit Observatory") } footer: {
                     Text("\(turns) showers · \(groups) matching groups ready")
                         .accessibilityIdentifier("experiment.roundSummary")
+                }
+                Section {
+                    Button(action: observatory) { Label("Back to Observatory", systemImage: "moon.stars") }
+                        .accessibilityIdentifier("sky.home")
                 }
                 Section("Feel & atmosphere") {
                     SkyPreferenceToggle(title: "Sound", symbol: "speaker.wave.2", value: $sound, identifier: "experiment.sound")

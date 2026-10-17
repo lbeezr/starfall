@@ -5,10 +5,11 @@ import StarfallCore
 
 // Historical experiment.* accessibility IDs remain stable for automation and assistive clients.
 @MainActor struct FallingSkyView: View {
-    @State private var store = FallingSkyStore()
+    @State private var store = FallingSkyStore.forSkyFlowApp()
     @State private var trace = ConstellationTraceIntent()
     @State private var traceFeedback = ConstellationTraceFeedback()
     @State private var settings = false
+    @State private var flow = SkyFlowScreen.initial()
     @State private var environmentGeneration = 0
     @AccessibilityFocusState private var menuFocused: Bool
     @AppStorage("calmEffects") private var calmEffects = false
@@ -25,39 +26,57 @@ import StarfallCore
     }
     @Namespace private var matchingGroups
 
+    private var endingReady: Bool { flow == .playing && store.game.isOver && !store.busy }
+    private var showingCeremony: Bool { flow != .playing || endingReady }
+    private var quietMotion: Bool { reduceMotion || calmEffects || voiceOver }
+
     var body: some View {
-        GeometryReader { safeViewport in
-            if largeText {
-                ScrollView {
-                    VStack(spacing: StarfallTheme.Spacing.small) {
-                        playfield(insets: safeViewport.safeAreaInsets, compact: safeViewport.size.height < 750)
-                            .frame(height: safeViewport.size.height)
-                        guide(compact: safeViewport.size.height < 750)
-                            .accessibilityHidden(settings)
-                            .padding(.horizontal, StarfallTheme.Spacing.medium)
-                            .padding(.bottom, safeViewport.safeAreaInsets.bottom + StarfallTheme.Spacing.small)
+        ZStack {
+            GeometryReader { safeViewport in
+                if largeText {
+                    ScrollView {
+                        VStack(spacing: StarfallTheme.Spacing.small) {
+                            playfield(insets: safeViewport.safeAreaInsets, compact: safeViewport.size.height < 750)
+                                .frame(height: safeViewport.size.height)
+                            if !showingCeremony {
+                                guide(compact: safeViewport.size.height < 750)
+                                    .accessibilityHidden(settings)
+                                    .padding(.horizontal, StarfallTheme.Spacing.medium)
+                                    .padding(.bottom, safeViewport.safeAreaInsets.bottom + StarfallTheme.Spacing.small)
+                            }
+                        }
                     }
+                    .ignoresSafeArea()
+                } else {
+                    playfield(insets: safeViewport.safeAreaInsets, compact: safeViewport.size.height < 750).ignoresSafeArea()
                 }
-                .ignoresSafeArea()
-            } else {
-                playfield(insets: safeViewport.safeAreaInsets, compact: safeViewport.size.height < 750).ignoresSafeArea()
+            }
+            if showingCeremony {
+                SkyFlowCeremony(screen: endingReady ? (store.game.outcome == .won ? .won : .full) : flow,
+                                challenge: store.game.challenge != nil, score: store.game.score,
+                                hasSavedSky: store.hasSavedSky, lastSkyEnded: store.game.isOver,
+                                active: scenePhase == .active, quiet: quietMotion,
+                                action: handleFlowAction)
+                    .id(endingReady ? (store.game.outcome == .won ? "won" : "full") : String(describing: flow))
             }
         }
         .preferredColorScheme(.dark)
         .statusBarHidden(!settings)
         .tint(StarfallTheme.Colors.actionPrimary)
-        .onAppear { store.setSuspended(false); store.settlePresentation(); updateMotion() }
+        .onAppear { updateSuspension(); store.settlePresentation(); updateMotion() }
         .onDisappear { cancelConstellation(); store.setSuspended(true) }
         .onChange(of: store.constellationInputGeneration) { cancelConstellation() }
         .onChange(of: store.game) { cancelConstellation() }
         .onChange(of: store.canClear) { _, enabled in if !enabled { cancelConstellation() } }
         .onChange(of: store.isPaused) { cancelConstellation() }
-        .onChange(of: scenePhase) { _, phase in store.setSuspended(phase != .active || settings) }
-        .onChange(of: settings) { _, shown in store.setSuspended(shown || scenePhase != .active) }
+        .onChange(of: scenePhase) { updateSuspension() }
+        .onChange(of: settings) { updateSuspension() }
+        .onChange(of: flow) { cancelConstellation(); updateSuspension() }
+        .onChange(of: endingReady) { updateSuspension() }
         .onChange(of: reduceMotion) { updateMotion() }
         .onChange(of: voiceOver) { updateMotion() }
         .onChange(of: calmEffects) { updateMotion() }
-        .sheet(isPresented: $settings, onDismiss: { if voiceOver { menuFocused = true } }) { settingsView }
+        .sheet(isPresented: $settings, onDismiss: { if voiceOver && !showingCeremony { menuFocused = true } }) { settingsView }
     }
 
     /// The terrace owns its complete canvas. At accessibility sizes the guide is
@@ -65,27 +84,22 @@ import StarfallCore
     private func playfield(insets: EdgeInsets, compact: Bool) -> some View {
         ZStack {
             board
-            VStack(spacing: StarfallTheme.Spacing.small) {
-                compactHeader
-                Spacer(minLength: 0)
-                if !largeText { guide(compact: compact) }
+            if !showingCeremony {
+                VStack(spacing: StarfallTheme.Spacing.small) {
+                    compactHeader
+                    Spacer(minLength: 0)
+                    if !largeText { guide(compact: compact) }
+                }
+                .padding(.horizontal, StarfallTheme.Spacing.medium)
+                .padding(.top, insets.top)
+                .padding(.bottom, insets.bottom + StarfallTheme.Spacing.small)
             }
-            .padding(.horizontal, StarfallTheme.Spacing.medium)
-            .padding(.top, insets.top)
-            .padding(.bottom, insets.bottom + StarfallTheme.Spacing.small)
         }
-        .accessibilityHidden(settings)
+        .accessibilityHidden(settings || showingCeremony)
     }
 
     @ViewBuilder private func guide(compact: Bool) -> some View {
-        if store.game.isOver {
-            SkyGuideCard(title: store.game.outcome == .won ? "First Light complete" : "This sky is full",
-                         message: store.message, titleIdentifier: "experiment.outcome", titleRole: .outcome) {
-                restartControls.buttonStyle(StarfallGameButtonStyle())
-            }
-            .padding(.trailing, largeText ? 0 : StarfallTheme.Layout.guidePropClearance)
-            .frame(maxWidth: .infinity, alignment: .leading)
-        } else if store.isPaused {
+        if store.isPaused && !store.game.isOver {
             SkyGuideCard(title: "Sunny",
                          message: store.message, showsPortrait: !compact) {
                 controlLayout {
@@ -142,22 +156,23 @@ import StarfallCore
         VStack(spacing: 0) {
             GeometryReader { geometry in
                 ZStack {
-                    ObservatoryEnvironment(active: scenePhase == .active && !settings,
+                    ObservatoryEnvironment(active: scenePhase == .active && !settings && !showingCeremony,
                                            reducedMotion: reduceMotion || calmEffects || voiceOver || reduceTransparency)
                         .id(environmentGeneration)
                     if environmentContrast == .increased || reduceTransparency {
                         Color.black.opacity(0.28).allowsHitTesting(false).accessibilityHidden(true)
                     }
                     SpriteView(scene: store.scene, options: [.allowsTransparency])
+                        .opacity(showingCeremony ? 0 : 1)
                         .allowsHitTesting(false).accessibilityHidden(true)
                     let mapping = ObservatoryGeometry(size: geometry.size)
-                    if !settings {
+                    if !settings && !showingCeremony {
                     ForEach((0..<7).reversed(), id: \.self) { row in
                         ForEach(0..<7, id: \.self) { column in
                             let cell = Cell(row, column)
                             let frame = mapping.frame(cell)
                             cellButton(cell)
-                                .accessibilityHidden(settings)
+                                .accessibilityHidden(settings || showingCeremony)
                                 .frame(width: frame.width, height: frame.height)
                                 .contentShape(ObservatoryCellShape(points: mapping.polygon(cell).map {
                                     CGPoint(x: $0.x-frame.minX, y: $0.y-frame.minY)
@@ -219,13 +234,36 @@ import StarfallCore
         return "\(gem.grown ? "Large " : "")\(StarCast.character(for: kind).description), \(position)\(shade)"
     }
 
-    private var restartControls: some View {
-        controlLayout {
-            Button("Replay this sky") { environmentGeneration += 1; store.restart(sameSky: true); settings = false }
-                .accessibilityIdentifier("experiment.replay")
-            if !largeText { Spacer() }
-            Button("New sky") { environmentGeneration += 1; store.restart(sameSky: false); settings = false }
-                .accessibilityIdentifier("experiment.new")
+    private func updateSuspension() {
+        store.setSuspended(scenePhase != .active || settings || showingCeremony)
+    }
+
+    private func prepareSky(same: Bool) {
+        store.setSuspended(true)
+        store.restart(sameSky: same)
+        environmentGeneration += 1
+        flow = .entry
+        settings = false
+    }
+
+    private func handleFlowAction(_ action: SkyFlowAction) {
+        guard scenePhase == .active else { return }
+        switch action {
+        case .start:
+            guard flow == .welcome else { return }
+            if store.hasSavedSky { prepareSky(same: false) } else { flow = .entry }
+        case .firstLight:
+            store.setSuspended(true); store.startFirstLight()
+            environmentGeneration += 1; flow = .entry; settings = false
+        case .begin, .resume:
+            guard flow != .playing else { return }
+            flow = .playing
+            store.setSuspended(false)
+            if !store.game.isOver && store.isPaused { store.togglePause() }
+        case .replay: prepareSky(same: true)
+        case .another: prepareSky(same: false)
+        case .home:
+            store.setSuspended(true); flow = .welcome; settings = false
         }
     }
 
@@ -235,8 +273,9 @@ import StarfallCore
                        challenge: store.game.challenge != nil, balance: store.game.balance,
                        sound: $store.soundEnabled, haptics: $store.hapticsEnabled, calm: $calmEffects,
                        pause: togglePauseFromMenu,
-                       restart: { same in environmentGeneration += 1; store.restart(sameSky: same); settings = false },
-                       firstLight: { environmentGeneration += 1; store.startFirstLight(); settings = false },
+                       restart: { same in prepareSky(same: same) },
+                       firstLight: { handleFlowAction(.firstLight) },
+                       observatory: { handleFlowAction(.home) },
                        setBalance: store.setBalance, done: { settings = false })
     }
 }

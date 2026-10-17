@@ -72,4 +72,11 @@ After the menu/input-test corrections, **5/5 focused native tests pass, zero ski
 
 <img src="menu-footer-large.png" width="240" alt="Small iPhone menu at largest text size, scrolled to Sky balance, First Light and How to play, with development build metadata below the actions">
 
-**Runtime evidence — follow-up menu, iPhone SE / iOS 27.0 Simulator, verification build label `dev.menu-check`.** The inspected scrolled capture shows version metadata after the controls; native tests also activate those controls and dismiss the menu. It does not verify phone rendering, spoken accessibility or motion. App runtime fingerprint after this correction is **`dev.8f04d7ab96`**; the updater will install that committed main source in place when the follow-up merges.
+**Runtime evidence — follow-up menu, iPhone SE / iOS 27.0 Simulator, verification build label `dev.menu-check`.** The inspected scrolled capture shows version metadata after the controls; native tests also activate those controls and dismiss the menu. It does not verify phone rendering, spoken accessibility or motion. The menu-only candidate before the concurrent sky-flow merge was **`dev.8f04d7ab96`**; the combined source and its new runtime identity are recorded below.
+
+
+## Reconcile the concurrent sky-flow adoption
+
+Main advanced to **`ec4a4d1`** while the follow-up was finishing. The merge preserves its approved Welcome/Entry/Ending flow, `sky.home` action, test setup and source/resource membership, alongside the compact version footer and updater changes. The Game Center draft remains separate. The updater independently delivered that intervening main as **`dev.119addaccd`**, demonstrating a second main-driven update to the same phone identity.
+
+On the reconciled working tree (`2baadd3` plus the two shared-menu test-helper edits), **63 core tests and 3/3 focused SE UI tests pass, zero skips**: maximum-text trace/build menu, automatic arrivals then paused clear/settings, and menu/help/balance continuity. Output is `/tmp/starfall-reconciled-oneapp-core.log` and `/tmp/starfall-reconciled-footer-native.log`. This complements the previous five-case menu-only run and the sky-flow owner's source-bound integration checks; it is not a full combined 42-UI/91-hosted pass. The final runtime fingerprint is **`dev.72b56a43e7`**; installed provenance in the native menu and local `installed.json` must confirm its delivery after merge.
