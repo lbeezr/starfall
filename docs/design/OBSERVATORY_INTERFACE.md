@@ -46,7 +46,7 @@ The art registration fills the viewport vertically. On tall phones it crops a fe
 
 ## Message policy and voice
 
-Sunny is an observatory companion, not a narrator of every score change. Welcome: “Welcome to the Observatory. Match stars worth three to gather their light.” Paused: “Take a breath. Clear at your pace, or invite the next shower.” Outcomes retain the committed game's explicit result and restart choices. Existing store announcements remain authoritative for invalid groups/dark stars and VoiceOver.
+Sunny shows the store-owned message while paused: the opening value rule, corrective help, growth, clear and dark-star outcomes, or First Light objective. Active play stays quiet. Terminal outcomes retain the committed result and restart choices; transient text is not saved. Existing store announcements remain authoritative for VoiceOver. [Production guide evidence](../evidence/paused-guide-adoption-2026-10-17/README.md) records adoption and the remaining maximum-text board overlap.
 
 During flowing play, the comet trail supplies anticipation without an always-open dialogue box. A future contextual arrival/dark-star guide should be event-driven, bounded, dismissible and retained long enough to read; it must never interrupt a clear or pause the rules. Do not start a new dialogue engine, repeat copy every four seconds, or introduce tutorial progression in this pass.
 
