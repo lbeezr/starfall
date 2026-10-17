@@ -119,7 +119,7 @@ enum StarfallTheme {
 /// A common action contract: native Button semantics, a full hit shape, wrapping
 /// Dynamic Type, and immediate solid-color state changes without scale or motion.
 struct StarfallButtonStyle: ButtonStyle {
-    enum Role { case primary, secondary, quiet }
+    enum Role { case primary, ceremonyPrimary, secondary, quiet }
 
     let role: Role
     var expands = false
@@ -151,7 +151,7 @@ struct StarfallButtonStyle: ButtonStyle {
 
     private var foreground: Color {
         guard isEnabled else { return StarfallTheme.Colors.textDisabled }
-        return role == .primary ? StarfallTheme.Colors.onActionPrimary : StarfallTheme.Colors.actionPrimary
+        return role == .primary || role == .ceremonyPrimary ? StarfallTheme.Colors.onActionPrimary : StarfallTheme.Colors.actionPrimary
     }
 
     private func background(pressed: Bool) -> Color {
@@ -161,6 +161,8 @@ struct StarfallButtonStyle: ButtonStyle {
         switch role {
         case .primary:
             return pressed ? StarfallTheme.Colors.actionPrimaryPressed : StarfallTheme.Colors.actionPrimary
+        case .ceremonyPrimary:
+            return pressed ? StarfallTheme.Ceremony.goldPressed : StarfallTheme.Ceremony.gold
         case .secondary:
             return pressed ? StarfallTheme.Colors.surfacePressed : StarfallTheme.Colors.surface
         case .quiet:
@@ -282,5 +284,15 @@ struct StarfallGameButtonStyle: ButtonStyle {
             .background(configuration.isPressed ? StarfallTheme.Colors.surfacePressed : .clear,
                         in: RoundedRectangle(cornerRadius: StarfallTheme.Radius.control))
             .contentShape(Rectangle())
+    }
+}
+
+extension StarfallTheme {
+    enum Ceremony {
+        static let gold = Color(red: 1, green: 0.89, blue: 0.68)
+        static let goldPressed = Color(red: 0.90, green: 0.76, blue: 0.48)
+        static let titleSize: CGFloat = 46
+        static let settleDuration = 0.65
+        static let actionsDelay = 0.36
     }
 }

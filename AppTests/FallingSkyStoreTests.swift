@@ -3,6 +3,42 @@ import StarfallCore
 @testable import Starfall
 
 final class FallingSkyStoreTests: XCTestCase {
+    @MainActor func testWelcomeSaveAvailabilityDoesNotWriteOrAdvanceSky() throws {
+        let suite = "Starfall.Welcome.\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: suite)!
+        defer { defaults.removePersistentDomain(forName: suite) }
+        defaults.removePersistentDomain(forName: suite)
+        let clock = ManualRainClock()
+        let fresh = FallingSkyStore(defaults: defaults, arguments: [], presenter: FallingSkyRecorder(), clock: clock)
+        XCTAssertFalse(fresh.hasSavedSky); XCTAssertTrue(fresh.suspended)
+        XCTAssertNil(defaults.data(forKey: FallingSkyStore.saveKey))
+        clock.advance(100); fresh.setReducedMotion(true)
+        XCTAssertEqual(fresh.game.turns, 0); XCTAssertNil(clock.deadline)
+        fresh.startFirstLight()
+        XCTAssertTrue(fresh.hasSavedSky)
+        let saved = try XCTUnwrap(defaults.data(forKey: FallingSkyStore.saveKey))
+        let restored = FallingSkyStore(defaults: defaults, arguments: [], presenter: FallingSkyRecorder(), clock: clock)
+        XCTAssertTrue(restored.hasSavedSky); XCTAssertEqual(restored.game, fresh.game)
+        XCTAssertEqual(defaults.data(forKey: FallingSkyStore.saveKey), saved)
+        defaults.set(Data([1,2,3]), forKey: FallingSkyStore.saveKey)
+        let invalid = FallingSkyStore(defaults: defaults, arguments: [], presenter: FallingSkyRecorder(), clock: clock)
+        XCTAssertFalse(invalid.hasSavedSky)
+        XCTAssertEqual(SkyFlowScreen.initial(arguments: []), .welcome)
+        XCTAssertEqual(SkyFlowScreen.initial(arguments: ["--starfalls-reset", "--sky-flow-review"]), .welcome)
+    }
+
+    @MainActor func testWelcomeRestoreKeepsCommittedSkyButNotTransientClearCopy() throws {
+        let (store, presenter, _, defaults) = makeStore()
+        store.callShower(); presenter.finish()
+        store.clear(try XCTUnwrap(store.game.legalGroups.first?.first)); presenter.finish()
+        XCTAssertTrue(store.message.hasPrefix("+"))
+        let restored = FallingSkyStore(defaults: defaults, arguments: [], presenter: FallingSkyRecorder(), clock: ManualRainClock())
+        XCTAssertTrue(restored.hasSavedSky)
+        XCTAssertEqual(restored.game, store.game)
+        XCTAssertTrue(restored.message.contains("Your sky is paused"))
+        XCTAssertFalse(restored.message.contains("+"))
+    }
+
     @MainActor private func makeStore() -> (FallingSkyStore, FallingSkyRecorder, ManualRainClock, UserDefaults) {
         let defaults = UserDefaults(suiteName: "Starfalls.\(UUID().uuidString)")!
         let presenter = FallingSkyRecorder(), clock = ManualRainClock()

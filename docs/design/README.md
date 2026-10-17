@@ -13,3 +13,5 @@ The [branding studies](branding/README.md) retain the editable wordmarks, sanctu
 [Diagonal constellation trial](CONSTELLATION_TRIAL.md) defines the isolated five-star connectivity comparison and its adoption gates.
 
 [Constellation tracing](CONSTELLATION_TRACE.md) supersedes whole-component taps with deliberately selected stars and bounded input/feedback.
+
+[Welcome, entry and sky endings](SKY_FLOW.md) owns the selected overlapping reveal and offline resume/replay behavior.
