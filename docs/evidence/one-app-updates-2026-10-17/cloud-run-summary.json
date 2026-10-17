@@ -1,0 +1,31 @@
+{
+  "run": 39067366898,
+  "source": "ba348d758b2b2e5dcc63bf0f4fccf75bc357a7fc",
+  "conclusion": "cancelled",
+  "corePassed": 63,
+  "uiPassedCaseSummaries": 21,
+  "uiFailedCaseSummaries": 6,
+  "uiExpected": 38,
+  "hostedExpected": 89,
+  "hostedCompleted": false,
+  "errors": [
+    "2026-10-17T20:46:32.7280260Z /Users/runner/work/starfall/starfall/UITests/FallingSkyInteractionTests.swift:260: error: -[StarfallUITests.FallingSkyInteractionTests testAutomaticRainPauseGrowthClearReplayAndSettings] : XCTAssertTrue failed",
+    "2026-10-17T20:49:45.3296840Z /<compiler-generated>:0: error: -[StarfallUITests.FallingSkyInteractionTests testBackgroundRelaunchAndAutomaticOverflow] : Failed to terminate com.starfall.prototype:24504: Failed to terminate com.starfall.prototype:0",
+    "2026-10-17T20:51:54.6149250Z /Users/runner/work/starfall/starfall/UITests/FallingSkyInteractionTests.swift:361: error: -[StarfallUITests.FallingSkyInteractionTests testBalanceControlsPreserveBoardPersistAndChangeArrivals] : Failed to tap \"experiment.balance\" Button: No matches found for Elements matching predicate '\"experiment.balance\" IN identifiers' from input {(",
+    "2026-10-17T20:53:52.4502790Z /Users/runner/work/starfall/starfall/UITests/FallingSkyInteractionTests.swift:47: error: -[StarfallUITests.FallingSkyInteractionTests testFirstLightCanOverflowWithoutCompletingGoal] : XCTAssertTrue failed",
+    "2026-10-17T20:54:05.4940210Z /Users/runner/work/starfall/starfall/UITests/FallingSkyInteractionTests.swift:47: error: -[StarfallUITests.FallingSkyInteractionTests testFirstLightGoalCompletionRestoreReplayAndSurvival] : XCTAssertTrue failed",
+    "2026-10-17T20:57:45.9351340Z /Users/runner/work/starfall/starfall/UITests/ObservatoryInteractionTests.swift:24: error: -[StarfallUITests.ObservatoryInteractionTests testCelestialHUDGuideAndMenuPagesKeepTheRound] : XCTAssertTrue failed"
+  ],
+  "failedCases": [
+    "2026-10-17T20:46:33.1732260Z Test Case '-[StarfallUITests.FallingSkyInteractionTests testAutomaticRainPauseGrowthClearReplayAndSettings]' failed (48.788 seconds).",
+    "2026-10-17T20:49:45.9240780Z Test Case '-[StarfallUITests.FallingSkyInteractionTests testBackgroundRelaunchAndAutomaticOverflow]' failed (192.749 seconds).",
+    "2026-10-17T20:51:54.9123210Z Test Case '-[StarfallUITests.FallingSkyInteractionTests testBalanceControlsPreserveBoardPersistAndChangeArrivals]' failed (24.957 seconds).",
+    "2026-10-17T20:53:52.6679480Z Test Case '-[StarfallUITests.FallingSkyInteractionTests testFirstLightCanOverflowWithoutCompletingGoal]' failed (12.041 seconds).",
+    "2026-10-17T20:54:05.7557330Z Test Case '-[StarfallUITests.FallingSkyInteractionTests testFirstLightGoalCompletionRestoreReplayAndSurvival]' failed (13.067 seconds).",
+    "2026-10-17T20:57:46.4256220Z Test Case '-[StarfallUITests.ObservatoryInteractionTests testCelestialHUDGuideAndMenuPagesKeepTheRound]' failed (6.035 seconds)."
+  ],
+  "caseBudgetWarning": [
+    "2026-10-17T20:48:33.3172080Z Test Case '-[StarfallUITests.FallingSkyInteractionTests testBackgroundRelaunchAndAutomaticOverflow]' exceeded execution time allowance of 2 minutes. The test may have hung; check Xcode's test report for additional diagnostics. If the test requires additional time, use -[XCTestCase executionTimeAllowance] or one of xcodebuild's command-line overrides."
+  ],
+  "note": "Cancelled run is not a passing cloud validation. Case summaries are partial; hosted phase did not run."
+}

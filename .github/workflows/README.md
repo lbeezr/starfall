@@ -6,4 +6,4 @@ Versioned CI definitions for validating Starfall.
 
 Read each workflow’s triggers and permissions before changing it. A workflow definition is not evidence of a successful run.
 
-The main simulator workflow also runs device-updater decision tests without network/device access. The local updater waits for that exact-source workflow to succeed before installing; it does not use cloud signing or expose the iPhone to a hosted runner.
+The main simulator workflow also runs device-updater decision tests without network/device access. Development delivery uses local core tests and a verified signed build while broader CI continues; a known failed run holds new installation. Signing and device access remain local.

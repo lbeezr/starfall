@@ -21,17 +21,17 @@ final class ObservatoryInteractionTests: XCTestCase {
         let menu = app.buttons["experiment.settings"]
         XCTAssertGreaterThanOrEqual(menu.frame.width, 44)
         XCTAssertLessThanOrEqual(menu.frame.width, 52)
-        XCTAssertTrue(app.staticTexts["experiment.message"].label.contains("Match stars worth three"))
+        XCTAssertEqual(app.staticTexts["experiment.message"].label, "Gather starlight. Draw your own constellations.")
         let before = app.otherElements["experiment.board"].value as? String
         capture(app, "Celestial-HUD-welcome")
         menu.tap()
         XCTAssertFalse(app.buttons["experiment.cell.0.0"].exists)
         capture(app, "Celestial-menu")
-        app.buttons["experiment.help"].tap()
+        app.skyMenuControl("experiment.help").tap()
         XCTAssertTrue(app.staticTexts["A little starlight"].waitForExistence(timeout: 5))
         capture(app, "Celestial-how-to-play")
         app.navigationBars.buttons["Sky menu"].tap()
-        app.buttons["experiment.balance"].tap()
+        app.skyMenuControl("experiment.balance").tap()
         XCTAssertTrue(app.buttons["experiment.pace"].waitForExistence(timeout: 5))
         capture(app, "Celestial-balance")
         app.buttons["experiment.done"].tap()
@@ -510,3 +510,16 @@ final class ObservatoryReviewSetupTests: XCTestCase {
     }
 }
 #endif
+
+
+extension XCUIApplication {
+    /// Menu rows are lazily created; reach them through the same scroll a player uses.
+    @MainActor func skyMenuControl(_ identifier: String) -> XCUIElement {
+        let control = buttons[identifier]
+        revealSkyMenuElement(control)
+        return control
+    }
+    @MainActor func revealSkyMenuElement(_ control: XCUIElement) {
+        for _ in 0..<4 where !control.isHittable { swipeUp() }
+    }
+}

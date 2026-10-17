@@ -37,11 +37,6 @@ struct FallingSkyMenu: View {
                     Text("\(turns) showers · \(groups) matching groups ready")
                         .accessibilityIdentifier("experiment.roundSummary")
                 }
-                Section("Build") {
-                    Text(Bundle.main.object(forInfoDictionaryKey: "StarfallBuildID") as? String ?? "dev.local")
-                        .font(.caption).foregroundStyle(.secondary)
-                        .accessibilityIdentifier("starfall.buildID")
-                }
                 Section {
                     Button(action: observatory) { Label("Back to Observatory", systemImage: "moon.stars") }
                         .accessibilityIdentifier("sky.home")
@@ -51,7 +46,7 @@ struct FallingSkyMenu: View {
                     SkyPreferenceToggle(title: "Haptics", symbol: "waveform", value: $haptics, identifier: "experiment.haptics")
                     SkyPreferenceToggle(title: "Calm effects", symbol: "moon", value: $calm, identifier: "experiment.calm")
                 }
-                Section("Explore") {
+                Section {
                     if !challenge {
                         NavigationLink { Form { balanceControls }.navigationTitle("Sky balance").toolbar { dismissal } }
                             label: { Label("Sky balance", systemImage: "slider.horizontal.3") }
@@ -62,6 +57,10 @@ struct FallingSkyMenu: View {
                     }
                     NavigationLink { howToPlay.toolbar { dismissal } } label: { Label("How to play", systemImage: "questionmark.circle") }
                         .accessibilityIdentifier("experiment.help")
+                } header: { Text("Explore") } footer: {
+                    Text(Bundle.main.object(forInfoDictionaryKey: "StarfallBuildID") as? String ?? "dev.local")
+                        .font(.caption).foregroundStyle(.secondary)
+                        .accessibilityIdentifier("starfall.buildID")
                 }
             }
             .scrollContentBackground(.hidden)

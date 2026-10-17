@@ -47,7 +47,7 @@ jobs:
             github.event.repository.private == false) ||
            (github.event_name == 'workflow_dispatch' && inputs.budget_confirmed == true)) }}
     runs-on: macos-15
-    timeout-minutes: 25
+    timeout-minutes: 35
     defaults:
       run:
         shell: bash

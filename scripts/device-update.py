@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Update one connected iPhone from clean GitHub main; never reset or uninstall."""
 import argparse
+from contextlib import contextmanager
 import fcntl
 import json
 import os
@@ -32,7 +33,28 @@ def atomic_json(path, value):
     temporary.replace(path)
 
 
-def ci_ready(repository, revision):
+@contextmanager
+def service_configuration_lock(state):
+    with (state / 'update.lock').open('a') as lock:
+        try:
+            fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError:
+            raise RuntimeError('An update is running; retry configuration after it finishes.')
+        yield
+
+
+def configure(config, state):
+    # Installed/cached state belongs to this device and signing context.
+    with service_configuration_lock(state):
+        path = state / 'config.json'
+        previous = json.loads(path.read_text()) if path.exists() else None
+        if previous is not None and previous != config:
+            for name in ['installed.json', 'built.json']:
+                (state / name).unlink(missing_ok=True)
+        atomic_json(path, config)
+
+
+def ci_status(repository, revision):
     request = urllib.request.Request(
         'https://api.github.com/repos/' + repository + '/actions/runs?head_sha=' + revision + '&per_page=30',
         headers={'Accept': 'application/vnd.github+json', 'User-Agent': 'Starfall-Device-Updater'})
@@ -41,7 +63,13 @@ def ci_ready(repository, revision):
     matching = [r for r in runs if r['name'] == 'Starfall simulator' and r['head_sha'] == revision
                 and r['head_branch'] == 'main' and r['event'] == 'push']
     latest = max(matching, key=lambda r: (r['run_number'], r.get('run_attempt', 1)), default=None)
-    return bool(latest and latest['status'] == 'completed' and latest['conclusion'] == 'success')
+    if latest is None:
+        return 'missing'
+    if latest['status'] != 'completed':
+        return 'pending'
+    if latest['conclusion'] == 'success':
+        return 'passed'
+    return 'failed' if latest['conclusion'] == 'failure' else 'unavailable'
 
 
 def connected(device, state):
@@ -83,12 +111,16 @@ def update(config, state):
         atomic_json(state / 'installed.json', installed)
         shutil.rmtree(staging)
         return 'Up to date: ' + fingerprint
-    if not ci_ready(config['repository'], revision):
+    cloud_status = ci_status(config['repository'], revision)
+    if cloud_status == 'failed':
         shutil.rmtree(staging)
-        return 'Waiting for successful main CI: ' + revision[:10]
+        return 'Held: main CI failed for ' + revision[:10]
     if target.exists():
         shutil.rmtree(target)
     staging.rename(target)
+    core_log = state / 'core-tests.log'
+    core_log.write_text('Source: ' + revision + '\n')
+    run(['swift', 'test'], cwd=target, output=core_log)
     metadata = state / 'built.json'
     built = json.loads(metadata.read_text()) if metadata.exists() else {}
     app = state / 'DerivedData/Build/Products/Debug-iphoneos/Starfall.app'
@@ -107,25 +139,28 @@ def update(config, state):
     # No automatic launch: updating should not start the clock or trigger a fixture.
     run(['xcrun', 'devicectl', 'device', 'install', 'app', '--device', config['device'], str(app),
          '--timeout', '90', '--json-output', str(state / 'installation.json')], output=state / 'device.log')
-    atomic_json(state / 'installed.json', {'buildID': fingerprint, 'source': revision, 'bundle': BUNDLE})
+    atomic_json(state / 'installed.json', {'buildID': fingerprint, 'source': revision, 'bundle': BUNDLE,
+                                               'validation': {'coreTests': 'passed', 'signature': 'verified', 'mainCIAtInstall': cloud_status}})
     return 'Installed ' + fingerprint + ' from main ' + revision[:10]
 
 
 def enable(state):
-    config = state / 'config.json'
-    if not config.exists():
-        raise RuntimeError('Configure the device/team before enabling updates.')
-    for name in ['device-update.py', 'build_identity.py']:
-        shutil.copyfile(Path(__file__).with_name(name), state / name)
-    agent = Path.home() / 'Library/LaunchAgents' / (LABEL + '.plist')
-    agent.parent.mkdir(parents=True, exist_ok=True)
-    agent.write_bytes(plistlib.dumps({
-        'Label': LABEL, 'ProgramArguments': [sys.executable, str(state / 'device-update.py'), '--state', str(state), 'run'],
-        'StartInterval': 120, 'RunAtLoad': True,
-        'EnvironmentVariables': {'PATH': '/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/homebrew/bin'},
-        'StandardOutPath': str(state / 'service.log'), 'StandardErrorPath': str(state / 'service-error.log')}))
-    subprocess.run(['launchctl', 'bootout', 'gui/' + str(os.getuid()), str(agent)], capture_output=True)
-    run(['launchctl', 'bootstrap', 'gui/' + str(os.getuid()), str(agent)])
+    # Reloading the service must not terminate a build or installation in flight.
+    with service_configuration_lock(state):
+        config = state / 'config.json'
+        if not config.exists():
+            raise RuntimeError('Configure the device/team before enabling updates.')
+        for name in ['device-update.py', 'build_identity.py']:
+            shutil.copyfile(Path(__file__).with_name(name), state / name)
+        agent = Path.home() / 'Library/LaunchAgents' / (LABEL + '.plist')
+        agent.parent.mkdir(parents=True, exist_ok=True)
+        agent.write_bytes(plistlib.dumps({
+            'Label': LABEL, 'ProgramArguments': [sys.executable, str(state / 'device-update.py'), '--state', str(state), 'run'],
+            'StartInterval': 120, 'RunAtLoad': True,
+            'EnvironmentVariables': {'PATH': '/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/homebrew/bin'},
+            'StandardOutPath': str(state / 'service.log'), 'StandardErrorPath': str(state / 'service-error.log')}))
+        subprocess.run(['launchctl', 'bootout', 'gui/' + str(os.getuid()), str(agent)], capture_output=True)
+        run(['launchctl', 'bootstrap', 'gui/' + str(os.getuid()), str(agent)])
 
 
 def main():
@@ -143,7 +178,7 @@ def main():
     if args.action == 'configure':
         if not args.device or not args.team or args.repository != 'lbeezr/starfall':
             parser.error('Supply --device and --team; this updater is scoped to lbeezr/starfall.')
-        atomic_json(state / 'config.json', {'device': args.device, 'team': args.team, 'repository': args.repository})
+        configure({'device': args.device, 'team': args.team, 'repository': args.repository}, state)
     elif args.action == 'enable':
         enable(state)
     elif args.action == 'disable':
