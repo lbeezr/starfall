@@ -26,8 +26,14 @@ import StarfallCore
         GeometryReader { safeViewport in
             if largeText {
                 ScrollView {
-                    playfield(insets: safeViewport.safeAreaInsets, compact: safeViewport.size.height < 750)
-                        .frame(height: max(StarfallTheme.Layout.accessibleObservatoryHeight, safeViewport.size.height))
+                    VStack(spacing: StarfallTheme.Spacing.small) {
+                        playfield(insets: safeViewport.safeAreaInsets, compact: safeViewport.size.height < 750)
+                            .frame(height: safeViewport.size.height)
+                        guide(compact: safeViewport.size.height < 750)
+                            .accessibilityHidden(settings)
+                            .padding(.horizontal, StarfallTheme.Spacing.medium)
+                            .padding(.bottom, safeViewport.safeAreaInsets.bottom + StarfallTheme.Spacing.small)
+                    }
                 }
                 .ignoresSafeArea()
             } else {
@@ -47,42 +53,45 @@ import StarfallCore
         .sheet(isPresented: $settings, onDismiss: { if voiceOver { menuFocused = true } }) { settingsView }
     }
 
-    /// Accessibility-size controls get room below the terrace instead of covering its props.
-    /// The canvas keeps one coordinate system while native scrolling brings each target into view.
+    /// The terrace owns its complete canvas. At accessibility sizes the guide is
+    /// a sibling below it, so text growth cannot cover projected stars or props.
     private func playfield(insets: EdgeInsets, compact: Bool) -> some View {
         ZStack {
             board
             VStack(spacing: StarfallTheme.Spacing.small) {
                 compactHeader
                 Spacer(minLength: 0)
-                if store.game.isOver {
-                    SkyGuideCard(title: store.game.outcome == .won ? "First Light complete" : "This sky is full",
-                                 message: store.message, titleIdentifier: "experiment.outcome") {
-                        restartControls.buttonStyle(StarfallGameButtonStyle())
-                    }
-                    .padding(.trailing, largeText ? 0 : StarfallTheme.Layout.guidePropClearance)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                } else if store.isPaused {
-                    SkyGuideCard(title: "Sunny",
-                                 message: store.message, showsPortrait: !compact) {
-                        controlLayout {
-                            Button(store.game.turns == 0 ? "Start sky" : "Resume sky") { store.togglePause() }
-                                .disabled(store.suspended).accessibilityIdentifier("experiment.pause")
-                            if !largeText { Spacer(minLength: 0) }
-                            Button("Next shower") { store.callShower() }
-                                .disabled(store.busy || store.suspended).accessibilityIdentifier("experiment.next")
-                        }.buttonStyle(StarfallGameButtonStyle())
-                    }
-                    .padding(.trailing, largeText ? 0 : StarfallTheme.Layout.guidePropClearance)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                }
-
+                if !largeText { guide(compact: compact) }
             }
             .padding(.horizontal, StarfallTheme.Spacing.medium)
             .padding(.top, insets.top)
             .padding(.bottom, insets.bottom + StarfallTheme.Spacing.small)
         }
         .accessibilityHidden(settings)
+    }
+
+    @ViewBuilder private func guide(compact: Bool) -> some View {
+        if store.game.isOver {
+            SkyGuideCard(title: store.game.outcome == .won ? "First Light complete" : "This sky is full",
+                         message: store.message, titleIdentifier: "experiment.outcome") {
+                restartControls.buttonStyle(StarfallGameButtonStyle())
+            }
+            .padding(.trailing, largeText ? 0 : StarfallTheme.Layout.guidePropClearance)
+            .frame(maxWidth: .infinity, alignment: .leading)
+        } else if store.isPaused {
+            SkyGuideCard(title: "Sunny",
+                         message: store.message, showsPortrait: !compact) {
+                controlLayout {
+                    Button(store.game.turns == 0 ? "Start sky" : "Resume sky") { store.togglePause() }
+                        .disabled(store.suspended).accessibilityIdentifier("experiment.pause")
+                    if !largeText { Spacer(minLength: 0) }
+                    Button("Next shower") { store.callShower() }
+                        .disabled(store.busy || store.suspended).accessibilityIdentifier("experiment.next")
+                }.buttonStyle(StarfallGameButtonStyle())
+            }
+            .padding(.trailing, largeText ? 0 : StarfallTheme.Layout.guidePropClearance)
+            .frame(maxWidth: .infinity, alignment: .leading)
+        }
     }
 
     private func updateMotion() { store.setReducedMotion(reduceMotion || calmEffects || voiceOver) }

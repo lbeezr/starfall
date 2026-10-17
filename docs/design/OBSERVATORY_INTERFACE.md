@@ -46,7 +46,7 @@ The art registration fills the viewport vertically. On tall phones it crops a fe
 
 ## Message policy and voice
 
-Sunny shows the store-owned message while paused: the opening value rule, corrective help, growth, clear and dark-star outcomes, or First Light objective. Active play stays quiet. Terminal outcomes retain the committed result and restart choices; transient text is not saved. Existing store announcements remain authoritative for VoiceOver. [Production guide evidence](../evidence/paused-guide-adoption-2026-10-17/README.md) records adoption and the remaining maximum-text board overlap.
+Sunny shows the store-owned message while paused: the opening value rule, corrective help, growth, clear and dark-star outcomes, or First Light objective. Active play stays quiet. Terminal outcomes retain the committed result and restart choices; transient text is not saved. Existing store announcements remain authoritative for VoiceOver. [Production guide evidence](../evidence/paused-guide-adoption-2026-10-17/README.md) records adoption. [Accessible layout evidence](../evidence/accessible-terrace-layout-2026-10-17/README.md) places the guide below the terrace at accessibility sizes, preserving native scrolling and full text; ordinary sizes keep the original composition.
 
 During flowing play, the comet trail supplies anticipation without an always-open dialogue box. A future contextual arrival/dark-star guide should be event-driven, bounded, dismissible and retained long enough to read; it must never interrupt a clear or pause the rules. Do not start a new dialogue engine, repeat copy every four seconds, or introduce tutorial progression in this pass.
 

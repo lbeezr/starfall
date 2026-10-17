@@ -69,7 +69,6 @@ enum StarfallTheme {
     }
 
     enum Layout {
-        static let accessibleObservatoryHeight: CGFloat = 1000
         static let minimumTarget: CGFloat = 44
         static let actionHeight: CGFloat = 52
         static let contentWidth: CGFloat = 560
