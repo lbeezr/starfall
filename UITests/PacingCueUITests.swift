@@ -118,7 +118,15 @@ final class PacingCueUITests: XCTestCase {
         let candidates = app.buttons.matching(NSPredicate(format:
             "identifier BEGINSWITH %@ AND value MATCHES %@ AND enabled == true",
             "experiment.cell.", "([3-9]|[1-9][0-9]) starlight connected"))
-        let visible = candidates.allElementsBoundByIndex.filter { $0.isHittable }
+        XCTAssertGreaterThan(candidates.count, 0, "The committed sky must retain a legal clear")
+        var visible = candidates.allElementsBoundByIndex.filter { $0.isHittable }
+        // Density text adds scrollable content below the board. Return to the
+        // board as a player would; the timing cue must stay visible throughout.
+        for _ in 0..<5 where visible.isEmpty {
+            app.swipeDown()
+            cue(app, "Faster after next shower")
+            visible = candidates.allElementsBoundByIndex.filter { $0.isHittable }
+        }
         XCTAssertFalse(visible.isEmpty, "The scrolled board must offer a visible native clear")
         let target = try XCTUnwrap(visible.first)
         target.tap()

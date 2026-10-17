@@ -8,10 +8,11 @@ class NativeMatrixTests(unittest.TestCase):
     def test_dev_defers_only_named_actual_voiceover_sessions_and_rc_restores_them(self):
         root = Path(__file__).resolve().parents[1]
         dev, deferred = plan(root, 'dev'); rc, rc_deferred = plan(root, 'rc')
-        self.assertEqual(len(deferred), 5); self.assertFalse(rc_deferred)
-        self.assertEqual(rc['StarfallUITests']['expectedCount'], dev['StarfallUITests']['expectedCount'] + 5)
+        self.assertEqual(len(deferred), 6); self.assertFalse(rc_deferred)
+        self.assertEqual(rc['StarfallUITests']['expectedCount'], dev['StarfallUITests']['expectedCount'] + 6)
         self.assertEqual(dev['StarfallAppTests'], rc['StarfallAppTests'])
         self.assertTrue(all('/testVoiceOver' in name for name in deferred))
+        self.assertIn('StarfallUITests/ObservatoryInteractionTests/testVoiceOverOpalIdentityActivationAndStormCue', deferred)
         selected = [name for names in dev['StarfallUITests']['testMethodsBySource'].values() for name in names]
         self.assertIn('testBuildIDMenuAndLargestTextTrace', selected)
         self.assertIn('testSystemReduceMotionKeepsManualPlayWorking', selected)

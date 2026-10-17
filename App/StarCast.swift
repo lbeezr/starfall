@@ -5,6 +5,23 @@ import StarfallCore
 /// Crystal Glow cutouts with authored expressions. Core Jewel raw values and saves stay unchanged.
 /// One material owner supplies SpriteKit and SwiftUI; no per-frame drawing or asset IO.
 @MainActor enum StarCast {
+    /// A presentation identity distinguishes the two colorless Core roles.
+    enum Identity: Hashable, CaseIterable {
+        case colored(Jewel), dusk, opal
+        static var allCases: [Self] { Jewel.allCases.map(Self.colored) + [.dusk, .opal] }
+        init(kind: Jewel?, isLight: Bool = false) {
+            self = isLight ? .opal : kind.map(Self.colored) ?? .dusk
+        }
+        init(_ gem: StarfallGem) { self.init(kind: gem.kind, isLight: gem.isLight) }
+        init(_ star: IncomingStar) { self.init(kind: star.kind, isLight: star.isLight) }
+        var color: UIColor {
+            switch self {
+            case .colored(let kind): kind.color
+            case .dusk: .systemPurple
+            case .opal: .white
+            }
+        }
+    }
     enum Expression: Int, CaseIterable { case idle, landing, grown, clearing }
     enum Facing: Int, CaseIterable { case front, left, right }
     struct Character {
@@ -15,10 +32,10 @@ import StarfallCore
 
     static let rasterSide = 256
     static let silhouetteSide: CGFloat = 212 // Existing display-size contract; centered 208px packaged bodies.
-    static let maximumMaterials = 6 * Expression.allCases.count * Facing.allCases.count
+    static let maximumMaterials = Identity.allCases.count * Expression.allCases.count * Facing.allCases.count
     static let maximumRasterBytes = maximumMaterials * rasterSide * rasterSide * 4
     private static let ink = UIColor(red: 0.08, green: 0.10, blue: 0.22, alpha: 1)
-    private struct Key: Hashable { let kind: Int; let expression: Int; let facing: Int }
+    private struct Key: Hashable { let identity: Identity; let expression: Int; let facing: Int }
     private struct Material { let image: UIImage; let texture: SKTexture }
     private static var materials: [Key: Material] = [:]
     private static var bodies: [String: UIImage] = [:]
@@ -26,60 +43,62 @@ import StarfallCore
     static var cachedMaterialCount: Int { materials.count }
 
     /// Shadow placement follows the packaged body and growth, not the square texture canvas.
-    static func groundOffset(for kind: Jewel?, radius: CGFloat) -> CGFloat {
-        let name = character(for: kind).name
-        _ = material(for: kind, expression: .idle, facing: .front)
+    static func groundOffset(for identity: Identity, radius: CGFloat) -> CGFloat {
+        let name = character(for: identity).name
+        _ = material(for: identity, expression: .idle, facing: .front)
         return radius * (bodyHeights[name] ?? silhouetteSide) / silhouetteSide
     }
 
-    static func character(for kind: Jewel?) -> Character {
-        switch kind {
-        case .aqua:
+    static func character(for identity: Identity) -> Character {
+        switch identity {
+        case .colored(.aqua):
             Character(name: "Spark", points: 4, description: "Aqua four-point star, Spark")
-        case .amber:
+        case .colored(.amber):
             Character(name: "Sunny", points: 5, description: "Amber five-point star, Sunny")
-        case .mint:
+        case .colored(.mint):
             Character(name: "Pip", points: 6, description: "Mint six-point star, Pip")
-        case .rose:
+        case .colored(.rose):
             Character(name: "Twinkle", points: 8, description: "Rose eight-point star, Twinkle")
-        case .violet:
+        case .colored(.violet):
             Character(name: "Nova", points: 4, description: "Violet wide four-point star, Nova")
-        case nil:
+        case .dusk:
             Character(name: "Dusk", points: 5, description: "Dark star, Dusk")
+        case .opal:
+            Character(name: "Opal", points: 0, description: "White Opal Orb")
         }
     }
 
-    static func image(for kind: Jewel?, expression: Expression = .idle, facing: Facing = .front) -> UIImage {
-        material(for: kind, expression: expression, facing: facing).image
+    static func image(for identity: Identity, expression: Expression = .idle, facing: Facing = .front) -> UIImage {
+        material(for: identity, expression: expression, facing: facing).image
     }
-    static func texture(for kind: Jewel?, expression: Expression, facing: Facing = .front) -> SKTexture {
-        material(for: kind, expression: expression, facing: facing).texture
+    static func texture(for identity: Identity, expression: Expression, facing: Facing = .front) -> SKTexture {
+        material(for: identity, expression: expression, facing: facing).texture
     }
     /// SpriteKit texture actions can restore the texture's intrinsic canvas size mid-action.
     /// Expression changes must preserve the caller's authored size, scale and pivot.
-    static func setExpression(_ expression: Expression, for kind: Jewel?, on node: SKSpriteNode, facing: Facing = .front) {
+    static func setExpression(_ expression: Expression, for identity: Identity, on node: SKSpriteNode, facing: Facing = .front) {
         let size = node.size
         let anchor = node.anchorPoint
-        node.texture = texture(for: kind, expression: expression, facing: facing)
+        node.texture = texture(for: identity, expression: expression, facing: facing)
         node.size = size
         node.anchorPoint = anchor
     }
     static func prewarm() {
-        for kind in Jewel.allCases.map(Optional.some) + [nil] {
+        for identity in Identity.allCases {
             for expression in Expression.allCases {
-                for facing in Facing.allCases { _ = material(for: kind, expression: expression, facing: facing) }
+                for facing in Facing.allCases { _ = material(for: identity, expression: expression, facing: facing) }
             }
         }
     }
-    static func makeNode(for kind: Jewel?, expression: Expression, radius: CGFloat) -> SKSpriteNode {
-        let node = SKSpriteNode(texture: texture(for: kind, expression: expression))
+    static func makeNode(for identity: Identity, expression: Expression, radius: CGFloat) -> SKSpriteNode {
+        let node = SKSpriteNode(texture: texture(for: identity, expression: expression))
         let side = max(0, radius.isFinite ? radius : 0) * 2 * CGFloat(rasterSide) / silhouetteSide
         node.size = CGSize(width: side, height: side)
-        node.name = "star-cast.\(character(for: kind).name).\(expression.rawValue)"
+        node.name = "star-cast.\(character(for: identity).name).\(expression.rawValue)"
         return node
     }
     /// Finite pose changes preserve sprite geometry; the scene owns their lifetime.
-    static func turnAction(for kind: Jewel?, expression: Expression,
+    static func turnAction(for identity: Identity, expression: Expression,
                            toward facing: Facing, duration: TimeInterval) -> SKAction {
         let opposite: Facing = facing == .left ? .right : .left
         let poses: [Facing] = [.front, facing, .front, opposite, .front]
@@ -87,18 +106,18 @@ import StarfallCore
             .sequence([.customAction(withDuration: duration / Double(poses.count)) { node, _ in
                 guard let sprite = node as? SKSpriteNode else { return }
                 // Cached materials only; no drawing or IO in the action callback.
-                setExpression(expression, for: kind, on: sprite, facing: pose)
+                setExpression(expression, for: identity, on: sprite, facing: pose)
             }])
         })
     }
 
-    private static func material(for kind: Jewel?, expression: Expression, facing: Facing) -> Material {
-        let key = Key(kind: kind?.rawValue ?? -1, expression: expression.rawValue, facing: facing.rawValue)
+    private static func material(for identity: Identity, expression: Expression, facing: Facing) -> Material {
+        let key = Key(identity: identity, expression: expression.rawValue, facing: facing.rawValue)
         if let cached = materials[key] { return cached }
         let format = UIGraphicsImageRendererFormat()
         format.scale = 1; format.opaque = false
         format.preferredRange = .standard
-        let character = character(for: kind)
+        let character = character(for: identity)
         let body: UIImage
         if let cached = bodies[character.name] { body = cached }
         else {
@@ -121,7 +140,7 @@ import StarfallCore
             }
         }
         let image = UIGraphicsImageRenderer(size: CGSize(width: rasterSide, height: rasterSide), format: format)
-            .image { render(character, body: body, dark: kind == nil, expression: expression, facing: facing, in: $0.cgContext) }
+            .image { render(character, body: body, dark: identity == .dusk, expression: expression, facing: facing, in: $0.cgContext) }
         let texture = SKTexture(image: image)
         texture.filteringMode = .linear; texture.usesMipmaps = false
         let result = Material(image: image, texture: texture)

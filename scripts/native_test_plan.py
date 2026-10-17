@@ -10,7 +10,8 @@ VOICEOVER_RC = {
         'testVoiceOverSpeechActivationPropsClearAndMenuFocus',
         'testVoiceOverLargestTextOverflowAndReplay',
         'testVoiceOverAutomaticRainMenuAndBackground',
-        'testVoiceOverFullFirstLightRoundRestoreAndReplay'},
+        'testVoiceOverFullFirstLightRoundRestoreAndReplay',
+        'testVoiceOverOpalIdentityActivationAndStormCue'},
 }
 METHOD = re.compile(r'^\s*(?:@\w+(?:\([^)]*\))?\s+)*func\s+(test\w+)\s*\(\s*\)', re.MULTILINE)
 

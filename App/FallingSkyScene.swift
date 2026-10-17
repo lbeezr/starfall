@@ -15,7 +15,7 @@ import StarfallCore
 
     override init(size: CGSize) {
         super.init(size: size)
-        StarCast.prewarm()
+        StarCast.prewarm(); OpalMotion.prewarm()
         scaleMode = .resizeFill; backgroundColor = .clear
         addChild(grid); addChild(pieces); addChild(effects)
         effects.zPosition = 20
@@ -56,7 +56,7 @@ import StarfallCore
     }
 
     private func groundOffset(_ gem: StarfallGem) -> CGFloat {
-        StarCast.groundOffset(for: gem.kind, radius: step * (gem.grown ? 0.43 : 0.35))
+        StarCast.groundOffset(for: .init(gem), radius: step * (gem.grown ? 0.43 : 0.35))
     }
 
     private func light(at anchor: CGPoint, color: UIColor, strength: CGFloat) {
@@ -133,11 +133,11 @@ import StarfallCore
                 grid.childNode(withName: "sky.ground.\(id)")?.run(.sequence([.fadeOut(withDuration: 0.15), .removeFromParent()]))
                 run(.sequence([.wait(forDuration: StarfallMotion.gatherDuration), .run { [weak self] in
                     guard let self else { return }
-                    self.light(at: self.point(cell), color: old.gem(at: cell)?.kind?.color ?? .systemPurple, strength: 0.75)
+                    self.light(at: self.point(cell), color: old.gem(at: cell).map { StarCast.Identity($0).color } ?? .systemPurple, strength: 0.75)
                 }]))
                 let ring = SKShapeNode(circleOfRadius: step * 0.30)
                 ring.position = node.position
-                ring.strokeColor = old.gem(at: cell)?.kind?.color ?? .systemPurple
+                ring.strokeColor = old.gem(at: cell).map { StarCast.Identity($0).color } ?? .systemPurple
                 ring.lineWidth = 2; ring.glowWidth = 3
                 effects.addChild(ring)
                 ring.run(.sequence([.wait(forDuration: StarfallMotion.gatherDuration), .group([.scale(to: 1.7, duration: 0.24), .fadeOut(withDuration: 0.24)]), .removeFromParent()]))
@@ -230,7 +230,8 @@ import StarfallCore
 
     private func sendStar(_ arrival: FallingSkyTurn.Arrival) {
         let comet = SKNode()
-        let color = arrival.star.kind?.color ?? .systemPurple
+        comet.name = "sky.flight.\(arrival.star.id)"
+        let color = StarCast.Identity(arrival.star).color
         // A bounded handful of shapes per star, with no emitters or accumulating particles.
         let tailPath = CGMutablePath()
         tailPath.move(to: CGPoint(x: -step * 0.13, y: 0))
@@ -238,17 +239,22 @@ import StarfallCore
         tailPath.addQuadCurve(to: CGPoint(x: step * 0.13, y: 0), control: CGPoint(x: step * 0.08, y: step))
         tailPath.closeSubpath()
         let tail = SKShapeNode(path: tailPath)
-        tail.fillColor = color.withAlphaComponent(0.3); tail.strokeColor = .clear
-        tail.glowWidth = 4
+        tail.fillColor = color.withAlphaComponent(arrival.star.isLight ? 0.14 : 0.3); tail.strokeColor = .clear
+        tail.glowWidth = arrival.star.isLight ? 2 : 4
         comet.addChild(tail)
         let halo = SKShapeNode(circleOfRadius: step * 0.20)
-        halo.fillColor = color.withAlphaComponent(0.3); halo.strokeColor = color.withAlphaComponent(0.5)
-        halo.glowWidth = 9
+        halo.fillColor = color.withAlphaComponent(arrival.star.isLight ? 0.06 : 0.3)
+        halo.strokeColor = color.withAlphaComponent(arrival.star.isLight ? 0.10 : 0.5)
+        halo.glowWidth = arrival.star.isLight ? 3 : 9
         comet.addChild(halo)
-        let traveler = JewelScene.makeStarCharacter(arrival.star.kind, expression: .landing, radius: step * 0.35)
+        let traveler = JewelScene.makeStarCharacter(.init(arrival.star), expression: .landing, radius: step * 0.35)
+        if arrival.star.isLight {
+            traveler.subdivisionLevels = 2
+            traveler.warpGeometry = OpalMotion.falling
+        }
         traveler.zRotation = arrival.star.id.isMultiple(of: 2) ? -0.12 : 0.12
         traveler.run(.group([
-            StarCast.turnAction(for: arrival.star.kind, expression: .landing,
+            StarCast.turnAction(for: .init(arrival.star), expression: .landing,
                                 toward: arrival.star.id.isMultiple(of: 2) ? .left : .right, duration: 0.48),
             .rotate(toAngle: 0, duration: 0.48)
         ]))
@@ -307,12 +313,15 @@ import StarfallCore
     }
 
     private func land(_ arrival: FallingSkyTurn.Arrival) {
+        // Scene actions and child actions can advance on adjacent frames. The
+        // landing handoff owns removal, so one committed star has one visible body.
+        effects.childNode(withName: "sky.flight.\(arrival.star.id)")?.removeFromParent()
         let existing = nodes[arrival.gem.id]
         let node = existing ?? makeNode(arrival.gem)
         node.update(arrival.gem, expression: .landing)
         node.run(.sequence([.wait(forDuration: 0.12), .run { [weak node] in
             guard let node else { return }
-            node.update(arrival.gem, expression: arrival.gem.grown ? .grown : .idle)
+            node.showExpression(arrival.gem.grown ? .grown : .idle)
         }]))
         let destination = point(arrival.cell)
         node.position = destination
@@ -321,11 +330,13 @@ import StarfallCore
         nodes[arrival.gem.id] = node; cellsByID[arrival.gem.id] = arrival.cell
         grid.childNode(withName: "sky.ground.\(arrival.gem.id)")?.removeFromParent()
         ground(arrival.gem, at: arrival.cell)
-        light(at: destination, color: arrival.star.kind?.color ?? .systemPurple,
+        light(at: destination, color: StarCast.Identity(arrival.star).color,
               strength: arrival.gem.isDark ? 0.25 : arrival.grew ? 1 : 0.65)
-        node.xScale = 1.13; node.yScale = 0.78
-        node.zRotation = arrival.gem.id.isMultiple(of: 2) ? -0.10 : 0.10
-        let rebound = StarfallMotion.rebound(dark: arrival.gem.isDark, grew: arrival.grew) * step
+        node.xScale = arrival.gem.isLight ? 1 : 1.13
+        node.yScale = arrival.gem.isLight ? 1 : 0.78
+        node.zRotation = arrival.gem.isLight ? 0 : arrival.gem.id.isMultiple(of: 2) ? -0.10 : 0.10
+        node.softenLanding()
+        let rebound = (arrival.gem.isLight ? 0.12 : StarfallMotion.rebound(dark: arrival.gem.isDark, grew: arrival.grew)) * step
         let drift = StarfallMotion.drift(for: arrival.star.id, column: arrival.cell.column) * step
         let bounce = SKAction.move(to: CGPoint(x: destination.x + drift * 0.10, y: destination.y + rebound), duration: 0.10)
         bounce.timingMode = .easeOut
@@ -333,12 +344,12 @@ import StarfallCore
         settle.timingMode = .easeInEaseOut
         node.run(.group([
             .sequence([bounce, settle]),
-            .sequence([.scaleX(to: 0.94, y: 1.08, duration: 0.12), .scaleX(to: 1, y: 1, duration: 0.16)]),
+            arrival.gem.isLight ? .wait(forDuration: 0) : .sequence([.scaleX(to: 0.94, y: 1.08, duration: 0.12), .scaleX(to: 1, y: 1, duration: 0.16)]),
             .sequence([.rotate(toAngle: -node.zRotation * 0.6, duration: 0.12), .rotate(toAngle: 0, duration: 0.16)])
         ]))
         let ring = SKShapeNode(circleOfRadius: step * (arrival.grew ? 0.42 : 0.28))
         ring.position = node.position
-        ring.strokeColor = (arrival.star.kind?.color ?? .systemPurple).withAlphaComponent(0.85)
+        ring.strokeColor = (StarCast.Identity(arrival.star).color).withAlphaComponent(0.85)
         ring.lineWidth = 1.5; ring.glowWidth = 2
         effects.addChild(ring)
         ring.run(.sequence([.group([.scale(to: 1.7, duration: 0.28), .fadeOut(withDuration: 0.28)]), .removeFromParent()]))

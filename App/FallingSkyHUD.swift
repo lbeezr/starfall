@@ -2,6 +2,43 @@ import SwiftUI
 import StarfallCore
 import Darwin
 
+/// The displayed forecast follows committed presentation; Core owns the cycle.
+struct SkyPhaseCue: Equatable {
+    let shower: Int
+    let phase: SkyShowerPhase
+    let text: String
+    let announcesTransition: Bool
+
+    init?(game: FallingSky, pending: FallingSkyTurn? = nil) {
+        guard !game.isOver, game.challenge == nil else { return nil }
+        let number = game.turns + (pending?.arrivals.isEmpty == false ? 0 : 1)
+        guard let phase = game.generation.phase(for: number) else { return nil }
+        shower = number; self.phase = phase
+        switch phase {
+        case .calm(let remaining):
+            text = remaining == 1 ? "1 lighter shower before storm" : "Lighter showers · \(remaining) showers"
+            announcesTransition = remaining == 1 || (remaining == 9 && number > 12)
+        case .storm(let remaining):
+            text = "Storm · \(remaining) heavy \(remaining == 1 ? "shower" : "showers") left"
+            announcesTransition = remaining == 3
+        }
+    }
+}
+
+@MainActor struct SkyPhaseLabel: View {
+    let cue: SkyPhaseCue
+    var body: some View {
+        Label(cue.text, systemImage: cue.phase.isStorm ? "cloud.bolt.rain" : "cloud")
+            .font(StarfallTheme.Typography.gameDetail)
+            .foregroundStyle(StarfallTheme.Colors.textPrimary)
+            .fixedSize(horizontal: false, vertical: true)
+            .accessibilityElement(children: .ignore)
+            .accessibilityLabel(cue.text)
+            .accessibilityIdentifier("sky.phase")
+            .accessibilityHint("Storms bring three heavier showers. Clearing does not delay them.")
+    }
+}
+
 /// Authored vector constellation, sharp at every display scale; no new raster pipeline.
 struct SkyMenuGlyph: View {
     var body: some View {
@@ -54,7 +91,7 @@ enum SkyShowerPlacement {
     var body: some View {
         // Resolve the shared cast outside the frame closure; no artwork generation per frame.
         let miniatures = forecast.prefix(FallingSky.maximumShowerSize).map {
-            Image(uiImage: StarCast.image(for: $0.kind))
+            Image(uiImage: StarCast.image(for: .init($0)))
         }
         TimelineView(.periodic(from: .now, by: quiet ? 1 : 1.0/30)) { context in
             let remaining = max(0, deadline?.timeIntervalSince(context.date) ?? interval)
@@ -104,7 +141,7 @@ enum SkyShowerPlacement {
             .accessibilityElement(children: .ignore)
             .accessibilityLabel(paused ? "Sky paused" : arriving ? "Stars arriving" : remaining <= 1.25 ? "Shower approaching" : "Sky flowing")
             .accessibilityValue(forecast.map {
-                StarCast.character(for: $0.kind).description
+                StarCast.character(for: .init($0)).description
             }.joined(separator: ", then "))
             .accessibilityIdentifier("experiment.arrivalCue")
         }
@@ -184,37 +221,49 @@ enum SkyShowerPlacement {
     var titleIdentifier = "sky.guide.title"
     var titleRole: StarfallTheme.Typography.GuideTitleRole = .character
     var showsPortrait = true
+    var maximumHeight: CGFloat? = nil
     @ViewBuilder let actions: Actions
     @Environment(\.dynamicTypeSize) private var textSize
     var body: some View {
         VStack(alignment: .leading, spacing: StarfallTheme.Spacing.small) {
-            HStack(alignment: .top, spacing: StarfallTheme.Spacing.medium) {
-                if showsPortrait && !textSize.isAccessibilitySize {
-                    Image(uiImage: StarCast.image(for: .amber, expression: .idle))
-                        .resizable().scaledToFit().frame(width: 48, height: 48)
-                        .background(Circle().fill(StarfallTheme.Observatory.lanternGlow.opacity(0.12)))
-                        .accessibilityHidden(true)
+            if maximumHeight != nil {
+                ViewThatFits(in: .vertical) {
+                    introduction.fixedSize(horizontal: false, vertical: true)
+                    ScrollView { introduction }
                 }
-                VStack(alignment: .leading, spacing: StarfallTheme.Spacing.compact) {
-                    Text(title).font(StarfallTheme.Typography.skyHeading)
-                        .dynamicTypeSize(...titleRole.maximumTextSize)
-                        .accessibilityIdentifier(titleIdentifier)
-                        .foregroundStyle(StarfallTheme.Observatory.lanternGlow)
-                    Text(message).font(StarfallTheme.Typography.supporting)
-                        .foregroundStyle(StarfallTheme.Colors.textPrimary)
-                        .fixedSize(horizontal: false, vertical: true)
-                        .accessibilityIdentifier("experiment.message")
-                }
-            }
+            } else { introduction }
             actions
         }
         .padding(StarfallTheme.Spacing.medium)
+        .frame(maxHeight: maximumHeight)
         .background(StarfallTheme.Colors.skyTop.opacity(0.95), in: RoundedRectangle(cornerRadius: StarfallTheme.Radius.panel))
         .overlay(alignment: .top) {
             LinearGradient(colors: [.clear, StarfallTheme.Observatory.lanternGlow.opacity(0.7), .clear], startPoint: .leading, endPoint: .trailing)
                 .frame(height: 1).padding(.horizontal, StarfallTheme.Spacing.large)
         }
         .frame(maxWidth: StarfallTheme.Layout.menuWidth)
+        .accessibilityElement(children: .contain)
+        .accessibilityIdentifier("sky.guide")
+    }
+    private var introduction: some View {
+        HStack(alignment: .top, spacing: StarfallTheme.Spacing.medium) {
+            if showsPortrait && !textSize.isAccessibilitySize {
+                Image(uiImage: StarCast.image(for: .colored(.amber), expression: .idle))
+                    .resizable().scaledToFit().frame(width: 48, height: 48)
+                    .background(Circle().fill(StarfallTheme.Observatory.lanternGlow.opacity(0.12)))
+                    .accessibilityHidden(true)
+            }
+            VStack(alignment: .leading, spacing: StarfallTheme.Spacing.compact) {
+                Text(title).font(StarfallTheme.Typography.skyHeading)
+                    .dynamicTypeSize(...titleRole.maximumTextSize)
+                    .accessibilityIdentifier(titleIdentifier)
+                    .foregroundStyle(StarfallTheme.Observatory.lanternGlow)
+                Text(message).font(StarfallTheme.Typography.supporting)
+                    .foregroundStyle(StarfallTheme.Colors.textPrimary)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .accessibilityIdentifier("experiment.message")
+            }
+        }
     }
 }
 

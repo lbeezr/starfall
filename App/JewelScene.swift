@@ -134,8 +134,8 @@ extension Jewel {
     }
 
     /// Falling-sky cast uses the same bounded material-factory boundary; classic art stays unchanged.
-    static func makeStarCharacter(_ kind: Jewel?, expression: StarCast.Expression, radius: CGFloat) -> SKSpriteNode {
-        StarCast.makeNode(for: kind, expression: expression, radius: radius)
+    static func makeStarCharacter(_ identity: StarCast.Identity, expression: StarCast.Expression, radius: CGFloat) -> SKSpriteNode {
+        StarCast.makeNode(for: identity, expression: expression, radius: radius)
     }
 
     private static func silhouette(_ kind: Jewel, radius: CGFloat) -> CGPath {
