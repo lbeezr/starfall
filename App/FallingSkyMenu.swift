@@ -41,21 +41,17 @@ struct FallingSkyMenu: View {
                     Button(action: observatory) { Label("Back to Observatory", systemImage: "moon.stars") }
                         .accessibilityIdentifier("sky.home")
                 }
-                Section("Feel & atmosphere") {
-                    SkyPreferenceToggle(title: "Sound", symbol: "speaker.wave.2", value: $sound, identifier: "experiment.sound")
-                    SkyPreferenceToggle(title: "Haptics", symbol: "waveform", value: $haptics, identifier: "experiment.haptics")
-                    SkyPreferenceToggle(title: "Calm effects", symbol: "moon", value: $calm, identifier: "experiment.calm")
-                }
+                SkyFeelSection(sound: $sound, haptics: $haptics, calm: $calm)
                 Section {
                     if !challenge {
                         NavigationLink { Form { balanceControls }.navigationTitle("Sky balance").toolbar { dismissal } }
                             label: { Label("Sky balance", systemImage: "slider.horizontal.3") }
                             .accessibilityIdentifier("experiment.balance")
                         Button(action: firstLight) { Label("First Light · 18 starlight", systemImage: "star.circle") }
-                            .accessibilityHint("Starts a new challenge, replacing this sky")
+                            .accessibilityHint("Reviews First Light before you choose Begin")
                             .accessibilityIdentifier("experiment.challenge")
                     }
-                    NavigationLink { howToPlay.toolbar { dismissal } } label: { Label("How to play", systemImage: "questionmark.circle") }
+                    NavigationLink { SkyHowToPlay().toolbar { dismissal } } label: { Label("How to play", systemImage: "questionmark.circle") }
                         .accessibilityIdentifier("experiment.help")
                 } header: { Text("Explore") } footer: {
                     Text(Bundle.main.object(forInfoDictionaryKey: "StarfallBuildID") as? String ?? "dev.local")
@@ -72,39 +68,7 @@ struct FallingSkyMenu: View {
         .presentationDetents([.large])
     }
 
-    private var dismissal: some ToolbarContent {
-        ToolbarItem(placement: .confirmationAction) {
-            Button("Done", action: done).accessibilityIdentifier("experiment.done")
-        }
-    }
-
-    private var howToPlay: some View {
-        List {
-            Section("A little starlight") {
-                Text("Tap ordinary matches worth three light. To draw a constellation, swipe through at least five distinct matching stars, each beside the last, including diagonals. Lift to release only the stars you traced. You may retrace your path to branch; a star counts once. Large stars count as one star and score two light. Lift before five or leave the board to cancel.")
-                Text("A grown star beside one small match is enough. Each family has its own face and shape.")
-            }
-            Section("Follow the sky") {
-                Text("New skies open with a quick cascade. Start clearing as each wave settles; your selected shower pace follows the opening.")
-                Text("The comet trail fills toward the next shower. Clear space before a column fills. Clearing never delays the sky.")
-                Text("A matching arrival grows a small star. A grown star cannot grow again; the next star stacks above it.")
-            }
-            Section("Opal Orb") {
-                Text("The round white Opal Orb can join any one color. Start on a colored star, then include the orb in that color’s ordinary match or traced constellation. It is worth one light, never grows, and is spent when cleared. Other colors do not join the same clear.")
-            }
-            Section("Storms") {
-                Text("Fresh skies alternate nine calmer showers with three heavier storm showers. The warning and remaining count follow the next shower. Clearing never delays a storm. Calmer skies can still fill a column.")
-                Text("Saved older skies and their replays keep their original showers. Choose New sky to try Opals and storms.")
-            }
-            Section("Dark stars") {
-                Text("Dark stars stop their four immediate neighbors from growing. Clear a matching group beside one to dissolve it. Dark stars award no starlight.")
-            }
-            Section("Take your time") {
-                Text("Pause to clear at your pace, or call one shower with Next shower. The menu and leaving the app freeze the sky. Missed showers never accumulate.")
-                Text("First Light is a short 18-starlight challenge with steady showers and no dark stars, Opals or storms.")
-            }
-        }.navigationTitle("How to play")
-    }
+    private var dismissal: some ToolbarContent { SkyMenuDone(done: done) }
 
     private var balanceControls: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -162,25 +126,5 @@ private extension StarfallBalance.DarkStarFrequency {
     var detail: String {
         guard let gap = showerGap else { return "No new dark stars after the current preview." }
         return "One dark star every \(gap.lowerBound)–\(gap.upperBound) showers. A fresh sky starts with one in shower \(gap.upperBound)."
-    }
-}
-
-/// Large reading sizes get a whole native toggle row rather than a squeezed switch.
-private struct SkyPreferenceToggle: View {
-    let title: String
-    let symbol: String
-    @Binding var value: Bool
-    let identifier: String
-    @Environment(\.dynamicTypeSize) private var size
-    var body: some View {
-        Group {
-            if size.isAccessibilitySize {
-                Toggle(isOn: $value) { Label(title, systemImage: symbol).frame(maxWidth: .infinity, alignment: .leading) }
-                    .toggleStyle(.button)
-            } else {
-                Toggle(isOn: $value) { Label(title, systemImage: symbol) }.toggleStyle(.switch)
-            }
-        }.frame(minHeight: StarfallTheme.Layout.minimumTarget)
-            .accessibilityIdentifier(identifier)
     }
 }

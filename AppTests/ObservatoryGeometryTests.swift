@@ -5,6 +5,21 @@ import StarfallCore
 @testable import Starfall
 
 final class ObservatoryGeometryTests: XCTestCase {
+    func testColumnOutlineContainsItsStarsAndExcludesNeighborCenters() {
+        for size in [CGSize(width: 375, height: 667), CGSize(width: 390, height: 844), CGSize(width: 1024, height: 768)] {
+            let mapping = ObservatoryGeometry(size: size)
+            for column in 0..<7 {
+                let path = CGMutablePath()
+                path.addLines(between: mapping.columnPolygon(column)); path.closeSubpath()
+                for row in 0..<7 {
+                    XCTAssertTrue(path.contains(mapping.viewPoint(Cell(row, column))))
+                    if column < 6 { XCTAssertFalse(path.contains(mapping.viewPoint(Cell(row, column+1)))) }
+                    if column > 0 { XCTAssertFalse(path.contains(mapping.viewPoint(Cell(row, column-1)))) }
+                }
+            }
+        }
+    }
+
     @MainActor func testProjectionRoundTripAndSharedEdgesOnPortraitSizes() {
         for size in [CGSize(width: 375, height: 1000), CGSize(width: 440, height: 956), CGSize(width: 350, height: 610), CGSize(width: 378, height: 690), CGSize(width: 536, height: 930), CGSize(width: 768, height: 1024), CGSize(width: 1024, height: 768), CGSize(width: 375, height: 667)] {
             let mapping = ObservatoryGeometry(size: size)

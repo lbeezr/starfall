@@ -22,7 +22,9 @@ The store schedules the core’s persisted opening cadence: four quick waves, th
 
 ## Welcome, entry and endings
 
-`SkyFlowCeremony` presents narrow value snapshots and actions using the shared cast and theme. `FallingSkyView` owns navigation, suspends gameplay under ceremonies and waits for the committed final turn to settle. Reveal tasks belong to screen identity and settle on interruption; they never advance gameplay. See [the flow contract](../docs/design/SKY_FLOW.md).
+`LaunchScreen.storyboard` and the opaque `StarfallApp` root share the named `LaunchBackground` color. The static Starfall wordmark uses named `CeremonyGold`; launch has no timed delay or gameplay state. Validate system launch snapshots with an ad-hoc signed simulator product so SplashBoard can validate its resources. Shared build configuration selects the storyboard in Debug and Release; `LaunchSurfaceTests` checks the packaged color and launch declaration.
+
+`SkyFlowState` stages round choices until Begin and rejects duplicate/stale Entry actions. Back discards only that pending choice; Continue preserves the in-memory pause choice, while restored rounds stay paused. `SkyResultSnapshot` explains committed endings after restore; `SkyWelcomeSnapshot` describes the retained round. `SkyPreferences` shares pre-play and game-menu toggles/help without another store or preference key. `SkyFlowCeremony` presents narrow value snapshots and actions over the final board using the shared cast and theme. `FallingSkyView` owns navigation, suspends gameplay under ceremonies and waits for the committed final turn to settle. `SkyCastFormation` owns contained decorative arrival poses. Heading focus and terminal speech have one presentation owner. Reveal tasks belong to screen identity and settle on interruption; they never advance gameplay. See [the flow contract](../docs/design/SKY_FLOW.md).
 
 Ordinary Debug/Release launches open Welcome. Historical `--starfalls-reset` board fixtures still open paused play; add `--sky-flow-review` to test the production welcome flow with isolated `Starfall.SkyFlowReview` defaults. Relaunch with only `--sky-flow-review` to exercise restore. This is Debug verification setup, not a player mode.
 
@@ -31,3 +33,5 @@ The optional `SkyCadenceCue` reads `nextShowerCadence` only. Baseline supplies n
 `SkyShowerPlacement` selects the calibrated iPhone 17 portrait camera contour. All other hardware/viewports and accessible layouts use the safe-area header. Both show the same committed ordered forecast through `SkyShowerTrail`; there is no trial flag. [Adoption and device limits](../docs/evidence/shower-forecast-adoption-2026-10-17/README.md).
 
 **Announced cadence adoption:** New skies use production Core `announcedCycleV1`; the previous B exporter/launch selector is removed. Core owns the sole algorithm. Older saves and same-sky replay retain their version; First Light and fixed gentle/steady settings retain timing. [Current contract](../docs/design/PACING_ADOPTION.md).
+
+`FallingSkyScene` reports attached, sized presentation readiness. Scene detachment synchronously suspends the store. `SkyFlowState` gates a cancellable 240 ms handoff; scene readiness alone never starts a round.

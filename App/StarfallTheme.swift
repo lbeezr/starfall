@@ -5,6 +5,7 @@ import UIKit
 /// separate owners; screens compose these roles rather than invent local tokens.
 enum StarfallTheme {
     enum Colors {
+        static let launchBackground = Color("LaunchBackground")
         static let skyTop = Palette.midnight
         static let skyBottom = Palette.plum
         static let surface = Palette.nightglass
@@ -299,9 +300,11 @@ struct StarfallGameButtonStyle: ButtonStyle {
 
 extension StarfallTheme {
     enum Ceremony {
-        static let gold = Color(red: 1, green: 0.89, blue: 0.68)
+        static let handoffDuration = 0.24
+        static let gold = Color("CeremonyGold")
         static let goldPressed = Color(red: 0.90, green: 0.76, blue: 0.48)
         static let titleSize: CGFloat = 46
+        static let resultTitleSize: CGFloat = 36
         static let settleDuration = 0.65
         static let actionsDelay = 0.36
     }

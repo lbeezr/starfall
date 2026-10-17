@@ -39,6 +39,12 @@ struct ObservatoryGeometry {
         let xs = points.map(\.x), ys = points.map(\.y)
         return CGRect(x: xs.min()!, y: ys.min()!, width: xs.max()!-xs.min()!, height: ys.max()!-ys.min()!)
     }
+    func columnPolygon(_ column: Int) -> [CGPoint] {
+        guard (0..<FallingSky.side).contains(column) else { return [] }
+        let back = polygon(Cell(FallingSky.side - 1, column))
+        let front = polygon(Cell(0, column))
+        return [back[0], back[1], front[2], front[3]]
+    }
     func viewPoint(_ cell: Cell) -> CGPoint {
         edge(CGFloat(cell.column)+0.5, depth: (CGFloat(6-cell.row)+0.5)/7)
     }

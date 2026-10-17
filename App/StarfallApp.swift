@@ -5,6 +5,8 @@ import StarfallCore
 @main struct StarfallApp: App {
     var body: some Scene {
         WindowGroup {
+            ZStack {
+                StarfallTheme.Colors.launchBackground.ignoresSafeArea()
             #if DEBUG
             if ProcessInfo.processInfo.arguments.contains("--classic") || ProcessInfo.processInfo.arguments.contains("--demo") {
                 StarfallView()
@@ -14,6 +16,7 @@ import StarfallCore
             #else
             FallingSkyView()
             #endif
+            }
         }
     }
 }

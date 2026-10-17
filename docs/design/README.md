@@ -8,6 +8,9 @@ Behavior proposals, production contracts and research supporting decisions.
 
 [Next pacing design](PACING_NEXT.md) analyzes the current source split, usable input time and a bounded timing comparison after opening/tracing integration. Proposed only.
 
+[Screen-flow polish](SCREEN_FLOW_POLISH.md) proposes safe staged Entry, opaque launch, continuous handoffs and explanatory results; its [implementation plan](../SCREEN_FLOW_PLAN.md) sequences the work. Draft only; the existing adopted flow remains the current implementation.
+
+
 [Notification plan](NOTIFICATIONS.md) records the accepted optional weekly reminder policy; implementation is deferred.
 
 Use the [design template](../templates/DESIGN.md). Start with [shower phases](SHOWER_PHASES.md) for the active rhythm comparison, [visual reference](VISUAL_REFERENCE.md) for imagery, [star cast](star-cast/README.md) for runtime art, and [audio](audio/README.md) for sound. Older original-puzzle documents are context, not current scope; consult [the roadmap](../ROADMAP.md).

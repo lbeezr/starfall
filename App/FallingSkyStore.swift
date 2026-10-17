@@ -33,13 +33,18 @@ import StarfallCore
     deinit { task?.cancel() }
 }
 
+/// Terminal speech has one presentation owner; explicit nonterminal feedback stays store-owned.
+enum SkyTerminalSpeech { case feedback, ceremony }
+
 // Existing persistence keys and launch arguments survive the production naming promotion.
 @MainActor @Observable final class FallingSkyStore {
+    var terminalSpeech: SkyTerminalSpeech = .feedback
     static let saveKey = SkySaveArchive.key
     private(set) var game: FallingSky
     private(set) var hasSavedSky = false
     private(set) var busy = false
     private(set) var suspended = true
+    private(set) var sceneReady = false
     private(set) var isPaused = true
     private(set) var nextShowerDate: Date?
     /// Interval/phase leading to the next shower, including while paused or overdue.
@@ -174,6 +179,13 @@ import StarfallCore
         refreshCadence()
         remaining = showerInterval
         scene.onLayout = { [weak self] in self?.settlePresentation() }
+        scene.onReadinessChanged = { [weak self] ready in
+            guard let self else { return }
+            self.sceneReady = ready
+            // Detachment must reject a due clock callback before SwiftUI observes
+            // readiness on its next update. Re-admission remains view-owned.
+            if !ready { self.setSuspended(true) }
+        }
     }
 
     var phaseCue: SkyPhaseCue? { SkyPhaseCue(game: game, pending: pending) }
@@ -335,7 +347,9 @@ import StarfallCore
         presenter.animate(turn, from: old, to: game) { [weak self] in
             guard let self, self.generation == ticket, self.busy else { return }
             self.pending = nil; self.busy = false
-            if let spokenResult { self.feedback.announce(spokenResult) }
+            if let spokenResult, !self.game.isOver || self.terminalSpeech == .feedback {
+                self.feedback.announce(spokenResult)
+            }
             self.deliverRainIfReady()
             #if DEBUG
             self.observeTiming(.state)
@@ -344,6 +358,17 @@ import StarfallCore
         #if DEBUG
         observeTiming(.state)
         #endif
+    }
+
+    /// Called only after Entry has consumed its pending choice. The round remains
+    /// suspended until the view admits play; existing reset/save ownership stays here.
+    func beginEntry(_ request: SkyEntryRequest) {
+        switch request {
+        case .initial: break // Keep the established first-launch seed and preview.
+        case .fresh: restart(sameSky: false)
+        case .replay: restart(sameSky: true)
+        case .firstLight: startFirstLight()
+        }
     }
 
     func restart(sameSky: Bool) {

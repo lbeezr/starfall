@@ -6,6 +6,7 @@ import StarfallCore
 @MainActor final class FallingSkyScene: SKScene, FallingSkyPresenting {
     var reduceMotion = false
     var onLayout: (() -> Void)?
+    var onReadinessChanged: ((Bool) -> Void)?
     private var nodes: [Int: FallingSkyCharacter] = [:]
     private var cellsByID: [Int: Cell] = [:]
     private var rendered: FallingSky?
@@ -26,9 +27,19 @@ import StarfallCore
     override func didChangeSize(_ oldSize: CGSize) {
         guard oldSize != size else { return }
         onLayout?()
+        reportReadiness()
     }
-    override func didMove(to view: SKView) { if let rendered { render(rendered) } }
-    override func willMove(from view: SKView) { onLayout?() }
+    override func didMove(to view: SKView) {
+        if let rendered { render(rendered) }
+        reportReadiness()
+    }
+    override func willMove(from view: SKView) { onReadinessChanged?(false); onLayout?() }
+
+    private func reportReadiness() {
+        guard let view else { onReadinessChanged?(false); return }
+        onReadinessChanged?(size.width > 0 && size.height > 0 &&
+            abs(size.width - view.bounds.width) < 1 && abs(size.height - view.bounds.height) < 1)
+    }
 
     private func point(_ cell: Cell) -> CGPoint {
         ObservatoryGeometry(size: size).scenePoint(cell)

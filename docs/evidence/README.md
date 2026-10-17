@@ -19,3 +19,7 @@ Start with [the roadmap](../ROADMAP.md) for current priorities or [visual refere
 [Combined pacing acceptance](pacing-acceptance-2026-10-17/README.md) separates exact-source Core, build, hosted, native and sampled-motion results, with failed attempts and remaining acceptance gaps.
 
 [Production rhythm adoption](pacing-adoption-2026-10-17/README.md) records the promoted source, compatibility checks and delivery boundary.
+
+[Adversarial screen-flow review](screen-flow-review-2026-10-17/README.md) prioritizes launch continuity, entry/save cancellation, pause semantics and presentation polish, with source findings separated from retained visuals and unverified native checks.
+
+[Screen-flow polish batches](screen-flow-polish-2026-10-17/README.md) records the dark-launch build, native tests and sampled launch evidence before safe-entry implementation.

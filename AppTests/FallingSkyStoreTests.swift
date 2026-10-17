@@ -528,6 +528,32 @@ final class FallingSkyStoreTests: XCTestCase {
         XCTAssertTrue(feedback.announcements.isEmpty, "Suspension rejects stale result speech")
     }
 
+    @MainActor func testCeremonyOwnsTerminalSpeechWithoutSuppressingExplicitPlayFeedback() {
+        let suite = "SkyCeremonySpeech.\(UUID())", presenter = FallingSkyRecorder(), clock = ManualRainClock()
+        let defaults = UserDefaults(suiteName: suite)!
+        defer { defaults.removePersistentDomain(forName: suite) }
+        let feedback = SkyFeedbackRecorder()
+        let store = FallingSkyStore(defaults: defaults, arguments: ["--starfalls-reset"],
+                                    presenter: presenter, clock: clock, feedback: feedback)
+        store.terminalSpeech = .ceremony
+        store.setSuspended(false)
+        store.callShower(); presenter.finish()
+        XCTAssertEqual(feedback.announcements, [store.message])
+        feedback.announcements.removeAll()
+        store.togglePause()
+        for _ in 0..<40 where !store.game.isOver {
+            // Cadence/storm transitions during play remain legitimate feedback.
+            // Isolate the terminal turn to check its single presentation owner.
+            feedback.announcements.removeAll()
+            clock.advance(4); presenter.finish()
+            if store.game.isOver {
+                XCTAssertTrue(feedback.announcements.isEmpty, "The focused result heading owns terminal speech once")
+            }
+        }
+        XCTAssertTrue(store.game.isOver); XCTAssertFalse(store.busy)
+        XCTAssertNotNil(SkyResultSnapshot(game: store.game))
+    }
+
     @MainActor func testFeedbackDefaultsDoNotOverwriteExplicitMuteOrWriteDuringInitialization() {
         let suite = "SkyFeedbackDefaults.\(UUID())"
         let defaults = UserDefaults(suiteName: suite)!
@@ -541,35 +567,6 @@ final class FallingSkyStoreTests: XCTestCase {
         XCTAssertFalse(restored.soundEnabled); XCTAssertFalse(restored.hapticsEnabled)
     }
 
-}
-
-@MainActor private final class ManualRainClock: FallingSkyRainScheduling {
-    var now: TimeInterval = 0
-    var deadline: TimeInterval?
-    var action: (@MainActor () -> Void)?
-    func schedule(after delay: TimeInterval, action: @escaping @MainActor () -> Void) {
-        deadline = now + delay; self.action = action
-    }
-    func cancel() { deadline = nil; action = nil }
-    func advance(_ duration: TimeInterval) {
-        now += duration
-        if let deadline, deadline <= now + 0.00001 {
-            let callback = action
-            cancel(); callback?()
-        }
-    }
-}
-
-@MainActor private final class FallingSkyRecorder: FallingSkyPresenting {
-    var reduceMotion = false
-    var lastRendered: FallingSky?
-    var completions: [() -> Void] = []
-    func render(_ game: FallingSky) { lastRendered = game }
-    func animate(_ turn: FallingSkyTurn, from old: FallingSky,
-                 to game: FallingSky, completion: @escaping () -> Void) {
-        completions.append(completion)
-    }
-    func finish() { completions.last?() }
 }
 
 @MainActor private final class SkyFeedbackRecorder: FallingSkyFeedbackProviding {
