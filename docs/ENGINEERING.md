@@ -25,6 +25,8 @@ Choose the smallest durable correction that covers the demonstrated mechanism. A
 
 The hygiene script checks tracked generated/user files and ordinary imports of UI/platform game frameworks in StarfallCore. It examines tracked paths and current core file contents, including local edits. It does not prove deterministic behavior, parse all Swift import syntax, validate target membership, scan credentials, or establish clean-commit/native acceptance. Existing CI retains its separate builds, test-count checks, privacy/resource checks and evidence export.
 
+Actual VoiceOver sessions follow the [development/RC cadence](DEVELOPMENT_BUILDS.md#accessibility-checks-by-build-stage). Use lightweight accessibility checks while iterating; reserve full spoken/focus/rotor acceptance for release candidates. This current policy supersedes earlier VoiceOver timing triggers in the follow-ups below, without changing their recorded results or closing known defects.
+
 ## Evidence discipline
 
 A result needs a source commit/tree, any build-affecting dirty paths, toolchain, command/configuration, simulator model/OS and pass/fail summary. Publish acceptance from a clean checkout/export, or label the result as a working-tree check and explain the difference. Compilation, native interactions, inspected screenshots, observed animations, real VoiceOver and physical-device performance answer different questions. Avoid “all validated” from a subset. Keep raw logs, movies, xcresults, traces and DerivedData out of Git. Retain selected small screenshots/JSON with a reproduction note under docs/evidence. Existing asset/source handoffs remain tracked; do not use broad binary ignore rules.
@@ -103,3 +105,19 @@ The shared phase cue now limits explicit announcement requests to warning, event
 [Source-bound integration evidence](evidence/crystal-glow-integration-2026-10-17/README.md) reproduces the largest-text front-left cell score failure and terrace-first actual VoiceOver focus on clean main `6fdb8d0` as well as cast candidate `5b4ab49`. Trigger: next Observatory UI/accessibility change or release acceptance. Verify the original edge-cell tap at accessibility XXXL on iPhone 17e and compact phone, then actual VoiceOver cell exploration/activation, props and menu focus return. Root cause is not established by this art integration; native hit geometry was unchanged. Do not report these cases as green based on the scoped cast tests.
 
 The screen-reader matrix also exposed normal-motion skips and feedback stop-count differences (audio is deliberately stopped by VoiceOver announcements). Explicit disposable-simulator normal-mode setup now disables the actual screen reader and checks actual Reduce Motion off before the normal acceptance run; 35 final hosted methods pass with no skips. Trigger: changing native test orchestration. Keep normal, Reduce Motion and actual VoiceOver matrices explicit and separate, preserving the failed speech evidence. Before adding true profile/rear turns, choose a mesh or normalized atlas and validate consistent geometry; the current production cutouts use shallow 2D turns only.
+
+
+
+
+## Diagonal constellation boundary (October 17, 2026)
+
+[Offline evidence](evidence/constellations-2026-10-17/README.md) isolates eight-neighbor eligibility from the generator's ordinary dry-board relief. Trigger: native implementation or adoption. Resolve count versus starlight and whole-component precedence; use separate bundle/defaults, committed group snapshots and shared projection for links/input. Verify five/four-grown examples, overlap, dark adjacency, settling, save replay, pause/settings/background and stale inputs, full/reduced motion and actual VoiceOver. Offline survival gains do not close these gates. Remove the temporary rule/tool or explicitly bound its extension after native comprehension comparison.
+
+The user has now confirmed count and whole-component precedence for the [native constellation pair](evidence/constellations-native-2026-10-17/README.md). Exported fixtures, native tap checks and signed installation are separately recorded there. Before adoption, finish observed iPhone play, actual VoiceOver and full-motion review; preserve the ordinary generator relief predicate unless a separately tested generation decision changes it. Remove the pair/tool or name a bounded extension at that decision.
+
+
+## Selected constellation trace and install identity (October 17, 2026)
+
+[Current evidence](evidence/constellation-trace-2026-10-17/README.md) supersedes the whole-component tap trial. Native five-from-six, partial/outside cancellation and maximum-text drawing pass; the last required a local recognizer/scroll failure relationship. Trigger: promotion to the original app or the next touch/accessibility boundary change. Verify actual VoiceOver add/release/cancel actions and speech, current system Reduce Motion drawing, interrupted native drags/multitouch, curved/branching physical swipes and haptic feel; retain core snapshot/generation and selected-set validation. Repeat the recorded maximum-text drag and scroll outside eligible starts. Existing ordinary save/RNG/forecast contracts stay unchanged.
+
+The user wants one app after verified integration. [Build conventions](DEVELOPMENT_BUILDS.md) keep one stable lab identity with visible `dev.<ID>` and reserve release-candidate labels for selected source. Control and ten obsolete apps were uninstalled from the phone/active simulator; original Starfall is retained with its round. Before removing it, update that same identity in place and verify actual retained saves. Current trace evidence excludes concurrent ranking source; do not bundle that work or claim this lab validates it.

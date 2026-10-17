@@ -1,0 +1,321 @@
+{
+  "baseline": {
+    "method": "At most one clear after each shower except all, which clears every available group (bounded to 25 iterations on a 49-cell board). Fixed seeds 0...199. Candidate comparison uses the already announced preview; future previews can depend on the board. Capped survivors are censored, not completed rounds. No human reaction time or animation/input gate simulation. Preview-aware policy sees landing columns, which the player cannot see; it is an upper-bound diagnostic, not a player model.",
+    "results": [
+      {
+        "choiceStates": 0,
+        "clears": 0,
+        "consequentialChoices": 0,
+        "decisionStates": 0,
+        "dryShowers": 0,
+        "ended": 200,
+        "exampleSeeds": [],
+        "groupCountTotal": 10846,
+        "highColumnChoices": 0,
+        "longestDryRun": 0,
+        "maximumGroups": 9,
+        "playableShowers": 3735,
+        "policy": "idle",
+        "rounds": 200,
+        "score": 0,
+        "showers": 3935
+      },
+      {
+        "choiceStates": 215,
+        "clears": 3224,
+        "consequentialChoices": 7,
+        "decisionStates": 3224,
+        "dryShowers": 2190,
+        "ended": 200,
+        "exampleSeeds": [
+          18,
+          24,
+          51,
+          57,
+          76
+        ],
+        "groupCountTotal": 3102,
+        "highColumnChoices": 114,
+        "longestDryRun": 1,
+        "maximumGroups": 3,
+        "playableShowers": 5090,
+        "policy": "all",
+        "rounds": 200,
+        "score": 12419,
+        "showers": 5290
+      },
+      {
+        "choiceStates": 292,
+        "clears": 3038,
+        "consequentialChoices": 11,
+        "decisionStates": 3038,
+        "dryShowers": 2005,
+        "ended": 200,
+        "exampleSeeds": [
+          7,
+          18,
+          25,
+          57,
+          76
+        ],
+        "groupCountTotal": 3345,
+        "highColumnChoices": 155,
+        "longestDryRun": 1,
+        "maximumGroups": 3,
+        "playableShowers": 5043,
+        "policy": "first",
+        "rounds": 200,
+        "score": 11704,
+        "showers": 5243
+      },
+      {
+        "choiceStates": 287,
+        "clears": 3029,
+        "consequentialChoices": 11,
+        "decisionStates": 3029,
+        "dryShowers": 2000,
+        "ended": 200,
+        "exampleSeeds": [
+          7,
+          18,
+          25,
+          57,
+          76
+        ],
+        "groupCountTotal": 3332,
+        "highColumnChoices": 154,
+        "longestDryRun": 1,
+        "maximumGroups": 3,
+        "playableShowers": 5029,
+        "policy": "largest",
+        "rounds": 200,
+        "score": 11696,
+        "showers": 5229
+      },
+      {
+        "choiceStates": 300,
+        "clears": 3099,
+        "consequentialChoices": 10,
+        "decisionStates": 3099,
+        "dryShowers": 2027,
+        "ended": 200,
+        "exampleSeeds": [
+          18,
+          25,
+          57,
+          76,
+          77
+        ],
+        "groupCountTotal": 3416,
+        "highColumnChoices": 166,
+        "longestDryRun": 1,
+        "maximumGroups": 4,
+        "playableShowers": 5126,
+        "policy": "pressure",
+        "rounds": 200,
+        "score": 11939,
+        "showers": 5326
+      },
+      {
+        "choiceStates": 300,
+        "clears": 3099,
+        "consequentialChoices": 10,
+        "decisionStates": 3099,
+        "dryShowers": 2027,
+        "ended": 200,
+        "exampleSeeds": [
+          18,
+          25,
+          57,
+          76,
+          77
+        ],
+        "groupCountTotal": 3416,
+        "highColumnChoices": 166,
+        "longestDryRun": 1,
+        "maximumGroups": 4,
+        "playableShowers": 5126,
+        "policy": "preview-aware",
+        "rounds": 200,
+        "score": 11939,
+        "showers": 5326
+      }
+    ],
+    "seedCount": 200,
+    "showerLimit": 60
+  },
+  "baselineChecks": {
+    "fixture": "ordinary rejection reproduced; four-grown rejection and ordinary clear passed"
+  },
+  "candidate": {
+    "method": "At most one clear after each shower except all, which clears every available group (bounded to 25 iterations on a 49-cell board). Fixed seeds 0...199. Candidate comparison uses the already announced preview; future previews can depend on the board. Capped survivors are censored, not completed rounds. No human reaction time or animation/input gate simulation. Preview-aware policy sees landing columns, which the player cannot see; it is an upper-bound diagnostic, not a player model.",
+    "results": [
+      {
+        "choiceStates": 0,
+        "clears": 0,
+        "consequentialChoices": 0,
+        "decisionStates": 0,
+        "dryShowers": 0,
+        "ended": 200,
+        "exampleSeeds": [],
+        "groupCountTotal": 10309,
+        "highColumnChoices": 0,
+        "longestDryRun": 0,
+        "maximumGroups": 8,
+        "playableShowers": 3735,
+        "policy": "idle",
+        "rounds": 200,
+        "score": 0,
+        "showers": 3935
+      },
+      {
+        "choiceStates": 327,
+        "clears": 4641,
+        "consequentialChoices": 7,
+        "decisionStates": 4641,
+        "dryShowers": 2907,
+        "ended": 185,
+        "exampleSeeds": [
+          40,
+          56,
+          68,
+          91,
+          122
+        ],
+        "groupCountTotal": 4318,
+        "highColumnChoices": 185,
+        "longestDryRun": 1,
+        "maximumGroups": 3,
+        "playableShowers": 6949,
+        "policy": "all",
+        "rounds": 200,
+        "score": 19814,
+        "showers": 7134
+      },
+      {
+        "choiceStates": 419,
+        "clears": 4123,
+        "consequentialChoices": 14,
+        "decisionStates": 4123,
+        "dryShowers": 2473,
+        "ended": 190,
+        "exampleSeeds": [
+          11,
+          36,
+          43,
+          44,
+          50
+        ],
+        "groupCountTotal": 4565,
+        "highColumnChoices": 225,
+        "longestDryRun": 1,
+        "maximumGroups": 4,
+        "playableShowers": 6596,
+        "policy": "first",
+        "rounds": 200,
+        "score": 17758,
+        "showers": 6786
+      },
+      {
+        "choiceStates": 413,
+        "clears": 4097,
+        "consequentialChoices": 13,
+        "decisionStates": 4097,
+        "dryShowers": 2471,
+        "ended": 192,
+        "exampleSeeds": [
+          11,
+          36,
+          50,
+          68,
+          69
+        ],
+        "groupCountTotal": 4538,
+        "highColumnChoices": 229,
+        "longestDryRun": 1,
+        "maximumGroups": 4,
+        "playableShowers": 6568,
+        "policy": "largest",
+        "rounds": 200,
+        "score": 17597,
+        "showers": 6760
+      },
+      {
+        "choiceStates": 410,
+        "clears": 4122,
+        "consequentialChoices": 9,
+        "decisionStates": 4122,
+        "dryShowers": 2481,
+        "ended": 190,
+        "exampleSeeds": [
+          11,
+          50,
+          68,
+          69,
+          78
+        ],
+        "groupCountTotal": 4562,
+        "highColumnChoices": 228,
+        "longestDryRun": 1,
+        "maximumGroups": 4,
+        "playableShowers": 6603,
+        "policy": "pressure",
+        "rounds": 200,
+        "score": 17690,
+        "showers": 6793
+      },
+      {
+        "choiceStates": 410,
+        "clears": 4122,
+        "consequentialChoices": 9,
+        "decisionStates": 4122,
+        "dryShowers": 2481,
+        "ended": 190,
+        "exampleSeeds": [
+          11,
+          50,
+          68,
+          69,
+          78
+        ],
+        "groupCountTotal": 4562,
+        "highColumnChoices": 228,
+        "longestDryRun": 1,
+        "maximumGroups": 4,
+        "playableShowers": 6603,
+        "policy": "preview-aware",
+        "rounds": 200,
+        "score": 17690,
+        "showers": 6793
+      }
+    ],
+    "seedCount": 200,
+    "showerLimit": 60
+  },
+  "candidateChecks": {
+    "fixture": "passed",
+    "lostChoiceStates": 30,
+    "matchedBoards": 5043,
+    "mergedOrdinaryStates": 38,
+    "newChoiceStates": 294,
+    "newOrExpandedGroups": 1105,
+    "newlyPlayable": 268
+  },
+  "candidateSHA256": "9f0fd7c22466b930cbb2dd3e3bde1e93cd5b0ebc592af23b0180a8b4fb150e48",
+  "dirtyPaths": [
+    "?? docs/design/CONSTELLATION_TRIAL.md",
+    "?? tools/mechanics/ConstellationChecks.swift",
+    "?? tools/mechanics/compare-constellations.py"
+  ],
+  "inputSHA256": {
+    "Sources/StarfallCore/FallingSky.swift": "61074a4fe42db5e2fb00b84c4551395b2165321ad0e4f7b51884706aaa4f6ebc",
+    "Sources/StarfallCore/Game.swift": "9ab2d57af8fe0ee804ce56e762eb5833a08ae5f39e8916ffaa0fe708d90e7086",
+    "Sources/StarfallCore/RefillMapping.swift": "608be41f40c945b18aba5512bac16b7c4de4eb8a2747d6fe54a895392b38e5f7",
+    "Sources/StarfallCore/StarfallBalance.swift": "d80b1cad3f034d31506d243fd65f50669ff525090c2b86e79b51085ad550b7fc",
+    "Sources/StarfallCore/StarfallChallenge.swift": "0475f660c21ae42cce0df8c11dc40adbbb841e58b6c66b82a1293c720bd26b72",
+    "tools/mechanics/ConstellationChecks.swift": "9dbf4fd00e2f5b6f9a420a3b5a27d4663fea90dc8922318b72f88f7062199089",
+    "tools/mechanics/compare-constellations.py": "172ffbf14f06604fa60fb8048da07496bb66ff58a6a22cf98ebcd4c3eaa9b4d8",
+    "tools/sample-falling-sky-balance.swift": "4eb6383543e08cb315d90a5140dd5f7ee09d6be64b7c325ff6e9096b924752b0"
+  },
+  "source": "1583e7601ba3e6f1d5ac5d9659310ab6a826d77c"
+}

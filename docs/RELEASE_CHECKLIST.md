@@ -12,6 +12,10 @@ Checked 2026-10-16. This checklist tracks release gates; it is not a claim of Ap
 - **Bundled manifest check passed** in [run 38895166811](https://github.com/lbeezr/starfall/actions/runs/38895166811), source `c4ac5d7d19a2e118d2ee9077201c8649b50ef5b4`, Xcode 26.3, iPhone SE (3rd generation), iOS 26.2 Simulator. The `privacy-manifest-result.json` receipt reports semantic equality with source and the expected reason. Source and bundled SHA-256: `a331d51864743ebe4e00dd22360b4a538b6b3ac26a6b3eb54094e60a36959a12`. This isolated packaging pass does **not** imply the whole run or accessibility suite passed.
 - Current configuration: version `0.1.0`, build `1`, deployment target iOS 17, provisional bundle ID `com.starfall.prototype`, automatic signing without an established team, iPhone **and iPad** device families. These are prototype settings, not approved production identity.
 
+## Release-candidate accessibility gate
+
+- [ ] Complete the [full actual VoiceOver acceptance](DEVELOPMENT_BUILDS.md#accessibility-checks-by-build-stage) on the selected `rc.N.<ID>`, including the first release. Retain source/build/device/OS and flow results, resolve blocking defects, and identify any unchanged evidence carried forward. Development deferrals do not count as passes. Later RC fixes need affected-flow regression checks rather than an automatic full rerun.
+
 ## Gates before a signed beta
 
 - [ ] **Icon:** catalog registration and native app-icon metadata have [historical build evidence](evidence/swarm-2026-10-16/source-and-product.json). Independently review the final icon, verify its actual Home Screen appearance, and recheck compiled metadata in the final signed candidate; the earlier build does not establish acceptance of that candidate.
