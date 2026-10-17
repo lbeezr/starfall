@@ -7,6 +7,7 @@ import hashlib
 import subprocess
 import tempfile
 from shower_candidate import apply_candidate
+from burst_fragments import burst_labels, render_burst_fragment
 
 root = Path(__file__).resolve().parents[2]
 mechanics = Path(__file__).resolve().parent
@@ -98,25 +99,9 @@ if is_shower or arguments.baseline:
                 "Start the sky. Clear matching stars to make room; adjust the balance in Settings.",
                 "Clear connected matching stars worth 3+. A grown star (2) beside one small match (1) can clear.")
     if is_phase:
-        labels = {
-            "__LAB_BUNDLE__": bundle,
-            "__BURST_WARNING__": "Five-star surge follows" if arguments.surge_showers else "Pressure follows this shower",
-            "__BURST_COUNT__": r'Surge · \(remaining) five-star \(remaining == 1 ? "shower" : "showers")' if arguments.surge_showers else r'Pressure · \(remaining) \(remaining == 1 ? "shower" : "showers") remaining',
-            "__BURST_THREE__": "Surge · 3 five-star showers" if arguments.surge_showers else "Pressure · 3 showers remaining",
-            "__BURST_PREVIEW_CHECK__": '''            if remaining > 0 {
-                XCTAssertEqual(app.descendants(matching: .any).matching(NSPredicate(
-                    format: "identifier BEGINSWITH %@", "experiment.incoming.")).count, 5)
-            }''' if arguments.surge_showers and not arguments.compact_hud else "",
-            "__BURST_STORE_CHECK__": '''            if (9...11).contains(turn) { XCTAssertEqual(stores[0].game.incoming.count, 5) }
-            if (10...12).contains(turn) { XCTAssertEqual(stores[0].pending?.forecast.count, 5) }''' if arguments.surge_showers else "",
-        }
+        labels = burst_labels(bundle, arguments.surge_showers, not arguments.compact_hud)
         def phase_fragment(name):
-            text = (mechanics / name).read_text()
-            for token, value in labels.items():
-                text = text.replace(token, value)
-            if "__BURST_" in text or "__LAB_" in text:
-                raise RuntimeError("Unresolved phase fragment token in " + name)
-            return text
+            return render_burst_fragment(mechanics / name, labels)
         view = "App/StarfallExperimentView.swift"
         replace(view, "import SpriteKit", "import SpriteKit\nimport UIKit")
         anchor = "                        compactHeader" if arguments.compact_hud else "                        forecast"

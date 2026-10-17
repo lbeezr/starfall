@@ -27,6 +27,12 @@ final class CompactBurstPhaseTests: XCTestCase {
                 "Phase information stays outside the active board")
             clearCanonicalBurstGroup(in: app)
         }
+        XCTAssertEqual(XCTWaiter.wait(for: [XCTNSPredicateExpectation(
+            predicate: NSPredicate(format: "enabled == true"), object: next)], timeout: 5), .completed)
+        next.tap()
+        XCTAssertEqual(XCTWaiter.wait(for: [XCTNSPredicateExpectation(
+            predicate: NSPredicate(format: "label == %@", "Recovery · 8 calmer showers"), object: cue)], timeout: 5), .completed)
+        XCTAssertTrue((board.value as? String)?.hasPrefix("13 showers,") == true)
         let score = app.staticTexts["experiment.score"].label
         XCTAssertNotEqual(score, initialScore, "Native cell taps must still clear real groups")
         let capture = XCTAttachment(screenshot: app.screenshot())
@@ -35,12 +41,12 @@ final class CompactBurstPhaseTests: XCTestCase {
         let done = app.buttons["experiment.done"]
         XCTAssertTrue(done.waitForExistence(timeout: 5)); done.tap()
         XCTAssertTrue(cue.waitForExistence(timeout: 5))
-        XCTAssertEqual(cue.label, "Recovery · 9 calmer showers")
+        XCTAssertEqual(cue.label, "Recovery · 8 calmer showers")
         XCUIDevice.shared.press(.home); app.activate()
-        XCTAssertEqual(cue.label, "Recovery · 9 calmer showers")
+        XCTAssertEqual(cue.label, "Recovery · 8 calmer showers")
         app.terminate(); app.launchArguments = []; app.launch()
         XCTAssertTrue(cue.waitForExistence(timeout: 10))
-        XCTAssertEqual(cue.label, "Recovery · 9 calmer showers")
+        XCTAssertEqual(cue.label, "Recovery · 8 calmer showers")
         XCTAssertEqual(app.staticTexts["experiment.score"].label, score)
     }
 

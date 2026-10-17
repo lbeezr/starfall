@@ -14,3 +14,7 @@ Start with [the roadmap](ROADMAP.md), [writing process](WRITING.md), and [visual
 | [archive](archive/README.md) | Historical direction |
 
 [EXPERIMENTS.md](EXPERIMENTS.md) owns adoption status; [ENGINEERING.md](ENGINEERING.md) owns concrete technical risks. Do not infer current acceptance from an old report.
+
+[Environment production](design/environments/PRODUCTION.md) is the repeatable art-direction process and roadmap for the five selected living locations.
+
+[Observatory interface direction](design/OBSERVATORY_INTERFACE.md) owns the selected A HUD, comet progress trail, cast guidance and menu component family.

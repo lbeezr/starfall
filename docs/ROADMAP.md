@@ -6,7 +6,7 @@ Build a small, readable falling-sky puzzle worth replaying. **Shower variety lea
 
 **Next actions:** Review the clean Release baseline as its own change, then review the existing warning/burst/recovery trials and observe matched play. Physical feel can be reviewed independently in small batches.
 
-**Open limits:** No participant preference results, final cast approval, general physical-device acceptance, or actual VoiceOver acceptance. These remain open even where simulator checks passed.
+**Open limits:** No gameplay participant preference results or general physical-device acceptance. Crystal Glow art direction and character masters are user-approved; runtime verification and remaining limits are recorded in the [cast integration evidence](evidence/crystal-glow-integration-2026-10-17/README.md). Accessibility evidence remains source-bound.
 
 ## The game we are improving
 
@@ -21,11 +21,24 @@ Build a small, readable falling-sky puzzle worth replaying. **Shower variety lea
 | Establish the candidate | Resolve the [Xcode project drift](ENGINEERING.md) in a separate reviewed change; retain a clean Release source/build record. | The exact candidate builds and its remaining visual/upgrade gaps are explicit. |
 | Make choices engaging — active | Compare natural Shower Lab, Pressure Lab, and one [announced phase trial](design/SHOWER_PHASES.md), using matched seeds and [observed play](PLAYTEST-FALLING-SKY.md). | Opening is playable within one settled shower; long dead stretches do not return in the regression sample; a player explains a useful choice and prefers a candidate or identifies the next issue. Adopt, remove, or name a bounded remaining question. |
 | Polish physical feel — active | Review arrivals, growth, clears and input on an iPhone; tune optional sound/haptics and profile repeated rounds. | Effects do not block decisions or input; effects stay bounded; device observations and profiles are retained. |
+| Build living places — active | Finish the integrated Moonlit Observatory’s acceptance, then prove the [environment production process](design/environments/PRODUCTION.md) with Cloudsea Conservatory. | Full-screen setting, real cast, two responsive props, coherent depth and quiet modes meet native/device/accessibility gates. Art-direction approval stays distinct from release acceptance. |
 | Explain danger and outcomes | Review nearly full columns, blocked growth, arrival information, overflow, replay and new sky. Keep landing places hidden and controls reachable on small screens/large text. | A first-time player explains the loss and next action; affected native input, settings dismissal and layout checks pass. |
 | Finish accessibility and reliability | Complete the native/device checks below. | Evidence distinguishes automation, visual review, actual VoiceOver and device observations. |
 | Prepare a shareable build | Reconcile acceptance/release docs, packaging and signing with the selected mechanics. | Reproducible signed build, known issues and device checklist; distribution only when requested. |
 
 Owners are the current implementer unless a work item names another owner. These are workstreams, not permission to expand scope or delay an independently verified batch.
+
+## Environment art direction — active
+
+The user has selected five tactile, layered landing places and personally confirmed that the Observatory's telescope and lantern reactions deliver the intended delight. The [production strategy](design/environments/PRODUCTION.md) defines the repeatable brief → composition → separated art → native integration → motion/accessibility/device review → adoption process. The [five-place bible](design/environments/landing-places-01/README.md) owns location identities; the [Observatory adoption record](evidence/observatory-adoption-2026-10-17/README.md) owns current implementation evidence and limits. Observatory now runs in the actual game; the original lab is historical.
+
+**Order:** finish Observatory's shipping pass; use Cloudsea Conservatory to establish reuse; then Comet Hearth, Prism Tide Grotto and Eventide Archive. Give each place its own materials, props, scenery, mood and acceptance record. Review enrichment after each adopted location and before release; improve these five before planning a sixth. This is a delivery sequence, not a campaign, unlock path or scheduled automation.
+
+The palette picker and duplicate lab code are retired; cosmic paintings remain historical references. They do not create parallel location-production workstreams. Gameplay comparisons can proceed independently; unrelated mechanics uncertainty must not delay a verified environmental integration.
+
+## Observatory interface refinement
+
+The [celestial interface specification](design/OBSERVATORY_INTERFACE.md) owns the current design-system pass: full-bleed artwork, compact constellation controls, a deadline-driven comet trail, Sunny guidance and separate settings/help/balance pages. Finish native/physical comparison and accessibility checks before extending the family to Cloudsea. Sound and haptics default on for new preferences while saved mute remains authoritative.
 
 ## The next gameplay decision
 
@@ -96,9 +109,12 @@ No campaign, unlocks, XP, currency, power-ups, backend, accounts, analytics, ads
 
 Integrate small verified batches. Keep deterministic rules in StarfallCore, presentation and feedback explicit, saves compatible and other edits intact. Update this roadmap as decisions change; preserve historical evidence with its source context.
 
+
 The user also proposed events or phases within a level. [Phase Lab](evidence/shower-phases-native-2026-10-17/README.md) now provides nine preparation showers, a warned three-shower pressure burst and recovery in an isolated native export. Next: matched observed play and comprehension review against Shower Lab; retain the [verified largest-text cue correction](evidence/phase-cue-2026-10-17/README.md), then resolve actual VoiceOver and full-motion validation before adoption. No campaign or new level progression is introduced.
 
+
 The [burst exposure audit](evidence/burst-exposure-2026-10-17/README.md) changes the next phase question: original first bursts change a forecast in 36/200 first-clear rounds; a five-star surge does so in 200/200, but also extends survival. The [isolated Surge Lab](evidence/surge-native-2026-10-17/README.md) now provides explicit five-star wording and separate saves; next is simulated and human observed comparison. Retain the original Phase Lab only for that cue/flow comparison, then select/remove or name a remaining question. Do not infer difficulty or enjoyment from the additional choices.
+
 
 The user-requested [agent-simulated play comparison](evidence/simulated-surge-playtest-2026-10-17/README.md) provisionally preferred Surge: it reported preparing before the event and prioritizing a high dark-star-adjacent group. This is paused agent observation, not human enjoyment or a controlled score comparison. Keep Surge as the leading phase experiment. The [shared startup introduction](evidence/clearing-introduction-2026-10-17/README.md) now states the value threshold and grown-plus-small example; [Seed-five rapid-input and due-rain boundaries](evidence/burst-input-2026-10-17/README.md) are now verified; learner comprehension and other acceptance limits remain open before adoption.
 
@@ -107,3 +123,13 @@ The [extended survival sample](evidence/surge-survival-2026-10-17/README.md) res
 The [expanded save check](evidence/shower-legacy-2026-10-17/README.md) verifies 160 current and 160 synthetic marker-absent save continuations plus restored/new First Light through completion under Surge. Replay/new-sky generation selection and real historical-install upgrades remain adoption work; this does not change the human comparison decision.
 
 [Compact phase HUD fit](evidence/compact-phase-2026-10-17/README.md) is now playable as Surge Lab HUD: native clears, sticky largest-text cues, restore, full-motion samples and Release build checked. Next phase decision: observe whether preparation/recovery changes useful clears without exact preview information, then select/remove the old HUD comparison. This does not establish current Observatory/physics parity or human preference.
+
+Main-alignment decision: the [simulated HUD follow-up](evidence/simulated-compact-playtest-2026-10-17/README.md) does not accept the newer Observatory interface. Preserve the measured rule/save results, but move further phase/feedback comparison to a source-bound Observatory snapshot using its existing guide, trail and shared geometry. No further old-HUD variants; production generation remains unchanged.
+
+The [integrated Observatory mechanics pair](evidence/observatory-phases-2026-10-17/README.md) is the current phase-comparison route. Its isolated natural/Surge generators preserve baseline save continuation and have current native phase/focus/activation checks. Next observe ordinary-text choices, resolve maximum-text baseline play and listen to automatic announcements; then decide adoption/removal. It adds timeboxed events within the existing sky, not campaign progression.
+
+The [completed Observatory agent comparison](evidence/observatory-phases-2026-10-17/playtest.md) makes paused outcome feedback the next refinement: explain committed growth and dark-star outcomes while preserving quiet flowing play. Keep the generator stable for that comparison; verify the feedback and an uncoached opening before interpreting familiarity-assisted success as player comprehension.
+
+[Paused outcome feedback](evidence/paused-feedback-2026-10-17/README.md) is implemented in the isolated pair and has current native/Release checks. Keep rules stable while judging whether its growth/dark feedback improves comprehension; the maximum-text board/guide boundary remains a separate acceptance gap.
+
+The [paused-feedback simulated follow-up](evidence/paused-feedback-2026-10-17/playtest.md) supports retaining the guide refinement in the pair. Next evaluate that presentation independently on the production generator before adoption; preserve the separate Surge decision and accessibility-layout gates.

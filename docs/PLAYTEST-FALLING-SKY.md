@@ -28,6 +28,18 @@ Start with uncoached fresh rounds; record the actual seed and rotate version ord
 
 After fresh-round preference is recorded, optionally use `--shower-decision-fixture`. Ask what they would clear and why before explaining the two outcomes. Distinguish choosing the larger group from recognizing the threatened column. Paused play allows both clears; the consequence of a single clear matters when automatic rain is already due. This coached demonstration is separate from unprompted strategy discovery. End with a concrete preference/reason, confusion to fix, or an explicit lack of preference. No such human observations have been collected yet.
 
+## Phase choices and HUD comprehension
+
+Keep two questions separate. To compare **rules**, use Shower Lab and Surge Lab with the same frozen HUD/renderer. To compare **presentation**, use Surge Lab and Surge Lab HUD with identical Surge rules. Comparing Shower Lab's old HUD against compact Surge changes both rules and information; it cannot identify the reason for a preference. Record the export manifest and installed build, not just the app name. [Compact trial setup and limits](evidence/compact-phase-2026-10-17/README.md).
+
+For a bounded HUD comparison, launch both Surge apps with `--starfalls-reset --shower-phase-fixture`. Both begin at seed five after eight showers, following the fixture's canonical clears. Keep balance, motion, device and text size matched, and alternate app order across people. This is a prepared state, not an uncoached opening or independent replay of the earlier simulated round. Keep saves separate.
+
+Before advancing or explaining the cue, ask what the player expects next, whether they would clear or wait, and why. Record that answer before the action, then what actually happened. Continue through shower thirteen or loss. Record unavailable clears as such; never impose a one-clear-per-shower policy. Note whether the reason concerns column height, growth, a dark star, joining survivors, or a revealed forecast. Distinguish visible information from accessibility values, hints or coaching used during exploration.
+
+Ask whether the warning, event count and recovery changed a useful choice; retain an explicit “no” or lack of preference. Do not infer strategy from a higher score after decisions diverge. Then use fresh rounds and normal automatic play to assess the wider experience: a paused fixture cannot establish urgency, initial comprehension or enjoyment. Record automatic and paused observations separately. Actual VoiceOver listening/focus is a separate session; reading the accessibility tree is not its substitute.
+
+At the decision point, select one lab presentation, remove the redundant comparison, or name one bounded remaining question. Human preference and agent simulation stay separate; repeated sessions by the same agent retain familiarity and order effects. No production generation or save migration follows solely from HUD preference.
+
 ## Current playable comparison: survival versus First Light
 
 The next tranche adds First Light under Sky settings. It starts a new round with a fixed seed, an 18-starlight goal and no dark stars; replay repeats it, while New sky returns to survival. Compare these as whole experiences first. A preference cannot be attributed to the goal alone because seed/configuration also differ from a default survival round.

@@ -174,6 +174,7 @@ final class FallingSkyInteractionTests: XCTestCase {
             reveal(control, in: app)
             XCTAssertTrue(control.isHittable)
             if control.value as? String != "1" { control.tap() }
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == %@", "1"), object: control).wait(timeout: 3))
         }
         capture(app, "falling-sky-largest-text-settings")
         app.buttons["experiment.done"].tap()
@@ -198,16 +199,7 @@ final class FallingSkyInteractionTests: XCTestCase {
 
     @MainActor func testSystemReduceMotionKeepsManualPlayWorking() {
         continueAfterFailure = false
-        let preferences = XCUIApplication(bundleIdentifier: "com.apple.Preferences")
-        preferences.launch()
-        let reduce = preferences.switches["Reduce Motion"]
-        if !reduce.exists {
-            let accessibility = preferences.buttons["Accessibility"]
-            for _ in 0..<4 where !accessibility.isHittable { preferences.swipeUp() }
-            accessibility.tap()
-            preferences.buttons["Motion"].firstMatch.tap()
-        }
-        XCTAssertTrue(reduce.waitForExistence(timeout: 5))
+        let (preferences, reduce) = NativeSystemMotionSettings.open()
         let original = reduce.value as? String
         if original != "1" {
             // Settings exposes the entire labelled row as a switch; target its thumb.
@@ -215,10 +207,16 @@ final class FallingSkyInteractionTests: XCTestCase {
         }
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == %@", "1"), object: reduce).wait(timeout: 5))
         defer {
-            preferences.activate()
-            if reduce.value as? String != original {
-                reduce.coordinate(withNormalizedOffset: CGVector(dx: 0.9, dy: 0.5)).tap()
+            // Relaunch Settings so a returning-app transition cannot swallow the restoration tap.
+            preferences.terminate()
+            let (restoringPreferences, restoringSwitch) = NativeSystemMotionSettings.open()
+            if let original {
+                if restoringSwitch.value as? String != original {
+                    restoringSwitch.coordinate(withNormalizedOffset: CGVector(dx: 0.9, dy: 0.5)).tap()
+                }
+                XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == %@", original), object: restoringSwitch).wait(timeout: 5))
             }
+            restoringPreferences.terminate()
         }
         let app = launch(); defer { app.terminate() }
         let next = app.buttons["experiment.next"]
@@ -353,6 +351,7 @@ final class FallingSkyInteractionTests: XCTestCase {
         togglePause(app)
         let occupied = app.buttons["experiment.cell.0.0"].label
         app.buttons["experiment.settings"].tap()
+        app.buttons["experiment.balance"].tap()
         let pace = app.buttons["experiment.pace"], frequency = app.buttons["experiment.darkFrequency"]
         XCTAssertTrue(pace.waitForExistence(timeout: 5))
         pace.tap(); app.buttons["Gentle · 6s"].tap()
@@ -377,6 +376,7 @@ final class FallingSkyInteractionTests: XCTestCase {
         XCTAssertTrue(app.buttons["experiment.pause"].waitForExistence(timeout: 10))
         XCTAssertEqual(app.buttons["experiment.pause"].label, "Resume sky")
         app.buttons["experiment.settings"].tap()
+        app.buttons["experiment.balance"].tap()
         XCTAssertTrue((pace.label + String(describing: pace.value)).contains("Gentle"))
         XCTAssertTrue((frequency.label + String(describing: frequency.value)).contains("Frequent"))
         app.buttons["experiment.resetBalance"].tap()
@@ -394,6 +394,24 @@ final class FallingSkyInteractionTests: XCTestCase {
     }
 }
 
-private extension XCTNSPredicateExpectation {
+extension XCTNSPredicateExpectation {
     func wait(timeout: TimeInterval) -> Bool { XCTWaiter.wait(for: [self], timeout: timeout) == .completed }
+}
+
+/// One navigation owner for system-motion acceptance and normal-animation review setup.
+enum NativeSystemMotionSettings {
+    @MainActor static func open() -> (XCUIApplication, XCUIElement) {
+        let preferences = XCUIApplication(bundleIdentifier: "com.apple.Preferences")
+        preferences.launch()
+        let reduce = preferences.switches["Reduce Motion"]
+        if !reduce.exists {
+            let accessibility = preferences.buttons["Accessibility"]
+            for _ in 0..<4 where !accessibility.isHittable { preferences.swipeUp() }
+            XCTAssertTrue(accessibility.isHittable); accessibility.tap()
+            let motion = preferences.buttons["Motion"].firstMatch
+            XCTAssertTrue(motion.waitForExistence(timeout: 5)); motion.tap()
+        }
+        XCTAssertTrue(reduce.waitForExistence(timeout: 5))
+        return (preferences, reduce)
+    }
 }

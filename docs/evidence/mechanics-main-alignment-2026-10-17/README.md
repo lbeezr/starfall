@@ -1,0 +1,21 @@
+# Mechanics alignment with integrated Observatory
+
+Main inspected at `3439e48` (2026-10-17). The living Observatory, shared projected geometry, finite prop responses, selected comet-trail HUD, menu navigation and native tests are integrated. These presentation changes supersede the frozen mechanics HUD comparisons; their rule measurements remain historical evidence. Main's core generator is unchanged by this integration. Keep natural shower variety and bounded Surge events as isolated hypotheses; no campaign or level progression is implied.
+
+The in-progress matched mechanics exports used immutable working-tree snapshot `starfall-mechanics-source-j0cq8b1z`, captured before this integration. Relative to integrated main, its runtime/test differences include FallingSkyMenu, ObservatoryEnvironment, ObservatoryGeometry, ObservatoryGeometryTests and ObservatoryInteractionTests. Its native results do not establish acceptance of commit 3439e48. Further presentation validation must use a fresh source-bound pair from integrated main, preserving concurrent uncommitted HUD/branding/project work.
+
+## Checks on the earlier snapshot
+
+Xcode 27.1, iPhone 17e simulator `A84C81F5-AE41-496A-97AE-E17C63E18D29`, iOS 27.0, Debug, arm64, signing disabled. Isolated bundles `com.starfall.mechanics.observatory.natural` and `.surge`, separate defaults suites. No normal prototype save reset or production rule changes.
+
+- Initial Surge run: 24 passed (store, announcement policy and two phase UI methods). Result `test_sim_2026-10-17T16-21-03-916Z_pid40582_743ff074.xcresult`.
+- Broader Surge run: two passed, four failed. Actual VoiceOver failed before manual shower activation; announcement delivery remains unverified. Three subsequent ordinary-touch interaction tests failed. Result `test_sim_2026-10-17T16-24-05-194Z_pid40582_a96d918c.xcresult`.
+- Matched natural baseline reproduced those three interaction failures before cleanup. Result `test_sim_2026-10-17T16-29-52-391Z_pid40582_98d8d36d.xcresult`.
+- Diagnostic native cleanup measured VoiceOver **enabled** after the aborted trial, then restored ordinary touch. Cleanup plus all three unchanged interaction tests passed (four methods). Result `test_sim_2026-10-17T16-30-57-684Z_pid40582_b131cdfc.xcresult`. This identifies contaminated input mode for those failures, not a proven Observatory geometry regression. Swift defer alone did not restore service state on this XCTest abort path; register XCTest teardown before enabling the service in the next test revision. Retain speech diagnostics before failing assertions.
+- Both latest candidate package suites passed 61 tests. The export-only pre-promotion save fixture explicitly chooses legacy generation for its control; all original continuation assertions remain. New candidate initialization deliberately chooses candidate generation, so it was an invalid legacy control. Logs `/tmp/starfall-observatory-{natural,surge}-core-fixed.log`. This is not yet the independent full compatibility matrix.
+
+Raw logs/results remain in the XcodeBuildMCP Starfall workspace and temporary mechanics exports. Full animation, actual phase announcement delivery, maximum-text board composition, clean integrated-main pair and human preference remain open. Largest-text controls passing does not establish visual acceptance: the trial's sticky phase header creates a separate dark band, and guide/board composition needs comparison with current main. Do not promote this trial or describe it as complete.
+
+Next bounded decision: compare unchanged current Observatory with the same rules plus warning / three-shower Surge / recovery. Test whether players alter clear/wait choices and understand the transition. Resolve test lifecycle and presentation gaps first; adopt only with relevant native and observed-play evidence, otherwise remove the temporary route.
+
+Follow-up: [the clean integrated-source pair](../observatory-phases-2026-10-17/README.md) now records current export tooling, independent save compatibility, corrected XCTest cleanup, focused VoiceOver activation, short-copy screenshots and a separate baseline maximum-text failure. The earlier snapshot's passes are not reused as acceptance of that pair.

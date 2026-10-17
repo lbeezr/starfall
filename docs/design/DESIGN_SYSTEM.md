@@ -1,5 +1,7 @@
 # Starfall design system
 
+**Current falling-sky refinement:** [Observatory interface direction](OBSERVATORY_INTERFACE.md) defines the live HUD, icon, guide-card, menu and full-bleed contracts. Older puzzle layout details below remain historical and apply to the retained Debug puzzle only; they do not prescribe a square board or opaque panel around every Observatory control.
+
 Accountable owner: presentation/design-system lane (`experience`). Updated 2026-10-16. The implementation is in `App/StarfallTheme.swift`; menu, gameplay, Settings, HUD and atmosphere consume it. This is a small native SwiftUI system for the existing puzzle, not a new feature platform.
 
 ## Ownership and change rules

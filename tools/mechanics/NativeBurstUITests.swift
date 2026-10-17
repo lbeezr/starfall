@@ -78,15 +78,20 @@ __BURST_PREVIEW_CHECK__
             capture.name = "phase-\(remaining)"; capture.lifetime = .keepAlways; add(capture)
             clearCanonicalBurstGroup(in: app)
         }
+        XCTAssertEqual(XCTWaiter.wait(for: [XCTNSPredicateExpectation(
+            predicate: NSPredicate(format: "enabled == true"), object: next)], timeout: 5), .completed)
+        next.tap()
+        XCTAssertEqual(XCTWaiter.wait(for: [XCTNSPredicateExpectation(
+            predicate: NSPredicate(format: "label == %@", "Recovery · 8 calmer showers"), object: cue)], timeout: 5), .completed)
         app.buttons["experiment.settings"].tap()
         let done = app.buttons["Done"]
         XCTAssertTrue(done.waitForExistence(timeout: 5)); done.tap()
         XCTAssertTrue(cue.waitForExistence(timeout: 5))
-        XCTAssertEqual(cue.label, "Recovery · 9 calmer showers")
+        XCTAssertEqual(cue.label, "Recovery · 8 calmer showers")
         XCUIDevice.shared.press(.home); app.activate()
-        XCTAssertEqual(cue.label, "Recovery · 9 calmer showers")
+        XCTAssertEqual(cue.label, "Recovery · 8 calmer showers")
         app.terminate(); app.launchArguments = []; app.launch()
         XCTAssertTrue(cue.waitForExistence(timeout: 10))
-        XCTAssertEqual(cue.label, "Recovery · 9 calmer showers")
+        XCTAssertEqual(cue.label, "Recovery · 8 calmer showers")
     }
 }

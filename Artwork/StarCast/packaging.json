@@ -1,0 +1,83 @@
+{
+  "sourceSHA256": "a060564614a79bd551747761955f2d11f9cee652dd5b0de3d994ce75f6127f2b",
+  "frames": {
+    "Spark": {
+      "sourceBounds": [
+        64,
+        29,
+        450,
+        490
+      ],
+      "bodySize": [
+        174,
+        208
+      ],
+      "sha256": "7f7a1439e8e8f38ec21071b89d8fc11b6d46a38a98dd663f822f395d20e14bc7"
+    },
+    "Sunny": {
+      "sourceBounds": [
+        28,
+        33,
+        482,
+        468
+      ],
+      "bodySize": [
+        208,
+        199
+      ],
+      "sha256": "2791d9b7ff953be9d22859eef00d4fef2bb665f51f13f142a79fd866e72b5a6d"
+    },
+    "Pip": {
+      "sourceBounds": [
+        57,
+        43,
+        442,
+        482
+      ],
+      "bodySize": [
+        182,
+        208
+      ],
+      "sha256": "958a11259f75036cc523eab89f03ceb3030723f2d3e153b7b194608d5dde4e21"
+    },
+    "Twinkle": {
+      "sourceBounds": [
+        27,
+        0,
+        481,
+        459
+      ],
+      "bodySize": [
+        206,
+        208
+      ],
+      "sha256": "46ddda7e9bf1761c22a6c769179c327d533bc1bce8e5a5bc46565b3016f2f897"
+    },
+    "Nova": {
+      "sourceBounds": [
+        0,
+        79,
+        512,
+        421
+      ],
+      "bodySize": [
+        208,
+        139
+      ],
+      "sha256": "5e5a03765080428018c714bc60cd25d05603c5dfd2d2dd533005bc4cab0ed5b2"
+    },
+    "Dusk": {
+      "sourceBounds": [
+        23,
+        5,
+        479,
+        442
+      ],
+      "bodySize": [
+        208,
+        199
+      ],
+      "sha256": "9f456b7abb4077dd4f3e91ede46193fc01c22c4cecb98c5487f840715518a626"
+    }
+  }
+}

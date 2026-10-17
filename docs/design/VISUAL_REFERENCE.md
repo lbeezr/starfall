@@ -22,6 +22,12 @@ The existing icon, screens and six-star cast, with links to their sources. **The
 
 **Splash screen:** No authored image is checked in. The app uses [automatic launch-screen generation](../../Config/Clean.xcconfig); the opening board above is gameplay, not a splash. Add an authored concept or native launch capture here when one exists, labeled accordingly.
 
+## Current Crystal Glow cast
+
+<img src="../evidence/crystal-glow-integration-2026-10-17/materials.png" width="640" alt="Native Crystal Glow six-family cast export with large blue eyes, faceted bodies and four expressions">
+
+**Native renderer export — source `6cc9efd`, iPhone 17e / iOS 27.0.** The user approved the Crystal Glow masters; [integration evidence](../evidence/crystal-glow-integration-2026-10-17/README.md) separates final material/interaction/motion checks from baseline accessibility failures and unverified device acceptance. The older cast exports below remain historical references.
+
 ## Meet the cast
 
 <img src="../evidence/star-cast-motion-2026-10-17/material-review.png" width="640" alt="Six-star cast overview: tall aqua Spark, amber Sunny, mint Pip, rose Twinkle, wide violet Nova and dark Dusk, with expression rows and size samples">

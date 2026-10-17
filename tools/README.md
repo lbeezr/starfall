@@ -4,6 +4,7 @@ Offline analysis, art review and playtest preparation. These tools are not runti
 
 | Start here | Purpose |
 | --- | --- |
+| [Environment labs](environments/README.md) | Isolated native scene/art integration with source provenance |
 | [Mechanics](mechanics/README.md) | Bounded shower/rule comparisons |
 | [Gameplay study](gameplay-study/README.md) | Deterministic sampling and survivor analysis |
 | [Art quality](art-quality/README.md) | Crystal rendering and image comparisons |
