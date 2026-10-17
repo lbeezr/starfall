@@ -2,9 +2,9 @@
 
 **Status:** Active · **Owner:** Current implementer · **Updated:** October 17, 2026, Eastern time
 
-Build a small, readable falling-sky puzzle worth replaying. **Shower variety leads the next gameplay comparison.** Keep the default generator unchanged until observed play supports adoption. Phase and Surge native trials now exist; the agent-simulated comparison provisionally favors Surge, but human preference remains unverified.
+Build a small, readable falling-sky puzzle worth replaying. **Constellation tracing leads the current gameplay polish.** Shower variants remain isolated. Keep the default generator unchanged until observed play supports adoption. Phase and Surge native trials now exist; the agent-simulated comparison provisionally favors Surge, but human preference remains unverified.
 
-**Next actions:** Review the clean Release baseline as its own change, then review the existing warning/burst/recovery trials and observe matched play. Physical feel can be reviewed independently in small batches.
+**Next actions:** Try the [latest drawing build](evidence/constellation-trace-2026-10-17/README.md), refine gesture/physical feel with lightweight accessibility checks, then integrate into the original Starfall app while preserving its round. Reserve full actual VoiceOver acceptance for release candidates before the first release. Keep one latest lab during that transition.
 
 **Open limits:** No gameplay participant preference results or general physical-device acceptance. Crystal Glow art direction and character masters are user-approved; runtime verification and remaining limits are recorded in the [cast integration evidence](evidence/crystal-glow-integration-2026-10-17/README.md). Accessibility evidence remains source-bound.
 
@@ -13,6 +13,8 @@ Build a small, readable falling-sky puzzle worth replaying. **Shower variety lea
 <img src="evidence/compact-hud-2026-10-17/active.png" width="240" alt="Native gameplay capture with a compact score and menu header above the star board">
 
 **Source-bound native reference:** October 17 compact-HUD candidate, iPhone 17e / iOS 27.0 Simulator; [capture source and verification limits](evidence/compact-hud-2026-10-17/README.md). The compact layout is adopted, but this capture does not establish current-build parity or human preference. See the [icon, opening screen and cast](design/VISUAL_REFERENCE.md) for the visual context behind the workstreams below.
+
+The [diagonal constellation investigation](evidence/constellations-2026-10-17/README.md) responds to physical-phone feedback about sparse clears. The user confirmed five actual stars, then chose swiping and clearing only the traced subset. The [latest isolated build](evidence/constellation-trace-2026-10-17/README.md) supersedes the earlier whole-component tap pair. Shipping generation and the phone round are unchanged.
 
 ## What happens next
 
@@ -65,7 +67,7 @@ Use paused/manual explanation and normal automatic play. Record comprehension, p
 | Each feature is complete | State observable acceptance criteria and record rule/save, interruption, accessibility, visual/full-animation and test results, including omissions. Apply [AGENTS.md](../AGENTS.md) and the [writing process](WRITING.md) throughout. |
 | Exact shipping candidate is verified | After project-drift review, record clean source, configuration, toolchain and device/OS. Test fresh install and a retained previous-version save without reset: board, score, preview/RNG continuation, preferences and completed challenge. Test any migration explicitly; run current falling-sky acceptance flows. Compilation alone does not establish visual or upgrade acceptance. |
 | Physical-device checks are routine | Use a smaller/older supported iPhone: repeated showers, clears, replay, background/resume and audio interruption. Record responsiveness/frame pacing, heat, energy, memory trend and leftover effects. Investigate reproducible issues with Instruments before optimizing; set measured device budgets. |
-| Actual accessibility is accepted | Play a complete round with VoiceOver: location/value, matching-group rotor, activation, pause/manual advance, outcome/replay and Settings focus return. Separately inspect system Reduce Motion, largest text, contrast and identification without color alone. Labels/audits do not close this gate. |
+| Actual accessibility is accepted | At release-candidate acceptance, following the [development/RC cadence](DEVELOPMENT_BUILDS.md#accessibility-checks-by-build-stage), play a complete round with actual VoiceOver: location/value, matching-group rotor, activation, pause/manual advance, outcome/replay and Settings focus return. Separately inspect system Reduce Motion, largest text, contrast and identification without color alone. Labels/audits do not close this gate. |
 | TestFlight feedback informs the candidate | After signing prerequisites and explicit upload/tester authorization, use approved testers and the actual Release candidate. Collect confusion, crashes, replay preference and device/build context; fix significant issues and verify again. No claim of universal enjoyment or crash-free play, and no analytics SDK. |
 
 Reliability coverage also includes minimum-supported OS, small phone, iPad portrait/landscape, rapid taps, interruptions during arrivals, save/relaunch, replay/new sky, settings dismissal and repeated-round stress. Calm effects and paused/manual play must remain usable. Existing system Reduce Motion evidence does not close every later candidate’s acceptance.

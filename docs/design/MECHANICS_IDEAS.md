@@ -4,7 +4,7 @@ Captured October 17, 2026. These are ideas for exploration, not adopted rules or
 
 ## Current dark star: Dusk
 
-The authoritative rules live in `Sources/StarfallCore/StarfallExperiment.swift`:
+The authoritative rules live in `Sources/StarfallCore/FallingSky.swift`:
 
 - A dark star occupies space and suppresses growth in its four orthogonally adjacent cells. Diagonals are unaffected.
 - It does not drain color, shrink an already grown star, stop matching, or freeze movement. A matching arrival that cannot grow stacks instead.
@@ -30,7 +30,19 @@ Questions to resolve before a prototype:
 
 ## Constellations
 
-User idea: explore a constellation mechanism. No connection, scoring or activation rule has been chosen.
+User idea: explore a constellation mechanism. Latest physical-device feedback (October 17): the player often sees too few valid clears and expects the five connected pink stars near the lower-right board to count through diagonal links. This is an observed frustration and a concrete future candidate, not adopted rules.
+
+### Next candidate: diagonal constellations of five or more
+
+Keep ordinary orthogonal matching at 3+ starlight. Separately test a same-family connected constellation of at least **five actual stars**, allowing diagonal as well as orthogonal links. A grown star remains one star toward this eligibility threshold, while retaining its existing starlight value if cleared; confirm this interpretation with the player before implementation. The photographed pink arrangement is an offset/branching cluster, not five in a single straight diagonal. Tap any member to preview/clear the eligible connected group; a tracing gesture is not presumed necessary.
+
+The observed lower-right pattern corresponds to front-based cells `(0,4), (1,3), (2,4), (1,5), (1,6)` in the captured terrace. Its diagonal connections make a visually coherent five-star constellation despite failing today's orthogonal clear rule. Retain the board description rather than the raw phone screenshot, which contained an unrelated notification.
+
+Hypothesis: recognize patterns players already perceive, reduce waiting for legal moves, and create satisfying larger clears without changing every diagonal pair/triple into an ordinary match. Compare current rules and this single candidate on the same saved-board fixtures and shower sequences. Measure useful choice counts, time without a clear, incidental clears, survival and player comprehension; more legal moves alone does not establish better play.
+
+Acceptance before adoption: this five-star pink fixture clears; diagonal-only three/four-star clusters do not; ordinary 3+ starlight clears retain their outcomes; grown-star eligibility/scoring is explicit; empty cells/different families cannot bridge links; dark-star removal adjacency is decided explicitly (retain current orthogonal rule in the first bounded comparison); survivor settling, save/replay/RNG, interruption and accessible tap alternatives remain deterministic. Define precedence for groups eligible under both rules before implementing. Keep the candidate isolated, then adopt/remove it after native and observed player comparison. No current game or saved round changes in this note.
+
+Other possible directions, retained for context:
 
 Possible directions to compare, not simultaneous requirements:
 

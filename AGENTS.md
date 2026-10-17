@@ -7,7 +7,7 @@ Keep the prototype small. Falling sky is the default game in Debug and Release: 
 - Every current build is clean. Ad and IAP SDKs, entitlements, tracking and monetization UI must remain absent. Any future monetized edition must be a separate opt-in target/product with dependencies conditionally linked; a runtime hide flag is insufficient.
 - Do not claim simulator/device or visual validation unless actually run on Apple tooling.
 - Do not change another repository or add network features, purchases or analytics without a new request.
-- Run tests and a simulator build after source changes where tooling exists. Inspect normal play, rapid taps, win/loss, restart, background/resume, VoiceOver, Reduce Motion, and settings dismissal.
+- Run tests and a simulator build after source changes where tooling exists. Inspect normal play, rapid taps, win/loss, restart, background/resume, Reduce Motion, and settings dismissal. Follow the [development/RC accessibility cadence](docs/DEVELOPMENT_BUILDS.md#accessibility-checks-by-build-stage): lightweight checks during development; full actual VoiceOver acceptance at release candidates, including the first release. Do not run full VoiceOver sessions for routine iteration or experiment integration.
 
 ## Planning, design, and reporting
 
