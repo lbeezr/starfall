@@ -1,0 +1,11 @@
+{
+  "largest-text.png": "688d5ef232b923ce7228e7a9a3d9db23f2d6bf3b9ccdac262eabaf8f6a6bcf97",
+  "material-review.png": "5d9d76a8ba8e0b91a195ab11397daf70210c25196db4b53bb49a8334adcc8125",
+  "landing.png": "04144797458aa4ea0d7fd47ea004340a132f6cf5369c4e434711a985174f7a7a",
+  "mixed-cast.png": "364acc70cb1abe37415a7484c83b2ccbd5030ebb65cbaaca0466c48229cc0dfb",
+  "localVideo": {
+    "path": "artifacts/star-cast-full-animations.mp4",
+    "sha256": "69093204feac77c88cd75191573031c171d6031e5f9f0a66dede2219b26f429d",
+    "tracked": false
+  }
+}

@@ -13,6 +13,7 @@ No progression, power-ups, backend, accounts, analytics, ads, purchases, paid as
 - Falling sky is the default. New skies offer a first-shower match; matching runs help dry boards when a low column has room. Existing saves retain their previous sky-generation rules.
 - Faster comets, manual next shower, paused clears, matching-group outlines/count, clear rings/score popups, and optional local sound/haptics are implemented.
 - One optional First Light challenge is implemented: fixed seed 42, 18 starlight, steady showers and no dark stars; entry starts a new round from Settings. This is a single objective prototype, not a campaign or unlock system.
+- The original star-character cast is integrated for falling sky in Debug and Release, with shared board/comet/preview materials and color-independent silhouettes. See the [production rendering contract](design/star-cast/README.md) and [native evidence](evidence/star-cast-2026-10-17/README.md). General physical-device and actual VoiceOver acceptance remain open.
 - Local evidence at the published pacing tree: 56 core tests, 14 falling-sky store tests, seven UI checks and a Release simulator build passed. Checks include real system Reduce Motion gameplay and a smaller iPhone at the largest text size. These are local results, not a claim about a new cloud CI run.
 - [Pacing evidence](evidence/falling-sky-pacing-2026-10-16/README.md) records exact scope and limitations. VoiceOver speech/focus and physical-device feel remain open.
 

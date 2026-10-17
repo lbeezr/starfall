@@ -1,0 +1,15 @@
+Test Case '-[StarfallUITests.StarfallExperimentInteractionTests testAutomaticRainPauseGrowthClearReplayAndSettings]' passed (30.227 seconds).
+Test Case '-[StarfallUITests.StarfallExperimentInteractionTests testBackgroundRelaunchAndAutomaticOverflow]' passed (110.404 seconds).
+Test Case '-[StarfallUITests.StarfallExperimentInteractionTests testBalanceControlsPreserveBoardPersistAndChangeArrivals]' passed (67.669 seconds).
+Test Case '-[StarfallUITests.StarfallExperimentInteractionTests testCompactPlayfieldKeepsControlsVisible]' passed (8.005 seconds).
+Test Case '-[StarfallUITests.StarfallExperimentInteractionTests testDarkStarInfluenceRestoreAndAdjacentClear]' passed (35.808 seconds).
+Test Case '-[StarfallUITests.StarfallExperimentInteractionTests testFirstLightCanOverflowWithoutCompletingGoal]' passed (63.205 seconds).
+Test Case '-[StarfallUITests.StarfallExperimentInteractionTests testFirstLightGoalCompletionRestoreReplayAndSurvival]' passed (43.415 seconds).
+Test Case '-[StarfallUITests.StarfallExperimentInteractionTests testFirstShowerIsPlayableAndManualInputStaysPaused]' passed (12.999 seconds).
+Test Case '-[StarfallUITests.StarfallExperimentInteractionTests testLargestTextSettingsFeedbackAndDismissal]' passed (30.000 seconds).
+Test Case '-[StarfallUITests.StarfallExperimentInteractionTests testSystemReduceMotionKeepsManualPlayWorking]' passed (16.468 seconds).
+
+All ten UI cases passed inside a combined run whose subsequent hosted animation tests failed under system Reduce Motion. This is not a successful overall xcodebuild run.
+Hosted stage: 69 executed, 3 skipped, 35 assertion failures in legacy animation checks.
+The process stalled during failure diagnostic collection and was stopped; its unfinalized result bundle is excluded.
+See hosted-summary.json for the separate complete normal-motion run: 69 passed, no failures/skips.
