@@ -36,6 +36,11 @@ struct FallingSkyMenu: View {
                     Text("\(turns) showers · \(groups) matching groups ready")
                         .accessibilityIdentifier("experiment.roundSummary")
                 }
+                Section("Build") {
+                    Text(Bundle.main.object(forInfoDictionaryKey: "StarfallBuildID") as? String ?? "dev.local")
+                        .font(.caption).foregroundStyle(.secondary)
+                        .accessibilityIdentifier("starfall.buildID")
+                }
                 Section("Feel & atmosphere") {
                     SkyPreferenceToggle(title: "Sound", symbol: "speaker.wave.2", value: $sound, identifier: "experiment.sound")
                     SkyPreferenceToggle(title: "Haptics", symbol: "waveform", value: $haptics, identifier: "experiment.haptics")
@@ -72,7 +77,7 @@ struct FallingSkyMenu: View {
     private var howToPlay: some View {
         List {
             Section("A little starlight") {
-                Text("Clear connected matching stars worth at least 3. Small stars count as 1; grown stars count as 2.")
+                Text("Tap ordinary matches worth three light. To draw a constellation, swipe through at least five distinct matching stars, each beside the last, including diagonals. Lift to release only the stars you traced. You may retrace your path to branch; a star counts once. Large stars count as one star and score two light. Lift before five or leave the board to cancel.")
                 Text("A grown star beside one small match is enough. Each family has its own face and shape.")
             }
             Section("Follow the sky") {

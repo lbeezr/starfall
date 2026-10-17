@@ -4,7 +4,7 @@
 
 Build a small, readable falling-sky puzzle worth replaying. **Constellation tracing leads the current gameplay polish.** Shower variants remain isolated. Keep the default generator unchanged until observed play supports adoption. Phase and Surge native trials now exist; the agent-simulated comparison provisionally favors Surge, but human preference remains unverified.
 
-**Next actions:** Try the [latest drawing build](evidence/constellation-trace-2026-10-17/README.md), refine gesture/physical feel with lightweight accessibility checks, then integrate into the original Starfall app while preserving its round. Reserve full actual VoiceOver acceptance for release candidates before the first release. Keep one latest lab during that transition.
+**Next actions:** Complete the approved constellation swipe adoption into regular Starfall, retain its selected saved round, and verify [automatic connected-iPhone updates](DEVELOPMENT_BUILDS.md). Remove the extra lab only after verified replacement. Full actual VoiceOver acceptance remains a release-candidate gate.
 
 **Open limits:** No gameplay participant preference results or general physical-device acceptance. Crystal Glow art direction and character masters are user-approved; runtime verification and remaining limits are recorded in the [cast integration evidence](evidence/crystal-glow-integration-2026-10-17/README.md). Accessibility evidence remains source-bound.
 

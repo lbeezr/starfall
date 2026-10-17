@@ -41,7 +41,9 @@ import StarfallCore
     private(set) var suspended = true
     private(set) var isPaused = true
     private(set) var nextShowerDate: Date?
-    private(set) var message = "Match stars worth three. Large stars count as two."
+    private(set) var message = "Gather starlight. Draw your own constellations."
+    private(set) var constellationInputGeneration: UInt64 = 0
+    var constellationTracing = false
     private(set) var pending: FallingSkyTurn?
     var soundEnabled: Bool {
         didSet { defaults.set(soundEnabled, forKey: "soundEnabled"); if !soundEnabled { feedback.stopSounds() } }
@@ -88,6 +90,13 @@ import StarfallCore
             game = ObservatoryReviewFixture.game(dense: arguments.contains("--observatory-dense"))
         }
         #endif
+        #if DEBUG
+        if arguments.contains("--starfalls-reset"), let name = arguments.first(where: { $0.hasPrefix("--constellation-fixture=") }),
+           let fixture = ConstellationFixture(rawValue: String(name.dropFirst("--constellation-fixture=".count))) {
+            game = fixture.game()
+            message = fixture.title + ". Draw through matching stars."
+        }
+        #endif
         remaining = showerInterval
         scene.onLayout = { [weak self] in self?.settlePresentation() }
     }
@@ -97,15 +106,25 @@ import StarfallCore
     var canClear: Bool { !busy && !suspended && !game.isOver && !rainDue }
 
     func clear(_ cell: Cell) {
-        guard canClear else { return }
+        guard canClear, !constellationTracing else { return }
         let old = game
         guard let turn = game.clear(cell) else {
             message = game.gem(at: cell)?.isDark == true
                 ? "Clear a matching group beside the dark star to dissolve it."
-                : "Match stars worth 3 or more. Large stars count as 2."
+                : "Match three light side by side, or five actual stars linked sideways or diagonally. Large stars count as one star, worth two light."
             feedback.announce(message)
             return
         }
+        if game.isOver { freezeClock() }
+        feedback.collected(soundEnabled: soundEnabled, hapticsEnabled: hapticsEnabled,
+                           reducedMotion: presenter.reduceMotion)
+        present(turn, from: old)
+    }
+
+    func clearTracedConstellation(_ path: [Cell], snapshot: FallingSky, generation ticket: UInt64) {
+        guard canClear, game == snapshot, ticket == constellationInputGeneration else { return }
+        let old = game
+        guard let turn = game.clearConstellation(path) else { return }
         if game.isOver { freezeClock() }
         feedback.collected(soundEnabled: soundEnabled, hapticsEnabled: hapticsEnabled,
                            reducedMotion: presenter.reduceMotion)
@@ -121,6 +140,7 @@ import StarfallCore
     }
 
     func togglePause() {
+        constellationInputGeneration &+= 1
         guard !suspended, !game.isOver else { return }
         isPaused.toggle()
         if isPaused {
@@ -172,6 +192,7 @@ import StarfallCore
     }
 
     private func present(_ turn: FallingSkyTurn, from old: FallingSky, announcesResult: Bool = true) {
+        constellationInputGeneration &+= 1
         generation &+= 1
         let ticket = generation
         busy = true; pending = turn
@@ -216,6 +237,20 @@ import StarfallCore
         message = sameSky ? "Same sky, a fresh start. Start when you're ready." : "A new sky. Start when you're ready."
         save(); presenter.render(game)
     }
+
+    #if DEBUG
+    func loadConstellationFixture(_ fixture: ConstellationFixture) {
+        isPaused = true
+        feedback.stopSounds()
+        freezeClock()
+        settlePresentation()
+        game = fixture.game()
+        remaining = showerInterval
+        message = fixture.title + ". Draw through matching stars."
+        save(); presenter.render(game)
+    }
+
+    #endif
 
     func startFirstLight() {
         isPaused = true
@@ -269,6 +304,7 @@ import StarfallCore
     }
 
     func settlePresentation() {
+        constellationInputGeneration &+= 1
         generation &+= 1
         pending = nil; busy = false
         presenter.render(game)
@@ -278,4 +314,43 @@ import StarfallCore
     private func save() {
         if let data = try? JSONEncoder().encode(game) { defaults.set(data, forKey: Self.saveKey) }
     }
+}
+
+
+/// Transient input ticket. Core remains the authority for whether a walk can clear.
+@MainActor final class ConstellationTraceIntent {
+    var lastFinger: CGPoint?
+    private(set) var path: [Cell] = []
+    private(set) var snapshot: FallingSky?
+    private(set) var generation: UInt64 = 0
+    private(set) var sequence: UInt64 = 0
+    var count: Int { Set(path).count }
+    var value: Int { snapshot?.value(of: Set(path)) ?? 0 }
+
+    @discardableResult func begin(_ cell: Cell, game: FallingSky, generation: UInt64, enabled: Bool) -> UInt64? {
+        cancel()
+        guard enabled, !game.isOver, game.constellationGroup(at: cell).count >= 5 else { return nil }
+        sequence &+= 1
+        snapshot = game; self.generation = generation; path = [cell]
+        return sequence
+    }
+    @discardableResult func visit(_ cell: Cell, ticket: UInt64?, game: FallingSky, generation: UInt64, enabled: Bool) -> Bool {
+        guard ticket == sequence, snapshot != nil else { return false }
+        guard enabled, snapshot == game, self.generation == generation,
+              let last = path.last, path.count < 196,
+              game.gem(at: cell)?.kind == game.gem(at: last)?.kind,
+              abs(cell.row-last.row) <= 1, abs(cell.column-last.column) <= 1 else {
+            cancel(); return false
+        }
+        if cell == last { return false }
+        path.append(cell)
+        return true
+    }
+    func finish(ticket: UInt64?, game: FallingSky, generation: UInt64, enabled: Bool) -> (path: [Cell], snapshot: FallingSky, generation: UInt64)? {
+        defer { cancel() }
+        guard ticket == sequence, let snapshot, snapshot == game, self.generation == generation,
+              enabled, game.constellationCells(along: path) != nil else { return nil }
+        return (path, snapshot, generation)
+    }
+    func cancel() { lastFinger = nil; path = []; snapshot = nil; sequence &+= 1 }
 }

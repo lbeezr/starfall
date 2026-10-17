@@ -1,14 +1,14 @@
 # Draw the stars you choose to spend
 
-**Status:** Accepted direction; isolated implementation · **Owner:** current implementer · **Updated:** 2026-10-17
+**Status:** Approved first pass; one-app adoption in progress · **Owner:** current implementer · **Updated:** 2026-10-17
 
-The user accepts constellation matching as a mechanic direction, but wants its satisfaction and strategy to come from drawing the shape. This supersedes whole-component clearing in the earlier tap-only trial: release clears **only the traced stars**. Omitted stars remain, even in the same connected family. Shipping rules and the existing phone round remain unchanged while the native interaction is verified.
+The user accepts constellation matching as a mechanic direction, but wants its satisfaction and strategy to come from drawing the shape. This supersedes whole-component clearing in the earlier tap-only trial: release clears **only the traced stars**. Omitted stars remain, even in the same connected family. The user now requests one phone app and repeatable updates from main; integrate into the existing Starfall identity and retain its chosen round.
 
 **Decision:** five distinct same-family stars minimum; diagonal/orthogonal neighboring steps; retracing permits branching without counting a star twice. Ordinary three-light orthogonal matches retain tap input. Glow hints at eligible groups without drawing their solution. The visible trail follows the player's walk, then pulses and bursts on successful release. Haptics rise with distinct stars; there is no idle vibration.
 
 **User review, 2026-10-17:** The installed first pass (`dev.fecfaa150d`) is approved after iPhone play. Keep the mechanic in Starfall Lab for further polish; this approval does not adopt it into the regular game. Control has been retired.
 
-**Next action:** publish the isolated tooling and continue lab polish while preserving both saves. Full actual VoiceOver acceptance follows the [release-candidate cadence](../DEVELOPMENT_BUILDS.md#accessibility-checks-by-build-stage). Decide production adoption separately.
+**Next action:** verify adoption and retained saves, then deliver the single app through the [main updater](../DEVELOPMENT_BUILDS.md#one-starfall-app-and-automatic-device-updates). The separate lab is retired only after successful replacement.
 
 ## Acceptance before implementation
 

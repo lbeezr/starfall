@@ -16,6 +16,11 @@ on:
       - 'Package.resolved'
       - 'Starfall.xcodeproj/**'
       - 'scripts/ci-*'
+      - 'scripts/device-update.py'
+      - 'scripts/build_identity.py'
+      - 'scripts/test_device_update.py'
+      - 'scripts/native_test_plan.py'
+      - 'scripts/test_native_test_plan.py'
       - '.github/workflows/starfall-simulator.yml'
   workflow_dispatch:
     inputs:
@@ -52,6 +57,10 @@ jobs:
         with:
           persist-credentials: false
           fetch-depth: 1
+      - name: Verify update decisions and development/RC matrix
+        run: |
+          python3 scripts/test_device_update.py
+          python3 scripts/test_native_test_plan.py
       - name: Build, test core, and capture one iPhone simulator
         run: bash scripts/ci-simulator.sh
       - name: Upload compact source-bound evidence

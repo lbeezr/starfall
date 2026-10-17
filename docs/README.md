@@ -19,4 +19,4 @@ Start with [the roadmap](ROADMAP.md), [writing process](WRITING.md), and [visual
 
 [Observatory interface direction](design/OBSERVATORY_INTERFACE.md) owns the selected A HUD, comet progress trail, cast guidance and menu component family.
 
-[Development build identities](DEVELOPMENT_BUILDS.md) explains the latest lab, `dev`/release-candidate labels and the transition to one installed Starfall app.
+[Development build identities](DEVELOPMENT_BUILDS.md) owns one-app updates from main, `dev`/release-candidate labels and the development/RC accessibility cadence.
