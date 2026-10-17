@@ -15,6 +15,7 @@ struct FallingSkyMenu: View {
     let pause: () -> Void
     let restart: (Bool) -> Void
     let firstLight: () -> Void
+    let observatory: () -> Void
     let setBalance: (StarfallBalance) -> Void
     let done: () -> Void
 
@@ -40,6 +41,10 @@ struct FallingSkyMenu: View {
                     Text(Bundle.main.object(forInfoDictionaryKey: "StarfallBuildID") as? String ?? "dev.local")
                         .font(.caption).foregroundStyle(.secondary)
                         .accessibilityIdentifier("starfall.buildID")
+                }
+                Section {
+                    Button(action: observatory) { Label("Back to Observatory", systemImage: "moon.stars") }
+                        .accessibilityIdentifier("sky.home")
                 }
                 Section("Feel & atmosphere") {
                     SkyPreferenceToggle(title: "Sound", symbol: "speaker.wave.2", value: $sound, identifier: "experiment.sound")
