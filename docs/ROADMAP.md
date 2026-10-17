@@ -19,6 +19,8 @@ No progression, power-ups, backend, accounts, analytics, ads, purchases, paid as
 
 ## 1. Make choices engaging — active
 
+The [mechanics notebook](design/MECHANICS_IDEAS.md) preserves the press-and-hold/charge, light-star, and void/drain/freeze ideas. These are deferred design questions, not additions to the accepted prototype scope.
+
 **Question:** Is the player making useful decisions, or simply clearing the only available group?
 
 The [strategy baseline](evidence/falling-sky-strategy-2026-10-16/README.md) is complete. Across 200 seeds, only about 10% of match-ready states in one-clear-per-shower policies offer multiple groups. Largest-first and first-group policies score almost identically. This is a reason to investigate decision depth, not proof that the game is unenjoyable.
