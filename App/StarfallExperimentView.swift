@@ -9,70 +9,72 @@ import StarfallCore
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.accessibilityVoiceOverEnabled) private var voiceOver
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    private var largeText: Bool { dynamicTypeSize.isAccessibilitySize }
+    private var controlLayout: AnyLayout {
+        largeText ? AnyLayout(VStackLayout(alignment: .leading, spacing: StarfallTheme.Spacing.small))
+            : AnyLayout(HStackLayout(spacing: StarfallTheme.Spacing.medium))
+    }
     @Namespace private var matchingGroups
 
     var body: some View {
         ZStack {
             NightSkyBackdrop()
-            ScrollView {
-                VStack(spacing: 14) {
-                    HStack {
-                        Spacer()
-                        Text("Starfall").font(StarfallTheme.Typography.title)
-                        Spacer()
-                        Button { settings = true } label: { Image(systemName: "gearshape") }
-                            .accessibilityLabel("Settings").accessibilityIdentifier("experiment.settings")
+            GeometryReader { viewport in
+                ScrollView {
+                    VStack(spacing: StarfallTheme.Spacing.small) {
+                        HStack(spacing: 12) {
+                            Text(store.game.challenge?.title ?? "Starfall")
+                                .font(StarfallTheme.Typography.gameTitle)
+                            Spacer(minLength: 4)
+                            Text(store.game.challenge.map { "\(store.game.score) / \($0.target)" } ?? "\(store.game.score)")
+                                .font(StarfallTheme.Typography.gameTitle).monospacedDigit()
+                                .accessibilityLabel(store.game.challenge.map { "\(store.game.score) of \($0.target) starlight collected" } ?? "\(store.game.score) starlight")
+                                .accessibilityIdentifier("experiment.score")
+                            Image(systemName: "sparkle").foregroundStyle(StarfallTheme.Colors.actionPrimary)
+                            Button { settings = true } label: { Image(systemName: "gearshape") }
+                                .accessibilityLabel("Settings").accessibilityIdentifier("experiment.settings")
+                        }
+                        .buttonStyle(StarfallGameButtonStyle())
+                        forecast
+                        board.frame(height: max(min(viewport.size.width - 24, StarfallTheme.Layout.contentWidth - 24), viewport.size.height - (largeText ? 310 : 202)))
+                        if store.game.isOver {
+                            Text(store.game.outcome == .won ? "First Light complete" : "This sky is full")
+                                .font(StarfallTheme.Typography.gameTitle)
+                                .accessibilityAddTraits(.isHeader).accessibilityIdentifier("experiment.outcome")
+                        }
+                        controlLayout {
+                            if !store.game.isOver {
+                                Button { store.togglePause() } label: {
+                                    Image(systemName: store.isPaused ? "play.fill" : "pause.fill")
+                                }
+                                .accessibilityLabel(store.isPaused ? (store.game.turns == 0 ? "Start sky" : "Resume sky") : "Pause sky")
+                                .disabled(store.suspended).accessibilityIdentifier("experiment.pause")
+                                Button("Next shower") { store.callShower() }
+                                    .disabled(store.busy || store.suspended)
+                                    .accessibilityHint("Bring the preview down now. Works while paused.")
+                                    .accessibilityIdentifier("experiment.next")
+                                if !largeText { Spacer(minLength: 0) }
+                                Text("\(store.game.legalGroups.count) ready")
+                                    .accessibilityLabel("\(store.game.legalGroups.count) matching groups ready")
+                                    .accessibilityIdentifier("experiment.matches")
+                            } else {
+                                restartControls
+                            }
+                        }
+                        .buttonStyle(StarfallGameButtonStyle())
+                        Text(store.message)
+                            .foregroundStyle(StarfallTheme.Colors.textSecondary)
+                            .multilineTextAlignment(.center)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .accessibilityIdentifier("experiment.message")
                     }
-                    .buttonStyle(StarfallButtonStyle(role: .quiet))
-                    Text("FALLING SKY")
-                        .font(StarfallTheme.Typography.supporting)
-                        .foregroundStyle(StarfallTheme.Colors.textSecondary)
-                    HStack {
-                        Text("\(store.game.score) starlight").accessibilityIdentifier("experiment.score")
-                        Spacer()
-                        Text("\(store.game.turns) \(store.game.turns == 1 ? "shower" : "showers")").accessibilityIdentifier("experiment.turns")
-                    }
-                    .font(StarfallTheme.Typography.heading).monospacedDigit()
-                    forecast
-                    board
-                    Text("\(store.game.legalGroups.count) matching \(store.game.legalGroups.count == 1 ? "group" : "groups") ready")
-                        .font(StarfallTheme.Typography.supporting)
-                        .accessibilityIdentifier("experiment.matches")
-                    if store.game.isOver {
-                        Text("This sky is full")
-                            .font(StarfallTheme.Typography.title)
-                            .accessibilityAddTraits(.isHeader).accessibilityIdentifier("experiment.outcome")
-                    }
-                    Text(store.message)
-                        .font(StarfallTheme.Typography.supporting)
-                        .foregroundStyle(StarfallTheme.Colors.textSecondary)
-                        .multilineTextAlignment(.center).fixedSize(horizontal: false, vertical: true)
-                        .frame(minHeight: 44)
-                        .accessibilityIdentifier("experiment.message")
-                    Button(store.isPaused ? (store.game.turns == 0 ? "Start sky" : "Resume sky") : "Pause sky") { store.togglePause() }
-                        .buttonStyle(StarfallButtonStyle(role: .primary, expands: true))
-                        .disabled(store.suspended || store.game.isOver)
-                        .accessibilityIdentifier("experiment.pause")
-                    Button("Call next shower") { store.callShower() }
-                        .buttonStyle(StarfallButtonStyle(role: .quiet, expands: true))
-                        .disabled(store.busy || store.suspended || store.game.isOver)
-                        .accessibilityHint("Bring the preview down now. Works while the sky is paused.")
-                        .accessibilityIdentifier("experiment.next")
-                    HStack {
-                        Button("Replay this sky") { store.restart(sameSky: true) }
-                            .accessibilityIdentifier("experiment.replay")
-                        Spacer()
-                        Button("New sky") { store.restart(sameSky: false) }
-                            .accessibilityIdentifier("experiment.new")
-                    }
-                    .buttonStyle(StarfallButtonStyle(role: .quiet))
-                    Text("Clear matching jewels worth 3+. Large jewels count as 2. Dark stars stop nearby growth; clear beside one to dissolve it.")
-                        .font(StarfallTheme.Typography.supporting)
-                        .foregroundStyle(StarfallTheme.Colors.textSecondary)
-                        .multilineTextAlignment(.center).fixedSize(horizontal: false, vertical: true)
+                    .font(StarfallTheme.Typography.gameDetail)
+                    .padding(.horizontal, StarfallTheme.Spacing.medium)
+                    .padding(.vertical, StarfallTheme.Spacing.small)
+                    .frame(maxWidth: StarfallTheme.Layout.contentWidth)
+                    .frame(maxWidth: .infinity)
                 }
-                .padding(16).frame(maxWidth: StarfallTheme.Layout.contentWidth)
-                .frame(maxWidth: .infinity)
             }
             .accessibilityHidden(settings)
         }
@@ -91,38 +93,30 @@ import StarfallCore
     private func updateMotion() { store.setReducedMotion(reduceMotion || calmEffects || voiceOver) }
 
     private var forecast: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            HStack {
-                Text(store.game.isOver ? "Replay to try another approach" : "\(store.forecast.count) incoming")
-                Spacer(minLength: 4)
-                if !store.game.isOver {
-                    ShowerCountdown(deadline: store.nextShowerDate,
-                                    paused: store.isPaused || store.suspended,
-                                    arriving: store.pending?.arrivals.isEmpty == false)
-                }
-            }
-            .font(StarfallTheme.Typography.supporting)
+        HStack(spacing: 8) {
+            Text("\(store.game.turns) \(store.game.turns == 1 ? "shower" : "showers")")
+                .monospacedDigit().accessibilityIdentifier("experiment.turns")
+            Spacer(minLength: 4)
             if !store.game.isOver {
-                HStack(spacing: 8) {
-                    ForEach(store.forecast) { star in
-                        Group {
-                            if let kind = star.kind {
-                                Text(kind.symbol).foregroundStyle(Color(kind.color))
-                            } else {
-                                Image(systemName: "moonphase.new.moon").foregroundStyle(.purple)
-                            }
+                ForEach(store.forecast) { star in
+                    Group {
+                        if let kind = star.kind {
+                            Text(kind.symbol).foregroundStyle(Color(kind.color))
+                        } else {
+                            Image(systemName: "moonphase.new.moon").foregroundStyle(.purple)
                         }
-                        .font(.title2)
-                        .frame(maxWidth: .infinity)
-                        .accessibilityElement(children: .ignore)
-                        .accessibilityLabel(star.kind?.label ?? "Dark star")
-                        .accessibilityIdentifier("experiment.incoming.\(star.id % StarfallExperiment.maximumShowerSize)")
                     }
+                    .accessibilityElement(children: .ignore)
+                    .accessibilityLabel(star.kind?.label ?? "Dark star")
+                    .accessibilityIdentifier("experiment.incoming.\(star.id % StarfallExperiment.maximumShowerSize)")
                 }
+                ShowerCountdown(deadline: store.nextShowerDate,
+                                paused: store.isPaused || store.suspended,
+                                arriving: store.pending?.arrivals.isEmpty == false)
             }
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .starfallPanel(inset: 12)
+        .font(StarfallTheme.Typography.gameDetail)
+        .foregroundStyle(StarfallTheme.Colors.textSecondary)
         .accessibilityElement(children: .contain)
         .accessibilityIdentifier("experiment.forecast")
     }
@@ -142,11 +136,11 @@ import StarfallCore
                             }
                         }
                     }
-                    .padding(geometry.size.width * 0.35 / 7.7)
+                    .padding(.horizontal, geometry.size.width * 0.35 / 7.7)
+                    .padding(.vertical, geometry.size.height * 0.35 / 7.7)
                 }
                 .clipShape(RoundedRectangle(cornerRadius: StarfallTheme.Radius.board))
             }
-            .aspectRatio(1, contentMode: .fit)
             .accessibilityElement(children: .contain)
             .accessibilityLabel("Starfall board, seven columns. Row one is the top.")
             .accessibilityIdentifier("experiment.board")
@@ -185,11 +179,35 @@ import StarfallCore
         return "\(gem.grown ? "Large " : "")\(kind.label), \(position)\(shade)"
     }
 
+    private var restartControls: some View {
+        controlLayout {
+            Button("Replay this sky") { store.restart(sameSky: true); settings = false }
+                .accessibilityIdentifier("experiment.replay")
+            if !largeText { Spacer() }
+            Button("New sky") { store.restart(sameSky: false); settings = false }
+                .accessibilityIdentifier("experiment.new")
+        }
+    }
+
     private var settingsView: some View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
-                    balanceControls
+                    if !store.game.isOver {
+                        restartControls.buttonStyle(StarfallGameButtonStyle())
+                    }
+                    if store.game.challenge == nil {
+                        Button("Start First Light · 18 starlight") {
+                            store.startFirstLight(); settings = false
+                        }
+                        .buttonStyle(StarfallButtonStyle(role: .primary, expands: true))
+                        .accessibilityHint("Starts a new challenge round, replacing the current sky. Reach 18 starlight to win.")
+                        .accessibilityIdentifier("experiment.challenge")
+                        Text("Try one short challenge. Starts a new round with steady showers and no dark stars.")
+                        balanceControls
+                    } else {
+                        Text("First Light: collect 18 starlight. Steady showers and no dark stars. Replay repeats the challenge; New sky returns to survival.")
+                    }
                     Toggle("Gentle sound", isOn: $store.soundEnabled)
                         .accessibilityIdentifier("experiment.sound")
                     Toggle("Haptic feedback", isOn: $store.hapticsEnabled)

@@ -9,7 +9,7 @@ import StarfallCore
     private var nodes: [Int: SKNode] = [:]
     private var rendered: StarfallExperiment?
     private let pieces = SKNode(), effects = SKNode(), grid = SKNode()
-    private var step: CGFloat { min(size.width, size.height) / 7.7 }
+    private var step: CGFloat { size.width / 7.7 }
 
     override init(size: CGSize) {
         super.init(size: size)
@@ -28,7 +28,7 @@ import StarfallCore
 
     private func point(_ cell: Cell) -> CGPoint {
         CGPoint(x: size.width/2 + (CGFloat(cell.column)-3)*step,
-                y: size.height/2 + (CGFloat(cell.row)-3)*step)
+                y: size.height/2 + (CGFloat(cell.row)-3)*size.height/7.7)
     }
 
     private func makeNode(_ gem: StarfallGem) -> SKNode {
@@ -64,11 +64,12 @@ import StarfallCore
         let matchable = Set(game.legalGroups.flatMap { $0 })
         for row in 0..<7 { for column in 0..<7 {
             let cell = Cell(row, column)
-            let square = SKShapeNode(rectOf: CGSize(width: step * 0.94, height: step * 0.94), cornerRadius: 5)
-            square.fillColor = .white.withAlphaComponent(0.025)
-            square.strokeColor = matchable.contains(cell)
-                ? .white.withAlphaComponent(0.55) : .white.withAlphaComponent(0.075)
-            square.lineWidth = matchable.contains(cell) ? 2 : 1; square.position = point(cell); grid.addChild(square)
+            if matchable.contains(cell) {
+                let halo = SKShapeNode(circleOfRadius: step * 0.46)
+                halo.strokeColor = .white.withAlphaComponent(0.32)
+                halo.fillColor = .clear; halo.lineWidth = 1
+                halo.position = point(cell); grid.addChild(halo)
+            }
             if let gem = game.gem(at: cell) {
                 let node = makeNode(gem); node.position = point(cell)
                 if game.isGrowthBlocked(at: cell) { shade(node, at: cell) }

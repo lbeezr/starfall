@@ -32,6 +32,8 @@ enum StarfallTheme {
         static let supporting = Font.subheadline
         static let status = Font.callout
         static let action = Font.headline
+        static let gameTitle = Font.system(.headline, design: .rounded)
+        static let gameDetail = Font.subheadline
         static let titleTracking: CGFloat = 0.8
 
         static func display(size: CGFloat) -> Font {
@@ -240,5 +242,20 @@ struct StarfallProgressStyle: ProgressViewStyle {
             .accessibilityHidden(true)
         }
         .transaction { $0.animation = nil }
+    }
+}
+
+/// Compact gameplay chrome retains a full native touch target at every text size.
+struct StarfallGameButtonStyle: ButtonStyle {
+    @Environment(\.isEnabled) private var isEnabled
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .font(StarfallTheme.Typography.gameDetail.weight(.medium))
+            .foregroundStyle(isEnabled ? StarfallTheme.Colors.actionPrimary : StarfallTheme.Colors.textDisabled)
+            .padding(.horizontal, StarfallTheme.Spacing.small)
+            .frame(minWidth: StarfallTheme.Layout.minimumTarget, minHeight: StarfallTheme.Layout.minimumTarget)
+            .background(configuration.isPressed ? StarfallTheme.Colors.surfacePressed : .clear,
+                        in: RoundedRectangle(cornerRadius: StarfallTheme.Radius.control))
+            .contentShape(Rectangle())
     }
 }

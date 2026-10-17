@@ -29,6 +29,80 @@ final class StarfallExperimentInteractionTests: XCTestCase {
         for _ in 0..<4 where !element.isHittable { app.swipeUp() }
     }
 
+    @MainActor private func startFirstLight(_ app: XCUIApplication) {
+        app.buttons["experiment.settings"].tap()
+        let challenge = app.buttons["experiment.challenge"]
+        XCTAssertTrue(challenge.waitForExistence(timeout: 5)); challenge.tap()
+        XCTAssertTrue(app.buttons["experiment.next"].waitForExistence(timeout: 5))
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, "0 of 18 starlight collected")
+    }
+
+    @MainActor func testCompactPlayfieldKeepsControlsVisible() {
+        let app = launch(); defer { app.terminate() }
+        let board = app.otherElements["experiment.board"]
+        XCTAssertGreaterThan(board.frame.height, app.frame.height * 0.60)
+        XCTAssertTrue(app.buttons["experiment.settings"].isHittable)
+        XCTAssertTrue(app.buttons["experiment.pause"].isHittable)
+        XCTAssertTrue(app.buttons["experiment.next"].isHittable)
+        capture(app, "compact-sky-opening")
+        app.buttons["experiment.next"].tap()
+        waitForShowers(1, in: app)
+        let group = app.buttons.matching(NSPredicate(format: "value == %@", "3 starlight connected")).firstMatch
+        XCTAssertTrue(group.waitForExistence(timeout: 5)); group.tap()
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, "3 starlight")
+        capture(app, "compact-sky-cleared")
+    }
+
+    @MainActor func testFirstLightGoalCompletionRestoreReplayAndSurvival() {
+        let app = launch(); defer { app.terminate() }
+        startFirstLight(app)
+        let next = app.buttons["experiment.next"]
+        let outcome = app.staticTexts["experiment.outcome"]
+        for _ in 0..<50 {
+            if outcome.exists { break }
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: next).wait(timeout: 5))
+            let legal = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND value MATCHES %@", "experiment.cell.", "([3-9]|[1-9][0-9]) starlight connected")).firstMatch
+            if legal.exists { legal.tap() }
+            else { reveal(next, in: app); next.tap() }
+        }
+        XCTAssertEqual(outcome.label, "First Light complete")
+        XCTAssertFalse(next.exists)
+        XCTAssertTrue(app.buttons["experiment.replay"].isHittable)
+        XCTAssertTrue(app.buttons["experiment.new"].isHittable)
+        capture(app, "first-light-complete")
+        app.terminate(); app.launchArguments = []; app.launch()
+        XCTAssertTrue(outcome.waitForExistence(timeout: 10))
+        XCTAssertEqual(outcome.label, "First Light complete")
+        XCTAssertFalse(next.exists)
+        let replay = app.buttons["experiment.replay"]
+        if !replay.exists { app.buttons["experiment.settings"].tap() }; reveal(replay, in: app); replay.tap()
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, "0 of 18 starlight collected")
+        XCTAssertFalse(outcome.exists)
+        remainsPaused(app)
+        let newSky = app.buttons["experiment.new"]
+        if !newSky.exists { app.buttons["experiment.settings"].tap() }; reveal(newSky, in: app); newSky.tap()
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, "0 starlight")
+    }
+
+    @MainActor func testFirstLightCanOverflowWithoutCompletingGoal() {
+        let app = launch(); defer { app.terminate() }
+        startFirstLight(app)
+        let next = app.buttons["experiment.next"]
+        for _ in 0..<40 {
+            if app.staticTexts["experiment.outcome"].exists { break }
+            reveal(next, in: app)
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: next).wait(timeout: 5))
+            next.tap()
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+                app.staticTexts["experiment.outcome"].exists || next.isEnabled
+            }, object: nil).wait(timeout: 5))
+        }
+        XCTAssertEqual(app.staticTexts["experiment.outcome"].label, "This sky is full")
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, "0 of 18 starlight collected")
+        XCTAssertFalse(next.exists)
+        capture(app, "first-light-overflow")
+    }
+
     @MainActor func testFirstShowerIsPlayableAndManualInputStaysPaused() {
         let app = launch(); defer { app.terminate() }
         let next = app.buttons["experiment.next"]
@@ -150,7 +224,7 @@ final class StarfallExperimentInteractionTests: XCTestCase {
         app.buttons["experiment.pause"].tap()
         capture(app, "automatic-calm-after-dismissal")
         let replay = app.buttons["experiment.replay"]
-        reveal(replay, in: app); replay.tap()
+        if !replay.exists { app.buttons["experiment.settings"].tap() }; reveal(replay, in: app); replay.tap()
         XCTAssertEqual(showers(app), 0)
         XCTAssertEqual(app.buttons["experiment.pause"].label, "Start sky")
         XCTAssertEqual(app.descendants(matching: .any)["experiment.incoming.0"].firstMatch.label, initialPreview)
@@ -180,10 +254,10 @@ final class StarfallExperimentInteractionTests: XCTestCase {
         app.buttons["experiment.pause"].tap()
         let outcome = app.staticTexts["experiment.outcome"]
         XCTAssertTrue(outcome.waitForExistence(timeout: 120))
-        XCTAssertFalse(app.buttons["experiment.pause"].isEnabled)
+        XCTAssertFalse(app.buttons["experiment.pause"].exists)
         capture(app, "automatic-overflow")
         let newSky = app.buttons["experiment.new"]
-        reveal(newSky, in: app); newSky.tap()
+        if !newSky.exists { app.buttons["experiment.settings"].tap() }; reveal(newSky, in: app); newSky.tap()
         XCTAssertEqual(showers(app), 0)
         XCTAssertEqual(app.buttons["experiment.pause"].label, "Start sky")
     }
@@ -245,7 +319,7 @@ final class StarfallExperimentInteractionTests: XCTestCase {
         XCTAssertEqual(app.buttons["experiment.cell.0.0"].label, occupied)
         XCTAssertEqual(app.buttons["experiment.pause"].label, "Resume sky")
         let replay = app.buttons["experiment.replay"]
-        reveal(replay, in: app); replay.tap()
+        if !replay.exists { app.buttons["experiment.settings"].tap() }; reveal(replay, in: app); replay.tap()
         app.buttons["experiment.pause"].tap()
         let tooSoon = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in self.showers(app) > 0 }, object: nil)
         tooSoon.isInverted = true
@@ -266,7 +340,7 @@ final class StarfallExperimentInteractionTests: XCTestCase {
         pace.tap(); app.buttons["Brisk · 3s"].tap()
         frequency.tap(); app.buttons["None"].tap()
         app.buttons["experiment.done"].tap()
-        reveal(replay, in: app); replay.tap()
+        if !replay.exists { app.buttons["experiment.settings"].tap() }; reveal(replay, in: app); replay.tap()
         app.buttons["experiment.pause"].tap()
         waitForShowers(4, in: app, timeout: 16)
         app.buttons["experiment.pause"].tap()
