@@ -236,6 +236,18 @@ final class StarCastTests: XCTestCase {
         }
     }
 
+    @MainActor func testOpalRoundMeshIsAnIdentityAtEveryVertex() {
+        let grid = OpalMotion.round
+        XCTAssertEqual(grid.vertexCount, 12)
+        for index in 0..<grid.vertexCount {
+            let source = grid.sourcePosition(at: index)
+            let destination = grid.destPosition(at: index)
+            let expected = SIMD2<Float>(Float(index % 3)/2, Float(index / 3)/3)
+            XCTAssertEqual(source, expected)
+            XCTAssertEqual(destination, expected, "Fractional middle rows must not collapse through integer division")
+        }
+    }
+
     @MainActor func testCompleteCastIsBoundedAndReusesMaterialsAcrossRounds() throws {
         StarCast.prewarm()
         XCTAssertEqual(StarCast.cachedMaterialCount, 84)

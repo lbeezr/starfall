@@ -121,7 +121,7 @@ enum StarfallMotion {
         }
         return SKWarpGeometryGrid(columns: 2, rows: 3, sourcePositions: source, destinationPositions: destination)
     }
-    static let round = mesh(widths: [1, 1, 1, 1], heights: [0, 1/3, 2/3, 1])
+    static let round = mesh(widths: [1, 1, 1, 1], heights: [0, Float(1)/3, Float(2)/3, 1])
     // A full lower body and narrower upper shoulder give the falling orb a soft tail.
     static let falling = mesh(widths: [0.88, 1.00, 0.78, 0.24], heights: [-0.03, 0.28, 0.70, 1.23])
     static let squashed = mesh(widths: [1.02, 1.24, 1.14, 0.92], heights: [0.10, 0.32, 0.54, 0.76])
