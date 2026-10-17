@@ -39,6 +39,7 @@ import StarfallCore
 /// Falling-sky cues use the same bounded local sound and haptic owner.
 @MainActor protocol FallingSkyFeedbackProviding: AnyObject {
     func collected(soundEnabled: Bool, hapticsEnabled: Bool, reducedMotion: Bool)
+    func announce(_ message: String)
     func stopSounds()
 }
 

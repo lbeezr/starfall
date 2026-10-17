@@ -1,4 +1,4 @@
-import UIKit
+import Foundation
 import Observation
 import SwiftUI
 import StarfallCore
@@ -103,7 +103,7 @@ import StarfallCore
             message = game.gem(at: cell)?.isDark == true
                 ? "Clear a matching group beside the dark star to dissolve it."
                 : "Match stars worth 3 or more. Large stars count as 2."
-            announce(message)
+            feedback.announce(message)
             return
         }
         if game.isOver { freezeClock() }
@@ -117,7 +117,7 @@ import StarfallCore
         guard !busy, !suspended, !game.isOver else { return }
         freezeClock()
         remaining = showerInterval
-        commitShower()
+        commitShower(announcesResult: true)
     }
 
     func togglePause() {
@@ -160,18 +160,18 @@ import StarfallCore
     private func deliverRainIfReady() {
         guard rainDue, !busy, !suspended, !isPaused, !game.isOver else { return }
         rainDue = false
-        commitShower()
+        commitShower(announcesResult: false)
     }
 
-    private func commitShower() {
+    private func commitShower(announcesResult: Bool) {
         let old = game
         guard let turn = game.letStarsFall() else { return }
         if game.isOver { freezeClock() }
         else { remaining = showerInterval; armClock() }
-        present(turn, from: old)
+        present(turn, from: old, announcesResult: announcesResult)
     }
 
-    private func present(_ turn: FallingSkyTurn, from old: FallingSky) {
+    private func present(_ turn: FallingSkyTurn, from old: FallingSky, announcesResult: Bool = true) {
         generation &+= 1
         let ticket = generation
         busy = true; pending = turn
@@ -190,11 +190,14 @@ import StarfallCore
         } else {
             message = "\(turn.arrivals.count == 1 ? "One star arrived" : "\(turn.arrivals.count) stars arrived"). Make room for the next shower."
         }
+        // Automatic showers must not repeatedly interrupt exploration or menu speech.
+        // Explicit actions and terminal results still speak; all messages remain readable.
+        let spokenResult = announcesResult || game.isOver ? message : nil
         save() // Commit before animation: backgrounding cannot replay arrivals.
         presenter.animate(turn, from: old, to: game) { [weak self] in
             guard let self, self.generation == ticket, self.busy else { return }
             self.pending = nil; self.busy = false
-            self.announce(self.message)
+            if let spokenResult { self.feedback.announce(spokenResult) }
             self.deliverRainIfReady()
         }
     }
@@ -274,12 +277,5 @@ import StarfallCore
 
     private func save() {
         if let data = try? JSONEncoder().encode(game) { defaults.set(data, forKey: Self.saveKey) }
-    }
-
-    private func announce(_ text: String) {
-        if UIAccessibility.isVoiceOverRunning {
-            feedback.stopSounds()
-            UIAccessibility.post(notification: .announcement, argument: text)
-        }
     }
 }

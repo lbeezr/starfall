@@ -321,6 +321,36 @@ final class FallingSkyStoreTests: XCTestCase {
         store.setSuspended(true); XCTAssertEqual(feedback.stops, 2)
     }
 
+    @MainActor func testSpeechPreservesExplicitFeedbackWithoutAutomaticShowerInterruptions() throws {
+        let suite = "SkySpeech.\(UUID())"
+        let defaults = UserDefaults(suiteName: suite)!
+        defer { defaults.removePersistentDomain(forName: suite) }
+        let feedback = SkyFeedbackRecorder(), presenter = FallingSkyRecorder(), clock = ManualRainClock()
+        let store = FallingSkyStore(defaults: defaults, arguments: ["--starfalls-reset", "--starfalls-seed=5"],
+            presenter: presenter, clock: clock, feedback: feedback)
+        store.setSuspended(false)
+        store.clear(Cell(0, 0))
+        XCTAssertEqual(feedback.announcements, [store.message], "Invalid explicit input explains the rule")
+        feedback.announcements.removeAll()
+        store.callShower(); presenter.finish()
+        XCTAssertEqual(feedback.announcements, [store.message], "Manual showers speak their committed result")
+        feedback.announcements.removeAll()
+        store.clear(try XCTUnwrap(store.game.legalGroups.first?.first)); presenter.finish()
+        XCTAssertEqual(feedback.announcements, [store.message], "Explicit clears retain spoken feedback")
+        feedback.announcements.removeAll()
+        store.togglePause()
+        clock.advance(4); presenter.finish()
+        XCTAssertEqual(store.game.turns, 2)
+        XCTAssertTrue(feedback.announcements.isEmpty, "Automatic rain leaves exploration speech alone")
+        for _ in 0..<40 where !store.game.isOver { clock.advance(4); presenter.finish() }
+        XCTAssertTrue(store.game.isOver)
+        XCTAssertEqual(feedback.announcements, [store.message], "The terminal automatic result still speaks")
+        store.restart(sameSky: true)
+        feedback.announcements.removeAll()
+        store.callShower(); store.setSuspended(true); presenter.finish()
+        XCTAssertTrue(feedback.announcements.isEmpty, "Suspension rejects stale result speech")
+    }
+
     @MainActor func testFeedbackDefaultsDoNotOverwriteExplicitMuteOrWriteDuringInitialization() {
         let suite = "SkyFeedbackDefaults.\(UUID())"
         let defaults = UserDefaults(suiteName: suite)!
@@ -367,9 +397,11 @@ final class FallingSkyStoreTests: XCTestCase {
 
 @MainActor private final class SkyFeedbackRecorder: FallingSkyFeedbackProviding {
     var clears = 0, stops = 0
+    var announcements: [String] = []
     var sound = false, haptics = false
     func collected(soundEnabled: Bool, hapticsEnabled: Bool, reducedMotion: Bool) {
         clears += 1; sound = soundEnabled; haptics = hapticsEnabled
     }
+    func announce(_ message: String) { announcements.append(message) }
     func stopSounds() { stops += 1 }
 }
