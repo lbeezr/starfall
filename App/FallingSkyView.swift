@@ -30,6 +30,11 @@ import StarfallCore
     private var showingCeremony: Bool { flow != .playing || endingReady }
     private var quietMotion: Bool { reduceMotion || calmEffects || voiceOver }
 
+    private var cadenceCueCopy: SkyCadenceCueCopy? {
+        guard !showingCeremony, !store.game.isOver, store.game.challenge == nil else { return nil }
+        return SkyCadenceCueCopy(step: store.nextShowerCadence)
+    }
+
     private func usesIslandTimer(size: CGSize, topInset: CGFloat) -> Bool {
         SkyShowerPlacement.usesIsland(hardware: SkyShowerPlacement.hardware, size: size,
                                      topInset: topInset, accessible: largeText || voiceOver)
@@ -37,25 +42,31 @@ import StarfallCore
 
     var body: some View {
         ZStack {
-            GeometryReader { safeViewport in
-                if largeText {
-                    ScrollView {
-                        VStack(spacing: StarfallTheme.Spacing.small) {
-                            playfield(insets: safeViewport.safeAreaInsets, compact: safeViewport.size.height < 750, island: false)
-                                .frame(height: safeViewport.size.height)
-                            if !showingCeremony {
-                                guide(compact: safeViewport.size.height < 750)
-                                    .accessibilityHidden(settings)
-                                    .padding(.horizontal, StarfallTheme.Spacing.medium)
-                                    .padding(.bottom, safeViewport.safeAreaInsets.bottom + StarfallTheme.Spacing.small)
+            VStack(spacing: 0) {
+                // A real sibling owns its space; scrolling cannot cover the cue.
+                if !settings, let copy = cadenceCueCopy {
+                    SkyCadenceCue(copy: copy)
+                }
+                GeometryReader { safeViewport in
+                    if largeText {
+                        ScrollView {
+                            VStack(spacing: StarfallTheme.Spacing.small) {
+                                playfield(insets: safeViewport.safeAreaInsets, compact: safeViewport.size.height < 750, island: false)
+                                    .frame(height: safeViewport.size.height)
+                                if !showingCeremony {
+                                    guide(compact: safeViewport.size.height < 750)
+                                        .accessibilityHidden(settings)
+                                        .padding(.horizontal, StarfallTheme.Spacing.medium)
+                                        .padding(.bottom, safeViewport.safeAreaInsets.bottom + StarfallTheme.Spacing.small)
+                                }
                             }
                         }
+                        .ignoresSafeArea(edges: cadenceCueCopy == nil ? .all : [.horizontal, .bottom])
+                    } else {
+                        playfield(insets: safeViewport.safeAreaInsets, compact: safeViewport.size.height < 750,
+                                  island: usesIslandTimer(size: safeViewport.size, topInset: safeViewport.safeAreaInsets.top))
+                            .ignoresSafeArea(edges: cadenceCueCopy == nil ? .all : [.horizontal, .bottom])
                     }
-                    .ignoresSafeArea()
-                } else {
-                    playfield(insets: safeViewport.safeAreaInsets, compact: safeViewport.size.height < 750,
-                              island: usesIslandTimer(size: safeViewport.size, topInset: safeViewport.safeAreaInsets.top))
-                        .ignoresSafeArea()
                 }
             }
             if showingCeremony {
@@ -66,6 +77,14 @@ import StarfallCore
                                 action: handleFlowAction)
                     .id(endingReady ? (store.game.outcome == .won ? "won" : "full") : String(describing: flow))
             }
+        }
+        .onChange(of: store.nextShowerCadence) { old, new in
+            guard voiceOver, !settings, !showingCeremony, !store.isPaused, !store.suspended,
+                  !store.game.isOver, store.game.challenge == nil,
+                  (new.warnsFasterNext && !old.warnsFasterNext)
+                    || (new.phase == .breathing && old.phase != .breathing),
+                  let copy = SkyCadenceCueCopy(step: new) else { return }
+            UIAccessibility.post(notification: .announcement, argument: copy.label)
         }
         .preferredColorScheme(.dark)
         .statusBarHidden(!settings)

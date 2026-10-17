@@ -42,9 +42,17 @@ import StarfallCore
     private(set) var suspended = true
     private(set) var isPaused = true
     private(set) var nextShowerDate: Date?
+    /// Interval/phase leading to the next shower, including while paused or overdue.
+    private(set) var nextShowerCadence: SkyCadenceStep = .init(delay: 4, phase: .steady)
     private(set) var message = "Gather starlight. Draw your own constellations."
     private(set) var constellationInputGeneration: UInt64 = 0
-    var constellationTracing = false
+    var constellationTracing = false {
+        didSet {
+            #if DEBUG
+            observeTiming(.state)
+            #endif
+        }
+    }
     private(set) var pending: FallingSkyTurn?
     var soundEnabled: Bool {
         didSet { defaults.set(soundEnabled, forKey: "soundEnabled"); if !soundEnabled { feedback.stopSounds() } }
@@ -60,8 +68,73 @@ import StarfallCore
     @ObservationIgnored private var generation: UInt64 = 0
     @ObservationIgnored private var rainGeneration: UInt64 = 0
     @ObservationIgnored private var deadline: TimeInterval?
-    @ObservationIgnored private var remaining: TimeInterval = 4
+    @ObservationIgnored private var remaining: TimeInterval = 0
     @ObservationIgnored private var rainDue = false
+    #if DEBUG
+    @ObservationIgnored private var timingLookup: ((FallingSky) -> SkyCadenceStep)?
+    @ObservationIgnored private var timingObserver: ((TimingEvent) -> Void)?
+
+    struct TimingSnapshot {
+        let time: TimeInterval
+        let game: FallingSky
+        let cadence: SkyCadenceStep
+        let scheduledDeadline: TimeInterval?
+        let rainDue: Bool
+        let busy: Bool
+        let paused: Bool
+        let suspended: Bool
+        let canClear: Bool
+        let canTap: Bool
+        let canCallShower: Bool
+        let inputGeneration: UInt64
+    }
+    enum TimingEventKind: Equatable {
+        case scheduled, due, deferred, cancelled, automaticShower, manualShower, tapAccepted, traceAccepted
+        case invalidated(String), state
+    }
+    struct TimingEvent {
+        let kind: TimingEventKind
+        let snapshot: TimingSnapshot
+        let showerDeadline: TimeInterval?
+    }
+    var timingSnapshot: TimingSnapshot {
+        .init(time: clock.now, game: game, cadence: nextShowerCadence,
+              scheduledDeadline: deadline, rainDue: rainDue, busy: busy,
+              paused: isPaused, suspended: suspended, canClear: canClear,
+              canTap: canClear && !constellationTracing,
+              canCallShower: !busy && !suspended && !game.isOver,
+              inputGeneration: constellationInputGeneration)
+    }
+    /// One test-only entry, before activation. Lookup/observer must be pure/non-reentrant.
+    func configureTimingTest(lookup: ((FallingSky) -> SkyCadenceStep)? = nil,
+                             observe: ((TimingEvent) -> Void)? = nil) {
+        precondition(suspended && isPaused && deadline == nil && (lookup == nil || game.turns == 0))
+        timingLookup = lookup; timingObserver = observe
+        refreshCadence(); remaining = showerInterval
+    }
+    private func observeTiming(_ kind: TimingEventKind, showerDeadline: TimeInterval? = nil) {
+        let sourceDeadline: TimeInterval?
+        switch kind {
+        case .automaticShower, .manualShower: sourceDeadline = showerDeadline
+        default: sourceDeadline = deadline
+        }
+        timingObserver?(.init(kind: kind, snapshot: timingSnapshot, showerDeadline: sourceDeadline))
+    }
+    #endif
+
+    private func refreshCadence() {
+        #if DEBUG
+        nextShowerCadence = (game.cadenceID == .openingV1 && game.challenge == nil ? timingLookup?(game) : nil) ?? game.cadenceStep
+        #else
+        nextShowerCadence = game.cadenceStep
+        #endif
+    }
+    private func invalidateInput(_ reason: String) {
+        constellationInputGeneration &+= 1
+        #if DEBUG
+        observeTiming(.invalidated(reason))
+        #endif
+    }
 
     init(defaults: UserDefaults = .standard,
          arguments: [String] = ProcessInfo.processInfo.arguments,
@@ -99,12 +172,13 @@ import StarfallCore
             message = fixture.title + ". Draw through matching stars."
         }
         #endif
+        refreshCadence()
         remaining = showerInterval
         scene.onLayout = { [weak self] in self?.settlePresentation() }
     }
 
     var forecast: [IncomingStar] { pending?.forecast ?? game.incoming }
-    var showerInterval: TimeInterval { TimeInterval(game.balance.pace.rawValue) }
+    var showerInterval: TimeInterval { nextShowerCadence.delay }
     var canClear: Bool { !busy && !suspended && !game.isOver && !rainDue }
 
     func clear(_ cell: Cell) {
@@ -117,6 +191,9 @@ import StarfallCore
             feedback.announce(message)
             return
         }
+        #if DEBUG
+        observeTiming(.tapAccepted)
+        #endif
         if game.isOver { freezeClock() }
         feedback.collected(soundEnabled: soundEnabled, hapticsEnabled: hapticsEnabled,
                            reducedMotion: presenter.reduceMotion)
@@ -127,6 +204,9 @@ import StarfallCore
         guard canClear, game == snapshot, ticket == constellationInputGeneration else { return }
         let old = game
         guard let turn = game.clearConstellation(path) else { return }
+        #if DEBUG
+        observeTiming(.traceAccepted)
+        #endif
         if game.isOver { freezeClock() }
         feedback.collected(soundEnabled: soundEnabled, hapticsEnabled: hapticsEnabled,
                            reducedMotion: presenter.reduceMotion)
@@ -142,12 +222,15 @@ import StarfallCore
     }
 
     func togglePause() {
-        constellationInputGeneration &+= 1
+        #if DEBUG
+        defer { observeTiming(.state) }
+        #endif
+        invalidateInput("pause")
         guard !suspended, !game.isOver else { return }
         isPaused.toggle()
         if isPaused {
             freezeClock()
-            settlePresentation()
+            settlePresentation(reason: "pause")
             feedback.stopSounds()
             message = "Sky paused. Clear at your pace or call the next shower."
         } else {
@@ -162,18 +245,29 @@ import StarfallCore
         let ticket = rainGeneration
         deadline = clock.now + remaining
         nextShowerDate = Date().addingTimeInterval(remaining)
+        #if DEBUG
+        observeTiming(.scheduled)
+        #endif
         clock.schedule(after: remaining) { [weak self] in
             guard let self, self.rainGeneration == ticket, !self.isPaused, !self.suspended, !self.game.isOver else { return }
-            self.deadline = nil; self.nextShowerDate = nil
-            self.remaining = self.showerInterval
+            #if DEBUG
+            self.observeTiming(.due)
+            #endif
+            self.nextShowerDate = nil
             self.rainDue = true
+            #if DEBUG
+            if self.busy { self.observeTiming(.deferred) }
+            #endif
             self.deliverRainIfReady()
         }
     }
 
     private func freezeClock() {
-        if let deadline { remaining = min(showerInterval, max(0.5, deadline - clock.now)) }
-        else if rainDue { remaining = 0.5 }
+        #if DEBUG
+        if deadline != nil || rainDue { observeTiming(.cancelled) }
+        #endif
+        if rainDue { remaining = 0.5 }
+        else if let deadline { remaining = min(showerInterval, max(0.5, deadline - clock.now)) }
         rainGeneration &+= 1
         clock.cancel()
         deadline = nil; nextShowerDate = nil; rainDue = false
@@ -181,20 +275,26 @@ import StarfallCore
 
     private func deliverRainIfReady() {
         guard rainDue, !busy, !suspended, !isPaused, !game.isOver else { return }
+        let dueDeadline = deadline
         rainDue = false
-        commitShower(announcesResult: false)
+        deadline = nil
+        commitShower(announcesResult: false, scheduledDeadline: dueDeadline)
     }
 
-    private func commitShower(announcesResult: Bool) {
+    private func commitShower(announcesResult: Bool, scheduledDeadline: TimeInterval? = nil) {
         let old = game
         guard let turn = game.letStarsFall() else { return }
+        refreshCadence()
         if game.isOver { freezeClock() }
         else { remaining = showerInterval; armClock() }
+        #if DEBUG
+        observeTiming(announcesResult ? .manualShower : .automaticShower, showerDeadline: scheduledDeadline)
+        #endif
         present(turn, from: old, announcesResult: announcesResult)
     }
 
     private func present(_ turn: FallingSkyTurn, from old: FallingSky, announcesResult: Bool = true) {
-        constellationInputGeneration &+= 1
+        invalidateInput(turn.arrivals.isEmpty && turn.blockedColumn == nil ? "clear" : (announcesResult ? "manualShower" : "automaticShower"))
         generation &+= 1
         let ticket = generation
         busy = true; pending = turn
@@ -222,19 +322,29 @@ import StarfallCore
             self.pending = nil; self.busy = false
             if let spokenResult { self.feedback.announce(spokenResult) }
             self.deliverRainIfReady()
+            #if DEBUG
+            self.observeTiming(.state)
+            #endif
         }
+        #if DEBUG
+        observeTiming(.state)
+        #endif
     }
 
     func restart(sameSky: Bool) {
+        #if DEBUG
+        defer { observeTiming(.state) }
+        #endif
         isPaused = true
         feedback.stopSounds()
         freezeClock(); remaining = showerInterval
-        settlePresentation()
-        if sameSky, let challenge = game.challenge {
-            game = FallingSky(challenge: challenge)
+        settlePresentation(reason: "restart")
+        if sameSky {
+            game = game.replay()
         } else {
-            game = FallingSky(seed: sameSky ? game.seed : UInt64.random(in: 0...UInt64.max), balance: game.balance)
+            game = FallingSky(seed: UInt64.random(in: 0...UInt64.max), balance: game.balance)
         }
+        refreshCadence()
         remaining = showerInterval
         message = sameSky ? "Same sky, a fresh start. Start when you're ready." : "A new sky. Start when you're ready."
         save(); presenter.render(game)
@@ -245,8 +355,9 @@ import StarfallCore
         isPaused = true
         feedback.stopSounds()
         freezeClock()
-        settlePresentation()
+        settlePresentation(reason: "fixture")
         game = fixture.game()
+        refreshCadence()
         remaining = showerInterval
         message = fixture.title + ". Draw through matching stars."
         save(); presenter.render(game)
@@ -255,22 +366,30 @@ import StarfallCore
     #endif
 
     func startFirstLight() {
+        #if DEBUG
+        defer { observeTiming(.state) }
+        #endif
         isPaused = true
         feedback.stopSounds()
         freezeClock()
-        settlePresentation()
+        settlePresentation(reason: "challenge")
         game = FallingSky(challenge: .firstLight)
+        refreshCadence()
         remaining = showerInterval
         message = "Collect 18 starlight to complete First Light. Start the sky or call a shower."
         save(); presenter.render(game)
     }
 
     func setBalance(_ balance: StarfallBalance) {
+        #if DEBUG
+        defer { observeTiming(.state) }
+        #endif
         guard game.challenge == nil, balance != game.balance else { return }
         freezeClock()
         game.setBalance(balance)
+        refreshCadence()
         remaining = showerInterval
-        settlePresentation()
+        settlePresentation(reason: "balance")
         message = "Balance updated. Your sky is ready when you are."
         save()
         armClock()
@@ -289,9 +408,12 @@ import StarfallCore
     }
 
     func setSuspended(_ value: Bool) {
+        #if DEBUG
+        defer { observeTiming(.state) }
+        #endif
         guard suspended != value else { return }
         suspended = value
-        if value { feedback.stopSounds(); freezeClock(); settlePresentation() }
+        if value { feedback.stopSounds(); freezeClock(); settlePresentation(reason: "suspension") }
         else {
             // Persist the retained store's chosen sky before its clock can run.
             save()
@@ -302,11 +424,14 @@ import StarfallCore
     func setReducedMotion(_ value: Bool) {
         guard presenter.reduceMotion != value else { return }
         presenter.reduceMotion = value
-        settlePresentation()
+        settlePresentation(reason: "motion")
     }
 
-    func settlePresentation() {
-        constellationInputGeneration &+= 1
+    func settlePresentation(reason: String = "presentation") {
+        #if DEBUG
+        defer { observeTiming(.state) }
+        #endif
+        invalidateInput(reason)
         generation &+= 1
         pending = nil; busy = false
         presenter.render(game)

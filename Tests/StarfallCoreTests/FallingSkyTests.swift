@@ -8,7 +8,7 @@ final class FallingSkyTests: XCTestCase {
         {"board":[{"grown":true,"id":13,"kind":3},{"grown":false,"id":11,"kind":4},{"grown":false,"id":12,"kind":4},{"grown":false,"id":0,"kind":4},{"grown":true,"id":1,"kind":4},{"grown":false,"id":2,"kind":4},{"grown":true,"id":5,"kind":1},null,null,null,{"grown":false,"id":8,"kind":1},null,{"grown":false,"id":7,"kind":1},null,null,null,null,{"grown":false,"id":14,"kind":3},null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"cohesiveShowers":true,"darkStarsCleared":0,"incoming":[{"column":2,"id":25}],"random":{"state":10615391314449192844},"remainingColumns":[1,4,5,6],"savedBalance":{"darkStars":"regular","pace":4},"score":3,"seed":5,"showersUntilDark":3,"starsLanded":16,"turns":5}
         """#
         var restored = try JSONDecoder().decode(FallingSky.self, from: Data(json.utf8))
-        var control = FallingSky(seed: 5)
+        var control = FallingSky(seed: 5, balance: .init(pace: .steady), openingCascade: false)
         for _ in 0..<5 { _ = control.letStarsFall() }
         _ = control.clear(try XCTUnwrap(control.legalGroups.first?.first))
         XCTAssertTrue(restored.isValidSave)
@@ -374,8 +374,10 @@ final class FallingSkyTests: XCTestCase {
         for _ in 0..<6 { original.letStarsFall() }
         var json = try XCTUnwrap(JSONSerialization.jsonObject(with: JSONEncoder().encode(original)) as? [String: Any])
         json.removeValue(forKey: "savedBalance")
+        json.removeValue(forKey: "openingCascade")
+        json.removeValue(forKey: "savedCadence")
         var restored = try JSONDecoder().decode(FallingSky.self, from: JSONSerialization.data(withJSONObject: json))
-        XCTAssertEqual(restored.balance, StarfallBalance())
+        XCTAssertEqual(restored.balance, StarfallBalance(pace: .steady))
         XCTAssertEqual(restored.board, original.board); XCTAssertTrue(restored.isValidSave)
         for _ in 0..<10 where !original.isOver {
             XCTAssertEqual(restored.incoming, original.incoming)

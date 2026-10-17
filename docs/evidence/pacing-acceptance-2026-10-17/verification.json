@@ -1,0 +1,209 @@
+{
+  "date": "2026-10-17",
+  "result": "partially verified; simulator checks passed with source-bound limits; no human/RC/device acceptance",
+  "runtimeSources": {
+    "initial": "5e56d5ae63e2bf34667e5d46013c0d643a33ecfe",
+    "final": "b42eba357515793c834fec7d9125907ca106a22f"
+  },
+  "toolchain": "Xcode 27.1 (27A9275), arm64",
+  "simulators": [
+    {
+      "uuid": "1B3A9585-6D5B-4199-88E0-AF5D8982EEF8",
+      "model": "iPhone 17e",
+      "os": "iOS 27.0 (24A434)",
+      "reduceMotionReadback": "0",
+      "finalState": "Shutdown"
+    },
+    {
+      "uuid": "F4BA0D73-6491-4171-A29B-93ABC79EB4FF",
+      "model": "iPhone 17",
+      "os": "iOS 27.0 (24A434)",
+      "reduceMotionReadback": "0",
+      "finalState": "Shutdown"
+    }
+  ],
+  "core": {
+    "source": "5e56d5ae63e2bf34667e5d46013c0d643a33ecfe",
+    "command": "swift test",
+    "result": "72 passed, zero failures",
+    "log": "/tmp/pacing6-core.log"
+  },
+  "checks": [
+    {
+      "check": "release",
+      "runtimeSource": "5e56d5ae63e2bf34667e5d46013c0d643a33ecfe",
+      "kind": "normal",
+      "result": "pass: Release build",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Release -sdk iphonesimulator -destination \"generic/platform=iOS Simulator\" -derivedDataPath /tmp/Pacing6Release ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGNING_ALLOWED=NO build",
+      "log": "/tmp/pacing6-release.log",
+      "logSHA256": "6c3ade469bb5facb3a36f5d231e64c11c999a8f560ab4bedc73b4afa7d16107d",
+      "cwd": "/Users/lbeezr/.codex/worktrees/pacing-acceptance/Starfall"
+    },
+    {
+      "check": "hosted",
+      "runtimeSource": "5e56d5ae63e2bf34667e5d46013c0d643a33ecfe",
+      "kind": "normal",
+      "result": "incomplete: attachment stalled; interrupted",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=1B3A9585-6D5B-4199-88E0-AF5D8982EEF8\" -derivedDataPath /tmp/Pacing6Normal ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGNING_ALLOWED=NO -parallel-testing-enabled NO -test-timeouts-enabled YES -default-test-execution-time-allowance 90 -maximum-test-execution-time-allowance 120 \"-only-testing:StarfallAppTests\" -resultBundlePath /tmp/pacing6-hosted.xcresult test",
+      "log": "/tmp/pacing6-hosted.log",
+      "logSHA256": "c5bad4bdd368270030822a5309b734a07b6a93cead14a972773987bcf056e03b",
+      "cwd": "/Users/lbeezr/.codex/worktrees/pacing-acceptance/Starfall"
+    },
+    {
+      "check": "recovery",
+      "runtimeSource": "5e56d5ae63e2bf34667e5d46013c0d643a33ecfe",
+      "kind": "normal",
+      "result": "partial aggregate: 102 hosted and 9 native passed; new trace setup failed; ending exceeded 120s; finalizer interrupted",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=1B3A9585-6D5B-4199-88E0-AF5D8982EEF8\" -derivedDataPath /tmp/Pacing6Normal ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGN_IDENTITY=- CODE_SIGNING_ALLOWED=YES DEVELOPMENT_TEAM= CODE_SIGN_STYLE=Manual -parallel-testing-enabled NO -test-timeouts-enabled YES -default-test-execution-time-allowance 120 -maximum-test-execution-time-allowance 180 \"-only-testing:StarfallAppTests\" \"-only-testing:StarfallUITests/SkyFlowInteractionTests\" \"-only-testing:StarfallUITests/ConstellationTraceNativeTests\" \"-only-testing:StarfallUITests/FallingSkyInteractionTests/testOpeningCascadeAllowsNativeClearBeforeLastWave\" \"-only-testing:StarfallUITests/FallingSkyInteractionTests/testAutomaticRainThenPausedClearReplayAndSettings\" \"-only-testing:StarfallUITests/FallingSkyInteractionTests/testBackgroundRelaunchAndAutomaticOverflow\" -resultBundlePath /tmp/pacing6-recovery.xcresult test",
+      "log": "/tmp/pacing6-recovery.log",
+      "logSHA256": "182d1b4e7076f6edcd32be33d47826cf8d00121781d6003000c20af6dfc00c7c",
+      "cwd": "/Users/lbeezr/.codex/worktrees/pacing-acceptance/Starfall"
+    },
+    {
+      "check": "corrected",
+      "runtimeSource": "5e56d5ae63e2bf34667e5d46013c0d643a33ecfe",
+      "kind": "normal",
+      "result": "pass: 2 corrected native checks",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=1B3A9585-6D5B-4199-88E0-AF5D8982EEF8\" -derivedDataPath /tmp/Pacing6Normal ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGN_IDENTITY=- CODE_SIGNING_ALLOWED=YES DEVELOPMENT_TEAM= CODE_SIGN_STYLE=Manual -parallel-testing-enabled NO -test-timeouts-enabled YES -default-test-execution-time-allowance 120 -maximum-test-execution-time-allowance 300 \"-only-testing:StarfallUITests/ConstellationTraceNativeTests/testNativeTraceHeldAcrossAutomaticDeadlineCannotCommitStaleSelection\" \"-only-testing:StarfallUITests/SkyFlowInteractionTests/testFirstLightWinReplayAndFullSky\" -resultBundlePath /tmp/pacing6-corrected.xcresult test",
+      "log": "/tmp/pacing6-corrected.log",
+      "logSHA256": "9c564e58eeb5b8c3fcaaff1870601c31a818c678669cbae98fe49ae3926ac2d6",
+      "cwd": "/Users/lbeezr/.codex/worktrees/pacing-acceptance/Starfall"
+    },
+    {
+      "check": "export-build",
+      "runtimeSource": "5e56d5ae63e2bf34667e5d46013c0d643a33ecfe",
+      "kind": "export",
+      "result": "pass: Debug build-for-testing",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -sdk iphonesimulator -destination \"generic/platform=iOS Simulator\" -derivedDataPath /tmp/Pacing6Export ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGNING_ALLOWED=NO build-for-testing",
+      "log": "/tmp/pacing6-export-build.log",
+      "logSHA256": "5751a9f888e8b2d39f0151b8b53000f09d021ce7cc9be5f0019eadbab39cf7f1",
+      "cwd": "/tmp/starfall-pacing-acceptance-export"
+    },
+    {
+      "check": "cues",
+      "runtimeSource": "5e56d5ae63e2bf34667e5d46013c0d643a33ecfe",
+      "kind": "export",
+      "result": "partial aggregate: A, B normal and B Reduce Motion passed; largest body completed but teardown exceeded 120s; finalizer stopped",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=1B3A9585-6D5B-4199-88E0-AF5D8982EEF8\" -derivedDataPath /tmp/Pacing6Export ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGN_IDENTITY=- CODE_SIGNING_ALLOWED=YES DEVELOPMENT_TEAM= CODE_SIGN_STYLE=Manual -parallel-testing-enabled NO -test-timeouts-enabled YES -default-test-execution-time-allowance 120 -maximum-test-execution-time-allowance 180 \"-only-testing:StarfallUITests/PacingCueUITests\" -resultBundlePath /tmp/pacing6-cues.xcresult test",
+      "log": "/tmp/pacing6-cues.log",
+      "logSHA256": "ce0def3b29fb82905ef451a6c90e395bdee1a2f7cd66a97ab97ff9aa3e464d18",
+      "cwd": "/tmp/starfall-pacing-acceptance-export"
+    },
+    {
+      "check": "final-build",
+      "runtimeSource": "b42eba357515793c834fec7d9125907ca106a22f",
+      "kind": "normal",
+      "result": "pass: Debug build-for-testing",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -sdk iphonesimulator -destination \"generic/platform=iOS Simulator\" -derivedDataPath /tmp/Pacing6Normal ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGN_IDENTITY=- CODE_SIGNING_ALLOWED=YES DEVELOPMENT_TEAM= CODE_SIGN_STYLE=Manual build-for-testing",
+      "log": "/tmp/pacing6-final-build.log",
+      "logSHA256": "13842eea6fe381103921d8f19e238bb515f463132f6f38dc06d96891038942c5",
+      "cwd": "/Users/lbeezr/.codex/worktrees/pacing-acceptance/Starfall"
+    },
+    {
+      "check": "final-release",
+      "runtimeSource": "b42eba357515793c834fec7d9125907ca106a22f",
+      "kind": "normal",
+      "result": "pass: Release build",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Release -sdk iphonesimulator -destination \"generic/platform=iOS Simulator\" -derivedDataPath /tmp/Pacing6Release ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGNING_ALLOWED=NO build",
+      "log": "/tmp/pacing6-final-release.log",
+      "logSHA256": "f204636c5a95b80b4b10a27f973b4002f9fa10721b243fadb35291ced6e03031",
+      "cwd": "/Users/lbeezr/.codex/worktrees/pacing-acceptance/Starfall"
+    },
+    {
+      "check": "final-export-build",
+      "runtimeSource": "b42eba357515793c834fec7d9125907ca106a22f",
+      "kind": "export",
+      "result": "pass: Debug build-for-testing",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -sdk iphonesimulator -destination \"generic/platform=iOS Simulator\" -derivedDataPath /tmp/Pacing6FinalExport ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGN_IDENTITY=- CODE_SIGNING_ALLOWED=YES DEVELOPMENT_TEAM= CODE_SIGN_STYLE=Manual build-for-testing",
+      "log": "/tmp/pacing6-final-export-build.log",
+      "logSHA256": "afa8c27f42110d3eaeac04b1faccc8ffc51793bb1a59bb5d49bc2e4c1b679b8e",
+      "cwd": "/tmp/starfall-pacing-final-acceptance-export"
+    },
+    {
+      "check": "final-forecast",
+      "runtimeSource": "b42eba357515793c834fec7d9125907ca106a22f",
+      "kind": "normal",
+      "result": "pass: 7 hosted + 1 native",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=F4BA0D73-6491-4171-A29B-93ABC79EB4FF\" -derivedDataPath /tmp/Pacing6Normal ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGN_IDENTITY=- CODE_SIGNING_ALLOWED=YES DEVELOPMENT_TEAM= CODE_SIGN_STYLE=Manual -parallel-testing-enabled NO -test-timeouts-enabled YES -default-test-execution-time-allowance 120 -maximum-test-execution-time-allowance 180 \"-only-testing:StarfallAppTests/ObservatoryGeometryTests\" \"-only-testing:StarfallAppTests/SkyShowerPlacementTests\" \"-only-testing:StarfallUITests/ShowerForecastInteractionTests\" -resultBundlePath /tmp/pacing6-final-forecast.xcresult test",
+      "log": "/tmp/pacing6-final-forecast.log",
+      "logSHA256": "1e0a32ab991ae7ad0a480012e983c86f9fd78f62b2170f971c19dc21407261fd",
+      "cwd": "/Users/lbeezr/.codex/worktrees/pacing-acceptance/Starfall"
+    },
+    {
+      "check": "final-cues",
+      "runtimeSource": "b42eba357515793c834fec7d9125907ca106a22f",
+      "kind": "export",
+      "result": "pass: 3 native B flows",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=F4BA0D73-6491-4171-A29B-93ABC79EB4FF\" -derivedDataPath /tmp/Pacing6FinalExport ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGN_IDENTITY=- CODE_SIGNING_ALLOWED=YES DEVELOPMENT_TEAM= CODE_SIGN_STYLE=Manual -parallel-testing-enabled NO -test-timeouts-enabled YES -default-test-execution-time-allowance 180 -maximum-test-execution-time-allowance 240 \"-only-testing:StarfallUITests/PacingCueUITests/testNormalMotionWarningFasterBreathing\" \"-only-testing:StarfallUITests/PacingCueUITests/testLargestTextKeepsCueVisibleWithControls\" \"-only-testing:StarfallUITests/PacingCueUITests/testSystemReduceMotionKeepsLabels\" -resultBundlePath /tmp/pacing6-final-cues.xcresult test",
+      "log": "/tmp/pacing6-final-cues.log",
+      "logSHA256": "266ba8f7a40fdebcf538047a4480793017423dd0752a78b596a895f7777f607c",
+      "cwd": "/tmp/starfall-pacing-final-acceptance-export"
+    },
+    {
+      "check": "active-coexistence",
+      "runtimeSource": "b42eba357515793c834fec7d9125907ca106a22f",
+      "kind": "export with 0903778 test overlay",
+      "result": "pass: 1 native",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project /tmp/starfall-pacing-final-acceptance-export/Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=F4BA0D73-6491-4171-A29B-93ABC79EB4FF\" -derivedDataPath /tmp/Pacing6FinalExport ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGN_IDENTITY=- CODE_SIGNING_ALLOWED=YES DEVELOPMENT_TEAM= CODE_SIGN_STYLE=Manual -parallel-testing-enabled NO -test-timeouts-enabled YES -default-test-execution-time-allowance 120 -maximum-test-execution-time-allowance 180 \"-only-testing:StarfallUITests/PacingCueUITests/testActiveCandidateForecastAndPhaseCueKeepSeparateSpace\" -resultBundlePath /tmp/pacing6-active-coexistence.xcresult test",
+      "log": "/tmp/pacing6-active-coexistence.log",
+      "logSHA256": "b2ffe827f400ac7b0d97f2424b889bd866e14c147e44d037cd8cdd99b4df5809",
+      "cwd": "/Users/lbeezr/.codex/worktrees/pacing-acceptance/Starfall"
+    },
+    {
+      "check": "largest-clear",
+      "runtimeSource": "b42eba357515793c834fec7d9125907ca106a22f",
+      "kind": "export with 71336e7 test overlay",
+      "result": "pass: 1 native",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project /tmp/starfall-pacing-final-acceptance-export/Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=F4BA0D73-6491-4171-A29B-93ABC79EB4FF\" -derivedDataPath /tmp/Pacing6FinalExport ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGN_IDENTITY=- CODE_SIGNING_ALLOWED=YES DEVELOPMENT_TEAM= CODE_SIGN_STYLE=Manual -parallel-testing-enabled NO -test-timeouts-enabled YES -default-test-execution-time-allowance 120 -maximum-test-execution-time-allowance 180 \"-only-testing:StarfallUITests/PacingCueUITests/testLargestCandidateClearUsesVisibleNativeCells\" -resultBundlePath /tmp/pacing6-largest-clear.xcresult test",
+      "log": "/tmp/pacing6-largest-clear.log",
+      "logSHA256": "2e37fe13fa3ce1d314378270df78e8aec3bc47a6d2e88b5972ab60086c795c62",
+      "cwd": "/Users/lbeezr/.codex/worktrees/pacing-acceptance/Starfall"
+    }
+  ],
+  "testOverlays": [
+    {
+      "commit": "f95b24ff44ab9d3c66f281ff622a96761725b51f",
+      "path": "UITests/FallingSkyInteractionTests.swift",
+      "sourceSHA256": "7dd9550b73f954becb98fe53dbc2c91770c1a19569071f7d253eaef8e4809827",
+      "exportMarkerSHA256": null
+    },
+    {
+      "commit": "0903778603bfe04dd35f82f702ed73e98f11b52c",
+      "path": "UITests/PacingCueUITests.swift",
+      "sourceSHA256": "b2853a3d41846f5acbfc55311a83c81a2468c08f90d0d5b7c9b82720d9cbe59f",
+      "exportMarkerSHA256": "8bd6180b8302726cfd0be916bea9260a1a62d8c3cdb8ebc42337b89acf162c79"
+    },
+    {
+      "commit": "71336e7e27d7e19f9391790bf88844115948ad04",
+      "path": "UITests/PacingCueUITests.swift",
+      "sourceSHA256": "bd20f1e648b79dc12b16bb0b8f455a92fcfce1dd0c2866a03ae5a40fbc9fa71c",
+      "exportMarkerSHA256": "a72ebdfb91289440bb1ce9e6e23598d7abe5f6eb4c27d20a96690ff0884d8aa8"
+    }
+  ],
+  "initialCapturedTestSnapshot": {
+    "runtimeSource": "5e56d5ae63e2bf34667e5d46013c0d643a33ecfe",
+    "checkout": "55cdbd4",
+    "dirtyTest": "UITests/FallingSkyInteractionTests.swift",
+    "sha256": "db8602b3c31ffe12246360deb430bdc17caf92e64096b5c9d2b2e54189e857ee"
+  },
+  "dirtyPathsAffectingRuntimeBuild": [],
+  "initialRecoveryDirtyTestPath": "UITests/FallingSkyInteractionTests.swift; earlier pre-correction version, setup failed before gesture",
+  "documentationChangesDuringRuns": "docs/evidence only; not linked into app",
+  "fixtureSHA256": "873a78ded0501fcc4bb14123a92b93d634a10015aa16a97083eaa07b7d0e51e0",
+  "finalExport": "/tmp/starfall-pacing-final-acceptance-export",
+  "exportCommand": "python3 tools/mechanics/prepare-pacing-candidate.py --source b42eba357515793c834fec7d9125907ca106a22f --output <new-directory>",
+  "rawMovies": [
+    "/tmp/pacing6-normal-native.mp4",
+    "/tmp/pacing6-candidate-native.mp4"
+  ],
+  "unverified": [
+    "actual VoiceOver (RC gate)",
+    "physical device and camera fit",
+    "minimum supported OS",
+    "landscape/tablet",
+    "native seeds 0/11",
+    "accelerated-opening intentional trace comfort",
+    "continuous animation smoothness",
+    "human comprehension and preference"
+  ]
+}

@@ -18,10 +18,14 @@ Default Falling Sky uses the full-screen Observatory. `ObservatoryGeometry` owns
 
 Constellation drawing is now part of FallingSky: transient ordered input lives beside the store, the native trace surface shares Observatory geometry with accessible buttons, and the scene presents a bounded trail/burst. Core validates the selected set; ordinary taps retain their original rules. Debug-only reset fixtures are not a second app or a menu route.
 
+The store schedules the core’s persisted opening cadence: four quick waves, then the chosen regular pace. Input opens between settled batches; [opening acceptance](../docs/evidence/opening-cascade-2026-10-17/README.md) records checks and limits.
+
 ## Welcome, entry and endings
 
 `SkyFlowCeremony` presents narrow value snapshots and actions using the shared cast and theme. `FallingSkyView` owns navigation, suspends gameplay under ceremonies and waits for the committed final turn to settle. Reveal tasks belong to screen identity and settle on interruption; they never advance gameplay. See [the flow contract](../docs/design/SKY_FLOW.md).
 
 Ordinary Debug/Release launches open Welcome. Historical `--starfalls-reset` board fixtures still open paused play; add `--sky-flow-review` to test the production welcome flow with isolated `Starfall.SkyFlowReview` defaults. Relaunch with only `--sky-flow-review` to exercise restore. This is Debug verification setup, not a player mode.
+
+The optional `SkyCadenceCue` reads `nextShowerCadence` only. Baseline supplies no cue; candidate copy and a persistent large-text placement do not own scheduling.
 
 `SkyShowerPlacement` selects the calibrated iPhone 17 portrait camera contour. All other hardware/viewports and accessible layouts use the safe-area header. Both show the same committed ordered forecast through `SkyShowerTrail`; there is no trial flag. [Adoption and device limits](../docs/evidence/shower-forecast-adoption-2026-10-17/README.md).

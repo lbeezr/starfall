@@ -85,6 +85,7 @@ struct FallingSkyMenu: View {
                 Text("A grown star beside one small match is enough. Each family has its own face and shape.")
             }
             Section("Follow the sky") {
+                Text("New skies open with a quick cascade. Start clearing as each wave settles; your selected shower pace follows the opening.")
                 Text("The comet trail fills toward the next shower. Clear space before a column fills. Clearing never delays the sky.")
                 Text("A matching arrival grows a small star. A grown star cannot grow again; the next star stacks above it.")
             }
@@ -102,7 +103,7 @@ struct FallingSkyMenu: View {
         VStack(alignment: .leading, spacing: 16) {
             Text("Try a balance").font(.headline).accessibilityAddTraits(.isHeader)
             VStack(alignment: .leading, spacing: 8) {
-                Text("Shower pace")
+                Text("Shower pace after the opening")
                 Picker("Shower pace", selection: Binding(get: { balance.pace }, set: { setBalance(StarfallBalance(pace: $0, darkStars: balance.darkStars)) })) {
                     ForEach(StarfallBalance.Pace.allCases, id: \.self) { pace in
                         Text(pace.title).tag(pace)

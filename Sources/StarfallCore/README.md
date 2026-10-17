@@ -7,3 +7,10 @@ Deterministic rules, seeded randomness and committed save/outcome values, withou
 Run `swift test` from the repository root. Preserve replay and old-save invariants when rules, RNG or schema change; see [repository boundaries](../../AGENTS.md).
 
 Constellation walks add explicit five-distinct-star validation and selected-set clearing; ordinary `group`, `legalGroups`, `clear`, save fields and generator relief remain compatible. `ConstellationFixture` compiles only in Debug for deterministic native/core tests.
+
+`FallingSky.automaticShowerDelay` derives the opening cadence from committed shower count. A saved optional cadence marker preserves historical clocks and First Light; the seeded wave generator is unchanged.
+
+`SkyCadenceID.step(committedShowers:pace:)` is the versioned pure timing lookup.
+`FallingSky.cadenceStep` describes the interval after `turns`, toward shower `turns + 1`;
+`replay()` resets play while preserving cadence, balance and historical generation markers.
+Missing cadence markers use the saved opening contract. See the [consumer contract](../../docs/design/PACING_CORE_CONTRACT.md).
