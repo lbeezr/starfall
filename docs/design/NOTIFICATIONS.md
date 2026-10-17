@@ -34,7 +34,7 @@ The reminder is weekly even if the player has recently played. It is a chosen sc
 | New features or announcements | Prefer a short dismissible note on a later app opening; no notification announcement system in the first scope. |
 | Guidance and results | Keep inside the game using existing presentation boundaries; avoid interrupting active play. |
 
-These decisions do not add events, daily rewards, progression or a messaging inbox. Optional rankings retain their [existing Game Center contract](GAME_CENTER.md).
+These decisions do not add events, daily rewards, progression or a messaging inbox. Optional rankings remain outside this reminder scope.
 
 ## Future implementation acceptance
 
