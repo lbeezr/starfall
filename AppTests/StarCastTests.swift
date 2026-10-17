@@ -6,7 +6,7 @@ import StarfallCore
 
 final class StarCastTests: XCTestCase {
     @MainActor func testCrystalBodiesArePackagedAndContactShadowsStaySeparate() throws {
-        let kinds = Jewel.allCases.map(Optional.some) + [nil]
+        let kinds = StarCast.Identity.allCases
         for kind in kinds {
             let name = StarCast.character(for: kind).name
             let body = try XCTUnwrap(UIImage(named: "StarCast" + name), "Missing bundled body for \(name)")
@@ -17,8 +17,8 @@ final class StarCastTests: XCTestCase {
             XCTAssertLessThanOrEqual(offset, 20)
             XCTAssertEqual(StarCast.groundOffset(for: kind, radius: 30), offset * 1.5, accuracy: 0.01)
         }
-        XCTAssertLessThan(StarCast.groundOffset(for: .violet, radius: 20),
-                          StarCast.groundOffset(for: .aqua, radius: 20))
+        XCTAssertLessThan(StarCast.groundOffset(for: .colored(.violet), radius: 20),
+                          StarCast.groundOffset(for: .colored(.aqua), radius: 20))
         var game = FallingSky(seed: 5)
         for _ in 0..<4 { _ = game.letStarsFall() }
         let scene = FallingSkyScene(size: CGSize(width: 350, height: 560))
@@ -145,10 +145,101 @@ final class StarCastTests: XCTestCase {
         view.presentScene(nil)
     }
 
+    @MainActor func testOpalArrivalUsesItsOwnMaterialAndSurvivesCommittedRestore() async throws {
+        guard !UIAccessibility.isReduceMotionEnabled && !UIAccessibility.isVoiceOverRunning else {
+            throw XCTSkip("Normal-motion Opal arrival requires full animation")
+        }
+        var game = FallingSky(seed: 17, balance: .init(darkStars: .none), generation: .current)
+        for _ in 0..<5 {
+            XCTAssertNotNil(game.letStarsFall())
+            for _ in 0..<49 {
+                guard let first = game.legalGroups.first?.first else { break }
+                XCTAssertNotNil(game.clear(first))
+            }
+        }
+        let incoming = try XCTUnwrap(game.incoming.first(where: \.isLight))
+        XCTAssertEqual(StarCast.Identity(incoming), .opal)
+        XCTAssertNotEqual(StarCast.Identity(incoming), .dusk)
+        let old = game, turn = try XCTUnwrap(game.letStarsFall())
+        let opal = try XCTUnwrap(turn.arrivals.first(where: { $0.gem.isLight })?.gem)
+        XCTAssertEqual(StarCast.Identity(opal), .opal)
+        let view = SKView(frame: CGRect(x: 0, y: 0, width: 350, height: 560))
+        let windowScene = try XCTUnwrap(UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.first)
+        let previous = windowScene.windows.first(where: \.isKeyWindow)
+        let window = UIWindow(windowScene: windowScene); window.frame = view.frame
+        let controller = UIViewController(); controller.view = view
+        window.rootViewController = controller; window.makeKeyAndVisible()
+        defer { view.presentScene(nil); window.isHidden = true; previous?.makeKey() }
+        let scene = FallingSkyScene(size: view.bounds.size); view.presentScene(scene)
+        var complete = false, sawOpalInFlight = false, sawSoftLanding = false
+        var frame = 0
+        scene.animate(turn, from: old, to: game) { complete = true }
+        let deadline = ContinuousClock.now + .seconds(3)
+        while !complete && ContinuousClock.now < deadline {
+            sawOpalInFlight = sawOpalInFlight || scene.children[2].children.contains {
+                $0.children.contains { $0.name?.hasPrefix("star-cast.Opal.") == true }
+            }
+            let landedOpal = scene.children[1].children.contains { ($0 as? FallingSkyCharacter)?.gem.id == opal.id }
+            let travelingOpal = scene.children[2].children.contains { $0.name == "sky.flight.\(incoming.id)" }
+            XCTAssertFalse(landedOpal && travelingOpal, "Landing must hand off one body without a duplicate flight sprite")
+            sawSoftLanding = sawSoftLanding || scene.children[1].children.contains {
+                ($0 as? FallingSkyCharacter)?.gem.isLight == true && ($0 as? FallingSkyCharacter)?.character.warpGeometry != nil
+            }
+            if frame.isMultiple(of: 3), let texture = view.texture(from: scene) {
+                // Composite the native capture over an opaque preview stage before
+                // GIF export; GIF cannot preserve the translucent effects' alpha.
+                let format = UIGraphicsImageRendererFormat(); format.scale = 1; format.opaque = true
+                let frameImage = UIGraphicsImageRenderer(size: view.bounds.size, format: format).image { context in
+                    UIColor(red: 0.04, green: 0.055, blue: 0.12, alpha: 1).setFill()
+                    context.fill(view.bounds)
+                    UIImage(cgImage: texture.cgImage()).draw(in: view.bounds)
+                }
+                let capture = XCTAttachment(image: frameImage)
+                capture.name = "opal-soft-motion-frame-\(String(format: "%03d", frame))"
+                capture.lifetime = .keepAlways; add(capture)
+            }
+            frame += 1
+            try await Task.sleep(for: .milliseconds(16))
+        }
+        XCTAssertTrue(sawSoftLanding, "Opal must deform during normal landing")
+        XCTAssertTrue(complete, "Opal arrival must finish"); XCTAssertTrue(sawOpalInFlight, "Comet must carry the Opal body")
+        let restored = try SkySaveArchive.decode(SkySaveArchive.encode(game))
+        scene.render(restored)
+        let root = try XCTUnwrap(scene.children[1].children.first { $0.name == "sky.star.\(opal.id)" } as? FallingSkyCharacter)
+        XCTAssertNil(root.character.warpGeometry, "Committed restore must be round and free of transient deformation")
+        XCTAssertEqual(root.character.name, "star-cast.Opal.0")
+        XCTAssertTrue(root.character.texture === StarCast.texture(for: .opal, expression: .idle))
+        XCTAssertFalse(root.character.texture === StarCast.texture(for: .dusk, expression: .idle))
+        XCTAssertLessThan(root.character.frame.width, 60)
+        let character = FallingSkyCharacter(gem: opal, step: 45)
+        character.softenLanding()
+        let squash = character.character.warpGeometry
+        character.showExpression(.idle)
+        XCTAssertTrue(character.character.warpGeometry === squash, "Face changes must preserve the soft landing")
+        character.update(opal, expression: .idle)
+        XCTAssertNil(character.character.warpGeometry); XCTAssertFalse(character.character.hasActions())
+        scene.reduceMotion = true
+        var quietComplete = false
+        scene.animate(turn, from: old, to: game) { quietComplete = true }
+        let quietDeadline = ContinuousClock.now + .seconds(1)
+        while !quietComplete && ContinuousClock.now < quietDeadline { try await Task.sleep(for: .milliseconds(16)) }
+        XCTAssertTrue(quietComplete)
+        XCTAssertTrue(scene.children[2].children.isEmpty)
+        for node in scene.children[1].children {
+            let quiet = try XCTUnwrap(node as? FallingSkyCharacter)
+            XCTAssertNil(quiet.character.warpGeometry)
+            XCTAssertEqual(quiet.character.position, .zero)
+        }
+        if let texture = view.texture(from: scene) {
+            let attachment = XCTAttachment(image: UIImage(cgImage: texture.cgImage()))
+            attachment.name = "opal-committed-native-arrival"; attachment.lifetime = .keepAlways; add(attachment)
+        }
+    }
+
     @MainActor func testCompleteCastIsBoundedAndReusesMaterialsAcrossRounds() throws {
         StarCast.prewarm()
-        XCTAssertEqual(StarCast.cachedMaterialCount, 72)
-        let cast = Jewel.allCases.map(Optional.some) + [nil]
+        XCTAssertEqual(StarCast.cachedMaterialCount, 84)
+        let cast = StarCast.Identity.allCases
         for kind in cast {
             for expression in StarCast.Expression.allCases {
                 let first = StarCast.texture(for: kind, expression: expression)
@@ -166,11 +257,11 @@ final class StarCastTests: XCTestCase {
             }
         }
         XCTAssertEqual(StarCast.cachedMaterialCount, StarCast.maximumMaterials)
-        XCTAssertEqual(StarCast.maximumRasterBytes, 18_874_368)
+        XCTAssertEqual(StarCast.maximumRasterBytes, 22_020_096)
     }
 
     @MainActor func testTransparentPaddingAndStableSilhouettesAcrossExpressions() throws {
-        for kind in Jewel.allCases.map(Optional.some) + [nil] {
+        for kind in StarCast.Identity.allCases {
             var neutralAlpha: [UInt8]?
             var expressions = Set<Data>()
             for expression in StarCast.Expression.allCases {
@@ -212,14 +303,14 @@ final class StarCastTests: XCTestCase {
             let names = Set(nodes.compactMap(\.name))
             for gem in game.board.compactMap({ $0 }) {
                 let expression: StarCast.Expression = gem.grown ? .grown : .idle
-                XCTAssertTrue(names.contains("star-cast.\(StarCast.character(for: gem.kind).name).\(expression.rawValue)"))
+                XCTAssertTrue(names.contains("star-cast.\(StarCast.character(for: .init(gem)).name).\(expression.rawValue)"))
             }
         }
         XCTAssertEqual(StarCast.cachedMaterialCount, StarCast.maximumMaterials)
     }
 
     @MainActor func testExpressionChangesPreserveGeometryForEveryFamilyAndPose() {
-        for kind in Jewel.allCases.map(Optional.some) + [nil] {
+        for kind in StarCast.Identity.allCases {
             let node = JewelScene.makeStarCharacter(kind, expression: .landing, radius: 18)
             node.anchorPoint = CGPoint(x: 0.4, y: 0.6)
             node.setScale(0.83)
@@ -309,7 +400,7 @@ final class StarCastTests: XCTestCase {
     }
 
     @MainActor func testEveryCharacterHasACompleteTwelveFrameSheet() throws {
-        for kind in Jewel.allCases.map(Optional.some) + [nil] {
+        for kind in StarCast.Identity.allCases {
             var unique = Set<Data>()
             let format = UIGraphicsImageRendererFormat(); format.scale = 1
             let sheet = UIGraphicsImageRenderer(size: CGSize(width: 768, height: 1024), format: format).image { _ in
@@ -334,11 +425,11 @@ final class StarCastTests: XCTestCase {
     }
 
     @MainActor func testCastReviewSheetAtBoardAndHeroSizes() {
-        let kinds = [Jewel.aqua, .amber, .mint, .rose, .violet].map(Optional.some) + [nil]
+        let kinds = StarCast.Identity.allCases
         let format = UIGraphicsImageRendererFormat(); format.scale = 2
-        let sheet = UIGraphicsImageRenderer(size: CGSize(width: 840, height: 670), format: format).image { render in
+        let sheet = UIGraphicsImageRenderer(size: CGSize(width: 980, height: 670), format: format).image { render in
             UIColor(red: 0.06, green: 0.08, blue: 0.17, alpha: 1).setFill()
-            render.fill(CGRect(x: 0, y: 0, width: 840, height: 670))
+            render.fill(CGRect(x: 0, y: 0, width: 980, height: 670))
             let labels: [NSAttributedString.Key: Any] = [.font: UIFont.systemFont(ofSize: 15, weight: .medium), .foregroundColor: UIColor.white]
             for (index, kind) in kinds.enumerated() {
                 let x = CGFloat(index) * 140

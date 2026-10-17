@@ -67,6 +67,9 @@ import StarfallCore
                                 playfield(insets: safeViewport.safeAreaInsets, compact: safeViewport.size.height < 750, island: false)
                                     .frame(height: safeViewport.size.height)
                                 if !showingCeremony {
+                                    if !settings, let cue = store.phaseCue {
+                                        SkyPhaseLabel(cue: cue).padding(.horizontal, StarfallTheme.Spacing.medium)
+                                    }
                                     guide(compact: safeViewport.size.height < 750)
                                         .accessibilityHidden(settings)
                                         .padding(.horizontal, StarfallTheme.Spacing.medium)
@@ -91,14 +94,6 @@ import StarfallCore
                     .id(endingReady ? (store.game.outcome == .won ? "won" : "full") : String(describing: flow))
             }
         }
-        .onChange(of: store.nextShowerCadence) { old, new in
-            guard voiceOver, !settings, !showingCeremony, !store.isPaused, !store.suspended,
-                  !store.game.isOver, store.game.challenge == nil,
-                  (new.warnsFasterNext && !old.warnsFasterNext)
-                    || (new.phase == .breathing && old.phase != .breathing),
-                  let copy = SkyCadenceCueCopy(step: new) else { return }
-            UIAccessibility.post(notification: .announcement, argument: copy.label)
-        }
         .preferredColorScheme(.dark)
         .statusBarHidden(!settings)
         .tint(StarfallTheme.Colors.actionPrimary)
@@ -121,32 +116,38 @@ import StarfallCore
     /// The terrace owns its complete canvas. At accessibility sizes the guide is
     /// a sibling below it, so text growth cannot cover projected stars or props.
     private func playfield(insets: EdgeInsets, compact: Bool, island: Bool) -> some View {
-        ZStack {
-            board
-            if !showingCeremony {
-                VStack(spacing: StarfallTheme.Spacing.small) {
-                    compactHeader(island: island)
-                    Spacer(minLength: 0)
-                    if !largeText { guide(compact: compact) }
+        GeometryReader { viewport in
+            let front = ObservatoryGeometry(size: viewport.size).frame(Cell(0, 0)).maxY
+            let footerHeight = max(0, viewport.size.height - front - insets.bottom
+                - 2 * StarfallTheme.Spacing.small)
+            ZStack {
+                board
+                if !showingCeremony {
+                    VStack(spacing: StarfallTheme.Spacing.small) {
+                        compactHeader(island: island)
+                        if !settings, !largeText, let cue = store.phaseCue { SkyPhaseLabel(cue: cue) }
+                        Spacer(minLength: 0)
+                        if !largeText { guide(compact: compact, maximumHeight: footerHeight) }
+                    }
+                    .padding(.horizontal, StarfallTheme.Spacing.medium)
+                    .padding(.top, insets.top)
+                    .padding(.bottom, insets.bottom + StarfallTheme.Spacing.small)
                 }
-                .padding(.horizontal, StarfallTheme.Spacing.medium)
-                .padding(.top, insets.top)
-                .padding(.bottom, insets.bottom + StarfallTheme.Spacing.small)
             }
-        }
-        .overlay(alignment: .top) {
-            if island && !showingCeremony && !settings {
-                showerTrail(island: true)
-                    .allowsHitTesting(false)
+            .overlay(alignment: .top) {
+                if island && !showingCeremony && !settings {
+                    showerTrail(island: true)
+                        .allowsHitTesting(false)
+                }
             }
+            .accessibilityHidden(settings || showingCeremony)
         }
-        .accessibilityHidden(settings || showingCeremony)
     }
 
-    @ViewBuilder private func guide(compact: Bool) -> some View {
+    @ViewBuilder private func guide(compact: Bool, maximumHeight: CGFloat? = nil) -> some View {
         if store.isPaused && !store.game.isOver {
             SkyGuideCard(title: "Sunny",
-                         message: store.message, showsPortrait: !compact) {
+                         message: store.message, showsPortrait: !compact, maximumHeight: maximumHeight) {
                 controlLayout {
                     Button(store.game.turns == 0 ? "Start sky" : "Resume sky") { store.togglePause() }
                         .disabled(store.suspended).accessibilityIdentifier("experiment.pause")
@@ -261,9 +262,11 @@ import StarfallCore
         }
         .buttonStyle(.plain)
         .accessibilityLabel(cellLabel(cell))
-        .accessibilityValue("\(value) starlight connected")
+        .accessibilityValue(store.game.gem(at: cell)?.isLight == true ? "1 starlight, choose a colored star to start" : "\(value) starlight connected")
         .accessibilityHint(store.game.gem(at: cell)?.isDark == true
             ? "Clear a matching group directly beside this dark star to dissolve it"
+            : store.game.gem(at: cell)?.isLight == true
+                ? "Start on a colored star to include this orb in that color’s match or constellation. Using it spends it."
             : value >= 3
                 ? (store.game.darkStarsBeside(group).isEmpty ? "Tap to clear this ordinary match" : "Tap to clear this ordinary match and adjacent dark stars")
                 : "Needs three light horizontally or vertically, or five actual matching stars linked sideways or diagonally")
@@ -278,9 +281,8 @@ import StarfallCore
     private func cellLabel(_ cell: Cell) -> String {
         let position = "row \(7-cell.row), column \(cell.column+1)"
         guard let gem = store.game.gem(at: cell) else { return "Empty, \(position)" }
-        guard let kind = gem.kind else { return "\(StarCast.character(for: nil).description), \(position)" }
         let shade = store.game.isGrowthBlocked(at: cell) ? ", growth blocked by a dark star" : ""
-        return "\(gem.grown ? "Large " : "")\(StarCast.character(for: kind).description), \(position)\(shade)"
+        return "\(gem.grown ? "Large " : "")\(StarCast.character(for: .init(gem)).description), \(position)\(shade)"
     }
 
     private func updateSuspension() {

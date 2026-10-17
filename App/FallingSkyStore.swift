@@ -35,7 +35,7 @@ import StarfallCore
 
 // Existing persistence keys and launch arguments survive the production naming promotion.
 @MainActor @Observable final class FallingSkyStore {
-    static let saveKey = "starfall.accumulation.v3"
+    static let saveKey = SkySaveArchive.key
     private(set) var game: FallingSky
     private(set) var hasSavedSky = false
     private(set) var busy = false
@@ -150,15 +150,14 @@ import StarfallCore
         self.scene = scene
         self.presenter = presenter ?? scene
         // SwiftUI may construct stores for discarded view values. Keep initialization read-only.
-        if !arguments.contains("--starfalls-reset"), let data = defaults.data(forKey: Self.saveKey),
-           let saved = try? JSONDecoder().decode(FallingSky.self, from: data), saved.isValidSave {
+        if !arguments.contains("--starfalls-reset"), let saved = SkySaveArchive.load(from: defaults) {
             game = saved
             hasSavedSky = true
             message = saved.outcome == .won ? "First Light complete. Replay it or start a new sky." : saved.isOver ? "This sky is full. Replay it or try a new sky." : "Your sky is paused. Resume when you're ready."
         } else {
             let argument = arguments.first { $0.hasPrefix("--starfalls-seed=") }
             let seed = argument.flatMap { UInt64($0.dropFirst("--starfalls-seed=".count)) } ?? 5
-            game = FallingSky(seed: seed)
+            game = FallingSky(seed: seed, generation: .current)
         }
         #if DEBUG
         if arguments.contains("--starfalls-reset"), arguments.contains("--observatory-review") {
@@ -177,6 +176,7 @@ import StarfallCore
         scene.onLayout = { [weak self] in self?.settlePresentation() }
     }
 
+    var phaseCue: SkyPhaseCue? { SkyPhaseCue(game: game, pending: pending) }
     var forecast: [IncomingStar] { pending?.forecast ?? game.incoming }
     var showerInterval: TimeInterval { nextShowerCadence.delay }
     var canClear: Bool { !busy && !suspended && !game.isOver && !rainDue }
@@ -187,6 +187,8 @@ import StarfallCore
         guard let turn = game.clear(cell) else {
             message = game.gem(at: cell)?.isDark == true
                 ? "Clear a matching group beside the dark star to dissolve it."
+                : game.gem(at: cell)?.isLight == true
+                    ? "Start on a colored star. The Opal Orb can join that color’s match or constellation and is spent when cleared."
                 : "Match three light side by side, or five actual stars linked sideways or diagonally. Large stars count as one star, worth two light."
             feedback.announce(message)
             return
@@ -283,6 +285,7 @@ import StarfallCore
 
     private func commitShower(announcesResult: Bool, scheduledDeadline: TimeInterval? = nil) {
         let old = game
+        let previousCadence = nextShowerCadence
         guard let turn = game.letStarsFall() else { return }
         refreshCadence()
         if game.isOver { freezeClock() }
@@ -290,10 +293,10 @@ import StarfallCore
         #if DEBUG
         observeTiming(announcesResult ? .manualShower : .automaticShower, showerDeadline: scheduledDeadline)
         #endif
-        present(turn, from: old, announcesResult: announcesResult)
+        present(turn, from: old, announcesResult: announcesResult, previousCadence: previousCadence)
     }
 
-    private func present(_ turn: FallingSkyTurn, from old: FallingSky, announcesResult: Bool = true) {
+    private func present(_ turn: FallingSkyTurn, from old: FallingSky, announcesResult: Bool = true, previousCadence: SkyCadenceStep? = nil) {
         invalidateInput(turn.arrivals.isEmpty && turn.blockedColumn == nil ? "clear" : (announcesResult ? "manualShower" : "automaticShower"))
         generation &+= 1
         let ticket = generation
@@ -308,14 +311,26 @@ import StarfallCore
             message = "+\(turn.collected) starlight. " + (dissolved > 0 ? "\(dissolved == 1 ? "Dark star dissolved" : "Dark stars dissolved")." : "A little more room to breathe.")
         } else if turn.arrivals.contains(where: { $0.gem.isDark }) {
             message = "A dark star blocks nearby growth. Clear beside it to dissolve it."
+        } else if turn.arrivals.contains(where: { $0.gem.isLight }) {
+            message = "An Opal Orb arrived. Start on a colored star to include it in that family’s match or constellation. Clearing spends the orb."
         } else if growth > 0 {
             message = "\(growth == 1 ? "A star grew" : "\(growth) stars grew") — worth 2 when cleared."
         } else {
             message = "\(turn.arrivals.count == 1 ? "One star arrived" : "\(turn.arrivals.count) stars arrived"). Make room for the next shower."
         }
-        // Automatic showers must not repeatedly interrupt exploration or menu speech.
-        // Explicit actions and terminal results still speak; all messages remain readable.
-        let spokenResult = announcesResult || game.isOver ? message : nil
+        // One settled, generation-guarded announcement owns both pressure axes.
+        // Ordinary automatic arrivals leave exploration speech alone.
+        var transitions: [String] = []
+        if !game.isOver, game.challenge == nil, let previousCadence {
+            if let cue = SkyPhaseCue(game: game), cue.announcesTransition,
+               cue != SkyPhaseCue(game: old) { transitions.append(cue.text) }
+            let cadence = nextShowerCadence
+            if (cadence.warnsFasterNext && !previousCadence.warnsFasterNext)
+                || (cadence.phase == .breathing && previousCadence.phase != .breathing),
+               let copy = SkyCadenceCueCopy(step: cadence) { transitions.append(copy.label) }
+        }
+        let speech = (announcesResult || game.isOver ? [message] : []) + transitions
+        let spokenResult = speech.isEmpty ? nil : speech.joined(separator: ". ")
         save() // Commit before animation: backgrounding cannot replay arrivals.
         presenter.animate(turn, from: old, to: game) { [weak self] in
             guard let self, self.generation == ticket, self.busy else { return }
@@ -344,7 +359,7 @@ import StarfallCore
         } else {
             // First Light's fixed balance belongs to that challenge, not the next normal sky.
             let balance = game.challenge == nil ? game.balance : StarfallBalance()
-            game = FallingSky(seed: UInt64.random(in: 0...UInt64.max), balance: balance)
+            game = FallingSky(seed: UInt64.random(in: 0...UInt64.max), balance: balance, generation: .current)
         }
         refreshCadence()
         remaining = showerInterval
@@ -441,7 +456,7 @@ import StarfallCore
     }
 
     private func save() {
-        if let data = try? JSONEncoder().encode(game) {
+        if let data = try? SkySaveArchive.encode(game) {
             hasSavedSky = true
             defaults.set(data, forKey: Self.saveKey)
         }
@@ -469,9 +484,8 @@ import StarfallCore
     @discardableResult func visit(_ cell: Cell, ticket: UInt64?, game: FallingSky, generation: UInt64, enabled: Bool) -> Bool {
         guard ticket == sequence, snapshot != nil else { return false }
         guard enabled, snapshot == game, self.generation == generation,
-              let last = path.last, path.count < 196,
-              game.gem(at: cell)?.kind == game.gem(at: last)?.kind,
-              abs(cell.row-last.row) <= 1, abs(cell.column-last.column) <= 1 else {
+              let last = path.last,
+              game.isValidConstellationPrefix(path + [cell]) else {
             cancel(); return false
         }
         if cell == last { return false }

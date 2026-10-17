@@ -3,9 +3,12 @@ import Foundation
 
 /// Debug-only deterministic input fixtures; never loaded without an explicit reset argument.
 public enum ConstellationFixture: String, CaseIterable {
-    case five, fourGrown, overlap, darkness, diagonalSix
+    case five, fourGrown, overlap, darkness, diagonalSix, opalChoice, opalTrace, stormWarning
     public var title: String {
         switch self {
+        case .opalTrace: "Trace through an Opal Orb"
+        case .opalChoice: "An orb shared by different colors"
+        case .stormWarning: "A storm approaches"
         case .diagonalSix: "Six diagonal stars"
         case .five: "Five pink stars"
         case .fourGrown: "Four large diagonal stars"
@@ -14,6 +17,7 @@ public enum ConstellationFixture: String, CaseIterable {
         }
     }
     public func game() -> FallingSky {
+        if self == .opalChoice || self == .opalTrace || self == .stormWarning { return naturalMechanicsSky() }
         var pink: Set<Cell> = [Cell(0,4),Cell(1,3),Cell(2,4),Cell(1,5),Cell(1,6)]
         if self == .diagonalSix { pink = Set((0..<6).map { Cell($0,$0) }) }
         if self == .fourGrown { pink = [Cell(0,0),Cell(1,1),Cell(2,2),Cell(3,3)] }
@@ -38,6 +42,39 @@ public enum ConstellationFixture: String, CaseIterable {
         precondition(result.isValidSave && !result.isOver)
         return result
     }
+    /// Real seeded history: no invented board, counters or preview. Native checks
+    /// can restore this through the same validated archive as ordinary play.
+    private func naturalMechanicsSky() -> FallingSky {
+        let configuration: (seed: UInt64, last: Int, retainOpals: Bool)
+        switch self {
+        case .opalChoice: configuration = (1, 18, true)
+        case .opalTrace: configuration = (3, 12, true)
+        case .stormWarning: configuration = (17, 8, false)
+        default: preconditionFailure("Not a mechanics history fixture")
+        }
+        let last = configuration.last
+        var game = FallingSky(seed: configuration.seed, generation: .current)
+        for number in 1...last {
+            precondition(game.letStarsFall() != nil && !game.isOver)
+            if configuration.retainOpals {
+                guard number >= 6, number < last else { continue }
+                if let group = game.legalGroups.filter({ group in
+                    !group.contains { game.gem(at: $0)?.isLight == true }
+                }).min(by: { game.value(of: Set($0)) < game.value(of: Set($1)) }), let cell = group.first {
+                    _ = game.clear(cell)
+                }
+            } else {
+                for _ in 0..<49 {
+                    guard let cell = game.legalGroups.first?.first else { break }
+                    _ = game.clear(cell)
+                }
+            }
+        }
+        precondition(game.isValidSave)
+        if configuration.retainOpals { precondition(game.board.contains { $0?.isLight == true }) }
+        return game
+    }
+
 }
 
 #endif

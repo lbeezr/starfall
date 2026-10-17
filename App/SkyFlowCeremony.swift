@@ -144,7 +144,7 @@ enum SkyFlowAction { case start, firstLight, begin, resume, replay, another, hom
         .allowsHitTesting(false).accessibilityHidden(true)
     }
     private func castStar(_ kind: Jewel, side: CGFloat, index: Int) -> some View {
-        Image(uiImage: StarCast.image(for: kind, expression: screen == .won ? .clearing : .idle))
+        Image(uiImage: StarCast.image(for: .init(kind: kind), expression: screen == .won ? .clearing : .idle))
             .resizable().scaledToFit().frame(width: side, height: side)
             .shadow(color: StarfallTheme.Colors.skyTop.opacity(0.4), radius: 8, y: 7)
             .offset(y: settled || quiet ? 0 : screen == .full ? -8 : -230)

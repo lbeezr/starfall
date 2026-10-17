@@ -1,0 +1,39 @@
+{
+  "repository": "lbeezr/starfall",
+  "branch": "codex/opal-storm-main",
+  "publication": "Connected GitHub Git-data API; author/committer metadata changed, each complete Git tree matched the local commit.",
+  "verifiedRemoteHead": "c6ba71893f86288c34471a6df5c7ec62cc2b1f2e",
+  "verifiedTree": "3c3eb461c13a1a113d33e9a0826bbc9457612679",
+  "commits": [
+    {
+      "local": "47d74d16cd197ba721ae99c31036f2c7ba14202f",
+      "remote": "4146b2a9a130537c9a7b3c2e3b481b67a0f38fdc",
+      "tree": "e842f1662997ee9079f8150aa2644f7ed9095246",
+      "message": "Add versioned Opal connectors and bounded storm generation"
+    },
+    {
+      "local": "3d1c307f5568f0964b7821d8bdc557ae832298ff",
+      "remote": "f32d9a80dd2f2dd6b31156b7fb99adaca0910481",
+      "tree": "ff7f4bae843333cfb3f03e2ef036960a4a6c1bdf",
+      "message": "Verify selective Opal spending preserves a useful second clear"
+    },
+    {
+      "local": "22814a56da5049e379605a8888ce19e553790cc8",
+      "remote": "ac6333590dc00dd0a7efea06436666efd15655ba",
+      "tree": "451cb1b13cd64c2baa751bfb6e3793b13a25cda4",
+      "message": "Package the selected Opal Orb through the shared cast pipeline"
+    },
+    {
+      "local": "5b326dccd52d828f8573fd5ac943f024243e9a23",
+      "remote": "0685db4e98a5bf1f9e68602e03382a90d143f825",
+      "tree": "91505022c9f109353835141fd6714e914da9c5be",
+      "message": "Integrate soft Opal characters, versioned saves and storm presentation"
+    },
+    {
+      "local": "66237bc147457c7d9d38f7f11277c2cfd25bf9ad",
+      "remote": "c6ba71893f86288c34471a6df5c7ec62cc2b1f2e",
+      "tree": "3c3eb461c13a1a113d33e9a0826bbc9457612679",
+      "message": "Record Opal design, integration acceptance and next playtest"
+    }
+  ]
+}

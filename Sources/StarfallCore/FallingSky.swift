@@ -5,10 +5,13 @@ public struct StarfallGem: Codable, Equatable, Sendable, Identifiable {
     public let id: Int
     public let kind: Jewel?
     public var grown: Bool
-    public var isDark: Bool { kind == nil }
-    public var value: Int { isDark ? 0 : grown ? 2 : 1 }
-    public init(id: Int, kind: Jewel?, grown: Bool = false) {
+    private var lightStar: Bool?
+    public var isLight: Bool { lightStar == true }
+    public var isDark: Bool { kind == nil && !isLight }
+    public var value: Int { isDark ? 0 : isLight ? 1 : grown ? 2 : 1 }
+    public init(id: Int, kind: Jewel?, grown: Bool = false, light: Bool = false) {
         self.id = id; self.kind = kind; self.grown = grown
+        lightStar = light ? true : nil
     }
 }
 
@@ -16,9 +19,12 @@ public struct IncomingStar: Codable, Equatable, Sendable, Identifiable {
     public let id: Int
     public let kind: Jewel?
     public let column: Int
-    public var isDark: Bool { kind == nil }
-    public init(id: Int, kind: Jewel?, column: Int) {
+    private var lightStar: Bool?
+    public var isLight: Bool { lightStar == true }
+    public var isDark: Bool { kind == nil && !isLight }
+    public init(id: Int, kind: Jewel?, column: Int, light: Bool = false) {
         self.id = id; self.kind = kind; self.column = column
+        lightStar = light ? true : nil
     }
 }
 
@@ -57,6 +63,12 @@ public struct FallingSky: Codable, Equatable, Sendable {
     private var savedBalance: StarfallBalance?
     // Missing in older saves: retain their original independent-color sky.
     private var cohesiveShowers: Bool?
+    private var savedGeneration: Int?
+    public var generation: SkyGeneration { SkyGeneration(rawValue: savedGeneration ?? 0) ?? .legacy }
+    public var forecastPhase: SkyShowerPhase? {
+        guard !isOver, challenge == nil else { return nil }
+        return generation.phase(for: turns + 1)
+    }
     // Missing in historical saves: retain the original clock, including empty skies.
     private var openingCascade: Bool?
     // Absent markers retain the saved opening and balance contract without migration.
@@ -75,9 +87,10 @@ public struct FallingSky: Codable, Equatable, Sendable {
     public var occupiedCount: Int { board.compactMap { $0 }.count }
 
     public init(seed: UInt64, balance: StarfallBalance = StarfallBalance(), openingCascade: Bool = true,
-                cadence: SkyCadenceID = .announcedCycleV1) {
+                generation: SkyGeneration = .legacy, cadence: SkyCadenceID = .announcedCycleV1) {
         precondition(!openingCascade || cadence != .originalV1)
         self.seed = seed
+        savedGeneration = generation == .legacy ? nil : generation.rawValue
         self.openingCascade = openingCascade ? true : nil
         savedCadence = openingCascade ? cadence : nil
         savedBalance = balance
@@ -90,7 +103,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
     }
 
     public init(challenge: StarfallChallenge) {
-        self.init(seed: challenge.seed, balance: challenge.balance, openingCascade: false)
+        self.init(seed: challenge.seed, balance: challenge.balance, openingCascade: false, generation: .legacy)
         self.challenge = challenge
     }
 
@@ -112,9 +125,11 @@ public struct FallingSky: Codable, Equatable, Sendable {
     }
 
     // Internal deterministic positions for rule tests, not an app customization API.
-    init(board: [StarfallGem?], incoming: [IncomingStar], seed: UInt64 = 1) {
+    init(board: [StarfallGem?], incoming: [IncomingStar], seed: UInt64 = 1, generation: SkyGeneration = .legacy) {
         precondition(board.count == 49 && Self.showerSizes.contains(incoming.count))
         self.seed = seed; self.board = board; self.incoming = incoming
+        savedGeneration = generation == .legacy ? nil : generation.rawValue
+        if generation == .opalStorms { cohesiveShowers = true }
         starsLanded = board.compactMap { $0 }.reduce(0) { $0 + ($1.isDark ? 1 : $1.value) }
         random = SeededRandom(seed: seed)
     }
@@ -140,7 +155,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
 
     /// Only orthogonal neighbors are shaded. Existing growth and matching stay intact.
     public func isGrowthBlocked(at cell: Cell) -> Bool {
-        guard let jewel = gem(at: cell), !jewel.isDark else { return false }
+        guard let jewel = gem(at: cell), jewel.kind != nil, !jewel.isLight else { return false }
         return neighbors(of: cell).contains { gem(at: $0)?.isDark == true }
     }
 
@@ -148,12 +163,18 @@ public struct FallingSky: Codable, Equatable, Sendable {
         Set(cells.flatMap { neighbors(of: $0) }.filter { gem(at: $0)?.isDark == true })
     }
 
+    // One membership rule for taps, diagonal components and selected walks.
+    private func matchesFamily(_ family: Jewel, at cell: Cell) -> Bool {
+        guard let member = gem(at: cell) else { return false }
+        return member.kind == family || member.isLight
+    }
+
     public func group(at start: Cell) -> Set<Cell> {
         guard let kind = gem(at: start)?.kind else { return [] }
         var found: Set<Cell> = [start], pending = [start]
         while let cell = pending.popLast() {
             for next in neighbors(of: cell) {
-                if !found.contains(next), gem(at: next)?.kind == kind {
+                if !found.contains(next), matchesFamily(kind, at: next) {
                     found.insert(next); pending.append(next)
                 }
             }
@@ -165,10 +186,16 @@ public struct FallingSky: Codable, Equatable, Sendable {
         var seen: Set<Cell> = [], groups: [[Cell]] = []
         for row in 0..<Self.side { for column in 0..<Self.side {
             let cell = Cell(row, column)
-            guard !seen.contains(cell) else { continue }
-            let group = group(at: cell); seen.formUnion(group)
+            guard !seen.contains(cell), let member = gem(at: cell), member.kind != nil, !member.isLight else { continue }
+            let group = group(at: cell)
+            // A connector is shared across families; only colored members deduplicate a component.
+            seen.formUnion(group.filter { gem(at: $0)?.isLight != true })
             if value(of: group) >= 3 {
-                groups.append(group.sorted { $0.row == $1.row ? $0.column < $1.column : $0.row < $1.row })
+                groups.append(group.sorted {
+                    let lhsLight = gem(at: $0)?.isLight == true, rhsLight = gem(at: $1)?.isLight == true
+                    if lhsLight != rhsLight { return !lhsLight }
+                    return $0.row == $1.row ? $0.column < $1.column : $0.row < $1.row
+                })
             }
         } }
         return groups
@@ -188,14 +215,21 @@ public struct FallingSky: Codable, Equatable, Sendable {
     }
 
     /// Walk order, family and distinct count are rules, not gesture/presentation decisions.
-    public func constellationCells(along path: [Cell]) -> Set<Cell>? {
-        guard path.count <= 196, let first = path.first, let kind = gem(at: first)?.kind else { return nil }
+    /// Shared prefix legality for live input and committed walks. The first
+    /// colored star fixes the family even after the path crosses a white orb.
+    public func isValidConstellationPrefix(_ path: [Cell]) -> Bool {
+        guard path.count <= 196, let first = path.first, let kind = gem(at: first)?.kind else { return false }
         var previous = first
         for cell in path {
-            guard gem(at: cell)?.kind == kind,
-                  abs(cell.row-previous.row) <= 1, abs(cell.column-previous.column) <= 1 else { return nil }
+            guard matchesFamily(kind, at: cell),
+                  abs(cell.row-previous.row) <= 1, abs(cell.column-previous.column) <= 1 else { return false }
             previous = cell
         }
+        return true
+    }
+
+    public func constellationCells(along path: [Cell]) -> Set<Cell>? {
+        guard isValidConstellationPrefix(path) else { return nil }
         let cells = Set(path)
         return cells.count >= 5 ? cells : nil
     }
@@ -232,8 +266,8 @@ public struct FallingSky: Codable, Equatable, Sendable {
         for star in forecast {
             let height = (0..<Self.side).filter { board[$0 * Self.side + star.column] != nil }.count
             // A matching small top jewel can grow even when its column is full.
-            if !star.isDark, height > 0, var top = board[(height-1) * Self.side + star.column],
-               top.kind == star.kind, !top.grown, !isGrowthBlocked(at: Cell(height-1, star.column)) {
+            if let kind = star.kind, !star.isLight, height > 0, var top = board[(height-1) * Self.side + star.column],
+               top.kind == kind, !top.isLight, !top.grown, !isGrowthBlocked(at: Cell(height-1, star.column)) {
                 top.grown = true
                 let cell = Cell(height-1, star.column)
                 board[cell.row * Self.side + cell.column] = top
@@ -242,7 +276,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
             } else {
                 guard height < Self.side else { blockedColumn = star.column; break }
                 let cell = Cell(height, star.column)
-                let gem = StarfallGem(id: starsLanded, kind: star.kind)
+                let gem = StarfallGem(id: starsLanded, kind: star.kind, light: star.isLight)
                 board[cell.row * Self.side + cell.column] = gem
                 starsLanded += 1
                 arrivals.append(.init(star: star, cell: cell, gem: gem, grew: false))
@@ -254,6 +288,8 @@ public struct FallingSky: Codable, Equatable, Sendable {
     }
 
     private mutating func nextShower() -> [IncomingStar] {
+        let modern = generation == .opalStorms && challenge == nil && turns >= 4
+        let storm = modern && generation.phase(for: turns + 1)?.isStorm == true
         let sizes = [1, 2, 2, 3, 3, 3, 5]
         let naturalCount = sizes[Int(random.next() % UInt64(sizes.count))]
         // A dry board gets a useful run in its next forecast, plus two pressure
@@ -263,7 +299,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
         }
         let reliefColumn = cohesiveShowers == true && turns > 0 && legalGroups.isEmpty
             ? heights.indices.filter { heights[$0] <= 4 }.min { heights[$0] < heights[$1] } : nil
-        let count = reliefColumn == nil ? naturalCount : 5
+        let count = reliefColumn == nil ? (storm ? 5 : naturalCount) : 5
         let darkIndex: Int?
         if let gap = balance.darkStars.showerGap, showersUntilDark == 0 {
             darkIndex = reliefColumn == nil ? Int(random.next() % UInt64(count)) : 3 + Int(random.next() % 2)
@@ -280,6 +316,23 @@ public struct FallingSky: Codable, Equatable, Sendable {
             remainingColumns = (0..<Self.side).filter { !(start..<(start + 3)).contains($0) }
             return (0..<3).map { IncomingStar(id: $0, kind: sharedKind!, column: start + $0) }
         }
+        // Preserve the established paired-shower candidate, now behind an explicit
+        // saved generation. Legacy skies execute their original RNG/arrival path.
+        let eligible = heights.indices.filter { heights[$0] <= 4 }
+        let primaryColumn = modern && cohesiveShowers == true && count == 5 && reliefColumn == nil
+            ? (storm ? eligible.max { heights[$0] < heights[$1] } : eligible.min { heights[$0] < heights[$1] }) : nil
+        let secondaryColumn = primaryColumn.flatMap { primary in
+            heights.indices.filter { column in
+                guard column != primary, heights[column] > 0, heights[column] <= 5,
+                      let kind = gem(at: Cell(heights[column] - 1, column))?.kind else { return false }
+                return kind != sharedKind
+            }.min { heights[$0] < heights[$1] }
+        }
+        let secondaryKind = secondaryColumn.flatMap { gem(at: Cell(heights[$0] - 1, $0))?.kind }
+        // One opal opportunity every sixth shower, after the opening. Dusk retains
+        // its slot; never replace the first three colored stars of dry-board relief.
+        let lightIndex = modern && (turns + 1).isMultiple(of: 6)
+            ? (0..<count).last { $0 != darkIndex && (reliefColumn == nil || $0 >= 3) } : nil
         return (0..<count).map { offset in
             let kind = random.jewel()
             // Natural arrivals rotate through columns; relief runs deliberately
@@ -287,8 +340,12 @@ public struct FallingSky: Codable, Equatable, Sendable {
             if remainingColumns.isEmpty { remainingColumns = Array(0..<Self.side) }
             let index = Int(random.next() % UInt64(remainingColumns.count))
             let naturalColumn = remainingColumns.remove(at: index)
-            return IncomingStar(id: turns * Self.maximumShowerSize + offset, kind: offset == darkIndex ? nil : (sharedKind ?? kind),
-                                column: offset < 3 ? (reliefColumn ?? naturalColumn) : naturalColumn)
+            let light = offset == lightIndex
+            let family = offset >= 3 ? (secondaryKind ?? sharedKind ?? kind) : (sharedKind ?? kind)
+            return IncomingStar(id: turns * Self.maximumShowerSize + offset,
+                                kind: offset == darkIndex || light ? nil : family,
+                                column: offset < 3 ? (primaryColumn ?? reliefColumn ?? naturalColumn) : (secondaryColumn ?? naturalColumn),
+                                light: light)
         }
     }
 
@@ -300,7 +357,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
         while let cell = pending.popLast() {
             for dr in -1...1 { for dc in -1...1 where dr != 0 || dc != 0 {
                 let next = Cell(cell.row + dr, cell.column + dc)
-                if !found.contains(next), gem(at: next)?.kind == kind {
+                if !found.contains(next), matchesFamily(kind, at: next) {
                     found.insert(next); pending.append(next)
                 }
             } }
@@ -309,7 +366,10 @@ public struct FallingSky: Codable, Equatable, Sendable {
     }
 
     public var isValidSave: Bool {
-        if let challenge, seed != challenge.seed || balance != challenge.balance || hasOpeningCascade { return false }
+        guard SkyGeneration(rawValue: savedGeneration ?? 0) != nil else { return false }
+        if generation == .opalStorms && cohesiveShowers != true { return false }
+        if generation == .legacy && (incoming.contains(where: \.isLight) || board.contains(where: { $0?.isLight == true })) { return false }
+        if let challenge, seed != challenge.seed || balance != challenge.balance || hasOpeningCascade || generation != .legacy { return false }
         if let savedCadence, (savedCadence != .originalV1) != (openingCascade == true) { return false }
         guard board.count == 49, Self.showerSizes.contains(incoming.count),
               remainingColumns.allSatisfy({ (0..<7).contains($0) }),
@@ -317,11 +377,11 @@ public struct FallingSky: Codable, Equatable, Sendable {
               turns >= 0, turns < Int.max / 6, score >= 0, starsLanded >= 0,
               (0...(balance.darkStars.showerGap.map { $0.upperBound - 1 } ?? 0)).contains(showersUntilDark),
               darkStarsCleared >= 0, darkStarsCleared <= starsLanded,
-              incoming.allSatisfy({ (0..<7).contains($0.column) && $0.id >= 0 }),
+              incoming.allSatisfy({ (0..<7).contains($0.column) && $0.id >= 0 && (!$0.isLight || $0.kind == nil) }),
               blockedColumn.map({ (0..<7).contains($0) }) ?? true else { return false }
         let gems = board.compactMap { $0 }
         guard Set(gems.map(\.id)).count == gems.count,
-              gems.allSatisfy({ $0.id >= 0 && $0.id < starsLanded && !($0.isDark && $0.grown) }),
+              gems.allSatisfy({ $0.id >= 0 && $0.id < starsLanded && !(($0.isDark || $0.isLight) && $0.grown) && (!$0.isLight || $0.kind == nil) }),
               starsLanded <= turns * Self.maximumShowerSize,
               score == starsLanded - darkStarsCleared - gems.reduce(0, { $0 + ($1.isDark ? 1 : $1.value) }) else { return false }
         for column in 0..<7 {

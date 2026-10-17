@@ -1,0 +1,6 @@
+Use case: stylized-concept
+Asset type: one production mobile-game character body cutout.
+Primary request: Create the smooth Opal Orb from the LEFT COLUMN of reference image 1 as a single isolated FACELESS body for Starfall. Reference image 1 defines the selected round opal silhouette and soft milky-white translucent rainbow material. Reference image 2 is supporting cast material reference only; do not copy its angular shapes.
+Subject: one perfectly round spherical opal orb, milky pearl white dominant, subtle translucent cyan, rose, lilac and pale golden play-of-color under the surface. Polished soft luminous edge and a gentle upper-left highlight. Calm uncluttered center with room for the game's separately drawn eyes and mouth.
+Composition: square canvas, exactly one front-facing orb centered horizontally and vertically, generous equal transparent margins, body diameter about 78% of canvas width.
+Constraints: genuinely transparent background; clean antialiased cutout; no face, no eyes, no eyebrows, no mouth, no marks or badges; no text; no other objects; no star points, no lobes, no polygon facets, no rings, no orbit, no pedestal or ground shadow; no large glow extending beyond the body. Retain a clearly white center and visible round edge when reduced to 24 pixels. The body is a solid readable character shape with opaline depth, not an empty soap bubble.

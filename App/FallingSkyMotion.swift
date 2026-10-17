@@ -11,7 +11,7 @@ import StarfallCore
 
     init(gem: StarfallGem, step: CGFloat) {
         self.gem = gem
-        character = JewelScene.makeStarCharacter(gem.kind, expression: gem.grown ? .grown : .idle,
+        character = JewelScene.makeStarCharacter(.init(gem), expression: gem.grown ? .grown : .idle,
                                                   radius: step * 0.35)
         smallSize = character.size
         super.init()
@@ -25,29 +25,44 @@ import StarfallCore
         self.gem = gem
         character.removeAllActions()
         character.position = .zero; character.zRotation = 0; character.setScale(1)
+        character.warpGeometry = nil
         let growth: CGFloat = gem.grown ? 0.43 / 0.35 : 1
         character.size = CGSize(width: smallSize.width * growth, height: smallSize.height * growth)
-        StarCast.setExpression(expression, for: gem.kind, on: character)
+        showExpression(expression)
+    }
+
+    /// A face change preserves the in-flight/contact deformation owned by this child.
+    func showExpression(_ expression: StarCast.Expression, facing: StarCast.Facing = .front) {
+        StarCast.setExpression(expression, for: .init(gem), on: character, facing: facing)
+    }
+
+    func softenLanding() {
+        guard gem.isLight else { return }
+        character.removeAction(forKey: Self.responseKey)
+        character.warpGeometry = OpalMotion.squashed
+        character.run(OpalMotion.rebound(), withKey: Self.responseKey)
     }
 
     /// Finite, local response. Replacing it resets the local anchor rather than accumulating kicks.
     func acknowledge(from source: CGPoint, impulse: CGVector, step: CGFloat) {
         character.removeAction(forKey: Self.responseKey)
         character.position = .zero; character.zRotation = 0
+        character.warpGeometry = gem.isLight ? OpalMotion.round : nil
         let facing: StarCast.Facing = source.x < position.x ? .left : .right
         let expression: StarCast.Expression = gem.grown ? .grown : .idle
-        StarCast.setExpression(.landing, for: gem.kind, on: character, facing: facing)
+        showExpression(.landing, facing: facing)
         let kick = SKAction.move(to: CGPoint(x: impulse.dx * step, y: impulse.dy * step), duration: 0.055)
         kick.timingMode = .easeOut
         let back = SKAction.move(to: .zero, duration: 0.19)
         back.timingMode = .easeInEaseOut
+        let softness: SKAction = gem.isLight ? OpalMotion.contact() : .wait(forDuration: 0)
         character.run(.sequence([
-            .group([.sequence([kick, back]),
+            .group([softness, .sequence([kick, back]),
                     .sequence([.rotate(toAngle: impulse.dx * 0.65, duration: 0.055),
                                .rotate(toAngle: 0, duration: 0.19)])]),
             .run { [weak self] in
                 guard let self else { return }
-                StarCast.setExpression(expression, for: self.gem.kind, on: self.character)
+                self.showExpression(expression)
             }
         ]), withKey: Self.responseKey)
     }
@@ -91,5 +106,38 @@ enum StarfallMotion {
         private func mix(_ a: CGPoint, _ b: CGPoint, _ t: CGFloat) -> CGPoint {
             CGPoint(x: a.x + (b.x-a.x)*t, y: a.y + (b.y-a.y)*t)
         }
+    }
+}
+
+/// Five cached, bounded meshes deform only Opal's artwork. They never move a
+/// committed cell, change a touch target, or select a rule/clock outcome.
+@MainActor enum OpalMotion {
+    private static let source: [SIMD2<Float>] = (0..<12).map {
+        SIMD2(Float($0 % 3) / 2, Float($0 / 3) / 3)
+    }
+    private static func mesh(widths: [Float], heights: [Float]) -> SKWarpGeometryGrid {
+        let destination = source.enumerated().map { index, point in
+            SIMD2<Float>(0.5 + (point.x - 0.5) * widths[index / 3], heights[index / 3])
+        }
+        return SKWarpGeometryGrid(columns: 2, rows: 3, sourcePositions: source, destinationPositions: destination)
+    }
+    static let round = mesh(widths: [1, 1, 1, 1], heights: [0, 1/3, 2/3, 1])
+    // A full lower body and narrower upper shoulder give the falling orb a soft tail.
+    static let falling = mesh(widths: [0.88, 1.00, 0.78, 0.24], heights: [-0.03, 0.28, 0.70, 1.23])
+    static let squashed = mesh(widths: [1.02, 1.24, 1.14, 0.92], heights: [0.10, 0.32, 0.54, 0.76])
+    private static let stretched = mesh(widths: [0.94, 0.88, 0.94, 1], heights: [-0.02, 0.33, 0.72, 1.08])
+    private static let settling = mesh(widths: [1, 1.06, 1.04, 1], heights: [0.02, 0.34, 0.66, 0.96])
+
+    static func prewarm() { _ = [round, falling, squashed, stretched, settling] }
+
+    static func rebound() -> SKAction {
+        // Matching grid topology makes these actions valid; no fallback hides a bad mesh.
+        .sequence([SKAction.warp(to: stretched, duration: 0.09)!,
+                   SKAction.warp(to: settling, duration: 0.10)!,
+                   SKAction.warp(to: round, duration: 0.13)!])
+    }
+    static func contact() -> SKAction {
+        .sequence([SKAction.warp(to: squashed, duration: 0.055)!,
+                   SKAction.warp(to: round, duration: 0.19)!])
     }
 }

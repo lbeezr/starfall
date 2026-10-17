@@ -523,3 +523,42 @@ extension XCUIApplication {
         for _ in 0..<4 where !control.isHittable { swipeUp() }
     }
 }
+
+extension ObservatoryInteractionTests {
+    @MainActor func testVoiceOverOpalIdentityActivationAndStormCue() throws {
+        #if compiler(>=6.4)
+        guard #available(iOS 27.0, *) else { throw XCTSkip("VoiceOver service requires iOS 27") }
+        continueAfterFailure = false
+        let sky = XCUIApplication()
+        let vo = try ObservatoryVoiceOverDriver(test: self, app: sky)
+        sky.launchArguments = ["--starfalls-reset", "--constellation-fixture=opalChoice"]
+        sky.launch(); defer { sky.terminate() }
+        XCTAssertTrue(sky.buttons["experiment.cell.2.5"].waitForExistence(timeout: 10))
+        try vo.focus(sky.buttons["experiment.cell.2.5"], expecting: "White Opal Orb")
+        XCTAssertTrue(vo.transcript.last?.contains("1 starlight") == true)
+        vo.activate()
+        XCTAssertEqual(sky.staticTexts["experiment.score"].label, "24 starlight")
+        try vo.focus(sky.buttons["experiment.cell.0.6"], expecting: "Violet")
+        vo.activate()
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "29 starlight"), object: sky.staticTexts["experiment.score"]).wait(timeout: 5))
+        let phase = sky.descendants(matching: .any).matching(identifier: "sky.phase").firstMatch
+        try vo.focus(phase, expecting: "Lighter showers")
+        try vo.choose(sky.buttons["experiment.settings"], expecting: "Sky menu")
+        XCTAssertTrue(sky.buttons["experiment.done"].waitForExistence(timeout: 5)); XCTAssertFalse(phase.exists)
+        try vo.choose(sky.buttons["experiment.done"], expecting: "Done")
+        XCTAssertTrue(phase.waitForExistence(timeout: 5))
+        sky.terminate(); vo.resetFocus()
+        sky.launchArguments = ["--starfalls-reset", "--constellation-fixture=stormWarning"]
+        sky.launch()
+        XCTAssertTrue(sky.buttons["experiment.next"].waitForExistence(timeout: 10))
+        try vo.focus(phase, expecting: "1 lighter shower")
+        try vo.choose(sky.buttons["experiment.next"], expecting: "Next shower")
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "Storm · 3 heavy showers left"), object: phase).wait(timeout: 5))
+        try vo.focus(phase, expecting: "Storm")
+        let capture = XCTAttachment(screenshot: sky.screenshot()); capture.name = "opal-storm-actual-voiceover"
+        capture.lifetime = .keepAlways; add(capture)
+        #else
+        throw XCTSkip("VoiceOver service requires Swift 6.4")
+        #endif
+    }
+}

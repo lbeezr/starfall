@@ -1,0 +1,18 @@
+{
+  "sourceSHA256": "a6c7b9dda04b5a11a3ad699fb1f10a58fcca6494bbe5c1eab9257b3f03880064",
+  "frames": {
+    "Opal": {
+      "sourceBounds": [
+        89,
+        104,
+        1157,
+        1150
+      ],
+      "bodySize": [
+        208,
+        204
+      ],
+      "sha256": "960a39e93c38b0bbb03094cee5542a061a511441d24eb1ce18786963201fee01"
+    }
+  }
+}
