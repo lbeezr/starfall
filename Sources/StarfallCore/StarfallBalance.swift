@@ -20,7 +20,7 @@ public struct StarfallBalance: Codable, Equatable, Sendable {
     public var pace: Pace
     public var darkStars: DarkStarFrequency
 
-    public init(pace: Pace = .steady, darkStars: DarkStarFrequency = .regular) {
+    public init(pace: Pace = .brisk, darkStars: DarkStarFrequency = .regular) {
         self.pace = pace
         self.darkStars = darkStars
     }

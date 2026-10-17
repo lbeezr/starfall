@@ -217,3 +217,47 @@ enum SkyShowerPlacement {
         .frame(maxWidth: StarfallTheme.Layout.menuWidth)
     }
 }
+
+/// Copy maps the committed cadence snapshot; it never computes a phase or deadline.
+struct SkyCadenceCueCopy: Equatable {
+    let title: String
+    let label: String
+    let symbol: String
+
+    init?(step: SkyCadenceStep) {
+        if step.warnsFasterNext {
+            title = "Faster after next shower"
+            label = "Faster after next shower"
+            symbol = "forward.end"
+        } else {
+            switch step.phase {
+            case .opening, .steady: return nil
+            case .faster:
+                title = "Faster showers"
+                label = "Faster passage. Showers are closer together"
+                symbol = "forward"
+            case .breathing:
+                title = "Breathing window"
+                label = "Breathing window. More time between showers"
+                symbol = "wind"
+            }
+        }
+    }
+}
+
+struct SkyCadenceCue: View {
+    let copy: SkyCadenceCueCopy
+    var body: some View {
+        Label(copy.title, systemImage: copy.symbol)
+            .font(StarfallTheme.Typography.gameDetail)
+            .foregroundStyle(StarfallTheme.Colors.textPrimary)
+            .fixedSize(horizontal: false, vertical: true)
+            .padding(.horizontal, StarfallTheme.Spacing.medium)
+            .padding(.vertical, StarfallTheme.Spacing.compact)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(StarfallTheme.Colors.skyTop)
+            .accessibilityElement(children: .ignore)
+            .accessibilityLabel(copy.label)
+            .accessibilityIdentifier("sky.cadence")
+    }
+}

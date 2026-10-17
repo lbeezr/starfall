@@ -57,7 +57,16 @@ public struct FallingSky: Codable, Equatable, Sendable {
     private var savedBalance: StarfallBalance?
     // Missing in older saves: retain their original independent-color sky.
     private var cohesiveShowers: Bool?
-    public var balance: StarfallBalance { savedBalance ?? StarfallBalance() }
+    // Missing in historical saves: retain the original clock, including empty skies.
+    private var openingCascade: Bool?
+    // Absent markers retain the saved opening and balance contract without migration.
+    private var savedCadence: SkyCadenceID?
+    public var cadenceID: SkyCadenceID { savedCadence ?? (openingCascade == true ? .openingV1 : .originalV1) }
+    public var cadenceStep: SkyCadenceStep { cadenceID.step(committedShowers: turns, pace: balance.pace) }
+    public var hasOpeningCascade: Bool { cadenceID != .originalV1 }
+    public var isOpeningCascade: Bool { cadenceStep.phase == .opening }
+    public var automaticShowerDelay: Double { cadenceStep.delay }
+    public var balance: StarfallBalance { savedBalance ?? StarfallBalance(pace: .steady) }
     public var outcome: Outcome {
         challenge?.outcome(score: score, overflowed: blockedColumn != nil)
             ?? (blockedColumn == nil ? .playing : .lost)
@@ -65,8 +74,12 @@ public struct FallingSky: Codable, Equatable, Sendable {
     public var isOver: Bool { outcome != .playing }
     public var occupiedCount: Int { board.compactMap { $0 }.count }
 
-    public init(seed: UInt64, balance: StarfallBalance = StarfallBalance()) {
+    public init(seed: UInt64, balance: StarfallBalance = StarfallBalance(), openingCascade: Bool = true,
+                cadence: SkyCadenceID = .announcedCycleV1) {
+        precondition(!openingCascade || cadence != .originalV1)
         self.seed = seed
+        self.openingCascade = openingCascade ? true : nil
+        savedCadence = openingCascade ? cadence : nil
         savedBalance = balance
         cohesiveShowers = true
         showersUntilDark = balance.darkStars.showerGap.map { $0.upperBound - 1 } ?? 0
@@ -77,8 +90,25 @@ public struct FallingSky: Codable, Equatable, Sendable {
     }
 
     public init(challenge: StarfallChallenge) {
-        self.init(seed: challenge.seed, balance: challenge.balance)
+        self.init(seed: challenge.seed, balance: challenge.balance, openingCascade: false)
         self.challenge = challenge
+    }
+
+    /// Reset committed play while retaining timing, tuning and historical generation rules.
+    public func replay() -> FallingSky {
+        var replay = self
+        replay.board = Array(repeating: nil, count: Self.side * Self.side)
+        replay.incoming = []
+        replay.score = 0
+        replay.turns = 0
+        replay.starsLanded = 0
+        replay.darkStarsCleared = 0
+        replay.blockedColumn = nil
+        replay.random = SeededRandom(seed: seed)
+        replay.remainingColumns = []
+        replay.showersUntilDark = balance.darkStars.showerGap.map { $0.upperBound - 1 } ?? 0
+        replay.incoming = replay.nextShower()
+        return replay
     }
 
     // Internal deterministic positions for rule tests, not an app customization API.
@@ -279,7 +309,8 @@ public struct FallingSky: Codable, Equatable, Sendable {
     }
 
     public var isValidSave: Bool {
-        if let challenge, seed != challenge.seed || balance != challenge.balance { return false }
+        if let challenge, seed != challenge.seed || balance != challenge.balance || hasOpeningCascade { return false }
+        if let savedCadence, (savedCadence != .originalV1) != (openingCascade == true) { return false }
         guard board.count == 49, Self.showerSizes.contains(incoming.count),
               remainingColumns.allSatisfy({ (0..<7).contains($0) }),
               Set(remainingColumns).count == remainingColumns.count,

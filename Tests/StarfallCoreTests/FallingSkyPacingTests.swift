@@ -2,7 +2,48 @@ import XCTest
 @testable import StarfallCore
 
 final class FallingSkyPacingTests: XCTestCase {
-    func testOpeningAndNinetySecondOpportunitySample() {
+    func testOpeningSchedulePreservesSeededWavesAndRoundTrips() throws {
+        for seed in UInt64(0)..<200 {
+            var game = FallingSky(seed: seed)
+            var legacy = FallingSky(seed: seed, openingCascade: false)
+            XCTAssertEqual(game.occupiedCount, 0)
+            XCTAssertEqual(game.automaticShowerDelay, 0.25)
+            for turn in 1...8 {
+                XCTAssertEqual(game.incoming, legacy.incoming)
+                game.letStarsFall(); legacy.letStarsFall()
+                XCTAssertEqual(game.board, legacy.board)
+                XCTAssertEqual(game.automaticShowerDelay, turn < 4 ? 1.8 : 3)
+                XCTAssertEqual(game.isOpeningCascade, turn < 4)
+                game = try JSONDecoder().decode(FallingSky.self, from: JSONEncoder().encode(game))
+                XCTAssertTrue(game.isValidSave)
+                if turn == 1 {
+                    let cell = try XCTUnwrap(game.legalGroups.first?.first)
+                    game.clear(cell); legacy.clear(cell)
+                }
+            }
+        }
+    }
+
+    func testHistoricalEmptySkyAndFirstLightKeepOriginalCadence() throws {
+        let fresh = FallingSky(seed: 5, balance: .init(pace: .steady), openingCascade: false)
+        var json = try XCTUnwrap(JSONSerialization.jsonObject(with: JSONEncoder().encode(fresh)) as? [String: Any])
+        XCTAssertNil(json["openingCascade"])
+        for removeBalance in [false, true] {
+            if removeBalance { json.removeValue(forKey: "savedBalance") }
+            let restored = try JSONDecoder().decode(FallingSky.self, from: JSONSerialization.data(withJSONObject: json))
+            XCTAssertFalse(restored.isOpeningCascade)
+            XCTAssertEqual(restored.automaticShowerDelay, 4)
+            XCTAssertEqual(restored.incoming, fresh.incoming)
+        }
+        var challenge = FallingSky(challenge: .firstLight)
+        for _ in 0..<5 {
+            XCTAssertFalse(challenge.isOpeningCascade)
+            XCTAssertEqual(challenge.automaticShowerDelay, 4)
+            challenge.letStarsFall()
+        }
+    }
+
+    func testOpeningAndTwentyTwoShowerOpportunitySample() {
         var first: [Int] = [], clears: [Int] = [], stalls = 0
         for seed in UInt64(0)..<200 {
             var game = FallingSky(seed: seed)

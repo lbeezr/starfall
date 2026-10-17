@@ -14,7 +14,7 @@ A small native iOS falling-sky puzzle. Clear matching stars as showers fill the 
 - **Control the showers:** Call the next shower yourself or clear while paused. Use the sky menu to pause or tune shower pace and dark-star frequency; Start/Resume and manual advance appear while paused.
 - **Try a goal:** Choose **Sky menu → Start First Light** to start a new round with steady showers, no dark stars and an 18-starlight target. Replay repeats it; New sky returns to survival. When a survival board fills, replay or start a new sky.
 
-New skies offer a match in the first shower. Matching colors travel together; dry boards receive a matching run in a later preview when a low column has room. The [compact HUD](docs/evidence/compact-hud-2026-10-17/README.md) keeps score/goal and the sky menu above the board, with an arrival cue instead of the exact forecast strip.
+New skies start empty, then open with four closely spaced animated showers. Clear between waves as they settle; the default rhythm then repeats six showers at three seconds, three at 2.5 seconds, and three at 3.5 seconds. The faster passage is announced in advance. Saved older skies and First Light keep their original cadence. At the gentle/steady settings, showers retain the selected fixed interval. New skies offer a match in the first shower. Matching colors travel together; dry boards receive a matching run in a later preview when a low column has room. The [compact HUD](docs/evidence/compact-hud-2026-10-17/README.md) keeps score/goal and the sky menu above the board, with an arrival cue instead of the exact forecast strip.
 
 [Automatic connected-iPhone updates](scripts/README.md#one-app-iphone-updates) keep one regular Starfall installation and its saved round.
 

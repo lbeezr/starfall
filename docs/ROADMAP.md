@@ -46,6 +46,10 @@ The palette picker and duplicate lab code are retired; cosmic paintings remain h
 
 The [celestial interface specification](design/OBSERVATORY_INTERFACE.md) owns the current design-system pass: full-bleed artwork, compact constellation controls, a deadline-driven comet trail, Sunny guidance and separate settings/help/balance pages. Finish native/physical comparison and accessibility checks before extending the family to Cloudsea. Sound and haptics default on for new preferences while saved mute remains authoritative.
 
+## Opening rhythm selected — October 17, 2026
+
+The user selected an empty sky with an animated opening cascade, clearing before the intro finishes, and a three-second regular pace using existing wave sizes. [Current implementation and acceptance](evidence/opening-cascade-2026-10-17/README.md) separates source/native checks from human enjoyment. Existing isolated shower-generation comparisons remain separate; this timing change does not adopt their mechanics. The [Core cadence contract](design/PACING_CORE_CONTRACT.md) now defines explicit timing versions and replay; candidate B remains test-only pending native/human comparison.
+
 ## The next gameplay decision
 
 **Question:** Do shower changes create useful decisions and a readable rhythm, rather than more groups that feel equivalent?
@@ -145,3 +149,5 @@ The [paused-feedback simulated follow-up](evidence/paused-feedback-2026-10-17/pl
 The selected [overlapping sky flow](design/SKY_FLOW.md) adds Welcome/Resume, explicit Begin and separate win/full-sky endings. It extends the adopted drawing game; integration verification is recorded with the flow evidence.
 
 The user selected the [curved shower forecast](evidence/shower-forecast-adoption-2026-10-17/README.md). It is default on calibrated iPhone 17 portrait; other hardware and accessible layouts retain a complete straight header forecast. Next verify physical fit/system-island expansion and forecast recognition before adding more camera profiles. The lower arc remains unused.
+
+**Current pacing decision (October 17):** The user selected the announced cycle for normal new skies and requested PR → main → existing-phone delivery. [Adoption and acceptance](design/PACING_ADOPTION.md) supersedes the comparative session requirement; enjoyment and device feel remain unmeasured until observed.
