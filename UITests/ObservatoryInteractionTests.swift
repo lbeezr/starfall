@@ -234,36 +234,30 @@ extension ObservatoryInteractionTests {
         #if compiler(>=6.4)
         guard #available(iOS 27.0, *) else { throw XCTSkip("VoiceOver service requires iOS 27") }
         continueAfterFailure = false
-        let service = XCUIDevice.shared.voiceOverService
-        let wasEnabled = service.isEnabled
-        addTeardownBlock { @MainActor in
-            if !wasEnabled { try XCUIDevice.shared.voiceOverService.disable() }
-            XCTAssertEqual(XCUIDevice.shared.voiceOverService.isEnabled, wasEnabled)
-        }
-        try service.enable()
-        XCTAssertTrue(service.isEnabled)
-        let app = launch(); defer { app.terminate() }
-        var transcript: [String] = []
+        let app = XCUIApplication()
+        let vo = try ObservatoryVoiceOverDriver(test: self, app: app)
+        _ = launch(); defer { app.terminate() }
         func focus(_ element: XCUIElement, expecting text: String) throws {
-            // Touch exploration chooses the target; a subsequent double tap activates it.
-            element.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
-            let speech = try service.currentSpeech().utterance
-            transcript.append(speech)
-            XCTAssertTrue(speech.localizedCaseInsensitiveContains(text), "Unexpected VoiceOver focus: \(speech)")
+            try vo.focus(element, expecting: text)
         }
-        func activate() {
-            // VoiceOver's double tap activates its focused element, independent of touch position.
-            app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).doubleTap()
-        }
-        defer {
-            let attachment = XCTAttachment(string: transcript.joined(separator: "\n"))
-            attachment.name = "Observatory-actual-VoiceOver-speech"; attachment.lifetime = .keepAlways; add(attachment)
-        }
+        func activate() { vo.activate() }
+        try focus(app.buttons["experiment.cell.1.3"], expecting: "Dark star, Dusk")
+        try focus(app.buttons["experiment.cell.3.6"], expecting: "Empty, row 4, column 7")
+        try focus(app.buttons["experiment.cell.1.1"], expecting: "Large")
         try focus(app.buttons["experiment.cell.0.0"], expecting: "Sunny, row 7, column 1")
         XCTAssertEqual(app.staticTexts["experiment.score"].label, "0 starlight", "Exploration must not clear a group")
-        XCTAssertTrue(transcript.last?.contains("5 starlight") == true)
+        XCTAssertTrue(vo.transcript.last?.contains("5 starlight") == true)
+        let nextCell = try vo.service.moveForward().utterance
+        vo.transcript.append(nextCell)
+        XCTAssertTrue(nextCell.contains("row 7, column 2"))
+        let previousCell = try vo.service.moveBackward().utterance
+        vo.transcript.append(previousCell)
+        XCTAssertTrue(previousCell.contains("Sunny, row 7, column 1"))
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, "0 starlight")
         activate()
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "5 starlight"), object: app.staticTexts["experiment.score"]).wait(timeout: 5))
+        try focus(app.buttons["landing.telescope"], expecting: "Observatory telescope"); activate()
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == %@", "Responding"), object: app.buttons["landing.telescope"]).wait(timeout: 2))
         try focus(app.buttons["landing.lantern"], expecting: "Observatory lantern"); activate()
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == %@", "Responding"), object: app.buttons["landing.lantern"]).wait(timeout: 2))
         try focus(app.buttons["experiment.settings"], expecting: "Sky menu"); activate()
@@ -271,13 +265,133 @@ extension ObservatoryInteractionTests {
         XCTAssertFalse(app.buttons["experiment.cell.0.0"].exists)
         try focus(app.buttons["experiment.done"], expecting: "Done"); activate()
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
-            ((try? service.currentSpeech().utterance) ?? "").localizedCaseInsensitiveContains("Sky menu")
+            ((try? vo.service.currentSpeech().utterance) ?? "").localizedCaseInsensitiveContains("Sky menu")
         }, object: nil).wait(timeout: 5))
         capture(app,"Observatory-actual-VoiceOver-after-menu")
         #else
         throw XCTSkip("VoiceOver service requires Xcode 27")
         #endif
     }
+
+    @MainActor func testVoiceOverLargestTextOverflowAndReplay() throws {
+        #if compiler(>=6.4)
+        guard #available(iOS 27.0, *) else { throw XCTSkip("VoiceOver service requires iOS 27") }
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        let vo = try ObservatoryVoiceOverDriver(test: self, app: app)
+        app.launchArguments = ["--starfalls-reset", "--starfalls-seed=5", "-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"]
+        app.launch(); defer { app.terminate() }
+        XCTAssertTrue(app.buttons["experiment.settings"].waitForExistence(timeout: 10))
+        try vo.focus(app.buttons["experiment.cell.0.6"], expecting: "row 7, column 7")
+        // Sequential VoiceOver navigation must reveal the guide outside the viewport.
+        try vo.advance(to: "Next shower", limit: 12)
+        let next = app.buttons["experiment.next"]
+        let outcome = app.staticTexts["experiment.outcome"]
+        for _ in 0..<40 {
+            if outcome.exists { break }
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: next).wait(timeout: 5))
+            let before = app.otherElements["experiment.board"].value as? String
+            try vo.choose(next, expecting: "Next shower")
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+                outcome.exists || app.otherElements["experiment.board"].value as? String != before
+            }, object: nil).wait(timeout: 5))
+        }
+        XCTAssertEqual(outcome.label, "This sky is full")
+        try vo.focus(outcome, expecting: "This sky is full")
+        capture(app, "VoiceOver-largest-text-overflow")
+        try vo.advance(to: "Replay this sky", limit: 6)
+        try vo.choose(app.buttons["experiment.replay"], expecting: "Replay this sky")
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, "0 starlight")
+        XCTAssertFalse(outcome.exists)
+        try vo.focus(app.buttons["experiment.next"], expecting: "Next shower")
+        #else
+        throw XCTSkip("VoiceOver service requires Xcode 27")
+        #endif
+    }
+
+    @MainActor func testVoiceOverAutomaticRainMenuAndBackground() throws {
+        #if compiler(>=6.4)
+        guard #available(iOS 27.0, *) else { throw XCTSkip("VoiceOver service requires iOS 27") }
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        let vo = try ObservatoryVoiceOverDriver(test: self, app: app)
+        app.launchArguments = ["--starfalls-reset", "--starfalls-seed=5"]
+        app.launch(); defer { app.terminate() }
+        XCTAssertTrue(app.buttons["experiment.pause"].waitForExistence(timeout: 10))
+        try vo.choose(app.buttons["experiment.pause"], expecting: "Start sky")
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+            !(app.otherElements["experiment.board"].value as? String ?? "0 showers").hasPrefix("0 showers")
+        }, object: nil).wait(timeout: 15))
+        try vo.choose(app.buttons["experiment.settings"], expecting: "Sky menu")
+        XCTAssertFalse(app.buttons["experiment.cell.0.0"].exists)
+        try vo.choose(app.buttons["experiment.pause"], expecting: "Pause sky")
+        XCTAssertTrue(app.buttons["experiment.next"].waitForExistence(timeout: 5))
+        let pausedBoard = app.otherElements["experiment.board"].value as? String
+        XCUIDevice.shared.press(.home); app.activate()
+        XCTAssertEqual(app.otherElements["experiment.board"].value as? String, pausedBoard)
+        try vo.focus(app.buttons["experiment.next"], expecting: "Next shower")
+        capture(app, "VoiceOver-automatic-rain-paused-after-background")
+        #else
+        throw XCTSkip("VoiceOver service requires Xcode 27")
+        #endif
+    }
+
+    @MainActor func testVoiceOverFullFirstLightRoundRestoreAndReplay() throws {
+        #if compiler(>=6.4)
+        guard #available(iOS 27.0, *) else { throw XCTSkip("VoiceOver service requires iOS 27") }
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        let vo = try ObservatoryVoiceOverDriver(test: self, app: app)
+        app.launchArguments = ["--starfalls-reset", "--starfalls-seed=5"]
+        app.launch(); defer { app.terminate() }
+        XCTAssertTrue(app.buttons["experiment.settings"].waitForExistence(timeout: 10))
+        try vo.choose(app.buttons["experiment.settings"], expecting: "Sky menu")
+        try vo.choose(app.buttons["experiment.challenge"], expecting: "First Light")
+        XCTAssertTrue(app.buttons["experiment.next"].waitForExistence(timeout: 5))
+        let outcome = app.staticTexts["experiment.outcome"]
+        for _ in 0..<50 {
+            if outcome.exists { break }
+            let next = app.buttons["experiment.next"]
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: next).wait(timeout: 5))
+            let legal = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND value MATCHES %@", "experiment.cell.", "([3-9]|[1-9][0-9]) starlight connected")).firstMatch
+            if legal.exists {
+                let score = app.staticTexts["experiment.score"].label
+                try vo.choose(legal, expecting: legal.label)
+                XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+                    app.staticTexts["experiment.score"].label != score
+                }, object: nil).wait(timeout: 5))
+            } else {
+                let before = app.otherElements["experiment.board"].value as? String
+                try vo.choose(next, expecting: "Next shower")
+                XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+                    app.otherElements["experiment.board"].value as? String != before
+                }, object: nil).wait(timeout: 5))
+            }
+        }
+        XCTAssertEqual(outcome.label, "First Light complete")
+        try vo.focus(outcome, expecting: "First Light complete")
+        let score = app.staticTexts["experiment.score"].label
+        capture(app, "VoiceOver-First-Light-complete")
+        XCUIDevice.shared.press(.home)
+        app.activate()
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, score)
+        app.terminate(); app.launchArguments = []; app.launch()
+        vo.resetFocus()
+        XCTAssertTrue(outcome.waitForExistence(timeout: 10))
+        try vo.focus(outcome, expecting: "First Light complete")
+        try vo.choose(app.buttons["experiment.replay"], expecting: "Replay this sky")
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, "0 of 18 starlight collected")
+        XCTAssertFalse(outcome.exists)
+        try vo.choose(app.buttons["experiment.next"], expecting: "Next shower")
+        try vo.choose(app.buttons["experiment.settings"], expecting: "Sky menu")
+        try vo.choose(app.buttons["experiment.new"], expecting: "New sky")
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, "0 starlight")
+        capture(app, "VoiceOver-replayed-and-new-sky")
+        #else
+        throw XCTSkip("VoiceOver service requires Xcode 27")
+        #endif
+    }
+
 }
 
 /// Explicit setup for normal-motion review on a disposable QA simulator, selected separately.
@@ -301,3 +415,73 @@ final class ObservatoryReviewSetupTests: XCTestCase {
         preferences.terminate()
     }
 }
+
+
+#if compiler(>=6.4)
+/// Actual screen-reader exploration and activation, with restoration even after an assertion fails.
+@available(iOS 27.0, *)
+@MainActor private final class ObservatoryVoiceOverDriver {
+    let app: XCUIApplication
+    let service = XCUIDevice.shared.voiceOverService
+    var transcript: [String] = []
+    private var focused: XCUIElement?
+    private var focusedIdentifier: String?
+
+    init(test: XCTestCase, app: XCUIApplication) throws {
+        self.app = app
+        let wasEnabled = service.isEnabled
+        test.addTeardownBlock { @MainActor in
+            let attachment = XCTAttachment(string: self.transcript.joined(separator: "\n"))
+            attachment.name = "Observatory-actual-VoiceOver-speech"
+            attachment.lifetime = .keepAlways
+            test.add(attachment)
+            if !wasEnabled { try self.service.disable() }
+            XCTAssertEqual(self.service.isEnabled, wasEnabled)
+        }
+        try service.enable()
+        XCTAssertTrue(service.isEnabled)
+    }
+
+    func resetFocus() {
+        focused = nil
+        focusedIdentifier = nil
+    }
+
+    func focus(_ element: XCUIElement, expecting text: String) throws {
+        XCTAssertTrue(element.waitForExistence(timeout: 5))
+        let speech: String
+        if focusedIdentifier == element.identifier {
+            // Revisit an already-focused control through native navigation. This
+            // requests fresh speech and lets VoiceOver reveal offscreen controls.
+            transcript.append("Previous: " + (try service.moveBackward().utterance))
+            speech = try service.moveForward().utterance
+        } else {
+            speech = NativeVoiceOverFocus.speech(afterTouching: element, containing: text)
+        }
+        transcript.append(speech)
+        focused = element
+        focusedIdentifier = element.identifier
+        XCTAssertTrue(speech.localizedCaseInsensitiveContains(text), "Unexpected VoiceOver focus: \(speech)")
+    }
+
+    func advance(to text: String, limit: Int) throws {
+        for _ in 0..<limit {
+            let speech = try service.moveForward().utterance
+            transcript.append(speech)
+            if speech.localizedCaseInsensitiveContains(text) { return }
+        }
+        XCTFail("VoiceOver navigation did not reach \(text): \(transcript.suffix(limit))")
+    }
+
+    func activate() {
+        // XCTest's coordinate gestures target the explored element. An app-center
+        // double tap re-targets empty floor in this harness; it does not verify activation.
+        focused!.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).doubleTap()
+    }
+
+    func choose(_ element: XCUIElement, expecting text: String) throws {
+        try focus(element, expecting: text)
+        activate()
+    }
+}
+#endif

@@ -1,0 +1,34 @@
+{
+  "source": "1461f0c2bb4ef32691308342366c3554631b5b80",
+  "files": {
+    "App/FallingSkyView.swift": "65e247bef055dbd70b34282236716143d56af272e0f793475056a0a1951fbcba",
+    "App/FallingSkyStore.swift": "4bda7a9e56c1f2dc7b9ab3d1a903596978f8e246b045f7d99b1e0cfb146336e6",
+    "App/GameFeedback.swift": "fe78f8f6672cea77cae948c16660151a44403c00c643ad3d24470285ef5212f3",
+    "AppTests/FallingSkyStoreTests.swift": "d80a8d263a671c59aaf92cedaf2aa14a22b4b6c80c9b7ed516eadc1984b267bd",
+    "UITests/ObservatoryInteractionTests.swift": "95125a5fd1eaf442e4e756a2b0e466d1888a8188707e706cc6f8d812fb0e2628",
+    "UITests/FallingSkyInteractionTests.swift": "5a88c9ee1230c992678a66f22c03bd9a8b6520ad55b41e80f3b69d68f22b436e"
+  },
+  "nativeResult": "/tmp/starfall-voiceover-final-acceptance.xcresult",
+  "runtimeSameAs": "1c1234d",
+  "configuration": "Debug",
+  "simulator": "D65C5E40-734F-42BF-8F91-97E980ED19C2",
+  "model": "iPhone 17e",
+  "os": "iOS 27.0",
+  "toolchain": "Xcode 27.1 (27A9275)",
+  "sourceStatusBeforeRun": "clean",
+  "broadMatrix": {
+    "passed": 28,
+    "failed": 1,
+    "skipped": 0,
+    "remainingFailure": "Test-driver cached focus survived relaunch; corrected in d1b4ee3"
+  },
+  "correctedRestoreSource": "d1b4ee35cf32967d270b5a1b44546c021521435c",
+  "correctedRestoreTestSHA256": "bcb1dd24909b464f01343ee6edf7529763dd6fe6decc263807807e3e3da25bdc",
+  "correctedRestoreResult": "/tmp/starfall-voiceover-restore-acceptance.xcresult",
+  "correctedRestoreSummary": {
+    "passed": 3,
+    "failed": 0,
+    "skipped": 0
+  },
+  "workingTreeDuringCorrectedRun": "Documentation and evidence only; App, AppTests, UITests, resources and configuration match d1b4ee3"
+}

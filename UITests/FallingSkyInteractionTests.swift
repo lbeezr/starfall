@@ -503,8 +503,7 @@ extension FallingSkyInteractionTests {
         var transcript: [String] = []
         for number in 1...3 {
             XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: next).wait(timeout: 5))
-            next.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
-            let speech = try service.currentSpeech().utterance
+            let speech = NativeVoiceOverFocus.speech(afterTouching: next, containing: "Next shower")
             transcript.append(speech)
             XCTAssertTrue(speech.contains("Next shower"))
             next.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).doubleTap()
@@ -526,3 +525,19 @@ extension FallingSkyInteractionTests {
         #endif
     }
 }
+
+#if compiler(>=6.4)
+@available(iOS 27.0, *)
+@MainActor enum NativeVoiceOverFocus {
+    /// One exploration touch, then bounded observation of asynchronous focused speech.
+    static func speech(afterTouching element: XCUIElement, containing text: String) -> String {
+        element.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+        var speech = ""
+        _ = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+            speech = (try? XCUIDevice.shared.voiceOverService.currentSpeech().utterance) ?? ""
+            return speech.localizedCaseInsensitiveContains(text)
+        }, object: nil).wait(timeout: 5)
+        return speech
+    }
+}
+#endif

@@ -104,6 +104,7 @@ import StarfallCore
                     .font(StarfallTheme.Typography.gameTitle).monospacedDigit()
                     .accessibilityLabel(store.game.challenge.map { "\(store.game.score) of \($0.target) starlight collected" } ?? "\(store.game.score) starlight")
                     .accessibilityIdentifier("experiment.score")
+                    .accessibilityHint("Starfall terrace, seven columns. Row one is the farthest row. \(store.game.turns) showers, \(store.game.legalGroups.count) matching groups ready")
             }
             .foregroundStyle(StarfallTheme.Colors.textPrimary)
             .shadow(color: StarfallTheme.Colors.skyTop, radius: 3)
@@ -161,8 +162,9 @@ import StarfallCore
                 }
 
             }
+            // Keep the group unlabelled: a label here replaces leaf star labels
+            // during touch exploration. Terrace context belongs to the score hint.
             .accessibilityElement(children: .contain)
-            .accessibilityLabel("Starfall terrace, seven columns. Row one is the farthest row.")
             .accessibilityValue("\(store.game.turns) showers, \(store.game.legalGroups.count) matching groups ready")
             .accessibilityIdentifier("experiment.board")
             .accessibilityRotor("Matching groups") {
