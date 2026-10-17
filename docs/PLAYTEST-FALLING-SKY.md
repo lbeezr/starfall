@@ -19,3 +19,9 @@ For VoiceOver, separately inspect spoken piece value/location, matching-group ro
 Record short quotations, observed examples and missing observations. Keep simulator performance, bot policy scores and participant preferences separate. One preferred version is an initial signal, not a general balance conclusion. End with one bounded change or the specific evidence still needed.
 
 No participant observations have been collected for this protocol yet.
+
+## Current playable comparison: survival versus First Light
+
+The next tranche adds First Light under Sky settings. It starts a new round with a fixed seed, an 18-starlight goal and no dark stars; replay repeats it, while New sky returns to survival. Compare these as whole experiences first. A preference cannot be attributed to the goal alone because seed/configuration also differ from a default survival round.
+
+Observe whether the player notices the goal before acting, recognizes the completed state, understands that showers stop, and chooses replay or New sky. Ask whether this feels like a satisfying short puzzle or merely the same survival round cut short. Do not claim a level system or persistent campaign progress from this single challenge. No observations have been collected yet.

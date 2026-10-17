@@ -4,6 +4,8 @@ A small native iOS falling-sky puzzle. Start the sky, then clear connected match
 
 The current [roadmap](docs/ROADMAP.md) and [falling-sky playtest](docs/PLAYTEST-FALLING-SKY.md) track the next gameplay and device-validation work.
 
+Try the first goal-driven sky from **Settings → Start First Light**. This starts a new round: collect **18 starlight** with steady showers and no dark stars. Replay repeats the challenge; New sky returns to survival. There is one challenge prototype, with no campaign or unlock progression.
+
 ## Open and run
 
 Requires Xcode 16+ with an iOS 17+ simulator runtime. Open `Starfall.xcodeproj`, select shared scheme **Starfall** and an installed iPhone simulator, then Run. Simulator builds do not require paid Apple enrollment or a signing team. Device distribution/signing is not configured. This remains a prototype; App Store distribution and submission metadata require their own release work.

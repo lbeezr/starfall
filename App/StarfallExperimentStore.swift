@@ -76,7 +76,7 @@ import StarfallCore
         if !arguments.contains("--starfalls-reset"), let data = defaults.data(forKey: Self.saveKey),
            let saved = try? JSONDecoder().decode(StarfallExperiment.self, from: data), saved.isValidSave {
             game = saved
-            message = saved.isOver ? "This sky is full. Replay it or try a new sky." : "Your sky is paused. Resume when you're ready."
+            message = saved.outcome == .won ? "First Light complete. Replay it or start a new sky." : saved.isOver ? "This sky is full. Replay it or try a new sky." : "Your sky is paused. Resume when you're ready."
         } else {
             let argument = arguments.first { $0.hasPrefix("--starfalls-seed=") }
             let seed = argument.flatMap { UInt64($0.dropFirst("--starfalls-seed=".count)) } ?? 5
@@ -100,6 +100,7 @@ import StarfallCore
             announce(message)
             return
         }
+        if game.isOver { freezeClock() }
         feedback.collected(soundEnabled: soundEnabled, hapticsEnabled: hapticsEnabled,
                            reducedMotion: presenter.reduceMotion)
         present(turn, from: old)
@@ -170,7 +171,9 @@ import StarfallCore
         busy = true; pending = turn
         let growth = turn.arrivals.filter(\.grew).count
         let dissolved = turn.cleared.filter { old.gem(at: $0)?.isDark == true }.count
-        if turn.blockedColumn != nil {
+        if game.outcome == .won {
+            message = "First Light complete! \(game.score) starlight collected. Replay it or start a new sky."
+        } else if turn.blockedColumn != nil {
             message = "There was no room for the next star. \(game.score) starlight collected."
         } else if turn.collected > 0 {
             message = "+\(turn.collected) starlight. " + (dissolved > 0 ? "\(dissolved == 1 ? "Dark star dissolved" : "Dark stars dissolved")." : "A little more room to breathe.")
@@ -195,13 +198,29 @@ import StarfallCore
         feedback.stopSounds()
         freezeClock(); remaining = showerInterval
         settlePresentation()
-        game = StarfallExperiment(seed: sameSky ? game.seed : UInt64.random(in: 0...UInt64.max), balance: game.balance)
+        if sameSky, let challenge = game.challenge {
+            game = StarfallExperiment(challenge: challenge)
+        } else {
+            game = StarfallExperiment(seed: sameSky ? game.seed : UInt64.random(in: 0...UInt64.max), balance: game.balance)
+        }
+        remaining = showerInterval
         message = sameSky ? "Same sky, a fresh start. Start when you're ready." : "A new sky. Start when you're ready."
         save(); presenter.render(game)
     }
 
+    func startFirstLight() {
+        isPaused = true
+        feedback.stopSounds()
+        freezeClock()
+        settlePresentation()
+        game = StarfallExperiment(challenge: .firstLight)
+        remaining = showerInterval
+        message = "Collect 18 starlight to complete First Light. Start the sky or call a shower."
+        save(); presenter.render(game)
+    }
+
     func setBalance(_ balance: StarfallBalance) {
-        guard balance != game.balance else { return }
+        guard game.challenge == nil, balance != game.balance else { return }
         freezeClock()
         game.setBalance(balance)
         remaining = showerInterval

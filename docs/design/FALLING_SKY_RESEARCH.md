@@ -1,6 +1,6 @@
 # Falling-sky mechanics and progression research
 
-Researched October 16, 2026, Eastern time. This is design research and a proposal, not an implemented level system. Current repository scope excludes progression. Discussing options does not remove that boundary; implementing challenge skies requires an explicit product decision.
+Researched October 16, 2026, Eastern time. This began as design research. The user's subsequent next-tranche request advances one optional First Light objective prototype; a campaign, XP and unlock progression remain out of scope. The six-sky sequence below remains a proposal, not an implemented level system.
 
 ## Findings and application
 
@@ -25,7 +25,7 @@ These sources do not establish an ideal session length, level count, success rat
 
 ## Current structure versus proposed progression
 
-Implemented today: one survival round, no fixed victory target, ending on a blocked incoming star. There is no level number, unlock path, saved campaign progress, personal-best system, or difficulty escalation tied to progress. Pace and dark-star frequency are local player settings. Replay repeats a seed under current new-round rules; old saved rounds retain their generation style.
+Baseline before the next tranche: one survival round, no fixed victory target, ending on a blocked incoming star. There is no level number, unlock path, saved campaign progress, personal-best system, or difficulty escalation tied to progress. Pace and dark-star frequency are local player settings. Replay repeats a seed under current new-round rules; old saved rounds retain their generation style.
 
 Recommendation: prototype **six authored challenge skies**, using the existing core before considering a large campaign. Each has a fixed seed, visible objective, readable difficulty, immediate retry and an actual completion state. The existing survival game remains available; a large separate mode-selection system is unnecessary for the experiment.
 
@@ -50,4 +50,4 @@ For accessibility, manual/paused play should remain supported. Completion goals 
 
 ## Next decision and experiment
 
-Finish the mixed-color/decision-depth comparison first. Then, if the user chooses challenge progression, build **one objective-driven sky** and test its completion/retry flow before making the other five. Check deterministic replay, initial-board accounting, goal versus overflow precedence, terminal input, local progress migration and VoiceOver goal announcements. Observe whether the player prefers this goal-driven round to survival. No level system has been implemented or approved by this research note alone.
+Finish the mixed-color/decision-depth comparison first. Then, if the user chooses challenge progression, build **one objective-driven sky** and test its completion/retry flow before making the other five. Check deterministic replay, initial-board accounting, goal versus overflow precedence, terminal input, local progress migration and VoiceOver goal announcements. Observe whether the player prefers this goal-driven round to survival. The subsequent tranche implements only the First Light comparison, not the proposed six-sky campaign.

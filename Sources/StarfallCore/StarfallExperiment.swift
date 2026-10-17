@@ -48,6 +48,7 @@ public struct StarfallExperiment: Codable, Equatable, Sendable {
     public private(set) var starsLanded = 0
     public private(set) var darkStarsCleared = 0
     public private(set) var blockedColumn: Int?
+    public private(set) var challenge: StarfallChallenge?
     public let seed: UInt64
     private var random: SeededRandom
     private var remainingColumns: [Int] = []
@@ -57,7 +58,11 @@ public struct StarfallExperiment: Codable, Equatable, Sendable {
     // Missing in older saves: retain their original independent-color sky.
     private var cohesiveShowers: Bool?
     public var balance: StarfallBalance { savedBalance ?? StarfallBalance() }
-    public var isOver: Bool { blockedColumn != nil }
+    public var outcome: Outcome {
+        challenge?.outcome(score: score, overflowed: blockedColumn != nil)
+            ?? (blockedColumn == nil ? .playing : .lost)
+    }
+    public var isOver: Bool { outcome != .playing }
     public var occupiedCount: Int { board.compactMap { $0 }.count }
 
     public init(seed: UInt64, balance: StarfallBalance = StarfallBalance()) {
@@ -71,6 +76,11 @@ public struct StarfallExperiment: Codable, Equatable, Sendable {
         incoming = nextShower()
     }
 
+    public init(challenge: StarfallChallenge) {
+        self.init(seed: challenge.seed, balance: challenge.balance)
+        self.challenge = challenge
+    }
+
     // Internal deterministic positions for rule tests, not an app customization API.
     init(board: [StarfallGem?], incoming: [IncomingStar], seed: UInt64 = 1) {
         precondition(board.count == 49 && Self.showerSizes.contains(incoming.count))
@@ -81,6 +91,7 @@ public struct StarfallExperiment: Codable, Equatable, Sendable {
 
     /// Keep the board and announced preview; new frequency starts with later previews.
     public mutating func setBalance(_ newBalance: StarfallBalance) {
+        guard challenge == nil else { return }
         if newBalance.darkStars != balance.darkStars {
             showersUntilDark = newBalance.darkStars.showerGap.map { $0.upperBound - 1 } ?? 0
         }
@@ -230,6 +241,7 @@ public struct StarfallExperiment: Codable, Equatable, Sendable {
     }
 
     public var isValidSave: Bool {
+        if let challenge, seed != challenge.seed || balance != challenge.balance { return false }
         guard board.count == 49, Self.showerSizes.contains(incoming.count),
               remainingColumns.allSatisfy({ (0..<7).contains($0) }),
               Set(remainingColumns).count == remainingColumns.count,

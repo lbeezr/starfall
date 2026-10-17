@@ -12,6 +12,7 @@ No progression, power-ups, backend, accounts, analytics, ads, purchases, paid as
 
 - Falling sky is the default. New skies offer a first-shower match; matching runs help dry boards when a low column has room. Existing saves retain their previous sky-generation rules.
 - Faster comets, manual next shower, paused clears, matching-group outlines/count, clear rings/score popups, and optional local sound/haptics are implemented.
+- One optional First Light challenge is implemented: fixed seed 42, 18 starlight, steady showers and no dark stars; entry starts a new round from Settings. This is a single objective prototype, not a campaign or unlock system.
 - Local evidence at the published pacing tree: 56 core tests, 14 falling-sky store tests, seven UI checks and a Release simulator build passed. Checks include real system Reduce Motion gameplay and a smaller iPhone at the largest text size. These are local results, not a claim about a new cloud CI run.
 - [Pacing evidence](evidence/falling-sky-pacing-2026-10-16/README.md) records exact scope and limitations. VoiceOver speech/focus and physical-device feel remain open.
 
@@ -21,7 +22,9 @@ No progression, power-ups, backend, accounts, analytics, ads, purchases, paid as
 
 The [strategy baseline](evidence/falling-sky-strategy-2026-10-16/README.md) is complete. Across 200 seeds, only about 10% of match-ready states in one-clear-per-shower policies offer multiple groups. Largest-first and first-group policies score almost identically. This is a reason to investigate decision depth, not proof that the game is unenjoyable.
 
-Next bounded experiment:
+The [next-tranche record](evidence/falling-sky-tranche-2026-10-16/README.md) compares two offline mixed-color candidates. Neither replaced the default. One optional objective-driven First Light round is the playable comparison in this tranche.
+
+Ongoing experiment sequence:
 
 1. Compare the current same-color showers with a two-color shower distribution in an offline candidate. Preserve the first-shower match, bounded dry-board assistance, dark-star settings, save compatibility, and unchanged announced previews.
 2. Measure simultaneous groups, waits without a useful move, score/survival distributions, and whether clearing a high column actually helps. Include a clear-all policy; one clear per shower is only a diagnostic constraint.
@@ -30,9 +33,9 @@ Next bounded experiment:
 
 **Exit:** Opening remains playable within one settled shower; long dead stretches do not return in the regression sample; a player can describe a useful choice and prefers the candidate or clearly identifies the next issue. Numeric sample targets are design hypotheses, not release gates.
 
-## Progression direction — proposal under discussion
+## Progression direction — one challenge prototype, campaign deferred
 
-[Web research and a six-sky progression proposal](design/FALLING_SKY_RESEARCH.md) distinguish the current survival game from objective-based levels. The recommendation is to test one authored objective-driven sky after the decision-depth pass, then consider six short challenges that vary goals, layouts, shower patterns and dark-star pressure. This is a proposed scope expansion: progression remains absent from the prototype and is not authorized for implementation merely by this note. Do not build a campaign, unlock system, XP or economy without a product decision.
+[Mechanics/progression research](design/FALLING_SKY_RESEARCH.md) and [Mahjong-solitaire research](design/MAHJONG_PROGRESSION.md) distinguish puzzle difficulty from a long level counter. The user's next-tranche request advances the plan to one optional First Light challenge. Validate completion/retry and compare goal-driven play with survival before authoring more skies. No campaign, unlock system, XP, currency or infinite-content generator is included. Future challenge sequences should vary layout, goals and pressure, with readable changes and easier relief rounds rather than an assumed endlessly rising difficulty curve.
 
 ## 2. Polish physical feel — next
 

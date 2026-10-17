@@ -1,0 +1,22 @@
+--- a/Sources/StarfallCore/StarfallExperiment.swift
++++ b/Sources/StarfallCore/StarfallExperiment.swift
+@@ -217,6 +217,10 @@
+             remainingColumns = (0..<Self.side).filter { !(start..<(start + 3)).contains($0) }
+             return (0..<3).map { IncomingStar(id: $0, kind: sharedKind!, column: start + $0) }
+         }
++        var secondary = sharedKind
++        if let primary = sharedKind {
++            repeat { secondary = random.jewel() } while secondary == primary
++        }
+         return (0..<count).map { offset in
+             let kind = random.jewel()
+             // Natural arrivals rotate through columns; relief runs deliberately
+@@ -224,7 +228,7 @@
+             if remainingColumns.isEmpty { remainingColumns = Array(0..<Self.side) }
+             let index = Int(random.next() % UInt64(remainingColumns.count))
+             let naturalColumn = remainingColumns.remove(at: index)
+-            return IncomingStar(id: turns * Self.maximumShowerSize + offset, kind: offset == darkIndex ? nil : (sharedKind ?? kind),
++            return IncomingStar(id: turns * Self.maximumShowerSize + offset, kind: offset == darkIndex ? nil : ((reliefColumn == nil || offset >= 3) && offset >= 3 ? (secondary ?? kind) : (sharedKind ?? kind)),
+                                 column: offset < 3 ? (reliefColumn ?? naturalColumn) : naturalColumn)
+         }
+     }

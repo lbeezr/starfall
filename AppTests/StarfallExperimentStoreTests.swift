@@ -245,6 +245,48 @@ final class StarfallExperimentStoreTests: XCTestCase {
         XCTAssertEqual(restored.showerInterval, 4); XCTAssertEqual(restored.game.board, board)
         XCTAssertTrue(restored.isPaused)
     }
+    @MainActor func testChallengeCompletionStopsClockRestoresAndReplays() throws {
+        let (store, presenter, clock, defaults) = makeStore()
+        store.startFirstLight()
+        let initial = store.game
+        XCTAssertEqual(initial.challenge, .firstLight)
+        XCTAssertNil(clock.deadline); XCTAssertTrue(store.isPaused)
+        store.togglePause()
+        for _ in 0..<30 where !store.game.isOver {
+            clock.advance(4); presenter.finish()
+            while !store.game.isOver, let cell = store.game.legalGroups.first?.first {
+                store.clear(cell); presenter.finish()
+            }
+        }
+        XCTAssertEqual(store.game.outcome, .won)
+        XCTAssertNil(clock.deadline); XCTAssertFalse(store.canClear)
+        let completed = store.game
+        clock.advance(100); store.callShower(); store.togglePause(); store.clear(Cell(0, 0))
+        XCTAssertEqual(store.game, completed)
+        let restored = StarfallExperimentStore(defaults: defaults, arguments: [], presenter: ExperimentRecorder(), clock: ManualRainClock())
+        XCTAssertEqual(restored.game, completed); XCTAssertTrue(restored.message.contains("complete"))
+        store.restart(sameSky: true)
+        XCTAssertEqual(store.game, initial); XCTAssertTrue(store.isPaused)
+        store.restart(sameSky: false)
+        XCTAssertNil(store.game.challenge); XCTAssertEqual(store.game.outcome, .playing)
+    }
+
+    @MainActor func testStartingChallengeRejectsOldRainAndAnimationCallbacks() {
+        let (store, presenter, clock, _) = makeStore()
+        store.togglePause()
+        let timer = clock.action
+        clock.advance(4)
+        let completion = presenter.completions.last
+        store.startFirstLight()
+        let challenge = store.game
+        timer?(); completion?(); clock.advance(100)
+        XCTAssertEqual(store.game, challenge)
+        XCTAssertFalse(store.busy); XCTAssertTrue(store.isPaused)
+        XCTAssertNil(clock.deadline)
+        store.setPace(.brisk)
+        XCTAssertEqual(store.game.balance, StarfallChallenge.firstLight.balance)
+    }
+
     @MainActor func testManualShowersAndClearsWorkPausedWithoutStartingClock() throws {
         let (store, presenter, clock, _) = makeStore()
         XCTAssertTrue(store.isPaused)
