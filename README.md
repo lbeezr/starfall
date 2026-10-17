@@ -11,6 +11,7 @@ Try the first goal-driven sky from **Settings → Start First Light**. This star
 Requires Xcode 16+ with an iOS 17+ simulator runtime. Open `Starfall.xcodeproj`, select shared scheme **Starfall** and an installed iPhone simulator, then Run. Simulator builds do not require paid Apple enrollment or a signing team. Device distribution/signing is not configured. This remains a prototype; App Store distribution and submission metadata require their own release work.
 
 ```sh
+python3 scripts/ci-hygiene.py
 swift test
 xcodebuild -project Starfall.xcodeproj -scheme Starfall \
   -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' \
@@ -48,5 +49,7 @@ The package records its pre-adoption handoff state and is preserved unchanged. R
 `Config/Clean.xcconfig` supplies `STARFALL_CLEAN`; all existing configurations are clean. Monetization code, dependencies, UI and entitlements are physically absent. See `AGENTS.md` for the boundary for any future optional edition. No speculative monetization subsystem is implemented.
 
 ## Verification
+
+See the [engineering guide and concrete debt register](docs/ENGINEERING.md) for the change/validation loop and [AGENTS.md](AGENTS.md) for repository rules. Raw CI/local output goes under ignored `artifacts/`; selected durable evidence belongs in `docs/evidence/`.
 
 See `docs/VALIDATION.md` for exact executed checks and outstanding checks. Apple-platform compilation, simulator launch, screenshots, accessibility behavior and physical-device behavior must not be inferred from passing pure-core tests.
