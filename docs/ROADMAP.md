@@ -16,6 +16,10 @@ Build a small, readable falling-sky puzzle worth replaying. **Constellation trac
 
 The [diagonal constellation investigation](evidence/constellations-2026-10-17/README.md) responds to physical-phone feedback about sparse clears. The user confirmed five actual stars, then chose swiping and clearing only the traced subset. The [latest isolated build](evidence/constellation-trace-2026-10-17/README.md) supersedes the earlier whole-component tap pair. Shipping generation and the phone round are unchanged.
 
+## Notifications — planned, implementation deferred
+
+The accepted [notification plan](design/NOTIFICATIONS.md) starts with one optional weekly reminder at a player-selected day/time, off by default and scheduled locally. No notification implementation is authorized in this batch. Inactivity reminders and custom friend-rank alerts are deferred; global rank-drop alerts are excluded. Revisit implementation only when requested.
+
 ## What happens next
 
 | Priority | Next action | Done when |
