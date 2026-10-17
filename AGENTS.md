@@ -9,6 +9,12 @@ Keep the prototype small. Falling sky is the default game in Debug and Release: 
 - Do not change another repository or add network features, purchases or analytics without a new request.
 - Run tests and a simulator build after source changes where tooling exists. Inspect normal play, rapid taps, win/loss, restart, background/resume, VoiceOver, Reduce Motion, and settings dismissal.
 
+## Planning, design, and reporting
+
+- Follow [the writing process](docs/WRITING.md) for new plans, designs, reports, PRs, and issues. Start from its linked templates, scale to the task, and remove unused prompts. Lead with the outcome/recommendation, important limits, and next action; keep supporting detail below or linked.
+- Use progressive disclosure without hiding blockers, failed checks, or material risks. Use Mermaid or captioned images when they clarify a decision; label concepts separately from runtime evidence. Prefer clear, concise prose over exhaustive narration. Do not rewrite historical evidence solely to match the format.
+- Maintain a short README for each ordinary project folder using the [folder protocol](docs/WRITING.md#give-folders-a-useful-front-door). Packaged, sealed, historical-payload and generated folders inherit the documented owner boundary; do not modify their contents for coverage. For visual product docs, inspect and embed relevant existing assets from the [visual reference](docs/design/VISUAL_REFERENCE.md), with alt text and source/status captions.
+
 ## Code quality
 - Stay DRY: give shared rules, geometry, materials, design tokens and persistence contracts one authoritative owner. Search for an existing implementation before adding another; consolidate duplicated behavior when touching it. Similar-looking code with different reasons to change need not share an abstraction.
 - Actively decouple responsibilities. Keep deterministic rules independent from rendering; keep presentation, saved state and feedback behind small, explicit boundaries. Pass the values or narrow capabilities a component needs instead of an entire store, global singleton or unrelated mutable state. Prefer composition and clear dependency direction; avoid circular dependencies and multipurpose managers.

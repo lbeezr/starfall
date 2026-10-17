@@ -1,106 +1,93 @@
 # Starfall roadmap
 
-Updated October 17, 2026, Eastern time. This is the current roadmap for **falling sky**, the default game in Debug and Release. The [original-puzzle roadmap](archive/ROADMAP-original-puzzle-2026-10-16.md) is historical. Earlier game-bible and playtest documents describe the original puzzle unless explicitly updated for falling sky.
+**Status:** Active · **Owner:** Current implementer · **Updated:** October 17, 2026, Eastern time
 
-## Product direction
+Build a small, readable falling-sky puzzle worth replaying. **Shower variety leads the next gameplay comparison.** Keep the default generator unchanged until observed play supports adoption. The offline phase comparison supports one announced native trial; it does not establish that phases are more enjoyable.
 
-See [the adoption register and experiment workflow](EXPERIMENTS.md) for the authoritative adopted/trial/proposed status. Falling sky and its physical reactions are shipping behavior, not permanent experiments.
+**Next actions:** Review the clean Release baseline as its own change, then prepare the bounded warning/burst/recovery trial and observe matched play. Physical feel can be reviewed independently in small batches.
 
-A small, readable, satisfying falling-sky puzzle worth replaying. Keep the 7×7 board, five jewel kinds, orthogonal matching worth 3+, growth, dark stars, automatic showers, pause, manual next shower, and local balance controls. Preserve full falling animations, with accessible reduced-motion alternatives.
+**Open limits:** No participant preference results, final cast approval, general physical-device acceptance, or actual VoiceOver acceptance. These remain open even where simulator checks passed.
 
-No progression, power-ups, backend, accounts, analytics, ads, purchases, paid assets, or external SDKs. The original 70-jewel/18-move puzzle stays available for Debug regression testing; its rules do not govern falling sky.
+## The game we are improving
 
-## Current baseline
+<img src="evidence/compact-hud-2026-10-17/active.png" width="240" alt="Native gameplay capture with a compact score and menu header above the star board">
 
-- The [compact HUD](evidence/compact-hud-2026-10-17/README.md) replaces the exact forecast/countdown/status rows with score/goal, a quiet menu and a subtle arrival cue. Pause moves into the menu; Start/Resume and manual advance appear while paused. User play still needs to establish whether losing the exact forecast helps readability without losing useful decisions.
+**Source-bound native reference:** October 17 compact-HUD candidate, iPhone 17e / iOS 27.0 Simulator; [capture source and verification limits](evidence/compact-hud-2026-10-17/README.md). The compact layout is adopted, but this capture does not establish current-build parity or human preference. See the [icon, opening screen and cast](design/VISUAL_REFERENCE.md) for the visual context behind the workstreams below.
 
-- Falling sky is the default. New skies offer a first-shower match; matching runs help dry boards when a low column has room. Existing saves retain their previous sky-generation rules.
-- Faster comets, manual next shower, paused clears, matching-group outlines/count, clear rings/score popups, and optional local sound/haptics are implemented.
-- One optional First Light challenge is implemented: fixed seed 42, 18 starlight, steady showers and no dark stars; entry starts a new round from Settings. This is a single objective prototype, not a campaign or unlock system.
-- The original star-character cast is integrated for falling sky in Debug and Release, with shared board/comet/preview materials and color-independent silhouettes. See the [production rendering contract](design/star-cast/README.md) and [native evidence](evidence/star-cast-2026-10-17/README.md). General physical-device and actual VoiceOver acceptance remain open.
-- Local evidence at the published pacing tree: 56 core tests, 14 falling-sky store tests, seven UI checks and a Release simulator build passed. Checks include real system Reduce Motion gameplay and a smaller iPhone at the largest text size. These are local results, not a claim about a new cloud CI run.
-- [Pacing evidence](evidence/falling-sky-pacing-2026-10-16/README.md) records exact scope and limitations. VoiceOver speech/focus and physical-device feel remain open.
+## What happens next
 
-## 1. Make choices engaging — active
+| Priority | Next action | Done when |
+| --- | --- | --- |
+| Establish the candidate | Resolve the [Xcode project drift](ENGINEERING.md) in a separate reviewed change; retain a clean Release source/build record. | The exact candidate builds and its remaining visual/upgrade gaps are explicit. |
+| Make choices engaging — active | Compare natural Shower Lab, Pressure Lab, and one [announced phase trial](design/SHOWER_PHASES.md), using matched seeds and [observed play](PLAYTEST-FALLING-SKY.md). | Opening is playable within one settled shower; long dead stretches do not return in the regression sample; a player explains a useful choice and prefers a candidate or identifies the next issue. Adopt, remove, or name a bounded remaining question. |
+| Polish physical feel — active | Review arrivals, growth, clears and input on an iPhone; tune optional sound/haptics and profile repeated rounds. | Effects do not block decisions or input; effects stay bounded; device observations and profiles are retained. |
+| Explain danger and outcomes | Review nearly full columns, blocked growth, arrival information, overflow, replay and new sky. Keep landing places hidden and controls reachable on small screens/large text. | A first-time player explains the loss and next action; affected native input, settings dismissal and layout checks pass. |
+| Finish accessibility and reliability | Complete the native/device checks below. | Evidence distinguishes automation, visual review, actual VoiceOver and device observations. |
+| Prepare a shareable build | Reconcile acceptance/release docs, packaging and signing with the selected mechanics. | Reproducible signed build, known issues and device checklist; distribution only when requested. |
 
-The [mechanics notebook](design/MECHANICS_IDEAS.md) preserves the hold-to-supernova clear with possible nearby color changes, constellations, light-star, and void/drain/freeze ideas. These are deferred design questions, not additions to the accepted prototype scope.
+Owners are the current implementer unless a work item names another owner. These are workstreams, not permission to expand scope or delay an independently verified batch.
 
-**Question:** Is the player making useful decisions, or simply clearing the only available group?
+## The next gameplay decision
 
-The [strategy baseline](evidence/falling-sky-strategy-2026-10-16/README.md) is complete. Across 200 seeds, only about 10% of match-ready states in one-clear-per-shower policies offer multiple groups. Largest-first and first-group policies score almost identically. This is a reason to investigate decision depth, not proof that the game is unenjoyable.
+**Question:** Do shower changes create useful decisions and a readable rhythm, rather than more groups that feel equivalent?
 
-The [expanded mechanics baseline](evidence/mechanics-baseline-2026-10-17/README.md) adds dry-shower and high-column-choice diagnostics without changing gameplay. Clear-all still offers alternatives in only 6.7% of decision states; 43.0% of its surviving shower states are dry, with no sampled dry run beyond one shower. Use these denominators when comparing the next bounded mechanic; human play remains necessary.
+| Comparison | What the evidence says | Decision / remaining question |
+| --- | --- | --- |
+| [Natural Shower Lab](evidence/paired-showers-2026-10-17/README.md) | Five-star 3 + 2 runs raise clear-all multiple-choice decisions from 6.7% to 11.6%; native opening/choice comparison passed. | Lead comparison; human preference remains open. Broad pairing was rejected for excessive survival extension. |
+| [Pressure Lab](evidence/pressure-showers-2026-10-17/README.md) | Consequential native clear and due-rain input boundary checked; cold-opening limitation retained. Both constant candidates offer choices by shower twenty in 160/200 first-policy rounds. | Compare pressure and comprehension in observed play. |
+| [Nine preparation + three pressure showers](evidence/shower-phases-2026-10-17/README.md) | Schedule/replay checks passed; no substantial early-choice improvement. Rhythm and comprehension are unmeasured. | Extend to one announced native trial. No native phase cue or production phase exists yet. |
 
-The user selected **shower variety and choices** to lead the next playable experiment. A separate [Shower Lab](evidence/paired-showers-2026-10-17/README.md) tests natural five-star 3 + 2 runs against the unchanged game. It raises clear-all multi-group decisions from 6.7% to 11.6%, preserves existing-save generation, and has passed a native opening/choice comparison. Broader pairing is rejected for excessive survival extension; a higher-column refinement remains offline. The default generator is unchanged pending observed play and pressure/comprehension review.
+Preserve first-shower playability, bounded dry-board assistance, dark-star settings, save compatibility and committed previews. Measure simultaneous groups, waits without a useful move, score/survival distributions and whether clearing a high column helps. Include clear-all play; one clear per shower is a diagnostic constraint. Numeric targets are hypotheses, not release gates.
 
-The [supernova rule comparison](evidence/supernova-rules-2026-10-17/README.md) and its [isolated native input lab](evidence/supernova-native-2026-10-17/README.md) are parked while showers lead. Hold/release/cancel, interruption and superseded-touch checks are retained; ordinary clear effects and the weak tap/charge tradeoff remain unresolved. Neither recoloring candidate is adopted.
+Use paused/manual explanation and normal automatic play. Record comprehension, perceived waiting, useful choices and replay preference, including failures and counterexamples. Core checks and a short actual simulator playthrough precede promotion; bot scores alone cannot choose the winner. The [experiment register](EXPERIMENTS.md) owns adoption status.
 
-The [next-tranche record](evidence/falling-sky-tranche-2026-10-16/README.md) compares two offline mixed-color candidates. Neither replaced the default. One optional objective-driven First Light round is the playable comparison in this tranche.
+## Shipping gates — all remain open
 
-Ongoing experiment sequence:
+| Gate | Required evidence / next action |
+| --- | --- |
+| Opening is enjoyable | Observe first-time players without coaching. Record time to first clear, waits, growth/dark-star comprehension and voluntary replay. Distinguish missed moves from no available move; respond to major confusion or waiting. |
+| Each feature is complete | State observable acceptance criteria and record rule/save, interruption, accessibility, visual/full-animation and test results, including omissions. Apply [AGENTS.md](../AGENTS.md) and the [writing process](WRITING.md) throughout. |
+| Exact shipping candidate is verified | After project-drift review, record clean source, configuration, toolchain and device/OS. Test fresh install and a retained previous-version save without reset: board, score, preview/RNG continuation, preferences and completed challenge. Test any migration explicitly; run current falling-sky acceptance flows. Compilation alone does not establish visual or upgrade acceptance. |
+| Physical-device checks are routine | Use a smaller/older supported iPhone: repeated showers, clears, replay, background/resume and audio interruption. Record responsiveness/frame pacing, heat, energy, memory trend and leftover effects. Investigate reproducible issues with Instruments before optimizing; set measured device budgets. |
+| Actual accessibility is accepted | Play a complete round with VoiceOver: location/value, matching-group rotor, activation, pause/manual advance, outcome/replay and Settings focus return. Separately inspect system Reduce Motion, largest text, contrast and identification without color alone. Labels/audits do not close this gate. |
+| TestFlight feedback informs the candidate | After signing prerequisites and explicit upload/tester authorization, use approved testers and the actual Release candidate. Collect confusion, crashes, replay preference and device/build context; fix significant issues and verify again. No claim of universal enjoyment or crash-free play, and no analytics SDK. |
 
-1. Compare the current same-color showers with a two-color shower distribution in an offline candidate. Preserve the first-shower match, bounded dry-board assistance, dark-star settings, save compatibility, and unchanged announced previews.
-2. Measure simultaneous groups, waits without a useful move, score/survival distributions, and whether clearing a high column actually helps. Include a clear-all policy; one clear per shower is only a diagnostic constraint.
-3. Promote a candidate only after core checks and an actual short simulator playthrough. Preserve the current version for comparison. Do not pick a winner solely from bot scores.
-4. Use the [falling-sky playtest](PLAYTEST-FALLING-SKY.md) to compare comprehension, perceived waiting, choices, and replay preference. Record only observed play; there are no participant results yet.
+Reliability coverage also includes minimum-supported OS, small phone, iPad portrait/landscape, rapid taps, interruptions during arrivals, save/relaunch, replay/new sky, settings dismissal and repeated-round stress. Calm effects and paused/manual play must remain usable. Existing system Reduce Motion evidence does not close every later candidate’s acceptance.
 
-**Exit:** Opening remains playable within one settled shower; long dead stretches do not return in the regression sample; a player can describe a useful choice and prefers the candidate or clearly identifies the next issue. Numeric sample targets are design hypotheses, not release gates.
+The [engineering register](ENGINEERING.md) owns technical risks; the [release checklist](RELEASE_CHECKLIST.md) owns signing/submission details. Verify clean dependencies, privacy declaration, icons, version/build metadata and Release packaging before distribution.
 
-## Progression direction — one challenge prototype, campaign deferred
+## Current game and scope
 
-[Mechanics/progression research](design/FALLING_SKY_RESEARCH.md) and [Mahjong-solitaire research](design/MAHJONG_PROGRESSION.md) distinguish puzzle difficulty from a long level counter. The user's next-tranche request advances the plan to one optional First Light challenge. Validate completion/retry and compare goal-driven play with survival before authoring more skies. No campaign, unlock system, XP, currency or infinite-content generator is included. Future challenge sequences should vary layout, goals and pressure, with readable changes and easier relief rounds rather than an assumed endlessly rising difficulty curve.
+Falling sky is the default in Debug and Release: a 7×7 board, five jewel kinds, orthogonal matches worth 3+, growth, dark stars, automatic showers, pause, manual next shower and local balance controls. Full falling animations and accessible reduced-motion alternatives remain required. Existing saves retain their generation behavior.
 
-## 2. Polish physical feel — active
+The [compact HUD](evidence/compact-hud-2026-10-17/README.md) uses score/goal, a quiet menu and an arrival cue instead of exact forecast/countdown/status rows. Pause is in the menu; Start/Resume and manual advance appear while paused. **Whether that simplification preserves useful decisions still needs observed play.** Any phase cue must work within that constraint.
 
-Visual acceptance of the cast remains open. A [motion-set revision](evidence/star-cast-motion-2026-10-17/README.md) adds twelve frames per character, partial turns and distinct grown/clearing expressions; its sheets and recording are available for review. The [luminous revision](evidence/star-cast-luminous-2026-10-17/README.md) responds to feedback on eyes and emitted-light appearance; the first integration did not establish final art approval.
+First Light is one optional fixed-seed-42, 18-starlight challenge, with steady showers and no dark stars. Entry from Settings starts a new round. Validate completion/retry and compare goal-driven play with survival before considering more skies.
 
-A bounded [physical-reaction pass](evidence/physical-reactions-2026-10-17/README.md) adds angled arrivals, lighter/heavier rebounds and distance-delayed survivor ripples. These present existing committed turns; they do not adopt supernova recoloring or add collision-driven rules. Human preference and device pacing remain open.
+No campaign, unlocks, XP, currency, power-ups, backend, accounts, analytics, ads, purchases, paid assets or external SDKs. The original 70-jewel/18-move puzzle remains Debug regression tooling; its rules do not govern falling sky.
 
-- Review comet speed, landing/growth emphasis, clear readability and input response on a real iPhone.
-- Tune optional sound/haptics for comfort, silent mode and interruptions; keep defaults off and mute immediate.
-- Profile repeated rounds for frame pacing, memory growth and leftover effect nodes before optimizing.
+<details>
+<summary>Supporting baseline and presentation evidence</summary>
 
-**Exit:** No distracting effect blocks the next decision; no input lock or accumulating effects; device observations and profiles are retained.
+- [Strategy baseline](evidence/falling-sky-strategy-2026-10-16/README.md): across 200 seeds, about 10% of match-ready states in one-clear-per-shower policies offer multiple groups; largest-first and first-group scores are nearly identical. This motivates investigation, not a conclusion about enjoyment.
+- [Expanded baseline](evidence/mechanics-baseline-2026-10-17/README.md): clear-all offers alternatives in 6.7% of decision states; 43.0% of surviving shower states are dry, with no sampled dry run beyond one shower. Preserve those denominators in comparisons.
+- Implemented feedback includes faster comets, paused clears, group outlines/count, clear rings/score popups and optional local sound/haptics. Keep sound/haptics off by default, mute immediate, and check silent mode and interruptions.
+- The star cast is integrated in Debug and Release with shared board/comet/preview materials and non-color silhouettes: [rendering contract](design/star-cast/README.md), [native evidence](evidence/star-cast-2026-10-17/README.md). The [motion revision](evidence/star-cast-motion-2026-10-17/README.md) adds twelve frames per character, partial turns and grown/clear expressions. The [luminous revision](evidence/star-cast-luminous-2026-10-17/README.md) addresses eyes and emitted light; integration did not establish final art approval.
+- Adopted [physical reactions](evidence/physical-reactions-2026-10-17/README.md) add angled arrivals, weight-sensitive rebounds and distance-delayed survivor ripples. They present committed turns; no collision-driven rules or supernova recoloring are adopted.
+- At the published [pacing tree](evidence/falling-sky-pacing-2026-10-16/README.md), local checks passed: 56 core tests, 14 store tests, seven UI checks and a Release simulator build, including real system Reduce Motion and a smaller iPhone at largest text. These historical results do not establish a new cloud run or current candidate acceptance.
 
-## 3. Make danger and outcomes readable
+</details>
 
-- Communicate nearly full columns and growth-blocked jewels without relying on color or motion alone.
-- Keep the preview legible while preserving the current hidden landing places.
-- Make overflow cause, final score, replay and new sky easy to understand and reach.
-- Keep pause and manual shower controls reachable on smaller screens and with large text.
+<details>
+<summary>Parked ideas and historical context</summary>
 
-**Exit:** A first-time player can explain the loss and their next action; native input, settings dismissal and layout checks pass on affected screens.
+- [Supernova rules](evidence/supernova-rules-2026-10-17/README.md) and the [native input lab](evidence/supernova-native-2026-10-17/README.md) are parked while showers lead. Hold/release/cancel, interruption and superseded-touch checks remain recorded; ordinary clear effects and the weak tap/charge tradeoff are unresolved. Neither recoloring candidate is adopted.
+- The [mechanics notebook](design/MECHANICS_IDEAS.md) retains constellations, light stars and void/drain/freeze ideas. These are deferred questions, not accepted scope.
+- The [next-tranche record](evidence/falling-sky-tranche-2026-10-16/README.md) compares two offline mixed-color candidates; neither replaced the default. First Light is the one playable objective comparison.
+- [Progression research](design/FALLING_SKY_RESEARCH.md) and [Mahjong research](design/MAHJONG_PROGRESSION.md) distinguish difficulty from a long level counter. If future challenge sequences are considered, vary layout, goals and pressure with relief rounds rather than assuming endlessly rising difficulty. No infinite-content generator is included.
+- The [original-puzzle roadmap](archive/ROADMAP-original-puzzle-2026-10-16.md) is historical. Earlier game-bible/playtest documents describe that puzzle unless explicitly updated.
+- Implementation resources, not evidence: [Instruments](https://developer.apple.com/tutorials/instruments), [accessibility settings](https://developer.apple.com/documentation/accessibility/testing-system-accessibility-features-in-your-app), [TestFlight feedback](https://developer.apple.com/testflight/).
 
-## 4. Finish accessibility and reliability
+</details>
 
-- Actual VoiceOver speech, focus, matching-group rotor, activation and focus return from Settings.
-- Actual system Reduce Motion while playing; paused/manual play and Calm effects remain usable.
-- Minimum-supported OS, small phone, iPad portrait/landscape, large text and contrast review.
-- Rapid taps, moving-arrival interruptions, save/relaunch, replay/new sky, audio interruption and repeated-round stress.
-
-**Exit:** Retained source-bound results distinguish simulator automation from device/human observations. No blanket accessibility claim from structural checks.
-
-## 5. Prepare a shareable build
-
-- Reconcile current falling-sky acceptance/release documents with the selected mechanics.
-- Verify clean dependencies, privacy declaration, icons, version/build metadata and Release packaging.
-- Configure signing and run on a device before preparing TestFlight distribution.
-
-**Exit:** Reproducible signed build, clean-edition checks, known-issues list and completed device checklist. Upload/distribution remains a concrete final action when requested.
-
-## Shipping quality gates
-
-These six priorities turn the shipping recommendations into explicit work. They remain open: adding a checklist is not evidence of completion. Start by resolving the clean Release baseline, then observe first-time players; use the existing gameplay workstreams above to address what those checks reveal. The [engineering register](ENGINEERING.md) tracks technical risks and the [release checklist](RELEASE_CHECKLIST.md) owns signing/submission details.
-
-- [ ] **Prove the opening is fun.** Observe a small set of first-time players without coaching, using the [falling-sky protocol](PLAYTEST-FALLING-SKY.md). Record measured time to first clear, waits between useful moves, understanding of growth/dark stars, and whether they voluntarily replay. Distinguish missed moves from a board without a move. Exit with actual observations and a bounded response to major confusion/waiting; bot scores and a first-shower match alone do not close this gate.
-- [ ] **Use a feature definition of done.** Each change states observable acceptance criteria and records relevant rules, save compatibility, interruptions, accessibility, visual polish/full animations and tests, with explicit omissions. A reviewer should be able to reproduce the intended behavior. Apply the regression and experiment-lifecycle rules in [AGENTS.md](../AGENTS.md); this is an ongoing gate for every feature, not a one-time document task.
-- [ ] **Validate the exact shipping candidate.** Resolve the local Xcode project drift as its own reviewed change. Build a clean Release candidate and record commit/tree, configuration, toolchain and device/OS. Test fresh installation and upgrading from a retained previous-version save without resetting it: board, score, preview/RNG continuation, preferences and completed challenge remain valid or follow an explicitly tested migration. Existing clean-baseline compilation does not establish visual or upgrade acceptance. Run the current falling-sky acceptance flows on that candidate.
-- [ ] **Make physical-device checks routine.** Use a smaller/older supported iPhone and a repeatable sequence of showers, clears, replay and background/resume. Record responsiveness/frame pacing, heat, energy behavior, memory trend and leftover effects across repeated rounds, plus audio interruption/resume. Investigate reproducible issues with Instruments before optimizing. Set measured budgets appropriate to the chosen devices; do not invent thresholds or claim device performance from simulator results.
-- [ ] **Complete actual accessibility acceptance.** Play a complete round with VoiceOver: spoken location/value, rotor, activation, pause/manual advance, outcome/replay and focus return from Settings. Separately play with system Reduce Motion and inspect largest text, contrast and jewel identification without color alone. Record actual behavior and remaining barriers. Structural labels, audits and sighted native grid tests do not close this gate.
-- [ ] **Run a small TestFlight feedback loop.** After signing/distribution prerequisites and explicit upload/tester authorization, test the actual Release candidate with approved testers before expanding scope. Collect confusion, crashes, replay preference and device/build details using TestFlight feedback; fix significant issues and verify the candidate again. Keep feedback separate from a claim of crash-free play or universal enjoyment. This adds no analytics SDK, account system or network feature to the game.
-
-Useful Apple guidance: [Instruments](https://developer.apple.com/tutorials/instruments), [testing accessibility settings](https://developer.apple.com/documentation/accessibility/testing-system-accessibility-features-in-your-app), and [TestFlight feedback/crash reporting](https://developer.apple.com/testflight/). These are implementation resources, not completed acceptance evidence.
-
-## Delivery discipline
-
-Work in small verified batches. Keep rules in StarfallCore, presentation/feedback explicit, saves compatible and other local edits intact. Update this roadmap with the outcome of each experiment; historical evidence remains append-only. No feature is marked accepted just because it compiles or a bot performs better.
+Integrate small verified batches. Keep deterministic rules in StarfallCore, presentation and feedback explicit, saves compatible and other edits intact. Update this roadmap as decisions change; preserve historical evidence with its source context.
