@@ -1,0 +1,155 @@
+import XCTest
+import UIKit
+import SpriteKit
+import StarfallCore
+@testable import Starfall
+
+final class StarCastTests: XCTestCase {
+    @MainActor func testCompleteCastIsBoundedAndReusesMaterialsAcrossRounds() throws {
+        StarCast.prewarm()
+        XCTAssertEqual(StarCast.cachedMaterialCount, 24)
+        let cast = Jewel.allCases.map(Optional.some) + [nil]
+        for kind in cast {
+            for expression in StarCast.Expression.allCases {
+                let first = StarCast.texture(for: kind, expression: expression)
+                for _ in 0..<49 {
+                    let node = JewelScene.makeStarCharacter(kind, expression: expression, radius: 22)
+                    XCTAssertTrue(node.texture === first)
+                    XCTAssertEqual(node.anchorPoint, CGPoint(x: 0.5, y: 0.5))
+                    XCTAssertEqual(node.size.width, node.size.height)
+                    XCTAssertLessThanOrEqual(node.size.width, 54)
+                    XCTAssertFalse(node.hasActions())
+                }
+                XCTAssertEqual(first.size(), CGSize(width: 256, height: 256))
+                XCTAssertEqual(first.filteringMode, .linear)
+                XCTAssertFalse(first.usesMipmaps)
+            }
+        }
+        XCTAssertEqual(StarCast.cachedMaterialCount, StarCast.maximumMaterials)
+        XCTAssertEqual(StarCast.maximumRasterBytes, 6_291_456)
+    }
+
+    @MainActor func testTransparentPaddingAndStableSilhouettesAcrossExpressions() throws {
+        for kind in Jewel.allCases.map(Optional.some) + [nil] {
+            var neutralAlpha: [UInt8]?
+            var expressions = Set<Data>()
+            for expression in StarCast.Expression.allCases {
+                let image = StarCast.image(for: kind, expression: expression)
+                let cg = try XCTUnwrap(image.cgImage)
+                var pixels = [UInt8](repeating: 0, count: 256 * 256 * 4)
+                let context = try XCTUnwrap(CGContext(data: &pixels, width: 256, height: 256,
+                    bitsPerComponent: 8, bytesPerRow: 256 * 4, space: CGColorSpaceCreateDeviceRGB(),
+                    bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue))
+                context.draw(cg, in: CGRect(x: 0, y: 0, width: 256, height: 256))
+                let alpha = stride(from: 3, to: pixels.count, by: 4).map { pixels[$0] }
+                XCTAssertTrue(alpha.contains(255))
+                for y in 0..<256 { for x in 0..<256 where x < 18 || x >= 238 || y < 18 || y >= 238 {
+                    XCTAssertEqual(alpha[y * 256 + x], 0, "Cast must not clip its canvas")
+                } }
+                if let neutralAlpha { XCTAssertEqual(alpha, neutralAlpha, "Faces must not change silhouette/pivot") }
+                else { neutralAlpha = alpha }
+                expressions.insert(Data(pixels))
+            }
+            // Grown/clear deliberately share a happy face; landing and idle remain distinct.
+            XCTAssertGreaterThanOrEqual(expressions.count, 3)
+        }
+    }
+
+    @MainActor func testFallingSkyUsesTheCompleteCastAndRepeatedRendersDoNotAccumulateNodes() {
+        var game = StarfallExperiment(seed: 5)
+        for _ in 0..<16 where !game.isOver { _ = game.letStarsFall() }
+        XCTAssertTrue(game.board.contains { $0?.isDark == true })
+        let scene = StarfallExperimentScene(size: CGSize(width: 378, height: 560))
+        func castNodes(_ node: SKNode) -> [SKNode] {
+            node.children.flatMap { child in
+                (child.name?.hasPrefix("star-cast.") == true ? [child] : []) + castNodes(child)
+            }
+        }
+        for _ in 0..<30 {
+            scene.render(game)
+            let nodes = castNodes(scene)
+            XCTAssertEqual(nodes.count, game.occupiedCount)
+            let names = Set(nodes.compactMap(\.name))
+            for gem in game.board.compactMap({ $0 }) {
+                let expression: StarCast.Expression = gem.grown ? .grown : .idle
+                XCTAssertTrue(names.contains("star-cast.\(StarCast.character(for: gem.kind).name).\(expression.rawValue)"))
+            }
+        }
+        XCTAssertEqual(StarCast.cachedMaterialCount, StarCast.maximumMaterials)
+    }
+
+    @MainActor func testExpressionChangesPreserveGeometryForEveryFamilyAndPose() {
+        for kind in Jewel.allCases.map(Optional.some) + [nil] {
+            let node = JewelScene.makeStarCharacter(kind, expression: .landing, radius: 18)
+            node.anchorPoint = CGPoint(x: 0.4, y: 0.6)
+            node.setScale(0.83)
+            let size = node.size, anchor = node.anchorPoint, scale = node.xScale
+            for expression in StarCast.Expression.allCases {
+                StarCast.setExpression(expression, for: kind, on: node)
+                XCTAssertEqual(node.size, size)
+                XCTAssertEqual(node.anchorPoint, anchor)
+                XCTAssertEqual(node.xScale, scale)
+            }
+        }
+    }
+
+    @MainActor func testAnimatedLandingsNeverExpandToTheTextureCanvas() async throws {
+        guard !UIAccessibility.isReduceMotionEnabled && !UIAccessibility.isVoiceOverRunning else {
+            throw XCTSkip("Full-animation geometry check requires normal motion; reduced-motion behavior is covered separately")
+        }
+        let scene = StarfallExperimentScene(size: CGSize(width: 350, height: 560))
+        let view = SKView(frame: CGRect(x: 0, y: 0, width: 350, height: 560))
+        guard let windowScene = UIApplication.shared.connectedScenes.compactMap({ $0 as? UIWindowScene }).first else {
+            XCTFail("Hosted animation check requires an active window scene"); return
+        }
+        let previousKeyWindow = windowScene.windows.first(where: \.isKeyWindow)
+        let window = UIWindow(windowScene: windowScene); window.frame = view.frame
+        let controller = UIViewController(); controller.view = view
+        window.rootViewController = controller; window.makeKeyAndVisible()
+        defer { view.presentScene(nil); window.isHidden = true; previousKeyWindow?.makeKey() }
+        view.presentScene(scene)
+        var game = StarfallExperiment(seed: 5)
+        let old = game
+        guard let turn = game.letStarsFall() else { XCTFail("Expected first shower"); return }
+        var complete = false
+        scene.animate(turn, from: old, to: game) { complete = true }
+        // Sample throughout flight, landing, expression swap and settlement, not just the final frame.
+        for _ in 0..<70 {
+            try? await Task.sleep(for: .milliseconds(20))
+            func inspect(_ parent: SKNode) {
+                for child in parent.children {
+                    if let sprite = child as? SKSpriteNode, sprite.name?.hasPrefix("star-cast.") == true {
+                        XCTAssertLessThan(sprite.frame.width, 70, "Expression swap must retain game-sized sprite geometry")
+                        XCTAssertLessThan(sprite.frame.height, 70)
+                    }
+                    inspect(child)
+                }
+            }
+            inspect(scene)
+        }
+        XCTAssertTrue(complete)
+    }
+
+    @MainActor func testCastReviewSheetAtBoardAndHeroSizes() {
+        let kinds = [Jewel.aqua, .amber, .mint, .rose, .violet].map(Optional.some) + [nil]
+        let format = UIGraphicsImageRendererFormat(); format.scale = 2
+        let sheet = UIGraphicsImageRenderer(size: CGSize(width: 840, height: 560), format: format).image { render in
+            UIColor(red: 0.06, green: 0.08, blue: 0.17, alpha: 1).setFill()
+            render.fill(CGRect(x: 0, y: 0, width: 840, height: 560))
+            let labels: [NSAttributedString.Key: Any] = [.font: UIFont.systemFont(ofSize: 15, weight: .medium), .foregroundColor: UIColor.white]
+            for (index, kind) in kinds.enumerated() {
+                let x = CGFloat(index) * 140
+                (StarCast.character(for: kind).name as NSString).draw(at: CGPoint(x: x + 43, y: 14), withAttributes: labels)
+                for (row, expression) in StarCast.Expression.allCases.enumerated() {
+                    StarCast.image(for: kind, expression: expression).draw(in: CGRect(x: x + 12, y: 42 + CGFloat(row) * 102, width: 116, height: 116))
+                }
+                for (index, side) in [CGFloat(24), 36, 44].enumerated() {
+                    StarCast.image(for: kind).draw(in: CGRect(x: x + 6 + CGFloat(index) * 43, y: 485, width: side, height: side))
+                }
+            }
+        }
+        let attachment = XCTAttachment(image: sheet)
+        attachment.name = "star-cast-materials-and-gameplay-scale"; attachment.lifetime = .keepAlways
+        add(attachment)
+    }
+}

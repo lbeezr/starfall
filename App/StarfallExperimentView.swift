@@ -99,15 +99,11 @@ import StarfallCore
             Spacer(minLength: 4)
             if !store.game.isOver {
                 ForEach(store.forecast) { star in
-                    Group {
-                        if let kind = star.kind {
-                            Text(kind.symbol).foregroundStyle(Color(kind.color))
-                        } else {
-                            Image(systemName: "moonphase.new.moon").foregroundStyle(.purple)
-                        }
-                    }
+                    Image(uiImage: StarCast.image(for: star.kind))
+                        .resizable().interpolation(.high).scaledToFit()
+                        .frame(width: largeText ? 32 : 24, height: largeText ? 32 : 24)
                     .accessibilityElement(children: .ignore)
-                    .accessibilityLabel(star.kind?.label ?? "Dark star")
+                    .accessibilityLabel(StarCast.character(for: star.kind).description)
                     .accessibilityIdentifier("experiment.incoming.\(star.id % StarfallExperiment.maximumShowerSize)")
                 }
                 ShowerCountdown(deadline: store.nextShowerDate,
@@ -165,7 +161,7 @@ import StarfallCore
             ? "Clear a matching group directly beside this dark star to dissolve it"
             : value >= 3
                 ? (store.game.darkStarsBeside(group).isEmpty ? "Clear this group to make room" : "Clear this group and dissolve the dark stars beside it")
-                : "Needs matching jewels worth three. Large jewels count as two")
+                : "Needs matching stars worth three. Grown stars count as two")
         .accessibilityIdentifier("experiment.cell.\(cell.row).\(cell.column)")
         .accessibilityRotorEntry(id: cell, in: matchingGroups)
         .disabled(!store.canClear)
@@ -174,9 +170,9 @@ import StarfallCore
     private func cellLabel(_ cell: Cell) -> String {
         let position = "row \(7-cell.row), column \(cell.column+1)"
         guard let gem = store.game.gem(at: cell) else { return "Empty, \(position)" }
-        guard let kind = gem.kind else { return "Dark star, \(position)" }
+        guard let kind = gem.kind else { return "\(StarCast.character(for: nil).description), \(position)" }
         let shade = store.game.isGrowthBlocked(at: cell) ? ", growth blocked by a dark star" : ""
-        return "\(gem.grown ? "Large " : "")\(kind.label), \(position)\(shade)"
+        return "\(gem.grown ? "Large " : "")\(StarCast.character(for: kind).description), \(position)\(shade)"
     }
 
     private var restartControls: some View {
@@ -215,10 +211,11 @@ import StarfallCore
                     Toggle("Calm effects", isOn: $calmEffects)
                         .accessibilityIdentifier("experiment.calm")
                     Text("How to play").font(.headline).accessibilityAddTraits(.isHeader)
+                    Text("Each star family has its own shape and face. Point counts identify the family, not its value: a small star is worth 1; a grown star is worth 2.")
                     Text("After you start, a shower arrives every \(store.game.balance.pace.rawValue) seconds. Matching stars travel together. When no group is ready, a later shower brings a matching run to a low column when there is room. The preview shows what is coming. Landing places remain a surprise. Clearing does not delay the sky.")
-                    Text("A star matching the small jewel on top grows it to value 2. A grown jewel cannot grow again, so the next star stacks above it.")
-                    Text("Clear connected matching jewels worth at least 3. A large jewel counts as 2, so a large jewel beside one small match can clear. Collect their combined value as starlight.")
-                    Text("An occasional dark star stops the jewels directly above, below, left and right from growing. Existing large jewels stay large. Clear any matching group touching it to dissolve it and free that space. Dark stars are not part of color matches and award no starlight.")
+                    Text("A star matching the small star on top grows it to value 2. A grown star cannot grow again, so the next star stacks above it.")
+                    Text("Clear connected matching stars worth at least 3. A grown star counts as 2, so a grown star beside one small match can clear. Collect their combined value as starlight.")
+                    Text("An occasional dark star stops the stars directly above, below, left and right from growing. Existing grown stars stay large. Clear any matching group touching it to dissolve it and free that space. Dark stars are not part of color matches and award no starlight.")
                     Text("Make room before a star reaches a full column. Pause to clear at your own pace. Call next shower brings the preview down immediately, even while paused. Settings and leaving the app freeze the sky; missed showers never accumulate. Replay a sky to try different choices.")
                 }
                 .font(StarfallTheme.Typography.body).padding(20)
@@ -237,7 +234,7 @@ import StarfallCore
             Text("Try a balance").font(.headline).accessibilityAddTraits(.isHeader)
             VStack(alignment: .leading, spacing: 8) {
                 Text("Shower pace")
-                Picker("Shower pace", selection: Binding(get: { store.game.balance.pace }, set: store.setPace)) {
+                Picker("Shower pace", selection: Binding(get: { store.game.balance.pace }, set: { store.setPace($0) })) {
                     ForEach(StarfallBalance.Pace.allCases, id: \.self) { pace in
                         Text(pace.title).tag(pace)
                     }
@@ -246,7 +243,7 @@ import StarfallCore
             }
             VStack(alignment: .leading, spacing: 8) {
                 Text("Dark stars")
-                Picker("Dark stars", selection: Binding(get: { store.game.balance.darkStars }, set: store.setDarkStarFrequency)) {
+                Picker("Dark stars", selection: Binding(get: { store.game.balance.darkStars }, set: { store.setDarkStarFrequency($0) })) {
                     ForEach(StarfallBalance.DarkStarFrequency.allCases, id: \.self) { frequency in
                         Text(frequency.title).tag(frequency)
                     }

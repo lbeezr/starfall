@@ -40,7 +40,7 @@ import StarfallCore
     private(set) var suspended = true
     private(set) var isPaused = true
     private(set) var nextShowerDate: Date?
-    private(set) var message = "Start the sky. Clear matching jewels to make room; adjust the balance in Settings."
+    private(set) var message = "Start the sky. Clear matching stars to make room; adjust the balance in Settings."
     private(set) var pending: StarfallExperimentTurn?
     var soundEnabled: Bool {
         didSet { defaults.set(soundEnabled, forKey: "soundEnabled"); if !soundEnabled { feedback.stopSounds() } }
@@ -96,7 +96,7 @@ import StarfallCore
         guard let turn = game.clear(cell) else {
             message = game.gem(at: cell)?.isDark == true
                 ? "Clear a matching group beside the dark star to dissolve it."
-                : "Match jewels worth 3 or more. Large jewels count as 2."
+                : "Match stars worth 3 or more. Large stars count as 2."
             announce(message)
             return
         }
@@ -123,7 +123,7 @@ import StarfallCore
             feedback.stopSounds()
             message = "Sky paused. Clear at your pace or call the next shower."
         } else {
-            message = "Watch the preview. Clear matching jewels before the columns fill."
+            message = "Watch the preview. Clear matching stars before the columns fill."
             armClock()
         }
     }
@@ -180,7 +180,7 @@ import StarfallCore
         } else if turn.arrivals.contains(where: { $0.gem.isDark }) {
             message = "A dark star blocks nearby growth. Clear beside it to dissolve it."
         } else if growth > 0 {
-            message = "\(growth == 1 ? "A jewel grew" : "\(growth) jewels grew") — worth 2 when cleared."
+            message = "\(growth == 1 ? "A star grew" : "\(growth) stars grew") — worth 2 when cleared."
         } else {
             message = "\(turn.arrivals.count == 1 ? "One star arrived" : "\(turn.arrivals.count) stars arrived"). Make room for the next shower."
         }

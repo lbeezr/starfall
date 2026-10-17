@@ -13,6 +13,7 @@ import StarfallCore
 
     override init(size: CGSize) {
         super.init(size: size)
+        StarCast.prewarm()
         scaleMode = .resizeFill; backgroundColor = .clear
         addChild(grid); addChild(pieces); addChild(effects)
         effects.zPosition = 5
@@ -32,20 +33,8 @@ import StarfallCore
     }
 
     private func makeNode(_ gem: StarfallGem) -> SKNode {
-        if let kind = gem.kind {
-            return JewelScene.makeBaseJewel(kind, radius: step * (gem.grown ? 0.42 : 0.32))
-        }
-        let node = SKNode()
-        node.name = "dark-star"
-        let corona = SKShapeNode(circleOfRadius: step * 0.36)
-        corona.strokeColor = .systemPurple.withAlphaComponent(0.8)
-        corona.lineWidth = 1.5; corona.glowWidth = 4
-        let core = SKShapeNode(circleOfRadius: step * 0.28)
-        core.fillColor = UIColor(red: 0.06, green: 0.03, blue: 0.12, alpha: 1)
-        core.strokeColor = .white.withAlphaComponent(0.55)
-        core.lineWidth = 1
-        node.addChild(corona); node.addChild(core)
-        return node
+        JewelScene.makeStarCharacter(gem.kind, expression: gem.grown ? .grown : .idle,
+                                    radius: step * (gem.grown ? 0.43 : 0.35))
     }
 
     private func shade(_ node: SKNode, at cell: Cell) {
@@ -91,6 +80,9 @@ import StarfallCore
         }
         for cell in turn.cleared {
             if let id = old.gem(at: cell)?.id, let node = nodes.removeValue(forKey: id) {
+                if let sprite = node as? SKSpriteNode {
+                    StarCast.setExpression(.clearing, for: old.gem(at: cell)?.kind, on: sprite)
+                }
                 let ring = SKShapeNode(circleOfRadius: step * 0.30)
                 ring.position = node.position
                 ring.strokeColor = old.gem(at: cell)?.kind?.color ?? .systemPurple
@@ -151,14 +143,7 @@ import StarfallCore
         halo.fillColor = color.withAlphaComponent(0.3); halo.strokeColor = color.withAlphaComponent(0.5)
         halo.glowWidth = 9
         comet.addChild(halo)
-        if arrival.star.isDark {
-            comet.addChild(makeNode(arrival.gem))
-        } else {
-            let star = SKLabelNode(text: "✦")
-            star.fontSize = step * 0.55; star.fontColor = .white
-            star.verticalAlignmentMode = .center
-            comet.addChild(star)
-        }
+        comet.addChild(JewelScene.makeStarCharacter(arrival.star.kind, expression: .landing, radius: step * 0.35))
         comet.position = CGPoint(x: point(arrival.cell).x, y: size.height + step)
         effects.addChild(comet)
         let fall = SKAction.move(to: point(arrival.cell), duration: 0.48)
@@ -168,7 +153,14 @@ import StarfallCore
 
     private func land(_ arrival: StarfallExperimentTurn.Arrival) {
         nodes[arrival.gem.id]?.removeFromParent()
-        let node = makeNode(arrival.gem)
+        let node = JewelScene.makeStarCharacter(arrival.gem.kind, expression: .landing,
+                                                radius: step * (arrival.gem.grown ? 0.43 : 0.35))
+        node.run(.sequence([.wait(forDuration: 0.12),
+                            .run { [weak node] in
+                                guard let node else { return }
+                                StarCast.setExpression(arrival.gem.grown ? .grown : .idle,
+                                                       for: arrival.gem.kind, on: node)
+                            }]))
         node.position = point(arrival.cell)
         pieces.addChild(node); nodes[arrival.gem.id] = node
         node.setScale(0.8)
