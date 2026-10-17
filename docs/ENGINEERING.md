@@ -2,6 +2,12 @@
 
 The working contract is [AGENTS.md](../AGENTS.md). This page explains verification and tracks specific deferred work; it is not a second product roadmap. Keep the deterministic package, small app store, renderer and explicit effects/save boundaries. No mandated architecture framework, new dependency, campaign or Swift-language migration is needed for this pass.
 
+## DRY and modularity
+
+Use the DRY, dependency-boundary and roughly 1,200-line review rules in [AGENTS.md](../AGENTS.md) during each change. Extract around a responsibility with a clear owner and inputs, not a line-number range. A separate file alone does not decouple code: the extracted component should not reach back into unrelated mutable state. Introduce a protocol where substitution or an existing test boundary needs one; a focused value type or concrete helper is often sufficient. Shared behavior should have one owner without forcing unrelated features into a generic framework.
+
+The current app Swift files are all below that size trigger. The duplicated board-coordinate mapping remains a concrete earlier extraction candidate because render/tap alignment must change together, regardless of file length. No broad source refactor is part of this guidance update.
+
 ## Working loop
 
 1. Inspect `git status --short` and the change's boundary. Preserve other edits, especially Xcode project configuration. Identify whether a rule/save, lifecycle, rendering, layout, asset or build contract changes.
