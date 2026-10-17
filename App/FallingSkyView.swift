@@ -4,7 +4,8 @@ import StarfallCore
 
 // Historical experiment.* accessibility IDs remain stable for automation and assistive clients.
 @MainActor struct FallingSkyView: View {
-    @State private var store = FallingSkyStore()
+    @State private var store = FallingSkyStore.forApp()
+    @State private var leaderboard = SkyLeaderboard.forApp()
     @State private var settings = false
     @State private var environmentGeneration = 0
     @AccessibilityFocusState private var menuFocused: Bool
@@ -43,9 +44,19 @@ import StarfallCore
         .preferredColorScheme(.dark)
         .statusBarHidden(!settings)
         .tint(StarfallTheme.Colors.actionPrimary)
-        .onAppear { store.setSuspended(false); store.settlePresentation(); updateMotion() }
-        .onDisappear { store.setSuspended(true) }
-        .onChange(of: scenePhase) { _, phase in store.setSuspended(phase != .active || settings) }
+        .onAppear {
+            let rankings = leaderboard
+            store.rankedPlayerID = { [weak rankings] in rankings?.currentPlayerID }
+            store.rankedResultHandler = { [weak rankings] in rankings?.record($0) }
+            leaderboard.start(); leaderboard.resume()
+            store.deliverRankedResult()
+            store.setSuspended(false); store.settlePresentation(); updateMotion()
+        }
+        .onDisappear { store.setSuspended(true); leaderboard.suspend() }
+        .onChange(of: scenePhase) { _, phase in
+            store.setSuspended(phase != .active || settings)
+            if phase == .active { leaderboard.resume() } else { leaderboard.suspend() }
+        }
         .onChange(of: settings) { _, shown in store.setSuspended(shown || scenePhase != .active) }
         .onChange(of: reduceMotion) { updateMotion() }
         .onChange(of: voiceOver) { updateMotion() }
@@ -213,7 +224,7 @@ import StarfallCore
     }
 
     private var settingsView: some View {
-        FallingSkyMenu(paused: store.isPaused, turns: store.game.turns,
+        FallingSkyMenu(leaderboard: leaderboard, paused: store.isPaused, turns: store.game.turns,
                        groups: store.game.legalGroups.count, over: store.game.isOver,
                        challenge: store.game.challenge != nil, balance: store.game.balance,
                        sound: $store.soundEnabled, haptics: $store.hapticsEnabled, calm: $calmEffects,

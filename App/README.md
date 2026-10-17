@@ -15,3 +15,7 @@ Default Falling Sky uses the full-screen Observatory. `ObservatoryGeometry` owns
 `FallingSkyHUD` owns the selected transparent score/trail/menu row and cast guidance. `FallingSkyMenu` receives snapshots, bindings and narrow actions, with dedicated help/balance pages. The trail reads the existing deadline; it never schedules showers. See [interface contracts](../docs/design/OBSERVATORY_INTERFACE.md).
 
 `StarCast` owns Crystal Glow materials for board, comets, HUD and previews: six packaged bodies, authored faces, shallow turns and a bounded 72-material cache. The scene owns separate contact shadows; their placement follows cached body height and grown size. See the [production contract](../docs/design/star-cast/README.md).
+
+## Optional rankings
+
+`SkyLeaderboard` owns Game Center identity, pending best scores, per-player cached Friends/Global standings and request cancellation. `GameCenterClient` is the Apple transport; `SkyRankingRecords` and `SkyRankingSession` keep app-local record/provenance contracts separate from core saves. `SkyLeaderboardView` is reached from the suspended sky menu. [Configuration and offline contract](../docs/design/GAME_CENTER.md) documents required Apple setup. The Debug-only fixture injects isolated local sample data with explicit reset/review arguments; Release has no sample transport.

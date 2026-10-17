@@ -3,6 +3,7 @@ import StarfallCore
 
 /// Settings receives value snapshots, bindings and narrow actions, never the store.
 struct FallingSkyMenu: View {
+    let leaderboard: SkyLeaderboard
     let paused: Bool
     let turns: Int
     let groups: Int
@@ -42,6 +43,9 @@ struct FallingSkyMenu: View {
                     SkyPreferenceToggle(title: "Calm effects", symbol: "moon", value: $calm, identifier: "experiment.calm")
                 }
                 Section("Explore") {
+                    NavigationLink { SkyLeaderboardView(leaderboard: leaderboard).toolbar { dismissal } }
+                        label: { Label("Rankings", systemImage: "trophy") }
+                        .accessibilityIdentifier("rankings.open")
                     if !challenge {
                         NavigationLink { Form { balanceControls }.navigationTitle("Sky balance").toolbar { dismissal } }
                             label: { Label("Sky balance", systemImage: "slider.horizontal.3") }
