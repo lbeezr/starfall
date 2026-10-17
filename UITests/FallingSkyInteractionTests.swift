@@ -1042,7 +1042,14 @@ extension ConstellationTraceNativeTests {
                 XCTAssertTrue(app.buttons["experiment.done"].waitForExistence(timeout: 5))
                 XCTAssertFalse(phase.exists)
                 XCUIDevice.shared.press(.home); app.activate()
-                app.buttons["experiment.done"].tap()
+                // Activation may return before the restored sheet accepts touches.
+                // Admit one tap only when its actual foreground control is ready.
+                let done = app.buttons["experiment.done"]
+                XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+                    app.state == .runningForeground && done.isHittable && done.isEnabled
+                }, object: nil).wait(timeout: 5))
+                done.tap()
+                XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "exists == false"), object: done).wait(timeout: 5))
                 XCTAssertTrue(phase.waitForExistence(timeout: 5)); XCTAssertEqual(phase.label, expected)
             }
         }
