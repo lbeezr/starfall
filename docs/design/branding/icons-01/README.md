@@ -1,0 +1,13 @@
+# Sanctuary icon replacements — exploration 01
+
+October 17, 2026. User requested replacement exploration for consistency with the selected sanctuary cover. This is exploration, not authorization to install a particular candidate.
+
+Acceptance: three distinct icon treatments in the same visual family, aqua four-point protagonist, midnight palette and sanctuary light; compare at large and small browser sizes alongside existing icon and cover. No text, pre-rounded source mask or additional cast. The built-in OpenAI image generation tool used the round-four cover as reference. `icon-directions.png` is the original 2172 × 724 three-square concept strip, left to right Spark Portrait, Moonwater Spark, Garden Spark. Generated source is preserved unchanged. Each square is 724 × 724; these are not 1024-pixel production catalog exports.
+
+`index.html` presents equal thirds through CSS background positioning, including 60/40/24 CSS-pixel proofs. Rounded corners are review presentation only; opaque source squares are unmasked. There are no separate cropped/upsampled production assets or app catalog changes. Inspect the full source strip before later export; any selected concept needs standalone high-resolution refinement and native validation.
+
+Visual review: all three retain a readable aqua star silhouette. Portrait is clearest when small. Moonwater is the preferred balance of sanctuary identity and character emphasis. Garden has more visual competition from flowers. Generated glossy highlights and cloud/water detail are stronger than the prompt's restrained intent; simplify those in final refinement if needed. Face/surface detail becomes incidental at the smallest sizes. These observations come from browser proofs, not actual Home Screen rendering.
+
+Verification: comparison rendered in installed Google Chrome via bundled Playwright at 1440 × 1000 viewport; full 1440 × 1290 capture visually inspected as `review-board.png`. Current icon and cover image loads passed, generated CSS backgrounds visually confirmed, no page JavaScript errors. `python3 scripts/ci-hygiene.py` and `git diff --check` passed. Existing unrelated working-tree changes were preserved; this task adds only this folder. No Swift tests or native builds run because no app source/resources changed. Native icon masks, system treatments, device scale and actual Home Screen acceptance remain unverified.
+
+Decision point: select/refine a candidate before exporting app assets. Keep the existing installed icon until selection and native verification. No alternate-icon switching, new dependencies, runtime pilot flags, rules or saves change.

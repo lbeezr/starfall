@@ -1,0 +1,9 @@
+# Falling Spark — icon exploration 02
+
+October 17, 2026. User requested options showing Spark falling. This round uses the preceding icon strip as reference through the built-in image generation tool.
+
+Review criteria: three distinct joyful downward poses; recognizable aqua four-point silhouette and face; trail originates above rather than below Spark; sanctuary palette; compare at 60/40/24 CSS pixels. Options: Gentle Descent, Moonwater Arrival, Playful Tumble. Original generated strip is preserved as `icon-directions.png`; HTML presents each third using CSS, with masks only in browser presentation. No bitmap editing or production icon export is performed.
+
+These remain exploration candidates. Current installed glass icon and native assets are unchanged. Before adoption, choose a pose, refine independent high-resolution artwork, simplify detail as needed, and validate native Home Screen masks and small sizes. Static browser proofs do not establish native appearance, accessibility or animation. This is icon art, not a new game animation or rule.
+
+Verification: original generated strip is 2172 × 724 (three 724-pixel squares), not production catalog artwork. Comparison rendered with installed Google Chrome via Playwright at 1440 × 1000; full 1440 × 1290 capture visually inspected. CSS icon backgrounds and both reference images loaded, no page JavaScript errors. Hygiene and diff whitespace checks passed. Scope is this folder only; unrelated working-tree edits preserved, no Swift/native checks run. The trails are broader/longer than requested but clearly terminate behind the descending stars. A is the simplest descent; B adds a clear destination; C has the strongest tumble but changes apparent silhouette proportions. Refine trail weight and canonical proportions after selection. Native masks, system treatments and Home Screen validation remain pending.

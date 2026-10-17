@@ -21,7 +21,7 @@ final class ObservatoryInteractionTests: XCTestCase {
         let menu = app.buttons["experiment.settings"]
         XCTAssertGreaterThanOrEqual(menu.frame.width, 44)
         XCTAssertLessThanOrEqual(menu.frame.width, 52)
-        XCTAssertTrue(app.staticTexts["experiment.message"].label.contains("Take a breath"))
+        XCTAssertTrue(app.staticTexts["experiment.message"].label.contains("Match stars worth three"))
         let before = app.otherElements["experiment.board"].value as? String
         capture(app, "Celestial-HUD-welcome")
         menu.tap()
@@ -231,8 +231,11 @@ extension ObservatoryInteractionTests {
         continueAfterFailure = false
         let service = XCUIDevice.shared.voiceOverService
         let wasEnabled = service.isEnabled
+        addTeardownBlock { @MainActor in
+            if !wasEnabled { try XCUIDevice.shared.voiceOverService.disable() }
+            XCTAssertEqual(XCUIDevice.shared.voiceOverService.isEnabled, wasEnabled)
+        }
         try service.enable()
-        defer { if !wasEnabled { try? service.disable() } }
         XCTAssertTrue(service.isEnabled)
         let app = launch(); defer { app.terminate() }
         var transcript: [String] = []

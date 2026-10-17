@@ -6,6 +6,7 @@ This is the authoritative status register for gameplay and presentation experime
 
 | Work | Status | Production boundary / next decision |
 | --- | --- | --- |
+| Paused outcome guidance | Adopted with production generator | Paused guide reads the store's committed/corrective message. [Production verification](evidence/paused-guide-adoption-2026-10-17/README.md): growth, dark arrival/removal, invalid input, restore, focused actual VoiceOver and system Reduce Motion. No rule/save change or shower-candidate adoption. |
 | Crystal Glow character refinement | Adopted; user-approved direction and masters | Shared cast factory composes packaged bodies with four expressions and shallow turns; separate body-aware ground shadows. No rule/save/geometry change. [Integration evidence](evidence/crystal-glow-integration-2026-10-17/README.md) records native passes and reproduced baseline accessibility failures. |
 | Falling sky: accumulating stars, showers, growth, dark stars, local balance | Adopted | Default game in Debug and Release. Production owners are `FallingSky`, `FallingSkyStore`, `FallingSkyScene`, and `FallingSkyView`. |
 | Angled arrivals, weighted rebounds, survivor ripples | Adopted | Default presentation, no pilot flag. Rule/save outcomes unchanged. [Evidence](evidence/physical-reactions-2026-10-17/README.md); device/human tuning remains open. |
