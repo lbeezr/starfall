@@ -1,0 +1,16 @@
+{
+  "bundle": "com.starfall.supernovalab",
+  "fixtureSeed": 124,
+  "fixtureShower": 9,
+  "source": "30af812aa3bf3105a55d8b960288e1d2ac672c2c",
+  "toolSHA256": {
+    "NativeChargeControl.swift": "b94d1fdf483dd8a10fc58bbc0030432c8a5f3dc9ea4acbfc06963b6114b9cbd2",
+    "NativeChargeStore.swift": "4817b7643b70ae39bc9c079223cd89a80355004aa82ba0f720457e066b4120c2",
+    "NativeChargeStoreTests.swift": "de8c1c6deece57a1955899ec8b83ae626e5610667e69f9d625a142754d26a775",
+    "NativeChargeUITests.swift": "04b0b6e503fe98204cd5bcedb0b9caadbeee6036e676d7e9af763850a4a3dc02",
+    "SupernovaSample.swift": "9f78ff718ca30b979753439bf9974cc20834f92b07ab6fc70145a97fd73fe657",
+    "prepare-native-lab.py": "39907d3de2145b3d0748f200568617254f22a4ec962edb262eaca18b7b5fa27f",
+    "run-supernova.py": "09082ac86b25ed0c987f22949787ab5e2a5c64acab97374faed49d05a7d2eb5b",
+    "supernova.patch": "716d0d7cfd416a7876927d97c2ef71875311d6095a5ce31c446a00349b76e52d"
+  }
+}

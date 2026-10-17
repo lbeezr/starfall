@@ -5,6 +5,39 @@ import StarfallCore
 @testable import Starfall
 
 final class StarCastTests: XCTestCase {
+    @MainActor func testSkyReactionWeightsAndBounds() {
+        XCTAssertLessThan(StarfallMotion.rebound(dark: true, grew: false), StarfallMotion.rebound(dark: false, grew: true))
+        XCTAssertLessThan(StarfallMotion.rebound(dark: false, grew: true), StarfallMotion.rebound(dark: false, grew: false))
+        for id in 0..<100 {
+            XCTAssertGreaterThan(StarfallMotion.drift(for: id, column: 0), 0)
+            XCTAssertLessThan(StarfallMotion.drift(for: id, column: 6), 0)
+            for column in 0..<7 { XCTAssertLessThanOrEqual(abs(StarfallMotion.drift(for: id, column: column)), 1.5) }
+        }
+        XCTAssertEqual(StarfallMotion.ripple(distance: 3, collected: 8, heavy: false), 0)
+        XCTAssertEqual(StarfallMotion.ripple(distance: 0, collected: 8, heavy: false), 0)
+        let near = StarfallMotion.ripple(distance: 1, collected: 5, heavy: false)
+        XCTAssertGreaterThan(near, StarfallMotion.ripple(distance: 2, collected: 5, heavy: false))
+        XCTAssertGreaterThan(near, StarfallMotion.ripple(distance: 1, collected: 3, heavy: false))
+        XCTAssertGreaterThan(near, StarfallMotion.ripple(distance: 1, collected: 5, heavy: true))
+        XCTAssertLessThan(near, 0.22)
+    }
+
+    @MainActor func testSkyRenderCancelsPendingFlightCompletion() async {
+        let scene = FallingSkyScene(size: CGSize(width: 350, height: 350))
+        let view = SKView(frame: CGRect(x: 0, y: 0, width: 350, height: 350))
+        view.presentScene(scene)
+        let old = FallingSky(seed: 5)
+        var game = old
+        let turn = game.letStarsFall()!
+        let stale = expectation(description: "replaced flight must not finish")
+        stale.isInverted = true
+        scene.animate(turn, from: old, to: game) { stale.fulfill() }
+        scene.render(old)
+        await fulfillment(of: [stale], timeout: 1.2)
+        XCTAssertFalse(scene.hasActions())
+        view.presentScene(nil)
+    }
+
     @MainActor func testCompleteCastIsBoundedAndReusesMaterialsAcrossRounds() throws {
         StarCast.prewarm()
         XCTAssertEqual(StarCast.cachedMaterialCount, 72)
@@ -56,10 +89,10 @@ final class StarCastTests: XCTestCase {
     }
 
     @MainActor func testFallingSkyUsesTheCompleteCastAndRepeatedRendersDoNotAccumulateNodes() {
-        var game = StarfallExperiment(seed: 5)
+        var game = FallingSky(seed: 5)
         for _ in 0..<16 where !game.isOver { _ = game.letStarsFall() }
         XCTAssertTrue(game.board.contains { $0?.isDark == true })
-        let scene = StarfallExperimentScene(size: CGSize(width: 378, height: 560))
+        let scene = FallingSkyScene(size: CGSize(width: 378, height: 560))
         func castNodes(_ node: SKNode) -> [SKNode] {
             node.children.flatMap { child in
                 (child.name?.hasPrefix("star-cast.") == true ? [child] : []) + castNodes(child)
@@ -97,7 +130,7 @@ final class StarCastTests: XCTestCase {
         guard !UIAccessibility.isReduceMotionEnabled && !UIAccessibility.isVoiceOverRunning else {
             throw XCTSkip("Full-animation geometry check requires normal motion; reduced-motion behavior is covered separately")
         }
-        let scene = StarfallExperimentScene(size: CGSize(width: 350, height: 560))
+        let scene = FallingSkyScene(size: CGSize(width: 350, height: 560))
         let view = SKView(frame: CGRect(x: 0, y: 0, width: 350, height: 560))
         guard let windowScene = UIApplication.shared.connectedScenes.compactMap({ $0 as? UIWindowScene }).first else {
             XCTFail("Hosted animation check requires an active window scene"); return
@@ -108,11 +141,13 @@ final class StarCastTests: XCTestCase {
         window.rootViewController = controller; window.makeKeyAndVisible()
         defer { view.presentScene(nil); window.isHidden = true; previousKeyWindow?.makeKey() }
         view.presentScene(scene)
-        var game = StarfallExperiment(seed: 5)
+        var game = FallingSky(seed: 5)
         let old = game
         guard let turn = game.letStarsFall() else { XCTFail("Expected first shower"); return }
         var complete = false
         scene.animate(turn, from: old, to: game) { complete = true }
+        var observedRebound = false
+        let restingY = scene.size.height / 2 - 3 * scene.size.height / 7.7
         // Sample throughout flight, landing, expression swap and settlement, not just the final frame.
         for _ in 0..<70 {
             try? await Task.sleep(for: .milliseconds(20))
@@ -126,8 +161,44 @@ final class StarCastTests: XCTestCase {
                 }
             }
             inspect(scene)
+            // The pieces layer contains only landed stars; travelers live in the effects layer.
+            if scene.children[1].children.contains(where: { $0.position.y > restingY + 1 }) {
+                observedRebound = true
+            }
         }
         XCTAssertTrue(complete)
+        XCTAssertTrue(observedRebound, "Normal-motion arrivals must visibly rebound before settling")
+        for node in scene.children[1].children {
+            XCTAssertEqual(node.position.y, restingY, accuracy: 0.01)
+            XCTAssertEqual(node.xScale, 1, accuracy: 0.01)
+            XCTAssertEqual(node.yScale, 1, accuracy: 0.01)
+        }
+        // Populate a reproducible neighborhood without depending on an animation to advance rules.
+        for _ in 0..<4 { _ = game.letStarsFall() }
+        let beforeClear = game
+        guard let cell = game.legalGroups.first?.first, let clear = game.clear(cell) else {
+            XCTFail("Seed must offer a clear with neighboring survivors"); return
+        }
+        var clearComplete = false
+        scene.animate(clear, from: beforeClear, to: game) { clearComplete = true }
+        let origins = Dictionary(uniqueKeysWithValues: scene.children[1].children.map { (ObjectIdentifier($0), $0.position) })
+        var observedRipple = false
+        // Inspect only the wave phase, before gravity starts at 260 ms.
+        for _ in 0..<11 {
+            try? await Task.sleep(for: .milliseconds(20))
+            for node in scene.children[1].children where node.alpha == 1 {
+                if let origin = origins[ObjectIdentifier(node)], hypot(node.position.x - origin.x, node.position.y - origin.y) > 0.3 {
+                    observedRipple = true
+                }
+            }
+        }
+        XCTAssertTrue(observedRipple, "A neighboring survivor must react before gravity")
+        let deadline = ContinuousClock.now + .seconds(3)
+        while !clearComplete && ContinuousClock.now < deadline {
+            try? await Task.sleep(for: .milliseconds(20))
+        }
+        XCTAssertTrue(clearComplete)
+        XCTAssertEqual(scene.children[1].children.count, game.occupiedCount)
     }
 
     @MainActor func testEveryCharacterHasACompleteTwelveFrameSheet() throws {

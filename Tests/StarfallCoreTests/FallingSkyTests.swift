@@ -1,16 +1,34 @@
 import XCTest
 @testable import StarfallCore
 
-final class StarfallExperimentTests: XCTestCase {
+final class FallingSkyTests: XCTestCase {
+    func testPrePromotionSaveRestoresAndContinuesIdentically() throws {
+        // Encoded by StarfallExperiment before its production rename on October 17, 2026.
+        let json = #"""
+        {"board":[{"grown":true,"id":13,"kind":3},{"grown":false,"id":11,"kind":4},{"grown":false,"id":12,"kind":4},{"grown":false,"id":0,"kind":4},{"grown":true,"id":1,"kind":4},{"grown":false,"id":2,"kind":4},{"grown":true,"id":5,"kind":1},null,null,null,{"grown":false,"id":8,"kind":1},null,{"grown":false,"id":7,"kind":1},null,null,null,null,{"grown":false,"id":14,"kind":3},null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"cohesiveShowers":true,"darkStarsCleared":0,"incoming":[{"column":2,"id":25}],"random":{"state":10615391314449192844},"remainingColumns":[1,4,5,6],"savedBalance":{"darkStars":"regular","pace":4},"score":3,"seed":5,"showersUntilDark":3,"starsLanded":16,"turns":5}
+        """#
+        var restored = try JSONDecoder().decode(FallingSky.self, from: Data(json.utf8))
+        var control = FallingSky(seed: 5)
+        for _ in 0..<5 { _ = control.letStarsFall() }
+        _ = control.clear(try XCTUnwrap(control.legalGroups.first?.first))
+        XCTAssertTrue(restored.isValidSave)
+        XCTAssertEqual(restored, control)
+        for _ in 0..<8 {
+            _ = restored.letStarsFall()
+            _ = control.letStarsFall()
+            XCTAssertEqual(restored, control)
+        }
+    }
+
     private func shower(_ kinds: [Jewel], columns: [Int] = [0, 0, 0]) -> [IncomingStar] {
         zip(kinds, columns).enumerated().map { IncomingStar(id: $0.offset, kind: $0.element.0, column: $0.element.1) }
     }
     private var empty: [StarfallGem?] { Array(repeating: nil, count: 49) }
 
     func testEmptyStartAndInvalidInputNeverAdvanceTheForecast() {
-        var game = StarfallExperiment(seed: 42)
+        var game = FallingSky(seed: 42)
         let before = game
-        XCTAssertEqual(game.occupiedCount, 0); XCTAssertTrue(StarfallExperiment.showerSizes.contains(game.incoming.count))
+        XCTAssertEqual(game.occupiedCount, 0); XCTAssertTrue(FallingSky.showerSizes.contains(game.incoming.count))
         XCTAssertTrue(game.isValidSave)
         XCTAssertNil(game.clear(Cell(0, 0))); XCTAssertNil(game.clear(Cell(-1, 7)))
         XCTAssertEqual(game, before)
@@ -22,7 +40,7 @@ final class StarfallExperimentTests: XCTestCase {
     }
 
     func testMatchingArrivalGrowsOnceAndTheNextStarStacks() {
-        var game = StarfallExperiment(board: empty, incoming: shower([.rose, .rose, .rose]))
+        var game = FallingSky(board: empty, incoming: shower([.rose, .rose, .rose]))
         let turn = game.letStarsFall()!
         XCTAssertEqual(turn.arrivals.map(\.grew), [false, true, false])
         XCTAssertEqual(game.gem(at: Cell(0, 0))?.value, 2)
@@ -38,24 +56,24 @@ final class StarfallExperimentTests: XCTestCase {
         board[0] = .init(id: 0, kind: .rose)
         board[1] = .init(id: 1, kind: .rose)
         board[2] = .init(id: 2, kind: .mint, grown: true)
-        var game = StarfallExperiment(board: board, incoming: shower([.aqua, .aqua, .aqua]))
+        var game = FallingSky(board: board, incoming: shower([.aqua, .aqua, .aqua]))
         let before = game
         XCTAssertNil(game.clear(Cell(0, 0))); XCTAssertNil(game.clear(Cell(0, 2)))
         XCTAssertTrue(game.legalGroups.isEmpty); XCTAssertEqual(game, before)
     }
 
     func testDifferentColorsStackWithoutReplacingExistingJewels() {
-        var game = StarfallExperiment(board: empty, incoming: shower([.rose, .aqua, .mint]))
+        var game = FallingSky(board: empty, incoming: shower([.rose, .aqua, .mint]))
         game.letStarsFall()
         XCTAssertEqual((0..<3).compactMap { game.gem(at: Cell($0, 0))?.kind }, [.rose, .aqua, .mint])
         XCTAssertEqual(game.occupiedCount, 3)
     }
 
     func testLegacyForecastVisitsEveryColumnBeforeRepeating() throws {
-        let fresh = StarfallExperiment(seed: 42)
+        let fresh = FallingSky(seed: 42)
         var json = try XCTUnwrap(JSONSerialization.jsonObject(with: JSONEncoder().encode(fresh)) as? [String: Any])
         json.removeValue(forKey: "cohesiveShowers")
-        var game = try JSONDecoder().decode(StarfallExperiment.self, from: JSONSerialization.data(withJSONObject: json))
+        var game = try JSONDecoder().decode(FallingSky.self, from: JSONSerialization.data(withJSONObject: json))
         var columns: [Int] = []
         while columns.count < 21 {
             columns += game.incoming.map(\.column)
@@ -72,7 +90,7 @@ final class StarfallExperimentTests: XCTestCase {
         board[7] = .init(id: 1, kind: .rose)
         board[14] = .init(id: 2, kind: .rose)
         board[21] = .init(id: 3, kind: .mint, grown: true)
-        var game = StarfallExperiment(board: board, incoming: shower([.aqua, .violet, .amber], columns: [6, 6, 6]))
+        var game = FallingSky(board: board, incoming: shower([.aqua, .violet, .amber], columns: [6, 6, 6]))
         let turn = game.clear(Cell(0, 0))!
         XCTAssertEqual(turn.cleared, [Cell(0, 0), Cell(1, 0), Cell(2, 0)])
         XCTAssertEqual(turn.collected, 4); XCTAssertEqual(game.score, 4)
@@ -86,7 +104,7 @@ final class StarfallExperimentTests: XCTestCase {
         board[0] = .init(id: 0, kind: .rose)
         board[8] = .init(id: 1, kind: .rose)
         board[16] = .init(id: 2, kind: .rose)
-        let game = StarfallExperiment(board: board, incoming: shower([.aqua, .aqua, .aqua]))
+        let game = FallingSky(board: board, incoming: shower([.aqua, .aqua, .aqua]))
         XCTAssertEqual(game.group(at: Cell(0, 0)), [Cell(0, 0)])
         XCTAssertTrue(game.group(at: Cell(6, 6)).isEmpty)
         XCTAssertTrue(game.legalGroups.isEmpty)
@@ -95,7 +113,7 @@ final class StarfallExperimentTests: XCTestCase {
     func testOverflowStopsAtTheBlockedStarAndLocksBothActions() {
         var board = empty
         for row in 0..<7 { board[row * 7] = .init(id: row, kind: row.isMultiple(of: 2) ? .mint : .rose) }
-        var game = StarfallExperiment(board: board, incoming: shower([.aqua, .rose, .amber], columns: [1, 0, 2]))
+        var game = FallingSky(board: board, incoming: shower([.aqua, .rose, .amber], columns: [1, 0, 2]))
         let turn = game.letStarsFall()!
         XCTAssertEqual(turn.arrivals.count, 1)
         XCTAssertEqual(turn.blockedColumn, 0); XCTAssertTrue(game.isOver)
@@ -108,7 +126,7 @@ final class StarfallExperimentTests: XCTestCase {
     func testFullColumnCanAcceptOneMatchingGrowthBeforeOverflowing() {
         var board = empty
         for row in 0..<7 { board[row * 7] = .init(id: row, kind: .mint) }
-        var game = StarfallExperiment(board: board, incoming: shower([.mint, .mint, .mint]))
+        var game = FallingSky(board: board, incoming: shower([.mint, .mint, .mint]))
         let turn = game.letStarsFall()!
         XCTAssertEqual(turn.arrivals.count, 1); XCTAssertTrue(turn.arrivals[0].grew)
         XCTAssertEqual(game.gem(at: Cell(6, 0))?.value, 2)
@@ -119,9 +137,9 @@ final class StarfallExperimentTests: XCTestCase {
         var board = empty
         for row in 0..<7 { board[row * 7] = .init(id: row, kind: row < 3 ? .rose : .mint) }
         let forecast = shower([.aqua, .violet, .amber])
-        var waiting = StarfallExperiment(board: board, incoming: forecast)
+        var waiting = FallingSky(board: board, incoming: forecast)
         waiting.letStarsFall(); XCTAssertTrue(waiting.isOver)
-        var clearing = StarfallExperiment(board: board, incoming: forecast)
+        var clearing = FallingSky(board: board, incoming: forecast)
         clearing.clear(Cell(0, 0))
         XCTAssertEqual(clearing.incoming, forecast)
         XCTAssertEqual(clearing.occupiedCount, 4)
@@ -131,7 +149,7 @@ final class StarfallExperimentTests: XCTestCase {
     }
 
     func testClearLeavesAnnouncedForecastUntouched() {
-        var game = StarfallExperiment(seed: 5)
+        var game = FallingSky(seed: 5)
         for _ in 0..<20 where game.legalGroups.isEmpty && !game.isOver { game.letStarsFall() }
         let cell = game.legalGroups.first!.first!
         var waiting = game
@@ -148,7 +166,7 @@ final class StarfallExperimentTests: XCTestCase {
     func testSeededShowersVaryAcrossAllFourSizesAndHaveUniqueIDs() {
         var sizes: Set<Int> = []
         for seed in UInt64(0)..<50 {
-            var game = StarfallExperiment(seed: seed)
+            var game = FallingSky(seed: seed)
             var ids: Set<Int> = []
             for _ in 0..<10 {
                 sizes.insert(game.incoming.count)
@@ -161,7 +179,7 @@ final class StarfallExperimentTests: XCTestCase {
     }
 
     func testDarkStarsStackWithoutGrowingOrJoiningColorMatches() {
-        var game = StarfallExperiment(board: empty, incoming: [
+        var game = FallingSky(board: empty, incoming: [
             .init(id: 0, kind: nil, column: 0), .init(id: 1, kind: nil, column: 0),
             .init(id: 2, kind: .rose, column: 0)])
         let turn = game.letStarsFall()!
@@ -178,7 +196,7 @@ final class StarfallExperimentTests: XCTestCase {
         board[0] = .init(id: 0, kind: .rose)
         board[1] = .init(id: 1, kind: nil)
         board[2] = .init(id: 2, kind: .mint, grown: true)
-        var game = StarfallExperiment(board: board, incoming: [
+        var game = FallingSky(board: board, incoming: [
             .init(id: 3, kind: .rose, column: 0), .init(id: 4, kind: .rose, column: 0)])
         XCTAssertTrue(game.isGrowthBlocked(at: Cell(0, 0)))
         XCTAssertTrue(game.isGrowthBlocked(at: Cell(0, 2)))
@@ -194,7 +212,7 @@ final class StarfallExperimentTests: XCTestCase {
     func testDarkStarAffectsLaterArrivalsInTheSameShower() {
         var board = empty
         board[0] = .init(id: 0, kind: .rose)
-        var game = StarfallExperiment(board: board, incoming: [
+        var game = FallingSky(board: board, incoming: [
             .init(id: 1, kind: nil, column: 1), .init(id: 2, kind: .rose, column: 0)])
         let turn = game.letStarsFall()!
         XCTAssertEqual(turn.arrivals.map(\.grew), [false, false])
@@ -207,7 +225,7 @@ final class StarfallExperimentTests: XCTestCase {
         board[3] = .init(id: 3, kind: nil)
         board[10] = .init(id: 4, kind: nil) // diagonal: survives, then falls
         board[7] = .init(id: 5, kind: .mint, grown: true)
-        var game = StarfallExperiment(board: board, incoming: shower([.aqua, .aqua, .aqua]))
+        var game = FallingSky(board: board, incoming: shower([.aqua, .aqua, .aqua]))
         let forecast = game.incoming
         let turn = game.clear(Cell(0, 0))!
         XCTAssertEqual(turn.cleared, [Cell(0, 0), Cell(0, 1), Cell(0, 2), Cell(0, 3)])
@@ -224,7 +242,7 @@ final class StarfallExperimentTests: XCTestCase {
         board[1] = .init(id: 1, kind: .rose)
         board[7] = .init(id: 2, kind: .rose)
         board[8] = .init(id: 3, kind: nil)
-        var game = StarfallExperiment(board: board, incoming: shower([.aqua, .aqua, .aqua]))
+        var game = FallingSky(board: board, incoming: shower([.aqua, .aqua, .aqua]))
         XCTAssertEqual(game.clear(Cell(0, 0))?.cleared.count, 4)
         XCTAssertEqual(game.darkStarsCleared, 1); XCTAssertEqual(game.score, 3)
         XCTAssertEqual(game.occupiedCount, 0)
@@ -236,14 +254,14 @@ final class StarfallExperimentTests: XCTestCase {
             board[row * 7] = .init(id: row, kind: .mint)
             board[row * 7 + 1] = .init(id: 7 + row, kind: row == 6 ? nil : .aqua)
         }
-        var game = StarfallExperiment(board: board, incoming: [.init(id: 14, kind: .mint, column: 0)])
+        var game = FallingSky(board: board, incoming: [.init(id: 14, kind: .mint, column: 0)])
         XCTAssertTrue(game.letStarsFall()!.arrivals.isEmpty)
         XCTAssertEqual(game.blockedColumn, 0)
     }
 
     func testDarkStarsStartAtSixthShowerThenOccurEveryFourToSixShowers() {
         for seed in UInt64(0)..<50 {
-            var game = StarfallExperiment(seed: seed)
+            var game = FallingSky(seed: seed)
             var lastDark: Int?
             for number in 1...25 where !game.isOver {
                 let dark = game.incoming.filter(\.isDark)
@@ -263,13 +281,13 @@ final class StarfallExperimentTests: XCTestCase {
 
     func testReplayAndSaveRestorePreserveFutureShowers() throws {
         for seed in UInt64(0)..<50 {
-            var game = StarfallExperiment(seed: seed)
-            var replay = StarfallExperiment(seed: seed)
+            var game = FallingSky(seed: seed)
+            var replay = FallingSky(seed: seed)
             for _ in 0..<50 where !game.isOver {
                 if let cell = game.legalGroups.first?.first { game.clear(cell); replay.clear(cell) }
                 else { game.letStarsFall(); replay.letStarsFall() }
                 XCTAssertEqual(game, replay); XCTAssertTrue(game.isValidSave)
-                let restored = try JSONDecoder().decode(StarfallExperiment.self, from: JSONEncoder().encode(game))
+                let restored = try JSONDecoder().decode(FallingSky.self, from: JSONEncoder().encode(game))
                 XCTAssertEqual(game, restored)
                 replay = restored
             }
@@ -279,7 +297,7 @@ final class StarfallExperimentTests: XCTestCase {
     func testEveryDarkFrequencyHonorsItsFirstArrivalAndGap() {
         for frequency in StarfallBalance.DarkStarFrequency.allCases {
             for seed in UInt64(0)..<20 {
-                var game = StarfallExperiment(seed: seed, balance: .init(darkStars: frequency))
+                var game = FallingSky(seed: seed, balance: .init(darkStars: frequency))
                 var lastDark: Int?
                 for number in 1...30 where !game.isOver {
                     let dark = game.incoming.filter(\.isDark)
@@ -300,7 +318,7 @@ final class StarfallExperimentTests: XCTestCase {
     }
 
     func testChangingFrequencyKeepsBoardAndPreviewThenStopsNewDarkStars() {
-        var game = StarfallExperiment(seed: 5)
+        var game = FallingSky(seed: 5)
         for _ in 0..<5 { game.letStarsFall() }
         XCTAssertTrue(game.incoming.contains(where: \.isDark))
         let old = game
@@ -318,7 +336,7 @@ final class StarfallExperimentTests: XCTestCase {
     }
 
     func testPaceChangesDoNotChangeFutureShowerSequence() {
-        var reference = StarfallExperiment(seed: 5), changed = reference
+        var reference = FallingSky(seed: 5), changed = reference
         changed.setBalance(.init(pace: .gentle))
         for _ in 0..<25 where !reference.isOver {
             XCTAssertEqual(changed.incoming, reference.incoming)
@@ -332,12 +350,12 @@ final class StarfallExperimentTests: XCTestCase {
         for pace in StarfallBalance.Pace.allCases {
             for frequency in StarfallBalance.DarkStarFrequency.allCases {
                 let balance = StarfallBalance(pace: pace, darkStars: frequency)
-                var game = StarfallExperiment(seed: 5, balance: balance), replay = game
+                var game = FallingSky(seed: 5, balance: balance), replay = game
                 for _ in 0..<30 where !game.isOver {
                     if let cell = game.legalGroups.first?.first { game.clear(cell); replay.clear(cell) }
                     else { game.letStarsFall(); replay.letStarsFall() }
                     XCTAssertEqual(game, replay); XCTAssertTrue(game.isValidSave)
-                    replay = try JSONDecoder().decode(StarfallExperiment.self, from: JSONEncoder().encode(game))
+                    replay = try JSONDecoder().decode(FallingSky.self, from: JSONEncoder().encode(game))
                     XCTAssertEqual(replay.balance, balance)
                     XCTAssertEqual(replay, game)
                 }
@@ -346,11 +364,11 @@ final class StarfallExperimentTests: XCTestCase {
     }
 
     func testPreTuningSaveKeepsItsBoardAndFutureSequence() throws {
-        var original = StarfallExperiment(seed: 5)
+        var original = FallingSky(seed: 5)
         for _ in 0..<6 { original.letStarsFall() }
         var json = try XCTUnwrap(JSONSerialization.jsonObject(with: JSONEncoder().encode(original)) as? [String: Any])
         json.removeValue(forKey: "savedBalance")
-        var restored = try JSONDecoder().decode(StarfallExperiment.self, from: JSONSerialization.data(withJSONObject: json))
+        var restored = try JSONDecoder().decode(FallingSky.self, from: JSONSerialization.data(withJSONObject: json))
         XCTAssertEqual(restored.balance, StarfallBalance())
         XCTAssertEqual(restored.board, original.board); XCTAssertTrue(restored.isValidSave)
         for _ in 0..<10 where !original.isOver {
@@ -361,11 +379,11 @@ final class StarfallExperimentTests: XCTestCase {
     }
 
     func testRejectsMalformedOrFloatingSavedBoard() throws {
-        var game = StarfallExperiment(seed: 42)
+        var game = FallingSky(seed: 42)
         game.letStarsFall()
         var json = try XCTUnwrap(JSONSerialization.jsonObject(with: JSONEncoder().encode(game)) as? [String: Any])
         json["score"] = 99
-        var decoded = try JSONDecoder().decode(StarfallExperiment.self, from: JSONSerialization.data(withJSONObject: json))
+        var decoded = try JSONDecoder().decode(FallingSky.self, from: JSONSerialization.data(withJSONObject: json))
         XCTAssertFalse(decoded.isValidSave)
         json["score"] = 0
         var board = try XCTUnwrap(json["board"] as? [Any])
@@ -373,7 +391,7 @@ final class StarfallExperimentTests: XCTestCase {
         let column = source % 7
         board[42 + column] = board[source]; board[source] = NSNull()
         json["board"] = board
-        decoded = try JSONDecoder().decode(StarfallExperiment.self, from: JSONSerialization.data(withJSONObject: json))
+        decoded = try JSONDecoder().decode(FallingSky.self, from: JSONSerialization.data(withJSONObject: json))
         XCTAssertFalse(decoded.isValidSave)
     }
 }

@@ -1,0 +1,37 @@
+--- a/Sources/StarfallCore/StarfallExperiment.swift
++++ b/Sources/StarfallCore/StarfallExperiment.swift
+@@ -59,2 +59,4 @@
+     private var cohesiveShowers: Bool?
++    // Candidate-only generation marker. Missing saves keep current shower rules.
++    private var pairedShowers: Bool?
+     public var balance: StarfallBalance { savedBalance ?? StarfallBalance() }
+@@ -71,2 +73,3 @@
+         cohesiveShowers = true
++        pairedShowers = true
+         showersUntilDark = balance.darkStars.showerGap.map { $0.upperBound - 1 } ?? 0
+@@ -230,2 +233,14 @@
+         }
++        // Offline paired-run candidate: keep the announced five-star shower
++        // bounded, but use its tail to support a different existing family.
++        let primaryColumn = cohesiveShowers == true && pairedShowers == true && challenge == nil && count == 5 && reliefColumn == nil
++            ? (reliefColumn ?? heights.indices.filter { heights[$0] <= 4 }.min { heights[$0] < heights[$1] }) : nil
++        let secondaryColumn = primaryColumn.flatMap { primary in
++            heights.indices.filter { column in
++                guard column != primary, heights[column] > 0, heights[column] <= 5,
++                      let kind = gem(at: Cell(heights[column] - 1, column))?.kind else { return false }
++                return kind != sharedKind
++            }.min { heights[$0] < heights[$1] }
++        }
++        let secondaryKind = secondaryColumn.flatMap { gem(at: Cell(heights[$0] - 1, $0))?.kind }
+         return (0..<count).map { offset in
+@@ -237,4 +252,4 @@
+             let naturalColumn = remainingColumns.remove(at: index)
+-            return IncomingStar(id: turns * Self.maximumShowerSize + offset, kind: offset == darkIndex ? nil : (sharedKind ?? kind),
+-                                column: offset < 3 ? (reliefColumn ?? naturalColumn) : naturalColumn)
++            return IncomingStar(id: turns * Self.maximumShowerSize + offset, kind: offset == darkIndex ? nil : (offset >= 3 ? (secondaryKind ?? sharedKind ?? kind) : (sharedKind ?? kind)),
++                                column: offset < 3 ? (primaryColumn ?? reliefColumn ?? naturalColumn) : (secondaryColumn ?? naturalColumn))
+         }
+@@ -243,2 +258,3 @@
+     public var isValidSave: Bool {
++        if pairedShowers == true && cohesiveShowers != true { return false }
+         if let challenge, seed != challenge.seed || balance != challenge.balance { return false }

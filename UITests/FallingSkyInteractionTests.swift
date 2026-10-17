@@ -1,6 +1,6 @@
 import XCTest
 
-final class StarfallExperimentInteractionTests: XCTestCase {
+final class FallingSkyInteractionTests: XCTestCase {
     @MainActor private func launch() -> XCUIApplication {
         continueAfterFailure = false
         let app = XCUIApplication()

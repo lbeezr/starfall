@@ -1,6 +1,6 @@
 import Foundation
 
-/// Separate accumulation experiment with deterministic shower events. The original Game is unchanged.
+/// Production falling-sky rules with deterministic shower events. The Debug classic Game is independent.
 public struct StarfallGem: Codable, Equatable, Sendable, Identifiable {
     public let id: Int
     public let kind: Jewel?
@@ -22,7 +22,7 @@ public struct IncomingStar: Codable, Equatable, Sendable, Identifiable {
     }
 }
 
-public struct StarfallExperimentTurn: Sendable {
+public struct FallingSkyTurn: Sendable {
     public struct Arrival: Sendable {
         public let star: IncomingStar
         public let cell: Cell
@@ -37,7 +37,7 @@ public struct StarfallExperimentTurn: Sendable {
     public let blockedColumn: Int?
 }
 
-public struct StarfallExperiment: Codable, Equatable, Sendable {
+public struct FallingSky: Codable, Equatable, Sendable {
     public static let side = 7
     public static let maximumShowerSize = 5
     public static let showerSizes = [1, 2, 3, 5]
@@ -150,7 +150,7 @@ public struct StarfallExperiment: Codable, Equatable, Sendable {
     }
 
     /// Invalid clears never advance the forecast, score, turn counter, or RNG.
-    @discardableResult public mutating func clear(_ cell: Cell) -> StarfallExperimentTurn? {
+    @discardableResult public mutating func clear(_ cell: Cell) -> FallingSkyTurn? {
         guard !isOver else { return nil }
         let cells = group(at: cell)
         guard value(of: cells) >= 3 else { return nil }
@@ -172,11 +172,11 @@ public struct StarfallExperiment: Codable, Equatable, Sendable {
 
     /// Clock-independent event: the presentation layer decides when the sky advances.
     /// Clearing never consumes or regenerates this preview.
-    @discardableResult public mutating func letStarsFall() -> StarfallExperimentTurn? {
+    @discardableResult public mutating func letStarsFall() -> FallingSkyTurn? {
         guard !isOver else { return nil }
         turns += 1
         let settled = board, forecast = incoming
-        var arrivals: [StarfallExperimentTurn.Arrival] = []
+        var arrivals: [FallingSkyTurn.Arrival] = []
         for star in forecast {
             let height = (0..<Self.side).filter { board[$0 * Self.side + star.column] != nil }.count
             // A matching small top jewel can grow even when its column is full.

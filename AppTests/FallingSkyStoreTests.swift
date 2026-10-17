@@ -2,11 +2,11 @@ import XCTest
 import StarfallCore
 @testable import Starfall
 
-final class StarfallExperimentStoreTests: XCTestCase {
-    @MainActor private func makeStore() -> (StarfallExperimentStore, ExperimentRecorder, ManualRainClock, UserDefaults) {
+final class FallingSkyStoreTests: XCTestCase {
+    @MainActor private func makeStore() -> (FallingSkyStore, FallingSkyRecorder, ManualRainClock, UserDefaults) {
         let defaults = UserDefaults(suiteName: "Starfalls.\(UUID().uuidString)")!
-        let presenter = ExperimentRecorder(), clock = ManualRainClock()
-        let store = StarfallExperimentStore(defaults: defaults, arguments: ["--starfalls-seed=5"], presenter: presenter, clock: clock)
+        let presenter = FallingSkyRecorder(), clock = ManualRainClock()
+        let store = FallingSkyStore(defaults: defaults, arguments: ["--starfalls-seed=5"], presenter: presenter, clock: clock)
         addTeardownBlock { defaults.removeObject(forKey: "starfall.accumulation.v3") }
         store.setSuspended(false)
         return (store, presenter, clock, defaults)
@@ -18,7 +18,7 @@ final class StarfallExperimentStoreTests: XCTestCase {
         store.togglePause()
         clock.advance(3.9); XCTAssertEqual(store.game.turns, 0)
         clock.advance(0.1); XCTAssertEqual(store.game.turns, 1); XCTAssertTrue(store.busy)
-        let saved = try JSONDecoder().decode(StarfallExperiment.self, from: XCTUnwrap(defaults.data(forKey: StarfallExperimentStore.saveKey)))
+        let saved = try JSONDecoder().decode(FallingSky.self, from: XCTUnwrap(defaults.data(forKey: FallingSkyStore.saveKey)))
         XCTAssertEqual(store.game, saved)
         store.clear(Cell(0, 0)); XCTAssertEqual(store.game, saved)
         presenter.finish()
@@ -94,7 +94,7 @@ final class StarfallExperimentStoreTests: XCTestCase {
         store.togglePause(); clock.advance(4)
         staleAnimation(); XCTAssertTrue(store.busy)
         presenter.finish()
-        let restored = StarfallExperimentStore(defaults: defaults, arguments: [], presenter: ExperimentRecorder(), clock: ManualRainClock())
+        let restored = FallingSkyStore(defaults: defaults, arguments: [], presenter: FallingSkyRecorder(), clock: ManualRainClock())
         XCTAssertEqual(restored.game, store.game); XCTAssertTrue(restored.isPaused)
         XCTAssertEqual(defaults.data(forKey: "starfall.game.v1"), Data([1,2,3]))
     }
@@ -115,31 +115,31 @@ final class StarfallExperimentStoreTests: XCTestCase {
         store.togglePause(); clock.advance(4); presenter.finish()
         store.setSuspended(true)
         XCTAssertEqual(store.game.turns, 1)
-        let committed = try XCTUnwrap(defaults.data(forKey: StarfallExperimentStore.saveKey))
+        let committed = try XCTUnwrap(defaults.data(forKey: FallingSkyStore.saveKey))
         let resetArguments = ["--starfalls-reset", "--starfalls-seed=5"]
 
         do {
-            let discarded = StarfallExperimentStore(defaults: defaults, arguments: resetArguments,
-                presenter: ExperimentRecorder(), clock: ManualRainClock())
+            let discarded = FallingSkyStore(defaults: defaults, arguments: resetArguments,
+                presenter: FallingSkyRecorder(), clock: ManualRainClock())
             XCTAssertEqual(discarded.game.turns, 0)
             XCTAssertTrue(discarded.suspended)
         }
-        XCTAssertEqual(defaults.data(forKey: StarfallExperimentStore.saveKey), committed,
+        XCTAssertEqual(defaults.data(forKey: FallingSkyStore.saveKey), committed,
                        "Constructing a discarded view's store must not replace the live save")
 
-        let restored = StarfallExperimentStore(defaults: defaults, arguments: [],
-            presenter: ExperimentRecorder(), clock: ManualRainClock())
+        let restored = FallingSkyStore(defaults: defaults, arguments: [],
+            presenter: FallingSkyRecorder(), clock: ManualRainClock())
         XCTAssertEqual(restored.game, store.game)
-        XCTAssertEqual(defaults.data(forKey: StarfallExperimentStore.saveKey), committed)
+        XCTAssertEqual(defaults.data(forKey: FallingSkyStore.saveKey), committed)
 
         let resetClock = ManualRainClock()
-        let reset = StarfallExperimentStore(defaults: defaults, arguments: resetArguments,
-            presenter: ExperimentRecorder(), clock: resetClock)
-        XCTAssertEqual(defaults.data(forKey: StarfallExperimentStore.saveKey), committed)
+        let reset = FallingSkyStore(defaults: defaults, arguments: resetArguments,
+            presenter: FallingSkyRecorder(), clock: resetClock)
+        XCTAssertEqual(defaults.data(forKey: FallingSkyStore.saveKey), committed)
         reset.setSuspended(false)
-        let activated = try JSONDecoder().decode(StarfallExperiment.self,
-            from: XCTUnwrap(defaults.data(forKey: StarfallExperimentStore.saveKey)))
-        XCTAssertEqual(activated, StarfallExperiment(seed: 5))
+        let activated = try JSONDecoder().decode(FallingSky.self,
+            from: XCTUnwrap(defaults.data(forKey: FallingSkyStore.saveKey)))
+        XCTAssertEqual(activated, FallingSky(seed: 5))
         XCTAssertEqual(activated, reset.game)
         XCTAssertTrue(reset.isPaused)
         XCTAssertNil(resetClock.deadline, "Activation preserves the explicit Start sky boundary")
@@ -173,7 +173,7 @@ final class StarfallExperimentStoreTests: XCTestCase {
         let beside = try XCTUnwrap(group.first { store.game.isGrowthBlocked(at: $0) })
         let expectedScore = store.game.score + store.game.value(of: Set(group))
         let expectedDark = store.game.darkStarsCleared + store.game.darkStarsBeside(Set(group)).count
-        let restored = StarfallExperimentStore(defaults: defaults, arguments: [], presenter: ExperimentRecorder(), clock: ManualRainClock())
+        let restored = FallingSkyStore(defaults: defaults, arguments: [], presenter: FallingSkyRecorder(), clock: ManualRainClock())
         XCTAssertEqual(restored.game, store.game)
         XCTAssertTrue(restored.isPaused)
         let before = store.game
@@ -184,7 +184,7 @@ final class StarfallExperimentStoreTests: XCTestCase {
         XCTAssertEqual(store.game.darkStarsCleared, expectedDark)
         XCTAssertEqual(store.game.score, expectedScore)
         XCTAssertTrue(store.message.contains("Dark star dissolved"))
-        let saved = try JSONDecoder().decode(StarfallExperiment.self, from: XCTUnwrap(defaults.data(forKey: StarfallExperimentStore.saveKey)))
+        let saved = try JSONDecoder().decode(FallingSky.self, from: XCTUnwrap(defaults.data(forKey: FallingSkyStore.saveKey)))
         XCTAssertEqual(saved, store.game)
         XCTAssertTrue(saved.isValidSave)
     }
@@ -238,7 +238,7 @@ final class StarfallExperimentStoreTests: XCTestCase {
         XCTAssertEqual(store.game.incoming, firstPreview)
         store.restart(sameSky: false)
         XCTAssertEqual(store.game.balance, balance); XCTAssertTrue(store.isPaused)
-        let restored = StarfallExperimentStore(defaults: defaults, arguments: [], presenter: ExperimentRecorder(), clock: ManualRainClock())
+        let restored = FallingSkyStore(defaults: defaults, arguments: [], presenter: FallingSkyRecorder(), clock: ManualRainClock())
         XCTAssertEqual(restored.game, store.game); XCTAssertEqual(restored.showerInterval, 6)
         let board = restored.game.board
         restored.setBalance(StarfallBalance())
@@ -263,7 +263,7 @@ final class StarfallExperimentStoreTests: XCTestCase {
         let completed = store.game
         clock.advance(100); store.callShower(); store.togglePause(); store.clear(Cell(0, 0))
         XCTAssertEqual(store.game, completed)
-        let restored = StarfallExperimentStore(defaults: defaults, arguments: [], presenter: ExperimentRecorder(), clock: ManualRainClock())
+        let restored = FallingSkyStore(defaults: defaults, arguments: [], presenter: FallingSkyRecorder(), clock: ManualRainClock())
         XCTAssertEqual(restored.game, completed); XCTAssertTrue(restored.message.contains("complete"))
         store.restart(sameSky: true)
         XCTAssertEqual(store.game, initial); XCTAssertTrue(store.isPaused)
@@ -304,8 +304,8 @@ final class StarfallExperimentStoreTests: XCTestCase {
 
     @MainActor func testFeedbackOnlyFiresForCommittedClearAndStopsOnMuteAndSuspend() throws {
         let defaults = UserDefaults(suiteName: "SkyFeedback.\(UUID())")!
-        let feedback = SkyFeedbackRecorder(), presenter = ExperimentRecorder(), clock = ManualRainClock()
-        let store = StarfallExperimentStore(defaults: defaults, arguments: ["--starfalls-reset"],
+        let feedback = SkyFeedbackRecorder(), presenter = FallingSkyRecorder(), clock = ManualRainClock()
+        let store = FallingSkyStore(defaults: defaults, arguments: ["--starfalls-reset"],
             presenter: presenter, clock: clock, feedback: feedback)
         store.setSuspended(false)
         XCTAssertFalse(store.soundEnabled); XCTAssertFalse(store.hapticsEnabled)
@@ -323,7 +323,7 @@ final class StarfallExperimentStoreTests: XCTestCase {
 
 }
 
-@MainActor private final class ManualRainClock: ExperimentRainScheduling {
+@MainActor private final class ManualRainClock: FallingSkyRainScheduling {
     var now: TimeInterval = 0
     var deadline: TimeInterval?
     var action: (@MainActor () -> Void)?
@@ -340,13 +340,13 @@ final class StarfallExperimentStoreTests: XCTestCase {
     }
 }
 
-@MainActor private final class ExperimentRecorder: ExperimentPresenting {
+@MainActor private final class FallingSkyRecorder: FallingSkyPresenting {
     var reduceMotion = false
-    var lastRendered: StarfallExperiment?
+    var lastRendered: FallingSky?
     var completions: [() -> Void] = []
-    func render(_ game: StarfallExperiment) { lastRendered = game }
-    func animate(_ turn: StarfallExperimentTurn, from old: StarfallExperiment,
-                 to game: StarfallExperiment, completion: @escaping () -> Void) {
+    func render(_ game: FallingSky) { lastRendered = game }
+    func animate(_ turn: FallingSkyTurn, from old: FallingSky,
+                 to game: FallingSky, completion: @escaping () -> Void) {
         completions.append(completion)
     }
     func finish() { completions.last?() }

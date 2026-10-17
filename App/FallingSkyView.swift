@@ -2,8 +2,9 @@ import SwiftUI
 import SpriteKit
 import StarfallCore
 
-@MainActor struct StarfallExperimentView: View {
-    @State private var store = StarfallExperimentStore()
+// Historical experiment.* accessibility IDs remain stable for automation and assistive clients.
+@MainActor struct FallingSkyView: View {
+    @State private var store = FallingSkyStore()
     @State private var settings = false
     @AppStorage("calmEffects") private var calmEffects = false
     @Environment(\.scenePhase) private var scenePhase

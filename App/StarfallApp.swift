@@ -9,10 +9,10 @@ import StarfallCore
             if ProcessInfo.processInfo.arguments.contains("--classic") || ProcessInfo.processInfo.arguments.contains("--demo") {
                 StarfallView()
             } else {
-                StarfallExperimentView()
+                FallingSkyView()
             }
             #else
-            StarfallExperimentView()
+            FallingSkyView()
             #endif
         }
     }
@@ -26,7 +26,7 @@ struct StarfallView: View {
     @State private var terminalResultRevealed = false
     @State private var restartScrollRequest = false
     #if DEBUG
-    @State private var experimentPresented = ProcessInfo.processInfo.arguments.contains("--starfalls")
+    @State private var fallingSkyPresented = ProcessInfo.processInfo.arguments.contains("--starfalls")
     #endif
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
@@ -50,7 +50,7 @@ struct StarfallView: View {
 
     private var terminalRevealReady: Bool {
         #if DEBUG
-        if experimentPresented { return false }
+        if fallingSkyPresented { return false }
         #endif
         return terminalRoundPresented && !store.busy && !store.settings && scenePhase == .active
     }
@@ -74,7 +74,7 @@ struct StarfallView: View {
         }
         .sheet(isPresented: $store.settings) { settingsView }
         #if DEBUG
-        .fullScreenCover(isPresented: $experimentPresented) { StarfallExperimentView() }
+        .fullScreenCover(isPresented: $fallingSkyPresented) { FallingSkyView() }
         #endif
     }
 
@@ -191,7 +191,7 @@ struct StarfallView: View {
             .starfallPanel()
 
             #if DEBUG
-            Button("Try the falling sky") { experimentPresented = true }
+            Button("Play falling sky") { fallingSkyPresented = true }
                 .buttonStyle(StarfallButtonStyle(role: .secondary, expands: true))
                 .accessibilityIdentifier("menu.starfalls")
             #endif

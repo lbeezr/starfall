@@ -3,21 +3,21 @@ import Observation
 import SwiftUI
 import StarfallCore
 
-@MainActor protocol ExperimentPresenting: AnyObject {
+@MainActor protocol FallingSkyPresenting: AnyObject {
     var reduceMotion: Bool { get set }
-    func render(_ game: StarfallExperiment)
-    func animate(_ turn: StarfallExperimentTurn, from old: StarfallExperiment,
-                 to game: StarfallExperiment, completion: @escaping () -> Void)
+    func render(_ game: FallingSky)
+    func animate(_ turn: FallingSkyTurn, from old: FallingSky,
+                 to game: FallingSky, completion: @escaping () -> Void)
 }
 
 /// One cancellable deadline; no repeating timer or catch-up queue.
-@MainActor protocol ExperimentRainScheduling: AnyObject {
+@MainActor protocol FallingSkyRainScheduling: AnyObject {
     var now: TimeInterval { get }
     func schedule(after delay: TimeInterval, action: @escaping @MainActor () -> Void)
     func cancel()
 }
 
-@MainActor private final class ExperimentRainClock: ExperimentRainScheduling {
+@MainActor private final class FallingSkyRainClock: FallingSkyRainScheduling {
     private var task: Task<Void, Never>?
     var now: TimeInterval { ProcessInfo.processInfo.systemUptime }
     func schedule(after delay: TimeInterval, action: @escaping @MainActor () -> Void) {
@@ -33,26 +33,27 @@ import StarfallCore
     deinit { task?.cancel() }
 }
 
-@MainActor @Observable final class StarfallExperimentStore {
+// Existing persistence keys and launch arguments survive the production naming promotion.
+@MainActor @Observable final class FallingSkyStore {
     static let saveKey = "starfall.accumulation.v3"
-    private(set) var game: StarfallExperiment
+    private(set) var game: FallingSky
     private(set) var busy = false
     private(set) var suspended = true
     private(set) var isPaused = true
     private(set) var nextShowerDate: Date?
     private(set) var message = "Start the sky. Clear matching stars to make room; adjust the balance in Settings."
-    private(set) var pending: StarfallExperimentTurn?
+    private(set) var pending: FallingSkyTurn?
     var soundEnabled: Bool {
         didSet { defaults.set(soundEnabled, forKey: "soundEnabled"); if !soundEnabled { feedback.stopSounds() } }
     }
     var hapticsEnabled: Bool {
         didSet { defaults.set(hapticsEnabled, forKey: "starfall.haptics") }
     }
-    let scene: StarfallExperimentScene
+    let scene: FallingSkyScene
     @ObservationIgnored private let feedback: any FallingSkyFeedbackProviding
     @ObservationIgnored private let defaults: UserDefaults
-    @ObservationIgnored private let presenter: any ExperimentPresenting
-    @ObservationIgnored private let clock: any ExperimentRainScheduling
+    @ObservationIgnored private let presenter: any FallingSkyPresenting
+    @ObservationIgnored private let clock: any FallingSkyRainScheduling
     @ObservationIgnored private var generation: UInt64 = 0
     @ObservationIgnored private var rainGeneration: UInt64 = 0
     @ObservationIgnored private var deadline: TimeInterval?
@@ -61,26 +62,26 @@ import StarfallCore
 
     init(defaults: UserDefaults = .standard,
          arguments: [String] = ProcessInfo.processInfo.arguments,
-         presenter: (any ExperimentPresenting)? = nil,
-         clock: (any ExperimentRainScheduling)? = nil,
+         presenter: (any FallingSkyPresenting)? = nil,
+         clock: (any FallingSkyRainScheduling)? = nil,
          feedback: (any FallingSkyFeedbackProviding)? = nil) {
         self.defaults = defaults
         self.feedback = feedback ?? GameFeedback()
         soundEnabled = defaults.bool(forKey: "soundEnabled")
         hapticsEnabled = defaults.bool(forKey: "starfall.haptics")
-        self.clock = clock ?? ExperimentRainClock()
-        let scene = StarfallExperimentScene()
+        self.clock = clock ?? FallingSkyRainClock()
+        let scene = FallingSkyScene()
         self.scene = scene
         self.presenter = presenter ?? scene
         // SwiftUI may construct stores for discarded view values. Keep initialization read-only.
         if !arguments.contains("--starfalls-reset"), let data = defaults.data(forKey: Self.saveKey),
-           let saved = try? JSONDecoder().decode(StarfallExperiment.self, from: data), saved.isValidSave {
+           let saved = try? JSONDecoder().decode(FallingSky.self, from: data), saved.isValidSave {
             game = saved
             message = saved.outcome == .won ? "First Light complete. Replay it or start a new sky." : saved.isOver ? "This sky is full. Replay it or try a new sky." : "Your sky is paused. Resume when you're ready."
         } else {
             let argument = arguments.first { $0.hasPrefix("--starfalls-seed=") }
             let seed = argument.flatMap { UInt64($0.dropFirst("--starfalls-seed=".count)) } ?? 5
-            game = StarfallExperiment(seed: seed)
+            game = FallingSky(seed: seed)
         }
         remaining = showerInterval
         scene.onLayout = { [weak self] in self?.settlePresentation() }
@@ -165,7 +166,7 @@ import StarfallCore
         present(turn, from: old)
     }
 
-    private func present(_ turn: StarfallExperimentTurn, from old: StarfallExperiment) {
+    private func present(_ turn: FallingSkyTurn, from old: FallingSky) {
         generation &+= 1
         let ticket = generation
         busy = true; pending = turn
@@ -199,9 +200,9 @@ import StarfallCore
         freezeClock(); remaining = showerInterval
         settlePresentation()
         if sameSky, let challenge = game.challenge {
-            game = StarfallExperiment(challenge: challenge)
+            game = FallingSky(challenge: challenge)
         } else {
-            game = StarfallExperiment(seed: sameSky ? game.seed : UInt64.random(in: 0...UInt64.max), balance: game.balance)
+            game = FallingSky(seed: sameSky ? game.seed : UInt64.random(in: 0...UInt64.max), balance: game.balance)
         }
         remaining = showerInterval
         message = sameSky ? "Same sky, a fresh start. Start when you're ready." : "A new sky. Start when you're ready."
@@ -213,7 +214,7 @@ import StarfallCore
         feedback.stopSounds()
         freezeClock()
         settlePresentation()
-        game = StarfallExperiment(challenge: .firstLight)
+        game = FallingSky(challenge: .firstLight)
         remaining = showerInterval
         message = "Collect 18 starlight to complete First Light. Start the sky or call a shower."
         save(); presenter.render(game)

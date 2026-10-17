@@ -2,7 +2,7 @@
 
 A small native iOS falling-sky puzzle. Start the sky, then clear connected matching jewels worth at least 3 starlight while new stars arrive. Large jewels count as 2. Dark stars block nearby growth; clear beside one to dissolve it. New skies offer a match in the first shower. Matching colors travel together, and dry boards receive a matching run in a later preview when a low column has room. Call the next shower yourself, or clear while paused. Tune shower pace and dark-star frequency in the sky menu, and replay or start a new sky when the board fills. Falling sky is the default in Debug and Release; progress stays on this device.
 
-The current [roadmap](docs/ROADMAP.md) and [falling-sky playtest](docs/PLAYTEST-FALLING-SKY.md) track the next gameplay and device-validation work. The [compact HUD trial](docs/evidence/compact-hud-2026-10-17/README.md) keeps score/goal and a quiet menu above the board, with a subtle arrival cue instead of the exact forecast strip. Pause is in the menu; Start/Resume and manual advance appear while paused.
+The current [roadmap](docs/ROADMAP.md) and [falling-sky playtest](docs/PLAYTEST-FALLING-SKY.md) track the next gameplay and device-validation work. The [compact HUD](docs/evidence/compact-hud-2026-10-17/README.md) keeps score/goal and a quiet menu above the board, with a subtle arrival cue instead of the exact forecast strip. Pause is in the menu; Start/Resume and manual advance appear while paused.
 
 Try the first goal-driven sky from **Sky menu → Start First Light**. This starts a new round: collect **18 starlight** with steady showers and no dark stars. Replay repeats the challenge; New sky returns to survival. There is one challenge prototype, with no campaign or unlock progression.
 
@@ -31,6 +31,8 @@ The character star cast is enabled by default in Debug and Release. The original
 
 ## Scope
 
+[The adoption register](docs/EXPERIMENTS.md) distinguishes shipping gameplay from isolated trials. Falling sky and its physical reactions are adopted in both Debug and Release; supernova recoloring and alternate shower candidates remain outside the game.
+
 - Pure deterministic puzzle core and Codable save state
 - SwiftUI falling-sky screen/settings and SpriteKit board
 - Five original star-character families plus Dusk, with distinct silhouettes and landing/grown/clear expressions
@@ -38,6 +40,7 @@ The character star cast is enabled by default in Debug and Release. The original
 - Bounded clear fragments, downward settling and diagonal refill presentation
 - Optional local quiet-tuck sound and soft haptics (off by default); Calm effects honors Reduce Motion
 - Matching-group outlines; group count in the menu and board accessibility; bounded clear rings and a collected-score popup
+- Angled falling stars with weight-sensitive rebounds; nearby survivors ripple outward on clears, more strongly at 5+ starlight (presentation only)
 - VoiceOver alternative grid with row/column, jewel name and connected-group size
 - On-device falling-sky save after committed events; replay or new sky resets the round
 

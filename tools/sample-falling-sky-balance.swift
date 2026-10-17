@@ -6,6 +6,8 @@ import Foundation
         let policy: String
         var rounds = 0, score = 0, clears = 0, showers = 0, ended = 0
         var choiceStates = 0, decisionStates = 0, consequentialChoices = 0
+        var playableShowers = 0, dryShowers = 0, longestDryRun = 0
+        var groupCountTotal = 0, maximumGroups = 0, highColumnChoices = 0
         var exampleSeeds: [UInt64] = []
     }
     struct Report: Codable {
@@ -14,10 +16,10 @@ import Foundation
         let method: String
         let results: [Result]
     }
-    static func height(_ game: StarfallExperiment, _ column: Int) -> Int {
+    static func height(_ game: FallingSky, _ column: Int) -> Int {
         (0..<7).filter { game.gem(at: Cell($0, column)) != nil }.count
     }
-    static func pressure(_ game: StarfallExperiment) -> Int {
+    static func pressure(_ game: FallingSky) -> Int {
         (0..<7).reduce(0) { $0 + height(game, $1) * height(game, $1) }
     }
     static func main() throws {
@@ -26,15 +28,34 @@ import Foundation
         for policy in ["idle", "all", "first", "largest", "pressure", "preview-aware"] {
             var result = Result(policy: policy)
             for seed in UInt64(0)..<UInt64(seeds) {
-                var game = StarfallExperiment(seed: seed)
+                var game = FallingSky(seed: seed)
+                var dryRun = 0
                 for _ in 0..<limit where !game.isOver {
                     game.letStarsFall()
-                    guard !game.isOver, policy != "idle" else { continue }
+                    guard !game.isOver else { continue }
+                    result.playableShowers += 1
+                    let available = game.legalGroups.count
+                    result.groupCountTotal += available
+                    result.maximumGroups = max(result.maximumGroups, available)
+                    if available == 0 {
+                        result.dryShowers += 1; dryRun += 1
+                        result.longestDryRun = max(result.longestDryRun, dryRun)
+                    } else { dryRun = 0 }
+                    guard policy != "idle" else { continue }
                     for _ in 0..<(policy == "all" ? 25 : 1) {
                         let groups = game.legalGroups
                         guard !groups.isEmpty else { break }
                         result.decisionStates += 1
                         if groups.count > 1 { result.choiceStates += 1 }
+                        let tallest = (0..<7).map { height(game, $0) }.max()!
+                        // A useful high-column choice must differ between legal moves;
+                        // merely touching the tallest column is not a decision.
+                        let touchesTallest = groups.map { group in
+                            group.contains { height(game, $0.column) == tallest }
+                        }
+                        if touchesTallest.contains(true) && touchesTallest.contains(false) {
+                            result.highColumnChoices += 1
+                        }
                         let candidates = groups.map { group -> (cell: Cell, value: Int, pressure: Int, nextOver: Bool) in
                             var trial = game
                             let value = trial.clear(group[0])!.collected

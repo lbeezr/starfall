@@ -21,6 +21,8 @@ Keep the prototype small. Falling sky is the default game in Debug and Release: 
 - Verify the original reproduction and representative sibling/boundary cases with focused behavioral checks. Explain the root cause, related paths examined, why the correction prevents recurrence, and any residual risk. If an immediate mitigation must ship first, label it as such and record the remaining design correction, trigger and verification in docs/ENGINEERING.md; integrate the safe mitigation without waiting for unrelated work.
 
 ## Feature completion and experiments
+
+- Follow [the experiment lifecycle and adoption register](docs/EXPERIMENTS.md). Keep shipped domain names and default routing distinct from isolated candidates; update the register when adopting, extending or removing a trial.
 - Define observable acceptance criteria before implementing a feature. Before calling it complete, record the relevant rule/save, interruption, accessibility, visual/animation and test results; explicitly mark inapplicable or unverified areas. A passing build or test suite alone does not establish gameplay quality.
 - For each bug fix, add the smallest useful regression check for the demonstrated failure mechanism, alongside the broader investigation above. Use a reproducible manual/native check where an automated test would not meaningfully verify the issue.
 - Give temporary experiments a hypothesis, bounded scope and an adoption/removal decision point. At that point, adopt the verified result or remove the temporary route/assets/code; if comparison remains necessary, record why and when to revisit it. Do not let pilot flags become permanent by inertia.

@@ -1,0 +1,654 @@
+[
+  {
+    "chargeBetterFollowups" : 151,
+    "chargeBetterValue" : 165,
+    "chargeChoices" : 690,
+    "chargeSavesNextShower" : 0,
+    "chargedClears" : 0,
+    "clears" : 3224,
+    "differingFollowups" : 623,
+    "ended" : 200,
+    "policy" : "tap",
+    "recoloredSurvivors" : 0,
+    "rounds" : 200,
+    "score" : 12419,
+    "showers" : 5290,
+    "tapBetterFollowups" : 7,
+    "tapBetterValue" : 9,
+    "tapExamples" : [
+      {
+        "cell" : {
+          "column" : 3,
+          "row" : 0
+        },
+        "chargeOverflow" : false,
+        "chargeValue" : 0,
+        "state" : {
+          "board" : [
+            {
+              "grown" : false,
+              "id" : 16,
+              "kind" : 2
+            },
+            {
+              "grown" : false,
+              "id" : 24,
+              "kind" : 4
+            },
+            {
+              "grown" : false,
+              "id" : 32,
+              "kind" : 2
+            },
+            {
+              "grown" : true,
+              "id" : 33,
+              "kind" : 3
+            },
+            {
+              "grown" : false,
+              "id" : 15,
+              "kind" : 2
+            },
+            {
+              "grown" : false,
+              "id" : 14,
+              "kind" : 2
+            },
+            {
+              "grown" : true,
+              "id" : 3,
+              "kind" : 0
+            },
+            {
+              "grown" : false,
+              "id" : 22,
+              "kind" : 4
+            },
+            {
+              "grown" : false,
+              "id" : 30,
+              "kind" : 2
+            },
+            {
+              "grown" : false,
+              "id" : 37,
+              "kind" : 3
+            },
+            {
+              "grown" : false,
+              "id" : 35,
+              "kind" : 3
+            },
+            {
+              "grown" : false,
+              "id" : 21,
+              "kind" : 3
+            },
+            {
+              "grown" : false,
+              "id" : 23,
+              "kind" : 4
+            },
+            {
+              "grown" : false,
+              "id" : 31,
+              "kind" : 2
+            },
+            {
+              "grown" : false,
+              "id" : 29,
+              "kind" : 2
+            },
+            null,
+            null,
+            null,
+            {
+              "grown" : false,
+              "id" : 28,
+              "kind" : 2
+            },
+            null,
+            {
+              "grown" : false,
+              "id" : 36,
+              "kind" : 3
+            },
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "cohesiveShowers" : true,
+          "darkStarsCleared" : 1,
+          "incoming" : [
+            {
+              "column" : 3,
+              "id" : 50,
+              "kind" : 1
+            },
+            {
+              "column" : 5,
+              "id" : 51
+            }
+          ],
+          "random" : {
+            "state" : 7774064181650846808
+          },
+          "remainingColumns" : [
+            1,
+            4
+          ],
+          "savedBalance" : {
+            "darkStars" : "regular",
+            "pace" : 4
+          },
+          "score" : 18,
+          "seed" : 15,
+          "showersUntilDark" : 4,
+          "starsLanded" : 38,
+          "turns" : 10
+        },
+        "tapOverflow" : false,
+        "tapValue" : 3
+      },
+      {
+        "cell" : {
+          "column" : 3,
+          "row" : 0
+        },
+        "chargeOverflow" : false,
+        "chargeValue" : 0,
+        "state" : {
+          "board" : [
+            {
+              "grown" : false,
+              "id" : 52,
+              "kind" : 2
+            },
+            {
+              "grown" : false,
+              "id" : 44,
+              "kind" : 0
+            },
+            {
+              "grown" : false,
+              "id" : 62,
+              "kind" : 1
+            },
+            {
+              "grown" : true,
+              "id" : 119,
+              "kind" : 4
+            },
+            {
+              "grown" : false,
+              "id" : 104,
+              "kind" : 3
+            },
+            {
+              "grown" : false,
+              "id" : 70,
+              "kind" : 2
+            },
+            {
+              "grown" : true,
+              "id" : 9,
+              "kind" : 3
+            },
+            {
+              "grown" : false,
+              "id" : 60
+            },
+            {
+              "grown" : false,
+              "id" : 54,
+              "kind" : 0
+            },
+            {
+              "grown" : false,
+              "id" : 69,
+              "kind" : 2
+            },
+            {
+              "grown" : true,
+              "id" : 121,
+              "kind" : 4
+            },
+            {
+              "grown" : false,
+              "id" : 111,
+              "kind" : 4
+            },
+            {
+              "grown" : false,
+              "id" : 78,
+              "kind" : 0
+            },
+            {
+              "grown" : false,
+              "id" : 43,
+              "kind" : 0
+            },
+            {
+              "grown" : false,
+              "id" : 67,
+              "kind" : 1
+            },
+            {
+              "grown" : false,
+              "id" : 66,
+              "kind" : 1
+            },
+            {
+              "grown" : false,
+              "id" : 77,
+              "kind" : 0
+            },
+            null,
+            {
+              "grown" : false,
+              "id" : 115,
+              "kind" : 0
+            },
+            {
+              "grown" : false,
+              "id" : 93
+            },
+            {
+              "grown" : false,
+              "id" : 58,
+              "kind" : 1
+            },
+            {
+              "grown" : false,
+              "id" : 86,
+              "kind" : 4
+            },
+            {
+              "grown" : false,
+              "id" : 75,
+              "kind" : 4
+            },
+            {
+              "grown" : false,
+              "id" : 92,
+              "kind" : 1
+            },
+            null,
+            null,
+            {
+              "grown" : false,
+              "id" : 99,
+              "kind" : 3
+            },
+            {
+              "grown" : false,
+              "id" : 85,
+              "kind" : 4
+            },
+            {
+              "grown" : false,
+              "id" : 98,
+              "kind" : 3
+            },
+            {
+              "grown" : true,
+              "id" : 79,
+              "kind" : 0
+            },
+            {
+              "grown" : false,
+              "id" : 103,
+              "kind" : 3
+            },
+            null,
+            null,
+            {
+              "grown" : false,
+              "id" : 118,
+              "kind" : 4
+            },
+            {
+              "grown" : false,
+              "id" : 94,
+              "kind" : 1
+            },
+            {
+              "grown" : false,
+              "id" : 110
+            },
+            {
+              "grown" : false,
+              "id" : 123,
+              "kind" : 4
+            },
+            {
+              "grown" : false,
+              "id" : 117,
+              "kind" : 4
+            },
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "cohesiveShowers" : true,
+          "darkStarsCleared" : 3,
+          "incoming" : [
+            {
+              "column" : 4,
+              "id" : 170,
+              "kind" : 1
+            }
+          ],
+          "random" : {
+            "state" : 1791443029356478214
+          },
+          "remainingColumns" : [
+            0
+          ],
+          "savedBalance" : {
+            "darkStars" : "regular",
+            "pace" : 4
+          },
+          "score" : 84,
+          "seed" : 51,
+          "showersUntilDark" : 0,
+          "starsLanded" : 124,
+          "turns" : 34
+        },
+        "tapOverflow" : false,
+        "tapValue" : 3
+      },
+      {
+        "cell" : {
+          "column" : 3,
+          "row" : 0
+        },
+        "chargeOverflow" : false,
+        "chargeValue" : 5,
+        "state" : {
+          "board" : [
+            {
+              "grown" : false,
+              "id" : 52,
+              "kind" : 2
+            },
+            {
+              "grown" : false,
+              "id" : 44,
+              "kind" : 0
+            },
+            {
+              "grown" : false,
+              "id" : 62,
+              "kind" : 1
+            },
+            {
+              "grown" : true,
+              "id" : 125,
+              "kind" : 2
+            },
+            {
+              "grown" : false,
+              "id" : 104,
+              "kind" : 3
+            },
+            {
+              "grown" : false,
+              "id" : 70,
+              "kind" : 2
+            },
+            {
+              "grown" : true,
+              "id" : 9,
+              "kind" : 3
+            },
+            {
+              "grown" : false,
+              "id" : 60
+            },
+            {
+              "grown" : false,
+              "id" : 54,
+              "kind" : 0
+            },
+            {
+              "grown" : false,
+              "id" : 69,
+              "kind" : 2
+            },
+            {
+              "grown" : true,
+              "id" : 127,
+              "kind" : 2
+            },
+            {
+              "grown" : false,
+              "id" : 124,
+              "kind" : 1
+            },
+            {
+              "grown" : false,
+              "id" : 99,
+              "kind" : 3
+            },
+            {
+              "grown" : false,
+              "id" : 58,
+              "kind" : 1
+            },
+            {
+              "grown" : false,
+              "id" : 67,
+              "kind" : 1
+            },
+            {
+              "grown" : false,
+              "id" : 66,
+              "kind" : 1
+            },
+            {
+              "grown" : false,
+              "id" : 77,
+              "kind" : 0
+            },
+            null,
+            null,
+            {
+              "grown" : false,
+              "id" : 118,
+              "kind" : 4
+            },
+            {
+              "grown" : false,
+              "id" : 85,
+              "kind" : 4
+            },
+            {
+              "grown" : false,
+              "id" : 86,
+              "kind" : 4
+            },
+            {
+              "grown" : false,
+              "id" : 75,
+              "kind" : 4
+            },
+            {
+              "grown" : false,
+              "id" : 92,
+              "kind" : 1
+            },
+            null,
+            null,
+            null,
+            {
+              "grown" : false,
+              "id" : 94,
+              "kind" : 1
+            },
+            {
+              "grown" : false,
+              "id" : 98,
+              "kind" : 3
+            },
+            {
+              "grown" : true,
+              "id" : 79,
+              "kind" : 0
+            },
+            {
+              "grown" : false,
+              "id" : 103,
+              "kind" : 3
+            },
+            null,
+            null,
+            null,
+            {
+              "grown" : false,
+              "id" : 128
+            },
+            {
+              "grown" : false,
+              "id" : 110
+            },
+            {
+              "grown" : false,
+              "id" : 123,
+              "kind" : 4
+            },
+            {
+              "grown" : false,
+              "id" : 117,
+              "kind" : 4
+            },
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "cohesiveShowers" : true,
+          "darkStarsCleared" : 4,
+          "incoming" : [
+            {
+              "column" : 1,
+              "id" : 180,
+              "kind" : 2
+            },
+            {
+              "column" : 2,
+              "id" : 181,
+              "kind" : 2
+            },
+            {
+              "column" : 4,
+              "id" : 182,
+              "kind" : 2
+            }
+          ],
+          "random" : {
+            "state" : 12799496096242673876
+          },
+          "remainingColumns" : [
+
+          ],
+          "savedBalance" : {
+            "darkStars" : "regular",
+            "pace" : 4
+          },
+          "score" : 92,
+          "seed" : 51,
+          "showersUntilDark" : 4,
+          "starsLanded" : 130,
+          "turns" : 36
+        },
+        "tapOverflow" : false,
+        "tapValue" : 6
+      }
+    ],
+    "tapSavesNextShower" : 0
+  },
+  {
+    "chargeBetterFollowups" : 195,
+    "chargeBetterValue" : 212,
+    "chargeChoices" : 805,
+    "chargeSavesNextShower" : 0,
+    "chargedClears" : 805,
+    "clears" : 3775,
+    "differingFollowups" : 739,
+    "ended" : 198,
+    "policy" : "charge",
+    "recoloredSurvivors" : 2271,
+    "rounds" : 200,
+    "score" : 14487,
+    "showers" : 5818,
+    "tapBetterFollowups" : 9,
+    "tapBetterValue" : 10,
+    "tapExamples" : [
+
+    ],
+    "tapSavesNextShower" : 0
+  },
+  {
+    "chargeBetterFollowups" : 150,
+    "chargeBetterValue" : 163,
+    "chargeChoices" : 743,
+    "chargeSavesNextShower" : 0,
+    "chargedClears" : 150,
+    "clears" : 3554,
+    "differingFollowups" : 671,
+    "ended" : 199,
+    "policy" : "followup-choice",
+    "recoloredSurvivors" : 571,
+    "rounds" : 200,
+    "score" : 13639,
+    "showers" : 5547,
+    "tapBetterFollowups" : 5,
+    "tapBetterValue" : 7,
+    "tapExamples" : [
+
+    ],
+    "tapSavesNextShower" : 0
+  }
+]

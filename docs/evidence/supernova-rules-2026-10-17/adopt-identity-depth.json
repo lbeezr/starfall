@@ -1,0 +1,516 @@
+[
+  {
+    "chargeBetterFollowups" : 297,
+    "chargeBetterValue" : 329,
+    "chargeChoices" : 690,
+    "chargeSavesNextShower" : 0,
+    "chargedClears" : 0,
+    "clears" : 3224,
+    "differingFollowups" : 623,
+    "ended" : 200,
+    "policy" : "tap",
+    "recoloredSurvivors" : 0,
+    "rounds" : 200,
+    "score" : 12419,
+    "showers" : 5290,
+    "tapBetterFollowups" : 5,
+    "tapBetterValue" : 3,
+    "tapExamples" : [
+      {
+        "cell" : {
+          "column" : 4,
+          "row" : 0
+        },
+        "chargeOverflow" : false,
+        "chargeValue" : 5,
+        "state" : {
+          "board" : [
+            {
+              "grown" : false,
+              "id" : 23,
+              "kind" : 2
+            },
+            {
+              "grown" : false,
+              "id" : 25,
+              "kind" : 2
+            },
+            {
+              "grown" : false,
+              "id" : 10,
+              "kind" : 4
+            },
+            {
+              "grown" : false,
+              "id" : 20,
+              "kind" : 4
+            },
+            {
+              "grown" : false,
+              "id" : 9,
+              "kind" : 2
+            },
+            {
+              "grown" : true,
+              "id" : 27,
+              "kind" : 2
+            },
+            null,
+            null,
+            null,
+            {
+              "grown" : false,
+              "id" : 16
+            },
+            {
+              "grown" : false,
+              "id" : 24,
+              "kind" : 2
+            },
+            {
+              "grown" : false,
+              "id" : 19,
+              "kind" : 4
+            },
+            {
+              "grown" : true,
+              "id" : 29,
+              "kind" : 2
+            },
+            null,
+            null,
+            null,
+            {
+              "grown" : false,
+              "id" : 22,
+              "kind" : 2
+            },
+            null,
+            {
+              "grown" : true,
+              "id" : 26,
+              "kind" : 2
+            },
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "cohesiveShowers" : true,
+          "darkStarsCleared" : 0,
+          "incoming" : [
+            {
+              "column" : 2,
+              "id" : 45,
+              "kind" : 4
+            },
+            {
+              "column" : 1,
+              "id" : 46,
+              "kind" : 4
+            },
+            {
+              "column" : 6,
+              "id" : 47,
+              "kind" : 4
+            },
+            {
+              "column" : 6,
+              "id" : 48,
+              "kind" : 4
+            },
+            {
+              "column" : 1,
+              "id" : 49
+            }
+          ],
+          "random" : {
+            "state" : 8802065995613017117
+          },
+          "remainingColumns" : [
+            0,
+            2,
+            3,
+            4,
+            5
+          ],
+          "savedBalance" : {
+            "darkStars" : "regular",
+            "pace" : 4
+          },
+          "score" : 17,
+          "seed" : 124,
+          "showersUntilDark" : 5,
+          "starsLanded" : 32,
+          "turns" : 9
+        },
+        "tapOverflow" : false,
+        "tapValue" : 6
+      },
+      {
+        "cell" : {
+          "column" : 2,
+          "row" : 0
+        },
+        "chargeOverflow" : false,
+        "chargeValue" : 0,
+        "state" : {
+          "board" : [
+            {
+              "grown" : false,
+              "id" : 11,
+              "kind" : 1
+            },
+            {
+              "grown" : false,
+              "id" : 4,
+              "kind" : 1
+            },
+            {
+              "grown" : false,
+              "id" : 9,
+              "kind" : 2
+            },
+            {
+              "grown" : false,
+              "id" : 8,
+              "kind" : 2
+            },
+            {
+              "grown" : false,
+              "id" : 18,
+              "kind" : 2
+            },
+            {
+              "grown" : false,
+              "id" : 17
+            },
+            {
+              "grown" : true,
+              "id" : 3,
+              "kind" : 1
+            },
+            {
+              "grown" : false,
+              "id" : 22,
+              "kind" : 2
+            },
+            null,
+            {
+              "grown" : false,
+              "id" : 15,
+              "kind" : 1
+            },
+            null,
+            {
+              "grown" : true,
+              "id" : 19,
+              "kind" : 2
+            },
+            {
+              "grown" : false,
+              "id" : 21,
+              "kind" : 2
+            },
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "cohesiveShowers" : true,
+          "darkStarsCleared" : 0,
+          "incoming" : [
+            {
+              "column" : 6,
+              "id" : 35,
+              "kind" : 2
+            },
+            {
+              "column" : 1,
+              "id" : 36,
+              "kind" : 2
+            }
+          ],
+          "random" : {
+            "state" : 17268758816398543274
+          },
+          "remainingColumns" : [
+            2,
+            3,
+            4
+          ],
+          "savedBalance" : {
+            "darkStars" : "regular",
+            "pace" : 4
+          },
+          "score" : 10,
+          "seed" : 127,
+          "showersUntilDark" : 2,
+          "starsLanded" : 23,
+          "turns" : 7
+        },
+        "tapOverflow" : false,
+        "tapValue" : 3
+      },
+      {
+        "cell" : {
+          "column" : 0,
+          "row" : 0
+        },
+        "chargeOverflow" : false,
+        "chargeValue" : 0,
+        "state" : {
+          "board" : [
+            {
+              "grown" : true,
+              "id" : 13,
+              "kind" : 2
+            },
+            {
+              "grown" : true,
+              "id" : 33,
+              "kind" : 2
+            },
+            {
+              "grown" : false,
+              "id" : 16,
+              "kind" : 2
+            },
+            {
+              "grown" : false,
+              "id" : 21
+            },
+            {
+              "grown" : false,
+              "id" : 29,
+              "kind" : 0
+            },
+            {
+              "grown" : false,
+              "id" : 24,
+              "kind" : 2
+            },
+            {
+              "grown" : false,
+              "id" : 23,
+              "kind" : 2
+            },
+            {
+              "grown" : false,
+              "id" : 37
+            },
+            {
+              "grown" : true,
+              "id" : 35,
+              "kind" : 2
+            },
+            {
+              "grown" : false,
+              "id" : 30,
+              "kind" : 0
+            },
+            {
+              "grown" : false,
+              "id" : 32,
+              "kind" : 0
+            },
+            null,
+            null,
+            {
+              "grown" : false,
+              "id" : 31,
+              "kind" : 0
+            },
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "cohesiveShowers" : true,
+          "darkStarsCleared" : 0,
+          "incoming" : [
+            {
+              "column" : 5,
+              "id" : 50,
+              "kind" : 2
+            },
+            {
+              "column" : 6,
+              "id" : 51,
+              "kind" : 2
+            },
+            {
+              "column" : 3,
+              "id" : 52,
+              "kind" : 2
+            },
+            {
+              "column" : 4,
+              "id" : 53,
+              "kind" : 2
+            },
+            {
+              "column" : 0,
+              "id" : 54,
+              "kind" : 2
+            }
+          ],
+          "random" : {
+            "state" : 2391376802751831431
+          },
+          "remainingColumns" : [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "savedBalance" : {
+            "darkStars" : "regular",
+            "pace" : 4
+          },
+          "score" : 23,
+          "seed" : 192,
+          "showersUntilDark" : 2,
+          "starsLanded" : 38,
+          "turns" : 10
+        },
+        "tapOverflow" : false,
+        "tapValue" : 3
+      }
+    ],
+    "tapSavesNextShower" : 0
+  },
+  {
+    "chargeBetterFollowups" : 386,
+    "chargeBetterValue" : 435,
+    "chargeChoices" : 997,
+    "chargeSavesNextShower" : 0,
+    "chargedClears" : 997,
+    "clears" : 4227,
+    "differingFollowups" : 903,
+    "ended" : 195,
+    "policy" : "charge",
+    "recoloredSurvivors" : 2439,
+    "rounds" : 200,
+    "score" : 16601,
+    "showers" : 6255,
+    "tapBetterFollowups" : 12,
+    "tapBetterValue" : 11,
+    "tapExamples" : [
+
+    ],
+    "tapSavesNextShower" : 0
+  },
+  {
+    "chargeBetterFollowups" : 356,
+    "chargeBetterValue" : 396,
+    "chargeChoices" : 912,
+    "chargeSavesNextShower" : 0,
+    "chargedClears" : 356,
+    "clears" : 4131,
+    "differingFollowups" : 813,
+    "ended" : 196,
+    "policy" : "followup-choice",
+    "recoloredSurvivors" : 1282,
+    "rounds" : 200,
+    "score" : 15955,
+    "showers" : 6116,
+    "tapBetterFollowups" : 11,
+    "tapBetterValue" : 8,
+    "tapExamples" : [
+
+    ],
+    "tapSavesNextShower" : 0
+  }
+]

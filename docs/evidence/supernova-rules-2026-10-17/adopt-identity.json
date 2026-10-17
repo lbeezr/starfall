@@ -1,0 +1,44 @@
+[
+  {
+    "chargeBetterFollowups" : 297,
+    "chargeChoices" : 690,
+    "chargedClears" : 0,
+    "clears" : 3224,
+    "differingFollowups" : 623,
+    "ended" : 200,
+    "policy" : "tap",
+    "recoloredSurvivors" : 0,
+    "rounds" : 200,
+    "score" : 12419,
+    "showers" : 5290,
+    "tapBetterFollowups" : 5
+  },
+  {
+    "chargeBetterFollowups" : 386,
+    "chargeChoices" : 997,
+    "chargedClears" : 997,
+    "clears" : 4227,
+    "differingFollowups" : 903,
+    "ended" : 195,
+    "policy" : "charge",
+    "recoloredSurvivors" : 2439,
+    "rounds" : 200,
+    "score" : 16601,
+    "showers" : 6255,
+    "tapBetterFollowups" : 12
+  },
+  {
+    "chargeBetterFollowups" : 356,
+    "chargeChoices" : 912,
+    "chargedClears" : 356,
+    "clears" : 4131,
+    "differingFollowups" : 813,
+    "ended" : 196,
+    "policy" : "followup-choice",
+    "recoloredSurvivors" : 1282,
+    "rounds" : 200,
+    "score" : 15955,
+    "showers" : 6116,
+    "tapBetterFollowups" : 11
+  }
+]

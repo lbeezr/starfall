@@ -4,13 +4,15 @@ Updated October 17, 2026, Eastern time. This is the current roadmap for **fallin
 
 ## Product direction
 
+See [the adoption register and experiment workflow](EXPERIMENTS.md) for the authoritative adopted/trial/proposed status. Falling sky and its physical reactions are shipping behavior, not permanent experiments.
+
 A small, readable, satisfying falling-sky puzzle worth replaying. Keep the 7×7 board, five jewel kinds, orthogonal matching worth 3+, growth, dark stars, automatic showers, pause, manual next shower, and local balance controls. Preserve full falling animations, with accessible reduced-motion alternatives.
 
 No progression, power-ups, backend, accounts, analytics, ads, purchases, paid assets, or external SDKs. The original 70-jewel/18-move puzzle stays available for Debug regression testing; its rules do not govern falling sky.
 
 ## Current baseline
 
-- The [compact HUD trial](evidence/compact-hud-2026-10-17/README.md) replaces the exact forecast/countdown/status rows with score/goal, a quiet menu and a subtle arrival cue. Pause moves into the menu; Start/Resume and manual advance appear while paused. User play still needs to establish whether losing the exact forecast helps readability without losing useful decisions.
+- The [compact HUD](evidence/compact-hud-2026-10-17/README.md) replaces the exact forecast/countdown/status rows with score/goal, a quiet menu and a subtle arrival cue. Pause moves into the menu; Start/Resume and manual advance appear while paused. User play still needs to establish whether losing the exact forecast helps readability without losing useful decisions.
 
 - Falling sky is the default. New skies offer a first-shower match; matching runs help dry boards when a low column has room. Existing saves retain their previous sky-generation rules.
 - Faster comets, manual next shower, paused clears, matching-group outlines/count, clear rings/score popups, and optional local sound/haptics are implemented.
@@ -27,6 +29,12 @@ The [mechanics notebook](design/MECHANICS_IDEAS.md) preserves the hold-to-supern
 
 The [strategy baseline](evidence/falling-sky-strategy-2026-10-16/README.md) is complete. Across 200 seeds, only about 10% of match-ready states in one-clear-per-shower policies offer multiple groups. Largest-first and first-group policies score almost identically. This is a reason to investigate decision depth, not proof that the game is unenjoyable.
 
+The [expanded mechanics baseline](evidence/mechanics-baseline-2026-10-17/README.md) adds dry-shower and high-column-choice diagnostics without changing gameplay. Clear-all still offers alternatives in only 6.7% of decision states; 43.0% of its surviving shower states are dry, with no sampled dry run beyond one shower. Use these denominators when comparing the next bounded mechanic; human play remains necessary.
+
+The user selected **shower variety and choices** to lead the next playable experiment. A separate [Shower Lab](evidence/paired-showers-2026-10-17/README.md) tests natural five-star 3 + 2 runs against the unchanged game. It raises clear-all multi-group decisions from 6.7% to 11.6%, preserves existing-save generation, and has passed a native opening/choice comparison. Broader pairing is rejected for excessive survival extension; a higher-column refinement remains offline. The default generator is unchanged pending observed play and pressure/comprehension review.
+
+The [supernova rule comparison](evidence/supernova-rules-2026-10-17/README.md) and its [isolated native input lab](evidence/supernova-native-2026-10-17/README.md) are parked while showers lead. Hold/release/cancel, interruption and superseded-touch checks are retained; ordinary clear effects and the weak tap/charge tradeoff remain unresolved. Neither recoloring candidate is adopted.
+
 The [next-tranche record](evidence/falling-sky-tranche-2026-10-16/README.md) compares two offline mixed-color candidates. Neither replaced the default. One optional objective-driven First Light round is the playable comparison in this tranche.
 
 Ongoing experiment sequence:
@@ -42,9 +50,11 @@ Ongoing experiment sequence:
 
 [Mechanics/progression research](design/FALLING_SKY_RESEARCH.md) and [Mahjong-solitaire research](design/MAHJONG_PROGRESSION.md) distinguish puzzle difficulty from a long level counter. The user's next-tranche request advances the plan to one optional First Light challenge. Validate completion/retry and compare goal-driven play with survival before authoring more skies. No campaign, unlock system, XP, currency or infinite-content generator is included. Future challenge sequences should vary layout, goals and pressure, with readable changes and easier relief rounds rather than an assumed endlessly rising difficulty curve.
 
-## 2. Polish physical feel — next
+## 2. Polish physical feel — active
 
 Visual acceptance of the cast remains open. A [motion-set revision](evidence/star-cast-motion-2026-10-17/README.md) adds twelve frames per character, partial turns and distinct grown/clearing expressions; its sheets and recording are available for review. The [luminous revision](evidence/star-cast-luminous-2026-10-17/README.md) responds to feedback on eyes and emitted-light appearance; the first integration did not establish final art approval.
+
+A bounded [physical-reaction pass](evidence/physical-reactions-2026-10-17/README.md) adds angled arrivals, lighter/heavier rebounds and distance-delayed survivor ripples. These present existing committed turns; they do not adopt supernova recoloring or add collision-driven rules. Human preference and device pacing remain open.
 
 - Review comet speed, landing/growth emphasis, clear readability and input response on a real iPhone.
 - Tune optional sound/haptics for comfort, silent mode and interruptions; keep defaults off and mute immediate.
