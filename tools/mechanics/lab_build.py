@@ -1,6 +1,5 @@
 """Stamp one stable development app identity with a reproducible runtime fingerprint."""
 from pathlib import Path
-import hashlib
 import plistlib
 from constellation_candidate import replace_once
 
@@ -19,14 +18,9 @@ def stamp_lab(workspace: Path) -> str:
     menu.write_text(text)
     (workspace/'Config/Lab-Info.plist').write_bytes(plistlib.dumps({'StarfallBuildID': '$(STARFALL_BUILD_ID)'}))
     with config.open('a') as output: output.write('\nINFOPLIST_FILE = Config/Lab-Info.plist\n')
-    digest = hashlib.sha256()
-    for folder in ['App','Sources','Config','Starfall.xcodeproj']:
-        for path in sorted((workspace/folder).rglob('*')):
-            if path.is_file():
-                name = str(path.relative_to(workspace)).encode()
-                data = path.read_bytes()
-                digest.update(len(name).to_bytes(8,'big')); digest.update(name)
-                digest.update(len(data).to_bytes(8,'big')); digest.update(data)
-    build_id = 'dev.'+digest.hexdigest()[:10]
+    import sys
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'scripts'))
+    from build_identity import build_id as runtime_build_id
+    build_id = runtime_build_id(workspace)
     with config.open('a') as output: output.write('\nSTARFALL_BUILD_ID = '+build_id+'\n')
     return build_id

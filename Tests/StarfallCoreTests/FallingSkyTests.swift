@@ -401,3 +401,34 @@ final class FallingSkyTests: XCTestCase {
         XCTAssertFalse(decoded.isValidSave)
     }
 }
+
+
+extension FallingSkyTests {
+    func testTracePromotionKeepsOrdinaryTapAndSelectedSetContracts() throws {
+        let path = [Cell(0,4), Cell(1,3), Cell(2,4), Cell(1,5), Cell(1,6)]
+        var game = ConstellationFixture.overlap.game()
+        let original = game
+        XCTAssertEqual(game.group(at: path[1]).count, 1)
+        XCTAssertEqual(game.constellationGroup(at: path[0]).count, 7)
+        XCTAssertNil(game.clear(path[1])); XCTAssertEqual(game, original)
+        let selectedIDs = Set(path.compactMap { original.gem(at: $0)?.id })
+        let survivors = Set(original.board.compactMap { $0?.id }).subtracting(selectedIDs)
+        let turn = try XCTUnwrap(game.clearConstellation(path))
+        XCTAssertEqual(turn.cleared, Set(path)); XCTAssertEqual(turn.collected, 5)
+        XCTAssertEqual(Set(game.board.compactMap { $0?.id }), survivors)
+        XCTAssertEqual(game.incoming, original.incoming)
+        XCTAssertTrue(game.isValidSave)
+        var restored = try JSONDecoder().decode(FallingSky.self, from: JSONEncoder().encode(game))
+        game.letStarsFall(); restored.letStarsFall(); XCTAssertEqual(game, restored)
+    }
+
+    func testTracePromotionRejectsIncompleteAndInvalidWalksWithoutSaveMutation() throws {
+        let game = ConstellationFixture.diagonalSix.game()
+        for path in [(0..<4).map { Cell($0,$0) }, [Cell(0,0),Cell(2,2),Cell(3,3),Cell(4,4),Cell(5,5)],
+                     Array(repeating: Cell(0,0), count: 197)] {
+            var copy = game
+            XCTAssertNil(copy.clearConstellation(path)); XCTAssertEqual(copy, game)
+            XCTAssertEqual(try JSONEncoder().encode(copy).count, try JSONEncoder().encode(game).count)
+        }
+    }
+}

@@ -20,6 +20,8 @@ parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--source', type=Path, help='Reuse an immutable ENVIRONMENT-LAB-SOURCE.json snapshot')
 parser.add_argument('--output', type=Path, help='New directory for durable local app projects; never overwrite an existing export')
 args = parser.parse_args()
+if args.source is None:
+    raise SystemExit('Constellation tracing now belongs to Starfall. Build the app directly; use --source only to reproduce a historical comparison snapshot.')
 if args.output:
     args.output = args.output.resolve()
     args.output.mkdir(parents=True, exist_ok=False)

@@ -8,12 +8,15 @@ A small native iOS falling-sky puzzle. Clear matching stars as showers fill the 
 
 ## How to play
 
-- **Clear a match:** Connected matching jewels must total at least 3 starlight. Normal jewels count as 1; large jewels count as 2. Clear beside a dark star to dissolve it and unblock nearby growth.
+- **Clear a match:** Horizontally or vertically connected matching jewels must total at least 3 starlight. Normal jewels count as 1; large jewels count as 2. Clear beside a dark star to dissolve it and unblock nearby growth.
+- **Draw a constellation:** Swipe through five or more neighboring matching stars, including diagonals, then lift. Only the stars you traced clear; retrace to branch.
 - **Understand the sky:** While paused, Sunny explains growth, clear results and dark-star removal using the committed game outcome. Active play stays quiet.
 - **Control the showers:** Call the next shower yourself or clear while paused. Use the sky menu to pause or tune shower pace and dark-star frequency; Start/Resume and manual advance appear while paused.
 - **Try a goal:** Choose **Sky menu → Start First Light** to start a new round with steady showers, no dark stars and an 18-starlight target. Replay repeats it; New sky returns to survival. When a survival board fills, replay or start a new sky.
 
 New skies offer a match in the first shower. Matching colors travel together; dry boards receive a matching run in a later preview when a low column has room. The [compact HUD](docs/evidence/compact-hud-2026-10-17/README.md) keeps score/goal and the sky menu above the board, with an arrival cue instead of the exact forecast strip.
+
+[Automatic connected-iPhone updates](scripts/README.md#one-app-iphone-updates) keep one regular Starfall installation and its saved round.
 
 ## Open and run
 

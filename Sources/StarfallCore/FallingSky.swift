@@ -154,6 +154,28 @@ public struct FallingSky: Codable, Equatable, Sendable {
         guard !isOver else { return nil }
         let cells = group(at: cell)
         guard value(of: cells) >= 3 else { return nil }
+        return clearCommitted(cells)
+    }
+
+    /// Walk order, family and distinct count are rules, not gesture/presentation decisions.
+    public func constellationCells(along path: [Cell]) -> Set<Cell>? {
+        guard path.count <= 196, let first = path.first, let kind = gem(at: first)?.kind else { return nil }
+        var previous = first
+        for cell in path {
+            guard gem(at: cell)?.kind == kind,
+                  abs(cell.row-previous.row) <= 1, abs(cell.column-previous.column) <= 1 else { return nil }
+            previous = cell
+        }
+        let cells = Set(path)
+        return cells.count >= 5 ? cells : nil
+    }
+
+    @discardableResult public mutating func clearConstellation(_ path: [Cell]) -> FallingSkyTurn? {
+        guard !isOver, let cells = constellationCells(along: path) else { return nil }
+        return clearCommitted(cells)
+    }
+
+    private mutating func clearCommitted(_ cells: Set<Cell>) -> FallingSkyTurn {
         let collected = value(of: cells)
         let darkStars = darkStarsBeside(cells)
         let removed = cells.union(darkStars)
@@ -238,6 +260,22 @@ public struct FallingSky: Codable, Equatable, Sendable {
             return IncomingStar(id: turns * Self.maximumShowerSize + offset, kind: offset == darkIndex ? nil : (sharedKind ?? kind),
                                 column: offset < 3 ? (reliefColumn ?? naturalColumn) : naturalColumn)
         }
+    }
+
+
+    // Trace eligibility is distinct from ordinary tap groups and generator relief.
+    public func constellationGroup(at start: Cell) -> Set<Cell> {
+        guard let kind = gem(at: start)?.kind else { return [] }
+        var found: Set<Cell> = [start], pending = [start]
+        while let cell = pending.popLast() {
+            for dr in -1...1 { for dc in -1...1 where dr != 0 || dc != 0 {
+                let next = Cell(cell.row + dr, cell.column + dc)
+                if !found.contains(next), gem(at: next)?.kind == kind {
+                    found.insert(next); pending.append(next)
+                }
+            } }
+        }
+        return found.count >= 5 ? found : []
     }
 
     public var isValidSave: Bool {
