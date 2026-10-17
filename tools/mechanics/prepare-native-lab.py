@@ -17,7 +17,10 @@ mode.add_argument("--baseline", action="store_true", help="Export the matching u
 mode.add_argument("--pressure-showers", action="store_true", help="Export higher-column paired showers with a decision fixture")
 mode.add_argument("--burst-showers", action="store_true", help="Export nine preparation / three pressure showers with phase cues")
 mode.add_argument("--surge-showers", action="store_true", help="Export three five-star surge showers between preparation phases")
+parser.add_argument("--compact-hud", action="store_true", help="Compare the committed compact HUD in a separate phase app")
 arguments = parser.parse_args()
+if arguments.compact_hud and not (arguments.burst_showers or arguments.surge_showers):
+    parser.error("--compact-hud requires --burst-showers or --surge-showers")
 revision = "30af812"
 is_phase = arguments.burst_showers or arguments.surge_showers
 is_shower = arguments.showers or arguments.pressure_showers or is_phase
@@ -25,6 +28,11 @@ prefix = "starfall-native-baseline-" if arguments.baseline else "starfall-native
 workspace = Path(tempfile.mkdtemp(prefix=prefix))
 archive = subprocess.run(["git", "archive", revision], cwd=root, check=True, stdout=subprocess.PIPE).stdout
 subprocess.run(["tar", "-xf", "-", "-C", str(workspace)], input=archive, check=True)
+
+# Retained jewel-renderer contracts share one owner with the current hosted suite.
+renderer_test_paths = ["AppTests/CrystalPilotTests.swift", "AppTests/StarshardFamilyPilotTests.swift"]
+for path in renderer_test_paths:
+    (workspace / path).write_bytes((root / path).read_bytes())
 
 def replace(path, original, replacement):
     file = workspace / path
@@ -38,7 +46,9 @@ def finish(bundle, **details):
                if path.suffix in (".swift", ".py", ".patch")}
     (workspace / "MECHANICS-LAB.json").write_text(json.dumps({
         "source": subprocess.check_output(["git", "rev-parse", revision], cwd=root, text=True).strip(),
-        "bundle": bundle, "toolSHA256": digests, **details}, indent=2, sort_keys=True))
+        "bundle": bundle, "toolSHA256": digests,
+        "rendererTestSHA256": {path: hashlib.sha256((workspace / path).read_bytes()).hexdigest()
+                               for path in renderer_test_paths}, **details}, indent=2, sort_keys=True))
     print(workspace)
 
 if is_shower or arguments.baseline:
@@ -65,12 +75,24 @@ if is_shower or arguments.baseline:
         bundle, display, suite = "com.starfall.burstshowerslab", "Phase Lab", "starfall.burst-showers.lab"
     if arguments.surge_showers:
         bundle, display, suite = "com.starfall.surgeshowerslab", "Surge Lab", "starfall.surge-showers.lab"
+    if arguments.compact_hud:
+        # Presentation-only comparison: retain frozen rules/renderer, but reuse
+        # one committed production view/theme instead of forking a compact HUD.
+        hud_revision = "be4d869"
+        bundle += ".compact"
+        display += " HUD"
+        suite += ".compact"
+        for destination, original in [("App/StarfallExperimentView.swift", "App/FallingSkyView.swift"),
+                                      ("App/StarfallTheme.swift", "App/StarfallTheme.swift")]:
+            text = subprocess.check_output(["git", "show", hud_revision + ":" + original], cwd=root, text=True)
+            (workspace / destination).write_text(text.replace("FallingSky", "StarfallExperiment"))
     replace("Config/Clean.xcconfig", "PRODUCT_BUNDLE_IDENTIFIER = com.starfall.prototype",
             f"PRODUCT_BUNDLE_IDENTIFIER = {bundle}\nINFOPLIST_KEY_CFBundleDisplayName = {display}")
     replace("App/StarfallExperimentStore.swift", "defaults: UserDefaults = .standard",
             f'defaults: UserDefaults = UserDefaults(suiteName: "{suite}")!')
-    replace("App/StarfallExperimentView.swift", 'store.game.challenge?.title ?? "Starfall"',
-            f'store.game.challenge?.title ?? "{display}"')
+    if not arguments.compact_hud:
+        replace("App/StarfallExperimentView.swift", 'store.game.challenge?.title ?? "Starfall"',
+                f'store.game.challenge?.title ?? "{display}"')
     if is_shower:
         replace("App/StarfallExperimentStore.swift",
                 "Start the sky. Clear matching stars to make room; adjust the balance in Settings.",
@@ -84,7 +106,7 @@ if is_shower or arguments.baseline:
             "__BURST_PREVIEW_CHECK__": '''            if remaining > 0 {
                 XCTAssertEqual(app.descendants(matching: .any).matching(NSPredicate(
                     format: "identifier BEGINSWITH %@", "experiment.incoming.")).count, 5)
-            }''' if arguments.surge_showers else "",
+            }''' if arguments.surge_showers and not arguments.compact_hud else "",
             "__BURST_STORE_CHECK__": '''            if (9...11).contains(turn) { XCTAssertEqual(stores[0].game.incoming.count, 5) }
             if (10...12).contains(turn) { XCTAssertEqual(stores[0].pending?.forecast.count, 5) }''' if arguments.surge_showers else "",
         }
@@ -97,7 +119,9 @@ if is_shower or arguments.baseline:
             return text
         view = "App/StarfallExperimentView.swift"
         replace(view, "import SpriteKit", "import SpriteKit\nimport UIKit")
-        replace(view, "                        forecast", "                        if !largeText { phaseCue }\n                        forecast")
+        anchor = "                        compactHeader" if arguments.compact_hud else "                        forecast"
+        replace(view, anchor, anchor + "\n                        if !largeText { phaseCue }" if arguments.compact_hud
+                else "                        if !largeText { phaseCue }\n" + anchor)
         # At accessibility sizes the controls require scrolling. Keep their
         # announced phase in a sibling region so scrolling cannot hide it.
         replace(view, "            GeometryReader { viewport in\n                ScrollView {", '''            GeometryReader { viewport in
@@ -120,8 +144,16 @@ if is_shower or arguments.baseline:
         }
         remaining = showerInterval
         scene.onLayout''')
+        ui_path = workspace / "UITests/StarfallExperimentInteractionTests.swift"
+        if arguments.compact_hud:
+            # This HUD has different controls; retain dedicated assertions rather
+            # than running archived forecast-strip tests against a hidden strip.
+            ui_path.write_text("import XCTest\n")
+        with ui_path.open("a") as output:
+            output.write("\n" + phase_fragment("NativeBurstUITestSupport.swift"))
         for destination, fragment in [
-            ("UITests/StarfallExperimentInteractionTests.swift", "NativeBurstUITests.swift"),
+            ("UITests/StarfallExperimentInteractionTests.swift",
+             "NativeCompactBurstUITests.swift" if arguments.compact_hud else "NativeBurstUITests.swift"),
             ("AppTests/StarfallExperimentStoreTests.swift", "BurstStoreTests.swift"),
         ]:
             with (workspace / destination).open("a") as output:
@@ -157,6 +189,7 @@ if is_shower or arguments.baseline:
             with (workspace / destination).open("a") as output:
                 output.write("\n" + tests)
     finish(bundle, candidate=candidate, candidateCoreSHA256=core_hash,
+           compactHUDSource=subprocess.check_output(["git", "rev-parse", hud_revision], cwd=root, text=True).strip() if arguments.compact_hud else None,
            uniqueIDTestSHA256=hashlib.sha256(contract.encode()).hexdigest())
     raise SystemExit(0)
 

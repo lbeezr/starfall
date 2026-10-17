@@ -15,6 +15,8 @@ variant.add_argument("--natural-only", action="store_true", help="Pair natural f
 variant.add_argument("--pressure", action="store_true", help="Target a higher eligible primary column in natural five-star showers")
 variant.add_argument("--burst", action="store_true", help="Alternate nine low-column showers with three pressure showers")
 variant.add_argument("--dense-burst", action="store_true", help="Use five-star showers during the three-shower pressure burst")
+parser.add_argument("--shower-cap", type=int, choices=[60, 120, 240], default=60,
+                    help="Bound the survival sample; capped survivors remain censored")
 arguments = parser.parse_args()
 compatibility = root / "tools/mechanics/ShowerCompatibility.swift"
 mode = "dense-burst" if arguments.dense_burst else "burst" if arguments.burst else "pressure" if arguments.pressure else "natural-only" if arguments.natural_only else "broad"
@@ -25,7 +27,7 @@ if mode in ("burst", "dense-burst"):
     inputs.append(root / "tools/mechanics/ShowerBurstChecks.swift")
     inputs.append(root / "tools/mechanics/ShowerBurstPhase.swift")
 report = {"baselineSource": subprocess.check_output(["git", "rev-parse", revision], cwd=root, text=True).strip(),
-          "candidate": mode, "inputSHA256": {str(path.relative_to(root)): hashlib.sha256(path.read_bytes()).hexdigest()
+          "candidate": mode, "showerCap": arguments.shower_cap, "inputSHA256": {str(path.relative_to(root)): hashlib.sha256(path.read_bytes()).hexdigest()
                           for path in inputs}}
 with tempfile.TemporaryDirectory(prefix="starfall-shower-comparison-") as temporary:
     workspace = Path(temporary)
@@ -43,12 +45,16 @@ with tempfile.TemporaryDirectory(prefix="starfall-shower-comparison-") as tempor
         # Validate every sampled committed state without changing either policy.
         text = sampler.read_text().replace("game.letStarsFall()", "game.letStarsFall(); precondition(game.isValidSave)")
         text = text.replace("game.clear(chosen.cell);", "game.clear(chosen.cell); precondition(game.isValidSave);")
+        limit_anchor = "let seeds = 200, limit = 60"
+        if text.count(limit_anchor) != 1:
+            raise RuntimeError("Pinned sampler shower limit anchor changed")
+        text = text.replace(limit_anchor, f"let seeds = 200, limit = {arguments.shower_cap}")
         additions = {
-            "        var exampleSeeds:": "        var choiceBy20 = 0, choiceAfter20 = 0, noChoice = 0\n        var exampleSeeds:",
+            "        var exampleSeeds:": "        var choiceBy20 = 0, choiceAfter20 = 0, noChoice = 0\n        var observedRoundLengths: [Int] = []\n        var cappedSeeds: [UInt64] = []\n        var exampleSeeds:",
             "                var dryRun = 0": "                var firstChoice: Int?\n                var dryRun = 0",
             "                    result.groupCountTotal += available": "                    if available > 1 && firstChoice == nil { firstChoice = game.turns }\n                    result.groupCountTotal += available",
             "                        if groups.count > 1 { result.choiceStates += 1 }": "                        if groups.count > 1 { result.choiceStates += 1; if firstChoice == nil { firstChoice = game.turns } }",
-            "                result.rounds += 1;": "                if let firstChoice {\n                    if firstChoice <= 20 { result.choiceBy20 += 1 } else { result.choiceAfter20 += 1 }\n                } else { result.noChoice += 1 }\n                result.rounds += 1;",
+            "                result.rounds += 1;": "                if let firstChoice {\n                    if firstChoice <= 20 { result.choiceBy20 += 1 } else { result.choiceAfter20 += 1 }\n                } else { result.noChoice += 1 }\n                result.observedRoundLengths.append(game.turns)\n                if !game.isOver { result.cappedSeeds.append(seed) }\n                result.rounds += 1;",
         }
         for original, replacement in additions.items():
             if text.count(original) != 1:
@@ -59,6 +65,15 @@ with tempfile.TemporaryDirectory(prefix="starfall-shower-comparison-") as tempor
         subprocess.run(["swiftc", "-O", *map(str, sorted(source.glob("*.swift"))),
                         str(checked_sampler), "-o", str(executable)], check=True)
         report[name] = json.loads(subprocess.check_output([str(executable)], text=True))
+        if report[name]["showerLimit"] != arguments.shower_cap:
+            raise RuntimeError("Sample did not use the requested shower limit")
+        for result in report[name]["results"]:
+            lengths, capped = result["observedRoundLengths"], result["cappedSeeds"]
+            if (len(lengths) != result["rounds"] or sum(lengths) != result["showers"]
+                    or len(set(capped)) != len(capped) or result["ended"] + len(capped) != result["rounds"]
+                    or any(not 1 <= length <= arguments.shower_cap for length in lengths)
+                    or any(lengths[seed] != arguments.shower_cap for seed in capped)):
+                raise RuntimeError("Survival distribution and aggregate counts disagree")
         checker = workspace / (name + "-compatibility")
         subprocess.run(["swiftc", "-O", *map(str, sorted(source.glob("*.swift"))),
                         str(compatibility), "-o", str(checker)], check=True)

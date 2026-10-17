@@ -8,6 +8,7 @@ This is the authoritative status register for gameplay and presentation experime
 | --- | --- | --- |
 | Falling sky: accumulating stars, showers, growth, dark stars, local balance | Adopted | Default game in Debug and Release. Production owners are `FallingSky`, `FallingSkyStore`, `FallingSkyScene`, and `FallingSkyView`. |
 | Angled arrivals, weighted rebounds, survivor ripples | Adopted | Default presentation, no pilot flag. Rule/save outcomes unchanged. [Evidence](evidence/physical-reactions-2026-10-17/README.md); device/human tuning remains open. |
+| Connected contact, local looks and surface light | Adopted | Extends the default physical presentation with one receiver, finite reactions, clear gather/release and a quiet resting board. Rules/saves unchanged; no alternate runtime route. [Evidence](evidence/star-contact-2026-10-17/README.md); human, actual VoiceOver and device tuning remain open. |
 | Compact HUD and sky menu | Adopted | Default view, no alternate runtime route. [Source-bound evidence](evidence/compact-hud-2026-10-17/README.md) records acceptance limits. |
 | First Light | Adopted | One optional fixed 18-starlight challenge. No campaign or unlocks. |
 | Original orthogonal jewel puzzle / crystal comparison | Retained Debug tooling | Explicit Debug-only routes; not an alternate production game or pending promotion. |
@@ -32,3 +33,5 @@ An adoption record needs: status/date, hypothesis and scope, baseline/source, ac
 ## Naming and compatibility
 
 Production Swift types/files use domain names (`FallingSky…`), not `Experiment` or `Pilot`. Keep genuine comparisons labelled and isolated. Historical `experiment.*` accessibility IDs, existing saved-state keys and supported launch arguments are compatibility contracts, not experimental runtime routes; retain them when a naming-only promotion does not require a migration. Document that exception beside the owner. Historical evidence and frozen pre-promotion save fixtures keep their original names/source attribution.
+
+**Phase presentation comparison:** [Surge Lab HUD](evidence/compact-phase-2026-10-17/README.md) is an extended isolated trial using the committed compact score/menu view and shared phase cue, with a separate bundle/save suite. Keep only until the next observed phase comparison: determine whether players prepare useful clears without the forecast strip, then select/remove the old HUD comparison or name one bounded cue question. Core algorithm and production adoption status are unchanged.

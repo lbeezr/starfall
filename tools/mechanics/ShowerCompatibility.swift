@@ -3,6 +3,7 @@ import Foundation
 /// Compile with either core. Capture with baseline, verify with the candidate.
 @main struct ShowerCompatibility {
     struct Replay: Codable {
+        let label: String
         let saved: StarfallExperiment
         let continuation: [StarfallExperiment]
     }
@@ -19,19 +20,31 @@ import Foundation
             var fixtures: [Replay] = []
             for frequency in StarfallBalance.DarkStarFrequency.allCases {
                 for seed in UInt64(0)..<40 {
-                    var game = StarfallExperiment(seed: seed, balance: .init(darkStars: frequency))
-                    for _ in 0..<6 { advance(&game) }
-                    let saved = game
-                    var continuation: [StarfallExperiment] = []
-                    for _ in 0..<12 { advance(&game); continuation.append(game) }
-                    fixtures.append(.init(saved: saved, continuation: continuation))
+                    for legacy in [false, true] {
+                        var game = StarfallExperiment(seed: seed, balance: .init(darkStars: frequency))
+                        if legacy {
+                            // Synthetic older-generation save: retain its committed preview,
+                            // then let the pinned baseline own all subsequent RNG and rules.
+                            var fields = try JSONSerialization.jsonObject(with: JSONEncoder().encode(game)) as! [String: Any]
+                            fields.removeValue(forKey: "cohesiveShowers")
+                            game = try JSONDecoder().decode(StarfallExperiment.self,
+                                from: JSONSerialization.data(withJSONObject: fields))
+                        }
+                        for _ in 0..<6 { advance(&game) }
+                        let saved = game
+                        var continuation: [StarfallExperiment] = []
+                        for _ in 0..<12 { advance(&game); continuation.append(game) }
+                        fixtures.append(.init(label: legacy ? "marker-absent" : "current", saved: saved,
+                                              continuation: continuation))
+                    }
                 }
             }
             var challenge = StarfallExperiment(challenge: .firstLight)
             let initial = challenge
             var continuation: [StarfallExperiment] = []
-            for _ in 0..<12 { advance(&challenge); continuation.append(challenge) }
-            fixtures.append(.init(saved: initial, continuation: continuation))
+            for _ in 0..<80 { advance(&challenge); continuation.append(challenge) }
+            precondition(challenge.isOver, "Challenge fixture must reach its terminal outcome")
+            fixtures.append(.init(label: "first-light", saved: initial, continuation: continuation))
             try JSONEncoder().encode(fixtures).write(to: path)
         } else {
             let fixtures = try JSONDecoder().decode([Replay].self, from: Data(contentsOf: path))
@@ -43,6 +56,26 @@ import Foundation
                     precondition(game == expected, "Existing save changed its future sequence")
                 }
             }
+            // A newly created challenge also stays identical, including its opening
+            // and terminal no-ops. Ignore only the candidate's unused generation marker.
+            let challengeFixture = fixtures.first { $0.label == "first-light" }!
+            func withoutCandidateMarker(_ game: StarfallExperiment) throws -> StarfallExperiment {
+                var fields = try JSONSerialization.jsonObject(with: JSONEncoder().encode(game)) as! [String: Any]
+                fields.removeValue(forKey: "pairedShowers")
+                return try JSONDecoder().decode(StarfallExperiment.self,
+                    from: JSONSerialization.data(withJSONObject: fields))
+            }
+            var challenge = StarfallExperiment(challenge: .firstLight)
+            let normalizedOpening = try withoutCandidateMarker(challenge)
+            precondition(normalizedOpening == challengeFixture.saved)
+            for expected in challengeFixture.continuation {
+                advance(&challenge)
+                let normalized = try withoutCandidateMarker(challenge)
+                precondition(normalized == expected,
+                             "New First Light changed under candidate generation")
+            }
+            precondition(challenge.isOver)
+
             // New candidate saves must retain their generation choice after restore.
             for seed in UInt64(0)..<200 {
                 var game = StarfallExperiment(seed: seed)
@@ -69,7 +102,7 @@ import Foundation
                     precondition(game == restored, "Candidate continuation changed after restore")
                 }
             }
-            print("PASS: \(fixtures.count) baseline saves × 12 continuations; 200 candidate round-trip/opening/preview samples")
+            print("PASS: 160 current + 160 marker-absent baseline saves × 12 continuations; restored and new First Light × 80 steps through terminal; 200 candidate round-trip/opening/preview samples")
         }
     }
 }

@@ -1,4 +1,38 @@
 final class BurstShowerPhaseTests: XCTestCase {
+
+    @MainActor func testDoubleTapAtBurstWarningAndRecoveryAdvancesOneShower() {
+        continueAfterFailure = false
+        let app = XCUIApplication(bundleIdentifier: "__LAB_BUNDLE__")
+        app.launchArguments = ["--starfalls-reset", "--shower-phase-fixture"]
+        app.launch(); defer { app.terminate() }
+        let next = app.buttons["experiment.next"]
+        XCTAssertTrue(next.waitForExistence(timeout: 10))
+        XCTAssertEqual(app.staticTexts["experiment.turns"].label, "8 showers")
+        next.doubleTap()
+        XCTAssertEqual(XCTWaiter.wait(for: [XCTNSPredicateExpectation(
+            predicate: NSPredicate(format: "enabled == true"), object: next)], timeout: 5), .completed)
+        XCTAssertEqual(app.staticTexts["experiment.turns"].label, "9 showers",
+            "An accidental double tap must not consume the first event shower as well")
+        XCTAssertEqual(app.staticTexts["lab.phase"].label, "__BURST_THREE__")
+        clearCanonicalBurstGroup(in: app)
+        for shower in 10...11 {
+            XCTAssertEqual(XCTWaiter.wait(for: [XCTNSPredicateExpectation(
+                predicate: NSPredicate(format: "enabled == true"), object: next)], timeout: 5), .completed)
+            next.tap()
+            XCTAssertEqual(XCTWaiter.wait(for: [XCTNSPredicateExpectation(
+                predicate: NSPredicate(format: "enabled == true"), object: next)], timeout: 5), .completed)
+            XCTAssertEqual(app.staticTexts["experiment.turns"].label, "\(shower) showers")
+            clearCanonicalBurstGroup(in: app)
+        }
+        XCTAssertEqual(XCTWaiter.wait(for: [XCTNSPredicateExpectation(
+            predicate: NSPredicate(format: "enabled == true"), object: next)], timeout: 5), .completed)
+        next.doubleTap()
+        XCTAssertEqual(XCTWaiter.wait(for: [XCTNSPredicateExpectation(
+            predicate: NSPredicate(format: "enabled == true"), object: next)], timeout: 5), .completed)
+        XCTAssertEqual(app.staticTexts["experiment.turns"].label, "12 showers")
+        XCTAssertEqual(app.staticTexts["lab.phase"].label, "Recovery · 9 calmer showers")
+    }
+
     @MainActor func testLargestTextKeepsPhaseVisibleWhileAdvancingShower() {
         continueAfterFailure = false
         let app = XCUIApplication(bundleIdentifier: "__LAB_BUNDLE__")
@@ -42,14 +76,7 @@ final class BurstShowerPhaseTests: XCTestCase {
 __BURST_PREVIEW_CHECK__
             let capture = XCTAttachment(screenshot: app.screenshot())
             capture.name = "phase-\(remaining)"; capture.lifetime = .keepAlways; add(capture)
-            let legal = app.buttons.matching(NSPredicate(format: "value MATCHES %@",
-                "([3-9]|[1-9][0-9]+) starlight connected")).allElementsBoundByIndex
-            let canonical = legal.sorted {
-                let lhs = $0.identifier.split(separator: ".").suffix(2).compactMap { Int($0) }
-                let rhs = $1.identifier.split(separator: ".").suffix(2).compactMap { Int($0) }
-                return lhs.lexicographicallyPrecedes(rhs)
-            }.first
-            canonical?.tap()
+            clearCanonicalBurstGroup(in: app)
         }
         app.buttons["experiment.settings"].tap()
         let done = app.buttons["Done"]

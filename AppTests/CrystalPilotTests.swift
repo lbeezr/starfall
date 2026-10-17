@@ -58,6 +58,7 @@ final class CrystalPilotTests: XCTestCase {
     }
 
     @MainActor func testActualRendererCancellationRemovesFragmentsAndActions() throws {
+        try requireFullMotionRenderer()
         let (scene, view, old, new, turn) = try fixture()
         var completions = 0
         scene.animate(turn: turn, old: old, new: new) { completions += 1 }
@@ -77,6 +78,7 @@ final class CrystalPilotTests: XCTestCase {
     }
 
     @MainActor func testLargeAquaClearCapsFragmentsAt48() throws {
+        try requireFullMotionRenderer()
         try requireLegacyPilot()
         let data = try JSONEncoder().encode(Game(seed: 42))
         var fixture = try XCTUnwrap(JSONSerialization.jsonObject(with: data) as? [String: Any])

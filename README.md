@@ -48,7 +48,7 @@ The character star cast is enabled by default in Debug and Release. The original
 
 - **Rules and saves:** Pure deterministic core, Codable state and on-device saving after committed events. Replay or New sky resets the round.
 - **Native presentation:** SwiftUI screens/settings and a SpriteKit board; five expressive star families plus Dusk. The original Debug puzzle keeps its crystal artwork and procedural fallback.
-- **Bounded motion:** Clear fragments, downward settling, diagonal refill, angled arrivals, weighted rebounds and survivor ripples (stronger at 5+ starlight). These present committed outcomes.
+- **Bounded motion:** Clear fragments, downward settling, diagonal refill, angled arrivals, weighted rebounds and survivor ripples (stronger at 5+ starlight). These present committed outcomes. [Connected contact](docs/evidence/star-contact-2026-10-17/README.md) adds local weight transfer, brief neighbor looks, surface light and a quiet resting sky.
 - **Feedback and accessibility:** Group outlines/count, clear rings and score popup; optional local sound/haptics off by default; Calm effects honors Reduce Motion. The VoiceOver alternative grid exposes row/column, jewel name and connected-group size.
 
 Falling-sky artwork comes from the shared, bounded [star-cast material factory](docs/design/star-cast/README.md), used by the board and comets. It is authored drawing code with a fixed cache, not a cropped concept sheet or an external dependency.
@@ -79,3 +79,5 @@ See `docs/VALIDATION.md` for exact executed checks and outstanding checks. Apple
 The isolated [Phase Lab](docs/evidence/shower-phases-native-2026-10-17/README.md) explores preparation, a three-shower pressure burst and recovery. It does not change the default game; observed preference, phase accessibility and full-motion acceptance remain open.
 
 A subsequent [burst exposure audit](docs/evidence/burst-exposure-2026-10-17/README.md) found the original phase often leaves arrivals unchanged under a first-clear policy. The separate [Surge Lab](docs/evidence/surge-native-2026-10-17/README.md) now makes the five-star event playable for comparison; additional choices and longer sampled survival are not adoption or enjoyment evidence.
+
+The isolated [compact phase HUD trial](docs/evidence/compact-phase-2026-10-17/README.md) makes Surge playable with the committed score/menu layout and no forecast strip. Production generation remains unchanged pending observed comparison.

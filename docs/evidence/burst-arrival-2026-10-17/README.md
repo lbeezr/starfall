@@ -1,0 +1,21 @@
+# Burst arrival interruption checks — 2026-10-17
+
+Acceptance: interrupt the first and last event arrivals before presentation completion; retain committed state and saved forecast, reject stale clock/animation callbacks, resume without catch-up, and prevent an old completion from ending the next arrival. Inspect native full-motion warning/count/recovery alignment. Scope: shared isolated phase tests only; no production rule/save/UI changes.
+
+Added one hosted test with six cases: completed showers 9 and 11 × background, pause and motion changes. Each checks pending arrival before interruption, committed game/next preview afterward, paused restoration, retained four-second automatic interval, exactly one next shower, and stale callbacks during that newer arrival. Existing store checks cover due rain during clears, restart and settings. The new cases use injected presenters/clocks; they do not themselves establish actual OS background or VoiceOver behavior.
+
+Source: frozen 30af812 plus canonical candidate/export fragments; exact manifests in source.json. Surge export /var/folders/fs/9shw9bf142jg3280dc9n3hhc0000gn/T/starfall-native-showers-pwjoynh3; original Phase export .../starfall-native-showers-vni0zc5r. App Swift, core Swift and project bytes equal the previously verified Surge export .../starfall-native-showers-kt9z60fj. Concurrent production source/project/UI edits excluded; no new Release run because runtime/build inputs are unchanged.
+
+Apple validation: Xcode 27.1 (27A9275), iPhone 17e / iOS 27.0 (24A434), Starfall Mechanics Lab simulator A84C81F5-AE41-496A-97AE-E17C63E18D29. XcodeBuildMCP test_sim, Debug, CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES, parallel-testing-enabled NO:
+
+- Surge StarfallAppTests/StarfallExperimentStoreTests: 19 passed, no failures/skips. Result test_sim_2026-10-17T15-35-47-705Z_pid40582_310f7300.xcresult.
+- Surge StarfallUITests/BurstShowerPhaseTests with system Reduce Motion off: 3 passed, no failures/skips. Covers double taps at warning/recovery, largest-text sticky phase cue, counts, settings dismissal, actual Home/activate and relaunch. Result test_sim_2026-10-17T15-37-06-581Z_pid40582_26075e1f.xcresult.
+- Original Phase new hosted test: 1 passed, no failures/skips. Result test_sim_2026-10-17T15-39-05-567Z_pid40582_fe8b4f8f.xcresult.
+- Raw bundles: ~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-27844ad883f3/result-bundles/. Derived data /tmp/starfall-burst-arrival and /tmp/starfall-phase-arrival.
+- Current core swift test: 61 passed, /tmp/starfall-arrival-core.log. Hygiene and diff checks passed.
+
+Native recording: /tmp/starfall-surge-boundaries-full-motion.mp4 (30fps requested). An initial stop lacked its required outputFile parameter; the same live recording was then stopped successfully with an explicit path. System Reduce Motion was verified as 1 before the run, changed to 0 for the three UI checks, and restored/verified as 1 afterward. Surge left open on its saved paused recovery state.
+
+Inspected sampled movie frames rather than inferring animation from settled screenshots. At 91.5s shower 11 announces the last event; 91.8–92.7s shower 12 has visibly changing arrival positions/trails and retains the five-star forecast plus “Surge · 1 five-star shower.” At 93.0s the cue switches to recovery with the next two-star forecast; it remains through clears and settings. The [retained sequence](surge-to-recovery.jpg) records this boundary. Earlier sampled frames also show the initial event arrival and largest-text warning remaining visible while controls scroll. This is bounded native motion/cue evidence, not a frame-pacing profile or human readability judgment. The frozen HUD's oversized header wraps at largest text before scrolling; the sticky phase cue remains usable, and production compact-HUD adoption still needs its own check.
+
+Decision: retain this regression matrix and current phase behavior; no app fix was needed. Human comparison, learner comprehension, actual VoiceOver listening/announcements, physical-device play and production-generation/replay migration remain open. These checks do not retroactively change historical failures or establish complete gameplay acceptance.

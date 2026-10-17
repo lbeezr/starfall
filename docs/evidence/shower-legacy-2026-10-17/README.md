@@ -1,0 +1,15 @@
+# Shower legacy-generation coverage — 2026-10-17
+
+Hypothesis: the isolated Surge candidate preserves both baseline generation families and First Light, while retaining its distinct generation only for new survival rounds. Acceptance: full core-state equality against independent pinned-baseline continuations, unchanged announced forecasts, valid saves, terminal stability, and unchanged existing balance results. No rules or app behavior changed; this extends the offline regression checker.
+
+`python3 tools/mechanics/compare-showers.py --dense-burst` passed against frozen baseline 30af812. Source/tool hashes are in summary.json; raw report /tmp/starfall-surge-legacy-compatibility.json. The baseline executable captures expectations before the candidate patch is applied. Both compile with swiftc -O on the local Apple toolchain.
+
+- 160 current-generation saves: four dark-star frequencies × seeds 0–39, saved after six advance/first-clear steps, followed by 12 identical complete states.
+- 160 synthetic marker-absent saves: remove only cohesiveShowers from an initial baseline save, retain its announced preview, then use baseline rules for six steps and capture the next 12. This tests the optional-marker contract; these are not fixtures retrieved from an actual earlier app installation.
+- Restored First Light and a freshly initialized candidate First Light match 80 baseline steps. Seed 42 reaches score 20 at shower nine, then remains terminal. Fresh-challenge comparison removes only the unused candidate pairedShowers marker; board, preview, RNG, balance, outcome and all other state remain compared. Restored-save comparisons remove nothing.
+- Existing 200 candidate opening/round-trip/preview checks and invalid-marker rejection pass. Phase checks pass 120 schedule positions and 1,138 transitions. All six policy sample reports for baseline and Surge match the preceding cap-60 report exactly.
+- Negative control: a separate temporary frozen baseline changed cohesiveShowers == true to cohesiveShowers != false, incorrectly enabling cohesive generation for absent markers. Compiled with the same checker against the captured fixtures, it was rejected with signal 5. No mutation reached repository or candidate sources.
+
+Decision: retain this compatibility coverage and current Surge cadence. No candidate adoption or migration follows from this result. Same-sky replay/new-sky generation selection still needs an explicit version contract and native store tests before adoption; cross-lab saves remain unsupported. Actual historical-install upgrade testing remains open.
+
+Current production swift test: 61 tests passed, log /tmp/starfall-legacy-core.log. Hygiene, staged and full working-tree diff checks passed. No app/core/build/resource source changed, so simulator/Release builds and native interaction, interruption, accessibility or animation checks were not rerun for this offline-only change. Earlier source-bound native evidence remains separate; human enjoyment, actual VoiceOver and device acceptance remain open.

@@ -6,7 +6,8 @@ import StarfallCore
 @MainActor final class FallingSkyScene: SKScene, FallingSkyPresenting {
     var reduceMotion = false
     var onLayout: (() -> Void)?
-    private var nodes: [Int: SKNode] = [:]
+    private var nodes: [Int: FallingSkyCharacter] = [:]
+    private var cellsByID: [Int: Cell] = [:]
     private var rendered: FallingSky?
     private let pieces = SKNode(), effects = SKNode(), grid = SKNode()
     private var step: CGFloat { size.width / 7.7 }
@@ -32,9 +33,32 @@ import StarfallCore
                 y: size.height/2 + (CGFloat(cell.row)-3)*size.height/7.7)
     }
 
-    private func makeNode(_ gem: StarfallGem) -> SKNode {
-        JewelScene.makeStarCharacter(gem.kind, expression: gem.grown ? .grown : .idle,
-                                    radius: step * (gem.grown ? 0.43 : 0.35))
+    private func makeNode(_ gem: StarfallGem) -> FallingSkyCharacter {
+        FallingSkyCharacter(gem: gem, step: step)
+    }
+
+    private func ground(_ gem: StarfallGem, at cell: Cell) {
+        let shadow = SKShapeNode(ellipseOf: CGSize(width: step * 0.61, height: step * 0.12))
+        shadow.name = "sky.ground.\(gem.id)"
+        shadow.position = CGPoint(x: point(cell).x, y: point(cell).y - step * 0.32)
+        shadow.fillColor = .black.withAlphaComponent(0.18)
+        shadow.strokeColor = .clear
+        grid.addChild(shadow)
+    }
+
+    private func light(at anchor: CGPoint, color: UIColor, strength: CGFloat) {
+        // Two finite ellipses, below the stars. No particles, texture generation or broad flash.
+        for index in 0..<2 {
+            let pool = SKShapeNode(ellipseOf: CGSize(width: step * (index == 0 ? 0.95 : 0.48),
+                                                     height: step * (index == 0 ? 0.22 : 0.10)))
+            pool.name = "sky.surface-light"
+            pool.position = CGPoint(x: anchor.x, y: anchor.y - step * 0.32)
+            pool.fillColor = color.withAlphaComponent((index == 0 ? 0.16 : 0.24) * strength)
+            pool.strokeColor = .clear; pool.glowWidth = index == 0 ? 4 : 1
+            pool.blendMode = .add; pool.zPosition = -effects.zPosition - 1
+            effects.addChild(pool)
+            pool.run(.sequence([.group([.scale(to: 1.25, duration: 0.25), .fadeOut(withDuration: 0.25)]), .removeFromParent()]))
+        }
     }
 
     private func shade(_ node: SKNode, at cell: Cell) {
@@ -46,12 +70,10 @@ import StarfallCore
         grid.addChild(ring)
     }
 
-    func render(_ game: FallingSky) { render(game, ambient: true) }
-
-    private func render(_ game: FallingSky, ambient: Bool) {
+    func render(_ game: FallingSky) {
         rendered = game
         removeAllActions(); effects.removeAllChildren(); effects.removeAllActions()
-        pieces.removeAllChildren(); grid.removeAllChildren(); nodes.removeAll()
+        pieces.removeAllChildren(); grid.removeAllChildren(); nodes.removeAll(); cellsByID.removeAll()
         let matchable = Set(game.legalGroups.flatMap { $0 })
         for row in 0..<7 { for column in 0..<7 {
             let cell = Cell(row, column)
@@ -62,24 +84,18 @@ import StarfallCore
                 halo.position = point(cell); grid.addChild(halo)
             }
             if let gem = game.gem(at: cell) {
+                ground(gem, at: cell)
                 let node = makeNode(gem); node.position = point(cell)
                 if game.isGrowthBlocked(at: cell) { shade(node, at: cell) }
-                pieces.addChild(node); nodes[gem.id] = node
-                if ambient && !reduceMotion && !UIAccessibility.isReduceMotionEnabled && !UIAccessibility.isVoiceOverRunning {
-                    let expression: StarCast.Expression = gem.grown ? .grown : .idle
-                    let turn = StarCast.turnAction(for: gem.kind, expression: expression,
-                                                   toward: gem.id.isMultiple(of: 2) ? .left : .right, duration: 0.65)
-                    // Staggered, sparse character motion; one owned action per occupied cell.
-                    node.run(.repeatForever(.sequence([.wait(forDuration: 5 + Double(gem.id % 7)), turn])),
-                             withKey: "star-cast.ambient")
-                }
+                pieces.addChild(node); nodes[gem.id] = node; cellsByID[gem.id] = cell
+
             }
         } }
     }
 
     func animate(_ turn: FallingSkyTurn, from old: FallingSky,
                  to game: FallingSky, completion: @escaping () -> Void) {
-        render(old, ambient: false)
+        render(old)
         rendered = game
         if view == nil { render(game); completion(); return }
         if reduceMotion || UIAccessibility.isReduceMotionEnabled || UIAccessibility.isVoiceOverRunning {
@@ -90,16 +106,20 @@ import StarfallCore
         }
         for cell in turn.cleared {
             if let id = old.gem(at: cell)?.id, let node = nodes.removeValue(forKey: id) {
-                if let sprite = node as? SKSpriteNode {
-                    StarCast.setExpression(.clearing, for: old.gem(at: cell)?.kind, on: sprite)
-                }
+                node.update(node.gem, expression: .clearing)
+                cellsByID.removeValue(forKey: id)
+                grid.childNode(withName: "sky.ground.\(id)")?.run(.sequence([.fadeOut(withDuration: 0.15), .removeFromParent()]))
+                run(.sequence([.wait(forDuration: StarfallMotion.gatherDuration), .run { [weak self] in
+                    guard let self else { return }
+                    self.light(at: self.point(cell), color: old.gem(at: cell)?.kind?.color ?? .systemPurple, strength: 0.75)
+                }]))
                 let ring = SKShapeNode(circleOfRadius: step * 0.30)
                 ring.position = node.position
                 ring.strokeColor = old.gem(at: cell)?.kind?.color ?? .systemPurple
                 ring.lineWidth = 2; ring.glowWidth = 3
                 effects.addChild(ring)
-                ring.run(.sequence([.group([.scale(to: 1.7, duration: 0.24), .fadeOut(withDuration: 0.24)]), .removeFromParent()]))
-                node.run(.sequence([.group([.fadeOut(withDuration: 0.12), .scale(to: 1.2, duration: 0.12), .rotate(byAngle: 0.18, duration: 0.12)]), .removeFromParent()]))
+                ring.run(.sequence([.wait(forDuration: StarfallMotion.gatherDuration), .group([.scale(to: 1.7, duration: 0.24), .fadeOut(withDuration: 0.24)]), .removeFromParent()]))
+                node.run(.sequence([.scale(to: 0.91, duration: StarfallMotion.gatherDuration), .group([.fadeOut(withDuration: 0.12), .scale(to: 1.2, duration: 0.12), .rotate(byAngle: 0.18, duration: 0.12)]), .removeFromParent()]))
             }
         }
         if turn.collected > 0, !turn.cleared.isEmpty {
@@ -115,25 +135,32 @@ import StarfallCore
         }
         ripple(turn, from: old)
         for index in turn.settled.indices {
-            if let gem = turn.settled[index], let node = nodes[gem.id] {
+            if let gem = turn.settled[index], let node = nodes[gem.id],
+               cellsByID[gem.id] != Cell(index/7, index%7) {
                 let move = SKAction.move(to: point(Cell(index/7, index%7)), duration: 0.20)
                 move.timingMode = .easeInEaseOut
-                node.run(.sequence([.wait(forDuration: 0.26), move]))
+                node.run(.sequence([.wait(forDuration: StarfallMotion.gravityStart), move]))
+                if let shadow = grid.childNode(withName: "sky.ground.\(gem.id)") {
+                    let destination = point(Cell(index/7, index%7))
+                    let moveShadow = SKAction.move(to: CGPoint(x: destination.x, y: destination.y - step * 0.32), duration: 0.20)
+                    moveShadow.timingMode = .easeInEaseOut
+                    shadow.run(.sequence([.wait(forDuration: StarfallMotion.gravityStart), moveShadow]))
+                }
             }
         }
         if turn.arrivals.isEmpty {
-            run(.sequence([.wait(forDuration: 0.48), .run { [weak self] in self?.render(game); completion() }]))
+            run(.sequence([.wait(forDuration: StarfallMotion.clearDuration), .run { [weak self] in self?.render(game); completion() }]))
             return
         }
         let flights = turn.arrivals.enumerated().map { index, arrival in
             SKAction.sequence([
                 .wait(forDuration: Double(index) * 0.09),
                 .run { [weak self] in self?.sendStar(arrival) },
-                .wait(forDuration: 0.48),
+                .wait(forDuration: StarfallMotion.flightDuration),
                 .run { [weak self] in self?.land(arrival) }
             ])
         }
-        run(.sequence([.group(flights), .wait(forDuration: 0.28),
+        run(.sequence([.group(flights), .wait(forDuration: StarfallMotion.landingDuration),
                        .run { [weak self] in self?.render(game); completion() }]))
     }
 
@@ -159,9 +186,24 @@ import StarfallCore
             outward.timingMode = .easeOut
             let recover = SKAction.move(to: origin, duration: 0.11)
             recover.timingMode = .easeInEaseOut
-            node.run(.sequence([.wait(forDuration: Double(distance / step) * 0.025), outward, recover]),
+            node.run(.sequence([.wait(forDuration: StarfallMotion.gatherDuration + Double(distance / step) * 0.025), outward, recover]),
                      withKey: "sky.ripple")
         } }
+    }
+
+    private func receiver(for arrival: FallingSkyTurn.Arrival) -> FallingSkyCharacter? {
+        if arrival.grew { return nodes[arrival.gem.id] }
+        let direction = StarfallMotion.drift(for: arrival.star.id, column: arrival.cell.column) > 0 ? 1 : -1
+        let side = Cell(arrival.cell.row, arrival.cell.column - direction)
+        let below = Cell(arrival.cell.row - 1, arrival.cell.column)
+        for cell in [side, below] {
+            guard let id = cellsByID.first(where: { $0.value == cell })?.key, let node = nodes[id] else { continue }
+            let offset = point(cell)
+            let target = point(arrival.cell)
+            guard hypot(offset.x-target.x, offset.y-target.y) <= step * 1.15 else { continue }
+            return node
+        }
+        return nil
     }
 
     private func sendStar(_ arrival: FallingSkyTurn.Arrival) {
@@ -194,24 +236,70 @@ import StarfallCore
         // Align the tail with the actual incoming vector.
         comet.zRotation = atan2(drift, comet.position.y - point(arrival.cell).y)
         effects.addChild(comet)
-        let fall = SKAction.move(to: point(arrival.cell), duration: 0.48)
-        fall.timingMode = .easeIn
+        let destination = point(arrival.cell)
+        let receiver = receiver(for: arrival)
+        let receiverCell = receiver.flatMap { cellsByID[$0.gem.id] }
+        let contact: CGPoint? = receiverCell.map { cell in
+            let anchor = point(cell)
+            if arrival.grew { return CGPoint(x: anchor.x - drift * 0.05, y: anchor.y + step * 0.70) }
+            if cell.row == arrival.cell.row {
+                let radius = step * (0.35 + (receiver?.gem.grown == true ? 0.43 : 0.35))
+                return CGPoint(x: anchor.x + (destination.x > anchor.x ? radius : -radius), y: anchor.y + step * 0.12)
+            }
+            return CGPoint(x: anchor.x + drift * 0.08, y: anchor.y + step * 0.68)
+        }
+        let flight = StarfallMotion.Flight(start: comet.position, destination: destination, contact: contact, step: step)
+        let fall = SKAction.customAction(withDuration: StarfallMotion.flightDuration) { node, elapsed in
+            node.position = flight.point(at: elapsed / CGFloat(StarfallMotion.flightDuration))
+        }
+        if let receiver, let receiverCell, let contact {
+            let resistance = StarfallMotion.resistance(receiver.gem)
+            let impulse = CGVector(dx: (contact.x > point(receiverCell).x ? -0.10 : 0.10) * resistance,
+                                   dy: -0.035 * resistance)
+            comet.run(.sequence([.wait(forDuration: StarfallMotion.flightDuration * Double(StarfallMotion.contactFraction)),
+                                 .run { [weak self, weak receiver] in
+                                     guard let self, let receiver else { return }
+                                     receiver.acknowledge(from: contact, impulse: impulse, step: self.step)
+                                     self.light(at: self.point(receiverCell), color: color, strength: arrival.star.isDark ? 0.25 : 0.75)
+                                 }]))
+        } else {
+            // One nearby observer, with no invented physical kick across an empty gap.
+            let observer = cellsByID.compactMap { id, cell -> (FallingSkyCharacter, CGPoint)? in
+                guard let node = nodes[id], id != arrival.gem.id else { return nil }
+                let anchor = point(cell)
+                let distance = hypot(anchor.x-destination.x, anchor.y-destination.y)
+                return distance > 0 && distance < step * 1.7 ? (node, anchor) : nil
+            }.sorted { a, b in
+                let da = hypot(a.1.x-destination.x, a.1.y-destination.y)
+                let db = hypot(b.1.x-destination.x, b.1.y-destination.y)
+                return da == db ? a.0.gem.id < b.0.gem.id : da < db
+            }.first?.0
+            if let observer {
+                comet.run(.sequence([.wait(forDuration: 0.38), .run { [weak observer] in
+                    observer?.acknowledge(from: destination, impulse: .zero, step: flight.step)
+                }]))
+            }
+        }
+        tail.run(.sequence([.wait(forDuration: 0.34), .fadeOut(withDuration: 0.14)]))
         comet.run(.sequence([fall, .removeFromParent()]))
     }
 
     private func land(_ arrival: FallingSkyTurn.Arrival) {
-        nodes[arrival.gem.id]?.removeFromParent()
-        let node = JewelScene.makeStarCharacter(arrival.gem.kind, expression: .landing,
-                                                radius: step * (arrival.gem.grown ? 0.43 : 0.35))
-        node.run(.sequence([.wait(forDuration: 0.12),
-                            .run { [weak node] in
-                                guard let node else { return }
-                                StarCast.setExpression(arrival.gem.grown ? .grown : .idle,
-                                                       for: arrival.gem.kind, on: node)
-                            }]))
+        let existing = nodes[arrival.gem.id]
+        let node = existing ?? makeNode(arrival.gem)
+        node.update(arrival.gem, expression: .landing)
+        node.run(.sequence([.wait(forDuration: 0.12), .run { [weak node] in
+            guard let node else { return }
+            node.update(arrival.gem, expression: arrival.gem.grown ? .grown : .idle)
+        }]))
         let destination = point(arrival.cell)
         node.position = destination
-        pieces.addChild(node); nodes[arrival.gem.id] = node
+        if existing == nil { pieces.addChild(node) }
+        nodes[arrival.gem.id] = node; cellsByID[arrival.gem.id] = arrival.cell
+        grid.childNode(withName: "sky.ground.\(arrival.gem.id)")?.removeFromParent()
+        ground(arrival.gem, at: arrival.cell)
+        light(at: destination, color: arrival.star.kind?.color ?? .systemPurple,
+              strength: arrival.gem.isDark ? 0.25 : arrival.grew ? 1 : 0.65)
         node.xScale = 1.13; node.yScale = 0.78
         node.zRotation = arrival.gem.id.isMultiple(of: 2) ? -0.10 : 0.10
         let rebound = StarfallMotion.rebound(dark: arrival.gem.isDark, grew: arrival.grew) * step
@@ -231,20 +319,5 @@ import StarfallCore
         ring.lineWidth = 1.5; ring.glowWidth = 2
         effects.addChild(ring)
         ring.run(.sequence([.group([.scale(to: 1.7, duration: 0.28), .fadeOut(withDuration: 0.28)]), .removeFromParent()]))
-    }
-}
-
-/// Presentation-only tuning in cell units: fixed from committed identities, never advances the RNG.
-enum StarfallMotion {
-    static func drift(for id: Int, column: Int) -> CGFloat {
-        let direction: CGFloat = column == 0 ? 1 : column == 6 ? -1 : id.isMultiple(of: 2) ? 1 : -1
-        return direction * (id.isMultiple(of: 3) ? 1.5 : 0.85)
-    }
-    static func rebound(dark: Bool, grew: Bool) -> CGFloat {
-        dark ? 0.045 : grew ? 0.09 : 0.18
-    }
-    static func ripple(distance: CGFloat, collected: Int, heavy: Bool) -> CGFloat {
-        guard distance > 0, distance < 3 else { return 0 }
-        return (collected >= 5 ? 0.21 : 0.12) * (1 - distance / 3) * (heavy ? 0.55 : 1)
     }
 }

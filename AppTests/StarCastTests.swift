@@ -5,6 +5,80 @@ import StarfallCore
 @testable import Starfall
 
 final class StarCastTests: XCTestCase {
+    @MainActor func testContactFlightReachesReceiverAndCommittedDestination() {
+        let flight = StarfallMotion.Flight(start: CGPoint(x: 20, y: 400),
+            destination: CGPoint(x: 100, y: 40), contact: CGPoint(x: 80, y: 65), step: 45)
+        XCTAssertEqual(flight.point(at: 0), flight.start)
+        XCTAssertEqual(flight.point(at: StarfallMotion.contactFraction), flight.contact)
+        XCTAssertEqual(flight.point(at: 1).x, flight.destination.x, accuracy: 0.001)
+        XCTAssertEqual(flight.point(at: 1).y, flight.destination.y, accuracy: 0.001)
+        XCTAssertEqual(flight.point(at: -1), flight.start)
+        XCTAssertEqual(flight.point(at: 2).x, flight.destination.x, accuracy: 0.001)
+    }
+
+    @MainActor func testContactTransfersLocallyAndReturnsToStillness() async throws {
+        guard !UIAccessibility.isReduceMotionEnabled && !UIAccessibility.isVoiceOverRunning else {
+            throw XCTSkip("Contact comparison requires normal motion")
+        }
+        let windowScene = try XCTUnwrap(UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.first)
+        let previous = windowScene.windows.first(where: \.isKeyWindow)
+        let view = SKView(frame: CGRect(x: 0, y: 0, width: 350, height: 560))
+        let window = UIWindow(windowScene: windowScene); window.frame = view.frame
+        let controller = UIViewController(); controller.view = view
+        window.rootViewController = controller; window.makeKeyAndVisible()
+        defer { view.presentScene(nil); window.isHidden = true; previous?.makeKey() }
+        let scene = FallingSkyScene(size: view.bounds.size); view.presentScene(scene)
+        var game = FallingSky(seed: 5)
+        var sawContact = false, sawLight = false, sawGrowth = false
+        for _ in 0..<8 {
+            let old = game
+            let turn = try XCTUnwrap(game.letStarsFall())
+            sawGrowth = sawGrowth || turn.arrivals.contains(where: \.grew)
+            var complete = false
+            scene.animate(turn, from: old, to: game) { complete = true }
+            let deadline = ContinuousClock.now + .seconds(3)
+            while !complete && ContinuousClock.now < deadline {
+                for node in scene.children[1].children {
+                    if let root = node as? FallingSkyCharacter {
+                        if !sawContact && hypot(root.character.position.x, root.character.position.y) > 0.3 {
+                            sawContact = true
+                            if let texture = view.texture(from: scene) {
+                                let capture = XCTAttachment(image: UIImage(cgImage: texture.cgImage()))
+                                capture.name = "native-contact-transfer"; capture.lifetime = .keepAlways; add(capture)
+                            }
+                        }
+                    }
+                }
+                sawLight = sawLight || scene.children[2].children.contains { $0.name == "sky.surface-light" }
+                try await Task.sleep(for: .milliseconds(16))
+            }
+            XCTAssertTrue(complete)
+            XCTAssertEqual(scene.children[1].children.count, game.occupiedCount)
+            XCTAssertTrue(scene.children[2].children.isEmpty)
+            for node in scene.children[1].children {
+                let root = try XCTUnwrap(node as? FallingSkyCharacter)
+                XCTAssertFalse(root.hasActions()); XCTAssertFalse(root.character.hasActions())
+                XCTAssertEqual(root.character.position, .zero)
+                XCTAssertEqual(root.character.zRotation, 0)
+                XCTAssertEqual(root.xScale, 1); XCTAssertEqual(root.yScale, 1)
+                let index = try XCTUnwrap(game.board.firstIndex { $0?.id == root.gem.id })
+                XCTAssertEqual(root.gem, game.board[index])
+                XCTAssertEqual(root.position.x, scene.size.width/2 + (CGFloat(index%7)-3)*scene.size.width/7.7, accuracy: 0.01)
+                XCTAssertEqual(root.position.y, scene.size.height/2 + (CGFloat(index/7)-3)*scene.size.height/7.7, accuracy: 0.01)
+                XCTAssertEqual(root.zRotation, 0)
+            }
+        }
+        XCTAssertTrue(sawContact, "A real existing neighbor must receive a local impulse")
+        XCTAssertTrue(sawLight); XCTAssertTrue(sawGrowth)
+        scene.reduceMotion = true
+        let old = game; let turn = try XCTUnwrap(game.letStarsFall())
+        let done = expectation(description: "calm completion")
+        scene.animate(turn, from: old, to: game) { done.fulfill() }
+        await fulfillment(of: [done], timeout: 1)
+        XCTAssertEqual(scene.children[1].children.count, game.occupiedCount)
+        XCTAssertTrue(scene.children[2].children.isEmpty)
+    }
+
     @MainActor func testSkyReactionWeightsAndBounds() {
         XCTAssertLessThan(StarfallMotion.rebound(dark: true, grew: false), StarfallMotion.rebound(dark: false, grew: true))
         XCTAssertLessThan(StarfallMotion.rebound(dark: false, grew: true), StarfallMotion.rebound(dark: false, grew: false))
@@ -183,7 +257,7 @@ final class StarCastTests: XCTestCase {
         scene.animate(clear, from: beforeClear, to: game) { clearComplete = true }
         let origins = Dictionary(uniqueKeysWithValues: scene.children[1].children.map { (ObjectIdentifier($0), $0.position) })
         var observedRipple = false
-        // Inspect only the wave phase, before gravity starts at 260 ms.
+        // Inspect only the wave phase, before gravity starts at 320 ms.
         for _ in 0..<11 {
             try? await Task.sleep(for: .milliseconds(20))
             for node in scene.children[1].children where node.alpha == 1 {

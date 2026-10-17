@@ -4,6 +4,13 @@ import SpriteKit
 import StarfallCore
 @testable import Starfall
 
+/// Full-motion assertions require system motion support; reduced-motion tests stay active.
+@MainActor func requireFullMotionRenderer() throws {
+    if UIAccessibility.isVoiceOverRunning || UIAccessibility.isReduceMotionEnabled {
+        throw XCTSkip("Requires Reduce Motion and VoiceOver off; reduced-motion coverage remains active")
+    }
+}
+
 /// Real packaged artwork and SpriteKit presentation; requires hosted Apple tests.
 final class StarshardFamilyPilotTests: XCTestCase {
     @MainActor func testDefaultRendersAllFiveRealTexturesWithAuthoredPivots() throws {
@@ -87,7 +94,7 @@ final class StarshardFamilyPilotTests: XCTestCase {
     }
 
     @MainActor func testEveryKindUsesOwnBoundedFragmentsAndCancellationCleansActions() throws {
-        if UIAccessibility.isVoiceOverRunning { throw XCTSkip("VoiceOver correctly bypasses animated bursts") }
+        try requireFullMotionRenderer()
         for kind in Jewel.allCases {
             let (old, new, turn) = try turnFixture(kind: kind)
             let scene = makeScene()
@@ -135,6 +142,7 @@ final class StarshardFamilyPilotTests: XCTestCase {
     }
 
     @MainActor func testStoreCancellationResetAndCalmKeepCommittedRules() throws {
+        try requireFullMotionRenderer()
         for kind in Jewel.allCases {
             let (old, _, _) = try turnFixture(kind: kind)
             let suite = "StarshardFamilyPilotTests.\(UUID().uuidString)"
@@ -182,7 +190,7 @@ final class StarshardFamilyPilotTests: XCTestCase {
     }
 
     @MainActor func testAnimatedCompletionFiresOnceForEveryKind() async throws {
-        if UIAccessibility.isVoiceOverRunning { throw XCTSkip("VoiceOver correctly settles immediately") }
+        try requireFullMotionRenderer()
         let windowScene = try XCTUnwrap(UIApplication.shared.connectedScenes.first { $0 is UIWindowScene } as? UIWindowScene)
         for kind in Jewel.allCases {
             let (old, new, turn) = try turnFixture(kind: kind)
@@ -210,6 +218,7 @@ final class StarshardFamilyPilotTests: XCTestCase {
     }
 
     @MainActor func testRapidInvalidNudgesAreReplaceableAndCalmCancelsThem() throws {
+        try requireFullMotionRenderer()
         let suite = "StarshardFamilyNudgeTests.\(UUID().uuidString)"
         let defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
         defer { defaults.removePersistentDomain(forName: suite) }
@@ -237,9 +246,7 @@ final class StarshardFamilyPilotTests: XCTestCase {
     }
 
     @MainActor func testValidTurnRestoresAnInterruptedInvalidNudge() async throws {
-        if UIAccessibility.isVoiceOverRunning || UIAccessibility.isReduceMotionEnabled {
-            throw XCTSkip("Accessibility motion settings correctly bypass animated nudges")
-        }
+        try requireFullMotionRenderer()
         let windowScene = try XCTUnwrap(UIApplication.shared.connectedScenes
             .compactMap { $0 as? UIWindowScene }.first)
         for familyArtwork in [false, true] {
@@ -349,9 +356,7 @@ final class StarshardFamilyPilotTests: XCTestCase {
     }
 
     @MainActor func testFallbackClearSparkCountIsBoundedAndRepeatedNudgesReplaceActions() throws {
-        if UIAccessibility.isVoiceOverRunning || UIAccessibility.isReduceMotionEnabled {
-            throw XCTSkip("System accessibility correctly bypasses motion")
-        }
+        try requireFullMotionRenderer()
         let (old, new, turn) = try turnFixture(kind: .rose)
         let scene = JewelScene(size: CGSize(width: 350, height: 350))
         scene.crystalPilotEnabled = false
@@ -419,9 +424,7 @@ final class StarshardFamilyPilotTests: XCTestCase {
     }
 
     @MainActor func testArrivalPreservesSurvivorRecoveryAndRefillIdentityAndCancelsAllTrails() throws {
-        if UIAccessibility.isVoiceOverRunning || UIAccessibility.isReduceMotionEnabled {
-            throw XCTSkip("System accessibility correctly bypasses motion")
-        }
+        try requireFullMotionRenderer()
         var fields = try XCTUnwrap(JSONSerialization.jsonObject(with: JSONEncoder().encode(Game(seed: 1))) as? [String: Any])
         var board = (0..<49).map { ($0 / 7 + $0 % 7) % 5 }
         for row in 0..<3 { board[row * 7] = Jewel.rose.rawValue }
