@@ -342,7 +342,9 @@ import StarfallCore
         if sameSky {
             game = game.replay()
         } else {
-            game = FallingSky(seed: UInt64.random(in: 0...UInt64.max), balance: game.balance)
+            // First Light's fixed balance belongs to that challenge, not the next normal sky.
+            let balance = game.challenge == nil ? game.balance : StarfallBalance()
+            game = FallingSky(seed: UInt64.random(in: 0...UInt64.max), balance: balance)
         }
         refreshCadence()
         remaining = showerInterval

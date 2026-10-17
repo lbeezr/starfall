@@ -421,10 +421,27 @@ final class FallingSkyStoreTests: XCTestCase {
         XCTAssertEqual(store.game, completed)
         let restored = FallingSkyStore(defaults: defaults, arguments: [], presenter: FallingSkyRecorder(), clock: ManualRainClock())
         XCTAssertEqual(restored.game, completed); XCTAssertTrue(restored.message.contains("complete"))
+        restored.restart(sameSky: false)
+        XCTAssertNil(restored.game.challenge)
+        XCTAssertEqual(restored.game.balance, StarfallBalance())
+        XCTAssertEqual(restored.game.cadenceID, .announcedCycleV1)
         store.restart(sameSky: true)
         XCTAssertEqual(store.game, initial); XCTAssertTrue(store.isPaused)
         store.restart(sameSky: false)
         XCTAssertNil(store.game.challenge); XCTAssertEqual(store.game.outcome, .playing)
+    }
+
+    @MainActor func testLeavingOverflowedChallengeRestoresNormalCadenceAndBalance() {
+        let (store, presenter, _, _) = makeStore()
+        store.startFirstLight()
+        for _ in 0..<50 where !store.game.isOver { store.callShower(); presenter.finish() }
+        XCTAssertEqual(store.game.outcome, .lost)
+        store.restart(sameSky: false)
+        XCTAssertNil(store.game.challenge)
+        XCTAssertEqual(store.game.balance, StarfallBalance())
+        XCTAssertEqual(store.game.cadenceID, .announcedCycleV1)
+        XCTAssertEqual(store.nextShowerCadence, .init(delay: 0.25, phase: .opening))
+        XCTAssertTrue(store.isPaused)
     }
 
     @MainActor func testStartingChallengeRejectsOldRainAndAnimationCallbacks() {
