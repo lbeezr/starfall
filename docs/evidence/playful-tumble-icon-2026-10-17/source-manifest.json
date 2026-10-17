@@ -1,0 +1,12 @@
+{
+  "base_commit": "d1d46b9a32f57e2a420249d1e9416eecffc2badf",
+  "validation_source": "git archive of base commit with only new app icon PNG overlaid; unrelated dirty paths excluded",
+  "sha256": {
+    "App/Assets.xcassets/AppIcon.appiconset/Starfall-1024.png": "f61d8ba44b1a979fcaa0dd99bd986b16713b40ec240e365fea97632085de530c",
+    "Artwork/AppIcon/playful-tumble-source.png": "23d74d6d748825edc52eded76206a273eda2d8cf64e899374720ce6af0f5af4f",
+    "scripts/export-app-icon.swift": "9ecc2c4bc7d6534a36c92691748508f353f9eb27d2ab78976a8ab101413641a9",
+    "scripts/generate-app-icon.sh": "33d4188c99c65d19ecf4d298bc59c57f4b9bf8566947c98686b154c822900175",
+    "scripts/README-app-icon.md": "cae03f28d6860ab525171d1fd69618da9220a2d080c9ff441b95353f9d59b6a0"
+  },
+  "working_tree_status": " M App/Assets.xcassets/AppIcon.appiconset/Starfall-1024.png\n M Starfall.xcodeproj/project.pbxproj\n M docs/ENGINEERING.md\n M docs/EXPERIMENTS.md\n M docs/ROADMAP.md\nA  docs/evidence/paired-showers-2026-10-17/README.md\nA  docs/evidence/paired-showers-2026-10-17/broad.json\nA  docs/evidence/paired-showers-2026-10-17/native-choice.png\nA  docs/evidence/paired-showers-2026-10-17/natural-only.json\nA  docs/evidence/paired-showers-2026-10-17/pressure.json\nA  docs/evidence/paired-showers-2026-10-17/reproduction-manifest.json\nA  docs/evidence/paired-showers-2026-10-17/source-manifest.json\nA  docs/evidence/supernova-native-2026-10-17/README.md\nA  docs/evidence/supernova-native-2026-10-17/tested-source-manifest.json\n M scripts/README-app-icon.md\n M scripts/generate-app-icon.sh\nA  tools/mechanics/NativeChargeControl.swift\nA  tools/mechanics/NativeChargeStore.swift\nA  tools/mechanics/NativeChargeStoreTests.swift\nA  tools/mechanics/NativeChargeUITests.swift\nA  tools/mechanics/NativeShowerUITests.swift\n M tools/mechanics/README.md\nA  tools/mechanics/ShowerCompatibility.swift\nAM tools/mechanics/compare-showers.py\nA  tools/mechanics/paired-showers-natural.patch\nA  tools/mechanics/paired-showers-pressure.patch\nA  tools/mechanics/paired-showers.patch\nAM tools/mechanics/prepare-native-lab.py\n?? Artwork/AppIcon/\n?? Starfall.xcodeproj/project.xcworkspace/\n?? docs/design/branding/\n?? docs/evidence/playful-tumble-icon-2026-10-17/\n?? scripts/export-app-icon.swift\n"
+}
