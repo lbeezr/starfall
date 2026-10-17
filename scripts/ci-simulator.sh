@@ -224,7 +224,7 @@ xcodebuild -project Starfall.xcodeproj -scheme Starfall \
   -configuration Debug -sdk iphonesimulator \
   -destination "platform=iOS Simulator,arch=arm64,id=$SIMULATOR_ID" \
   -derivedDataPath "$RUNNER_TEMP/starfall-derived" \
-  -only-testing:StarfallUITests "${UI_MATRIX_ARGUMENTS[@]}" \
+  -only-testing:StarfallUITests ${UI_MATRIX_ARGUMENTS[@]+"${UI_MATRIX_ARGUMENTS[@]}"} \
   -parallel-testing-enabled NO -maximum-concurrent-test-simulator-destinations 1 \
   -test-timeouts-enabled YES -default-test-execution-time-allowance 90 \
   -maximum-test-execution-time-allowance 240 \

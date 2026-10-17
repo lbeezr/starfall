@@ -1,6 +1,6 @@
 # Draw the stars you choose to spend
 
-**Status:** Approved first pass; one-app adoption in progress · **Owner:** current implementer · **Updated:** 2026-10-17
+**Status:** Adopted first pass into regular Starfall · **Owner:** current implementer · **Updated:** 2026-10-17
 
 The user accepts constellation matching as a mechanic direction, but wants its satisfaction and strategy to come from drawing the shape. This supersedes whole-component clearing in the earlier tap-only trial: release clears **only the traced stars**. Omitted stars remain, even in the same connected family. The user now requests one phone app and repeatable updates from main; integrate into the existing Starfall identity and retain its chosen round.
 
@@ -8,7 +8,7 @@ The user accepts constellation matching as a mechanic direction, but wants its s
 
 **User review, 2026-10-17:** The installed first pass (`dev.fecfaa150d`) is approved after iPhone play. Keep the mechanic in Starfall Lab for further polish; this approval does not adopt it into the regular game. Control has been retired.
 
-**Next action:** verify adoption and retained saves, then deliver the single app through the [main updater](../DEVELOPMENT_BUILDS.md#one-starfall-app-and-automatic-device-updates). The separate lab is retired only after successful replacement.
+**Next action:** continue polish in regular Starfall with the [main updater](../DEVELOPMENT_BUILDS.md#one-starfall-app-and-automatic-device-updates). The separate phone lab is removed; full actual VoiceOver acceptance remains an RC gate.
 
 ## Acceptance before implementation
 

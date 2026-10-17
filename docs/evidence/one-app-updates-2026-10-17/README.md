@@ -1,10 +1,10 @@
 # One Starfall app, updated from main
 
-**Result:** Partially verified — local adoption checks pass; initial delivery pending · **Owner:** current implementer · **Date:** 2026-10-17
+**Result:** Verified one-app delivery; broader CI pending · **Owner:** current implementer · **Date:** 2026-10-17
 
-The user requests one installed app now, with the approved constellation swipe and repeatable updates from GitHub main. Regular `com.starfall.prototype` retains the chosen 0-starlight round; the lab's 26-starlight sky is backed up, not imported. Both downloaded saves decode with the adopted core and re-encode with every JSON field unchanged. No phone app has been removed as part of these preflight checks.
+The user requests one installed app now, with the approved constellation swipe and repeatable updates from GitHub main. Regular `com.starfall.prototype` retains the chosen 0-starlight round; the lab's 26-starlight sky is backed up, not imported. Both downloaded saves decode with the adopted core and re-encode with every JSON field unchanged. Those preflight checks kept both apps in place; the verified delivery and retirement are recorded below.
 
-**Next action:** merge the verified source, let main CI finish, install through the configured local updater, verify retained preferences and retire the lab. Enable the local agent only after that first delivery succeeds.
+**Next action:** continue gameplay polish with automatic development updates. Follow the linked remote run to its outcome; full RC acceptance remains separate.
 
 ## Outcomes against acceptance
 
@@ -45,3 +45,18 @@ xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug \
 Final native xcresult reports **28/28 passed, 0 skipped**. Raw output: `/tmp/starfall-oneapp-{core-final,native,native-final,release,device}.log`; final xcresult and inspected attachments are under `/tmp/starfall-oneapp-dd/Logs/Test/` and `/tmp/starfall-oneapp-attachments/`. Retained preference backups are local under `~/Library/Application Support/Starfall Device Updates/backups/`, never committed. Setup/status/disable are in [scripts](../../../scripts/README.md#one-app-iphone-updates); [policy](../../DEVELOPMENT_BUILDS.md) owns delivery and RC cadence.
 
 The final selected-five, largest-text menu and ordinary-clear screenshots were inspected. They show readable controls, five points with the sixth star retained, and usable menu dismissal; stills do not establish trail/burst motion or haptic feel. Runtime visuals remain the approved first-pass design; [historical lab captures](../constellation-trace-2026-10-17/README.md) keep their original source attribution.
+
+
+## Actual one-app delivery
+
+The local LaunchAgent installed **`dev.bc187c831e` from GitHub main `ba348d758b2b2e5dcc63bf0f4fccf75bc357a7fc`** on the connected iPhone. Its recorded validation is local core tests passed, signature verified and `mainCIAtInstall: pending`. Core tests also pass **63/63** from a fresh `git archive` of that exact main commit, without relying on a developer checkout. The signed cache has the identical runtime fingerprint and verified bundle/Info.plist; no uncommitted app code was used.
+
+The original all-CI gate waited roughly twenty minutes. The user prioritizes development iteration, so the tested host follow-up uses local core tests and signed-build verification while broader CI runs in parallel, holding known failures. This is an explicit delivery-policy change, not a passing remote test claim. [Main CI run 39067366898](https://github.com/lbeezr/starfall/actions/runs/39067366898) was still running at installation. Release/VoiceOver acceptance is not waived.
+
+After installation, a fresh preferences download matched the pre-delivery committed round and every checked game preference; score remained **0**. The lab was backed up again, then uninstalled. A real phone inventory now contains exactly one `com.starfall.*` app: **Starfall / `com.starfall.prototype`**. No save import, reset, original-app uninstall or automatic game launch occurred. The active mechanics simulator also received regular Starfall with the same runtime build ID and its old candidate was removed; other named QA simulators were not changed.
+
+The LaunchAgent is registered in the logged-in user's GUI session, checks every 120 seconds and exited its successful install run with code 0 and no service stderr. Its installed scripts were compared byte-for-byte with the tested local host follow-up. `installed.json` retains actual source/build/validation; documentation-only checks use `checkedSource` without rewriting installed provenance. Status/config/logs and the original/lab preference backups remain under `~/Library/Application Support/Starfall Device Updates/`.
+
+Host follow-up checks: **9 updater tests and 3 matrix tests pass**, including failed local-core blocking, pending-CI local validation, failed-CI holds, configuration/device/signing ownership and reconfiguration locking, plus Bash 3.2 empty/populated matrix arguments. Bash syntax, hygiene and diff checks pass. The running host helper is this tested follow-up; its publication follows the initial adoption PR. No additional app runtime changes are part of it.
+
+Local physical receipts: `/tmp/starfall-oneapp-final-inventory.json`, `/tmp/starfall-lab-retirement.json`, before/after preferences under `/tmp/starfall-original-*-delivery.plist`, and Application Support `installation.json` / `installed.json`. No phone UI/speech/physical haptic playthrough is claimed; the installation and saved-state checks are the physical-device evidence here.
