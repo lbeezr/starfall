@@ -193,6 +193,11 @@ extension ObservatoryInteractionTests {
         app.launch(); defer { app.terminate() }
         XCTAssertTrue(app.buttons["experiment.settings"].waitForExistence(timeout: 10))
         let initialShowers = Int((app.otherElements["experiment.board"].value as! String).split(separator: " ")[0])!
+        capture(app, "Observatory-largest-text-initial-board")
+        let guide = app.staticTexts["experiment.message"]
+        let front = app.buttons["experiment.cell.0.0"]
+        XCTAssertGreaterThanOrEqual(guide.frame.minY, front.frame.maxY,
+                                   "The growing guide must occupy space below projected stars")
         let edge = app.buttons["experiment.cell.0.0"]
         XCTAssertGreaterThanOrEqual(edge.frame.minX, app.frame.minX)
         XCTAssertLessThanOrEqual(edge.frame.maxX, app.frame.maxX)
