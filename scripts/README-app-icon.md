@@ -1,13 +1,9 @@
 # App icon
 
-`starfall-app-icon.svg` is original procedural vector artwork for the Starfall prototype: an aqua/violet glass star on a moonlit background. The user approved this icon direction on 2026-10-16. It contains no third-party images, fonts, characters or text.
+The current icon is **Playful Tumble**: Spark falling along a curved lavender/aqua trail above soft sanctuary clouds. The user selected the rightmost falling-icon concept on October 17, 2026 and authorized adoption. `Artwork/AppIcon/playful-tumble-source.png` is a standalone AI-generated refinement of that selected concept, not a pixel-identical crop of the comparison strip. It contains no text or third-party character assets.
 
-Run `bash scripts/generate-app-icon.sh` with Inkscape and ImageMagick installed to regenerate the checked-in 1024×1024, opaque RGB PNG. Neither tool is an app dependency or required for normal builds. The script only converts the original SVG; no generated-image service or credits are used.
+Run `bash scripts/generate-app-icon.sh` on macOS to export the checked-in 1024×1024 opaque sRGB PNG. The small developer-only Swift exporter uses system CoreGraphics/ImageIO, flattens onto midnight, and resamples the original square source. It is not an app target dependency. Keep the source artwork and exporter as the authoritative pair; do not regenerate the old glass SVG over the current icon.
 
-The asset catalog uses the single-size universal iOS icon entry. Xcode derives smaller sizes. The image has no pre-rounded mask; the OS applies the final icon shape. Additional dark/tinted or layered Icon Composer variants are deliberately not claimed here.
+The asset catalog retains its existing single-size universal iOS entry and filename. Xcode derives smaller sizes. The source has no rounded mask; the OS applies it. Dark/tinted or layered Icon Composer variants are not supplied. The former `scripts/starfall-app-icon.svg` remains historical original vector art, no longer the active export source.
 
-Official format guidance checked 2026-10-16:
-https://developer.apple.com/documentation/xcode/configuring-your-app-icon
-https://developer.apple.com/design/human-interface-guidelines/app-icons
-
-Validation performed: source SVG XML parsed; asset JSON parsed; PNG inspected at full resolution; PNG is 1024×1024 RGB without alpha. Asset catalog compilation and actual Home Screen rendering remain pending. The catalog is registered in the Xcode project; an actual build still needs to validate it. Do not infer App Store approval from these checks.
+See `docs/evidence/playful-tumble-icon-2026-10-17/README.md` for source-bound native validation and remaining limits. No gameplay, launch screen, cover screen, bundle identity, permissions, SDKs or monetization changes are part of this icon adoption.

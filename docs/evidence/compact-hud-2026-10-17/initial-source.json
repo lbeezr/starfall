@@ -1,0 +1,9 @@
+{
+  "base": "b9eea1a",
+  "candidate": "/var/folders/fs/9shw9bf142jg3280dc9n3hhc0000gn/T/starfall-compact-hud-xpk5y33l",
+  "sha256": {
+    "App/StarfallExperimentView.swift": "bca043b48f3bc0930d009828eb0ad2a05d0e40ec4c6c95b8b2b323c6dc557af7",
+    "App/StarfallTheme.swift": "103818bae490dbf8a79335b33aac0b0f503b27e9aab86fd423b5d3d6f68ee743",
+    "UITests/StarfallExperimentInteractionTests.swift": "20fdc717e783fa6e85e792a3c896503eee83131bbf44c5d90e1e8a4ad3f90df8"
+  }
+}

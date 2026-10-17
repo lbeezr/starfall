@@ -1,0 +1,10 @@
+{
+  "Sources/StarfallCore/StarfallExperiment.swift": "94c109664e09d931b34ccdad75c2495a0281889d589701f897ef7f5d2230eba1",
+  "App/StarfallExperimentStore.swift": "5370ae87176b5ac1608b3c1e3f5ea97d79c4f8cf2008a2f811dd2e008865cbf0",
+  "App/StarfallExperimentScene.swift": "f70ecc4e8396cbf94240c2d8ddd1618b0003f54421e3bbeb57bc54d5c12d30b4",
+  "App/StarfallExperimentView.swift": "d67d5596a9fd8ee76153c83d4b64d01f75d64036eae0f71f0166c06932947bf4",
+  "App/GameFeedback.swift": "9833c1ffdcec6448f7fc62ec5333f163aabef337611a174b419098542d914919",
+  "Tests/StarfallCoreTests/FallingSkyPacingTests.swift": "b8094e42771b3c7de34b100a9e1b9242b4b053262cfa043225b63924dc730892",
+  "UITests/StarfallExperimentInteractionTests.swift": "8ab61a6fbc7937332898abfc298ecdcca535da8397ec7ca2876b91975396ab04",
+  "AppTests/StarfallExperimentStoreTests.swift": "603ed69260369b385d6c3a2574d81b9301afa41b4f223151bd4740be60e61d57"
+}

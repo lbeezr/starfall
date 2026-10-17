@@ -1,0 +1,33 @@
+Final working-tree record; not clean commit acceptance.
+HEAD=30af812aa3bf3105a55d8b960288e1d2ac672c2c
+
+SHA256:
+bd25451d1ccb2f45e4a993d78bfa4baa6815994482ac9a877e35d6c3956706ad  App/StarfallExperimentScene.swift
+d768abf67abe208512dcc5e0e77b8834b02e5b7456803ec1362a633d7a2b2040  AppTests/StarCastTests.swift
+8f63563c1f84b2675e0c45b7c6bd291f210e9c732ed0fd0b34d4cfb97611749f  App/StarfallExperimentView.swift
+103818bae490dbf8a79335b33aac0b0f503b27e9aab86fd423b5d3d6f68ee743  App/StarfallTheme.swift
+e0c942745af3fffe46c2b69fe9699575ee67026ea7ed40c0be9258f54c1546f0  UITests/StarfallExperimentInteractionTests.swift
+b347e63c76b14b62ba3366323f1a701999babab12e2c3c88da7c8c6b59e22697  Starfall.xcodeproj/project.pbxproj
+
+Dirty paths at record time:
+ M App/StarfallExperimentScene.swift
+ M App/StarfallExperimentView.swift
+ M App/StarfallTheme.swift
+ M AppTests/StarCastTests.swift
+ M README.md
+ M Starfall.xcodeproj/project.pbxproj
+ M UITests/StarfallExperimentInteractionTests.swift
+ M docs/ENGINEERING.md
+ M docs/ROADMAP.md
+ M docs/design/MECHANICS_IDEAS.md
+ M tools/mechanics/README.md
+?? Starfall.xcodeproj/project.xcworkspace/
+?? docs/design/branding/
+?? docs/evidence/compact-hud-2026-10-17/
+?? docs/evidence/physical-reactions-2026-10-17/
+?? tools/mechanics/NativeChargeControl.swift
+?? tools/mechanics/NativeChargeStore.swift
+?? tools/mechanics/NativeChargeStoreTests.swift
+?? tools/mechanics/NativeChargeUITests.swift
+?? tools/mechanics/paired-showers.patch
+?? tools/mechanics/prepare-native-lab.py

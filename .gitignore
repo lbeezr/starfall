@@ -6,3 +6,10 @@ xcuserdata/
 .DS_Store
 *.ipa
 *.xcarchive
+
+# Local/CI output; retain selected durable evidence explicitly in docs/evidence.
+/artifacts/
+*.xcresult/
+*.trace/
+__pycache__/
+*.py[cod]

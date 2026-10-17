@@ -1,0 +1,20 @@
+{
+  "validatedExportTree": "26f97be213b1e523a69cf7e7e545d4e371010e0f",
+  "baseCommit": "29ead79b4f459054b3cc39467d8fab8b4567f2c6",
+  "toolchain": "Xcode 27.1\nBuild version 27A9275",
+  "swift": "Apple Swift version 6.4 (swiftlang-6.4.0.34.1 clang-2100.3.34.1)\nTarget: arm64-apple-macosx27.0.0",
+  "files": {
+    "App/StarCast.swift": "d30c4320142b6031ec7e088976dfc8bee68c053fe63889172d162c7aed20c528",
+    "App/JewelScene.swift": "d7582ce1149ac6a273ffdbf7175d0d551e6e4d7e80149b90b6f633e1a87cc5f9",
+    "App/StarfallExperimentScene.swift": "f48d9132aced388e4012313e31236f142dd52443be6a81b6c1e1985b9f093d10",
+    "App/StarfallExperimentView.swift": "84703c02b68b0643c517d3dca546b1acd8c2f413896f0a8cd3e1bcb092d39cc6",
+    "App/StarfallExperimentStore.swift": "f6ee052fc25a935c49b86f660bec47be3a64845ac51e8b70f162801732773685",
+    "AppTests/StarCastTests.swift": "42091cd8d6e62189d02de4994f0da9cd91e0568bff7476d5b585364908b55f93",
+    "Starfall.xcodeproj/project.pbxproj": "466f0089162621b8145299af4df17b268ac00ff8aa1319f4807d1364b48f18c4",
+    "Config/Clean.xcconfig": "68cc1235025bb55ddaf55c546c2a1f316c4ca8cafd23bee7de479c4db99c812f",
+    "Package.swift": "eec5498d6247b9a8f867437a120c72e82c1c7999b694f1b47a546ce3f3207a41"
+  },
+  "scope": "Runtime sources and final test source match runtimeCommit. Full UI/video/Release use the earlier export whose app/project bytes match; final hosted export adds only an explicit normal-motion precondition to the animation test.",
+  "runtimeCommit": "063d67bcc98170a20f268c9167c64c59ded9fa7e",
+  "hostedValidatedExportTree": "9b92a268bba1c194fba0978f75d160e4f3df6b33"
+}

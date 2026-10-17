@@ -1,0 +1,22 @@
+--- a/Sources/StarfallCore/FallingSky.swift
++++ b/Sources/StarfallCore/FallingSky.swift
+@@ -152,8 +152,18 @@
+     /// Invalid clears never advance the forecast, score, turn counter, or RNG.
+-    @discardableResult public mutating func clear(_ cell: Cell) -> FallingSkyTurn? {
++    @discardableResult public mutating func clear(_ cell: Cell, charged: Bool = false) -> FallingSkyTurn? {
+         guard !isOver else { return nil }
+         let cells = group(at: cell)
+         guard value(of: cells) >= 3 else { return nil }
++        if charged {
++            guard value(of: cells) >= 5, let kind = gem(at: cell)?.kind else { return nil }
++            // Snapshot the pre-clear perimeter. Recoloring never cascades or grows stars.
++            let perimeter = Set(cells.flatMap { neighbors(of: $0) }).subtracting(cells)
++            for neighbor in perimeter {
++                guard let survivor = gem(at: neighbor), !survivor.isDark else { continue }
++                board[neighbor.row * Self.side + neighbor.column] = StarfallGem(
++                    id: survivor.id, kind: kind, grown: survivor.grown)
++            }
++        }
+         let collected = value(of: cells)
+         let darkStars = darkStarsBeside(cells)
+         let removed = cells.union(darkStars)

@@ -1,0 +1,111 @@
+{
+  "method" : "At most one clear after each shower except all, which clears every available group (bounded to 25 iterations on a 49-cell board). Fixed seeds 0...199. Candidate comparison uses the already announced preview; future previews can depend on the board. Capped survivors are censored, not completed rounds. No human reaction time or animation\/input gate simulation. Preview-aware policy sees landing columns, which the player cannot see; it is an upper-bound diagnostic, not a player model.",
+  "results" : [
+    {
+      "choiceStates" : 0,
+      "clears" : 0,
+      "consequentialChoices" : 0,
+      "decisionStates" : 0,
+      "ended" : 200,
+      "exampleSeeds" : [
+
+      ],
+      "policy" : "idle",
+      "rounds" : 200,
+      "score" : 0,
+      "showers" : 3935
+    },
+    {
+      "choiceStates" : 215,
+      "clears" : 3224,
+      "consequentialChoices" : 7,
+      "decisionStates" : 3224,
+      "ended" : 200,
+      "exampleSeeds" : [
+        18,
+        24,
+        51,
+        57,
+        76
+      ],
+      "policy" : "all",
+      "rounds" : 200,
+      "score" : 12419,
+      "showers" : 5290
+    },
+    {
+      "choiceStates" : 292,
+      "clears" : 3038,
+      "consequentialChoices" : 11,
+      "decisionStates" : 3038,
+      "ended" : 200,
+      "exampleSeeds" : [
+        7,
+        18,
+        25,
+        57,
+        76
+      ],
+      "policy" : "first",
+      "rounds" : 200,
+      "score" : 11704,
+      "showers" : 5243
+    },
+    {
+      "choiceStates" : 287,
+      "clears" : 3029,
+      "consequentialChoices" : 11,
+      "decisionStates" : 3029,
+      "ended" : 200,
+      "exampleSeeds" : [
+        7,
+        18,
+        25,
+        57,
+        76
+      ],
+      "policy" : "largest",
+      "rounds" : 200,
+      "score" : 11696,
+      "showers" : 5229
+    },
+    {
+      "choiceStates" : 300,
+      "clears" : 3099,
+      "consequentialChoices" : 10,
+      "decisionStates" : 3099,
+      "ended" : 200,
+      "exampleSeeds" : [
+        18,
+        25,
+        57,
+        76,
+        77
+      ],
+      "policy" : "pressure",
+      "rounds" : 200,
+      "score" : 11939,
+      "showers" : 5326
+    },
+    {
+      "choiceStates" : 300,
+      "clears" : 3099,
+      "consequentialChoices" : 10,
+      "decisionStates" : 3099,
+      "ended" : 200,
+      "exampleSeeds" : [
+        18,
+        25,
+        57,
+        76,
+        77
+      ],
+      "policy" : "preview-aware",
+      "rounds" : 200,
+      "score" : 11939,
+      "showers" : 5326
+    }
+  ],
+  "seedCount" : 200,
+  "showerLimit" : 60
+}

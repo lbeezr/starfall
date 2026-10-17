@@ -60,6 +60,9 @@ export DEVELOPER_DIR
   echo 'settled_arguments=--demo --demo-clear (real first legal clear before render; no animation)'
 } | tee artifacts/provenance.txt
 
+# Cheap tracked-file checks precede native work; no additional CI job or download.
+python3 scripts/ci-hygiene.py
+
 # Portable engine unit tests run on the macOS host, not on an iPhone.
 swift test 2>&1 | tee artifacts/core-tests.log
 

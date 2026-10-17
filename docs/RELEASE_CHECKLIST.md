@@ -1,5 +1,8 @@
 # Starfall release checklist
 
+For the current default game, complete the [six shipping quality gates](ROADMAP.md#shipping-quality-gates) and use the [falling-sky playtest](PLAYTEST-FALLING-SKY.md). This checklist owns distribution prerequisites; historical original-puzzle passes do not establish current falling-sky acceptance.
+
+
 Checked 2026-10-16. This checklist tracks release gates; it is not a claim of App Store approval, legal compliance, or distribution readiness. See `ROADMAP.md` and `ACCEPTANCE.md` for execution and gameplay scope.
 
 ## Verified source and packaging state
@@ -21,7 +24,7 @@ Checked 2026-10-16. This checklist tracks release gates; it is not a claim of Ap
 ## Gates before public submission
 
 - [ ] **Physical iPhone:** record device/OS and real play through the full acceptance script, interruptions/relaunch, sound, VoiceOver, Reduce Motion and responsiveness/energy behavior. Simulator checks do not establish physical-device acceptance.
-- [ ] **Human playtest:** run the bounded script in `PLAYTEST.md` with approved participants; resolve major confusion or friction without adding scope merely to extend play time.
+- [ ] **Human playtest:** run the bounded script in [PLAYTEST-FALLING-SKY.md](PLAYTEST-FALLING-SKY.md) with approved participants; resolve major confusion or friction without adding scope merely to extend play time.
 - [ ] **Privacy/support:** finalize publisher/contact details, publish working policy/support URLs at an approved destination, and expose the privacy policy accessibly inside the app. No placeholder URL or personal contact details without authorization.
 - [ ] **Metadata:** prepare truthful description, category, content-rights and age-rating answers; use real final-build gameplay screenshots in Apple's required sizes. Draft export-compliance answers from the actual binary rather than assuming an exemption.
 - [ ] **Commercial choices:** confirm pricing, storefront availability, required account declarations and final submission authority. Keep the clean MVP free of monetization SDKs; this checklist does not choose a business model.

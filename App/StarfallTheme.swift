@@ -32,6 +32,8 @@ enum StarfallTheme {
         static let supporting = Font.subheadline
         static let status = Font.callout
         static let action = Font.headline
+        static let gameTitle = Font.system(.headline, design: .rounded)
+        static let gameDetail = Font.subheadline
         static let titleTracking: CGFloat = 0.8
 
         static func display(size: CGFloat) -> Font {
@@ -70,6 +72,9 @@ enum StarfallTheme {
         // 335pt board minus 12pt padding and 12pt gaps leaves >44pt per cell.
         static let accessibleBoardInset: CGFloat = 6
         static let progressHeight: CGFloat = 6
+        static let arrivalCueWidth: CGFloat = 56
+        static let arrivalCueHeight: CGFloat = 3
+        static let arrivalCueGlow: CGFloat = 6
         static let constellationSize = CGSize(width: 64, height: 24)
         static let borderWidth: CGFloat = 1
         static let focusWidth: CGFloat = 2
@@ -240,5 +245,20 @@ struct StarfallProgressStyle: ProgressViewStyle {
             .accessibilityHidden(true)
         }
         .transaction { $0.animation = nil }
+    }
+}
+
+/// Compact gameplay chrome retains a full native touch target at every text size.
+struct StarfallGameButtonStyle: ButtonStyle {
+    @Environment(\.isEnabled) private var isEnabled
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .font(StarfallTheme.Typography.gameDetail.weight(.medium))
+            .foregroundStyle(isEnabled ? StarfallTheme.Colors.actionPrimary : StarfallTheme.Colors.textDisabled)
+            .padding(.horizontal, StarfallTheme.Spacing.small)
+            .frame(minWidth: StarfallTheme.Layout.minimumTarget, minHeight: StarfallTheme.Layout.minimumTarget)
+            .background(configuration.isPressed ? StarfallTheme.Colors.surfacePressed : .clear,
+                        in: RoundedRectangle(cornerRadius: StarfallTheme.Radius.control))
+            .contentShape(Rectangle())
     }
 }

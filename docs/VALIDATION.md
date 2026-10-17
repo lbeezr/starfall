@@ -169,3 +169,39 @@ Artifact `12050821982` is 4,570,581 bytes, expires 2026-10-17 14:00:27 UTC. Reta
 - Local Xcode 27/iOS 27: 27 core tests, two compact iPhone SE UI cases and two iPad mini UI cases passed; native results report zero failures/skips. Ordinary Release simulator build passed. Checks cover unsuppressed largest-text menu/game/Settings audits, real clears, restart, Settings dismissal and tablet rotation/reflow with continued input.
 - The coordinator and design-system owner inspected before/after phone restart-ready captures: the previously overlapping moves label now clips at the safe-area edge; the complete board and New game retain their positions. Tablet landscape and maximum-text portrait captures retain clear, complete controls. Exact source hashes, summaries and 15 exported capture hashes plus the preceding-source baseline are in `docs/evidence/safe-area-2026-10-16/`.
 - Preceding crystal cloud run [38967493117](https://github.com/lbeezr/starfall/actions/runs/38967493117) passed 86 tests (27 core, 47 hosted, 12 UI) and 35 screenshot hashes. The new viewport change requires its own subsequent CI result. Human VoiceOver, system Reduce Motion, physical devices and frame pacing remain separate acceptance work.
+
+### Falling sky default — 2026-10-16
+
+- Promoted the falling-sky screen, store and renderer to Debug and Release; ordinary launches open falling sky directly. Removed the modal Close button and experiment label. Debug `--classic` and `--demo` retain the original puzzle for regression coverage.
+- `swift test --scratch-path /tmp/starfall-default-core`: 53 tests passed.
+- Release generic iOS Simulator build passed using Xcode and `/tmp/starfall-default-build`.
+- On the iPhone 18 Pro / iOS 27.0 simulator, the falling-sky UI tests passed for background/resume, saved-state restoration, automatic overflow/new sky, balance controls, and dark-star restore/clear. The rapid-tap/growth/replay/settings test initially lost its matching-group query after waiting for another shower. It passed on a focused rerun after removing that extra shower wait. Launch helper now omits `--starfalls`, covering default entry.
+- Calm effects and native accessible cell controls were exercised by the suite. Actual VoiceOver speech/focus, the system Reduce Motion toggle, and physical-device behavior were not validated in this run. Falling sky ends on overflow; classic win/loss rules were unchanged and covered by core tests.
+- Existing local Xcode project/workspace edits were preserved.
+
+### Falling-sky pacing, feedback and accessible controls — 2026-10-16
+
+- New skies have a first-shower match, coherent shower colors, and bounded matching runs in later forecasts when the board is dry and a low column has room. Existing saves keep their old generation rules. Comets fall faster; paused clears and Call next shower remove forced waiting. Added static match outlines/count, clear rings/score popup and optional local sound/haptics.
+- Passed: 56 core tests; Release simulator build; 14 hosted store tests; five gameplay UI tests on iPhone 18 Pro; largest-text/settings/persistence check on iPhone 17e; actual system Reduce Motion gameplay check with the switch restored. Initial Settings switch targeting failed; explicit thumb targeting and value wait passed.
+- Reproducible pacing sample, retained small-screen captures, source hashes, method and limitations: `docs/evidence/falling-sky-pacing-2026-10-16/README.md`. VoiceOver spoken/focus behavior and physical sound/haptic feel remain unvalidated. Existing unrelated Xcode project/workspace edits were preserved.
+
+### Falling-sky roadmap and strategy baseline — 2026-10-16
+
+- Replaced the outdated canonical roadmap with falling-sky priorities; preserved the original plan in `docs/archive/`. Added an observed-play comparison protocol and historical notices on original-puzzle playtest/acceptance material.
+- Added `tools/sample-falling-sky-balance.swift`, an offline deterministic strategy sampler. Six policies over 200 seeds show that multi-group choices remain uncommon; these results motivate an offline mixed-color candidate and human comparison, not immediate changes to the shipped mechanics. Results and limits are in `docs/evidence/falling-sky-strategy-2026-10-16/`.
+- The sampler compiled and produced byte-identical JSON on a second execution. All 56 core tests and a Release simulator build passed. No game source or UI behavior changed, and no new simulator interaction, human playtest or device acceptance is claimed.
+
+## 2026-10-17 — engineering guidance and repository hygiene
+
+- Runtime baseline: published `61ea5046e3d595858aba4da741fc301249b10ef1`. This pass changes guidance, ignore rules and a Python hygiene gate called by the existing CI script; no gameplay, app source, assets or Xcode settings changed.
+- Local toolchain: Xcode 27.1 (27A9275), Apple Swift 6.4, ARM64 macOS. `swift test --scratch-path /tmp/starfall-hygiene-core` passed all 60 tests, zero failures. `python3 scripts/ci-hygiene.py`, `bash -n scripts/ci-simulator.sh` and `git diff --check` passed. Disposable-index artifact injection and an in-memory core SpriteKit-import injection both failed as intended without modifying the real index or source.
+- A clean `git archive` export of the baseline built successfully with `xcodebuild -project <export>/Starfall.xcodeproj -scheme Starfall -configuration Release -destination 'generic/platform=iOS Simulator' -derivedDataPath /tmp/starfall-hygiene-clean-build ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGNING_ALLOWED=NO build`. This confirms clean-baseline simulator compilation, not launch, layout or visual parity.
+- Existing local project/workspace edits remain untouched and excluded. The parsed project differences include scene/launch-screen/orientation generation settings and object version; recent native UI checks used that modified project. Resolving clean-published versus working-tree visual acceptance is tracked in `ENGINEERING.md`.
+- No new simulator interaction, VoiceOver, physical-device, profiling or GitHub Actions run is claimed for this guidance pass. Existing native evidence remains source-bound under `docs/evidence/`.
+
+## 2026-10-17 — original star-character cast
+
+- Runtime integration `063d67b` replaces falling-sky jewels with the original Spark/Sunny/Pip/Twinkle/Nova/Dusk cast in Debug and Release. Board, comets and preview share one bounded material factory; existing core IDs/rules/saves and Debug classic crystal rendering remain unchanged.
+- Clean exported source: 60 core tests passed; 69 hosted app tests passed with normal motion and zero failures/skips; all ten falling-sky UI cases passed in a separate Reduce Motion matrix; smaller-phone compact/large-text cases and a final normal-motion automatic/rapid-input UI case passed. Clean Release simulator build passed. The failed hosted portion of the mixed-motion run and its diagnostic-collection stall are explicitly retained in the evidence scope, not called an overall pass.
+- Inspected native material sheet, full-animation recording and sequential frames caught and verified a fix for transient landing texture-size jumps. Geometry-preserving expression swaps cover both landing and clear; the new animated hosted test samples bounds over time.
+- [Detailed scope, source hashes, summaries and selected captures](evidence/star-cast-2026-10-17/README.md). No actual spoken VoiceOver, physical-device, minimum-iOS or tablet/landscape acceptance is implied. Local unrelated Xcode edits were preserved; tests/builds used clean staged exports.
