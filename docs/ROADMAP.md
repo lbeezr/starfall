@@ -30,6 +30,10 @@ Next bounded experiment:
 
 **Exit:** Opening remains playable within one settled shower; long dead stretches do not return in the regression sample; a player can describe a useful choice and prefers the candidate or clearly identifies the next issue. Numeric sample targets are design hypotheses, not release gates.
 
+## Progression direction — proposal under discussion
+
+[Web research and a six-sky progression proposal](design/FALLING_SKY_RESEARCH.md) distinguish the current survival game from objective-based levels. The recommendation is to test one authored objective-driven sky after the decision-depth pass, then consider six short challenges that vary goals, layouts, shower patterns and dark-star pressure. This is a proposed scope expansion: progression remains absent from the prototype and is not authorized for implementation merely by this note. Do not build a campaign, unlock system, XP or economy without a product decision.
+
 ## 2. Polish physical feel — next
 
 - Review comet speed, landing/growth emphasis, clear readability and input response on a real iPhone.
