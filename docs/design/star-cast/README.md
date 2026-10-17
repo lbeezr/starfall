@@ -13,6 +13,12 @@ The approved [concept sheet](approved-concept.png) is reference artwork, generat
 
 Names and varied point counts are presentation only. Jewel raw values, deterministic shower/clear rules, scores, challenges and saves are unchanged. Point count does not indicate value: normal stars are worth 1 and grown stars 2; dark stars remain worth 0. VoiceOver labels include color, silhouette and name, plus existing position/value/growth-block information. Color alone is unnecessary for distinguishing normal families; the two four-point families have different proportions.
 
+## See the cast
+
+<img src="../../evidence/star-cast-motion-2026-10-17/material-review.png" width="640" alt="Native exported cast review showing the six star families at several presentation sizes">
+
+**Native motion-candidate export, October 17:** [source and verification](../../evidence/star-cast-motion-2026-10-17/README.md). This is a renderer review artifact, not proof of animation or final art acceptance. The [illustrated cast table](../VISUAL_REFERENCE.md#meet-the-cast) pairs each character with its exported motion sheet.
+
 ## Materials and animation
 
 - All poses use the same centered 256×256 transparent canvas with a 128/128 pivot. Rounded contour corners retain the authored points. Rendering has transparent padding, and front-facing expressions never change the alpha silhouette; authored left/right views narrow the contour around the same pivot.
