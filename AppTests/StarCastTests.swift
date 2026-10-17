@@ -7,7 +7,7 @@ import StarfallCore
 final class StarCastTests: XCTestCase {
     @MainActor func testCompleteCastIsBoundedAndReusesMaterialsAcrossRounds() throws {
         StarCast.prewarm()
-        XCTAssertEqual(StarCast.cachedMaterialCount, 24)
+        XCTAssertEqual(StarCast.cachedMaterialCount, 72)
         let cast = Jewel.allCases.map(Optional.some) + [nil]
         for kind in cast {
             for expression in StarCast.Expression.allCases {
@@ -26,7 +26,7 @@ final class StarCastTests: XCTestCase {
             }
         }
         XCTAssertEqual(StarCast.cachedMaterialCount, StarCast.maximumMaterials)
-        XCTAssertEqual(StarCast.maximumRasterBytes, 6_291_456)
+        XCTAssertEqual(StarCast.maximumRasterBytes, 18_874_368)
     }
 
     @MainActor func testTransparentPaddingAndStableSilhouettesAcrossExpressions() throws {
@@ -50,8 +50,8 @@ final class StarCastTests: XCTestCase {
                 else { neutralAlpha = alpha }
                 expressions.insert(Data(pixels))
             }
-            // Grown/clear deliberately share a happy face; landing and idle remain distinct.
-            XCTAssertGreaterThanOrEqual(expressions.count, 3)
+            // Every gameplay expression must now be distinct.
+            XCTAssertEqual(expressions.count, 4)
         }
     }
 
@@ -130,18 +130,46 @@ final class StarCastTests: XCTestCase {
         XCTAssertTrue(complete)
     }
 
+    @MainActor func testEveryCharacterHasACompleteTwelveFrameSheet() throws {
+        for kind in Jewel.allCases.map(Optional.some) + [nil] {
+            var unique = Set<Data>()
+            let format = UIGraphicsImageRendererFormat(); format.scale = 1
+            let sheet = UIGraphicsImageRenderer(size: CGSize(width: 768, height: 1024), format: format).image { _ in
+                for (row, expression) in StarCast.Expression.allCases.enumerated() {
+                    for (column, facing) in StarCast.Facing.allCases.enumerated() {
+                        let image = StarCast.image(for: kind, expression: expression, facing: facing)
+                        if let png = image.pngData() { unique.insert(png) }
+                        image.draw(at: CGPoint(x: column * 256, y: row * 256))
+                        let node = JewelScene.makeStarCharacter(kind, expression: expression, radius: 22)
+                        let size = node.size
+                        StarCast.setExpression(expression, for: kind, on: node, facing: facing)
+                        XCTAssertEqual(node.size, size)
+                        XCTAssertEqual(node.anchorPoint, CGPoint(x: 0.5, y: 0.5))
+                    }
+                }
+            }
+            XCTAssertEqual(unique.count, 12, "Every turn and expression must be authored, not a duplicated frame")
+            let attachment = XCTAttachment(image: sheet)
+            attachment.name = "star-cast-sheet-" + StarCast.character(for: kind).name
+            attachment.lifetime = .keepAlways; add(attachment)
+        }
+    }
+
     @MainActor func testCastReviewSheetAtBoardAndHeroSizes() {
         let kinds = [Jewel.aqua, .amber, .mint, .rose, .violet].map(Optional.some) + [nil]
         let format = UIGraphicsImageRendererFormat(); format.scale = 2
-        let sheet = UIGraphicsImageRenderer(size: CGSize(width: 840, height: 560), format: format).image { render in
+        let sheet = UIGraphicsImageRenderer(size: CGSize(width: 840, height: 670), format: format).image { render in
             UIColor(red: 0.06, green: 0.08, blue: 0.17, alpha: 1).setFill()
-            render.fill(CGRect(x: 0, y: 0, width: 840, height: 560))
+            render.fill(CGRect(x: 0, y: 0, width: 840, height: 670))
             let labels: [NSAttributedString.Key: Any] = [.font: UIFont.systemFont(ofSize: 15, weight: .medium), .foregroundColor: UIColor.white]
             for (index, kind) in kinds.enumerated() {
                 let x = CGFloat(index) * 140
                 (StarCast.character(for: kind).name as NSString).draw(at: CGPoint(x: x + 43, y: 14), withAttributes: labels)
                 for (row, expression) in StarCast.Expression.allCases.enumerated() {
                     StarCast.image(for: kind, expression: expression).draw(in: CGRect(x: x + 12, y: 42 + CGFloat(row) * 102, width: 116, height: 116))
+                }
+                for (poseIndex, facing) in StarCast.Facing.allCases.enumerated() {
+                    StarCast.image(for: kind, facing: facing).draw(in: CGRect(x: x + CGFloat(poseIndex) * 45, y: 560, width: 45, height: 45))
                 }
                 for (index, side) in [CGFloat(24), 36, 44].enumerated() {
                     StarCast.image(for: kind).draw(in: CGRect(x: x + 6 + CGFloat(index) * 43, y: 485, width: side, height: side))

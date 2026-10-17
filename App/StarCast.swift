@@ -6,6 +6,7 @@ import StarfallCore
 /// One material owner supplies SpriteKit and SwiftUI; no per-frame drawing or asset IO.
 @MainActor enum StarCast {
     enum Expression: Int, CaseIterable { case idle, landing, grown, clearing }
+    enum Facing: Int, CaseIterable { case front, left, right }
     struct Character {
         let name: String
         let points: Int
@@ -19,10 +20,10 @@ import StarfallCore
 
     static let rasterSide = 256
     static let silhouetteSide: CGFloat = 212 // Includes the ink outline; fixed centered canvas.
-    static let maximumMaterials = 6 * Expression.allCases.count
+    static let maximumMaterials = 6 * Expression.allCases.count * Facing.allCases.count
     static let maximumRasterBytes = maximumMaterials * rasterSide * rasterSide * 4
     private static let ink = UIColor(red: 0.08, green: 0.10, blue: 0.22, alpha: 1)
-    private struct Key: Hashable { let kind: Int; let expression: Int }
+    private struct Key: Hashable { let kind: Int; let expression: Int; let facing: Int }
     private struct Material { let image: UIImage; let texture: SKTexture }
     private static var materials: [Key: Material] = [:]
     static var cachedMaterialCount: Int { materials.count }
@@ -74,24 +75,26 @@ import StarfallCore
         }
     }
 
-    static func image(for kind: Jewel?, expression: Expression = .idle) -> UIImage {
-        material(for: kind, expression: expression).image
+    static func image(for kind: Jewel?, expression: Expression = .idle, facing: Facing = .front) -> UIImage {
+        material(for: kind, expression: expression, facing: facing).image
     }
-    static func texture(for kind: Jewel?, expression: Expression) -> SKTexture {
-        material(for: kind, expression: expression).texture
+    static func texture(for kind: Jewel?, expression: Expression, facing: Facing = .front) -> SKTexture {
+        material(for: kind, expression: expression, facing: facing).texture
     }
     /// SpriteKit texture actions can restore the texture's intrinsic canvas size mid-action.
     /// Expression changes must preserve the caller's authored size, scale and pivot.
-    static func setExpression(_ expression: Expression, for kind: Jewel?, on node: SKSpriteNode) {
+    static func setExpression(_ expression: Expression, for kind: Jewel?, on node: SKSpriteNode, facing: Facing = .front) {
         let size = node.size
         let anchor = node.anchorPoint
-        node.texture = texture(for: kind, expression: expression)
+        node.texture = texture(for: kind, expression: expression, facing: facing)
         node.size = size
         node.anchorPoint = anchor
     }
     static func prewarm() {
         for kind in Jewel.allCases.map(Optional.some) + [nil] {
-            for expression in Expression.allCases { _ = material(for: kind, expression: expression) }
+            for expression in Expression.allCases {
+                for facing in Facing.allCases { _ = material(for: kind, expression: expression, facing: facing) }
+            }
         }
     }
     static func makeNode(for kind: Jewel?, expression: Expression, radius: CGFloat) -> SKSpriteNode {
@@ -101,14 +104,28 @@ import StarfallCore
         node.name = "star-cast.\(character(for: kind).name).\(expression.rawValue)"
         return node
     }
-    private static func material(for kind: Jewel?, expression: Expression) -> Material {
-        let key = Key(kind: kind?.rawValue ?? -1, expression: expression.rawValue)
+    /// Finite pose changes preserve sprite geometry; the scene owns their lifetime.
+    static func turnAction(for kind: Jewel?, expression: Expression,
+                           toward facing: Facing, duration: TimeInterval) -> SKAction {
+        let opposite: Facing = facing == .left ? .right : .left
+        let poses: [Facing] = [.front, facing, .front, opposite, .front]
+        return .sequence(poses.map { pose in
+            .sequence([.customAction(withDuration: duration / Double(poses.count)) { node, _ in
+                guard let sprite = node as? SKSpriteNode else { return }
+                // Cached materials only; no drawing or IO in the action callback.
+                setExpression(expression, for: kind, on: sprite, facing: pose)
+            }])
+        })
+    }
+
+    private static func material(for kind: Jewel?, expression: Expression, facing: Facing) -> Material {
+        let key = Key(kind: kind?.rawValue ?? -1, expression: expression.rawValue, facing: facing.rawValue)
         if let cached = materials[key] { return cached }
         let format = UIGraphicsImageRendererFormat()
         format.scale = 1; format.opaque = false
         format.preferredRange = .standard
         let image = UIGraphicsImageRenderer(size: CGSize(width: rasterSide, height: rasterSide), format: format)
-            .image { render(character(for: kind), dark: kind == nil, expression: expression, in: $0.cgContext) }
+            .image { render(character(for: kind), dark: kind == nil, expression: expression, facing: facing, in: $0.cgContext) }
         let texture = SKTexture(image: image)
         texture.filteringMode = .linear; texture.usesMipmaps = false
         let result = Material(image: image, texture: texture)
@@ -141,7 +158,14 @@ import StarfallCore
         return path
     }
 
-    private static func render(_ character: Character, dark: Bool, expression: Expression, in ctx: CGContext) {
+    private static func render(_ character: Character, dark: Bool, expression: Expression, facing: Facing, in ctx: CGContext) {
+        ctx.saveGState()
+        defer { ctx.restoreGState() }
+        let direction: CGFloat = facing == .left ? -1 : facing == .right ? 1 : 0
+        // Authored shallow yaw: compressed contour and a face that wraps toward the turn.
+        ctx.translateBy(x: 128, y: 128)
+        ctx.scaleBy(x: direction == 0 ? 1 : 0.86, y: 1)
+        ctx.translateBy(x: -128, y: -128)
         let shape = outline(character)
         ctx.setLineJoin(.round); ctx.setLineCap(.round)
         // Bake a bounded halo into the shared material; no emitters or per-frame work.
@@ -174,11 +198,12 @@ import StarfallCore
         ctx.addPath(shape)
         ctx.setStrokeColor(character.highlight.withAlphaComponent(dark ? 0.9 : 0.95).cgColor)
         ctx.setLineWidth(2.5); ctx.strokePath()
+        ctx.translateBy(x: direction * 13, y: 0)
         drawFace(character, dark: dark, expression: expression, in: ctx)
     }
 
     private static func drawFace(_ character: Character, dark: Bool, expression: Expression, in ctx: CGContext) {
-        let happy = expression == .grown || expression == .clearing
+        let happy = expression == .clearing
         let sleepy = dark || character.name == "Nova" || character.name == "Twinkle"
         let faceInk = dark ? UIColor(red: 0.96, green: 0.91, blue: 1, alpha: 1) : ink
         func stroke(_ path: CGPath, color: UIColor? = nil, width: CGFloat = 5) {
@@ -209,7 +234,7 @@ import StarfallCore
         if expression == .landing {
             ctx.setFillColor(faceInk.cgColor)
             ctx.fillEllipse(in: CGRect(x: 122, y: 139, width: 12, height: 15))
-        } else if happy {
+        } else if happy || expression == .grown {
             let mouth = CGMutablePath(); mouth.move(to: CGPoint(x: 116, y: 140))
             mouth.addQuadCurve(to: CGPoint(x: 140, y: 140), control: CGPoint(x: 128, y: 145))
             mouth.addCurve(to: CGPoint(x: 116, y: 140), control1: CGPoint(x: 142, y: 164), control2: CGPoint(x: 114, y: 164))

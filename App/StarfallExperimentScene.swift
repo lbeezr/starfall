@@ -46,7 +46,9 @@ import StarfallCore
         grid.addChild(ring)
     }
 
-    func render(_ game: StarfallExperiment) {
+    func render(_ game: StarfallExperiment) { render(game, ambient: true) }
+
+    private func render(_ game: StarfallExperiment, ambient: Bool) {
         rendered = game
         removeAllActions(); effects.removeAllChildren(); effects.removeAllActions()
         pieces.removeAllChildren(); grid.removeAllChildren(); nodes.removeAll()
@@ -63,13 +65,21 @@ import StarfallCore
                 let node = makeNode(gem); node.position = point(cell)
                 if game.isGrowthBlocked(at: cell) { shade(node, at: cell) }
                 pieces.addChild(node); nodes[gem.id] = node
+                if ambient && !reduceMotion && !UIAccessibility.isReduceMotionEnabled && !UIAccessibility.isVoiceOverRunning {
+                    let expression: StarCast.Expression = gem.grown ? .grown : .idle
+                    let turn = StarCast.turnAction(for: gem.kind, expression: expression,
+                                                   toward: gem.id.isMultiple(of: 2) ? .left : .right, duration: 0.65)
+                    // Staggered, sparse character motion; one owned action per occupied cell.
+                    node.run(.repeatForever(.sequence([.wait(forDuration: 5 + Double(gem.id % 7)), turn])),
+                             withKey: "star-cast.ambient")
+                }
             }
         } }
     }
 
     func animate(_ turn: StarfallExperimentTurn, from old: StarfallExperiment,
                  to game: StarfallExperiment, completion: @escaping () -> Void) {
-        render(old)
+        render(old, ambient: false)
         rendered = game
         if view == nil { render(game); completion(); return }
         if reduceMotion || UIAccessibility.isReduceMotionEnabled || UIAccessibility.isVoiceOverRunning {
@@ -89,7 +99,7 @@ import StarfallCore
                 ring.lineWidth = 2; ring.glowWidth = 3
                 effects.addChild(ring)
                 ring.run(.sequence([.group([.scale(to: 1.7, duration: 0.24), .fadeOut(withDuration: 0.24)]), .removeFromParent()]))
-                node.run(.sequence([.group([.fadeOut(withDuration: 0.12), .scale(to: 1.2, duration: 0.12)]), .removeFromParent()]))
+                node.run(.sequence([.group([.fadeOut(withDuration: 0.12), .scale(to: 1.2, duration: 0.12), .rotate(byAngle: 0.18, duration: 0.12)]), .removeFromParent()]))
             }
         }
         if turn.collected > 0, !turn.cleared.isEmpty {
@@ -143,7 +153,14 @@ import StarfallCore
         halo.fillColor = color.withAlphaComponent(0.3); halo.strokeColor = color.withAlphaComponent(0.5)
         halo.glowWidth = 9
         comet.addChild(halo)
-        comet.addChild(JewelScene.makeStarCharacter(arrival.star.kind, expression: .landing, radius: step * 0.35))
+        let traveler = JewelScene.makeStarCharacter(arrival.star.kind, expression: .landing, radius: step * 0.35)
+        traveler.zRotation = arrival.star.id.isMultiple(of: 2) ? -0.12 : 0.12
+        traveler.run(.group([
+            StarCast.turnAction(for: arrival.star.kind, expression: .landing,
+                                toward: arrival.star.id.isMultiple(of: 2) ? .left : .right, duration: 0.48),
+            .rotate(toAngle: 0, duration: 0.48)
+        ]))
+        comet.addChild(traveler)
         comet.position = CGPoint(x: point(arrival.cell).x, y: size.height + step)
         effects.addChild(comet)
         let fall = SKAction.move(to: point(arrival.cell), duration: 0.48)
@@ -163,8 +180,12 @@ import StarfallCore
                             }]))
         node.position = point(arrival.cell)
         pieces.addChild(node); nodes[arrival.gem.id] = node
-        node.setScale(0.8)
-        node.run(.sequence([.scale(to: 1.10, duration: 0.12), .scale(to: 1, duration: 0.16)]))
+        node.xScale = 1.13; node.yScale = 0.78
+        node.zRotation = arrival.gem.id.isMultiple(of: 2) ? -0.10 : 0.10
+        node.run(.group([
+            .sequence([.scaleX(to: 0.94, y: 1.08, duration: 0.12), .scaleX(to: 1, y: 1, duration: 0.16)]),
+            .sequence([.rotate(toAngle: -node.zRotation * 0.6, duration: 0.12), .rotate(toAngle: 0, duration: 0.16)])
+        ]))
         let ring = SKShapeNode(circleOfRadius: step * (arrival.grew ? 0.42 : 0.28))
         ring.position = node.position
         ring.strokeColor = (arrival.star.kind?.color ?? .systemPurple).withAlphaComponent(0.85)
