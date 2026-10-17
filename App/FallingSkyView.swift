@@ -8,9 +8,11 @@ import StarfallCore
     @State private var store = FallingSkyStore.forSkyFlowApp()
     @State private var trace = ConstellationTraceIntent()
     @State private var traceFeedback = ConstellationTraceFeedback()
-    @State private var settings = false
-    @State private var flow = SkyFlowScreen.initial()
+    @State private var menu: SkyMenuDestination?
+    private var settings: Bool { menu != nil }
+    @State private var flow = SkyFlowState()
     @State private var environmentGeneration = 0
+    @State private var handoffLeaving = false
     @AccessibilityFocusState private var menuFocused: Bool
     @AppStorage("calmEffects") private var calmEffects = false
     @Environment(\.colorSchemeContrast) private var environmentContrast
@@ -26,8 +28,18 @@ import StarfallCore
     }
     @Namespace private var matchingGroups
 
-    private var endingReady: Bool { flow == .playing && store.game.isOver && !store.busy }
-    private var showingCeremony: Bool { flow != .playing || endingReady }
+    private var endingReady: Bool { flow.screen == .playing && store.game.isOver && !store.busy }
+    private var ceremonyScreen: SkyFlowScreen? {
+        if let handoff = flow.handoff { return handoff.source }
+        if endingReady { return store.game.outcome == .won ? .won : .full }
+        return flow.screen == .playing ? nil : flow.screen
+    }
+    private var showingCeremony: Bool { ceremonyScreen != nil }
+    private var boardVisible: Bool { flow.screen == .playing }
+    private var handoffKey: String { "\(flow.handoff?.id.description ?? "none")-\(scenePhase == .active)-\(quietMotion)" }
+    private var entryChallenge: Bool {
+        flow.entry?.isChallenge(replayingChallenge: store.game.challenge != nil) ?? (store.game.challenge != nil)
+    }
     private var quietMotion: Bool { reduceMotion || calmEffects || voiceOver }
 
     // Reserve the longest cue from round start: phase changes must not resize
@@ -85,32 +97,58 @@ import StarfallCore
                     }
                 }
             }
-            if showingCeremony {
-                SkyFlowCeremony(screen: endingReady ? (store.game.outcome == .won ? .won : .full) : flow,
-                                challenge: store.game.challenge != nil, score: store.game.score,
-                                hasSavedSky: store.hasSavedSky, lastSkyEnded: store.game.isOver,
-                                active: scenePhase == .active, quiet: quietMotion,
-                                action: handleFlowAction)
-                    .id(endingReady ? (store.game.outcome == .won ? "won" : "full") : String(describing: flow))
+            if let ceremonyScreen {
+                let entryID = flow.entryID
+                SkyFlowCeremony(screen: ceremonyScreen,
+                                challenge: entryChallenge,
+                                result: endingReady ? SkyResultSnapshot(game: store.game) : nil,
+                                welcome: SkyWelcomeSnapshot(game: store.game, hasSavedSky: store.hasSavedSky, paused: store.isPaused),
+                                active: scenePhase == .active && flow.handoff == nil && !settings, quiet: quietMotion, modal: settings,
+                                action: { handleFlowAction($0, entryID: entryID) })
+                    .id(String(describing: ceremonyScreen))
+                    .opacity(flow.handoff != nil && handoffLeaving ? 0 : 1)
+                    .allowsHitTesting(flow.handoff == nil && !settings)
+                    .accessibilityHidden(flow.handoff != nil || settings)
+                    .zIndex(1)
+            }
+            if flow.handoff?.preparing == true {
+                VStack(spacing: StarfallTheme.Spacing.medium) {
+                    if !quietMotion {
+                        ProgressView().controlSize(.large).tint(StarfallTheme.Ceremony.gold)
+                            .accessibilityHidden(true)
+                    }
+                    Text("Preparing your sky…").font(StarfallTheme.Typography.title)
+                    Button("Back to Observatory") { handleFlowAction(.home) }
+                        .buttonStyle(StarfallButtonStyle(role: .primary))
+                        .accessibilityIdentifier("sky.preparing.back")
+                }
+                .padding(StarfallTheme.Spacing.large)
+                .background(StarfallTheme.Colors.skyTop, in: RoundedRectangle(cornerRadius: StarfallTheme.Radius.panel))
+                .accessibilityIdentifier("sky.preparing")
+                .zIndex(2)
             }
         }
         .preferredColorScheme(.dark)
         .statusBarHidden(!settings)
         .tint(StarfallTheme.Colors.actionPrimary)
-        .onAppear { updateSuspension(); store.settlePresentation(); updateMotion() }
-        .onDisappear { cancelConstellation(); store.setSuspended(true) }
+        .onAppear { store.terminalSpeech = .ceremony; updateSuspension(); store.settlePresentation(); updateMotion() }
+        .onDisappear { cancelConstellation(); store.setSuspended(true); store.terminalSpeech = .feedback }
         .onChange(of: store.constellationInputGeneration) { cancelConstellation() }
         .onChange(of: store.game) { cancelConstellation() }
         .onChange(of: store.canClear) { _, enabled in if !enabled { cancelConstellation() } }
         .onChange(of: store.isPaused) { cancelConstellation() }
         .onChange(of: scenePhase) { updateSuspension() }
-        .onChange(of: settings) { updateSuspension() }
+        .onChange(of: settings) { finishHandoffIfReady(); updateSuspension() }
+        .onChange(of: store.sceneReady) { finishHandoffIfReady(); updateSuspension() }
         .onChange(of: flow) { cancelConstellation(); updateSuspension() }
         .onChange(of: endingReady) { updateSuspension() }
         .onChange(of: reduceMotion) { updateMotion() }
         .onChange(of: voiceOver) { updateMotion() }
         .onChange(of: calmEffects) { updateMotion() }
-        .sheet(isPresented: $settings, onDismiss: { if voiceOver && !showingCeremony { menuFocused = true } }) { settingsView }
+        .task(id: handoffKey) { await presentHandoff() }
+        .sheet(item: $menu, onDismiss: { if voiceOver && !showingCeremony { menuFocused = true } }) { destination in
+            settingsView(destination)
+        }
     }
 
     /// The terrace owns its complete canvas. At accessibility sizes the guide is
@@ -121,7 +159,7 @@ import StarfallCore
             let footerHeight = max(0, viewport.size.height - front - insets.bottom
                 - 2 * StarfallTheme.Spacing.small)
             ZStack {
-                board
+                board.allowsHitTesting(!settings && !showingCeremony)
                 if !showingCeremony {
                     VStack(spacing: StarfallTheme.Spacing.small) {
                         compactHeader(island: island)
@@ -179,7 +217,7 @@ import StarfallCore
             Spacer(minLength: 0)
             if !island { showerTrail(island: false) }
             Spacer(minLength: 0)
-            Button { settings = true } label: { SkyMenuGlyph() }
+            Button { menu = .game } label: { SkyMenuGlyph() }
                 .buttonStyle(StarfallGameButtonStyle())
                 .disabled(scenePhase != .active || store.suspended)
                 .accessibilityLabel("Sky menu").accessibilityHint("Pause, settings and how to play")
@@ -197,9 +235,10 @@ import StarfallCore
     /// Menu suspension must be released before applying a player pause choice.
     /// Both operations are synchronous on the main actor; no clock event can interleave.
     private func togglePauseFromMenu() {
+        guard scenePhase == .active, flow.screen == .playing, !showingCeremony, store.sceneReady else { return }
         store.setSuspended(scenePhase != .active)
         store.togglePause()
-        settings = false
+        menu = nil
     }
 
     private var board: some View {
@@ -213,9 +252,22 @@ import StarfallCore
                         Color.black.opacity(0.28).allowsHitTesting(false).accessibilityHidden(true)
                     }
                     SpriteView(scene: store.scene, options: [.allowsTransparency])
-                        .opacity(showingCeremony ? 0 : 1)
+                        .opacity(boardVisible ? 1 : 0)
+                        .animation(quietMotion ? nil : .easeOut(duration: StarfallTheme.Ceremony.handoffDuration), value: boardVisible)
                         .allowsHitTesting(false).accessibilityHidden(true)
                     let mapping = ObservatoryGeometry(size: geometry.size)
+                    if endingReady, let column = store.game.blockedColumn {
+                        Path { path in
+                            path.addLines(mapping.columnPolygon(column)); path.closeSubpath()
+                        }
+                        .fill(StarfallTheme.Ceremony.gold.opacity(0.12))
+                        .overlay {
+                            Path { path in
+                                path.addLines(mapping.columnPolygon(column)); path.closeSubpath()
+                            }.stroke(StarfallTheme.Ceremony.gold.opacity(0.8), style: StrokeStyle(lineWidth: 2, dash: [5, 5]))
+                        }
+                        .allowsHitTesting(false).accessibilityHidden(true)
+                    }
                     if !settings && !showingCeremony {
                     ForEach((0..<7).reversed(), id: \.self) { row in
                         ForEach(0..<7, id: \.self) { column in
@@ -286,48 +338,75 @@ import StarfallCore
     }
 
     private func updateSuspension() {
-        store.setSuspended(scenePhase != .active || settings || showingCeremony)
+        store.setSuspended(scenePhase != .active || settings || showingCeremony || !store.sceneReady)
     }
 
-    private func prepareSky(same: Bool) {
-        store.setSuspended(true)
-        store.restart(sameSky: same)
-        environmentGeneration += 1
-        flow = .entry
-        settings = false
+    private func finishHandoffIfReady() {
+        guard let id = flow.handoff?.id,
+              let startsClock = flow.completeHandoff(id, ready: store.sceneReady, active: scenePhase == .active, modal: settings) else { return }
+        updateSuspension()
+        if startsClock && !store.game.isOver && store.isPaused { store.togglePause() }
     }
 
-    private func handleFlowAction(_ action: SkyFlowAction) {
-        guard scenePhase == .active else { return }
-        switch action {
-        case .start:
-            guard flow == .welcome else { return }
-            if store.hasSavedSky { prepareSky(same: false) } else { flow = .entry }
-        case .firstLight:
-            store.setSuspended(true); store.startFirstLight()
-            environmentGeneration += 1; flow = .entry; settings = false
-        case .begin, .resume:
-            guard flow != .playing else { return }
-            flow = .playing
-            store.setSuspended(false)
-            if !store.game.isOver && store.isPaused { store.togglePause() }
-        case .replay: prepareSky(same: true)
-        case .another: prepareSky(same: false)
-        case .home:
-            store.setSuspended(true); flow = .welcome; settings = false
+    private func presentHandoff() async {
+        guard let handoff = flow.handoff else { handoffLeaving = false; return }
+        if quietMotion || scenePhase != .active || handoff.settled {
+            var transaction = Transaction(); transaction.disablesAnimations = true
+            withTransaction(transaction) { handoffLeaving = true; flow.settleHandoff(handoff.id) }
+        } else {
+            handoffLeaving = false
+            withAnimation(.easeOut(duration: StarfallTheme.Ceremony.handoffDuration)) { handoffLeaving = true }
+            do { try await Task.sleep(for: .seconds(StarfallTheme.Ceremony.handoffDuration)) }
+            catch { return }
+            guard !Task.isCancelled else { return }
+            flow.settleHandoff(handoff.id)
         }
+        finishHandoffIfReady()
+        guard flow.handoff?.id == handoff.id else { return }
+        do { try await Task.sleep(for: .seconds(2)) } catch { return }
+        guard !Task.isCancelled, flow.handoff?.id == handoff.id, !store.sceneReady else { return }
+        flow.showPreparation(handoff.id)
+        #if DEBUG
+        print("Starfall: scene preparation still pending for handoff \(handoff.id)")
+        #endif
     }
 
-    private var settingsView: some View {
-        FallingSkyMenu(paused: store.isPaused, turns: store.game.turns,
-                       groups: store.game.legalGroups.count, over: store.game.isOver,
-                       challenge: store.game.challenge != nil, balance: store.game.balance,
-                       sound: $store.soundEnabled, haptics: $store.hapticsEnabled, calm: $calmEffects,
-                       pause: togglePauseFromMenu,
-                       restart: { same in prepareSky(same: same) },
-                       firstLight: { handleFlowAction(.firstLight) },
-                       observatory: { handleFlowAction(.home) },
-                       setBalance: store.setBalance, done: { settings = false })
+    private func handleFlowAction(_ action: SkyFlowAction, entryID: UInt64? = nil) {
+        guard scenePhase == .active,
+              let effect = flow.handle(action, hasSavedSky: store.hasSavedSky, entryID: entryID) else { return }
+        switch effect {
+        case .preferences:
+            menu = .welcome
+            return
+        case .staged, .home:
+            store.setSuspended(true)
+        case .began(let request):
+            store.setSuspended(true)
+            store.beginEntry(request)
+            environmentGeneration += 1
+        case .continued:
+            // Returning to the board does not change the player's pause choice.
+            updateSuspension()
+        }
+        menu = nil
+    }
+
+    @ViewBuilder private func settingsView(_ destination: SkyMenuDestination) -> some View {
+        switch destination {
+        case .welcome:
+            SkyWelcomePreferences(sound: $store.soundEnabled, haptics: $store.hapticsEnabled, calm: $calmEffects,
+                                  done: { menu = nil })
+        case .game:
+            FallingSkyMenu(paused: store.isPaused, turns: store.game.turns,
+                           groups: store.game.legalGroups.count, over: store.game.isOver,
+                           challenge: store.game.challenge != nil, balance: store.game.balance,
+                           sound: $store.soundEnabled, haptics: $store.hapticsEnabled, calm: $calmEffects,
+                           pause: togglePauseFromMenu,
+                           restart: { same in handleFlowAction(same ? .replay : .another) },
+                           firstLight: { handleFlowAction(.firstLight) },
+                           observatory: { handleFlowAction(.home) },
+                           setBalance: store.setBalance, done: { menu = nil })
+        }
     }
 }
 
@@ -519,4 +598,9 @@ private struct ConstellationTraceSurface: UIViewRepresentable {
         }
     }
 
+}
+
+private enum SkyMenuDestination: Identifiable {
+    case game, welcome
+    var id: Self { self }
 }

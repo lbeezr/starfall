@@ -26,6 +26,8 @@ The accepted [notification plan](design/NOTIFICATIONS.md) starts with one option
 
 ## What happens next
 
+The [screen-flow polish plan](SCREEN_FLOW_PLAN.md) adds a bounded presentation workstream: explicit dark launch, safe Entry cancellation, pause-preserving Continue, continuous handoffs and understandable endings. Its [accepted design](design/SCREEN_FLOW_POLISH.md) now has verified launch, safe Entry, continuous handoff, explanatory result, bounded arrival and home/preferences batches; [source-bound evidence and limits](evidence/screen-flow-polish-2026-10-17/README.md) remain separate from RC/device acceptance. These batches integrate independently of gameplay experiments.
+
 | Priority | Next action | Done when |
 | --- | --- | --- |
 | Establish the candidate | Resolve the [Xcode project drift](ENGINEERING.md) in a separate reviewed change; retain a clean Release source/build record. | The exact candidate builds and its remaining visual/upgrade gaps are explicit. |

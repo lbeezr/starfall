@@ -20,7 +20,7 @@ The existing icon, screens and six-star cast, with links to their sources. **The
 
 **Native captures:** October 17 compact-HUD candidate, iPhone 17e / iOS 27.0 Simulator. [Source hashes, checks and limits](../evidence/compact-hud-2026-10-17/README.md). Select a capture to inspect the full-size file; these screens do not prove parity with later builds.
 
-**Splash screen:** No authored image is checked in. The app uses [automatic launch-screen generation](../../Config/Clean.xcconfig); the opening board above is gameplay, not a splash. Add an authored concept or native launch capture here when one exists, labeled accordingly.
+**Launch screen:** A static dark storyboard and opaque app root share a named color. [Batch 1 native launch recordings and limits](../evidence/screen-flow-polish-2026-10-17/README.md) show the tested phone sequences; the opening board above remains gameplay, not a splash capture.
 
 ## Current Crystal Glow cast
 

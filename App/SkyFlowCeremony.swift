@@ -14,22 +14,29 @@ enum SkyFlowScreen: Equatable {
         return .welcome
     }
 }
-enum SkyFlowAction { case start, firstLight, begin, resume, replay, another, home }
+enum SkyFlowAction: Equatable { case start, firstLight, begin, resume, replay, another, home, preferences }
 
 @MainActor struct SkyFlowCeremony: View {
     let screen: SkyFlowScreen
     let challenge: Bool
-    let score: Int
-    let hasSavedSky: Bool
-    let lastSkyEnded: Bool
+    let result: SkyResultSnapshot?
+    let welcome: SkyWelcomeSnapshot
     let active: Bool
     let quiet: Bool
+    let modal: Bool
     let action: (SkyFlowAction) -> Void
     @ScaledMetric(relativeTo: .largeTitle) private var titleSize = StarfallTheme.Ceremony.titleSize
+    @ScaledMetric(relativeTo: .largeTitle) private var resultTitleSize = StarfallTheme.Ceremony.resultTitleSize
+    @Environment(\.dynamicTypeSize) private var textSize
+    @Environment(\.accessibilityVoiceOverEnabled) private var voiceOver
+    @AccessibilityFocusState private var headingFocused: Bool
+    @AccessibilityFocusState private var preferencesFocused: Bool
+    @State private var focusedOnEntry = false
     @State private var settled = false
     @State private var controls = false
     @State private var revealed = false
     @State private var burst: CGFloat = 0
+    @State private var celebrating = true
     private var terminal: Bool { screen == .won || screen == .full }
     private var motionKey: String { "\(active)-\(quiet)" }
 
@@ -40,20 +47,21 @@ enum SkyFlowAction { case start, firstLight, begin, resume, replay, another, hom
                                         StarfallTheme.Colors.skyTop.opacity(0.85)],
                                startPoint: .top, endPoint: .bottom)
                     .ignoresSafeArea().accessibilityHidden(true)
+                if screen == .won && celebrating {
+                    SkyCelebration(progress: burst).allowsHitTesting(false).accessibilityHidden(true)
+                }
                 ScrollView {
                     VStack(spacing: StarfallTheme.Spacing.section) {
                         heading
-                        Spacer(minLength: 0)
-                        cast
-                            .frame(height: 220)
-                            .clipped()
-                        Spacer(minLength: 0)
-                        actions
-                            .opacity(controls ? 1 : 0)
-                            .offset(y: controls || quiet ? 0 : 24)
-                            .allowsHitTesting(controls && active)
-                            .disabled(!controls || !active)
-                            .accessibilityHidden(!controls || !active)
+                        if textSize.isAccessibilitySize {
+                            revealedActions
+                            decorativeCast
+                        } else {
+                            Spacer(minLength: 0)
+                            decorativeCast
+                            if !terminal { Spacer(minLength: 0) }
+                            revealedActions
+                        }
                     }
                     .padding(StarfallTheme.Spacing.section)
                     .frame(maxWidth: StarfallTheme.Layout.menuWidth)
@@ -61,14 +69,35 @@ enum SkyFlowAction { case start, firstLight, begin, resume, replay, another, hom
                     .frame(maxWidth: .infinity)
                 }
                 .scrollBounceBehavior(.basedOnSize)
-                if screen == .won {
-                    SkyCelebration(progress: burst).allowsHitTesting(false).accessibilityHidden(true)
-                }
             }
         }
         .accessibilityIdentifier("sky.flow.\(String(describing: screen))")
         .task(id: motionKey) { await reveal() }
         .onDisappear { revealed = true }
+        .onChange(of: modal) { old, new in
+            if old && !new && voiceOver {
+                if screen == .welcome { preferencesFocused = true } else { headingFocused = true }
+            }
+        }
+        .task(id: active) {
+            guard active, voiceOver, !focusedOnEntry else { return }
+            focusedOnEntry = true
+            await Task.yield()
+            guard !Task.isCancelled else { return }
+            headingFocused = true
+        }
+    }
+
+    private var decorativeCast: some View {
+        cast.frame(height: SkyCastFormation.height(terminal: terminal)).clipped()
+    }
+    private var revealedActions: some View {
+        actions
+            .opacity(controls ? 1 : 0)
+            .offset(y: controls || quiet ? 0 : 24)
+            .allowsHitTesting(controls && active)
+            .disabled(!controls || !active)
+            .accessibilityHidden(!controls || !active)
     }
 
     private var heading: some View {
@@ -77,24 +106,44 @@ enum SkyFlowAction { case start, firstLight, begin, resume, replay, another, hom
                 .font(StarfallTheme.Typography.skyCaption).tracking(2)
                 .foregroundStyle(StarfallTheme.Colors.actionPrimary)
             Text(title)
-                .font(StarfallTheme.Typography.display(size: titleSize))
+                .font(StarfallTheme.Typography.display(size: terminal ? resultTitleSize : titleSize))
                 .foregroundStyle(StarfallTheme.Ceremony.gold)
                 .accessibilityAddTraits(.isHeader)
                 .accessibilityLabel(screen == .won ? "First Light complete" : screen == .full ? "This sky is full" : title)
                 .accessibilityIdentifier(terminal ? "experiment.outcome" : "sky.title")
+                .accessibilityValue(terminal ? "\(result?.scoreLabel ?? ""). \(screen == .full ? result?.reason ?? "" : "")" : "")
+                .accessibilityFocused($headingFocused)
             Text(message).font(StarfallTheme.Typography.supporting)
                 .accessibilityIdentifier(terminal ? "experiment.score" : "sky.subtitle")
-                .accessibilityLabel(terminal ? (challenge ? "\(score) of 18 starlight collected" : "\(score) starlight") : message)
+                .accessibilityLabel(result?.scoreLabel ?? message)
                 .foregroundStyle(StarfallTheme.Colors.textPrimary)
                 .fixedSize(horizontal: false, vertical: true)
+            if screen == .welcome, let summary = welcome.summary {
+                Text(summary).font(StarfallTheme.Typography.supporting)
+                    .foregroundStyle(StarfallTheme.Colors.textPrimary)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .accessibilityIdentifier("sky.savedSummary")
+            }
+            if screen == .full, let result {
+                Text(result.reason).font(StarfallTheme.Typography.supporting)
+                    .foregroundStyle(StarfallTheme.Colors.textPrimary)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .accessibilityIdentifier("sky.result.reason")
+            }
         }
         .multilineTextAlignment(.center)
         .shadow(color: StarfallTheme.Colors.skyTop, radius: 6)
+        .padding(terminal ? StarfallTheme.Spacing.medium : 0)
+        .background {
+            if terminal {
+                RoundedRectangle(cornerRadius: StarfallTheme.Radius.panel).fill(StarfallTheme.Colors.skyTop.opacity(0.88))
+            }
+        }
     }
 
     private var kicker: String {
         switch screen {
-        case .welcome: "The Observatory"
+        case .welcome: "Starfall"
         case .entry: challenge ? "First Light" : "An open sky"
         case .won: "First Light · complete"
         case .full: "A moment to begin again"
@@ -113,43 +162,37 @@ enum SkyFlowAction { case start, firstLight, begin, resume, replay, another, hom
     private var message: String {
         switch screen {
         case .welcome: "A little wonder. A little room to breathe."
-        case .entry: challenge ? "Gather 18 starlight before the sky fills." : "Clear matching stars. Make room for more."
-        case .won: "\(score) starlight, gathered by you."
-        case .full: "\(score) starlight gathered. Every sky tells a different story."
+        case .entry: challenge ? "Collect 18 starlight before a column overflows." : "Clear connected matching stars worth 3 or more starlight."
+        case .won, .full: result?.scoreLabel ?? "\(welcome.score) starlight"
         case .playing: ""
         }
     }
 
     private var cast: some View {
         GeometryReader { geometry in
-            let heroSize = min(geometry.size.width * 0.4, 132)
+            let formation = SkyCastFormation(width: geometry.size.width, terminal: terminal, welcome: screen == .welcome)
             ZStack {
-                if screen == .won {
+                if screen == .won, let hero = formation.stars.first {
                     Circle().fill(StarfallTheme.Ceremony.gold.opacity(0.15))
-                        .blur(radius: 22).frame(width: 180, height: 180)
-                        .position(x: geometry.size.width * 0.5, y: 78)
+                        .blur(radius: 22).frame(width: 80, height: 80)
+                        .position(hero.center)
                 }
-                castStar(.amber, side: heroSize, index: 0)
-                    .position(x: geometry.size.width * 0.5, y: 72)
-                castStar(.mint, side: 74, index: 1)
-                    .position(x: geometry.size.width * 0.18, y: 134)
-                castStar(.rose, side: 78, index: 2)
-                    .position(x: geometry.size.width * 0.82, y: 113)
-                if screen == .welcome || screen == .full {
-                    castStar(.aqua, side: 72, index: 3)
-                        .position(x: geometry.size.width * 0.5, y: 180)
+                ForEach(Array(formation.stars.enumerated()), id: \.offset) { index, star in
+                    castStar(star, index: index).position(star.center)
                 }
             }
         }
         .allowsHitTesting(false).accessibilityHidden(true)
     }
-    private func castStar(_ kind: Jewel, side: CGFloat, index: Int) -> some View {
-        Image(uiImage: StarCast.image(for: .init(kind: kind), expression: screen == .won ? .clearing : .idle))
-            .resizable().scaledToFit().frame(width: side, height: side)
+    private func castStar(_ star: SkyCastFormation.Star, index: Int) -> some View {
+        let pose = star.pose(progress: settled || quiet ? 1 : 0)
+        return Image(uiImage: StarCast.image(for: .init(kind: star.kind), expression: screen == .won ? .clearing : .idle))
+            .resizable().scaledToFit().frame(width: star.side, height: star.side)
             .shadow(color: StarfallTheme.Colors.skyTop.opacity(0.4), radius: 8, y: 7)
-            .offset(y: settled || quiet ? 0 : screen == .full ? -8 : -230)
-            .rotationEffect(.degrees(settled || quiet || screen == .full ? 0 : -18))
-            .opacity(settled || quiet || screen == .full ? 1 : 0)
+            .scaleEffect(pose.scale)
+            .rotationEffect(.radians(pose.rotation))
+            .offset(y: pose.offset)
+            .opacity(settled || quiet ? 1 : 0)
             .animation(quiet ? nil : .spring(response: StarfallTheme.Ceremony.settleDuration, dampingFraction: 0.68)
                 .delay(Double(index) * 0.065), value: settled)
     }
@@ -158,15 +201,21 @@ enum SkyFlowAction { case start, firstLight, begin, resume, replay, another, hom
         VStack(spacing: StarfallTheme.Spacing.small) {
             switch screen {
             case .welcome:
-                if hasSavedSky {
-                    flowButton(lastSkyEnded ? "View last sky" : "Resume sky", action: .resume, id: "sky.resume", primary: true)
+                if welcome.canContinue {
+                    flowButton("Continue sky", action: .resume, id: "sky.resume", primary: true)
                 }
-                flowButton("Start a sky", action: .start, id: "sky.start", primary: !hasSavedSky)
+                flowButton("Start a sky", action: .start, id: "sky.start", primary: !welcome.canContinue)
+                if welcome.hasSavedSky && welcome.ended {
+                    flowButton("View last sky", action: .resume, id: "sky.resume")
+                }
                 flowButton("Try First Light", action: .firstLight, id: "sky.firstLight")
-                Text("Always here. Even offline.")
-                    .font(StarfallTheme.Typography.skyCaption).foregroundStyle(StarfallTheme.Colors.textSecondary)
+                Button { action(.preferences) } label: {
+                    Label("Settings & help", systemImage: "slider.horizontal.3")
+                }
+                .buttonStyle(StarfallButtonStyle(role: .quiet, expands: true))
+                .accessibilityIdentifier("sky.preferences").accessibilityFocused($preferencesFocused)
             case .entry:
-                Text(challenge ? "One small challenge" : "No need to hurry")
+                Text(challenge ? "One small challenge" : "Automatic showers · pause anytime")
                     .font(StarfallTheme.Typography.title).foregroundStyle(StarfallTheme.Ceremony.gold)
                 flowButton("Begin", action: .begin, id: "sky.begin", primary: true)
                 flowButton("Back to Observatory", action: .home, id: "sky.home")
@@ -175,7 +224,7 @@ enum SkyFlowAction { case start, firstLight, begin, resume, replay, another, hom
                     flowButton("Start another sky", action: .another, id: "experiment.new", primary: true)
                     flowButton("Play First Light again", action: .replay, id: "experiment.replay")
                 } else {
-                    flowButton("Try this sky again", action: .replay, id: "experiment.replay", primary: true)
+                    flowButton(challenge ? "Try First Light again" : "Try this sky again", action: .replay, id: "experiment.replay", primary: true)
                     flowButton("Start a fresh sky", action: .another, id: "experiment.new")
                 }
                 flowButton("Back to Observatory", action: .home, id: "sky.home")
@@ -200,17 +249,24 @@ enum SkyFlowAction { case start, firstLight, begin, resume, replay, another, hom
     private func reveal() async {
         if quiet || !active || revealed {
             var transaction = Transaction(); transaction.disablesAnimations = true
-            withTransaction(transaction) { settled = true; controls = true; burst = 1; revealed = true }
+            withTransaction(transaction) { settled = true; controls = true; burst = 1; celebrating = false; revealed = true }
             return
         }
         settled = true
         if terminal { controls = true }
-        if screen == .won { withAnimation(.easeOut(duration: 1.2)) { burst = 1 } }
+        if screen == .won {
+            withAnimation(.easeOut(duration: 1.2)) { burst = 1 }
+        }
         do { try await Task.sleep(for: .seconds(StarfallTheme.Ceremony.actionsDelay)) }
         catch { return }
         guard !Task.isCancelled else { return }
         withAnimation(.easeOut(duration: 0.36)) { controls = true }
         revealed = true
+        if celebrating {
+            do { try await Task.sleep(for: .seconds(1.2 - StarfallTheme.Ceremony.actionsDelay)) }
+            catch { return }
+            celebrating = false
+        }
     }
 }
 
@@ -244,5 +300,38 @@ extension FallingSkyStore {
         }
         #endif
         return FallingSkyStore()
+    }
+}
+
+/// The whole entrance stays inside its decorative region, including spring overshoot.
+/// Positions and poses have one owner; text/actions never need an overflow exception.
+struct SkyCastFormation {
+    struct Star {
+        let kind: Jewel
+        let side: CGFloat
+        let center: CGPoint
+        let terminal: Bool
+        struct Pose { let scale: CGFloat; let rotation: Double; let offset: CGFloat }
+        func pose(progress: CGFloat) -> Pose {
+            let initialScale: CGFloat = terminal ? 0.7 : 0.45
+            return Pose(scale: initialScale + (1 - initialScale) * progress,
+                        rotation: Double(1 - progress) * -.pi / 15,
+                        offset: (terminal ? -8 : -20) * (1 - progress))
+        }
+    }
+    let width: CGFloat
+    let terminal: Bool
+    let welcome: Bool
+    static func height(terminal: Bool) -> CGFloat { terminal ? 110 : 250 }
+    var stars: [Star] {
+        let hero = min(width * 0.4, terminal ? 66 : 132)
+        let mint: CGFloat = terminal ? 42 : 74, rose: CGFloat = terminal ? 44 : 78
+        var values = [
+            Star(kind: .amber, side: hero, center: CGPoint(x: width * 0.5, y: terminal ? 52 : 88), terminal: terminal),
+            Star(kind: .mint, side: mint, center: CGPoint(x: max(width * 0.18, mint / 2 + 16), y: terminal ? 61 : 142), terminal: terminal),
+            Star(kind: .rose, side: rose, center: CGPoint(x: min(width * 0.82, width - rose / 2 - 16), y: terminal ? 56 : 126), terminal: terminal)
+        ]
+        if welcome { values.append(Star(kind: .aqua, side: 72, center: CGPoint(x: width * 0.5, y: 188), terminal: terminal)) }
+        return values
     }
 }
