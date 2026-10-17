@@ -763,3 +763,57 @@ final class SkyFlowInteractionTests: XCTestCase {
     }
 
 }
+
+/// Production forecast layouts: verifies lifecycle and fallback, not physical camera fit.
+final class ShowerForecastInteractionTests: XCTestCase {
+    @MainActor func testIslandTimerMenuBackgroundAndSafeAreaFallback() {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchArguments = ["--starfalls-reset", "--starfalls-seed=5", "-calmEffects", "NO"]
+        app.launch()
+        let start = app.buttons["experiment.pause"]
+        XCTAssertTrue(start.waitForExistence(timeout: 10))
+        start.tap()
+        let cue = app.descendants(matching: .any)["experiment.arrivalCue"].firstMatch
+        XCTAssertTrue(cue.waitForExistence(timeout: 5))
+        let initialY = cue.frame.minY
+        XCTAssertFalse((cue.value as? String ?? "").isEmpty, "The curve names its committed forecast")
+        let isCalibratedIsland = ProcessInfo.processInfo.environment["SIMULATOR_MODEL_IDENTIFIER"] == "iPhone18,3"
+        if isCalibratedIsland {
+            XCTAssertLessThan(initialY, 40, "Calibrated portrait uses the camera margin")
+        } else {
+            XCTAssertEqual(cue.frame.midY, app.buttons["experiment.settings"].frame.midY, accuracy: 1,
+                           "Fallback forecast aligns with the safe-area header, including phones without a cutout")
+        }
+        XCTAssertGreaterThanOrEqual(initialY, 0)
+        let board = app.otherElements["experiment.board"]
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+            board.value as? String != "0 showers, 0 matching groups ready"
+        }, object: nil).wait(timeout: 8))
+        let screenshot = XCTAttachment(screenshot: app.screenshot())
+        screenshot.name = "island-timer-active"; screenshot.lifetime = .keepAlways; add(screenshot)
+        let menu = app.buttons["experiment.settings"]
+        XCTAssertTrue(menu.isHittable); menu.tap()
+        XCTAssertTrue(app.buttons["experiment.done"].waitForExistence(timeout: 5))
+        if isCalibratedIsland {
+            XCTAssertFalse(cue.exists, "Sheet presentation removes the camera decoration")
+        } else {
+            XCTAssertFalse(cue.isHittable, "The retained header forecast stays behind the modal menu")
+        }
+        XCTAssertFalse(app.buttons["experiment.cell.0.0"].exists, "Menu hides gameplay input")
+        app.buttons["experiment.done"].tap()
+        XCTAssertTrue(cue.waitForExistence(timeout: 5))
+        XCUIDevice.shared.press(.home)
+        app.activate()
+        XCTAssertTrue(menu.waitForExistence(timeout: 5))
+        XCTAssertTrue(cue.waitForExistence(timeout: 5))
+        XCTAssertEqual(cue.frame.minY, initialY, accuracy: 1)
+        app.terminate()
+        app.launchArguments = ["--starfalls-reset", "-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"]
+        app.launch()
+        XCTAssertTrue(app.buttons["experiment.pause"].waitForExistence(timeout: 10))
+        XCTAssertTrue(cue.waitForExistence(timeout: 5))
+        XCTAssertEqual(cue.frame.midY, app.buttons["experiment.settings"].frame.midY, accuracy: 1,
+                       "Accessibility text retains the safe-area header forecast")
+    }
+}

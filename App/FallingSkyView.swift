@@ -30,13 +30,18 @@ import StarfallCore
     private var showingCeremony: Bool { flow != .playing || endingReady }
     private var quietMotion: Bool { reduceMotion || calmEffects || voiceOver }
 
+    private func usesIslandTimer(size: CGSize, topInset: CGFloat) -> Bool {
+        SkyShowerPlacement.usesIsland(hardware: SkyShowerPlacement.hardware, size: size,
+                                     topInset: topInset, accessible: largeText || voiceOver)
+    }
+
     var body: some View {
         ZStack {
             GeometryReader { safeViewport in
                 if largeText {
                     ScrollView {
                         VStack(spacing: StarfallTheme.Spacing.small) {
-                            playfield(insets: safeViewport.safeAreaInsets, compact: safeViewport.size.height < 750)
+                            playfield(insets: safeViewport.safeAreaInsets, compact: safeViewport.size.height < 750, island: false)
                                 .frame(height: safeViewport.size.height)
                             if !showingCeremony {
                                 guide(compact: safeViewport.size.height < 750)
@@ -48,7 +53,9 @@ import StarfallCore
                     }
                     .ignoresSafeArea()
                 } else {
-                    playfield(insets: safeViewport.safeAreaInsets, compact: safeViewport.size.height < 750).ignoresSafeArea()
+                    playfield(insets: safeViewport.safeAreaInsets, compact: safeViewport.size.height < 750,
+                              island: usesIslandTimer(size: safeViewport.size, topInset: safeViewport.safeAreaInsets.top))
+                        .ignoresSafeArea()
                 }
             }
             if showingCeremony {
@@ -81,18 +88,24 @@ import StarfallCore
 
     /// The terrace owns its complete canvas. At accessibility sizes the guide is
     /// a sibling below it, so text growth cannot cover projected stars or props.
-    private func playfield(insets: EdgeInsets, compact: Bool) -> some View {
+    private func playfield(insets: EdgeInsets, compact: Bool, island: Bool) -> some View {
         ZStack {
             board
             if !showingCeremony {
                 VStack(spacing: StarfallTheme.Spacing.small) {
-                    compactHeader
+                    compactHeader(island: island)
                     Spacer(minLength: 0)
                     if !largeText { guide(compact: compact) }
                 }
                 .padding(.horizontal, StarfallTheme.Spacing.medium)
                 .padding(.top, insets.top)
                 .padding(.bottom, insets.bottom + StarfallTheme.Spacing.small)
+            }
+        }
+        .overlay(alignment: .top) {
+            if island && !showingCeremony && !settings {
+                showerTrail(island: true)
+                    .allowsHitTesting(false)
             }
         }
         .accessibilityHidden(settings || showingCeremony)
@@ -117,7 +130,7 @@ import StarfallCore
 
     private func updateMotion() { store.setReducedMotion(reduceMotion || calmEffects || voiceOver) }
 
-    private var compactHeader: some View {
+    private func compactHeader(island: Bool) -> some View {
         HStack(spacing: StarfallTheme.Spacing.small) {
             HStack(spacing: StarfallTheme.Spacing.compact) {
                 Image(systemName: "sparkle").foregroundStyle(StarfallTheme.Observatory.lanternGlow).accessibilityHidden(true)
@@ -131,10 +144,7 @@ import StarfallCore
             .shadow(color: StarfallTheme.Colors.skyTop, radius: 3)
             .frame(minHeight: StarfallTheme.Layout.minimumTarget).allowsHitTesting(false)
             Spacer(minLength: 0)
-            SkyShowerTrail(deadline: store.nextShowerDate, interval: store.showerInterval,
-                           paused: store.isPaused || store.suspended || store.game.isOver,
-                           arriving: store.pending?.arrivals.isEmpty == false,
-                           quiet: reduceMotion || calmEffects || voiceOver)
+            if !island { showerTrail(island: false) }
             Spacer(minLength: 0)
             Button { settings = true } label: { SkyMenuGlyph() }
                 .buttonStyle(StarfallGameButtonStyle())
@@ -142,6 +152,13 @@ import StarfallCore
                 .accessibilityLabel("Sky menu").accessibilityHint("Pause, settings and how to play")
                 .accessibilityIdentifier("experiment.settings").accessibilityFocused($menuFocused)
         }
+    }
+
+    private func showerTrail(island: Bool) -> some View {
+        SkyShowerTrail(deadline: store.nextShowerDate, interval: store.showerInterval,
+                       paused: store.isPaused || store.suspended || store.game.isOver,
+                       arriving: store.pending?.arrivals.isEmpty == false,
+                       quiet: quietMotion, island: island, forecast: store.forecast)
     }
 
     /// Menu suspension must be released before applying a player pause choice.

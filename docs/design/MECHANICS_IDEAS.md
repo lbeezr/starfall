@@ -2,6 +2,20 @@
 
 Captured October 17, 2026. These are ideas for exploration, not adopted rules or an implementation plan. The current small-prototype scope remains unchanged; a charge burst or new special star would need a separate experiment decision before implementation.
 
+## Moonbeam charge beneath the camera island
+
+**Proposed — user idea, October 17.** Use the lower camera-contour arc for a moonlight/moonbeam charge; when ready, call down a beam to help clear something difficult. Upper arc remains the incoming-shower forecast. The effect, earning rule and cost are not selected; no ability, meter, saved charge or rule change is implemented.
+
+First question: does removing one chosen blocking star create a useful next decision, or merely postpone the same deadlock? Compare that small rescue with a limited area clear on the same troublesome boards before selecting an effect. Keep it separate from the parked supernova/recoloring trial. A first investigation should preserve the fixed First Light challenge and compare survival boards only.
+
+Resolve before a bounded core trial:
+
+- What earns charge: deliberate clears, collected starlight, or waiting? Prefer investigating earned progress first; verify that it does not reward farming or punish a board with no legal clears. No threshold or regeneration rate is chosen.
+- What can be targeted: an ordinary/grown star, Dusk, or a group? Specify score, gravity, dark-star influence, forecast preservation and terminal-state precedence. Preview the exact effect before committing.
+- Where is activation? The camera is not a touch target. Use a full native safe-area action and accessible board targeting/cancellation. Non-island layouts need an equivalent charge cue and action; never encode readiness only in a tiny arc or its color.
+
+**Decision point:** Select one effect and charging rule after examining fixed hard-to-clear boards, then compare rescue quality, meaningful choices and comprehension against ordinary play. Keep charge deterministic and round-local; adopt only after replay/save, interruption, accessible activation and full-motion checks, or remove the candidate if it adds routine housekeeping. This note authorizes investigation, not a new default power-up.
+
 ## Current dark star: Dusk
 
 The authoritative rules live in `Sources/StarfallCore/FallingSky.swift`:
