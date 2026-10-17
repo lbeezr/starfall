@@ -1,3 +1,17 @@
+/// Announcement cadence is presentation policy, separate from core shower rules.
+/// Keep every count readable on focus, but reserve unsolicited speech for events.
+enum BurstPhaseAnnouncement {
+    static func shouldAnnounce(forecastNumber: Int, isOver: Bool, isChallenge: Bool) -> Bool {
+        guard forecastNumber > 0, !isOver, !isChallenge else { return false }
+        switch StarfallExperiment.showerPhase(for: forecastNumber) {
+        case .preparation(let remaining):
+            return remaining == 1 || (remaining == 9 && forecastNumber > 12)
+        case .pressure(let remaining):
+            return remaining == 3
+        }
+    }
+}
+
 extension StarfallExperimentView {
     // During rain presentation the visible forecast is the committed shower.
     // During clear presentation it remains the next shower. Mirror that owner.
@@ -24,7 +38,11 @@ extension StarfallExperimentView {
             .fixedSize(horizontal: false, vertical: true)
             .accessibilityIdentifier("lab.phase")
             .onChange(of: phaseText) { _, text in
-                if voiceOver { UIAccessibility.post(notification: .announcement, argument: text) }
+                if voiceOver, BurstPhaseAnnouncement.shouldAnnounce(
+                    forecastNumber: phaseForecastNumber, isOver: store.game.isOver,
+                    isChallenge: store.game.challenge != nil) {
+                    UIAccessibility.post(notification: .announcement, argument: text)
+                }
             }
     }
 }

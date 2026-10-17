@@ -1,0 +1,19 @@
+# Phase announcement selection — 2026-10-17
+
+Source finding, not auditory reproduction: the shared phase cue posted UIAccessibility.announcement on every phase-text change while VoiceOver was enabled. Preparation and event countdown text changes every shower, competing in principle with the store's existing arrival feedback. First Light and ended-sky labels could also request a duplicate phase announcement. Reviewed the shared cue, both phase algorithms/HUD export paths, and the store's separate committed-outcome announcement owner.
+
+Acceptance: retain every visible/current accessible count, but request unsolicited phase speech only for the one-shower warning, event entry and recovery. Never request phase speech for First Light or a terminal sky. Preserve core/save/clock behavior, native controls and persistence. Actual speech quality is explicitly outside automated acceptance.
+
+Added a small presentation-only policy in the existing shared view fragment; no core/UI dependency inversion, timer, queue, dependency or new runtime flag. Tests require forecast positions [9, 10, 13, 21, 22, 25] over 1–25 and exactly three requests per complete recurring cycle. Ordinary preparation and intermediate event counts stay readable by focusing the current cue; no unsolicited post is requested for those ticks. Challenge, terminal and nonpositive inputs are rejected, including Int.min before phase arithmetic. The existing onChange still prevents unchanged labels from posting. No English phrase is duplicated in the policy.
+
+Apple checks: Xcode 27.1 (27A9275), iPhone 17e / iOS 27.0 (24A434), Starfall Mechanics Lab A84C81F5-AE41-496A-97AE-E17C63E18D29. Frozen rules/renderer at 30af812; compact view/theme from be4d869. Exact tool/core hashes in source.json. Concurrent production/Observatory edits excluded.
+
+- Compact Surge Debug: 23 passed, no failures/skips (19 store, 2 announcement-policy, 2 native UI). XcodeBuildMCP test_sim, CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES, parallel-testing-enabled NO; only-testing StarfallAppTests/StarfallExperimentStoreTests, StarfallAppTests/BurstPhaseAnnouncementTests, StarfallUITests/CompactBurstPhaseTests. Result test_sim_2026-10-17T15-54-00-201Z_pid40582_3907871d.xcresult.
+- Compact Surge Release simulator build passed; build_sim_2026-10-17T15-55-19-559Z_pid40582_9f4e6072.log.
+- Original Phase Debug: both policy tests passed, no failures/skips. Result test_sim_2026-10-17T15-55-27-520Z_pid40582_81e3a62e.xcresult.
+- Raw Apple artifacts: ~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-27844ad883f3/. Derived data /tmp/starfall-phase-speech and /tmp/starfall-original-phase-speech.
+- Current core swift test: 61 passed, /tmp/starfall-phase-speech-core.log. Hygiene and diff checks passed. Candidate core hash unchanged; no save/RNG migration. System accessibility settings were not changed for this batch.
+
+Native UI checks retain warning/count/recovery, real clearing, largest text, settings dismissal, Home/activate and relaunch. Layout/material/animation code is unchanged; earlier compact-HUD visual/full-motion evidence remains source-bound and was not repeated. Actual VoiceOver listening, focus, interruption/queue ordering, physical devices and human enjoyment remain unverified. Policy tests verify post selection, not audible speech. A focused cue may be spoken independently by the system.
+
+Decision: adopt this limited posting policy within the existing isolated labs; no production phase adoption. Trigger for further work: actual VoiceOver play at warning, entry and recovery. Listen for overlap with the store's arrival feedback and test focus continuity; combine announcements at the responsible feedback boundary if this remains confusing. Do not add delayed announcements or a queue from unit-test counts alone. The unchanged core/save/clock behavior and native tests do not close that auditory acceptance gate.

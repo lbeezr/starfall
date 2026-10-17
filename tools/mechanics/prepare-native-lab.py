@@ -155,6 +155,7 @@ if is_shower or arguments.baseline:
             ("UITests/StarfallExperimentInteractionTests.swift",
              "NativeCompactBurstUITests.swift" if arguments.compact_hud else "NativeBurstUITests.swift"),
             ("AppTests/StarfallExperimentStoreTests.swift", "BurstStoreTests.swift"),
+            ("AppTests/StarfallExperimentStoreTests.swift", "BurstAnnouncementTests.swift"),
         ]:
             with (workspace / destination).open("a") as output:
                 output.write("\n" + phase_fragment(fragment))

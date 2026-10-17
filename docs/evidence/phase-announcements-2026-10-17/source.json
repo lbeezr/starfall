@@ -1,0 +1,82 @@
+{
+  "compactSurge": {
+    "bundle": "com.starfall.surgeshowerslab.compact",
+    "candidate": "dense-burst",
+    "candidateCoreSHA256": "91d5c3968bc4154863339b4535441a8f0956eb4f2795f49c58aab3fa31a28f80",
+    "compactHUDSource": "be4d869089c98674c547f9182631d50bdc777f60",
+    "rendererTestSHA256": {
+      "AppTests/CrystalPilotTests.swift": "b652e4301c77c7821f92d9ecd8916ae94a2dbc1ef65e6a27fbb1add748632efb",
+      "AppTests/StarshardFamilyPilotTests.swift": "7ec10972287190eaa521d9dd031845aa8924b10be7e54b0adeb00b0da5635bbf"
+    },
+    "source": "30af812aa3bf3105a55d8b960288e1d2ac672c2c",
+    "toolSHA256": {
+      "BurstAnnouncementTests.swift": "203c3196c9719247174a5dc62bcec42b324d5cbc76b845e927a3fd54b00eaea3",
+      "BurstStoreTests.swift": "cfaf4b67672a4c1d61c0438da72b15195e0f091894e8ebbbe778644048dd1f03",
+      "NativeBurstUITestSupport.swift": "6f7e6d0b23d8a7d0e83bb9ad0698a9de98b8f034be57fb05acc7894b3a8e5a4f",
+      "NativeBurstUITests.swift": "25e4532c0d00831cfc36125fa9219d8c9a3447112e9f18ec75ed150542de6fa0",
+      "NativeBurstView.swift": "6b48478b26513534604054ba424399a0337fd36b6a3139697f867776235f25e9",
+      "NativeChargeControl.swift": "288cf242d1904fd3b96c03320d5505733fc9116059b562c1aab4c323444934b9",
+      "NativeChargeStore.swift": "4817b7643b70ae39bc9c079223cd89a80355004aa82ba0f720457e066b4120c2",
+      "NativeChargeStoreTests.swift": "de8c1c6deece57a1955899ec8b83ae626e5610667e69f9d625a142754d26a775",
+      "NativeChargeUITests.swift": "04b0b6e503fe98204cd5bcedb0b9caadbeee6036e676d7e9af763850a4a3dc02",
+      "NativeCompactBurstUITests.swift": "a2fef3ee92a9555e90d96b12cdf3ac88330e5fac89cd176468f7aa689936bb4a",
+      "NativePressureUITests.swift": "b601f0900178e9b031597b1130662f585a9ecf4df9357ad0837f45c4dac31a05",
+      "NativeShowerUITests.swift": "9383d61b0f1e5b903740fe9c6d4980a90f0ec8dd374ebdf7d9ab059672cd1de2",
+      "PressureDecisionFixture.swift": "44e73cfbfebcf8bb4dcd04dda347c9b1d4d047dca610b1403426ed503a4872b3",
+      "PressureStoreTests.swift": "21052646f35ffa78234677b68eaa5a1099347d600839f7488e0fed3d22be6db0",
+      "ShowerBurstChecks.swift": "5f6b5f0ce7d5d668ae00e3b43c53220756dbc0724c83a162026d2ab9e8e54203",
+      "ShowerBurstExposure.swift": "0a093539972ee831409b1207d17172dbe79a2c90e149aceeeb09fabfb538bab1",
+      "ShowerBurstPhase.swift": "44678e6db5d914f15b20b8982ef12910ce5dcfee41f9f839dde344fcdda8a843",
+      "ShowerCompatibility.swift": "554df6d352c09ad310e4c99451085b43c3ebd34283104e00db189d5da840de7c",
+      "SupernovaSample.swift": "f9cee1dee8dadf598cde02c5e6c3f3c8a689f7737afaadd382a251ce71514bef",
+      "compare-showers.py": "d134e5a21d2836437ce7bd15b57e6738ed59765ee589f2a2e47018e38655f800",
+      "measure-burst-exposure.py": "72e6988b9d4fd8ab79ce41f650fac86a8dfa20da8ca3e331813334480605965b",
+      "paired-showers-natural.patch": "5762b947cf415f3cafa45eb97b5af1ae3cd8c7da7a7b70e365590b6c6d6de050",
+      "prepare-native-lab.py": "2dff50a75079d3aa54899e83a8333218cc54bdcbd149033d1ff8d40e4ed917af",
+      "run-supernova.py": "f21b24c24b03054ac95c20dc16b119e1edd0c508d5a738dab19b244f5b05f1b8",
+      "shower_candidate.py": "44a3f0ab9de7b5e8e9f22696ed0daf242087518dfe10f1ca96efc6dcb2f8155f",
+      "supernova.patch": "0111f44f0f9d1baf40fcc23a743f1d21e6ef599875cd4ee122824947cc6158d2"
+    },
+    "uniqueIDTestSHA256": "44fa2217feaf3e600a69b8dee29403c930aaf4fdfed41fb9956700964a9167db"
+  },
+  "originalPhase": {
+    "bundle": "com.starfall.burstshowerslab",
+    "candidate": "burst",
+    "candidateCoreSHA256": "f0f69da214eae226345f48d8ea8de44a03af4f0fd9e10eec5eda61de966eb281",
+    "compactHUDSource": null,
+    "rendererTestSHA256": {
+      "AppTests/CrystalPilotTests.swift": "b652e4301c77c7821f92d9ecd8916ae94a2dbc1ef65e6a27fbb1add748632efb",
+      "AppTests/StarshardFamilyPilotTests.swift": "7ec10972287190eaa521d9dd031845aa8924b10be7e54b0adeb00b0da5635bbf"
+    },
+    "source": "30af812aa3bf3105a55d8b960288e1d2ac672c2c",
+    "toolSHA256": {
+      "BurstAnnouncementTests.swift": "203c3196c9719247174a5dc62bcec42b324d5cbc76b845e927a3fd54b00eaea3",
+      "BurstStoreTests.swift": "cfaf4b67672a4c1d61c0438da72b15195e0f091894e8ebbbe778644048dd1f03",
+      "NativeBurstUITestSupport.swift": "6f7e6d0b23d8a7d0e83bb9ad0698a9de98b8f034be57fb05acc7894b3a8e5a4f",
+      "NativeBurstUITests.swift": "25e4532c0d00831cfc36125fa9219d8c9a3447112e9f18ec75ed150542de6fa0",
+      "NativeBurstView.swift": "6b48478b26513534604054ba424399a0337fd36b6a3139697f867776235f25e9",
+      "NativeChargeControl.swift": "288cf242d1904fd3b96c03320d5505733fc9116059b562c1aab4c323444934b9",
+      "NativeChargeStore.swift": "4817b7643b70ae39bc9c079223cd89a80355004aa82ba0f720457e066b4120c2",
+      "NativeChargeStoreTests.swift": "de8c1c6deece57a1955899ec8b83ae626e5610667e69f9d625a142754d26a775",
+      "NativeChargeUITests.swift": "04b0b6e503fe98204cd5bcedb0b9caadbeee6036e676d7e9af763850a4a3dc02",
+      "NativeCompactBurstUITests.swift": "a2fef3ee92a9555e90d96b12cdf3ac88330e5fac89cd176468f7aa689936bb4a",
+      "NativePressureUITests.swift": "b601f0900178e9b031597b1130662f585a9ecf4df9357ad0837f45c4dac31a05",
+      "NativeShowerUITests.swift": "9383d61b0f1e5b903740fe9c6d4980a90f0ec8dd374ebdf7d9ab059672cd1de2",
+      "PressureDecisionFixture.swift": "44e73cfbfebcf8bb4dcd04dda347c9b1d4d047dca610b1403426ed503a4872b3",
+      "PressureStoreTests.swift": "21052646f35ffa78234677b68eaa5a1099347d600839f7488e0fed3d22be6db0",
+      "ShowerBurstChecks.swift": "5f6b5f0ce7d5d668ae00e3b43c53220756dbc0724c83a162026d2ab9e8e54203",
+      "ShowerBurstExposure.swift": "0a093539972ee831409b1207d17172dbe79a2c90e149aceeeb09fabfb538bab1",
+      "ShowerBurstPhase.swift": "44678e6db5d914f15b20b8982ef12910ce5dcfee41f9f839dde344fcdda8a843",
+      "ShowerCompatibility.swift": "554df6d352c09ad310e4c99451085b43c3ebd34283104e00db189d5da840de7c",
+      "SupernovaSample.swift": "f9cee1dee8dadf598cde02c5e6c3f3c8a689f7737afaadd382a251ce71514bef",
+      "compare-showers.py": "d134e5a21d2836437ce7bd15b57e6738ed59765ee589f2a2e47018e38655f800",
+      "measure-burst-exposure.py": "72e6988b9d4fd8ab79ce41f650fac86a8dfa20da8ca3e331813334480605965b",
+      "paired-showers-natural.patch": "5762b947cf415f3cafa45eb97b5af1ae3cd8c7da7a7b70e365590b6c6d6de050",
+      "prepare-native-lab.py": "2dff50a75079d3aa54899e83a8333218cc54bdcbd149033d1ff8d40e4ed917af",
+      "run-supernova.py": "f21b24c24b03054ac95c20dc16b119e1edd0c508d5a738dab19b244f5b05f1b8",
+      "shower_candidate.py": "44a3f0ab9de7b5e8e9f22696ed0daf242087518dfe10f1ca96efc6dcb2f8155f",
+      "supernova.patch": "0111f44f0f9d1baf40fcc23a743f1d21e6ef599875cd4ee122824947cc6158d2"
+    },
+    "uniqueIDTestSHA256": "44fa2217feaf3e600a69b8dee29403c930aaf4fdfed41fb9956700964a9167db"
+  }
+}
