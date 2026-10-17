@@ -60,7 +60,7 @@ class DeviceUpdateTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as folder:
             state = Path(folder); source = state / 'fixture'; (source / 'App').mkdir(parents=True)
             (source / 'App/main.swift').write_text('runtime')
-            fingerprint = build_id(source); commands = []; attempts = []
+            fingerprint = build_id(source); commands = []; attempts = []; revision = ['abc']
             app = state / 'DerivedData/Build/Products/Debug-iphoneos/Starfall.app'
             def archive(args, **kwargs):
                 self.assertEqual(args[0], 'git')
@@ -71,7 +71,7 @@ class DeviceUpdateTests(unittest.TestCase):
                 if args[:2] == ['git', 'clone']:
                     (state / 'repository.git').mkdir()
                 elif args[:2] == ['git', 'rev-parse']:
-                    return 'abc'
+                    return revision[0]
                 elif args[0] == 'tar':
                     subprocess.check_call(args)
                 elif args[0] == 'xcodebuild':
@@ -90,6 +90,10 @@ class DeviceUpdateTests(unittest.TestCase):
                     self.assertFalse((state / 'installed.json').exists())
                 self.assertIn('Installed', updater.update(config, state))
                 self.assertIn('Up to date', updater.update(config, state))
+                revision[0] = 'docs-only'
+                self.assertIn('Up to date', updater.update(config, state))
+                self.assertEqual(json.loads((state / 'installed.json').read_text())['source'], 'abc')
+                self.assertEqual(json.loads((state / 'installed.json').read_text())['checkedSource'], 'docs-only')
             self.assertEqual(sum(c[0] == 'xcodebuild' for c in commands), 1)
             self.assertEqual(json.loads((state / 'installed.json').read_text())['buildID'], fingerprint)
             self.assertTrue(all(updater.BUNDLE not in ' '.join(c) or 'uninstall' not in c for c in commands))

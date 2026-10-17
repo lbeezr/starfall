@@ -65,7 +65,7 @@ def update(config, state):
     run(['git', 'fetch', '--no-tags', 'origin', 'refs/heads/main'], cwd=mirror, output=state / 'fetch.log')
     revision = run(['git', 'rev-parse', 'FETCH_HEAD'], cwd=mirror)
     installed = json.loads((state / 'installed.json').read_text()) if (state / 'installed.json').exists() else {}
-    if installed.get('source') == revision:
+    if revision in (installed.get('source'), installed.get('checkedSource')):
         return 'Up to date: ' + installed['buildID']
     target = state / 'source'
     # An archive cannot include uncommitted developer files or alter their checkout.
@@ -79,7 +79,7 @@ def update(config, state):
     run(['tar', '-xf', str(archive), '-C', str(staging)])
     fingerprint = build_id(staging)
     if installed.get('buildID') == fingerprint:
-        installed['source'] = revision
+        installed['checkedSource'] = revision
         atomic_json(state / 'installed.json', installed)
         shutil.rmtree(staging)
         return 'Up to date: ' + fingerprint

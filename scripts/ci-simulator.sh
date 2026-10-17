@@ -68,25 +68,11 @@ swift test 2>&1 | tee artifacts/core-tests.log
 
 # Keep native coverage tied to the checked-in XCTest methods. A newly added
 # source file missing from its Xcode target must fail this gate, not go unnoticed.
-python3 - <<'PY'
-from pathlib import Path
-import json, re
-method = re.compile(r'^\s*(?:@\w+(?:\([^)]*\))?\s+)*func\s+(test\w+)\s*\(\s*\)', re.MULTILINE)
-expectations = {}
-for target, directory in [('StarfallUITests', 'UITests'), ('StarfallAppTests', 'AppTests')]:
-    sources = {}
-    for path in sorted(Path(directory).rglob('*.swift')):
-        names = method.findall(path.read_text())
-        if names:
-            sources[str(path)] = names
-    count = sum(map(len, sources.values()))
-    if not count:
-        raise SystemExit(f'No XCTest methods found for {target}; refusing an empty coverage gate.')
-    expectations[target] = {'expectedCount': count, 'testMethodsBySource': sources}
-Path('artifacts/native-test-expectations.json').write_text(json.dumps(expectations, indent=2) + '\n')
-print('Expected native tests: ' + ', '.join(f'{target}={value["expectedCount"]}'
-                                         for target, value in expectations.items()))
-PY
+python3 scripts/native_test_plan.py --stage "${STARFALL_ACCEPTANCE_STAGE:-dev}"
+UI_MATRIX_ARGUMENTS=()
+while IFS= read -r identifier; do
+  [[ -z "$identifier" ]] || UI_MATRIX_ARGUMENTS+=("-skip-testing:$identifier")
+done < artifacts/native-test-exclusions.txt
 
 # One already-installed, available iPhone; prefer newest iOS runtime.
 xcrun simctl list devices available --json > "$RUNNER_TEMP/starfall-devices.json"
@@ -238,7 +224,7 @@ xcodebuild -project Starfall.xcodeproj -scheme Starfall \
   -configuration Debug -sdk iphonesimulator \
   -destination "platform=iOS Simulator,arch=arm64,id=$SIMULATOR_ID" \
   -derivedDataPath "$RUNNER_TEMP/starfall-derived" \
-  -only-testing:StarfallUITests \
+  -only-testing:StarfallUITests "${UI_MATRIX_ARGUMENTS[@]}" \
   -parallel-testing-enabled NO -maximum-concurrent-test-simulator-destinations 1 \
   -test-timeouts-enabled YES -default-test-execution-time-allowance 90 \
   -maximum-test-execution-time-allowance 240 \
