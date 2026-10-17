@@ -2,6 +2,8 @@
 
 A small native iOS falling-sky puzzle. Start the sky, then clear connected matching jewels worth at least 3 starlight while new stars arrive. Large jewels count as 2. Dark stars block nearby growth; clear beside one to dissolve it. New skies offer a match in the first shower. Matching colors travel together, and dry boards receive a matching run in a later preview when a low column has room. Call the next shower yourself, or clear while paused. Tune shower pace and dark-star frequency in Settings, and replay or start a new sky when the board fills. Falling sky is the default in Debug and Release; progress stays on this device.
 
+The current [roadmap](docs/ROADMAP.md) and [falling-sky playtest](docs/PLAYTEST-FALLING-SKY.md) track the next gameplay and device-validation work.
+
 ## Open and run
 
 Requires Xcode 16+ with an iOS 17+ simulator runtime. Open `Starfall.xcodeproj`, select shared scheme **Starfall** and an installed iPhone simulator, then Run. Simulator builds do not require paid Apple enrollment or a signing team. Device distribution/signing is not configured. This remains a prototype; App Store distribution and submission metadata require their own release work.

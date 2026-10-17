@@ -1,5 +1,7 @@
 # Round balance diagnostic and five-minute playtest
 
+> Historical original-puzzle material. For the current default game, start with [the falling-sky roadmap](ROADMAP.md), [comparison playtest](PLAYTEST-FALLING-SKY.md), and [pacing evidence](evidence/falling-sky-pacing-2026-10-16/README.md). Earlier passes do not automatically validate falling sky.
+
 ## Decision this supports
 
 Keep the provisional **70 jewels / 18 valid moves** unchanged until human play is observed. The deterministic sample shows a useful difference between two simple strategies, but does not establish that the game is fun, relaxing, fair, solvable on every seed, commercially viable, or likely to retain players. No rules or tuning were changed for this diagnostic.
