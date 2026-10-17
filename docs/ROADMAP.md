@@ -42,6 +42,8 @@ Ongoing experiment sequence:
 
 ## 2. Polish physical feel — next
 
+Visual acceptance of the cast remains open. The [luminous revision](evidence/star-cast-luminous-2026-10-17/README.md) responds to feedback on eyes and emitted-light appearance; the first integration did not establish final art approval.
+
 - Review comet speed, landing/growth emphasis, clear readability and input response on a real iPhone.
 - Tune optional sound/haptics for comfort, silent mode and interruptions; keep defaults off and mute immediate.
 - Profile repeated rounds for frame pacing, memory growth and leftover effect nodes before optimizing.

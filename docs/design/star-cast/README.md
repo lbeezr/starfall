@@ -4,10 +4,10 @@ The approved [concept sheet](approved-concept.png) is reference artwork, generat
 
 | Saved kind | Character | Recognition and temperament |
 | --- | --- | --- |
-| aqua | Spark | Tall four-point silhouette; curious upward glance |
+| aqua | Spark | Tall four-point silhouette; curious open eyes |
 | amber | Sunny | Balanced five-point star; open, friendly face |
-| mint | Pip | Compact six-point star; raised eyebrow and sideways glance |
-| rose | Twinkle | Eight alternating rays; quiet half-lidded expression |
+| mint | Pip | Compact six-point star; raised eyebrow and open eyes |
+| rose | Twinkle | Eight alternating rays; quiet, shorter oval eyes |
 | violet | Nova | Wide four-point silhouette; sleepy face |
 | nil/dark | Dusk | Concave five-point star, light lilac keyline and dark interior; gently mischievous |
 
@@ -28,3 +28,7 @@ Names and varied point counts are presentation only. Jewel raw values, determini
 Build shared scheme Starfall normally in Debug or Release. Default entry uses the cast; no permanent pilot flag is needed. Run `swift test` separately, then hosted `StarCastTests`, affected app/store tests and `StarfallExperimentInteractionTests`. `testCastReviewSheetAtBoardAndHeroSizes` attaches a contact sheet generated from the actual runtime renderer, including 24/36/44-point canvases. No separate source PNG atlas needs manual synchronization. The source itself is the canonical editable asset; exported PNGs/contact sheets are review artifacts.
 
 [Native evidence](../../evidence/star-cast-2026-10-17/README.md) separates clean-candidate tests, inspected imagery and full-animation recording from remaining device/VoiceOver acceptance. This handoff is for the production game renderer, not an assertion that the entire app is App Store ready.
+
+## Luminous revision — October 17
+
+User feedback reopened visual acceptance: the first runtime eyes and solid-token treatment did not meet the desired quality. The revised candidate uses single dark oval eyes with one catchlight, shorter relaxed eyes for quieter characters, a broad inner light, pale contour and a soft baked halo. Dusk retains a dark body and restrained rim. No new particles, texture slots or animation work are introduced. The halo is clipped inside the existing transparent padding; silhouette geometry, board sizing and expression pivots remain unchanged. See the [revision evidence](../../evidence/star-cast-luminous-2026-10-17/README.md). This is a reviewable visual iteration, not a claim of final art approval.

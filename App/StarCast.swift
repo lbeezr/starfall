@@ -144,23 +144,36 @@ import StarfallCore
     private static func render(_ character: Character, dark: Bool, expression: Expression, in ctx: CGContext) {
         let shape = outline(character)
         ctx.setLineJoin(.round); ctx.setLineCap(.round)
-        // The light outer keyline preserves dark-star readability without a glow emitter.
-        ctx.addPath(shape); ctx.setStrokeColor((dark ? character.highlight : character.shadow).cgColor)
-        ctx.setLineWidth(11); ctx.strokePath()
+        // Bake a bounded halo into the shared material; no emitters or per-frame work.
+        ctx.saveGState()
+        ctx.clip(to: CGRect(x: 18, y: 18, width: 220, height: 220))
+        ctx.setShadow(offset: .zero, blur: dark ? 8 : 15,
+                      color: character.highlight.withAlphaComponent(dark ? 0.30 : 0.72).cgColor)
+        ctx.addPath(shape); ctx.setFillColor(character.color.cgColor); ctx.fillPath()
+        ctx.restoreGState()
+        // A pale rim lets the body read as emitted light rather than a dark-edged token.
+        ctx.addPath(shape); ctx.setStrokeColor(character.highlight.withAlphaComponent(dark ? 0.65 : 0.90).cgColor)
+        ctx.setLineWidth(7); ctx.strokePath()
         ctx.addPath(shape); ctx.setFillColor(character.color.cgColor); ctx.fillPath()
         ctx.saveGState(); ctx.addPath(shape); ctx.clip()
         let colors = [character.highlight.cgColor, character.color.cgColor, character.shadow.cgColor] as CFArray
         if let gradient = CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: colors, locations: [0, 0.55, 1]) {
             ctx.drawLinearGradient(gradient, start: CGPoint(x: 80, y: 38), end: CGPoint(x: 170, y: 223), options: [])
         }
-        // A single paper-like highlight and lower shadow; no jewel facets or speckles.
-        let light = CGMutablePath()
-        light.move(to: CGPoint(x: 20, y: 42)); light.addLine(to: CGPoint(x: 157, y: 35))
-        light.addQuadCurve(to: CGPoint(x: 30, y: 173), control: CGPoint(x: 105, y: 112)); light.closeSubpath()
-        ctx.addPath(light); ctx.setFillColor(UIColor.white.withAlphaComponent(dark ? 0.04 : 0.13).cgColor); ctx.fillPath()
+        // A broad inner light keeps the body luminous at board scale without facets.
+        if !dark, let light = CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(),
+            colors: [UIColor.white.withAlphaComponent(0.70).cgColor,
+                     character.highlight.withAlphaComponent(0.18).cgColor,
+                     UIColor.white.withAlphaComponent(0).cgColor] as CFArray,
+            locations: [0, 0.52, 1]) {
+            ctx.drawRadialGradient(light, startCenter: CGPoint(x: 118, y: 98), startRadius: 0,
+                                   endCenter: CGPoint(x: 128, y: 119), endRadius: 100,
+                                   options: [.drawsAfterEndLocation])
+        }
         ctx.restoreGState()
-        ctx.addPath(shape); ctx.setStrokeColor((dark ? UIColor(red: 0.69, green: 0.60, blue: 0.89, alpha: 1) : ink).cgColor)
-        ctx.setLineWidth(5); ctx.strokePath()
+        ctx.addPath(shape)
+        ctx.setStrokeColor(character.highlight.withAlphaComponent(dark ? 0.9 : 0.95).cgColor)
+        ctx.setLineWidth(2.5); ctx.strokePath()
         drawFace(character, dark: dark, expression: expression, in: ctx)
     }
 
@@ -177,20 +190,14 @@ import StarfallCore
                 eye.addQuadCurve(to: CGPoint(x: x + 8, y: 127), control: CGPoint(x: x, y: 108))
                 stroke(eye, color: faceInk, width: 6)
             } else {
-                let height: CGFloat = expression == .landing ? 27 : sleepy ? 16 : 29
-                let eye = CGRect(x: x - 8, y: 120 - height / 2, width: 16, height: height)
-                ctx.setFillColor((dark ? faceInk : UIColor(red: 1, green: 0.98, blue: 0.89, alpha: 1)).cgColor)
+                // One clear oval per eye, with one catchlight: no tiny sclera/pupil rings.
+                let height: CGFloat = expression == .landing ? 30 : sleepy ? 21 : 28
+                let width: CGFloat = sleepy ? 13 : 14
+                let eye = CGRect(x: x - width / 2, y: 119 - height / 2, width: width, height: height)
+                ctx.setFillColor(faceInk.cgColor)
                 ctx.fillEllipse(in: eye)
-                let glance: CGFloat = character.name == "Pip" ? -2 : character.name == "Spark" ? 2 : 0
-                ctx.setFillColor(ink.cgColor)
-                ctx.fillEllipse(in: CGRect(x: x - 4 + glance, y: eye.minY + 3, width: 9, height: height - 4))
-                ctx.setFillColor(UIColor.white.cgColor)
-                ctx.fillEllipse(in: CGRect(x: x - 2 + glance, y: eye.minY + 4, width: 3.5, height: 5))
-                if sleepy && expression != .landing {
-                    let lid = CGMutablePath(); lid.move(to: CGPoint(x: x - 9, y: eye.minY))
-                    lid.addLine(to: CGPoint(x: x + 9, y: eye.minY + (dark ? -2 : 2)))
-                    stroke(lid, color: faceInk, width: 4)
-                }
+                ctx.setFillColor((dark ? character.shadow : UIColor.white).withAlphaComponent(0.95).cgColor)
+                ctx.fillEllipse(in: CGRect(x: eye.minX + 3, y: eye.minY + 3, width: 4, height: 6))
             }
         }
         // Raised eyebrow is Pip's quiet mischief; no idle action is required.

@@ -45,3 +45,7 @@ These are observed risks, not completed fixes. The next change touching each bou
 ## References behind the conventions
 
 [Swift concurrency documentation](https://docs.swift.org/latest/documentation/the-swift-programming-language/concurrency/) explains actor isolation and sendable values. [MainActor](https://developer.apple.com/documentation/swift/mainactor) is the app's existing UI-state isolation boundary. [SpriteKit scene updates](https://developer.apple.com/documentation/spritekit/skscene/update(_:)) are per-frame callbacks; keeping expensive asset work and broad state invalidation out of them is this project's engineering policy. These references do not require a Swift 6 migration or moving the small deterministic rules onto background tasks.
+
+### Largest-text viewport review
+
+The luminous-cast native UI run on iPhone 17e/iOS 27 passed existing assertions, but its largest-text capture shows oversized controls/instructions occupying the viewport and the header outside the visible area. Layout code was unchanged. Trigger: next falling-sky layout/accessibility work. Review actual scroll/reflow, board access, pause/manual shower and header reachability at accessibility XXXL; retain screenshots and native interaction evidence rather than relying on hittability alone. See [capture and scope](evidence/star-cast-luminous-2026-10-17/README.md).
