@@ -5,6 +5,38 @@ import StarfallCore
 @testable import Starfall
 
 final class StarCastTests: XCTestCase {
+    @MainActor func testCrystalBodiesArePackagedAndContactShadowsStaySeparate() throws {
+        let kinds = Jewel.allCases.map(Optional.some) + [nil]
+        for kind in kinds {
+            let name = StarCast.character(for: kind).name
+            let body = try XCTUnwrap(UIImage(named: "StarCast" + name), "Missing bundled body for \(name)")
+            XCTAssertEqual(body.size, CGSize(width: 256, height: 256))
+            XCTAssertNotEqual(try XCTUnwrap(body.cgImage).alphaInfo, CGImageAlphaInfo.none)
+            let offset = StarCast.groundOffset(for: kind, radius: 20)
+            XCTAssertGreaterThan(offset, 10)
+            XCTAssertLessThanOrEqual(offset, 20)
+            XCTAssertEqual(StarCast.groundOffset(for: kind, radius: 30), offset * 1.5, accuracy: 0.01)
+        }
+        XCTAssertLessThan(StarCast.groundOffset(for: .violet, radius: 20),
+                          StarCast.groundOffset(for: .aqua, radius: 20))
+        var game = FallingSky(seed: 5)
+        for _ in 0..<4 { _ = game.letStarsFall() }
+        let scene = FallingSkyScene(size: CGSize(width: 350, height: 560))
+        for _ in 0..<3 {
+            scene.render(game)
+            let roots = scene.children[0].children.filter { $0.name?.hasPrefix("sky.ground.") == true }
+            XCTAssertEqual(roots.count, game.occupiedCount)
+            for root in roots {
+                let contact = try XCTUnwrap(root.childNode(withName: "sky.shadow.contact") as? SKShapeNode)
+                let soft = try XCTUnwrap(root.childNode(withName: "sky.shadow.soft") as? SKShapeNode)
+                XCTAssertGreaterThan(contact.fillColor.cgColor.alpha, soft.fillColor.cgColor.alpha)
+                XCTAssertLessThan(contact.frame.width, soft.frame.width)
+                XCTAssertFalse(root.hasActions())
+                XCTAssertEqual(root.children.count, 2)
+            }
+        }
+    }
+
     @MainActor func testContactFlightReachesReceiverAndCommittedDestination() {
         let flight = StarfallMotion.Flight(start: CGPoint(x: 20, y: 400),
             destination: CGPoint(x: 100, y: 40), contact: CGPoint(x: 80, y: 65), step: 45)
@@ -63,8 +95,9 @@ final class StarCastTests: XCTestCase {
                 XCTAssertEqual(root.xScale, 1); XCTAssertEqual(root.yScale, 1)
                 let index = try XCTUnwrap(game.board.firstIndex { $0?.id == root.gem.id })
                 XCTAssertEqual(root.gem, game.board[index])
-                XCTAssertEqual(root.position.x, scene.size.width/2 + (CGFloat(index%7)-3)*scene.size.width/7.7, accuracy: 0.01)
-                XCTAssertEqual(root.position.y, scene.size.height/2 + (CGFloat(index/7)-3)*scene.size.height/7.7, accuracy: 0.01)
+                let expected = ObservatoryGeometry(size: scene.size).scenePoint(Cell(index/7, index%7))
+                XCTAssertEqual(root.position.x, expected.x, accuracy: 0.01)
+                XCTAssertEqual(root.position.y, expected.y, accuracy: 0.01)
                 XCTAssertEqual(root.zRotation, 0)
             }
         }
@@ -221,7 +254,7 @@ final class StarCastTests: XCTestCase {
         var complete = false
         scene.animate(turn, from: old, to: game) { complete = true }
         var observedRebound = false
-        let restingY = scene.size.height / 2 - 3 * scene.size.height / 7.7
+        let restingY = ObservatoryGeometry(size: scene.size).scenePoint(Cell(0,0)).y
         // Sample throughout flight, landing, expression swap and settlement, not just the final frame.
         for _ in 0..<70 {
             try? await Task.sleep(for: .milliseconds(20))

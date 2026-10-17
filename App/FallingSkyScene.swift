@@ -10,14 +10,14 @@ import StarfallCore
     private var cellsByID: [Int: Cell] = [:]
     private var rendered: FallingSky?
     private let pieces = SKNode(), effects = SKNode(), grid = SKNode()
-    private var step: CGFloat { size.width / 7.7 }
+    private var step: CGFloat { ObservatoryGeometry(size: size).imageRect.width / 7.7 }
 
     override init(size: CGSize) {
         super.init(size: size)
         StarCast.prewarm()
         scaleMode = .resizeFill; backgroundColor = .clear
         addChild(grid); addChild(pieces); addChild(effects)
-        effects.zPosition = 5
+        effects.zPosition = 20
     }
     override convenience init() { self.init(size: CGSize(width: 350, height: 350)) }
     required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -29,8 +29,7 @@ import StarfallCore
     override func willMove(from view: SKView) { onLayout?() }
 
     private func point(_ cell: Cell) -> CGPoint {
-        CGPoint(x: size.width/2 + (CGFloat(cell.column)-3)*step,
-                y: size.height/2 + (CGFloat(cell.row)-3)*size.height/7.7)
+        ObservatoryGeometry(size: size).scenePoint(cell)
     }
 
     private func makeNode(_ gem: StarfallGem) -> FallingSkyCharacter {
@@ -38,12 +37,24 @@ import StarfallCore
     }
 
     private func ground(_ gem: StarfallGem, at cell: Cell) {
-        let shadow = SKShapeNode(ellipseOf: CGSize(width: step * 0.61, height: step * 0.12))
-        shadow.name = "sky.ground.\(gem.id)"
-        shadow.position = CGPoint(x: point(cell).x, y: point(cell).y - step * 0.32)
-        shadow.fillColor = .black.withAlphaComponent(0.18)
-        shadow.strokeColor = .clear
-        grid.addChild(shadow)
+        let root = SKNode()
+        root.name = "sky.ground.\(gem.id)"
+        root.position = CGPoint(x: point(cell).x, y: point(cell).y - groundOffset(gem))
+        // A contact core stays dark under the crystal; the wider pool separates it from the floor.
+        for contact in [false, true] {
+            let shadow = SKShapeNode(ellipseOf: CGSize(width: step * (contact ? 0.24 : 0.61),
+                                                       height: step * (contact ? 0.055 : 0.12)))
+            shadow.name = contact ? "sky.shadow.contact" : "sky.shadow.soft"
+            shadow.fillColor = contact ? StarfallTheme.Observatory.contactShadow : StarfallTheme.Observatory.softContactShadow
+            shadow.strokeColor = .clear
+            shadow.position.x = contact ? 0 : step * 0.045
+            root.addChild(shadow)
+        }
+        grid.addChild(root)
+    }
+
+    private func groundOffset(_ gem: StarfallGem) -> CGFloat {
+        StarCast.groundOffset(for: gem.kind, radius: step * (gem.grown ? 0.43 : 0.35))
     }
 
     private func light(at anchor: CGPoint, color: UIColor, strength: CGFloat) {
@@ -52,7 +63,7 @@ import StarfallCore
             let pool = SKShapeNode(ellipseOf: CGSize(width: step * (index == 0 ? 0.95 : 0.48),
                                                      height: step * (index == 0 ? 0.22 : 0.10)))
             pool.name = "sky.surface-light"
-            pool.position = CGPoint(x: anchor.x, y: anchor.y - step * 0.32)
+            pool.position = CGPoint(x: anchor.x, y: anchor.y - step * 0.31)
             pool.fillColor = color.withAlphaComponent((index == 0 ? 0.16 : 0.24) * strength)
             pool.strokeColor = .clear; pool.glowWidth = index == 0 ? 4 : 1
             pool.blendMode = .add; pool.zPosition = -effects.zPosition - 1
@@ -86,6 +97,7 @@ import StarfallCore
             if let gem = game.gem(at: cell) {
                 ground(gem, at: cell)
                 let node = makeNode(gem); node.position = point(cell)
+                node.zPosition = CGFloat(7-cell.row)
                 if game.isGrowthBlocked(at: cell) { shade(node, at: cell) }
                 pieces.addChild(node); nodes[gem.id] = node; cellsByID[gem.id] = cell
 
@@ -142,7 +154,7 @@ import StarfallCore
                 node.run(.sequence([.wait(forDuration: StarfallMotion.gravityStart), move]))
                 if let shadow = grid.childNode(withName: "sky.ground.\(gem.id)") {
                     let destination = point(Cell(index/7, index%7))
-                    let moveShadow = SKAction.move(to: CGPoint(x: destination.x, y: destination.y - step * 0.32), duration: 0.20)
+                    let moveShadow = SKAction.move(to: CGPoint(x: destination.x, y: destination.y - groundOffset(gem)), duration: 0.20)
                     moveShadow.timingMode = .easeInEaseOut
                     shadow.run(.sequence([.wait(forDuration: StarfallMotion.gravityStart), moveShadow]))
                 }
@@ -294,6 +306,7 @@ import StarfallCore
         }]))
         let destination = point(arrival.cell)
         node.position = destination
+        node.zPosition = CGFloat(7-arrival.cell.row)
         if existing == nil { pieces.addChild(node) }
         nodes[arrival.gem.id] = node; cellsByID[arrival.gem.id] = arrival.cell
         grid.childNode(withName: "sky.ground.\(arrival.gem.id)")?.removeFromParent()

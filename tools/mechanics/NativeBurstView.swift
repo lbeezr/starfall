@@ -25,7 +25,7 @@ extension StarfallExperimentView {
         switch StarfallExperiment.showerPhase(for: phaseForecastNumber) {
         case .preparation(let remaining):
             if remaining == 1 { return "__BURST_WARNING__" }
-            if remaining == 9 && phaseForecastNumber > 12 { return "Recovery · 9 calmer showers" }
+            if phaseForecastNumber > 12 { return "Recovery · \(remaining) calmer showers" }
             return "Prepare · \(remaining) calmer showers"
         case .pressure(let remaining):
             return "__BURST_COUNT__"

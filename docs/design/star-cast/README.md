@@ -1,48 +1,38 @@
 # Starfall cast — production rendering contract
 
-The approved [concept sheet](approved-concept.png) is reference artwork, generated with the built-in OpenAI image tool in this chat and approved by the user. It is not a sprite atlas. Runtime artwork is newly authored in [StarCast.swift](../../../App/StarCast.swift): editable star contours, color/shading, eyes, mouths and expressions. No downloaded character art, font artwork, paid asset, external SDK, or runtime image-generation service is used. The direction draws on the user's preference for readable, expressive paper-like stars; these are original designs rather than reproductions of another game's characters.
+**Direction approved:** Crystal Glow, October 17, 2026. The user approved the [six character masters](crystal-glow/characters/README.md) and requested integration. Native acceptance is recorded separately in the [integration evidence](../../evidence/crystal-glow-integration-2026-10-17/README.md).
+
+The production renderer combines six packaged transparent crystal body cutouts with authored expressive faces. [StarCast.swift](../../../App/StarCast.swift) remains the shared owner for board, falling stars, HUD and previews. The [body production plate, exact prompt and packaging receipts](../../../Artwork/StarCast/README.md) make the raster inputs reproducible. Model/expression sheets are design masters, not loaded sprite atlases. No paid asset, external SDK or runtime image generation is used.
 
 | Saved kind | Character | Recognition and temperament |
 | --- | --- | --- |
-| aqua | Spark | Tall four-point silhouette; curious open eyes |
-| amber | Sunny | Balanced five-point star; open, friendly face |
-| mint | Pip | Compact six-point star; raised eyebrow and open eyes |
-| rose | Twinkle | Eight alternating rays; quiet, shorter oval eyes |
-| violet | Nova | Wide four-point silhouette; sleepy face |
-| nil/dark | Dusk | Concave five-point star, light lilac keyline and dark interior; gently mischievous |
+| aqua | Spark | Tall four-point aqua crystal; curious open eyes |
+| amber | Sunny | Balanced five-point amber crystal; friendly face |
+| mint | Pip | Compact six-point mint crystal; raised eyebrow |
+| rose | Twinkle | Eight alternating rose rays; gentle brow |
+| violet | Nova | Wide four-point violet crystal; sleepy eyelids |
+| nil/dark | Dusk | Concave five-point dark crystal, lilac rim; mischievous brow |
 
-Names and varied point counts are presentation only. Jewel raw values, deterministic shower/clear rules, scores, challenges and saves are unchanged. Point count does not indicate value: normal stars are worth 1 and grown stars 2; dark stars remain worth 0. VoiceOver labels include color, silhouette and name, plus existing position/value/growth-block information. Color alone is unnecessary for distinguishing normal families; the two four-point families have different proportions.
+Names and point counts are presentation cues. Normal stars remain worth 1, grown stars 2 and dark stars 0. Core rules, RNG, saves and the growth-size cue are unchanged. Existing VoiceOver descriptions retain color, shape, name, position and value. Dusk's grown expression is a reusable material slot, not a new rule.
 
-## See the cast
+## Body, face and shadow ownership
 
-<img src="../../evidence/star-cast-motion-2026-10-17/material-review.png" width="640" alt="Native exported cast review showing the six star families at several presentation sizes">
+The offline packaging tool splits the transparent plate, keeps each body's largest connected alpha island, normalizes coverage and fits its existing proportions into a centered 256×256 canvas. Body extent is at most 208 pixels, inside the existing 212-pixel display-size contract. It removes stray disconnected glints rather than carrying neighboring cutout fragments into the game. No labels or ground shadows are packaged.
 
-**Native motion-candidate export, October 17:** [source and verification](../../evidence/star-cast-motion-2026-10-17/README.md). This is a renderer review artifact, not proof of animation or final art acceptance. The [illustrated cast table](../VISUAL_REFERENCE.md#meet-the-cast) pairs each character with its exported motion sheet.
+Each family has four expression slots (idle, landing, grown, clearing) and three facings (front, left, right). Large navy eyes have blue lower gradients, pupils and catchlights. Nova and Dusk retain distinct idle eyelids; eyebrows distinguish Pip and Twinkle. Landing is surprised, grown is open-eyed happy, clearing uses closed happy eyes. Source-atop composition changes color without changing body alpha, including translucent edge coverage.
 
-## Materials and animation
+Partial turns remain shallow 2D presentation: horizontal compression and face offset around a stable 128/128 pivot. They are not a full 3D mesh, profile or rear rotation. Construction views and motion poses in the approved masters guide production; unsupported views are not added speculatively. Existing flight, squash/stretch, rebound, neighbor reactions, growth and clearing timing remain owned by the scene.
 
-- All poses use the same centered 256×256 transparent canvas with a 128/128 pivot. Rounded contour corners retain the authored points. Rendering has transparent padding, and front-facing expressions never change the alpha silhouette; authored left/right views narrow the contour around the same pivot.
-- Four expression slots: idle (family personality), landing (surprised), grown and clearing (happy). Grown has an open-eyed smile; clearing has closed happy eyes. Grown stars also remain visibly larger; expression alone does not carry value.
-- Existing comet timing, gravity, landing bounce, growth ring and clear effects remain. Comets now carry the actual star face/shape. Sparse staggered idle turns use one owned repeating action per occupied star; rebuilding the scene removes old nodes/actions. No rules are driven by animation.
-- A single main-actor material owner rasterizes each family/expression once and caches successes. Six families × four expressions × three facings = at most 72 UIImage/SKTexture pairs. Each base RGBA8 raster is 256×256: 18,874,368 bytes across all 72 source images. This is not a total-process/GPU-memory claim; texture copies, image backing and framework overhead are separate.
-- Prewarming happens on scene construction before the first shower. No file IO, texture regeneration or artwork drawing occurs per frame. Board, comets and native preview consume this same factory. Classic Debug puzzle rendering keeps its existing crystal artwork and fallback; the falling-sky renderer no longer requests those jewel materials.
-- Expression changes go through `StarCast.setExpression`, which preserves size and pivot. Native recording found a brief intrinsic-size jump when using a SpriteKit texture action; both landing and clear now use the shared geometry-preserving boundary. An animated hosted test samples sprite bounds throughout flight, face swap and settlement, alongside every-family/pose geometry checks.
-- Calm effects, system Reduce Motion and VoiceOver settle directly to idle/grown frames through the existing store/scene contract. The cast changes neither input gating nor the clock.
+Ground shadows are separate scene nodes, with a dark compact contact core and softer wider pool. Existing clear/gravity/rebuild actions own their lifetime. Shadows do not determine rules or legal destinations. The shared Observatory projection continues to own scene, native hit and accessibility coordinates; no depth-based character scaling or board geometry change is introduced by this cast integration.
 
-## Reproduction and acceptance
+## Bounded resources and lifecycle
 
-Build shared scheme Starfall normally in Debug or Release. Default entry uses the cast; no permanent pilot flag is needed. Run `swift test` separately, then hosted `StarCastTests`, affected app/store tests and `StarfallExperimentInteractionTests`. `testCastReviewSheetAtBoardAndHeroSizes` attaches a contact sheet generated from the actual runtime renderer, including 24/36/44-point canvases. No separate source PNG atlas needs manual synchronization. The source itself is the canonical editable asset; exported PNGs/contact sheets are review artifacts.
+A main-actor material cache prewarms before the first shower: at most 72 UIImage/SKTexture pairs, each 256×256. Their base RGBA8 rasters total 18,874,368 bytes; six cached source bodies add 1,572,864 nominal RGBA8 bytes. These are source-raster bounds, not total process/GPU memory measurements. Asset-catalog decoding and material drawing occur on cache creation, never per frame. No new particles, observers, tasks, frame callbacks or clocks are introduced.
 
-[Native evidence](../../evidence/star-cast-2026-10-17/README.md) separates clean-candidate tests, inspected imagery and full-animation recording from remaining device/VoiceOver acceptance. This handoff is for the production game renderer, not an assertion that the entire app is App Store ready.
+`StarCast.setExpression` preserves sprite size and anchor. Stores still coordinate committed outcomes, persistence and interruption. Scene replacement, restart, backgrounding, menu dismissal, calm effects, system Reduce Motion and VoiceOver keep the existing presenter/generation contracts. Classic Debug jewel rendering keeps its existing crystal factory.
 
-## Luminous revision — October 17
+## Verification and historical references
 
-User feedback reopened visual acceptance: the first runtime eyes and solid-token treatment did not meet the desired quality. The revised candidate uses single dark oval eyes with one catchlight, shorter relaxed eyes for quieter characters, a broad inner light, pale contour and a soft baked halo. Dusk retains a dark body and restrained rim. No new particles, texture slots or animation work are introduced. The halo is clipped inside the existing transparent padding; silhouette geometry, board sizing and expression pivots remain unchanged. See the [revision evidence](../../evidence/star-cast-luminous-2026-10-17/README.md). This is a reviewable visual iteration, not a claim of final art approval.
+Run `swift test`, hosted `StarCastTests`, `FallingSkyStoreTests`, `ObservatoryGeometryTests`, affected `FallingSkyInteractionTests` and `ObservatoryInteractionTests`, plus Debug/Release simulator builds. Hosted exports include the actual runtime cast at 24/36/44-point sizes and twelve-frame sheets. Inspect native gameplay captures and full motion separately; a contact sheet cannot prove animation.
 
-## Motion set — October 17
-
-Each character has a complete twelve-frame set: rows idle/landing/grown/clearing; columns front/left/right. The [native exported sheets](../../evidence/star-cast-motion-2026-10-17/README.md) come from the same material factory used by board, preview and falling sprites. Runtime uses cached individual textures; the PNG sheets are reproducible review/authoring exports, not a second independently maintained atlas.
-
-Partial turns are a shallow 2D projection: narrowed body and offset face, not a true 3D mesh or rear view. The scene combines those frames with landing squash/stretch, small rotations and a clearing swish. Sparse idle turns are staggered by stable star ID, and do not use core RNG. Calm effects, actual Reduce Motion and VoiceOver suppress ambient/flight motion through the existing presenter boundary. Active animations render the previous board without idle actions, so settling and flight actions have one owner. New board renders remove old actions with their nodes.
-
-Meshy is an optional future production route if actual thickness, stronger perspective or back views become necessary. No upload, paid generation, 3D asset or new dependency was used for this iteration. The prior jeweled renderer's tilt used seven frame visits; its loss during the cast replacement motivated this motion set. Visual acceptance remains open.
+The earlier [paper-like concept](approved-concept.png), [first integration](../../evidence/star-cast-2026-10-17/README.md), [luminous revision](../../evidence/star-cast-luminous-2026-10-17/README.md) and [motion revision](../../evidence/star-cast-motion-2026-10-17/README.md) remain historical evidence for their recorded source. Crystal Glow supersedes their body rendering, retaining the shared material, shape identity and animation contracts.

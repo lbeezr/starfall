@@ -1,5 +1,7 @@
 # Crystal pixel review
 
+For the falling-sky cast, `package_star_cast.py` packages the approved transparent six-body plate into centered asset-catalog cutouts. See [StarCast source/receipts](../../Artwork/StarCast/README.md). Run with Python/Pillow; this is offline slicing and coverage normalization, not runtime artwork generation. The older atlas inspectors below continue to serve the Debug jewel renderer.
+
 Local inspection of the five default gameplay atlases. This tool reads
 source PNGs and writes comparison sheets plus measurements; it never edits
 the asset catalog, runtime code, source artwork, or release configuration.

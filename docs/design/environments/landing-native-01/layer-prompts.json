@@ -1,0 +1,22 @@
+[
+  {
+    "key": "base",
+    "transparent": false,
+    "prompt": "Use case: precise-object-edit. Edit this clean Moonlit Observatory game backdrop. Remove ONLY the entire brass telescope (tube, stand/mount, star charm) at upper left and the entire brass lantern (including handle) at lower right. Reconstruct quiet stone pedestals underneath, suitable for compositing those two props as separate animated layers. Leave all stones, scenery, planet, flowers, floor, clouds, composition and exact camera unchanged. Do not invent replacement objects. No stars, faces, text or UI anywhere on the floor. Keep original full portrait canvas 862x1824 and ALL original placements."
+  },
+  {
+    "key": "telescope",
+    "transparent": true,
+    "prompt": "Use case: background-extraction. Extract ONLY the brass telescope, its support stand/mount and dangling star charm from the supplied image. Make everything else FULLY TRANSPARENT, including stone pedestal, clouds and sky. CRITICAL: preserve the FULL original portrait canvas and telescope's EXACT original scale and position near upper left on that canvas, 862x1824. Do not center, crop, enlarge, redraw or add a new telescope. This is a precisely registered game animation layer. All other pixels transparent, clean antialiased alpha. No shadow patches from the surrounding environment, no text."
+  },
+  {
+    "key": "lantern",
+    "transparent": true,
+    "prompt": "Use case: background-extraction. Extract ONLY the brass lantern with its handle and glowing panes from lower right of the supplied image. Make everything else FULLY TRANSPARENT, including flowers, stone, moonstone floor, steps, clouds and sky. CRITICAL: preserve FULL original portrait canvas and lantern's EXACT original scale and position near lower right on that canvas, 862x1824. Do not center, crop, enlarge, redraw or add a new lantern. Precisely registered game animation layer, clean antialiased alpha. Preserve warm illuminated lantern panes, but no big opaque halo or shadow patch outside object. No text."
+  },
+  {
+    "key": "fog",
+    "transparent": true,
+    "prompt": "Use case: stylized-concept. Create a standalone game fog-overlay layer matching this Moonlit Observatory's soft painted paper-cloud forms and lavender-blue palette. Portrait full canvas 862x1824. Genuinely transparent background. Only a few soft thin semi-transparent moonlit wisps around far left and far right bottom corners and lower edge, with very gentle feathered alpha. At least central 80% width by top 85% height completely transparent. No solid cloud wall, no stars, moon, props, floor, faces or objects. These faint near-camera wisps will drift a few points in front of the environment but must not obscure actual gameplay. Sparse delicate atmosphere, not opaque white smoke."
+  }
+]

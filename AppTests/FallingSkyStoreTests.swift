@@ -308,7 +308,7 @@ final class FallingSkyStoreTests: XCTestCase {
         let store = FallingSkyStore(defaults: defaults, arguments: ["--starfalls-reset"],
             presenter: presenter, clock: clock, feedback: feedback)
         store.setSuspended(false)
-        XCTAssertFalse(store.soundEnabled); XCTAssertFalse(store.hapticsEnabled)
+        XCTAssertTrue(store.soundEnabled); XCTAssertTrue(store.hapticsEnabled)
         store.clear(Cell(0, 0)); XCTAssertEqual(feedback.clears, 0)
         store.soundEnabled = true; store.hapticsEnabled = true
         store.callShower(); presenter.finish()
@@ -319,6 +319,19 @@ final class FallingSkyStoreTests: XCTestCase {
         store.soundEnabled = false
         XCTAssertEqual(feedback.stops, 1)
         store.setSuspended(true); XCTAssertEqual(feedback.stops, 2)
+    }
+
+    @MainActor func testFeedbackDefaultsDoNotOverwriteExplicitMuteOrWriteDuringInitialization() {
+        let suite = "SkyFeedbackDefaults.\(UUID())"
+        let defaults = UserDefaults(suiteName: suite)!
+        defer { defaults.removePersistentDomain(forName: suite) }
+        let fresh = FallingSkyStore(defaults: defaults, arguments: ["--starfalls-reset"])
+        XCTAssertTrue(fresh.soundEnabled); XCTAssertTrue(fresh.hapticsEnabled)
+        XCTAssertNil(defaults.object(forKey: "soundEnabled"))
+        XCTAssertNil(defaults.object(forKey: "starfall.haptics"))
+        fresh.soundEnabled = false; fresh.hapticsEnabled = false
+        let restored = FallingSkyStore(defaults: defaults, arguments: [])
+        XCTAssertFalse(restored.soundEnabled); XCTAssertFalse(restored.hapticsEnabled)
     }
 
 }

@@ -1,0 +1,94 @@
+{
+  "baseRevision": "6fdb8d0",
+  "candidates": {
+    "natural": {
+      "baselineSource": "6fdb8d050c5eefb50b5f347a4e7a33f580501853",
+      "bundle": "com.starfall.mechanics.observatory.natural",
+      "candidate": "natural-only",
+      "candidateCoreSHA256": "edcff392193c6e811e3df873276d0449200601df8ec7918534c76968c6f40ad5",
+      "normalizedFrozenCoreSHA256": "b0bcae2eb39d52a9859dcd3fc3f41add3376f26d8a58d22af245cee125009d03",
+      "presentation": "paused-committed-feedback",
+      "snapshot": "/var/folders/fs/9shw9bf142jg3280dc9n3hhc0000gn/T/starfall-mechanics-committed-source-soffpowi",
+      "toolSHA256": {
+        "tools/mechanics/ObservatoryFeedbackUITests.swift": "e191e8e62803e8ad073b4a65db2e04dff9de0e45aa22dc10f055d5b1efe0bc15",
+        "tools/mechanics/ShowerBurstPhase.swift": "44678e6db5d914f15b20b8982ef12910ce5dcfee41f9f839dde344fcdda8a843",
+        "tools/mechanics/burst_fragments.py": "f213e12883350d48594bad54eb6c70b54257a88844df9f15e3602fcee692f915",
+        "tools/mechanics/paired-showers-natural.patch": "5762b947cf415f3cafa45eb97b5af1ae3cd8c7da7a7b70e365590b6c6d6de050",
+        "tools/mechanics/prepare-observatory-labs.py": "09180210ff87b1f21d822b10d26e163b9fb52433e57da77eecd7d394cc3017ab",
+        "tools/mechanics/shower_candidate.py": "e8d85e61acf843f5675396c556d9dd8044a1b17b5540680dd66776d775beffde"
+      }
+    },
+    "surge": {
+      "baselineSource": "6fdb8d050c5eefb50b5f347a4e7a33f580501853",
+      "bundle": "com.starfall.mechanics.observatory.surge",
+      "candidate": "dense-burst",
+      "candidateCoreSHA256": "1c6c5437ab9879c955fd1f901ae99e618b86b0cd1819743850f7359c0757d723",
+      "normalizedFrozenCoreSHA256": "91d5c3968bc4154863339b4535441a8f0956eb4f2795f49c58aab3fa31a28f80",
+      "presentation": "paused-committed-feedback",
+      "snapshot": "/var/folders/fs/9shw9bf142jg3280dc9n3hhc0000gn/T/starfall-mechanics-committed-source-soffpowi",
+      "toolSHA256": {
+        "tools/mechanics/BurstAnnouncementTests.swift": "203c3196c9719247174a5dc62bcec42b324d5cbc76b845e927a3fd54b00eaea3",
+        "tools/mechanics/BurstStoreTests.swift": "cfaf4b67672a4c1d61c0438da72b15195e0f091894e8ebbbe778644048dd1f03",
+        "tools/mechanics/NativeBurstUITestSupport.swift": "6f7e6d0b23d8a7d0e83bb9ad0698a9de98b8f034be57fb05acc7894b3a8e5a4f",
+        "tools/mechanics/NativeBurstView.swift": "10f1e5f936dbf75496d82bc8024c0425bab02732299c89b92923f2c4aaa2d3ac",
+        "tools/mechanics/ObservatoryBurstUITests.swift": "78f12f45852820a660c8b46ad661a27008dea813e6f55f1e795de731e054712c",
+        "tools/mechanics/ObservatoryDarkFeedbackUITests.swift": "6f3b0ba76a2f2e87d68e21eb3e31427326bf2fa8859d115f1549480f5f5ab10b",
+        "tools/mechanics/ObservatoryFeedbackUITests.swift": "e191e8e62803e8ad073b4a65db2e04dff9de0e45aa22dc10f055d5b1efe0bc15",
+        "tools/mechanics/ShowerBurstPhase.swift": "44678e6db5d914f15b20b8982ef12910ce5dcfee41f9f839dde344fcdda8a843",
+        "tools/mechanics/burst_fragments.py": "f213e12883350d48594bad54eb6c70b54257a88844df9f15e3602fcee692f915",
+        "tools/mechanics/paired-showers-natural.patch": "5762b947cf415f3cafa45eb97b5af1ae3cd8c7da7a7b70e365590b6c6d6de050",
+        "tools/mechanics/prepare-observatory-labs.py": "09180210ff87b1f21d822b10d26e163b9fb52433e57da77eecd7d394cc3017ab",
+        "tools/mechanics/shower_candidate.py": "e8d85e61acf843f5675396c556d9dd8044a1b17b5540680dd66776d775beffde"
+      }
+    }
+  },
+  "finalPair": {
+    "natural": "/var/folders/fs/9shw9bf142jg3280dc9n3hhc0000gn/T/starfall-mechanics-natural-yy6m_584",
+    "snapshot": "/var/folders/fs/9shw9bf142jg3280dc9n3hhc0000gn/T/starfall-mechanics-committed-source-soffpowi",
+    "surge": "/var/folders/fs/9shw9bf142jg3280dc9n3hhc0000gn/T/starfall-mechanics-surge-a_uhpc7u"
+  },
+  "observedDebugApps": {
+    "natural": {
+      "binaries": {
+        "Starfall": {
+          "builtSHA256": "7707589175289de3fd66f32131153c7e1ee30b81d2741791b0bab415f99dbc27",
+          "installedSHA256": "7707589175289de3fd66f32131153c7e1ee30b81d2741791b0bab415f99dbc27",
+          "match": true
+        },
+        "Starfall.debug.dylib": {
+          "builtSHA256": "d89d347933ab46d415890a9e2352d9c2a18c1ada9f031c28cff2ce9a53d215e1",
+          "installedSHA256": "d89d347933ab46d415890a9e2352d9c2a18c1ada9f031c28cff2ce9a53d215e1",
+          "match": true
+        }
+      },
+      "builtDebug": "/tmp/starfall-paused-feedback-natural/Build/Products/Debug-iphonesimulator/Starfall.app",
+      "installed": "/Users/lbeezr/Library/Developer/CoreSimulator/Devices/A84C81F5-AE41-496A-97AE-E17C63E18D29/data/Containers/Bundle/Application/FA926C1D-4AD1-4568-8692-B12E11D62EE7/Starfall.app"
+    },
+    "surge": {
+      "binaries": {
+        "Starfall": {
+          "builtSHA256": "4b700d781fb118c7b65d3a9398885bec75f2bd0067998907d3b01e5d0418a421",
+          "installedSHA256": "4b700d781fb118c7b65d3a9398885bec75f2bd0067998907d3b01e5d0418a421",
+          "match": true
+        },
+        "Starfall.debug.dylib": {
+          "builtSHA256": "ba1b3ca3acfaebc808b49302f82ea1e2693a04c6ec2ab9e6c398d26d1263df39",
+          "installedSHA256": "ba1b3ca3acfaebc808b49302f82ea1e2693a04c6ec2ab9e6c398d26d1263df39",
+          "match": true
+        }
+      },
+      "builtDebug": "/tmp/starfall-paused-feedback-surge/Build/Products/Debug-iphonesimulator/Starfall.app",
+      "installed": "/Users/lbeezr/Library/Developer/CoreSimulator/Devices/A84C81F5-AE41-496A-97AE-E17C63E18D29/data/Containers/Bundle/Application/512035EB-C5CF-4C41-B7F4-12C301659ED7/Starfall.app"
+    }
+  },
+  "runtimeMatchesBroadNativeRun": {
+    "natural": {
+      "drift": [],
+      "testedExport": "/var/folders/fs/9shw9bf142jg3280dc9n3hhc0000gn/T/starfall-mechanics-natural-n07_eya5"
+    },
+    "surge": {
+      "drift": [],
+      "testedExport": "/var/folders/fs/9shw9bf142jg3280dc9n3hhc0000gn/T/starfall-mechanics-surge-rl_qphgu"
+    }
+  }
+}

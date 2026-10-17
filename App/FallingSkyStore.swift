@@ -67,8 +67,8 @@ import StarfallCore
          feedback: (any FallingSkyFeedbackProviding)? = nil) {
         self.defaults = defaults
         self.feedback = feedback ?? GameFeedback()
-        soundEnabled = defaults.bool(forKey: "soundEnabled")
-        hapticsEnabled = defaults.bool(forKey: "starfall.haptics")
+        soundEnabled = defaults.object(forKey: "soundEnabled") == nil ? true : defaults.bool(forKey: "soundEnabled")
+        hapticsEnabled = defaults.object(forKey: "starfall.haptics") == nil ? true : defaults.bool(forKey: "starfall.haptics")
         self.clock = clock ?? FallingSkyRainClock()
         let scene = FallingSkyScene()
         self.scene = scene
@@ -83,6 +83,11 @@ import StarfallCore
             let seed = argument.flatMap { UInt64($0.dropFirst("--starfalls-seed=".count)) } ?? 5
             game = FallingSky(seed: seed)
         }
+        #if DEBUG
+        if arguments.contains("--starfalls-reset"), arguments.contains("--observatory-review") {
+            game = ObservatoryReviewFixture.game(dense: arguments.contains("--observatory-dense"))
+        }
+        #endif
         remaining = showerInterval
         scene.onLayout = { [weak self] in self?.settlePresentation() }
     }

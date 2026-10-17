@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 /// The shared presentation system. Rules and SpriteKit jewel materials have
 /// separate owners; screens compose these roles rather than invent local tokens.
@@ -24,6 +25,14 @@ enum StarfallTheme {
         static let ambientGlow = Palette.ice.opacity(0.07)
     }
 
+    /// Shared material roles for the Observatory scenery and contact shadows.
+    enum Observatory {
+        static let lanternGlow = Color(red: 1, green: 0.67, blue: 0.25)
+        static let fogOpacity = 0.28
+        static let contactShadow = UIColor(red: 0.035, green: 0.045, blue: 0.10, alpha: 0.46)
+        static let softContactShadow = contactShadow.withAlphaComponent(0.23)
+    }
+
     enum Typography {
         static let displayBaseSize: CGFloat = 52
         static let title = Font.system(.title2, design: .serif).weight(.medium)
@@ -34,6 +43,8 @@ enum StarfallTheme {
         static let action = Font.headline
         static let gameTitle = Font.system(.headline, design: .rounded)
         static let gameDetail = Font.subheadline
+        static let skyCaption = Font.system(.caption, design: .rounded).weight(.medium)
+        static let skyHeading = Font.system(.headline, design: .serif)
         static let titleTracking: CGFloat = 0.8
 
         static func display(size: CGFloat) -> Font {
@@ -58,6 +69,7 @@ enum StarfallTheme {
     }
 
     enum Layout {
+        static let accessibleObservatoryHeight: CGFloat = 1000
         static let minimumTarget: CGFloat = 44
         static let actionHeight: CGFloat = 52
         static let contentWidth: CGFloat = 560
@@ -72,6 +84,8 @@ enum StarfallTheme {
         // 335pt board minus 12pt padding and 12pt gaps leaves >44pt per cell.
         static let accessibleBoardInset: CGFloat = 6
         static let progressHeight: CGFloat = 6
+        static let showerTrailWidth: CGFloat = 132
+        static let guidePropClearance: CGFloat = 76
         static let arrivalCueWidth: CGFloat = 56
         static let arrivalCueHeight: CGFloat = 3
         static let arrivalCueGlow: CGFloat = 6
