@@ -1,0 +1,14 @@
+{
+  "videoPath": "/tmp/starfall-surge-full-motion.mov",
+  "videoSHA256": "42baed5278fda64f104c3ea7063d31cf97a12a3c227fe934d3e76bb5cb0c8296",
+  "sampledSeconds": [
+    2.6,
+    2.8,
+    3.0,
+    4.0
+  ],
+  "frameExtractionScript": "/tmp/starfall-extract-motion.swift",
+  "reduceMotionPreferenceBefore": true,
+  "reduceMotionPreferenceDuring": false,
+  "reduceMotionPreferenceRestored": true
+}

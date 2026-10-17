@@ -75,3 +75,7 @@ Use the [writing process and templates](docs/WRITING.md) for plans, designs, evi
 See the [engineering guide and concrete debt register](docs/ENGINEERING.md) for the change/validation loop and [AGENTS.md](AGENTS.md) for repository rules. Raw CI/local output goes under ignored `artifacts/`; selected durable evidence belongs in `docs/evidence/`.
 
 See `docs/VALIDATION.md` for exact executed checks and outstanding checks. Apple-platform compilation, simulator launch, screenshots, accessibility behavior and physical-device behavior must not be inferred from passing pure-core tests.
+
+The isolated [Phase Lab](docs/evidence/shower-phases-native-2026-10-17/README.md) explores preparation, a three-shower pressure burst and recovery. It does not change the default game; observed preference, phase accessibility and full-motion acceptance remain open.
+
+A subsequent [burst exposure audit](docs/evidence/burst-exposure-2026-10-17/README.md) found the original phase often leaves arrivals unchanged under a first-clear policy. The separate [Surge Lab](docs/evidence/surge-native-2026-10-17/README.md) now makes the five-star event playable for comparison; additional choices and longer sampled survival are not adoption or enjoyment evidence.

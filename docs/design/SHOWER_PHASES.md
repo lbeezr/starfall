@@ -1,16 +1,16 @@
 # Shower phases: preparation, pressure, recovery
 
-**Status:** Ready for native trial · **Owner:** Current implementer · **Updated:** October 17, 2026
+**Status:** Extended isolated native comparison · **Owner:** Current implementer · **Updated:** October 17, 2026
 
 **Recommendation:** Compare nine natural-only showers followed by three higher-column pressure showers against constant natural-only Shower Lab. Test whether an announced burst makes preparation and recovery more interesting.
 
 **Decision already made:** The [offline comparison](../evidence/shower-phases-2026-10-17/README.md) supports one announced native trial. It found no substantial early-choice improvement; the proposed benefit is readable rhythm, which automated play cannot measure.
 
-**Next action:** Build one isolated warning/burst/recovery trial, verify the boundaries below, then observe matched play. No production phase or native cue exists yet. Human comprehension, preference, native interruption behavior, accessibility and full-motion presentation remain unverified.
+**Next action:** Compare the existing [Phase Lab](../evidence/shower-phases-native-2026-10-17/README.md) and [Surge Lab](../evidence/surge-native-2026-10-17/README.md), retain the [largest-text cue correction](../evidence/phase-cue-2026-10-17/README.md), and review threshold/growth instructions and remaining acceptance boundaries. An [agent-simulated comparison](../evidence/simulated-surge-playtest-2026-10-17/README.md) provisionally preferred Surge; human preference and actual VoiceOver remain unverified. These are isolated native trials, not production phases.
 
 ## What the player should experience
 
-This is proposed behavior, not an implemented screen:
+The isolated native trials present this sequence; production gameplay does not:
 
 1. Natural showers give the player time to prepare. One shower before pressure starts, the HUD warns about the upcoming burst.
 2. Showers 10–12 use the pressure selection rule. The HUD names the phase and shows how many pressure showers remain.
@@ -24,7 +24,7 @@ Use words and a non-color signal outside the board; rings around stars are insuf
 
 <img src="../evidence/compact-hud-2026-10-17/active.png" width="240" alt="Existing compact HUD: score and sky menu above the dominant star board">
 
-**Existing native reference, not a phase mockup:** October 17 compact-HUD candidate, iPhone 17e / iOS 27.0 Simulator; [source and checks](../evidence/compact-hud-2026-10-17/README.md). There is no phase warning or count in this capture. The design task is to make those cues readable without crowding the board or rebuilding the removed forecast strip. A trial capture must later show warning, burst and recovery at its own tested source.
+**Existing native reference, not a phase mockup:** October 17 compact-HUD candidate, iPhone 17e / iOS 27.0 Simulator; [source and checks](../evidence/compact-hud-2026-10-17/README.md). There is no phase warning or count in this capture. The design task is to make those cues readable without crowding the board or rebuilding the removed forecast strip. The [Phase Lab captures](../evidence/shower-phases-native-2026-10-17/README.md) show warning/burst/recovery at their own tested source; they do not validate a later candidate or actual VoiceOver.
 
 ## Why test this approach?
 
@@ -46,7 +46,7 @@ flowchart LR
     B --> C["Repeat nine natural, three pressure"]
 ```
 
-**Proposed schedule:** Count committed showers, not elapsed time. Manual and automatic advances consume the same sequence; clears, pauses and wall-clock time do not advance it.
+**Candidate schedule:** Count committed showers, not elapsed time. Manual and automatic advances consume the same sequence; clears, pauses and wall-clock time do not advance it.
 
 The candidate rule selects the phase when it generates the next preview. That committed preview retains its phase through clears and restoration. Presentation communicates the committed forecast; animation callbacks never choose the phase or advance the schedule.
 
@@ -78,3 +78,11 @@ Retain source, working-tree differences, commands/procedures, configuration, sim
 - **Extend:** Name the missing evidence, owner, bounded remaining work and next decision point. Do not keep a pilot indefinitely.
 
 The main design risk is information overload: the current HUD intentionally removed forecast detail. Test the smallest readable warning and count before adding more indicators. Separate levels remain a later question, outside this trial.
+
+## Pressure exposure question
+
+Measure whether pressure actually changes delivered forecasts using a preparation counterfactual from the identical pre-generation state/RNG. Verify that observation preserves every sampled committed state and outcome. Count generated previews separately from delivered showers. A timed cue without a changed arrival pattern is insufficient evidence of a distinct phase.
+
+If the original pressure rule rarely engages, compare one offline density variant: retain nine preparation showers, but generate five stars in each of the three pressure showers. Keep dry-board relief and First Light exclusions; do not change the opening or any already announced forecast. This tests whether a bounded increase in arrivals creates a measurable response opportunity without the broad-pairing candidate's excessive survival extension. Before any native export, compare delivered exposure, survival/censoring, choices and deterministic/save checks against the original burst and natural-only candidates. A changed forecast alone still does not establish interesting choices or enjoyment. Do not change the current native lab's save contract silently.
+
+The [exposure comparison](../evidence/burst-exposure-2026-10-17/README.md) found a changed first-burst forecast in only 36/200 original-policy rounds versus 200/200 for the density variant. The latter also extended automated survival, so its next playable framing is a **star surge**, not a promise of higher difficulty. Native cue-flow validation of the original burst does not validate this new rule.

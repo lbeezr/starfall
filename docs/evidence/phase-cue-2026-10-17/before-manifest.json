@@ -1,0 +1,30 @@
+{
+  "bundle": "com.starfall.burstshowerslab",
+  "candidate": "burst",
+  "candidateCoreSHA256": "f0f69da214eae226345f48d8ea8de44a03af4f0fd9e10eec5eda61de966eb281",
+  "source": "30af812aa3bf3105a55d8b960288e1d2ac672c2c",
+  "toolSHA256": {
+    "BurstStoreTests.swift": "b04a0a9e50bf4f92cd79f80530ebcbcacd7b7a1cba143c54251242e774a66261",
+    "NativeBurstUITests.swift": "85df4bce702f74fc16ac4806550b5751794d55f8c7af7562b7aab48568cb7914",
+    "NativeBurstView.swift": "5eb172393ac1067239bc84a04c13b09b67a36dd679d53bc2c5e7e40c0e83275b",
+    "NativeChargeControl.swift": "288cf242d1904fd3b96c03320d5505733fc9116059b562c1aab4c323444934b9",
+    "NativeChargeStore.swift": "4817b7643b70ae39bc9c079223cd89a80355004aa82ba0f720457e066b4120c2",
+    "NativeChargeStoreTests.swift": "de8c1c6deece57a1955899ec8b83ae626e5610667e69f9d625a142754d26a775",
+    "NativeChargeUITests.swift": "04b0b6e503fe98204cd5bcedb0b9caadbeee6036e676d7e9af763850a4a3dc02",
+    "NativePressureUITests.swift": "b601f0900178e9b031597b1130662f585a9ecf4df9357ad0837f45c4dac31a05",
+    "NativeShowerUITests.swift": "9383d61b0f1e5b903740fe9c6d4980a90f0ec8dd374ebdf7d9ab059672cd1de2",
+    "PressureDecisionFixture.swift": "44e73cfbfebcf8bb4dcd04dda347c9b1d4d047dca610b1403426ed503a4872b3",
+    "PressureStoreTests.swift": "21052646f35ffa78234677b68eaa5a1099347d600839f7488e0fed3d22be6db0",
+    "ShowerBurstChecks.swift": "5f6b5f0ce7d5d668ae00e3b43c53220756dbc0724c83a162026d2ab9e8e54203",
+    "ShowerBurstPhase.swift": "44678e6db5d914f15b20b8982ef12910ce5dcfee41f9f839dde344fcdda8a843",
+    "ShowerCompatibility.swift": "2ee7fedabf466706751848f615e8b1a26729c542a44abadec2af9c7488ece3f9",
+    "SupernovaSample.swift": "f9cee1dee8dadf598cde02c5e6c3f3c8a689f7737afaadd382a251ce71514bef",
+    "compare-showers.py": "7d3f98276ca8d349d7cb5fbd1d0e215c0b946e1ef10b236c88a9d9376f42b280",
+    "paired-showers-natural.patch": "5762b947cf415f3cafa45eb97b5af1ae3cd8c7da7a7b70e365590b6c6d6de050",
+    "prepare-native-lab.py": "0afa38c51998109736fbc9064bb9f7a87ebd0a75d1b8b69b9359e497aa379f01",
+    "run-supernova.py": "f21b24c24b03054ac95c20dc16b119e1edd0c508d5a738dab19b244f5b05f1b8",
+    "shower_candidate.py": "0a062ad12922f1605f521b3b79c89c27371531c8e5bec65a28831ec0c4d2a087",
+    "supernova.patch": "0111f44f0f9d1baf40fcc23a743f1d21e6ef599875cd4ee122824947cc6158d2"
+  },
+  "uniqueIDTestSHA256": "44fa2217feaf3e600a69b8dee29403c930aaf4fdfed41fb9956700964a9167db"
+}

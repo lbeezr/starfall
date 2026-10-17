@@ -1,0 +1,17 @@
+{
+  "App/StarfallArrivalEffects.swift": "81ef92bdd93870414a683c1f9341370161bc31d94957316c126269651c640c13",
+  "App/NightSkyBackdrop.swift": "0fc44d2f707e49338b6af3f6d661d1d7d118996ee0cf97df4ac9f28f8193e98a",
+  "App/StarfallApp.swift": "5f48c2409a64dd4a386cb072b61ec5dbee7de16b0d824bad1ab71b21305af42c",
+  "App/StarshardArtwork.swift": "caaec816dd31c35e023a4cc6c00160bcc8b040053d46cef5be9a21e7070333ac",
+  "App/GameStore.swift": "9319f2a2b6d7f7fca83937d345b2aa35555a4bdd60d1eadce79a005a07dca1b4",
+  "App/StarCast.swift": "a8d72f397c3c68234e56636cc84fb76cf48bb009fc807055d19538e0aeaa8162",
+  "App/StarlightHUD.swift": "b89f3f72bc6fbbc09fd118411ca350b89077428820f0d32ff0122b9020dc08b7",
+  "App/JewelScene.swift": "d7582ce1149ac6a273ffdbf7175d0d551e6e4d7e80149b90b6f633e1a87cc5f9",
+  "App/GameFeedback.swift": "9833c1ffdcec6448f7fc62ec5333f163aabef337611a174b419098542d914919",
+  "App/StarfallTheme.swift": "b4b99958dbbf547be542f9302af3e4e6e8e264d3b56c5a50bb9c83966154fe19",
+  "App/CrystalPilot.swift": "2ea7e4da9fa4bbb8842c8746110b5b9a6459f2666e67ae5b12dbed1401735699",
+  "App/StarfallExperimentScene.swift": "cf8dcf0f064442ff944bedd664602420e852874b2e3426fb90678a21cbd81b7b",
+  "App/QuietTuckPlayer.swift": "2ab5820f9a6f554775381ae40b214c544e397a77f1446e462c5b8b744525cebb",
+  "AppTests/CrystalPilotTests.swift": "403b674e0b8d6f9f5334073768b8760118357de86627ace5b26b9ee95b70117e",
+  "AppTests/StarshardFamilyPilotTests.swift": "ebd07e6d800cd6ae772dba02af7517f9d0a6d91ffd95f0cbd12c6da1cd5d1549"
+}

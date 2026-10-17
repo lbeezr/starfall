@@ -6,6 +6,7 @@ import json
 import hashlib
 import subprocess
 import tempfile
+from shower_candidate import apply_candidate
 
 root = Path(__file__).resolve().parents[2]
 mechanics = Path(__file__).resolve().parent
@@ -13,9 +14,14 @@ parser = argparse.ArgumentParser(description=__doc__)
 mode = parser.add_mutually_exclusive_group()
 mode.add_argument("--showers", action="store_true", help="Export the natural-only paired-shower lab instead of supernova")
 mode.add_argument("--baseline", action="store_true", help="Export the matching unchanged baseline for observed comparison")
+mode.add_argument("--pressure-showers", action="store_true", help="Export higher-column paired showers with a decision fixture")
+mode.add_argument("--burst-showers", action="store_true", help="Export nine preparation / three pressure showers with phase cues")
+mode.add_argument("--surge-showers", action="store_true", help="Export three five-star surge showers between preparation phases")
 arguments = parser.parse_args()
 revision = "30af812"
-prefix = "starfall-native-baseline-" if arguments.baseline else "starfall-native-showers-" if arguments.showers else "starfall-native-supernova-"
+is_phase = arguments.burst_showers or arguments.surge_showers
+is_shower = arguments.showers or arguments.pressure_showers or is_phase
+prefix = "starfall-native-baseline-" if arguments.baseline else "starfall-native-showers-" if is_shower else "starfall-native-supernova-"
 workspace = Path(tempfile.mkdtemp(prefix=prefix))
 archive = subprocess.run(["git", "archive", revision], cwd=root, check=True, stdout=subprocess.PIPE).stdout
 subprocess.run(["tar", "-xf", "-", "-C", str(workspace)], input=archive, check=True)
@@ -35,23 +41,123 @@ def finish(bundle, **details):
         "bundle": bundle, "toolSHA256": digests, **details}, indent=2, sort_keys=True))
     print(workspace)
 
-if arguments.showers or arguments.baseline:
-    if arguments.showers:
-        with (mechanics / "paired-showers-natural.patch").open("rb") as patch:
-            subprocess.run(["patch", "--batch", "--fuzz=0", "-p1"], cwd=workspace, stdin=patch, check=True, stdout=subprocess.DEVNULL)
-    bundle = "com.starfall.baselinelab" if arguments.baseline else "com.starfall.pairedshowerslab"
-    display = "Sky Baseline" if arguments.baseline else "Shower Lab"
-    suite = "starfall.baseline.lab" if arguments.baseline else "starfall.paired-showers.lab"
+if is_shower or arguments.baseline:
+    candidate = "dense-burst" if arguments.surge_showers else "burst" if arguments.burst_showers else "pressure" if arguments.pressure_showers else "natural-only" if is_shower else "baseline"
+    core_hash = apply_candidate(workspace, candidate) if is_shower else None
+    # Keep the ID-generation assertion owned by the current test suite. The
+    # frozen test assumed every idle sky survives ten showers; terminal reads
+    # intentionally retain the final preview rather than generate fresh IDs.
+    contract_path = root / "Tests/StarfallCoreTests/FallingSkyTests.swift"
+    contract = contract_path.read_text()
+    signature = "    func testSeededShowersVaryAcrossAllFourSizesAndHaveUniqueIDs()"
+    start = contract.index(signature)
+    end = contract.index("\n    func ", start + len(signature))
+    contract = contract[start:end].replace("FallingSky", "StarfallExperiment")
+    frozen_path = workspace / "Tests/StarfallCoreTests/StarfallExperimentTests.swift"
+    frozen = frozen_path.read_text()
+    start = frozen.index(signature)
+    end = frozen.index("\n    func ", start + len(signature))
+    frozen_path.write_text(frozen[:start] + contract + frozen[end:])
+    bundle = "com.starfall.pressureshowerslab" if arguments.pressure_showers else "com.starfall.baselinelab" if arguments.baseline else "com.starfall.pairedshowerslab"
+    display = "Pressure Lab" if arguments.pressure_showers else "Sky Baseline" if arguments.baseline else "Shower Lab"
+    suite = "starfall.pressure-showers.lab" if arguments.pressure_showers else "starfall.baseline.lab" if arguments.baseline else "starfall.paired-showers.lab"
+    if arguments.burst_showers:
+        bundle, display, suite = "com.starfall.burstshowerslab", "Phase Lab", "starfall.burst-showers.lab"
+    if arguments.surge_showers:
+        bundle, display, suite = "com.starfall.surgeshowerslab", "Surge Lab", "starfall.surge-showers.lab"
     replace("Config/Clean.xcconfig", "PRODUCT_BUNDLE_IDENTIFIER = com.starfall.prototype",
             f"PRODUCT_BUNDLE_IDENTIFIER = {bundle}\nINFOPLIST_KEY_CFBundleDisplayName = {display}")
     replace("App/StarfallExperimentStore.swift", "defaults: UserDefaults = .standard",
             f'defaults: UserDefaults = UserDefaults(suiteName: "{suite}")!')
     replace("App/StarfallExperimentView.swift", 'store.game.challenge?.title ?? "Starfall"',
             f'store.game.challenge?.title ?? "{display}"')
+    if is_shower:
+        replace("App/StarfallExperimentStore.swift",
+                "Start the sky. Clear matching stars to make room; adjust the balance in Settings.",
+                "Clear connected matching stars worth 3+. A grown star (2) beside one small match (1) can clear.")
+    if is_phase:
+        labels = {
+            "__LAB_BUNDLE__": bundle,
+            "__BURST_WARNING__": "Five-star surge follows" if arguments.surge_showers else "Pressure follows this shower",
+            "__BURST_COUNT__": r'Surge · \(remaining) five-star \(remaining == 1 ? "shower" : "showers")' if arguments.surge_showers else r'Pressure · \(remaining) \(remaining == 1 ? "shower" : "showers") remaining',
+            "__BURST_THREE__": "Surge · 3 five-star showers" if arguments.surge_showers else "Pressure · 3 showers remaining",
+            "__BURST_PREVIEW_CHECK__": '''            if remaining > 0 {
+                XCTAssertEqual(app.descendants(matching: .any).matching(NSPredicate(
+                    format: "identifier BEGINSWITH %@", "experiment.incoming.")).count, 5)
+            }''' if arguments.surge_showers else "",
+            "__BURST_STORE_CHECK__": '''            if (9...11).contains(turn) { XCTAssertEqual(stores[0].game.incoming.count, 5) }
+            if (10...12).contains(turn) { XCTAssertEqual(stores[0].pending?.forecast.count, 5) }''' if arguments.surge_showers else "",
+        }
+        def phase_fragment(name):
+            text = (mechanics / name).read_text()
+            for token, value in labels.items():
+                text = text.replace(token, value)
+            if "__BURST_" in text or "__LAB_" in text:
+                raise RuntimeError("Unresolved phase fragment token in " + name)
+            return text
+        view = "App/StarfallExperimentView.swift"
+        replace(view, "import SpriteKit", "import SpriteKit\nimport UIKit")
+        replace(view, "                        forecast", "                        if !largeText { phaseCue }\n                        forecast")
+        # At accessibility sizes the controls require scrolling. Keep their
+        # announced phase in a sibling region so scrolling cannot hide it.
+        replace(view, "            GeometryReader { viewport in\n                ScrollView {", '''            GeometryReader { viewport in
+                VStack(spacing: StarfallTheme.Spacing.small) {
+                    if largeText {
+                        phaseCue.padding(.horizontal, StarfallTheme.Spacing.medium)
+                    }
+                ScrollView {''')
+        replace(view, "            }\n            .accessibilityHidden(settings)",
+                "                }\n            }\n            .accessibilityHidden(settings)")
+        with (workspace / view).open("a") as output:
+            output.write("\n" + phase_fragment("NativeBurstView.swift"))
+        replace("App/StarfallExperimentStore.swift", "        remaining = showerInterval\n        scene.onLayout", '''        if arguments.contains("--shower-phase-fixture") {
+            game = StarfallExperiment(seed: 5)
+            for _ in 0..<8 {
+                game.letStarsFall()
+                if let cell = game.legalGroups.first?.first { game.clear(cell) }
+            }
+            precondition(game.isValidSave && !game.isOver && game.turns == 8)
+        }
+        remaining = showerInterval
+        scene.onLayout''')
+        for destination, fragment in [
+            ("UITests/StarfallExperimentInteractionTests.swift", "NativeBurstUITests.swift"),
+            ("AppTests/StarfallExperimentStoreTests.swift", "BurstStoreTests.swift"),
+        ]:
+            with (workspace / destination).open("a") as output:
+                output.write("\n" + phase_fragment(fragment))
     if arguments.showers:
         with (workspace / "UITests/StarfallExperimentInteractionTests.swift").open("a") as output:
-            output.write("\n" + (mechanics / "NativeShowerUITests.swift").read_text())
-    finish(bundle, candidate="baseline" if arguments.baseline else "paired-showers-natural.patch")
+            output.write("\n" + (mechanics / "NativeShowerUITests.swift").read_text().replace("com.starfall.pairedshowerslab", bundle))
+    if arguments.pressure_showers:
+        report = json.loads((root / "docs/evidence/pressure-showers-2026-10-17/comparison.json").read_text())
+        if report["candidateCoreSHA256"] != core_hash:
+            raise RuntimeError("Pressure fixture and exported generator differ")
+        fixture = report["decisionFixture"]
+        data = json.dumps(fixture["state"], separators=(",", ":"))
+        replace("App/StarfallExperimentStore.swift", "        remaining = showerInterval\n        scene.onLayout", f'''        if arguments.contains("--shower-decision-fixture") {{
+            game = try! JSONDecoder().decode(StarfallExperiment.self, from: Data(#"{data}"#.utf8))
+            precondition(game.isValidSave)
+            message = "Two legal groups. Compare which clear leaves room for the announced shower."
+        }}
+        remaining = showerInterval
+        scene.onLayout''')
+        for destination, fragment in [
+            ("UITests/StarfallExperimentInteractionTests.swift", "NativePressureUITests.swift"),
+            ("AppTests/StarfallExperimentStoreTests.swift", "PressureStoreTests.swift"),
+        ]:
+            tests = (mechanics / fragment).read_text()
+            for key in ["safeCell", "unsafeCell"]:
+                for axis in ["row", "column"]:
+                    tests = tests.replace(f"__{key}_{axis}__", str(fixture[key][axis]))
+            tests = tests.replace("__SAFE_SCORE__", str(fixture["state"]["score"] + fixture["safeCollected"]))
+            tests = tests.replace("__UNSAFE_SCORE__", str(fixture["state"]["score"] + fixture["unsafeCollected"]))
+            tests = tests.replace("__COLD_CHOICES__", str(fixture["seed5ChoiceShowersBy20"]))
+            tests = tests.replace("__COLD_SCORE__", str(fixture["seed5ScoreAfter20"]))
+            with (workspace / destination).open("a") as output:
+                output.write("\n" + tests)
+    finish(bundle, candidate=candidate, candidateCoreSHA256=core_hash,
+           uniqueIDTestSHA256=hashlib.sha256(contract.encode()).hexdigest())
     raise SystemExit(0)
 
 # The offline supernova tool follows production naming. This frozen app uses

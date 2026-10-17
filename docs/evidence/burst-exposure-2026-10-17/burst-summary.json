@@ -1,0 +1,119 @@
+{
+  "baselineSource": "30af812aa3bf3105a55d8b960288e1d2ac672c2c",
+  "candidate": "burst",
+  "candidateCoreSHA256": "f0f69da214eae226345f48d8ea8de44a03af4f0fd9e10eec5eda61de966eb281",
+  "fullReportSHA256": "755d0891040a5369dc2a3cfcf142665d913274d9bdc9e55ffffdb3f18ddc3b59",
+  "inputSHA256": {
+    "tools/mechanics/ShowerBurstExposure.swift": "0a093539972ee831409b1207d17172dbe79a2c90e149aceeeb09fabfb538bab1",
+    "tools/mechanics/ShowerBurstPhase.swift": "44678e6db5d914f15b20b8982ef12910ce5dcfee41f9f839dde344fcdda8a843",
+    "tools/mechanics/measure-burst-exposure.py": "72e6988b9d4fd8ab79ce41f650fac86a8dfa20da8ca3e331813334480605965b",
+    "tools/mechanics/paired-showers-natural.patch": "5762b947cf415f3cafa45eb97b5af1ae3cd8c7da7a7b70e365590b6c6d6de050",
+    "tools/mechanics/shower_candidate.py": "44a3f0ab9de7b5e8e9f22696ed0daf242087518dfe10f1ca96efc6dcb2f8155f"
+  },
+  "method": "Seeds 0...199, canonical first legal group after each delivered shower, cap 60. Compare the generated pressure forecast with preparation targeting from the identical pre-generation state and RNG. Count delivered showers separately from unconsumed previews. No player reaction-time model.",
+  "observedCoreSHA256": "076e661563b4e2dd3ad47f7f07a8e0d5e32b2b7549c9972eeb2a422005eda6a3",
+  "rawReportPath": "/tmp/starfall-burst-exposure-final.json",
+  "summary": {
+    "allChangedPressureShowers": 119,
+    "allDeliveredPressureShowers": 1396,
+    "firstBurstChangedSeeds": [
+      2,
+      16,
+      22,
+      23,
+      26,
+      34,
+      39,
+      45,
+      48,
+      60,
+      74,
+      76,
+      77,
+      80,
+      102,
+      113,
+      115,
+      116,
+      122,
+      123,
+      127,
+      137,
+      138,
+      142,
+      143,
+      150,
+      152,
+      160,
+      164,
+      165,
+      166,
+      182,
+      191,
+      193,
+      197,
+      198
+    ],
+    "firstBurstChangedShowers": 42,
+    "firstBurstCountChanges": 0,
+    "firstBurstDeliveredShowers": 600,
+    "firstBurstExtraOfferedStars": 0,
+    "reachedFirstBurst": 200,
+    "seed5FirstBurst": [
+      {
+        "changed": false,
+        "groups": 1,
+        "preparationColumns": [
+          4,
+          6,
+          2
+        ],
+        "pressureColumns": [
+          4,
+          6,
+          2
+        ],
+        "seed": 5,
+        "shower": 10
+      },
+      {
+        "changed": false,
+        "groups": 0,
+        "preparationColumns": [
+          0,
+          0,
+          0,
+          6,
+          3
+        ],
+        "pressureColumns": [
+          0,
+          0,
+          0,
+          6,
+          3
+        ],
+        "seed": 5,
+        "shower": 11
+      },
+      {
+        "changed": false,
+        "groups": 2,
+        "preparationColumns": [
+          2,
+          0,
+          5
+        ],
+        "pressureColumns": [
+          2,
+          0,
+          5
+        ],
+        "seed": 5,
+        "shower": 12
+      }
+    ],
+    "unconsumedPressurePreviews": 0
+  },
+  "trajectoryVerification": "PASS: all 200 per-round committed-state SHA256 traces equal the uninstrumented candidate"
+}

@@ -2,9 +2,9 @@
 
 **Status:** Active · **Owner:** Current implementer · **Updated:** October 17, 2026, Eastern time
 
-Build a small, readable falling-sky puzzle worth replaying. **Shower variety leads the next gameplay comparison.** Keep the default generator unchanged until observed play supports adoption. The offline phase comparison supports one announced native trial; it does not establish that phases are more enjoyable.
+Build a small, readable falling-sky puzzle worth replaying. **Shower variety leads the next gameplay comparison.** Keep the default generator unchanged until observed play supports adoption. Phase and Surge native trials now exist; the agent-simulated comparison provisionally favors Surge, but human preference remains unverified.
 
-**Next actions:** Review the clean Release baseline as its own change, then prepare the bounded warning/burst/recovery trial and observe matched play. Physical feel can be reviewed independently in small batches.
+**Next actions:** Review the clean Release baseline as its own change, then review the existing warning/burst/recovery trials and observe matched play. Physical feel can be reviewed independently in small batches.
 
 **Open limits:** No participant preference results, final cast approval, general physical-device acceptance, or actual VoiceOver acceptance. These remain open even where simulator checks passed.
 
@@ -35,7 +35,10 @@ Owners are the current implementer unless a work item names another owner. These
 | --- | --- | --- |
 | [Natural Shower Lab](evidence/paired-showers-2026-10-17/README.md) | Five-star 3 + 2 runs raise clear-all multiple-choice decisions from 6.7% to 11.6%; native opening/choice comparison passed. | Lead comparison; human preference remains open. Broad pairing was rejected for excessive survival extension. |
 | [Pressure Lab](evidence/pressure-showers-2026-10-17/README.md) | Consequential native clear and due-rain input boundary checked; cold-opening limitation retained. Both constant candidates offer choices by shower twenty in 160/200 first-policy rounds. | Compare pressure and comprehension in observed play. |
-| [Nine preparation + three pressure showers](evidence/shower-phases-2026-10-17/README.md) | Schedule/replay checks passed; no substantial early-choice improvement. Rhythm and comprehension are unmeasured. | Extend to one announced native trial. No native phase cue or production phase exists yet. |
+| [Phase Lab](evidence/shower-phases-native-2026-10-17/README.md) | Native warning/count/recovery cues exist; the [largest-text correction](evidence/phase-cue-2026-10-17/README.md) is verified. The original burst changes the first forecast in only 36/200 first-clear rounds. | Retain as the cue/flow comparison; actual VoiceOver and full-motion boundaries remain open. No production phase. |
+| [Surge Lab](evidence/surge-native-2026-10-17/README.md) | Five-star bursts change that forecast in 200/200 rounds, while also extending sampled survival. [Agent-simulated play](evidence/simulated-surge-playtest-2026-10-17/README.md) provisionally preferred it. | Leading phase experiment; review threshold/growth instructions, remaining acceptance cases and human comparison before adoption. |
+
+The user selected **shower variety and choices** to lead the next playable experiment. A separate [Shower Lab](evidence/paired-showers-2026-10-17/README.md) tests natural five-star 3 + 2 runs against the unchanged game. It raises clear-all multi-group decisions from 6.7% to 11.6%, preserves existing-save generation, and has passed a native opening/choice comparison. Broader pairing is rejected for excessive survival extension. The [higher-column Pressure Lab](evidence/pressure-showers-2026-10-17/README.md) now verifies a consequential native clear and the due-rain input boundary, while retaining its cold-opening limitation. Both candidates offer choices by shower twenty in 160/200 first-policy sample rounds; observed preference remains open. The default generator is unchanged pending observed play and pressure/comprehension review.
 
 Preserve first-shower playability, bounded dry-board assistance, dark-star settings, save compatibility and committed previews. Measure simultaneous groups, waits without a useful move, score/survival distributions and whether clearing a high column helps. Include clear-all play; one clear per shower is a diagnostic constraint. Numeric targets are hypotheses, not release gates.
 
@@ -91,3 +94,9 @@ No campaign, unlocks, XP, currency, power-ups, backend, accounts, analytics, ads
 </details>
 
 Integrate small verified batches. Keep deterministic rules in StarfallCore, presentation and feedback explicit, saves compatible and other edits intact. Update this roadmap as decisions change; preserve historical evidence with its source context.
+
+The user also proposed events or phases within a level. [Phase Lab](evidence/shower-phases-native-2026-10-17/README.md) now provides nine preparation showers, a warned three-shower pressure burst and recovery in an isolated native export. Next: matched observed play and comprehension review against Shower Lab; retain the [verified largest-text cue correction](evidence/phase-cue-2026-10-17/README.md), then resolve actual VoiceOver and full-motion validation before adoption. No campaign or new level progression is introduced.
+
+The [burst exposure audit](evidence/burst-exposure-2026-10-17/README.md) changes the next phase question: original first bursts change a forecast in 36/200 first-clear rounds; a five-star surge does so in 200/200, but also extends survival. The [isolated Surge Lab](evidence/surge-native-2026-10-17/README.md) now provides explicit five-star wording and separate saves; next is simulated and human observed comparison. Retain the original Phase Lab only for that cue/flow comparison, then select/remove or name a remaining question. Do not infer difficulty or enjoyment from the additional choices.
+
+The user-requested [agent-simulated play comparison](evidence/simulated-surge-playtest-2026-10-17/README.md) provisionally preferred Surge: it reported preparing before the event and prioritizing a high dark-star-adjacent group. This is paused agent observation, not human enjoyment or a controlled score comparison. Keep Surge as the leading phase experiment. The [shared startup introduction](evidence/clearing-introduction-2026-10-17/README.md) now states the value threshold and grown-plus-small example; learner comprehension and remaining acceptance limits are still open before adoption.

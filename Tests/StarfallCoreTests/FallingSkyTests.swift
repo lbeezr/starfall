@@ -169,6 +169,12 @@ final class FallingSkyTests: XCTestCase {
             var game = FallingSky(seed: seed)
             var ids: Set<Int> = []
             for _ in 0..<10 {
+                if game.isOver {
+                    let ended = game
+                    XCTAssertNil(game.letStarsFall())
+                    XCTAssertEqual(game, ended, "A retained terminal preview is not a new shower")
+                    break
+                }
                 sizes.insert(game.incoming.count)
                 for star in game.incoming { XCTAssertTrue(ids.insert(star.id).inserted) }
                 game.letStarsFall()

@@ -20,6 +20,14 @@ Record short quotations, observed examples and missing observations. Keep simula
 
 No participant observations have been collected for this protocol yet.
 
+## Shower-variety comparison
+
+Use the matched **Sky Baseline**, **Shower Lab** (natural-only pairing), and **Pressure Lab** exports described in [the pressure evidence](evidence/pressure-showers-2026-10-17/README.md). All share the same frozen HUD/renderer. Comparing a frozen lab against newer production presentation would confound preference. Match pace, Dusk frequency, motion, sound/haptics, text size, device and automatic/manual mode. Keep normal saves separate.
+
+Start with uncoached fresh rounds; record the actual seed and rotate version order where practical. Record time to first clear only when measured, first simultaneous groups, whether they noticed both, which clear they chose and their reason. A player who clears every ready group may experience little pressure tradeoff; record that rather than imposing a one-clear limit. Pressure seed 5 has no choice within twenty showers even though the 200-seed opportunity rate matches natural-only; do not use a single seed as the preference conclusion.
+
+After fresh-round preference is recorded, optionally use `--shower-decision-fixture`. Ask what they would clear and why before explaining the two outcomes. Distinguish choosing the larger group from recognizing the threatened column. Paused play allows both clears; the consequence of a single clear matters when automatic rain is already due. This coached demonstration is separate from unprompted strategy discovery. End with a concrete preference/reason, confusion to fix, or an explicit lack of preference. No such human observations have been collected yet.
+
 ## Current playable comparison: survival versus First Light
 
 The next tranche adds First Light under Sky settings. It starts a new round with a fixed seed, an 18-starlight goal and no dark stars; replay repeats it, while New sky returns to survival. Compare these as whole experiences first. A preference cannot be attributed to the goal alone because seed/configuration also differ from a default survival round.
