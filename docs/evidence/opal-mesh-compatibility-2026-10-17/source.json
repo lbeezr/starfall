@@ -1,0 +1,8 @@
+{
+  "base": "f6f1cd81c5e1e5c6e1adb49a5dac35b696cae182",
+  "changes": {
+    "App/FallingSkyMotion.swift": "83aca7fd2d47c877112f25644d0025b9d505d14d2bbae16bca50980beff48d38",
+    "AppTests/StarCastTests.swift": "a7cbab0be9d98990cfd2f43ef7985b289df3fe1e4eb8400a5a5bdf0328beea65"
+  },
+  "scope": "Compiler compatibility and identity-grid regression; no Core changes."
+}
