@@ -68,7 +68,7 @@ Before adopting anything, choose one hypothesis and a bounded comparison against
 
 User discussion, October 17: question whether announcing a shower and showing its contents adds enough to the game. Pause need not be prominent. The initial suggestion to restrict pause to a continuous-rain chaos mode was explicitly revised: keep pause available, reduce its prominence. Chaos remains an optional idea, not an adopted mode or rule change.
 
-Proposed first comparison, not implemented:
+The first comparison is implemented as the [compact HUD trial](../evidence/compact-hud-2026-10-17/README.md). The points below retain the original hypotheses; this trial is not yet evidence of player preference:
 
 - Keep one compact score/goal readout and a quiet menu control. Put pause/resume within the menu, with a clear resume action when the menu closes. Preserve system-interruption suspension and accessible access; hiding a large pause button must not make pausing difficult.
 - Remove the permanent game title, shower counter, matching-group count and repeating instruction/status sentence from active play. Keep teaching/contextual feedback where needed; retain accessible board/group information instead of removing it with the visual labels. Round statistics can live in the result screen.

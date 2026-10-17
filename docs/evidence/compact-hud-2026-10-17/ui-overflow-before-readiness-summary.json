@@ -1,0 +1,52 @@
+{
+  "devicesAndConfigurations" : [
+    {
+      "device" : {
+        "architecture" : "arm64",
+        "deviceId" : "6E9BC34B-C5C6-48ED-9593-D16AC994BCC8",
+        "deviceName" : "Starfall Compact HUD QA",
+        "modelName" : "iPhone 17e",
+        "osBuildNumber" : "24A434",
+        "osVersion" : "27.0",
+        "platform" : "iOS Simulator"
+      },
+      "expectedFailures" : 0,
+      "failedTests" : 1,
+      "passedTests" : 1,
+      "skippedTests" : 0,
+      "testPlanConfiguration" : {
+        "configurationId" : "1",
+        "configurationName" : "Test Scheme Action"
+      }
+    }
+  ],
+  "environmentDescription" : "Starfall · Built with macOS 27.0.1",
+  "expectedFailures" : 0,
+  "failedTests" : 1,
+  "finishTime" : 1792243233.531,
+  "passedTests" : 1,
+  "result" : "Failed",
+  "runtimeWarnings" : [
+
+  ],
+  "skippedTests" : 0,
+  "startTime" : 1792243133.729,
+  "statistics" : [
+
+  ],
+  "testFailures" : [
+    {
+      "failureText" : "XCTAssertTrue failed",
+      "targetName" : "StarfallUITests",
+      "testIdentifier" : 1,
+      "testIdentifierString" : "StarfallExperimentInteractionTests/testBackgroundRelaunchAndAutomaticOverflow()",
+      "testIdentifierURL" : "test://com.apple.xcode/Starfall/StarfallUITests/StarfallExperimentInteractionTests/testBackgroundRelaunchAndAutomaticOverflow",
+      "testName" : "testBackgroundRelaunchAndAutomaticOverflow()"
+    }
+  ],
+  "title" : "Test - Starfall",
+  "topInsights" : [
+
+  ],
+  "totalTestCount" : 2
+}

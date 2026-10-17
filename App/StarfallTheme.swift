@@ -72,6 +72,9 @@ enum StarfallTheme {
         // 335pt board minus 12pt padding and 12pt gaps leaves >44pt per cell.
         static let accessibleBoardInset: CGFloat = 6
         static let progressHeight: CGFloat = 6
+        static let arrivalCueWidth: CGFloat = 56
+        static let arrivalCueHeight: CGFloat = 3
+        static let arrivalCueGlow: CGFloat = 6
         static let constellationSize = CGSize(width: 64, height: 24)
         static let borderWidth: CGFloat = 1
         static let focusWidth: CGFloat = 2

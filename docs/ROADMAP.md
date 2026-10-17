@@ -10,6 +10,8 @@ No progression, power-ups, backend, accounts, analytics, ads, purchases, paid as
 
 ## Current baseline
 
+- The [compact HUD trial](evidence/compact-hud-2026-10-17/README.md) replaces the exact forecast/countdown/status rows with score/goal, a quiet menu and a subtle arrival cue. Pause moves into the menu; Start/Resume and manual advance appear while paused. User play still needs to establish whether losing the exact forecast helps readability without losing useful decisions.
+
 - Falling sky is the default. New skies offer a first-shower match; matching runs help dry boards when a low column has room. Existing saves retain their previous sky-generation rules.
 - Faster comets, manual next shower, paused clears, matching-group outlines/count, clear rings/score popups, and optional local sound/haptics are implemented.
 - One optional First Light challenge is implemented: fixed seed 42, 18 starlight, steady showers and no dark stars; entry starts a new round from Settings. This is a single objective prototype, not a campaign or unlock system.

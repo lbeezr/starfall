@@ -1,10 +1,10 @@
 # Starfall
 
-A small native iOS falling-sky puzzle. Start the sky, then clear connected matching jewels worth at least 3 starlight while new stars arrive. Large jewels count as 2. Dark stars block nearby growth; clear beside one to dissolve it. New skies offer a match in the first shower. Matching colors travel together, and dry boards receive a matching run in a later preview when a low column has room. Call the next shower yourself, or clear while paused. Tune shower pace and dark-star frequency in Settings, and replay or start a new sky when the board fills. Falling sky is the default in Debug and Release; progress stays on this device.
+A small native iOS falling-sky puzzle. Start the sky, then clear connected matching jewels worth at least 3 starlight while new stars arrive. Large jewels count as 2. Dark stars block nearby growth; clear beside one to dissolve it. New skies offer a match in the first shower. Matching colors travel together, and dry boards receive a matching run in a later preview when a low column has room. Call the next shower yourself, or clear while paused. Tune shower pace and dark-star frequency in the sky menu, and replay or start a new sky when the board fills. Falling sky is the default in Debug and Release; progress stays on this device.
 
-The current [roadmap](docs/ROADMAP.md) and [falling-sky playtest](docs/PLAYTEST-FALLING-SKY.md) track the next gameplay and device-validation work.
+The current [roadmap](docs/ROADMAP.md) and [falling-sky playtest](docs/PLAYTEST-FALLING-SKY.md) track the next gameplay and device-validation work. The [compact HUD trial](docs/evidence/compact-hud-2026-10-17/README.md) keeps score/goal and a quiet menu above the board, with a subtle arrival cue instead of the exact forecast strip. Pause is in the menu; Start/Resume and manual advance appear while paused.
 
-Try the first goal-driven sky from **Settings → Start First Light**. This starts a new round: collect **18 starlight** with steady showers and no dark stars. Replay repeats the challenge; New sky returns to survival. There is one challenge prototype, with no campaign or unlock progression.
+Try the first goal-driven sky from **Sky menu → Start First Light**. This starts a new round: collect **18 starlight** with steady showers and no dark stars. Replay repeats the challenge; New sky returns to survival. There is one challenge prototype, with no campaign or unlock progression.
 
 ## Open and run
 
@@ -37,11 +37,11 @@ The character star cast is enabled by default in Debug and Release. The original
 - Original Debug puzzle retains offline-rendered crystals and a complete procedural fallback
 - Bounded clear fragments, downward settling and diagonal refill presentation
 - Optional local quiet-tuck sound and soft haptics (off by default); Calm effects honors Reduce Motion
-- Match outlines and a ready-group count; bounded clear rings and a collected-score popup
+- Matching-group outlines; group count in the menu and board accessibility; bounded clear rings and a collected-score popup
 - VoiceOver alternative grid with row/column, jewel name and connected-group size
 - On-device falling-sky save after committed events; replay or new sky resets the round
 
-Falling-sky artwork comes from the shared, bounded [star-cast material factory](docs/design/star-cast/README.md), used by the board, comets and preview. It is authored drawing code with a fixed cache, not a cropped concept sheet or an external dependency.
+Falling-sky artwork comes from the shared, bounded [star-cast material factory](docs/design/star-cast/README.md), used by the board and comets. It is authored drawing code with a fixed cache, not a cropped concept sheet or an external dependency.
 
 The Debug classic puzzle artwork comes from the [sealed v2 crystal handoff](Artwork/Crystals/v2/README.md) and its [manifest](Artwork/Crystals/v2/manifest.json). It is newly authored Blender geometry, material and lighting based on visual references, not recovered original source or an alpha-identical replacement. The app uses the five packaged atlases together; if any member is missing or malformed, every kind uses the existing procedural material factory. Rendering remains SpriteKit 2D with no runtime 3D or external asset service. The original aqua pilot remains a separate explicit comparison.
 

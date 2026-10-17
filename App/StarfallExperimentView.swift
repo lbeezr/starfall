@@ -23,57 +23,39 @@ import StarfallCore
             GeometryReader { viewport in
                 ScrollView {
                     VStack(spacing: StarfallTheme.Spacing.small) {
-                        HStack(spacing: 12) {
-                            Text(store.game.challenge?.title ?? "Starfall")
-                                .font(StarfallTheme.Typography.gameTitle)
-                            Spacer(minLength: 4)
-                            Text(store.game.challenge.map { "\(store.game.score) / \($0.target)" } ?? "\(store.game.score)")
-                                .font(StarfallTheme.Typography.gameTitle).monospacedDigit()
-                                .accessibilityLabel(store.game.challenge.map { "\(store.game.score) of \($0.target) starlight collected" } ?? "\(store.game.score) starlight")
-                                .accessibilityIdentifier("experiment.score")
-                            Image(systemName: "sparkle").foregroundStyle(StarfallTheme.Colors.actionPrimary)
-                            Button { settings = true } label: { Image(systemName: "gearshape") }
-                                .accessibilityLabel("Settings").accessibilityIdentifier("experiment.settings")
-                        }
-                        .buttonStyle(StarfallGameButtonStyle())
-                        forecast
-                        board.frame(height: max(min(viewport.size.width - 24, StarfallTheme.Layout.contentWidth - 24), viewport.size.height - (largeText ? 310 : 202)))
+                        compactHeader
+                        board
+                            .frame(minHeight: min(viewport.size.width - 24, StarfallTheme.Layout.contentWidth - 24))
+                            .layoutPriority(1)
                         if store.game.isOver {
                             Text(store.game.outcome == .won ? "First Light complete" : "This sky is full")
                                 .font(StarfallTheme.Typography.gameTitle)
                                 .accessibilityAddTraits(.isHeader).accessibilityIdentifier("experiment.outcome")
-                        }
-                        controlLayout {
-                            if !store.game.isOver {
-                                Button { store.togglePause() } label: {
-                                    Image(systemName: store.isPaused ? "play.fill" : "pause.fill")
-                                }
-                                .accessibilityLabel(store.isPaused ? (store.game.turns == 0 ? "Start sky" : "Resume sky") : "Pause sky")
-                                .disabled(store.suspended).accessibilityIdentifier("experiment.pause")
+                            restartControls.buttonStyle(StarfallGameButtonStyle())
+                            Text(store.message)
+                                .font(StarfallTheme.Typography.gameDetail)
+                                .foregroundStyle(StarfallTheme.Colors.textSecondary)
+                                .fixedSize(horizontal: false, vertical: true)
+                                .accessibilityIdentifier("experiment.message")
+                        } else if store.isPaused {
+                            controlLayout {
+                                Button(store.game.turns == 0 ? "Start sky" : "Resume sky") { store.togglePause() }
+                                    .disabled(store.suspended)
+                                    .accessibilityIdentifier("experiment.pause")
+                                if !largeText { Spacer(minLength: 0) }
                                 Button("Next shower") { store.callShower() }
                                     .disabled(store.busy || store.suspended)
-                                    .accessibilityHint("Bring the preview down now. Works while paused.")
+                                    .accessibilityHint("Bring down one shower while staying paused.")
                                     .accessibilityIdentifier("experiment.next")
-                                if !largeText { Spacer(minLength: 0) }
-                                Text("\(store.game.legalGroups.count) ready")
-                                    .accessibilityLabel("\(store.game.legalGroups.count) matching groups ready")
-                                    .accessibilityIdentifier("experiment.matches")
-                            } else {
-                                restartControls
                             }
+                            .buttonStyle(StarfallGameButtonStyle())
                         }
-                        .buttonStyle(StarfallGameButtonStyle())
-                        Text(store.message)
-                            .foregroundStyle(StarfallTheme.Colors.textSecondary)
-                            .multilineTextAlignment(.center)
-                            .fixedSize(horizontal: false, vertical: true)
-                            .accessibilityIdentifier("experiment.message")
                     }
                     .font(StarfallTheme.Typography.gameDetail)
                     .padding(.horizontal, StarfallTheme.Spacing.medium)
                     .padding(.vertical, StarfallTheme.Spacing.small)
                     .frame(maxWidth: StarfallTheme.Layout.contentWidth)
-                    .frame(maxWidth: .infinity)
+                    .frame(maxWidth: .infinity, minHeight: viewport.size.height, alignment: .top)
                 }
             }
             .accessibilityHidden(settings)
@@ -92,29 +74,30 @@ import StarfallCore
 
     private func updateMotion() { store.setReducedMotion(reduceMotion || calmEffects || voiceOver) }
 
-    private var forecast: some View {
-        HStack(spacing: 8) {
-            Text("\(store.game.turns) \(store.game.turns == 1 ? "shower" : "showers")")
-                .monospacedDigit().accessibilityIdentifier("experiment.turns")
-            Spacer(minLength: 4)
-            if !store.game.isOver {
-                ForEach(store.forecast) { star in
-                    Image(uiImage: StarCast.image(for: star.kind))
-                        .resizable().interpolation(.high).scaledToFit()
-                        .frame(width: largeText ? 32 : 24, height: largeText ? 32 : 24)
-                    .accessibilityElement(children: .ignore)
-                    .accessibilityLabel(StarCast.character(for: star.kind).description)
-                    .accessibilityIdentifier("experiment.incoming.\(star.id % StarfallExperiment.maximumShowerSize)")
-                }
-                ShowerCountdown(deadline: store.nextShowerDate,
-                                paused: store.isPaused || store.suspended,
-                                arriving: store.pending?.arrivals.isEmpty == false)
-            }
+    private var compactHeader: some View {
+        HStack(spacing: StarfallTheme.Spacing.small) {
+            Image(systemName: "sparkle")
+                .foregroundStyle(StarfallTheme.Colors.actionPrimary).accessibilityHidden(true)
+            Text(store.game.challenge.map { "\(store.game.score) / \($0.target)" } ?? "\(store.game.score)")
+                .font(StarfallTheme.Typography.gameTitle).monospacedDigit()
+                .fixedSize(horizontal: false, vertical: true)
+                .accessibilityLabel(store.game.challenge.map { "\(store.game.score) of \($0.target) starlight collected" } ?? "\(store.game.score) starlight")
+                .accessibilityIdentifier("experiment.score")
+            Spacer(minLength: StarfallTheme.Spacing.small)
+            Button { settings = true } label: { Image(systemName: "ellipsis") }
+                .buttonStyle(StarfallGameButtonStyle())
+                .disabled(scenePhase != .active || store.suspended)
+                .accessibilityLabel("Sky menu").accessibilityHint("Pause, settings and how to play")
+                .accessibilityIdentifier("experiment.settings")
         }
-        .font(StarfallTheme.Typography.gameDetail)
-        .foregroundStyle(StarfallTheme.Colors.textSecondary)
-        .accessibilityElement(children: .contain)
-        .accessibilityIdentifier("experiment.forecast")
+    }
+
+    /// Menu suspension must be released before applying a player pause choice.
+    /// Both operations are synchronous on the main actor; no clock event can interleave.
+    private func togglePauseFromMenu() {
+        store.setSuspended(scenePhase != .active)
+        store.togglePause()
+        settings = false
     }
 
     private var board: some View {
@@ -123,6 +106,15 @@ import StarfallCore
                 ZStack {
                     RoundedRectangle(cornerRadius: StarfallTheme.Radius.board)
                         .fill(StarfallTheme.Colors.surface)
+                    VStack {
+                        SkyArrivalCue(deadline: store.nextShowerDate,
+                                      paused: store.isPaused || store.suspended || store.game.isOver,
+                                      arriving: store.pending?.arrivals.isEmpty == false,
+                                      reducedMotion: reduceMotion || calmEffects || voiceOver)
+                            .padding(.top, StarfallTheme.Spacing.small)
+                        Spacer(minLength: 0)
+                    }
+                    .allowsHitTesting(false)
                     SpriteView(scene: store.scene, options: [.allowsTransparency])
                         .allowsHitTesting(false).accessibilityHidden(true)
                     VStack(spacing: 0) {
@@ -139,6 +131,7 @@ import StarfallCore
             }
             .accessibilityElement(children: .contain)
             .accessibilityLabel("Starfall board, seven columns. Row one is the top.")
+            .accessibilityValue("\(store.game.turns) showers, \(store.game.legalGroups.count) matching groups ready")
             .accessibilityIdentifier("experiment.board")
             .accessibilityRotor("Matching groups") {
                 ForEach(store.game.legalGroups.compactMap(\.first), id: \.self) { cell in
@@ -190,8 +183,19 @@ import StarfallCore
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
                     if !store.game.isOver {
+                        Button(store.isPaused ? (store.game.turns == 0 ? "Start sky" : "Resume sky") : "Pause sky") {
+                            togglePauseFromMenu()
+                        }
+                        .buttonStyle(StarfallButtonStyle(role: .primary, expands: true))
+                        .disabled(scenePhase != .active)
+                        .accessibilityIdentifier("experiment.pause")
                         restartControls.buttonStyle(StarfallGameButtonStyle())
                     }
+                    if let challenge = store.game.challenge {
+                        Text(challenge.title).font(StarfallTheme.Typography.heading)
+                    }
+                    Text("\(store.game.turns) showers · \(store.game.legalGroups.count) matching groups ready")
+                        .accessibilityIdentifier("experiment.roundSummary")
                     if store.game.challenge == nil {
                         Button("Start First Light · 18 starlight") {
                             store.startFirstLight(); settings = false
@@ -212,17 +216,17 @@ import StarfallCore
                         .accessibilityIdentifier("experiment.calm")
                     Text("How to play").font(.headline).accessibilityAddTraits(.isHeader)
                     Text("Each star family has its own shape and face. Point counts identify the family, not its value: a small star is worth 1; a grown star is worth 2.")
-                    Text("After you start, a shower arrives every \(store.game.balance.pace.rawValue) seconds. Matching stars travel together. When no group is ready, a later shower brings a matching run to a low column when there is room. The preview shows what is coming. Landing places remain a surprise. Clearing does not delay the sky.")
+                    Text("After you start, a shower arrives every \(store.game.balance.pace.rawValue) seconds. Matching stars travel together. When no group is ready, a later shower brings a matching run to a low column when there is room. A soft light at the top of the board signals an approaching shower. Colors and landing places remain a surprise. Clearing does not delay the sky.")
                     Text("A star matching the small star on top grows it to value 2. A grown star cannot grow again, so the next star stacks above it.")
                     Text("Clear connected matching stars worth at least 3. A grown star counts as 2, so a grown star beside one small match can clear. Collect their combined value as starlight.")
                     Text("An occasional dark star stops the stars directly above, below, left and right from growing. Existing grown stars stay large. Clear any matching group touching it to dissolve it and free that space. Dark stars are not part of color matches and award no starlight.")
-                    Text("Make room before a star reaches a full column. Pause to clear at your own pace. Call next shower brings the preview down immediately, even while paused. Settings and leaving the app freeze the sky; missed showers never accumulate. Replay a sky to try different choices.")
+                    Text("Make room before a star reaches a full column. Open the menu to pause and clear at your own pace. While paused, Next shower brings down one shower immediately. The menu and leaving the app freeze the sky; missed showers never accumulate. Replay a sky to try different choices.")
                 }
                 .font(StarfallTheme.Typography.body).padding(20)
                 .fixedSize(horizontal: false, vertical: true)
             }
             .background(StarfallTheme.Colors.skyTop)
-            .navigationTitle("Sky settings")
+            .navigationTitle("Sky menu")
             .toolbar { Button("Done") { settings = false }.accessibilityIdentifier("experiment.done") }
         }
         .tint(StarfallTheme.Colors.actionPrimary)
@@ -287,17 +291,27 @@ private extension StarfallBalance.DarkStarFrequency {
         return "One dark star every \(gap.lowerBound)–\(gap.upperBound) showers. A fresh sky starts with one in shower \(gap.upperBound)."
     }
 }
-/// Only this small label refreshes with the clock; the board is event-driven.
-private struct ShowerCountdown: View {
+/// Only this small cue refreshes with the clock; the board stays event-driven.
+private struct SkyArrivalCue: View {
     let deadline: Date?
     let paused: Bool
     let arriving: Bool
+    let reducedMotion: Bool
+
     var body: some View {
         TimelineView(.periodic(from: .now, by: 0.25)) { context in
-            Text(paused ? "Paused" : arriving ? "Falling…" : "\(max(1, Int(ceil((deadline ?? context.date).timeIntervalSince(context.date)))))s")
-                .monospacedDigit()
-                .foregroundStyle(StarfallTheme.Colors.actionPrimary)
-                .accessibilityLabel(paused ? "Sky paused" : arriving ? "Stars arriving" : "Next shower approaching")
+            let approaching = !paused && !arriving && deadline.map { $0.timeIntervalSince(context.date) <= 1.25 } == true
+            let visible = !paused && (arriving || approaching)
+            Capsule()
+                .fill(StarfallTheme.Colors.actionPrimary.opacity(visible ? 0.65 : 0.12))
+                .frame(width: StarfallTheme.Layout.arrivalCueWidth, height: StarfallTheme.Layout.arrivalCueHeight)
+                .shadow(color: StarfallTheme.Colors.actionPrimary.opacity(visible ? 0.35 : 0),
+                        radius: StarfallTheme.Layout.arrivalCueGlow)
+                .animation(reducedMotion ? nil : .easeInOut(duration: 0.3), value: visible)
+                .frame(maxWidth: .infinity)
+                .accessibilityElement(children: .ignore)
+                .accessibilityLabel(paused ? "Sky paused" : arriving ? "Stars arriving" : approaching ? "Shower approaching" : "Sky flowing")
+                .accessibilityIdentifier("experiment.arrivalCue")
         }
     }
 }
