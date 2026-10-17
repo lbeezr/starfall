@@ -29,3 +29,5 @@ Ordinary Debug/Release launches open Welcome. Historical `--starfalls-reset` boa
 The optional `SkyCadenceCue` reads `nextShowerCadence` only. Baseline supplies no cue; candidate copy and a persistent large-text placement do not own scheduling.
 
 `SkyShowerPlacement` selects the calibrated iPhone 17 portrait camera contour. All other hardware/viewports and accessible layouts use the safe-area header. Both show the same committed ordered forecast through `SkyShowerTrail`; there is no trial flag. [Adoption and device limits](../docs/evidence/shower-forecast-adoption-2026-10-17/README.md).
+
+**Announced cadence adoption:** New skies use production Core `announcedCycleV1`; the previous B exporter/launch selector is removed. Core owns the sole algorithm. Older saves and same-sky replay retain their version; First Light and fixed gentle/steady settings retain timing. [Current contract](../docs/design/PACING_ADOPTION.md).

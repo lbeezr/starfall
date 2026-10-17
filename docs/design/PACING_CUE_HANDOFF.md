@@ -1,5 +1,7 @@
 # Pacing cue and native candidate handoff
 
+**Historical handoff:** The user subsequently selected B for production. Its current owner is [the adoption contract](PACING_ADOPTION.md); reproduce the commands below only from their pinned historical source. The current export tool is retired.
+
 **Status:** PARTIAL handoff; source committed, native gaps remain · **Owner:** task 4 · **Updated:** October 17, 2026
 
 The cue reads Store's committed `nextShowerCadence`: “Faster after next shower,” “Faster showers,” and “Breathing window.” Baseline A has no added cue. No Core, scheduler, generation or fixture algorithm changes. A persistent sibling outside the board/scroll content keeps the warning available at largest text sizes. Non-color symbols accompany text; focus exposes complete interval wording. Automatic speech is limited to the warning and breathing entry during active play, with no count chatter or safety promise.

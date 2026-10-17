@@ -124,7 +124,7 @@ import StarfallCore
 
     private func refreshCadence() {
         #if DEBUG
-        nextShowerCadence = (game.cadenceID == .openingV1 && game.challenge == nil ? timingLookup?(game) : nil) ?? game.cadenceStep
+        nextShowerCadence = (game.hasOpeningCascade && game.challenge == nil ? timingLookup?(game) : nil) ?? game.cadenceStep
         #else
         nextShowerCadence = game.cadenceStep
         #endif

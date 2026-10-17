@@ -4,6 +4,8 @@ Behavior proposals, production contracts and research supporting decisions.
 
 ## Start here
 
+[Announced pacing adoption](PACING_ADOPTION.md) owns the user-selected production cadence, save boundary and phone delivery acceptance.
+
 [Next pacing design](PACING_NEXT.md) analyzes the current source split, usable input time and a bounded timing comparison after opening/tracing integration. Proposed only.
 
 [Notification plan](NOTIFICATIONS.md) records the accepted optional weekly reminder policy; implementation is deferred.

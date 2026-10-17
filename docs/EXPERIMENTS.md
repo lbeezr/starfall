@@ -6,7 +6,7 @@ This is the authoritative status register for gameplay and presentation experime
 
 | Work | Status | Production boundary / next decision |
 | --- | --- | --- |
-| Timing after the opening | Local technical trial ready; user play pending | [Code analysis and design](design/PACING_NEXT.md). The locally integrated opening/tracing baseline and test-only cycle have [source-bound simulator acceptance](evidence/pacing-acceptance-2026-10-17/README.md). Compare steady three-second showers with the announced cycle using existing wave sizes; remote publication remains pending. Measure usable input and trace cancellation; adopt or remove after observed comparison. No new phone variant or adaptive difficulty. |
+| Timing after the opening | B selected by user for production; adoption verification in progress | [Adoption contract](design/PACING_ADOPTION.md). Normal new skies use six steady, three faster, three breathing intervals. Retire the export selector; preserve historical saves, replay and First Light. Human enjoyment is not inferred from automated checks. PR, main merge and one-app device delivery requested. |
 
 
 | Moonbeam charge / lower contour | Proposed; no implementation | [User idea and investigation questions](design/MECHANICS_IDEAS.md#moonbeam-charge-beneath-the-camera-island). Decide rescue effect and earning rule on fixed survival boards before a bounded core trial. Upper forecast remains independent; no charge/save/mechanic change. |

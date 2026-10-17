@@ -97,7 +97,7 @@ private struct Run: Codable {
                 deadline: deadline, phase: String(describing: state.cadence.phase), busy: state.busy,
                 inputEnabled: state.canClear, paused: state.paused, suspended: state.suspended, cells: cells?.map { [$0.row,$0.column] }))
         }
-        store.configureTimingTest(lookup: b ? { TimingCycleFixture.step(committedShowers: $0.turns, pace: $0.balance.pace) } : nil, observe: { event in
+        store.configureTimingTest(lookup: { (b ? SkyCadenceID.announcedCycleV1 : .openingV1).step(committedShowers: $0.turns, pace: $0.balance.pace) }, observe: { event in
             record(String(describing: event.kind), deadline: event.showerDeadline, snapshot: event.snapshot)
             switch event.kind {
             case .automaticShower, .manualShower:

@@ -63,7 +63,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
     private var savedCadence: SkyCadenceID?
     public var cadenceID: SkyCadenceID { savedCadence ?? (openingCascade == true ? .openingV1 : .originalV1) }
     public var cadenceStep: SkyCadenceStep { cadenceID.step(committedShowers: turns, pace: balance.pace) }
-    public var hasOpeningCascade: Bool { cadenceID == .openingV1 }
+    public var hasOpeningCascade: Bool { cadenceID != .originalV1 }
     public var isOpeningCascade: Bool { cadenceStep.phase == .opening }
     public var automaticShowerDelay: Double { cadenceStep.delay }
     public var balance: StarfallBalance { savedBalance ?? StarfallBalance(pace: .steady) }
@@ -74,10 +74,12 @@ public struct FallingSky: Codable, Equatable, Sendable {
     public var isOver: Bool { outcome != .playing }
     public var occupiedCount: Int { board.compactMap { $0 }.count }
 
-    public init(seed: UInt64, balance: StarfallBalance = StarfallBalance(), openingCascade: Bool = true) {
+    public init(seed: UInt64, balance: StarfallBalance = StarfallBalance(), openingCascade: Bool = true,
+                cadence: SkyCadenceID = .announcedCycleV1) {
+        precondition(!openingCascade || cadence != .originalV1)
         self.seed = seed
         self.openingCascade = openingCascade ? true : nil
-        savedCadence = openingCascade ? .openingV1 : nil
+        savedCadence = openingCascade ? cadence : nil
         savedBalance = balance
         cohesiveShowers = true
         showersUntilDark = balance.darkStars.showerGap.map { $0.upperBound - 1 } ?? 0
@@ -308,7 +310,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
 
     public var isValidSave: Bool {
         if let challenge, seed != challenge.seed || balance != challenge.balance || hasOpeningCascade { return false }
-        if let savedCadence, (savedCadence == .openingV1) != (openingCascade == true) { return false }
+        if let savedCadence, (savedCadence != .originalV1) != (openingCascade == true) { return false }
         guard board.count == 49, Self.showerSizes.contains(incoming.count),
               remainingColumns.allSatisfy({ (0..<7).contains($0) }),
               Set(remainingColumns).count == remainingColumns.count,

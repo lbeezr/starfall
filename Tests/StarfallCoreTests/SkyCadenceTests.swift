@@ -44,7 +44,7 @@ final class SkyCadenceTests: XCTestCase {
             var comparison = game
             for _ in 0..<30 where !game.isOver {
                 let before = game.cadenceStep
-                XCTAssertEqual(game.cadenceID, .openingV1)
+                XCTAssertEqual(game.cadenceID, .announcedCycleV1)
                 _ = TimingCycleFixture.step(committedShowers: comparison.turns, pace: comparison.balance.pace)
                 if let cell = game.legalGroups.first?.first {
                     game.clear(cell); comparison.clear(cell)
@@ -63,6 +63,25 @@ final class SkyCadenceTests: XCTestCase {
             XCTAssertEqual(replay.cadenceID, game.cadenceID)
             XCTAssertEqual(replay, FallingSky(seed: seed, balance: balance))
         }
+    }
+
+    func testNewSkiesAdoptCycleAndExplicitOpeningSavesKeepTheirTiming() throws {
+        let modern = FallingSky(seed: 5)
+        XCTAssertEqual(modern.cadenceID, .announcedCycleV1)
+        var baseline = FallingSky(seed: 5, cadence: .openingV1)
+        for _ in 0..<10 { baseline.letStarsFall() }
+        let restored = try JSONDecoder().decode(FallingSky.self, from: JSONEncoder().encode(baseline))
+        XCTAssertEqual(restored.cadenceID, .openingV1)
+        XCTAssertEqual(restored.cadenceStep, .init(delay: 3, phase: .steady))
+        XCTAssertEqual(restored.replay().cadenceID, .openingV1)
+        var cycle = modern
+        for _ in 0..<10 { cycle.letStarsFall() }
+        let cycleRestore = try JSONDecoder().decode(FallingSky.self, from: JSONEncoder().encode(cycle))
+        XCTAssertTrue(cycleRestore.isValidSave)
+        XCTAssertEqual(cycleRestore.cadenceStep, .init(delay: 2.5, phase: .faster))
+        XCTAssertEqual(cycleRestore.replay(), modern)
+        XCTAssertEqual(baseline.board, cycle.board)
+        XCTAssertEqual(baseline.incoming, cycle.incoming)
     }
 
     func testMissingMarkerKeepsBothHistoricalTimingContracts() throws {

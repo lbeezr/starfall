@@ -30,6 +30,13 @@ import StarfallCore
     private var showingCeremony: Bool { flow != .playing || endingReady }
     private var quietMotion: Bool { reduceMotion || calmEffects || voiceOver }
 
+    // Reserve the longest cue from round start: phase changes must not resize
+    // SpriteKit and settle an in-flight shower. Old skies and fixed paces keep their layout.
+    private var reservesTimingCueSpace: Bool {
+        store.game.cadenceID == .announcedCycleV1 && store.game.challenge == nil
+            && store.game.balance.pace == .brisk
+    }
+
     private var cadenceCueCopy: SkyCadenceCueCopy? {
         guard !showingCeremony, !store.game.isOver, store.game.challenge == nil else { return nil }
         return SkyCadenceCueCopy(step: store.nextShowerCadence)
@@ -44,8 +51,14 @@ import StarfallCore
         ZStack {
             VStack(spacing: 0) {
                 // A real sibling owns its space; scrolling cannot cover the cue.
-                if !settings, let copy = cadenceCueCopy {
-                    SkyCadenceCue(copy: copy)
+                if reservesTimingCueSpace {
+                    ZStack(alignment: .leading) {
+                        SkyCadenceCue(copy: SkyCadenceCueCopy(step: .init(delay: 3, phase: .steady, warnsFasterNext: true))!)
+                            .hidden().accessibilityHidden(true).accessibilityIdentifier("sky.cadence.measurement")
+                        if !settings, let copy = cadenceCueCopy {
+                            SkyCadenceCue(copy: copy)
+                        }
+                    }
                 }
                 GeometryReader { safeViewport in
                     if largeText {
@@ -61,11 +74,11 @@ import StarfallCore
                                 }
                             }
                         }
-                        .ignoresSafeArea(edges: cadenceCueCopy == nil ? .all : [.horizontal, .bottom])
+                        .ignoresSafeArea(edges: reservesTimingCueSpace ? [.horizontal, .bottom] : .all)
                     } else {
                         playfield(insets: safeViewport.safeAreaInsets, compact: safeViewport.size.height < 750,
                                   island: usesIslandTimer(size: safeViewport.size, topInset: safeViewport.safeAreaInsets.top))
-                            .ignoresSafeArea(edges: cadenceCueCopy == nil ? .all : [.horizontal, .bottom])
+                            .ignoresSafeArea(edges: reservesTimingCueSpace ? [.horizontal, .bottom] : .all)
                     }
                 }
             }

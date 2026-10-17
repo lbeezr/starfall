@@ -149,3 +149,5 @@ The [paused-feedback simulated follow-up](evidence/paused-feedback-2026-10-17/pl
 The selected [overlapping sky flow](design/SKY_FLOW.md) adds Welcome/Resume, explicit Begin and separate win/full-sky endings. It extends the adopted drawing game; integration verification is recorded with the flow evidence.
 
 The user selected the [curved shower forecast](evidence/shower-forecast-adoption-2026-10-17/README.md). It is default on calibrated iPhone 17 portrait; other hardware and accessible layouts retain a complete straight header forecast. Next verify physical fit/system-island expansion and forecast recognition before adding more camera profiles. The lower arc remains unused.
+
+**Current pacing decision (October 17):** The user selected the announced cycle for normal new skies and requested PR → main → existing-phone delivery. [Adoption and acceptance](design/PACING_ADOPTION.md) supersedes the comparative session requirement; enjoyment and device feel remain unmeasured until observed.

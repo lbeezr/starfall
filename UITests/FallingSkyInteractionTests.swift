@@ -832,7 +832,7 @@ final class SkyFlowInteractionTests: XCTestCase {
 
 /// Production forecast layouts: verifies lifecycle and fallback, not physical camera fit.
 final class ShowerForecastInteractionTests: XCTestCase {
-    @MainActor func testIslandTimerMenuBackgroundAndSafeAreaFallback() {
+    @MainActor func testCadenceForecastMenuBackgroundAndSafeAreaFallback() {
         continueAfterFailure = false
         let app = XCUIApplication()
         app.launchArguments = ["--starfalls-reset", "--starfalls-seed=5", "-calmEffects", "NO"]
@@ -844,13 +844,8 @@ final class ShowerForecastInteractionTests: XCTestCase {
         XCTAssertTrue(cue.waitForExistence(timeout: 5))
         let initialY = cue.frame.minY
         XCTAssertFalse((cue.value as? String ?? "").isEmpty, "The curve names its committed forecast")
-        let isCalibratedIsland = ProcessInfo.processInfo.environment["SIMULATOR_MODEL_IDENTIFIER"] == "iPhone18,3"
-        if isCalibratedIsland {
-            XCTAssertLessThan(initialY, 40, "Calibrated portrait uses the camera margin")
-        } else {
-            XCTAssertEqual(cue.frame.midY, app.buttons["experiment.settings"].frame.midY, accuracy: 1,
-                           "Fallback forecast aligns with the safe-area header, including phones without a cutout")
-        }
+        XCTAssertEqual(cue.frame.midY, app.buttons["experiment.settings"].frame.midY, accuracy: 1,
+                       "The adopted cadence reserves stable cue space and uses the safe header forecast")
         XCTAssertGreaterThanOrEqual(initialY, 0)
         let board = app.otherElements["experiment.board"]
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
@@ -861,11 +856,7 @@ final class ShowerForecastInteractionTests: XCTestCase {
         let menu = app.buttons["experiment.settings"]
         XCTAssertTrue(menu.isHittable); menu.tap()
         XCTAssertTrue(app.buttons["experiment.done"].waitForExistence(timeout: 5))
-        if isCalibratedIsland {
-            XCTAssertFalse(cue.exists, "Sheet presentation removes the camera decoration")
-        } else {
-            XCTAssertFalse(cue.isHittable, "The retained header forecast stays behind the modal menu")
-        }
+        XCTAssertFalse(cue.isHittable, "The header forecast stays behind the modal menu")
         XCTAssertFalse(app.buttons["experiment.cell.0.0"].exists, "Menu hides gameplay input")
         app.buttons["experiment.done"].tap()
         XCTAssertTrue(cue.waitForExistence(timeout: 5))

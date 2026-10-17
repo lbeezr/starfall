@@ -1,13 +1,15 @@
 import XCTest
 
 final class PacingCueUITests: XCTestCase {
-    // Exporter changes only this marker; normal production has no B launch route.
-    static let isCandidateExport = false
+    override func setUpWithError() throws {
+        // Sixteen native shower actions plus system Settings setup/restoration.
+        executionTimeAllowance = 240
+    }
 
-    @MainActor private func launch(_ policy: String = "B", largest: Bool = false) -> XCUIApplication {
+    @MainActor private func launch(largest: Bool = false) -> XCUIApplication {
         continueAfterFailure = false
         let app = XCUIApplication()
-        app.launchArguments = ["--starfalls-reset", "--starfalls-seed=5", "--pacing-policy=\(policy)"]
+        app.launchArguments = ["--starfalls-reset", "--starfalls-seed=5"]
         if largest { app.launchArguments += ["-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"] }
         app.launch()
         XCTAssertTrue(app.buttons["experiment.settings"].waitForExistence(timeout: 10))
@@ -38,7 +40,6 @@ final class PacingCueUITests: XCTestCase {
         XCTAssertLessThanOrEqual(cue.frame.maxY, app.frame.maxY)
     }
     @MainActor private func flow(largest: Bool, reduced: Bool) throws {
-        guard Self.isCandidateExport else { throw XCTSkip("B is available only in the explicit candidate export") }
         let (preferences, motion) = NativeSystemMotionSettings.open()
         let original = motion.value as? String == "1"
         NativeSystemMotionSettings.set(reduced, on: motion)
@@ -92,13 +93,7 @@ final class PacingCueUITests: XCTestCase {
     @MainActor func testNormalMotionWarningFasterBreathing() throws { try flow(largest: false, reduced: false) }
     @MainActor func testLargestTextKeepsCueVisibleWithControls() throws { try flow(largest: true, reduced: false) }
     @MainActor func testSystemReduceMotionKeepsLabels() throws { try flow(largest: false, reduced: true) }
-    @MainActor func testBaselineHasNoPhaseCue() {
-        let app = launch("A"); defer { app.terminate() }
-        for _ in 1...13 { advance(app) }
-        XCTAssertFalse(app.descendants(matching: .any)["sky.cadence"].firstMatch.exists)
-    }
-    @MainActor func testActiveCandidateForecastAndPhaseCueKeepSeparateSpace() throws {
-        guard Self.isCandidateExport else { throw XCTSkip("Requires the explicit candidate export") }
+    @MainActor func testActiveForecastAndPhaseCueKeepSeparateSpace() throws {
         let app = launch(); defer { app.terminate() }
         for _ in 1...9 { advance(app) }
         cue(app, "Faster after next shower")
@@ -116,8 +111,7 @@ final class PacingCueUITests: XCTestCase {
         XCTAssertEqual(app.buttons["experiment.cell.0.0"].frame, cellFrame)
         capture(app, "pacing-active-forecast-and-phase")
     }
-    @MainActor func testLargestCandidateClearUsesVisibleNativeCells() throws {
-        guard Self.isCandidateExport else { throw XCTSkip("Requires the explicit candidate export") }
+    @MainActor func testLargestClearUsesVisibleNativeCells() throws {
         let app = launch(largest: true); defer { app.terminate() }
         for _ in 1...9 { advance(app) }
         cue(app, "Faster after next shower")

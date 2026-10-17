@@ -1,5 +1,7 @@
 # Give Starfall a rhythm players can use
 
+**Superseded for adoption:** The user selected B for the ordinary game, PR/merge and in-place phone delivery on October 17. [Current adoption contract](PACING_ADOPTION.md). The analysis below retains its original comparison scope and evidence limits.
+
 **Status:** Local technical trial ready; user comparison pending; B not adopted · **Owner:** current pacing implementer · **Updated:** October 17, 2026
 
 Keep the beautiful empty-board cascade, establish a three-second baseline, then compare a small, announced timing cycle against it. Measure usable decision time before adding more stars or adaptive difficulty. The local combined trial is technically checked on the [recorded sources](../evidence/pacing-acceptance-2026-10-17/README.md); publication and human preference remain open.

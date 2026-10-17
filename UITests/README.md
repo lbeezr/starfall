@@ -17,3 +17,5 @@ Run relevant flows through the Starfall scheme. Keep bounded condition-based wai
 Its active forecast/phase check verifies the final presentation integration: separate vertical space, conservative B header fallback, accessible forecast value and unchanged native cell frames.
 
 `ShowerForecastInteractionTests` checks production camera/header placement, ordered forecast speech value, menu/background lifecycle and maximum-text fallback. Run it on a calibrated island phone and a non-island phone; inspect the attached captures separately from physical-device acceptance.
+
+**Announced cadence adoption:** New skies use production Core `announcedCycleV1`; the previous B exporter/launch selector is removed. Core owns the sole algorithm. Older saves and same-sky replay retain their version; First Light and fixed gentle/steady settings retain timing. [Current contract](../docs/design/PACING_ADOPTION.md).

@@ -14,3 +14,5 @@ Constellation walks add explicit five-distinct-star validation and selected-set 
 `FallingSky.cadenceStep` describes the interval after `turns`, toward shower `turns + 1`;
 `replay()` resets play while preserving cadence, balance and historical generation markers.
 Missing cadence markers use the saved opening contract. See the [consumer contract](../../docs/design/PACING_CORE_CONTRACT.md).
+
+New skies use production Core `announcedCycleV1`. The historical timing fixture is now a thin adapter to Core, not a second algorithm; old timing versions and First Light remain covered.

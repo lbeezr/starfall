@@ -1,16 +1,26 @@
-/// Persisted production timing versions. Experimental policies belong in test support.
+/// Persisted production timing versions; existing rounds retain their saved contract.
 public enum SkyCadenceID: String, Codable, Equatable, Sendable {
     case originalV1
     case openingV1
+    case announcedCycleV1
 
     /// The interval after `committedShowers`, leading to shower `committedShowers + 1`.
     /// Manual showers count; clears, elapsed time and presentation do not.
     public func step(committedShowers: Int, pace: StarfallBalance.Pace) -> SkyCadenceStep {
         precondition(committedShowers >= 0)
-        if self == .openingV1 && committedShowers < 4 {
+        if self != .originalV1 && committedShowers < 4 {
             return SkyCadenceStep(delay: committedShowers == 0 ? 0.25 : 1.8, phase: .opening)
         }
-        return SkyCadenceStep(delay: Double(pace.rawValue), phase: .steady)
+        // Gentle and steady remain explicit fixed-pace choices.
+        guard self == .announcedCycleV1, pace == .brisk else {
+            return SkyCadenceStep(delay: Double(pace.rawValue), phase: .steady)
+        }
+        let slot = (committedShowers - 4) % 12
+        switch slot {
+        case 0...5: return .init(delay: 3, phase: .steady, warnsFasterNext: slot == 5)
+        case 6...8: return .init(delay: 2.5, phase: .faster)
+        default: return .init(delay: 3.5, phase: .breathing)
+        }
     }
 }
 

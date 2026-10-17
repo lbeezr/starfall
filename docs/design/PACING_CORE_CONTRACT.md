@@ -1,5 +1,7 @@
 # Cadence consumer contract
 
+**Adoption update:** The user selected B for production. [Current contract](PACING_ADOPTION.md) supersedes the test-only policy boundary below; historical timing/indexing and observation details remain context.
+
 **Status:** Accepted contract; Core and build checks passed · **Owner:** task 2 · **Updated:** October 17, 2026
 
 Core exposes versioned timing without changing generation or player settings. Policy B remains a test-only fixture; the production game retains its existing opening and cadence. This implements the Core boundary of the [shared pacing design](PACING_NEXT.md) (original commit `590be47`), not adoption of its comparison.

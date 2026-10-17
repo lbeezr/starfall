@@ -680,14 +680,14 @@ extension FallingSkyStoreTests {
 }
 
 extension FallingSkyStoreTests {
-    @MainActor func testTimingCandidateUsesCanonicalFixtureAndPublishesNextIntervalBeforeSchedule() throws {
+    @MainActor func testProductionCyclePublishesNextIntervalBeforeSchedule() throws {
         let suite = "Pacing.Cycle.\(UUID())"
         let defaults = UserDefaults(suiteName: suite)!
         defer { defaults.removePersistentDomain(forName: suite) }
         let clock = ManualRainClock(), presenter = FallingSkyRecorder()
         let store = FallingSkyStore(defaults: defaults, arguments: ["--starfalls-reset", "--starfalls-seed=5"], presenter: presenter, clock: clock)
         var events: [FallingSkyStore.TimingEvent] = []
-        store.configureTimingTest(lookup: { TimingCycleFixture.step(committedShowers: $0.turns, pace: $0.balance.pace) }, observe: { events.append($0) })
+        store.configureTimingTest(observe: { events.append($0) })
         store.setSuspended(false)
         let initial = store.game
         // Manual showers consume identical slots, even with no running clock.
@@ -778,7 +778,6 @@ extension FallingSkyStoreTests {
     @MainActor func testCandidateAutomaticBoundariesSurviveSettingsPauseAndMotion() throws {
         let (store, presenter, clock, _) = makeOpeningStore()
         store.setSuspended(true)
-        store.configureTimingTest(lookup: { TimingCycleFixture.step(committedShowers: $0.turns, pace: $0.balance.pace) })
         store.setSuspended(false); store.togglePause()
         for count in 0..<16 {
             let cadence = store.nextShowerCadence

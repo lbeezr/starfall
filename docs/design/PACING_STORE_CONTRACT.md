@@ -1,5 +1,7 @@
 # Store cadence and comparison boundary
 
+**Adoption update:** The user selected B for production. [Current contract](PACING_ADOPTION.md) supersedes the test-only policy boundary below; historical timing/indexing and observation details remain context.
+
 **Status:** Ready for review · **Owner:** task 3 · **Updated:** October 17, 2026
 
 The store consumes Core cadence without adopting candidate B. Production retains its current opening, selected balance, historical restores and First Light. Same-sky restart uses Core's `replay()` so saved cadence and generation markers survive.
