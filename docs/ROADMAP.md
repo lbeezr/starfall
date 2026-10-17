@@ -16,6 +16,8 @@ Build a small, readable falling-sky puzzle worth replaying. **Constellation trac
 
 The [diagonal constellation investigation](evidence/constellations-2026-10-17/README.md) responds to physical-phone feedback about sparse clears. The user confirmed five actual stars, then chose swiping and clearing only the traced subset. The [latest isolated build](evidence/constellation-trace-2026-10-17/README.md) supersedes the earlier whole-component tap pair. Shipping generation and the phone round are unchanged.
 
+Optional Game Center Friends/Global rankings are implemented locally with offline play preserved; [Apple setup and live acceptance](design/GAME_CENTER.md) remain open. This does not adopt the earlier custom Cup or ceremony proposal.
+
 ## What happens next
 
 | Priority | Next action | Done when |

@@ -49,6 +49,9 @@ import StarfallCore
     var hapticsEnabled: Bool {
         didSet { defaults.set(hapticsEnabled, forKey: "starfall.haptics") }
     }
+    @ObservationIgnored var rankedPlayerID: (() -> String?)?
+    @ObservationIgnored var rankedResultHandler: ((SkyRankedResult) -> Void)?
+    @ObservationIgnored private var rankingSession: SkyRankingSession
     let scene: FallingSkyScene
     @ObservationIgnored private let feedback: any FallingSkyFeedbackProviding
     @ObservationIgnored private let defaults: UserDefaults
@@ -77,11 +80,13 @@ import StarfallCore
         if !arguments.contains("--starfalls-reset"), let data = defaults.data(forKey: Self.saveKey),
            let saved = try? JSONDecoder().decode(FallingSky.self, from: data), saved.isValidSave {
             game = saved
+            rankingSession = SkyRankingSession.restore(defaults: defaults, gameData: data)
             message = saved.outcome == .won ? "First Light complete. Replay it or start a new sky." : saved.isOver ? "This sky is full. Replay it or try a new sky." : "Your sky is paused. Resume when you're ready."
         } else {
             let argument = arguments.first { $0.hasPrefix("--starfalls-seed=") }
             let seed = argument.flatMap { UInt64($0.dropFirst("--starfalls-seed=".count)) } ?? 5
             game = FallingSky(seed: seed)
+            rankingSession = SkyRankingSession(eligible: !arguments.contains("--starfalls-reset"))
         }
         #if DEBUG
         if arguments.contains("--starfalls-reset"), arguments.contains("--observatory-review") {
@@ -212,6 +217,7 @@ import StarfallCore
         } else {
             game = FallingSky(seed: sameSky ? game.seed : UInt64.random(in: 0...UInt64.max), balance: game.balance)
         }
+        rankingSession = SkyRankingSession(eligible: game.challenge == nil && game.balance == StarfallBalance())
         remaining = showerInterval
         message = sameSky ? "Same sky, a fresh start. Start when you're ready." : "A new sky. Start when you're ready."
         save(); presenter.render(game)
@@ -223,6 +229,7 @@ import StarfallCore
         freezeClock()
         settlePresentation()
         game = FallingSky(challenge: .firstLight)
+        rankingSession = SkyRankingSession(eligible: false)
         remaining = showerInterval
         message = "Collect 18 starlight to complete First Light. Start the sky or call a shower."
         save(); presenter.render(game)
@@ -232,6 +239,7 @@ import StarfallCore
         guard game.challenge == nil, balance != game.balance else { return }
         freezeClock()
         game.setBalance(balance)
+        rankingSession.eligible = false
         remaining = showerInterval
         settlePresentation()
         message = "Balance updated. Your sky is ready when you are."
@@ -275,7 +283,30 @@ import StarfallCore
         deliverRainIfReady()
     }
 
+    func deliverRankedResult() {
+        guard let result = rankingSession.result, let rankedResultHandler else { return }
+        rankedResultHandler(result)
+        rankingSession.result = nil
+        persistRankingSession()
+    }
+
     private func save() {
-        if let data = try? JSONEncoder().encode(game) { defaults.set(data, forKey: Self.saveKey) }
+        guard let data = try? JSONEncoder().encode(game) else { return }
+        if game.isOver, !rankingSession.completed {
+            rankingSession.completed = true
+            if rankingSession.eligible, game.challenge == nil, game.balance == StarfallBalance(), game.score > 0 {
+                rankingSession.result = SkyRankedResult(score: game.score, playerID: rankedPlayerID?())
+            }
+        }
+        rankingSession.digest = SkyRankingSession.fingerprint(data)
+        defaults.set(data, forKey: Self.saveKey)
+        persistRankingSession()
+        deliverRankedResult()
+    }
+
+    private func persistRankingSession() {
+        if let data = try? JSONEncoder().encode(rankingSession) {
+            defaults.set(data, forKey: SkyRankingSession.key)
+        }
     }
 }

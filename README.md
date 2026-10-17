@@ -2,7 +2,7 @@
 
 <img src="App/Assets.xcassets/AppIcon.appiconset/Starfall-1024.png" width="96" alt="Starfall icon: Spark tumbling above lavender clouds">
 
-A small native iOS falling-sky puzzle. Clear matching stars as showers fill the board. Play at your own pace, or try **First Light**, one 18-starlight challenge. Progress stays on this device.
+A small native iOS falling-sky puzzle. Clear matching stars as showers fill the board. Play at your own pace, or try **First Light**, one 18-starlight challenge. Your sky stays on this device. Optional Game Center rankings compare completed standard skies with friends or all players; the game works fully offline and without signing in.
 
 [Roadmap](docs/ROADMAP.md) · [Visual reference and cast](docs/design/VISUAL_REFERENCE.md) · [Playtest](docs/PLAYTEST-FALLING-SKY.md) · [Documentation map](docs/README.md)
 
@@ -14,6 +14,8 @@ A small native iOS falling-sky puzzle. Clear matching stars as showers fill the 
 - **Try a goal:** Choose **Sky menu → Start First Light** to start a new round with steady showers, no dark stars and an 18-starlight target. Replay repeats it; New sky returns to survival. When a survival board fills, replay or start a new sky.
 
 New skies offer a match in the first shower. Matching colors travel together; dry boards receive a matching run in a later preview when a low column has room. The [compact HUD](docs/evidence/compact-hud-2026-10-17/README.md) keeps score/goal and the sky menu above the board, with an arrival cue instead of the exact forecast strip.
+
+See [Game Center setup and offline behavior](docs/design/GAME_CENTER.md) before using live rankings. The Apple leaderboard and signing capability must be configured separately.
 
 ## Open and run
 
@@ -65,7 +67,7 @@ The package records its pre-adoption handoff state and is preserved unchanged. R
 
 ## Product boundaries
 
-Falling sky is the default in Debug and Release. There is one optional challenge, with no campaign or unlock progression. No power-ups, backend, accounts, analytics, ads, purchases, paid assets or external SDKs.
+Falling sky is the default in Debug and Release. There is one optional challenge, with no campaign or unlock progression. No power-ups, custom backend, Starfall accounts, analytics, ads, purchases, paid assets or external SDKs. Optional Apple Game Center provides online identity and rankings; gameplay remains fully offline.
 
 `Config/Clean.xcconfig` supplies `STARFALL_CLEAN`; all existing configurations are clean. Monetization code, dependencies, UI and entitlements are physically absent. See `AGENTS.md` for the boundary for any future optional edition. No speculative monetization subsystem is implemented.
 
