@@ -1,6 +1,6 @@
 # Opal and storms: main-based development acceptance
 
-**Verified within the scope below.** Product source is `5b326dccd52d828f8573fd5ac943f024243e9a23`, based on main `b3bde49`. [Source hashes](source.json) match a clean Git export byte-for-byte, including app, Core, tests, assets, project and changed tooling. Documentation was finalized afterward. The earlier branch at `1a3ddc5` was preserved; unpublished rankings work was excluded.
+**Verified within the scope below.** The locally tested product source is `5b326dccd52d828f8573fd5ac943f024243e9a23`, based on main `b3bde49`. Its published equivalent is `0685db4e98a5bf1f9e68602e03382a90d143f825`; both have the identical complete Git tree `91505022c9f109353835141fd6714e914da9c5be`. [Publication mapping](publication.json) records all five source-identical commit pairs; use the published SHA when reproducing from a GitHub clone. [Source hashes](source.json) match a clean Git export byte-for-byte, including app, Core, tests, assets, project and changed tooling. Documentation was finalized afterward. The earlier branch at `1a3ddc5` was preserved; unpublished rankings work was excluded.
 
 This adopts the user-approved round, soft Opal connector and nine-lighter/three-heavy shower cycle in regular new survival skies. Historical saves/replays and First Light retain their generation. Main's adopted timing remains independent; “Lighter showers” does not promise slower arrivals. User approval establishes implementation direction, not observed enjoyment.
 
