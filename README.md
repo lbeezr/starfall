@@ -16,6 +16,9 @@ A small native iOS falling-sky puzzle. Clear matching stars as showers fill the 
 
 New skies start empty, then open with four closely spaced animated showers. Clear between waves as they settle; the default rhythm then repeats six showers at three seconds, three at 2.5 seconds, and three at 3.5 seconds. The faster passage is announced in advance. Saved older skies and First Light keep their original cadence. At the gentle/steady settings, showers retain the selected fixed interval. New skies offer a match in the first shower. Matching colors travel together; dry boards receive a matching run in a later preview when a low column has room. The [compact HUD](docs/evidence/compact-hud-2026-10-17/README.md) keeps score/goal and the sky menu above the board, with an arrival cue instead of the exact forecast strip.
 
+New survival skies also use the approved [Opal and storm rules](docs/design/WHITE_STAR_AND_STORMS.md): a white Opal Orb can join the colored family you start on, and nine lighter showers alternate with three heavy showers. Clearing spends any included Opal; she is worth one light and never grows. Density and timing cues describe separate parts of the forecast. Older saved skies and replays keep their generation; First Light excludes both mechanics. [Integration evidence](docs/evidence/opal-main-integration-2026-10-17/README.md) distinguishes tested behavior from human enjoyment, which remains unmeasured.
+
+
 [Automatic connected-iPhone updates](scripts/README.md#one-app-iphone-updates) keep one regular Starfall installation and its saved round.
 
 ## Open and run

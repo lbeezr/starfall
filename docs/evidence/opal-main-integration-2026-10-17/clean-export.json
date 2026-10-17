@@ -1,0 +1,37 @@
+{
+  "revision": "5b326dccd52d828f8573fd5ac943f024243e9a23",
+  "export": "/var/folders/fs/9shw9bf142jg3280dc9n3hhc0000gn/T/starfall-opal-main-clean-h_x14b8z",
+  "configuration": "Release arm64 unsigned",
+  "simulator": "536BCC00-751C-47BA-BC2F-C1702941CFC8 iPhone 17e iOS 27.0",
+  "checks": [
+    {
+      "command": [
+        "swift",
+        "test"
+      ],
+      "log": "/tmp/starfall-opal-clean-core.log",
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "xcodebuild",
+        "-project",
+        "/var/folders/fs/9shw9bf142jg3280dc9n3hhc0000gn/T/starfall-opal-main-clean-h_x14b8z/Starfall.xcodeproj",
+        "-scheme",
+        "Starfall",
+        "-configuration",
+        "Release",
+        "-destination",
+        "platform=iOS Simulator,id=536BCC00-751C-47BA-BC2F-C1702941CFC8",
+        "-derivedDataPath",
+        "/tmp/starfall-opal-clean-release-build",
+        "ARCHS=arm64",
+        "ONLY_ACTIVE_ARCH=YES",
+        "CODE_SIGNING_ALLOWED=NO",
+        "build"
+      ],
+      "log": "/tmp/starfall-opal-clean-release.log",
+      "exitCode": 0
+    }
+  ]
+}

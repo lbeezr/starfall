@@ -8,6 +8,10 @@ Build a small, readable falling-sky puzzle worth replaying. **Constellation trac
 
 **Open limits:** No gameplay participant preference results or general physical-device acceptance. Crystal Glow art direction and character masters are user-approved; runtime verification and remaining limits are recorded in the [cast integration evidence](evidence/crystal-glow-integration-2026-10-17/README.md). Accessibility evidence remains source-bound.
 
+## Current mechanics integration — October 17, 2026
+
+The user approved the shared white connector and storm phases for the regular app, then selected the round Opal Orb and requested soft motion. [Current contract](design/WHITE_STAR_AND_STORMS.md) and [main-based integration evidence](evidence/opal-main-integration-2026-10-17/README.md) supersede the earlier research-only adoption boundary below. Preserve the independently adopted announced timing cycle. Development acceptance passed; GitHub delivery is pending. Actual combined human play and replay preference remain open. Pocketed alternate silhouettes carry no new mechanic or progression commitment.
+
 ## The game we are improving
 
 <img src="evidence/compact-hud-2026-10-17/active.png" width="240" alt="Native gameplay capture with a compact score and menu header above the star board">
