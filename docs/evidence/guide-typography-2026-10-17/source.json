@@ -1,0 +1,13 @@
+{
+  "source": "fee0ffc819210f82054f029d3b58d993fb53af8b",
+  "files": {
+    "App/FallingSkyHUD.swift": "7418013e550dec67787be71aa7239baeffec244f0189d9a72c24528890869d96",
+    "App/FallingSkyView.swift": "8732f76f11b44d7a2136afeb51c8bcb7d315136817738d3461cd44e88d627a05",
+    "App/StarfallTheme.swift": "67e8882a58352c50433fd42046b811de2b5c17c2c5fa8aded3fd6bc6a10b5747",
+    "UITests/ObservatoryInteractionTests.swift": "afeb4447ad01a177851da1ea8738e5d6a03a91ebe3405d72d2c9be2c9d19d85b"
+  },
+  "statusDuringTests": "Clean source; evidence/documentation added afterward",
+  "native": "/tmp/starfall-guide-typography.xcresult",
+  "core": "/tmp/starfall-guide-typography-core.log",
+  "release": "/tmp/starfall-guide-typography-release.log"
+}

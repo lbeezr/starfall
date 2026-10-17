@@ -81,6 +81,7 @@ struct SkyMenuGlyph: View {
     let title: String
     let message: String
     var titleIdentifier = "sky.guide.title"
+    var titleRole: StarfallTheme.Typography.GuideTitleRole = .character
     var showsPortrait = true
     @ViewBuilder let actions: Actions
     @Environment(\.dynamicTypeSize) private var textSize
@@ -94,7 +95,9 @@ struct SkyMenuGlyph: View {
                         .accessibilityHidden(true)
                 }
                 VStack(alignment: .leading, spacing: StarfallTheme.Spacing.compact) {
-                    Text(title).font(StarfallTheme.Typography.skyHeading).accessibilityIdentifier(titleIdentifier)
+                    Text(title).font(StarfallTheme.Typography.skyHeading)
+                        .dynamicTypeSize(...titleRole.maximumTextSize)
+                        .accessibilityIdentifier(titleIdentifier)
                         .foregroundStyle(StarfallTheme.Observatory.lanternGlow)
                     Text(message).font(StarfallTheme.Typography.supporting)
                         .foregroundStyle(StarfallTheme.Colors.textPrimary)
