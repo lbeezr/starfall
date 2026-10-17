@@ -85,41 +85,20 @@ import StarfallCore
         }
     }
 
-    private func shade(_ node: SKNode, at cell: Cell) {
-        node.alpha = 0.65
-        let ring = SKShapeNode(circleOfRadius: step * 0.45)
-        ring.position = point(cell)
-        ring.strokeColor = .systemPurple.withAlphaComponent(0.45)
-        ring.lineWidth = 1; ring.fillColor = .clear
-        grid.addChild(ring)
-    }
+    private func shade(_ node: SKNode) { node.alpha = 0.65 }
 
     func render(_ game: FallingSky) {
         rendered = game
         constellationTrail.removeAllChildren()
         removeAllActions(); effects.removeAllChildren(); effects.removeAllActions()
         pieces.removeAllChildren(); grid.removeAllChildren(); nodes.removeAll(); cellsByID.removeAll()
-        let matchable = Set(game.legalGroups.flatMap { $0 })
         for row in 0..<7 { for column in 0..<7 {
             let cell = Cell(row, column)
-            if matchable.contains(cell) {
-                let halo = SKShapeNode(circleOfRadius: step * 0.46)
-                halo.strokeColor = .white.withAlphaComponent(0.32)
-                halo.fillColor = .clear; halo.lineWidth = 1
-                if game.constellationGroup(at: cell).count >= 5 {
-                    halo.strokeColor = UIColor(StarfallTheme.Observatory.lanternGlow).withAlphaComponent(0.5)
-                    halo.glowWidth = 3
-                    if !reduceMotion {
-                        halo.run(.repeatForever(.sequence([.fadeAlpha(to: 0.3, duration: 1.1), .fadeAlpha(to: 0.85, duration: 1.1)])))
-                    }
-                }
-                halo.position = point(cell); grid.addChild(halo)
-            }
             if let gem = game.gem(at: cell) {
                 ground(gem, at: cell)
                 let node = makeNode(gem); node.position = point(cell)
                 node.zPosition = CGFloat(7-cell.row)
-                if game.isGrowthBlocked(at: cell) { shade(node, at: cell) }
+                if game.isGrowthBlocked(at: cell) { shade(node) }
                 pieces.addChild(node); nodes[gem.id] = node; cellsByID[gem.id] = cell
 
             }
@@ -146,12 +125,6 @@ import StarfallCore
                     guard let self else { return }
                     self.light(at: self.point(cell), color: old.gem(at: cell).map { StarCast.Identity($0).color } ?? .systemPurple, strength: 0.75)
                 }]))
-                let ring = SKShapeNode(circleOfRadius: step * 0.30)
-                ring.position = node.position
-                ring.strokeColor = old.gem(at: cell).map { StarCast.Identity($0).color } ?? .systemPurple
-                ring.lineWidth = 2; ring.glowWidth = 3
-                effects.addChild(ring)
-                ring.run(.sequence([.wait(forDuration: StarfallMotion.gatherDuration), .group([.scale(to: 1.7, duration: 0.24), .fadeOut(withDuration: 0.24)]), .removeFromParent()]))
                 node.run(.sequence([.scale(to: 0.91, duration: StarfallMotion.gatherDuration), .group([.fadeOut(withDuration: 0.12), .scale(to: 1.2, duration: 0.12), .rotate(byAngle: 0.18, duration: 0.12)]), .removeFromParent()]))
             }
         }
@@ -358,12 +331,6 @@ import StarfallCore
             arrival.gem.isLight ? .wait(forDuration: 0) : .sequence([.scaleX(to: 0.94, y: 1.08, duration: 0.12), .scaleX(to: 1, y: 1, duration: 0.16)]),
             .sequence([.rotate(toAngle: -node.zRotation * 0.6, duration: 0.12), .rotate(toAngle: 0, duration: 0.16)])
         ]))
-        let ring = SKShapeNode(circleOfRadius: step * (arrival.grew ? 0.42 : 0.28))
-        ring.position = node.position
-        ring.strokeColor = (StarCast.Identity(arrival.star).color).withAlphaComponent(0.85)
-        ring.lineWidth = 1.5; ring.glowWidth = 2
-        effects.addChild(ring)
-        ring.run(.sequence([.group([.scale(to: 1.7, duration: 0.28), .fadeOut(withDuration: 0.28)]), .removeFromParent()]))
     }
 }
 
@@ -439,11 +406,6 @@ extension FallingSkyScene {
         pulseShape.run(.sequence([.fadeAlpha(to:1,duration:0.06),.wait(forDuration:0.08),.fadeOut(withDuration:0.2),.removeFromParent()]))
         for cell in Set(path) {
             let center = point(cell)
-            let pulse = SKShapeNode(circleOfRadius: step*0.15)
-            pulse.position = center; pulse.strokeColor = UIColor(StarfallTheme.Observatory.lanternGlow)
-            pulse.lineWidth = 2; pulse.glowWidth = 3
-            effects.addChild(pulse)
-            pulse.run(.sequence([.wait(forDuration:0.06),.group([.scale(to: 3, duration: 0.25), .fadeOut(withDuration: 0.3)]), .removeFromParent()]))
             for index in 0..<6 {
                 let angle = CGFloat(index) * .pi / 3
                 let spark = SKShapeNode(circleOfRadius: step*0.025)

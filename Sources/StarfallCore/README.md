@@ -15,4 +15,4 @@ Constellation walks add explicit five-distinct-star validation and selected-set 
 `replay()` resets play while preserving cadence, balance and historical generation markers.
 Missing cadence markers use the saved opening contract. See the [consumer contract](../../docs/design/PACING_CORE_CONTRACT.md).
 
-New skies use production Core `announcedCycleV1`. The historical timing fixture is now a thin adapter to Core, not a second algorithm; old timing versions and First Light remain covered.
+New skies use production Core `announcedCycleV2` (six 2-second, three 1.7-second and three 2.5-second intervals). The historical timing fixture is now a thin adapter to Core, not a second algorithm; old timing versions and First Light remain covered.
