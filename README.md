@@ -1,6 +1,6 @@
 # Starfall
 
-A small native iOS puzzle prototype. Tap a connected group of at least three matching jewels to collect starlight. Clear **70 jewels in 18 moves**. No timer. Horizontal/vertical connections only; invalid taps are free. Jewels settle downward and refill from above. If a live board has no legal move, a free cluster appears. There are no chain cascades or special pieces.
+A small native iOS falling-sky puzzle. Start the sky, then clear connected matching jewels worth at least 3 starlight while new stars arrive. Large jewels count as 2. Dark stars block nearby growth; clear beside one to dissolve it. New skies offer a match in the first shower. Matching colors travel together, and dry boards receive a matching run in a later preview when a low column has room. Call the next shower yourself, or clear while paused. Tune shower pace and dark-star frequency in Settings, and replay or start a new sky when the board fills. Falling sky is the default in Debug and Release; progress stays on this device.
 
 ## Open and run
 
@@ -15,7 +15,8 @@ xcodebuild -project Starfall.xcodeproj -scheme Starfall \
 
 The local Swift package has no external dependencies. Core tests also run on Linux with Swift 5.9+. Xcode's app scheme does not contain the package tests: run `swift test` separately.
 
-Launch arguments:
+Launch arguments (original puzzle testing):
+- `--classic`: Debug-only original 70-jewel / 18-move puzzle
 - `--demo`: deterministic seed 42, opens the board, does not write game saves
 - `--demo --demo-clear`: deterministic seed 42 with its first legal group cleared through the real core before board presentation
 - `--reset-save`: removes the previous game save before starting normally
@@ -26,16 +27,17 @@ The current five-kind crystal family is enabled by default in Debug and Release.
 ## Scope
 
 - Pure deterministic puzzle core and Codable save state
-- SwiftUI menu/settings and SpriteKit board
+- SwiftUI falling-sky screen/settings and SpriteKit board
 - Offline-rendered crystals with five distinct color/shape pairings and a complete procedural fallback
 - Bounded clear fragments, downward settling and diagonal refill presentation
-- Optional local quiet-tuck sound (off by default); Calm effects honors Reduce Motion
+- Optional local quiet-tuck sound and soft haptics (off by default); Calm effects honors Reduce Motion
+- Match outlines and a ready-group count; bounded clear rings and a collected-score popup
 - VoiceOver alternative grid with row/column, jewel name and connected-group size
-- On-device auto-save after each valid move; new game resets progress
+- On-device falling-sky save after committed events; replay or new sky resets the round
 
 The default artwork comes from the [sealed v2 crystal handoff](Artwork/Crystals/v2/README.md) and its [manifest](Artwork/Crystals/v2/manifest.json). It is newly authored Blender geometry, material and lighting based on visual references, not recovered original source or an alpha-identical replacement. The app uses the five packaged atlases together; if any member is missing or malformed, every kind uses the existing procedural material factory. Rendering remains SpriteKit 2D with no runtime 3D or external asset service. The original aqua pilot remains a separate explicit comparison.
 
-The package records its pre-adoption handoff state and is preserved unchanged. Runtime adoption does not establish native visual, accessibility, performance or physical-device acceptance; see [the validation record](docs/VALIDATION.md). The [audio integration record](docs/design/audio/INTEGRATION.md) separately documents the local quiet-tuck starter. No network, tracking, account, collection, lore, extra modes, ad SDK or purchase SDK.
+The package records its pre-adoption handoff state and is preserved unchanged. Runtime adoption does not establish native visual, accessibility, performance or physical-device acceptance; see [the validation record](docs/VALIDATION.md). The [audio integration record](docs/design/audio/INTEGRATION.md) separately documents the local quiet-tuck starter. No network, tracking, account, collection, lore, ad SDK or purchase SDK.
 
 ## Editions
 

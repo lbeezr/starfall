@@ -1,0 +1,27 @@
+{
+  "sample": {
+    "seeds": "0...199",
+    "showers": 22,
+    "policy": "After each shower clear the first legal group, at most once; stop at overflow. No human reaction time or renderer/input gate simulation."
+  },
+  "baseline": {
+    "firstMatchMeanShowers": 7.28,
+    "firstMatchWorstShowers": 23,
+    "firstMatchWorstNote": "23 is a sentinel: no match in 22 showers",
+    "meanClears": 4.04,
+    "minimumClears": 0,
+    "maximumDryShowers": 22
+  },
+  "candidate": {
+    "firstMatchMeanShowers": 1,
+    "firstMatchWorstShowers": 1,
+    "meanClears": 12.67,
+    "minimumClears": 7,
+    "maximumDryShowers": 1
+  },
+  "idleSample": {
+    "seeds": "0...199",
+    "latestOverflowShower": 25
+  },
+  "limits": "These are regression samples, not player research or proof of overall difficulty/fun. Relief forecasts require a column with at least three empty slots; they do not prevent full-board loss."
+}

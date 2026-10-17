@@ -51,8 +51,11 @@ final class StarfallExperimentTests: XCTestCase {
         XCTAssertEqual(game.occupiedCount, 3)
     }
 
-    func testForecastVisitsEveryColumnBeforeRepeating() {
-        var game = StarfallExperiment(seed: 42)
+    func testLegacyForecastVisitsEveryColumnBeforeRepeating() throws {
+        let fresh = StarfallExperiment(seed: 42)
+        var json = try XCTUnwrap(JSONSerialization.jsonObject(with: JSONEncoder().encode(fresh)) as? [String: Any])
+        json.removeValue(forKey: "cohesiveShowers")
+        var game = try JSONDecoder().decode(StarfallExperiment.self, from: JSONSerialization.data(withJSONObject: json))
         var columns: [Int] = []
         while columns.count < 21 {
             columns += game.incoming.map(\.column)
@@ -127,7 +130,7 @@ final class StarfallExperimentTests: XCTestCase {
         XCTAssertEqual(clearing.score, 3)
     }
 
-    func testClearLeavesForecastAndFutureRandomSequenceUntouched() {
+    func testClearLeavesAnnouncedForecastUntouched() {
         var game = StarfallExperiment(seed: 5)
         for _ in 0..<20 where game.legalGroups.isEmpty && !game.isOver { game.letStarsFall() }
         let cell = game.legalGroups.first!.first!
@@ -138,7 +141,8 @@ final class StarfallExperimentTests: XCTestCase {
         XCTAssertEqual(game.incoming, preview); XCTAssertEqual(game.turns, showers)
         game.letStarsFall(); waiting.letStarsFall()
         XCTAssertFalse(waiting.isOver)
-        XCTAssertEqual(game.incoming, waiting.incoming)
+        // Future forecasts can respond to a dry board; the announced one never changes.
+        XCTAssertTrue(game.isValidSave); XCTAssertTrue(waiting.isValidSave)
     }
 
     func testSeededShowersVaryAcrossAllFourSizesAndHaveUniqueIDs() {

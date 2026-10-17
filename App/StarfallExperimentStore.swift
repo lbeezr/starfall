@@ -1,4 +1,3 @@
-#if DEBUG
 import UIKit
 import Observation
 import SwiftUI
@@ -43,7 +42,14 @@ import StarfallCore
     private(set) var nextShowerDate: Date?
     private(set) var message = "Start the sky. Clear matching jewels to make room; adjust the balance in Settings."
     private(set) var pending: StarfallExperimentTurn?
+    var soundEnabled: Bool {
+        didSet { defaults.set(soundEnabled, forKey: "soundEnabled"); if !soundEnabled { feedback.stopSounds() } }
+    }
+    var hapticsEnabled: Bool {
+        didSet { defaults.set(hapticsEnabled, forKey: "starfall.haptics") }
+    }
     let scene: StarfallExperimentScene
+    @ObservationIgnored private let feedback: any FallingSkyFeedbackProviding
     @ObservationIgnored private let defaults: UserDefaults
     @ObservationIgnored private let presenter: any ExperimentPresenting
     @ObservationIgnored private let clock: any ExperimentRainScheduling
@@ -56,8 +62,12 @@ import StarfallCore
     init(defaults: UserDefaults = .standard,
          arguments: [String] = ProcessInfo.processInfo.arguments,
          presenter: (any ExperimentPresenting)? = nil,
-         clock: (any ExperimentRainScheduling)? = nil) {
+         clock: (any ExperimentRainScheduling)? = nil,
+         feedback: (any FallingSkyFeedbackProviding)? = nil) {
         self.defaults = defaults
+        self.feedback = feedback ?? GameFeedback()
+        soundEnabled = defaults.bool(forKey: "soundEnabled")
+        hapticsEnabled = defaults.bool(forKey: "starfall.haptics")
         self.clock = clock ?? ExperimentRainClock()
         let scene = StarfallExperimentScene()
         self.scene = scene
@@ -78,7 +88,7 @@ import StarfallCore
 
     var forecast: [IncomingStar] { pending?.forecast ?? game.incoming }
     var showerInterval: TimeInterval { TimeInterval(game.balance.pace.rawValue) }
-    var canClear: Bool { !busy && !suspended && !isPaused && !game.isOver && !rainDue }
+    var canClear: Bool { !busy && !suspended && !game.isOver && !rainDue }
 
     func clear(_ cell: Cell) {
         guard canClear else { return }
@@ -90,7 +100,17 @@ import StarfallCore
             announce(message)
             return
         }
+        feedback.collected(soundEnabled: soundEnabled, hapticsEnabled: hapticsEnabled,
+                           reducedMotion: presenter.reduceMotion)
         present(turn, from: old)
+    }
+
+    /// Explicit input works while paused too, without starting an automatic clock.
+    func callShower() {
+        guard !busy, !suspended, !game.isOver else { return }
+        freezeClock()
+        remaining = showerInterval
+        commitShower()
     }
 
     func togglePause() {
@@ -99,7 +119,8 @@ import StarfallCore
         if isPaused {
             freezeClock()
             settlePresentation()
-            message = "Sky paused. Take your time."
+            feedback.stopSounds()
+            message = "Sky paused. Clear at your pace or call the next shower."
         } else {
             message = "Watch the preview. Clear matching jewels before the columns fill."
             armClock()
@@ -132,6 +153,10 @@ import StarfallCore
     private func deliverRainIfReady() {
         guard rainDue, !busy, !suspended, !isPaused, !game.isOver else { return }
         rainDue = false
+        commitShower()
+    }
+
+    private func commitShower() {
         let old = game
         guard let turn = game.letStarsFall() else { return }
         if game.isOver { freezeClock() }
@@ -167,6 +192,7 @@ import StarfallCore
 
     func restart(sameSky: Bool) {
         isPaused = true
+        feedback.stopSounds()
         freezeClock(); remaining = showerInterval
         settlePresentation()
         game = StarfallExperiment(seed: sameSky ? game.seed : UInt64.random(in: 0...UInt64.max), balance: game.balance)
@@ -200,7 +226,7 @@ import StarfallCore
     func setSuspended(_ value: Bool) {
         guard suspended != value else { return }
         suspended = value
-        if value { freezeClock(); settlePresentation() }
+        if value { feedback.stopSounds(); freezeClock(); settlePresentation() }
         else {
             // Persist the retained store's chosen sky before its clock can run.
             save()
@@ -226,7 +252,9 @@ import StarfallCore
     }
 
     private func announce(_ text: String) {
-        if UIAccessibility.isVoiceOverRunning { UIAccessibility.post(notification: .announcement, argument: text) }
+        if UIAccessibility.isVoiceOverRunning {
+            feedback.stopSounds()
+            UIAccessibility.post(notification: .announcement, argument: text)
+        }
     }
 }
-#endif

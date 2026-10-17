@@ -3,7 +3,19 @@ import SpriteKit
 import StarfallCore
 
 @main struct StarfallApp: App {
-    var body: some Scene { WindowGroup { StarfallView() } }
+    var body: some Scene {
+        WindowGroup {
+            #if DEBUG
+            if ProcessInfo.processInfo.arguments.contains("--classic") || ProcessInfo.processInfo.arguments.contains("--demo") {
+                StarfallView()
+            } else {
+                StarfallExperimentView()
+            }
+            #else
+            StarfallExperimentView()
+            #endif
+        }
+    }
 }
 
 

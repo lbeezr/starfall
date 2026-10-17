@@ -1,6 +1,6 @@
 # Starfall repository instructions
 
-Keep the prototype small: a 7×7 orthogonal tap-to-clear puzzle, five jewel types, groups of 3+, 70 cleared jewels in 18 valid moves. No timer, power-ups, progression, backend, accounts, paid assets or external SDKs. Invalid taps spend no move. Win takes precedence on the last move. Dead-board recovery is free and bounded.
+Keep the prototype small. Falling sky is the default game in Debug and Release: deterministic accumulating stars, automatic showers with pause, dark stars, and local balance controls. The original 7×7 orthogonal puzzle remains available for Debug testing: five jewel types, groups of 3+, 70 cleared jewels in 18 valid moves, no timer, invalid taps spend no move, win takes precedence on the last move, and dead-board recovery is free and bounded. No power-ups, progression, backend, accounts, paid assets or external SDKs.
 
 - Keep deterministic rules in Sources/StarfallCore, with no UI imports; test with `swift test`.
 - App uses SwiftUI and SpriteKit, iOS 17+. Shared scheme: Starfall.

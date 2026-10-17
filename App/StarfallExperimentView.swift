@@ -1,4 +1,3 @@
-#if DEBUG
 import SwiftUI
 import SpriteKit
 import StarfallCore
@@ -7,7 +6,6 @@ import StarfallCore
     @State private var store = StarfallExperimentStore()
     @State private var settings = false
     @AppStorage("calmEffects") private var calmEffects = false
-    @Environment(\.dismiss) private var dismiss
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.accessibilityVoiceOverEnabled) private var voiceOver
@@ -19,8 +17,6 @@ import StarfallCore
             ScrollView {
                 VStack(spacing: 14) {
                     HStack {
-                        Button("Close") { store.setSuspended(true); dismiss() }
-                            .accessibilityIdentifier("experiment.close")
                         Spacer()
                         Text("Starfall").font(StarfallTheme.Typography.title)
                         Spacer()
@@ -28,7 +24,7 @@ import StarfallCore
                             .accessibilityLabel("Settings").accessibilityIdentifier("experiment.settings")
                     }
                     .buttonStyle(StarfallButtonStyle(role: .quiet))
-                    Text("FALLING SKY · EXPERIMENT")
+                    Text("FALLING SKY")
                         .font(StarfallTheme.Typography.supporting)
                         .foregroundStyle(StarfallTheme.Colors.textSecondary)
                     HStack {
@@ -39,6 +35,9 @@ import StarfallCore
                     .font(StarfallTheme.Typography.heading).monospacedDigit()
                     forecast
                     board
+                    Text("\(store.game.legalGroups.count) matching \(store.game.legalGroups.count == 1 ? "group" : "groups") ready")
+                        .font(StarfallTheme.Typography.supporting)
+                        .accessibilityIdentifier("experiment.matches")
                     if store.game.isOver {
                         Text("This sky is full")
                             .font(StarfallTheme.Typography.title)
@@ -54,6 +53,11 @@ import StarfallCore
                         .buttonStyle(StarfallButtonStyle(role: .primary, expands: true))
                         .disabled(store.suspended || store.game.isOver)
                         .accessibilityIdentifier("experiment.pause")
+                    Button("Call next shower") { store.callShower() }
+                        .buttonStyle(StarfallButtonStyle(role: .quiet, expands: true))
+                        .disabled(store.busy || store.suspended || store.game.isOver)
+                        .accessibilityHint("Bring the preview down now. Works while the sky is paused.")
+                        .accessibilityIdentifier("experiment.next")
                     HStack {
                         Button("Replay this sky") { store.restart(sameSky: true) }
                             .accessibilityIdentifier("experiment.replay")
@@ -186,14 +190,18 @@ import StarfallCore
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
                     balanceControls
+                    Toggle("Gentle sound", isOn: $store.soundEnabled)
+                        .accessibilityIdentifier("experiment.sound")
+                    Toggle("Haptic feedback", isOn: $store.hapticsEnabled)
+                        .accessibilityIdentifier("experiment.haptics")
                     Toggle("Calm effects", isOn: $calmEffects)
                         .accessibilityIdentifier("experiment.calm")
                     Text("How to play").font(.headline).accessibilityAddTraits(.isHeader)
-                    Text("After you start, a shower arrives every \(store.game.balance.pace.rawValue) seconds. Most bring 1–3 stars; some bring 5. The preview shows what is coming. Landing places remain a surprise. Clearing does not delay the sky.")
+                    Text("After you start, a shower arrives every \(store.game.balance.pace.rawValue) seconds. Matching stars travel together. When no group is ready, a later shower brings a matching run to a low column when there is room. The preview shows what is coming. Landing places remain a surprise. Clearing does not delay the sky.")
                     Text("A star matching the small jewel on top grows it to value 2. A grown jewel cannot grow again, so the next star stacks above it.")
                     Text("Clear connected matching jewels worth at least 3. A large jewel counts as 2, so a large jewel beside one small match can clear. Collect their combined value as starlight.")
                     Text("An occasional dark star stops the jewels directly above, below, left and right from growing. Existing large jewels stay large. Clear any matching group touching it to dissolve it and free that space. Dark stars are not part of color matches and award no starlight.")
-                    Text("Make room before a star reaches a full column. Pause whenever you like. Settings and leaving the app freeze the sky; missed showers never accumulate. Replay a sky to try different choices.")
+                    Text("Make room before a star reaches a full column. Pause to clear at your own pace. Call next shower brings the preview down immediately, even while paused. Settings and leaving the app freeze the sky; missed showers never accumulate. Replay a sky to try different choices.")
                 }
                 .font(StarfallTheme.Typography.body).padding(20)
                 .fixedSize(horizontal: false, vertical: true)
@@ -209,9 +217,8 @@ import StarfallCore
     private var balanceControls: some View {
         VStack(alignment: .leading, spacing: 16) {
             Text("Try a balance").font(.headline).accessibilityAddTraits(.isHeader)
-            HStack {
+            VStack(alignment: .leading, spacing: 8) {
                 Text("Shower pace")
-                Spacer()
                 Picker("Shower pace", selection: Binding(get: { store.game.balance.pace }, set: store.setPace)) {
                     ForEach(StarfallBalance.Pace.allCases, id: \.self) { pace in
                         Text(pace.title).tag(pace)
@@ -219,9 +226,8 @@ import StarfallCore
                 }
                 .pickerStyle(.menu).labelsHidden().accessibilityIdentifier("experiment.pace")
             }
-            HStack {
+            VStack(alignment: .leading, spacing: 8) {
                 Text("Dark stars")
-                Spacer()
                 Picker("Dark stars", selection: Binding(get: { store.game.balance.darkStars }, set: store.setDarkStarFrequency)) {
                     ForEach(StarfallBalance.DarkStarFrequency.allCases, id: \.self) { frequency in
                         Text(frequency.title).tag(frequency)
@@ -280,4 +286,3 @@ private struct ShowerCountdown: View {
         }
     }
 }
-#endif

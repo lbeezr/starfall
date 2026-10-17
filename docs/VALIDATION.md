@@ -169,3 +169,18 @@ Artifact `12050821982` is 4,570,581 bytes, expires 2026-10-17 14:00:27 UTC. Reta
 - Local Xcode 27/iOS 27: 27 core tests, two compact iPhone SE UI cases and two iPad mini UI cases passed; native results report zero failures/skips. Ordinary Release simulator build passed. Checks cover unsuppressed largest-text menu/game/Settings audits, real clears, restart, Settings dismissal and tablet rotation/reflow with continued input.
 - The coordinator and design-system owner inspected before/after phone restart-ready captures: the previously overlapping moves label now clips at the safe-area edge; the complete board and New game retain their positions. Tablet landscape and maximum-text portrait captures retain clear, complete controls. Exact source hashes, summaries and 15 exported capture hashes plus the preceding-source baseline are in `docs/evidence/safe-area-2026-10-16/`.
 - Preceding crystal cloud run [38967493117](https://github.com/lbeezr/starfall/actions/runs/38967493117) passed 86 tests (27 core, 47 hosted, 12 UI) and 35 screenshot hashes. The new viewport change requires its own subsequent CI result. Human VoiceOver, system Reduce Motion, physical devices and frame pacing remain separate acceptance work.
+
+### Falling sky default — 2026-10-16
+
+- Promoted the falling-sky screen, store and renderer to Debug and Release; ordinary launches open falling sky directly. Removed the modal Close button and experiment label. Debug `--classic` and `--demo` retain the original puzzle for regression coverage.
+- `swift test --scratch-path /tmp/starfall-default-core`: 53 tests passed.
+- Release generic iOS Simulator build passed using Xcode and `/tmp/starfall-default-build`.
+- On the iPhone 18 Pro / iOS 27.0 simulator, the falling-sky UI tests passed for background/resume, saved-state restoration, automatic overflow/new sky, balance controls, and dark-star restore/clear. The rapid-tap/growth/replay/settings test initially lost its matching-group query after waiting for another shower. It passed on a focused rerun after removing that extra shower wait. Launch helper now omits `--starfalls`, covering default entry.
+- Calm effects and native accessible cell controls were exercised by the suite. Actual VoiceOver speech/focus, the system Reduce Motion toggle, and physical-device behavior were not validated in this run. Falling sky ends on overflow; classic win/loss rules were unchanged and covered by core tests.
+- Existing local Xcode project/workspace edits were preserved.
+
+### Falling-sky pacing, feedback and accessible controls — 2026-10-16
+
+- New skies have a first-shower match, coherent shower colors, and bounded matching runs in later forecasts when the board is dry and a low column has room. Existing saves keep their old generation rules. Comets fall faster; paused clears and Call next shower remove forced waiting. Added static match outlines/count, clear rings/score popup and optional local sound/haptics.
+- Passed: 56 core tests; Release simulator build; 14 hosted store tests; five gameplay UI tests on iPhone 18 Pro; largest-text/settings/persistence check on iPhone 17e; actual system Reduce Motion gameplay check with the switch restored. Initial Settings switch targeting failed; explicit thumb targeting and value wait passed.
+- Reproducible pacing sample, retained small-screen captures, source hashes, method and limitations: `docs/evidence/falling-sky-pacing-2026-10-16/README.md`. VoiceOver spoken/focus behavior and physical sound/haptic feel remain unvalidated. Existing unrelated Xcode project/workspace edits were preserved.

@@ -9,7 +9,7 @@ final class StarfallInteractionTests: XCTestCase {
     func testQuietTucksDuringPlayCalmResumeAndMute() throws {
         continueAfterFailure = false
         let app = XCUIApplication()
-        app.launchArguments = ["--demo", "--accessibility-board"]
+        app.launchArguments = ["--classic", "--demo", "--accessibility-board"]
         app.launch()
         defer { app.terminate() }
         XCTAssertTrue(app.buttons["game.settings"].waitForExistence(timeout: 10))
@@ -58,7 +58,7 @@ final class StarfallInteractionTests: XCTestCase {
     func testRapidTapInvalidTapAndCancelledDrag() throws {
         continueAfterFailure = false
         let app = XCUIApplication()
-        app.launchArguments = ["--demo"]
+        app.launchArguments = ["--classic", "--demo"]
         app.launch()
         defer { app.terminate() }
         let board = app.descendants(matching: .any)["game.board"].firstMatch
@@ -83,7 +83,7 @@ final class StarfallInteractionTests: XCTestCase {
     func testAccessibleBoardControlsClearAndExplainInvalidGroups() throws {
         continueAfterFailure = false
         let app = XCUIApplication()
-        app.launchArguments = ["--demo", "--accessibility-board"]
+        app.launchArguments = ["--classic", "--demo", "--accessibility-board"]
         app.launch()
         defer { app.terminate() }
         let valid = app.buttons["game.cell.1.1"]
@@ -103,7 +103,7 @@ final class StarfallInteractionTests: XCTestCase {
     func testLargestTextSettingsDirectAuditAndDismissal() throws {
         continueAfterFailure = false
         let app = XCUIApplication()
-        app.launchArguments = ["--reset-save", "--seed=42",
+        app.launchArguments = ["--classic", "--reset-save", "--seed=42",
                                "-UIPreferredContentSizeCategoryName",
                                "UICTContentSizeCategoryAccessibilityXXXL"]
         app.launch()
@@ -125,7 +125,7 @@ final class StarfallInteractionTests: XCTestCase {
         continueAfterFailure = false
         let app = XCUIApplication()
         // Seed 42 is the existing demo; no pre-applied clear or gameplay bypass.
-        app.launchArguments = ["--demo"]
+        app.launchArguments = ["--classic", "--demo"]
         app.launch()
         defer { app.terminate() }
 
@@ -205,7 +205,7 @@ final class StarfallInteractionTests: XCTestCase {
     func testSavedGameRelaunchAndCalmResume() throws {
         continueAfterFailure = false
         let app = XCUIApplication()
-        app.launchArguments = ["--reset-save", "--seed=42"]
+        app.launchArguments = ["--classic", "--reset-save", "--seed=42"]
         app.launch()
         defer { app.terminate() }
         let play = app.buttons["menu.play"]
@@ -216,7 +216,7 @@ final class StarfallInteractionTests: XCTestCase {
 
         // If Play failed to save the untouched board, this launch would use seed 43.
         // Its group at (1,1) has only two jewels: the real tap below would spend no move.
-        app.launchArguments = ["--seed=43"]
+        app.launchArguments = ["--classic", "--seed=43"]
         app.launch()
         XCTAssertTrue(play.waitForExistence(timeout: 10))
         play.tap()
@@ -291,7 +291,7 @@ final class StarfallInteractionTests: XCTestCase {
              outcome: "Out of moves", message: "A lovely attempt. Try a fresh sky", image: "terminal-lost-restored")
         ]
         for fixture in cases {
-            app.launchArguments = ["--reset-save", "--endgame-seed=\(fixture.seed)"]
+            app.launchArguments = ["--classic", "--reset-save", "--endgame-seed=\(fixture.seed)"]
             app.launch()
             let play = app.buttons["menu.play"]
             XCTAssertTrue(play.waitForExistence(timeout: 10))
@@ -320,7 +320,7 @@ final class StarfallInteractionTests: XCTestCase {
             app.terminate()
 
             // No fixture arguments: the terminal state must come from the real save.
-            app.launchArguments = []
+            app.launchArguments = ["--classic", ]
             app.launch()
             // Resolve a new handle after the old application process terminates.
             let resumedPlay = app.buttons["menu.play"]
@@ -353,7 +353,7 @@ final class StarfallInteractionTests: XCTestCase {
     func testLargestTextTerminalResultAndRestart() throws {
         continueAfterFailure = false
         let app = XCUIApplication()
-        app.launchArguments = ["--reset-save", "--endgame-seed=6",
+        app.launchArguments = ["--classic", "--reset-save", "--endgame-seed=6",
                                "-UIPreferredContentSizeCategoryName",
                                "UICTContentSizeCategoryAccessibilityXXXL"]
         app.launch()
@@ -390,7 +390,7 @@ final class StarfallInteractionTests: XCTestCase {
         executionTimeAllowance = 180
         continueAfterFailure = false
         let app = XCUIApplication()
-        app.launchArguments = ["--reset-save", "--seed=42",
+        app.launchArguments = ["--classic", "--reset-save", "--seed=42",
                                "-UIPreferredContentSizeCategoryName",
                                "UICTContentSizeCategoryAccessibilityXXXL"]
         app.launch()
@@ -487,7 +487,7 @@ final class StarfallInteractionTests: XCTestCase {
     func testCrystalPilotRealTap() throws {
         continueAfterFailure = false
         let app = XCUIApplication()
-        app.launchArguments = ["--reset-save", "--seed=0", "--crystal-pilot"]
+        app.launchArguments = ["--classic", "--reset-save", "--seed=0", "--crystal-pilot"]
         app.launch()
         defer { app.terminate() }
         let play = app.buttons["menu.play"]
@@ -603,7 +603,7 @@ final class StarfallInteractionTests: XCTestCase {
             (kind: "mint", row: 3, column: 4, count: 3)
         ]
         for fixture in fixtures {
-            app.launchArguments = ["--reset-save", "--seed=0"]
+            app.launchArguments = ["--classic", "--reset-save", "--seed=0"]
             app.launch()
             let play = app.buttons["menu.play"]
             XCTAssertTrue(play.waitForExistence(timeout: 10))
@@ -641,7 +641,7 @@ final class StarfallInteractionTests: XCTestCase {
             (seed: 0, row: 0, column: 0, score: 64, moves: 0, outcome: "Out of moves")
         ]
         for fixture in fixtures {
-            app.launchArguments = ["--reset-save", "--endgame-seed=\(fixture.seed)"]
+            app.launchArguments = ["--classic", "--reset-save", "--endgame-seed=\(fixture.seed)"]
             app.launch()
             let play = app.buttons["menu.play"]
             XCTAssertTrue(play.waitForExistence(timeout: 10))
@@ -692,7 +692,7 @@ final class StarfallInteractionTests: XCTestCase {
         // Keep the orientation transition in the running app and wait for its
         // frame before capturing or asserting the landscape layout.
         device.orientation = .portrait
-        app.launchArguments = ["--demo", "-UIPreferredContentSizeCategoryName",
+        app.launchArguments = ["--classic", "--demo", "-UIPreferredContentSizeCategoryName",
                                "UICTContentSizeCategoryL"]
         app.launch()
         let board = app.descendants(matching: .any)["game.board"].firstMatch

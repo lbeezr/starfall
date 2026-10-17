@@ -1,4 +1,3 @@
-#if DEBUG
 import UIKit
 import SpriteKit
 import StarfallCore
@@ -62,12 +61,14 @@ import StarfallCore
         rendered = game
         removeAllActions(); effects.removeAllChildren(); effects.removeAllActions()
         pieces.removeAllChildren(); grid.removeAllChildren(); nodes.removeAll()
+        let matchable = Set(game.legalGroups.flatMap { $0 })
         for row in 0..<7 { for column in 0..<7 {
             let cell = Cell(row, column)
             let square = SKShapeNode(rectOf: CGSize(width: step * 0.94, height: step * 0.94), cornerRadius: 5)
             square.fillColor = .white.withAlphaComponent(0.025)
-            square.strokeColor = .white.withAlphaComponent(0.075)
-            square.lineWidth = 1; square.position = point(cell); grid.addChild(square)
+            square.strokeColor = matchable.contains(cell)
+                ? .white.withAlphaComponent(0.55) : .white.withAlphaComponent(0.075)
+            square.lineWidth = matchable.contains(cell) ? 2 : 1; square.position = point(cell); grid.addChild(square)
             if let gem = game.gem(at: cell) {
                 let node = makeNode(gem); node.position = point(cell)
                 if game.isGrowthBlocked(at: cell) { shade(node, at: cell) }
@@ -89,8 +90,25 @@ import StarfallCore
         }
         for cell in turn.cleared {
             if let id = old.gem(at: cell)?.id, let node = nodes.removeValue(forKey: id) {
-                node.run(.sequence([.group([.fadeOut(withDuration: 0.12), .scale(to: 0.5, duration: 0.12)]), .removeFromParent()]))
+                let ring = SKShapeNode(circleOfRadius: step * 0.30)
+                ring.position = node.position
+                ring.strokeColor = old.gem(at: cell)?.kind?.color ?? .systemPurple
+                ring.lineWidth = 2; ring.glowWidth = 3
+                effects.addChild(ring)
+                ring.run(.sequence([.group([.scale(to: 1.7, duration: 0.24), .fadeOut(withDuration: 0.24)]), .removeFromParent()]))
+                node.run(.sequence([.group([.fadeOut(withDuration: 0.12), .scale(to: 1.2, duration: 0.12)]), .removeFromParent()]))
             }
+        }
+        if turn.collected > 0, !turn.cleared.isEmpty {
+            let label = SKLabelNode(text: "+\(turn.collected)")
+            label.fontName = "AvenirNext-Bold"; label.fontSize = step * 0.55
+            label.fontColor = .white; label.verticalAlignmentMode = .center
+            let center = turn.cleared.map { point($0) }.reduce(CGPoint.zero) {
+                CGPoint(x: $0.x + $1.x, y: $0.y + $1.y)
+            }
+            label.position = CGPoint(x: center.x / CGFloat(turn.cleared.count), y: center.y / CGFloat(turn.cleared.count))
+            effects.addChild(label)
+            label.run(.sequence([.group([.moveBy(x: 0, y: step * 0.45, duration: 0.32), .fadeOut(withDuration: 0.32)]), .removeFromParent()]))
         }
         for index in turn.settled.indices {
             if let gem = turn.settled[index], let node = nodes[gem.id] {
@@ -105,9 +123,9 @@ import StarfallCore
         }
         let flights = turn.arrivals.enumerated().map { index, arrival in
             SKAction.sequence([
-                .wait(forDuration: Double(index) * 0.13),
+                .wait(forDuration: Double(index) * 0.09),
                 .run { [weak self] in self?.sendStar(arrival) },
-                .wait(forDuration: 0.72),
+                .wait(forDuration: 0.48),
                 .run { [weak self] in self?.land(arrival) }
             ])
         }
@@ -142,7 +160,7 @@ import StarfallCore
         }
         comet.position = CGPoint(x: point(arrival.cell).x, y: size.height + step)
         effects.addChild(comet)
-        let fall = SKAction.move(to: point(arrival.cell), duration: 0.72)
+        let fall = SKAction.move(to: point(arrival.cell), duration: 0.48)
         fall.timingMode = .easeIn
         comet.run(.sequence([fall, .removeFromParent()]))
     }
@@ -162,4 +180,3 @@ import StarfallCore
         ring.run(.sequence([.group([.scale(to: 1.7, duration: 0.28), .fadeOut(withDuration: 0.28)]), .removeFromParent()]))
     }
 }
-#endif

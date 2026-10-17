@@ -163,10 +163,16 @@ final class StarfallExperimentStoreTests: XCTestCase {
         let (store, presenter, clock, defaults) = makeStore()
         store.togglePause()
         for _ in 0..<6 { clock.advance(4); presenter.finish() }
-        let dark = Cell(1, 1), beside = Cell(0, 1)
-        XCTAssertTrue(store.game.gem(at: dark)?.isDark == true)
-        XCTAssertTrue(store.game.isGrowthBlocked(at: beside))
-        XCTAssertTrue(store.message.contains("dark star blocks nearby growth"))
+        // Search by behavior rather than an obsolete seed-specific cell layout.
+        for _ in 0..<30 where !store.game.isOver && !store.game.legalGroups.contains(where: { !store.game.darkStarsBeside(Set($0)).isEmpty }) {
+            if let cell = store.game.legalGroups.first?.first { store.clear(cell); presenter.finish() }
+            clock.advance(4); presenter.finish()
+        }
+        let group = try XCTUnwrap(store.game.legalGroups.first { !store.game.darkStarsBeside(Set($0)).isEmpty })
+        let dark = try XCTUnwrap(store.game.darkStarsBeside(Set(group)).first)
+        let beside = try XCTUnwrap(group.first { store.game.isGrowthBlocked(at: $0) })
+        let expectedScore = store.game.score + store.game.value(of: Set(group))
+        let expectedDark = store.game.darkStarsCleared + store.game.darkStarsBeside(Set(group)).count
         let restored = StarfallExperimentStore(defaults: defaults, arguments: [], presenter: ExperimentRecorder(), clock: ManualRainClock())
         XCTAssertEqual(restored.game, store.game)
         XCTAssertTrue(restored.isPaused)
@@ -175,8 +181,8 @@ final class StarfallExperimentStoreTests: XCTestCase {
         XCTAssertEqual(store.game, before)
         XCTAssertTrue(store.message.contains("dissolve"))
         store.clear(beside)
-        XCTAssertEqual(store.game.darkStarsCleared, 1)
-        XCTAssertEqual(store.game.score, 3)
+        XCTAssertEqual(store.game.darkStarsCleared, expectedDark)
+        XCTAssertEqual(store.game.score, expectedScore)
         XCTAssertTrue(store.message.contains("Dark star dissolved"))
         let saved = try JSONDecoder().decode(StarfallExperiment.self, from: XCTUnwrap(defaults.data(forKey: StarfallExperimentStore.saveKey)))
         XCTAssertEqual(saved, store.game)
@@ -239,6 +245,40 @@ final class StarfallExperimentStoreTests: XCTestCase {
         XCTAssertEqual(restored.showerInterval, 4); XCTAssertEqual(restored.game.board, board)
         XCTAssertTrue(restored.isPaused)
     }
+    @MainActor func testManualShowersAndClearsWorkPausedWithoutStartingClock() throws {
+        let (store, presenter, clock, _) = makeStore()
+        XCTAssertTrue(store.isPaused)
+        store.callShower()
+        XCTAssertEqual(store.game.turns, 1); XCTAssertNil(clock.deadline)
+        store.callShower(); XCTAssertEqual(store.game.turns, 1, "Busy input is ignored")
+        presenter.finish()
+        store.clear(try XCTUnwrap(store.game.legalGroups.first?.first))
+        XCTAssertEqual(store.game.score, 3); XCTAssertNil(clock.deadline)
+        presenter.finish(); clock.advance(100)
+        XCTAssertEqual(store.game.turns, 1)
+        store.setSuspended(true); store.callShower()
+        XCTAssertEqual(store.game.turns, 1)
+    }
+
+    @MainActor func testFeedbackOnlyFiresForCommittedClearAndStopsOnMuteAndSuspend() throws {
+        let defaults = UserDefaults(suiteName: "SkyFeedback.\(UUID())")!
+        let feedback = SkyFeedbackRecorder(), presenter = ExperimentRecorder(), clock = ManualRainClock()
+        let store = StarfallExperimentStore(defaults: defaults, arguments: ["--starfalls-reset"],
+            presenter: presenter, clock: clock, feedback: feedback)
+        store.setSuspended(false)
+        XCTAssertFalse(store.soundEnabled); XCTAssertFalse(store.hapticsEnabled)
+        store.clear(Cell(0, 0)); XCTAssertEqual(feedback.clears, 0)
+        store.soundEnabled = true; store.hapticsEnabled = true
+        store.callShower(); presenter.finish()
+        let cell = try XCTUnwrap(store.game.legalGroups.first?.first)
+        store.clear(cell); store.clear(cell)
+        XCTAssertEqual(feedback.clears, 1)
+        XCTAssertTrue(feedback.sound); XCTAssertTrue(feedback.haptics)
+        store.soundEnabled = false
+        XCTAssertEqual(feedback.stops, 1)
+        store.setSuspended(true); XCTAssertEqual(feedback.stops, 2)
+    }
+
 }
 
 @MainActor private final class ManualRainClock: ExperimentRainScheduling {
@@ -268,4 +308,13 @@ final class StarfallExperimentStoreTests: XCTestCase {
         completions.append(completion)
     }
     func finish() { completions.last?() }
+}
+
+@MainActor private final class SkyFeedbackRecorder: FallingSkyFeedbackProviding {
+    var clears = 0, stops = 0
+    var sound = false, haptics = false
+    func collected(soundEnabled: Bool, hapticsEnabled: Bool, reducedMotion: Bool) {
+        clears += 1; sound = soundEnabled; haptics = hapticsEnabled
+    }
+    func stopSounds() { stops += 1 }
 }

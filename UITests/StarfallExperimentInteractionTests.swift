@@ -4,7 +4,7 @@ final class StarfallExperimentInteractionTests: XCTestCase {
     @MainActor private func launch() -> XCUIApplication {
         continueAfterFailure = false
         let app = XCUIApplication()
-        app.launchArguments = ["--starfalls", "--starfalls-reset", "--starfalls-seed=5"]
+        app.launchArguments = ["--starfalls-reset", "--starfalls-seed=5"]
         app.launch()
         XCTAssertTrue(app.buttons["experiment.pause"].waitForExistence(timeout: 10))
         return app
@@ -29,6 +29,87 @@ final class StarfallExperimentInteractionTests: XCTestCase {
         for _ in 0..<4 where !element.isHittable { app.swipeUp() }
     }
 
+    @MainActor func testFirstShowerIsPlayableAndManualInputStaysPaused() {
+        let app = launch(); defer { app.terminate() }
+        let next = app.buttons["experiment.next"]
+        reveal(next, in: app); next.tap()
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: next).wait(timeout: 5))
+        XCTAssertEqual(showers(app), 1)
+        let legal = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND value MATCHES %@", "experiment.cell.", "([3-9]|[1-9][0-9]) starlight connected")).firstMatch
+        XCTAssertTrue(legal.exists); legal.doubleTap()
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "3 starlight"), object: app.staticTexts["experiment.score"]).wait(timeout: 5))
+        remainsPaused(app)
+        capture(app, "first-shower-clear-paused")
+    }
+
+    @MainActor func testLargestTextSettingsFeedbackAndDismissal() {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchArguments = ["--starfalls-reset", "-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"]
+        app.launch(); defer { app.terminate() }
+        let settings = app.buttons["experiment.settings"]
+        XCTAssertTrue(settings.waitForExistence(timeout: 10)); settings.tap()
+        for id in ["experiment.sound", "experiment.haptics", "experiment.calm"] {
+            let control = app.switches[id]
+            reveal(control, in: app)
+            XCTAssertTrue(control.isHittable)
+            if control.value as? String != "1" { control.tap() }
+        }
+        capture(app, "falling-sky-largest-text-settings")
+        app.buttons["experiment.done"].tap()
+        let pause = app.buttons["experiment.pause"]
+        reveal(pause, in: app); XCTAssertTrue(pause.isHittable)
+        let next = app.buttons["experiment.next"]
+        reveal(next, in: app); XCTAssertTrue(next.isHittable)
+        next.tap()
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: next).wait(timeout: 5))
+        XCTAssertEqual(showers(app), 1)
+        capture(app, "falling-sky-largest-text-game")
+        app.terminate(); app.launchArguments = []; app.launch()
+        XCTAssertTrue(settings.waitForExistence(timeout: 10)); settings.tap()
+        for id in ["experiment.sound", "experiment.haptics", "experiment.calm"] {
+            let control = app.switches[id]
+            reveal(control, in: app)
+            XCTAssertEqual(control.value as? String, "1")
+            control.tap() // Leave optional feedback and Calm effects off after the check.
+        }
+        app.buttons["experiment.done"].tap()
+    }
+
+    @MainActor func testSystemReduceMotionKeepsManualPlayWorking() {
+        continueAfterFailure = false
+        let preferences = XCUIApplication(bundleIdentifier: "com.apple.Preferences")
+        preferences.launch()
+        let reduce = preferences.switches["Reduce Motion"]
+        if !reduce.exists {
+            let accessibility = preferences.buttons["Accessibility"]
+            for _ in 0..<4 where !accessibility.isHittable { preferences.swipeUp() }
+            accessibility.tap()
+            preferences.buttons["Motion"].firstMatch.tap()
+        }
+        XCTAssertTrue(reduce.waitForExistence(timeout: 5))
+        let original = reduce.value as? String
+        if original != "1" {
+            // Settings exposes the entire labelled row as a switch; target its thumb.
+            reduce.coordinate(withNormalizedOffset: CGVector(dx: 0.9, dy: 0.5)).tap()
+        }
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == %@", "1"), object: reduce).wait(timeout: 5))
+        defer {
+            preferences.activate()
+            if reduce.value as? String != original {
+                reduce.coordinate(withNormalizedOffset: CGVector(dx: 0.9, dy: 0.5)).tap()
+            }
+        }
+        let app = launch(); defer { app.terminate() }
+        let next = app.buttons["experiment.next"]
+        reveal(next, in: app); next.tap()
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: next).wait(timeout: 5))
+        let legal = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND value MATCHES %@", "experiment.cell.", "([3-9]|[1-9][0-9]) starlight connected")).firstMatch
+        XCTAssertTrue(legal.exists); legal.tap()
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "3 starlight"), object: app.staticTexts["experiment.score"]).wait(timeout: 5))
+        capture(app, "falling-sky-system-reduce-motion")
+    }
+
     @MainActor func testAutomaticRainPauseGrowthClearReplayAndSettings() {
         let app = launch(); defer { app.terminate() }
         XCTAssertEqual(showers(app), 0)
@@ -45,9 +126,8 @@ final class StarfallExperimentInteractionTests: XCTestCase {
         app.buttons["experiment.pause"].tap()
         let legal = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND value MATCHES %@", "experiment.cell.", "([3-9]|[1-9][0-9]) starlight connected")).firstMatch
         XCTAssertTrue(legal.waitForExistence(timeout: 40))
-        // Snapshot while paused, then test rapid input early in a fresh interval.
-        // XCTest hierarchy/screenshot work can otherwise consume the entire clear window.
-        waitForShowers(showers(app) + 1, in: app)
+        // Freeze the matchable board immediately; another shower can remove
+        // the queried group or fill the sky before the snapshot is captured.
         app.buttons["experiment.pause"].tap()
         let clearID = legal.identifier
         capture(app, "automatic-matchable")
@@ -115,15 +195,21 @@ final class StarfallExperimentInteractionTests: XCTestCase {
         XCTAssertTrue(calm.waitForExistence(timeout: 5))
         if calm.value as? String == "1" { calm.tap() }
         app.buttons["experiment.done"].tap()
-        app.buttons["experiment.pause"].tap()
-        waitForShowers(6, in: app, timeout: 35)
-        app.buttons["experiment.pause"].tap()
-        let dark = app.buttons["experiment.cell.1.1"]
-        let beside = app.buttons["experiment.cell.0.1"]
-        XCTAssertTrue(dark.label.hasPrefix("Dark star"))
-        XCTAssertTrue(beside.label.contains("growth blocked by a dark star"))
-        XCTAssertEqual(beside.value as? String, "3 starlight connected")
-        XCTAssertTrue(app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Large ")).count > 0)
+        let shadedMatch = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND label CONTAINS %@ AND value MATCHES %@", "experiment.cell.", "growth blocked by a dark star", "([3-9]|[1-9][0-9]) starlight connected")).firstMatch
+        let next = app.buttons["experiment.next"]
+        for _ in 0..<25 {
+            if shadedMatch.exists { break }
+            reveal(next, in: app)
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: next).wait(timeout: 5))
+            next.tap()
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: next).wait(timeout: 5))
+        }
+        XCTAssertTrue(shadedMatch.exists)
+        let beside = app.buttons[shadedMatch.identifier]
+        let dark = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Dark star,")).firstMatch
+        XCTAssertTrue(dark.exists)
+        let darkID = dark.identifier
+        let expectedScore = Int((beside.value as! String).split(separator: " ")[0])!
         for star in app.descendants(matching: .any).matching(NSPredicate(format: "identifier BEGINSWITH %@", "experiment.incoming.")).allElementsBoundByIndex {
             XCTAssertFalse(star.label.contains("column"))
         }
@@ -135,12 +221,9 @@ final class StarfallExperimentInteractionTests: XCTestCase {
         XCTAssertEqual(app.buttons["experiment.pause"].label, "Resume sky")
         XCTAssertTrue(dark.label.hasPrefix("Dark star"))
         XCTAssertTrue(beside.label.contains("growth blocked by a dark star"))
-        app.buttons["experiment.pause"].tap()
         beside.tap()
-        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "3 starlight"), object: app.staticTexts["experiment.score"]).wait(timeout: 3))
-        app.buttons["experiment.pause"].tap()
-        XCTAssertFalse(dark.label.hasPrefix("Dark star"))
-        XCTAssertEqual(app.buttons.matching(NSPredicate(format: "label CONTAINS %@", "growth blocked by a dark star")).count, 0)
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "\(expectedScore) starlight"), object: app.staticTexts["experiment.score"]).wait(timeout: 3))
+        XCTAssertFalse(app.buttons[darkID].label.hasPrefix("Dark star"))
         capture(app, "dark-star-dissolved-by-adjacent-clear")
     }
 

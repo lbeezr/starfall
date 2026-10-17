@@ -54,6 +54,8 @@ public struct StarfallExperiment: Codable, Equatable, Sendable {
     private var showersUntilDark = 5
     // Optional storage lets pre-tuning v3 saves retain their board and original balance.
     private var savedBalance: StarfallBalance?
+    // Missing in older saves: retain their original independent-color sky.
+    private var cohesiveShowers: Bool?
     public var balance: StarfallBalance { savedBalance ?? StarfallBalance() }
     public var isOver: Bool { blockedColumn != nil }
     public var occupiedCount: Int { board.compactMap { $0 }.count }
@@ -61,6 +63,7 @@ public struct StarfallExperiment: Codable, Equatable, Sendable {
     public init(seed: UInt64, balance: StarfallBalance = StarfallBalance()) {
         self.seed = seed
         savedBalance = balance
+        cohesiveShowers = true
         showersUntilDark = balance.darkStars.showerGap.map { $0.upperBound - 1 } ?? 0
         random = SeededRandom(seed: seed)
         board = Array(repeating: nil, count: Self.side * Self.side)
@@ -189,23 +192,40 @@ public struct StarfallExperiment: Codable, Equatable, Sendable {
 
     private mutating func nextShower() -> [IncomingStar] {
         let sizes = [1, 2, 2, 3, 3, 3, 5]
-        let count = sizes[Int(random.next() % UInt64(sizes.count))]
+        let naturalCount = sizes[Int(random.next() % UInt64(sizes.count))]
+        // A dry board gets a useful run in its next forecast, plus two pressure
+        // stars. Never rewrite an announced preview or alter the board for free.
+        let heights = (0..<Self.side).map { column in
+            (0..<Self.side).filter { board[$0 * Self.side + column] != nil }.count
+        }
+        let reliefColumn = cohesiveShowers == true && turns > 0 && legalGroups.isEmpty
+            ? heights.indices.filter { heights[$0] <= 4 }.min { heights[$0] < heights[$1] } : nil
+        let count = reliefColumn == nil ? naturalCount : 5
         let darkIndex: Int?
         if let gap = balance.darkStars.showerGap, showersUntilDark == 0 {
-            darkIndex = Int(random.next() % UInt64(count))
+            darkIndex = reliefColumn == nil ? Int(random.next() % UInt64(count)) : 3 + Int(random.next() % 2)
             showersUntilDark = gap.lowerBound - 1 + Int(random.next() % UInt64(gap.count))
         } else {
             darkIndex = nil
             if balance.darkStars != .none { showersUntilDark -= 1 }
         }
+        let sharedKind = cohesiveShowers == true ? random.jewel() : nil
+        // A fresh sky teaches the clear immediately with three adjacent stars.
+        // Keep column coverage fair by reserving the other four for later.
+        if cohesiveShowers == true, turns == 0, starsLanded == 0 {
+            let start = Int(random.next() % 5)
+            remainingColumns = (0..<Self.side).filter { !(start..<(start + 3)).contains($0) }
+            return (0..<3).map { IncomingStar(id: $0, kind: sharedKind!, column: start + $0) }
+        }
         return (0..<count).map { offset in
             let kind = random.jewel()
-            // Visit all seven columns in random order before repeating a column.
-            // This keeps one unlucky column from filling before the field develops.
+            // Natural arrivals rotate through columns; relief runs deliberately
+            // stack three matching stars in a low column to restore a choice.
             if remainingColumns.isEmpty { remainingColumns = Array(0..<Self.side) }
             let index = Int(random.next() % UInt64(remainingColumns.count))
-            return IncomingStar(id: turns * Self.maximumShowerSize + offset, kind: offset == darkIndex ? nil : kind,
-                                column: remainingColumns.remove(at: index))
+            let naturalColumn = remainingColumns.remove(at: index)
+            return IncomingStar(id: turns * Self.maximumShowerSize + offset, kind: offset == darkIndex ? nil : (sharedKind ?? kind),
+                                column: offset < 3 ? (reliefColumn ?? naturalColumn) : naturalColumn)
         }
     }
 
