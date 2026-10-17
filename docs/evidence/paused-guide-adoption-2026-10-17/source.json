@@ -1,0 +1,15 @@
+{
+  "source": "bd7a744418b8c5a1133f5e157242dc77f97ca138",
+  "compiledWorkingDifferences": "None: app/test/configuration bytes match source commit; only evidence/design documentation changed afterward.",
+  "simulator": "D65C5E40-734F-42BF-8F91-97E980ED19C2 / Starfall Crystal Glow QA / iPhone 17e / iOS 27.0",
+  "toolchain": "Xcode 27.1 (27A9275), Swift 6.4",
+  "sha256": {
+    "App/FallingSkyStore.swift": "8eb2d22f09477115959f8e2af4b0b562f5b5114cd7ec20c58ca622627ca265ff",
+    "App/FallingSkyView.swift": "cf003b1aee610d992462b04e45c746a9a33a0c9906ff72375e20f7955467352d",
+    "UITests/FallingSkyInteractionTests.swift": "120001ccc053590934f033ff206edb8f9ad98f4733778bdc728f87d8cb786f03",
+    "UITests/ObservatoryInteractionTests.swift": "3058f62a06bb05fbccfd47df1a66ef8b9c79ba3f2939ab6db1b5bfa709bccadc",
+    "tools/mechanics/prepare-observatory-labs.py": "65406d8924b141d804a231e881d5d845fd24235af4684b6fb2c2ccf282480883",
+    "Starfall.xcodeproj/project.pbxproj": "d712e359584cb44bf852bb0e0933d92313a411916bb417d4ffd3cb793a46ae47",
+    "Config/Clean.xcconfig": "68cc1235025bb55ddaf55c546c2a1f316c4ca8cafd23bee7de479c4db99c812f"
+  }
+}

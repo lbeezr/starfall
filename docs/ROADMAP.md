@@ -132,4 +132,4 @@ The [completed Observatory agent comparison](evidence/observatory-phases-2026-10
 
 [Paused outcome feedback](evidence/paused-feedback-2026-10-17/README.md) is implemented in the isolated pair and has current native/Release checks. Keep rules stable while judging whether its growth/dark feedback improves comprehension; the maximum-text board/guide boundary remains a separate acceptance gap.
 
-The [paused-feedback simulated follow-up](evidence/paused-feedback-2026-10-17/playtest.md) supports retaining the guide refinement in the pair. Next evaluate that presentation independently on the production generator before adoption; preserve the separate Surge decision and accessibility-layout gates.
+The [paused-feedback simulated follow-up](evidence/paused-feedback-2026-10-17/playtest.md) led to [guide-only production adoption](evidence/paused-guide-adoption-2026-10-17/README.md), with the production generator unchanged. Native growth/dark/restore, focused actual VoiceOver and system Reduce Motion checks pass; the separate Surge decision, general board-focus and largest-text accessibility gates remain open.

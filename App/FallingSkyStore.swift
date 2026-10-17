@@ -41,7 +41,7 @@ import StarfallCore
     private(set) var suspended = true
     private(set) var isPaused = true
     private(set) var nextShowerDate: Date?
-    private(set) var message = "Start the sky. Clear matching stars to make room; adjust the balance in Settings."
+    private(set) var message = "Match stars worth three. Large stars count as two."
     private(set) var pending: FallingSkyTurn?
     var soundEnabled: Bool {
         didSet { defaults.set(soundEnabled, forKey: "soundEnabled"); if !soundEnabled { feedback.stopSounds() } }

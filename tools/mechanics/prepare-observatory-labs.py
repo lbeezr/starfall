@@ -73,14 +73,26 @@ for mode, suffix, display in [("natural-only", "natural", "Shower Observatory"),
     replace("App/FallingSkyStore.swift", "defaults: UserDefaults = .standard",
             'defaults: UserDefaults = UserDefaults(suiteName: "starfall.mechanics.observatory.' + suffix + '")!')
     core_hash = apply_candidate(workspace, mode)
-    # The store already owns committed event/invalid-input wording. The paused
-    # guide exposes that same value; active play still has no dialogue card.
-    replace("App/FallingSkyView.swift",
-            'message: compact ? "Match stars worth three." : store.game.turns == 0 ? "Welcome to the Observatory. Match stars worth three to gather their light." : "Take a breath. Clear at your pace, or invite the next shower.", showsPortrait: !compact)',
-            'message: store.message, showsPortrait: !compact)')
-    replace("App/FallingSkyStore.swift",
-            'private(set) var message = "Start the sky. Clear matching stars to make room; adjust the balance in Settings."',
-            'private(set) var message = "Match stars worth three. Large stars count as two."')
+    # Current production owns paused guidance. Adapt only the recognized legacy
+    # view when replaying an older snapshot; do not duplicate its current copy.
+    old_guide = 'message: compact ? "Match stars worth three." : store.game.turns == 0 ? "Welcome to the Observatory. Match stars worth three to gather their light." : "Take a breath. Clear at your pace, or invite the next shower.", showsPortrait: !compact)'
+    current_guide = 'message: store.message, showsPortrait: !compact)'
+    view_source = (workspace / "App/FallingSkyView.swift").read_text()
+    if view_source.count(old_guide) == 1:
+        replace("App/FallingSkyView.swift", old_guide, current_guide)
+    elif view_source.count(current_guide) != 1:
+        raise RuntimeError("Unrecognized paused guide owner")
+    intro_prefix = "private(set) var message = "
+    intro_lines = [line.strip() for line in (root / "App/FallingSkyStore.swift").read_text().splitlines()
+                   if line.strip().startswith(intro_prefix)]
+    if len(intro_lines) != 1:
+        raise RuntimeError("Expected one production initial-message owner")
+    legacy_intro = 'private(set) var message = "Start the sky. Clear matching stars to make room; adjust the balance in Settings."'
+    store_source = (workspace / "App/FallingSkyStore.swift").read_text()
+    if store_source.count(legacy_intro) == 1:
+        replace("App/FallingSkyStore.swift", legacy_intro, intro_lines[0])
+    elif store_source.count(intro_lines[0]) != 1:
+        raise RuntimeError("Unrecognized initial guidance")
     feedback_tests = render_burst_fragment(mechanics / "ObservatoryFeedbackUITests.swift",
                                           {"__LAB_BUNDLE__": bundle})
     if mode == "dense-burst":
@@ -166,7 +178,7 @@ for mode, suffix, display in [("natural-only", "natural", "Shower Observatory"),
     normalized = normalized.replace(
         "/// Production falling-sky rules with deterministic shower events. The Debug classic Game is independent.",
         "/// Separate accumulation experiment with deterministic shower events. The original Game is unchanged.")
-    tool_inputs = [Path(__file__), mechanics / "shower_candidate.py", mechanics / "paired-showers-natural.patch",
+    tool_inputs = [Path(__file__), root / "App/FallingSkyStore.swift", mechanics / "shower_candidate.py", mechanics / "paired-showers-natural.patch",
                    mechanics / "burst_fragments.py", mechanics / "ShowerBurstPhase.swift",
                    mechanics / "ObservatoryFeedbackUITests.swift"]
     if mode == "dense-burst":

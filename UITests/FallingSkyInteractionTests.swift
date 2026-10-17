@@ -47,6 +47,7 @@ final class FallingSkyInteractionTests: XCTestCase {
         XCTAssertTrue(challenge.waitForExistence(timeout: 5)); challenge.tap()
         XCTAssertTrue(app.buttons["experiment.next"].waitForExistence(timeout: 5))
         XCTAssertEqual(app.staticTexts["experiment.score"].label, "0 of 18 starlight collected")
+        XCTAssertTrue(app.staticTexts["experiment.message"].label.contains("Collect 18 starlight"))
     }
 
     @MainActor func testCompactHUDMenuSuspendsWithoutChangingPauseChoice() {
@@ -151,6 +152,12 @@ final class FallingSkyInteractionTests: XCTestCase {
 
     @MainActor func testFirstShowerIsPlayableAndManualInputStaysPaused() {
         let app = launch(); defer { app.terminate() }
+        let empty = app.buttons["experiment.cell.6.6"]
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: empty).wait(timeout: 5))
+        XCTAssertTrue(empty.label.hasPrefix("Empty")); empty.tap()
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label CONTAINS %@", "Large stars count as 2"), object: app.staticTexts["experiment.message"]).wait(timeout: 5))
+        XCTAssertEqual(showers(app), 0)
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, "0 starlight")
         let next = app.buttons["experiment.next"]
         reveal(next, in: app); next.tap()
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: next).wait(timeout: 5))
@@ -413,5 +420,109 @@ enum NativeSystemMotionSettings {
         }
         XCTAssertTrue(reduce.waitForExistence(timeout: 5))
         return (preferences, reduce)
+    }
+}
+
+extension FallingSkyInteractionTests {
+    @MainActor func testPausedGuideReportsGrowthDarkOutcomesAndRestore() throws {
+        let app = launch()
+        addTeardownBlock { @MainActor in app.terminate() }
+        let guide = app.staticTexts["experiment.message"]
+        let next = app.buttons["experiment.next"]
+        for number in 1...6 {
+            reveal(next, in: app)
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: next).wait(timeout: 5))
+            next.tap()
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: next).wait(timeout: 5))
+            XCTAssertEqual(showers(app), number)
+            if number == 3 {
+                XCTAssertTrue(guide.label.contains("grew"))
+                XCTAssertTrue(guide.label.contains("worth 2"))
+                capture(app, "paused-guide-production-growth")
+            }
+        }
+        XCTAssertTrue(guide.label.contains("A dark star blocks nearby growth"))
+        let dark = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Dark star,"))
+        XCTAssertEqual(dark.count, 1)
+        let before = app.otherElements["experiment.board"].value as? String
+        dark.firstMatch.tap()
+        XCTAssertTrue(guide.label.contains("Clear a matching group beside the dark star"))
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, "0 starlight")
+        XCTAssertEqual(app.otherElements["experiment.board"].value as? String, before)
+        let remote = app.buttons["experiment.cell.0.0"]
+        let remoteText = try XCTUnwrap(remote.value as? String)
+        let remoteValue = try XCTUnwrap(Int(remoteText.split(separator: " ").first ?? ""))
+        XCTAssertGreaterThanOrEqual(remoteValue, 3)
+        remote.tap()
+        XCTAssertTrue(guide.label.hasPrefix("+\(remoteValue) starlight."))
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, "\(remoteValue) starlight")
+        XCTAssertFalse(guide.label.contains("dissolved"))
+        XCTAssertEqual(dark.count, 1, "The unrelated clear does not remove the blocker")
+        let adjacent = app.buttons["experiment.cell.0.1"]
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: adjacent).wait(timeout: 5))
+        let adjacentText = try XCTUnwrap(adjacent.value as? String)
+        let adjacentValue = try XCTUnwrap(Int(adjacentText.split(separator: " ").first ?? ""))
+        XCTAssertGreaterThanOrEqual(adjacentValue, 3)
+        adjacent.tap()
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: next).wait(timeout: 5))
+        XCTAssertTrue(guide.label.hasPrefix("+\(adjacentValue) starlight."))
+        XCTAssertTrue(guide.label.contains("Dark star dissolved"))
+        XCTAssertEqual(dark.count, 0)
+        let total = remoteValue + adjacentValue
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, "\(total) starlight")
+        let summary = guide.label
+        capture(app, "paused-guide-production-dark-dissolved")
+        app.buttons["experiment.settings"].tap()
+        let done = app.buttons["experiment.done"]
+        XCTAssertTrue(done.waitForExistence(timeout: 5)); done.tap()
+        XCTAssertTrue(guide.waitForExistence(timeout: 5)); XCTAssertEqual(guide.label, summary)
+        XCUIDevice.shared.press(.home); app.activate()
+        let resume = app.buttons["experiment.pause"]
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: resume).wait(timeout: 5))
+        XCTAssertEqual(guide.label, summary)
+        app.terminate(); app.launchArguments = []; app.launch()
+        XCTAssertTrue(guide.waitForExistence(timeout: 10))
+        XCTAssertTrue(guide.label.contains("Your sky is paused"))
+        XCTAssertFalse(guide.label.contains("+"), "Transient text is not saved with the round")
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, "\(total) starlight")
+    }
+
+    @MainActor func testVoiceOverReadsPausedGrowthFeedback() throws {
+        #if compiler(>=6.4)
+        guard #available(iOS 27.0, *) else { throw XCTSkip("VoiceOver service requires iOS 27") }
+        let service = XCUIDevice.shared.voiceOverService
+        let wasEnabled = service.isEnabled
+        addTeardownBlock { @MainActor in
+            if !wasEnabled { try XCUIDevice.shared.voiceOverService.disable() }
+            XCTAssertEqual(XCUIDevice.shared.voiceOverService.isEnabled, wasEnabled)
+        }
+        try service.enable()
+        let app = launch()
+        addTeardownBlock { @MainActor in app.terminate() }
+        let next = app.buttons["experiment.next"]
+        var transcript: [String] = []
+        for number in 1...3 {
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: next).wait(timeout: 5))
+            next.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+            let speech = try service.currentSpeech().utterance
+            transcript.append(speech)
+            XCTAssertTrue(speech.contains("Next shower"))
+            next.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).doubleTap()
+            waitForShowers(number, in: app, timeout: 5)
+            XCTAssertEqual(showers(app), number)
+        }
+        app.staticTexts["experiment.message"].coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+        var speech = ""
+        let result = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+            speech = (try? service.currentSpeech().utterance) ?? ""
+            return speech.contains("grew") && speech.contains("worth 2")
+        }, object: nil).wait(timeout: 5)
+        transcript.append(speech)
+        let attachment = XCTAttachment(string: transcript.joined(separator: "\n"))
+        attachment.name = "Production-paused-guide-focused-VoiceOver"; attachment.lifetime = .keepAlways; add(attachment)
+        XCTAssertTrue(result, "Focused guide speech: \(speech)")
+        #else
+        throw XCTSkip("VoiceOver service requires Xcode 27")
+        #endif
     }
 }

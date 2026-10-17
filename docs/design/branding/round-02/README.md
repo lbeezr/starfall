@@ -1,0 +1,17 @@
+# Soft Landing, further
+
+October 17, 2026. User preferred the first, rounded wordmark direction and requested more character and a richer background/scenario. This round develops that direction without app integration.
+
+Hypothesis: fuller original lettering plus a visible place where stars arrive will give the cover a more memorable identity. Review criteria: readable one-color signature; continuity with the aqua four-point cast; meaningful foreground/midground/background depth; title breathing room; a clear story about falling/gathering rather than arbitrary scenery.
+
+Open `index.html` for original/updated/pearl lettering and three illustrated scene directions. `review-board.png` is the inspected browser capture. `generate-wordmark.py` authors three font-independent SVG variants using Python standard library only. The flat treatment is the identity proof; pearl is an optional decorative cover finish. These are distinct design candidates, not replacements for the first round.
+
+`scene-directions.png` was generated with the built-in OpenAI image tool using the first-round review board as reference, then copied into this project. Its lettering is illustrative raster artwork, not the production SVG. The three scenarios are Cloud Garden, Gathering Basin, and Aurora Drift. The generated cast varies from the canonical runtime shapes, especially secondary mint/rose characters; preserve `StarCast` identities if a direction moves into production. No generated illustration becomes a runtime sprite source. The scene is more elaborate than the prompt's restrained paper-like intent: crystalline rock and distant platforms are prominent in the garden/basin. That is useful exploration, not an adopted material change.
+
+Recommendation for next refinement: Soft Bloom wordmark + Gathering Basin, simplifying peripheral platforms and preserving the warm pool of light and incoming aqua hero. Aurora Drift remains the comparison for a less literal setting. Decide the scene before commissioning individual background layers, motion or icon exports. No new gameplay, world progression, pilot flags, or permanent runtime resources are proposed. Current icon stays in place; revisit a simplified scene-derived icon only after scene selection.
+
+Validation: all three SVGs parse as XML and contain no live text or external assets. Local HTML rendered in installed Google Chrome through Playwright at 1440 × 1000 viewport; all four image instances loaded, no page JavaScript errors. Full 1440 × 2312 capture visually inspected. `python3 scripts/ci-hygiene.py` and `git diff --check` passed. Repository HEAD at final checks was `30af812`; unrelated app/test/project edits were already present and changed during this session. Work in this round is confined to this folder. No Swift source, build membership, saves or rules changed here, so Swift/native checks were not run. Native accessibility, Dynamic Type, Home Screen, animation, interruption and physical-device validation remain unverified; these are static design studies.
+
+## Subsequent user direction
+
+The user loves both the left Cloud Garden and middle Gathering Basin studies. Both now anchor further exploration; the earlier single-scene recommendation above is historical. Fountain of Dreams and the Paper Mario star characters / celestial gathering place are explicit core references. See [the current art-direction brief](../ART_DIRECTION.md) before further work.

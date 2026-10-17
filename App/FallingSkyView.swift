@@ -64,7 +64,7 @@ import StarfallCore
                     .frame(maxWidth: .infinity, alignment: .leading)
                 } else if store.isPaused {
                     SkyGuideCard(title: "Sunny",
-                                 message: compact ? "Match stars worth three." : store.game.turns == 0 ? "Welcome to the Observatory. Match stars worth three to gather their light." : "Take a breath. Clear at your pace, or invite the next shower.", showsPortrait: !compact) {
+                                 message: store.message, showsPortrait: !compact) {
                         controlLayout {
                             Button(store.game.turns == 0 ? "Start sky" : "Resume sky") { store.togglePause() }
                                 .disabled(store.suspended).accessibilityIdentifier("experiment.pause")
