@@ -12,19 +12,35 @@ The authoritative rules live in `Sources/StarfallCore/StarfallExperiment.swift`:
 - Dark stars award no extra starlight. Survivors settle after the clear.
 - Default dark-star frequency is a gap of four to six showers; local balance controls can disable or change it. First Light has no dark stars.
 
-## Press and hold: charge clear or burst
+## Press and hold: supernova clear and nearby color changes
 
-User idea: retain tap-to-clear and explore a deliberate press-and-hold interaction, potentially charging a clear or burst.
+User direction: retain tap-to-clear; holding should produce a more violent, forceful clear—a supernova—that could also change the colors of nearby stars. Color change is a possible gameplay effect, not merely a temporary visual tint. This supersedes preview-only holding as the main concept; a preview can still communicate the charged effect.
 
-First hypothesis: holding could reveal the affected group and build anticipation before release. A larger effect could create a decision about waiting under falling-star pressure, but it could also make every ordinary tap feel inferior or slow the game further. A preview-only hold and a rules-changing burst are separate experiments.
+Design hypothesis: an ordinary tap collects an existing opportunity; a supernova reshapes nearby opportunities by recoloring surviving stars. This could let players set up their next clear. The specific recoloring rule remains open: adopting the charging star's color would be predictable, while rotating colors would produce a different planning puzzle. Neither rule is selected. The forceful feeling should come from readable anticipation, impact and recovery, with comfortable reduced-motion feedback.
 
 Questions to resolve before a prototype:
 
 - Does release commit? How does sliding away cancel, and what happens when a shower changes the group under the finger?
-- What does charging change: reach, strength, growth, or interaction with a special star? No radius, cost, threshold or charge duration is chosen.
+- Which stars clear and which survive to change color? Is the neighborhood orthogonal or radial, and are dark/light/void stars affected? No radius, cost, threshold or charge duration is chosen.
+- Does recoloring preserve character identity, or transform one cast member into another? Keep color, silhouette and matching identity consistent; a visual tint must not disagree with the rules.
+- Does a recolored group wait for the next deliberate clear or trigger a cascade? Decide the resolution order, growth behavior and settling explicitly.
 - Why choose an immediate tap instead? Avoid making repeated long holds the compulsory optimal move.
 - Can the same action be invoked accessibly without a timed hold? Preserve pause/manual play and clear feedback with Reduce Motion.
 - How are charge intent and committed outcomes represented deterministically in core, independently of animation completion and gesture wall time?
+
+## Constellations
+
+User idea: explore a constellation mechanism. No connection, scoring or activation rule has been chosen.
+
+Possible directions to compare, not simultaneous requirements:
+
+- **Recognize a pattern:** stars forming a small readable arrangement connect into a constellation. This could reward placement/planning, but must remain achievable on an accumulating board.
+- **Build a connection:** successive deliberate clears light up a short constellation. This could create a round-local goal without requiring a campaign, XP or unlocks.
+- **Choose a connection:** the player links stars into a constellation as an alternate interaction. This needs clear eligibility, cancellation and an accessible alternative to tracing a path.
+
+One promising relationship to investigate is using a supernova's color changes to prepare a constellation. Test each mechanic alone first so their value and complexity can be assessed independently. A constellation could simply be a satisfying recognition/reward moment; it does not inherently need another special ability.
+
+Open questions: Are constellations on the board or represented elsewhere? Must stars share a color? Are diagonals legal? Do links survive falling/settling? What completes or breaks the pattern, and what does completion do? Keep connections visually light so they do not obscure faces, legal groups or the board. Avoid restoring square cell backgrounds or adding a large progress panel.
 
 ## Light / white star
 

@@ -19,7 +19,7 @@ No progression, power-ups, backend, accounts, analytics, ads, purchases, paid as
 
 ## 1. Make choices engaging — active
 
-The [mechanics notebook](design/MECHANICS_IDEAS.md) preserves the press-and-hold/charge, light-star, and void/drain/freeze ideas. These are deferred design questions, not additions to the accepted prototype scope.
+The [mechanics notebook](design/MECHANICS_IDEAS.md) preserves the hold-to-supernova clear with possible nearby color changes, constellations, light-star, and void/drain/freeze ideas. These are deferred design questions, not additions to the accepted prototype scope.
 
 **Question:** Is the player making useful decisions, or simply clearing the only available group?
 
