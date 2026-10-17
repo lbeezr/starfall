@@ -63,3 +63,17 @@ Visually explore washed-out, sleepy characters rather than implying they have be
 Dusk currently suppresses local growth; a proposed void could drain/freeze; a proposed light star could restore; a charged interaction could offer deliberate counterplay. These roles should not automatically become four simultaneous additions. First consider whether evolving Dusk would provide the same depth with fewer rules.
 
 Before adopting anything, choose one hypothesis and a bounded comparison against the current game. Check time to a useful move, meaningful alternatives, comprehension, recovery from blocked states, replay preference, input accessibility, and save/replay determinism. Human play observations decide whether the added rule earns its complexity; bot scores alone do not.
+
+## HUD: communicate decisions, reduce permanent text
+
+User discussion, October 17: question whether announcing a shower and showing its contents adds enough to the game. Pause need not be prominent. The initial suggestion to restrict pause to a continuous-rain chaos mode was explicitly revised: keep pause available, reduce its prominence. Chaos remains an optional idea, not an adopted mode or rule change.
+
+Proposed first comparison, not implemented:
+
+- Keep one compact score/goal readout and a quiet menu control. Put pause/resume within the menu, with a clear resume action when the menu closes. Preserve system-interruption suspension and accessible access; hiding a large pause button must not make pausing difficult.
+- Remove the permanent game title, shower counter, matching-group count and repeating instruction/status sentence from active play. Keep teaching/contextual feedback where needed; retain accessible board/group information instead of removing it with the visual labels. Round statistics can live in the result screen.
+- Compare a subtle pre-arrival cue near the sky's top edge against an exact incoming-star strip. Timing may communicate fair pressure without asking players to read another row. No numerical countdown is presumed necessary. Provide equivalent non-motion information and native accessibility semantics.
+- Keep exact contents only if players use them to choose which group to save or clear. Landing columns are currently hidden; the preview cannot support precise placement planning. Ask players to explain an actual forecast-driven decision rather than assuming more information creates strategy.
+- Put danger on the affected column and collection feedback near the clear, using redundant shape/contrast cues. Avoid replacing the current text with many unrelated meters, badges or persistent effects.
+
+Working hypothesis: an uncluttered board with score/goal, a quiet menu and a restrained arrival cue will be easier to read without losing meaningful choices. Compare the same seeds/timing with and without exact contents, observe useful decisions, surprise/fairness, waiting and comprehension, then adopt or remove the preview. No default mechanics, clock, pause, accessibility or settings behavior changes in this notebook update.
