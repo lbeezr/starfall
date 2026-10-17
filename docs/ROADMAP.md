@@ -1,6 +1,6 @@
 # Starfall roadmap
 
-Updated October 16, 2026, Eastern time. This is the current roadmap for **falling sky**, the default game in Debug and Release. The [original-puzzle roadmap](archive/ROADMAP-original-puzzle-2026-10-16.md) is historical. Earlier game-bible and playtest documents describe the original puzzle unless explicitly updated for falling sky.
+Updated October 17, 2026, Eastern time. This is the current roadmap for **falling sky**, the default game in Debug and Release. The [original-puzzle roadmap](archive/ROADMAP-original-puzzle-2026-10-16.md) is historical. Earlier game-bible and playtest documents describe the original puzzle unless explicitly updated for falling sky.
 
 ## Product direction
 
@@ -70,6 +70,19 @@ Ongoing experiment sequence:
 - Configure signing and run on a device before preparing TestFlight distribution.
 
 **Exit:** Reproducible signed build, clean-edition checks, known-issues list and completed device checklist. Upload/distribution remains a concrete final action when requested.
+
+## Shipping quality gates
+
+These six priorities turn the shipping recommendations into explicit work. They remain open: adding a checklist is not evidence of completion. Start by resolving the clean Release baseline, then observe first-time players; use the existing gameplay workstreams above to address what those checks reveal. The [engineering register](ENGINEERING.md) tracks technical risks and the [release checklist](RELEASE_CHECKLIST.md) owns signing/submission details.
+
+- [ ] **Prove the opening is fun.** Observe a small set of first-time players without coaching, using the [falling-sky protocol](PLAYTEST-FALLING-SKY.md). Record measured time to first clear, waits between useful moves, understanding of growth/dark stars, and whether they voluntarily replay. Distinguish missed moves from a board without a move. Exit with actual observations and a bounded response to major confusion/waiting; bot scores and a first-shower match alone do not close this gate.
+- [ ] **Use a feature definition of done.** Each change states observable acceptance criteria and records relevant rules, save compatibility, interruptions, accessibility, visual polish/full animations and tests, with explicit omissions. A reviewer should be able to reproduce the intended behavior. Apply the regression and experiment-lifecycle rules in [AGENTS.md](../AGENTS.md); this is an ongoing gate for every feature, not a one-time document task.
+- [ ] **Validate the exact shipping candidate.** Resolve the local Xcode project drift as its own reviewed change. Build a clean Release candidate and record commit/tree, configuration, toolchain and device/OS. Test fresh installation and upgrading from a retained previous-version save without resetting it: board, score, preview/RNG continuation, preferences and completed challenge remain valid or follow an explicitly tested migration. Existing clean-baseline compilation does not establish visual or upgrade acceptance. Run the current falling-sky acceptance flows on that candidate.
+- [ ] **Make physical-device checks routine.** Use a smaller/older supported iPhone and a repeatable sequence of showers, clears, replay and background/resume. Record responsiveness/frame pacing, heat, energy behavior, memory trend and leftover effects across repeated rounds, plus audio interruption/resume. Investigate reproducible issues with Instruments before optimizing. Set measured budgets appropriate to the chosen devices; do not invent thresholds or claim device performance from simulator results.
+- [ ] **Complete actual accessibility acceptance.** Play a complete round with VoiceOver: spoken location/value, rotor, activation, pause/manual advance, outcome/replay and focus return from Settings. Separately play with system Reduce Motion and inspect largest text, contrast and jewel identification without color alone. Record actual behavior and remaining barriers. Structural labels, audits and sighted native grid tests do not close this gate.
+- [ ] **Run a small TestFlight feedback loop.** After signing/distribution prerequisites and explicit upload/tester authorization, test the actual Release candidate with approved testers before expanding scope. Collect confusion, crashes, replay preference and device/build details using TestFlight feedback; fix significant issues and verify the candidate again. Keep feedback separate from a claim of crash-free play or universal enjoyment. This adds no analytics SDK, account system or network feature to the game.
+
+Useful Apple guidance: [Instruments](https://developer.apple.com/tutorials/instruments), [testing accessibility settings](https://developer.apple.com/documentation/accessibility/testing-system-accessibility-features-in-your-app), and [TestFlight feedback/crash reporting](https://developer.apple.com/testflight/). These are implementation resources, not completed acceptance evidence.
 
 ## Delivery discipline
 

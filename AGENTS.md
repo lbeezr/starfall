@@ -15,11 +15,15 @@ Keep the prototype small. Falling sky is the default game in Debug and Release: 
 - Review files approaching or exceeding roughly 1,200 lines for modularization. Extract cohesive responsibilities into focused files/types and verify target membership and behavior. This is a review trigger, not a hard cap: split earlier when responsibilities diverge, and avoid arbitrary chunks or extensions that merely hide the same coupling. If a touched oversized file remains intact, document the reason and a concrete follow-up in docs/ENGINEERING.md.
 - Add focused tests for behavioral changes. Keep structural refactors separate from rule/save changes where practical, preserve public contracts, and run the affected checks after extraction. Do not introduce speculative frameworks or generalize beyond demonstrated reuse. Reuse the bounded jewel material factory rather than duplicating drawing logic.
 
-
 ## Durable fixes
 - Treat a reported bug as evidence of a possible failure class. Reproduce it, identify the violated invariant or ownership/lifecycle contract, and inspect analogous paths and call sites for the same mechanism. Report the extent actually examined; do not claim a class is eliminated from one passing example.
 - Prefer a durable design correction at the responsible boundary over accumulating local guards or special cases. Use shared state ownership, coordinate mappings, validation or cancellation contracts where they address the demonstrated cause. Keep the solution proportionate; broader investigation does not automatically justify a broad rewrite.
 - Verify the original reproduction and representative sibling/boundary cases with focused behavioral checks. Explain the root cause, related paths examined, why the correction prevents recurrence, and any residual risk. If an immediate mitigation must ship first, label it as such and record the remaining design correction, trigger and verification in docs/ENGINEERING.md; integrate the safe mitigation without waiting for unrelated work.
+
+## Feature completion and experiments
+- Define observable acceptance criteria before implementing a feature. Before calling it complete, record the relevant rule/save, interruption, accessibility, visual/animation and test results; explicitly mark inapplicable or unverified areas. A passing build or test suite alone does not establish gameplay quality.
+- For each bug fix, add the smallest useful regression check for the demonstrated failure mechanism, alongside the broader investigation above. Use a reproducible manual/native check where an automated test would not meaningfully verify the issue.
+- Give temporary experiments a hypothesis, bounded scope and an adoption/removal decision point. At that point, adopt the verified result or remove the temporary route/assets/code; if comparison remains necessary, record why and when to revisit it. Do not let pilot flags become permanent by inertia.
 
 ## Incremental integration
 Merge completed, verified work in small batches as it becomes ready. Do not let an unrelated blocked workstream delay integration or allow a large backlog of changes to accumulate. Keep each commit scoped to its workstream, preserve other agents' in-progress edits, and run the checks appropriate to each batch before integrating it.

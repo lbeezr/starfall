@@ -2,6 +2,8 @@
 
 > Historical original-puzzle material. For the current default game, start with [the falling-sky roadmap](ROADMAP.md), [comparison playtest](PLAYTEST-FALLING-SKY.md), and [pacing evidence](evidence/falling-sky-pacing-2026-10-16/README.md). Earlier passes do not automatically validate falling sky.
 
+Current falling-sky shipping acceptance is tracked in the [six quality gates](ROADMAP.md#shipping-quality-gates). The original-puzzle evidence below remains historical and does not close those gates.
+
 Reconciled 16 October 2026 against repository head `e84a70d57f2defa8c58ef7cd87ec128e1733fcdb`. This is an evidence summary, not a new test run or release approval. Results below apply to their identified source and environment; earlier passes do not establish acceptance of the current head or another worktree.
 
 Keep the prototype at 7×7, five kinds, orthogonal groups of 3+, and 70 cleared jewels in 18 valid moves. Invalid taps are free; a last-move win takes precedence; dead-board recovery is free and bounded. Human enjoyment and balance are not established by deterministic tests.
