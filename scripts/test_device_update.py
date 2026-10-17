@@ -39,6 +39,15 @@ class DeviceUpdateTests(unittest.TestCase):
                     updater.configure({'device': 'second', 'team': 'new-team'}, state)
             self.assertFalse((state / 'config.json').exists())
 
+    def test_service_reload_cannot_interrupt_an_active_update(self):
+        with tempfile.TemporaryDirectory() as folder:
+            state = Path(folder); updater.configure({'device': 'phone', 'team': 'team'}, state)
+            with (state / 'update.lock').open('a') as lock, patch.object(updater.subprocess, 'run') as command, patch.object(updater.shutil, 'copyfile') as copy:
+                updater.fcntl.flock(lock, updater.fcntl.LOCK_EX | updater.fcntl.LOCK_NB)
+                with self.assertRaisesRegex(RuntimeError, 'update is running'):
+                    updater.enable(state)
+                command.assert_not_called(); copy.assert_not_called()
+
     def test_identity_ignores_docs_but_changes_with_runtime(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder); (root / 'App').mkdir(); (root / 'docs').mkdir()
@@ -56,6 +65,8 @@ class DeviceUpdateTests(unittest.TestCase):
                 return updater.ci_status('lbeezr/starfall', 'abc')
         self.assertEqual(check(), 'passed')
         runs[0]['conclusion'] = 'failure'; self.assertEqual(check(), 'failed')
+        runs[0]['conclusion'] = 'cancelled'; self.assertEqual(check(), 'unavailable')
+        runs[0]['conclusion'] = 'timed_out'; self.assertEqual(check(), 'unavailable')
         runs[0]['conclusion'] = 'success'
         runs.append(dict(runs[0], run_attempt=2, status='in_progress', conclusion=None))
         self.assertEqual(check(), 'pending')

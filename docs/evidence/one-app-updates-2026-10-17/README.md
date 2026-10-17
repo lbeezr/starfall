@@ -1,10 +1,10 @@
 # One Starfall app, updated from main
 
-**Result:** Verified one-app delivery; broader CI pending · **Owner:** current implementer · **Date:** 2026-10-17
+**Result:** Verified one-app delivery; cancelled broad CI and targeted corrections recorded · **Owner:** current implementer · **Date:** 2026-10-17
 
 The user requests one installed app now, with the approved constellation swipe and repeatable updates from GitHub main. Regular `com.starfall.prototype` retains the chosen 0-starlight round; the lab's 26-starlight sky is backed up, not imported. Both downloaded saves decode with the adopted core and re-encode with every JSON field unchanged. Those preflight checks kept both apps in place; the verified delivery and retirement are recorded below.
 
-**Next action:** continue gameplay polish with automatic development updates. Follow the linked remote run to its outcome; full RC acceptance remains separate.
+**Next action:** continue gameplay polish with automatic development updates. Complete the next broad remote run after the targeted corrections; full RC acceptance remains separate.
 
 ## Outcomes against acceptance
 
@@ -60,3 +60,16 @@ The LaunchAgent is registered in the logged-in user's GUI session, checks every 
 Host follow-up checks: **9 updater tests and 3 matrix tests pass**, including failed local-core blocking, pending-CI local validation, failed-CI holds, configuration/device/signing ownership and reconfiguration locking, plus Bash 3.2 empty/populated matrix arguments. Bash syntax, hygiene and diff checks pass. The running host helper is this tested follow-up; its publication follows the initial adoption PR. No additional app runtime changes are part of it.
 
 Local physical receipts: `/tmp/starfall-oneapp-final-inventory.json`, `/tmp/starfall-lab-retirement.json`, before/after preferences under `/tmp/starfall-original-*-delivery.plist`, and Application Support `installation.json` / `installed.json`. No phone UI/speech/physical haptic playthrough is claimed; the installation and saved-state checks are the physical-device evidence here.
+
+
+## Remote run and targeted corrections
+
+Run **39067366898** finished **cancelled**, not passed, after roughly 26 minutes. [Compact source-bound summary](cloud-run-summary.json) retains the six failed UI case summaries and the runner's case-budget warning. Cloud core **63/63** and the Release build passed. UI case summaries include 21 passes and 6 failures; the 38-case UI matrix and subsequent 89 hosted checks did not complete. Do not credit this run as full acceptance.
+
+The new Build section consumed space ahead of menu actions on the small phone. Build metadata is now an Explore footer, restoring the primary controls' order/space. Shared native menu navigation scrolls to lazy rows. The Observatory welcome assertion now checks the approved drawing copy. The automatic-clear test keeps the queried board paused during XCTest lookup/activation, then separately resumes arrivals; its name now states that scope. No game clock was changed. The background/overflow case's inner wait permits 120 seconds, but the runner cancelled it at a rounded 120-second outer allowance even though its gameplay assertions later reached completion around 132 seconds. Its specific allowance is now 240 seconds within the existing maximum, retaining the same inner assertions/timeouts; [XCTest's time-allowance contract](https://developer.apple.com/documentation/xctest/xctestcase/executiontimeallowance) explains the minute rounding. The complete serial CI job is bounded at 35 rather than 25 minutes. These are targeted corrections, not blanket retries, relaxed outcomes or a remote pass claim.
+
+After the menu/input-test corrections, **5/5 focused native tests pass, zero skips**, on iPhone SE (3rd generation) / iOS 27.0: largest-text drawing/build metadata, automatic arrivals followed by paused clear/settings, balance persistence/arrival changes, First Light completion/restore/replay, and Observatory menu/help/balance continuity. Xcode 27.1; source is the follow-up working tree with no app/runtime changes after this run. Raw result: `/tmp/starfall-footer-se-dd/Logs/Test/Test-Starfall-2026.10.17_17-06-45--0400.xcresult`; output `/tmp/starfall-footer-se-native.log`. Core **63/63**, updater **10/10**, matrix **3/3**, Bash syntax, hygiene and diff checks pass. The specific overflow-budget correction has not yet been rerun in the original cloud environment; the next complete cloud run and RC acceptance must retain that distinction.
+
+<img src="menu-footer-large.png" width="240" alt="Small iPhone menu at largest text size, scrolled to Sky balance, First Light and How to play, with development build metadata below the actions">
+
+**Runtime evidence — follow-up menu, iPhone SE / iOS 27.0 Simulator, verification build label `dev.menu-check`.** The inspected scrolled capture shows version metadata after the controls; native tests also activate those controls and dismiss the menu. It does not verify phone rendering, spoken accessibility or motion. App runtime fingerprint after this correction is **`dev.8f04d7ab96`**; the updater will install that committed main source in place when the follow-up merges.

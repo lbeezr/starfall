@@ -43,7 +43,7 @@ final class FallingSkyInteractionTests: XCTestCase {
 
     @MainActor private func startFirstLight(_ app: XCUIApplication) {
         app.buttons["experiment.settings"].tap()
-        let challenge = app.buttons["experiment.challenge"]
+        let challenge = app.skyMenuControl("experiment.challenge")
         XCTAssertTrue(challenge.waitForExistence(timeout: 5)); challenge.tap()
         XCTAssertTrue(app.buttons["experiment.next"].waitForExistence(timeout: 5))
         XCTAssertEqual(app.staticTexts["experiment.score"].label, "0 of 18 starlight collected")
@@ -235,7 +235,7 @@ final class FallingSkyInteractionTests: XCTestCase {
         capture(app, "falling-sky-system-reduce-motion")
     }
 
-    @MainActor func testAutomaticRainPauseGrowthClearReplayAndSettings() {
+    @MainActor func testAutomaticRainThenPausedClearReplayAndSettings() {
         let app = launch(); defer { app.terminate() }
         XCTAssertEqual(showers(app), 0)
         XCTAssertEqual(app.staticTexts["experiment.score"].label, "0 starlight")
@@ -255,10 +255,10 @@ final class FallingSkyInteractionTests: XCTestCase {
         togglePause(app)
         let clearID = legal.identifier
         capture(app, "automatic-matchable")
-        togglePause(app)
+        // Keep the queried cells committed while XCTest locates/activates them.
+        // Automatic arrivals were exercised above and resume again below.
         app.buttons[clearID].doubleTap()
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label != %@", "0 starlight"), object: app.staticTexts["experiment.score"]).wait(timeout: 5))
-        togglePause(app)
         capture(app, "automatic-after-clear-paused")
         app.buttons["experiment.settings"].tap()
         let calm = app.switches["experiment.calm"]
@@ -281,6 +281,8 @@ final class FallingSkyInteractionTests: XCTestCase {
     }
 
     @MainActor func testBackgroundRelaunchAndAutomaticOverflow() {
+        // The inner terminal wait alone permits 120s, plus background/UI work.
+        executionTimeAllowance = 240
         let app = launch(); defer { app.terminate() }
         togglePause(app)
         waitForShowers(1, in: app)
@@ -358,7 +360,7 @@ final class FallingSkyInteractionTests: XCTestCase {
         togglePause(app)
         let occupied = app.buttons["experiment.cell.0.0"].label
         app.buttons["experiment.settings"].tap()
-        app.buttons["experiment.balance"].tap()
+        app.skyMenuControl("experiment.balance").tap()
         let pace = app.buttons["experiment.pace"], frequency = app.buttons["experiment.darkFrequency"]
         XCTAssertTrue(pace.waitForExistence(timeout: 5))
         pace.tap(); app.buttons["Gentle · 6s"].tap()
@@ -383,7 +385,7 @@ final class FallingSkyInteractionTests: XCTestCase {
         XCTAssertTrue(app.buttons["experiment.pause"].waitForExistence(timeout: 10))
         XCTAssertEqual(app.buttons["experiment.pause"].label, "Resume sky")
         app.buttons["experiment.settings"].tap()
-        app.buttons["experiment.balance"].tap()
+        app.skyMenuControl("experiment.balance").tap()
         XCTAssertTrue((pace.label + String(describing: pace.value)).contains("Gentle"))
         XCTAssertTrue((frequency.label + String(describing: frequency.value)).contains("Frequent"))
         app.buttons["experiment.resetBalance"].tap()

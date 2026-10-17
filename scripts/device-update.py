@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Update one connected iPhone from clean GitHub main; never reset or uninstall."""
 import argparse
+from contextlib import contextmanager
 import fcntl
 import json
 import os
@@ -32,13 +33,19 @@ def atomic_json(path, value):
     temporary.replace(path)
 
 
-def configure(config, state):
-    # Installed/cached state belongs to this device and signing context.
+@contextmanager
+def service_configuration_lock(state):
     with (state / 'update.lock').open('a') as lock:
         try:
             fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         except BlockingIOError:
             raise RuntimeError('An update is running; retry configuration after it finishes.')
+        yield
+
+
+def configure(config, state):
+    # Installed/cached state belongs to this device and signing context.
+    with service_configuration_lock(state):
         path = state / 'config.json'
         previous = json.loads(path.read_text()) if path.exists() else None
         if previous is not None and previous != config:
@@ -60,7 +67,9 @@ def ci_status(repository, revision):
         return 'missing'
     if latest['status'] != 'completed':
         return 'pending'
-    return 'passed' if latest['conclusion'] == 'success' else 'failed'
+    if latest['conclusion'] == 'success':
+        return 'passed'
+    return 'failed' if latest['conclusion'] == 'failure' else 'unavailable'
 
 
 def connected(device, state):
@@ -136,20 +145,22 @@ def update(config, state):
 
 
 def enable(state):
-    config = state / 'config.json'
-    if not config.exists():
-        raise RuntimeError('Configure the device/team before enabling updates.')
-    for name in ['device-update.py', 'build_identity.py']:
-        shutil.copyfile(Path(__file__).with_name(name), state / name)
-    agent = Path.home() / 'Library/LaunchAgents' / (LABEL + '.plist')
-    agent.parent.mkdir(parents=True, exist_ok=True)
-    agent.write_bytes(plistlib.dumps({
-        'Label': LABEL, 'ProgramArguments': [sys.executable, str(state / 'device-update.py'), '--state', str(state), 'run'],
-        'StartInterval': 120, 'RunAtLoad': True,
-        'EnvironmentVariables': {'PATH': '/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/homebrew/bin'},
-        'StandardOutPath': str(state / 'service.log'), 'StandardErrorPath': str(state / 'service-error.log')}))
-    subprocess.run(['launchctl', 'bootout', 'gui/' + str(os.getuid()), str(agent)], capture_output=True)
-    run(['launchctl', 'bootstrap', 'gui/' + str(os.getuid()), str(agent)])
+    # Reloading the service must not terminate a build or installation in flight.
+    with service_configuration_lock(state):
+        config = state / 'config.json'
+        if not config.exists():
+            raise RuntimeError('Configure the device/team before enabling updates.')
+        for name in ['device-update.py', 'build_identity.py']:
+            shutil.copyfile(Path(__file__).with_name(name), state / name)
+        agent = Path.home() / 'Library/LaunchAgents' / (LABEL + '.plist')
+        agent.parent.mkdir(parents=True, exist_ok=True)
+        agent.write_bytes(plistlib.dumps({
+            'Label': LABEL, 'ProgramArguments': [sys.executable, str(state / 'device-update.py'), '--state', str(state), 'run'],
+            'StartInterval': 120, 'RunAtLoad': True,
+            'EnvironmentVariables': {'PATH': '/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/homebrew/bin'},
+            'StandardOutPath': str(state / 'service.log'), 'StandardErrorPath': str(state / 'service-error.log')}))
+        subprocess.run(['launchctl', 'bootout', 'gui/' + str(os.getuid()), str(agent)], capture_output=True)
+        run(['launchctl', 'bootstrap', 'gui/' + str(os.getuid()), str(agent)])
 
 
 def main():
