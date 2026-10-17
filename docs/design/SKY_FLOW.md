@@ -6,7 +6,7 @@ Implement the user-selected overlapping reveal in the existing Observatory. Welc
 
 **Decision:** Decorative cast stars settle over roughly 650–850 ms; actions emerge after 360 ms, overlapping the final bounce. Reduced Motion, Calm effects and VoiceOver present the settled state immediately. Backgrounding settles the ceremony rather than replaying it.
 
-**Next action:** Review physical-iPhone timing and complete RC VoiceOver acceptance. [Native results and limits](../evidence/sky-flow-2026-10-17/README.md) record the implemented flow.
+**Next action:** Review physical-iPhone timing and complete RC VoiceOver acceptance. [Native results and limits](../evidence/sky-flow-2026-10-17/INTEGRATION.md) record the implemented flow.
 
 ## Ownership and acceptance
 

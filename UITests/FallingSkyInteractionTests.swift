@@ -670,6 +670,9 @@ final class SkyFlowInteractionTests: XCTestCase {
         let board = app.otherElements["experiment.board"]
         XCTAssertTrue(board.waitForExistence(timeout: 5))
         pause(app)
+        if (board.value as? String)?.hasPrefix("0 showers") == true {
+            tap("experiment.next", app)
+        }
         let legal = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND value MATCHES %@ AND enabled == true", "experiment.cell.", "([3-9]|[1-9][0-9]) starlight connected")).firstMatch
         XCTAssertTrue(legal.waitForExistence(timeout: 5)); legal.doubleTap()
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label != %@", "0 starlight"), object: app.staticTexts["experiment.score"]).wait(timeout: 5))
