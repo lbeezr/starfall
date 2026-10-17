@@ -8,6 +8,12 @@ Use the DRY, dependency-boundary and roughly 1,200-line review rules in [AGENTS.
 
 The current app Swift files are all below that size trigger. The duplicated board-coordinate mapping remains a concrete earlier extraction candidate because render/tap alignment must change together, regardless of file length. No broad source refactor is part of this guidance update.
 
+## Investigate the failure class
+
+For a fix, record a short chain: reproduction → violated contract → analogous paths checked → responsible design boundary → regression evidence. For example, a stale shower callback after restart calls for examining pause, backgrounding, Settings, scene replacement and animation completions for the same stale-work mechanism. A misaligned jewel tap calls for examining the common render/hit/accessibility coordinate mapping across rows and sizes. These are investigation examples, not evidence that every such path currently has a defect.
+
+Choose the smallest durable correction that covers the demonstrated mechanism. A local guard is appropriate when it enforces the contract at its owner; repeated caller-specific patches suggest the ownership or interface needs attention. Cover representative variations of the cause rather than enumerating only the reported symptom. If evidence or scope requires a temporary mitigation, state what it protects and what remains open, with a concrete follow-up in this register.
+
 ## Working loop
 
 1. Inspect `git status --short` and the change's boundary. Preserve other edits, especially Xcode project configuration. Identify whether a rule/save, lifecycle, rendering, layout, asset or build contract changes.
