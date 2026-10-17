@@ -169,4 +169,28 @@ final class WhiteConnectorTests: XCTestCase {
         first["grown"] = false; first["kind"] = Jewel.aqua.rawValue; board[0] = first; fields["board"] = board
         XCTAssertFalse(try JSONDecoder().decode(FallingSky.self, from: JSONSerialization.data(withJSONObject: fields)).isValidSave)
     }
+    func testSeededSelectiveOpalClearRetainsARealizedFollowUpChoice() throws {
+        let original = ConstellationFixture.opalChoice.game()
+        var selective = original, flood = original
+        let path = [Cell(3,1), Cell(3,2), Cell(2,3), Cell(2,4), Cell(2,5)]
+        XCTAssertEqual(selective.clearConstellation(path)?.collected, 5)
+        XCTAssertEqual(flood.clear(Cell(0,6))?.collected, 5)
+        XCTAssertEqual(selective.board.compactMap { $0 }.filter(\.isLight).count, 1)
+        XCTAssertEqual(flood.board.compactMap { $0 }.filter(\.isLight).count, 0)
+        XCTAssertEqual(selective.incoming, original.incoming)
+        XCTAssertEqual(flood.incoming, original.incoming)
+        for deliversForecast in [false, true] {
+            var left = selective, right = flood
+            if deliversForecast { left.letStarsFall(); right.letStarsFall() }
+            let bestLeft = try XCTUnwrap(left.legalGroups.max { left.value(of: Set($0)) < left.value(of: Set($1)) }?.first)
+            let bestRight = try XCTUnwrap(right.legalGroups.max { right.value(of: Set($0)) < right.value(of: Set($1)) }?.first)
+            XCTAssertEqual(left.clear(bestLeft)?.collected, 4)
+            XCTAssertEqual(right.clear(bestRight)?.collected, 3)
+            XCTAssertEqual(left.score - original.score, 9)
+            XCTAssertEqual(right.score - original.score, 8)
+            XCTAssertTrue(left.isValidSave); XCTAssertTrue(right.isValidSave)
+            XCTAssertFalse(left.isOver); XCTAssertFalse(right.isOver)
+        }
+    }
+
 }
