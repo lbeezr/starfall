@@ -220,6 +220,15 @@ extension ObservatoryInteractionTests {
                 XCTAssertTrue((app.otherElements["experiment.board"].value as? String)?.hasPrefix("\(initialShowers+1) showers") == true)
             }
         }
+        let name = app.staticTexts["sky.guide.title"]
+        let next = app.buttons["experiment.next"]
+        XCTAssertEqual(name.label, "Sunny")
+        XCTAssertLessThan(name.frame.height, next.frame.height,
+                          "The secondary name must not dominate the full-size action label")
+        XCTAssertGreaterThanOrEqual(next.frame.height, 44)
+        XCTAssertLessThanOrEqual(name.frame.height, 44, "The secondary label stays within a compact single-line footprint")
+        XCTAssertFalse(guide.label.isEmpty)
+        capture(app, "Observatory-largest-text-refined-guide")
         for _ in 0..<5 where !app.buttons["experiment.settings"].isHittable { app.swipeDown() }
         app.buttons["experiment.settings"].tap()
         XCTAssertTrue(app.buttons["experiment.done"].waitForExistence(timeout: 5))

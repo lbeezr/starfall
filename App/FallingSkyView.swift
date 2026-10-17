@@ -73,7 +73,7 @@ import StarfallCore
     @ViewBuilder private func guide(compact: Bool) -> some View {
         if store.game.isOver {
             SkyGuideCard(title: store.game.outcome == .won ? "First Light complete" : "This sky is full",
-                         message: store.message, titleIdentifier: "experiment.outcome") {
+                         message: store.message, titleIdentifier: "experiment.outcome", titleRole: .outcome) {
                 restartControls.buttonStyle(StarfallGameButtonStyle())
             }
             .padding(.trailing, largeText ? 0 : StarfallTheme.Layout.guidePropClearance)

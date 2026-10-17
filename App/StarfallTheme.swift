@@ -34,6 +34,15 @@ enum StarfallTheme {
     }
 
     enum Typography {
+        enum GuideTitleRole {
+            case character, outcome
+
+            // Secondary names grow modestly; primary outcomes retain full scaling.
+            var maximumTextSize: DynamicTypeSize {
+                self == .character ? .accessibility1 : .accessibility5
+            }
+        }
+
         static let displayBaseSize: CGFloat = 52
         static let title = Font.system(.title2, design: .serif).weight(.medium)
         static let heading = Font.headline

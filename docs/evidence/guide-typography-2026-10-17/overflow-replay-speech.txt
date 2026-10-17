@@ -1,0 +1,53 @@
+Empty, row 7, column 7 0 starlight connected Button Needs matchi
+Observatory telescope At rest Button Tilt the telescope and catc
+Observatory lantern At rest Button Make the lantern glow warmly
+Sunny
+Match stars worth three. Large stars count as two.
+Start sky Button
+Next shower Button
+Next shower Button
+Previous: Resume sky Button
+Next shower Button
+Previous: Resume sky Button
+Next shower Button
+Previous: Resume sky Button
+Next shower Button
+Previous: Resume sky Button
+Next shower Button
+Previous: Resume sky Button
+Next shower Button
+Previous: Resume sky Button
+Next shower Button
+Previous: Resume sky Button
+Next shower Button
+Previous: Resume sky Button
+Next shower Button
+Previous: Resume sky Button
+Next shower Button
+Previous: Resume sky Button
+Next shower Button
+Previous: Resume sky Button
+Next shower Button
+Previous: Resume sky Button
+Next shower Button
+Previous: Resume sky Button
+Next shower Button
+Previous: Resume sky Button
+Next shower Button
+Previous: Resume sky Button
+Next shower Button
+Previous: Resume sky Button
+Next shower Button
+Previous: Resume sky Button
+Next shower Button
+Previous: Resume sky Button
+Next shower Button
+Previous: Resume sky Button
+Next shower Button
+Previous: Resume sky Button
+Next shower Button
+This sky is full
+There was no room for the next star. 0 starlight collected.
+Replay this sky Button
+Replay this sky Button
+Next shower Button
