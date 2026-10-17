@@ -8,7 +8,7 @@ The seven implementation tasks produced a locally verified comparison. The user 
 
 The Core, Store, cue, tooling and source-bound simulator evidence remain in their focused commits. The export-only selector is retired. Existing saves keep their contracts; new brisk skies use the announced cycle. User preference/physical feel remain unmeasured and must not be inferred from adoption authorization.
 
-- [ ] Production Core/UI promotion and compatibility checks complete.
+- [x] Production Core/UI promotion and compatibility checks complete; source-bound [adoption evidence](evidence/pacing-adoption-2026-10-17/README.md).
 - [ ] PR published, reviewed and merged into main.
 - [ ] Exact main installed in place as `com.starfall.prototype`; retained save and build identity checked.
 

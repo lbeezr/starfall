@@ -1,6 +1,6 @@
 # Adopt the announced Starfall rhythm
 
-**Status:** Accepted by user; implementation verification in progress · **Owner:** current implementer · **Updated:** October 17, 2026
+**Status:** Accepted by user; production verification passed; merge/device delivery pending · **Owner:** current implementer · **Updated:** October 17, 2026
 
 Use the previously isolated B cadence in ordinary Debug and Release play. The user explicitly selected B, declined another baseline comparison and requested PR → main → an in-place phone update. This decision authorizes adoption, not a claim of superior enjoyment.
 
@@ -20,9 +20,11 @@ The temporary pacing exporter and A/B launch selector are removed. There is one 
 
 ## Acceptance
 
-- [ ] Core exact phases/warnings across two cycles; versioned save/restore/replay and historical-marker coverage; matched-action generation parity.
-- [ ] Normal app hosted scheduling and native cue checks execute without a B flag/export. Check normal/reduced motion, large text, Settings, native clearing, pause/deadline interruption, restart, background/restore and First Light regressions as affected.
-- [ ] Normal Debug/Release simulator builds, hygiene, native matrix and explicit target membership pass. No new SDK, backend, account or analytics.
+- [x] Core exact phases/warnings across two cycles; versioned save/restore/replay and historical-marker coverage; matched-action generation parity.
+- [x] Normal app hosted scheduling and native cue checks execute without a B flag/export. Check normal/reduced motion, large text, Settings, native clearing, pause/deadline interruption, restart, background/restore and First Light regressions as affected.
+- [x] Normal Debug/Release simulator builds, hygiene, native matrix and explicit target membership pass. No new SDK, backend, account or analytics.
 - [ ] PR branch matches the tested tree, main merge is verified and exact merged main is built/signed for the existing phone bundle. Retained round/preferences stay intact and installed fingerprint is checked.
 
 Full actual VoiceOver belongs to RC; this development delivery uses labels/non-color cues and relevant layout assertions. Human preference, accelerated-opening trace comfort, physical smoothness and minimum-OS/tablet coverage remain unverified unless separately observed. Earlier [simulator evidence](../evidence/pacing-acceptance-2026-10-17/README.md) is source-bound; it does not automatically accept this promotion or a device installation.
+
+Production verification and source boundaries: [adoption evidence](../evidence/pacing-adoption-2026-10-17/README.md).

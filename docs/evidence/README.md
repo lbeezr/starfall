@@ -17,3 +17,5 @@ Start with [the roadmap](../ROADMAP.md) for current priorities or [visual refere
 [Cadence cue comparison](pacing-cues-2026-10-17/README.md) records task 4's source, native layout regression and acceptance limits.
 
 [Combined pacing acceptance](pacing-acceptance-2026-10-17/README.md) separates exact-source Core, build, hosted, native and sampled-motion results, with failed attempts and remaining acceptance gaps.
+
+[Production rhythm adoption](pacing-adoption-2026-10-17/README.md) records the promoted source, compatibility checks and delivery boundary.
