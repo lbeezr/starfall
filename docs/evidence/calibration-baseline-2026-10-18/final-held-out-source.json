@@ -1,0 +1,46 @@
+{
+  "command": [
+    "python3",
+    "tools/mechanics/study-opal-choices.py",
+    "--calibration",
+    "--seed-start",
+    "64",
+    "--seeds",
+    "64",
+    "--showers",
+    "240",
+    "--output",
+    "artifacts/calibration-current/final-held-out"
+  ],
+  "compileFlags": [
+    "-O",
+    "-DDEBUG"
+  ],
+  "dirtyPaths": [
+    " M tools/mechanics/opal-choice-study.swift",
+    " M tools/mechanics/study-opal-choices.py",
+    "?? docs/design/CALIBRATION.md"
+  ],
+  "inputSHA256": {
+    "Sources/StarfallCore/ConstellationFixture.swift": "58936ea7336163f95b934cc057e71ae933041bf9fd9a271ed9ec065a396da5aa",
+    "Sources/StarfallCore/DuskFixture.swift": "20d64ca890a24bce597901f26e386922d53ef975d6b26dcdc2cdb76c9981dd39",
+    "Sources/StarfallCore/DuskRules.swift": "1bae2a6f1afbe0ed761df1cb748f90c3d368280df5f46175a1b3711c59b4d5b1",
+    "Sources/StarfallCore/FallingSky.swift": "40468b7f556d2413ad0dcab9c3e0e5748e64912b202edcccc05ebcedf1548ae0",
+    "Sources/StarfallCore/Game.swift": "9ab2d57af8fe0ee804ce56e762eb5833a08ae5f39e8916ffaa0fe708d90e7086",
+    "Sources/StarfallCore/GravityFieldRules.swift": "ef5308b515340c2eafe1b226cee70a27701a6e906b6c975380d13af818f4130c",
+    "Sources/StarfallCore/GravityOpportunityFixture.swift": "fe410f41722d690eec3ac67472bf82e421912e772252fdf4ac41819f50c08e4a",
+    "Sources/StarfallCore/RefillMapping.swift": "608be41f40c945b18aba5512bac16b7c4de4eb8a2747d6fe54a895392b38e5f7",
+    "Sources/StarfallCore/SkyCadence.swift": "a01a1ab5fe50e7677bd2e1af75563a5bcc316e1828e921e7da2f572202b76b8c",
+    "Sources/StarfallCore/SkyGeneration.swift": "03d62817aaace9a7354cffb15e7735a98246ed9d75643f0e354fab2aeb2d2d97",
+    "Sources/StarfallCore/SkyTechniqueExample.swift": "75c38131723930f1e5884b8d9e87ea8c0cce975b81bddf9ef89212d627e77c26",
+    "Sources/StarfallCore/StarRecipe.swift": "280c7529a613f75af7a47f510ae2a56969a417d2a3d3821c80db24d788ce1559",
+    "Sources/StarfallCore/StarfallBalance.swift": "32525ba2f346cf843863b1cb1cba8a2fab66d088b9dc7ac308867f1520c329ec",
+    "Sources/StarfallCore/StarfallChallenge.swift": "0475f660c21ae42cce0df8c11dc40adbbb841e58b6c66b82a1293c720bd26b72",
+    "tools/mechanics/opal-choice-study.swift": "1aaae9168ab94136307cd8bf0374d43cfdcb26da8de865d9710d3053c541f816",
+    "tools/mechanics/study-opal-choices.py": "cc0206d80f2dc591a52481d9e4344e77b92b7a429496444e04ba9c3c15f330ea"
+  },
+  "method": "Production Core unchanged, current generation/cadence with feeding Dusk; four visible-reward policies, bounded exchanges and one/all clear budgets. No human timing or forecast selection.",
+  "selfChecks": "Passed before sampling: topology/cap, colored anchor legality, deduplication, fixture consumption, source immutability, Core JSON round-trip, phase boundaries, and drained legal clears use collectible reward. Calibration: authored setup improves visible reward, leaves source untouched and preserves turn/forecast; every sampled post-action state validates and round-trips.",
+  "source": "11a16fc13c88573a2ead54f7e7c0ba5250290362",
+  "toolchain": "Apple Swift version 6.4 (swiftlang-6.4.0.34.1 clang-2100.3.34.1)\nTarget: arm64-apple-macosx27.0.0"
+}

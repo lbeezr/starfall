@@ -28,6 +28,8 @@ A 150 ms dwell in the neighboring cell arms an exchange and displays its two-sta
 
 Arrange offers tap controls for selecting a star, moving left/right, choosing an overlapping recipe, clearing it, or cancelling. Native accessibility actions open the same selection. At accessibility text sizes these controls reflow below the canvas and scroll. Ordinary taps still clear normal connected groups; the selected recipe spends only its exact ingredients. Opal can join a colored family; all-Opal recipes and Dusk ingredients are invalid.
 
+Arrange is unavailable while the sky is empty. If a committed clear removes the final stars, the intent exits Arrange and restores the ordinary paused-play controls, retaining relay feedback. A populated sky keeps the mode while discarding its stale selection. [Native correction and timing follow-up](../evidence/calibration-timing-and-arrange-2026-10-18/README.md).
+
 ## State and presentation
 
 Core validates actual star IDs and current board state. The store rejects stale snapshots/generations and reserves only affected columns, including Dusk reward changes. It commits and saves before presentation. Scene animation first slides exchanged identities horizontally, then falls to the committed resting cells. Quiet motion preserves the outcome.

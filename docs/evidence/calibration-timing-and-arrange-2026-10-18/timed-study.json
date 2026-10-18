@@ -1,0 +1,543 @@
+{
+  "commonProvenance": {
+    "baselineCadence": "announcedCycleV1",
+    "candidateCadence": "announcedCycleV2",
+    "dirty": " M tools/mechanics/PacingMeasure.swift\n M tools/mechanics/PacingSupport.swift\n M tools/mechanics/compare-pacing.py\n",
+    "evidence": "Real Debug Store and trace intent; injected virtual clock and model presenter. No native rendering, touch, VoiceOver or human evidence.",
+    "head": "ba119253a808b164ad6feb72d9c541e1b6d62ac2",
+    "includeSetups": true,
+    "personaVersion": "visible-reward-components-v2",
+    "platform": "ProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434\n",
+    "sha256": {
+      "App/DialogueScripts/observatory-dialogue.json": "3e95c1e1bcb0bad4c152d40b6113316717630887365073e34dfdf73da22c8631",
+      "App/FallingSkyHUD.swift": "648699e0865ed406f5978579e56e9db03ae42da23a77cc345c4d2e81972c1232",
+      "App/FallingSkyMotion.swift": "464e028bd5af9edd0a83391f25fd50aee5e2392eb652fcd4b70b6f71becb50e1",
+      "App/FallingSkyPresentation.swift": "e26b27623585fed85e3ba15f9488751be259816c2f98ff515021561ea929eb1d",
+      "App/FallingSkyScene.swift": "f11d1474e1c129c80601eacb2fef3b5dfe1de2e119c53296ae6750439245ffdc",
+      "App/FallingSkyStore.swift": "32f35af2773b055c288865f0d3010df383140deb0ef1dac8e2a194e7d4c09384",
+      "App/ObservatoryReviewFixture.swift": "9a4750756375afdbfdd710795dcb50a24a3005b3fd1f71e4a4274a35fe0f4aae",
+      "App/SkyDialogue.swift": "9a352c3ad95afc611f28800013611059513bc8b240311a28b0f2e020f61a31f1",
+      "App/SkyDialogueLibrary.swift": "32607772d5b0261af78e1e2a9c83519490a0a64c58c6438225401fb34004946e",
+      "App/SkyFlowState.swift": "ca597f926d65007b576425e429f6a286fead653cda7d85746797c6acee356b6a",
+      "App/SkySaveArchive.swift": "9e3555c155145f50799f0307445db6529e75d777a52a8717c8e2620947245d8f",
+      "App/SkyTechniqueIntent.swift": "1b0dcaa3568e878ecbe631cdeb57b57dfb7ab8ff6411af57e7e1e994ba0417a2",
+      "Sources/StarfallCore/ConstellationFixture.swift": "58936ea7336163f95b934cc057e71ae933041bf9fd9a271ed9ec065a396da5aa",
+      "Sources/StarfallCore/DuskFixture.swift": "20d64ca890a24bce597901f26e386922d53ef975d6b26dcdc2cdb76c9981dd39",
+      "Sources/StarfallCore/DuskRules.swift": "1bae2a6f1afbe0ed761df1cb748f90c3d368280df5f46175a1b3711c59b4d5b1",
+      "Sources/StarfallCore/FallingSky.swift": "40468b7f556d2413ad0dcab9c3e0e5748e64912b202edcccc05ebcedf1548ae0",
+      "Sources/StarfallCore/Game.swift": "9ab2d57af8fe0ee804ce56e762eb5833a08ae5f39e8916ffaa0fe708d90e7086",
+      "Sources/StarfallCore/GravityFieldRules.swift": "ef5308b515340c2eafe1b226cee70a27701a6e906b6c975380d13af818f4130c",
+      "Sources/StarfallCore/GravityOpportunityFixture.swift": "fe410f41722d690eec3ac67472bf82e421912e772252fdf4ac41819f50c08e4a",
+      "Sources/StarfallCore/RefillMapping.swift": "608be41f40c945b18aba5512bac16b7c4de4eb8a2747d6fe54a895392b38e5f7",
+      "Sources/StarfallCore/SkyCadence.swift": "a01a1ab5fe50e7677bd2e1af75563a5bcc316e1828e921e7da2f572202b76b8c",
+      "Sources/StarfallCore/SkyGeneration.swift": "03d62817aaace9a7354cffb15e7735a98246ed9d75643f0e354fab2aeb2d2d97",
+      "Sources/StarfallCore/SkyTechniqueExample.swift": "75c38131723930f1e5884b8d9e87ea8c0cce975b81bddf9ef89212d627e77c26",
+      "Sources/StarfallCore/StarRecipe.swift": "280c7529a613f75af7a47f510ae2a56969a417d2a3d3821c80db24d788ce1559",
+      "Sources/StarfallCore/StarfallBalance.swift": "32525ba2f346cf843863b1cb1cba8a2fab66d088b9dc7ac308867f1520c329ec",
+      "Sources/StarfallCore/StarfallChallenge.swift": "0475f660c21ae42cce0df8c11dc40adbbb841e58b6c66b82a1293c720bd26b72",
+      "Tests/StarfallCoreTests/TimingCycleFixture.swift": "51936d184a8f60df63abe1489006011abb02431fedf310eca0afb9180513d189",
+      "tools/mechanics/PacingChecks.swift": "abe53f443fd16b862ceffc2ea1ca19ae8b68d84c0e953a6a6d0f0b1374037f8a",
+      "tools/mechanics/PacingMeasure.swift": "96a5e5ebb5ae24e17545c7781d1687131115294168fabbb6e5090b45b45a1ca2",
+      "tools/mechanics/PacingSupport.swift": "bc44091073659bfb405d14f16da15cbbdc1a839dce64b39abdf8c9bdf9adeebf",
+      "tools/mechanics/compare-pacing.py": "2692f895a7d473db581ba626e0a8ad3935c024269afa5b36413355e28cb81318"
+    },
+    "timingModelVersion": "source-durations-v2",
+    "toolchain": "Apple Swift version 6.4 (swiftlang-6.4.0.34.1 clang-2100.3.34.1)\nTarget: arm64-apple-macosx27.0.0\n",
+    "traceStepSeconds": 0.12
+  },
+  "scenarios": {
+    "deliberate": {
+      "allCadenceParityCommits": 27481,
+      "groups": {
+        "full-motion-model/largest-clear/announcedCycleV2": {
+          "exchangeRejections": 0,
+          "exchanges": 0,
+          "heldFraction": {
+            "max": 0.10343825665859589,
+            "median": 0.05679683765398123,
+            "min": 0.023335826477187585,
+            "p90": 0.10137989298789306
+          },
+          "overflows": 10,
+          "rounds": 16,
+          "score": {
+            "max": 189,
+            "median": 145.5,
+            "min": 21,
+            "p90": 188
+          },
+          "showers": {
+            "max": 81,
+            "median": 64.5,
+            "min": 16,
+            "p90": 80
+          }
+        },
+        "full-motion-model/setup-first/announcedCycleV2": {
+          "exchangeRejections": 0,
+          "exchanges": 205,
+          "heldFraction": {
+            "max": 0.20000000000000281,
+            "median": 0.1747093385347178,
+            "min": 0.11812499999999977,
+            "p90": 0.19917792131532788
+          },
+          "overflows": 11,
+          "rounds": 16,
+          "score": {
+            "max": 145,
+            "median": 100.0,
+            "min": 17,
+            "p90": 133
+          },
+          "showers": {
+            "max": 70,
+            "median": 60.0,
+            "min": 18,
+            "p90": 69
+          }
+        },
+        "quiet-model/largest-clear/announcedCycleV2": {
+          "exchangeRejections": 0,
+          "exchanges": 0,
+          "heldFraction": {
+            "max": 0.06333333333333459,
+            "median": 0.03031800809777911,
+            "min": 0.0,
+            "p90": 0.06266666666666829
+          },
+          "overflows": 5,
+          "rounds": 16,
+          "score": {
+            "max": 280,
+            "median": 254.0,
+            "min": 120,
+            "p90": 269
+          },
+          "showers": {
+            "max": 87,
+            "median": 86.0,
+            "min": 43,
+            "p90": 87
+          }
+        },
+        "quiet-model/setup-first/announcedCycleV2": {
+          "exchangeRejections": 0,
+          "exchanges": 494,
+          "heldFraction": {
+            "max": 0.28111111111111114,
+            "median": 0.21722222222222332,
+            "min": 0.15866666666666707,
+            "p90": 0.2516666666666667
+          },
+          "overflows": 0,
+          "rounds": 16,
+          "score": {
+            "max": 218,
+            "median": 196.5,
+            "min": 166,
+            "p90": 216
+          },
+          "showers": {
+            "max": 75,
+            "median": 69.5,
+            "min": 63,
+            "p90": 74
+          }
+        }
+      },
+      "provenance": {
+        "command": [
+          "python3",
+          "tools/mechanics/compare-pacing.py",
+          "--seeds",
+          "16",
+          "--seconds",
+          "180",
+          "--include-setups",
+          "--reaction-seconds",
+          "1",
+          "--swap-seconds",
+          "1",
+          "--baseline-cadence",
+          "announcedCycleV1",
+          "--candidate-cadence",
+          "announcedCycleV2",
+          "--output",
+          "artifacts/calibration-current/timed-setup-slow"
+        ],
+        "reactionSeconds": 1.0,
+        "swapContactSeconds": 1.0
+      }
+    },
+    "fast": {
+      "allCadenceParityCommits": 31088,
+      "groups": {
+        "full-motion-model/largest-clear/announcedCycleV2": {
+          "exchangeRejections": 0,
+          "exchanges": 0,
+          "heldFraction": {
+            "max": 0.0542222222222215,
+            "median": 0.03884748584748697,
+            "min": 0.0,
+            "p90": 0.048666666666667975
+          },
+          "overflows": 6,
+          "rounds": 16,
+          "score": {
+            "max": 252,
+            "median": 220.5,
+            "min": 126,
+            "p90": 246
+          },
+          "showers": {
+            "max": 80,
+            "median": 77.0,
+            "min": 45,
+            "p90": 80
+          }
+        },
+        "full-motion-model/setup-first/announcedCycleV2": {
+          "exchangeRejections": 0,
+          "exchanges": 477,
+          "heldFraction": {
+            "max": 0.1704444444444451,
+            "median": 0.12055555555555642,
+            "min": 0.0855555555555557,
+            "p90": 0.16927777777777706
+          },
+          "overflows": 0,
+          "rounds": 16,
+          "score": {
+            "max": 220,
+            "median": 201.5,
+            "min": 174,
+            "p90": 220
+          },
+          "showers": {
+            "max": 74,
+            "median": 71.0,
+            "min": 66,
+            "p90": 73
+          }
+        },
+        "quiet-model/largest-clear/announcedCycleV2": {
+          "exchangeRejections": 0,
+          "exchanges": 0,
+          "heldFraction": {
+            "max": 0.07300929330748286,
+            "median": 0.028666666666667295,
+            "min": 0.011929747045178839,
+            "p90": 0.07066666666666803
+          },
+          "overflows": 5,
+          "rounds": 16,
+          "score": {
+            "max": 289,
+            "median": 264.0,
+            "min": 109,
+            "p90": 283
+          },
+          "showers": {
+            "max": 87,
+            "median": 85.5,
+            "min": 44,
+            "p90": 87
+          }
+        },
+        "quiet-model/setup-first/announcedCycleV2": {
+          "exchangeRejections": 0,
+          "exchanges": 495,
+          "heldFraction": {
+            "max": 0.13033333333333405,
+            "median": 0.11194444444444479,
+            "min": 0.07722222222222273,
+            "p90": 0.12622222222222293
+          },
+          "overflows": 0,
+          "rounds": 16,
+          "score": {
+            "max": 276,
+            "median": 261.5,
+            "min": 247,
+            "p90": 275
+          },
+          "showers": {
+            "max": 82,
+            "median": 79.0,
+            "min": 77,
+            "p90": 82
+          }
+        }
+      },
+      "provenance": {
+        "command": [
+          "python3",
+          "tools/mechanics/compare-pacing.py",
+          "--seeds",
+          "16",
+          "--seconds",
+          "180",
+          "--include-setups",
+          "--baseline-cadence",
+          "announcedCycleV1",
+          "--candidate-cadence",
+          "announcedCycleV2",
+          "--output",
+          "artifacts/calibration-current/timed-setup-baseline"
+        ],
+        "reactionSeconds": 0.45,
+        "swapContactSeconds": 0.5
+      }
+    },
+    "long-contact": {
+      "allCadenceParityCommits": 30480,
+      "groups": {
+        "full-motion-model/largest-clear/announcedCycleV2": {
+          "exchangeRejections": 0,
+          "exchanges": 0,
+          "heldFraction": {
+            "max": 0.0542222222222215,
+            "median": 0.03884748584748697,
+            "min": 0.0,
+            "p90": 0.048666666666667975
+          },
+          "overflows": 6,
+          "rounds": 16,
+          "score": {
+            "max": 252,
+            "median": 220.5,
+            "min": 126,
+            "p90": 246
+          },
+          "showers": {
+            "max": 80,
+            "median": 77.0,
+            "min": 45,
+            "p90": 80
+          }
+        },
+        "full-motion-model/setup-first/announcedCycleV2": {
+          "exchangeRejections": 0,
+          "exchanges": 441,
+          "heldFraction": {
+            "max": 0.25933333333333447,
+            "median": 0.18844444444444503,
+            "min": 0.15072222222222154,
+            "p90": 0.23911111111111272
+          },
+          "overflows": 0,
+          "rounds": 16,
+          "score": {
+            "max": 211,
+            "median": 187.5,
+            "min": 152,
+            "p90": 207
+          },
+          "showers": {
+            "max": 69,
+            "median": 65.0,
+            "min": 60,
+            "p90": 69
+          }
+        },
+        "quiet-model/largest-clear/announcedCycleV2": {
+          "exchangeRejections": 0,
+          "exchanges": 0,
+          "heldFraction": {
+            "max": 0.07300929330748286,
+            "median": 0.028666666666667295,
+            "min": 0.011929747045178839,
+            "p90": 0.07066666666666803
+          },
+          "overflows": 5,
+          "rounds": 16,
+          "score": {
+            "max": 289,
+            "median": 264.0,
+            "min": 109,
+            "p90": 283
+          },
+          "showers": {
+            "max": 87,
+            "median": 85.5,
+            "min": 44,
+            "p90": 87
+          }
+        },
+        "quiet-model/setup-first/announcedCycleV2": {
+          "exchangeRejections": 0,
+          "exchanges": 455,
+          "heldFraction": {
+            "max": 0.2058333333333334,
+            "median": 0.1796666666666673,
+            "min": 0.1230555555555559,
+            "p90": 0.2058333333333334
+          },
+          "overflows": 0,
+          "rounds": 16,
+          "score": {
+            "max": 259,
+            "median": 244.5,
+            "min": 219,
+            "p90": 257
+          },
+          "showers": {
+            "max": 78,
+            "median": 73.5,
+            "min": 71,
+            "p90": 76
+          }
+        }
+      },
+      "provenance": {
+        "command": [
+          "python3",
+          "tools/mechanics/compare-pacing.py",
+          "--seeds",
+          "16",
+          "--seconds",
+          "180",
+          "--include-setups",
+          "--reaction-seconds",
+          "0.45",
+          "--swap-seconds",
+          "1",
+          "--baseline-cadence",
+          "announcedCycleV1",
+          "--candidate-cadence",
+          "announcedCycleV2",
+          "--output",
+          "artifacts/calibration-current/timed-long-contact"
+        ],
+        "reactionSeconds": 0.45,
+        "swapContactSeconds": 1.0
+      }
+    },
+    "long-decision": {
+      "allCadenceParityCommits": 27932,
+      "groups": {
+        "full-motion-model/largest-clear/announcedCycleV2": {
+          "exchangeRejections": 0,
+          "exchanges": 0,
+          "heldFraction": {
+            "max": 0.10343825665859589,
+            "median": 0.05679683765398123,
+            "min": 0.023335826477187585,
+            "p90": 0.10137989298789306
+          },
+          "overflows": 10,
+          "rounds": 16,
+          "score": {
+            "max": 189,
+            "median": 145.5,
+            "min": 21,
+            "p90": 188
+          },
+          "showers": {
+            "max": 81,
+            "median": 64.5,
+            "min": 16,
+            "p90": 80
+          }
+        },
+        "full-motion-model/setup-first/announcedCycleV2": {
+          "exchangeRejections": 0,
+          "exchanges": 208,
+          "heldFraction": {
+            "max": 0.15000000000000238,
+            "median": 0.13671711555885174,
+            "min": 0.08962739174219567,
+            "p90": 0.14961866307761496
+          },
+          "overflows": 12,
+          "rounds": 16,
+          "score": {
+            "max": 160,
+            "median": 100.0,
+            "min": 17,
+            "p90": 133
+          },
+          "showers": {
+            "max": 73,
+            "median": 60.0,
+            "min": 18,
+            "p90": 73
+          }
+        },
+        "quiet-model/largest-clear/announcedCycleV2": {
+          "exchangeRejections": 0,
+          "exchanges": 0,
+          "heldFraction": {
+            "max": 0.06333333333333459,
+            "median": 0.03031800809777911,
+            "min": 0.0,
+            "p90": 0.06266666666666829
+          },
+          "overflows": 5,
+          "rounds": 16,
+          "score": {
+            "max": 280,
+            "median": 254.0,
+            "min": 120,
+            "p90": 269
+          },
+          "showers": {
+            "max": 87,
+            "median": 86.0,
+            "min": 43,
+            "p90": 87
+          }
+        },
+        "quiet-model/setup-first/announcedCycleV2": {
+          "exchangeRejections": 0,
+          "exchanges": 544,
+          "heldFraction": {
+            "max": 0.18477777777777868,
+            "median": 0.13988888888888928,
+            "min": 0.09200000000000033,
+            "p90": 0.16744444444444495
+          },
+          "overflows": 0,
+          "rounds": 16,
+          "score": {
+            "max": 243,
+            "median": 219.5,
+            "min": 184,
+            "p90": 237
+          },
+          "showers": {
+            "max": 80,
+            "median": 75.5,
+            "min": 72,
+            "p90": 79
+          }
+        }
+      },
+      "provenance": {
+        "command": [
+          "python3",
+          "tools/mechanics/compare-pacing.py",
+          "--seeds",
+          "16",
+          "--seconds",
+          "180",
+          "--include-setups",
+          "--reaction-seconds",
+          "1",
+          "--swap-seconds",
+          "0.5",
+          "--baseline-cadence",
+          "announcedCycleV1",
+          "--candidate-cadence",
+          "announcedCycleV2",
+          "--output",
+          "artifacts/calibration-current/timed-long-decision"
+        ],
+        "reactionSeconds": 1.0,
+        "swapContactSeconds": 0.5
+      }
+    }
+  },
+  "scope": "Current announcedCycleV2 rows from unchanged main runtime 11a16fc, before the empty-Arrange UI correction. Historical cadence comparison/raw event logs remain under ignored artifacts. No human timing or native animation evidence."
+}

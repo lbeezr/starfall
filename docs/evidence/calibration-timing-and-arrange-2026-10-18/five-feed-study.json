@@ -1,0 +1,696 @@
+{
+  "five-feed-deliberate": {
+    "groups": {
+      "full-motion-model/largest-clear/announcedCycleV2": {
+        "exchangeRejections": 0,
+        "exchanges": 0,
+        "heldFraction": {
+          "max": 0.10324380885943593,
+          "median": 0.05684818481848239,
+          "min": 0.0,
+          "p90": 0.09133333333333572
+        },
+        "overflows": 10,
+        "rounds": 16,
+        "score": {
+          "max": 199,
+          "median": 95.5,
+          "min": 31,
+          "p90": 190
+        },
+        "showers": {
+          "max": 80,
+          "median": 49.0,
+          "min": 17,
+          "p90": 80
+        }
+      },
+      "full-motion-model/setup-first/announcedCycleV2": {
+        "exchangeRejections": 0,
+        "exchanges": 154,
+        "heldFraction": {
+          "max": 0.18654452441853808,
+          "median": 0.16931260991693475,
+          "min": 0.08816398501212255,
+          "p90": 0.1850495668482637
+        },
+        "overflows": 16,
+        "rounds": 16,
+        "score": {
+          "max": 131,
+          "median": 52.5,
+          "min": 6,
+          "p90": 105
+        },
+        "showers": {
+          "max": 66,
+          "median": 40.5,
+          "min": 18,
+          "p90": 57
+        }
+      },
+      "quiet-model/largest-clear/announcedCycleV2": {
+        "exchangeRejections": 0,
+        "exchanges": 0,
+        "heldFraction": {
+          "max": 0.056666666666666754,
+          "median": 0.029833333333333746,
+          "min": 0.012831729367162915,
+          "p90": 0.05562819446095289
+        },
+        "overflows": 7,
+        "rounds": 16,
+        "score": {
+          "max": 280,
+          "median": 254.5,
+          "min": 117,
+          "p90": 268
+        },
+        "showers": {
+          "max": 87,
+          "median": 85.0,
+          "min": 40,
+          "p90": 87
+        }
+      },
+      "quiet-model/setup-first/announcedCycleV2": {
+        "exchangeRejections": 0,
+        "exchanges": 490,
+        "heldFraction": {
+          "max": 0.2655555555555568,
+          "median": 0.2166666666666674,
+          "min": 0.19266666666666765,
+          "p90": 0.25933333333333414
+        },
+        "overflows": 1,
+        "rounds": 16,
+        "score": {
+          "max": 206,
+          "median": 191.5,
+          "min": 63,
+          "p90": 204
+        },
+        "showers": {
+          "max": 72,
+          "median": 69.0,
+          "min": 25,
+          "p90": 71
+        }
+      }
+    },
+    "source": {
+      "baselineCadence": "announcedCycleV1",
+      "candidateCadence": "announcedCycleV2",
+      "command": [
+        "python3",
+        "tools/mechanics/compare-pacing.py",
+        "--seeds",
+        "16",
+        "--seconds",
+        "180",
+        "--include-setups",
+        "--reaction-seconds",
+        "1",
+        "--swap-seconds",
+        "1",
+        "--baseline-cadence",
+        "announcedCycleV1",
+        "--candidate-cadence",
+        "announcedCycleV2",
+        "--output",
+        "artifacts/calibration-current/five-feed-deliberate"
+      ],
+      "dirty": " M tools/mechanics/opal-choice-study.swift\n M tools/mechanics/study-opal-choices.py\n?? docs/evidence/calibration-timing-and-arrange-2026-10-18/dev-11a16fc-wip-55d90a174c__empty-relay-after__iphone-16-pro-max__default-text.jpg\n?? docs/evidence/calibration-timing-and-arrange-2026-10-18/dev-11a16fc__empty-relay-before__iphone-16-pro-max__default-text.jpg\n",
+      "evidence": "Real Debug Store and trace intent; injected virtual clock and model presenter. No native rendering, touch, VoiceOver or human evidence.",
+      "head": "85f5a2ac922cda3e37f563f2d1c7a49a60b12cdd",
+      "includeSetups": true,
+      "personaVersion": "visible-reward-components-v2",
+      "platform": "ProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434\n",
+      "reactionSeconds": 1.0,
+      "sha256": {
+        "App/DialogueScripts/observatory-dialogue.json": "9121f1c289bb780e8e39da518beacea9817de52f48da4f76d91c6e9e36ac1e37",
+        "App/FallingSkyHUD.swift": "648699e0865ed406f5978579e56e9db03ae42da23a77cc345c4d2e81972c1232",
+        "App/FallingSkyMotion.swift": "464e028bd5af9edd0a83391f25fd50aee5e2392eb652fcd4b70b6f71becb50e1",
+        "App/FallingSkyPresentation.swift": "e26b27623585fed85e3ba15f9488751be259816c2f98ff515021561ea929eb1d",
+        "App/FallingSkyScene.swift": "f11d1474e1c129c80601eacb2fef3b5dfe1de2e119c53296ae6750439245ffdc",
+        "App/FallingSkyStore.swift": "e9e28ae3134cf4ba651ea3de11045b52b495fcfc755d32267b3ce616f3b7c272",
+        "App/ObservatoryReviewFixture.swift": "9a4750756375afdbfdd710795dcb50a24a3005b3fd1f71e4a4274a35fe0f4aae",
+        "App/SkyDialogue.swift": "9a352c3ad95afc611f28800013611059513bc8b240311a28b0f2e020f61a31f1",
+        "App/SkyDialogueLibrary.swift": "32607772d5b0261af78e1e2a9c83519490a0a64c58c6438225401fb34004946e",
+        "App/SkyFlowState.swift": "ca597f926d65007b576425e429f6a286fead653cda7d85746797c6acee356b6a",
+        "App/SkySaveArchive.swift": "907bd106ddb2633d5cef039877d1d46b7cb153a3724dde5bc1dd1aebc84e9d9c",
+        "App/SkyTechniqueIntent.swift": "878dd342ae0144cbc3d352f6b0f013801792ebfee7c6988b262b359679eca94d",
+        "Sources/StarfallCore/ConstellationFixture.swift": "58936ea7336163f95b934cc057e71ae933041bf9fd9a271ed9ec065a396da5aa",
+        "Sources/StarfallCore/DuskFixture.swift": "9740935783394c05fdb591557c9ebdb15426228313f7245ed82ba87cf87dc26f",
+        "Sources/StarfallCore/DuskRules.swift": "76d3a62cbfa2da4674ebe3078d4e4b3c01282991fb151a21ca1c38c38beec8d6",
+        "Sources/StarfallCore/FallingSky.swift": "dbb912b66f4a08c8bd6f745967e8b9a9e4c92e036a4b75a5432e531c87b091e3",
+        "Sources/StarfallCore/Game.swift": "9ab2d57af8fe0ee804ce56e762eb5833a08ae5f39e8916ffaa0fe708d90e7086",
+        "Sources/StarfallCore/GravityFieldRules.swift": "ef5308b515340c2eafe1b226cee70a27701a6e906b6c975380d13af818f4130c",
+        "Sources/StarfallCore/GravityOpportunityFixture.swift": "fe410f41722d690eec3ac67472bf82e421912e772252fdf4ac41819f50c08e4a",
+        "Sources/StarfallCore/RefillMapping.swift": "608be41f40c945b18aba5512bac16b7c4de4eb8a2747d6fe54a895392b38e5f7",
+        "Sources/StarfallCore/SkyCadence.swift": "a01a1ab5fe50e7677bd2e1af75563a5bcc316e1828e921e7da2f572202b76b8c",
+        "Sources/StarfallCore/SkyGeneration.swift": "03d62817aaace9a7354cffb15e7735a98246ed9d75643f0e354fab2aeb2d2d97",
+        "Sources/StarfallCore/SkyTechniqueExample.swift": "75c38131723930f1e5884b8d9e87ea8c0cce975b81bddf9ef89212d627e77c26",
+        "Sources/StarfallCore/StarRecipe.swift": "280c7529a613f75af7a47f510ae2a56969a417d2a3d3821c80db24d788ce1559",
+        "Sources/StarfallCore/StarfallBalance.swift": "32525ba2f346cf843863b1cb1cba8a2fab66d088b9dc7ac308867f1520c329ec",
+        "Sources/StarfallCore/StarfallChallenge.swift": "0475f660c21ae42cce0df8c11dc40adbbb841e58b6c66b82a1293c720bd26b72",
+        "Tests/StarfallCoreTests/TimingCycleFixture.swift": "51936d184a8f60df63abe1489006011abb02431fedf310eca0afb9180513d189",
+        "tools/mechanics/PacingChecks.swift": "abe53f443fd16b862ceffc2ea1ca19ae8b68d84c0e953a6a6d0f0b1374037f8a",
+        "tools/mechanics/PacingMeasure.swift": "96a5e5ebb5ae24e17545c7781d1687131115294168fabbb6e5090b45b45a1ca2",
+        "tools/mechanics/PacingSupport.swift": "bc44091073659bfb405d14f16da15cbbdc1a839dce64b39abdf8c9bdf9adeebf",
+        "tools/mechanics/compare-pacing.py": "2692f895a7d473db581ba626e0a8ad3935c024269afa5b36413355e28cb81318"
+      },
+      "swapContactSeconds": 1.0,
+      "timingModelVersion": "source-durations-v2",
+      "toolchain": "Apple Swift version 6.4 (swiftlang-6.4.0.34.1 clang-2100.3.34.1)\nTarget: arm64-apple-macosx27.0.0\n",
+      "traceStepSeconds": 0.12
+    }
+  },
+  "five-feed-discovery": {
+    "source": {
+      "command": [
+        "python3",
+        "tools/mechanics/study-opal-choices.py",
+        "--calibration",
+        "--seeds",
+        "64",
+        "--showers",
+        "240",
+        "--output",
+        "artifacts/calibration-current/five-feed-discovery"
+      ],
+      "compileFlags": [
+        "-O",
+        "-DDEBUG"
+      ],
+      "dirtyPaths": [
+        " M tools/mechanics/opal-choice-study.swift",
+        " M tools/mechanics/study-opal-choices.py"
+      ],
+      "duskRule": 2,
+      "feedingShowers": 5,
+      "inputSHA256": {
+        "Sources/StarfallCore/ConstellationFixture.swift": "58936ea7336163f95b934cc057e71ae933041bf9fd9a271ed9ec065a396da5aa",
+        "Sources/StarfallCore/DuskFixture.swift": "9740935783394c05fdb591557c9ebdb15426228313f7245ed82ba87cf87dc26f",
+        "Sources/StarfallCore/DuskRules.swift": "76d3a62cbfa2da4674ebe3078d4e4b3c01282991fb151a21ca1c38c38beec8d6",
+        "Sources/StarfallCore/FallingSky.swift": "dbb912b66f4a08c8bd6f745967e8b9a9e4c92e036a4b75a5432e531c87b091e3",
+        "Sources/StarfallCore/Game.swift": "9ab2d57af8fe0ee804ce56e762eb5833a08ae5f39e8916ffaa0fe708d90e7086",
+        "Sources/StarfallCore/GravityFieldRules.swift": "ef5308b515340c2eafe1b226cee70a27701a6e906b6c975380d13af818f4130c",
+        "Sources/StarfallCore/GravityOpportunityFixture.swift": "fe410f41722d690eec3ac67472bf82e421912e772252fdf4ac41819f50c08e4a",
+        "Sources/StarfallCore/RefillMapping.swift": "608be41f40c945b18aba5512bac16b7c4de4eb8a2747d6fe54a895392b38e5f7",
+        "Sources/StarfallCore/SkyCadence.swift": "a01a1ab5fe50e7677bd2e1af75563a5bcc316e1828e921e7da2f572202b76b8c",
+        "Sources/StarfallCore/SkyGeneration.swift": "03d62817aaace9a7354cffb15e7735a98246ed9d75643f0e354fab2aeb2d2d97",
+        "Sources/StarfallCore/SkyTechniqueExample.swift": "75c38131723930f1e5884b8d9e87ea8c0cce975b81bddf9ef89212d627e77c26",
+        "Sources/StarfallCore/StarRecipe.swift": "280c7529a613f75af7a47f510ae2a56969a417d2a3d3821c80db24d788ce1559",
+        "Sources/StarfallCore/StarfallBalance.swift": "32525ba2f346cf843863b1cb1cba8a2fab66d088b9dc7ac308867f1520c329ec",
+        "Sources/StarfallCore/StarfallChallenge.swift": "0475f660c21ae42cce0df8c11dc40adbbb841e58b6c66b82a1293c720bd26b72",
+        "tools/mechanics/opal-choice-study.swift": "90864ef19805cf6563e863e48bfdd65ab4bf707a4123d0fc80c9659acc19fe96",
+        "tools/mechanics/study-opal-choices.py": "b71dfceeffb4167ca98c69d5f86bd80af99ede106c1e6f53a5f2caa820a19410"
+      },
+      "method": "Production Core unchanged, current generation/cadence with selected Dusk version; four visible-reward policies, bounded exchanges and one/all clear budgets. No human timing or forecast selection.",
+      "selfChecks": "Passed before sampling: topology/cap, colored anchor legality, deduplication, fixture consumption, source immutability, Core JSON round-trip, phase boundaries, and drained legal clears use collectible reward. Calibration: authored setup improves visible reward, leaves source untouched and preserves turn/forecast; every sampled post-action state validates and round-trips.",
+      "source": "85f5a2ac922cda3e37f563f2d1c7a49a60b12cdd",
+      "toolchain": "Apple Swift version 6.4 (swiftlang-6.4.0.34.1 clang-2100.3.34.1)\nTarget: arm64-apple-macosx27.0.0"
+    },
+    "summary": {
+      "duskRule": 2,
+      "feedingShowers": 5,
+      "limitation": "Current generation/cadence with explicitly selected Dusk version. Largest immediate visible reward, stable cell-mask ties. Full valid component traces, no subset enumeration. Setup allows one exchange per shower only for strictly better visible immediate reward. No forecast search. One/all clear budgets are diagnostics, not human timing. No-clear arrivals are after optional setup and exclude terminal arrivals. Recipe counts omit outcomes already available as ordinary taps.",
+      "policies": {
+        "clear-one": {
+          "censored": 9,
+          "ended": 55,
+          "longestNoClearRun": {
+            "max": 1,
+            "median": 1.0,
+            "min": 1,
+            "p90": 1
+          },
+          "observedShowers": {
+            "max": 240,
+            "median": 102.0,
+            "min": 13,
+            "p90": 240
+          },
+          "rounds": 64,
+          "score": {
+            "max": 742,
+            "median": 295.5,
+            "min": 35,
+            "p90": 721
+          },
+          "totals": {
+            "clears": 6090,
+            "exchanges": 0,
+            "lostStarlight": 2952,
+            "noClearArrivals": 1590,
+            "recipes": 0,
+            "traces": 513
+          }
+        },
+        "recipe-one": {
+          "censored": 9,
+          "ended": 55,
+          "longestNoClearRun": {
+            "max": 1,
+            "median": 1.0,
+            "min": 1,
+            "p90": 1
+          },
+          "observedShowers": {
+            "max": 240,
+            "median": 104.5,
+            "min": 13,
+            "p90": 240
+          },
+          "rounds": 64,
+          "score": {
+            "max": 742,
+            "median": 301.0,
+            "min": 35,
+            "p90": 721
+          },
+          "totals": {
+            "clears": 6285,
+            "exchanges": 0,
+            "lostStarlight": 3065,
+            "noClearArrivals": 1634,
+            "recipes": 7,
+            "traces": 532
+          }
+        },
+        "setup-all": {
+          "censored": 59,
+          "ended": 5,
+          "longestNoClearRun": {
+            "max": 1,
+            "median": 1.0,
+            "min": 1,
+            "p90": 1
+          },
+          "observedShowers": {
+            "max": 240,
+            "median": 240.0,
+            "min": 104,
+            "p90": 240
+          },
+          "rounds": 64,
+          "score": {
+            "max": 844,
+            "median": 818.5,
+            "min": 337,
+            "p90": 832
+          },
+          "totals": {
+            "clears": 13934,
+            "exchanges": 6083,
+            "lostStarlight": 4867,
+            "noClearArrivals": 3336,
+            "recipes": 7,
+            "traces": 574
+          }
+        },
+        "setup-one": {
+          "censored": 56,
+          "ended": 8,
+          "longestNoClearRun": {
+            "max": 1,
+            "median": 1.0,
+            "min": 1,
+            "p90": 1
+          },
+          "observedShowers": {
+            "max": 240,
+            "median": 240.0,
+            "min": 49,
+            "p90": 240
+          },
+          "rounds": 64,
+          "score": {
+            "max": 800,
+            "median": 774.5,
+            "min": 150,
+            "p90": 789
+          },
+          "totals": {
+            "clears": 12100,
+            "exchanges": 6183,
+            "lostStarlight": 5033,
+            "noClearArrivals": 2455,
+            "recipes": 3,
+            "traces": 624
+          }
+        }
+      },
+      "seedStart": 0,
+      "seeds": 64,
+      "showerLimit": 240
+    }
+  },
+  "five-feed-held-out": {
+    "source": {
+      "command": [
+        "python3",
+        "tools/mechanics/study-opal-choices.py",
+        "--calibration",
+        "--seed-start",
+        "64",
+        "--seeds",
+        "64",
+        "--showers",
+        "240",
+        "--output",
+        "artifacts/calibration-current/five-feed-held-out"
+      ],
+      "compileFlags": [
+        "-O",
+        "-DDEBUG"
+      ],
+      "dirtyPaths": [
+        " M tools/mechanics/opal-choice-study.swift",
+        " M tools/mechanics/study-opal-choices.py"
+      ],
+      "duskRule": 2,
+      "feedingShowers": 5,
+      "inputSHA256": {
+        "Sources/StarfallCore/ConstellationFixture.swift": "58936ea7336163f95b934cc057e71ae933041bf9fd9a271ed9ec065a396da5aa",
+        "Sources/StarfallCore/DuskFixture.swift": "9740935783394c05fdb591557c9ebdb15426228313f7245ed82ba87cf87dc26f",
+        "Sources/StarfallCore/DuskRules.swift": "76d3a62cbfa2da4674ebe3078d4e4b3c01282991fb151a21ca1c38c38beec8d6",
+        "Sources/StarfallCore/FallingSky.swift": "dbb912b66f4a08c8bd6f745967e8b9a9e4c92e036a4b75a5432e531c87b091e3",
+        "Sources/StarfallCore/Game.swift": "9ab2d57af8fe0ee804ce56e762eb5833a08ae5f39e8916ffaa0fe708d90e7086",
+        "Sources/StarfallCore/GravityFieldRules.swift": "ef5308b515340c2eafe1b226cee70a27701a6e906b6c975380d13af818f4130c",
+        "Sources/StarfallCore/GravityOpportunityFixture.swift": "fe410f41722d690eec3ac67472bf82e421912e772252fdf4ac41819f50c08e4a",
+        "Sources/StarfallCore/RefillMapping.swift": "608be41f40c945b18aba5512bac16b7c4de4eb8a2747d6fe54a895392b38e5f7",
+        "Sources/StarfallCore/SkyCadence.swift": "a01a1ab5fe50e7677bd2e1af75563a5bcc316e1828e921e7da2f572202b76b8c",
+        "Sources/StarfallCore/SkyGeneration.swift": "03d62817aaace9a7354cffb15e7735a98246ed9d75643f0e354fab2aeb2d2d97",
+        "Sources/StarfallCore/SkyTechniqueExample.swift": "75c38131723930f1e5884b8d9e87ea8c0cce975b81bddf9ef89212d627e77c26",
+        "Sources/StarfallCore/StarRecipe.swift": "280c7529a613f75af7a47f510ae2a56969a417d2a3d3821c80db24d788ce1559",
+        "Sources/StarfallCore/StarfallBalance.swift": "32525ba2f346cf843863b1cb1cba8a2fab66d088b9dc7ac308867f1520c329ec",
+        "Sources/StarfallCore/StarfallChallenge.swift": "0475f660c21ae42cce0df8c11dc40adbbb841e58b6c66b82a1293c720bd26b72",
+        "tools/mechanics/opal-choice-study.swift": "90864ef19805cf6563e863e48bfdd65ab4bf707a4123d0fc80c9659acc19fe96",
+        "tools/mechanics/study-opal-choices.py": "b71dfceeffb4167ca98c69d5f86bd80af99ede106c1e6f53a5f2caa820a19410"
+      },
+      "method": "Production Core unchanged, current generation/cadence with selected Dusk version; four visible-reward policies, bounded exchanges and one/all clear budgets. No human timing or forecast selection.",
+      "selfChecks": "Passed before sampling: topology/cap, colored anchor legality, deduplication, fixture consumption, source immutability, Core JSON round-trip, phase boundaries, and drained legal clears use collectible reward. Calibration: authored setup improves visible reward, leaves source untouched and preserves turn/forecast; every sampled post-action state validates and round-trips.",
+      "source": "85f5a2ac922cda3e37f563f2d1c7a49a60b12cdd",
+      "toolchain": "Apple Swift version 6.4 (swiftlang-6.4.0.34.1 clang-2100.3.34.1)\nTarget: arm64-apple-macosx27.0.0"
+    },
+    "summary": {
+      "duskRule": 2,
+      "feedingShowers": 5,
+      "limitation": "Current generation/cadence with explicitly selected Dusk version. Largest immediate visible reward, stable cell-mask ties. Full valid component traces, no subset enumeration. Setup allows one exchange per shower only for strictly better visible immediate reward. No forecast search. One/all clear budgets are diagnostics, not human timing. No-clear arrivals are after optional setup and exclude terminal arrivals. Recipe counts omit outcomes already available as ordinary taps.",
+      "policies": {
+        "clear-one": {
+          "censored": 8,
+          "ended": 56,
+          "longestNoClearRun": {
+            "max": 1,
+            "median": 1.0,
+            "min": 1,
+            "p90": 1
+          },
+          "observedShowers": {
+            "max": 240,
+            "median": 114.0,
+            "min": 19,
+            "p90": 240
+          },
+          "rounds": 64,
+          "score": {
+            "max": 742,
+            "median": 328.5,
+            "min": 48,
+            "p90": 720
+          },
+          "totals": {
+            "clears": 6169,
+            "exchanges": 0,
+            "lostStarlight": 2981,
+            "noClearArrivals": 1647,
+            "recipes": 0,
+            "traces": 509
+          }
+        },
+        "recipe-one": {
+          "censored": 8,
+          "ended": 56,
+          "longestNoClearRun": {
+            "max": 1,
+            "median": 1.0,
+            "min": 1,
+            "p90": 1
+          },
+          "observedShowers": {
+            "max": 240,
+            "median": 118.0,
+            "min": 19,
+            "p90": 240
+          },
+          "rounds": 64,
+          "score": {
+            "max": 742,
+            "median": 341.0,
+            "min": 48,
+            "p90": 720
+          },
+          "totals": {
+            "clears": 6333,
+            "exchanges": 0,
+            "lostStarlight": 3033,
+            "noClearArrivals": 1678,
+            "recipes": 4,
+            "traces": 526
+          }
+        },
+        "setup-all": {
+          "censored": 54,
+          "ended": 10,
+          "longestNoClearRun": {
+            "max": 1,
+            "median": 1.0,
+            "min": 1,
+            "p90": 1
+          },
+          "observedShowers": {
+            "max": 240,
+            "median": 240.0,
+            "min": 78,
+            "p90": 240
+          },
+          "rounds": 64,
+          "score": {
+            "max": 861,
+            "median": 823.0,
+            "min": 259,
+            "p90": 836
+          },
+          "totals": {
+            "clears": 13347,
+            "exchanges": 5704,
+            "lostStarlight": 4609,
+            "noClearArrivals": 3260,
+            "recipes": 1,
+            "traces": 556
+          }
+        },
+        "setup-one": {
+          "censored": 58,
+          "ended": 6,
+          "longestNoClearRun": {
+            "max": 1,
+            "median": 1.0,
+            "min": 1,
+            "p90": 1
+          },
+          "observedShowers": {
+            "max": 240,
+            "median": 240.0,
+            "min": 28,
+            "p90": 240
+          },
+          "rounds": 64,
+          "score": {
+            "max": 821,
+            "median": 777.0,
+            "min": 79,
+            "p90": 794
+          },
+          "totals": {
+            "clears": 12064,
+            "exchanges": 6061,
+            "lostStarlight": 4941,
+            "noClearArrivals": 2433,
+            "recipes": 6,
+            "traces": 641
+          }
+        }
+      },
+      "seedStart": 64,
+      "seeds": 64,
+      "showerLimit": 240
+    }
+  },
+  "five-feed-timed": {
+    "groups": {
+      "full-motion-model/largest-clear/announcedCycleV2": {
+        "exchangeRejections": 0,
+        "exchanges": 0,
+        "heldFraction": {
+          "max": 0.05933333333333493,
+          "median": 0.02866666666666745,
+          "min": 0.008661480471569805,
+          "p90": 0.046666666666667585
+        },
+        "overflows": 8,
+        "rounds": 16,
+        "score": {
+          "max": 252,
+          "median": 218.5,
+          "min": 68,
+          "p90": 245
+        },
+        "showers": {
+          "max": 81,
+          "median": 72.5,
+          "min": 26,
+          "p90": 79
+        }
+      },
+      "full-motion-model/setup-first/announcedCycleV2": {
+        "exchangeRejections": 0,
+        "exchanges": 520,
+        "heldFraction": {
+          "max": 0.1924444444444467,
+          "median": 0.13622222222222335,
+          "min": 0.08100000000000022,
+          "p90": 0.1733333333333331
+        },
+        "overflows": 0,
+        "rounds": 16,
+        "score": {
+          "max": 217,
+          "median": 187.5,
+          "min": 172,
+          "p90": 208
+        },
+        "showers": {
+          "max": 73,
+          "median": 69.5,
+          "min": 65,
+          "p90": 73
+        }
+      },
+      "quiet-model/largest-clear/announcedCycleV2": {
+        "exchangeRejections": 0,
+        "exchanges": 0,
+        "heldFraction": {
+          "max": 0.08000000000000199,
+          "median": 0.03134781661766408,
+          "min": 0.011929747045178839,
+          "p90": 0.0674591555893907
+        },
+        "overflows": 6,
+        "rounds": 16,
+        "score": {
+          "max": 286,
+          "median": 258.5,
+          "min": 133,
+          "p90": 276
+        },
+        "showers": {
+          "max": 87,
+          "median": 85.0,
+          "min": 45,
+          "p90": 87
+        }
+      },
+      "quiet-model/setup-first/announcedCycleV2": {
+        "exchangeRejections": 0,
+        "exchanges": 553,
+        "heldFraction": {
+          "max": 0.1396666666666675,
+          "median": 0.11698810131505419,
+          "min": 0.09299999999999997,
+          "p90": 0.13000000000000042
+        },
+        "overflows": 1,
+        "rounds": 16,
+        "score": {
+          "max": 273,
+          "median": 256.5,
+          "min": 192,
+          "p90": 271
+        },
+        "showers": {
+          "max": 81,
+          "median": 78.0,
+          "min": 61,
+          "p90": 80
+        }
+      }
+    },
+    "source": {
+      "baselineCadence": "announcedCycleV1",
+      "candidateCadence": "announcedCycleV2",
+      "command": [
+        "python3",
+        "tools/mechanics/compare-pacing.py",
+        "--seeds",
+        "16",
+        "--seconds",
+        "180",
+        "--include-setups",
+        "--baseline-cadence",
+        "announcedCycleV1",
+        "--candidate-cadence",
+        "announcedCycleV2",
+        "--output",
+        "artifacts/calibration-current/five-feed-timed"
+      ],
+      "dirty": " M tools/mechanics/opal-choice-study.swift\n M tools/mechanics/study-opal-choices.py\n",
+      "evidence": "Real Debug Store and trace intent; injected virtual clock and model presenter. No native rendering, touch, VoiceOver or human evidence.",
+      "head": "85f5a2ac922cda3e37f563f2d1c7a49a60b12cdd",
+      "includeSetups": true,
+      "personaVersion": "visible-reward-components-v2",
+      "platform": "ProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434\n",
+      "reactionSeconds": 0.45,
+      "sha256": {
+        "App/DialogueScripts/observatory-dialogue.json": "9121f1c289bb780e8e39da518beacea9817de52f48da4f76d91c6e9e36ac1e37",
+        "App/FallingSkyHUD.swift": "648699e0865ed406f5978579e56e9db03ae42da23a77cc345c4d2e81972c1232",
+        "App/FallingSkyMotion.swift": "464e028bd5af9edd0a83391f25fd50aee5e2392eb652fcd4b70b6f71becb50e1",
+        "App/FallingSkyPresentation.swift": "e26b27623585fed85e3ba15f9488751be259816c2f98ff515021561ea929eb1d",
+        "App/FallingSkyScene.swift": "f11d1474e1c129c80601eacb2fef3b5dfe1de2e119c53296ae6750439245ffdc",
+        "App/FallingSkyStore.swift": "e9e28ae3134cf4ba651ea3de11045b52b495fcfc755d32267b3ce616f3b7c272",
+        "App/ObservatoryReviewFixture.swift": "9a4750756375afdbfdd710795dcb50a24a3005b3fd1f71e4a4274a35fe0f4aae",
+        "App/SkyDialogue.swift": "9a352c3ad95afc611f28800013611059513bc8b240311a28b0f2e020f61a31f1",
+        "App/SkyDialogueLibrary.swift": "32607772d5b0261af78e1e2a9c83519490a0a64c58c6438225401fb34004946e",
+        "App/SkyFlowState.swift": "ca597f926d65007b576425e429f6a286fead653cda7d85746797c6acee356b6a",
+        "App/SkySaveArchive.swift": "907bd106ddb2633d5cef039877d1d46b7cb153a3724dde5bc1dd1aebc84e9d9c",
+        "App/SkyTechniqueIntent.swift": "878dd342ae0144cbc3d352f6b0f013801792ebfee7c6988b262b359679eca94d",
+        "Sources/StarfallCore/ConstellationFixture.swift": "58936ea7336163f95b934cc057e71ae933041bf9fd9a271ed9ec065a396da5aa",
+        "Sources/StarfallCore/DuskFixture.swift": "9740935783394c05fdb591557c9ebdb15426228313f7245ed82ba87cf87dc26f",
+        "Sources/StarfallCore/DuskRules.swift": "76d3a62cbfa2da4674ebe3078d4e4b3c01282991fb151a21ca1c38c38beec8d6",
+        "Sources/StarfallCore/FallingSky.swift": "dbb912b66f4a08c8bd6f745967e8b9a9e4c92e036a4b75a5432e531c87b091e3",
+        "Sources/StarfallCore/Game.swift": "9ab2d57af8fe0ee804ce56e762eb5833a08ae5f39e8916ffaa0fe708d90e7086",
+        "Sources/StarfallCore/GravityFieldRules.swift": "ef5308b515340c2eafe1b226cee70a27701a6e906b6c975380d13af818f4130c",
+        "Sources/StarfallCore/GravityOpportunityFixture.swift": "fe410f41722d690eec3ac67472bf82e421912e772252fdf4ac41819f50c08e4a",
+        "Sources/StarfallCore/RefillMapping.swift": "608be41f40c945b18aba5512bac16b7c4de4eb8a2747d6fe54a895392b38e5f7",
+        "Sources/StarfallCore/SkyCadence.swift": "a01a1ab5fe50e7677bd2e1af75563a5bcc316e1828e921e7da2f572202b76b8c",
+        "Sources/StarfallCore/SkyGeneration.swift": "03d62817aaace9a7354cffb15e7735a98246ed9d75643f0e354fab2aeb2d2d97",
+        "Sources/StarfallCore/SkyTechniqueExample.swift": "75c38131723930f1e5884b8d9e87ea8c0cce975b81bddf9ef89212d627e77c26",
+        "Sources/StarfallCore/StarRecipe.swift": "280c7529a613f75af7a47f510ae2a56969a417d2a3d3821c80db24d788ce1559",
+        "Sources/StarfallCore/StarfallBalance.swift": "32525ba2f346cf843863b1cb1cba8a2fab66d088b9dc7ac308867f1520c329ec",
+        "Sources/StarfallCore/StarfallChallenge.swift": "0475f660c21ae42cce0df8c11dc40adbbb841e58b6c66b82a1293c720bd26b72",
+        "Tests/StarfallCoreTests/TimingCycleFixture.swift": "51936d184a8f60df63abe1489006011abb02431fedf310eca0afb9180513d189",
+        "tools/mechanics/PacingChecks.swift": "abe53f443fd16b862ceffc2ea1ca19ae8b68d84c0e953a6a6d0f0b1374037f8a",
+        "tools/mechanics/PacingMeasure.swift": "96a5e5ebb5ae24e17545c7781d1687131115294168fabbb6e5090b45b45a1ca2",
+        "tools/mechanics/PacingSupport.swift": "bc44091073659bfb405d14f16da15cbbdc1a839dce64b39abdf8c9bdf9adeebf",
+        "tools/mechanics/compare-pacing.py": "2692f895a7d473db581ba626e0a8ad3935c024269afa5b36413355e28cb81318"
+      },
+      "swapContactSeconds": 0.5,
+      "timingModelVersion": "source-durations-v2",
+      "toolchain": "Apple Swift version 6.4 (swiftlang-6.4.0.34.1 clang-2100.3.34.1)\nTarget: arm64-apple-macosx27.0.0\n",
+      "traceStepSeconds": 0.12
+    }
+  }
+}

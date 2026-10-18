@@ -13,6 +13,7 @@ import StarfallCore
 }
 @MainActor final class FallingSkyScene: FallingSkyPresenting {
     var reduceMotion = false
+    var decorativeMotionActive = false
     var onLayout: (() -> Void)?
     var onReadinessChanged: ((Bool) -> Void)?
     func render(_ game: FallingSky) {}
@@ -38,7 +39,7 @@ import StarfallCore
     func animate(_ turn: FallingSkyTurn, from old: FallingSky, to game: FallingSky, completion: @escaping () -> Void) {
         growthEvents += turn.arrivals.filter(\.grew).count
         if turn.blockedColumn != nil { blockedArrivals += 1 }
-        let duration = reduceMotion ? 0.15 : turn.arrivals.isEmpty && turn.blockedColumn == nil ? 0.56 : 0.48 + 0.09 * Double(max(0, turn.arrivals.count - 1)) + 0.34
+        let duration = reduceMotion ? PacingDuration.quiet : turn.arrivals.isEmpty && turn.blockedColumn == nil ? PacingDuration.clearDuration : PacingDuration.flightDuration + PacingDuration.arrivalStagger * Double(max(0, turn.arrivals.count - 1)) + PacingDuration.landingDuration
         finishAt = clock.now + duration; self.completion = completion
     }
     func finish() { let callback = completion; finishAt = nil; completion = nil; callback?() }
