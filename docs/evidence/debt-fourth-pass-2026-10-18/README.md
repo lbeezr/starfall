@@ -1,8 +1,8 @@
 # Fourth debt pass
 
-**Status:** Partially verified · **Updated:** 2026-10-18
+**Status:** Verified for the two scoped fixes · **Updated:** 2026-10-18
 
-Two independent regressions reproduce from clean main `99803b38abf044bb2d0247acf79de70ac2410b7e`; [rank and acceptance](../../TECH_DEBT_FOURTH_PASS.md). The feedback fix is merged in [PR #129](https://github.com/lbeezr/starfall/pull/129); primary CI process cancellation passes execution verification. RC minimum-iOS, actual VoiceOver and physical play remain unverified.
+Two independent regressions reproduce from clean main `99803b38abf044bb2d0247acf79de70ac2410b7e`; [rank and acceptance](../../TECH_DEBT_FOURTH_PASS.md). The feedback fix is merged in [PR #129](https://github.com/lbeezr/starfall/pull/129); primary CI process cancellation is merged in [PR #130](https://github.com/lbeezr/starfall/pull/130). RC minimum-iOS, actual VoiceOver and physical play remain unverified.
 
 ## Stale automatic dialogue
 
@@ -52,3 +52,13 @@ This fix applies to the primary simulator command wrapper only. Code inspection 
 Tool checks used integrated main `f62eb7c` plus the two script edits, with no native-source changes from the verified feedback snapshot. Full primary native CI was not rerun locally. Tool-only changes do not change rule/save, UI/accessibility, artwork, animation or app-target membership. No simulator/device operation is needed to establish the process regression; real Python processes supply its evidence.
 
 Tested script SHA-256: {"scripts/simulator-command.py": "f003d06343f1391664f3fa3e16846338098dc5910198239a9af60fda3d01c0d0", "scripts/test_simulator_lifecycle.py": "f79941990d7f6aa4706179df2f4f28f56185f411d508b5a000c59e907fcbbfdd"}
+
+## Integrated main and delivery
+
+Clean main `4d6e2277a89d9f355642cc09a1ca255754f70430` contains both fixes. Publishing used the tested Git trees, checked against the remote created trees before merging. `git diff f62eb7c..4d6e227 -- App Sources Tests AppTests UITests Config Starfall.xcodeproj Package.swift` is empty: the second batch changes scripts/docs only.
+
+Complete hosted suite on integrated feedback source `f62eb7c`: **267 passed, zero failures/skips**, 116 seconds, `test_sim_2026-10-18T23-16-55-941Z_pid37945_fe941efc.xcresult`. Script and documentation integration occurred during that run; none changed its native inputs. This includes the focused 68, not an additional 267 distinct checks. Clean `4d6e227` tooling rerun: **55 passed**, `/tmp/starfall-fourth-clean-tools.log`. Hygiene, whitespace and clean status passed.
+
+`python3 scripts/device-update.py run` installed **`dev.758d114aab` from main `4d6e2277a89d9f355642cc09a1ca255754f70430`** through the canonical service. The actual-installation receipt records Core tests passed, signature verified and main CI pending. The updater's shared lock protected the scheduled/manual reconciliation; no raw device installation, launch or player-data reset was performed. Installation identity is verified, not physical gameplay, save-content inspection, full-motion comfort or spoken VoiceOver. Pending full CI is explicitly not a green CI claim. Later documentation-only main changes retain the same runtime fingerprint.
+
+Scoped completion: 165 Core, 267 hosted, eight native UI, 55 tooling checks; Debug/Release ARM simulator builds; regression failures preserved above. Full primary CI, minimum iOS 17, complete actual VoiceOver and physical-play RC acceptance remain outside this verification. No further code work remains for these two ranked fixes; the timeout siblings and existing human/RC questions remain in the engineering register.
