@@ -13,6 +13,7 @@ VOICEOVER_RC = {
         'testVoiceOverFullFirstLightRoundRestoreAndReplay',
         'testVoiceOverOpalIdentityActivationAndStormCue'},
 }
+TABLET_ONLY = {'testLandscapeWelcomeEntryAndPreferences': 'StarfallUITests/SkyFlowInteractionTests/testLandscapeWelcomeEntryAndPreferences'}
 METHOD = re.compile(r'^\s*(?:@\w+(?:\([^)]*\))?\s+)*func\s+(test\w+)\s*\(\s*\)', re.MULTILINE)
 
 
@@ -24,6 +25,8 @@ def plan(root, stage):
         sources = {}
         for path in sorted((root / directory).rglob('*.swift')):
             names = METHOD.findall(path.read_text())
+            if target == 'StarfallUITests':
+                names = [name for name in names if name not in TABLET_ONLY]
             if target == 'StarfallUITests' and stage == 'dev':
                 deferred.extend(f'{target}/{path.stem}/{name}' for name in names if name in VOICEOVER_RC.get(path.stem, set()))
                 names = [name for name in names if name not in VOICEOVER_RC.get(path.stem, set())]
@@ -43,6 +46,6 @@ if __name__ == '__main__':
     result, deferred = plan(Path.cwd(), args.stage)
     Path('artifacts').mkdir(exist_ok=True)
     Path('artifacts/native-test-expectations.json').write_text(json.dumps(result, indent=2) + '\n')
-    Path('artifacts/native-test-matrix.json').write_text(json.dumps({'stage': args.stage, 'deferredToRC': deferred}, indent=2) + '\n')
-    Path('artifacts/native-test-exclusions.txt').write_text(''.join(name + '\n' for name in deferred))
+    Path('artifacts/native-test-matrix.json').write_text(json.dumps({'stage': args.stage, 'deferredToRC': deferred, 'tabletOnly': list(TABLET_ONLY.values())}, indent=2) + '\n')
+    Path('artifacts/native-test-exclusions.txt').write_text(''.join(name + '\n' for name in deferred + list(TABLET_ONLY.values())))
     print('Native ' + args.stage + ' matrix: ' + ', '.join(f'{key}={value["expectedCount"]}' for key, value in result.items()))
