@@ -9,7 +9,13 @@ final class StarCastTests: XCTestCase {
         let kinds = StarCast.Identity.allCases
         for kind in kinds {
             let name = StarCast.character(for: kind).name
-            let body = try XCTUnwrap(UIImage(named: "StarCast" + name), "Missing bundled body for \(name)")
+            let body: UIImage
+            if kind == .magnet || kind == .hole {
+                body = StarCast.image(for:kind)
+                XCTAssertNil(UIImage(named:"StarCast" + name), "Gravity is owned by the shared procedural material")
+            } else {
+                body = try XCTUnwrap(UIImage(named: "StarCast" + name), "Missing bundled body for \(name)")
+            }
             XCTAssertEqual(body.size, CGSize(width: 256, height: 256))
             XCTAssertNotEqual(try XCTUnwrap(body.cgImage).alphaInfo, CGImageAlphaInfo.none)
             let offset = StarCast.groundOffset(for: kind, radius: 20)
@@ -250,7 +256,7 @@ final class StarCastTests: XCTestCase {
 
     @MainActor func testCompleteCastIsBoundedAndReusesMaterialsAcrossRounds() throws {
         StarCast.prewarm()
-        XCTAssertEqual(StarCast.cachedMaterialCount, 84)
+        XCTAssertEqual(StarCast.cachedMaterialCount, 86)
         let cast = StarCast.Identity.allCases
         for kind in cast {
             for expression in StarCast.Expression.allCases {
@@ -269,7 +275,7 @@ final class StarCastTests: XCTestCase {
             }
         }
         XCTAssertEqual(StarCast.cachedMaterialCount, StarCast.maximumMaterials)
-        XCTAssertEqual(StarCast.maximumRasterBytes, 22_020_096)
+        XCTAssertEqual(StarCast.maximumRasterBytes, 22_544_384)
     }
 
     @MainActor func testTransparentPaddingAndStableSilhouettesAcrossExpressions() throws {
@@ -293,8 +299,8 @@ final class StarCastTests: XCTestCase {
                 else { neutralAlpha = alpha }
                 expressions.insert(Data(pixels))
             }
-            // Every gameplay expression must now be distinct.
-            XCTAssertEqual(expressions.count, 4)
+            // Gravity objects have a fixed glyph; the seven faced stars keep authored expressions.
+            XCTAssertEqual(expressions.count, kind == .magnet || kind == .hole ? 1 : 4)
         }
     }
 
@@ -429,7 +435,7 @@ final class StarCastTests: XCTestCase {
                     }
                 }
             }
-            XCTAssertEqual(unique.count, 12, "Every turn and expression must be authored, not a duplicated frame")
+            XCTAssertEqual(unique.count, kind == .magnet || kind == .hole ? 1 : 12, "Fixed gravity glyphs share one frame; faced stars retain all twelve authored poses")
             let attachment = XCTAttachment(image: sheet)
             attachment.name = "star-cast-sheet-" + StarCast.character(for: kind).name
             attachment.lifetime = .keepAlways; add(attachment)

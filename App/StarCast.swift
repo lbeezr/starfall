@@ -7,18 +7,28 @@ import StarfallCore
 @MainActor enum StarCast {
     /// A presentation identity distinguishes the two colorless Core roles.
     enum Identity: Hashable, CaseIterable {
-        case colored(Jewel), dusk, opal
-        static var allCases: [Self] { Jewel.allCases.map(Self.colored) + [.dusk, .opal] }
+        case colored(Jewel), dusk, opal, magnet, hole
+        static var allCases: [Self] { Jewel.allCases.map(Self.colored) + [.dusk, .opal, .magnet, .hole] }
         init(kind: Jewel?, isLight: Bool = false) {
             self = isLight ? .opal : kind.map(Self.colored) ?? .dusk
         }
-        init(_ gem: StarfallGem) { self.init(kind: gem.kind, isLight: gem.isLight) }
-        init(_ star: IncomingStar) { self.init(kind: star.kind, isLight: star.isLight) }
+        init(_ identity: SkyIdentity) {
+            switch identity {
+            case .colored(let family): self = .colored(family)
+            case .dusk: self = .dusk
+            case .white: self = .opal
+            case .magnet: self = .magnet
+            case .hole: self = .hole
+            }
+        }
+        init(_ gem: StarfallGem) { self.init(gem.identity) }
+        init(_ star: IncomingStar) { self.init(star.identity) }
         var color: UIColor {
             switch self {
             case .colored(let kind): kind.color
             case .dusk: .systemPurple
             case .opal: .white
+            case .magnet, .hole: UIColor(StarfallTheme.Colors.actionPrimary)
             }
         }
     }
@@ -32,7 +42,7 @@ import StarfallCore
 
     static let rasterSide = 256
     static let silhouetteSide: CGFloat = 212 // Existing display-size contract; centered 208px packaged bodies.
-    static let maximumMaterials = Identity.allCases.count * Expression.allCases.count * Facing.allCases.count
+    static let maximumMaterials = (Identity.allCases.count - 2) * Expression.allCases.count * Facing.allCases.count + 2
     static let maximumRasterBytes = maximumMaterials * rasterSide * rasterSide * 4
     private static let ink = UIColor(red: 0.08, green: 0.10, blue: 0.22, alpha: 1)
     private struct Key: Hashable { let identity: Identity; let expression: Int; let facing: Int }
@@ -65,6 +75,10 @@ import StarfallCore
             Character(name: "Dusk", points: 5, description: "Dark star, Dusk")
         case .opal:
             Character(name: "Opal", points: 0, description: "White Opal Orb")
+        case .magnet:
+            Character(name: "Magnet", points: 0, description: "Magnetic star")
+        case .hole:
+            Character(name: "Hole", points: 0, description: "Gravity hole")
         }
     }
 
@@ -112,12 +126,23 @@ import StarfallCore
     }
 
     private static func material(for identity: Identity, expression: Expression, facing: Facing) -> Material {
-        let key = Key(identity: identity, expression: expression.rawValue, facing: facing.rawValue)
+        let gravity = identity == .magnet || identity == .hole
+        let key = Key(identity: identity, expression: gravity ? Expression.idle.rawValue : expression.rawValue,
+                      facing: gravity ? Facing.front.rawValue : facing.rawValue)
         if let cached = materials[key] { return cached }
         let format = UIGraphicsImageRendererFormat()
         format.scale = 1; format.opaque = false
         format.preferredRange = .standard
         let character = character(for: identity)
+        if identity == .magnet || identity == .hole {
+            let image = gravityImage(hole: identity == .hole, format: format)
+            let texture = SKTexture(image: image)
+            texture.filteringMode = .linear; texture.usesMipmaps = false
+            let result = Material(image: image, texture: texture)
+            bodyHeights[character.name] = identity == .hole ? 208 : 168
+            materials[key] = result
+            return result
+        }
         let body: UIImage
         if let cached = bodies[character.name] { body = cached }
         else {
@@ -146,6 +171,28 @@ import StarfallCore
         let result = Material(image: image, texture: texture)
         materials[key] = result
         return result
+    }
+
+    /// Cached with the cast: one authored silhouette serves board, flight and forecast.
+    private static func gravityImage(hole: Bool, format: UIGraphicsImageRendererFormat) -> UIImage {
+        UIGraphicsImageRenderer(size: CGSize(width: rasterSide, height: rasterSide), format: format).image { renderer in
+            let context = renderer.cgContext
+            let radius: CGFloat = hole ? 98 : 78
+            let body = CGRect(x: 128-radius, y: 128-radius, width: radius*2, height: radius*2)
+            context.setFillColor(StarfallTheme.Observatory.contactShadow.cgColor)
+            context.setStrokeColor(UIColor(StarfallTheme.Colors.actionPrimary).cgColor)
+            context.setLineWidth(9)
+            context.addEllipse(in:body); context.drawPath(using:.fillStroke)
+            if hole {
+                context.setStrokeColor(UIColor.white.withAlphaComponent(0.5).cgColor)
+                context.setLineWidth(3)
+                context.strokeEllipse(in: body.insetBy(dx:18,dy:18))
+            }
+            let glyph = hole ? "↻" : "↔"
+            let attributes: [NSAttributedString.Key: Any] = [.font: UIFont.systemFont(ofSize:116,weight:.bold), .foregroundColor: UIColor.white]
+            let size = glyph.size(withAttributes:attributes)
+            glyph.draw(at:CGPoint(x:128-size.width/2,y:128-size.height/2),withAttributes:attributes)
+        }
     }
 
     /// One body per family keeps alpha coverage identical across all four expressions.

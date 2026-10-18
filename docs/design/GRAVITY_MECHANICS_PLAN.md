@@ -1,10 +1,22 @@
 # Prove a controllable magnetic collision and orbit
 
-**Status:** Isolated implementation; adoption review pending · **Owner:** current implementer · **Updated:** 2026-10-17
+**Status:** Adopted at user request; development acceptance passed · **Owner:** current implementer · **Updated:** 2026-10-17
 
-Build one isolated, deterministic comparison of magnetic precursors forming a temporary hole. Keep production Dusk intact, white independent, and ordinary tap play as the initial baseline. The [design](GRAVITY_MECHANICS.md) selects occupied capture positions and explicit support gravity; comprehension of that gravity is the principal adoption risk.
+Integrate the accepted magnetic collision and temporary orbit into new skies in the normal game. Keep Dusk intact, Opal uncaptured and retained saves reproducible. The [design](GRAVITY_MECHANICS.md) selects occupied capture positions and explicit support gravity; comprehension of that gravity is the principal adoption risk.
 
-**Next action:** compare the playable fixtures with the user: predict the next movement, choose trigger/keep/close and explain the result. Keep natural spawning and production adoption deferred. [Implementation evidence](../evidence/gravity-orbit-2026-10-17/README.md) records source-bound checks; human preference remains unverified.
+**Next action:** observe natural supply with a human player and tune only from that evidence. Human preference remains unverified. [Production integration evidence](../evidence/gravity-integration-2026-10-17/README.md) records 109 Core, 153 hosted and eight combined-source native checks, retained-state replay and Debug/Release builds. [Implementation evidence](../evidence/gravity-orbit-2026-10-17/README.md) records source-bound checks; human preference remains unverified.
+
+## Production acceptance (2026-10-17)
+
+The user requested merging #42 and integrating its mechanic into the normal game. New skies use a saved `gravityOrbits` generation; old rounds and same-sky replays retain their exact generation. Dusk and Opal keep their existing roles. First Light remains unchanged.
+
+- A calm wave numbered 8 modulo 12 may announce one pair, only with equal low endpoint heights and an occupied colored middle. No pair arrives while magnets or a hole remain. Two endpoint survivors and a matching middle arrival make this a deliberate five-star setup. Ineligible cycles keep the ordinary forecast; there is no accumulating spawn debt.
+- All published forecasts remain immutable across clears. Pair supply, collision, floor/elevated support, expiry, selected trace release, Opal/Dusk boundaries and deterministic continuation need focused Core checks.
+- Production v5 saves validate the whole field; v4 and v3 restore without changing generation. A malformed newer key never resurrects an older round. Commit before animation; interruption rejects stale completion.
+- One material owner supplies magnetic/hole board, flight and preview identities. Native taps, full motion, background/restore, settings, largest text and actual Reduce Motion need checks in the normal target. Debug fixtures require reset and do not add a player menu route.
+- Run Core, affected hosted/native tests, Debug and Release builds and hygiene. Record results and unverified human enjoyment/VoiceOver/device limits before merging.
+
+The historical trial scope below describes #42, not this adoption batch.
 
 ## Scope and success
 

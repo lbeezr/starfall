@@ -16,17 +16,6 @@ public struct GravityPhase: Sendable {
     public let board: [StarfallGem?]
     public let field: OrbitField?
 }
-public struct GravitySave: Codable {
-    public let version: Int
-    public let ruleset: String
-    public let game: FallingSky
-    public init(_ game: FallingSky) { version = 1; ruleset = "gravity-occupied-supports"; self.game = game }
-    public static func restore(_ data: Data) -> FallingSky? {
-        guard let saved = try? JSONDecoder().decode(Self.self, from: data), saved.version == 1,
-              saved.ruleset == "gravity-occupied-supports", saved.game.isValidSave else { return nil }
-        return saved.game
-    }
-}
 /// Fixed occupied anchors support the ordinary segments above them. No empty slot is reserved.
 public enum GravityFieldRules {
     public static func height(_ board: [StarfallGem?], column: Int) -> Int {
