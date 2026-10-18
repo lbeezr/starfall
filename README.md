@@ -113,3 +113,5 @@ Dusk now feeds toward a zero-point neighborhood collapse; Opal still joins a col
 [Scoped reliability hardening](docs/design/RELIABILITY_POLISH.md) gives drawing explicit hold ownership, fingerprints package build inputs, and verifies camera layout against the full local canvas. Remaining physical/RC checks stay separate from development integration.
 
 Phone delivery now verifies the actual installation and rejects stale main history. [Delivery guards and their limits](docs/evidence/device-delivery-guards-2026-10-18/README.md) record the active service and checks.
+
+[Active technical debt and RC blockers](docs/ENGINEERING.md#active-debt-and-next-actions--october-18-2026) distinguish current risks from the historical record; [seven independent shipping tasks](docs/TECH_DEBT_PLAN.md) link their verification.
