@@ -323,3 +323,43 @@ extension ConstellationTraceNativeTests {
         }
     }
 }
+
+extension ConstellationTraceNativeTests {
+    @MainActor func testCurrentOrbitFollowUpGuideReadsToEndWithoutMovingActionsOrBoard() {
+        for preserve in [true, false] {
+            let app = launch("opalStormPlanning")
+            score(30, app)
+            app.buttons[preserve ? "experiment.cell.0.4" : "experiment.cell.0.1"].tap()
+            score(33, app)
+            let next = app.buttons["experiment.cell.0.4"]
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true AND value == %@", preserve ? "5 starlight connected" : "3 starlight connected"), object: next).wait(timeout: 6))
+            let guide = app.descendants(matching: .any).matching(identifier: "sky.dialogue").firstMatch
+            let message = app.staticTexts["experiment.message"]
+            XCTAssertTrue(message.label.contains(preserve ? "The hole closed" : "2 windows left"))
+            XCTAssertTrue(message.label.hasSuffix("Showers are closer together"))
+            let board = app.otherElements["experiment.board"], boardValue = board.value as? String
+            XCTAssertNotNil(boardValue)
+            let actionButtons = [app.buttons["experiment.next"], app.buttons["experiment.pause"]]
+            let actionFrames = actionButtons.map(\.frame)
+            for column in 0..<7 {
+                XCTAssertGreaterThanOrEqual(guide.frame.minY, app.buttons["experiment.cell.0.\(column)"].frame.maxY)
+            }
+            let introduction = app.scrollViews.containing(.staticText, identifier: "experiment.message").firstMatch
+            if introduction.exists {
+                introduction.swipeUp()
+                for _ in 0..<3 where message.frame.maxY > introduction.frame.maxY + 1 { introduction.swipeUp() }
+                XCTAssertLessThanOrEqual(message.frame.maxY, introduction.frame.maxY + 1,
+                                         "The message ending must reach its scroll viewport")
+            }
+            XCTAssertLessThanOrEqual(message.frame.maxY, actionFrames.map(\.minY).min()!)
+            XCTAssertEqual(actionButtons.map(\.frame), actionFrames)
+            XCTAssertTrue(actionButtons.allSatisfy(\.isHittable))
+            XCTAssertEqual(board.value as? String, boardValue)
+            let capture = XCTAttachment(screenshot: app.screenshot())
+            capture.name = preserve ? "current-orbit-release-guide-ending" : "current-orbit-retained-guide-ending"
+            capture.lifetime = .keepAlways; add(capture)
+            XCTAssertTrue(next.isHittable); next.tap(); score(preserve ? 38 : 36, app)
+            app.terminate()
+        }
+    }
+}
