@@ -14,6 +14,13 @@ final class FallingSkyInteractionTests: XCTestCase {
         let started = Date()
         var observations = ["seed=\(seed); full effects requested; automatic clock; visible largest reward; no setup/search forecast"]
         var attempts = 0
+        var misses = 0
+        var skipped = 0
+        let legalValuePattern = "^([3-9]|[1-9][0-9]+) (starlight connected|toward a match, [0-9]+ starlight if cleared)$"
+        func exposedReward(_ value: String) -> Int? {
+            guard value.range(of: legalValuePattern, options: .regularExpression) != nil else { return nil }
+            return value.split(whereSeparator: { !$0.isNumber }).compactMap { Int($0) }.last
+        }
         while Date().timeIntervalSince(started) < 45 && !app.staticTexts["experiment.outcome"].exists {
             let matches = app.buttons.matching(NSPredicate(format:
                 "identifier BEGINSWITH %@ AND enabled == true AND (value MATCHES %@ OR value MATCHES %@)",
@@ -25,16 +32,35 @@ final class FallingSkyInteractionTests: XCTestCase {
                 let id = "experiment.cell.\(index / 7).\(index % 7)"
                 let element = app.buttons[id]
                 let value = element.value as? String ?? ""
-                guard value.range(of: "^([3-9]|[1-9][0-9]+) (starlight connected|toward a match, [0-9]+ starlight if cleared)$", options: .regularExpression) != nil,
-                      element.isEnabled else { return nil }
-                let numbers = value.split(whereSeparator: { !$0.isNumber }).compactMap { Int($0) }
-                return (id, numbers.last ?? 0, value)
+                guard let reward = exposedReward(value), element.isEnabled else { return nil }
+                return (id, reward, value)
             }
             if let choice = candidates.max(by: { $0.1 < $1.1 }) {
                 observations.append(String(format: "t=%.2f %@ %@; %@; %@", Date().timeIntervalSince(started),
                     choice.0, choice.2, app.staticTexts["experiment.score"].label,
                     app.otherElements["experiment.board"].value as? String ?? "unavailable"))
-                app.buttons[choice.0].tap(); attempts += 1
+                let target = app.buttons[choice.0]
+                let before = app.staticTexts["experiment.score"].label
+                let immediateValue = target.value as? String ?? "unavailable"
+                let frame = target.frame
+                let ready = target.isEnabled
+                guard ready, let expectedReward = exposedReward(immediateValue) else {
+                    skipped += 1
+                    observations.append("selectionSkipped=\(choice.0); ready=\(ready); immediate=\(immediateValue)")
+                    continue
+                }
+                target.tap(); attempts += 1
+                let after = app.staticTexts["experiment.score"].label
+                observations.append("attempt=\(attempts); targetReady=\(ready); immediate=\(immediateValue); frame=\(frame); score=\(before) -> \(after)")
+                if before == after {
+                    misses += 1
+                    if expectedReward > 0 && misses <= 4 {
+                        let snapshot = XCTAttachment(string: app.debugDescription)
+                        snapshot.name = "fresh-\(seed)-miss-\(misses)-hierarchy"
+                        snapshot.lifetime = .keepAlways; add(snapshot)
+                        if misses <= 2 { capture(app, "fresh-\(seed)-miss-\(misses)") }
+                    }
+                }
                 if attempts == 1 { capture(app, "fresh-\(seed)-first-clear") }
             } else {
                 // Wait for a visible opportunity or the terminal ceremony, bounded by the round sample.
@@ -46,7 +72,7 @@ final class FallingSkyInteractionTests: XCTestCase {
         let finalScore = app.staticTexts["experiment.score"].label
         let board = app.otherElements["experiment.board"].value as? String ?? "unavailable"
         let outcome = app.staticTexts["experiment.outcome"]
-        observations.append("attempts=\(attempts); final=\(finalScore); board=\(board); terminal=\(outcome.exists)")
+        observations.append("attempts=\(attempts); nonScoring=\(misses); staleSelectionsSkipped=\(skipped); final=\(finalScore); board=\(board); terminal=\(outcome.exists)")
         let report = XCTAttachment(string: observations.joined(separator: "\n"))
         report.name = "fresh-\(seed)-visible-match-observations"; report.lifetime = .keepAlways; add(report)
         capture(app, "fresh-\(seed)-sample-end")

@@ -6,6 +6,8 @@ Keep the mechanics steady. On freshly merged main `5bec506`, two automatic nativ
 
 **Next action:** Investigate native attempts that produced no score before choosing numeric tuning. Observe admission feedback at the actual contact boundary, then compare deliberate setups under automatic rain. These short automated samples and frame sequences do not establish human recognition, enjoyment, smoothness or physical feel.
 
+**Follow-up:** The [contact-readiness diagnostic](CONTACT_READINESS.md) explains the examined non-scoring attempts and verifies the driver’s late checks. The original observations below retain their source; the next play question is deliberate setup execution under automatic rain.
+
 ## Subsequent main integration
 
 Before integration, fetched and merged main **`90ef9ed`**, interruption teardown. On clean local merge `73760a4`, **149 Core and both fresh native samples pass**, plus the **32-run model smoke**. Every smoke event and metric matches `5bec506` exactly. Only interruption code changed; View, Scene, celebration/anchor rendering, Core and the fresh driver are unchanged. The table, footage and 1,024-run study below retain their tested `5bec506` source. [Integration hashes](fresh-source.json) keep the later runtime fingerprint separate. No old measurement is relabeled as a main86 run.
