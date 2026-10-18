@@ -78,7 +78,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     private(set) var saveFailed = false
     private(set) var rejectedSaveKey: String?
     private static let persistenceLog = Logger(subsystem: "com.starfall.prototype", category: "persistence")
-    var busy: Bool { !presentations.isEmpty }
+    var busy: Bool { presentations.busy }
     private(set) var suspended = true
     private(set) var sceneReady = false
     private(set) var isPaused = true
@@ -145,22 +145,15 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         observeTiming(.state)
         #endif
     }
-    private struct Presentation {
-        let id: UInt64
-        let turn: FallingSkyTurn
-    }
-    private var presentations: [Presentation] = []
-    private var presentationSequence: UInt64 = 0
+    private var presentations = SkyPresentationLedger()
     private struct InputFeedback: Equatable {
         let text: String
         let waitingColumns: Set<Int>?
     }
     private var inputFeedback: InputFeedback?
     var inputMessage: String? { inputFeedback?.text }
-    var pending: FallingSkyTurn? {
-        presentations.first(where: { !$0.turn.arrivals.isEmpty })?.turn ?? presentations.last?.turn
-    }
-    var changingColumns: Set<Int> { presentations.reduce(into: []) { $0.formUnion($1.turn.changingColumns) } }
+    var pending: FallingSkyTurn? { presentations.pending }
+    var changingColumns: Set<Int> { presentations.changingColumns }
 
     func showInputFeedback(_ text: String?) {
         inputFeedback = text.map { InputFeedback(text: $0, waitingColumns: nil) }
@@ -214,7 +207,6 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     @ObservationIgnored private let defaults: UserDefaults
     @ObservationIgnored private let presenter: any FallingSkyPresenting
     @ObservationIgnored private let clock: any FallingSkyRainScheduling
-    @ObservationIgnored private var generation: UInt64 = 0
     @ObservationIgnored private var rainGeneration: UInt64 = 0
     @ObservationIgnored private var deadline: TimeInterval?
     @ObservationIgnored private var remaining: TimeInterval = 0
@@ -582,52 +574,10 @@ enum SkyTerminalSpeech { case feedback, ceremony }
             techniqueResult = techniqueRelay.depth > 1 ? SkyCopy.text(.techniqueRelay, values: ["count": String(techniqueRelay.depth)]) : SkyCopy.text(.techniqueSupport)
         }
         celebrate(turn, from: old, path: path, recipe: recipe)
-        let epoch = generation
-        presentationSequence &+= 1
-        let ticket = presentationSequence
-        presentations.append(Presentation(id: ticket, turn: turn))
-        let growth = turn.arrivals.filter(\.grew).count
-        let dissolved = turn.cleared.filter { old.gem(at: $0)?.isDark == true }.count
-        if game.outcome == .won {
-            guide("guide.won", values: ["score": String(game.score)])
-        } else if turn.blockedColumn != nil {
-            guide("guide.full", values: ["score": String(game.score)])
-        } else if !turn.stellarCollapses.isEmpty {
-            let count = Set(turn.stellarCollapses.flatMap { $0.consumed.union([$0.center]) }).count
-            guide("guide.stellar-collapse", values: ["count": String(count)])
-        } else if !turn.duskCollapses.isEmpty {
-            let count = Set(turn.duskCollapses.flatMap(\.consumed)).count
-            guide("guide.dusk-collapse", values: ["swallowed": SkyCopy.count(.eventEatenOne, .eventEatenMany, count)])
-        } else if !turn.cleared.isEmpty {
-            if turn.collected == 0 && turn.cleared.contains(where: { old.isDrained(at: $0) }) {
-                guide("guide.gray-clear")
-            } else if dissolved > 0 {
-                guide("guide.dissolved", values: ["score": String(turn.collected), "dark": game.duskRule != .legacy ? SkyCopy.count(.eventDusk, .eventDusks, dissolved) : SkyCopy.text(dissolved == 1 ? .eventDark : .eventDarks)])
-            } else if let recipe {
-                guide("guide.recipe", values: ["shape": SkyCopy.text(recipe.shape == .square ? .techniqueSquare : .techniqueCross), "score": String(turn.collected)])
-            } else if !path.isEmpty {
-                guide("guide.constellation", values: ["stars": String(Set(path).count), "score": String(turn.collected)])
-            } else { guide("guide.clear", values: ["score": String(turn.collected)]) }
-        } else if turn.arrivals.contains(where: { $0.gem.isDark }) {
-            guide(game.duskRule != .legacy ? "guide.dusk-arrival" : "guide.dark-arrival")
-        } else if turn.arrivals.contains(where: { $0.gem.isLight }) {
-            guide("guide.opal-arrival")
-        } else if turn.arrivals.contains(where: { $0.gem.gravityKind == .magnet }) {
-            guide("guide.magnet-arrival")
-        } else if growth > 0 {
-            guide(game.duskRule != .legacy && game.board.enumerated().contains(where: { game.isDrained(at: Cell($0.offset/7,$0.offset%7)) }) ? "guide.dusk-growth" : "guide.growth", values: ["growth": SkyCopy.count(.eventGrowthOne, .eventGrowthMany, growth)])
-        } else {
-            guide("guide.arrival", values: ["arrival": SkyCopy.count(.eventArrivalOne, .eventArrivalMany, turn.arrivals.count)])
-        }
-        if !game.isOver {
-            if turn.exchange != nil { guide("guide.technique",values:["detail":techniqueResult]) }
-            else if techniqueRelay.depth > 1 && turn.collected > 0 { guide("guide.relay", values: ["score": String(turn.collected), "depth": String(techniqueRelay.depth)]) }
-        }
-        if !game.isOver, let field = game.orbit {
-            guide("guide.orbit", values: ["release": SkyCopy.count(.orbitReleaseOne, .orbitReleaseMany, field.windowsRemaining)])
-        } else if !game.isOver, turn.gravityPhases.contains(where: { $0.event == .release }) {
-            guide("guide.release")
-        }
+        let ticket = presentations.begin(turn)
+        guideLine = SkyDialogueLibrary.result(for: turn, from: old, to: game,
+            tracedCount: Set(path).count, recipe: recipe, relayDepth: techniqueRelay.depth,
+            techniqueResult: techniqueResult)
         // The committed phase/cadence has one visible and spoken owner. No queued notices.
         let transition = SkyDialogueLibrary.transition(from: old, to: game,
                                                        previousCadence: previousCadence, cadence: nextShowerCadence)
@@ -639,13 +589,11 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         } ?? (announcesResult || game.isOver || (DuskWarning(game: game) != nil || CriticalMassPresentation.warning(game: game) != nil) ? resultLine : nil)
         save() // Commit before animation: backgrounding cannot replay arrivals.
         presenter.animate(turn, from: old, to: game) { [weak self] in
-            guard let self, self.generation == epoch,
-                  self.presentations.contains(where: { $0.id == ticket }) else { return }
-            self.presentations.removeAll { $0.id == ticket }
+            guard let self, self.presentations.complete(ticket) else { return }
             if let columns = self.inputFeedback?.waitingColumns, columns.isDisjoint(with: self.changingColumns) {
                 self.showInputFeedback(nil)
             }
-            if let spokenResult, (!announcesResult || ticket == self.presentationSequence),
+            if let spokenResult, (!announcesResult || self.presentations.isLatest(ticket)),
                !self.game.isOver || self.terminalSpeech == .feedback {
                 let accepted = self.dialogue.show(spokenResult, interrupt: announcesResult)
                 if accepted && (announcesResult || self.game.isOver || announcesTransition) {
@@ -806,9 +754,8 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         defer { observeTiming(.state) }
         #endif
         invalidateInput(reason)
-        generation &+= 1
+        presentations.invalidate()
         cancelCelebration()
-        presentations.removeAll()
         presenter.render(game)
         deliverRainIfReady()
     }

@@ -111,3 +111,26 @@ final class SkyPhasePresentationTests: XCTestCase {
         XCTAssertEqual(store.phaseCue?.shower, 10); XCTAssertTrue(feedback.announcements.isEmpty)
     }
 }
+
+
+extension SkyPhasePresentationTests {
+    func testPresentationTicketsPreserveConcurrentReservationsAndRejectReplacedCompletions() throws {
+        var game = FallingSky.freshSurvival(seed: 5)
+        let first = try XCTUnwrap(game.letStarsFall())
+        let second = try XCTUnwrap(game.letStarsFall())
+        var ledger = SkyPresentationLedger()
+        let a = ledger.begin(first), b = ledger.begin(second)
+        XCTAssertEqual(ledger.changingColumns, first.changingColumns.union(second.changingColumns))
+        XCTAssertEqual(ledger.pending?.forecast, first.forecast)
+        XCTAssertTrue(ledger.complete(b)); XCTAssertFalse(ledger.complete(b))
+        XCTAssertTrue(ledger.busy)
+        XCTAssertEqual(ledger.changingColumns, first.changingColumns)
+        XCTAssertTrue(ledger.isLatest(b)); XCTAssertFalse(ledger.isLatest(a))
+        ledger.invalidate()
+        let replacement = ledger.begin(second)
+        XCTAssertFalse(ledger.complete(a)); XCTAssertFalse(ledger.complete(b))
+        XCTAssertTrue(ledger.busy); XCTAssertTrue(ledger.isLatest(replacement))
+        XCTAssertTrue(ledger.complete(replacement)); XCTAssertFalse(ledger.busy)
+        XCTAssertNil(ledger.pending); XCTAssertTrue(ledger.changingColumns.isEmpty)
+    }
+}
