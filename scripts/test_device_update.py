@@ -57,6 +57,36 @@ class DeviceUpdateTests(unittest.TestCase):
             self.assertEqual(build_id(root), initial)
             p.write_text('second'); self.assertNotEqual(build_id(root), initial)
 
+    def test_identity_tracks_manifest_resolution_resources_and_configuration(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            for name in ['Package.swift', 'Package.resolved', 'App/main.swift',
+                         'App/Assets.xcassets/Cast.imageset/Contents.json', 'App/LaunchScreen.storyboard',
+                         'Config/Clean.xcconfig', 'Starfall.xcodeproj/project.pbxproj',
+                         'Starfall.xcodeproj/xcshareddata/xcschemes/Starfall.xcscheme',
+                         'Starfall.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved']:
+                with self.subTest(input=name):
+                    before = build_id(root)
+                    path = root / name; path.parent.mkdir(parents=True, exist_ok=True)
+                    path.write_text('initial')
+                    created = build_id(root)
+                    self.assertNotEqual(before, created)
+                    path.write_text('changed'); self.assertNotEqual(created, build_id(root))
+                    path.unlink(); self.assertEqual(before, build_id(root))
+
+    def test_identity_ignores_nested_docs_tests_and_user_workspace_state(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder); before = build_id(root)
+            for name in ['App/README.md', 'Sources/StarfallCore/README.md', 'Config/README.md',
+                         'Starfall.xcodeproj/README.md', 'AppTests/Test.swift', 'UITests/Test.swift',
+                         'Tests/StarfallCoreTests/Test.swift', 'docs/guide.md', 'App/.DS_Store',
+                         'Starfall.xcodeproj/xcuserdata/developer.xcuserdatad/UserInterfaceState.xcuserstate']:
+                path = root / name; path.parent.mkdir(parents=True, exist_ok=True); path.write_text('local')
+                self.assertEqual(before, build_id(root), name)
+
+    def test_ci_failure_during_build_holds_install_and_reuses_verified_build(self):
+        self.exercise_install(fail_first=False, late_ci_failure=True)
+
     def test_ci_reports_latest_main_push_for_exact_source(self):
         runs = [{'name': 'Starfall simulator', 'head_sha': 'abc', 'head_branch': 'main', 'event': 'push',
                  'run_number': 2, 'run_attempt': 1, 'status': 'completed', 'conclusion': 'success'}]
@@ -94,7 +124,7 @@ class DeviceUpdateTests(unittest.TestCase):
     def test_failed_local_core_tests_prevent_build_and_install(self):
         self.exercise_install(fail_first=False, core_failure=True)
 
-    def exercise_install(self, fail_first, core_failure=False):
+    def exercise_install(self, fail_first, core_failure=False, late_ci_failure=False):
         with tempfile.TemporaryDirectory() as folder:
             state = Path(folder); source = state / 'fixture'; (source / 'App').mkdir(parents=True)
             (source / 'App/main.swift').write_text('runtime')
@@ -123,13 +153,18 @@ class DeviceUpdateTests(unittest.TestCase):
                         raise RuntimeError('locked')
                 return ''
             config = {'device': 'phone', 'team': 'team', 'repository': 'lbeezr/starfall'}
-            with patch.object(updater, 'connected', return_value=True), patch.object(updater, 'ci_status', return_value='pending'), patch.object(updater, 'run', side_effect=command), patch.object(updater.subprocess, 'run', side_effect=archive):
+            with patch.object(updater, 'connected', return_value=True), patch.object(updater, 'ci_status', side_effect=iter(['pending', 'failed', 'pending', 'pending']) if late_ci_failure else lambda *_: 'pending'), patch.object(updater, 'run', side_effect=command), patch.object(updater.subprocess, 'run', side_effect=archive):
                 if core_failure:
                     with self.assertRaisesRegex(RuntimeError, 'core tests failed'):
                         updater.update(config, state)
                     self.assertFalse((state / 'installed.json').exists())
                     self.assertFalse(any(c[0] == 'xcodebuild' or 'install' in c for c in commands))
                     return
+                if late_ci_failure:
+                    self.assertIn('Held: main CI failed before installation', updater.update(config, state))
+                    self.assertFalse((state / 'installed.json').exists())
+                    self.assertTrue((state / 'built.json').exists())
+                    self.assertFalse(attempts)
                 if fail_first:
                     with self.assertRaisesRegex(RuntimeError, 'locked'):
                         updater.update(config, state)
