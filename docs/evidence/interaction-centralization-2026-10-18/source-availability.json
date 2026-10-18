@@ -1,0 +1,8 @@
+{
+  "base": "e4c8f2b3e03bfb8a76dacf0fee603020f3b84d16",
+  "snapshot": "e0d85ed68e5d",
+  "paths": {
+    "App/FallingSkyStore.swift": "e154ea25a6e15f20a7a16f83f3875c417fbd7b0c8f548e68708f066c6b34ef72",
+    "AppTests/ResponsiveInputTests.swift": "3ad5c2cc8ef7d8815a10f6c752de13248b7beaf350f9ad28978b94ba4084732c"
+  }
+}

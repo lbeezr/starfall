@@ -4,8 +4,8 @@
 
 Four independently verified PRs follow the merged gesture/Dusk refinement. Rules, saves, geometry and clocks keep their existing owners. This folder records the scoped evidence for each extraction; physical-device feel and actual VoiceOver are separate acceptance work.
 
-1. [Logical interaction session](session.md): trace/swap selection and exactly-once hold release ([issue #77](https://github.com/lbeezr/starfall/issues/77)).
-2. Shared input availability ([issue #78](https://github.com/lbeezr/starfall/issues/78)).
+1. Merged [PR #83](https://github.com/lbeezr/starfall/pull/83): [logical interaction session](session.md), trace/swap selection and exactly-once hold release ([issue #77](https://github.com/lbeezr/starfall/issues/77)).
+2. [Shared input availability](availability.md) ([issue #78](https://github.com/lbeezr/starfall/issues/78)).
 3. Interruption teardown ([issue #79](https://github.com/lbeezr/starfall/issues/79)).
 4. Trace announcements through feedback ([issue #80](https://github.com/lbeezr/starfall/issues/80)).
 

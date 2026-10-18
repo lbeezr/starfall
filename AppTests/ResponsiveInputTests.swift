@@ -184,3 +184,54 @@ final class ResponsiveInputTests: XCTestCase {
     func announce(_ message: String) { announcements.append(message) }
     func stopSounds() {}
 }
+
+extension ResponsiveInputTests {
+    func testAdmissionReasonsKeepReadyColumnsIndependentAndGlobalRestrictionsConsistent() {
+        let active = SkyInputPolicy(suspended: false, gameOver: false, showerDue: false,
+                                    changingColumns: [0,1], presenting: true)
+        XCTAssertEqual(active.receiving, .ready)
+        XCTAssertEqual(active.wholeBoard, .settling([0,1]))
+        XCTAssertEqual(active.reserving([0,6]), .settling([0]))
+        XCTAssertEqual(active.reserving([6]), .ready)
+        for (suspended, over, due, expected) in [
+            (true,false,false,SkyInputAvailability.suspended),
+            (false,true,false,.gameOver), (false,false,true,.showerDue)
+        ] {
+            let policy = SkyInputPolicy(suspended:suspended,gameOver:over,showerDue:due,
+                                        changingColumns:[0],presenting:true)
+            XCTAssertEqual(policy.receiving,expected)
+            XCTAssertEqual(policy.wholeBoard,expected)
+            XCTAssertEqual(policy.reserving([6]),expected)
+        }
+    }
+
+    @MainActor func testPausedExplicitActionsAndDueShowerUseSharedAdmissionReasons() throws {
+        let suite = "AdmissionMatrix.\(UUID())", defaults = UserDefaults(suiteName:suite)!
+        defer { defaults.removePersistentDomain(forName:suite) }
+        defaults.set(try SkySaveArchive.encode(ObservatoryReviewFixture.game(dense:false)),forKey:FallingSkyStore.saveKey)
+        let clock = ManualRainClock(), presenter = FallingSkyRecorder()
+        let store = FallingSkyStore(defaults:defaults,arguments:[],presenter:presenter,clock:clock)
+        let cell = Cell(0,0)
+        XCTAssertEqual(store.clearAvailability(cell),.suspended)
+        XCTAssertEqual(store.traceAvailability([cell]),.suspended)
+        store.setSuspended(false)
+        XCTAssertTrue(store.isPaused)
+        XCTAssertEqual(store.clearAvailability(cell),.ready)
+        XCTAssertEqual(store.traceAvailability([cell]),.ready)
+        XCTAssertEqual(store.traceAvailability([]),.emptySelection)
+        store.togglePause()
+        store.clear(cell)
+        XCTAssertEqual(store.clearAvailability(cell),.settling([0]))
+        XCTAssertEqual(store.traceAvailability([cell]),.settling([0]))
+        XCTAssertEqual(store.clearAvailability(Cell(2,6)),.ready)
+        clock.advance(try XCTUnwrap(clock.deadline)-clock.now)
+        XCTAssertEqual(store.clearAvailability(Cell(2,6)),.showerDue)
+        XCTAssertEqual(store.traceAvailability([Cell(2,6)]),.showerDue)
+        let before = store.game
+        XCTAssertNil(store.beginConstellationHold(at:Cell(2,6)))
+        store.clear(Cell(2,6))
+        XCTAssertEqual(store.game,before)
+        presenter.finish()
+        XCTAssertEqual(store.game.turns,before.turns+1,"Only the deferred shower commits; input is never replayed")
+    }
+}
