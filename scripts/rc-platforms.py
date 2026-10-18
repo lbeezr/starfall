@@ -86,6 +86,7 @@ def run(selection, artifacts, temporary):
     summary_path = artifacts / ('rc-' + role + '-summary.json')
     # Remove only this role's previous run outputs. Never accept a stale summary.
     summary_path.unlink(missing_ok=True)
+    log.unlink(missing_ok=True)
     if retained.exists():
         shutil.rmtree(retained)
     primary = None

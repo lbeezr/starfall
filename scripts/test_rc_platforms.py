@@ -64,7 +64,7 @@ class RCPlatformsTests(unittest.TestCase):
 
 
 class RCExecutionTests(unittest.TestCase):
-    def execute(self, *, test_error=None, returncode=0, summary_error=None, cleanup_error=None, booted=False, summary=None):
+    def execute(self, *, boot_error=None, test_error=None, returncode=0, summary_error=None, cleanup_error=None, booted=False, summary=None):
         root = Path(self.directory.name)
         artifacts = root / 'artifacts'; artifacts.mkdir(exist_ok=True)
         temporary = root / 'temporary'; temporary.mkdir(exist_ok=True)
@@ -73,6 +73,7 @@ class RCExecutionTests(unittest.TestCase):
 
         def run(command, **kwargs):
             commands.append(command)
+            if 'boot' in command and boot_error: raise boot_error
             if command[0] == 'xcodebuild':
                 result = Path(command[command.index('-resultBundlePath') + 1])
                 result.mkdir(exist_ok=True); (result / 'partial').write_text('native failure evidence')
@@ -131,6 +132,18 @@ class RCExecutionTests(unittest.TestCase):
         self.assertIsNone(error); self.assertEqual(record['status'], 'passed')
         self.assertFalse(any('shutdown' in command or 'boot' in command for command in commands))
         self.assertFalse((artifacts / 'rc-tablet-failure.xcresult').exists())
+
+    def test_boot_failure_cannot_attach_a_previous_log_or_summary(self):
+        artifacts = Path(self.directory.name) / 'artifacts'; artifacts.mkdir()
+        (artifacts / 'rc-tablet.log').write_text('old successful output')
+        (artifacts / 'rc-tablet-summary.json').write_text('{"passedTests":3}')
+        boot = subprocess.TimeoutExpired(['simctl', 'boot'], 60)
+        cleanup = subprocess.TimeoutExpired(['simctl', 'shutdown'], 30)
+        error, record, _, _, _ = self.execute(boot_error=boot, cleanup_error=cleanup)
+        self.assertIs(error, boot); self.assertEqual(record['stage'], 'boot')
+        self.assertIsNone(record['log']); self.assertEqual(record['result']['status'], 'unavailable')
+        self.assertFalse((artifacts / 'rc-tablet-summary.json').exists())
+        self.assertFalse((artifacts / 'rc-tablet.log').exists())
 
     def test_main_marks_failed_run_before_temporary_storage_is_removed(self):
         import os
