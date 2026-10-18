@@ -91,8 +91,16 @@ final class SkyTechniqueInteractionTests: XCTestCase {
         XCTAssertFalse(app.buttons["technique.arrange"].exists)
         tap("experiment.done",app)
         XCUIDevice.shared.press(.home); app.activate()
+        let source = app.buttons["experiment.cell.1.2"]
+        let resumed = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+            app.state == .runningForeground && source.isEnabled && source.isHittable
+        }, object: nil).wait(timeout: 5)
+        if !resumed { capture(app,"gesture-resume-unavailable") }
+        XCTAssertTrue(resumed, app.debugDescription)
         drag(app,from:(1,2),to:(1,1),hold:0.2)
-        XCTAssertTrue(XCTNSPredicateExpectation(predicate:NSPredicate(format:"label CONTAINS %@","Aqua"),object:app.buttons["experiment.cell.1.1"]).wait(timeout:5))
+        let swapped = XCTNSPredicateExpectation(predicate:NSPredicate(format:"label CONTAINS %@","Aqua"),object:app.buttons["experiment.cell.1.1"]).wait(timeout:5)
+        if !swapped { capture(app,"gesture-resume-swap-missing") }
+        XCTAssertTrue(swapped, app.debugDescription)
         tap("experiment.cell.0.0",app); score(4,app)
         XCTAssertFalse(app.buttons["technique.activate"].exists)
     }

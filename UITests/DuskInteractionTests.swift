@@ -10,7 +10,9 @@ final class DuskInteractionTests: XCTestCase {
         return app
     }
     @MainActor private func ready(_ element: XCUIElement) {
-        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true AND hittable == true"), object: element).wait(timeout: 7))
+        let available = XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true AND hittable == true"), object: element).wait(timeout: 7)
+        if !available { capture(XCUIApplication(), "dusk-control-unavailable") }
+        XCTAssertTrue(available, XCUIApplication().debugDescription)
     }
     @MainActor private func capture(_ app: XCUIApplication, _ name: String) {
         let attachment = XCTAttachment(screenshot: app.screenshot())

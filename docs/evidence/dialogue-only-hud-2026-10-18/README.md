@@ -58,3 +58,22 @@ The isolated checkpoint selects `StarfallUITests/SkyTechniqueInteractionTests`, 
 The final native run returns **TEST FAILED** because the full-sky predicate above timed out. The app process remained alive until the next case terminated it; no new Starfall crash report was found. At investigation time the host had seven booted simulators and 9,594 MB swap in use; the following app launch took roughly 52 seconds to reach automation setup. Host contention is a plausible contributor, **not an established root cause**. No assertion, timeout, animation setting or retry policy was changed. The failed run had no matching automatic failure-image attachment; its raw result/log remain at the paths above. A fresh full-sky pass is not claimed from the earlier win, core or build results.
 
 Final checks: `python3 scripts/ci-hygiene.py`, `git diff --check`, native-method discovery and changed-document relative links pass. The final source manifest matches all changed app/test/project inputs. All ordinary/selected clears, recipe tracing and exchanges keep the existing rules/save contracts. No ad/IAP SDKs, network features, new app target or player-data migration were added.
+
+## PR integration with current main — October 18, 2026
+
+**Result:** Partially verified. Reconciled with main `7ddc837`, then `1ab1765`. Preserve the newer feedback/readiness/award boundaries and generic per-action admission; retire the newer Arrange-only recipe-revalidation state, controls and tests because the user requires direct gestures. Its historical reports remain unchanged. Published PR: [#91](https://github.com/lbeezr/starfall/pull/91).
+
+The first published head `9179880` exactly matches local tested merge `72027d0`, tree `674566fe4a143e93579dd689b2b2088015e08497`. After the second reconciliation, app/test source is `3ca42ea`; subsequent differences are documentation only. [Integration input hashes](integration-source.json) identify the final runtime/test inputs. Same dedicated 17e / iOS 27.0 and Xcode 27.1 as above; normal motion, Calm effects off.
+
+| Check | Source and result |
+| --- | --- |
+| Core | 149 pass; neither later main update changes Core |
+| Expanded hosted | 226/227 pass initially; the sole failure is an exact speech list omitting required Dusk context. Five expected strings now include the exact feeding counts while retaining count/order assertions. The complete affected 41-test store suite passes afterward. |
+| Expanded native | 7/9 pass initially; the Dusk post-resume readiness and gesture post-resume exchange cases fail. Diagnostic follow-up passes both with unchanged result assertions/timeouts. The gesture case now waits up to five seconds for foreground, enabled and hittable board input before one swipe; it does not retry the gesture. Dusk adds failure-only capture/tree diagnostics without changing its seven-second readiness predicate. No product-level elimination of all resume failures is claimed. |
+| Final affected checks | `3ca42ea`: 29 hosted tests (DuskProductionTests, ResponsiveInputTests, SkyTechniqueStoreTests) and the native direct-swap/empty-space-fall case pass. |
+| Build | Debug test build and final Release arm64 Simulator build pass. No source/resource membership gap; the removed control file and all target references are gone. |
+| Hygiene | Hygiene, whitespace and relative-link checks pass. |
+
+Commands use the common Xcode command above with `/tmp/starfall-hud-pr-current-main.xcresult` (all hosted, techniques, responsive input and the Dusk progression case), `/tmp/starfall-hud-pr-resume-diagnostics.xcresult` (41-test FallingSkyStoreTests suite and the two diagnosed native cases), and `/tmp/starfall-hud-pr-reconciled.xcresult` (final 29 hosted tests and direct swap). Logs are `/tmp/starfall-hud-pr-{core,native,resume,reconciled,release}.log`. No blanket retries, assertion relaxation, motion suppression or timeout increases were used.
+
+The original full-sky failure above was not rerun or declared fixed by these narrower checks. Long Dusk copy still uses the bubble's existing scroll. Actual VoiceOver, phone installation, new full-motion recording and human gesture comfort remain unverified. Repository CI runs on pushes to main, not on PR branches; no premerge CI run is claimed.

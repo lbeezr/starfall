@@ -429,16 +429,23 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     }
 
     /// New actions share current column ownership, hold tickets and committed presentation.
-    @discardableResult func performTechnique(_ action: SkyBoardAction, snapshot: FallingSky, generation ticket: UInt64) -> Bool {
-        guard canReceiveInput, game.canArrangeStars, snapshot == game, ticket == constellationInputGeneration else { return false }
-        let old = game
+    private func readyTechnique(_ action: SkyBoardAction) -> (FallingSky, FallingSkyTurn)? {
+        guard canReceiveInput, game.canArrangeStars else { return nil }
         var next = game
         let turn: FallingSkyTurn?
         switch action {
         case .recipe(let recipe): turn = next.activate(recipe)
         case .nudge(let from,let to): turn = next.nudge(from:from,to:to)
         }
-        guard let turn, inputPolicy.reserving(turn.changingColumns).isReady else { return false }
+        guard let turn, inputPolicy.reserving(turn.changingColumns).isReady else { return nil }
+        return (next,turn)
+    }
+    func canPerformTechnique(_ action: SkyBoardAction) -> Bool { readyTechnique(action) != nil }
+
+    @discardableResult func performTechnique(_ action: SkyBoardAction, snapshot: FallingSky, generation ticket: UInt64) -> Bool {
+        guard snapshot == game, ticket == constellationInputGeneration,
+              let (next,turn) = readyTechnique(action) else { return false }
+        let old = game
         game = next
         if case .recipe(let recipe) = action { present(turn, from: old, recipe: recipe) }
         else { present(turn, from: old) }
@@ -553,7 +560,8 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     }
 
     private func present(_ turn: FallingSkyTurn, from old: FallingSky, announcesResult: Bool = true, previousCadence: SkyCadenceStep? = nil, path: [Cell] = [], recipe: StarRecipe? = nil) {
-        invalidateInput(turn.arrivals.isEmpty && turn.blockedColumn == nil ? "clear" : (announcesResult ? "manualShower" : "automaticShower"))
+        let isShower = !turn.arrivals.isEmpty || turn.blockedColumn != nil
+        invalidateInput(isShower ? (announcesResult ? "manualShower" : "automaticShower") : "clear")
         if turn.exchange != nil {
             techniqueRelay.reset(); techniqueResult = "Star moved. Arrange your next clear."
         } else if !turn.cleared.isEmpty {

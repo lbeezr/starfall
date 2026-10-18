@@ -516,11 +516,11 @@ final class FallingSkyStoreTests: XCTestCase {
         for _ in 0..<40 where !store.game.isOver { clock.advance(4); presenter.finish() }
         XCTAssertTrue(store.game.isOver)
         XCTAssertEqual(feedback.announcements, [
-            "Nova. 1 lighter shower before storm",
-            "Nova. Storm · 3 heavy showers left. Faster after next shower",
-            "Nova. Lighter showers · 9 showers. Faster passage. Showers are closer together",
-            "Nova. Lighter showers · 8 showers. Breathing window. More time between showers",
-            "Nova. 1 lighter shower before storm",
+            "Nova. 1 lighter shower before storm Dusk · 3 feeding showers left · 1 star at risk",
+            "Nova. Storm · 3 heavy showers left. Faster after next shower Dusk · 2 feeding showers left · 2 stars at risk",
+            "Nova. Lighter showers · 9 showers. Faster passage. Showers are closer together Dusk · 3 feeding showers left · 1 star at risk",
+            "Nova. Lighter showers · 8 showers. Breathing window. More time between showers Dusk · 2 feeding showers left · 1 star at risk",
+            "Nova. 1 lighter shower before storm Dusk · 5 feeding showers left · 3 stars at risk",
             store.guideLine.spokenText
         ], "Only announced pressure transitions and the terminal result interrupt automatic play")
         store.restart(sameSky: true)
