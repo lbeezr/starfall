@@ -17,6 +17,7 @@ struct ConstellationTraceSurface: UIViewRepresentable {
     let cancel: () -> Void
     var contact: ((CGPoint) -> Bool)? = nil
     var feedback: ((String) -> Void)? = nil
+    var hasSelectedNeighbor: (() -> Bool)? = nil
     var arranging = false
     var swapStart: ((CGPoint) -> Bool)? = nil
     var beginSwap: ((CGPoint,CGPoint,UInt64) -> Bool)? = nil
@@ -44,11 +45,21 @@ struct ConstellationTraceSurface: UIViewRepresentable {
             capture.cancelsTouchesInView = false
             capture.shouldStart = { [weak self] point in
                 guard let self, let input=self.input, input.enabled else { return false }
-                return input.traceStart(point) != nil || input.swapStart?(point) == true
+                return ObservatoryGeometry(size: input.size).cell(at: point) != nil
             }
             capture.horizontalOnlyAtStart = { [weak self] point in
                 guard let input=self?.input else { return true }
                 return input.arranging || input.traceStart(point) == nil
+            }
+            // Recognizers receive raw contacts before UIScrollView can delay UIView
+            // touch delivery. Keep admission, moves and terminal events on this owner.
+            capture.beganContact = { [weak self] touches, event in self?.beginContact(touches, event: event) }
+            capture.movedContact = { [weak self] touches, event in self?.moveContact(touches, event: event) }
+            capture.endedContact = { [weak self] touches, event in self?.endContact(touches, event: event) }
+            capture.cancelledContact = { [weak self] in
+                guard let self else { return }
+                guard self.primary != nil else { return }
+                self.cancelInput(reason: self.capture.yieldedToScroll ? nil : "Touch interrupted")
             }
             addGestureRecognizer(capture)
         }
@@ -79,7 +90,7 @@ struct ConstellationTraceSurface: UIViewRepresentable {
             if let reason { input?.feedback?(reason) }
         }
         override func willMove(toWindow newWindow: UIWindow?) { if newWindow == nil { cancelInput() } }
-        override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        private func beginContact(_ touches: Set<UITouch>, event: UIEvent?) {
             guard primary == nil, touches.count == 1, (event?.allTouches?.count ?? 1) == 1 else { cancelInput(reason: "Touch canceled · use one finger"); return }
             blocked = false; swapDwell = SkySwapDwell(); swapArmed = false; primary = touches.first
             let origin = primary!.location(in: self)
@@ -87,9 +98,9 @@ struct ConstellationTraceSurface: UIViewRepresentable {
             guard session.begin(at: origin, traceEligible: eligible || input?.swapStart?(origin) == true) else { cancelInput(); return }
             guard input?.contact?(origin) != false else { primary = nil; session.cancel(); blocked = true; return }
             // Own the hold on touch-down, before drag recognition; release still taps normally.
-            if input?.traceStart(origin) != nil { input?.begin(origin) }
+            if eligible { input?.begin(origin) }
         }
-        override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        private func moveContact(_ touches: Set<UITouch>, event: UIEvent?) {
             guard !blocked, let primary, touches.contains(primary), let input else { return }
             guard (event?.allTouches?.count ?? 1) == 1 else { cancelInput(reason: "Touch canceled · use one finger"); return }
             let location = primary.location(in: self)
@@ -98,6 +109,7 @@ struct ConstellationTraceSurface: UIViewRepresentable {
                     guard !blocked else { break }
                     let point = touch.location(in: self)
                     input.move(point)
+                    if input.hasSelectedNeighbor?() == true { session.claimDrag() }
                     updateSwapHold(point, input:input)
                 }
             } else if session.canceled { cancelInput(reason: "Touch canceled · lift on the same star") }
@@ -113,15 +125,17 @@ struct ConstellationTraceSurface: UIViewRepresentable {
             guard previous != swapDwell.target else { return }
             swapTask?.cancel(); swapTask=nil
             guard let target=swapDwell.target else { return }
+            let contact = session.sequence
             swapTask=Task { @MainActor [weak self] in
-                do { try await Task.sleep(for:.milliseconds(350)) } catch { return }
-                guard let self, !self.blocked, self.primary != nil, self.swapDwell.target == target,
+                do { try await Task.sleep(for:.milliseconds(150)) } catch { return }
+                guard !Task.isCancelled, let self, self.session.sequence == contact,
+                      !self.blocked, self.primary != nil, self.swapDwell.target == target,
                       let current=self.input, current.enabled, current.generation == input.generation else { return }
                 self.swapArmed = current.beginSwap?(origin,point,current.generation) == true
                 if self.swapArmed { self.swapDwell.arm() }
             }
         }
-        override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        private func endContact(_ touches: Set<UITouch>, event: UIEvent?) {
             guard !blocked, let primary, touches.contains(primary), let input else { cancelInput(); return }
             guard (event?.allTouches?.count ?? 1) == 1 else { cancelInput(reason: "Touch canceled · use one finger"); return }
             swapTask?.cancel(); swapTask=nil
@@ -135,41 +149,60 @@ struct ConstellationTraceSurface: UIViewRepresentable {
             case .cancel: input.cancel(); input.feedback?("Touch canceled · lift on the same star")
             }
         }
-        override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-            cancelInput(reason: capture.yieldedToScroll ? nil : "Touch interrupted")
-        }
     }
     // A trace starting on an eligible star wins over the accessibility-size
-    // scroll container. Other starts fail immediately, preserving normal scroll.
+    // scroll container. Other board starts yield on vertical movement to scroll.
     final class CaptureRecognizer: UIGestureRecognizer {
+        var beganContact: ((Set<UITouch>, UIEvent) -> Void)?
+        var movedContact: ((Set<UITouch>, UIEvent) -> Void)?
+        var endedContact: ((Set<UITouch>, UIEvent) -> Void)?
+        var cancelledContact: (() -> Void)?
         var shouldStart: ((CGPoint)->Bool)?
         var horizontalOnlyAtStart: ((CGPoint)->Bool)?
         private(set) var yieldedToScroll = false
         private var origin=CGPoint.zero
         override func touchesBegan(_ touches:Set<UITouch>,with event:UIEvent) {
             yieldedToScroll = false
-            guard touches.count==1, event.allTouches?.count==1, let touch=touches.first else { cancelCapture();return }
+            guard touches.count==1, event.allTouches?.count==1, let touch=touches.first else {
+                cancelledContact?(); cancelCapture(); return
+            }
             origin=touch.location(in:view)
-            if shouldStart?(origin) != true { state = .failed }
+            guard shouldStart?(origin) == true else { state = .failed; return }
+            beganContact?(touches, event)
         }
         override func touchesMoved(_ touches:Set<UITouch>,with event:UIEvent) {
             guard state == .possible || state == .began || state == .changed,
                   let touch=touches.first else { return }
             let point=touch.location(in:view)
             if state == .possible {
-                if hypot(point.x-origin.x,point.y-origin.y)>=ConstellationTouchSession.dragThreshold {
-                    if horizontalOnlyAtStart?(origin) == true && abs(point.y-origin.y) > abs(point.x-origin.x) {
+                let horizontalOnly = horizontalOnlyAtStart?(origin) == true
+                let distance = hypot(point.x-origin.x,point.y-origin.y)
+                let recognitionDistance = horizontalOnly ? ConstellationTouchSession.tapSlop : ConstellationTouchSession.dragThreshold
+                if distance > recognitionDistance || (!horizontalOnly && distance == recognitionDistance) {
+                    if horizontalOnly && abs(point.y-origin.y) > abs(point.x-origin.x) {
                         yieldedToScroll = true
+                        cancelledContact?()
                         state = .failed
+                        return
                     }
                     else { state = .began }
                 }
             } else {state = .changed}
+            movedContact?(touches, event)
         }
         override func touchesEnded(_ touches:Set<UITouch>,with event:UIEvent) {
-            state = state == .began || state == .changed ? .ended : .failed
+            guard state == .possible || state == .began || state == .changed else { return }
+            endedContact?(touches, event)
+            if state == .possible || state == .began || state == .changed {
+                state = state == .began || state == .changed ? .ended : .failed
+            }
         }
-        override func touchesCancelled(_ touches:Set<UITouch>,with event:UIEvent) {cancelCapture()}
+        override func touchesCancelled(_ touches:Set<UITouch>,with event:UIEvent) { cancelledContact?(); cancelCapture() }
+        override func reset() {
+            // UIKit can end recognition without delivering UIView cancellation.
+            cancelledContact?()
+            super.reset()
+        }
         func cancelCapture() {
             if state == .began || state == .changed {state = .cancelled}
             else if state == .possible {state = .failed}
@@ -182,33 +215,47 @@ struct ConstellationTraceSurface: UIViewRepresentable {
 /// UITouch so boundary samples and interruption sequences exercise production logic.
 struct ConstellationTouchSession {
     enum Outcome: Equatable { case tap(Cell), trace, cancel }
-    static let dragThreshold: CGFloat = 12
+    static let dragThreshold: CGFloat = 6
     static let tapSlop: CGFloat = 18
     private var traceEligible = true
+    private var maximumDistance: CGFloat = 0
+    private var selectedNeighbor = false
     private(set) var canceled = false
+    private(set) var sequence: UInt64 = 0
     private(set) var origin: CGPoint?
     private(set) var dragging = false
 
     mutating func begin(at point: CGPoint, traceEligible: Bool = true) -> Bool {
         guard origin == nil else { cancel(); return false }
+        sequence &+= 1
         origin = point; dragging = false; canceled = false; self.traceEligible = traceEligible
+        maximumDistance = 0; selectedNeighbor = false
         return true
     }
     @discardableResult mutating func move(to point: CGPoint) -> Bool {
         guard let origin, !canceled else { return false }
         let distance = hypot(point.x-origin.x, point.y-origin.y)
+        maximumDistance = max(maximumDistance, distance)
         if traceEligible { dragging = dragging || distance >= Self.dragThreshold }
         else if distance > Self.tapSlop { canceled = true }
         return dragging
     }
+    /// Sticky intent: a partial constellation must never fall back to an ordinary clear.
+    mutating func claimDrag() { selectedNeighbor = true }
+
     mutating func finish(at point: CGPoint, mapping: ObservatoryGeometry) -> Outcome {
         defer { cancel() }
         guard let origin, !canceled else { return .cancel }
-        if move(to: point) { return .trace }
-        guard !canceled, let cell = mapping.cell(at: origin), mapping.cell(at: point) == cell else { return .cancel }
-        return .tap(cell)
+        let isDrawing = move(to: point)
+        guard !canceled else { return .cancel }
+        if !selectedNeighbor, maximumDistance <= Self.tapSlop,
+           let cell = mapping.cell(at: origin), mapping.cell(at: point) == cell { return .tap(cell) }
+        return isDrawing ? .trace : .cancel
     }
-    mutating func cancel() { origin = nil; dragging = false; canceled = false }
+    mutating func cancel() {
+        sequence &+= 1; origin = nil; dragging = false; canceled = false
+        maximumDistance = 0; selectedNeighbor = false
+    }
 }
 
 /// One-neighbor dwell eligibility is sticky for the entire physical contact.

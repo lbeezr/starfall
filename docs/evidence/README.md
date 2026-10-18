@@ -8,6 +8,10 @@ Dated, source-bound records of checks, comparisons and their limits.
 
 ## Start here
 
+[Snappy board input](snappy-board-input-2026-10-18/README.md) tracks faster drawing preview, full native start targets and small-drift tap preservation.
+
+[Input and Dusk refinement](input-dusk-refinement-2026-10-18/README.md) tracks immediate gesture ownership, quicker swaps and five-feed save compatibility.
+
 [Current-main technique integration](technique-current-main-2026-10-18/README.md) tracks recipes, exchanges, preserved Dusk/v6 contracts and guarded delivery.
 
 Start with [the roadmap](../ROADMAP.md) for current priorities or [visual reference](../design/VISUAL_REFERENCE.md) for selected captures. Each dated folder’s README explains its tested source and scope. Nested captures and cloud exports inherit that record; do not add prose to historical payloads or imply they tested later code. Raw new output belongs under ignored artifacts; retain only useful durable evidence here. Follow [screenshot retention](../SCREENSHOTS.md) with each visual change. Retired screenshots are recorded there with a Git recovery revision; historical report claims and manifests remain unchanged apart from retirement notices and removed image links.

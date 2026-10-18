@@ -20,7 +20,7 @@ New skies start empty, then open with four closely spaced animated showers. Clea
 
 New survival skies also use the approved [Opal and storm rules](docs/design/WHITE_STAR_AND_STORMS.md): a white Opal Orb can join the colored family you start on, and nine lighter showers alternate with three heavy showers. Clearing spends any included Opal; she is worth one light and never grows. Density and timing cues describe separate parts of the forecast. Older saved skies and replays keep their generation; First Light excludes both mechanics. [Integration evidence](docs/evidence/opal-main-integration-2026-10-17/README.md) distinguishes tested behavior from human enjoyment, which remains unmeasured.
 
-Dusk feeds on each shower with a touching colored star or Opal. After three feeds, it briefly becomes a black hole, consumes those neighbors for zero points, then disappears. Clear beside it early to restore surviving stars, or let it consume an awkward cluster for space. [Rules and production checks](docs/design/DUSK_FEEDING.md).
+Dusk feeds on each shower with a touching colored star or Opal. After five feeds, it briefly becomes a black hole, consumes those neighbors for zero points, then disappears. Clear beside it early to restore surviving stars, or let it consume an awkward cluster for space. [Rules and production checks](docs/design/DUSK_FEEDING.md).
 
 
 Attraction fields and orbiting holes are removed from normal play. Saved rounds keep their score and remaining stars; held stars settle and upcoming fields become ordinary stars. Replay also stays free of gravity specials. [Removal and save compatibility](docs/evidence/gravity-removal-2026-10-17/README.md).

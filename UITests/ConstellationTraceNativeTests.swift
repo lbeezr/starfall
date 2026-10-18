@@ -21,7 +21,11 @@ final class ConstellationTraceNativeTests: XCTestCase {
     @MainActor func testNativeSwipeClearsChosenFiveAndLeavesSixth() {
         let app=launch();defer {app.terminate()}
         app.buttons["experiment.cell.0.0"].tap();score(0,app)
-        drag(app,from:(0,0),to:(4,4));score(5,app)
+        // Begin near the native target's rim, outside the old inset start circle.
+        let start = app.buttons["experiment.cell.0.0"].coordinate(withNormalizedOffset:CGVector(dx:0.04,dy:0.5))
+        let end = app.buttons["experiment.cell.4.4"].coordinate(withNormalizedOffset:CGVector(dx:0.5,dy:0.5))
+        start.press(forDuration:0.05,thenDragTo:end,withVelocity:.fast,thenHoldForDuration:0)
+        score(5,app)
         let rose=app.buttons.matching(NSPredicate(format:"identifier BEGINSWITH 'experiment.cell.' AND label CONTAINS 'Twinkle'"))
         XCTAssertEqual(rose.count,1)
         let screenshot=XCTAttachment(screenshot:app.screenshot());screenshot.name="trace-five-from-six";screenshot.lifetime = .keepAlways;add(screenshot)

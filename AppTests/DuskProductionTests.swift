@@ -16,7 +16,7 @@ final class DuskProductionTests: XCTestCase {
     }
 
     @MainActor func testCollapseCommitsBeforeAnimationAndInterruptionsCannotRepeatIt() throws {
-        let (store,defaults,presenter) = try store(DuskFixture.imminent.game())
+        let (store,defaults,presenter) = try store(DuskFixture.imminent.game(rule: .patientFeeding))
         store.callShower()
         XCTAssertEqual(store.game.lostStarlight,4); XCTAssertEqual(store.game.score,0)
         XCTAssertEqual(store.pending?.duskCollapses.count,1)
@@ -31,8 +31,27 @@ final class DuskProductionTests: XCTestCase {
         let restored = FallingSkyStore(defaults:defaults,arguments:[],presenter:DuskPresenter())
         XCTAssertEqual(restored.game,committed); XCTAssertTrue(restored.isPaused)
         store.restart(sameSky:true); let restarted=store.game; stale()
-        XCTAssertEqual(store.game,restarted); XCTAssertEqual(restarted.duskRule,.feeding)
+        XCTAssertEqual(store.game,restarted); XCTAssertEqual(restarted.duskRule,.patientFeeding)
         XCTAssertEqual(restarted.lostStarlight,0)
+    }
+
+    @MainActor func testV6FeedingMigrationRetainsOldBytesAndProgressUntilActivation() throws {
+        let old = DuskFixture.imminent.game()
+        let suite = "Dusk.V6.\(UUID())", defaults = UserDefaults(suiteName:suite)!
+        defer { defaults.removePersistentDomain(forName:suite) }
+        let object = try JSONSerialization.jsonObject(with:JSONEncoder().encode(old))
+        let bytes = try JSONSerialization.data(withJSONObject:["schemaVersion":6,"game":object])
+        defaults.set(bytes,forKey:SkySaveArchive.feedingKey)
+        let store = FallingSkyStore(defaults:defaults,arguments:[],presenter:DuskPresenter())
+        XCTAssertEqual(store.game, old.adoptingFeedingDusk())
+        XCTAssertEqual(store.game.gem(at:Cell(0,3))?.duskFeeds,2)
+        XCTAssertNil(defaults.data(forKey:SkySaveArchive.key))
+        XCTAssertEqual(defaults.data(forKey:SkySaveArchive.feedingKey),bytes)
+        store.setSuspended(false)
+        XCTAssertEqual(try SkySaveArchive.decode(XCTUnwrap(defaults.data(forKey:SkySaveArchive.key))), store.game)
+        XCTAssertEqual(defaults.data(forKey:SkySaveArchive.feedingKey),bytes)
+        defaults.set(Data("broken".utf8),forKey:SkySaveArchive.key)
+        XCTAssertNil(SkySaveArchive.load(from:defaults))
     }
 
     @MainActor func testV5MigrationRetainsBoardPreviewRandomnessAndBytesUntilActivation() throws {
@@ -71,7 +90,7 @@ final class DuskProductionTests: XCTestCase {
 
     @MainActor func testStageTargetsDrainMaterialAndWarningSurviveResizeAndQuietRendering() throws {
         let scene=FallingSkyScene(size:.init(width:378,height:690))
-        let game=DuskFixture.imminent.game()
+        let game=DuskFixture.imminent.game(rule: .patientFeeding)
         for _ in 0..<12 { scene.render(game) }
         XCTAssertTrue(DuskWarning(game:game)!.text.contains("1 feeding shower left"))
         XCTAssertTrue(DuskWarning.consequence(game:game,cell:Cell(0,3)).contains("row 6 column 4"))
@@ -93,7 +112,7 @@ final class DuskProductionTests: XCTestCase {
         let controller=UIViewController();controller.view=view;window.rootViewController=controller;window.frame=view.frame;window.makeKeyAndVisible()
         let scene=FallingSkyScene(size:view.bounds.size);view.presentScene(scene)
         defer {view.presentScene(nil);window.isHidden=true;prior?.makeKey()}
-        let before=DuskFixture.imminent.game();var after=before
+        let before=DuskFixture.imminent.game(rule: .patientFeeding);var after=before
         let turn=try XCTUnwrap(after.letStarsFall())
         var complete=false,sawHole=false,sawInfall=false,sawArrival=false
         scene.animate(turn,from:before,to:after){complete=true}

@@ -23,6 +23,20 @@ final class TraceInputPolishTests: XCTestCase {
         XCTAssertNil(intent.snapshot)
     }
 
+    @MainActor func testUnavailableIncidentalSampleDoesNotDestroyLiveTrace() throws {
+        let game = ConstellationFixture.diagonalSix.game(), intent = ConstellationTraceIntent()
+        let ticket = try XCTUnwrap(intent.begin(Cell(0,0), game: game, generation: 4, enabled: true))
+        XCTAssertFalse(intent.visit(Cell(0,1), ticket: ticket, game: game, generation: 4, enabled: false))
+        XCTAssertEqual(intent.path, [Cell(0,0)])
+        for i in 1..<5 {
+            XCTAssertTrue(intent.visit(Cell(i,i), ticket: ticket, game: game, generation: 4, enabled: true))
+        }
+        XCTAssertNotNil(intent.finish(ticket: ticket, game: game, generation: 4, enabled: true))
+        let replacement = intent.begin(Cell(0,0), game: game, generation: 4, enabled: true)
+        XCTAssertFalse(intent.visit(Cell(1,1), ticket: replacement, game: game, generation: 5, enabled: false))
+        XCTAssertNil(intent.snapshot, "A lifecycle change still invalidates the entire contact")
+    }
+
     @MainActor func testContinuousSamplingFindsCoarseAndGrazingHitsAtDifferentSizes() {
         let game = ConstellationFixture.diagonalSix.game()
         for size in [CGSize(width: 320, height: 568), CGSize(width: 414, height: 896), CGSize(width: 440, height: 956)] {
@@ -34,7 +48,8 @@ final class TraceInputPolishTests: XCTestCase {
             let cell = Cell(2,2), center = mapping.viewPoint(cell)
             let radius = ConstellationTraceHitTesting.radius(cell, mapping: mapping)
             XCTAssertEqual(ConstellationTraceHitTesting.start(at: center, mapping: mapping, game: game), cell)
-            XCTAssertNil(ConstellationTraceHitTesting.start(at: CGPoint(x: center.x+radius*1.02, y: center.y), mapping: mapping, game: game))
+            XCTAssertEqual(ConstellationTraceHitTesting.start(at: CGPoint(x: center.x+radius*1.02, y: center.y), mapping: mapping, game: game), cell,
+                           "The native star target has no smaller circular dead rim")
             let left = CGPoint(x: center.x-radius*1.5, y: center.y+radius*0.98)
             let right = CGPoint(x: center.x+radius*1.5, y: left.y)
             XCTAssertTrue(ConstellationTraceHitTesting.cells(from: left, to: right, mapping: mapping, game: game).contains(cell))
@@ -79,7 +94,7 @@ final class TraceInputPolishTests: XCTestCase {
 
 
 extension TraceInputPolishTests {
-    @MainActor func testEdgeReleaseBelowDragThresholdAlwaysTerminatesAndFinalMotionIsClassified() throws {
+    @MainActor func testEdgeReleaseAlwaysTerminatesAndFinalMotionIsClassified() throws {
         for size in [CGSize(width:320,height:568), CGSize(width:440,height:956)] {
             let mapping = ObservatoryGeometry(size:size), game = ConstellationFixture.diagonalSix.game()
             let cell = Cell(0,0), center = mapping.viewPoint(cell)
@@ -90,8 +105,8 @@ extension TraceInputPolishTests {
             XCTAssertNil(mapping.cell(at:outside))
             var touch = ConstellationTouchSession()
             XCTAssertTrue(touch.begin(at:start))
-            XCTAssertFalse(touch.move(to:outside))
-            XCTAssertEqual(touch.finish(at:outside,mapping:mapping),.cancel)
+            XCTAssertTrue(touch.move(to:outside))
+            XCTAssertEqual(touch.finish(at:outside,mapping:mapping),.trace)
             XCTAssertNil(touch.origin)
             XCTAssertEqual(touch.finish(at:center,mapping:mapping),.cancel,"Duplicate terminal event cannot tap")
             XCTAssertTrue(touch.begin(at:center))
@@ -134,6 +149,45 @@ extension TraceInputPolishTests {
         store.endConstellationHold(second)
         XCTAssertEqual(clock.deadline,resumed)
         clock.advance(0.5); XCTAssertEqual(store.game.turns,source.turns+1)
+    }
+
+    @MainActor func testEarlyDrawingAndTapDriftKeepDistinctStickyIntent() {
+        let mapping = ObservatoryGeometry(size: CGSize(width:390,height:844))
+        let cell = Cell(0,3), origin = mapping.viewPoint(cell)
+        for distance: CGFloat in [6,12,16,18] {
+            var touch = ConstellationTouchSession()
+            XCTAssertTrue(touch.begin(at:origin))
+            let point = CGPoint(x:origin.x+distance,y:origin.y)
+            XCTAssertTrue(touch.move(to:point), "Preview starts without waiting for tap slop")
+            XCTAssertEqual(touch.finish(at:origin,mapping:mapping),.tap(cell))
+        }
+        var selected = ConstellationTouchSession()
+        XCTAssertTrue(selected.begin(at:origin))
+        selected.claimDrag()
+        _ = selected.move(to:CGPoint(x:origin.x+6,y:origin.y))
+        XCTAssertEqual(selected.finish(at:origin,mapping:mapping),.trace,
+                       "Selected neighbors prevent partial drawings from becoming whole-group clears")
+        XCTAssertTrue(selected.begin(at:origin))
+        _ = selected.move(to:CGPoint(x:origin.x+19,y:origin.y))
+        XCTAssertEqual(selected.finish(at:origin,mapping:mapping),.trace,
+                       "A larger excursion remains drawing even on return")
+    }
+
+    @MainActor func testPhysicalContactTicketExpiresEvenWhenNextTouchUsesTheSameOrigin() {
+        let mapping = ObservatoryGeometry(size: CGSize(width:390,height:844))
+        let origin = mapping.viewPoint(Cell(1,2))
+        var touch = ConstellationTouchSession()
+        XCTAssertTrue(touch.begin(at:origin))
+        let first = touch.sequence
+        touch.cancel()
+        XCTAssertNotEqual(touch.sequence,first)
+        XCTAssertTrue(touch.begin(at:origin))
+        let second = touch.sequence
+        XCTAssertNotEqual(second,first)
+        XCTAssertEqual(touch.finish(at:origin,mapping:mapping),.tap(Cell(1,2)))
+        XCTAssertNotEqual(touch.sequence,second)
+        XCTAssertTrue(touch.begin(at:origin))
+        XCTAssertNotEqual(touch.sequence,second)
     }
 
     @MainActor func testSurfaceConfigurationChangesReleaseHoldBeforeReplacement() throws {

@@ -1,6 +1,6 @@
 # Reliable taps during falling animations
 
-**Status:** Accepted · **Owner:** Current implementer · **Updated:** October 17, 2026
+**Status:** Accepted · **Owner:** Current implementer · **Updated:** October 18, 2026
 
 A stationary star should remain responsive when another part of the sky moves. Replace the whole-board animation gate with reservations for columns changed by each committed turn, acknowledge contact immediately, and keep drifting ordinary taps from becoming unavailable traces.
 
@@ -15,8 +15,8 @@ A stationary star should remain responsive when another part of the sky moves. R
 | Touch a ready star | A static outline acknowledges contact; release on the same star activates its existing ordinary clear. |
 | A shower or clear moves another column | Ready groups remain usable. A prospective clear must also avoid reserved dark-star columns it would dissolve. |
 | Touch a changing column | “Stars settling…” explains the wait and disappears when ready. Input is not replayed on a later occupant. |
-| Short ordinary drift | Up to 18 points remains a tap while release stays in the original cell. Only an eligible start can become a trace, at 12 points. |
-| Draw an eligible constellation | The existing analytic hit testing and forgiving prefix validation select the same stars. A visible outline and count indicate contact/readiness. |
+| Short ordinary drift | A contact that stays within 18 points and lifts in its original cell remains a tap unless it selected another star. Drawing preview starts at six points; selecting a neighbor or moving farther permanently claims drawing. |
+| Draw an eligible constellation | Start anywhere in the eligible native star target; tap and drawing admission use the same inverse mapping. Analytic segment hit testing and forgiving prefix validation still select stars along the path. A visible outline and count indicate contact/readiness. |
 | Release an incomplete trace or leave the board | A readable reason accompanies cancellation. A deliberate trace never falls back to clearing an ordinary group. |
 | A shower deadline approaches during contact | The existing owned hold freezes the remaining clock. Release/cancellation resumes it; stale tickets cannot resume a newer contact. |
 | Formation, rotation or release of an orbit | The changing board remains locked until its committed gravity sequence settles. |
@@ -29,7 +29,7 @@ Core still chooses the complete committed outcome. The store previews that outco
 
 Each presentation receives an identity and lifecycle epoch. Completion removes only its own reservation and reconciles those columns against the newest committed game. The renderer preserves independent flights and the live contact layer. When the last presentation ends it restores an exact quiet board. Older explicit clear completions cannot replace newer result dialogue; automatic phase announcements retain their existing noninterrupting policy.
 
-The touch surface admits one contact, anchors taps to their origin cell, classifies drift using trace eligibility, and always terminates on release/cancellation. A hold ticket and input generation reject stale work across settings, backgrounding, restart, resizing and scene detachment. Native cell buttons and add/release/cancel accessibility actions remain authoritative assistive controls. No coordinate queue, new rule, persisted gesture, schema migration, SDK or network behavior is introduced.
+The recognizer admits one contact before scroll arbitration, anchors taps to their origin cell, and always terminates on release/cancellation/reset. Preview movement and final action classification are separate: a small unselected wiggle remains a tap, while selecting a second star permanently prevents ordinary-clear fallback. Non-drawing starts retain the full tap tolerance before yielding to vertical scrolling. Core owns the shared start-eligibility query. A hold ticket and input generation reject stale work across settings, backgrounding, restart, resizing and scene detachment. Native cell buttons and add/release/cancel accessibility actions remain authoritative assistive controls. No coordinate queue, new clear rule, persisted gesture, schema migration, SDK or network behavior is introduced. [Current input refinement](../evidence/snappy-board-input-2026-10-18/README.md) records source-bound checks; physical contact-to-display latency remains unmeasured.
 
 ```mermaid
 flowchart LR
@@ -54,7 +54,7 @@ The [Celeste developer explanation](https://maddymakesgames.com/articles/celeste
 
 - Independent clears finish in either order without losing the newest game/save or replacing newer dialogue.
 - A real clear overlaps an unrelated full-motion shower; changing/dark-adjacent columns and cross-column gravity reject conflicting actions.
-- Real 8-point ordinary drifts work at normal and largest text sizes. Valid, incomplete and outside traces preserve selected-set/cancellation rules.
+- Real 16-point ordinary drifts work at normal and largest text sizes. Valid, incomplete and outside traces preserve selected-set/cancellation rules.
 - Existing normal/rapid play, win/loss, replay, pause, settings dismissal, background/resume and Reduce Motion checks pass on the integrated source.
 - Record core, hosted, native, visual/motion and physical evidence separately. Check Debug/Release and explicit target membership. Use the [screenshot practice](../SCREENSHOTS.md) for selected captures.
 

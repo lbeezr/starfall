@@ -2,9 +2,9 @@
 /// Reset-only native checks use committed showers, not production save injection.
 public enum DuskFixture: String, CaseIterable {
     case unfed, feeding, imminent, starved, zeroClear
-    public func game() -> FallingSky {
+    public func game(rule: DuskRule = .feeding) -> FallingSky {
         var game = FallingSky(seed: 5, balance: .init(pace: .gentle, darkStars: .none),
-                              openingCascade: false, generation: .current, duskRule: .feeding)
+                              openingCascade: false, generation: .current, duskRule: rule)
         if self == .starved {
             game.scriptGravityShower([(.dusk,3)])
             game.setGravityForecast([(.colored(.aqua),3)])
@@ -20,6 +20,7 @@ public enum DuskFixture: String, CaseIterable {
         game.scriptGravityShower([(.colored(.rose),3)])
         if self == .feeding { game.setGravityForecast([(.colored(.violet),6)]); return game }
         game.scriptGravityShower([(.colored(.violet),6)])
+        for _ in 2..<(rule.feedingShowers-1) { game.scriptGravityShower([(.colored(.violet),6)]) }
         game.setGravityForecast([(.colored(.aqua),2)])
         precondition(game.isValidSave)
         return game

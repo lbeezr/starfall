@@ -286,6 +286,7 @@ import StarfallCore
                                               end: releaseConstellation, cancel: cancelConstellation,
                                               contact: { beginBoardContact($0, size: geometry.size) },
                                               feedback: store.explainInputFailure,
+                                              hasSelectedNeighbor: { trace.count > 1 || technique.swapping },
                                               arranging: technique.arranging,
                                               swapStart: { point in mapping.cell(at:point).map { store.game.canArrangeStars && store.game.gem(at:$0) != nil && store.canContact($0) } ?? false },
                                               beginSwap: { armDirectSwap($0,to:$1,generation:$2,size:geometry.size) },
@@ -359,8 +360,8 @@ import StarfallCore
         if let role = gem.gravityKind {
             return role == .hole ? "Gravity hole, \(store.game.orbit?.windowsRemaining ?? 0) windows left, \(position)" : "Attraction field, \(position)"
         }
-        if gem.isDark && store.game.duskRule == .feeding {
-            return "Dusk, \(gem.duskFeeds) of \(DuskRule.feedingShowers) feeds, \(position). " + DuskWarning.consequence(game: store.game, cell: cell)
+        if gem.isDark && store.game.duskRule != .legacy {
+            return "Dusk, \(gem.duskFeeds) of \(store.game.duskRule.feedingShowers) feeds, \(position). " + DuskWarning.consequence(game: store.game, cell: cell)
         }
         let shade = store.game.isDrained(at: cell) ? ", drained by Dusk, scores zero but still matches"
             : store.game.isGrowthBlocked(at: cell) ? ", growth blocked by a dark star" : ""
