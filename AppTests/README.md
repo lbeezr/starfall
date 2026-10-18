@@ -49,3 +49,5 @@ Gravity specials are retired from normal play. `SkyGeneration.standardSky` suppl
 `SkyTechniqueStoreTests` checks exact-recipe relay feedback, exchange ownership, current saves/deadlines, interrupted/stale inputs, Dusk reward columns, non-saving fixtures and sampled full/quiet exchange motion.
 
 `TraceInputPolishTests` also separates early drawing preview from small tap drift, verifies sticky neighbor selection, and checks constellation starts across the native target rather than an inset circle.
+
+`StarlightCelebrationTests` covers concurrent receipt replacement, current save restore, rewarding Opal/drained Dusk distinctions, zero-reward clears, validated trace/recipe/relay categories, interruption and independent expiry.

@@ -6,7 +6,7 @@
 
 The interface belongs to a little celestial observatory: astronomical instruments, warm brass, ink-blue glass, drawn constellations and familiar star faces. The painted terrace and actual cast remain dominant. Detail comes from consistent craft, materials, hierarchy and behavior rather than adding more containers.
 
-Acceptance: no hard artwork seam at the iPhone's top/bottom; registered art retains its aspect ratio; real native taps still agree with the renderer; one 44-point menu control; no nested padded panels; a continuously readable shower cue without flashing; paused/onboarding/outcome guidance stays below the terrace and clear of the lantern. Ordinary active play remains quiet. Menu hides underlying controls, freezes deadlines, preserves pause choice and supports Done/swipe dismissal. Largest text reflows/scrolls with no font shrinking. Sound/haptics default on only when no preference exists; explicit saved off remains off. No rule, save schema, RNG, progression or shower-generation changes.
+Acceptance: no hard artwork seam at the iPhone's top/bottom; registered art retains its aspect ratio; real native taps still agree with the renderer; one 44-point menu control; no nested padded panels; a continuously readable shower cue without flashing; paused/onboarding/outcome guidance stays below the terrace and clear of the lantern. The resting board and routine arrivals remain quiet; player-earned clears may show a brief localized celebration. Menu hides underlying controls, freezes deadlines, preserves pause choice and supports Done/swipe dismissal. Largest text reflows/scrolls with no font shrinking. Sound/haptics default on only when no preference exists; explicit saved off remains off. No rule, save schema, RNG, progression or shower-generation changes.
 
 ## Visual grammar
 
@@ -28,7 +28,7 @@ Implementation owners: `StarfallTheme` for roles, `FallingSkyHUD` for gameplay c
 | --- | --- |
 | Ink containment (guide/reading surfaces) | The selected HUD removes counter/button capsules; deep ink containment remains for guidance and reading |
 | Icon control | 24-point drawn constellation inside minimum 44-point native button; pressed surface; disabled text role; spoken action and hint |
-| Starlight counter | Warm sparkle + rounded semibold monospaced score; challenge uses current/target; no decorative label shouting over the sky |
+| Starlight counter | Warm sparkle + rounded monospaced committed score; challenge uses current/target. A brief collection bloom/pop follows a player clear; [celebration behavior and verification](STARLIGHT_CELEBRATIONS.md) keep its transient award separate from authoritative points. |
 | Comet trail (`SkyShowerTrail`) | Flowing / arriving / paused; one authoritative deadline supplied by store; cool tail and small pearl; explicit spoken state without a routine visible caption; no pulse or flicker |
 | Guide card (`SkyGuideCard`) | Welcome / paused / outcome; Sunny portrait reused from bounded cast cache; serif heading and natural wrapping supporting copy; actions below |
 | Menu row | Icon plus clear word; native disclosure/toggle/button semantics; 44-point minimum native targets; no icon-only preference rows |

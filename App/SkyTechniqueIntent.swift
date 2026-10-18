@@ -20,11 +20,7 @@ enum SkyBoardAction {
         if swapping, let anchor, let swapDestination { return [anchor,swapDestination] }
         guard arranging || swapping else { return [] }
         guard let recipe else { return anchor.map { [$0] } ?? [] }
-        let cells = recipe.cells
-        switch recipe.shape {
-        case .square: return [cells[0],cells[1],cells[3],cells[2],cells[0]]
-        case .cross: return [cells[2],cells[0],cells[2],cells[1],cells[2],cells[3],cells[2],cells[4]]
-        }
+        return recipe.presentationPath
     }
 
     func setArranging(_ value: Bool) { cancel(); arranging = value }
@@ -76,5 +72,16 @@ struct SkyTechniqueRelay {
         depth = followups.contains { $0.starIDs.isSubset(of:spent) } ? depth + 1 : 1
         let previous = Set(before.recipes.map(\.id))
         followups = after.recipes.filter { !previous.contains($0.id) }
+    }
+}
+
+/// Shared drawing order for an already validated recipe; it never resolves a recipe.
+extension StarRecipe {
+    var presentationPath: [Cell] {
+        let cells = cells
+        switch shape {
+        case .square: return [cells[0], cells[1], cells[3], cells[2], cells[0]]
+        case .cross: return [cells[2], cells[0], cells[2], cells[1], cells[2], cells[3], cells[2], cells[4]]
+        }
     }
 }

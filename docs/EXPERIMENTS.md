@@ -25,6 +25,7 @@ Opal follow-up analysis keeps the adopted rules unchanged: the [source-bound stu
 
 | Work | Status | Production boundary / next decision |
 | --- | --- | --- |
+| Starlight collection celebrations | User-approved mock; current-main integration | [Design](design/STARLIGHT_CELEBRATIONS.md), [integration checks](evidence/starlight-celebrations-2026-10-18/INTEGRATION.md). Normal Debug/Release presentation for ordinary, traced, recipe and causal-relay clears; no scoring/save/cadence change. Physical feel and RC accessibility remain separate acceptance. |
 | Exact recipes, exchanges and deliberate relays | Adopted and delivered, October 18 | Normal survival Debug/Release, with unchanged First Light and current save schema. Core/hosted/native/layout/motion checks pass; [source-bound evidence](evidence/technique-current-main-2026-10-18/README.md). Observe free-move balance and uncoached recognition next. |
 | Dusk feeding and useful collapse | Adopted, October 18 | Normal Debug/Release target, explicit v7 migration, no new mode or permanent pilot flag. [Contract](design/DUSK_FEEDING.md). |
 | Responsive taps and independent presentations | Adopted; native checks verified | [Contract](design/INTERACTION_FEEDBACK.md) and [evidence](evidence/responsive-input-2026-10-17/README.md). Default production boundary, no pilot route; 110 Core, 179 hosted and 13 distinct native scenarios, Debug/Release passed. Rules, saves and cadence unchanged; physical latency/feel and RC VoiceOver remain open. |

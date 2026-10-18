@@ -89,6 +89,8 @@ enum StarfallTheme {
         static let status = Font.callout
         static let action = Font.headline
         static let gameTitle = Font.system(.headline, design: .rounded)
+        static let celebrationTitle = Font.system(.title2, design: .rounded).weight(.heavy)
+        static let celebrationAward = Font.system(.largeTitle, design: .rounded).weight(.heavy)
         static let gameDetail = Font.subheadline
         static let skyCaption = Font.system(.caption, design: .rounded).weight(.medium)
         static let skyHeading = Font.system(.headline, design: .serif)
