@@ -6,7 +6,7 @@ The working contract is [AGENTS.md](../AGENTS.md). This page explains verificati
 
 Use this index for current priorities. The dated records below retain their original source and acceptance limits; they are not an accumulating list of current requirements. [Seven disjoint reductions](TECH_DEBT_PLAN.md) and [their checks](evidence/debt-reduction-2026-10-18/README.md) explain the shipped scope.
 
-**Next action:** provision iOS 17 and complete actual VoiceOver before RC; verify canonical delivery when the phone reconnects. Development batches may continue through the canonical updater. No RC is accepted from the current evidence.
+**Next action:** provision iOS 17 and complete actual VoiceOver before RC; complete physical-play acceptance; canonical delivery is verified in the third-pass report. Development batches may continue through the canonical updater. No RC is accepted from the current evidence.
 
 | Priority / status | Current risk | Trigger and required closure |
 | --- | --- | --- |
@@ -14,7 +14,6 @@ Use this index for current priorities. The dated records below retain their orig
 | P2 — historical cause unknown | First Light outcome timeout and retained-Dusk mixed-order animation failures did not reproduce in the current checks. Phase/state diagnostics and the explicit ordering regression now pass. | Recurrence or next ending/presentation change. Preserve original bounds and failures; diagnose from the new state/phase evidence before changing synchronization. [Current reproduction](evidence/debt-reduction-2026-10-18/README.md#task-2--native-acceptance-diagnostics). |
 | P2 — comprehension/physical validation | Contact comfort near due showers, free-swap/recipe discovery, critical-mass rescue choices and actual decision time remain unverified by seed models. | Next physical play session. Observe ordinary full-motion rounds and unintended gesture/action rates; preserve single-deadline holds and snapshot validation. [Contact diagnosis](evidence/calibration-critical-mass-2026-10-18/CONTACT_DIAGNOSIS.md). |
 | P2 — visual recognition | Long default-text footer warnings require inner scroll; dense awards can overlap a survivor. Current captures do not settle recognition or distraction. | Next copy/overlay change or RC. Inspect complete warnings/actions and repeated ordinary/recipe/relay awards at default/maximum text on compact/large devices. [Footer](evidence/dialogue-only-hud-2026-10-18/README.md), [awards](evidence/calibration-critical-mass-2026-10-18/AWARDS.md). |
-| P2 — delivery evidence pending | The configured iPhone was unavailable during this debt work. Main merge does not prove installation. | Device reconnect. Use only `device-update.py`, verify actual installed identity/source and retained save/preferences. [Delivery contract](DEVELOPMENT_BUILDS.md#reject-stale-delivery-and-detect-external-replacements). |
 
 [Follow-up debt work](TECH_DEBT_FOLLOWUP.md) corrects tablet hit results at the redundant parent AX container, semantic save validation, RC failure evidence and contextual Help, alongside contact holds manufacturing shower time. Exact remaining time and nested interruption grace pass focused clock and native input checks; [evidence](evidence/debt-followup-2026-10-18/README.md).
 
@@ -379,3 +378,5 @@ Tablet lower-edge spacing is corrected by [scrollable ceremony clearance](eviden
 `FallingSkyInteractionTests.swift` is 1,159 lines after the bounded tablet matrix. The regression stays beside its original launch/navigation assertions for before/after parity; app/runtime files remain below the size trigger. At the next shared flow-fixture edit, extract the cohesive SkyFlowInteractionTests class into its own target-listed file, preserving all methods, source-counted native plans and phone/tablet selections. Do not mix that structural move with this geometry correction.
 
 [Default-game capture acceptance](evidence/debt-third-pass-2026-10-18/README.md#4-default-game-ci-capture-acceptance) now requires six Falling Sky frames alongside classic coverage, with explicit partial export/error status. The complete primary CI job still owns its existing full test-count gate; isolated export tests and selected native captures do not certify an entire run.
+
+The [canonical physical installation checkpoint](evidence/debt-third-pass-2026-10-18/README.md#canonical-physical-installation-checkpoint) verifies build `dev.93d68284ce` against current main's runtime. This closes installation-pending status; physical gameplay feel, actual VoiceOver and minimum-iOS acceptance remain separate gates.
