@@ -315,6 +315,10 @@ The critical-mass change leaves the 1,212-line `FallingSkyStoreTests.swift` inta
 
 [Gap-link evidence](evidence/calibration-timing-and-arrange-2026-10-18/GAP_LINK_CALIBRATION.md) reproduces the timing runner's stale adjacency assertion and corrects timing/Opal enumeration through a shared bounded walker using Core link legality. All three current consumers compile/hash the helper; the gravity wrapper also handles its optional absent example. Historical lab code remains source-bound. Trigger: any future connectivity, family, selection-bound or enumerator dependency change; rerun shared exact-set/blocked-midpoint/Opal checks, model replay and complete event reproducibility before comparing distributions. Human timing and physical gesture comfort remain separate acceptance work.
 
+## Critical-mass input windows — October 18, 2026
+
+[Current calibration](evidence/calibration-critical-mass-2026-10-18/README.md) reproduces a heavy implosion consuming essentially the full 1.7 s faster interval. Full-motion native seed 0 had no ready state after shower 10 and an overdue/very short window after 11. Existing `announcedCycleV1` is a bounded candidate with at least 0.5 s after both sampled collapses; it is not yet the fresh default. The integrated-artwork recheck confirms 0.768/0.653 s for the sampled candidate collapse windows. Trigger: next pacing batch. Adopt the existing longer cycle for fresh survival, preserve saved cadence/First Light, and rerun replay plus native windows. Do not derive new shower deadlines from animation callbacks or add hazards to compensate for idle survival. Physical feel remains open.
+
 
 ## Crystal Comet physical and dense-board review — October 18, 2026
 

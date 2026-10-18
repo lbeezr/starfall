@@ -21,6 +21,7 @@ p.add_argument('--baseline-cadence', choices=['openingV1', 'announcedCycleV1', '
 p.add_argument('--candidate-cadence', choices=['openingV1', 'announcedCycleV1', 'announcedCycleV2'], default='announcedCycleV1')
 p.add_argument('--reaction-seconds', type=float, default=0.45)
 p.add_argument('--trace-step-seconds', type=float, default=0.12)
+p.add_argument('--include-idle', action='store_true', help='Include a zero-action automatic-rain policy')
 p.add_argument('--include-setups', action='store_true', help='Include one visible-reward-improving exchange per shower')
 p.add_argument('--swap-seconds', type=float, default=0.5, help='Modeled contact duration for movement, dwell and release')
 p.add_argument('--input-model', choices=['columns', 'settled'], default='columns', help='Current per-action column admission, or historical wait-for-all-presentations policy')
@@ -42,7 +43,7 @@ inputs = [*sorted((root/'Sources/StarfallCore').glob('*.swift')), root/'App/Fall
           root/'App/FallingSkyPresentation.swift', root/'App/SkyTechniqueIntent.swift',
           root/'App/GameFeedback.swift', root/'App/StarlightCelebration.swift',
           root/'App/SkyDialogue.swift', root/'App/SkyDialogueLibrary.swift', root/'App/SkyCopy.swift', root/'App/DuskWarning.swift', root/'App/DialogueScripts/observatory-dialogue.json',
-          root/'App/FallingSkyScene.swift', root/'App/FallingSkyMotion.swift',
+          root/'App/FallingSkyScene.swift', root/'App/FallingSkyMotion.swift', root/'App/CriticalMassPresentation.swift',
           root/'Tests/StarfallCoreTests/TimingCycleFixture.swift', root/'tools/mechanics/CalibrationTrace.swift', *sorted((root/'tools/mechanics').glob('Pacing*.swift')), Path(__file__).resolve()]
 def hashes():
     return {str(f.relative_to(root)): hashlib.sha256(f.read_bytes()).hexdigest() for f in inputs}
@@ -52,14 +53,14 @@ with tempfile.TemporaryDirectory(prefix='starfall-pacing-') as d:
     core = sorted((root/'Sources/StarfallCore').glob('*.swift'))
     subprocess.run(['xcrun','swiftc','-O','-DDEBUG','-emit-library','-emit-module','-module-name','StarfallCore',*map(str,core),'-o',str(d/'libStarfallCore.dylib'),'-emit-module-path',str(d/'StarfallCore.swiftmodule')],check=True)
     sources = [f for f in inputs if f.suffix == '.swift' and f not in core
-               and f.name not in ('FallingSkyHUD.swift', 'SkyFlowState.swift', 'FallingSkyScene.swift', 'FallingSkyMotion.swift', 'GameFeedback.swift', 'StarlightCelebration.swift')]
+               and f.name not in ('FallingSkyHUD.swift', 'SkyFlowState.swift', 'FallingSkyScene.swift', 'FallingSkyMotion.swift', 'GameFeedback.swift', 'StarlightCelebration.swift', 'CriticalMassPresentation.swift')]
     # Extract each complete current value declaration, without depending on its
     # neighboring UI type's name. Missing/duplicate boundaries fail explicitly.
-    def declaration(source, marker):
+    def declaration(source, marker, closing='\n}\n'):
         if source.count(marker) != 1:
             raise RuntimeError('Expected one declaration: ' + marker)
         start = source.index(marker)
-        return source[start:source.index('\n}\n', start) + 3] + '\n'
+        return source[start:source.index(closing, start) + len(closing)] + '\n'
     hud = (root/'App/FallingSkyHUD.swift').read_text()
     flow = (root/'App/SkyFlowState.swift').read_text()
     feedback = (root/'App/GameFeedback.swift').read_text()
@@ -68,7 +69,7 @@ with tempfile.TemporaryDirectory(prefix='starfall-pacing-') as d:
     motion = (root/'App/FallingSkyMotion.swift').read_text()
     scene = (root/'App/FallingSkyScene.swift').read_text()
     durations = []
-    for name in ['arrivalStagger', 'flightDuration', 'landingDuration', 'clearDuration']:
+    for name in ['arrivalStagger', 'flightDuration', 'landingDuration', 'clearDuration', 'receiverResponseDelay']:
         matches = re.findall(r'static let ' + name + r': TimeInterval = ([0-9.]+)', motion)
         if len(matches) != 1:
             raise RuntimeError('Missing/ambiguous production motion constant: ' + name)
@@ -76,7 +77,12 @@ with tempfile.TemporaryDirectory(prefix='starfall-pacing-') as d:
     quiet = re.findall(r'run\(\.sequence\(\[\.wait\(forDuration: ([0-9.]+)\), \.run \{ \[weak self\] in self\?\.finishColumns', scene)
     if len(quiet) != 1:
         raise RuntimeError('Missing/ambiguous production quiet presentation duration')
-    durations.append('static let quiet: TimeInterval = ' + quiet[0])
+    pressure = (root/'App/CriticalMassPresentation.swift').read_text()
+    collapse = re.findall(r'static let collapseDuration: TimeInterval = ([0-9.]+)', pressure)
+    if len(collapse) != 1:
+        raise RuntimeError('Missing/ambiguous production swallow duration')
+    timeline = declaration(motion, '    struct GravityTimeline {', '\n    }\n')
+    warning = declaration(pressure, '    nonisolated static func warning(', '\n    }\n')
     values.write_text('import Foundation\nimport StarfallCore\n'
         + declaration(hud, 'struct SkyPhaseCue:')
         + declaration(hud, 'struct SkyCadenceCueCopy:')
@@ -84,35 +90,40 @@ with tempfile.TemporaryDirectory(prefix='starfall-pacing-') as d:
         + declaration(feedback, '@MainActor protocol FallingSkyFeedbackProviding:')
         + declaration(feedback, 'extension FallingSkyFeedbackProviding {')
         + declaration(celebration, 'struct StarlightCelebration:')
-        + 'enum PacingDuration {\n' + '\n'.join(durations) + '\n}\n')
+        + 'enum StarfallMotion {\n' + '\n'.join(durations) + '\n' + timeline + '}\n'
+        + 'enum CriticalMassPresentation {\n' + warning + '}\n'
+        + 'enum PacingDuration {\nstatic let quiet: TimeInterval = ' + quiet[0]
+        + '\nstatic let collapseDuration: TimeInterval = ' + collapse[0] + '\n}\n')
     sources.append(values)
     shutil.copyfile(root/'App/DialogueScripts/observatory-dialogue.json', d/'observatory-dialogue.json')
     subprocess.run(['xcrun','swiftc','-Onone','-g','-DDEBUG','-I',str(d),'-L',str(d),'-lStarfallCore',*map(str,sources),'-o',str(d/'pacing')],check=True)
     env = dict(os.environ, DYLD_LIBRARY_PATH=str(d))
     with (a.output/'runs.json').open('w') as out:
-        subprocess.run([str(d/'pacing'),str(a.seeds),str(a.seconds),a.baseline_cadence,a.candidate_cadence,str(a.reaction_seconds),str(a.trace_step_seconds),str(a.swap_seconds),a.input_model,str(a.seed_start)] + (['--include-setups'] if a.include_setups else []),stdout=out,env=env,check=True)
+        subprocess.run([str(d/'pacing'),str(a.seeds),str(a.seconds),a.baseline_cadence,a.candidate_cadence,str(a.reaction_seconds),str(a.trace_step_seconds),str(a.swap_seconds),a.input_model,str(a.seed_start)] + (['--include-setups'] if a.include_setups else []) + (['--include-idle'] if a.include_idle else []),stdout=out,env=env,check=True)
 if hashes() != before:
     raise RuntimeError('Inputs changed during measurement')
+runs = json.loads((a.output/'runs.json').read_text())
+assert runs and all(r['criticalMassRuleVersion'] == runs[0]['criticalMassRuleVersion'] for r in runs)
 metadata = {'head': subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip(),
             'dirty': subprocess.check_output(['git','status','--short'],cwd=root,text=True),
             'sha256':before,'platform':subprocess.check_output(['sw_vers'],text=True),
             'toolchain':subprocess.check_output(['xcrun','swiftc','--version'],text=True),
             'command':['python3', *sys.argv],
-            'personaVersion':'visible-reward-core-links-v5', 'timingModelVersion':'source-durations-session-v4',
+            'personaVersion':'visible-reward-core-links-v5', 'timingModelVersion':'source-gravity-collapse-v5',
             'inputModel':a.input_model,
             'seedStart':a.seed_start, 'seedCount':a.seeds,
             'reactionSeconds':a.reaction_seconds, 'traceStepSeconds':a.trace_step_seconds,
+            'includeIdle':a.include_idle, 'criticalMassRuleVersion':runs[0]['criticalMassRuleVersion'],
             'includeSetups':a.include_setups, 'swapContactSeconds':a.swap_seconds,
             'baselineCadence':a.baseline_cadence, 'candidateCadence':a.candidate_cadence,
             'evidence':'Real Debug Store and trace intent; injected virtual clock and model presenter. No native rendering, touch, VoiceOver or human evidence.'}
 (a.output/'source.json').write_text(json.dumps(metadata,indent=2)+'\n')
-runs = json.loads((a.output/'runs.json').read_text())
 def distribution(values):
     values = sorted(values)
     return {'min': values[0], 'median': statistics.median(values), 'p90': values[min(len(values)-1, int(.9*len(values)))], 'max': values[-1]} if values else None
 summary = {}
 for motion in ['full-motion-model','quiet-model']:
-    for persona in ['largest-clear','height-safety','trace-oriented'] + (['setup-first'] if a.include_setups else []):
+    for persona in ['largest-clear','height-safety','trace-oriented'] + (['setup-first'] if a.include_setups else []) + (['idle'] if a.include_idle else []):
         for cadence in [a.baseline_cadence,a.candidate_cadence]:
             group = [r for r in runs if (r['motion'],r['persona'],r['cadence']) == (motion,persona,cadence)]
             key = '/'.join([motion,persona,cadence])
@@ -135,6 +146,9 @@ for motion in ['full-motion-model','quiet-model']:
                 'heldFraction':distribution([r['heldSeconds']/r['activeSeconds'] for r in group]),
                 'score':distribution([r['finalScore'] for r in group]),
                 'showers':distribution([r['deliveredShowers'] for r in group]),
+                'lostStarlight':distribution([r['lostStarlight'] for r in group]),
+                'collapseSources':sum(r['collapseSources'] for r in group),
+                'swallowedCells':sum(r['swallowedCells'] for r in group),
                 'deferred':sum(r['deferred'] for r in group),
                 'lateness':distribution([v for r in group for v in r['lateness']]),
                 'deliveredIntervals':distribution([v for r in group for v in r['deliveredIntervals']]),

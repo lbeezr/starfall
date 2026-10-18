@@ -11,6 +11,9 @@ final class NativeInputWindowTests: XCTestCase {
         let generation: Int
         let arrivals: Int
         let gravityPhases: Int
+        let criticalMassRuleVersion: Int?
+        let cadenceID: String
+        let collapseSources: Int
         let density: String
         let followingCadence: String
         let observedReady: Bool
@@ -32,6 +35,31 @@ final class NativeInputWindowTests: XCTestCase {
         let windows = try await measure(initial: initial, through: 14, name: "native-input-windows-standard")
         XCTAssertEqual(windows.count, 5)
         XCTAssertEqual(windows.filter { $0.density == "heavy" }.count, 3)
+    }
+
+    @MainActor func testRealSceneCriticalMassInputWindowsAcrossAutomaticStorm() async throws {
+        var initial = FallingSky(seed: 0, generation: .current, criticalMass: true)
+        for _ in 0..<8 { XCTAssertNotNil(initial.letStarsFall()) }
+        XCTAssertTrue(initial.isValidSave && !initial.isOver)
+        let windows = try await measure(initial: initial, through: 14, name: "native-input-windows-critical-mass")
+        XCTAssertEqual(windows.count, 5)
+        XCTAssertTrue(windows.allSatisfy { $0.criticalMassRuleVersion == CriticalMassRule.version })
+        XCTAssertTrue(windows.contains { $0.collapseSources > 0 && $0.gravityPhases > 0 })
+        XCTAssertEqual(windows.filter { $0.density == "heavy" }.count, 3)
+    }
+
+    @MainActor func testRealSceneCriticalMassInputWindowsWithExistingLongerCycle() async throws {
+        var initial = FallingSky(seed: 0, generation: .current, cadence: .announcedCycleV1, criticalMass: true)
+        for _ in 0..<8 { XCTAssertNotNil(initial.letStarsFall()) }
+        XCTAssertTrue(initial.isValidSave && !initial.isOver)
+        let windows = try await measure(initial: initial, through: 14, name: "native-input-windows-critical-longer-cycle")
+        XCTAssertEqual(windows.count, 5)
+        XCTAssertTrue(windows.allSatisfy { $0.cadenceID == SkyCadenceID.announcedCycleV1.rawValue })
+        XCTAssertTrue(windows.contains { $0.collapseSources > 0 })
+        // The chosen candidate must offer an actual decision window after every sampled collapse.
+        XCTAssertTrue(windows.filter { $0.collapseSources > 0 }.allSatisfy {
+            $0.observedReady && $0.readyToScheduledDeadlineSeconds >= 0.5
+        })
     }
 
     @MainActor func testRealSceneInputWindowsAfterRetiringHistoricalOrbit() async throws {
@@ -227,7 +255,8 @@ final class NativeInputWindowTests: XCTestCase {
                 XCTAssertLessThanOrEqual(ready.snapshot.time, following.snapshot.time)
             }
             windows.append(.init(shower: shower, seed: initial.seed, generation: initial.generation.rawValue, arrivals: turn.arrivals.count, gravityPhases: turn.gravityPhases.count,
-                density: initial.generation.phase(for: shower)?.isStorm == true ? "heavy" : "lighter",
+                criticalMassRuleVersion: initial.hasCriticalMass ? CriticalMassRule.version : nil, cadenceID: initial.cadenceID.rawValue,
+                collapseSources: turn.stellarCollapses.count, density: initial.generation.phase(for: shower)?.isStorm == true ? "heavy" : "lighter",
                 followingCadence: String(describing: began.snapshot.cadence.phase), observedReady: ready != nil,
                 presentationSeconds: ready.map { $0.snapshot.time - began.snapshot.time },
                 readyToScheduledDeadlineSeconds: ready.map { max(0, scheduled - $0.snapshot.time) } ?? 0,

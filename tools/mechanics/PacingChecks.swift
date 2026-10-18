@@ -4,6 +4,33 @@ import StarfallCore
 extension PacingMeasure {
     @MainActor static func checks() {
         checkCalibrationTraces()
+        // Current native fixture: four overlapping sources, one arrival after swallow/settling.
+        var pressure = CriticalMassFixture.game()
+        let beforePressure = pressure
+        let pressureTurn = pressure.letStarsFall()!
+        precondition(pressureTurn.stellarCollapses.count == 4 && pressureTurn.arrivals.count == 1)
+        let removed = pressureTurn.stellarCollapses.reduce(into: Set<Cell>()) { $0.formUnion($1.consumed); $0.insert($1.center) }
+        precondition(removed.count < pressureTurn.stellarCollapses.reduce(0) { $0 + $1.consumed.count + 1 })
+        // Independent fixture budget: 0.46 swallow + 0.40 phases, overlapping flight, then landing.
+        precondition(abs(PacingPresenter.duration(of: pressureTurn, quiet: false) - 1.34) < 0.000001)
+        precondition(abs(PacingPresenter.duration(of: pressureTurn, quiet: true) - 0.15) < 0.000001)
+        let pressureClock = PacingClock()
+        // A fresh clock/display pair below verifies actual completion ownership too.
+        let ownedDisplay = PacingPresenter(pressureClock, quiet: false)
+        var completions = 0
+        ownedDisplay.animate(pressureTurn, from: beforePressure, to: pressure) { completions += 1 }
+        precondition(ownedDisplay.collapseSources == 4 && ownedDisplay.swallowedCells == removed.count)
+        precondition(completions == 0 && abs(ownedDisplay.finishAt! - 1.34) < 0.000001)
+        pressureClock.now = ownedDisplay.finishAt!; ownedDisplay.finish(); ownedDisplay.finish()
+        precondition(completions == 1 && ownedDisplay.pendingCount == 0)
+        var ordinary = ConstellationFixture.singleGap.game()
+        let ordinaryClear = ordinary.clear(Cell(0,0))!
+        precondition(abs(PacingPresenter.duration(of: ordinaryClear, quiet: false) - 0.56) < 0.000001)
+        var gravity = GravityFixture.opportunity.game()
+        let gravityClear = gravity.clear(Cell(0,3))!
+        precondition(gravityClear.arrivals.isEmpty && !gravityClear.gravityPhases.isEmpty)
+        precondition(PacingPresenter.duration(of: gravityClear, quiet: false) ==
+                     StarfallMotion.GravityTimeline(phases: gravityClear.gravityPhases.map(\.event), arrivals: 0).phaseEnd)
         // A recorded accepted-action script, replayed independently under both timing lookups.
         // Cadence lookup must never affect rule state or RNG, even after clear-induced relief.
         for seed in UInt64(0)..<16 {

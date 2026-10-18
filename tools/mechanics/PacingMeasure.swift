@@ -85,6 +85,7 @@ private struct Event: Codable {
 private struct Run: Codable {
     let seed: UInt64, cadence: String, persona: String, motion: String
     let inputModel: String
+    let criticalMassRuleVersion: Int
     var activeSeconds = 0.0, presentationSeconds = 0.0, noOpportunitySeconds = 0.0
     var blockedOpportunitySeconds = 0.0
     var startsDuringPresentation = 0, maximumPendingPresentations = 0
@@ -92,6 +93,7 @@ private struct Run: Codable {
     var firstAcceptedClear: Double?
     var taps = 0, traces = 0, traceStarts = 0, deadlineCancelledTraces = 0, otherCancelledTraces = 0
     var exchanges = 0, exchangeStarts = 0, exchangeRejections = 0, heldSeconds = 0.0
+    var lostStarlight = 0, collapseSources = 0, swallowedCells = 0
     var finalScore = 0, deliveredShowers = 0
     var parityCommits = 0
     var deferred = 0, maxHeight = 0, darkBlockedCells = 0, growth = 0, overflow = false
@@ -108,7 +110,9 @@ private struct Run: Codable {
         let defaults = UserDefaults(suiteName: suite)!
         defer { defaults.removePersistentDomain(forName: suite) }
         let store = FallingSkyStore(defaults: defaults, arguments: ["--starfalls-reset", "--starfalls-seed=\(seed)"], presenter: display, clock: clock)
-        var result = Run(seed: seed, cadence: cadence.rawValue, persona: persona, motion: quiet ? "quiet-model" : "full-motion-model", inputModel: inputModel)
+        precondition(store.game == FallingSky(seed: seed, generation: .current, criticalMass: true),
+                     "Calibration must explicitly identify the current fresh survival rules")
+        var result = Run(seed: seed, cadence: cadence.rawValue, persona: persona, motion: quiet ? "quiet-model" : "full-motion-model", inputModel: inputModel, criticalMassRuleVersion: CriticalMassRule.version)
         func mayDecide() -> Bool { inputModel == "settled" ? store.canClear : store.canReceiveInput }
         func available(_ choice: Choice) -> Bool {
             guard mayDecide() else { return false }
@@ -177,7 +181,7 @@ private struct Run: Codable {
         // Event count and time bounds prevent accidental unbounded offline execution.
         for _ in 0..<20000 {
             if clock.now >= limit || store.game.isOver { break }
-            if mayDecide() && gesture == nil && setup == nil && decisionAt == nil { decisionAt = clock.now + reaction }
+            if persona != "idle" && mayDecide() && gesture == nil && setup == nil && decisionAt == nil { decisionAt = clock.now + reaction }
             if !mayDecide() { decisionAt = nil }
             let next = min(limit, clock.deadline ?? .infinity, display.finishAt ?? .infinity, decisionAt ?? .infinity, gestureAt ?? .infinity, setupAt ?? .infinity)
             precondition(next >= clock.now && next.isFinite)
@@ -266,6 +270,9 @@ private struct Run: Codable {
         precondition(result.exchanges <= store.game.turns && result.exchanges <= result.exchangeStarts)
         if gesture != nil { record("gestureCensoredAtHorizon") }
         if setup != nil { record("exchangeCensoredAtHorizon") }
+        if persona == "idle" { precondition(result.taps == 0 && result.traces == 0 && result.exchanges == 0 && result.traceStarts == 0) }
+        result.lostStarlight = store.game.lostStarlight
+        result.collapseSources = display.collapseSources; result.swallowedCells = display.swallowedCells
         result.growth = display.growthEvents
         result.maximumPendingPresentations = display.maximumPendingCount
         result.overflow = store.game.blockedColumn != nil
@@ -279,6 +286,7 @@ private struct Run: Codable {
         let candidate = SkyCadenceID(rawValue: CommandLine.arguments[4])!
         let reaction = Double(CommandLine.arguments[5])!, traceStep = Double(CommandLine.arguments[6])!
         let includeSetups = CommandLine.arguments.contains("--include-setups")
+        let includeIdle = CommandLine.arguments.contains("--include-idle")
         let swapSeconds = Double(CommandLine.arguments[7])!
         let inputModel = CommandLine.arguments[8]
         let seedStart = UInt64(CommandLine.arguments[9])!
@@ -300,7 +308,7 @@ private struct Run: Codable {
         let improved = choose(moved, persona: "largest-clear")!
         precondition(moved.reward(of: improved.trace ? Set(improved.path) : moved.group(at: improved.path[0])) > original)
         var runs: [Run] = []
-        let personas = ["largest-clear","height-safety","trace-oriented"] + (includeSetups ? ["setup-first"] : [])
+        let personas = ["largest-clear","height-safety","trace-oriented"] + (includeSetups ? ["setup-first"] : []) + (includeIdle ? ["idle"] : [])
         for seed in 0..<seeds { for cadence in [baseline,candidate] { for persona in personas { for quiet in [false,true] {
             runs.append(run(seed: seedStart + UInt64(seed),cadence: cadence,persona: persona,quiet: quiet,limit: seconds,reaction: reaction,traceStep: traceStep,swapSeconds: swapSeconds,inputModel: inputModel))
         }}}}
