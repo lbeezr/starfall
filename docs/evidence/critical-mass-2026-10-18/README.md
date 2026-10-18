@@ -22,7 +22,7 @@ Core, saves, simulator interaction and sampled normal/quiet presentation pass de
 
 ## Tested source and commands
 
-Tests and captures used **clean local `c9c8d2e58ee9aab3e292db49c9ed1de3d65dc8dc`**. Published `3b76e22a25270735acf0e0e4fb882e26df8e2098` has the identical Git tree `e7305ee20be25e22171b6ab2ff753574d399a9f1`; `git diff --exit-code` confirms equality. Subsequent evidence/index updates change documentation/captures only. [Verification manifest](verification.json) records source/resource hashes, captures and the ignored recording hash.
+Tests and captures used **clean local `c9c8d2e58ee9aab3e292db49c9ed1de3d65dc8dc`**. Published `3b76e22a25270735acf0e0e4fb882e26df8e2098` has the identical Git tree `e7305ee20be25e22171b6ab2ff753574d399a9f1`; `git diff --exit-code` confirms equality. Subsequent evidence/index updates change documentation/captures only. Main `9b0f9d3` was then reconciled: it changes UI tests and documentation, with no runtime source, resources, package or Xcode membership difference from this tested build. [Verification manifest](verification.json) records source/resource hashes, captures and the ignored recording hash.
 
 Environment: Xcode 27.1 (`27A9275`), Apple Swift 6.4; Debug/Release arm64 Simulator builds. Native tests ran on iPhone 17e / iOS 27.0, UDID `3447731D-D3C6-4DBC-A823-52E1C84C2A5B` (named Starfall Harvest Feedback QA). Normal capture uses default text and calm effects off; the large-text capture uses accessibility XXXL and calm effects on. The dedicated Reduce Motion test changes/restores the actual system preference.
 

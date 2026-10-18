@@ -1,0 +1,43 @@
+{
+  "base": "1ed62906973ba93a8e03c41251a9b139c1c10b0b",
+  "testedHead": "18e2e2ddf966469abe3553568ba6dab4c77f249c",
+  "dirtyBuildInputs": [
+    "UITests/FallingSkyInteractionTests.swift",
+    "UITests/ObservatoryInteractionTests.swift"
+  ],
+  "sha256": {
+    "UITests/FallingSkyInteractionTests.swift": "f170de22aa5a9026bba59980be87c7327446d0c50534c96be5f4dd2160554ace",
+    "UITests/ObservatoryInteractionTests.swift": "10b1bab31e16a4e08630c5f1df6d585868c3034ed05bd2e3642a7dcb109a49f8",
+    "App/SkyPreferences.swift": "e0e9cfcfea5ed42c1b6d6189889bc0ed880f09b0adaece3cb2d3502dee5fd479",
+    "App/SkyCopy.swift": "4450dc1db942804b0738e7ad6ca6a147882bcedc6e028f8079fddd6fff8c834a"
+  },
+  "retained": [
+    {
+      "step": 27,
+      "attachment": "CB77422C-4DBA-432C-BF9D-03BE36FA16ED.png",
+      "path": "docs/evidence/calibration-timing-and-arrange-2026-10-18/dev-1ed6290__help-dusk__iphone-16-pro-max__largest-text.jpg",
+      "sha256": "8433e3ba9a2c38f269a588871cdb6dc40b9e878ff425415038f7338083acb380"
+    },
+    {
+      "step": 35,
+      "attachment": "A487E3B8-2C64-43BB-A376-87AB620DE450.png",
+      "path": "docs/evidence/calibration-timing-and-arrange-2026-10-18/dev-1ed6290__help-swaps__iphone-16-pro-max__largest-text.jpg",
+      "sha256": "0799a15b33a8c4743419c3b8de17b0b51517c49e281b40a94ebb28b737449c4b"
+    },
+    {
+      "step": 43,
+      "attachment": "6A62F0B4-4B4B-4463-8155-2F1751F98DA7.png",
+      "path": "docs/evidence/calibration-timing-and-arrange-2026-10-18/dev-1ed6290__help-first-light__iphone-16-pro-max__largest-text.jpg",
+      "sha256": "58500e0f693eff33db00896c5598b5a6c3e3bd8c5ef9e2209f470d2e96c61183"
+    }
+  ],
+  "raw": "artifacts/calibration-native/current-largest-help-and-motion.xcresult",
+  "helpCapturesInspected": 44,
+  "motionVideo": "artifacts/calibration-native/current-help-system-motion.mp4",
+  "motionSamplesInspected": {
+    "start": 25,
+    "end": 29,
+    "requestedStep": 0.1,
+    "count": 40
+  }
+}
