@@ -33,6 +33,8 @@ final class TraceInputPolishTests: XCTestCase {
             XCTAssertFalse(cells.contains(Cell(5,5)))
             let cell = Cell(2,2), center = mapping.viewPoint(cell)
             let radius = ConstellationTraceHitTesting.radius(cell, mapping: mapping)
+            XCTAssertEqual(ConstellationTraceHitTesting.start(at: center, mapping: mapping, game: game), cell)
+            XCTAssertNil(ConstellationTraceHitTesting.start(at: CGPoint(x: center.x+radius*1.02, y: center.y), mapping: mapping, game: game))
             let left = CGPoint(x: center.x-radius*1.5, y: center.y+radius*0.98)
             let right = CGPoint(x: center.x+radius*1.5, y: left.y)
             XCTAssertTrue(ConstellationTraceHitTesting.cells(from: left, to: right, mapping: mapping, game: game).contains(cell))
