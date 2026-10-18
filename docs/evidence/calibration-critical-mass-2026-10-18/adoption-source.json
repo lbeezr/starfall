@@ -63,7 +63,21 @@
         "score": 38,
         "showers": 16
       }
-    ]
+    ],
+    "additionalBackground": {
+      "passed": true,
+      "result": "artifacts/calibration-native/longer-cycle-background.xcresult",
+      "tests": [
+        {
+          "name": "SkyFlowInteractionTests/testWelcomeEntryBackgroundAndAnotherSky",
+          "seconds": 58.871
+        },
+        {
+          "name": "SkyTechniqueInteractionTests/testSettingsAndBackgroundLeaveGesturesReadyWithoutRetoggling",
+          "seconds": 19.747
+        }
+      ]
+    }
   },
   "freshInputWindows": [
     {
