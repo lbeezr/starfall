@@ -160,6 +160,12 @@ public struct FallingSky: Codable, Equatable, Sendable {
         incoming = nextShower()
     }
 
+    /// Current normal-app entry point. Explicit initializers still reconstruct retained versions.
+    public static func freshSurvival(seed: UInt64, balance: StarfallBalance = StarfallBalance()) -> FallingSky {
+        FallingSky(seed: seed, balance: balance, generation: .current,
+                   cadence: .announcedCycleV1, criticalMass: true)
+    }
+
     public init(challenge: StarfallChallenge) {
         self.init(seed: challenge.seed, balance: challenge.balance, openingCascade: false, generation: .legacy)
         self.challenge = challenge

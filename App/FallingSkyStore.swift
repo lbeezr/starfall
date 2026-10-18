@@ -310,7 +310,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         } else {
             let argument = arguments.first { $0.hasPrefix("--starfalls-seed=") }
             let seed = argument.flatMap { UInt64($0.dropFirst("--starfalls-seed=".count)) } ?? 5
-            game = FallingSky(seed: seed, generation: .current, criticalMass: true)
+            game = FallingSky.freshSurvival(seed: seed)
         }
         #if DEBUG
         if arguments.contains("--starfalls-reset"), arguments.contains("--observatory-review") {
@@ -682,7 +682,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         } else {
             // First Light's fixed balance belongs to that challenge, not the next normal sky.
             let balance = game.challenge == nil ? game.balance : StarfallBalance()
-            game = FallingSky(seed: UInt64.random(in: 0...UInt64.max), balance: balance, generation: .current, criticalMass: true)
+            game = FallingSky.freshSurvival(seed: UInt64.random(in: 0...UInt64.max), balance: balance)
         }
         refreshCadence()
         remaining = showerInterval

@@ -48,15 +48,15 @@ final class NativeInputWindowTests: XCTestCase {
         XCTAssertEqual(windows.filter { $0.density == "heavy" }.count, 3)
     }
 
-    @MainActor func testRealSceneCriticalMassInputWindowsWithExistingLongerCycle() async throws {
-        var initial = FallingSky(seed: 0, generation: .current, cadence: .announcedCycleV1, criticalMass: true)
+    @MainActor func testRealSceneFreshSurvivalInputWindowsAcrossAutomaticStorm() async throws {
+        var initial = FallingSky.freshSurvival(seed: 0)
         for _ in 0..<8 { XCTAssertNotNil(initial.letStarsFall()) }
         XCTAssertTrue(initial.isValidSave && !initial.isOver)
-        let windows = try await measure(initial: initial, through: 14, name: "native-input-windows-critical-longer-cycle")
+        let windows = try await measure(initial: initial, through: 14, name: "native-input-windows-fresh-survival")
         XCTAssertEqual(windows.count, 5)
         XCTAssertTrue(windows.allSatisfy { $0.cadenceID == SkyCadenceID.announcedCycleV1.rawValue })
         XCTAssertTrue(windows.contains { $0.collapseSources > 0 })
-        // The chosen candidate must offer an actual decision window after every sampled collapse.
+        // The normal fresh game must offer an actual input window after every sampled collapse.
         XCTAssertTrue(windows.filter { $0.collapseSources > 0 }.allSatisfy {
             $0.observedReady && $0.readyToScheduledDeadlineSeconds >= 0.5
         })

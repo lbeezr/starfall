@@ -58,10 +58,32 @@ final class CriticalMassProductionTests: XCTestCase {
         defer { defaults.removePersistentDomain(forName: suite) }
         let store = FallingSkyStore(defaults: defaults, arguments: ["--starfalls-reset"], presenter: FallingSkyRecorder())
         XCTAssertTrue(store.game.hasCriticalMass)
+        XCTAssertEqual(store.game.cadenceID, .announcedCycleV1)
         XCTAssertEqual(store.game.adoptingFeedingDusk(), store.game)
         store.startFirstLight(); XCTAssertFalse(store.game.hasCriticalMass)
         store.restart(sameSky: true); XCTAssertFalse(store.game.hasCriticalMass)
         store.restart(sameSky: false); XCTAssertTrue(store.game.hasCriticalMass)
+        XCTAssertEqual(store.game.cadenceID, .announcedCycleV1)
+    }
+
+    @MainActor func testRetainedCriticalCadenceRestoresReplaysAndOnlyFreshSwitches() throws {
+        for cadence: SkyCadenceID in [.announcedCycleV1, .announcedCycleV2] {
+            let suite = "CriticalCadence.\(UUID())", defaults = UserDefaults(suiteName: suite)!
+            defer { defaults.removePersistentDomain(forName: suite) }
+            let initial = FallingSky(seed: 64, generation: .current, cadence: cadence, criticalMass: true)
+            var saved = initial
+            for _ in 0..<8 { XCTAssertNotNil(saved.letStarsFall()) }
+            defaults.set(try SkySaveArchive.encode(saved), forKey: SkySaveArchive.key)
+            let store = FallingSkyStore(defaults: defaults, arguments: [], presenter: FallingSkyRecorder())
+            XCTAssertEqual(store.game, saved)
+            XCTAssertEqual(store.game.cadenceID, cadence)
+            store.restart(sameSky: true)
+            XCTAssertEqual(store.game, initial)
+            XCTAssertEqual(store.game.cadenceID, cadence)
+            store.restart(sameSky: false)
+            XCTAssertEqual(store.game.cadenceID, .announcedCycleV1)
+            XCTAssertTrue(store.game.hasCriticalMass)
+        }
     }
 
     @MainActor func testPurpleKeepsSilhouetteAndStaticNonColorMarkerInQuietMotion() throws {

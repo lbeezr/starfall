@@ -17,7 +17,7 @@ p = argparse.ArgumentParser(description=__doc__)
 p.add_argument('--seeds', type=int, default=16)
 p.add_argument('--seed-start', type=int, default=0, help='First seed; use a separate range for confirmation')
 p.add_argument('--seconds', type=float, default=120)
-p.add_argument('--baseline-cadence', choices=['openingV1', 'announcedCycleV1', 'announcedCycleV2'], default='openingV1')
+p.add_argument('--baseline-cadence', choices=['openingV1', 'announcedCycleV1', 'announcedCycleV2'], default='announcedCycleV2')
 p.add_argument('--candidate-cadence', choices=['openingV1', 'announcedCycleV1', 'announcedCycleV2'], default='announcedCycleV1')
 p.add_argument('--reaction-seconds', type=float, default=0.45)
 p.add_argument('--trace-step-seconds', type=float, default=0.12)
@@ -114,6 +114,7 @@ metadata = {'head': subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,
             'seedStart':a.seed_start, 'seedCount':a.seeds,
             'reactionSeconds':a.reaction_seconds, 'traceStepSeconds':a.trace_step_seconds,
             'includeIdle':a.include_idle, 'criticalMassRuleVersion':runs[0]['criticalMassRuleVersion'],
+            'freshSavedCadence':runs[0]['savedCadence'],
             'includeSetups':a.include_setups, 'swapContactSeconds':a.swap_seconds,
             'baselineCadence':a.baseline_cadence, 'candidateCadence':a.candidate_cadence,
             'evidence':'Real Debug Store and trace intent; injected virtual clock and model presenter. No native rendering, touch, VoiceOver or human evidence.'}
