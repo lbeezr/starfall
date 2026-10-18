@@ -46,6 +46,15 @@ struct StarlightAnchors: PreferenceKey {
     }
 }
 
+extension View {
+    /// Adds one role without replacing anchors registered by descendants (score inside header).
+    func starlightAnchor(_ role: StarlightAnchor) -> some View {
+        transformAnchorPreference(key: StarlightAnchors.self, value: .bounds) { anchors, anchor in
+            anchors[role] = anchor
+        }
+    }
+}
+
 /// Only this small subtree ticks. Board projection and the real header anchor share
 /// the overlay's coordinate space; no screen-size assumptions or per-frame state writes.
 struct StarlightCelebrationOverlay: View {

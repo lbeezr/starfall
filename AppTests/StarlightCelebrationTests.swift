@@ -1,8 +1,40 @@
 import XCTest
+import SwiftUI
+import UIKit
 import StarfallCore
 @testable import Starfall
 
 final class StarlightCelebrationTests: XCTestCase {
+    @MainActor func testHeaderRegistrationPreservesNestedScoreAndSiblingBoard() async throws {
+        let registered = expectation(description: "All celebration anchors reach the overlay")
+        var didRegister = false
+        var observed: Set<StarlightAnchor> = []
+        let probe = VStack {
+            Text("12").starlightAnchor(.score)
+        }
+        .starlightAnchor(.header)
+        .background { Color.clear.starlightAnchor(.board) }
+        .overlayPreferenceValue(StarlightAnchors.self) { anchors in
+            Color.clear
+                .onAppear { inspect(Set(anchors.keys)) }
+                .onChange(of: Set(anchors.keys)) { _, roles in inspect(roles) }
+        }
+        func inspect(_ roles: Set<StarlightAnchor>) {
+            observed = roles
+            if roles == [.score, .header, .board], !didRegister {
+                didRegister = true; registered.fulfill()
+            }
+        }
+        let scene = try XCTUnwrap(UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.first)
+        let previous = scene.windows.first(where: \.isKeyWindow)
+        let window = UIWindow(windowScene: scene)
+        window.rootViewController = UIHostingController(rootView: probe)
+        window.makeKeyAndVisible()
+        defer { window.isHidden = true; window.rootViewController = nil; previous?.makeKey() }
+        await fulfillment(of: [registered], timeout: 3)
+        XCTAssertEqual(observed, [.score, .header, .board])
+    }
+
     @MainActor private func makeStore(_ game: FallingSky) throws -> (FallingSkyStore, FallingSkyRecorder, ManualRainClock, UserDefaults) {
         let suite = "Starfall.Celebrations.\(UUID())", defaults = UserDefaults(suiteName: suite)!
         addTeardownBlock { defaults.removePersistentDomain(forName: suite) }

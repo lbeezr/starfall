@@ -67,6 +67,6 @@ Drawing starts on the full native star target and follows six-point movement. Th
 
 ## Starlight celebrations
 
-`StarlightCelebration` presents an already committed award, with actual scoring-cell anchors and a validated trace/recipe outline. The store owns its bounded replacement/expiry/cancellation; its overlay uses real board/header anchors. Selection and release share recipe drawing order. Ready-column input, current saves, Dusk rewards and dialogue remain independent. See [current-main verification](../docs/evidence/starlight-celebrations-2026-10-18/INTEGRATION.md).
+`StarlightCelebration` presents an already committed award, with actual scoring-cell anchors and a validated trace/recipe outline. The store owns its bounded replacement/expiry/cancellation; its overlay uses real board/header/score anchors through a shared registration that preserves nested preferences. Selection and release share recipe drawing order. Ready-column input, current saves, Dusk rewards and dialogue remain independent. See [current-main verification](../docs/evidence/starlight-celebrations-2026-10-18/INTEGRATION.md).
 
 `SkyInteractionSession` owns logical trace/swap selection and the held store ticket. Its terminal transition clears local state before releasing exactly once; stale terminal tickets cannot end a replacement contact. The recognizer retains physical-contact ownership, and the store retains clock/generation ownership.

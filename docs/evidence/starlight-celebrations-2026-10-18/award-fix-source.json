@@ -1,0 +1,28 @@
+{
+  "base": "e4c8f2b3e03bfb8a76dacf0fee603020f3b84d16",
+  "checkoutBeforeFix": "5179ce6c530a74488081ff0b0f56936bd1134560",
+  "dirtyRuntimeAndTests": [
+    "App/FallingSkyView.swift",
+    "App/StarlightCelebration.swift",
+    "AppTests/StarlightCelebrationTests.swift"
+  ],
+  "sha256": {
+    "App/FallingSkyView.swift": "6d918b0c7775a796794eee974067510490b073e4e9f761ffd38cb6cfa1eb66e4",
+    "App/StarlightCelebration.swift": "187199eadf1a832a93fd6b65f63099ade8b7cf2cb17c6ce74f1d3f9cfd0ecae3",
+    "AppTests/StarlightCelebrationTests.swift": "f995d262349b531474cb5272996bed68b80d04266d7f97171f8462d9b62ff4a5"
+  },
+  "rawArtifacts": "artifacts/celebration-anchor-fix",
+  "nativeFrameworkProbe": {
+    "platform": "macOS 27.0.1, SwiftUI/AppKit",
+    "beforeRoles": [
+      "board",
+      "header"
+    ],
+    "afterRoles": [
+      "board",
+      "header",
+      "score"
+    ]
+  },
+  "iOSAcceptance": "Not verified; test runners exited before establishing connections."
+}
