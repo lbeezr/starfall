@@ -92,7 +92,9 @@ enum SkyFlowAction: Equatable { case start, firstLight, begin, resume, replay, a
         cast.frame(height: SkyCastFormation.height(terminal: terminal)).clipped()
     }
     private var revealedActions: some View {
-        actions
+        SkyDialogueBubble(line: dialogueLine, messageIdentifier: terminal ? "experiment.score" : "sky.subtitle") {
+            actions
+        }
             .opacity(controls ? 1 : 0)
             .offset(y: controls || quiet ? 0 : 24)
             .allowsHitTesting(controls && active)
@@ -113,23 +115,7 @@ enum SkyFlowAction: Equatable { case start, firstLight, begin, resume, replay, a
                 .accessibilityIdentifier(terminal ? "experiment.outcome" : "sky.title")
                 .accessibilityValue(terminal ? "\(result?.scoreLabel ?? ""). \(screen == .full ? result?.reason ?? "" : "")" : "")
                 .accessibilityFocused($headingFocused)
-            Text(message).font(StarfallTheme.Typography.supporting)
-                .accessibilityIdentifier(terminal ? "experiment.score" : "sky.subtitle")
-                .accessibilityLabel(result?.scoreLabel ?? message)
-                .foregroundStyle(StarfallTheme.Colors.textPrimary)
-                .fixedSize(horizontal: false, vertical: true)
-            if screen == .welcome, let summary = welcome.summary {
-                Text(summary).font(StarfallTheme.Typography.supporting)
-                    .foregroundStyle(StarfallTheme.Colors.textPrimary)
-                    .fixedSize(horizontal: false, vertical: true)
-                    .accessibilityIdentifier("sky.savedSummary")
-            }
-            if screen == .full, let result {
-                Text(result.reason).font(StarfallTheme.Typography.supporting)
-                    .foregroundStyle(StarfallTheme.Colors.textPrimary)
-                    .fixedSize(horizontal: false, vertical: true)
-                    .accessibilityIdentifier("sky.result.reason")
-            }
+
         }
         .multilineTextAlignment(.center)
         .shadow(color: StarfallTheme.Colors.skyTop, radius: 6)
@@ -159,12 +145,15 @@ enum SkyFlowAction: Equatable { case start, firstLight, begin, resume, replay, a
         case .playing: ""
         }
     }
-    private var message: String {
+    private var dialogueLine: SkyDialogueLine {
         switch screen {
-        case .welcome: "A little wonder. A little room to breathe."
-        case .entry: challenge ? "Collect 18 starlight before a column overflows." : "Clear connected matching stars worth 3 or more starlight."
-        case .won, .full: result?.scoreLabel ?? "\(welcome.score) starlight"
-        case .playing: ""
+        case .welcome:
+            SkyDialogueLibrary.line("ceremony.welcome", values: ["summary": welcome.summary ?? ""])
+        case .entry:
+            SkyDialogueLibrary.line(challenge ? "first-light.entry" : "observatory.entry")
+        case .won, .full:
+            SkyDialogueLibrary.line("ceremony.result", values: ["score": result?.scoreLabel ?? "\(welcome.score) starlight", "reason": result?.reason ?? ""])
+        case .playing: SkyDialogueLibrary.line("guide.opening")
         }
     }
 
@@ -215,8 +204,6 @@ enum SkyFlowAction: Equatable { case start, firstLight, begin, resume, replay, a
                 .buttonStyle(StarfallButtonStyle(role: .quiet, expands: true))
                 .accessibilityIdentifier("sky.preferences").accessibilityFocused($preferencesFocused)
             case .entry:
-                Text(challenge ? "One small challenge" : "Automatic showers · pause anytime")
-                    .font(StarfallTheme.Typography.title).foregroundStyle(StarfallTheme.Ceremony.gold)
                 flowButton("Begin", action: .begin, id: "sky.begin", primary: true)
                 flowButton("Back to Observatory", action: .home, id: "sky.home")
             case .won, .full:
@@ -231,13 +218,7 @@ enum SkyFlowAction: Equatable { case start, firstLight, begin, resume, replay, a
             case .playing: EmptyView()
             }
         }
-        .padding(terminal || screen == .entry ? StarfallTheme.Spacing.large : 0)
-        .background {
-            if terminal || screen == .entry {
-                RoundedRectangle(cornerRadius: StarfallTheme.Radius.panel)
-                    .fill(StarfallTheme.Colors.skyTop.opacity(0.97))
-            }
-        }
+
     }
     private func flowButton(_ label: String, action choice: SkyFlowAction, id: String, primary: Bool = false) -> some View {
         Button(label) { action(choice) }
@@ -295,6 +276,9 @@ extension FallingSkyStore {
     @MainActor static func forSkyFlowApp() -> FallingSkyStore {
         #if DEBUG
         let arguments = ProcessInfo.processInfo.arguments
+        if arguments.contains("--dialogue-review") {
+            return FallingSkyStore(defaults: UserDefaults(suiteName: "Starfall.DialogueReview")!, arguments: arguments)
+        }
         if arguments.contains("--sky-flow-review") {
             return FallingSkyStore(defaults: UserDefaults(suiteName: "Starfall.SkyFlowReview")!, arguments: arguments)
         }

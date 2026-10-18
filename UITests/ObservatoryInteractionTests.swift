@@ -21,7 +21,7 @@ final class ObservatoryInteractionTests: XCTestCase {
         let menu = app.buttons["experiment.settings"]
         XCTAssertGreaterThanOrEqual(menu.frame.width, 44)
         XCTAssertLessThanOrEqual(menu.frame.width, 52)
-        XCTAssertEqual(app.staticTexts["experiment.message"].label, "Gather starlight. Draw your own constellations.")
+        XCTAssertEqual(app.staticTexts["experiment.message"].label, "Sunny. Match three light side by side, or draw through five actual matching stars. Large stars count as one star, worth two light.")
         let before = app.otherElements["experiment.board"].value as? String
         capture(app, "Celestial-HUD-welcome")
         menu.tap()
@@ -225,13 +225,10 @@ extension ObservatoryInteractionTests {
                 XCTAssertTrue((app.otherElements["experiment.board"].value as? String)?.hasPrefix("\(initialShowers+1) showers") == true)
             }
         }
-        let name = app.staticTexts["sky.guide.title"]
         let next = app.buttons["experiment.next"]
-        XCTAssertEqual(name.label, "Sunny")
-        XCTAssertLessThan(name.frame.height, next.frame.height,
-                          "The secondary name must not dominate the full-size action label")
+        XCTAssertTrue(guide.label.hasPrefix("Sunny."), "One message attributes the speaker once")
+        XCTAssertFalse(app.staticTexts["sky.guide.title"].exists, "Decorative name is not a second spoken element")
         XCTAssertGreaterThanOrEqual(next.frame.height, 44)
-        XCTAssertLessThanOrEqual(name.frame.height, 44, "The secondary label stays within a compact single-line footprint")
         XCTAssertFalse(guide.label.isEmpty)
         capture(app, "Observatory-largest-text-refined-guide")
         for _ in 0..<5 where !app.buttons["experiment.settings"].isHittable { app.swipeDown() }
@@ -541,8 +538,8 @@ extension ObservatoryInteractionTests {
         try vo.focus(sky.buttons["experiment.cell.0.6"], expecting: "Violet")
         vo.activate()
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "29 starlight"), object: sky.staticTexts["experiment.score"]).wait(timeout: 5))
-        let phase = sky.descendants(matching: .any).matching(identifier: "sky.phase").firstMatch
-        try vo.focus(phase, expecting: "Lighter showers")
+        let phase = sky.descendants(matching: .any).matching(identifier: "experiment.message").firstMatch
+        try vo.focus(phase, expecting: "Sunny")
         try vo.choose(sky.buttons["experiment.settings"], expecting: "Sky menu")
         XCTAssertTrue(sky.buttons["experiment.done"].waitForExistence(timeout: 5)); XCTAssertFalse(phase.exists)
         try vo.choose(sky.buttons["experiment.done"], expecting: "Done")
@@ -553,7 +550,7 @@ extension ObservatoryInteractionTests {
         XCTAssertTrue(sky.buttons["experiment.next"].waitForExistence(timeout: 10))
         try vo.focus(phase, expecting: "1 lighter shower")
         try vo.choose(sky.buttons["experiment.next"], expecting: "Next shower")
-        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "Storm · 3 heavy showers left"), object: phase).wait(timeout: 5))
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label CONTAINS %@", "Storm · 3 heavy showers left"), object: phase).wait(timeout: 5))
         try vo.focus(phase, expecting: "Storm")
         let capture = XCTAttachment(screenshot: sky.screenshot()); capture.name = "opal-storm-actual-voiceover"
         capture.lifetime = .keepAlways; add(capture)

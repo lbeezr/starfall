@@ -91,12 +91,12 @@ extension ConstellationTraceNativeTests {
     }
     @MainActor func testStormWarningCountRecoveryAndMenuSuspension() {
         let app = launch("stormWarning"); defer { app.terminate() }
-        let phase = app.descendants(matching: .any).matching(identifier: "sky.phase").firstMatch
+        let phase = app.descendants(matching: .any).matching(identifier: "experiment.message").firstMatch
         XCTAssertTrue(phase.waitForExistence(timeout: 5))
         XCTAssertTrue(phase.label.contains("1 lighter shower"))
         for expected in ["Storm · 3 heavy showers left", "Storm · 2 heavy showers left", "Storm · 1 heavy shower left", "Lighter showers · 9 showers"] {
             app.buttons["experiment.next"].tap()
-            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", expected), object: phase).wait(timeout: 8))
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label CONTAINS %@", expected), object: phase).wait(timeout: 8))
             if expected.contains("3 heavy") {
                 let capture = XCTAttachment(screenshot: app.screenshot()); capture.name = "storm-native-three-showers"
                 capture.lifetime = .keepAlways; add(capture)
@@ -112,7 +112,7 @@ extension ConstellationTraceNativeTests {
                 }, object: nil).wait(timeout: 5))
                 done.tap()
                 XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "exists == false"), object: done).wait(timeout: 5))
-                XCTAssertTrue(phase.waitForExistence(timeout: 5)); XCTAssertEqual(phase.label, expected)
+                XCTAssertTrue(phase.waitForExistence(timeout: 5)); XCTAssertTrue(phase.label.contains(expected), phase.label)
             }
         }
         let capture = XCTAttachment(screenshot: app.screenshot()); capture.name = "storm-native-calmer-return"
@@ -136,7 +136,7 @@ extension ConstellationTraceNativeTests {
     }
     @MainActor func testLargestTextPhaseReflowsAndCeremoniesHideTheCue() {
         let app = launch("stormWarning", large: true); defer { app.terminate() }
-        let phase = app.descendants(matching: .any).matching(identifier: "sky.phase").firstMatch
+        let phase = app.descendants(matching: .any).matching(identifier: "experiment.message").firstMatch
         XCTAssertTrue(phase.waitForExistence(timeout: 5))
         for _ in 0..<5 where !phase.isHittable || phase.frame.maxY > app.frame.maxY - 44 { app.swipeUp() }
         XCTAssertTrue(phase.isHittable)
@@ -165,7 +165,7 @@ extension ConstellationTraceNativeTests {
 extension ConstellationTraceNativeTests {
     @MainActor func testLongPausedGuidanceStaysBelowFrontStars() {
         let app = launch("opalChoice"); defer { app.terminate() }
-        let guide = app.descendants(matching: .any).matching(identifier: "sky.guide").firstMatch
+        let guide = app.descendants(matching: .any).matching(identifier: "sky.dialogue").firstMatch
         for cell in ["experiment.cell.2.5", "experiment.cell.6.0"] {
             app.buttons[cell].tap()
             score(24, app)
@@ -247,11 +247,11 @@ extension ConstellationTraceNativeTests {
     @MainActor func testAutomaticStormCountsRecoverWithoutManualShowersOrClears() {
         let app = launch("stormWarning"); defer { app.terminate() }
         score(22, app)
-        let phase = app.descendants(matching: .any).matching(identifier: "sky.phase").firstMatch
+        let phase = app.descendants(matching: .any).matching(identifier: "experiment.message").firstMatch
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label CONTAINS %@", "1 lighter shower"), object: phase).wait(timeout: 5))
         app.buttons["experiment.pause"].tap()
         for expected in ["Storm · 3 heavy showers left", "Storm · 2 heavy showers left", "Storm · 1 heavy shower left", "Lighter showers · 9 showers"] {
-            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", expected), object: phase).wait(timeout: 8))
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label CONTAINS %@", expected), object: phase).wait(timeout: 8))
             let capture = XCTAttachment(screenshot: app.screenshot())
             capture.name = "automatic-after-observing-" + expected
             capture.lifetime = .keepAlways; add(capture)

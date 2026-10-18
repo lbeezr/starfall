@@ -25,20 +25,6 @@ struct SkyPhaseCue: Equatable {
     }
 }
 
-@MainActor struct SkyPhaseLabel: View {
-    let cue: SkyPhaseCue
-    var body: some View {
-        Label(cue.text, systemImage: cue.phase.isStorm ? "cloud.bolt.rain" : "cloud")
-            .font(StarfallTheme.Typography.gameDetail)
-            .foregroundStyle(StarfallTheme.Colors.textPrimary)
-            .fixedSize(horizontal: false, vertical: true)
-            .accessibilityElement(children: .ignore)
-            .accessibilityLabel(cue.text)
-            .accessibilityIdentifier("sky.phase")
-            .accessibilityHint("Storms bring three heavier showers. Clearing does not delay them.")
-    }
-}
-
 /// Authored vector constellation, sharp at every display scale; no new raster pipeline.
 struct SkyMenuGlyph: View {
     var body: some View {
@@ -207,70 +193,18 @@ enum SkyShowerPlacement {
 
     private func drawForecast(in drawing: inout GraphicsContext, miniatures: [Image], progress: Double,
                               spacing: CGFloat, diameter: CGFloat, point: (CGFloat) -> CGPoint) {
-        // First committed arrival leads right; following stars trail in the same order.
-        // Fixed spacing keeps the complete preview visible at the start of the countdown.
-        let trainLength = CGFloat(max(0, miniatures.count - 1)) * spacing
-        let lead = trainLength + (1 - trainLength) * CGFloat(progress)
+        // Every forecast star completes this path before the committed shower deadline.
         for (index, miniature) in miniatures.enumerated() {
-            let center = point(lead - CGFloat(index) * spacing)
-            drawing.draw(miniature, in: CGRect(x: center.x - diameter / 2, y: center.y - diameter / 2,
-                                              width: diameter, height: diameter))
+            let sample = SkyTrailMotion.sample(progress: progress, index: index,
+                                               count: miniatures.count, spacing: Double(spacing))
+            let center = point(CGFloat(sample.position))
+            var star = drawing
+            star.opacity = sample.opacity
+            star.draw(miniature, in: CGRect(x: center.x - diameter / 2, y: center.y - diameter / 2,
+                                           width: diameter, height: diameter))
         }
     }
 
-}
-
-/// Contextual guide uses the real cast material; routine arrivals do not create chatter.
-@MainActor struct SkyGuideCard<Actions: View>: View {
-    let title: String
-    let message: String
-    var titleIdentifier = "sky.guide.title"
-    var titleRole: StarfallTheme.Typography.GuideTitleRole = .character
-    var showsPortrait = true
-    var maximumHeight: CGFloat? = nil
-    @ViewBuilder let actions: Actions
-    @Environment(\.dynamicTypeSize) private var textSize
-    var body: some View {
-        VStack(alignment: .leading, spacing: StarfallTheme.Spacing.small) {
-            if maximumHeight != nil {
-                ViewThatFits(in: .vertical) {
-                    introduction.fixedSize(horizontal: false, vertical: true)
-                    ScrollView { introduction }
-                }
-            } else { introduction }
-            actions
-        }
-        .padding(StarfallTheme.Spacing.medium)
-        .frame(maxHeight: maximumHeight)
-        .background(StarfallTheme.Colors.skyTop.opacity(0.95), in: RoundedRectangle(cornerRadius: StarfallTheme.Radius.panel))
-        .overlay(alignment: .top) {
-            LinearGradient(colors: [.clear, StarfallTheme.Observatory.lanternGlow.opacity(0.7), .clear], startPoint: .leading, endPoint: .trailing)
-                .frame(height: 1).padding(.horizontal, StarfallTheme.Spacing.large)
-        }
-        .frame(maxWidth: StarfallTheme.Layout.menuWidth)
-        .accessibilityElement(children: .contain)
-        .accessibilityIdentifier("sky.guide")
-    }
-    private var introduction: some View {
-        HStack(alignment: .top, spacing: StarfallTheme.Spacing.medium) {
-            if showsPortrait && !textSize.isAccessibilitySize {
-                Image(uiImage: StarCast.image(for: .colored(.amber), expression: .idle))
-                    .resizable().scaledToFit().frame(width: 48, height: 48)
-                    .background(Circle().fill(StarfallTheme.Observatory.lanternGlow.opacity(0.12)))
-                    .accessibilityHidden(true)
-            }
-            VStack(alignment: .leading, spacing: StarfallTheme.Spacing.compact) {
-                Text(title).font(StarfallTheme.Typography.skyHeading)
-                    .dynamicTypeSize(...titleRole.maximumTextSize)
-                    .accessibilityIdentifier(titleIdentifier)
-                    .foregroundStyle(StarfallTheme.Observatory.lanternGlow)
-                Text(message).font(StarfallTheme.Typography.supporting)
-                    .foregroundStyle(StarfallTheme.Colors.textPrimary)
-                    .fixedSize(horizontal: false, vertical: true)
-                    .accessibilityIdentifier("experiment.message")
-            }
-        }
-    }
 }
 
 /// Copy maps the committed cadence snapshot; it never computes a phase or deadline.
@@ -297,22 +231,5 @@ struct SkyCadenceCueCopy: Equatable {
                 symbol = "wind"
             }
         }
-    }
-}
-
-struct SkyCadenceCue: View {
-    let copy: SkyCadenceCueCopy
-    var body: some View {
-        Label(copy.title, systemImage: copy.symbol)
-            .font(StarfallTheme.Typography.gameDetail)
-            .foregroundStyle(StarfallTheme.Colors.textPrimary)
-            .fixedSize(horizontal: false, vertical: true)
-            .padding(.horizontal, StarfallTheme.Spacing.medium)
-            .padding(.vertical, StarfallTheme.Spacing.compact)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .background(StarfallTheme.Colors.skyTop, ignoresSafeAreaEdges: [])
-            .accessibilityElement(children: .ignore)
-            .accessibilityLabel(copy.label)
-            .accessibilityIdentifier("sky.cadence")
     }
 }

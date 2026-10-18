@@ -39,6 +39,12 @@ import StarfallCore
         let name: String
         let points: Int
         let description: String
+        init(name: String, points: Int, description: String) {
+            self.name = name; self.points = points; self.description = description
+        }
+        init(speaker: SkySpeaker, points: Int, description: String) {
+            name = speaker.name; self.points = points; self.description = description + ", " + speaker.name
+        }
     }
 
     static let rasterSide = 256
@@ -64,17 +70,17 @@ import StarfallCore
     static func character(for identity: Identity) -> Character {
         switch identity {
         case .colored(.aqua):
-            Character(name: "Spark", points: 4, description: "Aqua four-point star, Spark")
+            Character(speaker: .spark, points: 4, description: "Aqua four-point star")
         case .colored(.amber):
-            Character(name: "Sunny", points: 5, description: "Amber five-point star, Sunny")
+            Character(speaker: .sunny, points: 5, description: "Amber five-point star")
         case .colored(.mint):
-            Character(name: "Pip", points: 6, description: "Mint six-point star, Pip")
+            Character(speaker: .pip, points: 6, description: "Mint six-point star")
         case .colored(.rose):
-            Character(name: "Twinkle", points: 8, description: "Rose eight-point star, Twinkle")
+            Character(speaker: .twinkle, points: 8, description: "Rose eight-point star")
         case .colored(.violet):
-            Character(name: "Nova", points: 4, description: "Violet wide four-point star, Nova")
+            Character(speaker: .nova, points: 4, description: "Violet wide four-point star")
         case .dusk:
-            Character(name: "Dusk", points: 5, description: "Dark star, Dusk")
+            Character(speaker: .dusk, points: 5, description: "Dark star")
         case .opal:
             Character(name: "Opal", points: 0, description: "White Opal Orb")
         case .magnet:

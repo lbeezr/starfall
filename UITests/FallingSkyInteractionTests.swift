@@ -112,7 +112,8 @@ final class FallingSkyInteractionTests: XCTestCase {
         togglePause(app)
         XCTAssertFalse(app.buttons["experiment.pause"].exists)
         XCTAssertFalse(app.buttons["experiment.next"].exists)
-        XCTAssertFalse(app.staticTexts["experiment.message"].exists)
+        XCTAssertTrue(app.staticTexts["experiment.message"].label.contains("Clear matching stars"),
+                      "Starting the sky now gives one brief bottom character message")
         XCTAssertFalse(app.staticTexts["experiment.turns"].exists)
         XCTAssertFalse(app.staticTexts["experiment.matches"].exists)
         XCTAssertFalse(app.descendants(matching: .any)["experiment.incoming.0"].firstMatch.exists)
@@ -528,7 +529,7 @@ extension FallingSkyInteractionTests {
         let remoteValue = try XCTUnwrap(Int(remoteText.split(separator: " ").first ?? ""))
         XCTAssertGreaterThanOrEqual(remoteValue, 3)
         remote.tap()
-        XCTAssertTrue(guide.label.hasPrefix("+\(remoteValue) starlight."))
+        XCTAssertTrue(guide.label.hasPrefix("Sunny. +\(remoteValue) starlight."))
         XCTAssertEqual(app.staticTexts["experiment.score"].label, "\(remoteValue) starlight")
         XCTAssertFalse(guide.label.contains("dissolved"))
         XCTAssertEqual(dark.count, 1, "The unrelated clear does not remove the blocker")
@@ -539,7 +540,7 @@ extension FallingSkyInteractionTests {
         XCTAssertGreaterThanOrEqual(adjacentValue, 3)
         adjacent.tap()
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: next).wait(timeout: 5))
-        XCTAssertTrue(guide.label.hasPrefix("+\(adjacentValue) starlight."))
+        XCTAssertTrue(guide.label.hasPrefix("Sunny. +\(adjacentValue) starlight."))
         XCTAssertTrue(guide.label.contains("Dark star dissolved"))
         XCTAssertEqual(dark.count, 0)
         let total = remoteValue + adjacentValue
@@ -724,7 +725,7 @@ final class SkyFlowInteractionTests: XCTestCase {
         }
         XCTAssertTrue(outcome.waitForExistence(timeout: 5))
         XCTAssertEqual(outcome.label, "This sky is full")
-        XCTAssertTrue(app.staticTexts["sky.result.reason"].label.contains("had no room for the next star"))
+        XCTAssertTrue(app.staticTexts["experiment.score"].label.contains("had no room for the next star"))
         XCTAssertEqual(app.buttons["experiment.replay"].label, "Try First Light again")
         XCTAssertTrue(app.staticTexts["experiment.score"].label.contains("of 18"))
         capture(app, "flow-full")
@@ -835,9 +836,9 @@ final class SkyFlowInteractionTests: XCTestCase {
         XCTAssertEqual(sound.value as? String, selected)
         sound.switches.firstMatch.tap() // Restore the review preference; normal defaults were never used.
         tap("sky.home", app)
-        XCTAssertTrue(app.staticTexts["sky.savedSummary"].waitForExistence(timeout: 5))
-        XCTAssertTrue(app.staticTexts["sky.savedSummary"].label.contains("First Light"))
-        XCTAssertTrue(app.staticTexts["sky.savedSummary"].label.contains("Paused"))
+        XCTAssertTrue(app.staticTexts["sky.subtitle"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["sky.subtitle"].label.contains("First Light"))
+        XCTAssertTrue(app.staticTexts["sky.subtitle"].label.contains("Paused"))
         capture(app, "welcome-retained-challenge-summary")
     }
 

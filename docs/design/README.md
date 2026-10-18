@@ -34,3 +34,5 @@ The [branding studies](branding/README.md) retain the editable wordmarks, sanctu
 [Gravity design](GRAVITY_MECHANICS.md), [implementation plan](GRAVITY_MECHANICS_PLAN.md) and [mechanic research](CELESTIAL_MECHANICS_RESEARCH.md) describe magnetic pairs and occupied captive orbits, now adopted into new skies. The historical trial and current integration evidence retain separate source boundaries.
 
 [Reliability polish](RELIABILITY_POLISH.md) scopes touch ownership, build identity and layout/native acceptance in normal Starfall.
+
+- [Character chat and complete trails](CHARACTER_CHAT_AND_TRAIL.md): reusable bottom dialogue, six portraits and authored scripts.

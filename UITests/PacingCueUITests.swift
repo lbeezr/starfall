@@ -31,10 +31,10 @@ final class PacingCueUITests: XCTestCase {
         shot.name = name; shot.lifetime = .keepAlways; add(shot)
     }
     @MainActor private func cue(_ app: XCUIApplication, _ label: String) {
-        let cue = app.descendants(matching: .any)["sky.cadence"].firstMatch
+        let cue = app.descendants(matching: .any)["experiment.message"].firstMatch
         XCTAssertTrue(cue.waitForExistence(timeout: 5))
-        XCTAssertEqual(app.descendants(matching: .any).matching(identifier: "sky.cadence").count, 1)
-        XCTAssertEqual(cue.label, label)
+        XCTAssertEqual(app.descendants(matching: .any).matching(identifier: "experiment.message").count, 1)
+        XCTAssertTrue(cue.label.contains(label), cue.label)
         XCTAssertTrue(cue.isHittable, "Cue must remain visible while lower controls are used")
         XCTAssertGreaterThanOrEqual(cue.frame.minY, 0)
         XCTAssertLessThanOrEqual(cue.frame.maxY, app.frame.maxY)
@@ -77,7 +77,7 @@ final class PacingCueUITests: XCTestCase {
         XCTAssertTrue(menu.isHittable); menu.tap()
         XCTAssertTrue(app.buttons["experiment.done"].waitForExistence(timeout: 5))
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "exists == false"),
-            object: app.descendants(matching: .any)["sky.cadence"].firstMatch).wait(timeout: 5))
+            object: app.descendants(matching: .any)["experiment.message"].firstMatch).wait(timeout: 5))
         app.buttons["experiment.done"].tap()
         cue(app, "Faster after next shower")
         advance(app)
@@ -103,11 +103,11 @@ final class PacingCueUITests: XCTestCase {
         XCTAssertTrue(forecast.waitForExistence(timeout: 5))
         XCTAssertTrue(forecast.isHittable)
         XCTAssertFalse((forecast.value as? String ?? "").isEmpty)
-        let phase = app.descendants(matching: .any)["sky.cadence"].firstMatch
+        let phase = app.descendants(matching: .any)["experiment.message"].firstMatch
         XCTAssertTrue(phase.exists)
-        XCTAssertLessThanOrEqual(phase.frame.maxY, forecast.frame.minY)
+        XCTAssertGreaterThanOrEqual(phase.frame.minY, app.buttons["experiment.cell.0.0"].frame.maxY)
         XCTAssertEqual(forecast.frame.midY, app.buttons["experiment.settings"].frame.midY, accuracy: 1,
-                       "B's reserved cue slot uses the conservative header forecast")
+                       "The fallback forecast stays in the compact header")
         XCTAssertEqual(app.buttons["experiment.cell.0.0"].frame, cellFrame)
         capture(app, "pacing-active-forecast-and-phase")
     }

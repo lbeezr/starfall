@@ -42,18 +42,6 @@ import StarfallCore
     }
     private var quietMotion: Bool { reduceMotion || calmEffects || voiceOver }
 
-    // Reserve the longest cue from round start: phase changes must not resize
-    // SpriteKit and settle an in-flight shower. Old skies and fixed paces keep their layout.
-    private var reservesTimingCueSpace: Bool {
-        store.game.cadenceID.isAnnouncedCycle && store.game.challenge == nil
-            && store.game.balance.pace == .brisk
-    }
-
-    private var cadenceCueCopy: SkyCadenceCueCopy? {
-        guard !showingCeremony, !store.game.isOver, store.game.challenge == nil else { return nil }
-        return SkyCadenceCueCopy(step: store.nextShowerCadence)
-    }
-
     private func usesIslandTimer(size: CGSize, topInset: CGFloat) -> Bool {
         SkyShowerPlacement.usesIsland(hardware: SkyShowerPlacement.hardware, size: size,
                                      topInset: topInset, accessible: largeText || voiceOver)
@@ -68,10 +56,7 @@ import StarfallCore
                             VStack(spacing: StarfallTheme.Spacing.small) {
                                 playfield(insets: safeViewport.safeAreaInsets, compact: safeViewport.size.height < 750, allowsIsland: false)
                                     .frame(height: safeViewport.size.height)
-                                if !showingCeremony {
-                                    if !settings, let cue = store.phaseCue {
-                                        SkyPhaseLabel(cue: cue).padding(.horizontal, StarfallTheme.Spacing.medium)
-                                    }
+                                if !showingCeremony && !settings {
                                     guide(compact: safeViewport.size.height < 750)
                                         .accessibilityHidden(settings)
                                         .padding(.horizontal, StarfallTheme.Spacing.medium)
@@ -151,20 +136,9 @@ import StarfallCore
                 - 2 * StarfallTheme.Spacing.small)
             ZStack {
                 board.allowsHitTesting(!settings && !showingCeremony)
-                if !showingCeremony {
+                if !showingCeremony && !settings {
                     VStack(spacing: StarfallTheme.Spacing.small) {
-                        // Stable HUD space; the scenery and scene retain the complete window.
-                        if reservesTimingCueSpace {
-                            ZStack(alignment: .leading) {
-                                SkyCadenceCue(copy: SkyCadenceCueCopy(step: .init(delay: 3, phase: .steady, warnsFasterNext: true))!)
-                                    .hidden().accessibilityHidden(true).accessibilityIdentifier("sky.cadence.measurement")
-                                if !settings, let copy = cadenceCueCopy {
-                                    SkyCadenceCue(copy: copy)
-                                }
-                            }
-                        }
                         compactHeader(island: island)
-                        if !settings, !largeText, let cue = store.phaseCue { SkyPhaseLabel(cue: cue) }
                         Spacer(minLength: 0)
                         if !largeText { guide(compact: compact, maximumHeight: footerHeight) }
                     }
@@ -184,9 +158,11 @@ import StarfallCore
     }
 
     @ViewBuilder private func guide(compact: Bool, maximumHeight: CGFloat? = nil) -> some View {
-        if store.isPaused && !store.game.isOver {
-            SkyGuideCard(title: "Sunny",
-                         message: store.message, showsPortrait: !compact, maximumHeight: maximumHeight) {
+        if !store.game.isOver {
+            SkyDialogueOverlay(session: store.dialogue,
+                               pausedLine: store.isPaused ? store.pausedGuideLine : nil,
+                               active: scenePhase == .active && !settings && !showingCeremony,
+                               next: store.nextDialogue, maximumHeight: maximumHeight) {
                 controlLayout {
                     Button(store.game.turns == 0 ? "Start sky" : "Resume sky") { store.togglePause() }
                         .disabled(store.suspended).accessibilityIdentifier("experiment.pause")
