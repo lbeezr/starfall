@@ -4,7 +4,7 @@
 
 Ship exact contact clocks, tablet Welcome activation, semantic archive checks, RC failure evidence, rule-aware help and visible save recovery independently. [Acceptance and scope](../../TECH_DEBT_FOLLOWUP.md). This record separates code fixes from native, visual, actual VoiceOver and physical-device evidence.
 
-**Next action:** ship RC failure handling; tablet diagnosis and Help/recovery UI remain open.
+**Next action:** finish visible save-recovery feedback.
 
 ## Verification context
 
@@ -54,3 +54,19 @@ Examined Welcome, initial/fresh/replay/challenge Entry and in-game Help call sit
 | <img src="dev-20af64d-wip-361f431fc46a-first-light-entry-17e-default.jpg" width="220" alt="First Light Entry with Begin, Back to Observatory and Settings and help inside the dialogue panel"> | <img src="dev-20af64d-wip-361f431fc46a-first-light-help-17e-default.jpg" width="220" alt="First Light Help showing shower, pause and fixed 18-starlight objective text with Done reachable"> |
 
 Inspected native captures, iPhone 17e / iOS 27.0, default text, normal app route with isolated reset defaults. Text and all Entry actions fit; Done remains available in Help. Full largest-text read-through is independently tested above. Tablet Welcome hit-result diagnosis remains open; these phone samples do not close it. Actual VoiceOver and physical-device acceptance remain RC work. Raw captures/result bundles stay in `/tmp/starfall-help-attachments` and XcodeBuildMCP.
+
+## 2. Tablet Welcome hit semantics
+
+Source: main `882945a` plus removal of the outer ceremony `accessibilityHidden` modifier in FallingSkyView and inactive-heading hiding in SkyFlowCeremony. Captured runtime inputs `57e2106fabf3` hash the concatenation of `path + newline + content` for those two files, before the explanatory two-line comment was added. The subsequent landscape assertions and phone checks add no runtime behavior. Temporary diagnostic views/tests were removed.
+
+The original largest-text Welcome test failed on visible, enabled Settings at `(168, 850, 408, 133.5)` in a portrait `744 × 1133` window. Native activation still opened Settings. Hiding/removing covered playfield containers, changing labels/decorative hit regions and changing dialogue AX grouping did not fix it; those trials were reverted. A temporary isolated ceremony reported native hits correctly at default and XXXL text. Adding the parent's modifier chain reproduced false hits for every action; removing only `accessibilityHidden(false)` restored them. This establishes the observed failure boundary on iPad mini / iOS 27.0; it does not diagnose Apple's implementation.
+
+The ceremony already owns action enablement/AX hiding and receives active/modal values. It now also hides its inactive heading, and the parent no longer adds the redundant AX container. Settings retains native modal ownership; handoff still rejects input. No clock, save, rules, geometry, art, motion timing or routing change was kept. Examined Welcome, Entry, modal settings, handoff, results and the covered gameplay surface.
+
+Original three tablet RC selections: 3 passed, zero failures/skips. The original largest-text assertion is unchanged; landscape now additionally requires native `isHittable` for Settings and Begin, and passes. `swift test`: 164 passed. Debug compilation/hygiene/diff passed. Phone siblings: 17 hosted flow checks plus four native normal-motion/background/another-sky, First Light win/replay/full/restore, system Reduce Motion entry/replay and Welcome preferences/paused-summary checks passed (21 total, zero failures/skips). Actual VoiceOver remains RC work.
+
+| Maximum text, portrait | Default text, landscape |
+| --- | --- |
+| <img src="dev-882945a-wip-57e2106fabf3-welcome-ipad-mini-largest.jpg" width="220" alt="Tablet Welcome at maximum text with all three actions visible in the dialogue panel"> | <img src="dev-882945a-wip-57e2106fabf3-welcome-ipad-mini-landscape.jpg" width="360" alt="Landscape tablet Welcome with central dialogue and native Settings action near the lower edge"> |
+
+Inspected native captures from the original three-test passing run, iPad mini A17 Pro / iOS 27.0, normal animations. Maximum-text actions fit without shrinking text. Landscape Settings is close to the Home indicator in the initial capture; the passed hit/navigation checks establish activation, not physical comfort. Revisit that lower-edge spacing in the next landscape visual pass/RC. Still frames do not prove animation quality. Raw bundles and failed trials remain in XcodeBuildMCP and temporary storage.

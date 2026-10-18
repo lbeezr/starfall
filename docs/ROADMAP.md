@@ -205,3 +205,5 @@ The retired gravity art remains only for historical reset-only Debug reproductio
 [Device delivery guards](evidence/device-delivery-guards-2026-10-18/README.md) now detect external app replacements and reject stale delivery through the canonical updater. Privileged direct installation remains an OS/account permission boundary; no gameplay change is part of this fix.
 
 The [crowded celebration check](evidence/calibration-critical-mass-2026-10-18/AWARDS.md) adds a current-rule regression sample and four native host layout/text comparisons. Keep the current presentation; next assess repeated automatic/physical recognition, including the observed temporary survivor overlap.
+
+The [follow-up debt batches](TECH_DEBT_FOLLOWUP.md) now verify exact contact remainders, tablet Welcome native hit semantics, semantic archive admission, retained RC failure evidence and rules-aware Help. Visible save-recovery feedback is the remaining accepted batch. Minimum-iOS, actual VoiceOver and physical-device RC evidence remain open.

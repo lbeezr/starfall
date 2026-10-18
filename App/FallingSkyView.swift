@@ -89,10 +89,11 @@ import StarfallCore
                                 welcome: SkyWelcomeSnapshot(game: store.game, hasSavedSky: store.hasSavedSky, paused: store.isPaused),
                                 active: scenePhase == .active && flow.handoff == nil && !settings, quiet: quietMotion, modal: settings,
                                 action: { handleFlowAction($0, entryID: entryID) })
+                    // Ceremony owns inactive AX elements. An extra hidden(false)
+                    // container here masks native child hit results on iPad.
                     .id(String(describing: ceremonyScreen))
                     .opacity(flow.handoff != nil && handoffLeaving ? 0 : 1)
                     .allowsHitTesting(flow.handoff == nil && !settings)
-                    .accessibilityHidden(flow.handoff != nil || settings)
                     .zIndex(1)
             }
             if flow.handoff?.preparing == true {

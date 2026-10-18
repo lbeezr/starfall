@@ -4,12 +4,12 @@
 
 Fix the six ranked findings from main `5ba0d36` in separate verified batches. Preserve deterministic rules, saved-generation contracts and single-app delivery. Each task ships when ready; unrelated release-environment limits remain explicit.
 
-**Next action:** finish tablet activation and recovery feedback.
+**Next action:** finish recovery feedback.
 
 | Task | Observable acceptance | Status |
 | --- | --- | --- |
 | 1. Exact contact clock | Zero-duration contacts do not extend opening/regular/retained/challenge deadlines; real held time, stale tickets, pause/background grace and no catch-up remain correct. | Verified |
-| 2. Tablet Welcome | Original largest-text Settings activation passes with native hit semantics; diagnose orientation/scroll siblings and inspect source-bound screenshots. | Pending |
+| 2. Tablet Welcome | Original largest-text Settings activation passes with native hit semantics; diagnose orientation/scroll siblings and inspect source-bound screenshots. | Verified |
 | 3. Semantic saves | Impossible overflow and duplicate forecast identities are rejected; current and retained valid-save/replay corpus remains accepted. | Verified |
 | 4. RC failures | Primary test failure survives cleanup; partial evidence is retained/exported with bounded storage and execution tests. | Verified |
 | 5. Help context | Welcome/Entry and game help describe pending/current rules for fresh, retained Dusk and First Light without implicit defaults. | Verified |
