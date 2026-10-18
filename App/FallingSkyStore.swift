@@ -75,6 +75,8 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     static let saveKey = SkySaveArchive.key
     private(set) var game: FallingSky
     private(set) var hasSavedSky = false
+    private let archiveWriter: @MainActor (FallingSky, UserDefaults) throws -> Void
+    private(set) var persistenceNotice: SkyPersistenceNotice?
     private(set) var saveFailed = false
     private(set) var rejectedSaveKey: String?
     private static let persistenceLog = Logger(subsystem: "com.starfall.prototype", category: "persistence")
@@ -289,8 +291,10 @@ enum SkyTerminalSpeech { case feedback, ceremony }
          arguments: [String] = ProcessInfo.processInfo.arguments,
          presenter: (any FallingSkyPresenting)? = nil,
          clock: (any FallingSkyRainScheduling)? = nil,
-         feedback: (any FallingSkyFeedbackProviding)? = nil) {
+         feedback: (any FallingSkyFeedbackProviding)? = nil,
+         archiveWriter: @escaping @MainActor (FallingSky, UserDefaults) throws -> Void = SkySaveArchive.save) {
         self.defaults = defaults
+        self.archiveWriter = archiveWriter
         self.feedback = feedback ?? GameFeedback()
         soundEnabled = defaults.object(forKey: "soundEnabled") == nil ? true : defaults.bool(forKey: "soundEnabled")
         hapticsEnabled = defaults.object(forKey: "starfall.haptics") == nil ? true : defaults.bool(forKey: "starfall.haptics")
@@ -309,6 +313,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
             game = FallingSky.freshSurvival(seed: seed)
             if !arguments.contains("--starfalls-reset"), case .rejected(let key) = SkySaveArchive.inspect(from: defaults) {
                 rejectedSaveKey = key
+                persistenceNotice = .rejected
                 Self.persistenceLog.error("Rejected sky archive; preserving it before the next committed save")
             }
         }
@@ -773,15 +778,20 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         deliverRainIfReady()
     }
 
+    func dismissPersistenceNotice() { persistenceNotice = nil }
+
     private func save() {
         #if DEBUG
         guard !isTechniqueFixture else { return }
         #endif
         do {
-            try SkySaveArchive.save(game, to: defaults)
+            try archiveWriter(game, defaults)
             hasSavedSky = true
             saveFailed = false
+            if persistenceNotice == .failed { persistenceNotice = nil }
         } catch {
+            // One acknowledgement per failure episode; success permits a later notice.
+            if !saveFailed { persistenceNotice = .failed }
             saveFailed = true
             Self.persistenceLog.error("Sky archive encoding/validation failed; existing save retained")
         }

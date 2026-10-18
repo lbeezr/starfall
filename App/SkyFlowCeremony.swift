@@ -288,7 +288,21 @@ extension FallingSkyStore {
             return FallingSkyStore(defaults: UserDefaults(suiteName: "Starfall.DialogueReview")!, arguments: arguments)
         }
         if arguments.contains("--sky-flow-review") {
-            return FallingSkyStore(defaults: UserDefaults(suiteName: "Starfall.SkyFlowReview")!, arguments: arguments)
+            let defaults = UserDefaults(suiteName: "Starfall.SkyFlowReview")!
+            // Reset-only fixtures use the same player app and isolated review defaults.
+            if arguments.contains("--starfalls-reset"), arguments.contains("--save-rejection-review") {
+                defaults.removePersistentDomain(forName: "Starfall.SkyFlowReview")
+                defaults.set(Data("unreadable review save".utf8), forKey: SkySaveArchive.key)
+                return FallingSkyStore(defaults: defaults, arguments: arguments.filter { $0 != "--starfalls-reset" })
+            }
+            if arguments.contains("--starfalls-reset"), arguments.contains("--save-failure-review") {
+                var failedOnce = false
+                return FallingSkyStore(defaults: defaults, arguments: arguments, archiveWriter: { game, defaults in
+                    if !failedOnce { failedOnce = true; throw SkySaveArchive.Failure.unsupportedOrInvalid }
+                    try SkySaveArchive.save(game, to: defaults)
+                })
+            }
+            return FallingSkyStore(defaults: defaults, arguments: arguments)
         }
         #endif
         return FallingSkyStore()

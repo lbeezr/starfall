@@ -6,7 +6,7 @@ The working contract is [AGENTS.md](../AGENTS.md). This page explains verificati
 
 Use this index for current priorities. The dated records below retain their original source and acceptance limits; they are not an accumulating list of current requirements. [Seven disjoint reductions](TECH_DEBT_PLAN.md) and [their checks](evidence/debt-reduction-2026-10-18/README.md) explain the shipped scope.
 
-**Next action:** finish player save-recovery feedback; provision iOS 17 before RC. Development batches may continue through the canonical updater. No RC is accepted from the current evidence.
+**Next action:** provision iOS 17 and complete actual VoiceOver before RC; verify canonical delivery when the phone reconnects. Development batches may continue through the canonical updater. No RC is accepted from the current evidence.
 
 | Priority / status | Current risk | Trigger and required closure |
 | --- | --- | --- |
@@ -29,7 +29,7 @@ Use this index for current priorities. The dated records below retain their orig
 | Historical mechanics — [PR #112](https://github.com/lbeezr/starfall/pull/112) | Historical mutation isolated; neutral shared settling/phases; 1,337 byte-identical before/after archives. Compatibility is deliberately retained. |
 | Build gates — [PR #113](https://github.com/lbeezr/starfall/pull/113) | Debug/Release build gate and explicit minimum-iOS/tablet RC roles. Missing/failed platform acceptance remains visible above. |
 
-No framework replacement, dependency addition, broad Swift migration or gameplay tuning follows from this register. Further extraction should address demonstrated coupling, not file length alone. The save recovery slot preserves only the most recent rejected value and has no recovery UI; UserDefaults provides no synchronous disk-durability acknowledgement.
+No framework replacement, dependency addition, broad Swift migration or gameplay tuning follows from this register. Further extraction should address demonstrated coupling, not file length alone. The save recovery slot preserves only the most recent rejected value. Native notices explain rejection/encoding failure; there is no backup-restoration interface or automatic fallback. UserDefaults provides no synchronous disk-durability acknowledgement.
 
 ## DRY and modularity
 

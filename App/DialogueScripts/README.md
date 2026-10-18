@@ -1,6 +1,6 @@
 # Write Starfall copy
 
-The regular Falling Sky app uses one bundled English catalogue: [observatory-dialogue.json](observatory-dialogue.json). `scripts` owns character lines, speakers, priorities and reading duration. `copy` owns menu labels, help, results, pacing, touch feedback and accessibility wording. Wording edits stay here; Swift supplies committed facts and selects events. This is local content shipped with the app, not a remote CMS, runtime AI or a translation system.
+The regular Falling Sky app uses one bundled English catalogue: [observatory-dialogue.json](observatory-dialogue.json). `scripts` owns character lines, speakers, priorities and reading duration. `copy` owns menu labels, help, results, pacing, touch feedback, save-recovery notices and accessibility wording. Wording edits stay here; Swift supplies committed facts and selects events. This is local content shipped with the app, not a remote CMS, runtime AI or a translation system.
 
 [SkyCopy](../SkyCopy.swift) provides typed interface keys. The library checks that the JSON keys exactly match that inventory. Dialogue and interface copy share strict placeholder rendering: missing, extra and brace-containing values fail validation. The editor [schema](dialogue.schema.json) and hosted `SkyDialogueTests` check content, packaging, all templates and event behavior. There is no silent fallback to an English sentence hidden in a view.
 

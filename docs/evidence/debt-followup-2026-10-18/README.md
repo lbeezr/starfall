@@ -1,10 +1,10 @@
 # Six follow-up debt fixes
 
-**Result:** Partially verified · **Owner:** current implementer · **Date:** 2026-10-18
+**Result:** Verified for the six scoped fixes; RC/device limits below · **Owner:** current implementer · **Date:** 2026-10-18
 
 Ship exact contact clocks, tablet Welcome activation, semantic archive checks, RC failure evidence, rule-aware help and visible save recovery independently. [Acceptance and scope](../../TECH_DEBT_FOLLOWUP.md). This record separates code fixes from native, visual, actual VoiceOver and physical-device evidence.
 
-**Next action:** finish visible save-recovery feedback.
+**Next action:** canonical phone delivery when connected; provision minimum-iOS and complete actual VoiceOver before RC.
 
 ## Verification context
 
@@ -70,3 +70,28 @@ Original three tablet RC selections: 3 passed, zero failures/skips. The original
 | <img src="dev-882945a-wip-57e2106fabf3-welcome-ipad-mini-largest.jpg" width="220" alt="Tablet Welcome at maximum text with all three actions visible in the dialogue panel"> | <img src="dev-882945a-wip-57e2106fabf3-welcome-ipad-mini-landscape.jpg" width="360" alt="Landscape tablet Welcome with central dialogue and native Settings action near the lower edge"> |
 
 Inspected native captures from the original three-test passing run, iPad mini A17 Pro / iOS 27.0, normal animations. Maximum-text actions fit without shrinking text. Landscape Settings is close to the Home indicator in the initial capture; the passed hit/navigation checks establish activation, not physical comfort. Revisit that lower-edge spacing in the next landscape visual pass/RC. Still frames do not prove animation quality. Raw bundles and failed trials remain in XcodeBuildMCP and temporary storage.
+
+## 6. Visible save recovery and failure notices
+
+Source: main `cf6526b` plus the eight runtime/test paths in snapshot `7213540d3ad9` (`sha256(git diff -- <paths>)`: local catalogue, store/view/copy/ceremony/archive and archive/native flow tests). No schema/RNG/rule migration. `SkyPersistenceNotice` gives the session a native acknowledgement for rejected saves or an encoding/validation failure. Copy names the retained previous save, potential loss of recent changes and future retry behavior. Rejected initialization remains read-only; acknowledgement writes nothing; the next committed replacement still backs up the rejected value. A present invalid current save never falls back. The single recovery slot is not a backup-restoration interface.
+
+The view suspends gameplay and blocks handoff admission while a notice is pending; dismissal reconciles the existing handoff/clock contract. Repeated failures after acknowledgement do not create an alert loop; a successful write rearms a later failure notice. The store receives one narrow archive-write capability to exercise failures without corrupting Core state. Production still uses SkySaveArchive. Reset-only native failure/rejection fixtures use the ordinary Debug app, isolated review defaults and explicit reset arguments; Release excludes their routing. No IO or migration happens merely from constructing a normal view/store.
+
+Examined missing/current/retained/rejected admission, successful replacement/backup, failed writes, acknowledgement, repeated failure/success/new failure, startup and handoff, modal/background interruption, stale clock/animation callbacks and restored play. UserDefaults has no synchronous physical-disk durability acknowledgement; this catches reported encode/validation errors, not every possible storage failure.
+
+| Check | Result |
+| --- | --- |
+| Core | 164 passed. |
+| Full hosted app suite, including catalogue/packaging, persistence, flow, native renderer/input windows | 265 passed, zero failures/skips. |
+| Phone native hold/trace/tap + Settings/background gesture recovery | 2 passed, zero failures/skips. |
+| Rejected-save background/replacement/relaunch and failed-save acknowledgement/handoff/retry/relaunch | 2 passed; rejection repeated after adding the message read-through check, passed. |
+| Final original tablet selections with root alert attached | 3 passed, zero failures/skips; includes strengthened landscape native hit assertions. |
+| Debug/Release simulator compilation, hygiene/diff, RC/native-plan Python tests | Passed (11 RC + 3 native-plan tests). |
+
+The final phone sweep used the standard context above; tablet used iPad mini A17 Pro `147FF35E-5EAE-4676-B941-B82BE8119054` / iOS 27.0. Current test/source inputs are the snapshot above; the full hosted/Release runs preceded only the added native reading assertions. All app source and catalogue inputs match. Raw results remain in XcodeBuildMCP and `/tmp/starfall-recovery-attachments` / `/tmp/starfall-recovery-reading`.
+
+| Rejected save, maximum text: beginning | Same message scrolled to its end | Failed save, default text |
+| --- | --- | --- |
+| <img src="dev-cf6526b-wip-7213540d3ad9-save-rejected-17e-largest-start.jpg" width="200" alt="Native rejected-save alert at maximum text, showing unavailable save and no older round loaded"> | <img src="dev-cf6526b-wip-7213540d3ad9-save-rejected-17e-largest-end.jpg" width="200" alt="The native alert scrolled to recovery-copy explanation with Done still visible"> | <img src="dev-cf6526b-wip-7213540d3ad9-save-failed-17e-default.jpg" width="200" alt="Native failed-save notice explains previous save is unchanged and recent progress may be lost"> |
+
+Inspected native iPhone 17e / iOS 27.0 captures. Maximum text requires native message scrolling; the bounded reading-area drags reach the final recovery-copy sentence, with Done remaining hittable. This is not evidence of actual VoiceOver speech/focus. The normal-text failure capture predates only native read-through assertions, with identical runtime inputs. Physical-device installation remains waiting for the configured iPhone; minimum-iOS and actual VoiceOver remain separate RC gates.

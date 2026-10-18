@@ -126,6 +126,7 @@ import StarfallCore
         .onChange(of: store.canClear) { _, enabled in if !enabled { cancelConstellation() } }
         .onChange(of: store.isPaused) { cancelConstellation() }
         .onChange(of: scenePhase) { invalidateInteraction(); updateSuspension() }
+        .onChange(of: store.persistenceNotice) { invalidateInteraction(); finishHandoffIfReady(); updateSuspension() }
         .onChange(of: settings) { technique.cancel(); finishHandoffIfReady(); updateSuspension() }
         .onChange(of: store.sceneReady) { finishHandoffIfReady(); updateSuspension() }
         .onChange(of: flow) { cancelConstellation(); technique.cancel(); updateSuspension() }
@@ -136,6 +137,13 @@ import StarfallCore
         .onChange(of: technique.preview) { refreshTechnique() }
         .onChange(of: reduceMotion) { invalidateInteraction() }
         .task(id: handoffKey) { await presentHandoff() }
+        .alert(store.persistenceNotice?.title ?? "", isPresented: Binding(
+            get: { store.persistenceNotice != nil && !settings },
+            set: { if !$0 { store.dismissPersistenceNotice() } })) {
+                Button(SkyCopy.text(.actionDone)) { store.dismissPersistenceNotice() }
+            } message: {
+                Text(store.persistenceNotice?.message ?? "")
+            }
         .sheet(item: $menu, onDismiss: { if voiceOver && !showingCeremony { menuFocused = true } }) { destination in
             settingsView(destination)
         }
@@ -400,12 +408,12 @@ import StarfallCore
     }
 
     private func updateSuspension() {
-        store.setSuspended(scenePhase != .active || settings || showingCeremony || !store.sceneReady)
+        store.setSuspended(scenePhase != .active || settings || store.persistenceNotice != nil || showingCeremony || !store.sceneReady)
     }
 
     private func finishHandoffIfReady() {
         guard let id = flow.handoff?.id,
-              let startsClock = flow.completeHandoff(id, ready: store.sceneReady, active: scenePhase == .active, modal: settings) else { return }
+              let startsClock = flow.completeHandoff(id, ready: store.sceneReady, active: scenePhase == .active, modal: settings || store.persistenceNotice != nil) else { return }
         updateSuspension()
         if startsClock && !store.game.isOver && store.isPaused { store.togglePause() }
     }
