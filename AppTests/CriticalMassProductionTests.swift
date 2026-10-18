@@ -12,23 +12,30 @@ final class CriticalMassProductionTests: XCTestCase {
         let presenter = FallingSkyRecorder(), clock = ManualRainClock()
         let store = FallingSkyStore(defaults: defaults, arguments: [], presenter: presenter, clock: clock)
         store.setSuspended(false)
-        XCTAssertEqual(store.game, game)
+        XCTAssertEqual(store.game, game.disablingAutomaticAging())
         XCTAssertTrue(try XCTUnwrap(CriticalMassPresentation.warning(game: game)).contains("1 shower"))
         XCTAssertTrue(CriticalMassPresentation.consequence(game: game, cell: Cell(0,2)).contains("Stage 3"))
+        XCTAssertNil(CriticalMassPresentation.warning(game: store.game))
+        XCTAssertEqual(CriticalMassPresentation.consequence(game: store.game, cell: Cell(0,2)), "")
+        let gem = try XCTUnwrap(store.game.gem(at: Cell(0,2)))
+        let node = FallingSkyCharacter(gem: gem, step: 44)
+        CriticalMassPresentation.configure(node, game: store.game, cell: Cell(0,2), step: 44)
+        XCTAssertNil(node.character.shader)
+        XCTAssertNil(node.childNode(withName: "sky.critical-mass"))
         let before = store.game
         store.setSuspended(true); clock.advance(100); XCTAssertEqual(store.game, before)
         store.setSuspended(false); store.callShower()
         let committed = store.game
-        XCTAssertFalse(try XCTUnwrap(store.pending).stellarCollapses.isEmpty)
-        XCTAssertEqual(store.changingColumns, Set(0..<7))
-        XCTAssertTrue(store.message.contains("implosion swallowed"))
+        XCTAssertTrue(try XCTUnwrap(store.pending).stellarCollapses.isEmpty)
+        XCTAssertEqual(store.changingColumns, [6], "Only the arriving column is busy after retiring the collapse")
+        XCTAssertFalse(store.message.contains("implosion swallowed"))
         XCTAssertEqual(try SkySaveArchive.decode(XCTUnwrap(defaults.data(forKey: SkySaveArchive.key))), committed)
         store.setSuspended(true); presenter.finish()
         XCTAssertEqual(store.game, committed)
         let restored = FallingSkyStore(defaults: defaults, arguments: [], presenter: FallingSkyRecorder())
         XCTAssertEqual(restored.game, committed); XCTAssertTrue(restored.isPaused)
         store.restart(sameSky: true); presenter.finish()
-        XCTAssertTrue(store.game.hasCriticalMass); XCTAssertEqual(store.game.lostStarlight, 0)
+        XCTAssertFalse(store.game.hasCriticalMass); XCTAssertEqual(store.game.lostStarlight, 0)
         XCTAssertTrue(store.game.board.allSatisfy { $0 == nil })
     }
 
@@ -53,16 +60,16 @@ final class CriticalMassProductionTests: XCTestCase {
         XCTAssertNil(SkySaveArchive.load(from: defaults), "Old envelopes cannot smuggle an aging rule")
     }
 
-    @MainActor func testNewSkiesUsePressureWhileFirstLightAndRetainedReplayDoNot() {
+    @MainActor func testNewSkiesAndReplayDisablePressure() {
         let suite = "CriticalMass.New.\(UUID())", defaults = UserDefaults(suiteName: suite)!
         defer { defaults.removePersistentDomain(forName: suite) }
         let store = FallingSkyStore(defaults: defaults, arguments: ["--starfalls-reset"], presenter: FallingSkyRecorder())
-        XCTAssertTrue(store.game.hasCriticalMass)
+        XCTAssertFalse(store.game.hasCriticalMass)
         XCTAssertEqual(store.game.cadenceID, .announcedCycleV1)
         XCTAssertEqual(store.game.adoptingFeedingDusk(), store.game)
         store.startFirstLight(); XCTAssertFalse(store.game.hasCriticalMass)
         store.restart(sameSky: true); XCTAssertFalse(store.game.hasCriticalMass)
-        store.restart(sameSky: false); XCTAssertTrue(store.game.hasCriticalMass)
+        store.restart(sameSky: false); XCTAssertFalse(store.game.hasCriticalMass)
         XCTAssertEqual(store.game.cadenceID, .announcedCycleV1)
     }
 
@@ -75,14 +82,14 @@ final class CriticalMassProductionTests: XCTestCase {
             for _ in 0..<8 { XCTAssertNotNil(saved.letStarsFall()) }
             defaults.set(try SkySaveArchive.encode(saved), forKey: SkySaveArchive.key)
             let store = FallingSkyStore(defaults: defaults, arguments: [], presenter: FallingSkyRecorder())
-            XCTAssertEqual(store.game, saved)
+            XCTAssertEqual(store.game, saved.disablingAutomaticAging())
             XCTAssertEqual(store.game.cadenceID, cadence)
             store.restart(sameSky: true)
-            XCTAssertEqual(store.game, initial)
+            XCTAssertEqual(store.game, initial.disablingAutomaticAging())
             XCTAssertEqual(store.game.cadenceID, cadence)
             store.restart(sameSky: false)
             XCTAssertEqual(store.game.cadenceID, .announcedCycleV1)
-            XCTAssertTrue(store.game.hasCriticalMass)
+            XCTAssertFalse(store.game.hasCriticalMass)
         }
     }
 

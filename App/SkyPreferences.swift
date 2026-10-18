@@ -4,12 +4,14 @@ import StarfallCore
 /// A value snapshot of selected Core rules. No store, save or clock side effects.
 struct SkyHelpContext: Equatable {
     let criticalMass: Bool
+    let pocketedDusk: Bool
     let duskRule: DuskRule
     let challenge: Bool
     let openingCascade: Bool
     let opalStorms: Bool
 
     init(game: FallingSky) {
+        pocketedDusk = game.hasPocketedDusk
         criticalMass = game.hasCriticalMass; duskRule = game.duskRule
         challenge = game.challenge != nil; openingCascade = game.hasOpeningCascade
         opalStorms = game.generation != .legacy
@@ -105,7 +107,7 @@ struct SkyHowToPlay: View {
                     Text(SkyCopy.text(.helpRetained))
                 }
             }
-            if !context.criticalMass && !context.challenge {
+            if !context.pocketedDusk && !context.challenge {
                 Section(SkyCopy.text(.helpDuskTitle)) {
                     if context.duskRule == .legacy {
                         Text(SkyCopy.text(.helpDarkLegacy))

@@ -10,6 +10,7 @@ public struct StarfallGem: Codable, Equatable, Sendable, Identifiable {
     public var stellarAge: Int { savedStellarAge ?? 0 }
     public var massStage: Int { max(grown ? 2 : 1, 1 + stellarAge / CriticalMassRule.showersPerStage) }
     public var isCritical: Bool { massStage == 3 }
+    mutating func removeStellarAge() { savedStellarAge = nil }
     mutating func ageStar() { savedStellarAge = stellarAge + 1 }
     func validStellarAge(enabled: Bool) -> Bool {
         guard let age = savedStellarAge else { return true }
@@ -99,6 +100,15 @@ public struct FallingSky: Codable, Equatable, Sendable {
     private var retiredMagnetic: Int?
     private var savedCriticalMassRule: Int?
     public var hasCriticalMass: Bool { savedCriticalMassRule == CriticalMassRule.version }
+    /// Version 2 retires aging while preserving the no-Dusk generator and lost-light ledger.
+    public var hasPocketedDusk: Bool { savedCriticalMassRule != nil }
+    public func disablingAutomaticAging() -> FallingSky {
+        guard hasCriticalMass else { return self }
+        var result = self
+        result.savedCriticalMassRule = CriticalMassRule.retiredVersion
+        for index in result.board.indices { result.board[index]?.removeStellarAge() }
+        return result
+    }
     private var savedDuskRule: Int?
     private var unscoredStarlight: Int?
     public var duskRule: DuskRule { DuskRule(rawValue: savedDuskRule ?? 0) ?? .legacy }
@@ -106,7 +116,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
 
     /// Explicit app migration. Committed board/score/preview/RNG/cadence stay intact.
     public func adoptingFeedingDusk() -> FallingSky {
-        guard !hasCriticalMass, challenge == nil, duskRule != .patientFeeding else { return self }
+        guard !hasPocketedDusk, challenge == nil, duskRule != .patientFeeding else { return self }
         var adopted = self
         adopted.savedDuskRule = DuskRule.patientFeeding.rawValue
         adopted.unscoredStarlight = lostStarlight
@@ -168,7 +178,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
     /// Current normal-app entry point. Explicit initializers still reconstruct retained versions.
     public static func freshSurvival(seed: UInt64, balance: StarfallBalance = StarfallBalance()) -> FallingSky {
         FallingSky(seed: seed, balance: balance, generation: .current,
-                   cadence: .announcedCycleV1, criticalMass: true)
+                   cadence: .announcedCycleV1, criticalMass: true).disablingAutomaticAging()
     }
 
     public init(challenge: StarfallChallenge) {
@@ -185,7 +195,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
         replay.turns = 0
         replay.starsLanded = 0
         replay.darkStarsCleared = 0
-        replay.unscoredStarlight = duskRule != .legacy || hasCriticalMass ? 0 : nil
+        replay.unscoredStarlight = duskRule != .legacy || hasPocketedDusk ? 0 : nil
         replay.orbit = nil; replay.nextGravityID = nil; replay.retiredMagnetic = nil
         replay.blockedColumn = nil
         replay.random = SeededRandom(seed: seed)
@@ -474,12 +484,12 @@ public struct FallingSky: Codable, Equatable, Sendable {
             ? heights.indices.filter { heights[$0] <= 4 }.min { heights[$0] < heights[$1] } : nil
         let count = reliefColumn == nil ? (storm ? 5 : naturalCount) : 5
         let darkIndex: Int?
-        if !hasCriticalMass, let gap = balance.darkStars.showerGap, showersUntilDark == 0 {
+        if !hasPocketedDusk, let gap = balance.darkStars.showerGap, showersUntilDark == 0 {
             darkIndex = reliefColumn == nil ? Int(random.next() % UInt64(count)) : 3 + Int(random.next() % 2)
             showersUntilDark = gap.lowerBound - 1 + Int(random.next() % UInt64(gap.count))
         } else {
             darkIndex = nil
-            if !hasCriticalMass, balance.darkStars != .none { showersUntilDark -= 1 }
+            if !hasPocketedDusk, balance.darkStars != .none { showersUntilDark -= 1 }
         }
         let sharedKind = cohesiveShowers == true ? random.jewel() : nil
         // A fresh sky teaches the clear immediately with three adjacent stars.
@@ -563,13 +573,13 @@ public struct FallingSky: Codable, Equatable, Sendable {
     }
 
     public var isValidSave: Bool {
-        guard savedCriticalMassRule == nil || savedCriticalMassRule == CriticalMassRule.version,
-              !hasCriticalMass || (challenge == nil && generation == .standardSky && duskRule == .legacy
+        guard [nil, CriticalMassRule.version, CriticalMassRule.retiredVersion].contains(savedCriticalMassRule),
+              !hasPocketedDusk || (challenge == nil && generation == .standardSky && duskRule == .legacy
                 && !board.contains(where: { $0?.isDark == true }) && !incoming.contains(where: \.isDark)),
               board.allSatisfy({ ($0?.validStellarAge(enabled: hasCriticalMass) ?? true) && (($0?.stellarAge ?? 0) == 0 || ($0?.stellarAge ?? 0) < turns) }),
               SkyGeneration(rawValue: savedGeneration ?? 0) != nil,
               DuskRule(rawValue: savedDuskRule ?? 0) != nil,
-              (duskRule != .legacy || hasCriticalMass) ? (unscoredStarlight != nil && lostStarlight >= 0 && lostStarlight <= starsLanded) : unscoredStarlight == nil,
+              (duskRule != .legacy || hasPocketedDusk) ? (unscoredStarlight != nil && lostStarlight >= 0 && lostStarlight <= starsLanded) : unscoredStarlight == nil,
               board.allSatisfy({ $0?.validDuskFeeds(rule: duskRule) ?? true }),
               duskRule != .legacy || board.allSatisfy({ ($0?.duskFeeds ?? 0) == 0 }) else { return false }
         if generation != .legacy && cohesiveShowers != true { return false }

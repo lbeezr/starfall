@@ -155,8 +155,8 @@ final class CriticalMassTests: XCTestCase {
     func testFreshSurvivalSelectsLongerCycleWithoutChangingSeededRuleHistory() throws {
         for seed in UInt64(0)..<8 {
             var fresh = FallingSky.freshSurvival(seed: seed)
-            var retained = FallingSky(seed: seed, generation: .current, cadence: .announcedCycleV2, criticalMass: true)
-            XCTAssertTrue(fresh.hasCriticalMass)
+            var retained = FallingSky(seed: seed, generation: .current, cadence: .announcedCycleV2, criticalMass: true).disablingAutomaticAging()
+            XCTAssertFalse(fresh.hasCriticalMass)
             XCTAssertEqual(fresh.cadenceID, .announcedCycleV1)
             for _ in 0..<40 {
                 // Cadence is the sole saved-state difference, including RNG and future preview.
@@ -192,4 +192,46 @@ final class CriticalMassTests: XCTestCase {
         XCTAssertFalse(FallingSky(challenge: .firstLight).hasCriticalMass)
     }
 
+}
+
+extension CriticalMassTests {
+    func testRetiringAgingPreservesCommittedRoundAndNeverCollapsesAgain() throws {
+        for seed in UInt64(0)..<20 {
+            var old = FallingSky(seed: seed, generation: .current, criticalMass: true)
+            for _ in 0..<16 where !old.isOver {
+                if let cell = old.legalGroups.first?.first { _ = old.clear(cell) }
+                old.letStarsFall()
+            }
+            var calm = old.disablingAutomaticAging()
+            XCTAssertFalse(calm.hasCriticalMass)
+            XCTAssertTrue(calm.hasPocketedDusk)
+            XCTAssertEqual(calm.disablingAutomaticAging(), calm)
+            XCTAssertEqual(calm.adoptingFeedingDusk(), calm)
+            XCTAssertEqual(calm.score, old.score)
+            XCTAssertEqual(calm.lostStarlight, old.lostStarlight)
+            XCTAssertEqual(calm.incoming, old.incoming)
+            XCTAssertEqual(calm.board.map { $0?.id }, old.board.map { $0?.id })
+            XCTAssertEqual(calm.board.map { $0?.grown }, old.board.map { $0?.grown })
+            XCTAssertTrue(calm.isValidSave)
+            XCTAssertTrue(calm.board.allSatisfy { ($0?.stellarAge ?? 0) == 0 })
+            var restored = try JSONDecoder().decode(FallingSky.self, from: JSONEncoder().encode(calm))
+            XCTAssertEqual(calm, restored)
+            for _ in 0..<40 where !calm.isOver {
+                if let cell = calm.legalGroups.first?.first { _ = calm.clear(cell); _ = restored.clear(cell) }
+                XCTAssertTrue(try XCTUnwrap(calm.letStarsFall()).stellarCollapses.isEmpty)
+                restored.letStarsFall()
+                XCTAssertEqual(calm, restored)
+                XCTAssertTrue(calm.isValidSave)
+                XCTAssertTrue(calm.board.allSatisfy { ($0?.stellarAge ?? 0) == 0 })
+                XCTAssertFalse(calm.incoming.contains(where: \.isDark))
+                XCTAssertEqual(calm.lostStarlight, old.lostStarlight)
+            }
+            XCTAssertTrue(calm.replay().isValidSave)
+            XCTAssertFalse(calm.replay().hasCriticalMass)
+        }
+        let challenge = FallingSky(challenge: .firstLight)
+        XCTAssertEqual(challenge.disablingAutomaticAging(), challenge)
+        let dusk = DuskFixture.imminent.game()
+        XCTAssertEqual(dusk.disablingAutomaticAging(), dusk)
+    }
 }
