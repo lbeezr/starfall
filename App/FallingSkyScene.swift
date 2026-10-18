@@ -136,12 +136,15 @@ import StarfallCore
                 let node = makeNode(gem); node.position = point(cell)
                 node.zPosition = CGFloat(7-cell.row)
                 if game.isGrowthBlocked(at: cell) { shade(node) }
+                DuskPresentation.configure(node, game: game, cell: cell, step: step)
+                if let threats = DuskPresentation.threats(game: game, cell: cell, point: point, step: step) { grid.addChild(threats) }
                 pieces.addChild(node); nodes[gem.id] = node; cellsByID[gem.id] = cell
             }
         } }
     }
 
     private func finishColumns(_ columns: Set<Int>, completion: () -> Void) {
+        let previousDrain = nodes.mapValues { $0.userData?["dusk.drained"] as? Bool ?? false }
         animatingColumns.subtract(columns)
         if let rendered {
             if animatingColumns.isEmpty { renderSnapshot(rendered, preservingInput: true) }
@@ -149,6 +152,14 @@ import StarfallCore
                 renderColumns(columns, from: rendered)
                 for (id, cell) in cellsByID where !animatingColumns.contains(cell.column) {
                     nodes[id]?.alpha = rendered.isGrowthBlocked(at: cell) ? 0.65 : 1
+                }
+            }
+            if !reduceMotion && !UIAccessibility.isReduceMotionEnabled && !UIAccessibility.isVoiceOverRunning {
+                for (id, cell) in cellsByID where !animatingColumns.contains(cell.column) {
+                    if let node = nodes[id] {
+                        DuskPresentation.transition(node, wasDrained: previousDrain[id] ?? false,
+                            drained: rendered.isDrained(at: cell), effects: effects, step: step)
+                    }
                 }
             }
         }
@@ -185,7 +196,7 @@ import StarfallCore
                 node.run(.sequence([.scale(to: 0.91, duration: StarfallMotion.gatherDuration), .group([.fadeOut(withDuration: 0.12), .scale(to: 1.2, duration: 0.12), .rotate(byAngle: 0.18, duration: 0.12)]), .removeFromParent()]))
             }
         }
-        if turn.collected > 0, !turn.cleared.isEmpty {
+        if !turn.cleared.isEmpty {
             let label = SKLabelNode(text: "+\(turn.collected)")
             label.fontName = "AvenirNext-Bold"; label.fontSize = step * 0.55
             label.fontColor = .white; label.verticalAlignmentMode = .center
@@ -606,6 +617,15 @@ extension FallingSkyScene {
             presentation.append(.sequence([.wait(forDuration: timeline.flightStart), arrivalFlights(turn.arrivals),
                                            .wait(forDuration: StarfallMotion.landingDuration)]))
         }
-        run(.sequence([.group(presentation), .run { [weak self] in self?.render(game); completion() }]))
+        var sequence: [SKAction] = []
+        if !turn.duskCollapses.isEmpty {
+            sequence = [.run { [weak self] in
+                guard let self else { return }
+                DuskPresentation.collapse(turn.duskCollapses, from: old, nodes: self.nodes,
+                    effects: self.effects, point: self.point, step: self.step)
+            }, .wait(forDuration: DuskPresentation.collapseDuration)]
+        }
+        sequence += [.group(presentation), .run { [weak self] in self?.render(game); completion() }]
+        run(.sequence(sequence))
     }
 }

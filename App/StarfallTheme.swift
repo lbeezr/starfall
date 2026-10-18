@@ -42,6 +42,11 @@ enum StarfallTheme {
         static let softContactShadow = contactShadow.withAlphaComponent(0.23)
     }
 
+    enum Dusk {
+        static let core = UIColor(red: 0.025, green: 0.015, blue: 0.065, alpha: 1)
+        static let rim = UIColor(red: 0.74, green: 0.57, blue: 1, alpha: 1)
+    }
+
     /// Celestial gravity materials and their finite formation/attraction cues.
     enum Gravity {
         static let magneticLight = UIColor(red: 1, green: 0.82, blue: 0.42, alpha: 1)

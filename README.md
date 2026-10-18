@@ -8,7 +8,7 @@ A small native iOS falling-sky puzzle. Clear matching stars as showers fill the 
 
 ## How to play
 
-- **Clear a match:** Horizontally or vertically connected matching jewels must total at least 3 starlight. Normal jewels count as 1; large jewels with a luminous double silhouette and paired glints count as 2. Their soft aura gently pulses in normal motion. Clear beside a dark star to dissolve it and unblock nearby growth.
+- **Clear a match:** Horizontally or vertically connected matching jewels must total at least 3 starlight. Normal jewels count as 1; large jewels with a luminous double silhouette and paired glints count as 2. Their soft aura gently pulses in normal motion. Clear beside Dusk to dissolve it early; gray neighbors still match and grow, but score zero until released.
 - **Keep playing:** Ready groups stay interactive while other columns settle. A contact outline acknowledges touch; changing columns briefly wait, and short ordinary finger drift stays a tap.
 - **Draw a constellation:** Swipe through five or more neighboring matching stars, including diagonals, then lift. Only the stars you traced clear; retrace to branch. Drawing holds the next shower until release or cancellation.
 - **Understand the sky:** Characters explain play, storm counts and timing warnings in one bottom chat. Tap the retained portrait to reread a message. Six conversation portraits and bundled scripts share one reusable presentation; [edit or preview dialogue](App/DialogueScripts/README.md).
@@ -18,6 +18,9 @@ A small native iOS falling-sky puzzle. Clear matching stars as showers fill the 
 New skies start empty, then open with four closely spaced animated showers. Clear between waves as they settle; the default rhythm then repeats six showers at two seconds, three at 1.7 seconds, and three at 2.5 seconds. The faster passage is announced in advance. Saved older skies and First Light keep their original cadence. At the gentle/steady settings, showers retain the selected fixed interval. New skies offer a match in the first shower. Matching colors travel together; dry boards receive a matching run in a later preview when a low column has room. The [compact HUD](docs/evidence/compact-hud-2026-10-17/README.md) keeps score/goal and the sky menu above the board, with an arrival cue instead of the exact forecast strip.
 
 New survival skies also use the approved [Opal and storm rules](docs/design/WHITE_STAR_AND_STORMS.md): a white Opal Orb can join the colored family you start on, and nine lighter showers alternate with three heavy showers. Clearing spends any included Opal; she is worth one light and never grows. Density and timing cues describe separate parts of the forecast. Older saved skies and replays keep their generation; First Light excludes both mechanics. [Integration evidence](docs/evidence/opal-main-integration-2026-10-17/README.md) distinguishes tested behavior from human enjoyment, which remains unmeasured.
+
+Dusk feeds on each shower with a touching colored star or Opal. After three feeds, it briefly becomes a black hole, consumes those neighbors for zero points, then disappears. Clear beside it early to restore surviving stars, or let it consume an awkward cluster for space. [Rules and production checks](docs/design/DUSK_FEEDING.md).
+
 
 Attraction fields and orbiting holes are removed from normal play. Saved rounds keep their score and remaining stars; held stars settle and upcoming fields become ordinary stars. Replay also stays free of gravity specials. [Removal and save compatibility](docs/evidence/gravity-removal-2026-10-17/README.md).
 
@@ -96,7 +99,7 @@ The selected [environment art direction](docs/design/environments/PRODUCTION.md)
 
 The [shower forecast](docs/evidence/shower-forecast-adoption-2026-10-17/README.md) follows the upper camera contour on the calibrated iPhone 17 and iPhone 16 Pro Max portrait layouts. Other iPhones, tablets and accessible layouts show the same ordered incoming stars along a straight header trail. Physical camera fit remains unverified.
 
-Dusk still blocks growth; Opal still joins a color. The former gravity setup is retired; historical generation readers and reset-only Debug histories remain for save compatibility and regression testing.
+Dusk now feeds toward a zero-point neighborhood collapse; Opal still joins a color. The former gravity setup is retired; historical generation readers and reset-only Debug histories remain for save compatibility and regression testing.
 
 [Scoped reliability hardening](docs/design/RELIABILITY_POLISH.md) gives drawing explicit hold ownership, fingerprints package build inputs, and verifies camera layout against the full local canvas. Remaining physical/RC checks stay separate from development integration.
 

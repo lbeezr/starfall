@@ -45,7 +45,7 @@ final class ObservatoryInteractionTests: XCTestCase {
             // Hitting a native coordinate at the projected far/right cell exercises actual event dispatch.
             let back = app.buttons["experiment.cell.\(dense ? 6 : 2).6"]
             XCTAssertTrue(back.isHittable)
-            let value = Int((back.value as! String).split(separator: " ")[0])!
+            let value = Int((back.value as! String).split(separator: ",").last!.split(separator: " ")[0])!
             XCTAssertGreaterThanOrEqual(value, 3)
             let point = app.coordinate(withNormalizedOffset: .zero).withOffset(CGVector(dx: back.frame.midX, dy: back.frame.midY))
             point.tap()
@@ -53,7 +53,7 @@ final class ObservatoryInteractionTests: XCTestCase {
             let front = app.buttons["experiment.cell.0.0"]
             XCTAssertTrue(front.isHittable)
             XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: front).wait(timeout: 5))
-            let second = Int((front.value as! String).split(separator: " ")[0])!
+            let second = Int((front.value as! String).split(separator: ",").last!.split(separator: " ")[0])!
             XCTAssertGreaterThanOrEqual(second, 3)
             front.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
             XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "\(value+second) starlight"), object: app.staticTexts["experiment.score"]).wait(timeout: 5))
@@ -108,7 +108,7 @@ extension ObservatoryInteractionTests {
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == %@", "Responding"), object: telescope).wait(timeout: 2))
         XCTAssertEqual(app.otherElements["experiment.board"].value as? String, initial)
         let first = app.buttons["experiment.cell.0.0"]
-        let value = Int((first.value as! String).split(separator: " ")[0])!
+        let value = Int((first.value as! String).split(separator: ",").last!.split(separator: " ")[0])!
         first.tap()
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "\(value) starlight"), object: app.staticTexts["experiment.score"]).wait(timeout: 5))
         capture(app,"Observatory-calm-effects")
@@ -169,7 +169,7 @@ extension ObservatoryInteractionTests {
             let back = app.buttons["experiment.cell.6.6"]
             XCTAssertGreaterThanOrEqual(back.frame.width, 44)
             XCTAssertGreaterThanOrEqual(back.frame.height, 44)
-            let value = Int((back.value as! String).split(separator: " ")[0])!
+            let value = Int((back.value as! String).split(separator: ",").last!.split(separator: " ")[0])!
             back.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
             XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "\(value) starlight"), object: app.staticTexts["experiment.score"]).wait(timeout: 5))
             capture(app,"Observatory-native-orientation-\(orientation.rawValue)")
@@ -206,7 +206,7 @@ extension ObservatoryInteractionTests {
         let edge = app.buttons["experiment.cell.0.0"]
         XCTAssertGreaterThanOrEqual(edge.frame.minX, app.frame.minX)
         XCTAssertLessThanOrEqual(edge.frame.maxX, app.frame.maxX)
-        let value = Int((edge.value as! String).split(separator: " ")[0])!
+        let value = Int((edge.value as! String).split(separator: ",").last!.split(separator: " ")[0])!
         edge.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "\(value) starlight"), object: app.staticTexts["experiment.score"]).wait(timeout: 5))
 
@@ -252,7 +252,7 @@ extension ObservatoryInteractionTests {
             try vo.focus(element, expecting: text)
         }
         func activate() { vo.activate() }
-        try focus(app.buttons["experiment.cell.1.3"], expecting: "Dark star, Dusk")
+        try focus(app.buttons["experiment.cell.1.3"], expecting: "Dusk")
         try focus(app.buttons["experiment.cell.3.6"], expecting: "Empty, row 4, column 7")
         try focus(app.buttons["experiment.cell.1.1"], expecting: "Large")
         try focus(app.buttons["experiment.cell.0.0"], expecting: "Sunny, row 7, column 1")

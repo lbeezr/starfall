@@ -15,6 +15,8 @@ The production renderer combines nine packaged transparent celestial cutouts wit
 
 Names and point counts are presentation cues. Normal stars remain worth 1, grown stars 2 and dark stars 0. Core rules, RNG, saves and body sizes are unchanged. Grown board stars now carry a warm luminous double silhouette and two fixed diamond glints; [readability evidence](../../evidence/grown-star-readability-2026-10-17/README.md) records checks and limits. Existing VoiceOver descriptions retain color, shape, name, position and value. Dusk's grown expression is a reusable material slot, not a new rule.
 
+**Dusk update:** Matching weight remains 1/2, but touching stars/Opals become gray and score zero. A thin original-color edge and native shape/name preserve family recognition; grown glints remain. Three feeding marks, inward strokes and a growing halo/core communicate the bounded collapse. [Current Dusk contract](../DUSK_FEEDING.md).
+
 ## Body, face and shadow ownership
 
 The offline packaging tool splits the transparent plate, keeps each body's largest connected alpha island, normalizes coverage and fits its existing proportions into a centered 256×256 canvas. Body extent is at most 208 pixels, inside the existing 212-pixel display-size contract. It removes stray disconnected glints rather than carrying neighboring cutout fragments into the game. No labels or ground shadows are packaged.

@@ -240,23 +240,23 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         self.presenter = presenter ?? scene
         // SwiftUI may construct stores for discarded view values. Keep initialization read-only.
         if !arguments.contains("--starfalls-reset"), let saved = SkySaveArchive.load(from: defaults) {
-            game = saved.removingGravity()
+            game = saved.removingGravity().adoptingFeedingDusk()
             hasSavedSky = true
             guide(saved.outcome == .won ? "guide.won" : saved.isOver ? "guide.full" : "guide.restore", values: saved.isOver ? ["score": String(saved.score)] : [:])
         } else {
             let argument = arguments.first { $0.hasPrefix("--starfalls-seed=") }
             let seed = argument.flatMap { UInt64($0.dropFirst("--starfalls-seed=".count)) } ?? 5
-            game = FallingSky(seed: seed, generation: .current)
+            game = FallingSky(seed: seed, generation: .current, duskRule: .feeding)
         }
         #if DEBUG
         if arguments.contains("--starfalls-reset"), arguments.contains("--observatory-review") {
-            game = ObservatoryReviewFixture.game(dense: arguments.contains("--observatory-dense"))
+            game = ObservatoryReviewFixture.game(dense: arguments.contains("--observatory-dense")).adoptingFeedingDusk()
         }
         #endif
         #if DEBUG
         if arguments.contains("--starfalls-reset"), let name = arguments.first(where: { $0.hasPrefix("--constellation-fixture=") }),
            let fixture = ConstellationFixture(rawValue: String(name.dropFirst("--constellation-fixture=".count))) {
-            game = fixture.game()
+            game = fixture.game().adoptingFeedingDusk()
             guide("guide.fixture", values: ["detail": fixture.title + ". Draw through matching stars."])
         }
         #endif
@@ -264,7 +264,14 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         #if DEBUG
         if arguments.contains("--starfalls-reset"), let name = arguments.first(where: { $0.hasPrefix("--gravity-fixture=") }),
            let fixture = GravityFixture(rawValue: String(name.dropFirst("--gravity-fixture=".count))) {
-            game = fixture.game(); guide("guide.fixture", values: ["detail": fixture.message])
+            game = fixture.game().adoptingFeedingDusk(); guide("guide.fixture", values: ["detail": fixture.message])
+        }
+        #endif
+        #if DEBUG
+        if arguments.contains("--starfalls-reset"), let name = arguments.first(where: { $0.hasPrefix("--dusk-fixture=") }),
+           let fixture = DuskFixture(rawValue: String(name.dropFirst("--dusk-fixture=".count))) {
+            game = fixture.game().adoptingFeedingDusk()
+            guide("guide.dusk-arrival")
         }
         #endif
         refreshCadence()
@@ -313,7 +320,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
             let gem = game.gem(at: cell)
             let id = gem?.gravityKind == .hole ? "guide.hole-help"
                 : gem?.gravityKind == .magnet ? "guide.magnet-help"
-                : gem?.isDark == true ? "guide.dark-help"
+                : gem?.isDark == true ? (game.duskRule == .feeding ? "guide.dusk-help" : "guide.dark-help")
                 : gem?.isLight == true ? "guide.opal-help" : "guide.match-help"
             guide(id, visible: true)
             feedback.announce(guideLine.spokenText)
@@ -439,18 +446,21 @@ enum SkyTerminalSpeech { case feedback, ceremony }
             guide("guide.won", values: ["score": String(game.score)])
         } else if turn.blockedColumn != nil {
             guide("guide.full", values: ["score": String(game.score)])
-        } else if turn.collected > 0 {
+        } else if !turn.duskCollapses.isEmpty {
+            let count = Set(turn.duskCollapses.flatMap(\.consumed)).count
+            guide("guide.dusk-collapse", values: ["stars": String(count)])
+        } else if !turn.cleared.isEmpty {
             if dissolved > 0 {
-                guide("guide.dissolved", values: ["score": String(turn.collected), "dark": dissolved == 1 ? "Dark star" : "Dark stars"])
+                guide("guide.dissolved", values: ["score": String(turn.collected), "dark": game.duskRule == .feeding ? (dissolved == 1 ? "Dusk" : "Dusks") : (dissolved == 1 ? "Dark star" : "Dark stars")])
             } else { guide("guide.clear", values: ["score": String(turn.collected)]) }
         } else if turn.arrivals.contains(where: { $0.gem.isDark }) {
-            guide("guide.dark-arrival")
+            guide(game.duskRule == .feeding ? "guide.dusk-arrival" : "guide.dark-arrival")
         } else if turn.arrivals.contains(where: { $0.gem.isLight }) {
             guide("guide.opal-arrival")
         } else if turn.arrivals.contains(where: { $0.gem.gravityKind == .magnet }) {
             guide("guide.magnet-arrival")
         } else if growth > 0 {
-            guide("guide.growth", values: ["growth": growth == 1 ? "A star grew" : "\(growth) stars grew"])
+            guide(game.duskRule == .feeding && game.board.enumerated().contains(where: { game.isDrained(at: Cell($0.offset/7,$0.offset%7)) }) ? "guide.dusk-growth" : "guide.growth", values: ["growth": growth == 1 ? "A star grew" : "\(growth) stars grew"])
         } else {
             guide("guide.arrival", values: ["arrival": turn.arrivals.count == 1 ? "One star arrived" : "\(turn.arrivals.count) stars arrived"])
         }
@@ -511,11 +521,11 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         freezeClock(); remaining = showerInterval
         settlePresentation(reason: "restart")
         if sameSky {
-            game = game.removingGravity().replay()
+            game = game.removingGravity().adoptingFeedingDusk().replay()
         } else {
             // First Light's fixed balance belongs to that challenge, not the next normal sky.
             let balance = game.challenge == nil ? game.balance : StarfallBalance()
-            game = FallingSky(seed: UInt64.random(in: 0...UInt64.max), balance: balance, generation: .current)
+            game = FallingSky(seed: UInt64.random(in: 0...UInt64.max), balance: balance, generation: .current, duskRule: .feeding)
         }
         refreshCadence()
         remaining = showerInterval
@@ -529,7 +539,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         feedback.stopSounds()
         freezeClock()
         settlePresentation(reason: "fixture")
-        game = fixture.game()
+        game = fixture.game().adoptingFeedingDusk()
         refreshCadence()
         remaining = showerInterval
         guide("guide.fixture", values: ["detail": fixture.title + ". Draw through matching stars."])
@@ -543,7 +553,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         isPaused = true
         feedback.stopSounds()
         freezeClock(); settlePresentation()
-        game = fixture.game(); refreshCadence(); remaining = showerInterval
+        game = fixture.game().adoptingFeedingDusk(); refreshCadence(); remaining = showerInterval
         guide("guide.fixture", values: ["detail": fixture.message])
         save(); presenter.render(game)
     }
@@ -644,7 +654,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     private(set) var generation: UInt64 = 0
     private(set) var sequence: UInt64 = 0
     var count: Int { Set(path).count }
-    var value: Int { snapshot?.value(of: Set(path)) ?? 0 }
+    var value: Int { snapshot?.reward(of: Set(path)) ?? 0 }
 
     @discardableResult func begin(_ cell: Cell, game: FallingSky, generation: UInt64, enabled: Bool) -> UInt64? {
         cancel()

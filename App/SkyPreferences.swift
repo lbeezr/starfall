@@ -69,7 +69,7 @@ struct SkyHowToPlay: View {
                 Text("Saved older skies and their replays keep their original showers. Choose New sky to try Opals, storms and attraction fields.")
             }
             Section("Dark stars") {
-                Text("Dark stars stop their four immediate neighbors from growing. Clear a matching group beside one to dissolve it. Dark stars award no starlight.")
+                Text("Dusk drains touching colored stars and Opals to zero reward; they still match and grow. Each shower with a touching star feeds Dusk once. On the third, it swallows those stars and disappears for space, without points. Clear beside Dusk to dissolve it early and restore surviving stars. The clearing group earns its reward before Dusk dissolves.")
             }
             Section("Take your time") {
                 Text("Pause to clear at your pace, or call one shower with Next shower. The menu and leaving the app freeze the sky. Missed showers never accumulate.")
