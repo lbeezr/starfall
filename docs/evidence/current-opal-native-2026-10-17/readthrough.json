@@ -1,0 +1,32 @@
+{
+  "baseMain": "60bb9d66ec95d9921377f3316d8049423bff088c",
+  "captureFilename": "dev-60bb9d6-wip-38edb5dd__orbit-guide-endings__iphone-17e__default-text.jpg",
+  "changedTestSHA256": "38edb5dd1ac274fe5ccc40098d1940ca2af0bd20738fa2bcbdef5776f76e1545",
+  "configuration": "Debug arm64 unsigned",
+  "coreLog": "/tmp/starfall-opal-guide-core.log",
+  "coreTests": {
+    "failed": 0,
+    "passed": 110
+  },
+  "device": "iPhone 17e / iOS 27.0 (24A434)",
+  "productSourcesUnchangedFromBase": true,
+  "rawAttachments": "/tmp/starfall-opal-guide-readthrough",
+  "result": {
+    "failed": 0,
+    "passed": 2,
+    "skipped": 0
+  },
+  "simulator": "D12E5EEC-D655-41F8-BF81-A81B27784253",
+  "snapshotID": "38edb5dd",
+  "testedDirtyPaths": [
+    " M UITests/ConstellationTraceNativeTests.swift",
+    " M docs/evidence/current-opal-native-2026-10-17/README.md",
+    "?? docs/evidence/current-opal-native-2026-10-17/guide-endings.jpg"
+  ],
+  "tests": [
+    "ConstellationTraceNativeTests/testCurrentOrbitFollowUpGuideReadsToEndWithoutMovingActionsOrBoard",
+    "ConstellationTraceNativeTests/testLongPausedGuidanceStaysBelowFrontStars"
+  ],
+  "toolchain": "Xcode 27.1 (27A9275), Swift 6.4",
+  "xcresult": "test_sim_2026-10-18T01-51-00-909Z_pid85535_ccb5e268.xcresult"
+}
