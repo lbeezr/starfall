@@ -3,11 +3,11 @@ import Foundation
 
 /// Debug-only deterministic input fixtures; never loaded without an explicit reset argument.
 public enum ConstellationFixture: String, CaseIterable {
-    case five, fourGrown, overlap, darkness, diagonalSix, opalChoice, opalTrace, opalPlanning, stormWarning
+    case five, fourGrown, overlap, darkness, diagonalSix, opalChoice, opalTrace, opalPlanning, opalStormPlanning, stormWarning
     public var title: String {
         switch self {
         case .opalTrace: "Trace through an Opal Orb"
-        case .opalPlanning: "Choose which match spends Opal"
+        case .opalPlanning, .opalStormPlanning: "Choose which match spends Opal"
         case .opalChoice: "An orb shared by different colors"
         case .stormWarning: "A storm approaches"
         case .diagonalSix: "Six diagonal stars"
@@ -19,6 +19,7 @@ public enum ConstellationFixture: String, CaseIterable {
     }
     public func game() -> FallingSky {
         if self == .opalPlanning { return planningSky() }
+        if self == .opalStormPlanning { return stormPlanningSky() }
         if self == .opalChoice || self == .opalTrace || self == .stormWarning { return naturalMechanicsSky() }
         var pink: Set<Cell> = [Cell(0,4),Cell(1,3),Cell(2,4),Cell(1,5),Cell(1,6)]
         if self == .diagonalSix { pink = Set((0..<6).map { Cell($0,$0) }) }
@@ -60,6 +61,33 @@ public enum ConstellationFixture: String, CaseIterable {
             }
         }
         precondition(game.isValidSave && game.score == 27)
+        return game
+    }
+
+    /// Current-generation study seed 180 / shower 12. Preserve both the
+    /// selected sets and walk order from its largest-immediate trajectory.
+    private func stormPlanningSky() -> FallingSky {
+        let taps: [Int: (Cell, Int)] = [
+            1: (Cell(0,1),3), 3: (Cell(0,0),3), 9: (Cell(0,0),4),
+            10: (Cell(3,6),4), 11: (Cell(1,5),3)
+        ]
+        let traces: [Int: ([Cell], Int)] = [
+            5: ([Cell(0,0),Cell(0,1),Cell(0,2),Cell(1,1),Cell(0,2),Cell(1,3),
+                 Cell(1,4),Cell(1,3),Cell(0,2),Cell(0,1),Cell(0,0)],7),
+            7: ([Cell(0,0),Cell(0,1),Cell(1,0),Cell(0,1),Cell(1,2),Cell(1,3),
+                 Cell(1,2),Cell(0,1),Cell(0,0)],6)
+        ]
+        var game = FallingSky(seed: 180, generation: .gravityOrbits)
+        for shower in 1...12 {
+            precondition(game.letStarsFall() != nil && !game.isOver)
+            if let (cell, reward) = taps[shower] {
+                precondition(game.clear(cell)?.collected == reward)
+            }
+            if let (path, reward) = traces[shower] {
+                precondition(game.clearConstellation(path)?.collected == reward)
+            }
+        }
+        precondition(game.isValidSave && game.score == 30 && game.orbit != nil)
         return game
     }
 

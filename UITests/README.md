@@ -27,3 +27,5 @@ Its active forecast/phase check verifies the final presentation integration: sep
 `testAutomaticStormCountsRecoverWithoutManualShowersOrClears` observes the complete three-heavy count and recovery using the actual automatic clock; it establishes sequence delivery, not a player reaction-time or preference result.
 
 Forecast tests assert the actual 148×50 contour on calibrated simulators and the header fallback at accessibility sizes. `testInputRecoversAfterMultitouchBackgroundAndSupportedRotation` rejects a native pinch, cancels a short trace, backgrounds/restores, draws again, and restores a menu; on iPad it also rotates before the successful drag. It does not synthesize a second finger during an existing one-finger hold.
+
+`testCurrentStormOrbitChoiceThroughTwoNativeTapOrders` uses current gravity-generation seed 180 to verify native three-plus-five versus three-plus-three tap outcomes and inspect both follow-ups. The nine-light branch needs a curved trace; Core/hosted coverage is distinct from OS-level curved-gesture acceptance.

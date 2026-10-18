@@ -14,6 +14,8 @@ Use this for the current default game. The older PLAYTEST and first-playtest kit
 4. After the round, ask what the warning/recovery meant, whether a deliberate smaller/equal clear paid off, and whether they want another sky. Keep exact short quotations and counterexamples. A player who never finds an Opal choice may be reporting frequency or legibility, not misunderstanding the rule.
 5. Only afterward, optionally demonstrate the existing Debug `opalPlanning` fixture using `--starfalls-reset --constellation-fixture=opalPlanning` on an isolated simulator. Ask for the first choice and predicted follow-up before explaining the seven-versus-six outcome. This prepared board is not an ordinary-round preference result; no new lab app, selector or phone-save reset is required.
 
+For a current-gravity prepared comparison, the reset-only `opalStormPlanning` fixture replays seed 180 / shower 12. Record whether the player notices field release separately from Opal preservation: the stronger follow-up leaves Opal untouched. Two ordinary taps yield eight versus six; the nine-light branch requires tracing five released Aqua stars. [Verification and remaining input limits](evidence/current-opal-native-2026-10-17/README.md). Use only after the uncoached ordinary-play observation.
+
 | Record per session | Observation |
 | --- | --- |
 | Source/build, new or retained sky, settings/device | Not collected |

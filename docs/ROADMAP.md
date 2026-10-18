@@ -62,6 +62,8 @@ The user selected an empty sky with an animated opening cascade, clearing before
 
 The [current gravity/phase diagnostic](evidence/current-storm-choices-2026-10-17/README.md) confirms more simultaneous sampled selections during storms in two fresh seed cohorts, while immediate Opal-preservation gains remain situational. Untimed reward policies rarely encounter active orbits; use ordinary native play for recognition, execution and combined-strategy evidence before tuning supply.
 
+The [current native planning check](evidence/current-opal-native-2026-10-17/README.md) follows seed 180 at the storm boundary. Its stronger follow-up comes from releasing an occupied field, while Opal remains unused. Keep native tap, hosted trace and pending curved-gesture/human evidence distinct; this is a prepared paused comparison, not measured storm-pressure performance.
+
 ## The next gameplay decision
 
 **Question:** Do shower changes create useful decisions and a readable rhythm, rather than more groups that feel equivalent?

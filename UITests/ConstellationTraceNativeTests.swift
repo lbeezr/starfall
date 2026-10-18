@@ -293,3 +293,33 @@ extension ConstellationTraceNativeTests {
         capture.lifetime = .keepAlways; add(capture)
     }
 }
+
+
+extension ConstellationTraceNativeTests {
+    @MainActor func testCurrentStormOrbitChoiceThroughTwoNativeTapOrders() {
+        for preserve in [true, false] {
+            let app = launch("opalStormPlanning")
+            score(30, app)
+            let hole = app.buttons["experiment.cell.1.5"]
+            XCTAssertTrue(hole.label.contains("Gravity hole"))
+            let orbs = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'experiment.cell.' AND label CONTAINS 'White Opal Orb'"))
+            XCTAssertEqual(orbs.count, 1)
+            if preserve {
+                let capture = XCTAttachment(screenshot: app.screenshot())
+                capture.name = "current-opal-orbit-choice-initial"; capture.lifetime = .keepAlways; add(capture)
+            }
+            let first = app.buttons[preserve ? "experiment.cell.0.4" : "experiment.cell.0.1"]
+            XCTAssertTrue(first.isHittable); first.tap(); score(33, app)
+            let next = app.buttons["experiment.cell.0.4"]
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true AND value == %@", preserve ? "5 starlight connected" : "3 starlight connected"), object: next).wait(timeout: 6))
+            XCTAssertEqual(orbs.count, preserve ? 1 : 0)
+            XCTAssertEqual(hole.label.contains("Gravity hole"), !preserve)
+            let capture = XCTAttachment(screenshot: app.screenshot())
+            capture.name = preserve ? "current-opal-released-follow-up" : "current-opal-spent-follow-up"
+            capture.lifetime = .keepAlways; add(capture)
+            XCTAssertTrue(next.isHittable); next.tap(); score(preserve ? 38 : 36, app)
+            XCTAssertEqual(orbs.count, preserve ? 1 : 0)
+            app.terminate()
+        }
+    }
+}
