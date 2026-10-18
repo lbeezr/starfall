@@ -63,3 +63,5 @@ Main advanced to `b24fde8e1084aaabdea8882cb1a299b5b799f450` (PRs #100/#101: evol
 [Current-source award review](AWARDS.md) adds a reproducible 26-star current-rule sample, native compact/large host captures and maximum-text fallback checks. It retains the existing art; repeated automatic and physical recognition remain open. Earlier timing measurements above keep their original source.
 
 [Repeated automatic sample](AUTOMATIC.md) records 31 showers, 44 starlight and three queried-ready non-scoring attempts. One occurs before any award; current-rule deadline-order checks pass, while exact native contact admission remains uninstrumented.
+
+[Actual native contact diagnosis](CONTACT_DIAGNOSIS.md) correlates a new instrumented run: twelve admitted contacts all commit; two denied contacts arrive after committed showers. The temporary logger is removed and original app bytes are restored. Earlier uninstrumented contacts retain their uncertainty.

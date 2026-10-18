@@ -4,6 +4,8 @@ This is the authoritative status register for gameplay and presentation experime
 
 ## Current decisions
 
+[Bounded native contact tracing](evidence/calibration-critical-mass-2026-10-18/CONTACT_DIAGNOSIS.md) is closed and removed. In its new automatic sample, two misses reach touch-down after the shower owns all columns; twelve admitted contacts commit normally. Only source-bound evidence and the historical patch remain; no app flag, logger or input/rule change is adopted. Physical comfort and earlier uninstrumented attempts retain their limits.
+
 [Forgiving swaps and one-gap constellation links](design/TOUCH_INTENT.md) extend the normal app at the user’s request. Short directional horizontal release can commit without a destination-cell hit; existing dwell remains available. Eligibility and selected paths share one empty-midpoint rule. [Current-source evidence](evidence/forgiving-input-main-2026-10-18/README.md) records verification and physical-feel limits.
 
 [Copy and character voices](evidence/copy-rewrite-2026-10-18/README.md) are integrated directly into the regular app at the user’s request, with one local dialogue/interface catalogue. Dusk teases only after committed consumption or a zero-reward drained clear. No rule/save change, pilot flag or alternate app. Human comprehension and tone remain playtest questions.

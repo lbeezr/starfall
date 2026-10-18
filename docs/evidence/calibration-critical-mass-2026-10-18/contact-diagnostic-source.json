@@ -1,0 +1,369 @@
+{
+  "source": "99d618ded6282732bc6c1914084a0807745b13ad",
+  "originMain": "834b7f55e6b8ecd8393033676251bb0ade0d00d9",
+  "baseTree": "adab4d453fb980344c87e4ba3fcf59dd73b9bfaf",
+  "baseHashes": {
+    "App/ConstellationTraceSurface.swift": "7f9c88c208fc811bdebebc32df32b69102ca307c77ed6d3e385a0e09e0975cd8",
+    "App/FallingSkyStore.swift": "5d6f269d4ad7bb8171f426b5a867b97637a19be04f8dc093120a7a294f5e29c6",
+    "App/FallingSkyView.swift": "26c59476ae0db1b824d8857f7c01ce2be9fd8ac47bde9003757905db0eb9bb41"
+  },
+  "instrumentedHashes": {
+    "App/ConstellationTraceSurface.swift": "9ca1ce4073e00a958404dfef35724cc801ecbca7ea795953c8ca76d4662fef8c",
+    "App/FallingSkyStore.swift": "cc8496f3701ef253df39489dfbaee4ee726f53a04596021583335021e2e77a29",
+    "App/FallingSkyView.swift": "26db74c4f8fca7ab974d48988d527580284cd78a47da49aefbad7d19848bbc22"
+  },
+  "patchSHA256": "6fdc618b9041aaa7580ab28888333efe1dd1d13a03c659cddb5d1d284ba7c0e9",
+  "rawLogSHA256": "7925e1934cb0c9cd35669cd4c7712912780d5542da5d2cdba28dec0da3169824",
+  "testProcessID": 12783,
+  "events": 415,
+  "eventCap": 1024,
+  "nativeSample": {
+    "seed": 28,
+    "requestedSeconds": 90,
+    "testSeconds": 100.226,
+    "attempts": 14,
+    "holdsGranted": 12,
+    "holdsDenied": 2,
+    "committedTaps": 12,
+    "staleSelectionsSkipped": 18,
+    "score": 51,
+    "showers": 31,
+    "terminal": false,
+    "sawEightLightCommit": true
+  },
+  "contacts": [
+    {
+      "attempt": 1,
+      "cell": [
+        1,
+        2
+      ],
+      "shower": 5,
+      "scoreBefore": 0,
+      "outcome": "accepted",
+      "tapCommitted": true,
+      "nativeDown": "CONTACT 45 native.down uptime=129328.80193662501 touch=129328.80081720834 point=(159.33333333333331, 602.0) cell=Optional(Optional(StarfallCore.Cell(row: 1, column: 2))) generation=9 primary=false",
+      "hold": "CONTACT 50 hold.granted uptime=129328.80967045834 shower=5 score=0 cell=Optional(StarfallCore.Cell(row: 1, column: 2)) contact=ready group=ready moving=[] deadline=nil rainDue=false hold=Optional(1) generation=9",
+      "release": "CONTACT 51 native.up uptime=129328.88392595835 touch=129328.867483875 blocked=false primary=true",
+      "nativeOutcome": "CONTACT 52 native.outcome tap(StarfallCore.Cell(row: 1, column: 2))",
+      "queriedCell": [
+        1,
+        2
+      ],
+      "queryMappingMatches": true
+    },
+    {
+      "attempt": 2,
+      "cell": [
+        1,
+        0
+      ],
+      "shower": 6,
+      "scoreBefore": 5,
+      "outcome": "accepted",
+      "tapCommitted": true,
+      "nativeDown": "CONTACT 68 native.down uptime=129332.10128862501 touch=129332.0872465 point=(37.666666666666664, 602.0) cell=Optional(Optional(StarfallCore.Cell(row: 1, column: 0))) generation=11 primary=false",
+      "hold": "CONTACT 73 hold.granted uptime=129332.10186666668 shower=6 score=5 cell=Optional(StarfallCore.Cell(row: 1, column: 0)) contact=ready group=ready moving=[] deadline=nil rainDue=false hold=Optional(2) generation=11",
+      "release": "CONTACT 74 native.up uptime=129332.16727700002 touch=129332.15391316667 blocked=false primary=true",
+      "nativeOutcome": "CONTACT 75 native.outcome tap(StarfallCore.Cell(row: 1, column: 0))",
+      "queriedCell": [
+        1,
+        0
+      ],
+      "queryMappingMatches": true
+    },
+    {
+      "attempt": 3,
+      "cell": [
+        1,
+        0
+      ],
+      "shower": 9,
+      "scoreBefore": 11,
+      "outcome": "accepted",
+      "tapCommitted": true,
+      "nativeDown": "CONTACT 103 native.down uptime=129340.18461966667 touch=129340.17603275 point=(37.666666666666664, 602.0) cell=Optional(Optional(StarfallCore.Cell(row: 1, column: 0))) generation=15 primary=false",
+      "hold": "CONTACT 108 hold.granted uptime=129340.18509029168 shower=9 score=11 cell=Optional(StarfallCore.Cell(row: 1, column: 0)) contact=ready group=ready moving=[] deadline=nil rainDue=false hold=Optional(3) generation=15",
+      "release": "CONTACT 109 native.up uptime=129340.25062358334 touch=129340.24269941666 blocked=false primary=true",
+      "nativeOutcome": "CONTACT 110 native.outcome tap(StarfallCore.Cell(row: 1, column: 0))",
+      "queriedCell": [
+        1,
+        0
+      ],
+      "queryMappingMatches": true
+    },
+    {
+      "attempt": 4,
+      "cell": [
+        3,
+        0
+      ],
+      "shower": 13,
+      "scoreBefore": 15,
+      "outcome": "denied",
+      "tapCommitted": false,
+      "nativeDown": "CONTACT 143 native.down uptime=129350.06786716667 touch=129350.06271845833 point=(40.666666666666664, 468.3333333333333) cell=Optional(Optional(StarfallCore.Cell(row: 3, column: 0))) generation=20 primary=false",
+      "hold": "CONTACT 146 hold.denied uptime=129350.06894125 shower=13 score=15 cell=Optional(StarfallCore.Cell(row: 3, column: 0)) contact=settling(Set([0])) group=settling(Set([0])) moving=[0, 1, 2, 3, 4, 5, 6] deadline=Optional(129353.44969062501) rainDue=false hold=nil generation=20",
+      "release": "CONTACT 147 native.up uptime=129350.13393708334 touch=129350.129385125 blocked=true primary=false",
+      "nativeOutcome": null,
+      "afterCommittedShowerSeconds": 0.11299270832387265,
+      "afterScheduledDeadlineSeconds": 0.3046992083254736,
+      "context": [
+        "CONTACT 138 timing.due uptime=129349.94952600001 shower=12 score=15 cell=nil contact=none group=none moving=[] deadline=Optional(129349.75801925) rainDue=false hold=nil generation=19",
+        "CONTACT 139 timing.scheduled uptime=129349.94969433334 shower=13 score=15 cell=nil contact=none group=none moving=[] deadline=Optional(129353.44969062501) rainDue=false hold=nil generation=19",
+        "CONTACT 140 timing.automaticShower uptime=129349.94972575 shower=13 score=15 cell=nil contact=none group=none moving=[] deadline=Optional(129353.44969062501) rainDue=false hold=nil generation=19",
+        "CONTACT 141 timing.invalidated(\"automaticShower\") uptime=129349.94978325 shower=13 score=15 cell=nil contact=none group=none moving=[] deadline=Optional(129353.44969062501) rainDue=false hold=nil generation=20",
+        "CONTACT 142 timing.state uptime=129349.99791704168 shower=13 score=15 cell=nil contact=none group=none moving=[0, 1, 2, 3, 4, 5, 6] deadline=Optional(129353.44969062501) rainDue=false hold=nil generation=20",
+        "CONTACT 143 native.down uptime=129350.06786716667 touch=129350.06271845833 point=(40.666666666666664, 468.3333333333333) cell=Optional(Optional(StarfallCore.Cell(row: 3, column: 0))) generation=20 primary=false",
+        "CONTACT 144 view.contact uptime=129350.06880587501 shower=13 score=15 cell=Optional(StarfallCore.Cell(row: 3, column: 0)) contact=settling(Set([0])) group=settling(Set([0])) moving=[0, 1, 2, 3, 4, 5, 6] deadline=Optional(129353.44969062501) rainDue=false hold=nil generation=20",
+        "CONTACT 145 hold.request uptime=129350.06888320834 shower=13 score=15 cell=Optional(StarfallCore.Cell(row: 3, column: 0)) contact=settling(Set([0])) group=settling(Set([0])) moving=[0, 1, 2, 3, 4, 5, 6] deadline=Optional(129353.44969062501) rainDue=false hold=nil generation=20",
+        "CONTACT 146 hold.denied uptime=129350.06894125 shower=13 score=15 cell=Optional(StarfallCore.Cell(row: 3, column: 0)) contact=settling(Set([0])) group=settling(Set([0])) moving=[0, 1, 2, 3, 4, 5, 6] deadline=Optional(129353.44969062501) rainDue=false hold=nil generation=20",
+        "CONTACT 147 native.up uptime=129350.13393708334 touch=129350.129385125 blocked=true primary=false",
+        "CONTACT 148 timing.state uptime=129351.531344 shower=13 score=15 cell=nil contact=none group=none moving=[] deadline=Optional(129353.44969062501) rainDue=false hold=nil generation=20",
+        "CONTACT 149 native.down uptime=129352.23459795835 touch=129352.22349658333 point=(41.666666666666664, 401.3333333333333) cell=Optional(Optional(StarfallCore.Cell(row: 4, column: 0))) generation=20 primary=false"
+      ],
+      "queriedCell": [
+        3,
+        0
+      ],
+      "queryMappingMatches": true
+    },
+    {
+      "attempt": 5,
+      "cell": [
+        4,
+        0
+      ],
+      "shower": 13,
+      "scoreBefore": 15,
+      "outcome": "accepted",
+      "tapCommitted": true,
+      "nativeDown": "CONTACT 149 native.down uptime=129352.23459795835 touch=129352.22349658333 point=(41.666666666666664, 401.3333333333333) cell=Optional(Optional(StarfallCore.Cell(row: 4, column: 0))) generation=20 primary=false",
+      "hold": "CONTACT 154 hold.granted uptime=129352.235031125 shower=13 score=15 cell=Optional(StarfallCore.Cell(row: 4, column: 0)) contact=ready group=ready moving=[] deadline=nil rainDue=false hold=Optional(4) generation=20",
+      "release": "CONTACT 155 native.up uptime=129352.30064504167 touch=129352.29016325 blocked=false primary=true",
+      "nativeOutcome": "CONTACT 156 native.outcome tap(StarfallCore.Cell(row: 4, column: 0))",
+      "queriedCell": [
+        4,
+        0
+      ],
+      "queryMappingMatches": true
+    },
+    {
+      "attempt": 6,
+      "cell": [
+        2,
+        0
+      ],
+      "shower": 14,
+      "scoreBefore": 19,
+      "outcome": "accepted",
+      "tapCommitted": true,
+      "nativeDown": "CONTACT 172 native.down uptime=129355.46791412501 touch=129355.46137091667 point=(39.0, 535.3333333333333) cell=Optional(Optional(StarfallCore.Cell(row: 2, column: 0))) generation=22 primary=false",
+      "hold": "CONTACT 177 hold.granted uptime=129355.46844804168 shower=14 score=19 cell=Optional(StarfallCore.Cell(row: 2, column: 0)) contact=ready group=ready moving=[] deadline=nil rainDue=false hold=Optional(5) generation=22",
+      "release": "CONTACT 178 native.up uptime=129355.53395612501 touch=129355.52803758334 blocked=false primary=true",
+      "nativeOutcome": "CONTACT 179 native.outcome tap(StarfallCore.Cell(row: 2, column: 0))",
+      "queriedCell": [
+        2,
+        0
+      ],
+      "queryMappingMatches": true
+    },
+    {
+      "attempt": 7,
+      "cell": [
+        0,
+        5
+      ],
+      "shower": 15,
+      "scoreBefore": 22,
+      "outcome": "denied",
+      "tapCommitted": false,
+      "nativeDown": "CONTACT 194 native.down uptime=129357.31786204167 touch=129357.30229054167 point=(342.3333333333333, 669.0) cell=Optional(Optional(StarfallCore.Cell(row: 0, column: 5))) generation=24 primary=false",
+      "hold": "CONTACT 197 hold.denied uptime=129357.31808737501 shower=15 score=22 cell=Optional(StarfallCore.Cell(row: 0, column: 5)) contact=settling(Set([5])) group=settling(Set([5])) moving=[0, 1, 2, 3, 4, 5, 6] deadline=Optional(129360.687875125) rainDue=false hold=nil generation=24",
+      "release": "CONTACT 198 native.up uptime=129357.38428600001 touch=129357.36895720834 blocked=true primary=false",
+      "nativeOutcome": null,
+      "afterCommittedShowerSeconds": 0.11437883332837373,
+      "afterScheduledDeadlineSeconds": 0.17327808332629502,
+      "context": [
+        "CONTACT 189 timing.due uptime=129357.18769862501 shower=14 score=22 cell=nil contact=none group=none moving=[] deadline=Optional(129357.12901245835) rainDue=false hold=nil generation=23",
+        "CONTACT 190 timing.scheduled uptime=129357.18787933335 shower=15 score=22 cell=nil contact=none group=none moving=[] deadline=Optional(129360.687875125) rainDue=false hold=nil generation=23",
+        "CONTACT 191 timing.automaticShower uptime=129357.18791170834 shower=15 score=22 cell=nil contact=none group=none moving=[] deadline=Optional(129360.687875125) rainDue=false hold=nil generation=23",
+        "CONTACT 192 timing.invalidated(\"automaticShower\") uptime=129357.18796283334 shower=15 score=22 cell=nil contact=none group=none moving=[] deadline=Optional(129360.687875125) rainDue=false hold=nil generation=24",
+        "CONTACT 193 timing.state uptime=129357.22410450001 shower=15 score=22 cell=nil contact=none group=none moving=[0, 1, 2, 3, 4, 5, 6] deadline=Optional(129360.687875125) rainDue=false hold=nil generation=24",
+        "CONTACT 194 native.down uptime=129357.31786204167 touch=129357.30229054167 point=(342.3333333333333, 669.0) cell=Optional(Optional(StarfallCore.Cell(row: 0, column: 5))) generation=24 primary=false",
+        "CONTACT 195 view.contact uptime=129357.31797116667 shower=15 score=22 cell=Optional(StarfallCore.Cell(row: 0, column: 5)) contact=settling(Set([5])) group=settling(Set([5])) moving=[0, 1, 2, 3, 4, 5, 6] deadline=Optional(129360.687875125) rainDue=false hold=nil generation=24",
+        "CONTACT 196 hold.request uptime=129357.31803600001 shower=15 score=22 cell=Optional(StarfallCore.Cell(row: 0, column: 5)) contact=settling(Set([5])) group=settling(Set([5])) moving=[0, 1, 2, 3, 4, 5, 6] deadline=Optional(129360.687875125) rainDue=false hold=nil generation=24",
+        "CONTACT 197 hold.denied uptime=129357.31808737501 shower=15 score=22 cell=Optional(StarfallCore.Cell(row: 0, column: 5)) contact=settling(Set([5])) group=settling(Set([5])) moving=[0, 1, 2, 3, 4, 5, 6] deadline=Optional(129360.687875125) rainDue=false hold=nil generation=24",
+        "CONTACT 198 native.up uptime=129357.38428600001 touch=129357.36895720834 blocked=true primary=false",
+        "CONTACT 199 timing.state uptime=129358.81721733334 shower=15 score=22 cell=nil contact=none group=none moving=[] deadline=Optional(129360.687875125) rainDue=false hold=nil generation=24",
+        "CONTACT 200 timing.due uptime=129360.73757512501 shower=15 score=22 cell=nil contact=none group=none moving=[] deadline=Optional(129360.687875125) rainDue=false hold=nil generation=24"
+      ],
+      "queriedCell": [
+        0,
+        5
+      ],
+      "queryMappingMatches": true
+    },
+    {
+      "attempt": 8,
+      "cell": [
+        1,
+        1
+      ],
+      "shower": 17,
+      "scoreBefore": 22,
+      "outcome": "accepted",
+      "tapCommitted": true,
+      "nativeDown": "CONTACT 212 native.down uptime=129365.95123925 touch=129365.94358979167 point=(98.33333333333333, 602.0) cell=Optional(Optional(StarfallCore.Cell(row: 1, column: 1))) generation=26 primary=false",
+      "hold": "CONTACT 217 hold.granted uptime=129365.951860125 shower=17 score=22 cell=Optional(StarfallCore.Cell(row: 1, column: 1)) contact=ready group=ready moving=[] deadline=nil rainDue=false hold=Optional(6) generation=26",
+      "release": "CONTACT 218 native.up uptime=129366.01727162501 touch=129366.01025645834 blocked=false primary=true",
+      "nativeOutcome": "CONTACT 219 native.outcome tap(StarfallCore.Cell(row: 1, column: 1))",
+      "queriedCell": [
+        1,
+        1
+      ],
+      "queryMappingMatches": true
+    },
+    {
+      "attempt": 9,
+      "cell": [
+        0,
+        5
+      ],
+      "shower": 20,
+      "scoreBefore": 25,
+      "outcome": "accepted",
+      "tapCommitted": true,
+      "nativeDown": "CONTACT 247 native.down uptime=129375.467946125 touch=129375.46135216666 point=(342.3333333333333, 669.0) cell=Optional(Optional(StarfallCore.Cell(row: 0, column: 5))) generation=30 primary=false",
+      "hold": "CONTACT 252 hold.granted uptime=129375.46846900001 shower=20 score=25 cell=Optional(StarfallCore.Cell(row: 0, column: 5)) contact=ready group=ready moving=[] deadline=nil rainDue=false hold=Optional(7) generation=30",
+      "release": "CONTACT 253 native.up uptime=129375.53392445834 touch=129375.52801883333 blocked=false primary=true",
+      "nativeOutcome": "CONTACT 254 native.outcome tap(StarfallCore.Cell(row: 0, column: 5))",
+      "queriedCell": [
+        0,
+        5
+      ],
+      "queryMappingMatches": true
+    },
+    {
+      "attempt": 10,
+      "cell": [
+        1,
+        0
+      ],
+      "shower": 21,
+      "scoreBefore": 29,
+      "outcome": "accepted",
+      "tapCommitted": true,
+      "nativeDown": "CONTACT 270 native.down uptime=129378.66793179167 touch=129378.65921720833 point=(37.666666666666664, 602.0) cell=Optional(Optional(StarfallCore.Cell(row: 1, column: 0))) generation=32 primary=false",
+      "hold": "CONTACT 275 hold.granted uptime=129378.66834854167 shower=21 score=29 cell=Optional(StarfallCore.Cell(row: 1, column: 0)) contact=ready group=ready moving=[] deadline=nil rainDue=false hold=Optional(8) generation=32",
+      "release": "CONTACT 276 native.up uptime=129378.73397095835 touch=129378.725883875 blocked=false primary=true",
+      "nativeOutcome": "CONTACT 277 native.outcome tap(StarfallCore.Cell(row: 1, column: 0))",
+      "queriedCell": [
+        1,
+        0
+      ],
+      "queryMappingMatches": true
+    },
+    {
+      "attempt": 11,
+      "cell": [
+        0,
+        2
+      ],
+      "shower": 25,
+      "scoreBefore": 32,
+      "outcome": "accepted",
+      "tapCommitted": true,
+      "nativeDown": "CONTACT 311 native.down uptime=129390.26794725 touch=129390.26230625 point=(158.66666666666666, 669.0) cell=Optional(Optional(StarfallCore.Cell(row: 0, column: 2))) generation=37 primary=false",
+      "hold": "CONTACT 316 hold.granted uptime=129390.26836912501 shower=25 score=32 cell=Optional(StarfallCore.Cell(row: 0, column: 2)) contact=ready group=ready moving=[] deadline=nil rainDue=false hold=Optional(9) generation=37",
+      "release": "CONTACT 317 native.up uptime=129390.33389754167 touch=129390.32897291667 blocked=false primary=true",
+      "nativeOutcome": "CONTACT 318 native.outcome tap(StarfallCore.Cell(row: 0, column: 2))",
+      "queriedCell": [
+        0,
+        2
+      ],
+      "queryMappingMatches": true
+    },
+    {
+      "attempt": 12,
+      "cell": [
+        0,
+        4
+      ],
+      "shower": 26,
+      "scoreBefore": 40,
+      "outcome": "accepted",
+      "tapCommitted": true,
+      "nativeDown": "CONTACT 334 native.down uptime=129394.40133754167 touch=129394.38988308334 point=(281.0, 669.0) cell=Optional(Optional(StarfallCore.Cell(row: 0, column: 4))) generation=39 primary=false",
+      "hold": "CONTACT 339 hold.granted uptime=129394.40187770834 shower=26 score=40 cell=Optional(StarfallCore.Cell(row: 0, column: 4)) contact=ready group=ready moving=[] deadline=nil rainDue=false hold=Optional(10) generation=39",
+      "release": "CONTACT 340 native.up uptime=129394.46723916667 touch=129394.45654975 blocked=false primary=true",
+      "nativeOutcome": "CONTACT 341 native.outcome tap(StarfallCore.Cell(row: 0, column: 4))",
+      "queriedCell": [
+        0,
+        4
+      ],
+      "queryMappingMatches": true
+    },
+    {
+      "attempt": 13,
+      "cell": [
+        3,
+        2
+      ],
+      "shower": 27,
+      "scoreBefore": 44,
+      "outcome": "accepted",
+      "tapCommitted": true,
+      "nativeDown": "CONTACT 358 native.down uptime=129397.301298125 touch=129397.286444125 point=(160.0, 468.3333333333333) cell=Optional(Optional(StarfallCore.Cell(row: 3, column: 2))) generation=41 primary=false",
+      "hold": "CONTACT 363 hold.granted uptime=129397.302029875 shower=27 score=44 cell=Optional(StarfallCore.Cell(row: 3, column: 2)) contact=ready group=ready moving=[] deadline=nil rainDue=false hold=Optional(11) generation=41",
+      "release": "CONTACT 364 native.up uptime=129397.36729012501 touch=129397.35311079166 blocked=false primary=true",
+      "nativeOutcome": "CONTACT 365 native.outcome tap(StarfallCore.Cell(row: 3, column: 2))",
+      "queriedCell": [
+        3,
+        2
+      ],
+      "queryMappingMatches": true
+    },
+    {
+      "attempt": 14,
+      "cell": [
+        0,
+        2
+      ],
+      "shower": 30,
+      "scoreBefore": 47,
+      "outcome": "accepted",
+      "tapCommitted": true,
+      "nativeDown": "CONTACT 393 native.down uptime=129406.384551875 touch=129406.37079704167 point=(158.66666666666666, 669.0) cell=Optional(Optional(StarfallCore.Cell(row: 0, column: 2))) generation=45 primary=false",
+      "hold": "CONTACT 398 hold.granted uptime=129406.38508183334 shower=30 score=47 cell=Optional(StarfallCore.Cell(row: 0, column: 2)) contact=ready group=ready moving=[] deadline=nil rainDue=false hold=Optional(12) generation=45",
+      "release": "CONTACT 399 native.up uptime=129406.45065945834 touch=129406.43746370834 blocked=false primary=true",
+      "nativeOutcome": "CONTACT 400 native.outcome tap(StarfallCore.Cell(row: 0, column: 2))",
+      "queriedCell": [
+        0,
+        2
+      ],
+      "queryMappingMatches": true
+    }
+  ],
+  "disposition": "All three instrumented source files restored byte-for-byte; temporary logger removed; rebuilt normal Debug app. Not a production input fix.",
+  "restoredBinaries": [
+    {
+      "configuration": "Debug",
+      "file": "/tmp/starfall-calibration-derived/Build/Products/Debug-iphonesimulator/Starfall.app/Starfall",
+      "sha256": "86672940a4626dc660226509bf2ca3d3ae7282053427402a1f38dcbedfc316e4",
+      "diagnosticMarkerAbsent": true
+    },
+    {
+      "configuration": "Debug",
+      "file": "/tmp/starfall-calibration-derived/Build/Products/Debug-iphonesimulator/Starfall.app/Starfall.debug.dylib",
+      "sha256": "a0b34f867d1aba5179c2615927987ff520ac860b8e2dbe456eb8f039d4533225",
+      "diagnosticMarkerAbsent": true
+    },
+    {
+      "configuration": "Release",
+      "file": "/tmp/starfall-calibration-release/Build/Products/Release-iphonesimulator/Starfall.app/Starfall",
+      "sha256": "373b0c4d79fdbbd0303375a666c4466d30072ab871dbb22fbeff4ce839ec02bf",
+      "diagnosticMarkerAbsent": true
+    }
+  ]
+}
