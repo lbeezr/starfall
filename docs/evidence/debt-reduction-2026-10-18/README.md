@@ -68,3 +68,25 @@ Core: **162 passed**. Hosted gravity, Dusk, critical mass, archives, native inpu
 A separately compiled before/after driver (`swiftc -DDEBUG` with all Core sources and the adjacent `main.swift`) compares pre-refactor main to this Core. It emits sorted JSON round trips across all five generation IDs at seeds 5/28/180, all gravity fixtures, retained Dusk, current critical mass and First Light, both raw and gravity-retired/feeding-adopted, plus replay. **1,337 archives on each side are byte-identical.** Raw output/executables are disposable under `/tmp/starfall-debt-replay/`; the small driver is retained here for reproduction. This supplements rather than replaces the hosted envelope-migration tests.
 
 No rule/save/geometry/artwork/timing change is intended. Actual VoiceOver remains deferred to RC; no device/performance acceptance is claimed. The first replay harness attempt used a Python tarfile option unavailable on the host; rerunning with the trusted local Git archive and the supported API completed the comparison.
+
+## Task 6 — Release gate and explicit RC platform ownership
+
+Source: task-5 main `9903d7f`; changes only to CI scripts/workflow and documentation. Runtime sources/resources are unchanged. Xcode 27.1, iOS 27.0.
+
+Every existing native CI job now also builds Release and checks its compiled catalog. The same public-main/manual-budget trigger, runner count, permissions and 35-minute bound remain. Manual runs expose dev/rc selection. The iPhone matrix names the one tablet-only exclusion explicitly; RC owns that test on an iPad and still restores all six actual-VoiceOver sessions.
+
+`rc-platforms.py` selects by real device type and runtime, including renamed QA devices. It requires an installed iOS 17 iPhone and iPad, preflights before expensive RC work, runs three focused native tests per role with subprocess/test timeouts, and checks exact pass counts with zero failures/skips. It performs no downloads. The existing complete physical-iPhone VoiceOver gate remains separate.
+
+| Check | Result |
+| --- | --- |
+| Release simulator build via `build_sim`, shared scheme, ad-hoc signing | Passed, 22.5 s. |
+| Packaged Release bundle ID, LaunchScreen declaration, Assets.car and matching privacy manifest | Passed on actual compiled bundle. |
+| Core | 162 passed. |
+| Updater / native matrix / RC selector-count-command policy tests | 21 / 3 / 5 passed. |
+| Workflow YAML / Bash syntax / hygiene / diff | Passed. |
+| Real RC inventory preflight | Correctly **blocked**: this Mac has iOS 27.0/27.1, no iOS 17 runtime. Minimum OS is unverified. |
+| iPad mini (A17 Pro), Starfall Observatory Tablet QA `147FF35E-5EAE-4676-B941-B82BE8119054`, Debug / iOS 27.0 | **2 passed, 1 failed, 0 skipped.** Landscape Welcome/Entry/preferences and largest-text critical-mass/help passed. Largest-text Welcome failed the existing `isHittable` assertion for Settings (`SkyFlowInteractionTests`, helper line 675). |
+
+The tablet failure remains an RC blocker; no assertion was removed or weakened. The inspected `flow-largest-welcome-actions-first` capture shows Settings visibly present, but that does not prove physical activation or identify whether native hit testing, orientation or the AX result is responsible. Original XCTest result and exported screenshots/movie remain under the ignored XcodeBuildMCP workspace and `/tmp/starfall-debt-tablet-attachments/`. Do not close it from the separate landscape pass. Trigger: next tablet/Welcome/RC change; compare actual activation, frame/orientation, scroll and focus with this exact largest-text failure before changing geometry or assertions. No source/UI workaround is bundled into the CI task.
+
+The complete remote CI job was not rerun locally (it owns its disposable-runner setup); its constituent new build/planning/policy checks were run. No full RC or physical-device acceptance is claimed. Actual VoiceOver deferred to RC. The automation enforces missing coverage instead of declaring support from one newest-OS phone.

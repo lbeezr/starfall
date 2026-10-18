@@ -69,6 +69,9 @@ swift test 2>&1 | tee artifacts/core-tests.log
 # Keep native coverage tied to the checked-in XCTest methods. A newly added
 # source file missing from its Xcode target must fail this gate, not go unnoticed.
 python3 scripts/native_test_plan.py --stage "${STARFALL_ACCEPTANCE_STAGE:-dev}"
+if [[ "${STARFALL_ACCEPTANCE_STAGE:-dev}" == rc ]]; then
+  python3 scripts/rc-platforms.py --plan-only
+fi
 UI_MATRIX_ARGUMENTS=()
 while IFS= read -r identifier; do
   [[ -z "$identifier" ]] || UI_MATRIX_ARGUMENTS+=("-skip-testing:$identifier")
@@ -121,6 +124,17 @@ xcodebuild -project Starfall.xcodeproj -scheme Starfall \
   CODE_SIGN_IDENTITY=- CODE_SIGNING_ALLOWED=YES \
   DEVELOPMENT_TEAM= CODE_SIGN_STYLE=Manual build \
   2>&1 | tee artifacts/native-build.log
+
+# Compile the actual Release routing/resources in the same bounded job.
+xcodebuild -project Starfall.xcodeproj -scheme Starfall \
+  -configuration Release -sdk iphonesimulator \
+  -destination 'generic/platform=iOS Simulator' \
+  -derivedDataPath "$RUNNER_TEMP/starfall-release" \
+  ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \
+  CODE_SIGN_IDENTITY=- CODE_SIGNING_ALLOWED=YES \
+  DEVELOPMENT_TEAM= CODE_SIGN_STYLE=Manual build \
+  2>&1 | tee artifacts/release-build.log
+test -s "$RUNNER_TEMP/starfall-release/Build/Products/Release-iphonesimulator/Starfall.app/Assets.car"
 
 # Verify the shipped resource, not merely the source declaration.
 APP="$RUNNER_TEMP/starfall-derived/Build/Products/Debug-iphonesimulator/Starfall.app"
@@ -376,6 +390,12 @@ if (summary.get('passedTests') != expected or summary.get('failedTests') != 0
 Path('artifacts/hosted-result.txt').write_text(
     f'PASS: all {expected} hosted app tests. See hosted-test-summary.json for results; UI gesture evidence is separate.\n')
 PY
+
+# RC support claims require separate minimum-iOS and real tablet selections.
+# The planner fails closed if an installed runtime/device is missing; no downloads.
+if [[ "${STARFALL_ACCEPTANCE_STAGE:-dev}" == rc ]]; then
+  python3 scripts/rc-platforms.py
+fi
 
 # A passing hosted suite never erases a failed UI audit or evidence gate.
 exit "$UI_FINAL_STATUS"

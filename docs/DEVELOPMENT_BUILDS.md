@@ -43,3 +43,12 @@ After the October 18 stale-checkout incident, delivery verifies the OS-owned ins
 Fetched main must descend from the last delivered/checked main. A rollback, divergent history or missing ancestor object holds delivery. Main is fetched again after local tests/signature checks; if it changed during validation, delivery defers rather than installing the older snapshot. The archive's runtime fingerprint is rechecked too. After installation, device inventory must match the installer result and compiled bundle version before a receipt is written. Failed validation leaves the receipt intact and reports the error; it never claims an unverified installation is current.
 
 Use the canonical updater for production. Direct Xcode/`devicectl` installs from feature checkouts are prohibited by the repository's delivery contract. This Mac still has technical signing/install access: a process with that access can bypass the tooling. The service detects such replacements on its next check and repairs them only when source, local tests, signing and existing CI policy permit. True prevention of every privileged bypass would require an OS/account permission boundary outside this fix. [Checks and active-service evidence](evidence/device-delivery-guards-2026-10-18/README.md).
+
+
+## Release compilation and RC platform coverage
+
+Every native CI run compiles Debug and Release. The primary iPhone matrix excludes only the explicitly identified tablet-only landscape method in addition to development's six actual-VoiceOver deferrals. RC restores the spoken sessions and separately runs the tablet method on an iPad.
+
+Before an RC run, `python3 scripts/rc-platforms.py --plan-only` must find a local iOS 17 iPhone simulator and an iPad simulator. The full command verifies Welcome/background/restore, both First Light endings and Reduce Motion at the minimum OS, plus tablet landscape, largest-text entry/preferences and critical-mass help. It requires three passes and zero failures/skips per role. An unavailable runtime is a blocked acceptance check; no automatic download or substitution closes it. CI preflights this requirement and retains source-bound role selections/results. See [script ownership](../scripts/README.md#release-and-rc-platform-gates).
+
+These bounded automated flows supplement the existing complete physical-iPhone VoiceOver session, device feel and visual review. They do not make those gates optional or certify every tablet orientation/layout.
