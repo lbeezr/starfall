@@ -36,3 +36,6 @@ Gravity specials are retired from normal play. `SkyGeneration.standardSky` suppl
 `CriticalMassRule` versions fresh survival aging independently from historical Dusk. `FallingSky` owns ages, stage-three targets, simultaneous stage-four collapse, lost-light conservation and before-arrival settling. `CriticalMassFixture` is reset-only Debug review tooling; retained rounds and First Light do not adopt aging.
 
 `canLinkConstellation` owns adjacent/one-empty-midpoint geometry for eligibility and selected prefixes; family anchoring and ordinary tap groups remain separate.
+
+
+`HistoricalGravityState` contains historical collision, orbit rotation/release and validation using only board/orbit/identity-accounting values. `FallingSky` keeps every encoded field and applies the returned state at the existing committed boundary. Current and retained games share `SkyBoardSettling` for stable compaction, including occupied anchors. `SkyPresentationPhase` names committed collapse/orbit snapshots; `GravityPhase` and `FallingSkyTurn.gravityPhases` remain compatibility aliases for retained tools. No archive layout or RNG change accompanies this extraction.

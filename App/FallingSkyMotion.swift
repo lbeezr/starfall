@@ -159,13 +159,13 @@ enum StarfallMotion {
 
     /// Only the airborne approach overlaps. A small clearance keeps first
     /// response after every preceding committed gravity phase has settled.
-    struct GravityTimeline {
+    struct PhaseTimeline {
         let phaseDurations: [TimeInterval]
         let phaseEnd: TimeInterval
         let flightStart: TimeInterval
         let completion: TimeInterval
 
-        init(phases: [GravityPhase.Event], arrivals: Int) {
+        init(phases: [SkyPresentationPhase.Event], arrivals: Int) {
             precondition(arrivals >= 0 && arrivals <= FallingSky.maximumShowerSize)
             phaseDurations = phases.map { event -> TimeInterval in
                 switch event {
@@ -185,6 +185,9 @@ enum StarfallMotion {
             completion = max(phaseEnd, lastLanding) + StarfallMotion.landingDuration
         }
     }
+
+    /// Compatibility spelling for historical timing fixtures.
+    typealias GravityTimeline = PhaseTimeline
 
     static func drift(for id: Int, column: Int) -> CGFloat {
         let direction: CGFloat = column == 0 ? 1 : column == 6 ? -1 : id.isMultiple(of: 2) ? 1 : -1

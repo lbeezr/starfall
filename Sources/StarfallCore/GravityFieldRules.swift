@@ -10,16 +10,10 @@ public struct OrbitField: Codable, Equatable, Sendable {
     public let slots: [Cell]
     public var windowsRemaining: Int
 }
-public struct GravityPhase: Sendable {
-    public enum Event: String, Sendable { case removal, collision, settling, capture, rotation, release }
-    public let event: Event
-    public let board: [StarfallGem?]
-    public let field: OrbitField?
-}
 /// Fixed occupied anchors support the ordinary segments above them. No empty slot is reserved.
 public enum GravityFieldRules {
     public static func height(_ board: [StarfallGem?], column: Int) -> Int {
-        (0..<7).last(where: { board[$0*7+column] != nil }).map { $0+1 } ?? 0
+        SkyBoardSettling.height(board, column: column)
     }
     public static func neighbors(_ cell: Cell) -> [Cell] {
         [Cell(cell.row+1,cell.column), Cell(cell.row,cell.column+1),
@@ -27,18 +21,7 @@ public enum GravityFieldRules {
             .filter { (0..<7).contains($0.row) && (0..<7).contains($0.column) }
     }
     public static func settle(_ board: [StarfallGem?], field: OrbitField?) -> [StarfallGem?] {
-        var result = board
-        let anchors = Set(field.map { $0.slots + [$0.center] } ?? [])
-        for column in 0..<7 {
-            var base = 0
-            let stops = (0..<7).filter { anchors.contains(Cell($0,column)) } + [7]
-            for stop in stops {
-                let survivors = (base..<stop).compactMap { board[$0*7+column] }
-                for row in base..<stop { result[row*7+column] = row-base < survivors.count ? survivors[row-base] : nil }
-                base = stop+1
-            }
-        }
-        return result
+        SkyBoardSettling.settle(board, anchors: Set(field.map { $0.slots + [$0.center] } ?? []))
     }
     public static func collision(in board: [StarfallGem?], opened: Set<Cell>) -> Cell? {
         opened.sorted { $0.row == $1.row ? $0.column < $1.column : $0.row < $1.row }.first { middle in

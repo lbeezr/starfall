@@ -50,7 +50,7 @@ Attraction fields and gravity holes use `StarCastField`/`StarCastHole` packaged 
 
 The magnetic saved role now presents as an **attraction field** using `StarCastField`: an open aura with transparent center, no ground shadow, physical bounce or contact response. The shared material owns board/forecast/flight appearance; existing occupied-cell/collision rules remain unchanged. The original magnetic crystal is retained only as historical source art.
 
-Gravity arrivals share the ordinary flight constructor. StarfallMotion.GravityTimeline owns phase durations and approach overlap; receiver responses and landings follow completed gravity motion. The scene presents committed outcomes and never schedules Core showers.
+Gravity arrivals share the ordinary flight constructor. StarfallMotion.PhaseTimeline owns phase durations and approach overlap; receiver responses and landings follow completed gravity motion. The scene presents committed outcomes and never schedules Core showers.
 
 
 Gravity supply is versioned by Core. New skies select the current generation; retained skies and replay keep their saved rules. The archive rejects every gravity-capable generation in the older v4 envelope, including the expanded-opportunity generation before any special arrives.
@@ -92,3 +92,5 @@ Fresh survival skies use universal critical mass. `CriticalMassPresentation` ren
 `SkyPresentationLedger` owns outstanding turn tickets, column reservations, pending forecast selection and epoch invalidation. It owns no clock, scene or save. `SkyDialogueLibrary.result` selects turn wording from immutable committed values; the store retains session delivery, speech policy and save-before-animation ordering.
 
 Idle input admission skips copied-game simulations when no presentation reserves columns. Busy-board admission still simulates the exact Core action; the real commit remains authoritative in every case.
+
+Current collapse rendering consumes `presentationPhases` / `SkyPresentationPhase` through `PhaseTimeline`. Historical orbit events retain their existing rendering and timings; old timing-test names remain compatibility aliases.
