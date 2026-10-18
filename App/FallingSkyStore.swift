@@ -167,6 +167,24 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         feedback.announce(text)
     }
 
+    /// Selection cues share device/preference policy with committed feedback.
+    func traceStep(count: Int) {
+        guard canReceiveInput, constellationTracing, count > 0 else { return }
+        feedback.traceStep(count: count, enabled: hapticsEnabled && !presenter.reduceMotion)
+    }
+
+    /// A value snapshot cannot announce after its generation/hold was replaced.
+    /// Delivery is synchronous; this boundary creates no delayed speech task.
+    func announceTraceSelection(count: Int, value: Int, ready: Bool,
+                                generation ticket: UInt64, holdTicket: UInt64?) {
+        guard canReceiveInput, ticket == constellationInputGeneration,
+              holdTicket == constellationHold, count == 0 || holdTicket != nil else { return }
+        let message = count > 0
+            ? "\(count) stars worth \(value) starlight. \(ready ? "Ready to release." : "Five stars needed, or an exact four-star square.")"
+            : "Choose a neighboring matching star. Trace canceled."
+        feedback.announce(message)
+    }
+
     func explainSettling(at cell: Cell) { explainAvailability(clearAvailability(cell)) }
 
     private func explainAvailability(_ availability: SkyInputAvailability) {

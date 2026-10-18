@@ -235,3 +235,65 @@ extension ResponsiveInputTests {
         XCTAssertEqual(store.game.turns,before.turns+1,"Only the deferred shower commits; input is never replayed")
     }
 }
+
+extension ResponsiveInputTests {
+    @MainActor func testTraceSpeechUsesInjectedFeedbackAndRejectsExpiredHoldOrGeneration() throws {
+        let suite = "TraceSpeech.\(UUID())", defaults = UserDefaults(suiteName:suite)!
+        defer { defaults.removePersistentDomain(forName:suite) }
+        let feedback = TracePolicyFeedback()
+        let store = FallingSkyStore(defaults:defaults,arguments:["--starfalls-reset"],presenter:FallingSkyRecorder(),clock:ManualRainClock(),feedback:feedback)
+        store.setSuspended(false); store.loadConstellationFixture(.diagonalSix)
+        let game = store.game, saved = defaults.data(forKey:FallingSkyStore.saveKey)
+        let first = try XCTUnwrap(store.beginConstellationHold(at:Cell(0,0)))
+        let generation = store.constellationInputGeneration
+        store.announceTraceSelection(count:1,value:1,ready:false,generation:generation,holdTicket:first)
+        store.announceTraceSelection(count:5,value:7,ready:true,generation:generation,holdTicket:first)
+        XCTAssertEqual(feedback.announcements, [
+            "1 stars worth 1 starlight. Five stars needed, or an exact four-star square.",
+            "5 stars worth 7 starlight. Ready to release."
+        ])
+        store.endConstellationHold(first)
+        store.announceTraceSelection(count:1,value:1,ready:false,generation:generation,holdTicket:first)
+        let second = try XCTUnwrap(store.beginConstellationHold(at:Cell(0,0)))
+        store.announceTraceSelection(count:5,value:5,ready:true,generation:generation,holdTicket:first)
+        XCTAssertEqual(feedback.announcements.count,2,"Neither released nor replaced selections may announce")
+        store.announceTraceSelection(count:0,value:0,ready:false,generation:generation,holdTicket:second)
+        XCTAssertEqual(feedback.announcements.last,"Choose a neighboring matching star. Trace canceled.")
+        XCTAssertEqual(store.game,game); XCTAssertEqual(defaults.data(forKey:FallingSkyStore.saveKey),saved)
+        store.restart(sameSky:true)
+        store.announceTraceSelection(count:5,value:5,ready:true,generation:generation,holdTicket:second)
+        store.setSuspended(true)
+        store.announceTraceSelection(count:0,value:0,ready:false,generation:store.constellationInputGeneration,holdTicket:nil)
+        XCTAssertEqual(feedback.announcements.count,3,"Restart/settings cannot add stale speech")
+    }
+
+    @MainActor func testTraceHapticsSharePreferencesAndRequireLiveInputOwnership() throws {
+        let suite = "TraceHaptics.\(UUID())", defaults = UserDefaults(suiteName:suite)!
+        defer { defaults.removePersistentDomain(forName:suite) }
+        let feedback = TracePolicyFeedback()
+        let store = FallingSkyStore(defaults:defaults,arguments:["--starfalls-reset"],presenter:FallingSkyRecorder(),clock:ManualRainClock(),feedback:feedback)
+        store.setSuspended(false); store.loadConstellationFixture(.diagonalSix)
+        store.traceStep(count:2)
+        XCTAssertTrue(feedback.steps.isEmpty)
+        let hold = try XCTUnwrap(store.beginConstellationHold(at:Cell(0,0)))
+        store.traceStep(count:2)
+        store.hapticsEnabled=false; store.traceStep(count:3)
+        store.endConstellationHold(hold); store.traceStep(count:4)
+        store.setReducedMotion(true); store.hapticsEnabled=true
+        XCTAssertNotNil(store.beginConstellationHold(at:Cell(0,0)))
+        store.traceStep(count:5)
+        store.setSuspended(true); store.traceStep(count:6)
+        XCTAssertEqual(feedback.steps,[2,3,5])
+        XCTAssertEqual(feedback.enabled,[true,false,false])
+    }
+}
+
+@MainActor private final class TracePolicyFeedback: FallingSkyFeedbackProviding {
+    var announcements: [String] = []
+    var steps: [Int] = []
+    var enabled: [Bool] = []
+    func collected(soundEnabled: Bool, hapticsEnabled: Bool, reducedMotion: Bool) {}
+    func announce(_ message: String) { announcements.append(message) }
+    func traceStep(count: Int, enabled: Bool) { steps.append(count); self.enabled.append(enabled) }
+    func stopSounds() {}
+}

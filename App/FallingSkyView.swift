@@ -1,6 +1,5 @@
 import SwiftUI
 import SpriteKit
-import UIKit
 import StarfallCore
 
 // Historical experiment.* accessibility IDs remain stable for automation and assistive clients.
@@ -9,7 +8,6 @@ import StarfallCore
     @State private var interaction = SkyInteractionSession()
     private var trace: ConstellationTraceIntent { interaction.trace }
     private var technique: SkyTechniqueIntent { interaction.technique }
-    @State private var traceFeedback = ConstellationTraceFeedback()
     @State private var menu: SkyMenuDestination?
     private var settings: Bool { menu != nil }
     @State private var flow = SkyFlowState()
@@ -503,7 +501,7 @@ private extension FallingSkyView {
               store.game.canNudge(from:from,to:to), store.canContact(from), store.canContact(to) else { return false }
         interaction.armSwap(from:from,to:to,game:store.game,generation:generation)
         refreshTechnique()
-        traceFeedback.step(count:5,enabled:store.hapticsEnabled && !quietMotion)
+        store.traceStep(count:5)
         store.showInputFeedback("Swap ready · lift to move; slide back to cancel")
         return technique.swapping
     }
@@ -553,7 +551,7 @@ private extension FallingSkyView {
             let count = trace.count
             if trace.visit(cell, ticket: trace.sequence, game: store.game, generation: store.constellationInputGeneration, enabled: store.canTrace(trace.path + [cell])) {
                 refreshConstellation()
-                if trace.count > count { traceFeedback.step(count: trace.count, enabled: store.hapticsEnabled && !reduceMotion && !calmEffects && !voiceOver) }
+                if trace.count > count { store.traceStep(count: trace.count) }
             }
             if trace.snapshot == nil {
                 // The physical contact still owns its clock hold until terminal delivery;
@@ -597,20 +595,10 @@ private extension FallingSkyView {
             interaction.acquireHold(at: trace.path.first, using: store.beginConstellationHold)
         }
         refreshConstellation()
-        UIAccessibility.post(notification: .announcement, argument: trace.count > 0
-            ? "\(trace.count) stars worth \(trace.value) starlight. \(store.game.constellationCells(along:trace.path) != nil ? "Ready to release." : "Five stars needed, or an exact four-star square.")"
-            : "Choose a neighboring matching star. Trace canceled.")
-    }
-}
-
-@MainActor private final class ConstellationTraceFeedback {
-    private let impact = UIImpactFeedbackGenerator(style: .soft)
-    private let ready = UIImpactFeedbackGenerator(style: .rigid)
-    func step(count: Int, enabled: Bool) {
-        guard enabled else { return }
-        if count == 5 { ready.impactOccurred(intensity: 0.8) }
-        else { impact.impactOccurred(intensity: min(0.85, 0.2+Double(count)*0.1)) }
-        impact.prepare(); ready.prepare()
+        store.announceTraceSelection(count: trace.count, value: trace.value,
+                                     ready: store.game.constellationCells(along: trace.path) != nil,
+                                     generation: store.constellationInputGeneration,
+                                     holdTicket: interaction.holdTicket)
     }
 }
 
