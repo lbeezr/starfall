@@ -8,6 +8,10 @@ The bounded comparison reaches fields in more rounds in both cohorts. A naturall
 
 **Next action:** Observe ordinary player recognition and preference before further supply tuning. Keep the opening timing failure below open until its input-boundary investigation is resolved; actual VoiceOver and physical-device acceptance belong to RC checks.
 
+## Combined input integration
+
+After the initial checks, current responsive input (`71ec3ec`) was merged without changing Core. Clean local merge `59b526d` passed **182 hosted tests** and **five native methods**, zero failures/skips: opening, both new gravity flows and both responsive-input flows. Debug build/run and Release simulator build passed again. [Source/tree](responsive-integration-source.json) and [results](verification.json) keep this evidence separate from the earlier 173/10 matrix and motion recording. The initial opening failure remains a recorded observation, not a proven fixed mechanism.
+
 ## What the sample supports
 
 Each cell below describes 64 fixed seeds, up to 36 showers, one visible-board clear per shower. Largest-immediate and collision-first-then-visible-reward use the existing action enumerator: taps, full connected components and bounded connected fives at Opal states. No forecast oracle selects a move; larger partial traces and waiting are not modeled. No enumeration caps occurred. Maximum consecutive states without a legal clear stayed one under every sample.
@@ -33,9 +37,9 @@ python3 tools/mechanics/check-gravity-generation-replay.py --baseline 794a0d1
 
 Seed 421's seventh-wave pair leads through seven ordinary clears to shower ten, score 24 and a two-window field. Clearing row 1/column 2 first yields 4 + 4 light; row 0/column 1 first yields 3 + 4. Neither comparison inserts an arrival between clears. The higher immediate option also wins this example; it is not evidence of a subtle smaller-first strategy. [Exact saved state, real history and actions](natural-choice.json); Debug fixture `naturalOffer` reconstructs it from wave seven without injected boards or RNG.
 
-<img src="dev-794a0d1-wip-498a868592__natural-orbit-choice__iphone-17e__default-text.jpg" width="230" alt="Native score-24 sky with a two-window gravity hole holding blue and pink stars and matching green stars above">
+<img src="dev-59b526d__natural-orbit-choice__iphone-17e__default-text.jpg" width="230" alt="Native score-24 sky with a two-window gravity hole holding blue and pink stars and matching green stars above">
 
-**Native implementation capture:** base `794a0d1` plus recorded working inputs, runtime fingerprint `dev.498a868592`; iPhone 17e / iOS 27.0 (24A434), default text, normal motion, Calm effects off. The hole and captives sit in the same normal Starfall board. Later main integration through `f0865f5` changed tests/docs only; runtime inputs match [source.json](source.json). This fingerprint describes inputs, not an installed build-number claim.
+**Native implementation capture:** clean local merge `59b526d`, runtime fingerprint `dev.d5e0632d10`, includes responsive production input from `71ec3ec`; iPhone 17e / iOS 27.0 (24A434), default text, normal motion, Calm effects off. [Combined source/tree hashes](responsive-integration-source.json). The installed Debug app was launched on the task-owned simulator at this natural choice. This fingerprint describes inputs, not a build-number claim.
 
 <img src="dev-794a0d1-wip-b0c6f88c96__natural-orbit-choice__iphone-17e__largest-text.jpg" width="200" alt="Largest-text native score-24 sky keeps the entire playable board above the scrolling dialogue panel">
 

@@ -15,6 +15,8 @@ struct ConstellationTraceSurface: UIViewRepresentable {
     let move: (CGPoint) -> Void
     let end: () -> Void
     let cancel: () -> Void
+    var contact: ((CGPoint) -> Bool)? = nil
+    var feedback: ((String) -> Void)? = nil
 
     func makeUIView(context: Context) -> Surface {
         let view = Surface(); view.installCapture(); view.isMultipleTouchEnabled = true
@@ -60,35 +62,42 @@ struct ConstellationTraceSurface: UIViewRepresentable {
             guard let input, input.enabled else { return false }
             return ObservatoryGeometry(size: input.size).cell(at: point) != nil
         }
-        func cancelInput() { capture.cancelCapture(); input?.cancel(); primary = nil; session.cancel(); blocked = true }
+        func cancelInput(reason: String? = nil) {
+            capture.cancelCapture(); input?.cancel(); primary = nil; session.cancel(); blocked = true
+            if let reason { input?.feedback?(reason) }
+        }
         override func willMove(toWindow newWindow: UIWindow?) { if newWindow == nil { cancelInput() } }
         override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-            guard primary == nil, touches.count == 1, (event?.allTouches?.count ?? 1) == 1 else { cancelInput(); return }
+            guard primary == nil, touches.count == 1, (event?.allTouches?.count ?? 1) == 1 else { cancelInput(reason: "Touch canceled · use one finger"); return }
             blocked = false; primary = touches.first
             let origin = primary!.location(in: self)
-            guard session.begin(at: origin) else { cancelInput(); return }
+            let eligible = input?.traceStart(origin) != nil
+            guard session.begin(at: origin, traceEligible: eligible) else { cancelInput(); return }
+            guard input?.contact?(origin) != false else { primary = nil; session.cancel(); blocked = true; return }
             // Own the hold on touch-down, before drag recognition; release still taps normally.
             if input?.traceStart(origin) != nil { input?.begin(origin) }
         }
         override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
             guard !blocked, let primary, touches.contains(primary), let input else { return }
+            guard (event?.allTouches?.count ?? 1) == 1 else { cancelInput(reason: "Touch canceled · use one finger"); return }
             let location = primary.location(in: self)
             if session.move(to: location) {
                 for touch in (event?.coalescedTouches(for: primary) ?? [primary]).suffix(64) { input.move(touch.location(in: self)) }
-            }
+            } else if session.canceled { cancelInput(reason: "Touch canceled · lift on the same star") }
         }
         override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
             guard !blocked, let primary, touches.contains(primary), let input else { cancelInput(); return }
+            guard (event?.allTouches?.count ?? 1) == 1 else { cancelInput(reason: "Touch canceled · use one finger"); return }
             let location = primary.location(in: self)
             let outcome = session.finish(at: location, mapping: ObservatoryGeometry(size: input.size))
             self.primary = nil
             switch outcome {
             case .trace: input.move(location); input.end()
             case .tap(let cell): input.cancel(); input.tap(cell)
-            case .cancel: input.cancel()
+            case .cancel: input.cancel(); input.feedback?("Touch canceled · lift on the same star")
             }
         }
-        override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) { cancelInput() }
+        override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) { cancelInput(reason: "Touch interrupted") }
     }
     // A trace starting on an eligible star wins over the accessibility-size
     // scroll container. Other starts fail immediately, preserving normal scroll.
@@ -124,25 +133,31 @@ struct ConstellationTraceSurface: UIViewRepresentable {
 /// UITouch so boundary samples and interruption sequences exercise production logic.
 struct ConstellationTouchSession {
     enum Outcome: Equatable { case tap(Cell), trace, cancel }
-    static let dragThreshold: CGFloat = 8
+    static let dragThreshold: CGFloat = 12
+    static let tapSlop: CGFloat = 18
+    private var traceEligible = true
+    private(set) var canceled = false
     private(set) var origin: CGPoint?
     private(set) var dragging = false
 
-    mutating func begin(at point: CGPoint) -> Bool {
+    mutating func begin(at point: CGPoint, traceEligible: Bool = true) -> Bool {
         guard origin == nil else { cancel(); return false }
-        origin = point; dragging = false
+        origin = point; dragging = false; canceled = false; self.traceEligible = traceEligible
         return true
     }
     @discardableResult mutating func move(to point: CGPoint) -> Bool {
-        guard let origin else { return false }
-        dragging = dragging || hypot(point.x-origin.x, point.y-origin.y) >= Self.dragThreshold
+        guard let origin, !canceled else { return false }
+        let distance = hypot(point.x-origin.x, point.y-origin.y)
+        if traceEligible { dragging = dragging || distance >= Self.dragThreshold }
+        else if distance > Self.tapSlop { canceled = true }
         return dragging
     }
     mutating func finish(at point: CGPoint, mapping: ObservatoryGeometry) -> Outcome {
         defer { cancel() }
-        guard origin != nil else { return .cancel }
+        guard let origin, !canceled else { return .cancel }
         if move(to: point) { return .trace }
-        return mapping.cell(at: point).map(Outcome.tap) ?? .cancel
+        guard !canceled, let cell = mapping.cell(at: origin), mapping.cell(at: point) == cell else { return .cancel }
+        return .tap(cell)
     }
-    mutating func cancel() { origin = nil; dragging = false }
+    mutating func cancel() { origin = nil; dragging = false; canceled = false }
 }

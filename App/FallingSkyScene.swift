@@ -10,6 +10,7 @@ import StarfallCore
     private var nodes: [Int: FallingSkyCharacter] = [:]
     private var cellsByID: [Int: Cell] = [:]
     private var rendered: FallingSky?
+    private var animatingColumns: Set<Int> = []
     private let pieces = SKNode(), effects = SKNode(), grid = SKNode()
     private let constellationTrail = SKNode()
     private var step: CGFloat { ObservatoryGeometry(size: size).imageRect.width / 7.7 }
@@ -64,6 +65,7 @@ import StarfallCore
             shadow.position.x = contact ? 0 : step * 0.045
             root.addChild(shadow)
         }
+        root.userData = ["column": cell.column]
         grid.addChild(root)
     }
 
@@ -88,12 +90,23 @@ import StarfallCore
 
     private func shade(_ node: SKNode) { node.alpha = 0.65 }
 
-    func render(_ game: FallingSky) {
+    func render(_ game: FallingSky) { renderSnapshot(game, preservingInput: false) }
+
+    private func renderSnapshot(_ game: FallingSky, preservingInput: Bool) {
         rendered = game
-        constellationTrail.removeAllChildren()
+        if !preservingInput { constellationTrail.removeAllChildren() }
         removeAllActions(); effects.removeAllChildren(); effects.removeAllActions()
         pieces.removeAllChildren(); grid.removeAllChildren(); nodes.removeAll(); cellsByID.removeAll()
-        for row in 0..<7 { for column in 0..<7 {
+        animatingColumns.removeAll()
+        renderColumns(Set(0..<7), from: game)
+        renderGravityField(game.orbit)
+    }
+
+    private func renderColumns(_ columns: Set<Int>, from game: FallingSky) {
+        let removed = cellsByID.filter { columns.contains($0.value.column) }.map(\.key)
+        for id in removed { nodes.removeValue(forKey: id)?.removeFromParent(); cellsByID.removeValue(forKey: id) }
+        for node in grid.children where columns.contains(node.userData?["column"] as? Int ?? -1) { node.removeFromParent() }
+        for row in 0..<7 { for column in columns.sorted() {
             let cell = Cell(row, column)
             if let gem = game.gem(at: cell) {
                 ground(gem, at: cell)
@@ -101,24 +114,40 @@ import StarfallCore
                 node.zPosition = CGFloat(7-cell.row)
                 if game.isGrowthBlocked(at: cell) { shade(node) }
                 pieces.addChild(node); nodes[gem.id] = node; cellsByID[gem.id] = cell
-
             }
         } }
-        renderGravityField(game.orbit)
+    }
+
+    private func finishColumns(_ columns: Set<Int>, completion: () -> Void) {
+        animatingColumns.subtract(columns)
+        if let rendered {
+            if animatingColumns.isEmpty { renderSnapshot(rendered, preservingInput: true) }
+            else {
+                renderColumns(columns, from: rendered)
+                for (id, cell) in cellsByID where !animatingColumns.contains(cell.column) {
+                    nodes[id]?.alpha = rendered.isGrowthBlocked(at: cell) ? 0.65 : 1
+                }
+            }
+        }
+        completion()
     }
 
     func animate(_ turn: FallingSkyTurn, from old: FallingSky,
                  to game: FallingSky, completion: @escaping () -> Void) {
         if !turn.gravityPhases.isEmpty {
+            precondition(animatingColumns.isEmpty, "Gravity presentation owns the whole board")
             animateGravity(turn, from: old, to: game, completion: completion); return
         }
-        render(old)
+        if animatingColumns.isEmpty && rendered != old { render(old) }
+        let columns = turn.changingColumns
+        precondition(columns.isDisjoint(with: animatingColumns), "Overlapping presentation ownership")
+        renderColumns(columns, from: old)
+        animatingColumns.formUnion(columns)
         rendered = game
         if view == nil { render(game); completion(); return }
         if reduceMotion || UIAccessibility.isReduceMotionEnabled || UIAccessibility.isVoiceOverRunning {
-            render(game)
-            // A short input gate still absorbs an accidental double tap.
-            run(.sequence([.wait(forDuration: 0.15), .run(completion)]))
+            renderColumns(columns, from: game)
+            run(.sequence([.wait(forDuration: 0.15), .run { [weak self] in self?.finishColumns(columns, completion: completion) }]))
             return
         }
         for cell in turn.cleared {
@@ -160,11 +189,11 @@ import StarfallCore
             }
         }
         if turn.arrivals.isEmpty {
-            run(.sequence([.wait(forDuration: StarfallMotion.clearDuration), .run { [weak self] in self?.render(game); completion() }]))
+            run(.sequence([.wait(forDuration: StarfallMotion.clearDuration), .run { [weak self] in self?.finishColumns(columns, completion: completion) }]))
             return
         }
         run(.sequence([arrivalFlights(turn.arrivals), .wait(forDuration: StarfallMotion.landingDuration),
-                       .run { [weak self] in self?.render(game); completion() }]))
+                       .run { [weak self] in self?.finishColumns(columns, completion: completion) }]))
     }
 
     /// One outward impulse per survivor, from its nearest cleared star. No cascades or rule changes.
@@ -173,6 +202,7 @@ import StarfallCore
         guard !sources.isEmpty else { return }
         for row in 0..<7 { for column in 0..<7 {
             let cell = Cell(row, column)
+            guard !animatingColumns.contains(column) || turn.changingColumns.contains(column) else { continue }
             guard !turn.cleared.contains(cell), let gem = old.gem(at: cell), let node = nodes[gem.id] else { continue }
             let origin = point(cell)
             guard let source = sources.min(by: {
@@ -350,6 +380,20 @@ import StarfallCore
 
 
 extension FallingSkyScene {
+    private func contactOutline(_ cell: Cell, ready: Bool) -> SKShapeNode {
+        let ring = SKShapeNode(circleOfRadius: step * 0.46)
+        let color = UIColor(StarfallTheme.Colors.textPrimary)
+        ring.name = "sky.input.contact"; ring.position = point(cell)
+        ring.strokeColor = color; ring.lineWidth = ready ? 3 : 2
+        ring.fillColor = color.withAlphaComponent(0.10)
+        return ring
+    }
+
+    func showContact(_ cell: Cell) {
+        clearConstellationTrace()
+        constellationTrail.addChild(contactOutline(cell, ready: false))
+    }
+
     func clearConstellationTrace() { constellationTrail.removeAllActions(); constellationTrail.removeAllChildren() }
 
     func showConstellationTrace(_ path: [Cell], ready: Bool) {
@@ -364,6 +408,7 @@ extension FallingSkyScene {
         thread.lineWidth = ready ? 2.4 : 1.5; thread.glowWidth = reduceMotion ? 0 : 4
         constellationTrail.addChild(thread)
         for (index, cell) in Set(path).sorted(by: { $0.row == $1.row ? $0.column < $1.column : $0.row < $1.row }).enumerated() {
+            constellationTrail.addChild(contactOutline(cell, ready: ready))
             let spark = SKShapeNode(circleOfRadius: step * 0.055)
             spark.name = "constellation.trace.spark"
             spark.position = point(cell)

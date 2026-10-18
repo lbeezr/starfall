@@ -28,7 +28,24 @@ For a current-gravity prepared comparison, the reset-only `opalStormPlanning` fi
 
 **Decision point:** After an observed session, choose one bounded follow-up: clarify an identified cue, investigate choice scarcity, compare pressure pacing, or keep the rules. A single preference is an initial signal. Keep source, observations, interpretation and missing evidence separate; no automatic frequency/power/progression change follows. Human comprehension, actual VoiceOver and physical feel are separate checks. The earlier lab protocols below remain historical reference, not delivery instructions.
 
-Run two short rounds with the same balance and motion settings: current version, then one bounded candidate. Alternate version order across people where practical. Record version, seed when known, pace, dark frequency, automatic/manual play, device and accessibility settings. Do not add analytics or record identifying details.
+## Separate pressure, understanding and replay
+
+**Status: Ready to use; no participant results.** Keep the current game and pending first-round question unchanged. This extends interpretation after that answer, not the number of questions asked during falling play.
+
+An [online experiment by Klimmt, Hartmann and Frey (2007)](https://journals.sagepub.com/doi/10.1089/cpb.2007.9942) manipulated perceived influence and control in a game (500 participants). Its abstract reports a role for perceived influence in enjoyment, with a more complex control relationship. Only the public abstract was reviewed here; this does not validate Starfall's pressure, cadence or reward. Our design inference is to distinguish feeling busy from recognizing a consequence caused by one's choice. The [Tyack/Mekler review](https://arxiv.org/abs/2405.12639) also cautions against shallow applications of motivation theory; neither source is a feature checklist.
+
+| Observation | What it can support | Next bounded response |
+| --- | --- | --- |
+| Player clears faster but names no changed choice | Pressure was noticed; strategic engagement is still unknown | Ask which moment felt deliberate after the round; do not automatically increase speed |
+| Player predicts a specific rearrangement, then the committed result agrees | A consequential choice was understood on that board | Record the prediction before the action and the actual result separately; avoid attributing an orbit benefit to Opal merely because it survives |
+| Player predicts correctly but cannot carry out the action | Understanding and execution differ | Investigate that input/window/readability reproduction before adding another mechanic |
+| Player executes a prepared example after explanation | The demonstrated sequence was reproducible | Label coaching and familiarity; this alone establishes neither discovery nor transfer |
+
+If the player voluntarily chooses another round after the first-round answer or prepared example, offer **New sky** as the optional transfer check. Record the new source/seed/settings and whether a similar principle is recognized on a different arrangement, without recommending a first clear or revealing arrivals. Keep pauses/holds explicit. If no comparable opportunity occurs, record **not observed**, not failed learning. If the player prefers same-sky replay, preserve that choice and record rehearsal rather than fresh-board transfer. Stop when they choose to stop; the protocol does not require another round.
+
+Record voluntary replay/decline and the player's reason separately from score and demonstrated skill. Enjoying simple clears is a valid preference. One explained fresh-board choice and a voluntary replay are initial signals, not proof of long-term replayability or retention. Do not add tracking, progression or reward schedules to fill that evidence gap. At the decision point, choose one observed cue/input/frequency issue or retain the current rules; wait for an actual observation before selecting a candidate.
+
+Use the matched-version protocol below only once an observed issue justifies a bounded candidate. Run two short rounds with the same balance and motion settings: current version, then one bounded candidate. Alternate version order across people where practical. Record version, seed when known, pace, dark frequency, automatic/manual play, device and accessibility settings. Do not add analytics or record identifying details.
 
 Before coaching, ask the player to start and explain what they think makes a clear. Observe their first legal clear, pauses, manual showers, invalid taps, and periods in which they say they are waiting. Record times only if actually measured. Do not treat a missed group as proof the board had no move.
 

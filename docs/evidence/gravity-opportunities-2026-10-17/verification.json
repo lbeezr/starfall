@@ -111,8 +111,35 @@
     "log": "build_sim_2026-10-18T02-18-34-781Z_pid26459_0427ffda.log",
     "result": "succeeded"
   },
+  "responsiveIntegration": {
+    "cleanLocalCommit": "59b526d8357b4cf8d5a8642e01a4cf2061b6135d",
+    "debugBuildRun": "build_run_sim_2026-10-18T02-29-19-570Z_pid26459_c3f55985.log",
+    "hosted": {
+      "failed": 0,
+      "passed": 182,
+      "skipped": 0,
+      "xcresult": "test_sim_2026-10-18T02-25-38-376Z_pid26459_44d9285a.xcresult"
+    },
+    "installedMatchesBuild": {
+      "Starfall": "95a9dd46d5fd1f9f1bc0c9631d3c3feb424bd5c12a6c582b2dd2a3cd5617492c",
+      "Starfall.debug.dylib": "fdb623b0ee1b2adee1e8f4b30e519a248c7e99539037db006ef0f75737187cc4"
+    },
+    "native": {
+      "failed": 0,
+      "methods": [
+        "opening cascade",
+        "both gravity opportunity flows",
+        "both responsive input flows"
+      ],
+      "passed": 5,
+      "skipped": 0,
+      "xcresult": "test_sim_2026-10-18T02-26-53-827Z_pid26459_35f6b97e.xcresult"
+    },
+    "releaseBuild": "build_sim_2026-10-18T02-29-13-426Z_pid26459_dd287ce7.log",
+    "runtimeFingerprint": "dev.d5e0632d10"
+  },
   "retainedJPEGs": {
-    "dev-794a0d1-wip-498a868592__natural-orbit-choice__iphone-17e__default-text.jpg": "a6db4c670feb30397803f784be35cc117f774f5726983190841db7c3bcc8c3ee",
+    "dev-59b526d__natural-orbit-choice__iphone-17e__default-text.jpg": "dedf6c68b7591b4002463faaa4faa4fa193ed03410487427c840fb7213a61c0b",
     "dev-794a0d1-wip-b0c6f88c96__natural-orbit-choice__iphone-17e__largest-text.jpg": "d15a612a0a5c43652aa631d64a30ffd805f614684fde9e29f6a885c07cf8b7ff"
   },
   "simulator": {

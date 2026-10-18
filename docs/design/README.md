@@ -4,6 +4,8 @@ Behavior proposals, production contracts and research supporting decisions.
 
 ## Start here
 
+[Responsive taps and concurrent play](INTERACTION_FEEDBACK.md) owns column reservations, contact feedback and ordinary tap/trace classification.
+
 [Announced pacing adoption](PACING_ADOPTION.md) owns the user-selected production cadence, save boundary and phone delivery acceptance.
 
 [Next pacing design](PACING_NEXT.md) analyzes the current source split, usable input time and a bounded timing comparison after opening/tracing integration. Proposed only.
