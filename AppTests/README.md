@@ -67,3 +67,5 @@ Rendered-award checks capture the complete `FallingSkyView` in an isolated foreg
 `TraceInputPolishTests` also checks direction-derived swap targets and off-center elliptical acquisition at phone/tablet sizes.
 
 `SkySaveArchiveTests` owns archive migration/validation and `SkyPhasePresentationTests` owns forecast presentation. Both were extracted unchanged from the general Store suite, with explicit hosted target membership.
+
+The [crowded current-rule award sample](../docs/evidence/calibration-critical-mass-2026-10-18/AWARDS.md) restores fresh seed 28 after 29 showers, checks its exact +8 and independent Store admission, and captures four host layout/text variants through normal award expiry. Host layout captures do not establish native contact on that history or physical readability.

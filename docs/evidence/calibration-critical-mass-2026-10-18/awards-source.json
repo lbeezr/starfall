@@ -1,0 +1,56 @@
+{
+  "source": "564e3ed972dc4b9587d4a12809cad38edf582cd3",
+  "originMain": "b8cf29f8af74ef0396c8cc96bfdc58292dd09c03",
+  "runtimeTree": "87277f9e7eaa14ac1d10e5302f8947b706f53b9c",
+  "dirtyBuildInputs": [
+    "AppTests/StarlightCelebrationTests.swift"
+  ],
+  "sha256": {
+    "AppTests/StarlightCelebrationTests.swift": "f0cf38536c47f078d1fc5805a394ea3f60d4c391a941014da31c219910064308",
+    "App/StarlightCelebration.swift": "535e467ca73eb859fc863c7940f7c211f93987756d8addc3ff874f9efc81a318",
+    "App/CrystalCelebrationArtwork.swift": "ce23c2dcf34e90bb2a5501e81db302b1aab03070227c8b6766405d1db8d6d6e1",
+    "App/FallingSkyView.swift": "26c59476ae0db1b824d8857f7c01ce2be9fd8ac47bde9003757905db0eb9bb41",
+    "App/CriticalMassPresentation.swift": "31c06542bdf1652fffc6f88579f61dad55be26549c09700fe7e9a23042e3bd24"
+  },
+  "scenario": {
+    "seed": 28,
+    "showers": 29,
+    "occupied": 26,
+    "award": 8,
+    "showerClock": "manual, paused restored round",
+    "motion": "normal, system Reduce Motion off",
+    "hostSizes": [
+      [
+        375,
+        667
+      ],
+      [
+        430,
+        932
+      ]
+    ],
+    "dynamicType": [
+      "large",
+      "accessibility5"
+    ]
+  },
+  "results": {
+    "core": 162,
+    "hosted": 14,
+    "native": 2,
+    "failures": 0,
+    "hostedAndNativeResult": "artifacts/calibration-native/crowded-awards-final.xcresult"
+  },
+  "captures": {
+    "compact-default": {
+      "path": "dev-564e3ed-wip-f0cf3853__crowded-award__native-host__compact-default.jpg",
+      "attachment": "35A610D5-B04F-4274-8BE2-8961E674AD6D.png",
+      "sha256": "3e5cf2daf889069a6db70ac546bbd828bf9b914814d66cf79fbe4e04a2d45c70"
+    },
+    "large-maximum": {
+      "path": "dev-564e3ed-wip-f0cf3853__crowded-award__native-host__large-maximum.jpg",
+      "attachment": "70C643AE-1D1F-4F4A-9823-45AA3678A6B0.png",
+      "sha256": "c96f57f0c3a8b339fe2040a4ea2da513d9ae334b4e4a20a430881473d16768b1"
+    }
+  }
+}
