@@ -12,6 +12,14 @@ The existing icon, screens and six-star cast, with links to their sources. **The
 
 **Packaged asset — Playful Tumble.** This is the current app-icon PNG, not a screenshot. The [editable source and export instructions](../../scripts/README-app-icon.md) and [native adoption record](../evidence/playful-tumble-icon-2026-10-17/README.md) explain provenance and validation. iOS applies the rounded mask.
 
+## Character chat and script studio
+
+| Active chat | Debug authoring studio |
+| --- | --- |
+| <img src="../evidence/character-chat-2026-10-17/active.jpg" width="200" alt="Native active sky with Sunny's compact bottom speech bubble and portrait"> | <img src="../evidence/character-chat-2026-10-17/studio.jpg" width="200" alt="Native script preview with the shared bubble, Continue and Close, and six character portraits"> |
+
+**Source-bound native captures — October 17 character-chat follow-up, 17e / iOS 27.0 Simulator.** [Source hashes, later accessibility correction, small/large-phone checks and limits](../evidence/character-chat-2026-10-17/README.md). [Portrait sources/prompts](../../Artwork/Dialogue/README.md) retain the six generated masters; [authoring guide](../../App/DialogueScripts/README.md) explains future scripts. These captures establish sampled appearance, not actual VoiceOver, physical-device acceptance or parity with the newer storm phone branch.
+
 ## Opening screen and active play
 
 | Opening | Active play |

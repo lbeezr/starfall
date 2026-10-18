@@ -501,13 +501,13 @@ final class FallingSkyStoreTests: XCTestCase {
             presenter: presenter, clock: clock, feedback: feedback)
         store.setSuspended(false)
         store.clear(Cell(0, 0))
-        XCTAssertEqual(feedback.announcements, [store.message], "Invalid explicit input explains the rule")
+        XCTAssertEqual(feedback.announcements, [store.guideLine.spokenText], "Invalid explicit input explains the rule")
         feedback.announcements.removeAll()
         store.callShower(); presenter.finish()
-        XCTAssertEqual(feedback.announcements, [store.message], "Manual showers speak their committed result")
+        XCTAssertEqual(feedback.announcements, [store.guideLine.spokenText], "Manual showers speak their committed result")
         feedback.announcements.removeAll()
         store.clear(try XCTUnwrap(store.game.legalGroups.first?.first)); presenter.finish()
-        XCTAssertEqual(feedback.announcements, [store.message], "Explicit clears retain spoken feedback")
+        XCTAssertEqual(feedback.announcements, [store.guideLine.spokenText], "Explicit clears retain spoken feedback")
         feedback.announcements.removeAll()
         store.togglePause()
         clock.advance(4); presenter.finish()
@@ -516,11 +516,11 @@ final class FallingSkyStoreTests: XCTestCase {
         for _ in 0..<40 where !store.game.isOver { clock.advance(4); presenter.finish() }
         XCTAssertTrue(store.game.isOver)
         XCTAssertEqual(feedback.announcements, [
-            "1 lighter shower before storm",
-            "Storm · 3 heavy showers left. Faster after next shower",
-            "Lighter showers · 9 showers",
-            "Breathing window. More time between showers",
-            store.message
+            "Nova. 1 lighter shower before storm",
+            "Nova. Storm · 3 heavy showers left. Faster after next shower",
+            "Nova. Lighter showers · 9 showers. Faster passage. Showers are closer together",
+            "Nova. Lighter showers · 8 showers. Breathing window. More time between showers",
+            store.guideLine.spokenText
         ], "Only announced pressure transitions and the terminal result interrupt automatic play")
         store.restart(sameSky: true)
         feedback.announcements.removeAll()
@@ -538,7 +538,7 @@ final class FallingSkyStoreTests: XCTestCase {
         store.terminalSpeech = .ceremony
         store.setSuspended(false)
         store.callShower(); presenter.finish()
-        XCTAssertEqual(feedback.announcements, [store.message])
+        XCTAssertEqual(feedback.announcements, [store.guideLine.spokenText])
         feedback.announcements.removeAll()
         store.togglePause()
         for _ in 0..<40 where !store.game.isOver {
@@ -1009,7 +1009,7 @@ final class SkyPhasePresentationTests: XCTestCase {
         XCTAssertEqual(store.phaseCue?.shower, 9); XCTAssertTrue(feedback.announcements.isEmpty)
         presenter.finish()
         XCTAssertEqual(store.phaseCue?.shower, 10)
-        XCTAssertEqual(feedback.announcements, ["Storm · 3 heavy showers left. Faster after next shower"])
+        XCTAssertEqual(feedback.announcements, ["Nova. Storm · 3 heavy showers left. Faster after next shower"])
         clock.advance(store.showerInterval); presenter.finish()
         XCTAssertEqual(store.game.turns, 10); XCTAssertEqual(feedback.announcements.count, 1)
         store.setSuspended(true)
@@ -1116,5 +1116,60 @@ extension FallingSkyStoreTests {
         XCTAssertEqual(expected.clear(Cell(0,3))?.collected, 4)
         XCTAssertEqual(store.game, expected)
         XCTAssertTrue(store.game.isValidSave)
+    }
+}
+
+extension FallingSkyStoreTests {
+    @MainActor func testDialogueDoesNotMutateRoundSaveOrDeadlineAndRestartDiscardsIt() throws {
+        let suite = "Starfall.Dialogue.\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: suite)!
+        defer { defaults.removePersistentDomain(forName: suite) }
+        let clock = ManualRainClock(), presenter = FallingSkyRecorder()
+        let store = FallingSkyStore(defaults: defaults, arguments: ["--starfalls-reset"], presenter: presenter, clock: clock)
+        store.setSuspended(false); store.togglePause()
+        let game = store.game, deadline = clock.deadline, save = defaults.data(forKey: FallingSkyStore.saveKey)
+        XCTAssertTrue(store.say(SkyDialogueLibrary.script("studio.cast")))
+        store.nextDialogue()
+        XCTAssertEqual(store.dialogue.line?.speaker, .spark)
+        XCTAssertEqual(store.game, game); XCTAssertEqual(clock.deadline, deadline)
+        XCTAssertEqual(defaults.data(forKey: FallingSkyStore.saveKey), save)
+        let revision = store.dialogue.revision
+        store.setSuspended(true); clock.advance(100)
+        let retainedLine = store.dialogue.line
+        store.nextDialogue()
+        XCTAssertEqual(store.dialogue.line, retainedLine, "Suspended screens reject stale Continue actions")
+        XCTAssertEqual(store.game, game)
+        store.restart(sameSky: true)
+        store.dialogue.expire(revision: revision)
+        XCTAssertNil(store.dialogue.line)
+        XCTAssertFalse(store.say(SkyDialogueLibrary.script("studio.cast")), "Suspended screens reject scenario events")
+    }
+
+}
+
+extension FallingSkyStoreTests {
+    @MainActor func testPressureAndExplicitHelpShareOneVisibleSpokenMessageWithoutChangingTheSky() throws {
+        let suite = "Starfall.DialoguePressure.\(UUID())", defaults = UserDefaults(suiteName: suite)!
+        defer { defaults.removePersistentDomain(forName: suite) }
+        let presenter = FallingSkyRecorder(), feedback = SkyFeedbackRecorder(), clock = ManualRainClock()
+        let store = FallingSkyStore(defaults: defaults,
+            arguments: ["--starfalls-reset", "--constellation-fixture=stormWarning"],
+            presenter: presenter, clock: clock, feedback: feedback)
+        store.setSuspended(false)
+        XCTAssertTrue(store.pausedGuideLine.text.contains("1 lighter shower"))
+        let committed = store.game, bytes = defaults.data(forKey: FallingSkyStore.saveKey)
+        let empty = try XCTUnwrap((0..<49).map { Cell($0 / 7, $0 % 7) }.first { store.game.gem(at: $0) == nil })
+        store.clear(empty)
+        XCTAssertEqual(store.game, committed)
+        XCTAssertEqual(defaults.data(forKey: FallingSkyStore.saveKey), bytes)
+        XCTAssertTrue(store.pausedGuideLine.text.contains("Match three light"))
+        XCTAssertTrue(store.pausedGuideLine.text.contains("1 lighter shower"))
+        XCTAssertEqual(feedback.announcements, [store.pausedGuideLine.spokenText])
+        XCTAssertEqual(store.dialogue.line, store.pausedGuideLine)
+        store.callShower(); presenter.finish()
+        XCTAssertTrue(store.pausedGuideLine.text.contains("Storm · 3 heavy showers left"))
+        XCTAssertTrue(store.pausedGuideLine.text.contains("Faster after next shower"))
+        XCTAssertEqual(store.pausedGuideLine.speaker, .nova)
+        XCTAssertEqual(store.game.turns, committed.turns + 1)
     }
 }

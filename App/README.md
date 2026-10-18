@@ -12,7 +12,7 @@ Default Falling Sky uses the full-screen Observatory. `ObservatoryGeometry` owns
 
 `ObservatoryReviewFixture` is compiled only in Debug and requires explicit reset/review arguments. It is native verification tooling, not an alternative game/environment. See [verification commands and boundaries](../tools/environments/README.md). `skyEnvironment` is retired: any retained local value is inert and game saves are untouched.
 
-`FallingSkyHUD` owns the selected transparent score/trail/menu row and cast guidance. `FallingSkyMenu` receives snapshots, bindings and narrow actions, with dedicated help/balance pages. The trail reads the existing deadline; it never schedules showers. See [interface contracts](../docs/design/OBSERVATORY_INTERFACE.md).
+`FallingSkyHUD` owns the selected transparent score/trail/menu row. [Character dialogue authoring](DialogueScripts/README.md) owns reusable scripts, speaker IDs and the Debug studio; `SkyDialogueBubble` renders one shared native chat surface for gameplay and ceremonies. `SkyTrailMotion` owns the straight/island forecast finish mapping. `FallingSkyMenu` receives snapshots, bindings and narrow actions, with dedicated help/balance pages. The trail reads the existing deadline; it never schedules showers. See [interface contracts](../docs/design/OBSERVATORY_INTERFACE.md).
 
 `StarCast` owns Crystal Glow materials for board, comets, HUD and previews: six packaged bodies, authored faces, shallow turns and a bounded 72-material cache. The scene owns separate contact shadows; their placement follows cached body height and grown size. See the [production contract](../docs/design/star-cast/README.md).
 

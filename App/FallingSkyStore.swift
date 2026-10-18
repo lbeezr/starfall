@@ -49,7 +49,32 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     private(set) var nextShowerDate: Date?
     /// Interval/phase leading to the next shower, including while paused or overdue.
     private(set) var nextShowerCadence: SkyCadenceStep = .init(delay: 4, phase: .steady)
-    private(set) var message = "Gather starlight. Draw your own constellations."
+    let dialogue = SkyDialogueSession()
+    private(set) var guideLine = SkyDialogueLibrary.line("guide.opening")
+    var message: String { guideLine.text }
+    var pausedGuideLine: SkyDialogueLine {
+        if dialogue.visible, let line = dialogue.line { return line }
+        return SkyDialogueLibrary.timing(game: game, cadence: nextShowerCadence) ?? guideLine
+    }
+
+    private func guide(_ id: String, values: [String: String] = [:], visible: Bool = false) {
+        guideLine = SkyDialogueLibrary.line(id, values: values)
+        if visible {
+            guideLine = SkyDialogueLibrary.contextual(guideLine, game: game, cadence: nextShowerCadence)
+            dialogue.show(guideLine, interrupt: true)
+        }
+    }
+
+    @discardableResult func say(_ script: SkyDialogueScript) -> Bool {
+        guard !suspended, !game.isOver, dialogue.play(script) else { return false }
+        if let line = dialogue.line { feedback.announce(line.spokenText) }
+        return true
+    }
+    func nextDialogue() {
+        guard !suspended, !game.isOver else { return }
+        dialogue.next()
+        if dialogue.visible, let line = dialogue.line { feedback.announce(line.spokenText) }
+    }
     private(set) var constellationInputGeneration: UInt64 = 0
     private(set) var constellationTracing = false
     private var constellationHold: UInt64?
@@ -176,7 +201,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         if !arguments.contains("--starfalls-reset"), let saved = SkySaveArchive.load(from: defaults) {
             game = saved
             hasSavedSky = true
-            message = saved.outcome == .won ? "First Light complete. Replay it or start a new sky." : saved.isOver ? "This sky is full. Replay it or try a new sky." : "Your sky is paused. Resume when you're ready."
+            guide(saved.outcome == .won ? "guide.won" : saved.isOver ? "guide.full" : "guide.restore", values: saved.isOver ? ["score": String(saved.score)] : [:])
         } else {
             let argument = arguments.first { $0.hasPrefix("--starfalls-seed=") }
             let seed = argument.flatMap { UInt64($0.dropFirst("--starfalls-seed=".count)) } ?? 5
@@ -191,14 +216,14 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         if arguments.contains("--starfalls-reset"), let name = arguments.first(where: { $0.hasPrefix("--constellation-fixture=") }),
            let fixture = ConstellationFixture(rawValue: String(name.dropFirst("--constellation-fixture=".count))) {
             game = fixture.game()
-            message = fixture.title + ". Draw through matching stars."
+            guide("guide.fixture", values: ["detail": fixture.title + ". Draw through matching stars."])
         }
         #endif
         refreshCadence()
         #if DEBUG
         if arguments.contains("--starfalls-reset"), let name = arguments.first(where: { $0.hasPrefix("--gravity-fixture=") }),
            let fixture = GravityFixture(rawValue: String(name.dropFirst("--gravity-fixture=".count))) {
-            game = fixture.game(); message = fixture.message
+            game = fixture.game(); guide("guide.fixture", values: ["detail": fixture.message])
         }
         #endif
         refreshCadence()
@@ -222,18 +247,13 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         guard canClear, !constellationTracing else { return }
         let old = game
         guard let turn = game.clear(cell) else {
-            if game.gem(at: cell)?.gravityKind != nil {
-                message = game.gem(at: cell)?.gravityKind == .hole
-                    ? "Clear a matching group containing a captive to close the hole."
-                    : "Clear beside an attraction field to dispel it, or clear between two fields to form a hole."
-                feedback.announce(message); return
-            }
-            message = game.gem(at: cell)?.isDark == true
-                ? "Clear a matching group beside the dark star to dissolve it."
-                : game.gem(at: cell)?.isLight == true
-                    ? "Start on a colored star. The Opal Orb can join that color’s match or constellation and is spent when cleared."
-                : "Match three light side by side, or five actual stars linked sideways or diagonally. Large stars count as one star, worth two light."
-            feedback.announce(message)
+            let gem = game.gem(at: cell)
+            let id = gem?.gravityKind == .hole ? "guide.hole-help"
+                : gem?.gravityKind == .magnet ? "guide.magnet-help"
+                : gem?.isDark == true ? "guide.dark-help"
+                : gem?.isLight == true ? "guide.opal-help" : "guide.match-help"
+            guide(id, visible: true)
+            feedback.announce(guideLine.spokenText)
             return
         }
         #if DEBUG
@@ -277,9 +297,9 @@ enum SkyTerminalSpeech { case feedback, ceremony }
             freezeClock()
             settlePresentation(reason: "pause")
             feedback.stopSounds()
-            message = "Sky paused. Clear at your pace or call the next shower."
+            dialogue.reset(); guide("guide.paused")
         } else {
-            message = "Watch the preview. Clear matching stars before the columns fill."
+            dialogue.reset(); guide("guide.started"); dialogue.show(pausedGuideLine)
             armClock()
         }
     }
@@ -347,46 +367,45 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         let growth = turn.arrivals.filter(\.grew).count
         let dissolved = turn.cleared.filter { old.gem(at: $0)?.isDark == true }.count
         if game.outcome == .won {
-            message = "First Light complete! \(game.score) starlight collected. Replay it or start a new sky."
+            guide("guide.won", values: ["score": String(game.score)])
         } else if turn.blockedColumn != nil {
-            message = "There was no room for the next star. \(game.score) starlight collected."
+            guide("guide.full", values: ["score": String(game.score)])
         } else if turn.collected > 0 {
-            message = "+\(turn.collected) starlight. " + (dissolved > 0 ? "\(dissolved == 1 ? "Dark star dissolved" : "Dark stars dissolved")." : "A little more room to breathe.")
+            if dissolved > 0 {
+                guide("guide.dissolved", values: ["score": String(turn.collected), "dark": dissolved == 1 ? "Dark star" : "Dark stars"])
+            } else { guide("guide.clear", values: ["score": String(turn.collected)]) }
         } else if turn.arrivals.contains(where: { $0.gem.isDark }) {
-            message = "A dark star blocks nearby growth. Clear beside it to dissolve it."
+            guide("guide.dark-arrival")
         } else if turn.arrivals.contains(where: { $0.gem.isLight }) {
-            message = "An Opal Orb arrived. Start on a colored star to include it in that family’s match or constellation. Clearing spends the orb."
+            guide("guide.opal-arrival")
         } else if turn.arrivals.contains(where: { $0.gem.gravityKind == .magnet }) {
-            message = "Attraction fields formed. Clear their middle to form a hole, or clear beside an isolated field to dispel it."
+            guide("guide.magnet-arrival")
         } else if growth > 0 {
-            message = "\(growth == 1 ? "A star grew" : "\(growth) stars grew") — worth 2 when cleared."
+            guide("guide.growth", values: ["growth": growth == 1 ? "A star grew" : "\(growth) stars grew"])
         } else {
-            message = "\(turn.arrivals.count == 1 ? "One star arrived" : "\(turn.arrivals.count) stars arrived"). Make room for the next shower."
+            guide("guide.arrival", values: ["arrival": turn.arrivals.count == 1 ? "One star arrived" : "\(turn.arrivals.count) stars arrived"])
         }
         if !game.isOver, let field = game.orbit {
-            message = "Orbit: \(field.windowsRemaining) windows left. Clear a captive to release the others."
+            guide("guide.orbit", values: ["windows": String(field.windowsRemaining)])
         } else if !game.isOver, turn.gravityPhases.contains(where: { $0.event == .release }) {
-            message = "The hole closed. Its stars are free."
+            guide("guide.release")
         }
-        // One settled, generation-guarded announcement owns both pressure axes.
-        // Ordinary automatic arrivals leave exploration speech alone.
-        var transitions: [String] = []
-        if !game.isOver, game.challenge == nil, let previousCadence {
-            if let cue = SkyPhaseCue(game: game), cue.announcesTransition,
-               cue != SkyPhaseCue(game: old) { transitions.append(cue.text) }
-            let cadence = nextShowerCadence
-            if (cadence.warnsFasterNext && !previousCadence.warnsFasterNext)
-                || (cadence.phase == .breathing && previousCadence.phase != .breathing),
-               let copy = SkyCadenceCueCopy(step: cadence) { transitions.append(copy.label) }
-        }
-        let speech = (announcesResult || game.isOver ? [message] : []) + transitions
-        let spokenResult = speech.isEmpty ? nil : speech.joined(separator: ". ")
+        // The committed phase/cadence has one visible and spoken owner. No queued notices.
+        let transition = SkyDialogueLibrary.transition(from: old, to: game,
+                                                       previousCadence: previousCadence, cadence: nextShowerCadence)
+        let announcesTransition = SkyDialogueLibrary.announcesTransition(from: old, to: game,
+            previousCadence: previousCadence, cadence: nextShowerCadence)
+        let resultLine = SkyDialogueLibrary.contextual(guideLine, game: game, cadence: nextShowerCadence)
+        let spokenResult: SkyDialogueLine? = transition ?? (announcesResult || game.isOver ? resultLine : nil)
         save() // Commit before animation: backgrounding cannot replay arrivals.
         presenter.animate(turn, from: old, to: game) { [weak self] in
             guard let self, self.generation == ticket, self.busy else { return }
             self.pending = nil; self.busy = false
             if let spokenResult, !self.game.isOver || self.terminalSpeech == .feedback {
-                self.feedback.announce(spokenResult)
+                let accepted = self.dialogue.show(spokenResult, interrupt: announcesResult)
+                if accepted && (announcesResult || self.game.isOver || announcesTransition) {
+                    self.feedback.announce(spokenResult.spokenText)
+                }
             }
             self.deliverRainIfReady()
             #if DEBUG
@@ -426,7 +445,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         }
         refreshCadence()
         remaining = showerInterval
-        message = sameSky ? "Same sky, a fresh start. Start when you're ready." : "A new sky. Start when you're ready."
+        dialogue.reset(); guide(sameSky ? "guide.replay" : "guide.new")
         save(); presenter.render(game)
     }
 
@@ -439,7 +458,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         game = fixture.game()
         refreshCadence()
         remaining = showerInterval
-        message = fixture.title + ". Draw through matching stars."
+        guide("guide.fixture", values: ["detail": fixture.title + ". Draw through matching stars."])
         save(); presenter.render(game)
     }
 
@@ -451,7 +470,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         feedback.stopSounds()
         freezeClock(); settlePresentation()
         game = fixture.game(); refreshCadence(); remaining = showerInterval
-        message = fixture.message
+        guide("guide.fixture", values: ["detail": fixture.message])
         save(); presenter.render(game)
     }
 
@@ -468,7 +487,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         game = FallingSky(challenge: .firstLight)
         refreshCadence()
         remaining = showerInterval
-        message = "Collect 18 starlight to complete First Light. Start the sky or call a shower."
+        dialogue.reset(); guide("guide.first-light")
         save(); presenter.render(game)
     }
 
@@ -482,7 +501,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         refreshCadence()
         remaining = showerInterval
         settlePresentation(reason: "balance")
-        message = "Balance updated. Your sky is ready when you are."
+        dialogue.reset(); guide("guide.balance")
         save()
         armClock()
     }

@@ -4,6 +4,14 @@ import UIKit
 /// The shared presentation system. Rules and SpriteKit jewel materials have
 /// separate owners; screens compose these roles rather than invent local tokens.
 enum StarfallTheme {
+    enum Dialogue {
+        static let surface = Color(red: 0.055, green: 0.055, blue: 0.145)
+        static let brass = Color(red: 0.98, green: 0.78, blue: 0.43)
+        static let ink = Colors.textPrimary
+        static let portraitSide: CGFloat = 64
+        static let portraitOverlap: CGFloat = 16
+        static let corner: CGFloat = 24
+    }
     enum Colors {
         static let launchBackground = Color("LaunchBackground")
         static let skyTop = Palette.midnight

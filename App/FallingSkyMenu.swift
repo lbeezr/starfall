@@ -58,6 +58,13 @@ struct FallingSkyMenu: View {
                         .font(.caption).foregroundStyle(.secondary)
                         .accessibilityIdentifier("starfall.buildID")
                 }
+                #if DEBUG
+                Section("Development") {
+                    NavigationLink { SkyDialogueStudio().toolbar { dismissal } }
+                        label: { Label("Dialogue studio", systemImage: "bubble.left.and.bubble.right") }
+                        .accessibilityIdentifier("dialogue.studio.open")
+                }
+                #endif
             }
             .scrollContentBackground(.hidden)
             .background(StarfallTheme.Colors.skyTop)

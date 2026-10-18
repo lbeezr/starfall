@@ -10,7 +10,7 @@ A small native iOS falling-sky puzzle. Clear matching stars as showers fill the 
 
 - **Clear a match:** Horizontally or vertically connected matching jewels must total at least 3 starlight. Normal jewels count as 1; large jewels count as 2. Clear beside a dark star to dissolve it and unblock nearby growth.
 - **Draw a constellation:** Swipe through five or more neighboring matching stars, including diagonals, then lift. Only the stars you traced clear; retrace to branch. Drawing holds the next shower until release or cancellation.
-- **Understand the sky:** While paused, Sunny explains growth, clear results and dark-star removal using the committed game outcome. Active play stays quiet.
+- **Understand the sky:** Characters explain play, storm counts and timing warnings in one bottom chat. Tap the retained portrait to reread a message. Six conversation portraits and bundled scripts share one reusable presentation; [edit or preview dialogue](App/DialogueScripts/README.md).
 - **Control the showers:** Call the next shower yourself or clear while paused. Use the sky menu to pause or tune shower pace and dark-star frequency; Start/Resume and manual advance appear while paused.
 - **Try a goal:** Choose **Sky menu → Start First Light** to start a new round with steady showers, no dark stars and an 18-starlight target. Replay repeats it; New sky returns to survival. When a survival board fills, replay or start a new sky.
 

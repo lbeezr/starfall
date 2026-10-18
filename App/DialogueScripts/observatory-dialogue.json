@@ -1,0 +1,463 @@
+{
+  "$schema": "dialogue.schema.json",
+  "schemaVersion": 1,
+  "scripts": [
+    {
+      "id": "guide.opening",
+      "lines": [
+        {
+          "id": "guide.opening.1",
+          "speaker": "sunny",
+          "text": "Match three light side by side, or draw through five actual matching stars. Large stars count as one star, worth two light.",
+          "priority": "help"
+        }
+      ]
+    },
+    {
+      "id": "guide.restore",
+      "lines": [
+        {
+          "id": "guide.restore.1",
+          "speaker": "sunny",
+          "text": "Your sky is paused. Resume when you're ready.",
+          "priority": "help"
+        }
+      ]
+    },
+    {
+      "id": "guide.dark-help",
+      "lines": [
+        {
+          "id": "guide.dark-help.1",
+          "speaker": "sunny",
+          "text": "Clear a matching group beside the dark star to dissolve it.",
+          "priority": "help",
+          "seconds": 8
+        }
+      ]
+    },
+    {
+      "id": "guide.match-help",
+      "lines": [
+        {
+          "id": "guide.match-help.1",
+          "speaker": "sunny",
+          "text": "Match three light side by side, or five actual stars linked sideways or diagonally. Large stars count as one star, worth two light.",
+          "priority": "help",
+          "seconds": 8
+        }
+      ]
+    },
+    {
+      "id": "guide.paused",
+      "lines": [
+        {
+          "id": "guide.paused.1",
+          "speaker": "sunny",
+          "text": "Sky paused. Clear at your pace or call the next shower.",
+          "priority": "help"
+        }
+      ]
+    },
+    {
+      "id": "guide.started",
+      "lines": [
+        {
+          "id": "guide.started.1",
+          "speaker": "sunny",
+          "text": "Clear matching stars before the columns fill.",
+          "priority": "routine",
+          "seconds": 6
+        }
+      ]
+    },
+    {
+      "id": "guide.won",
+      "lines": [
+        {
+          "id": "guide.won.1",
+          "speaker": "sunny",
+          "text": "First Light complete! {score} starlight collected. Replay it or start a new sky.",
+          "priority": "outcome"
+        }
+      ]
+    },
+    {
+      "id": "guide.full",
+      "lines": [
+        {
+          "id": "guide.full.1",
+          "speaker": "sunny",
+          "text": "There was no room for the next star. {score} starlight collected.",
+          "priority": "outcome"
+        }
+      ]
+    },
+    {
+      "id": "guide.clear",
+      "lines": [
+        {
+          "id": "guide.clear.1",
+          "speaker": "sunny",
+          "text": "+{score} starlight. A little more room to breathe.",
+          "priority": "routine",
+          "seconds": 5
+        }
+      ]
+    },
+    {
+      "id": "guide.dissolved",
+      "lines": [
+        {
+          "id": "guide.dissolved.1",
+          "speaker": "sunny",
+          "text": "+{score} starlight. {dark} dissolved.",
+          "priority": "help",
+          "seconds": 6
+        }
+      ]
+    },
+    {
+      "id": "guide.dark-arrival",
+      "lines": [
+        {
+          "id": "guide.dark-arrival.1",
+          "speaker": "sunny",
+          "text": "A dark star blocks nearby growth. Clear beside it to dissolve it.",
+          "priority": "help",
+          "seconds": 8
+        }
+      ]
+    },
+    {
+      "id": "guide.growth",
+      "lines": [
+        {
+          "id": "guide.growth.1",
+          "speaker": "sunny",
+          "text": "{growth} — worth 2 when cleared.",
+          "priority": "routine",
+          "seconds": 6
+        }
+      ]
+    },
+    {
+      "id": "guide.arrival",
+      "lines": [
+        {
+          "id": "guide.arrival.1",
+          "speaker": "sunny",
+          "text": "{arrival}. Make room for the next shower.",
+          "priority": "routine",
+          "seconds": 5
+        }
+      ]
+    },
+    {
+      "id": "guide.replay",
+      "lines": [
+        {
+          "id": "guide.replay.1",
+          "speaker": "sunny",
+          "text": "Same sky, a fresh start. Start when you're ready.",
+          "priority": "help"
+        }
+      ]
+    },
+    {
+      "id": "guide.new",
+      "lines": [
+        {
+          "id": "guide.new.1",
+          "speaker": "sunny",
+          "text": "A new sky. Start when you're ready.",
+          "priority": "help"
+        }
+      ]
+    },
+    {
+      "id": "guide.first-light",
+      "lines": [
+        {
+          "id": "guide.first-light.1",
+          "speaker": "sunny",
+          "text": "Collect 18 starlight to complete First Light. Start the sky or call a shower.",
+          "priority": "help"
+        }
+      ]
+    },
+    {
+      "id": "guide.balance",
+      "lines": [
+        {
+          "id": "guide.balance.1",
+          "speaker": "sunny",
+          "text": "Balance updated. Your sky is ready when you are.",
+          "priority": "help",
+          "seconds": 6
+        }
+      ]
+    },
+    {
+      "id": "observatory.welcome",
+      "lines": [
+        {
+          "id": "observatory.welcome.1",
+          "speaker": "sunny",
+          "text": "A little wonder. A little room to breathe.",
+          "priority": "help"
+        }
+      ]
+    },
+    {
+      "id": "observatory.entry",
+      "lines": [
+        {
+          "id": "observatory.entry.1",
+          "speaker": "sunny",
+          "text": "Clear matching stars. Make room for more.",
+          "priority": "help"
+        }
+      ]
+    },
+    {
+      "id": "first-light.entry",
+      "lines": [
+        {
+          "id": "first-light.entry.1",
+          "speaker": "sunny",
+          "text": "Gather 18 starlight before the sky fills.",
+          "priority": "help"
+        }
+      ]
+    },
+    {
+      "id": "sky.won",
+      "lines": [
+        {
+          "id": "sky.won.1",
+          "speaker": "sunny",
+          "text": "{score} starlight, gathered by you.",
+          "priority": "outcome"
+        }
+      ]
+    },
+    {
+      "id": "sky.full",
+      "lines": [
+        {
+          "id": "sky.full.1",
+          "speaker": "sunny",
+          "text": "{score} starlight gathered. Every sky tells a different story.",
+          "priority": "outcome"
+        }
+      ]
+    },
+    {
+      "id": "studio.cast",
+      "lines": [
+        {
+          "id": "studio.sunny",
+          "speaker": "sunny",
+          "text": "Welcome to the Observatory. I'll help you find your way.",
+          "priority": "help"
+        },
+        {
+          "id": "studio.spark",
+          "speaker": "spark",
+          "text": "Look up! There's always something to discover.",
+          "priority": "help"
+        },
+        {
+          "id": "studio.pip",
+          "speaker": "pip",
+          "text": "A little room makes a big difference.",
+          "priority": "help"
+        },
+        {
+          "id": "studio.twinkle",
+          "speaker": "twinkle",
+          "text": "Take your time. Every little light counts.",
+          "priority": "help"
+        },
+        {
+          "id": "studio.nova",
+          "speaker": "nova",
+          "text": "A quieter moment. Let's enjoy it.",
+          "priority": "help"
+        },
+        {
+          "id": "studio.dusk",
+          "speaker": "dusk",
+          "text": "Even the dark has a place in the sky.",
+          "priority": "help"
+        }
+      ]
+    },
+    {
+      "id": "guide.fixture",
+      "lines": [
+        {
+          "id": "guide.fixture.1",
+          "speaker": "sunny",
+          "text": "{detail}",
+          "priority": "help"
+        }
+      ]
+    },
+    {
+      "id": "guide.hole-help",
+      "lines": [
+        {
+          "id": "guide.hole-help.1",
+          "speaker": "sunny",
+          "text": "Clear a matching group containing a captive to close the hole.",
+          "priority": "help",
+          "seconds": 8
+        }
+      ]
+    },
+    {
+      "id": "guide.magnet-help",
+      "lines": [
+        {
+          "id": "guide.magnet-help.1",
+          "speaker": "sunny",
+          "text": "Clear beside an attraction field to dispel it, or clear between two fields to form a hole.",
+          "priority": "help",
+          "seconds": 8
+        }
+      ]
+    },
+    {
+      "id": "guide.opal-help",
+      "lines": [
+        {
+          "id": "guide.opal-help.1",
+          "speaker": "sunny",
+          "text": "Start on a colored star. The Opal Orb can join that color’s match or constellation and is spent when cleared.",
+          "priority": "help",
+          "seconds": 8
+        }
+      ]
+    },
+    {
+      "id": "guide.opal-arrival",
+      "lines": [
+        {
+          "id": "guide.opal-arrival.1",
+          "speaker": "sunny",
+          "text": "An Opal Orb arrived. Start on a colored star to include it in that family’s match or constellation. Clearing spends the orb.",
+          "priority": "help",
+          "seconds": 8
+        }
+      ]
+    },
+    {
+      "id": "guide.magnet-arrival",
+      "lines": [
+        {
+          "id": "guide.magnet-arrival.1",
+          "speaker": "sunny",
+          "text": "Attraction fields formed. Clear their middle to form a hole, or clear beside an isolated field to dispel it.",
+          "priority": "help",
+          "seconds": 8
+        }
+      ]
+    },
+    {
+      "id": "guide.orbit",
+      "lines": [
+        {
+          "id": "guide.orbit.1",
+          "speaker": "sunny",
+          "text": "Orbit: {windows} windows left. Clear a captive to release the others.",
+          "priority": "help",
+          "seconds": 8
+        }
+      ]
+    },
+    {
+      "id": "guide.release",
+      "lines": [
+        {
+          "id": "guide.release.1",
+          "speaker": "sunny",
+          "text": "The hole closed. Its stars are free.",
+          "priority": "help",
+          "seconds": 8
+        }
+      ]
+    },
+    {
+      "id": "timing.phase",
+      "lines": [
+        {
+          "id": "timing.phase.1",
+          "speaker": "nova",
+          "text": "{phase}",
+          "priority": "warning",
+          "seconds": 8
+        }
+      ]
+    },
+    {
+      "id": "timing.cadence",
+      "lines": [
+        {
+          "id": "timing.cadence.1",
+          "speaker": "nova",
+          "text": "{cadence}",
+          "priority": "warning",
+          "seconds": 8
+        }
+      ]
+    },
+    {
+      "id": "timing.combined",
+      "lines": [
+        {
+          "id": "timing.combined.1",
+          "speaker": "nova",
+          "text": "{phase}. {cadence}",
+          "priority": "warning",
+          "seconds": 10
+        }
+      ]
+    },
+    {
+      "id": "ceremony.welcome",
+      "lines": [
+        {
+          "id": "ceremony.welcome.1",
+          "speaker": "sunny",
+          "text": "A little wonder. A little room to breathe. {summary}",
+          "priority": "help"
+        }
+      ]
+    },
+    {
+      "id": "ceremony.result",
+      "lines": [
+        {
+          "id": "ceremony.result.1",
+          "speaker": "sunny",
+          "text": "{score}. {reason}",
+          "priority": "outcome"
+        }
+      ]
+    },
+    {
+      "id": "guide.context",
+      "lines": [
+        {
+          "id": "guide.context.1",
+          "speaker": "nova",
+          "text": "{detail} {context}",
+          "priority": "warning",
+          "seconds": 10
+        }
+      ]
+    }
+  ]
+}

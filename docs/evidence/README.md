@@ -30,4 +30,5 @@ Start with [the roadmap](../ROADMAP.md) for current priorities or [visual refere
 
 [Production gravity art](gravity-art-2026-10-17/README.md) records generated source/prompt provenance, shared material integration, native scale/layout and full/reduced motion checks.
 
+- [Character chat production integration](character-chat-production-2026-10-17/README.md): current gameplay integration and native checks. [Earlier delivery](character-chat-2026-10-17/README.md) remains bound to its older base.
 [Attraction-field visual revision](attraction-field-2026-10-17/README.md) records the open aura, shared material/shadow contracts, native interaction and motion evidence, with unchanged rule and timing limits.
