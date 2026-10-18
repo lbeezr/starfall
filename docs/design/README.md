@@ -31,6 +31,6 @@ The [branding studies](branding/README.md) retain the editable wordmarks, sanctu
 
 [Welcome, entry and sky endings](SKY_FLOW.md) owns the selected overlapping reveal and offline resume/replay behavior.
 
-[Gravity design](GRAVITY_MECHANICS.md), [implementation plan](GRAVITY_MECHANICS_PLAN.md) and [mechanic research](CELESTIAL_MECHANICS_RESEARCH.md) cover the isolated magnetic collision and captive-orbit trial. These do not adopt gravity into production.
+[Gravity design](GRAVITY_MECHANICS.md), [implementation plan](GRAVITY_MECHANICS_PLAN.md) and [mechanic research](CELESTIAL_MECHANICS_RESEARCH.md) describe magnetic pairs and occupied captive orbits, now adopted into new skies. The historical trial and current integration evidence retain separate source boundaries.
 
 [Reliability polish](RELIABILITY_POLISH.md) scopes touch ownership, build identity and layout/native acceptance in normal Starfall.

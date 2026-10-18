@@ -4,9 +4,10 @@ import StarfallCore
 /// One persistence contract for committed skies. Legacy bytes remain untouched;
 /// a present but invalid current save never falls back to an older round.
 enum SkySaveArchive {
-    static let key = "starfall.accumulation.v4"
+    static let key = "starfall.accumulation.v5"
+    static let previousKey = "starfall.accumulation.v4"
     static let legacyKey = "starfall.accumulation.v3"
-    static let schemaVersion = 4
+    static let schemaVersion = 5
 
     private struct Envelope: Codable {
         let schemaVersion: Int
@@ -40,6 +41,13 @@ enum SkySaveArchive {
         if defaults.object(forKey: key) != nil {
             guard let data = defaults.data(forKey: key), let game = try? decode(data) else { return nil }
             return game
+        }
+        if defaults.object(forKey: previousKey) != nil {
+            guard let data = defaults.data(forKey: previousKey),
+                  let envelope = try? JSONDecoder().decode(Envelope.self, from: data),
+                  envelope.schemaVersion == 4, envelope.game.generation != .gravityOrbits,
+                  envelope.game.isValidSave else { return nil }
+            return envelope.game
         }
         guard let data = defaults.data(forKey: legacyKey), let game = try? decodeLegacy(data) else { return nil }
         return game

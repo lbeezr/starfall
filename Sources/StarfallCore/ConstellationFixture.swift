@@ -52,7 +52,7 @@ public enum ConstellationFixture: String, CaseIterable {
             6: (Cell(0,5),4), 7: (Cell(0,5),3), 9: (Cell(0,5),3),
             10: (Cell(0,3),4), 11: (Cell(1,0),4)
         ]
-        var game = FallingSky(seed: 10, generation: .current)
+        var game = FallingSky(seed: 10, generation: .opalStorms)
         for shower in 1...12 {
             precondition(game.letStarsFall() != nil && !game.isOver)
             if let clear = clears[shower] {
@@ -74,7 +74,7 @@ public enum ConstellationFixture: String, CaseIterable {
         default: preconditionFailure("Not a mechanics history fixture")
         }
         let last = configuration.last
-        var game = FallingSky(seed: configuration.seed, generation: .current)
+        var game = FallingSky(seed: configuration.seed, generation: .opalStorms)
         for number in 1...last {
             precondition(game.letStarsFall() != nil && !game.isOver)
             if configuration.retainOpals {

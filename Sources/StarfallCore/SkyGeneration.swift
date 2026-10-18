@@ -4,10 +4,12 @@ public enum SkyGeneration: Int, Codable, Equatable, Sendable {
     case legacy = 0
     case opalStorms = 1
 
-    public static let current = SkyGeneration.opalStorms
+    case gravityOrbits = 2
+
+    public static let current = SkyGeneration.gravityOrbits
 
     public func phase(for shower: Int) -> SkyShowerPhase? {
-        guard self == .opalStorms, shower > 0 else { return nil }
+        guard self != .legacy, shower > 0 else { return nil }
         let position = (shower - 1) % 12
         return position < 9 ? .calm(remaining: 9 - position) : .storm(remaining: 12 - position)
     }

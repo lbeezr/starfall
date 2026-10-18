@@ -58,19 +58,22 @@ struct SkyHowToPlay: View {
                 Text("The comet trail fills toward the next shower. Clear space before a column fills. Clearing never delays the sky.")
                 Text("A matching arrival grows a small star. A grown star cannot grow again; the next star stacks above it.")
             }
+            Section("Magnets and holes") {
+                Text("Clear the star between two magnetic stars to bring them together. Their collision forms a hole that holds up to four nearby colored stars. Each shower rotates those stars, opening new matches. Clear a group containing a captive to close the hole, or wait three windows for it to release them. Clear beside a lone magnet to dissolve it. Magnets and holes give no light; Opal stays free.")
+            }
             Section("Opal Orb") {
                 Text("The round white Opal Orb can join any one color. Start on a colored star, then include the orb in that color’s ordinary match or traced constellation. It is worth one light, never grows, and is spent when cleared. Other colors do not join the same clear.")
             }
             Section("Storms") {
                 Text("Fresh skies alternate nine calmer showers with three heavier storm showers. The warning and remaining count follow the next shower. Clearing never delays a storm. Calmer skies can still fill a column.")
-                Text("Saved older skies and their replays keep their original showers. Choose New sky to try Opals and storms.")
+                Text("Saved older skies and their replays keep their original showers. Choose New sky to try Opals, storms and magnetic pairs.")
             }
             Section("Dark stars") {
                 Text("Dark stars stop their four immediate neighbors from growing. Clear a matching group beside one to dissolve it. Dark stars award no starlight.")
             }
             Section("Take your time") {
                 Text("Pause to clear at your pace, or call one shower with Next shower. The menu and leaving the app freeze the sky. Missed showers never accumulate.")
-                Text("First Light is a short 18-starlight challenge with steady showers and no dark stars, Opals or storms.")
+                Text("First Light is a short 18-starlight challenge with steady showers and no dark stars, Opals, magnets or storms.")
             }
         }.navigationTitle("How to play")
     }

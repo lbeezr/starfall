@@ -315,13 +315,20 @@ import StarfallCore
         .buttonStyle(.plain)
         .accessibilityLabel(cellLabel(cell))
         .accessibilityValue(store.game.gem(at: cell)?.isLight == true ? "1 starlight, choose a colored star to start" : "\(value) starlight connected")
-        .accessibilityHint(store.game.gem(at: cell)?.isDark == true
+        .accessibilityHint(store.game.gem(at: cell)?.gravityKind == .hole
+            ? "Clear a matching group containing a captive to close this hole"
+            : store.game.gem(at: cell)?.gravityKind == .magnet
+            ? "Clear beside it to dissolve it. Clear between a pair to form a hole"
+            : store.game.orbit?.slots.contains(cell) == true
+            ? "A legal clear containing this captive closes the hole and releases the others"
+            : store.game.gem(at: cell)?.isDark == true
             ? "Clear a matching group directly beside this dark star to dissolve it"
             : store.game.gem(at: cell)?.isLight == true
                 ? "Start on a colored star to include this orb in that color’s match or constellation. Using it spends it."
             : value >= 3
                 ? (store.game.darkStarsBeside(group).isEmpty ? "Tap to clear this ordinary match" : "Tap to clear this ordinary match and adjacent dark stars")
                 : "Needs three light horizontally or vertically, or five actual matching stars linked sideways or diagonally")
+        .accessibilityCustomContent("Gravity consequence", gravityConsequence(cell))
         .accessibilityIdentifier("experiment.cell.\(cell.row).\(cell.column)")
         .accessibilityAction(named: Text("Add to constellation")) { accessibleTrace(cell) }
         .accessibilityAction(named: Text("Release constellation")) { releaseConstellation() }
@@ -330,11 +337,21 @@ import StarfallCore
         .disabled(!store.canClear)
     }
 
+    private func gravityConsequence(_ cell: Cell) -> String {
+        guard let preview = store.game.gravityPreview(at: cell), let field = preview.orbit,
+              store.game.orbit == nil else { return "No new hole" }
+        return "Forms a hole at row \(7-field.center.row), column \(field.center.column+1), holding \(field.slots.count) stars"
+    }
+
     private func cellLabel(_ cell: Cell) -> String {
         let position = "row \(7-cell.row), column \(cell.column+1)"
         guard let gem = store.game.gem(at: cell) else { return "Empty, \(position)" }
+        if let role = gem.gravityKind {
+            return role == .hole ? "Gravity hole, \(store.game.orbit?.windowsRemaining ?? 0) windows left, \(position)" : "Magnetic star, \(position)"
+        }
         let shade = store.game.isGrowthBlocked(at: cell) ? ", growth blocked by a dark star" : ""
-        return "\(gem.grown ? "Large " : "")\(StarCast.character(for: .init(gem)).description), \(position)\(shade)"
+        let captive = store.game.orbit?.slots.contains(cell) == true ? "Captive, " : ""
+        return "\(captive)\(gem.grown ? "Large " : "")\(StarCast.character(for: .init(gem)).description), \(position)\(shade)"
     }
 
     private func updateSuspension() {

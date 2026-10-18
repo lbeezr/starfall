@@ -1,3 +1,7 @@
+import XCTest
+import StarfallCore
+@testable import Starfall
+
 final class GravityStoreTests: XCTestCase {
     @MainActor private func make(_ fixture: GravityFixture = .opportunity) -> (FallingSkyStore,UserDefaults,FallingSkyRecorder,ManualRainClock) {
         let suite="GravityTests.\(UUID())"
@@ -8,13 +12,13 @@ final class GravityStoreTests: XCTestCase {
         store.setSuspended(false)
         return (store,defaults,presenter,clock)
     }
-    @MainActor func testCollisionSavedBeforeAnimationRestorePausedAndNativeKeyUntouched() throws {
+    @MainActor func testCollisionSavedBeforeAnimationRestorePausedAndLegacyKeyUntouched() throws {
         let (store,defaults,presenter,_)=make()
         let sentinel=Data("normal save sentinel".utf8)
         defaults.set(sentinel,forKey:"starfall.accumulation.v3")
         store.clear(Cell(0,3))
         XCTAssertTrue(store.busy); XCTAssertNotNil(store.game.orbit)
-        let saved=try XCTUnwrap(GravitySave.restore(try XCTUnwrap(defaults.data(forKey:FallingSkyStore.saveKey))))
+        let saved=try XCTUnwrap(try? SkySaveArchive.decode(try XCTUnwrap(defaults.data(forKey:FallingSkyStore.saveKey))))
         XCTAssertEqual(saved,store.game)
         let restored=FallingSkyStore(defaults:defaults,arguments:[])
         XCTAssertEqual(restored.game,saved); XCTAssertTrue(restored.isPaused)
@@ -58,12 +62,48 @@ final class GravityStoreTests: XCTestCase {
         XCTAssertEqual(store.game,formed)
         XCTAssertTrue(store.message.contains("captive"))
     }
-    @MainActor func testCurrentAndLegacyProductionKeysStayUntouched() {
+    @MainActor func testPreviousAndLegacySaveBytesStayUntouched() {
         let (store,defaults,presenter,_)=make()
         let sentinel=Data("production save sentinel".utf8)
-        for key in [SkySaveArchive.key,SkySaveArchive.legacyKey] { defaults.set(sentinel,forKey:key) }
+        for key in [SkySaveArchive.previousKey,SkySaveArchive.legacyKey] { defaults.set(sentinel,forKey:key) }
         store.clear(Cell(0,3)); presenter.finish(); store.callShower(); presenter.finish()
-        for key in [SkySaveArchive.key,SkySaveArchive.legacyKey] { XCTAssertEqual(defaults.data(forKey:key),sentinel) }
+        for key in [SkySaveArchive.previousKey,SkySaveArchive.legacyKey] { XCTAssertEqual(defaults.data(forKey:key),sentinel) }
     }
 
+}
+
+final class GravityTraceStoreTests: XCTestCase {
+    @MainActor func testOrbitInvalidatesTraceTicketAndSnapshot() throws {
+        let suite="GravityTrace.\(UUID())"
+        let defaults=UserDefaults(suiteName:suite)!
+        defer { defaults.removePersistentDomain(forName:suite) }
+        let presenter=FallingSkyRecorder(), clock=ManualRainClock()
+        let store=FallingSkyStore(defaults:defaults,arguments:["--starfalls-reset","--gravity-fixture=supports"],presenter:presenter,clock:clock)
+        store.setSuspended(false); store.clear(Cell(1,3)); presenter.finish()
+        let before=store.game, ticket=store.constellationInputGeneration
+        store.callShower(); presenter.finish()
+        let rotated=store.game
+        XCTAssertNotEqual(ticket,store.constellationInputGeneration)
+        store.clearTracedConstellation([Cell(0,0)],snapshot:before,generation:ticket)
+        XCTAssertEqual(store.game,rotated)
+        let intent=ConstellationTraceIntent()
+        XCTAssertNil(intent.begin(Cell(0,0),game:rotated,generation:store.constellationInputGeneration,enabled:false))
+    }
+    @MainActor func testSelectedCaptiveClosesHoleThroughCanonicalTraceResolution() throws {
+        var game=GravityFixture.trace.game()
+        game.clear(Cell(0,3))
+        let before=game
+        let path=(0..<5).map { Cell($0,2) }
+        let selected=Set(path)
+        XCTAssertNotNil(game.orbit)
+        let untouched=Set(before.board.compactMap { $0 }.filter { gem in
+            !selected.contains(where: { before.gem(at:$0)?.id == gem.id }) && gem.gravityKind != .hole
+        }.map(\.id))
+        let turn=try XCTUnwrap(game.clearConstellation(path))
+        XCTAssertNil(game.orbit)
+        XCTAssertEqual(turn.collected,10)
+        XCTAssertEqual(Set(game.board.compactMap { $0?.id }),untouched)
+        XCTAssertEqual(game.incoming,before.incoming)
+        XCTAssertTrue(game.isValidSave)
+    }
 }

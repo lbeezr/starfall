@@ -167,9 +167,11 @@ Drawing holds the existing single shower deadline from eligible touch-down to re
 
 The cropped top came from a hidden phase measurement row outside the full-window canvas; that also consumed the inset used for camera detection. The row now belongs to the HUD overlay. The 16 Pro Max profile joins the checked 17 profile. Follow-up trigger: next physical play or RC. Verify real cutout clearance/expanded activities, curved/branching and multitouch drags, ordinary taps after cancellation, haptics and actual VoiceOver add/release/cancel. Simulator assertions and still frames do not establish physical feel. [Current verification](evidence/main-polish-2026-10-17/README.md).
 
-## Gravity trial adoption boundary — October 17, 2026
+## Gravity support and supply follow-up — October 17, 2026
 
-The [isolated gravity trial](design/GRAVITY_MECHANICS.md) introduces fixed occupied supports and highest-occupied landing only inside its exported candidate. [Evidence](evidence/gravity-orbit-2026-10-17/README.md) covers bounded rule/save, native input and full-motion examples. Trigger: natural spawning, mixed Opal capture or production adoption. First observe players predicting support release and landing, measure usable windows/orphan lifetimes, and define explicit normal-save migration and mixed-unit rules. Keep actual VoiceOver/physical-device acceptance and performance profiling separate; no new capability is accepted from fixture automation alone. If support gravity is confusing, revise to the one-time vortex alternative or remove/defer the orbit.
+The user requested production adoption of the [gravity mechanic](design/GRAVITY_MECHANICS.md). The normal target now owns occupied supports, highest-occupied landing, versioned pair supply and v5 save migration. Retained legacy/Opal replay is byte-equivalent over 6,460 sampled states. [Integration evidence](evidence/gravity-integration-2026-10-17/README.md) records rule/save, interruption, material, native and build results separately.
+
+**Next trigger:** the first observed human session with natural paired supply. Verify that players predict endpoint rotation, suspended landing and release, can explain trigger/keep/close choices, and find the three matching windows usable at normal cadence. The 80-seed bot sample establishes reachability, not enjoyment or desired frequency; measure missed/used pairs and orphan lifetimes before changing supply. If support gravity repeatedly defeats prediction, simplify to the one-time vortex alternative. Full actual VoiceOver acceptance belongs at RC; physical-device geometry/performance are still unverified.
 
 ## Touch ownership follow-up — October 17, 2026
 

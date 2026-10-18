@@ -28,15 +28,15 @@ if not 0.05 <= a.reaction_seconds <= 5 or not 0.02 <= a.trace_step_seconds <= 1:
     p.error('bounds: reaction-seconds 0.05...5, trace-step-seconds 0.02...1')
 a.output.mkdir(parents=True, exist_ok=True)
 inputs = [*sorted((root/'Sources/StarfallCore').glob('*.swift')), root/'App/FallingSkyStore.swift',
-          root/'App/ObservatoryReviewFixture.swift', root/'App/SkySaveArchive.swift', root/'App/SkyFlowState.swift', root/'App/FallingSkyHUD.swift', root/'tools/mechanics/ConstellationFixture.swift',
-          root/'Tests/StarfallCoreTests/TimingCycleFixture.swift', *sorted((root/'tools/mechanics').glob('Pacing*.swift')), Path(__file__)]
+          root/'App/ObservatoryReviewFixture.swift', root/'App/SkySaveArchive.swift', root/'App/SkyFlowState.swift', root/'App/FallingSkyHUD.swift',
+          root/'Tests/StarfallCoreTests/TimingCycleFixture.swift', *sorted((root/'tools/mechanics').glob('Pacing*.swift')), Path(__file__).resolve()]
 def hashes():
     return {str(f.relative_to(root)): hashlib.sha256(f.read_bytes()).hexdigest() for f in inputs}
 before = hashes()
 with tempfile.TemporaryDirectory(prefix='starfall-pacing-') as d:
     d = Path(d)
     core = sorted((root/'Sources/StarfallCore').glob('*.swift'))
-    subprocess.run(['xcrun','swiftc','-O','-emit-library','-emit-module','-module-name','StarfallCore',*map(str,core),'-o',str(d/'libStarfallCore.dylib'),'-emit-module-path',str(d/'StarfallCore.swiftmodule')],check=True)
+    subprocess.run(['xcrun','swiftc','-O','-DDEBUG','-emit-library','-emit-module','-module-name','StarfallCore',*map(str,core),'-o',str(d/'libStarfallCore.dylib'),'-emit-module-path',str(d/'StarfallCore.swiftmodule')],check=True)
     sources = [f for f in inputs if f.suffix == '.swift' and f not in core
                and f.name not in ('FallingSkyHUD.swift', 'SkyFlowState.swift')]
     # Compile exact current value declarations, excluding unrelated SwiftUI screens.
@@ -48,11 +48,6 @@ with tempfile.TemporaryDirectory(prefix='starfall-pacing-') as d:
         + hud[hud.index('struct SkyCadenceCueCopy:'):hud.index('struct SkyCadenceCue:')]
         + flow[flow.index('enum SkyEntryRequest:'):flow.index('enum SkyFlowEffect:')])
     sources.append(values)
-    # Existing fixture assumes same-module compilation; add its module import only in temp output.
-    fixture = root/'tools/mechanics/ConstellationFixture.swift'
-    adapted = d/'ConstellationFixture.swift'
-    adapted.write_text('import StarfallCore\n' + fixture.read_text())
-    sources = [adapted if f == fixture else f for f in sources]
     subprocess.run(['xcrun','swiftc','-Onone','-g','-DDEBUG','-I',str(d),'-L',str(d),'-lStarfallCore',*map(str,sources),'-o',str(d/'pacing')],check=True)
     env = dict(os.environ, DYLD_LIBRARY_PATH=str(d))
     with (a.output/'runs.json').open('w') as out:

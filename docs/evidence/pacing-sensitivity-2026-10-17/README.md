@@ -1,6 +1,6 @@
 # Does faster cadence create pressure when repeated clears are allowed?
 
-**Result: Partially verified — model sensitivity established; native input windows and human response remain open.** Owner: current implementer.
+**Result: Partially verified — pre-gravity model sensitivity established; current native input windows and human response remain open.** Owner: current implementer.
 
 Hypothesis before implementation: the effect of the adopted faster V2 cadence depends on time available to recognize/execute clears, even when the modeled policy may clear repeatedly between showers. Compare V1 and V2 with unchanged current generation, Store and trace-hold ownership. This is a sensitivity model, not measured human reaction time or preference.
 
@@ -14,7 +14,7 @@ Decision point: after these named samples, retain current gameplay. Report wheth
 
 Keep the adopted V2 cadence unchanged. The model is sensitive to its assumed recognition delay, so it cannot establish a player difficulty curve. Faster V2 has more overflows in these trajectories; at 1.5 seconds the model often fails to begin a clear after settlement. The next test should measure native input-ready intervals during automatic ordinary/heavy showers and observe whether players plan during falling, rather than tuning shower density from these scores.
 
-All rows below use 16 seeds, at most 120 virtual seconds, and modeled full presentation. V1/V2 values remain separate; policies are selected behaviors, not independent participants. Median clear rates use each round's active time, so early overflow changes both numerator and denominator. None estimates human success or enjoyment.
+All rows below use Opal/storm generation at main `30ce546`, before gravity integration `0cd430e`. They do not describe the current gravity-enabled game. All rows below use 16 seeds, at most 120 virtual seconds, and modeled full presentation. V1/V2 values remain separate; policies are selected behaviors, not independent participants. Median clear rates use each round's active time, so early overflow changes both numerator and denominator. None estimates human success or enjoyment.
 
 | Assumed delay | Policy | Overflows V1 / V2 | Median clears/min V1 / V2 | Median busy time V1 / V2 |
 | --- | --- | --- | --- | --- |
@@ -40,4 +40,12 @@ Choices comprise all ordinary groups and one DFS full-component trace per family
 
 Historical default remains openingV1 versus announcedCycleV1 at 0.45-second recognition / 0.12-second trace steps. A one-seed, ten-second default smoke matched all twelve raw run objects from the unchanged parent implementation in a temporary Git archive. Five invalid option cases rejected before output creation. Runner self-checks and committed-state Core replay checks passed for every accepted sample. The representative 0.75-second run repeated byte-for-byte: SHA256 `38e787b387ac1e9c80344109088fb6a4da086175acba17b81436b33cdfec7b48`.
 
-`swift test` passed 91 checks, zero failures, `/tmp/starfall-pacing-sensitivity-core.log`. Hygiene and whitespace checks passed. Inputs remained hash-identical across all four accepted runs and still match the checkout. Xcode 27.1 / Swift 6.4 on macOS; Core compiled optimized, Debug Store/tool compiled with the runner's existing Onone model build. App sources/resources/project are unchanged, so this offline-tool batch does not add native/build acceptance. Existing [automatic native storm evidence](../storm-automatic-presentation-2026-10-17/README.md) does not measure usable input windows or human preference.
+`swift test` passed 91 checks, zero failures, `/tmp/starfall-pacing-sensitivity-core.log`. Hygiene and whitespace checks passed. Inputs remained hash-identical across all four accepted pre-gravity runs; their historical hashes deliberately differ from the later gravity-enabled checkout. Xcode 27.1 / Swift 6.4 on macOS; Core compiled optimized, Debug Store/tool compiled with the runner's existing Onone model build. App sources/resources/project are unchanged, so this offline-tool batch does not add native/build acceptance. Existing [automatic native storm evidence](../storm-automatic-presentation-2026-10-17/README.md) does not measure usable input windows or human preference.
+
+## Reconciliation with gravity-enabled main
+
+Main 0cd430e adopted gravity while this study was being prepared. Preserve the preceding table as historical evidence; do not carry its overflow counts into the new generation. The first current-main runner smoke failed compilation because Core was built without DEBUG while the current Debug Store references GravityFixture. Compile the actual Core library with DEBUG and use its authoritative ConstellationFixture instead of compiling the historical tool duplicate. No app/Core files were edited.
+
+A one-seed, sixty-second V1/V2 compatibility smoke then passed all runner/replay checks against gravity-enabled main. Two ten-second current-source runs also matched byte-for-byte: omitted options versus explicit openingV1/announcedCycleV1 and 0.45/0.12 delays. `swift test` passed all 109 current Core checks, zero failures, `/tmp/starfall-pacing-gravity-core.log`. [Current compatibility provenance](gravity-main-compatibility.json) is separate from the earlier source record.
+
+This is compilation/action-replay compatibility, not validated gravity balance modeling: the existing policy has no explicit captive-star action and the presentation substitute does not model gravity-phase durations. A new gravity-inclusive sensitivity or native input-window study must address those gaps before drawing gameplay conclusions. Local full app/native acceptance remains with the gravity integration's source-bound evidence. Current tool/CLI changes introduce no runtime route, save change, app resource or production rule.

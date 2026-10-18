@@ -26,7 +26,7 @@ final class SkyGenerationTests: XCTestCase {
     func testNewGenerationSeededArrivalsReplayAndOpalCadence() throws {
         var seenOpals=0, seenStorms=0, seenClears=0
         for seed in UInt64(0)..<40 {
-            var game=FallingSky(seed:seed,generation:.current)
+            var game=FallingSky(seed:seed,generation:.opalStorms)
             var replay=try JSONDecoder().decode(FallingSky.self,from:JSONEncoder().encode(game))
             for _ in 0..<48 where !game.isOver {
                 let number=game.turns+1, forecast=game.incoming
@@ -61,7 +61,7 @@ final class SkyGenerationTests: XCTestCase {
     }
 
     func testOpeningAndFirstLightKeepTheirExistingRoles() throws {
-        var legacy=FallingSky(seed:5), modern=FallingSky(seed:5,generation:.current)
+        var legacy=FallingSky(seed:5), modern=FallingSky(seed:5,generation:.opalStorms)
         XCTAssertEqual(legacy.incoming,modern.incoming)
         for _ in 0..<4 { legacy.letStarsFall();modern.letStarsFall();XCTAssertEqual(legacy.board,modern.board) }
         XCTAssertFalse(modern.incoming.contains(where:\.isLight))
@@ -77,7 +77,7 @@ final class SkyGenerationTests: XCTestCase {
     }
 
     func testUnknownGenerationAndCrossGenerationWhiteStatesReject() throws {
-        var game=FallingSky(seed:5,generation:.current)
+        var game=FallingSky(seed:5,generation:.opalStorms)
         for _ in 0..<6 {
             game.letStarsFall()
             clearAvailable(&game)
@@ -110,7 +110,7 @@ final class SkyGenerationTests: XCTestCase {
             (Cell(0,6),.rose,true),(Cell(1,6),.rose,false)]
         for (id,placement) in placements.enumerated(){let (cell,kind,grown)=placement
             board[cell.row*7+cell.column] = .init(id:id,kind:kind,grown:grown,light:cell == Cell(0,4))}
-        let source=FallingSky(board:board,incoming:[.init(id:0,kind:.mint,column:6)],generation:.current)
+        let source=FallingSky(board:board,incoming:[.init(id:0,kind:.mint,column:6)],generation:.opalStorms)
         XCTAssertFalse(source.isValidSave,"Layout-only fixture has no invented shower history")
         let aqua=[Cell(0,0),Cell(1,1),Cell(0,2),Cell(1,3),Cell(0,4)]
         let rose=[Cell(0,5),Cell(1,5),Cell(1,6),Cell(0,6),Cell(0,5),Cell(0,4)]
