@@ -4,26 +4,21 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 mkdir -p artifacts
 SIMULATOR_ID=""
+source scripts/simulator-lifecycle.sh
 cleanup() {
-  local original_status=$?
-python3 - <<'PYLOG'
+  local original_status=$? cleanup_status=0
+python3 - <<'PYLOG' || cleanup_status=1
 from pathlib import Path
 for path in Path('artifacts').glob('*.log'):
-    data = path.read_bytes()
-    if len(data) > 2_000_000:
-        path.write_bytes(b'[log truncated to final 2 MB]\n' + data[-2_000_000:])
+    if path.stat().st_size > 2_000_000:
+        with path.open('rb') as source:
+            source.seek(-2_000_000, 2)
+            tail = source.read(2_000_000)
+        path.write_bytes(b'[log truncated to final 2 MB]\n' + tail)
 PYLOG
-  if [[ -n "$SIMULATOR_ID" ]]; then
-    python3 - "$SIMULATOR_ID" <<'PY' || true
-import subprocess, sys
-try:
-    subprocess.run(['xcrun', 'simctl', 'shutdown', sys.argv[1]],
-                   timeout=30, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-except (subprocess.TimeoutExpired, OSError):
-    print('Simulator cleanup did not finish within its bounded attempt.', file=sys.stderr)
-PY
-  fi
-  return "$original_status"
+  cleanup_simulator || cleanup_status=$?
+  if [[ "$original_status" != 0 ]]; then return "$original_status"; fi
+  return "$cleanup_status"
 }
 trap cleanup EXIT
 
@@ -78,7 +73,7 @@ while IFS= read -r identifier; do
 done < artifacts/native-test-exclusions.txt
 
 # One already-installed, available iPhone; prefer newest iOS runtime.
-xcrun simctl list devices available --json > "$RUNNER_TEMP/starfall-devices.json"
+timed_simctl inventory 30 xcrun simctl list devices available --json > "$RUNNER_TEMP/starfall-devices.json"
 SIMULATOR_ID="$(python3 - "$RUNNER_TEMP/starfall-devices.json" <<'PY'
 import json, re, sys
 candidates = []
@@ -109,8 +104,14 @@ PY
 
 # Start the selected simulator before compiling so boot can overlap the app build.
 # simctl reports an error when booting a device that is already booted.
-state="$(xcrun simctl list devices --json | python3 -c 'import json,sys; d=json.load(sys.stdin); print(next(x["state"] for xs in d["devices"].values() for x in xs if x["udid"]==sys.argv[1]))' "$SIMULATOR_ID")"
-if [[ "$state" != Booted ]]; then xcrun simctl boot "$SIMULATOR_ID"; fi
+state="$(python3 - "$RUNNER_TEMP/starfall-devices.json" "$SIMULATOR_ID" <<'PY_STATE'
+import json, sys
+inventory = json.load(open(sys.argv[1]))
+print(next(device['state'] for devices in inventory['devices'].values()
+           for device in devices if device['udid'] == sys.argv[2]))
+PY_STATE
+)"
+start_simulator "$SIMULATOR_ID" "$state"
 
 # No provisioning, Apple account, certificate, or physical-device signing.
 # Simulator ad-hoc signing is allowed and uses no private signing credential.
@@ -178,31 +179,8 @@ Path('artifacts/app-icon-result.json').write_text(json.dumps({
 print('PASS: built app has AppIcon metadata and nonempty compiled asset catalog.')
 PY
 
-# Bound cold simulator preparation and preserve stage timings on failure.
-# stdout remains untouched so launch PID parsing keeps its existing contract.
-timed_simctl() {
-  python3 - "$@" <<'PY'
-import datetime, json, subprocess, sys, time
-label, limit, *command = sys.argv[1:]
-started = datetime.datetime.now(datetime.timezone.utc).isoformat()
-begin = time.monotonic()
-print(f'START simulator stage {label}; timeout={limit}s', file=sys.stderr, flush=True)
-try:
-    status = subprocess.run(command, timeout=int(limit)).returncode
-except subprocess.TimeoutExpired:
-    status = 124
-elapsed = round(time.monotonic() - begin, 3)
-with open('artifacts/simulator-stage-timings.jsonl', 'a') as receipt:
-    receipt.write(json.dumps({'stage': label, 'startedUTC': started,
-                             'elapsedSeconds': elapsed, 'limitSeconds': int(limit),
-                             'exitCode': status}) + '\n')
-print(f'END simulator stage {label}; elapsed={elapsed}s exit={status}', file=sys.stderr, flush=True)
-sys.exit(status if status >= 0 else 1)
-PY
-}
-
 # Keep the readiness barrier before status-bar setup, installation and launches.
-xcrun simctl bootstatus "$SIMULATOR_ID" -b
+timed_simctl boot-ready 180 xcrun simctl bootstatus "$SIMULATOR_ID" -b
 timed_simctl status-bar 60 xcrun simctl status_bar "$SIMULATOR_ID" override --time '9:41' --batteryState charged --batteryLevel 100
 test -d "$APP"
 timed_simctl install 300 xcrun simctl install "$SIMULATOR_ID" "$APP"
@@ -215,7 +193,7 @@ capture_state() {
   [[ "$pid" =~ ^[0-9]+$ ]]
   sleep 5
   kill -0 "$pid"
-  xcrun simctl io "$SIMULATOR_ID" screenshot "artifacts/${state_name}.png"
+  timed_simctl "${state_name}-screenshot" 60 xcrun simctl io "$SIMULATOR_ID" screenshot "artifacts/${state_name}.png"
   kill -0 "$pid"
 }
 capture_state initial-board --demo
