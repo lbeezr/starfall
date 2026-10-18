@@ -372,6 +372,8 @@ The [independent debt record](evidence/debt-reduction-2026-10-18/README.md#task-
 
 </details>
 
-Tablet lower-edge spacing: the [verified landscape hit correction](evidence/debt-followup-2026-10-18/README.md#2-tablet-welcome-hit-semantics) leaves Settings close to the Home indicator in the initial landscape capture. Trigger: next landscape visual iteration or RC. Inspect native scroll positions and physical activation comfort without shrinking text or changing gameplay mapping; keep the restored native hit assertions and original largest-text flow.
+Tablet lower-edge spacing is corrected by [scrollable ceremony clearance](evidence/debt-third-pass-2026-10-18/README.md#3-scrollable-ceremony-control-clearance): full control bounds, native activation and settings/Entry transitions pass in both orientations at default/maximum text. The earlier near-Home capture remains source-bound historical evidence. Physical comfort, Stage Manager and actual VoiceOver remain RC checks.
 
 [Third-pass debt work](TECH_DEBT_THIRD_PASS.md) corrects a reproduced terminal gravity-restore precondition failure and tracks primary CI simulator ownership/timeouts, landscape control clearance and default-game screenshot evidence as separate batches. The terminal correction keeps existing archive accounting and outcome contracts; [reproduction and checks](evidence/debt-third-pass-2026-10-18/README.md#1-terminal-gravity-retirement).
+
+`FallingSkyInteractionTests.swift` is 1,159 lines after the bounded tablet matrix. The regression stays beside its original launch/navigation assertions for before/after parity; app/runtime files remain below the size trigger. At the next shared flow-fixture edit, extract the cohesive SkyFlowInteractionTests class into its own target-listed file, preserving all methods, source-counted native plans and phone/tablet selections. Do not mix that structural move with this geometry correction.
