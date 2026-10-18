@@ -1,0 +1,45 @@
+{
+  "automatic": false,
+  "browser": "Installed Google Chrome, headless Playwright pointer input",
+  "calmEffects": false,
+  "capturedAppSource": "49dcd0ee0cd5b9f57d10aa1e28d47318b110221f",
+  "device": "iPhone 17e / iOS 27.0 (24A434)",
+  "finalScore": 39,
+  "firstScore": 33,
+  "gestureScriptSHA256": "3b13e5642381df23b26041c624df0892d77625efb63685d889584761face0b83",
+  "heldBrowserCapture": "dev-49dcd0e__orbit-trace-held-browser__iphone-17e__default-text.jpg",
+  "holePresent": false,
+  "humanParticipant": false,
+  "input": "Chromium pointer down, four segmented moves, pointer up through serve-sim native HID",
+  "installedApp": {
+    "CFBundleIdentifier": "com.starfall.prototype",
+    "CFBundleShortVersionString": "0.1.0",
+    "CFBundleVersion": "1",
+    "DTSDKName": "iphonesimulator27.1",
+    "DTXcode": "2710",
+    "StarfallBuildID": "dev.local",
+    "executableSHA256": "10e96f875e35421321293346a52a06eae7be50e704daa5d30356b081cbb97982"
+  },
+  "nativeResultCapture": "dev-49dcd0e__orbit-trace-nine-light__iphone-17e__default-text.jpg",
+  "path": [
+    "experiment.cell.0.4",
+    "experiment.cell.0.5",
+    "experiment.cell.0.6",
+    "experiment.cell.1.6",
+    "experiment.cell.2.5"
+  ],
+  "previewURL": "http://localhost:3200",
+  "productInputsChecked": 110,
+  "productInputsMatchIntegratedAcceptance": true,
+  "retainedOpals": 1,
+  "screen": {
+    "height": 844,
+    "width": 390
+  },
+  "serveSimVersion": "0.1.48",
+  "simulator": "D12E5EEC-D655-41F8-BF81-A81B27784253",
+  "systemReduceMotion": false,
+  "systemVoiceOver": false,
+  "temporaryPreviewTerminalSession": 45583,
+  "toolchain": "Xcode 27.1 (27A9275), Swift 6.4; Debug arm64 unsigned"
+}
