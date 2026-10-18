@@ -169,9 +169,9 @@ import StarfallCore
 
     func animate(_ turn: FallingSkyTurn, from old: FallingSky,
                  to game: FallingSky, completion: @escaping () -> Void) {
-        if !turn.gravityPhases.isEmpty {
+        if !turn.presentationPhases.isEmpty {
             precondition(animatingColumns.isEmpty, "Gravity presentation owns the whole board")
-            animateGravity(turn, from: old, to: game, completion: completion); return
+            animatePhases(turn, from: old, to: game, completion: completion); return
         }
         if animatingColumns.isEmpty && rendered != old { render(old) }
         let columns = turn.changingColumns
@@ -529,7 +529,7 @@ extension FallingSkyScene {
         }
         grid.addChild(root)
     }
-    private func applyGravityPhase(_ phase: GravityPhase, duration: TimeInterval) {
+    private func applyPhase(_ phase: SkyPresentationPhase, duration: TimeInterval) {
         let targetIDs=Set(phase.board.compactMap { $0?.id })
         for id in Array(nodes.keys) where !targetIDs.contains(id) {
             let node=takeCharacter(id)
@@ -598,17 +598,17 @@ extension FallingSkyScene {
             infall.run(.sequence([.group([.scale(to: 0.12, duration: duration), .fadeOut(withDuration: duration)]), .removeFromParent()]))
         }
     }
-    private func animateGravity(_ turn: FallingSkyTurn, from old: FallingSky, to game: FallingSky,
+    private func animatePhases(_ turn: FallingSkyTurn, from old: FallingSky, to game: FallingSky,
                                 completion: @escaping () -> Void) {
         render(old); rendered=game
         guard view != nil else { render(game); completion(); return }
         if reduceMotion || UIAccessibility.isReduceMotionEnabled || UIAccessibility.isVoiceOverRunning {
             render(game); run(.sequence([.wait(forDuration:0.15),.run(completion)])); return
         }
-        let timeline = StarfallMotion.GravityTimeline(phases: turn.gravityPhases.map(\.event), arrivals: turn.arrivals.count)
+        let timeline = StarfallMotion.PhaseTimeline(phases: turn.presentationPhases.map(\.event), arrivals: turn.arrivals.count)
         var phases: [SKAction] = []
-        for (phase, duration) in zip(turn.gravityPhases, timeline.phaseDurations) {
-            phases.append(.run { [weak self] in self?.applyGravityPhase(phase, duration: duration) })
+        for (phase, duration) in zip(turn.presentationPhases, timeline.phaseDurations) {
+            phases.append(.run { [weak self] in self?.applyPhase(phase, duration: duration) })
             phases.append(.wait(forDuration: duration))
         }
         var presentation = [SKAction.sequence(phases)]

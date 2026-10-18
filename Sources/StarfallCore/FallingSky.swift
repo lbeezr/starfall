@@ -70,7 +70,12 @@ public struct FallingSkyTurn: Sendable {
     public var stellarAffectedColumns: Set<Int> = []
     public var duskCollapses: [DuskCollapse] = []
     public var duskAffectedColumns: Set<Int> = []
-    public var gravityPhases: [GravityPhase] = []
+    public var presentationPhases: [SkyPresentationPhase] = []
+    /// Compatibility spelling for historical tools. These phases also present ordinary collapses.
+    public var gravityPhases: [SkyPresentationPhase] {
+        get { presentationPhases }
+        set { presentationPhases = newValue }
+    }
     public let cleared: Set<Cell>
     public let collected: Int
     public let settled: [StarfallGem?]
@@ -390,7 +395,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
         guard canNudge(from:from,to:to) else { return nil }
         let before = self
         board.swapAt(from.row * Self.side + from.column, to.row * Self.side + to.column)
-        board = GravityFieldRules.settle(board,field:nil)
+        board = SkyBoardSettling.settle(board)
         return .init(exchange:.init(from:from,to:to),stellarAffectedColumns: criticalMassChangedColumns(from: before),duskAffectedColumns:duskChangedColumns(from:before),cleared:[],collected:0,settled:board,
                      forecast:incoming,arrivals:[],blockedColumn:nil)
     }
@@ -400,10 +405,10 @@ public struct FallingSky: Codable, Equatable, Sendable {
         let collected = reward(of: cells)
         if duskRule != .legacy { unscoredStarlight = lostStarlight + value(of: cells) - collected }
         if orbit != nil || board.contains(where: { $0?.gravityKind != nil }) {
-            var phases: [GravityPhase] = []
+            var phases: [SkyPresentationPhase] = []
             score += collected
             let removed = resolveGravityClear(cells, into: &phases)
-            return .init(stellarAffectedColumns: criticalMassChangedColumns(from: before), duskAffectedColumns: duskChangedColumns(from: before), gravityPhases: phases, cleared: removed, collected: collected, settled: board,
+            return .init(stellarAffectedColumns: criticalMassChangedColumns(from: before), duskAffectedColumns: duskChangedColumns(from: before), presentationPhases: phases, cleared: removed, collected: collected, settled: board,
                          forecast: incoming, arrivals: [], blockedColumn: nil)
         }
         let darkStars = darkStarsBeside(cells)
@@ -411,12 +416,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
         darkStarsCleared += darkStars.count
         score += collected
         for cell in removed { board[cell.row * Self.side + cell.column] = nil }
-        for column in 0..<Self.side {
-            let survivors = (0..<Self.side).compactMap { board[$0 * Self.side + column] }
-            for row in 0..<Self.side {
-                board[row * Self.side + column] = row < survivors.count ? survivors[row] : nil
-            }
-        }
+        board = SkyBoardSettling.settle(board)
         return .init(stellarAffectedColumns: criticalMassChangedColumns(from: before), duskAffectedColumns: duskChangedColumns(from: before), cleared: removed, collected: collected, settled: board,
                      forecast: incoming, arrivals: [], blockedColumn: nil)
     }
@@ -427,14 +427,14 @@ public struct FallingSky: Codable, Equatable, Sendable {
         guard !isOver else { return nil }
         let before = self
         turns += 1
-        var phases: [GravityPhase] = []
+        var phases: [SkyPresentationPhase] = []
         let stellarCollapses = advanceCriticalMass(into: &phases)
         let collapses = advanceDusk(into: &phases)
         advanceOrbit(into: &phases)
         let settled = board, forecast = incoming
         var arrivals: [FallingSkyTurn.Arrival] = []
         for star in forecast {
-            let height = GravityFieldRules.height(board, column: star.column)
+            let height = SkyBoardSettling.height(board, column: star.column)
             // A matching small top jewel can grow even when its column is full.
             if let kind = star.kind, !star.isLight, star.gravityKind == nil, height > 0, var top = board[(height-1) * Self.side + star.column],
                top.kind == kind, !top.isLight, top.gravityKind == nil, !top.grown, !isGrowthBlocked(at: Cell(height-1, star.column)) {
@@ -456,7 +456,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
         if let nextGravityID { self.nextGravityID = max(nextGravityID, starsLanded) }
         if !isOver { incoming = nextShower() }
         return .init(stellarCollapses: stellarCollapses,
-                     stellarAffectedColumns: criticalMassChangedColumns(from: before), duskCollapses: collapses, duskAffectedColumns: duskChangedColumns(from: before), gravityPhases: phases, cleared: [], collected: 0, settled: settled,
+                     stellarAffectedColumns: criticalMassChangedColumns(from: before), duskCollapses: collapses, duskAffectedColumns: duskChangedColumns(from: before), presentationPhases: phases, cleared: [], collected: 0, settled: settled,
                      forecast: forecast, arrivals: arrivals, blockedColumn: blockedColumn)
     }
 
@@ -468,7 +468,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
         // A dry board gets a useful run in its next forecast, plus two pressure
         // stars. Never rewrite an announced preview or alter the board for free.
         let heights = (0..<Self.side).map { column in
-            GravityFieldRules.height(board, column: column)
+            SkyBoardSettling.height(board, column: column)
         }
         let reliefColumn = cohesiveShowers == true && turns > 0 && legalGroups.isEmpty
             ? heights.indices.filter { heights[$0] <= 4 }.min { heights[$0] < heights[$1] } : nil
@@ -612,10 +612,11 @@ public struct FallingSky: Codable, Equatable, Sendable {
     }
 }
 
-// Committed gravity mutation shares the FallingSky state boundary.
+// Historical Dusk pressure retains the committed board boundary. Orbit mutation
+// is delegated to HistoricalGravityState without moving encoded state.
 extension FallingSky {
     /// All mature sources see the same committed neighborhood. No cascading targets.
-    private mutating func advanceDusk(into phases: inout [GravityPhase]) -> [DuskCollapse] {
+    private mutating func advanceDusk(into phases: inout [SkyPresentationPhase]) -> [DuskCollapse] {
         guard duskRule != .legacy else { return [] }
         var collapses: [DuskCollapse] = []
         for index in board.indices {
@@ -632,95 +633,52 @@ extension FallingSky {
         unscoredStarlight = lostStarlight + value(of: consumed)
         darkStarsCleared += collapses.count
         for cell in consumed.union(collapses.map(\.center)) { board[cell.row*7+cell.column] = nil }
-        gravityPhase(.removal, into: &phases)
+        recordPhase(.removal, into: &phases)
         if let field = orbit, !consumed.isDisjoint(with: field.slots) {
             closeOrbit(into: &phases, settles: false)
         }
         board = GravityFieldRules.settle(board, field: orbit)
-        gravityPhase(.settling, into: &phases)
+        recordPhase(.settling, into: &phases)
         return collapses
     }
 
-    private mutating func gravityPhase(_ event: GravityPhase.Event, into phases: inout [GravityPhase]) {
-        phases.append(GravityPhase(event: event, board: board, field: orbit))
+    private mutating func recordPhase(_ event: SkyPresentationPhase.Event, into phases: inout [SkyPresentationPhase]) {
+        phases.append(SkyPresentationPhase(event: event, board: board, field: orbit))
+    }
+    private var historicalGravity: HistoricalGravityState {
+        .init(board: board, orbit: orbit, nextGravityID: nextGravityID,
+              retiredMagnetic: retiredMagnetic, starsLanded: starsLanded)
+    }
+    private mutating func applyHistoricalGravity(_ state: HistoricalGravityState) {
+        board = state.board; orbit = state.orbit
+        nextGravityID = state.nextGravityID; retiredMagnetic = state.retiredMagnetic
     }
     private mutating func allocateGravityID() -> Int {
-        let id = max(nextGravityID ?? starsLanded, starsLanded)
-        nextGravityID = id + 1
+        var state = historicalGravity
+        let id = state.allocateGravityID()
+        applyHistoricalGravity(state)
         return id
     }
-    private mutating func closeOrbit(into phases: inout [GravityPhase], settles: Bool = true) {
-        guard let field = orbit else { return }
-        board[field.center.row*7+field.center.column] = nil
-        retiredMagnetic = (retiredMagnetic ?? 0) + 2
-        orbit = nil
-        gravityPhase(.release, into: &phases)
-        if settles {
-            board = GravityFieldRules.settle(board, field: nil)
-            gravityPhase(.settling, into: &phases)
-        }
+    private mutating func closeOrbit(into phases: inout [SkyPresentationPhase], settles: Bool = true) {
+        var state = historicalGravity
+        state.closeOrbit(into: &phases, settles: settles)
+        applyHistoricalGravity(state)
     }
-    private mutating func resolveGravityClear(_ selected: Set<Cell>, into phases: inout [GravityPhase]) -> Set<Cell> {
-        let hadOrbit = orbit != nil
+    private mutating func resolveGravityClear(_ selected: Set<Cell>, into phases: inout [SkyPresentationPhase]) -> Set<Cell> {
         let dark = darkStarsBeside(selected)
         darkStarsCleared += dark.count
-        let removed = selected.union(dark)
-        let captiveHit = orbit.map { !selected.isDisjoint(with: $0.slots) } ?? false
-        for cell in removed { board[cell.row*7+cell.column] = nil }
-        gravityPhase(.removal, into: &phases)
-        if captiveHit { closeOrbit(into: &phases, settles: false) }
-        let middle = hadOrbit ? nil : GravityFieldRules.collision(in: board, opened: removed)
-        let pair: Set<Cell> = middle.map { [Cell($0.row,$0.column-1),Cell($0.row,$0.column+1)] } ?? []
-        let nearby = Set(selected.flatMap(GravityFieldRules.neighbors)).subtracting(pair)
-        for cell in nearby where board[cell.row*7+cell.column]?.gravityKind == .magnet {
-            board[cell.row*7+cell.column] = nil
-            retiredMagnetic = (retiredMagnetic ?? 0) + 1
-        }
-        var newbornID: Int?
-        if let middle {
-            for cell in pair { board[cell.row*7+cell.column] = nil }
-            let id = allocateGravityID(); newbornID = id
-            board[middle.row*7+middle.column] = StarfallGem(id: id, kind: nil, gravity: .hole)
-            gravityPhase(.collision, into: &phases)
-        }
-        board = GravityFieldRules.settle(board, field: orbit)
-        gravityPhase(.settling, into: &phases)
-        if let id = newbornID, let index = board.firstIndex(where: { $0?.id == id }) {
-            let center = Cell(index/7,index%7)
-            let slots = GravityFieldRules.neighbors(center).filter { board[$0.row*7+$0.column]?.kind != nil }
-            orbit = OrbitField(holeID: id, center: center, slots: slots, windowsRemaining: 3)
-            gravityPhase(.capture, into: &phases)
-            if slots.count < 2 { closeOrbit(into: &phases) }
-        }
+        var state = historicalGravity
+        let removed = state.resolveGravityClear(selected, dark: dark, into: &phases)
+        applyHistoricalGravity(state)
         return removed
     }
-    private mutating func advanceOrbit(into phases: inout [GravityPhase]) {
-        guard var field = orbit else { return }
-        if field.windowsRemaining == 1 { closeOrbit(into: &phases); return }
-        let occupants = field.slots.map { board[$0.row*7+$0.column] }
-        for index in field.slots.indices {
-            let target = field.slots[(index+1)%field.slots.count]
-            board[target.row*7+target.column] = occupants[index]
-        }
-        field.windowsRemaining -= 1; orbit = field
-        gravityPhase(.rotation, into: &phases)
+    private mutating func advanceOrbit(into phases: inout [SkyPresentationPhase]) {
+        guard orbit != nil else { return }
+        var state = historicalGravity
+        state.advanceOrbit(into: &phases)
+        applyHistoricalGravity(state)
     }
-    private var gravityStateValid: Bool {
-        let special = board.compactMap { $0 }.filter { $0.gravityKind != nil }
-        guard special.allSatisfy({ $0.kind == nil && !$0.grown && !$0.isLight }),
-              retiredMagnetic.map({ $0 >= 0 && $0 <= starsLanded }) ?? true,
-              nextGravityID.map({ $0 >= starsLanded && $0 < Int.max/2 }) ?? true else { return false }
-        if let field = orbit {
-            guard (0..<7).contains(field.center.row), (0..<7).contains(field.center.column),
-                  (1...3).contains(field.windowsRemaining), (2...4).contains(field.slots.count),
-                  Set(field.slots).count == field.slots.count,
-                  field.slots == GravityFieldRules.neighbors(field.center).filter({ field.slots.contains($0) }),
-                  gem(at: field.center)?.gravityKind == .hole, gem(at: field.center)?.id == field.holeID,
-                  field.slots.allSatisfy({ gem(at: $0)?.kind != nil }),
-                  special.filter({ $0.gravityKind == .hole }).count == 1 else { return false }
-        } else if special.contains(where: { $0.gravityKind == .hole }) { return false }
-        return GravityFieldRules.settle(board, field: orbit) == board
-    }
+    private var gravityStateValid: Bool { historicalGravity.isValid }
     /// Preview the exact deterministic consequence without mutating input, forecast or RNG.
     public func gravityPreview(at cell: Cell) -> FallingSky? {
         var copy = self
@@ -856,7 +814,7 @@ extension FallingSky {
         })
     }
 
-    private mutating func advanceCriticalMass(into phases: inout [GravityPhase]) -> [StarCollapse] {
+    private mutating func advanceCriticalMass(into phases: inout [SkyPresentationPhase]) -> [StarCollapse] {
         guard hasCriticalMass else { return [] }
         // Read one pre-aging neighborhood: simultaneous sources cannot create chains.
         let sources = board.indices.filter { (board[$0]?.stellarAge ?? 0) == CriticalMassRule.collapseAge - 1 }
@@ -872,9 +830,9 @@ extension FallingSky {
             else if var gem = board[index] { gem.ageStar(); board[index] = gem }
         }
         if !collapses.isEmpty {
-            gravityPhase(.removal, into: &phases)
-            board = GravityFieldRules.settle(board, field: nil)
-            gravityPhase(.settling, into: &phases)
+            recordPhase(.removal, into: &phases)
+            board = SkyBoardSettling.settle(board)
+            recordPhase(.settling, into: &phases)
         }
         return collapses
     }

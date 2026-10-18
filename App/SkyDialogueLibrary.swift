@@ -106,7 +106,7 @@ extension SkyDialogueLibrary {
         }
         if !game.isOver, let field = game.orbit {
             result = line("guide.orbit", values: ["release": SkyCopy.count(.orbitReleaseOne, .orbitReleaseMany, field.windowsRemaining)])
-        } else if !game.isOver, turn.gravityPhases.contains(where: { $0.event == .release }) {
+        } else if !game.isOver, turn.presentationPhases.contains(where: { $0.event == .release }) {
             result = line("guide.release")
         }
         return result
