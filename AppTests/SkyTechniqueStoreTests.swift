@@ -185,4 +185,29 @@ final class SkyTechniqueStoreTests: XCTestCase {
         XCTAssertEqual(intent.swapDestination,Cell(1,1));intent.cancel()
         XCTAssertFalse(intent.swapping);XCTAssertNil(intent.swapDestination)
     }
+    @MainActor func testArrangeReconciliationKeepsUsefulModeAndExitsEmptyOrUnsupportedSkies() throws {
+        let source = SkyTechniqueExample.relay.game(), intent = SkyTechniqueIntent()
+        intent.setArranging(true); intent.select(Cell(0,0),game:source,generation:4)
+        let selectionID = intent.selectionID
+        intent.reconcile(with:source)
+        XCTAssertTrue(intent.arranging)
+        XCTAssertNil(intent.anchor); XCTAssertNil(intent.snapshot)
+        XCTAssertNil(intent.consumeSelection(selectionID))
+
+        var cleared = source
+        XCTAssertNotNil(cleared.activate(try XCTUnwrap(cleared.recipes.first)))
+        XCTAssertNotNil(cleared.activate(try XCTUnwrap(cleared.recipes.first)))
+        XCTAssertEqual(cleared.occupiedCount,0)
+        intent.reconcile(with:cleared)
+        XCTAssertFalse(intent.arranging)
+        XCTAssertFalse(SkyTechniqueIntent.canArrange(in:cleared))
+        XCTAssertTrue(SkyTechniqueIntent.canArrange(in:source))
+
+        var challenge = FallingSky(challenge:.firstLight)
+        challenge.letStarsFall()
+        XCTAssertGreaterThan(challenge.occupiedCount,0)
+        intent.setArranging(true);intent.reconcile(with:challenge)
+        XCTAssertFalse(intent.arranging)
+        XCTAssertFalse(SkyTechniqueIntent.canArrange(in:challenge))
+    }
 }

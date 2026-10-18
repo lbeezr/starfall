@@ -6,6 +6,8 @@ A small native iOS falling-sky puzzle. Clear matching stars as showers fill the 
 
 [Roadmap](docs/ROADMAP.md) · [Visual reference and cast](docs/design/VISUAL_REFERENCE.md) · [Playtest](docs/PLAYTEST-FALLING-SKY.md) · [Documentation map](docs/README.md)
 
+Current work focuses on [calibrating the existing mechanics](docs/design/CALIBRATION.md), starting with free-exchange balance and repeatable native play.
+
 ## How to play
 
 - **Clear a match:** Horizontally or vertically connected matching jewels must total at least 3 starlight. Normal jewels count as 1; large jewels with a luminous double silhouette and paired glints count as 2. Their soft aura gently pulses in normal motion. Clear beside Dusk to dissolve it early; gray neighbors still match and grow, but score zero until released.

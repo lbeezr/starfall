@@ -1,0 +1,132 @@
+{
+  "limitation": "Current generation, feeding Dusk, current cadence. Largest immediate visible reward, stable cell-mask ties. Full valid component traces, no subset enumeration. Setup allows one exchange per shower only for strictly better visible immediate reward. No forecast search. One/all clear budgets are diagnostics, not human timing. No-clear arrivals are after optional setup and exclude terminal arrivals. Recipe counts omit outcomes already available as ordinary taps.",
+  "policies": {
+    "clear-one": {
+      "censored": 6,
+      "ended": 58,
+      "longestNoClearRun": {
+        "max": 1,
+        "median": 1.0,
+        "min": 1,
+        "p90": 1
+      },
+      "observedShowers": {
+        "max": 240,
+        "median": 108.0,
+        "min": 29,
+        "p90": 225
+      },
+      "rounds": 64,
+      "score": {
+        "max": 749,
+        "median": 316.5,
+        "min": 73,
+        "p90": 668
+      },
+      "totals": {
+        "clears": 6129,
+        "exchanges": 0,
+        "lostStarlight": 3145,
+        "noClearArrivals": 1737,
+        "recipes": 0,
+        "traces": 533
+      }
+    },
+    "recipe-one": {
+      "censored": 6,
+      "ended": 58,
+      "longestNoClearRun": {
+        "max": 1,
+        "median": 1.0,
+        "min": 1,
+        "p90": 1
+      },
+      "observedShowers": {
+        "max": 240,
+        "median": 108.0,
+        "min": 29,
+        "p90": 225
+      },
+      "rounds": 64,
+      "score": {
+        "max": 749,
+        "median": 316.5,
+        "min": 73,
+        "p90": 668
+      },
+      "totals": {
+        "clears": 6099,
+        "exchanges": 0,
+        "lostStarlight": 3118,
+        "noClearArrivals": 1723,
+        "recipes": 2,
+        "traces": 538
+      }
+    },
+    "setup-all": {
+      "censored": 59,
+      "ended": 5,
+      "longestNoClearRun": {
+        "max": 1,
+        "median": 1.0,
+        "min": 1,
+        "p90": 1
+      },
+      "observedShowers": {
+        "max": 240,
+        "median": 240.0,
+        "min": 46,
+        "p90": 240
+      },
+      "rounds": 64,
+      "score": {
+        "max": 849,
+        "median": 819.0,
+        "min": 149,
+        "p90": 837
+      },
+      "totals": {
+        "clears": 13521,
+        "exchanges": 5657,
+        "lostStarlight": 4893,
+        "noClearArrivals": 3451,
+        "recipes": 3,
+        "traces": 553
+      }
+    },
+    "setup-one": {
+      "censored": 63,
+      "ended": 1,
+      "longestNoClearRun": {
+        "max": 1,
+        "median": 1.0,
+        "min": 1,
+        "p90": 1
+      },
+      "observedShowers": {
+        "max": 240,
+        "median": 240.0,
+        "min": 210,
+        "p90": 240
+      },
+      "rounds": 64,
+      "score": {
+        "max": 799,
+        "median": 778.0,
+        "min": 671,
+        "p90": 790
+      },
+      "totals": {
+        "clears": 12614,
+        "exchanges": 6113,
+        "lostStarlight": 5507,
+        "noClearArrivals": 2715,
+        "recipes": 3,
+        "traces": 645
+      }
+    }
+  },
+  "seedStart": 0,
+  "seeds": 64,
+  "showerLimit": 240
+}

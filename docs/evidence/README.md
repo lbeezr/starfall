@@ -8,6 +8,10 @@ Dated, source-bound records of checks, comparisons and their limits.
 
 ## Start here
 
+[Current gameplay calibration](calibration-baseline-2026-10-18/README.md) identifies free-exchange survival tails in two seed cohorts, corrects drained-reward measurement and records blocked native interaction checks.
+
+[Timed calibration and empty-board Arrange](calibration-timing-and-arrange-2026-10-18/README.md) separates decision/contact time, retains the exchange rules and records the first native usability correction with before/after captures. XCTest works on alternate QA; motion/video and human feel remain open.
+
 [Snappy board input](snappy-board-input-2026-10-18/README.md) tracks faster drawing preview, full native start targets and small-drift tap preservation.
 
 [Input and Dusk refinement](input-dusk-refinement-2026-10-18/README.md) tracks immediate gesture ownership, quicker swaps and five-feed save compatibility.

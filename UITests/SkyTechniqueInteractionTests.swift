@@ -44,8 +44,27 @@ final class SkyTechniqueInteractionTests: XCTestCase {
         XCTAssertTrue(app.buttons["experiment.cell.0.1"].label.contains("Aqua"))
         tap("experiment.cell.0.1", app)
         tap("technique.activate",app); score(8,app)
-        XCTAssertTrue(app.staticTexts["technique.result"].label.contains("2-clear relay"))
+        XCTAssertTrue(app.staticTexts["experiment.message"].label.contains("2-clear relay"))
+        XCTAssertEqual(app.buttons["technique.arrange"].label,"Arrange stars")
+        XCTAssertFalse(app.buttons["technique.arrange"].isEnabled)
+        XCTAssertTrue(app.buttons["experiment.next"].exists)
+        XCTAssertTrue(app.buttons["experiment.pause"].exists)
         capture(app,"technique-relay-complete")
+    }
+    @MainActor func testEmptyOpeningKeepsShowerControlsUntilStarsArrive() {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchArguments = ["--starfalls-reset","--starfalls-seed=5","-calmEffects","NO"]
+        app.launch(); defer { app.terminate() }
+        let arrange = app.buttons["technique.arrange"]
+        XCTAssertTrue(arrange.waitForExistence(timeout:10))
+        XCTAssertFalse(arrange.isEnabled)
+        XCTAssertTrue(app.buttons["experiment.pause"].exists)
+        let next = app.buttons["experiment.next"]
+        XCTAssertTrue(next.isEnabled); next.tap()
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate:NSPredicate(format:"enabled == true"),object:arrange).wait(timeout:5))
+        arrange.tap()
+        XCTAssertEqual(arrange.label,"Finish arranging")
     }
     @MainActor func testNudgeWithButtonsAndSwipePreservesFourStarRecipe() {
         let app = launch("nudge"); defer { app.terminate() }

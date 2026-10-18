@@ -45,17 +45,25 @@ private struct Action: Codable {
     let opalsSpent: Int
     var tap: Cell?
     var trace: [Cell]?
+    var recipeCells: [Cell]? = nil
 }
 private struct Alternatives { let actions: [Action]; let complete: Bool }
-private func choices(_ game: FallingSky, subsets: Bool) -> Alternatives {
+private func choices(_ game: FallingSky, subsets: Bool, recipes: Bool = false) -> Alternatives {
     guard !game.isOver else { return .init(actions: [], complete: true) }
     var result: [UInt64: Action] = [:], components: Set<UInt64> = []
     func action(_ selected: UInt64, tap: Cell? = nil, trace: [Cell]? = nil) -> Action {
         let selectedCells = Set(cells(selected))
-        return .init(selected: selected, light: game.value(of: selectedCells),
+        return .init(selected: selected, light: game.reward(of: selectedCells),
             opalsSpent: selectedCells.filter { game.gem(at: $0)?.isLight == true }.count, tap: tap, trace: trace)
     }
     for group in game.legalGroups { result[mask(group)] = action(mask(group), tap: group[0]) }
+    if recipes {
+        for recipe in game.recipes where result[mask(recipe.cells)] == nil {
+            var selected = action(mask(recipe.cells))
+            selected.recipeCells = recipe.cells
+            result[selected.selected] = selected
+        }
+    }
     for row in 0..<7 { for column in 0..<7 {
         let component = game.constellationGroup(at: Cell(row,column))
         if !component.isEmpty { components.insert(mask(component)) }
@@ -86,7 +94,10 @@ private func select(_ actions: [Action], preserveTies: Bool) -> Action? {
 }
 @discardableResult private func commit(_ action: Action, _ game: inout FallingSky) -> Int {
     let before = game
-    let turn = action.tap.map { game.clear($0) } ?? game.clearConstellation(action.trace!)
+    let turn: FallingSkyTurn?
+    if let tap = action.tap { turn = game.clear(tap) }
+    else if let cells = action.recipeCells { turn = game.activate(game.recipe(matching: Set(cells))!) }
+    else { turn = game.clearConstellation(action.trace!) }
     precondition(turn?.collected == action.light && game.isValidSave)
     precondition(game.turns == before.turns && game.incoming == before.incoming)
     return turn!.collected
@@ -138,7 +149,92 @@ private struct Summary: Codable {
     }
 }
 @main private enum OpalChoiceStudy {
+    /// Visible-board action bounds, without forecasting or unlimited exchange chains.
+    static func calibrate(start: UInt64, seeds: Int, limit: Int, duskRule: DuskRule) throws {
+        struct Round: Codable {
+            let seed: UInt64; let showers: Int; let score: Int; let ended: Bool
+            let clears: Int; let traces: Int; let recipes: Int; let exchanges: Int
+            let noClearArrivals: Int; let longestNoClearRun: Int; let lostStarlight: Int
+        }
+        struct Exchange { let from: Cell; let to: Cell; let gain: Int }
+        func best(_ game: FallingSky, recipes: Bool) -> Action? {
+            select(choices(game, subsets: false, recipes: recipes).actions, preserveTies: false)
+        }
+        func setup(_ game: FallingSky) -> Exchange? {
+            let current = best(game, recipes: true)?.light ?? 0
+            var result: Exchange?
+            for row in 0..<7 { for column in 0..<7 { for delta in [-1, 1] {
+                let from = Cell(row,column), to = Cell(row,column+delta)
+                guard game.canNudge(from: from, to: to) else { continue }
+                var copy = game
+                guard copy.nudge(from: from, to: to) != nil else { continue }
+                let gain = (best(copy, recipes: true)?.light ?? 0) - current
+                if gain > 0 && gain > (result?.gain ?? 0) { result = .init(from: from, to: to, gain: gain) }
+            } } }
+            return result
+        }
+        var example = SkyTechniqueExample.nudge.game()
+        let before = example, exchange = setup(example)!
+        precondition(example == before)
+        precondition(example.nudge(from: exchange.from, to: exchange.to) != nil)
+        precondition(example.turns == before.turns && example.incoming == before.incoming)
+        precondition(best(example, recipes: true)!.light > (best(before, recipes: true)?.light ?? 0))
+        var policies: [String: [Round]] = [:]
+        for policy in ["clear-one", "recipe-one", "setup-one", "setup-all"] {
+            var rounds: [Round] = []
+            for seed in start..<(start + UInt64(seeds)) {
+                var game = FallingSky(seed: seed, generation: .current, duskRule: duskRule)
+                var clears = 0, traces = 0, recipes = 0, exchanges = 0, dry = 0, streak = 0, longest = 0
+                while !game.isOver && game.turns < limit {
+                    game.letStarsFall(); precondition(game.isValidSave)
+                    guard !game.isOver else { break }
+                    if policy.hasPrefix("setup"), let move = setup(game) {
+                        let old = game
+                        precondition(game.nudge(from: move.from, to: move.to) != nil)
+                        precondition(game.turns == old.turns && game.incoming == old.incoming && game.score == old.score)
+                        precondition(game.isValidSave); exchanges += 1
+                    }
+                    let includeRecipes = policy != "clear-one"
+                    if best(game, recipes: includeRecipes) == nil { dry += 1; streak += 1; longest = max(longest, streak) }
+                    else { streak = 0 }
+                    for _ in 0..<(policy == "setup-all" ? 49 : 1) {
+                        guard let action = best(game, recipes: includeRecipes) else { break }
+                        if action.recipeCells != nil { recipes += 1 }
+                        else if action.tap == nil { traces += 1 }
+                        commit(action, &game); clears += 1
+                    }
+                    let restored = try JSONDecoder().decode(FallingSky.self, from: JSONEncoder().encode(game))
+                    precondition(game == restored && restored.isValidSave)
+                }
+                rounds.append(.init(seed: seed, showers: game.turns, score: game.score, ended: game.isOver,
+                                    clears: clears, traces: traces, recipes: recipes, exchanges: exchanges,
+                                    noClearArrivals: dry, longestNoClearRun: longest, lostStarlight: game.lostStarlight))
+            }
+            policies[policy] = rounds
+            FileHandle.standardError.write(Data("\(policy): \(seeds) seeds complete\n".utf8))
+        }
+        struct Report: Codable {
+            let seedStart: UInt64; let seeds: Int; let showerLimit: Int
+            let duskRule: Int; let feedingShowers: Int
+            let method: String; let policies: [String: [Round]]
+        }
+        let report = Report(seedStart: start, seeds: seeds, showerLimit: limit,
+                            duskRule: duskRule.rawValue, feedingShowers: duskRule.feedingShowers,
+                            method: "Current generation/cadence with explicitly selected Dusk version. Largest immediate visible reward, stable cell-mask ties. Full valid component traces, no subset enumeration. Setup allows one exchange per shower only for strictly better visible immediate reward. No forecast search. One/all clear budgets are diagnostics, not human timing. No-clear arrivals are after optional setup and exclude terminal arrivals. Recipe counts omit outcomes already available as ordinary taps.", policies: policies)
+        let encoder = JSONEncoder(); encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+        FileHandle.standardOutput.write(try encoder.encode(report))
+    }
     static func checks() {
+        // Feeding Dusk can drain a legal match to zero. Policy ranking and
+        // commit assertions must use collectible reward, not face value.
+        let drained = DuskFixture.zeroClear.game()
+        let drainedActions = choices(drained, subsets: false, recipes: true).actions
+        precondition(drainedActions.contains { $0.light == 0 && drained.value(of: Set(cells($0.selected))) >= 3 })
+        for action in drainedActions {
+            var copy = drained
+            precondition(commit(action, &copy) == action.light)
+        }
+        precondition(drained == DuskFixture.zeroClear.game())
         for shower in [9, 10, 12, 13] {
             precondition(SkyGeneration.current.phase(for: shower)?.isStorm == ([10, 12].contains(shower)))
         }
@@ -166,6 +262,13 @@ private struct Summary: Codable {
         checks()
         let start = UInt64(CommandLine.arguments[1])!, seeds = Int(CommandLine.arguments[2])!
         let limit = Int(CommandLine.arguments[3])!
+        if CommandLine.arguments.contains("--calibration") {
+            let rule = CommandLine.arguments.first { $0.hasPrefix("--dusk-rule=") } ?? "--dusk-rule=patientFeeding"
+            precondition(["--dusk-rule=feeding", "--dusk-rule=patientFeeding"].contains(rule))
+            try calibrate(start: start, seeds: seeds, limit: limit,
+                          duskRule: rule == "--dusk-rule=feeding" ? .feeding : .patientFeeding)
+            return
+        }
         var summaries: [Summary] = []
         for preserve in [false, true] {
             var summary = Summary(policy: preserve ? "preserve-opal-on-score-ties" : "largest-immediate")

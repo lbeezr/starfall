@@ -110,7 +110,7 @@ import StarfallCore
         .onAppear { store.terminalSpeech = .ceremony; updateSuspension(); store.settlePresentation(); updateMotion() }
         .onDisappear { cancelConstellation(); store.setSuspended(true); store.terminalSpeech = .feedback }
         .onChange(of: store.constellationInputGeneration) { cancelConstellation(); technique.cancel() }
-        .onChange(of: store.game) { cancelConstellation(); technique.cancel() }
+        .onChange(of: store.game) { cancelConstellation(); technique.reconcile(with: store.game) }
         .onChange(of: store.canClear) { _, enabled in if !enabled { cancelConstellation() } }
         .onChange(of: store.isPaused) { cancelConstellation() }
         .onChange(of: scenePhase) { technique.cancel(); updateSuspension() }
@@ -208,7 +208,7 @@ import StarfallCore
                 Button { cancelConstellation(); technique.setArranging(!technique.arranging) } label: {
                     Image(systemName:technique.arranging ? "checkmark" : "arrow.left.arrow.right")
                 }.buttonStyle(StarfallGameButtonStyle())
-                    .disabled(store.suspended || store.game.isOver)
+                    .disabled(store.suspended || !SkyTechniqueIntent.canArrange(in: store.game))
                     .accessibilityLabel(technique.arranging ? "Finish arranging" : "Arrange stars")
                     .accessibilityIdentifier("technique.arrange")
             }

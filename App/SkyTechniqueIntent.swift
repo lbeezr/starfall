@@ -28,6 +28,15 @@ enum SkyBoardAction {
     }
 
     func setArranging(_ value: Bool) { cancel(); arranging = value }
+    /// Arrange mode needs an actual piece. A committed empty sky must return
+    /// to the ordinary controls instead of asking for an impossible selection.
+    static func canArrange(in game: FallingSky) -> Bool {
+        game.canArrangeStars && game.occupiedCount > 0
+    }
+    func reconcile(with game: FallingSky) {
+        cancel()
+        if !Self.canArrange(in: game) { arranging = false }
+    }
     func cancel() { selectionID &+= 1; anchor = nil; recipe = nil; snapshot = nil; swapping = false; swapDestination = nil }
     func armSwap(_ cell: Cell, to destination: Cell, game: FallingSky, generation: UInt64) {
         guard game.canNudge(from:cell,to:destination) else { cancel(); return }
