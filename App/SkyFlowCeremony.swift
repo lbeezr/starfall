@@ -65,9 +65,10 @@ enum SkyFlowAction: Equatable { case start, firstLight, begin, resume, replay, a
                     }
                     .padding(StarfallTheme.Spacing.section)
                     .frame(maxWidth: StarfallTheme.Layout.menuWidth)
-                    .frame(minHeight: geometry.size.height, alignment: .center)
+                    .frame(minHeight: max(0, geometry.size.height - StarfallTheme.Spacing.section), alignment: .center)
                     .frame(maxWidth: .infinity)
                 }
+                .safeAreaPadding(.bottom, StarfallTheme.Spacing.section)
                 .scrollBounceBehavior(.basedOnSize)
             }
         }

@@ -4,13 +4,13 @@
 
 Address four ranked findings on clean main `b5ec445` in separate verified batches. The highest priority is a reproduced launch-time precondition failure while migrating a valid terminal gravity save. This is a compatibility correction, not a new mechanic.
 
-**Next action:** verify tablet landscape safe control area, then require default-game capture exports.
+**Next action:** ship the default-game capture evidence gate and verify integrated main.
 
 | Rank | Workstream | Observable acceptance | Status |
 | --- | --- | --- | --- |
 | 1 — P1 | Terminal retirement | Seed 0 / gravity generation 2 overflow restores without a trap, preserves loss/score/survivors and round-trips; current and historical replay corpus remains valid; ordinary false overflow still rejected. | Verified |
 | 2 — P2 | Primary CI simulator lifecycle | Boot/readiness/capture operations have bounded waits and stage receipts; cleanup shuts down only a simulator booted by this run; failures retain their original status. Execution tests exercise timeout and prebooted ownership. | Verified |
-| 3 — P2 | Landscape safe control area | Settings and Entry controls scroll completely above the Home indicator with native hit semantics, at default/largest text in both supported tablet orientations; phone flow and motion remain intact. | Pending |
+| 3 — P2 | Landscape safe control area | Settings and Entry controls scroll completely above the Home indicator with native hit semantics, at default/largest text in both supported tablet orientations; phone flow and motion remain intact. | Verified |
 | 4 — P2 | Default-game CI evidence | Require a bounded named set of real Welcome/Entry/active/outcome screenshots, preserve partial-failure evidence, reject missing/duplicate/unsafe exports; no additional CI job or blanket retries. | Pending |
 
 Scope excludes gameplay tuning, frameworks, SDKs, full routine VoiceOver sessions and provisioning/downloading runtimes. Source batches require Core/affected hosted and native checks, simulator builds, hygiene/diff and source-bound screenshots where visual. Release is checked for routing/resources/fixtures. Tool-only batches use execution-level tests. Minimum-iOS, actual VoiceOver and configured-phone delivery retain their existing separate gates.

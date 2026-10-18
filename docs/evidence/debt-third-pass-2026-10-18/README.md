@@ -39,3 +39,33 @@ The primary runner previously selected a simulator, booted it only when needed, 
 Every stage records start, elapsed time, limit and exit/error while preserving stdout for PID parsing. Real missing-command, signal, failure and timeout paths preserve status. Receipt-write failure cannot turn command failure into success; a successful command without a writable receipt fails. Cleanup reads only log tails, preserves a primary failure and makes otherwise successful work fail when cleanup fails.
 
 `python3 scripts/test_simulator_lifecycle.py`: 8 passed. Tests execute a real bounded sleeping child, stdout/PID contract, nonzero/missing/signal commands, unwritable receipts and the actual primary CI cleanup/trap prefix with fake simctl plus real files. Prebooted success, failed boot, failed install with failed shutdown, and cleanup-only failure are checked. `test_native_test_plan.py` (3), `test_rc_platforms.py` (12), Bash syntax, hygiene and diff checks passed. Native CI is not claimed from these isolated execution tests; the full job remains under its existing runner budget. This tooling-only batch has no rule/save/UI/actual-VoiceOver acceptance claim.
+
+## 3. Scrollable ceremony control clearance
+
+Source: main `034b6bb` plus `App/SkyFlowCeremony.swift` and `UITests/FallingSkyInteractionTests.swift`, snapshot `a767d897841e` (`sha256(git diff -- <these two paths>)`). Task-4 script/workflow edits were present but excluded from app build inputs and this UI commit.
+
+The original iPad landscape frame was Settings `(378.5, 701, 392, 44)` in a `1133 × 744` app: its center was hittable while the control extended to y=745. The new complete-control assertion failed on that source. Ceremony content used the whole geometry height as its minimum, with no reserved bottom reading area. It now reserves the theme's section spacing in both scroll safe-area padding and minimum content height. Long content can scroll fully above the system area; labels and target sizes are not reduced. Gameplay mapping, native board cells and rules are unchanged. The same owner presents Welcome, Entry and results.
+
+The existing tablet landscape method now visits portrait/landscape at default/XXXL text. It conditionally scrolls each Welcome and Entry action into the usable viewport, checks its complete frame above the full-window iPad's 21-point Home area and at least 44-point height, then activates Settings/dismissal and Begin. There are no extra test methods, tablet exclusions or retries. The original largest-text Welcome/Entry/back test also passes. The first layout trial still failed the initial-frame assertion: content may legitimately need scrolling; the regression now exercises the accepted bounded scroll-to-control contract and still requires complete clearance. Original hit, navigation and state assertions remain.
+
+| Check | Result |
+| --- | --- |
+| Core | 165 passed. |
+| Tablet native | Two methods passed, including all four orientation/text variants and original maximum-text flow; zero failures/skips. |
+| Hosted flow + phone native | 17 hosted + 6 native passed, zero failures/skips: stationary hold/trace/tap, rescue scoring, automatic forecast/settings/background, Welcome/Entry/background/another sky, First Light win/replay/full/restore, system Reduce Motion entry/replay. |
+| Additional phone opening/rapid-input regression | Passed. |
+| Debug and Release simulator compilation, hygiene/diff | Passed. |
+
+Xcode 27.1 / iOS 27.0, Debug, phone QA from task 1 and tablet `Starfall Observatory Tablet QA` / iPad mini A17 Pro (`147FF35E-5EAE-4676-B941-B82BE8119054`), sequential/ad-hoc signing. The combined phone tool response timed out at 300 s; the underlying Xcode run completed at 305.667 s with `TEST EXECUTE SUCCEEDED`. Direct `xcresulttool get test-results summary` confirmed exactly 23 passes, zero failures/skips; this is not an inferred pass or a retried batch. Future tool calls should split similarly long selections. Release compiled afterward. Raw result path: `/tmp/starfall-third-phone-result-path`; captures in `/tmp/starfall-third-tablet-captures` and `/tmp/starfall-third-phone-captures`. Native test time limits were not increased beyond the existing 240 s method allowance; normal motion assertions remain intact.
+
+| Landscape default, scrolled to Settings | Landscape maximum text, scrolled to Settings | Entry default |
+| --- | --- | --- |
+| <img src="dev-034b6bb-wip-a767d897841e__welcome__ipad-mini__landscape-default.jpg" width="260" alt="Landscape Welcome scrolled so Settings and help sits completely above the system bottom region"> | <img src="dev-034b6bb-wip-a767d897841e__welcome__ipad-mini__landscape-largest.jpg" width="260" alt="Large Settings and help label remains readable and fully clear of the bottom region after scrolling"> | <img src="dev-034b6bb-wip-a767d897841e__first-light-entry__ipad-mini__landscape-default.jpg" width="260" alt="Landscape First Light Entry with Begin, Back and Settings all inside the scrollable dialogue panel"> |
+
+The heading may scroll offscreen while reaching lower controls; these frames do not claim every element fits simultaneously. Inspected captures establish readable labels and complete control bounds in these sampled full-window configurations. Stage Manager, physical comfort and actual VoiceOver remain RC work.
+
+| Phone Welcome | Phone full sky | Phone First Light win |
+| --- | --- | --- |
+| <img src="dev-034b6bb-wip-a767d897841e__welcome__iphone-17e__default-text.jpg" width="180" alt="Phone Welcome with complete dialogue and three actions above the bottom edge"> | <img src="dev-034b6bb-wip-a767d897841e__full-sky__iphone-17e__default-text.jpg" width="180" alt="Full-sky result preserves the final stars, blocked-column reason and restart actions"> | <img src="dev-034b6bb-wip-a767d897841e__first-light-win__iphone-17e__default-text.jpg" width="180" alt="First Light win shows the actual 20-of-18 score and complete result actions"> |
+
+Inspected native iPhone 17e/default-text captures on identical app source. Still images do not prove animation quality; the normal-motion ending/replay and input flows above provide their separate behavioral checks. Actual VoiceOver and physical-device acceptance remain open.

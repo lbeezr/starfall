@@ -930,29 +930,54 @@ final class SkyFlowInteractionTests: XCTestCase {
     }
 
     @MainActor func testLandscapeWelcomeEntryAndPreferences() throws {
+        executionTimeAllowance = 240
         XCUIDevice.shared.orientation = .portrait
         defer { XCUIDevice.shared.orientation = .portrait }
-        let app = launch(); defer { app.terminate() }
-        guard app.frame.width >= 700 else { throw XCTSkip("Tablet landscape coverage; iPhone supports portrait only") }
-        XCUIDevice.shared.orientation = .landscapeLeft
-        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
-            app.frame.width > app.frame.height && app.frame.contains(app.buttons["sky.start"].frame)
-        }, object: nil).wait(timeout: 5))
-        XCTAssertGreaterThan(app.frame.width, app.frame.height, "Run this supported-landscape check on iPad")
-        capture(app, "tablet-landscape-welcome")
-        let preferences = app.buttons["sky.preferences"]
-        XCTAssertTrue(preferences.isHittable)
-        preferences.tap()
-        XCTAssertTrue(app.switches["experiment.sound"].waitForExistence(timeout: 5))
-        app.buttons["experiment.done"].tap()
-        app.buttons["sky.firstLight"].tap()
-        let begin = app.buttons["sky.begin"]
-        XCTAssertTrue(begin.waitForExistence(timeout: 5))
-        capture(app, "tablet-landscape-entry")
-        XCTAssertTrue(begin.isHittable)
-        begin.tap()
-        XCTAssertTrue(app.buttons["experiment.settings"].waitForExistence(timeout: 5))
-
+        @MainActor func revealFully(_ id: String, in app: XCUIApplication) -> XCUIElement {
+            let control = app.buttons[id]
+            XCTAssertTrue(control.waitForExistence(timeout: 5))
+            // A hittable center can hide the bottom of a control under Home.
+            // Full-window iPad reserves 21 points for that system gesture region.
+            for _ in 0..<8 {
+                if control.frame.maxY > app.frame.maxY - 21 { app.swipeUp() }
+                else if control.frame.minY < app.frame.minY { app.swipeDown() }
+                else { break }
+            }
+            XCTAssertGreaterThanOrEqual(control.frame.minY, app.frame.minY)
+            XCTAssertLessThanOrEqual(control.frame.maxY, app.frame.maxY - 21)
+            XCTAssertGreaterThanOrEqual(control.frame.height, 44)
+            XCTAssertTrue(control.isHittable)
+            return control
+        }
+        for largest in [false, true] {
+            for orientation in [UIDeviceOrientation.portrait, .landscapeLeft] {
+                XCUIDevice.shared.orientation = .portrait
+                let app = launch(largest: largest)
+                guard app.frame.width >= 700 else { app.terminate(); throw XCTSkip("Tablet coverage; iPhone supports portrait only") }
+                XCUIDevice.shared.orientation = orientation
+                XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+                    (app.frame.width > app.frame.height) == (orientation == .landscapeLeft)
+                }, object: nil).wait(timeout: 5))
+                let variant = "\(orientation.rawValue)-\(largest ? "largest" : "default")"
+                for id in ["sky.start", "sky.firstLight"] { _ = revealFully(id, in: app) }
+                let preferences = revealFully("sky.preferences", in: app)
+                capture(app, "tablet-welcome-safe-" + variant)
+                preferences.tap()
+                XCTAssertTrue(app.switches["experiment.sound"].waitForExistence(timeout: 5))
+                app.buttons["experiment.done"].tap()
+                revealFully("sky.firstLight", in: app).tap()
+                _ = revealFully("sky.begin", in: app)
+                _ = revealFully("sky.home", in: app)
+                revealFully("sky.preferences", in: app).tap()
+                XCTAssertTrue(app.buttons["experiment.done"].waitForExistence(timeout: 5))
+                app.buttons["experiment.done"].tap()
+                let begin = revealFully("sky.begin", in: app)
+                capture(app, "tablet-entry-safe-" + variant)
+                begin.tap()
+                XCTAssertTrue(app.buttons["experiment.settings"].waitForExistence(timeout: 5))
+                app.terminate()
+            }
+        }
     }
 
     @MainActor func testLargestTextWelcomeEntryAndBackRemainReachable() {
