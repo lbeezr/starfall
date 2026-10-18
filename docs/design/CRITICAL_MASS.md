@@ -1,12 +1,12 @@
 # Universal critical mass
 
-**Status:** Accepted direction; implementation in progress · **Owner:** current implementer · **Updated:** October 18, 2026
+**Status:** Accepted; implemented and development-verified · **Owner:** current implementer · **Updated:** October 18, 2026
 
 Fresh survival skies replace Dusk arrivals with pressure from the whole cast. Stars age even when buried: stage three turns purple and stage four implodes. Dusk and the retained Radiant Pearl/Soft Tri-Star designs are pocketed for a later character decision. Existing rounds and First Light retain their contracts.
 
 **Decision:** Every three survived showers advances a stage: age zero is stage one, age three stage two, age six stage three, and age nine collapses before new arrivals. Matching growth can show stage two earlier, but remains worth two starlight. Aging adds no score or solo-clear eligibility. The three-shower purple warning permits a deliberate rescue, exchange or sacrifice.
 
-**Next action:** Verify rules, old saves, committed animation/interruption and native comprehension, then merge the normal-target implementation. Human preference and do-nothing survival balance remain explicit follow-up judgments after play.
+**Next action:** Merge the verified normal-target implementation, then observe rescue/sacrifice choices with the user and husband. Human preference and do-nothing survival balance remain explicit follow-up judgments after play.
 
 ## Player experience and boundaries
 
@@ -18,14 +18,18 @@ The saved critical-mass version is separate from legacy Dusk rules. The v8 app a
 
 ## Acceptance
 
-- [ ] Birth exclusion; buried/Opal aging; stages at three/six; collapse at nine; rescue, isolation, edges, overlapping simultaneous sources and no chains.
-- [ ] Matching weight/reward remain 1/2; conservation includes all swallowed centers/neighbors; before-arrival headroom, seeded replay and round-trip continuation pass.
-- [ ] Reject impossible ages/versions and aging in historical envelopes/First Light; preserve old Dusk replay and v7 bytes.
-- [ ] Native normal motion shows warning and inward swallow, settlement and arrivals; real taps, rapid input, restart, restore, settings/background interruption and quiet/large-text checks pass.
-- [ ] Debug/Release simulator builds, core and affected hosted/UI tests, hygiene and diff checks pass. Actual VoiceOver and physical device acceptance remain RC work.
+- [x] Birth exclusion; buried/Opal aging; stages at three/six; collapse at nine; rescue, isolation, edges, overlapping simultaneous sources and no chains.
+- [x] Matching weight/reward remain 1/2; conservation includes all swallowed centers/neighbors; before-arrival headroom, seeded replay and round-trip continuation pass.
+- [x] Reject impossible ages/versions and aging in historical envelopes/First Light; preserve old Dusk replay and v7 bytes.
+- [x] Native normal motion shows warning and inward swallow, settlement and arrivals; real taps, rapid input, restart, restore, settings/background interruption and quiet/large-text checks pass.
+- [x] Debug/Release simulator builds, core and affected hosted/UI tests, hygiene and diff checks pass. Actual VoiceOver and physical device acceptance remain RC work.
 
 ## Tuning risk and decision point
 
 An implosion makes space, so waiting could become more effective than collecting. Compare idle and collect-all policies on fixed seeds, then observe the user and husband rescuing or sacrificing a purple star. Seed samples establish reproducibility, not enjoyment. After those rounds choose timing/consequence refinement or retain the rule; do not add persistent hazards to compensate without evidence.
 
-Native appearance evidence will be linked after capture. Existing [Dusk swallow captures](../evidence/dusk-feeding-2026-10-18/README.md) show only the reused historical effect, not universal corruption.
+[Development evidence and remaining limits](../evidence/critical-mass-2026-10-18/README.md) separates core, native interaction, sampled motion and actual VoiceOver/device acceptance. The broad hosted suite's existing gravity wording failure is explicitly excluded from its 236-pass run.
+
+<img src="../evidence/critical-mass-2026-10-18/dev-c9c8d2e__critical-warning__iphone-17e__default-text.jpg" width="240" alt="Implemented native purple cast with distinct family silhouettes, grown glints and dark critical-mass cores">
+
+**Inspected runtime capture:** clean `c9c8d2e`, iPhone 17e / iOS 27.0 Simulator, default text and normal motion. This frame shows the warning appearance; the linked recording/frame analysis separately verifies the bounded swallow. Existing [Dusk captures](../evidence/dusk-feeding-2026-10-18/README.md) describe retained rounds only.

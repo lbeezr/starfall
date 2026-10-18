@@ -58,3 +58,5 @@ Start with [the roadmap](../ROADMAP.md) for current priorities or [visual refere
 [Input centralization](interaction-centralization-2026-10-18/README.md) records four separate interaction, admission, interruption and feedback extractions, with per-batch source and native verification.
 
 [Forgiving current-app input](forgiving-input-main-2026-10-18/README.md) records directional swaps, empty-gap constellations and current-main regression checks.
+
+[Universal critical mass](critical-mass-2026-10-18/README.md) records fresh-sky aging, v8/retained saves, native rescue/collapse, normal-motion inspection and explicit baseline/RC limits.
