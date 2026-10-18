@@ -2,7 +2,7 @@
 
 **Status:** Accepted; gesture-only development checks recorded, full-sky check unresolved · **Owner:** current implementer · **Updated:** October 18, 2026
 
-Give single-cell stars a controllable setup move and exact recipes while preserving falling stars. In survival, swipe one horizontal cell, hold briefly, then lift to exchange the stars. Empty destinations are allowed: unsupported stars fall after the slide. A matching four-star square or five-star cross can be cleared without spending surrounding stars. The next clear remains a player decision.
+Give single-cell stars a controllable setup move and exact recipes while preserving falling stars. In survival, swipe horizontally toward a neighbor, then lift to exchange the stars. A brief hold also shows a preview. Empty destinations are allowed: unsupported stars fall after the slide. A matching four-star square or five-star cross can be cleared without spending surrounding stars. The next clear remains a player decision.
 
 **Decision:** Keep these as ordinary board actions, with no charge, bonus multiplier, progression or automatic cascade. First Light retains its existing rules. [Original integration evidence](../evidence/technique-current-main-2026-10-18/README.md) retains its source; [gesture-only correction](../evidence/dialogue-only-hud-2026-10-18/README.md) tracks removal of Arrange.
 
@@ -24,9 +24,9 @@ These are player strategies, not separate saved abilities. Debug reset-only exam
 
 ## Touch and accessibility
 
-A 150 ms dwell in the neighboring cell arms an exchange and displays its two-star preview. Lift on that same cell to commit. Returning to the source cancels the armed move; leaving the original row or crossing two columns disqualifies that contact. Quick swipes retain selected tracing behavior. Multi-touch, changed input generation, settings, backgrounding and scene replacement cancel pending input. The recognizer delivers contact immediately, before scroll views can defer UIView touches; one contact owns the held shower deadline through release/cancel/reset. Unavailable incidental samples preserve a trace; stale snapshots still cancel.
+The [touch-intent contract](TOUCH_INTENT.md) infers one neighbor from a short horizontal stroke; quick release can commit without reaching its cell. A 150 ms dwell still arms a preview. Armed drift may cross a cell border; returning toward the source, substantial vertical departure, a second neighbor or leaving the board cancels. Quick swipes that selected a trace neighbor retain tracing precedence. Multi-touch, changed input generation, settings, backgrounding and scene replacement cancel pending input. The recognizer delivers contact immediately, before scroll views can defer UIView touches; one contact owns the held shower deadline through release/cancel/reset. Unavailable incidental samples preserve a trace; stale snapshots still cancel.
 
-Board actions are direct gestures. Swipe sideways and hold briefly for an exchange; tap ordinary matches or trace exact squares/crosses. There is no Arrange mode, menu entry, toggle, neighbor-tap exchange or recipe picker. A completed/cancelled gesture returns directly to ordinary input. Native constellation accessibility actions retain exact trace selection without a mode. At accessibility text sizes character chat scrolls below the canvas. Opal can join a colored family; all-Opal recipes and Dusk ingredients are invalid.
+Board actions are direct gestures. Swipe sideways for an exchange; tap ordinary matches or trace exact squares/crosses. There is no Arrange mode, menu entry, toggle, neighbor-tap exchange or recipe picker. A completed/cancelled gesture returns directly to ordinary input. Native constellation accessibility actions retain exact trace selection without a mode. At accessibility text sizes character chat scrolls below the canvas. Opal can join a colored family; all-Opal recipes and Dusk ingredients are invalid.
 
 
 ## State and presentation

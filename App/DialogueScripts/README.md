@@ -100,3 +100,5 @@ Run the hosted `SkyDialogueTests` using the Starfall scheme. They render every b
 `FallingSkyStore` selects guidance from committed clears, arrivals and gravity outcomes. `SkyDialogueLibrary` maps the committed next-shower phase/cadence into `timing.phase`, `timing.cadence` or `timing.combined`; Nova speaks warnings and recovery, with current counts refreshed at settlement. Existing phase/count rules and cadence timing remain Core-owned. The optional `guide.context` joins an explicit result with the current timing notice in the same bubble. Only designated transitions announce automatically. Settings/background reject stale completion speech through the store's existing generation guard.
 
 The ordinary compact bubble receives the terrace's available footer height; its introduction scrolls before it can overlap native stars. Keep action controls outside that scrolling introduction. Actual VoiceOver acceptance remains an RC check.
+
+`help.swap` and `help.trace` describe the [directional swap and one-gap contract](../../docs/design/TOUCH_INTENT.md); retain the horizontal-only rule and the distinction between selecting a trace and moving a neighbor.

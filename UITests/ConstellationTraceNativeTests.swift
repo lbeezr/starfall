@@ -63,6 +63,20 @@ final class ConstellationTraceNativeTests: XCTestCase {
         XCTAssertTrue(XCTNSPredicateExpectation(predicate:NSPredicate(format:"enabled == true"),object:legal).wait(timeout:5))
         legal.tap();score(3,fresh);fresh.terminate()
     }
+    @MainActor func testNativeGapSwipeAndRepeatedAttempt() {
+        let app=launch("singleGap");defer {app.terminate()}
+        drag(app,from:(0,0),to:(0,2));score(0,app)
+        drag(app,from:(0,0),to:(0,5));score(5,app)
+        let image=XCTAttachment(screenshot:app.screenshot());image.name="one-gap-clear";image.lifetime = .keepAlways;add(image)
+    }
+    @MainActor func testNativeOffCenterStrokeAcquiresFive() {
+        let app=launch("horizontalFive");defer {app.terminate()}
+        let start=app.buttons["experiment.cell.0.0"].coordinate(withNormalizedOffset:CGVector(dx:0.5,dy:0.88))
+        let end=app.buttons["experiment.cell.0.4"].coordinate(withNormalizedOffset:CGVector(dx:0.5,dy:0.88))
+        start.press(forDuration:0.1,thenDragTo:end,withVelocity:.slow,thenHoldForDuration:0.1)
+        score(5,app)
+    }
+
     @MainActor func testBuildIDMenuAndLargestTextTrace() {
         let app=launch(large:true);defer {app.terminate()}
         drag(app,from:(0,0),to:(4,4));score(5,app)

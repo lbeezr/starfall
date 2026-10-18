@@ -32,3 +32,5 @@ Gravity specials are retired from normal play. `SkyGeneration.standardSky` suppl
 `DuskRule` preserves historical three-feed replay and marks current five-feed skies explicitly. `adoptingFeedingDusk()` retains committed stars, feed counts, reward loss, forecast and seeded state; Core never advances feeding from elapsed animation time.
 
 `canStartConstellation(at:)` is the shared eligibility query for native target admission and transient intent. It preserves colored-first, five-star and exact-square rules without changing selected-set validation or saves.
+
+`canLinkConstellation` owns adjacent/one-empty-midpoint geometry for eligibility and selected prefixes; family anchoring and ordinary tap groups remain separate.

@@ -1,5 +1,8 @@
 # Starfall roadmap
 
+[Directional swaps and one-gap tracing](evidence/forgiving-input-main-2026-10-18/README.md) address precision targeting in the current app. Physical phone/iPad comparison remains the next tuning decision.
+
+
 **Status:** Active · **Owner:** Current implementer · **Updated:** October 18, 2026, Eastern time
 
 Build a small, readable falling-sky puzzle worth replaying. **Skillful survival arrangements extend the current matching and tracing.** Opal and storm phases are integrated in the regular game. Preserve its versioned generator/save contracts while tuning input, layout and timing. Historical lab comparisons do not define the current delivery workflow; human preference remains unverified.

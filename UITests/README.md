@@ -45,3 +45,5 @@ Paused clear-feedback checks wait for the exact result text after score commitme
 `SkyTechniqueInteractionTests` exercises mode-free recipe taps and relays, direct swipe-and-hold exchanges and empty-space falls, selected tracing, and gesture readiness after settings/background interruption. Hosted recipe-path tests cover exact square/cross selection; native constellation tests cover largest-text tracing. Full animation and actual VoiceOver evidence remain separate.
 
 The responsive-input regression uses 16-point ordinary drift at normal/largest text. Selected-five native drawing includes a fast swipe beginning at the target rim; partial/outside traces must still cancel without ordinary-clear fallback.
+
+The focused constellation gap/off-center and quick directional swap checks exercise approximate strokes without destination-cell targeting.

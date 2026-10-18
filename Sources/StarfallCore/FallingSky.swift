@@ -311,6 +311,17 @@ public struct FallingSky: Codable, Equatable, Sendable {
         return clearCommitted(cells)
     }
 
+    /// Connection geometry shared by eligibility and selected-path validation.
+    /// Family membership is checked separately so Opal keeps the first star's family.
+    public func canLinkConstellation(_ from: Cell, to: Cell) -> Bool {
+        guard let first = gem(at: from), !first.isDark,
+              let last = gem(at: to), !last.isDark else { return false }
+        let dr = abs(to.row-from.row), dc = abs(to.column-from.column)
+        if dr <= 1 && dc <= 1 { return true }
+        guard max(dr, dc) == 2, dr == 0 || dc == 0 || dr == dc else { return false }
+        return gem(at: Cell((from.row+to.row)/2, (from.column+to.column)/2)) == nil
+    }
+
     /// Walk order, family and distinct count are rules, not gesture/presentation decisions.
     /// Shared prefix legality for live input and committed walks. The first
     /// colored star fixes the family even after the path crosses a white orb.
@@ -319,7 +330,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
         var previous = first
         for cell in path {
             guard matchesFamily(kind, at: cell),
-                  abs(cell.row-previous.row) <= 1, abs(cell.column-previous.column) <= 1 else { return false }
+                  canLinkConstellation(previous, to: cell) else { return false }
             previous = cell
         }
         return true
@@ -517,9 +528,9 @@ public struct FallingSky: Codable, Equatable, Sendable {
         guard let kind = gem(at: start)?.kind else { return [] }
         var found: Set<Cell> = [start], pending = [start]
         while let cell = pending.popLast() {
-            for dr in -1...1 { for dc in -1...1 where dr != 0 || dc != 0 {
+            for dr in -2...2 { for dc in -2...2 where dr != 0 || dc != 0 {
                 let next = Cell(cell.row + dr, cell.column + dc)
-                if !found.contains(next), matchesFamily(kind, at: next) {
+                if !found.contains(next), canLinkConstellation(cell, to: next), matchesFamily(kind, at: next) {
                     found.insert(next); pending.append(next)
                 }
             } }

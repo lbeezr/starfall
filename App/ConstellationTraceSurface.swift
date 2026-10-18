@@ -130,15 +130,20 @@ struct ConstellationTraceSurface: UIViewRepresentable {
                 guard !Task.isCancelled, let self, self.session.sequence == contact,
                       !self.blocked, self.primary != nil, self.swapDwell.target == target,
                       let current=self.input, current.enabled, current.generation == input.generation else { return }
-                self.swapArmed = current.beginSwap?(origin,point,current.generation) == true
+                self.swapArmed = current.beginSwap?(origin,ObservatoryGeometry(size:current.size).viewPoint(target),current.generation) == true
                 if self.swapArmed { self.swapDwell.arm() }
             }
         }
         private func endContact(_ touches: Set<UITouch>, event: UIEvent?) {
             guard !blocked, let primary, touches.contains(primary), let input else { cancelInput(); return }
             guard (event?.allTouches?.count ?? 1) == 1 else { cancelInput(reason: SkyCopy.text(.inputOneFinger)); return }
-            swapTask?.cancel(); swapTask=nil
             let location = primary.location(in: self)
+            updateSwapHold(location, input: input)
+            swapTask?.cancel(); swapTask=nil
+            if !swapArmed, input.hasSelectedNeighbor?() != true,
+               let origin = session.origin, let target = swapDwell.target, swapDwell.eligible {
+                swapArmed = input.beginSwap?(origin, ObservatoryGeometry(size: input.size).viewPoint(target), input.generation) == true
+            }
             let outcome = session.finish(at: location, mapping: ObservatoryGeometry(size: input.size))
             self.primary = nil
             if swapArmed { input.endSwap?(location); swapArmed=false; return }
@@ -257,20 +262,38 @@ struct ConstellationTouchSession {
     }
 }
 
-/// One-neighbor dwell eligibility is sticky for the entire physical contact.
-/// Crossing a row or a second neighbor keeps a trace from later becoming a swap.
+/// Directional one-neighbor target shared by dwell and quick release. Small drift
+/// may cross a cell border; deliberate reversal, another neighbor or leaving cancels.
 struct SkySwapDwell {
     private(set) var eligible = true
     private(set) var target: Cell?
     private var armed = false
     mutating func arm() { armed = eligible && target != nil }
+
+    static func threshold(_ cell: Cell, mapping: ObservatoryGeometry) -> CGFloat {
+        min(24, max(12, mapping.frame(cell).width * 0.25))
+    }
     mutating func visit(origin: CGPoint, point: CGPoint, mapping: ObservatoryGeometry) {
         guard eligible else { return }
-        guard let first=mapping.cell(at:origin), let cell=mapping.cell(at:point),
-              first.row == cell.row, abs(first.column-cell.column) <= 1 else {
-            eligible=false;target=nil;return
+        guard let first = mapping.cell(at: origin), mapping.cell(at: point) != nil else {
+            eligible = false; target = nil; return
         }
-        if armed && cell != target { eligible=false;target=nil;return }
-        target = first == cell ? nil : cell
+        let frame = mapping.frame(first), dx = point.x-origin.x, dy = point.y-origin.y
+        let threshold = Self.threshold(first, mapping: mapping)
+        guard abs(dy) <= frame.height * 0.75, abs(dx) < frame.width * 1.5 else {
+            eligible = false; target = nil; return
+        }
+        if let target {
+            let direction: CGFloat = target.column > first.column ? 1 : -1
+            if dx * direction < threshold * 0.5 {
+                self.target = nil
+                if armed { eligible = false }
+            }
+            return
+        }
+        guard abs(dx) >= threshold, abs(dx) >= abs(dy) * 1.25 else { return }
+        let candidate = Cell(first.row, first.column + (dx > 0 ? 1 : -1))
+        guard (0..<7).contains(candidate.column) else { eligible = false; return }
+        target = candidate
     }
 }

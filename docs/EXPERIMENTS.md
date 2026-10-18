@@ -4,6 +4,8 @@ This is the authoritative status register for gameplay and presentation experime
 
 ## Current decisions
 
+[Forgiving swaps and one-gap constellation links](design/TOUCH_INTENT.md) extend the normal app at the user’s request. Short directional horizontal release can commit without a destination-cell hit; existing dwell remains available. Eligibility and selected paths share one empty-midpoint rule. [Current-source evidence](evidence/forgiving-input-main-2026-10-18/README.md) records verification and physical-feel limits.
+
 [Copy and character voices](evidence/copy-rewrite-2026-10-18/README.md) are integrated directly into the regular app at the user’s request, with one local dialogue/interface catalogue. Dusk teases only after committed consumption or a zero-reward drained clear. No rule/save change, pilot flag or alternate app. Human comprehension and tone remain playtest questions.
 
 [Dialogue-only HUD correction](evidence/dialogue-only-hud-2026-10-18/README.md) removes the reintroduced Dusk/input banners and header Arrange toggle. Bottom character chat owns guidance; direct swaps retain their timing, with no Arrange mode or menu alternative. The linked record has 11 native checkpoint passes, 44 final hosted passes and final swap/trace smoke passes; one full-sky native wait remains failed. Physical timing comfort remains unverified.

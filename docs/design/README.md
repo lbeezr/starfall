@@ -50,3 +50,5 @@ The [branding studies](branding/README.md) retain the editable wordmarks, sanctu
 - [Character chat and complete trails](CHARACTER_CHAT_AND_TRAIL.md): reusable bottom dialogue, six portraits and authored scripts.
 
 [Late-calm magnetic opportunities](GRAVITY_OPPORTUNITIES.md) owns generation-3 supply tuning, retained replay and its bounded adoption criteria.
+
+[Touch intent](TOUCH_INTENT.md) records HCI research and the forgiving swap/constellation connection contract.

@@ -61,3 +61,5 @@ Teardown regressions cover all eight replacement/layout/motion/balance/suspensio
 `ResponsiveInputTests` also records trace feedback through injection: exact selection wording, expired/replaced holds, restart/suspension, haptic preference/quiet policy and unchanged committed save bytes. These checks do not replace actual VoiceOver or physical haptic acceptance.
 
 Rendered-award checks capture the complete `FallingSkyView` in an isolated foreground UIKit host for ordinary, square, cross, constellation and relay commits, and require award pixels in a sky region excluding the counter. A separate normal/quiet check guards stable award placement. StarCast selection checks require four open sparkle rays with no enclosing path and preserve cancellation cleanup. [Native captures and limits](../docs/evidence/starlight-celebrations-2026-10-18/VISIBLE_AWARDS.md).
+
+`TraceInputPolishTests` also checks direction-derived swap targets and off-center elliptical acquisition at phone/tablet sizes.
