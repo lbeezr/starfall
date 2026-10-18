@@ -276,6 +276,9 @@ extension FallingSkyStore {
     @MainActor static func forSkyFlowApp() -> FallingSkyStore {
         #if DEBUG
         let arguments = ProcessInfo.processInfo.arguments
+        if arguments.contains("--technique-review") {
+            return FallingSkyStore(defaults:UserDefaults(suiteName:"Starfall.TechniqueReview")!,arguments:arguments)
+        }
         if arguments.contains("--dialogue-review") {
             return FallingSkyStore(defaults: UserDefaults(suiteName: "Starfall.DialogueReview")!, arguments: arguments)
         }

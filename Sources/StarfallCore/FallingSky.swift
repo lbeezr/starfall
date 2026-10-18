@@ -51,6 +51,11 @@ public struct FallingSkyTurn: Sendable {
         public let gem: StarfallGem
         public let grew: Bool
     }
+    public struct Exchange: Sendable {
+        public let from: Cell
+        public let to: Cell
+    }
+    public var exchange: Exchange? = nil
     public var duskCollapses: [DuskCollapse] = []
     public var duskAffectedColumns: Set<Int> = []
     public var gravityPhases: [GravityPhase] = []
@@ -323,12 +328,31 @@ public struct FallingSky: Codable, Equatable, Sendable {
     public func constellationCells(along path: [Cell]) -> Set<Cell>? {
         guard isValidConstellationPrefix(path) else { return nil }
         let cells = Set(path)
-        return cells.count >= 5 ? cells : nil
+        return cells.count >= 5 || (challenge == nil && cells.count == 4 && recipe(matching:cells)?.shape == .square) ? cells : nil
     }
 
     @discardableResult public mutating func clearConstellation(_ path: [Cell]) -> FallingSkyTurn? {
         guard !isOver, let cells = constellationCells(along: path) else { return nil }
         return clearCommitted(cells)
+    }
+
+    @discardableResult public mutating func clearSelected(_ path: [Cell]) -> FallingSkyTurn? {
+        guard canArrangeStars else { return nil }
+        return clearConstellation(path)
+    }
+
+    @discardableResult public mutating func activate(_ recipe: StarRecipe) -> FallingSkyTurn? {
+        guard canArrangeStars, recipes.contains(recipe) else { return nil }
+        return clearCommitted(Set(recipe.cells))
+    }
+
+    @discardableResult public mutating func nudge(from: Cell, to: Cell) -> FallingSkyTurn? {
+        guard canNudge(from:from,to:to) else { return nil }
+        let before = self
+        board.swapAt(from.row * Self.side + from.column, to.row * Self.side + to.column)
+        board = GravityFieldRules.settle(board,field:nil)
+        return .init(exchange:.init(from:from,to:to),duskAffectedColumns:duskChangedColumns(from:before),cleared:[],collected:0,settled:board,
+                     forecast:incoming,arrivals:[],blockedColumn:nil)
     }
 
     private mutating func clearCommitted(_ cells: Set<Cell>) -> FallingSkyTurn {

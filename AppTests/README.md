@@ -45,3 +45,5 @@ SkyDialogueTests covers the committed-score/visible-message boundary: prior help
 `DuskProductionTests` covers committed collapse/save before animation, stale callbacks, v5 adoption, zero-reward clears, gray materials, warning stages and sampled full-motion infall/arrival.
 
 Gravity specials are retired from normal play. `SkyGeneration.standardSky` supplies ordinary/Opal/storm play; `FallingSky.removingGravity()` retires validated historical specials without changing survivor identities, score, RNG, cadence or outcomes. The store applies it on restore and same-sky replay, persisting only on activation/commit. Historical raw rules and reset-only Debug fixtures remain regression tooling; the normal app never routes into them. See [removal evidence](../docs/evidence/gravity-removal-2026-10-17/README.md).
+
+`SkyTechniqueStoreTests` checks exact-recipe relay feedback, exchange ownership, current saves/deadlines, interrupted/stale inputs, Dusk reward columns, non-saving fixtures and sampled full/quiet exchange motion.

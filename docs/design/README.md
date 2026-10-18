@@ -4,6 +4,8 @@ Behavior proposals, production contracts and research supporting decisions.
 
 ## Start here
 
+[Star techniques](STAR_TECHNIQUES.md) owns exact square/cross recipes, swipe-and-hold exchanges, tap equivalents and deliberate relays.
+
 [Dusk feeding](DUSK_FEEDING.md) owns gray-star rewards, the three-feed collapse and explicit saved-rule adoption.
 
 [Responsive taps and concurrent play](INTERACTION_FEEDBACK.md) owns column reservations, contact feedback and ordinary tap/trace classification.

@@ -151,6 +151,7 @@ enum StarfallMotion {
     static let gatherDuration: TimeInterval = 0.06
     static let gravityStart: TimeInterval = 0.32
     static let clearDuration: TimeInterval = 0.56
+    static let exchangeSlideDuration: TimeInterval = 0.14
 
     /// Only the airborne approach overlaps. A small clearance keeps first
     /// response after every preceding committed gravity phase has settled.

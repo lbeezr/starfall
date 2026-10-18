@@ -1,10 +1,10 @@
 # Starfall roadmap
 
-**Status:** Active · **Owner:** Current implementer · **Updated:** October 17, 2026, Eastern time
+**Status:** Active · **Owner:** Current implementer · **Updated:** October 18, 2026, Eastern time
 
-Build a small, readable falling-sky puzzle worth replaying. **Constellation tracing leads the current gameplay polish.** Opal and storm phases are integrated in the regular game. Preserve its versioned generator/save contracts while tuning input, layout and timing. Historical lab comparisons do not define the current delivery workflow; human preference remains unverified.
+Build a small, readable falling-sky puzzle worth replaying. **Skillful survival arrangements extend the current matching and tracing.** Opal and storm phases are integrated in the regular game. Preserve its versioned generator/save contracts while tuning input, layout and timing. Historical lab comparisons do not define the current delivery workflow; human preference remains unverified.
 
-**Next actions:** Deliver drawing, full-window/Island, ring removal and faster-new-sky fixes directly in the single regular Starfall app. No new lab apps. [Connected-iPhone updates](DEVELOPMENT_BUILDS.md) are active; the selected round is retained and the extra lab is removed. Full actual VoiceOver acceptance remains a release-candidate gate.
+**Next actions:** Observe the integrated recipe, exchange and relay techniques under automatic showers, checking discovery, accidental swaps and free-move balance. Continue delivering directly in the single regular Starfall app. [Connected-iPhone updates](DEVELOPMENT_BUILDS.md) are active; the selected round is retained and the extra lab is removed. Full actual VoiceOver acceptance remains a release-candidate gate.
 
 **Open limits:** No gameplay participant preference results or general physical-device acceptance. Crystal Glow art direction and character masters are user-approved; runtime verification and remaining limits are recorded in the [cast integration evidence](evidence/crystal-glow-integration-2026-10-17/README.md). Accessibility evidence remains source-bound.
 
@@ -15,6 +15,8 @@ Character chat and complete shower trails are integrated into the current produc
 Grown-star readability now uses a luminous double silhouette, two glints and a gentle outer-aura pulse. [Integration evidence](evidence/grown-star-readability-2026-10-17/PULSE.md) records native checks; next confirm uncoached recognition and dense-board comfort with the reporting tester.
 
 Dusk now offers a space-versus-reward choice: three feeding showers consume its gray neighbors for no points, while an adjacent match dissolves it early. [Production contract](design/DUSK_FEEDING.md) and [verification](evidence/dusk-feeding-2026-10-18/README.md). Next observe whether a new player recognizes the final feeding warning and deliberately uses the collapse.
+
+The retained [technique roster](design/STAR_TECHNIQUES.md) is reconciled with current main, including v6 saves, Dusk feeding, responsive columns and current presentation. Core, hosted, native, layout and animation checks pass. Publish and deliver through the guarded updater, then observe human play. [Source-bound status](evidence/technique-current-main-2026-10-18/README.md).
 
 ## Current mechanics integration — October 17, 2026
 
