@@ -32,11 +32,27 @@ final class FallingSkyInteractionTests: XCTestCase {
         XCTAssertTrue(app.buttons["experiment.next"].waitForExistence(timeout: 5))
     }
 
+    @MainActor private func observedShowers(_ app: XCUIApplication) -> Int? {
+        let board = app.otherElements["experiment.board"]
+        guard board.exists, let value = board.value as? String,
+              let first = value.split(separator: " ").first else { return nil }
+        return Int(first)
+    }
     @MainActor private func showers(_ app: XCUIApplication) -> Int {
-        Int((app.otherElements["experiment.board"].value as! String).split(separator: " ")[0])!
+        guard let count = observedShowers(app) else {
+            capture(app, "unreadable-board-count")
+            let tree = XCTAttachment(string: app.debugDescription)
+            tree.name = "unreadable-board-count-hierarchy"; tree.lifetime = .keepAlways; add(tree)
+            XCTFail("Expected a readable board shower count")
+            return -1
+        }
+        return count
     }
     @MainActor private func waitForShowers(_ count: Int, in app: XCUIApplication, timeout: TimeInterval = 12) {
-        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in self.showers(app) >= count }, object: nil).wait(timeout: timeout))
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+            guard let observed = self.observedShowers(app) else { return false }
+            return observed >= count
+        }, object: nil).wait(timeout: timeout))
     }
     @MainActor private func remainsPaused(_ app: XCUIApplication) {
         let initial = showers(app)
@@ -529,8 +545,9 @@ extension FallingSkyInteractionTests {
         let remoteValue = try XCTUnwrap(Int(remoteText.split(separator: " ").first ?? ""))
         XCTAssertGreaterThanOrEqual(remoteValue, 3)
         remote.tap()
-        XCTAssertTrue(guide.label.hasPrefix("Sunny. +\(remoteValue) starlight."))
         XCTAssertEqual(app.staticTexts["experiment.score"].label, "\(remoteValue) starlight")
+        // Result dialogue is published by the presentation completion, after the score commits.
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label BEGINSWITH %@", "Sunny. +\(remoteValue) starlight."), object: guide).wait(timeout: 5), guide.label)
         XCTAssertFalse(guide.label.contains("dissolved"))
         XCTAssertEqual(dark.count, 1, "The unrelated clear does not remove the blocker")
         let adjacent = app.buttons["experiment.cell.0.1"]
@@ -540,7 +557,7 @@ extension FallingSkyInteractionTests {
         XCTAssertGreaterThanOrEqual(adjacentValue, 3)
         adjacent.tap()
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: next).wait(timeout: 5))
-        XCTAssertTrue(guide.label.hasPrefix("Sunny. +\(adjacentValue) starlight."))
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label BEGINSWITH %@", "Sunny. +\(adjacentValue) starlight."), object: guide).wait(timeout: 5), guide.label)
         XCTAssertTrue(guide.label.contains("Dark star dissolved"))
         XCTAssertEqual(dark.count, 0)
         let total = remoteValue + adjacentValue
@@ -558,7 +575,8 @@ extension FallingSkyInteractionTests {
         app.terminate(); app.launchArguments = []; app.launch()
         resumeRestoredPaused(app)
         XCTAssertTrue(guide.waitForExistence(timeout: 10))
-        XCTAssertTrue(guide.label.contains("Sky paused"))
+        XCTAssertEqual(app.buttons["experiment.pause"].label, "Resume sky")
+        XCTAssertEqual(guide.label, "Sunny. Your sky is paused. Resume when you're ready.")
         XCTAssertFalse(guide.label.contains("+"), "Transient text is not saved with the round")
         XCTAssertEqual(app.staticTexts["experiment.score"].label, "\(total) starlight")
     }

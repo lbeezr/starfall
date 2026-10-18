@@ -35,3 +35,5 @@ Forecast tests assert the actual 148×50 contour on calibrated simulators and th
 `GravityOpportunityNativeTests` follows the candidate's naturally reached seventh-wave pair through manual arrivals, collision and rotation, then compares eight- versus seven-light two-clear outcomes. Its second flow includes largest text, settings/background and retained restore. Debug fixtures require the explicit reset argument and use the normal app identity.
 
 `ResponsiveInputUITests` exercises an actual 8-point ordinary drift at normal/largest text and readable incomplete-trace feedback, using existing reset-only routes and isolated dialogue-review saves.
+
+Paused clear-feedback checks wait for the exact result text after score commitment, matching the presentation-owned dialogue boundary. Restore requires the complete restore message and Resume sky semantics; the strict approaching-cue expectation remains unchanged pending its older-runner investigation.

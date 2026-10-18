@@ -135,3 +135,37 @@ final class SkyDialogueTests: XCTestCase {
         }
     }
 }
+
+
+extension SkyDialogueTests {
+    @MainActor func testCommittedClearPublishesFeedbackAfterPresentationAndRestoresWithoutTransientCopy() throws {
+        let suite = "Starfall.DialogueCompletion.\(UUID())", defaults = UserDefaults(suiteName: suite)!
+        defer { defaults.removePersistentDomain(forName: suite) }
+        let presenter = FallingSkyRecorder()
+        let store = FallingSkyStore(defaults: defaults,
+            arguments: ["--starfalls-reset", "--starfalls-seed=5"],
+            presenter: presenter, clock: ManualRainClock())
+        store.setSuspended(false)
+        for _ in 0..<6 { store.callShower(); presenter.finish() }
+        let darkIndex = try XCTUnwrap(store.game.board.firstIndex { $0?.isDark == true })
+        store.clear(Cell(darkIndex / 7, darkIndex % 7))
+        let help = store.pausedGuideLine
+        XCTAssertTrue(help.text.contains("beside the dark star"))
+        let source = store.game, cell = Cell(0,0)
+        let value = source.value(of: source.group(at: cell))
+        XCTAssertGreaterThanOrEqual(value, 3)
+        store.clear(cell)
+        XCTAssertEqual(store.game.score, value, "Core reward commits before the result animation")
+        XCTAssertEqual(store.pausedGuideLine, help, "Visible copy stays at its prior event until presentation completion")
+        presenter.finish()
+        XCTAssertEqual(store.pausedGuideLine.spokenText, "Sunny. +\(value) starlight. A little more room to breathe.")
+        let committed = store.game
+        let restored = FallingSkyStore(defaults: defaults, arguments: [],
+            presenter: FallingSkyRecorder(), clock: ManualRainClock())
+        restored.setSuspended(false)
+        XCTAssertEqual(restored.game, committed)
+        XCTAssertTrue(restored.isPaused)
+        XCTAssertEqual(restored.pausedGuideLine, SkyDialogueLibrary.line("guide.restore"))
+        XCTAssertFalse(restored.pausedGuideLine.text.contains("+"))
+    }
+}
