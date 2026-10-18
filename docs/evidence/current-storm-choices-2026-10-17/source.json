@@ -1,0 +1,155 @@
+{
+  "gravity-phase-discovery-160": {
+    "reportSHA256": "bc2cb628de8f0c649928f4161d1e93857e11269e45338c902360ab7c34ed079b",
+    "source": {
+      "compileFlags": [
+        "-O",
+        "-DDEBUG"
+      ],
+      "dirtyPaths": [
+        " M docs/design/OPAL_CHOICE_STUDY.md",
+        " M tools/mechanics/README.md",
+        " M tools/mechanics/opal-choice-study.swift",
+        " M tools/mechanics/study-opal-choices.py"
+      ],
+      "inputSHA256": {
+        "Sources/StarfallCore/ConstellationFixture.swift": "a5171ffe6cf0747904aac570a6f986eec0fdf74eeb53f7062dc7b294dd25e385",
+        "Sources/StarfallCore/FallingSky.swift": "822bcabad20c756ae52c59fe14f8d8714d013f8901e4310db40047b785e8c950",
+        "Sources/StarfallCore/Game.swift": "9ab2d57af8fe0ee804ce56e762eb5833a08ae5f39e8916ffaa0fe708d90e7086",
+        "Sources/StarfallCore/GravityFieldRules.swift": "ef5308b515340c2eafe1b226cee70a27701a6e906b6c975380d13af818f4130c",
+        "Sources/StarfallCore/RefillMapping.swift": "608be41f40c945b18aba5512bac16b7c4de4eb8a2747d6fe54a895392b38e5f7",
+        "Sources/StarfallCore/SkyCadence.swift": "a01a1ab5fe50e7677bd2e1af75563a5bcc316e1828e921e7da2f572202b76b8c",
+        "Sources/StarfallCore/SkyGeneration.swift": "be47904d5cbb187953fe0b307eb1b208a60539c72f4e7a2dbd356b1eac99fd57",
+        "Sources/StarfallCore/StarfallBalance.swift": "32525ba2f346cf843863b1cb1cba8a2fab66d088b9dc7ac308867f1520c329ec",
+        "Sources/StarfallCore/StarfallChallenge.swift": "0475f660c21ae42cce0df8c11dc40adbbb841e58b6c66b82a1293c720bd26b72",
+        "tools/mechanics/opal-choice-study.swift": "a138f5f621e5e4971450216de34aacc895923cf12e2e34b7812e0a0895fae7d0",
+        "tools/mechanics/study-opal-choices.py": "63cb242669127d9db9e7e80007395ad2d816698992f4c9a635af53df6ed7b38c"
+      },
+      "method": "Production Core unchanged; one visible-board clear per shower; complete taps/full components plus bounded connected fives; forecast outcomes are oracle diagnostics only.",
+      "selfChecks": "Passed before sampling: topology/cap, colored anchor legality, deduplication, fixture consumption, source immutability, Core JSON round-trip, phase boundaries and phase-count reconciliation.",
+      "source": "1b466c309609aa072b9d9c321d68de1a22c2e3a4",
+      "toolchain": "Apple Swift version 6.4 (swiftlang-6.4.0.34.1 clang-2100.3.34.1)\nTarget: arm64-apple-macosx27.0.0"
+    }
+  },
+  "gravity-phase-discovery-160-repeat": {
+    "reportSHA256": "bc2cb628de8f0c649928f4161d1e93857e11269e45338c902360ab7c34ed079b",
+    "source": {
+      "compileFlags": [
+        "-O",
+        "-DDEBUG"
+      ],
+      "dirtyPaths": [
+        " M docs/design/OPAL_CHOICE_STUDY.md",
+        " M tools/mechanics/README.md",
+        " M tools/mechanics/opal-choice-study.swift",
+        " M tools/mechanics/study-opal-choices.py"
+      ],
+      "inputSHA256": {
+        "Sources/StarfallCore/ConstellationFixture.swift": "a5171ffe6cf0747904aac570a6f986eec0fdf74eeb53f7062dc7b294dd25e385",
+        "Sources/StarfallCore/FallingSky.swift": "822bcabad20c756ae52c59fe14f8d8714d013f8901e4310db40047b785e8c950",
+        "Sources/StarfallCore/Game.swift": "9ab2d57af8fe0ee804ce56e762eb5833a08ae5f39e8916ffaa0fe708d90e7086",
+        "Sources/StarfallCore/GravityFieldRules.swift": "ef5308b515340c2eafe1b226cee70a27701a6e906b6c975380d13af818f4130c",
+        "Sources/StarfallCore/RefillMapping.swift": "608be41f40c945b18aba5512bac16b7c4de4eb8a2747d6fe54a895392b38e5f7",
+        "Sources/StarfallCore/SkyCadence.swift": "a01a1ab5fe50e7677bd2e1af75563a5bcc316e1828e921e7da2f572202b76b8c",
+        "Sources/StarfallCore/SkyGeneration.swift": "be47904d5cbb187953fe0b307eb1b208a60539c72f4e7a2dbd356b1eac99fd57",
+        "Sources/StarfallCore/StarfallBalance.swift": "32525ba2f346cf843863b1cb1cba8a2fab66d088b9dc7ac308867f1520c329ec",
+        "Sources/StarfallCore/StarfallChallenge.swift": "0475f660c21ae42cce0df8c11dc40adbbb841e58b6c66b82a1293c720bd26b72",
+        "tools/mechanics/opal-choice-study.swift": "a138f5f621e5e4971450216de34aacc895923cf12e2e34b7812e0a0895fae7d0",
+        "tools/mechanics/study-opal-choices.py": "63cb242669127d9db9e7e80007395ad2d816698992f4c9a635af53df6ed7b38c"
+      },
+      "method": "Production Core unchanged; one visible-board clear per shower; complete taps/full components plus bounded connected fives; forecast outcomes are oracle diagnostics only.",
+      "selfChecks": "Passed before sampling: topology/cap, colored anchor legality, deduplication, fixture consumption, source immutability, Core JSON round-trip, phase boundaries and phase-count reconciliation.",
+      "source": "1b466c309609aa072b9d9c321d68de1a22c2e3a4",
+      "toolchain": "Apple Swift version 6.4 (swiftlang-6.4.0.34.1 clang-2100.3.34.1)\nTarget: arm64-apple-macosx27.0.0"
+    }
+  },
+  "gravity-phase-heldout-224": {
+    "reportSHA256": "126c5f09813886211a06bd24200a5ba60ec57d9c37afbac437ea0a8620c01252",
+    "source": {
+      "compileFlags": [
+        "-O",
+        "-DDEBUG"
+      ],
+      "dirtyPaths": [
+        " M docs/design/OPAL_CHOICE_STUDY.md",
+        " M tools/mechanics/README.md",
+        " M tools/mechanics/opal-choice-study.swift",
+        " M tools/mechanics/study-opal-choices.py"
+      ],
+      "inputSHA256": {
+        "Sources/StarfallCore/ConstellationFixture.swift": "a5171ffe6cf0747904aac570a6f986eec0fdf74eeb53f7062dc7b294dd25e385",
+        "Sources/StarfallCore/FallingSky.swift": "822bcabad20c756ae52c59fe14f8d8714d013f8901e4310db40047b785e8c950",
+        "Sources/StarfallCore/Game.swift": "9ab2d57af8fe0ee804ce56e762eb5833a08ae5f39e8916ffaa0fe708d90e7086",
+        "Sources/StarfallCore/GravityFieldRules.swift": "ef5308b515340c2eafe1b226cee70a27701a6e906b6c975380d13af818f4130c",
+        "Sources/StarfallCore/RefillMapping.swift": "608be41f40c945b18aba5512bac16b7c4de4eb8a2747d6fe54a895392b38e5f7",
+        "Sources/StarfallCore/SkyCadence.swift": "a01a1ab5fe50e7677bd2e1af75563a5bcc316e1828e921e7da2f572202b76b8c",
+        "Sources/StarfallCore/SkyGeneration.swift": "be47904d5cbb187953fe0b307eb1b208a60539c72f4e7a2dbd356b1eac99fd57",
+        "Sources/StarfallCore/StarfallBalance.swift": "32525ba2f346cf843863b1cb1cba8a2fab66d088b9dc7ac308867f1520c329ec",
+        "Sources/StarfallCore/StarfallChallenge.swift": "0475f660c21ae42cce0df8c11dc40adbbb841e58b6c66b82a1293c720bd26b72",
+        "tools/mechanics/opal-choice-study.swift": "a138f5f621e5e4971450216de34aacc895923cf12e2e34b7812e0a0895fae7d0",
+        "tools/mechanics/study-opal-choices.py": "63cb242669127d9db9e7e80007395ad2d816698992f4c9a635af53df6ed7b38c"
+      },
+      "method": "Production Core unchanged; one visible-board clear per shower; complete taps/full components plus bounded connected fives; forecast outcomes are oracle diagnostics only.",
+      "selfChecks": "Passed before sampling: topology/cap, colored anchor legality, deduplication, fixture consumption, source immutability, Core JSON round-trip, phase boundaries and phase-count reconciliation.",
+      "source": "1b466c309609aa072b9d9c321d68de1a22c2e3a4",
+      "toolchain": "Apple Swift version 6.4 (swiftlang-6.4.0.34.1 clang-2100.3.34.1)\nTarget: arm64-apple-macosx27.0.0"
+    }
+  },
+  "gravity-phase-smoke-128": {
+    "reportSHA256": "1b9405778ac510dcab1a86150a353f2c386474940ec06e4bd73017b097e8795e",
+    "source": {
+      "compileFlags": [
+        "-O",
+        "-DDEBUG"
+      ],
+      "dirtyPaths": [
+        " M docs/design/OPAL_CHOICE_STUDY.md",
+        " M tools/mechanics/opal-choice-study.swift"
+      ],
+      "inputSHA256": {
+        "Sources/StarfallCore/ConstellationFixture.swift": "a5171ffe6cf0747904aac570a6f986eec0fdf74eeb53f7062dc7b294dd25e385",
+        "Sources/StarfallCore/FallingSky.swift": "822bcabad20c756ae52c59fe14f8d8714d013f8901e4310db40047b785e8c950",
+        "Sources/StarfallCore/Game.swift": "9ab2d57af8fe0ee804ce56e762eb5833a08ae5f39e8916ffaa0fe708d90e7086",
+        "Sources/StarfallCore/GravityFieldRules.swift": "ef5308b515340c2eafe1b226cee70a27701a6e906b6c975380d13af818f4130c",
+        "Sources/StarfallCore/RefillMapping.swift": "608be41f40c945b18aba5512bac16b7c4de4eb8a2747d6fe54a895392b38e5f7",
+        "Sources/StarfallCore/SkyCadence.swift": "a01a1ab5fe50e7677bd2e1af75563a5bcc316e1828e921e7da2f572202b76b8c",
+        "Sources/StarfallCore/SkyGeneration.swift": "be47904d5cbb187953fe0b307eb1b208a60539c72f4e7a2dbd356b1eac99fd57",
+        "Sources/StarfallCore/StarfallBalance.swift": "32525ba2f346cf843863b1cb1cba8a2fab66d088b9dc7ac308867f1520c329ec",
+        "Sources/StarfallCore/StarfallChallenge.swift": "0475f660c21ae42cce0df8c11dc40adbbb841e58b6c66b82a1293c720bd26b72",
+        "tools/mechanics/opal-choice-study.swift": "a138f5f621e5e4971450216de34aacc895923cf12e2e34b7812e0a0895fae7d0",
+        "tools/mechanics/study-opal-choices.py": "0fc7841f201be2d283463fb37911a8da2ae88cfbe6c446d54e9018a0f0268c53"
+      },
+      "method": "Production Core unchanged; one visible-board clear per shower; complete taps/full components plus bounded connected fives; forecast outcomes are oracle diagnostics only.",
+      "selfChecks": "Passed before sampling: topology/cap, colored anchor legality, deduplication, fixture consumption, source immutability and Core JSON round-trip.",
+      "source": "1b466c309609aa072b9d9c321d68de1a22c2e3a4",
+      "toolchain": "Apple Swift version 6.4 (swiftlang-6.4.0.34.1 clang-2100.3.34.1)\nTarget: arm64-apple-macosx27.0.0"
+    }
+  },
+  "gravity-smoke-128": {
+    "reportSHA256": "0625c3b70f587ab5eecb35583f4a3f50ca63fd162f6c4a9831f57571b666611f",
+    "source": {
+      "compileFlags": [
+        "-O",
+        "-DDEBUG"
+      ],
+      "dirtyPaths": [],
+      "inputSHA256": {
+        "Sources/StarfallCore/ConstellationFixture.swift": "a5171ffe6cf0747904aac570a6f986eec0fdf74eeb53f7062dc7b294dd25e385",
+        "Sources/StarfallCore/FallingSky.swift": "822bcabad20c756ae52c59fe14f8d8714d013f8901e4310db40047b785e8c950",
+        "Sources/StarfallCore/Game.swift": "9ab2d57af8fe0ee804ce56e762eb5833a08ae5f39e8916ffaa0fe708d90e7086",
+        "Sources/StarfallCore/GravityFieldRules.swift": "ef5308b515340c2eafe1b226cee70a27701a6e906b6c975380d13af818f4130c",
+        "Sources/StarfallCore/RefillMapping.swift": "608be41f40c945b18aba5512bac16b7c4de4eb8a2747d6fe54a895392b38e5f7",
+        "Sources/StarfallCore/SkyCadence.swift": "a01a1ab5fe50e7677bd2e1af75563a5bcc316e1828e921e7da2f572202b76b8c",
+        "Sources/StarfallCore/SkyGeneration.swift": "be47904d5cbb187953fe0b307eb1b208a60539c72f4e7a2dbd356b1eac99fd57",
+        "Sources/StarfallCore/StarfallBalance.swift": "32525ba2f346cf843863b1cb1cba8a2fab66d088b9dc7ac308867f1520c329ec",
+        "Sources/StarfallCore/StarfallChallenge.swift": "0475f660c21ae42cce0df8c11dc40adbbb841e58b6c66b82a1293c720bd26b72",
+        "tools/mechanics/opal-choice-study.swift": "eded12a32dae6595ddb06951e5f2d1a67a8b9d45a34d374f49347715e6962afc",
+        "tools/mechanics/study-opal-choices.py": "0fc7841f201be2d283463fb37911a8da2ae88cfbe6c446d54e9018a0f0268c53"
+      },
+      "method": "Production Core unchanged; one visible-board clear per shower; complete taps/full components plus bounded connected fives; forecast outcomes are oracle diagnostics only.",
+      "selfChecks": "Passed before sampling: topology/cap, colored anchor legality, deduplication, fixture consumption, source immutability and Core JSON round-trip.",
+      "source": "4f4e53377da2b4c937b5173b65d84180139508e2",
+      "toolchain": "Apple Swift version 6.4 (swiftlang-6.4.0.34.1 clang-2100.3.34.1)\nTarget: arm64-apple-macosx27.0.0"
+    }
+  }
+}

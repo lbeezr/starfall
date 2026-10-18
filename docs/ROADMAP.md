@@ -58,6 +58,8 @@ The [celestial interface specification](design/OBSERVATORY_INTERFACE.md) owns th
 
 The user selected an empty sky with an animated opening cascade, clearing before the intro finishes, and a three-second regular pace using existing wave sizes. [Current implementation and acceptance](evidence/opening-cascade-2026-10-17/README.md) separates source/native checks from human enjoyment. Existing isolated shower-generation comparisons remain separate; this timing change does not adopt their mechanics. The [Core cadence contract](design/PACING_CORE_CONTRACT.md) now defines explicit timing versions and replay; candidate B remains test-only pending native/human comparison.
 
+The [current gravity/phase diagnostic](evidence/current-storm-choices-2026-10-17/README.md) confirms more simultaneous sampled selections during storms in two fresh seed cohorts, while immediate Opal-preservation gains remain situational. Untimed reward policies rarely encounter active orbits; use ordinary native play for recognition, execution and combined-strategy evidence before tuning supply.
+
 ## The next gameplay decision
 
 **Question:** Do shower changes create useful decisions and a readable rhythm, rather than more groups that feel equivalent?
