@@ -1,0 +1,12 @@
+{
+  "orbit": {
+    "canonicalSHA256": "bf4b47594e0e150fccdd38b146f65415603258bf6fdf9321948f27df13ebf99c",
+    "equal": true,
+    "matchedAutomaticStates": 4
+  },
+  "standard": {
+    "canonicalSHA256": "beef06eb8855f7e6ad7a0e2b2548bfbc67f1747e579ae64eb24ea452b4093888",
+    "equal": true,
+    "matchedAutomaticStates": 6
+  }
+}
