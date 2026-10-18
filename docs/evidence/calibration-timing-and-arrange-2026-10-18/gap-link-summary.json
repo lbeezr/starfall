@@ -1,0 +1,3421 @@
+{
+  "testedHead": "519f6f8767ad8ad83c0ca059b2e2407f73c8e820",
+  "dirtyInputs": " M tools/mechanics/PacingChecks.swift\n M tools/mechanics/PacingMeasure.swift\n M tools/mechanics/compare-pacing.py\n M tools/mechanics/opal-choice-study.swift\n M tools/mechanics/study-gravity-opportunities.py\n M tools/mechanics/study-opal-choices.py\n?? tools/mechanics/CalibrationTrace.swift\n",
+  "inputSHA256": {
+    "Sources/StarfallCore/ConstellationFixture.swift": "9c8038dd4b51304f3c65dffc8f966bbe65fafa78b11d6ecdfd300895532cd253",
+    "Sources/StarfallCore/DuskFixture.swift": "9740935783394c05fdb591557c9ebdb15426228313f7245ed82ba87cf87dc26f",
+    "Sources/StarfallCore/DuskRules.swift": "76d3a62cbfa2da4674ebe3078d4e4b3c01282991fb151a21ca1c38c38beec8d6",
+    "Sources/StarfallCore/FallingSky.swift": "629b551fa909776910682ef4adaca9f717fb40d015d427656a881e477f53ed93",
+    "Sources/StarfallCore/Game.swift": "9ab2d57af8fe0ee804ce56e762eb5833a08ae5f39e8916ffaa0fe708d90e7086",
+    "Sources/StarfallCore/GravityFieldRules.swift": "ef5308b515340c2eafe1b226cee70a27701a6e906b6c975380d13af818f4130c",
+    "Sources/StarfallCore/GravityOpportunityFixture.swift": "fe410f41722d690eec3ac67472bf82e421912e772252fdf4ac41819f50c08e4a",
+    "Sources/StarfallCore/RefillMapping.swift": "608be41f40c945b18aba5512bac16b7c4de4eb8a2747d6fe54a895392b38e5f7",
+    "Sources/StarfallCore/SkyCadence.swift": "a01a1ab5fe50e7677bd2e1af75563a5bcc316e1828e921e7da2f572202b76b8c",
+    "Sources/StarfallCore/SkyGeneration.swift": "03d62817aaace9a7354cffb15e7735a98246ed9d75643f0e354fab2aeb2d2d97",
+    "Sources/StarfallCore/SkyTechniqueExample.swift": "75c38131723930f1e5884b8d9e87ea8c0cce975b81bddf9ef89212d627e77c26",
+    "Sources/StarfallCore/StarRecipe.swift": "280c7529a613f75af7a47f510ae2a56969a417d2a3d3821c80db24d788ce1559",
+    "Sources/StarfallCore/StarfallBalance.swift": "32525ba2f346cf843863b1cb1cba8a2fab66d088b9dc7ac308867f1520c329ec",
+    "Sources/StarfallCore/StarfallChallenge.swift": "0475f660c21ae42cce0df8c11dc40adbbb841e58b6c66b82a1293c720bd26b72",
+    "App/FallingSkyStore.swift": "032121e9a43ee092933c304760fe1d788c84690ebaa3d3023476d109ab33185b",
+    "App/ObservatoryReviewFixture.swift": "9a4750756375afdbfdd710795dcb50a24a3005b3fd1f71e4a4274a35fe0f4aae",
+    "App/SkySaveArchive.swift": "907bd106ddb2633d5cef039877d1d46b7cb153a3724dde5bc1dd1aebc84e9d9c",
+    "App/SkyFlowState.swift": "ca597f926d65007b576425e429f6a286fead653cda7d85746797c6acee356b6a",
+    "App/FallingSkyHUD.swift": "c70bac7b551582f9d0e782d995c3417a7ede25cfb601a926419f66919a200db0",
+    "App/FallingSkyPresentation.swift": "e26b27623585fed85e3ba15f9488751be259816c2f98ff515021561ea929eb1d",
+    "App/SkyTechniqueIntent.swift": "63795371808f93ba860ac793f063fb2020e4fa497241d8e78779dea0d89f6b2b",
+    "App/GameFeedback.swift": "113d0fe4b4764d29be416f469dbc617257cc10fe6efca693cb5638ebfc4a06b0",
+    "App/StarlightCelebration.swift": "750af3b91195b0ccf40627f4af2cba62ca33bbc30b9ff187cb552d54ff228c76",
+    "App/SkyDialogue.swift": "c1a24722a7e540c8250028401d74818ddf669edd5e2e8c3a4ce778876e34559e",
+    "App/SkyDialogueLibrary.swift": "78651cf6ae822677aa301f6a3d92f44140324cc1657af9e23db46c166c7070fd",
+    "App/SkyCopy.swift": "4450dc1db942804b0738e7ad6ca6a147882bcedc6e028f8079fddd6fff8c834a",
+    "App/DuskWarning.swift": "ec09fe9bd458ed7774931a341d7b606d132e19f14bfb668c28a2c7e4a9426fd1",
+    "App/DialogueScripts/observatory-dialogue.json": "e4048ae6d86911a33465aa0ef8d65b5ae23570efcb9fa98dea9573b43d7ee88f",
+    "App/FallingSkyScene.swift": "2fee5d8f9d7fe27511c6b0a0cf7f0c1487e9f049b1eb5073541f1b5934a157d9",
+    "App/FallingSkyMotion.swift": "464e028bd5af9edd0a83391f25fd50aee5e2392eb652fcd4b70b6f71becb50e1",
+    "Tests/StarfallCoreTests/TimingCycleFixture.swift": "51936d184a8f60df63abe1489006011abb02431fedf310eca0afb9180513d189",
+    "tools/mechanics/CalibrationTrace.swift": "e38357ee2ba0953fe999d7aca740c9adb6beac984d3de28eb7533a11c3eaa5d3",
+    "tools/mechanics/PacingChecks.swift": "d243fc12a6f1b759b02d4887aa74fffd7a1cba30d4d172a2e2e800a88509c83a",
+    "tools/mechanics/PacingMeasure.swift": "015ba4004d39832a3cc632c7ac87ef6a06b9bfaea4f12b210855be393cb08b0b",
+    "tools/mechanics/PacingSupport.swift": "7eb92aef35a86fba4a85cffa98060fe8f6ec134677c3ccfbcf33e2db8c2855ba",
+    "tools/mechanics/compare-pacing.py": "1801da7f625e4144a3da3ec7287a5b44d9b88081d12abd03373b0212e59c6b1a"
+  },
+  "toolchain": "Apple Swift version 6.4 (swiftlang-6.4.0.34.1 clang-2100.3.34.1)\nTarget: arm64-apple-macosx27.0.0\n",
+  "personaVersion": "visible-reward-core-links-v5",
+  "reactionSeconds": 0.45,
+  "traceStepSeconds": 0.12,
+  "swapSeconds": 0.5,
+  "durationSeconds": 120,
+  "inputModel": "columns",
+  "cohorts": [
+    {
+      "cohort": "discovery",
+      "seedStart": 0,
+      "seeds": 8,
+      "command": [
+        "python3",
+        "tools/mechanics/compare-pacing.py",
+        "--seeds",
+        "8",
+        "--seconds",
+        "120",
+        "--include-setups",
+        "--candidate-cadence",
+        "announcedCycleV2",
+        "--output",
+        "artifacts/calibration-gap-links/discovery"
+      ],
+      "groups": {
+        "full-motion-model/largest-clear/openingV1": {
+          "rounds": 8,
+          "overflows": 0,
+          "firstClear": {
+            "min": 1.35,
+            "median": 1.35,
+            "p90": 1.35,
+            "max": 1.35
+          },
+          "noOpportunitySeconds": {
+            "min": 65.1099999999956,
+            "median": 75.1249999999958,
+            "p90": 77.46999999999518,
+            "max": 77.46999999999518
+          },
+          "noOpportunityFraction": {
+            "min": 0.5425833333332967,
+            "median": 0.6260416666666316,
+            "p90": 0.6455833333332932,
+            "max": 0.6455833333332932
+          },
+          "longestEarlyGap": {
+            "min": 3,
+            "median": 4.5000000000000036,
+            "p90": 4.800000000000008,
+            "max": 4.800000000000008
+          },
+          "clearsPerActiveMinute": {
+            "min": 15.0,
+            "median": 16.25,
+            "p90": 20.0,
+            "max": 20.0
+          },
+          "tracesPerActiveMinute": {
+            "min": 0.5,
+            "median": 1.25,
+            "p90": 3.5,
+            "max": 3.5
+          },
+          "presentationFraction": {
+            "min": 0.4844166666666661,
+            "median": 0.506916666666667,
+            "p90": 0.5485833333333343,
+            "max": 0.5485833333333343
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.20975000000000055,
+            "median": 0.26129166666666714,
+            "p90": 0.2855000000000007,
+            "max": 0.2855000000000007
+          },
+          "startsDuringPresentation": 65,
+          "maximumPendingPresentations": 2,
+          "deadlineCancelledTraces": 0,
+          "traceStarts": 25,
+          "exchangeStarts": 0,
+          "exchanges": 0,
+          "exchangeRejections": 0,
+          "heldFraction": {
+            "min": 0.009000000000000341,
+            "median": 0.030500000000000936,
+            "p90": 0.06900000000000134,
+            "max": 0.06900000000000134
+          },
+          "score": {
+            "min": 115,
+            "median": 123.5,
+            "p90": 135,
+            "max": 135
+          },
+          "showers": {
+            "min": 39,
+            "median": 40.5,
+            "p90": 41,
+            "max": 41
+          },
+          "deferred": 7,
+          "lateness": {
+            "min": 0,
+            "median": 0,
+            "p90": 0,
+            "max": 0.3100000000000014
+          },
+          "deliveredIntervals": {
+            "min": 1.7999999999999998,
+            "median": 3,
+            "p90": 3,
+            "max": 4.800000000000068
+          },
+          "maxHeight": {
+            "min": 5,
+            "median": 6.0,
+            "p90": 6,
+            "max": 6
+          },
+          "minimumIncomingHeadroom": {
+            "min": 1,
+            "median": 2.5,
+            "p90": 3,
+            "max": 3
+          }
+        },
+        "full-motion-model/largest-clear/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "firstClear": {
+            "min": 1.35,
+            "median": 1.35,
+            "p90": 1.35,
+            "max": 1.35
+          },
+          "noOpportunitySeconds": {
+            "min": 43.999999999999424,
+            "median": 48.84499999999905,
+            "p90": 54.19999999999911,
+            "max": 54.19999999999911
+          },
+          "noOpportunityFraction": {
+            "min": 0.36666666666666187,
+            "median": 0.40704166666665875,
+            "p90": 0.4516666666666592,
+            "max": 0.4516666666666592
+          },
+          "longestEarlyGap": {
+            "min": 2.499999999999999,
+            "median": 2.6750000000000016,
+            "p90": 3.650000000000002,
+            "max": 3.650000000000002
+          },
+          "clearsPerActiveMinute": {
+            "min": 19.5,
+            "median": 22.75,
+            "p90": 24.5,
+            "max": 24.5
+          },
+          "tracesPerActiveMinute": {
+            "min": 1.5,
+            "median": 2.5,
+            "p90": 4.0,
+            "max": 4.0
+          },
+          "presentationFraction": {
+            "min": 0.6342499999999959,
+            "median": 0.672166666666665,
+            "p90": 0.705749999999996,
+            "max": 0.705749999999996
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.32083333333332875,
+            "median": 0.3459166666666667,
+            "p90": 0.3996666666666672,
+            "max": 0.3996666666666672
+          },
+          "startsDuringPresentation": 91,
+          "maximumPendingPresentations": 2,
+          "deadlineCancelledTraces": 0,
+          "traceStarts": 41,
+          "exchangeStarts": 0,
+          "exchanges": 0,
+          "exchangeRejections": 0,
+          "heldFraction": {
+            "min": 0.027000000000001023,
+            "median": 0.04900000000000035,
+            "p90": 0.08400000000000138,
+            "max": 0.08400000000000138
+          },
+          "score": {
+            "min": 165,
+            "median": 168.0,
+            "p90": 175,
+            "max": 175
+          },
+          "showers": {
+            "min": 52,
+            "median": 54.0,
+            "p90": 55,
+            "max": 55
+          },
+          "deferred": 174,
+          "lateness": {
+            "min": 0,
+            "median": 0.0,
+            "p90": 0.30999999999998806,
+            "max": 0.510000000000133
+          },
+          "deliveredIntervals": {
+            "min": 1.7600000000000477,
+            "median": 2.0,
+            "p90": 2.8100000000000165,
+            "max": 4.120000000000147
+          },
+          "maxHeight": {
+            "min": 5,
+            "median": 6.5,
+            "p90": 7,
+            "max": 7
+          },
+          "minimumIncomingHeadroom": {
+            "min": 1,
+            "median": 1.5,
+            "p90": 3,
+            "max": 3
+          }
+        },
+        "full-motion-model/height-safety/openingV1": {
+          "rounds": 8,
+          "overflows": 0,
+          "firstClear": {
+            "min": 1.35,
+            "median": 1.35,
+            "p90": 1.35,
+            "max": 1.35
+          },
+          "noOpportunitySeconds": {
+            "min": 63.51999999999546,
+            "median": 75.11999999999638,
+            "p90": 77.5099999999951,
+            "max": 77.5099999999951
+          },
+          "noOpportunityFraction": {
+            "min": 0.5293333333332956,
+            "median": 0.6259999999999698,
+            "p90": 0.6459166666666258,
+            "max": 0.6459166666666258
+          },
+          "longestEarlyGap": {
+            "min": 3,
+            "median": 4.5000000000000036,
+            "p90": 4.800000000000008,
+            "max": 4.800000000000008
+          },
+          "clearsPerActiveMinute": {
+            "min": 15.0,
+            "median": 16.5,
+            "p90": 20.0,
+            "max": 20.0
+          },
+          "tracesPerActiveMinute": {
+            "min": 0.5,
+            "median": 1.5,
+            "p90": 3.0,
+            "max": 3.0
+          },
+          "presentationFraction": {
+            "min": 0.4817500000000007,
+            "median": 0.5077916666666649,
+            "p90": 0.5485833333333343,
+            "max": 0.5485833333333343
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.2265000000000007,
+            "median": 0.25825000000000053,
+            "p90": 0.2855000000000007,
+            "max": 0.2855000000000007
+          },
+          "startsDuringPresentation": 67,
+          "maximumPendingPresentations": 2,
+          "deadlineCancelledTraces": 0,
+          "traceStarts": 26,
+          "exchangeStarts": 0,
+          "exchanges": 0,
+          "exchangeRejections": 0,
+          "heldFraction": {
+            "min": 0.010999999999999765,
+            "median": 0.03100000000000036,
+            "p90": 0.06000000000000099,
+            "max": 0.06000000000000099
+          },
+          "score": {
+            "min": 115,
+            "median": 120.0,
+            "p90": 135,
+            "max": 135
+          },
+          "showers": {
+            "min": 39,
+            "median": 40.0,
+            "p90": 41,
+            "max": 41
+          },
+          "deferred": 9,
+          "lateness": {
+            "min": 0,
+            "median": 0.0,
+            "p90": 0,
+            "max": 0.4099999999999646
+          },
+          "deliveredIntervals": {
+            "min": 1.7999999999999998,
+            "median": 3.0,
+            "p90": 3,
+            "max": 4.799999999999962
+          },
+          "maxHeight": {
+            "min": 4,
+            "median": 6.0,
+            "p90": 7,
+            "max": 7
+          },
+          "minimumIncomingHeadroom": {
+            "min": 1,
+            "median": 3.0,
+            "p90": 4,
+            "max": 4
+          }
+        },
+        "full-motion-model/height-safety/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "firstClear": {
+            "min": 1.35,
+            "median": 1.35,
+            "p90": 1.35,
+            "max": 1.35
+          },
+          "noOpportunitySeconds": {
+            "min": 43.86999999999925,
+            "median": 51.89499999999902,
+            "p90": 55.10999999999885,
+            "max": 55.10999999999885
+          },
+          "noOpportunityFraction": {
+            "min": 0.3655833333333271,
+            "median": 0.4324583333333252,
+            "p90": 0.4592499999999904,
+            "max": 0.4592499999999904
+          },
+          "longestEarlyGap": {
+            "min": 2.4999999999999996,
+            "median": 2.6750000000000016,
+            "p90": 3.650000000000002,
+            "max": 3.650000000000002
+          },
+          "clearsPerActiveMinute": {
+            "min": 18.5,
+            "median": 21.75,
+            "p90": 24.5,
+            "max": 24.5
+          },
+          "tracesPerActiveMinute": {
+            "min": 1.5,
+            "median": 2.25,
+            "p90": 4.0,
+            "max": 4.0
+          },
+          "presentationFraction": {
+            "min": 0.6337499999999969,
+            "median": 0.6739583333333321,
+            "p90": 0.6886666666666625,
+            "max": 0.6886666666666625
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.29175000000000045,
+            "median": 0.3462083333333308,
+            "p90": 0.3722499999999951,
+            "max": 0.3722499999999951
+          },
+          "startsDuringPresentation": 95,
+          "maximumPendingPresentations": 3,
+          "deadlineCancelledTraces": 0,
+          "traceStarts": 39,
+          "exchangeStarts": 0,
+          "exchanges": 0,
+          "exchangeRejections": 0,
+          "heldFraction": {
+            "min": 0.031000000000000257,
+            "median": 0.04750000000000164,
+            "p90": 0.08600000000000145,
+            "max": 0.08600000000000145
+          },
+          "score": {
+            "min": 148,
+            "median": 168.5,
+            "p90": 172,
+            "max": 172
+          },
+          "showers": {
+            "min": 52,
+            "median": 54.5,
+            "p90": 55,
+            "max": 55
+          },
+          "deferred": 174,
+          "lateness": {
+            "min": 0,
+            "median": 0.0,
+            "p90": 0.21000000000000796,
+            "max": 0.510000000000133
+          },
+          "deliveredIntervals": {
+            "min": 1.7000000000000028,
+            "median": 2.0,
+            "p90": 2.5600000000000307,
+            "max": 4.150000000000162
+          },
+          "maxHeight": {
+            "min": 5,
+            "median": 5.5,
+            "p90": 7,
+            "max": 7
+          },
+          "minimumIncomingHeadroom": {
+            "min": 1,
+            "median": 2.0,
+            "p90": 4,
+            "max": 4
+          }
+        },
+        "full-motion-model/trace-oriented/openingV1": {
+          "rounds": 8,
+          "overflows": 0,
+          "firstClear": {
+            "min": 1.35,
+            "median": 1.35,
+            "p90": 1.35,
+            "max": 1.35
+          },
+          "noOpportunitySeconds": {
+            "min": 63.51999999999546,
+            "median": 74.32499999999676,
+            "p90": 77.3999999999963,
+            "max": 77.3999999999963
+          },
+          "noOpportunityFraction": {
+            "min": 0.5293333333332956,
+            "median": 0.619374999999973,
+            "p90": 0.6449999999999692,
+            "max": 0.6449999999999692
+          },
+          "longestEarlyGap": {
+            "min": 3,
+            "median": 4.5000000000000036,
+            "p90": 4.80000000000001,
+            "max": 4.80000000000001
+          },
+          "clearsPerActiveMinute": {
+            "min": 15.0,
+            "median": 16.75,
+            "p90": 19.5,
+            "max": 19.5
+          },
+          "tracesPerActiveMinute": {
+            "min": 1.0,
+            "median": 1.5,
+            "p90": 3.5,
+            "max": 3.5
+          },
+          "presentationFraction": {
+            "min": 0.4806666666666673,
+            "median": 0.5129166666666676,
+            "p90": 0.5419166666666643,
+            "max": 0.5419166666666643
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.2265000000000007,
+            "median": 0.26129166666666714,
+            "p90": 0.2834999999999974,
+            "max": 0.2834999999999974
+          },
+          "startsDuringPresentation": 69,
+          "maximumPendingPresentations": 2,
+          "deadlineCancelledTraces": 0,
+          "traceStarts": 29,
+          "exchangeStarts": 0,
+          "exchanges": 0,
+          "exchangeRejections": 0,
+          "heldFraction": {
+            "min": 0.020000000000000108,
+            "median": 0.031000000000000194,
+            "p90": 0.06900000000000134,
+            "max": 0.06900000000000134
+          },
+          "score": {
+            "min": 115,
+            "median": 123.5,
+            "p90": 132,
+            "max": 132
+          },
+          "showers": {
+            "min": 39,
+            "median": 40.0,
+            "p90": 41,
+            "max": 41
+          },
+          "deferred": 8,
+          "lateness": {
+            "min": 0,
+            "median": 0,
+            "p90": 0,
+            "max": 0.3100000000000014
+          },
+          "deliveredIntervals": {
+            "min": 1.7999999999999998,
+            "median": 3,
+            "p90": 3.0000000000000036,
+            "max": 4.799999999999962
+          },
+          "maxHeight": {
+            "min": 4,
+            "median": 6.0,
+            "p90": 6,
+            "max": 6
+          },
+          "minimumIncomingHeadroom": {
+            "min": 1,
+            "median": 3.0,
+            "p90": 4,
+            "max": 4
+          }
+        },
+        "full-motion-model/trace-oriented/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 1,
+          "firstClear": {
+            "min": 1.35,
+            "median": 1.35,
+            "p90": 1.35,
+            "max": 1.35
+          },
+          "noOpportunitySeconds": {
+            "min": 41.999999999999645,
+            "median": 48.74999999999943,
+            "p90": 54.09999999999912,
+            "max": 54.09999999999912
+          },
+          "noOpportunityFraction": {
+            "min": 0.3799999999999965,
+            "median": 0.414791666666662,
+            "p90": 0.4730795224149533,
+            "max": 0.4730795224149533
+          },
+          "longestEarlyGap": {
+            "min": 2.499999999999999,
+            "median": 2.6750000000000016,
+            "p90": 3.650000000000002,
+            "max": 3.650000000000002
+          },
+          "clearsPerActiveMinute": {
+            "min": 19.5,
+            "median": 20.975332282045485,
+            "p90": 24.0,
+            "max": 24.0
+          },
+          "tracesPerActiveMinute": {
+            "min": 2.0,
+            "median": 3.0,
+            "p90": 4.0,
+            "max": 4.0
+          },
+          "presentationFraction": {
+            "min": 0.6342499999999959,
+            "median": 0.6565865153563093,
+            "p90": 0.6727500000000012,
+            "max": 0.6727500000000012
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.313166666666663,
+            "median": 0.3425416666666665,
+            "p90": 0.36841666666666734,
+            "max": 0.36841666666666734
+          },
+          "startsDuringPresentation": 87,
+          "maximumPendingPresentations": 2,
+          "deadlineCancelledTraces": 0,
+          "traceStarts": 47,
+          "exchangeStarts": 0,
+          "exchanges": 0,
+          "exchangeRejections": 0,
+          "heldFraction": {
+            "min": 0.041901329128181404,
+            "median": 0.05800000000000039,
+            "p90": 0.08400000000000138,
+            "max": 0.08400000000000138
+          },
+          "score": {
+            "min": 111,
+            "median": 161.5,
+            "p90": 175,
+            "max": 175
+          },
+          "showers": {
+            "min": 41,
+            "median": 53.0,
+            "p90": 54,
+            "max": 54
+          },
+          "deferred": 169,
+          "lateness": {
+            "min": 0,
+            "median": 0.0,
+            "p90": 0.2100000000000506,
+            "max": 0.510000000000133
+          },
+          "deliveredIntervals": {
+            "min": 1.7600000000000477,
+            "median": 2.0,
+            "p90": 2.9900000000000517,
+            "max": 4.120000000000147
+          },
+          "maxHeight": {
+            "min": 5,
+            "median": 6.5,
+            "p90": 7,
+            "max": 7
+          },
+          "minimumIncomingHeadroom": {
+            "min": 0,
+            "median": 1.5,
+            "p90": 4,
+            "max": 4
+          }
+        },
+        "full-motion-model/setup-first/openingV1": {
+          "rounds": 8,
+          "overflows": 0,
+          "firstClear": {
+            "min": 1.35,
+            "median": 1.35,
+            "p90": 1.35,
+            "max": 1.35
+          },
+          "noOpportunitySeconds": {
+            "min": 58.349999999998076,
+            "median": 62.629999999997295,
+            "p90": 68.66999999999581,
+            "max": 68.66999999999581
+          },
+          "noOpportunityFraction": {
+            "min": 0.486249999999984,
+            "median": 0.5219166666666442,
+            "p90": 0.5722499999999651,
+            "max": 0.5722499999999651
+          },
+          "longestEarlyGap": {
+            "min": 4.200000000000003,
+            "median": 4.575000000000015,
+            "p90": 4.800000000000011,
+            "max": 4.800000000000011
+          },
+          "clearsPerActiveMinute": {
+            "min": 15.0,
+            "median": 17.25,
+            "p90": 18.5,
+            "max": 18.5
+          },
+          "tracesPerActiveMinute": {
+            "min": 0.0,
+            "median": 1.0,
+            "p90": 3.5,
+            "max": 3.5
+          },
+          "presentationFraction": {
+            "min": 0.5169166666666714,
+            "median": 0.5448750000000019,
+            "p90": 0.5884166666666663,
+            "max": 0.5884166666666663
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.2617500000000007,
+            "median": 0.29708333333333514,
+            "p90": 0.3094999999999986,
+            "max": 0.3094999999999986
+          },
+          "startsDuringPresentation": 85,
+          "maximumPendingPresentations": 2,
+          "deadlineCancelledTraces": 0,
+          "traceStarts": 18,
+          "exchangeStarts": 117,
+          "exchanges": 117,
+          "exchangeRejections": 0,
+          "heldFraction": {
+            "min": 0.07083333333333333,
+            "median": 0.07966666666666672,
+            "p90": 0.11483333333333468,
+            "max": 0.11483333333333468
+          },
+          "score": {
+            "min": 117,
+            "median": 128.0,
+            "p90": 133,
+            "max": 133
+          },
+          "showers": {
+            "min": 37,
+            "median": 38.0,
+            "p90": 39,
+            "max": 39
+          },
+          "deferred": 22,
+          "lateness": {
+            "min": 0,
+            "median": 0.0,
+            "p90": 0,
+            "max": 0.5100000000000007
+          },
+          "deliveredIntervals": {
+            "min": 1.7999999999999998,
+            "median": 3.0,
+            "p90": 3.610000000000113,
+            "max": 5.060000000000013
+          },
+          "maxHeight": {
+            "min": 4,
+            "median": 4.5,
+            "p90": 6,
+            "max": 6
+          },
+          "minimumIncomingHeadroom": {
+            "min": 3,
+            "median": 4.0,
+            "p90": 4,
+            "max": 4
+          }
+        },
+        "full-motion-model/setup-first/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "firstClear": {
+            "min": 1.35,
+            "median": 1.35,
+            "p90": 1.35,
+            "max": 1.35
+          },
+          "noOpportunitySeconds": {
+            "min": 28.499999999999737,
+            "median": 33.689999999999394,
+            "p90": 35.69999999999971,
+            "max": 35.69999999999971
+          },
+          "noOpportunityFraction": {
+            "min": 0.2374999999999978,
+            "median": 0.28074999999999495,
+            "p90": 0.2974999999999976,
+            "max": 0.2974999999999976
+          },
+          "longestEarlyGap": {
+            "min": 2.499999999999999,
+            "median": 2.4999999999999996,
+            "p90": 2.650000000000002,
+            "max": 2.650000000000002
+          },
+          "clearsPerActiveMinute": {
+            "min": 17.5,
+            "median": 18.75,
+            "p90": 19.5,
+            "max": 19.5
+          },
+          "tracesPerActiveMinute": {
+            "min": 1.0,
+            "median": 1.75,
+            "p90": 3.0,
+            "max": 3.0
+          },
+          "presentationFraction": {
+            "min": 0.6577499999999972,
+            "median": 0.6882083333333306,
+            "p90": 0.6947499999999983,
+            "max": 0.6947499999999983
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.36299999999999594,
+            "median": 0.4054166666666651,
+            "p90": 0.4173333333333304,
+            "max": 0.4173333333333304
+          },
+          "startsDuringPresentation": 145,
+          "maximumPendingPresentations": 2,
+          "deadlineCancelledTraces": 0,
+          "traceStarts": 29,
+          "exchangeStarts": 170,
+          "exchanges": 168,
+          "exchangeRejections": 0,
+          "heldFraction": {
+            "min": 0.105166666666663,
+            "median": 0.11991666666666717,
+            "p90": 0.1493333333333345,
+            "max": 0.1493333333333345
+          },
+          "score": {
+            "min": 143,
+            "median": 149.0,
+            "p90": 158,
+            "max": 158
+          },
+          "showers": {
+            "min": 48,
+            "median": 49.5,
+            "p90": 50,
+            "max": 50
+          },
+          "deferred": 192,
+          "lateness": {
+            "min": 0,
+            "median": 0,
+            "p90": 0.3100000000000165,
+            "max": 0.510000000000062
+          },
+          "deliveredIntervals": {
+            "min": 1.7000000000000028,
+            "median": 2.5,
+            "p90": 3.1100000000000705,
+            "max": 4.8700000000000045
+          },
+          "maxHeight": {
+            "min": 4,
+            "median": 5.5,
+            "p90": 6,
+            "max": 6
+          },
+          "minimumIncomingHeadroom": {
+            "min": 2,
+            "median": 3.0,
+            "p90": 4,
+            "max": 4
+          }
+        },
+        "quiet-model/largest-clear/openingV1": {
+          "rounds": 8,
+          "overflows": 0,
+          "firstClear": {
+            "min": 0.45,
+            "median": 0.45,
+            "p90": 0.45,
+            "max": 0.45
+          },
+          "noOpportunitySeconds": {
+            "min": 87.51999999999566,
+            "median": 103.21499999999571,
+            "p90": 106.71999999999531,
+            "max": 106.71999999999531
+          },
+          "noOpportunityFraction": {
+            "min": 0.7293333333332972,
+            "median": 0.8601249999999643,
+            "p90": 0.8893333333332942,
+            "max": 0.8893333333332942
+          },
+          "longestEarlyGap": {
+            "min": 4.599999999999998,
+            "median": 5.725000000000003,
+            "p90": 5.80000000000001,
+            "max": 5.80000000000001
+          },
+          "clearsPerActiveMinute": {
+            "min": 15.5,
+            "median": 16.75,
+            "p90": 20.0,
+            "max": 20.0
+          },
+          "tracesPerActiveMinute": {
+            "min": 0.5,
+            "median": 1.5,
+            "p90": 2.5,
+            "max": 2.5
+          },
+          "presentationFraction": {
+            "min": 0.08875000000000115,
+            "median": 0.09250000000000114,
+            "p90": 0.10125000000000153,
+            "max": 0.10125000000000153
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.02875000000000049,
+            "median": 0.03562500000000039,
+            "p90": 0.03875000000000059,
+            "max": 0.03875000000000059
+          },
+          "startsDuringPresentation": 2,
+          "maximumPendingPresentations": 1,
+          "deadlineCancelledTraces": 0,
+          "traceStarts": 23,
+          "exchangeStarts": 0,
+          "exchanges": 0,
+          "exchangeRejections": 0,
+          "heldFraction": {
+            "min": 0.009000000000000341,
+            "median": 0.03500000000000116,
+            "p90": 0.04700000000000006,
+            "max": 0.04700000000000006
+          },
+          "score": {
+            "min": 116,
+            "median": 123.0,
+            "p90": 135,
+            "max": 135
+          },
+          "showers": {
+            "min": 40,
+            "median": 40.0,
+            "p90": 41,
+            "max": 41
+          },
+          "deferred": 0,
+          "lateness": {
+            "min": 0,
+            "median": 0,
+            "p90": 0,
+            "max": 0
+          },
+          "deliveredIntervals": {
+            "min": 1.7999999999999998,
+            "median": 3,
+            "p90": 3,
+            "max": 4.800000000000068
+          },
+          "maxHeight": {
+            "min": 5,
+            "median": 6.0,
+            "p90": 7,
+            "max": 7
+          },
+          "minimumIncomingHeadroom": {
+            "min": 1,
+            "median": 3.0,
+            "p90": 3,
+            "max": 3
+          }
+        },
+        "quiet-model/largest-clear/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 1,
+          "firstClear": {
+            "min": 0.45,
+            "median": 0.45,
+            "p90": 0.45,
+            "max": 0.45
+          },
+          "noOpportunitySeconds": {
+            "min": 79.61999999999603,
+            "median": 93.96499999999473,
+            "p90": 97.24999999999464,
+            "max": 97.24999999999464
+          },
+          "noOpportunityFraction": {
+            "min": 0.6634999999999669,
+            "median": 0.7830416666666228,
+            "p90": 0.810416666666622,
+            "max": 0.810416666666622
+          },
+          "longestEarlyGap": {
+            "min": 3.5000000000000036,
+            "median": 4.000000000000021,
+            "p90": 4.8000000000000185,
+            "max": 4.8000000000000185
+          },
+          "clearsPerActiveMinute": {
+            "min": 22.5,
+            "median": 23.25,
+            "p90": 27.0,
+            "max": 27.0
+          },
+          "tracesPerActiveMinute": {
+            "min": 1.0,
+            "median": 2.5,
+            "p90": 4.0,
+            "max": 4.0
+          },
+          "presentationFraction": {
+            "min": 0.12500000000000167,
+            "median": 0.1281250000000018,
+            "p90": 0.14000000000000196,
+            "max": 0.14000000000000196
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.043750000000000656,
+            "median": 0.05046234253551386,
+            "p90": 0.05375000000000082,
+            "max": 0.05375000000000082
+          },
+          "startsDuringPresentation": 5,
+          "maximumPendingPresentations": 1,
+          "deadlineCancelledTraces": 0,
+          "traceStarts": 40,
+          "exchangeStarts": 0,
+          "exchanges": 0,
+          "exchangeRejections": 0,
+          "heldFraction": {
+            "min": 0.02000000000000043,
+            "median": 0.05476641651032009,
+            "p90": 0.07600000000000152,
+            "max": 0.07600000000000152
+          },
+          "score": {
+            "min": 168,
+            "median": 172.0,
+            "p90": 187,
+            "max": 187
+          },
+          "showers": {
+            "min": 53,
+            "median": 56.0,
+            "p90": 58,
+            "max": 58
+          },
+          "deferred": 0,
+          "lateness": {
+            "min": 0,
+            "median": 0.0,
+            "p90": 0,
+            "max": 0
+          },
+          "deliveredIntervals": {
+            "min": 1.6999999999999993,
+            "median": 2.0,
+            "p90": 2.5,
+            "max": 4.299999999999962
+          },
+          "maxHeight": {
+            "min": 6,
+            "median": 6.5,
+            "p90": 7,
+            "max": 7
+          },
+          "minimumIncomingHeadroom": {
+            "min": 0,
+            "median": 1.5,
+            "p90": 3,
+            "max": 3
+          }
+        },
+        "quiet-model/height-safety/openingV1": {
+          "rounds": 8,
+          "overflows": 0,
+          "firstClear": {
+            "min": 0.45,
+            "median": 0.45,
+            "p90": 0.45,
+            "max": 0.45
+          },
+          "noOpportunitySeconds": {
+            "min": 87.97999999999554,
+            "median": 103.21499999999571,
+            "p90": 104.92999999999593,
+            "max": 104.92999999999593
+          },
+          "noOpportunityFraction": {
+            "min": 0.7331666666666296,
+            "median": 0.8601249999999643,
+            "p90": 0.8744166666666328,
+            "max": 0.8744166666666328
+          },
+          "longestEarlyGap": {
+            "min": 4.599999999999998,
+            "median": 5.725000000000003,
+            "p90": 5.80000000000001,
+            "max": 5.80000000000001
+          },
+          "clearsPerActiveMinute": {
+            "min": 15.5,
+            "median": 17.25,
+            "p90": 20.0,
+            "max": 20.0
+          },
+          "tracesPerActiveMinute": {
+            "min": 0.5,
+            "median": 1.5,
+            "p90": 2.5,
+            "max": 2.5
+          },
+          "presentationFraction": {
+            "min": 0.08875000000000115,
+            "median": 0.09375000000000122,
+            "p90": 0.10125000000000153,
+            "max": 0.10125000000000153
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.031250000000000465,
+            "median": 0.035000000000000406,
+            "p90": 0.03875000000000059,
+            "max": 0.03875000000000059
+          },
+          "startsDuringPresentation": 2,
+          "maximumPendingPresentations": 1,
+          "deadlineCancelledTraces": 0,
+          "traceStarts": 24,
+          "exchangeStarts": 0,
+          "exchanges": 0,
+          "exchangeRejections": 0,
+          "heldFraction": {
+            "min": 0.010999999999999765,
+            "median": 0.03100000000000042,
+            "p90": 0.04700000000000006,
+            "max": 0.04700000000000006
+          },
+          "score": {
+            "min": 116,
+            "median": 123.0,
+            "p90": 135,
+            "max": 135
+          },
+          "showers": {
+            "min": 40,
+            "median": 40.0,
+            "p90": 41,
+            "max": 41
+          },
+          "deferred": 0,
+          "lateness": {
+            "min": 0,
+            "median": 0,
+            "p90": 0,
+            "max": 0
+          },
+          "deliveredIntervals": {
+            "min": 1.7999999999999998,
+            "median": 3,
+            "p90": 3,
+            "max": 4.799999999999962
+          },
+          "maxHeight": {
+            "min": 4,
+            "median": 6.0,
+            "p90": 7,
+            "max": 7
+          },
+          "minimumIncomingHeadroom": {
+            "min": 1,
+            "median": 3.0,
+            "p90": 4,
+            "max": 4
+          }
+        },
+        "quiet-model/height-safety/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "firstClear": {
+            "min": 0.45,
+            "median": 0.45,
+            "p90": 0.45,
+            "max": 0.45
+          },
+          "noOpportunitySeconds": {
+            "min": 79.61999999999603,
+            "median": 94.1249999999948,
+            "p90": 97.24999999999464,
+            "max": 97.24999999999464
+          },
+          "noOpportunityFraction": {
+            "min": 0.6634999999999669,
+            "median": 0.7843749999999567,
+            "p90": 0.810416666666622,
+            "max": 0.810416666666622
+          },
+          "longestEarlyGap": {
+            "min": 3.5000000000000036,
+            "median": 3.6500000000000163,
+            "p90": 4.650000000000002,
+            "max": 4.650000000000002
+          },
+          "clearsPerActiveMinute": {
+            "min": 22.5,
+            "median": 23.5,
+            "p90": 27.0,
+            "max": 27.0
+          },
+          "tracesPerActiveMinute": {
+            "min": 1.0,
+            "median": 2.25,
+            "p90": 4.0,
+            "max": 4.0
+          },
+          "presentationFraction": {
+            "min": 0.12500000000000167,
+            "median": 0.12904166666666755,
+            "p90": 0.14000000000000196,
+            "max": 0.14000000000000196
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.043750000000000656,
+            "median": 0.0496666666666666,
+            "p90": 0.053750000000000756,
+            "max": 0.053750000000000756
+          },
+          "startsDuringPresentation": 5,
+          "maximumPendingPresentations": 1,
+          "deadlineCancelledTraces": 0,
+          "traceStarts": 37,
+          "exchangeStarts": 0,
+          "exchanges": 0,
+          "exchangeRejections": 0,
+          "heldFraction": {
+            "min": 0.02000000000000043,
+            "median": 0.0482499999999987,
+            "p90": 0.07600000000000152,
+            "max": 0.07600000000000152
+          },
+          "score": {
+            "min": 168,
+            "median": 173.0,
+            "p90": 187,
+            "max": 187
+          },
+          "showers": {
+            "min": 55,
+            "median": 57.0,
+            "p90": 58,
+            "max": 58
+          },
+          "deferred": 0,
+          "lateness": {
+            "min": 0,
+            "median": 0,
+            "p90": 0,
+            "max": 0
+          },
+          "deliveredIntervals": {
+            "min": 1.6999999999999993,
+            "median": 2,
+            "p90": 2.5,
+            "max": 3.82000000000005
+          },
+          "maxHeight": {
+            "min": 6,
+            "median": 6.0,
+            "p90": 7,
+            "max": 7
+          },
+          "minimumIncomingHeadroom": {
+            "min": 1,
+            "median": 2.0,
+            "p90": 3,
+            "max": 3
+          }
+        },
+        "quiet-model/trace-oriented/openingV1": {
+          "rounds": 8,
+          "overflows": 0,
+          "firstClear": {
+            "min": 0.45,
+            "median": 0.45,
+            "p90": 0.45,
+            "max": 0.45
+          },
+          "noOpportunitySeconds": {
+            "min": 87.97999999999554,
+            "median": 102.59999999999562,
+            "p90": 103.90999999999511,
+            "max": 103.90999999999511
+          },
+          "noOpportunityFraction": {
+            "min": 0.7331666666666296,
+            "median": 0.8549999999999636,
+            "p90": 0.8659166666666259,
+            "max": 0.8659166666666259
+          },
+          "longestEarlyGap": {
+            "min": 4.599999999999998,
+            "median": 5.725000000000003,
+            "p90": 5.80000000000001,
+            "max": 5.80000000000001
+          },
+          "clearsPerActiveMinute": {
+            "min": 15.0,
+            "median": 17.25,
+            "p90": 20.0,
+            "max": 20.0
+          },
+          "tracesPerActiveMinute": {
+            "min": 1.0,
+            "median": 1.75,
+            "p90": 2.5,
+            "max": 2.5
+          },
+          "presentationFraction": {
+            "min": 0.08625000000000123,
+            "median": 0.09375000000000122,
+            "p90": 0.10125000000000153,
+            "max": 0.10125000000000153
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.031250000000000465,
+            "median": 0.03562500000000039,
+            "p90": 0.03875000000000059,
+            "max": 0.03875000000000059
+          },
+          "startsDuringPresentation": 2,
+          "maximumPendingPresentations": 1,
+          "deadlineCancelledTraces": 0,
+          "traceStarts": 27,
+          "exchangeStarts": 0,
+          "exchanges": 0,
+          "exchangeRejections": 0,
+          "heldFraction": {
+            "min": 0.020000000000000108,
+            "median": 0.03549999999999996,
+            "p90": 0.055000000000000666,
+            "max": 0.055000000000000666
+          },
+          "score": {
+            "min": 115,
+            "median": 123.0,
+            "p90": 135,
+            "max": 135
+          },
+          "showers": {
+            "min": 39,
+            "median": 40.0,
+            "p90": 41,
+            "max": 41
+          },
+          "deferred": 0,
+          "lateness": {
+            "min": 0,
+            "median": 0.0,
+            "p90": 0,
+            "max": 0
+          },
+          "deliveredIntervals": {
+            "min": 1.7999999999999998,
+            "median": 3.0,
+            "p90": 3,
+            "max": 4.799999999999962
+          },
+          "maxHeight": {
+            "min": 4,
+            "median": 6.0,
+            "p90": 7,
+            "max": 7
+          },
+          "minimumIncomingHeadroom": {
+            "min": 1,
+            "median": 3.0,
+            "p90": 4,
+            "max": 4
+          }
+        },
+        "quiet-model/trace-oriented/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "firstClear": {
+            "min": 0.45,
+            "median": 0.45,
+            "p90": 0.45,
+            "max": 0.45
+          },
+          "noOpportunitySeconds": {
+            "min": 78.74999999999643,
+            "median": 94.1249999999948,
+            "p90": 97.19999999999384,
+            "max": 97.19999999999384
+          },
+          "noOpportunityFraction": {
+            "min": 0.6562499999999702,
+            "median": 0.7843749999999567,
+            "p90": 0.8099999999999486,
+            "max": 0.8099999999999486
+          },
+          "longestEarlyGap": {
+            "min": 3.5000000000000036,
+            "median": 3.6500000000000163,
+            "p90": 4.650000000000002,
+            "max": 4.650000000000002
+          },
+          "clearsPerActiveMinute": {
+            "min": 22.0,
+            "median": 23.5,
+            "p90": 26.5,
+            "max": 26.5
+          },
+          "tracesPerActiveMinute": {
+            "min": 1.5,
+            "median": 2.75,
+            "p90": 4.0,
+            "max": 4.0
+          },
+          "presentationFraction": {
+            "min": 0.12375000000000176,
+            "median": 0.12904166666666755,
+            "p90": 0.1387500000000019,
+            "max": 0.1387500000000019
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.043750000000000656,
+            "median": 0.05029166666666659,
+            "p90": 0.053750000000000756,
+            "max": 0.053750000000000756
+          },
+          "startsDuringPresentation": 5,
+          "maximumPendingPresentations": 1,
+          "deadlineCancelledTraces": 0,
+          "traceStarts": 40,
+          "exchangeStarts": 0,
+          "exchanges": 0,
+          "exchangeRejections": 0,
+          "heldFraction": {
+            "min": 0.02900000000000024,
+            "median": 0.05450000000000125,
+            "p90": 0.07600000000000152,
+            "max": 0.07600000000000152
+          },
+          "score": {
+            "min": 168,
+            "median": 172.0,
+            "p90": 183,
+            "max": 183
+          },
+          "showers": {
+            "min": 55,
+            "median": 56.5,
+            "p90": 58,
+            "max": 58
+          },
+          "deferred": 0,
+          "lateness": {
+            "min": 0,
+            "median": 0,
+            "p90": 0,
+            "max": 0
+          },
+          "deliveredIntervals": {
+            "min": 1.6999999999999993,
+            "median": 2,
+            "p90": 2.5,
+            "max": 3.82000000000005
+          },
+          "maxHeight": {
+            "min": 6,
+            "median": 6.0,
+            "p90": 7,
+            "max": 7
+          },
+          "minimumIncomingHeadroom": {
+            "min": 1,
+            "median": 2.0,
+            "p90": 3,
+            "max": 3
+          }
+        },
+        "quiet-model/setup-first/openingV1": {
+          "rounds": 8,
+          "overflows": 0,
+          "firstClear": {
+            "min": 0.45,
+            "median": 0.45,
+            "p90": 0.45,
+            "max": 0.45
+          },
+          "noOpportunitySeconds": {
+            "min": 90.64999999999608,
+            "median": 92.71999999999608,
+            "p90": 95.62999999999558,
+            "max": 95.62999999999558
+          },
+          "noOpportunityFraction": {
+            "min": 0.755416666666634,
+            "median": 0.772666666666634,
+            "p90": 0.7969166666666297,
+            "max": 0.7969166666666297
+          },
+          "longestEarlyGap": {
+            "min": 5.199999999999999,
+            "median": 5.575000000000005,
+            "p90": 5.80000000000001,
+            "max": 5.80000000000001
+          },
+          "clearsPerActiveMinute": {
+            "min": 16.0,
+            "median": 17.0,
+            "p90": 18.5,
+            "max": 18.5
+          },
+          "tracesPerActiveMinute": {
+            "min": 0.5,
+            "median": 1.75,
+            "p90": 2.5,
+            "max": 2.5
+          },
+          "presentationFraction": {
+            "min": 0.10375000000000158,
+            "median": 0.10687500000000155,
+            "p90": 0.11375000000000188,
+            "max": 0.11375000000000188
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.04083333333333795,
+            "median": 0.04541666666667019,
+            "p90": 0.05125000000000072,
+            "max": 0.05125000000000072
+          },
+          "startsDuringPresentation": 6,
+          "maximumPendingPresentations": 1,
+          "deadlineCancelledTraces": 0,
+          "traceStarts": 24,
+          "exchangeStarts": 110,
+          "exchanges": 109,
+          "exchangeRejections": 0,
+          "heldFraction": {
+            "min": 0.06516666666666666,
+            "median": 0.08966666666666737,
+            "p90": 0.10100000000000069,
+            "max": 0.10100000000000069
+          },
+          "score": {
+            "min": 124,
+            "median": 127.5,
+            "p90": 134,
+            "max": 134
+          },
+          "showers": {
+            "min": 38,
+            "median": 38.0,
+            "p90": 39,
+            "max": 39
+          },
+          "deferred": 0,
+          "lateness": {
+            "min": 0,
+            "median": 0.0,
+            "p90": 0,
+            "max": 0
+          },
+          "deliveredIntervals": {
+            "min": 1.7999999999999998,
+            "median": 3.0,
+            "p90": 3.5,
+            "max": 5.060000000000013
+          },
+          "maxHeight": {
+            "min": 3,
+            "median": 4.0,
+            "p90": 6,
+            "max": 6
+          },
+          "minimumIncomingHeadroom": {
+            "min": 3,
+            "median": 4.0,
+            "p90": 5,
+            "max": 5
+          }
+        },
+        "quiet-model/setup-first/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "firstClear": {
+            "min": 0.45,
+            "median": 0.45,
+            "p90": 0.45,
+            "max": 0.45
+          },
+          "noOpportunitySeconds": {
+            "min": 73.93999999999473,
+            "median": 81.33499999999438,
+            "p90": 82.99999999999444,
+            "max": 82.99999999999444
+          },
+          "noOpportunityFraction": {
+            "min": 0.6161666666666227,
+            "median": 0.6777916666666199,
+            "p90": 0.6916666666666204,
+            "max": 0.6916666666666204
+          },
+          "longestEarlyGap": {
+            "min": 3.3999999999999995,
+            "median": 3.55,
+            "p90": 3.7500000000000036,
+            "max": 3.7500000000000036
+          },
+          "clearsPerActiveMinute": {
+            "min": 22.5,
+            "median": 23.75,
+            "p90": 26.0,
+            "max": 26.0
+          },
+          "tracesPerActiveMinute": {
+            "min": 1.0,
+            "median": 2.25,
+            "p90": 3.0,
+            "max": 3.0
+          },
+          "presentationFraction": {
+            "min": 0.14375000000000196,
+            "median": 0.1483750000000003,
+            "p90": 0.15750000000000242,
+            "max": 0.15750000000000242
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.05625000000000369,
+            "median": 0.06649999999999898,
+            "p90": 0.07000000000000112,
+            "max": 0.07000000000000112
+          },
+          "startsDuringPresentation": 4,
+          "maximumPendingPresentations": 1,
+          "deadlineCancelledTraces": 0,
+          "traceStarts": 35,
+          "exchangeStarts": 158,
+          "exchanges": 158,
+          "exchangeRejections": 0,
+          "heldFraction": {
+            "min": 0.10333333333333368,
+            "median": 0.11891666666666681,
+            "p90": 0.15800000000000078,
+            "max": 0.15800000000000078
+          },
+          "score": {
+            "min": 169,
+            "median": 174.5,
+            "p90": 183,
+            "max": 183
+          },
+          "showers": {
+            "min": 50,
+            "median": 52.5,
+            "p90": 53,
+            "max": 53
+          },
+          "deferred": 0,
+          "lateness": {
+            "min": 0,
+            "median": 0,
+            "p90": 0,
+            "max": 0
+          },
+          "deliveredIntervals": {
+            "min": 1.6999999999999993,
+            "median": 2.200000000000003,
+            "p90": 3,
+            "max": 4.319999999999972
+          },
+          "maxHeight": {
+            "min": 4,
+            "median": 4.0,
+            "p90": 6,
+            "max": 6
+          },
+          "minimumIncomingHeadroom": {
+            "min": 3,
+            "median": 4.0,
+            "p90": 5,
+            "max": 5
+          }
+        }
+      },
+      "parityCommits": 11570,
+      "runsSHA256": "57cade4a39e1d22544700a570ff30b21c2da03236624486a4fa749996af75ea1"
+    },
+    {
+      "cohort": "confirmation",
+      "seedStart": 64,
+      "seeds": 8,
+      "command": [
+        "python3",
+        "tools/mechanics/compare-pacing.py",
+        "--seed-start",
+        "64",
+        "--seeds",
+        "8",
+        "--seconds",
+        "120",
+        "--include-setups",
+        "--candidate-cadence",
+        "announcedCycleV2",
+        "--output",
+        "artifacts/calibration-gap-links/confirmation"
+      ],
+      "groups": {
+        "full-motion-model/largest-clear/openingV1": {
+          "rounds": 8,
+          "overflows": 1,
+          "firstClear": {
+            "min": 1.35,
+            "median": 1.35,
+            "p90": 1.35,
+            "max": 1.35
+          },
+          "noOpportunitySeconds": {
+            "min": 64.25999999999728,
+            "median": 74.18499999999581,
+            "p90": 75.9199999999956,
+            "max": 75.9199999999956
+          },
+          "noOpportunityFraction": {
+            "min": 0.5354999999999773,
+            "median": 0.6184583333332967,
+            "p90": 0.6390288593678162,
+            "max": 0.6390288593678162
+          },
+          "longestEarlyGap": {
+            "min": 4.650000000000009,
+            "median": 4.72500000000001,
+            "p90": 4.950000000000017,
+            "max": 4.950000000000017
+          },
+          "clearsPerActiveMinute": {
+            "min": 16.0,
+            "median": 16.75,
+            "p90": 18.5,
+            "max": 18.5
+          },
+          "tracesPerActiveMinute": {
+            "min": 0.5,
+            "median": 1.5,
+            "p90": 3.0,
+            "max": 3.0
+          },
+          "presentationFraction": {
+            "min": 0.501250000000001,
+            "median": 0.5122083333333318,
+            "p90": 0.5385833333333302,
+            "max": 0.5385833333333302
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.23637196518552508,
+            "median": 0.2533750000000006,
+            "p90": 0.2917499999999993,
+            "max": 0.2917499999999993
+          },
+          "startsDuringPresentation": 78,
+          "maximumPendingPresentations": 2,
+          "deadlineCancelledTraces": 0,
+          "traceStarts": 27,
+          "exchangeStarts": 0,
+          "exchanges": 0,
+          "exchangeRejections": 0,
+          "heldFraction": {
+            "min": 0.008999999999999809,
+            "median": 0.03200000000000025,
+            "p90": 0.05800000000000029,
+            "max": 0.05800000000000029
+          },
+          "score": {
+            "min": 104,
+            "median": 124.5,
+            "p90": 139,
+            "max": 139
+          },
+          "showers": {
+            "min": 38,
+            "median": 40.0,
+            "p90": 41,
+            "max": 41
+          },
+          "deferred": 13,
+          "lateness": {
+            "min": 0,
+            "median": 0.0,
+            "p90": 0,
+            "max": 0.3100000000000014
+          },
+          "deliveredIntervals": {
+            "min": 1.7999999999999998,
+            "median": 3.0,
+            "p90": 3,
+            "max": 5.159999999999954
+          },
+          "maxHeight": {
+            "min": 4,
+            "median": 6.5,
+            "p90": 7,
+            "max": 7
+          },
+          "minimumIncomingHeadroom": {
+            "min": 0,
+            "median": 1.5,
+            "p90": 4,
+            "max": 4
+          }
+        },
+        "full-motion-model/largest-clear/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 1,
+          "firstClear": {
+            "min": 1.35,
+            "median": 1.35,
+            "p90": 1.35,
+            "max": 1.35
+          },
+          "noOpportunitySeconds": {
+            "min": 40.59999999999974,
+            "median": 52.44499999999873,
+            "p90": 57.999999999999204,
+            "max": 57.999999999999204
+          },
+          "noOpportunityFraction": {
+            "min": 0.42116666666665825,
+            "median": 0.4471666666666597,
+            "p90": 0.4833333333333267,
+            "max": 0.4833333333333267
+          },
+          "longestEarlyGap": {
+            "min": 2.4999999999999996,
+            "median": 2.6500000000000012,
+            "p90": 3.650000000000002,
+            "max": 3.650000000000002
+          },
+          "clearsPerActiveMinute": {
+            "min": 19.0,
+            "median": 21.25,
+            "p90": 22.5,
+            "max": 22.5
+          },
+          "tracesPerActiveMinute": {
+            "min": 2.0,
+            "median": 2.5,
+            "p90": 3.5,
+            "max": 3.5
+          },
+          "presentationFraction": {
+            "min": 0.6318333333333342,
+            "median": 0.6559230888487964,
+            "p90": 0.6760833333333343,
+            "max": 0.6760833333333343
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.31949999999999595,
+            "median": 0.3365869414063943,
+            "p90": 0.36841666666666734,
+            "max": 0.36841666666666734
+          },
+          "startsDuringPresentation": 60,
+          "maximumPendingPresentations": 2,
+          "deadlineCancelledTraces": 0,
+          "traceStarts": 42,
+          "exchangeStarts": 0,
+          "exchanges": 0,
+          "exchangeRejections": 0,
+          "heldFraction": {
+            "min": 0.03653173976773082,
+            "median": 0.05400000000000149,
+            "p90": 0.07500000000000097,
+            "max": 0.07500000000000097
+          },
+          "score": {
+            "min": 109,
+            "median": 163.0,
+            "p90": 169,
+            "max": 169
+          },
+          "showers": {
+            "min": 41,
+            "median": 53.5,
+            "p90": 54,
+            "max": 54
+          },
+          "deferred": 164,
+          "lateness": {
+            "min": 0,
+            "median": 0.0,
+            "p90": 0.21000000000000796,
+            "max": 0.510000000000133
+          },
+          "deliveredIntervals": {
+            "min": 1.7999999999999998,
+            "median": 2.0,
+            "p90": 2.840000000000174,
+            "max": 4.9600000000001785
+          },
+          "maxHeight": {
+            "min": 5,
+            "median": 6.0,
+            "p90": 7,
+            "max": 7
+          },
+          "minimumIncomingHeadroom": {
+            "min": 0,
+            "median": 2.0,
+            "p90": 3,
+            "max": 3
+          }
+        },
+        "full-motion-model/height-safety/openingV1": {
+          "rounds": 8,
+          "overflows": 1,
+          "firstClear": {
+            "min": 1.35,
+            "median": 1.35,
+            "p90": 1.35,
+            "max": 1.35
+          },
+          "noOpportunitySeconds": {
+            "min": 64.25999999999728,
+            "median": 74.2149999999956,
+            "p90": 76.0899999999959,
+            "max": 76.0899999999959
+          },
+          "noOpportunityFraction": {
+            "min": 0.5354999999999773,
+            "median": 0.6230833333332941,
+            "p90": 0.6390288593678162,
+            "max": 0.6390288593678162
+          },
+          "longestEarlyGap": {
+            "min": 4.650000000000009,
+            "median": 4.72500000000001,
+            "p90": 4.950000000000017,
+            "max": 4.950000000000017
+          },
+          "clearsPerActiveMinute": {
+            "min": 15.5,
+            "median": 16.5,
+            "p90": 18.5,
+            "max": 18.5
+          },
+          "tracesPerActiveMinute": {
+            "min": 0.5,
+            "median": 1.5,
+            "p90": 3.0,
+            "max": 3.0
+          },
+          "presentationFraction": {
+            "min": 0.4883333333333341,
+            "median": 0.5093750000000008,
+            "p90": 0.5379166666666677,
+            "max": 0.5379166666666677
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.2354166666666672,
+            "median": 0.2500416666666672,
+            "p90": 0.282333333333334,
+            "max": 0.282333333333334
+          },
+          "startsDuringPresentation": 77,
+          "maximumPendingPresentations": 2,
+          "deadlineCancelledTraces": 0,
+          "traceStarts": 29,
+          "exchangeStarts": 0,
+          "exchanges": 0,
+          "exchangeRejections": 0,
+          "heldFraction": {
+            "min": 0.008999999999999809,
+            "median": 0.036041666666664904,
+            "p90": 0.06000000000000059,
+            "max": 0.06000000000000059
+          },
+          "score": {
+            "min": 104,
+            "median": 122.0,
+            "p90": 137,
+            "max": 137
+          },
+          "showers": {
+            "min": 38,
+            "median": 40.0,
+            "p90": 41,
+            "max": 41
+          },
+          "deferred": 13,
+          "lateness": {
+            "min": 0,
+            "median": 0,
+            "p90": 0,
+            "max": 0.3100000000000014
+          },
+          "deliveredIntervals": {
+            "min": 1.7999999999999998,
+            "median": 3,
+            "p90": 3.0000000000000036,
+            "max": 4.55999999999999
+          },
+          "maxHeight": {
+            "min": 4,
+            "median": 6.5,
+            "p90": 7,
+            "max": 7
+          },
+          "minimumIncomingHeadroom": {
+            "min": 0,
+            "median": 1.5,
+            "p90": 4,
+            "max": 4
+          }
+        },
+        "full-motion-model/height-safety/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "firstClear": {
+            "min": 1.35,
+            "median": 1.35,
+            "p90": 1.35,
+            "max": 1.35
+          },
+          "noOpportunitySeconds": {
+            "min": 47.29999999999933,
+            "median": 52.224999999999255,
+            "p90": 57.999999999999204,
+            "max": 57.999999999999204
+          },
+          "noOpportunityFraction": {
+            "min": 0.39416666666666106,
+            "median": 0.4352083333333272,
+            "p90": 0.4833333333333267,
+            "max": 0.4833333333333267
+          },
+          "longestEarlyGap": {
+            "min": 2.4999999999999996,
+            "median": 3.1850000000000165,
+            "p90": 4.550000000000001,
+            "max": 4.550000000000001
+          },
+          "clearsPerActiveMinute": {
+            "min": 20.0,
+            "median": 21.5,
+            "p90": 24.0,
+            "max": 24.0
+          },
+          "tracesPerActiveMinute": {
+            "min": 1.5,
+            "median": 2.5,
+            "p90": 4.0,
+            "max": 4.0
+          },
+          "presentationFraction": {
+            "min": 0.6330833333333294,
+            "median": 0.6556666666666634,
+            "p90": 0.6932500000000009,
+            "max": 0.6932500000000009
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.31849999999999634,
+            "median": 0.34691666666666476,
+            "p90": 0.37083333333333357,
+            "max": 0.37083333333333357
+          },
+          "startsDuringPresentation": 70,
+          "maximumPendingPresentations": 2,
+          "deadlineCancelledTraces": 0,
+          "traceStarts": 44,
+          "exchangeStarts": 0,
+          "exchanges": 0,
+          "exchangeRejections": 0,
+          "heldFraction": {
+            "min": 0.03100000000000064,
+            "median": 0.05200000000000083,
+            "p90": 0.07800000000000158,
+            "max": 0.07800000000000158
+          },
+          "score": {
+            "min": 155,
+            "median": 161.0,
+            "p90": 178,
+            "max": 178
+          },
+          "showers": {
+            "min": 53,
+            "median": 54.0,
+            "p90": 55,
+            "max": 55
+          },
+          "deferred": 164,
+          "lateness": {
+            "min": 0,
+            "median": 0.0,
+            "p90": 0.21000000000000796,
+            "max": 0.510000000000133
+          },
+          "deliveredIntervals": {
+            "min": 1.7000000000000028,
+            "median": 2.0,
+            "p90": 2.8400000000000887,
+            "max": 4.059999999999981
+          },
+          "maxHeight": {
+            "min": 5,
+            "median": 6.0,
+            "p90": 7,
+            "max": 7
+          },
+          "minimumIncomingHeadroom": {
+            "min": 1,
+            "median": 3.0,
+            "p90": 4,
+            "max": 4
+          }
+        },
+        "full-motion-model/trace-oriented/openingV1": {
+          "rounds": 8,
+          "overflows": 1,
+          "firstClear": {
+            "min": 1.35,
+            "median": 1.35,
+            "p90": 1.35,
+            "max": 1.35
+          },
+          "noOpportunitySeconds": {
+            "min": 64.25999999999728,
+            "median": 73.27499999999603,
+            "p90": 76.19999999999636,
+            "max": 76.19999999999636
+          },
+          "noOpportunityFraction": {
+            "min": 0.5354999999999773,
+            "median": 0.6147916666666314,
+            "p90": 0.6390288593678162,
+            "max": 0.6390288593678162
+          },
+          "longestEarlyGap": {
+            "min": 4.650000000000009,
+            "median": 4.72500000000001,
+            "p90": 4.950000000000017,
+            "max": 4.950000000000017
+          },
+          "clearsPerActiveMinute": {
+            "min": 14.5,
+            "median": 16.245533669262482,
+            "p90": 18.0,
+            "max": 18.0
+          },
+          "tracesPerActiveMinute": {
+            "min": 0.5497022446174988,
+            "median": 2.25,
+            "p90": 3.5,
+            "max": 3.5
+          },
+          "presentationFraction": {
+            "min": 0.485000000000001,
+            "median": 0.5037916666666675,
+            "p90": 0.5249166666666676,
+            "max": 0.5249166666666676
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.23637196518552508,
+            "median": 0.2486666666666672,
+            "p90": 0.2740000000000007,
+            "max": 0.2740000000000007
+          },
+          "startsDuringPresentation": 76,
+          "maximumPendingPresentations": 2,
+          "deadlineCancelledTraces": 0,
+          "traceStarts": 36,
+          "exchangeStarts": 0,
+          "exchanges": 0,
+          "exchangeRejections": 0,
+          "heldFraction": {
+            "min": 0.009894640403114769,
+            "median": 0.042041666666664854,
+            "p90": 0.0670000000000001,
+            "max": 0.0670000000000001
+          },
+          "score": {
+            "min": 104,
+            "median": 121.5,
+            "p90": 135,
+            "max": 135
+          },
+          "showers": {
+            "min": 38,
+            "median": 39.5,
+            "p90": 40,
+            "max": 40
+          },
+          "deferred": 13,
+          "lateness": {
+            "min": 0,
+            "median": 0,
+            "p90": 0,
+            "max": 0.3100000000000014
+          },
+          "deliveredIntervals": {
+            "min": 1.7999999999999998,
+            "median": 3,
+            "p90": 4.079999999999977,
+            "max": 4.55999999999999
+          },
+          "maxHeight": {
+            "min": 4,
+            "median": 6.5,
+            "p90": 7,
+            "max": 7
+          },
+          "minimumIncomingHeadroom": {
+            "min": 0,
+            "median": 1.5,
+            "p90": 4,
+            "max": 4
+          }
+        },
+        "full-motion-model/trace-oriented/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "firstClear": {
+            "min": 1.35,
+            "median": 1.35,
+            "p90": 1.35,
+            "max": 1.35
+          },
+          "noOpportunitySeconds": {
+            "min": 46.54999999999951,
+            "median": 52.059999999998745,
+            "p90": 57.39999999999925,
+            "max": 57.39999999999925
+          },
+          "noOpportunityFraction": {
+            "min": 0.3879166666666626,
+            "median": 0.43383333333332286,
+            "p90": 0.4783333333333271,
+            "max": 0.4783333333333271
+          },
+          "longestEarlyGap": {
+            "min": 2.4999999999999996,
+            "median": 2.6500000000000012,
+            "p90": 3.650000000000002,
+            "max": 3.650000000000002
+          },
+          "clearsPerActiveMinute": {
+            "min": 18.5,
+            "median": 21.0,
+            "p90": 22.0,
+            "max": 22.0
+          },
+          "tracesPerActiveMinute": {
+            "min": 2.5,
+            "median": 3.25,
+            "p90": 4.5,
+            "max": 4.5
+          },
+          "presentationFraction": {
+            "min": 0.6249999999999958,
+            "median": 0.642166666666665,
+            "p90": 0.671083333333329,
+            "max": 0.671083333333329
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.30833333333332913,
+            "median": 0.323499999999998,
+            "p90": 0.36841666666666734,
+            "max": 0.36841666666666734
+          },
+          "startsDuringPresentation": 74,
+          "maximumPendingPresentations": 2,
+          "deadlineCancelledTraces": 0,
+          "traceStarts": 55,
+          "exchangeStarts": 0,
+          "exchanges": 0,
+          "exchangeRejections": 0,
+          "heldFraction": {
+            "min": 0.04900000000000035,
+            "median": 0.06800000000000142,
+            "p90": 0.08900000000000188,
+            "max": 0.08900000000000188
+          },
+          "score": {
+            "min": 143,
+            "median": 159.5,
+            "p90": 168,
+            "max": 168
+          },
+          "showers": {
+            "min": 52,
+            "median": 53.0,
+            "p90": 54,
+            "max": 54
+          },
+          "deferred": 159,
+          "lateness": {
+            "min": 0,
+            "median": 0,
+            "p90": 0.21000000000000796,
+            "max": 0.510000000000133
+          },
+          "deliveredIntervals": {
+            "min": 1.7000000000000028,
+            "median": 2,
+            "p90": 3.080000000000041,
+            "max": 4.9600000000001785
+          },
+          "maxHeight": {
+            "min": 5,
+            "median": 6.0,
+            "p90": 7,
+            "max": 7
+          },
+          "minimumIncomingHeadroom": {
+            "min": 1,
+            "median": 2.5,
+            "p90": 3,
+            "max": 3
+          }
+        },
+        "full-motion-model/setup-first/openingV1": {
+          "rounds": 8,
+          "overflows": 0,
+          "firstClear": {
+            "min": 1.35,
+            "median": 1.35,
+            "p90": 1.35,
+            "max": 1.35
+          },
+          "noOpportunitySeconds": {
+            "min": 57.69999999999801,
+            "median": 63.26999999999761,
+            "p90": 65.75999999999799,
+            "max": 65.75999999999799
+          },
+          "noOpportunityFraction": {
+            "min": 0.4808333333333168,
+            "median": 0.52724999999998,
+            "p90": 0.5479999999999833,
+            "max": 0.5479999999999833
+          },
+          "longestEarlyGap": {
+            "min": 2.6999999999999957,
+            "median": 4.500000000000003,
+            "p90": 4.950000000000017,
+            "max": 4.950000000000017
+          },
+          "clearsPerActiveMinute": {
+            "min": 15.5,
+            "median": 16.5,
+            "p90": 18.0,
+            "max": 18.0
+          },
+          "tracesPerActiveMinute": {
+            "min": 0.5,
+            "median": 1.0,
+            "p90": 2.0,
+            "max": 2.0
+          },
+          "presentationFraction": {
+            "min": 0.5311666666666686,
+            "median": 0.554249999999998,
+            "p90": 0.5672500000000013,
+            "max": 0.5672500000000013
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.2569999999999967,
+            "median": 0.29029166666666906,
+            "p90": 0.32500000000000095,
+            "max": 0.32500000000000095
+          },
+          "startsDuringPresentation": 80,
+          "maximumPendingPresentations": 2,
+          "deadlineCancelledTraces": 0,
+          "traceStarts": 17,
+          "exchangeStarts": 123,
+          "exchanges": 121,
+          "exchangeRejections": 0,
+          "heldFraction": {
+            "min": 0.06716666666666717,
+            "median": 0.08633333333333333,
+            "p90": 0.09850000000000056,
+            "max": 0.09850000000000056
+          },
+          "score": {
+            "min": 118,
+            "median": 124.0,
+            "p90": 128,
+            "max": 128
+          },
+          "showers": {
+            "min": 37,
+            "median": 38.0,
+            "p90": 39,
+            "max": 39
+          },
+          "deferred": 26,
+          "lateness": {
+            "min": 0,
+            "median": 0.0,
+            "p90": 0,
+            "max": 0.4100000000003803
+          },
+          "deliveredIntervals": {
+            "min": 1.7999999999999998,
+            "median": 3.0,
+            "p90": 3.610000000000227,
+            "max": 4.82000000000005
+          },
+          "maxHeight": {
+            "min": 3,
+            "median": 5.0,
+            "p90": 7,
+            "max": 7
+          },
+          "minimumIncomingHeadroom": {
+            "min": 1,
+            "median": 3.0,
+            "p90": 5,
+            "max": 5
+          }
+        },
+        "full-motion-model/setup-first/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "firstClear": {
+            "min": 1.35,
+            "median": 1.35,
+            "p90": 1.35,
+            "max": 1.35
+          },
+          "noOpportunitySeconds": {
+            "min": 30.649999999999707,
+            "median": 36.6749999999998,
+            "p90": 41.79999999999959,
+            "max": 41.79999999999959
+          },
+          "noOpportunityFraction": {
+            "min": 0.25541666666666424,
+            "median": 0.30562499999999837,
+            "p90": 0.34833333333332994,
+            "max": 0.34833333333332994
+          },
+          "longestEarlyGap": {
+            "min": 1.8000000000000003,
+            "median": 2.650000000000003,
+            "p90": 2.850000000000003,
+            "max": 2.850000000000003
+          },
+          "clearsPerActiveMinute": {
+            "min": 16.0,
+            "median": 19.5,
+            "p90": 20.0,
+            "max": 20.0
+          },
+          "tracesPerActiveMinute": {
+            "min": 1.5,
+            "median": 2.25,
+            "p90": 3.5,
+            "max": 3.5
+          },
+          "presentationFraction": {
+            "min": 0.6324999999999971,
+            "median": 0.6677083333333329,
+            "p90": 0.6920833333333346,
+            "max": 0.6920833333333346
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.34450000000000036,
+            "median": 0.37862499999999766,
+            "p90": 0.4429166666666662,
+            "max": 0.4429166666666662
+          },
+          "startsDuringPresentation": 151,
+          "maximumPendingPresentations": 2,
+          "deadlineCancelledTraces": 0,
+          "traceStarts": 36,
+          "exchangeStarts": 169,
+          "exchanges": 169,
+          "exchangeRejections": 0,
+          "heldFraction": {
+            "min": 0.11083333333333392,
+            "median": 0.13275000000000076,
+            "p90": 0.15416666666666792,
+            "max": 0.15416666666666792
+          },
+          "score": {
+            "min": 141,
+            "median": 153.5,
+            "p90": 159,
+            "max": 159
+          },
+          "showers": {
+            "min": 47,
+            "median": 48.5,
+            "p90": 50,
+            "max": 50
+          },
+          "deferred": 179,
+          "lateness": {
+            "min": 0,
+            "median": 0,
+            "p90": 0.3100000000000165,
+            "max": 0.510000000000062
+          },
+          "deliveredIntervals": {
+            "min": 1.6999999999999993,
+            "median": 2.5,
+            "p90": 3.110000000000028,
+            "max": 4.830000000000084
+          },
+          "maxHeight": {
+            "min": 5,
+            "median": 5.5,
+            "p90": 6,
+            "max": 6
+          },
+          "minimumIncomingHeadroom": {
+            "min": 2,
+            "median": 3.0,
+            "p90": 4,
+            "max": 4
+          }
+        },
+        "quiet-model/largest-clear/openingV1": {
+          "rounds": 8,
+          "overflows": 1,
+          "firstClear": {
+            "min": 0.45,
+            "median": 0.45,
+            "p90": 0.45,
+            "max": 0.45
+          },
+          "noOpportunitySeconds": {
+            "min": 90.59999999999613,
+            "median": 100.9449999999949,
+            "p90": 104.71999999999547,
+            "max": 104.71999999999547
+          },
+          "noOpportunityFraction": {
+            "min": 0.7549999999999677,
+            "median": 0.8424999999999603,
+            "p90": 0.8726666666666288,
+            "max": 0.8726666666666288
+          },
+          "longestEarlyGap": {
+            "min": 5.5000000000000036,
+            "median": 5.800000000000001,
+            "p90": 5.800000000000008,
+            "max": 5.800000000000008
+          },
+          "clearsPerActiveMinute": {
+            "min": 16.0,
+            "median": 16.77738434654649,
+            "p90": 19.0,
+            "max": 19.0
+          },
+          "tracesPerActiveMinute": {
+            "min": 0.5,
+            "median": 1.5,
+            "p90": 3.0,
+            "max": 3.0
+          },
+          "presentationFraction": {
+            "min": 0.09000000000000123,
+            "median": 0.09292372926821885,
+            "p90": 0.09750000000000147,
+            "max": 0.09750000000000147
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.03125000000000041,
+            "median": 0.03420833333333355,
+            "p90": 0.04000000000000068,
+            "max": 0.04000000000000068
+          },
+          "startsDuringPresentation": 2,
+          "maximumPendingPresentations": 1,
+          "deadlineCancelledTraces": 0,
+          "traceStarts": 27,
+          "exchangeStarts": 0,
+          "exchanges": 0,
+          "exchangeRejections": 0,
+          "heldFraction": {
+            "min": 0.008999999999999809,
+            "median": 0.03200000000000025,
+            "p90": 0.05800000000000029,
+            "max": 0.05800000000000029
+          },
+          "score": {
+            "min": 104,
+            "median": 124.5,
+            "p90": 139,
+            "max": 139
+          },
+          "showers": {
+            "min": 38,
+            "median": 40.0,
+            "p90": 41,
+            "max": 41
+          },
+          "deferred": 0,
+          "lateness": {
+            "min": 0,
+            "median": 0,
+            "p90": 0,
+            "max": 0
+          },
+          "deliveredIntervals": {
+            "min": 1.7999999999999998,
+            "median": 3,
+            "p90": 3,
+            "max": 5.159999999999954
+          },
+          "maxHeight": {
+            "min": 4,
+            "median": 6.5,
+            "p90": 7,
+            "max": 7
+          },
+          "minimumIncomingHeadroom": {
+            "min": 0,
+            "median": 1.5,
+            "p90": 4,
+            "max": 4
+          }
+        },
+        "quiet-model/largest-clear/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 2,
+          "firstClear": {
+            "min": 0.45,
+            "median": 0.45,
+            "p90": 0.45,
+            "max": 0.45
+          },
+          "noOpportunitySeconds": {
+            "min": 60.74999999999896,
+            "median": 87.88499999999416,
+            "p90": 95.35999999999447,
+            "max": 95.35999999999447
+          },
+          "noOpportunityFraction": {
+            "min": 0.64941666666663,
+            "median": 0.776525132882075,
+            "p90": 0.8043161657619353,
+            "max": 0.8043161657619353
+          },
+          "longestEarlyGap": {
+            "min": 3.5999999999999988,
+            "median": 3.774999999999999,
+            "p90": 4.350000000000026,
+            "max": 4.350000000000026
+          },
+          "clearsPerActiveMinute": {
+            "min": 22.02592635080877,
+            "median": 24.0,
+            "p90": 26.0,
+            "max": 26.0
+          },
+          "tracesPerActiveMinute": {
+            "min": 0.7943863365550113,
+            "median": 2.75,
+            "p90": 5.0,
+            "max": 5.0
+          },
+          "presentationFraction": {
+            "min": 0.1252499999999959,
+            "median": 0.13062500000000177,
+            "p90": 0.13750000000000195,
+            "max": 0.13750000000000195
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.043019387403923554,
+            "median": 0.050000000000000724,
+            "p90": 0.05500000000000085,
+            "max": 0.05500000000000085
+          },
+          "startsDuringPresentation": 5,
+          "maximumPendingPresentations": 1,
+          "deadlineCancelledTraces": 0,
+          "traceStarts": 43,
+          "exchangeStarts": 0,
+          "exchanges": 0,
+          "exchangeRejections": 0,
+          "heldFraction": {
+            "min": 0.0142989540579899,
+            "median": 0.055500000000001284,
+            "p90": 0.09600000000000199,
+            "max": 0.09600000000000199
+          },
+          "score": {
+            "min": 104,
+            "median": 180.5,
+            "p90": 194,
+            "max": 194
+          },
+          "showers": {
+            "min": 38,
+            "median": 55.5,
+            "p90": 58,
+            "max": 58
+          },
+          "deferred": 0,
+          "lateness": {
+            "min": 0,
+            "median": 0,
+            "p90": 0,
+            "max": 0
+          },
+          "deliveredIntervals": {
+            "min": 1.6999999999999993,
+            "median": 2,
+            "p90": 2.77999999999998,
+            "max": 4.159999999999954
+          },
+          "maxHeight": {
+            "min": 6,
+            "median": 7.0,
+            "p90": 7,
+            "max": 7
+          },
+          "minimumIncomingHeadroom": {
+            "min": 0,
+            "median": 1.0,
+            "p90": 3,
+            "max": 3
+          }
+        },
+        "quiet-model/height-safety/openingV1": {
+          "rounds": 8,
+          "overflows": 1,
+          "firstClear": {
+            "min": 0.45,
+            "median": 0.45,
+            "p90": 0.45,
+            "max": 0.45
+          },
+          "noOpportunitySeconds": {
+            "min": 90.59999999999613,
+            "median": 100.94499999999579,
+            "p90": 104.86999999999549,
+            "max": 104.86999999999549
+          },
+          "noOpportunityFraction": {
+            "min": 0.7549999999999677,
+            "median": 0.8449999999999669,
+            "p90": 0.873916666666629,
+            "max": 0.873916666666629
+          },
+          "longestEarlyGap": {
+            "min": 5.5000000000000036,
+            "median": 5.800000000000001,
+            "p90": 5.800000000000008,
+            "max": 5.800000000000008
+          },
+          "clearsPerActiveMinute": {
+            "min": 15.5,
+            "median": 16.52738434654649,
+            "p90": 18.5,
+            "max": 18.5
+          },
+          "tracesPerActiveMinute": {
+            "min": 0.5,
+            "median": 1.75,
+            "p90": 3.0,
+            "max": 3.0
+          },
+          "presentationFraction": {
+            "min": 0.08750000000000127,
+            "median": 0.0918403959348858,
+            "p90": 0.0975000000000013,
+            "max": 0.0975000000000013
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.03125000000000041,
+            "median": 0.03375000000000046,
+            "p90": 0.037500000000000464,
+            "max": 0.037500000000000464
+          },
+          "startsDuringPresentation": 2,
+          "maximumPendingPresentations": 1,
+          "deadlineCancelledTraces": 0,
+          "traceStarts": 29,
+          "exchangeStarts": 0,
+          "exchanges": 0,
+          "exchangeRejections": 0,
+          "heldFraction": {
+            "min": 0.008999999999999809,
+            "median": 0.03650000000000042,
+            "p90": 0.060000000000000456,
+            "max": 0.060000000000000456
+          },
+          "score": {
+            "min": 104,
+            "median": 122.0,
+            "p90": 137,
+            "max": 137
+          },
+          "showers": {
+            "min": 38,
+            "median": 40.0,
+            "p90": 41,
+            "max": 41
+          },
+          "deferred": 0,
+          "lateness": {
+            "min": 0,
+            "median": 0.0,
+            "p90": 0,
+            "max": 0
+          },
+          "deliveredIntervals": {
+            "min": 1.7999999999999998,
+            "median": 3.0,
+            "p90": 3,
+            "max": 4.55999999999999
+          },
+          "maxHeight": {
+            "min": 4,
+            "median": 6.5,
+            "p90": 7,
+            "max": 7
+          },
+          "minimumIncomingHeadroom": {
+            "min": 0,
+            "median": 1.5,
+            "p90": 4,
+            "max": 4
+          }
+        },
+        "quiet-model/height-safety/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 3,
+          "firstClear": {
+            "min": 0.45,
+            "median": 0.45,
+            "p90": 0.45,
+            "max": 0.45
+          },
+          "noOpportunitySeconds": {
+            "min": 60.74999999999896,
+            "median": 87.88499999999416,
+            "p90": 96.59999999999339,
+            "max": 96.59999999999339
+          },
+          "noOpportunityFraction": {
+            "min": 0.64941666666663,
+            "median": 0.7809999999999486,
+            "p90": 0.8049999999999449,
+            "max": 0.8049999999999449
+          },
+          "longestEarlyGap": {
+            "min": 3.5999999999999988,
+            "median": 3.774999999999999,
+            "p90": 4.650000000000016,
+            "max": 4.650000000000016
+          },
+          "clearsPerActiveMinute": {
+            "min": 21.296374545761847,
+            "median": 23.915795048325172,
+            "p90": 27.5,
+            "max": 27.5
+          },
+          "tracesPerActiveMinute": {
+            "min": 0.7943863365550113,
+            "median": 2.859773371104816,
+            "p90": 5.0,
+            "max": 5.0
+          },
+          "presentationFraction": {
+            "min": 0.12169356883292662,
+            "median": 0.12937500000000185,
+            "p90": 0.1412500000000021,
+            "max": 0.1412500000000021
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.04249291784702566,
+            "median": 0.04875000000000067,
+            "p90": 0.05750000000000096,
+            "max": 0.05750000000000096
+          },
+          "startsDuringPresentation": 5,
+          "maximumPendingPresentations": 1,
+          "deadlineCancelledTraces": 0,
+          "traceStarts": 43,
+          "exchangeStarts": 0,
+          "exchanges": 0,
+          "exchangeRejections": 0,
+          "heldFraction": {
+            "min": 0.0142989540579899,
+            "median": 0.055500000000001284,
+            "p90": 0.09600000000000199,
+            "max": 0.09600000000000199
+          },
+          "score": {
+            "min": 104,
+            "median": 174.0,
+            "p90": 198,
+            "max": 198
+          },
+          "showers": {
+            "min": 38,
+            "median": 55.0,
+            "p90": 58,
+            "max": 58
+          },
+          "deferred": 0,
+          "lateness": {
+            "min": 0,
+            "median": 0.0,
+            "p90": 0,
+            "max": 0
+          },
+          "deliveredIntervals": {
+            "min": 1.6999999999999993,
+            "median": 2.0,
+            "p90": 2.77999999999998,
+            "max": 4.060000000000059
+          },
+          "maxHeight": {
+            "min": 6,
+            "median": 6.5,
+            "p90": 7,
+            "max": 7
+          },
+          "minimumIncomingHeadroom": {
+            "min": 0,
+            "median": 1.5,
+            "p90": 3,
+            "max": 3
+          }
+        },
+        "quiet-model/trace-oriented/openingV1": {
+          "rounds": 8,
+          "overflows": 1,
+          "firstClear": {
+            "min": 0.45,
+            "median": 0.45,
+            "p90": 0.45,
+            "max": 0.45
+          },
+          "noOpportunitySeconds": {
+            "min": 90.59999999999613,
+            "median": 100.19499999999559,
+            "p90": 102.02999999999547,
+            "max": 102.02999999999547
+          },
+          "noOpportunityFraction": {
+            "min": 0.7549999999999677,
+            "median": 0.8407499999999665,
+            "p90": 0.8594684079830496,
+            "max": 0.8594684079830496
+          },
+          "longestEarlyGap": {
+            "min": 5.5000000000000036,
+            "median": 5.800000000000001,
+            "p90": 5.800000000000008,
+            "max": 5.800000000000008
+          },
+          "clearsPerActiveMinute": {
+            "min": 15.0,
+            "median": 16.52738434654649,
+            "p90": 18.0,
+            "max": 18.0
+          },
+          "tracesPerActiveMinute": {
+            "min": 0.5518256231030996,
+            "median": 2.25,
+            "p90": 3.5,
+            "max": 3.5
+          },
+          "presentationFraction": {
+            "min": 0.08625000000000123,
+            "median": 0.09134039593488341,
+            "p90": 0.09500000000000151,
+            "max": 0.09500000000000151
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.03125000000000041,
+            "median": 0.03375000000000046,
+            "p90": 0.036250000000000476,
+            "max": 0.036250000000000476
+          },
+          "startsDuringPresentation": 2,
+          "maximumPendingPresentations": 1,
+          "deadlineCancelledTraces": 0,
+          "traceStarts": 36,
+          "exchangeStarts": 0,
+          "exchanges": 0,
+          "exchangeRejections": 0,
+          "heldFraction": {
+            "min": 0.00993286121585558,
+            "median": 0.04250000000000037,
+            "p90": 0.07100000000000087,
+            "max": 0.07100000000000087
+          },
+          "score": {
+            "min": 104,
+            "median": 124.5,
+            "p90": 135,
+            "max": 135
+          },
+          "showers": {
+            "min": 38,
+            "median": 40.0,
+            "p90": 41,
+            "max": 41
+          },
+          "deferred": 0,
+          "lateness": {
+            "min": 0,
+            "median": 0,
+            "p90": 0,
+            "max": 0
+          },
+          "deliveredIntervals": {
+            "min": 1.7999999999999998,
+            "median": 3,
+            "p90": 4.079999999999977,
+            "max": 4.55999999999999
+          },
+          "maxHeight": {
+            "min": 4,
+            "median": 6.5,
+            "p90": 7,
+            "max": 7
+          },
+          "minimumIncomingHeadroom": {
+            "min": 0,
+            "median": 1.5,
+            "p90": 4,
+            "max": 4
+          }
+        },
+        "quiet-model/trace-oriented/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 2,
+          "firstClear": {
+            "min": 0.45,
+            "median": 0.45,
+            "p90": 0.45,
+            "max": 0.45
+          },
+          "noOpportunitySeconds": {
+            "min": 60.74999999999896,
+            "median": 87.01499999999436,
+            "p90": 93.99999999999433,
+            "max": 93.99999999999433
+          },
+          "noOpportunityFraction": {
+            "min": 0.64941666666663,
+            "median": 0.7687693578847657,
+            "p90": 0.8043161657619353,
+            "max": 0.8043161657619353
+          },
+          "longestEarlyGap": {
+            "min": 3.5999999999999988,
+            "median": 3.774999999999999,
+            "p90": 4.650000000000016,
+            "max": 4.650000000000016
+          },
+          "clearsPerActiveMinute": {
+            "min": 21.5,
+            "median": 23.665795048325172,
+            "p90": 25.5,
+            "max": 25.5
+          },
+          "tracesPerActiveMinute": {
+            "min": 0.7943863365550113,
+            "median": 3.25,
+            "p90": 5.0,
+            "max": 5.0
+          },
+          "presentationFraction": {
+            "min": 0.12250000000000179,
+            "median": 0.1269999999999994,
+            "p90": 0.13375000000000198,
+            "max": 0.13375000000000198
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.04249291784702566,
+            "median": 0.048125000000000646,
+            "p90": 0.050249999999995916,
+            "max": 0.050249999999995916
+          },
+          "startsDuringPresentation": 5,
+          "maximumPendingPresentations": 1,
+          "deadlineCancelledTraces": 0,
+          "traceStarts": 52,
+          "exchangeStarts": 0,
+          "exchanges": 0,
+          "exchangeRejections": 0,
+          "heldFraction": {
+            "min": 0.0142989540579899,
+            "median": 0.06450000000000129,
+            "p90": 0.09600000000000199,
+            "max": 0.09600000000000199
+          },
+          "score": {
+            "min": 104,
+            "median": 176.0,
+            "p90": 190,
+            "max": 190
+          },
+          "showers": {
+            "min": 38,
+            "median": 54.5,
+            "p90": 56,
+            "max": 56
+          },
+          "deferred": 0,
+          "lateness": {
+            "min": 0,
+            "median": 0.0,
+            "p90": 0,
+            "max": 0
+          },
+          "deliveredIntervals": {
+            "min": 1.6999999999999993,
+            "median": 2.0,
+            "p90": 3.079999999999977,
+            "max": 4.060000000000059
+          },
+          "maxHeight": {
+            "min": 6,
+            "median": 6.5,
+            "p90": 7,
+            "max": 7
+          },
+          "minimumIncomingHeadroom": {
+            "min": 0,
+            "median": 1.5,
+            "p90": 3,
+            "max": 3
+          }
+        },
+        "quiet-model/setup-first/openingV1": {
+          "rounds": 8,
+          "overflows": 0,
+          "firstClear": {
+            "min": 0.45,
+            "median": 0.45,
+            "p90": 0.45,
+            "max": 0.45
+          },
+          "noOpportunitySeconds": {
+            "min": 88.62999999999607,
+            "median": 92.07499999999604,
+            "p90": 96.09999999999565,
+            "max": 96.09999999999565
+          },
+          "noOpportunityFraction": {
+            "min": 0.7385833333333006,
+            "median": 0.7672916666666337,
+            "p90": 0.8008333333332971,
+            "max": 0.8008333333332971
+          },
+          "longestEarlyGap": {
+            "min": 5.349999999999997,
+            "median": 5.575000000000002,
+            "p90": 5.800000000000008,
+            "max": 5.800000000000008
+          },
+          "clearsPerActiveMinute": {
+            "min": 16.0,
+            "median": 17.0,
+            "p90": 18.0,
+            "max": 18.0
+          },
+          "tracesPerActiveMinute": {
+            "min": 1.0,
+            "median": 1.5,
+            "p90": 2.0,
+            "max": 2.0
+          },
+          "presentationFraction": {
+            "min": 0.10125000000000138,
+            "median": 0.10687500000000152,
+            "p90": 0.11000000000000168,
+            "max": 0.11000000000000168
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.04375000000000059,
+            "median": 0.046250000000000596,
+            "p90": 0.05125000000000087,
+            "max": 0.05125000000000087
+          },
+          "startsDuringPresentation": 3,
+          "maximumPendingPresentations": 1,
+          "deadlineCancelledTraces": 0,
+          "traceStarts": 25,
+          "exchangeStarts": 108,
+          "exchanges": 108,
+          "exchangeRejections": 0,
+          "heldFraction": {
+            "min": 0.061666666666667126,
+            "median": 0.08841666666666692,
+            "p90": 0.10600000000000026,
+            "max": 0.10600000000000026
+          },
+          "score": {
+            "min": 124,
+            "median": 127.5,
+            "p90": 134,
+            "max": 134
+          },
+          "showers": {
+            "min": 37,
+            "median": 38.0,
+            "p90": 39,
+            "max": 39
+          },
+          "deferred": 0,
+          "lateness": {
+            "min": 0,
+            "median": 0.0,
+            "p90": 0,
+            "max": 0
+          },
+          "deliveredIntervals": {
+            "min": 1.7999999999999998,
+            "median": 3.0,
+            "p90": 3.5,
+            "max": 5.060000000000059
+          },
+          "maxHeight": {
+            "min": 4,
+            "median": 5.5,
+            "p90": 7,
+            "max": 7
+          },
+          "minimumIncomingHeadroom": {
+            "min": 1,
+            "median": 4.0,
+            "p90": 4,
+            "max": 4
+          }
+        },
+        "quiet-model/setup-first/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "firstClear": {
+            "min": 0.45,
+            "median": 0.45,
+            "p90": 0.45,
+            "max": 0.45
+          },
+          "noOpportunitySeconds": {
+            "min": 76.9199999999956,
+            "median": 80.81999999999529,
+            "p90": 86.30999999999534,
+            "max": 86.30999999999534
+          },
+          "noOpportunityFraction": {
+            "min": 0.6409999999999633,
+            "median": 0.6734999999999607,
+            "p90": 0.7192499999999612,
+            "max": 0.7192499999999612
+          },
+          "longestEarlyGap": {
+            "min": 3.549999999999997,
+            "median": 3.6500000000000163,
+            "p90": 4.350000000000019,
+            "max": 4.350000000000019
+          },
+          "clearsPerActiveMinute": {
+            "min": 21.0,
+            "median": 22.75,
+            "p90": 24.5,
+            "max": 24.5
+          },
+          "tracesPerActiveMinute": {
+            "min": 2.0,
+            "median": 2.25,
+            "p90": 3.5,
+            "max": 3.5
+          },
+          "presentationFraction": {
+            "min": 0.14125000000000193,
+            "median": 0.14375000000000204,
+            "p90": 0.15250000000000208,
+            "max": 0.15250000000000208
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.05750000000000359,
+            "median": 0.06062500000000291,
+            "p90": 0.06833333333333552,
+            "max": 0.06833333333333552
+          },
+          "startsDuringPresentation": 10,
+          "maximumPendingPresentations": 1,
+          "deadlineCancelledTraces": 0,
+          "traceStarts": 39,
+          "exchangeStarts": 151,
+          "exchanges": 151,
+          "exchangeRejections": 0,
+          "heldFraction": {
+            "min": 0.10033333333333427,
+            "median": 0.12666666666666807,
+            "p90": 0.16483333333333447,
+            "max": 0.16483333333333447
+          },
+          "score": {
+            "min": 170,
+            "median": 174.0,
+            "p90": 179,
+            "max": 179
+          },
+          "showers": {
+            "min": 50,
+            "median": 52.0,
+            "p90": 53,
+            "max": 53
+          },
+          "deferred": 0,
+          "lateness": {
+            "min": 0,
+            "median": 0.0,
+            "p90": 0,
+            "max": 0
+          },
+          "deliveredIntervals": {
+            "min": 1.6999999999999993,
+            "median": 2.200000000000003,
+            "p90": 3,
+            "max": 4.32000000000005
+          },
+          "maxHeight": {
+            "min": 4,
+            "median": 5.5,
+            "p90": 7,
+            "max": 7
+          },
+          "minimumIncomingHeadroom": {
+            "min": 1,
+            "median": 4.0,
+            "p90": 4,
+            "max": 4
+          }
+        }
+      },
+      "parityCommits": 11241,
+      "runsSHA256": "5eb90a0ae5bad010440708187a62c676ec1636c91abbac9d6b2a43b1047708b1"
+    }
+  ],
+  "repeat": {
+    "command": [
+      "python3",
+      "tools/mechanics/compare-pacing.py",
+      "--seeds",
+      "2",
+      "--seconds",
+      "20",
+      "--include-setups",
+      "--candidate-cadence",
+      "announcedCycleV2",
+      "--output",
+      "artifacts/calibration-gap-links/repeat"
+    ],
+    "identicalRunObjects": true,
+    "runs": 32
+  },
+  "limits": "Virtual clock and modeled presentation; fixed canonical full-component traces, not optimal subsets or human decisions. Source timings, not observed frame performance. Most 120-second runs censored.",
+  "native": {
+    "source": "519f6f8767ad8ad83c0ca059b2e2407f73c8e820",
+    "runtimeBase": "1ed62906973ba93a8e03c41251a9b139c1c10b0b",
+    "dirtyInputs": "mechanics tooling only; no app/native test input differences from tested HEAD",
+    "simulator": "iPhone 16 Pro Max / iOS 27.0 (24A434)",
+    "udid": "5107CBBF-108B-4B94-9125-A873F948A38C",
+    "configuration": "Debug",
+    "motion": "Calm Effects explicitly NO; system Reduce Motion restored OFF by prior native check",
+    "resultBundle": "artifacts/calibration-native/gap-links-fresh.xcresult",
+    "tests": [
+      {
+        "name": "ConstellationTraceNativeTests/testNativeGapSwipeAndRepeatedAttempt",
+        "seconds": 11.223,
+        "passed": true
+      },
+      {
+        "name": "FreshSkyPlaytests/testFreshAutomaticVisibleMatchesSeed180",
+        "seconds": 52.099,
+        "passed": true,
+        "attempts": 9,
+        "nonScoring": 1,
+        "skipped": 8,
+        "score": 31,
+        "showers": 22
+      },
+      {
+        "name": "FreshSkyPlaytests/testFreshAutomaticVisibleMatchesSeed5",
+        "seconds": 51.94,
+        "passed": true,
+        "attempts": 8,
+        "nonScoring": 0,
+        "skipped": 9,
+        "score": 38,
+        "showers": 22
+      }
+    ],
+    "image": {
+      "path": "docs/evidence/calibration-timing-and-arrange-2026-10-18/dev-1ed6290__fresh-storm-dusk__iphone-16-pro-max__default-text.jpg",
+      "sha256": "7701f91a436cb5371cc1f4d8a63c3274775593be953ae32d84a395b0ffaa326f",
+      "attachment": "artifacts/calibration-native/gap-links-fresh-attachments/0D626641-3221-4ADF-9411-238750825E54.png"
+    }
+  }
+}

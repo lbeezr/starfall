@@ -11,6 +11,7 @@ import tempfile
 
 ROOT = Path(__file__).resolve().parents[2]
 SOURCE = Path(__file__).with_name('opal-choice-study.swift')
+TRACE = Path(__file__).with_name('CalibrationTrace.swift')
 
 
 def main():
@@ -28,7 +29,7 @@ def main():
         parser.error(f'Bounds: seed-start 0–10000, seeds 1–200, showers 6–{maximum}')
     args.output.mkdir(parents=True, exist_ok=False)
     files = sorted((ROOT / 'Sources/StarfallCore').glob('*.swift'))
-    inputs = [Path(__file__), SOURCE, *files]
+    inputs = [Path(__file__), SOURCE, TRACE, *files]
     digest = lambda: {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest() for p in inputs}
     hashes = digest()
     provenance = {'source': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
@@ -42,7 +43,7 @@ def main():
     with tempfile.TemporaryDirectory(prefix='starfall-opal-choices-') as directory:
         temporary = Path(directory)
         copied = []
-        for file in [*files, SOURCE]:
+        for file in [*files, SOURCE, TRACE]:
             destination = temporary / file.name
             destination.write_bytes(file.read_bytes())
             copied.append(str(destination))

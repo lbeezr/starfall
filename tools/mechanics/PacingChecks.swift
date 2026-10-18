@@ -3,6 +3,7 @@ import StarfallCore
 
 extension PacingMeasure {
     @MainActor static func checks() {
+        checkCalibrationTraces()
         // A recorded accepted-action script, replayed independently under both timing lookups.
         // Cadence lookup must never affect rule state or RNG, even after clear-induced relief.
         for seed in UInt64(0)..<16 {
@@ -94,15 +95,7 @@ extension PacingMeasure {
         let start = (0..<49).map { Cell($0/7,$0%7) }.first { fixture.constellationGroup(at: $0).count >= 5 }!
         let intent = ConstellationTraceIntent()
         let component = fixture.constellationGroup(at: start)
-        var path: [Cell] = [], visited = Set<Cell>()
-        func walk(_ cell: Cell) {
-            visited.insert(cell); path.append(cell)
-            for next in component.sorted(by: { $0.row == $1.row ? $0.column < $1.column : $0.row < $1.row })
-                where !visited.contains(next) && abs(next.row-cell.row) <= 1 && abs(next.column-cell.column) <= 1 {
-                walk(next); path.append(cell)
-            }
-        }
-        walk(start)
+        let path = calibrationTrace(component, in: fixture)!
         for finishGeneration: UInt64 in [1,2] {
             let ticket = intent.begin(start,game: fixture,generation: 1,enabled: true)
             precondition(ticket != nil)

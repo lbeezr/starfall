@@ -19,13 +19,14 @@ args.output.mkdir(parents=True,exist_ok=False)
 files=sorted((ROOT/'Sources/StarfallCore').glob('*.swift'))
 study=ROOT/'tools/mechanics/opal-choice-study.swift'
 fragment=Path(__file__).with_name('GravityOpportunityStudy.swift')
-inputs=[*files,study,fragment,Path(__file__)]
+trace=Path(__file__).with_name('CalibrationTrace.swift')
+inputs=[*files,study,fragment,trace,Path(__file__)]
 hashes=lambda:{str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in inputs}
 initial=hashes()
 with tempfile.TemporaryDirectory(prefix='starfall-gravity-supply-') as directory:
     directory=Path(directory)
     sources=[]
-    for source in files:
+    for source in [*files,trace]:
         copied=directory/source.name;copied.write_bytes(source.read_bytes());sources.append(str(copied))
     text=study.read_text()
     anchor='    static func main() throws {'
@@ -44,7 +45,7 @@ provenance={'source':subprocess.check_output(['git','rev-parse','HEAD'],text=Tru
 (args.output/'source.json').write_text(json.dumps(provenance,indent=2,sort_keys=True)+'\n')
 data=json.loads((args.output/'runs.json').read_text())
 for item in data['summaries']:
-    rounds=item.pop('rounds');item.pop('example')
+    rounds=item.pop('rounds');item.pop('example', None)
     item.update(rounds=len(rounds),pairRounds=sum(x['pairOffers']>0 for x in rounds),fieldRounds=sum(x['fieldsCreated']>0 for x in rounds),
                 fields=sum(x['fieldsCreated'] for x in rounds),overflow=sum(x['overflow'] for x in rounds),censored=sum(not x['overflow'] for x in rounds),score=sum(x['score'] for x in rounds))
 print(json.dumps(data,indent=2,sort_keys=True))

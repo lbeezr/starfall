@@ -5,24 +5,10 @@ private func cells(_ mask: UInt64) -> [Cell] {
     (0..<49).filter { mask & (1 << $0) != 0 }.map { Cell($0 / 7, $0 % 7) }
 }
 private func mask(_ cells: some Sequence<Cell>) -> UInt64 { cells.reduce(0) { $0 | bit($1) } }
-private func adjacent(_ a: Cell, _ b: Cell) -> Bool {
-    a != b && abs(a.row-b.row) <= 1 && abs(a.column-b.column) <= 1
-}
 private func walk(_ selected: UInt64, _ game: FallingSky) -> [Cell]? {
-    let ordered = cells(selected)
-    guard let first = ordered.first(where: { game.gem(at: $0)?.kind != nil }) else { return nil }
-    var seen: Set<Cell> = [first], path = [first]
-    func visit(_ cell: Cell) {
-        for next in ordered where !seen.contains(next) && adjacent(cell, next) {
-            seen.insert(next); path.append(next); visit(next); path.append(cell)
-        }
-    }
-    visit(first)
-    guard seen.count == ordered.count else { return nil }
-    precondition(path.count <= 97)
-    return path
+    calibrationTrace(Set(cells(selected)), in: game)
 }
-private func fives(_ component: UInt64, cap: Int = 256) -> [UInt64]? {
+private func fives(_ component: UInt64, in game: FallingSky, cap: Int = 256) -> [UInt64]? {
     let members = cells(component)
     guard members.count >= 5 else { return [] }
     var frontier = Set(members.map(bit))
@@ -30,7 +16,7 @@ private func fives(_ component: UInt64, cap: Int = 256) -> [UInt64]? {
         var next: Set<UInt64> = []
         for selected in frontier.sorted() {
             let current = cells(selected)
-            for cell in members where selected & bit(cell) == 0 && current.contains(where: { adjacent($0, cell) }) {
+            for cell in members where selected & bit(cell) == 0 && current.contains(where: { game.canLinkConstellation($0, to: cell) }) {
                 next.insert(selected | bit(cell))
                 if next.count > cap { return nil }
             }
@@ -77,7 +63,7 @@ private func choices(_ game: FallingSky, subsets: Bool, recipes: Bool = false) -
     let base = result.values.sorted { $0.selected < $1.selected }
     if subsets {
         for component in components.sorted() {
-            guard let partials = fives(component) else { return .init(actions: base, complete: false) }
+            guard let partials = fives(component, in: game) else { return .init(actions: base, complete: false) }
             for partial in partials { addTrace(partial) }
             if result.count > 512 { return .init(actions: base, complete: false) }
         }
@@ -225,6 +211,7 @@ private struct Summary: Codable {
         FileHandle.standardOutput.write(try encoder.encode(report))
     }
     static func checks() {
+        checkCalibrationTraces()
         // Feeding Dusk can drain a legal match to zero. Policy ranking and
         // commit assertions must use collectible reward, not face value.
         let drained = DuskFixture.zeroClear.game()
@@ -239,9 +226,18 @@ private struct Summary: Codable {
             precondition(SkyGeneration.current.phase(for: shower)?.isStorm == ([10, 12].contains(shower)))
         }
         let chain = mask((0..<6).map { Cell($0,$0) })
-        precondition(fives(chain)!.count == 2)
+        func topology(_ selected: UInt64) -> FallingSky {
+            var board: [StarfallGem?] = Array(repeating: nil, count: 49)
+            for (id, cell) in cells(selected).enumerated() { board[cell.row*7+cell.column] = StarfallGem(id: id, kind: .rose) }
+            return FallingSky(board: board, incoming: [IncomingStar(id: 99, kind: .aqua, column: 0)])
+        }
+        precondition(fives(chain, in: topology(chain))!.count == 2)
         let rectangle = mask((0..<2).flatMap { row in (0..<3).map { Cell(row,$0) } })
-        precondition(fives(rectangle)!.count == 6 && fives(rectangle, cap: 2) == nil)
+        precondition(fives(rectangle, in: topology(rectangle))!.count == 6 && fives(rectangle, in: topology(rectangle), cap: 2) == nil)
+        let gap = ConstellationFixture.singleGap.game()
+        let gapSet = mask(gap.constellationGroup(at: Cell(0,0)))
+        precondition(fives(gapSet, in: gap) == [gapSet])
+        precondition(choices(gap, subsets: true).actions.contains { $0.selected == gapSet && $0.trace != nil })
         let game = ConstellationFixture.opalChoice.game(), before = game
         let alternatives = choices(game, subsets: true)
         precondition(alternatives.complete)
