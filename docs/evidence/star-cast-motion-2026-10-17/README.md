@@ -1,17 +1,19 @@
 # Character motion candidate — October 17, 2026
 
+**Historical screenshots partly retired October 17, 2026.** Crystal Glow supersedes these individual body sheets. The whole-cast review remains because it is a documented source for Crystal Glow concept work; flight/landing and paused-turn samples remain as motion-comparison evidence. [Retirement paths, hashes and Git recovery](../../SCREENSHOTS.md#october-17-2026--superseded-cast-and-routine-prototype-frames). These findings describe the original source, not current UI; start current visual work from [the selected reference](../../design/VISUAL_REFERENCE.md).
+
 Acceptance: distinct grown/clearing expressions; front and shallow left/right views for every character; flight turn, landing squash/rock and clearing swish; sparse ambient motion; no changes to committed rules/saves/input geometry; normal animations and reduced-motion alternatives work.
 
 ## Sheets
 
 Each PNG is transparent 768×1024 with fixed 256×256 cells. Columns: front, left, right. Rows: idle, landing, grown, clearing. The source factory is authoritative; these native XCTest exports are review artifacts, not a separately loaded runtime atlas.
 
-- [Spark](Spark.png)
-- [Sunny](Sunny.png)
-- [Pip](Pip.png)
-- [Twinkle](Twinkle.png)
-- [Nova](Nova.png)
-- [Dusk](Dusk.png)
+- Spark (`Spark.png`; retired)
+- Sunny (`Sunny.png`; retired)
+- Pip (`Pip.png`; retired)
+- Twinkle (`Twinkle.png`; retired)
+- Nova (`Nova.png`; retired)
+- Dusk (`Dusk.png`; retired)
 - [Whole-cast review](material-review.png)
 
 ## Source and checks

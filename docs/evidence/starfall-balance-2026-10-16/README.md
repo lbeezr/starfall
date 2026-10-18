@@ -1,5 +1,7 @@
 # Balance controls validation — 16 October 2026
 
+**Historical screenshots partly retired October 17, 2026.** Later balance/persistence checks and compact-HUD/Observatory layouts supersede these routine board/handoff frames. The labeled Gentle/Frequent settings capture and native VoiceOver settings capture remain as distinct control/accessibility evidence. [Retirement paths, hashes and Git recovery](../../SCREENSHOTS.md#october-17-2026--superseded-cast-and-routine-prototype-frames). These findings describe the original source, not current UI; start current visual work from [the selected reference](../../design/VISUAL_REFERENCE.md).
+
 Device: dedicated **Starfall Accumulation Lab**, iPhone 17 Pro, iOS 27 simulator, UDID `FBB33D71-C642-4705-B63F-F71A3A7CA62C`. Xcode 27, arm64, shared `Starfall` scheme. No physical-device validation is claimed.
 
 ## Automated coverage
