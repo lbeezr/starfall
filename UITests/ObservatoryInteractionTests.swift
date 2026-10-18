@@ -38,6 +38,53 @@ final class ObservatoryInteractionTests: XCTestCase {
         XCTAssertEqual(app.otherElements["experiment.board"].value as? String, before)
         XCTAssertTrue(app.buttons["landing.lantern"].isHittable)
     }
+    /// Captures overlap for visual read-through; AX labels alone do not prove visible text.
+    @MainActor func testLargestTextHelpReadsThroughAndReturnsToUnchangedRound() {
+        executionTimeAllowance = 240
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchArguments = ["--starfalls-reset", "--starfalls-seed=64", "-calmEffects", "NO",
+                               "-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"]
+        app.launch(); defer { app.terminate() }
+        let menu = app.buttons["experiment.settings"]
+        XCTAssertTrue(menu.waitForExistence(timeout: 10))
+        let before = app.otherElements["experiment.board"].value as? String
+        XCTAssertNotNil(before)
+        menu.tap()
+        app.skyMenuControl("experiment.help").tap()
+        let navigation = app.navigationBars["How to play"]
+        XCTAssertTrue(navigation.waitForExistence(timeout: 5))
+        let last = app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@",
+            "Collect 18 starlight before a column fills.")).firstMatch
+        var reachedEnd = false
+        for step in 0..<48 {
+            XCTAssertEqual(app.state, .runningForeground)
+            XCTAssertTrue(navigation.exists, "Remain in help after every scroll")
+            XCTAssertTrue(app.buttons["experiment.done"].isHittable)
+            capture(app, String(format: "help-largest-step-%02d", step))
+            if last.exists, last.isHittable, last.frame.maxY <= app.frame.maxY - 40 {
+                reachedEnd = true
+                break
+            }
+            // Stay inside the reading area; never start a drag at the Home indicator.
+            app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.75))
+                .press(forDuration: 0.05,
+                       thenDragTo: app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.35)),
+                       withVelocity: .slow, thenHoldForDuration: 0)
+        }
+        XCTAssertTrue(reachedEnd, "Reach the last line with bounded, overlapping reading-area scrolls")
+        app.buttons["experiment.done"].tap()
+        XCTAssertTrue(menu.waitForExistence(timeout: 5))
+        XCTAssertEqual(app.otherElements["experiment.board"].value as? String, before)
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, "0 starlight")
+        let next = app.buttons["experiment.next"]
+        app.revealSkyMenuElement(next)
+        XCTAssertTrue(next.isHittable); XCTAssertTrue(next.isEnabled)
+        next.tap()
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "value BEGINSWITH %@", "1 showers,"),
+            object: app.otherElements["experiment.board"]).wait(timeout: 6))
+        capture(app, "help-largest-return-and-next-shower")
+    }
     @MainActor func testActualCastSparseDenseAndProjectedCornerTaps() {
         for dense in [false,true] {
             let app = launch(dense: dense)
