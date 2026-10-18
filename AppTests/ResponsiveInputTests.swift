@@ -193,6 +193,51 @@ final class ResponsiveInputTests: XCTestCase {
         }
     }
 
+    /// Native seed-28 first miss crosses shower 1 -> 2 before its later snapshot.
+    /// This checks that current-rule boundary; it does not identify the OS contact instant.
+    @MainActor func testFreshOpeningContactBeforeAndAfterDeadlineOwnsOnlyCurrentState() throws {
+        for contactBeforeDeadline in [true, false] {
+            let suite = "FreshOpeningContact.\(UUID())", defaults = UserDefaults(suiteName: suite)!
+            defer { defaults.removePersistentDomain(forName: suite) }
+            let presenter = FallingSkyRecorder(), clock = ManualRainClock()
+            let store = FallingSkyStore(defaults: defaults,
+                arguments: ["--starfalls-reset", "--starfalls-seed=28"], presenter: presenter, clock: clock)
+            store.setSuspended(false); store.callShower(); presenter.finish()
+            let target = Cell(0, 2)
+            XCTAssertEqual(store.game.turns, 1)
+            XCTAssertEqual(store.game.reward(of: store.game.group(at: target)), 3)
+            XCTAssertTrue(store.canClear(target)); XCTAssertNil(store.celebration)
+            store.togglePause()
+            let deadline = try XCTUnwrap(clock.deadline)
+            if contactBeforeDeadline {
+                clock.advance(deadline - clock.now - 0.01)
+                let hold = try XCTUnwrap(store.beginConstellationHold(at: target))
+                XCTAssertNil(clock.deadline)
+                clock.advance(0.5)
+                XCTAssertEqual(store.game.turns, 1, "An admitted touch holds the deadline")
+                store.endConstellationHold(hold)
+                store.clear(target)
+                XCTAssertEqual(store.game.score, 3)
+                XCTAssertEqual(store.game.turns, 1)
+            } else {
+                clock.advance(deadline - clock.now)
+                XCTAssertEqual(store.game.turns, 2)
+                XCTAssertFalse(store.canClear(target), "The old query is no longer an admission")
+                let afterRain = store.game
+                let hold = store.beginConstellationHold(at: target)
+                store.endConstellationHold(hold)
+                store.clear(target)
+                XCTAssertEqual(store.game, afterRain)
+                XCTAssertEqual(store.inputMessage, "Stars settling…")
+                presenter.finish()
+                XCTAssertEqual(store.game, afterRain, "Settling never replays the stale attempt")
+                XCTAssertTrue(store.canClear(target))
+                store.clear(target)
+                XCTAssertEqual(store.game.score, 3)
+            }
+        }
+    }
+
     @MainActor func testExplicitInputFailureHasReadableAndSpokenFeedbackWithoutACommit() {
         let suite = "ResponsiveAccessibleFeedback.\(UUID())", defaults = UserDefaults(suiteName: suite)!
         defer { defaults.removePersistentDomain(forName: suite) }

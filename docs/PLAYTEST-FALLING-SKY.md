@@ -2,31 +2,33 @@
 
 Use this for the current default game. The older PLAYTEST and first-playtest kit concern the original 70/18 puzzle.
 
-## Current session: Opal planning under storm pressure
+## Current session: choices and control under stellar pressure
 
-**Status: Ready to run; no participant results.** Use the single regular Starfall app, with current Opal/storm generation and the faster V2 cadence. Start a fresh survival sky; a retained sky or same-sky replay preserves its older generation/cadence, and First Light excludes these mechanics. Record the installed source/build and available seed, balance, motion, sound, text size and device. Do not replace the player's retained round without their choice of New sky.
+**Status: Ready to run; no participant results.** Use current main, a **New sky**, and the ordinary automatic game. [Fresh-survival adoption](evidence/calibration-critical-mass-2026-10-18/ADOPTION.md) selects the longer 3.0 / 2.5 / 3.5-second cycle after the opening. Existing saves and same-sky replay keep their recorded cadence. Current survival ages collectible stars toward implosion; the older Dusk/orbit comparisons below are historical. First Light remains a separate fixed objective.
 
-**Question:** Do storms change which clear a player chooses, or mainly how quickly they clear? Does Opal offer a recognizable reason to choose one clear before another? The [bounded study](evidence/opal-choice-study-2026-10-17/README.md) and [native two-clear check](evidence/opal-native-planning-2026-10-17/README.md) establish possible rewards, not human interest.
+**Recommendation:** keep the existing mechanics and baseline. Observe whether the player recognizes a useful choice and can execute it through showers, aging and celebrations. A faster score alone does not answer either question. Do not reset their retained round or install a feature checkout for this study.
 
-1. Let the player start ordinary automatic play without explaining a preferred strategy. Observe the first storm warning, three heavy showers and recovery, or record loss/stop before those points. Do not require one clear per shower or discourage the player's use of pause.
-2. Before explaining an observed choice, ask what they plan to clear or preserve and why. Record the answer and actual action separately. If questioning interrupts play, pause and label that observation as prompted/paused; do not count it as automatic-play performance.
-3. Note whether the reason concerns column height, available space, Dusk, grown value, Opal's family allocation, or the color forecast. Distinguish a changed group/order from faster tapping, and keep an explicit “no change.” Record long holds on eligible stars as well as pauses: touch-down holds the single shower deadline, so time held is not uninterrupted pressure exposure.
-4. After the round, ask what the warning/recovery meant, whether a deliberate smaller/equal clear paid off, and whether they want another sky. Keep exact short quotations and counterexamples. A player who never finds an Opal choice may be reporting frequency or legibility, not misunderstanding the rule.
-5. Only afterward, optionally demonstrate the existing Debug `opalPlanning` fixture using `--starfalls-reset --constellation-fixture=opalPlanning` on an isolated simulator. Ask for the first choice and predicted follow-up before explaining the seven-versus-six outcome. This prepared board is not an ordinary-round preference result; no new lab app, selector or phone-save reset is required.
+**Next action:** current implementer collects one source-bound ordinary-play observation, then chooses one bounded cue, contact, frequency or pacing follow-up, or keeps the baseline. Human observations are still missing; simulator drivers are separate evidence.
 
-For a current-gravity prepared comparison, the reset-only `opalStormPlanning` fixture replays seed 180 / shower 12. Record whether the player notices field release separately from Opal preservation: the stronger follow-up leaves Opal untouched. Two ordinary taps yield eight versus six; the nine-light branch requires tracing five released Aqua stars. [Verification and remaining input limits](evidence/current-opal-native-2026-10-17/README.md). Use only after the uncoached ordinary-play observation.
+### Observe before explaining
 
-| Record per session | Observation |
+1. Record installed source/build, New sky versus retained/replay, seed if available, pace/dark settings, motion, sound, text size and device. A current checkout does not prove a current phone installation. Use the [canonical device updater](DEVELOPMENT_BUILDS.md) for any separately requested delivery.
+2. Let the player start automatic play without a recommended strategy. Observe a warning, heavy showers and recovery, or record loss/stop first. Keep pause and manual showers available. Record touch holds and coaching separately; holds suspend the single shower deadline and are not uninterrupted pressure exposure.
+3. Observe an ordinary clear and, if they occur naturally, a grown/Opal choice, purple-star response and large or recipe/relay celebration. Record which next choice was visible before the award and whether it remained recognizable afterward. An absent opportunity is **not observed**, not a failure or proof of scarcity.
+4. Ask about the player's intended choice only after the action or after an explicit pause. Keep prediction, actual action, missed input and interpretation separate. If a ready-looking contact does not score, retain location, timing, intervening showers and visible response; do not infer that an animation blocked it.
+5. After the round, ask what made a clear useful, what the purple warning meant, whether any effect hid or delayed their next choice, and whether they want another sky. Keep short exact answers and counterexamples. Simple clearing can be the preferred experience.
+
+| Acceptance question | Evidence to record |
 | --- | --- |
-| Source/build, new or retained sky, settings/device | Not collected |
-| First storm warning/event/recovery reached | Not collected |
-| Clear choice and reason before the event | Not collected |
-| Changed group/order versus changed speed | Not collected |
-| Opal preserved/spent deliberately; predicted versus actual benefit | Not collected |
-| Pause, touch holds, coaching or intervening showers | Not collected |
-| Replay preference and exact reason | Not collected |
+| Is the current baseline actually being played? | Installed source/build, fresh/retained distinction, settings, device; unknown fields stay unknown |
+| Does the player understand a consequence of a choice? | Their explanation or paused prediction and the actual committed result; mark prompting |
+| Can that understood choice be carried out? | Actual gesture/result and any shower, hold, pause, visual obstruction or cancellation |
+| Are warnings and awards readable during repeated play? | Specific cue, next choice, duration only if measured, and observed effect on action |
+| Would they choose another round? | Voluntary replay/decline and reason, separately from score |
 
-**Decision point:** After an observed session, choose one bounded follow-up: clarify an identified cue, investigate choice scarcity, compare pressure pacing, or keep the rules. A single preference is an initial signal. Keep source, observations, interpretation and missing evidence separate; no automatic frequency/power/progression change follows. Human comprehension, actual VoiceOver and physical feel are separate checks. The earlier lab protocols below remain historical reference, not delivery instructions.
+**Decision point:** address the first repeatable observed friction with one bounded change and a regression reproduction. If no friction is observed, retain the baseline and report sample limits. Do not add progression, tracking, hints or more mechanics to replace missing participant evidence. Actual VoiceOver is a separate RC check; physical gesture/haptic feel cannot be established by simulator assertions.
+
+The [crowded native-host review](evidence/calibration-critical-mass-2026-10-18/AWARDS.md) shows one aqua survivor temporarily overlapped by Brilliant +8 while another match stays visible; maximum text uses a native award below the board. That paused sample motivates the repeated-play question without establishing a player problem. Earlier [Opal choice](evidence/opal-choice-study-2026-10-17/README.md) and [prepared native planning](evidence/current-opal-native-2026-10-17/README.md) records retain their original Dusk/orbit generation and cannot establish current-rule difficulty. Use historical fixtures only after ordinary play, explicitly labeled as coached demonstrations of that retained version.
 
 ## Separate pressure, understanding and replay
 

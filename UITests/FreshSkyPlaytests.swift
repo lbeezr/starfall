@@ -4,7 +4,7 @@ import XCTest
 final class FreshSkyPlaytests: XCTestCase {
     /// Fresh automatic rounds, using only the visible accessibility surface.
     /// XCTest query/gesture latency is recorded, not treated as human reaction time.
-    @MainActor private func playVisibleMatches(seed: Int) {
+    @MainActor private func playVisibleMatches(seed: Int, duration: TimeInterval = 45) {
         executionTimeAllowance = 180
         continueAfterFailure = false
         let app = XCUIApplication()
@@ -23,7 +23,7 @@ final class FreshSkyPlaytests: XCTestCase {
             guard value.range(of: legalValuePattern, options: .regularExpression) != nil else { return nil }
             return value.split(whereSeparator: { !$0.isNumber }).compactMap { Int($0) }.last
         }
-        while Date().timeIntervalSince(started) < 45 && !app.staticTexts["experiment.outcome"].exists {
+        while Date().timeIntervalSince(started) < duration && !app.staticTexts["experiment.outcome"].exists {
             let matches = app.buttons.matching(NSPredicate(format:
                 "identifier BEGINSWITH %@ AND enabled == true AND value MATCHES %@",
                 "experiment.cell.", legalValuePattern))
@@ -67,7 +67,7 @@ final class FreshSkyPlaytests: XCTestCase {
                 // Wait for a visible opportunity or the terminal ceremony, bounded by the round sample.
                 _ = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
                     matches.count > 0 || app.staticTexts["experiment.outcome"].exists
-                }, object: nil).wait(timeout: min(3, max(0.1, 45 - Date().timeIntervalSince(started))))
+                }, object: nil).wait(timeout: min(3, max(0.1, duration - Date().timeIntervalSince(started))))
             }
         }
         let finalScore = app.staticTexts["experiment.score"].label
@@ -82,6 +82,7 @@ final class FreshSkyPlaytests: XCTestCase {
     }
     @MainActor func testFreshAutomaticVisibleMatchesSeed5() { playVisibleMatches(seed: 5) }
     @MainActor func testFreshAutomaticVisibleMatchesSeed180() { playVisibleMatches(seed: 180) }
+    @MainActor func testRepeatedAutomaticVisibleMatchesSeed28() { playVisibleMatches(seed: 28, duration: 90) }
 
     @MainActor private func capture(_ app: XCUIApplication, _ name: String) {
         let attachment = XCTAttachment(screenshot: app.screenshot())

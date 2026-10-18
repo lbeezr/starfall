@@ -69,3 +69,5 @@ Rendered-award checks capture the complete `FallingSkyView` in an isolated foreg
 `SkySaveArchiveTests` owns archive migration/validation and `SkyPhasePresentationTests` owns forecast presentation. Both were extracted unchanged from the general Store suite, with explicit hosted target membership.
 
 The [crowded current-rule award sample](../docs/evidence/calibration-critical-mass-2026-10-18/AWARDS.md) restores fresh seed 28 after 29 showers, checks its exact +8 and independent Store admission, and captures four host layout/text variants through normal award expiry. Host layout captures do not establish native contact on that history or physical readability.
+
+`ResponsiveInputTests.testFreshOpeningContactBeforeAndAfterDeadlineOwnsOnlyCurrentState` checks the seed-28 first/second-shower boundary: admitted contact holds rain, later contact cannot clear moving state or queue a clear, and a new settled contact scores. This models a boundary consistent with the native sample, not its unobserved exact contact instant.

@@ -1,0 +1,88 @@
+{
+  "source": "571b9c3b9efd33e46c04e27d99a105a7e1079d15",
+  "originMain": "3fd0a8e2f0f04e269c4f5593fcd146846fe149d0",
+  "baseTree": "fb8dc7a850df2dcaa245c154c3239a404f1462e7",
+  "runtimeChanged": false,
+  "sha256": {
+    "UITests/FreshSkyPlaytests.swift": "7d050902416f9fabdfb3f0e5209461fc85d862884bc10232ae1ca767e11f6cc3",
+    "AppTests/ResponsiveInputTests.swift": "002aa70100d17a8a45b4d17006907cbefc32d1c5d085341f6613a00514761aa0",
+    "App/FallingSkyView.swift": "26c59476ae0db1b824d8857f7c01ce2be9fd8ac47bde9003757905db0eb9bb41",
+    "App/ConstellationTraceSurface.swift": "7f9c88c208fc811bdebebc32df32b69102ca307c77ed6d3e385a0e09e0975cd8",
+    "App/FallingSkyStore.swift": "5d6f269d4ad7bb8171f426b5a867b97637a19be04f8dc093120a7a294f5e29c6"
+  },
+  "testedStages": {
+    "native": [
+      "UITests/FreshSkyPlaytests.swift"
+    ],
+    "hosted": [
+      "UITests/FreshSkyPlaytests.swift",
+      "AppTests/ResponsiveInputTests.swift"
+    ]
+  },
+  "sample": {
+    "seed": 28,
+    "requestedSeconds": 90,
+    "testSeconds": 99.669,
+    "showers": 31,
+    "attempts": 14,
+    "nonScoring": 3,
+    "staleSelectionsSkipped": 16,
+    "score": 44,
+    "terminal": false,
+    "scoringRewards": [
+      3,
+      6,
+      5,
+      3,
+      4,
+      3,
+      6,
+      4,
+      4,
+      3,
+      3
+    ],
+    "nonScoringQueries": [
+      {
+        "elapsed": 0.73,
+        "cell": "0.2",
+        "queryShower": 1,
+        "laterSnapshotShower": 2
+      },
+      {
+        "elapsed": 20.44,
+        "cell": "1.5",
+        "queryShower": 8,
+        "laterSnapshotShower": 9
+      },
+      {
+        "elapsed": 54.47,
+        "cell": "0.0",
+        "queryShower": 19,
+        "laterSnapshotShower": 20
+      }
+    ],
+    "laterMessages": [
+      "Stars settling\u2026",
+      "Stars settling\u2026",
+      "Stars settling\u2026"
+    ],
+    "observationText": "seed=28; full effects requested; automatic clock; visible largest reward; no setup/search forecast\nt=0.73 experiment.cell.0.2 3 toward a tap match; 0 starlight; 1 showers, 1 matching groups ready\nattempt=1; targetReady=true; immediate=3 toward a tap match; frame=(128.0, 635.6666666666666, 61.65058517456055, 66.91999816894531); score=0 starlight -> 0 starlight\nt=7.63 experiment.cell.0.2 3 toward a tap match; 0 starlight; 5 showers, 2 matching groups ready\nselectionSkipped=experiment.cell.0.2; ready=false; immediate=5 toward a tap match\nt=11.25 experiment.cell.0.2 5 toward a tap match; 0 starlight; 6 showers, 3 matching groups ready\nselectionSkipped=experiment.cell.0.2; ready=false; immediate=5 toward a tap match\nt=12.79 experiment.cell.2.6 3 toward a tap match; 0 starlight; 6 showers, 3 matching groups ready\nattempt=2; targetReady=true; immediate=3 toward a tap match; frame=(370.0, 502.0, 61.65058517456055, 66.91999816894531); score=0 starlight -> 3 starlight\nt=14.81 experiment.cell.0.0 6 toward a tap match; 3 starlight; 7 showers, 2 matching groups ready\nselectionSkipped=experiment.cell.0.0; ready=false; immediate=6 toward a tap match\nt=16.41 experiment.cell.0.0 6 toward a tap match; 3 starlight; 7 showers, 2 matching groups ready\nattempt=3; targetReady=true; immediate=6 toward a tap match; frame=(5.0, 635.6666666666666, 62.57419204711914, 66.91999816894531); score=3 starlight -> 9 starlight\nt=18.55 experiment.cell.0.2 5 toward a tap match; 9 starlight; 8 showers, 3 matching groups ready\nattempt=4; targetReady=true; immediate=5 toward a tap match; frame=(128.0, 635.6666666666666, 61.65058517456055, 66.91999816894531); score=9 starlight -> 14 starlight\nt=20.44 experiment.cell.1.5 3 toward a tap match; 14 starlight; 8 showers, 2 matching groups ready\nattempt=5; targetReady=true; immediate=3 toward a tap match; frame=(310.66666666666663, 568.6666666666666, 61.650585174560604, 66.91999816894531); score=14 starlight -> 14 starlight\nt=22.68 experiment.cell.1.5 3 toward a tap match; 14 starlight; 9 showers, 2 matching groups ready\nattempt=6; targetReady=true; immediate=3 toward a tap match; frame=(310.66666666666663, 568.6666666666666, 61.650585174560604, 66.91999816894531); score=14 starlight -> 17 starlight\nt=27.07 experiment.cell.0.2 3 toward a tap match; 17 starlight; 11 showers, 4 matching groups ready\nselectionSkipped=experiment.cell.0.2; ready=false; immediate=3 toward a tap match\nt=31.97 experiment.cell.0.0 3 toward a tap match; 17 starlight; 13 showers, 4 matching groups ready\nselectionSkipped=experiment.cell.0.0; ready=false; immediate=3 toward a tap match\nt=35.63 experiment.cell.0.0 3 toward a tap match; 17 starlight; 14 showers, 4 matching groups ready\nselectionSkipped=experiment.cell.0.0; ready=false; immediate=3 toward a tap match\nt=37.03 experiment.cell.3.4 4 toward a tap match; 17 starlight; 14 showers, 4 matching groups ready\nattempt=7; targetReady=true; immediate=4 toward a tap match; frame=(249.66666666666666, 435.0, 60.26517868041989, 66.91999816894531); score=17 starlight -> 21 starlight\nt=38.88 experiment.cell.0.0 3 toward a tap match; 21 starlight; 15 showers, 3 matching groups ready\nselectionSkipped=experiment.cell.0.0; ready=false; immediate=4 toward a tap match\nt=42.65 experiment.cell.0.0 4 toward a tap match; 21 starlight; 16 showers, 3 matching groups ready\nselectionSkipped=experiment.cell.0.0; ready=false; immediate=4 toward a tap match\nt=44.16 experiment.cell.1.6 3 toward a tap match; 21 starlight; 16 showers, 3 matching groups ready\nattempt=8; targetReady=true; immediate=3 toward a tap match; frame=(371.3333333333333, 568.6666666666666, 62.112388610839844, 66.91999816894531); score=21 starlight -> 24 starlight\nt=46.09 experiment.cell.0.0 4 toward a tap match; 24 starlight; 17 showers, 2 matching groups ready\nselectionSkipped=experiment.cell.0.0; ready=false; immediate=4 toward a tap match\nt=49.46 experiment.cell.0.0 4 toward a tap match; 24 starlight; 18 showers, 1 matching groups ready\nselectionSkipped=experiment.cell.0.0; ready=false; immediate=3 toward a tap match\nt=54.47 experiment.cell.0.0 3 toward a tap match; 24 starlight; 19 showers, 1 matching groups ready\nattempt=9; targetReady=true; immediate=3 toward a tap match; frame=(5.0, 635.6666666666666, 62.57419204711914, 66.91999816894531); score=24 starlight -> 24 starlight\nt=58.36 experiment.cell.0.0 3 toward a tap match; 24 starlight; 21 showers, 1 matching groups ready\nselectionSkipped=experiment.cell.0.0; ready=false; immediate=3 toward a tap match\nt=64.25 experiment.cell.2.0 3 toward a tap match; 24 starlight; 23 showers, 2 matching groups ready\nselectionSkipped=experiment.cell.2.0; ready=false; immediate=6 toward a tap match\nt=65.69 experiment.cell.2.0 6 toward a tap match; 24 starlight; 23 showers, 2 matching groups ready\nattempt=10; targetReady=true; immediate=6 toward a tap match; frame=(8.333333333333332, 502.0, 61.65058517456055, 66.91999816894531); score=24 starlight -> 30 starlight\nt=69.86 experiment.cell.0.0 4 toward a tap match; 30 starlight; 25 showers, 3 matching groups ready\nselectionSkipped=experiment.cell.0.0; ready=false; immediate=4 toward a tap match\nt=71.48 experiment.cell.0.3 4 toward a tap match; 30 starlight; 25 showers, 3 matching groups ready\nattempt=11; targetReady=true; immediate=4 toward a tap match; frame=(189.33333333333334, 635.6666666666666, 61.41968536376953, 66.91999816894531); score=30 starlight -> 34 starlight\nt=73.56 experiment.cell.0.0 4 toward a tap match; 34 starlight; 26 showers, 2 matching groups ready\nselectionSkipped=experiment.cell.0.0; ready=false; immediate=4 toward a tap match\nt=75.17 experiment.cell.1.1 4 toward a tap match; 34 starlight; 26 showers, 2 matching groups ready\nattempt=12; targetReady=true; immediate=4 toward a tap match; frame=(67.66666666666666, 568.6666666666666, 61.65058517456055, 66.91999816894531); score=34 starlight -> 38 starlight\nt=77.23 experiment.cell.1.1 3 toward a tap match; 38 starlight; 27 showers, 1 matching groups ready\nselectionSkipped=experiment.cell.1.1; ready=false; immediate=3 toward a tap match\nt=78.74 experiment.cell.1.1 3 toward a tap match; 38 starlight; 27 showers, 1 matching groups ready\nattempt=13; targetReady=true; immediate=3 toward a tap match; frame=(67.66666666666666, 568.6666666666666, 61.65058517456055, 66.91999816894531); score=38 starlight -> 41 starlight\nt=82.85 experiment.cell.0.2 3 toward a tap match; 41 starlight; 28 showers, 1 matching groups ready\nattempt=14; targetReady=true; immediate=3 toward a tap match; frame=(128.0, 635.6666666666666, 61.65058517456055, 66.91999816894531); score=41 starlight -> 44 starlight\nt=90.41 experiment.cell.0.2 4 toward a tap match; 44 starlight; 31 showers, 2 matching groups ready\nselectionSkipped=experiment.cell.0.2; ready=false; immediate=4 toward a tap match\nattempts=14; nonScoring=3; staleSelectionsSkipped=16; final=44 starlight; board=31 showers, 2 matching groups ready; terminal=false"
+  },
+  "results": {
+    "core": 162,
+    "hosted": 14,
+    "native": 1,
+    "failures": 0
+  },
+  "video": {
+    "path": "artifacts/calibration-native/repeated-automatic-awards.mp4",
+    "seconds": 124.46,
+    "sha256": "a2c6bdc434f326433dd14fda4a39c385d695dd8513dc42be5aa908911bf5dd98",
+    "inspection": "105 extracted stills requested at 1-second intervals from 10 through 114 seconds; actual timestamps differ/duplicate slightly; all nine sheets inspected; not continuous-motion or performance verification"
+  },
+  "capture": {
+    "path": "dev-571b9c3-wip-7d050902__automatic-sample-end__iphone-16-pro-max__default-text.jpg",
+    "sha256": "6aa32de527361caaa80081ef4109fb9af5952cffea4af2a07f05239844423bd5"
+  }
+}
