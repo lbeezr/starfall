@@ -775,7 +775,7 @@ extension FallingSkyStoreTests {
         store.configureTimingTest(observe: { events.append($0) })
         store.setSuspended(false); store.togglePause(); clock.advance(0.25); presenter.finish()
         let inputGeneration = store.constellationInputGeneration
-        store.constellationTracing = true
+        let hold = try XCTUnwrap(store.beginConstellationHold())
         XCTAssertTrue(store.timingSnapshot.canClear); XCTAssertFalse(store.timingSnapshot.canTap)
         XCTAssertFalse(store.timingSnapshot.canCallShower)
         store.callShower()
@@ -784,7 +784,7 @@ extension FallingSkyStoreTests {
         XCTAssertEqual(store.constellationInputGeneration, inputGeneration)
         XCTAssertNil(clock.deadline)
         XCTAssertEqual(store.game.turns, 1, "A live trace owns the deadline hold")
-        store.constellationTracing = false
+        store.endConstellationHold(hold)
         clock.advance(1.8)
         XCTAssertNotEqual(store.constellationInputGeneration, inputGeneration)
         XCTAssertNotNil(events.last { $0.kind == .invalidated("automaticShower") })
@@ -1084,5 +1084,37 @@ extension SkySaveArchiveTests {
         }
         defaults.set(true,forKey:SkySaveArchive.previousKey)
         XCTAssertNil(SkySaveArchive.load(from:defaults))
+    }
+}
+
+
+extension FallingSkyStoreTests {
+    @MainActor func testOpalPlanningSurvivesOneDueFasterShowerBetweenClears() throws {
+        let (store, presenter, clock, _) = makeOpeningStore()
+        store.loadConstellationFixture(.opalPlanning)
+        let initial = store.game
+        store.togglePause()
+        XCTAssertEqual(try XCTUnwrap(clock.deadline) - clock.now, 1.7, accuracy: 0.001)
+        store.clear(Cell(1,1))
+        XCTAssertEqual(store.game.score, 30)
+        XCTAssertTrue(store.busy)
+        clock.advance(1.7)
+        XCTAssertEqual(store.game.turns, 12, "A due shower cannot replace the committed clear presentation")
+        XCTAssertFalse(store.canClear)
+        clock.advance(30)
+        XCTAssertEqual(store.game.turns, 12)
+        presenter.finish()
+        XCTAssertEqual(store.game.turns, 13, "Settlement delivers exactly one due shower, without catch-up")
+        presenter.finish()
+        XCTAssertTrue(store.canClear)
+        XCTAssertEqual(try XCTUnwrap(clock.deadline) - clock.now, 2.5, accuracy: 0.001)
+        store.clear(Cell(0,3)); presenter.finish()
+        XCTAssertEqual(store.game.score, 34)
+        var expected = initial
+        XCTAssertEqual(expected.clear(Cell(1,1))?.collected, 3)
+        XCTAssertNotNil(expected.letStarsFall())
+        XCTAssertEqual(expected.clear(Cell(0,3))?.collected, 4)
+        XCTAssertEqual(store.game, expected)
+        XCTAssertTrue(store.game.isValidSave)
     }
 }

@@ -3,10 +3,11 @@ import Foundation
 
 /// Debug-only deterministic input fixtures; never loaded without an explicit reset argument.
 public enum ConstellationFixture: String, CaseIterable {
-    case five, fourGrown, overlap, darkness, diagonalSix, opalChoice, opalTrace, stormWarning
+    case five, fourGrown, overlap, darkness, diagonalSix, opalChoice, opalTrace, opalPlanning, stormWarning
     public var title: String {
         switch self {
         case .opalTrace: "Trace through an Opal Orb"
+        case .opalPlanning: "Choose which match spends Opal"
         case .opalChoice: "An orb shared by different colors"
         case .stormWarning: "A storm approaches"
         case .diagonalSix: "Six diagonal stars"
@@ -17,6 +18,7 @@ public enum ConstellationFixture: String, CaseIterable {
         }
     }
     public func game() -> FallingSky {
+        if self == .opalPlanning { return planningSky() }
         if self == .opalChoice || self == .opalTrace || self == .stormWarning { return naturalMechanicsSky() }
         var pink: Set<Cell> = [Cell(0,4),Cell(1,3),Cell(2,4),Cell(1,5),Cell(1,6)]
         if self == .diagonalSix { pink = Set((0..<6).map { Cell($0,$0) }) }
@@ -42,6 +44,25 @@ public enum ConstellationFixture: String, CaseIterable {
         precondition(result.isValidSave && !result.isOver)
         return result
     }
+    /// Seed 10, shower 12 from the bounded largest-immediate study. Replay only
+    /// committed ordinary taps; never inject board, preview, counters or RNG.
+    private func planningSky() -> FallingSky {
+        let clears: [Int: (cell: Cell, light: Int)] = [
+            1: (Cell(0,3),3), 2: (Cell(0,0),3), 4: (Cell(0,0),3),
+            6: (Cell(0,5),4), 7: (Cell(0,5),3), 9: (Cell(0,5),3),
+            10: (Cell(0,3),4), 11: (Cell(1,0),4)
+        ]
+        var game = FallingSky(seed: 10, generation: .opalStorms)
+        for shower in 1...12 {
+            precondition(game.letStarsFall() != nil && !game.isOver)
+            if let clear = clears[shower] {
+                precondition(game.clear(clear.cell)?.collected == clear.light)
+            }
+        }
+        precondition(game.isValidSave && game.score == 27)
+        return game
+    }
+
     /// Real seeded history: no invented board, counters or preview. Native checks
     /// can restore this through the same validated archive as ordinary play.
     private func naturalMechanicsSky() -> FallingSky {
@@ -53,7 +74,7 @@ public enum ConstellationFixture: String, CaseIterable {
         default: preconditionFailure("Not a mechanics history fixture")
         }
         let last = configuration.last
-        var game = FallingSky(seed: configuration.seed, generation: .current)
+        var game = FallingSky(seed: configuration.seed, generation: .opalStorms)
         for number in 1...last {
             precondition(game.letStarsFall() != nil && !game.isOver)
             if configuration.retainOpals {

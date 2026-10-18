@@ -197,3 +197,47 @@ extension ConstellationTraceNativeTests {
         }
     }
 }
+
+
+extension ConstellationTraceNativeTests {
+    @MainActor func testOpalPlanningTwoTapOrdersKeepTheirDistinctRewards() {
+        for amberFirst in [true, false] {
+            let app = launch("opalPlanning")
+            score(27, app)
+            let orbs = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'experiment.cell.' AND label CONTAINS 'White Opal Orb'"))
+            XCTAssertEqual(orbs.count, 1)
+            app.buttons[amberFirst ? "experiment.cell.1.1" : "experiment.cell.0.3"].tap()
+            score(30, app)
+            XCTAssertEqual(orbs.count, amberFirst ? 1 : 0)
+            let next = app.buttons[amberFirst ? "experiment.cell.0.3" : "experiment.cell.1.1"]
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true AND value == %@", amberFirst ? "4 starlight connected" : "3 starlight connected"), object: next).wait(timeout: 5))
+            let before = XCTAttachment(screenshot: app.screenshot())
+            before.name = amberFirst ? "planning-preserved-opal-follow-up" : "planning-spent-opal-follow-up"
+            before.lifetime = .keepAlways; add(before)
+            next.tap(); score(amberFirst ? 34 : 33, app)
+            XCTAssertEqual(orbs.count, 0)
+            app.terminate()
+        }
+    }
+}
+
+
+extension ConstellationTraceNativeTests {
+    @MainActor func testTinyEdgeReleaseResumesAutomaticSkyAndOrdinaryInput() {
+        let app = launch(); defer { app.terminate() }
+        app.buttons["experiment.pause"].tap()
+        let star = app.buttons["experiment.cell.0.0"], frame = star.frame
+        let radius = min(frame.width,frame.height)*0.44
+        let offset = CGVector(dx:-(radius*0.99),dy:0)
+        let start = star.coordinate(withNormalizedOffset:CGVector(dx:0.5,dy:0.5)).withOffset(offset)
+        start.press(forDuration:0.15,thenDragTo:start.withOffset(CGVector(dx:-7.9,dy:0)),withVelocity:.slow,thenHoldForDuration:0)
+        score(0,app)
+        let mint = app.buttons.matching(NSPredicate(format:"identifier BEGINSWITH 'experiment.cell.' AND label CONTAINS 'Pip'"))
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate:NSPredicate { _,_ in mint.count > 0 },object:nil).wait(timeout:8),
+            "An off-board release below drag slop must relinquish the hold and allow the pending shower")
+        app.buttons["experiment.settings"].tap()
+        XCTAssertTrue(app.buttons["experiment.done"].waitForExistence(timeout:5))
+        app.buttons["experiment.done"].tap()
+        XCTAssertTrue(app.buttons["experiment.settings"].isHittable)
+    }
+}

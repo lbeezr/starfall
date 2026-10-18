@@ -23,3 +23,7 @@ Cadence scheduling tests reuse `Tests/StarfallCoreTests/TimingCycleFixture.swift
 `TraceInputPolishTests` covers coarse/grazing samples, small and large projected boards, spatial misses, branching and stale-generation rejection. Store checks cover the held deadline and resumed remainder.
 
 Gravity integration uses the normal target and v5 committed archive. Core owns occupied orbit supports and saved `gravityOrbits` supply; retained generations remain unchanged. `GravityStoreTests` covers committed saves and interrupted phases; Debug reset-only histories support native verification. See [the integration plan](../docs/design/GRAVITY_MECHANICS_PLAN.md).
+
+The Opal planning deadline regression preserves the four-light follow-up across one faster shower deferred by clear presentation, and checks exact Core equality and no catch-up.
+
+Touch-lifecycle checks exercise edge-release classification, missing move callbacks, duplicate terminal events, hold tickets/near-deadline grace, and actual surface configuration cancellation. These do not fabricate UIKit touches or claim physical multitouch acceptance.

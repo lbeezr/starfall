@@ -51,14 +51,29 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     private(set) var nextShowerCadence: SkyCadenceStep = .init(delay: 4, phase: .steady)
     private(set) var message = "Gather starlight. Draw your own constellations."
     private(set) var constellationInputGeneration: UInt64 = 0
-    var constellationTracing = false {
-        didSet {
-            guard oldValue != constellationTracing else { return }
-            if constellationTracing { freezeClock() } else { armClock() }
-            #if DEBUG
-            observeTiming(.state)
-            #endif
-        }
+    private(set) var constellationTracing = false
+    private var constellationHold: UInt64?
+    private var constellationHoldSequence: UInt64 = 0
+
+    /// Only the owner may release a live hold; late callbacks cannot resume a newer touch.
+    @discardableResult func beginConstellationHold() -> UInt64? {
+        guard canClear, constellationHold == nil else { return nil }
+        constellationHoldSequence &+= 1
+        constellationHold = constellationHoldSequence
+        constellationTracing = true
+        freezeClock()
+        #if DEBUG
+        observeTiming(.state)
+        #endif
+        return constellationHold
+    }
+    func endConstellationHold(_ ticket: UInt64?) {
+        guard let ticket, constellationHold == ticket else { return }
+        constellationHold = nil; constellationTracing = false
+        armClock()
+        #if DEBUG
+        observeTiming(.state)
+        #endif
     }
     private(set) var pending: FallingSkyTurn?
     var soundEnabled: Bool {
@@ -137,7 +152,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         #endif
     }
     private func invalidateInput(_ reason: String) {
-        constellationTracing = false
+        endConstellationHold(constellationHold)
         constellationInputGeneration &+= 1
         #if DEBUG
         observeTiming(.invalidated(reason))
@@ -526,6 +541,9 @@ enum SkyTerminalSpeech { case feedback, ceremony }
 
 /// Transient input ticket. Core remains the authority for whether a walk can clear.
 @MainActor final class ConstellationTraceIntent {
+    // The coordinator releases this after terminal commit/cancellation. Selection
+    // cancellation alone must not discard a ticket before the store receives it.
+    var holdTicket: UInt64?
     var lastFinger: CGPoint?
     private(set) var path: [Cell] = []
     private(set) var snapshot: FallingSky?
