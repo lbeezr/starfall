@@ -167,6 +167,8 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         let suspended: Bool
         let canClear: Bool
         let canTap: Bool
+        /// Legal ordinary groups admitted now; excludes traces and invalid explanatory taps.
+        let admittedTapGroups: Int
         let canCallShower: Bool
         let inputGeneration: UInt64
     }
@@ -184,6 +186,9 @@ enum SkyTerminalSpeech { case feedback, ceremony }
               scheduledDeadline: deadline, rainDue: rainDue, busy: busy,
               paused: isPaused, suspended: suspended, canClear: canClear,
               canTap: canClear && !constellationTracing,
+              admittedTapGroups: constellationTracing ? 0 : game.legalGroups.filter { group in
+                  group.first.map(canClear) ?? false
+              }.count,
               canCallShower: !constellationTracing && !busy && !suspended && !game.isOver,
               inputGeneration: constellationInputGeneration)
     }

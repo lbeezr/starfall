@@ -1,0 +1,32 @@
+{
+  "seed": 17,
+  "generation": 3,
+  "policy": "eight opening showers greedily cleared, then passive automatic observation",
+  "observations": [
+    {
+      "shower": 9,
+      "wholeBoardReady": false,
+      "admittedOrdinaryGroups": 0
+    },
+    {
+      "shower": 10,
+      "wholeBoardReady": false,
+      "admittedOrdinaryGroups": 1
+    },
+    {
+      "shower": 11,
+      "wholeBoardReady": false,
+      "admittedOrdinaryGroups": 1
+    },
+    {
+      "shower": 12,
+      "wholeBoardReady": false,
+      "admittedOrdinaryGroups": 2
+    },
+    {
+      "shower": 13,
+      "wholeBoardReady": false,
+      "admittedOrdinaryGroups": 5
+    }
+  ]
+}

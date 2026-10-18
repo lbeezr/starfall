@@ -45,6 +45,11 @@ final class ResponsiveInputTests: XCTestCase {
         let arrival = try XCTUnwrap(store.pending)
         let cell = try XCTUnwrap(store.game.legalGroups.compactMap(\.first).first { store.canClear($0) })
         XCTAssertFalse(arrival.arrivals.isEmpty)
+        XCTAssertFalse(store.timingSnapshot.canClear, "Whole-board readiness remains false during arrival")
+        XCTAssertGreaterThan(store.timingSnapshot.admittedTapGroups, 0,
+                             "The timing probe must retain legal ready-column choices")
+        let admitted = store.game.legalGroups.filter { $0.first.map(store.canClear) ?? false }
+        XCTAssertEqual(store.timingSnapshot.admittedTapGroups, admitted.count)
         store.clear(cell)
         XCTAssertEqual(presenter.completions.count, 2)
         XCTAssertEqual(store.pending?.arrivals.map { $0.star.id }, arrival.arrivals.map { $0.star.id }, "HUD keeps the active shower through an independent clear")
@@ -52,6 +57,7 @@ final class ResponsiveInputTests: XCTestCase {
         let latest = store.game
         presenter.completions[1](); XCTAssertTrue(store.busy)
         store.setSuspended(true)
+        XCTAssertEqual(store.timingSnapshot.admittedTapGroups, 0)
         presenter.completions[0]()
         XCTAssertFalse(store.busy); XCTAssertEqual(store.game, latest)
         XCTAssertEqual(presenter.lastRendered, latest)
@@ -88,6 +94,7 @@ final class ResponsiveInputTests: XCTestCase {
         store.setSuspended(false); store.clear(Cell(0,3))
         XCTAssertFalse(try XCTUnwrap(store.pending).gravityPhases.isEmpty)
         XCTAssertEqual(store.changingColumns, Set(0..<7))
+        XCTAssertEqual(store.timingSnapshot.admittedTapGroups, 0)
         for column in 0..<7 { XCTAssertFalse(store.canContact(Cell(0,column))) }
         let committed = store.game
         store.clear(Cell(0,0)); XCTAssertEqual(store.game, committed)
