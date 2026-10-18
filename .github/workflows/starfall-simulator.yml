@@ -23,6 +23,9 @@ on:
       - 'scripts/test_native_test_plan.py'
       - 'scripts/rc-platforms.py'
       - 'scripts/test_rc_platforms.py'
+      - 'scripts/simulator-command.py'
+      - 'scripts/simulator-lifecycle.sh'
+      - 'scripts/test_simulator_lifecycle.py'
       - '.github/workflows/starfall-simulator.yml'
   workflow_dispatch:
     inputs:
@@ -70,6 +73,7 @@ jobs:
           python3 scripts/test_device_update.py
           python3 scripts/test_native_test_plan.py
           python3 scripts/test_rc_platforms.py
+          python3 scripts/test_simulator_lifecycle.py
       - name: Build, test core, and capture one iPhone simulator
         env:
           STARFALL_ACCEPTANCE_STAGE: ${{ inputs.acceptance_stage || 'dev' }}
