@@ -51,3 +51,5 @@ Gravity specials are retired from normal play. `SkyGeneration.standardSky` suppl
 `TraceInputPolishTests` also separates early drawing preview from small tap drift, verifies sticky neighbor selection, and checks constellation starts across the native target rather than an inset circle.
 
 `StarlightCelebrationTests` covers concurrent receipt replacement, current save restore, rewarding Opal/drained Dusk distinctions, zero-reward clears, validated trace/recipe/relay categories, interruption and independent expiry.
+
+Logical interaction regressions in `TraceInputPolishTests` cover trace-to-swap hold continuity, exactly-once release, stale terminals and failed admission; store/recognizer interruption tests remain separate boundary coverage.

@@ -16,7 +16,7 @@ Default Falling Sky uses the full-screen Observatory. `ObservatoryGeometry` owns
 
 `StarCast` owns Crystal Glow materials for board, comets, HUD and previews: six packaged bodies, authored faces, shallow turns and a bounded 72-material cache. The scene owns separate contact shadows; their placement follows cached body height and grown size. See the [production contract](../docs/design/star-cast/README.md).
 
-Constellation drawing is now part of FallingSky: transient ordered input lives beside the store, the native trace surface shares Observatory geometry with accessible buttons, and the scene presents a bounded trail/burst. Core validates the selected set; ordinary taps retain their original rules. Debug-only reset fixtures are not a second app or a menu route.
+Constellation drawing is now part of FallingSky: transient ordered input lives in `SkyInteractionSession` beside technique selection, the native trace surface shares Observatory geometry with accessible buttons, and the scene presents a bounded trail/burst. Core validates the selected set; ordinary taps retain their original rules. Debug-only reset fixtures are not a second app or a menu route.
 
 The store schedules the core’s persisted opening cadence: four quick waves, then the chosen regular pace. Input opens between settled batches; [opening acceptance](../docs/evidence/opening-cascade-2026-10-17/README.md) records checks and limits.
 
@@ -68,3 +68,5 @@ Drawing starts on the full native star target and follows six-point movement. Th
 ## Starlight celebrations
 
 `StarlightCelebration` presents an already committed award, with actual scoring-cell anchors and a validated trace/recipe outline. The store owns its bounded replacement/expiry/cancellation; its overlay uses real board/header anchors. Selection and release share recipe drawing order. Ready-column input, current saves, Dusk rewards and dialogue remain independent. See [current-main verification](../docs/evidence/starlight-celebrations-2026-10-18/INTEGRATION.md).
+
+`SkyInteractionSession` owns logical trace/swap selection and the held store ticket. Its terminal transition clears local state before releasing exactly once; stale terminal tickets cannot end a replacement contact. The recognizer retains physical-contact ownership, and the store retains clock/generation ownership.

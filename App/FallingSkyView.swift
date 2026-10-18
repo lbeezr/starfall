@@ -6,8 +6,9 @@ import StarfallCore
 // Historical experiment.* accessibility IDs remain stable for automation and assistive clients.
 @MainActor struct FallingSkyView: View {
     @State private var store = FallingSkyStore.forSkyFlowApp()
-    @State private var trace = ConstellationTraceIntent()
-    @State private var technique = SkyTechniqueIntent()
+    @State private var interaction = SkyInteractionSession()
+    private var trace: ConstellationTraceIntent { interaction.trace }
+    private var technique: SkyTechniqueIntent { interaction.technique }
     @State private var traceFeedback = ConstellationTraceFeedback()
     @State private var menu: SkyMenuDestination?
     private var settings: Bool { menu != nil }
@@ -108,12 +109,15 @@ import StarfallCore
         .statusBarHidden(!settings)
         .tint(StarfallTheme.Colors.actionPrimary)
         .onAppear { store.terminalSpeech = .ceremony; updateSuspension(); store.settlePresentation(); updateMotion() }
-        .onDisappear { cancelConstellation(); store.setSuspended(true); store.terminalSpeech = .feedback }
-        .onChange(of: store.constellationInputGeneration) { cancelConstellation(); technique.cancel() }
-        .onChange(of: store.game) { cancelConstellation(); technique.reconcile(with: store.game) }
+        .onDisappear { invalidateInteraction(); store.setSuspended(true); store.terminalSpeech = .feedback }
+        .onChange(of: store.constellationInputGeneration) { invalidateInteraction() }
+        .onChange(of: store.game) {
+            interaction.reconcile(with: store.game, release: store.endConstellationHold)
+            store.scene.clearConstellationTrace()
+        }
         .onChange(of: store.canClear) { _, enabled in if !enabled { cancelConstellation() } }
         .onChange(of: store.isPaused) { cancelConstellation() }
-        .onChange(of: scenePhase) { technique.cancel(); updateSuspension() }
+        .onChange(of: scenePhase) { invalidateInteraction(); updateSuspension() }
         .onChange(of: settings) { technique.setArranging(false); finishHandoffIfReady(); updateSuspension() }
         .onChange(of: store.sceneReady) { finishHandoffIfReady(); updateSuspension() }
         .onChange(of: flow) { cancelConstellation(); technique.setArranging(false); updateSuspension() }
@@ -122,7 +126,7 @@ import StarfallCore
         .onChange(of: voiceOver) { updateMotion() }
         .onChange(of: calmEffects) { updateMotion() }
         .onChange(of: technique.preview) { refreshTechnique() }
-        .onChange(of: reduceMotion) { technique.cancel() }
+        .onChange(of: reduceMotion) { invalidateInteraction() }
         .task(id: handoffKey) { await presentHandoff() }
         .sheet(item: $menu, onDismiss: { if voiceOver && !showingCeremony { menuFocused = true } }) { destination in
             settingsView(destination)
@@ -497,8 +501,7 @@ private extension FallingSkyView {
         guard store.constellationTracing, generation == store.constellationInputGeneration,
               let from=mapping.cell(at:origin), let to=mapping.cell(at:point),
               store.game.canNudge(from:from,to:to), store.canContact(from), store.canContact(to) else { return false }
-        trace.cancel()
-        technique.armSwap(from,to:to,game:store.game,generation:generation)
+        interaction.armSwap(from:from,to:to,game:store.game,generation:generation)
         refreshTechnique()
         traceFeedback.step(count:5,enabled:store.hapticsEnabled && !quietMotion)
         store.showInputFeedback("Swap ready · lift to move; slide back to cancel")
@@ -513,17 +516,19 @@ private extension FallingSkyView {
         _ = store.performTechnique(.nudge(from,to),snapshot:snapshot,generation:generation)
     }
     func cancelConstellation() {
-        trace.cancel(); store.endConstellationHold(trace.holdTicket); trace.holdTicket = nil
-        if technique.swapping { technique.cancel() }
+        interaction.cancelContact(release: store.endConstellationHold)
+        store.scene.clearConstellationTrace()
+    }
+    func invalidateInteraction() {
+        interaction.invalidate(release: store.endConstellationHold)
         store.scene.clearConstellationTrace()
     }
     func beginBoardContact(_ point: CGPoint, size: CGSize) -> Bool {
         cancelConstellation()
         guard let cell = ObservatoryGeometry(size: size).cell(at: point) else { return false }
-        guard let ticket = store.beginConstellationHold(at: cell) else {
+        guard interaction.acquireHold(at: cell, using: store.beginConstellationHold) else {
             store.explainSettling(at: cell); return false
         }
-        trace.holdTicket = ticket
         store.showInputFeedback(nil)
         store.scene.showContact(cell)
         return true
@@ -532,9 +537,8 @@ private extension FallingSkyView {
         guard !technique.arranging else { return }
         guard let cell = ConstellationTraceHitTesting.start(at: point, mapping: ObservatoryGeometry(size: size), game: store.game) else { return }
         _ = trace.begin(cell, game: store.game, generation: store.constellationInputGeneration, enabled: store.canTrace([cell]))
-        if trace.snapshot != nil && trace.holdTicket == nil {
-            trace.holdTicket = store.beginConstellationHold(at: trace.path.first)
-            if trace.holdTicket == nil { trace.cancel() }
+        if trace.snapshot != nil {
+            interaction.acquireHold(at: trace.path.first, using: store.beginConstellationHold)
         }
         trace.lastFinger = point
         refreshConstellation()
@@ -572,7 +576,8 @@ private extension FallingSkyView {
         let hadTrace = trace.snapshot != nil
         let outcome = trace.finish(ticket: trace.sequence, game: store.game, generation: store.constellationInputGeneration, enabled: store.canTrace(trace.path))
         store.scene.clearConstellationTrace()
-        defer { store.endConstellationHold(trace.holdTicket); trace.holdTicket = nil }
+        let hold = interaction.holdTicket
+        defer { interaction.endContact(ticket: hold, release: store.endConstellationHold) }
         guard let outcome else {
             if hadTrace { store.explainInputFailure("Trace needs 5 matching stars") }
             return
@@ -588,9 +593,8 @@ private extension FallingSkyView {
         } else {
             _ = trace.visit(cell, ticket: trace.sequence, game: store.game, generation: store.constellationInputGeneration, enabled: store.canTrace(trace.path.isEmpty ? [cell] : trace.path + [cell]))
         }
-        if trace.snapshot != nil && trace.holdTicket == nil {
-            trace.holdTicket = store.beginConstellationHold(at: trace.path.first)
-            if trace.holdTicket == nil { trace.cancel() }
+        if trace.snapshot != nil {
+            interaction.acquireHold(at: trace.path.first, using: store.beginConstellationHold)
         }
         refreshConstellation()
         UIAccessibility.post(notification: .announcement, argument: trace.count > 0

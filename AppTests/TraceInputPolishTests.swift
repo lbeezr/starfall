@@ -249,3 +249,48 @@ extension TraceInputPolishTests {
         }
     }
 }
+
+extension TraceInputPolishTests {
+    @MainActor func testLogicalContactOwnsHoldAcrossTraceToSwapAndReleasesExactlyOnce() throws {
+        let session = SkyInteractionSession(), game = SkyTechniqueExample.nudge.game()
+        var releases: [UInt64] = []
+        var acquired = 0
+        XCTAssertTrue(session.acquireHold(at: Cell(0,0)) { _ in acquired += 1; return 7 })
+        XCTAssertTrue(session.acquireHold(at: Cell(0,0)) { _ in acquired += 1; return 8 })
+        XCTAssertEqual(acquired, 1)
+        let pair = try XCTUnwrap((0..<7).flatMap { row in (0..<6).map { (Cell(row,$0),Cell(row,$0+1)) } }
+            .first { game.canNudge(from: $0.0, to: $0.1) })
+        session.armSwap(from: pair.0, to: pair.1, game: game, generation: 3)
+        XCTAssertTrue(session.technique.swapping)
+        XCTAssertEqual(session.holdTicket, 7)
+        session.endContact(ticket: 7) { ticket in
+            XCTAssertNil(session.holdTicket)
+            XCTAssertFalse(session.technique.swapping)
+            XCTAssertNil(session.trace.snapshot)
+            releases.append(ticket!)
+        }
+        session.endContact(ticket: 7) { releases.append($0!) }
+        XCTAssertEqual(releases, [7])
+        XCTAssertTrue(session.acquireHold(at: pair.0) { _ in 8 })
+        session.endContact(ticket: 7) { releases.append($0!) }
+        XCTAssertEqual(session.holdTicket, 8, "A late terminal event cannot release the next session")
+        session.invalidate { releases.append($0!) }
+        XCTAssertEqual(releases, [7,8])
+    }
+
+    @MainActor func testLogicalCancellationClearsTraceEvenWhenHoldAdmissionFails() {
+        let session = SkyInteractionSession(), game = ConstellationFixture.diagonalSix.game()
+        _ = session.trace.begin(Cell(0,0), game: game, generation: 1, enabled: true)
+        XCTAssertFalse(session.acquireHold(at: Cell(0,0)) { _ in nil })
+        XCTAssertNil(session.trace.snapshot)
+        session.technique.setArranging(true)
+        session.technique.select(Cell(0,0), game: game, generation: 1)
+        session.cancelContact { _ in XCTFail("No owned hold") }
+        XCTAssertNotNil(session.technique.anchor, "Ordinary contact cancellation preserves explicit arrange selection")
+        session.invalidate { _ in XCTFail("No owned hold") }
+        XCTAssertNil(session.technique.anchor)
+        XCTAssertTrue(session.technique.arranging, "Lifecycle invalidation preserves the explicit arrange mode")
+        session.reconcile(with: FallingSky(seed: 5)) { _ in XCTFail("No owned hold") }
+        XCTAssertFalse(session.technique.arranging, "Current-main empty-sky reconciliation remains authoritative")
+    }
+}

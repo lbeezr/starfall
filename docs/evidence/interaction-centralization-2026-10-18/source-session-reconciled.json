@@ -1,0 +1,10 @@
+{
+  "base": "1952312eec8db0ed8bd630f4d001af4c8585c6c5",
+  "snapshot": "258a5b053281",
+  "paths": {
+    "App/FallingSkyStore.swift": "a8e0152e85abcec8fdb2fedad125b18d98d5868fc9bfed616af1638fe8fc5afd",
+    "App/FallingSkyView.swift": "40397fcfd9f25c361c86b3b33ad267fd11d967a8629897d5926e8dbedf4008ef",
+    "App/SkyTechniqueIntent.swift": "fabb6a464db43921445a24a1967f8e6ebc43133be2f4a59a7e3ff277c0ef502c",
+    "AppTests/TraceInputPolishTests.swift": "437a2693a5f330cf33e743455897a6f0b0a1f707e62e266c38edeed68c2fde0a"
+  }
+}
