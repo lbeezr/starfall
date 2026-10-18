@@ -74,7 +74,7 @@ private struct Run: Codable {
     var events: [Event] = []
 }
 @main enum PacingMeasure {
-    @MainActor private static func run(seed: UInt64, b: Bool, persona: String, quiet: Bool, limit: Double) -> Run {
+    @MainActor private static func run(seed: UInt64, cadence: SkyCadenceID, persona: String, quiet: Bool, limit: Double, reaction: Double, traceStep: Double) -> Run {
         let clock = PacingClock()
         // Presenter and scheduler must share the exact monotonic clock.
         let display = PacingPresenter(clock, quiet: quiet)
@@ -82,7 +82,7 @@ private struct Run: Codable {
         let defaults = UserDefaults(suiteName: suite)!
         defer { defaults.removePersistentDomain(forName: suite) }
         let store = FallingSkyStore(defaults: defaults, arguments: ["--starfalls-reset", "--starfalls-seed=\(seed)"], presenter: display, clock: clock)
-        var result = Run(seed: seed, cadence: b ? TimingCycleFixture.identity : "openingV1", persona: persona, motion: quiet ? "quiet-model" : "full-motion-model")
+        var result = Run(seed: seed, cadence: cadence.rawValue, persona: persona, motion: quiet ? "quiet-model" : "full-motion-model")
         let intent = ConstellationTraceIntent()
         var gesture: Choice?, ticket: UInt64?, pathIndex = 0
         var decisionAt: Double?, gestureAt: Double?
@@ -97,7 +97,7 @@ private struct Run: Codable {
                 deadline: deadline, phase: String(describing: state.cadence.phase), busy: state.busy,
                 inputEnabled: state.canClear, paused: state.paused, suspended: state.suspended, cells: cells?.map { [$0.row,$0.column] }))
         }
-        store.configureTimingTest(lookup: { (b ? SkyCadenceID.announcedCycleV1 : .openingV1).step(committedShowers: $0.turns, pace: $0.balance.pace) }, observe: { event in
+        store.configureTimingTest(lookup: { cadence.step(committedShowers: $0.turns, pace: $0.balance.pace) }, observe: { event in
             record(String(describing: event.kind), deadline: event.showerDeadline, snapshot: event.snapshot)
             switch event.kind {
             case .automaticShower, .manualShower:
@@ -144,7 +144,7 @@ private struct Run: Codable {
         // Event count and time bounds prevent accidental unbounded offline execution.
         for _ in 0..<20000 {
             if clock.now >= limit || store.game.isOver { break }
-            if store.canClear && gesture == nil && decisionAt == nil { decisionAt = clock.now + 0.45 }
+            if store.canClear && gesture == nil && decisionAt == nil { decisionAt = clock.now + reaction }
             if !store.canClear { decisionAt = nil }
             let next = min(limit, clock.deadline ?? .infinity, display.finishAt ?? .infinity, decisionAt ?? .infinity, gestureAt ?? .infinity)
             precondition(next >= clock.now && next.isFinite)
@@ -169,7 +169,7 @@ private struct Run: Codable {
             if let time = gestureAt, time <= next, let action = gesture {
                 if pathIndex < action.path.count {
                     _ = intent.visit(action.path[pathIndex], ticket: ticket, game: store.game, generation: store.constellationInputGeneration, enabled: store.canClear)
-                    pathIndex += 1; gestureAt = next + 0.12
+                    pathIndex += 1; gestureAt = next + traceStep
                 } else {
                     let commit = intent.finish(ticket: ticket, game: store.game, generation: store.constellationInputGeneration, enabled: store.canClear)
                     gesture = nil; gestureAt = nil; store.endConstellationHold(hold); hold = nil
@@ -183,11 +183,11 @@ private struct Run: Codable {
                     if action.trace {
                         ticket = intent.begin(action.path[0],game: store.game,generation: store.constellationInputGeneration,enabled: store.canClear)
                         precondition(ticket != nil)
-                        gesture = action; pathIndex = 1; gestureAt = next+0.12
+                        gesture = action; pathIndex = 1; gestureAt = next+traceStep
                         result.traceStarts += 1; record("traceBegin",cells: action.path)
                         hold = store.beginConstellationHold()
                     } else { lastAction = action; record("tapAttempt",cells: [action.path[0]]); store.clear(action.path[0]) }
-                } else { decisionAt = next+0.45 }
+                } else { decisionAt = next+reaction }
             }
             result.maxHeight = max(result.maxHeight,(0..<7).map { height(store.game,$0) }.max()!)
             result.darkBlockedCells = max(result.darkBlockedCells,(0..<49).filter { store.game.isGrowthBlocked(at: Cell($0/7,$0%7)) }.count)
@@ -201,10 +201,14 @@ private struct Run: Codable {
     }
     @MainActor static func main() throws {
         let seeds = Int(CommandLine.arguments[1])!, seconds = Double(CommandLine.arguments[2])!
+        let baseline = SkyCadenceID(rawValue: CommandLine.arguments[3])!
+        let candidate = SkyCadenceID(rawValue: CommandLine.arguments[4])!
+        let reaction = Double(CommandLine.arguments[5])!, traceStep = Double(CommandLine.arguments[6])!
+        precondition(baseline != candidate && reaction >= 0.05 && reaction <= 5 && traceStep >= 0.02 && traceStep <= 1)
         checks()
         var runs: [Run] = []
-        for seed in 0..<seeds { for b in [false,true] { for persona in ["largest-clear","height-safety","trace-oriented"] { for quiet in [false,true] {
-            runs.append(run(seed: UInt64(seed),b: b,persona: persona,quiet: quiet,limit: seconds))
+        for seed in 0..<seeds { for cadence in [baseline,candidate] { for persona in ["largest-clear","height-safety","trace-oriented"] { for quiet in [false,true] {
+            runs.append(run(seed: UInt64(seed),cadence: cadence,persona: persona,quiet: quiet,limit: seconds,reaction: reaction,traceStep: traceStep))
         }}}}
         let encoder = JSONEncoder(); encoder.outputFormatting = [.sortedKeys]
         print(String(data: try encoder.encode(runs),encoding: .utf8)!)

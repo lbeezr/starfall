@@ -1,0 +1,830 @@
+[
+  {
+    "cadence": "announcedCycleV1",
+    "maxHeight": {
+      "max": 7,
+      "median": 6.5,
+      "min": 5,
+      "p90": 7
+    },
+    "medianClearsPerActiveMinute": 17.843759799310128,
+    "medianNoOpportunityFraction": 0.3804709287132849,
+    "medianPresentationFraction": 0.5292916666666674,
+    "minimumIncomingHeadroom": {
+      "max": 3,
+      "median": 1.0,
+      "min": 0,
+      "p90": 3
+    },
+    "motion": "full-motion-model",
+    "overflows": 5,
+    "policy": "largest-clear",
+    "reactionSeconds": 0.25,
+    "rounds": 16
+  },
+  {
+    "cadence": "announcedCycleV2",
+    "maxHeight": {
+      "max": 7,
+      "median": 7.0,
+      "min": 5,
+      "p90": 7
+    },
+    "medianClearsPerActiveMinute": 21.857389056441182,
+    "medianNoOpportunityFraction": 0.16988895348602487,
+    "medianPresentationFraction": 0.6936287577365172,
+    "minimumIncomingHeadroom": {
+      "max": 3,
+      "median": 0.0,
+      "min": 0,
+      "p90": 2
+    },
+    "motion": "full-motion-model",
+    "overflows": 12,
+    "policy": "largest-clear",
+    "reactionSeconds": 0.25,
+    "rounds": 16
+  },
+  {
+    "cadence": "announcedCycleV1",
+    "maxHeight": {
+      "max": 7,
+      "median": 6.5,
+      "min": 5,
+      "p90": 7
+    },
+    "medianClearsPerActiveMinute": 17.869356280733122,
+    "medianNoOpportunityFraction": 0.37731744758237035,
+    "medianPresentationFraction": 0.5288333333333342,
+    "minimumIncomingHeadroom": {
+      "max": 3,
+      "median": 1.0,
+      "min": 0,
+      "p90": 3
+    },
+    "motion": "full-motion-model",
+    "overflows": 4,
+    "policy": "height-safety",
+    "reactionSeconds": 0.25,
+    "rounds": 16
+  },
+  {
+    "cadence": "announcedCycleV2",
+    "maxHeight": {
+      "max": 7,
+      "median": 7.0,
+      "min": 5,
+      "p90": 7
+    },
+    "medianClearsPerActiveMinute": 22.325219197046604,
+    "medianNoOpportunityFraction": 0.16920833333333307,
+    "medianPresentationFraction": 0.701887035517301,
+    "minimumIncomingHeadroom": {
+      "max": 3,
+      "median": 0.5,
+      "min": 0,
+      "p90": 3
+    },
+    "motion": "full-motion-model",
+    "overflows": 8,
+    "policy": "height-safety",
+    "reactionSeconds": 0.25,
+    "rounds": 16
+  },
+  {
+    "cadence": "announcedCycleV1",
+    "maxHeight": {
+      "max": 7,
+      "median": 6.0,
+      "min": 5,
+      "p90": 7
+    },
+    "medianClearsPerActiveMinute": 17.696583633014647,
+    "medianNoOpportunityFraction": 0.37647931513328814,
+    "medianPresentationFraction": 0.5244583333333339,
+    "minimumIncomingHeadroom": {
+      "max": 3,
+      "median": 1.5,
+      "min": 0,
+      "p90": 3
+    },
+    "motion": "full-motion-model",
+    "overflows": 5,
+    "policy": "trace-oriented",
+    "reactionSeconds": 0.25,
+    "rounds": 16
+  },
+  {
+    "cadence": "announcedCycleV2",
+    "maxHeight": {
+      "max": 7,
+      "median": 7.0,
+      "min": 5,
+      "p90": 7
+    },
+    "medianClearsPerActiveMinute": 21.806916426512977,
+    "medianNoOpportunityFraction": 0.16988895348602487,
+    "medianPresentationFraction": 0.6849176033251378,
+    "minimumIncomingHeadroom": {
+      "max": 3,
+      "median": 0.0,
+      "min": 0,
+      "p90": 2
+    },
+    "motion": "full-motion-model",
+    "overflows": 12,
+    "policy": "trace-oriented",
+    "reactionSeconds": 0.25,
+    "rounds": 16
+  },
+  {
+    "cadence": "announcedCycleV1",
+    "maxHeight": {
+      "max": 7,
+      "median": 6.5,
+      "min": 5,
+      "p90": 7
+    },
+    "medianClearsPerActiveMinute": 17.25,
+    "medianNoOpportunityFraction": 0.8118749999999983,
+    "medianPresentationFraction": 0.09437500000000121,
+    "minimumIncomingHeadroom": {
+      "max": 3,
+      "median": 1.0,
+      "min": 0,
+      "p90": 3
+    },
+    "motion": "quiet-model",
+    "overflows": 5,
+    "policy": "largest-clear",
+    "reactionSeconds": 0.25,
+    "rounds": 16
+  },
+  {
+    "cadence": "announcedCycleV2",
+    "maxHeight": {
+      "max": 7,
+      "median": 7.0,
+      "min": 6,
+      "p90": 7
+    },
+    "medianClearsPerActiveMinute": 24.202191235059747,
+    "medianNoOpportunityFraction": 0.7317950913242004,
+    "medianPresentationFraction": 0.13073705179282985,
+    "minimumIncomingHeadroom": {
+      "max": 3,
+      "median": 0.5,
+      "min": 0,
+      "p90": 2
+    },
+    "motion": "quiet-model",
+    "overflows": 7,
+    "policy": "largest-clear",
+    "reactionSeconds": 0.25,
+    "rounds": 16
+  },
+  {
+    "cadence": "announcedCycleV1",
+    "maxHeight": {
+      "max": 7,
+      "median": 6.5,
+      "min": 5,
+      "p90": 7
+    },
+    "medianClearsPerActiveMinute": 17.25,
+    "medianNoOpportunityFraction": 0.8118749999999983,
+    "medianPresentationFraction": 0.09437500000000121,
+    "minimumIncomingHeadroom": {
+      "max": 3,
+      "median": 1.0,
+      "min": 0,
+      "p90": 3
+    },
+    "motion": "quiet-model",
+    "overflows": 5,
+    "policy": "height-safety",
+    "reactionSeconds": 0.25,
+    "rounds": 16
+  },
+  {
+    "cadence": "announcedCycleV2",
+    "maxHeight": {
+      "max": 7,
+      "median": 7.0,
+      "min": 6,
+      "p90": 7
+    },
+    "medianClearsPerActiveMinute": 24.202191235059747,
+    "medianNoOpportunityFraction": 0.7310450913242004,
+    "medianPresentationFraction": 0.13073705179282985,
+    "minimumIncomingHeadroom": {
+      "max": 3,
+      "median": 0.5,
+      "min": 0,
+      "p90": 2
+    },
+    "motion": "quiet-model",
+    "overflows": 7,
+    "policy": "height-safety",
+    "reactionSeconds": 0.25,
+    "rounds": 16
+  },
+  {
+    "cadence": "announcedCycleV1",
+    "maxHeight": {
+      "max": 7,
+      "median": 6.5,
+      "min": 5,
+      "p90": 7
+    },
+    "medianClearsPerActiveMinute": 17.25,
+    "medianNoOpportunityFraction": 0.804499999999998,
+    "medianPresentationFraction": 0.09437500000000121,
+    "minimumIncomingHeadroom": {
+      "max": 3,
+      "median": 1.0,
+      "min": 0,
+      "p90": 3
+    },
+    "motion": "quiet-model",
+    "overflows": 5,
+    "policy": "trace-oriented",
+    "reactionSeconds": 0.25,
+    "rounds": 16
+  },
+  {
+    "cadence": "announcedCycleV2",
+    "maxHeight": {
+      "max": 7,
+      "median": 7.0,
+      "min": 6,
+      "p90": 7
+    },
+    "medianClearsPerActiveMinute": 23.807039244349475,
+    "medianNoOpportunityFraction": 0.7226994058905309,
+    "medianPresentationFraction": 0.12993871584392336,
+    "minimumIncomingHeadroom": {
+      "max": 3,
+      "median": 0.5,
+      "min": 0,
+      "p90": 2
+    },
+    "motion": "quiet-model",
+    "overflows": 7,
+    "policy": "trace-oriented",
+    "reactionSeconds": 0.25,
+    "rounds": 16
+  },
+  {
+    "cadence": "announcedCycleV1",
+    "maxHeight": {
+      "max": 7,
+      "median": 6.5,
+      "min": 5,
+      "p90": 7
+    },
+    "medianClearsPerActiveMinute": 16.0,
+    "medianNoOpportunityFraction": 0.23029166666666645,
+    "medianPresentationFraction": 0.5033750000000007,
+    "minimumIncomingHeadroom": {
+      "max": 4,
+      "median": 1.5,
+      "min": 0,
+      "p90": 4
+    },
+    "motion": "full-motion-model",
+    "overflows": 2,
+    "policy": "largest-clear",
+    "reactionSeconds": 0.75,
+    "rounds": 16
+  },
+  {
+    "cadence": "announcedCycleV2",
+    "maxHeight": {
+      "max": 7,
+      "median": 7.0,
+      "min": 6,
+      "p90": 7
+    },
+    "medianClearsPerActiveMinute": 16.042895442359246,
+    "medianNoOpportunityFraction": 0.06286628624305984,
+    "medianPresentationFraction": 0.614208333333333,
+    "minimumIncomingHeadroom": {
+      "max": 1,
+      "median": 0.0,
+      "min": 0,
+      "p90": 1
+    },
+    "motion": "full-motion-model",
+    "overflows": 10,
+    "policy": "largest-clear",
+    "reactionSeconds": 0.75,
+    "rounds": 16
+  },
+  {
+    "cadence": "announcedCycleV1",
+    "maxHeight": {
+      "max": 7,
+      "median": 6.0,
+      "min": 5,
+      "p90": 7
+    },
+    "medianClearsPerActiveMinute": 15.451752427726303,
+    "medianNoOpportunityFraction": 0.2548174089370091,
+    "medianPresentationFraction": 0.4997500000000008,
+    "minimumIncomingHeadroom": {
+      "max": 4,
+      "median": 2.0,
+      "min": 0,
+      "p90": 4
+    },
+    "motion": "full-motion-model",
+    "overflows": 5,
+    "policy": "height-safety",
+    "reactionSeconds": 0.75,
+    "rounds": 16
+  },
+  {
+    "cadence": "announcedCycleV2",
+    "maxHeight": {
+      "max": 7,
+      "median": 7.0,
+      "min": 6,
+      "p90": 7
+    },
+    "medianClearsPerActiveMinute": 16.0,
+    "medianNoOpportunityFraction": 0.061000000000000075,
+    "medianPresentationFraction": 0.6061666666666676,
+    "minimumIncomingHeadroom": {
+      "max": 2,
+      "median": 1.0,
+      "min": 0,
+      "p90": 1
+    },
+    "motion": "full-motion-model",
+    "overflows": 6,
+    "policy": "height-safety",
+    "reactionSeconds": 0.75,
+    "rounds": 16
+  },
+  {
+    "cadence": "announcedCycleV1",
+    "maxHeight": {
+      "max": 7,
+      "median": 6.5,
+      "min": 5,
+      "p90": 7
+    },
+    "medianClearsPerActiveMinute": 15.75,
+    "medianNoOpportunityFraction": 0.23029166666666645,
+    "medianPresentationFraction": 0.5010416666666673,
+    "minimumIncomingHeadroom": {
+      "max": 4,
+      "median": 1.5,
+      "min": 0,
+      "p90": 4
+    },
+    "motion": "full-motion-model",
+    "overflows": 2,
+    "policy": "trace-oriented",
+    "reactionSeconds": 0.75,
+    "rounds": 16
+  },
+  {
+    "cadence": "announcedCycleV2",
+    "maxHeight": {
+      "max": 7,
+      "median": 7.0,
+      "min": 6,
+      "p90": 7
+    },
+    "medianClearsPerActiveMinute": 15.879377431906601,
+    "medianNoOpportunityFraction": 0.06286628624305984,
+    "medianPresentationFraction": 0.600364581698731,
+    "minimumIncomingHeadroom": {
+      "max": 1,
+      "median": 0.0,
+      "min": 0,
+      "p90": 1
+    },
+    "motion": "full-motion-model",
+    "overflows": 10,
+    "policy": "trace-oriented",
+    "reactionSeconds": 0.75,
+    "rounds": 16
+  },
+  {
+    "cadence": "announcedCycleV1",
+    "maxHeight": {
+      "max": 7,
+      "median": 6.5,
+      "min": 5,
+      "p90": 7
+    },
+    "medianClearsPerActiveMinute": 18.008273917207624,
+    "medianNoOpportunityFraction": 0.6595833333333321,
+    "medianPresentationFraction": 0.09618575077152373,
+    "minimumIncomingHeadroom": {
+      "max": 3,
+      "median": 1.0,
+      "min": 0,
+      "p90": 3
+    },
+    "motion": "quiet-model",
+    "overflows": 6,
+    "policy": "largest-clear",
+    "reactionSeconds": 0.75,
+    "rounds": 16
+  },
+  {
+    "cadence": "announcedCycleV2",
+    "maxHeight": {
+      "max": 7,
+      "median": 7.0,
+      "min": 6,
+      "p90": 7
+    },
+    "medianClearsPerActiveMinute": 23.899262366213478,
+    "medianNoOpportunityFraction": 0.46693030924648304,
+    "medianPresentationFraction": 0.13066241857830657,
+    "minimumIncomingHeadroom": {
+      "max": 3,
+      "median": 0.0,
+      "min": 0,
+      "p90": 2
+    },
+    "motion": "quiet-model",
+    "overflows": 10,
+    "policy": "largest-clear",
+    "reactionSeconds": 0.75,
+    "rounds": 16
+  },
+  {
+    "cadence": "announcedCycleV1",
+    "maxHeight": {
+      "max": 7,
+      "median": 6.5,
+      "min": 5,
+      "p90": 7
+    },
+    "medianClearsPerActiveMinute": 18.0,
+    "medianNoOpportunityFraction": 0.6595833333333321,
+    "medianPresentationFraction": 0.0962500000000013,
+    "minimumIncomingHeadroom": {
+      "max": 3,
+      "median": 1.0,
+      "min": 0,
+      "p90": 3
+    },
+    "motion": "quiet-model",
+    "overflows": 5,
+    "policy": "height-safety",
+    "reactionSeconds": 0.75,
+    "rounds": 16
+  },
+  {
+    "cadence": "announcedCycleV2",
+    "maxHeight": {
+      "max": 7,
+      "median": 7.0,
+      "min": 6,
+      "p90": 7
+    },
+    "medianClearsPerActiveMinute": 23.5,
+    "medianNoOpportunityFraction": 0.47852465878933315,
+    "medianPresentationFraction": 0.12886757024306023,
+    "minimumIncomingHeadroom": {
+      "max": 3,
+      "median": 0.0,
+      "min": 0,
+      "p90": 3
+    },
+    "motion": "quiet-model",
+    "overflows": 9,
+    "policy": "height-safety",
+    "reactionSeconds": 0.75,
+    "rounds": 16
+  },
+  {
+    "cadence": "announcedCycleV1",
+    "maxHeight": {
+      "max": 7,
+      "median": 6.5,
+      "min": 5,
+      "p90": 7
+    },
+    "medianClearsPerActiveMinute": 17.832005164277447,
+    "medianNoOpportunityFraction": 0.6562774908734734,
+    "medianPresentationFraction": 0.09558120381088168,
+    "minimumIncomingHeadroom": {
+      "max": 3,
+      "median": 1.0,
+      "min": 0,
+      "p90": 3
+    },
+    "motion": "quiet-model",
+    "overflows": 6,
+    "policy": "trace-oriented",
+    "reactionSeconds": 0.75,
+    "rounds": 16
+  },
+  {
+    "cadence": "announcedCycleV2",
+    "maxHeight": {
+      "max": 7,
+      "median": 7.0,
+      "min": 6,
+      "p90": 7
+    },
+    "medianClearsPerActiveMinute": 23.75,
+    "medianNoOpportunityFraction": 0.4645080093800036,
+    "medianPresentationFraction": 0.13062075191164035,
+    "minimumIncomingHeadroom": {
+      "max": 3,
+      "median": 0.0,
+      "min": 0,
+      "p90": 2
+    },
+    "motion": "quiet-model",
+    "overflows": 10,
+    "policy": "trace-oriented",
+    "reactionSeconds": 0.75,
+    "rounds": 16
+  },
+  {
+    "cadence": "announcedCycleV1",
+    "maxHeight": {
+      "max": 7,
+      "median": 7.0,
+      "min": 6,
+      "p90": 7
+    },
+    "medianClearsPerActiveMinute": 10.7575490324731,
+    "medianNoOpportunityFraction": 0.08583333333333337,
+    "medianPresentationFraction": 0.44846271929824594,
+    "minimumIncomingHeadroom": {
+      "max": 2,
+      "median": 0.0,
+      "min": 0,
+      "p90": 2
+    },
+    "motion": "full-motion-model",
+    "overflows": 11,
+    "policy": "largest-clear",
+    "reactionSeconds": 1.5,
+    "rounds": 16
+  },
+  {
+    "cadence": "announcedCycleV2",
+    "maxHeight": {
+      "max": 7,
+      "median": 7.0,
+      "min": 7,
+      "p90": 7
+    },
+    "medianClearsPerActiveMinute": 1.470042519368338,
+    "medianNoOpportunityFraction": 0.00694024871514598,
+    "medianPresentationFraction": 0.5014634946044725,
+    "minimumIncomingHeadroom": {
+      "max": 1,
+      "median": 0.0,
+      "min": 0,
+      "p90": 0
+    },
+    "motion": "full-motion-model",
+    "overflows": 16,
+    "policy": "largest-clear",
+    "reactionSeconds": 1.5,
+    "rounds": 16
+  },
+  {
+    "cadence": "announcedCycleV1",
+    "maxHeight": {
+      "max": 7,
+      "median": 7.0,
+      "min": 6,
+      "p90": 7
+    },
+    "medianClearsPerActiveMinute": 10.644297456974057,
+    "medianNoOpportunityFraction": 0.0745000000000001,
+    "medianPresentationFraction": 0.4479411102007379,
+    "minimumIncomingHeadroom": {
+      "max": 2,
+      "median": 1.0,
+      "min": 0,
+      "p90": 2
+    },
+    "motion": "full-motion-model",
+    "overflows": 7,
+    "policy": "height-safety",
+    "reactionSeconds": 1.5,
+    "rounds": 16
+  },
+  {
+    "cadence": "announcedCycleV2",
+    "maxHeight": {
+      "max": 7,
+      "median": 7.0,
+      "min": 7,
+      "p90": 7
+    },
+    "medianClearsPerActiveMinute": 1.3989788987077627,
+    "medianNoOpportunityFraction": 0.006874746858636219,
+    "medianPresentationFraction": 0.5017487862645962,
+    "minimumIncomingHeadroom": {
+      "max": 0,
+      "median": 0.0,
+      "min": 0,
+      "p90": 0
+    },
+    "motion": "full-motion-model",
+    "overflows": 16,
+    "policy": "height-safety",
+    "reactionSeconds": 1.5,
+    "rounds": 16
+  },
+  {
+    "cadence": "announcedCycleV1",
+    "maxHeight": {
+      "max": 7,
+      "median": 7.0,
+      "min": 6,
+      "p90": 7
+    },
+    "medianClearsPerActiveMinute": 10.243460944001903,
+    "medianNoOpportunityFraction": 0.08583333333333337,
+    "medianPresentationFraction": 0.4397233365652654,
+    "minimumIncomingHeadroom": {
+      "max": 2,
+      "median": 0.5,
+      "min": 0,
+      "p90": 2
+    },
+    "motion": "full-motion-model",
+    "overflows": 10,
+    "policy": "trace-oriented",
+    "reactionSeconds": 1.5,
+    "rounds": 16
+  },
+  {
+    "cadence": "announcedCycleV2",
+    "maxHeight": {
+      "max": 7,
+      "median": 7.0,
+      "min": 7,
+      "p90": 7
+    },
+    "medianClearsPerActiveMinute": 1.4400356254768183,
+    "medianNoOpportunityFraction": 0.00694024871514598,
+    "medianPresentationFraction": 0.49478868046535107,
+    "minimumIncomingHeadroom": {
+      "max": 1,
+      "median": 0.0,
+      "min": 0,
+      "p90": 0
+    },
+    "motion": "full-motion-model",
+    "overflows": 16,
+    "policy": "trace-oriented",
+    "reactionSeconds": 1.5,
+    "rounds": 16
+  },
+  {
+    "cadence": "announcedCycleV1",
+    "maxHeight": {
+      "max": 7,
+      "median": 7.0,
+      "min": 5,
+      "p90": 7
+    },
+    "medianClearsPerActiveMinute": 16.040585814109313,
+    "medianNoOpportunityFraction": 0.4057739824932547,
+    "medianPresentationFraction": 0.09146872755996065,
+    "minimumIncomingHeadroom": {
+      "max": 3,
+      "median": 0.0,
+      "min": 0,
+      "p90": 3
+    },
+    "motion": "quiet-model",
+    "overflows": 9,
+    "policy": "largest-clear",
+    "reactionSeconds": 1.5,
+    "rounds": 16
+  },
+  {
+    "cadence": "announcedCycleV2",
+    "maxHeight": {
+      "max": 7,
+      "median": 7.0,
+      "min": 6,
+      "p90": 7
+    },
+    "medianClearsPerActiveMinute": 21.75,
+    "medianNoOpportunityFraction": 0.24772211159268787,
+    "medianPresentationFraction": 0.12476345989500784,
+    "minimumIncomingHeadroom": {
+      "max": 2,
+      "median": 0.0,
+      "min": 0,
+      "p90": 2
+    },
+    "motion": "quiet-model",
+    "overflows": 11,
+    "policy": "largest-clear",
+    "reactionSeconds": 1.5,
+    "rounds": 16
+  },
+  {
+    "cadence": "announcedCycleV1",
+    "maxHeight": {
+      "max": 7,
+      "median": 7.0,
+      "min": 4,
+      "p90": 7
+    },
+    "medianClearsPerActiveMinute": 16.54943043124492,
+    "medianNoOpportunityFraction": 0.4177502712232164,
+    "medianPresentationFraction": 0.09262917005695726,
+    "minimumIncomingHeadroom": {
+      "max": 4,
+      "median": 1.0,
+      "min": 0,
+      "p90": 3
+    },
+    "motion": "quiet-model",
+    "overflows": 6,
+    "policy": "height-safety",
+    "reactionSeconds": 1.5,
+    "rounds": 16
+  },
+  {
+    "cadence": "announcedCycleV2",
+    "maxHeight": {
+      "max": 7,
+      "median": 7.0,
+      "min": 6,
+      "p90": 7
+    },
+    "medianClearsPerActiveMinute": 21.25,
+    "medianNoOpportunityFraction": 0.25762850226617195,
+    "medianPresentationFraction": 0.12218060985295577,
+    "minimumIncomingHeadroom": {
+      "max": 3,
+      "median": 0.0,
+      "min": 0,
+      "p90": 2
+    },
+    "motion": "quiet-model",
+    "overflows": 11,
+    "policy": "height-safety",
+    "reactionSeconds": 1.5,
+    "rounds": 16
+  },
+  {
+    "cadence": "announcedCycleV1",
+    "maxHeight": {
+      "max": 7,
+      "median": 7.0,
+      "min": 5,
+      "p90": 7
+    },
+    "medianClearsPerActiveMinute": 15.790585814109315,
+    "medianNoOpportunityFraction": 0.40106842507645246,
+    "medianPresentationFraction": 0.09088539422662764,
+    "minimumIncomingHeadroom": {
+      "max": 3,
+      "median": 0.5,
+      "min": 0,
+      "p90": 3
+    },
+    "motion": "quiet-model",
+    "overflows": 8,
+    "policy": "trace-oriented",
+    "reactionSeconds": 1.5,
+    "rounds": 16
+  },
+  {
+    "cadence": "announcedCycleV2",
+    "maxHeight": {
+      "max": 7,
+      "median": 7.0,
+      "min": 6,
+      "p90": 7
+    },
+    "medianClearsPerActiveMinute": 21.5,
+    "medianNoOpportunityFraction": 0.24772211159268787,
+    "medianPresentationFraction": 0.12375000000000164,
+    "minimumIncomingHeadroom": {
+      "max": 3,
+      "median": 0.0,
+      "min": 0,
+      "p90": 2
+    },
+    "motion": "quiet-model",
+    "overflows": 11,
+    "policy": "trace-oriented",
+    "reactionSeconds": 1.5,
+    "rounds": 16
+  }
+]
