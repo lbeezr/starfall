@@ -139,7 +139,19 @@
   "capturesSHA256": {
     "docs/evidence/critical-mass-2026-10-18/dev-c9c8d2e__critical-warning__iphone-17e__default-text.jpg": "a849a2b7d54fc83c8292b6022e332c206cdf4ab8f634a8efdcf51d1bd82fc1d6",
     "docs/evidence/critical-mass-2026-10-18/dev-c9c8d2e__critical-controls__iphone-17e__largest-text.jpg": "c9dbbfa177e527899b8f2e6cecfaf906e007b92957c5e4e1e35de926067c15e8",
-    "docs/evidence/critical-mass-2026-10-18/dev-c9c8d2e__critical-swallow__iphone-17e__normal-motion.jpg": "140c6e03b93277ba9ade5c212dc3131a4d347c997c79302f8fe425937e39e9b1"
+    "docs/evidence/critical-mass-2026-10-18/dev-c9c8d2e__critical-swallow__iphone-17e__normal-motion.jpg": "140c6e03b93277ba9ade5c212dc3131a4d347c997c79302f8fe425937e39e9b1",
+    "docs/evidence/critical-mass-2026-10-18/dev-fe5d954__critical-help__iphone-17e__largest-text.jpg": "dfd77f731a5c237ba6d3cbe965ebb9873af2c751804bc0e545aafb63ffa64fea"
   },
-  "motionRecordingSHA256": "f68b120f78ba5f3c143fd5eb0aa821eaf47feb904f4833d0e6ffdfcc782e0d11"
+  "motionRecordingSHA256": "f68b120f78ba5f3c143fd5eb0aa821eaf47feb904f4833d0e6ffdfcc782e0d11",
+  "completeHelp": {
+    "testedSource": "fe5d954",
+    "simulator": "7C237D7B-B4A3-4F91-97F5-6C4A2381DE30; iPhone 17e / iOS 27.0",
+    "durationSeconds": 131.522,
+    "passed": true,
+    "sampledPositions": 57,
+    "narrowBudget": 72,
+    "wideBudget": 48,
+    "testSHA256": "4ad2d097f37e9cb3c0abe1127e2d4cc739e014736765aa0f7af247fb2101bdca",
+    "runtimeSourceUnchangedSince": "c9c8d2e"
+  }
 }
