@@ -42,7 +42,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     static let saveKey = SkySaveArchive.key
     private(set) var game: FallingSky
     private(set) var hasSavedSky = false
-    private(set) var busy = false
+    var busy: Bool { !presentations.isEmpty }
     private(set) var suspended = true
     private(set) var sceneReady = false
     private(set) var isPaused = true
@@ -81,8 +81,8 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     private var constellationHoldSequence: UInt64 = 0
 
     /// Only the owner may release a live hold; late callbacks cannot resume a newer touch.
-    @discardableResult func beginConstellationHold() -> UInt64? {
-        guard canClear, constellationHold == nil else { return nil }
+    @discardableResult func beginConstellationHold(at cell: Cell? = nil) -> UInt64? {
+        guard (cell.map(canContact) ?? canClear), constellationHold == nil else { return nil }
         constellationHoldSequence &+= 1
         constellationHold = constellationHoldSequence
         constellationTracing = true
@@ -100,7 +100,42 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         observeTiming(.state)
         #endif
     }
-    private(set) var pending: FallingSkyTurn?
+    private struct Presentation {
+        let id: UInt64
+        let turn: FallingSkyTurn
+    }
+    private var presentations: [Presentation] = []
+    private var presentationSequence: UInt64 = 0
+    private struct InputFeedback: Equatable {
+        let text: String
+        let waitingColumns: Set<Int>?
+    }
+    private var inputFeedback: InputFeedback?
+    var inputMessage: String? { inputFeedback?.text }
+    var pending: FallingSkyTurn? {
+        presentations.first(where: { !$0.turn.arrivals.isEmpty })?.turn ?? presentations.last?.turn
+    }
+    var changingColumns: Set<Int> { presentations.reduce(into: []) { $0.formUnion($1.turn.changingColumns) } }
+
+    func showInputFeedback(_ text: String?) {
+        inputFeedback = text.map { InputFeedback(text: $0, waitingColumns: nil) }
+    }
+
+    func explainInputFailure(_ text: String) {
+        showInputFeedback(text)
+        feedback.announce(text)
+    }
+
+    func explainSettling(at cell: Cell) {
+        var preview = game
+        let columns = preview.clear(cell)?.changingColumns ?? [cell.column]
+        showSettling(columns)
+    }
+
+    private func showSettling(_ columns: Set<Int>) {
+        inputFeedback = InputFeedback(text: "Stars settling…", waitingColumns: columns.intersection(changingColumns))
+        feedback.announce("Stars settling")
+    }
     var soundEnabled: Bool {
         didSet { defaults.set(soundEnabled, forKey: "soundEnabled"); if !soundEnabled { feedback.stopSounds() } }
     }
@@ -178,6 +213,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     }
     private func invalidateInput(_ reason: String) {
         endConstellationHold(constellationHold)
+        showInputFeedback(nil)
         constellationInputGeneration &+= 1
         #if DEBUG
         observeTiming(.invalidated(reason))
@@ -241,10 +277,31 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     var phaseCue: SkyPhaseCue? { SkyPhaseCue(game: game, pending: pending) }
     var forecast: [IncomingStar] { pending?.forecast ?? game.incoming }
     var showerInterval: TimeInterval { nextShowerCadence.delay }
-    var canClear: Bool { !busy && !suspended && !game.isOver && !rainDue }
+    var canClear: Bool { !busy && canReceiveInput }
+    var canReceiveInput: Bool { !suspended && !game.isOver && !rainDue }
+
+    func canContact(_ cell: Cell) -> Bool { canReceiveInput && !changingColumns.contains(cell.column) }
+
+    func canClear(_ cell: Cell) -> Bool {
+        guard canContact(cell) else { return false }
+        var preview = game
+        guard let turn = preview.clear(cell) else { return true } // Invalid input still explains its rule.
+        return turn.changingColumns.isDisjoint(with: changingColumns)
+    }
+
+    func canTrace(_ path: [Cell]) -> Bool {
+        guard canReceiveInput, !path.isEmpty else { return false }
+        var preview = game
+        if let turn = preview.clearConstellation(path) {
+            return turn.changingColumns.isDisjoint(with: changingColumns)
+        }
+        return path.allSatisfy { !changingColumns.contains($0.column) }
+    }
 
     func clear(_ cell: Cell) {
-        guard canClear, !constellationTracing else { return }
+        guard canReceiveInput, !constellationTracing else { return }
+        guard canClear(cell) else { explainSettling(at: cell); return }
+        showInputFeedback(nil)
         let old = game
         guard let turn = game.clear(cell) else {
             let gem = game.gem(at: cell)
@@ -266,7 +323,12 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     }
 
     func clearTracedConstellation(_ path: [Cell], snapshot: FallingSky, generation ticket: UInt64) {
-        guard canClear, game == snapshot, ticket == constellationInputGeneration else { return }
+        guard !suspended, !game.isOver, game == snapshot, ticket == constellationInputGeneration else { return }
+        guard canTrace(path) else {
+            var preview = game
+            showSettling(preview.clearConstellation(path)?.changingColumns ?? Set(path.map(\.column)))
+            return
+        }
         let old = game
         guard let turn = game.clearConstellation(path) else { return }
         #if DEBUG
@@ -339,7 +401,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     }
 
     private func deliverRainIfReady() {
-        guard rainDue, !busy, !suspended, !isPaused, !game.isOver else { return }
+        guard rainDue, !busy, !constellationTracing, !suspended, !isPaused, !game.isOver else { return }
         let dueDeadline = deadline
         rainDue = false
         deadline = nil
@@ -361,9 +423,10 @@ enum SkyTerminalSpeech { case feedback, ceremony }
 
     private func present(_ turn: FallingSkyTurn, from old: FallingSky, announcesResult: Bool = true, previousCadence: SkyCadenceStep? = nil) {
         invalidateInput(turn.arrivals.isEmpty && turn.blockedColumn == nil ? "clear" : (announcesResult ? "manualShower" : "automaticShower"))
-        generation &+= 1
-        let ticket = generation
-        busy = true; pending = turn
+        let epoch = generation
+        presentationSequence &+= 1
+        let ticket = presentationSequence
+        presentations.append(Presentation(id: ticket, turn: turn))
         let growth = turn.arrivals.filter(\.grew).count
         let dissolved = turn.cleared.filter { old.gem(at: $0)?.isDark == true }.count
         if game.outcome == .won {
@@ -399,9 +462,14 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         let spokenResult: SkyDialogueLine? = transition ?? (announcesResult || game.isOver ? resultLine : nil)
         save() // Commit before animation: backgrounding cannot replay arrivals.
         presenter.animate(turn, from: old, to: game) { [weak self] in
-            guard let self, self.generation == ticket, self.busy else { return }
-            self.pending = nil; self.busy = false
-            if let spokenResult, !self.game.isOver || self.terminalSpeech == .feedback {
+            guard let self, self.generation == epoch,
+                  self.presentations.contains(where: { $0.id == ticket }) else { return }
+            self.presentations.removeAll { $0.id == ticket }
+            if let columns = self.inputFeedback?.waitingColumns, columns.isDisjoint(with: self.changingColumns) {
+                self.showInputFeedback(nil)
+            }
+            if let spokenResult, (!announcesResult || ticket == self.presentationSequence),
+               !self.game.isOver || self.terminalSpeech == .feedback {
                 let accepted = self.dialogue.show(spokenResult, interrupt: announcesResult)
                 if accepted && (announcesResult || self.game.isOver || announcesTransition) {
                     self.feedback.announce(spokenResult.spokenText)
@@ -544,7 +612,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         #endif
         invalidateInput(reason)
         generation &+= 1
-        pending = nil; busy = false
+        presentations.removeAll()
         presenter.render(game)
         deliverRainIfReady()
     }

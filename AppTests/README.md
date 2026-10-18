@@ -35,3 +35,5 @@ Camera placement tests distinguish full canvas dimensions from safe-area-reduced
 Gravity overlap checks share the natural seed setup and verify airborne/phase concurrency, receiver response after movement, landing order, body identity, replacement/quiet parity and a bounded nominal fast-shower presentation budget; real input-window reports remain timing observations rather than reaction-time assertions.
 
 The current Opal/orbit planning deadline test commits the field-releasing clear, delivers exactly one due recovery shower, then commits the curved six-light trace through the snapshot/generation boundary. It checks exact Core equality and does not model finger timing.
+
+`ResponsiveInputTests` covers independent presentation/save ownership, current gravity reservations, anchored drift, held contact and stale result dialogue. `StarCastTests` verifies that a real independent clear does not cancel an unrelated falling animation.
