@@ -170,3 +170,7 @@ The cropped top came from a hidden phase measurement row outside the full-window
 ## Gravity trial adoption boundary — October 17, 2026
 
 The [isolated gravity trial](design/GRAVITY_MECHANICS.md) introduces fixed occupied supports and highest-occupied landing only inside its exported candidate. [Evidence](evidence/gravity-orbit-2026-10-17/README.md) covers bounded rule/save, native input and full-motion examples. Trigger: natural spawning, mixed Opal capture or production adoption. First observe players predicting support release and landing, measure usable windows/orphan lifetimes, and define explicit normal-save migration and mixed-unit rules. Keep actual VoiceOver/physical-device acceptance and performance profiling separate; no new capability is accepted from fixture automation alone. If support gravity is confusing, revise to the one-time vortex alternative or remove/defer the orbit.
+
+## Touch ownership follow-up — October 17, 2026
+
+The [reliability design](design/RELIABILITY_POLISH.md) closes the sub-slop off-board release path with terminal sample classification and store-issued hold tickets. Configuration/size changes, disabled input, detachment and multitouch share cancellation. Physical multitouch/system interruption remains next-device acceptance; do not infer it from hosted surface cancellation. Late release cannot resume a newer hold.

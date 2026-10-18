@@ -14,6 +14,7 @@ import StarfallCore
 @MainActor final class FallingSkyScene: FallingSkyPresenting {
     var reduceMotion = false
     var onLayout: (() -> Void)?
+    var onReadinessChanged: ((Bool) -> Void)?
     func render(_ game: FallingSky) {}
     func animate(_ turn: FallingSkyTurn, from old: FallingSky, to game: FallingSky, completion: @escaping () -> Void) { fatalError("Injected presenter required") }
 }
