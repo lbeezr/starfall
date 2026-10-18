@@ -46,14 +46,15 @@ final class TraceInputPolishTests: XCTestCase {
             XCTAssertEqual(cells.filter { game.gem(at: $0)?.kind == .rose }, (0..<5).map { Cell($0,$0) })
             XCTAssertFalse(cells.contains(Cell(5,5)))
             let cell = Cell(2,2), center = mapping.viewPoint(cell)
-            let radius = ConstellationTraceHitTesting.radius(cell, mapping: mapping)
+            let axes = ConstellationTraceHitTesting.radii(cell, mapping: mapping)
+            let width = mapping.frame(cell).width
             XCTAssertEqual(ConstellationTraceHitTesting.start(at: center, mapping: mapping, game: game), cell)
-            XCTAssertEqual(ConstellationTraceHitTesting.start(at: CGPoint(x: center.x+radius*1.02, y: center.y), mapping: mapping, game: game), cell,
+            XCTAssertEqual(ConstellationTraceHitTesting.start(at: CGPoint(x: center.x+width*0.49, y: center.y), mapping: mapping, game: game), cell,
                            "The native star target has no smaller circular dead rim")
-            let left = CGPoint(x: center.x-radius*1.5, y: center.y+radius*0.98)
-            let right = CGPoint(x: center.x+radius*1.5, y: left.y)
+            let left = CGPoint(x: center.x-axes.width*1.5, y: center.y+axes.height*0.98)
+            let right = CGPoint(x: center.x+axes.width*1.5, y: left.y)
             XCTAssertTrue(ConstellationTraceHitTesting.cells(from: left, to: right, mapping: mapping, game: game).contains(cell))
-            XCTAssertEqual(ConstellationTraceHitTesting.start(at: CGPoint(x: center.x+radius*0.98, y: center.y), mapping: mapping, game: game), cell)
+            XCTAssertEqual(ConstellationTraceHitTesting.start(at: CGPoint(x: center.x+width*0.47, y: center.y), mapping: mapping, game: game), cell)
             XCTAssertNil(ConstellationTraceHitTesting.start(at: mapping.viewPoint(Cell(6,0)), mapping: mapping, game: game))
         }
     }
@@ -98,8 +99,7 @@ extension TraceInputPolishTests {
         for size in [CGSize(width:320,height:568), CGSize(width:440,height:956)] {
             let mapping = ObservatoryGeometry(size:size), game = ConstellationFixture.diagonalSix.game()
             let cell = Cell(0,0), center = mapping.viewPoint(cell)
-            let radius = ConstellationTraceHitTesting.radius(cell,mapping:mapping)
-            let start = CGPoint(x:center.x-radius*0.99,y:center.y)
+            let start = CGPoint(x:center.x-mapping.frame(cell).width*0.48,y:center.y)
             let outside = CGPoint(x:start.x-7.9,y:start.y)
             XCTAssertEqual(ConstellationTraceHitTesting.start(at:start,mapping:mapping,game:game),cell)
             XCTAssertNil(mapping.cell(at:outside))
@@ -336,4 +336,49 @@ extension TraceInputPolishTests {
     func collected(soundEnabled: Bool, hapticsEnabled: Bool, reducedMotion: Bool) {}
     func announce(_ message: String) {}
     func stopSounds() { stops += 1 }
+}
+
+
+extension TraceInputPolishTests {
+    func testDirectionalSwapTargetsBeforeCellBoundaryAndToleratesWobble() {
+        for size in [CGSize(width:320,height:568),CGSize(width:440,height:956),CGSize(width:834,height:1194)] {
+            let mapping = ObservatoryGeometry(size:size), cell = Cell(1,2)
+            let frame = mapping.frame(cell), origin = mapping.viewPoint(cell)
+            let distance = SkySwapDwell.threshold(cell,mapping:mapping) * 1.1
+            for direction: CGFloat in [-1,1] {
+                let point = CGPoint(x:origin.x+distance*direction,y:origin.y+2)
+                XCTAssertEqual(mapping.cell(at:point),cell)
+                var dwell = SkySwapDwell()
+                dwell.visit(origin:origin,point:point,mapping:mapping)
+                XCTAssertEqual(dwell.target,Cell(1,2+Int(direction)))
+                dwell.arm()
+                let wobble = CGPoint(x:point.x,y:origin.y+frame.height*0.6)
+                dwell.visit(origin:origin,point:wobble,mapping:mapping)
+                XCTAssertTrue(dwell.eligible); XCTAssertEqual(dwell.target,Cell(1,2+Int(direction)))
+                dwell.visit(origin:origin,point:origin,mapping:mapping)
+                XCTAssertFalse(dwell.eligible); XCTAssertNil(dwell.target)
+            }
+        }
+    }
+
+    @MainActor func testOffCenterEllipseAndGapMissUseSharedRules() throws {
+        let game = ConstellationFixture.horizontalFive.game()
+        XCTAssertEqual(ConstellationTraceHitTesting.cells(from:.zero,to:.zero,
+            mapping:ObservatoryGeometry(size:.zero),game:game),[])
+        for size in [CGSize(width:320,height:568),CGSize(width:440,height:956),CGSize(width:834,height:1194)] {
+            let mapping = ObservatoryGeometry(size:size)
+            let a = mapping.viewPoint(Cell(0,0)), b = mapping.viewPoint(Cell(0,4))
+            let offset = mapping.frame(Cell(0,0)).height*0.38
+            let hits = ConstellationTraceHitTesting.cells(from:CGPoint(x:a.x,y:a.y+offset),
+                to:CGPoint(x:b.x,y:b.y+offset),mapping:mapping,game:game)
+            XCTAssertEqual(hits.filter { game.gem(at:$0)?.kind == .rose },(0..<5).map { Cell(0,$0) })
+        }
+        let gap = ConstellationFixture.singleGap.game(), intent = ConstellationTraceIntent()
+        let ticket = try XCTUnwrap(intent.begin(Cell(0,0),game:gap,generation:1,enabled:true))
+        for column in [1,2,3] { XCTAssertTrue(intent.visit(Cell(0,column),ticket:ticket,game:gap,generation:1,enabled:true)) }
+        XCTAssertFalse(intent.visit(Cell(0,4),ticket:ticket,game:gap,generation:1,enabled:true))
+        XCTAssertEqual(intent.count,4)
+        XCTAssertTrue(intent.visit(Cell(0,5),ticket:ticket,game:gap,generation:1,enabled:true))
+        XCTAssertNotNil(intent.finish(ticket:ticket,game:gap,generation:1,enabled:true))
+    }
 }

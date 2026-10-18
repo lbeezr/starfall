@@ -3,9 +3,11 @@ import Foundation
 
 /// Debug-only deterministic input fixtures; never loaded without an explicit reset argument.
 public enum ConstellationFixture: String, CaseIterable {
-    case five, fourGrown, overlap, darkness, diagonalSix, opalChoice, opalTrace, opalPlanning, opalStormPlanning, stormWarning
+    case singleGap, horizontalFive, five, fourGrown, overlap, darkness, diagonalSix, opalChoice, opalTrace, opalPlanning, opalStormPlanning, stormWarning
     public var title: String {
         switch self {
+        case .singleGap: "Five stars across one empty space"
+        case .horizontalFive: "Five stars in a row"
         case .opalTrace: "Trace through an Opal Orb"
         case .opalPlanning, .opalStormPlanning: "Choose which match spends Opal"
         case .opalChoice: "An orb shared by different colors"
@@ -22,6 +24,8 @@ public enum ConstellationFixture: String, CaseIterable {
         if self == .opalStormPlanning { return stormPlanningSky() }
         if self == .opalChoice || self == .opalTrace || self == .stormWarning { return naturalMechanicsSky() }
         var pink: Set<Cell> = [Cell(0,4),Cell(1,3),Cell(2,4),Cell(1,5),Cell(1,6)]
+        if self == .singleGap { pink = Set([0,1,2,3,5].map { Cell(0,$0) }) }
+        if self == .horizontalFive { pink = Set((0..<5).map { Cell(0,$0) }) }
         if self == .diagonalSix { pink = Set((0..<6).map { Cell($0,$0) }) }
         if self == .fourGrown { pink = [Cell(0,0),Cell(1,1),Cell(2,2),Cell(3,3)] }
         if self == .overlap { pink.formUnion([Cell(0,5),Cell(0,6)]) }

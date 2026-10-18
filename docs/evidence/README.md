@@ -56,3 +56,5 @@ Start with [the roadmap](../ROADMAP.md) for current priorities or [visual refere
 - [Actual device installation and stale-delivery guards](device-delivery-guards-2026-10-18/README.md): guarded updater activation, rollback/overwrite regression tests and privileged-access limits.
 
 [Input centralization](interaction-centralization-2026-10-18/README.md) records four separate interaction, admission, interruption and feedback extractions, with per-batch source and native verification.
+
+[Forgiving current-app input](forgiving-input-main-2026-10-18/README.md) records directional swaps, empty-gap constellations and current-main regression checks.

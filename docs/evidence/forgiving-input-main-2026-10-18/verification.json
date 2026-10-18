@@ -1,0 +1,35 @@
+{
+  "base": "dcd89dd18ccdfd17bffa36c14d41817d7aa733b0",
+  "testedSHA256": {
+    "App/ConstellationTraceHitTesting.swift": "5552afb6c69a055dcd0ea482c3a5b96ee773ca948a40c75719949dca6a611e05",
+    "App/ConstellationTraceSurface.swift": "7f9c88c208fc811bdebebc32df32b69102ca307c77ed6d3e385a0e09e0975cd8",
+    "App/DialogueScripts/observatory-dialogue.json": "e4048ae6d86911a33465aa0ef8d65b5ae23570efcb9fa98dea9573b43d7ee88f",
+    "App/FallingSkyView.swift": "9b650d2404d1f3d35630169ecd8cc9c65a5157081d0e69bbc6ce933f3b3bdb41",
+    "AppTests/TraceInputPolishTests.swift": "de99d913c7fcc584a90a03f1ee513d8f8a0176480898a9a0978654ab02dedc4e",
+    "Sources/StarfallCore/ConstellationFixture.swift": "9c8038dd4b51304f3c65dffc8f966bbe65fafa78b11d6ecdfd300895532cd253",
+    "Sources/StarfallCore/FallingSky.swift": "629b551fa909776910682ef4adaca9f717fb40d015d427656a881e477f53ed93",
+    "Tests/StarfallCoreTests/ConstellationGapCoreTests.swift": "3bd59148bbb4fd381d4abc05b255db7b64c143401a11f2ea4bb07375c5b9c785",
+    "UITests/ConstellationTraceNativeTests.swift": "57deda491501f5e4036f85dcaf9e99e027365741fd5fe4e527e4c420362019cf",
+    "UITests/SkyTechniqueInteractionTests.swift": "396631b00c3cff23c5e7263a328dcdf8dbacb5b95b45c530aa14fca776729db6"
+  },
+  "results": {
+    "core": 152,
+    "hosted": 77,
+    "iPhoneUI": 7,
+    "release": "passed",
+    "physicalTouch": "not run",
+    "actualVoiceOver": "deferred to RC",
+    "iPadUI": 3,
+    "finalAffectedHosted": 25,
+    "finalAffectedIPhoneUI": 3,
+    "iPadSourceScope": "Preceding source; final event-order correction retested on iPhone."
+  },
+  "iPhoneSimulator": "5107CBBF-108B-4B94-9125-A873F948A38C",
+  "iPadSimulator": "66475E68-E548-43B0-A265-C492ADF6234C",
+  "os": "iOS 27.0",
+  "toolchain": "Xcode 27.1 (27A9275)",
+  "initialPublishedSource": "5c8d67778f6f668cf9a77bd3f47464db0ab1f820",
+  "initialLocalSource": "4b858fe46a44dd7d48e27c3dbf002a8d5de91d78",
+  "initialTree": "c7e36b6019eff1ac9277ad839e1f22a3cbffec6d",
+  "finalLocalTestSource": "c4510b794391bb7857178f8f840f15b4e2e85a6c"
+}

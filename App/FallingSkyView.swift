@@ -504,7 +504,7 @@ private extension FallingSkyView {
     func finishDirectSwap(_ point: CGPoint, size: CGSize) {
         defer { cancelConstellation() }
         guard technique.swapping, let from=technique.anchor, let to=technique.swapDestination,
-              ObservatoryGeometry(size:size).cell(at:point) == to, let snapshot=technique.snapshot else { return }
+              ObservatoryGeometry(size:size).cell(at:point) != nil, let snapshot=technique.snapshot else { return }
         let generation=technique.generation
         technique.cancel()
         _ = store.performTechnique(.nudge(from,to),snapshot:snapshot,generation:generation)

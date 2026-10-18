@@ -60,10 +60,6 @@ final class SkyTechniqueInteractionTests: XCTestCase {
         let app = launch("nudge"); defer { app.terminate() }
         let start = app.buttons["experiment.cell.1.2"].coordinate(withNormalizedOffset: CGVector(dx:0.5,dy:0.5))
         let neighbor = app.buttons["experiment.cell.1.1"].coordinate(withNormalizedOffset: CGVector(dx:0.5,dy:0.5))
-        // A quick short swipe cannot become a swap or an ordinary tap.
-        start.press(forDuration:0.05,thenDragTo:neighbor,withVelocity:.fast,thenHoldForDuration:0)
-        score(0,app)
-        XCTAssertTrue(app.buttons["experiment.cell.1.2"].label.contains("Aqua"))
         start.press(forDuration:0.1,thenDragTo:neighbor,withVelocity:.slow,thenHoldForDuration:0.2)
         XCTAssertTrue(XCTNSPredicateExpectation(predicate:NSPredicate(format:"label CONTAINS %@","Aqua"),object:app.buttons["experiment.cell.1.1"]).wait(timeout:5))
         score(0,app)
@@ -116,4 +112,18 @@ final class SkyTechniqueInteractionTests: XCTestCase {
         capture(app,"technique-rescue-after")
     }
 
+}
+
+
+extension SkyTechniqueInteractionTests {
+    @MainActor func testQuickDirectionalSwapDoesNotRequireDestinationCell() {
+        let app = launch("nudge"); defer { app.terminate() }
+        let cell = app.buttons["experiment.cell.1.2"]
+        let start = cell.coordinate(withNormalizedOffset:CGVector(dx:0.5,dy:0.5))
+        let end = cell.coordinate(withNormalizedOffset:CGVector(dx:0.18,dy:0.55))
+        start.press(forDuration:0.05,thenDragTo:end,withVelocity:.fast,thenHoldForDuration:0)
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate:NSPredicate(format:"label CONTAINS %@","Aqua"),object:app.buttons["experiment.cell.1.1"]).wait(timeout:5))
+        score(0,app)
+        capture(app,"short-directional-swap")
+    }
 }

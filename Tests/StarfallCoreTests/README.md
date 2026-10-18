@@ -25,3 +25,5 @@ The current gravity/Opal planning fixture checks both ordinary tap orders and th
 Gravity specials are retired from normal play. `SkyGeneration.standardSky` supplies ordinary/Opal/storm play; `FallingSky.removingGravity()` retires validated historical specials without changing survivor identities, score, RNG, cadence or outcomes. The store applies it on restore and same-sky replay, persisting only on activation/commit. Historical raw rules and reset-only Debug fixtures remain regression tooling; the normal app never routes into them. See [removal evidence](../../docs/evidence/gravity-removal-2026-10-17/README.md).
 
 `StarRecipeTests` covers exact ingredients and stale identities, Opal/Dusk distinctions, all eight setup techniques, legal exchanges, First Light rejection and seeded legacy/current save/forecast continuation.
+
+`ConstellationGapCoreTests` covers one/repeated empty midpoints, blockers, Opal family anchoring and committed replay.
