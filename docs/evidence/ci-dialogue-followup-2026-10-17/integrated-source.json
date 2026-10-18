@@ -1,0 +1,17 @@
+{
+  "testedHead": "cff461e0a6fddd765a6780833497b75ba76b9b67",
+  "workingTreeChangesAffectingBuild": [
+    "UITests/FallingSkyInteractionTests.swift"
+  ],
+  "testInputSHA256": {
+    "UITests/FallingSkyInteractionTests.swift": "58b08e65aabef6fba495c47372c9f95e3f87e4bf8f70c87c3120d55949a2f986",
+    "AppTests/SkyDialogueTests.swift": "1f3807dfc9a39a5b983c659491037a7b0bab2c0ae0c03ef051555b096e8b7007"
+  },
+  "corePassed": 115,
+  "finalPassed": 9,
+  "finalFailed": 0,
+  "finalSkipped": 0,
+  "finalResult": "test_sim_2026-10-18T02-48-28-017Z_pid85535_b3a9efc0.xcresult",
+  "menuFocusedPassed": 1,
+  "productChanges": false
+}

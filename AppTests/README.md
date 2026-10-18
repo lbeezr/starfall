@@ -39,3 +39,5 @@ The current Opal/orbit planning deadline test commits the field-releasing clear,
 `GravityOpportunityStoreTests` verifies that retained gravity-generation saves/replay stay unchanged while New sky selects expanded opportunities, rejects gravity generations in v4 envelopes before specials arrive, and checks committed fixture saves and stale completion rejection.
 
 `ResponsiveInputTests` covers independent presentation/save ownership, current gravity reservations, anchored drift, held contact and stale result dialogue. `StarCastTests` verifies that a real independent clear does not cancel an unrelated falling animation.
+
+SkyDialogueTests covers the committed-score/visible-message boundary: prior help persists until presentation completion, then exact clear feedback appears, while restoring the committed round discards transient copy.

@@ -1,0 +1,49 @@
+{
+  "acceptedCounts": {
+    "failed": 0,
+    "passed": 10,
+    "skipped": 0
+  },
+  "acceptedRun": "test_sim_2026-10-18T02-33-25-383Z_pid85535_da768d0e.xcresult",
+  "baseMain": "71ec3ecd068d71da9a5a7aa547141c96bcd72244",
+  "dirtyPaths": [
+    " M AppTests/SkyDialogueTests.swift",
+    " M UITests/FallingSkyInteractionTests.swift",
+    "?? docs/evidence/ci-dialogue-followup-2026-10-17/"
+  ],
+  "localEnvironment": {
+    "configuration": "Debug arm64 unsigned",
+    "derivedData": "/tmp/starfall-ci-dialogue-build",
+    "device": "iPhone 17e / iOS 27.0 (24A434)",
+    "scheme": "Starfall",
+    "simulator": "536BCC00-751C-47BA-BC2F-C1702941CFC8",
+    "swift": "6.4",
+    "xcode": "27.1 (27A9275)"
+  },
+  "productChanges": false,
+  "remoteEvidence": {
+    "corePassed": 110,
+    "debugBuildPassed": true,
+    "device": "iPhone SE (3rd generation)",
+    "fullSuiteGreen": false,
+    "job": 117559457932,
+    "run": 39088189209,
+    "source": "49dcd0ee0cd5b9f57d10aa1e28d47318b110221f",
+    "status": "cancelled",
+    "swift": "6.2.4",
+    "uiFailures": [
+      "testCompactHUDMenuSuspendsWithoutChangingPauseChoice:124",
+      "testPausedGuideReportsGrowthDarkOutcomesAndRestore:532"
+    ],
+    "xcode": "26.3 (17C529)"
+  },
+  "reproductions": [
+    "test_sim_2026-10-18T02-26-18-070Z_pid85535_f3c8ce03.xcresult",
+    "test_sim_2026-10-18T02-29-07-568Z_pid85535_a1a39550.xcresult",
+    "test_sim_2026-10-18T02-30-45-866Z_pid85535_f6130eec.xcresult"
+  ],
+  "testInputSHA256": {
+    "AppTests/SkyDialogueTests.swift": "1f3807dfc9a39a5b983c659491037a7b0bab2c0ae0c03ef051555b096e8b7007",
+    "UITests/FallingSkyInteractionTests.swift": "0325bcb3b423ca38eed2e9aca7f0e137c9e9e123a50ec758255419f1d3e3d3bb"
+  }
+}
