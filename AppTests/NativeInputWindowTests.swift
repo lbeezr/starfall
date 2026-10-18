@@ -238,7 +238,8 @@ final class NativeInputWindowTests: XCTestCase {
         let trace = events.map { event in
             TraceEvent(kind: String(describing: event.kind), time: event.snapshot.time, game: event.snapshot.game,
                 deadline: event.snapshot.scheduledDeadline, sourceDeadline: event.showerDeadline,
-                busy: event.snapshot.busy, ready: event.snapshot.canClear, paused: event.snapshot.paused,
+                busy: event.snapshot.busy, ready: event.snapshot.canClear,
+                admittedTapGroups: event.snapshot.admittedTapGroups, paused: event.snapshot.paused,
                 suspended: event.snapshot.suspended, inputGeneration: event.snapshot.inputGeneration)
         }
         let eventCapture = XCTAttachment(data: try encoder.encode(trace), uniformTypeIdentifier: "public.json")
@@ -265,6 +266,7 @@ private struct TraceEvent: Codable {
     let sourceDeadline: Double?
     let busy: Bool
     let ready: Bool
+    let admittedTapGroups: Int
     let paused: Bool
     let suspended: Bool
     let inputGeneration: UInt64

@@ -1,0 +1,14 @@
+{
+  "base": "ec9f037bcd216b03006a44c3866f9e01aeee896e",
+  "equivalentPublishedMain": "8d8fc62c55e3f4b4e3b744339ac9e22621084557",
+  "modifiedBuildInputs": {
+    "App/FallingSkyStore.swift": "264991a69a06d01aca48c654fe525e8242e61eb034e75101d9e55e02d6930c41",
+    "AppTests/ResponsiveInputTests.swift": "9d09eaa5fad7fb4264c49f25a3fdde113908ac937c7cc0357ae8b9ddd3feb527",
+    "AppTests/NativeInputWindowTests.swift": "e5090423941048e84e628e94ce26546c2acce2d38e7cb13a5b8536e1a283f46f"
+  },
+  "hostedResult": "test_sim_2026-10-18T02-54-55-752Z_pid85535_28087087.xcresult",
+  "hostedPassed": 9,
+  "corePassed": 115,
+  "nativeResult": "test_sim_2026-10-18T02-55-35-406Z_pid85535_fda4b02e.xcresult",
+  "nativePassed": 1
+}
