@@ -426,12 +426,20 @@ import StarfallCore
 
 extension FallingSkyScene {
     private func contactOutline(_ cell: Cell, ready: Bool) -> SKShapeNode {
-        let ring = SKShapeNode(circleOfRadius: step * 0.46)
-        let color = UIColor(StarfallTheme.Colors.textPrimary)
-        ring.name = "sky.input.contact"; ring.position = point(cell)
-        ring.strokeColor = color; ring.lineWidth = ready ? 3 : 2
-        ring.fillColor = color.withAlphaComponent(0.10)
-        return ring
+        let rays = CGMutablePath()
+        for index in 0..<4 {
+            let angle = CGFloat.pi / 4 + CGFloat(index) * .pi / 2
+            let inner = step * StarfallTheme.SelectionCue.innerRadius
+            let outer = step * StarfallTheme.SelectionCue.outerRadius
+            rays.move(to: CGPoint(x: cos(angle) * inner, y: sin(angle) * inner))
+            rays.addLine(to: CGPoint(x: cos(angle) * outer, y: sin(angle) * outer))
+        }
+        let cue = SKShapeNode(path: rays)
+        cue.name = "sky.input.contact"; cue.position = point(cell)
+        cue.strokeColor = UIColor(StarfallTheme.Colors.textPrimary)
+        cue.lineWidth = ready ? 3 : 2
+        cue.fillColor = .clear
+        return cue
     }
 
     func showContact(_ cell: Cell) {

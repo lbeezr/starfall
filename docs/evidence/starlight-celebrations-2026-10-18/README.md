@@ -1,5 +1,7 @@
 # Starlight celebrations — historical prototype build
 
+**Current native verification:** [Visible awards, open selection marks and quiet-mode layout](VISIBLE_AWARDS.md) records inspected full-game captures and the remaining limits.
+
 **Award visibility correction:** [Missing +N root cause and fix](AWARD_VISIBILITY_FIX.md). The total was visible; nested anchor registration prevented the separate overlay from appearing.
 
 **Current work:** [Current-main integration](INTEGRATION.md) supersedes this old-base prototype for delivery. This record remains bound to its original source and tests.

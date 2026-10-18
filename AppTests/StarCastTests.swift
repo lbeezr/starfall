@@ -5,6 +5,36 @@ import StarfallCore
 @testable import Starfall
 
 final class StarCastTests: XCTestCase {
+    @MainActor func testContactAndReadyRecipeSelectionUseOpenSparkRays() throws {
+        let scene = FallingSkyScene(size: CGSize(width: 390, height: 844))
+        scene.render(SkyTechniqueExample.relay.game())
+        for ready in [false, true] {
+            if ready { scene.showConstellationTrace([Cell(0,0), Cell(0,1), Cell(1,1), Cell(1,0)], ready: true) }
+            else { scene.showContact(Cell(0,0)) }
+            var cues: [SKShapeNode] = []
+            scene.enumerateChildNodes(withName: "//sky.input.contact") { node, _ in
+                if let cue = node as? SKShapeNode { cues.append(cue) }
+            }
+            XCTAssertEqual(cues.count, ready ? 4 : 1)
+            for cue in cues {
+                let path = try XCTUnwrap(cue.path)
+                var moves = 0, lines = 0, curvesOrClosures = 0
+                path.applyWithBlock { element in
+                    switch element.pointee.type {
+                    case .moveToPoint: moves += 1
+                    case .addLineToPoint: lines += 1
+                    default: curvesOrClosures += 1
+                    }
+                }
+                XCTAssertEqual(moves, 4); XCTAssertEqual(lines, 4)
+                XCTAssertEqual(curvesOrClosures, 0, "Selection cues must not enclose stars in rings")
+                XCTAssertEqual(cue.fillColor.cgColor.alpha, 0)
+            }
+            scene.clearConstellationTrace()
+            XCTAssertNil(scene.childNode(withName: "//sky.input.contact"))
+        }
+    }
+
     @MainActor func testAuraPulseChangesOnlyOuterOpacityAndCancelsOnQuietSuspensionAndReplacement() async throws {
         guard !UIAccessibility.isReduceMotionEnabled && !UIAccessibility.isVoiceOverRunning else {
             throw XCTSkip("Pulse sampling requires normal system motion")

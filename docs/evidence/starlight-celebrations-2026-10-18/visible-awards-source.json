@@ -1,0 +1,116 @@
+{
+  "runtimeAndSelectedTestsSource": "6ae0542",
+  "base": "46642c3",
+  "laterMainReconciliation": "6f8155f",
+  "mergedCheckout": "c7988d3eea418f4413d9b9e5a597547a8a2283ae",
+  "runtimeDirtyPaths": [],
+  "sha256": {
+    "App/FallingSkyScene.swift": "2fee5d8f9d7fe27511c6b0a0cf7f0c1487e9f049b1eb5073541f1b5934a157d9",
+    "App/FallingSkyView.swift": "e403e87093df932906a40ddd23b4855df8b1058e57414ab28b975b89e8417a39",
+    "App/StarfallTheme.swift": "73a90f9c5c6674bca2f2079dd308a16cb9969a045deb8c18d5cd9296c498d735",
+    "App/StarlightCelebration.swift": "ef4ac3fa838b63663b788067c720f7386c876dfdd2c738fe37a4a6913f573ba7",
+    "AppTests/StarCastTests.swift": "eeb01c9d914c3c5bf05925066e24498853e31fd9652fc72bb5315e9cdbf0d4f7",
+    "AppTests/StarlightCelebrationTests.swift": "3b5a030742aa091bbb742ceaf8c26757110defd95c505d578c327d6985575644"
+  },
+  "captures": [
+    {
+      "file": "dev-6ae0542__cross-award__iphone-17e__default-text.jpg",
+      "source": "6ae0542",
+      "capture": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "07A4D3FE-01D2-4A12-AB14-8D30399A71A3",
+        "deviceName": "Starfall Celebration Visibility 01a14eb4",
+        "exportedFileName": "92F47126-12C5-4FBB-9CDD-FC40862E6C71.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "game-award-fork-0_0_EA7A7305-D271-4316-AB59-DCBE4E7C8D17.png",
+        "timestamp": 1792330298.427
+      },
+      "sha256": "127293bb41ed0e3dcdc81e9f2df47e32515221dd2ed21aba02d627d0dc712fa9"
+    },
+    {
+      "file": "dev-6ae0542__constellation-award__iphone-17e__default-text.jpg",
+      "source": "6ae0542",
+      "capture": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "07A4D3FE-01D2-4A12-AB14-8D30399A71A3",
+        "deviceName": "Starfall Celebration Visibility 01a14eb4",
+        "exportedFileName": "713716D7-E837-4062-B0F5-C99D9EDD6CE0.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "game-award-trace-0_0_E9974400-5678-4533-A121-98FC43B1344F.png",
+        "timestamp": 1792330296.715
+      },
+      "sha256": "6f2328ae1a77a513debca3cbf6c4df084e6a3e20bef2785e49eba752671dabe8"
+    },
+    {
+      "file": "dev-6ae0542__relay-award__iphone-17e__default-text.jpg",
+      "source": "6ae0542",
+      "capture": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "07A4D3FE-01D2-4A12-AB14-8D30399A71A3",
+        "deviceName": "Starfall Celebration Visibility 01a14eb4",
+        "exportedFileName": "21F098F5-22E6-47BD-A486-AB2B5827A8D4.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "game-award-relay-1_0_C17F7708-62EE-4C6E-852F-66074E28C80E.png",
+        "timestamp": 1792330294.868
+      },
+      "sha256": "26cc2263142676f6d39352fb589876c32e3f530cce34f504a30a107fd9e7445c"
+    },
+    {
+      "file": "dev-6ae0542__square-award__iphone-17e__default-text.jpg",
+      "source": "6ae0542",
+      "capture": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "07A4D3FE-01D2-4A12-AB14-8D30399A71A3",
+        "deviceName": "Starfall Celebration Visibility 01a14eb4",
+        "exportedFileName": "5CBD206B-5788-4113-8E4B-781CD01D7CA6.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "game-award-relay-0_0_C244F573-F850-4957-A6A2-FFBE2DC362A4.png",
+        "timestamp": 1792330293.355
+      },
+      "sha256": "560fb89528f7332656f0b3ec21a51644157982b89b88550579321dc09d96f036"
+    },
+    {
+      "file": "dev-6ae0542__ordinary-award__iphone-17e__default-text.jpg",
+      "source": "6ae0542",
+      "capture": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "07A4D3FE-01D2-4A12-AB14-8D30399A71A3",
+        "deviceName": "Starfall Celebration Visibility 01a14eb4",
+        "exportedFileName": "A35804BB-447C-4168-B9D3-6053FA754668.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "game-award-nudge-0_0_4BBF5934-AD53-43A4-91EE-4323358F0BB5.png",
+        "timestamp": 1792330291.67
+      },
+      "sha256": "35717713a0f2ddc868c97de697fc440ee22ddd45c8a11293549c9fd3f933a39c"
+    },
+    {
+      "file": "dev-6ae0542__quiet-award-component__iphone-17e__default-text.jpg",
+      "source": "6ae0542",
+      "capture": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "07A4D3FE-01D2-4A12-AB14-8D30399A71A3",
+        "deviceName": "Starfall Celebration Visibility 01a14eb4",
+        "exportedFileName": "FD080125-8A71-4671-BEAB-8CF90C8C7657.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "ordinary-award-rendered-quiet_0_8ECA43F2-6290-4672-80A1-C458652E5264.png",
+        "timestamp": 1792330300.163
+      },
+      "sha256": "29a4118cbda31209ff8be5930134e63d31a00c7f246fba552deeb46680968b8b"
+    },
+    {
+      "file": "dev-f6501cd__square-selected__iphone-17e__default-text.jpg",
+      "source": "f6501cd",
+      "sha256": "3cf197fe3e8c0b24e14b727295686567eceb1ca38f749ec8f78d4180454939fe",
+      "parity": "Selection scene/theme/view inputs unchanged through 6ae0542; later change only fixes quiet award frame."
+    }
+  ],
+  "environment": {
+    "simulator": "07A4D3FE-01D2-4A12-AB14-8D30399A71A3",
+    "model": "iPhone 17e",
+    "os": "iOS 27.0 (24A434)",
+    "toolchain": "Xcode 27.1 (27A9275)",
+    "configuration": "Debug arm64"
+  },
+  "rawArtifacts": "artifacts/celebration-visible-check",
+  "limits": "UIKit-hosted live gameplay screenshots and sampled frames, not physical-device preference or frame-rate acceptance."
+}

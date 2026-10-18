@@ -71,6 +71,11 @@ enum StarfallTheme {
         static let pulsePeriod: TimeInterval = 2.8
     }
 
+    enum SelectionCue {
+        static let innerRadius: CGFloat = 0.39
+        static let outerRadius: CGFloat = 0.52
+    }
+
     enum Typography {
         enum GuideTitleRole {
             case character, outcome

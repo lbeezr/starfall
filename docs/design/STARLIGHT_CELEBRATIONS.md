@@ -6,6 +6,8 @@ Make a successful clear feel like **charge → impact → collection → celebra
 
 **Recommendation:** celebrate current ordinary clears, drawn constellations, exact square/cross recipes and causal relays using their committed awards. Keep scoring, save versions, shower cadence and responsive column ownership unchanged. “Bam, pow, kaboom” describes the desired energy; crystalline impact, warm light and expressive stars can deliver it in Starfall's own voice.
 
+**Native rendering follow-up:** [Full-game award captures](../evidence/starlight-celebrations-2026-10-18/VISIBLE_AWARDS.md) verify sampled values/titles. The user rejected circles around stars: selection uses open sparkle rays, and clear bursts use scattered glints without an enclosing pulse. Quiet presentation keeps the full canvas for stable placement.
+
 **Next action:** review the implemented normal-motion candidate on iPhone and tune its timing against the approved storyboard. The shared presentation now uses the single normal Debug/Release target, including its existing Opal, Dusk, recipe and relay rules. Scores and saves are unchanged. [Current-main integration evidence](../evidence/starlight-celebrations-2026-10-18/INTEGRATION.md) separates compilation, behavioral checks, native motion and remaining device/preference acceptance.
 
 <img src="interface/starlight-celebration-concept.png" width="800" alt="Approved three-panel concept: five stars charge, a constellation bursts with plus-five, then light sweeps into the score">

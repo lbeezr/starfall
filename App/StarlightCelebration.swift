@@ -93,6 +93,7 @@ struct StarlightCelebrationOverlay: View {
                 .scaleEffect(quiet ? 1 : 1 + 0.12 * sin(min(1, max(0, age - 0.06) / 0.22) * .pi))
                 .offset(x: calloutX, y: calloutY)
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
             .opacity(fade)
         }
         .allowsHitTesting(false)
@@ -136,13 +137,11 @@ struct StarlightCelebrationOverlay: View {
             let release = min(1, max(0, (age - 0.08) / 0.4))
             var pulse = context
             pulse.opacity = (1 - release) * (strong ? 0.95 : 0.6)
-            let radius = step * (0.3 + release * (strong ? 1.8 : 0.8))
-            let ring = Path(ellipseIn: CGRect(x: origin.x - radius, y: origin.y - radius, width: radius * 2, height: radius * 2))
-            pulse.stroke(ring, with: .color(gold), lineWidth: strong ? 3 : 1.5)
             // One finite budget per clear, independent of the selected star count.
             for index in 0..<(strong ? 24 : 10) {
                 let angle = Double(index) * 2.39996
-                let distance = step * (0.25 + release * (index.isMultiple(of: 3) ? 2.2 : 1.25))
+                let reach = Double((index * 7) % 13) / 12
+                let distance = step * (0.08 + 0.35 * reach + release * (0.5 + 1.6 * reach))
                 let point = CGPoint(x: origin.x + cos(angle) * distance, y: origin.y + sin(angle) * distance * 0.72)
                 glint(in: &pulse, at: point, radius: index.isMultiple(of: 3) ? 4 : 2, color: index.isMultiple(of: 2) ? gold : cyan)
             }
