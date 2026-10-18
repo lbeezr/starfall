@@ -1,0 +1,39 @@
+{
+  "sourceBase": "034b6bb",
+  "runtimeSnapshot": "a767d897841e",
+  "platform": "iPhone 17e / iOS 27.0 Simulator",
+  "scope": "Selected six actual native captures; not a complete primary CI job",
+  "pngBytes": 18719112,
+  "captures": [
+    {
+      "name": "flow-welcome",
+      "bytes": 2868897,
+      "sha256": "da9c1dbdf4c3deb187981dddd640bf35a897c7d2b20b05d9fde4a000c8608021"
+    },
+    {
+      "name": "flow-entry",
+      "bytes": 3524565,
+      "sha256": "89006e82eecf62d72bb03ef54ff12660957f20b283bd8dbfa6893eecaa1de9ac"
+    },
+    {
+      "name": "island-timer-active",
+      "bytes": 3391577,
+      "sha256": "0968d7998aa47e19d0b11351c43d266bca4cb3122a3be3e9eb283657d34cb498"
+    },
+    {
+      "name": "critical-mass-rescue",
+      "bytes": 3238462,
+      "sha256": "83dfeab85e1877a849372b3d2c8da69fe5fde64e305e6f85e186d1e8ff4ca014"
+    },
+    {
+      "name": "flow-win",
+      "bytes": 2741775,
+      "sha256": "34dd9d3c06627092c51dae2277dc99e2a93f0839e6cc69adf50b6d44784401be"
+    },
+    {
+      "name": "flow-full",
+      "bytes": 2953836,
+      "sha256": "26da496b092a7e3406d31a2fc37d02e7a62dbf36bcf5c880d487c8afa060a90a"
+    }
+  ]
+}

@@ -1,10 +1,10 @@
 # Third debt pass: restore and native acceptance reliability
 
-**Result:** In progress · **Owner:** current implementer · **Date:** 2026-10-18
+**Result:** Verified for the four scoped fixes; integration and RC limits below · **Owner:** current implementer · **Date:** 2026-10-18
 
 [Ranked scope and acceptance](../../TECH_DEBT_THIRD_PASS.md). Main `b5ec445` is the starting source; the checkout was clean and origin was already up to date. This report records separate core, build, native, visual and physical-device results as batches finish.
 
-**Next action:** primary CI simulator lifecycle, then tablet clearance and default-game evidence.
+**Next action:** clean-main verification and canonical delivery; complete minimum-iOS/actual VoiceOver before RC.
 
 ## Baseline reproduction
 
@@ -69,3 +69,13 @@ The heading may scroll offscreen while reaching lower controls; these frames do 
 | <img src="dev-034b6bb-wip-a767d897841e__welcome__iphone-17e__default-text.jpg" width="180" alt="Phone Welcome with complete dialogue and three actions above the bottom edge"> | <img src="dev-034b6bb-wip-a767d897841e__full-sky__iphone-17e__default-text.jpg" width="180" alt="Full-sky result preserves the final stars, blocked-column reason and restart actions"> | <img src="dev-034b6bb-wip-a767d897841e__first-light-win__iphone-17e__default-text.jpg" width="180" alt="First Light win shows the actual 20-of-18 score and complete result actions"> |
 
 Inspected native iPhone 17e/default-text captures on identical app source. Still images do not prove animation quality; the normal-motion ending/replay and input flows above provide their separate behavioral checks. Actual VoiceOver and physical-device acceptance remain open.
+
+## 4. Default-game CI capture acceptance
+
+Source: task-3 main `1469916` plus `scripts/export_native_evidence.py`, its tests, primary CI script and existing workflow verification/trigger entries. The previous inline selector required 33 classic frames and no default Falling Sky frames. It now keeps those classic requirements and adds exactly six: `flow-welcome`, `flow-entry`, `island-timer-active`, `critical-mass-rescue`, `flow-win` and `flow-full`. Names match exactly or Xcode's underscore suffix, so a similar prefix cannot substitute a different capture. A native success still requires source-counted exact passes, zero failures/skips and every required capture.
+
+The exporter owns one bounded set of 39 files and manifests. It rejects duplicates, non-flat paths, symlinks, unknown/oversized PNGs and oversized manifests, with bounded reads. It resets only owned evidence at primary CI startup and before export so an early build failure or failed UI run cannot reuse old complete captures. Primary stage receipts are also reset per run. Failed native tests retain available selected captures even without a parseable summary; metadata explicitly remains incomplete/partial, and the primary runner keeps its original native failure status. Export/validation failures cannot certify a complete UI run. No new test methods, simulator runs, jobs, downloads, blanket retries or CI budget increase were added.
+
+`python3 scripts/test_export_native_evidence.py`: 9 passed. Real-file cases cover full success, classic-only rejection, each missing shipping capture, duplicate/similar names, bad counts/skips/summary, unavailable partial data, unsafe files/limits and CLI startup reset preserving unrelated evidence. Lifecycle (8), RC (12), native-plan (3), updater tests, Bash syntax, hygiene and diff passed. The workflow invokes both new test suites in its existing verification step.
+
+Integration also passed selection of all six real shipping-game PNGs exported by xcresulttool from the task-3 native result: 18,719,112 bytes total, each under 5 MB. [Selected names, byte counts and SHA-256 values](shipping-capture-selection.json) bind that sample to task-3 runtime snapshot `a767d897841e`. This checks actual Xcode attachment shape/labels/files, not merely synthetic fixtures. The complete 39-image primary CI job was not rerun locally; the selected sample does not certify the other 33 captures, and unit/fault-injection checks do not establish visual or actual VoiceOver quality. Fixed CI artifact names are disposable outputs with run/source provenance; retained documentation screenshots use the separate source-bound names above. Raw selected PNGs remain in `/tmp/starfall-third-shipping-evidence`.
