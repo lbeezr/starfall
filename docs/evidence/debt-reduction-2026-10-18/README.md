@@ -2,9 +2,9 @@
 
 **Result:** Partially verified · **Owner:** current implementer · **Date:** 2026-10-18
 
-Task 1 preserves rejected archives through activation/restart without falling back to an older round. One recovery slot is bounded by count; it preserves the exact rejected property-list value. Encode/validation failure leaves both slots untouched. No save schema, rule, RNG, navigation or artwork change.
+Six independent batches are merged in PRs #108–#113: save recovery, native diagnostics, coordination, measured input work, historical mechanics and build gates. Deterministic replay and scoped native checks pass. RC remains blocked by unavailable iOS 17 coverage and a tablet largest-text Welcome failure; historical intermittency remains cause-unknown. No gameplay/save-schema/RNG change.
 
-**Next action:** publish task 1 and reproduce the native failures in task 2. [Plan](../../TECH_DEBT_PLAN.md).
+**Next action:** follow the active tablet/minimum-OS/physical RC blockers; canonical device delivery waits for the configured iPhone. [Plan](../../TECH_DEBT_PLAN.md).
 
 ## Task 1 — save recovery
 
@@ -90,3 +90,9 @@ Every existing native CI job now also builds Release and checks its compiled cat
 The tablet failure remains an RC blocker; no assertion was removed or weakened. The inspected `flow-largest-welcome-actions-first` capture shows Settings visibly present, but that does not prove physical activation or identify whether native hit testing, orientation or the AX result is responsible. Original XCTest result and exported screenshots/movie remain under the ignored XcodeBuildMCP workspace and `/tmp/starfall-debt-tablet-attachments/`. Do not close it from the separate landscape pass. Trigger: next tablet/Welcome/RC change; compare actual activation, frame/orientation, scroll and focus with this exact largest-text failure before changing geometry or assertions. No source/UI workaround is bundled into the CI task.
 
 The complete remote CI job was not rerun locally (it owns its disposable-runner setup); its constituent new build/planning/policy checks were run. No full RC or physical-device acceptance is claimed. Actual VoiceOver deferred to RC. The automation enforces missing coverage instead of declaring support from one newest-OS phone.
+
+## Task 7 — active engineering register
+
+Source: task-6 main `71b3c7b`; documentation-only changes. The new active index names present risks, priorities, triggers and closure checks, links each shipped reduction, and keeps minimum-OS/tablet/physical acceptance visible. The original dated follow-ups remain intact beneath a historical disclosure; stable engineering guidance remains available above it. The obsolete duplicate-coordinate-mapping claim is corrected against the existing `ObservatoryGeometry` owner. README/roadmap link the active index and no longer prescribe the old Xcode-drift fix despite verified current builds.
+
+No app/code/resource/test behavior changes. Hygiene/diff checks passed; all 15 new local Markdown link targets exist. A fresh all-hosted run on combined main `71b3c7b` (only documentation dirty) passed **259 tests, zero failures/skips** on the original Debug / iOS 27.0 QA iPhone. This additional integration evidence does not replace the failed tablet result. Markdown rendering was not checked in a dedicated document viewer. This technical register needs no new product concept or artwork.

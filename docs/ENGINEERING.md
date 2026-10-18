@@ -2,11 +2,39 @@
 
 The working contract is [AGENTS.md](../AGENTS.md). This page explains verification and tracks specific deferred work; it is not a second product roadmap. Keep the deterministic package, small app store, renderer and explicit effects/save boundaries. No mandated architecture framework, new dependency, campaign or Swift-language migration is needed for this pass.
 
+## Active debt and next actions — October 18, 2026
+
+Use this index for current priorities. The dated records below retain their original source and acceptance limits; they are not an accumulating list of current requirements. [Seven disjoint reductions](TECH_DEBT_PLAN.md) and [their checks](evidence/debt-reduction-2026-10-18/README.md) explain the shipped scope.
+
+**Next action:** diagnose tablet largest-text Welcome Settings activation; provision iOS 17 before RC. Development batches may continue through the canonical updater. No RC is accepted from the current evidence.
+
+| Priority / status | Current risk | Trigger and required closure |
+| --- | --- | --- |
+| P1 — RC blocker | iPad mini / iOS 27.0 largest-text Welcome reports visible Settings as not hittable. The new tablet selection passes 2/3. | Next Welcome/tablet change or RC. Reproduce the original method; inspect actual activation, frame/orientation, scroll and focus; retain the assertion and verify siblings. [Failure](evidence/debt-reduction-2026-10-18/README.md#task-6--release-gate-and-explicit-rc-platform-ownership). |
+| P1 — RC coverage unavailable | No installed iOS 17 runtime on this Mac; minimum-OS support unverified. Full physical VoiceOver/current-flow acceptance remains due. | Before RC. Require both platform roles through `rc-platforms.py` and the separate complete physical-iPhone spoken/focus/rotor/restore/interruption session. [Gate](DEVELOPMENT_BUILDS.md#release-compilation-and-rc-platform-coverage). |
+| P2 — historical cause unknown | First Light outcome timeout and retained-Dusk mixed-order animation failures did not reproduce in the current checks. Phase/state diagnostics and the explicit ordering regression now pass. | Recurrence or next ending/presentation change. Preserve original bounds and failures; diagnose from the new state/phase evidence before changing synchronization. [Current reproduction](evidence/debt-reduction-2026-10-18/README.md#task-2--native-acceptance-diagnostics). |
+| P2 — comprehension/physical validation | Contact comfort near due showers, free-swap/recipe discovery, critical-mass rescue choices and actual decision time remain unverified by seed models. | Next physical play session. Observe ordinary full-motion rounds and unintended gesture/action rates; preserve single-deadline holds and snapshot validation. [Contact diagnosis](evidence/calibration-critical-mass-2026-10-18/CONTACT_DIAGNOSIS.md). |
+| P2 — visual recognition | Long default-text footer warnings require inner scroll; dense awards can overlap a survivor. Current captures do not settle recognition or distraction. | Next copy/overlay change or RC. Inspect complete warnings/actions and repeated ordinary/recipe/relay awards at default/maximum text on compact/large devices. [Footer](evidence/dialogue-only-hud-2026-10-18/README.md), [awards](evidence/calibration-critical-mass-2026-10-18/AWARDS.md). |
+| P2 — delivery evidence pending | The configured iPhone was unavailable during this debt work. Main merge does not prove installation. | Device reconnect. Use only `device-update.py`, verify actual installed identity/source and retained save/preferences. [Delivery contract](DEVELOPMENT_BUILDS.md#reject-stale-delivery-and-detect-external-replacements). |
+
+## Reductions already shipped
+
+| Scope | Current boundary / evidence |
+| --- | --- |
+| Save recovery — [PR #108](https://github.com/lbeezr/starfall/pull/108) | Distinct missing/loaded/rejected result, one exact rejected-value recovery slot, observable encoding failure. No old-round fallback. |
+| Native diagnostics — [PR #109](https://github.com/lbeezr/starfall/pull/109) | Original First Light and explicit material-sheet → full-motion Dusk checks pass; historical cause remains unknown above. |
+| Coordination — [PR #110](https://github.com/lbeezr/starfall/pull/110) | Pure committed-turn dialogue selection and independent presentation-ticket ledger; store retains clock/input/save ownership. |
+| Input cost — [PR #111](https://github.com/lbeezr/starfall/pull/111) | Idle admission skips unnecessary rule simulation; dense simulator query sample 78.4 → 3.7 ms. No device/FPS claim. |
+| Historical mechanics — [PR #112](https://github.com/lbeezr/starfall/pull/112) | Historical mutation isolated; neutral shared settling/phases; 1,337 byte-identical before/after archives. Compatibility is deliberately retained. |
+| Build gates — [PR #113](https://github.com/lbeezr/starfall/pull/113) | Debug/Release build gate and explicit minimum-iOS/tablet RC roles. Missing/failed platform acceptance remains visible above. |
+
+No framework replacement, dependency addition, broad Swift migration or gameplay tuning follows from this register. Further extraction should address demonstrated coupling, not file length alone. The save recovery slot preserves only the most recent rejected value and has no recovery UI; UserDefaults provides no synchronous disk-durability acknowledgement.
+
 ## DRY and modularity
 
 Use the DRY, dependency-boundary and roughly 1,200-line review rules in [AGENTS.md](../AGENTS.md) during each change. Extract around a responsibility with a clear owner and inputs, not a line-number range. A separate file alone does not decouple code: the extracted component should not reach back into unrelated mutable state. Introduce a protocol where substitution or an existing test boundary needs one; a focused value type or concrete helper is often sufficient. Shared behavior should have one owner without forcing unrelated features into a generic framework.
 
-The current app Swift files are all below that size trigger. The duplicated board-coordinate mapping remains a concrete earlier extraction candidate because render/tap alignment must change together, regardless of file length. No broad source refactor is part of this guidance update.
+Current app Swift files are below the size trigger. Rendering and native hit/accessibility cells already share `ObservatoryGeometry`; duplicated mapping is not active debt. Dialogue selection, input sessions and presentation reservations now have focused owners. Review their actual dependencies before another extraction.
 
 ## Investigate the failure class
 
@@ -31,9 +59,12 @@ Actual VoiceOver sessions follow the [development/RC cadence](DEVELOPMENT_BUILDS
 
 A result needs a source commit/tree, any build-affecting dirty paths, toolchain, command/configuration, simulator model/OS and pass/fail summary. Publish acceptance from a clean checkout/export, or label the result as a working-tree check and explain the difference. Compilation, native interactions, inspected screenshots, observed animations, real VoiceOver and physical-device performance answer different questions. Avoid “all validated” from a subset. Keep raw logs, movies, xcresults, traces and DerivedData out of Git. Retain selected small screenshots/JSON with a reproduction note under docs/evidence. Existing asset/source handoffs remain tracked; do not use broad binary ignore rules.
 
+<details>
+<summary>Historical follow-ups and source-bound evidence</summary>
+
 ## Concrete follow-ups
 
-These are observed risks, not completed fixes. The next change touching each boundary should resolve it or update the trigger and evidence needed; no dates or fictitious assignees.
+The rows and dated entries below preserve the original observations and subsequent resolutions. Some names/routes and adoption decisions are superseded. Use the active index above for current status and triggers; a later passing subset does not erase an earlier failure or establish its cause.
 
 | Risk | When to address | Smallest useful resolution and proof |
 | --- | --- | --- |
@@ -337,3 +368,5 @@ The [evolving-star verification](evidence/stellar-evolution-2026-10-18/README.md
 ## Debt task 2 — current native reproduction
 
 The [independent debt record](evidence/debt-reduction-2026-10-18/README.md#task-2--native-acceptance-diagnostics) supersedes the acceptance status, not the historical failures: the original First Light win/replay/full/restore case and Dusk/material suites pass on task-1 main. New phase-specific assertions and an explicit material-sheet → full-motion-collapse case retain the original contract. Root cause remains unknown. Trigger: recurrence or next presentation/ending change; retain the per-phase failure and board/score/app-state snapshot, then diagnose before tuning timeouts or introducing guards. Routine development does not require a full actual VoiceOver session; RC still does.
+
+</details>
