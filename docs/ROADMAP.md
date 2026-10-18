@@ -1,5 +1,7 @@
 # Starfall roadmap
 
+**October 18 decision:** [Automatic aging is disabled](evidence/aging-disabled-2026-10-18/README.md) at the user’s request: fresh and restored critical-mass skies have no purple aging or implosions. Matching growth and cadence remain. Historical critical-mass rules/fixtures remain for save compatibility and regression, with no player toggle to re-enable them.
+
 [Directional swaps and one-gap tracing](evidence/forgiving-input-main-2026-10-18/README.md) address precision targeting in the current app. Physical phone/iPad comparison remains the next tuning decision.
 
 **Status:** Active · **Owner:** Current implementer · **Updated:** October 18, 2026, Eastern time

@@ -33,7 +33,7 @@ Gravity specials are retired from normal play. `SkyGeneration.standardSky` suppl
 
 `canStartConstellation(at:)` is the shared eligibility query for native target admission and transient intent. It preserves colored-first, five-star and exact-square rules without changing selected-set validation or saves.
 
-`CriticalMassRule` versions fresh survival aging independently from historical Dusk. `FallingSky` owns ages, stage-three targets, simultaneous stage-four collapse, lost-light conservation and before-arrival settling. `CriticalMassFixture` is reset-only Debug review tooling; retained rounds and First Light do not adopt aging.
+`CriticalMassRule` retains historical aging as version 1; version 2 disables aging, clears saved visual ages and preserves the no-Dusk generator and lost-light accounting. `freshSurvival` selects version 2; the app migrates restored version 1 rounds before presenting them. `FallingSky` owns ages, stage-three targets, simultaneous stage-four collapse, lost-light conservation and before-arrival settling. `CriticalMassFixture` is reset-only Debug review tooling; retained rounds and First Light do not adopt aging.
 
 `canLinkConstellation` owns adjacent/one-empty-midpoint geometry for eligibility and selected prefixes; family anchoring and ordinary tap groups remain separate.
 

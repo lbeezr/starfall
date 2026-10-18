@@ -225,8 +225,8 @@ final class ResponsiveInputTests: XCTestCase {
         }
     }
 
-    /// Native seed-28 first miss crosses shower 1 -> 2 before its later snapshot.
-    /// This checks that current-rule boundary; it does not identify the OS contact instant.
+    /// Without aging, seed 28 shower 2 leaves the opening group in stable columns.
+    /// Contacts on either side of the deadline must still clear exactly once.
     @MainActor func testFreshOpeningContactBeforeAndAfterDeadlineOwnsOnlyCurrentState() throws {
         for contactBeforeDeadline in [true, false] {
             let suite = "FreshOpeningContact.\(UUID())", defaults = UserDefaults(suiteName: suite)!
@@ -254,18 +254,18 @@ final class ResponsiveInputTests: XCTestCase {
             } else {
                 clock.advance(deadline - clock.now)
                 XCTAssertEqual(store.game.turns, 2)
-                XCTAssertFalse(store.canClear(target), "The old query is no longer an admission")
-                let afterRain = store.game
-                let hold = store.beginConstellationHold(at: target)
+                XCTAssertTrue(store.changingColumns.isDisjoint(with: Set(store.game.group(at: target).map(\.column))))
+                XCTAssertTrue(store.canClear(target), "An unrelated shower does not own this stable group")
+                let hold = try XCTUnwrap(store.beginConstellationHold(at: target))
                 store.endConstellationHold(hold)
                 store.clear(target)
-                XCTAssertEqual(store.game, afterRain)
-                XCTAssertEqual(store.inputMessage, "Stars settling…")
+                let cleared = store.game
+                XCTAssertEqual(cleared.score, 3)
+                XCTAssertEqual(cleared.turns, 2)
                 presenter.finish()
-                XCTAssertEqual(store.game, afterRain, "Settling never replays the stale attempt")
-                XCTAssertTrue(store.canClear(target))
+                XCTAssertEqual(store.game, cleared, "Settling cannot replay the admitted clear")
                 store.clear(target)
-                XCTAssertEqual(store.game.score, 3)
+                XCTAssertEqual(store.game, cleared, "The old group cannot score twice")
             }
         }
     }

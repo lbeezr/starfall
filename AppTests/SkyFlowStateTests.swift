@@ -282,7 +282,7 @@ extension SkyFlowStateTests {
                 XCTAssertEqual(SkyHelpContext.selected(game: game, entry: entry), SkyHelpContext(game: game))
             }
             let new = SkyHelpContext.selected(game: game, entry: .fresh)
-            XCTAssertTrue(new.criticalMass); XCTAssertFalse(new.challenge); XCTAssertTrue(new.opalStorms)
+            XCTAssertFalse(new.criticalMass); XCTAssertTrue(new.pocketedDusk); XCTAssertFalse(new.challenge); XCTAssertTrue(new.opalStorms)
             let firstLight = SkyHelpContext.selected(game: game, entry: .firstLight)
             XCTAssertTrue(firstLight.challenge); XCTAssertFalse(firstLight.criticalMass)
             XCTAssertFalse(firstLight.openingCascade); XCTAssertFalse(firstLight.opalStorms)

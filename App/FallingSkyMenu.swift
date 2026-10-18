@@ -8,7 +8,6 @@ struct FallingSkyMenu: View {
     let groups: Int
     let over: Bool
     let challenge: Bool
-    let criticalMass: Bool
     let helpContext: SkyHelpContext
     let balance: StarfallBalance
     @Binding var sound: Bool
@@ -91,7 +90,7 @@ struct FallingSkyMenu: View {
                 }
                 .pickerStyle(.menu).labelsHidden().accessibilityIdentifier("experiment.pace")
             }
-            if !criticalMass {
+            if !helpContext.pocketedDusk {
                 VStack(alignment: .leading, spacing: 8) {
                     Text(SkyCopy.text(.balanceDark))
                     Picker(SkyCopy.text(.balanceDark), selection: Binding(get: { balance.darkStars }, set: { setBalance(StarfallBalance(pace: balance.pace, darkStars: $0)) })) {

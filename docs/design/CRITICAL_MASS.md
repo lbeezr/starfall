@@ -1,5 +1,7 @@
 # Universal critical mass
 
+**Superseded for normal play, October 18, 2026:** Automatic aging and its purple/implosion presentation are disabled at the user’s request. [Retirement and save migration](../evidence/aging-disabled-2026-10-18/README.md). This document describes historical version 1 and retained regression fixtures.
+
 **Status:** Accepted; implemented and development-verified · **Owner:** current implementer · **Updated:** October 18, 2026
 
 Fresh survival skies replace Dusk arrivals with pressure from the whole cast. Stars age even when buried: stage three turns purple and stage four implodes. Dusk and the retained Radiant Pearl/Soft Tri-Star designs are pocketed for a later character decision. Existing rounds and First Light retain their contracts.

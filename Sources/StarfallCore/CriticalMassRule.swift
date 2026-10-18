@@ -2,6 +2,7 @@ import Foundation
 
 /// Saved version 1: all collectible stars age, including buried stars and Opal.
 public enum CriticalMassRule {
+    public static let retiredVersion = 2
     public static let version = 1
     public static let showersPerStage = 3
     public static let collapseAge = showersPerStage * 3

@@ -44,7 +44,7 @@ final class NativeInputWindowTests: XCTestCase {
         let windows = try await measure(initial: initial, through: 14, name: "native-input-windows-critical-mass")
         XCTAssertEqual(windows.count, 5)
         XCTAssertTrue(windows.allSatisfy { $0.criticalMassRuleVersion == CriticalMassRule.version })
-        XCTAssertTrue(windows.contains { $0.collapseSources > 0 && $0.gravityPhases > 0 })
+        XCTAssertTrue(windows.allSatisfy { $0.collapseSources == 0 && $0.gravityPhases == 0 })
         XCTAssertEqual(windows.filter { $0.density == "heavy" }.count, 3)
     }
 
@@ -55,9 +55,9 @@ final class NativeInputWindowTests: XCTestCase {
         let windows = try await measure(initial: initial, through: 14, name: "native-input-windows-fresh-survival")
         XCTAssertEqual(windows.count, 5)
         XCTAssertTrue(windows.allSatisfy { $0.cadenceID == SkyCadenceID.announcedCycleV1.rawValue })
-        XCTAssertTrue(windows.contains { $0.collapseSources > 0 })
-        // The normal fresh game must offer an actual input window after every sampled collapse.
-        XCTAssertTrue(windows.filter { $0.collapseSources > 0 }.allSatisfy {
+        XCTAssertTrue(windows.allSatisfy { $0.collapseSources == 0 })
+        // The normal fresh game must offer an actual input window after every sampled shower.
+        XCTAssertTrue(windows.allSatisfy {
             $0.observedReady && $0.readyToScheduledDeadlineSeconds >= 0.5
         })
     }
@@ -196,7 +196,7 @@ final class NativeInputWindowTests: XCTestCase {
         guard !UIAccessibility.isReduceMotionEnabled && !UIAccessibility.isVoiceOverRunning else {
             throw XCTSkip("Normal-motion timing requires Reduce Motion and VoiceOver off")
         }
-        let normalized = initial.removingGravity().adoptingFeedingDusk()
+        let normalized = initial.removingGravity().adoptingFeedingDusk().disablingAutomaticAging()
         var expected = normalized
         var expectedGames: [Int: FallingSky] = [:]
         var expectedTurns: [Int: FallingSkyTurn] = [:]
