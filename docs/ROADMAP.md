@@ -8,9 +8,9 @@ Build a small, readable falling-sky puzzle worth replaying. **Constellation trac
 
 **Open limits:** No gameplay participant preference results or general physical-device acceptance. Crystal Glow art direction and character masters are user-approved; runtime verification and remaining limits are recorded in the [cast integration evidence](evidence/crystal-glow-integration-2026-10-17/README.md). Accessibility evidence remains source-bound.
 
-Character chat and complete shower trails are integrated into the current production target, preserving Opal, gravity, constellation input and saved generations. [Current integration checks](evidence/character-chat-production-2026-10-17/README.md) supersede the old-base delivery limit.
+Character chat and complete shower trails are integrated into the current production target, preserving Opal and constellation input. Gravity was subsequently retired through the save-normalization boundary below. [Current integration checks](evidence/character-chat-production-2026-10-17/README.md) supersede the old-base delivery limit.
 
-[Responsive input integration](design/INTERACTION_FEEDBACK.md) replaces the global animation gate with column reservations and gives contacts/cancellations explicit feedback. Current production trace, dialogue, gravity and save behavior are retained; [integrated verification](evidence/responsive-input-2026-10-17/README.md) separates simulator checks from physical feel.
+[Responsive input integration](design/INTERACTION_FEEDBACK.md) replaces the global animation gate with column reservations and gives contacts/cancellations explicit feedback. Current production trace, dialogue and save behavior are retained; the later gravity retirement is recorded below. [integrated verification](evidence/responsive-input-2026-10-17/README.md) separates simulator checks from physical feel.
 
 Grown-star readability now uses a luminous double silhouette, two glints and a gentle outer-aura pulse. [Integration evidence](evidence/grown-star-readability-2026-10-17/PULSE.md) records native checks; next confirm uncoached recognition and dense-board comfort with the reporting tester.
 
@@ -30,9 +30,13 @@ The [diagonal constellation investigation](evidence/constellations-2026-10-17/RE
 
 The accepted [notification plan](design/NOTIFICATIONS.md) starts with one optional weekly reminder at a player-selected day/time, off by default and scheduled locally. No notification implementation is authorized in this batch. Inactivity reminders and custom friend-rank alerts are deferred; global rank-drop alerts are excluded. Revisit implementation only when requested.
 
+## Gravity removed from normal play
+
+The user selected removal after the [focused exposure review](evidence/gravity-focused-playtest-2026-10-17/README.md). New, continued and replayed skies no longer contain attraction fields or orbiting holes; the [migration record](evidence/gravity-removal-2026-10-17/README.md) preserves score, remaining stars and timing. An automatic effect remains only an idea for a later request.
+
 ## What happens next
 
-Magnetic pairs and temporary orbiting holes are integrated into new skies. Saved `gravityOpportunities` adds a second eligible calm wave, while retaining one committed pair per cycle; [bounded evidence](evidence/gravity-opportunities-2026-10-17/README.md) shows more field encounters alongside increased confirmation overflows. Older rounds keep their generation; Dusk/Opal retain their roles. [Integration evidence](evidence/gravity-integration-2026-10-17/README.md) separates mechanical/native checks from unverified human preference and supply tuning.
+The gravity setup mechanic is retired from normal play. Keep future work focused on clear ordinary matching, tracing, growth and readable shower pressure; do not reintroduce gravity through a pilot flag.
 
 The [screen-flow polish plan](SCREEN_FLOW_PLAN.md) adds a bounded presentation workstream: explicit dark launch, safe Entry cancellation, pause-preserving Continue, continuous handoffs and understandable endings. Its [accepted design](design/SCREEN_FLOW_POLISH.md) now has verified launch, safe Entry, continuous handoff, explanatory result, bounded arrival and home/preferences batches; [source-bound evidence and limits](evidence/screen-flow-polish-2026-10-17/README.md) remain separate from RC/device acceptance. These batches integrate independently of gameplay experiments.
 
@@ -174,4 +178,4 @@ The user selected the [curved shower forecast](evidence/shower-forecast-adoption
 
 The [scoped reliability design](design/RELIABILITY_POLISH.md) closes terminal touch ownership, package build identity and local-canvas camera placement in regular Starfall. Retain physical expanded-Island, curved/multitouch, haptic/recognition and actual VoiceOver acceptance as explicit next-device/RC work; no additional lab or speculative hint/performance framework is required.
 
-Gravity's production art uses a magnetic crystal and accretion-ring hole with shared cached materials and finite formation/orbit cues. [Art acceptance](evidence/gravity-art-2026-10-17/README.md) records native checks separately from the remaining human gameplay study.
+The retired gravity art remains only for historical reset-only Debug reproductions: an open attraction field and accretion-ring hole with shared cached materials. [Art acceptance](evidence/gravity-art-2026-10-17/README.md) records native checks separately from the remaining human gameplay study.

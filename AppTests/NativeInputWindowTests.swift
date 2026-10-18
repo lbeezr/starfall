@@ -34,11 +34,11 @@ final class NativeInputWindowTests: XCTestCase {
         XCTAssertEqual(windows.filter { $0.density == "heavy" }.count, 3)
     }
 
-    @MainActor func testRealSceneInputWindowsWithNaturallyOccupiedOrbit() async throws {
+    @MainActor func testRealSceneInputWindowsAfterRetiringHistoricalOrbit() async throws {
         let initial = try naturalOrbit()
-        let windows = try await measure(initial: initial, through: initial.turns + 4, name: "native-input-windows-orbit")
+        let windows = try await measure(initial: initial, through: initial.turns + 4, name: "native-input-windows-retired-orbit")
         XCTAssertEqual(windows.count, 3)
-        XCTAssertTrue(windows.contains { $0.gravityPhases > 0 })
+        XCTAssertTrue(windows.allSatisfy { $0.gravityPhases == 0 }, "A normal restore must retire the old orbit before any shower")
     }
 
     @MainActor private func naturalOrbit() throws -> FallingSky {
@@ -168,7 +168,7 @@ final class NativeInputWindowTests: XCTestCase {
         guard !UIAccessibility.isReduceMotionEnabled && !UIAccessibility.isVoiceOverRunning else {
             throw XCTSkip("Normal-motion timing requires Reduce Motion and VoiceOver off")
         }
-        var expected = initial
+        var expected = initial.removingGravity()
         var expectedGames: [Int: FallingSky] = [:]
         var expectedTurns: [Int: FallingSkyTurn] = [:]
         for shower in (initial.turns + 1)...finalShower {
@@ -183,7 +183,7 @@ final class NativeInputWindowTests: XCTestCase {
         defaults.set(false, forKey: "starfall.haptics")
         defaults.set(try SkySaveArchive.encode(initial), forKey: SkySaveArchive.key)
         let store = FallingSkyStore(defaults: defaults, arguments: [])
-        XCTAssertEqual(store.game, initial)
+        XCTAssertEqual(store.game, initial.removingGravity())
         var events: [FallingSkyStore.TimingEvent] = []
         store.configureTimingTest(observe: { events.append($0) })
 

@@ -240,7 +240,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         self.presenter = presenter ?? scene
         // SwiftUI may construct stores for discarded view values. Keep initialization read-only.
         if !arguments.contains("--starfalls-reset"), let saved = SkySaveArchive.load(from: defaults) {
-            game = saved
+            game = saved.removingGravity()
             hasSavedSky = true
             guide(saved.outcome == .won ? "guide.won" : saved.isOver ? "guide.full" : "guide.restore", values: saved.isOver ? ["score": String(saved.score)] : [:])
         } else {
@@ -511,7 +511,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         freezeClock(); remaining = showerInterval
         settlePresentation(reason: "restart")
         if sameSky {
-            game = game.replay()
+            game = game.removingGravity().replay()
         } else {
             // First Light's fixed balance belongs to that challenge, not the next normal sky.
             let balance = game.challenge == nil ? game.balance : StarfallBalance()

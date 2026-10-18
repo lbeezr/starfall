@@ -1,0 +1,40 @@
+{
+  "backgroundNativeResult": "test_sim_2026-10-18T03-58-11-066Z_pid31650_f584f81c.xcresult",
+  "base": "cd5baca58d29436a119b719dc0081a5b8da39ddb",
+  "baselineComparison": {
+    "passed": 3,
+    "resultBundle": "test_sim_2026-10-18T04-04-49-482Z_pid31650_53f2f118.xcresult",
+    "source": "b80edd806d1f7bef42453d4f923703a6bfaa08bd",
+    "tests": 3
+  },
+  "configuration": "Debug arm64 / Release generic iOS Simulator",
+  "coreTests": 120,
+  "device": "iPhone 17e / iOS 27.0",
+  "finalHosted": {
+    "failed": 0,
+    "passed": 188,
+    "resultBundle": "test_sim_2026-10-18T04-06-39-654Z_pid31650_5658d96c.xcresult",
+    "skipped": 0
+  },
+  "finalHostedTestCorrection": "Normalize expected restored reference and assert zero gravity phases; no production renderer or action timeout change.",
+  "initialHostedFailure": "One obsolete historical-orbit restore expectation; replaced with normalized deterministic continuation and zero gravity phase assertions. Final hosted rerun required.",
+  "initialResultBundle": "test_sim_2026-10-18T03-49-07-826Z_pid31650_a560e803.xcresult",
+  "nativeUIInitial": 8,
+  "nativeUIUnique": 9,
+  "publicationBranch": "codex/remove-gravity",
+  "rawArtifacts": "artifacts/gravity-removal",
+  "remoteBase": "b80edd806d1f7bef42453d4f923703a6bfaa08bd",
+  "runtimeBuildID": "dev.c64a08904f",
+  "runtimeChangesAfterNativeUI": false,
+  "sha256": {
+    "App/FallingSkyStore.swift": "b005305f9e897249c623ad335236042531658e30bd2ff3c8e9c577d55e2dd9c0",
+    "App/SkySaveArchive.swift": "ba94fce9f3bc0da39c93c5ddb8d5663e068bb28a19cd54893ba112e23c06a6c1",
+    "AppTests/GravityStoreTests.swift": "aede446eced8e8e1d8f05ddc38a1a7ef6e2d8170445a2cbf0d09b395b2423dc3",
+    "AppTests/NativeInputWindowTests.swift": "2c1b278638c29edba885c2cf9f83491ebf8f9c64d5d414927c51327990d96b7d",
+    "Sources/StarfallCore/FallingSky.swift": "288967114bdd581641dd39576e60754d40aa5f135c179d81bf3e02c2baaa9574",
+    "Sources/StarfallCore/SkyGeneration.swift": "03d62817aaace9a7354cffb15e7735a98246ed9d75643f0e354fab2aeb2d2d97",
+    "Tests/StarfallCoreTests/GravityRetirementTests.swift": "1ca7355404bdf4a241515594907463580948710fdfe4450fe0fd89e074418b3c",
+    "UITests/GravityOpportunityNativeTests.swift": "d385458cfe8936e0093dba0da50053e530a36768e251d01e49cc06ab101e898a"
+  },
+  "simulator": "A83E40E8-E0BE-49C4-A48E-5938E3DA09E2"
+}
