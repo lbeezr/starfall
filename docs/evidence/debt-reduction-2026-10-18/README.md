@@ -23,3 +23,13 @@ Native commands used the shared Starfall scheme, sequential testing, ad-hoc simu
 Root cause: the optional load result collapsed rejection and absence; activation then wrote the replacement. Examined current and retained-key precedence, initialization, activation, restart and encoding-failure paths. Tests cover corrupt data, wrong types, future schema, old bytes, no downgrade and failed encoding. The recovery slot intentionally retains only the most recent rejected value; no automatic repair or recovery UI is added. UserDefaults offers no synchronous disk-durability acknowledgement; `saveFailed` reports encoding/validation failure, not disk health.
 
 Visual/animation changes: none. Actual VoiceOver: deferred to RC; not run on this development build. Physical device delivery: updater reported waiting for configured iPhone; no installation claimed.
+
+## Task 2 — native acceptance diagnostics
+
+Source: task-1 main `513f9cc`; test-only changes in `AppTests/DuskProductionTests.swift` and `UITests/FallingSkyInteractionTests.swift`. Same Xcode, Debug and iOS 27.0 simulator as task 1.
+
+The original First Light win/replay/full-sky/restored-ending method and the existing CrystalCelebrationArtwork, DuskProduction and StarCast suites passed: **34 tests, zero failures/skips**. This includes the original full-motion collapse; the historical failures did not reproduce. No gameplay synchronization change is justified by this result.
+
+The final test patch splits Dusk's completion/well/infall/arrival assertions into separate diagnostic messages and explicitly runs its normal-motion collapse/cancellation contract after the two existing StarCast material-sheet methods. First Light's original five-second settle assertions now include app state, board summary, score, outcome presence and Next existence/enabled state. No retries, relaxed waits, removed checks or forced reduced motion.
+
+Final diagnostics/mixed-order run: **9 passed, zero failures/skips**, including the unchanged First Light assertions and the explicit material-sheet sequence. Debug simulator compilation passed. `swift test`: 162 passed. Updater behavior checks: 21 passed; native matrix policy: 3 passed. These scripting checks do not establish device installation. Actual VoiceOver remains deferred to RC. The root cause of the historical intermittency remains unknown; a failing future run now identifies the phase and preserves native state instead of giving a combined assertion alone.

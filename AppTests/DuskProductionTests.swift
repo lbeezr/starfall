@@ -119,6 +119,12 @@ final class DuskProductionTests: XCTestCase {
         XCTAssertNil(scene.childNode(withName:"//dusk.collapse"))
     }
 
+    @MainActor func testFullMotionCollapseAfterMaterialSheets() async throws {
+        try StarCastTests().testEveryCharacterHasACompleteTwelveFrameSheet()
+        StarCastTests().testCastReviewSheetAtBoardAndHeroSizes()
+        try await testFullMotionCollapseSwallowsAndResetsWithoutStaleCompletion()
+    }
+
     @MainActor func testFullMotionCollapseSwallowsAndResetsWithoutStaleCompletion() async throws {
         guard !UIAccessibility.isReduceMotionEnabled && !UIAccessibility.isVoiceOverRunning else { throw XCTSkip("Requires normal system motion") }
         let view=SKView(frame:.init(x:0,y:0,width:378,height:690))
@@ -142,7 +148,10 @@ final class DuskProductionTests: XCTestCase {
             sawArrival = sawArrival || scene.childNode(withName:"//sky.flight.\(turn.arrivals[0].star.id)") != nil
             try await Task.sleep(for:.milliseconds(20))
         }
-        XCTAssertTrue(complete);XCTAssertTrue(sawHole);XCTAssertTrue(sawInfall);XCTAssertTrue(sawArrival)
+        XCTAssertTrue(complete, "Dusk presentation must finish within five seconds")
+        XCTAssertTrue(sawHole, "No collapse well sampled before completion=\(complete)")
+        XCTAssertTrue(sawInfall, "Consumed star \(consumedID) never both shrank and moved inward; well=\(sawHole), arrival=\(sawArrival)")
+        XCTAssertTrue(sawArrival, "Committed arrival never sampled; completed=\(complete), well=\(sawHole), infall=\(sawInfall)")
         XCTAssertNil(scene.childNode(withName:"//dusk.collapse"))
         var stale=false;scene.animate(turn,from:before,to:after){stale=true}
         scene.render(after)
