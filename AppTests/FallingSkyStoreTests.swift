@@ -1051,3 +1051,35 @@ final class SkyPhasePresentationTests: XCTestCase {
         XCTAssertEqual(store.phaseCue?.shower, 10); XCTAssertTrue(feedback.announcements.isEmpty)
     }
 }
+
+
+extension FallingSkyStoreTests {
+    @MainActor func testOpalPlanningSurvivesOneDueFasterShowerBetweenClears() throws {
+        let (store, presenter, clock, _) = makeOpeningStore()
+        store.loadConstellationFixture(.opalPlanning)
+        let initial = store.game
+        store.togglePause()
+        XCTAssertEqual(try XCTUnwrap(clock.deadline) - clock.now, 1.7, accuracy: 0.001)
+        store.clear(Cell(1,1))
+        XCTAssertEqual(store.game.score, 30)
+        XCTAssertTrue(store.busy)
+        clock.advance(1.7)
+        XCTAssertEqual(store.game.turns, 12, "A due shower cannot replace the committed clear presentation")
+        XCTAssertFalse(store.canClear)
+        clock.advance(30)
+        XCTAssertEqual(store.game.turns, 12)
+        presenter.finish()
+        XCTAssertEqual(store.game.turns, 13, "Settlement delivers exactly one due shower, without catch-up")
+        presenter.finish()
+        XCTAssertTrue(store.canClear)
+        XCTAssertEqual(try XCTUnwrap(clock.deadline) - clock.now, 2.5, accuracy: 0.001)
+        store.clear(Cell(0,3)); presenter.finish()
+        XCTAssertEqual(store.game.score, 34)
+        var expected = initial
+        XCTAssertEqual(expected.clear(Cell(1,1))?.collected, 3)
+        XCTAssertNotNil(expected.letStarsFall())
+        XCTAssertEqual(expected.clear(Cell(0,3))?.collected, 4)
+        XCTAssertEqual(store.game, expected)
+        XCTAssertTrue(store.game.isValidSave)
+    }
+}

@@ -13,3 +13,5 @@ Run `swift test` from the repository root. Use focused fixtures for changed beha
 Use the [adoption contract](../../docs/design/PACING_ADOPTION.md) for current behavior.
 
 New skies use production Core `announcedCycleV2`; explicit V1 saves retain their timing. The historical timing fixture is now a thin adapter to Core, not a second algorithm; old timing versions and First Light remain covered.
+
+The seeded Opal planning regression checks both ordinary two-clear orders, exact rewards, Orb consumption, unchanged preview/turn count and save round-trip.

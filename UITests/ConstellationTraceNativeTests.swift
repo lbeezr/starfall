@@ -197,3 +197,26 @@ extension ConstellationTraceNativeTests {
         }
     }
 }
+
+
+extension ConstellationTraceNativeTests {
+    @MainActor func testOpalPlanningTwoTapOrdersKeepTheirDistinctRewards() {
+        for amberFirst in [true, false] {
+            let app = launch("opalPlanning")
+            score(27, app)
+            let orbs = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'experiment.cell.' AND label CONTAINS 'White Opal Orb'"))
+            XCTAssertEqual(orbs.count, 1)
+            app.buttons[amberFirst ? "experiment.cell.1.1" : "experiment.cell.0.3"].tap()
+            score(30, app)
+            XCTAssertEqual(orbs.count, amberFirst ? 1 : 0)
+            let next = app.buttons[amberFirst ? "experiment.cell.0.3" : "experiment.cell.1.1"]
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true AND value == %@", amberFirst ? "4 starlight connected" : "3 starlight connected"), object: next).wait(timeout: 5))
+            let before = XCTAttachment(screenshot: app.screenshot())
+            before.name = amberFirst ? "planning-preserved-opal-follow-up" : "planning-spent-opal-follow-up"
+            before.lifetime = .keepAlways; add(before)
+            next.tap(); score(amberFirst ? 34 : 33, app)
+            XCTAssertEqual(orbs.count, 0)
+            app.terminate()
+        }
+    }
+}

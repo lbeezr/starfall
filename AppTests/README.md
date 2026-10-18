@@ -21,3 +21,5 @@ Cadence scheduling tests reuse `Tests/StarfallCoreTests/TimingCycleFixture.swift
 `SkyFlowStateTests` checks Entry cancellation, duplicate/stale Begin, retained core/ranking bytes, replay generation and pause-preserving Continue. `FallingSkyTestSupport` shares the manual clock/presenter with store tests.
 
 `TraceInputPolishTests` covers coarse/grazing samples, small and large projected boards, spatial misses, branching and stale-generation rejection. Store checks cover the held deadline and resumed remainder.
+
+The Opal planning deadline regression preserves the four-light follow-up across one faster shower deferred by clear presentation, and checks exact Core equality and no catch-up.
