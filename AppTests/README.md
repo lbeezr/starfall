@@ -14,7 +14,7 @@ Cadence scheduling tests reuse `Tests/StarfallCoreTests/TimingCycleFixture.swift
 
 `SkyShowerPlacementTests` (in `ObservatoryGeometryTests.swift`) checks the calibrated camera profile and conservative hardware, inset, orientation and accessibility fallback. It does not prove physical cutout alignment.
 
-**Announced cadence adoption:** New skies use production Core `announcedCycleV2` (six 2-second, three 1.7-second and three 2.5-second intervals); the previous B exporter/launch selector is removed. Core owns the sole algorithm. Older saves and same-sky replay retain their version; First Light and fixed gentle/steady settings retain timing. [Current contract](../docs/design/PACING_ADOPTION.md).
+**Announced cadence adoption:** Fresh survival uses Core `freshSurvival` and the existing longer `announcedCycleV1` rhythm (six 3-second, three 2.5-second and three 3.5-second intervals); the previous B exporter/launch selector is removed. Core owns the sole algorithm. Older saves and same-sky replay retain their version; First Light and fixed gentle/steady settings retain timing. [Current contract](../docs/design/PACING_ADOPTION.md).
 
 `LaunchSurfaceTests` loads the packaged launch storyboard and verifies an opaque dark named background in Light and Dark appearances. It checks resources, not visible launch frames; recordings remain separate evidence.
 
@@ -30,7 +30,7 @@ Touch-lifecycle checks exercise edge-release classification, missing move callba
 
 Camera placement tests distinguish full canvas dimensions from safe-area-reduced dimensions and reject width, height, orientation, inset and accessibility mismatches for both checked profiles. Native checks must additionally verify which route actually draws.
 
-`NativeInputWindowTests` uses the real scheduler and SpriteKit scene in a visible isolated test window to measure Store input admission through an automatic storm. It now covers current critical-mass collapses and the existing longer-cycle candidate, with explicit cadence/rule identifiers and a bounded decision-window requirement for that candidate. It is native presentation timing, not a finger-latency or human-preference result; full-motion checks skip under active system quiet accessibility modes.
+`NativeInputWindowTests` uses the real scheduler and SpriteKit scene in a visible isolated test window to measure Store input admission through an automatic storm. It now covers current critical-mass collapses and the adopted fresh-survival cycle, with explicit cadence/rule identifiers and a bounded input-window requirement for that route. It is native presentation timing, not a finger-latency or human-preference result; full-motion checks skip under active system quiet accessibility modes.
 
 Gravity overlap checks share the natural seed setup and verify airborne/phase concurrency, receiver response after movement, landing order, body identity, replacement/quiet parity and a bounded nominal fast-shower presentation budget; real input-window reports remain timing observations rather than reaction-time assertions.
 
@@ -65,3 +65,5 @@ Rendered-award checks capture the complete `FallingSkyView` in an isolated foreg
 `CriticalMassProductionTests` checks v8/v7 archive boundaries, new versus retained/First Light routing, committed collapse across interruption/restore/restart, and static corruption materials.
 
 `TraceInputPolishTests` also checks direction-derived swap targets and off-center elliptical acquisition at phone/tablet sizes.
+
+`SkySaveArchiveTests` owns archive migration/validation and `SkyPhasePresentationTests` owns forecast presentation. Both were extracted unchanged from the general Store suite, with explicit hosted target membership.

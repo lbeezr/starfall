@@ -1,0 +1,194 @@
+{
+  "baseMain": "eea67c20606729ca88e9ff91667d178fd18bbf30",
+  "structuralCommit": "433777995d5822220bf979cfc8fd8fcb05b7cbe7",
+  "workingTreeInputSHA256": {
+    "Sources/StarfallCore/FallingSky.swift": "2ac05e065dd4d167243001e6189b4af81761ee5f7e836a04470dbbb304903c0d",
+    "App/FallingSkyStore.swift": "5d6f269d4ad7bb8171f426b5a867b97637a19be04f8dc093120a7a294f5e29c6",
+    "Starfall.xcodeproj/project.pbxproj": "c33515027d423f4d51b4c14eb26dbd0267e16c41650b8844bb382b7c580b08d4",
+    "AppTests/CriticalMassProductionTests.swift": "5b7a2295d79b29ff7fc6feb7611d65693c831b33998206b1cdce6004fd483870",
+    "AppTests/FallingSkyStoreTests.swift": "cdcdf9cd0fe974beaa3f624f1f56b71dd3651a9119e482f55a24213a4d1c5fa5",
+    "AppTests/SkyFlowStateTests.swift": "11f091711f8b01b089dd39fd018547c338429c48bcde9d2e926859f97ff767a6",
+    "AppTests/NativeInputWindowTests.swift": "adf66a39a52948323bbf48451ab8c71618f562806c886a764c9220bb40346bb3",
+    "AppTests/FallingSkyTestSupport.swift": "296ef513418232ed2714413bcb6016e87977a29898e4a529e746073ae5ab48a0",
+    "AppTests/SkySaveArchiveTests.swift": "fc755805fb0e2243af3f3e50c4d3209f0eb8339af6e2fd38c43a4d362bb19dd1",
+    "AppTests/SkyPhasePresentationTests.swift": "35a8be1cbbf4a822f1265046657ecb9155ee46559ff5f0e16a79ddc121f21722",
+    "UITests/FallingSkyInteractionTests.swift": "a3e622f5dad82b9207d69ff2f274663bcce319e24e232222e2809d4fc5474bd6",
+    "Tests/StarfallCoreTests/CriticalMassTests.swift": "5dea5c72fbbb6cfc061db707aac05565221f88e5463c996f95f25f4226a93ddd",
+    "tools/mechanics/PacingMeasure.swift": "ced962781b2555acd710a7ab68d3cbadc5ea2b5a8cf20a6c7a8b523677eefc84",
+    "tools/mechanics/compare-pacing.py": "8cd173fcb11441840a2af2d09433f3a0fbe1f73f0e1ec18492b473bf0c17928a"
+  },
+  "environment": {
+    "configuration": "Debug",
+    "simulator": "iPhone 16 Pro Max / iOS 27.0 (24A434)",
+    "udid": "5107CBBF-108B-4B94-9125-A873F948A38C",
+    "derivedData": "/tmp/starfall-calibration-derived",
+    "releaseDerivedData": "/tmp/starfall-calibration-release"
+  },
+  "core": {
+    "tests": 162,
+    "passed": true
+  },
+  "focusedHosted": {
+    "tests": 92,
+    "passed": true,
+    "result": "artifacts/calibration-native/longer-cycle-hosted-final.xcresult"
+  },
+  "postWhitespaceExtractedSuites": {
+    "tests": 12,
+    "passed": true
+  },
+  "native": {
+    "initialBatchPassed": 6,
+    "initialBatchFailed": 1,
+    "initialBatch": "artifacts/calibration-native/longer-cycle-native.xcresult",
+    "correctedCase": "FallingSkyInteractionTests/testFirstShowerIsPlayableAndManualInputStaysPaused",
+    "correctedCasePassed": true,
+    "correctedSeconds": 16.799,
+    "correctedResult": "artifacts/calibration-native/longer-cycle-copy-regression.xcresult",
+    "fullOutcomeSeconds": 150.125,
+    "fresh": [
+      {
+        "seed": 180,
+        "attempts": 7,
+        "nonScoring": 1,
+        "skipped": 6,
+        "score": 36,
+        "showers": 17
+      },
+      {
+        "seed": 5,
+        "attempts": 10,
+        "nonScoring": 0,
+        "skipped": 5,
+        "score": 38,
+        "showers": 16
+      }
+    ],
+    "additionalBackground": {
+      "passed": true,
+      "result": "artifacts/calibration-native/longer-cycle-background.xcresult",
+      "tests": [
+        {
+          "name": "SkyFlowInteractionTests/testWelcomeEntryBackgroundAndAnotherSky",
+          "seconds": 58.871
+        },
+        {
+          "name": "SkyTechniqueInteractionTests/testSettingsAndBackgroundLeaveGesturesReadyWithoutRetoggling",
+          "seconds": 19.747
+        }
+      ]
+    }
+  },
+  "freshInputWindows": [
+    {
+      "arrivals": 5,
+      "cadenceID": "announcedCycleV1",
+      "collapseSources": 0,
+      "criticalMassRuleVersion": 1,
+      "density": "lighter",
+      "followingCadence": "steady",
+      "generation": 4,
+      "gravityPhases": 0,
+      "observedReady": true,
+      "presentationSeconds": 1.3277002499962691,
+      "readyToActualDueSeconds": 1.7370253749977564,
+      "readyToScheduledDeadlineSeconds": 1.6717595416703261,
+      "seed": 0,
+      "shower": 9
+    },
+    {
+      "arrivals": 5,
+      "cadenceID": "announcedCycleV1",
+      "collapseSources": 3,
+      "criticalMassRuleVersion": 1,
+      "density": "heavy",
+      "followingCadence": "faster",
+      "generation": 4,
+      "gravityPhases": 2,
+      "observedReady": true,
+      "presentationSeconds": 1.8181434166617692,
+      "readyToActualDueSeconds": 0.7296899166685762,
+      "readyToScheduledDeadlineSeconds": 0.6815902083326364,
+      "seed": 0,
+      "shower": 10
+    },
+    {
+      "arrivals": 5,
+      "cadenceID": "announcedCycleV1",
+      "collapseSources": 2,
+      "criticalMassRuleVersion": 1,
+      "density": "heavy",
+      "followingCadence": "faster",
+      "generation": 4,
+      "gravityPhases": 2,
+      "observedReady": true,
+      "presentationSeconds": 1.8037461249914486,
+      "readyToActualDueSeconds": 0.7446187083405675,
+      "readyToScheduledDeadlineSeconds": 0.696091375008109,
+      "seed": 0,
+      "shower": 11
+    },
+    {
+      "arrivals": 5,
+      "cadenceID": "announcedCycleV1",
+      "collapseSources": 0,
+      "criticalMassRuleVersion": 1,
+      "density": "heavy",
+      "followingCadence": "faster",
+      "generation": 4,
+      "gravityPhases": 0,
+      "observedReady": true,
+      "presentationSeconds": 1.254683750012191,
+      "readyToActualDueSeconds": 1.2742922499892302,
+      "readyToScheduledDeadlineSeconds": 1.2451485833298648,
+      "seed": 0,
+      "shower": 12
+    },
+    {
+      "arrivals": 3,
+      "cadenceID": "announcedCycleV1",
+      "collapseSources": 0,
+      "criticalMassRuleVersion": 1,
+      "density": "lighter",
+      "followingCadence": "breathing",
+      "generation": 4,
+      "gravityPhases": 0,
+      "observedReady": true,
+      "presentationSeconds": 1.0197812916594557,
+      "readyToActualDueSeconds": 2.567315125008463,
+      "readyToScheduledDeadlineSeconds": 2.479500541667221,
+      "seed": 0,
+      "shower": 13
+    }
+  ],
+  "release": {
+    "passed": true,
+    "log": "artifacts/calibration-native/longer-cycle-release.log"
+  },
+  "model": {
+    "command": [
+      "python3",
+      "tools/mechanics/compare-pacing.py",
+      "--seeds",
+      "8",
+      "--seconds",
+      "180",
+      "--include-setups",
+      "--include-idle",
+      "--output",
+      "artifacts/calibration-longer-cycle/default-verification"
+    ],
+    "runs": 160,
+    "replayedCommits": 19187,
+    "freshSavedCadence": "announcedCycleV1",
+    "identicalToPriorComparisonExceptNewSavedCadenceField": true,
+    "prior": "artifacts/calibration-critical-mass/slower-cycle/runs.json",
+    "current": "artifacts/calibration-longer-cycle/default-verification/runs.json"
+  },
+  "limits": [
+    "Existing V2 rounds retain tight timing until New sky.",
+    "Isolated native input-window host is 390x844 points and does not run SwiftUI award overlays.",
+    "Short native rounds are driver-limited, not player success-rate comparisons.",
+    "No full VoiceOver or physical-device acceptance in this batch."
+  ]
+}

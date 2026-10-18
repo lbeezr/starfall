@@ -152,4 +152,44 @@ final class CriticalMassTests: XCTestCase {
         }
         print("CRITICAL_MASS seeds=40 cap=100 idleTurns=\(idleTurns) activeTurns=\(activeTurns) idleLost=\(idleLoss) activeLost=\(activeLoss)")
     }
+    func testFreshSurvivalSelectsLongerCycleWithoutChangingSeededRuleHistory() throws {
+        for seed in UInt64(0)..<8 {
+            var fresh = FallingSky.freshSurvival(seed: seed)
+            var retained = FallingSky(seed: seed, generation: .current, cadence: .announcedCycleV2, criticalMass: true)
+            XCTAssertTrue(fresh.hasCriticalMass)
+            XCTAssertEqual(fresh.cadenceID, .announcedCycleV1)
+            for _ in 0..<40 {
+                // Cadence is the sole saved-state difference, including RNG and future preview.
+                var object = try XCTUnwrap(JSONSerialization.jsonObject(with: JSONEncoder().encode(retained)) as? [String: Any])
+                object["savedCadence"] = fresh.cadenceID.rawValue
+                let normalized = try JSONDecoder().decode(FallingSky.self, from: JSONSerialization.data(withJSONObject: object))
+                XCTAssertEqual(fresh, normalized)
+                XCTAssertTrue(fresh.isValidSave && retained.isValidSave)
+                if fresh.isOver { break }
+                fresh.letStarsFall(); retained.letStarsFall()
+                if let cell = fresh.legalGroups.first?.first {
+                    XCTAssertEqual(fresh.clear(cell)?.collected, retained.clear(cell)?.collected)
+                }
+            }
+        }
+        for pace in StarfallBalance.Pace.allCases {
+            let balance = StarfallBalance(pace: pace, darkStars: .none)
+            XCTAssertEqual(FallingSky.freshSurvival(seed: 64, balance: balance).balance, balance)
+        }
+    }
+
+    func testBothCriticalCadencesRoundTripAndReplayTheirOwnVersion() throws {
+        for cadence: SkyCadenceID in [.announcedCycleV1, .announcedCycleV2] {
+            let initial = FallingSky(seed: 64, generation: .current, cadence: cadence, criticalMass: true)
+            var game = initial
+            for _ in 0..<12 where !game.isOver { game.letStarsFall() }
+            let restored = try JSONDecoder().decode(FallingSky.self, from: JSONEncoder().encode(game))
+            XCTAssertEqual(restored, game)
+            XCTAssertEqual(restored.cadenceID, cadence)
+            XCTAssertEqual(restored.replay(), initial)
+        }
+        XCTAssertEqual(FallingSky(challenge: .firstLight).cadenceID, .originalV1)
+        XCTAssertFalse(FallingSky(challenge: .firstLight).hasCriticalMass)
+    }
+
 }

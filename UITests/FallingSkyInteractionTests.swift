@@ -235,7 +235,7 @@ final class FallingSkyInteractionTests: XCTestCase {
         let empty = app.buttons["experiment.cell.6.6"]
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: empty).wait(timeout: 5))
         XCTAssertTrue(empty.label.hasPrefix("Empty")); empty.tap()
-        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label CONTAINS %@ AND label CONTAINS %@", "Small stars count as 1", "grown stars count as 2"), object: app.staticTexts["experiment.message"]).wait(timeout: 5))
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label CONTAINS %@ AND label CONTAINS %@ AND label CONTAINS %@", "Tap matching stars connected", "Small stars count as 1", "grown stars as 2"), object: app.staticTexts["experiment.message"]).wait(timeout: 5))
         XCTAssertEqual(showers(app), 0)
         XCTAssertEqual(app.staticTexts["experiment.score"].label, "0 starlight")
         let next = app.buttons["experiment.next"]

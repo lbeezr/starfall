@@ -31,3 +31,15 @@ import StarfallCore
     func finish() { completions.last?() }
 }
 
+
+@MainActor final class SkyFeedbackRecorder: FallingSkyFeedbackProviding {
+    var clears = 0, stops = 0
+    var announcements: [String] = []
+    var sound = false, haptics = false
+    func collected(soundEnabled: Bool, hapticsEnabled: Bool, reducedMotion: Bool) {
+        clears += 1; sound = soundEnabled; haptics = hapticsEnabled
+    }
+    func announce(_ message: String) { announcements.append(message) }
+    func stopSounds() { stops += 1 }
+}
+

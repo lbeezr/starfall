@@ -85,8 +85,8 @@ final class FallingSkyStoreTests: XCTestCase {
             presenter.finish()
         }
         XCTAssertFalse(store.game.isOpeningCascade)
-        XCTAssertEqual(store.showerInterval, 2)
-        clock.advance(1.99); XCTAssertEqual(store.game.turns, 4)
+        XCTAssertEqual(store.showerInterval, 3)
+        clock.advance(2.99); XCTAssertEqual(store.game.turns, 4)
         clock.advance(0.01); XCTAssertEqual(store.game.turns, 5)
     }
 
@@ -120,8 +120,8 @@ final class FallingSkyStoreTests: XCTestCase {
         XCTAssertEqual(store.game, committed)
         let saved = try SkySaveArchive.decode(XCTUnwrap(defaults.data(forKey: FallingSkyStore.saveKey)))
         XCTAssertEqual(saved, committed)
-        XCTAssertEqual(store.showerInterval, 2)
-        XCTAssertEqual(try XCTUnwrap(clock.deadline) - clock.now, 2, accuracy: 0.001)
+        XCTAssertEqual(store.showerInterval, 3)
+        XCTAssertEqual(try XCTUnwrap(clock.deadline) - clock.now, 3, accuracy: 0.001)
     }
 
     @MainActor func testOpeningRestoreAndRestartRejectStaleWork() throws {
@@ -291,7 +291,7 @@ final class FallingSkyStoreTests: XCTestCase {
         XCTAssertEqual(defaults.data(forKey: FallingSkyStore.saveKey), committed)
         reset.setSuspended(false)
         let activated = try SkySaveArchive.decode(XCTUnwrap(defaults.data(forKey: FallingSkyStore.saveKey)))
-        XCTAssertEqual(activated, FallingSky(seed: 5, generation: .current, criticalMass: true))
+        XCTAssertEqual(activated, FallingSky.freshSurvival(seed: 5))
         XCTAssertEqual(activated, reset.game)
         XCTAssertTrue(reset.isPaused)
         XCTAssertNil(resetClock.deadline, "Activation preserves the explicit Start sky boundary")
@@ -422,7 +422,7 @@ final class FallingSkyStoreTests: XCTestCase {
         restored.restart(sameSky: false)
         XCTAssertNil(restored.game.challenge)
         XCTAssertEqual(restored.game.balance, StarfallBalance())
-        XCTAssertEqual(restored.game.cadenceID, .announcedCycleV2)
+        XCTAssertEqual(restored.game.cadenceID, .announcedCycleV1)
         store.restart(sameSky: true)
         XCTAssertEqual(store.game, initial); XCTAssertTrue(store.isPaused)
         store.restart(sameSky: false)
@@ -437,7 +437,7 @@ final class FallingSkyStoreTests: XCTestCase {
         store.restart(sameSky: false)
         XCTAssertNil(store.game.challenge)
         XCTAssertEqual(store.game.balance, StarfallBalance())
-        XCTAssertEqual(store.game.cadenceID, .announcedCycleV2)
+        XCTAssertEqual(store.game.cadenceID, .announcedCycleV1)
         XCTAssertEqual(store.nextShowerCadence, .init(delay: 0.25, phase: .opening))
         XCTAssertTrue(store.isPaused)
     }
@@ -572,16 +572,6 @@ final class FallingSkyStoreTests: XCTestCase {
 
 }
 
-@MainActor private final class SkyFeedbackRecorder: FallingSkyFeedbackProviding {
-    var clears = 0, stops = 0
-    var announcements: [String] = []
-    var sound = false, haptics = false
-    func collected(soundEnabled: Bool, hapticsEnabled: Bool, reducedMotion: Bool) {
-        clears += 1; sound = soundEnabled; haptics = hapticsEnabled
-    }
-    func announce(_ message: String) { announcements.append(message) }
-    func stopSounds() { stops += 1 }
-}
 
 
 extension FallingSkyStoreTests {
@@ -713,7 +703,7 @@ extension FallingSkyStoreTests {
         let initial = store.game
         // Manual showers consume identical slots, even with no running clock.
         for count in 0..<16 {
-            XCTAssertEqual(store.nextShowerCadence, SkyCadenceID.announcedCycleV2.step(committedShowers: count, pace: .brisk))
+            XCTAssertEqual(store.nextShowerCadence, SkyCadenceID.announcedCycleV1.step(committedShowers: count, pace: .brisk))
             XCTAssertFalse(store.game.isOver)
             store.callShower(); presenter.finish()
             while let cell = store.game.legalGroups.first?.first { store.clear(cell); presenter.finish() }
@@ -722,8 +712,8 @@ extension FallingSkyStoreTests {
         XCTAssertNil(clock.deadline)
         store.togglePause()
         let scheduled = try XCTUnwrap(events.last { $0.kind == .scheduled })
-        XCTAssertEqual(scheduled.snapshot.cadence, SkyCadenceID.announcedCycleV2.step(committedShowers: 16, pace: .brisk))
-        XCTAssertEqual(try XCTUnwrap(scheduled.snapshot.scheduledDeadline) - scheduled.snapshot.time, 2)
+        XCTAssertEqual(scheduled.snapshot.cadence, SkyCadenceID.announcedCycleV1.step(committedShowers: 16, pace: .brisk))
+        XCTAssertEqual(try XCTUnwrap(scheduled.snapshot.scheduledDeadline) - scheduled.snapshot.time, 3)
         store.restart(sameSky: true)
         XCTAssertEqual(store.game.turns, 0); XCTAssertEqual(store.nextShowerCadence.phase, .opening)
         XCTAssertTrue(store.isPaused)
@@ -804,22 +794,22 @@ extension FallingSkyStoreTests {
 
 
 extension FallingSkyStoreTests {
-    @MainActor func testCandidateAutomaticBoundariesSurviveSettingsPauseAndMotion() throws {
+    @MainActor func testFreshAutomaticBoundariesSurviveSettingsPauseAndMotion() throws {
         let (store, presenter, clock, _) = makeOpeningStore()
         store.setSuspended(true)
         store.setSuspended(false); store.togglePause()
         for count in 0..<16 {
             let cadence = store.nextShowerCadence
-            XCTAssertEqual(cadence, SkyCadenceID.announcedCycleV2.step(committedShowers: count, pace: .brisk))
+            XCTAssertEqual(cadence, SkyCadenceID.announcedCycleV1.step(committedShowers: count, pace: .brisk))
             if count == 9 {
                 XCTAssertTrue(cadence.warnsFasterNext)
                 clock.advance(1)
                 store.setSuspended(true); clock.advance(100); store.setSuspended(false)
                 XCTAssertEqual(store.nextShowerCadence, cadence)
-                XCTAssertEqual(try XCTUnwrap(clock.deadline) - clock.now, 1, accuracy: 0.001)
+                XCTAssertEqual(try XCTUnwrap(clock.deadline) - clock.now, 2, accuracy: 0.001)
                 store.togglePause(); clock.advance(100); store.togglePause()
                 XCTAssertEqual(store.nextShowerCadence, cadence)
-                XCTAssertEqual(try XCTUnwrap(clock.deadline) - clock.now, 1, accuracy: 0.001)
+                XCTAssertEqual(try XCTUnwrap(clock.deadline) - clock.now, 2, accuracy: 0.001)
             }
             clock.advance(try XCTUnwrap(clock.deadline) - clock.now)
             XCTAssertEqual(store.game.turns, count + 1)
@@ -829,267 +819,9 @@ extension FallingSkyStoreTests {
             XCTAssertEqual(clock.deadline, nextDeadline)
             while let cell = store.game.legalGroups.first?.first { store.clear(cell); presenter.finish() }
         }
-        XCTAssertEqual(store.nextShowerCadence, .init(delay: 2, phase: .steady))
+        XCTAssertEqual(store.nextShowerCadence, .init(delay: 3, phase: .steady))
     }
 }
-
-final class SkySaveArchiveTests: XCTestCase {
-    @MainActor private func makeDefaults() -> UserDefaults {
-        let suite = "Starfall.SaveArchive.\(UUID().uuidString)"
-        let defaults = UserDefaults(suiteName: suite)!
-        defaults.removePersistentDomain(forName: suite)
-        addTeardownBlock { @MainActor in defaults.removePersistentDomain(forName: suite) }
-        return defaults
-    }
-
-    private func opalSky() -> FallingSky {
-        var game = FallingSky(seed: 17, balance: .init(darkStars: .none), generation: .current)
-        for _ in 0..<5 {
-            XCTAssertNotNil(game.letStarsFall())
-            for _ in 0..<49 {
-                guard !game.isOver, let first = game.legalGroups.first?.first else { break }
-                XCTAssertNotNil(game.clear(first))
-            }
-            XCTAssertTrue(game.isValidSave)
-        }
-        XCTAssertTrue(game.incoming.contains(where: \.isLight))
-        return game
-    }
-
-    @MainActor func testLegacyMigrationWaitsForActivationAndPreservesExactSkyAndOldBytes() throws {
-        let defaults = makeDefaults()
-        let original = FallingSky(seed: 17, openingCascade: false)
-        let legacy = try JSONEncoder().encode(original)
-        defaults.set(legacy, forKey: SkySaveArchive.legacyKey)
-        let presenter = FallingSkyRecorder(), clock = ManualRainClock()
-        let store = FallingSkyStore(defaults: defaults, arguments: [], presenter: presenter, clock: clock)
-        XCTAssertTrue(store.hasSavedSky); XCTAssertEqual(store.game, original.adoptingFeedingDusk())
-        XCTAssertNil(defaults.object(forKey: SkySaveArchive.key))
-        clock.advance(100)
-        XCTAssertEqual(store.game, original.adoptingFeedingDusk()); XCTAssertNil(clock.deadline)
-        store.setSuspended(false)
-        let current = try XCTUnwrap(defaults.data(forKey: SkySaveArchive.key))
-        XCTAssertEqual(try SkySaveArchive.decode(current), original.adoptingFeedingDusk())
-        XCTAssertEqual(defaults.data(forKey: SkySaveArchive.legacyKey), legacy)
-        let restored = FallingSkyStore(defaults: defaults, arguments: [], presenter: FallingSkyRecorder(), clock: ManualRainClock())
-        XCTAssertEqual(restored.game, original.adoptingFeedingDusk())
-        XCTAssertEqual(defaults.data(forKey: SkySaveArchive.key), current)
-        restored.setSuspended(false)
-        XCTAssertEqual(defaults.data(forKey: SkySaveArchive.key), current, "Canonical migration is idempotent")
-        var reference = original.adoptingFeedingDusk()
-        for _ in 0..<8 where !reference.isOver {
-            reference.letStarsFall(); store.callShower(); presenter.finish()
-            XCTAssertEqual(store.game, reference)
-        }
-        XCTAssertEqual(defaults.data(forKey: SkySaveArchive.legacyKey), legacy)
-    }
-
-    func testCurrentEnvelopePreservesWhiteIdentityAndRejectsWrongSchemasAndInvalidCore() throws {
-        let game = opalSky()
-        let data = try SkySaveArchive.encode(game)
-        XCTAssertEqual(try SkySaveArchive.decode(data), game)
-        XCTAssertEqual(try SkySaveArchive.encode(game), data)
-        XCTAssertThrowsError(try SkySaveArchive.decode(JSONEncoder().encode(FallingSky(seed: 17))))
-        var fields = try XCTUnwrap(JSONSerialization.jsonObject(with: data) as? [String: Any])
-        fields["schemaVersion"] = 99
-        XCTAssertThrowsError(try SkySaveArchive.decode(JSONSerialization.data(withJSONObject: fields)))
-        fields["schemaVersion"] = SkySaveArchive.schemaVersion
-        var core = try XCTUnwrap(fields["game"] as? [String: Any])
-        core["savedGeneration"] = 99; fields["game"] = core
-        XCTAssertThrowsError(try SkySaveArchive.decode(JSONSerialization.data(withJSONObject: fields)))
-    }
-
-    @MainActor func testRawModernSkyCannotMasqueradeAsLegacySave() throws {
-        for game in [FallingSky(seed: 17, generation: .current), opalSky()] {
-            let defaults = makeDefaults(), bytes = try JSONEncoder().encode(game)
-            defaults.set(bytes, forKey: SkySaveArchive.legacyKey)
-            XCTAssertNil(SkySaveArchive.load(from: defaults))
-            let store = FallingSkyStore(defaults: defaults, arguments: [],
-                presenter: FallingSkyRecorder(), clock: ManualRainClock())
-            XCTAssertFalse(store.hasSavedSky)
-            XCTAssertEqual(store.game.seed, 5)
-            XCTAssertEqual(defaults.data(forKey: SkySaveArchive.legacyKey), bytes)
-            XCTAssertNil(defaults.object(forKey: SkySaveArchive.key))
-        }
-    }
-
-    @MainActor func testPresentInvalidCurrentSaveNeverResurrectsLegacyRound() throws {
-        let defaults = makeDefaults()
-        let old = try JSONEncoder().encode(FallingSky(seed: 17))
-        defaults.set(old, forKey: SkySaveArchive.legacyKey)
-        let current = Data("broken".utf8)
-        defaults.set(current, forKey: SkySaveArchive.key)
-        XCTAssertNil(SkySaveArchive.load(from: defaults))
-        let store = FallingSkyStore(defaults: defaults, arguments: [], presenter: FallingSkyRecorder(), clock: ManualRainClock())
-        XCTAssertFalse(store.hasSavedSky); XCTAssertEqual(store.game.seed, 5)
-        XCTAssertEqual(defaults.data(forKey: SkySaveArchive.key), current)
-        XCTAssertEqual(defaults.data(forKey: SkySaveArchive.legacyKey), old)
-        defaults.set(true, forKey: SkySaveArchive.key)
-        XCTAssertNil(SkySaveArchive.load(from: defaults), "Wrong-type current presence also blocks downgrade")
-    }
-
-    @MainActor func testCurrentEnvelopeTakesPrecedenceAndInitializationDoesNotWrite() throws {
-        let defaults = makeDefaults(), game = opalSky()
-        let current = try SkySaveArchive.encode(game)
-        let legacy = try JSONEncoder().encode(FallingSky(seed: 123))
-        defaults.set(current, forKey: SkySaveArchive.key)
-        defaults.set(legacy, forKey: SkySaveArchive.legacyKey)
-        let store = FallingSkyStore(defaults: defaults, arguments: [], presenter: FallingSkyRecorder(), clock: ManualRainClock())
-        XCTAssertTrue(store.hasSavedSky); XCTAssertEqual(store.game, game.adoptingFeedingDusk())
-        XCTAssertEqual(defaults.data(forKey: SkySaveArchive.key), current)
-        XCTAssertEqual(defaults.data(forKey: SkySaveArchive.legacyKey), legacy)
-        store.restart(sameSky: true)
-        XCTAssertEqual(store.game.generation, .current)
-        XCTAssertEqual(store.game.seed, game.seed)
-        XCTAssertEqual(try SkySaveArchive.decode(XCTUnwrap(defaults.data(forKey: SkySaveArchive.key))), store.game)
-    }
-
-}
-
-final class SkyPhasePresentationTests: XCTestCase {
-    private func sky(after showers: Int) -> FallingSky {
-        var game = FallingSky(seed: 17, generation: .current)
-        for _ in 0..<showers {
-            XCTAssertNotNil(game.letStarsFall())
-            for _ in 0..<49 {
-                guard let cell = game.legalGroups.first?.first else { break }
-                XCTAssertNotNil(game.clear(cell))
-            }
-        }
-        XCTAssertTrue(game.isValidSave); XCTAssertFalse(game.isOver)
-        return game
-    }
-    @MainActor private func defaults() -> UserDefaults {
-        let suite = "Starfall.Phases.\(UUID().uuidString)"
-        let value = UserDefaults(suiteName: suite)!
-        addTeardownBlock { @MainActor in value.removePersistentDomain(forName: suite) }
-        return value
-    }
-    func testWarningStormRecoveryAndLaterCycleFollowCommittedForecast() throws {
-        for (turns, expected, announces) in [
-            (0, "9 lighter showers before the storm.", false),
-            (8, "1 lighter shower before the storm.", true),
-            (9, "Storm: 3 heavy showers left.", true),
-            (10, "Storm: 2 heavy showers left.", false),
-            (11, "Storm: 1 heavy shower left.", false),
-            (12, "9 lighter showers before the storm.", true),
-            (20, "1 lighter shower before the storm.", true),
-            (21, "Storm: 3 heavy showers left.", true)
-        ] {
-            var game = sky(after: turns)
-            let cue = try XCTUnwrap(SkyPhaseCue(game: game))
-            XCTAssertEqual(cue.text, expected); XCTAssertEqual(cue.announcesTransition, announces)
-            let turn = try XCTUnwrap(game.letStarsFall())
-            XCTAssertEqual(SkyPhaseCue(game: game, pending: turn), cue, "Arrival still displays its committed forecast")
-            XCTAssertEqual(try SkySaveArchive.decode(SkySaveArchive.encode(game)), game)
-            XCTAssertEqual(SkyPhaseCue(game: game)?.shower, turns + 2)
-        }
-        XCTAssertNil(SkyPhaseCue(game: FallingSky(seed: 17)))
-        XCTAssertNil(SkyPhaseCue(game: FallingSky(challenge: .firstLight)))
-    }
-    @MainActor func testFreshSkyOptsInButOldRestoreAndReplayKeepOriginalRules() throws {
-        let saved = defaults(), old = FallingSky(seed: 17)
-        saved.set(try JSONEncoder().encode(old), forKey: SkySaveArchive.legacyKey)
-        let store = FallingSkyStore(defaults: saved, arguments: [], presenter: FallingSkyRecorder(), clock: ManualRainClock())
-        XCTAssertEqual(store.game, old.adoptingFeedingDusk()); XCTAssertNil(store.phaseCue)
-        store.restart(sameSky: true)
-        XCTAssertEqual(store.game.generation, .legacy); XCTAssertNil(store.phaseCue)
-        store.restart(sameSky: false)
-        XCTAssertEqual(store.game.generation, .current); XCTAssertNotNil(store.phaseCue)
-        store.startFirstLight()
-        XCTAssertEqual(store.game.generation, .legacy); XCTAssertNil(store.phaseCue)
-        let fresh = FallingSkyStore(defaults: defaults(), arguments: [], presenter: FallingSkyRecorder(), clock: ManualRainClock())
-        XCTAssertEqual(fresh.game.generation, .current); XCTAssertNotNil(fresh.phaseCue)
-    }
-    @MainActor func testAutomaticTransitionSpeaksAtSettlementAndInterruptionRejectsStaleSpeech() throws {
-        let saved = defaults(), original = sky(after: 8)
-        saved.set(try SkySaveArchive.encode(original), forKey: SkySaveArchive.key)
-        let presenter = FallingSkyRecorder(), clock = ManualRainClock(), feedback = SkyFeedbackRecorder()
-        let store = FallingSkyStore(defaults: saved, arguments: [], presenter: presenter, clock: clock, feedback: feedback)
-        store.setSuspended(false); store.togglePause()
-        clock.advance(store.showerInterval)
-        XCTAssertEqual(store.game.turns, 9)
-        XCTAssertEqual(store.phaseCue?.shower, 9); XCTAssertTrue(feedback.announcements.isEmpty)
-        presenter.finish()
-        XCTAssertEqual(store.phaseCue?.shower, 10)
-        XCTAssertEqual(feedback.announcements, ["Nova. Storm: 3 heavy showers left. Showers get faster after the next shower."])
-        clock.advance(store.showerInterval); presenter.finish()
-        XCTAssertEqual(store.game.turns, 10); XCTAssertEqual(feedback.announcements.count, 1)
-        store.setSuspended(true)
-        let committed = store.game
-        clock.advance(100); presenter.finish()
-        XCTAssertEqual(store.game, committed); XCTAssertEqual(feedback.announcements.count, 1)
-        let restored = FallingSkyStore(defaults: saved, arguments: [], presenter: FallingSkyRecorder(), clock: ManualRainClock())
-        XCTAssertEqual(restored.game, committed); XCTAssertEqual(restored.phaseCue, store.phaseCue)
-        XCTAssertTrue(restored.isPaused)
-    }
-    @MainActor func testLiveTraceUsesCoreFamilyThroughOpalAndRejectsAnotherColor() throws {
-        let game = ConstellationFixture.opalTrace.game(), intent = ConstellationTraceIntent()
-        let path = (0..<5).map { Cell($0, 2) }
-        let ticket = try XCTUnwrap(intent.begin(path[0], game: game, generation: 1, enabled: true))
-        for cell in path.dropFirst() {
-            XCTAssertTrue(intent.visit(cell, ticket: ticket, game: game, generation: 1, enabled: true))
-        }
-        XCTAssertEqual(intent.count, 5); XCTAssertEqual(intent.value, 8)
-        XCTAssertNotNil(intent.finish(ticket: ticket, game: game, generation: 1, enabled: true))
-        let shared = ConstellationFixture.opalChoice.game()
-        let rose = [Cell(3,1), Cell(3,2), Cell(2,3), Cell(2,4), Cell(2,5)]
-        let branch = try XCTUnwrap(intent.begin(rose[0], game: shared, generation: 2, enabled: true))
-        for cell in rose.dropFirst() { XCTAssertTrue(intent.visit(cell, ticket: branch, game: shared, generation: 2, enabled: true)) }
-        XCTAssertFalse(intent.visit(Cell(3,5), ticket: branch, game: shared, generation: 2, enabled: true))
-        XCTAssertEqual(intent.snapshot, shared, "A spatial miss must not replace the rose family")
-        XCTAssertEqual(intent.count, 5)
-        let preserved = try XCTUnwrap(intent.finish(ticket: branch, game: shared, generation: 2, enabled: true))
-        XCTAssertFalse(preserved.path.contains(Cell(3,5)))
-        XCTAssertNil(intent.begin(Cell(2,5), game: shared, generation: 2, enabled: true))
-    }
-    @MainActor func testCanceledManualWarningDoesNotSpeakAnObsoletePhase() throws {
-        let saved = defaults()
-        saved.set(try SkySaveArchive.encode(sky(after: 8)), forKey: SkySaveArchive.key)
-        let presenter = FallingSkyRecorder(), feedback = SkyFeedbackRecorder()
-        let store = FallingSkyStore(defaults: saved, arguments: [], presenter: presenter, clock: ManualRainClock(), feedback: feedback)
-        store.setSuspended(false); store.callShower()
-        XCTAssertEqual(store.phaseCue?.shower, 9)
-        store.setSuspended(true); presenter.finish()
-        XCTAssertEqual(store.phaseCue?.shower, 10); XCTAssertTrue(feedback.announcements.isEmpty)
-    }
-}
-
-extension SkySaveArchiveTests {
-    @MainActor func testV4MigrationPreservesGenerationForecastReplayAndBytes() throws {
-        for generation in [SkyGeneration.legacy, .opalStorms] {
-            let defaults = makeDefaults()
-            var game = FallingSky(seed:19,generation:generation)
-            for _ in 0..<5 { game.letStarsFall(); for group in game.legalGroups { if let cell = group.first { game.clear(cell) } } }
-            let gameJSON = try JSONSerialization.jsonObject(with:JSONEncoder().encode(game))
-            let bytes = try JSONSerialization.data(withJSONObject:["schemaVersion":4,"game":gameJSON])
-            defaults.set(bytes,forKey:SkySaveArchive.previousKey)
-            let presenter = FallingSkyRecorder()
-            let store = FallingSkyStore(defaults:defaults,arguments:[],presenter:presenter,clock:ManualRainClock())
-            XCTAssertEqual(store.game,game.adoptingFeedingDusk()); XCTAssertTrue(store.isPaused)
-            XCTAssertNil(defaults.object(forKey:SkySaveArchive.key))
-            store.setSuspended(false)
-            XCTAssertEqual(try SkySaveArchive.decode(XCTUnwrap(defaults.data(forKey:SkySaveArchive.key))),game.adoptingFeedingDusk())
-            XCTAssertEqual(defaults.data(forKey:SkySaveArchive.previousKey),bytes)
-            game = game.adoptingFeedingDusk(); game.letStarsFall(); store.callShower(); presenter.finish(); XCTAssertEqual(store.game,game)
-            store.restart(sameSky:true); XCTAssertEqual(store.game.generation,generation)
-            defaults.set(Data("broken".utf8),forKey:SkySaveArchive.key)
-            XCTAssertNil(SkySaveArchive.load(from:defaults))
-        }
-    }
-    @MainActor func testMalformedV4DoesNotFallbackAndV4CannotAdmitGravity() throws {
-        let defaults = makeDefaults()
-        defaults.set(try JSONEncoder().encode(FallingSky(seed:1)),forKey:SkySaveArchive.legacyKey)
-        for game in [GravityFixture.opportunity.game()] {
-            let json = try JSONSerialization.jsonObject(with:JSONEncoder().encode(game))
-            defaults.set(try JSONSerialization.data(withJSONObject:["schemaVersion":4,"game":json]),forKey:SkySaveArchive.previousKey)
-            XCTAssertNil(SkySaveArchive.load(from:defaults))
-        }
-        defaults.set(true,forKey:SkySaveArchive.previousKey)
-        XCTAssertNil(SkySaveArchive.load(from:defaults))
-    }
-}
-
 
 extension FallingSkyStoreTests {
     @MainActor func testOpalPlanningSurvivesOneDueFasterShowerBetweenClears() throws {

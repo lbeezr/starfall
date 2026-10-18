@@ -6,7 +6,9 @@ Use the existing longer announced cycle as the next candidate for fresh critical
 
 The corrected model compiles production warning/timeline code, includes the swallow lead, asserts critical-mass version 1, and adds a zero-action idle policy. Active play survives and scores better than waiting in these samples. Do not add hazards to punish idling on this evidence.
 
-**Next action:** Adopt the existing longer cycle for fresh survival only; the latest-artwork native recheck confirms the sampled decision windows. Preserve saved rounds' cadence and verify replay/First Light before shipping. Human feel and the pending player pressure preference remain separate.
+**Adoption update:** [Fresh-survival integration](ADOPTION.md) records the factory, saved-cadence/replay checks and acceptance results.
+
+**Next action at this measurement source:** Adopt the existing longer cycle for fresh survival only; the latest-artwork native recheck confirms the sampled decision windows. Preserve saved rounds' cadence and verify replay/First Light before shipping. Human feel and the pending player pressure preference remain separate.
 
 ## Current-rule balance
 

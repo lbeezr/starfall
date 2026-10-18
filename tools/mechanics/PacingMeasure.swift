@@ -86,6 +86,7 @@ private struct Run: Codable {
     let seed: UInt64, cadence: String, persona: String, motion: String
     let inputModel: String
     let criticalMassRuleVersion: Int
+    let savedCadence: String
     var activeSeconds = 0.0, presentationSeconds = 0.0, noOpportunitySeconds = 0.0
     var blockedOpportunitySeconds = 0.0
     var startsDuringPresentation = 0, maximumPendingPresentations = 0
@@ -110,9 +111,9 @@ private struct Run: Codable {
         let defaults = UserDefaults(suiteName: suite)!
         defer { defaults.removePersistentDomain(forName: suite) }
         let store = FallingSkyStore(defaults: defaults, arguments: ["--starfalls-reset", "--starfalls-seed=\(seed)"], presenter: display, clock: clock)
-        precondition(store.game == FallingSky(seed: seed, generation: .current, criticalMass: true),
+        precondition(store.game == FallingSky.freshSurvival(seed: seed),
                      "Calibration must explicitly identify the current fresh survival rules")
-        var result = Run(seed: seed, cadence: cadence.rawValue, persona: persona, motion: quiet ? "quiet-model" : "full-motion-model", inputModel: inputModel, criticalMassRuleVersion: CriticalMassRule.version)
+        var result = Run(seed: seed, cadence: cadence.rawValue, persona: persona, motion: quiet ? "quiet-model" : "full-motion-model", inputModel: inputModel, criticalMassRuleVersion: CriticalMassRule.version, savedCadence: store.game.cadenceID.rawValue)
         func mayDecide() -> Bool { inputModel == "settled" ? store.canClear : store.canReceiveInput }
         func available(_ choice: Choice) -> Bool {
             guard mayDecide() else { return false }

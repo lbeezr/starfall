@@ -1,5 +1,7 @@
 # Adopt the announced Starfall rhythm
 
+**Current critical-mass refinement (October 18):** Fresh survival now uses the existing longer V1 cycle through `FallingSky.freshSurvival`; saved V2 and other rounds keep their own cadence. [Adoption evidence](../evidence/calibration-critical-mass-2026-10-18/ADOPTION.md) records native input windows and replay coverage. The October 17 V2 decision below remains source-bound history.
+
 **Status:** Accepted by user; production verification passed; merge/device delivery pending · **Owner:** current implementer · **Updated:** October 17, 2026
 
 Use the previously isolated B cadence in ordinary Debug and Release play. The user explicitly selected B, declined another baseline comparison and requested PR → main → an in-place phone update. This decision authorizes adoption, not a claim of superior enjoyment.

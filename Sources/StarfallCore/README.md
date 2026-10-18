@@ -15,7 +15,7 @@ Constellation walks add explicit five-distinct-star validation and selected-set 
 `replay()` resets play while preserving cadence, balance and historical generation markers.
 Missing cadence markers use the saved opening contract. See the [consumer contract](../../docs/design/PACING_CORE_CONTRACT.md).
 
-New skies use production Core `announcedCycleV2` (six 2-second, three 1.7-second and three 2.5-second intervals). The historical timing fixture is now a thin adapter to Core, not a second algorithm; old timing versions and First Light remain covered.
+Fresh survival uses Core `freshSurvival` and the existing `announcedCycleV1` rhythm (six 3-second, three 2.5-second and three 3.5-second intervals), adopted after [native implosion-window checks](../../docs/evidence/calibration-critical-mass-2026-10-18/ADOPTION.md). The historical timing fixture is now a thin adapter to Core, not a second algorithm; old timing versions and First Light remain covered.
 
 Gravity integration uses the normal target and v5 committed archive. Core owns occupied orbit supports and saved `gravityOrbits` supply; retained generations remain unchanged. `GravityStoreTests` covers committed saves and interrupted phases; Debug reset-only histories support native verification. See [the integration plan](../../docs/design/GRAVITY_MECHANICS_PLAN.md).
 
