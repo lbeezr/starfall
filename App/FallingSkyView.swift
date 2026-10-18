@@ -66,7 +66,7 @@ import StarfallCore
                     if largeText {
                         ScrollView {
                             VStack(spacing: StarfallTheme.Spacing.small) {
-                                playfield(insets: safeViewport.safeAreaInsets, compact: safeViewport.size.height < 750, island: false)
+                                playfield(insets: safeViewport.safeAreaInsets, compact: safeViewport.size.height < 750, allowsIsland: false)
                                     .frame(height: safeViewport.size.height)
                                 if !showingCeremony {
                                     if !settings, let cue = store.phaseCue {
@@ -82,7 +82,7 @@ import StarfallCore
                         .ignoresSafeArea()
                     } else {
                         playfield(insets: safeViewport.safeAreaInsets, compact: safeViewport.size.height < 750,
-                                  island: usesIslandTimer(size: safeViewport.size, topInset: safeViewport.safeAreaInsets.top))
+                                  allowsIsland: true)
                             .ignoresSafeArea()
                     }
                 }
@@ -143,8 +143,9 @@ import StarfallCore
 
     /// The terrace owns its complete canvas. At accessibility sizes the guide is
     /// a sibling below it, so text growth cannot cover projected stars or props.
-    private func playfield(insets: EdgeInsets, compact: Bool, island: Bool) -> some View {
+    private func playfield(insets: EdgeInsets, compact: Bool, allowsIsland: Bool) -> some View {
         GeometryReader { viewport in
+            let island = allowsIsland && usesIslandTimer(size: viewport.size, topInset: insets.top)
             let front = ObservatoryGeometry(size: viewport.size).frame(Cell(0, 0)).maxY
             let footerHeight = max(0, viewport.size.height - front - insets.bottom
                 - 2 * StarfallTheme.Spacing.small)

@@ -72,11 +72,15 @@ enum SkyShowerPlacement {
     }()
 
     static func usesIsland(hardware: String, size: CGSize, topInset: CGFloat, accessible: Bool) -> Bool {
-        // Checked portrait profiles; keep unknown hardware and accessible layouts safe.
-        let widths: [String: CGFloat] = ["iPhone18,3": 402, "iPhone17,2": 440]
-        guard let width = widths[hardware] else { return false }
-        return !accessible && abs(size.width-width) < 1
-            && size.height > size.width && abs(topInset-62) < 1
+        // These are authored camera-layout profiles, not a generic hardware capability test.
+        let canvas: CGSize
+        switch hardware {
+        case "iPhone18,3": canvas = CGSize(width:402,height:874)
+        case "iPhone17,2": canvas = CGSize(width:440,height:956)
+        default: return false
+        }
+        return !accessible && abs(size.width-canvas.width) < 1
+            && abs(size.height-canvas.height) < 1 && abs(topInset-62) < 1
     }
 }
 

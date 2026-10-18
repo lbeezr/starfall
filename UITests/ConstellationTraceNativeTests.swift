@@ -258,4 +258,38 @@ extension ConstellationTraceNativeTests {
         }
         score(22, app)
     }
+    @MainActor func testInputRecoversAfterMultitouchBackgroundAndSupportedRotation() {
+        let app = launch(); defer { app.terminate(); XCUIDevice.shared.orientation = .portrait }
+        app.buttons["experiment.cell.2.2"].pinch(withScale:0.8,velocity:-1)
+        score(0,app)
+        drag(app,from:(0,0),to:(3,3)); score(0,app)
+        XCUIDevice.shared.press(.home); app.activate()
+        XCTAssertTrue(app.buttons["experiment.cell.0.0"].waitForExistence(timeout:10)); score(0,app)
+        // Phones intentionally support portrait only; iPad supports live canvas resizing.
+        if app.frame.width > 600 {
+            XCUIDevice.shared.orientation = .landscapeLeft
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate:NSPredicate { _,_ in
+                app.frame.width > app.frame.height
+            },object:nil).wait(timeout:8))
+        }
+        drag(app,from:(0,0),to:(4,4)); score(5,app)
+        app.buttons["experiment.settings"].tap()
+        let done = app.buttons["experiment.done"]
+        XCTAssertTrue(done.waitForExistence(timeout:5)); XCUIDevice.shared.press(.home); app.activate()
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate:NSPredicate { _,_ in done.isHittable },object:nil).wait(timeout:8))
+        done.tap(); score(5,app)
+        for identifier in ["experiment.settings", "experiment.cell.0.0", "experiment.cell.6.6", "experiment.pause", "experiment.next"] {
+            let control = app.buttons[identifier]
+            XCTAssertTrue(control.isHittable,identifier)
+            XCTAssertGreaterThanOrEqual(control.frame.minX,app.frame.minX,identifier)
+            XCTAssertLessThanOrEqual(control.frame.maxX,app.frame.maxX,identifier)
+            XCTAssertGreaterThanOrEqual(control.frame.minY,app.frame.minY,identifier)
+            XCTAssertLessThanOrEqual(control.frame.maxY,app.frame.maxY,identifier)
+        }
+        let tree = XCTAttachment(string:app.debugDescription); tree.name = "resized-native-control-frames"
+        tree.lifetime = .keepAlways; add(tree)
+        // Full device capture avoids app-window cropping during interface rotation.
+        let capture = XCTAttachment(screenshot:XCUIScreen.main.screenshot()); capture.name = "trace-after-interruption-and-resize"
+        capture.lifetime = .keepAlways; add(capture)
+    }
 }

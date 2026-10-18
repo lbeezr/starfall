@@ -159,3 +159,7 @@ The selected [overlapping sky flow](design/SKY_FLOW.md) adds Welcome/Resume, exp
 The user selected the [curved shower forecast](evidence/shower-forecast-adoption-2026-10-17/README.md). It is default on calibrated iPhone 17 portrait; other hardware and accessible layouts retain a complete straight header forecast. Next verify physical fit/system-island expansion and forecast recognition before adding more camera profiles. The lower arc remains unused.
 
 **Current pacing decision (October 17):** The user selected the announced cycle for normal new skies and requested PR → main → existing-phone delivery. [Adoption and acceptance](design/PACING_ADOPTION.md) supersedes the comparative session requirement; enjoyment and device feel remain unmeasured until observed.
+
+## Reliability integration
+
+The [scoped reliability design](design/RELIABILITY_POLISH.md) closes terminal touch ownership, package build identity and local-canvas camera placement in regular Starfall. Retain physical expanded-Island, curved/multitouch, haptic/recognition and actual VoiceOver acceptance as explicit next-device/RC work; no additional lab or speculative hint/performance framework is required.

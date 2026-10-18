@@ -34,7 +34,7 @@ enum StarfallTheme {
         static let softContactShadow = contactShadow.withAlphaComponent(0.23)
     }
 
-    /// Authored iPhone 17 portrait profile, selected by SkyShowerPlacement.
+    /// Authored camera contour for checked portrait profiles, selected by SkyShowerPlacement.
     enum IslandTimer {
         static let width: CGFloat = 148
         static let height: CGFloat = 50
