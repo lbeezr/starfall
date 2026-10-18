@@ -42,3 +42,15 @@ Source: main `8d3e81e` plus `scripts/rc-platforms.py` and its execution tests. T
 Examined boot, bootstatus, nonzero/timeout tests, summary parsing/counts, retention, shutdown and top-level temporary-directory ownership. Cleanup failure after otherwise successful checks is still a failure. Already-booted simulators are never shut down. Tests execute these paths with mocked subprocess boundaries and real temporary files; they do not claim native platform acceptance.
 
 `python3 scripts/test_rc_platforms.py`: 11 passed. `test_native_test_plan.py`, hygiene and diff checks passed. Actual RC preflight still blocks because no iOS 17 runtime is installed; there is no fallback or download. No app source or deployment-service change; simulator app rebuild is inapplicable to this tooling-only batch.
+
+## 5. Rule-aware Help
+
+Source: main `20af64d` plus the six source/test paths in snapshot `361f431fc46a` (`sha256(git diff -- <paths>)`, in App menu/view/ceremony/preferences and hosted/native flow tests). `SkyHelpContext` snapshots current Core rules or the pending entry choice. Welcome/retained replay retains its actual Dusk/challenge rules; New sky uses the Core fresh-survival factory. Help has no implicit Dusk/critical-mass defaults. First Light omits opening cascades, Opal/storm and arrangement sections; its objective still names the unavailable mechanics. Entry exposes the same Settings & help action without committing a round.
+
+Examined Welcome, initial/fresh/replay/challenge Entry and in-game Help call sites. Hosted selection tests cover current fresh, retained Dusk and First Light against each pending choice and prove reading leaves flow unchanged. `swift test`: 164 passed. Hosted SkyFlowState: 17 passed; native largest-text pressure and complete Help read-through: 2 passed; native pending First Light Help/cancel and shared Welcome preferences/paused retained summary: 2 passed in the final run. The latter exposed a stale case-sensitive `Paused` assertion from earlier copy; it now checks the complete shipped phrase `Automatic showers paused`, retaining the pause-state requirement. Debug and Release simulator compilation passed; hygiene/diff passed. Existing files keep target membership.
+
+| Entry after Help | First Light Help |
+| --- | --- |
+| <img src="dev-20af64d-wip-361f431fc46a-first-light-entry-17e-default.jpg" width="220" alt="First Light Entry with Begin, Back to Observatory and Settings and help inside the dialogue panel"> | <img src="dev-20af64d-wip-361f431fc46a-first-light-help-17e-default.jpg" width="220" alt="First Light Help showing shower, pause and fixed 18-starlight objective text with Done reachable"> |
+
+Inspected native captures, iPhone 17e / iOS 27.0, default text, normal app route with isolated reset defaults. Text and all Entry actions fit; Done remains available in Help. Full largest-text read-through is independently tested above. Tablet Welcome hit-result diagnosis remains open; these phone samples do not close it. Actual VoiceOver and physical-device acceptance remain RC work. Raw captures/result bundles stay in `/tmp/starfall-help-attachments` and XcodeBuildMCP.

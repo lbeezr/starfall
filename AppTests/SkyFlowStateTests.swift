@@ -271,3 +271,28 @@ final class SkyFlowStateTests: XCTestCase {
         XCTAssertEqual(result.reason, "First Light complete!")
     }
 }
+
+extension SkyFlowStateTests {
+    func testHelpUsesCurrentOrPendingRulesWithoutCommittingEntry() {
+        let retained = FallingSky(seed: 28).adoptingFeedingDusk()
+        let fresh = FallingSky.freshSurvival(seed: 28)
+        let challenge = FallingSky(challenge: .firstLight)
+        for game in [retained, fresh, challenge] {
+            for entry in [SkyEntryRequest?.none, .initial, .replay] {
+                XCTAssertEqual(SkyHelpContext.selected(game: game, entry: entry), SkyHelpContext(game: game))
+            }
+            let new = SkyHelpContext.selected(game: game, entry: .fresh)
+            XCTAssertTrue(new.criticalMass); XCTAssertFalse(new.challenge); XCTAssertTrue(new.opalStorms)
+            let firstLight = SkyHelpContext.selected(game: game, entry: .firstLight)
+            XCTAssertTrue(firstLight.challenge); XCTAssertFalse(firstLight.criticalMass)
+            XCTAssertFalse(firstLight.openingCascade); XCTAssertFalse(firstLight.opalStorms)
+        }
+        let dusk = SkyHelpContext(game: retained)
+        XCTAssertFalse(dusk.criticalMass); XCTAssertFalse(dusk.challenge); XCTAssertEqual(dusk.duskRule, .patientFeeding)
+        var flow = SkyFlowState(arguments: [])
+        _ = flow.handle(.firstLight, hasSavedSky: true)
+        let staged = flow
+        _ = SkyHelpContext.selected(game: retained, entry: flow.entry)
+        XCTAssertEqual(flow, staged)
+    }
+}

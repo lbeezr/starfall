@@ -9,7 +9,7 @@ struct FallingSkyMenu: View {
     let over: Bool
     let challenge: Bool
     let criticalMass: Bool
-    let duskRule: DuskRule
+    let helpContext: SkyHelpContext
     let balance: StarfallBalance
     @Binding var sound: Bool
     @Binding var haptics: Bool
@@ -53,7 +53,7 @@ struct FallingSkyMenu: View {
                             .accessibilityHint(SkyCopy.text(.menuFirstLightHint))
                             .accessibilityIdentifier("experiment.challenge")
                     }
-                    NavigationLink { SkyHowToPlay(duskRule: duskRule, criticalMass: criticalMass).toolbar { dismissal } } label: { Label(SkyCopy.text(.menuHelp), systemImage: "questionmark.circle") }
+                    NavigationLink { SkyHowToPlay(context: helpContext).toolbar { dismissal } } label: { Label(SkyCopy.text(.menuHelp), systemImage: "questionmark.circle") }
                         .accessibilityIdentifier("experiment.help")
                 } header: { Text(SkyCopy.text(.menuExplore)) } footer: {
                     Text(Bundle.main.object(forInfoDictionaryKey: "StarfallBuildID") as? String ?? "dev.local")

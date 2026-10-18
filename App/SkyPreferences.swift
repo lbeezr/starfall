@@ -1,6 +1,29 @@
 import SwiftUI
 import StarfallCore
 
+/// A value snapshot of selected Core rules. No store, save or clock side effects.
+struct SkyHelpContext: Equatable {
+    let criticalMass: Bool
+    let duskRule: DuskRule
+    let challenge: Bool
+    let openingCascade: Bool
+    let opalStorms: Bool
+
+    init(game: FallingSky) {
+        criticalMass = game.hasCriticalMass; duskRule = game.duskRule
+        challenge = game.challenge != nil; openingCascade = game.hasOpeningCascade
+        opalStorms = game.generation != .legacy
+    }
+
+    static func selected(game: FallingSky, entry: SkyEntryRequest?) -> Self {
+        switch entry {
+        case .fresh: .init(game: .freshSurvival(seed: game.seed, balance: game.balance))
+        case .firstLight: .init(game: FallingSky(challenge: .firstLight))
+        case .initial, .replay, nil: .init(game: game)
+        }
+    }
+}
+
 /// Both menu surfaces bind the existing preference owners; neither creates a store.
 struct SkyFeelSection: View {
     @Binding var sound: Bool
@@ -19,13 +42,14 @@ struct SkyWelcomePreferences: View {
     @Binding var sound: Bool
     @Binding var haptics: Bool
     @Binding var calm: Bool
+    let context: SkyHelpContext
     let done: () -> Void
     var body: some View {
         NavigationStack {
             Form {
                 SkyFeelSection(sound: $sound, haptics: $haptics, calm: $calm)
                 Section {
-                    NavigationLink { SkyHowToPlay().toolbar { SkyMenuDone(done: done) } }
+                    NavigationLink { SkyHowToPlay(context: context).toolbar { SkyMenuDone(done: done) } }
                         label: { Label(SkyCopy.text(.menuHelp), systemImage: "questionmark.circle") }
                         .accessibilityIdentifier("experiment.help")
                 }
@@ -48,15 +72,14 @@ struct SkyMenuDone: ToolbarContent {
 }
 
 struct SkyHowToPlay: View {
-    var duskRule: DuskRule = .patientFeeding
-    var criticalMass = true
+    let context: SkyHelpContext
     var body: some View {
         List {
             Section(SkyCopy.text(.helpTapTitle)) {
                 Text(SkyCopy.text(.helpTap))
                 Text(SkyCopy.text(.helpIdentity))
             }
-            if criticalMass {
+            if context.criticalMass {
                 Section(SkyCopy.text(.massTitle)) {
                     Text(SkyCopy.text(.massHelp))
                     Text(SkyCopy.text(.massHelpCollapse))
@@ -69,23 +92,25 @@ struct SkyHowToPlay: View {
                 Text(SkyCopy.text(.helpAccessibleTrace))
             }
             Section(SkyCopy.text(.helpShowerTitle)) {
-                Text(SkyCopy.text(.helpOpening))
+                if context.openingCascade { Text(SkyCopy.text(.helpOpening)) }
                 Text(SkyCopy.text(.helpForecast))
                 Text(SkyCopy.text(.helpGrowth))
             }
-            Section(SkyCopy.text(.helpOpalTitle)) {
-                Text(SkyCopy.text(.helpOpal))
+            if context.opalStorms {
+                Section(SkyCopy.text(.helpOpalTitle)) {
+                    Text(SkyCopy.text(.helpOpal))
+                }
+                Section(SkyCopy.text(.helpStormTitle)) {
+                    Text(SkyCopy.text(.helpStorm))
+                    Text(SkyCopy.text(.helpRetained))
+                }
             }
-            Section(SkyCopy.text(.helpStormTitle)) {
-                Text(SkyCopy.text(.helpStorm))
-                Text(SkyCopy.text(.helpRetained))
-            }
-            if !criticalMass {
+            if !context.criticalMass && !context.challenge {
                 Section(SkyCopy.text(.helpDuskTitle)) {
-                    if duskRule == .legacy {
+                    if context.duskRule == .legacy {
                         Text(SkyCopy.text(.helpDarkLegacy))
                     } else {
-                        Text(SkyCopy.text(.helpDusk, values: ["feeds": String(duskRule.feedingShowers)]))
+                        Text(SkyCopy.text(.helpDusk, values: ["feeds": String(context.duskRule.feedingShowers)]))
                         Text(SkyCopy.text(.helpDuskClear))
                     }
                 }
@@ -93,10 +118,12 @@ struct SkyHowToPlay: View {
             Section(SkyCopy.text(.helpPauseTitle)) {
                 Text(SkyCopy.text(.helpPause))
             }
-            Section(SkyCopy.text(.helpArrangeTitle)) {
-                Text(SkyCopy.text(.helpSwap))
-                Text(SkyCopy.text(.helpRecipe))
-                Text(SkyCopy.text(.helpRelay))
+            if !context.challenge {
+                Section(SkyCopy.text(.helpArrangeTitle)) {
+                    Text(SkyCopy.text(.helpSwap))
+                    Text(SkyCopy.text(.helpRecipe))
+                    Text(SkyCopy.text(.helpRelay))
+                }
             }
             Section(SkyCopy.text(.helpChallengeTitle)) {
                 Text(SkyCopy.text(.helpChallenge))
