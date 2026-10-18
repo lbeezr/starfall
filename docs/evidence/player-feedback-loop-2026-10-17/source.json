@@ -1,0 +1,17 @@
+{
+  "base": "d45ed29675f6e52751d0a09e98b46617f95ff209",
+  "checks": {
+    "browserInteraction": "unverified; file URL navigation denied by browser security policy",
+    "humanSessions": 0,
+    "newFallingSkyTests": 11,
+    "observationTests": 26
+  },
+  "inputSHA256": {
+    "docs/design/FALLING_SKY_FEEDBACK.md": "dcf52f52df691c25a6cb24754dafd3208c2711070b6d5f9e39bcb09c115d5a4f",
+    "tools/playtest-results/FALLING_SKY_SESSION.md": "02f110cf7e38fd5ee8f1b3981ac27ec4057e20585ffecd1a6d68198d28a67e81",
+    "tools/playtest-results/falling-sky-session.html": "36723b12a9bf3c5f5b45a11bce1811cb0fb7201f58bd20437571426bcd17db80",
+    "tools/playtest-results/falling_sky.py": "954f23fc971b3d22495219bcc4b77a6f3633085cd9bdf8c01131e97748bfe00b",
+    "tools/playtest-results/test_falling_sky.py": "d1a6f576e918b8f2dbaa0896bc0b01b7e302e0b71c42605850e3fdc2da6fcccd"
+  },
+  "scope": "Developer observation tooling and docs only; no runtime source changes"
+}

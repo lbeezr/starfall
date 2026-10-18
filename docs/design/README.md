@@ -36,3 +36,5 @@ The [branding studies](branding/README.md) retain the editable wordmarks, sanctu
 [Reliability polish](RELIABILITY_POLISH.md) scopes touch ownership, build identity and layout/native acceptance in normal Starfall.
 
 - [Character chat and complete trails](CHARACTER_CHAT_AND_TRAIL.md): reusable bottom dialogue, six portraits and authored scripts.
+
+[Current-game feedback](FALLING_SKY_FEEDBACK.md) owns the bounded observation-tooling task; the moderator worksheet links neutral prompts, capture and the next gameplay decision.
