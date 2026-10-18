@@ -1,10 +1,11 @@
 import XCTest
 
 final class FallingSkyInteractionTests: XCTestCase {
-    @MainActor private func launch() -> XCUIApplication {
+    @MainActor private func launch(calmEffects: Bool? = nil) -> XCUIApplication {
         continueAfterFailure = false
         let app = XCUIApplication()
         app.launchArguments = ["--starfalls-reset", "--starfalls-seed=5"]
+        if let calmEffects { app.launchArguments += ["-calmEffects", calmEffects ? "YES" : "NO"] }
         app.launch()
         XCTAssertTrue(app.buttons["experiment.pause"].waitForExistence(timeout: 10))
         return app
@@ -305,7 +306,7 @@ final class FallingSkyInteractionTests: XCTestCase {
             }
             restoringPreferences.terminate()
         }
-        let app = launch(); defer { app.terminate() }
+        let app = launch(calmEffects: false); defer { app.terminate() }
         let next = app.buttons["experiment.next"]
         reveal(next, in: app); next.tap()
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: next).wait(timeout: 5))
