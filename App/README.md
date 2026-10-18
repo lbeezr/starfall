@@ -74,3 +74,5 @@ Drawing starts on the full native star target and follows six-point movement. Th
 `SkyInputPolicy` gives contact, clear, trace and technique admission the same explicit global/column reasons. Core still decides action legality. Automatic pause permits explicit play; suspension and an already-due shower do not.
 
 Store interruption cleanup has two small boundaries: `interruptPlay` freezes the deadline, then stops feedback and settles; `settleInterruptedPresentation` preserves the deadline for layout/motion changes. Balance freezes before changing cadence and settles afterward. Existing input generations, celebration cancellation and presentation epochs remain authoritative.
+
+`GameFeedback` owns trace selection haptics and all explicit accessibility announcements. The view passes count/value/readiness plus generation and hold values through the store; cancelled/replaced ownership cannot emit stale speech. Store preferences and device Reduce Motion/VoiceOver policy gate selection haptics, using the existing bounded generators.

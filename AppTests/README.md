@@ -57,3 +57,5 @@ Logical interaction regressions in `TraceInputPolishTests` cover trace-to-swap h
 `ResponsiveInputTests` verifies the shared admission matrix, paused explicit actions, independent ready columns, deferred showers and rejection without replay.
 
 Teardown regressions cover all eight replacement/layout/motion/balance/suspension boundaries with old hold/rain callbacks and repeated calls. The full-motion exchange test waits for its SpriteKit host’s first update before starting timed action sampling; motion/position assertions remain unchanged.
+
+`ResponsiveInputTests` also records trace feedback through injection: exact selection wording, expired/replaced holds, restart/suspension, haptic preference/quiet policy and unchanged committed save bytes. These checks do not replace actual VoiceOver or physical haptic acceptance.

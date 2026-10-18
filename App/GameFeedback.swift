@@ -11,6 +11,7 @@ import StarfallCore
 @MainActor final class GameFeedback: GameFeedbackProviding {
     private let impact = UIImpactFeedbackGenerator(style: .soft)
     private let notification = UINotificationFeedbackGenerator()
+    private let traceReady = UIImpactFeedbackGenerator(style: .rigid)
     private let sound: any ClearSoundPlaying
 
     init(sound: (any ClearSoundPlaying)? = nil) {
@@ -40,11 +41,13 @@ import StarfallCore
 @MainActor protocol FallingSkyFeedbackProviding: AnyObject {
     func collected(soundEnabled: Bool, hapticsEnabled: Bool, reducedMotion: Bool)
     func collected(_ level: StarlightCelebration.Level, soundEnabled: Bool, hapticsEnabled: Bool, reducedMotion: Bool)
+    func traceStep(count: Int, enabled: Bool)
     func announce(_ message: String)
     func stopSounds()
 }
 
 extension FallingSkyFeedbackProviding {
+    func traceStep(count: Int, enabled: Bool) {}
     // Existing injected feedback clients preserve their preference/recording contract.
     func collected(_ level: StarlightCelebration.Level, soundEnabled: Bool, hapticsEnabled: Bool, reducedMotion: Bool) {
         collected(soundEnabled: soundEnabled, hapticsEnabled: hapticsEnabled, reducedMotion: reducedMotion)
@@ -63,4 +66,12 @@ extension GameFeedback: FallingSkyFeedbackProviding {
             else { notification.notificationOccurred(.success) }
         }
     }
+
+    func traceStep(count: Int, enabled: Bool) {
+        guard enabled, !UIAccessibility.isReduceMotionEnabled, !UIAccessibility.isVoiceOverRunning else { return }
+        if count == 5 { traceReady.impactOccurred(intensity: 0.8) }
+        else { impact.impactOccurred(intensity: min(0.85, 0.2 + Double(count) * 0.1)) }
+        impact.prepare(); traceReady.prepare()
+    }
+
 }
