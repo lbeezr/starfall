@@ -3,7 +3,12 @@ import UIKit
 
 @MainActor protocol ClearSoundPlaying: AnyObject {
     func play()
+    func play(_ level: StarlightCelebration.Level)
     func stop()
+}
+
+extension ClearSoundPlaying {
+    func play(_ level: StarlightCelebration.Level) { play() }
 }
 
 /// A new contact replaces the previous tail. No audio callback controls gameplay.
@@ -58,12 +63,19 @@ import UIKit
         if output.start(take: nextTake) { nextTake = (nextTake + 1) % 4 }
     }
 
+    func play(_ level: StarlightCelebration.Level) {
+        guard level != .ordinary else { play(); return }
+        guard !interrupted, isActive() else { return }
+        _ = output.start(take: level == .brilliant ? 4 : 5)
+    }
+
     func stop() { output.stop() }
 }
 
 /// Four local sources, one audible voice. Loading and session activation are lazy.
 @MainActor final class BundledTuckOutput: TuckAudioOutput {
     static let names = (1...4).map { String(format: "sf_quiet_tuck_%02d", $0) }
+    static let celebrationNames = ["sf_brilliant", "sf_constellation"]
     private let worker: TuckAudioWorker
     private let hasAllFiles: Bool
 
@@ -72,13 +84,15 @@ import UIKit
          didStart: (@Sendable (Int) -> Void)? = nil) {
         let urls = Self.names.compactMap {
             bundle.url(forResource: $0, withExtension: "mp3", subdirectory: "Audio")
+        } + Self.celebrationNames.compactMap {
+            bundle.url(forResource: $0, withExtension: "wav", subdirectory: "Audio")
         }
-        hasAllFiles = urls.count == Self.names.count
+        hasAllFiles = urls.count == Self.names.count + Self.celebrationNames.count
         worker = TuckAudioWorker(urls: urls, queue: queue, didStart: didStart)
     }
 
     func start(take: Int) -> Bool {
-        guard hasAllFiles, Self.names.indices.contains(take) else { return false }
+        guard hasAllFiles, (0..<(Self.names.count + Self.celebrationNames.count)).contains(take) else { return false }
         worker.request(take: take)
         return true
     }

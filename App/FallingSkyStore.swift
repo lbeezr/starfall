@@ -75,6 +75,9 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         dialogue.next()
         if dialogue.visible, let line = dialogue.line { feedback.announce(line.spokenText) }
     }
+    private(set) var celebration: StarlightCelebration?
+    @ObservationIgnored private var celebrationTask: Task<Void, Never>?
+    @ObservationIgnored private var celebrationSequence: UInt64 = 0
     private(set) var techniqueResult = ""
     private var techniqueRelay = SkyTechniqueRelay()
     #if DEBUG
@@ -292,7 +295,10 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         refreshCadence()
         remaining = showerInterval
         scene.decorativeMotionActive = !suspended
-        scene.onLayout = { [weak self] in self?.settlePresentation() }
+        scene.onLayout = { [weak self] in
+            self?.feedback.stopSounds()
+            self?.settlePresentation()
+        }
         scene.onReadinessChanged = { [weak self] ready in
             guard let self else { return }
             self.sceneReady = ready
@@ -345,8 +351,6 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         observeTiming(.tapAccepted)
         #endif
         if game.isOver { freezeClock() }
-        feedback.collected(soundEnabled: soundEnabled, hapticsEnabled: hapticsEnabled,
-                           reducedMotion: presenter.reduceMotion)
         present(turn, from: old)
     }
 
@@ -363,9 +367,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         observeTiming(.traceAccepted)
         #endif
         if game.isOver { freezeClock() }
-        feedback.collected(soundEnabled: soundEnabled, hapticsEnabled: hapticsEnabled,
-                           reducedMotion: presenter.reduceMotion)
-        present(turn, from: old)
+        present(turn, from: old, path: path)
     }
 
     /// New actions share current column ownership, hold tickets and committed presentation.
@@ -380,12 +382,32 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         }
         guard let turn, turn.changingColumns.isDisjoint(with:changingColumns) else { return false }
         game = next
-        if turn.collected > 0 {
-            feedback.collected(soundEnabled:soundEnabled,hapticsEnabled:hapticsEnabled,reducedMotion:presenter.reduceMotion)
-        }
-        present(turn,from:old)
+        if case .recipe(let recipe) = action { present(turn, from: old, recipe: recipe) }
+        else { present(turn, from: old) }
         return true
     }
+
+    private func celebrate(_ turn: FallingSkyTurn, from old: FallingSky, path: [Cell], recipe: StarRecipe?) {
+        guard turn.collected > 0 else { cancelCelebration(); return }
+        cancelCelebration()
+        celebrationSequence &+= 1
+        guard let receipt = StarlightCelebration(id: celebrationSequence, turn: turn, from: old,
+            total: game.score, path: path, recipe: recipe, relayDepth: techniqueRelay.depth) else { return }
+        celebration = receipt
+        feedback.collected(receipt.level, soundEnabled: soundEnabled, hapticsEnabled: hapticsEnabled,
+                           reducedMotion: presenter.reduceMotion)
+        celebrationTask = Task { [weak self] in
+            do { try await Task.sleep(for: .seconds(StarlightCelebration.duration)) } catch { return }
+            guard let self, self.celebration?.id == receipt.id else { return }
+            self.celebration = nil; self.celebrationTask = nil
+        }
+    }
+
+    func cancelCelebration() {
+        celebrationTask?.cancel(); celebrationTask = nil; celebration = nil
+    }
+
+    deinit { celebrationTask?.cancel() }
 
     /// Explicit input works while paused too, without starting an automatic clock.
     func callShower() {
@@ -474,7 +496,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         present(turn, from: old, announcesResult: announcesResult, previousCadence: previousCadence)
     }
 
-    private func present(_ turn: FallingSkyTurn, from old: FallingSky, announcesResult: Bool = true, previousCadence: SkyCadenceStep? = nil) {
+    private func present(_ turn: FallingSkyTurn, from old: FallingSky, announcesResult: Bool = true, previousCadence: SkyCadenceStep? = nil, path: [Cell] = [], recipe: StarRecipe? = nil) {
         invalidateInput(turn.arrivals.isEmpty && turn.blockedColumn == nil ? "clear" : (announcesResult ? "manualShower" : "automaticShower"))
         if turn.exchange != nil {
             techniqueRelay.reset(); techniqueResult = "Star moved. Arrange your next clear."
@@ -482,6 +504,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
             techniqueRelay.record(before:old,after:game,cleared:turn.cleared)
             techniqueResult = techniqueRelay.depth > 1 ? "\(techniqueRelay.depth)-clear relay" : "Clear a support to set up your next recipe."
         }
+        celebrate(turn, from: old, path: path, recipe: recipe)
         let epoch = generation
         presentationSequence &+= 1
         let ticket = presentationSequence
@@ -678,6 +701,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
 
     func setReducedMotion(_ value: Bool) {
         guard presenter.reduceMotion != value else { return }
+        feedback.stopSounds()
         presenter.reduceMotion = value
         settlePresentation(reason: "motion")
     }
@@ -688,6 +712,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         #endif
         invalidateInput(reason)
         generation &+= 1
+        cancelCelebration()
         presentations.removeAll()
         presenter.render(game)
         deliverRainIfReady()

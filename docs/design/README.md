@@ -2,6 +2,8 @@
 
 Behavior proposals, production contracts and research supporting decisions.
 
+[Starlight celebrations](STARLIGHT_CELEBRATIONS.md) investigates more prominent accumulation, dramatic clear/constellation feedback, and the separate design questions behind combos and recipes. User-approved mock and normal-target integration using existing constellation, recipe, relay and Dusk rules.
+
 ## Start here
 
 [Calibration](CALIBRATION.md) holds the mechanic set steady and sequences measured balance, native play and bounded refinement.

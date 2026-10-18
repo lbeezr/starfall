@@ -196,7 +196,7 @@ import StarfallCore
                 node.run(.sequence([.scale(to: 0.91, duration: StarfallMotion.gatherDuration), .group([.fadeOut(withDuration: 0.12), .scale(to: 1.2, duration: 0.12), .rotate(byAngle: 0.18, duration: 0.12)]), .removeFromParent()]))
             }
         }
-        if !turn.cleared.isEmpty {
+        if turn.collected == 0, !turn.cleared.isEmpty {
             let label = SKLabelNode(text: "+\(turn.collected)")
             label.fontName = "AvenirNext-Bold"; label.fontSize = step * 0.55
             label.fontColor = .white; label.verticalAlignmentMode = .center
@@ -496,28 +496,7 @@ extension FallingSkyScene {
         }
     }
 
-    func constellationBurst(_ path: [Cell]) {
-        clearConstellationTrace()
-        guard !reduceMotion else { return }
-        let shape=CGMutablePath()
-        if let first=path.first { shape.move(to:point(first)) }
-        for cell in path.dropFirst() { shape.addLine(to:point(cell)) }
-        let pulseShape=SKShapeNode(path:shape)
-        pulseShape.name="constellation.trace.release-shape";pulseShape.strokeColor = .white
-        pulseShape.lineWidth=2.8;pulseShape.glowWidth=6;pulseShape.alpha=0.8
-        effects.addChild(pulseShape)
-        pulseShape.run(.sequence([.fadeAlpha(to:1,duration:0.06),.wait(forDuration:0.08),.fadeOut(withDuration:0.2),.removeFromParent()]))
-        for cell in Set(path) {
-            let center = point(cell)
-            for index in 0..<6 {
-                let angle = CGFloat(index) * .pi / 3
-                let spark = SKShapeNode(circleOfRadius: step*0.025)
-                spark.position = center; spark.fillColor = .white; spark.strokeColor = .clear; spark.glowWidth = 2
-                effects.addChild(spark)
-                spark.run(.sequence([.wait(forDuration:0.12),.group([.moveBy(x: cos(angle)*step*0.7, y: sin(angle)*step*0.55, duration: 0.36), .fadeOut(withDuration: 0.4)]), .removeFromParent()]))
-            }
-        }
-    }
+
 }
 
 // Finite gravity presentation follows committed Core phases.

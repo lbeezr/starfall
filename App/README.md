@@ -64,3 +64,7 @@ Gravity specials are retired from normal play. `SkyGeneration.standardSky` suppl
 `ConstellationTraceSurface.CaptureRecognizer` owns raw physical contact delivery before scroll arbitration, including terminal/reset cancellation. The store owns its ticketed shower hold. `SkySaveArchive` writes v7 and reads retained v3–v6 archives without overwriting their bytes. Current Dusk warnings and marks derive the limit from the saved Core rule.
 
 Drawing starts on the full native star target and follows six-point movement. The touch session separates early preview from sticky drawing intent, preserving small same-cell tap drift without turning partial selections into ordinary clears.
+
+## Starlight celebrations
+
+`StarlightCelebration` presents an already committed award, with actual scoring-cell anchors and a validated trace/recipe outline. The store owns its bounded replacement/expiry/cancellation; its overlay uses real board/header anchors. Selection and release share recipe drawing order. Ready-column input, current saves, Dusk rewards and dialogue remain independent. See [current-main verification](../docs/evidence/starlight-celebrations-2026-10-18/INTEGRATION.md).

@@ -141,9 +141,12 @@ import StarfallCore
                 board.allowsHitTesting(!settings && !showingCeremony)
                 if !showingCeremony && !settings {
                     VStack(spacing: StarfallTheme.Spacing.small) {
-                        compactHeader(island: island)
-                        if !largeText, let warning = DuskWarning(game: store.game) { SkyDuskCue(warning: warning) }
-                        if !largeText, let message = store.inputMessage { SkyInputStatus(message: message) }
+                        VStack(spacing: StarfallTheme.Spacing.small) {
+                            compactHeader(island: island)
+                            if !largeText, let warning = DuskWarning(game: store.game) { SkyDuskCue(warning: warning) }
+                            if !largeText, let message = store.inputMessage { SkyInputStatus(message: message) }
+                        }
+                        .anchorPreference(key: StarlightAnchors.self, value: .bounds) { [.header: $0] }
                         Spacer(minLength: 0)
                         if !largeText { guide(compact: compact, maximumHeight: footerHeight) }
                     }
@@ -157,6 +160,15 @@ import StarfallCore
                     showerTrail(island: true)
                         .allowsHitTesting(false)
                 }
+            }
+            .overlayPreferenceValue(StarlightAnchors.self) { anchors in
+                GeometryReader { proxy in
+                    if !settings, !showingCeremony, let receipt = store.celebration,
+                       let board = anchors[.board], let score = anchors[.score], let header = anchors[.header] {
+                        StarlightCelebrationOverlay(event: receipt, board: proxy[board], score: proxy[score], header: proxy[header], quiet: quietMotion)
+                            .id(receipt.id)
+                    }
+                }.allowsHitTesting(false)
             }
             .accessibilityHidden(settings || showingCeremony)
         }
@@ -189,7 +201,9 @@ import StarfallCore
     private func updateMotion() { store.setReducedMotion(reduceMotion || calmEffects || voiceOver) }
 
     private func compactHeader(island: Bool) -> some View {
-        HStack(spacing: StarfallTheme.Spacing.small) {
+        let quiet = quietMotion
+        let celebrating = store.celebration != nil
+        return HStack(spacing: StarfallTheme.Spacing.small) {
             HStack(spacing: StarfallTheme.Spacing.compact) {
                 Image(systemName: "sparkle").foregroundStyle(StarfallTheme.Observatory.lanternGlow).accessibilityHidden(true)
                 Text(store.game.challenge.map { "\(store.game.score) / \($0.target)" } ?? "\(store.game.score)")
@@ -198,6 +212,14 @@ import StarfallCore
                     .accessibilityIdentifier("experiment.score")
                     .accessibilityHint("Starfall terrace, seven columns. Row one is the farthest row. \(store.game.turns) showers, \(store.game.legalGroups.count) matching groups ready")
             }
+            .keyframeAnimator(initialValue: CGFloat(1), trigger: store.game.score) { content, scale in
+                content.scaleEffect(quiet || !celebrating ? 1 : scale, anchor: .leading)
+            } keyframes: { _ in
+                LinearKeyframe(1, duration: 0.58)
+                SpringKeyframe(1.14, duration: 0.12)
+                CubicKeyframe(1, duration: 0.2)
+            }
+            .anchorPreference(key: StarlightAnchors.self, value: .bounds) { [.score: $0] }
             .foregroundStyle(StarfallTheme.Colors.textPrimary)
             .shadow(color: StarfallTheme.Colors.skyTop, radius: 3)
             .frame(minHeight: StarfallTheme.Layout.minimumTarget).allowsHitTesting(false)
@@ -295,6 +317,7 @@ import StarfallCore
                 }
 
             }
+            .anchorPreference(key: StarlightAnchors.self, value: .bounds) { [.board: $0] }
             // Keep the group unlabelled: a label here replaces leaf star labels
             // during touch exploration. Terrace context belongs to the score hint.
             .accessibilityElement(children: .contain)
@@ -539,7 +562,11 @@ private extension FallingSkyView {
     }
     func refreshConstellation() {
         store.scene.showConstellationTrace(trace.path, ready: store.game.constellationCells(along:trace.path) != nil)
-        if trace.count > 0 { store.showInputFeedback(store.game.constellationCells(along:trace.path) != nil ? "Release \(trace.count) stars" : "\(trace.count) / 5 stars") }
+        if trace.count > 0 {
+            let ready = store.game.constellationCells(along: trace.path) != nil
+            let value = store.game.reward(of: Set(trace.path))
+            store.showInputFeedback(ready ? "Release \(trace.count) stars · +\(value) ready" : "\(trace.count) / 5 stars")
+        }
     }
     func releaseConstellation() {
         let hadTrace = trace.snapshot != nil
@@ -552,7 +579,7 @@ private extension FallingSkyView {
         }
         store.clearTracedConstellation(outcome.path, snapshot: outcome.snapshot, generation: outcome.generation)
         // Commit synchronously first; effects never choose or delay the cleared set.
-        if store.game != outcome.snapshot { store.scene.constellationBurst(outcome.path) }
+
     }
     func accessibleTrace(_ cell: Cell) {
         technique.setArranging(false)
