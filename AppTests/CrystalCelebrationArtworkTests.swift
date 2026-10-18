@@ -1,5 +1,6 @@
 import XCTest
 import UIKit
+import SwiftUI
 import StarfallCore
 @testable import Starfall
 
@@ -25,6 +26,101 @@ final class CrystalCelebrationArtworkTests: XCTestCase {
             XCTAssertLessThan(glyph.width, 362, "\(symbol): registration must not include a neighboring glyph")
             XCTAssertLessThan(glyph.height, 400)
         }
+    }
+
+    @MainActor func testOpalMaterialRendersMultipleFacetColorsAndReadableFamilySheet() async throws {
+        let family = try XCTUnwrap(CrystalCelebrationArtwork().family)
+        let glyph = try XCTUnwrap(family.glyphs["8"])
+        let scene = try XCTUnwrap(UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.first)
+        let previous = scene.windows.first(where: \.isKeyWindow)
+        let window = UIWindow(windowScene: scene)
+        window.frame = CGRect(x: 0, y: 0, width: 390, height: 844)
+        let host = UIHostingController(rootView: AnyView(Color.black))
+        window.rootViewController = host; window.makeKeyAndVisible()
+        defer { window.isHidden = true; window.rootViewController = nil; previous?.makeKey() }
+        host.rootView = AnyView(CrystalCelebrationMaterial(image: glyph, tint: .white)
+            .frame(width: 220, height: 260).frame(maxWidth: .infinity, maxHeight: .infinity).background(Color.black))
+        var bins = Set<Int>()
+        let deadline = ContinuousClock.now + .seconds(3)
+        repeat {
+            await Task.yield(); host.view.layoutIfNeeded()
+            let image = UIGraphicsImageRenderer(bounds: window.bounds).image { _ in
+                window.drawHierarchy(in: window.bounds, afterScreenUpdates: true)
+            }
+            let cg = try XCTUnwrap(image.cgImage)
+            var pixels = [UInt8](repeating: 0, count: cg.width * cg.height * 4)
+            let context = try XCTUnwrap(CGContext(data: &pixels, width: cg.width, height: cg.height,
+                bitsPerComponent: 8, bytesPerRow: cg.width * 4, space: CGColorSpaceCreateDeviceRGB(),
+                bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue))
+            context.draw(cg, in: CGRect(x: 0, y: 0, width: cg.width, height: cg.height))
+            var counts: [Int: Int] = [:]
+            for i in stride(from: 0, to: pixels.count, by: 4) {
+                let r = CGFloat(pixels[i]) / 255, g = CGFloat(pixels[i+1]) / 255, b = CGFloat(pixels[i+2]) / 255
+                guard max(r, g, b) > 0.35, max(r, g, b) - min(r, g, b) > 0.12 else { continue }
+                var h: CGFloat = 0, s: CGFloat = 0, v: CGFloat = 0, a: CGFloat = 0
+                UIColor(red: r, green: g, blue: b, alpha: 1).getHue(&h, saturation: &s, brightness: &v, alpha: &a)
+                counts[min(5, Int(h * 6)), default: 0] += 1
+            }
+            bins = Set(counts.filter { $0.value > 100 }.keys)
+            if bins.count < 3 { try await Task.sleep(for: .milliseconds(20)) }
+        } while bins.count < 3 && ContinuousClock.now < deadline
+        XCTAssertGreaterThanOrEqual(bins.count, 3, "A pearl glyph needs warm and cool refracted faces, not a uniform tint")
+
+        let colors = [Jewel.aqua, .amber, .mint, .rose, .violet].map { Color($0.color) } + [.white]
+        let names = ["Aqua", "Amber", "Mint", "Rose", "Violet", "Pearl"]
+        host.rootView = AnyView(VStack(spacing: 16) {
+            Text("STARFALL · NATIVE MATERIAL STUDY").font(.caption).foregroundStyle(.white)
+            Text("Earlier tint").font(.headline).foregroundStyle(.white)
+            swatches(false)
+            Text("Opalescent facet light").font(.headline).foregroundStyle(.white)
+            swatches(true)
+            HStack(spacing: 3) {
+                ForEach(Array("0123456789"), id: \.self) { character in
+                    CrystalCelebrationMaterial(image: family.glyphs[character]!, tint: .white)
+                        .frame(width: 30, height: 42)
+                }
+            }
+            CrystalCelebrationMaterial(image: family.titles[.brilliant]!, tint: colors[1])
+                .frame(width: 330, height: 76)
+            CrystalCelebrationMaterial(image: family.titles[.constellation]!, tint: colors[0])
+                .frame(width: 330, height: 76)
+        }.padding(.vertical, 35).frame(width: 390, height: 844).background(StarfallTheme.Colors.skyTop))
+        func swatches(_ opal: Bool) -> some View {
+            VStack(spacing: 10) {
+                ForEach(0..<2) { row in
+                    HStack(spacing: 16) {
+                        ForEach(0..<3) { column in
+                            let tint = colors[row * 3 + column]
+                            VStack(spacing: 2) {
+                              HStack(spacing: 2) {
+                                ForEach(Array("+8"), id: \.self) { c in
+                                    let image = family.glyphs[c]!
+                                    if opal {
+                                        CrystalCelebrationMaterial(image: image, tint: tint).frame(width: 42, height: 64)
+                                    } else {
+                                        ZStack {
+                                            Image(uiImage: image).resizable().scaledToFit().colorMultiply(tint)
+                                            Image(uiImage: image).resizable().scaledToFit().blendMode(.screen).opacity(0.55)
+                                        }.compositingGroup().frame(width: 42, height: 64)
+                                    }
+                                }
+                              }
+                              Text(names[row * 3 + column]).font(.caption2).foregroundStyle(.white)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        host.view.layoutIfNeeded()
+        let rendered = expectation(description: "Material sheet reached the native display")
+        DispatchQueue.main.async { rendered.fulfill() }
+        await fulfillment(of: [rendered], timeout: 3)
+        let image = UIGraphicsImageRenderer(bounds: window.bounds).image { _ in
+            window.drawHierarchy(in: window.bounds, afterScreenUpdates: true)
+        }
+        let attachment = XCTAttachment(image: image)
+        attachment.name = "opal-material-six-family-comparison"; attachment.lifetime = .keepAlways; add(attachment)
     }
 
     @MainActor func testMissingOrMalformedArtFallsBackAsOneFamilyAndCachesFailure() {

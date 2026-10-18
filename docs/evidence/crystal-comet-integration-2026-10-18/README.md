@@ -4,6 +4,8 @@
 
 The user-selected crystal lettering now appears in the normal Debug/Release game: five illustrated title cutouts, matching composable score glyphs, actual harvested-family colors and the central theatrical entrance/hold/dissolve. The immediate score, exact award, rule/save/input owners and current critical-mass behavior remain authoritative. No new reward, target, SDK, font dependency or network feature.
 
+**Material follow-up:** the user subsequently reported flat color compared with the approved swatches. [Native opalescence follow-up](OPALESCENCE.md) records the local revision; the captures and original verification below retain their original source.
+
 **Next action:** at the next phone/RC review, assess repeated-play feel, dense-board distraction and compact-phone readability. Actual VoiceOver is deferred to RC; not run on this development build. No physical phone installation or haptic/audio audition is claimed.
 
 ## Outcomes against acceptance
