@@ -43,7 +43,7 @@ inputs = [*sorted((root/'Sources/StarfallCore').glob('*.swift')), root/'App/Fall
           root/'App/GameFeedback.swift', root/'App/StarlightCelebration.swift',
           root/'App/SkyDialogue.swift', root/'App/SkyDialogueLibrary.swift', root/'App/SkyCopy.swift', root/'App/DuskWarning.swift', root/'App/DialogueScripts/observatory-dialogue.json',
           root/'App/FallingSkyScene.swift', root/'App/FallingSkyMotion.swift',
-          root/'Tests/StarfallCoreTests/TimingCycleFixture.swift', *sorted((root/'tools/mechanics').glob('Pacing*.swift')), Path(__file__).resolve()]
+          root/'Tests/StarfallCoreTests/TimingCycleFixture.swift', root/'tools/mechanics/CalibrationTrace.swift', *sorted((root/'tools/mechanics').glob('Pacing*.swift')), Path(__file__).resolve()]
 def hashes():
     return {str(f.relative_to(root)): hashlib.sha256(f.read_bytes()).hexdigest() for f in inputs}
 before = hashes()
@@ -98,7 +98,7 @@ metadata = {'head': subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,
             'sha256':before,'platform':subprocess.check_output(['sw_vers'],text=True),
             'toolchain':subprocess.check_output(['xcrun','swiftc','--version'],text=True),
             'command':['python3', *sys.argv],
-            'personaVersion':'visible-reward-components-v4', 'timingModelVersion':'source-durations-session-v4',
+            'personaVersion':'visible-reward-core-links-v5', 'timingModelVersion':'source-durations-session-v4',
             'inputModel':a.input_model,
             'seedStart':a.seed_start, 'seedCount':a.seeds,
             'reactionSeconds':a.reaction_seconds, 'traceStepSeconds':a.trace_step_seconds,

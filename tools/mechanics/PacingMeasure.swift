@@ -21,15 +21,10 @@ private func choices(_ game: FallingSky) -> [Choice] {
         let component = game.constellationGroup(at: start)
         seen.formUnion(component)
         guard component.count >= 5 else { continue }
-        var visited = Set<Cell>(), path: [Cell] = []
-        func walk(_ cell: Cell) {
-            visited.insert(cell); path.append(cell)
-            for next in ordered(component) where !visited.contains(next) && abs(next.row-cell.row) <= 1 && abs(next.column-cell.column) <= 1 {
-                walk(next); path.append(cell)
-            }
+        guard let path = calibrationTrace(component, in: game) else {
+            preconditionFailure("Core constellation component must have a complete legal walk")
         }
-        walk(start)
-        precondition(path.count <= 196 && game.constellationCells(along: path) != nil)
+        precondition(game.constellationCells(along: path) == component)
         result.append(.init(path: path, trace: true))
     }}
     return result
