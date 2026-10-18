@@ -27,3 +27,5 @@ Gravity integration uses the normal target and v5 committed archive. Core owns o
 The Opal planning deadline regression preserves the four-light follow-up across one faster shower deferred by clear presentation, and checks exact Core equality and no catch-up.
 
 Touch-lifecycle checks exercise edge-release classification, missing move callbacks, duplicate terminal events, hold tickets/near-deadline grace, and actual surface configuration cancellation. These do not fabricate UIKit touches or claim physical multitouch acceptance.
+
+Camera placement tests distinguish full canvas dimensions from safe-area-reduced dimensions and reject width, height, orientation, inset and accessibility mismatches for both checked profiles. Native checks must additionally verify which route actually draws.

@@ -123,10 +123,10 @@ final class ObservatoryGeometryTests: XCTestCase {
 
 final class SkyShowerPlacementTests: XCTestCase {
     func testOnlyCalibratedPortraitUsesCameraMargin() {
-        let phone = CGSize(width: 402, height: 778)
+        let phone = CGSize(width: 402, height: 874)
         XCTAssertTrue(SkyShowerPlacement.usesIsland(hardware: "iPhone18,3", size: phone, topInset: 62, accessible: false))
-        XCTAssertTrue(SkyShowerPlacement.usesIsland(hardware: "iPhone17,2", size: CGSize(width: 440, height: 894), topInset: 62, accessible: false))
-        XCTAssertFalse(SkyShowerPlacement.usesIsland(hardware: "iPhone17,2", size: CGSize(width: 440, height: 894), topInset: 62, accessible: true))
+        XCTAssertTrue(SkyShowerPlacement.usesIsland(hardware: "iPhone17,2", size: CGSize(width: 440, height: 956), topInset: 62, accessible: false))
+        XCTAssertFalse(SkyShowerPlacement.usesIsland(hardware: "iPhone17,2", size: CGSize(width: 440, height: 956), topInset: 62, accessible: true))
         for hardware in ["", "iPhone14,6", "iPhone17,5", "future-device"] {
             XCTAssertFalse(SkyShowerPlacement.usesIsland(hardware: hardware, size: phone, topInset: 62, accessible: false))
         }
@@ -134,8 +134,23 @@ final class SkyShowerPlacementTests: XCTestCase {
         for (size, inset) in [(CGSize(width: 874, height: 402), CGFloat(0)),
                               (CGSize(width: 768, height: 1024), CGFloat(62)),
                               (phone, CGFloat(0)), (phone, CGFloat(82)),
+                              (CGSize(width:402,height:778), CGFloat(62)),
+                              (CGSize(width:402,height:900), CGFloat(62)),
                               (CGSize(width: 375, height: 667), CGFloat(20))] {
             XCTAssertFalse(SkyShowerPlacement.usesIsland(hardware: "iPhone18,3", size: size, topInset: inset, accessible: false))
+        }
+    }
+}
+
+
+extension SkyShowerPlacementTests {
+    func testEveryResizedOrAccessibleCalibratedCanvasUsesHeaderFallback() {
+        for (hardware, size) in [("iPhone18,3",CGSize(width:402,height:874)),("iPhone17,2",CGSize(width:440,height:956))] {
+            for delta in [CGFloat(-100), -2, 2, 100] {
+                XCTAssertFalse(SkyShowerPlacement.usesIsland(hardware:hardware,size:CGSize(width:size.width,height:size.height+delta),topInset:62,accessible:false))
+                XCTAssertFalse(SkyShowerPlacement.usesIsland(hardware:hardware,size:CGSize(width:size.width+delta,height:size.height),topInset:62,accessible:false))
+            }
+            XCTAssertFalse(SkyShowerPlacement.usesIsland(hardware:hardware,size:size,topInset:62,accessible:true))
         }
     }
 }

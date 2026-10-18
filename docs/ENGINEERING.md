@@ -180,3 +180,7 @@ The [reliability design](design/RELIABILITY_POLISH.md) closes the sub-slop off-b
 ## Build-input identity and delivery race — October 17, 2026
 
 The runtime-input recipe includes package manifests/resolution as well as App/Sources/Config/project files, excludes Markdown documentation and user workspace state, and carries a version prefix. Before installation the updater repeats its exact-source CI check; failure during local validation retains the existing app and verified cached build. Pending CI is still a development policy, not UI acceptance. Trigger: new build-input locations or multi-tester distribution. Extend fingerprint behavior checks and require exact-source acceptance evidence before expanding delivery; do not infer runtime health from a signed bundle.
+
+## Camera placement uses its consuming canvas — October 17, 2026
+
+The camera profile now receives the complete local playfield canvas instead of the ancestor safe-area-reduced size. Checked 17/16 Pro Max portrait dimensions and top inset must all match; unknown/resized/rotated/accessible layouts retain the complete header forecast. Native assertions check the actual contour route rather than accepting any in-window forecast. Trigger: adding a profile, changing projection/HUD, minimum OS or supported window modes. Verify native taps/rotation/large text and physical expanded activities before declaring that profile physically accepted.

@@ -1,12 +1,12 @@
 # Reliable drawing, layout and development delivery
 
-**Status:** Accepted scope · **Owner:** current implementer · **Updated:** October 17, 2026
+**Status:** Development implementation verified · **Owner:** current implementer · **Updated:** October 17, 2026
 
 Implement the review findings directly in regular Starfall, in independently verified PRs. Preserve rules, cadence versions, saved rounds and full animations. No additional app, backend, mechanic or package dependency.
 
 **Decision:** Every touch terminates through one explicit state machine, with the store granting a generation-safe hold ticket. Build identity covers runtime/build inputs and excludes documentation. Camera placement uses explicit validated geometry profiles with a complete header fallback. Broader native checks protect the actual integration boundaries rather than adding device guesses.
 
-**Next action:** Implement and verify the batches below; integrate each when ready.
+**Next action:** Integrate the final canvas/native batch; retain the physical and RC checks below for the next appropriate session. Touch ownership is merged in PR #46; build identity/delivery is merged in PR #48.
 
 | Batch | Acceptance |
 | --- | --- |

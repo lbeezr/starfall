@@ -900,6 +900,12 @@ final class ShowerForecastInteractionTests: XCTestCase {
         start.tap()
         let cue = app.descendants(matching: .any)["experiment.arrivalCue"].firstMatch
         XCTAssertTrue(cue.waitForExistence(timeout: 5))
+        let hardware = ProcessInfo.processInfo.environment["SIMULATOR_MODEL_IDENTIFIER"] ?? ""
+        if ["iPhone17,2", "iPhone18,3"].contains(hardware) {
+            XCTAssertEqual(cue.frame.width,148,accuracy:1,"A calibrated full canvas must use the Island contour")
+            XCTAssertEqual(cue.frame.height,50,accuracy:1)
+            XCTAssertLessThan(cue.frame.maxY,app.staticTexts["experiment.score"].frame.minY)
+        }
         let initialY = cue.frame.minY
         XCTAssertFalse((cue.value as? String ?? "").isEmpty, "The curve names its committed forecast")
         XCTAssertGreaterThanOrEqual(cue.frame.minY, 0)

@@ -94,3 +94,5 @@ The selected [environment art direction](docs/design/environments/PRODUCTION.md)
 The [shower forecast](docs/evidence/shower-forecast-adoption-2026-10-17/README.md) follows the upper camera contour on the calibrated iPhone 17 and iPhone 16 Pro Max portrait layouts. Other iPhones, tablets and accessible layouts show the same ordered incoming stars along a straight header trail. Physical camera fit remains unverified.
 
 New skies include paired magnetic stars that can form temporary orbiting holes. Clear their middle to collide, use the rotating colored captives in matches, and clear a captive to release the field. Dusk still blocks growth; Opal still joins a color. Existing saved skies and their replays retain their original rules. See [the gravity design](docs/design/GRAVITY_MECHANICS.md) and [integration evidence](docs/evidence/gravity-integration-2026-10-17/README.md).
+
+[Scoped reliability hardening](docs/design/RELIABILITY_POLISH.md) gives drawing explicit hold ownership, fingerprints package build inputs, and verifies camera layout against the full local canvas. Remaining physical/RC checks stay separate from development integration.
