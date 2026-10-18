@@ -52,7 +52,7 @@ enum SkyFlowAction: Equatable { case start, firstLight, begin, resume, replay, a
                 }
                 ScrollView {
                     VStack(spacing: StarfallTheme.Spacing.section) {
-                        heading
+                        heading.accessibilityHidden(!active)
                         if textSize.isAccessibilitySize {
                             revealedActions
                             decorativeCast

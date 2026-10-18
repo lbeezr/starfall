@@ -896,8 +896,7 @@ final class SkyFlowInteractionTests: XCTestCase {
         XCTAssertGreaterThan(app.frame.width, app.frame.height, "Run this supported-landscape check on iPad")
         capture(app, "tablet-landscape-welcome")
         let preferences = app.buttons["sky.preferences"]
-        // This runtime returned false isHittable while native activation succeeded.
-        // Assert real navigation through preferences, Entry and play instead.
+        XCTAssertTrue(preferences.isHittable)
         preferences.tap()
         XCTAssertTrue(app.switches["experiment.sound"].waitForExistence(timeout: 5))
         app.buttons["experiment.done"].tap()
@@ -905,6 +904,7 @@ final class SkyFlowInteractionTests: XCTestCase {
         let begin = app.buttons["sky.begin"]
         XCTAssertTrue(begin.waitForExistence(timeout: 5))
         capture(app, "tablet-landscape-entry")
+        XCTAssertTrue(begin.isHittable)
         begin.tap()
         XCTAssertTrue(app.buttons["experiment.settings"].waitForExistence(timeout: 5))
 
