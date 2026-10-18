@@ -55,3 +55,5 @@ Gravity specials are retired from normal play. `SkyGeneration.standardSky` suppl
 Logical interaction regressions in `TraceInputPolishTests` cover trace-to-swap hold continuity, exactly-once release, stale terminals and failed admission; store/recognizer interruption tests remain separate boundary coverage.
 
 `ResponsiveInputTests` verifies the shared admission matrix, paused explicit actions, independent ready columns, deferred showers and rejection without replay.
+
+Teardown regressions cover all eight replacement/layout/motion/balance/suspension boundaries with old hold/rain callbacks and repeated calls. The full-motion exchange test waits for its SpriteKit host’s first update before starting timed action sampling; motion/position assertions remain unchanged.

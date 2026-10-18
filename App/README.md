@@ -72,3 +72,5 @@ Drawing starts on the full native star target and follows six-point movement. Th
 `SkyInteractionSession` owns logical trace/swap selection and the held store ticket. Its terminal transition clears local state before releasing exactly once; stale terminal tickets cannot end a replacement contact. The recognizer retains physical-contact ownership, and the store retains clock/generation ownership.
 
 `SkyInputPolicy` gives contact, clear, trace and technique admission the same explicit global/column reasons. Core still decides action legality. Automatic pause permits explicit play; suspension and an already-due shower do not.
+
+Store interruption cleanup has two small boundaries: `interruptPlay` freezes the deadline, then stops feedback and settles; `settleInterruptedPresentation` preserves the deadline for layout/motion changes. Balance freezes before changing cadence and settles afterward. Existing input generations, celebration cancellation and presentation epochs remain authoritative.

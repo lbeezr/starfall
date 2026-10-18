@@ -126,7 +126,17 @@ final class SkyTechniqueStoreTests: XCTestCase {
         let id=try XCTUnwrap(before.gem(at:Cell(1,2))?.id)
         let origin=ObservatoryGeometry(size:scene.size).scenePoint(Cell(1,2))
         var complete=false,sideways=false,fall=false
-        scene.render(before);scene.animate(turn,from:before,to:after) { complete=true }
+        scene.render(before)
+        // The host must deliver an update before a timed exchange starts. Otherwise
+        // its first frame can consume the entire action while setup is still pending.
+        var frameReady = false
+        scene.run(.run { frameReady = true }, withKey: "test.host-ready")
+        let frameDeadline = ContinuousClock.now + .seconds(2)
+        while !frameReady && ContinuousClock.now < frameDeadline {
+            try await Task.sleep(for: .milliseconds(20))
+        }
+        XCTAssertTrue(frameReady, "The native SpriteKit host must produce an update")
+        scene.animate(turn,from:before,to:after) { complete=true }
         let deadline=ContinuousClock.now + .seconds(5)
         while ContinuousClock.now < deadline && !complete {
             if let node=scene.childNode(withName:"//sky.star.\(id)") {
