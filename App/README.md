@@ -94,3 +94,5 @@ Fresh survival skies use universal critical mass. `CriticalMassPresentation` ren
 Idle input admission skips copied-game simulations when no presentation reserves columns. Busy-board admission still simulates the exact Core action; the real commit remains authoritative in every case.
 
 Current collapse rendering consumes `presentationPhases` / `SkyPresentationPhase` through `PhaseTimeline`. Historical orbit events retain their existing rendering and timings; old timing-test names remain compatibility aliases.
+
+Contact clock holds preserve the exact remaining shower time; only pause/background interruptions apply resume grace, including interruptions during a hold. Ticket/generation invalidation and no-catch-up delivery remain store-owned.

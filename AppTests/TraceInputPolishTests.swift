@@ -124,7 +124,7 @@ extension TraceInputPolishTests {
         }
     }
 
-    @MainActor func testHoldTicketsRejectStaleReleasesAndRetainNearDeadlineGrace() throws {
+    @MainActor func testHoldTicketsRejectStaleReleasesAndPreserveExactRemainingTime() throws {
         let suite = "Starfall.TraceHold.\(UUID().uuidString)"
         let local = UserDefaults(suiteName:suite)!
         defer { local.removePersistentDomain(forName:suite) }
@@ -140,7 +140,7 @@ extension TraceInputPolishTests {
         clock.advance(100); staleClock?()
         XCTAssertEqual(store.game,source); XCTAssertNil(clock.deadline)
         store.endConstellationHold(first)
-        XCTAssertEqual(try XCTUnwrap(clock.deadline)-clock.now,0.5,accuracy:0.001)
+        XCTAssertEqual(try XCTUnwrap(clock.deadline)-clock.now,0.1,accuracy:0.001)
         let second = try XCTUnwrap(store.beginConstellationHold())
         store.endConstellationHold(first)
         XCTAssertTrue(store.constellationTracing); XCTAssertNil(clock.deadline)
@@ -148,7 +148,7 @@ extension TraceInputPolishTests {
         let resumed = clock.deadline
         store.endConstellationHold(second)
         XCTAssertEqual(clock.deadline,resumed)
-        clock.advance(0.5); XCTAssertEqual(store.game.turns,source.turns+1)
+        clock.advance(0.1); XCTAssertEqual(store.game.turns,source.turns+1)
     }
 
     @MainActor func testEarlyDrawingAndTapDriftKeepDistinctStickyIntent() {
@@ -380,5 +380,51 @@ extension TraceInputPolishTests {
         XCTAssertEqual(intent.count,4)
         XCTAssertTrue(intent.visit(Cell(0,5),ticket:ticket,game:gap,generation:1,enabled:true))
         XCTAssertNotNil(intent.finish(ticket:ticket,game:gap,generation:1,enabled:true))
+    }
+}
+
+
+extension TraceInputPolishTests {
+    @MainActor func testZeroDurationContactsCannotStarveOpeningRegularRetainedOrChallengeRain() throws {
+        var regular = FallingSky.freshSurvival(seed: 5)
+        for _ in 0..<4 { XCTAssertNotNil(regular.letStarsFall()) }
+        for game in [FallingSky.freshSurvival(seed: 5), regular, DuskFixture.unfed.game(), FallingSky(challenge: .firstLight)] {
+            let suite = "ExactContacts.\(UUID())", defaults = UserDefaults(suiteName: suite)!
+            defer { defaults.removePersistentDomain(forName: suite) }
+            defaults.set(try SkySaveArchive.encode(game), forKey: SkySaveArchive.key)
+            let clock = ManualRainClock(), presenter = FallingSkyRecorder()
+            let store = FallingSkyStore(defaults: defaults, arguments: [], presenter: presenter, clock: clock, feedback: SkyFeedbackRecorder())
+            store.setSuspended(false); store.togglePause()
+            let initialTurns = store.game.turns, deadline = try XCTUnwrap(clock.deadline)
+            clock.advance(deadline - 0.2)
+            for _ in 0..<12 {
+                let ticket = try XCTUnwrap(store.beginConstellationHold(at: Cell(6,6)))
+                store.endConstellationHold(ticket)
+                XCTAssertEqual(try XCTUnwrap(clock.deadline), deadline, accuracy: 0.000001,
+                               "A contact with no held time must not manufacture grace")
+                clock.advance(0.01)
+            }
+            clock.advance(0.09)
+            XCTAssertEqual(store.game.turns, initialTurns + 1)
+        }
+    }
+
+    @MainActor func testPauseAndBackgroundKeepTheirGraceAfterAContactHold() throws {
+        for background in [false, true] {
+            let suite = "ContactInterrupt.\(UUID())", defaults = UserDefaults(suiteName: suite)!
+            defer { defaults.removePersistentDomain(forName: suite) }
+            let game = FallingSky(seed: 5, openingCascade: false)
+            defaults.set(try SkySaveArchive.encode(game), forKey: SkySaveArchive.key)
+            let clock = ManualRainClock()
+            let store = FallingSkyStore(defaults: defaults, arguments: [], presenter: FallingSkyRecorder(), clock: clock)
+            store.setSuspended(false); store.togglePause()
+            clock.advance(try XCTUnwrap(clock.deadline)-0.1)
+            let stale = try XCTUnwrap(store.beginConstellationHold(at: Cell(6,6)))
+            if background { store.setSuspended(true) } else { store.togglePause() }
+            store.endConstellationHold(stale)
+            XCTAssertNil(clock.deadline)
+            if background { store.setSuspended(false) } else { store.togglePause() }
+            XCTAssertEqual(try XCTUnwrap(clock.deadline)-clock.now, 0.5, accuracy: 0.001)
+        }
     }
 }
