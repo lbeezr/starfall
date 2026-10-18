@@ -179,3 +179,5 @@ The user selected the [curved shower forecast](evidence/shower-forecast-adoption
 The [scoped reliability design](design/RELIABILITY_POLISH.md) closes terminal touch ownership, package build identity and local-canvas camera placement in regular Starfall. Retain physical expanded-Island, curved/multitouch, haptic/recognition and actual VoiceOver acceptance as explicit next-device/RC work; no additional lab or speculative hint/performance framework is required.
 
 The retired gravity art remains only for historical reset-only Debug reproductions: an open attraction field and accretion-ring hole with shared cached materials. [Art acceptance](evidence/gravity-art-2026-10-17/README.md) records native checks separately from the remaining human gameplay study.
+
+[Device delivery guards](evidence/device-delivery-guards-2026-10-18/README.md) now detect external app replacements and reject stale delivery through the canonical updater. Privileged direct installation remains an OS/account permission boundary; no gameplay change is part of this fix.

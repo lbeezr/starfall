@@ -12,6 +12,7 @@ import subprocess
 import sys
 import tempfile
 import urllib.request
+from urllib.parse import unquote, urlparse
 from build_identity import build_id
 
 BUNDLE = 'com.starfall.prototype'
@@ -83,6 +84,56 @@ def connected(device, state):
     return False
 
 
+def app_installation(config, state):
+    """Read the OS-owned installation, rather than trusting our last write."""
+    inventory = state / 'apps.json'
+    run(['xcrun', 'devicectl', 'device', 'info', 'apps', '--device', config['device'],
+         '--bundle-id', BUNDLE, '--json-output', str(inventory)], output=state / 'device.log')
+    apps = json.loads(inventory.read_text())['result']['apps']
+    if not isinstance(apps, list):
+        raise RuntimeError('Cannot verify the phone installation: invalid app inventory.')
+    matching = [app for app in apps if app.get('bundleIdentifier') == BUNDLE]
+    if len(matching) > 1:
+        raise RuntimeError('Cannot verify the phone installation: ambiguous app inventory.')
+    if not matching:
+        return None
+    app = matching[0]
+    installation_path(app['url'])
+    if not isinstance(app.get('bundleVersion'), str) or not app['bundleVersion']:
+        raise RuntimeError('Cannot verify the phone installation: missing bundle version.')
+    return {'installationURL': app['url'], 'bundleVersion': app['bundleVersion']}
+
+
+def installation_path(value):
+    parsed = urlparse(value)
+    if parsed.scheme != 'file' or parsed.netloc or not parsed.path.startswith('/'):
+        raise RuntimeError('Cannot verify the phone installation: invalid installation URL.')
+    return unquote(parsed.path).rstrip('/')
+
+
+def installation_matches(actual, receipt):
+    if not actual or not receipt.get('installationURL') or not receipt.get('bundleVersion'):
+        return False
+    return (installation_path(actual['installationURL']) == installation_path(receipt['installationURL'])
+            and actual['bundleVersion'] == receipt['bundleVersion'])
+
+
+def fetch_main(mirror, state):
+    run(['git', 'fetch', '--no-tags', 'origin', 'refs/heads/main'], cwd=mirror, output=state / 'fetch.log')
+    return run(['git', 'rev-parse', 'FETCH_HEAD'], cwd=mirror)
+
+
+def includes_previous_main(mirror, previous, revision):
+    if not previous:
+        return True
+    try:
+        run(['git', 'merge-base', '--is-ancestor', previous, revision], cwd=mirror)
+        return True
+    except subprocess.CalledProcessError:
+        # A missing object also fails closed: ancestry was not established.
+        return False
+
+
 def update(config, state):
     if not connected(config['device'], state):
         return 'Waiting for the configured iPhone.'
@@ -90,10 +141,14 @@ def update(config, state):
     url = 'https://github.com/' + config['repository'] + '.git'
     if not mirror.exists():
         run(['git', 'clone', '--bare', url, str(mirror)], output=state / 'fetch.log')
-    run(['git', 'fetch', '--no-tags', 'origin', 'refs/heads/main'], cwd=mirror, output=state / 'fetch.log')
-    revision = run(['git', 'rev-parse', 'FETCH_HEAD'], cwd=mirror)
+    revision = fetch_main(mirror, state)
     installed = json.loads((state / 'installed.json').read_text()) if (state / 'installed.json').exists() else {}
-    if revision in (installed.get('source'), installed.get('checkedSource')):
+    previous = installed.get('checkedSource') or installed.get('source')
+    if not includes_previous_main(mirror, previous, revision):
+        return 'Held: fetched main does not include the previously delivered/checked main.'
+    actual = app_installation(config, state)
+    matches = installation_matches(actual, installed)
+    if matches and revision in (installed.get('source'), installed.get('checkedSource')):
         return 'Up to date: ' + installed['buildID']
     target = state / 'source'
     # An archive cannot include uncommitted developer files or alter their checkout.
@@ -106,7 +161,7 @@ def update(config, state):
     staging.mkdir()
     run(['tar', '-xf', str(archive), '-C', str(staging)])
     fingerprint = build_id(staging)
-    if installed.get('buildID') == fingerprint:
+    if matches and installed.get('buildID') == fingerprint:
         installed['checkedSource'] = revision
         atomic_json(state / 'installed.json', installed)
         shutil.rmtree(staging)
@@ -135,16 +190,26 @@ def update(config, state):
     if info.get('CFBundleIdentifier') != BUNDLE or info.get('StarfallBuildID') != fingerprint:
         raise RuntimeError('Built app identity does not match the one-app contract.')
     run(['codesign', '--verify', '--deep', '--strict', str(app)], output=log)
+    if build_id(target) != fingerprint:
+        raise RuntimeError('Build source changed during validation; refusing installation.')
     atomic_json(metadata, {'buildID': fingerprint, 'source': revision})
     # A long local build can outlive the initial remote check. A now-known
     # failure holds delivery, retaining this verified build for a later retry.
+    if fetch_main(mirror, state) != revision:
+        return 'Held: main advanced during validation; retry against the new main.'
     cloud_status = ci_status(config['repository'], revision)
     if cloud_status == 'failed':
         return 'Held: main CI failed before installation for ' + revision[:10]
     # No automatic launch: updating should not start the clock or trigger a fixture.
     run(['xcrun', 'devicectl', 'device', 'install', 'app', '--device', config['device'], str(app),
          '--timeout', '90', '--json-output', str(state / 'installation.json')], output=state / 'device.log')
-    atomic_json(state / 'installed.json', {'buildID': fingerprint, 'source': revision, 'bundle': BUNDLE,
+    result = json.loads((state / 'installation.json').read_text())
+    delivered = [item for item in result['result']['installedApplications'] if item.get('bundleID') == BUNDLE]
+    actual = app_installation(config, state)
+    if (len(delivered) != 1 or not actual or not installation_matches(actual, {
+            'installationURL': delivered[0]['installationURL'], 'bundleVersion': info.get('CFBundleVersion')})):
+        raise RuntimeError('Installation completed but its on-device identity could not be verified; receipt retained.')
+    atomic_json(state / 'installed.json', {'buildID': fingerprint, 'source': revision, 'bundle': BUNDLE, **actual,
                                                'validation': {'coreTests': 'passed', 'signature': 'verified', 'mainCIAtInstall': cloud_status}})
     return 'Installed ' + fingerprint + ' from main ' + revision[:10]
 

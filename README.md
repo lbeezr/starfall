@@ -99,3 +99,5 @@ The [shower forecast](docs/evidence/shower-forecast-adoption-2026-10-17/README.m
 Dusk still blocks growth; Opal still joins a color. The former gravity setup is retired; historical generation readers and reset-only Debug histories remain for save compatibility and regression testing.
 
 [Scoped reliability hardening](docs/design/RELIABILITY_POLISH.md) gives drawing explicit hold ownership, fingerprints package build inputs, and verifies camera layout against the full local canvas. Remaining physical/RC checks stay separate from development integration.
+
+Phone delivery now verifies the actual installation and rejects stale main history. [Delivery guards and their limits](docs/evidence/device-delivery-guards-2026-10-18/README.md) record the active service and checks.

@@ -38,3 +38,5 @@ Start with [the roadmap](../ROADMAP.md) for current priorities or [visual refere
 [Attraction-field visual revision](attraction-field-2026-10-17/README.md) records the open aura, shared material/shadow contracts, native interaction and motion evidence, with unchanged rule and timing limits.
 
 [Gravity opportunities](gravity-opportunities-2026-10-17/README.md) records generation-3 supply comparison, retained replay, natural native choices and the unresolved opening-tap timing observation.
+
+- [Actual device installation and stale-delivery guards](device-delivery-guards-2026-10-18/README.md): guarded updater activation, rollback/overwrite regression tests and privileged-access limits.
