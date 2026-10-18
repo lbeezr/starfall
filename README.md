@@ -92,3 +92,5 @@ Requested improvements go directly into regular Starfall. Build the shared schem
 The selected [environment art direction](docs/design/environments/PRODUCTION.md) develops five living landing places. Finish Moonlit Observatory before Cloudsea; there is no parallel player route.
 
 The [shower forecast](docs/evidence/shower-forecast-adoption-2026-10-17/README.md) follows the upper camera contour on the calibrated iPhone 17 and iPhone 16 Pro Max portrait layouts. Other iPhones, tablets and accessible layouts show the same ordered incoming stars along a straight header trail. Physical camera fit remains unverified.
+
+For the isolated magnetic collision/orbit comparison, use the [Gravity Lab instructions](tools/mechanics/README.md#magnetic-collision-and-captive-orbit). It does not change normal game rules or saves.

@@ -30,3 +30,5 @@ The [branding studies](branding/README.md) retain the editable wordmarks, sanctu
 [User-only pacing playtest](PACING_PLAYTEST.md) defines the initial matched-seed A/B session; candidate handoff and human observations remain pending.
 
 [Welcome, entry and sky endings](SKY_FLOW.md) owns the selected overlapping reveal and offline resume/replay behavior.
+
+[Gravity design](GRAVITY_MECHANICS.md), [implementation plan](GRAVITY_MECHANICS_PLAN.md) and [mechanic research](CELESTIAL_MECHANICS_RESEARCH.md) cover the isolated magnetic collision and captive-orbit trial. These do not adopt gravity into production.

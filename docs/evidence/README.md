@@ -23,3 +23,5 @@ Start with [the roadmap](../ROADMAP.md) for current priorities or [visual refere
 [Adversarial screen-flow review](screen-flow-review-2026-10-17/README.md) prioritizes launch continuity, entry/save cancellation, pause semantics and presentation polish, with source findings separated from retained visuals and unverified native checks.
 
 [Screen-flow polish batches](screen-flow-polish-2026-10-17/README.md) records the dark-launch build, native tests and sampled launch evidence before safe-entry implementation.
+
+[Magnetic collision and captive orbit](gravity-orbit-2026-10-17/README.md) records the isolated trial’s rule, save, native, layout and motion checks plus the remaining human adoption decision.
