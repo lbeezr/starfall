@@ -4,7 +4,7 @@
 
 Port only the celebration change onto main `3b42b42`, preserving its v6 saves, Opal, five-feed Dusk, exact recipes, causal relays, dialogue and independent-column input. The earlier published prototype snapshot is not the merge base or a device-delivery source. Core and simulator builds pass. The earlier integration passed all 214 hosted tests; final runtime checks encountered simulator stalls, detailed below. Physical preference and full actual VoiceOver remain separate acceptance.
 
-**Next action:** merge this bounded development integration as requested; complete visual/physical acceptance before release. No phone installation is requested; future delivery must use the canonical updater on merged main.
+**Next action:** PR #82 is merged as `1952312`. Recover simulator/XCTest execution, then complete the outstanding native and visual/physical acceptance before release. No phone installation is requested; future delivery must use the canonical updater on merged main.
 
 ## What changed and stayed authoritative
 
@@ -49,3 +49,15 @@ Release uses generic arm64 iOS Simulator, no signing, and separate DerivedData. 
 ## Remaining checks
 
 Inspect normal-motion constellation/recipe release and counter collection, especially dense boards and danger chrome, then judge haptic/audio weight during repeated physical play. Carry unresolved appearance and preference forward explicitly; a merged development feature is not release acceptance. Keep screenshot names/source snapshots aligned with [screenshot practice](../../SCREENSHOTS.md).
+
+## Retry after waking the Mac — October 18, 2026
+
+**Result: Blocked at simulator/test infrastructure.** Tested merged main `1952312eec8db0ed8bd630f4d001af4c8585c6c5` with a clean working tree and unchanged runtime sources. The user requested another attempt after waking the Mac. The same Xcode/iOS toolchain above was used.
+
+- XcodeBuildMCP `test_sim`, selecting all `StarfallAppTests`, built/prepared products and launched the host on Physics Review. No test assertions executed. A sampled host stack waited in `XCTestDriver._prepareTestConfigurationAndIDESession` and `XCTFuture`; the bounded attempt was canceled. The tool reported zero passes and one system cancellation, not an app assertion failure.
+- A data-preserving shutdown of that simulator stalled. Its own `launchd_sim` process was terminated, but the simulator remained Shutting Down; its pending shutdown/boot commands were stopped. No simulator erase, shared CoreSimulator service restart or other session termination was performed.
+- A second environment check used the already-booted iPhone 17e `4103C352-DFC2-493E-A224-DE4CE3D50889`, iOS 27.0. Native selectors covered recipe/relay, five-star trace/short cancellation, settings/background, largest-text recipe actions and welcome/background. Build/signing completed, but the sampled xcodebuild stack waited in simulator app installation. No selected test started; the run was canceled after roughly two minutes. These checks remain unverified.
+
+Raw logs, process samples and result bundles are retained under ignored `artifacts/celebrations-retry/`. The native command is in `native-17e.log`; hosted tool output is in `hosted-mcp.log`. Hygiene and diff checks pass. No source, save contract, test assertions or player data were changed. No new screenshots, animation, actual VoiceOver or physical-device evidence resulted; the capture index remains Needs refresh.
+
+The waits at session setup, simulator shutdown and installation indicate an infrastructure problem; they do not establish an application defect or prove its absence. Next recovery: restart the Mac mini when other active sessions can be stopped, then rerun the same checks. Existing native/hosted passes above retain their original source limits.

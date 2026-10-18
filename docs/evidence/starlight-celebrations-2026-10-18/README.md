@@ -1,5 +1,7 @@
 # Starlight celebrations — historical prototype build
 
+**Award visibility correction:** [Missing +N root cause and fix](AWARD_VISIBILITY_FIX.md). The total was visible; nested anchor registration prevented the separate overlay from appearing.
+
 **Current work:** [Current-main integration](INTEGRATION.md) supersedes this old-base prototype for delivery. This record remains bound to its original source and tests.
 
 **Result:** Partially verified · **Owner:** current implementer · **Date:** October 18, 2026

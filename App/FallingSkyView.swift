@@ -150,7 +150,7 @@ import StarfallCore
                             if !largeText, let warning = DuskWarning(game: store.game) { SkyDuskCue(warning: warning) }
                             if !largeText, let message = store.inputMessage { SkyInputStatus(message: message) }
                         }
-                        .anchorPreference(key: StarlightAnchors.self, value: .bounds) { [.header: $0] }
+                        .starlightAnchor(.header)
                         Spacer(minLength: 0)
                         if !largeText { guide(compact: compact, maximumHeight: footerHeight) }
                     }
@@ -223,7 +223,7 @@ import StarfallCore
                 SpringKeyframe(1.14, duration: 0.12)
                 CubicKeyframe(1, duration: 0.2)
             }
-            .anchorPreference(key: StarlightAnchors.self, value: .bounds) { [.score: $0] }
+            .starlightAnchor(.score)
             .foregroundStyle(StarfallTheme.Colors.textPrimary)
             .shadow(color: StarfallTheme.Colors.skyTop, radius: 3)
             .frame(minHeight: StarfallTheme.Layout.minimumTarget).allowsHitTesting(false)
@@ -321,7 +321,7 @@ import StarfallCore
                 }
 
             }
-            .anchorPreference(key: StarlightAnchors.self, value: .bounds) { [.board: $0] }
+            .starlightAnchor(.board)
             // Keep the group unlabelled: a label here replaces leaf star labels
             // during touch exploration. Terrace context belongs to the score hint.
             .accessibilityElement(children: .contain)
