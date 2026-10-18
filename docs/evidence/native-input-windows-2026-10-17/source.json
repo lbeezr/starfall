@@ -1,0 +1,32 @@
+{
+  "base": "f359f94fb1c94ba9c7025a6a71e82c77c8bd48e6",
+  "dirtyPaths": [
+    " M AppTests/README.md",
+    " M Starfall.xcodeproj/project.pbxproj",
+    "?? AppTests/NativeInputWindowTests.swift",
+    "?? docs/evidence/native-input-windows-2026-10-17/"
+  ],
+  "inputSHA256": {
+    "App/FallingSkyMotion.swift": "83aca7fd2d47c877112f25644d0025b9d505d14d2bbae16bca50980beff48d38",
+    "App/FallingSkyScene.swift": "30b165afefe5d6d3e02c54d17b12566384ac45042f5e37c966e45de2bdb07f18",
+    "App/FallingSkyStore.swift": "72182e28dc39b4f20650d5fee701b93494b32420fa6dfc00bf7735b7920c7e5f",
+    "App/SkySaveArchive.swift": "46c14c814e84d0848c1b0f3beb911378bf01cffe87c02676286b1a82abba69c3",
+    "AppTests/NativeInputWindowTests.swift": "f2ff39738c239a4d66610286d78c51866ce8b8e7d9a137dc8fb96b51650a8479",
+    "Sources/StarfallCore/ConstellationFixture.swift": "a5171ffe6cf0747904aac570a6f986eec0fdf74eeb53f7062dc7b294dd25e385",
+    "Sources/StarfallCore/FallingSky.swift": "822bcabad20c756ae52c59fe14f8d8714d013f8901e4310db40047b785e8c950",
+    "Sources/StarfallCore/Game.swift": "9ab2d57af8fe0ee804ce56e762eb5833a08ae5f39e8916ffaa0fe708d90e7086",
+    "Sources/StarfallCore/GravityFieldRules.swift": "ef5308b515340c2eafe1b226cee70a27701a6e906b6c975380d13af818f4130c",
+    "Sources/StarfallCore/RefillMapping.swift": "608be41f40c945b18aba5512bac16b7c4de4eb8a2747d6fe54a895392b38e5f7",
+    "Sources/StarfallCore/SkyCadence.swift": "a01a1ab5fe50e7677bd2e1af75563a5bcc316e1828e921e7da2f572202b76b8c",
+    "Sources/StarfallCore/SkyGeneration.swift": "be47904d5cbb187953fe0b307eb1b208a60539c72f4e7a2dbd356b1eac99fd57",
+    "Sources/StarfallCore/StarfallBalance.swift": "32525ba2f346cf843863b1cb1cba8a2fab66d088b9dc7ac308867f1520c329ec",
+    "Sources/StarfallCore/StarfallChallenge.swift": "0475f660c21ae42cce0df8c11dc40adbbb841e58b6c66b82a1293c720bd26b72",
+    "Starfall.xcodeproj/project.pbxproj": "d7c124d4d73c416b02d2d6e80f3ea7c7bf50963aa80d3c250854fd04e7a35a55"
+  },
+  "rawEventSHA256": {
+    "artifacts/native-input-windows/orbit-repeat.events.json": "05c2855f5f76c69896596b71c94e804a1f67084d37f715dc527b41c965c30915",
+    "artifacts/native-input-windows/orbit.events.json": "6698f38da186f50b3601313fbb0fffd7ad1d64d5ac6cd5a7675be28d5136eada",
+    "artifacts/native-input-windows/standard.events.json": "ad408789fc379db41644ea7008cc423383ec63e32dad52b5e6bfdb4512eda547"
+  },
+  "scope": "Actual Store clock and SpriteKit in hosted native test window; not UIKit touch latency, human reaction, frame rate or preference."
+}
