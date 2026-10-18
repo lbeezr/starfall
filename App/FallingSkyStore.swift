@@ -131,7 +131,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         constellationHoldSequence &+= 1
         constellationHold = constellationHoldSequence
         constellationTracing = true
-        freezeClock()
+        freezeClock(for: .contact)
         #if DEBUG
         observeTiming(.state)
         #endif
@@ -536,12 +536,21 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         }
     }
 
-    private func freezeClock() {
+    private enum ClockFreezeReason { case contact, interruption }
+
+    private func freezeClock(for reason: ClockFreezeReason = .interruption) {
         #if DEBUG
         if deadline != nil || rainDue { observeTiming(.cancelled) }
         #endif
-        if rainDue { remaining = 0.5 }
-        else if let deadline { remaining = min(showerInterval, max(0.5, deadline - clock.now)) }
+        let minimumRemaining: TimeInterval = reason == .contact ? 0 : 0.5
+        if rainDue { remaining = minimumRemaining }
+        else if let deadline {
+            remaining = min(showerInterval, max(minimumRemaining, deadline - clock.now))
+        } else {
+            // A background/pause interruption can arrive while contact already owns
+            // the frozen clock. Apply that interruption's policy to the held remainder.
+            remaining = min(showerInterval, max(minimumRemaining, remaining))
+        }
         rainGeneration &+= 1
         clock.cancel()
         deadline = nil; nextShowerDate = nil; rainDue = false

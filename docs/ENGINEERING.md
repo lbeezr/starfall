@@ -17,6 +17,8 @@ Use this index for current priorities. The dated records below retain their orig
 | P2 — visual recognition | Long default-text footer warnings require inner scroll; dense awards can overlap a survivor. Current captures do not settle recognition or distraction. | Next copy/overlay change or RC. Inspect complete warnings/actions and repeated ordinary/recipe/relay awards at default/maximum text on compact/large devices. [Footer](evidence/dialogue-only-hud-2026-10-18/README.md), [awards](evidence/calibration-critical-mass-2026-10-18/AWARDS.md). |
 | P2 — delivery evidence pending | The configured iPhone was unavailable during this debt work. Main merge does not prove installation. | Device reconnect. Use only `device-update.py`, verify actual installed identity/source and retained save/preferences. [Delivery contract](DEVELOPMENT_BUILDS.md#reject-stale-delivery-and-detect-external-replacements). |
 
+[Follow-up debt work](TECH_DEBT_FOLLOWUP.md) now corrects contact holds manufacturing shower time. Exact remaining time and nested interruption grace pass focused clock and native input checks; [evidence](evidence/debt-followup-2026-10-18/README.md).
+
 ## Reductions already shipped
 
 | Scope | Current boundary / evidence |
