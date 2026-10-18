@@ -56,9 +56,9 @@ Point counts and names are presentation cues, not scoring rules. Normal stars ar
 
 Embed the existing file where it helps a decision; link this page for the full catalog. Keep paths relative, dimensions modest and proportions intact. Retain alt text, the asset/capture/concept distinction and a nearby evidence link. For the protocol and folder coverage rules, see [the writing process](../WRITING.md).
 
-## Magnetic crystal and gravity hole
+## Attraction field and gravity hole
 
-<img src="../../App/Assets.xcassets/StarCastMagnet.imageset/body.png" width="128" alt="Horizontal teal faceted magnetic crystal with two dominant gold tips">
+<img src="../../App/Assets.xcassets/StarCastField.imageset/body.png" width="128" alt="Open blue-gold attraction aura with light wisps and a transparent center">
 <img src="../../App/Assets.xcassets/StarCastHole.imageset/body.png" width="128" alt="Opaque dark gravity hole encircled by a luminous blue-gold accretion ribbon">
 
-**Packaged production artwork — October 17, 2026.** Built-in imagegen sources and exact prompts are retained in [StarCast artwork](../../Artwork/StarCast/README.md#magnetic-crystal-and-gravity-hole). These cutouts replace the initial arrow glyphs; [runtime evidence](../evidence/gravity-art-2026-10-17/README.md) separately covers small-size materials, native play and full/reduced motion.
+**Packaged production artwork — October 17, 2026.** Built-in imagegen sources and exact prompts are retained in [StarCast artwork](../../Artwork/StarCast/README.md#magnetic-crystal-and-gravity-hole). The field supersedes the solid magnetic crystal; [runtime evidence](../evidence/gravity-art-2026-10-17/README.md) separately covers small-size materials, native play and full/reduced motion.

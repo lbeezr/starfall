@@ -13,7 +13,8 @@ final class StarCastTests: XCTestCase {
             XCTAssertEqual(body.size, CGSize(width: 256, height: 256))
             XCTAssertNotEqual(try XCTUnwrap(body.cgImage).alphaInfo, CGImageAlphaInfo.none)
             let offset = StarCast.groundOffset(for: kind, radius: 20)
-            XCTAssertGreaterThan(offset, 10)
+            if kind == .magnet { XCTAssertEqual(offset, 0, "A field has no solid contact point") }
+            else { XCTAssertGreaterThan(offset, 10) }
             XCTAssertLessThanOrEqual(offset, 20)
             XCTAssertEqual(StarCast.groundOffset(for: kind, radius: 30), offset * 1.5, accuracy: 0.01)
         }
@@ -466,7 +467,7 @@ final class StarCastTests: XCTestCase {
 
 
 extension StarCastTests {
-    @MainActor func testPackagedGravityKeepsOpaqueCenterAndOneSharedMaterialPerObject() throws {
+    @MainActor func testPackagedGravityKeepsOpenFieldOpaqueHoleAndSharedMaterials() throws {
         var images: [Data] = []
         for identity in [StarCast.Identity.magnet, .hole] {
             let image = StarCast.image(for:identity)
@@ -475,7 +476,10 @@ extension StarCastTests {
             let context = try XCTUnwrap(CGContext(data:&pixels,width:256,height:256,bitsPerComponent:8,
                 bytesPerRow:256*4,space:CGColorSpaceCreateDeviceRGB(),bitmapInfo:CGImageAlphaInfo.premultipliedLast.rawValue))
             context.draw(cg,in:CGRect(x:0,y:0,width:256,height:256))
-            XCTAssertGreaterThanOrEqual(pixels[(128*256+128)*4+3],250,"The dark center must occlude the board")
+            let centerPixelIndex: Int = 131_587
+            let centerAlpha: UInt8 = pixels[centerPixelIndex]
+            if identity == .magnet { XCTAssertLessThanOrEqual(centerAlpha,16,"The attraction field must leave empty space visible") }
+            else { XCTAssertGreaterThanOrEqual(centerAlpha,250,"The hole's dark center must occlude the board") }
             XCTAssertEqual(pixels[3],0)
             let texture = StarCast.texture(for:identity,expression:.idle)
             for expression in StarCast.Expression.allCases {
@@ -490,5 +494,23 @@ extension StarCastTests {
             XCTAssertFalse(images.contains(try XCTUnwrap(StarCast.image(for:reference).pngData())))
         }
         XCTAssertEqual(StarCast.cachedMaterialCount,86)
+    }
+}
+
+
+extension StarCastTests {
+    @MainActor func testAttractionFieldsHaveNoGroundShadowsOrStarDescription() throws {
+        let game = GravityFixture.opportunity.game()
+        let scene = FallingSkyScene(size:CGSize(width:350,height:560))
+        scene.render(game)
+        let fieldIDs = game.board.compactMap { $0 }.filter { $0.gravityKind == .magnet }.map(\.id)
+        XCTAssertEqual(fieldIDs.count,2)
+        for id in fieldIDs {
+            XCTAssertNil(scene.children[0].childNode(withName:"sky.ground.\(id)"))
+        }
+        let roots = scene.children[0].children.filter { $0.name?.hasPrefix("sky.ground.") == true }
+        XCTAssertEqual(roots.count,game.occupiedCount-fieldIDs.count)
+        XCTAssertEqual(StarCast.character(for:.magnet).description,"Attraction field")
+        XCTAssertNil(UIImage(named:"StarCastMagnet"),"The superseded solid star must not remain in the product")
     }
 }

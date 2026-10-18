@@ -45,6 +45,7 @@ import StarfallCore
 
     /// Finite, local response. Replacing it resets the local anchor rather than accumulating kicks.
     func acknowledge(from source: CGPoint, impulse: CGVector, step: CGFloat) {
+        guard gem.gravityKind != .magnet else { return }
         character.removeAction(forKey: Self.responseKey)
         character.position = .zero; character.zRotation = 0
         character.warpGeometry = gem.isLight ? OpalMotion.round : nil

@@ -959,7 +959,9 @@ final class GravityUITests: XCTestCase {
     }
     @MainActor func testFloorCollisionOrbitClearAndRestore() {
         let app=launch("opportunity"), middle=app.buttons["experiment.cell.0.3"]
-        ready(middle); capture("gravity-before"); middle.tap()
+        ready(middle)
+        XCTAssertTrue(app.buttons["experiment.cell.0.2"].label.contains("Attraction field"))
+        capture("gravity-before"); middle.tap()
         XCTAssertTrue(XCTNSPredicateExpectation(predicate:NSPredicate(format:"label CONTAINS %@","Gravity hole"),object:middle).wait(timeout:8))
         ready(middle); capture("gravity-captured")
         let next=app.buttons["experiment.next"]; XCTAssertTrue(next.waitForExistence(timeout:5)); next.tap()

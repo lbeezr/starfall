@@ -55,6 +55,7 @@ import StarfallCore
 
     /// Shadow placement follows the packaged body and growth, not the square texture canvas.
     static func groundOffset(for identity: Identity, radius: CGFloat) -> CGFloat {
+        if identity == .magnet { return 0 }
         let name = character(for: identity).name
         _ = material(for: identity, expression: .idle, facing: .front)
         return radius * (bodyHeights[name] ?? silhouetteSide) / silhouetteSide
@@ -77,7 +78,7 @@ import StarfallCore
         case .opal:
             Character(name: "Opal", points: 0, description: "White Opal Orb")
         case .magnet:
-            Character(name: "Magnet", points: 0, description: "Magnetic star")
+            Character(name: "Field", points: 0, description: "Attraction field")
         case .hole:
             Character(name: "Hole", points: 0, description: "Gravity hole")
         }

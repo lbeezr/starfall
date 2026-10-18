@@ -6,6 +6,12 @@ Run `tools/art-quality/package_star_cast.py` with Python/Pillow to repeat grid s
 
 ## Magnetic crystal and gravity hole
 
+**Historical magnetic-crystal direction:** superseded by the open attraction field below. The hole remains current.
+
 `magnet-body-v1.png` and `hole-body-v1.png` are original cutouts generated with the built-in OpenAI image tool for the production gravity mechanic. [Exact prompts](gravity-prompts-v1.json) and [source/package hashes](gravity-packaging.json) record provenance. These are faceless objects: the magnetic crystal has opposed gold tips and a teal waist; the hole has an opaque dark center and a blue-gold accretion ribbon.
 
 Run `python3 tools/art-quality/package_star_cast.py --gravity` in a Python environment with Pillow to reproduce the two 256×256 catalog assets. This reuses the cast's alpha-island/padding/aspect normalization. No new image synthesis occurs in packaging; no creative edits were made after generation. The assets are `StarCastMagnet` and `StarCastHole`; one cached material per object serves board, flight and forecast. Source images remain unmodified. Art review is distinct from native visual/motion acceptance.
+
+## Attraction field revision
+
+The user rejected the solid magnetic star silhouette. Current `StarCastField` replaces `StarCastMagnet` with an open aura: [generated source](field-body-v1.png), [exact built-in imagegen prompt](attraction-field-prompt-v1.txt), and the current [gravity packaging receipt](gravity-packaging.json). `package_star_cast.py --gravity` now packages Field and Hole. Field preserves both wisps and disconnected motes without largest-island pruning, fits alpha ≥16 to the same padded 256-pixel canvas, and requires a transparent center; Hole retains its opaque-center and island rules. The original magnetic crystal source and prompt remain historical provenance, but its runtime image set is removed.
