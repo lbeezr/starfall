@@ -1,6 +1,10 @@
 import importlib.util
 from pathlib import Path
 import unittest
+import json
+import subprocess
+import tempfile
+from unittest.mock import patch
 
 spec = importlib.util.spec_from_file_location('rc_platforms', Path(__file__).with_name('rc-platforms.py'))
 rc = importlib.util.module_from_spec(spec); spec.loader.exec_module(rc)
@@ -57,6 +61,103 @@ class RCPlatformsTests(unittest.TestCase):
         self.assertIn('240', command); self.assertIn('CODE_SIGN_IDENTITY=-', command)
         self.assertEqual(sum(arg.startswith('-only-testing:') for arg in command), 3)
         self.assertFalse(any('skip-testing' in arg for arg in command))
+
+
+class RCExecutionTests(unittest.TestCase):
+    def execute(self, *, test_error=None, returncode=0, summary_error=None, cleanup_error=None, booted=False, summary=None):
+        root = Path(self.directory.name)
+        artifacts = root / 'artifacts'; artifacts.mkdir(exist_ok=True)
+        temporary = root / 'temporary'; temporary.mkdir(exist_ok=True)
+        selection = dict(role='tablet', udid='pad', state='Booted' if booted else 'Shutdown', tests=rc.TESTS['tablet'])
+        commands = []
+
+        def run(command, **kwargs):
+            commands.append(command)
+            if command[0] == 'xcodebuild':
+                result = Path(command[command.index('-resultBundlePath') + 1])
+                result.mkdir(exist_ok=True); (result / 'partial').write_text('native failure evidence')
+                kwargs['stdout'].write('x' * (rc.MAX_LOG_BYTES + 100))
+                if test_error: raise test_error
+                return subprocess.CompletedProcess(command, returncode)
+            if 'shutdown' in command and cleanup_error: raise cleanup_error
+            return subprocess.CompletedProcess(command, 0)
+
+        def export(*args, **kwargs):
+            if summary_error: raise summary_error
+            return json.dumps(summary or dict(passedTests=3, totalTestCount=3, failedTests=0, skippedTests=0)).encode()
+
+        with patch.object(rc.subprocess, 'run', side_effect=run), patch.object(rc.subprocess, 'check_output', side_effect=export):
+            error = None
+            try: rc.run(selection, artifacts, temporary)
+            except Exception as caught: error = caught
+        record = json.loads((artifacts / 'rc-tablet-execution.json').read_text())
+        return error, record, artifacts, temporary, commands
+
+    def setUp(self):
+        self.directory = tempfile.TemporaryDirectory()
+        self.addCleanup(self.directory.cleanup)
+
+    def test_timeout_survives_shutdown_timeout_and_partial_bundle_survives_temporary_cleanup(self):
+        timeout = subprocess.TimeoutExpired(['xcodebuild'], 900)
+        cleanup = subprocess.TimeoutExpired(['simctl', 'shutdown'], 30)
+        error, record, artifacts, temporary, _ = self.execute(test_error=timeout, cleanup_error=cleanup)
+        self.assertIs(error, timeout)
+        self.assertEqual(record['status'], 'failed'); self.assertEqual(record['stage'], 'tests')
+        self.assertIn('shutdown:', record['secondaryErrors'][0])
+        import shutil
+        shutil.rmtree(temporary)
+        self.assertEqual((artifacts / 'rc-tablet-failure.xcresult' / 'partial').read_text(), 'native failure evidence')
+        self.assertLessEqual((artifacts / 'rc-tablet.log').stat().st_size, rc.MAX_LOG_BYTES + 20)
+        self.assertTrue((artifacts / 'rc-tablet-summary.json').exists())
+
+    def test_nonzero_tests_are_primary_even_when_summary_export_fails(self):
+        error, record, _, _, _ = self.execute(returncode=65, summary_error=ValueError('partial unavailable'))
+        self.assertIsInstance(error, subprocess.CalledProcessError); self.assertEqual(error.returncode, 65)
+        self.assertEqual(record['stage'], 'tests')
+        self.assertIn('partial summary:', record['secondaryErrors'][0])
+        self.assertEqual(record['result']['status'], 'retained')
+
+    def test_summary_export_or_count_failure_cannot_pass(self):
+        error, record, _, _, _ = self.execute(summary_error=ValueError('bad summary'))
+        self.assertIsInstance(error, ValueError); self.assertEqual(record['stage'], 'summary')
+        error, record, _, _, _ = self.execute(summary=dict(passedTests=2, totalTestCount=3, failedTests=1, skippedTests=0))
+        self.assertIsInstance(error, ValueError); self.assertEqual(record['status'], 'failed')
+
+    def test_cleanup_failure_fails_successful_tests_but_never_shuts_down_prebooted_device(self):
+        cleanup = subprocess.TimeoutExpired(['simctl', 'shutdown'], 30)
+        error, record, _, _, _ = self.execute(cleanup_error=cleanup)
+        self.assertIs(error, cleanup); self.assertEqual(record['stage'], 'shutdown')
+        error, record, artifacts, _, commands = self.execute(cleanup_error=cleanup, booted=True)
+        self.assertIsNone(error); self.assertEqual(record['status'], 'passed')
+        self.assertFalse(any('shutdown' in command or 'boot' in command for command in commands))
+        self.assertFalse((artifacts / 'rc-tablet-failure.xcresult').exists())
+
+    def test_main_marks_failed_run_before_temporary_storage_is_removed(self):
+        import os
+        original = Path.cwd()
+        self.addCleanup(os.chdir, original)
+        os.chdir(self.directory.name)
+        error = subprocess.TimeoutExpired(['xcodebuild'], 900)
+        visited = []
+        def fail(selection, artifacts, temporary):
+            visited.append(temporary)
+            self.assertTrue(temporary.exists())
+            raise error
+        with patch('sys.argv', ['rc-platforms.py']), patch.object(rc.subprocess, 'check_output', return_value=json.dumps(RCPlatformsTests().inventory()).encode()), patch.object(rc, 'run', side_effect=fail):
+            with self.assertRaises(subprocess.TimeoutExpired) as caught: rc.main()
+        self.assertIs(caught.exception, error)
+        self.assertEqual(json.loads(Path('artifacts/rc-platform-plan.json').read_text())['status'], 'failed')
+        self.assertFalse(visited[0].exists())
+
+    def test_oversize_bundle_retains_bounded_inventory_and_replaces_previous_bundle(self):
+        result = Path(self.directory.name) / 'result'; result.mkdir()
+        (result / 'large').write_bytes(b'12345')
+        destination = Path(self.directory.name) / 'retained'; destination.mkdir()
+        (destination / 'stale').write_text('old')
+        with patch.object(rc, 'MAX_RESULT_BYTES', 4):
+            record = rc.retain_failure(result, destination)
+        self.assertEqual(record['status'], 'over-limit'); self.assertEqual(record['files'], ['large'])
+        self.assertFalse(destination.exists())
 
 
 if __name__ == '__main__': unittest.main()
