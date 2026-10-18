@@ -41,3 +41,18 @@ Source: task-2 main `879788b` plus `App/FallingSkyStore.swift`, `App/FallingSkyP
 `SkyDialogueLibrary.result` reads only committed turn/game values and narrow trace/recipe/relay inputs. It has no store or session reference. `SkyPresentationLedger` owns ticket epochs, outstanding turns, pending forecast precedence and changing-column reservations; it cannot schedule, save or render. The store retains input generations, single deadline, session/speech policy, and save-before-animation ordering. The original result precedence and simultaneous presentation behavior are preserved.
 
 Core: 162 passed. Hosted Store, ResponsiveInput, SkyPhasePresentation, SkyDialogue, StarlightCelebration and SkyTechnique suites: **96 passed, zero failures/skips**. A new behavioral check covers two outstanding turns, reverse completion, duplicate completion, invalidation and stale completion against a replacement. Debug simulator build passed. Native responsive-input suite: **2 passed**, covering small-drift taps at normal/maximum text and incomplete-trace cancellation followed by a valid tap. Hygiene/diff checks passed. Initial compilation caught an omitted trace-count input during extraction; it was corrected before successful verification. No gameplay/save/visual contract changes. Actual VoiceOver deferred to RC.
+
+## Task 4 — avoid idle admission simulations
+
+Source: task-3 main `1de9a6a`, first with only the new dense admission characterization in `AppTests/ResponsiveInputTests.swift`, then with two idle exits in `App/FallingSkyStore.swift`. Same Xcode 27.1 / Debug / iOS 27.0 simulator.
+
+Reproducible scenario: restore `ObservatoryReviewFixture.game(dense: true)`, activate while paused, and query all 49 cells 100 times (4,900 clear queries and 4,900 nonempty trace queries). Admission checks must allow invalid/empty targets to reach Core explanations; empty traces and suspension retain their explicit reasons. Snapshot/archive must remain unchanged.
+
+| Measurement | Before | After |
+| --- | --- | --- |
+| Entire assertion/query loop | 0.078438 seconds | 0.003708 seconds |
+| Clear admissions | 4,900 | 4,900 |
+
+This is a bounded simulator CPU characterization, not an Instruments device trace, FPS measurement or battery claim. The baseline precedes the production edit. Without outstanding presentations there are no reserved columns, so action simulation cannot affect admission. Busy-board simulations and all actual commit/snapshot/generation checks remain unchanged. No cache or duplicate Core legality implementation was added.
+
+Core: 162 passed. Hosted ResponsiveInput, NativeInputWindow, TraceInputPolish and FallingSkyStore suites: **78 passed, zero failures/skips**; includes due/contact order, partial columns, pauses and stale input. Debug simulator build passed. Native stationary hold and Settings/background gesture recovery: **2 passed**, zero failures/skips. Hygiene/diff checks pass. Actual VoiceOver deferred to RC; no physical-performance claim.
