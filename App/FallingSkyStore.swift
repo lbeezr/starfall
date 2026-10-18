@@ -329,8 +329,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         remaining = showerInterval
         scene.decorativeMotionActive = !suspended
         scene.onLayout = { [weak self] in
-            self?.feedback.stopSounds()
-            self?.settlePresentation()
+            self?.settleInterruptedPresentation(reason: "presentation")
         }
         scene.onReadinessChanged = { [weak self] ready in
             guard let self else { return }
@@ -466,9 +465,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         guard !suspended, !game.isOver else { return }
         isPaused.toggle()
         if isPaused {
-            freezeClock()
-            settlePresentation(reason: "pause")
-            feedback.stopSounds()
+            interruptPlay(reason: "pause")
             dialogue.reset(); guide("guide.paused")
         } else {
             dialogue.reset(); guide("guide.started"); dialogue.show(pausedGuideLine)
@@ -628,9 +625,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         defer { observeTiming(.state) }
         #endif
         isPaused = true
-        feedback.stopSounds()
-        freezeClock(); remaining = showerInterval
-        settlePresentation(reason: "restart")
+        interruptPlay(reason: "restart")
         #if DEBUG
         let replayAllowed = !isTechniqueFixture && sameSky
         isTechniqueFixture = false
@@ -653,9 +648,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     #if DEBUG
     func loadConstellationFixture(_ fixture: ConstellationFixture) {
         isPaused = true
-        feedback.stopSounds()
-        freezeClock()
-        settlePresentation(reason: "fixture")
+        interruptPlay(reason: "fixture")
         game = fixture.game().adoptingFeedingDusk()
         refreshCadence()
         remaining = showerInterval
@@ -668,8 +661,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     #if DEBUG
     func loadGravityFixture(_ fixture: GravityFixture) {
         isPaused = true
-        feedback.stopSounds()
-        freezeClock(); settlePresentation()
+        interruptPlay(reason: "presentation")
         game = fixture.game().adoptingFeedingDusk(); refreshCadence(); remaining = showerInterval
         guide("guide.fixture", values: ["detail": fixture.message])
         save(); presenter.render(game)
@@ -685,9 +677,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         defer { observeTiming(.state) }
         #endif
         isPaused = true
-        feedback.stopSounds()
-        freezeClock()
-        settlePresentation(reason: "challenge")
+        interruptPlay(reason: "challenge")
         game = FallingSky(challenge: .firstLight)
         refreshCadence()
         remaining = showerInterval
@@ -704,7 +694,8 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         game.setBalance(balance)
         refreshCadence()
         remaining = showerInterval
-        settlePresentation(reason: "balance")
+        // Balance changes freeze before committing the new cadence; settle afterward.
+        settleInterruptedPresentation(reason: "balance")
         dialogue.reset(); guide("guide.balance")
         save()
         armClock()
@@ -729,7 +720,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         guard suspended != value else { return }
         suspended = value
         scene.decorativeMotionActive = !value
-        if value { feedback.stopSounds(); freezeClock(); settlePresentation(reason: "suspension") }
+        if value { interruptPlay(reason: "suspension") }
         else {
             // Persist the retained store's chosen sky before its clock can run.
             save()
@@ -739,9 +730,22 @@ enum SkyTerminalSpeech { case feedback, ceremony }
 
     func setReducedMotion(_ value: Bool) {
         guard presenter.reduceMotion != value else { return }
-        feedback.stopSounds()
         presenter.reduceMotion = value
-        settlePresentation(reason: "motion")
+        settleInterruptedPresentation(reason: "motion")
+    }
+
+    /// Round/clock interruptions stop the single deadline before invalidating input.
+    /// Callers choose pause/suspension and replacement state explicitly.
+    private func interruptPlay(reason: String) {
+        freezeClock()
+        settleInterruptedPresentation(reason: reason)
+    }
+
+    /// Presentation-only interruptions preserve clock phase. Settling owns input
+    /// generation, celebration expiry, outstanding animations and stale completions.
+    private func settleInterruptedPresentation(reason: String) {
+        feedback.stopSounds()
+        settlePresentation(reason: reason)
     }
 
     func settlePresentation(reason: String = "presentation") {

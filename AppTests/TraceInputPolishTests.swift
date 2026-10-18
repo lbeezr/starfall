@@ -294,3 +294,48 @@ extension TraceInputPolishTests {
         XCTAssertFalse(session.technique.arranging, "Current-main empty-sky reconciliation remains authoritative")
     }
 }
+
+extension TraceInputPolishTests {
+    @MainActor func testLifecycleTeardownRetiresHeldTicketsAndOldRain() throws {
+        for boundary in ["restart", "challenge", "balance", "suspension", "motion", "layout", "traceFixture", "gravityFixture"] {
+            let suite = "Teardown.\(boundary).\(UUID())", defaults = UserDefaults(suiteName:suite)!
+            defer { defaults.removePersistentDomain(forName:suite) }
+            let presenter = FallingSkyRecorder(), clock = ManualRainClock(), feedback = TeardownFeedback()
+            let store = FallingSkyStore(defaults:defaults,arguments:["--starfalls-reset"],presenter:presenter,clock:clock,feedback:feedback)
+            store.setSuspended(false); store.loadConstellationFixture(.diagonalSix); store.togglePause()
+            let newPace: StarfallBalance.Pace = store.game.balance.pace == .gentle ? .steady : .gentle
+            let oldRain = clock.action
+            let hold = try XCTUnwrap(store.beginConstellationHold())
+            func interrupt() {
+                switch boundary {
+                case "restart": store.restart(sameSky:true)
+                case "challenge": store.startFirstLight()
+                case "balance": store.setPace(newPace)
+                case "suspension": store.setSuspended(true)
+                case "motion": store.setReducedMotion(true)
+                case "layout": store.scene.onLayout?()
+                case "traceFixture": store.loadConstellationFixture(.overlap)
+                default: store.loadGravityFixture(.opportunity)
+                }
+            }
+            let stops = feedback.stops
+            interrupt()
+            XCTAssertEqual(feedback.stops, stops + 1, boundary)
+            let committed = store.game, deadline = clock.deadline
+            XCTAssertFalse(store.constellationTracing,boundary)
+            oldRain?(); store.endConstellationHold(hold); presenter.finish()
+            XCTAssertEqual(store.game,committed,boundary)
+            XCTAssertEqual(clock.deadline,deadline,boundary)
+            interrupt()
+            XCTAssertEqual(store.game,committed,"Repeated interruption preserves committed state: \(boundary)")
+            XCTAssertEqual(clock.deadline,deadline,"Repeated interruption preserves the chosen clock phase: \(boundary)")
+        }
+    }
+}
+
+@MainActor private final class TeardownFeedback: FallingSkyFeedbackProviding {
+    var stops = 0
+    func collected(soundEnabled: Bool, hapticsEnabled: Bool, reducedMotion: Bool) {}
+    func announce(_ message: String) {}
+    func stopSounds() { stops += 1 }
+}
