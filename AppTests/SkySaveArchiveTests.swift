@@ -202,3 +202,30 @@ extension SkySaveArchiveTests {
         XCTAssertEqual(defaults.dictionary(forKey: SkySaveArchive.rejectedKey)?["value"] as? Data, future)
     }
 }
+
+extension SkySaveArchiveTests {
+    @MainActor func testSemanticallyInvalidCurrentSkyRejectsWithoutLegacyFallbackOrWrites() throws {
+        for duplicate in [false, true] {
+            let defaults = makeDefaults()
+            let game = FallingSky.freshSurvival(seed: 5)
+            var envelope = try XCTUnwrap(JSONSerialization.jsonObject(with: SkySaveArchive.encode(game)) as? [String: Any])
+            var fields = try XCTUnwrap(envelope["game"] as? [String: Any])
+            if duplicate {
+                var forecast = try XCTUnwrap(fields["incoming"] as? [[String: Any]])
+                forecast[1]["id"] = forecast[0]["id"]; fields["incoming"] = forecast
+            } else { fields["blockedColumn"] = 6 }
+            envelope["game"] = fields
+            let rejected = try JSONSerialization.data(withJSONObject: envelope)
+            defaults.set(rejected, forKey: SkySaveArchive.key)
+            defaults.set(try JSONEncoder().encode(FallingSky(seed: 99)), forKey: SkySaveArchive.legacyKey)
+            XCTAssertThrowsError(try SkySaveArchive.decode(rejected))
+            let store = FallingSkyStore(defaults: defaults, arguments: [], presenter: FallingSkyRecorder(), clock: ManualRainClock())
+            XCTAssertFalse(store.hasSavedSky); XCTAssertEqual(store.rejectedSaveKey, SkySaveArchive.key)
+            XCTAssertEqual(defaults.data(forKey: SkySaveArchive.key), rejected)
+            XCTAssertNil(defaults.object(forKey: SkySaveArchive.rejectedKey))
+            store.setSuspended(false)
+            XCTAssertEqual(defaults.dictionary(forKey: SkySaveArchive.rejectedKey)?["value"] as? Data, rejected)
+            XCTAssertEqual(try SkySaveArchive.decode(XCTUnwrap(defaults.data(forKey: SkySaveArchive.key))), store.game)
+        }
+    }
+}
