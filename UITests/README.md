@@ -23,3 +23,5 @@ Its active forecast/phase check verifies the final presentation integration: sep
 `testOpalPlanningTwoTapOrdersKeepTheirDistinctRewards` compares Amber-first and Aqua-first through normal native taps on the seeded Debug fixture; automation establishes outcomes, not human recognition or timing.
 
 `testTinyEdgeReleaseResumesAutomaticSkyAndOrdinaryInput` uses a native sub-slop drag from an eligible edge star and waits for a committed new-family arrival, then checks menu dismissal.
+
+`testAutomaticStormCountsRecoverWithoutManualShowersOrClears` observes the complete three-heavy count and recovery using the actual automatic clock; it establishes sequence delivery, not a player reaction-time or preference result.

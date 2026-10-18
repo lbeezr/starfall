@@ -1,0 +1,61 @@
+{
+  "base": "ca68199229c0b4da0feb880c113884a4f305729f",
+  "dirtyPaths": [
+    " M UITests/ConstellationTraceNativeTests.swift",
+    " M UITests/README.md",
+    "?? docs/evidence/storm-automatic-presentation-2026-10-17/"
+  ],
+  "limits": "No human play, actual VoiceOver, physical device, pressure-choice or smoothness result. Native automatic test and video have different source records.",
+  "testSHA256": "5127d3478a33f6f9505165883f329f5408c022163c6676f7b18c7099506b71de",
+  "video": {
+    "activeFirstPTS": 39.275,
+    "activeLastPTS": 55.98833333333334,
+    "activeSamples": 120,
+    "equivalentPublishedTree": "f266ab9a33e9d73dcbfc596415b5d507bceb7679",
+    "frameTimes": [
+      {
+        "actual": 40.965,
+        "requested": 41
+      },
+      {
+        "actual": 42.906666666666666,
+        "requested": 43
+      },
+      {
+        "actual": 43.99,
+        "requested": 44
+      },
+      {
+        "actual": 45.92333333333333,
+        "requested": 46
+      },
+      {
+        "actual": 46.94,
+        "requested": 47
+      },
+      {
+        "actual": 48.925,
+        "requested": 49
+      }
+    ],
+    "medianDeltaSeconds": 0.04,
+    "p95DeltaSeconds": 0.7433333333333323,
+    "preview": "artifacts/storm-motion-current/storm-preview.mp4",
+    "previewDurationSeconds": 16.988333333333333,
+    "previewSHA256": "99a1985e0a360daf766638ca1c807a92e85e0ca330c62a9c03467ed8d692c92f",
+    "previewSize": [
+      592,
+      1280
+    ],
+    "previewStartRawSeconds": 39,
+    "raw": "artifacts/storm-motion-current/automatic-storm.mp4",
+    "rawDurationSeconds": 55.98833333333334,
+    "rawSHA256": "0e8595dbf584a2fc4b010a43cea86f5e52390020000ba596285e679e2fe14895",
+    "rawSize": [
+      1170,
+      2532
+    ],
+    "requestedFPS": 30,
+    "source": "a898957b15cf12270dfa58a1981a0ec6db0212c3"
+  }
+}
