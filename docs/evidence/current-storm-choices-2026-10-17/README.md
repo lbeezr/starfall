@@ -47,3 +47,7 @@ Production App/Core/resources/project are unchanged from main **1b466c3**. Only 
 Raw reports/compiler/progress logs remain under ignored artifacts/opal-choices. No app was installed or retained phone round reset. An attempted fast-forward to the API-published equivalent failed because local and published history differ; full trees were identical, and the clean research branch was then created directly from origin/main before accepted sampling. This did not alter source or results.
 
 **Decision:** Retain the diagnostic counters for reproducible future comparisons; adopt no new mechanic, route or tuning. The remaining question is whether the offered choices are legible and rewarding during normal falling play. Current results support testing that question, not declaring the game more enjoyable.
+
+## Mechanism follow-up
+
+[Current native fixture investigation](../current-opal-native-2026-10-17/README.md) reconstructs seed 180 exactly. Its equal-first benefit comes from clearing occupied orbit slots and releasing Aqua, while Opal remains unused in the follow-up. The preservation metric labels a property of the alternative, not proof that Opal causes its reward. The nine-light branch requires a curved trace; two ordinary taps give eight versus six. Keep this distinction when presenting the example.

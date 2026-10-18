@@ -212,4 +212,30 @@ final class WhiteConnectorTests: XCTestCase {
         }
     }
 
+    func testCurrentStormPlanningPreservesPreviewAndExposesOrbitReleaseChoices() throws {
+        let original = ConstellationFixture.opalStormPlanning.game()
+        XCTAssertEqual(original.turns, 12)
+        XCTAssertEqual(original.score, 30)
+        XCTAssertEqual(original.generation, .gravityOrbits)
+        XCTAssertEqual(original.orbit?.windowsRemaining, 2)
+        for mode in 0..<3 {
+            var game = original
+            let preserving = mode != 0
+            XCTAssertEqual(game.clear(preserving ? Cell(0,4) : Cell(0,1))?.collected, 3)
+            XCTAssertEqual(game.orbit == nil, preserving)
+            XCTAssertEqual(game.board.compactMap { $0 }.filter(\.isLight).count, preserving ? 1 : 0)
+            let second: FallingSkyTurn?
+            if mode == 2 {
+                second = game.clearConstellation([Cell(0,4),Cell(0,5),Cell(0,6),Cell(1,6),Cell(2,5)])
+            } else { second = game.clear(Cell(0,4)) }
+            XCTAssertEqual(second?.collected, mode == 0 ? 3 : mode == 1 ? 5 : 6)
+            XCTAssertEqual(game.incoming, original.incoming)
+            XCTAssertEqual(game.turns, original.turns)
+            XCTAssertEqual(game.board.compactMap { $0 }.filter(\.isLight).count, preserving ? 1 : 0,
+                           "The stronger follow-up comes from orbit release; it does not spend Opal")
+            XCTAssertTrue(game.isValidSave)
+            XCTAssertEqual(try JSONDecoder().decode(FallingSky.self, from: JSONEncoder().encode(game)), game)
+        }
+    }
+
 }

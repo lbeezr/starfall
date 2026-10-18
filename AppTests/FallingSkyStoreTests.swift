@@ -1173,3 +1173,37 @@ extension FallingSkyStoreTests {
         XCTAssertEqual(store.game.turns, committed.turns + 1)
     }
 }
+
+
+extension FallingSkyStoreTests {
+    @MainActor func testCurrentOpalOrbitChoiceAndTraceSurviveOneDueRecoveryShower() throws {
+        let (store, presenter, clock, _) = makeOpeningStore()
+        store.loadConstellationFixture(.opalStormPlanning)
+        let initial = store.game
+        store.togglePause()
+        XCTAssertEqual(try XCTUnwrap(clock.deadline) - clock.now, 1.7, accuracy: 0.001)
+        store.clear(Cell(0,4))
+        XCTAssertEqual(store.game.score, 33)
+        XCTAssertNil(store.game.orbit)
+        clock.advance(1.7)
+        clock.advance(30)
+        XCTAssertEqual(store.game.turns, 12)
+        XCTAssertFalse(store.canClear)
+        presenter.finish()
+        XCTAssertEqual(store.game.turns, 13)
+        presenter.finish()
+        XCTAssertTrue(store.canClear)
+        XCTAssertEqual(try XCTUnwrap(clock.deadline) - clock.now, 2.5, accuracy: 0.001)
+        let path = [Cell(0,4),Cell(0,5),Cell(0,6),Cell(1,6),Cell(2,5)]
+        store.clearTracedConstellation(path, snapshot: store.game, generation: store.constellationInputGeneration)
+        presenter.finish()
+        var expected = initial
+        XCTAssertEqual(expected.clear(Cell(0,4))?.collected, 3)
+        XCTAssertNotNil(expected.letStarsFall())
+        XCTAssertEqual(expected.clearConstellation(path)?.collected, 6)
+        XCTAssertEqual(store.game, expected)
+        XCTAssertEqual(store.game.score, 39)
+        XCTAssertEqual(store.game.board.compactMap { $0 }.filter(\.isLight).count, 1)
+        XCTAssertTrue(store.game.isValidSave)
+    }
+}

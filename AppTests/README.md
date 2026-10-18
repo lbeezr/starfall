@@ -33,3 +33,5 @@ Camera placement tests distinguish full canvas dimensions from safe-area-reduced
 `NativeInputWindowTests` uses the real scheduler and SpriteKit scene in a visible isolated test window to measure Store input admission through an automatic storm. It is native presentation timing, not a finger-latency or human-preference result; full-motion checks skip under active system quiet accessibility modes.
 
 Gravity overlap checks share the natural seed setup and verify airborne/phase concurrency, receiver response after movement, landing order, body identity, replacement/quiet parity and a bounded nominal fast-shower presentation budget; real input-window reports remain timing observations rather than reaction-time assertions.
+
+The current Opal/orbit planning deadline test commits the field-releasing clear, delivers exactly one due recovery shower, then commits the curved six-light trace through the snapshot/generation boundary. It checks exact Core equality and does not model finger timing.
