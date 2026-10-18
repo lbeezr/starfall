@@ -60,7 +60,7 @@ final class GravityStoreTests: XCTestCase {
         store.clear(Cell(0,3)); XCTAssertEqual(store.game,formed)
         presenter.finish(); store.clear(Cell(0,3))
         XCTAssertEqual(store.game,formed)
-        XCTAssertTrue(store.message.contains("captive"))
+        XCTAssertEqual(store.message, "Clear a matching group that includes a trapped star. The hole will close and free the others.")
     }
     @MainActor func testPreviousAndLegacySaveBytesStayUntouched() {
         let (store,defaults,presenter,_)=make()

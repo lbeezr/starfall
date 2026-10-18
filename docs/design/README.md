@@ -6,6 +6,10 @@ Behavior proposals, production contracts and research supporting decisions.
 
 ## Start here
 
+[Celebration lettering](celebration-lettering/README.md) compares custom Pearl, Crystal and Comet treatments for central reward notices; concept only; the [complete Crystal Comet set](celebration-lettering/crystal-comet-01/README.md) develops the user-selected Crystal Burst lead with a 70/20/10 supporting blend.
+
+[Harvest feedback](HARVEST_FEEDBACK.md) refines scoring light and central combo celebrations without changing the committed award.
+
 [UX writing research](UX_WRITING_RESEARCH.md) audits copy against UX and game-dialogue sources and defines the vocabulary, six voices and acceptance checks behind the authorized rewrite. The [copy authoring guide](../../App/DialogueScripts/README.md) owns implemented wording and event policy.
 
 [Calibration](CALIBRATION.md) holds the mechanic set steady and sequences measured balance, native play and bounded refinement.

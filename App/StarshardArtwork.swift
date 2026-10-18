@@ -124,7 +124,7 @@ import StarfallCore
             let rect = CGRect(x: CGFloat(index * frameSide), y: 0,
                               width: CGFloat(frameSide), height: CGFloat(frameSide))
             guard let crop = atlas.cropping(to: rect),
-                  let alpha = alphaBounds(in: crop), paddedInterior.contains(alpha) else { return nil }
+                  let alpha = ArtworkRaster.alphaBounds(in: crop), paddedInterior.contains(alpha) else { return nil }
             crops.append(crop)
             bounds.append(alpha)
         }
@@ -149,24 +149,4 @@ import StarfallCore
                         motionAlphaBounds: bounds.reduce(CGRect.null) { $0.union($1) })
     }
 
-    private static func alphaBounds(in image: CGImage) -> CGRect? {
-        let side = frameSide
-        var pixels = [UInt8](repeating: 0, count: side * side * 4)
-        return pixels.withUnsafeMutableBytes { bytes -> CGRect? in
-            guard let context = CGContext(data: bytes.baseAddress, width: side, height: side,
-                                          bitsPerComponent: 8, bytesPerRow: side * 4,
-                                          space: CGColorSpaceCreateDeviceRGB(),
-                                          bitmapInfo: CGBitmapInfo.byteOrder32Big.rawValue
-                                            | CGImageAlphaInfo.premultipliedLast.rawValue) else { return nil }
-            context.draw(image, in: CGRect(x: 0, y: 0, width: CGFloat(side), height: CGFloat(side)))
-            var minX = side, minY = side, maxX = -1, maxY = -1
-            for y in 0..<side { for x in 0..<side where bytes[(y * side + x) * 4 + 3] != 0 {
-                minX = min(minX, x); minY = min(minY, y)
-                maxX = max(maxX, x); maxY = max(maxY, y)
-            } }
-            guard maxX >= minX, maxY >= minY else { return nil }
-            return CGRect(x: CGFloat(minX), y: CGFloat(minY),
-                          width: CGFloat(maxX - minX + 1), height: CGFloat(maxY - minY + 1))
-        }
-    }
 }

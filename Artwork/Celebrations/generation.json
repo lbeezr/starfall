@@ -1,0 +1,82 @@
+{
+  "date": "2026-10-18",
+  "tool": "Built-in image_gen.imagegen",
+  "sourceReference": "docs/design/celebration-lettering/crystal-comet-01/title-family.png",
+  "format": "Unmodified transparent PNG neutral materials, cropped once at runtime; not SVG or a font",
+  "sourceCommit": "809c818",
+  "entries": [
+    {
+      "name": "Brilliant",
+      "asset": "CelebrationBrilliant",
+      "prompt": "Produce one PRODUCTION TRANSPARENT WORD ART CUTOUT for Starfall. The reference sheet is the user's SELECTED artwork. This is an extraction/refinement of a specific row, not a new font concept. Preserve that row's exact distinctive broad crystal-cut glyph silhouettes, slightly comet-swept terminals, clear counters and title-case spelling. The whole word must look like the reference: crystal-dominant, friendly sculpted dimensional lettering, with modest sweeping capital/terminal and shallow depth. Preserve the exclamation mark as a proper exclamation mark (long stem plus small faceted dot).\nIMPORTANT: convert the material to NEUTRAL SILVER/PEARL GRAYSCALE suitable for runtime colorization. Only gray/white/black values, NO amber, blue, green, pink, purple or chromatic fringes. Bright near-white front planes, midgray broad facets, darker gray shallow bevel/depth. Maintain crisp large facets; do not invent complex cracks. No pure white halo that erases the silhouette, no opaque backing. Keep shallow shadow integrated into the cutout; no large exterior cast shadow. The source's bright/rich dimensional facet detail must survive in grayscale. This neutral luminance artwork will be colored live by the game.\n\nOutput ONLY the requested exact word and its exclamation mark, isolated on genuinely transparent alpha. Remove ALL row labels, dividers, headings, footer, background, numbers, ornamental free-floating sparkles and other words. Do not include a rectangle, checkerboard, dark canvas, trim marks, frame, scene or icon. No extra text. Give all edges at least 5% transparent padding so flourishes are never clipped. Keep the word comfortably large and sharply rendered on a wide horizontal canvas; no rotated text or perspective. Production sprite, not a presentation sheet.\nExtract the first amber Brilliant row. Render the exact text \"Brilliant!\" and nothing else.",
+      "originalOutput": "/Users/lbeezr/.codex/generated_images/01a14f7f-9955-78d2-a338-8fd45df646a9/exec-6b362cf1-6545-4f50-8d27-aeea960b7660.png",
+      "packagedPath": "App/Assets.xcassets/CelebrationBrilliant.imageset/material.png",
+      "sha256": "794f47993f5147f40a351a50397784a12dc5128639c2cae3b7fce87f9c39e4c7"
+    },
+    {
+      "name": "Constellation",
+      "asset": "CelebrationConstellation",
+      "prompt": "Produce one PRODUCTION TRANSPARENT WORD ART CUTOUT for Starfall. The reference sheet is the user's SELECTED artwork. This is an extraction/refinement of a specific row, not a new font concept. Preserve that row's exact distinctive broad crystal-cut glyph silhouettes, slightly comet-swept terminals, clear counters and title-case spelling. The whole word must look like the reference: crystal-dominant, friendly sculpted dimensional lettering, with modest sweeping capital/terminal and shallow depth. Preserve the exclamation mark as a proper exclamation mark (long stem plus small faceted dot).\nIMPORTANT: convert the material to NEUTRAL SILVER/PEARL GRAYSCALE suitable for runtime colorization. Only gray/white/black values, NO amber, blue, green, pink, purple or chromatic fringes. Bright near-white front planes, midgray broad facets, darker gray shallow bevel/depth. Maintain crisp large facets; do not invent complex cracks. No pure white halo that erases the silhouette, no opaque backing. Keep shallow shadow integrated into the cutout; no large exterior cast shadow. The source's bright/rich dimensional facet detail must survive in grayscale. This neutral luminance artwork will be colored live by the game.\n\nOutput ONLY the requested exact word and its exclamation mark, isolated on genuinely transparent alpha. Remove ALL row labels, dividers, headings, footer, background, numbers, ornamental free-floating sparkles and other words. Do not include a rectangle, checkerboard, dark canvas, trim marks, frame, scene or icon. No extra text. Give all edges at least 5% transparent padding so flourishes are never clipped. Keep the word comfortably large and sharply rendered on a wide horizontal canvas; no rotated text or perspective. Production sprite, not a presentation sheet.\nExtract the second aqua Constellation row. Render the exact text \"Constellation!\" and nothing else.",
+      "originalOutput": "/Users/lbeezr/.codex/generated_images/01a14f7f-9955-78d2-a338-8fd45df646a9/exec-03096a5f-9a6a-48c0-a42e-083dab7d137a.png",
+      "packagedPath": "App/Assets.xcassets/CelebrationConstellation.imageset/material.png",
+      "sha256": "30b52b29fee53a53e141c7e32aafa7e75880f1ff8ba590329e12f9e1f29f323b"
+    },
+    {
+      "name": "Square",
+      "asset": "CelebrationSquare",
+      "prompt": "Produce one PRODUCTION TRANSPARENT WORD ART CUTOUT for Starfall. The reference sheet is the user's SELECTED artwork. This is an extraction/refinement of a specific row, not a new font concept. Preserve that row's exact distinctive broad crystal-cut glyph silhouettes, slightly comet-swept terminals, clear counters and title-case spelling. The whole word must look like the reference: crystal-dominant, friendly sculpted dimensional lettering, with modest sweeping capital/terminal and shallow depth. Preserve the exclamation mark as a proper exclamation mark (long stem plus small faceted dot).\nIMPORTANT: convert the material to NEUTRAL SILVER/PEARL GRAYSCALE suitable for runtime colorization. Only gray/white/black values, NO amber, blue, green, pink, purple or chromatic fringes. Bright near-white front planes, midgray broad facets, darker gray shallow bevel/depth. Maintain crisp large facets; do not invent complex cracks. No pure white halo that erases the silhouette, no opaque backing. Keep shallow shadow integrated into the cutout; no large exterior cast shadow. The source's bright/rich dimensional facet detail must survive in grayscale. This neutral luminance artwork will be colored live by the game.\n\nOutput ONLY the requested exact word and its exclamation mark, isolated on genuinely transparent alpha. Remove ALL row labels, dividers, headings, footer, background, numbers, ornamental free-floating sparkles and other words. Do not include a rectangle, checkerboard, dark canvas, trim marks, frame, scene or icon. No extra text. Give all edges at least 5% transparent padding so flourishes are never clipped. Keep the word comfortably large and sharply rendered on a wide horizontal canvas; no rotated text or perspective. Production sprite, not a presentation sheet.\nExtract the third mint Square row. Render the exact text \"Square!\" and nothing else.",
+      "originalOutput": "/Users/lbeezr/.codex/generated_images/01a14f7f-9955-78d2-a338-8fd45df646a9/exec-d72026f7-e1f5-4d40-a630-57912beb5807.png",
+      "packagedPath": "App/Assets.xcassets/CelebrationSquare.imageset/material.png",
+      "sha256": "63d48934112e0a4a729172e90c8542ff5380e493649a4990a114d3a4945612fa"
+    },
+    {
+      "name": "Cross",
+      "asset": "CelebrationCross",
+      "prompt": "Produce one PRODUCTION TRANSPARENT WORD ART CUTOUT for Starfall. The reference sheet is the user's SELECTED artwork. This is an extraction/refinement of a specific row, not a new font concept. Preserve that row's exact distinctive broad crystal-cut glyph silhouettes, slightly comet-swept terminals, clear counters and title-case spelling. The whole word must look like the reference: crystal-dominant, friendly sculpted dimensional lettering, with modest sweeping capital/terminal and shallow depth. Preserve the exclamation mark as a proper exclamation mark (long stem plus small faceted dot).\nIMPORTANT: convert the material to NEUTRAL SILVER/PEARL GRAYSCALE suitable for runtime colorization. Only gray/white/black values, NO amber, blue, green, pink, purple or chromatic fringes. Bright near-white front planes, midgray broad facets, darker gray shallow bevel/depth. Maintain crisp large facets; do not invent complex cracks. No pure white halo that erases the silhouette, no opaque backing. Keep shallow shadow integrated into the cutout; no large exterior cast shadow. The source's bright/rich dimensional facet detail must survive in grayscale. This neutral luminance artwork will be colored live by the game.\n\nOutput ONLY the requested exact word and its exclamation mark, isolated on genuinely transparent alpha. Remove ALL row labels, dividers, headings, footer, background, numbers, ornamental free-floating sparkles and other words. Do not include a rectangle, checkerboard, dark canvas, trim marks, frame, scene or icon. No extra text. Give all edges at least 5% transparent padding so flourishes are never clipped. Keep the word comfortably large and sharply rendered on a wide horizontal canvas; no rotated text or perspective. Production sprite, not a presentation sheet.\nExtract the fourth rose Cross row. Render the exact text \"Cross!\" and nothing else.",
+      "originalOutput": "/Users/lbeezr/.codex/generated_images/01a14f7f-9955-78d2-a338-8fd45df646a9/exec-236db8c9-0bea-4611-938c-000eb151f903.png",
+      "packagedPath": "App/Assets.xcassets/CelebrationCross.imageset/material.png",
+      "sha256": "e691abccd8e00887a29571fb6351fea34951d8e837d9b8b9e84863633dae87e5"
+    },
+    {
+      "name": "Relay",
+      "asset": "CelebrationRelay",
+      "prompt": "Produce one PRODUCTION TRANSPARENT WORD ART CUTOUT for Starfall. The reference sheet is the user's SELECTED artwork. This is an extraction/refinement of a specific row, not a new font concept. Preserve that row's exact distinctive broad crystal-cut glyph silhouettes, slightly comet-swept terminals, clear counters and title-case spelling. The whole word must look like the reference: crystal-dominant, friendly sculpted dimensional lettering, with modest sweeping capital/terminal and shallow depth. Preserve the exclamation mark as a proper exclamation mark (long stem plus small faceted dot).\nIMPORTANT: convert the material to NEUTRAL SILVER/PEARL GRAYSCALE suitable for runtime colorization. Only gray/white/black values, NO amber, blue, green, pink, purple or chromatic fringes. Bright near-white front planes, midgray broad facets, darker gray shallow bevel/depth. Maintain crisp large facets; do not invent complex cracks. No pure white halo that erases the silhouette, no opaque backing. Keep shallow shadow integrated into the cutout; no large exterior cast shadow. The source's bright/rich dimensional facet detail must survive in grayscale. This neutral luminance artwork will be colored live by the game.\n\nOutput ONLY the requested exact word and its exclamation mark, isolated on genuinely transparent alpha. Remove ALL row labels, dividers, headings, footer, background, numbers, ornamental free-floating sparkles and other words. Do not include a rectangle, checkerboard, dark canvas, trim marks, frame, scene or icon. No extra text. Give all edges at least 5% transparent padding so flourishes are never clipped. Keep the word comfortably large and sharply rendered on a wide horizontal canvas; no rotated text or perspective. Production sprite, not a presentation sheet.\nExtract the fifth violet Relay row. Render the exact text \"Relay!\" and nothing else.",
+      "originalOutput": "/Users/lbeezr/.codex/generated_images/01a14f7f-9955-78d2-a338-8fd45df646a9/exec-8c311e5a-79ef-4e4c-a1bd-f41e89d57a4a.png",
+      "packagedPath": "App/Assets.xcassets/CelebrationRelay.imageset/material.png",
+      "sha256": "fe416c804172eb6b4257465d83f0a845c5f70f81191c01e20b4fb74ffc926859"
+    },
+    {
+      "name": "Glyphs",
+      "asset": "CelebrationGlyphs",
+      "prompt": "Clean and normalize this twelve-glyph sprite atlas for actual game use. Keep the twelve digits/signs and their exact crystal designs, do not change spelling or add characters.\nRequired exact layout: four equal columns and three equal rows, order first row 0 1 2 3, second row 4 5 6 7, third row 8 9 + -. Canvas aspect precisely 4:3. Every cell must contain ONE centered glyph at approximately 68% of the cell's height, with at least 14% EMPTY TRANSPARENT margin above/below and on left/right. The plus and hyphen may be shorter but remain centered. Ensure no glyph touches or crosses any implicit cell boundary; rows must be clearly separated with empty alpha space. Uniform scale for all ten digits, baselines consistent.\nRemove ALL the speckled debris, colored flecks, checker noise, mist, fringe particles and background fragments currently surrounding the glyphs and inside their counters. Outside the actual clean glyph silhouettes the alpha MUST be zero: truly transparent clean empty pixels. The inner holes of 0,4,6,8,9 must also be clean alpha. No grayscale flat backing. Keep large crisp gray-white facets and gray bevels, exclusively neutral grayscale silver/pearl. Preserve the reference's shapes and dimensional broad facets; no decorative sparks or glow beyond the silhouette.\nONLY the twelve cutout glyphs. No labels, grid lines, counters, dots, text, footer, numbers repeated or frame. Production sprite atlas, transparent alpha.",
+      "originalOutput": "/Users/lbeezr/.codex/generated_images/01a14f7f-9955-78d2-a338-8fd45df646a9/exec-59b372b5-0409-4ad9-82c9-b7df96a5e999.png",
+      "packagedPath": "App/Assets.xcassets/CelebrationGlyphs.imageset/material.png",
+      "sha256": "63d98c91a683cfb9b155aa344239acc48b4faf24112c75977017ec86fa3c1aaf"
+    }
+  ],
+  "glyphRegistration": {
+    "width": 1448,
+    "height": 1086,
+    "columnWidth": 362,
+    "rowEdges": [
+      0,
+      400,
+      750,
+      1086
+    ],
+    "order": "0123456789+-",
+    "note": "Final source was not perfectly uniform; explicit optical row registrations replace the initial uniform-grid brief."
+  },
+  "discardedAtlasAttempt": "/Users/lbeezr/.codex/generated_images/01a14f7f-9955-78d2-a338-8fd45df646a9/exec-e6598dc7-aa8c-4505-ba8f-ce9b086189b2.png",
+  "initialGlyphPrompt": "Create a PRODUCTION SPRITE ATLAS containing EXACTLY TWELVE GLYPHS on genuinely transparent alpha. Match the companion carved-crystal numeral designs in the supplied Starfall reference sheet. This is asset production, NOT a presentation board or new font concept.\nLayout MUST be an exact equal-cell 4-COLUMN by 3-ROW GRID, filling the rectangular canvas. Each glyph sits centered within its OWN uniform rectangular cell and stays at least 12% of the cell width/height clear of ALL cell borders. Baselines and visual height should match among the ten digits. No marks, particles or shadow may cross a cell boundary. Equal margins around the entire canvas as cell interiors, not an extra outer border. The output will be mechanically sliced into 12 equal cells.\nExact row-major contents:\nrow 1: 0, 1, 2, 3\nrow 2: 4, 5, 6, 7\nrow 3: 8, 9, +, -\nEach digit/sign appears ONCE, with no comma or row label. The dash is a short centered horizontal hyphen. Plus is a clear upright plus, NOT a star.\nMaterial is exclusively NEUTRAL GRAYSCALE SILVER/PEARL for runtime tinting: near-white front facets, midgray planes, darker-gray shallow bevel depth. NO cyan/purple/amber/chromatic fringe. Strong broad faceted strokes, clear open counters, 0 open oval, 1 recognizable, 4 readable, 6/9 distinct, 8 with two obvious holes. Preserve reference crystal-cut style with a modest forward gesture; no thin script or ordinary sans-serif. Do not add sparkles, labels, grid lines, backdrop, headings, footer, scene, texture plate, checkerboard, framing or additional text. No ready-made +8, score or Relay word. ONLY twelve isolated glyphs.\nThe desired atlas aspect is 4:3, e.g. a 1536x1152 canvas with four 384-wide columns and three 384-high rows. A different resolution is acceptable ONLY if the grid still has equal cells, and the dimension ratio remains 4:3. Transparent background is essential. Sharp, clean reusable game sprites, no clipping.",
+  "references": [
+    {
+      "path": "docs/design/celebration-lettering/crystal-comet-01/title-family.png",
+      "role": "Selected title designs"
+    },
+    {
+      "path": "docs/design/celebration-lettering/crystal-comet-01/numerals-and-light.png",
+      "role": "Companion numerals, followed by the recorded atlas repair"
+    }
+  ]
+}

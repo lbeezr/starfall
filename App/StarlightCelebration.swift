@@ -10,8 +10,26 @@ struct StarlightCelebration: Equatable, Identifiable {
     let total: Int
     let cells: [Cell]
     let path: [Cell]
+    struct Contributor: Equatable {
+        let cell: Cell
+        let identity: SkyIdentity
+        let reward: Int
+    }
+    let contributors: [Contributor]
+    /// Award energy is continuous and bounded; categories still name real achievements.
+    var energy: Double { Self.energy(for: collected) }
+    static func energy(for award: Int) -> Double { min(1, max(0, Double(award - 3) / 15)) }
+    var isExceptional: Bool {
+        if case .relay = level { return true }
+        return collected >= 8
+    }
+    var packets: [Contributor] {
+        let count = min(6, contributors.count)
+        guard count > 1 else { return contributors }
+        return (0..<count).map { contributors[$0 * (contributors.count - 1) / (count - 1)] }
+    }
     let level: Level
-    static let duration: TimeInterval = 1.15
+    static let duration: TimeInterval = 1.4
     var title: String? {
         switch level {
         case .ordinary: nil
@@ -30,6 +48,9 @@ struct StarlightCelebration: Equatable, Identifiable {
         guard !cells.isEmpty else { return nil }
         self.id = id; self.started = started; self.collected = turn.collected
         self.total = total; self.cells = cells
+        contributors = cells.compactMap { cell in
+            old.gem(at: cell).map { Contributor(cell: cell, identity: $0.identity, reward: old.reward(of: [cell])) }
+        }
         // Only the validated input path supplied by the store names a constellation.
         self.path = recipe?.presentationPath ?? path
         if relayDepth > 1 { level = .relay(relayDepth) }
@@ -68,30 +89,23 @@ struct StarlightCelebrationOverlay: View {
     var body: some View {
         TimelineView(.animation(minimumInterval: 1 / 60, paused: quiet)) { timeline in
             let age = quiet ? 0.3 : max(0, timeline.date.timeIntervalSince(event.started))
-            let fade = quiet ? 1 : min(1, max(0, (StarlightCelebration.duration - age) / 0.22))
+            let exit = min(1, max(0, (age - 1.08) / 0.32))
+            let fade = quiet ? 1 : min(1, age / 0.07) * (1 - exit)
+            let entrance = min(1, max(0, age - 0.04) / 0.22)
+            let recoil = event.title == nil ? 0 : sin(age * 48) * max(0, 1 - age / 0.28) * (2 + event.energy * 3)
             ZStack(alignment: .topLeading) {
                 if !quiet {
                     Canvas { context, _ in draw(in: &context, age: age) }
                 }
-                // At large text sizes use available header-adjacent space and native wrapping.
-                VStack(spacing: StarfallTheme.Spacing.compact) {
-                    if showsTitle, let title = event.title {
-                        Text(title)
-                            .font(StarfallTheme.Typography.celebrationTitle)
-                            .foregroundStyle(StarfallTheme.Observatory.lanternGlow)
-                            .fixedSize(horizontal: false, vertical: true)
-                    }
-                    Text("+\(event.collected)")
-                        .font(StarfallTheme.Typography.celebrationAward)
-                        .foregroundStyle(StarfallTheme.Colors.textPrimary)
-                        .monospacedDigit()
-                }
+                CrystalCelebrationLabel(event: event, tint: accent, width: calloutWidth, showsTitle: showsTitle)
                 .multilineTextAlignment(.center)
                 .shadow(color: StarfallTheme.Colors.skyTop, radius: 3)
-                .shadow(color: StarfallTheme.Observatory.lanternGlow.opacity(0.6), radius: quiet ? 0 : 8)
+                .shadow(color: accent.opacity(0.8), radius: quiet ? 0 : 10)
                 .frame(width: calloutWidth)
-                .scaleEffect(quiet ? 1 : 1 + 0.12 * sin(min(1, max(0, age - 0.06) / 0.22) * .pi))
-                .offset(x: calloutX, y: calloutY)
+                .scaleEffect(quiet ? 1 : (0.72 + 0.28 * entrance + (0.16 + event.energy * 0.12) * sin(entrance * .pi)))
+                .rotationEffect(.degrees(quiet ? 0 : recoil * 0.4))
+                .offset(x: calloutX + (quiet ? 0 : recoil),
+                        y: calloutY + (quiet ? 0 : 22 * (1 - entrance) - 32 * exit * exit))
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
             .opacity(fade)
@@ -102,8 +116,8 @@ struct StarlightCelebrationOverlay: View {
 
     private var mapping: ObservatoryGeometry { ObservatoryGeometry(size: board.size) }
     private var hasSkyRoom: Bool { mapping.frame(Cell(6, 3)).minY + board.minY - header.maxY >= 88 }
-    private var showsTitle: Bool { !textSize.isAccessibilitySize && hasSkyRoom }
-    private var usesLocalAward: Bool { !textSize.isAccessibilitySize && !hasSkyRoom }
+    private var showsTitle: Bool { !textSize.isAccessibilitySize }
+    private var usesLocalAward: Bool { event.title == nil && !textSize.isAccessibilitySize && !hasSkyRoom }
     private var calloutWidth: CGFloat { usesLocalAward ? 128 : max(1, board.width - 32) }
     private var awardOrigin: CGPoint {
         let points = event.cells.map(location)
@@ -115,8 +129,21 @@ struct StarlightCelebrationOverlay: View {
     }
     private var calloutY: CGFloat {
         if textSize.isAccessibilitySize { return mapping.frame(Cell(0, 3)).maxY + board.minY + 8 }
+        if event.title != nil { return Self.centralCalloutY(board: board, header: header) }
         if usesLocalAward { return awardOrigin.y - 48 }
         return max(header.maxY + 8, mapping.frame(Cell(6, 3)).minY + board.minY - 80)
+    }
+
+    /// Shared with layout regression checks; placement uses the live canvas, not screen globals.
+    static func centralCalloutY(board: CGRect, header: CGRect) -> CGFloat {
+        max(header.maxY + 20, board.minY + board.height * 0.38)
+    }
+
+    private func color(_ contributor: StarlightCelebration.Contributor) -> Color {
+        Color(StarCast.Identity(contributor.identity).color)
+    }
+    private var accent: Color {
+        event.contributors.max(by: { $0.reward < $1.reward }).map(color) ?? .white
     }
 
     private func location(_ cell: Cell) -> CGPoint {
@@ -129,10 +156,18 @@ struct StarlightCelebrationOverlay: View {
         let points = event.cells.map(location)
         let origin = CGPoint(x: points.map(\.x).reduce(0, +) / CGFloat(points.count),
                              y: points.map(\.y).reduce(0, +) / CGFloat(points.count))
-        let gold = StarfallTheme.Observatory.lanternGlow
-        let cyan = StarfallTheme.Colors.actionPrimary
+        let energy = event.energy
         let strong = event.level != .ordinary
         let step = ObservatoryGeometry(size: board.size).imageRect.width / 7.7
+        if event.isExceptional, age < 0.85 {
+            let t = min(1, max(0, age - 0.06) / 0.79)
+            var aurora = context
+            aurora.opacity = sin(t * .pi) * (0.16 + 0.12 * energy)
+            let center = CGPoint(x: board.midX, y: board.minY + board.height * 0.45)
+            aurora.fill(Path(board), with: .radialGradient(
+                Gradient(colors: [accent, accent.opacity(0)]), center: center,
+                startRadius: 0, endRadius: board.width * (0.65 + 0.35 * t)))
+        }
         if age < 0.5 {
             let release = min(1, max(0, (age - 0.08) / 0.4))
             var pulse = context
@@ -141,9 +176,9 @@ struct StarlightCelebrationOverlay: View {
             for index in 0..<(strong ? 24 : 10) {
                 let angle = Double(index) * 2.39996
                 let reach = Double((index * 7) % 13) / 12
-                let distance = step * (0.08 + 0.35 * reach + release * (0.5 + 1.6 * reach))
+                let distance = step * (0.08 + 0.35 * reach + release * (0.5 + (1.6 + energy) * reach))
                 let point = CGPoint(x: origin.x + cos(angle) * distance, y: origin.y + sin(angle) * distance * 0.72)
-                glint(in: &pulse, at: point, radius: index.isMultiple(of: 3) ? 4 : 2, color: index.isMultiple(of: 2) ? gold : cyan)
+                glint(in: &pulse, at: point, radius: index.isMultiple(of: 3) ? 4 : 2, color: color(event.contributors[index % event.contributors.count]))
             }
             if !event.path.isEmpty {
                 var outline = Path()
@@ -153,7 +188,10 @@ struct StarlightCelebrationOverlay: View {
         }
         // Six packets maximum. All represent one committed award, not individual points.
         let destination = CGPoint(x: score.midX, y: score.midY)
-        for (index, point) in points.prefix(6).enumerated() {
+        for (index, contributor) in event.packets.enumerated() {
+            let point = location(contributor.cell)
+            let tint = color(contributor)
+            let weight = Double(contributor.reward - 1) * 0.65
             let t = min(1, max(0, (age - 0.15 - Double(index) * 0.025) / 0.48))
             guard t > 0, t < 1 else { continue }
             let control = CGPoint(x: point.x - board.width * 0.18, y: destination.y + (point.y - destination.y) * 0.35)
@@ -165,18 +203,19 @@ struct StarlightCelebrationOverlay: View {
             var tail = Path()
             tail.addLines((0...12).map { along(max(0, t - 0.22 + Double($0) / 12 * 0.22)) })
             var glow = context
-            glow.addFilter(.shadow(color: cyan, radius: 4))
-            glow.stroke(tail, with: .color(index.isMultiple(of: 2) ? cyan : gold), style: StrokeStyle(lineWidth: 2, lineCap: .round))
-            glint(in: &glow, at: along(t), radius: strong ? 5 : 3.5, color: .white)
+            glow.addFilter(.shadow(color: tint, radius: 4 + 5 * energy))
+            glow.stroke(tail, with: .color(tint.opacity(0.3)), style: StrokeStyle(lineWidth: 7 + energy * 7 + weight, lineCap: .round))
+            glow.stroke(tail, with: .color(tint), style: StrokeStyle(lineWidth: 2 + energy * 3 + weight, lineCap: .round))
+            glint(in: &glow, at: along(t), radius: 3.5 + energy * 3 + weight, color: tint)
         }
         if age > 0.58 {
-            let t = min(1, (age - 0.58) / 0.5)
+            let t = min(1, (age - 0.58) / 0.65)
             var bloom = context
             bloom.opacity = sin(t * .pi) * 0.9
-            bloom.addFilter(.shadow(color: gold, radius: 5))
+            bloom.addFilter(.shadow(color: accent, radius: 5))
             let bounds = score.insetBy(dx: -8 - 5*t, dy: -3 - 3*t)
-            bloom.stroke(Path(roundedRect: bounds, cornerRadius: 18), with: .color(gold), lineWidth: 1.5)
-            glint(in: &bloom, at: CGPoint(x: score.maxX + 8, y: score.minY), radius: 5, color: gold)
+            bloom.stroke(Path(roundedRect: bounds, cornerRadius: 18), with: .color(accent), lineWidth: 1.5 + energy * 2)
+            glint(in: &bloom, at: CGPoint(x: score.maxX + 8, y: score.minY), radius: 5, color: accent)
         }
     }
 

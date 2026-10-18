@@ -293,6 +293,10 @@ The PR integration touches the 1,210-line `FallingSkyStoreTests.swift` only to e
 
 Fresh survival ages all collectible stars through stage three and an automatic stage-four swallow. Trigger: after the first user/husband comparison or if players repeatedly wait for cleanup. Compare rescue/sacrifice choices and idle versus collect-all survival on the same seeds; tune timing/consequence before adding another hazard. Rule/core and simulator evidence cannot establish enjoyment. The retained gravity Debug regression `GravityStoreTests.testInvalidHoleTapAndRapidClearCannotSpendTwice` expects “captive” while the current catalogue says “trapped”; reproduced unchanged on main `33ae6fb`. Trigger: next gravity-fixture/copy test maintenance. Verify the action still leaves state unchanged and asserts the current hole-help event/wording. This feature does not alter that retired mechanic or weaken its assertion.
 
+## Harvest feedback acceptance — October 18, 2026
+
+[The harvest refinement](evidence/harvest-feedback-2026-10-18/README.md) has source-family packets and central special callouts. Sparse default-text native hosted samples establish placement, not dense-board distraction, animation smoothness or tactile satisfaction. Trigger: the next feedback iteration or RC, whichever comes first. Compare repeated small/large clears, recipes and relays on a physical iPhone; inspect dense/danger boards on compact/large phones and largest text, with quiet modes and sound/haptics off. Retain/tune the named weak beat from player observations; full actual VoiceOver remains the RC gate. No new pilot flag or save contract.
+
 ## Calibration evidence after gesture/copy integration — October 18, 2026
 
 [Current evidence](evidence/calibration-timing-and-arrange-2026-10-18/VISIBLE_PLANNING.md) compiles actual `DuskWarning`/`SkyCopy` dependencies and recognizes current visible tap-weight/reward wording. The three-move native plan is outside the one-improving-exchange-per-shower policy; do not treat that policy as an upper bound on strategy. Trigger: dependency/catalogue changes; rerun the current-source model smoke and fresh native scenarios before using measurements.
@@ -310,6 +314,11 @@ The critical-mass change leaves the 1,212-line `FallingSkyStoreTests.swift` inta
 ## Current-rule calibration connectivity — October 18, 2026
 
 [Gap-link evidence](evidence/calibration-timing-and-arrange-2026-10-18/GAP_LINK_CALIBRATION.md) reproduces the timing runner's stale adjacency assertion and corrects timing/Opal enumeration through a shared bounded walker using Core link legality. All three current consumers compile/hash the helper; the gravity wrapper also handles its optional absent example. Historical lab code remains source-bound. Trigger: any future connectivity, family, selection-bound or enumerator dependency change; rerun shared exact-set/blocked-midpoint/Opal checks, model replay and complete event reproducibility before comparing distributions. Human timing and physical gesture comfort remain separate acceptance work.
+
+
+## Crystal Comet physical and dense-board review — October 18, 2026
+
+[Native integration evidence](evidence/crystal-comet-integration-2026-10-18/README.md) verifies sparse/default-text 17e placement plus six interaction checks and current-main rules/save regressions. Trigger: next phone feedback iteration or RC, whichever comes first. Inspect repeated ordinary/large/recipe/relay clears on compact/large phones, dense/danger boards and maximum text; judge whether central art hides future choices or facets muddy small numerals. Keep native fallbacks, fixed material cache and cancellation contracts. Actual VoiceOver remains the RC gate. No claim of physical enjoyment or measured smoothness follows from the captures.
 
 ## Stellar animation observation
 

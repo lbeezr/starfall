@@ -1,0 +1,36 @@
+{
+  "base": "33ae6fbb5e8f546f46e83b25a01a1cf626ea5b89",
+  "runtimeSnapshot": "cd5d7bec9627",
+  "changedInputSHA256": {
+    "App/FallingSkyView.swift": "3e68c0123e34b345f2a5e88bea1cebd13bc93a7f6c08a18b4bd7254a99d73ce8",
+    "App/StarfallTheme.swift": "3f93eeb46999bf742f1971e1700870b8f6ac8254396aa0a3ea6f460739cdbc43",
+    "App/StarlightCelebration.swift": "31778b70d8e356c14c99374090cb37ff35063ea3d5525f7a12ec882a6401fc01",
+    "AppTests/StarlightCelebrationTests.swift": "f61f5662e30124caad45ea4dfda41da5ec6e0746df173489acadb88c8e4c42c9"
+  },
+  "simulator": {
+    "id": "3447731D-D3C6-4DBC-A823-52E1C84C2A5B",
+    "model": "iPhone 17e",
+    "os": "iOS 27.0 (24A434)",
+    "xcode": "27.1 (27A9275)"
+  },
+  "captures": [
+    {
+      "file": "dev-33ae6fb-wip-cd5d7bec9627__aqua-constellation-release__iphone-17e__default-text.jpg",
+      "rawAttachment": "81938CAC-9E17-44D3-A22F-0B44F423411B.png",
+      "resultBundle": "artifacts/harvest-feedback/Hosted.xcresult",
+      "rawSHA256": "2c415f54ffd1b877efd413d4d0ac0e8c4376727fa9696d28e2987d00f35a580c"
+    },
+    {
+      "file": "dev-33ae6fb-wip-cd5d7bec9627__amber-square-hold__iphone-17e__default-text.jpg",
+      "rawAttachment": "D0A2F673-FE3F-4482-AEA3-3F94E1730E86.png",
+      "resultBundle": "artifacts/harvest-feedback/Hosted.xcresult",
+      "rawSHA256": "5e44c555601efb97613c579db4617c027bff86f44258fc1c78a3eff55b8ee46f"
+    },
+    {
+      "file": "dev-33ae6fb-wip-cd5d7bec9627__aqua-relay-hold__iphone-17e__default-text.jpg",
+      "rawAttachment": "48C2D44D-63A5-4367-B994-06ECFC13030C.png",
+      "resultBundle": "artifacts/harvest-feedback/Hosted.xcresult",
+      "rawSHA256": "794b4cb23fe41e27f2227dd182b87b7d2ebbf0ff1535ad53c9e637ae58c5b6bd"
+    }
+  ]
+}

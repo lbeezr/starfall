@@ -115,7 +115,7 @@ import StarfallCore
         .preferredColorScheme(.dark)
         .statusBarHidden(!settings)
         .tint(StarfallTheme.Colors.actionPrimary)
-        .onAppear { store.terminalSpeech = .ceremony; updateSuspension(); store.settlePresentation(); updateMotion() }
+        .onAppear { CrystalCelebrationArtwork.shared.prewarm(); store.terminalSpeech = .ceremony; updateSuspension(); store.settlePresentation(); updateMotion() }
         .onDisappear { invalidateInteraction(); store.setSuspended(true); store.terminalSpeech = .feedback }
         .onChange(of: store.constellationInputGeneration) { invalidateInteraction() }
         .onChange(of: store.game) {
@@ -218,7 +218,7 @@ import StarfallCore
                 content.scaleEffect(quiet || !celebrating ? 1 : scale, anchor: .leading)
             } keyframes: { _ in
                 LinearKeyframe(1, duration: 0.58)
-                SpringKeyframe(1.14, duration: 0.12)
+                SpringKeyframe(1.1 + 0.12 * (store.celebration?.energy ?? 0), duration: 0.12)
                 CubicKeyframe(1, duration: 0.2)
             }
             .starlightAnchor(.score)
