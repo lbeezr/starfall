@@ -12,6 +12,8 @@ Run relevant flows through the Starfall scheme. Keep bounded condition-based wai
 
 `testOpeningCascadeAllowsNativeClearBeforeLastWave` verifies an actual clear during the intro with Calm and system Reduce Motion off, restoring the system preference afterward. Inspect recorded motion separately from the tap assertion.
 
+`testFreshAutomaticVisibleMatchesSeed5` and `testFreshAutomaticVisibleMatchesSeed180` start selection cycles during a 45-second fresh automatic sample after Start sky; an in-flight scan/gesture may finish later. They query the 49 stable cell identifiers afresh, choose the largest exposed reward, keep normal effects enabled, and attach attempts, elapsed times, score/showers and first/final captures. They do not inspect hidden incoming state or pause to select a move. XCTest overhead and snapshot-to-tap races remain part of the observation; these are interaction samples, not human pace or balance acceptance. System Reduce Motion is inherited and must be recorded separately.
+
 `PacingCueUITests` checks baseline isolation; Historical B flows belong to their recorded exports; current checks use the ordinary app. They cover one-wave warning, faster/breathing labels, Settings dismissal, persistent largest-text cues and system Reduce Motion with restoration.
 
 Its active forecast/phase check verifies the final presentation integration: separate vertical space, conservative B header fallback, accessible forecast value and unchanged native cell frames.

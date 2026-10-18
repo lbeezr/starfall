@@ -1,11 +1,6 @@
 // Test-only macOS substitutes. The production Store and trace intent compile unchanged.
 import Foundation
 import StarfallCore
-@MainActor protocol FallingSkyFeedbackProviding: AnyObject {
-    func stopSounds()
-    func announce(_ text: String)
-    func collected(soundEnabled: Bool, hapticsEnabled: Bool, reducedMotion: Bool)
-}
 @MainActor final class GameFeedback: FallingSkyFeedbackProviding {
     func stopSounds() {}
     func announce(_ text: String) {}
@@ -28,19 +23,31 @@ import StarfallCore
     func fire() { let callback = action; cancel(); callback?() }
 }
 @MainActor final class PacingPresenter: FallingSkyPresenting {
+    private struct Presentation {
+        let finishAt: Double
+        let completion: () -> Void
+    }
     var reduceMotion = false
-    var finishAt: Double?
-    var completion: (() -> Void)?
+    private var presentations: [Presentation] = []
+    var finishAt: Double? { presentations.map(\.finishAt).min() }
+    var pendingCount: Int { presentations.count }
+    private(set) var maximumPendingCount = 0
     var growthEvents = 0
     var blockedArrivals = 0
     let clock: PacingClock
     init(_ clock: PacingClock, quiet: Bool) { self.clock = clock; reduceMotion = quiet }
-    func render(_ game: FallingSky) { finishAt = nil; completion = nil }
+    func render(_ game: FallingSky) { presentations.removeAll() }
     func animate(_ turn: FallingSkyTurn, from old: FallingSky, to game: FallingSky, completion: @escaping () -> Void) {
         growthEvents += turn.arrivals.filter(\.grew).count
         if turn.blockedColumn != nil { blockedArrivals += 1 }
         let duration = reduceMotion ? PacingDuration.quiet : turn.arrivals.isEmpty && turn.blockedColumn == nil ? PacingDuration.clearDuration : PacingDuration.flightDuration + PacingDuration.arrivalStagger * Double(max(0, turn.arrivals.count - 1)) + PacingDuration.landingDuration
-        finishAt = clock.now + duration; self.completion = completion
+        presentations.append(.init(finishAt: clock.now + duration, completion: completion))
+        maximumPendingCount = max(maximumPendingCount, presentations.count)
     }
-    func finish() { let callback = completion; finishAt = nil; completion = nil; callback?() }
+    func finish() {
+        guard let index = presentations.indices.min(by: { presentations[$0].finishAt < presentations[$1].finishAt }) else { return }
+        // Remove before invoking: the store may synchronously present deferred rain.
+        let presentation = presentations.remove(at: index)
+        presentation.completion()
+    }
 }
