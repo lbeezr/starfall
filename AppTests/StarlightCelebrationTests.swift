@@ -151,6 +151,71 @@ final class StarlightCelebrationTests: XCTestCase {
         }
     }
 
+    /// Current-rule history, full SpriteKit presentation, no alternate rules or quiet effects.
+    /// Attachments support visual review; assertions alone do not establish readability.
+    @MainActor func testCrowdedCurrentSkyAwardsAtCompactLargeAndMaximumText() async throws {
+        var game = FallingSky.freshSurvival(seed: 28)
+        for _ in 0..<29 { XCTAssertNotNil(game.letStarsFall()) }
+        XCTAssertEqual(game.board.compactMap { $0 }.count, 26)
+        let group = try XCTUnwrap(game.legalGroups.max(by: {
+            game.reward(of: Set($0)) < game.reward(of: Set($1))
+        }))
+        XCTAssertEqual(game.reward(of: Set(group)), 8)
+        XCTAssertTrue(game.legalGroups.contains { Set($0.map(\.column)).isDisjoint(with: Set(group.map(\.column))) })
+        let chosen = (game: game, group: group)
+        XCTAssertFalse(UIAccessibility.isReduceMotionEnabled, "Do not use quiet motion to validate this scenario")
+        let note = XCTAttachment(string: "seed=28; showers=29; occupied=26; reward=8; group=\(group)")
+        note.name = "crowded-current-history"; note.lifetime = .keepAlways; add(note)
+        let scene = try XCTUnwrap(UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.first)
+        let previous = scene.windows.first(where: \.isKeyWindow)
+        for size in [CGSize(width: 375, height: 667), CGSize(width: 430, height: 932)] {
+            for maximumText in [false, true] {
+                let suite = "Starfall.CrowdedAward.\(UUID())", defaults = UserDefaults(suiteName: suite)!
+                defer { defaults.removePersistentDomain(forName: suite) }
+                defaults.set(false, forKey: "calmEffects")
+                defaults.set(try SkySaveArchive.encode(chosen.game), forKey: SkySaveArchive.key)
+                let store = FallingSkyStore(defaults: defaults, arguments: [], clock: ManualRainClock())
+                let window = UIWindow(windowScene: scene)
+                window.frame = CGRect(origin: .zero, size: size)
+                window.rootViewController = UIHostingController(rootView: FallingSkyView(store: store,
+                    flow: SkyFlowState(arguments: ["--starfalls-reset", "--technique-review"]))
+                    .environment(\.scenePhase, .active)
+                    .dynamicTypeSize(maximumText ? .accessibility5 : .large)
+                    .defaultAppStorage(defaults))
+                window.makeKeyAndVisible()
+                defer { store.setSuspended(true); window.isHidden = true; window.rootViewController = nil; previous?.makeKey() }
+                let ready = ContinuousClock.now + .seconds(3)
+                while (!store.sceneReady || store.suspended) && ContinuousClock.now < ready {
+                    try await Task.sleep(for: .milliseconds(20))
+                }
+                XCTAssertTrue(store.sceneReady); XCTAssertFalse(store.suspended)
+                XCTAssertFalse(store.scene.reduceMotion, "This review requires normal SpriteKit motion")
+                let variant = "\(Int(size.width))x\(Int(size.height))-\(maximumText ? "maximum" : "default")"
+                func capture(_ phase: String) {
+                    let attachment = XCTAttachment(image: windowImage(window))
+                    attachment.name = "crowded-\(variant)-\(phase)"; attachment.lifetime = .keepAlways; add(attachment)
+                }
+                capture("before")
+                store.clear(try XCTUnwrap(chosen.group.first))
+                let event = try XCTUnwrap(store.celebration)
+                XCTAssertGreaterThanOrEqual(event.collected, 8)
+                XCTAssertTrue(store.game.legalGroups.contains { group in group.contains { store.canClear($0) } },
+                    "The large award must leave an independent committed match available")
+                var captured: Set<Int> = []
+                let deadline = ContinuousClock.now + .seconds(2)
+                while store.celebration != nil && ContinuousClock.now < deadline {
+                    let age = Date.now.timeIntervalSince(event.started)
+                    for (index, threshold) in [0.18, 0.65, 1.1].enumerated() where age >= threshold && !captured.contains(index) {
+                        capture("phase-\(index)"); captured.insert(index)
+                    }
+                    try await Task.sleep(for: .milliseconds(20))
+                }
+                XCTAssertEqual(captured, [0, 1, 2]); XCTAssertNil(store.celebration)
+                capture("after")
+            }
+        }
+    }
+
     @MainActor private func windowImage(_ window: UIWindow) -> UIImage {
         UIGraphicsImageRenderer(bounds: window.bounds).image { _ in
             window.drawHierarchy(in: window.bounds, afterScreenUpdates: true)
