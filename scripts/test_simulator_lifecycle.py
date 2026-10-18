@@ -15,6 +15,28 @@ stage = importlib.util.module_from_spec(spec); spec.loader.exec_module(stage)
 
 
 class SimulatorCommandTests(unittest.TestCase):
+    def test_timeout_stops_descendants_before_they_can_mutate_outputs(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory); marker = root / 'late-output'; ready = root / 'ready'
+            child = 'import signal, time; from pathlib import Path; signal.signal(signal.SIGTERM, signal.SIG_IGN); Path(' + repr(str(ready)) + ').write_text("ready"); time.sleep(2); Path(' + repr(str(marker)) + ').write_text("orphan")'
+            parent = 'import subprocess, sys, time; subprocess.Popen([sys.executable, "-c", ' + repr(child) + ']); time.sleep(60)'
+            self.assertEqual(stage.execute('descendants', 1, [sys.executable, '-c', parent], root / 'receipt'), 124)
+            self.assertTrue(ready.exists(), 'The descendant must actually start before timeout')
+            # The delayed sentinel demonstrates survival; it is not a test-readiness wait.
+            import time
+            time.sleep(2.2)
+            self.assertFalse(marker.exists(), 'A timed-out stage must not leave a child writing evidence')
+
+    def test_timeout_does_not_kill_an_unrelated_process(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory); marker = root / 'unrelated-output'
+            command = 'import time; from pathlib import Path; time.sleep(0.2); Path(' + repr(str(marker)) + ').write_text("finished")'
+            with subprocess.Popen([sys.executable, '-c', command]) as unrelated:
+                self.assertEqual(stage.execute('owned-only', 0.05,
+                    [sys.executable, '-c', 'import time; time.sleep(60)'], root / 'receipt'), 124)
+                self.assertEqual(unrelated.wait(timeout=5), 0)
+            self.assertEqual(marker.read_text(), 'finished')
+
     def test_real_timeout_is_bounded_and_records_failure(self):
         with tempfile.TemporaryDirectory() as directory:
             receipt = Path(directory) / 'receipt.jsonl'

@@ -2,7 +2,7 @@
 
 **Status:** Partially verified · **Updated:** 2026-10-18
 
-Two independent regressions reproduce from clean main `99803b38abf044bb2d0247acf79de70ac2410b7e`; [rank and acceptance](../../TECH_DEBT_FOURTH_PASS.md). The feedback fix passes scoped verification; process cancellation is the next independent integration. RC minimum-iOS, actual VoiceOver and physical play remain unverified.
+Two independent regressions reproduce from clean main `99803b38abf044bb2d0247acf79de70ac2410b7e`; [rank and acceptance](../../TECH_DEBT_FOURTH_PASS.md). The feedback fix is merged in [PR #129](https://github.com/lbeezr/starfall/pull/129); primary CI process cancellation passes execution verification. RC minimum-iOS, actual VoiceOver and physical play remain unverified.
 
 ## Stale automatic dialogue
 
@@ -40,3 +40,15 @@ Inspected disposable First Light complete and largest-text game screenshots from
 | Hygiene / whitespace | `python3 scripts/ci-hygiene.py` and `git diff --check` passed. |
 
 Initial standalone Debug build tried x86_64 against the ARM package cache and failed module compatibility; the initial Release invocation supplied configuration twice and was rejected. Corrected the invocation to the actual ARM simulator and set Release through session defaults, without source changes, cache deletion or warning suppression. Both corrected builds pass. Full native CI and minimum-iOS/actual VoiceOver/physical play were not run here.
+
+## Primary CI cancellation verification
+
+`simulator-command.py` starts each command in a new session. Timeout kills that command's inherited process group and reaps the direct child before returning status 124 and its timing receipt. It does not signal the caller's group or an unrelated child. Normal stdout, missing-command status 127, signal status 143, primary failure versus receipt failure, and simulator ownership cleanup retain their existing contracts.
+
+The final regression requires the child to create a readiness sentinel before timeout, ignores SIGTERM, then attempts a delayed write. The identical final test fails against `99803b3`'s executor and passes the candidate. A sibling test verifies an unrelated process finishes and writes normally. Entire tooling suite: **55 passed**, zero failures, `python3 -m unittest discover -s scripts -p 'test_*.py'`, `/tmp/starfall-fourth-all-tools.log`; lifecycle subset now has ten checks. The timeout wait in this sentinel test is the failure mechanism under test, not a blanket readiness retry.
+
+This fix applies to the primary simulator command wrapper only. Code inspection found direct-child timeout wrappers in `rc-platforms.py` (boot/tests/summary/shutdown) and `device-update.py` (build/archive/output commands). They have not received this change and were not exercised with a real timeout. Follow-up: before the next RC runner or deployment-tooling edit, give those boundaries group ownership with their existing status/evidence/install-lock contracts; verify real descendant cancellation plus mocked failure/cleanup and canonical service packaging. Ordinary descendants can still escape by deliberately starting a different session; the runner is not a process sandbox. CoreSimulator's separately managed service/app processes are not inherited children of this wrapper.
+
+Tool checks used integrated main `f62eb7c` plus the two script edits, with no native-source changes from the verified feedback snapshot. Full primary native CI was not rerun locally. Tool-only changes do not change rule/save, UI/accessibility, artwork, animation or app-target membership. No simulator/device operation is needed to establish the process regression; real Python processes supply its evidence.
+
+Tested script SHA-256: {"scripts/simulator-command.py": "f003d06343f1391664f3fa3e16846338098dc5910198239a9af60fda3d01c0d0", "scripts/test_simulator_lifecycle.py": "f79941990d7f6aa4706179df2f4f28f56185f411d508b5a000c59e907fcbbfdd"}
