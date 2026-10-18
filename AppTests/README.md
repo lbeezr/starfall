@@ -41,3 +41,5 @@ The current Opal/orbit planning deadline test commits the field-releasing clear,
 `ResponsiveInputTests` covers independent presentation/save ownership, current gravity reservations, anchored drift, held contact and stale result dialogue. `StarCastTests` verifies that a real independent clear does not cancel an unrelated falling animation.
 
 SkyDialogueTests covers the committed-score/visible-message boundary: prior help persists until presentation completion, then exact clear feedback appears, while restoring the committed round discards transient copy.
+
+Gravity specials are retired from normal play. `SkyGeneration.standardSky` supplies ordinary/Opal/storm play; `FallingSky.removingGravity()` retires validated historical specials without changing survivor identities, score, RNG, cadence or outcomes. The store applies it on restore and same-sky replay, persisting only on activation/commit. Historical raw rules and reset-only Debug fixtures remain regression tooling; the normal app never routes into them. See [removal evidence](../docs/evidence/gravity-removal-2026-10-17/README.md).

@@ -19,3 +19,5 @@ The seeded Opal planning regression checks both ordinary two-clear orders, exact
 The current gravity/Opal planning fixture checks both ordinary tap orders and the stronger traced follow-up, field closure, retained Opal, stable preview and exact save round-trip.
 
 `GravityOpportunityTests` covers expanded calm-window supply, one committed offer per cycle, opening/First Light, save continuation/replay, and a naturally replayed two-clear example. `GravityTests` retains the original generation-2 supply assertions separately.
+
+Gravity specials are retired from normal play. `SkyGeneration.standardSky` supplies ordinary/Opal/storm play; `FallingSky.removingGravity()` retires validated historical specials without changing survivor identities, score, RNG, cadence or outcomes. The store applies it on restore and same-sky replay, persisting only on activation/commit. Historical raw rules and reset-only Debug fixtures remain regression tooling; the normal app never routes into them. See [removal evidence](../../docs/evidence/gravity-removal-2026-10-17/README.md).

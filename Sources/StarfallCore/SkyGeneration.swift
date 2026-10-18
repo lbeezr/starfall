@@ -6,6 +6,8 @@ public enum SkyGeneration: Int, Codable, Equatable, Sendable {
 
     case gravityOrbits = 2
     case gravityOpportunities = 3
+    // Production retirement: Opal/storms remain, historical gravity accounting may survive a migrated save.
+    case standardSky = 4
 
     public var supportsGravity: Bool { self == .gravityOrbits || self == .gravityOpportunities }
     public func offersMagneticPair(at shower: Int) -> Bool {
@@ -14,7 +16,7 @@ public enum SkyGeneration: Int, Codable, Equatable, Sendable {
             : self == .gravityOpportunities && (shower % 12 == 7 || shower % 12 == 8)
     }
 
-    public static let current = SkyGeneration.gravityOpportunities
+    public static let current = SkyGeneration.standardSky
 
     public func phase(for shower: Int) -> SkyShowerPhase? {
         guard self != .legacy, shower > 0 else { return nil }

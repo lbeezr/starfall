@@ -51,3 +51,49 @@ final class GravityOpportunityNativeTests:XCTestCase {
         score(31,app);capture("extra-window-seven-light-restored",app)
     }
 }
+
+
+final class GravityRetirementNativeTests: XCTestCase {
+    @MainActor private func ready(_ button: XCUIElement) {
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true AND hittable == true"), object: button).wait(timeout: 8))
+    }
+    @MainActor private func capture(_ app: XCUIApplication, _ name: String) {
+        let attachment = XCTAttachment(screenshot: app.screenshot()); attachment.name = name
+        attachment.lifetime = .keepAlways; add(attachment)
+    }
+    @MainActor func testOldOrbitRestoreReleasesStarsAndPreservesRound() {
+        continueAfterFailure = false
+        let app = XCUIApplication(); defer { app.terminate() }
+        app.launchArguments = ["--starfalls-reset", "--gravity-fixture=opportunity", "-calmEffects", "NO"]
+        app.launch()
+        let middle = app.buttons["experiment.cell.0.3"]
+        XCTAssertTrue(middle.waitForExistence(timeout: 10)); ready(middle); middle.tap()
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label CONTAINS 'Gravity hole'"), object: middle).wait(timeout: 8))
+        ready(middle); app.terminate(); app.launchArguments = []; app.launch()
+        let resume = app.buttons["sky.resume"]; XCTAssertTrue(resume.waitForExistence(timeout: 10)); resume.tap()
+        XCTAssertTrue(middle.waitForExistence(timeout: 8)); ready(middle)
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, "3 starlight")
+        let specials = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'experiment.cell.' AND (label CONTAINS 'Attraction field' OR label CONTAINS 'Gravity hole')"))
+        XCTAssertEqual(specials.count, 0)
+        capture(app, "retired-orbit-restored")
+        let next = app.buttons["experiment.next"]; ready(next); next.tap(); ready(next)
+        XCTAssertEqual(specials.count, 0)
+        app.buttons["experiment.settings"].tap()
+        let done = app.buttons["experiment.done"]; XCTAssertTrue(done.waitForExistence(timeout: 5)); done.tap()
+        ready(next); capture(app, "retired-orbit-ordinary-shower")
+    }
+    @MainActor func testOldPairRestoreRemovesBothFieldsWithoutLosingScore() {
+        continueAfterFailure = false
+        let app = XCUIApplication(); defer { app.terminate() }
+        app.launchArguments = ["--starfalls-reset", "--gravity-fixture=naturalOffer", "-calmEffects", "NO"]
+        app.launch()
+        XCTAssertTrue(app.buttons["experiment.next"].waitForExistence(timeout: 10))
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, "18 starlight")
+        app.terminate(); app.launchArguments = []; app.launch()
+        let resume = app.buttons["sky.resume"]; XCTAssertTrue(resume.waitForExistence(timeout: 10)); resume.tap()
+        let next = app.buttons["experiment.next"]; XCTAssertTrue(next.waitForExistence(timeout: 8)); ready(next)
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, "18 starlight")
+        XCTAssertEqual(app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'experiment.cell.' AND (label CONTAINS 'Attraction field' OR label CONTAINS 'Gravity hole')")).count, 0)
+        capture(app, "retired-pair-restored")
+    }
+}

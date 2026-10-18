@@ -1,5 +1,8 @@
 # Give each calm cycle another chance to offer its magnetic choice
 
+**Current status: Removed from normal play.** The user selected [gravity retirement](../evidence/gravity-removal-2026-10-17/README.md); the supply comparison below is decision history, not the current generator.
+
+
 **Status:** Accepted bounded iteration · **Owner:** current implementer · **Updated:** 2026-10-17
 
 Current reward policies rarely reach active orbits. The generator has one eligible supply wave per cycle, further restricted by board geometry, existing specials, relief and Dusk/Opal. Test one extra opportunity on the preceding calm wave. No new object, ability, input or orbital rule.

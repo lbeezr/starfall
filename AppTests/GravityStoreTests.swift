@@ -21,7 +21,7 @@ final class GravityStoreTests: XCTestCase {
         let saved=try XCTUnwrap(try? SkySaveArchive.decode(try XCTUnwrap(defaults.data(forKey:FallingSkyStore.saveKey))))
         XCTAssertEqual(saved,store.game)
         let restored=FallingSkyStore(defaults:defaults,arguments:[])
-        XCTAssertEqual(restored.game,saved); XCTAssertTrue(restored.isPaused)
+        XCTAssertEqual(restored.game,saved.removingGravity()); XCTAssertTrue(restored.isPaused)
         XCTAssertEqual(defaults.data(forKey:"starfall.accumulation.v3"),sentinel)
         presenter.finish(); XCTAssertFalse(store.busy)
     }
@@ -117,12 +117,12 @@ final class GravityOpportunityStoreTests:XCTestCase {
         let bytes=try SkySaveArchive.encode(original)
         defaults.set(bytes,forKey:SkySaveArchive.key)
         let store=FallingSkyStore(defaults:defaults,arguments:[],presenter:FallingSkyRecorder(),clock:ManualRainClock())
-        XCTAssertEqual(store.game,original)
+        XCTAssertEqual(store.game,original.removingGravity())
         XCTAssertEqual(defaults.data(forKey:SkySaveArchive.key),bytes)
         store.restart(sameSky:true)
-        XCTAssertEqual(store.game.generation,.gravityOrbits)
+        XCTAssertEqual(store.game.generation,.current)
         store.restart(sameSky:false)
-        XCTAssertEqual(store.game.generation,.gravityOpportunities)
+        XCTAssertEqual(store.game.generation,.current)
         store.startFirstLight();store.restart(sameSky:true)
         XCTAssertEqual(store.game.generation,.legacy)
         XCTAssertEqual(store.game.challenge,.firstLight)
@@ -131,7 +131,7 @@ final class GravityOpportunityStoreTests:XCTestCase {
     @MainActor func testV4CannotAdmitEitherGravityGenerationEvenBeforeSpecialsArrive() throws {
         let suite="GravityEnvelope.\(UUID())",defaults=UserDefaults(suiteName:suite)!
         defer {defaults.removePersistentDomain(forName:suite)}
-        for generation in [SkyGeneration.gravityOrbits,.gravityOpportunities] {
+        for generation in [SkyGeneration.gravityOrbits,.gravityOpportunities,.standardSky] {
             let game=FallingSky(seed:1,generation:generation)
             let object=try JSONSerialization.jsonObject(with:JSONEncoder().encode(game))
             defaults.set(try JSONSerialization.data(withJSONObject:["schemaVersion":4,"game":object]),forKey:SkySaveArchive.previousKey)
@@ -151,11 +151,64 @@ final class GravityOpportunityStoreTests:XCTestCase {
         store.clear(Cell(1,2));XCTAssertEqual(store.game,committed)
         XCTAssertEqual(try SkySaveArchive.decode(XCTUnwrap(defaults.data(forKey:SkySaveArchive.key))),committed)
         let restored=FallingSkyStore(defaults:defaults,arguments:[],presenter:FallingSkyRecorder(),clock:ManualRainClock())
-        XCTAssertEqual(restored.game,committed)
+        XCTAssertEqual(restored.game,committed.removingGravity())
         XCTAssertEqual(committed.incoming,before.incoming)
         let stale=try XCTUnwrap(presenter.completions.last)
         store.setSuspended(true);store.restart(sameSky:true)
         let restarted=store.game;stale();XCTAssertEqual(store.game,restarted)
-        XCTAssertEqual(restarted.generation,.gravityOpportunities)
+        XCTAssertEqual(restarted.generation,.current)
+    }
+}
+
+
+final class GravityRetirementStoreTests: XCTestCase {
+    @MainActor func testResumeRetiresGravityReadOnlyThenPersistsBeforePlay() throws {
+        for fixture in [GravityFixture.opportunity, .supports, .naturalOffer] {
+            var original = fixture.game()
+            if fixture == .opportunity { original.clear(Cell(0, 3)) }
+            if fixture == .supports { original.clear(Cell(1, 3)) }
+            let suite = "GravityRetirement.\(UUID())"
+            let defaults = UserDefaults(suiteName: suite)!
+            defer { defaults.removePersistentDomain(forName: suite) }
+            let bytes = try SkySaveArchive.encode(original)
+            defaults.set(bytes, forKey: SkySaveArchive.key)
+            let clock = ManualRainClock(), presenter = FallingSkyRecorder()
+            let store = FallingSkyStore(defaults: defaults, arguments: [], presenter: presenter, clock: clock)
+            let expected = original.removingGravity()
+            XCTAssertTrue(store.hasSavedSky); XCTAssertTrue(store.isPaused); XCTAssertTrue(store.suspended)
+            XCTAssertEqual(store.game, expected)
+            XCTAssertEqual(defaults.data(forKey: SkySaveArchive.key), bytes, "Discarded view stores must not write a migration")
+            store.setSuspended(false)
+            XCTAssertEqual(try SkySaveArchive.decode(XCTUnwrap(defaults.data(forKey: SkySaveArchive.key))), expected)
+            XCTAssertNil(clock.deadline)
+            store.callShower(); let committed = store.game
+            let stale = try XCTUnwrap(presenter.completions.last)
+            store.setSuspended(true); clock.advance(100); stale()
+            XCTAssertEqual(store.game, committed); XCTAssertNil(store.game.orbit)
+            XCTAssertFalse(store.game.board.contains { $0?.gravityKind != nil })
+            let restored = FallingSkyStore(defaults: defaults, arguments: [], presenter: FallingSkyRecorder(), clock: ManualRainClock())
+            XCTAssertEqual(restored.game, committed)
+            store.restart(sameSky: true)
+            XCTAssertEqual(store.game.generation, .standardSky)
+            XCTAssertEqual(store.game.seed, original.seed)
+            XCTAssertEqual(store.game.balance, original.balance)
+            XCTAssertNil(store.game.orbit)
+        }
+    }
+
+    @MainActor func testInvalidGravitySaveIsRejectedBeforeRetirement() throws {
+        let suite = "GravityRetirement.Invalid.\(UUID())"
+        let defaults = UserDefaults(suiteName: suite)!
+        defer { defaults.removePersistentDomain(forName: suite) }
+        var old = GravityFixture.opportunity.game(); old.clear(Cell(0, 3))
+        let data = try SkySaveArchive.encode(old)
+        var object = try XCTUnwrap(JSONSerialization.jsonObject(with: data) as? [String: Any])
+        var game = try XCTUnwrap(object["game"] as? [String: Any])
+        game["score"] = 9000; object["game"] = game
+        let malformed = try JSONSerialization.data(withJSONObject: object)
+        defaults.set(malformed, forKey: SkySaveArchive.key)
+        let store = FallingSkyStore(defaults: defaults, arguments: [], presenter: FallingSkyRecorder(), clock: ManualRainClock())
+        XCTAssertFalse(store.hasSavedSky); XCTAssertEqual(store.game.generation, .standardSky)
+        XCTAssertEqual(defaults.data(forKey: SkySaveArchive.key), malformed)
     }
 }

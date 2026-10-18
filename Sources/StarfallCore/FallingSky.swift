@@ -141,6 +141,30 @@ public struct FallingSky: Codable, Equatable, Sendable {
         return replay
     }
 
+    /// Retire gravity at the normal-play boundary, after validating a historical save.
+    /// Raw decoding/replay remains source-faithful for compatibility and Debug reproductions.
+    public func removingGravity() -> FallingSky {
+        guard generation.supportsGravity else { return self }
+        precondition(isValidSave)
+        var result = self
+        result.savedGeneration = SkyGeneration.standardSky.rawValue
+        let retired = board.compactMap { $0 }.reduce(0) { total, gem in
+            total + (gem.gravityKind == .hole ? 2 : gem.gravityKind == .magnet ? 1 : 0)
+        }
+        if retired > 0 { result.retiredMagnetic = (retiredMagnetic ?? 0) + retired }
+        result.orbit = nil
+        result.board = GravityFieldRules.settle(board.map { $0?.gravityKind == nil ? $0 : nil }, field: nil)
+        // Preserve the committed shower's size, order, columns and IDs without drawing RNG.
+        let replacement = incoming.compactMap(\.kind).first ?? .aqua
+        result.incoming = incoming.map { star in
+            star.gravityKind == nil ? star : IncomingStar(id: star.id, kind: replacement, column: star.column)
+        }
+        // Retain the monotonic allocator and retired mass: survivor IDs and arrival
+        // conservation stay valid even when an old collision allocated an extra ID.
+        precondition(result.isValidSave)
+        return result
+    }
+
     // Internal deterministic positions for rule tests, not an app customization API.
     init(board: [StarfallGem?], incoming: [IncomingStar], seed: UInt64 = 1, generation: SkyGeneration = .legacy) {
         precondition(board.count == 49 && Self.showerSizes.contains(incoming.count))
@@ -420,7 +444,10 @@ public struct FallingSky: Codable, Equatable, Sendable {
     public var isValidSave: Bool {
         guard SkyGeneration(rawValue: savedGeneration ?? 0) != nil else { return false }
         if generation != .legacy && cohesiveShowers != true { return false }
-        if !generation.supportsGravity && (orbit != nil || nextGravityID != nil || retiredMagnetic != nil || incoming.contains(where: { $0.gravityKind != nil }) || board.contains(where: { $0?.gravityKind != nil })) { return false }
+        if !generation.supportsGravity {
+            if orbit != nil || incoming.contains(where: { $0.gravityKind != nil }) || board.contains(where: { $0?.gravityKind != nil }) { return false }
+            if generation != .standardSky && (nextGravityID != nil || retiredMagnetic != nil) { return false }
+        }
         if generation == .legacy && (incoming.contains(where: \.isLight) || board.contains(where: { $0?.isLight == true })) { return false }
         if let challenge, seed != challenge.seed || balance != challenge.balance || hasOpeningCascade || generation != .legacy { return false }
         if let savedCadence, (savedCadence != .originalV1) != (openingCascade == true) { return false }

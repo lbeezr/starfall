@@ -1,5 +1,8 @@
 # Turn a magnetic collision into a temporary orbit
 
+**Current status: Removed from normal play at user request.** [Retirement contract and verification](../evidence/gravity-removal-2026-10-17/README.md). The design below describes the historical mechanic; no automatic replacement is selected. Saved rounds are normalized before normal play, with raw historical decode/replay retained for compatibility.
+
+
 **Status:** Adopted; development checks passed · **Owner:** current implementer · **Updated:** 2026-10-17
 
 Dusk suppresses neighboring growth and dissolves beside a clear; Opal joins a chosen color. Separate magnetic pairs create temporary holes when a legal clear opens their middle. A hole captures up to four occupied colored neighbors, rotates them between settled matching windows, and closes on a captive clear or after three windows. Empty cells are never reserved. Floor captures usually start with two stars.

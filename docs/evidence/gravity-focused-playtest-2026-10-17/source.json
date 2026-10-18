@@ -1,0 +1,55 @@
+{
+  "baselineInputSHA256": {
+    "Sources/StarfallCore/ConstellationFixture.swift": "58936ea7336163f95b934cc057e71ae933041bf9fd9a271ed9ec065a396da5aa",
+    "Sources/StarfallCore/FallingSky.swift": "9c6b439c97460fd71800817534f916978fff040c5e184ea3a6eec6016941bc0a",
+    "Sources/StarfallCore/Game.swift": "9ab2d57af8fe0ee804ce56e762eb5833a08ae5f39e8916ffaa0fe708d90e7086",
+    "Sources/StarfallCore/GravityFieldRules.swift": "ef5308b515340c2eafe1b226cee70a27701a6e906b6c975380d13af818f4130c",
+    "Sources/StarfallCore/GravityOpportunityFixture.swift": "fe410f41722d690eec3ac67472bf82e421912e772252fdf4ac41819f50c08e4a",
+    "Sources/StarfallCore/RefillMapping.swift": "608be41f40c945b18aba5512bac16b7c4de4eb8a2747d6fe54a895392b38e5f7",
+    "Sources/StarfallCore/SkyCadence.swift": "a01a1ab5fe50e7677bd2e1af75563a5bcc316e1828e921e7da2f572202b76b8c",
+    "Sources/StarfallCore/SkyGeneration.swift": "32a2b9e2646d499cc12ac3d1b57222f6a7e55885c7341325f7b68d0f7e685d0d",
+    "Sources/StarfallCore/StarfallBalance.swift": "32525ba2f346cf843863b1cb1cba8a2fab66d088b9dc7ac308867f1520c329ec",
+    "Sources/StarfallCore/StarfallChallenge.swift": "0475f660c21ae42cce0df8c11dc40adbbb841e58b6c66b82a1293c720bd26b72",
+    "tools/mechanics/GravityOpportunityStudy.swift": "3119e5d4a5f9338eb5550430a5f92e9fa9dfe13afeed23f77917ed5080f7cf33",
+    "tools/mechanics/opal-choice-study.swift": "a138f5f621e5e4971450216de34aacc895923cf12e2e34b7812e0a0895fae7d0",
+    "tools/mechanics/study-gravity-opportunities.py": "bd79c119d8331126861ed43f8cf0364f63f02e46b6ab69639e2da14674f3c2d2"
+  },
+  "baselineNativeTests": 4,
+  "baselineRuntimeFingerprint": "dev.9233a9863c",
+  "candidate": {
+    "base": "afeca751c8217d02f7c3c774b02932180979af45",
+    "candidate": "Every calm shower after opening may offer a pair; existing geometry/relief/special guards retained. Normal app target and bundle; isolated simulator only.",
+    "correction": "Discarded first natural run: fixture constructor omitted generation, resulting in legacy. Two fixture tests valid; canceled natural run has no acceptance value. Corrected fixtures explicitly select current generation.",
+    "files": {
+      "Sources/StarfallCore/FallingSky.swift": "cbce188aba7dda4b5beeb9396578bd27e1190858bfba040b64f92b89e1e2f024",
+      "Sources/StarfallCore/SkyGeneration.swift": "77c6caa7311de69fd78647bfcd853c0384b48d4e49438eed7e39862aa6164fa8",
+      "UITests/FallingSkyInteractionTests.swift": "e4ddb2453906a48abd7cb37f78bd25f6fb6f4a373dfe86ceb63d5ad4a4b036ef",
+      "tools/mechanics/GravityOpportunityStudy.swift": "68dfdf8dfe9ee8a9741ebb53193b6ec792f24d8e9ab442d6dd4af60d766ca874"
+    },
+    "nativeHarness": "Temporary tests select collision middle or largest orthogonal matching group from current accessible board labels; one clear per manual shower. No forecast lookahead.",
+    "runtimeFingerprint": "dev.290d67aece"
+  },
+  "candidateRuntimeFingerprint": "dev.290d67aece",
+  "completedDisposableNativeTests": 3,
+  "configuration": "Debug arm64",
+  "coreTests": 115,
+  "device": "iPhone 17e",
+  "excludedRun": "Initial natural harness canceled for legacy-generation constructor error; fixture checks remained valid. Corrected run passed.",
+  "nativeSimulator": "A83E40E8-E0BE-49C4-A48E-5938E3DA09E2",
+  "os": "iOS 27.0",
+  "productionRuntimeDirtyPaths": [],
+  "rawArtifacts": "artifacts/gravity-focused-afeca75",
+  "rawHashes": {
+    "baseline-diagnostics.json": "db0f05a307a3ec300a68d4786a01bd6498094186406e358ae97de264bf7c5bd7",
+    "baseline-runs.json": "f097a53c31bd9dba51f67a6cffa69de68d7daf458ca97d517e37f196fb48ad92",
+    "candidate-inputs.tar.gz": "72ae6b2778e9636c0acb330f2be1abd572f4242a0c10a74f05f9fc930cf8445a",
+    "frequent-diagnostics.json": "503431402405d33f039e8122f7372111957c10c8c0407e2ab0a5f119869c1691",
+    "frequent-runs.json": "74bcbe7c01275d255ab93f5f81b7b68284f1af187b0b587314161abc8ea0c002"
+  },
+  "sha256": {
+    "dev-afeca75-wip-290d67aece__unusable-pair-wave-13__iphone-17e__default-text.jpg": "5ea29b84767eda7b1d395e7d3ccc94830f525cda60e14b1d5a84576516167d78",
+    "dev-afeca75__attraction-pair__iphone-17e__default-text.jpg": "54df56a88d6986fc630dbf68d37380c7b5b348a0cd7ad5b2f42d83985a45e44d",
+    "dev-afeca75__formed-orbit__iphone-17e__default-text.jpg": "341deb5397a3117ca105fcae5985822ee868953273d459dae46d5eeeff2ca31e"
+  },
+  "source": "afeca751c8217d02f7c3c774b02932180979af45"
+}
