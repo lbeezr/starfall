@@ -953,7 +953,8 @@ final class SkyFlowInteractionTests: XCTestCase {
             for orientation in [UIDeviceOrientation.portrait, .landscapeLeft] {
                 XCUIDevice.shared.orientation = .portrait
                 let app = launch(largest: largest)
-                guard app.frame.width >= 700 else { app.terminate(); throw XCTSkip("Tablet coverage; iPhone supports portrait only") }
+                defer { app.terminate() }
+                guard app.frame.width >= 700 else { throw XCTSkip("Tablet coverage; iPhone supports portrait only") }
                 XCUIDevice.shared.orientation = orientation
                 XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
                     (app.frame.width > app.frame.height) == (orientation == .landscapeLeft)
@@ -975,7 +976,6 @@ final class SkyFlowInteractionTests: XCTestCase {
                 capture(app, "tablet-entry-safe-" + variant)
                 begin.tap()
                 XCTAssertTrue(app.buttons["experiment.settings"].waitForExistence(timeout: 5))
-                app.terminate()
             }
         }
     }
