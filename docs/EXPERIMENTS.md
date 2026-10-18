@@ -6,6 +6,7 @@ This is the authoritative status register for gameplay and presentation experime
 
 | Work | Status | Production boundary / next decision |
 | --- | --- | --- |
+| Magnetic collision → orbiting hole | Isolated trial implemented; human comparison pending | [Design](design/GRAVITY_MECHANICS.md) and [plan](design/GRAVITY_MECHANICS_PLAN.md). Separate magnetic precursors, occupied captive supports and three matching windows. [Evidence](evidence/gravity-orbit-2026-10-17/README.md): 104 package, eight hosted and nine native checks pass; Debug/Release pass. No production routing/save change; Opal remains uncaptured. Observe trigger/keep/close choices before adoption or supply tuning. |
 | Timing after the opening | B selected by user for production; adoption verification in progress | [Adoption contract](design/PACING_ADOPTION.md). Normal new skies use six steady, three faster, three breathing intervals. Retire the export selector; preserve historical saves, replay and First Light. Human enjoyment is not inferred from automated checks. PR, main merge and one-app device delivery requested. |
 
 

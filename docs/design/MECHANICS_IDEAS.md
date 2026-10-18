@@ -18,6 +18,8 @@ Resolve before a bounded core trial:
 
 ## Current dark star: Dusk
 
+Latest discussion and [mechanic/balance research](CELESTIAL_MECHANICS_RESEARCH.md) separate Dusk's local growth constraint from a proposed magnetic-star collision that leaves an orbiting hole. The earlier restorative-white and void concepts below remain alternatives, not the latest recommended direction. Unit identity for the colliding pair, floor/gravity rules and the hole's lifetime remain unresolved; no implementation is adopted.
+
 The authoritative rules live in `Sources/StarfallCore/FallingSky.swift`:
 
 - A dark star occupies space and suppresses growth in its four orthogonally adjacent cells. Diagonals are unaffected.

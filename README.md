@@ -100,3 +100,5 @@ The latest [Starfall Lab drawing build](docs/evidence/constellation-trace-2026-1
 The [sky flow](docs/design/SKY_FLOW.md) opens with Welcome/Resume, waits for Begin, and gives First Light wins and full skies their own endings. Cast stars settle while actions emerge. Existing constellation drawing and offline saves are preserved.
 
 The [shower forecast](docs/evidence/shower-forecast-adoption-2026-10-17/README.md) follows the upper camera contour on the calibrated iPhone 17 portrait layout. Other iPhones, tablets and accessible layouts show the same ordered incoming stars along a straight header trail. Physical camera fit remains unverified.
+
+For the isolated magnetic collision/orbit comparison, use the [Gravity Lab instructions](tools/mechanics/README.md#magnetic-collision-and-captive-orbit). It does not change normal game rules or saves.

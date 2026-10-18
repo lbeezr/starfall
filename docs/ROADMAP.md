@@ -26,6 +26,8 @@ The accepted [notification plan](design/NOTIFICATIONS.md) starts with one option
 
 ## What happens next
 
+The [isolated gravity trial](design/GRAVITY_MECHANICS_PLAN.md) tests magnetic pairs forming temporary orbiting holes. It preserves production Dusk/Opal rules and normal saves; native evidence and player comprehension decide any later adoption.
+
 The [screen-flow polish plan](SCREEN_FLOW_PLAN.md) adds a bounded presentation workstream: explicit dark launch, safe Entry cancellation, pause-preserving Continue, continuous handoffs and understandable endings. Its [accepted design](design/SCREEN_FLOW_POLISH.md) now has verified launch, safe Entry, continuous handoff, explanatory result, bounded arrival and home/preferences batches; [source-bound evidence and limits](evidence/screen-flow-polish-2026-10-17/README.md) remain separate from RC/device acceptance. These batches integrate independently of gameplay experiments.
 
 | Priority | Next action | Done when |

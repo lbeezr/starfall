@@ -1,0 +1,100 @@
+{
+  "artifacts": {
+    "coreLog": "/var/folders/fs/9shw9bf142jg3280dc9n3hhc0000gn/T/starfall-gravity-wkbp2esh/package-tests.log",
+    "hostedResult": "/tmp/starfall-gravity-hosted-final.xcresult",
+    "motion": "artifacts/gravity-orbit-2026-10-17/gravity-motion.mp4",
+    "nativeResult": "/tmp/starfall-gravity-verified-native.xcresult",
+    "productionCoreLog": "/tmp/starfall-gravity-production-core.log",
+    "releaseLog": "/tmp/starfall-gravity-verified-release.log"
+  },
+  "buildID": "dev.af76f08cae",
+  "captures": {
+    "captured": {
+      "nativePNG_SHA256": "b9a289d00eb3c3217ba22770406ff499798ae1b96d4fc563ce93efb8595ad864",
+      "storage": "JPEG quality 75, original dimensions, no crop",
+      "storedJPEG_SHA256": "d0e0f55d40285c8d7801d15506d098cb41196fba6224137a0f7f8cbb28d0e80b"
+    },
+    "largest-text": {
+      "nativePNG_SHA256": "c197c870bdf0ecadff04704b91e14bd9bc6b1ba09d7b83ce6dc619467bc4d2be",
+      "storage": "JPEG quality 75, original dimensions, no crop",
+      "storedJPEG_SHA256": "0e7d5846bd5b85038a205bf1c7986d5ed696572f9693006fc4cb9fa097ae337f"
+    }
+  },
+  "checks": {
+    "actualVoiceOver": "deferred to RC",
+    "candidateCore": 104,
+    "debug": "build-for-testing passed",
+    "device": "iPhone 17e / iOS 27.0 Simulator",
+    "generations": [
+      "legacy",
+      "opalStorms"
+    ],
+    "hosted": 8,
+    "humanPreference": "not observed",
+    "nativeUI": 9,
+    "ordinaryReplayEqual": true,
+    "ordinaryReplaySHA256": "3287f8ce421b9470e0bd462646cf20a918fcacda775f16123122b13db2ae5b83",
+    "ordinaryReplayStates": 6460,
+    "physicalDevice": "not run",
+    "policies": [
+      "first",
+      "largest"
+    ],
+    "productionCore": 89,
+    "release": "simulator build passed",
+    "seedRange": [
+      0,
+      39
+    ],
+    "showerCap": 24,
+    "simulatorID": "A83E40E8-E0BE-49C4-A48E-5938E3DA09E2",
+    "toolchain": "Xcode 27.1 (27A9275), Apple Swift 6.4"
+  },
+  "coreOnly": false,
+  "inputs": {
+    "tools/environments/export_lab.py": "f50c8987ad3d5f8d57c745e347876ac1929c410160d30f4543d88e538c08a193",
+    "tools/mechanics/GravityCore.swift": "2a44ee1a42fe7292244702cb27bb86124ffb0f766fb2d6fae66a56d3850bac20",
+    "tools/mechanics/GravityFixtures.swift": "7273b2356954aaf18cf8a7f3f2e828fe87fdc20b99d0d616f4e9695b071cbc27",
+    "tools/mechanics/GravityOrdinaryReplay.swift": "ca652cf6a337e7e824409cd6e81a508832f106f67e20027f66eb41a780d4c9db",
+    "tools/mechanics/GravityScene.swift": "436bada8e5bd322b75ae6cef2cad27a7b16914b7aa578d84800f1b551083f023",
+    "tools/mechanics/GravityStoreTests.swift": "9fa6c5fe1deeac1065d94e1080f0668cc81a95bb740dd4c9cdfec8983e45cf24",
+    "tools/mechanics/GravityTests.swift": "d5cf39da835d6d14051434958af9a70b5f9cdac3dd60b0a82d7619478449bf89",
+    "tools/mechanics/GravityTraceStoreTests.swift": "58dcc375a4d610850039ada5d2d4167f52f52e31039a0aa92756ea85373d2e07",
+    "tools/mechanics/GravityTraceUITests.swift": "f63576e5340c750c154af7ae2a52ca0b063bfea01829da189df25c4345f953d1",
+    "tools/mechanics/GravityTypes.swift": "5168a53290d8107b60696e6ccbbe2ca97f1541df0442fd86de36e4a7a3f4ced4",
+    "tools/mechanics/GravityUITests.swift": "a48e20e2769d6f6b17de7f5b4499e7a96c155ac86d6f439440d0e454c4f32701",
+    "tools/mechanics/gravity_candidate.py": "0535ed390844811cd8332a043d74ae1ced068bc297c79082eee615972b55290c",
+    "tools/mechanics/gravity_native.py": "8fbf0a1f2a7f52206984bc0aeb7f7da6bf73ae349c54ce49d6f078f5e5f8768e",
+    "tools/mechanics/prepare-gravity-lab.py": "71c7c5def05800e12eb47a8db0a97dce5602a3c7884d2bee859952b540370f76"
+  },
+  "motion": {
+    "durationSeconds": 63.1216667,
+    "inspectedCollisionSeconds": [
+      21.7,
+      22.0,
+      22.3
+    ],
+    "inspectedOrbitSeconds": [
+      25.56,
+      25.72,
+      25.88
+    ],
+    "scope": "Recorded simulator frames, not a performance profile",
+    "sha256": "3e4a9de21a6ae75820309a0b1f0ed56a6609d037d362289e54e313ea1ed7e1b8"
+  },
+  "nativeAndFinalHostedRuntimeIdentical": true,
+  "runtimeFiles": {
+    "App/FallingSkyMotion.swift": "83aca7fd2d47c877112f25644d0025b9d505d14d2bbae16bca50980beff48d38",
+    "App/FallingSkyScene.swift": "0d5f9a8a372ace07c3816457252aeee64873687794093b6e3cc023e511c10823",
+    "App/FallingSkyStore.swift": "110289ae181d6d489b0cf183a1487cc9bb9cc21e74700218c5f301c970e959ce",
+    "App/FallingSkyView.swift": "d3a9bfd227fcb9ffa200f5fdafdf544b60627693a4bdc738b2de093b1fb21a0e",
+    "App/ObservatoryGeometry.swift": "80f296124ce5b06f2360508c75c80224a90838ba176fa387737bf02de16f2b4a",
+    "Config/Clean.xcconfig": "d3dfd7d25e034b630eb25a86915b25363baad01d43cf01045617b5e4c76365e0",
+    "Sources/StarfallCore/FallingSky.swift": "56846df2e48c3ad7372f9cf7a5d3a750969720df045652a5f4ab25492a3db4c5",
+    "Sources/StarfallCore/GravityTypes.swift": "5168a53290d8107b60696e6ccbbe2ca97f1541df0442fd86de36e4a7a3f4ced4",
+    "Starfall.xcodeproj/project.pbxproj": "5e3add5c13e4d99383d781ead5a586b4a3ca6e3b8c7d924f822de6c65834df45"
+  },
+  "source": "06ce5141f14f1b4d371ba5b5246d752888b3a821",
+  "trace": true,
+  "workspace": "/var/folders/fs/9shw9bf142jg3280dc9n3hhc0000gn/T/starfall-gravity-1hqjbczt"
+}
