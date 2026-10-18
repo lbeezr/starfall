@@ -47,3 +47,6 @@ Camera-layout selection reads the full local playfield canvas, beside the consum
 Attraction fields and gravity holes use `StarCastField`/`StarCastHole` packaged artwork through the shared cast cache, including forecasts and arrivals. Theme supplies their blue-gold light colors; `GravityMotion` supplies finite child-art cues. [Art source and exact prompts](../Artwork/StarCast/README.md#magnetic-crystal-and-gravity-hole); [native visual evidence](../docs/evidence/gravity-art-2026-10-17/README.md).
 
 The magnetic saved role now presents as an **attraction field** using `StarCastField`: an open aura with transparent center, no ground shadow, physical bounce or contact response. The shared material owns board/forecast/flight appearance; existing occupied-cell/collision rules remain unchanged. The original magnetic crystal is retained only as historical source art.
+
+Gravity arrivals share the ordinary flight constructor. StarfallMotion.GravityTimeline owns phase durations and approach overlap; receiver responses and landings follow completed gravity motion. The scene presents committed outcomes and never schedules Core showers.
+

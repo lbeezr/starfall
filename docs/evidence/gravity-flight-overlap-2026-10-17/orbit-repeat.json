@@ -1,0 +1,41 @@
+[
+  {
+    "arrivals" : 1,
+    "density" : "lighter",
+    "followingCadence" : "steady",
+    "generation" : 2,
+    "gravityPhases" : 1,
+    "observedReady" : true,
+    "presentationSeconds" : 0.9920806250011083,
+    "readyToActualDueSeconds" : 1.0175643333350308,
+    "readyToScheduledDeadlineSeconds" : 1.007914499990875,
+    "seed" : 68,
+    "shower" : 9
+  },
+  {
+    "arrivals" : 5,
+    "density" : "heavy",
+    "followingCadence" : "faster",
+    "generation" : 2,
+    "gravityPhases" : 1,
+    "observedReady" : true,
+    "presentationSeconds" : 1.3657291249983246,
+    "readyToActualDueSeconds" : 0.34723208332434297,
+    "readyToScheduledDeadlineSeconds" : 0.3342663333314704,
+    "seed" : 68,
+    "shower" : 10
+  },
+  {
+    "arrivals" : 5,
+    "density" : "heavy",
+    "followingCadence" : "faster",
+    "generation" : 2,
+    "gravityPhases" : 2,
+    "observedReady" : true,
+    "presentationSeconds" : 1.252531000005547,
+    "readyToActualDueSeconds" : 0.461021625000285,
+    "readyToScheduledDeadlineSeconds" : 0.4474505833350122,
+    "seed" : 68,
+    "shower" : 11
+  }
+]

@@ -163,15 +163,7 @@ import StarfallCore
             run(.sequence([.wait(forDuration: StarfallMotion.clearDuration), .run { [weak self] in self?.render(game); completion() }]))
             return
         }
-        let flights = turn.arrivals.enumerated().map { index, arrival in
-            SKAction.sequence([
-                .wait(forDuration: Double(index) * 0.09),
-                .run { [weak self] in self?.sendStar(arrival) },
-                .wait(forDuration: StarfallMotion.flightDuration),
-                .run { [weak self] in self?.land(arrival) }
-            ])
-        }
-        run(.sequence([.group(flights), .wait(forDuration: StarfallMotion.landingDuration),
+        run(.sequence([arrivalFlights(turn.arrivals), .wait(forDuration: StarfallMotion.landingDuration),
                        .run { [weak self] in self?.render(game); completion() }]))
     }
 
@@ -218,6 +210,16 @@ import StarfallCore
         return nil
     }
 
+    /// Both ordinary and gravity turns share full approach, stagger and contact.
+    private func arrivalFlights(_ arrivals: [FallingSkyTurn.Arrival]) -> SKAction {
+        .group(arrivals.enumerated().map { index, arrival in
+            .sequence([.wait(forDuration: Double(index) * StarfallMotion.arrivalStagger),
+                       .run { [weak self] in self?.sendStar(arrival) },
+                       .wait(forDuration: StarfallMotion.flightDuration),
+                       .run { [weak self] in self?.land(arrival) }])
+        })
+    }
+
     private func sendStar(_ arrival: FallingSkyTurn.Arrival) {
         let comet = SKNode()
         comet.name = "sky.flight.\(arrival.star.id)"
@@ -245,8 +247,8 @@ import StarfallCore
         traveler.zRotation = arrival.star.id.isMultiple(of: 2) ? -0.12 : 0.12
         traveler.run(.group([
             StarCast.turnAction(for: .init(arrival.star), expression: .landing,
-                                toward: arrival.star.id.isMultiple(of: 2) ? .left : .right, duration: 0.48),
-            .rotate(toAngle: 0, duration: 0.48)
+                                toward: arrival.star.id.isMultiple(of: 2) ? .left : .right, duration: StarfallMotion.flightDuration),
+            .rotate(toAngle: 0, duration: StarfallMotion.flightDuration)
         ]))
         comet.addChild(traveler)
         let drift = StarfallMotion.drift(for: arrival.star.id, column: arrival.cell.column) * step
@@ -293,7 +295,7 @@ import StarfallCore
                 return da == db ? a.0.gem.id < b.0.gem.id : da < db
             }.first?.0
             if let observer {
-                comet.run(.sequence([.wait(forDuration: 0.38), .run { [weak observer] in
+                comet.run(.sequence([.wait(forDuration: StarfallMotion.receiverResponseDelay), .run { [weak observer] in
                     observer?.acknowledge(from: destination, impulse: .zero, step: flight.step)
                 }]))
             }
@@ -525,21 +527,17 @@ extension FallingSkyScene {
         if reduceMotion || UIAccessibility.isReduceMotionEnabled || UIAccessibility.isVoiceOverRunning {
             render(game); run(.sequence([.wait(forDuration:0.15),.run(completion)])); return
         }
-        var actions: [SKAction]=[]
-        for phase in turn.gravityPhases {
-            let duration: TimeInterval = phase.event == .rotation ? 0.5 : phase.event == .collision ? 0.32 : 0.20
-            actions.append(.run { [weak self] in self?.applyGravityPhase(phase,duration:duration) })
-            actions.append(.wait(forDuration:duration))
+        let timeline = StarfallMotion.GravityTimeline(phases: turn.gravityPhases.map(\.event), arrivals: turn.arrivals.count)
+        var phases: [SKAction] = []
+        for (phase, duration) in zip(turn.gravityPhases, timeline.phaseDurations) {
+            phases.append(.run { [weak self] in self?.applyGravityPhase(phase, duration: duration) })
+            phases.append(.wait(forDuration: duration))
         }
+        var presentation = [SKAction.sequence(phases)]
         if !turn.arrivals.isEmpty {
-            let flights=turn.arrivals.enumerated().map { index,arrival in
-                SKAction.sequence([.wait(forDuration:Double(index)*0.09),
-                    .run { [weak self] in self?.sendStar(arrival) }, .wait(forDuration:StarfallMotion.flightDuration),
-                    .run { [weak self] in self?.land(arrival) }])
-            }
-            actions += [.group(flights),.wait(forDuration:StarfallMotion.landingDuration)]
+            presentation.append(.sequence([.wait(forDuration: timeline.flightStart), arrivalFlights(turn.arrivals),
+                                           .wait(forDuration: StarfallMotion.landingDuration)]))
         }
-        actions.append(.run { [weak self] in self?.render(game); completion() })
-        run(.sequence(actions))
+        run(.sequence([.group(presentation), .run { [weak self] in self?.render(game); completion() }]))
     }
 }

@@ -71,12 +71,43 @@ import StarfallCore
 
 /// Presentation in cell units; no RNG, rule, save, or clock ownership.
 enum StarfallMotion {
+    static let arrivalStagger: TimeInterval = 0.09
     static let flightDuration: TimeInterval = 0.48
     static let contactFraction: CGFloat = 0.80
+    static let receiverResponseDelay: TimeInterval = 0.38
     static let landingDuration: TimeInterval = 0.34
     static let gatherDuration: TimeInterval = 0.06
     static let gravityStart: TimeInterval = 0.32
     static let clearDuration: TimeInterval = 0.56
+
+    /// Only the airborne approach overlaps. A small clearance keeps first
+    /// response after every preceding committed gravity phase has settled.
+    struct GravityTimeline {
+        let phaseDurations: [TimeInterval]
+        let phaseEnd: TimeInterval
+        let flightStart: TimeInterval
+        let completion: TimeInterval
+
+        init(phases: [GravityPhase.Event], arrivals: Int) {
+            precondition(arrivals >= 0 && arrivals <= FallingSky.maximumShowerSize)
+            phaseDurations = phases.map { event -> TimeInterval in
+                switch event {
+                case .rotation: return 0.5
+                case .collision: return 0.32
+                default: return 0.20
+                }
+            }
+            phaseEnd = phaseDurations.reduce(0, +)
+            guard arrivals > 0 else {
+                flightStart = phaseEnd; completion = phaseEnd; return
+            }
+            let landingClearance: TimeInterval = 0.04
+            flightStart = max(0, phaseEnd + landingClearance - StarfallMotion.receiverResponseDelay)
+            let lastLanding = flightStart + StarfallMotion.flightDuration
+                + Double(arrivals - 1) * StarfallMotion.arrivalStagger
+            completion = max(phaseEnd, lastLanding) + StarfallMotion.landingDuration
+        }
+    }
 
     static func drift(for id: Int, column: Int) -> CGFloat {
         let direction: CGFloat = column == 0 ? 1 : column == 6 ? -1 : id.isMultiple(of: 2) ? 1 : -1

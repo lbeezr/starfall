@@ -35,6 +35,13 @@ final class NativeInputWindowTests: XCTestCase {
     }
 
     @MainActor func testRealSceneInputWindowsWithNaturallyOccupiedOrbit() async throws {
+        let initial = try naturalOrbit()
+        let windows = try await measure(initial: initial, through: initial.turns + 4, name: "native-input-windows-orbit")
+        XCTAssertEqual(windows.count, 3)
+        XCTAssertTrue(windows.contains { $0.gravityPhases > 0 })
+    }
+
+    @MainActor private func naturalOrbit() throws -> FallingSky {
         var selected: FallingSky?
         for seed in UInt64(0)..<80 where selected == nil {
             var game = FallingSky(seed: seed, generation: .current)
@@ -49,10 +56,110 @@ final class NativeInputWindowTests: XCTestCase {
                 }
             }
         }
-        let initial = try XCTUnwrap(selected, "Bounded deterministic setup must reach a natural first-event orbit")
-        let windows = try await measure(initial: initial, through: initial.turns + 4, name: "native-input-windows-orbit")
-        XCTAssertEqual(windows.count, 3)
-        XCTAssertTrue(windows.contains { $0.gravityPhases > 0 })
+        return try XCTUnwrap(selected, "Bounded deterministic setup must reach a natural first-event orbit")
+    }
+
+    @MainActor func testGravityTimelineKeepsLandingAfterPhasesWithinFastShowerBudget() {
+        let budget = SkyCadenceID.announcedCycleV2.step(committedShowers: 10, pace: .brisk).delay
+        let cases: [[GravityPhase.Event]] = [[.rotation], [.release, .settling]]
+        for events in cases {
+            let timeline = StarfallMotion.GravityTimeline(phases: events, arrivals: 5)
+            XCTAssertGreaterThan(timeline.flightStart + StarfallMotion.flightDuration, timeline.phaseEnd)
+            XCTAssertGreaterThan(timeline.flightStart + StarfallMotion.receiverResponseDelay, timeline.phaseEnd, "Receiver response must wait for gravity motion too")
+            XCTAssertLessThan(timeline.flightStart, timeline.phaseEnd, "Airborne approach must overlap prior motion")
+            XCTAssertLessThan(timeline.completion, budget - 0.25, "Reserve a bounded input opportunity without changing cadence")
+        }
+        let collision = StarfallMotion.GravityTimeline(phases: [.removal, .collision, .capture], arrivals: 0)
+        XCTAssertEqual(collision.completion, collision.phaseEnd, "A clear without arrivals retains its complete phase sequence")
+    }
+
+    @MainActor func testIncomingFlightOverlapsRotationButLandsAfterIt() async throws {
+        guard !UIAccessibility.isReduceMotionEnabled && !UIAccessibility.isVoiceOverRunning else {
+            throw XCTSkip("Normal-motion overlap requires system quiet modes off")
+        }
+        var game = try naturalOrbit()
+        XCTAssertNotNil(game.letStarsFall())
+        let old = game, turn = try XCTUnwrap(game.letStarsFall())
+        XCTAssertTrue(turn.gravityPhases.contains { $0.event == .rotation })
+        let first = try XCTUnwrap(turn.arrivals.first { !$0.grew })
+        let scene = FallingSkyScene(size: CGSize(width: 390, height: 844))
+        let host = try SceneHost(scene: scene); defer { host.close() }
+        let timeline = StarfallMotion.GravityTimeline(phases: turn.gravityPhases.map(\.event), arrivals: turn.arrivals.count)
+        let start = ProcessInfo.processInfo.systemUptime
+        var complete = false, sawOverlap = false, sawReceiverResponse = false
+        let rotatingIDs = Set((old.orbit?.slots ?? []).compactMap { old.gem(at: $0)?.id })
+        var firstLanding: Double?
+        var captured = Set<Int>()
+        scene.animate(turn, from: old, to: game) { complete = true }
+        let limit = ContinuousClock.now + .seconds(4)
+        while !complete && ContinuousClock.now < limit {
+            let elapsed = ProcessInfo.processInfo.systemUptime - start
+            let airborne = scene.childNode(withName: "//sky.flight.\(first.star.id)") != nil
+            let grounded = scene.childNode(withName: "//sky.star.\(first.gem.id)") != nil
+            sawOverlap = sawOverlap || (airborne && elapsed < timeline.phaseEnd)
+            if grounded && firstLanding == nil { firstLanding = elapsed }
+            if scene.children[1].children.contains(where: { ($0 as? FallingSkyCharacter)?.character.action(forKey: "sky.character-response") != nil }) {
+                sawReceiverResponse = true
+                for id in rotatingIDs {
+                    let captive = try XCTUnwrap(scene.childNode(withName: "//sky.star.\(id)"))
+                    XCTAssertFalse(captive.hasActions(), "Gravity movement must end before receiver responses begin")
+                }
+            }
+            for arrival in turn.arrivals where !arrival.grew {
+                XCTAssertFalse(scene.childNode(withName: "//sky.flight.\(arrival.star.id)") != nil
+                    && scene.childNode(withName: "//sky.star.\(arrival.gem.id)") != nil)
+            }
+            for (index, time) in [0.15, 0.48, 0.70, 1.10].enumerated() where elapsed >= time && !captured.contains(index) {
+                captured.insert(index)
+                if let texture = host.view.texture(from: scene) {
+                    let format = UIGraphicsImageRendererFormat(); format.scale = 1; format.opaque = true
+                    let image = UIGraphicsImageRenderer(size: host.view.bounds.size, format: format).image { context in
+                        UIColor(red: 0.04, green: 0.055, blue: 0.12, alpha: 1).setFill(); context.fill(host.view.bounds)
+                        UIImage(cgImage: texture.cgImage()).draw(in: host.view.bounds)
+                    }
+                    let frame = XCTAttachment(image: image); frame.name = "gravity-overlap-\(index)-\(elapsed)"
+                    frame.lifetime = .keepAlways; add(frame)
+                }
+            }
+            try await Task.sleep(for: .milliseconds(16))
+        }
+        XCTAssertTrue(complete); XCTAssertTrue(sawOverlap); XCTAssertTrue(sawReceiverResponse)
+        XCTAssertGreaterThanOrEqual(try XCTUnwrap(firstLanding), timeline.phaseEnd)
+        XCTAssertFalse(scene.hasActions())
+        for gem in game.board.compactMap({ $0 }) { XCTAssertNotNil(scene.childNode(withName: "//sky.star.\(gem.id)")) }
+        XCTAssertTrue(scene.children[2].children.isEmpty)
+    }
+
+    @MainActor func testOverlapReplacementCancelsOldCompletionAndQuietPresentationMatches() async throws {
+        guard !UIAccessibility.isReduceMotionEnabled && !UIAccessibility.isVoiceOverRunning else {
+            throw XCTSkip("The cancellation reproduction starts with normal motion")
+        }
+        var game = try naturalOrbit()
+        XCTAssertNotNil(game.letStarsFall())
+        let old = game, turn = try XCTUnwrap(game.letStarsFall())
+        let first = try XCTUnwrap(turn.arrivals.first)
+        let scene = FallingSkyScene(size: CGSize(width: 390, height: 844))
+        let host = try SceneHost(scene: scene); defer { host.close() }
+        var staleComplete = false, quietComplete = false
+        scene.animate(turn, from: old, to: game) { staleComplete = true }
+        let appeared = ContinuousClock.now + .seconds(2)
+        while scene.childNode(withName: "//sky.flight.\(first.star.id)") == nil && ContinuousClock.now < appeared {
+            try await Task.sleep(for: .milliseconds(16))
+        }
+        XCTAssertNotNil(scene.childNode(withName: "//sky.flight.\(first.star.id)"))
+        scene.render(old)
+        XCTAssertFalse(scene.hasActions()); XCTAssertTrue(scene.children[2].children.isEmpty)
+        scene.reduceMotion = true
+        scene.animate(turn, from: old, to: game) { quietComplete = true }
+        let quietLimit = ContinuousClock.now + .seconds(2)
+        while !quietComplete && ContinuousClock.now < quietLimit { try await Task.sleep(for: .milliseconds(16)) }
+        XCTAssertTrue(quietComplete)
+        let normalLimit = ContinuousClock.now + .seconds(2)
+        while !staleComplete && ContinuousClock.now < normalLimit { try await Task.sleep(for: .milliseconds(16)) }
+        XCTAssertFalse(staleComplete, "Replacement must cancel the old grouped presentation, including its completion")
+        XCTAssertFalse(scene.hasActions()); XCTAssertTrue(scene.children[2].children.isEmpty)
+        let visible = scene.children[1].children.compactMap { ($0 as? FallingSkyCharacter)?.gem }.sorted { $0.id < $1.id }
+        XCTAssertEqual(visible, game.board.compactMap { $0 }.sorted { $0.id < $1.id })
     }
 
     @MainActor private func measure(initial: FallingSky, through finalShower: Int, name: String) async throws -> [Window] {
