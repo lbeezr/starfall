@@ -380,6 +380,9 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     func clearAvailability(_ cell: Cell) -> SkyInputAvailability {
         let contact = inputPolicy.reserving([cell.column])
         guard contact.isReady else { return contact }
+        // No outstanding presentation can reserve a column. Legality still belongs
+        // to the real commit; invalid taps retain their explanatory feedback.
+        guard busy else { return .ready }
         var preview = game
         // Invalid input still reaches the rule explanation; admission owns only timing.
         let columns = preview.clear(cell)?.changingColumns ?? [cell.column]
@@ -390,6 +393,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     func traceAvailability(_ path: [Cell]) -> SkyInputAvailability {
         guard inputPolicy.receiving.isReady else { return inputPolicy.receiving }
         guard !path.isEmpty else { return .emptySelection }
+        guard busy else { return .ready }
         var preview = game
         let columns = preview.clearConstellation(path)?.changingColumns ?? Set(path.map(\.column))
         return inputPolicy.reserving(columns)

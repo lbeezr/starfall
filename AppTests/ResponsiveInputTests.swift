@@ -390,3 +390,35 @@ extension ResponsiveInputTests {
     func traceStep(count: Int, enabled: Bool) { steps.append(count); self.enabled.append(enabled) }
     func stopSounds() {}
 }
+
+
+extension ResponsiveInputTests {
+    @MainActor func testIdleAdmissionIsRuleIndependentAndDoesNotMutateCommittedState() throws {
+        let suite = "IdleAdmission.\(UUID())", defaults = UserDefaults(suiteName: suite)!
+        defer { defaults.removePersistentDomain(forName: suite) }
+        let game = ObservatoryReviewFixture.game(dense: true)
+        defaults.set(try SkySaveArchive.encode(game), forKey: SkySaveArchive.key)
+        let store = FallingSkyStore(defaults: defaults, arguments: [], presenter: FallingSkyRecorder(), clock: ManualRainClock())
+        store.setSuspended(false)
+        let original = store.game, bytes = defaults.data(forKey: SkySaveArchive.key)
+        XCTAssertFalse(store.busy); XCTAssertTrue(store.canReceiveInput)
+        XCTAssertEqual(store.traceAvailability([]), .emptySelection)
+        var admitted = 0
+        let start = ProcessInfo.processInfo.systemUptime
+        for _ in 0..<100 {
+            for row in 0..<7 { for column in 0..<7 {
+                let cell = Cell(row, column)
+                // Admission must allow the Core to explain invalid/empty selections too.
+                if store.clearAvailability(cell) == .ready { admitted += 1 }
+                XCTAssertEqual(store.traceAvailability([cell]), .ready)
+            } }
+        }
+        print("IDLE_ADMISSION checks=4900 seconds=\(ProcessInfo.processInfo.systemUptime-start) admitted=\(admitted)")
+        XCTAssertEqual(admitted, 4900)
+        XCTAssertEqual(store.game, original)
+        XCTAssertEqual(defaults.data(forKey: SkySaveArchive.key), bytes)
+        store.setSuspended(true)
+        XCTAssertEqual(store.clearAvailability(Cell(0,0)), .suspended)
+        XCTAssertEqual(store.traceAvailability([Cell(0,0)]), .suspended)
+    }
+}
