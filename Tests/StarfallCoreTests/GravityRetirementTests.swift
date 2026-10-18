@@ -106,6 +106,30 @@ final class GravityRetirementTests: XCTestCase {
         XCTAssertEqual(game.removingGravity().outcome, .lost)
     }
 
+    func testGeneratedTerminalRetirementKeepsOutcomeWhenOverflowColumnShrinks() throws {
+        var shrinking = 0
+        for generation in [SkyGeneration.gravityOrbits, .gravityOpportunities] {
+            for seed: UInt64 in 0..<64 {
+                var game = FallingSky(seed: seed, generation: generation)
+                for _ in 0..<100 where !game.isOver { game.letStarsFall() }
+                XCTAssertEqual(game.outcome, .lost)
+                let column = try XCTUnwrap(game.blockedColumn)
+                let retired = game.removingGravity()
+                if SkyBoardSettling.height(retired.board, column: column) < 7 { shrinking += 1 }
+                try verifyRetirement(game)
+                let bytes = try JSONEncoder().encode(retired)
+                var restored = try JSONDecoder().decode(FallingSky.self, from: bytes)
+                XCTAssertTrue(restored.isValidSave)
+                XCTAssertEqual(restored.outcome, .lost)
+                XCTAssertNil(restored.clear(Cell(0, column)))
+                XCTAssertNil(restored.letStarsFall())
+                XCTAssertFalse(restored.replay().isOver)
+                XCTAssertTrue(restored.replay().isValidSave)
+            }
+        }
+        XCTAssertGreaterThan(shrinking, 0, "Exercise a lost column whose retired supports shrink it")
+    }
+
     func testRetiredGenerationCannotSmuggleLiveGravityThroughValidation() throws {
         var old = GravityFixture.opportunity.game(); old.clear(Cell(0, 3))
         var fields = try XCTUnwrap(JSONSerialization.jsonObject(with: JSONEncoder().encode(old)) as? [String: Any])

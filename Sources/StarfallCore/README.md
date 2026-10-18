@@ -39,3 +39,5 @@ Gravity specials are retired from normal play. `SkyGeneration.standardSky` suppl
 
 
 `HistoricalGravityState` contains historical collision, orbit rotation/release and validation using only board/orbit/identity-accounting values. `FallingSky` keeps every encoded field and applies the returned state at the existing committed boundary. Current and retained games share `SkyBoardSettling` for stable compaction, including occupied anchors. `SkyPresentationPhase` names committed collapse/orbit snapshots; `GravityPhase` and `FallingSkyTurn.gravityPhases` remain compatibility aliases for retained tools. No archive layout or RNG change accompanies this extraction.
+
+Terminal overflow is committed history. Gravity retirement may compact a losing column; existing retired-mass accounting preserves that outcome without reopening play. Ordinary unretired saves still validate full-column overflow. See [terminal migration coverage](../../docs/evidence/debt-third-pass-2026-10-18/README.md#1-terminal-gravity-retirement).

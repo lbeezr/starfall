@@ -282,3 +282,33 @@ extension SkySaveArchiveTests {
         XCTAssertEqual(store.persistenceNotice, .failed, "A new failure after success gets a new acknowledgement")
     }
 }
+
+
+extension SkySaveArchiveTests {
+    @MainActor func testTerminalGravityRestorePreservesLossAcrossMigrationActivationAndRelaunch() throws {
+        for generation in [SkyGeneration.gravityOrbits, .gravityOpportunities] {
+            for key in [SkySaveArchive.key, SkySaveArchive.gravityKey] {
+                let defaults = makeDefaults()
+                var original = FallingSky(seed: 0, generation: generation)
+                for _ in 0..<100 where !original.isOver { original.letStarsFall() }
+                XCTAssertTrue(original.isValidSave); XCTAssertEqual(original.outcome, .lost)
+                let json = try JSONSerialization.jsonObject(with: JSONEncoder().encode(original))
+                let bytes = try JSONSerialization.data(withJSONObject: ["schemaVersion": key == SkySaveArchive.key ? 8 : 5, "game": json])
+                defaults.set(bytes, forKey: key)
+                let store = FallingSkyStore(defaults: defaults, arguments: [], presenter: FallingSkyRecorder(), clock: ManualRainClock())
+                XCTAssertTrue(store.hasSavedSky); XCTAssertNil(store.persistenceNotice)
+                XCTAssertEqual(store.game.outcome, .lost); XCTAssertEqual(store.game.blockedColumn, original.blockedColumn)
+                XCTAssertEqual(store.game.score, original.score); XCTAssertTrue(store.game.isValidSave)
+                XCTAssertEqual(defaults.data(forKey: key), bytes, "Restore construction remains read-only")
+                store.setSuspended(false)
+                let canonical = try XCTUnwrap(defaults.data(forKey: SkySaveArchive.key))
+                XCTAssertEqual(try SkySaveArchive.decode(canonical), store.game)
+                let restored = FallingSkyStore(defaults: defaults, arguments: [], presenter: FallingSkyRecorder(), clock: ManualRainClock())
+                XCTAssertTrue(restored.hasSavedSky); XCTAssertEqual(restored.game, store.game)
+                XCTAssertNil(restored.persistenceNotice)
+                restored.restart(sameSky: true)
+                XCTAssertFalse(restored.game.isOver); XCTAssertTrue(restored.game.isValidSave)
+            }
+        }
+    }
+}
