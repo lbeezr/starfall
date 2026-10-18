@@ -139,6 +139,7 @@ private struct Run: Codable {
             }
         })
         store.setSuspended(false); store.togglePause()
+        var hold: UInt64?
         var gap = 0.0, earlyGap = 0.0
         // Event count and time bounds prevent accidental unbounded offline execution.
         for _ in 0..<20000 {
@@ -162,7 +163,7 @@ private struct Run: Codable {
                 clock.fire()
             }
             if cancelledGesture {
-                cancelledGesture = false; intent.cancel(); gesture = nil; gestureAt = nil; store.constellationTracing = false
+                cancelledGesture = false; intent.cancel(); gesture = nil; gestureAt = nil; store.endConstellationHold(hold); hold = nil
             }
             if let end = display.finishAt, end <= next { display.finish() }
             if let time = gestureAt, time <= next, let action = gesture {
@@ -171,7 +172,7 @@ private struct Run: Codable {
                     pathIndex += 1; gestureAt = next + 0.12
                 } else {
                     let commit = intent.finish(ticket: ticket, game: store.game, generation: store.constellationInputGeneration, enabled: store.canClear)
-                    gesture = nil; gestureAt = nil; store.constellationTracing = false
+                    gesture = nil; gestureAt = nil; store.endConstellationHold(hold); hold = nil
                     if let commit { lastAction = action; record("traceRelease", cells: commit.path); store.clearTracedConstellation(commit.path,snapshot: commit.snapshot,generation: commit.generation) }
                     else { result.otherCancelledTraces += 1; record("traceReleaseRejected") }
                 }
@@ -184,7 +185,7 @@ private struct Run: Codable {
                         precondition(ticket != nil)
                         gesture = action; pathIndex = 1; gestureAt = next+0.12
                         result.traceStarts += 1; record("traceBegin",cells: action.path)
-                        store.constellationTracing = true
+                        hold = store.beginConstellationHold()
                     } else { lastAction = action; record("tapAttempt",cells: [action.path[0]]); store.clear(action.path[0]) }
                 } else { decisionAt = next+0.45 }
             }

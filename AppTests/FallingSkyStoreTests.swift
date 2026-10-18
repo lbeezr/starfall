@@ -775,7 +775,7 @@ extension FallingSkyStoreTests {
         store.configureTimingTest(observe: { events.append($0) })
         store.setSuspended(false); store.togglePause(); clock.advance(0.25); presenter.finish()
         let inputGeneration = store.constellationInputGeneration
-        store.constellationTracing = true
+        let hold = try XCTUnwrap(store.beginConstellationHold())
         XCTAssertTrue(store.timingSnapshot.canClear); XCTAssertFalse(store.timingSnapshot.canTap)
         XCTAssertFalse(store.timingSnapshot.canCallShower)
         store.callShower()
@@ -784,7 +784,7 @@ extension FallingSkyStoreTests {
         XCTAssertEqual(store.constellationInputGeneration, inputGeneration)
         XCTAssertNil(clock.deadline)
         XCTAssertEqual(store.game.turns, 1, "A live trace owns the deadline hold")
-        store.constellationTracing = false
+        store.endConstellationHold(hold)
         clock.advance(1.8)
         XCTAssertNotEqual(store.constellationInputGeneration, inputGeneration)
         XCTAssertNotNil(events.last { $0.kind == .invalidated("automaticShower") })

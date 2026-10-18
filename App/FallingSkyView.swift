@@ -423,13 +423,16 @@ private struct ObservatoryCellShape: Shape {
 
 private extension FallingSkyView {
     func cancelConstellation() {
-        trace.cancel(); store.constellationTracing = false; store.scene.clearConstellationTrace()
+        trace.cancel(); store.endConstellationHold(trace.holdTicket); trace.holdTicket = nil; store.scene.clearConstellationTrace()
     }
     func beginConstellation(_ point: CGPoint, size: CGSize) {
         cancelConstellation()
         guard let cell = ConstellationTraceHitTesting.start(at: point, mapping: ObservatoryGeometry(size: size), game: store.game) else { return }
         _ = trace.begin(cell, game: store.game, generation: store.constellationInputGeneration, enabled: store.canClear)
-        store.constellationTracing = trace.snapshot != nil
+        if trace.snapshot != nil && trace.holdTicket == nil {
+            trace.holdTicket = store.beginConstellationHold()
+            if trace.holdTicket == nil { trace.cancel() }
+        }
         trace.lastFinger = point
         refreshConstellation()
     }
@@ -453,9 +456,9 @@ private extension FallingSkyView {
     func releaseConstellation() {
         let outcome = trace.finish(ticket: trace.sequence, game: store.game, generation: store.constellationInputGeneration, enabled: store.canClear)
         store.scene.clearConstellationTrace()
-        guard let outcome else { store.constellationTracing = false; return }
+        defer { store.endConstellationHold(trace.holdTicket); trace.holdTicket = nil }
+        guard let outcome else { return }
         store.clearTracedConstellation(outcome.path, snapshot: outcome.snapshot, generation: outcome.generation)
-        store.constellationTracing = false
         // Commit synchronously first; effects never choose or delay the cleared set.
         if store.game != outcome.snapshot { store.scene.constellationBurst(outcome.path) }
     }
@@ -465,7 +468,10 @@ private extension FallingSkyView {
         } else {
             _ = trace.visit(cell, ticket: trace.sequence, game: store.game, generation: store.constellationInputGeneration, enabled: store.canClear)
         }
-        store.constellationTracing = trace.snapshot != nil
+        if trace.snapshot != nil && trace.holdTicket == nil {
+            trace.holdTicket = store.beginConstellationHold()
+            if trace.holdTicket == nil { trace.cancel() }
+        }
         refreshConstellation()
         UIAccessibility.post(notification: .announcement, argument: trace.count > 0
             ? "\(trace.count) stars worth \(trace.value) starlight. \(trace.count >= 5 ? "Ready to release." : "Five stars needed.")"
