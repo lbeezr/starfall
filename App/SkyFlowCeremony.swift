@@ -198,14 +198,11 @@ enum SkyFlowAction: Equatable { case start, firstLight, begin, resume, replay, a
                     flowButton(SkyCopy.text(.actionViewLast), action: .resume, id: "sky.resume")
                 }
                 flowButton(SkyCopy.text(.actionFirstLight), action: .firstLight, id: "sky.firstLight")
-                Button { action(.preferences) } label: {
-                    Label(SkyCopy.text(.menuSettings), systemImage: "slider.horizontal.3")
-                }
-                .buttonStyle(StarfallButtonStyle(role: .quiet, expands: true))
-                .accessibilityIdentifier("sky.preferences").accessibilityFocused($preferencesFocused)
+                preferencesButton
             case .entry:
                 flowButton(SkyCopy.text(.actionBegin), action: .begin, id: "sky.begin", primary: true)
                 flowButton(SkyCopy.text(.actionHome), action: .home, id: "sky.home")
+                preferencesButton
             case .won, .full:
                 if screen == .won {
                     flowButton(SkyCopy.text(.actionNew), action: .another, id: "experiment.new", primary: true)
@@ -220,6 +217,14 @@ enum SkyFlowAction: Equatable { case start, firstLight, begin, resume, replay, a
         }
 
     }
+    private var preferencesButton: some View {
+        Button { action(.preferences) } label: {
+            Label(SkyCopy.text(.menuSettings), systemImage: "slider.horizontal.3")
+        }
+        .buttonStyle(StarfallButtonStyle(role: .quiet, expands: true))
+        .accessibilityIdentifier("sky.preferences").accessibilityFocused($preferencesFocused)
+    }
+
     private func flowButton(_ label: String, action choice: SkyFlowAction, id: String, primary: Bool = false) -> some View {
         Button(label) { action(choice) }
             .buttonStyle(StarfallButtonStyle(role: primary ? .ceremonyPrimary : .quiet, expands: true))

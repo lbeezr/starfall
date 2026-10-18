@@ -456,11 +456,11 @@ import StarfallCore
         switch destination {
         case .welcome:
             SkyWelcomePreferences(sound: $store.soundEnabled, haptics: $store.hapticsEnabled, calm: $calmEffects,
-                                  done: { menu = nil })
+                                  context: .selected(game: store.game, entry: flow.entry), done: { menu = nil })
         case .game:
             FallingSkyMenu(paused: store.isPaused, turns: store.game.turns,
                            groups: store.game.legalGroups.count, over: store.game.isOver,
-                           challenge: store.game.challenge != nil, criticalMass: store.game.hasCriticalMass, duskRule: store.game.duskRule, balance: store.game.balance,
+                           challenge: store.game.challenge != nil, criticalMass: store.game.hasCriticalMass, helpContext: .init(game: store.game), balance: store.game.balance,
                            sound: $store.soundEnabled, haptics: $store.hapticsEnabled, calm: $calmEffects,
                            pause: togglePauseFromMenu,
                            restart: { same in handleFlowAction(same ? .replay : .another) },

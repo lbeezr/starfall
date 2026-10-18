@@ -838,6 +838,23 @@ final class SkyFlowInteractionTests: XCTestCase {
         XCTAssertFalse(app.buttons["experiment.cell.0.0"].exists)
         capture(app, "flow-reduced-replay")
     }
+    @MainActor func testPendingFirstLightHelpUsesChallengeRulesAndPreservesEntry() {
+        let app = launch(); defer { app.terminate() }
+        tap("sky.firstLight", app)
+        tap("sky.preferences", app); tap("experiment.help", app)
+        XCTAssertTrue(app.navigationBars["How to play"].waitForExistence(timeout: 5))
+        let objective = app.staticTexts.containing(NSPredicate(format: "label BEGINSWITH %@", "Collect 18 starlight before a column fills.")).firstMatch
+        for _ in 0..<10 where !objective.exists || !objective.isHittable { app.swipeUp() }
+        XCTAssertTrue(objective.exists); XCTAssertTrue(objective.isHittable)
+        capture(app, "first-light-entry-help")
+        tap("experiment.done", app)
+        XCTAssertEqual(app.staticTexts["sky.title"].label, "Collect 18 starlight")
+        XCTAssertFalse(app.buttons["experiment.next"].exists)
+        capture(app, "first-light-entry-after-help")
+        tap("sky.home", app)
+        XCTAssertFalse(app.buttons["sky.resume"].exists, "Reading pending Help does not save or begin a round")
+    }
+
     @MainActor func testWelcomePreferencesShareValuesWithPlayAndDoNotCreateASave() {
         let app = launch(); defer { app.terminate() }
         tap("sky.preferences", app)
@@ -863,7 +880,7 @@ final class SkyFlowInteractionTests: XCTestCase {
         tap("sky.home", app)
         XCTAssertTrue(app.staticTexts["sky.subtitle"].waitForExistence(timeout: 5))
         XCTAssertTrue(app.staticTexts["sky.subtitle"].label.contains("First Light"))
-        XCTAssertTrue(app.staticTexts["sky.subtitle"].label.contains("Paused"))
+        XCTAssertTrue(app.staticTexts["sky.subtitle"].label.contains("Automatic showers paused"))
         capture(app, "welcome-retained-challenge-summary")
     }
 
