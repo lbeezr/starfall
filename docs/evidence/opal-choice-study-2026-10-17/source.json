@@ -1,0 +1,89 @@
+{
+  "discovery": {
+    "compileFlags": [
+      "-O",
+      "-DDEBUG"
+    ],
+    "dirtyPaths": [
+      "?? docs/design/OPAL_CHOICE_STUDY.md",
+      "?? tools/mechanics/opal-choice-study.swift",
+      "?? tools/mechanics/study-opal-choices.py"
+    ],
+    "inputSHA256": {
+      "Sources/StarfallCore/ConstellationFixture.swift": "1af99fff3808bebbe4234dc8d0013a8e10c2820670fa4581e1bd29a0a77ea82c",
+      "Sources/StarfallCore/FallingSky.swift": "be47b68f062243f12d1eb20816df1bc05bec27e7b26c81517d5e17f7bc3d6534",
+      "Sources/StarfallCore/Game.swift": "9ab2d57af8fe0ee804ce56e762eb5833a08ae5f39e8916ffaa0fe708d90e7086",
+      "Sources/StarfallCore/RefillMapping.swift": "608be41f40c945b18aba5512bac16b7c4de4eb8a2747d6fe54a895392b38e5f7",
+      "Sources/StarfallCore/SkyCadence.swift": "21e974b524f82cd7b64e5b95eb1a7561f0ca448e3611c204dcc12f0fd9feabac",
+      "Sources/StarfallCore/SkyGeneration.swift": "ecddcf4ef645fce9058691339c5fe5d850299c03860e886f5a745f30a59dc70b",
+      "Sources/StarfallCore/StarfallBalance.swift": "32525ba2f346cf843863b1cb1cba8a2fab66d088b9dc7ac308867f1520c329ec",
+      "Sources/StarfallCore/StarfallChallenge.swift": "0475f660c21ae42cce0df8c11dc40adbbb841e58b6c66b82a1293c720bd26b72",
+      "tools/mechanics/opal-choice-study.swift": "eded12a32dae6595ddb06951e5f2d1a67a8b9d45a34d374f49347715e6962afc",
+      "tools/mechanics/study-opal-choices.py": "0fc7841f201be2d283463fb37911a8da2ae88cfbe6c446d54e9018a0f0268c53"
+    },
+    "method": "Production Core unchanged; one visible-board clear per shower; complete taps/full components plus bounded connected fives; forecast outcomes are oracle diagnostics only.",
+    "rawOutput": "artifacts/opal-choices/first-64-a",
+    "reportSHA256": "e7b9df8f84f689b3f53eae15286b5bfd38c9e9ae18908fd383b9f4a90c1fd104",
+    "selfChecks": "Passed before sampling: topology/cap, colored anchor legality, deduplication, fixture consumption, source immutability and Core JSON round-trip.",
+    "source": "06ce5141f14f1b4d371ba5b5246d752888b3a821",
+    "toolchain": "Apple Swift version 6.4 (swiftlang-6.4.0.34.1 clang-2100.3.34.1)\nTarget: arm64-apple-macosx27.0.0"
+  },
+  "heldout": {
+    "compileFlags": [
+      "-O",
+      "-DDEBUG"
+    ],
+    "dirtyPaths": [
+      "?? docs/design/OPAL_CHOICE_STUDY.md",
+      "?? tools/mechanics/opal-choice-study.swift",
+      "?? tools/mechanics/study-opal-choices.py"
+    ],
+    "inputSHA256": {
+      "Sources/StarfallCore/ConstellationFixture.swift": "1af99fff3808bebbe4234dc8d0013a8e10c2820670fa4581e1bd29a0a77ea82c",
+      "Sources/StarfallCore/FallingSky.swift": "be47b68f062243f12d1eb20816df1bc05bec27e7b26c81517d5e17f7bc3d6534",
+      "Sources/StarfallCore/Game.swift": "9ab2d57af8fe0ee804ce56e762eb5833a08ae5f39e8916ffaa0fe708d90e7086",
+      "Sources/StarfallCore/RefillMapping.swift": "608be41f40c945b18aba5512bac16b7c4de4eb8a2747d6fe54a895392b38e5f7",
+      "Sources/StarfallCore/SkyCadence.swift": "21e974b524f82cd7b64e5b95eb1a7561f0ca448e3611c204dcc12f0fd9feabac",
+      "Sources/StarfallCore/SkyGeneration.swift": "ecddcf4ef645fce9058691339c5fe5d850299c03860e886f5a745f30a59dc70b",
+      "Sources/StarfallCore/StarfallBalance.swift": "32525ba2f346cf843863b1cb1cba8a2fab66d088b9dc7ac308867f1520c329ec",
+      "Sources/StarfallCore/StarfallChallenge.swift": "0475f660c21ae42cce0df8c11dc40adbbb841e58b6c66b82a1293c720bd26b72",
+      "tools/mechanics/opal-choice-study.swift": "eded12a32dae6595ddb06951e5f2d1a67a8b9d45a34d374f49347715e6962afc",
+      "tools/mechanics/study-opal-choices.py": "0fc7841f201be2d283463fb37911a8da2ae88cfbe6c446d54e9018a0f0268c53"
+    },
+    "method": "Production Core unchanged; one visible-board clear per shower; complete taps/full components plus bounded connected fives; forecast outcomes are oracle diagnostics only.",
+    "rawOutput": "artifacts/opal-choices/heldout-64-127",
+    "reportSHA256": "333cc770b4faee7856e44c269a762deb02dcb5e20d248c3467ba1c9810d22ff0",
+    "selfChecks": "Passed before sampling: topology/cap, colored anchor legality, deduplication, fixture consumption, source immutability and Core JSON round-trip.",
+    "source": "06ce5141f14f1b4d371ba5b5246d752888b3a821",
+    "toolchain": "Apple Swift version 6.4 (swiftlang-6.4.0.34.1 clang-2100.3.34.1)\nTarget: arm64-apple-macosx27.0.0"
+  },
+  "repeat": {
+    "compileFlags": [
+      "-O",
+      "-DDEBUG"
+    ],
+    "dirtyPaths": [
+      "?? docs/design/OPAL_CHOICE_STUDY.md",
+      "?? tools/mechanics/opal-choice-study.swift",
+      "?? tools/mechanics/study-opal-choices.py"
+    ],
+    "inputSHA256": {
+      "Sources/StarfallCore/ConstellationFixture.swift": "1af99fff3808bebbe4234dc8d0013a8e10c2820670fa4581e1bd29a0a77ea82c",
+      "Sources/StarfallCore/FallingSky.swift": "be47b68f062243f12d1eb20816df1bc05bec27e7b26c81517d5e17f7bc3d6534",
+      "Sources/StarfallCore/Game.swift": "9ab2d57af8fe0ee804ce56e762eb5833a08ae5f39e8916ffaa0fe708d90e7086",
+      "Sources/StarfallCore/RefillMapping.swift": "608be41f40c945b18aba5512bac16b7c4de4eb8a2747d6fe54a895392b38e5f7",
+      "Sources/StarfallCore/SkyCadence.swift": "21e974b524f82cd7b64e5b95eb1a7561f0ca448e3611c204dcc12f0fd9feabac",
+      "Sources/StarfallCore/SkyGeneration.swift": "ecddcf4ef645fce9058691339c5fe5d850299c03860e886f5a745f30a59dc70b",
+      "Sources/StarfallCore/StarfallBalance.swift": "32525ba2f346cf843863b1cb1cba8a2fab66d088b9dc7ac308867f1520c329ec",
+      "Sources/StarfallCore/StarfallChallenge.swift": "0475f660c21ae42cce0df8c11dc40adbbb841e58b6c66b82a1293c720bd26b72",
+      "tools/mechanics/opal-choice-study.swift": "eded12a32dae6595ddb06951e5f2d1a67a8b9d45a34d374f49347715e6962afc",
+      "tools/mechanics/study-opal-choices.py": "0fc7841f201be2d283463fb37911a8da2ae88cfbe6c446d54e9018a0f0268c53"
+    },
+    "method": "Production Core unchanged; one visible-board clear per shower; complete taps/full components plus bounded connected fives; forecast outcomes are oracle diagnostics only.",
+    "rawOutput": "artifacts/opal-choices/first-64-b",
+    "reportSHA256": "e7b9df8f84f689b3f53eae15286b5bfd38c9e9ae18908fd383b9f4a90c1fd104",
+    "selfChecks": "Passed before sampling: topology/cap, colored anchor legality, deduplication, fixture consumption, source immutability and Core JSON round-trip.",
+    "source": "06ce5141f14f1b4d371ba5b5246d752888b3a821",
+    "toolchain": "Apple Swift version 6.4 (swiftlang-6.4.0.34.1 clang-2100.3.34.1)\nTarget: arm64-apple-macosx27.0.0"
+  }
+}
