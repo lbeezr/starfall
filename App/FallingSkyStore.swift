@@ -182,8 +182,8 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         guard canReceiveInput, ticket == constellationInputGeneration,
               holdTicket == constellationHold, count == 0 || holdTicket != nil else { return }
         let message = count > 0
-            ? "\(count) stars worth \(value) starlight. \(ready ? "Ready to release." : "Five stars needed, or an exact four-star square.")"
-            : "Choose a neighboring matching star. Trace canceled."
+            ? SkyCopy.text(.inputTraceAnnouncement, values: ["count": String(count), "score": String(value), "status": SkyCopy.text(ready ? .inputTraceReleaseReady : game.challenge == nil ? .inputTraceShort : .inputTraceChallengeShort)])
+            : SkyCopy.text(.inputTraceCanceled)
         feedback.announce(message)
     }
 
@@ -192,10 +192,10 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     private func explainAvailability(_ availability: SkyInputAvailability) {
         switch availability {
         case .settling(let columns):
-            showInputFeedback("Stars settling…")
-            inputFeedback = InputFeedback(text: "Stars settling…", waitingColumns: columns)
-            feedback.announce("Stars settling")
-        case .showerDue: explainInputFailure("A shower is arriving")
+            showInputFeedback(SkyCopy.text(.statusSettling))
+            inputFeedback = InputFeedback(text: SkyCopy.text(.statusSettling), waitingColumns: columns)
+            feedback.announce(SkyCopy.text(.statusSettling))
+        case .showerDue: explainInputFailure(SkyCopy.text(.inputShowerDue))
         case .suspended, .gameOver, .emptySelection, .ready: break
         }
     }
@@ -402,7 +402,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
                 : gem?.gravityKind == .magnet ? "guide.magnet-help"
                 : gem?.isDark == true ? (game.duskRule != .legacy ? "guide.dusk-help" : "guide.dark-help")
                 : gem?.isLight == true ? "guide.opal-help" : "guide.match-help"
-            guide(id, visible: true)
+            guide(id, values: id == "guide.dusk-help" ? ["feeds": String(game.duskRule.feedingShowers)] : [:], visible: true)
             feedback.announce(guideLine.spokenText)
             return
         }
@@ -563,10 +563,10 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         let isShower = !turn.arrivals.isEmpty || turn.blockedColumn != nil
         invalidateInput(isShower ? (announcesResult ? "manualShower" : "automaticShower") : "clear")
         if turn.exchange != nil {
-            techniqueRelay.reset(); techniqueResult = "Star moved. Arrange your next clear."
+            techniqueRelay.reset(); techniqueResult = SkyCopy.text(.techniqueMoved)
         } else if !turn.cleared.isEmpty {
             techniqueRelay.record(before:old,after:game,cleared:turn.cleared)
-            techniqueResult = techniqueRelay.depth > 1 ? "\(techniqueRelay.depth)-clear relay" : "Clear a support to set up your next recipe."
+            techniqueResult = techniqueRelay.depth > 1 ? SkyCopy.text(.techniqueRelay, values: ["count": String(techniqueRelay.depth)]) : SkyCopy.text(.techniqueSupport)
         }
         celebrate(turn, from: old, path: path, recipe: recipe)
         let epoch = generation
@@ -581,10 +581,16 @@ enum SkyTerminalSpeech { case feedback, ceremony }
             guide("guide.full", values: ["score": String(game.score)])
         } else if !turn.duskCollapses.isEmpty {
             let count = Set(turn.duskCollapses.flatMap(\.consumed)).count
-            guide("guide.dusk-collapse", values: ["stars": String(count)])
+            guide("guide.dusk-collapse", values: ["swallowed": SkyCopy.count(.eventEatenOne, .eventEatenMany, count)])
         } else if !turn.cleared.isEmpty {
-            if dissolved > 0 {
-                guide("guide.dissolved", values: ["score": String(turn.collected), "dark": game.duskRule != .legacy ? (dissolved == 1 ? "Dusk" : "Dusks") : (dissolved == 1 ? "Dark star" : "Dark stars")])
+            if turn.collected == 0 && turn.cleared.contains(where: { old.isDrained(at: $0) }) {
+                guide("guide.gray-clear")
+            } else if dissolved > 0 {
+                guide("guide.dissolved", values: ["score": String(turn.collected), "dark": game.duskRule != .legacy ? SkyCopy.count(.eventDusk, .eventDusks, dissolved) : SkyCopy.text(dissolved == 1 ? .eventDark : .eventDarks)])
+            } else if let recipe {
+                guide("guide.recipe", values: ["shape": SkyCopy.text(recipe.shape == .square ? .techniqueSquare : .techniqueCross), "score": String(turn.collected)])
+            } else if !path.isEmpty {
+                guide("guide.constellation", values: ["stars": String(Set(path).count), "score": String(turn.collected)])
             } else { guide("guide.clear", values: ["score": String(turn.collected)]) }
         } else if turn.arrivals.contains(where: { $0.gem.isDark }) {
             guide(game.duskRule != .legacy ? "guide.dusk-arrival" : "guide.dark-arrival")
@@ -593,16 +599,16 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         } else if turn.arrivals.contains(where: { $0.gem.gravityKind == .magnet }) {
             guide("guide.magnet-arrival")
         } else if growth > 0 {
-            guide(game.duskRule != .legacy && game.board.enumerated().contains(where: { game.isDrained(at: Cell($0.offset/7,$0.offset%7)) }) ? "guide.dusk-growth" : "guide.growth", values: ["growth": growth == 1 ? "A star grew" : "\(growth) stars grew"])
+            guide(game.duskRule != .legacy && game.board.enumerated().contains(where: { game.isDrained(at: Cell($0.offset/7,$0.offset%7)) }) ? "guide.dusk-growth" : "guide.growth", values: ["growth": SkyCopy.count(.eventGrowthOne, .eventGrowthMany, growth)])
         } else {
-            guide("guide.arrival", values: ["arrival": turn.arrivals.count == 1 ? "One star arrived" : "\(turn.arrivals.count) stars arrived"])
+            guide("guide.arrival", values: ["arrival": SkyCopy.count(.eventArrivalOne, .eventArrivalMany, turn.arrivals.count)])
         }
         if !game.isOver {
             if turn.exchange != nil { guide("guide.technique",values:["detail":techniqueResult]) }
-            else if techniqueRelay.depth > 1 { guide("guide.technique",values:["detail":guideLine.text + " " + techniqueResult + "."]) }
+            else if techniqueRelay.depth > 1 && turn.collected > 0 { guide("guide.relay", values: ["score": String(turn.collected), "depth": String(techniqueRelay.depth)]) }
         }
         if !game.isOver, let field = game.orbit {
-            guide("guide.orbit", values: ["windows": String(field.windowsRemaining)])
+            guide("guide.orbit", values: ["release": SkyCopy.count(.orbitReleaseOne, .orbitReleaseMany, field.windowsRemaining)])
         } else if !game.isOver, turn.gravityPhases.contains(where: { $0.event == .release }) {
             guide("guide.release")
         }

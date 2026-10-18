@@ -6,6 +6,8 @@ Behavior proposals, production contracts and research supporting decisions.
 
 ## Start here
 
+[UX writing research](UX_WRITING_RESEARCH.md) audits copy against UX and game-dialogue sources and defines the vocabulary, six voices and acceptance checks behind the authorized rewrite. The [copy authoring guide](../../App/DialogueScripts/README.md) owns implemented wording and event policy.
+
 [Calibration](CALIBRATION.md) holds the mechanic set steady and sequences measured balance, native play and bounded refinement.
 
 [Star techniques](STAR_TECHNIQUES.md) owns exact square/cross recipes, swipe-and-hold exchanges, tap equivalents and deliberate relays.

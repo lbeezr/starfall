@@ -83,7 +83,7 @@ final class DuskProductionTests: XCTestCase {
         let (store,_,presenter)=try store(DuskFixture.zeroClear.game())
         store.clear(Cell(0,1))
         XCTAssertEqual(store.game.score,0); XCTAssertEqual(store.game.occupiedCount,0)
-        XCTAssertTrue(store.message.contains("+0 starlight")); XCTAssertTrue(store.busy)
+        XCTAssertTrue(store.message.contains("No starlight that time")); XCTAssertTrue(store.busy)
         XCTAssertFalse(store.canContact(Cell(0,1)))
         presenter.completions.last?(); XCTAssertFalse(store.busy)
     }
@@ -91,24 +91,24 @@ final class DuskProductionTests: XCTestCase {
     @MainActor func testDuskGuidanceUsesBottomDialogueWithoutChangingSavedGame() throws {
         let (store,_,presenter) = try store(DuskFixture.unfed.game(rule: .patientFeeding))
         let before = store.game
-        XCTAssertTrue(store.pausedGuideLine.text.contains("5 feeding showers left"))
+        XCTAssertTrue(store.pausedGuideLine.text.contains("5 more showers with a touching star"))
         XCTAssertEqual(store.game, before)
         store.callShower()
         presenter.completions.last?()
-        XCTAssertTrue(store.dialogue.line?.text.contains("4 feeding showers left") == true)
+        XCTAssertTrue(store.dialogue.line?.text.contains("4 more showers with a touching star") == true)
         XCTAssertTrue(store.dialogue.visible)
         store.showInputFeedback("Swap ready · lift to move; slide back to cancel")
         XCTAssertEqual(store.pausedGuideLine.speaker, .spark)
         store.showInputFeedback(nil)
-        XCTAssertTrue(store.pausedGuideLine.text.contains("4 feeding showers left"))
+        XCTAssertTrue(store.pausedGuideLine.text.contains("4 more showers with a touching star"))
     }
 
     @MainActor func testStageTargetsDrainMaterialAndWarningSurviveResizeAndQuietRendering() throws {
         let scene=FallingSkyScene(size:.init(width:378,height:690))
         let game=DuskFixture.imminent.game(rule: .patientFeeding)
         for _ in 0..<12 { scene.render(game) }
-        XCTAssertTrue(DuskWarning(game:game)!.text.contains("1 feeding shower left"))
-        XCTAssertTrue(DuskWarning.consequence(game:game,cell:Cell(0,3)).contains("row 6 column 4"))
+        XCTAssertTrue(DuskWarning(game:game)!.text.contains("1 more shower with a touching star"))
+        XCTAssertTrue(DuskWarning.consequence(game:game,cell:Cell(0,3)).contains("row 6, column 4"))
         XCTAssertNotNil(scene.childNode(withName:"//dusk.progress"))
         XCTAssertNil(scene.childNode(withName:"//sky.growth-lock"))
         let characters=scene.children[1].children.compactMap { $0 as? FallingSkyCharacter }

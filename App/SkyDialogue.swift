@@ -39,6 +39,8 @@ struct SkyDialogueScript: Codable, Equatable, Identifiable, Sendable {
 struct SkyDialogueCatalog: Decodable, Sendable {
     let schemaVersion: Int
     let scripts: [SkyDialogueScript]
+    /// Optional when decoding old authoring fixtures; required by the shipped library.
+    let copy: [String: String]?
     enum ContentError: Error, Equatable {
         case invalidCatalog, missingScript(String), missingValue(String), unusedValue(String)
     }
@@ -59,6 +61,14 @@ struct SkyDialogueCatalog: Decodable, Sendable {
                 guard line.isValid, ids.insert(line.id).inserted else {
                     throw ContentError.invalidCatalog
                 }
+            }
+        }
+        if let copy = catalog.copy {
+            guard copy.count <= 512 else { throw ContentError.invalidCatalog }
+            for (key, text) in copy {
+                guard !key.isEmpty, !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+                      text.count <= 1_600 else { throw ContentError.invalidCatalog }
+                _ = try Self.placeholders(in: text)
             }
         }
         return catalog
@@ -82,18 +92,33 @@ struct SkyDialogueCatalog: Decodable, Sendable {
         return keys
     }
 
+    static func render(_ source: String, values: [String: String]) throws -> String {
+        let keys = try placeholders(in: source)
+        if let unused = Set(values.keys).subtracting(keys).sorted().first { throw ContentError.unusedValue(unused) }
+        var text = source
+        for key in keys {
+            guard let value = values[key], !value.contains("{"), !value.contains("}") else {
+                throw ContentError.missingValue(key)
+            }
+            text = text.replacingOccurrences(of: "{\(key)}", with: value)
+        }
+        return text
+    }
+
+    func copyText(_ key: String, values: [String: String] = [:]) throws -> String {
+        guard let source = copy?[key] else { throw ContentError.missingScript(key) }
+        let text = try Self.render(source, values: values)
+        guard text.count <= 1_600 else { throw ContentError.invalidCatalog }
+        return text
+    }
+
     func script(_ id: String, values: [String: String] = [:]) throws -> SkyDialogueScript {
         guard let source = scripts.first(where: { $0.id == id }) else { throw ContentError.missingScript(id) }
         var used = Set<String>()
         let lines = try source.lines.map { line in
-            var text = line.text
-            for key in try Self.placeholders(in: text) {
-                guard let value = values[key], !value.contains("{"), !value.contains("}") else {
-                    throw ContentError.missingValue(key)
-                }
-                used.insert(key)
-                text = text.replacingOccurrences(of: "{\(key)}", with: value)
-            }
+            let keys = try Self.placeholders(in: line.text)
+            used.formUnion(keys)
+            let text = try Self.render(line.text, values: values.filter { keys.contains($0.key) })
             guard text.count <= 400 else { throw ContentError.invalidCatalog }
             return SkyDialogueLine(id: line.id, speaker: line.speaker, text: text,
                                    priority: line.priority, seconds: line.seconds)

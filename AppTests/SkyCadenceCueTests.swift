@@ -12,15 +12,15 @@ final class SkyCadenceCueTests: XCTestCase {
 
     func testCanonicalCandidateBoundariesExposeExactWarningAndNoSafetyPromise() {
         let warning = SkyCadenceCueCopy(step: TimingCycleFixture.step(committedShowers: 9))
-        XCTAssertEqual(warning?.title, "Faster after next shower")
-        XCTAssertEqual(warning?.label, "Faster after next shower")
+        XCTAssertEqual(warning?.title, "Showers get faster after the next shower.")
+        XCTAssertEqual(warning?.label, "Showers get faster after the next shower.")
         for count in 10...12 {
             XCTAssertEqual(SkyCadenceCueCopy(step: TimingCycleFixture.step(committedShowers: count))?.label,
-                           "Faster passage. Showers are closer together")
+                           "Showers are closer together now.")
         }
         for count in 13...15 {
             XCTAssertEqual(SkyCadenceCueCopy(step: TimingCycleFixture.step(committedShowers: count))?.label,
-                           "Breathing window. More time between showers")
+                           "More time between showers now.")
         }
         XCTAssertNil(SkyCadenceCueCopy(step: TimingCycleFixture.step(committedShowers: 16)))
         XCTAssertNil(SkyCadenceCueCopy(step: TimingCycleFixture.step(committedShowers: 9, pace: .gentle)))

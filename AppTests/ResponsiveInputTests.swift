@@ -253,8 +253,8 @@ extension ResponsiveInputTests {
         store.announceTraceSelection(count:1,value:1,ready:false,generation:generation,holdTicket:first)
         store.announceTraceSelection(count:5,value:7,ready:true,generation:generation,holdTicket:first)
         XCTAssertEqual(feedback.announcements, [
-            "1 stars worth 1 starlight. Five stars needed, or an exact four-star square.",
-            "5 stars worth 7 starlight. Ready to release."
+            "Stars selected: 1. Starlight if cleared: 1. Trace 5 matching stars, or a 4-star square in Open sky.",
+            "Stars selected: 5. Starlight if cleared: 7. Ready to release."
         ])
         store.endConstellationHold(first)
         store.announceTraceSelection(count:1,value:1,ready:false,generation:generation,holdTicket:first)
@@ -262,7 +262,7 @@ extension ResponsiveInputTests {
         store.announceTraceSelection(count:5,value:5,ready:true,generation:generation,holdTicket:first)
         XCTAssertEqual(feedback.announcements.count,2,"Neither released nor replaced selections may announce")
         store.announceTraceSelection(count:0,value:0,ready:false,generation:generation,holdTicket:second)
-        XCTAssertEqual(feedback.announcements.last,"Choose a neighboring matching star. Trace canceled.")
+        XCTAssertEqual(feedback.announcements.last,"Trace canceled. Choose a touching matching star.")
         XCTAssertEqual(store.game,game); XCTAssertEqual(defaults.data(forKey:FallingSkyStore.saveKey),saved)
         store.restart(sameSky:true)
         store.announceTraceSelection(count:5,value:5,ready:true,generation:generation,holdTicket:second)

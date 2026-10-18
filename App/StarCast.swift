@@ -70,23 +70,23 @@ import StarfallCore
     static func character(for identity: Identity) -> Character {
         switch identity {
         case .colored(.aqua):
-            Character(speaker: .spark, points: 4, description: "Aqua four-point star")
+            Character(speaker: .spark, points: 4, description: SkyCopy.text(.castSpark))
         case .colored(.amber):
-            Character(speaker: .sunny, points: 5, description: "Amber five-point star")
+            Character(speaker: .sunny, points: 5, description: SkyCopy.text(.castSunny))
         case .colored(.mint):
-            Character(speaker: .pip, points: 6, description: "Mint six-point star")
+            Character(speaker: .pip, points: 6, description: SkyCopy.text(.castPip))
         case .colored(.rose):
-            Character(speaker: .twinkle, points: 8, description: "Rose eight-point star")
+            Character(speaker: .twinkle, points: 8, description: SkyCopy.text(.castTwinkle))
         case .colored(.violet):
-            Character(speaker: .nova, points: 4, description: "Violet wide four-point star")
+            Character(speaker: .nova, points: 4, description: SkyCopy.text(.castNova))
         case .dusk:
-            Character(speaker: .dusk, points: 5, description: "Dark star")
+            Character(speaker: .dusk, points: 5, description: SkyCopy.text(.castDusk))
         case .opal:
-            Character(name: "Opal", points: 0, description: "White Opal Orb")
+            Character(name: "Opal", points: 0, description: SkyCopy.text(.castOpal))
         case .magnet:
-            Character(name: "Field", points: 0, description: "Attraction field")
+            Character(name: "Field", points: 0, description: SkyCopy.text(.castField))
         case .hole:
-            Character(name: "Hole", points: 0, description: "Gravity hole")
+            Character(name: "Hole", points: 0, description: SkyCopy.text(.castHole))
         }
     }
 

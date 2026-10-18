@@ -210,7 +210,7 @@ final class SkyFlowStateTests: XCTestCase {
         XCTAssertNil(empty.summary); XCTAssertFalse(empty.canContinue)
         let paused = SkyWelcomeSnapshot(game: game, hasSavedSky: true, paused: true)
         XCTAssertTrue(paused.canContinue)
-        XCTAssertEqual(paused.summary, "First Light · 0 of 18 starlight · Paused")
+        XCTAssertEqual(paused.summary, "First Light · 0 of 18 starlight · Automatic showers paused")
         let running = SkyWelcomeSnapshot(game: FallingSky(seed: 5), hasSavedSky: true, paused: false)
         XCTAssertEqual(running.summary, "Open sky · 0 starlight · Automatic showers")
         for _ in 0..<40 where !game.isOver { _ = game.letStarsFall() }
@@ -253,7 +253,7 @@ final class SkyFlowStateTests: XCTestCase {
             XCTAssertTrue(result.reason.contains("Column \(column+1)"))
             let restored = try JSONDecoder().decode(FallingSky.self, from: JSONEncoder().encode(game))
             XCTAssertEqual(SkyResultSnapshot(game: restored), result)
-            XCTAssertEqual(result.scoreLabel, challenge ? "0 of 18 starlight collected" : "0 starlight")
+            XCTAssertEqual(result.scoreLabel, challenge ? "0 of 18 starlight collected" : "0 starlight collected")
         }
     }
 
@@ -268,6 +268,6 @@ final class SkyFlowStateTests: XCTestCase {
         XCTAssertGreaterThanOrEqual(result.score, 18)
         XCTAssertEqual(result.score, game.score)
         XCTAssertEqual(result.target, 18)
-        XCTAssertEqual(result.reason, "First Light complete.")
+        XCTAssertEqual(result.reason, "First Light complete!")
     }
 }

@@ -101,8 +101,8 @@ import StarfallCore
                         ProgressView().controlSize(.large).tint(StarfallTheme.Ceremony.gold)
                             .accessibilityHidden(true)
                     }
-                    Text("Preparing your sky…").font(StarfallTheme.Typography.title)
-                    Button("Back to Observatory") { handleFlowAction(.home) }
+                    Text(SkyCopy.text(.flowPreparing)).font(StarfallTheme.Typography.title)
+                    Button(SkyCopy.text(.actionHome)) { handleFlowAction(.home) }
                         .buttonStyle(StarfallButtonStyle(role: .primary))
                         .accessibilityIdentifier("sky.preparing.back")
                 }
@@ -188,10 +188,10 @@ import StarfallCore
                                active: scenePhase == .active && !settings && !showingCeremony,
                                next: store.nextDialogue, maximumHeight: maximumHeight) {
                 controlLayout {
-                    Button(store.game.turns == 0 ? "Start sky" : "Resume sky") { store.togglePause() }
+                    Button(store.game.turns == 0 ? SkyCopy.text(.actionStart) : SkyCopy.text(.actionResume)) { store.togglePause() }
                         .disabled(store.suspended).accessibilityIdentifier("experiment.pause")
                     if !largeText { Spacer(minLength: 0) }
-                    Button("Next shower") { store.callShower() }
+                    Button(SkyCopy.text(.actionNext)) { store.callShower() }
                         .disabled(store.busy || store.suspended).accessibilityIdentifier("experiment.next")
                 }.buttonStyle(StarfallGameButtonStyle())
             }
@@ -210,9 +210,9 @@ import StarfallCore
                 Image(systemName: "sparkle").foregroundStyle(StarfallTheme.Observatory.lanternGlow).accessibilityHidden(true)
                 Text(store.game.challenge.map { "\(store.game.score) / \($0.target)" } ?? "\(store.game.score)")
                     .font(StarfallTheme.Typography.gameTitle).monospacedDigit()
-                    .accessibilityLabel(store.game.challenge.map { "\(store.game.score) of \($0.target) starlight collected" } ?? "\(store.game.score) starlight")
+                    .accessibilityLabel(store.game.challenge.map { SkyCopy.text(.resultChallengeScore, values: ["score": String(store.game.score), "target": String($0.target)]) } ?? SkyCopy.text(.welcomeScore, values: ["score": String(store.game.score)]))
                     .accessibilityIdentifier("experiment.score")
-                    .accessibilityHint("Starfall terrace, seven columns. Row one is the farthest row. \(store.game.turns) showers, \(store.game.legalGroups.count) matching groups ready")
+                    .accessibilityHint(SkyCopy.text(.a11yBoardHint, values: ["summary": boardSummary]))
             }
             .keyframeAnimator(initialValue: CGFloat(1), trigger: store.game.score) { content, scale in
                 content.scaleEffect(quiet || !celebrating ? 1 : scale, anchor: .leading)
@@ -231,7 +231,7 @@ import StarfallCore
             Button { menu = .game } label: { SkyMenuGlyph() }
                 .buttonStyle(StarfallGameButtonStyle())
                 .disabled(scenePhase != .active || store.suspended)
-                .accessibilityLabel("Sky menu").accessibilityHint("Pause, settings and how to play")
+                .accessibilityLabel(SkyCopy.text(.menuTitle)).accessibilityHint(SkyCopy.text(.menuHint))
                 .accessibilityIdentifier("experiment.settings").accessibilityFocused($menuFocused)
         }
     }
@@ -314,14 +314,18 @@ import StarfallCore
             // Keep the group unlabelled: a label here replaces leaf star labels
             // during touch exploration. Terrace context belongs to the score hint.
             .accessibilityElement(children: .contain)
-            .accessibilityValue("\(store.game.turns) showers, \(store.game.legalGroups.count) matching groups ready")
+            .accessibilityValue(boardSummary)
             .accessibilityIdentifier("experiment.board")
-            .accessibilityRotor("Matching groups") {
+            .accessibilityRotor(SkyCopy.text(.a11yMatchingGroups)) {
                 ForEach(store.game.legalGroups.compactMap(\.first), id: \.self) { cell in
                     AccessibilityRotorEntry(Text(cellLabel(cell)), id: cell, in: matchingGroups)
                 }
             }
         }
+    }
+
+    private var boardSummary: String {
+        SkyCopy.text(.a11yBoardSummary, values: ["showers": String(store.game.turns), "groups": String(store.game.legalGroups.count)])
     }
 
     private func cellButton(_ cell: Cell) -> some View {
@@ -336,61 +340,61 @@ import StarfallCore
         .buttonStyle(.plain)
         .accessibilityLabel(cellLabel(cell))
         .accessibilityValue(store.game.gem(at: cell)?.isLight == true
-            ? (store.game.isDrained(at: cell) ? "Scores zero; still connects matching stars" : "1 starlight, choose a colored star to start")
-            : reward != value ? "\(value) toward a match, \(reward) starlight if cleared" : "\(value) starlight connected")
+            ? (store.game.isDrained(at: cell) ? SkyCopy.text(.a11yOrbDrained) : SkyCopy.text(.a11yOrb))
+            : reward != value ? SkyCopy.text(.a11yGroupReward, values: ["value": String(value), "reward": String(reward)]) : SkyCopy.text(.a11yGroupValue, values: ["value": String(value)]))
         .accessibilityHint(store.game.gem(at: cell)?.gravityKind == .hole
-            ? "Clear a matching group containing a captive to close this hole"
+            ? SkyCopy.text(.a11yHoleHint)
             : store.game.gem(at: cell)?.gravityKind == .magnet
-            ? "Clear beside it to dispel the field. Clear between two fields to form a hole"
+            ? SkyCopy.text(.a11yFieldHint)
             : store.game.orbit?.slots.contains(cell) == true
-            ? "A legal clear containing this captive closes the hole and releases the others"
+            ? SkyCopy.text(.a11yTrappedHint)
             : store.game.gem(at: cell)?.isDark == true
-            ? "Clear a matching group directly beside this dark star to dissolve it"
+            ? SkyCopy.text(.a11yDarkHint)
             : store.game.gem(at: cell)?.isLight == true
-                ? "Start on a colored star to include this orb in that color’s match or constellation. Using it spends it."
+                ? SkyCopy.text(.a11yOrbHint)
             : value >= 3
-                ? (store.game.darkStarsBeside(group).isEmpty ? "Tap to clear this ordinary match" : "Tap to clear this ordinary match and adjacent dark stars")
-                : "Needs three light horizontally or vertically, or five actual matching stars linked sideways or diagonally")
-        .accessibilityCustomContent("Gravity consequence", gravityConsequence(cell))
-        .accessibilityCustomContent("Dusk consequence", DuskWarning.consequence(game: store.game, cell: cell))
+                ? (store.game.darkStarsBeside(group).isEmpty ? SkyCopy.text(.a11yClearHint) : SkyCopy.text(.a11yClearDarkHint))
+                : SkyCopy.text(.a11yMatchHint))
+        .accessibilityCustomContent(Text(SkyCopy.text(.a11yGravityConsequence)), Text(gravityConsequence(cell)))
+        .accessibilityCustomContent(Text(SkyCopy.text(.a11yDuskConsequence)), Text(DuskWarning.consequence(game: store.game, cell: cell)))
         .accessibilityIdentifier("experiment.cell.\(cell.row).\(cell.column)")
         .accessibilityActions {
             ForEach([-1, 1], id: \.self) { offset in
                 let destination = Cell(cell.row, cell.column + offset)
                 if snapshot.canNudge(from: cell, to: destination) {
-                    Button(offset < 0 ? "Move star left" : "Move star right") {
+                    Button(offset < 0 ? SkyCopy.text(.techniqueMoveLeft) : SkyCopy.text(.techniqueMoveRight)) {
                         cancelConstellation()
                         _ = store.performTechnique(.nudge(cell, destination), snapshot: snapshot, generation: generation)
                     }
                 }
             }
         }
-        .accessibilityAction(named: Text("Add to constellation")) { accessibleTrace(cell) }
-        .accessibilityAction(named: Text("Release constellation")) { releaseConstellation() }
-        .accessibilityAction(named: Text("Cancel constellation")) { cancelConstellation() }
+        .accessibilityAction(named: Text(SkyCopy.text(.actionTraceAdd))) { accessibleTrace(cell) }
+        .accessibilityAction(named: Text(SkyCopy.text(.actionTraceRelease))) { releaseConstellation() }
+        .accessibilityAction(named: Text(SkyCopy.text(.actionTraceCancel))) { cancelConstellation() }
         .accessibilityRotorEntry(id: cell, in: matchingGroups)
         .disabled(!store.canClear(cell) && !store.constellationTracing)
     }
 
     private func gravityConsequence(_ cell: Cell) -> String {
         guard let preview = store.game.gravityPreview(at: cell), let field = preview.orbit,
-              store.game.orbit == nil else { return "No new hole" }
-        return "Forms a hole at row \(7-field.center.row), column \(field.center.column+1), holding \(field.slots.count) stars"
+              store.game.orbit == nil else { return SkyCopy.text(.a11yNoHole) }
+        return SkyCopy.text(.a11yHolePreview, values: ["position": SkyCopy.position(row: 7-field.center.row, column: field.center.column+1), "count": String(field.slots.count)])
     }
 
     private func cellLabel(_ cell: Cell) -> String {
-        let position = "row \(7-cell.row), column \(cell.column+1)"
-        guard let gem = store.game.gem(at: cell) else { return "Empty, \(position)" }
+        let position = SkyCopy.position(row: 7-cell.row, column: cell.column+1)
+        guard let gem = store.game.gem(at: cell) else { return SkyCopy.text(.a11yEmpty, values: ["position": position]) }
         if let role = gem.gravityKind {
-            return role == .hole ? "Gravity hole, \(store.game.orbit?.windowsRemaining ?? 0) windows left, \(position)" : "Attraction field, \(position)"
+            return role == .hole ? SkyCopy.text(.a11yHole, values: ["release": SkyCopy.count(.orbitReleaseOne, .orbitReleaseMany, store.game.orbit?.windowsRemaining ?? 0), "position": position]) : SkyCopy.text(.a11yField, values: ["position": position])
         }
         if gem.isDark && store.game.duskRule != .legacy {
-            return "Dusk, \(gem.duskFeeds) of \(store.game.duskRule.feedingShowers) feeds, \(position). " + DuskWarning.consequence(game: store.game, cell: cell)
+            return SkyCopy.text(.duskLabel, values: ["fed": String(gem.duskFeeds), "feeds": String(store.game.duskRule.feedingShowers), "position": position, "consequence": DuskWarning.consequence(game: store.game, cell: cell)])
         }
-        let shade = store.game.isDrained(at: cell) ? ", drained by Dusk, scores zero but still matches"
-            : store.game.isGrowthBlocked(at: cell) ? ", growth blocked by a dark star" : ""
-        let captive = store.game.orbit?.slots.contains(cell) == true ? "Captive, " : ""
-        return "\(captive)\(gem.grown ? "Large " : "")\(StarCast.character(for: .init(gem)).description), \(position)\(shade)"
+        let shade = store.game.isDrained(at: cell) ? SkyCopy.text(.duskGray)
+            : store.game.isGrowthBlocked(at: cell) ? SkyCopy.text(.duskBlocked) : ""
+        let captive = store.game.orbit?.slots.contains(cell) == true ? SkyCopy.text(.a11yTrapped) : ""
+        return SkyCopy.text(.a11yStar, values: ["size": gem.grown ? SkyCopy.text(.a11yGrown) : "", "description": StarCast.character(for: .init(gem)).description, "position": position, "state": captive + shade])
     }
 
     private func updateSuspension() {
@@ -455,7 +459,7 @@ import StarfallCore
         case .game:
             FallingSkyMenu(paused: store.isPaused, turns: store.game.turns,
                            groups: store.game.legalGroups.count, over: store.game.isOver,
-                           challenge: store.game.challenge != nil, balance: store.game.balance,
+                           challenge: store.game.challenge != nil, duskRule: store.game.duskRule, balance: store.game.balance,
                            sound: $store.soundEnabled, haptics: $store.hapticsEnabled, calm: $calmEffects,
                            pause: togglePauseFromMenu,
                            restart: { same in handleFlowAction(same ? .replay : .another) },
@@ -494,7 +498,7 @@ private extension FallingSkyView {
         interaction.armSwap(from:from,to:to,game:store.game,generation:generation)
         refreshTechnique()
         store.traceStep(count:5)
-        store.showInputFeedback("Swap ready · lift to move; slide back to cancel")
+        store.showInputFeedback(SkyCopy.text(.inputSwapReady))
         return technique.swapping
     }
     func finishDirectSwap(_ point: CGPoint, size: CGSize) {
@@ -536,7 +540,7 @@ private extension FallingSkyView {
         guard !technique.swapping else { return }
         guard trace.snapshot != nil else { return }
         let mapping = ObservatoryGeometry(size: size)
-        guard mapping.cell(at: point) != nil else { cancelConstellation(); store.explainInputFailure("Trace canceled · left the board"); return }
+        guard mapping.cell(at: point) != nil else { cancelConstellation(); store.explainInputFailure(SkyCopy.text(.inputTraceOffBoard)); return }
         let previous = trace.lastFinger ?? point
         for cell in ConstellationTraceHitTesting.cells(from: previous, to: point, mapping: mapping, game: store.game) {
             let count = trace.count
@@ -558,7 +562,7 @@ private extension FallingSkyView {
         if trace.count > 0 {
             let ready = store.game.constellationCells(along: trace.path) != nil
             let value = store.game.reward(of: Set(trace.path))
-            store.showInputFeedback(ready ? "Release \(trace.count) stars · +\(value) ready" : "\(trace.count) / 5 stars")
+            store.showInputFeedback(ready ? SkyCopy.text(.inputTraceReady, values: ["count": String(trace.count), "score": String(value)]) : SkyCopy.text(.inputTraceProgress, values: ["count": String(trace.count)]))
         }
     }
     func releaseConstellation() {
@@ -568,7 +572,7 @@ private extension FallingSkyView {
         let hold = interaction.holdTicket
         defer { interaction.endContact(ticket: hold, release: store.endConstellationHold) }
         guard let outcome else {
-            if hadTrace { store.explainInputFailure("Trace needs 5 matching stars") }
+            if hadTrace { store.explainInputFailure(SkyCopy.text(store.game.challenge == nil ? .inputTraceShort : .inputTraceChallengeShort)) }
             return
         }
         store.clearTracedConstellation(outcome.path, snapshot: outcome.snapshot, generation: outcome.generation)

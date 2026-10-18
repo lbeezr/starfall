@@ -1,12 +1,16 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Starfall local dialogue catalog",
+  "title": "Starfall local dialogue and interface copy catalogue",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schemaVersion", "scripts"],
+  "required": ["schemaVersion", "scripts", "copy"],
   "properties": {
     "$schema": {"type": "string"},
     "schemaVersion": {"const": 1},
+    "copy": {
+      "type": "object", "minProperties": 1, "maxProperties": 512,
+      "additionalProperties": {"type": "string", "minLength": 1, "maxLength": 1600}
+    },
     "scripts": {
       "type": "array", "minItems": 1, "maxItems": 128,
       "items": {

@@ -154,7 +154,7 @@ final class FallingSkyInteractionTests: XCTestCase {
         let challenge = app.skyMenuControl("experiment.challenge")
         XCTAssertTrue(challenge.waitForExistence(timeout: 5)); challenge.tap()
         XCTAssertTrue(app.buttons["sky.begin"].waitForExistence(timeout: 5))
-        XCTAssertEqual(app.staticTexts["sky.title"].label, "Gather a little light.")
+        XCTAssertEqual(app.staticTexts["sky.title"].label, "Collect 18 starlight")
         app.buttons["sky.begin"].tap()
         togglePause(app)
         XCTAssertTrue(app.buttons["experiment.next"].waitForExistence(timeout: 5))
@@ -186,7 +186,7 @@ final class FallingSkyInteractionTests: XCTestCase {
         togglePause(app)
         let legal = app.buttons.matching(NSPredicate(format:
             "identifier BEGINSWITH %@ AND value MATCHES %@ AND enabled == true",
-            "experiment.cell.", "([3-9]|[1-9][0-9]) starlight connected")).firstMatch
+            "experiment.cell.", "([3-9]|[1-9][0-9]) toward a tap match")).firstMatch
         XCTAssertTrue(legal.waitForExistence(timeout: 5))
         // Resolve changing readiness once; pin the same native cell while waves continue.
         let target = legal.identifier
@@ -252,7 +252,7 @@ final class FallingSkyInteractionTests: XCTestCase {
         capture(app, "compact-sky-opening")
         app.buttons["experiment.next"].tap()
         waitForShowers(1, in: app)
-        let group = app.buttons.matching(NSPredicate(format: "value == %@", "3 starlight connected")).firstMatch
+        let group = app.buttons.matching(NSPredicate(format: "value == %@", "3 toward a tap match")).firstMatch
         XCTAssertTrue(group.waitForExistence(timeout: 5)); group.tap()
         XCTAssertEqual(app.staticTexts["experiment.score"].label, "3 starlight")
         capture(app, "compact-sky-cleared")
@@ -267,11 +267,11 @@ final class FallingSkyInteractionTests: XCTestCase {
             if outcome.exists { break }
             XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in outcome.exists || next.isEnabled }, object: nil).wait(timeout: 5))
             if outcome.exists { break }
-            let legal = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND value MATCHES %@", "experiment.cell.", "([3-9]|[1-9][0-9]) starlight connected")).firstMatch
+            let legal = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND value MATCHES %@", "experiment.cell.", "([3-9]|[1-9][0-9]) toward a tap match")).firstMatch
             if legal.exists { legal.tap() }
             else { reveal(next, in: app); next.tap() }
         }
-        XCTAssertEqual(outcome.label, "First Light complete")
+        XCTAssertEqual(outcome.label, "First Light complete!")
         XCTAssertFalse(next.exists)
         XCTAssertTrue(app.buttons["experiment.replay"].isHittable)
         XCTAssertTrue(app.buttons["experiment.new"].isHittable)
@@ -279,16 +279,16 @@ final class FallingSkyInteractionTests: XCTestCase {
         app.terminate(); app.launchArguments = []; app.launch()
         XCTAssertTrue(app.buttons["sky.resume"].waitForExistence(timeout: 10)); app.buttons["sky.resume"].tap()
         XCTAssertTrue(outcome.waitForExistence(timeout: 10))
-        XCTAssertEqual(outcome.label, "First Light complete")
+        XCTAssertEqual(outcome.label, "First Light complete!")
         XCTAssertFalse(next.exists)
         let replay = app.buttons["experiment.replay"]
         if !replay.exists { app.buttons["experiment.settings"].tap() }; reveal(replay, in: app); replay.tap()
         XCTAssertTrue(app.buttons["sky.begin"].waitForExistence(timeout: 5))
-        XCTAssertEqual(app.staticTexts["sky.title"].label, "Gather a little light.")
+        XCTAssertEqual(app.staticTexts["sky.title"].label, "Collect 18 starlight")
         XCTAssertFalse(outcome.exists)
         app.buttons["sky.home"].tap()
         app.buttons["sky.start"].tap()
-        XCTAssertEqual(app.staticTexts["sky.title"].label, "Let the night in.")
+        XCTAssertEqual(app.staticTexts["sky.title"].label, "Make room for the stars")
     }
 
     @MainActor func testFirstLightCanOverflowWithoutCompletingGoal() {
@@ -315,14 +315,14 @@ final class FallingSkyInteractionTests: XCTestCase {
         let empty = app.buttons["experiment.cell.6.6"]
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: empty).wait(timeout: 5))
         XCTAssertTrue(empty.label.hasPrefix("Empty")); empty.tap()
-        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label CONTAINS %@ AND label CONTAINS %@", "Large stars count as one star", "worth two light"), object: app.staticTexts["experiment.message"]).wait(timeout: 5))
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label CONTAINS %@ AND label CONTAINS %@", "Small stars count as 1", "grown stars count as 2"), object: app.staticTexts["experiment.message"]).wait(timeout: 5))
         XCTAssertEqual(showers(app), 0)
         XCTAssertEqual(app.staticTexts["experiment.score"].label, "0 starlight")
         let next = app.buttons["experiment.next"]
         reveal(next, in: app); next.tap()
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: next).wait(timeout: 5))
         XCTAssertEqual(showers(app), 1)
-        let legal = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND value MATCHES %@", "experiment.cell.", "([3-9]|[1-9][0-9]) starlight connected")).firstMatch
+        let legal = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND value MATCHES %@", "experiment.cell.", "([3-9]|[1-9][0-9]) toward a tap match")).firstMatch
         XCTAssertTrue(legal.exists); legal.doubleTap()
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "3 starlight"), object: app.staticTexts["experiment.score"]).wait(timeout: 5))
         remainsPaused(app)
@@ -390,7 +390,7 @@ final class FallingSkyInteractionTests: XCTestCase {
         let next = app.buttons["experiment.next"]
         reveal(next, in: app); next.tap()
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: next).wait(timeout: 5))
-        let legal = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND value MATCHES %@", "experiment.cell.", "([3-9]|[1-9][0-9]) starlight connected")).firstMatch
+        let legal = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND value MATCHES %@", "experiment.cell.", "([3-9]|[1-9][0-9]) toward a tap match")).firstMatch
         XCTAssertTrue(legal.exists); legal.tap()
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "3 starlight"), object: app.staticTexts["experiment.score"]).wait(timeout: 5))
         capture(app, "falling-sky-system-reduce-motion")
@@ -409,7 +409,7 @@ final class FallingSkyInteractionTests: XCTestCase {
         XCTAssertEqual(app.buttons["experiment.pause"].label, "Resume sky")
         remainsPaused(app)
         togglePause(app)
-        let legal = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND value MATCHES %@", "experiment.cell.", "([3-9]|[1-9][0-9]) starlight connected")).firstMatch
+        let legal = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND value MATCHES %@", "experiment.cell.", "([3-9]|[1-9][0-9]) toward a tap match")).firstMatch
         XCTAssertTrue(legal.waitForExistence(timeout: 40))
         // Freeze the matchable board immediately; another shower can remove
         // the queried group or fill the sky before the snapshot is captured.
@@ -498,7 +498,7 @@ final class FallingSkyInteractionTests: XCTestCase {
         let dark = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Dusk,")).firstMatch
         XCTAssertTrue(dark.exists)
         let darkID = dark.identifier
-        let expectedScore = Int((beside.value as! String).split(separator: ",").last!.split(separator: " ")[0])!
+        let expectedScore = Int((beside.value as! String).split(separator: ";").last!.split(separator: " ")[0])!
         for star in app.descendants(matching: .any).matching(NSPredicate(format: "identifier BEGINSWITH %@", "experiment.incoming.")).allElementsBoundByIndex {
             XCTAssertFalse(star.label.contains("column"))
         }
@@ -612,16 +612,16 @@ extension FallingSkyInteractionTests {
             XCTAssertEqual(showers(app), number)
             if number == 3 {
                 XCTAssertTrue(guide.label.contains("grew"))
-                XCTAssertTrue(guide.label.contains("worth 2"))
+                XCTAssertTrue(guide.label.contains("count as 2"))
                 capture(app, "paused-guide-production-growth")
             }
         }
-        XCTAssertTrue(guide.label.contains("Dusk drains"))
+        XCTAssertTrue(guide.label.contains("turn gray and earn no starlight"))
         let dark = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Dusk,"))
         XCTAssertEqual(dark.count, 1)
         let before = app.otherElements["experiment.board"].value as? String
         dark.firstMatch.tap()
-        XCTAssertTrue(guide.label.contains("Clear a matching group beside Dusk"))
+        XCTAssertTrue(guide.label.contains("Clear a matching group beside me"))
         XCTAssertEqual(app.staticTexts["experiment.score"].label, "0 starlight")
         XCTAssertEqual(app.otherElements["experiment.board"].value as? String, before)
         let remote = app.buttons["experiment.cell.0.0"]
@@ -631,7 +631,7 @@ extension FallingSkyInteractionTests {
         remote.tap()
         XCTAssertEqual(app.staticTexts["experiment.score"].label, "\(remoteValue) starlight")
         // Result dialogue is published by the presentation completion, after the score commits.
-        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label BEGINSWITH %@", "Sunny. +\(remoteValue) starlight."), object: guide).wait(timeout: 5), guide.label)
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label BEGINSWITH %@", "Pip. +\(remoteValue) starlight."), object: guide).wait(timeout: 5), guide.label)
         XCTAssertFalse(guide.label.contains("dissolved"))
         XCTAssertEqual(dark.count, 1, "The unrelated clear does not remove the blocker")
         let adjacent = app.buttons["experiment.cell.0.1"]
@@ -639,11 +639,11 @@ extension FallingSkyInteractionTests {
         let adjacentText = try XCTUnwrap(adjacent.value as? String)
         let adjacentWeight = try XCTUnwrap(Int(adjacentText.split(separator: " ").first ?? ""))
         XCTAssertGreaterThanOrEqual(adjacentWeight, 3)
-        let adjacentValue = try XCTUnwrap(Int(adjacentText.split(separator: ",").last!.split(separator: " ").first ?? ""))
+        let adjacentValue = try XCTUnwrap(Int(adjacentText.split(separator: ";").last!.split(separator: " ").first ?? ""))
         adjacent.tap()
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: next).wait(timeout: 5))
-        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label BEGINSWITH %@", "Sunny. +\(adjacentValue) starlight."), object: guide).wait(timeout: 5), guide.label)
-        XCTAssertTrue(guide.label.contains("Dusk dissolved"))
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label BEGINSWITH %@", "Pip. +\(adjacentValue) starlight."), object: guide).wait(timeout: 5), guide.label)
+        XCTAssertTrue(guide.label.contains("Dusk removed"))
         XCTAssertEqual(dark.count, 0)
         let total = remoteValue + adjacentValue
         XCTAssertEqual(app.staticTexts["experiment.score"].label, "\(total) starlight")
@@ -661,7 +661,7 @@ extension FallingSkyInteractionTests {
         resumeRestoredPaused(app)
         XCTAssertTrue(guide.waitForExistence(timeout: 10))
         XCTAssertEqual(app.buttons["experiment.pause"].label, "Resume sky")
-        XCTAssertEqual(guide.label, "Sunny. Your sky is paused. Resume when you're ready.")
+        XCTAssertEqual(guide.label, "Twinkle. Your sky is waiting. Automatic showers are paused until you tap Resume sky.")
         XCTAssertFalse(guide.label.contains("+"), "Transient text is not saved with the round")
         XCTAssertEqual(app.staticTexts["experiment.score"].label, "\(total) starlight")
     }
@@ -693,7 +693,7 @@ extension FallingSkyInteractionTests {
         var speech = ""
         let result = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
             speech = (try? service.currentSpeech().utterance) ?? ""
-            return speech.contains("grew") && speech.contains("worth 2")
+            return speech.contains("grew") && speech.contains("count as 2")
         }, object: nil).wait(timeout: 5)
         transcript.append(speech)
         let attachment = XCTAttachment(string: transcript.joined(separator: "\n"))
@@ -769,7 +769,7 @@ final class SkyFlowInteractionTests: XCTestCase {
         XCTAssertFalse(app.buttons["experiment.cell.0.0"].exists)
         capture(app, "flow-welcome")
         tap("sky.start", app)
-        XCTAssertEqual(app.staticTexts["sky.title"].label, "Let the night in.")
+        XCTAssertEqual(app.staticTexts["sky.title"].label, "Make room for the stars")
         XCTAssertFalse(app.buttons["experiment.settings"].exists)
         capture(app, "flow-entry")
         XCUIDevice.shared.press(.home); app.activate()
@@ -782,7 +782,7 @@ final class SkyFlowInteractionTests: XCTestCase {
         if (board.value as? String)?.hasPrefix("0 showers") == true {
             tap("experiment.next", app)
         }
-        let legal = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND value MATCHES %@ AND enabled == true", "experiment.cell.", "([3-9]|[1-9][0-9]) starlight connected")).firstMatch
+        let legal = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND value MATCHES %@ AND enabled == true", "experiment.cell.", "([3-9]|[1-9][0-9]) toward a tap match")).firstMatch
         XCTAssertTrue(legal.waitForExistence(timeout: 5)); legal.doubleTap()
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label != %@", "0 starlight"), object: app.staticTexts["experiment.score"]).wait(timeout: 5))
         let retained = board.value as? String
@@ -809,17 +809,17 @@ final class SkyFlowInteractionTests: XCTestCase {
         let next = app.buttons["experiment.next"], outcome = app.staticTexts["experiment.outcome"]
         for _ in 0..<50 {
             if outcome.exists { break }
-            let legal = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND value MATCHES %@ AND enabled == true", "experiment.cell.", "([3-9]|[1-9][0-9]) starlight connected")).firstMatch
+            let legal = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND value MATCHES %@ AND enabled == true", "experiment.cell.", "([3-9]|[1-9][0-9]) toward a tap match")).firstMatch
             XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in outcome.exists || next.isEnabled }, object: nil).wait(timeout: 5))
             if outcome.exists { break }
             if legal.exists { legal.tap() } else { tap("experiment.next", app) }
         }
-        XCTAssertEqual(outcome.label, "First Light complete")
+        XCTAssertEqual(outcome.label, "First Light complete!")
         XCTAssertFalse(app.buttons["experiment.cell.0.0"].exists)
         XCTAssertTrue(app.buttons["experiment.replay"].isHittable, "Result actions remain usable during the celebration")
         capture(app, "flow-win")
         tap("experiment.replay", app)
-        XCTAssertEqual(app.staticTexts["sky.title"].label, "Gather a little light.")
+        XCTAssertEqual(app.staticTexts["sky.title"].label, "Collect 18 starlight")
         tap("sky.begin", app); pause(app)
         for _ in 0..<40 {
             if outcome.exists { break }
@@ -829,7 +829,7 @@ final class SkyFlowInteractionTests: XCTestCase {
         XCTAssertTrue(outcome.waitForExistence(timeout: 5))
         XCTAssertEqual(outcome.label, "This sky is full")
         XCTAssertTrue(app.staticTexts["experiment.score"].label.contains("had no room for the next star"))
-        XCTAssertEqual(app.buttons["experiment.replay"].label, "Try First Light again")
+        XCTAssertEqual(app.buttons["experiment.replay"].label, "Replay First Light")
         XCTAssertTrue(app.staticTexts["experiment.score"].label.contains("of 18"))
         capture(app, "flow-full")
         app.terminate(); app.launchArguments = ["--sky-flow-review"]; app.launch()
@@ -837,7 +837,7 @@ final class SkyFlowInteractionTests: XCTestCase {
         XCTAssertTrue(outcome.waitForExistence(timeout: 5))
         XCTAssertEqual(outcome.label, "This sky is full")
         tap("experiment.new", app)
-        XCTAssertEqual(app.staticTexts["sky.title"].label, "Let the night in.")
+        XCTAssertEqual(app.staticTexts["sky.title"].label, "Make room for the stars")
         capture(app, "flow-fresh-after-full")
     }
 
@@ -886,7 +886,7 @@ final class SkyFlowInteractionTests: XCTestCase {
         }
         tap("experiment.settings", app); tap("sky.home", app)
         tap("sky.firstLight", app)
-        XCTAssertEqual(app.staticTexts["sky.title"].label, "Gather a little light.")
+        XCTAssertEqual(app.staticTexts["sky.title"].label, "Collect 18 starlight")
         capture(app, "entry-staged-over-retained-sky")
         app.terminate(); app.launchArguments = ["--sky-flow-review"]; app.launch()
         tap("sky.resume", app)
@@ -1089,12 +1089,12 @@ final class GravityUITests: XCTestCase {
     @MainActor func testBackgroundPreservesOrbitAndThreeWindowsExpire() {
         let app=launch("opportunity"), middle=app.buttons["experiment.cell.0.3"]
         ready(middle); middle.tap(); ready(middle)
-        XCTAssertTrue(middle.label.contains("3 windows"))
+        XCTAssertTrue(middle.label.contains("after 3 more showers"))
         XCUIDevice.shared.press(.home); app.activate(); ready(middle)
-        XCTAssertTrue(middle.label.contains("3 windows"))
+        XCTAssertTrue(middle.label.contains("after 3 more showers"))
         for remaining in [2,1,0] {
             let next=app.buttons["experiment.next"]; ready(next); next.tap(); ready(middle)
-            if remaining > 0 { XCTAssertTrue(middle.label.contains("\(remaining) windows")) }
+            if remaining > 0 { XCTAssertTrue(middle.label.contains("after \(remaining) more shower")) }
             else { XCTAssertFalse(middle.label.contains("Gravity hole")) }
         }
         capture("gravity-expired-after-background")

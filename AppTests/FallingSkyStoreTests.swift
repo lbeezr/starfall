@@ -35,7 +35,7 @@ final class FallingSkyStoreTests: XCTestCase {
         let restored = FallingSkyStore(defaults: defaults, arguments: [], presenter: FallingSkyRecorder(), clock: ManualRainClock())
         XCTAssertTrue(restored.hasSavedSky)
         XCTAssertEqual(restored.game, store.game)
-        XCTAssertTrue(restored.message.contains("Your sky is paused"))
+        XCTAssertTrue(restored.message.contains("Your sky is waiting"))
         XCTAssertFalse(restored.message.contains("+"))
     }
 
@@ -331,11 +331,11 @@ final class FallingSkyStoreTests: XCTestCase {
         let before = store.game
         store.clear(dark)
         XCTAssertEqual(store.game, before)
-        XCTAssertTrue(store.message.contains("dissolve"))
+        XCTAssertTrue(store.message.contains("send me off"))
         store.clear(beside)
         XCTAssertEqual(store.game.darkStarsCleared, expectedDark)
         XCTAssertEqual(store.game.score, expectedScore)
-        XCTAssertTrue(store.message.contains("Dusk dissolved"))
+        XCTAssertTrue(store.message.contains("Dusk removed"))
         let saved = try SkySaveArchive.decode(XCTUnwrap(defaults.data(forKey: FallingSkyStore.saveKey)))
         XCTAssertEqual(saved, store.game)
         XCTAssertTrue(saved.isValidSave)
@@ -516,11 +516,11 @@ final class FallingSkyStoreTests: XCTestCase {
         for _ in 0..<40 where !store.game.isOver { clock.advance(4); presenter.finish() }
         XCTAssertTrue(store.game.isOver)
         XCTAssertEqual(feedback.announcements, [
-            "Nova. 1 lighter shower before storm Dusk · 3 feeding showers left · 1 star at risk",
-            "Nova. Storm · 3 heavy showers left. Faster after next shower Dusk · 2 feeding showers left · 2 stars at risk",
-            "Nova. Lighter showers · 9 showers. Faster passage. Showers are closer together Dusk · 3 feeding showers left · 1 star at risk",
-            "Nova. Lighter showers · 8 showers. Breathing window. More time between showers Dusk · 2 feeding showers left · 1 star at risk",
-            "Nova. 1 lighter shower before storm Dusk · 5 feeding showers left · 3 stars at risk",
+            "Nova. 1 lighter shower before the storm. Dusk will eat 1 star after 3 more showers with a touching star.",
+            "Nova. Storm: 3 heavy showers left. Showers get faster after the next shower. Dusk will eat 2 stars after 2 more showers with a touching star.",
+            "Nova. 9 lighter showers before the storm. Showers are closer together now. Dusk will eat 1 star after 3 more showers with a touching star.",
+            "Nova. 8 lighter showers before the storm. More time between showers now. Dusk will eat 1 star after 2 more showers with a touching star.",
+            "Nova. 1 lighter shower before the storm. Dusk will eat 3 stars after 5 more showers with a touching star.",
             store.guideLine.spokenText
         ], "Only announced pressure transitions and the terminal result interrupt automatic play")
         store.restart(sameSky: true)
@@ -965,14 +965,14 @@ final class SkyPhasePresentationTests: XCTestCase {
     }
     func testWarningStormRecoveryAndLaterCycleFollowCommittedForecast() throws {
         for (turns, expected, announces) in [
-            (0, "Lighter showers · 9 showers", false),
-            (8, "1 lighter shower before storm", true),
-            (9, "Storm · 3 heavy showers left", true),
-            (10, "Storm · 2 heavy showers left", false),
-            (11, "Storm · 1 heavy shower left", false),
-            (12, "Lighter showers · 9 showers", true),
-            (20, "1 lighter shower before storm", true),
-            (21, "Storm · 3 heavy showers left", true)
+            (0, "9 lighter showers before the storm.", false),
+            (8, "1 lighter shower before the storm.", true),
+            (9, "Storm: 3 heavy showers left.", true),
+            (10, "Storm: 2 heavy showers left.", false),
+            (11, "Storm: 1 heavy shower left.", false),
+            (12, "9 lighter showers before the storm.", true),
+            (20, "1 lighter shower before the storm.", true),
+            (21, "Storm: 3 heavy showers left.", true)
         ] {
             var game = sky(after: turns)
             let cue = try XCTUnwrap(SkyPhaseCue(game: game))
@@ -1010,7 +1010,7 @@ final class SkyPhasePresentationTests: XCTestCase {
         XCTAssertEqual(store.phaseCue?.shower, 9); XCTAssertTrue(feedback.announcements.isEmpty)
         presenter.finish()
         XCTAssertEqual(store.phaseCue?.shower, 10)
-        XCTAssertEqual(feedback.announcements, ["Nova. Storm · 3 heavy showers left. Faster after next shower"])
+        XCTAssertEqual(feedback.announcements, ["Nova. Storm: 3 heavy showers left. Showers get faster after the next shower."])
         clock.advance(store.showerInterval); presenter.finish()
         XCTAssertEqual(store.game.turns, 10); XCTAssertEqual(feedback.announcements.count, 1)
         store.setSuspended(true)
@@ -1163,13 +1163,13 @@ extension FallingSkyStoreTests {
         store.clear(empty)
         XCTAssertEqual(store.game, committed)
         XCTAssertEqual(defaults.data(forKey: FallingSkyStore.saveKey), bytes)
-        XCTAssertTrue(store.pausedGuideLine.text.contains("Match three light"))
+        XCTAssertTrue(store.pausedGuideLine.text.contains("Tap matching stars connected"))
         XCTAssertTrue(store.pausedGuideLine.text.contains("1 lighter shower"))
         XCTAssertEqual(feedback.announcements, [store.pausedGuideLine.spokenText])
         XCTAssertEqual(store.dialogue.line, store.pausedGuideLine)
         store.callShower(); presenter.finish()
-        XCTAssertTrue(store.pausedGuideLine.text.contains("Storm · 3 heavy showers left"))
-        XCTAssertTrue(store.pausedGuideLine.text.contains("Faster after next shower"))
+        XCTAssertTrue(store.pausedGuideLine.text.contains("Storm: 3 heavy showers left."))
+        XCTAssertTrue(store.pausedGuideLine.text.contains("Showers get faster after the next shower."))
         XCTAssertEqual(store.pausedGuideLine.speaker, .nova)
         XCTAssertEqual(store.game.turns, committed.turns + 1)
     }

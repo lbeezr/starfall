@@ -16,14 +16,14 @@ struct SkyResultSnapshot: Equatable {
     }
 
     var scoreLabel: String {
-        target.map { "\(score) of \($0) starlight collected" } ?? "\(score) starlight"
+        target.map { SkyCopy.text(.resultChallengeScore, values: ["score": String(score), "target": String($0)]) } ?? SkyCopy.text(.resultScore, values: ["score": String(score)])
     }
     var reason: String {
-        if won { return "First Light complete." }
-        return blockedColumn.map { "Column \($0 + 1) had no room for the next star." }
-            ?? "There was no room for the next star."
+        if won { return SkyCopy.text(.resultWon) }
+        return blockedColumn.map { SkyCopy.text(.resultBlocked, values: ["column": String($0 + 1)]) }
+            ?? SkyCopy.text(.resultFull)
     }
-    var announcement: String { "\(reason) \(scoreLabel)." }
+    var announcement: String { SkyCopy.text(.resultAnnouncement, values: ["reason": reason, "score": scoreLabel]) }
 }
 
 
@@ -36,9 +36,9 @@ struct SkyWelcomeSnapshot: Equatable {
     var canContinue: Bool { hasSavedSky && !ended }
     init(game: FallingSky, hasSavedSky: Bool, paused: Bool) {
         self.hasSavedSky = hasSavedSky; ended = game.isOver; score = game.score
-        let mode = game.challenge != nil ? "First Light" : "Open sky"
-        let light = game.challenge.map { "\(game.score) of \($0.target) starlight" } ?? "\(game.score) starlight"
-        let state = game.outcome == .won ? "Complete" : ended ? "Sky full" : paused ? "Paused" : "Automatic showers"
-        summary = hasSavedSky ? "\(mode) · \(light) · \(state)" : nil
+        let mode = game.challenge != nil ? SkyCopy.text(.welcomeChallenge) : SkyCopy.text(.welcomeOpen)
+        let light = game.challenge.map { SkyCopy.text(.welcomeTarget, values: ["score": String(game.score), "target": String($0.target)]) } ?? SkyCopy.text(.welcomeScore, values: ["score": String(game.score)])
+        let state = game.outcome == .won ? SkyCopy.text(.welcomeComplete) : ended ? SkyCopy.text(.welcomeFull) : paused ? SkyCopy.text(.welcomePaused) : SkyCopy.text(.welcomeRunning)
+        summary = hasSavedSky ? SkyCopy.text(.welcomeSummary, values: ["mode": mode, "score": light, "state": state]) : nil
     }
 }

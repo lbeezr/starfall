@@ -107,9 +107,9 @@ import SwiftUI
         .frame(width: rect.width, height: rect.height).position(x: rect.midX, y: rect.midY)
         .disabled(!active)
         .accessibilityHidden(!active)
-        .accessibilityLabel(prop == .telescope ? "Observatory telescope" : "Observatory lantern")
-        .accessibilityHint(prop == .telescope ? "Tilt the telescope and catch a glint of starlight" : "Make the lantern glow warmly")
-        .accessibilityValue(response == prop ? "Responding" : "At rest")
+        .accessibilityLabel(prop == .telescope ? SkyCopy.text(.propTelescope) : SkyCopy.text(.propLantern))
+        .accessibilityHint(prop == .telescope ? SkyCopy.text(.propTelescopeHint) : SkyCopy.text(.propLanternHint))
+        .accessibilityValue(response == prop ? SkyCopy.text(.propResponding) : SkyCopy.text(.propRest))
         .accessibilityIdentifier(prop == .telescope ? "landing.telescope" : "landing.lantern")
     }
     private func react(to prop: ObservatoryProp) {

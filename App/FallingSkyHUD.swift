@@ -16,10 +16,10 @@ struct SkyPhaseCue: Equatable {
         shower = number; self.phase = phase
         switch phase {
         case .calm(let remaining):
-            text = remaining == 1 ? "1 lighter shower before storm" : "Lighter showers · \(remaining) showers"
+            text = remaining == 1 ? SkyCopy.text(.phaseLastCalm) : SkyCopy.text(.phaseCalm, values: ["count": String(remaining)])
             announcesTransition = remaining == 1 || (remaining == 9 && number > 12)
         case .storm(let remaining):
-            text = "Storm · \(remaining) heavy \(remaining == 1 ? "shower" : "showers") left"
+            text = SkyCopy.count(.phaseStormOne, .phaseStormMany, remaining)
             announcesTransition = remaining == 3
         }
     }
@@ -131,7 +131,7 @@ enum SkyShowerPlacement {
                    height: island ? StarfallTheme.IslandTimer.height : 28)
             .opacity(paused ? 0 : 1)
             .accessibilityElement(children: .ignore)
-            .accessibilityLabel(paused ? "Sky paused" : arriving ? "Stars arriving" : remaining <= 1.25 ? "Shower approaching" : "Sky flowing")
+            .accessibilityLabel(paused ? SkyCopy.text(.statusPaused) : arriving ? SkyCopy.text(.statusArriving) : remaining <= 1.25 ? SkyCopy.text(.statusApproaching) : SkyCopy.text(.statusFlowing))
             .accessibilityValue(forecast.map {
                 StarCast.character(for: .init($0)).description
             }.joined(separator: ", then "))
@@ -215,19 +215,19 @@ struct SkyCadenceCueCopy: Equatable {
 
     init?(step: SkyCadenceStep) {
         if step.warnsFasterNext {
-            title = "Faster after next shower"
-            label = "Faster after next shower"
+            title = SkyCopy.text(.cadenceWarning)
+            label = SkyCopy.text(.cadenceWarning)
             symbol = "forward.end"
         } else {
             switch step.phase {
             case .opening, .steady: return nil
             case .faster:
-                title = "Faster showers"
-                label = "Faster passage. Showers are closer together"
+                title = SkyCopy.text(.cadenceFasterTitle)
+                label = SkyCopy.text(.cadenceFaster)
                 symbol = "forward"
             case .breathing:
-                title = "Breathing window"
-                label = "Breathing window. More time between showers"
+                title = SkyCopy.text(.cadenceSlowerTitle)
+                label = SkyCopy.text(.cadenceSlower)
                 symbol = "wind"
             }
         }

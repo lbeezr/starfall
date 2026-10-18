@@ -59,7 +59,7 @@ final class ConstellationTraceNativeTests: XCTestCase {
         normal.terminate()
         let fresh=XCUIApplication();fresh.launchArguments=["--starfalls-reset","--starfalls-seed=5"];fresh.launch()
         fresh.buttons["experiment.next"].tap()
-        let legal=fresh.buttons.matching(NSPredicate(format:"identifier BEGINSWITH 'experiment.cell.' AND value == '3 starlight connected'")).firstMatch
+        let legal=fresh.buttons.matching(NSPredicate(format:"identifier BEGINSWITH 'experiment.cell.' AND value == '3 toward a tap match'")).firstMatch
         XCTAssertTrue(XCTNSPredicateExpectation(predicate:NSPredicate(format:"enabled == true"),object:legal).wait(timeout:5))
         legal.tap();score(3,fresh);fresh.terminate()
     }
@@ -98,7 +98,7 @@ extension ConstellationTraceNativeTests {
         let phase = app.descendants(matching: .any).matching(identifier: "experiment.message").firstMatch
         XCTAssertTrue(phase.waitForExistence(timeout: 5))
         XCTAssertTrue(phase.label.contains("1 lighter shower"))
-        for expected in ["Storm · 3 heavy showers left", "Storm · 2 heavy showers left", "Storm · 1 heavy shower left", "Lighter showers · 9 showers"] {
+        for expected in ["Storm: 3 heavy showers left.", "Storm: 2 heavy showers left.", "Storm: 1 heavy shower left.", "9 lighter showers before the storm."] {
             app.buttons["experiment.next"].tap()
             XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label CONTAINS %@", expected), object: phase).wait(timeout: 8))
             if expected.contains("3 heavy") {
@@ -214,7 +214,7 @@ extension ConstellationTraceNativeTests {
             score(29, app)
             XCTAssertEqual(orbs.count, amberFirst ? 1 : 0)
             let next = app.buttons[amberFirst ? "experiment.cell.0.3" : "experiment.cell.1.1"]
-            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true AND value == %@", amberFirst ? "4 starlight connected" : "3 starlight connected"), object: next).wait(timeout: 5))
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true AND value == %@", amberFirst ? "4 toward a tap match" : "3 toward a tap match"), object: next).wait(timeout: 5))
             let before = XCTAttachment(screenshot: app.screenshot())
             before.name = amberFirst ? "planning-preserved-opal-follow-up" : "planning-spent-opal-follow-up"
             before.lifetime = .keepAlways; add(before)
@@ -254,7 +254,7 @@ extension ConstellationTraceNativeTests {
         let phase = app.descendants(matching: .any).matching(identifier: "experiment.message").firstMatch
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label CONTAINS %@", "1 lighter shower"), object: phase).wait(timeout: 5))
         app.buttons["experiment.pause"].tap()
-        for expected in ["Storm · 3 heavy showers left", "Storm · 2 heavy showers left", "Storm · 1 heavy shower left", "Lighter showers · 9 showers"] {
+        for expected in ["Storm: 3 heavy showers left.", "Storm: 2 heavy showers left.", "Storm: 1 heavy shower left.", "9 lighter showers before the storm."] {
             XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label CONTAINS %@", expected), object: phase).wait(timeout: 8))
             let capture = XCTAttachment(screenshot: app.screenshot())
             capture.name = "automatic-after-observing-" + expected
@@ -315,7 +315,7 @@ extension ConstellationTraceNativeTests {
             let first = app.buttons[preserve ? "experiment.cell.0.4" : "experiment.cell.0.1"]
             XCTAssertTrue(first.isHittable); first.tap(); score(33, app)
             let next = app.buttons["experiment.cell.0.4"]
-            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true AND value == %@", preserve ? "5 toward a match, 2 starlight if cleared" : "3 starlight connected"), object: next).wait(timeout: 6))
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true AND value == %@", preserve ? "5 toward a tap match; 2 starlight if cleared" : "3 toward a tap match"), object: next).wait(timeout: 6))
             XCTAssertEqual(orbs.count, preserve ? 1 : 0)
             XCTAssertEqual(hole.label.contains("Gravity hole"), !preserve)
             let capture = XCTAttachment(screenshot: app.screenshot())
@@ -336,10 +336,10 @@ extension ConstellationTraceNativeTests {
             app.buttons[preserve ? "experiment.cell.0.4" : "experiment.cell.0.1"].tap()
             score(33, app)
             let next = app.buttons["experiment.cell.0.4"]
-            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true AND value == %@", preserve ? "5 toward a match, 2 starlight if cleared" : "3 starlight connected"), object: next).wait(timeout: 6))
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true AND value == %@", preserve ? "5 toward a tap match; 2 starlight if cleared" : "3 toward a tap match"), object: next).wait(timeout: 6))
             let guide = app.descendants(matching: .any).matching(identifier: "sky.dialogue").firstMatch
             let message = app.staticTexts["experiment.message"]
-            XCTAssertTrue(message.label.contains(preserve ? "The hole closed" : "2 windows left"))
+            XCTAssertTrue(message.label.contains(preserve ? "The hole closed" : "after 2 more showers left"))
             XCTAssertTrue(message.label.hasSuffix("Showers are closer together"))
             let board = app.otherElements["experiment.board"], boardValue = board.value as? String
             XCTAssertNotNil(boardValue)

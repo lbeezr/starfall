@@ -51,7 +51,13 @@ import SwiftUI
         .onAppear(perform: play)
     }
     private func play() {
-        let defaults = ["score": "18", "dark": "Dark star", "growth": "A star grew", "arrival": "One star arrived"]
+        // Example facts only. Player-facing wording still comes from the catalogue.
+        let defaults = ["score": "18", "dark": "Dusk", "growth": "A star grew", "arrival": "One star arrived",
+                        "stars": "5", "feeds": "5", "depth": "2", "shape": "Square",
+                        "release": "The hole releases its stars after 3 more showers.",
+                        "swallowed": "I swallowed 3 stars.", "phase": "Storm: 3 heavy showers left.",
+                        "cadence": "Showers are closer together now.", "summary": "Open sky · 0 starlight · Automatic showers paused",
+                        "reason": "First Light complete!", "detail": "A star grew.", "context": "More time between showers now."]
         let substitutions = Dictionary(uniqueKeysWithValues: tokens.map { key in (key, values[key] ?? defaults[key] ?? key) })
         session.reset(); contentError = nil
         do { session.play(try catalog.script(selected, values: substitutions)) }

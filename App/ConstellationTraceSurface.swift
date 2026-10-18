@@ -58,7 +58,7 @@ struct ConstellationTraceSurface: UIViewRepresentable {
             capture.cancelledContact = { [weak self] in
                 guard let self else { return }
                 guard self.primary != nil else { return }
-                self.cancelInput(reason: self.capture.yieldedToScroll ? nil : "Touch interrupted")
+                self.cancelInput(reason: self.capture.yieldedToScroll ? nil : SkyCopy.text(.inputInterrupted))
             }
             addGestureRecognizer(capture)
         }
@@ -90,7 +90,7 @@ struct ConstellationTraceSurface: UIViewRepresentable {
         }
         override func willMove(toWindow newWindow: UIWindow?) { if newWindow == nil { cancelInput() } }
         private func beginContact(_ touches: Set<UITouch>, event: UIEvent?) {
-            guard primary == nil, touches.count == 1, (event?.allTouches?.count ?? 1) == 1 else { cancelInput(reason: "Touch canceled · use one finger"); return }
+            guard primary == nil, touches.count == 1, (event?.allTouches?.count ?? 1) == 1 else { cancelInput(reason: SkyCopy.text(.inputOneFinger)); return }
             blocked = false; swapDwell = SkySwapDwell(); swapArmed = false; primary = touches.first
             let origin = primary!.location(in: self)
             let eligible = input?.traceStart(origin) != nil
@@ -101,7 +101,7 @@ struct ConstellationTraceSurface: UIViewRepresentable {
         }
         private func moveContact(_ touches: Set<UITouch>, event: UIEvent?) {
             guard !blocked, let primary, touches.contains(primary), let input else { return }
-            guard (event?.allTouches?.count ?? 1) == 1 else { cancelInput(reason: "Touch canceled · use one finger"); return }
+            guard (event?.allTouches?.count ?? 1) == 1 else { cancelInput(reason: SkyCopy.text(.inputOneFinger)); return }
             let location = primary.location(in: self)
             if session.move(to: location) {
                 for touch in (event?.coalescedTouches(for: primary) ?? [primary]).suffix(64) {
@@ -111,14 +111,14 @@ struct ConstellationTraceSurface: UIViewRepresentable {
                     if input.hasSelectedNeighbor?() == true { session.claimDrag() }
                     updateSwapHold(point, input:input)
                 }
-            } else if session.canceled { cancelInput(reason: "Touch canceled · lift on the same star") }
+            } else if session.canceled { cancelInput(reason: SkyCopy.text(.inputSameStar)) }
         }
         private func updateSwapHold(_ point: CGPoint, input: ConstellationTraceSurface) {
             guard let origin=session.origin, input.swapStart?(origin) == true else { return }
             let previous=swapDwell.target
             swapDwell.visit(origin:origin,point:point,mapping:ObservatoryGeometry(size:input.size))
             if swapArmed {
-                if !swapDwell.eligible { cancelInput(reason:"Swap canceled") }
+                if !swapDwell.eligible { cancelInput(reason:SkyCopy.text(.inputSwapCanceled)) }
                 return
             }
             guard previous != swapDwell.target else { return }
@@ -136,7 +136,7 @@ struct ConstellationTraceSurface: UIViewRepresentable {
         }
         private func endContact(_ touches: Set<UITouch>, event: UIEvent?) {
             guard !blocked, let primary, touches.contains(primary), let input else { cancelInput(); return }
-            guard (event?.allTouches?.count ?? 1) == 1 else { cancelInput(reason: "Touch canceled · use one finger"); return }
+            guard (event?.allTouches?.count ?? 1) == 1 else { cancelInput(reason: SkyCopy.text(.inputOneFinger)); return }
             swapTask?.cancel(); swapTask=nil
             let location = primary.location(in: self)
             let outcome = session.finish(at: location, mapping: ObservatoryGeometry(size: input.size))
@@ -145,7 +145,7 @@ struct ConstellationTraceSurface: UIViewRepresentable {
             switch outcome {
             case .trace: input.move(location); input.end()
             case .tap(let cell): input.cancel(); input.tap(cell)
-            case .cancel: input.cancel(); input.feedback?("Touch canceled · lift on the same star")
+            case .cancel: input.cancel(); input.feedback?(SkyCopy.text(.inputSameStar))
             }
         }
     }

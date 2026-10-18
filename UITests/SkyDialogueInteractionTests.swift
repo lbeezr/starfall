@@ -14,6 +14,18 @@ final class SkyDialogueInteractionTests: XCTestCase {
         let attachment = XCTAttachment(screenshot: app.screenshot())
         attachment.name = name; attachment.lifetime = .keepAlways; add(attachment)
     }
+
+    @MainActor private func assertPausedAfterMenuDismisses(_ app: XCUIApplication) {
+        // During the sheet's dismissal both copies of this stable identifier can
+        // briefly exist. Wait for the menu to leave before reading the board control.
+        let paused = NSPredicate { _, _ in
+            let buttons = app.buttons.matching(identifier: "experiment.pause")
+            return !app.buttons["experiment.done"].exists && buttons.count == 1
+                && buttons.element(boundBy: 0).label == "Resume sky"
+        }
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: paused, object: nil).wait(timeout: 5))
+        XCTAssertEqual(app.buttons["experiment.pause"].label, "Resume sky")
+    }
     @MainActor private func reveal(_ element: XCUIElement, in app: XCUIApplication, up: Bool = true) {
         for _ in 0..<6 where !element.isHittable { if up { app.swipeUp() } else { app.swipeDown() } }
         XCTAssertTrue(element.isHittable)
@@ -123,13 +135,19 @@ final class SkyDialogueInteractionTests: XCTestCase {
         capture(app, "dialogue-motion-several-cycles")
         app.buttons["experiment.settings"].tap()
         app.buttons["experiment.pause"].tap()
-        XCTAssertEqual(app.buttons["experiment.pause"].label, "Resume sky")
+        assertPausedAfterMenuDismisses(app)
         capture(app, "dialogue-motion-paused")
     }
 
     @MainActor func testActiveMessageCanBeReopenedWithoutStoppingAutomaticShowers() {
         let app = launch(); defer { app.terminate() }
-        app.buttons["experiment.pause"].tap()
+        // First Light has steady rain and no recurring Dusk/storm warnings.
+        // Expiry/reopening needs a quiet message interval, not an assumption
+        // that a live threat will stop replacing the current guidance.
+        app.buttons["experiment.settings"].tap()
+        app.skyMenuControl("experiment.challenge").tap()
+        XCTAssertTrue(app.buttons["sky.begin"].waitForExistence(timeout: 5))
+        app.buttons["sky.begin"].tap()
         let message = app.staticTexts["experiment.message"]
         XCTAssertTrue(message.waitForExistence(timeout: 3))
         capture(app, "dialogue-active")
@@ -142,7 +160,7 @@ final class SkyDialogueInteractionTests: XCTestCase {
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "value != %@", before ?? ""), object: board).wait(timeout: 8))
         app.buttons["experiment.settings"].tap()
         app.buttons["experiment.pause"].tap()
-        XCTAssertEqual(app.buttons["experiment.pause"].label, "Resume sky")
+        assertPausedAfterMenuDismisses(app)
         capture(app, "dialogue-return-to-paused")
     }
 }

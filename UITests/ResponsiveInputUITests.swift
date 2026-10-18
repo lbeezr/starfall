@@ -20,7 +20,7 @@ final class ResponsiveInputUITests: XCTestCase {
         for large in [false, true] {
             let app = launch("ordinary", large: large); defer { app.terminate() }
             let cell = app.buttons["experiment.cell.0.0"]
-            let expected = Int((cell.value as! String).split(separator: ",").last!.split(separator: " ")[0])!
+            let expected = Int((cell.value as! String).split(separator: ";").last!.split(separator: " ")[0])!
             XCTAssertGreaterThanOrEqual(expected, 3)
             let origin = cell.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5))
             origin.press(forDuration: 0.1, thenDragTo: origin.withOffset(CGVector(dx: 16, dy: 0)))
@@ -35,7 +35,7 @@ final class ResponsiveInputUITests: XCTestCase {
         first.press(forDuration: 0.1, thenDragTo: fourth, withVelocity: .slow, thenHoldForDuration: 0.1)
         score(0, app)
         let status = app.staticTexts["experiment.message"]
-        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label CONTAINS %@", "needs 5"), object: status).wait(timeout: 3))
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label CONTAINS %@", "Trace 5 matching stars"), object: status).wait(timeout: 3))
         let image = XCTAttachment(screenshot: XCUIScreen.main.screenshot())
         image.name = "responsive-incomplete-trace"; image.lifetime = .keepAlways; add(image)
         first.press(forDuration: 0.1, thenDragTo: app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.1)), withVelocity: .slow, thenHoldForDuration: 0.1)

@@ -8,6 +8,7 @@ struct FallingSkyMenu: View {
     let groups: Int
     let over: Bool
     let challenge: Bool
+    let duskRule: DuskRule
     let balance: StarfallBalance
     @Binding var sound: Bool
     @Binding var haptics: Bool
@@ -25,35 +26,35 @@ struct FallingSkyMenu: View {
                 Section {
                     if !over {
                         Button(action: pause) {
-                            Label(paused ? (turns == 0 ? "Start sky" : "Resume sky") : "Pause sky",
+                            Label(paused ? (turns == 0 ? SkyCopy.text(.actionStart) : SkyCopy.text(.actionResume)) : SkyCopy.text(.actionPause),
                                   systemImage: paused ? "play.fill" : "pause.fill")
                         }.accessibilityIdentifier("experiment.pause")
                     }
-                    Button { restart(true) } label: { Label("Replay this sky", systemImage: "arrow.counterclockwise") }
+                    Button { restart(true) } label: { Label(SkyCopy.text(.actionReplay), systemImage: "arrow.counterclockwise") }
                         .accessibilityIdentifier("experiment.replay")
-                    Button { restart(false) } label: { Label("New sky", systemImage: "sparkles") }
+                    Button { restart(false) } label: { Label(SkyCopy.text(.actionNew), systemImage: "sparkles") }
                         .accessibilityIdentifier("experiment.new")
-                } header: { Text("Moonlit Observatory") } footer: {
-                    Text("\(turns) showers · \(groups) matching groups ready")
+                } header: { Text(SkyCopy.text(.menuObservatory)) } footer: {
+                    Text(SkyCopy.text(.a11yBoardSummary, values: ["showers": String(turns), "groups": String(groups)]))
                         .accessibilityIdentifier("experiment.roundSummary")
                 }
                 Section {
-                    Button(action: observatory) { Label("Back to Observatory", systemImage: "moon.stars") }
+                    Button(action: observatory) { Label(SkyCopy.text(.actionHome), systemImage: "moon.stars") }
                         .accessibilityIdentifier("sky.home")
                 }
                 SkyFeelSection(sound: $sound, haptics: $haptics, calm: $calm)
                 Section {
                     if !challenge {
-                        NavigationLink { Form { balanceControls }.navigationTitle("Sky balance").toolbar { dismissal } }
-                            label: { Label("Sky balance", systemImage: "slider.horizontal.3") }
+                        NavigationLink { Form { balanceControls }.navigationTitle(SkyCopy.text(.menuBalance)).toolbar { dismissal } }
+                            label: { Label(SkyCopy.text(.menuBalance), systemImage: "slider.horizontal.3") }
                             .accessibilityIdentifier("experiment.balance")
-                        Button(action: firstLight) { Label("First Light · 18 starlight", systemImage: "star.circle") }
-                            .accessibilityHint("Reviews First Light before you choose Begin")
+                        Button(action: firstLight) { Label(SkyCopy.text(.menuFirstLight), systemImage: "star.circle") }
+                            .accessibilityHint(SkyCopy.text(.menuFirstLightHint))
                             .accessibilityIdentifier("experiment.challenge")
                     }
-                    NavigationLink { SkyHowToPlay().toolbar { dismissal } } label: { Label("How to play", systemImage: "questionmark.circle") }
+                    NavigationLink { SkyHowToPlay(duskRule: duskRule).toolbar { dismissal } } label: { Label(SkyCopy.text(.menuHelp), systemImage: "questionmark.circle") }
                         .accessibilityIdentifier("experiment.help")
-                } header: { Text("Explore") } footer: {
+                } header: { Text(SkyCopy.text(.menuExplore)) } footer: {
                     Text(Bundle.main.object(forInfoDictionaryKey: "StarfallBuildID") as? String ?? "dev.local")
                         .font(.caption).foregroundStyle(.secondary)
                         .accessibilityIdentifier("starfall.buildID")
@@ -68,7 +69,7 @@ struct FallingSkyMenu: View {
             }
             .scrollContentBackground(.hidden)
             .background(StarfallTheme.Colors.skyTop)
-            .navigationTitle("Sky menu").navigationBarTitleDisplayMode(.inline)
+            .navigationTitle(SkyCopy.text(.menuTitle)).navigationBarTitleDisplayMode(.inline)
             .toolbar { dismissal }
         }
         .tint(StarfallTheme.Colors.actionPrimary)
@@ -79,10 +80,10 @@ struct FallingSkyMenu: View {
 
     private var balanceControls: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Try a balance").font(.headline).accessibilityAddTraits(.isHeader)
+            Text(SkyCopy.text(.balanceTitle)).font(.headline).accessibilityAddTraits(.isHeader)
             VStack(alignment: .leading, spacing: 8) {
-                Text("Shower pace after the opening")
-                Picker("Shower pace", selection: Binding(get: { balance.pace }, set: { setBalance(StarfallBalance(pace: $0, darkStars: balance.darkStars)) })) {
+                Text(SkyCopy.text(.balancePaceDescription))
+                Picker(SkyCopy.text(.balancePace), selection: Binding(get: { balance.pace }, set: { setBalance(StarfallBalance(pace: $0, darkStars: balance.darkStars)) })) {
                     ForEach(StarfallBalance.Pace.allCases, id: \.self) { pace in
                         Text(pace.title).tag(pace)
                     }
@@ -90,8 +91,8 @@ struct FallingSkyMenu: View {
                 .pickerStyle(.menu).labelsHidden().accessibilityIdentifier("experiment.pace")
             }
             VStack(alignment: .leading, spacing: 8) {
-                Text("Dark stars")
-                Picker("Dark stars", selection: Binding(get: { balance.darkStars }, set: { setBalance(StarfallBalance(pace: balance.pace, darkStars: $0)) })) {
+                Text(SkyCopy.text(.balanceDark))
+                Picker(SkyCopy.text(.balanceDark), selection: Binding(get: { balance.darkStars }, set: { setBalance(StarfallBalance(pace: balance.pace, darkStars: $0)) })) {
                     ForEach(StarfallBalance.DarkStarFrequency.allCases, id: \.self) { frequency in
                         Text(frequency.title).tag(frequency)
                     }
@@ -100,8 +101,8 @@ struct FallingSkyMenu: View {
             }
             Text(balance.darkStars.detail)
                 .accessibilityIdentifier("experiment.balanceDetail")
-            Text("Changes keep your board and current preview. Existing dark stars stay. Replay this sky to start fresh with this balance.")
-            Button("Reset balance") { setBalance(StarfallBalance()) }
+            Text(SkyCopy.text(.balanceExplanation))
+            Button(SkyCopy.text(.balanceReset)) { setBalance(StarfallBalance()) }
                 .buttonStyle(StarfallButtonStyle(role: .quiet))
                 .disabled(balance == StarfallBalance())
                 .accessibilityIdentifier("experiment.resetBalance")
@@ -114,9 +115,9 @@ struct FallingSkyMenu: View {
 private extension StarfallBalance.Pace {
     var title: String {
         switch self {
-        case .gentle: "Gentle · 6s"
-        case .steady: "Steady · 4s"
-        case .brisk: "Brisk · cycle"
+        case .gentle: SkyCopy.text(.balanceGentle)
+        case .steady: SkyCopy.text(.balanceSteady)
+        case .brisk: SkyCopy.text(.balanceBrisk)
         }
     }
 }
@@ -124,14 +125,14 @@ private extension StarfallBalance.Pace {
 private extension StarfallBalance.DarkStarFrequency {
     var title: String {
         switch self {
-        case .none: "None"
-        case .occasional: "Occasional"
-        case .regular: "Regular"
-        case .frequent: "Frequent"
+        case .none: SkyCopy.text(.balanceNone)
+        case .occasional: SkyCopy.text(.balanceOccasional)
+        case .regular: SkyCopy.text(.balanceRegular)
+        case .frequent: SkyCopy.text(.balanceFrequent)
         }
     }
     var detail: String {
-        guard let gap = showerGap else { return "No new dark stars after the current preview." }
-        return "One dark star every \(gap.lowerBound)–\(gap.upperBound) showers. A fresh sky starts with one in shower \(gap.upperBound)."
+        guard let gap = showerGap else { return SkyCopy.text(.balanceNoDark) }
+        return SkyCopy.text(.balanceDarkFrequency, values: ["minimum": String(gap.lowerBound), "maximum": String(gap.upperBound)])
     }
 }
