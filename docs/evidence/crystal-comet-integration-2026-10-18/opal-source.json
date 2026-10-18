@@ -1,0 +1,56 @@
+{
+  "base": "b24fde8e1084aaabdea8882cb1a299b5b799f450",
+  "snapshot": "4eddb85b9f1b",
+  "buildInputHashes": {
+    "App/CrystalCelebrationArtwork.swift": "437055ca64f3c1f42f016d85962389df3a213f57c7ff689d2d644f1a1f14cff2",
+    "App/StarfallTheme.swift": "6bb106860bc4b7ea552a13c865dadc299155acaac259557c171dbc3b84321f3c",
+    "AppTests/CrystalCelebrationArtworkTests.swift": "af94de1827a874147edb7652a5b3a689fd4f5485f3f31bd5f6a9e24de4e30ada"
+  },
+  "simulator": "3447731D-D3C6-4DBC-A823-52E1C84C2A5B",
+  "device": "iPhone 17e",
+  "os": "iOS 27.0 (24A434)",
+  "configuration": "Debug",
+  "text": "default",
+  "motion": "normal in material/game captures; actual system Reduce Motion tested separately",
+  "captures": [
+    {
+      "path": "dev-b24fde8-wip-4eddb85b9f1b__opal-material-comparison__iphone-17e__default-text.jpg",
+      "sha256": "16cddbff71fc574f833a3694cdd283f5e3a219ddc8230c7bb1aa4c16c3a314af",
+      "exportedAttachment": "66CF8EBB-C6D4-4A9D-AD94-6EE110A8B993.png"
+    },
+    {
+      "path": "dev-b24fde8-wip-4eddb85b9f1b__opal-constellation-award__iphone-17e__default-text.jpg",
+      "sha256": "127dcd6ce7d65c7e75bf4ceeb8db2e7db06cdae5bba0bc7bea8d96b29e49a008",
+      "exportedAttachment": "13DDCA21-3F22-4984-977D-8B685095968B.png"
+    }
+  ],
+  "results": {
+    "core": 160,
+    "affectedHosted": 18,
+    "native": 3,
+    "debugBuild": "pass",
+    "releaseBuild": "pass",
+    "fullVoiceOver": "not run",
+    "physicalDevice": "not run"
+  },
+  "captureExport": "Uncropped native PNG attachments exported with sips JPEG quality 90; original attachments remain in ignored artifacts.",
+  "shippingCheckpoint": {
+    "source": "2f0d96c259c8aa036f46d27472a1efe72705ec25",
+    "acceptedMain": "ab3244b",
+    "runtimeInputs": "Clean at source; only documentation changed during validation.",
+    "artworkUnchanged": true,
+    "core": 162,
+    "hosted": 253,
+    "native": 3,
+    "release": "passed",
+    "artifacts": "artifacts/opal-shipping/",
+    "debug": "passed",
+    "hygiene": "passed",
+    "diffCheck": "passed",
+    "capture": {
+      "path": "dev-2f0d96c__crowded-opal-award__native-host__compact-default.jpg",
+      "sha256": "1205cce3ada9a27958e7ad1a4a865f3d8da8d6aed72041501fbe041adcd8a9b3",
+      "context": "Native host 375x667 on iPhone 17e simulator; default text, normal effects; manual shower clock, actual scene animation. One survivor temporarily overlapped as in the existing layout."
+    }
+  }
+}

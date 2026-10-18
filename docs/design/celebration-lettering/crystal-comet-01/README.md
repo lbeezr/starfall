@@ -4,6 +4,8 @@
 
 The user selected Crystal Burst and requested all designs using the discussed **70% crystal / 20% comet gesture / 10% luminous warmth** blend. The three sheets below cover all five current celebration words, companion digits/signs, six family-color treatments and central placement examples. They were generated with the built-in ImageGen tool and visually inspected. The original design pass changed no app source or resource; subsequent production work is recorded in [Integration](INTEGRATION.md).
 
+**Material follow-up:** the user-approved [opalescent facet light](OPALESCENCE.md) addresses the user’s report that the first runtime tint looked flatter than the approved swatches.
+
 **Next action:** review the integrated result on phone at the next physical/RC pass; [native evidence and remaining physical/RC checks](../../../evidence/crystal-comet-integration-2026-10-18/README.md) distinguish implementation from the concepts below. The long “Constellation!” needs particular attention to width and facet detail. These are raster concept sheets, not SVGs, font files, final sprite atlases or evidence of implemented effects.
 
 ## Five announcement words

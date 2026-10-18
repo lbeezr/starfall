@@ -120,12 +120,7 @@ struct CrystalCelebrationLabel: View {
         event.title == nil ? StarfallTheme.Celebration.ordinaryAwardHeight : StarfallTheme.Celebration.specialAwardHeight
     }
     private func material(_ image: UIImage) -> some View {
-        ZStack {
-            Image(uiImage: image).resizable().scaledToFit().colorMultiply(tint)
-            Image(uiImage: image).resizable().scaledToFit().blendMode(.screen).opacity(0.55)
-        }
-        .compositingGroup()
-        .accessibilityHidden(true)
+        CrystalCelebrationMaterial(image: image, tint: tint)
     }
     private var nativeText: some View {
         VStack(spacing: StarfallTheme.Spacing.compact) {
@@ -136,5 +131,37 @@ struct CrystalCelebrationLabel: View {
             Text("+\(event.collected)").font(StarfallTheme.Typography.celebrationAward)
                 .foregroundStyle(StarfallTheme.Colors.textPrimary).monospacedDigit()
         }
+    }
+}
+
+/// The authored grayscale faces remain the light map. Refraction is masked by
+/// their luminance, so light catches individual faces instead of filling the
+/// silhouette with one color. Static material; receipt motion has its own owner.
+struct CrystalCelebrationMaterial: View {
+    let image: UIImage
+    let tint: Color
+
+    private var source: some View { Image(uiImage: image).resizable().scaledToFit() }
+
+    var body: some View {
+        ZStack {
+            source.colorMultiply(tint)
+            source
+                .overlay {
+                    LinearGradient(colors: StarfallTheme.Celebration.refraction,
+                        startPoint: .topLeading, endPoint: .bottomTrailing)
+                        .blendMode(.color)
+                }
+                .compositingGroup()
+                .mask { source.contrast(1.6).brightness(-0.15).luminanceToAlpha() }
+                .opacity(0.78)
+            // A narrow pearl highlight keeps the brightest cut edges luminous
+            // without the old uniform white wash over the whole material.
+            source.contrast(3).brightness(-0.55)
+                .blendMode(.screen).opacity(0.25)
+        }
+        .compositingGroup()
+        .mask { source }
+        .accessibilityHidden(true)
     }
 }
