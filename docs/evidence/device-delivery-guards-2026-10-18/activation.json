@@ -1,0 +1,17 @@
+{
+  "source": "8598404e045a693d5ee12f32520eba3a9b14bf41",
+  "buildID": "dev.c64a08904f",
+  "actualInstallationMatchesReceipt": true,
+  "retainedSaveKeys": [
+    "starfall.accumulation.v4",
+    "starfall.accumulation.v5",
+    "starfall.accumulation.v3"
+  ],
+  "saveBytesUnchanged": true,
+  "staleFeatureSourceRejected": true,
+  "status": {
+    "status": "Up to date: dev.c64a08904f"
+  },
+  "installedServiceSHA256": "ff5d644cddb0b34b6924093593ed8b4949ee5e13718f58cd69a63bcd2414e0aa",
+  "localServiceSHA256": "ff5d644cddb0b34b6924093593ed8b4949ee5e13718f58cd69a63bcd2414e0aa"
+}
