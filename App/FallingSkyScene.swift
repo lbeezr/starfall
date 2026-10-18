@@ -208,17 +208,28 @@ import StarfallCore
             label.run(.sequence([.group([.moveBy(x: 0, y: step * 0.45, duration: 0.32), .fadeOut(withDuration: 0.32)]), .removeFromParent()]))
         }
         ripple(turn, from: old)
-        for index in turn.settled.indices {
+        for index in turn.settled.indices where columns.contains(index % 7) {
             if let gem = turn.settled[index], let node = nodes[gem.id],
                cellsByID[gem.id] != Cell(index/7, index%7) {
                 let move = SKAction.move(to: point(Cell(index/7, index%7)), duration: 0.20)
                 move.timingMode = .easeInEaseOut
-                node.run(.sequence([.wait(forDuration: StarfallMotion.gravityStart), move]))
+                let waypoint = turn.exchange.flatMap { exchange -> Cell? in
+                    if old.gem(at:exchange.from)?.id == gem.id { return exchange.to }
+                    if old.gem(at:exchange.to)?.id == gem.id { return exchange.from }
+                    return nil
+                }
+                let lead = waypoint.map { SKAction.move(to:point($0),duration:StarfallMotion.exchangeSlideDuration) }
+                    ?? .wait(forDuration:turn.exchange == nil ? StarfallMotion.gravityStart : StarfallMotion.exchangeSlideDuration)
+                node.run(.sequence([lead,move]),withKey:"sky.settle")
                 if let shadow = grid.childNode(withName: "sky.ground.\(gem.id)") {
                     let destination = point(Cell(index/7, index%7))
                     let moveShadow = SKAction.move(to: CGPoint(x: destination.x, y: destination.y - groundOffset(gem)), duration: 0.20)
                     moveShadow.timingMode = .easeInEaseOut
-                    shadow.run(.sequence([.wait(forDuration: StarfallMotion.gravityStart), moveShadow]))
+                    let leadShadow = waypoint.map { cell in
+                        let target=point(cell)
+                        return SKAction.move(to:CGPoint(x:target.x,y:target.y-groundOffset(gem)),duration:StarfallMotion.exchangeSlideDuration)
+                    } ?? .wait(forDuration:turn.exchange == nil ? StarfallMotion.gravityStart : StarfallMotion.exchangeSlideDuration)
+                    shadow.run(.sequence([leadShadow,moveShadow]),withKey:"sky.settle")
                 }
             }
         }

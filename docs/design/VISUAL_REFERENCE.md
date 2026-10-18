@@ -1,6 +1,6 @@
 # Starfall visual reference
 
-**Status:** Reference · **Updated:** October 17, 2026
+**Status:** Reference · **Updated:** October 18, 2026
 
 Selected icon, screens and six-star cast, with links to their sources. **Source-bound references, not current-build certification:** check the linked source before drawing conclusions about current UI. Final art/motion approval, actual VoiceOver and device acceptance remain open. Follow [screenshot retention](../SCREENSHOTS.md) when replacing a visual.
 
@@ -8,14 +8,14 @@ Selected icon, screens and six-star cast, with links to their sources. **Source-
 
 ## Capture index
 
-Status follows [the screenshot practice](../SCREENSHOTS.md). These legacy filenames retain their original provenance. Dusk active play was inspected against runtime snapshot `72e5845b05d2`; the other entries retain their separate refresh limits. Use the linked reports for captured sources and environments; the next implementer touching each surface owns its refresh.
+Status follows [the screenshot practice](../SCREENSHOTS.md). These legacy filenames retain their original provenance. Recipe controls and relay feedback were inspected against the builds linked below; the other entries retain their separate refresh limits. Use the linked reports for captured sources and environments; the next implementer touching each surface owns its refresh.
 
 | Surface | Status | Selected evidence / next check |
 | --- | --- | --- |
 | Welcome | Needs refresh | [Sky-flow welcome](../evidence/sky-flow-2026-10-17/welcome.jpg), [source report](../evidence/sky-flow-2026-10-17/README.md); compare relevant UI/art inputs before relying on current parity |
 | Entry | Needs refresh | [Sky-flow entry](../evidence/sky-flow-2026-10-17/entry.jpg), same source report; compare relevant UI/art inputs |
-| Active play | Current for sampled Dusk states | [Feeding, early release and collapse](../evidence/dusk-feeding-2026-10-18/README.md#inspected-native-visuals), runtime snapshot `72e5845b05d2` based on `b80edd8`. Default-text reset fixtures, normal motion. Scene/view/theme/shader inputs match this change. Later restore normalization and corrupt-save guards do not alter the pictured valid Dusk geometry/states. natural play, subjective comprehension and device acceptance remain separate. Earlier responsive/orbit captures are historical for their recorded source. |
-| Settings | Needs refresh | Dusk help wording changed; capture default and largest-text How to play layouts. No selected current settings capture |
+| Active play | Current for sampled recipe controls and relay feedback | [Inspected default and largest-text states](../evidence/technique-current-main-2026-10-18/README.md#inspected-native-visuals), builds `dev.08c276876b` and `dev.5a4f8d2bed`. Final wrapping menu/source parity checked against `ff4f392`; no artwork or geometry change. Natural storm-time recognition and physical feel remain open. Earlier Dusk captures remain source-bound historical evidence. |
+| Settings | Needs refresh | Dusk and technique help wording changed; capture default and largest-text How to play layouts. No selected current settings capture |
 | Outcomes | Needs refresh | [First Light win](../evidence/sky-flow-2026-10-17/flow-win.jpg) and [full sky](../evidence/sky-flow-2026-10-17/flow-full.jpg), same sky-flow source report; compare relevant UI/art inputs |
 
 ## Adopted app icon

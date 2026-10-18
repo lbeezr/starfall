@@ -75,6 +75,12 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         dialogue.next()
         if dialogue.visible, let line = dialogue.line { feedback.announce(line.spokenText) }
     }
+    private(set) var techniqueResult = ""
+    private var techniqueRelay = SkyTechniqueRelay()
+    #if DEBUG
+    private(set) var isTechniqueFixture = false
+    #endif
+
     private(set) var constellationInputGeneration: UInt64 = 0
     private(set) var constellationTracing = false
     private var constellationHold: UInt64?
@@ -223,6 +229,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         #if DEBUG
         observeTiming(.invalidated(reason))
         #endif
+        if reason != "clear" { techniqueRelay.reset(); techniqueResult = "" }
     }
 
     init(defaults: UserDefaults = .standard,
@@ -258,6 +265,14 @@ enum SkyTerminalSpeech { case feedback, ceremony }
            let fixture = ConstellationFixture(rawValue: String(name.dropFirst("--constellation-fixture=".count))) {
             game = fixture.game().adoptingFeedingDusk()
             guide("guide.fixture", values: ["detail": fixture.title + ". Draw through matching stars."])
+        }
+        #endif
+        #if DEBUG
+        if arguments.contains("--starfalls-reset"), arguments.contains("--technique-review"),
+           let name = arguments.first(where: { $0.hasPrefix("--technique-example=") }),
+           let example = SkyTechniqueExample(rawValue:String(name.dropFirst("--technique-example=".count))) {
+            game = example.game(); isTechniqueFixture = true
+            guide("guide.fixture",values:["detail":example.title + " review board. Arrange stars or swipe and hold."])
         }
         #endif
         refreshCadence()
@@ -353,8 +368,30 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         present(turn, from: old)
     }
 
+    /// New actions share current column ownership, hold tickets and committed presentation.
+    @discardableResult func performTechnique(_ action: SkyBoardAction, snapshot: FallingSky, generation ticket: UInt64) -> Bool {
+        guard canReceiveInput, game.canArrangeStars, snapshot == game, ticket == constellationInputGeneration else { return false }
+        let old = game
+        var next = game
+        let turn: FallingSkyTurn?
+        switch action {
+        case .recipe(let recipe): turn = next.activate(recipe)
+        case .nudge(let from,let to): turn = next.nudge(from:from,to:to)
+        }
+        guard let turn, turn.changingColumns.isDisjoint(with:changingColumns) else { return false }
+        game = next
+        if turn.collected > 0 {
+            feedback.collected(soundEnabled:soundEnabled,hapticsEnabled:hapticsEnabled,reducedMotion:presenter.reduceMotion)
+        }
+        present(turn,from:old)
+        return true
+    }
+
     /// Explicit input works while paused too, without starting an automatic clock.
     func callShower() {
+        #if DEBUG
+        guard !isTechniqueFixture else { return }
+        #endif
         guard !constellationTracing, !busy, !suspended, !game.isOver else { return }
         freezeClock()
         remaining = showerInterval
@@ -380,6 +417,9 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     }
 
     private func armClock() {
+        #if DEBUG
+        guard !isTechniqueFixture else { return }
+        #endif
         guard !constellationTracing, !isPaused, !suspended, !game.isOver, deadline == nil, !rainDue else { return }
         rainGeneration &+= 1
         let ticket = rainGeneration
@@ -436,6 +476,12 @@ enum SkyTerminalSpeech { case feedback, ceremony }
 
     private func present(_ turn: FallingSkyTurn, from old: FallingSky, announcesResult: Bool = true, previousCadence: SkyCadenceStep? = nil) {
         invalidateInput(turn.arrivals.isEmpty && turn.blockedColumn == nil ? "clear" : (announcesResult ? "manualShower" : "automaticShower"))
+        if turn.exchange != nil {
+            techniqueRelay.reset(); techniqueResult = "Star moved. Arrange your next clear."
+        } else if !turn.cleared.isEmpty {
+            techniqueRelay.record(before:old,after:game,cleared:turn.cleared)
+            techniqueResult = techniqueRelay.depth > 1 ? "\(techniqueRelay.depth)-clear relay" : "Clear a support to set up your next recipe."
+        }
         let epoch = generation
         presentationSequence &+= 1
         let ticket = presentationSequence
@@ -463,6 +509,10 @@ enum SkyTerminalSpeech { case feedback, ceremony }
             guide(game.duskRule == .feeding && game.board.enumerated().contains(where: { game.isDrained(at: Cell($0.offset/7,$0.offset%7)) }) ? "guide.dusk-growth" : "guide.growth", values: ["growth": growth == 1 ? "A star grew" : "\(growth) stars grew"])
         } else {
             guide("guide.arrival", values: ["arrival": turn.arrivals.count == 1 ? "One star arrived" : "\(turn.arrivals.count) stars arrived"])
+        }
+        if !game.isOver {
+            if turn.exchange != nil { guide("guide.technique",values:["detail":techniqueResult]) }
+            else if techniqueRelay.depth > 1 { guide("guide.technique",values:["detail":guideLine.text + " " + techniqueResult + "."]) }
         }
         if !game.isOver, let field = game.orbit {
             guide("guide.orbit", values: ["windows": String(field.windowsRemaining)])
@@ -520,7 +570,13 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         feedback.stopSounds()
         freezeClock(); remaining = showerInterval
         settlePresentation(reason: "restart")
-        if sameSky {
+        #if DEBUG
+        let replayAllowed = !isTechniqueFixture && sameSky
+        isTechniqueFixture = false
+        #else
+        let replayAllowed = sameSky
+        #endif
+        if replayAllowed {
             game = game.removingGravity().adoptingFeedingDusk().replay()
         } else {
             // First Light's fixed balance belongs to that challenge, not the next normal sky.
@@ -561,6 +617,9 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     #endif
 
     func startFirstLight() {
+        #if DEBUG
+        isTechniqueFixture = false
+        #endif
         #if DEBUG
         defer { observeTiming(.state) }
         #endif
@@ -635,6 +694,9 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     }
 
     private func save() {
+        #if DEBUG
+        guard !isTechniqueFixture else { return }
+        #endif
         if let data = try? SkySaveArchive.encode(game) {
             hasSavedSky = true
             defaults.set(data, forKey: Self.saveKey)
@@ -658,7 +720,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
 
     @discardableResult func begin(_ cell: Cell, game: FallingSky, generation: UInt64, enabled: Bool) -> UInt64? {
         cancel()
-        guard enabled, !game.isOver, game.constellationGroup(at: cell).count >= 5 else { return nil }
+        guard enabled, !game.isOver, game.constellationGroup(at:cell).count >= 5 || (game.challenge == nil && game.recipes(containing:cell).contains { $0.shape == .square }) else { return nil }
         sequence &+= 1
         snapshot = game; self.generation = generation; path = [cell]
         return sequence

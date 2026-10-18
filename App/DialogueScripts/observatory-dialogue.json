@@ -3,6 +3,10 @@
   "schemaVersion": 1,
   "scripts": [
     {
+      "id": "guide.technique",
+      "lines": [{"id":"guide.technique.1","speaker":"sunny","text":"{detail}","priority":"routine"}]
+    },
+    {
       "id": "guide.opening",
       "lines": [
         {

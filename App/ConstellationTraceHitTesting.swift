@@ -12,7 +12,7 @@ enum ConstellationTraceHitTesting {
     static func start(at point: CGPoint, mapping: ObservatoryGeometry, game: FallingSky) -> Cell? {
         guard mapping.cell(at: point) != nil else { return nil }
         let candidates = (0..<7).flatMap { row in (0..<7).map { Cell(row, $0) } }
-            .filter { game.constellationGroup(at: $0).count >= 5 }
+            .filter { game.constellationGroup(at:$0).count >= 5 || (game.challenge == nil && game.gem(at:$0)?.kind != nil && game.recipes(containing:$0).contains { $0.shape == .square }) }
         return candidates.compactMap { cell -> (Cell, CGFloat)? in
             let center = mapping.viewPoint(cell)
             let distance = CGFloat(hypot(point.x-center.x, point.y-center.y))

@@ -5,6 +5,6 @@ extension FallingSkyTurn {
     /// Ordinary gravity and showers reserve only their changing columns.
     var changingColumns: Set<Int> {
         if !gravityPhases.isEmpty { return Set(0..<7) }
-        return Set(cleared.map(\.column)).union(arrivals.map { $0.cell.column }).union(duskAffectedColumns)
+        return Set(cleared.map(\.column)).union(arrivals.map { $0.cell.column }).union(duskAffectedColumns).union(exchange.map { [$0.from.column,$0.to.column] } ?? [])
     }
 }

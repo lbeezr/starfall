@@ -39,3 +39,5 @@ Forecast tests assert the actual 148×50 contour on calibrated simulators and th
 Paused clear-feedback checks wait for the exact result text after score commitment, matching the presentation-owned dialogue boundary. Restore requires the complete restore message and Resume sky semantics; the strict approaching-cue expectation remains unchanged pending its older-runner investigation.
 
 `DuskInteractionTests` uses reset-only fixtures in the normal app to verify three feeds, early color release, valid zero-reward clears, settings/background/restore, and readable largest-text Reduce Motion outcomes.
+
+`SkyTechniqueInteractionTests` exercises exact recipes, explicit overlapping choices, deliberate relays, direct swipe-and-hold exchanges and empty-space falls, tap alternatives, selected tracing, interruption and largest-text scrolling. Full animation and actual VoiceOver evidence remain separate.
