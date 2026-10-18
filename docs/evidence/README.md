@@ -8,6 +8,8 @@ Dated, source-bound records of checks, comparisons and their limits.
 
 [Gravity removal](gravity-removal-2026-10-17/README.md) records the production retirement, old-save normalization and publication/delivery checks.
 
+[Independent technical debt reductions](debt-reduction-2026-10-18/README.md) records seven scoped changes, checks and shipping limits.
+
 ## Start here
 
 [Critical-mass calibration and native input windows](calibration-critical-mass-2026-10-18/README.md) compares idle/active play, corrects the presentation model and identifies the existing longer cycle as a candidate for fresh survival.

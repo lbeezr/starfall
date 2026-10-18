@@ -150,3 +150,55 @@ extension SkySaveArchiveTests {
         XCTAssertNil(SkySaveArchive.load(from:defaults))
     }
 }
+
+
+extension SkySaveArchiveTests {
+    @MainActor func testRejectedArchivesSurviveActivationRestartAndSubsequentWrites() throws {
+        for key in [SkySaveArchive.key, SkySaveArchive.patientFeedingKey, SkySaveArchive.legacyKey] {
+            for value: Any in [Data("broken".utf8), true] {
+                let defaults = makeDefaults()
+                defaults.set(value, forKey: key)
+                guard case .rejected(let source) = SkySaveArchive.inspect(from: defaults) else { return XCTFail("Expected rejection") }
+                XCTAssertEqual(source, key)
+                let store = FallingSkyStore(defaults: defaults, arguments: [], presenter: FallingSkyRecorder(), clock: ManualRainClock())
+                XCTAssertFalse(store.hasSavedSky)
+                XCTAssertEqual(store.rejectedSaveKey, key)
+                XCTAssertNil(defaults.object(forKey: SkySaveArchive.rejectedKey), "Initialization remains read-only")
+                store.setSuspended(false)
+                let recovery = try XCTUnwrap(defaults.dictionary(forKey: SkySaveArchive.rejectedKey))
+                XCTAssertEqual(recovery["sourceKey"] as? String, key)
+                XCTAssertEqual(recovery["value"] as? NSObject, value as? NSObject)
+                XCTAssertEqual(try SkySaveArchive.decode(XCTUnwrap(defaults.data(forKey: SkySaveArchive.key))), store.game)
+                store.restart(sameSky: true)
+                XCTAssertEqual(defaults.dictionary(forKey: SkySaveArchive.rejectedKey) as NSDictionary?, recovery as NSDictionary)
+                XCTAssertFalse(store.saveFailed)
+            }
+        }
+    }
+
+    @MainActor func testFailedEncodingLeavesCurrentAndRecoverySlotsUntouched() throws {
+        let defaults = makeDefaults(), game = FallingSky.freshSurvival(seed: 1)
+        defaults.set(Data("broken".utf8), forKey: SkySaveArchive.key)
+        let original = defaults.data(forKey: SkySaveArchive.key)
+        var fields = try XCTUnwrap(JSONSerialization.jsonObject(with: JSONEncoder().encode(game)) as? [String: Any])
+        fields["score"] = -1
+        let invalid = try JSONDecoder().decode(FallingSky.self, from: JSONSerialization.data(withJSONObject: fields))
+        XCTAssertThrowsError(try SkySaveArchive.save(invalid, to: defaults))
+        XCTAssertEqual(defaults.data(forKey: SkySaveArchive.key), original)
+        XCTAssertNil(defaults.object(forKey: SkySaveArchive.rejectedKey))
+    }
+
+    @MainActor func testMissingValidAndUnsupportedArchivesHaveDistinctResults() throws {
+        let defaults = makeDefaults()
+        guard case .missing = SkySaveArchive.inspect(from: defaults) else { return XCTFail("Expected empty slot") }
+        let game = FallingSky.freshSurvival(seed: 1)
+        try SkySaveArchive.save(game, to: defaults)
+        guard case .loaded(let restored) = SkySaveArchive.inspect(from: defaults) else { return XCTFail("Expected saved sky") }
+        XCTAssertEqual(restored, game)
+        XCTAssertNil(defaults.object(forKey: SkySaveArchive.rejectedKey))
+        let future = try JSONSerialization.data(withJSONObject: ["schemaVersion": 99, "game": JSONSerialization.jsonObject(with: JSONEncoder().encode(game))])
+        defaults.set(future, forKey: SkySaveArchive.key)
+        try SkySaveArchive.save(game, to: defaults)
+        XCTAssertEqual(defaults.dictionary(forKey: SkySaveArchive.rejectedKey)?["value"] as? Data, future)
+    }
+}
