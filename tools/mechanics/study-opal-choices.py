@@ -48,7 +48,7 @@ def main():
     if digest() != hashes:
         raise RuntimeError('Inputs changed during analysis; discard this run')
     data = json.loads((args.output / 'runs.json').read_text())
-    provenance['selfChecks'] = 'Passed before sampling: topology/cap, colored anchor legality, deduplication, fixture consumption, source immutability and Core JSON round-trip.'
+    provenance['selfChecks'] = 'Passed before sampling: topology/cap, colored anchor legality, deduplication, fixture consumption, source immutability, Core JSON round-trip, phase boundaries and phase-count reconciliation.'
     (args.output / 'source.json').write_text(json.dumps(provenance, indent=2, sort_keys=True) + '\n')
     print(json.dumps([{k: s[k] for k in ['policy', 'rounds', 'ended', 'score', 'showers', 'counts']}
                       for s in data['summaries']], indent=2, sort_keys=True))

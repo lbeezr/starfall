@@ -1,0 +1,256 @@
+{
+  "gravity-phase-discovery-160": {
+    "seedStart": 160,
+    "seeds": 64,
+    "showerLimit": 24,
+    "summaries": [
+      {
+        "counts": {
+          "activeOrbitStates": 9,
+          "cappedOpalStates": 0,
+          "clearAvailableStates": 1119,
+          "decisionStates": 1481,
+          "equalFirstImmediateGainStates": 2,
+          "multipleClearStates": 475,
+          "opalStates": 488,
+          "opalStatesWithoutClear": 87,
+          "orbitWithOpalStates": 2,
+          "preservingForecastOracleGainStates": 22,
+          "preservingForecastOracleSafetyStates": 0,
+          "sharedOpalStates": 50,
+          "smallerFirstImmediateGainStates": 3,
+          "uncappedOpalDecisionStates": 401,
+          "waitForecastOracleGainStates": 19
+        },
+        "ended": 8,
+        "phaseCounts": {
+          "calm": {
+            "activeOrbitStates": 4,
+            "cappedOpalStates": 0,
+            "clearAvailableStates": 760,
+            "decisionStates": 1121,
+            "equalFirstImmediateGainStates": 0,
+            "multipleClearStates": 203,
+            "opalStates": 332,
+            "opalStatesWithoutClear": 87,
+            "orbitWithOpalStates": 0,
+            "preservingForecastOracleGainStates": 6,
+            "preservingForecastOracleSafetyStates": 0,
+            "sharedOpalStates": 14,
+            "smallerFirstImmediateGainStates": 3,
+            "uncappedOpalDecisionStates": 245,
+            "waitForecastOracleGainStates": 16
+          },
+          "storm": {
+            "activeOrbitStates": 5,
+            "cappedOpalStates": 0,
+            "clearAvailableStates": 359,
+            "decisionStates": 360,
+            "equalFirstImmediateGainStates": 2,
+            "multipleClearStates": 272,
+            "opalStates": 156,
+            "opalStatesWithoutClear": 0,
+            "orbitWithOpalStates": 2,
+            "preservingForecastOracleGainStates": 16,
+            "preservingForecastOracleSafetyStates": 0,
+            "sharedOpalStates": 36,
+            "smallerFirstImmediateGainStates": 0,
+            "uncappedOpalDecisionStates": 156,
+            "waitForecastOracleGainStates": 3
+          }
+        },
+        "policy": "largest-immediate",
+        "rounds": 64,
+        "score": 4345,
+        "showers": 1489
+      },
+      {
+        "counts": {
+          "activeOrbitStates": 8,
+          "cappedOpalStates": 0,
+          "clearAvailableStates": 1130,
+          "decisionStates": 1493,
+          "equalFirstImmediateGainStates": 2,
+          "multipleClearStates": 493,
+          "opalStates": 513,
+          "opalStatesWithoutClear": 86,
+          "orbitWithOpalStates": 2,
+          "preservingForecastOracleGainStates": 25,
+          "preservingForecastOracleSafetyStates": 2,
+          "sharedOpalStates": 65,
+          "smallerFirstImmediateGainStates": 3,
+          "uncappedOpalDecisionStates": 427,
+          "waitForecastOracleGainStates": 21
+        },
+        "ended": 7,
+        "phaseCounts": {
+          "calm": {
+            "activeOrbitStates": 3,
+            "cappedOpalStates": 0,
+            "clearAvailableStates": 768,
+            "decisionStates": 1130,
+            "equalFirstImmediateGainStates": 0,
+            "multipleClearStates": 211,
+            "opalStates": 353,
+            "opalStatesWithoutClear": 86,
+            "orbitWithOpalStates": 0,
+            "preservingForecastOracleGainStates": 6,
+            "preservingForecastOracleSafetyStates": 1,
+            "sharedOpalStates": 24,
+            "smallerFirstImmediateGainStates": 2,
+            "uncappedOpalDecisionStates": 267,
+            "waitForecastOracleGainStates": 18
+          },
+          "storm": {
+            "activeOrbitStates": 5,
+            "cappedOpalStates": 0,
+            "clearAvailableStates": 362,
+            "decisionStates": 363,
+            "equalFirstImmediateGainStates": 2,
+            "multipleClearStates": 282,
+            "opalStates": 160,
+            "opalStatesWithoutClear": 0,
+            "orbitWithOpalStates": 2,
+            "preservingForecastOracleGainStates": 19,
+            "preservingForecastOracleSafetyStates": 1,
+            "sharedOpalStates": 41,
+            "smallerFirstImmediateGainStates": 1,
+            "uncappedOpalDecisionStates": 160,
+            "waitForecastOracleGainStates": 3
+          }
+        },
+        "policy": "preserve-opal-on-score-ties",
+        "rounds": 64,
+        "score": 4406,
+        "showers": 1500
+      }
+    ]
+  },
+  "gravity-phase-heldout-224": {
+    "seedStart": 224,
+    "seeds": 64,
+    "showerLimit": 24,
+    "summaries": [
+      {
+        "counts": {
+          "activeOrbitStates": 0,
+          "cappedOpalStates": 0,
+          "clearAvailableStates": 1118,
+          "decisionStates": 1487,
+          "equalFirstImmediateGainStates": 1,
+          "multipleClearStates": 508,
+          "opalStates": 427,
+          "opalStatesWithoutClear": 72,
+          "orbitWithOpalStates": 0,
+          "preservingForecastOracleGainStates": 26,
+          "preservingForecastOracleSafetyStates": 1,
+          "sharedOpalStates": 57,
+          "smallerFirstImmediateGainStates": 8,
+          "uncappedOpalDecisionStates": 355,
+          "waitForecastOracleGainStates": 13
+        },
+        "ended": 6,
+        "phaseCounts": {
+          "calm": {
+            "activeOrbitStates": 0,
+            "cappedOpalStates": 0,
+            "clearAvailableStates": 759,
+            "decisionStates": 1121,
+            "equalFirstImmediateGainStates": 1,
+            "multipleClearStates": 222,
+            "opalStates": 282,
+            "opalStatesWithoutClear": 71,
+            "orbitWithOpalStates": 0,
+            "preservingForecastOracleGainStates": 10,
+            "preservingForecastOracleSafetyStates": 0,
+            "sharedOpalStates": 19,
+            "smallerFirstImmediateGainStates": 5,
+            "uncappedOpalDecisionStates": 211,
+            "waitForecastOracleGainStates": 13
+          },
+          "storm": {
+            "activeOrbitStates": 0,
+            "cappedOpalStates": 0,
+            "clearAvailableStates": 359,
+            "decisionStates": 366,
+            "equalFirstImmediateGainStates": 0,
+            "multipleClearStates": 286,
+            "opalStates": 145,
+            "opalStatesWithoutClear": 1,
+            "orbitWithOpalStates": 0,
+            "preservingForecastOracleGainStates": 16,
+            "preservingForecastOracleSafetyStates": 1,
+            "sharedOpalStates": 38,
+            "smallerFirstImmediateGainStates": 3,
+            "uncappedOpalDecisionStates": 144,
+            "waitForecastOracleGainStates": 0
+          }
+        },
+        "policy": "largest-immediate",
+        "rounds": 64,
+        "score": 4440,
+        "showers": 1493
+      },
+      {
+        "counts": {
+          "activeOrbitStates": 4,
+          "cappedOpalStates": 0,
+          "clearAvailableStates": 1119,
+          "decisionStates": 1489,
+          "equalFirstImmediateGainStates": 1,
+          "multipleClearStates": 510,
+          "opalStates": 446,
+          "opalStatesWithoutClear": 71,
+          "orbitWithOpalStates": 1,
+          "preservingForecastOracleGainStates": 33,
+          "preservingForecastOracleSafetyStates": 1,
+          "sharedOpalStates": 61,
+          "smallerFirstImmediateGainStates": 8,
+          "uncappedOpalDecisionStates": 375,
+          "waitForecastOracleGainStates": 14
+        },
+        "ended": 5,
+        "phaseCounts": {
+          "calm": {
+            "activeOrbitStates": 2,
+            "cappedOpalStates": 0,
+            "clearAvailableStates": 758,
+            "decisionStates": 1121,
+            "equalFirstImmediateGainStates": 1,
+            "multipleClearStates": 225,
+            "opalStates": 299,
+            "opalStatesWithoutClear": 70,
+            "orbitWithOpalStates": 1,
+            "preservingForecastOracleGainStates": 16,
+            "preservingForecastOracleSafetyStates": 0,
+            "sharedOpalStates": 25,
+            "smallerFirstImmediateGainStates": 6,
+            "uncappedOpalDecisionStates": 229,
+            "waitForecastOracleGainStates": 14
+          },
+          "storm": {
+            "activeOrbitStates": 2,
+            "cappedOpalStates": 0,
+            "clearAvailableStates": 361,
+            "decisionStates": 368,
+            "equalFirstImmediateGainStates": 0,
+            "multipleClearStates": 285,
+            "opalStates": 147,
+            "opalStatesWithoutClear": 1,
+            "orbitWithOpalStates": 0,
+            "preservingForecastOracleGainStates": 17,
+            "preservingForecastOracleSafetyStates": 1,
+            "sharedOpalStates": 36,
+            "smallerFirstImmediateGainStates": 2,
+            "uncappedOpalDecisionStates": 146,
+            "waitForecastOracleGainStates": 0
+          }
+        },
+        "policy": "preserve-opal-on-score-ties",
+        "rounds": 64,
+        "score": 4455,
+        "showers": 1494
+      }
+    ]
+  }
+}
