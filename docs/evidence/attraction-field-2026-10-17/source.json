@@ -1,0 +1,25 @@
+{
+  "source_commit": "7f42f58034b8e3aea57dbbb1e650acb91a63b6eb",
+  "source_tree": "cd183d335f8494aada1da0b8bbef24597b65e1bc",
+  "base_commit": "5865a04199646c5535c5574c120af1084bf648b6",
+  "generation": "Built-in imagegen; untouched source preserved",
+  "sha256": {
+    "Artwork/StarCast/field-body-v1.png": "00893a42ea64b08c77321f7cf2b4a922190f50c79b88e7b5afed6a9b67cb448a",
+    "App/Assets.xcassets/StarCastField.imageset/body.png": "a2eba63c834b28a351bad9ae845dbb6dded04b260eb0806db13324cc9c8878e7",
+    "Artwork/StarCast/attraction-field-prompt-v1.txt": "cd7e70521a302bf30028028008cd963d39e8c747f790624d3658d1e49904954f"
+  },
+  "recording": "artifacts/attraction-field-2026-10-17/native-motion.mp4",
+  "motion_sample_seconds": [
+    [
+      41.62,
+      42.22
+    ],
+    [
+      45.35,
+      46.31
+    ]
+  ],
+  "native_tests": 6,
+  "hosted_tests": 158,
+  "core_tests": 109
+}

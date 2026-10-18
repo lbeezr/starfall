@@ -225,7 +225,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
             if game.gem(at: cell)?.gravityKind != nil {
                 message = game.gem(at: cell)?.gravityKind == .hole
                     ? "Clear a matching group containing a captive to close the hole."
-                    : "Clear beside a magnet to dissolve it, or clear between a pair to form a hole."
+                    : "Clear beside an attraction field to dispel it, or clear between two fields to form a hole."
                 feedback.announce(message); return
             }
             message = game.gem(at: cell)?.isDark == true
@@ -357,7 +357,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         } else if turn.arrivals.contains(where: { $0.gem.isLight }) {
             message = "An Opal Orb arrived. Start on a colored star to include it in that family’s match or constellation. Clearing spends the orb."
         } else if turn.arrivals.contains(where: { $0.gem.gravityKind == .magnet }) {
-            message = "A magnetic pair arrived. Clear their middle to form a hole, or clear beside a lone magnet to dissolve it."
+            message = "Attraction fields formed. Clear their middle to form a hole, or clear beside an isolated field to dispel it."
         } else if growth > 0 {
             message = "\(growth == 1 ? "A star grew" : "\(growth) stars grew") — worth 2 when cleared."
         } else {

@@ -29,3 +29,5 @@ Start with [the roadmap](../ROADMAP.md) for current priorities or [visual refere
 [Gravity production integration](gravity-integration-2026-10-17/README.md) records new-sky supply, retained-save replay, v5 migration and normal-target acceptance separately from the earlier trial.
 
 [Production gravity art](gravity-art-2026-10-17/README.md) records generated source/prompt provenance, shared material integration, native scale/layout and full/reduced motion checks.
+
+[Attraction-field visual revision](attraction-field-2026-10-17/README.md) records the open aura, shared material/shadow contracts, native interaction and motion evidence, with unchanged rule and timing limits.

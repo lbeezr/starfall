@@ -50,6 +50,7 @@ import StarfallCore
     }
 
     private func ground(_ gem: StarfallGem, at cell: Cell) {
+        guard gem.gravityKind != .magnet else { return }
         let root = SKNode()
         root.name = "sky.ground.\(gem.id)"
         root.position = CGPoint(x: point(cell).x, y: point(cell).y - groundOffset(gem))
@@ -207,7 +208,8 @@ import StarfallCore
         let side = Cell(arrival.cell.row, arrival.cell.column - direction)
         let below = Cell(arrival.cell.row - 1, arrival.cell.column)
         for cell in [side, below] {
-            guard let id = cellsByID.first(where: { $0.value == cell })?.key, let node = nodes[id] else { continue }
+            guard let id = cellsByID.first(where: { $0.value == cell })?.key, let node = nodes[id],
+                  node.gem.gravityKind != .magnet else { continue }
             let offset = point(cell)
             let target = point(arrival.cell)
             guard hypot(offset.x-target.x, offset.y-target.y) <= step * 1.15 else { continue }
@@ -318,6 +320,11 @@ import StarfallCore
         nodes[arrival.gem.id] = node; cellsByID[arrival.gem.id] = arrival.cell
         grid.childNode(withName: "sky.ground.\(arrival.gem.id)")?.removeFromParent()
         ground(arrival.gem, at: arrival.cell)
+        if arrival.gem.gravityKind == .magnet {
+            node.character.run(.sequence([.fadeAlpha(to: 0.55, duration: 0.12),
+                                          .fadeAlpha(to: 1, duration: 0.16)]), withKey: "gravity.field-formation")
+            return
+        }
         light(at: destination, color: StarCast.Identity(arrival.star).color,
               strength: arrival.gem.isDark ? 0.25 : arrival.grew ? 1 : 0.65)
         node.xScale = arrival.gem.isLight ? 1 : 1.13

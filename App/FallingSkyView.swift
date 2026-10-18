@@ -319,7 +319,7 @@ import StarfallCore
         .accessibilityHint(store.game.gem(at: cell)?.gravityKind == .hole
             ? "Clear a matching group containing a captive to close this hole"
             : store.game.gem(at: cell)?.gravityKind == .magnet
-            ? "Clear beside it to dissolve it. Clear between a pair to form a hole"
+            ? "Clear beside it to dispel the field. Clear between two fields to form a hole"
             : store.game.orbit?.slots.contains(cell) == true
             ? "A legal clear containing this captive closes the hole and releases the others"
             : store.game.gem(at: cell)?.isDark == true
@@ -348,7 +348,7 @@ import StarfallCore
         let position = "row \(7-cell.row), column \(cell.column+1)"
         guard let gem = store.game.gem(at: cell) else { return "Empty, \(position)" }
         if let role = gem.gravityKind {
-            return role == .hole ? "Gravity hole, \(store.game.orbit?.windowsRemaining ?? 0) windows left, \(position)" : "Magnetic star, \(position)"
+            return role == .hole ? "Gravity hole, \(store.game.orbit?.windowsRemaining ?? 0) windows left, \(position)" : "Attraction field, \(position)"
         }
         let shade = store.game.isGrowthBlocked(at: cell) ? ", growth blocked by a dark star" : ""
         let captive = store.game.orbit?.slots.contains(cell) == true ? "Captive, " : ""

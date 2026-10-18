@@ -130,3 +130,9 @@ Each phase records enough source/target snapshot and ID movement to render remov
 ## Analysis verification
 
 `swift test` passed **63 tests, zero failures**, on the inspected runtime and documentation-only working-tree differences, Apple Swift 6.4 / arm64 macOS. Raw log: `/tmp/starfall-gravity-design-core.log`. This establishes the existing package baseline, not any proposed mechanic. No candidate simulation, source change, simulator build, hosted/UI run, runtime animation, interruption, actual VoiceOver or physical-device validation was performed. Historical images were inspected; new Markdown was reviewed as source. Documentation hygiene/link checks are recorded in the [plan](GRAVITY_MECHANICS_PLAN.md).
+
+## Attraction-field visual revision
+
+The user rejected a second star-like piece. Replace the magnetic crystal with an open, translucent blue-gold aura and sparse light motes. Its center must stay transparent; no crystal facets, star points, face or ground shadow. Display the saved magnetic role as “Attraction field” in the shared material, cell labels, forecast and help. The existing occupied-cell/collision rules remain unchanged in this visual pass; moving attraction onto ordinary grown stars remains a separate mechanics decision.
+
+Acceptance: shared board/forecast/flight artwork, transparent center and padded alpha; no field contact shadow or physical landing bounce; finite formation/convergence cues only, with quiet-mode parity. Verify small-size/native normal and largest-text appearance, collision/expiry/restore/trace, system Reduce Motion, hosted material/lifecycle checks, Core, Debug/Release and hygiene. Keep the existing fast-cadence orbit input-window issue visible; this revision does not change phase timing.

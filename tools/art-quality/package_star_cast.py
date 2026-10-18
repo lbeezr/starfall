@@ -41,10 +41,10 @@ def isolated_body(cell):
     return cell
 
 
-def package_body(cell, name):
+def package_body(cell, name, alpha_threshold=128):
     alpha = cell.getchannel('A')
     # Ignore near-transparent edge haze when fitting the body. Keep original alpha.
-    bounds = alpha.point(lambda value: 255 if value >= 128 else 0).getbbox()
+    bounds = alpha.point(lambda value: 255 if value >= alpha_threshold else 0).getbbox()
     assert bounds and bounds[2] - bounds[0] > 200
     body = cell.crop(bounds)
     # Normalize the source's existing alpha range (the six-body plate peaks at 254).
@@ -67,16 +67,20 @@ def package_body(cell, name):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--opal', action='store_true', help='Package only the selected Opal Orb source')
-    parser.add_argument('--gravity', action='store_true', help='Package the magnetic crystal and gravity hole sources')
+    parser.add_argument('--gravity', action='store_true', help='Package the attraction field and gravity hole sources')
     args = parser.parse_args()
     if args.gravity:
         receipt = {'generator': 'built-in image_gen', 'frames': {}}
-        for name in ['Magnet', 'Hole']:
+        for name in ['Field', 'Hole']:
             source = ROOT / f'Artwork/StarCast/{name.lower()}-body-v1.png'
             cell = Image.open(source).convert('RGBA')
             assert cell.getchannel('A').getextrema()[0] == 0, 'Real transparency required'
-            assert cell.getpixel((cell.width // 2, cell.height // 2))[3] >= 250, 'Opaque body center required'
-            frame = package_body(isolated_body(cell), name)
+            if name == 'Field':
+                assert cell.getpixel((cell.width // 2, cell.height // 2))[3] <= 16, 'Open field center required'
+                frame = package_body(cell, name, alpha_threshold=16)
+            else:
+                assert cell.getpixel((cell.width // 2, cell.height // 2))[3] >= 250, 'Opaque hole center required'
+                frame = package_body(isolated_body(cell), name)
             frame['sourceSHA256'] = hashlib.sha256(source.read_bytes()).hexdigest()
             receipt['frames'][name] = frame
         (ROOT / 'Artwork/StarCast/gravity-packaging.json').write_text(json.dumps(receipt, indent=2) + '\n')
