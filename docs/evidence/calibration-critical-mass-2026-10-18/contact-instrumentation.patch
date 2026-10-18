@@ -1,0 +1,166 @@
+diff --git a/App/ConstellationTraceSurface.swift b/App/ConstellationTraceSurface.swift
+index 1363f29..8367836 100644
+--- a/App/ConstellationTraceSurface.swift
++++ b/App/ConstellationTraceSurface.swift
+@@ -1,6 +1,9 @@
+ import SwiftUI
+ import UIKit
+ import StarfallCore
++#if DEBUG
++import OSLog
++#endif
+ 
+ 
+ // UIKit gives the board an explicit release/cancel/multitouch contract. The native
+@@ -84,12 +87,20 @@ struct ConstellationTraceSurface: UIViewRepresentable {
+             return ObservatoryGeometry(size: input.size).cell(at: point) != nil
+         }
+         func cancelInput(reason: String? = nil) {
++            #if DEBUG
++            if primary != nil { ContactCalibrationTrace.emit("native.cancel uptime=\(ProcessInfo.processInfo.systemUptime) reason=\(reason ?? "lifecycle")") }
++            #endif
+             swapTask?.cancel(); swapTask = nil; swapDwell = SkySwapDwell(); swapArmed = false
+             capture.cancelCapture(); input?.cancel(); primary = nil; session.cancel(); blocked = true
+             if let reason { input?.feedback?(reason) }
+         }
+         override func willMove(toWindow newWindow: UIWindow?) { if newWindow == nil { cancelInput() } }
+         private func beginContact(_ touches: Set<UITouch>, event: UIEvent?) {
++            #if DEBUG
++            let touch = touches.first
++            let point = touch?.location(in: self) ?? .zero
++            ContactCalibrationTrace.emit("native.down uptime=\(ProcessInfo.processInfo.systemUptime) touch=\(touch?.timestamp ?? -1) point=\(point) cell=\(String(describing: input.map { ObservatoryGeometry(size: $0.size).cell(at: point) })) generation=\(input?.generation ?? 0) primary=\(primary != nil)")
++            #endif
+             guard primary == nil, touches.count == 1, (event?.allTouches?.count ?? 1) == 1 else { cancelInput(reason: SkyCopy.text(.inputOneFinger)); return }
+             blocked = false; swapDwell = SkySwapDwell(); swapArmed = false; primary = touches.first
+             let origin = primary!.location(in: self)
+@@ -135,6 +146,9 @@ struct ConstellationTraceSurface: UIViewRepresentable {
+             }
+         }
+         private func endContact(_ touches: Set<UITouch>, event: UIEvent?) {
++            #if DEBUG
++            ContactCalibrationTrace.emit("native.up uptime=\(ProcessInfo.processInfo.systemUptime) touch=\(touches.first?.timestamp ?? -1) blocked=\(blocked) primary=\(primary != nil)")
++            #endif
+             guard !blocked, let primary, touches.contains(primary), let input else { cancelInput(); return }
+             guard (event?.allTouches?.count ?? 1) == 1 else { cancelInput(reason: SkyCopy.text(.inputOneFinger)); return }
+             let location = primary.location(in: self)
+@@ -151,6 +165,9 @@ struct ConstellationTraceSurface: UIViewRepresentable {
+                 swapArmed = input.beginSwap?(origin, ObservatoryGeometry(size: input.size).viewPoint(target), input.generation) == true
+             }
+             let outcome = session.finish(at: location, mapping: ObservatoryGeometry(size: input.size))
++            #if DEBUG
++            ContactCalibrationTrace.emit("native.outcome \(outcome)")
++            #endif
+             self.primary = nil
+             if swapArmed { input.endSwap?(location); swapArmed=false; return }
+             switch outcome {
+@@ -303,3 +320,16 @@ struct SkySwapDwell {
+         target = candidate
+     }
+ }
++
++#if DEBUG
++/// Temporary local investigation only; removed after the bounded run.
++@MainActor enum ContactCalibrationTrace {
++    private static let logger = Logger(subsystem: "com.starfall.prototype", category: "ContactCalibration")
++    private static var sequence = 0
++    static func emit(_ message: String) {
++        guard sequence < 1024 else { return }
++        sequence += 1
++        logger.notice("CONTACT \(sequence) \(message, privacy: .public)")
++    }
++}
++#endif
+diff --git a/App/FallingSkyStore.swift b/App/FallingSkyStore.swift
+index ec6db4b..f30977f 100644
+--- a/App/FallingSkyStore.swift
++++ b/App/FallingSkyStore.swift
+@@ -123,7 +123,15 @@ enum SkyTerminalSpeech { case feedback, ceremony }
+ 
+     /// Only the owner may release a live hold; late callbacks cannot resume a newer touch.
+     @discardableResult func beginConstellationHold(at cell: Cell? = nil) -> UInt64? {
+-        guard (cell.map(canContact) ?? canClear), constellationHold == nil else { return nil }
++        #if DEBUG
++        calibrationTrace("hold.request", cell: cell)
++        #endif
++        guard (cell.map(canContact) ?? canClear), constellationHold == nil else {
++            #if DEBUG
++            calibrationTrace("hold.denied", cell: cell)
++            #endif
++            return nil
++        }
+         constellationHoldSequence &+= 1
+         constellationHold = constellationHoldSequence
+         constellationTracing = true
+@@ -131,9 +139,15 @@ enum SkyTerminalSpeech { case feedback, ceremony }
+         #if DEBUG
+         observeTiming(.state)
+         #endif
++        #if DEBUG
++        calibrationTrace("hold.granted", cell: cell)
++        #endif
+         return constellationHold
+     }
+     func endConstellationHold(_ ticket: UInt64?) {
++        #if DEBUG
++        if ticket != nil { calibrationTrace("hold.end.request=\(String(describing: ticket))") }
++        #endif
+         guard let ticket, constellationHold == ticket else { return }
+         constellationHold = nil; constellationTracing = false
+         armClock()
+@@ -263,6 +277,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
+         refreshCadence(); remaining = showerInterval
+     }
+     private func observeTiming(_ kind: TimingEventKind, showerDeadline: TimeInterval? = nil) {
++        calibrationTrace("timing.\(kind)")
+         let sourceDeadline: TimeInterval?
+         switch kind {
+         case .automaticShower, .manualShower: sourceDeadline = showerDeadline
+@@ -272,6 +287,14 @@ enum SkyTerminalSpeech { case feedback, ceremony }
+     }
+     #endif
+ 
++    #if DEBUG
++    func calibrationTrace(_ phase: String, cell: Cell? = nil) {
++        let origin = cell.map { String(describing: inputPolicy.reserving([$0.column])) } ?? "none"
++        let group = cell.map { String(describing: clearAvailability($0)) } ?? "none"
++        ContactCalibrationTrace.emit("\(phase) uptime=\(clock.now) shower=\(game.turns) score=\(game.score) cell=\(String(describing: cell)) contact=\(origin) group=\(group) moving=\(changingColumns.sorted()) deadline=\(String(describing: deadline)) rainDue=\(rainDue) hold=\(String(describing: constellationHold)) generation=\(constellationInputGeneration)")
++    }
++    #endif
++
+     private func refreshCadence() {
+         #if DEBUG
+         nextShowerCadence = (game.hasOpeningCascade && game.challenge == nil ? timingLookup?(game) : nil) ?? game.cadenceStep
+@@ -397,6 +420,9 @@ enum SkyTerminalSpeech { case feedback, ceremony }
+     func canTrace(_ path: [Cell]) -> Bool { traceAvailability(path).isReady }
+ 
+     func clear(_ cell: Cell) {
++        #if DEBUG
++        calibrationTrace("clear.request", cell: cell)
++        #endif
+         guard canReceiveInput, !constellationTracing else { return }
+         guard canClear(cell) else { explainSettling(at: cell); return }
+         showInputFeedback(nil)
+diff --git a/App/FallingSkyView.swift b/App/FallingSkyView.swift
+index 57b2ec2..fc3b6ee 100644
+--- a/App/FallingSkyView.swift
++++ b/App/FallingSkyView.swift
+@@ -484,6 +484,9 @@ private struct ObservatoryCellShape: Shape {
+ 
+ private extension FallingSkyView {
+     func tapBoardCell(_ cell: Cell) {
++        #if DEBUG
++        store.calibrationTrace("view.tap", cell: cell)
++        #endif
+         cancelConstellation()
+         store.clear(cell)
+     }
+@@ -519,6 +522,9 @@ private extension FallingSkyView {
+         store.scene.clearConstellationTrace()
+     }
+     func beginBoardContact(_ point: CGPoint, size: CGSize) -> Bool {
++        #if DEBUG
++        store.calibrationTrace("view.contact", cell: ObservatoryGeometry(size: size).cell(at: point))
++        #endif
+         cancelConstellation()
+         guard let cell = ObservatoryGeometry(size: size).cell(at: point) else { return false }
+         guard interaction.acquireHold(at: cell, using: store.beginConstellationHold) else {
