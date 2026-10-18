@@ -65,3 +65,5 @@ Rendered-award checks capture the complete `FallingSkyView` in an isolated foreg
 `CriticalMassProductionTests` checks v8/v7 archive boundaries, new versus retained/First Light routing, committed collapse across interruption/restore/restart, and static corruption materials.
 
 `TraceInputPolishTests` also checks direction-derived swap targets and off-center elliptical acquisition at phone/tablet sizes.
+
+`SkySaveArchiveTests` owns archive migration/validation and `SkyPhasePresentationTests` owns forecast presentation. Both were extracted unchanged from the general Store suite, with explicit hosted target membership.
