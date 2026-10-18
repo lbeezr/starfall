@@ -180,6 +180,13 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         }
         #endif
         refreshCadence()
+        #if DEBUG
+        if arguments.contains("--starfalls-reset"), let name = arguments.first(where: { $0.hasPrefix("--gravity-fixture=") }),
+           let fixture = GravityFixture(rawValue: String(name.dropFirst("--gravity-fixture=".count))) {
+            game = fixture.game(); message = fixture.message
+        }
+        #endif
+        refreshCadence()
         remaining = showerInterval
         scene.onLayout = { [weak self] in self?.settlePresentation() }
         scene.onReadinessChanged = { [weak self] ready in
@@ -200,6 +207,12 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         guard canClear, !constellationTracing else { return }
         let old = game
         guard let turn = game.clear(cell) else {
+            if game.gem(at: cell)?.gravityKind != nil {
+                message = game.gem(at: cell)?.gravityKind == .hole
+                    ? "Clear a matching group containing a captive to close the hole."
+                    : "Clear beside a magnet to dissolve it, or clear between a pair to form a hole."
+                feedback.announce(message); return
+            }
             message = game.gem(at: cell)?.isDark == true
                 ? "Clear a matching group beside the dark star to dissolve it."
                 : game.gem(at: cell)?.isLight == true
@@ -328,10 +341,17 @@ enum SkyTerminalSpeech { case feedback, ceremony }
             message = "A dark star blocks nearby growth. Clear beside it to dissolve it."
         } else if turn.arrivals.contains(where: { $0.gem.isLight }) {
             message = "An Opal Orb arrived. Start on a colored star to include it in that family’s match or constellation. Clearing spends the orb."
+        } else if turn.arrivals.contains(where: { $0.gem.gravityKind == .magnet }) {
+            message = "A magnetic pair arrived. Clear their middle to form a hole, or clear beside a lone magnet to dissolve it."
         } else if growth > 0 {
             message = "\(growth == 1 ? "A star grew" : "\(growth) stars grew") — worth 2 when cleared."
         } else {
             message = "\(turn.arrivals.count == 1 ? "One star arrived" : "\(turn.arrivals.count) stars arrived"). Make room for the next shower."
+        }
+        if !game.isOver, let field = game.orbit {
+            message = "Orbit: \(field.windowsRemaining) windows left. Clear a captive to release the others."
+        } else if !game.isOver, turn.gravityPhases.contains(where: { $0.event == .release }) {
+            message = "The hole closed. Its stars are free."
         }
         // One settled, generation-guarded announcement owns both pressure axes.
         // Ordinary automatic arrivals leave exploration speech alone.
@@ -405,6 +425,18 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         refreshCadence()
         remaining = showerInterval
         message = fixture.title + ". Draw through matching stars."
+        save(); presenter.render(game)
+    }
+
+    #endif
+
+    #if DEBUG
+    func loadGravityFixture(_ fixture: GravityFixture) {
+        isPaused = true
+        feedback.stopSounds()
+        freezeClock(); settlePresentation()
+        game = fixture.game(); refreshCadence(); remaining = showerInterval
+        message = fixture.message
         save(); presenter.render(game)
     }
 

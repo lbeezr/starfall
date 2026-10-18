@@ -21,3 +21,5 @@ Cadence scheduling tests reuse `Tests/StarfallCoreTests/TimingCycleFixture.swift
 `SkyFlowStateTests` checks Entry cancellation, duplicate/stale Begin, retained core/ranking bytes, replay generation and pause-preserving Continue. `FallingSkyTestSupport` shares the manual clock/presenter with store tests.
 
 `TraceInputPolishTests` covers coarse/grazing samples, small and large projected boards, spatial misses, branching and stale-generation rejection. Store checks cover the held deadline and resumed remainder.
+
+Gravity integration uses the normal target and v5 committed archive. Core owns occupied orbit supports and saved `gravityOrbits` supply; retained generations remain unchanged. `GravityStoreTests` covers committed saves and interrupted phases; Debug reset-only histories support native verification. See [the integration plan](../docs/design/GRAVITY_MECHANICS_PLAN.md).

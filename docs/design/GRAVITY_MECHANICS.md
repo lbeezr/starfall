@@ -1,20 +1,20 @@
 # Turn a magnetic collision into a temporary orbit
 
-**Status:** Implemented isolated trial; adoption pending · **Owner:** current implementer · **Updated:** 2026-10-17
+**Status:** Accepted for production; integration checks in progress · **Owner:** current implementer · **Updated:** 2026-10-17
 
-Keep Dusk's current local growth constraint and neighboring-clear removal. Explore separate magnetic precursors that collide when the player opens their middle space, leaving a temporary hole. The hole captures existing neighboring colored stars, rotates them in discrete steps, and closes when a captive is cleared or its lifetime ends. White remains an independently developed connector.
+Dusk suppresses neighboring growth and dissolves beside a clear; Opal joins a chosen color. Separate magnetic pairs create temporary holes when a legal clear opens their middle. A hole captures up to four occupied colored neighbors, rotates them between settled matching windows, and closes on a captive clear or after three windows. Empty cells are never reserved. Floor captures usually start with two stars.
 
-**Decision:** recommend occupied capture positions with explicit support-based gravity in one isolated fixture trial. This preserves the intended locked orbit without reserving invisible empty cells. It is a deliberate new gravity rule, not an animation layered onto production compaction. The first useful floor example has two captives, not a promised four.
+The user requested adoption after merging [the isolated implementation](https://github.com/lbeezr/starfall/pull/42). The [production acceptance plan](GRAVITY_MECHANICS_PLAN.md#production-acceptance-2026-10-17) owns remaining checks. Human preference, actual VoiceOver acceptance, device performance and natural supply tuning remain unverified.
 
-**Next action:** use the [trial plan](GRAVITY_MECHANICS_PLAN.md) for observed trigger/keep/close comparison; revise or remove the candidate before production adoption. Implementation remains export-local; production adoption and combined white/gravity behavior remain undecided. [Research and alternatives](CELESTIAL_MECHANICS_RESEARCH.md).
+## Production ownership and supply
 
-## Current implementation boundary
+`FallingSky` commits collision/removal/settling/capture/rotation/release phases; `GravityFieldRules` owns topology and support compaction. The board owns captive IDs; `OrbitField` stores fixed occupied slots. `StarCast` supplies two bounded glyph materials for the board, flight and forecast. Input, saves and showers remain under the existing store's generation guards and single deadline.
 
-The playable export is now pinned to published main `06ce5141f14f1b4d371ba5b5246d752888b3a821`, inheriting its shipped tracing, Opal identity and current scene-readiness/flow fixes. `gravity_candidate.py` changes only the exported Core; `gravity_native.py` adds the isolated native shell. Production files are unchanged. Opal remains uncaptured; fixture histories use legacy generation so the interaction is not mixed with new storms/Opal supply. Normal legacy/Opal replays are compared separately.
+New skies use saved generation `gravityOrbits`. The eighth calm wave of a twelve-wave cycle may supply a five-star setup: two magnets at equal low endpoint heights, one colored survivor above each, and a middle-family arrival. The middle must already contain a colored star at that height. Skip if a field/magnet remains, no eligible center exists, ordinary relief is needed, or the original forecast contains Dusk/Opal. There is no deferred spawn debt. A lone magnet dissolves beside a selected clear; only one field can exist.
 
-Typed `SkyIdentity` classifies the existing colored/Dusk/Opal cases and the new explicit optional `GravityKind`; it preserves baseline ordinary encodings. The board remains the single owner of current captive IDs; `OrbitField` stores their fixed slots rather than duplicating an occupant map. Current main has no ranking transport, so this trial adds none. The earlier ranking concern below describes the original worktree analysis, not a component imported into the lab.
+The v5 normal archive reads v4 envelopes and v3 raw skies without rewriting their generation or preview. Same-sky replay retains that generation; New sky selects the current rules. Corrupt newer saves never fall back. First Light remains unchanged. Opal is never captured, but remains usable in matching clears/traces beside a field; selecting a captive through either input closes the field once.
 
-The [evidence record](../evidence/gravity-orbit-2026-10-17/README.md) owns executed checks and remaining human/device/RC gates. Three windows are implemented; lifetime/frequency preference is unverified. New precursors still do not spawn naturally.
+The [historical trial evidence](../evidence/gravity-orbit-2026-10-17/README.md) applies only to its pinned export. Its duplicated transforms, alternate bundle/save envelope and player fixture menu are retired on adoption. The original analysis below remains decision history, not current implementation documentation.
 
 ## What the original code analysis established
 
