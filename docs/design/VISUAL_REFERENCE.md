@@ -2,9 +2,21 @@
 
 **Status:** Reference · **Updated:** October 17, 2026
 
-The existing icon, screens and six-star cast, with links to their sources. **These are reference assets and historical native exports:** current-build parity, final art/motion approval, actual VoiceOver and device acceptance remain open.
+Selected icon, screens and six-star cast, with links to their sources. **Source-bound references, not current-build certification:** check the linked source before drawing conclusions about current UI. Final art/motion approval, actual VoiceOver and device acceptance remain open. Follow [screenshot retention](../SCREENSHOTS.md) when replacing a visual.
 
-[Icon](#adopted-app-icon) · [Screens](#opening-screen-and-active-play) · [Cast](#meet-the-cast)
+[Icon](#adopted-app-icon) · [Screens](#welcome-and-entry) · [Cast](#current-crystal-glow-cast)
+
+## Capture index
+
+Status follows [the screenshot practice](../SCREENSHOTS.md). These legacy filenames retain their original provenance. No current-source parity review was performed for this documentation update, so none is certified **Current**. Use the linked reports for captured sources and environments; the next implementer touching each surface owns its refresh.
+
+| Surface | Status | Selected evidence / next check |
+| --- | --- | --- |
+| Welcome | Needs refresh | [Sky-flow welcome](../evidence/sky-flow-2026-10-17/welcome.jpg), [source report](../evidence/sky-flow-2026-10-17/README.md); compare relevant UI/art inputs before relying on current parity |
+| Entry | Needs refresh | [Sky-flow entry](../evidence/sky-flow-2026-10-17/entry.jpg), same source report; compare relevant UI/art inputs |
+| Active play | Needs refresh | No selected integrated-board capture; replace the historical compact-HUD reference below with a native capture of the integrated board |
+| Settings | Needs refresh | No selected current settings capture; capture default and largest-text layouts when next changing settings |
+| Outcomes | Needs refresh | [First Light win](../evidence/sky-flow-2026-10-17/flow-win.jpg) and [full sky](../evidence/sky-flow-2026-10-17/flow-full.jpg), same sky-flow source report; compare relevant UI/art inputs |
 
 ## Adopted app icon
 
@@ -20,13 +32,15 @@ The existing icon, screens and six-star cast, with links to their sources. **The
 
 **Source-bound native captures — October 17 character-chat follow-up, 17e / iOS 27.0 Simulator.** [Source hashes, later accessibility correction, small/large-phone checks and limits](../evidence/character-chat-2026-10-17/README.md). [Portrait sources/prompts](../../Artwork/Dialogue/README.md) retain the six generated masters; [authoring guide](../../App/DialogueScripts/README.md) explains future scripts. These captures establish sampled appearance, not actual VoiceOver, physical-device acceptance or parity with the newer storm phone branch.
 
-## Opening screen and active play
+## Welcome and entry
 
-| Opening | Active play |
+| Welcome | Entry |
 | --- | --- |
-| [<img src="../evidence/compact-hud-2026-10-17/opening.png" width="144" alt="Empty dark board with score zero, sky menu, Start sky and Next shower controls">](../evidence/compact-hud-2026-10-17/opening.png) | [<img src="../evidence/compact-hud-2026-10-17/active.png" width="144" alt="Native compact-HUD gameplay capture showing the board below score and sky menu">](../evidence/compact-hud-2026-10-17/active.png) |
+| <img src="../evidence/sky-flow-2026-10-17/welcome.jpg" width="180" alt="Observatory welcome with crystal stars, Start a sky and Try First Light actions"> | <img src="../evidence/sky-flow-2026-10-17/entry.jpg" width="180" alt="Observatory entry with matching-star instruction, Begin and Back to Observatory"> |
 
-**Native captures:** October 17 compact-HUD candidate, iPhone 17e / iOS 27.0 Simulator. [Source hashes, checks and limits](../evidence/compact-hud-2026-10-17/README.md). Select a capture to inspect the full-size file; these screens do not prove parity with later builds.
+**Selected native flow captures:** iPhone 17e / iOS 27.0 Simulator, normal motion, Calm effects off. [Sky-flow source hashes, checks and limits](../evidence/sky-flow-2026-10-17/README.md). Inspected October 17, 2026; these are recorded implementation frames, not a fresh capture of HEAD. Still frames do not verify the reveal animation.
+
+**Active-play capture gap:** The [compact-HUD opening and gameplay captures](../evidence/compact-hud-2026-10-17/README.md) predate later art and flow work. Use that report to investigate historical HUD behavior; capture the current integrated board before judging its appearance.
 
 **Launch screen:** A static dark storyboard and opaque app root share a named color. [Batch 1 native launch recordings and limits](../evidence/screen-flow-polish-2026-10-17/README.md) show the tested phone sequences; the opening board above remains gameplay, not a splash capture.
 
@@ -36,29 +50,11 @@ The existing icon, screens and six-star cast, with links to their sources. **The
 
 **Native renderer export — source `6cc9efd`, iPhone 17e / iOS 27.0.** The user approved the Crystal Glow masters; [integration evidence](../evidence/crystal-glow-integration-2026-10-17/README.md) separates final material/interaction/motion checks from baseline accessibility failures and unverified device acceptance. The older cast exports below remain historical references.
 
-## Meet the cast
+## Historical cast comparisons
 
-<img src="../evidence/star-cast-motion-2026-10-17/material-review.png" width="640" alt="Six-star cast overview: tall aqua Spark, amber Sunny, mint Pip, rose Twinkle, wide violet Nova and dark Dusk, with expression rows and size samples">
+Crystal Glow supersedes the older body rendering. The [motion-candidate sheets](../evidence/star-cast-motion-2026-10-17/README.md) and [luminous revision](../evidence/star-cast-luminous-2026-10-17/README.md) remain historical comparison evidence; do not use them as the current cast reference. Their source and unresolved checks stay with those reports.
 
-**Native renderer export — October 17 motion candidate.** Columns identify the six families; rows show idle, landing, grown and clearing expressions, followed by size samples. [Source and verification](../evidence/star-cast-motion-2026-10-17/README.md). The [runtime factory](../../App/StarCast.swift) is authoritative; this sheet is a review artifact, not a separately loaded atlas.
-
-| Character / sheet | Recognition |
-| --- | --- |
-| [**Spark** · aqua](../evidence/star-cast-motion-2026-10-17/Spark.png) | Tall four-point star; curious eyes |
-| [**Sunny** · amber](../evidence/star-cast-motion-2026-10-17/Sunny.png) | Balanced five-point star; friendly face |
-| [**Pip** · mint](../evidence/star-cast-motion-2026-10-17/Pip.png) | Compact six-point star; raised eyebrow |
-| [**Twinkle** · rose](../evidence/star-cast-motion-2026-10-17/Twinkle.png) | Eight alternating rays; quiet oval eyes |
-| [**Nova** · violet](../evidence/star-cast-motion-2026-10-17/Nova.png) | Wide four-point star; sleepy face |
-| [**Dusk** · dark](../evidence/star-cast-motion-2026-10-17/Dusk.png) | Concave five-point star; lilac rim, dark interior |
-
-<details>
-<summary>Reading the full motion sheets</summary>
-
-Each linked character sheet has four expression rows (idle, landing, grown, clearing) and three facing columns (front, left, right). Open an individual sheet to inspect expression and turn details at full resolution. The overview above gives the family comparison without repeating all twelve poses in each table row.
-
-</details>
-
-Point counts and names are presentation cues, not scoring rules. Normal stars are worth 1, grown stars 2, dark stars 0. See the [production cast contract](star-cast/README.md), [motion source and verification](../evidence/star-cast-motion-2026-10-17/README.md), and [luminous revision](../evidence/star-cast-luminous-2026-10-17/README.md). A contact sheet shows poses; it cannot demonstrate falling or turning motion.
+The [production cast contract](star-cast/README.md) owns names and recognition cues; the [runtime factory](../../App/StarCast.swift) owns rendering. Normal stars are worth 1, grown stars 2, dark stars 0. A contact sheet shows poses; it cannot demonstrate falling or turning motion.
 
 ## Reuse these visuals
 

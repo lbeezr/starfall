@@ -64,7 +64,7 @@ For product READMEs, visual designs and presentation reports, inspect [the visua
 
 - Prefer the current packaged icon for product identity, a source-bound native capture for implemented UI, and a labeled concept for a proposed appearance. Never present an opening board as a launch/splash capture.
 - Inspect the image before choosing it. Explain what to notice and what it cannot prove. Place it beside the relevant decision; use a compact table for a cast or before/after comparison.
-- Use a repository-relative Markdown image, or `<img src="relative/path.png" width="240" alt="Useful description">` when limiting its size helps reading. Set width only to preserve proportions. Do not duplicate binaries merely to embed them; link the authoritative asset or evidence copy.
+- Use a repository-relative Markdown image, or `<img src="relative/path.png" width="240" alt="Useful description">` when limiting its size helps reading. Set width only to preserve proportions. Do not duplicate binaries merely to embed them; link the authoritative asset or evidence copy. Follow [screenshot practice](SCREENSHOTS.md): name new retained captures for their actual release/build or development source, and update the capture index status when a visual change affects them.
 - Keep the source/build, capture environment and limitations nearby or in a clearly linked evidence record. Existing exports may be historical even when the feature is adopted. If a needed visual does not exist, say so and name the future capture or design task.
 
 ## Give folders a useful front door

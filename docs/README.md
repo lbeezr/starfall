@@ -6,7 +6,7 @@ Current decisions, design contracts, verification summaries and historical evide
 
 [Active pacing work](PACING_WORK.md) tracks the seven separate tasks, dependencies and integration boundaries.
 
-Start with [the roadmap](ROADMAP.md), [writing process](WRITING.md), and [visual reference](design/VISUAL_REFERENCE.md).
+Start with [the roadmap](ROADMAP.md), [writing process](WRITING.md), and [visual reference](design/VISUAL_REFERENCE.md). Follow [screenshot practice](SCREENSHOTS.md) when replacing visual evidence.
 
 | Folder | Purpose |
 | --- | --- |

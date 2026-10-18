@@ -18,6 +18,8 @@
 
 **Environment:** <toolchain; configuration; simulator/device and OS when relevant>
 
+<For retained screenshots, follow [screenshot practice](../SCREENSHOTS.md): record actual captured version/build or commit, dirty-input snapshot ID and hashes when applicable, device/OS, text size and motion settings. Use the canonical build/screen/device/variant filename. Update affected visual-reference index entries with status and any remaining capture gap.>
+
 | Check | Command or reproducible procedure | Result | Evidence |
 | --- | --- | --- | --- |
 | <core / build / interaction / visual / animation / actual VoiceOver / device> | <exact command or procedure> | <result or explicit gap> | <durable summary or artifact link> |

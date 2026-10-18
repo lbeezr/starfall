@@ -1,5 +1,7 @@
 # Turn-based accumulation prototype — 16 October 2026
 
+**Historical screenshots retired October 17, 2026.** This report describes its original source only. The superseded image files were removed from the working tree; [the retirement record and Git recovery instructions](../../SCREENSHOTS.md#retired-screenshots) preserve their provenance. Use [the visual reference](../../design/VISUAL_REFERENCE.md) for selected references.
+
 This evidence covers the native Debug experiment described in [the prototype rules](../../design/STARFALL_ACCUMULATION_PROTOTYPE.md). The original 70-in-18 game remains separate.
 
 ## Environment and reproducibility
@@ -44,16 +46,16 @@ The initial forecast test failed because SwiftUI did not expose the three previe
 
 The final screenshots below were exported from the successful native interaction test and visually inspected. They show the empty forecast, a grown aqua jewel beside its small match after three showers, the collected score and new arrivals after clearing, and the calm presentation after settings dismissal. The board, forecast and main action are visible; the explanatory footer can scroll.
 
-- [Empty sky and forecast](starfalls-empty-preview.png)
-- [Growth and a possible clear](starfalls-grown-and-matchable.png)
-- [After clearing](starfalls-after-clear.png)
-- [Calm effects after settings dismissal](starfalls-calm-after-dismissal.png)
+- Empty sky and forecast (`starfalls-empty-preview.png`; retired)
+- Growth and a possible clear (`starfalls-grown-and-matchable.png`; retired)
+- After clearing (`starfalls-after-clear.png`; retired)
+- Calm effects after settings dismissal (`starfalls-calm-after-dismissal.png`; retired)
 
 [Attachment provenance](attachment-manifest.json) and [tested source hashes](source-sha256.txt) are included. Native result bundles remain locally at `/private/tmp/starfall-accumulation-final-ui.xcresult` and `/private/tmp/starfall-accumulation-final-host.xcresult`.
 
 ## Interactive handoff
 
-The native simulator is mirrored into Codex at `http://localhost:3200/` using `serve-sim` 0.1.48. This is a local development helper, not a game dependency or network feature. Xcode 27's touch bridge initially did not forward clicks; the helper's documented `repair-input` command was applied only to the dedicated simulator, then the helper and app were restarted. A browser tap then advanced the empty board to one shower, and a browser tap on Replay returned it to zero. The live tab is left open on the empty sky. [Browser frame proof](browser-preview.png).
+The native simulator is mirrored into Codex at `http://localhost:3200/` using `serve-sim` 0.1.48. This is a local development helper, not a game dependency or network feature. Xcode 27's touch bridge initially did not forward clicks; the helper's documented `repair-input` command was applied only to the dedicated simulator, then the helper and app were restarted. A browser tap then advanced the empty board to one shower, and a browser tap on Replay returned it to zero. The live tab is left open on the empty sky. Browser frame proof (`browser-preview.png`; retired).
 
 ## Accessibility and limits
 
