@@ -8,7 +8,7 @@ Hold the mechanic set steady. Tune the regular Starfall app with integrated trac
 
 ## Scope and success
 
-- [x] Build the regular app with its existing identity; preserve phone saves and lifecycle cleanup. Use reset-only simulator fixtures for repeatability. Build/install/launch confirmed; touch/capture stalled.
+- [x] Build the regular app with its existing identity; preserve phone saves and lifecycle cleanup. Use reset-only simulator fixtures for repeatability. Build/install/launch and focused XCTest interaction/capture confirmed; interactive streaming/video remain unavailable.
 - [x] Establish current-rule balance measurements, reporting distributions, censored runs, no-action stretches and actual action use. Separate policies with/without setup moves and bounded action budgets; none is a human model.
 - [ ] Play native fresh and prepared rounds with full motion. Verify ordinary taps, selected tracing, rapid input, restart, settings and background/resume. Inspect Reduce Motion and largest text separately.
 - [ ] For each change, reproduce its failure, add a focused regression and rerun affected core/hosted/UI tests plus simulator compilation and hygiene. Check Release for exporter/routing changes.

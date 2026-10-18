@@ -4,7 +4,9 @@
 
 The Arrange correction is reconciled with main `70cd96b`, including the 150 ms swap dwell, forgiving taps and five-feed Dusk. Only two app files differ from that main runtime: the intent’s mode eligibility/reconciliation and the view’s use of that boundary. The correction adds no rule, save, RNG, cadence, geometry or animation change.
 
-**Next action:** Integrate this verified batch, then continue natural automatic-play calibration on the combined source. Retain the current mechanics. Human feel, observed motion and RC VoiceOver remain separate acceptance work.
+**Published:** [PR #81](https://github.com/lbeezr/starfall/pull/81) merged as `b1748a1`. Published tree `d5144a4fed418ea8415040ef77c82a6c3aa50fbd` matches the verified local tree exactly; connector publication changes commit metadata, not its contents. Canonical updater status after merge: waiting for the configured iPhone. No phone installation is claimed.
+
+**Next action:** Continue natural automatic-play calibration on the combined source. Retain the current mechanics. Human feel, observed motion and RC VoiceOver remain separate acceptance work.
 
 ## Combined checks
 
