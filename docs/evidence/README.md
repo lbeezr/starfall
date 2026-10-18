@@ -32,3 +32,5 @@ Start with [the roadmap](../ROADMAP.md) for current priorities or [visual refere
 
 - [Character chat production integration](character-chat-production-2026-10-17/README.md): current gameplay integration and native checks. [Earlier delivery](character-chat-2026-10-17/README.md) remains bound to its older base.
 [Attraction-field visual revision](attraction-field-2026-10-17/README.md) records the open aura, shared material/shadow contracts, native interaction and motion evidence, with unchanged rule and timing limits.
+
+[Current-game player feedback](player-feedback-loop-2026-10-17/README.md) records the offline observation recorder, denominator checks, browser-preview limit and retired stale-source trial. No participant outcomes are supplied.

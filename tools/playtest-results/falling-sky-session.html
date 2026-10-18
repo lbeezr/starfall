@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Starfall · observed play</title>
+<style>
+:root{color-scheme:light;font-family:system-ui,sans-serif;color:#17233b;background:#f3f5fa}*{box-sizing:border-box}
+body{margin:0}main{max-width:960px;margin:auto;padding:28px 20px 60px}h1{font-size:clamp(1.7rem,5vw,2.5rem);margin:8px 0}p{line-height:1.55;max-width:74ch}.eyebrow{font-size:.85rem;font-weight:700;color:#465780;letter-spacing:.05em}section{background:white;border:1px solid #c9d2e3;border-radius:12px;padding:20px;margin:20px 0}h2{font-size:1.2rem;margin-top:0}.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}label{display:block;font-weight:600;font-size:.95rem}input,select{display:block;width:100%;min-height:44px;margin-top:6px;border:1px solid #75849f;border-radius:6px;padding:9px;font:inherit;color:inherit;background:white}input:focus,select:focus,button:focus,summary:focus{outline:3px solid #7b53d0;outline-offset:3px}button{font:inherit;font-weight:700;background:#293e78;color:white;border:0;border-radius:7px;min-height:46px;padding:12px 18px;cursor:pointer}.note{color:#46536a;font-size:.94rem}.prompt{border-left:4px solid #7b53d0;padding-left:16px}summary{cursor:pointer;padding:10px 0}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:.85rem;background:#edf0f6;padding:16px;border-radius:8px}ol{padding-left:22px;line-height:1.6}li+li{margin-top:7px}@media(max-width:600px){.fields{grid-template-columns:1fr}main{padding:20px 14px}section{padding:16px}}
+</style></head><body><main>
+<div class="eyebrow">MODERATOR WORKSHEET · LOCAL ONLY</div>
+<h1>Do the choices reach the player?</h1>
+<p>Watch an ordinary round in the single Starfall app. Keep this worksheet out of the player’s view. Fill it after observing; unknown is a valid answer. Nothing is uploaded or saved automatically.</p>
+<section><h2>Before explaining anything</h2><ol>
+<li>Let the player choose a new sky. Record a retained sky or prepared board as such.</li>
+<li>Watch the first useful clear, storm and Opal encounter. Do not point out a solution.</li>
+<li>If you ask “What do you expect that clear to change?”, record the answer <strong>before</strong> the action. Mark a neutral prompt or strategy help accurately. Pause if needed and record mixed/paused play.</li>
+<li>Afterward ask what changed their decision and why. If they had time, observe whether they actually start another sky.</li>
+</ol><p class="note">A missed choice can mean it was absent, hard to see or blocked by input. Keep those explanations separate. Use anonymous P/S IDs; keep names and contact details out of records.</p></section>
+<form id="session" autocomplete="off">
+<section><h2>Session and installed game</h2><p class="note">Check the actual installed source/build. Repository HEAD does not prove what is on the phone. Leave unknown context blank.</p><div class="fields" id="context"></div></section>
+<section><h2>Choices and consequences</h2><p class="prompt">“What do you expect that clear to change?”</p><p class="note">Assess a specific Opal choice once per record. “Spending” and “preserving” can both be deliberate. A before-action prediction is different from an explanation afterward.</p><div class="fields" id="choices"></div></section>
+<section><h2>Input, ending and another sky</h2><p class="note">Interest alone is not a replay start. No available time is not a refusal.</p><div class="fields" id="replay"></div></section>
+<button id="download" type="button">Download draft record</button>
+<p class="note" id="status" role="status">Drafts stay in this page until downloaded. Validate records with falling_sky.py before summarizing. Labels are observer-entered, not authenticated.</p>
+<details><summary>Review the JSON record</summary><pre id="preview"></pre></details>
+</form></main><script>
+'use strict';
+const contract = __STARFALL_SESSION_CONTRACT__;
+const form=document.getElementById('session');
+const labels={source_sha:'Installed source SHA',build_id:'Installed build ID',verified_install:'Installed source/build checked',evidence_kind:'Evidence kind',state:'Session state',experience:'Player familiarity',generation:'Saved rules generation',cadence:'Saved shower cadence',device_os:'Device and OS',storm:'Observed storm effect',opal_seen:'Opal encountered',opal_choice_available:'Usable Opal choice observed',opal_intent:'Intent at that choice',prediction_before_action:'Prediction recorded before acting',prediction_help:'Help before prediction',prediction_outcome:'Prediction versus actual result',replay_time:'Time for another sky',replay_action:'Actual replay choice'};
+const title=s=>s.replaceAll('_',' ').replace(/^./,c=>c.toUpperCase());
+for(const [key,value] of Object.entries(contract.blank)){
+ if(key==='schema_version')continue;
+ const group=contract.replay.includes(key)?'replay':contract.choices.includes(key)?'choices':'context';
+ const label=document.createElement('label');label.htmlFor=key;label.textContent=labels[key]||title(key);
+ const input=document.createElement(contract.enums[key]?'select':'input');input.id=key;input.name=key;
+ if(contract.enums[key])for(const option of contract.enums[key]){const node=document.createElement('option');node.value=option;node.textContent=title(option);input.append(node)}
+ else{input.type='text';input.maxLength=100}
+ input.value=value;label.append(input);document.getElementById(group).append(label);
+}
+function record(){const value={schema_version:1};for(const key of Object.keys(contract.blank))if(key!=='schema_version')value[key]=form.elements.namedItem(key).value.trim();return value}
+function preview(){document.getElementById('preview').textContent=JSON.stringify(record(),null,2)}
+form.addEventListener('input',preview);form.addEventListener('change',preview);form.addEventListener('submit',event=>event.preventDefault());preview();
+document.getElementById('download').addEventListener('click',()=>{
+ const data=record(),blob=new Blob([JSON.stringify(data,null,2)+'\n'],{type:'application/json'});
+ const url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;
+ link.download='starfall-'+(data.session_id||'draft').replace(/[^A-Za-z0-9_-]/g,'')+'.json';document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+ document.getElementById('status').textContent='Draft downloaded. Validate it before including it in a summary; missing or contradictory observations need review.';
+});
+</script></body></html>

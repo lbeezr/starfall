@@ -4,6 +4,8 @@ Use this for the current default game. The older PLAYTEST and first-playtest kit
 
 ## Current session: Opal planning under storm pressure
 
+Use the [moderator worksheet and offline recorder](../tools/playtest-results/FALLING_SKY_SESSION.md) to capture these observations. Its local summary separates installed source/settings, natural/prepared play, human/synthetic evidence and actual replay opportunities. The original 70/18 CSV schema is historical and cannot describe this game.
+
 **Status: Ready to run; no participant results.** Use the single regular Starfall app, with current Opal/storm generation and the faster V2 cadence. Start a fresh survival sky; a retained sky or same-sky replay preserves its older generation/cadence, and First Light excludes these mechanics. Record the installed source/build and available seed, balance, motion, sound, text size and device. Do not replace the player's retained round without their choice of New sky.
 
 **Question:** Do storms change which clear a player chooses, or mainly how quickly they clear? Does Opal offer a recognizable reason to choose one clear before another? The [bounded study](evidence/opal-choice-study-2026-10-17/README.md) and [native two-clear check](evidence/opal-native-planning-2026-10-17/README.md) establish possible rewards, not human interest.
