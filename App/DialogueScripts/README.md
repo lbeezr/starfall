@@ -1,4 +1,33 @@
-# Write a character conversation
+# Write Starfall copy
+
+The regular Falling Sky app uses one bundled English catalogue: [observatory-dialogue.json](observatory-dialogue.json). `scripts` owns character lines, speakers, priorities and reading duration. `copy` owns menu labels, help, results, pacing, touch feedback and accessibility wording. Wording edits stay here; Swift supplies committed facts and selects events. This is local content shipped with the app, not a remote CMS, runtime AI or a translation system.
+
+[SkyCopy](../SkyCopy.swift) provides typed interface keys. The library checks that the JSON keys exactly match that inventory. Dialogue and interface copy share strict placeholder rendering: missing, extra and brace-containing values fail validation. The editor [schema](dialogue.schema.json) and hosted `SkyDialogueTests` check content, packaging, all templates and event behavior. There is no silent fallback to an English sentence hidden in a view.
+
+**Boundary:** Debug studio labels, reset-only fixture descriptions and the original Debug orthogonal puzzle retain developer/test text in Swift. Numeric score displays and punctuation used for joins are formatting, not alternate prose stores. Do not put new regular-game instructions in a view or store.
+
+## Change interface wording
+
+Edit a value under `copy`, preserving its key and `{tokens}`. For example, `action.new` is shared by the welcome, menu and result screens. Full sentence templates allow values to move without rebuilding a sentence in Swift. Separate one/many templates handle counted phrases. Counts come from Core, including the retained Dusk rule's three/five feeds and orbit duration.
+
+A new interface message needs a `SkyCopy.Key` case and matching JSON entry; an existing message needs only a wording edit. Pass through `SkyCopy.text(.resultBlocked, values: ["column": String(column + 1)])`. Add focused tests when introducing a new condition or changing which event speaks. The current format is English-only; adding other languages needs an explicit localization design, not another dictionary pasted into a view.
+
+## Keep the cast recognizable
+
+| Speaker | Voice and production role | Example / condition |
+| --- | --- | --- |
+| Sunny | Warm, practical guide; starts the game and celebrates First Light | “Here they come! Clear matching stars to make space.” — showers started |
+| Spark | Curious, excitable observer; growth, Opals and traced clears | “You connected 5!” — a committed five-star trace |
+| Pip | Brief, dry, practical; ordinary clears, shapes and arranging | “That made room.” — a committed clear |
+| Twinkle | Gentle reassurance; pause, restore and full-sky endings | “We can stay here a while.” — automatic showers paused |
+| Nova | Unhurried, precise; forecasts and compatibility gravity guidance | “Showers are closer together now.” — actual faster phase |
+| Dusk | Mischievous appetite; explains its effects and teases after a concrete outcome | “Left those for me? Delicious.” — actually consumed stars |
+
+Tease the situation, not the player's ability. Dusk's zero-starlight reaction requires a committed drained clear; invalid taps receive actionable help. Never guess that a move was strategically bad. No taunt after restoration, from a stale callback, or because the player was slow. Advice must match current rules; no “take your time” during automatic play. Celebration never changes points or awards a multiplier.
+
+Keep one concise reaction per chosen event. Automatic showers still speak only designated transitions/outcomes; there is no chatter queue, random variant engine or gameplay RNG consumption. Explicit actions retain readable/spoken feedback. A joined forecast keeps the result's speaker; a standalone forecast uses Nova. Review the complete joined text, not only separate templates.
+
+## Change dialogue wording
 
 Edit [observatory-dialogue.json](observatory-dialogue.json), then open **Sky menu → Development → Dialogue studio** in a Debug build. Choose your script, fill any token fields, and press **Play script**. The preview uses the real bubble and portraits at the device's text size; it cannot change your round. Release builds include the shared renderer and content, without the studio route.
 
@@ -40,7 +69,7 @@ Add an object to `scripts` and keep `schemaVersion` at `1`:
 | `seconds` | Optional number from 4 through 30. Omit for player-paced reading. A multi-line script waits for Continue; a final timed line may expire. VoiceOver keeps messages visible with a Close action. |
 | `{token}` | Explicit caller-supplied text, such as `{score}`. Missing and unused values are authoring errors, as are unresolved braces. Values cannot contain braces. |
 
-Keep counts and gameplay facts in values supplied from committed state; do not put random choices, scoring, timers, save data or branching conditions into JSON. Avoid claims about a storm or changed pace unless that rule actually applies in the current game.
+Keep counts and gameplay facts in values supplied from committed state; do not put random choices, scoring, timers, save data or branching conditions into JSON. Avoid claims about a storm or changed pace unless that rule actually applies in the current game. Player-requested rule help is player-paced and reopenable; routine reactions may expire.
 
 ## Trigger it from a scenario or map
 

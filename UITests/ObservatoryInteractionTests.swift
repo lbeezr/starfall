@@ -21,14 +21,14 @@ final class ObservatoryInteractionTests: XCTestCase {
         let menu = app.buttons["experiment.settings"]
         XCTAssertGreaterThanOrEqual(menu.frame.width, 44)
         XCTAssertLessThanOrEqual(menu.frame.width, 52)
-        XCTAssertEqual(app.staticTexts["experiment.message"].label, "Sunny. Match three light side by side, or draw through five actual matching stars. Large stars count as one star, worth two light.")
+        XCTAssertEqual(app.staticTexts["experiment.message"].label, "Sunny. Tap a matching group to clear it. Small stars count as 1; grown stars count as 2. You need a total of 3. Dusk will eat 4 stars after 5 more showers with a touching star.")
         let before = app.otherElements["experiment.board"].value as? String
         capture(app, "Celestial-HUD-welcome")
         menu.tap()
         XCTAssertFalse(app.buttons["experiment.cell.0.0"].exists)
         capture(app, "Celestial-menu")
         app.skyMenuControl("experiment.help").tap()
-        XCTAssertTrue(app.staticTexts["A little starlight"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Tap a matching group"].waitForExistence(timeout: 5))
         capture(app, "Celestial-how-to-play")
         app.navigationBars.buttons["Sky menu"].tap()
         app.skyMenuControl("experiment.balance").tap()
@@ -45,7 +45,7 @@ final class ObservatoryInteractionTests: XCTestCase {
             // Hitting a native coordinate at the projected far/right cell exercises actual event dispatch.
             let back = app.buttons["experiment.cell.\(dense ? 6 : 2).6"]
             XCTAssertTrue(back.isHittable)
-            let value = Int((back.value as! String).split(separator: ",").last!.split(separator: " ")[0])!
+            let value = Int((back.value as! String).split(separator: ";").last!.split(separator: " ")[0])!
             XCTAssertGreaterThanOrEqual(value, 3)
             let point = app.coordinate(withNormalizedOffset: .zero).withOffset(CGVector(dx: back.frame.midX, dy: back.frame.midY))
             point.tap()
@@ -53,7 +53,7 @@ final class ObservatoryInteractionTests: XCTestCase {
             let front = app.buttons["experiment.cell.0.0"]
             XCTAssertTrue(front.isHittable)
             XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: front).wait(timeout: 5))
-            let second = Int((front.value as! String).split(separator: ",").last!.split(separator: " ")[0])!
+            let second = Int((front.value as! String).split(separator: ";").last!.split(separator: " ")[0])!
             XCTAssertGreaterThanOrEqual(second, 3)
             front.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
             XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "\(value+second) starlight"), object: app.staticTexts["experiment.score"]).wait(timeout: 5))
@@ -108,7 +108,7 @@ extension ObservatoryInteractionTests {
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == %@", "Responding"), object: telescope).wait(timeout: 2))
         XCTAssertEqual(app.otherElements["experiment.board"].value as? String, initial)
         let first = app.buttons["experiment.cell.0.0"]
-        let value = Int((first.value as! String).split(separator: ",").last!.split(separator: " ")[0])!
+        let value = Int((first.value as! String).split(separator: ";").last!.split(separator: " ")[0])!
         first.tap()
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "\(value) starlight"), object: app.staticTexts["experiment.score"]).wait(timeout: 5))
         capture(app,"Observatory-calm-effects")
@@ -169,7 +169,7 @@ extension ObservatoryInteractionTests {
             let back = app.buttons["experiment.cell.6.6"]
             XCTAssertGreaterThanOrEqual(back.frame.width, 44)
             XCTAssertGreaterThanOrEqual(back.frame.height, 44)
-            let value = Int((back.value as! String).split(separator: ",").last!.split(separator: " ")[0])!
+            let value = Int((back.value as! String).split(separator: ";").last!.split(separator: " ")[0])!
             back.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
             XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "\(value) starlight"), object: app.staticTexts["experiment.score"]).wait(timeout: 5))
             capture(app,"Observatory-native-orientation-\(orientation.rawValue)")
@@ -206,7 +206,7 @@ extension ObservatoryInteractionTests {
         let edge = app.buttons["experiment.cell.0.0"]
         XCTAssertGreaterThanOrEqual(edge.frame.minX, app.frame.minX)
         XCTAssertLessThanOrEqual(edge.frame.maxX, app.frame.maxX)
-        let value = Int((edge.value as! String).split(separator: ",").last!.split(separator: " ")[0])!
+        let value = Int((edge.value as! String).split(separator: ";").last!.split(separator: " ")[0])!
         edge.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "\(value) starlight"), object: app.staticTexts["experiment.score"]).wait(timeout: 5))
 
@@ -310,8 +310,8 @@ extension ObservatoryInteractionTests {
         XCTAssertEqual(outcome.label, "This sky is full")
         try vo.focus(outcome, expecting: "This sky is full")
         capture(app, "VoiceOver-largest-text-overflow")
-        try vo.advance(to: "Try this sky again", limit: 6)
-        try vo.choose(app.buttons["experiment.replay"], expecting: "Try this sky again")
+        try vo.advance(to: "Replay this sky", limit: 6)
+        try vo.choose(app.buttons["experiment.replay"], expecting: "Replay this sky")
         XCTAssertFalse(outcome.exists)
         try vo.choose(app.buttons["sky.begin"], expecting: "Begin")
         try vo.choose(app.buttons["experiment.settings"], expecting: "Sky menu")
@@ -370,7 +370,7 @@ extension ObservatoryInteractionTests {
             if outcome.exists { break }
             let next = app.buttons["experiment.next"]
             XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: next).wait(timeout: 5))
-            let legal = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND value MATCHES %@", "experiment.cell.", "([3-9]|[1-9][0-9]) starlight connected")).firstMatch
+            let legal = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND value MATCHES %@", "experiment.cell.", "([3-9]|[1-9][0-9]) toward a tap match")).firstMatch
             if legal.exists {
                 let score = app.staticTexts["experiment.score"].label
                 try vo.choose(legal, expecting: legal.label)
@@ -385,8 +385,8 @@ extension ObservatoryInteractionTests {
                 }, object: nil).wait(timeout: 5))
             }
         }
-        XCTAssertEqual(outcome.label, "First Light complete")
-        try vo.focus(outcome, expecting: "First Light complete")
+        XCTAssertEqual(outcome.label, "First Light complete!")
+        try vo.focus(outcome, expecting: "First Light complete!")
         let score = app.staticTexts["experiment.score"].label
         capture(app, "VoiceOver-First-Light-complete")
         XCUIDevice.shared.press(.home)
@@ -396,8 +396,8 @@ extension ObservatoryInteractionTests {
         vo.resetFocus()
         try vo.choose(app.buttons["sky.resume"], expecting: "View last sky")
         XCTAssertTrue(outcome.waitForExistence(timeout: 10))
-        try vo.focus(outcome, expecting: "First Light complete")
-        try vo.choose(app.buttons["experiment.replay"], expecting: "Play First Light again")
+        try vo.focus(outcome, expecting: "First Light complete!")
+        try vo.choose(app.buttons["experiment.replay"], expecting: "Replay First Light")
         try vo.choose(app.buttons["sky.begin"], expecting: "Begin")
         try vo.choose(app.buttons["experiment.settings"], expecting: "Sky menu")
         try vo.choose(app.buttons["experiment.pause"], expecting: "Pause sky")
@@ -407,7 +407,7 @@ extension ObservatoryInteractionTests {
         try vo.choose(app.buttons["experiment.settings"], expecting: "Sky menu")
         try vo.choose(app.buttons["experiment.new"], expecting: "New sky")
         XCTAssertTrue(app.buttons["sky.begin"].waitForExistence(timeout: 5))
-        XCTAssertEqual(app.staticTexts["sky.title"].label, "Let the night in.")
+        XCTAssertEqual(app.staticTexts["sky.title"].label, "Make room for the stars")
         capture(app, "VoiceOver-replayed-and-new-sky")
         #else
         throw XCTSkip("VoiceOver service requires Xcode 27")
@@ -550,7 +550,7 @@ extension ObservatoryInteractionTests {
         XCTAssertTrue(sky.buttons["experiment.next"].waitForExistence(timeout: 10))
         try vo.focus(phase, expecting: "1 lighter shower")
         try vo.choose(sky.buttons["experiment.next"], expecting: "Next shower")
-        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label CONTAINS %@", "Storm · 3 heavy showers left"), object: phase).wait(timeout: 5))
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label CONTAINS %@", "Storm: 3 heavy showers left."), object: phase).wait(timeout: 5))
         try vo.focus(phase, expecting: "Storm")
         let capture = XCTAttachment(screenshot: sky.screenshot()); capture.name = "opal-storm-actual-voiceover"
         capture.lifetime = .keepAlways; add(capture)

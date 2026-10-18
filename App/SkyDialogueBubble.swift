@@ -114,7 +114,7 @@ private struct SkySpeechShape: Shape {
                         if pausedLine != nil && !scriptPresented {
                             actions
                             if session.scriptID != nil, let retained = session.line {
-                                Button("Read \(retained.speaker.name)'s message") { session.reopen() }
+                                Button(SkyCopy.text(.actionReadMessage, values: ["speaker": retained.speaker.name])) { session.reopen() }
                                     .buttonStyle(StarfallButtonStyle(role: .quiet))
                                     .accessibilityIdentifier("sky.dialogue.reopen")
                             }
@@ -122,11 +122,11 @@ private struct SkySpeechShape: Shape {
                         else if session.hasNext || line.seconds == nil || voiceOver {
                             HStack {
                                 if session.hasNext {
-                                    Button("Continue", action: next)
+                                    Button(SkyCopy.text(.actionNextLine), action: next)
                                         .accessibilityIdentifier("sky.dialogue.next")
                                 }
                                 Spacer(minLength: 0)
-                                Button("Close") { session.dismiss() }
+                                Button(SkyCopy.text(.actionClose)) { session.dismiss() }
                                     .accessibilityIdentifier("sky.dialogue.close")
                             }
                             .buttonStyle(StarfallButtonStyle(role: .quiet))
@@ -135,7 +135,7 @@ private struct SkySpeechShape: Shape {
                 } else {
                     Button { session.reopen() } label: { SkyDialoguePortrait(speaker: line.speaker, side: 48) }
                         .buttonStyle(.plain)
-                        .accessibilityLabel("Read \(line.speaker.name)'s message")
+                        .accessibilityLabel(SkyCopy.text(.actionReadMessage, values: ["speaker": line.speaker.name]))
                         .accessibilityIdentifier("sky.dialogue.reopen")
                 }
             }

@@ -58,18 +58,18 @@ final class PacingCueUITests: XCTestCase {
         XCTAssertFalse(app.descendants(matching: .any)["sky.cadence"].firstMatch.exists)
         let initialCellFrame = app.buttons["experiment.cell.0.0"].frame
         for _ in 1...9 { advance(app) }
-        cue(app, "Faster after next shower")
+        cue(app, "Showers get faster after the next shower.")
         if !largest { XCTAssertEqual(app.buttons["experiment.cell.0.0"].frame, initialCellFrame,
             "Cue changes must not resize the scene and settle a falling shower") }
         if !largest {
             let legal = app.buttons.matching(NSPredicate(format:
                 "identifier BEGINSWITH %@ AND value MATCHES %@ AND enabled == true",
-                "experiment.cell.", "([3-9]|[1-9][0-9]) starlight connected")).firstMatch
+                "experiment.cell.", "([3-9]|[1-9][0-9]) toward a tap match")).firstMatch
             XCTAssertTrue(legal.isHittable, "Resized board must retain native touch mapping")
             legal.tap()
             XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label != %@", "0 starlight"),
                 object: app.staticTexts["experiment.score"]).wait(timeout: 5))
-            cue(app, "Faster after next shower")
+            cue(app, "Showers get faster after the next shower.")
         }
         capture(app, "pacing-warning-\(largest ? "largest" : "normal")-\(reduced ? "reduced" : "motion")")
         let menu = app.buttons["experiment.settings"]
@@ -79,12 +79,12 @@ final class PacingCueUITests: XCTestCase {
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "exists == false"),
             object: app.descendants(matching: .any)["experiment.message"].firstMatch).wait(timeout: 5))
         app.buttons["experiment.done"].tap()
-        cue(app, "Faster after next shower")
+        cue(app, "Showers get faster after the next shower.")
         advance(app)
-        cue(app, "Faster passage. Showers are closer together")
-        for _ in 1...2 { advance(app); cue(app, "Faster passage. Showers are closer together") }
+        cue(app, "Showers are closer together now.")
+        for _ in 1...2 { advance(app); cue(app, "Showers are closer together now.") }
         advance(app)
-        cue(app, "Breathing window. More time between showers")
+        cue(app, "More time between showers now.")
         if !largest { XCTAssertEqual(app.buttons["experiment.cell.0.0"].frame, initialCellFrame) }
         capture(app, "pacing-breathing-\(largest ? "largest" : "normal")-\(reduced ? "reduced" : "motion")")
         for _ in 1...3 { advance(app) }
@@ -96,7 +96,7 @@ final class PacingCueUITests: XCTestCase {
     @MainActor func testActiveForecastAndPhaseCueKeepSeparateSpace() throws {
         let app = launch(); defer { app.terminate() }
         for _ in 1...9 { advance(app) }
-        cue(app, "Faster after next shower")
+        cue(app, "Showers get faster after the next shower.")
         let cellFrame = app.buttons["experiment.cell.0.0"].frame
         app.buttons["experiment.pause"].tap()
         let forecast = app.descendants(matching: .any)["experiment.arrivalCue"].firstMatch
@@ -114,17 +114,17 @@ final class PacingCueUITests: XCTestCase {
     @MainActor func testLargestClearUsesVisibleNativeCells() throws {
         let app = launch(largest: true); defer { app.terminate() }
         for _ in 1...9 { advance(app) }
-        cue(app, "Faster after next shower")
+        cue(app, "Showers get faster after the next shower.")
         let candidates = app.buttons.matching(NSPredicate(format:
             "identifier BEGINSWITH %@ AND value MATCHES %@ AND enabled == true",
-            "experiment.cell.", "([3-9]|[1-9][0-9]) starlight connected"))
+            "experiment.cell.", "([3-9]|[1-9][0-9]) toward a tap match"))
         XCTAssertGreaterThan(candidates.count, 0, "The committed sky must retain a legal clear")
         var visible = candidates.allElementsBoundByIndex.filter { $0.isHittable }
         // Density text adds scrollable content below the board. Return to the
         // board as a player would; the timing cue must stay visible throughout.
         for _ in 0..<5 where visible.isEmpty {
             app.swipeDown()
-            cue(app, "Faster after next shower")
+            cue(app, "Showers get faster after the next shower.")
             visible = candidates.allElementsBoundByIndex.filter { $0.isHittable }
         }
         XCTAssertFalse(visible.isEmpty, "The scrolled board must offer a visible native clear")
@@ -132,7 +132,7 @@ final class PacingCueUITests: XCTestCase {
         target.tap()
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label != %@", "0 starlight"),
             object: app.staticTexts["experiment.score"]).wait(timeout: 5))
-        cue(app, "Faster after next shower")
+        cue(app, "Showers get faster after the next shower.")
         capture(app, "pacing-largest-native-clear")
     }
 }

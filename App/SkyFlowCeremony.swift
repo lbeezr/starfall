@@ -104,14 +104,14 @@ enum SkyFlowAction: Equatable { case start, firstLight, begin, resume, replay, a
 
     private var heading: some View {
         VStack(spacing: StarfallTheme.Spacing.medium) {
-            Text(kicker.uppercased())
+            Text(kicker)
                 .font(StarfallTheme.Typography.skyCaption).tracking(2)
                 .foregroundStyle(StarfallTheme.Colors.actionPrimary)
             Text(title)
                 .font(StarfallTheme.Typography.display(size: terminal ? resultTitleSize : titleSize))
                 .foregroundStyle(StarfallTheme.Ceremony.gold)
                 .accessibilityAddTraits(.isHeader)
-                .accessibilityLabel(screen == .won ? "First Light complete" : screen == .full ? "This sky is full" : title)
+                .accessibilityLabel(screen == .won ? SkyCopy.text(.flowWon) : screen == .full ? SkyCopy.text(.flowFull) : title)
                 .accessibilityIdentifier(terminal ? "experiment.outcome" : "sky.title")
                 .accessibilityValue(terminal ? "\(result?.scoreLabel ?? ""). \(screen == .full ? result?.reason ?? "" : "")" : "")
                 .accessibilityFocused($headingFocused)
@@ -129,19 +129,19 @@ enum SkyFlowAction: Equatable { case start, firstLight, begin, resume, replay, a
 
     private var kicker: String {
         switch screen {
-        case .welcome: "Starfall"
-        case .entry: challenge ? "First Light" : "An open sky"
-        case .won: "First Light · complete"
-        case .full: "A moment to begin again"
+        case .welcome: SkyCopy.text(.flowBrand)
+        case .entry: challenge ? SkyCopy.text(.flowFirstLight) : SkyCopy.text(.flowOpen)
+        case .won: SkyCopy.text(.flowComplete)
+        case .full: SkyCopy.text(.flowRoundOver)
         case .playing: ""
         }
     }
     private var title: String {
         switch screen {
-        case .welcome: "A sky of your own."
-        case .entry: challenge ? "Gather a little light." : "Let the night in."
-        case .won: "You lit the sky."
-        case .full: "This sky is full."
+        case .welcome: SkyCopy.text(.flowWelcome)
+        case .entry: challenge ? SkyCopy.text(.flowChallenge) : SkyCopy.text(.flowEntry)
+        case .won: SkyCopy.text(.flowWon)
+        case .full: SkyCopy.text(.flowFull)
         case .playing: ""
         }
     }
@@ -152,7 +152,7 @@ enum SkyFlowAction: Equatable { case start, firstLight, begin, resume, replay, a
         case .entry:
             SkyDialogueLibrary.line(challenge ? "first-light.entry" : "observatory.entry")
         case .won, .full:
-            SkyDialogueLibrary.line("ceremony.result", values: ["score": result?.scoreLabel ?? "\(welcome.score) starlight", "reason": result?.reason ?? ""])
+            SkyDialogueLibrary.line(screen == .won ? "ceremony.result" : "ceremony.full", values: ["score": result?.scoreLabel ?? SkyCopy.text(.resultScore, values: ["score": String(welcome.score)]), "reason": result?.reason ?? ""])
         case .playing: SkyDialogueLibrary.line("guide.opening")
         }
     }
@@ -191,30 +191,30 @@ enum SkyFlowAction: Equatable { case start, firstLight, begin, resume, replay, a
             switch screen {
             case .welcome:
                 if welcome.canContinue {
-                    flowButton("Continue sky", action: .resume, id: "sky.resume", primary: true)
+                    flowButton(SkyCopy.text(.actionContinue), action: .resume, id: "sky.resume", primary: true)
                 }
-                flowButton("Start a sky", action: .start, id: "sky.start", primary: !welcome.canContinue)
+                flowButton(SkyCopy.text(.actionNew), action: .start, id: "sky.start", primary: !welcome.canContinue)
                 if welcome.hasSavedSky && welcome.ended {
-                    flowButton("View last sky", action: .resume, id: "sky.resume")
+                    flowButton(SkyCopy.text(.actionViewLast), action: .resume, id: "sky.resume")
                 }
-                flowButton("Try First Light", action: .firstLight, id: "sky.firstLight")
+                flowButton(SkyCopy.text(.actionFirstLight), action: .firstLight, id: "sky.firstLight")
                 Button { action(.preferences) } label: {
-                    Label("Settings & help", systemImage: "slider.horizontal.3")
+                    Label(SkyCopy.text(.menuSettings), systemImage: "slider.horizontal.3")
                 }
                 .buttonStyle(StarfallButtonStyle(role: .quiet, expands: true))
                 .accessibilityIdentifier("sky.preferences").accessibilityFocused($preferencesFocused)
             case .entry:
-                flowButton("Begin", action: .begin, id: "sky.begin", primary: true)
-                flowButton("Back to Observatory", action: .home, id: "sky.home")
+                flowButton(SkyCopy.text(.actionBegin), action: .begin, id: "sky.begin", primary: true)
+                flowButton(SkyCopy.text(.actionHome), action: .home, id: "sky.home")
             case .won, .full:
                 if screen == .won {
-                    flowButton("Start another sky", action: .another, id: "experiment.new", primary: true)
-                    flowButton("Play First Light again", action: .replay, id: "experiment.replay")
+                    flowButton(SkyCopy.text(.actionNew), action: .another, id: "experiment.new", primary: true)
+                    flowButton(SkyCopy.text(.actionReplayFirstLight), action: .replay, id: "experiment.replay")
                 } else {
-                    flowButton(challenge ? "Try First Light again" : "Try this sky again", action: .replay, id: "experiment.replay", primary: true)
-                    flowButton("Start a fresh sky", action: .another, id: "experiment.new")
+                    flowButton(challenge ? SkyCopy.text(.actionReplayFirstLight) : SkyCopy.text(.actionReplay), action: .replay, id: "experiment.replay", primary: true)
+                    flowButton(SkyCopy.text(.actionNew), action: .another, id: "experiment.new")
                 }
-                flowButton("Back to Observatory", action: .home, id: "sky.home")
+                flowButton(SkyCopy.text(.actionHome), action: .home, id: "sky.home")
             case .playing: EmptyView()
             }
         }

@@ -28,6 +28,9 @@ Dusk now offers a space-versus-reward choice: five feeding showers consume its g
 
 The retained [technique roster](design/STAR_TECHNIQUES.md) is reconciled with current main, including v6 saves, Dusk feeding, responsive columns and current presentation. Core, hosted, native, layout and animation checks pass. Merged and delivered through the guarded updater with unchanged saved bytes; observe human play next. [Source-bound status](evidence/technique-current-main-2026-10-18/README.md).
 
+
+[Copy rewrite](evidence/copy-rewrite-2026-10-18/README.md) integrates clearer instructions, six distinct character voices and event-based celebrations/advice/teasing through the shared local catalogue. Human first-play comprehension and reaction frequency remain to be assessed.
+
 ## Current mechanics integration — October 17, 2026
 
 The user approved the shared white connector and storm phases for the regular app, then selected the round Opal Orb and requested soft motion. [Current contract](design/WHITE_STAR_AND_STORMS.md) and [main-based integration evidence](evidence/opal-main-integration-2026-10-17/README.md) supersede the earlier research-only adoption boundary below. Preserve the independently adopted announced timing cycle. Development acceptance passed; Opal/storm integration merged in PR #37, with compiler compatibility in #39 and direct input/cadence polish in #40. The [bounded choice study](evidence/opal-choice-study-2026-10-17/README.md) and [native two-clear comparison](evidence/opal-native-planning-2026-10-17/README.md) establish situational scoring choices; actual combined human play and replay preference remain open. Pocketed alternate silhouettes carry no new mechanic or progression commitment.

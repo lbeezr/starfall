@@ -112,7 +112,7 @@ final class SkyTechniqueInteractionTests: XCTestCase {
         tap("experiment.cell.0.0",app); score(3,app)
         XCTAssertTrue(app.buttons["experiment.cell.0.3"].label.hasPrefix("Empty"))
         XCTAssertTrue(app.buttons["experiment.cell.5.0"].label.hasPrefix("Empty"))
-        XCTAssertEqual(app.buttons["experiment.cell.0.5"].value as? String,"4 starlight connected")
+        XCTAssertEqual(app.buttons["experiment.cell.0.5"].value as? String,"4 toward a tap match")
         capture(app,"technique-rescue-after")
     }
 

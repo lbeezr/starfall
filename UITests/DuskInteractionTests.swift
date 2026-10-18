@@ -21,26 +21,26 @@ final class DuskInteractionTests: XCTestCase {
     @MainActor func testFiveFeedsCollapseAndRestoreCommittedResult() {
         let app = launch("unfed"); defer { app.terminate() }
         let dusk = app.buttons["experiment.cell.0.3"], next = app.buttons["experiment.next"]
-        XCTAssertTrue(dusk.label.contains("0 of 5 feeds"))
+        XCTAssertTrue(dusk.label.contains("fed 0 of 5 times"))
         XCTAssertFalse(app.staticTexts["dusk.cue"].exists)
         XCTAssertFalse(app.buttons["technique.arrange"].exists)
-        XCTAssertTrue(app.staticTexts["experiment.message"].label.contains("5 feeding showers left"))
+        XCTAssertTrue(app.staticTexts["experiment.message"].label.contains("5 more showers with a touching star"))
         XCTAssertTrue(app.buttons["experiment.cell.0.2"].label.contains("drained by Dusk"))
         capture(app,"dusk-unfed")
         ready(next); next.tap(); ready(next)
-        XCTAssertTrue(dusk.label.contains("1 of 5 feeds"))
+        XCTAssertTrue(dusk.label.contains("fed 1 of 5 times"))
         next.tap(); ready(next)
-        XCTAssertTrue(dusk.label.contains("2 of 5 feeds"))
+        XCTAssertTrue(dusk.label.contains("fed 2 of 5 times"))
         next.tap(); ready(next)
-        XCTAssertTrue(dusk.label.contains("3 of 5 feeds"))
+        XCTAssertTrue(dusk.label.contains("fed 3 of 5 times"))
         next.tap(); ready(next)
-        XCTAssertTrue(dusk.label.contains("4 of 5 feeds"))
-        XCTAssertTrue(app.staticTexts["experiment.message"].label.contains("1 feeding shower left"))
+        XCTAssertTrue(dusk.label.contains("fed 4 of 5 times"))
+        XCTAssertTrue(app.staticTexts["experiment.message"].label.contains("1 more shower with a touching star"))
         capture(app,"dusk-imminent")
         app.buttons["experiment.settings"].tap()
         ready(app.buttons["experiment.done"]); app.buttons["experiment.done"].tap()
         XCUIDevice.shared.press(.home); app.activate(); ready(next)
-        XCTAssertTrue(dusk.label.contains("4 of 5 feeds"))
+        XCTAssertTrue(dusk.label.contains("fed 4 of 5 times"))
         next.tap(); ready(next)
         XCTAssertFalse(dusk.label.hasPrefix("Dusk"))
         XCTAssertEqual(app.staticTexts["experiment.score"].label,"0 starlight")
@@ -90,7 +90,7 @@ final class DuskInteractionTests: XCTestCase {
         let cue = app.staticTexts["experiment.message"], next = app.buttons["experiment.next"]
         for _ in 0..<5 { if cue.isHittable && cue.frame.maxY <= app.frame.maxY { break }; app.swipeUp() }
         XCTAssertTrue(cue.isHittable)
-        XCTAssertTrue(cue.label.contains("1 feeding shower left"))
+        XCTAssertTrue(cue.label.contains("1 more shower with a touching star"))
         XCTAssertLessThanOrEqual(cue.frame.maxY,app.frame.maxY)
         capture(app,"dusk-imminent-largest-reduced")
         for _ in 0..<8 {

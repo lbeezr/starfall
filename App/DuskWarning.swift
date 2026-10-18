@@ -14,16 +14,16 @@ struct DuskWarning: Equatable {
         }).first else { return nil }
         let count = game.duskTargets(at: source).count
         let left = game.duskRule.feedingShowers - (game.gem(at: source)?.duskFeeds ?? 0)
-        text = count == 0 ? "Dusk waits for a touching star · \(left) feeds left"
-            : "Dusk · \(left) feeding \(left == 1 ? "shower" : "showers") left · \(count) \(count == 1 ? "star" : "stars") at risk"
+        text = count == 0 ? SkyCopy.text(.duskWaiting)
+            : SkyCopy.text(.duskWarning, values: ["stars": SkyCopy.count(.duskStarsOne, .duskStarsMany, count), "showers": SkyCopy.count(.duskShowersOne, .duskShowersMany, left)])
     }
 
     static func consequence(game: FallingSky, cell: Cell) -> String {
         guard game.gem(at: cell)?.isDark == true, game.duskRule != .legacy else { return "" }
         let targets = game.duskTargets(at: cell).sorted { $0.row == $1.row ? $0.column < $1.column : $0.row < $1.row }
         let left = game.duskRule.feedingShowers - (game.gem(at: cell)?.duskFeeds ?? 0)
-        if targets.isEmpty { return "Waiting for a touching star. Feeding is paused, with \(left) feeds left." }
-        let positions = targets.map { "row \(7-$0.row) column \($0.column+1)" }.joined(separator: "; ")
-        return "Collapses after \(left) more feeding \(left == 1 ? "shower" : "showers"), consuming \(positions), then disappears. No points."
+        if targets.isEmpty { return SkyCopy.text(.duskWaiting) }
+        let positions = targets.map { SkyCopy.position(row: 7-$0.row, column: $0.column+1) }.joined(separator: "; ")
+        return SkyCopy.text(.duskConsequence, values: ["showers": SkyCopy.count(.duskShowersOne, .duskShowersMany, left), "positions": positions])
     }
 }

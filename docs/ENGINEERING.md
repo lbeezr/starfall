@@ -265,6 +265,11 @@ The [current-main celebration integration](evidence/starlight-celebrations-2026-
 The [missing-award fix](evidence/starlight-celebrations-2026-10-18/AWARD_VISIBILITY_FIX.md) corrects nested header registration replacing the score anchor. Store receipts alone did not prove rendering: retain the hosted anchor-propagation regression, and close visual acceptance with an actual +N/collection sequence before treating the choreography as verified.
 
 
+## Copy ownership and acceptance — October 18, 2026
+
+Regular Falling Sky wording now belongs to the bundled dialogue/interface catalogue, with typed interface keys and shared strict templates. [Authoring contract](../App/DialogueScripts/README.md) and [verification](evidence/copy-rewrite-2026-10-18/README.md). Trigger: the next content addition must use that catalogue; the next human playtest should check first-play comprehension, teasing frequency and whether players distinguish heavy from faster showers. English is the only authored language. Before adding a locale, design resource selection, plural rules and accessible layouts; do not imply the English JSON already provides localization.
+
+`AppTests/FallingSkyStoreTests.swift` is about 1,210 lines. This batch updates copy-sensitive expectations only; extracting tests alongside changed expected wording would make failures harder to attribute. Trigger: the next store behavior test addition. Extract dialogue/pacing suites into cohesive test files with explicit target membership, retain shared recorder/clock helpers, and compare discovered/executed test counts before and after.
 ## Native calibration test organization — October 18, 2026
 
 `FallingSkyInteractionTests.swift` is 1,150 lines after adding fresh automatic samples and readiness diagnostics and was reviewed for separation. This batch retains its existing private native start/score/capture helpers and selectors, avoiding a structural move during harness/source reconciliation. Trigger: the next new scenario that would otherwise extend this general file, or a direct edit of its calibration helpers. Extract cohesive native board helpers and move pacing/calibration samples into a focused target-member file; preserve selector discovery, rerun the affected native cases and verify test target membership. No production file or framework is added for this organization follow-up.

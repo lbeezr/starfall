@@ -15,10 +15,10 @@ struct StarlightCelebration: Equatable, Identifiable {
     var title: String? {
         switch level {
         case .ordinary: nil
-        case .brilliant: "BRILLIANT!"
-        case .constellation: "CONSTELLATION!"
-        case .recipe(let shape): shape == .square ? "SQUARE!" : "CROSS!"
-        case .relay(let depth): "\(depth)-CLEAR RELAY!"
+        case .brilliant: SkyCopy.text(.celebrationBrilliant)
+        case .constellation: SkyCopy.text(.celebrationConstellation)
+        case .recipe(let shape): shape == .square ? SkyCopy.text(.celebrationSquare) : SkyCopy.text(.celebrationCross)
+        case .relay(let depth): SkyCopy.text(.celebrationRelay, values: ["count": String(depth)])
         }
     }
 

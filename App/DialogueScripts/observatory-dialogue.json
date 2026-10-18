@@ -4,7 +4,14 @@
   "scripts": [
     {
       "id": "guide.technique",
-      "lines": [{"id":"guide.technique.1","speaker":"sunny","text":"{detail}","priority":"routine"}]
+      "lines": [
+        {
+          "id": "guide.technique.1",
+          "speaker": "pip",
+          "text": "{detail}",
+          "priority": "routine"
+        }
+      ]
     },
     {
       "id": "guide.opening",
@@ -12,7 +19,7 @@
         {
           "id": "guide.opening.1",
           "speaker": "sunny",
-          "text": "Match three light side by side, or draw through five actual matching stars. Large stars count as one star, worth two light.",
+          "text": "Tap a matching group to clear it. Small stars count as 1; grown stars count as 2. You need a total of 3.",
           "priority": "help"
         }
       ]
@@ -22,8 +29,8 @@
       "lines": [
         {
           "id": "guide.restore.1",
-          "speaker": "sunny",
-          "text": "Your sky is paused. Resume when you're ready.",
+          "speaker": "twinkle",
+          "text": "Your sky is waiting. Automatic showers are paused until you tap Resume sky.",
           "priority": "help"
         }
       ]
@@ -34,9 +41,8 @@
         {
           "id": "guide.dark-help.1",
           "speaker": "sunny",
-          "text": "Clear a matching group beside the dark star to dissolve it.",
-          "priority": "help",
-          "seconds": 8
+          "text": "Clear a matching group directly beside the dark star to remove it.",
+          "priority": "help"
         }
       ]
     },
@@ -46,9 +52,8 @@
         {
           "id": "guide.match-help.1",
           "speaker": "sunny",
-          "text": "Match three light side by side, or five actual stars linked sideways or diagonally. Large stars count as one star, worth two light.",
-          "priority": "help",
-          "seconds": 8
+          "text": "Tap matching stars connected up, down, left or right. Small stars count as 1, grown stars as 2. You need a total of 3.",
+          "priority": "help"
         }
       ]
     },
@@ -57,8 +62,8 @@
       "lines": [
         {
           "id": "guide.paused.1",
-          "speaker": "sunny",
-          "text": "Sky paused. Clear at your pace or call the next shower.",
+          "speaker": "twinkle",
+          "text": "We can stay here a while. Automatic showers are paused; keep clearing or tap Next shower.",
           "priority": "help"
         }
       ]
@@ -69,7 +74,7 @@
         {
           "id": "guide.started.1",
           "speaker": "sunny",
-          "text": "Clear matching stars before the columns fill.",
+          "text": "Here they come! Clear matching stars to make space.",
           "priority": "routine",
           "seconds": 6
         }
@@ -81,7 +86,7 @@
         {
           "id": "guide.won.1",
           "speaker": "sunny",
-          "text": "First Light complete! {score} starlight collected. Replay it or start a new sky.",
+          "text": "First Light complete! You collected {score} starlight. Nicely done.",
           "priority": "outcome"
         }
       ]
@@ -91,8 +96,8 @@
       "lines": [
         {
           "id": "guide.full.1",
-          "speaker": "sunny",
-          "text": "There was no room for the next star. {score} starlight collected.",
+          "speaker": "twinkle",
+          "text": "No room for the next star. You collected {score} starlight. Ready for another sky?",
           "priority": "outcome"
         }
       ]
@@ -102,8 +107,8 @@
       "lines": [
         {
           "id": "guide.clear.1",
-          "speaker": "sunny",
-          "text": "+{score} starlight. A little more room to breathe.",
+          "speaker": "pip",
+          "text": "+{score} starlight. That made room.",
           "priority": "routine",
           "seconds": 5
         }
@@ -114,8 +119,8 @@
       "lines": [
         {
           "id": "guide.dissolved.1",
-          "speaker": "sunny",
-          "text": "+{score} starlight. {dark} dissolved.",
+          "speaker": "pip",
+          "text": "+{score} starlight. {dark} removed. One less thing in the way.",
           "priority": "help",
           "seconds": 6
         }
@@ -127,7 +132,7 @@
         {
           "id": "guide.dark-arrival.1",
           "speaker": "sunny",
-          "text": "A dark star blocks nearby growth. Clear beside it to dissolve it.",
+          "text": "A dark star stops nearby stars from growing. Clear a matching group directly beside it to remove it.",
           "priority": "help",
           "seconds": 8
         }
@@ -138,8 +143,8 @@
       "lines": [
         {
           "id": "guide.growth.1",
-          "speaker": "sunny",
-          "text": "{growth} — worth 2 when cleared.",
+          "speaker": "spark",
+          "text": "Oh! {growth}. Grown stars count as 2 toward a tap match.",
           "priority": "routine",
           "seconds": 6
         }
@@ -150,8 +155,8 @@
       "lines": [
         {
           "id": "guide.arrival.1",
-          "speaker": "sunny",
-          "text": "{arrival}. Make room for the next shower.",
+          "speaker": "spark",
+          "text": "{arrival}. What can we connect?",
           "priority": "routine",
           "seconds": 5
         }
@@ -163,7 +168,7 @@
         {
           "id": "guide.replay.1",
           "speaker": "sunny",
-          "text": "Same sky, a fresh start. Start when you're ready.",
+          "text": "Same starting sky, another try. Tap Start sky when you’re ready.",
           "priority": "help"
         }
       ]
@@ -174,7 +179,7 @@
         {
           "id": "guide.new.1",
           "speaker": "sunny",
-          "text": "A new sky. Start when you're ready.",
+          "text": "A fresh sky. Tap Start sky when you’re ready.",
           "priority": "help"
         }
       ]
@@ -185,7 +190,7 @@
         {
           "id": "guide.first-light.1",
           "speaker": "sunny",
-          "text": "Collect 18 starlight to complete First Light. Start the sky or call a shower.",
+          "text": "Collect 18 starlight before a column fills. Tap Start sky to begin.",
           "priority": "help"
         }
       ]
@@ -196,7 +201,7 @@
         {
           "id": "guide.balance.1",
           "speaker": "sunny",
-          "text": "Balance updated. Your sky is ready when you are.",
+          "text": "Settings updated. Your board and next shower stay the same.",
           "priority": "help",
           "seconds": 6
         }
@@ -208,7 +213,7 @@
         {
           "id": "observatory.welcome.1",
           "speaker": "sunny",
-          "text": "A little wonder. A little room to breathe.",
+          "text": "Welcome! Clear matching stars to make space for more.",
           "priority": "help"
         }
       ]
@@ -219,7 +224,7 @@
         {
           "id": "observatory.entry.1",
           "speaker": "sunny",
-          "text": "Clear matching stars. Make room for more.",
+          "text": "Clear matching stars to make space for each shower. The round ends when an arriving star has nowhere to land.",
           "priority": "help"
         }
       ]
@@ -230,7 +235,7 @@
         {
           "id": "first-light.entry.1",
           "speaker": "sunny",
-          "text": "Gather 18 starlight before the sky fills.",
+          "text": "Collect 18 starlight before a column fills. A short challenge, one sky at a time.",
           "priority": "help"
         }
       ]
@@ -241,7 +246,7 @@
         {
           "id": "sky.won.1",
           "speaker": "sunny",
-          "text": "{score} starlight, gathered by you.",
+          "text": "First Light complete! You collected {score} starlight.",
           "priority": "outcome"
         }
       ]
@@ -251,8 +256,8 @@
       "lines": [
         {
           "id": "sky.full.1",
-          "speaker": "sunny",
-          "text": "{score} starlight gathered. Every sky tells a different story.",
+          "speaker": "twinkle",
+          "text": "No room for the next star. You collected {score} starlight.",
           "priority": "outcome"
         }
       ]
@@ -263,37 +268,37 @@
         {
           "id": "studio.sunny",
           "speaker": "sunny",
-          "text": "Welcome to the Observatory. I'll help you find your way.",
+          "text": "Let's make some room. Tap a matching group to clear it.",
           "priority": "help"
         },
         {
           "id": "studio.spark",
           "speaker": "spark",
-          "text": "Look up! There's always something to discover.",
+          "text": "Oh! That one's grown. It counts as 2 toward a tap match.",
           "priority": "help"
         },
         {
           "id": "studio.pip",
           "speaker": "pip",
-          "text": "A little room makes a big difference.",
+          "text": "That made room. Efficient.",
           "priority": "help"
         },
         {
           "id": "studio.twinkle",
           "speaker": "twinkle",
-          "text": "Take your time. Every little light counts.",
+          "text": "Showers paused? We can stay here a while.",
           "priority": "help"
         },
         {
           "id": "studio.nova",
           "speaker": "nova",
-          "text": "A quieter moment. Let's enjoy it.",
+          "text": "Watch the forecast. A heavy shower brings more stars; faster showers leave less time.",
           "priority": "help"
         },
         {
           "id": "studio.dusk",
           "speaker": "dusk",
-          "text": "Even the dark has a place in the sky.",
+          "text": "Left those for me? Delicious. Next time, clear beside me before I eat.",
           "priority": "help"
         }
       ]
@@ -314,10 +319,9 @@
       "lines": [
         {
           "id": "guide.hole-help.1",
-          "speaker": "sunny",
-          "text": "Clear a matching group containing a captive to close the hole.",
-          "priority": "help",
-          "seconds": 8
+          "speaker": "nova",
+          "text": "Clear a matching group that includes a trapped star. The hole will close and free the others.",
+          "priority": "help"
         }
       ]
     },
@@ -326,10 +330,9 @@
       "lines": [
         {
           "id": "guide.magnet-help.1",
-          "speaker": "sunny",
-          "text": "Clear beside an attraction field to dispel it, or clear between two fields to form a hole.",
-          "priority": "help",
-          "seconds": 8
+          "speaker": "spark",
+          "text": "Clear a group beside a field to remove it. Clear between two fields to bring them together and form a hole.",
+          "priority": "help"
         }
       ]
     },
@@ -338,10 +341,9 @@
       "lines": [
         {
           "id": "guide.opal-help.1",
-          "speaker": "sunny",
-          "text": "Start on a colored star. The Opal Orb can join that color’s match or constellation and is spent when cleared.",
-          "priority": "help",
-          "seconds": 8
+          "speaker": "spark",
+          "text": "That white orb can join any one color. Start on a colored star; the orb clears with its matching group or traced stars.",
+          "priority": "help"
         }
       ]
     },
@@ -350,8 +352,8 @@
       "lines": [
         {
           "id": "guide.opal-arrival.1",
-          "speaker": "sunny",
-          "text": "An Opal Orb arrived. Start on a colored star to include it in that family’s match or constellation. Clearing spends the orb.",
+          "speaker": "spark",
+          "text": "An Opal Orb! It can join any one color. Start your match or trace on a colored star.",
           "priority": "help",
           "seconds": 8
         }
@@ -362,8 +364,8 @@
       "lines": [
         {
           "id": "guide.magnet-arrival.1",
-          "speaker": "sunny",
-          "text": "Attraction fields formed. Clear their middle to form a hole, or clear beside an isolated field to dispel it.",
+          "speaker": "spark",
+          "text": "Two fields can make a hole. Clear the stars between them to bring them together.",
           "priority": "help",
           "seconds": 8
         }
@@ -374,8 +376,8 @@
       "lines": [
         {
           "id": "guide.orbit.1",
-          "speaker": "sunny",
-          "text": "Orbit: {windows} windows left. Clear a captive to release the others.",
+          "speaker": "nova",
+          "text": "{release} Clear a matching group with a trapped star to free the others sooner.",
           "priority": "help",
           "seconds": 8
         }
@@ -386,8 +388,8 @@
       "lines": [
         {
           "id": "guide.release.1",
-          "speaker": "sunny",
-          "text": "The hole closed. Its stars are free.",
+          "speaker": "twinkle",
+          "text": "There they are. The hole closed and its stars are free.",
           "priority": "help",
           "seconds": 8
         }
@@ -423,7 +425,7 @@
         {
           "id": "timing.combined.1",
           "speaker": "nova",
-          "text": "{phase}. {cadence}",
+          "text": "{phase} {cadence}",
           "priority": "warning",
           "seconds": 10
         }
@@ -435,7 +437,7 @@
         {
           "id": "ceremony.welcome.1",
           "speaker": "sunny",
-          "text": "A little wonder. A little room to breathe. {summary}",
+          "text": "Welcome! Clear matching stars to make space for each shower. {summary}",
           "priority": "help"
         }
       ]
@@ -446,7 +448,7 @@
         {
           "id": "ceremony.result.1",
           "speaker": "sunny",
-          "text": "{score}. {reason}",
+          "text": "{reason} {score}. Nicely done!",
           "priority": "outcome"
         }
       ]
@@ -468,10 +470,9 @@
       "lines": [
         {
           "id": "guide.dusk-help.1",
-          "speaker": "sunny",
-          "text": "Clear a matching group beside Dusk to dissolve it, or let it feed for five showers to swallow touching stars for space. Gray stars still match but score zero.",
-          "priority": "help",
-          "seconds": 8
+          "speaker": "dusk",
+          "text": "I turn stars beside me gray. They earn no starlight. Clear a matching group beside me to send me off. After {feeds} feeding showers, I eat touching stars.",
+          "priority": "help"
         }
       ]
     },
@@ -480,8 +481,8 @@
       "lines": [
         {
           "id": "guide.dusk-arrival.1",
-          "speaker": "sunny",
-          "text": "Dusk drains touching stars. After five feeding showers, it swallows them for space, without points. Clear beside it to save their light.",
+          "speaker": "dusk",
+          "text": "Room for one more? Stars directly beside me turn gray and earn no starlight. Clear a matching group beside me to send me off.",
           "priority": "help",
           "seconds": 8
         }
@@ -492,8 +493,8 @@
       "lines": [
         {
           "id": "guide.dusk-collapse.1",
-          "speaker": "sunny",
-          "text": "Dusk swallowed {stars} stars for space. No starlight was earned. The remaining stars settle before this shower arrives.",
+          "speaker": "dusk",
+          "text": "Left those for me? Delicious. {swallowed} No starlight earned.",
           "priority": "help",
           "seconds": 8
         }
@@ -504,10 +505,69 @@
       "lines": [
         {
           "id": "guide.dusk-growth.1",
-          "speaker": "sunny",
-          "text": "{growth}. Gray stars still match and grow, but score zero until Dusk is gone.",
+          "speaker": "spark",
+          "text": "{growth}! Gray stars still count toward matches, but earn no starlight while Dusk drains them.",
           "priority": "help",
           "seconds": 8
+        }
+      ]
+    },
+    {
+      "id": "ceremony.full",
+      "lines": [
+        {
+          "id": "ceremony.full.1",
+          "speaker": "twinkle",
+          "text": "{reason} {score}. Ready for another sky?",
+          "priority": "outcome"
+        }
+      ]
+    },
+    {
+      "id": "guide.gray-clear",
+      "lines": [
+        {
+          "id": "guide.gray-clear.1",
+          "speaker": "dusk",
+          "text": "No starlight that time. I got there first. You cleared me away, though.",
+          "priority": "help",
+          "seconds": 8
+        }
+      ]
+    },
+    {
+      "id": "guide.constellation",
+      "lines": [
+        {
+          "id": "guide.constellation.1",
+          "speaker": "spark",
+          "text": "You connected {stars}! +{score} starlight. Only your traced stars cleared.",
+          "priority": "routine",
+          "seconds": 6
+        }
+      ]
+    },
+    {
+      "id": "guide.recipe",
+      "lines": [
+        {
+          "id": "guide.recipe.1",
+          "speaker": "pip",
+          "text": "{shape} cleared. +{score} starlight. Neat fit.",
+          "priority": "routine",
+          "seconds": 6
+        }
+      ]
+    },
+    {
+      "id": "guide.relay",
+      "lines": [
+        {
+          "id": "guide.relay.1",
+          "speaker": "pip",
+          "text": "+{score} starlight. {depth}-clear relay. One clear set up the next.",
+          "priority": "routine",
+          "seconds": 6
         }
       ]
     },
@@ -515,5 +575,222 @@
       "id": "guide.input",
       "lines": [{ "id": "guide.input.1", "speaker": "spark", "text": "{detail}", "priority": "help" }]
     }
-  ]
+  ],
+  "copy": {
+    "action.start": "Start sky",
+    "action.resume": "Resume sky",
+    "action.pause": "Pause sky",
+    "action.next": "Next shower",
+    "action.new": "New sky",
+    "action.replay": "Replay this sky",
+    "action.continue": "Continue sky",
+    "action.viewLast": "View last sky",
+    "action.firstLight": "Try First Light",
+    "action.replayFirstLight": "Replay First Light",
+    "action.begin": "Begin",
+    "action.home": "Back to Observatory",
+    "action.done": "Done",
+    "action.cancel": "Cancel",
+    "action.close": "Close",
+    "action.nextLine": "Continue",
+    "action.readMessage": "Read {speaker}’s message",
+    "action.arrange": "Arrange stars",
+    "action.finishArrange": "Finish arranging",
+    "action.arrangeStar": "Arrange this star",
+    "action.traceAdd": "Add to constellation",
+    "action.traceRelease": "Release constellation",
+    "action.traceCancel": "Cancel constellation",
+    "menu.title": "Sky menu",
+    "menu.settings": "Settings & help",
+    "menu.help": "How to play",
+    "menu.balance": "Sky settings",
+    "menu.observatory": "Moonlit Observatory",
+    "menu.explore": "Play & settings",
+    "menu.firstLight": "First Light · 18 starlight",
+    "menu.firstLightHint": "Shows the challenge before you choose Begin",
+    "menu.hint": "Pause, settings and how to play",
+    "preferences.title": "Sound & motion",
+    "preferences.sound": "Sound",
+    "preferences.haptics": "Haptics",
+    "preferences.calm": "Calm effects",
+    "balance.title": "Adjust your sky",
+    "balance.paceDescription": "Time between showers after the opening",
+    "balance.pace": "Shower pace",
+    "balance.dark": "Dark stars",
+    "balance.reset": "Reset sky settings",
+    "balance.explanation": "Changes keep your board and next shower. Existing dark stars stay. Replay this sky to restart with these settings.",
+    "balance.gentle": "Gentle · 6 seconds",
+    "balance.steady": "Steady · 4 seconds",
+    "balance.brisk": "Brisk · changing pace",
+    "balance.none": "None",
+    "balance.occasional": "Occasional",
+    "balance.regular": "Regular",
+    "balance.frequent": "Frequent",
+    "balance.noDark": "No new dark stars after the next shower.",
+    "balance.darkFrequency": "One dark star every {minimum}–{maximum} showers. A new sky gets its first dark star in shower {maximum}.",
+    "flow.brand": "STARFALL",
+    "flow.open": "OPEN SKY",
+    "flow.firstLight": "FIRST LIGHT",
+    "flow.complete": "CHALLENGE COMPLETE",
+    "flow.roundOver": "ROUND OVER",
+    "flow.welcome": "Welcome to the Observatory",
+    "flow.entry": "Make room for the stars",
+    "flow.challenge": "Collect 18 starlight",
+    "flow.won": "First Light complete!",
+    "flow.full": "This sky is full",
+    "flow.preparing": "Preparing your sky…",
+    "result.score": "{score} starlight collected",
+    "result.challengeScore": "{score} of {target} starlight collected",
+    "result.won": "First Light complete!",
+    "result.blocked": "Column {column} had no room for the next star.",
+    "result.full": "There was no room for the next star.",
+    "result.announcement": "{reason} {score}.",
+    "welcome.open": "Open sky",
+    "welcome.challenge": "First Light",
+    "welcome.complete": "Complete",
+    "welcome.full": "Sky full",
+    "welcome.paused": "Automatic showers paused",
+    "welcome.running": "Automatic showers",
+    "welcome.summary": "{mode} · {score} · {state}",
+    "welcome.target": "{score} of {target} starlight",
+    "welcome.score": "{score} starlight",
+    "phase.lastCalm": "1 lighter shower before the storm.",
+    "phase.calm": "{count} lighter showers before the storm.",
+    "phase.stormOne": "Storm: 1 heavy shower left.",
+    "phase.stormMany": "Storm: {count} heavy showers left.",
+    "cadence.warning": "Showers get faster after the next shower.",
+    "cadence.fasterTitle": "Faster showers",
+    "cadence.faster": "Showers are closer together now.",
+    "cadence.slowerTitle": "More time between showers",
+    "cadence.slower": "More time between showers now.",
+    "status.paused": "Automatic showers paused",
+    "status.arriving": "Stars arriving",
+    "status.approaching": "Shower approaching",
+    "status.flowing": "Next shower on its way",
+    "status.settling": "Stars settling…",
+    "event.growthOne": "A star grew",
+    "event.growthMany": "{count} stars grew",
+    "event.arrivalOne": "One star arrived",
+    "event.arrivalMany": "{count} stars arrived",
+    "event.dark": "Dark star",
+    "event.darks": "Dark stars",
+    "event.dusk": "Dusk",
+    "event.dusks": "{count} Dusk stars",
+    "event.eatenOne": "I swallowed 1 star.",
+    "event.eatenMany": "I swallowed {count} stars.",
+    "orbit.releaseOne": "The hole releases its stars after 1 more shower.",
+    "orbit.releaseMany": "The hole releases its stars after {count} more showers.",
+    "dusk.waiting": "Dusk is waiting for a touching star. Feeding is paused.",
+    "dusk.warning": "Dusk will eat {stars} after {showers} with a touching star.",
+    "dusk.starsOne": "1 star",
+    "dusk.starsMany": "{count} stars",
+    "dusk.showersOne": "1 more shower",
+    "dusk.showersMany": "{count} more showers",
+    "dusk.consequence": "After {showers} with a touching star, Dusk swallows the stars at {positions} and disappears. No starlight is earned.",
+    "dusk.label": "Dusk, fed {fed} of {feeds} times, {position}. {consequence}",
+    "dusk.gray": "Gray, drained by Dusk: earns no starlight but still matches.",
+    "dusk.blocked": "Growth blocked by a dark star.",
+    "help.tapTitle": "Tap a matching group",
+    "help.tap": "Tap matching stars connected up, down, left or right. Small stars count as 1 and grown stars as 2. You need a total of 3 to clear the group.",
+    "help.identity": "A grown star and a matching small star are enough. Match by color, shape and character. Small stars normally earn 1 starlight; grown stars earn 2. Gray stars earn none.",
+    "help.traceTitle": "Draw a constellation",
+    "help.trace": "Drag through 5 or more matching stars, then lift your finger. Only the stars you trace will clear. Each star must touch the previous star, including diagonally.",
+    "help.branch": "You can retrace your path to branch out. Each star counts once, even when grown. Leave the board to cancel. In Open sky, a four-star square can also clear as a recipe.",
+    "help.accessibleTrace": "With VoiceOver, use Add to constellation on each star, then Release constellation. Use Cancel constellation to start over.",
+    "help.showerTitle": "Make space for showers",
+    "help.opening": "New skies begin with a few quick showers. You can clear stars as they settle. Your chosen shower pace follows the opening.",
+    "help.forecast": "The trail shows the stars in the next shower. The round ends when an arriving star has nowhere to land. Clearing stars does not reset the shower countdown.",
+    "help.growth": "When a matching star lands on a small star, that star grows. A grown star cannot grow again; the next star stacks above it.",
+    "help.opalTitle": "Opal Orb",
+    "help.opal": "The round white Opal Orb can join one matching color. Start a tap match or trace on a colored star to include it. The orb counts as 1, never grows, and disappears when cleared. It cannot connect different colors in one clear.",
+    "help.stormTitle": "Heavy and faster showers",
+    "help.storm": "New skies alternate 9 lighter showers with 3 heavy storm showers. Heavy showers bring more stars. Faster showers leave less time between arrivals. The forecast describes the next shower, including when its pace changes.",
+    "help.retained": "Older saved skies and their replays keep their original shower rules. Choose New sky to use the current rules.",
+    "help.duskTitle": "Dusk and gray stars",
+    "help.dusk": "Dusk turns stars directly above, below, left or right gray. Gray stars still match and grow, but earn no starlight. Each shower with a touching star feeds Dusk once. After {feeds} feeding showers, Dusk swallows those stars and disappears. This frees space without earning starlight.",
+    "help.duskClear": "Clear a matching group directly beside Dusk to remove it early. Surviving gray stars regain their light. Stars in the clearing group earn their reward before Dusk is removed, so any still-gray stars in that group earn zero.",
+    "help.darkLegacy": "In this saved sky, dark stars block nearby growth. Clear a matching group directly beside one to remove it. They do not feed or turn other stars gray.",
+    "help.pauseTitle": "Pause the showers",
+    "help.pause": "Pause sky stops automatic showers. You can keep clearing or tap Next shower for one shower. Opening the menu or leaving the app suspends play. Missed showers do not build up.",
+    "help.arrangeTitle": "Move stars and clear shapes",
+    "help.swap": "In Open sky, drag a star one space left or right, hold for the glow, then lift to swap. Slide back to cancel. Moving into an empty space lets stars fall.",
+    "help.recipe": "In Open sky, a square uses exactly 4 matching stars; a cross uses 5. An Opal Orb can join their color. Trace the shape to clear only those stars.",
+    "help.relay": "Clearing supporting stars can drop others into a new shape. Clear that new shape to build a relay. Shapes wait until you clear them: there is no automatic chain reaction or score multiplier.",
+    "help.challengeTitle": "First Light",
+    "help.challenge": "Collect 18 starlight before a column fills. Use tap matches or five-star traces. Showers arrive at a steady pace. This challenge has no swaps, shape recipes, Dusk, Opal Orbs or storms.",
+    "technique.choose": "Tap a star to move it or choose a shape.",
+    "technique.recipe": "Shape",
+    "technique.square": "Square",
+    "technique.cross": "Cross",
+    "technique.clearSquare": "Clear square",
+    "technique.clearCross": "Clear cross",
+    "technique.left": "Left",
+    "technique.right": "Right",
+    "technique.moveLeft": "Move star left",
+    "technique.moveRight": "Move star right",
+    "technique.recipeTitle": "{shape} · {count} stars · {position}",
+    "technique.moved": "Star moved. What can you line up?",
+    "technique.relay": "{count}-clear relay",
+    "technique.support": "Clear supporting stars to drop others into a new shape.",
+    "celebration.brilliant": "Brilliant!",
+    "celebration.constellation": "Constellation!",
+    "celebration.square": "Square!",
+    "celebration.cross": "Cross!",
+    "celebration.relay": "{count}-clear relay!",
+    "a11y.position": "row {row}, column {column}",
+    "a11y.empty": "Empty, {position}",
+    "a11y.boardSummary": "{showers} showers, {groups} matching groups ready",
+    "a11y.boardHint": "Starfall board, seven columns. Row one is the farthest row. {summary}",
+    "a11y.matchingGroups": "Matching groups",
+    "a11y.noHole": "No new hole",
+    "a11y.holePreview": "Forms a hole at {position}, holding {count} stars",
+    "a11y.hole": "Gravity hole, {release} {position}",
+    "a11y.field": "Attraction field, {position}",
+    "a11y.star": "{size}{description}, {position}. {state}",
+    "a11y.grown": "Grown ",
+    "a11y.trapped": "Trapped. ",
+    "a11y.orbDrained": "Earns no starlight; still connects matching stars",
+    "a11y.orb": "Counts as 1; choose a colored star to start",
+    "a11y.groupReward": "{value} toward a tap match; {reward} starlight if cleared",
+    "a11y.groupValue": "{value} toward a tap match",
+    "a11y.holeHint": "Clear a matching group with a trapped star to close this hole",
+    "a11y.fieldHint": "Clear beside it to remove the field. Clear between two fields to form a hole",
+    "a11y.trappedHint": "A valid clear with this trapped star closes the hole and frees the others",
+    "a11y.darkHint": "Clear a matching group directly beside this dark star to remove it",
+    "a11y.orbHint": "Start on a colored star to include this orb. The orb disappears when cleared",
+    "a11y.clearHint": "Tap to clear this matching group",
+    "a11y.clearDarkHint": "Tap to clear this matching group and adjacent dark stars",
+    "a11y.matchHint": "A tap match needs a total of 3. Small stars count as 1, grown stars as 2. A constellation needs 5 stars",
+    "a11y.gravityConsequence": "Gravity consequence",
+    "a11y.duskConsequence": "Dusk consequence",
+    "cast.spark": "Aqua four-point star",
+    "cast.sunny": "Amber five-point star",
+    "cast.pip": "Mint six-point star",
+    "cast.twinkle": "Rose eight-point star",
+    "cast.nova": "Violet wide four-point star",
+    "cast.dusk": "Dark star",
+    "cast.opal": "White Opal Orb",
+    "cast.field": "Attraction field",
+    "cast.hole": "Gravity hole",
+    "input.interrupted": "Touch interrupted. Try again.",
+    "input.oneFinger": "Use one finger to trace or move a star.",
+    "input.sameStar": "To tap, lift on the star you touched.",
+    "input.swapCanceled": "Swap canceled.",
+    "input.showerDue": "A shower is arriving. Try again when the stars settle.",
+    "input.swapReady": "Lift to move; slide back to cancel.",
+    "input.traceOffBoard": "Trace canceled. Your finger left the board.",
+    "input.traceReady": "Lift to clear {count} stars · +{score} starlight",
+    "input.traceProgress": "{count} / 5 stars",
+    "input.traceShort": "Trace 5 matching stars, or a 4-star square in Open sky.",
+    "input.traceChallengeShort": "Trace at least 5 matching stars.",
+    "input.traceCanceled": "Trace canceled. Choose a touching matching star.",
+    "input.traceAnnouncement": "Stars selected: {count}. Starlight if cleared: {score}. {status}",
+    "input.traceReleaseReady": "Ready to release.",
+    "prop.telescope": "Observatory telescope",
+    "prop.lantern": "Observatory lantern",
+    "prop.telescopeHint": "Tilt the telescope for a glint of light",
+    "prop.lanternHint": "Make the lantern glow",
+    "prop.responding": "Responding",
+    "prop.rest": "At rest"
+  }
 }

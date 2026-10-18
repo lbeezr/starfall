@@ -4,6 +4,102 @@ import StarfallCore
 @testable import Starfall
 
 final class SkyDialogueTests: XCTestCase {
+    func testTypedInterfaceInventoryAndTemplatesRejectMissingExtraAndInjectedValues() throws {
+        let catalog = SkyDialogueLibrary.catalog
+        XCTAssertEqual(Set(try XCTUnwrap(catalog.copy).keys), Set(SkyCopy.Key.allCases.map(\.rawValue)))
+        for key in SkyCopy.Key.allCases {
+            let source = try XCTUnwrap(catalog.copy?[key.rawValue])
+            let tokens = try SkyDialogueCatalog.placeholders(in: source)
+            let values = Dictionary(uniqueKeysWithValues: tokens.map { ($0, "7") })
+            let rendered = try catalog.copyText(key.rawValue, values: values)
+            XCTAssertFalse(rendered.contains("{"), key.rawValue)
+            XCTAssertFalse(rendered.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty, key.rawValue)
+        }
+        XCTAssertThrowsError(try catalog.copyText("missing"))
+        XCTAssertThrowsError(try catalog.copyText("result.blocked"))
+        XCTAssertThrowsError(try catalog.copyText("result.blocked", values: ["column": "4", "typo": "1"]))
+        XCTAssertThrowsError(try catalog.copyText("result.blocked", values: ["column": "{score}"]))
+        XCTAssertEqual(SkyCopy.count(.eventEatenOne, .eventEatenMany, 1), "I swallowed 1 star.")
+        XCTAssertEqual(SkyCopy.count(.eventEatenOne, .eventEatenMany, 3), "I swallowed 3 stars.")
+        let malformed = Data(#"{"schemaVersion":1,"scripts":[{"id":"x","lines":[{"id":"x.1","speaker":"sunny","text":"Hello","priority":"help"}]}],"copy":{"bad":"An unmatched {token"}}"#.utf8)
+        XCTAssertThrowsError(try SkyDialogueCatalog.decode(malformed))
+    }
+
+    func testContextKeepsTheOriginalSpeakerAndForecastTense() throws {
+        let game = ConstellationFixture.stormWarning.game()
+        let dusk = SkyDialogueLibrary.line("guide.dusk-collapse", values: ["swallowed": "I swallowed 1 star."])
+        let combined = SkyDialogueLibrary.contextual(dusk, game: game, cadence: game.cadenceStep)
+        XCTAssertEqual(combined.speaker, .dusk)
+        XCTAssertTrue(combined.text.contains("Left those for me?"))
+        XCTAssertTrue(combined.text.contains("1 lighter shower before the storm."))
+        XCTAssertFalse(combined.text.contains(".."))
+        XCTAssertEqual(SkyDialogueLibrary.line("guide.paused").speaker, .twinkle)
+        XCTAssertEqual(SkyDialogueLibrary.line("guide.growth", values: ["growth": "A star grew"]).speaker, .spark)
+        XCTAssertEqual(SkyDialogueLibrary.line("guide.clear", values: ["score": "3"]).speaker, .pip)
+        XCTAssertEqual(SkyDialogueLibrary.line("guide.won", values: ["score": "20"]).speaker, .sunny)
+    }
+
+    @MainActor func testDuskTeasesOnlyAfterCommittedConsumptionOrAnActuallyDrainedClear() throws {
+        func store(_ fixture: String) -> (FallingSkyStore, FallingSkyRecorder) {
+            let suite = "Starfall.CopyDusk.\(UUID())", defaults = UserDefaults(suiteName: suite)!
+            addTeardownBlock { defaults.removePersistentDomain(forName: suite) }
+            let presenter = FallingSkyRecorder()
+            let store = FallingSkyStore(defaults: defaults,
+                arguments: ["--starfalls-reset", "--dusk-fixture=\(fixture)"],
+                presenter: presenter, clock: ManualRainClock())
+            store.setSuspended(false)
+            return (store, presenter)
+        }
+        let (eating, presenter) = store("imminent")
+        eating.callShower()
+        XCTAssertEqual(eating.guideLine.speaker, .dusk)
+        XCTAssertTrue(eating.guideLine.text.contains("I swallowed 3 stars."))
+        XCTAssertEqual(eating.game.score, 0)
+        let committed = eating.game
+        eating.setSuspended(true); presenter.finish()
+        XCTAssertEqual(eating.game, committed)
+        XCTAssertNil(eating.dialogue.line, "A stale callback cannot deliver a taunt")
+
+        let (gray, grayPresenter) = store("zeroClear")
+        gray.clear(Cell(0, 1)); grayPresenter.finish()
+        XCTAssertEqual(gray.game.score, 0)
+        XCTAssertEqual(gray.guideLine.id, "guide.gray-clear.1")
+        XCTAssertEqual(gray.guideLine.speaker, .dusk)
+        XCTAssertTrue(gray.guideLine.text.contains("No starlight that time"))
+        XCTAssertTrue(gray.guideLine.text.contains("You cleared me away"))
+
+        let (invalid, _) = store("unfed")
+        let before = invalid.game
+        invalid.clear(Cell(6, 6))
+        XCTAssertEqual(invalid.game, before)
+        XCTAssertEqual(invalid.guideLine.speaker, .sunny, "An invalid tap gets useful help, not a taunt")
+        XCTAssertTrue(invalid.guideLine.text.hasPrefix(SkyDialogueLibrary.line("guide.match-help").text))
+    }
+
+    @MainActor func testDuskHelpUsesTheRetainedRuleAndTraceCelebrationUsesDistinctStars() throws {
+        let suite = "Starfall.CopyRules.\(UUID())", defaults = UserDefaults(suiteName: suite)!
+        defer { defaults.removePersistentDomain(forName: suite) }
+        for (rule, count) in [(DuskRule.feeding, "3"), (.patientFeeding, "5")] {
+            let text = SkyCopy.text(.helpDusk, values: ["feeds": String(rule.feedingShowers)])
+            XCTAssertTrue(text.contains("After \(count) feeding showers"))
+            let help = SkyDialogueLibrary.line("guide.dusk-help", values: ["feeds": String(rule.feedingShowers)])
+            XCTAssertTrue(help.text.contains("After \(count) feeding showers"))
+        }
+        let presenter = FallingSkyRecorder()
+        let store = FallingSkyStore(defaults: defaults,
+            arguments: ["--starfalls-reset", "--constellation-fixture=overlap"],
+            presenter: presenter, clock: ManualRainClock())
+        store.setSuspended(false)
+        let path = [Cell(0,4), Cell(1,3), Cell(2,4), Cell(1,5), Cell(1,6)]
+        let original = store.game
+        store.clearTracedConstellation(path, snapshot: original, generation: store.constellationInputGeneration)
+        presenter.finish()
+        XCTAssertEqual(store.guideLine.id, "guide.constellation.1")
+        XCTAssertEqual(store.guideLine.speaker, .spark)
+        XCTAssertTrue(store.guideLine.text.contains("You connected 5!"))
+        XCTAssertEqual(store.game.occupiedCount, original.occupiedCount - 5)
+    }
+
     private func line(_ id: String, speaker: SkySpeaker = .sunny,
                       priority: SkyDialogueLine.Priority = .routine, seconds: Double? = 5) -> SkyDialogueLine {
         .init(id: id, speaker: speaker, text: "Message \(id)", priority: priority, seconds: seconds)
@@ -11,7 +107,7 @@ final class SkyDialogueTests: XCTestCase {
 
     func testCatalogRendersEveryBundledScriptAndRejectsAuthoringErrors() throws {
         let catalog = SkyDialogueLibrary.catalog
-        let samples = ["score": "18", "stars": "3", "dark": "Dark star", "growth": "A star grew", "arrival": "One star arrived", "detail": "A fixture", "windows": "3", "phase": "Storm", "cadence": "Faster showers", "summary": "Paused", "reason": "First Light complete.", "context": "A storm is coming"]
+        let samples = ["score": "18", "stars": "5", "dark": "Dark star", "growth": "A star grew", "arrival": "One star arrived", "detail": "A fixture", "release": "The hole releases its stars after 3 more showers.", "feeds": "5", "swallowed": "I swallowed 3 stars.", "shape": "Square", "depth": "2", "phase": "Storm: 3 heavy showers left.", "cadence": "Showers are closer together now.", "summary": "Paused", "reason": "First Light complete!", "context": "A storm is coming"]
         for source in catalog.scripts {
             let values = samples.filter { key, _ in source.lines.contains { $0.text.contains("{\(key)}") } }
             let rendered = try catalog.script(source.id, values: values)
@@ -150,7 +246,8 @@ extension SkyDialogueTests {
         let darkIndex = try XCTUnwrap(store.game.board.firstIndex { $0?.isDark == true })
         store.clear(Cell(darkIndex / 7, darkIndex % 7))
         let help = store.pausedGuideLine
-        XCTAssertTrue(help.text.contains("beside Dusk"))
+        XCTAssertEqual(help.speaker, .dusk)
+        XCTAssertTrue(help.text.contains("beside me to send me off"))
         let source = store.game, cell = Cell(0,0)
         let value = source.reward(of: source.group(at: cell))
         XCTAssertGreaterThanOrEqual(value, 3)

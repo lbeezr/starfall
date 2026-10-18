@@ -6,6 +6,8 @@ SwiftUI screens, main-actor stores and SpriteKit presentation for the native gam
 
 Deterministic rules belong in [StarfallCore](../Sources/StarfallCore/README.md). Build the shared Starfall scheme and run affected hosted/UI checks after source changes. Asset catalogs are packaged data; their sets are documented by this folder, not individual READMEs.
 
+Player copy for regular Falling Sky lives in the [local dialogue/interface catalogue](DialogueScripts/README.md), including character voices, menu/help/results and accessibility text. `SkyCopy` exposes typed keys; the shared template validator rejects missing/extra values. Keep wording there and committed facts in the app/Core owners. Debug tooling and the original orthogonal puzzle retain their separate developer text.
+
 ## Observatory environment
 
 Default Falling Sky uses the full-screen Observatory. `ObservatoryGeometry` owns artwork/prop registration and every render/touch coordinate; `ObservatoryEnvironment` owns bounded fog time and cancellable prop responses using narrow lifecycle inputs. Theme owns colors; core owns outcomes. The game view resets environment lifetime on replay/new challenge and suspends it under settings/background. Four `Observatory*.imageset` resources are generated art; exact prompts/provenance remain in [the source-art record](../docs/design/environments/landing-native-01/README.md).

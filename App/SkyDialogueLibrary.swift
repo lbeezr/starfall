@@ -8,6 +8,8 @@ enum SkyDialogueLibrary {
               let data = try? Data(contentsOf: url), let catalog = try? SkyDialogueCatalog.decode(data) else {
             preconditionFailure("Missing or invalid observatory-dialogue.json")
         }
+        precondition(Set(catalog.copy?.keys.map { $0 } ?? []) == Set(SkyCopy.Key.allCases.map(\.rawValue)),
+                     "Interface copy must match the typed key inventory")
         return catalog
     }()
 
@@ -24,9 +26,11 @@ enum SkyDialogueLibrary {
 extension SkyDialogueLibrary {
     static func contextual(_ result: SkyDialogueLine, game: FallingSky, cadence: SkyCadenceStep, includeTiming: Bool = true) -> SkyDialogueLine {
         let context = [includeTiming ? timing(game: game, cadence: cadence)?.text : nil, DuskWarning(game: game)?.text]
-            .compactMap { $0 }.joined(separator: ". ")
+            .compactMap { $0 }.joined(separator: " ")
         guard !context.isEmpty else { return result }
-        return line("guide.context", values: ["detail": result.text, "context": context])
+        let combined = line("guide.context", values: ["detail": result.text, "context": context])
+        return SkyDialogueLine(id: combined.id, speaker: result.speaker, text: combined.text,
+                               priority: combined.priority, seconds: combined.seconds)
     }
 
     /// Read committed next-shower snapshots; content cannot schedule a storm or change its rules.
