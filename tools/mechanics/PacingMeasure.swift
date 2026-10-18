@@ -34,8 +34,8 @@ private func choices(_ game: FallingSky) -> [Choice] {
     }}
     return result
 }
-private func choose(_ game: FallingSky, persona: String) -> Choice? {
-    let alternatives = choices(game)
+private func choose(_ game: FallingSky, persona: String, available: (Choice) -> Bool = { _ in true }) -> Choice? {
+    let alternatives = choices(game).filter(available)
     func rank(_ choice: Choice) -> Int {
         let selected = choice.trace ? Set(choice.path) : game.group(at: choice.path[0])
         if persona == "height-safety" {
@@ -55,7 +55,7 @@ private struct SetupChoice {
 }
 // One improving exchange per committed shower, selected from the visible board.
 // Search time is represented by the explicit reaction assumption, not measured.
-private func improvingSetup(_ game: FallingSky, generation: UInt64) -> SetupChoice? {
+private func improvingSetup(_ game: FallingSky, generation: UInt64, available: (FallingSkyTurn) -> Bool = { _ in true }) -> SetupChoice? {
     func reward(_ game: FallingSky) -> Int {
         choices(game).map { game.reward(of: $0.trace ? Set($0.path) : game.group(at: $0.path[0])) }.max() ?? 0
     }
@@ -65,7 +65,7 @@ private func improvingSetup(_ game: FallingSky, generation: UInt64) -> SetupChoi
         let from = Cell(row,column), to = Cell(row,column+delta)
         guard game.canNudge(from: from, to: to) else { continue }
         var copy = game
-        guard copy.nudge(from: from, to: to) != nil else { continue }
+        guard let turn = copy.nudge(from: from, to: to), available(turn) else { continue }
         let value = reward(copy)
         if value > best {
             best = value; result = .init(from: from, to: to, snapshot: game, generation: generation)
@@ -82,13 +82,17 @@ private struct Event: Codable {
     let phase: String
     let busy: Bool
     let inputEnabled: Bool
+    let readyContactColumns: [Int]
     let paused: Bool
     let suspended: Bool
     let cells: [[Int]]?
 }
 private struct Run: Codable {
     let seed: UInt64, cadence: String, persona: String, motion: String
+    let inputModel: String
     var activeSeconds = 0.0, presentationSeconds = 0.0, noOpportunitySeconds = 0.0
+    var blockedOpportunitySeconds = 0.0
+    var startsDuringPresentation = 0, maximumPendingPresentations = 0
     var longestGap = 0.0, longestEarlyGap = 0.0
     var firstAcceptedClear: Double?
     var taps = 0, traces = 0, traceStarts = 0, deadlineCancelledTraces = 0, otherCancelledTraces = 0
@@ -101,7 +105,7 @@ private struct Run: Codable {
     var events: [Event] = []
 }
 @main enum PacingMeasure {
-    @MainActor private static func run(seed: UInt64, cadence: SkyCadenceID, persona: String, quiet: Bool, limit: Double, reaction: Double, traceStep: Double, swapSeconds: Double) -> Run {
+    @MainActor private static func run(seed: UInt64, cadence: SkyCadenceID, persona: String, quiet: Bool, limit: Double, reaction: Double, traceStep: Double, swapSeconds: Double, inputModel: String) -> Run {
         let clock = PacingClock()
         // Presenter and scheduler must share the exact monotonic clock.
         let display = PacingPresenter(clock, quiet: quiet)
@@ -109,8 +113,14 @@ private struct Run: Codable {
         let defaults = UserDefaults(suiteName: suite)!
         defer { defaults.removePersistentDomain(forName: suite) }
         let store = FallingSkyStore(defaults: defaults, arguments: ["--starfalls-reset", "--starfalls-seed=\(seed)"], presenter: display, clock: clock)
-        var result = Run(seed: seed, cadence: cadence.rawValue, persona: persona, motion: quiet ? "quiet-model" : "full-motion-model")
-        let intent = ConstellationTraceIntent()
+        var result = Run(seed: seed, cadence: cadence.rawValue, persona: persona, motion: quiet ? "quiet-model" : "full-motion-model", inputModel: inputModel)
+        func mayDecide() -> Bool { inputModel == "settled" ? store.canClear : store.canReceiveInput }
+        func available(_ choice: Choice) -> Bool {
+            guard mayDecide() else { return false }
+            return choice.trace ? store.canTrace(choice.path) : store.canClear(choice.path[0])
+        }
+        let interaction = SkyInteractionSession()
+        let intent = interaction.trace
         var gesture: Choice?, ticket: UInt64?, pathIndex = 0
         var decisionAt: Double?, gestureAt: Double?
         var setup: SetupChoice?, setupAt: Double?, lastSetupShower: Int?
@@ -123,7 +133,8 @@ private struct Run: Codable {
             let state = snapshot ?? store.timingSnapshot
             result.events.append(.init(time: state.time, kind: kind, turns: state.game.turns, score: state.game.score,
                 deadline: deadline, phase: String(describing: state.cadence.phase), busy: state.busy,
-                inputEnabled: state.canClear, paused: state.paused, suspended: state.suspended, cells: cells?.map { [$0.row,$0.column] }))
+                inputEnabled: state.canClear, readyContactColumns: (0..<7).filter { store.canContact(Cell(0,$0)) },
+                paused: state.paused, suspended: state.suspended, cells: cells?.map { [$0.row,$0.column] }))
         }
         store.configureTimingTest(lookup: { cadence.step(committedShowers: $0.turns, pace: $0.balance.pace) }, observe: { event in
             record(String(describing: event.kind), deadline: event.showerDeadline, snapshot: event.snapshot)
@@ -167,20 +178,24 @@ private struct Run: Codable {
             }
         })
         store.setSuspended(false); store.togglePause()
-        var hold: UInt64?
         var gap = 0.0, earlyGap = 0.0
         // Event count and time bounds prevent accidental unbounded offline execution.
         for _ in 0..<20000 {
             if clock.now >= limit || store.game.isOver { break }
-            if store.canClear && gesture == nil && setup == nil && decisionAt == nil { decisionAt = clock.now + reaction }
-            if !store.canClear { decisionAt = nil }
+            if mayDecide() && gesture == nil && setup == nil && decisionAt == nil { decisionAt = clock.now + reaction }
+            if !mayDecide() { decisionAt = nil }
             let next = min(limit, clock.deadline ?? .infinity, display.finishAt ?? .infinity, decisionAt ?? .infinity, gestureAt ?? .infinity, setupAt ?? .infinity)
             precondition(next >= clock.now && next.isFinite)
             let delta = next-clock.now
             result.activeSeconds += delta
             if store.busy { result.presentationSeconds += delta }
             if gesture != nil || setup != nil { result.heldSeconds += delta }
-            let noOpportunity = gesture == nil && setup == nil && store.canClear && choices(store.game).isEmpty
+            let options = choices(store.game)
+            let idle = gesture == nil && setup == nil
+            let noOpportunity = idle && mayDecide() && options.isEmpty
+            if idle && store.canReceiveInput && !options.isEmpty && !options.contains(where: available) {
+                result.blockedOpportunitySeconds += delta
+            }
             gap = noOpportunity ? gap+delta : 0
             earlyGap = noOpportunity ? earlyGap + max(0, min(next,30)-min(clock.now,30)) : 0
             if noOpportunity { result.noOpportunitySeconds += delta }
@@ -192,13 +207,17 @@ private struct Run: Codable {
                 clock.fire()
             }
             if cancelledGesture {
-                cancelledGesture = false; intent.cancel(); gesture = nil; gestureAt = nil; store.endConstellationHold(hold); hold = nil
+                cancelledGesture = false; gesture = nil; gestureAt = nil
+                interaction.cancelContact(release: store.endConstellationHold)
             }
             if let end = display.finishAt, end <= next { display.finish() }
             if let time = setupAt, time <= next, let move = setup {
                 setup = nil; setupAt = nil
+                let owned = interaction.holdTicket
+                interaction.technique.cancel()
                 let accepted = store.performTechnique(.nudge(move.from, move.to), snapshot: move.snapshot, generation: move.generation)
-                store.endConstellationHold(hold); hold = nil
+                interaction.endContact(ticket: owned, release: store.endConstellationHold)
+                precondition(interaction.holdTicket == nil && !store.constellationTracing)
                 if accepted {
                     precondition(replayA.nudge(from: move.from, to: move.to) != nil)
                     precondition(replayB.nudge(from: move.from, to: move.to) != nil)
@@ -209,31 +228,39 @@ private struct Run: Codable {
             }
             if let time = gestureAt, time <= next, let action = gesture {
                 if pathIndex < action.path.count {
-                    _ = intent.visit(action.path[pathIndex], ticket: ticket, game: store.game, generation: store.constellationInputGeneration, enabled: store.canClear)
+                    _ = intent.visit(action.path[pathIndex], ticket: ticket, game: store.game, generation: store.constellationInputGeneration, enabled: inputModel == "settled" ? store.canClear : store.canTrace(intent.path + [action.path[pathIndex]]))
                     pathIndex += 1; gestureAt = next + traceStep
                 } else {
-                    let commit = intent.finish(ticket: ticket, game: store.game, generation: store.constellationInputGeneration, enabled: store.canClear)
-                    gesture = nil; gestureAt = nil; store.endConstellationHold(hold); hold = nil
+                    let commit = intent.finish(ticket: ticket, game: store.game, generation: store.constellationInputGeneration, enabled: inputModel == "settled" ? store.canClear : store.canTrace(intent.path))
+                    let owned = interaction.holdTicket
+                    gesture = nil; gestureAt = nil
                     if let commit { lastAction = action; record("traceRelease", cells: commit.path); store.clearTracedConstellation(commit.path,snapshot: commit.snapshot,generation: commit.generation) }
                     else { result.otherCancelledTraces += 1; record("traceReleaseRejected") }
+                    // Match native release: commit before the logical contact returns its ticket.
+                    interaction.endContact(ticket: owned, release: store.endConstellationHold)
+                    precondition(interaction.holdTicket == nil && !store.constellationTracing)
                 }
             }
             if let time = decisionAt, time <= next {
                 decisionAt = nil
-                if persona == "setup-first", store.canClear, lastSetupShower != store.game.turns,
-                   let move = improvingSetup(store.game, generation: store.constellationInputGeneration) {
-                    hold = store.beginConstellationHold(at: move.from)
-                    precondition(hold != nil)
+                if persona == "setup-first", mayDecide(), lastSetupShower != store.game.turns,
+                   let move = improvingSetup(store.game, generation: store.constellationInputGeneration, available: {
+                       $0.changingColumns.isDisjoint(with: store.changingColumns)
+                   }) {
+                    if store.busy { result.startsDuringPresentation += 1 }
+                    precondition(interaction.acquireHold(at: move.from, using: store.beginConstellationHold))
+                    interaction.armSwap(from: move.from, to: move.to, game: store.game, generation: store.constellationInputGeneration)
                     lastSetupShower = store.game.turns
                     setup = move; setupAt = next + swapSeconds
                     result.exchangeStarts += 1; record("exchangeBegin", cells: [move.from,move.to])
-                } else if store.canClear, let action = choose(store.game,persona: persona) {
+                } else if mayDecide(), let action = choose(store.game,persona: persona, available: available) {
+                    if store.busy { result.startsDuringPresentation += 1 }
                     if action.trace {
-                        ticket = intent.begin(action.path[0],game: store.game,generation: store.constellationInputGeneration,enabled: store.canClear)
+                        ticket = intent.begin(action.path[0],game: store.game,generation: store.constellationInputGeneration,enabled: available(action))
                         precondition(ticket != nil)
                         gesture = action; pathIndex = 1; gestureAt = next+traceStep
                         result.traceStarts += 1; record("traceBegin",cells: action.path)
-                        hold = store.beginConstellationHold()
+                        precondition(interaction.acquireHold(at: action.path[0], using: store.beginConstellationHold))
                     } else { lastAction = action; record("tapAttempt",cells: [action.path[0]]); store.clear(action.path[0]) }
                 } else { decisionAt = next+reaction }
             }
@@ -245,6 +272,7 @@ private struct Run: Codable {
         if gesture != nil { record("gestureCensoredAtHorizon") }
         if setup != nil { record("exchangeCensoredAtHorizon") }
         result.growth = display.growthEvents
+        result.maximumPendingPresentations = display.maximumPendingCount
         result.overflow = store.game.blockedColumn != nil
         result.finalScore = store.game.score; result.deliveredShowers = store.game.turns
         store.setSuspended(true)
@@ -257,6 +285,10 @@ private struct Run: Codable {
         let reaction = Double(CommandLine.arguments[5])!, traceStep = Double(CommandLine.arguments[6])!
         let includeSetups = CommandLine.arguments.contains("--include-setups")
         let swapSeconds = Double(CommandLine.arguments[7])!
+        let inputModel = CommandLine.arguments[8]
+        let seedStart = UInt64(CommandLine.arguments[9])!
+        precondition(seedStart <= 1000000)
+        precondition(["settled", "columns"].contains(inputModel))
         precondition(baseline != candidate && reaction >= 0.05 && reaction <= 5 && traceStep >= 0.02 && traceStep <= 1)
         checks()
         let drained = DuskFixture.zeroClear.game()
@@ -275,7 +307,7 @@ private struct Run: Codable {
         var runs: [Run] = []
         let personas = ["largest-clear","height-safety","trace-oriented"] + (includeSetups ? ["setup-first"] : [])
         for seed in 0..<seeds { for cadence in [baseline,candidate] { for persona in personas { for quiet in [false,true] {
-            runs.append(run(seed: UInt64(seed),cadence: cadence,persona: persona,quiet: quiet,limit: seconds,reaction: reaction,traceStep: traceStep,swapSeconds: swapSeconds))
+            runs.append(run(seed: seedStart + UInt64(seed),cadence: cadence,persona: persona,quiet: quiet,limit: seconds,reaction: reaction,traceStep: traceStep,swapSeconds: swapSeconds,inputModel: inputModel))
         }}}}
         let encoder = JSONEncoder(); encoder.outputFormatting = [.sortedKeys]
         print(String(data: try encoder.encode(runs),encoding: .utf8)!)

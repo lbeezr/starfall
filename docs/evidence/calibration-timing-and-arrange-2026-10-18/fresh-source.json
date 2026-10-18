@@ -1,0 +1,124 @@
+{
+  "current": {
+    "head": "014d9b8479d5bdd8ed31a0a1180267c89108696c",
+    "originMain": "5bec506ab2899ff69538fcfd233338ba8a516bb1",
+    "runtimeFingerprint": "dev.3ff8f71dce",
+    "dirtyBuildInputs": [
+      "UITests/FallingSkyInteractionTests.swift"
+    ],
+    "sha256": {
+      "UITests/FallingSkyInteractionTests.swift": "8f7671ee4954baf53bd697ca04877756375bb2838b9e93245568d1f723199178",
+      "UITests/SkyTechniqueInteractionTests.swift": "777d628d4e14d964a1ab2818e6d285286c044b61255249f46b999f1a2ecf95c6",
+      "App/FallingSkyView.swift": "6d918b0c7775a796794eee974067510490b073e4e9f761ffd38cb6cfa1eb66e4",
+      "App/FallingSkyStore.swift": "e154ea25a6e15f20a7a16f83f3875c417fbd7b0c8f548e68708f066c6b34ef72",
+      "App/SkyTechniqueIntent.swift": "fabb6a464db43921445a24a1967f8e6ebc43133be2f4a59a7e3ff277c0ef502c",
+      "App/StarlightCelebration.swift": "187199eadf1a832a93fd6b65f63099ade8b7cf2cb17c6ce74f1d3f9cfd0ecae3"
+    },
+    "nativeResults": {
+      "freshSeeds": [
+        5,
+        180
+      ],
+      "freshPasses": 2,
+      "relayPasses": 1,
+      "hostedReceiptPasses": 7
+    },
+    "simulator": {
+      "id": "5107CBBF-108B-4B94-9125-A873F948A38C",
+      "model": "iPhone 16 Pro Max",
+      "os": "iOS 27.0 (24A434)",
+      "calmEffects": false,
+      "systemReduceMotion": false
+    },
+    "videos": {
+      "main85-fresh-motion.mp4": {
+        "sha256": "51f3a2749a526933a58e0ec53a7cb45cddd3051e5b7334f586a03dac07eac23a"
+      },
+      "main85-relay-motion.mp4": {
+        "sha256": "611ca2fd5328e231260b957d786ec3bd65ceec2f6e415da7eb3688a7afd76773"
+      }
+    },
+    "selectedStill": {
+      "path": "dev-014d9b8__relay-award__iphone-16-pro-max__default-text.jpg",
+      "videoSeconds": 72.595,
+      "sha256": "29db0d3aad4e5e0b7e36a3dd9298c999c2c0d9824778eaed820f3193ba1b195a"
+    },
+    "limits": [
+      "dev.local simulator binaries; no phone installation.",
+      "45-second selection-cycle budget may overrun during an in-flight native scan/gesture.",
+      "Frame-sequence inspection does not measure smoothness or physical preference."
+    ]
+  },
+  "historicalBeforeRecovery": {
+    "source": "93a43def2783500d13c913419145981eba9e551a",
+    "runtimeFingerprint": "dev.1ba300ffbb",
+    "upstream": "1952312eec8db0ed8bd630f4d001af4c8585c6c5",
+    "dirtyPathsAffectingBuild": [
+      "UITests/FallingSkyInteractionTests.swift"
+    ],
+    "sha256": {
+      "UITests/FallingSkyInteractionTests.swift": "bc1440d1bd5956d14a71f63e7a6cd616d47ed4803718a433c07ea1df6f9f8500",
+      "UITests/SkyTechniqueInteractionTests.swift": "777d628d4e14d964a1ab2818e6d285286c044b61255249f46b999f1a2ecf95c6",
+      "App/FallingSkyView.swift": "141dfc689694fdf5bf2ba6ce97f7874a7558cbfee2492685e1f9173a0f7f5ebe",
+      "App/FallingSkyStore.swift": "b500429b31f20bf4f9a395933d7429b9cde7bfeca8130338b7149f6dbbcbf243",
+      "App/StarlightCelebration.swift": "c7f8d01123ab2dae28437423ef784a2327ab51d774efa8da09fa17aff82500a7"
+    },
+    "simulator": {
+      "id": "5107CBBF-108B-4B94-9125-A873F948A38C",
+      "model": "iPhone 16 Pro Max",
+      "os": "iOS 27.0 (24A434)",
+      "systemReduceMotion": false,
+      "calmEffects": false
+    },
+    "limits": [
+      "Simulator binaries display dev.local; fingerprint identifies source, not phone delivery.",
+      "Fresh-round driver reads a changing native hierarchy; selected rewards and taps can race arrivals."
+    ],
+    "pendingDriver": {
+      "path": "UITests/FallingSkyInteractionTests.swift",
+      "sha256": "f4b7ed8796016716e5484a2fc0fa3d8a32915cbf7388c3b55215671cf8c422fc",
+      "change": "Bind queried candidates by accessibility identity, retaining stable cell identifiers for taps.",
+      "verification": "Generic arm64 iOS Simulator build-for-testing passes; native rerun pending CoreSimulator recovery."
+    },
+    "results": {
+      "nativePass": [
+        "SkyTechniqueInteractionTests/testExactSquareThenGravityCreatesDeliberateRelay",
+        "SkyTechniqueInteractionTests/testLargestTextRecipeActionsRemainReachable"
+      ],
+      "nativeFail": [
+        "FallingSkyInteractionTests/testFreshAutomaticVisibleMatchesSeed180",
+        "FallingSkyInteractionTests/testFreshAutomaticVisibleMatchesSeed5"
+      ],
+      "notExecuted": [
+        "StarfallAppTests/StarlightCelebrationTests"
+      ],
+      "failureBoundary": "Both fresh-round failures are changing-query index resolution at driver line 23; hosted launch fails with simulator Shutting Down."
+    }
+  },
+  "integrationAfterMain86": {
+    "head": "73760a4451cbd10ce251a2b23d1032c731a04ca6",
+    "originMain": "90ef9ed7e3798d75882409edd8e102828a0130b8",
+    "runtimeFingerprint": "dev.2b2def6071",
+    "dirtyBuildInputs": [],
+    "corePasses": 149,
+    "nativeFreshPasses": 2,
+    "modelSmokeRuns": 32,
+    "modelEventsEqualMain85": true,
+    "appStoreSHA256": "32aeb7d39b9ba9086e143038bd0b03bdfcd69b9eacf35a03f1db650d8290504e",
+    "nativeDriverSHA256": "8f7671ee4954baf53bd697ca04877756375bb2838b9e93245568d1f723199178"
+  },
+  "integrationAfterMain87": {
+    "head": "8eede5ca442d2172984d02817fae4c66c61dfefb",
+    "originMain": "46642c3ce6dd999a7fc38439c0e2e126ad274664",
+    "runtimeFingerprint": "dev.d77248d12e",
+    "modelSmokeRuns": 32,
+    "modelEventsEqualMain86": true,
+    "debugBuildForTesting": "pass",
+    "nativeFreshEvidenceRemains": "90ef9ed",
+    "sha256": {
+      "App/FallingSkyStore.swift": "e9ccfc4c1344a9b1ca75fb86ce410c933ddff0c719375dc1e24cb2bc1fea659b",
+      "App/FallingSkyView.swift": "abe8be6aefc33c898fe98b9ec1812ef671291fdafa4210e87c59e617fc0481a5",
+      "App/GameFeedback.swift": "113d0fe4b4764d29be416f469dbc617257cc10fe6efca693cb5638ebfc4a06b0"
+    }
+  }
+}

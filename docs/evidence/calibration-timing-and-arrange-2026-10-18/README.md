@@ -2,6 +2,8 @@
 
 **Result:** Partially verified · **Owner:** current implementer · **Date:** October 18, 2026
 
+**Fresh-play update:** [Current-main automatic play and input-window correction](FRESH_ROUNDS.md) records two fresh native passes, recipe/relay footage, seven receipt checks and 1,024 current-source model runs. Retain the rules; distinguish missed native attempts before tuning.
+
 **Combined-source update:** [Integration with main’s faster input/five-feed Dusk](INTEGRATION.md) now passes the affected development checks. The earlier three-feed measurements and captures below retain their original source.
 
 Native play exposed a small, repeatable friction: after clearing the last recipe, Arrange stayed open with “Tap a star…” on an empty board and hid the shower controls. The correction closes Arrange when the committed sky becomes empty, restores paused-play controls and disables Arrange until a star arrives. A populated sky retains Arrange. Rules, score, RNG, saves and cadence are unchanged.

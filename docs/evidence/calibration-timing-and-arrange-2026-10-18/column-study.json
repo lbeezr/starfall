@@ -1,0 +1,2542 @@
+{
+  "head": "014d9b8479d5bdd8ed31a0a1180267c89108696c",
+  "originMain": "5bec506ab2899ff69538fcfd233338ba8a516bb1",
+  "runtimeFingerprint": "dev.3ff8f71dce",
+  "seedStart": 64,
+  "seedCount": 16,
+  "horizonSeconds": 180,
+  "timingModelVersion": "source-durations-session-v4",
+  "sha256": {
+    "Sources/StarfallCore/ConstellationFixture.swift": "58936ea7336163f95b934cc057e71ae933041bf9fd9a271ed9ec065a396da5aa",
+    "Sources/StarfallCore/DuskFixture.swift": "9740935783394c05fdb591557c9ebdb15426228313f7245ed82ba87cf87dc26f",
+    "Sources/StarfallCore/DuskRules.swift": "76d3a62cbfa2da4674ebe3078d4e4b3c01282991fb151a21ca1c38c38beec8d6",
+    "Sources/StarfallCore/FallingSky.swift": "dbb912b66f4a08c8bd6f745967e8b9a9e4c92e036a4b75a5432e531c87b091e3",
+    "Sources/StarfallCore/Game.swift": "9ab2d57af8fe0ee804ce56e762eb5833a08ae5f39e8916ffaa0fe708d90e7086",
+    "Sources/StarfallCore/GravityFieldRules.swift": "ef5308b515340c2eafe1b226cee70a27701a6e906b6c975380d13af818f4130c",
+    "Sources/StarfallCore/GravityOpportunityFixture.swift": "fe410f41722d690eec3ac67472bf82e421912e772252fdf4ac41819f50c08e4a",
+    "Sources/StarfallCore/RefillMapping.swift": "608be41f40c945b18aba5512bac16b7c4de4eb8a2747d6fe54a895392b38e5f7",
+    "Sources/StarfallCore/SkyCadence.swift": "a01a1ab5fe50e7677bd2e1af75563a5bcc316e1828e921e7da2f572202b76b8c",
+    "Sources/StarfallCore/SkyGeneration.swift": "03d62817aaace9a7354cffb15e7735a98246ed9d75643f0e354fab2aeb2d2d97",
+    "Sources/StarfallCore/SkyTechniqueExample.swift": "75c38131723930f1e5884b8d9e87ea8c0cce975b81bddf9ef89212d627e77c26",
+    "Sources/StarfallCore/StarRecipe.swift": "280c7529a613f75af7a47f510ae2a56969a417d2a3d3821c80db24d788ce1559",
+    "Sources/StarfallCore/StarfallBalance.swift": "32525ba2f346cf843863b1cb1cba8a2fab66d088b9dc7ac308867f1520c329ec",
+    "Sources/StarfallCore/StarfallChallenge.swift": "0475f660c21ae42cce0df8c11dc40adbbb841e58b6c66b82a1293c720bd26b72",
+    "App/FallingSkyStore.swift": "e154ea25a6e15f20a7a16f83f3875c417fbd7b0c8f548e68708f066c6b34ef72",
+    "App/ObservatoryReviewFixture.swift": "9a4750756375afdbfdd710795dcb50a24a3005b3fd1f71e4a4274a35fe0f4aae",
+    "App/SkySaveArchive.swift": "907bd106ddb2633d5cef039877d1d46b7cb153a3724dde5bc1dd1aebc84e9d9c",
+    "App/SkyFlowState.swift": "ca597f926d65007b576425e429f6a286fead653cda7d85746797c6acee356b6a",
+    "App/FallingSkyHUD.swift": "648699e0865ed406f5978579e56e9db03ae42da23a77cc345c4d2e81972c1232",
+    "App/FallingSkyPresentation.swift": "e26b27623585fed85e3ba15f9488751be259816c2f98ff515021561ea929eb1d",
+    "App/SkyTechniqueIntent.swift": "fabb6a464db43921445a24a1967f8e6ebc43133be2f4a59a7e3ff277c0ef502c",
+    "App/GameFeedback.swift": "5d3abfd0fdf62409669e529a9846e285e44340d626dc36903956e24486f0fb74",
+    "App/StarlightCelebration.swift": "187199eadf1a832a93fd6b65f63099ade8b7cf2cb17c6ce74f1d3f9cfd0ecae3",
+    "App/SkyDialogue.swift": "9a352c3ad95afc611f28800013611059513bc8b240311a28b0f2e020f61a31f1",
+    "App/SkyDialogueLibrary.swift": "32607772d5b0261af78e1e2a9c83519490a0a64c58c6438225401fb34004946e",
+    "App/DialogueScripts/observatory-dialogue.json": "9121f1c289bb780e8e39da518beacea9817de52f48da4f76d91c6e9e36ac1e37",
+    "App/FallingSkyScene.swift": "561a3a2c6bf94124d18363e105edc12e73607f0644fe1c897dc1531a115d08b4",
+    "App/FallingSkyMotion.swift": "464e028bd5af9edd0a83391f25fd50aee5e2392eb652fcd4b70b6f71becb50e1",
+    "Tests/StarfallCoreTests/TimingCycleFixture.swift": "51936d184a8f60df63abe1489006011abb02431fedf310eca0afb9180513d189",
+    "tools/mechanics/PacingChecks.swift": "c2fcf563eade0836c0adbef9432b70e796bcfbb90f6876eb27207d6cdaa380f8",
+    "tools/mechanics/PacingMeasure.swift": "00f4a4dc3759ad9dfb290691ebb6ff47dbe294644f2944935069b5e542d66877",
+    "tools/mechanics/PacingSupport.swift": "7eb92aef35a86fba4a85cffa98060fe8f6ec134677c3ccfbcf33e2db8c2855ba",
+    "tools/mechanics/compare-pacing.py": "34db457ec8a754f6481c71a1b245f42a95032c8a6f29e9a61285c5399a2b9a38"
+  },
+  "toolchain": "Apple Swift version 6.4 (swiftlang-6.4.0.34.1 clang-2100.3.34.1)\nTarget: arm64-apple-macosx27.0.0\n",
+  "cases": {
+    "settled-fast": {
+      "command": [
+        "python3",
+        "tools/mechanics/compare-pacing.py",
+        "--seeds",
+        "16",
+        "--seed-start",
+        "64",
+        "--seconds",
+        "180",
+        "--baseline-cadence",
+        "announcedCycleV1",
+        "--candidate-cadence",
+        "announcedCycleV2",
+        "--include-setups",
+        "--input-model",
+        "settled",
+        "--output",
+        "artifacts/calibration-current/main85-settled-fast"
+      ],
+      "inputModel": "settled",
+      "reactionSeconds": 0.45,
+      "swapContactSeconds": 0.5,
+      "parityCommits": 32522,
+      "groups": {
+        "full-motion-model/largest-clear/announcedCycleV1": {
+          "rounds": 16,
+          "overflows": 4,
+          "score": {
+            "min": 71,
+            "median": 180.0,
+            "p90": 188,
+            "max": 191
+          },
+          "showers": {
+            "min": 30,
+            "median": 60.0,
+            "p90": 61,
+            "max": 61
+          },
+          "heldFraction": {
+            "min": 0.0,
+            "median": 0.022272057740463348,
+            "p90": 0.03400000000000107,
+            "max": 0.044666666666667514
+          },
+          "startsDuringPresentation": 0,
+          "maximumPendingPresentations": 1,
+          "blockedOpportunityFraction": {
+            "min": 0.27273530711445004,
+            "median": 0.32294444444444503,
+            "p90": 0.35166666666666746,
+            "max": 0.3547222222222232
+          },
+          "noOpportunityFraction": {
+            "min": 0.27213056590384904,
+            "median": 0.3201388888888886,
+            "p90": 0.3773584905660376,
+            "max": 0.3776403004860793
+          },
+          "exchangeRejections": 0
+        },
+        "full-motion-model/largest-clear/announcedCycleV2": {
+          "rounds": 16,
+          "overflows": 8,
+          "score": {
+            "min": 71,
+            "median": 221.5,
+            "p90": 237,
+            "max": 248
+          },
+          "showers": {
+            "min": 30,
+            "median": 74.5,
+            "p90": 80,
+            "max": 80
+          },
+          "heldFraction": {
+            "min": 0.013333333333333483,
+            "median": 0.032475750577367936,
+            "p90": 0.05466666666666874,
+            "max": 0.05600000000000081
+          },
+          "startsDuringPresentation": 0,
+          "maximumPendingPresentations": 1,
+          "blockedOpportunityFraction": {
+            "min": 0.3365944560913111,
+            "median": 0.393055555555555,
+            "p90": 0.43535676251331146,
+            "max": 0.43598904370608527
+          },
+          "noOpportunityFraction": {
+            "min": 0.11246006389776349,
+            "median": 0.14753900436232986,
+            "p90": 0.19426974143955228,
+            "max": 0.2007042253521128
+          },
+          "exchangeRejections": 0
+        },
+        "full-motion-model/height-safety/announcedCycleV1": {
+          "rounds": 16,
+          "overflows": 4,
+          "score": {
+            "min": 78,
+            "median": 179.5,
+            "p90": 188,
+            "max": 189
+          },
+          "showers": {
+            "min": 30,
+            "median": 60.0,
+            "p90": 61,
+            "max": 61
+          },
+          "heldFraction": {
+            "min": 0.0,
+            "median": 0.02260539107379643,
+            "p90": 0.03666666666666752,
+            "max": 0.055388165908072086
+          },
+          "startsDuringPresentation": 0,
+          "maximumPendingPresentations": 1,
+          "blockedOpportunityFraction": {
+            "min": 0.27273530711445004,
+            "median": 0.3251666666666676,
+            "p90": 0.36011111111111216,
+            "max": 0.37433333333333385
+          },
+          "noOpportunityFraction": {
+            "min": 0.2694444444444444,
+            "median": 0.3226944444444442,
+            "p90": 0.3726465364120777,
+            "max": 0.3776403004860793
+          },
+          "exchangeRejections": 0
+        },
+        "full-motion-model/height-safety/announcedCycleV2": {
+          "rounds": 16,
+          "overflows": 5,
+          "score": {
+            "min": 102,
+            "median": 230.0,
+            "p90": 240,
+            "max": 258
+          },
+          "showers": {
+            "min": 39,
+            "median": 78.0,
+            "p90": 79,
+            "max": 80
+          },
+          "heldFraction": {
+            "min": 0.019333333333333633,
+            "median": 0.03624999999999988,
+            "p90": 0.05000000000000136,
+            "max": 0.0511749347258498
+          },
+          "startsDuringPresentation": 0,
+          "maximumPendingPresentations": 1,
+          "blockedOpportunityFraction": {
+            "min": 0.3365944560913111,
+            "median": 0.41241666666666665,
+            "p90": 0.45877777777777706,
+            "max": 0.46030304750014156
+          },
+          "noOpportunityFraction": {
+            "min": 0.08325293683672891,
+            "median": 0.1395000000000003,
+            "p90": 0.15880441845354107,
+            "max": 0.19426974143955228
+          },
+          "exchangeRejections": 0
+        },
+        "full-motion-model/trace-oriented/announcedCycleV1": {
+          "rounds": 16,
+          "overflows": 4,
+          "score": {
+            "min": 78,
+            "median": 174.0,
+            "p90": 188,
+            "max": 188
+          },
+          "showers": {
+            "min": 30,
+            "median": 60.0,
+            "p90": 61,
+            "max": 61
+          },
+          "heldFraction": {
+            "min": 0.012627148368993348,
+            "median": 0.0283333333333343,
+            "p90": 0.0486666666666679,
+            "max": 0.0655362926271685
+          },
+          "startsDuringPresentation": 0,
+          "maximumPendingPresentations": 1,
+          "blockedOpportunityFraction": {
+            "min": 0.27273530711445004,
+            "median": 0.31966666666666677,
+            "p90": 0.3476666666666675,
+            "max": 0.35166666666666746
+          },
+          "noOpportunityFraction": {
+            "min": 0.2704036664903925,
+            "median": 0.32241958256599085,
+            "p90": 0.36794107330761094,
+            "max": 0.3776403004860793
+          },
+          "exchangeRejections": 0
+        },
+        "full-motion-model/trace-oriented/announcedCycleV2": {
+          "rounds": 16,
+          "overflows": 8,
+          "score": {
+            "min": 102,
+            "median": 222.5,
+            "p90": 240,
+            "max": 244
+          },
+          "showers": {
+            "min": 39,
+            "median": 74.5,
+            "p90": 78,
+            "max": 80
+          },
+          "heldFraction": {
+            "min": 0.019250822170529897,
+            "median": 0.042551172913288804,
+            "p90": 0.06066666666666879,
+            "max": 0.06400000000000185
+          },
+          "startsDuringPresentation": 0,
+          "maximumPendingPresentations": 1,
+          "blockedOpportunityFraction": {
+            "min": 0.3365944560913111,
+            "median": 0.3962455348787465,
+            "p90": 0.4280628272251302,
+            "max": 0.43598904370608527
+          },
+          "noOpportunityFraction": {
+            "min": 0.11057591623036643,
+            "median": 0.14641666666666606,
+            "p90": 0.16805555555555296,
+            "max": 0.19426974143955228
+          },
+          "exchangeRejections": 0
+        },
+        "full-motion-model/setup-first/announcedCycleV1": {
+          "rounds": 16,
+          "overflows": 0,
+          "score": {
+            "min": 169,
+            "median": 172.0,
+            "p90": 180,
+            "max": 182
+          },
+          "showers": {
+            "min": 54,
+            "median": 55.0,
+            "p90": 56,
+            "max": 57
+          },
+          "heldFraction": {
+            "min": 0.06288888888888916,
+            "median": 0.0865000000000002,
+            "p90": 0.09866666666666733,
+            "max": 0.09944444444444527
+          },
+          "startsDuringPresentation": 0,
+          "maximumPendingPresentations": 1,
+          "blockedOpportunityFraction": {
+            "min": 0.32461111111111113,
+            "median": 0.3663888888888899,
+            "p90": 0.38972222222222286,
+            "max": 0.3947222222222233
+          },
+          "noOpportunityFraction": {
+            "min": 0.1652222222222221,
+            "median": 0.19544444444444442,
+            "p90": 0.2361666666666663,
+            "max": 0.23972222222222217
+          },
+          "exchangeRejections": 0
+        },
+        "full-motion-model/setup-first/announcedCycleV2": {
+          "rounds": 16,
+          "overflows": 0,
+          "score": {
+            "min": 165,
+            "median": 190.5,
+            "p90": 205,
+            "max": 210
+          },
+          "showers": {
+            "min": 66,
+            "median": 70.0,
+            "p90": 71,
+            "max": 73
+          },
+          "heldFraction": {
+            "min": 0.0885555555555547,
+            "median": 0.129638888888889,
+            "p90": 0.17111111111111096,
+            "max": 0.1758888888888913
+          },
+          "startsDuringPresentation": 0,
+          "maximumPendingPresentations": 1,
+          "blockedOpportunityFraction": {
+            "min": 0.4739444444444448,
+            "median": 0.4993333333333331,
+            "p90": 0.5081666666666675,
+            "max": 0.5190555555555563
+          },
+          "noOpportunityFraction": {
+            "min": 0.03811111111111103,
+            "median": 0.055805555555555615,
+            "p90": 0.0723333333333333,
+            "max": 0.08138888888888914
+          },
+          "exchangeRejections": 0
+        },
+        "quiet-model/largest-clear/announcedCycleV1": {
+          "rounds": 16,
+          "overflows": 3,
+          "score": {
+            "min": 104,
+            "median": 190.0,
+            "p90": 201,
+            "max": 201
+          },
+          "showers": {
+            "min": 38,
+            "median": 60.0,
+            "p90": 61,
+            "max": 61
+          },
+          "heldFraction": {
+            "min": 0.0,
+            "median": 0.02666666666666741,
+            "p90": 0.03733333333333439,
+            "max": 0.050000000000001536
+          },
+          "startsDuringPresentation": 0,
+          "maximumPendingPresentations": 1,
+          "blockedOpportunityFraction": {
+            "min": 0.04250000000000087,
+            "median": 0.04542018284106966,
+            "p90": 0.050000000000001044,
+            "max": 0.05416666666666801
+          },
+          "noOpportunityFraction": {
+            "min": 0.6555555555555534,
+            "median": 0.727944444444443,
+            "p90": 0.7624999999999983,
+            "max": 0.7631666666666647
+          },
+          "exchangeRejections": 0
+        },
+        "quiet-model/largest-clear/announcedCycleV2": {
+          "rounds": 16,
+          "overflows": 3,
+          "score": {
+            "min": 104,
+            "median": 267.0,
+            "p90": 289,
+            "max": 289
+          },
+          "showers": {
+            "min": 38,
+            "median": 85.0,
+            "p90": 87,
+            "max": 87
+          },
+          "heldFraction": {
+            "min": 0.0,
+            "median": 0.040666666666667795,
+            "p90": 0.06666666666666793,
+            "max": 0.06800000000000134
+          },
+          "startsDuringPresentation": 0,
+          "maximumPendingPresentations": 1,
+          "blockedOpportunityFraction": {
+            "min": 0.060000000000001226,
+            "median": 0.06515128428384963,
+            "p90": 0.07333333333333511,
+            "max": 0.0742527130799023
+          },
+          "noOpportunityFraction": {
+            "min": 0.5358333333333318,
+            "median": 0.6197499999999966,
+            "p90": 0.6591666666666642,
+            "max": 0.6714999999999973
+          },
+          "exchangeRejections": 0
+        },
+        "quiet-model/height-safety/announcedCycleV1": {
+          "rounds": 16,
+          "overflows": 2,
+          "score": {
+            "min": 104,
+            "median": 191.5,
+            "p90": 201,
+            "max": 201
+          },
+          "showers": {
+            "min": 38,
+            "median": 61.0,
+            "p90": 61,
+            "max": 61
+          },
+          "heldFraction": {
+            "min": 0.0,
+            "median": 0.024333333333333877,
+            "p90": 0.030000000000000693,
+            "max": 0.03733333333333439
+          },
+          "startsDuringPresentation": 0,
+          "maximumPendingPresentations": 1,
+          "blockedOpportunityFraction": {
+            "min": 0.04333333333333424,
+            "median": 0.04627612929540223,
+            "p90": 0.05166666666666799,
+            "max": 0.05416666666666801
+          },
+          "noOpportunityFraction": {
+            "min": 0.6392222222222208,
+            "median": 0.727944444444443,
+            "p90": 0.7598333333333315,
+            "max": 0.7624999999999983
+          },
+          "exchangeRejections": 0
+        },
+        "quiet-model/height-safety/announcedCycleV2": {
+          "rounds": 16,
+          "overflows": 4,
+          "score": {
+            "min": 104,
+            "median": 266.0,
+            "p90": 289,
+            "max": 289
+          },
+          "showers": {
+            "min": 38,
+            "median": 85.0,
+            "p90": 87,
+            "max": 87
+          },
+          "heldFraction": {
+            "min": 0.0,
+            "median": 0.03500000000000031,
+            "p90": 0.04800000000000088,
+            "max": 0.06800000000000134
+          },
+          "startsDuringPresentation": 0,
+          "maximumPendingPresentations": 1,
+          "blockedOpportunityFraction": {
+            "min": 0.060000000000001226,
+            "median": 0.06791666666666825,
+            "p90": 0.06966666666666796,
+            "max": 0.07425271307990235
+          },
+          "noOpportunityFraction": {
+            "min": 0.5729999999999973,
+            "median": 0.6158611111111076,
+            "p90": 0.6591666666666642,
+            "max": 0.665833333333331
+          },
+          "exchangeRejections": 0
+        },
+        "quiet-model/trace-oriented/announcedCycleV1": {
+          "rounds": 16,
+          "overflows": 3,
+          "score": {
+            "min": 104,
+            "median": 190.0,
+            "p90": 198,
+            "max": 201
+          },
+          "showers": {
+            "min": 38,
+            "median": 60.0,
+            "p90": 61,
+            "max": 61
+          },
+          "heldFraction": {
+            "min": 0.0,
+            "median": 0.029000000000000654,
+            "p90": 0.042026447678280815,
+            "max": 0.04733333333333469
+          },
+          "startsDuringPresentation": 0,
+          "maximumPendingPresentations": 1,
+          "blockedOpportunityFraction": {
+            "min": 0.04166666666666759,
+            "median": 0.04556022683815493,
+            "p90": 0.05083333333333471,
+            "max": 0.05416666666666801
+          },
+          "noOpportunityFraction": {
+            "min": 0.6313888888888874,
+            "median": 0.7220833333333314,
+            "p90": 0.7499999999999986,
+            "max": 0.7564999999999981
+          },
+          "exchangeRejections": 0
+        },
+        "quiet-model/trace-oriented/announcedCycleV2": {
+          "rounds": 16,
+          "overflows": 3,
+          "score": {
+            "min": 104,
+            "median": 262.0,
+            "p90": 289,
+            "max": 289
+          },
+          "showers": {
+            "min": 38,
+            "median": 85.0,
+            "p90": 86,
+            "max": 87
+          },
+          "heldFraction": {
+            "min": 0.0,
+            "median": 0.04400000000000069,
+            "p90": 0.06800000000000134,
+            "max": 0.07266666666666816
+          },
+          "startsDuringPresentation": 0,
+          "maximumPendingPresentations": 1,
+          "blockedOpportunityFraction": {
+            "min": 0.06000000000000126,
+            "median": 0.0662500000000014,
+            "p90": 0.07250000000000179,
+            "max": 0.07374724235739176
+          },
+          "noOpportunityFraction": {
+            "min": 0.5338888888888874,
+            "median": 0.6128611111111077,
+            "p90": 0.6543333333333307,
+            "max": 0.6591666666666642
+          },
+          "exchangeRejections": 0
+        },
+        "quiet-model/setup-first/announcedCycleV1": {
+          "rounds": 16,
+          "overflows": 0,
+          "score": {
+            "min": 179,
+            "median": 191.0,
+            "p90": 201,
+            "max": 202
+          },
+          "showers": {
+            "min": 56,
+            "median": 57.0,
+            "p90": 58,
+            "max": 59
+          },
+          "heldFraction": {
+            "min": 0.052777777777777785,
+            "median": 0.08169444444444468,
+            "p90": 0.09861111111111111,
+            "max": 0.10166666666666732
+          },
+          "startsDuringPresentation": 0,
+          "maximumPendingPresentations": 1,
+          "blockedOpportunityFraction": {
+            "min": 0.05333333333333445,
+            "median": 0.05750000000000126,
+            "p90": 0.06083333333333471,
+            "max": 0.06083333333333473
+          },
+          "noOpportunityFraction": {
+            "min": 0.6063888888888873,
+            "median": 0.6328888888888871,
+            "p90": 0.6613888888888872,
+            "max": 0.6736111111111097
+          },
+          "exchangeRejections": 0
+        },
+        "quiet-model/setup-first/announcedCycleV2": {
+          "rounds": 16,
+          "overflows": 0,
+          "score": {
+            "min": 251,
+            "median": 264.0,
+            "p90": 273,
+            "max": 278
+          },
+          "showers": {
+            "min": 76,
+            "median": 79.0,
+            "p90": 81,
+            "max": 81
+          },
+          "heldFraction": {
+            "min": 0.083777777777778,
+            "median": 0.11438888888888897,
+            "p90": 0.14055555555555588,
+            "max": 0.14277777777777861
+          },
+          "startsDuringPresentation": 0,
+          "maximumPendingPresentations": 1,
+          "blockedOpportunityFraction": {
+            "min": 0.07916666666666843,
+            "median": 0.08500000000000188,
+            "p90": 0.09133333333333575,
+            "max": 0.09416666666666876
+          },
+          "noOpportunityFraction": {
+            "min": 0.4199999999999981,
+            "median": 0.4847222222222195,
+            "p90": 0.5127222222222193,
+            "max": 0.5306666666666644
+          },
+          "exchangeRejections": 0
+        }
+      }
+    },
+    "columns-fast": {
+      "command": [
+        "python3",
+        "tools/mechanics/compare-pacing.py",
+        "--seeds",
+        "16",
+        "--seed-start",
+        "64",
+        "--seconds",
+        "180",
+        "--baseline-cadence",
+        "announcedCycleV1",
+        "--candidate-cadence",
+        "announcedCycleV2",
+        "--include-setups",
+        "--input-model",
+        "columns",
+        "--output",
+        "artifacts/calibration-current/main85-columns-fast"
+      ],
+      "inputModel": "columns",
+      "reactionSeconds": 0.45,
+      "swapContactSeconds": 0.5,
+      "parityCommits": 33504,
+      "groups": {
+        "full-motion-model/largest-clear/announcedCycleV1": {
+          "rounds": 16,
+          "overflows": 2,
+          "score": {
+            "min": 104,
+            "median": 189.0,
+            "p90": 201,
+            "max": 209
+          },
+          "showers": {
+            "min": 38,
+            "median": 60.0,
+            "p90": 61,
+            "max": 61
+          },
+          "heldFraction": {
+            "min": 0.0,
+            "median": 0.027333333333334084,
+            "p90": 0.04933333333333467,
+            "max": 0.050000000000001536
+          },
+          "startsDuringPresentation": 257,
+          "maximumPendingPresentations": 2,
+          "blockedOpportunityFraction": {
+            "min": 0.2154999999999985,
+            "median": 0.25583333333333413,
+            "p90": 0.2806666666666676,
+            "max": 0.2874444444444458
+          },
+          "noOpportunityFraction": {
+            "min": 0.5180555555555452,
+            "median": 0.6025555555555677,
+            "p90": 0.6381666666666775,
+            "max": 0.6416111111111212
+          },
+          "exchangeRejections": 0
+        },
+        "full-motion-model/largest-clear/announcedCycleV2": {
+          "rounds": 16,
+          "overflows": 8,
+          "score": {
+            "min": 78,
+            "median": 221.0,
+            "p90": 266,
+            "max": 274
+          },
+          "showers": {
+            "min": 30,
+            "median": 79.0,
+            "p90": 84,
+            "max": 85
+          },
+          "heldFraction": {
+            "min": 0.0,
+            "median": 0.02781604195983146,
+            "p90": 0.05133333333333478,
+            "max": 0.062332079527136486
+          },
+          "startsDuringPresentation": 200,
+          "maximumPendingPresentations": 3,
+          "blockedOpportunityFraction": {
+            "min": 0.31897668393782336,
+            "median": 0.35373981315841774,
+            "p90": 0.37184158652410376,
+            "max": 0.37466666666666776
+          },
+          "noOpportunityFraction": {
+            "min": 0.34611111111111176,
+            "median": 0.4404627023723219,
+            "p90": 0.5125257170519125,
+            "max": 0.5173251295336749
+          },
+          "exchangeRejections": 0
+        },
+        "full-motion-model/height-safety/announcedCycleV1": {
+          "rounds": 16,
+          "overflows": 2,
+          "score": {
+            "min": 104,
+            "median": 189.0,
+            "p90": 201,
+            "max": 209
+          },
+          "showers": {
+            "min": 38,
+            "median": 60.0,
+            "p90": 61,
+            "max": 61
+          },
+          "heldFraction": {
+            "min": 0.0,
+            "median": 0.02433333333333391,
+            "p90": 0.04000000000000107,
+            "max": 0.04933333333333467
+          },
+          "startsDuringPresentation": 272,
+          "maximumPendingPresentations": 2,
+          "blockedOpportunityFraction": {
+            "min": 0.23161111111111168,
+            "median": 0.253916666666667,
+            "p90": 0.2806666666666676,
+            "max": 0.2874444444444458
+          },
+          "noOpportunityFraction": {
+            "min": 0.5388888888889025,
+            "median": 0.6050555555555652,
+            "p90": 0.6381666666666775,
+            "max": 0.6416111111111212
+          },
+          "exchangeRejections": 0
+        },
+        "full-motion-model/height-safety/announcedCycleV2": {
+          "rounds": 16,
+          "overflows": 7,
+          "score": {
+            "min": 78,
+            "median": 231.5,
+            "p90": 267,
+            "max": 270
+          },
+          "showers": {
+            "min": 30,
+            "median": 80.5,
+            "p90": 82,
+            "max": 83
+          },
+          "heldFraction": {
+            "min": 0.0,
+            "median": 0.032323176811460824,
+            "p90": 0.04533333333333402,
+            "max": 0.05600000000000115
+          },
+          "startsDuringPresentation": 256,
+          "maximumPendingPresentations": 3,
+          "blockedOpportunityFraction": {
+            "min": 0.31433333333333474,
+            "median": 0.33790138813776516,
+            "p90": 0.3613333333333361,
+            "max": 0.36183333333333617
+          },
+          "noOpportunityFraction": {
+            "min": 0.28942873410513986,
+            "median": 0.436527777777781,
+            "p90": 0.5173251295336749,
+            "max": 0.517971680987529
+          },
+          "exchangeRejections": 0
+        },
+        "full-motion-model/trace-oriented/announcedCycleV1": {
+          "rounds": 16,
+          "overflows": 2,
+          "score": {
+            "min": 104,
+            "median": 187.5,
+            "p90": 201,
+            "max": 202
+          },
+          "showers": {
+            "min": 38,
+            "median": 60.0,
+            "p90": 60,
+            "max": 61
+          },
+          "heldFraction": {
+            "min": 0.0,
+            "median": 0.03266666666666728,
+            "p90": 0.04200000000000035,
+            "max": 0.04933333333333467
+          },
+          "startsDuringPresentation": 279,
+          "maximumPendingPresentations": 2,
+          "blockedOpportunityFraction": {
+            "min": 0.21733333333333382,
+            "median": 0.25411111111111195,
+            "p90": 0.27777777777777934,
+            "max": 0.2806666666666676
+          },
+          "noOpportunityFraction": {
+            "min": 0.5154444444444308,
+            "median": 0.5995555555555676,
+            "p90": 0.6356111111111218,
+            "max": 0.6381666666666775
+          },
+          "exchangeRejections": 0
+        },
+        "full-motion-model/trace-oriented/announcedCycleV2": {
+          "rounds": 16,
+          "overflows": 5,
+          "score": {
+            "min": 78,
+            "median": 243.0,
+            "p90": 266,
+            "max": 274
+          },
+          "showers": {
+            "min": 30,
+            "median": 80.0,
+            "p90": 83,
+            "max": 83
+          },
+          "heldFraction": {
+            "min": 0.017186505410566513,
+            "median": 0.03400000000000077,
+            "p90": 0.05333333333333485,
+            "max": 0.062332079527136486
+          },
+          "startsDuringPresentation": 250,
+          "maximumPendingPresentations": 3,
+          "blockedOpportunityFraction": {
+            "min": 0.3134945894334814,
+            "median": 0.3499722222222229,
+            "p90": 0.36945812807881906,
+            "max": 0.37466666666666776
+          },
+          "noOpportunityFraction": {
+            "min": 0.3427777777777821,
+            "median": 0.4152692250283595,
+            "p90": 0.5124124761298495,
+            "max": 0.5125257170519125
+          },
+          "exchangeRejections": 0
+        },
+        "full-motion-model/setup-first/announcedCycleV1": {
+          "rounds": 16,
+          "overflows": 0,
+          "score": {
+            "min": 175,
+            "median": 183.5,
+            "p90": 190,
+            "max": 196
+          },
+          "showers": {
+            "min": 55,
+            "median": 57.0,
+            "p90": 57,
+            "max": 57
+          },
+          "heldFraction": {
+            "min": 0.06638888888889245,
+            "median": 0.07588888888888906,
+            "p90": 0.10077777777777897,
+            "max": 0.10133333333333384
+          },
+          "startsDuringPresentation": 257,
+          "maximumPendingPresentations": 2,
+          "blockedOpportunityFraction": {
+            "min": 0.2708888888888874,
+            "median": 0.29736111111111313,
+            "p90": 0.32172222222222313,
+            "max": 0.3277777777777799
+          },
+          "noOpportunityFraction": {
+            "min": 0.44288888888890193,
+            "median": 0.5126388888888944,
+            "p90": 0.5449999999999958,
+            "max": 0.5585555555555555
+          },
+          "exchangeRejections": 0
+        },
+        "full-motion-model/setup-first/announcedCycleV2": {
+          "rounds": 16,
+          "overflows": 0,
+          "score": {
+            "min": 218,
+            "median": 229.5,
+            "p90": 241,
+            "max": 243
+          },
+          "showers": {
+            "min": 72,
+            "median": 73.0,
+            "p90": 76,
+            "max": 76
+          },
+          "heldFraction": {
+            "min": 0.08888888888888889,
+            "median": 0.11494444444444507,
+            "p90": 0.1281111111111117,
+            "max": 0.12944444444444544
+          },
+          "startsDuringPresentation": 481,
+          "maximumPendingPresentations": 3,
+          "blockedOpportunityFraction": {
+            "min": 0.37588888888889166,
+            "median": 0.3967777777777792,
+            "p90": 0.4207222222222244,
+            "max": 0.4275000000000011
+          },
+          "noOpportunityFraction": {
+            "min": 0.2272222222222212,
+            "median": 0.2855555555555597,
+            "p90": 0.32499999999999996,
+            "max": 0.3330555555555624
+          },
+          "exchangeRejections": 0
+        },
+        "quiet-model/largest-clear/announcedCycleV1": {
+          "rounds": 16,
+          "overflows": 3,
+          "score": {
+            "min": 104,
+            "median": 190.0,
+            "p90": 201,
+            "max": 201
+          },
+          "showers": {
+            "min": 38,
+            "median": 60.0,
+            "p90": 61,
+            "max": 61
+          },
+          "heldFraction": {
+            "min": 0.0,
+            "median": 0.02666666666666741,
+            "p90": 0.03733333333333439,
+            "max": 0.050000000000001536
+          },
+          "startsDuringPresentation": 10,
+          "maximumPendingPresentations": 1,
+          "blockedOpportunityFraction": {
+            "min": 0.030531055325973454,
+            "median": 0.03500000000000075,
+            "p90": 0.037500000000000755,
+            "max": 0.03750000000000083
+          },
+          "noOpportunityFraction": {
+            "min": 0.7608333333333088,
+            "median": 0.8458888888888667,
+            "p90": 0.8797222222222009,
+            "max": 0.8806666666666461
+          },
+          "exchangeRejections": 0
+        },
+        "quiet-model/largest-clear/announcedCycleV2": {
+          "rounds": 16,
+          "overflows": 5,
+          "score": {
+            "min": 104,
+            "median": 264.5,
+            "p90": 281,
+            "max": 289
+          },
+          "showers": {
+            "min": 38,
+            "median": 85.0,
+            "p90": 87,
+            "max": 87
+          },
+          "heldFraction": {
+            "min": 0.0,
+            "median": 0.03800000000000091,
+            "p90": 0.04800000000000088,
+            "max": 0.06200000000000156
+          },
+          "startsDuringPresentation": 15,
+          "maximumPendingPresentations": 1,
+          "blockedOpportunityFraction": {
+            "min": 0.04346680716543754,
+            "median": 0.05041666666666781,
+            "p90": 0.05416666666666791,
+            "max": 0.05500000000000133
+          },
+          "noOpportunityFraction": {
+            "min": 0.6813888888888773,
+            "median": 0.780603744988716,
+            "p90": 0.8214999999999741,
+            "max": 0.829277777777742
+          },
+          "exchangeRejections": 0
+        },
+        "quiet-model/height-safety/announcedCycleV1": {
+          "rounds": 16,
+          "overflows": 2,
+          "score": {
+            "min": 104,
+            "median": 191.5,
+            "p90": 201,
+            "max": 201
+          },
+          "showers": {
+            "min": 38,
+            "median": 61.0,
+            "p90": 61,
+            "max": 61
+          },
+          "heldFraction": {
+            "min": 0.0,
+            "median": 0.02450000000000227,
+            "p90": 0.030000000000000693,
+            "max": 0.03733333333333439
+          },
+          "startsDuringPresentation": 10,
+          "maximumPendingPresentations": 1,
+          "blockedOpportunityFraction": {
+            "min": 0.030833333333333903,
+            "median": 0.03500000000000075,
+            "p90": 0.0366666666666675,
+            "max": 0.03750000000000083
+          },
+          "noOpportunityFraction": {
+            "min": 0.7394999999999888,
+            "median": 0.8458888888888667,
+            "p90": 0.8776111111110868,
+            "max": 0.8797222222222009
+          },
+          "exchangeRejections": 0
+        },
+        "quiet-model/height-safety/announcedCycleV2": {
+          "rounds": 16,
+          "overflows": 4,
+          "score": {
+            "min": 104,
+            "median": 267.0,
+            "p90": 281,
+            "max": 289
+          },
+          "showers": {
+            "min": 38,
+            "median": 85.0,
+            "p90": 87,
+            "max": 87
+          },
+          "heldFraction": {
+            "min": 0.0,
+            "median": 0.03800000000000109,
+            "p90": 0.04600000000000157,
+            "max": 0.04800000000000088
+          },
+          "startsDuringPresentation": 19,
+          "maximumPendingPresentations": 1,
+          "blockedOpportunityFraction": {
+            "min": 0.04250000000000083,
+            "median": 0.049166666666667774,
+            "p90": 0.05416666666666791,
+            "max": 0.05500000000000133
+          },
+          "noOpportunityFraction": {
+            "min": 0.6686111111110695,
+            "median": 0.7720555555555325,
+            "p90": 0.8205555555555253,
+            "max": 0.8214999999999741
+          },
+          "exchangeRejections": 0
+        },
+        "quiet-model/trace-oriented/announcedCycleV1": {
+          "rounds": 16,
+          "overflows": 3,
+          "score": {
+            "min": 104,
+            "median": 190.0,
+            "p90": 198,
+            "max": 201
+          },
+          "showers": {
+            "min": 38,
+            "median": 60.0,
+            "p90": 61,
+            "max": 61
+          },
+          "heldFraction": {
+            "min": 0.0,
+            "median": 0.02900000000000063,
+            "p90": 0.042026447678280815,
+            "max": 0.04733333333333469
+          },
+          "startsDuringPresentation": 10,
+          "maximumPendingPresentations": 1,
+          "blockedOpportunityFraction": {
+            "min": 0.03000000000000058,
+            "median": 0.03458333333333413,
+            "p90": 0.037500000000000755,
+            "max": 0.03750000000000083
+          },
+          "noOpportunityFraction": {
+            "min": 0.7294444444444346,
+            "median": 0.8368055555555325,
+            "p90": 0.8658888888888567,
+            "max": 0.8737222222222025
+          },
+          "exchangeRejections": 0
+        },
+        "quiet-model/trace-oriented/announcedCycleV2": {
+          "rounds": 16,
+          "overflows": 4,
+          "score": {
+            "min": 104,
+            "median": 262.0,
+            "p90": 281,
+            "max": 289
+          },
+          "showers": {
+            "min": 38,
+            "median": 85.0,
+            "p90": 86,
+            "max": 87
+          },
+          "heldFraction": {
+            "min": 0.0,
+            "median": 0.04466666666666796,
+            "p90": 0.05948209554738983,
+            "max": 0.060000000000003634
+          },
+          "startsDuringPresentation": 16,
+          "maximumPendingPresentations": 1,
+          "blockedOpportunityFraction": {
+            "min": 0.04349196344153862,
+            "median": 0.04958333333333448,
+            "p90": 0.053611111111111796,
+            "max": 0.05500000000000133
+          },
+          "noOpportunityFraction": {
+            "min": 0.6761111111110999,
+            "median": 0.778117668111147,
+            "p90": 0.8112777777777486,
+            "max": 0.8208333333333057
+          },
+          "exchangeRejections": 0
+        },
+        "quiet-model/setup-first/announcedCycleV1": {
+          "rounds": 16,
+          "overflows": 0,
+          "score": {
+            "min": 179,
+            "median": 191.5,
+            "p90": 201,
+            "max": 202
+          },
+          "showers": {
+            "min": 56,
+            "median": 57.0,
+            "p90": 58,
+            "max": 59
+          },
+          "heldFraction": {
+            "min": 0.05277777777777778,
+            "median": 0.08116666666666691,
+            "p90": 0.09877777777777857,
+            "max": 0.10166666666666732
+          },
+          "startsDuringPresentation": 12,
+          "maximumPendingPresentations": 1,
+          "blockedOpportunityFraction": {
+            "min": 0.042777777777778726,
+            "median": 0.04750000000000104,
+            "p90": 0.05038888888889364,
+            "max": 0.0558333333333346
+          },
+          "noOpportunityFraction": {
+            "min": 0.7423333333333194,
+            "median": 0.7679166666666439,
+            "p90": 0.7930555555555326,
+            "max": 0.8044444444444199
+          },
+          "exchangeRejections": 0
+        },
+        "quiet-model/setup-first/announcedCycleV2": {
+          "rounds": 16,
+          "overflows": 0,
+          "score": {
+            "min": 256,
+            "median": 268.0,
+            "p90": 278,
+            "max": 286
+          },
+          "showers": {
+            "min": 77,
+            "median": 79.0,
+            "p90": 81,
+            "max": 81
+          },
+          "heldFraction": {
+            "min": 0.083777777777778,
+            "median": 0.1107777777777798,
+            "p90": 0.12500000000000377,
+            "max": 0.12855555555555648
+          },
+          "startsDuringPresentation": 21,
+          "maximumPendingPresentations": 1,
+          "blockedOpportunityFraction": {
+            "min": 0.06333333333333473,
+            "median": 0.0676666666666707,
+            "p90": 0.07194444444445042,
+            "max": 0.07666666666666828
+          },
+          "noOpportunityFraction": {
+            "min": 0.6566666666666298,
+            "median": 0.6710833333332994,
+            "p90": 0.7011111111110768,
+            "max": 0.7076111111110789
+          },
+          "exchangeRejections": 0
+        }
+      }
+    },
+    "settled-deliberate": {
+      "command": [
+        "python3",
+        "tools/mechanics/compare-pacing.py",
+        "--seeds",
+        "16",
+        "--seed-start",
+        "64",
+        "--seconds",
+        "180",
+        "--baseline-cadence",
+        "announcedCycleV1",
+        "--candidate-cadence",
+        "announcedCycleV2",
+        "--include-setups",
+        "--input-model",
+        "settled",
+        "--reaction-seconds",
+        "1",
+        "--swap-seconds",
+        "1",
+        "--output",
+        "artifacts/calibration-current/main85-settled-deliberate"
+      ],
+      "inputModel": "settled",
+      "reactionSeconds": 1.0,
+      "swapContactSeconds": 1.0,
+      "parityCommits": 27061,
+      "groups": {
+        "full-motion-model/largest-clear/announcedCycleV1": {
+          "rounds": 16,
+          "overflows": 3,
+          "score": {
+            "min": 33,
+            "median": 160.5,
+            "p90": 174,
+            "max": 177
+          },
+          "showers": {
+            "min": 13,
+            "median": 58.5,
+            "p90": 60,
+            "max": 60
+          },
+          "heldFraction": {
+            "min": 0.0,
+            "median": 0.030333333333333653,
+            "p90": 0.04400000000000106,
+            "max": 0.053249804228661254
+          },
+          "startsDuringPresentation": 0,
+          "maximumPendingPresentations": 1,
+          "blockedOpportunityFraction": {
+            "min": 0.2979444444444441,
+            "median": 0.3356944444444442,
+            "p90": 0.3470555555555546,
+            "max": 0.4286162535299656
+          },
+          "noOpportunityFraction": {
+            "min": 0.11201757138374656,
+            "median": 0.19988888888888864,
+            "p90": 0.23083616114156424,
+            "max": 0.2311666666666662
+          },
+          "exchangeRejections": 0
+        },
+        "full-motion-model/largest-clear/announcedCycleV2": {
+          "rounds": 16,
+          "overflows": 7,
+          "score": {
+            "min": 36,
+            "median": 177.0,
+            "p90": 191,
+            "max": 201
+          },
+          "showers": {
+            "min": 21,
+            "median": 77.5,
+            "p90": 81,
+            "max": 81
+          },
+          "heldFraction": {
+            "min": 0.04333333333333497,
+            "median": 0.06015516289342997,
+            "p90": 0.09933333333333613,
+            "max": 0.11371161091448835
+          },
+          "startsDuringPresentation": 0,
+          "maximumPendingPresentations": 1,
+          "blockedOpportunityFraction": {
+            "min": 0.44628382235414976,
+            "median": 0.49269444444444355,
+            "p90": 0.5131873044255697,
+            "max": 0.5148333333333338
+          },
+          "noOpportunityFraction": {
+            "min": 0.0014295516925892017,
+            "median": 0.020388888888888977,
+            "p90": 0.041214750542299346,
+            "max": 0.044055555555555556
+          },
+          "exchangeRejections": 0
+        },
+        "full-motion-model/height-safety/announcedCycleV1": {
+          "rounds": 16,
+          "overflows": 4,
+          "score": {
+            "min": 84,
+            "median": 162.5,
+            "p90": 173,
+            "max": 175
+          },
+          "showers": {
+            "min": 37,
+            "median": 58.0,
+            "p90": 59,
+            "max": 59
+          },
+          "heldFraction": {
+            "min": 0.010101010101009885,
+            "median": 0.03200000000000078,
+            "p90": 0.03733333333333431,
+            "max": 0.03733333333333439
+          },
+          "startsDuringPresentation": 0,
+          "maximumPendingPresentations": 1,
+          "blockedOpportunityFraction": {
+            "min": 0.29650000000000065,
+            "median": 0.3319434736718661,
+            "p90": 0.3406666666666658,
+            "max": 0.3458333333333338
+          },
+          "noOpportunityFraction": {
+            "min": 0.16344444444444423,
+            "median": 0.1984103305838965,
+            "p90": 0.2331111111111109,
+            "max": 0.2435555555555554
+          },
+          "exchangeRejections": 0
+        },
+        "full-motion-model/height-safety/announcedCycleV2": {
+          "rounds": 16,
+          "overflows": 2,
+          "score": {
+            "min": 53,
+            "median": 182.0,
+            "p90": 195,
+            "max": 196
+          },
+          "showers": {
+            "min": 28,
+            "median": 79.0,
+            "p90": 80,
+            "max": 81
+          },
+          "heldFraction": {
+            "min": 0.04533333333333432,
+            "median": 0.06333333333333455,
+            "p90": 0.09733333333333566,
+            "max": 0.09950000000000012
+          },
+          "startsDuringPresentation": 0,
+          "maximumPendingPresentations": 1,
+          "blockedOpportunityFraction": {
+            "min": 0.46471657577259945,
+            "median": 0.4969444444444431,
+            "p90": 0.5156666666666656,
+            "max": 0.5164652707314824
+          },
+          "noOpportunityFraction": {
+            "min": 0.001388888888888889,
+            "median": 0.014416666666665842,
+            "p90": 0.03283333333333344,
+            "max": 0.057180631300611476
+          },
+          "exchangeRejections": 0
+        },
+        "full-motion-model/trace-oriented/announcedCycleV1": {
+          "rounds": 16,
+          "overflows": 3,
+          "score": {
+            "min": 33,
+            "median": 160.0,
+            "p90": 174,
+            "max": 174
+          },
+          "showers": {
+            "min": 13,
+            "median": 58.0,
+            "p90": 59,
+            "max": 59
+          },
+          "heldFraction": {
+            "min": 0.014321362699359574,
+            "median": 0.03877777777777819,
+            "p90": 0.05333333333333464,
+            "max": 0.059333333333334536
+          },
+          "startsDuringPresentation": 0,
+          "maximumPendingPresentations": 1,
+          "blockedOpportunityFraction": {
+            "min": 0.29338888888888837,
+            "median": 0.3259722222222222,
+            "p90": 0.3423888888888882,
+            "max": 0.41456752655538714
+          },
+          "noOpportunityFraction": {
+            "min": 0.10834597875569049,
+            "median": 0.19988888888888864,
+            "p90": 0.22466666666666657,
+            "max": 0.23116666666666627
+          },
+          "exchangeRejections": 0
+        },
+        "full-motion-model/trace-oriented/announcedCycleV2": {
+          "rounds": 16,
+          "overflows": 7,
+          "score": {
+            "min": 36,
+            "median": 175.5,
+            "p90": 188,
+            "max": 188
+          },
+          "showers": {
+            "min": 21,
+            "median": 76.5,
+            "p90": 78,
+            "max": 79
+          },
+          "heldFraction": {
+            "min": 0.05733333333333504,
+            "median": 0.08700000000000177,
+            "p90": 0.11200000000000207,
+            "max": 0.12450659749633489
+          },
+          "startsDuringPresentation": 0,
+          "maximumPendingPresentations": 1,
+          "blockedOpportunityFraction": {
+            "min": 0.44287808728995137,
+            "median": 0.4910555555555536,
+            "p90": 0.5046111111111107,
+            "max": 0.506035649819494
+          },
+          "noOpportunityFraction": {
+            "min": 0.0014101985559566762,
+            "median": 0.01905555555555557,
+            "p90": 0.04071275515958048,
+            "max": 0.044055555555555556
+          },
+          "exchangeRejections": 0
+        },
+        "full-motion-model/setup-first/announcedCycleV1": {
+          "rounds": 16,
+          "overflows": 0,
+          "score": {
+            "min": 115,
+            "median": 131.5,
+            "p90": 140,
+            "max": 142
+          },
+          "showers": {
+            "min": 48,
+            "median": 50.5,
+            "p90": 52,
+            "max": 53
+          },
+          "heldFraction": {
+            "min": 0.11466666666666722,
+            "median": 0.16522222222222285,
+            "p90": 0.19266666666666896,
+            "max": 0.2027777777777773
+          },
+          "startsDuringPresentation": 0,
+          "maximumPendingPresentations": 1,
+          "blockedOpportunityFraction": {
+            "min": 0.334444444444445,
+            "median": 0.37538888888888944,
+            "p90": 0.3896666666666665,
+            "max": 0.3982222222222208
+          },
+          "noOpportunityFraction": {
+            "min": 0.041888888888888864,
+            "median": 0.06999999999999942,
+            "p90": 0.09627777777777766,
+            "max": 0.1104444444444445
+          },
+          "exchangeRejections": 0
+        },
+        "full-motion-model/setup-first/announcedCycleV2": {
+          "rounds": 16,
+          "overflows": 13,
+          "score": {
+            "min": 18,
+            "median": 60.5,
+            "p90": 139,
+            "max": 153
+          },
+          "showers": {
+            "min": 26,
+            "median": 41.0,
+            "p90": 68,
+            "max": 68
+          },
+          "heldFraction": {
+            "min": 0.06793478260869563,
+            "median": 0.17680152548435937,
+            "p90": 0.19941755651088736,
+            "max": 0.20977777777778062
+          },
+          "startsDuringPresentation": 0,
+          "maximumPendingPresentations": 1,
+          "blockedOpportunityFraction": {
+            "min": 0.45388888888888884,
+            "median": 0.4714491341296859,
+            "p90": 0.49286684782608686,
+            "max": 0.5131344348032805
+          },
+          "noOpportunityFraction": {
+            "min": 0.001388888888888889,
+            "median": 0.00288682695115929,
+            "p90": 0.014019739793629422,
+            "max": 0.022758152173913037
+          },
+          "exchangeRejections": 0
+        },
+        "quiet-model/largest-clear/announcedCycleV1": {
+          "rounds": 16,
+          "overflows": 2,
+          "score": {
+            "min": 104,
+            "median": 190.0,
+            "p90": 201,
+            "max": 209
+          },
+          "showers": {
+            "min": 38,
+            "median": 60.0,
+            "p90": 61,
+            "max": 61
+          },
+          "heldFraction": {
+            "min": 0.0,
+            "median": 0.027333333333334077,
+            "p90": 0.050000000000001536,
+            "max": 0.05066666666666805
+          },
+          "startsDuringPresentation": 0,
+          "maximumPendingPresentations": 1,
+          "blockedOpportunityFraction": {
+            "min": 0.04250000000000086,
+            "median": 0.046276129295402306,
+            "p90": 0.05166666666666783,
+            "max": 0.05500000000000133
+          },
+          "noOpportunityFraction": {
+            "min": 0.4786111111111099,
+            "median": 0.5584166666666646,
+            "p90": 0.6036111111111089,
+            "max": 0.6073333333333307
+          },
+          "exchangeRejections": 0
+        },
+        "quiet-model/largest-clear/announcedCycleV2": {
+          "rounds": 16,
+          "overflows": 9,
+          "score": {
+            "min": 71,
+            "median": 241.5,
+            "p90": 261,
+            "max": 263
+          },
+          "showers": {
+            "min": 30,
+            "median": 79.5,
+            "p90": 86,
+            "max": 86
+          },
+          "heldFraction": {
+            "min": 0.0,
+            "median": 0.03266666666666755,
+            "p90": 0.06031144434374417,
+            "max": 0.06508166740241007
+          },
+          "startsDuringPresentation": 0,
+          "maximumPendingPresentations": 1,
+          "blockedOpportunityFraction": {
+            "min": 0.05671077504725883,
+            "median": 0.07933204526635512,
+            "p90": 0.0866666666666689,
+            "max": 0.09128468538886918
+          },
+          "noOpportunityFraction": {
+            "min": 0.27329574004801377,
+            "median": 0.37387933215198177,
+            "p90": 0.5009451795841203,
+            "max": 0.5047555481394969
+          },
+          "exchangeRejections": 0
+        },
+        "quiet-model/height-safety/announcedCycleV1": {
+          "rounds": 16,
+          "overflows": 2,
+          "score": {
+            "min": 104,
+            "median": 190.0,
+            "p90": 201,
+            "max": 209
+          },
+          "showers": {
+            "min": 38,
+            "median": 60.5,
+            "p90": 61,
+            "max": 61
+          },
+          "heldFraction": {
+            "min": 0.0,
+            "median": 0.02433333333333355,
+            "p90": 0.03733333333333439,
+            "max": 0.05066666666666805
+          },
+          "startsDuringPresentation": 0,
+          "maximumPendingPresentations": 1,
+          "blockedOpportunityFraction": {
+            "min": 0.04250000000000086,
+            "median": 0.04833333333333437,
+            "p90": 0.05333333333333461,
+            "max": 0.05750000000000147
+          },
+          "noOpportunityFraction": {
+            "min": 0.42972222222222106,
+            "median": 0.5547499999999975,
+            "p90": 0.5978888888888864,
+            "max": 0.6036111111111089
+          },
+          "exchangeRejections": 0
+        },
+        "quiet-model/height-safety/announcedCycleV2": {
+          "rounds": 16,
+          "overflows": 5,
+          "score": {
+            "min": 102,
+            "median": 254.5,
+            "p90": 273,
+            "max": 276
+          },
+          "showers": {
+            "min": 39,
+            "median": 85.0,
+            "p90": 86,
+            "max": 87
+          },
+          "heldFraction": {
+            "min": 0.0241044526280544,
+            "median": 0.043333333333334334,
+            "p90": 0.0560373582388273,
+            "max": 0.06266666666666858
+          },
+          "startsDuringPresentation": 0,
+          "maximumPendingPresentations": 1,
+          "blockedOpportunityFraction": {
+            "min": 0.05671077504725883,
+            "median": 0.07712383905233472,
+            "p90": 0.08666666666666885,
+            "max": 0.09166666666666864
+          },
+          "noOpportunityFraction": {
+            "min": 0.30222222222222045,
+            "median": 0.38534332536195404,
+            "p90": 0.4553063274188145,
+            "max": 0.5009451795841203
+          },
+          "exchangeRejections": 0
+        },
+        "quiet-model/trace-oriented/announcedCycleV1": {
+          "rounds": 16,
+          "overflows": 2,
+          "score": {
+            "min": 104,
+            "median": 189.0,
+            "p90": 201,
+            "max": 202
+          },
+          "showers": {
+            "min": 38,
+            "median": 60.0,
+            "p90": 61,
+            "max": 61
+          },
+          "heldFraction": {
+            "min": 0.0,
+            "median": 0.03266666666666726,
+            "p90": 0.04202644767828093,
+            "max": 0.05066666666666805
+          },
+          "startsDuringPresentation": 0,
+          "maximumPendingPresentations": 1,
+          "blockedOpportunityFraction": {
+            "min": 0.0412777777777781,
+            "median": 0.046888888888889785,
+            "p90": 0.05500000000000133,
+            "max": 0.0566666666666681
+          },
+          "noOpportunityFraction": {
+            "min": 0.42305555555555446,
+            "median": 0.5550277777777753,
+            "p90": 0.5976111111111087,
+            "max": 0.6033333333333314
+          },
+          "exchangeRejections": 0
+        },
+        "quiet-model/trace-oriented/announcedCycleV2": {
+          "rounds": 16,
+          "overflows": 10,
+          "score": {
+            "min": 86,
+            "median": 222.0,
+            "p90": 261,
+            "max": 263
+          },
+          "showers": {
+            "min": 31,
+            "median": 76.0,
+            "p90": 86,
+            "max": 86
+          },
+          "heldFraction": {
+            "min": 0.0,
+            "median": 0.040525708949922745,
+            "p90": 0.06031144434374417,
+            "max": 0.07140620106483021
+          },
+          "startsDuringPresentation": 0,
+          "maximumPendingPresentations": 1,
+          "blockedOpportunityFraction": {
+            "min": 0.05671077504725883,
+            "median": 0.07933204526635512,
+            "p90": 0.08455997494519457,
+            "max": 0.090000000000002
+          },
+          "noOpportunityFraction": {
+            "min": 0.27194444444444316,
+            "median": 0.3805932008464422,
+            "p90": 0.44458973520758355,
+            "max": 0.5009451795841203
+          },
+          "exchangeRejections": 0
+        },
+        "quiet-model/setup-first/announcedCycleV1": {
+          "rounds": 16,
+          "overflows": 0,
+          "score": {
+            "min": 163,
+            "median": 170.0,
+            "p90": 179,
+            "max": 179
+          },
+          "showers": {
+            "min": 50,
+            "median": 53.0,
+            "p90": 54,
+            "max": 54
+          },
+          "heldFraction": {
+            "min": 0.12222222222222191,
+            "median": 0.1453333333333336,
+            "p90": 0.17022222222222314,
+            "max": 0.18422222222222212
+          },
+          "startsDuringPresentation": 0,
+          "maximumPendingPresentations": 1,
+          "blockedOpportunityFraction": {
+            "min": 0.050000000000001064,
+            "median": 0.0575000000000013,
+            "p90": 0.06333333333333478,
+            "max": 0.06583333333333466
+          },
+          "noOpportunityFraction": {
+            "min": 0.3229999999999981,
+            "median": 0.38741666666666486,
+            "p90": 0.4263888888888873,
+            "max": 0.4267777777777757
+          },
+          "exchangeRejections": 0
+        },
+        "quiet-model/setup-first/announcedCycleV2": {
+          "rounds": 16,
+          "overflows": 0,
+          "score": {
+            "min": 178,
+            "median": 192.0,
+            "p90": 201,
+            "max": 207
+          },
+          "showers": {
+            "min": 64,
+            "median": 69.0,
+            "p90": 73,
+            "max": 74
+          },
+          "heldFraction": {
+            "min": 0.17355555555555607,
+            "median": 0.21766666666666779,
+            "p90": 0.24200000000000096,
+            "max": 0.2637777777777782
+          },
+          "startsDuringPresentation": 0,
+          "maximumPendingPresentations": 1,
+          "blockedOpportunityFraction": {
+            "min": 0.08666666666666861,
+            "median": 0.09583333333333546,
+            "p90": 0.10083333333333545,
+            "max": 0.1016666666666688
+          },
+          "noOpportunityFraction": {
+            "min": 0.0917777777777768,
+            "median": 0.14138888888888823,
+            "p90": 0.18916666666666565,
+            "max": 0.19194444444444383
+          },
+          "exchangeRejections": 0
+        }
+      }
+    },
+    "columns-deliberate": {
+      "command": [
+        "python3",
+        "tools/mechanics/compare-pacing.py",
+        "--seeds",
+        "16",
+        "--seed-start",
+        "64",
+        "--seconds",
+        "180",
+        "--baseline-cadence",
+        "announcedCycleV1",
+        "--candidate-cadence",
+        "announcedCycleV2",
+        "--include-setups",
+        "--input-model",
+        "columns",
+        "--reaction-seconds",
+        "1",
+        "--swap-seconds",
+        "1",
+        "--output",
+        "artifacts/calibration-current/main85-columns-deliberate"
+      ],
+      "inputModel": "columns",
+      "reactionSeconds": 1.0,
+      "swapContactSeconds": 1.0,
+      "parityCommits": 31744,
+      "groups": {
+        "full-motion-model/largest-clear/announcedCycleV1": {
+          "rounds": 16,
+          "overflows": 2,
+          "score": {
+            "min": 125,
+            "median": 180.0,
+            "p90": 198,
+            "max": 199
+          },
+          "showers": {
+            "min": 45,
+            "median": 60.0,
+            "p90": 61,
+            "max": 61
+          },
+          "heldFraction": {
+            "min": 0.010000000000000378,
+            "median": 0.023000000000000694,
+            "p90": 0.030666666666667494,
+            "max": 0.03414237603065909
+          },
+          "startsDuringPresentation": 80,
+          "maximumPendingPresentations": 2,
+          "blockedOpportunityFraction": {
+            "min": 0.22005555555555598,
+            "median": 0.25433333333333347,
+            "p90": 0.27427777777777823,
+            "max": 0.28388888888888986
+          },
+          "noOpportunityFraction": {
+            "min": 0.42,
+            "median": 0.502054805930368,
+            "p90": 0.5272222222222226,
+            "max": 0.5455555555555555
+          },
+          "exchangeRejections": 0
+        },
+        "full-motion-model/largest-clear/announcedCycleV2": {
+          "rounds": 16,
+          "overflows": 8,
+          "score": {
+            "min": 25,
+            "median": 231.5,
+            "p90": 248,
+            "max": 248
+          },
+          "showers": {
+            "min": 13,
+            "median": 82.0,
+            "p90": 85,
+            "max": 86
+          },
+          "heldFraction": {
+            "min": 0.0,
+            "median": 0.031545573009299596,
+            "p90": 0.0536231884057982,
+            "max": 0.054000000000001463
+          },
+          "startsDuringPresentation": 245,
+          "maximumPendingPresentations": 2,
+          "blockedOpportunityFraction": {
+            "min": 0.3052640487474612,
+            "median": 0.35519444444444515,
+            "p90": 0.37811111111111034,
+            "max": 0.3910472972972972
+          },
+          "noOpportunityFraction": {
+            "min": 0.27944444444444433,
+            "median": 0.3399999999999999,
+            "p90": 0.42511832319134524,
+            "max": 0.443412162162162
+          },
+          "exchangeRejections": 0
+        },
+        "full-motion-model/height-safety/announcedCycleV1": {
+          "rounds": 16,
+          "overflows": 2,
+          "score": {
+            "min": 144,
+            "median": 181.0,
+            "p90": 187,
+            "max": 190
+          },
+          "showers": {
+            "min": 52,
+            "median": 60.0,
+            "p90": 61,
+            "max": 61
+          },
+          "heldFraction": {
+            "min": 0.0,
+            "median": 0.017000000000000376,
+            "p90": 0.0386666666666676,
+            "max": 0.0426666666666673
+          },
+          "startsDuringPresentation": 79,
+          "maximumPendingPresentations": 2,
+          "blockedOpportunityFraction": {
+            "min": 0.21277777777777823,
+            "median": 0.25458333333333405,
+            "p90": 0.27233333333333404,
+            "max": 0.27261111111111197
+          },
+          "noOpportunityFraction": {
+            "min": 0.39499999999999996,
+            "median": 0.503611111111111,
+            "p90": 0.5326639718346585,
+            "max": 0.5403333333333328
+          },
+          "exchangeRejections": 0
+        },
+        "full-motion-model/height-safety/announcedCycleV2": {
+          "rounds": 16,
+          "overflows": 9,
+          "score": {
+            "min": 98,
+            "median": 209.5,
+            "p90": 252,
+            "max": 255
+          },
+          "showers": {
+            "min": 41,
+            "median": 74.0,
+            "p90": 84,
+            "max": 84
+          },
+          "heldFraction": {
+            "min": 0.009480337078651762,
+            "median": 0.035369108461102805,
+            "p90": 0.051333333333334834,
+            "max": 0.059142857142858385
+          },
+          "startsDuringPresentation": 240,
+          "maximumPendingPresentations": 2,
+          "blockedOpportunityFraction": {
+            "min": 0.27730008598452294,
+            "median": 0.3497500000000002,
+            "p90": 0.38082174301390925,
+            "max": 0.3920357751277689
+          },
+          "noOpportunityFraction": {
+            "min": 0.28390965930840906,
+            "median": 0.3403257981619409,
+            "p90": 0.39385847797062734,
+            "max": 0.45370796867802815
+          },
+          "exchangeRejections": 0
+        },
+        "full-motion-model/trace-oriented/announcedCycleV1": {
+          "rounds": 16,
+          "overflows": 2,
+          "score": {
+            "min": 126,
+            "median": 174.5,
+            "p90": 191,
+            "max": 199
+          },
+          "showers": {
+            "min": 43,
+            "median": 60.0,
+            "p90": 60,
+            "max": 60
+          },
+          "heldFraction": {
+            "min": 0.018000000000000148,
+            "median": 0.02966666666666764,
+            "p90": 0.04266666666666785,
+            "max": 0.051344743276283834
+          },
+          "startsDuringPresentation": 71,
+          "maximumPendingPresentations": 2,
+          "blockedOpportunityFraction": {
+            "min": 0.21833333333333269,
+            "median": 0.2531111111111116,
+            "p90": 0.2712222222222229,
+            "max": 0.28388888888888986
+          },
+          "noOpportunityFraction": {
+            "min": 0.42000000000000004,
+            "median": 0.5034999999999997,
+            "p90": 0.5455555555555555,
+            "max": 0.5623471882640584
+          },
+          "exchangeRejections": 0
+        },
+        "full-motion-model/trace-oriented/announcedCycleV2": {
+          "rounds": 16,
+          "overflows": 8,
+          "score": {
+            "min": 103,
+            "median": 219.0,
+            "p90": 242,
+            "max": 245
+          },
+          "showers": {
+            "min": 42,
+            "median": 76.5,
+            "p90": 84,
+            "max": 84
+          },
+          "heldFraction": {
+            "min": 0.027953410981698196,
+            "median": 0.04093850385695055,
+            "p90": 0.07133333333333475,
+            "max": 0.08933333333333557
+          },
+          "startsDuringPresentation": 249,
+          "maximumPendingPresentations": 2,
+          "blockedOpportunityFraction": {
+            "min": 0.29094444444444506,
+            "median": 0.3328055555555556,
+            "p90": 0.36177136389360515,
+            "max": 0.3636426592797789
+          },
+          "noOpportunityFraction": {
+            "min": 0.295333333333331,
+            "median": 0.341111111111111,
+            "p90": 0.3763440860215047,
+            "max": 0.4237855946398656
+          },
+          "exchangeRejections": 0
+        },
+        "full-motion-model/setup-first/announcedCycleV1": {
+          "rounds": 16,
+          "overflows": 0,
+          "score": {
+            "min": 156,
+            "median": 166.0,
+            "p90": 176,
+            "max": 179
+          },
+          "showers": {
+            "min": 51,
+            "median": 53.0,
+            "p90": 55,
+            "max": 55
+          },
+          "heldFraction": {
+            "min": 0.09622222222222218,
+            "median": 0.13877777777777794,
+            "p90": 0.16377777777777816,
+            "max": 0.17733333333333318
+          },
+          "startsDuringPresentation": 104,
+          "maximumPendingPresentations": 2,
+          "blockedOpportunityFraction": {
+            "min": 0.22755555555555632,
+            "median": 0.27058333333333373,
+            "p90": 0.2865555555555564,
+            "max": 0.2925555555555558
+          },
+          "noOpportunityFraction": {
+            "min": 0.3204444444444437,
+            "median": 0.3571111111111108,
+            "p90": 0.41299999999999953,
+            "max": 0.4219999999999997
+          },
+          "exchangeRejections": 0
+        },
+        "full-motion-model/setup-first/announcedCycleV2": {
+          "rounds": 16,
+          "overflows": 1,
+          "score": {
+            "min": 173,
+            "median": 193.5,
+            "p90": 204,
+            "max": 215
+          },
+          "showers": {
+            "min": 66,
+            "median": 71.0,
+            "p90": 73,
+            "max": 74
+          },
+          "heldFraction": {
+            "min": 0.1531111111111119,
+            "median": 0.18888888888888944,
+            "p90": 0.22888888888888959,
+            "max": 0.242000000000001
+          },
+          "startsDuringPresentation": 293,
+          "maximumPendingPresentations": 2,
+          "blockedOpportunityFraction": {
+            "min": 0.3058888888888887,
+            "median": 0.3530555555555554,
+            "p90": 0.37444444444444425,
+            "max": 0.3941111111111114
+          },
+          "noOpportunityFraction": {
+            "min": 0.12333333333333332,
+            "median": 0.17621316126670317,
+            "p90": 0.22666666666666654,
+            "max": 0.2466666666666666
+          },
+          "exchangeRejections": 0
+        },
+        "quiet-model/largest-clear/announcedCycleV1": {
+          "rounds": 16,
+          "overflows": 2,
+          "score": {
+            "min": 104,
+            "median": 190.0,
+            "p90": 201,
+            "max": 201
+          },
+          "showers": {
+            "min": 38,
+            "median": 60.0,
+            "p90": 61,
+            "max": 61
+          },
+          "heldFraction": {
+            "min": 0.0,
+            "median": 0.027333333333334132,
+            "p90": 0.03733333333333439,
+            "max": 0.050000000000001536
+          },
+          "startsDuringPresentation": 3,
+          "maximumPendingPresentations": 1,
+          "blockedOpportunityFraction": {
+            "min": 0.030833333333333903,
+            "median": 0.03500000000000075,
+            "p90": 0.0375000000000008,
+            "max": 0.03750000000000083
+          },
+          "noOpportunityFraction": {
+            "min": 0.6500000000000004,
+            "median": 0.7725555555555559,
+            "p90": 0.8180555555555562,
+            "max": 0.8220555555555555
+          },
+          "exchangeRejections": 0
+        },
+        "quiet-model/largest-clear/announcedCycleV2": {
+          "rounds": 16,
+          "overflows": 7,
+          "score": {
+            "min": 129,
+            "median": 259.5,
+            "p90": 279,
+            "max": 284
+          },
+          "showers": {
+            "min": 45,
+            "median": 85.0,
+            "p90": 87,
+            "max": 87
+          },
+          "heldFraction": {
+            "min": 0.014666666666667223,
+            "median": 0.026683401795223237,
+            "p90": 0.05000000000000122,
+            "max": 0.06533333333333449
+          },
+          "startsDuringPresentation": 18,
+          "maximumPendingPresentations": 2,
+          "blockedOpportunityFraction": {
+            "min": 0.044801250826869685,
+            "median": 0.04986111111111215,
+            "p90": 0.056655025223128624,
+            "max": 0.057500000000001314
+          },
+          "noOpportunityFraction": {
+            "min": 0.5324999999999985,
+            "median": 0.6086944444444442,
+            "p90": 0.6850923060505836,
+            "max": 0.7024154589371979
+          },
+          "exchangeRejections": 0
+        },
+        "quiet-model/height-safety/announcedCycleV1": {
+          "rounds": 16,
+          "overflows": 2,
+          "score": {
+            "min": 104,
+            "median": 191.5,
+            "p90": 201,
+            "max": 201
+          },
+          "showers": {
+            "min": 38,
+            "median": 60.5,
+            "p90": 61,
+            "max": 61
+          },
+          "heldFraction": {
+            "min": 0.0,
+            "median": 0.025666666666667344,
+            "p90": 0.030000000000000693,
+            "max": 0.03733333333333439
+          },
+          "startsDuringPresentation": 0,
+          "maximumPendingPresentations": 1,
+          "blockedOpportunityFraction": {
+            "min": 0.030833333333333903,
+            "median": 0.03500000000000075,
+            "p90": 0.03750000000000083,
+            "max": 0.03750000000000083
+          },
+          "noOpportunityFraction": {
+            "min": 0.6842222222222214,
+            "median": 0.7607222222222219,
+            "p90": 0.8156666666666667,
+            "max": 0.8180555555555562
+          },
+          "exchangeRejections": 0
+        },
+        "quiet-model/height-safety/announcedCycleV2": {
+          "rounds": 16,
+          "overflows": 7,
+          "score": {
+            "min": 135,
+            "median": 265.5,
+            "p90": 276,
+            "max": 277
+          },
+          "showers": {
+            "min": 46,
+            "median": 85.0,
+            "p90": 87,
+            "max": 87
+          },
+          "heldFraction": {
+            "min": 0.020666666666667093,
+            "median": 0.029477917519743182,
+            "p90": 0.04756587762394034,
+            "max": 0.0590736182591188
+          },
+          "startsDuringPresentation": 17,
+          "maximumPendingPresentations": 2,
+          "blockedOpportunityFraction": {
+            "min": 0.04354622599374809,
+            "median": 0.04817691103759895,
+            "p90": 0.05166666666666783,
+            "max": 0.05250000000000122
+          },
+          "noOpportunityFraction": {
+            "min": 0.483611111111112,
+            "median": 0.5951328502415468,
+            "p90": 0.6735287536361604,
+            "max": 0.6851418543433752
+          },
+          "exchangeRejections": 0
+        },
+        "quiet-model/trace-oriented/announcedCycleV1": {
+          "rounds": 16,
+          "overflows": 2,
+          "score": {
+            "min": 104,
+            "median": 190.0,
+            "p90": 198,
+            "max": 201
+          },
+          "showers": {
+            "min": 38,
+            "median": 60.0,
+            "p90": 61,
+            "max": 61
+          },
+          "heldFraction": {
+            "min": 0.0,
+            "median": 0.03200000000000072,
+            "p90": 0.042026447678280815,
+            "max": 0.04733333333333469
+          },
+          "startsDuringPresentation": 0,
+          "maximumPendingPresentations": 1,
+          "blockedOpportunityFraction": {
+            "min": 0.030833333333333903,
+            "median": 0.03458333333333413,
+            "p90": 0.0375000000000008,
+            "max": 0.03750000000000083
+          },
+          "noOpportunityFraction": {
+            "min": 0.6477777777777791,
+            "median": 0.7695555555555558,
+            "p90": 0.8094444444444453,
+            "max": 0.812055555555556
+          },
+          "exchangeRejections": 0
+        },
+        "quiet-model/trace-oriented/announcedCycleV2": {
+          "rounds": 16,
+          "overflows": 8,
+          "score": {
+            "min": 126,
+            "median": 256.0,
+            "p90": 281,
+            "max": 282
+          },
+          "showers": {
+            "min": 43,
+            "median": 83.0,
+            "p90": 86,
+            "max": 87
+          },
+          "heldFraction": {
+            "min": 0.02066666666666745,
+            "median": 0.038972614999106064,
+            "p90": 0.06866666666666855,
+            "max": 0.07271153429993443
+          },
+          "startsDuringPresentation": 15,
+          "maximumPendingPresentations": 2,
+          "blockedOpportunityFraction": {
+            "min": 0.044448421931866586,
+            "median": 0.048750000000001084,
+            "p90": 0.05416666666666791,
+            "max": 0.05572093733302892
+          },
+          "noOpportunityFraction": {
+            "min": 0.5215555555555541,
+            "median": 0.6050915651910027,
+            "p90": 0.6850923060505836,
+            "max": 0.6951615987760564
+          },
+          "exchangeRejections": 0
+        },
+        "quiet-model/setup-first/announcedCycleV1": {
+          "rounds": 16,
+          "overflows": 0,
+          "score": {
+            "min": 166,
+            "median": 177.5,
+            "p90": 185,
+            "max": 186
+          },
+          "showers": {
+            "min": 51,
+            "median": 53.0,
+            "p90": 55,
+            "max": 55
+          },
+          "heldFraction": {
+            "min": 0.10555555555555556,
+            "median": 0.14444444444444446,
+            "p90": 0.16111111111111112,
+            "max": 0.17866666666666664
+          },
+          "startsDuringPresentation": 1,
+          "maximumPendingPresentations": 1,
+          "blockedOpportunityFraction": {
+            "min": 0.040833333333334214,
+            "median": 0.04625000000000104,
+            "p90": 0.050000000000001134,
+            "max": 0.05083333333333451
+          },
+          "noOpportunityFraction": {
+            "min": 0.5205,
+            "median": 0.6005555555555562,
+            "p90": 0.6447222222222229,
+            "max": 0.653055555555556
+          },
+          "exchangeRejections": 0
+        },
+        "quiet-model/setup-first/announcedCycleV2": {
+          "rounds": 16,
+          "overflows": 0,
+          "score": {
+            "min": 204,
+            "median": 230.0,
+            "p90": 239,
+            "max": 239
+          },
+          "showers": {
+            "min": 67,
+            "median": 72.0,
+            "p90": 73,
+            "max": 73
+          },
+          "heldFraction": {
+            "min": 0.1786666666666671,
+            "median": 0.19394444444444486,
+            "p90": 0.22977777777777822,
+            "max": 0.24088888888888985
+          },
+          "startsDuringPresentation": 42,
+          "maximumPendingPresentations": 2,
+          "blockedOpportunityFraction": {
+            "min": 0.05333333333333433,
+            "median": 0.06250000000000128,
+            "p90": 0.06750000000000159,
+            "max": 0.07000000000000142
+          },
+          "noOpportunityFraction": {
+            "min": 0.3325000000000006,
+            "median": 0.3968055555555552,
+            "p90": 0.4317777777777776,
+            "max": 0.47688888888888875
+          },
+          "exchangeRejections": 0
+        }
+      }
+    }
+  },
+  "rounds": 1024,
+  "parityCommits": 124831,
+  "limits": [
+    "Virtual clock and source-duration presentation model, not native or human timing.",
+    "Decision may start during presentation; admission uses the current real store.",
+    "Taps/full-component walks and one improving exchange per shower; no optimal subsets or recipe trimming.",
+    "Blocked-opportunity metric covers modeled clears, excluding setup opportunities.",
+    "No-opportunity fraction is conditioned on the selected input model.",
+    "Unended runs are censored at 180 seconds.",
+    "Visible committed state is not a model of perception of moving stars."
+  ]
+}

@@ -57,6 +57,38 @@ extension PacingMeasure {
         stale?()
         precondition(store.game.turns == 1 && clock.deadline == nil)
         store.setSuspended(true)
+        // Two independent clears use distinct model completions and reservations.
+        // A single pending callback would strand the first store presentation.
+        for quiet in [false, true] {
+            let overlapClock = PacingClock()
+            let overlapPresenter = PacingPresenter(overlapClock, quiet: quiet)
+            let overlapName = "starfall.pacing.overlap.\(UUID().uuidString)"
+            let overlapDefaults = UserDefaults(suiteName: overlapName)!
+            defer { overlapDefaults.removePersistentDomain(forName: overlapName) }
+            let original = ObservatoryReviewFixture.game(dense: false)
+            overlapDefaults.set(try! SkySaveArchive.encode(original), forKey: SkySaveArchive.key)
+            let overlap = FallingSkyStore(defaults: overlapDefaults, arguments: [], presenter: overlapPresenter, clock: overlapClock)
+            overlap.setSuspended(false)
+            overlap.clear(Cell(0,0))
+            precondition(overlap.busy && !overlap.canClear && !overlap.canContact(Cell(0,0)))
+            precondition(overlap.canClear(Cell(2,6)))
+            let afterFirst = overlap.game
+            overlap.clear(Cell(0,0))
+            precondition(overlap.game == afterFirst && overlapPresenter.pendingCount == 1)
+            overlapClock.now = 0.1
+            overlap.clear(Cell(2,6))
+            precondition(overlapPresenter.pendingCount == 2 && overlapPresenter.maximumPendingCount == 2)
+            let committed = overlap.game
+            precondition(committed.score > afterFirst.score && committed.isValidSave)
+            overlapClock.now = overlapPresenter.finishAt!
+            overlapPresenter.finish()
+            precondition(overlap.busy && overlapPresenter.pendingCount == 1)
+            precondition(overlap.canContact(Cell(0,0)) && !overlap.canContact(Cell(2,6)))
+            overlapClock.now = overlapPresenter.finishAt!
+            overlapPresenter.finish()
+            precondition(!overlap.busy && overlapPresenter.pendingCount == 0 && overlap.game == committed)
+            overlap.setSuspended(true)
+        }
         // Real intent must reject a gesture whose generation changed across incoming rain.
         let fixture = ConstellationFixture.five.game()
         let start = (0..<49).map { Cell($0/7,$0%7) }.first { fixture.constellationGroup(at: $0).count >= 5 }!
