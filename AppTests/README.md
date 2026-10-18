@@ -29,3 +29,5 @@ The Opal planning deadline regression preserves the four-light follow-up across 
 Touch-lifecycle checks exercise edge-release classification, missing move callbacks, duplicate terminal events, hold tickets/near-deadline grace, and actual surface configuration cancellation. These do not fabricate UIKit touches or claim physical multitouch acceptance.
 
 Camera placement tests distinguish full canvas dimensions from safe-area-reduced dimensions and reject width, height, orientation, inset and accessibility mismatches for both checked profiles. Native checks must additionally verify which route actually draws.
+
+`NativeInputWindowTests` uses the real scheduler and SpriteKit scene in a visible isolated test window to measure Store input admission through an automatic storm. It is native presentation timing, not a finger-latency or human-preference result; full-motion checks skip under active system quiet accessibility modes.

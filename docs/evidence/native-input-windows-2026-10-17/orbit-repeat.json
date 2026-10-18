@@ -1,0 +1,41 @@
+[
+  {
+    "arrivals" : 1,
+    "density" : "lighter",
+    "followingCadence" : "steady",
+    "generation" : 2,
+    "gravityPhases" : 1,
+    "observedReady" : true,
+    "presentationSeconds" : 1.3503027083352208,
+    "readyToActualDueSeconds" : 0.6533210833295016,
+    "readyToScheduledDeadlineSeconds" : 0.6496916250034701,
+    "seed" : 68,
+    "shower" : 9
+  },
+  {
+    "arrivals" : 5,
+    "density" : "heavy",
+    "followingCadence" : "faster",
+    "generation" : 2,
+    "gravityPhases" : 1,
+    "observedReady" : true,
+    "presentationSeconds" : 1.6964463333279127,
+    "readyToActualDueSeconds" : 0.005741833330830559,
+    "readyToScheduledDeadlineSeconds" : 0.00354587500623893,
+    "seed" : 68,
+    "shower" : 10
+  },
+  {
+    "arrivals" : 5,
+    "density" : "heavy",
+    "followingCadence" : "faster",
+    "generation" : 2,
+    "gravityPhases" : 2,
+    "observedReady" : true,
+    "presentationSeconds" : 1.5945527916628635,
+    "readyToActualDueSeconds" : 0.1123491666658083,
+    "readyToScheduledDeadlineSeconds" : 0.10544287499214988,
+    "seed" : 68,
+    "shower" : 11
+  }
+]
