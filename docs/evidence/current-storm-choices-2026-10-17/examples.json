@@ -1,0 +1,4803 @@
+{
+  "gravity-phase-discovery-160": [
+    {
+      "examples": [
+        {
+          "alternative": {
+            "light": 3,
+            "opalsSpent": 1,
+            "selected": 2064,
+            "tap": {
+              "column": 4,
+              "row": 0
+            }
+          },
+          "alternativeOutcome": {
+            "afterShowerSecond": 5,
+            "first": 3,
+            "immediateSecond": 5,
+            "overflow": false,
+            "remainingOpals": 1
+          },
+          "category": "safe-preservation-without-two-clear-gain",
+          "greedy": {
+            "light": 6,
+            "opalsSpent": 2,
+            "selected": 67643456,
+            "trace": [
+              {
+                "column": 6,
+                "row": 0
+              },
+              {
+                "column": 6,
+                "row": 1
+              },
+              {
+                "column": 5,
+                "row": 2
+              },
+              {
+                "column": 4,
+                "row": 1
+              },
+              {
+                "column": 5,
+                "row": 2
+              },
+              {
+                "column": 5,
+                "row": 3
+              },
+              {
+                "column": 5,
+                "row": 2
+              },
+              {
+                "column": 6,
+                "row": 1
+              },
+              {
+                "column": 6,
+                "row": 0
+              }
+            ]
+          },
+          "greedyOutcome": {
+            "afterShowerSecond": 3,
+            "first": 6,
+            "immediateSecond": 3,
+            "overflow": false,
+            "remainingOpals": 0
+          },
+          "initial": {
+            "board": [
+              {
+                "grown": false,
+                "id": 4,
+                "kind": 2
+              },
+              null,
+              null,
+              {
+                "grown": true,
+                "id": 27,
+                "kind": 3
+              },
+              {
+                "grown": true,
+                "id": 17,
+                "kind": 0
+              },
+              {
+                "grown": false,
+                "id": 10,
+                "kind": 1
+              },
+              {
+                "grown": true,
+                "id": 40,
+                "kind": 4
+              },
+              {
+                "grown": false,
+                "id": 26,
+                "kind": 0
+              },
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 49,
+                "lightStar": true
+              },
+              {
+                "grown": false,
+                "id": 19
+              },
+              {
+                "grown": false,
+                "id": 42,
+                "kind": 4
+              },
+              {
+                "grown": false,
+                "id": 33,
+                "kind": 4
+              },
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 21,
+                "lightStar": true
+              },
+              null,
+              {
+                "grown": true,
+                "id": 35,
+                "kind": 1
+              },
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 34,
+                "kind": 4
+              },
+              null,
+              {
+                "grown": false,
+                "id": 37,
+                "kind": 1
+              },
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 45,
+                "kind": 3
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 46
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 47,
+                "kind": 3
+              },
+              null
+            ],
+            "cohesiveShowers": true,
+            "darkStarsCleared": 0,
+            "incoming": [
+              {
+                "column": 4,
+                "id": 60,
+                "kind": 0
+              },
+              {
+                "column": 6,
+                "id": 61,
+                "kind": 0
+              }
+            ],
+            "openingCascade": true,
+            "random": {
+              "state": 13399429869638027061
+            },
+            "remainingColumns": [
+              1,
+              2,
+              3,
+              5
+            ],
+            "savedBalance": {
+              "darkStars": "regular",
+              "pace": 3
+            },
+            "savedCadence": "announcedCycleV2",
+            "savedGeneration": 2,
+            "score": 29,
+            "seed": 160,
+            "showersUntilDark": 4,
+            "starsLanded": 50,
+            "turns": 12
+          },
+          "seed": 160,
+          "shower": 12
+        },
+        {
+          "alternativeOutcome": {
+            "afterShowerSecond": 6,
+            "first": 0,
+            "immediateSecond": 3,
+            "overflow": false,
+            "remainingOpals": 1
+          },
+          "category": "wait-forecast-oracle-gain",
+          "greedy": {
+            "light": 3,
+            "opalsSpent": 1,
+            "selected": 202375168,
+            "tap": {
+              "column": 5,
+              "row": 3
+            }
+          },
+          "greedyOutcome": {
+            "afterShowerSecond": 0,
+            "first": 3,
+            "immediateSecond": 0,
+            "overflow": false,
+            "remainingOpals": 0
+          },
+          "initial": {
+            "board": [
+              {
+                "grown": false,
+                "id": 26,
+                "kind": 0
+              },
+              {
+                "grown": false,
+                "id": 59,
+                "kind": 0
+              },
+              {
+                "grown": false,
+                "id": 57,
+                "kind": 4
+              },
+              {
+                "grown": true,
+                "id": 27,
+                "kind": 3
+              },
+              {
+                "grown": false,
+                "id": 56,
+                "kind": 4
+              },
+              {
+                "grown": false,
+                "id": 10,
+                "kind": 1
+              },
+              {
+                "grown": true,
+                "id": 51,
+                "kind": 0
+              },
+              {
+                "grown": false,
+                "id": 33,
+                "kind": 4
+              },
+              {
+                "grown": false,
+                "id": 72,
+                "kind": 3
+              },
+              null,
+              {
+                "grown": false,
+                "id": 60,
+                "kind": 0
+              },
+              null,
+              {
+                "grown": false,
+                "id": 45,
+                "kind": 3
+              },
+              {
+                "grown": false,
+                "id": 69
+              },
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 71,
+                "kind": 3
+              },
+              null,
+              {
+                "grown": false,
+                "id": 46
+              },
+              {
+                "grown": false,
+                "id": 70,
+                "lightStar": true
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 47,
+                "kind": 3
+              },
+              {
+                "grown": false,
+                "id": 73,
+                "kind": 3
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 55,
+                "kind": 4
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "cohesiveShowers": true,
+            "darkStarsCleared": 1,
+            "incoming": [
+              {
+                "column": 2,
+                "gravityKind": "magnet",
+                "id": 95
+              },
+              {
+                "column": 4,
+                "gravityKind": "magnet",
+                "id": 96
+              },
+              {
+                "column": 2,
+                "id": 97,
+                "kind": 2
+              },
+              {
+                "column": 4,
+                "id": 98,
+                "kind": 3
+              },
+              {
+                "column": 3,
+                "id": 99,
+                "kind": 0
+              }
+            ],
+            "openingCascade": true,
+            "random": {
+              "state": 18239472052751201523
+            },
+            "remainingColumns": [
+              0,
+              1,
+              3,
+              5,
+              6
+            ],
+            "savedBalance": {
+              "darkStars": "regular",
+              "pace": 3
+            },
+            "savedCadence": "announcedCycleV2",
+            "savedGeneration": 2,
+            "score": 53,
+            "seed": 160,
+            "showersUntilDark": 2,
+            "starsLanded": 74,
+            "turns": 19
+          },
+          "seed": 160,
+          "shower": 19
+        },
+        {
+          "alternative": {
+            "light": 3,
+            "opalsSpent": 0,
+            "selected": 277025390592,
+            "tap": {
+              "column": 3,
+              "row": 4
+            }
+          },
+          "alternativeOutcome": {
+            "afterShowerSecond": 5,
+            "first": 3,
+            "immediateSecond": 4,
+            "overflow": false,
+            "remainingOpals": 1
+          },
+          "category": "preserving-forecast-oracle-gain",
+          "greedy": {
+            "light": 4,
+            "opalsSpent": 1,
+            "selected": 259,
+            "tap": {
+              "column": 0,
+              "row": 0
+            }
+          },
+          "greedyOutcome": {
+            "afterShowerSecond": 3,
+            "first": 4,
+            "immediateSecond": 3,
+            "overflow": false,
+            "remainingOpals": 0
+          },
+          "initial": {
+            "board": [
+              {
+                "grown": false,
+                "id": 26,
+                "kind": 0
+              },
+              {
+                "grown": true,
+                "id": 59,
+                "kind": 0
+              },
+              {
+                "grown": false,
+                "id": 57,
+                "kind": 4
+              },
+              {
+                "grown": true,
+                "id": 27,
+                "kind": 3
+              },
+              {
+                "grown": false,
+                "id": 56,
+                "kind": 4
+              },
+              {
+                "grown": false,
+                "id": 10,
+                "kind": 1
+              },
+              {
+                "grown": true,
+                "id": 51,
+                "kind": 0
+              },
+              {
+                "grown": true,
+                "id": 94,
+                "kind": 4
+              },
+              {
+                "grown": false,
+                "id": 98,
+                "lightStar": true
+              },
+              {
+                "grown": false,
+                "id": 76,
+                "kind": 2
+              },
+              {
+                "grown": false,
+                "id": 60,
+                "kind": 0
+              },
+              {
+                "gravityKind": "magnet",
+                "grown": false,
+                "id": 75
+              },
+              {
+                "grown": false,
+                "id": 45,
+                "kind": 3
+              },
+              null,
+              {
+                "grown": false,
+                "id": 96,
+                "kind": 4
+              },
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 71,
+                "kind": 3
+              },
+              {
+                "grown": false,
+                "id": 77,
+                "kind": 3
+              },
+              {
+                "grown": false,
+                "id": 55,
+                "kind": 4
+              },
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 78,
+                "kind": 0
+              },
+              null,
+              {
+                "grown": false,
+                "id": 83,
+                "kind": 1
+              },
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": true,
+                "id": 84,
+                "kind": 4
+              },
+              null,
+              {
+                "grown": true,
+                "id": 89,
+                "kind": 0
+              },
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 86,
+                "kind": 4
+              },
+              null,
+              {
+                "grown": false,
+                "id": 91
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "cohesiveShowers": true,
+            "darkStarsCleared": 3,
+            "incoming": [
+              {
+                "column": 6,
+                "id": 120,
+                "kind": 0
+              },
+              {
+                "column": 1,
+                "id": 121,
+                "kind": 0
+              },
+              {
+                "column": 3,
+                "id": 122,
+                "kind": 0
+              }
+            ],
+            "nextGravityID": 99,
+            "openingCascade": true,
+            "random": {
+              "state": 15398144919952855477
+            },
+            "remainingColumns": [
+              2,
+              4,
+              5
+            ],
+            "retiredMagnetic": 1,
+            "savedBalance": {
+              "darkStars": "regular",
+              "pace": 3
+            },
+            "savedCadence": "announcedCycleV2",
+            "savedGeneration": 2,
+            "score": 66,
+            "seed": 160,
+            "showersUntilDark": 3,
+            "starsLanded": 99,
+            "turns": 24
+          },
+          "seed": 160,
+          "shower": 24
+        },
+        {
+          "alternative": {
+            "light": 3,
+            "opalsSpent": 0,
+            "selected": 2096,
+            "tap": {
+              "column": 4,
+              "row": 0
+            }
+          },
+          "alternativeOutcome": {
+            "afterShowerSecond": 6,
+            "first": 3,
+            "immediateSecond": 6,
+            "overflow": false,
+            "remainingOpals": 1
+          },
+          "category": "equal-first-immediate-gain",
+          "greedy": {
+            "light": 3,
+            "opalsSpent": 1,
+            "selected": 258,
+            "tap": {
+              "column": 1,
+              "row": 0
+            }
+          },
+          "greedyOutcome": {
+            "afterShowerSecond": 3,
+            "first": 3,
+            "immediateSecond": 3,
+            "overflow": false,
+            "remainingOpals": 0
+          },
+          "initial": {
+            "board": [
+              null,
+              {
+                "grown": true,
+                "id": 44,
+                "kind": 4
+              },
+              null,
+              {
+                "grown": false,
+                "id": 8,
+                "kind": 4
+              },
+              {
+                "grown": false,
+                "id": 4,
+                "kind": 2
+              },
+              {
+                "grown": false,
+                "id": 28,
+                "kind": 2
+              },
+              {
+                "grown": false,
+                "id": 18,
+                "kind": 1
+              },
+              null,
+              {
+                "grown": false,
+                "id": 49,
+                "lightStar": true
+              },
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 3,
+                "kind": 2
+              },
+              {
+                "gravityKind": "hole",
+                "grown": false,
+                "id": 45
+              },
+              {
+                "grown": true,
+                "id": 27,
+                "kind": 1
+              },
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 39,
+                "kind": 1
+              },
+              {
+                "grown": false,
+                "id": 46,
+                "kind": 1
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": true,
+                "id": 40,
+                "kind": 4
+              },
+              {
+                "grown": false,
+                "id": 47
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 42,
+                "kind": 4
+              },
+              {
+                "grown": false,
+                "id": 48,
+                "kind": 1
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "cohesiveShowers": true,
+            "darkStarsCleared": 1,
+            "incoming": [
+              {
+                "column": 6,
+                "id": 60,
+                "kind": 4
+              },
+              {
+                "column": 3,
+                "id": 61,
+                "kind": 4
+              }
+            ],
+            "nextGravityID": 50,
+            "openingCascade": true,
+            "orbit": {
+              "center": {
+                "column": 5,
+                "row": 1
+              },
+              "holeID": 45,
+              "slots": [
+                {
+                  "column": 6,
+                  "row": 1
+                },
+                {
+                  "column": 5,
+                  "row": 0
+                },
+                {
+                  "column": 4,
+                  "row": 1
+                }
+              ],
+              "windowsRemaining": 2
+            },
+            "random": {
+              "state": 14427431683600197281
+            },
+            "remainingColumns": [
+              4
+            ],
+            "savedBalance": {
+              "darkStars": "regular",
+              "pace": 3
+            },
+            "savedCadence": "announcedCycleV2",
+            "savedGeneration": 2,
+            "score": 30,
+            "seed": 180,
+            "showersUntilDark": 4,
+            "starsLanded": 50,
+            "turns": 12
+          },
+          "seed": 180,
+          "shower": 12
+        },
+        {
+          "alternative": {
+            "light": 6,
+            "opalsSpent": 0,
+            "selected": 1547,
+            "trace": [
+              {
+                "column": 0,
+                "row": 0
+              },
+              {
+                "column": 1,
+                "row": 0
+              },
+              {
+                "column": 2,
+                "row": 1
+              },
+              {
+                "column": 3,
+                "row": 0
+              },
+              {
+                "column": 3,
+                "row": 1
+              },
+              {
+                "column": 3,
+                "row": 0
+              },
+              {
+                "column": 2,
+                "row": 1
+              },
+              {
+                "column": 1,
+                "row": 0
+              },
+              {
+                "column": 0,
+                "row": 0
+              }
+            ]
+          },
+          "alternativeOutcome": {
+            "afterShowerSecond": 3,
+            "first": 6,
+            "immediateSecond": 3,
+            "overflow": false,
+            "remainingOpals": 1
+          },
+          "category": "smaller-first-immediate-gain",
+          "greedy": {
+            "light": 8,
+            "opalsSpent": 1,
+            "selected": 2131467,
+            "trace": [
+              {
+                "column": 0,
+                "row": 0
+              },
+              {
+                "column": 1,
+                "row": 0
+              },
+              {
+                "column": 2,
+                "row": 1
+              },
+              {
+                "column": 3,
+                "row": 0
+              },
+              {
+                "column": 3,
+                "row": 1
+              },
+              {
+                "column": 3,
+                "row": 0
+              },
+              {
+                "column": 2,
+                "row": 1
+              },
+              {
+                "column": 1,
+                "row": 2
+              },
+              {
+                "column": 0,
+                "row": 3
+              },
+              {
+                "column": 1,
+                "row": 2
+              },
+              {
+                "column": 2,
+                "row": 1
+              },
+              {
+                "column": 1,
+                "row": 0
+              },
+              {
+                "column": 0,
+                "row": 0
+              }
+            ]
+          },
+          "greedyOutcome": {
+            "afterShowerSecond": 3,
+            "first": 8,
+            "immediateSecond": 0,
+            "overflow": false,
+            "remainingOpals": 0
+          },
+          "initial": {
+            "board": [
+              {
+                "grown": false,
+                "id": 48,
+                "kind": 0
+              },
+              {
+                "grown": false,
+                "id": 54,
+                "kind": 0
+              },
+              {
+                "grown": false,
+                "id": 60,
+                "kind": 1
+              },
+              {
+                "grown": true,
+                "id": 72,
+                "kind": 0
+              },
+              {
+                "grown": false,
+                "id": 62,
+                "kind": 1
+              },
+              {
+                "grown": false,
+                "id": 15,
+                "kind": 1
+              },
+              {
+                "grown": false,
+                "id": 49,
+                "kind": 0
+              },
+              {
+                "grown": false,
+                "id": 52,
+                "kind": 3
+              },
+              {
+                "grown": false,
+                "id": 61,
+                "kind": 1
+              },
+              {
+                "grown": false,
+                "id": 69,
+                "kind": 0
+              },
+              {
+                "grown": false,
+                "id": 74,
+                "kind": 0
+              },
+              {
+                "grown": false,
+                "id": 70
+              },
+              {
+                "grown": false,
+                "id": 53,
+                "kind": 0
+              },
+              {
+                "grown": false,
+                "id": 67,
+                "kind": 2
+              },
+              {
+                "grown": false,
+                "id": 56,
+                "kind": 2
+              },
+              {
+                "grown": false,
+                "id": 63,
+                "lightStar": true
+              },
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 59,
+                "kind": 1
+              },
+              {
+                "grown": false,
+                "id": 75,
+                "kind": 0
+              },
+              {
+                "grown": false,
+                "id": 76,
+                "kind": 0
+              },
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 68,
+                "kind": 2
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 71,
+                "kind": 0
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "cohesiveShowers": true,
+            "darkStarsCleared": 3,
+            "incoming": [
+              {
+                "column": 0,
+                "id": 105,
+                "kind": 4
+              },
+              {
+                "column": 0,
+                "id": 106,
+                "kind": 4
+              },
+              {
+                "column": 0,
+                "id": 107,
+                "kind": 4
+              },
+              {
+                "column": 2,
+                "id": 108,
+                "kind": 0
+              },
+              {
+                "column": 2,
+                "id": 109,
+                "kind": 0
+              }
+            ],
+            "openingCascade": true,
+            "random": {
+              "state": 7474097294953170443
+            },
+            "remainingColumns": [
+              0,
+              4
+            ],
+            "savedBalance": {
+              "darkStars": "regular",
+              "pace": 3
+            },
+            "savedCadence": "announcedCycleV2",
+            "savedGeneration": 2,
+            "score": 52,
+            "seed": 188,
+            "showersUntilDark": 3,
+            "starsLanded": 77,
+            "turns": 21
+          },
+          "seed": 188,
+          "shower": 21
+        }
+      ],
+      "policy": "largest-immediate"
+    },
+    {
+      "examples": [
+        {
+          "alternative": {
+            "light": 3,
+            "opalsSpent": 1,
+            "selected": 2064,
+            "tap": {
+              "column": 4,
+              "row": 0
+            }
+          },
+          "alternativeOutcome": {
+            "afterShowerSecond": 5,
+            "first": 3,
+            "immediateSecond": 5,
+            "overflow": false,
+            "remainingOpals": 1
+          },
+          "category": "safe-preservation-without-two-clear-gain",
+          "greedy": {
+            "light": 6,
+            "opalsSpent": 2,
+            "selected": 67643456,
+            "trace": [
+              {
+                "column": 6,
+                "row": 0
+              },
+              {
+                "column": 6,
+                "row": 1
+              },
+              {
+                "column": 5,
+                "row": 2
+              },
+              {
+                "column": 4,
+                "row": 1
+              },
+              {
+                "column": 5,
+                "row": 2
+              },
+              {
+                "column": 5,
+                "row": 3
+              },
+              {
+                "column": 5,
+                "row": 2
+              },
+              {
+                "column": 6,
+                "row": 1
+              },
+              {
+                "column": 6,
+                "row": 0
+              }
+            ]
+          },
+          "greedyOutcome": {
+            "afterShowerSecond": 3,
+            "first": 6,
+            "immediateSecond": 3,
+            "overflow": false,
+            "remainingOpals": 0
+          },
+          "initial": {
+            "board": [
+              {
+                "grown": false,
+                "id": 4,
+                "kind": 2
+              },
+              null,
+              null,
+              {
+                "grown": true,
+                "id": 27,
+                "kind": 3
+              },
+              {
+                "grown": true,
+                "id": 17,
+                "kind": 0
+              },
+              {
+                "grown": false,
+                "id": 10,
+                "kind": 1
+              },
+              {
+                "grown": true,
+                "id": 40,
+                "kind": 4
+              },
+              {
+                "grown": false,
+                "id": 26,
+                "kind": 0
+              },
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 49,
+                "lightStar": true
+              },
+              {
+                "grown": false,
+                "id": 19
+              },
+              {
+                "grown": false,
+                "id": 42,
+                "kind": 4
+              },
+              {
+                "grown": false,
+                "id": 33,
+                "kind": 4
+              },
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 21,
+                "lightStar": true
+              },
+              null,
+              {
+                "grown": true,
+                "id": 35,
+                "kind": 1
+              },
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 34,
+                "kind": 4
+              },
+              null,
+              {
+                "grown": false,
+                "id": 37,
+                "kind": 1
+              },
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 45,
+                "kind": 3
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 46
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 47,
+                "kind": 3
+              },
+              null
+            ],
+            "cohesiveShowers": true,
+            "darkStarsCleared": 0,
+            "incoming": [
+              {
+                "column": 4,
+                "id": 60,
+                "kind": 0
+              },
+              {
+                "column": 6,
+                "id": 61,
+                "kind": 0
+              }
+            ],
+            "openingCascade": true,
+            "random": {
+              "state": 13399429869638027061
+            },
+            "remainingColumns": [
+              1,
+              2,
+              3,
+              5
+            ],
+            "savedBalance": {
+              "darkStars": "regular",
+              "pace": 3
+            },
+            "savedCadence": "announcedCycleV2",
+            "savedGeneration": 2,
+            "score": 29,
+            "seed": 160,
+            "showersUntilDark": 4,
+            "starsLanded": 50,
+            "turns": 12
+          },
+          "seed": 160,
+          "shower": 12
+        },
+        {
+          "alternativeOutcome": {
+            "afterShowerSecond": 6,
+            "first": 0,
+            "immediateSecond": 3,
+            "overflow": false,
+            "remainingOpals": 1
+          },
+          "category": "wait-forecast-oracle-gain",
+          "greedy": {
+            "light": 3,
+            "opalsSpent": 1,
+            "selected": 202375168,
+            "tap": {
+              "column": 5,
+              "row": 3
+            }
+          },
+          "greedyOutcome": {
+            "afterShowerSecond": 0,
+            "first": 3,
+            "immediateSecond": 0,
+            "overflow": false,
+            "remainingOpals": 0
+          },
+          "initial": {
+            "board": [
+              {
+                "grown": false,
+                "id": 26,
+                "kind": 0
+              },
+              {
+                "grown": false,
+                "id": 59,
+                "kind": 0
+              },
+              {
+                "grown": false,
+                "id": 57,
+                "kind": 4
+              },
+              {
+                "grown": true,
+                "id": 27,
+                "kind": 3
+              },
+              {
+                "grown": false,
+                "id": 56,
+                "kind": 4
+              },
+              {
+                "grown": false,
+                "id": 10,
+                "kind": 1
+              },
+              {
+                "grown": true,
+                "id": 51,
+                "kind": 0
+              },
+              {
+                "grown": false,
+                "id": 33,
+                "kind": 4
+              },
+              {
+                "grown": false,
+                "id": 72,
+                "kind": 3
+              },
+              null,
+              {
+                "grown": false,
+                "id": 60,
+                "kind": 0
+              },
+              null,
+              {
+                "grown": false,
+                "id": 45,
+                "kind": 3
+              },
+              {
+                "grown": false,
+                "id": 69
+              },
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 71,
+                "kind": 3
+              },
+              null,
+              {
+                "grown": false,
+                "id": 46
+              },
+              {
+                "grown": false,
+                "id": 70,
+                "lightStar": true
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 47,
+                "kind": 3
+              },
+              {
+                "grown": false,
+                "id": 73,
+                "kind": 3
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 55,
+                "kind": 4
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "cohesiveShowers": true,
+            "darkStarsCleared": 1,
+            "incoming": [
+              {
+                "column": 2,
+                "gravityKind": "magnet",
+                "id": 95
+              },
+              {
+                "column": 4,
+                "gravityKind": "magnet",
+                "id": 96
+              },
+              {
+                "column": 2,
+                "id": 97,
+                "kind": 2
+              },
+              {
+                "column": 4,
+                "id": 98,
+                "kind": 3
+              },
+              {
+                "column": 3,
+                "id": 99,
+                "kind": 0
+              }
+            ],
+            "openingCascade": true,
+            "random": {
+              "state": 18239472052751201523
+            },
+            "remainingColumns": [
+              0,
+              1,
+              3,
+              5,
+              6
+            ],
+            "savedBalance": {
+              "darkStars": "regular",
+              "pace": 3
+            },
+            "savedCadence": "announcedCycleV2",
+            "savedGeneration": 2,
+            "score": 53,
+            "seed": 160,
+            "showersUntilDark": 2,
+            "starsLanded": 74,
+            "turns": 19
+          },
+          "seed": 160,
+          "shower": 19
+        },
+        {
+          "alternative": {
+            "light": 3,
+            "opalsSpent": 0,
+            "selected": 277025390592,
+            "tap": {
+              "column": 3,
+              "row": 4
+            }
+          },
+          "alternativeOutcome": {
+            "afterShowerSecond": 5,
+            "first": 3,
+            "immediateSecond": 4,
+            "overflow": false,
+            "remainingOpals": 1
+          },
+          "category": "preserving-forecast-oracle-gain",
+          "greedy": {
+            "light": 4,
+            "opalsSpent": 1,
+            "selected": 259,
+            "tap": {
+              "column": 0,
+              "row": 0
+            }
+          },
+          "greedyOutcome": {
+            "afterShowerSecond": 3,
+            "first": 4,
+            "immediateSecond": 3,
+            "overflow": false,
+            "remainingOpals": 0
+          },
+          "initial": {
+            "board": [
+              {
+                "grown": false,
+                "id": 26,
+                "kind": 0
+              },
+              {
+                "grown": true,
+                "id": 59,
+                "kind": 0
+              },
+              {
+                "grown": false,
+                "id": 57,
+                "kind": 4
+              },
+              {
+                "grown": true,
+                "id": 27,
+                "kind": 3
+              },
+              {
+                "grown": false,
+                "id": 56,
+                "kind": 4
+              },
+              {
+                "grown": false,
+                "id": 10,
+                "kind": 1
+              },
+              {
+                "grown": true,
+                "id": 51,
+                "kind": 0
+              },
+              {
+                "grown": true,
+                "id": 94,
+                "kind": 4
+              },
+              {
+                "grown": false,
+                "id": 98,
+                "lightStar": true
+              },
+              {
+                "grown": false,
+                "id": 76,
+                "kind": 2
+              },
+              {
+                "grown": false,
+                "id": 60,
+                "kind": 0
+              },
+              {
+                "gravityKind": "magnet",
+                "grown": false,
+                "id": 75
+              },
+              {
+                "grown": false,
+                "id": 45,
+                "kind": 3
+              },
+              null,
+              {
+                "grown": false,
+                "id": 96,
+                "kind": 4
+              },
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 71,
+                "kind": 3
+              },
+              {
+                "grown": false,
+                "id": 77,
+                "kind": 3
+              },
+              {
+                "grown": false,
+                "id": 55,
+                "kind": 4
+              },
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 78,
+                "kind": 0
+              },
+              null,
+              {
+                "grown": false,
+                "id": 83,
+                "kind": 1
+              },
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": true,
+                "id": 84,
+                "kind": 4
+              },
+              null,
+              {
+                "grown": true,
+                "id": 89,
+                "kind": 0
+              },
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 86,
+                "kind": 4
+              },
+              null,
+              {
+                "grown": false,
+                "id": 91
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "cohesiveShowers": true,
+            "darkStarsCleared": 3,
+            "incoming": [
+              {
+                "column": 6,
+                "id": 120,
+                "kind": 0
+              },
+              {
+                "column": 1,
+                "id": 121,
+                "kind": 0
+              },
+              {
+                "column": 3,
+                "id": 122,
+                "kind": 0
+              }
+            ],
+            "nextGravityID": 99,
+            "openingCascade": true,
+            "random": {
+              "state": 15398144919952855477
+            },
+            "remainingColumns": [
+              2,
+              4,
+              5
+            ],
+            "retiredMagnetic": 1,
+            "savedBalance": {
+              "darkStars": "regular",
+              "pace": 3
+            },
+            "savedCadence": "announcedCycleV2",
+            "savedGeneration": 2,
+            "score": 66,
+            "seed": 160,
+            "showersUntilDark": 3,
+            "starsLanded": 99,
+            "turns": 24
+          },
+          "seed": 160,
+          "shower": 24
+        },
+        {
+          "alternative": {
+            "light": 3,
+            "opalsSpent": 0,
+            "selected": 1108101562368,
+            "tap": {
+              "column": 5,
+              "row": 4
+            }
+          },
+          "alternativeOutcome": {
+            "afterShowerSecond": 3,
+            "first": 3,
+            "immediateSecond": 3,
+            "overflow": false,
+            "remainingOpals": 1
+          },
+          "category": "preserving-forecast-oracle-safety",
+          "greedy": {
+            "light": 3,
+            "opalsSpent": 1,
+            "selected": 1032,
+            "tap": {
+              "column": 3,
+              "row": 0
+            }
+          },
+          "greedyOutcome": {
+            "afterShowerSecond": 0,
+            "first": 3,
+            "immediateSecond": 3,
+            "overflow": true,
+            "remainingOpals": 0
+          },
+          "initial": {
+            "board": [
+              null,
+              null,
+              null,
+              {
+                "grown": true,
+                "id": 28,
+                "kind": 4
+              },
+              {
+                "grown": false,
+                "id": 22,
+                "kind": 2
+              },
+              {
+                "grown": false,
+                "id": 4,
+                "kind": 0
+              },
+              {
+                "grown": true,
+                "id": 12,
+                "kind": 1
+              },
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 43,
+                "lightStar": true
+              },
+              {
+                "grown": false,
+                "id": 45,
+                "kind": 0
+              },
+              {
+                "grown": false,
+                "id": 11,
+                "kind": 1
+              },
+              {
+                "grown": false,
+                "id": 21,
+                "kind": 2
+              },
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 46,
+                "kind": 0
+              },
+              null,
+              {
+                "grown": false,
+                "id": 19,
+                "kind": 3
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 33,
+                "kind": 0
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": true,
+                "id": 34,
+                "kind": 2
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 36,
+                "kind": 2
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 44,
+                "kind": 0
+              },
+              null
+            ],
+            "cohesiveShowers": true,
+            "darkStarsCleared": 2,
+            "incoming": [
+              {
+                "column": 1,
+                "id": 65,
+                "kind": 1
+              },
+              {
+                "column": 6,
+                "id": 66,
+                "kind": 1
+              },
+              {
+                "column": 5,
+                "id": 67
+              }
+            ],
+            "openingCascade": true,
+            "random": {
+              "state": 13399429869638027072
+            },
+            "remainingColumns": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              6
+            ],
+            "savedBalance": {
+              "darkStars": "regular",
+              "pace": 3
+            },
+            "savedCadence": "announcedCycleV2",
+            "savedGeneration": 2,
+            "score": 28,
+            "seed": 171,
+            "showersUntilDark": 4,
+            "starsLanded": 47,
+            "turns": 13
+          },
+          "seed": 171,
+          "shower": 13
+        },
+        {
+          "alternative": {
+            "light": 3,
+            "opalsSpent": 0,
+            "selected": 2096,
+            "tap": {
+              "column": 4,
+              "row": 0
+            }
+          },
+          "alternativeOutcome": {
+            "afterShowerSecond": 6,
+            "first": 3,
+            "immediateSecond": 6,
+            "overflow": false,
+            "remainingOpals": 1
+          },
+          "category": "equal-first-immediate-gain",
+          "greedy": {
+            "light": 3,
+            "opalsSpent": 1,
+            "selected": 258,
+            "tap": {
+              "column": 1,
+              "row": 0
+            }
+          },
+          "greedyOutcome": {
+            "afterShowerSecond": 3,
+            "first": 3,
+            "immediateSecond": 3,
+            "overflow": false,
+            "remainingOpals": 0
+          },
+          "initial": {
+            "board": [
+              null,
+              {
+                "grown": true,
+                "id": 44,
+                "kind": 4
+              },
+              null,
+              {
+                "grown": false,
+                "id": 8,
+                "kind": 4
+              },
+              {
+                "grown": false,
+                "id": 4,
+                "kind": 2
+              },
+              {
+                "grown": false,
+                "id": 28,
+                "kind": 2
+              },
+              {
+                "grown": false,
+                "id": 18,
+                "kind": 1
+              },
+              null,
+              {
+                "grown": false,
+                "id": 49,
+                "lightStar": true
+              },
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 3,
+                "kind": 2
+              },
+              {
+                "gravityKind": "hole",
+                "grown": false,
+                "id": 45
+              },
+              {
+                "grown": true,
+                "id": 27,
+                "kind": 1
+              },
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 39,
+                "kind": 1
+              },
+              {
+                "grown": false,
+                "id": 46,
+                "kind": 1
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": true,
+                "id": 40,
+                "kind": 4
+              },
+              {
+                "grown": false,
+                "id": 47
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 42,
+                "kind": 4
+              },
+              {
+                "grown": false,
+                "id": 48,
+                "kind": 1
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "cohesiveShowers": true,
+            "darkStarsCleared": 1,
+            "incoming": [
+              {
+                "column": 6,
+                "id": 60,
+                "kind": 4
+              },
+              {
+                "column": 3,
+                "id": 61,
+                "kind": 4
+              }
+            ],
+            "nextGravityID": 50,
+            "openingCascade": true,
+            "orbit": {
+              "center": {
+                "column": 5,
+                "row": 1
+              },
+              "holeID": 45,
+              "slots": [
+                {
+                  "column": 6,
+                  "row": 1
+                },
+                {
+                  "column": 5,
+                  "row": 0
+                },
+                {
+                  "column": 4,
+                  "row": 1
+                }
+              ],
+              "windowsRemaining": 2
+            },
+            "random": {
+              "state": 14427431683600197281
+            },
+            "remainingColumns": [
+              4
+            ],
+            "savedBalance": {
+              "darkStars": "regular",
+              "pace": 3
+            },
+            "savedCadence": "announcedCycleV2",
+            "savedGeneration": 2,
+            "score": 30,
+            "seed": 180,
+            "showersUntilDark": 4,
+            "starsLanded": 50,
+            "turns": 12
+          },
+          "seed": 180,
+          "shower": 12
+        },
+        {
+          "alternative": {
+            "light": 6,
+            "opalsSpent": 1,
+            "selected": 397828,
+            "trace": [
+              {
+                "column": 2,
+                "row": 0
+              },
+              {
+                "column": 2,
+                "row": 1
+              },
+              {
+                "column": 3,
+                "row": 2
+              },
+              {
+                "column": 4,
+                "row": 2
+              },
+              {
+                "column": 5,
+                "row": 1
+              },
+              {
+                "column": 4,
+                "row": 2
+              },
+              {
+                "column": 3,
+                "row": 2
+              },
+              {
+                "column": 2,
+                "row": 1
+              },
+              {
+                "column": 2,
+                "row": 0
+              }
+            ]
+          },
+          "alternativeOutcome": {
+            "afterShowerSecond": 7,
+            "first": 6,
+            "immediateSecond": 7,
+            "overflow": false,
+            "remainingOpals": 1
+          },
+          "category": "smaller-first-immediate-gain",
+          "greedy": {
+            "light": 8,
+            "opalsSpent": 2,
+            "selected": 4328655880,
+            "trace": [
+              {
+                "column": 3,
+                "row": 0
+              },
+              {
+                "column": 3,
+                "row": 1
+              },
+              {
+                "column": 4,
+                "row": 1
+              },
+              {
+                "column": 3,
+                "row": 2
+              },
+              {
+                "column": 4,
+                "row": 3
+              },
+              {
+                "column": 4,
+                "row": 4
+              },
+              {
+                "column": 4,
+                "row": 3
+              },
+              {
+                "column": 3,
+                "row": 2
+              },
+              {
+                "column": 4,
+                "row": 1
+              },
+              {
+                "column": 3,
+                "row": 1
+              },
+              {
+                "column": 3,
+                "row": 0
+              }
+            ]
+          },
+          "greedyOutcome": {
+            "afterShowerSecond": 3,
+            "first": 8,
+            "immediateSecond": 3,
+            "overflow": false,
+            "remainingOpals": 0
+          },
+          "initial": {
+            "board": [
+              {
+                "grown": true,
+                "id": 43,
+                "kind": 2
+              },
+              null,
+              {
+                "grown": true,
+                "id": 32,
+                "kind": 2
+              },
+              {
+                "grown": false,
+                "id": 7,
+                "kind": 0
+              },
+              {
+                "grown": false,
+                "id": 10,
+                "kind": 3
+              },
+              {
+                "grown": false,
+                "id": 15,
+                "kind": 1
+              },
+              null,
+              {
+                "grown": false,
+                "id": 45,
+                "kind": 2
+              },
+              null,
+              {
+                "grown": false,
+                "id": 42,
+                "kind": 2
+              },
+              {
+                "grown": true,
+                "id": 23,
+                "kind": 0
+              },
+              {
+                "grown": false,
+                "id": 18,
+                "lightStar": true
+              },
+              {
+                "grown": false,
+                "id": 31,
+                "kind": 2
+              },
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 47,
+                "lightStar": true
+              },
+              {
+                "grown": false,
+                "id": 30,
+                "kind": 2
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": true,
+                "id": 33,
+                "kind": 0
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 35,
+                "kind": 0
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "cohesiveShowers": true,
+            "darkStarsCleared": 2,
+            "incoming": [
+              {
+                "column": 0,
+                "id": 60,
+                "kind": 0
+              },
+              {
+                "column": 6,
+                "id": 61,
+                "kind": 0
+              }
+            ],
+            "openingCascade": true,
+            "random": {
+              "state": 4690058739764336381
+            },
+            "remainingColumns": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "savedBalance": {
+              "darkStars": "regular",
+              "pace": 3
+            },
+            "savedCadence": "announcedCycleV2",
+            "savedGeneration": 2,
+            "score": 28,
+            "seed": 188,
+            "showersUntilDark": 1,
+            "starsLanded": 48,
+            "turns": 12
+          },
+          "seed": 188,
+          "shower": 12
+        }
+      ],
+      "policy": "preserve-opal-on-score-ties"
+    }
+  ],
+  "gravity-phase-heldout-224": [
+    {
+      "examples": [
+        {
+          "alternative": {
+            "light": 3,
+            "opalsSpent": 0,
+            "selected": 258,
+            "tap": {
+              "column": 1,
+              "row": 0
+            }
+          },
+          "alternativeOutcome": {
+            "afterShowerSecond": 3,
+            "first": 3,
+            "immediateSecond": 3,
+            "overflow": false,
+            "remainingOpals": 1
+          },
+          "category": "safe-preservation-without-two-clear-gain",
+          "greedy": {
+            "light": 3,
+            "opalsSpent": 1,
+            "selected": 48,
+            "tap": {
+              "column": 5,
+              "row": 0
+            }
+          },
+          "greedyOutcome": {
+            "afterShowerSecond": 3,
+            "first": 3,
+            "immediateSecond": 3,
+            "overflow": false,
+            "remainingOpals": 0
+          },
+          "initial": {
+            "board": [
+              {
+                "grown": false,
+                "id": 16,
+                "kind": 3
+              },
+              {
+                "grown": true,
+                "id": 18,
+                "kind": 4
+              },
+              {
+                "grown": false,
+                "id": 17,
+                "kind": 3
+              },
+              null,
+              {
+                "grown": false,
+                "id": 21,
+                "lightStar": true
+              },
+              {
+                "grown": true,
+                "id": 9,
+                "kind": 1
+              },
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 20,
+                "kind": 4
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 22
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "cohesiveShowers": true,
+            "darkStarsCleared": 0,
+            "incoming": [
+              {
+                "column": 0,
+                "id": 30,
+                "kind": 0
+              },
+              {
+                "column": 3,
+                "id": 31,
+                "kind": 0
+              },
+              {
+                "column": 2,
+                "id": 32,
+                "kind": 0
+              }
+            ],
+            "openingCascade": true,
+            "random": {
+              "state": 17268758816398543371
+            },
+            "remainingColumns": [
+              5,
+              6
+            ],
+            "savedBalance": {
+              "darkStars": "regular",
+              "pace": 3
+            },
+            "savedCadence": "announcedCycleV2",
+            "savedGeneration": 2,
+            "score": 14,
+            "seed": 224,
+            "showersUntilDark": 4,
+            "starsLanded": 23,
+            "turns": 6
+          },
+          "seed": 224,
+          "shower": 6
+        },
+        {
+          "alternative": {
+            "light": 6,
+            "opalsSpent": 0,
+            "selected": 527,
+            "tap": {
+              "column": 0,
+              "row": 0
+            }
+          },
+          "alternativeOutcome": {
+            "afterShowerSecond": 3,
+            "first": 6,
+            "immediateSecond": 3,
+            "overflow": false,
+            "remainingOpals": 1
+          },
+          "category": "smaller-first-immediate-gain",
+          "greedy": {
+            "light": 7,
+            "opalsSpent": 1,
+            "selected": 131599,
+            "trace": [
+              {
+                "column": 0,
+                "row": 0
+              },
+              {
+                "column": 1,
+                "row": 0
+              },
+              {
+                "column": 2,
+                "row": 0
+              },
+              {
+                "column": 3,
+                "row": 0
+              },
+              {
+                "column": 2,
+                "row": 1
+              },
+              {
+                "column": 3,
+                "row": 2
+              },
+              {
+                "column": 2,
+                "row": 1
+              },
+              {
+                "column": 3,
+                "row": 0
+              },
+              {
+                "column": 2,
+                "row": 0
+              },
+              {
+                "column": 1,
+                "row": 0
+              },
+              {
+                "column": 0,
+                "row": 0
+              }
+            ]
+          },
+          "greedyOutcome": {
+            "afterShowerSecond": 0,
+            "first": 7,
+            "immediateSecond": 0,
+            "overflow": false,
+            "remainingOpals": 0
+          },
+          "initial": {
+            "board": [
+              {
+                "grown": false,
+                "id": 5,
+                "kind": 1
+              },
+              {
+                "grown": false,
+                "id": 3,
+                "kind": 1
+              },
+              {
+                "grown": true,
+                "id": 26,
+                "kind": 1
+              },
+              {
+                "grown": false,
+                "id": 4,
+                "kind": 1
+              },
+              {
+                "grown": false,
+                "id": 10,
+                "kind": 0
+              },
+              {
+                "grown": false,
+                "id": 25,
+                "kind": 3
+              },
+              null,
+              {
+                "grown": true,
+                "id": 9,
+                "kind": 0
+              },
+              {
+                "grown": false,
+                "id": 12,
+                "kind": 3
+              },
+              {
+                "grown": false,
+                "id": 28,
+                "kind": 1
+              },
+              {
+                "grown": false,
+                "id": 17,
+                "kind": 0
+              },
+              {
+                "grown": true,
+                "id": 14,
+                "kind": 3
+              },
+              {
+                "grown": false,
+                "id": 29,
+                "kind": 1
+              },
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 18,
+                "kind": 0
+              },
+              null,
+              {
+                "grown": false,
+                "id": 23,
+                "lightStar": true
+              },
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 22
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 30,
+                "kind": 1
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "cohesiveShowers": true,
+            "darkStarsCleared": 0,
+            "incoming": [
+              {
+                "column": 4,
+                "id": 40,
+                "kind": 4
+              },
+              {
+                "column": 6,
+                "id": 41,
+                "kind": 4
+              },
+              {
+                "column": 3,
+                "id": 42,
+                "kind": 4
+              }
+            ],
+            "openingCascade": true,
+            "random": {
+              "state": 5475382244638342065
+            },
+            "remainingColumns": [
+              2
+            ],
+            "savedBalance": {
+              "darkStars": "regular",
+              "pace": 3
+            },
+            "savedCadence": "announcedCycleV2",
+            "savedGeneration": 2,
+            "score": 12,
+            "seed": 226,
+            "showersUntilDark": 0,
+            "starsLanded": 31,
+            "turns": 8
+          },
+          "seed": 226,
+          "shower": 8
+        },
+        {
+          "alternative": {
+            "light": 6,
+            "opalsSpent": 0,
+            "selected": 527,
+            "tap": {
+              "column": 0,
+              "row": 0
+            }
+          },
+          "alternativeOutcome": {
+            "afterShowerSecond": 3,
+            "first": 6,
+            "immediateSecond": 3,
+            "overflow": false,
+            "remainingOpals": 1
+          },
+          "category": "preserving-forecast-oracle-gain",
+          "greedy": {
+            "light": 7,
+            "opalsSpent": 1,
+            "selected": 131599,
+            "trace": [
+              {
+                "column": 0,
+                "row": 0
+              },
+              {
+                "column": 1,
+                "row": 0
+              },
+              {
+                "column": 2,
+                "row": 0
+              },
+              {
+                "column": 3,
+                "row": 0
+              },
+              {
+                "column": 2,
+                "row": 1
+              },
+              {
+                "column": 3,
+                "row": 2
+              },
+              {
+                "column": 2,
+                "row": 1
+              },
+              {
+                "column": 3,
+                "row": 0
+              },
+              {
+                "column": 2,
+                "row": 0
+              },
+              {
+                "column": 1,
+                "row": 0
+              },
+              {
+                "column": 0,
+                "row": 0
+              }
+            ]
+          },
+          "greedyOutcome": {
+            "afterShowerSecond": 0,
+            "first": 7,
+            "immediateSecond": 0,
+            "overflow": false,
+            "remainingOpals": 0
+          },
+          "initial": {
+            "board": [
+              {
+                "grown": false,
+                "id": 5,
+                "kind": 1
+              },
+              {
+                "grown": false,
+                "id": 3,
+                "kind": 1
+              },
+              {
+                "grown": true,
+                "id": 26,
+                "kind": 1
+              },
+              {
+                "grown": false,
+                "id": 4,
+                "kind": 1
+              },
+              {
+                "grown": false,
+                "id": 10,
+                "kind": 0
+              },
+              {
+                "grown": false,
+                "id": 25,
+                "kind": 3
+              },
+              null,
+              {
+                "grown": true,
+                "id": 9,
+                "kind": 0
+              },
+              {
+                "grown": false,
+                "id": 12,
+                "kind": 3
+              },
+              {
+                "grown": false,
+                "id": 28,
+                "kind": 1
+              },
+              {
+                "grown": false,
+                "id": 17,
+                "kind": 0
+              },
+              {
+                "grown": true,
+                "id": 14,
+                "kind": 3
+              },
+              {
+                "grown": false,
+                "id": 29,
+                "kind": 1
+              },
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 18,
+                "kind": 0
+              },
+              null,
+              {
+                "grown": false,
+                "id": 23,
+                "lightStar": true
+              },
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 22
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 30,
+                "kind": 1
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "cohesiveShowers": true,
+            "darkStarsCleared": 0,
+            "incoming": [
+              {
+                "column": 4,
+                "id": 40,
+                "kind": 4
+              },
+              {
+                "column": 6,
+                "id": 41,
+                "kind": 4
+              },
+              {
+                "column": 3,
+                "id": 42,
+                "kind": 4
+              }
+            ],
+            "openingCascade": true,
+            "random": {
+              "state": 5475382244638342065
+            },
+            "remainingColumns": [
+              2
+            ],
+            "savedBalance": {
+              "darkStars": "regular",
+              "pace": 3
+            },
+            "savedCadence": "announcedCycleV2",
+            "savedGeneration": 2,
+            "score": 12,
+            "seed": 226,
+            "showersUntilDark": 0,
+            "starsLanded": 31,
+            "turns": 8
+          },
+          "seed": 226,
+          "shower": 8
+        },
+        {
+          "alternativeOutcome": {
+            "afterShowerSecond": 6,
+            "first": 0,
+            "immediateSecond": 4,
+            "overflow": false,
+            "remainingOpals": 1
+          },
+          "category": "wait-forecast-oracle-gain",
+          "greedy": {
+            "light": 4,
+            "opalsSpent": 1,
+            "selected": 134152,
+            "tap": {
+              "column": 3,
+              "row": 0
+            }
+          },
+          "greedyOutcome": {
+            "afterShowerSecond": 0,
+            "first": 4,
+            "immediateSecond": 0,
+            "overflow": false,
+            "remainingOpals": 0
+          },
+          "initial": {
+            "board": [
+              null,
+              {
+                "grown": false,
+                "id": 42,
+                "kind": 4
+              },
+              {
+                "grown": false,
+                "id": 60
+              },
+              {
+                "grown": false,
+                "id": 48,
+                "kind": 0
+              },
+              {
+                "grown": false,
+                "id": 45,
+                "kind": 2
+              },
+              null,
+              {
+                "grown": true,
+                "id": 11,
+                "kind": 3
+              },
+              null,
+              {
+                "grown": false,
+                "id": 52,
+                "kind": 3
+              },
+              {
+                "grown": false,
+                "id": 61,
+                "kind": 1
+              },
+              {
+                "grown": false,
+                "id": 63,
+                "kind": 0
+              },
+              {
+                "grown": false,
+                "id": 59,
+                "kind": 0
+              },
+              null,
+              {
+                "grown": false,
+                "id": 46,
+                "kind": 0
+              },
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 62,
+                "kind": 1
+              },
+              {
+                "grown": false,
+                "id": 64,
+                "lightStar": true
+              },
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 54,
+                "kind": 2
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "cohesiveShowers": true,
+            "darkStarsCleared": 2,
+            "incoming": [
+              {
+                "column": 6,
+                "id": 90,
+                "kind": 0
+              },
+              {
+                "column": 2,
+                "id": 91,
+                "kind": 0
+              },
+              {
+                "column": 4,
+                "id": 92,
+                "kind": 0
+              }
+            ],
+            "openingCascade": true,
+            "random": {
+              "state": 2876733420928160582
+            },
+            "remainingColumns": [
+              0,
+              5
+            ],
+            "savedBalance": {
+              "darkStars": "regular",
+              "pace": 3
+            },
+            "savedCadence": "announcedCycleV2",
+            "savedGeneration": 2,
+            "score": 49,
+            "seed": 235,
+            "showersUntilDark": 3,
+            "starsLanded": 65,
+            "turns": 18
+          },
+          "seed": 235,
+          "shower": 18
+        },
+        {
+          "alternative": {
+            "light": 3,
+            "opalsSpent": 0,
+            "selected": 4227072,
+            "tap": {
+              "column": 1,
+              "row": 2
+            }
+          },
+          "alternativeOutcome": {
+            "afterShowerSecond": 4,
+            "first": 3,
+            "immediateSecond": 4,
+            "overflow": false,
+            "remainingOpals": 1
+          },
+          "category": "preserving-forecast-oracle-safety",
+          "greedy": {
+            "light": 4,
+            "opalsSpent": 1,
+            "selected": 3088,
+            "tap": {
+              "column": 4,
+              "row": 0
+            }
+          },
+          "greedyOutcome": {
+            "afterShowerSecond": 0,
+            "first": 4,
+            "immediateSecond": 3,
+            "overflow": true,
+            "remainingOpals": 0
+          },
+          "initial": {
+            "board": [
+              null,
+              {
+                "grown": false,
+                "id": 25,
+                "kind": 3
+              },
+              null,
+              {
+                "grown": true,
+                "id": 26,
+                "kind": 4
+              },
+              {
+                "grown": true,
+                "id": 43,
+                "kind": 2
+              },
+              null,
+              {
+                "grown": false,
+                "id": 17
+              },
+              null,
+              {
+                "grown": false,
+                "id": 31,
+                "kind": 0
+              },
+              null,
+              {
+                "grown": false,
+                "id": 47,
+                "lightStar": true
+              },
+              {
+                "grown": false,
+                "id": 45,
+                "kind": 2
+              },
+              null,
+              {
+                "grown": false,
+                "id": 21,
+                "kind": 1
+              },
+              null,
+              {
+                "grown": true,
+                "id": 33,
+                "kind": 3
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 35,
+                "kind": 3
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 38,
+                "kind": 0
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 39
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 40,
+                "kind": 0
+              },
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "cohesiveShowers": true,
+            "darkStarsCleared": 0,
+            "incoming": [
+              {
+                "column": 6,
+                "id": 60,
+                "kind": 2
+              },
+              {
+                "column": 1,
+                "id": 61,
+                "kind": 2
+              }
+            ],
+            "nextGravityID": 48,
+            "openingCascade": true,
+            "random": {
+              "state": 10072746118663351994
+            },
+            "remainingColumns": [
+              2,
+              5
+            ],
+            "retiredMagnetic": 2,
+            "savedBalance": {
+              "darkStars": "regular",
+              "pace": 3
+            },
+            "savedCadence": "announcedCycleV2",
+            "savedGeneration": 2,
+            "score": 30,
+            "seed": 247,
+            "showersUntilDark": 2,
+            "starsLanded": 48,
+            "turns": 12
+          },
+          "seed": 247,
+          "shower": 12
+        },
+        {
+          "alternative": {
+            "light": 3,
+            "opalsSpent": 1,
+            "selected": 33818624,
+            "tap": {
+              "column": 4,
+              "row": 1
+            }
+          },
+          "alternativeOutcome": {
+            "afterShowerSecond": 3,
+            "first": 3,
+            "immediateSecond": 3,
+            "overflow": false,
+            "remainingOpals": 1
+          },
+          "category": "equal-first-immediate-gain",
+          "greedy": {
+            "light": 3,
+            "opalsSpent": 2,
+            "selected": 1835008,
+            "tap": {
+              "column": 5,
+              "row": 2
+            }
+          },
+          "greedyOutcome": {
+            "afterShowerSecond": 0,
+            "first": 3,
+            "immediateSecond": 0,
+            "overflow": false,
+            "remainingOpals": 0
+          },
+          "initial": {
+            "board": [
+              {
+                "grown": true,
+                "id": 50,
+                "kind": 4
+              },
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 60,
+                "kind": 0
+              },
+              {
+                "grown": false,
+                "id": 51,
+                "kind": 4
+              },
+              {
+                "grown": false,
+                "id": 49,
+                "kind": 0
+              },
+              {
+                "grown": false,
+                "id": 11,
+                "kind": 4
+              },
+              {
+                "grown": false,
+                "id": 69,
+                "kind": 0
+              },
+              null,
+              null,
+              {
+                "gravityKind": "magnet",
+                "grown": false,
+                "id": 70
+              },
+              {
+                "grown": false,
+                "id": 65,
+                "kind": 1
+              },
+              {
+                "gravityKind": "magnet",
+                "grown": false,
+                "id": 71
+              },
+              {
+                "grown": false,
+                "id": 46
+              },
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 72,
+                "kind": 3
+              },
+              {
+                "grown": false,
+                "id": 66,
+                "lightStar": true
+              },
+              {
+                "grown": false,
+                "id": 73,
+                "kind": 4
+              },
+              {
+                "grown": false,
+                "id": 47,
+                "lightStar": true
+              },
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 74,
+                "kind": 1
+              },
+              null,
+              {
+                "grown": true,
+                "id": 61,
+                "kind": 0
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "cohesiveShowers": true,
+            "darkStarsCleared": 2,
+            "incoming": [
+              {
+                "column": 5,
+                "id": 100
+              },
+              {
+                "column": 3,
+                "id": 101,
+                "kind": 2
+              },
+              {
+                "column": 6,
+                "id": 102,
+                "kind": 2
+              }
+            ],
+            "nextGravityID": 75,
+            "openingCascade": true,
+            "random": {
+              "state": 10558102736839681114
+            },
+            "remainingColumns": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "retiredMagnetic": 2,
+            "savedBalance": {
+              "darkStars": "regular",
+              "pace": 3
+            },
+            "savedCadence": "announcedCycleV2",
+            "savedGeneration": 2,
+            "score": 53,
+            "seed": 259,
+            "showersUntilDark": 3,
+            "starsLanded": 75,
+            "turns": 20
+          },
+          "seed": 259,
+          "shower": 20
+        }
+      ],
+      "policy": "largest-immediate"
+    },
+    {
+      "examples": [
+        {
+          "alternative": {
+            "light": 3,
+            "opalsSpent": 0,
+            "selected": 258,
+            "tap": {
+              "column": 1,
+              "row": 0
+            }
+          },
+          "alternativeOutcome": {
+            "afterShowerSecond": 3,
+            "first": 3,
+            "immediateSecond": 3,
+            "overflow": false,
+            "remainingOpals": 1
+          },
+          "category": "safe-preservation-without-two-clear-gain",
+          "greedy": {
+            "light": 3,
+            "opalsSpent": 1,
+            "selected": 48,
+            "tap": {
+              "column": 5,
+              "row": 0
+            }
+          },
+          "greedyOutcome": {
+            "afterShowerSecond": 3,
+            "first": 3,
+            "immediateSecond": 3,
+            "overflow": false,
+            "remainingOpals": 0
+          },
+          "initial": {
+            "board": [
+              {
+                "grown": false,
+                "id": 16,
+                "kind": 3
+              },
+              {
+                "grown": true,
+                "id": 18,
+                "kind": 4
+              },
+              {
+                "grown": false,
+                "id": 17,
+                "kind": 3
+              },
+              null,
+              {
+                "grown": false,
+                "id": 21,
+                "lightStar": true
+              },
+              {
+                "grown": true,
+                "id": 9,
+                "kind": 1
+              },
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 20,
+                "kind": 4
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 22
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "cohesiveShowers": true,
+            "darkStarsCleared": 0,
+            "incoming": [
+              {
+                "column": 0,
+                "id": 30,
+                "kind": 0
+              },
+              {
+                "column": 3,
+                "id": 31,
+                "kind": 0
+              },
+              {
+                "column": 2,
+                "id": 32,
+                "kind": 0
+              }
+            ],
+            "openingCascade": true,
+            "random": {
+              "state": 17268758816398543371
+            },
+            "remainingColumns": [
+              5,
+              6
+            ],
+            "savedBalance": {
+              "darkStars": "regular",
+              "pace": 3
+            },
+            "savedCadence": "announcedCycleV2",
+            "savedGeneration": 2,
+            "score": 14,
+            "seed": 224,
+            "showersUntilDark": 4,
+            "starsLanded": 23,
+            "turns": 6
+          },
+          "seed": 224,
+          "shower": 6
+        },
+        {
+          "alternative": {
+            "light": 6,
+            "opalsSpent": 0,
+            "selected": 527,
+            "tap": {
+              "column": 0,
+              "row": 0
+            }
+          },
+          "alternativeOutcome": {
+            "afterShowerSecond": 3,
+            "first": 6,
+            "immediateSecond": 3,
+            "overflow": false,
+            "remainingOpals": 1
+          },
+          "category": "smaller-first-immediate-gain",
+          "greedy": {
+            "light": 7,
+            "opalsSpent": 1,
+            "selected": 131599,
+            "trace": [
+              {
+                "column": 0,
+                "row": 0
+              },
+              {
+                "column": 1,
+                "row": 0
+              },
+              {
+                "column": 2,
+                "row": 0
+              },
+              {
+                "column": 3,
+                "row": 0
+              },
+              {
+                "column": 2,
+                "row": 1
+              },
+              {
+                "column": 3,
+                "row": 2
+              },
+              {
+                "column": 2,
+                "row": 1
+              },
+              {
+                "column": 3,
+                "row": 0
+              },
+              {
+                "column": 2,
+                "row": 0
+              },
+              {
+                "column": 1,
+                "row": 0
+              },
+              {
+                "column": 0,
+                "row": 0
+              }
+            ]
+          },
+          "greedyOutcome": {
+            "afterShowerSecond": 0,
+            "first": 7,
+            "immediateSecond": 0,
+            "overflow": false,
+            "remainingOpals": 0
+          },
+          "initial": {
+            "board": [
+              {
+                "grown": false,
+                "id": 5,
+                "kind": 1
+              },
+              {
+                "grown": false,
+                "id": 3,
+                "kind": 1
+              },
+              {
+                "grown": true,
+                "id": 26,
+                "kind": 1
+              },
+              {
+                "grown": false,
+                "id": 4,
+                "kind": 1
+              },
+              {
+                "grown": false,
+                "id": 10,
+                "kind": 0
+              },
+              {
+                "grown": false,
+                "id": 25,
+                "kind": 3
+              },
+              null,
+              {
+                "grown": true,
+                "id": 9,
+                "kind": 0
+              },
+              {
+                "grown": false,
+                "id": 12,
+                "kind": 3
+              },
+              {
+                "grown": false,
+                "id": 28,
+                "kind": 1
+              },
+              {
+                "grown": false,
+                "id": 17,
+                "kind": 0
+              },
+              {
+                "grown": true,
+                "id": 14,
+                "kind": 3
+              },
+              {
+                "grown": false,
+                "id": 29,
+                "kind": 1
+              },
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 18,
+                "kind": 0
+              },
+              null,
+              {
+                "grown": false,
+                "id": 23,
+                "lightStar": true
+              },
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 22
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 30,
+                "kind": 1
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "cohesiveShowers": true,
+            "darkStarsCleared": 0,
+            "incoming": [
+              {
+                "column": 4,
+                "id": 40,
+                "kind": 4
+              },
+              {
+                "column": 6,
+                "id": 41,
+                "kind": 4
+              },
+              {
+                "column": 3,
+                "id": 42,
+                "kind": 4
+              }
+            ],
+            "openingCascade": true,
+            "random": {
+              "state": 5475382244638342065
+            },
+            "remainingColumns": [
+              2
+            ],
+            "savedBalance": {
+              "darkStars": "regular",
+              "pace": 3
+            },
+            "savedCadence": "announcedCycleV2",
+            "savedGeneration": 2,
+            "score": 12,
+            "seed": 226,
+            "showersUntilDark": 0,
+            "starsLanded": 31,
+            "turns": 8
+          },
+          "seed": 226,
+          "shower": 8
+        },
+        {
+          "alternative": {
+            "light": 6,
+            "opalsSpent": 0,
+            "selected": 527,
+            "tap": {
+              "column": 0,
+              "row": 0
+            }
+          },
+          "alternativeOutcome": {
+            "afterShowerSecond": 3,
+            "first": 6,
+            "immediateSecond": 3,
+            "overflow": false,
+            "remainingOpals": 1
+          },
+          "category": "preserving-forecast-oracle-gain",
+          "greedy": {
+            "light": 7,
+            "opalsSpent": 1,
+            "selected": 131599,
+            "trace": [
+              {
+                "column": 0,
+                "row": 0
+              },
+              {
+                "column": 1,
+                "row": 0
+              },
+              {
+                "column": 2,
+                "row": 0
+              },
+              {
+                "column": 3,
+                "row": 0
+              },
+              {
+                "column": 2,
+                "row": 1
+              },
+              {
+                "column": 3,
+                "row": 2
+              },
+              {
+                "column": 2,
+                "row": 1
+              },
+              {
+                "column": 3,
+                "row": 0
+              },
+              {
+                "column": 2,
+                "row": 0
+              },
+              {
+                "column": 1,
+                "row": 0
+              },
+              {
+                "column": 0,
+                "row": 0
+              }
+            ]
+          },
+          "greedyOutcome": {
+            "afterShowerSecond": 0,
+            "first": 7,
+            "immediateSecond": 0,
+            "overflow": false,
+            "remainingOpals": 0
+          },
+          "initial": {
+            "board": [
+              {
+                "grown": false,
+                "id": 5,
+                "kind": 1
+              },
+              {
+                "grown": false,
+                "id": 3,
+                "kind": 1
+              },
+              {
+                "grown": true,
+                "id": 26,
+                "kind": 1
+              },
+              {
+                "grown": false,
+                "id": 4,
+                "kind": 1
+              },
+              {
+                "grown": false,
+                "id": 10,
+                "kind": 0
+              },
+              {
+                "grown": false,
+                "id": 25,
+                "kind": 3
+              },
+              null,
+              {
+                "grown": true,
+                "id": 9,
+                "kind": 0
+              },
+              {
+                "grown": false,
+                "id": 12,
+                "kind": 3
+              },
+              {
+                "grown": false,
+                "id": 28,
+                "kind": 1
+              },
+              {
+                "grown": false,
+                "id": 17,
+                "kind": 0
+              },
+              {
+                "grown": true,
+                "id": 14,
+                "kind": 3
+              },
+              {
+                "grown": false,
+                "id": 29,
+                "kind": 1
+              },
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 18,
+                "kind": 0
+              },
+              null,
+              {
+                "grown": false,
+                "id": 23,
+                "lightStar": true
+              },
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 22
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 30,
+                "kind": 1
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "cohesiveShowers": true,
+            "darkStarsCleared": 0,
+            "incoming": [
+              {
+                "column": 4,
+                "id": 40,
+                "kind": 4
+              },
+              {
+                "column": 6,
+                "id": 41,
+                "kind": 4
+              },
+              {
+                "column": 3,
+                "id": 42,
+                "kind": 4
+              }
+            ],
+            "openingCascade": true,
+            "random": {
+              "state": 5475382244638342065
+            },
+            "remainingColumns": [
+              2
+            ],
+            "savedBalance": {
+              "darkStars": "regular",
+              "pace": 3
+            },
+            "savedCadence": "announcedCycleV2",
+            "savedGeneration": 2,
+            "score": 12,
+            "seed": 226,
+            "showersUntilDark": 0,
+            "starsLanded": 31,
+            "turns": 8
+          },
+          "seed": 226,
+          "shower": 8
+        },
+        {
+          "alternativeOutcome": {
+            "afterShowerSecond": 6,
+            "first": 0,
+            "immediateSecond": 4,
+            "overflow": false,
+            "remainingOpals": 1
+          },
+          "category": "wait-forecast-oracle-gain",
+          "greedy": {
+            "light": 4,
+            "opalsSpent": 1,
+            "selected": 134152,
+            "tap": {
+              "column": 3,
+              "row": 0
+            }
+          },
+          "greedyOutcome": {
+            "afterShowerSecond": 0,
+            "first": 4,
+            "immediateSecond": 0,
+            "overflow": false,
+            "remainingOpals": 0
+          },
+          "initial": {
+            "board": [
+              null,
+              {
+                "grown": false,
+                "id": 42,
+                "kind": 4
+              },
+              {
+                "grown": false,
+                "id": 60
+              },
+              {
+                "grown": false,
+                "id": 48,
+                "kind": 0
+              },
+              {
+                "grown": false,
+                "id": 45,
+                "kind": 2
+              },
+              null,
+              {
+                "grown": true,
+                "id": 11,
+                "kind": 3
+              },
+              null,
+              {
+                "grown": false,
+                "id": 52,
+                "kind": 3
+              },
+              {
+                "grown": false,
+                "id": 61,
+                "kind": 1
+              },
+              {
+                "grown": false,
+                "id": 63,
+                "kind": 0
+              },
+              {
+                "grown": false,
+                "id": 59,
+                "kind": 0
+              },
+              null,
+              {
+                "grown": false,
+                "id": 46,
+                "kind": 0
+              },
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 62,
+                "kind": 1
+              },
+              {
+                "grown": false,
+                "id": 64,
+                "lightStar": true
+              },
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 54,
+                "kind": 2
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "cohesiveShowers": true,
+            "darkStarsCleared": 2,
+            "incoming": [
+              {
+                "column": 6,
+                "id": 90,
+                "kind": 0
+              },
+              {
+                "column": 2,
+                "id": 91,
+                "kind": 0
+              },
+              {
+                "column": 4,
+                "id": 92,
+                "kind": 0
+              }
+            ],
+            "openingCascade": true,
+            "random": {
+              "state": 2876733420928160582
+            },
+            "remainingColumns": [
+              0,
+              5
+            ],
+            "savedBalance": {
+              "darkStars": "regular",
+              "pace": 3
+            },
+            "savedCadence": "announcedCycleV2",
+            "savedGeneration": 2,
+            "score": 49,
+            "seed": 235,
+            "showersUntilDark": 3,
+            "starsLanded": 65,
+            "turns": 18
+          },
+          "seed": 235,
+          "shower": 18
+        },
+        {
+          "alternative": {
+            "light": 3,
+            "opalsSpent": 0,
+            "selected": 4227072,
+            "tap": {
+              "column": 1,
+              "row": 2
+            }
+          },
+          "alternativeOutcome": {
+            "afterShowerSecond": 4,
+            "first": 3,
+            "immediateSecond": 4,
+            "overflow": false,
+            "remainingOpals": 1
+          },
+          "category": "preserving-forecast-oracle-safety",
+          "greedy": {
+            "light": 4,
+            "opalsSpent": 1,
+            "selected": 3088,
+            "tap": {
+              "column": 4,
+              "row": 0
+            }
+          },
+          "greedyOutcome": {
+            "afterShowerSecond": 0,
+            "first": 4,
+            "immediateSecond": 3,
+            "overflow": true,
+            "remainingOpals": 0
+          },
+          "initial": {
+            "board": [
+              null,
+              {
+                "grown": false,
+                "id": 25,
+                "kind": 3
+              },
+              null,
+              {
+                "grown": true,
+                "id": 26,
+                "kind": 4
+              },
+              {
+                "grown": true,
+                "id": 43,
+                "kind": 2
+              },
+              null,
+              {
+                "grown": false,
+                "id": 17
+              },
+              null,
+              {
+                "grown": false,
+                "id": 31,
+                "kind": 0
+              },
+              null,
+              {
+                "grown": false,
+                "id": 47,
+                "lightStar": true
+              },
+              {
+                "grown": false,
+                "id": 45,
+                "kind": 2
+              },
+              null,
+              {
+                "grown": false,
+                "id": 21,
+                "kind": 1
+              },
+              null,
+              {
+                "grown": true,
+                "id": 33,
+                "kind": 3
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 35,
+                "kind": 3
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 38,
+                "kind": 0
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 39
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 40,
+                "kind": 0
+              },
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "cohesiveShowers": true,
+            "darkStarsCleared": 0,
+            "incoming": [
+              {
+                "column": 6,
+                "id": 60,
+                "kind": 2
+              },
+              {
+                "column": 1,
+                "id": 61,
+                "kind": 2
+              }
+            ],
+            "nextGravityID": 48,
+            "openingCascade": true,
+            "random": {
+              "state": 10072746118663351994
+            },
+            "remainingColumns": [
+              2,
+              5
+            ],
+            "retiredMagnetic": 2,
+            "savedBalance": {
+              "darkStars": "regular",
+              "pace": 3
+            },
+            "savedCadence": "announcedCycleV2",
+            "savedGeneration": 2,
+            "score": 30,
+            "seed": 247,
+            "showersUntilDark": 2,
+            "starsLanded": 48,
+            "turns": 12
+          },
+          "seed": 247,
+          "shower": 12
+        },
+        {
+          "alternative": {
+            "light": 3,
+            "opalsSpent": 1,
+            "selected": 33818624,
+            "tap": {
+              "column": 4,
+              "row": 1
+            }
+          },
+          "alternativeOutcome": {
+            "afterShowerSecond": 3,
+            "first": 3,
+            "immediateSecond": 3,
+            "overflow": false,
+            "remainingOpals": 1
+          },
+          "category": "equal-first-immediate-gain",
+          "greedy": {
+            "light": 3,
+            "opalsSpent": 2,
+            "selected": 1835008,
+            "tap": {
+              "column": 5,
+              "row": 2
+            }
+          },
+          "greedyOutcome": {
+            "afterShowerSecond": 0,
+            "first": 3,
+            "immediateSecond": 0,
+            "overflow": false,
+            "remainingOpals": 0
+          },
+          "initial": {
+            "board": [
+              {
+                "grown": true,
+                "id": 50,
+                "kind": 4
+              },
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 60,
+                "kind": 0
+              },
+              {
+                "grown": false,
+                "id": 51,
+                "kind": 4
+              },
+              {
+                "grown": false,
+                "id": 49,
+                "kind": 0
+              },
+              {
+                "grown": false,
+                "id": 11,
+                "kind": 4
+              },
+              {
+                "grown": false,
+                "id": 69,
+                "kind": 0
+              },
+              null,
+              null,
+              {
+                "gravityKind": "magnet",
+                "grown": false,
+                "id": 70
+              },
+              {
+                "grown": false,
+                "id": 65,
+                "kind": 1
+              },
+              {
+                "gravityKind": "magnet",
+                "grown": false,
+                "id": 71
+              },
+              {
+                "grown": false,
+                "id": 46
+              },
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 72,
+                "kind": 3
+              },
+              {
+                "grown": false,
+                "id": 66,
+                "lightStar": true
+              },
+              {
+                "grown": false,
+                "id": 73,
+                "kind": 4
+              },
+              {
+                "grown": false,
+                "id": 47,
+                "lightStar": true
+              },
+              null,
+              null,
+              null,
+              null,
+              {
+                "grown": false,
+                "id": 74,
+                "kind": 1
+              },
+              null,
+              {
+                "grown": true,
+                "id": 61,
+                "kind": 0
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "cohesiveShowers": true,
+            "darkStarsCleared": 2,
+            "incoming": [
+              {
+                "column": 5,
+                "id": 100
+              },
+              {
+                "column": 3,
+                "id": 101,
+                "kind": 2
+              },
+              {
+                "column": 6,
+                "id": 102,
+                "kind": 2
+              }
+            ],
+            "nextGravityID": 75,
+            "openingCascade": true,
+            "random": {
+              "state": 10558102736839681114
+            },
+            "remainingColumns": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "retiredMagnetic": 2,
+            "savedBalance": {
+              "darkStars": "regular",
+              "pace": 3
+            },
+            "savedCadence": "announcedCycleV2",
+            "savedGeneration": 2,
+            "score": 53,
+            "seed": 259,
+            "showersUntilDark": 3,
+            "starsLanded": 75,
+            "turns": 20
+          },
+          "seed": 259,
+          "shower": 20
+        }
+      ],
+      "policy": "preserve-opal-on-score-ties"
+    }
+  ]
+}

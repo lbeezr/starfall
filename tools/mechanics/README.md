@@ -6,7 +6,7 @@
 
 `python3 tools/mechanics/study-opal-choices.py --output artifacts/opal-choices/new-run` compiles unchanged production Core and the bounded checker in a temporary directory. It writes source hashes, compiler/progress logs and runs.json without touching app saves or installing a lab. Defaults are seeds 0–63 and 24 showers; `--seed-start 64` selects the held-out range. Seed counts are bounded to 1–200 and horizons to 6–60 showers. Output directories must be new.
 
-The checker enumerates taps/full components/connected fives, validates actions with Core, and keeps oracle forecasts out of policy selection. [Plan and limits](../../docs/design/OPAL_CHOICE_STUDY.md), [discovery/held-out results](../../docs/evidence/opal-choice-study-2026-10-17/README.md). These are mechanical opportunity measurements, not human or timed-play results.
+The checker enumerates taps/full components/connected fives, validates actions with Core, and keeps oracle forecasts out of policy selection. [Plan and limits](../../docs/design/OPAL_CHOICE_STUDY.md), [discovery/held-out results](../../docs/evidence/opal-choice-study-2026-10-17/README.md). These are mechanical opportunity measurements, not human or timed-play results. Current reports also split counts by the just-committed shower’s calm/storm phase and record active-orbit overlap; nine calm and three storm waves have unequal exposure. These observational counts do not isolate a causal storm effect. The current gravity diagnostic and fresh seed range are preregistered in the same plan; [discovery/confirmation results](../../docs/evidence/current-storm-choices-2026-10-17/README.md) retain rules and separate sparse orbit exposure from human acceptance.
 
 ## Pacing comparison
 

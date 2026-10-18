@@ -123,15 +123,25 @@ private struct Example: Codable {
     let greedyOutcome: StudyOutcome
     let alternativeOutcome: StudyOutcome
 }
+private func phaseName(_ game: FallingSky) -> String {
+    game.generation.phase(for: game.turns)?.isStorm == true ? "storm" : "calm"
+}
 private struct Summary: Codable {
     let policy: String
     var counts: [String: Int] = [:]
+    var phaseCounts: [String: [String: Int]] = [:]
     var rounds = 0, ended = 0, score = 0, showers = 0
     var examples: [Example] = []
-    mutating func count(_ key: String) { counts[key, default: 0] += 1 }
+    mutating func count(_ key: String, phase: String) {
+        counts[key, default: 0] += 1
+        phaseCounts[phase, default: [:]][key, default: 0] += 1
+    }
 }
 @main private enum OpalChoiceStudy {
     static func checks() {
+        for shower in [9, 10, 12, 13] {
+            precondition(SkyGeneration.current.phase(for: shower)?.isStorm == ([10, 12].contains(shower)))
+        }
         let chain = mask((0..<6).map { Cell($0,$0) })
         precondition(fives(chain)!.count == 2)
         let rectangle = mask((0..<2).flatMap { row in (0..<3).map { Cell(row,$0) } })
@@ -162,28 +172,39 @@ private struct Summary: Codable {
             for key in ["decisionStates", "opalStates", "cappedOpalStates", "uncappedOpalDecisionStates",
                         "opalStatesWithoutClear", "sharedOpalStates", "equalFirstImmediateGainStates",
                         "smallerFirstImmediateGainStates", "preservingForecastOracleGainStates",
-                        "preservingForecastOracleSafetyStates", "waitForecastOracleGainStates"] { summary.counts[key] = 0 }
+                        "preservingForecastOracleSafetyStates", "waitForecastOracleGainStates", "clearAvailableStates", "multipleClearStates",
+                        "activeOrbitStates", "orbitWithOpalStates"] {
+                summary.counts[key] = 0
+                for phase in ["calm", "storm"] { summary.phaseCounts[phase, default: [:]][key] = 0 }
+            }
             for seed in start..<(start + UInt64(seeds)) {
                 var game = FallingSky(seed: seed, generation: .current)
                 for _ in 0..<limit where !game.isOver {
                     game.letStarsFall(); precondition(game.isValidSave)
                     guard !game.isOver else { break }
-                    summary.count("decisionStates")
+                    let phase = phaseName(game)
+                    summary.count("decisionStates", phase: phase)
                     let hasOpal = game.board.contains { $0?.isLight == true }
                     let alternatives = choices(game, subsets: hasOpal)
                     let source = game
+                    if !alternatives.actions.isEmpty { summary.count("clearAvailableStates", phase: phase) }
+                    if alternatives.actions.count > 1 { summary.count("multipleClearStates", phase: phase) }
+                    if game.orbit != nil {
+                        summary.count("activeOrbitStates", phase: phase)
+                        if hasOpal { summary.count("orbitWithOpalStates", phase: phase) }
+                    }
                     if hasOpal {
-                        summary.count("opalStates")
-                        if !alternatives.complete { summary.count("cappedOpalStates") }
+                        summary.count("opalStates", phase: phase)
+                        if !alternatives.complete { summary.count("cappedOpalStates", phase: phase) }
                         else if let greedy = select(alternatives.actions, preserveTies: false) {
-                            summary.count("uncappedOpalDecisionStates")
+                            summary.count("uncappedOpalDecisionStates", phase: phase)
                             let opals = (0..<49).map { Cell($0/7,$0%7) }.filter { game.gem(at: $0)?.isLight == true }
                             if opals.contains(where: { orb in
                                 let families = Set(alternatives.actions.filter { $0.selected & bit(orb) != 0 }.flatMap {
                                     cells($0.selected).compactMap { game.gem(at: $0)?.kind?.rawValue }
                                 })
                                 return families.count >= 2
-                            }) { summary.count("sharedOpalStates") }
+                            }) { summary.count("sharedOpalStates", phase: phase) }
                             let baseline = evaluate(greedy, game)
                             var equal = false, smaller = false, forecast = false, safety = false
                             func retain(_ category: String, _ alternative: Action?, _ result: StudyOutcome) {
@@ -210,18 +231,18 @@ private struct Summary: Codable {
                                     safety = true; retain("preserving-forecast-oracle-safety", action, result)
                                 }
                             }
-                            if equal { summary.count("equalFirstImmediateGainStates") }
-                            if smaller { summary.count("smallerFirstImmediateGainStates") }
-                            if forecast { summary.count("preservingForecastOracleGainStates") }
-                            if safety { summary.count("preservingForecastOracleSafetyStates") }
+                            if equal { summary.count("equalFirstImmediateGainStates", phase: phase) }
+                            if smaller { summary.count("smallerFirstImmediateGainStates", phase: phase) }
+                            if forecast { summary.count("preservingForecastOracleGainStates", phase: phase) }
+                            if safety { summary.count("preservingForecastOracleSafetyStates", phase: phase) }
                             if greedy.opalsSpent > 0 {
                                 let waiting = evaluate(nil, game)
                                 if !waiting.overflow && waiting.afterShowerTotal > baseline.afterShowerTotal {
-                                    summary.count("waitForecastOracleGainStates")
+                                    summary.count("waitForecastOracleGainStates", phase: phase)
                                     retain("wait-forecast-oracle-gain", nil, waiting)
                                 }
                             }
-                        } else { summary.count("opalStatesWithoutClear") }
+                        } else { summary.count("opalStatesWithoutClear", phase: phase) }
                     }
                     precondition(game == source)
                     if let chosen = select(alternatives.actions, preserveTies: preserve) { commit(chosen, &game) }
@@ -231,6 +252,9 @@ private struct Summary: Codable {
                 if (seed-start+1).isMultiple(of: 16) {
                     FileHandle.standardError.write(Data("\(summary.policy): \(seed-start+1)/\(seeds) seeds\n".utf8))
                 }
+            }
+            for (key, value) in summary.counts {
+                precondition(summary.phaseCounts.values.reduce(0) { $0 + ($1[key] ?? 0) } == value)
             }
             summaries.append(summary)
         }
