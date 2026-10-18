@@ -29,7 +29,16 @@ enum SkyBoardAction {
     static func canArrange(in game: FallingSky) -> Bool {
         game.canArrangeStars && game.occupiedCount > 0
     }
-    func reconcile(with game: FallingSky) {
+    func reconcile(with game: FallingSky, preservingRecipeAt generation: UInt64? = nil) {
+        // A shower may add unrelated stars without changing the chosen ingredients.
+        // Keep the same explicit choice, but spend only the current committed snapshot.
+        if let generation, arranging, !swapping, let anchor, let snapshot, let recipe,
+           Self.canArrange(in: game), game.recipes.contains(recipe),
+           game.gem(at: anchor) == snapshot.gem(at: anchor),
+           recipe.cells.allSatisfy({ game.gem(at: $0) == snapshot.gem(at: $0) }) {
+            self.snapshot = game; self.generation = generation
+            return
+        }
         cancel()
         if !Self.canArrange(in: game) { arranging = false }
     }
@@ -48,11 +57,19 @@ enum SkyBoardAction {
               next != recipe else { return }
         recipe = next; self.selectionID &+= 1
     }
-    func consumeSelection(_ selectionID: UInt64) -> (FallingSky,UInt64)? {
+    private func selection(_ selectionID: UInt64) -> (FallingSky,UInt64)? {
         guard arranging, self.selectionID == selectionID, let snapshot, anchor != nil else { return nil }
-        let ticket = generation
+        return (snapshot,generation)
+    }
+    func consumeSelection(_ selectionID: UInt64) -> (FallingSky,UInt64)? {
+        guard let selected = selection(selectionID) else { return nil }
         cancel()
-        return (snapshot,ticket)
+        return selected
+    }
+    @discardableResult func commitSelection(_ selectionID: UInt64, perform: (FallingSky,UInt64) -> Bool) -> Bool {
+        guard let (snapshot,ticket) = selection(selectionID), perform(snapshot,ticket) else { return false }
+        if self.selectionID == selectionID { cancel() }
+        return true
     }
     func select(_ cell: Cell, game: FallingSky, generation: UInt64) {
         cancel()
@@ -119,9 +136,9 @@ extension StarRecipe {
         endContact(ticket: holdTicket, release: release)
     }
 
-    func reconcile(with game: FallingSky, release: (UInt64?) -> Void) {
+    func reconcile(with game: FallingSky, preservingRecipeAt generation: UInt64? = nil, release: (UInt64?) -> Void) {
         cancelContact(release: release)
-        technique.reconcile(with: game)
+        technique.reconcile(with: game, preservingRecipeAt: generation)
     }
 
     func invalidate(release: (UInt64?) -> Void) {

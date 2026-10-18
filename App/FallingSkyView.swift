@@ -117,11 +117,8 @@ import StarfallCore
         .tint(StarfallTheme.Colors.actionPrimary)
         .onAppear { store.terminalSpeech = .ceremony; updateSuspension(); store.settlePresentation(); updateMotion() }
         .onDisappear { invalidateInteraction(); store.setSuspended(true); store.terminalSpeech = .feedback }
-        .onChange(of: store.constellationInputGeneration) { invalidateInteraction() }
-        .onChange(of: store.game) {
-            interaction.reconcile(with: store.game, release: store.endConstellationHold)
-            store.scene.clearConstellationTrace()
-        }
+        .onChange(of: store.constellationInputGeneration) { reconcileCommittedInput() }
+        .onChange(of: store.game) { reconcileCommittedInput() }
         .onChange(of: store.canClear) { _, enabled in if !enabled { cancelConstellation() } }
         .onChange(of: store.isPaused) { cancelConstellation() }
         .onChange(of: scenePhase) { invalidateInteraction(); updateSuspension() }
@@ -189,7 +186,7 @@ import StarfallCore
         if largeText, let message = store.inputMessage { SkyInputStatus(message: message) }
         if largeText, let warning = DuskWarning(game:store.game) { SkyDuskCue(warning:warning) }
         if technique.arranging {
-            SkyTechniqueControls(intent:technique,game:store.game,enabled:store.canReceiveInput,
+            SkyTechniqueControls(intent:technique,canPerform:store.canPerformTechnique,
                                  message:store.techniqueResult,perform:store.performTechnique)
         } else if !store.game.isOver {
             SkyDialogueOverlay(session: store.dialogue,
@@ -528,6 +525,11 @@ private extension FallingSkyView {
     }
     func invalidateInteraction() {
         interaction.invalidate(release: store.endConstellationHold)
+        store.scene.clearConstellationTrace()
+    }
+    func reconcileCommittedInput() {
+        interaction.reconcile(with: store.game, preservingRecipeAt: store.recipeRevalidationGeneration,
+                              release: store.endConstellationHold)
         store.scene.clearConstellationTrace()
     }
     func beginBoardContact(_ point: CGPoint, size: CGSize) -> Bool {

@@ -4,8 +4,7 @@ import StarfallCore
 /// Tap and accessibility equivalents for exact recipes and landed-star moves.
 @MainActor struct SkyTechniqueControls: View {
     let intent: SkyTechniqueIntent
-    let game: FallingSky
-    let enabled: Bool
+    let canPerform: (SkyBoardAction) -> Bool
     let message: String
     let perform: (SkyBoardAction, FallingSky, UInt64) -> Bool
     @Environment(\.dynamicTypeSize) private var typeSize
@@ -46,7 +45,7 @@ import StarfallCore
                     if let recipe = intent.recipe {
                         Button("Clear \(recipe.shape.rawValue)") { commit(.recipe(recipe),selectionID: selectionID) }
                             .accessibilityIdentifier("technique.activate")
-                            .disabled(!enabled)
+                            .disabled(!canPerform(.recipe(recipe)))
                     }
                     Button("Cancel") { _ = intent.consumeSelection(selectionID) }.accessibilityIdentifier("technique.cancel")
                 }.buttonStyle(StarfallGameButtonStyle())
@@ -69,11 +68,11 @@ import StarfallCore
         Button(title) { commit(.nudge(from,to),selectionID: selectionID) }
             .accessibilityLabel("Move star \(title.lowercased())")
             .accessibilityIdentifier("technique.move.\(title.lowercased())")
-            .disabled(!enabled || !game.canNudge(from: from, to: to))
+            .disabled(!canPerform(.nudge(from,to)))
     }
     private func commit(_ action: SkyBoardAction, selectionID: UInt64) {
-        guard let (snapshot,ticket) = intent.consumeSelection(selectionID) else { return }
-        _ = perform(action, snapshot, ticket)
+        guard canPerform(action) else { return }
+        intent.commitSelection(selectionID) { snapshot,ticket in perform(action,snapshot,ticket) }
     }
 }
 
