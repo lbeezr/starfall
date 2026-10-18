@@ -589,6 +589,10 @@
     }
   ],
   "copy": {
+    "save.rejectedTitle": "Saved sky unavailable",
+    "save.rejectedMessage": "Your saved sky could not be opened. No older round has been loaded. When you begin a new sky, the unreadable save will be kept as a recovery copy.",
+    "save.failedTitle": "Sky could not be saved",
+    "save.failedMessage": "Your previous save is unchanged. You can keep playing, but recent changes may be lost when you close the app. Starfall will try saving again as you play.",
     "mass.showersOne": "1 shower",
     "mass.showersMany": "{count} showers",
     "mass.title": "Stars under pressure",

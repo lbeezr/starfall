@@ -4,6 +4,10 @@ import Foundation
 /// Stable typed keys prevent view/store typos; wording and templates stay in JSON.
 enum SkyCopy {
     enum Key: String, CaseIterable, Sendable {
+        case saveRejectedTitle = "save.rejectedTitle"
+        case saveRejectedMessage = "save.rejectedMessage"
+        case saveFailedTitle = "save.failedTitle"
+        case saveFailedMessage = "save.failedMessage"
         case massShowersOne = "mass.showersOne"
         case massShowersMany = "mass.showersMany"
         case massTitle = "mass.title"

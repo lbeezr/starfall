@@ -103,3 +103,10 @@ enum SkySaveArchive {
     }
 
 }
+
+/// Acknowledgement belongs to this session; neither notice is a restored round.
+enum SkyPersistenceNotice: Equatable {
+    case rejected, failed
+    var title: String { SkyCopy.text(self == .rejected ? .saveRejectedTitle : .saveFailedTitle) }
+    var message: String { SkyCopy.text(self == .rejected ? .saveRejectedMessage : .saveFailedMessage) }
+}

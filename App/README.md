@@ -96,3 +96,5 @@ Idle input admission skips copied-game simulations when no presentation reserves
 Current collapse rendering consumes `presentationPhases` / `SkyPresentationPhase` through `PhaseTimeline`. Historical orbit events retain their existing rendering and timings; old timing-test names remain compatibility aliases.
 
 Contact clock holds preserve the exact remaining shower time; only pause/background interruptions apply resume grace, including interruptions during a hold. Ticket/generation invalidation and no-catch-up delivery remain store-owned.
+
+`SkyPersistenceNotice` exposes rejected-save and encoding/validation failure acknowledgements through the native app alert. It shares existing interruption/handoff ownership; acknowledgement does not write or restore data. The archive writer remains the production save boundary, with an injected write capability and reset-only review fixtures for failure tests. See [source-bound notice checks](../docs/evidence/debt-followup-2026-10-18/README.md#6-visible-save-recovery-and-failure-notices).

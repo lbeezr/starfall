@@ -229,3 +229,56 @@ extension SkySaveArchiveTests {
         }
     }
 }
+
+extension SkySaveArchiveTests {
+    @MainActor func testRejectionNoticeAcknowledgementIsReadOnlyAndDoesNotEraseBackupIntent() throws {
+        let defaults = makeDefaults(), broken = Data("broken".utf8)
+        defaults.set(broken, forKey: SkySaveArchive.key)
+        let store = FallingSkyStore(defaults: defaults, arguments: [], presenter: FallingSkyRecorder(), clock: ManualRainClock())
+        XCTAssertEqual(store.persistenceNotice, .rejected)
+        XCTAssertTrue(try XCTUnwrap(store.persistenceNotice).message.contains("No older round"))
+        store.dismissPersistenceNotice()
+        XCTAssertNil(store.persistenceNotice); XCTAssertFalse(store.hasSavedSky)
+        XCTAssertEqual(store.rejectedSaveKey, SkySaveArchive.key)
+        XCTAssertEqual(defaults.data(forKey: SkySaveArchive.key), broken)
+        XCTAssertNil(defaults.object(forKey: SkySaveArchive.rejectedKey))
+        store.setSuspended(false)
+        XCTAssertEqual(defaults.dictionary(forKey: SkySaveArchive.rejectedKey)?["value"] as? Data, broken)
+        let restored = FallingSkyStore(defaults: defaults, arguments: [], presenter: FallingSkyRecorder(), clock: ManualRainClock())
+        XCTAssertNil(restored.persistenceNotice); XCTAssertTrue(restored.hasSavedSky)
+    }
+
+    @MainActor func testSaveFailureNoticeIsBoundedPreservesPreviousSaveAndRearmsOnlyAfterSuccess() throws {
+        let defaults = makeDefaults(), original = FallingSky.freshSurvival(seed: 28)
+        try SkySaveArchive.save(original, to: defaults)
+        let bytes = defaults.data(forKey: SkySaveArchive.key)
+        var shouldFail = true
+        let clock = ManualRainClock(), presenter = FallingSkyRecorder()
+        let store = FallingSkyStore(defaults: defaults, arguments: [], presenter: presenter, clock: clock,
+            archiveWriter: { game, defaults in
+                if shouldFail { throw SkySaveArchive.Failure.unsupportedOrInvalid }
+                try SkySaveArchive.save(game, to: defaults)
+            })
+        XCTAssertNil(store.persistenceNotice)
+        store.setSuspended(false)
+        XCTAssertEqual(store.persistenceNotice, .failed); XCTAssertTrue(store.saveFailed)
+        XCTAssertEqual(defaults.data(forKey: SkySaveArchive.key), bytes)
+        // Match the view's modal interruption, then reject stale clock/presentation work.
+        store.togglePause()
+        let staleRain = try XCTUnwrap(clock.action)
+        store.callShower()
+        XCTAssertFalse(presenter.completions.isEmpty)
+        store.setSuspended(true)
+        let committed = store.game
+        clock.advance(100); staleRain(); presenter.finish()
+        XCTAssertEqual(store.game, committed); XCTAssertNil(clock.deadline)
+        store.dismissPersistenceNotice(); store.setSuspended(false)
+        XCTAssertNil(store.persistenceNotice, "An ongoing failure cannot trap acknowledgement in a retry loop")
+        XCTAssertTrue(store.saveFailed)
+        shouldFail = false; store.setSuspended(true); store.setSuspended(false)
+        XCTAssertFalse(store.saveFailed); XCTAssertNil(store.persistenceNotice)
+        XCTAssertEqual(try SkySaveArchive.decode(XCTUnwrap(defaults.data(forKey: SkySaveArchive.key))), store.game)
+        shouldFail = true; store.setSuspended(true); store.setSuspended(false)
+        XCTAssertEqual(store.persistenceNotice, .failed, "A new failure after success gets a new acknowledgement")
+    }
+}

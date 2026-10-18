@@ -655,13 +655,16 @@ final class SkyFlowInteractionTests: XCTestCase {
         }
     }
 
-    @MainActor private func launch(largest: Bool = false) -> XCUIApplication {
+    @MainActor private func launch(largest: Bool = false, review: [String] = []) -> XCUIApplication {
         continueAfterFailure = false
         let app = XCUIApplication()
         app.launchArguments = ["--starfalls-reset", "--sky-flow-review", "--starfalls-seed=5", "-calmEffects", "NO"]
+        app.launchArguments += review
         if largest { app.launchArguments += ["-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"] }
         app.launch()
-        XCTAssertTrue(app.staticTexts["sky.title"].waitForExistence(timeout: 10))
+        if !review.contains("--save-rejection-review") {
+            XCTAssertTrue(app.staticTexts["sky.title"].waitForExistence(timeout: 10))
+        }
         return app
     }
     @MainActor private func tap(_ id: String, _ app: XCUIApplication) {
@@ -838,6 +841,48 @@ final class SkyFlowInteractionTests: XCTestCase {
         XCTAssertFalse(app.buttons["experiment.cell.0.0"].exists)
         capture(app, "flow-reduced-replay")
     }
+    @MainActor func testRejectedSaveNoticeSurvivesBackgroundAndReplacementRestoresNormally() {
+        let app = launch(largest: true, review: ["--save-rejection-review"]); defer { app.terminate() }
+        let alert = app.alerts["Saved sky unavailable"]
+        XCTAssertTrue(alert.waitForExistence(timeout: 10))
+        XCTAssertTrue(alert.staticTexts.containing(NSPredicate(format: "label CONTAINS %@", "No older round has been loaded")).firstMatch.exists)
+        capture(app, "rejected-save-notice-largest")
+        // Read the native alert's scrollable message without dragging its fixed action.
+        for _ in 0..<3 {
+            alert.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.6))
+                .press(forDuration: 0.05, thenDragTo: alert.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.3)))
+        }
+        XCTAssertTrue(alert.buttons["Done"].isHittable)
+        capture(app, "rejected-save-notice-largest-end")
+        XCUIDevice.shared.press(.home); app.activate()
+        XCTAssertTrue(alert.waitForExistence(timeout: 5))
+        alert.buttons["Done"].tap()
+        XCTAssertFalse(app.buttons["sky.resume"].exists)
+        tap("sky.start", app); tap("sky.begin", app); pause(app)
+        app.terminate(); app.launchArguments = ["--sky-flow-review"]; app.launch()
+        XCTAssertFalse(app.alerts["Saved sky unavailable"].exists)
+        tap("sky.resume", app)
+        XCTAssertTrue(app.buttons["experiment.next"].waitForExistence(timeout: 5))
+    }
+
+    @MainActor func testSaveFailureNoticeAcknowledgementResumesHandoffAndDoesNotRepeat() {
+        let app = launch(review: ["--save-failure-review"]); defer { app.terminate() }
+        tap("sky.start", app); tap("sky.begin", app)
+        let alert = app.alerts["Sky could not be saved"]
+        XCTAssertTrue(alert.waitForExistence(timeout: 10))
+        XCTAssertTrue(alert.staticTexts.containing(NSPredicate(format: "label CONTAINS %@", "Your previous save is unchanged")).firstMatch.exists)
+        capture(app, "save-failure-notice")
+        alert.buttons["Done"].tap()
+        pause(app)
+        XCTAssertFalse(alert.exists)
+        tap("experiment.next", app)
+        tap("experiment.settings", app); tap("experiment.done", app)
+        XCTAssertFalse(alert.exists)
+        app.terminate(); app.launchArguments = ["--sky-flow-review"]; app.launch()
+        tap("sky.resume", app)
+        XCTAssertTrue(app.buttons["experiment.next"].waitForExistence(timeout: 5))
+    }
+
     @MainActor func testPendingFirstLightHelpUsesChallengeRulesAndPreservesEntry() {
         let app = launch(); defer { app.terminate() }
         tap("sky.firstLight", app)
