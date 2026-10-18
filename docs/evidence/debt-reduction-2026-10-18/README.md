@@ -1,0 +1,25 @@
+# Independent technical debt reductions
+
+**Result:** Partially verified · **Owner:** current implementer · **Date:** 2026-10-18
+
+Task 1 preserves rejected archives through activation/restart without falling back to an older round. One recovery slot is bounded by count; it preserves the exact rejected property-list value. Encode/validation failure leaves both slots untouched. No save schema, rule, RNG, navigation or artwork change.
+
+**Next action:** publish task 1 and reproduce the native failures in task 2. [Plan](../../TECH_DEBT_PLAN.md).
+
+## Task 1 — save recovery
+
+Source: `be75cc5` plus `App/SkySaveArchive.swift`, `App/FallingSkyStore.swift`, `AppTests/SkySaveArchiveTests.swift`; documentation does not affect the build. Xcode 27.1 (27A9275), Debug, Starfall Forecast Fallback QA / iOS 27.0, simulator `1E9DCEF5-BF64-4052-AF8D-A6A205F711EE`.
+
+| Check | Result |
+| --- | --- |
+| `swift test` | 162 passed, zero failures. |
+| `python3 scripts/ci-hygiene.py`; `git diff --check` | Passed. |
+| `test_sim`, only SkySaveArchiveTests and FallingSkyStoreTests | Initial 50 passed; final archive suite including failed-encoding regression: 10 passed. |
+| `test_sim`, SkyFlowInteractionTests/testWelcomeEntryBackgroundAndAnotherSky | Passed; native clear, background, retained round, relaunch, Continue and new-sky staging. |
+| Debug simulator compilation | Passed as part of both native test runs. |
+
+Native commands used the shared Starfall scheme, sequential testing, ad-hoc simulator signing (`CODE_SIGN_IDENTITY=- CODE_SIGNING_ALLOWED=YES DEVELOPMENT_TEAM= CODE_SIGN_STYLE=Manual`). Raw logs/results are under the ignored XcodeBuildMCP workspace `~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-614375984f0e/`; portable logs under ignored `artifacts/debt/`.
+
+Root cause: the optional load result collapsed rejection and absence; activation then wrote the replacement. Examined current and retained-key precedence, initialization, activation, restart and encoding-failure paths. Tests cover corrupt data, wrong types, future schema, old bytes, no downgrade and failed encoding. The recovery slot intentionally retains only the most recent rejected value; no automatic repair or recovery UI is added. UserDefaults offers no synchronous disk-durability acknowledgement; `saveFailed` reports encoding/validation failure, not disk health.
+
+Visual/animation changes: none. Actual VoiceOver: deferred to RC; not run on this development build. Physical device delivery: updater reported waiting for configured iPhone; no installation claimed.

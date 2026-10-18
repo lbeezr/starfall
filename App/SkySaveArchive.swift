@@ -11,6 +11,14 @@ enum SkySaveArchive {
     static let previousKey = "starfall.accumulation.v4"
     static let legacyKey = "starfall.accumulation.v3"
     static let schemaVersion = 8
+    /// One recovery slot; never used as an automatic fallback.
+    static let rejectedKey = "starfall.accumulation.rejected"
+
+    enum LoadResult {
+        case missing
+        case loaded(FallingSky)
+        case rejected(sourceKey: String)
+    }
 
     private struct Envelope: Codable {
         let schemaVersion: Int
@@ -38,6 +46,23 @@ enum SkySaveArchive {
         let game = try JSONDecoder().decode(FallingSky.self, from: data)
         guard game.isValidSave, game.generation == .legacy else { throw Failure.unsupportedOrInvalid }
         return game
+    }
+
+    @MainActor static func inspect(from defaults: UserDefaults) -> LoadResult {
+        let keys = [key, patientFeedingKey, feedingKey, gravityKey, previousKey, legacyKey]
+        guard let source = keys.first(where: { defaults.object(forKey: $0) != nil }) else { return .missing }
+        guard let game = load(from: defaults) else { return .rejected(sourceKey: source) }
+        return .loaded(game)
+    }
+
+    /// Encode first so a failed validation cannot change the archive or recovery slot.
+    /// Preserve rejected property-list values (including wrong types) before replacement.
+    @MainActor static func save(_ game: FallingSky, to defaults: UserDefaults) throws {
+        let data = try encode(game)
+        if case .rejected(let source) = inspect(from: defaults), let value = defaults.object(forKey: source) {
+            defaults.set(["sourceKey": source, "value": value], forKey: rejectedKey)
+        }
+        defaults.set(data, forKey: key)
     }
 
     @MainActor static func load(from defaults: UserDefaults) -> FallingSky? {

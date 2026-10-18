@@ -1,5 +1,6 @@
 import Foundation
 import Observation
+import OSLog
 import SwiftUI
 import StarfallCore
 
@@ -74,6 +75,9 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     static let saveKey = SkySaveArchive.key
     private(set) var game: FallingSky
     private(set) var hasSavedSky = false
+    private(set) var saveFailed = false
+    private(set) var rejectedSaveKey: String?
+    private static let persistenceLog = Logger(subsystem: "com.starfall.prototype", category: "persistence")
     var busy: Bool { !presentations.isEmpty }
     private(set) var suspended = true
     private(set) var sceneReady = false
@@ -303,7 +307,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         self.scene = scene
         self.presenter = presenter ?? scene
         // SwiftUI may construct stores for discarded view values. Keep initialization read-only.
-        if !arguments.contains("--starfalls-reset"), let saved = SkySaveArchive.load(from: defaults) {
+        if !arguments.contains("--starfalls-reset"), case .loaded(let saved) = SkySaveArchive.inspect(from: defaults) {
             game = saved.removingGravity().adoptingFeedingDusk()
             hasSavedSky = true
             guide(saved.outcome == .won ? "guide.won" : saved.isOver ? "guide.full" : "guide.restore", values: saved.isOver ? ["score": String(saved.score)] : [:])
@@ -311,6 +315,10 @@ enum SkyTerminalSpeech { case feedback, ceremony }
             let argument = arguments.first { $0.hasPrefix("--starfalls-seed=") }
             let seed = argument.flatMap { UInt64($0.dropFirst("--starfalls-seed=".count)) } ?? 5
             game = FallingSky.freshSurvival(seed: seed)
+            if !arguments.contains("--starfalls-reset"), case .rejected(let key) = SkySaveArchive.inspect(from: defaults) {
+                rejectedSaveKey = key
+                Self.persistenceLog.error("Rejected sky archive; preserving it before the next committed save")
+            }
         }
         #if DEBUG
         if arguments.contains("--starfalls-reset"), arguments.contains("--observatory-review") {
@@ -809,9 +817,13 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         #if DEBUG
         guard !isTechniqueFixture else { return }
         #endif
-        if let data = try? SkySaveArchive.encode(game) {
+        do {
+            try SkySaveArchive.save(game, to: defaults)
             hasSavedSky = true
-            defaults.set(data, forKey: Self.saveKey)
+            saveFailed = false
+        } catch {
+            saveFailed = true
+            Self.persistenceLog.error("Sky archive encoding/validation failed; existing save retained")
         }
     }
 }

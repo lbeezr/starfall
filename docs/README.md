@@ -2,6 +2,8 @@
 
 Current decisions, design contracts, verification summaries and historical evidence.
 
+[Technical debt shipping](TECH_DEBT_PLAN.md) tracks the seven independent reductions and their verification.
+
 ## Start here
 
 [Active pacing work](PACING_WORK.md) tracks the seven separate tasks, dependencies and integration boundaries.
