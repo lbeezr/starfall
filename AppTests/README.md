@@ -53,3 +53,5 @@ Gravity specials are retired from normal play. `SkyGeneration.standardSky` suppl
 `StarlightCelebrationTests` also uses a hosted SwiftUI window to verify that header registration preserves the nested score and sibling board anchors. It covers concurrent receipt replacement, current save restore, rewarding Opal/drained Dusk distinctions, zero-reward clears, validated trace/recipe/relay categories, interruption and independent expiry.
 
 Logical interaction regressions in `TraceInputPolishTests` cover trace-to-swap hold continuity, exactly-once release, stale terminals and failed admission; store/recognizer interruption tests remain separate boundary coverage.
+
+`ResponsiveInputTests` verifies the shared admission matrix, paused explicit actions, independent ready columns, deferred showers and rejection without replay.

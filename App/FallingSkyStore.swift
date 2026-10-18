@@ -33,6 +33,38 @@ import StarfallCore
     deinit { task?.cancel() }
 }
 
+/// Admission reasons shared by physical, button and accessibility input. Pausing
+/// automatic showers deliberately leaves explicit actions available.
+enum SkyInputAvailability: Equatable {
+    case ready, suspended, gameOver, showerDue, emptySelection
+    case settling(Set<Int>)
+    var isReady: Bool { self == .ready }
+}
+
+struct SkyInputPolicy {
+    let suspended: Bool
+    let gameOver: Bool
+    let showerDue: Bool
+    let changingColumns: Set<Int>
+    let presenting: Bool
+
+    var receiving: SkyInputAvailability {
+        if suspended { return .suspended }
+        if gameOver { return .gameOver }
+        if showerDue { return .showerDue }
+        return .ready
+    }
+    var wholeBoard: SkyInputAvailability {
+        guard receiving.isReady else { return receiving }
+        return presenting ? .settling(changingColumns) : .ready
+    }
+    func reserving(_ columns: Set<Int>) -> SkyInputAvailability {
+        guard receiving.isReady else { return receiving }
+        let blocked = columns.intersection(changingColumns)
+        return blocked.isEmpty ? .ready : .settling(blocked)
+    }
+}
+
 /// Terminal speech has one presentation owner; explicit nonterminal feedback stays store-owned.
 enum SkyTerminalSpeech { case feedback, ceremony }
 
@@ -135,15 +167,16 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         feedback.announce(text)
     }
 
-    func explainSettling(at cell: Cell) {
-        var preview = game
-        let columns = preview.clear(cell)?.changingColumns ?? [cell.column]
-        showSettling(columns)
-    }
+    func explainSettling(at cell: Cell) { explainAvailability(clearAvailability(cell)) }
 
-    private func showSettling(_ columns: Set<Int>) {
-        inputFeedback = InputFeedback(text: "Stars settling…", waitingColumns: columns.intersection(changingColumns))
-        feedback.announce("Stars settling")
+    private func explainAvailability(_ availability: SkyInputAvailability) {
+        switch availability {
+        case .settling(let columns):
+            inputFeedback = InputFeedback(text: "Stars settling…", waitingColumns: columns)
+            feedback.announce("Stars settling")
+        case .showerDue: explainInputFailure("A shower is arriving")
+        case .suspended, .gameOver, .emptySelection, .ready: break
+        }
     }
     var soundEnabled: Bool {
         didSet { defaults.set(soundEnabled, forKey: "soundEnabled"); if !soundEnabled { feedback.stopSounds() } }
@@ -311,26 +344,32 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     var phaseCue: SkyPhaseCue? { SkyPhaseCue(game: game, pending: pending) }
     var forecast: [IncomingStar] { pending?.forecast ?? game.incoming }
     var showerInterval: TimeInterval { nextShowerCadence.delay }
-    var canClear: Bool { !busy && canReceiveInput }
-    var canReceiveInput: Bool { !suspended && !game.isOver && !rainDue }
-
-    func canContact(_ cell: Cell) -> Bool { canReceiveInput && !changingColumns.contains(cell.column) }
-
-    func canClear(_ cell: Cell) -> Bool {
-        guard canContact(cell) else { return false }
-        var preview = game
-        guard let turn = preview.clear(cell) else { return true } // Invalid input still explains its rule.
-        return turn.changingColumns.isDisjoint(with: changingColumns)
+    var inputPolicy: SkyInputPolicy {
+        .init(suspended: suspended, gameOver: game.isOver, showerDue: rainDue,
+              changingColumns: changingColumns, presenting: busy)
     }
+    var canClear: Bool { inputPolicy.wholeBoard.isReady }
+    var canReceiveInput: Bool { inputPolicy.receiving.isReady }
+    func canContact(_ cell: Cell) -> Bool { inputPolicy.reserving([cell.column]).isReady }
 
-    func canTrace(_ path: [Cell]) -> Bool {
-        guard canReceiveInput, !path.isEmpty else { return false }
+    func clearAvailability(_ cell: Cell) -> SkyInputAvailability {
+        let contact = inputPolicy.reserving([cell.column])
+        guard contact.isReady else { return contact }
         var preview = game
-        if let turn = preview.clearConstellation(path) {
-            return turn.changingColumns.isDisjoint(with: changingColumns)
-        }
-        return path.allSatisfy { !changingColumns.contains($0.column) }
+        // Invalid input still reaches the rule explanation; admission owns only timing.
+        let columns = preview.clear(cell)?.changingColumns ?? [cell.column]
+        return inputPolicy.reserving(columns)
     }
+    func canClear(_ cell: Cell) -> Bool { clearAvailability(cell).isReady }
+
+    func traceAvailability(_ path: [Cell]) -> SkyInputAvailability {
+        guard inputPolicy.receiving.isReady else { return inputPolicy.receiving }
+        guard !path.isEmpty else { return .emptySelection }
+        var preview = game
+        let columns = preview.clearConstellation(path)?.changingColumns ?? Set(path.map(\.column))
+        return inputPolicy.reserving(columns)
+    }
+    func canTrace(_ path: [Cell]) -> Bool { traceAvailability(path).isReady }
 
     func clear(_ cell: Cell) {
         guard canReceiveInput, !constellationTracing else { return }
@@ -357,8 +396,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     func clearTracedConstellation(_ path: [Cell], snapshot: FallingSky, generation ticket: UInt64) {
         guard !suspended, !game.isOver, game == snapshot, ticket == constellationInputGeneration else { return }
         guard canTrace(path) else {
-            var preview = game
-            showSettling(preview.clearConstellation(path)?.changingColumns ?? Set(path.map(\.column)))
+            explainAvailability(traceAvailability(path))
             return
         }
         let old = game
@@ -380,7 +418,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         case .recipe(let recipe): turn = next.activate(recipe)
         case .nudge(let from,let to): turn = next.nudge(from:from,to:to)
         }
-        guard let turn, turn.changingColumns.isDisjoint(with:changingColumns) else { return false }
+        guard let turn, inputPolicy.reserving(turn.changingColumns).isReady else { return false }
         game = next
         if case .recipe(let recipe) = action { present(turn, from: old, recipe: recipe) }
         else { present(turn, from: old) }

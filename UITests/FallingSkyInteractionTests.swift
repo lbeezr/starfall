@@ -107,7 +107,10 @@ final class FallingSkyInteractionTests: XCTestCase {
             "identifier BEGINSWITH %@ AND value MATCHES %@ AND enabled == true",
             "experiment.cell.", "([3-9]|[1-9][0-9]) starlight connected")).firstMatch
         XCTAssertTrue(legal.waitForExistence(timeout: 5))
-        legal.tap()
+        // Resolve changing readiness once; pin the same native cell while waves continue.
+        let target = legal.identifier
+        XCTAssertTrue(target.hasPrefix("experiment.cell."))
+        app.buttons[target].tap()
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label != %@", "0 starlight"),
             object: app.staticTexts["experiment.score"]).wait(timeout: 2))
         XCTAssertLessThan(showers(app), 4, "A real native tap clears before the cascade's final wave")
