@@ -109,7 +109,7 @@ private extension StarfallBalance.Pace {
         switch self {
         case .gentle: "Gentle · 6s"
         case .steady: "Steady · 4s"
-        case .brisk: "Brisk · 3s"
+        case .brisk: "Brisk · cycle"
         }
     }
 }

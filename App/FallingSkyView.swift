@@ -45,7 +45,7 @@ import StarfallCore
     // Reserve the longest cue from round start: phase changes must not resize
     // SpriteKit and settle an in-flight shower. Old skies and fixed paces keep their layout.
     private var reservesTimingCueSpace: Bool {
-        store.game.cadenceID == .announcedCycleV1 && store.game.challenge == nil
+        store.game.cadenceID.isAnnouncedCycle && store.game.challenge == nil
             && store.game.balance.pace == .brisk
     }
 
@@ -62,16 +62,6 @@ import StarfallCore
     var body: some View {
         ZStack {
             VStack(spacing: 0) {
-                // A real sibling owns its space; scrolling cannot cover the cue.
-                if reservesTimingCueSpace {
-                    ZStack(alignment: .leading) {
-                        SkyCadenceCue(copy: SkyCadenceCueCopy(step: .init(delay: 3, phase: .steady, warnsFasterNext: true))!)
-                            .hidden().accessibilityHidden(true).accessibilityIdentifier("sky.cadence.measurement")
-                        if !settings, let copy = cadenceCueCopy {
-                            SkyCadenceCue(copy: copy)
-                        }
-                    }
-                }
                 GeometryReader { safeViewport in
                     if largeText {
                         ScrollView {
@@ -89,11 +79,11 @@ import StarfallCore
                                 }
                             }
                         }
-                        .ignoresSafeArea(edges: reservesTimingCueSpace ? [.horizontal, .bottom] : .all)
+                        .ignoresSafeArea()
                     } else {
                         playfield(insets: safeViewport.safeAreaInsets, compact: safeViewport.size.height < 750,
                                   island: usesIslandTimer(size: safeViewport.size, topInset: safeViewport.safeAreaInsets.top))
-                            .ignoresSafeArea(edges: reservesTimingCueSpace ? [.horizontal, .bottom] : .all)
+                            .ignoresSafeArea()
                     }
                 }
             }
@@ -162,6 +152,16 @@ import StarfallCore
                 board.allowsHitTesting(!settings && !showingCeremony)
                 if !showingCeremony {
                     VStack(spacing: StarfallTheme.Spacing.small) {
+                        // Stable HUD space; the scenery and scene retain the complete window.
+                        if reservesTimingCueSpace {
+                            ZStack(alignment: .leading) {
+                                SkyCadenceCue(copy: SkyCadenceCueCopy(step: .init(delay: 3, phase: .steady, warnsFasterNext: true))!)
+                                    .hidden().accessibilityHidden(true).accessibilityIdentifier("sky.cadence.measurement")
+                                if !settings, let copy = cadenceCueCopy {
+                                    SkyCadenceCue(copy: copy)
+                                }
+                            }
+                        }
                         compactHeader(island: island)
                         if !settings, !largeText, let cue = store.phaseCue { SkyPhaseLabel(cue: cue) }
                         Spacer(minLength: 0)
@@ -284,7 +284,7 @@ import StarfallCore
                     }
                     ConstellationTraceSurface(size: geometry.size, enabled: store.canClear,
                                               generation: store.constellationInputGeneration,
-                                              traceEligible: { store.game.constellationGroup(at: $0).count >= 5 },
+                                              traceStart: { ConstellationTraceHitTesting.start(at: $0, mapping: mapping, game: store.game) },
                                               tap: { cell in cancelConstellation(); store.clear(cell) },
                                               begin: { beginConstellation($0, size: geometry.size) },
                                               move: { moveConstellation($0, size: geometry.size) },
@@ -427,9 +427,9 @@ private extension FallingSkyView {
     }
     func beginConstellation(_ point: CGPoint, size: CGSize) {
         cancelConstellation()
-        store.constellationTracing = true
-        guard let cell = ObservatoryGeometry(size: size).cell(at: point) else { return }
+        guard let cell = ConstellationTraceHitTesting.start(at: point, mapping: ObservatoryGeometry(size: size), game: store.game) else { return }
         _ = trace.begin(cell, game: store.game, generation: store.constellationInputGeneration, enabled: store.canClear)
+        store.constellationTracing = trace.snapshot != nil
         trace.lastFinger = point
         refreshConstellation()
     }
@@ -438,15 +438,7 @@ private extension FallingSkyView {
         let mapping = ObservatoryGeometry(size: size)
         guard mapping.cell(at: point) != nil else { cancelConstellation(); return }
         let previous = trace.lastFinger ?? point
-        let distance = hypot(point.x-previous.x, point.y-previous.y)
-        let steps = min(96, max(1, Int(ceil(distance/6))))
-        for index in 1...steps {
-            let fraction = CGFloat(index)/CGFloat(steps)
-            let sample = CGPoint(x: previous.x+(point.x-previous.x)*fraction, y: previous.y+(point.y-previous.y)*fraction)
-            guard let cell = mapping.cell(at: sample) else { cancelConstellation(); return }
-            let center = mapping.viewPoint(cell), frame = mapping.frame(cell)
-            // Enter a star's central region; diagonal corner crossings do not select unrelated supports.
-            guard hypot(sample.x-center.x, sample.y-center.y) < min(frame.width,frame.height)*0.38 else { continue }
+        for cell in ConstellationTraceHitTesting.cells(from: previous, to: point, mapping: mapping, game: store.game) {
             let count = trace.count
             if trace.visit(cell, ticket: trace.sequence, game: store.game, generation: store.constellationInputGeneration, enabled: store.canClear) {
                 refreshConstellation()
@@ -460,10 +452,10 @@ private extension FallingSkyView {
     func refreshConstellation() { store.scene.showConstellationTrace(trace.path, ready: trace.count >= 5) }
     func releaseConstellation() {
         let outcome = trace.finish(ticket: trace.sequence, game: store.game, generation: store.constellationInputGeneration, enabled: store.canClear)
-        store.constellationTracing = false
         store.scene.clearConstellationTrace()
-        guard let outcome else { return }
+        guard let outcome else { store.constellationTracing = false; return }
         store.clearTracedConstellation(outcome.path, snapshot: outcome.snapshot, generation: outcome.generation)
+        store.constellationTracing = false
         // Commit synchronously first; effects never choose or delay the cleared set.
         if store.game != outcome.snapshot { store.scene.constellationBurst(outcome.path) }
     }
@@ -473,6 +465,7 @@ private extension FallingSkyView {
         } else {
             _ = trace.visit(cell, ticket: trace.sequence, game: store.game, generation: store.constellationInputGeneration, enabled: store.canClear)
         }
+        store.constellationTracing = trace.snapshot != nil
         refreshConstellation()
         UIAccessibility.post(notification: .announcement, argument: trace.count > 0
             ? "\(trace.count) stars worth \(trace.value) starlight. \(trace.count >= 5 ? "Ready to release." : "Five stars needed.")"
@@ -489,115 +482,6 @@ private extension FallingSkyView {
         else { impact.impactOccurred(intensity: min(0.85, 0.2+Double(count)*0.1)) }
         impact.prepare(); ready.prepare()
     }
-}
-
-
-// UIKit gives the board an explicit release/cancel/multitouch contract. The native
-// SwiftUI star buttons remain the accessibility controls behind this touch surface.
-private struct ConstellationTraceSurface: UIViewRepresentable {
-    let size: CGSize
-    let enabled: Bool
-    let generation: UInt64
-    let traceEligible: (Cell) -> Bool
-    let tap: (Cell) -> Void
-    let begin: (CGPoint) -> Void
-    let move: (CGPoint) -> Void
-    let end: () -> Void
-    let cancel: () -> Void
-
-    func makeUIView(context: Context) -> Surface {
-        let view = Surface(); view.installCapture(); view.isMultipleTouchEnabled = true
-        view.isAccessibilityElement = false; view.accessibilityElementsHidden = true
-        return view
-    }
-    func updateUIView(_ view: Surface, context: Context) {
-        if let old = view.input, old.generation != generation || old.size != size || !enabled { view.cancelInput() }
-        view.input = self
-    }
-    final class Surface: UIView {
-        var input: ConstellationTraceSurface?
-        private let capture = CaptureRecognizer()
-        private weak var scrollOwner: UIScrollView?
-        func installCapture() {
-            capture.cancelsTouchesInView = false
-            capture.shouldStart = { [weak self] point in
-                guard let self, let input=self.input, input.enabled,
-                      let cell=ObservatoryGeometry(size:input.size).cell(at:point) else { return false }
-                return input.traceEligible(cell)
-            }
-            addGestureRecognizer(capture)
-        }
-        override func didMoveToWindow() {
-            super.didMoveToWindow()
-            var ancestor=superview
-            while let view=ancestor {
-                if let scroll=view as? UIScrollView {
-                    if scrollOwner !== scroll { scroll.panGestureRecognizer.require(toFail:capture);scrollOwner=scroll }
-                    break
-                }
-                ancestor=view.superview
-            }
-        }
-        private var primary: UITouch?
-        private var origin = CGPoint.zero
-        private var dragging = false
-        private var blocked = false
-        override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
-            guard let input, input.enabled else { return false }
-            return ObservatoryGeometry(size: input.size).cell(at: point) != nil
-        }
-        func cancelInput() { capture.cancelCapture(); input?.cancel(); primary = nil; dragging = false; blocked = true }
-        override func willMove(toWindow newWindow: UIWindow?) { if newWindow == nil { cancelInput() } }
-        override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-            guard primary == nil, touches.count == 1, (event?.allTouches?.count ?? 1) == 1 else { cancelInput(); return }
-            blocked = false; primary = touches.first; origin = primary!.location(in: self); dragging = false
-        }
-        override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-            guard !blocked, let primary, touches.contains(primary), let input else { return }
-            let location = primary.location(in: self)
-            if !dragging && hypot(location.x-origin.x, location.y-origin.y) >= 8 {
-                dragging = true; input.begin(origin)
-            }
-            if dragging {
-                for touch in (event?.coalescedTouches(for: primary) ?? [primary]).suffix(64) { input.move(touch.location(in: self)) }
-            }
-        }
-        override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-            guard !blocked, let primary, touches.contains(primary), let input else { cancelInput(); return }
-            if dragging { input.move(primary.location(in: self)); input.end() }
-            else if let cell = ObservatoryGeometry(size: input.size).cell(at: primary.location(in: self)) { input.tap(cell) }
-            self.primary = nil; dragging = false
-        }
-        override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) { cancelInput() }
-    }
-    // A trace starting on an eligible star wins over the accessibility-size
-    // scroll container. Other starts fail immediately, preserving normal scroll.
-    final class CaptureRecognizer: UIGestureRecognizer {
-        var shouldStart: ((CGPoint)->Bool)?
-        private var origin=CGPoint.zero
-        override func touchesBegan(_ touches:Set<UITouch>,with event:UIEvent) {
-            guard touches.count==1, event.allTouches?.count==1, let touch=touches.first else { cancelCapture();return }
-            origin=touch.location(in:view)
-            if shouldStart?(origin) != true { state = .failed }
-        }
-        override func touchesMoved(_ touches:Set<UITouch>,with event:UIEvent) {
-            guard state == .possible || state == .began || state == .changed,
-                  let touch=touches.first else { return }
-            let point=touch.location(in:view)
-            if state == .possible {
-                if hypot(point.x-origin.x,point.y-origin.y)>=8 {state = .began}
-            } else {state = .changed}
-        }
-        override func touchesEnded(_ touches:Set<UITouch>,with event:UIEvent) {
-            state = state == .began || state == .changed ? .ended : .failed
-        }
-        override func touchesCancelled(_ touches:Set<UITouch>,with event:UIEvent) {cancelCapture()}
-        func cancelCapture() {
-            if state == .began || state == .changed {state = .cancelled}
-            else if state == .possible {state = .failed}
-        }
-    }
-
 }
 
 private enum SkyMenuDestination: Identifiable {

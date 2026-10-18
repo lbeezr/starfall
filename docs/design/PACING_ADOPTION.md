@@ -4,17 +4,17 @@
 
 Use the previously isolated B cadence in ordinary Debug and Release play. The user explicitly selected B, declined another baseline comparison and requested PR → main → an in-place phone update. This decision authorizes adoption, not a claim of superior enjoyment.
 
-**Decision:** New brisk skies retain the four-wave opening, then repeat six 3-second intervals, three 2.5-second intervals and three 3.5-second intervals. Warn one shower ahead. Keep existing wave sizes, generation, single-deadline scheduling and full falling animation.
+**Decision (updated October 17 after further user feedback):** New brisk skies retain the four-wave opening, then repeat six 2-second intervals, three 1.7-second intervals and three 2.5-second intervals. Earlier V1 skies retain their saved 3/2.5/3.5-second rhythm. Warn one shower ahead. Keep existing wave sizes, generation, single-deadline scheduling and full falling animation.
 
 **Next action:** Verify the promoted production source, merge one PR and deliver exact main through the existing one-app updater. Preserve the phone's current round; it retains its saved timing until a new sky is started.
 
 ## Player behavior and boundaries
 
-Core `SkyCadenceID.announcedCycleV1` owns the sole algorithm; new skies persist that version. Count n selects the interval after n committed showers, leading to shower n+1. Counts 0–3 retain the opening. After count 4, slot `(n−4) % 12` selects six steady, three faster and three breathing intervals. Slot 5 warns before the last steady shower. Manual showers advance the same count. Clears, pauses, animation callbacks and wall time do not choose phases.
+Core `SkyCadenceID.announcedCycleV2` owns the current algorithm; V1 remains for exact saved replay; new skies persist that version. Count n selects the interval after n committed showers, leading to shower n+1. Counts 0–3 retain the opening. After count 4, slot `(n−4) % 12` selects six steady, three faster and three breathing intervals. Slot 5 warns before the last steady shower. Manual showers advance the same count. Clears, pauses, animation callbacks and wall time do not choose phases.
 
 Older absent-marker and explicit `openingV1` saves retain their exact timing; same-sky replay preserves the saved version, seed, balance and generation markers. First Light remains fixed at four seconds without the opening. Gentle/steady retain selected fixed intervals and suppress phase cues; brisk enables the cycle. New-sky restart preserves a normal round’s selected balance. Leaving First Light for a normal sky restores normal defaults, so the challenge’s fixed four-second/no-dark profile does not leak into survival. Thus an older four-second round needs a new sky and the brisk setting to experience the cycle; do not reset the save silently.
 
-The production view reserves the longest cue's space from the start of a cycle-enabled sky. Phase changes and Settings do not resize SpriteKit or settle in-flight showers. The cue is absent during ceremonies/Settings, while reserved space remains. Current conservative forecast placement can use the header rather than the calibrated camera margin. Native cell mapping and largest-text scrolling need actual tap checks.
+The production view reserves the longest cue's space inside its HUD overlay from the start of a cycle-enabled sky; scenery always fills the window. Phase changes and Settings do not resize SpriteKit or settle in-flight showers. The cue is absent during ceremonies/Settings. Drawing holds the remaining single deadline until release/cancel; it never queues catch-up showers. The calibrated iPhone 17 and 16 Pro Max profiles use the camera margin; unknown/accessible layouts use the header. Native cell mapping and largest-text scrolling need actual tap checks.
 
 The temporary pacing exporter and A/B launch selector are removed. There is one app identity and ordinary save namespace. Test-only clock/observation injection and the offline historical comparison remain development tools; the old fixture name delegates to Core rather than maintaining a second B algorithm.
 

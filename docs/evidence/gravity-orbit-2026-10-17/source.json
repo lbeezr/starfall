@@ -83,6 +83,15 @@
     "sha256": "3e4a9de21a6ae75820309a0b1f0ed56a6609d037d362289e54e313ea1ed7e1b8"
   },
   "nativeAndFinalHostedRuntimeIdentical": true,
+  "postMerge": {
+    "buildLog": "/tmp/starfall-gravity-merged-production-build.log",
+    "coreLog": "/tmp/starfall-gravity-merged-production-core.log",
+    "gravityInputHashesUnchanged": true,
+    "mainSource": "7afadb5548863acd0454e3f39951a4726c367094",
+    "productionDebugBuild": "passed",
+    "productionFilesEqualToMain": true,
+    "productionPackageTests": 90
+  },
   "runtimeFiles": {
     "App/FallingSkyMotion.swift": "83aca7fd2d47c877112f25644d0025b9d505d14d2bbae16bca50980beff48d38",
     "App/FallingSkyScene.swift": "0d5f9a8a372ace07c3816457252aeee64873687794093b6e3cc023e511c10823",

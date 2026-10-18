@@ -87,7 +87,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
     public var occupiedCount: Int { board.compactMap { $0 }.count }
 
     public init(seed: UInt64, balance: StarfallBalance = StarfallBalance(), openingCascade: Bool = true,
-                generation: SkyGeneration = .legacy, cadence: SkyCadenceID = .announcedCycleV1) {
+                generation: SkyGeneration = .legacy, cadence: SkyCadenceID = .announcedCycleV2) {
         precondition(!openingCascade || cadence != .originalV1)
         self.seed = seed
         savedGeneration = generation == .legacy ? nil : generation.rawValue

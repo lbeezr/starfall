@@ -2,9 +2,9 @@
 
 **Status:** Active · **Owner:** Current implementer · **Updated:** October 17, 2026, Eastern time
 
-Build a small, readable falling-sky puzzle worth replaying. **Constellation tracing leads the current gameplay polish.** Shower variants remain isolated. Keep the default generator unchanged until observed play supports adoption. Phase and Surge native trials now exist; the agent-simulated comparison provisionally favors Surge, but human preference remains unverified.
+Build a small, readable falling-sky puzzle worth replaying. **Constellation tracing leads the current gameplay polish.** Opal and storm phases are integrated in the regular game. Preserve its versioned generator/save contracts while tuning input, layout and timing. Historical lab comparisons do not define the current delivery workflow; human preference remains unverified.
 
-**Next actions:** Continue polishing constellation swipes in the single regular Starfall app. [Connected-iPhone updates](DEVELOPMENT_BUILDS.md) are active; the selected round is retained and the extra lab is removed. Full actual VoiceOver acceptance remains a release-candidate gate.
+**Next actions:** Deliver drawing, full-window/Island, ring removal and faster-new-sky fixes directly in the single regular Starfall app. No new lab apps. [Connected-iPhone updates](DEVELOPMENT_BUILDS.md) are active; the selected round is retained and the extra lab is removed. Full actual VoiceOver acceptance remains a release-candidate gate.
 
 **Open limits:** No gameplay participant preference results or general physical-device acceptance. Crystal Glow art direction and character masters are user-approved; runtime verification and remaining limits are recorded in the [cast integration evidence](evidence/crystal-glow-integration-2026-10-17/README.md). Accessibility evidence remains source-bound.
 
@@ -18,7 +18,7 @@ The user approved the shared white connector and storm phases for the regular ap
 
 **Source-bound native reference:** October 17 compact-HUD candidate, iPhone 17e / iOS 27.0 Simulator; [capture source and verification limits](evidence/compact-hud-2026-10-17/README.md). The compact layout is adopted, but this capture does not establish current-build parity or human preference. See the [icon, opening screen and cast](design/VISUAL_REFERENCE.md) for the visual context behind the workstreams below.
 
-The [diagonal constellation investigation](evidence/constellations-2026-10-17/README.md) responds to physical-phone feedback about sparse clears. The user confirmed five actual stars, then chose swiping and clearing only the traced subset. The [latest isolated build](evidence/constellation-trace-2026-10-17/README.md) supersedes the earlier whole-component tap pair. Shipping generation and the phone round are unchanged.
+The [diagonal constellation investigation](evidence/constellations-2026-10-17/README.md) responds to physical-phone feedback about sparse clears. The user confirmed five actual stars, then chose swiping and clearing only the traced subset. The [historical drawing record](evidence/constellation-trace-2026-10-17/README.md) superseded the whole-component tap pair. Current drawing belongs to the regular game; [direct polish](evidence/main-polish-2026-10-17/README.md) preserves its saves and generation.
 
 ## Notifications — planned, implementation deferred
 
@@ -33,7 +33,7 @@ The [screen-flow polish plan](SCREEN_FLOW_PLAN.md) adds a bounded presentation w
 | Priority | Next action | Done when |
 | --- | --- | --- |
 | Establish the candidate | Resolve the [Xcode project drift](ENGINEERING.md) in a separate reviewed change; retain a clean Release source/build record. | The exact candidate builds and its remaining visual/upgrade gaps are explicit. |
-| Make choices engaging — active | Compare natural Shower Lab, Pressure Lab, and one [announced phase trial](design/SHOWER_PHASES.md), using matched seeds and [observed play](PLAYTEST-FALLING-SKY.md). | Opening is playable within one settled shower; long dead stretches do not return in the regression sample; a player explains a useful choice and prefers a candidate or identifies the next issue. Adopt, remove, or name a bounded remaining question. |
+| Make choices engaging — active | Polish the adopted Opal/storm game directly, using current native fixtures and [observed play](PLAYTEST-FALLING-SKY.md). Historical lab comparisons are reference only. | Opening is playable within one settled shower; long dead stretches do not return in the regression sample; a player explains a useful choice and prefers a candidate or identifies the next issue. Adopt, remove, or name a bounded remaining question. |
 | Polish physical feel — active | Review arrivals, growth, clears and input on an iPhone; tune optional sound/haptics and profile repeated rounds. | Effects do not block decisions or input; effects stay bounded; device observations and profiles are retained. |
 | Build living places — active | Finish the integrated Moonlit Observatory’s acceptance, then prove the [environment production process](design/environments/PRODUCTION.md) with Cloudsea Conservatory. | Full-screen setting, real cast, two responsive props, coherent depth and quiet modes meet native/device/accessibility gates. Art-direction approval stays distinct from release acceptance. |
 | Explain danger and outcomes | Review nearly full columns, blocked growth, arrival information, overflow, replay and new sky. Keep landing places hidden and controls reachable on small screens/large text. | A first-time player explains the loss and next action; affected native input, settings dismissal and layout checks pass. |

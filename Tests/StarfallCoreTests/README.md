@@ -12,4 +12,4 @@ Run `swift test` from the repository root. Use focused fixtures for changed beha
 `TimingCycleFixture.swift` is a thin compatibility adapter to the production Core cadence.
 Use the [adoption contract](../../docs/design/PACING_ADOPTION.md) for current behavior.
 
-New skies use production Core `announcedCycleV1`. The historical timing fixture is now a thin adapter to Core, not a second algorithm; old timing versions and First Light remain covered.
+New skies use production Core `announcedCycleV2`; explicit V1 saves retain their timing. The historical timing fixture is now a thin adapter to Core, not a second algorithm; old timing versions and First Light remain covered.

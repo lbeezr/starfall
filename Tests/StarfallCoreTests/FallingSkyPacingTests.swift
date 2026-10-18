@@ -12,7 +12,7 @@ final class FallingSkyPacingTests: XCTestCase {
                 XCTAssertEqual(game.incoming, legacy.incoming)
                 game.letStarsFall(); legacy.letStarsFall()
                 XCTAssertEqual(game.board, legacy.board)
-                XCTAssertEqual(game.automaticShowerDelay, turn < 4 ? 1.8 : 3)
+                XCTAssertEqual(game.automaticShowerDelay, turn < 4 ? 1.8 : 2)
                 XCTAssertEqual(game.isOpeningCascade, turn < 4)
                 game = try JSONDecoder().decode(FallingSky.self, from: JSONEncoder().encode(game))
                 XCTAssertTrue(game.isValidSave)

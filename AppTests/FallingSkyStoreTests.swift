@@ -85,8 +85,8 @@ final class FallingSkyStoreTests: XCTestCase {
             presenter.finish()
         }
         XCTAssertFalse(store.game.isOpeningCascade)
-        XCTAssertEqual(store.showerInterval, 3)
-        clock.advance(2.99); XCTAssertEqual(store.game.turns, 4)
+        XCTAssertEqual(store.showerInterval, 2)
+        clock.advance(1.99); XCTAssertEqual(store.game.turns, 4)
         clock.advance(0.01); XCTAssertEqual(store.game.turns, 5)
     }
 
@@ -120,8 +120,8 @@ final class FallingSkyStoreTests: XCTestCase {
         XCTAssertEqual(store.game, committed)
         let saved = try SkySaveArchive.decode(XCTUnwrap(defaults.data(forKey: FallingSkyStore.saveKey)))
         XCTAssertEqual(saved, committed)
-        XCTAssertEqual(store.showerInterval, 3)
-        XCTAssertEqual(try XCTUnwrap(clock.deadline) - clock.now, 3, accuracy: 0.001)
+        XCTAssertEqual(store.showerInterval, 2)
+        XCTAssertEqual(try XCTUnwrap(clock.deadline) - clock.now, 2, accuracy: 0.001)
     }
 
     @MainActor func testOpeningRestoreAndRestartRejectStaleWork() throws {
@@ -422,7 +422,7 @@ final class FallingSkyStoreTests: XCTestCase {
         restored.restart(sameSky: false)
         XCTAssertNil(restored.game.challenge)
         XCTAssertEqual(restored.game.balance, StarfallBalance())
-        XCTAssertEqual(restored.game.cadenceID, .announcedCycleV1)
+        XCTAssertEqual(restored.game.cadenceID, .announcedCycleV2)
         store.restart(sameSky: true)
         XCTAssertEqual(store.game, initial); XCTAssertTrue(store.isPaused)
         store.restart(sameSky: false)
@@ -437,7 +437,7 @@ final class FallingSkyStoreTests: XCTestCase {
         store.restart(sameSky: false)
         XCTAssertNil(store.game.challenge)
         XCTAssertEqual(store.game.balance, StarfallBalance())
-        XCTAssertEqual(store.game.cadenceID, .announcedCycleV1)
+        XCTAssertEqual(store.game.cadenceID, .announcedCycleV2)
         XCTAssertEqual(store.nextShowerCadence, .init(delay: 0.25, phase: .opening))
         XCTAssertTrue(store.isPaused)
     }
@@ -710,7 +710,7 @@ extension FallingSkyStoreTests {
         let initial = store.game
         // Manual showers consume identical slots, even with no running clock.
         for count in 0..<16 {
-            XCTAssertEqual(store.nextShowerCadence, TimingCycleFixture.step(committedShowers: count))
+            XCTAssertEqual(store.nextShowerCadence, SkyCadenceID.announcedCycleV2.step(committedShowers: count, pace: .brisk))
             XCTAssertFalse(store.game.isOver)
             store.callShower(); presenter.finish()
             while let cell = store.game.legalGroups.first?.first { store.clear(cell); presenter.finish() }
@@ -719,8 +719,8 @@ extension FallingSkyStoreTests {
         XCTAssertNil(clock.deadline)
         store.togglePause()
         let scheduled = try XCTUnwrap(events.last { $0.kind == .scheduled })
-        XCTAssertEqual(scheduled.snapshot.cadence, TimingCycleFixture.step(committedShowers: 16))
-        XCTAssertEqual(try XCTUnwrap(scheduled.snapshot.scheduledDeadline) - scheduled.snapshot.time, 3)
+        XCTAssertEqual(scheduled.snapshot.cadence, SkyCadenceID.announcedCycleV2.step(committedShowers: 16, pace: .brisk))
+        XCTAssertEqual(try XCTUnwrap(scheduled.snapshot.scheduledDeadline) - scheduled.snapshot.time, 2)
         store.restart(sameSky: true)
         XCTAssertEqual(store.game.turns, 0); XCTAssertEqual(store.nextShowerCadence.phase, .opening)
         XCTAssertTrue(store.isPaused)
@@ -777,10 +777,18 @@ extension FallingSkyStoreTests {
         let inputGeneration = store.constellationInputGeneration
         store.constellationTracing = true
         XCTAssertTrue(store.timingSnapshot.canClear); XCTAssertFalse(store.timingSnapshot.canTap)
+        XCTAssertFalse(store.timingSnapshot.canCallShower)
+        store.callShower()
+        XCTAssertEqual(store.game.turns, 1, "A manual shower cannot interrupt an owned trace either")
+        clock.advance(1.8)
+        XCTAssertEqual(store.constellationInputGeneration, inputGeneration)
+        XCTAssertNil(clock.deadline)
+        XCTAssertEqual(store.game.turns, 1, "A live trace owns the deadline hold")
+        store.constellationTracing = false
         clock.advance(1.8)
         XCTAssertNotEqual(store.constellationInputGeneration, inputGeneration)
         XCTAssertNotNil(events.last { $0.kind == .invalidated("automaticShower") })
-        XCTAssertEqual(store.game.turns, 2, "A finger-down trace does not postpone rain")
+        XCTAssertEqual(store.game.turns, 2)
         store.setSuspended(true)
         XCTAssertFalse(store.timingSnapshot.canClear); XCTAssertNil(store.timingSnapshot.scheduledDeadline)
         XCTAssertNotNil(events.last { $0.kind == .invalidated("suspension") })
@@ -799,16 +807,16 @@ extension FallingSkyStoreTests {
         store.setSuspended(false); store.togglePause()
         for count in 0..<16 {
             let cadence = store.nextShowerCadence
-            XCTAssertEqual(cadence, TimingCycleFixture.step(committedShowers: count))
+            XCTAssertEqual(cadence, SkyCadenceID.announcedCycleV2.step(committedShowers: count, pace: .brisk))
             if count == 9 {
                 XCTAssertTrue(cadence.warnsFasterNext)
                 clock.advance(1)
                 store.setSuspended(true); clock.advance(100); store.setSuspended(false)
                 XCTAssertEqual(store.nextShowerCadence, cadence)
-                XCTAssertEqual(try XCTUnwrap(clock.deadline) - clock.now, 2, accuracy: 0.001)
+                XCTAssertEqual(try XCTUnwrap(clock.deadline) - clock.now, 1, accuracy: 0.001)
                 store.togglePause(); clock.advance(100); store.togglePause()
                 XCTAssertEqual(store.nextShowerCadence, cadence)
-                XCTAssertEqual(try XCTUnwrap(clock.deadline) - clock.now, 2, accuracy: 0.001)
+                XCTAssertEqual(try XCTUnwrap(clock.deadline) - clock.now, 1, accuracy: 0.001)
             }
             clock.advance(try XCTUnwrap(clock.deadline) - clock.now)
             XCTAssertEqual(store.game.turns, count + 1)
@@ -818,7 +826,7 @@ extension FallingSkyStoreTests {
             XCTAssertEqual(clock.deadline, nextDeadline)
             while let cell = store.game.legalGroups.first?.first { store.clear(cell); presenter.finish() }
         }
-        XCTAssertEqual(store.nextShowerCadence, .init(delay: 3, phase: .steady))
+        XCTAssertEqual(store.nextShowerCadence, .init(delay: 2, phase: .steady))
     }
 }
 
@@ -1026,7 +1034,10 @@ final class SkyPhasePresentationTests: XCTestCase {
         let branch = try XCTUnwrap(intent.begin(rose[0], game: shared, generation: 2, enabled: true))
         for cell in rose.dropFirst() { XCTAssertTrue(intent.visit(cell, ticket: branch, game: shared, generation: 2, enabled: true)) }
         XCTAssertFalse(intent.visit(Cell(3,5), ticket: branch, game: shared, generation: 2, enabled: true))
-        XCTAssertNil(intent.snapshot, "Aqua after a shared white orb must not change the rose family")
+        XCTAssertEqual(intent.snapshot, shared, "A spatial miss must not replace the rose family")
+        XCTAssertEqual(intent.count, 5)
+        let preserved = try XCTUnwrap(intent.finish(ticket: branch, game: shared, generation: 2, enabled: true))
+        XCTAssertFalse(preserved.path.contains(Cell(3,5)))
         XCTAssertNil(intent.begin(Cell(2,5), game: shared, generation: 2, enabled: true))
     }
     @MainActor func testCanceledManualWarningDoesNotSpeakAnObsoletePhase() throws {
