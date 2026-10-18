@@ -2,6 +2,8 @@
 
 **Result:** Partially verified · **Owner:** current implementer · **Date:** October 18, 2026
 
+**Current gesture/copy update:** [Visible planning and latest-source verification](VISIBLE_PLANNING.md) records a useful three-exchange plan, current native fresh/outcome checks, unchanged model smoke results and repairs to stale calibration dependencies/wording. Earlier Arrange evidence is historical.
+
 **Automatic-setup update:** [Native rain and recipe admission](AUTOMATIC_SETUPS.md) verifies an ordinary seed-0 setup and fixes unchanged selections disappearing on rain plus misleading per-action readiness. Broader calibration remains open.
 
 **Contact-readiness update:** [Native diagnostic](CONTACT_READINESS.md) explains the sampled non-scoring attempts and verifies late readiness checks. Game rules remain unchanged; deliberate automatic setups are next.

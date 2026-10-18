@@ -1,0 +1,153 @@
+{
+  "currentBase": "33ae6fbb5e8f546f46e83b25a01a1cf626ea5b89",
+  "localBase": "e6d7302fcdd14f68468867ce106ff5bc65896ee3",
+  "capture": {
+    "source": "33ae6fbb5e8f546f46e83b25a01a1cf626ea5b89",
+    "appTree": "b0742fd33135bc97a264914f014c29459111e3f0",
+    "coreTree": "28048ef3cffeda949efd36d5db7bcef0bc45c416",
+    "projectBlob": "e8a3da61b3ba66b9636afdcff396157096b47614",
+    "runtimeDirtyInputs": [],
+    "otherDirtyPaths": [
+      "tools/mechanics/compare-pacing.py"
+    ],
+    "version": "0.1.0 (1)",
+    "buildID": "dev.local",
+    "video": "artifacts/calibration-native/main93-three-move.mp4",
+    "durationSeconds": 26.828333333333333,
+    "inspectedFrames": 53,
+    "sampleIntervalSeconds": 0.5,
+    "paused": true,
+    "calmEffects": false,
+    "scoreSequence": [
+      0,
+      3,
+      6
+    ],
+    "imageSHA256": "5178f3ee48ca48158890c31e484674b4612bcb16cd0106d2a36211b663f50181"
+  },
+  "nativeFinal": {
+    "base": "33ae6fbb5e8f546f46e83b25a01a1cf626ea5b89",
+    "dirtyInputs": {
+      "Starfall.xcodeproj/project.pbxproj": "83e6726d76a6fdaa72427b72f6310e11756b63b49159cd59a107efe0b1edfa56",
+      "UITests/FallingSkyInteractionTests.swift": "8f79dd6c84f9e0b31aba025ea1ba357efd09e8810bda761c1a68080ad354f7f5",
+      "UITests/FreshSkyPlaytests.swift": "af8baf72d698beb695fd5fbd7922874b464e4548cf949a9a5840cb95faa4e66d",
+      "tools/mechanics/compare-pacing.py": "ae782b27779700c3e42fdca6adeb8395afeb0e5232a9fe1507f9c78f72856f64"
+    },
+    "bundle": "artifacts/calibration-native/main93-fresh-and-outcome.xcresult",
+    "methods": [
+      "FreshSkyPlaytests/testFreshAutomaticVisibleMatchesSeed180",
+      "FreshSkyPlaytests/testFreshAutomaticVisibleMatchesSeed5",
+      "SkyFlowInteractionTests/testFirstLightWinReplayAndFullSky"
+    ],
+    "result": "passed",
+    "caseCount": 3,
+    "fresh": {
+      "180": {
+        "attempts": 11,
+        "nonScoring": 1,
+        "skipped": 6,
+        "score": 39,
+        "showers": 22,
+        "terminal": false,
+        "nonScoringExplanation": "post-contact native hierarchy says Spark. Stars settling\u2026"
+      },
+      "5": {
+        "attempts": 8,
+        "nonScoring": 0,
+        "skipped": 7,
+        "score": 38,
+        "showers": 22,
+        "terminal": false
+      }
+    },
+    "outcomeDurationSeconds": 159.484,
+    "command": [
+      "xcodebuild",
+      "-project",
+      "Starfall.xcodeproj",
+      "-scheme",
+      "Starfall",
+      "-configuration",
+      "Debug",
+      "-destination",
+      "platform=iOS Simulator,id=5107CBBF-108B-4B94-9125-A873F948A38C",
+      "-derivedDataPath",
+      "/tmp/starfall-calibration-derived",
+      "-parallel-testing-enabled",
+      "NO",
+      "-collect-test-diagnostics",
+      "never",
+      "-test-timeouts-enabled",
+      "YES",
+      "-default-test-execution-time-allowance",
+      "180",
+      "-maximum-test-execution-time-allowance",
+      "240",
+      "-resultBundlePath",
+      "artifacts/calibration-native/main93-fresh-and-outcome.xcresult",
+      "-only-testing:StarfallUITests/FreshSkyPlaytests",
+      "-only-testing:StarfallUITests/SkyFlowInteractionTests/testFirstLightWinReplayAndFullSky",
+      "ARCHS=arm64",
+      "ONLY_ACTIVE_ARCH=YES",
+      "CODE_SIGN_IDENTITY=-",
+      "CODE_SIGNING_ALLOWED=YES",
+      "DEVELOPMENT_TEAM=",
+      "CODE_SIGN_STYLE=Manual"
+    ]
+  },
+  "model": {
+    "source": "artifacts/calibration-current/main93-copy-smoke/source.json",
+    "runs": 32,
+    "parityCommits": 760,
+    "runDataEqualTo": "artifacts/calibration-current/recipe-stable-choice-smoke/runs.json",
+    "equal": true,
+    "inputs": {
+      "Sources/StarfallCore/ConstellationFixture.swift": "58936ea7336163f95b934cc057e71ae933041bf9fd9a271ed9ec065a396da5aa",
+      "Sources/StarfallCore/DuskFixture.swift": "9740935783394c05fdb591557c9ebdb15426228313f7245ed82ba87cf87dc26f",
+      "Sources/StarfallCore/DuskRules.swift": "76d3a62cbfa2da4674ebe3078d4e4b3c01282991fb151a21ca1c38c38beec8d6",
+      "Sources/StarfallCore/FallingSky.swift": "dbb912b66f4a08c8bd6f745967e8b9a9e4c92e036a4b75a5432e531c87b091e3",
+      "Sources/StarfallCore/Game.swift": "9ab2d57af8fe0ee804ce56e762eb5833a08ae5f39e8916ffaa0fe708d90e7086",
+      "Sources/StarfallCore/GravityFieldRules.swift": "ef5308b515340c2eafe1b226cee70a27701a6e906b6c975380d13af818f4130c",
+      "Sources/StarfallCore/GravityOpportunityFixture.swift": "fe410f41722d690eec3ac67472bf82e421912e772252fdf4ac41819f50c08e4a",
+      "Sources/StarfallCore/RefillMapping.swift": "608be41f40c945b18aba5512bac16b7c4de4eb8a2747d6fe54a895392b38e5f7",
+      "Sources/StarfallCore/SkyCadence.swift": "a01a1ab5fe50e7677bd2e1af75563a5bcc316e1828e921e7da2f572202b76b8c",
+      "Sources/StarfallCore/SkyGeneration.swift": "03d62817aaace9a7354cffb15e7735a98246ed9d75643f0e354fab2aeb2d2d97",
+      "Sources/StarfallCore/SkyTechniqueExample.swift": "75c38131723930f1e5884b8d9e87ea8c0cce975b81bddf9ef89212d627e77c26",
+      "Sources/StarfallCore/StarRecipe.swift": "280c7529a613f75af7a47f510ae2a56969a417d2a3d3821c80db24d788ce1559",
+      "Sources/StarfallCore/StarfallBalance.swift": "32525ba2f346cf843863b1cb1cba8a2fab66d088b9dc7ac308867f1520c329ec",
+      "Sources/StarfallCore/StarfallChallenge.swift": "0475f660c21ae42cce0df8c11dc40adbbb841e58b6c66b82a1293c720bd26b72",
+      "App/FallingSkyStore.swift": "032121e9a43ee092933c304760fe1d788c84690ebaa3d3023476d109ab33185b",
+      "App/ObservatoryReviewFixture.swift": "9a4750756375afdbfdd710795dcb50a24a3005b3fd1f71e4a4274a35fe0f4aae",
+      "App/SkySaveArchive.swift": "907bd106ddb2633d5cef039877d1d46b7cb153a3724dde5bc1dd1aebc84e9d9c",
+      "App/SkyFlowState.swift": "ca597f926d65007b576425e429f6a286fead653cda7d85746797c6acee356b6a",
+      "App/FallingSkyHUD.swift": "c70bac7b551582f9d0e782d995c3417a7ede25cfb601a926419f66919a200db0",
+      "App/FallingSkyPresentation.swift": "e26b27623585fed85e3ba15f9488751be259816c2f98ff515021561ea929eb1d",
+      "App/SkyTechniqueIntent.swift": "63795371808f93ba860ac793f063fb2020e4fa497241d8e78779dea0d89f6b2b",
+      "App/GameFeedback.swift": "113d0fe4b4764d29be416f469dbc617257cc10fe6efca693cb5638ebfc4a06b0",
+      "App/StarlightCelebration.swift": "750af3b91195b0ccf40627f4af2cba62ca33bbc30b9ff187cb552d54ff228c76",
+      "App/SkyDialogue.swift": "c1a24722a7e540c8250028401d74818ddf669edd5e2e8c3a4ce778876e34559e",
+      "App/SkyDialogueLibrary.swift": "78651cf6ae822677aa301f6a3d92f44140324cc1657af9e23db46c166c7070fd",
+      "App/SkyCopy.swift": "4450dc1db942804b0738e7ad6ca6a147882bcedc6e028f8079fddd6fff8c834a",
+      "App/DuskWarning.swift": "ec09fe9bd458ed7774931a341d7b606d132e19f14bfb668c28a2c7e4a9426fd1",
+      "App/DialogueScripts/observatory-dialogue.json": "b1b52390ae3e22ac9fc62c44ce73c2e5bf1562390084bfa70894393e2e1905cb",
+      "App/FallingSkyScene.swift": "2fee5d8f9d7fe27511c6b0a0cf7f0c1487e9f049b1eb5073541f1b5934a157d9",
+      "App/FallingSkyMotion.swift": "464e028bd5af9edd0a83391f25fd50aee5e2392eb652fcd4b70b6f71becb50e1",
+      "Tests/StarfallCoreTests/TimingCycleFixture.swift": "51936d184a8f60df63abe1489006011abb02431fedf310eca0afb9180513d189",
+      "tools/mechanics/PacingChecks.swift": "c2fcf563eade0836c0adbef9432b70e796bcfbb90f6876eb27207d6cdaa380f8",
+      "tools/mechanics/PacingMeasure.swift": "00f4a4dc3759ad9dfb290691ebb6ff47dbe294644f2944935069b5e542d66877",
+      "tools/mechanics/PacingSupport.swift": "7eb92aef35a86fba4a85cffa98060fe8f6ec134677c3ccfbcf33e2db8c2855ba",
+      "tools/mechanics/compare-pacing.py": "ae782b27779700c3e42fdca6adeb8395afeb0e5232a9fe1507f9c78f72856f64"
+    }
+  },
+  "environment": {
+    "xcode": "27.1 (27A9275)",
+    "macOS": "27.0.1",
+    "configuration": "Debug",
+    "model": "iPhone 16 Pro Max",
+    "simulator": "Starfall Main 16 Pro Max QA",
+    "udid": "5107CBBF-108B-4B94-9125-A873F948A38C",
+    "os": "iOS 27.0 (24A434)",
+    "actualVoiceOver": "not run; RC gate",
+    "device": "not run"
+  }
+}
