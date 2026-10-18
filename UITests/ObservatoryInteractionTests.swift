@@ -57,7 +57,11 @@ final class ObservatoryInteractionTests: XCTestCase {
         let last = app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@",
             "Collect 18 starlight before a column fills.")).firstMatch
         var reachedEnd = false
-        for step in 0..<48 {
+        // The original 48-step budget was sampled on 16 Pro Max. On 17e,
+        // XXXL still reaches the swaps section at step 47; preserve overlapping
+        // read-through and the same final-line/state assertions on the narrower screen.
+        let maximumReadingScrolls = app.frame.width < 420 ? 72 : 48
+        for step in 0..<maximumReadingScrolls {
             XCTAssertEqual(app.state, .runningForeground)
             XCTAssertTrue(navigation.exists, "Remain in help after every scroll")
             XCTAssertTrue(app.buttons["experiment.done"].isHittable)

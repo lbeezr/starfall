@@ -8,6 +8,7 @@ struct FallingSkyMenu: View {
     let groups: Int
     let over: Bool
     let challenge: Bool
+    let criticalMass: Bool
     let duskRule: DuskRule
     let balance: StarfallBalance
     @Binding var sound: Bool
@@ -52,7 +53,7 @@ struct FallingSkyMenu: View {
                             .accessibilityHint(SkyCopy.text(.menuFirstLightHint))
                             .accessibilityIdentifier("experiment.challenge")
                     }
-                    NavigationLink { SkyHowToPlay(duskRule: duskRule).toolbar { dismissal } } label: { Label(SkyCopy.text(.menuHelp), systemImage: "questionmark.circle") }
+                    NavigationLink { SkyHowToPlay(duskRule: duskRule, criticalMass: criticalMass).toolbar { dismissal } } label: { Label(SkyCopy.text(.menuHelp), systemImage: "questionmark.circle") }
                         .accessibilityIdentifier("experiment.help")
                 } header: { Text(SkyCopy.text(.menuExplore)) } footer: {
                     Text(Bundle.main.object(forInfoDictionaryKey: "StarfallBuildID") as? String ?? "dev.local")
@@ -90,17 +91,19 @@ struct FallingSkyMenu: View {
                 }
                 .pickerStyle(.menu).labelsHidden().accessibilityIdentifier("experiment.pace")
             }
-            VStack(alignment: .leading, spacing: 8) {
-                Text(SkyCopy.text(.balanceDark))
-                Picker(SkyCopy.text(.balanceDark), selection: Binding(get: { balance.darkStars }, set: { setBalance(StarfallBalance(pace: balance.pace, darkStars: $0)) })) {
-                    ForEach(StarfallBalance.DarkStarFrequency.allCases, id: \.self) { frequency in
-                        Text(frequency.title).tag(frequency)
+            if !criticalMass {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text(SkyCopy.text(.balanceDark))
+                    Picker(SkyCopy.text(.balanceDark), selection: Binding(get: { balance.darkStars }, set: { setBalance(StarfallBalance(pace: balance.pace, darkStars: $0)) })) {
+                        ForEach(StarfallBalance.DarkStarFrequency.allCases, id: \.self) { frequency in
+                            Text(frequency.title).tag(frequency)
+                        }
                     }
+                    .pickerStyle(.menu).labelsHidden().accessibilityIdentifier("experiment.darkFrequency")
                 }
-                .pickerStyle(.menu).labelsHidden().accessibilityIdentifier("experiment.darkFrequency")
+                Text(balance.darkStars.detail)
+                    .accessibilityIdentifier("experiment.balanceDetail")
             }
-            Text(balance.darkStars.detail)
-                .accessibilityIdentifier("experiment.balanceDetail")
             Text(SkyCopy.text(.balanceExplanation))
             Button(SkyCopy.text(.balanceReset)) { setBalance(StarfallBalance()) }
                 .buttonStyle(StarfallButtonStyle(role: .quiet))

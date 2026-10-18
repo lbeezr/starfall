@@ -45,8 +45,6 @@ extension FallingSkyCharacter {
 
 /// Presentation consumes committed targets. It never advances feeding or chooses removals.
 @MainActor enum DuskPresentation {
-    static let collapseDuration: TimeInterval = 0.46
-
     static func configure(_ node: FallingSkyCharacter, game: FallingSky, cell: Cell, step: CGFloat) {
         let drained = game.isDrained(at: cell)
         node.setDrain(drained ? 1 : 0)
@@ -78,26 +76,6 @@ extension FallingSkyCharacter {
         node.addChild(root)
     }
 
-    static func threats(game: FallingSky, cell: Cell, point: (Cell) -> CGPoint, step: CGFloat) -> SKNode? {
-        let targets = game.duskTargets(at: cell)
-        guard !targets.isEmpty else { return nil }
-        let root = SKNode(); root.name = "dusk.threats"; root.zPosition = -1
-        root.userData = ["column": cell.column]
-        let center = point(cell)
-        for target in targets {
-            let start = point(target)
-            let delta = CGVector(dx: center.x-start.x, dy: center.y-start.y)
-            let path = CGMutablePath()
-            path.move(to: CGPoint(x: start.x+delta.dx*0.36,y: start.y+delta.dy*0.36))
-            path.addLine(to: CGPoint(x: start.x+delta.dx*0.64,y: start.y+delta.dy*0.64))
-            let line = SKShapeNode(path: path)
-            line.strokeColor = StarfallTheme.Dusk.rim.withAlphaComponent(game.gem(at: cell)?.duskFeeds == game.duskRule.feedingShowers - 1 ? 0.9 : 0.4)
-            line.lineWidth = game.gem(at: cell)?.duskFeeds == game.duskRule.feedingShowers - 1 ? 2.5 : 1.5
-            root.addChild(line)
-        }
-        return root
-    }
-
     static func transition(_ node: FallingSkyCharacter, wasDrained: Bool, drained: Bool, effects: SKNode, step: CGFloat) {
         guard wasDrained != drained else { return }
         node.animateDrain(from: wasDrained ? 1 : 0, to: drained ? 1 : 0)
@@ -109,26 +87,4 @@ extension FallingSkyCharacter {
         wave.run(.sequence([.group([.scale(to: 1.8,duration: 0.38),.fadeOut(withDuration: 0.38)]),.removeFromParent()]))
     }
 
-    static func collapse(_ events: [DuskCollapse], from game: FallingSky,
-                         nodes: [Int: FallingSkyCharacter], effects: SKNode,
-                         point: (Cell) -> CGPoint, step: CGFloat) {
-        var consumed: Set<Cell> = []
-        for event in events {
-            let center = point(event.center)
-            let well = SKShapeNode(circleOfRadius: step*0.46)
-            well.name = "dusk.collapse"; well.position = center
-            well.fillColor = StarfallTheme.Dusk.core; well.strokeColor = StarfallTheme.Dusk.rim
-            well.lineWidth = 3; well.glowWidth = 4
-            effects.addChild(well)
-            well.run(.sequence([.scale(to: 1.25,duration: 0.12),.group([.scale(to: 0.02,duration: 0.34),.fadeOut(withDuration: 0.34)]),.removeFromParent()]))
-            for cell in event.consumed.union([event.center]).sorted(by: { $0.row == $1.row ? $0.column < $1.column : $0.row < $1.row }) {
-                guard consumed.insert(cell).inserted, let id = game.gem(at: cell)?.id, let node = nodes[id] else { continue }
-                node.setGrowthMotion(false)
-                node.run(.group([.move(to: center,duration: collapseDuration),
-                                 .scale(to: 0.02,duration: collapseDuration),
-                                 .rotate(byAngle: .pi*0.8,duration: collapseDuration),
-                                 .fadeOut(withDuration: collapseDuration)]))
-            }
-        }
-    }
 }

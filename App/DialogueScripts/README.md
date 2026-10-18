@@ -101,4 +101,6 @@ Run the hosted `SkyDialogueTests` using the Starfall scheme. They render every b
 
 The ordinary compact bubble receives the terrace's available footer height; its introduction scrolls before it can overlap native stars. Keep action controls outside that scrolling introduction. Actual VoiceOver acceptance remains an RC check.
 
+Universal pressure uses `mass.*` copy and `guide.stellar-collapse` with Nova. Age and affected cells remain committed Core facts. Retained Dusk uses its existing copy only in retained skies.
+
 `help.swap` and `help.trace` describe the [directional swap and one-gap contract](../../docs/design/TOUCH_INTENT.md); retain the horizontal-only rule and the distinction between selecting a trace and moving a neighbor.

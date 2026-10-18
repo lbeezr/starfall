@@ -289,6 +289,9 @@ The [native award verification](evidence/starlight-celebrations-2026-10-18/VISIB
 
 The PR integration touches the 1,210-line `FallingSkyStoreTests.swift` only to extend five exact expected speech literals with Dusk context, retaining announcement count/order and the existing fixtures. Keep this bounded contract update separate from the already recorded store-test modularization follow-up: at the next fixture/clock setup change, extract shared test support and a cohesive dialogue/cadence suite, preserving hosted assertions and target membership.
 
+### Universal critical-mass tuning and retained validation
+
+Fresh survival ages all collectible stars through stage three and an automatic stage-four swallow. Trigger: after the first user/husband comparison or if players repeatedly wait for cleanup. Compare rescue/sacrifice choices and idle versus collect-all survival on the same seeds; tune timing/consequence before adding another hazard. Rule/core and simulator evidence cannot establish enjoyment. The retained gravity Debug regression `GravityStoreTests.testInvalidHoleTapAndRapidClearCannotSpendTwice` expects “captive” while the current catalogue says “trapped”; reproduced unchanged on main `33ae6fb`. Trigger: next gravity-fixture/copy test maintenance. Verify the action still leaves state unchanged and asserts the current hole-help event/wording. This feature does not alter that retired mechanic or weaken its assertion.
 
 ## Calibration evidence after gesture/copy integration — October 18, 2026
 
@@ -301,6 +304,8 @@ One paused direct-tool press on `d2ce8ff` reported success without a coordinate 
 ## Forgiving touch follow-up — October 18, 2026
 
 The [current input contract](design/TOUCH_INTENT.md) uses direction-based horizontal swap targets and elliptical acquisition with Core-validated empty-midpoint trace links. Trigger: next physical playtest or an accidental-selection report. Compare normal/fast strokes from centers and rims, armed wobble, reversals, curved/branching traces, and unwanted additions on phone and iPad. Measure observed intended/selected cells locally; the reported 30–40% failure rate is not yet measured. Tune the 12–24-point swap threshold and 0.52-cell trace ellipse against those observations. Full-motion/haptic feel and actual VoiceOver acceptance remain separate from simulator assertions; use the existing RC cadence.
+
+The critical-mass change leaves the 1,212-line `FallingSkyStoreTests.swift` intact: it changes one fresh-sky expectation and pins two existing speech/terminal scenarios to explicit retained Dusk saves. Shared clock/presenter setup is unchanged. Keep test-support extraction separate from this rule/archive change; at the next shared fixture/clock setup edit, extract the cohesive persistence/announcement suite and shared recorder support with explicit target membership, preserving assertions and running both affected hosted suites.
 
 ## Current-rule calibration connectivity — October 18, 2026
 

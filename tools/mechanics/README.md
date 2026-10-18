@@ -1,5 +1,7 @@
 # Offline mechanics research
 
+**Rule scope:** Fresh survival now uses [critical mass](../../docs/design/CRITICAL_MASS.md). Calibration entrypoints explicitly selecting `patientFeeding` remain the pre-pressure Dusk baseline; they are not balance evidence for new aging skies. Select the new saved rule explicitly and rerun model/replay checks before making another current-game calibration recommendation. [New-rule sample and native evidence](../../docs/evidence/critical-mass-2026-10-18/README.md).
+
 **Current workflow:** Implement requested improvements directly in the regular Starfall app. Do not create or install separate labs unless the user explicitly asks. The exports below are historical research instructions, not a current play workflow. The constellation exporter is retired; reproduce old versions from their recorded commit.
 
 ## Current Opal opportunity study

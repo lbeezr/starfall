@@ -25,7 +25,7 @@ enum SkyDialogueLibrary {
 
 extension SkyDialogueLibrary {
     static func contextual(_ result: SkyDialogueLine, game: FallingSky, cadence: SkyCadenceStep, includeTiming: Bool = true) -> SkyDialogueLine {
-        let context = [includeTiming ? timing(game: game, cadence: cadence)?.text : nil, DuskWarning(game: game)?.text]
+        let context = [includeTiming ? timing(game: game, cadence: cadence)?.text : nil, DuskWarning(game: game)?.text, CriticalMassPresentation.warning(game: game)]
             .compactMap { $0 }.joined(separator: " ")
         guard !context.isEmpty else { return result }
         let combined = line("guide.context", values: ["detail": result.text, "context": context])

@@ -49,11 +49,19 @@ struct SkyMenuDone: ToolbarContent {
 
 struct SkyHowToPlay: View {
     var duskRule: DuskRule = .patientFeeding
+    var criticalMass = true
     var body: some View {
         List {
             Section(SkyCopy.text(.helpTapTitle)) {
                 Text(SkyCopy.text(.helpTap))
                 Text(SkyCopy.text(.helpIdentity))
+            }
+            if criticalMass {
+                Section(SkyCopy.text(.massTitle)) {
+                    Text(SkyCopy.text(.massHelp))
+                    Text(SkyCopy.text(.massHelpCollapse))
+                    Text(SkyCopy.text(.massHelpValue))
+                }
             }
             Section(SkyCopy.text(.helpTraceTitle)) {
                 Text(SkyCopy.text(.helpTrace))
@@ -72,12 +80,14 @@ struct SkyHowToPlay: View {
                 Text(SkyCopy.text(.helpStorm))
                 Text(SkyCopy.text(.helpRetained))
             }
-            Section(SkyCopy.text(.helpDuskTitle)) {
-                if duskRule == .legacy {
-                    Text(SkyCopy.text(.helpDarkLegacy))
-                } else {
-                    Text(SkyCopy.text(.helpDusk, values: ["feeds": String(duskRule.feedingShowers)]))
-                    Text(SkyCopy.text(.helpDuskClear))
+            if !criticalMass {
+                Section(SkyCopy.text(.helpDuskTitle)) {
+                    if duskRule == .legacy {
+                        Text(SkyCopy.text(.helpDarkLegacy))
+                    } else {
+                        Text(SkyCopy.text(.helpDusk, values: ["feeds": String(duskRule.feedingShowers)]))
+                        Text(SkyCopy.text(.helpDuskClear))
+                    }
                 }
             }
             Section(SkyCopy.text(.helpPauseTitle)) {

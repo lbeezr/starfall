@@ -291,7 +291,7 @@ final class FallingSkyStoreTests: XCTestCase {
         XCTAssertEqual(defaults.data(forKey: FallingSkyStore.saveKey), committed)
         reset.setSuspended(false)
         let activated = try SkySaveArchive.decode(XCTUnwrap(defaults.data(forKey: FallingSkyStore.saveKey)))
-        XCTAssertEqual(activated, FallingSky(seed: 5, generation: .current, duskRule: .patientFeeding))
+        XCTAssertEqual(activated, FallingSky(seed: 5, generation: .current, criticalMass: true))
         XCTAssertEqual(activated, reset.game)
         XCTAssertTrue(reset.isPaused)
         XCTAssertNil(resetClock.deadline, "Activation preserves the explicit Start sky boundary")
@@ -496,8 +496,9 @@ final class FallingSkyStoreTests: XCTestCase {
         let suite = "SkySpeech.\(UUID())"
         let defaults = UserDefaults(suiteName: suite)!
         defer { defaults.removePersistentDomain(forName: suite) }
+        defaults.set(try! SkySaveArchive.encode(FallingSky(seed: 5, generation: .current, duskRule: .patientFeeding)), forKey: SkySaveArchive.key)
         let feedback = SkyFeedbackRecorder(), presenter = FallingSkyRecorder(), clock = ManualRainClock()
-        let store = FallingSkyStore(defaults: defaults, arguments: ["--starfalls-reset", "--starfalls-seed=5"],
+        let store = FallingSkyStore(defaults: defaults, arguments: [],
             presenter: presenter, clock: clock, feedback: feedback)
         store.setSuspended(false)
         store.clear(Cell(0, 0))
@@ -533,8 +534,9 @@ final class FallingSkyStoreTests: XCTestCase {
         let suite = "SkyCeremonySpeech.\(UUID())", presenter = FallingSkyRecorder(), clock = ManualRainClock()
         let defaults = UserDefaults(suiteName: suite)!
         defer { defaults.removePersistentDomain(forName: suite) }
+        defaults.set(try! SkySaveArchive.encode(FallingSky(seed: 5, generation: .current, duskRule: .patientFeeding)), forKey: SkySaveArchive.key)
         let feedback = SkyFeedbackRecorder()
-        let store = FallingSkyStore(defaults: defaults, arguments: ["--starfalls-reset"],
+        let store = FallingSkyStore(defaults: defaults, arguments: [],
                                     presenter: presenter, clock: clock, feedback: feedback)
         store.terminalSpeech = .ceremony
         store.setSuspended(false)
