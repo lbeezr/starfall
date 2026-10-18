@@ -4,7 +4,7 @@
 
 [Ranked scope and acceptance](../../TECH_DEBT_THIRD_PASS.md). Main `b5ec445` is the starting source; the checkout was clean and origin was already up to date. This report records separate core, build, native, visual and physical-device results as batches finish.
 
-**Next action:** canonical delivery when the phone reconnects; complete minimum-iOS/actual VoiceOver before RC.
+**Next action:** complete minimum-iOS, physical-play and actual VoiceOver RC acceptance; canonical delivery is verified below.
 
 ## Baseline reproduction
 
@@ -91,3 +91,9 @@ The four ranked workstreams merged through PRs [#122](https://github.com/lbeezr/
 Hosted/native build context: Xcode 27.1, iPhone 17e / iOS 27.0 QA device from task 1, Debug / ad-hoc simulator signing; Release uses `CODE_SIGNING_ALLOWED=NO`. Raw clean-check logs use `/tmp/starfall-third-integrated-*` and XcodeBuildMCP. No dirty build inputs existed. These checks do not replace the source-bound native/visual results above or certify the complete primary CI job.
 
 `python3 scripts/rc-platforms.py --plan-only` on this source still fails explicitly for missing `minimum-ios`; no fallback or runtime download occurred. Canonical device status remains waiting for the configured phone. Actual physical installation, minimum-iOS, Stage Manager and full actual VoiceOver acceptance remain open. This checkpoint's documentation-only publication does not change the tested app/Core/test/runtime inputs.
+
+## Canonical physical installation checkpoint
+
+After the clean-main checks, `python3 scripts/device-update.py run` followed by `status` reported `Up to date: dev.93d68284ce`. The canonical service verified the actual app installation and current-main runtime fingerprint; its receipt records signed installed source `508b259d4a9866e6ce478c824064065c974bf4fb`, bundle `com.starfall.prototype`, Core tests passed, signature verified and `checkedSource` `716f6d01e23958c02e2ceeddd76d31925149c107`. The intervening commits change only test teardown/documentation, so the installed runtime is current without a redundant reinstall. Main CI was pending at install; the full local primary CI job was not run.
+
+No raw physical install command, app launch, reset or uninstall was used. This establishes installation identity/current-runtime delivery, not a physical gameplay, data-content inspection, motion/feel or actual VoiceOver acceptance session. Earlier waiting statuses above retain their original checkpoint context. Device identifiers and installation container URLs remain in the local service receipt rather than this report.
