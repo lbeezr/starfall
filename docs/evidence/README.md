@@ -66,3 +66,5 @@ Start with [the roadmap](../ROADMAP.md) for current priorities or [visual refere
 [Forgiving current-app input](forgiving-input-main-2026-10-18/README.md) records directional swaps, empty-gap constellations and current-main regression checks.
 
 [Universal critical mass](critical-mass-2026-10-18/README.md) records fresh-sky aging, v8/retained saves, native rescue/collapse, normal-motion inspection and explicit baseline/RC limits.
+
+[Third debt pass](debt-third-pass-2026-10-18/README.md) records ranked restore and native acceptance reliability work.

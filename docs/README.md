@@ -26,3 +26,5 @@ Start with [the roadmap](ROADMAP.md), [writing process](WRITING.md), and [visual
 [Observatory interface direction](design/OBSERVATORY_INTERFACE.md) owns the selected A HUD, comet progress trail, cast guidance and menu component family.
 
 [Development build identities](DEVELOPMENT_BUILDS.md) owns one-app updates from main, `dev`/release-candidate labels and the development/RC accessibility cadence.
+
+[Third debt pass](TECH_DEBT_THIRD_PASS.md): ranked terminal-restore, native CI lifecycle, tablet clearance and default-game evidence work.

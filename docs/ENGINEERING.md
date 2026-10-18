@@ -373,3 +373,5 @@ The [independent debt record](evidence/debt-reduction-2026-10-18/README.md#task-
 </details>
 
 Tablet lower-edge spacing: the [verified landscape hit correction](evidence/debt-followup-2026-10-18/README.md#2-tablet-welcome-hit-semantics) leaves Settings close to the Home indicator in the initial landscape capture. Trigger: next landscape visual iteration or RC. Inspect native scroll positions and physical activation comfort without shrinking text or changing gameplay mapping; keep the restored native hit assertions and original largest-text flow.
+
+[Third-pass debt work](TECH_DEBT_THIRD_PASS.md) corrects a reproduced terminal gravity-restore precondition failure and tracks primary CI simulator ownership/timeouts, landscape control clearance and default-game screenshot evidence as separate batches. The terminal correction keeps existing archive accounting and outcome contracts; [reproduction and checks](evidence/debt-third-pass-2026-10-18/README.md#1-terminal-gravity-retirement).
