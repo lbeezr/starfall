@@ -3,6 +3,7 @@ import argparse
 import json
 from pathlib import Path
 import re
+import shutil
 import subprocess
 import tempfile
 
@@ -56,29 +57,100 @@ def verify_summary(summary, expected):
         raise ValueError(f'RC platform expected {expected} passes, zero failures/skips: {summary}')
 
 
+MAX_LOG_BYTES = 2_000_000
+MAX_RESULT_BYTES = 64_000_000
+
+
+def retain_failure(result, destination):
+    """One bounded result per role, plus a compact inventory when too large."""
+    if destination.exists():
+        shutil.rmtree(destination)
+    if not result.exists():
+        return {'status': 'unavailable'}
+    files = sorted(p for p in result.rglob('*') if p.is_file())
+    size = sum(p.stat().st_size for p in files)
+    record = {'bytes': size, 'fileCount': len(files)}
+    if size <= MAX_RESULT_BYTES:
+        shutil.copytree(result, destination)
+        return {**record, 'status': 'retained', 'path': str(destination)}
+    return {**record, 'status': 'over-limit', 'limitBytes': MAX_RESULT_BYTES,
+            'files': [str(p.relative_to(result))[:512] for p in files[:100]]}
+
+
 def run(selection, artifacts, temporary):
     role = selection['role']
     booted_here = selection.get('state') != 'Booted'
     log = artifacts / ('rc-' + role + '.log')
+    result = temporary / (role + '.xcresult')
+    retained = artifacts / ('rc-' + role + '-failure.xcresult')
+    summary_path = artifacts / ('rc-' + role + '-summary.json')
+    # Remove only this role's previous run outputs. Never accept a stale summary.
+    summary_path.unlink(missing_ok=True)
+    if retained.exists():
+        shutil.rmtree(retained)
+    primary = None
+    secondary = []
+    summary = None
+    stage = 'boot'
     try:
         if booted_here:
             subprocess.run(['xcrun', 'simctl', 'boot', selection['udid']], check=True, timeout=60)
         subprocess.run(['xcrun', 'simctl', 'bootstatus', selection['udid'], '-b'], check=True, timeout=180)
-        result = temporary / (role + '.xcresult')
+        stage = 'tests'
         with log.open('w') as output:
             execution = subprocess.run(test_command(selection, temporary / 'derived', result), stdout=output,
                                        stderr=subprocess.STDOUT, check=False, timeout=900)
-        summary = json.loads(subprocess.check_output(
-            ['xcrun', 'xcresulttool', 'get', 'test-results', 'summary', '--path', str(result), '--compact'], timeout=60))
-        (artifacts / ('rc-' + role + '-summary.json')).write_text(json.dumps(summary, indent=2) + '\n')
         if execution.returncode:
             raise subprocess.CalledProcessError(execution.returncode, execution.args)
+        stage = 'summary'
+        summary = json.loads(subprocess.check_output(
+            ['xcrun', 'xcresulttool', 'get', 'test-results', 'summary', '--path', str(result), '--compact'], timeout=60))
+        summary_path.write_text(json.dumps(summary, indent=2) + '\n')
         verify_summary(summary, len(selection['tests']))
+    except Exception as error:
+        primary = error
     finally:
-        if log.exists() and log.stat().st_size > 2_000_000:
-            log.write_bytes(b'[final 2 MB]\n' + log.read_bytes()[-2_000_000:])
+        # Partial bundles may still export a summary after xcodebuild fails/times out.
+        if primary is not None and summary is None and result.exists() and stage != 'summary':
+            try:
+                summary = json.loads(subprocess.check_output(
+                    ['xcrun', 'xcresulttool', 'get', 'test-results', 'summary', '--path', str(result), '--compact'], timeout=60))
+                summary_path.write_text(json.dumps(summary, indent=2) + '\n')
+            except Exception as error:
+                secondary.append('partial summary: ' + str(error))
+        evidence = None
+        if primary is not None:
+            try:
+                evidence = retain_failure(result, retained)
+            except Exception as error:
+                secondary.append('result retention: ' + str(error))
+        try:
+            if log.exists() and log.stat().st_size > MAX_LOG_BYTES:
+                with log.open('rb') as source:
+                    source.seek(-MAX_LOG_BYTES, 2)
+                    tail = source.read(MAX_LOG_BYTES)
+                log.write_bytes(b'[final 2 MB]\n' + tail)
+        except Exception as error:
+            secondary.append('log retention: ' + str(error))
         if booted_here:
-            subprocess.run(['xcrun', 'simctl', 'shutdown', selection['udid']], timeout=30, check=False)
+            try:
+                subprocess.run(['xcrun', 'simctl', 'shutdown', selection['udid']], timeout=30, check=True)
+            except Exception as error:
+                secondary.append('shutdown: ' + str(error))
+                if primary is None:
+                    primary = error
+                    stage = 'shutdown'
+        record = {'status': 'failed' if primary else 'passed', 'role': role, 'stage': stage,
+                  'primaryError': str(primary) if primary else None, 'secondaryErrors': secondary,
+                  'result': evidence, 'log': str(log) if log.exists() else None}
+        try:
+            (artifacts / ('rc-' + role + '-execution.json')).write_text(json.dumps(record, indent=2) + '\n')
+        except OSError:
+            if primary is None:
+                raise
+    if primary is not None:
+        raise primary
+    return record
 
 
 def main():
@@ -94,9 +166,20 @@ def main():
         raise SystemExit(str(error))
     (artifacts / 'rc-platform-plan.json').write_text(json.dumps({'status': 'planned', 'selections': selections}, indent=2) + '\n')
     if not args.plan_only:
-        with tempfile.TemporaryDirectory(prefix='starfall-rc-platforms-') as directory:
-            for selection in selections:
-                run(selection, artifacts, Path(directory))
+        records = []
+        try:
+            with tempfile.TemporaryDirectory(prefix='starfall-rc-platforms-') as directory:
+                for selection in selections:
+                    records.append(run(selection, artifacts, Path(directory)))
+        except Exception as error:
+            try:
+                (artifacts / 'rc-platform-plan.json').write_text(json.dumps(
+                    {'status': 'failed', 'selections': selections, 'completed': records, 'error': str(error)}, indent=2) + '\n')
+            except OSError:
+                pass  # The original execution error remains authoritative.
+            raise
+        (artifacts / 'rc-platform-plan.json').write_text(json.dumps(
+            {'status': 'passed', 'selections': selections, 'completed': records}, indent=2) + '\n')
         print('PASS: minimum-iOS and tablet native checks; physical VoiceOver remains a separate RC gate.')
 
 
