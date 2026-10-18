@@ -22,3 +22,5 @@ Gravity integration uses the normal target and v5 committed archive. Core owns o
 Debug-only `opalPlanning` replays seed 10 through shower 12 to expose a two-tap allocation choice without injected board or save fields.
 
 Debug-only `opalStormPlanning` replays current gravity-generation seed 180 through shower 12. It contrasts spending Opal with releasing an occupied field: two ordinary taps total six versus eight light, while a curved five-star trace raises the released branch to nine. It preserves the earlier `opalPlanning` historical-generation regression.
+
+`SkyGeneration.gravityOpportunities` extends pair eligibility to calm waves seven or eight. Generation 2 retains its eighth-wave supply. The committed pair blocks the following offer, so there is at most one per cycle; all existing geometry/special/relief skip conditions remain. `GravityOpportunityFixture` replays the natural candidate history only in Debug, without authored state injection.

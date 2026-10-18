@@ -91,3 +91,11 @@ The pacing runner consumes store-issued trace-hold tickets. Its standalone compi
 For a bounded timing sensitivity sample, pass `--baseline-cadence announcedCycleV1 --candidate-cadence announcedCycleV2 --reaction-seconds 0.75`. Supported cadence IDs are openingV1/announcedCycleV1/announcedCycleV2; baseline and candidate must differ. Recognition delay is assumed (0.05–5 seconds), trace steps default to 0.12 seconds (allowed 0.02–1). These options never change the app. Historical defaults remain openingV1 versus announcedCycleV1 at 0.45/0.12 seconds. Use distinct output folders and compare source hashes; neither simulation nor a chosen reaction delay measures human play.
 
 The standalone pacing Core library now builds with DEBUG so the current Store can use authoritative Core fixtures, including gravity. The old tool fixture is not compiled by this runner. Current-main compilation/replay smoke does not validate captive-star policies or gravity presentation durations; the pre-gravity sensitivity table remains source-bound.
+
+## Expanded gravity opportunities
+
+`study-gravity-opportunities.py --seed-start 320 --output <new-directory>` compares saved generation 2 with expanded calm-window supply (generation 3), using the existing Opal-study action enumerator. Repeat with seed start 384 for the confirmation cohort. Defaults are 64 seeds and 36 showers under largest-immediate and collision-first visible-board policies, one clear per shower. Full components/taps and bounded fives at Opal states are considered; larger partial selections and deliberate waiting are not modeled. More encounters or score does not establish enjoyment.
+
+`GravityOpportunityStudy.swift` is appended to the canonical study source in an isolated compiler directory so private action selection has one owner. Reports retain exact natural histories/branches, generation, source hashes and policy denominators. No app data is read or written.
+
+`check-gravity-generation-replay.py --baseline 794a0d1` compares complete generation 0/1/2 encoded histories against that committed pre-change Core, over 40 seeds, two ordinary-clear policies and 36 showers. It is distinct from the historical pre-gravity replay checker, whose older baseline cannot compile generation 2. See [the bounded design](../../docs/design/GRAVITY_OPPORTUNITIES.md) for the adoption decision and limits.

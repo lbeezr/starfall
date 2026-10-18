@@ -1,5 +1,7 @@
 // !$*UTF8*$!
 { archiveVersion = 1; classes = {}; objectVersion = 56; objects = {
+B701A14C9D00000000000001 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GravityOpportunityNativeTests.swift; sourceTree = "<group>"; };
+B701A14C9D00000000000002 = {isa = PBXBuildFile; fileRef = B701A14C9D00000000000001; };
 1292B87800414E4691866A9C = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyDialogueInteractionTests.swift; sourceTree = "<group>"; };
 B2C86B6E2B1C489F8FAAC968 = {isa = PBXBuildFile; fileRef = 1292B87800414E4691866A9C; };
 71EFE670FB5A4FB5A503D4BE = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyDialogueTests.swift; sourceTree = "<group>"; };
@@ -112,11 +114,11 @@ B50000000000000000000002 = {isa = PBXBuildFile; fileRef = B500000000000000000000
 		000000000000000000000015 = { isa = XCSwiftPackageProductDependency; package = 000000000000000000000014; productName = StarfallCore; };
 
         000000000000000000000020 = { isa = PBXNativeTarget; buildConfigurationList = 000000000000000000000029; buildPhases = (000000000000000000000025, 000000000000000000000026, 000000000000000000000027); buildRules = (); dependencies = (000000000000000000000028); name = StarfallUITests; productName = StarfallUITests; productReference = 000000000000000000000022; productType = "com.apple.product-type.bundle.ui-testing"; };
-        000000000000000000000021 = { isa = PBXGroup; path = UITests; children = (1292B87800414E4691866A9C, 8C60B2DBF02CAF8CFBD6332F,C0E400000000000000000001,B20000000000000000000009,000000000000000000000098, 000000000000000000000023); sourceTree = "<group>"; };
+        000000000000000000000021 = { isa = PBXGroup; path = UITests; children = (B701A14C9D00000000000001, 1292B87800414E4691866A9C, 8C60B2DBF02CAF8CFBD6332F,C0E400000000000000000001,B20000000000000000000009,000000000000000000000098, 000000000000000000000023); sourceTree = "<group>"; };
         000000000000000000000022 = { isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StarfallUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
         000000000000000000000023 = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarfallInteractionTests.swift; sourceTree = "<group>"; };
         000000000000000000000024 = { isa = PBXBuildFile; fileRef = 000000000000000000000023; };
-        000000000000000000000025 = { isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (B2C86B6E2B1C489F8FAAC968, 943C6D5B40BB698BE110EC21,C0E400000000000000000002,B2000000000000000000000A,000000000000000000000099, 000000000000000000000024); runOnlyForDeploymentPostprocessing = 0; };
+        000000000000000000000025 = { isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (B701A14C9D00000000000002, B2C86B6E2B1C489F8FAAC968, 943C6D5B40BB698BE110EC21,C0E400000000000000000002,B2000000000000000000000A,000000000000000000000099, 000000000000000000000024); runOnlyForDeploymentPostprocessing = 0; };
         000000000000000000000026 = { isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
         000000000000000000000027 = { isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
         000000000000000000000028 = { isa = PBXTargetDependency; target = 00000000000000000000000D; targetProxy = 00000000000000000000002C; };

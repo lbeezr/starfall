@@ -1,0 +1,14 @@
+{
+  "baseline": "794a0d1",
+  "byteEqual": true,
+  "encodedStates": 12890,
+  "sha256": "7d60d4c2cbb2aceb3115d6cd9d64a3b8c295a1bd1dca589ea4f10baa520e403e",
+  "generations": [
+    0,
+    1,
+    2
+  ],
+  "seeds": 40,
+  "policies": 2,
+  "showerCap": 36
+}

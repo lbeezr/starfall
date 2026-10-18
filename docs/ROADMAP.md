@@ -28,7 +28,7 @@ The accepted [notification plan](design/NOTIFICATIONS.md) starts with one option
 
 ## What happens next
 
-Magnetic pairs and temporary orbiting holes are integrated into new skies under saved `gravityOrbits` rules. Older rounds keep their generation; Dusk/Opal retain their roles. [Integration evidence](evidence/gravity-integration-2026-10-17/README.md) separates mechanical/native checks from unverified human preference and supply tuning.
+Magnetic pairs and temporary orbiting holes are integrated into new skies. Saved `gravityOpportunities` adds a second eligible calm wave, while retaining one committed pair per cycle; [bounded evidence](evidence/gravity-opportunities-2026-10-17/README.md) shows more field encounters alongside increased confirmation overflows. Older rounds keep their generation; Dusk/Opal retain their roles. [Integration evidence](evidence/gravity-integration-2026-10-17/README.md) separates mechanical/native checks from unverified human preference and supply tuning.
 
 The [screen-flow polish plan](SCREEN_FLOW_PLAN.md) adds a bounded presentation workstream: explicit dark launch, safe Entry cancellation, pause-preserving Continue, continuous handoffs and understandable endings. Its [accepted design](design/SCREEN_FLOW_POLISH.md) now has verified launch, safe Entry, continuous handoff, explanatory result, bounded arrival and home/preferences batches; [source-bound evidence and limits](evidence/screen-flow-polish-2026-10-17/README.md) remain separate from RC/device acceptance. These batches integrate independently of gameplay experiments.
 

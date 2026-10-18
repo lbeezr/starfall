@@ -18,6 +18,8 @@ New skies start empty, then open with four closely spaced animated showers. Clea
 
 New survival skies also use the approved [Opal and storm rules](docs/design/WHITE_STAR_AND_STORMS.md): a white Opal Orb can join the colored family you start on, and nine lighter showers alternate with three heavy showers. Clearing spends any included Opal; she is worth one light and never grows. Density and timing cues describe separate parts of the forecast. Older saved skies and replays keep their generation; First Light excludes both mechanics. [Integration evidence](docs/evidence/opal-main-integration-2026-10-17/README.md) distinguishes tested behavior from human enjoyment, which remains unmeasured.
 
+New skies give magnetic pairs another eligible calm-wave arrival, helping more rounds reach an orbit and its changing connections. Only one pair can be offered per cycle. Existing saves/replays keep their rules; [comparison and limits](docs/evidence/gravity-opportunities-2026-10-17/README.md) include the extra pressure and untested player preference.
+
 The [sky flow](docs/design/SKY_FLOW.md) opens with Welcome/Continue, stages choices until Begin at Entry, and gives First Light wins and full skies their own endings. Cast stars settle while actions emerge; Calm effects and Reduce Motion show the settled screen. Back at Entry retains the previous saved sky. Continue preserves an intentional pause; restored rounds reopen paused. Another sky always waits for your choice. Settings/help are available before play; results retain the final stars and explain the blocked column. [Verified presentation batches and remaining device/RC checks](docs/evidence/screen-flow-polish-2026-10-17/README.md).
 
 
