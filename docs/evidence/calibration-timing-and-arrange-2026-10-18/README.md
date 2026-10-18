@@ -2,6 +2,8 @@
 
 **Result:** Partially verified · **Owner:** current implementer · **Date:** October 18, 2026
 
+**Contact-readiness update:** [Native diagnostic](CONTACT_READINESS.md) explains the sampled non-scoring attempts and verifies late readiness checks. Game rules remain unchanged; deliberate automatic setups are next.
+
 **Fresh-play update:** [Current-main automatic play and input-window correction](FRESH_ROUNDS.md) records two fresh native passes, recipe/relay footage, seven receipt checks and 1,024 current-source model runs. Retain the rules; distinguish missed native attempts before tuning.
 
 **Combined-source update:** [Integration with main’s faster input/five-feed Dusk](INTEGRATION.md) now passes the affected development checks. The earlier three-feed measurements and captures below retain their original source.
