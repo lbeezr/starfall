@@ -4,7 +4,7 @@
 
 Make a directional stroke acquire matching stars without requiring exact center hits, and preserve the selected path through empty space or incidental nonmatching contact. The user reports roughly 30–40% failed swipes; that is an observation, not a measured reproduction rate. This record began with the earlier lab. Main now owns tracing and direct horizontal swaps; apply the remaining changes in those current owners, without reviving the retired exporter.
 
-**Next action:** Verify current-main input/rule changes on simulators, then compare physical feel on phone and iPad.
+**Next action:** Compare physical feel on phone and iPad after the recorded simulator checks.
 
 ## Research and decision
 

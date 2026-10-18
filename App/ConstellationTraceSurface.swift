@@ -138,6 +138,12 @@ struct ConstellationTraceSurface: UIViewRepresentable {
             guard !blocked, let primary, touches.contains(primary), let input else { cancelInput(); return }
             guard (event?.allTouches?.count ?? 1) == 1 else { cancelInput(reason: SkyCopy.text(.inputOneFinger)); return }
             let location = primary.location(in: self)
+            // Classify final-only movement before considering a quick swap, so a
+            // matching neighbor reached on lift retains selected-trace precedence.
+            if !swapArmed, session.move(to: location) {
+                input.move(location)
+                if input.hasSelectedNeighbor?() == true { session.claimDrag() }
+            }
             updateSwapHold(location, input: input)
             swapTask?.cancel(); swapTask=nil
             if !swapArmed, input.hasSelectedNeighbor?() != true,
