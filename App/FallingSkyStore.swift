@@ -53,6 +53,8 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     private(set) var constellationInputGeneration: UInt64 = 0
     var constellationTracing = false {
         didSet {
+            guard oldValue != constellationTracing else { return }
+            if constellationTracing { freezeClock() } else { armClock() }
             #if DEBUG
             observeTiming(.state)
             #endif
@@ -107,7 +109,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
               scheduledDeadline: deadline, rainDue: rainDue, busy: busy,
               paused: isPaused, suspended: suspended, canClear: canClear,
               canTap: canClear && !constellationTracing,
-              canCallShower: !busy && !suspended && !game.isOver,
+              canCallShower: !constellationTracing && !busy && !suspended && !game.isOver,
               inputGeneration: constellationInputGeneration)
     }
     /// One test-only entry, before activation. Lookup/observer must be pure/non-reentrant.
@@ -135,6 +137,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         #endif
     }
     private func invalidateInput(_ reason: String) {
+        constellationTracing = false
         constellationInputGeneration &+= 1
         #if DEBUG
         observeTiming(.invalidated(reason))
@@ -229,7 +232,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
 
     /// Explicit input works while paused too, without starting an automatic clock.
     func callShower() {
-        guard !busy, !suspended, !game.isOver else { return }
+        guard !constellationTracing, !busy, !suspended, !game.isOver else { return }
         freezeClock()
         remaining = showerInterval
         commitShower(announcesResult: true)
@@ -254,7 +257,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     }
 
     private func armClock() {
-        guard !isPaused, !suspended, !game.isOver, deadline == nil, !rainDue else { return }
+        guard !constellationTracing, !isPaused, !suspended, !game.isOver, deadline == nil, !rainDue else { return }
         rainGeneration &+= 1
         let ticket = rainGeneration
         deadline = clock.now + remaining
@@ -509,11 +512,10 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     @discardableResult func visit(_ cell: Cell, ticket: UInt64?, game: FallingSky, generation: UInt64, enabled: Bool) -> Bool {
         guard ticket == sequence, snapshot != nil else { return false }
         guard enabled, snapshot == game, self.generation == generation,
-              let last = path.last,
-              game.isValidConstellationPrefix(path + [cell]) else {
+              let last = path.last, path.count < 196 else {
             cancel(); return false
         }
-        if cell == last { return false }
+        guard cell != last, game.isValidConstellationPrefix(path + [cell]) else { return false }
         path.append(cell)
         return true
     }

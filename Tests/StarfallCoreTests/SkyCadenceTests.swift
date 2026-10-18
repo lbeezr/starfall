@@ -26,6 +26,22 @@ final class SkyCadenceTests: XCTestCase {
         XCTAssertEqual(TimingCycleFixture.step(committedShowers: 28), .init(delay: 3, phase: .steady))
     }
 
+    func testFasterCycleIsVersionedAndLegacyRoundKeepsItsCadence() throws {
+        let delays: [Double] = [2,2,2,2,2,2,1.7,1.7,1.7,2.5,2.5,2.5]
+        for slot in 0..<24 {
+            let step = SkyCadenceID.announcedCycleV2.step(committedShowers: 4+slot, pace: .brisk)
+            XCTAssertEqual(step.delay, delays[slot % 12])
+            XCTAssertEqual(step.warnsFasterNext, slot % 12 == 5)
+        }
+        var legacy = FallingSky(seed: 5, cadence: .announcedCycleV1)
+        for _ in 0..<4 { legacy.letStarsFall() }
+        let restored = try JSONDecoder().decode(FallingSky.self, from: JSONEncoder().encode(legacy))
+        XCTAssertEqual(restored, legacy)
+        XCTAssertEqual(restored.automaticShowerDelay, 3)
+        XCTAssertEqual(restored.replay().cadenceID, .announcedCycleV1)
+        XCTAssertEqual(FallingSky(seed: 5).cadenceID, .announcedCycleV2)
+    }
+
     func testBalanceAlwaysWinsOutsideOpening() {
         for pace in StarfallBalance.Pace.allCases {
             for count in 0...30 {
@@ -44,7 +60,7 @@ final class SkyCadenceTests: XCTestCase {
             var comparison = game
             for _ in 0..<30 where !game.isOver {
                 let before = game.cadenceStep
-                XCTAssertEqual(game.cadenceID, .announcedCycleV1)
+                XCTAssertEqual(game.cadenceID, .announcedCycleV2)
                 _ = TimingCycleFixture.step(committedShowers: comparison.turns, pace: comparison.balance.pace)
                 if let cell = game.legalGroups.first?.first {
                     game.clear(cell); comparison.clear(cell)
@@ -67,7 +83,7 @@ final class SkyCadenceTests: XCTestCase {
 
     func testNewSkiesAdoptCycleAndExplicitOpeningSavesKeepTheirTiming() throws {
         let modern = FallingSky(seed: 5)
-        XCTAssertEqual(modern.cadenceID, .announcedCycleV1)
+        XCTAssertEqual(modern.cadenceID, .announcedCycleV2)
         var baseline = FallingSky(seed: 5, cadence: .openingV1)
         for _ in 0..<10 { baseline.letStarsFall() }
         let restored = try JSONDecoder().decode(FallingSky.self, from: JSONEncoder().encode(baseline))
@@ -78,7 +94,7 @@ final class SkyCadenceTests: XCTestCase {
         for _ in 0..<10 { cycle.letStarsFall() }
         let cycleRestore = try JSONDecoder().decode(FallingSky.self, from: JSONEncoder().encode(cycle))
         XCTAssertTrue(cycleRestore.isValidSave)
-        XCTAssertEqual(cycleRestore.cadenceStep, .init(delay: 2.5, phase: .faster))
+        XCTAssertEqual(cycleRestore.cadenceStep, .init(delay: 1.7, phase: .faster))
         XCTAssertEqual(cycleRestore.replay(), modern)
         XCTAssertEqual(baseline.board, cycle.board)
         XCTAssertEqual(baseline.incoming, cycle.incoming)

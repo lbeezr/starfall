@@ -1,4 +1,6 @@
-# Mechanics comparison labs
+# Offline mechanics research
+
+**Current workflow:** Implement requested improvements directly in the regular Starfall app. Do not create or install separate labs unless the user explicitly asks. The exports below are historical research instructions, not a current play workflow. The constellation exporter is retired; reproduce old versions from their recorded commit.
 
 ## Pacing comparison
 
@@ -18,9 +20,9 @@ Every committed action is replayed under both cadence lookups and compared with 
 
 Constellation tracing is adopted into ordinary Starfall for the one-app update path. Current rules/input/tests live in Sources, App, AppTests and UITests. Build regular Starfall and use the [one-app updater](../../scripts/README.md#one-app-iphone-updates); do not deploy another lab from current main.
 
-`prepare-constellation-labs.py --source <historical-captured-snapshot> --output <new-directory>` is retained for source-bound reproduction only. The `Constellation*.swift` fragments and candidate/trace patch modules retain their historical bytes and are not the current rule/input owners. The old [drawing evidence](../../docs/evidence/constellation-trace-2026-10-17/README.md) identifies installed `dev.fecfaa150d`; original whole-component results remain in the [offline study](../../docs/evidence/constellations-2026-10-17/README.md) and [tap pair](../../docs/evidence/constellations-native-2026-10-17/README.md). Reproduce that earlier question at `b0de3ff`; its survival counts do not validate traced-subset balance. `lab_build.py` delegates fingerprints to the current shared build-identity helper while retaining historical lab stamping.
+`prepare-constellation-labs.py` is retired; retrieve its historical implementation from the recorded commit for source-bound reproduction. The `Constellation*.swift` fragments and candidate/trace patch modules retain their historical bytes and are not the current rule/input owners. The old [drawing evidence](../../docs/evidence/constellation-trace-2026-10-17/README.md) identifies installed `dev.fecfaa150d`; original whole-component results remain in the [offline study](../../docs/evidence/constellations-2026-10-17/README.md) and [tap pair](../../docs/evidence/constellations-native-2026-10-17/README.md). Reproduce that earlier question at `b0de3ff`; its survival counts do not validate traced-subset balance. `lab_build.py` delegates fingerprints to the current shared build-identity helper while retaining historical lab stamping.
 
-## Active: shower variety and choices
+## Historical: shower variety and choices
 
 The user selected shower variety as the next playable experiment. Run `python3 tools/mechanics/compare-showers.py --natural-only` to compare the selected candidate with pinned baseline `30af812`, omit the option for the rejected broader candidate, or use `--pressure` for the offline higher-column refinement. All use 200 seeds, six policies and a 60-shower cap. One canonical patch owns the candidate rules; strict substitutions derive the two diagnostic variants. The runner checks every committed sampled state and verifies 160 current and 160 synthetic marker-absent baseline saves over 12 continuations, restored and newly started First Light over 80 steps through completion, plus 200 candidate opening/restore/preview samples and a contradictory-generation rejection. Source hashes are embedded in the JSON. The source pin keeps this measured comparison reproducible after the production `FallingSky` rename; these frozen labs intentionally retain the old type names.
 

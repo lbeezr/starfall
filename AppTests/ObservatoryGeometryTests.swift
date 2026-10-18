@@ -125,6 +125,8 @@ final class SkyShowerPlacementTests: XCTestCase {
     func testOnlyCalibratedPortraitUsesCameraMargin() {
         let phone = CGSize(width: 402, height: 778)
         XCTAssertTrue(SkyShowerPlacement.usesIsland(hardware: "iPhone18,3", size: phone, topInset: 62, accessible: false))
+        XCTAssertTrue(SkyShowerPlacement.usesIsland(hardware: "iPhone17,2", size: CGSize(width: 440, height: 894), topInset: 62, accessible: false))
+        XCTAssertFalse(SkyShowerPlacement.usesIsland(hardware: "iPhone17,2", size: CGSize(width: 440, height: 894), topInset: 62, accessible: true))
         for hardware in ["", "iPhone14,6", "iPhone17,5", "future-device"] {
             XCTAssertFalse(SkyShowerPlacement.usesIsland(hardware: hardware, size: phone, topInset: 62, accessible: false))
         }

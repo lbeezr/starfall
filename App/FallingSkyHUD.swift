@@ -72,9 +72,11 @@ enum SkyShowerPlacement {
     }()
 
     static func usesIsland(hardware: String, size: CGSize, topInset: CGFloat, accessible: Bool) -> Bool {
-        // iPhone 17 portrait profile, verified in Simulator. Physical fit remains an RC check.
-        hardware == "iPhone18,3" && !accessible && abs(size.width - 402) < 1
-            && size.height > size.width && abs(topInset - 62) < 1
+        // Checked portrait profiles; keep unknown hardware and accessible layouts safe.
+        let widths: [String: CGFloat] = ["iPhone18,3": 402, "iPhone17,2": 440]
+        guard let width = widths[hardware] else { return false }
+        return !accessible && abs(size.width-width) < 1
+            && size.height > size.width && abs(topInset-62) < 1
     }
 }
 
@@ -304,7 +306,7 @@ struct SkyCadenceCue: View {
             .padding(.horizontal, StarfallTheme.Spacing.medium)
             .padding(.vertical, StarfallTheme.Spacing.compact)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .background(StarfallTheme.Colors.skyTop)
+            .background(StarfallTheme.Colors.skyTop, ignoresSafeAreaEdges: [])
             .accessibilityElement(children: .ignore)
             .accessibilityLabel(copy.label)
             .accessibilityIdentifier("sky.cadence")

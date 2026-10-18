@@ -3,6 +3,9 @@ public enum SkyCadenceID: String, Codable, Equatable, Sendable {
     case originalV1
     case openingV1
     case announcedCycleV1
+    case announcedCycleV2
+
+    public var isAnnouncedCycle: Bool { self == .announcedCycleV1 || self == .announcedCycleV2 }
 
     /// The interval after `committedShowers`, leading to shower `committedShowers + 1`.
     /// Manual showers count; clears, elapsed time and presentation do not.
@@ -12,10 +15,17 @@ public enum SkyCadenceID: String, Codable, Equatable, Sendable {
             return SkyCadenceStep(delay: committedShowers == 0 ? 0.25 : 1.8, phase: .opening)
         }
         // Gentle and steady remain explicit fixed-pace choices.
-        guard self == .announcedCycleV1, pace == .brisk else {
+        guard isAnnouncedCycle, pace == .brisk else {
             return SkyCadenceStep(delay: Double(pace.rawValue), phase: .steady)
         }
         let slot = (committedShowers - 4) % 12
+        if self == .announcedCycleV2 {
+            switch slot {
+            case 0...5: return .init(delay: 2, phase: .steady, warnsFasterNext: slot == 5)
+            case 6...8: return .init(delay: 1.7, phase: .faster)
+            default: return .init(delay: 2.5, phase: .breathing)
+            }
+        }
         switch slot {
         case 0...5: return .init(delay: 3, phase: .steady, warnsFasterNext: slot == 5)
         case 6...8: return .init(delay: 2.5, phase: .faster)

@@ -4,6 +4,7 @@ Keep the prototype small. Falling sky is the default game in Debug and Release: 
 
 - Keep deterministic rules in Sources/StarfallCore, with no UI imports; test with `swift test`.
 - App uses SwiftUI and SpriteKit, iOS 17+. Shared scheme: Starfall.
+- Keep one Starfall app. Apply accepted features and fixes directly in the normal Debug/Release target. Do not create/install separate lab or control apps unless the user explicitly requests one. Reset-only Debug fixtures are automated test tooling, not another player app.
 - Every current build is clean. Ad and IAP SDKs, entitlements, tracking and monetization UI must remain absent. Any future monetized edition must be a separate opt-in target/product with dependencies conditionally linked; a runtime hide flag is insufficient.
 - Do not claim simulator/device or visual validation unless actually run on Apple tooling.
 - Do not change another repository or add network features, purchases or analytics without a new request.
