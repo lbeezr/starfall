@@ -51,4 +51,6 @@ The [branding studies](branding/README.md) retain the editable wordmarks, sanctu
 
 [Late-calm magnetic opportunities](GRAVITY_OPPORTUNITIES.md) owns generation-3 supply tuning, retained replay and its bounded adoption criteria.
 
+[Universal critical mass](CRITICAL_MASS.md) replaces new-sky Dusk arrivals with aging, purple warning and bounded implosion; retained rounds keep their saved mechanics.
+
 [Touch intent](TOUCH_INTENT.md) records HCI research and the forgiving swap/constellation connection contract.

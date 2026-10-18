@@ -92,7 +92,7 @@ import StarfallCore
     }
 
     private func groundOffset(_ gem: StarfallGem) -> CGFloat {
-        StarCast.groundOffset(for: .init(gem), radius: step * (gem.grown ? 0.43 : 0.35))
+        StarCast.groundOffset(for: .init(gem), radius: step * 0.35 * FallingSkyCharacter.bodyScale(for: gem))
     }
 
     private func light(at anchor: CGPoint, color: UIColor, strength: CGFloat) {
@@ -137,7 +137,8 @@ import StarfallCore
                 node.zPosition = CGFloat(7-cell.row)
                 if game.isGrowthBlocked(at: cell) { shade(node) }
                 DuskPresentation.configure(node, game: game, cell: cell, step: step)
-                if let threats = DuskPresentation.threats(game: game, cell: cell, point: point, step: step) { grid.addChild(threats) }
+                CriticalMassPresentation.configure(node, game: game, cell: cell, step: step)
+                if let threats = StarCollapsePresentation.threats(game: game, cell: cell, point: point, step: step) { grid.addChild(threats) }
                 pieces.addChild(node); nodes[gem.id] = node; cellsByID[gem.id] = cell
             }
         } }
@@ -616,12 +617,12 @@ extension FallingSkyScene {
                                            .wait(forDuration: StarfallMotion.landingDuration)]))
         }
         var sequence: [SKAction] = []
-        if !turn.duskCollapses.isEmpty {
+        if !turn.duskCollapses.isEmpty || !turn.stellarCollapses.isEmpty {
             sequence = [.run { [weak self] in
                 guard let self else { return }
-                DuskPresentation.collapse(turn.duskCollapses, from: old, nodes: self.nodes,
+                StarCollapsePresentation.collapse(turn.stellarCollapses + turn.duskCollapses.map { StarCollapse(center: $0.center, sourceID: $0.duskID, consumed: $0.consumed) }, from: old, nodes: self.nodes,
                     effects: self.effects, point: self.point, step: self.step)
-            }, .wait(forDuration: DuskPresentation.collapseDuration)]
+            }, .wait(forDuration: StarCollapsePresentation.collapseDuration)]
         }
         sequence += [.group(presentation), .run { [weak self] in self?.render(game); completion() }]
         run(.sequence(sequence))

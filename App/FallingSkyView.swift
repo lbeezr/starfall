@@ -393,8 +393,9 @@ import StarfallCore
         }
         let shade = store.game.isDrained(at: cell) ? SkyCopy.text(.duskGray)
             : store.game.isGrowthBlocked(at: cell) ? SkyCopy.text(.duskBlocked) : ""
+        let mass = CriticalMassPresentation.consequence(game: store.game, cell: cell)
         let captive = store.game.orbit?.slots.contains(cell) == true ? SkyCopy.text(.a11yTrapped) : ""
-        return SkyCopy.text(.a11yStar, values: ["size": gem.grown ? SkyCopy.text(.a11yGrown) : "", "description": StarCast.character(for: .init(gem)).description, "position": position, "state": captive + shade])
+        return SkyCopy.text(.a11yStar, values: ["size": gem.grown ? SkyCopy.text(.a11yGrown) : "", "description": StarCast.character(for: .init(gem)).description, "position": position, "state": captive + shade + mass])
     }
 
     private func updateSuspension() {
@@ -459,7 +460,7 @@ import StarfallCore
         case .game:
             FallingSkyMenu(paused: store.isPaused, turns: store.game.turns,
                            groups: store.game.legalGroups.count, over: store.game.isOver,
-                           challenge: store.game.challenge != nil, duskRule: store.game.duskRule, balance: store.game.balance,
+                           challenge: store.game.challenge != nil, criticalMass: store.game.hasCriticalMass, duskRule: store.game.duskRule, balance: store.game.balance,
                            sound: $store.soundEnabled, haptics: $store.hapticsEnabled, calm: $calmEffects,
                            pause: togglePauseFromMenu,
                            restart: { same in handleFlowAction(same ? .replay : .another) },

@@ -4,6 +4,16 @@ import Foundation
 /// Stable typed keys prevent view/store typos; wording and templates stay in JSON.
 enum SkyCopy {
     enum Key: String, CaseIterable, Sendable {
+        case massShowersOne = "mass.showersOne"
+        case massShowersMany = "mass.showersMany"
+        case massTitle = "mass.title"
+        case massHelpCollapse = "mass.helpCollapse"
+        case massHelpValue = "mass.helpValue"
+        case massHelp = "mass.help"
+        case massWarning = "mass.warning"
+        case massState = "mass.state"
+        case massTargets = "mass.targets"
+        case massNoNeighbors = "mass.noNeighbors"
         case actionStart = "action.start"
         case actionResume = "action.resume"
         case actionPause = "action.pause"

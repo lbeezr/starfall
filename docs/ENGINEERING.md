@@ -289,6 +289,9 @@ The [native award verification](evidence/starlight-celebrations-2026-10-18/VISIB
 
 The PR integration touches the 1,210-line `FallingSkyStoreTests.swift` only to extend five exact expected speech literals with Dusk context, retaining announcement count/order and the existing fixtures. Keep this bounded contract update separate from the already recorded store-test modularization follow-up: at the next fixture/clock setup change, extract shared test support and a cohesive dialogue/cadence suite, preserving hosted assertions and target membership.
 
+### Universal critical-mass tuning and retained validation
+
+Fresh survival ages all collectible stars through stage three and an automatic stage-four swallow. Trigger: after the first user/husband comparison or if players repeatedly wait for cleanup. Compare rescue/sacrifice choices and idle versus collect-all survival on the same seeds; tune timing/consequence before adding another hazard. Rule/core and simulator evidence cannot establish enjoyment. The retained gravity Debug regression `GravityStoreTests.testInvalidHoleTapAndRapidClearCannotSpendTwice` expects “captive” while the current catalogue says “trapped”; reproduced unchanged on main `33ae6fb`. Trigger: next gravity-fixture/copy test maintenance. Verify the action still leaves state unchanged and asserts the current hole-help event/wording. This feature does not alter that retired mechanic or weaken its assertion.
 
 ## Calibration evidence after gesture/copy integration — October 18, 2026
 

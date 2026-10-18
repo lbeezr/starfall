@@ -26,7 +26,7 @@ Character chat and complete shower trails are integrated into the current produc
 
 Grown-star readability now uses a luminous double silhouette, two glints and a gentle outer-aura pulse. [Integration evidence](evidence/grown-star-readability-2026-10-17/PULSE.md) records native checks; next confirm uncoached recognition and dense-board comfort with the reporting tester.
 
-Dusk now offers a space-versus-reward choice: five feeding showers consume its gray neighbors for no points, while an adjacent match dissolves it early. [Production contract](design/DUSK_FEEDING.md) and [verification](evidence/dusk-feeding-2026-10-18/README.md). Next observe whether a new player recognizes the final feeding warning and deliberately uses the collapse.
+Fresh survival replaces Dusk arrivals with [universal critical mass](design/CRITICAL_MASS.md): buried stars and Opal age, turn purple at stage three and implode at stage four. Retained rounds keep feeding Dusk. Next observe rescue versus sacrifice and whether automatic cleanup makes waiting too effective; timing and human preference remain open.
 
 The retained [technique roster](design/STAR_TECHNIQUES.md) is reconciled with current main, including v6 saves, Dusk feeding, responsive columns and current presentation. Core, hosted, native, layout and animation checks pass. Merged and delivered through the guarded updater with unchanged saved bytes; observe human play next. [Source-bound status](evidence/technique-current-main-2026-10-18/README.md).
 

@@ -33,7 +33,7 @@ Board actions are direct gestures. Swipe sideways for an exchange; tap ordinary 
 
 Core validates actual star IDs and current board state. The store rejects stale snapshots/generations and reserves only affected columns, including Dusk reward changes. It commits and saves before presentation. Scene animation first slides exchanged identities horizontally, then falls to the committed resting cells. Quiet motion preserves the outcome.
 
-Exchanges spend no starlight and do not advance showers, RNG or forecast. Shared clear rules retain growth, Opal and current Dusk feeding/collapse rewards. These actions introduce no save fields; the current v7 archive versions the separate five-feed Dusk rule. Selection and relay feedback are transient. A relay label increments only if a clear spends a recipe newly created by the preceding clear, comparing actual ingredient identities; it awards no extra points.
+Exchanges spend no starlight and do not advance showers, RNG or forecast. Shared clear rules retain growth, Opal and current Dusk feeding/collapse rewards. These actions introduce no save fields; the historical v7 archive versions the separate five-feed Dusk rule; current v8 also preserves universal star age through exchanges. Selection and relay feedback are transient. A relay label increments only if a clear spends a recipe newly created by the preceding clear, comparing actual ingredient identities; it awards no extra points.
 
 ## Acceptance and remaining questions
 

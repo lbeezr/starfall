@@ -43,6 +43,7 @@ enum StarfallTheme {
     }
 
     enum Dusk {
+        static let corruption = SIMD4<Float>(0.48, 0.20, 0.76, 1)
         static let core = UIColor(red: 0.025, green: 0.015, blue: 0.065, alpha: 1)
         static let rim = UIColor(red: 0.74, green: 0.57, blue: 1, alpha: 1)
     }

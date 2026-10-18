@@ -26,4 +26,6 @@ Gravity specials are retired from normal play. `SkyGeneration.standardSky` suppl
 
 `StarRecipeTests` covers exact ingredients and stale identities, Opal/Dusk distinctions, all eight setup techniques, legal exchanges, First Light rejection and seeded legacy/current save/forecast continuation.
 
+`CriticalMassTests` covers birth/buried/Opal aging, warning windows, rescue/exchange, isolated and overlapping simultaneous collapses, no chains, before-arrival headroom, accounting, invalid ages and seeded policy/replay compatibility.
+
 `ConstellationGapCoreTests` covers one/repeated empty midpoints, blockers, Opal family anchoring and committed replay.

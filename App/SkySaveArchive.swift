@@ -4,12 +4,13 @@ import StarfallCore
 /// One persistence contract for committed skies. Legacy bytes remain untouched;
 /// a present but invalid current save never falls back to an older round.
 enum SkySaveArchive {
-    static let key = "starfall.accumulation.v7"
+    static let key = "starfall.accumulation.v8"
+    static let patientFeedingKey = "starfall.accumulation.v7"
     static let feedingKey = "starfall.accumulation.v6"
     static let gravityKey = "starfall.accumulation.v5"
     static let previousKey = "starfall.accumulation.v4"
     static let legacyKey = "starfall.accumulation.v3"
-    static let schemaVersion = 7
+    static let schemaVersion = 8
 
     private struct Envelope: Codable {
         let schemaVersion: Int
@@ -44,17 +45,24 @@ enum SkySaveArchive {
             guard let data = defaults.data(forKey: key), let game = try? decode(data) else { return nil }
             return game
         }
+        if defaults.object(forKey: patientFeedingKey) != nil {
+            guard let data = defaults.data(forKey: patientFeedingKey),
+                  let envelope = try? JSONDecoder().decode(Envelope.self, from: data),
+                  envelope.schemaVersion == 7,
+                  envelope.game.isValidSave, !envelope.game.hasCriticalMass else { return nil }
+            return envelope.game
+        }
         if defaults.object(forKey: feedingKey) != nil {
             guard let data = defaults.data(forKey: feedingKey),
                   let envelope = try? JSONDecoder().decode(Envelope.self, from: data),
-                  envelope.schemaVersion == 6, envelope.game.isValidSave,
+                  envelope.schemaVersion == 6, envelope.game.isValidSave, !envelope.game.hasCriticalMass,
                   envelope.game.duskRule != .patientFeeding else { return nil }
             return envelope.game
         }
         if defaults.object(forKey: gravityKey) != nil {
             guard let data = defaults.data(forKey: gravityKey),
                   let envelope = try? JSONDecoder().decode(Envelope.self, from: data),
-                  envelope.schemaVersion == 5, envelope.game.isValidSave else { return nil }
+                  envelope.schemaVersion == 5, envelope.game.isValidSave, !envelope.game.hasCriticalMass else { return nil }
             return envelope.game
         }
         if defaults.object(forKey: previousKey) != nil {
@@ -62,7 +70,7 @@ enum SkySaveArchive {
                   let envelope = try? JSONDecoder().decode(Envelope.self, from: data),
                   envelope.schemaVersion == 4,
                   [.legacy, .opalStorms].contains(envelope.game.generation),
-                  envelope.game.isValidSave else { return nil }
+                  envelope.game.isValidSave, !envelope.game.hasCriticalMass else { return nil }
             return envelope.game
         }
         guard let data = defaults.data(forKey: legacyKey), let game = try? decodeLegacy(data) else { return nil }

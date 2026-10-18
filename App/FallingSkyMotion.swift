@@ -30,11 +30,15 @@ import StarfallCore
         character.removeAllActions()
         character.position = .zero; character.zRotation = 0; character.setScale(1)
         character.warpGeometry = nil
-        let growth: CGFloat = gem.grown ? 0.43 / 0.35 : 1
+        let growth = Self.bodyScale(for: gem)
         character.size = CGSize(width: smallSize.width * growth, height: smallSize.height * growth)
         showExpression(expression)
         growthCue.isHidden = gem.value != 2
         refreshGrowthMotion()
+    }
+
+    static func bodyScale(for gem: StarfallGem) -> CGFloat {
+        gem.massStage >= 3 ? 1.34 : gem.grown ? 0.43 / 0.35 : gem.massStage == 2 ? 1.10 : 1
     }
 
     func setDrainDecoration(_ drained: Bool) {

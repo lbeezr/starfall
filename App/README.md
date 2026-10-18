@@ -79,4 +79,6 @@ Store interruption cleanup has two small boundaries: `interruptPlay` freezes the
 
 `GameFeedback` owns trace selection haptics and all explicit accessibility announcements. The view passes count/value/readiness plus generation and hold values through the store; cancelled/replaced ownership cannot emit stale speech. Store preferences and device Reduce Motion/VoiceOver policy gate selection haptics, using the existing bounded generators.
 
+Fresh survival skies use universal critical mass. `CriticalMassPresentation` renders committed purple stages, static non-color cues and exact threatened cells; `StarCollapsePresentation` shares the bounded inward swallow with historical Dusk. `SkySaveArchive` writes v8, reads retained v3–v7 and preserves prior bytes. Retained replay keeps its mechanics; New sky selects aging. See [critical mass](../docs/design/CRITICAL_MASS.md).
+
 [Touch intent](../docs/design/TOUCH_INTENT.md) defines direction-based horizontal swaps and projected elliptical trace acquisition; Core owns gap legality.

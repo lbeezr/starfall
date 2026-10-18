@@ -310,7 +310,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         } else {
             let argument = arguments.first { $0.hasPrefix("--starfalls-seed=") }
             let seed = argument.flatMap { UInt64($0.dropFirst("--starfalls-seed=".count)) } ?? 5
-            game = FallingSky(seed: seed, generation: .current, duskRule: .patientFeeding)
+            game = FallingSky(seed: seed, generation: .current, criticalMass: true)
         }
         #if DEBUG
         if arguments.contains("--starfalls-reset"), arguments.contains("--observatory-review") {
@@ -344,6 +344,11 @@ enum SkyTerminalSpeech { case feedback, ceremony }
            let fixture = DuskFixture(rawValue: String(name.dropFirst("--dusk-fixture=".count))) {
             game = fixture.game(rule: .patientFeeding)
             guide("guide.dusk-arrival")
+        }
+        #endif
+        #if DEBUG
+        if arguments.contains("--starfalls-reset"), arguments.contains("--critical-mass-review") {
+            game = CriticalMassFixture.game()
         }
         #endif
         refreshCadence()
@@ -579,6 +584,9 @@ enum SkyTerminalSpeech { case feedback, ceremony }
             guide("guide.won", values: ["score": String(game.score)])
         } else if turn.blockedColumn != nil {
             guide("guide.full", values: ["score": String(game.score)])
+        } else if !turn.stellarCollapses.isEmpty {
+            let count = Set(turn.stellarCollapses.flatMap { $0.consumed.union([$0.center]) }).count
+            guide("guide.stellar-collapse", values: ["count": String(count)])
         } else if !turn.duskCollapses.isEmpty {
             let count = Set(turn.duskCollapses.flatMap(\.consumed)).count
             guide("guide.dusk-collapse", values: ["swallowed": SkyCopy.count(.eventEatenOne, .eventEatenMany, count)])
@@ -620,7 +628,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         let resultLine = SkyDialogueLibrary.contextual(guideLine, game: game, cadence: nextShowerCadence)
         let spokenResult: SkyDialogueLine? = transition.map {
             SkyDialogueLibrary.contextual($0, game: game, cadence: nextShowerCadence, includeTiming: false)
-        } ?? (announcesResult || game.isOver || DuskWarning(game: game) != nil ? resultLine : nil)
+        } ?? (announcesResult || game.isOver || (DuskWarning(game: game) != nil || CriticalMassPresentation.warning(game: game) != nil) ? resultLine : nil)
         save() // Commit before animation: backgrounding cannot replay arrivals.
         presenter.animate(turn, from: old, to: game) { [weak self] in
             guard let self, self.generation == epoch,
@@ -674,7 +682,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         } else {
             // First Light's fixed balance belongs to that challenge, not the next normal sky.
             let balance = game.challenge == nil ? game.balance : StarfallBalance()
-            game = FallingSky(seed: UInt64.random(in: 0...UInt64.max), balance: balance, generation: .current, duskRule: .patientFeeding)
+            game = FallingSky(seed: UInt64.random(in: 0...UInt64.max), balance: balance, generation: .current, criticalMass: true)
         }
         refreshCadence()
         remaining = showerInterval

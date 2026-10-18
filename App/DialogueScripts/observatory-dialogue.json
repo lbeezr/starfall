@@ -574,9 +574,31 @@
     {
       "id": "guide.input",
       "lines": [{ "id": "guide.input.1", "speaker": "spark", "text": "{detail}", "priority": "help" }]
+    },
+    {
+        "id": "guide.stellar-collapse",
+        "lines": [
+            {
+                "id": "guide.stellar-collapse.result",
+                "speaker": "nova",
+                "text": "A star reached critical mass. The implosion swallowed {count} stars for no starlight.",
+                "priority": "outcome",
+                "seconds": 6
+            }
+        ]
     }
   ],
   "copy": {
+    "mass.showersOne": "1 shower",
+    "mass.showersMany": "{count} showers",
+    "mass.title": "Stars under pressure",
+    "mass.helpCollapse": "After nine showers the star implodes, swallowing itself and its four directly touching neighbors for no starlight. Collect it before then, or let the collapse make space. Pausing stops aging.",
+    "mass.helpValue": "Purple stars still match their original family. Paired glints mark matching growth worth two starlight; age adds no points. Dusk stays in retained rounds only.",
+    "mass.help": "Every star, including Opal, ages with the showers—even underneath other stars. Stage two arrives after three showers; stage three turns purple after six.",
+    "mass.warning": "A purple star implodes in {showers}. Collect it or move its neighbors to safety.",
+    "mass.state": " Stage {stage}; implodes in {showers}.",
+    "mass.targets": "Swallows itself and these currently touching stars for no starlight: {positions}.",
+    "mass.noNeighbors": "none",
     "action.start": "Start sky",
     "action.resume": "Resume sky",
     "action.pause": "Pause sky",
