@@ -141,3 +141,17 @@ enum StarfallMotion {
                    SKAction.warp(to: round, duration: 0.19)!])
     }
 }
+
+
+/// Finite child-art responses; Core positions and native hit cells remain fixed.
+@MainActor enum GravityMotion {
+    static func attraction(direction: CGFloat, step: CGFloat, duration: TimeInterval) -> SKAction {
+        let lean = SKAction.moveBy(x: direction * step * 0.08, y: 0, duration: duration * 0.35)
+        lean.timingMode = .easeIn
+        return .sequence([lean, .move(to: .zero, duration: duration * 0.65)])
+    }
+    static func ringResponse(duration: TimeInterval) -> SKAction {
+        .sequence([.rotate(toAngle: -.pi / 10, duration: duration * 0.5),
+                   .rotate(toAngle: 0, duration: duration * 0.5)])
+    }
+}

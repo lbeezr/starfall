@@ -27,3 +27,5 @@ Start with [the roadmap](../ROADMAP.md) for current priorities or [visual refere
 [Magnetic collision and captive orbit](gravity-orbit-2026-10-17/README.md) records the isolated trial’s rule, save, native, layout and motion checks plus the remaining human adoption decision.
 
 [Gravity production integration](gravity-integration-2026-10-17/README.md) records new-sky supply, retained-save replay, v5 migration and normal-target acceptance separately from the earlier trial.
+
+[Production gravity art](gravity-art-2026-10-17/README.md) records generated source/prompt provenance, shared material integration, native scale/layout and full/reduced motion checks.

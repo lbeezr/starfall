@@ -11,7 +11,7 @@ Opal follow-up analysis keeps the adopted rules unchanged: the [source-bound stu
 
 | Work | Status | Production boundary / next decision |
 | --- | --- | --- |
-| Magnetic collision → orbiting hole | Adopted at user request | Normal target, bounded paired supply, three occupied orbit windows and v5 save migration. Dusk and Opal retain their roles; Opal is uncaptured. [Integration evidence](evidence/gravity-integration-2026-10-17/README.md); human comprehension/enjoyment and supply tuning remain open. The historical exporter, alternate bundle and duplicate fragments are retired. |
+| Magnetic collision → orbiting hole | Adopted at user request | Normal target, bounded paired supply, three occupied orbit windows and v5 save migration. Dusk and Opal retain their roles; Opal is uncaptured. [Integration evidence](evidence/gravity-integration-2026-10-17/README.md); human comprehension/enjoyment and supply tuning remain open. The historical exporter, alternate bundle and duplicate fragments are retired. [Production artwork](evidence/gravity-art-2026-10-17/README.md) replaces glyphs without rule/save changes. |
 | Timing after the opening | Adopted; faster V2 for new skies | [Current polish](evidence/main-polish-2026-10-17/README.md). Six 2-second, three 1.7-second and three 2.5-second intervals; saved V1 replay remains exact. One regular app, no exporter or selector. Human feel remains open. |
 
 

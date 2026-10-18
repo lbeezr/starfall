@@ -163,3 +163,5 @@ The user selected the [curved shower forecast](evidence/shower-forecast-adoption
 ## Reliability integration
 
 The [scoped reliability design](design/RELIABILITY_POLISH.md) closes terminal touch ownership, package build identity and local-canvas camera placement in regular Starfall. Retain physical expanded-Island, curved/multitouch, haptic/recognition and actual VoiceOver acceptance as explicit next-device/RC work; no additional lab or speculative hint/performance framework is required.
+
+Gravity's production art uses a magnetic crystal and accretion-ring hole with shared cached materials and finite formation/orbit cues. [Art acceptance](evidence/gravity-art-2026-10-17/README.md) records native checks separately from the remaining human gameplay study.

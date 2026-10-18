@@ -158,3 +158,5 @@ a new candidate. All alpha samples must match for a strict pass; highlight
 and texture measures are advisory. See
 [CRYSTAL_REFINEMENT_ACCEPTANCE.md](../../docs/design/CRYSTAL_REFINEMENT_ACCEPTANCE.md)
 for the full comparison contract, candidate command and evidence limits.
+
+`package_star_cast.py --gravity` packages only the magnetic crystal and hole from `Artwork/StarCast`, preserving their opaque centers and using the shared cast fitting rules. The gravity receipt records original and packaged hashes; no paid provider or runtime image generation is involved.

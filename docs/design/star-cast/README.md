@@ -2,7 +2,7 @@
 
 **Direction approved:** Crystal Glow, October 17, 2026. The user approved the [six character masters](crystal-glow/characters/README.md) and requested integration. Native acceptance is recorded separately in the [integration evidence](../../evidence/crystal-glow-integration-2026-10-17/README.md).
 
-The production renderer combines six packaged transparent crystal body cutouts with authored expressive faces. [StarCast.swift](../../../App/StarCast.swift) remains the shared owner for board, falling stars, HUD and previews. The [body production plate, exact prompt and packaging receipts](../../../Artwork/StarCast/README.md) make the raster inputs reproducible. Model/expression sheets are design masters, not loaded sprite atlases. No paid asset, external SDK or runtime image generation is used.
+The production renderer combines nine packaged transparent celestial cutouts with authored expressive faces. [StarCast.swift](../../../App/StarCast.swift) remains the shared owner for board, falling stars, HUD and previews. The [body production plate, exact prompt and packaging receipts](../../../Artwork/StarCast/README.md) make the raster inputs reproducible. Model/expression sheets are design masters, not loaded sprite atlases. No paid asset, external SDK or runtime image generation is used.
 
 | Saved kind | Character | Recognition and temperament |
 | --- | --- | --- |
@@ -19,7 +19,7 @@ Names and point counts are presentation cues. Normal stars remain worth 1, grown
 
 The offline packaging tool splits the transparent plate, keeps each body's largest connected alpha island, normalizes coverage and fits its existing proportions into a centered 256×256 canvas. Body extent is at most 208 pixels, inside the existing 212-pixel display-size contract. It removes stray disconnected glints rather than carrying neighboring cutout fragments into the game. No labels or ground shadows are packaged.
 
-Each family has four expression slots (idle, landing, grown, clearing) and three facings (front, left, right). Large navy eyes have blue lower gradients, pupils and catchlights. Nova and Dusk retain distinct idle eyelids; eyebrows distinguish Pip and Twinkle. Landing is surprised, grown is open-eyed happy, clearing uses closed happy eyes. Source-atop composition changes color without changing body alpha, including translucent edge coverage.
+The seven faced star identities have four expression slots (idle, landing, grown, clearing) and three facings (front, left, right). Large navy eyes have blue lower gradients, pupils and catchlights. Nova and Dusk retain distinct idle eyelids; eyebrows distinguish Pip and Twinkle. Landing is surprised, grown is open-eyed happy, clearing uses closed happy eyes. Source-atop composition changes color without changing body alpha, including translucent edge coverage.
 
 Partial turns remain shallow 2D presentation: horizontal compression and face offset around a stable 128/128 pivot. They are not a full 3D mesh, profile or rear rotation. Construction views and motion poses in the approved masters guide production; unsupported views are not added speculatively. Existing flight, squash/stretch, rebound, neighbor reactions, growth and clearing timing remain owned by the scene.
 
@@ -27,7 +27,7 @@ Ground shadows are separate scene nodes, with a dark compact contact core and so
 
 ## Bounded resources and lifecycle
 
-A main-actor material cache prewarms before the first shower: at most 72 UIImage/SKTexture pairs, each 256×256. Their base RGBA8 rasters total 18,874,368 bytes; six cached source bodies add 1,572,864 nominal RGBA8 bytes. These are source-raster bounds, not total process/GPU memory measurements. Asset-catalog decoding and material drawing occur on cache creation, never per frame. No new particles, observers, tasks, frame callbacks or clocks are introduced.
+A main-actor material cache prewarms before the first shower: at most 86 UIImage/SKTexture pairs, each 256×256. Their base RGBA8 rasters total 22,544,384 bytes; nine cached source bodies add 2,359,296 nominal RGBA8 bytes. These are source-raster bounds, not total process/GPU memory measurements. Asset-catalog decoding and material drawing occur on cache creation, never per frame. No new particles, observers, tasks, frame callbacks or clocks are introduced.
 
 `StarCast.setExpression` preserves sprite size and anchor. Stores still coordinate committed outcomes, persistence and interruption. Scene replacement, restart, backgrounding, menu dismissal, calm effects, system Reduce Motion and VoiceOver keep the existing presenter/generation contracts. Classic Debug jewel rendering keeps its existing crystal factory.
 
@@ -36,3 +36,7 @@ A main-actor material cache prewarms before the first shower: at most 72 UIImage
 Run `swift test`, hosted `StarCastTests`, `FallingSkyStoreTests`, `ObservatoryGeometryTests`, affected `FallingSkyInteractionTests` and `ObservatoryInteractionTests`, plus Debug/Release simulator builds. Hosted exports include the actual runtime cast at 24/36/44-point sizes and twelve-frame sheets. Inspect native gameplay captures and full motion separately; a contact sheet cannot prove animation.
 
 The earlier [paper-like concept](approved-concept.png), [first integration](../../evidence/star-cast-2026-10-17/README.md), [luminous revision](../../evidence/star-cast-luminous-2026-10-17/README.md) and [motion revision](../../evidence/star-cast-motion-2026-10-17/README.md) remain historical evidence for their recorded source. Crystal Glow supersedes their body rendering, retaining the shared material, shape identity and animation contracts.
+
+## Production gravity objects
+
+Magnet and Hole now use packaged generated cutouts through the same material loader. Their fixed faceless materials deliberately share one cache entry per object across all expression/facing requests; no arrow glyph or alternate renderer remains. Blue-gold rim light links the magnetic crystal's opposed tips to the hole's accretion ribbon. Theme owns matching light colors; finite scene/child-art actions present convergence, formation and rotation without changing Core, saves or hit coordinates. [Sources/prompts/packaging](../../../Artwork/StarCast/README.md#magnetic-crystal-and-gravity-hole) and [native acceptance](../../evidence/gravity-art-2026-10-17/README.md) record the asset and runtime boundaries.

@@ -34,6 +34,12 @@ enum StarfallTheme {
         static let softContactShadow = contactShadow.withAlphaComponent(0.23)
     }
 
+    /// Celestial gravity materials and their finite formation/attraction cues.
+    enum Gravity {
+        static let magneticLight = UIColor(red: 1, green: 0.82, blue: 0.42, alpha: 1)
+        static let orbitLight = UIColor(red: 0.40, green: 0.91, blue: 1, alpha: 1)
+    }
+
     /// Authored camera contour for checked portrait profiles, selected by SkyShowerPlacement.
     enum IslandTimer {
         static let width: CGFloat = 148

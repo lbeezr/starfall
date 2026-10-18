@@ -28,7 +28,8 @@ import StarfallCore
             case .colored(let kind): kind.color
             case .dusk: .systemPurple
             case .opal: .white
-            case .magnet, .hole: UIColor(StarfallTheme.Colors.actionPrimary)
+            case .magnet: StarfallTheme.Gravity.magneticLight
+            case .hole: StarfallTheme.Gravity.orbitLight
             }
         }
     }
@@ -134,15 +135,6 @@ import StarfallCore
         format.scale = 1; format.opaque = false
         format.preferredRange = .standard
         let character = character(for: identity)
-        if identity == .magnet || identity == .hole {
-            let image = gravityImage(hole: identity == .hole, format: format)
-            let texture = SKTexture(image: image)
-            texture.filteringMode = .linear; texture.usesMipmaps = false
-            let result = Material(image: image, texture: texture)
-            bodyHeights[character.name] = identity == .hole ? 208 : 168
-            materials[key] = result
-            return result
-        }
         let body: UIImage
         if let cached = bodies[character.name] { body = cached }
         else {
@@ -164,6 +156,13 @@ import StarfallCore
                 if let first = rows.first, let last = rows.last { bodyHeights[character.name] = CGFloat(last - first + 1) }
             }
         }
+        if gravity {
+            let texture = SKTexture(image: body)
+            texture.filteringMode = .linear; texture.usesMipmaps = false
+            let result = Material(image: body, texture: texture)
+            materials[key] = result
+            return result
+        }
         let image = UIGraphicsImageRenderer(size: CGSize(width: rasterSide, height: rasterSide), format: format)
             .image { render(character, body: body, dark: identity == .dusk, expression: expression, facing: facing, in: $0.cgContext) }
         let texture = SKTexture(image: image)
@@ -171,28 +170,6 @@ import StarfallCore
         let result = Material(image: image, texture: texture)
         materials[key] = result
         return result
-    }
-
-    /// Cached with the cast: one authored silhouette serves board, flight and forecast.
-    private static func gravityImage(hole: Bool, format: UIGraphicsImageRendererFormat) -> UIImage {
-        UIGraphicsImageRenderer(size: CGSize(width: rasterSide, height: rasterSide), format: format).image { renderer in
-            let context = renderer.cgContext
-            let radius: CGFloat = hole ? 98 : 78
-            let body = CGRect(x: 128-radius, y: 128-radius, width: radius*2, height: radius*2)
-            context.setFillColor(StarfallTheme.Observatory.contactShadow.cgColor)
-            context.setStrokeColor(UIColor(StarfallTheme.Colors.actionPrimary).cgColor)
-            context.setLineWidth(9)
-            context.addEllipse(in:body); context.drawPath(using:.fillStroke)
-            if hole {
-                context.setStrokeColor(UIColor.white.withAlphaComponent(0.5).cgColor)
-                context.setLineWidth(3)
-                context.strokeEllipse(in: body.insetBy(dx:18,dy:18))
-            }
-            let glyph = hole ? "↻" : "↔"
-            let attributes: [NSAttributedString.Key: Any] = [.font: UIFont.systemFont(ofSize:116,weight:.bold), .foregroundColor: UIColor.white]
-            let size = glyph.size(withAttributes:attributes)
-            glyph.draw(at:CGPoint(x:128-size.width/2,y:128-size.height/2),withAttributes:attributes)
-        }
     }
 
     /// One body per family keeps alpha coverage identical across all four expressions.

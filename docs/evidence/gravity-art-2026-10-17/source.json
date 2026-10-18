@@ -1,0 +1,55 @@
+{
+  "runtimeCommit": "5d2fcc3b930f1182cb30ca11ab16ede2e8d245f2",
+  "localEquivalent": "51b93900e8a90a786cacb0fd8a4fe0b7693fd1cb",
+  "tree": "829d3037d2a715dd7a1a63a857c285b436737b96",
+  "base": "f359f94fb1c94ba9c7025a6a71e82c77c8bd48e6",
+  "generator": "built-in image_gen",
+  "prompts": "Artwork/StarCast/gravity-prompts-v1.json",
+  "sha256": {
+    "App/Assets.xcassets/StarCastHole.imageset/Contents.json": "bd5fe0cd7d564c4709a88048f8c8a62e9ddd9fefebdb4aa8c1e0cb438e7b0df3",
+    "App/Assets.xcassets/StarCastHole.imageset/body.png": "4b5ca2815f5958877144753fc1094761192287ff8db725339ed783145a625ad3",
+    "App/Assets.xcassets/StarCastMagnet.imageset/Contents.json": "bd5fe0cd7d564c4709a88048f8c8a62e9ddd9fefebdb4aa8c1e0cb438e7b0df3",
+    "App/Assets.xcassets/StarCastMagnet.imageset/body.png": "a0d7cfdd20a3156a8046d87a7a12fd2740217615c353821a6c09c9ac1e3f926d",
+    "App/FallingSkyMotion.swift": "d0a58f39d3ed2e55193e0a10b846e819e7ce1b037a08f2de8fb45e1660abbea6",
+    "App/FallingSkyScene.swift": "b8ec5304fb67f0ecf71e23e30202906ada10215857809d59e0bb066107791dc7",
+    "App/README.md": "d54bf4bbcd7f9fa9c03fd9025d3729395431b3b81fc8a65be51514d5422b6934",
+    "App/StarCast.swift": "b02916cac8321e6849b6eaaa925f66af90881b38c29b636b95dbf59bcc47b50d",
+    "App/StarfallTheme.swift": "9be9c8dd366fb170ef8f478c2070ef7844a738e072207dd53b0e13055081512f",
+    "AppTests/StarCastTests.swift": "898ed4455338486c653e77ced4838b8e90e1d8101bd7a5f75a7e6b5dec9abfbb",
+    "Artwork/StarCast/README.md": "32372902f6c63552817b433620f9b88eb3288b8688b54d3233b78233261bacf6",
+    "Artwork/StarCast/gravity-packaging.json": "dd02bf10bb603c4d2b13dbd379f5874d2d8c42468bc32c7ef4cad8550086705a",
+    "Artwork/StarCast/gravity-prompts-v1.json": "9165414859036ea2951a472df48a6c511f00cd14962435b266e1b6d5d908599a",
+    "Artwork/StarCast/hole-body-v1.png": "3ae52f58fc3d37662069803c4922fcfb394d7fbda2f4067a9d8882f03ab3d0e2",
+    "Artwork/StarCast/magnet-body-v1.png": "6b004d80be92732d4ba2429bd137a629e6fac11036a7a2bc659860501a985c79",
+    "tools/art-quality/package_star_cast.py": "896101aaa33dc547fe0218735cdffc1c3c09a0e385a0d38a8d54995f94b06a7e"
+  },
+  "captures": {
+    "before.jpg": "30d57a1899886e04ea9832dea7f95a7295389016d131d5f765134d7ad9f9c7fd",
+    "largest-text.jpg": "ae335f9150b1a77e9fbf23d2faf020afa563fa8c5ffcc5442eef6a104e721b42",
+    "captured.jpg": "abee8569b6e31c8ec682278c52e9c4c0e8842c2486966f97efdd29d7b42f5e6b",
+    "materials.jpg": "5b594d741eac50a140e31ddc303bba0d78583562002136ecf97fac3ccd81c916"
+  },
+  "motion": {
+    "path": "artifacts/gravity-production-art-2026-10-17/native-motion.mp4",
+    "seconds": 159.325,
+    "sha256": "1659b1437ff09f9cdb7a6cda8de7abb61b3aef2787d437503676090164fdc8b1",
+    "inspectedSeconds": [
+      41.3,
+      41.36,
+      41.48,
+      44.98,
+      45.12
+    ]
+  },
+  "additionalMain": "934eac6371dde3d6e7a94875152559844c102455",
+  "additionalMainApplicationDiff": [],
+  "mergedHostedSource": "7851e12095c4dd3c48c11aad5eeab477215dec79",
+  "checks": {
+    "core": 109,
+    "initialHosted": 155,
+    "mergedHosted": 157,
+    "nativeUI": 6,
+    "debug": true,
+    "release": true
+  }
+}
