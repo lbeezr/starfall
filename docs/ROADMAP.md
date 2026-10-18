@@ -4,6 +4,8 @@
 
 Build a small, readable falling-sky puzzle worth replaying. **Skillful survival arrangements extend the current matching and tracing.** Opal and storm phases are integrated in the regular game. Preserve its versioned generator/save contracts while tuning input, layout and timing. Historical lab comparisons do not define the current delivery workflow; human preference remains unverified.
 
+**Centralization follow-ups:** Land interaction ownership, shared input availability, interruption teardown and feedback routing as four separate PRs. [Scope and source-bound checks](evidence/interaction-centralization-2026-10-18/README.md).
+
 **Current input follow-up:** [Six-point drawing, shared start targets and forgiving tap classification](evidence/snappy-board-input-2026-10-18/README.md) pass scoped development checks; this follows the user’s clarification that constellation, swap and tap responsiveness is the main priority.
 
 **Current refinement:** Immediate recognizer-owned gestures, a 150 ms swap hold and five-feed Dusk pass scoped development checks; physical gesture feel remains open. [Evidence and remaining checks](evidence/input-dusk-refinement-2026-10-18/README.md).
