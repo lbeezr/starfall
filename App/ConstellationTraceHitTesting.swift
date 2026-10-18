@@ -10,14 +10,10 @@ enum ConstellationTraceHitTesting {
     }
 
     static func start(at point: CGPoint, mapping: ObservatoryGeometry, game: FallingSky) -> Cell? {
-        guard mapping.cell(at: point) != nil else { return nil }
-        let candidates = (0..<7).flatMap { row in (0..<7).map { Cell(row, $0) } }
-            .filter { game.constellationGroup(at:$0).count >= 5 || (game.challenge == nil && game.gem(at:$0)?.kind != nil && game.recipes(containing:$0).contains { $0.shape == .square }) }
-        return candidates.compactMap { cell -> (Cell, CGFloat)? in
-            let center = mapping.viewPoint(cell)
-            let distance = CGFloat(hypot(point.x-center.x, point.y-center.y))
-            return distance <= radius(cell, mapping: mapping) ? (cell, distance) : nil
-        }.min { $0.1 < $1.1 }?.0
+        // A draw starts on the same native target as a tap. A smaller circle
+        // previously left a dead rim inside an otherwise usable star cell.
+        guard let cell = mapping.cell(at: point), game.canStartConstellation(at: cell) else { return nil }
+        return cell
     }
 
     static func cells(from start: CGPoint, to end: CGPoint,

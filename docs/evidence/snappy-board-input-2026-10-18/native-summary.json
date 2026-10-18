@@ -1,0 +1,37 @@
+{
+  "devicesAndConfigurations": [
+    {
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "1199FBAF-FCA7-4F0D-BD49-8282154CC9EE",
+        "deviceName": "Starfall Physics Review",
+        "modelName": "iPhone 17e",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "expectedFailures": 0,
+      "failedTests": 0,
+      "passedTests": 8,
+      "skippedTests": 0,
+      "testPlanConfiguration": {
+        "configurationId": "1",
+        "configurationName": "Test Scheme Action"
+      }
+    }
+  ],
+  "environmentDescription": "Starfall \u00b7 Built with macOS 27.0.1",
+  "expectedFailures": 0,
+  "failedTests": 0,
+  "finishTime": 1792324286.548,
+  "passedTests": 8,
+  "result": "Passed",
+  "runtimeWarnings": [],
+  "skippedTests": 0,
+  "startTime": 1792323886.572,
+  "statistics": [],
+  "testFailures": [],
+  "title": "Test - Starfall",
+  "topInsights": [],
+  "totalTestCount": 8
+}

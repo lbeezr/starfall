@@ -16,22 +16,26 @@ final class DuskInteractionTests: XCTestCase {
         let attachment = XCTAttachment(screenshot: app.screenshot())
         attachment.name = name; attachment.lifetime = .keepAlways; add(attachment)
     }
-    @MainActor func testThreeFeedsCollapseAndRestoreCommittedResult() {
+    @MainActor func testFiveFeedsCollapseAndRestoreCommittedResult() {
         let app = launch("unfed"); defer { app.terminate() }
         let dusk = app.buttons["experiment.cell.0.3"], next = app.buttons["experiment.next"]
-        XCTAssertTrue(dusk.label.contains("0 of 3 feeds"))
+        XCTAssertTrue(dusk.label.contains("0 of 5 feeds"))
         XCTAssertTrue(app.buttons["experiment.cell.0.2"].label.contains("drained by Dusk"))
         capture(app,"dusk-unfed")
         ready(next); next.tap(); ready(next)
-        XCTAssertTrue(dusk.label.contains("1 of 3 feeds"))
+        XCTAssertTrue(dusk.label.contains("1 of 5 feeds"))
         next.tap(); ready(next)
-        XCTAssertTrue(dusk.label.contains("2 of 3 feeds"))
+        XCTAssertTrue(dusk.label.contains("2 of 5 feeds"))
+        next.tap(); ready(next)
+        XCTAssertTrue(dusk.label.contains("3 of 5 feeds"))
+        next.tap(); ready(next)
+        XCTAssertTrue(dusk.label.contains("4 of 5 feeds"))
         XCTAssertTrue(app.staticTexts["dusk.cue"].label.contains("1 feeding shower left"))
         capture(app,"dusk-imminent")
         app.buttons["experiment.settings"].tap()
         ready(app.buttons["experiment.done"]); app.buttons["experiment.done"].tap()
         XCUIDevice.shared.press(.home); app.activate(); ready(next)
-        XCTAssertTrue(dusk.label.contains("2 of 3 feeds"))
+        XCTAssertTrue(dusk.label.contains("4 of 5 feeds"))
         next.tap(); ready(next)
         XCTAssertFalse(dusk.label.hasPrefix("Dusk"))
         XCTAssertEqual(app.staticTexts["experiment.score"].label,"0 starlight")

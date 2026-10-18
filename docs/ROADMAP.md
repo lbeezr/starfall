@@ -4,6 +4,10 @@
 
 Build a small, readable falling-sky puzzle worth replaying. **Skillful survival arrangements extend the current matching and tracing.** Opal and storm phases are integrated in the regular game. Preserve its versioned generator/save contracts while tuning input, layout and timing. Historical lab comparisons do not define the current delivery workflow; human preference remains unverified.
 
+**Current input follow-up:** [Six-point drawing, shared start targets and forgiving tap classification](evidence/snappy-board-input-2026-10-18/README.md) pass scoped development checks; this follows the user’s clarification that constellation, swap and tap responsiveness is the main priority.
+
+**Current refinement:** Immediate recognizer-owned gestures, a 150 ms swap hold and five-feed Dusk pass scoped development checks; physical gesture feel remains open. [Evidence and remaining checks](evidence/input-dusk-refinement-2026-10-18/README.md).
+
 **Next actions:** Observe the integrated recipe, exchange and relay techniques under automatic showers, checking discovery, accidental swaps and free-move balance. Continue delivering directly in the single regular Starfall app. [Connected-iPhone updates](DEVELOPMENT_BUILDS.md) are active; the selected round is retained and the extra lab is removed. Full actual VoiceOver acceptance remains a release-candidate gate.
 
 **Open limits:** No gameplay participant preference results or general physical-device acceptance. Crystal Glow art direction and character masters are user-approved; runtime verification and remaining limits are recorded in the [cast integration evidence](evidence/crystal-glow-integration-2026-10-17/README.md). Accessibility evidence remains source-bound.
@@ -14,7 +18,7 @@ Character chat and complete shower trails are integrated into the current produc
 
 Grown-star readability now uses a luminous double silhouette, two glints and a gentle outer-aura pulse. [Integration evidence](evidence/grown-star-readability-2026-10-17/PULSE.md) records native checks; next confirm uncoached recognition and dense-board comfort with the reporting tester.
 
-Dusk now offers a space-versus-reward choice: three feeding showers consume its gray neighbors for no points, while an adjacent match dissolves it early. [Production contract](design/DUSK_FEEDING.md) and [verification](evidence/dusk-feeding-2026-10-18/README.md). Next observe whether a new player recognizes the final feeding warning and deliberately uses the collapse.
+Dusk now offers a space-versus-reward choice: five feeding showers consume its gray neighbors for no points, while an adjacent match dissolves it early. [Production contract](design/DUSK_FEEDING.md) and [verification](evidence/dusk-feeding-2026-10-18/README.md). Next observe whether a new player recognizes the final feeding warning and deliberately uses the collapse.
 
 The retained [technique roster](design/STAR_TECHNIQUES.md) is reconciled with current main, including v6 saves, Dusk feeding, responsive columns and current presentation. Core, hosted, native, layout and animation checks pass. Merged and delivered through the guarded updater with unchanged saved bytes; observe human play next. [Source-bound status](evidence/technique-current-main-2026-10-18/README.md).
 

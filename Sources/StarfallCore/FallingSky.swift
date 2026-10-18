@@ -8,7 +8,7 @@ public struct StarfallGem: Codable, Equatable, Sendable, Identifiable {
     private var savedDuskFeeds: Int?
     public var duskFeeds: Int { savedDuskFeeds ?? 0 }
     mutating func feedDusk() { savedDuskFeeds = duskFeeds + 1 }
-    var validDuskFeeds: Bool { savedDuskFeeds.map { isDark && (1..<DuskRule.feedingShowers).contains($0) } ?? true }
+    func validDuskFeeds(rule: DuskRule) -> Bool { savedDuskFeeds.map { isDark && (1..<rule.feedingShowers).contains($0) } ?? true }
     private var lightStar: Bool?
     public var isLight: Bool { lightStar == true }
     public let gravityKind: GravityKind?
@@ -87,10 +87,10 @@ public struct FallingSky: Codable, Equatable, Sendable {
 
     /// Explicit app migration. Committed board/score/preview/RNG/cadence stay intact.
     public func adoptingFeedingDusk() -> FallingSky {
-        guard challenge == nil, duskRule == .legacy else { return self }
+        guard challenge == nil, duskRule != .patientFeeding else { return self }
         var adopted = self
-        adopted.savedDuskRule = DuskRule.feeding.rawValue
-        adopted.unscoredStarlight = 0
+        adopted.savedDuskRule = DuskRule.patientFeeding.rawValue
+        adopted.unscoredStarlight = lostStarlight
         return adopted
     }
     public private(set) var blockedColumn: Int?
@@ -158,7 +158,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
         replay.turns = 0
         replay.starsLanded = 0
         replay.darkStarsCleared = 0
-        replay.unscoredStarlight = duskRule == .feeding ? 0 : nil
+        replay.unscoredStarlight = duskRule != .legacy ? 0 : nil
         replay.orbit = nil; replay.nextGravityID = nil; replay.retiredMagnetic = nil
         replay.blockedColumn = nil
         replay.random = SeededRandom(seed: seed)
@@ -228,7 +228,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
     }
 
     public func isDrained(at cell: Cell) -> Bool {
-        guard duskRule == .feeding, let gem = gem(at: cell), gem.kind != nil || gem.isLight else { return false }
+        guard duskRule != .legacy, let gem = gem(at: cell), gem.kind != nil || gem.isLight else { return false }
         return !darkStarsBeside([cell]).isEmpty
     }
 
@@ -237,7 +237,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
     }
 
     public func duskTargets(at cell: Cell) -> Set<Cell> {
-        guard duskRule == .feeding, gem(at: cell)?.isDark == true else { return [] }
+        guard duskRule != .legacy, gem(at: cell)?.isDark == true else { return [] }
         return Set(neighbors(of: cell).filter { neighbor in
             guard let gem = gem(at: neighbor) else { return false }
             return gem.kind != nil || gem.isLight
@@ -325,6 +325,13 @@ public struct FallingSky: Codable, Equatable, Sendable {
         return true
     }
 
+    /// Start eligibility is shared by native hit testing and transient selections.
+    public func canStartConstellation(at cell: Cell) -> Bool {
+        guard !isOver, gem(at: cell)?.kind != nil else { return false }
+        return constellationGroup(at: cell).count >= 5
+            || (challenge == nil && recipes(containing: cell).contains { $0.shape == .square })
+    }
+
     public func constellationCells(along path: [Cell]) -> Set<Cell>? {
         guard isValidConstellationPrefix(path) else { return nil }
         let cells = Set(path)
@@ -358,7 +365,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
     private mutating func clearCommitted(_ cells: Set<Cell>) -> FallingSkyTurn {
         let before = self
         let collected = reward(of: cells)
-        if duskRule == .feeding { unscoredStarlight = lostStarlight + value(of: cells) - collected }
+        if duskRule != .legacy { unscoredStarlight = lostStarlight + value(of: cells) - collected }
         if orbit != nil || board.contains(where: { $0?.gravityKind != nil }) {
             var phases: [GravityPhase] = []
             score += collected
@@ -523,9 +530,9 @@ public struct FallingSky: Codable, Equatable, Sendable {
     public var isValidSave: Bool {
         guard SkyGeneration(rawValue: savedGeneration ?? 0) != nil,
               DuskRule(rawValue: savedDuskRule ?? 0) != nil,
-              duskRule == .feeding ? (unscoredStarlight != nil && lostStarlight >= 0 && lostStarlight <= starsLanded) : unscoredStarlight == nil,
-              board.allSatisfy({ $0?.validDuskFeeds ?? true }),
-              duskRule == .feeding || board.allSatisfy({ ($0?.duskFeeds ?? 0) == 0 }) else { return false }
+              duskRule != .legacy ? (unscoredStarlight != nil && lostStarlight >= 0 && lostStarlight <= starsLanded) : unscoredStarlight == nil,
+              board.allSatisfy({ $0?.validDuskFeeds(rule: duskRule) ?? true }),
+              duskRule != .legacy || board.allSatisfy({ ($0?.duskFeeds ?? 0) == 0 }) else { return false }
         if generation != .legacy && cohesiveShowers != true { return false }
         if !generation.supportsGravity {
             if orbit != nil || incoming.contains(where: { $0.gravityKind != nil }) || board.contains(where: { $0?.gravityKind != nil }) { return false }
@@ -570,14 +577,14 @@ public struct FallingSky: Codable, Equatable, Sendable {
 extension FallingSky {
     /// All mature sources see the same committed neighborhood. No cascading targets.
     private mutating func advanceDusk(into phases: inout [GravityPhase]) -> [DuskCollapse] {
-        guard duskRule == .feeding else { return [] }
+        guard duskRule != .legacy else { return [] }
         var collapses: [DuskCollapse] = []
         for index in board.indices {
             let cell = Cell(index/7,index%7)
             guard var gem = board[index], gem.isDark else { continue }
             let targets = duskTargets(at: cell)
             guard !targets.isEmpty else { continue }
-            if gem.duskFeeds == DuskRule.feedingShowers - 1 {
+            if gem.duskFeeds == duskRule.feedingShowers - 1 {
                 collapses.append(.init(center: cell, duskID: gem.id, consumed: targets))
             } else { gem.feedDusk(); board[index] = gem }
         }

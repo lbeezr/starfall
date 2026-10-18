@@ -4,9 +4,13 @@ This is the authoritative status register for gameplay and presentation experime
 
 ## Current decisions
 
+[Current input/Dusk refinement](evidence/input-dusk-refinement-2026-10-18/README.md) verifies direct recognizer contact ownership, a 150 ms swap hold and five-feed Dusk with retained historical replay. Human feel remains to be assessed.
+
+[Snappy input follow-up](evidence/snappy-board-input-2026-10-18/README.md) separates six-point preview from sticky selection and forgiving taps; no clear/save rule or new runtime route. Physical feel remains open.
+
 Recipes and horizontal exchanges are adopted on current main at the user’s request, preserving Dusk/v6 and the newer app. Exact squares/crosses, swipe-and-hold and deliberate relay feedback extend the normal survival game; First Light is unchanged. The [contract](design/STAR_TECHNIQUES.md) and [integration record](evidence/technique-current-main-2026-10-18/README.md) track acceptance. No alternate app, permanent pilot or bonus economy. Human timing comfort and free-exchange balance remain playtest questions.
 
-Dusk feeding is adopted in the regular app at the user’s request. Three feeding showers cause one bounded zero-point neighborhood collapse; gray stars retain matching weight and growth. Early clearing releases survivors. [Contract](design/DUSK_FEEDING.md) and [source-bound verification](evidence/dusk-feeding-2026-10-18/README.md). The separate drain prototype is superseded; three-feed tuning and human recognition remain playtest questions.
+Dusk feeding is adopted in the regular app at the user’s request. Five feeding showers cause one bounded zero-point neighborhood collapse; gray stars retain matching weight and growth. Early clearing releases survivors. [Contract](design/DUSK_FEEDING.md) and [source-bound verification](evidence/dusk-feeding-2026-10-18/README.md). The separate drain prototype is superseded; five-feed tuning and human recognition remain playtest questions.
 
 Grown-star readability is adopted at the user’s request: a persistent luminous double silhouette and paired glints, with a gentle outer-aura pulse in normal motion. Calm effects/Reduce Motion retain the steady cue. [Current-main integration and checks](evidence/grown-star-readability-2026-10-17/PULSE.md). No pilot route or gameplay/save changes; revisit recognition and crowded-board comfort at the next human playtest.
 
@@ -20,7 +24,7 @@ Opal follow-up analysis keeps the adopted rules unchanged: the [source-bound stu
 | Work | Status | Production boundary / next decision |
 | --- | --- | --- |
 | Exact recipes, exchanges and deliberate relays | Adopted and delivered, October 18 | Normal survival Debug/Release, with unchanged First Light and current save schema. Core/hosted/native/layout/motion checks pass; [source-bound evidence](evidence/technique-current-main-2026-10-18/README.md). Observe free-move balance and uncoached recognition next. |
-| Dusk feeding and useful collapse | Adopted, October 18 | Normal Debug/Release target, explicit v6 migration, no new mode or permanent pilot flag. [Contract](design/DUSK_FEEDING.md). |
+| Dusk feeding and useful collapse | Adopted, October 18 | Normal Debug/Release target, explicit v7 migration, no new mode or permanent pilot flag. [Contract](design/DUSK_FEEDING.md). |
 | Responsive taps and independent presentations | Adopted; native checks verified | [Contract](design/INTERACTION_FEEDBACK.md) and [evidence](evidence/responsive-input-2026-10-17/README.md). Default production boundary, no pilot route; 110 Core, 179 hosted and 13 distinct native scenarios, Debug/Release passed. Rules, saves and cadence unchanged; physical latency/feel and RC VoiceOver remain open. |
 | Reusable character chat and complete forecast trails | Adopted in normal target | One bottom message surface, six portraits, bundled JSON scripts and Debug author preview. Preserves production storm/cadence/Opal/gravity and clock/save ownership. [Integration evidence](evidence/character-chat-production-2026-10-17/README.md). |
 | Frequent gravity exposure | Closed; candidate not adopted | [Focused agent playtest](evidence/gravity-focused-playtest-2026-10-17/README.md): more offers increase orbits but not sampled immediate choices; native tap-only rounds leave fields unactivated. Next compare readable pair activation and a predictable useful follow-up before changing frequency. No permanent route, flag or balance change. |

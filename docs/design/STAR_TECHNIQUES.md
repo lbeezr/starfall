@@ -24,7 +24,7 @@ These are player strategies, not separate saved abilities. Debug reset-only exam
 
 ## Touch and accessibility
 
-A 350 ms dwell in the neighboring cell arms an exchange and displays its two-star preview. Lift on that same cell to commit. Returning to the source cancels the armed move; leaving the original row or crossing two columns disqualifies that contact. Quick swipes retain selected tracing behavior. Multi-touch, changed input generation, settings, backgrounding and scene replacement cancel pending input. The existing contact owns the held shower deadline.
+A 150 ms dwell in the neighboring cell arms an exchange and displays its two-star preview. Lift on that same cell to commit. Returning to the source cancels the armed move; leaving the original row or crossing two columns disqualifies that contact. Quick swipes retain selected tracing behavior. Multi-touch, changed input generation, settings, backgrounding and scene replacement cancel pending input. The recognizer delivers contact immediately, before scroll views can defer UIView touches; one contact owns the held shower deadline through release/cancel/reset. Unavailable incidental samples preserve a trace; stale snapshots still cancel.
 
 Arrange offers tap controls for selecting a star, moving left/right, choosing an overlapping recipe, clearing it, or cancelling. Native accessibility actions open the same selection. At accessibility text sizes these controls reflow below the canvas and scroll. Ordinary taps still clear normal connected groups; the selected recipe spends only its exact ingredients. Opal can join a colored family; all-Opal recipes and Dusk ingredients are invalid.
 
@@ -32,7 +32,7 @@ Arrange offers tap controls for selecting a star, moving left/right, choosing an
 
 Core validates actual star IDs and current board state. The store rejects stale snapshots/generations and reserves only affected columns, including Dusk reward changes. It commits and saves before presentation. Scene animation first slides exchanged identities horizontally, then falls to the committed resting cells. Quiet motion preserves the outcome.
 
-Exchanges spend no starlight and do not advance showers, RNG or forecast. Shared clear rules retain growth, Opal and current Dusk feeding/collapse rewards. No new save fields are introduced; the current v6 archive remains authoritative. Selection and relay feedback are transient. A relay label increments only if a clear spends a recipe newly created by the preceding clear, comparing actual ingredient identities; it awards no extra points.
+Exchanges spend no starlight and do not advance showers, RNG or forecast. Shared clear rules retain growth, Opal and current Dusk feeding/collapse rewards. These actions introduce no save fields; the current v7 archive versions the separate five-feed Dusk rule. Selection and relay feedback are transient. A relay label increments only if a clear spends a recipe newly created by the preceding clear, comparing actual ingredient identities; it awards no extra points.
 
 ## Acceptance and remaining questions
 

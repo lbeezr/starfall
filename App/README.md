@@ -60,3 +60,7 @@ Grown colored stars carry a luminous double silhouette and paired glints in `Fal
 Gravity specials are retired from normal play. `SkyGeneration.standardSky` supplies ordinary/Opal/storm play; `FallingSky.removingGravity()` retires validated historical specials without changing survivor identities, score, RNG, cadence or outcomes. The store applies it on restore and same-sky replay, persisting only on activation/commit. Historical raw rules and reset-only Debug fixtures remain regression tooling; the normal app never routes into them. See [removal evidence](../docs/evidence/gravity-removal-2026-10-17/README.md).
 
 `SkyTechniqueIntent` owns transient recipe/exchange selection; `SkyTechniqueControls` provides tap/accessibility equivalents. The existing trace surface owns swipe-and-hold dwell and cancellation, while Core validates and the current store commits/saves/reserves columns. See [technique contract](../docs/design/STAR_TECHNIQUES.md).
+
+`ConstellationTraceSurface.CaptureRecognizer` owns raw physical contact delivery before scroll arbitration, including terminal/reset cancellation. The store owns its ticketed shower hold. `SkySaveArchive` writes v7 and reads retained v3–v6 archives without overwriting their bytes. Current Dusk warnings and marks derive the limit from the saved Core rule.
+
+Drawing starts on the full native star target and follows six-point movement. The touch session separates early preview from sticky drawing intent, preserving small same-cell tap drift without turning partial selections into ordinary clears.

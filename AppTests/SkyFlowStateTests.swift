@@ -101,7 +101,7 @@ final class SkyFlowStateTests: XCTestCase {
         store.beginEntry(.fresh)
         XCTAssertNil(store.game.challenge)
         XCTAssertTrue(store.game.hasOpeningCascade)
-        XCTAssertEqual(store.game, FallingSky(seed: store.game.seed, balance: store.game.balance, generation: .current, duskRule: .feeding))
+        XCTAssertEqual(store.game, FallingSky(seed: store.game.seed, balance: store.game.balance, generation: .current, duskRule: .patientFeeding))
         XCTAssertEqual(try SkySaveArchive.decode(XCTUnwrap(defaults.data(forKey: FallingSkyStore.saveKey))), store.game)
     }
 

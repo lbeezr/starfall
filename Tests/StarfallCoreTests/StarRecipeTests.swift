@@ -15,6 +15,18 @@ final class StarRecipeTests: XCTestCase {
         return FallingSky(board: board, incoming: [.init(id: 100, kind: .rose, column: 6)])
     }
 
+    func testConstellationStartsShareFiveStarAndSquareEligibility() {
+        let five = sky(["AAAAA.."]), square = sky(["AA.....","AA....."])
+        XCTAssertTrue(five.canStartConstellation(at: Cell(0,0)))
+        XCTAssertTrue(square.canStartConstellation(at: Cell(0,0)))
+        XCTAssertFalse(sky(["AAA...."]).canStartConstellation(at: Cell(0,0)))
+        XCTAssertFalse(square.canStartConstellation(at: Cell(6,6)))
+        var board = square.board
+        board[0] = .init(id:0,kind:nil,light:true)
+        let white = FallingSky(board:board,incoming:square.incoming)
+        XCTAssertFalse(white.canStartConstellation(at:Cell(0,0)), "Choose a colored family before crossing Opal")
+    }
+
     func testSquareSpendsExactFourAndPreservesExtraIngredientsAndForecast() throws {
         var game = sky(["AAAA...", "AASPN.."])
         let before = game, recipe = try XCTUnwrap(game.recipes.first { $0.shape == .square })

@@ -469,7 +469,7 @@
         {
           "id": "guide.dusk-help.1",
           "speaker": "sunny",
-          "text": "Clear a matching group beside Dusk to dissolve it, or let it feed for three showers to swallow touching stars for space. Gray stars still match but score zero.",
+          "text": "Clear a matching group beside Dusk to dissolve it, or let it feed for five showers to swallow touching stars for space. Gray stars still match but score zero.",
           "priority": "help",
           "seconds": 8
         }
@@ -481,7 +481,7 @@
         {
           "id": "guide.dusk-arrival.1",
           "speaker": "sunny",
-          "text": "Dusk drains touching stars. After three feeding showers, it swallows them for space, without points. Clear beside it to save their light.",
+          "text": "Dusk drains touching stars. After five feeding showers, it swallows them for space, without points. Clear beside it to save their light.",
           "priority": "help",
           "seconds": 8
         }

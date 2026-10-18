@@ -1,0 +1,23 @@
+{
+  "base": "11a16fc",
+  "snapshot": "5ebdafd5f3eb",
+  "paths": {
+    "App/ConstellationTraceSurface.swift": "85c6f047bd385ac73dec11be4235c239dc8e9c7cf9e1c89251e92f7c6137baa7",
+    "App/DialogueScripts/observatory-dialogue.json": "9121f1c289bb780e8e39da518beacea9817de52f48da4f76d91c6e9e36ac1e37",
+    "App/DuskPresentation.swift": "165265665e1030034f696230089f98db37349e1a1831b31d4e56342526f91b73",
+    "App/DuskWarning.swift": "8b037dfa40e59aadf4f0f0590beb0964a4345164eae94a6cfd4e8d1ef38678c1",
+    "App/FallingSkyStore.swift": "3f3156e4dc97ae55e04c2b6e40bc8a576ba019acdf1e1a030f67f1dcfbda57d5",
+    "App/FallingSkyView.swift": "a09ce0aa5dff1d700f78c71d59799b78053240414c041bf07d2967ae4f48d9e5",
+    "App/SkySaveArchive.swift": "907bd106ddb2633d5cef039877d1d46b7cb153a3724dde5bc1dd1aebc84e9d9c",
+    "AppTests/DuskProductionTests.swift": "92d1d5aa29bd5a88853b533a9a59f2730fecc14800c2586d32efd6f9a79aeda2",
+    "AppTests/FallingSkyStoreTests.swift": "21c019d916d94868df70a586e706cf988a6b547ea9c2b465b698fc9435b8deec",
+    "AppTests/SkyFlowStateTests.swift": "1d81e85830f35b9cffd0c6e23f2eb5a72e4be92f117bb224b74be32cb8278cfc",
+    "AppTests/TraceInputPolishTests.swift": "93f27db0f965b01c5e2c9891828f4324739ce1812ae0075bbf927ad47c1a84c7",
+    "Sources/StarfallCore/DuskFixture.swift": "9740935783394c05fdb591557c9ebdb15426228313f7245ed82ba87cf87dc26f",
+    "Sources/StarfallCore/DuskRules.swift": "76d3a62cbfa2da4674ebe3078d4e4b3c01282991fb151a21ca1c38c38beec8d6",
+    "Sources/StarfallCore/FallingSky.swift": "2cec34e1e5aec431d96fc526ce57f151153e12da92edba130451c406d9ad3dc1",
+    "Tests/StarfallCoreTests/DuskFeedingTests.swift": "b3794d8c4281ea54866077ad38a22f93b49f79db6c70c27ab244e5983cb7faf0",
+    "UITests/DuskInteractionTests.swift": "18072ef82133accbcd2ba5c99db539c4d459bfa4d38ba8c713a4540e65a3c8e8",
+    "UITests/SkyTechniqueInteractionTests.swift": "d4f6f986f6ff02e2a4af64969f19a291b94ae6e82a3d4ac94d1381a73dcebb53"
+  }
+}

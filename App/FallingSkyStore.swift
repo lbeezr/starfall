@@ -253,7 +253,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         } else {
             let argument = arguments.first { $0.hasPrefix("--starfalls-seed=") }
             let seed = argument.flatMap { UInt64($0.dropFirst("--starfalls-seed=".count)) } ?? 5
-            game = FallingSky(seed: seed, generation: .current, duskRule: .feeding)
+            game = FallingSky(seed: seed, generation: .current, duskRule: .patientFeeding)
         }
         #if DEBUG
         if arguments.contains("--starfalls-reset"), arguments.contains("--observatory-review") {
@@ -285,7 +285,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         #if DEBUG
         if arguments.contains("--starfalls-reset"), let name = arguments.first(where: { $0.hasPrefix("--dusk-fixture=") }),
            let fixture = DuskFixture(rawValue: String(name.dropFirst("--dusk-fixture=".count))) {
-            game = fixture.game().adoptingFeedingDusk()
+            game = fixture.game(rule: .patientFeeding)
             guide("guide.dusk-arrival")
         }
         #endif
@@ -335,7 +335,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
             let gem = game.gem(at: cell)
             let id = gem?.gravityKind == .hole ? "guide.hole-help"
                 : gem?.gravityKind == .magnet ? "guide.magnet-help"
-                : gem?.isDark == true ? (game.duskRule == .feeding ? "guide.dusk-help" : "guide.dark-help")
+                : gem?.isDark == true ? (game.duskRule != .legacy ? "guide.dusk-help" : "guide.dark-help")
                 : gem?.isLight == true ? "guide.opal-help" : "guide.match-help"
             guide(id, visible: true)
             feedback.announce(guideLine.spokenText)
@@ -497,16 +497,16 @@ enum SkyTerminalSpeech { case feedback, ceremony }
             guide("guide.dusk-collapse", values: ["stars": String(count)])
         } else if !turn.cleared.isEmpty {
             if dissolved > 0 {
-                guide("guide.dissolved", values: ["score": String(turn.collected), "dark": game.duskRule == .feeding ? (dissolved == 1 ? "Dusk" : "Dusks") : (dissolved == 1 ? "Dark star" : "Dark stars")])
+                guide("guide.dissolved", values: ["score": String(turn.collected), "dark": game.duskRule != .legacy ? (dissolved == 1 ? "Dusk" : "Dusks") : (dissolved == 1 ? "Dark star" : "Dark stars")])
             } else { guide("guide.clear", values: ["score": String(turn.collected)]) }
         } else if turn.arrivals.contains(where: { $0.gem.isDark }) {
-            guide(game.duskRule == .feeding ? "guide.dusk-arrival" : "guide.dark-arrival")
+            guide(game.duskRule != .legacy ? "guide.dusk-arrival" : "guide.dark-arrival")
         } else if turn.arrivals.contains(where: { $0.gem.isLight }) {
             guide("guide.opal-arrival")
         } else if turn.arrivals.contains(where: { $0.gem.gravityKind == .magnet }) {
             guide("guide.magnet-arrival")
         } else if growth > 0 {
-            guide(game.duskRule == .feeding && game.board.enumerated().contains(where: { game.isDrained(at: Cell($0.offset/7,$0.offset%7)) }) ? "guide.dusk-growth" : "guide.growth", values: ["growth": growth == 1 ? "A star grew" : "\(growth) stars grew"])
+            guide(game.duskRule != .legacy && game.board.enumerated().contains(where: { game.isDrained(at: Cell($0.offset/7,$0.offset%7)) }) ? "guide.dusk-growth" : "guide.growth", values: ["growth": growth == 1 ? "A star grew" : "\(growth) stars grew"])
         } else {
             guide("guide.arrival", values: ["arrival": turn.arrivals.count == 1 ? "One star arrived" : "\(turn.arrivals.count) stars arrived"])
         }
@@ -581,7 +581,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         } else {
             // First Light's fixed balance belongs to that challenge, not the next normal sky.
             let balance = game.challenge == nil ? game.balance : StarfallBalance()
-            game = FallingSky(seed: UInt64.random(in: 0...UInt64.max), balance: balance, generation: .current, duskRule: .feeding)
+            game = FallingSky(seed: UInt64.random(in: 0...UInt64.max), balance: balance, generation: .current, duskRule: .patientFeeding)
         }
         refreshCadence()
         remaining = showerInterval
@@ -720,18 +720,18 @@ enum SkyTerminalSpeech { case feedback, ceremony }
 
     @discardableResult func begin(_ cell: Cell, game: FallingSky, generation: UInt64, enabled: Bool) -> UInt64? {
         cancel()
-        guard enabled, !game.isOver, game.constellationGroup(at:cell).count >= 5 || (game.challenge == nil && game.recipes(containing:cell).contains { $0.shape == .square }) else { return nil }
+        guard enabled, game.canStartConstellation(at: cell) else { return nil }
         sequence &+= 1
         snapshot = game; self.generation = generation; path = [cell]
         return sequence
     }
     @discardableResult func visit(_ cell: Cell, ticket: UInt64?, game: FallingSky, generation: UInt64, enabled: Bool) -> Bool {
         guard ticket == sequence, snapshot != nil else { return false }
-        guard enabled, snapshot == game, self.generation == generation,
+        guard snapshot == game, self.generation == generation,
               let last = path.last, path.count < 196 else {
             cancel(); return false
         }
-        guard cell != last, game.isValidConstellationPrefix(path + [cell]) else { return false }
+        guard enabled, cell != last, game.isValidConstellationPrefix(path + [cell]) else { return false }
         path.append(cell)
         return true
     }

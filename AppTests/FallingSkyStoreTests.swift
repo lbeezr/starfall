@@ -291,7 +291,7 @@ final class FallingSkyStoreTests: XCTestCase {
         XCTAssertEqual(defaults.data(forKey: FallingSkyStore.saveKey), committed)
         reset.setSuspended(false)
         let activated = try SkySaveArchive.decode(XCTUnwrap(defaults.data(forKey: FallingSkyStore.saveKey)))
-        XCTAssertEqual(activated, FallingSky(seed: 5, generation: .current, duskRule: .feeding))
+        XCTAssertEqual(activated, FallingSky(seed: 5, generation: .current, duskRule: .patientFeeding))
         XCTAssertEqual(activated, reset.game)
         XCTAssertTrue(reset.isPaused)
         XCTAssertNil(resetClock.deadline, "Activation preserves the explicit Start sky boundary")

@@ -119,9 +119,9 @@ final class ResponsiveInputTests: XCTestCase {
         XCTAssertTrue(session.canceled)
         XCTAssertEqual(session.finish(at: origin, mapping: mapping), .cancel)
         XCTAssertTrue(session.begin(at: origin))
-        XCTAssertFalse(session.move(to: CGPoint(x: origin.x+8, y: origin.y)))
+        XCTAssertTrue(session.move(to: CGPoint(x: origin.x+8, y: origin.y)))
         XCTAssertTrue(session.move(to: CGPoint(x: origin.x+12, y: origin.y)))
-        XCTAssertEqual(session.finish(at: origin, mapping: mapping), .trace)
+        XCTAssertEqual(session.finish(at: origin, mapping: mapping), .tap(cell))
     }
 
     @MainActor func testReadyContactDuringAnotherClearFreezesRainAndRejectsStaleRelease() throws {

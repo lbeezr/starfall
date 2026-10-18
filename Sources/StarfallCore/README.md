@@ -28,3 +28,7 @@ Debug-only `opalStormPlanning` replays current gravity-generation seed 180 throu
 Gravity specials are retired from normal play. `SkyGeneration.standardSky` supplies ordinary/Opal/storm play; `FallingSky.removingGravity()` retires validated historical specials without changing survivor identities, score, RNG, cadence or outcomes. The store applies it on restore and same-sky replay, persisting only on activation/commit. Historical raw rules and reset-only Debug fixtures remain regression tooling; the normal app never routes into them. See [removal evidence](../../docs/evidence/gravity-removal-2026-10-17/README.md).
 
 `StarRecipe.swift` adds bounded exact square/cross discovery and horizontal landed-star exchanges. It reuses current Opal family matching, selected-walk validation and committed clear/settle rules. New actions do not draw RNG or change the save schema; First Light keeps its existing trace rules without recipes or exchanges. `SkyTechniqueExample.swift` contains authored Debug-only, non-saving review positions.
+
+`DuskRule` preserves historical three-feed replay and marks current five-feed skies explicitly. `adoptingFeedingDusk()` retains committed stars, feed counts, reward loss, forecast and seeded state; Core never advances feeding from elapsed animation time.
+
+`canStartConstellation(at:)` is the shared eligibility query for native target admission and transient intent. It preserves colored-first, five-star and exact-square rules without changing selected-set validation or saves.

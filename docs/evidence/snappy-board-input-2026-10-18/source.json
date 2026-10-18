@@ -1,0 +1,16 @@
+{
+  "base": "a18cd5f",
+  "snapshot": "e5d4e9f72caf",
+  "paths": {
+    "App/ConstellationTraceHitTesting.swift": "e27b1a16a50c40c85a4ef738e0ac39255de16ce29f3ea8e91e9ffc2ec0e93613",
+    "App/ConstellationTraceSurface.swift": "1dc434436f46a703f79760dc05cc0a1ed4d2d25e50245a88316133439cd81749",
+    "App/FallingSkyStore.swift": "e9e28ae3134cf4ba651ea3de11045b52b495fcfc755d32267b3ce616f3b7c272",
+    "App/FallingSkyView.swift": "aca54fe9ae2efbbfc12acf5f3c751c34f54bbd8942beecffc269e86f5ae02855",
+    "AppTests/ResponsiveInputTests.swift": "8d581d6a788085295540bb2fb66416d583675f171ccce17db113ac0ec1ed0c5e",
+    "AppTests/TraceInputPolishTests.swift": "c028475c50d7c9c55d051c424fd7619dcd6a74a58506931149796886aa59ff42",
+    "Sources/StarfallCore/FallingSky.swift": "dbb912b66f4a08c8bd6f745967e8b9a9e4c92e036a4b75a5432e531c87b091e3",
+    "Tests/StarfallCoreTests/StarRecipeTests.swift": "174e26d5d55638d214046b9616ec753c30140b39f985231fd9e8e4f537098a3d",
+    "UITests/ConstellationTraceNativeTests.swift": "194b33970e8bfd26c4e07faa28c0d12c5b03d3571f5239e0287983145b639ebc",
+    "UITests/ResponsiveInputUITests.swift": "a93d2845da4eb2a986825eed82625da7b20ffe5dfa6d16ff238dbb3a50a77b61"
+  }
+}

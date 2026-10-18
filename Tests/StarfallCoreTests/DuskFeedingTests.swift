@@ -172,7 +172,7 @@ final class DuskFeedingTests: XCTestCase {
         let replaced = try XCTUnwrap(base.gem(at: Cell(0,1)))
         var json = try XCTUnwrap(JSONSerialization.jsonObject(with: JSONEncoder().encode(base)) as? [String:Any])
         var board = try XCTUnwrap(json["board"] as? [Any])
-        board[1] = ["id":replaced.id,"grown":false,"savedDuskFeeds":2]
+        board[1] = ["id":replaced.id,"grown":false,"savedDuskFeeds":base.duskRule.feedingShowers-1]
         json["board"] = board
         json["starsLanded"] = base.starsLanded - replaced.value + 1
         var game = try JSONDecoder().decode(FallingSky.self,from:JSONSerialization.data(withJSONObject:json))
@@ -185,11 +185,43 @@ final class DuskFeedingTests: XCTestCase {
         XCTAssertTrue(game.isValidSave)
     }
 
+    func testFiveFeedAdoptionPreservesProgressAndHistoricalContinuation() throws {
+        let old = DuskFixture.imminent.game()
+        let adopted = old.adoptingFeedingDusk()
+        XCTAssertEqual(old.duskRule, .feeding)
+        XCTAssertEqual(adopted.duskRule, .patientFeeding)
+        XCTAssertEqual(adopted.board, old.board)
+        XCTAssertEqual(adopted.incoming, old.incoming)
+        XCTAssertEqual(adopted.score, old.score)
+        XCTAssertEqual(adopted.lostStarlight, old.lostStarlight)
+        XCTAssertEqual(adopted.adoptingFeedingDusk(), adopted)
+        var historical = old
+        XCTAssertEqual(historical.letStarsFall()?.duskCollapses.count, 1)
+        var patient = adopted
+        for stage in 3...4 {
+            XCTAssertTrue(try XCTUnwrap(patient.letStarsFall()).duskCollapses.isEmpty)
+            XCTAssertEqual(patient.gem(at: Cell(0,3))?.duskFeeds, stage)
+            XCTAssertTrue(patient.isValidSave)
+        }
+        var restored = try JSONDecoder().decode(FallingSky.self, from: JSONEncoder().encode(patient))
+        XCTAssertEqual(patient.letStarsFall()?.duskCollapses.count, 1)
+        _ = restored.letStarsFall()
+        XCTAssertEqual(patient, restored)
+        XCTAssertTrue(patient.isValidSave)
+        XCTAssertEqual(adopted.replay().duskRule, .patientFeeding)
+        var spent = DuskFixture.zeroClear.game()
+        _ = spent.clear(Cell(0,1))
+        XCTAssertGreaterThan(spent.lostStarlight, 0)
+        XCTAssertEqual(spent.adoptingFeedingDusk().lostStarlight, spent.lostStarlight)
+        XCTAssertEqual(FallingSky(challenge: .firstLight).adoptingFeedingDusk().duskRule, .legacy)
+    }
+
     func testSeededMixedSpecialReplayConservesEveryPointAcrossClearsAndFeeding() throws {
-        for sample in 0..<160 {
+        for sample in 0..<320 {
             let seed = sample % 80
-            let generation: SkyGeneration = sample < 80 ? .current : .gravityOpportunities
-            var game = FallingSky(seed:UInt64(seed),generation:generation,duskRule:.feeding)
+            let generation: SkyGeneration = sample % 160 < 80 ? .current : .gravityOpportunities
+            let rule: DuskRule = sample < 160 ? .feeding : .patientFeeding
+            var game = FallingSky(seed:UInt64(seed),generation:generation,duskRule:rule)
             for _ in 0..<40 where !game.isOver {
                 _ = game.letStarsFall()
                 if !game.isOver, let cell = game.legalGroups.first?.first { _ = game.clear(cell) }
