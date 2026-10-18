@@ -1,0 +1,14 @@
+{
+  "SHA256": "822bcabad20c756ae52c59fe14f8d8714d013f8901e4310db40047b785e8c950",
+  "base": "9fc0c573cce58ab8d6e45ebb45ca558bd7a61f9c",
+  "dirtyPaths": [
+    " M Sources/StarfallCore/FallingSky.swift",
+    "?? docs/evidence/gravity-center-compatibility-2026-10-17/"
+  ],
+  "failedCompiler": "Xcode 26.3 CI",
+  "failedJob": 117544410031,
+  "failedRun": 39083169793,
+  "file": "Sources/StarfallCore/FallingSky.swift",
+  "localCompiler": "Xcode 27.1 / Swift 6.4",
+  "oldCompilerResult": "Not yet verified"
+}

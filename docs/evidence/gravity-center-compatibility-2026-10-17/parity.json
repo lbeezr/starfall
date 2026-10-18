@@ -1,0 +1,17 @@
+{
+  "baseline": "0cd430effa85d02165351c67bedf197c9c168428",
+  "byteEqual": true,
+  "generations": [
+    "legacy",
+    "opalStorms",
+    "gravityOrbits"
+  ],
+  "magneticStates": 250,
+  "orbitStates": 7,
+  "policies": 2,
+  "replaySourceSHA256": "f12a7f045b0ccb11409af421826000d263f0ce525aa0e7adbfdb39d816ad2905",
+  "seedsPerGeneration": 40,
+  "sha256": "61f11a240c8caa229965893d14cc11fb04fca8599fe62e35773e1e00dd49bd50",
+  "showersPerRoundMaximum": 24,
+  "states": 9905
+}

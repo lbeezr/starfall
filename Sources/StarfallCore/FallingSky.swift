@@ -383,7 +383,14 @@ public struct FallingSky: Codable, Equatable, Sendable {
     private func magneticForecast(replacing forecast: [IncomingStar], heights: [Int], relief: Bool) -> [IncomingStar] {
         guard generation == .gravityOrbits, challenge == nil, (turns + 1) % 12 == 8,
               !relief, !forecast.contains(where: { $0.isDark || $0.isLight }), orbit == nil, !board.contains(where: { $0?.gravityKind != nil }) else { return forecast }
-        let centers = (1..<6).filter { heights[$0-1] == heights[$0+1] && heights[$0-1] <= 4 && heights[$0] > heights[$0-1] && gem(at: Cell(heights[$0-1], $0))?.kind != nil }
+        let centers: [Int] = (1..<6).filter { column in
+            let leftHeight = heights[column - 1]
+            let rightHeight = heights[column + 1]
+            let middleHeight = heights[column]
+            guard leftHeight == rightHeight, leftHeight <= 4,
+                  middleHeight > leftHeight else { return false }
+            return gem(at: Cell(leftHeight, column))?.kind != nil
+        }
         guard let middle = centers.min(by: { heights[$0-1] < heights[$1-1] }) else { return forecast }
         let family = gem(at: Cell(heights[middle-1], middle))!.kind!
         // Two ordinary endpoint survivors make capture useful even at the floor.
