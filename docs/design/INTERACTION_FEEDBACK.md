@@ -21,7 +21,7 @@ A stationary star should remain responsive when another part of the sky moves. R
 | A shower deadline approaches during contact | The existing owned hold freezes the remaining clock. Release/cancellation resumes it; stale tickets cannot resume a newer contact. |
 | Formation, rotation or release of an orbit | The changing board remains locked until its committed gravity sequence settles. |
 
-Corrective feedback remains until another contact, board change or lifecycle interruption. The initial 1.6-second expiry was too easy to miss in native verification and was removed. Existing scripted dialogue continues to explain invalid ordinary moves; transient input status does not replace it.
+Corrective feedback remains until another contact, board change or lifecycle interruption. The initial 1.6-second expiry was too easy to miss in native verification and was removed. Input corrections now use the existing bottom character dialogue, alongside ordinary-move guidance. There is no separate top status banner. The next contact clears input copy without leaving a mode to dismiss.
 
 ## Ownership and safety
 

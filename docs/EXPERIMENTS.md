@@ -4,13 +4,15 @@ This is the authoritative status register for gameplay and presentation experime
 
 ## Current decisions
 
+[Dialogue-only HUD correction](evidence/dialogue-only-hud-2026-10-18/README.md) removes the reintroduced Dusk/input banners and header Arrange toggle. Bottom character chat owns guidance; direct swaps retain their timing, with no Arrange mode or menu alternative. The linked record has 11 native checkpoint passes, 44 final hosted passes and final swap/trace smoke passes; one full-sky native wait remains failed. Physical timing comfort remains unverified.
+
 [Current input/Dusk refinement](evidence/input-dusk-refinement-2026-10-18/README.md) verifies direct recognizer contact ownership, a 150 ms swap hold and five-feed Dusk with retained historical replay. Human feel remains to be assessed.
 
 [Snappy input follow-up](evidence/snappy-board-input-2026-10-18/README.md) separates six-point preview from sticky selection and forgiving taps; no clear/save rule or new runtime route. Physical feel remains open.
 
 Recipes and horizontal exchanges are adopted on current main at the user’s request, preserving Dusk/v6 and the newer app. Exact squares/crosses, swipe-and-hold and deliberate relay feedback extend the normal survival game; First Light is unchanged. The [contract](design/STAR_TECHNIQUES.md) and [integration record](evidence/technique-current-main-2026-10-18/README.md) track acceptance. No alternate app, permanent pilot or bonus economy. Human timing comfort and free-exchange balance remain playtest questions.
 
-The [calibration follow-up](evidence/calibration-timing-and-arrange-2026-10-18/README.md) retains these rules after timed sensitivity checks and corrects the empty-board Arrange detour in the ordinary target. Mode eligibility and committed-state reconciliation share one intent owner; no new mechanic/save field or runtime trial is introduced. The [current-source follow-up](evidence/calibration-timing-and-arrange-2026-10-18/FRESH_ROUNDS.md) adds fresh native samples, inspected award frame sequences and a column-aware timing model. No numeric tuning is adopted; missed native attempts, smoothness and human feel remain open.
+The [calibration follow-up](evidence/calibration-timing-and-arrange-2026-10-18/README.md) retains its source-bound timing and empty-board findings; the later gesture-only correction removes Arrange mode entirely. Native/hosted checks and inspected stills are separate from missing video and human feel. The [current-source follow-up](evidence/calibration-timing-and-arrange-2026-10-18/FRESH_ROUNDS.md) adds fresh native samples, inspected award frame sequences and a column-aware timing model. No numeric tuning is adopted; missed native attempts, smoothness and human feel remain open.
 
 Dusk feeding is adopted in the regular app at the user’s request. Five feeding showers cause one bounded zero-point neighborhood collapse; gray stars retain matching weight and growth. Early clearing releases survivors. [Contract](design/DUSK_FEEDING.md) and [source-bound verification](evidence/dusk-feeding-2026-10-18/README.md). The separate drain prototype is superseded; five-feed tuning and human recognition remain playtest questions.
 

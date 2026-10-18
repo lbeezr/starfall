@@ -181,43 +181,38 @@ final class SkyTechniqueStoreTests: XCTestCase {
         XCTAssertEqual(try XCTUnwrap(scene.childNode(withName:"//sky.star.\(id)")).position.x,destination.x,accuracy:0.001)
         XCTAssertEqual(try XCTUnwrap(scene.childNode(withName:"//sky.star.\(id)")).position.y,destination.y,accuracy:0.001)
     }
-    @MainActor func testExpiredSelectionAndSwapTargetsCannotSurviveCancel() throws {
-        let game=SkyTechniqueExample.fork.game(),intent=SkyTechniqueIntent()
-        intent.setArranging(true);intent.select(Cell(2,1),game:game,generation:4)
-        let old=intent.selectionID
-        intent.cancel();intent.select(Cell(2,1),game:game,generation:4)
-        let recipe=intent.recipe
-        intent.chooseRecipe("missing",selectionID:old)
-        XCTAssertEqual(intent.recipe,recipe);XCTAssertNil(intent.consumeSelection(old))
-        intent.setArranging(false)
-        intent.armSwap(Cell(1,2),to:Cell(1,1),game:SkyTechniqueExample.nudge.game(),generation:5)
-        XCTAssertTrue(intent.swapping);XCTAssertFalse(intent.arranging)
-        XCTAssertEqual(intent.swapDestination,Cell(1,1));intent.cancel()
-        XCTAssertFalse(intent.swapping);XCTAssertNil(intent.swapDestination)
+    @MainActor func testExactRecipeTracesNeedNoArrangeModeAndPreserveUntracedStars() throws {
+        for example in [SkyTechniqueExample.relay, .fork] {
+            let source = example.game()
+            for recipe in source.recipes {
+                let intent = ConstellationTraceIntent()
+                let path = recipe.presentationPath
+                let ticket = intent.begin(path[0], game:source, generation:1, enabled:true)
+                for cell in path.dropFirst() {
+                    XCTAssertTrue(intent.visit(cell,ticket:ticket,game:source,generation:1,enabled:true))
+                }
+                let result = try XCTUnwrap(intent.finish(ticket:ticket,game:source,generation:1,enabled:true))
+                var after = source
+                let turn = try XCTUnwrap(after.clearConstellation(result.path))
+                XCTAssertEqual(turn.cleared,Set(recipe.cells))
+                let untouched = Set(source.board.compactMap { $0?.id }).subtracting(recipe.starIDs)
+                XCTAssertEqual(Set(after.board.compactMap { $0?.id }),untouched)
+            }
+        }
     }
-    @MainActor func testArrangeReconciliationKeepsUsefulModeAndExitsEmptyOrUnsupportedSkies() throws {
-        let source = SkyTechniqueExample.relay.game(), intent = SkyTechniqueIntent()
-        intent.setArranging(true); intent.select(Cell(0,0),game:source,generation:4)
-        let selectionID = intent.selectionID
-        intent.reconcile(with:source)
-        XCTAssertTrue(intent.arranging)
-        XCTAssertNil(intent.anchor); XCTAssertNil(intent.snapshot)
-        XCTAssertNil(intent.consumeSelection(selectionID))
 
-        var cleared = source
-        XCTAssertNotNil(cleared.activate(try XCTUnwrap(cleared.recipes.first)))
-        XCTAssertNotNil(cleared.activate(try XCTUnwrap(cleared.recipes.first)))
-        XCTAssertEqual(cleared.occupiedCount,0)
-        intent.reconcile(with:cleared)
-        XCTAssertFalse(intent.arranging)
-        XCTAssertFalse(SkyTechniqueIntent.canArrange(in:cleared))
-        XCTAssertTrue(SkyTechniqueIntent.canArrange(in:source))
-
-        var challenge = FallingSky(challenge:.firstLight)
-        challenge.letStarsFall()
-        XCTAssertGreaterThan(challenge.occupiedCount,0)
-        intent.setArranging(true);intent.reconcile(with:challenge)
-        XCTAssertFalse(intent.arranging)
-        XCTAssertFalse(SkyTechniqueIntent.canArrange(in:challenge))
+    @MainActor func testDirectSwapTargetsCannotSurviveCancelOrReconciliation() {
+        let game = SkyTechniqueExample.nudge.game(), intent = SkyTechniqueIntent()
+        intent.armSwap(Cell(1,2),to:Cell(1,1),game:game,generation:5)
+        XCTAssertTrue(intent.swapping)
+        XCTAssertEqual(intent.preview, [Cell(1,2), Cell(1,1)])
+        intent.cancel()
+        XCTAssertFalse(intent.swapping); XCTAssertNil(intent.snapshot)
+        XCTAssertNil(intent.anchor); XCTAssertNil(intent.swapDestination)
+        intent.armSwap(Cell(1,2),to:Cell(1,1),game:game,generation:6)
+        intent.reconcile(with:game)
+        XCTAssertFalse(intent.swapping); XCTAssertTrue(intent.preview.isEmpty)
+        intent.armSwap(Cell(1,2),to:Cell(3,1),game:game,generation:7)
+        XCTAssertNil(intent.snapshot, "An invalid destination cannot leave an armed swap")
     }
 }

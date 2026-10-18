@@ -158,14 +158,15 @@ extension SkyDialogueTests {
         XCTAssertEqual(store.game.score, value, "Core reward commits before the result animation")
         XCTAssertEqual(store.pausedGuideLine, help, "Visible copy stays at its prior event until presentation completion")
         presenter.finish()
-        XCTAssertEqual(store.pausedGuideLine.spokenText, "Sunny. +\(value) starlight. A little more room to breathe.")
+        let clear = SkyDialogueLibrary.line("guide.clear", values: ["score": String(value)])
+        XCTAssertEqual(store.pausedGuideLine, SkyDialogueLibrary.contextual(clear, game: store.game, cadence: store.nextShowerCadence))
         let committed = store.game
         let restored = FallingSkyStore(defaults: defaults, arguments: [],
             presenter: FallingSkyRecorder(), clock: ManualRainClock())
         restored.setSuspended(false)
         XCTAssertEqual(restored.game, committed)
         XCTAssertTrue(restored.isPaused)
-        XCTAssertEqual(restored.pausedGuideLine, SkyDialogueLibrary.line("guide.restore"))
+        XCTAssertEqual(restored.pausedGuideLine, SkyDialogueLibrary.contextual(SkyDialogueLibrary.line("guide.restore"), game: restored.game, cadence: restored.nextShowerCadence))
         XCTAssertFalse(restored.pausedGuideLine.text.contains("+"))
     }
 }

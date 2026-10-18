@@ -20,6 +20,9 @@ final class DuskInteractionTests: XCTestCase {
         let app = launch("unfed"); defer { app.terminate() }
         let dusk = app.buttons["experiment.cell.0.3"], next = app.buttons["experiment.next"]
         XCTAssertTrue(dusk.label.contains("0 of 5 feeds"))
+        XCTAssertFalse(app.staticTexts["dusk.cue"].exists)
+        XCTAssertFalse(app.buttons["technique.arrange"].exists)
+        XCTAssertTrue(app.staticTexts["experiment.message"].label.contains("5 feeding showers left"))
         XCTAssertTrue(app.buttons["experiment.cell.0.2"].label.contains("drained by Dusk"))
         capture(app,"dusk-unfed")
         ready(next); next.tap(); ready(next)
@@ -30,7 +33,7 @@ final class DuskInteractionTests: XCTestCase {
         XCTAssertTrue(dusk.label.contains("3 of 5 feeds"))
         next.tap(); ready(next)
         XCTAssertTrue(dusk.label.contains("4 of 5 feeds"))
-        XCTAssertTrue(app.staticTexts["dusk.cue"].label.contains("1 feeding shower left"))
+        XCTAssertTrue(app.staticTexts["experiment.message"].label.contains("1 feeding shower left"))
         capture(app,"dusk-imminent")
         app.buttons["experiment.settings"].tap()
         ready(app.buttons["experiment.done"]); app.buttons["experiment.done"].tap()
@@ -82,7 +85,7 @@ final class DuskInteractionTests: XCTestCase {
         }
         let app = launch("imminent", extra: ["-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"])
         defer { app.terminate() }
-        let cue = app.staticTexts["dusk.cue"], next = app.buttons["experiment.next"]
+        let cue = app.staticTexts["experiment.message"], next = app.buttons["experiment.next"]
         for _ in 0..<5 { if cue.isHittable && cue.frame.maxY <= app.frame.maxY { break }; app.swipeUp() }
         XCTAssertTrue(cue.isHittable)
         XCTAssertTrue(cue.label.contains("1 feeding shower left"))

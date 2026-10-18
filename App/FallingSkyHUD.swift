@@ -233,20 +233,3 @@ struct SkyCadenceCueCopy: Equatable {
         }
     }
 }
-
-/// Contact/cancellation feedback is local, readable until the next action, and
-/// never intercepts a star or a menu control.
-struct SkyInputStatus: View {
-    let message: String
-    var body: some View {
-        Text(message)
-            .font(StarfallTheme.Typography.gameDetail)
-            .foregroundStyle(StarfallTheme.Colors.textPrimary)
-            .padding(.horizontal, StarfallTheme.Spacing.small)
-            .padding(.vertical, StarfallTheme.Spacing.compact)
-            .background(StarfallTheme.Colors.skyTop.opacity(0.92), in: Capsule())
-            .fixedSize(horizontal: false, vertical: true)
-            .accessibilityIdentifier("sky.inputStatus")
-            .allowsHitTesting(false)
-    }
-}

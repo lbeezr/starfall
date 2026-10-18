@@ -70,8 +70,8 @@ struct SkyHowToPlay: View {
             }
             Section("Take your time") {
                 Text("Pause to clear at your pace, or call one shower with Next shower. The menu and leaving the app freeze the sky. Missed showers never accumulate.")
-                Text("In survival, swipe one space sideways, hold for the glow, then lift to swap. Slide back to cancel. Empty spaces let stars fall. Arrange stars offers neighbor taps and left/right buttons too.")
-                Text("In survival, make an exact four-star square or five-star cross of one family; Opal can join that family. Choose a recipe in Arrange and clear only its ingredients. Patterns wait for you: remove supports to drop stars into the next recipe, bank a pattern, choose between overlapping shapes, or build a deliberate relay. There is no score multiplier or automatic cascade.")
+                Text("In survival, swipe one space sideways, hold for the glow, then lift to swap. Slide back to cancel. Empty spaces let stars fall.")
+                Text("In survival, make an exact four-star square or five-star cross of one family; Opal can join that family. Trace the recipe to clear only its ingredients. Patterns wait for you: remove supports to drop stars into the next recipe, bank a pattern, choose between overlapping shapes, or build a deliberate relay. There is no score multiplier or automatic cascade.")
                 Text("First Light is a short 18-starlight challenge using ordinary matches and five-star tracing, with steady showers and no swaps, recipes, dark stars, Opals or storms.")
             }
         }.navigationTitle("How to play")

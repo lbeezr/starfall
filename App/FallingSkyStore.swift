@@ -86,7 +86,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     var message: String { guideLine.text }
     var pausedGuideLine: SkyDialogueLine {
         if dialogue.visible, let line = dialogue.line { return line }
-        return SkyDialogueLibrary.timing(game: game, cadence: nextShowerCadence) ?? guideLine
+        return SkyDialogueLibrary.contextual(guideLine, game: game, cadence: nextShowerCadence)
     }
 
     private func guide(_ id: String, values: [String: String] = [:], visible: Bool = false) {
@@ -160,6 +160,8 @@ enum SkyTerminalSpeech { case feedback, ceremony }
 
     func showInputFeedback(_ text: String?) {
         inputFeedback = text.map { InputFeedback(text: $0, waitingColumns: nil) }
+        if let text { dialogue.show(SkyDialogueLibrary.line("guide.input", values: ["detail": text]), interrupt: true) }
+        else if dialogue.line?.id == "guide.input.1" { dialogue.reset() }
     }
 
     func explainInputFailure(_ text: String) {
@@ -190,6 +192,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     private func explainAvailability(_ availability: SkyInputAvailability) {
         switch availability {
         case .settling(let columns):
+            showInputFeedback("Stars settling…")
             inputFeedback = InputFeedback(text: "Stars settling…", waitingColumns: columns)
             feedback.announce("Stars settling")
         case .showerDue: explainInputFailure("A shower is arriving")
@@ -326,7 +329,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
            let name = arguments.first(where: { $0.hasPrefix("--technique-example=") }),
            let example = SkyTechniqueExample(rawValue:String(name.dropFirst("--technique-example=".count))) {
             game = example.game(); isTechniqueFixture = true
-            guide("guide.fixture",values:["detail":example.title + " review board. Arrange stars or swipe and hold."])
+            guide("guide.fixture",values:["detail":example.title + " review board. Trace a recipe or swipe and hold."])
         }
         #endif
         refreshCadence()
@@ -601,7 +604,9 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         let announcesTransition = SkyDialogueLibrary.announcesTransition(from: old, to: game,
             previousCadence: previousCadence, cadence: nextShowerCadence)
         let resultLine = SkyDialogueLibrary.contextual(guideLine, game: game, cadence: nextShowerCadence)
-        let spokenResult: SkyDialogueLine? = transition ?? (announcesResult || game.isOver ? resultLine : nil)
+        let spokenResult: SkyDialogueLine? = transition.map {
+            SkyDialogueLibrary.contextual($0, game: game, cadence: nextShowerCadence, includeTiming: false)
+        } ?? (announcesResult || game.isOver || DuskWarning(game: game) != nil ? resultLine : nil)
         save() // Commit before animation: backgrounding cannot replay arrivals.
         presenter.animate(turn, from: old, to: game) { [weak self] in
             guard let self, self.generation == epoch,

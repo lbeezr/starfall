@@ -1,0 +1,27 @@
+{
+  "base": "e4c8f2b3e03bfb8a76dacf0fee603020f3b84d16",
+  "snapshot": "5da21016b8fc",
+  "inputs": {
+    "App/ConstellationTraceSurface.swift": "5f5e3ece65fb1def80c2a23501c5b40794e840f492240523f68bac6290b8bbdc",
+    "App/DialogueScripts/observatory-dialogue.json": "43f46ab4aee6fe098ab2a25a09fd407f48a37ecee45eb484b8328034da1c1da9",
+    "App/DuskWarning.swift": "d3571d2016c20b70188b6641636004ba5453e43d95f13b75ba1649f1f6d1267d",
+    "App/FallingSkyHUD.swift": "12c79efcba99cb711c43fa551f51e1a462bfd12cd76906592650c27a50e32cce",
+    "App/FallingSkyStore.swift": "98a61f7681f825bf487f52829ad42210589d885f94b1337db68fddf22287a146",
+    "App/FallingSkyView.swift": "6fb939ee8488df19f22d8baf99dda28dd40f46304c48fa61209a1640d563b1f4",
+    "App/README.md": "bc0150799624e1b7420aeeddabd9b86ab2d4e79172dda6e7831392cfb21b97a6",
+    "App/SkyDialogueLibrary.swift": "33f77f3ca6dec83b4b22e6dde170fa371d68d1fd46d0e1516de21ee927f6e48b",
+    "App/SkyPreferences.swift": "93c7937b95775bec6b27a467fce10f0400718754d91fb09da387f3c95dee5d9f",
+    "App/SkyTechniqueControls.swift": "deleted",
+    "App/SkyTechniqueIntent.swift": "63795371808f93ba860ac793f063fb2020e4fa497241d8e78779dea0d89f6b2b",
+    "AppTests/DuskProductionTests.swift": "576b21950f8fd79900921fcacddbfb837e820ddb29bb062f2ccce1a63bc61d67",
+    "AppTests/ResponsiveInputTests.swift": "8b6b61693821dc6d52e2f0ce6bc9404ef8dc1c777aecacb8113128c53f6b0a90",
+    "AppTests/SkyDialogueTests.swift": "398f4dabd3515be02117739efdcce61f6d90fb4a5f1dac8b1c8637cf7b55406d",
+    "AppTests/SkyTechniqueStoreTests.swift": "5d16f89bb5bbfcecfb1c244776e680aa454d314fb12dddaef29e8e2626c202eb",
+    "AppTests/TraceInputPolishTests.swift": "ee3411eb18358bff145b82c1836e1c0a719f8f711bece8414fdd24499e1e22fb",
+    "Starfall.xcodeproj/project.pbxproj": "02e9453a9992f7133db98284fd64b89804771dbdedbe4f8ca51f4ecf161757a7",
+    "UITests/DuskInteractionTests.swift": "6f127e419c7357f52925d45e39e2e0d5ff3d21c74bda279678dbd57789020c7c",
+    "UITests/README.md": "d4b2aad4858aa2cfb21a8593b44e51c315c1e39cd60232af2070d1bea554fea8",
+    "UITests/ResponsiveInputUITests.swift": "7aed2a1a19f8b9aa2e3e1de7ed8f0e2b6e6e244633a3de665c0f8da4bf90ddca",
+    "UITests/SkyTechniqueInteractionTests.swift": "8dc8a33bf55a614a054d1d7db80a8ce615178fae6497f2d72aa0cd0e350eba02"
+  }
+}

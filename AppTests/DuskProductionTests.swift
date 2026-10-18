@@ -88,6 +88,21 @@ final class DuskProductionTests: XCTestCase {
         presenter.completions.last?(); XCTAssertFalse(store.busy)
     }
 
+    @MainActor func testDuskGuidanceUsesBottomDialogueWithoutChangingSavedGame() throws {
+        let (store,_,presenter) = try store(DuskFixture.unfed.game(rule: .patientFeeding))
+        let before = store.game
+        XCTAssertTrue(store.pausedGuideLine.text.contains("5 feeding showers left"))
+        XCTAssertEqual(store.game, before)
+        store.callShower()
+        presenter.completions.last?()
+        XCTAssertTrue(store.dialogue.line?.text.contains("4 feeding showers left") == true)
+        XCTAssertTrue(store.dialogue.visible)
+        store.showInputFeedback("Swap ready · lift to move; slide back to cancel")
+        XCTAssertEqual(store.pausedGuideLine.speaker, .spark)
+        store.showInputFeedback(nil)
+        XCTAssertTrue(store.pausedGuideLine.text.contains("4 feeding showers left"))
+    }
+
     @MainActor func testStageTargetsDrainMaterialAndWarningSurviveResizeAndQuietRendering() throws {
         let scene=FallingSkyScene(size:.init(width:378,height:690))
         let game=DuskFixture.imminent.game(rule: .patientFeeding)

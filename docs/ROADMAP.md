@@ -6,6 +6,8 @@ Build a small, readable falling-sky puzzle worth replaying. **Skillful survival 
 
 **Centralization follow-ups:** Four scoped extractions give interaction ownership, shared input availability, interruption teardown and feedback routing explicit boundaries in the regular app. [Scope and source-bound checks](evidence/interaction-centralization-2026-10-18/README.md).
 
+[HUD correction](evidence/dialogue-only-hud-2026-10-18/README.md): remove top Dusk/input messages and the visible swap toggle; use bottom dialogue and direct gestures. Focused gesture and hosted checks pass; the linked record retains one unresolved full-sky native wait.
+
 **Current input follow-up:** [Six-point drawing, shared start targets and forgiving tap classification](evidence/snappy-board-input-2026-10-18/README.md) pass scoped development checks; this follows the user’s clarification that constellation, swap and tap responsiveness is the main priority.
 
 **Current refinement:** Immediate recognizer-owned gestures, a 150 ms swap hold and five-feed Dusk pass scoped development checks; physical gesture feel remains open. [Evidence and remaining checks](evidence/input-dusk-refinement-2026-10-18/README.md).

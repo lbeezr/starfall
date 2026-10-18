@@ -1,4 +1,3 @@
-import SwiftUI
 import StarfallCore
 
 /// A value snapshot of the nearest feeding event. The store still owns shower timing.
@@ -26,19 +25,5 @@ struct DuskWarning: Equatable {
         if targets.isEmpty { return "Waiting for a touching star. Feeding is paused, with \(left) feeds left." }
         let positions = targets.map { "row \(7-$0.row) column \($0.column+1)" }.joined(separator: "; ")
         return "Collapses after \(left) more feeding \(left == 1 ? "shower" : "showers"), consuming \(positions), then disappears. No points."
-    }
-}
-
-struct SkyDuskCue: View {
-    let warning: DuskWarning
-    var body: some View {
-        Text(warning.text)
-            .font(StarfallTheme.Typography.skyCaption)
-            .foregroundStyle(StarfallTheme.Colors.textPrimary)
-            .padding(.horizontal, StarfallTheme.Spacing.small)
-            .padding(.vertical, StarfallTheme.Spacing.compact)
-            .background(StarfallTheme.Colors.skyTop.opacity(0.9), in: RoundedRectangle(cornerRadius: StarfallTheme.Radius.control))
-            .fixedSize(horizontal: false, vertical: true)
-            .accessibilityIdentifier("dusk.cue")
     }
 }
