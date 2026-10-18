@@ -168,7 +168,8 @@ final class NativeInputWindowTests: XCTestCase {
         guard !UIAccessibility.isReduceMotionEnabled && !UIAccessibility.isVoiceOverRunning else {
             throw XCTSkip("Normal-motion timing requires Reduce Motion and VoiceOver off")
         }
-        var expected = initial.removingGravity()
+        let normalized = initial.removingGravity().adoptingFeedingDusk()
+        var expected = normalized
         var expectedGames: [Int: FallingSky] = [:]
         var expectedTurns: [Int: FallingSkyTurn] = [:]
         for shower in (initial.turns + 1)...finalShower {
@@ -183,7 +184,7 @@ final class NativeInputWindowTests: XCTestCase {
         defaults.set(false, forKey: "starfall.haptics")
         defaults.set(try SkySaveArchive.encode(initial), forKey: SkySaveArchive.key)
         let store = FallingSkyStore(defaults: defaults, arguments: [])
-        XCTAssertEqual(store.game, initial.removingGravity())
+        XCTAssertEqual(store.game, normalized)
         var events: [FallingSkyStore.TimingEvent] = []
         store.configureTimingTest(observe: { events.append($0) })
 

@@ -20,7 +20,7 @@ final class ResponsiveInputUITests: XCTestCase {
         for large in [false, true] {
             let app = launch("ordinary", large: large); defer { app.terminate() }
             let cell = app.buttons["experiment.cell.0.0"]
-            let expected = Int((cell.value as! String).split(separator: " ")[0])!
+            let expected = Int((cell.value as! String).split(separator: ",").last!.split(separator: " ")[0])!
             XCTAssertGreaterThanOrEqual(expected, 3)
             let origin = cell.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5))
             origin.press(forDuration: 0.1, thenDragTo: origin.withOffset(CGVector(dx: 8, dy: 0)))

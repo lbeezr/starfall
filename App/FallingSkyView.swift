@@ -139,6 +139,7 @@ import StarfallCore
                 if !showingCeremony && !settings {
                     VStack(spacing: StarfallTheme.Spacing.small) {
                         compactHeader(island: island)
+                        if !largeText, let warning = DuskWarning(game: store.game) { SkyDuskCue(warning: warning) }
                         if !largeText, let message = store.inputMessage { SkyInputStatus(message: message) }
                         Spacer(minLength: 0)
                         if !largeText { guide(compact: compact, maximumHeight: footerHeight) }
@@ -161,6 +162,7 @@ import StarfallCore
     @ViewBuilder private func guide(compact: Bool, maximumHeight: CGFloat? = nil) -> some View {
         if largeText, let message = store.inputMessage { SkyInputStatus(message: message) }
         if !store.game.isOver {
+            if largeText, let warning = DuskWarning(game: store.game) { SkyDuskCue(warning: warning) }
             SkyDialogueOverlay(session: store.dialogue,
                                pausedLine: store.isPaused ? store.pausedGuideLine : nil,
                                active: scenePhase == .active && !settings && !showingCeremony,
@@ -290,12 +292,15 @@ import StarfallCore
     private func cellButton(_ cell: Cell) -> some View {
         let group = store.game.group(at: cell)
         let value = store.game.value(of: group)
+        let reward = store.game.reward(of: group)
         return Button { cancelConstellation(); store.clear(cell) } label: {
             Color.clear.frame(maxWidth: .infinity, maxHeight: .infinity).contentShape(Rectangle())
         }
         .buttonStyle(.plain)
         .accessibilityLabel(cellLabel(cell))
-        .accessibilityValue(store.game.gem(at: cell)?.isLight == true ? "1 starlight, choose a colored star to start" : "\(value) starlight connected")
+        .accessibilityValue(store.game.gem(at: cell)?.isLight == true
+            ? (store.game.isDrained(at: cell) ? "Scores zero; still connects matching stars" : "1 starlight, choose a colored star to start")
+            : reward != value ? "\(value) toward a match, \(reward) starlight if cleared" : "\(value) starlight connected")
         .accessibilityHint(store.game.gem(at: cell)?.gravityKind == .hole
             ? "Clear a matching group containing a captive to close this hole"
             : store.game.gem(at: cell)?.gravityKind == .magnet
@@ -310,6 +315,7 @@ import StarfallCore
                 ? (store.game.darkStarsBeside(group).isEmpty ? "Tap to clear this ordinary match" : "Tap to clear this ordinary match and adjacent dark stars")
                 : "Needs three light horizontally or vertically, or five actual matching stars linked sideways or diagonally")
         .accessibilityCustomContent("Gravity consequence", gravityConsequence(cell))
+        .accessibilityCustomContent("Dusk consequence", DuskWarning.consequence(game: store.game, cell: cell))
         .accessibilityIdentifier("experiment.cell.\(cell.row).\(cell.column)")
         .accessibilityAction(named: Text("Add to constellation")) { accessibleTrace(cell) }
         .accessibilityAction(named: Text("Release constellation")) { releaseConstellation() }
@@ -330,7 +336,11 @@ import StarfallCore
         if let role = gem.gravityKind {
             return role == .hole ? "Gravity hole, \(store.game.orbit?.windowsRemaining ?? 0) windows left, \(position)" : "Attraction field, \(position)"
         }
-        let shade = store.game.isGrowthBlocked(at: cell) ? ", growth blocked by a dark star" : ""
+        if gem.isDark && store.game.duskRule == .feeding {
+            return "Dusk, \(gem.duskFeeds) of \(DuskRule.feedingShowers) feeds, \(position). " + DuskWarning.consequence(game: store.game, cell: cell)
+        }
+        let shade = store.game.isDrained(at: cell) ? ", drained by Dusk, scores zero but still matches"
+            : store.game.isGrowthBlocked(at: cell) ? ", growth blocked by a dark star" : ""
         let captive = store.game.orbit?.slots.contains(cell) == true ? "Captive, " : ""
         return "\(captive)\(gem.grown ? "Large " : "")\(StarCast.character(for: .init(gem)).description), \(position)\(shade)"
     }

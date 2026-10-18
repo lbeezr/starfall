@@ -219,6 +219,13 @@ Historical timing snapshots' `canClear` Boolean describes a fully settled board.
 
 Cancelled source-49 run 39088189209 passed Core/build under Xcode 26.3, but its compact-HUD test missed the exact transient `Shower approaching` label. Current-main source 71ec3ec passes that unchanged assertion/8-second timeout in three local paired runs on iOS 27. The paused-dialogue/restore failures from the same run have a separate verified synchronization/copy correction in docs/evidence/ci-dialogue-followup-2026-10-17. Do not call the older-runner cue issue fixed from those local passes. Trigger: next completed older-runner reproduction. Retain cue hierarchy/frame plus native deadline/phase context, distinguish AX publication from sampling, and rerun the original native case with relevant clock/accessibility siblings; do not add blanket retries, weaken the expectation or shorten animations.
 
+
+## Dusk adoption follow-up — October 18, 2026
+
+Three feeding showers and an orthogonal neighborhood are initial tuning. At the next human playtest, verify players explain the gray stars, final-stage warning, early clear and intentional space-making choice. Adjust existing rules/cues if recognition is weak; deterministic samples do not establish enjoyment. Actual VoiceOver and physical-device acceptance remain the release-candidate gate.
+
+`FallingSkyStoreTests.swift` is roughly 1,200 lines and was reviewed during migration. Its existing private clock/fixture helpers span several extension groups; this batch keeps them together to avoid mixing a structural move with rule changes. When next extending this suite, extract cohesive save/clock test support and move Opal planning scenarios into a focused file; run hosted timing and migration checks after extraction. New Dusk tests already have their own file.
+
 ## Gravity precursor comprehension — focused exposure review
 
 [The focused playtest](evidence/gravity-focused-playtest-2026-10-17/README.md) reproduces fields arriving without a legal activating clear, persisting across showers and disappearing beside ordinary clears without an orbit. More frequent eligibility alone is not adopted. Trigger: next change to magnetic supply or field presentation. Check middle-clear eligibility and surviving captives at offer and arrival (committed forecasts can outlive support changes); compare explicit pair/activation/next-position cues. Preserve announced previews, old-generation replay and save invariants. Verify one beneficial wait, one take-now counterexample, ordinary dispelling, and a new player's predicted activation/follow-up before adopting a redesign. Two native tap-only rounds are bounded evidence, not proof that traces or other strategies cannot use gravity.

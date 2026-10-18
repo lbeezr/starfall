@@ -4,6 +4,8 @@ Behavior proposals, production contracts and research supporting decisions.
 
 ## Start here
 
+[Dusk feeding](DUSK_FEEDING.md) owns gray-star rewards, the three-feed collapse and explicit saved-rule adoption.
+
 [Responsive taps and concurrent play](INTERACTION_FEEDBACK.md) owns column reservations, contact feedback and ordinary tap/trace classification.
 
 [Announced pacing adoption](PACING_ADOPTION.md) owns the user-selected production cadence, save boundary and phone delivery acceptance.

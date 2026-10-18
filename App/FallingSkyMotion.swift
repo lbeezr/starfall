@@ -37,6 +37,10 @@ import StarfallCore
         refreshGrowthMotion()
     }
 
+    func setDrainDecoration(_ drained: Bool) {
+        growthCue.alpha = drained ? 0.16 : 1
+    }
+
     /// Cached body alpha supplies the exact family silhouette. No extra materials. Only the outer aura may animate.
     /// Attached to the character so contact responses and landing transforms carry the cue too.
     private func makeGrowthCue(identity: StarCast.Identity, step: CGFloat) {

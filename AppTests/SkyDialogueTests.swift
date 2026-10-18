@@ -11,7 +11,7 @@ final class SkyDialogueTests: XCTestCase {
 
     func testCatalogRendersEveryBundledScriptAndRejectsAuthoringErrors() throws {
         let catalog = SkyDialogueLibrary.catalog
-        let samples = ["score": "18", "dark": "Dark star", "growth": "A star grew", "arrival": "One star arrived", "detail": "A fixture", "windows": "3", "phase": "Storm", "cadence": "Faster showers", "summary": "Paused", "reason": "First Light complete.", "context": "A storm is coming"]
+        let samples = ["score": "18", "stars": "3", "dark": "Dark star", "growth": "A star grew", "arrival": "One star arrived", "detail": "A fixture", "windows": "3", "phase": "Storm", "cadence": "Faster showers", "summary": "Paused", "reason": "First Light complete.", "context": "A storm is coming"]
         for source in catalog.scripts {
             let values = samples.filter { key, _ in source.lines.contains { $0.text.contains("{\(key)}") } }
             let rendered = try catalog.script(source.id, values: values)
@@ -150,9 +150,9 @@ extension SkyDialogueTests {
         let darkIndex = try XCTUnwrap(store.game.board.firstIndex { $0?.isDark == true })
         store.clear(Cell(darkIndex / 7, darkIndex % 7))
         let help = store.pausedGuideLine
-        XCTAssertTrue(help.text.contains("beside the dark star"))
+        XCTAssertTrue(help.text.contains("beside Dusk"))
         let source = store.game, cell = Cell(0,0)
-        let value = source.value(of: source.group(at: cell))
+        let value = source.reward(of: source.group(at: cell))
         XCTAssertGreaterThanOrEqual(value, 3)
         store.clear(cell)
         XCTAssertEqual(store.game.score, value, "Core reward commits before the result animation")

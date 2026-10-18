@@ -37,3 +37,5 @@ Forecast tests assert the actual 148×50 contour on calibrated simulators and th
 `ResponsiveInputUITests` exercises an actual 8-point ordinary drift at normal/largest text and readable incomplete-trace feedback, using existing reset-only routes and isolated dialogue-review saves.
 
 Paused clear-feedback checks wait for the exact result text after score commitment, matching the presentation-owned dialogue boundary. Restore requires the complete restore message and Resume sky semantics; the strict approaching-cue expectation remains unchanged pending its older-runner investigation.
+
+`DuskInteractionTests` uses reset-only fixtures in the normal app to verify three feeds, early color release, valid zero-reward clears, settings/background/restore, and readable largest-text Reduce Motion outcomes.

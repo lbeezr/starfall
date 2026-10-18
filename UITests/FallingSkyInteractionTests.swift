@@ -400,7 +400,7 @@ final class FallingSkyInteractionTests: XCTestCase {
         XCTAssertTrue(calm.waitForExistence(timeout: 5))
         if calm.value as? String == "1" { calm.tap() }
         app.buttons["experiment.done"].tap()
-        let shadedMatch = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND label CONTAINS %@ AND value MATCHES %@", "experiment.cell.", "growth blocked by a dark star", "([3-9]|[1-9][0-9]) starlight connected")).firstMatch
+        let shadedMatch = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND label CONTAINS %@ AND value MATCHES %@", "experiment.cell.", "drained by Dusk", "([3-9]|[1-9][0-9]) toward a match, [0-9]+ starlight if cleared")).firstMatch
         let next = app.buttons["experiment.next"]
         for _ in 0..<25 {
             if shadedMatch.exists { break }
@@ -411,10 +411,10 @@ final class FallingSkyInteractionTests: XCTestCase {
         }
         XCTAssertTrue(shadedMatch.exists)
         let beside = app.buttons[shadedMatch.identifier]
-        let dark = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Dark star,")).firstMatch
+        let dark = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Dusk,")).firstMatch
         XCTAssertTrue(dark.exists)
         let darkID = dark.identifier
-        let expectedScore = Int((beside.value as! String).split(separator: " ")[0])!
+        let expectedScore = Int((beside.value as! String).split(separator: ",").last!.split(separator: " ")[0])!
         for star in app.descendants(matching: .any).matching(NSPredicate(format: "identifier BEGINSWITH %@", "experiment.incoming.")).allElementsBoundByIndex {
             XCTAssertFalse(star.label.contains("column"))
         }
@@ -425,11 +425,11 @@ final class FallingSkyInteractionTests: XCTestCase {
         resumeRestoredPaused(app)
         XCTAssertTrue(app.buttons["experiment.pause"].waitForExistence(timeout: 10))
         XCTAssertEqual(app.buttons["experiment.pause"].label, "Resume sky")
-        XCTAssertTrue(dark.label.hasPrefix("Dark star"))
-        XCTAssertTrue(beside.label.contains("growth blocked by a dark star"))
+        XCTAssertTrue(dark.label.hasPrefix("Dusk"))
+        XCTAssertTrue(beside.label.contains("drained by Dusk"))
         beside.tap()
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "\(expectedScore) starlight"), object: app.staticTexts["experiment.score"]).wait(timeout: 3))
-        XCTAssertFalse(app.buttons[darkID].label.hasPrefix("Dark star"))
+        XCTAssertFalse(app.buttons[darkID].label.hasPrefix("Dusk"))
         capture(app, "dark-star-dissolved-by-adjacent-clear")
     }
 
@@ -459,7 +459,7 @@ final class FallingSkyInteractionTests: XCTestCase {
         waitForShowers(4, in: app, timeout: 12)
         waitForShowers(5, in: app, timeout: 10)
         togglePause(app)
-        XCTAssertTrue(app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Dark star,")).count > 0)
+        XCTAssertTrue(app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Dusk,")).count > 0)
         capture(app, "balance-frequent-dark-star-shower-three")
         app.terminate(); app.launchArguments = ["--starfalls"]; app.launch()
         resumeRestoredPaused(app)
@@ -479,7 +479,7 @@ final class FallingSkyInteractionTests: XCTestCase {
         togglePause(app)
         waitForShowers(4, in: app, timeout: 16)
         togglePause(app)
-        XCTAssertEqual(app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Dark star,")).count, 0)
+        XCTAssertEqual(app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Dusk,")).count, 0)
         capture(app, "balance-brisk-no-dark-stars")
     }
 }
@@ -532,12 +532,12 @@ extension FallingSkyInteractionTests {
                 capture(app, "paused-guide-production-growth")
             }
         }
-        XCTAssertTrue(guide.label.contains("A dark star blocks nearby growth"))
-        let dark = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Dark star,"))
+        XCTAssertTrue(guide.label.contains("Dusk drains"))
+        let dark = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Dusk,"))
         XCTAssertEqual(dark.count, 1)
         let before = app.otherElements["experiment.board"].value as? String
         dark.firstMatch.tap()
-        XCTAssertTrue(guide.label.contains("Clear a matching group beside the dark star"))
+        XCTAssertTrue(guide.label.contains("Clear a matching group beside Dusk"))
         XCTAssertEqual(app.staticTexts["experiment.score"].label, "0 starlight")
         XCTAssertEqual(app.otherElements["experiment.board"].value as? String, before)
         let remote = app.buttons["experiment.cell.0.0"]
@@ -553,12 +553,13 @@ extension FallingSkyInteractionTests {
         let adjacent = app.buttons["experiment.cell.0.1"]
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: adjacent).wait(timeout: 5))
         let adjacentText = try XCTUnwrap(adjacent.value as? String)
-        let adjacentValue = try XCTUnwrap(Int(adjacentText.split(separator: " ").first ?? ""))
-        XCTAssertGreaterThanOrEqual(adjacentValue, 3)
+        let adjacentWeight = try XCTUnwrap(Int(adjacentText.split(separator: " ").first ?? ""))
+        XCTAssertGreaterThanOrEqual(adjacentWeight, 3)
+        let adjacentValue = try XCTUnwrap(Int(adjacentText.split(separator: ",").last!.split(separator: " ").first ?? ""))
         adjacent.tap()
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: next).wait(timeout: 5))
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label BEGINSWITH %@", "Sunny. +\(adjacentValue) starlight."), object: guide).wait(timeout: 5), guide.label)
-        XCTAssertTrue(guide.label.contains("Dark star dissolved"))
+        XCTAssertTrue(guide.label.contains("Dusk dissolved"))
         XCTAssertEqual(dark.count, 0)
         let total = remoteValue + adjacentValue
         XCTAssertEqual(app.staticTexts["experiment.score"].label, "\(total) starlight")
