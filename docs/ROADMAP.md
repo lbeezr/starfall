@@ -207,3 +207,5 @@ The retired gravity art remains only for historical reset-only Debug reproductio
 The [crowded celebration check](evidence/calibration-critical-mass-2026-10-18/AWARDS.md) adds a current-rule regression sample and four native host layout/text comparisons. Keep the current presentation; next assess repeated automatic/physical recognition, including the observed temporary survivor overlap.
 
 The [follow-up debt batches](TECH_DEBT_FOLLOWUP.md) now verify exact contact remainders, tablet Welcome native hit semantics, semantic archive admission, retained RC failure evidence and rules-aware Help. Visible save-recovery feedback is also verified; all six scoped batches are complete. Minimum-iOS, actual VoiceOver and physical-device RC evidence remain open.
+
+The [third debt pass](TECH_DEBT_THIRD_PASS.md) closes terminal gravity-restore crashes, primary CI simulator timeout/ownership gaps, tablet ceremony control clearance and default-game screenshot gating in separate batches. Current simulator evidence remains distinct from actual VoiceOver, minimum-iOS and physical-device RC acceptance.

@@ -3,6 +3,9 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 mkdir -p artifacts
+# No previous UI acceptance can survive an early build/boot failure.
+python3 scripts/export_native_evidence.py --reset-only
+rm -f artifacts/simulator-stage-timings.jsonl
 SIMULATOR_ID=""
 source scripts/simulator-lifecycle.sh
 cleanup() {
@@ -234,73 +237,7 @@ UI_SUMMARY_STATUS=$?
 xcrun xcresulttool export attachments --path "$UI_RESULT" --output-path "$UI_EXPORT" \
   > artifacts/ui-export.log 2>&1
 UI_EXPORT_STATUS=$?
-python3 - "$UI_EXPORT" "$UI_STATUS" <<'PY'
-from pathlib import Path
-import hashlib, json, shutil, sys
-root = Path(sys.argv[1]).resolve()
-test_passed = int(sys.argv[2]) == 0
-summary = json.loads(Path('artifacts/ui-test-summary.json').read_text())
-expected = json.loads(Path('artifacts/native-test-expectations.json').read_text())['StarfallUITests']['expectedCount']
-if test_passed and (summary.get('passedTests') != expected or summary.get('failedTests') != 0
-                    or summary.get('skippedTests') != 0 or summary.get('totalTestCount') != expected):
-    raise SystemExit(f'Expected {expected} passing UI tests from source, zero failures/skips; inspect summary and native-test-expectations.json.')
-manifest_path = root / 'manifest.json'
-manifest_bytes = manifest_path.read_bytes()
-if len(manifest_bytes) > 250_000:
-    raise SystemExit('Attachment manifest exceeds compact evidence limit.')
-Path('artifacts/ui-export-manifest.json').write_bytes(manifest_bytes)
-manifest = json.loads(manifest_bytes)
-
-def objects(value):
-    if isinstance(value, dict):
-        yield value
-        for child in value.values():
-            yield from objects(child)
-    elif isinstance(value, list):
-        for child in value:
-            yield from objects(child)
-
-records = []
-required_images = [
-    'real-touch-post-clear', 'real-touch-restarted',
-    'adaptive-layout-initial', 'adaptive-layout-reflowed', 'adaptive-layout-restarted',
-    'saved-game-resumed', 'saved-game-calm-turn',
-    'terminal-won-restored', 'terminal-lost-restored', 'terminal-last-move-won-restored',
-    'accessibility-large-text-menu-before-audit',
-    'accessibility-large-text-game', 'accessibility-large-text-settings',
-    'crystal-pilot-before-tap', 'crystal-pilot-after-tap',
-    'rapid-input-settled', 'accessible-board-post-clear', 'settings-direct-largest-text',
-    'settings-footer-fully-visible', 'settings-default-text', 'settings-default-initial',
-    'family-calm-6-resumed', 'family-calm-0-resumed'
-]
-required_images += [f'family-{kind}-{stage}'
-                    for kind in ('rose', 'aqua', 'amber', 'violet', 'mint')
-                    for stage in ('before', 'settled')]
-for name in required_images:
-    matches = [x for x in objects(manifest)
-               if str(x.get('suggestedHumanReadableName', '')).startswith(name)
-               and x.get('exportedFileName')]
-    if not matches and not test_passed:
-        continue  # A later stage may not have been reached in the failed test.
-    if len(matches) != 1:
-        raise SystemExit(f'Expected exactly one named attachment {name}; found {len(matches)}.')
-    source = (root / matches[0]['exportedFileName']).resolve()
-    if root not in source.parents or source.is_symlink():
-        raise SystemExit('Unexpected attachment path.')
-    data = source.read_bytes()
-    if not data.startswith(b'\x89PNG\r\n\x1a\n') or len(data) > 5_000_000:
-        raise SystemExit(f'{name}: expected PNG below 5 MB; refusing oversized/unknown evidence.')
-    target = Path('artifacts') / (name + '.png')
-    shutil.copyfile(source, target)
-    records.append({'name': name, 'file': target.name,
-                    'sha256': hashlib.sha256(data).hexdigest(), 'export': matches[0]})
-Path('artifacts/ui-attachment-manifest.json').write_text(json.dumps(records, indent=2) + '\n')
-Path('artifacts/ui-evidence-status.json').write_text(json.dumps({
-    'testPassed': test_passed, 'xcodebuildExitCode': int(sys.argv[2]),
-    'namedScreenshotsExported': len(records),
-    'partialEvidenceOnly': not test_passed}, indent=2) + '\n')
-print(f'Exported {len(records)} named screenshot(s); testPassed={test_passed}.')
-PY
+python3 scripts/export_native_evidence.py "$UI_EXPORT" "$UI_STATUS"
 UI_PARSE_STATUS=$?
 set -e
 (cd artifacts && shasum -a 256 *.png > screenshot-sha256.txt)
