@@ -1,0 +1,31 @@
+{
+  "base": "7afadb5548863acd0454e3f39951a4726c367094",
+  "dirtyPaths": [
+    " M AppTests/FallingSkyStoreTests.swift",
+    " M AppTests/README.md",
+    " M Sources/StarfallCore/ConstellationFixture.swift",
+    " M Sources/StarfallCore/README.md",
+    " M Tests/StarfallCoreTests/README.md",
+    " M Tests/StarfallCoreTests/WhiteConnectorTests.swift",
+    " M UITests/ConstellationTraceNativeTests.swift",
+    " M UITests/README.md",
+    " M docs/EXPERIMENTS.md",
+    " M docs/ROADMAP.md",
+    "?? docs/evidence/opal-native-planning-2026-10-17/"
+  ],
+  "environment": {
+    "OS": "iOS 27.0 (24A434)",
+    "configuration": "Debug arm64 unsigned; separate Release simulator build",
+    "simulator": "iPhone 17e",
+    "simulatorID": "536BCC00-751C-47BA-BC2F-C1702941CFC8",
+    "xcode": "27.1 (27A9275)"
+  },
+  "fixture": "Seed 10 through shower 12, eight committed taps; every JSON field equals newer-main study example.",
+  "motionScope": "Calm false; system Reduce Motion/VoiceOver off; native outcome screenshots inspected. No animation recording or human/device acceptance.",
+  "sourceSHA256": {
+    "AppTests/FallingSkyStoreTests.swift": "fc4fcee3a52ab46ad061ca1a8e97cf3303eec6e40bb5c5355f17a6e1d52447cd",
+    "Sources/StarfallCore/ConstellationFixture.swift": "7456a989971ac554c0fba1935873acb5f7f3786b3d388150fd0e74fc85eb2c4e",
+    "Tests/StarfallCoreTests/WhiteConnectorTests.swift": "456059d141050e9611a08f3cf3f07aebd439b7d823b6b537c65bb2427b4a98ff",
+    "UITests/ConstellationTraceNativeTests.swift": "9e85efb11ddfa6c767d25f8c5661f5c2990fdaa34e885c7175f16719281c8383"
+  }
+}

@@ -193,4 +193,23 @@ final class WhiteConnectorTests: XCTestCase {
         }
     }
 
+    func testSeededPlanningFixtureRealizesBothOrdinaryTwoClearOrders() throws {
+        let original = ConstellationFixture.opalPlanning.game()
+        XCTAssertEqual(original.turns, 12)
+        XCTAssertEqual(original.score, 27)
+        XCTAssertEqual(original.cadenceID, .announcedCycleV2)
+        for amberFirst in [true, false] {
+            var game = original
+            let preview = game.incoming
+            XCTAssertEqual(game.clear(amberFirst ? Cell(1,1) : Cell(0,3))?.collected, 3)
+            XCTAssertEqual(game.board.compactMap { $0 }.filter(\.isLight).count, amberFirst ? 1 : 0)
+            XCTAssertEqual(game.clear(amberFirst ? Cell(0,3) : Cell(1,1))?.collected, amberFirst ? 4 : 3)
+            XCTAssertEqual(game.score, amberFirst ? 34 : 33)
+            XCTAssertEqual(game.incoming, preview)
+            XCTAssertEqual(game.turns, original.turns)
+            XCTAssertTrue(game.isValidSave)
+            XCTAssertEqual(try JSONDecoder().decode(FallingSky.self, from: JSONEncoder().encode(game)), game)
+        }
+    }
+
 }

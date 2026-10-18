@@ -16,3 +16,5 @@ Constellation walks add explicit five-distinct-star validation and selected-set 
 Missing cadence markers use the saved opening contract. See the [consumer contract](../../docs/design/PACING_CORE_CONTRACT.md).
 
 New skies use production Core `announcedCycleV2` (six 2-second, three 1.7-second and three 2.5-second intervals). The historical timing fixture is now a thin adapter to Core, not a second algorithm; old timing versions and First Light remain covered.
+
+Debug-only `opalPlanning` replays seed 10 through shower 12 to expose a two-tap allocation choice without injected board or save fields.

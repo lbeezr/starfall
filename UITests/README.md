@@ -19,3 +19,5 @@ Its active forecast/phase check verifies the final presentation integration: sep
 `ShowerForecastInteractionTests` checks production camera/header placement, ordered forecast speech value, menu/background lifecycle and maximum-text fallback. Run it on a calibrated island phone and a non-island phone; inspect the attached captures separately from physical-device acceptance.
 
 **Announced cadence adoption:** New skies use production Core `announcedCycleV2` (six 2-second, three 1.7-second and three 2.5-second intervals); the previous B exporter/launch selector is removed. Core owns the sole algorithm. Older saves and same-sky replay retain their version; First Light and fixed gentle/steady settings retain timing. [Current contract](../docs/design/PACING_ADOPTION.md).
+
+`testOpalPlanningTwoTapOrdersKeepTheirDistinctRewards` compares Amber-first and Aqua-first through normal native taps on the seeded Debug fixture; automation establishes outcomes, not human recognition or timing.
