@@ -4,6 +4,8 @@ This is the authoritative status register for gameplay and presentation experime
 
 ## Current decisions
 
+Grown-star readability is adopted at the user’s request: a persistent luminous double silhouette and paired glints, with a gentle outer-aura pulse in normal motion. Calm effects/Reduce Motion retain the steady cue. [Current-main integration and checks](evidence/grown-star-readability-2026-10-17/PULSE.md). No pilot route or gameplay/save changes; revisit recognition and crowded-board comfort at the next human playtest.
+
 Gravity/arrival overlap is adopted as a bounded presentation correction: full ordered gravity motion and contact survive while airborne approach overlaps, reopening the [measured input interval](evidence/gravity-flight-overlap-2026-10-17/README.md). Rules, saves and cadence remain unchanged; human timing comfort remains open.
 
 Opal follow-up analysis keeps the adopted rules unchanged: the [source-bound study](evidence/opal-choice-study-2026-10-17/README.md) and [native two-clear comparison](evidence/opal-native-planning-2026-10-17/README.md) support a situational planning example, not a universal preservation strategy or human preference claim. The Debug fixture is regression support in the normal app; no new runtime trial route or lab app. The [timing sensitivity](evidence/pacing-sensitivity-2026-10-17/README.md) keeps current cadence unchanged and targets native input-ready windows plus observed planning during falling. Next decision follows observed comprehension under automatic storm play.

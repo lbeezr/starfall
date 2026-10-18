@@ -269,6 +269,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         #endif
         refreshCadence()
         remaining = showerInterval
+        scene.decorativeMotionActive = !suspended
         scene.onLayout = { [weak self] in self?.settlePresentation() }
         scene.onReadinessChanged = { [weak self] ready in
             guard let self else { return }
@@ -597,6 +598,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         #endif
         guard suspended != value else { return }
         suspended = value
+        scene.decorativeMotionActive = !value
         if value { feedback.stopSounds(); freezeClock(); settlePresentation(reason: "suspension") }
         else {
             // Persist the retained store's chosen sky before its clock can run.

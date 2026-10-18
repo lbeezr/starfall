@@ -4,7 +4,8 @@ import StarfallCore
 
 /// Only presents committed turns. The view supplies native, full-cell buttons.
 @MainActor final class FallingSkyScene: SKScene, FallingSkyPresenting {
-    var reduceMotion = false
+    var reduceMotion = false { didSet { refreshGrowthMotion() } }
+    var decorativeMotionActive = true { didSet { refreshGrowthMotion() } }
     var onLayout: (() -> Void)?
     var onReadinessChanged: ((Bool) -> Void)?
     private var nodes: [Int: FallingSkyCharacter] = [:]
@@ -34,7 +35,10 @@ import StarfallCore
         if let rendered { render(rendered) }
         reportReadiness()
     }
-    override func willMove(from view: SKView) { onReadinessChanged?(false); onLayout?() }
+    override func willMove(from view: SKView) {
+        for node in nodes.values { node.setGrowthMotion(false) }
+        onReadinessChanged?(false); onLayout?()
+    }
 
     private func reportReadiness() {
         guard let view else { onReadinessChanged?(false); return }
@@ -47,7 +51,25 @@ import StarfallCore
     }
 
     private func makeNode(_ gem: StarfallGem) -> FallingSkyCharacter {
-        FallingSkyCharacter(gem: gem, step: step)
+        let node = FallingSkyCharacter(gem: gem, step: step)
+        node.setGrowthMotion(growthMotionEnabled)
+        return node
+    }
+
+    private var growthMotionEnabled: Bool {
+        decorativeMotionActive && !reduceMotion && !UIAccessibility.isReduceMotionEnabled
+            && !UIAccessibility.isVoiceOverRunning && rendered?.isOver != true
+    }
+
+    private func refreshGrowthMotion() {
+        for node in nodes.values { node.setGrowthMotion(growthMotionEnabled) }
+    }
+
+    /// A removed character may still finish its exit animation; its idle decoration ends now.
+    private func takeCharacter(_ id: Int) -> FallingSkyCharacter? {
+        let node = nodes.removeValue(forKey: id)
+        node?.setGrowthMotion(false)
+        return node
     }
 
     private func ground(_ gem: StarfallGem, at cell: Cell) {
@@ -96,6 +118,7 @@ import StarfallCore
         rendered = game
         if !preservingInput { constellationTrail.removeAllChildren() }
         removeAllActions(); effects.removeAllChildren(); effects.removeAllActions()
+        for node in nodes.values { node.setGrowthMotion(false) }
         pieces.removeAllChildren(); grid.removeAllChildren(); nodes.removeAll(); cellsByID.removeAll()
         animatingColumns.removeAll()
         renderColumns(Set(0..<7), from: game)
@@ -104,7 +127,7 @@ import StarfallCore
 
     private func renderColumns(_ columns: Set<Int>, from game: FallingSky) {
         let removed = cellsByID.filter { columns.contains($0.value.column) }.map(\.key)
-        for id in removed { nodes.removeValue(forKey: id)?.removeFromParent(); cellsByID.removeValue(forKey: id) }
+        for id in removed { takeCharacter(id)?.removeFromParent(); cellsByID.removeValue(forKey: id) }
         for node in grid.children where columns.contains(node.userData?["column"] as? Int ?? -1) { node.removeFromParent() }
         for row in 0..<7 { for column in columns.sorted() {
             let cell = Cell(row, column)
@@ -151,7 +174,7 @@ import StarfallCore
             return
         }
         for cell in turn.cleared {
-            if let id = old.gem(at: cell)?.id, let node = nodes.removeValue(forKey: id) {
+            if let id = old.gem(at: cell)?.id, let node = takeCharacter(id) {
                 node.update(node.gem, expression: .clearing)
                 cellsByID.removeValue(forKey: id)
                 grid.childNode(withName: "sky.ground.\(id)")?.run(.sequence([.fadeOut(withDuration: 0.15), .removeFromParent()]))
@@ -499,7 +522,7 @@ extension FallingSkyScene {
     private func applyGravityPhase(_ phase: GravityPhase, duration: TimeInterval) {
         let targetIDs=Set(phase.board.compactMap { $0?.id })
         for id in Array(nodes.keys) where !targetIDs.contains(id) {
-            let node=nodes.removeValue(forKey:id)
+            let node=takeCharacter(id)
             cellsByID.removeValue(forKey:id)
             var disappearance: [SKAction] = [.scale(to:0.1,duration:duration),.fadeOut(withDuration:duration)]
             if phase.event == .collision,

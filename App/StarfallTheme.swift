@@ -58,6 +58,14 @@ enum StarfallTheme {
         static let cameraSize = CGSize(width: 126, height: 37)
     }
 
+    enum GrownStar {
+        static let light = UIColor(red: 1, green: 0.96, blue: 0.76, alpha: 1)
+        static let auraAlpha: CGFloat = 0.24
+        static let rimAlpha: CGFloat = 0.90
+        static let pulseAmplitude: CGFloat = 0.10
+        static let pulsePeriod: TimeInterval = 2.8
+    }
+
     enum Typography {
         enum GuideTitleRole {
             case character, outcome
