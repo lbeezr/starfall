@@ -149,6 +149,50 @@ final class ResponsiveInputTests: XCTestCase {
         XCTAssertNotNil(clock.deadline)
     }
 
+    /// A queried-ready target is only a snapshot. Rain may own its columns before contact.
+    @MainActor func testShowerBetweenReadinessQueryAndContactDoesNotQueueAStaleClear() throws {
+        for column in [4, 6] {
+            let suite = "ReadinessContact.\(UUID())", defaults = UserDefaults(suiteName: suite)!
+            defer { defaults.removePersistentDomain(forName: suite) }
+            defaults.set(try SkySaveArchive.encode(ObservatoryReviewFixture.game(dense: false)), forKey: FallingSkyStore.saveKey)
+            let presenter = FallingSkyRecorder(), clock = ManualRainClock()
+            let store = FallingSkyStore(defaults: defaults, arguments: [], presenter: presenter, clock: clock)
+            store.setSuspended(false)
+            let target = Cell(2, column)
+            XCTAssertTrue(store.canClear(target), "The earlier visible query admits this match")
+            store.togglePause()
+            clock.advance(try XCTUnwrap(clock.deadline) - clock.now)
+            let shower = try XCTUnwrap(store.pending)
+            XCTAssertFalse(shower.arrivals.isEmpty)
+            XCTAssertFalse(store.canClear(target), "Rain now owns some of this match's columns")
+            let afterRain = store.game
+            let hold = store.beginConstellationHold(at: target)
+            if column == 4 {
+                XCTAssertNil(hold, "Contact on the arriving column is rejected immediately")
+            } else {
+                XCTAssertNotNil(hold, "A stable origin can begin a trace while its tap group is unavailable")
+            }
+            store.endConstellationHold(hold)
+            store.clear(target)
+            XCTAssertEqual(store.game, afterRain, "A stale query cannot clear moving stars")
+            XCTAssertEqual(store.inputMessage, "Stars settling…")
+            XCTAssertEqual(presenter.completions.count, 1)
+            presenter.finish()
+            XCTAssertEqual(store.game, afterRain, "Settling must not execute a queued tap")
+            XCTAssertNil(store.inputMessage)
+            XCTAssertTrue(store.canClear(target))
+            var expected = afterRain
+            let reward = try XCTUnwrap(expected.clear(target)).collected
+            XCTAssertGreaterThan(reward, 0)
+            let freshHold = try XCTUnwrap(store.beginConstellationHold(at: target))
+            store.endConstellationHold(freshHold)
+            store.clear(target)
+            XCTAssertEqual(store.game, expected, "A new contact clears the current committed group exactly once")
+            XCTAssertEqual(presenter.completions.count, 2)
+            XCTAssertEqual(try SkySaveArchive.decode(XCTUnwrap(defaults.data(forKey: FallingSkyStore.saveKey))), expected)
+        }
+    }
+
     @MainActor func testExplicitInputFailureHasReadableAndSpokenFeedbackWithoutACommit() {
         let suite = "ResponsiveAccessibleFeedback.\(UUID())", defaults = UserDefaults(suiteName: suite)!
         defer { defaults.removePersistentDomain(forName: suite) }

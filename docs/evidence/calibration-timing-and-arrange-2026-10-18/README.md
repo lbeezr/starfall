@@ -2,6 +2,8 @@
 
 **Result:** Partially verified · **Owner:** current implementer · **Date:** October 18, 2026
 
+**Contact boundary update:** [Ready query versus actual contact](CONTACT_BOUNDARY.md) verifies stale clear rejection and fresh-contact recovery for two column-ownership cases. It does not establish the exact cause of the recorded native miss.
+
 **Gap-link calibration update:** [Current-rule measurement correction and new cohorts](GAP_LINK_CALIBRATION.md) resolve the obsolete adjacency walk; 256 modeled runs replay 22,811 commits. Retain the current cadence pending native/human timing evidence.
 
 **Help/accessibility update:** [Complete largest-text read-through and System Reduce Motion](HELP_ACCESSIBILITY.md) pass on PR #95 source. The subsequent gap-link report supplies current-rule measurements.
