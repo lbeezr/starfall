@@ -12,6 +12,13 @@ enum StarfallTheme {
         static let portraitOverlap: CGFloat = 16
         static let corner: CGFloat = 24
     }
+    enum Celebration {
+        static let titleMaximumWidth: CGFloat = 330
+        static let titleHeight: CGFloat = 76
+        static let ordinaryAwardHeight: CGFloat = 42
+        static let specialAwardHeight: CGFloat = 50
+        static let glyphSpacing: CGFloat = 2
+    }
     enum Colors {
         static let launchBackground = Color("LaunchBackground")
         static let skyTop = Palette.midnight
@@ -95,7 +102,8 @@ enum StarfallTheme {
         static let status = Font.callout
         static let action = Font.headline
         static let gameTitle = Font.system(.headline, design: .rounded)
-        static let celebrationTitle = Font.system(.title2, design: .rounded).weight(.heavy)
+        static let celebrationTitle = Font.system(.title, design: .rounded).weight(.heavy)
+        static let celebrationRelayCount = Font.system(.title3, design: .serif).weight(.bold)
         static let celebrationAward = Font.system(.largeTitle, design: .rounded).weight(.heavy)
         static let gameDetail = Font.subheadline
         static let skyCaption = Font.system(.caption, design: .rounded).weight(.medium)

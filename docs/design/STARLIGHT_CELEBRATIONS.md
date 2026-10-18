@@ -2,6 +2,8 @@
 
 **Status:** Mock approved; current-main integration in verification · **Owner:** current implementer · **Updated:** October 18, 2026
 
+**October 18 refinement:** [Harvest feedback](HARVEST_FEEDBACK.md) supersedes the fixed cyan/gold collection colors, high special-title placement and 1.15-second tail below. It specifies source-family light, award-scaled energy, central special callouts and a bounded aurora. Earlier implementation details remain source-bound history.
+
 Make a successful clear feel like **charge → impact → collection → celebration**. The player should see where the points came from, feel the release, and notice the total grow. Reserve the biggest response for a deliberately drawn constellation or exceptional clear. Keep the selected compact header and open playfield between events.
 
 **Recommendation:** celebrate current ordinary clears, drawn constellations, exact square/cross recipes and causal relays using their committed awards. Keep scoring, save versions, shower cadence and responsive column ownership unchanged. “Bam, pow, kaboom” describes the desired energy; crystalline impact, warm light and expressive stars can deliver it in Starfall's own voice.

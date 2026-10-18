@@ -1,0 +1,7 @@
+# Crystal Comet celebration material
+
+Production neutral title cutouts and the twelve-glyph atlas live in `App/Assets.xcassets/Celebration*.imageset/`; do not duplicate those binaries here. They derive from the user-selected [Crystal Comet designs](../../docs/design/celebration-lettering/crystal-comet-01/README.md). [Generation records](generation.json) preserve the exact built-in ImageGen prompts, source references and original-output paths; shipped files are copied unchanged and fingerprinted there.
+
+Five title images contain their own exclamation marks. `CelebrationGlyphs` contains row-major `0123456789+-`; its 1448×1086 source uses four 362-pixel columns and optical row registrations at 0/400/750/1086. The runtime material owner crops only once using those registrations and the shared alpha-bound utility. Extremely low-alpha background specks are excluded from crop measurement; visible shapes were inspected. The twelve separate glyph crops never sample adjacent atlas cells.
+
+These are PNG illustration masters, not SVG paths or a font. Neutral facets receive the actual harvested family color and a pearl highlight layer in the app. The same five words serve every color; no separate color variants or new achievement rules. Unsupported copy, very long values, accessibility text sizes or an incomplete material family use native text. See [integration acceptance](../../docs/design/celebration-lettering/crystal-comet-01/INTEGRATION.md) for boundaries and evidence.

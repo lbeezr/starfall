@@ -1,0 +1,87 @@
+{
+  "testedCommit": "2cfe95ca895f617416fd1c4b2b8ac4e2aadc22c1",
+  "reconciledMain": "c2695e6835750ab30ec5203a755101b8e80235c9",
+  "runtimeAndTestFingerprint": "8d9cc35fc2238a110b820bb0df2d9569677e441e2b61b9eecd8c05c093bbb13c",
+  "changedInputs": {
+    "App/ArtworkRaster.swift": "f8f9178a0618635e23f41f7843bcabe105f441bff1d0470d168a1625cd94d9e9",
+    "App/Assets.xcassets/CelebrationBrilliant.imageset/Contents.json": "6c4bd74f9f4cfffce7b64ac8cc16b3d57d1efb7e1c649d47eba15828f5620477",
+    "App/Assets.xcassets/CelebrationBrilliant.imageset/material.png": "794f47993f5147f40a351a50397784a12dc5128639c2cae3b7fce87f9c39e4c7",
+    "App/Assets.xcassets/CelebrationConstellation.imageset/Contents.json": "6c4bd74f9f4cfffce7b64ac8cc16b3d57d1efb7e1c649d47eba15828f5620477",
+    "App/Assets.xcassets/CelebrationConstellation.imageset/material.png": "30b52b29fee53a53e141c7e32aafa7e75880f1ff8ba590329e12f9e1f29f323b",
+    "App/Assets.xcassets/CelebrationCross.imageset/Contents.json": "6c4bd74f9f4cfffce7b64ac8cc16b3d57d1efb7e1c649d47eba15828f5620477",
+    "App/Assets.xcassets/CelebrationCross.imageset/material.png": "e691abccd8e00887a29571fb6351fea34951d8e837d9b8b9e84863633dae87e5",
+    "App/Assets.xcassets/CelebrationGlyphs.imageset/Contents.json": "6c4bd74f9f4cfffce7b64ac8cc16b3d57d1efb7e1c649d47eba15828f5620477",
+    "App/Assets.xcassets/CelebrationGlyphs.imageset/material.png": "63d98c91a683cfb9b155aa344239acc48b4faf24112c75977017ec86fa3c1aaf",
+    "App/Assets.xcassets/CelebrationRelay.imageset/Contents.json": "6c4bd74f9f4cfffce7b64ac8cc16b3d57d1efb7e1c649d47eba15828f5620477",
+    "App/Assets.xcassets/CelebrationRelay.imageset/material.png": "fe416c804172eb6b4257465d83f0a845c5f70f81191c01e20b4fb74ffc926859",
+    "App/Assets.xcassets/CelebrationSquare.imageset/Contents.json": "6c4bd74f9f4cfffce7b64ac8cc16b3d57d1efb7e1c649d47eba15828f5620477",
+    "App/Assets.xcassets/CelebrationSquare.imageset/material.png": "63d48934112e0a4a729172e90c8542ff5380e493649a4990a114d3a4945612fa",
+    "App/CrystalCelebrationArtwork.swift": "ce23c2dcf34e90bb2a5501e81db302b1aab03070227c8b6766405d1db8d6d6e1",
+    "App/FallingSkyView.swift": "26c59476ae0db1b824d8857f7c01ce2be9fd8ac47bde9003757905db0eb9bb41",
+    "App/StarfallTheme.swift": "bb6d39bb4d96d6368a50beaf71d533d8a337fb18249ac5ba02ca7871d17f89df",
+    "App/StarlightCelebration.swift": "535e467ca73eb859fc863c7940f7c211f93987756d8addc3ff874f9efc81a318",
+    "App/StarshardArtwork.swift": "329cd8376c20d6de3cd73d844e114f6bfc64ab357f1e2cc2a5d9a01338aa2443",
+    "AppTests/CrystalCelebrationArtworkTests.swift": "8fd48eeb4dbc7317c4e8e1c3164a56c287705bc760174b0fd9635230ad014053",
+    "AppTests/GravityStoreTests.swift": "4eed04146b81986c1f31ad11dcd3d00c9c694b690c1a2af1fd6171b75fa64b7b",
+    "AppTests/StarlightCelebrationTests.swift": "61dfddfd1bef806075e0d1b631c060694ba9b024388b7a85c552b021eac4511b",
+    "Starfall.xcodeproj/project.pbxproj": "13726ecdd4b1fd085baa0dc073c68ec356c357ad78c58255aeffadaec7733fab"
+  },
+  "configuration": "Debug; Release simulator app build",
+  "toolchain": "Xcode 27.1 (27A9275), Swift 6.4, arm64",
+  "simulator": {
+    "id": "3447731D-D3C6-4DBC-A823-52E1C84C2A5B",
+    "model": "iPhone 17e",
+    "os": "iOS 27.0 (24A434)"
+  },
+  "dirtyBuildInputs": [],
+  "captures": [
+    {
+      "file": "dev-2cfe95c__crystal-constellation-award__iphone-17e__default-text.jpg",
+      "rawAttachment": "882A7847-D25E-4835-85B0-71534FF3F740.png",
+      "rawSHA256": "9de2bfcb2309ad8848d5e600f71f48f6cffe11625f71304f690c32fe8933d598",
+      "resultBundle": "artifacts/crystal-lettering/Reconciled.xcresult"
+    },
+    {
+      "file": "dev-2cfe95c__crystal-square-award__iphone-17e__default-text.jpg",
+      "rawAttachment": "40933F0E-9E59-485A-BA60-C913D0EFC5DE.png",
+      "rawSHA256": "a1745aefb9d3d59edb784248f6a15730972a14a03286a6a0da36bcf37d602111",
+      "resultBundle": "artifacts/crystal-lettering/Reconciled.xcresult"
+    },
+    {
+      "file": "dev-2cfe95c__crystal-relay-award__iphone-17e__default-text.jpg",
+      "rawAttachment": "51562F66-4FCA-4E46-979F-5AF322A14B58.png",
+      "rawSHA256": "cee558b3774962046b9ff303f64d9bec7953fdd47d4ecf61356296113b0912c9",
+      "resultBundle": "artifacts/crystal-lettering/Reconciled.xcresult"
+    }
+  ],
+  "results": {
+    "core": 160,
+    "hosted": 245,
+    "native": 6,
+    "failures": 0,
+    "skips": 0,
+    "debugBuild": "pass",
+    "releaseBuild": "pass"
+  },
+  "additionalReconciliation": {
+    "commit": "9927b85cf0d93c9d0bf6b3719d3252f52571864d",
+    "main": "569baa67f16c0d7222499610a8a96aa9423e6484",
+    "runtimeChangesFromTestedCommit": [],
+    "additionalHostedCase": "ResponsiveInputTests/testShowerBetweenReadinessQueryAndContactDoesNotQueueAStaleClear",
+    "result": "1 pass, zero failures/skips",
+    "testFile": "AppTests/ResponsiveInputTests.swift",
+    "testFileSHA256": "e5c213bcc1ce05a606eb48ae2f81db87153509a999fba6d74d245a2da4e2d67e",
+    "resultBundle": "artifacts/crystal-lettering/Contact.xcresult"
+  },
+  "publicationVerification": {
+    "commit": "e7666c105e3df1e953e08afb3bbfd218f2fdac9d",
+    "main": "569baa67f16c0d7222499610a8a96aa9423e6484",
+    "runtimeAndTestFingerprint": "652508cb202530be16cf3e261948291e0fbf4510c6c13d15952f1cbe0161ce69",
+    "hostedPasses": 247,
+    "additionalNativePasses": 1,
+    "additionalNativeCase": "CriticalMassInteractionTests/testRescueRemainsARealScoringTap",
+    "resultBundle": "artifacts/crystal-lettering/Publication.xcresult",
+    "releaseBuild": "pass",
+    "note": "Preserves upstream evolving-star shader; six earlier native flows retain their recorded source. Core sources unchanged from 160-pass run."
+  }
+}

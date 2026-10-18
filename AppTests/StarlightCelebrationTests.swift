@@ -104,7 +104,8 @@ final class StarlightCelebrationTests: XCTestCase {
             }
             XCTAssertTrue(store.sceneReady); XCTAssertFalse(store.suspended)
             let initial = windowImage(window)
-            let baseline = try skyInk(in: initial)
+            let central = example != .nudge
+            let baseline = try awardInk(in: initial, central: central)
             for action in 0..<(example == .relay ? 2 : 1) {
                 let oldTotal = store.game.score
                 switch example {
@@ -126,12 +127,12 @@ final class StarlightCelebrationTests: XCTestCase {
                 default: XCTAssertEqual(receipt.level, action == 0 ? .recipe(.square) : .relay(2))
                 }
                 var captured = false
-                let end = ContinuousClock.now + .milliseconds(1400)
+                let end = ContinuousClock.now + .seconds(2)
                 var frame = 0
                 repeat {
                     await Task.yield()
                     let image = windowImage(window)
-                    if !captured, try skyInk(in: image) > baseline + 100 {
+                    if !captured, try awardInk(in: image, central: central) > baseline + 100 {
                         let attachment = XCTAttachment(image: image)
                         attachment.name = "game-award-\(example.rawValue)-\(action)"
                         attachment.lifetime = .keepAlways; add(attachment); captured = true
@@ -143,8 +144,8 @@ final class StarlightCelebrationTests: XCTestCase {
                     }
                     frame += 1
                     try await Task.sleep(for: .milliseconds(100))
-                } while ContinuousClock.now < end
-                XCTAssertTrue(captured, "Full game must visibly draw the \(example.rawValue) award above the board")
+                } while store.celebration != nil && ContinuousClock.now < end
+                XCTAssertTrue(captured, "Full game must visibly draw the \(example.rawValue) award in its intended region")
                 XCTAssertNil(store.celebration)
             }
         }
@@ -156,17 +157,19 @@ final class StarlightCelebrationTests: XCTestCase {
         }
     }
 
-    private func skyInk(in image: UIImage) throws -> Int {
+    private func awardInk(in image: UIImage, central: Bool) throws -> Int {
         let cg = try XCTUnwrap(image.cgImage)
-        let crop = try XCTUnwrap(cg.cropping(to: CGRect(x: 110 * image.scale, y: 115 * image.scale,
-            width: 170 * image.scale, height: 90 * image.scale)))
+        let crop = try XCTUnwrap(cg.cropping(to: CGRect(x: 110 * image.scale, y: (central ? 320 : 115) * image.scale,
+            width: 170 * image.scale, height: (central ? 145 : 90) * image.scale)))
         var pixels = [UInt8](repeating: 0, count: crop.width * crop.height * 4)
         let context = try XCTUnwrap(CGContext(data: &pixels, width: crop.width, height: crop.height,
             bitsPerComponent: 8, bytesPerRow: crop.width * 4, space: CGColorSpaceCreateDeviceRGB(),
             bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue))
         context.draw(crop, in: CGRect(x: 0, y: 0, width: crop.width, height: crop.height))
         return stride(from: 0, to: pixels.count, by: 4).filter {
-            pixels[$0] > 210 && pixels[$0+1] > 210 && pixels[$0+2] > 210
+            // Illustrated rewards inherit a family color; require the same amount of
+            // additional bright ink, without requiring that ink to be neutral white.
+            max(pixels[$0], pixels[$0+1], pixels[$0+2]) > 210
         }.count
     }
 
@@ -215,6 +218,73 @@ final class StarlightCelebrationTests: XCTestCase {
         XCTAssertEqual(Set(receipt.cells), Set(path).subtracting([Cell(3, 2)]))
         XCTAssertTrue(receipt.cells.contains { before.gem(at: $0)?.isLight == true })
         XCTAssertEqual(store.game.incoming, before.incoming)
+    }
+
+    @MainActor func testContributorColorsAndWeightsComeFromRewardingPreclearStars() throws {
+        let original = ConstellationFixture.opalTrace.game(), path = (0..<5).map { Cell($0, 2) }
+        let (store, _, _, _) = try makeStore(original)
+        let before = store.game
+        store.clearTracedConstellation(path, snapshot: before, generation: store.constellationInputGeneration)
+        let receipt = try XCTUnwrap(store.celebration)
+        XCTAssertEqual(receipt.contributors.map(\.cell), receipt.cells)
+        XCTAssertEqual(receipt.contributors.map(\.reward).reduce(0, +), receipt.collected)
+        XCTAssertTrue(receipt.contributors.contains { $0.identity == .white })
+        XCTAssertTrue(receipt.contributors.contains { $0.reward == 2 })
+        for source in receipt.contributors {
+            XCTAssertGreaterThan(source.reward, 0)
+            XCTAssertEqual(source.identity, before.gem(at: source.cell)?.identity)
+            XCTAssertEqual(source.reward, before.reward(of: [source.cell]))
+        }
+        XCTAssertFalse(receipt.contributors.contains { $0.cell == Cell(3, 2) })
+        XCTAssertLessThanOrEqual(receipt.packets.count, 6)
+        XCTAssertEqual(receipt.packets.first, receipt.contributors.first)
+        XCTAssertEqual(receipt.packets.last, receipt.contributors.last)
+        store.restart(sameSky: true)
+        XCTAssertEqual(receipt.contributors.map(\.reward).reduce(0, +), 7, "Receipt remains a pre-clear value snapshot")
+    }
+
+    @MainActor func testLargeHarvestSamplesWholeGroupWithSixPacketsAndExactGrownWeight() throws {
+        var object = try XCTUnwrap(JSONSerialization.jsonObject(with: JSONEncoder().encode(FallingSky(seed: 5))) as? [String: Any])
+        var board: [Any] = Array(repeating: NSNull(), count: 49)
+        for index in 0..<14 {
+            board[index] = ["id": index, "kind": Jewel.rose.rawValue, "grown": index.isMultiple(of: 2)] as [String: Any]
+        }
+        object["board"] = board; object["starsLanded"] = 21; object["turns"] = 5
+        let before = try JSONDecoder().decode(FallingSky.self, from: JSONSerialization.data(withJSONObject: object))
+        XCTAssertTrue(before.isValidSave)
+        var after = before
+        let turn = try XCTUnwrap(after.clear(Cell(0, 0)))
+        let receipt = try XCTUnwrap(StarlightCelebration(id: 1, turn: turn, from: before, total: after.score))
+        XCTAssertEqual(receipt.collected, 21)
+        XCTAssertEqual(receipt.level, .brilliant)
+        XCTAssertTrue(receipt.isExceptional)
+        XCTAssertEqual(receipt.energy, 1)
+        XCTAssertEqual(receipt.packets.count, 6)
+        XCTAssertEqual(Set(receipt.packets.map(\.cell)).count, 6)
+        XCTAssertEqual(receipt.packets.first?.cell, Cell(0, 0))
+        XCTAssertEqual(receipt.packets.last?.cell, Cell(1, 6))
+        XCTAssertTrue(receipt.contributors.allSatisfy { $0.identity == .colored(.rose) })
+        XCTAssertEqual(receipt.contributors.filter { $0.reward == 2 }.count, 7)
+        XCTAssertTrue(after.isValidSave)
+    }
+
+    func testAwardEnergyIncreasesAndCapsWithoutChangingCategories() {
+        XCTAssertEqual(StarlightCelebration.energy(for: 0), 0)
+        let energies = (3...18).map(StarlightCelebration.energy(for:))
+        XCTAssertTrue(zip(energies, energies.dropFirst()).allSatisfy { $0 < $1 })
+        XCTAssertEqual(StarlightCelebration.energy(for: 18), 1)
+        XCTAssertEqual(StarlightCelebration.energy(for: 98), 1)
+    }
+
+    @MainActor func testSpecialCalloutMovesTowardCenterAndClearsHeaderOnPhoneAndTablet() {
+        for size in [CGSize(width: 375, height: 667), CGSize(width: 390, height: 844), CGSize(width: 1024, height: 1366)] {
+            let board = CGRect(origin: .zero, size: size)
+            let header = CGRect(x: 12, y: 47, width: size.width - 24, height: 44)
+            let y = StarlightCelebrationOverlay.centralCalloutY(board: board, header: header)
+            XCTAssertGreaterThan(y, header.maxY + 16)
+            XCTAssertGreaterThan(y, board.height * 0.3)
+            XCTAssertLessThan(y + 100, board.height * 0.65)
+        }
     }
 
     @MainActor func testZeroRewardDuskClearHasNoCollectionOrFakeCelebration() throws {
