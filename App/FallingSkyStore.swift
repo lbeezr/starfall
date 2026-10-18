@@ -611,7 +611,8 @@ enum SkyTerminalSpeech { case feedback, ceremony }
             if let columns = self.inputFeedback?.waitingColumns, columns.isDisjoint(with: self.changingColumns) {
                 self.showInputFeedback(nil)
             }
-            if let spokenResult, (!announcesResult || self.presentations.isLatest(ticket)),
+            // Completion order cannot give an older automatic result ownership of current feedback.
+            if let spokenResult, self.presentations.isLatest(ticket),
                !self.game.isOver || self.terminalSpeech == .feedback {
                 let accepted = self.dialogue.show(spokenResult, interrupt: announcesResult)
                 if accepted && (announcesResult || self.game.isOver || announcesTransition) {

@@ -17,6 +17,8 @@ Use this index for current priorities. The dated records below retain their orig
 
 [Follow-up debt work](TECH_DEBT_FOLLOWUP.md) corrects tablet hit results at the redundant parent AX container, semantic save validation, RC failure evidence and contextual Help, alongside contact holds manufacturing shower time. Exact remaining time and nested interruption grace pass focused clock and native input checks; [evidence](evidence/debt-followup-2026-10-18/README.md).
 
+[Fourth-pass work](TECH_DEBT_FOURTH_PASS.md) reproduces stale automatic-result feedback and surviving timeout descendants. The feedback correction and scoped verification are recorded in its [report](evidence/debt-fourth-pass-2026-10-18/README.md).
+
 ## Reductions already shipped
 
 | Scope | Current boundary / evidence |
