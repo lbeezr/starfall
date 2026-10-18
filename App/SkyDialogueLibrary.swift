@@ -59,3 +59,56 @@ extension SkyDialogueLibrary {
             || (cadence.phase == .breathing && previousCadence.phase != .breathing)
     }
 }
+
+
+extension SkyDialogueLibrary {
+    /// Pure selection from committed values. No clock, persistence or session mutation.
+    static func result(for turn: FallingSkyTurn, from old: FallingSky, to game: FallingSky,
+                       tracedCount: Int, recipe: StarRecipe?, relayDepth: Int,
+                       techniqueResult: String) -> SkyDialogueLine {
+        var result: SkyDialogueLine
+        let growth = turn.arrivals.filter(\.grew).count
+        let dissolved = turn.cleared.filter { old.gem(at: $0)?.isDark == true }.count
+        if game.outcome == .won {
+            result = line("guide.won", values: ["score": String(game.score)])
+        } else if turn.blockedColumn != nil {
+            result = line("guide.full", values: ["score": String(game.score)])
+        } else if !turn.stellarCollapses.isEmpty {
+            let count = Set(turn.stellarCollapses.flatMap { $0.consumed.union([$0.center]) }).count
+            result = line("guide.stellar-collapse", values: ["count": String(count)])
+        } else if !turn.duskCollapses.isEmpty {
+            let count = Set(turn.duskCollapses.flatMap(\.consumed)).count
+            result = line("guide.dusk-collapse", values: ["swallowed": SkyCopy.count(.eventEatenOne, .eventEatenMany, count)])
+        } else if !turn.cleared.isEmpty {
+            if turn.collected == 0 && turn.cleared.contains(where: { old.isDrained(at: $0) }) {
+                result = line("guide.gray-clear")
+            } else if dissolved > 0 {
+                result = line("guide.dissolved", values: ["score": String(turn.collected), "dark": game.duskRule != .legacy ? SkyCopy.count(.eventDusk, .eventDusks, dissolved) : SkyCopy.text(dissolved == 1 ? .eventDark : .eventDarks)])
+            } else if let recipe {
+                result = line("guide.recipe", values: ["shape": SkyCopy.text(recipe.shape == .square ? .techniqueSquare : .techniqueCross), "score": String(turn.collected)])
+            } else if tracedCount > 0 {
+                result = line("guide.constellation", values: ["stars": String(tracedCount), "score": String(turn.collected)])
+            } else { result = line("guide.clear", values: ["score": String(turn.collected)]) }
+        } else if turn.arrivals.contains(where: { $0.gem.isDark }) {
+            result = line(game.duskRule != .legacy ? "guide.dusk-arrival" : "guide.dark-arrival")
+        } else if turn.arrivals.contains(where: { $0.gem.isLight }) {
+            result = line("guide.opal-arrival")
+        } else if turn.arrivals.contains(where: { $0.gem.gravityKind == .magnet }) {
+            result = line("guide.magnet-arrival")
+        } else if growth > 0 {
+            result = line(game.duskRule != .legacy && game.board.enumerated().contains(where: { game.isDrained(at: Cell($0.offset/7,$0.offset%7)) }) ? "guide.dusk-growth" : "guide.growth", values: ["growth": SkyCopy.count(.eventGrowthOne, .eventGrowthMany, growth)])
+        } else {
+            result = line("guide.arrival", values: ["arrival": SkyCopy.count(.eventArrivalOne, .eventArrivalMany, turn.arrivals.count)])
+        }
+        if !game.isOver {
+            if turn.exchange != nil { result = line("guide.technique",values:["detail":techniqueResult]) }
+            else if relayDepth > 1 && turn.collected > 0 { result = line("guide.relay", values: ["score": String(turn.collected), "depth": String(relayDepth)]) }
+        }
+        if !game.isOver, let field = game.orbit {
+            result = line("guide.orbit", values: ["release": SkyCopy.count(.orbitReleaseOne, .orbitReleaseMany, field.windowsRemaining)])
+        } else if !game.isOver, turn.gravityPhases.contains(where: { $0.event == .release }) {
+            result = line("guide.release")
+        }
+        return result
+    }
+}
