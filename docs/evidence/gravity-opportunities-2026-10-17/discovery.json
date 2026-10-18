@@ -1,0 +1,91 @@
+{
+  "seedStart": 320,
+  "seeds": 64,
+  "showerLimit": 36,
+  "summaries": [
+    {
+      "censored": 52,
+      "counts": {
+        "activeFieldStates": 12,
+        "decisionStates": 2160,
+        "fieldStatesWithDifferentImmediateTotals": 3,
+        "fieldStatesWithEqualRewardFollowupChoice": 2,
+        "fieldStatesWithMultipleSelections": 5,
+        "maximumConsecutiveNoClear": 1,
+        "noClearStates": 482,
+        "statesWithLegalCollision": 8
+      },
+      "fieldRounds": 5,
+      "fields": 6,
+      "generation": 2,
+      "overflow": 12,
+      "pairRounds": 20,
+      "policy": "largest-immediate",
+      "rounds": 64,
+      "score": 6638
+    },
+    {
+      "censored": 50,
+      "counts": {
+        "activeFieldStates": 10,
+        "decisionStates": 2149,
+        "fieldStatesWithDifferentImmediateTotals": 1,
+        "fieldStatesWithMultipleSelections": 6,
+        "maximumConsecutiveNoClear": 1,
+        "noClearStates": 479,
+        "statesWithLegalCollision": 5
+      },
+      "fieldRounds": 5,
+      "fields": 5,
+      "generation": 2,
+      "overflow": 14,
+      "pairRounds": 20,
+      "policy": "collision-first-then-visible-reward",
+      "rounds": 64,
+      "score": 6593
+    },
+    {
+      "censored": 52,
+      "counts": {
+        "activeFieldStates": 19,
+        "decisionStates": 2170,
+        "fieldStatesFromExtraWindow": 6,
+        "fieldStatesWithDifferentImmediateTotals": 3,
+        "fieldStatesWithEqualRewardFollowupChoice": 2,
+        "fieldStatesWithMultipleSelections": 9,
+        "maximumConsecutiveNoClear": 1,
+        "noClearStates": 477,
+        "statesWithLegalCollision": 21
+      },
+      "fieldRounds": 8,
+      "fields": 10,
+      "generation": 3,
+      "overflow": 12,
+      "pairRounds": 37,
+      "policy": "largest-immediate",
+      "rounds": 64,
+      "score": 6641
+    },
+    {
+      "censored": 50,
+      "counts": {
+        "activeFieldStates": 22,
+        "decisionStates": 2159,
+        "fieldStatesFromExtraWindow": 10,
+        "fieldStatesWithDifferentImmediateTotals": 1,
+        "fieldStatesWithMultipleSelections": 13,
+        "maximumConsecutiveNoClear": 1,
+        "noClearStates": 480,
+        "statesWithLegalCollision": 11
+      },
+      "fieldRounds": 10,
+      "fields": 11,
+      "generation": 3,
+      "overflow": 14,
+      "pairRounds": 37,
+      "policy": "collision-first-then-visible-reward",
+      "rounds": 64,
+      "score": 6576
+    }
+  ]
+}

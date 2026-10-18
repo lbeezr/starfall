@@ -107,3 +107,55 @@ final class GravityTraceStoreTests: XCTestCase {
         XCTAssertTrue(game.isValidSave)
     }
 }
+
+final class GravityOpportunityStoreTests:XCTestCase {
+    @MainActor func testNewSkyUsesCandidateWhileRetainedReplayKeepsOlderGravityRules() throws {
+        let suite="GravitySupply.\(UUID())",defaults=UserDefaults(suiteName:suite)!
+        defer {defaults.removePersistentDomain(forName:suite)}
+        var original=FallingSky(seed:421,generation:.gravityOrbits)
+        for _ in 0..<4 {original.letStarsFall()}
+        let bytes=try SkySaveArchive.encode(original)
+        defaults.set(bytes,forKey:SkySaveArchive.key)
+        let store=FallingSkyStore(defaults:defaults,arguments:[],presenter:FallingSkyRecorder(),clock:ManualRainClock())
+        XCTAssertEqual(store.game,original)
+        XCTAssertEqual(defaults.data(forKey:SkySaveArchive.key),bytes)
+        store.restart(sameSky:true)
+        XCTAssertEqual(store.game.generation,.gravityOrbits)
+        store.restart(sameSky:false)
+        XCTAssertEqual(store.game.generation,.gravityOpportunities)
+        store.startFirstLight();store.restart(sameSky:true)
+        XCTAssertEqual(store.game.generation,.legacy)
+        XCTAssertEqual(store.game.challenge,.firstLight)
+    }
+
+    @MainActor func testV4CannotAdmitEitherGravityGenerationEvenBeforeSpecialsArrive() throws {
+        let suite="GravityEnvelope.\(UUID())",defaults=UserDefaults(suiteName:suite)!
+        defer {defaults.removePersistentDomain(forName:suite)}
+        for generation in [SkyGeneration.gravityOrbits,.gravityOpportunities] {
+            let game=FallingSky(seed:1,generation:generation)
+            let object=try JSONSerialization.jsonObject(with:JSONEncoder().encode(game))
+            defaults.set(try JSONSerialization.data(withJSONObject:["schemaVersion":4,"game":object]),forKey:SkySaveArchive.previousKey)
+            XCTAssertNil(SkySaveArchive.load(from:defaults))
+        }
+    }
+
+    @MainActor func testReachableChoicePersistsBeforeFeedbackAndRejectsStaleInput() throws {
+        let suite="GravityChoice.\(UUID())",defaults=UserDefaults(suiteName:suite)!
+        defer {defaults.removePersistentDomain(forName:suite)}
+        let presenter=FallingSkyRecorder()
+        let store=FallingSkyStore(defaults:defaults,arguments:["--starfalls-reset","--gravity-fixture=naturalOpportunity"],presenter:presenter,clock:ManualRainClock())
+        store.setSuspended(false)
+        let before=store.game
+        store.clear(Cell(1,2));XCTAssertEqual(store.game.score,28)
+        let committed=store.game
+        store.clear(Cell(1,2));XCTAssertEqual(store.game,committed)
+        XCTAssertEqual(try SkySaveArchive.decode(XCTUnwrap(defaults.data(forKey:SkySaveArchive.key))),committed)
+        let restored=FallingSkyStore(defaults:defaults,arguments:[],presenter:FallingSkyRecorder(),clock:ManualRainClock())
+        XCTAssertEqual(restored.game,committed)
+        XCTAssertEqual(committed.incoming,before.incoming)
+        let stale=try XCTUnwrap(presenter.completions.last)
+        store.setSuspended(true);store.restart(sameSky:true)
+        let restarted=store.game;stale();XCTAssertEqual(store.game,restarted)
+        XCTAssertEqual(restarted.generation,.gravityOpportunities)
+    }
+}

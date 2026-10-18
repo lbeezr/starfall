@@ -43,8 +43,10 @@ final class NativeInputWindowTests: XCTestCase {
 
     @MainActor private func naturalOrbit() throws -> FallingSky {
         var selected: FallingSky?
+        // Keep this renderer-timeline reproduction on its original deterministic history.
+        // New supply histories have separate native coverage in GravityOpportunityNativeTests.
         for seed in UInt64(0)..<80 where selected == nil {
-            var game = FallingSky(seed: seed, generation: .current)
+            var game = FallingSky(seed: seed, generation: .gravityOrbits)
             for _ in 0..<8 where !game.isOver && selected == nil {
                 XCTAssertNotNil(game.letStarsFall())
                 for _ in 0..<49 where selected == nil {

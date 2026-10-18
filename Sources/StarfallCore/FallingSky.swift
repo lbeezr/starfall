@@ -378,10 +378,10 @@ public struct FallingSky: Codable, Equatable, Sendable {
         return magneticForecast(replacing: forecast, heights: heights, relief: reliefColumn != nil)
     }
 
-    /// A paired opportunity in the eighth calm wave of each cycle. No accumulating orphans.
+    /// A versioned late-calm pair opportunity. No accumulating orphans.
     /// The forecast remains committed; later clears cannot retarget this pair.
     private func magneticForecast(replacing forecast: [IncomingStar], heights: [Int], relief: Bool) -> [IncomingStar] {
-        guard generation == .gravityOrbits, challenge == nil, (turns + 1) % 12 == 8,
+        guard generation.offersMagneticPair(at: turns + 1), challenge == nil,
               !relief, !forecast.contains(where: { $0.isDark || $0.isLight }), orbit == nil, !board.contains(where: { $0?.gravityKind != nil }) else { return forecast }
         let centers: [Int] = (1..<6).filter { column in
             let leftHeight = heights[column - 1]
@@ -420,7 +420,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
     public var isValidSave: Bool {
         guard SkyGeneration(rawValue: savedGeneration ?? 0) != nil else { return false }
         if generation != .legacy && cohesiveShowers != true { return false }
-        if generation != .gravityOrbits && (orbit != nil || nextGravityID != nil || retiredMagnetic != nil || incoming.contains(where: { $0.gravityKind != nil }) || board.contains(where: { $0?.gravityKind != nil })) { return false }
+        if !generation.supportsGravity && (orbit != nil || nextGravityID != nil || retiredMagnetic != nil || incoming.contains(where: { $0.gravityKind != nil }) || board.contains(where: { $0?.gravityKind != nil })) { return false }
         if generation == .legacy && (incoming.contains(where: \.isLight) || board.contains(where: { $0?.isLight == true })) { return false }
         if let challenge, seed != challenge.seed || balance != challenge.balance || hasOpeningCascade || generation != .legacy { return false }
         if let savedCadence, (savedCadence != .originalV1) != (openingCascade == true) { return false }
@@ -541,9 +541,11 @@ extension FallingSky {
 
 #if DEBUG
 public enum GravityFixture: String, CaseIterable, Sendable {
-    case opportunity, takeNow, stranded, supports, trace
-    public var title: String { if self == .trace { return "Trace a captive" }; if self == .supports { return "Release suspended stars" }; if self == .stranded { return "Release a lone magnet" }; return self == .opportunity ? "Wait for the connection" : "Take the connection now" }
+    case opportunity, takeNow, stranded, supports, trace, naturalOpportunity, naturalOffer
+    public var title: String { if self == .naturalOffer { return "A magnetic pair arrives" }; if self == .naturalOpportunity { return "A natural gravity choice" }; if self == .trace { return "Trace a captive" }; if self == .supports { return "Release suspended stars" }; if self == .stranded { return "Release a lone magnet" }; return self == .opportunity ? "Wait for the connection" : "Take the connection now" }
     public var message: String {
+        if self == .naturalOffer { return "A calm-wave magnetic pair has arrived. Clear space, then decide when to open its middle." }
+        if self == .naturalOpportunity { return "Choose a clear around the orbit. The stars you leave determine the next connection." }
         if self == .trace { return "Clear the pink middle, then trace five aqua stars including the captive to release the orbit." }
         if self == .supports { return "Clear the pink middle, then the front aqua group. Captives hold their positions until the hole closes." }
         if self == .stranded { return "Clear the aqua group beside the lone magnet. No partner is required to remove it." }
@@ -552,6 +554,8 @@ public enum GravityFixture: String, CaseIterable, Sendable {
         : "Clear the pink middle. The captured stars already have matching neighbors; another rotation breaks those connections."
     }
     public func game() -> FallingSky {
+        if self == .naturalOpportunity { return GravityOpportunityFixture.game() }
+        if self == .naturalOffer { return GravityOpportunityFixture.game(through:7) }
         var game = FallingSky(seed: 5, balance: .init(pace: .gentle, darkStars: .none), openingCascade: false, generation: .gravityOrbits)
         if self == .trace {
             game = GravityFixture.takeNow.game()

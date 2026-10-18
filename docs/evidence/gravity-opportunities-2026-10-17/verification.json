@@ -1,0 +1,152 @@
+{
+  "configurations": [
+    "Debug",
+    "Release"
+  ],
+  "core": {
+    "failed": 0,
+    "passed": 115
+  },
+  "discoveryRepeatByteEqual": true,
+  "finalNativeMatrix": {
+    "devicesAndConfigurations": [
+      {
+        "device": {
+          "architecture": "arm64",
+          "deviceId": "A35F00F8-C094-413C-9AE4-0DF4531AB62F",
+          "deviceName": "Starfall Gravity Opportunity 01a14c9d",
+          "modelName": "iPhone 17e",
+          "osBuildNumber": "24A434",
+          "osVersion": "27.0",
+          "platform": "iOS Simulator"
+        },
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "passedTests": 10,
+        "skippedTests": 0,
+        "testPlanConfiguration": {
+          "configurationId": "1",
+          "configurationName": "Test Scheme Action"
+        }
+      }
+    ],
+    "environmentDescription": "Starfall \u00b7 Built with macOS 27.0.1",
+    "expectedFailures": 0,
+    "failedTests": 0,
+    "finishTime": 1792290249.964,
+    "passedTests": 10,
+    "result": "Passed",
+    "runtimeWarnings": [],
+    "skippedTests": 0,
+    "startTime": 1792289937.124,
+    "statistics": [],
+    "testFailures": [],
+    "title": "Test - Starfall",
+    "toolTimeout": "MCP returned after 300s; original xcodebuild was observed to terminal completion, then xcresult summary read. No replacement run.",
+    "topInsights": [],
+    "totalTestCount": 10,
+    "xcresult": "test_sim_2026-10-18T02-18-51-802Z_pid26459_27310511.xcresult"
+  },
+  "hostedFinal": {
+    "correction": "Original deterministic renderer reproduction explicitly pins gravityOrbits; assertions preserved",
+    "failed": 0,
+    "passed": 173,
+    "skipped": 0,
+    "xcresult": "test_sim_2026-10-18T02-16-17-492Z_pid26459_5544dd51.xcresult"
+  },
+  "hostedInitial": {
+    "failed": 1,
+    "failure": "Renderer observation fixture selected different current-generation history",
+    "passed": 172,
+    "skipped": 0,
+    "xcresult": "test_sim_2026-10-18T02-13-14-810Z_pid26459_e5560bd6.xcresult"
+  },
+  "initialNativeMatrix": {
+    "failed": 1,
+    "failure": "Opening cascade legal tap did not update score before two-second assertion; unresolved timing mechanism",
+    "passed": 27,
+    "skipped": 0,
+    "xcresult": "test_sim_2026-10-18T02-03-41-803Z_pid26459_287ea3d9.xcresult"
+  },
+  "normalMotionNative": {
+    "failed": 0,
+    "inspectedExactSeconds": [
+      19.2,
+      19.4,
+      20.2,
+      20.4,
+      20.6,
+      24,
+      24.2,
+      24.4,
+      24.6,
+      24.8
+    ],
+    "passed": 1,
+    "skipped": 0,
+    "video": "/tmp/starfall-gravity-opportunity-motion.mp4",
+    "videoSHA256": "f7eeef20b2b72da6c740280ca970b9f5affd3e9e3b7cddd2826f72d1de164fb0",
+    "xcresult": "test_sim_2026-10-18T02-17-14-606Z_pid26459_d7e0a8d9.xcresult"
+  },
+  "notRun": [
+    "actual VoiceOver",
+    "physical device",
+    "human preference session"
+  ],
+  "openingPairedIsolation": [
+    {
+      "failed": 0,
+      "passed": 1,
+      "source": "immutable 794a0d1",
+      "xcresult": "test_sim_2026-10-18T02-09-33-650Z_pid26459_b25bfb89.xcresult"
+    },
+    {
+      "failed": 0,
+      "passed": 1,
+      "source": "candidate working inputs",
+      "xcresult": "test_sim_2026-10-18T02-11-33-012Z_pid26459_faf29aab.xcresult"
+    }
+  ],
+  "releaseBuild": {
+    "log": "build_sim_2026-10-18T02-18-34-781Z_pid26459_0427ffda.log",
+    "result": "succeeded"
+  },
+  "responsiveIntegration": {
+    "cleanLocalCommit": "59b526d8357b4cf8d5a8642e01a4cf2061b6135d",
+    "debugBuildRun": "build_run_sim_2026-10-18T02-29-19-570Z_pid26459_c3f55985.log",
+    "hosted": {
+      "failed": 0,
+      "passed": 182,
+      "skipped": 0,
+      "xcresult": "test_sim_2026-10-18T02-25-38-376Z_pid26459_44d9285a.xcresult"
+    },
+    "installedMatchesBuild": {
+      "Starfall": "95a9dd46d5fd1f9f1bc0c9631d3c3feb424bd5c12a6c582b2dd2a3cd5617492c",
+      "Starfall.debug.dylib": "fdb623b0ee1b2adee1e8f4b30e519a248c7e99539037db006ef0f75737187cc4"
+    },
+    "native": {
+      "failed": 0,
+      "methods": [
+        "opening cascade",
+        "both gravity opportunity flows",
+        "both responsive input flows"
+      ],
+      "passed": 5,
+      "skipped": 0,
+      "xcresult": "test_sim_2026-10-18T02-26-53-827Z_pid26459_35f6b97e.xcresult"
+    },
+    "releaseBuild": "build_sim_2026-10-18T02-29-13-426Z_pid26459_dd287ce7.log",
+    "runtimeFingerprint": "dev.d5e0632d10"
+  },
+  "retainedJPEGs": {
+    "dev-59b526d__natural-orbit-choice__iphone-17e__default-text.jpg": "dedf6c68b7591b4002463faaa4faa4fa193ed03410487427c840fb7213a61c0b",
+    "dev-794a0d1-wip-b0c6f88c96__natural-orbit-choice__iphone-17e__largest-text.jpg": "d15a612a0a5c43652aa631d64a30ffd805f614684fde9e29f6a885c07cf8b7ff"
+  },
+  "simulator": {
+    "id": "A35F00F8-C094-413C-9AE4-0DF4531AB62F",
+    "model": "iPhone 17e",
+    "name": "Starfall Gravity Opportunity 01a14c9d",
+    "os": "iOS 27.0 (24A434)"
+  },
+  "toolchain": "Xcode 27.1; unsigned arm64; shared Starfall scheme"
+}

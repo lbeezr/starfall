@@ -45,7 +45,7 @@ enum SkySaveArchive {
         if defaults.object(forKey: previousKey) != nil {
             guard let data = defaults.data(forKey: previousKey),
                   let envelope = try? JSONDecoder().decode(Envelope.self, from: data),
-                  envelope.schemaVersion == 4, envelope.game.generation != .gravityOrbits,
+                  envelope.schemaVersion == 4, !envelope.game.generation.supportsGravity,
                   envelope.game.isValidSave else { return nil }
             return envelope.game
         }

@@ -17,3 +17,5 @@ New skies use production Core `announcedCycleV2`; explicit V1 saves retain their
 The seeded Opal planning regression checks both ordinary two-clear orders, exact rewards, Orb consumption, unchanged preview/turn count and save round-trip.
 
 The current gravity/Opal planning fixture checks both ordinary tap orders and the stronger traced follow-up, field closure, retained Opal, stable preview and exact save round-trip.
+
+`GravityOpportunityTests` covers expanded calm-window supply, one committed offer per cycle, opening/First Light, save continuation/replay, and a naturally replayed two-clear example. `GravityTests` retains the original generation-2 supply assertions separately.

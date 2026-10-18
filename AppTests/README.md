@@ -36,4 +36,6 @@ Gravity overlap checks share the natural seed setup and verify airborne/phase co
 
 The current Opal/orbit planning deadline test commits the field-releasing clear, delivers exactly one due recovery shower, then commits the curved six-light trace through the snapshot/generation boundary. It checks exact Core equality and does not model finger timing.
 
+`GravityOpportunityStoreTests` verifies that retained gravity-generation saves/replay stay unchanged while New sky selects expanded opportunities, rejects gravity generations in v4 envelopes before specials arrive, and checks committed fixture saves and stale completion rejection.
+
 `ResponsiveInputTests` covers independent presentation/save ownership, current gravity reservations, anchored drift, held contact and stale result dialogue. `StarCastTests` verifies that a real independent clear does not cancel an unrelated falling animation.

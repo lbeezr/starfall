@@ -189,7 +189,7 @@ extension GravityTests {
     func testNaturalPairsAreBoundedForecastedAndDeterministic() throws {
         var pairs = 0, collisions = 0, rounds = 0
         for seed in UInt64(0)..<80 {
-            var game = FallingSky(seed:seed, generation:.current)
+            var game = FallingSky(seed:seed, generation:.gravityOrbits)
             var replay = game
             for _ in 0..<36 where !game.isOver {
                 XCTAssertEqual(game,replay)

@@ -5,8 +5,16 @@ public enum SkyGeneration: Int, Codable, Equatable, Sendable {
     case opalStorms = 1
 
     case gravityOrbits = 2
+    case gravityOpportunities = 3
 
-    public static let current = SkyGeneration.gravityOrbits
+    public var supportsGravity: Bool { self == .gravityOrbits || self == .gravityOpportunities }
+    public func offersMagneticPair(at shower: Int) -> Bool {
+        guard shower > 0 else { return false }
+        return self == .gravityOrbits ? shower % 12 == 8
+            : self == .gravityOpportunities && (shower % 12 == 7 || shower % 12 == 8)
+    }
+
+    public static let current = SkyGeneration.gravityOpportunities
 
     public func phase(for shower: Int) -> SkyShowerPhase? {
         guard self != .legacy, shower > 0 else { return nil }

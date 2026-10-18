@@ -32,4 +32,6 @@ Forecast tests assert the actual 148×50 contour on calibrated simulators and th
 
 `testCurrentOrbitFollowUpGuideReadsToEndWithoutMovingActionsOrBoard` scrolls both current field follow-ups to their timing suffix, checks the ending lies before pinned actions, preserves the board and then executes the next native clear. Inspect its captures to distinguish real read-through from accessible full-text labels alone.
 
+`GravityOpportunityNativeTests` follows the candidate's naturally reached seventh-wave pair through manual arrivals, collision and rotation, then compares eight- versus seven-light two-clear outcomes. Its second flow includes largest text, settings/background and retained restore. Debug fixtures require the explicit reset argument and use the normal app identity.
+
 `ResponsiveInputUITests` exercises an actual 8-point ordinary drift at normal/largest text and readable incomplete-trace feedback, using existing reset-only routes and isolated dialogue-review saves.

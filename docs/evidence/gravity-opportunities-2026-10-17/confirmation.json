@@ -1,0 +1,93 @@
+{
+  "seedStart": 384,
+  "seeds": 64,
+  "showerLimit": 36,
+  "summaries": [
+    {
+      "censored": 50,
+      "counts": {
+        "activeFieldStates": 9,
+        "decisionStates": 2143,
+        "fieldStatesWithDifferentImmediateTotals": 2,
+        "fieldStatesWithEqualRewardFollowupChoice": 2,
+        "fieldStatesWithMultipleSelections": 5,
+        "maximumConsecutiveNoClear": 1,
+        "noClearStates": 498,
+        "statesWithLegalCollision": 5
+      },
+      "fieldRounds": 5,
+      "fields": 5,
+      "generation": 2,
+      "overflow": 14,
+      "pairRounds": 26,
+      "policy": "largest-immediate",
+      "rounds": 64,
+      "score": 6554
+    },
+    {
+      "censored": 50,
+      "counts": {
+        "activeFieldStates": 9,
+        "decisionStates": 2143,
+        "fieldStatesWithDifferentImmediateTotals": 2,
+        "fieldStatesWithEqualRewardFollowupChoice": 2,
+        "fieldStatesWithMultipleSelections": 5,
+        "maximumConsecutiveNoClear": 1,
+        "noClearStates": 498,
+        "statesWithLegalCollision": 5
+      },
+      "fieldRounds": 5,
+      "fields": 5,
+      "generation": 2,
+      "overflow": 14,
+      "pairRounds": 26,
+      "policy": "collision-first-then-visible-reward",
+      "rounds": 64,
+      "score": 6554
+    },
+    {
+      "censored": 48,
+      "counts": {
+        "activeFieldStates": 15,
+        "decisionStates": 2118,
+        "fieldStatesFromExtraWindow": 6,
+        "fieldStatesWithDifferentImmediateTotals": 2,
+        "fieldStatesWithEqualRewardFollowupChoice": 2,
+        "fieldStatesWithMultipleSelections": 7,
+        "maximumConsecutiveNoClear": 1,
+        "noClearStates": 494,
+        "statesWithLegalCollision": 12
+      },
+      "fieldRounds": 8,
+      "fields": 8,
+      "generation": 3,
+      "overflow": 16,
+      "pairRounds": 39,
+      "policy": "largest-immediate",
+      "rounds": 64,
+      "score": 6482
+    },
+    {
+      "censored": 47,
+      "counts": {
+        "activeFieldStates": 22,
+        "decisionStates": 2111,
+        "fieldStatesFromExtraWindow": 13,
+        "fieldStatesWithDifferentImmediateTotals": 3,
+        "fieldStatesWithEqualRewardFollowupChoice": 2,
+        "fieldStatesWithMultipleSelections": 11,
+        "maximumConsecutiveNoClear": 1,
+        "noClearStates": 493,
+        "statesWithLegalCollision": 12
+      },
+      "fieldRounds": 12,
+      "fields": 12,
+      "generation": 3,
+      "overflow": 17,
+      "pairRounds": 39,
+      "policy": "collision-first-then-visible-reward",
+      "rounds": 64,
+      "score": 6439
+    }
+  ]
+}

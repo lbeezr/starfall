@@ -1,0 +1,281 @@
+{
+  "actions": [
+    {
+      "light": 4,
+      "opalsSpent": 0,
+      "selected": 66048,
+      "tap": {
+        "column": 2,
+        "row": 1
+      }
+    },
+    {
+      "light": 3,
+      "opalsSpent": 0,
+      "selected": 258,
+      "tap": {
+        "column": 1,
+        "row": 0
+      }
+    }
+  ],
+  "generation": 3,
+  "history": [
+    {
+      "action": {
+        "light": 3,
+        "opalsSpent": 0,
+        "selected": 28,
+        "tap": {
+          "column": 2,
+          "row": 0
+        }
+      },
+      "shower": 1
+    },
+    {
+      "action": {
+        "light": 3,
+        "opalsSpent": 0,
+        "selected": 129,
+        "tap": {
+          "column": 0,
+          "row": 0
+        }
+      },
+      "shower": 3
+    },
+    {
+      "action": {
+        "light": 4,
+        "opalsSpent": 0,
+        "selected": 7,
+        "tap": {
+          "column": 0,
+          "row": 0
+        }
+      },
+      "shower": 4
+    },
+    {
+      "action": {
+        "light": 5,
+        "opalsSpent": 0,
+        "selected": 2160,
+        "tap": {
+          "column": 4,
+          "row": 0
+        }
+      },
+      "shower": 5
+    },
+    {
+      "action": {
+        "light": 3,
+        "opalsSpent": 0,
+        "selected": 1032,
+        "tap": {
+          "column": 3,
+          "row": 0
+        }
+      },
+      "shower": 6
+    },
+    {
+      "action": {
+        "light": 3,
+        "opalsSpent": 0,
+        "selected": 129,
+        "tap": {
+          "column": 0,
+          "row": 0
+        }
+      },
+      "shower": 8
+    },
+    {
+      "action": {
+        "light": 3,
+        "opalsSpent": 0,
+        "selected": 1032,
+        "tap": {
+          "column": 3,
+          "row": 0
+        }
+      },
+      "shower": 9
+    }
+  ],
+  "immediateTotals": [
+    8,
+    7
+  ],
+  "initial": {
+    "board": [
+      null,
+      {
+        "grown": true,
+        "id": 30,
+        "kind": 2
+      },
+      {
+        "grown": false,
+        "id": 23,
+        "kind": 1
+      },
+      {
+        "gravityKind": "hole",
+        "grown": false,
+        "id": 35
+      },
+      {
+        "grown": false,
+        "id": 22,
+        "kind": 0
+      },
+      null,
+      {
+        "grown": false,
+        "id": 9,
+        "kind": 3
+      },
+      null,
+      {
+        "grown": false,
+        "id": 32,
+        "kind": 2
+      },
+      {
+        "grown": true,
+        "id": 28,
+        "kind": 4
+      },
+      null,
+      null,
+      null,
+      {
+        "grown": false,
+        "id": 19
+      },
+      null,
+      {
+        "grown": false,
+        "id": 38
+      },
+      {
+        "grown": true,
+        "id": 36,
+        "kind": 4
+      },
+      null,
+      null,
+      null,
+      {
+        "grown": false,
+        "id": 29,
+        "kind": 4
+      },
+      null,
+      {
+        "grown": false,
+        "id": 39,
+        "kind": 2
+      },
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "cohesiveShowers": true,
+    "darkStarsCleared": 0,
+    "incoming": [
+      {
+        "column": 1,
+        "id": 50,
+        "kind": 4
+      },
+      {
+        "column": 1,
+        "id": 51,
+        "kind": 4
+      },
+      {
+        "column": 1,
+        "id": 52,
+        "kind": 4
+      },
+      {
+        "column": 4,
+        "id": 53,
+        "kind": 0
+      },
+      {
+        "column": 4,
+        "id": 54,
+        "kind": 0
+      }
+    ],
+    "nextGravityID": 40,
+    "openingCascade": true,
+    "orbit": {
+      "center": {
+        "column": 3,
+        "row": 0
+      },
+      "holeID": 35,
+      "slots": [
+        {
+          "column": 4,
+          "row": 0
+        },
+        {
+          "column": 2,
+          "row": 0
+        }
+      ],
+      "windowsRemaining": 2
+    },
+    "random": {
+      "state": 12128749746587692568
+    },
+    "remainingColumns": [
+      3
+    ],
+    "savedBalance": {
+      "darkStars": "regular",
+      "pace": 3
+    },
+    "savedCadence": "announcedCycleV2",
+    "savedGeneration": 3,
+    "score": 24,
+    "seed": 421,
+    "showersUntilDark": 4,
+    "starsLanded": 40,
+    "turns": 10
+  },
+  "offeredOnExtraWindow": true,
+  "policy": "collision-first-then-visible-reward",
+  "seed": 421
+}
