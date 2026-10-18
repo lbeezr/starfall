@@ -26,7 +26,7 @@ Character chat and complete shower trails are integrated into the current produc
 
 Grown-star readability now uses a luminous double silhouette, two glints and a gentle outer-aura pulse. [Integration evidence](evidence/grown-star-readability-2026-10-17/PULSE.md) records native checks; next confirm uncoached recognition and dense-board comfort with the reporting tester.
 
-Fresh survival replaces Dusk arrivals with [universal critical mass](design/CRITICAL_MASS.md): buried stars and Opal age, turn purple at stage three and implode at stage four. Retained rounds keep feeding Dusk. Next observe rescue versus sacrifice and whether automatic cleanup makes waiting too effective; timing and human preference remain open.
+Fresh survival replaces Dusk arrivals with [universal critical mass](design/CRITICAL_MASS.md): buried stars and Opal age, develop violet edges at stage two, gain inward compression marks at stage three and implode at stage four. The confusing static black dot is removed; violet advances inward while family detail remains visible. Retained rounds keep feeding Dusk. Next observe rescue versus sacrifice and whether automatic cleanup makes waiting too effective; timing and human preference remain open.
 
 The retained [technique roster](design/STAR_TECHNIQUES.md) is reconciled with current main, including v6 saves, Dusk feeding, responsive columns and current presentation. Core, hosted, native, layout and animation checks pass. Merged and delivered through the guarded updater with unchanged saved bytes; observe human play next. [Source-bound status](evidence/technique-current-main-2026-10-18/README.md).
 

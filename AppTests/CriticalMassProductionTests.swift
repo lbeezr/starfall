@@ -75,4 +75,42 @@ final class CriticalMassProductionTests: XCTestCase {
         node.setGrowthMotion(false)
         XCTAssertNotNil(node.childNode(withName: "sky.critical-mass"))
     }
+    /// Native SpriteKit sheet: columns are families, rows are survived showers 0/3/6/7/8.
+    @MainActor func testEvolutionRetainsIdentityAndShowsCommittedAgeInQuietMotion() throws {
+        let game = CriticalMassFixture.game()
+        let ages = [0, 3, 6, 7, 8]
+        let kinds: [Jewel?] = [.amber, .rose, .mint, .aqua, .violet, nil]
+        let scene = SKScene(size: CGSize(width: 420, height: 400))
+        scene.backgroundColor = UIColor(red: 0.08, green: 0.07, blue: 0.18, alpha: 1)
+        let view = SKView(frame: CGRect(origin: .zero, size: scene.size))
+        view.presentScene(scene)
+        defer { view.presentScene(nil) }
+        for (row, age) in ages.enumerated() {
+            for (column, kind) in kinds.enumerated() {
+                let fresh = StarfallGem(id: column, kind: kind, light: kind == nil)
+                var object = try XCTUnwrap(JSONSerialization.jsonObject(with: JSONEncoder().encode(fresh)) as? [String: Any])
+                if age > 0 { object["savedStellarAge"] = age }
+                let gem = try JSONDecoder().decode(StarfallGem.self, from: JSONSerialization.data(withJSONObject: object))
+                let node = FallingSkyCharacter(gem: gem, step: 44)
+                CriticalMassPresentation.configure(node, game: game, cell: Cell(0, column), step: 44)
+                node.setGrowthMotion(false)
+                XCTAssertEqual(node.gem, gem)
+                XCTAssertEqual(node.gem.value, fresh.value)
+                if age >= 3 {
+                    XCTAssertEqual(try XCTUnwrap(node.character.shader?.uniformNamed("u_pressure")).floatValue,
+                                   Float(age) / Float(CriticalMassRule.collapseAge), accuracy: 0.001)
+                } else { XCTAssertNil(node.character.shader) }
+                let cue = node.childNode(withName: "sky.critical-mass")
+                XCTAssertEqual(cue != nil, age >= 6)
+                XCTAssertEqual(cue?.children.count ?? 0, age >= 6 ? 1 : 0,
+                               "Compression uses one path, with no extra facial core")
+                node.position = CGPoint(x: 42 + column * 67, y: 355 - row * 75)
+                scene.addChild(node)
+            }
+        }
+        let attachment = XCTAttachment(image: UIImage(cgImage: try XCTUnwrap(view.texture(from: scene)).cgImage()))
+        attachment.name = "stellar-evolution-six-families-ages-0-3-6-7-8"
+        attachment.lifetime = .keepAlways; add(attachment)
+    }
+
 }
