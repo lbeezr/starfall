@@ -117,6 +117,8 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     #endif
 
     private(set) var constellationInputGeneration: UInt64 = 0
+    /// Only committed showers permit an unchanged explicit recipe to be revalidated.
+    private(set) var recipeRevalidationGeneration: UInt64?
     private(set) var constellationTracing = false
     private var constellationHold: UInt64?
     private var constellationHoldSequence: UInt64 = 0
@@ -276,10 +278,11 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         nextShowerCadence = game.cadenceStep
         #endif
     }
-    private func invalidateInput(_ reason: String) {
+    private func invalidateInput(_ reason: String, revalidateRecipes: Bool = false) {
         endConstellationHold(constellationHold)
         showInputFeedback(nil)
         constellationInputGeneration &+= 1
+        recipeRevalidationGeneration = revalidateRecipes ? constellationInputGeneration : nil
         #if DEBUG
         observeTiming(.invalidated(reason))
         #endif
@@ -426,16 +429,23 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     }
 
     /// New actions share current column ownership, hold tickets and committed presentation.
-    @discardableResult func performTechnique(_ action: SkyBoardAction, snapshot: FallingSky, generation ticket: UInt64) -> Bool {
-        guard canReceiveInput, game.canArrangeStars, snapshot == game, ticket == constellationInputGeneration else { return false }
-        let old = game
+    private func readyTechnique(_ action: SkyBoardAction) -> (FallingSky, FallingSkyTurn)? {
+        guard canReceiveInput, game.canArrangeStars else { return nil }
         var next = game
         let turn: FallingSkyTurn?
         switch action {
         case .recipe(let recipe): turn = next.activate(recipe)
         case .nudge(let from,let to): turn = next.nudge(from:from,to:to)
         }
-        guard let turn, inputPolicy.reserving(turn.changingColumns).isReady else { return false }
+        guard let turn, inputPolicy.reserving(turn.changingColumns).isReady else { return nil }
+        return (next,turn)
+    }
+    func canPerformTechnique(_ action: SkyBoardAction) -> Bool { readyTechnique(action) != nil }
+
+    @discardableResult func performTechnique(_ action: SkyBoardAction, snapshot: FallingSky, generation ticket: UInt64) -> Bool {
+        guard snapshot == game, ticket == constellationInputGeneration,
+              let (next,turn) = readyTechnique(action) else { return false }
+        let old = game
         game = next
         if case .recipe(let recipe) = action { present(turn, from: old, recipe: recipe) }
         else { present(turn, from: old) }
@@ -550,7 +560,9 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     }
 
     private func present(_ turn: FallingSkyTurn, from old: FallingSky, announcesResult: Bool = true, previousCadence: SkyCadenceStep? = nil, path: [Cell] = [], recipe: StarRecipe? = nil) {
-        invalidateInput(turn.arrivals.isEmpty && turn.blockedColumn == nil ? "clear" : (announcesResult ? "manualShower" : "automaticShower"))
+        let isShower = !turn.arrivals.isEmpty || turn.blockedColumn != nil
+        invalidateInput(isShower ? (announcesResult ? "manualShower" : "automaticShower") : "clear",
+                        revalidateRecipes: isShower && !game.isOver)
         if turn.exchange != nil {
             techniqueRelay.reset(); techniqueResult = "Star moved. Arrange your next clear."
         } else if !turn.cleared.isEmpty {

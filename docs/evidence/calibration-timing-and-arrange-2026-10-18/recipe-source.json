@@ -1,0 +1,88 @@
+{
+  "originMain": "7ddc83734e4729e0b7923eb7e68a8370442766d5",
+  "localBase": "a90f33f35e7f367e8f32112799ade11dc410e73a",
+  "runtimeFingerprint": "dev.1c5aa1fc07",
+  "dirtyInputs": {
+    "App/FallingSkyStore.swift": "28c9f004459c0b52cbcebfc4af305c68420ff24466e2bf74aca244a811c49752",
+    "App/FallingSkyView.swift": "007329cce713a005cfcad505cdc9e69920cad13df248c15cdc260a7b93460367",
+    "App/SkyTechniqueControls.swift": "1e53bd648973264db747cc576c9ddc7009132fbc639255613bb0d54a830f25c8",
+    "App/SkyTechniqueIntent.swift": "d2dd063f321f1390670c19375c6f29b93b12dba37007adf4be4bbc8de716e83f",
+    "AppTests/SkyTechniqueStoreTests.swift": "f0811edadc0b7ab9c6cc7ea22336a407c9b31818d92c9beb372ed2ca1b1e3331",
+    "UITests/SkyTechniqueInteractionTests.swift": "f9cc020d00976ded24fd95e8852c84b9a7369026c6f60e9bb4dab78ee135ae6c"
+  },
+  "xcode": "Xcode 27.1\nBuild version 27A9275",
+  "macOS": "ProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434",
+  "native": {
+    "simulator": "Starfall Main 16 Pro Max QA",
+    "udid": "5107CBBF-108B-4B94-9125-A873F948A38C",
+    "model": "iPhone 16 Pro Max",
+    "os": "iOS 27.0 (24A434)",
+    "configuration": "Debug",
+    "bundle": "com.starfall.prototype",
+    "version": "0.1.0 (1)",
+    "displayedBuildID": "dev.local",
+    "calmEffects": false,
+    "actualVoiceOver": "not run; RC gate",
+    "result": "artifacts/calibration-native/automatic-setup-stable-choice.xcresult",
+    "hostedTests": 27,
+    "uiTests": 4,
+    "observations": [
+      "hold=6.0; board=8 showers, 5 matching groups ready; score=4 starlight; actionRemains=false",
+      "hold=0.2; board=8 showers, 5 matching groups ready; score=4 starlight; actionRemains=false"
+    ],
+    "command": [
+      "xcodebuild",
+      "-project",
+      "Starfall.xcodeproj",
+      "-scheme",
+      "Starfall",
+      "-configuration",
+      "Debug",
+      "-destination",
+      "platform=iOS Simulator,id=5107CBBF-108B-4B94-9125-A873F948A38C",
+      "-derivedDataPath",
+      "/tmp/starfall-calibration-derived",
+      "-parallel-testing-enabled",
+      "NO",
+      "-collect-test-diagnostics",
+      "never",
+      "-test-timeouts-enabled",
+      "YES",
+      "-default-test-execution-time-allowance",
+      "180",
+      "-maximum-test-execution-time-allowance",
+      "240",
+      "-resultBundlePath",
+      "artifacts/calibration-native/automatic-setup-stable-choice.xcresult",
+      "-only-testing:StarfallAppTests/SkyTechniqueStoreTests",
+      "-only-testing:StarfallAppTests/TraceInputPolishTests",
+      "-only-testing:StarfallUITests/SkyTechniqueInteractionTests/testDeliberateSquareSetupWhileAutomaticRainRuns",
+      "-only-testing:StarfallUITests/SkyTechniqueInteractionTests/testPromptSquareSetupWhileAutomaticRainRuns",
+      "-only-testing:StarfallUITests/SkyTechniqueInteractionTests/testSettingsAndBackgroundCancelSelection",
+      "-only-testing:StarfallUITests/SkyTechniqueInteractionTests/testLargestTextRecipeActionsRemainReachable",
+      "ARCHS=arm64",
+      "ONLY_ACTIVE_ARCH=YES",
+      "CODE_SIGN_IDENTITY=-",
+      "CODE_SIGNING_ALLOWED=YES",
+      "DEVELOPMENT_TEAM=",
+      "CODE_SIGN_STYLE=Manual"
+    ],
+    "additionalResult": "artifacts/calibration-native/automatic-setup-button-siblings.xcresult",
+    "additionalMethods": [
+      "testNudgeWithButtonsAndSwipePreservesFourStarRecipe",
+      "testExactSquareThenGravityCreatesDeliberateRelay"
+    ],
+    "totalDistinctUiTests": 6
+  },
+  "model": {
+    "seeds": [
+      64,
+      65
+    ],
+    "seconds": 30,
+    "runs": 32,
+    "parityCommits": 760,
+    "comparison": "all 32 runs identical across shared admission, accepted-commit and stable-choice variants; not an origin/main balance comparison",
+    "source": "artifacts/calibration-current/recipe-stable-choice-smoke/source.json"
+  }
+}
