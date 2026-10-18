@@ -241,3 +241,21 @@ extension ConstellationTraceNativeTests {
         XCTAssertTrue(app.buttons["experiment.settings"].isHittable)
     }
 }
+
+
+extension ConstellationTraceNativeTests {
+    @MainActor func testAutomaticStormCountsRecoverWithoutManualShowersOrClears() {
+        let app = launch("stormWarning"); defer { app.terminate() }
+        score(22, app)
+        let phase = app.descendants(matching: .any).matching(identifier: "sky.phase").firstMatch
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label CONTAINS %@", "1 lighter shower"), object: phase).wait(timeout: 5))
+        app.buttons["experiment.pause"].tap()
+        for expected in ["Storm · 3 heavy showers left", "Storm · 2 heavy showers left", "Storm · 1 heavy shower left", "Lighter showers · 9 showers"] {
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", expected), object: phase).wait(timeout: 8))
+            let capture = XCTAttachment(screenshot: app.screenshot())
+            capture.name = "automatic-after-observing-" + expected
+            capture.lifetime = .keepAlways; add(capture)
+        }
+        score(22, app)
+    }
+}
