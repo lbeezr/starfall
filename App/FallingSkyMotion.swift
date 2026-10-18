@@ -7,6 +7,9 @@ import StarfallCore
     private(set) var gem: StarfallGem
     let character: SKSpriteNode
     private let smallSize: CGSize
+    private let growthCue = SKNode()
+    private var growthMotionEnabled = false
+    private static let growthPulseKey = "sky.growth-pulse"
     private static let responseKey = "sky.character-response"
 
     init(gem: StarfallGem, step: CGFloat) {
@@ -17,6 +20,7 @@ import StarfallCore
         super.init()
         name = "sky.star.\(gem.id)"
         addChild(character)
+        makeGrowthCue(identity: .init(gem), step: step)
         update(gem, expression: gem.grown ? .grown : .idle)
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -29,6 +33,70 @@ import StarfallCore
         let growth: CGFloat = gem.grown ? 0.43 / 0.35 : 1
         character.size = CGSize(width: smallSize.width * growth, height: smallSize.height * growth)
         showExpression(expression)
+        growthCue.isHidden = gem.value != 2
+        refreshGrowthMotion()
+    }
+
+    /// Cached body alpha supplies the exact family silhouette. No extra materials. Only the outer aura may animate.
+    /// Attached to the character so contact responses and landing transforms carry the cue too.
+    private func makeGrowthCue(identity: StarCast.Identity, step: CGFloat) {
+        growthCue.name = "sky.growth-cue"
+        character.addChild(growthCue)
+        let side = smallSize.width * 0.43 / 0.35
+        for (index, scale) in [CGFloat(1.22), 1.10].enumerated() {
+            let echo = SKSpriteNode(texture: StarCast.texture(for: identity, expression: .idle))
+            echo.name = index == 0 ? "sky.growth-aura" : "sky.growth-rim"
+            echo.size = CGSize(width: side * scale, height: side * scale)
+            echo.color = StarfallTheme.GrownStar.light; echo.colorBlendFactor = 1
+            echo.alpha = index == 0 ? StarfallTheme.GrownStar.auraAlpha : StarfallTheme.GrownStar.rimAlpha
+            echo.position = CGPoint(x: -step * 0.025, y: step * 0.035)
+            echo.zPosition = CGFloat(index - 2)
+            growthCue.addChild(echo)
+        }
+        // Two fixed diamond glints read as a double-value cue without color or motion alone.
+        for (index, offset) in [CGPoint(x: -0.29, y: 0.32), CGPoint(x: 0.28, y: 0.25)].enumerated() {
+            let radius = step * (index == 0 ? 0.085 : 0.06)
+            let path = CGMutablePath()
+            path.move(to: CGPoint(x: 0, y: radius))
+            path.addLine(to: CGPoint(x: radius * 0.4, y: 0))
+            path.addLine(to: CGPoint(x: 0, y: -radius))
+            path.addLine(to: CGPoint(x: -radius * 0.4, y: 0))
+            path.closeSubpath()
+            let glint = SKShapeNode(path: path)
+            glint.name = "sky.growth-glint"
+            glint.position = CGPoint(x: offset.x * step, y: offset.y * step)
+            glint.fillColor = StarfallTheme.GrownStar.light
+            glint.strokeColor = .white; glint.lineWidth = 0.5
+            glint.zPosition = 1
+            growthCue.addChild(glint)
+        }
+    }
+
+    func setGrowthMotion(_ enabled: Bool) {
+        growthMotionEnabled = enabled
+        refreshGrowthMotion()
+    }
+
+    private func refreshGrowthMotion() {
+        guard let aura = growthCue.childNode(withName: "sky.growth-aura") else { return }
+        guard growthMotionEnabled, !growthCue.isHidden else {
+            aura.removeAction(forKey: Self.growthPulseKey)
+            aura.alpha = StarfallTheme.GrownStar.auraAlpha
+            return
+        }
+        guard aura.action(forKey: Self.growthPulseKey) == nil else { return }
+        // Absolute presentation phase survives scene rebuilds; ID offsets avoid synchronized flashing.
+        // Read time once when configuring, never in the per-frame callback or in Core.
+        let period = StarfallTheme.GrownStar.pulsePeriod
+        let phase = (ProcessInfo.processInfo.systemUptime + Double(gem.id % 7) * 0.23)
+            .truncatingRemainder(dividingBy: period)
+        aura.alpha = StarfallTheme.GrownStar.auraAlpha + StarfallTheme.GrownStar.pulseAmplitude
+            * CGFloat(sin(phase * 2 * .pi / period))
+        let pulse = SKAction.customAction(withDuration: period) { node, elapsed in
+            node.alpha = StarfallTheme.GrownStar.auraAlpha + StarfallTheme.GrownStar.pulseAmplitude
+                * CGFloat(sin((phase + Double(elapsed)) * 2 * .pi / period))
+        }
+        aura.run(.repeatForever(pulse), withKey: Self.growthPulseKey)
     }
 
     /// A face change preserves the in-flight/contact deformation owned by this child.

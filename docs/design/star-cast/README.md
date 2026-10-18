@@ -13,7 +13,7 @@ The production renderer combines nine packaged transparent celestial cutouts wit
 | violet | Nova | Wide four-point violet crystal; sleepy eyelids |
 | nil/dark | Dusk | Concave five-point dark crystal, lilac rim; mischievous brow |
 
-Names and point counts are presentation cues. Normal stars remain worth 1, grown stars 2 and dark stars 0. Core rules, RNG, saves and the growth-size cue are unchanged. Existing VoiceOver descriptions retain color, shape, name, position and value. Dusk's grown expression is a reusable material slot, not a new rule.
+Names and point counts are presentation cues. Normal stars remain worth 1, grown stars 2 and dark stars 0. Core rules, RNG, saves and body sizes are unchanged. Grown board stars now carry a warm luminous double silhouette and two fixed diamond glints; [readability evidence](../../evidence/grown-star-readability-2026-10-17/README.md) records checks and limits. Existing VoiceOver descriptions retain color, shape, name, position and value. Dusk's grown expression is a reusable material slot, not a new rule.
 
 ## Body, face and shadow ownership
 
@@ -24,6 +24,8 @@ The seven faced star identities have four expression slots (idle, landing, grown
 Partial turns remain shallow 2D presentation: horizontal compression and face offset around a stable 128/128 pivot. They are not a full 3D mesh, profile or rear rotation. Construction views and motion poses in the approved masters guide production; unsupported views are not added speculatively. Existing flight, squash/stretch, rebound, neighbor reactions, growth and clearing timing remain owned by the scene.
 
 Ground shadows are separate scene nodes, with a dark compact contact core and softer wider pool. Existing clear/gravity/rebuild actions own their lifetime. Shadows do not determine rules or legal destinations. The shared Observatory projection continues to own scene, native hit and accessibility coordinates; no depth-based character scaling or board geometry change is introduced by this cast integration.
+
+The grown cue belongs to `FallingSkyCharacter`, attached beneath its sprite so local reactions and landing transforms carry the entire cue. Two tinted echoes reuse the cached idle texture's exact body alpha; two small diamond glints sit above the body. Four cue children are allocated once per character and hidden for ordinary/dark stars. Expression changes preserve the active pulse; render, clear and restart dispose of the cue with the character. Only the outer echo opacity breathes over 2.8 seconds (0.14–0.34), with a stable per-ID presentation phase across scene rebuilds. The rim, glints and body stay steady. One keyed SpriteKit action per grown star is canceled for Calm effects, Reduce Motion, VoiceOver, suspension, scene detachment and replacement; quiet mode restores alpha 0.24. No new texture cache, particles, timers or tasks are introduced. [Current-main pulse evidence](../../evidence/grown-star-readability-2026-10-17/PULSE.md).
 
 ## Bounded resources and lifecycle
 

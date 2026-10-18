@@ -5,6 +5,115 @@ import StarfallCore
 @testable import Starfall
 
 final class StarCastTests: XCTestCase {
+    @MainActor func testAuraPulseChangesOnlyOuterOpacityAndCancelsOnQuietSuspensionAndReplacement() async throws {
+        guard !UIAccessibility.isReduceMotionEnabled && !UIAccessibility.isVoiceOverRunning else {
+            throw XCTSkip("Pulse sampling requires normal system motion")
+        }
+        let windowScene = try XCTUnwrap(UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.first)
+        let previous = windowScene.windows.first(where: \.isKeyWindow)
+        let view = SKView(frame: CGRect(x: 0, y: 0, width: 390, height: 844))
+        let window = UIWindow(windowScene: windowScene); window.frame = view.frame
+        let controller = UIViewController(); controller.view = view
+        window.rootViewController = controller; window.makeKeyAndVisible()
+        defer { view.presentScene(nil); window.isHidden = true; previous?.makeKey() }
+        let scene = FallingSkyScene(size: view.bounds.size); view.presentScene(scene)
+        let game = ObservatoryReviewFixture.game(dense: false)
+        let gem = try XCTUnwrap(game.board.compactMap { $0 }.first { $0.value == 2 })
+        scene.render(game)
+        let root = try XCTUnwrap(scene.children[1].childNode(withName: "sky.star.\(gem.id)") as? FallingSkyCharacter)
+        let cue = try XCTUnwrap(root.character.childNode(withName: "sky.growth-cue"))
+        let aura = try XCTUnwrap(cue.childNode(withName: "sky.growth-aura"))
+        let rim = try XCTUnwrap(cue.childNode(withName: "sky.growth-rim"))
+        let size = root.character.size
+        var minimum = CGFloat(1), maximum = CGFloat(0)
+        let deadline = ContinuousClock.now + .seconds(4)
+        while maximum - minimum < 0.18 && ContinuousClock.now < deadline {
+            minimum = min(minimum, aura.alpha); maximum = max(maximum, aura.alpha)
+            XCTAssertGreaterThanOrEqual(aura.alpha, 0.139)
+            XCTAssertLessThanOrEqual(aura.alpha, 0.341)
+            XCTAssertEqual(rim.alpha, StarfallTheme.GrownStar.rimAlpha, accuracy: 0.000001)
+            XCTAssertFalse(rim.hasActions())
+            XCTAssertEqual(root.character.size, size)
+            XCTAssertEqual(root.character.xScale, 1)
+            XCTAssertEqual(root.character.zRotation, 0)
+            try await Task.sleep(for: .milliseconds(20))
+        }
+        XCTAssertGreaterThan(maximum - minimum, 0.18, "A full-motion aura must visibly breathe")
+        let action = try XCTUnwrap(aura.action(forKey: "sky.growth-pulse"))
+        root.update(gem, expression: .landing)
+        XCTAssertTrue(aura.action(forKey: "sky.growth-pulse") === action, "Face changes must preserve pulse phase")
+        scene.reduceMotion = true
+        XCTAssertFalse(aura.hasActions())
+        XCTAssertEqual(aura.alpha, StarfallTheme.GrownStar.auraAlpha, accuracy: 0.000001)
+        scene.reduceMotion = false
+        XCTAssertTrue(aura.hasActions())
+        scene.decorativeMotionActive = false
+        XCTAssertFalse(aura.hasActions())
+        scene.decorativeMotionActive = true
+        XCTAssertTrue(aura.hasActions())
+        scene.render(game)
+        XCTAssertFalse(aura.hasActions(), "A retained reference to a replaced star must own no idle action")
+        let replacement = try XCTUnwrap(scene.children[1].childNode(withName: "sky.star.\(gem.id)") as? FallingSkyCharacter)
+        let replacementAura = try XCTUnwrap(replacement.character.childNode(withName: "sky.growth-cue/sky.growth-aura"))
+        XCTAssertTrue(replacementAura.hasActions())
+        var cleared = game
+        let turn = try XCTUnwrap(cleared.clear(Cell(1, 1)))
+        scene.animate(turn, from: game, to: cleared) {}
+        XCTAssertFalse(replacementAura.hasActions(), "Column replacement/clear ends the previous cue before its exit")
+        scene.render(game)
+        let finalRoot = try XCTUnwrap(scene.children[1].childNode(withName: "sky.star.\(gem.id)") as? FallingSkyCharacter)
+        let finalAura = try XCTUnwrap(finalRoot.character.childNode(withName: "sky.growth-cue/sky.growth-aura"))
+        view.presentScene(nil)
+        XCTAssertFalse(finalAura.hasActions(), "Detaching the scene cancels decorative motion")
+    }
+
+    @MainActor func testSpecialStarsNeverImplyDoubleValueEvenWithAGrownFlag() throws {
+        for gem in [StarfallGem(id: 1, kind: nil, grown: true),
+                    StarfallGem(id: 2, kind: nil, grown: true, light: true),
+                    StarfallGem(id: 3, kind: nil, grown: true, gravity: .magnet),
+                    StarfallGem(id: 4, kind: nil, grown: true, gravity: .hole)] {
+            let node = FallingSkyCharacter(gem: gem, step: 45)
+            node.setGrowthMotion(true)
+            let cue = try XCTUnwrap(node.character.childNode(withName: "sky.growth-cue"))
+            XCTAssertTrue(cue.isHidden)
+            XCTAssertTrue(cue.children.allSatisfy { !$0.hasActions() })
+        }
+    }
+
+    @MainActor func testDoubleValueCueSurvivesExpressionsWithoutAccumulatingInQuietMode() throws {
+        for step in [CGFloat(32), 45, 64] {
+            for kind in Jewel.allCases.map(Optional.some) + [nil] {
+                let ordinary = StarfallGem(id: 1, kind: kind)
+                let grown = StarfallGem(id: 1, kind: kind, grown: true)
+                let node = FallingSkyCharacter(gem: ordinary, step: step)
+                let cue = try XCTUnwrap(node.character.childNode(withName: "sky.growth-cue"))
+                XCTAssertTrue(cue.isHidden)
+                let echoes = cue.children.compactMap { $0 as? SKSpriteNode }
+                XCTAssertEqual(echoes.count, 2)
+                XCTAssertEqual(cue.children.filter { $0.name == "sky.growth-glint" }.count, 2)
+                let normalSize = node.character.size
+                for _ in 0..<20 {
+                    for expression in StarCast.Expression.allCases {
+                        node.update(grown, expression: expression)
+                        XCTAssertEqual(cue.isHidden, kind == nil, "Dark stars never imply double value")
+                        XCTAssertEqual(cue.children.count, 4)
+                        XCTAssertFalse(cue.hasActions())
+                        XCTAssertTrue(cue.children.allSatisfy { !$0.hasActions() })
+                        XCTAssertTrue(echoes.allSatisfy { $0.size.width > node.character.size.width })
+                        // Includes the cached texture's transparent canvas padding.
+                        XCTAssertLessThan(node.calculateAccumulatedFrame().width, step * 1.35)
+                        XCTAssertEqual(node.position, .zero)
+                    }
+                }
+                node.update(ordinary, expression: .idle)
+                XCTAssertTrue(cue.isHidden)
+                XCTAssertEqual(node.character.size, normalSize)
+            }
+        }
+        XCTAssertEqual(StarCast.cachedMaterialCount, StarCast.maximumMaterials)
+    }
+
+
     @MainActor func testIndependentClearDoesNotCancelAnUnrelatedAnimatedShower() async throws {
         guard !UIAccessibility.isReduceMotionEnabled && !UIAccessibility.isVoiceOverRunning else {
             throw XCTSkip("Concurrent motion requires normal system motion")
