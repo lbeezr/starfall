@@ -1,5 +1,7 @@
 # Star cast integration — native evidence
 
+**Historical screenshots partly retired October 17, 2026.** Crystal Glow supersedes these body/material and ordinary-play exports. The largest-text capture remains as layout evidence; original source/test/capture manifests remain intact. [Retirement paths, hashes and Git recovery](../../SCREENSHOTS.md#october-17-2026--superseded-cast-and-routine-prototype-frames). These findings describe the original source, not current UI; start current visual work from [the selected reference](../../design/VISUAL_REFERENCE.md).
+
 October 17, 2026, Eastern time. [Production rendering contract](../../design/star-cast/README.md). The production asset is authored drawing code, not the reference concept sheet. [Source hashes](source.json) identify the clean exported app/project files and the final test source. Unrelated local Xcode/workspace edits were preserved and excluded from the exports and commits.
 
 ## Executed checks

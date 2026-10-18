@@ -1,5 +1,7 @@
 # Dark-star prototype validation — 16 October 2026
 
+**Historical screenshots partly retired October 17, 2026.** Later compact-HUD, Crystal Glow and Observatory checks supersede these routine prototype-play/handoff frames. Dark-star before/after, native/browser VoiceOver and system Reduce Motion captures remain as distinct interaction/accessibility evidence. [Retirement paths, hashes and Git recovery](../../SCREENSHOTS.md#october-17-2026--superseded-cast-and-routine-prototype-frames). These findings describe the original source, not current UI; start current visual work from [the selected reference](../../design/VISUAL_REFERENCE.md).
+
 Dedicated device: **Starfall Accumulation Lab**, iPhone 17 Pro, iOS 27 simulator, UDID `FBB33D71-C642-4705-B63F-F71A3A7CA62C`. Xcode 27, arm64, shared `Starfall` scheme. No physical-device validation is claimed.
 
 ## Rules and build

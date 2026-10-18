@@ -1,5 +1,7 @@
 # Compact falling-sky UI
 
+**Historical screenshots partly retired October 17, 2026.** The compact HUD and Observatory supersede this routine paused-board frame. The largest-text capture remains as source-bound accessibility/layout evidence. [Retirement paths, hashes and Git recovery](../../SCREENSHOTS.md#october-17-2026--superseded-cast-and-routine-prototype-frames). These findings describe the original source, not current UI; start current visual work from [the selected reference](../../design/VISUAL_REFERENCE.md).
+
 Native simulator checks, October 16, 2026. Gameplay uses shared `gameTitle`, `gameDetail`, spacing and 44-point button roles in StarfallTheme. One header and one unboxed forecast row replace the stacked title, subtitle, statistics and forecast panel. The tall board receives remaining portrait height, with a square minimum for short windows; the screen scrolls when needed. Instructions and active-round restart actions live in Settings. Terminal replay actions stay on the game screen.
 
 The scene no longer draws square cell backgrounds or borders. Clearable jewels have a thin circular halo; dark-star growth-block cues remain. Jewel materials, deterministic seven-column rules and falling animations are retained. Vertical positions and native button padding both follow the taller board; jewels retain their aspect ratio.

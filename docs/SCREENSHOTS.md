@@ -79,6 +79,49 @@ Recover into temporary storage for historical investigation; do not promote reco
 | `docs/evidence/automatic-starfalls-2026-10-16/browser-ready.png` | 24,192 | `e77a879a7809622fc83d6ac1e081ae57f73afbfd204ce2358ea0efde9611baeb` |
 | `docs/evidence/automatic-starfalls-2026-10-16/browser-reduce-motion.png` | 23,829 | `34d70924954eea7ed95d7038766c650a4f3c6e425a5b6e7c1707d8aa8b74b93a` |
 
+### October 17, 2026 — superseded cast and routine prototype frames
+
+Removed **21 screenshots (12,603,663 bytes)** after auditing all 190 tracked evidence images (117,488,461 bytes) at `794a0d1d46c4eb00b8c975b521fc63894f50104d`. No exact SHA-256 duplicates were found; selection used report findings, source relationships, incoming references and the engineering/experiment registers rather than age alone. This batch removes routine frames and superseded per-character exports, preserving unique failure, accessibility and comparison evidence.
+
+| Reports examined and changed | Retirement boundary / retained evidence |
+| --- | --- |
+| [star-cast-2026-10-17](evidence/star-cast-2026-10-17/README.md) | 3 retired. Crystal Glow supersedes these body/material and ordinary-play exports. The largest-text capture remains as layout evidence; original source/test/capture manifests remain intact. |
+| [star-cast-luminous-2026-10-17](evidence/star-cast-luminous-2026-10-17/README.md) | 2 retired. Crystal Glow supersedes the material and crowded-board exports. The largest-text failure capture remains because ENGINEERING.md still cites this unresolved layout evidence. |
+| [star-cast-motion-2026-10-17](evidence/star-cast-motion-2026-10-17/README.md) | 6 retired. Crystal Glow supersedes these individual body sheets. The whole-cast review remains because it is a documented source for Crystal Glow concept work; flight/landing and paused-turn samples remain as motion-comparison evidence. |
+| [compact-ui-2026-10-16](evidence/compact-ui-2026-10-16/README.md) | 1 retired. The compact HUD and Observatory supersede this routine paused-board frame. The largest-text capture remains as source-bound accessibility/layout evidence. |
+| [dark-starfalls-2026-10-16](evidence/dark-starfalls-2026-10-16/README.md) | 6 retired. Later compact-HUD, Crystal Glow and Observatory checks supersede these routine prototype-play/handoff frames. Dark-star before/after, native/browser VoiceOver and system Reduce Motion captures remain as distinct interaction/accessibility evidence. |
+| [starfall-balance-2026-10-16](evidence/starfall-balance-2026-10-16/README.md) | 3 retired. Later balance/persistence checks and compact-HUD/Observatory layouts supersede these routine board/handoff frames. The labeled Gentle/Frequent settings capture and native VoiceOver settings capture remain as distinct control/accessibility evidence. |
+
+**Recovery revision:** `794a0d1d46c4eb00b8c975b521fc63894f50104d`. Recover any path below with `git show 794a0d1d46c4eb00b8c975b521fc63894f50104d:<path> > /tmp/<filename>` and compare its SHA-256. Original manifests remain historical export records; their retired filenames are not broken working-tree links.
+
+| Retired repository path | Bytes | SHA-256 |
+| --- | ---: | --- |
+| `docs/evidence/star-cast-2026-10-17/material-review.png` | 802,838 | `5d9d76a8ba8e0b91a195ab11397daf70210c25196db4b53bb49a8334adcc8125` |
+| `docs/evidence/star-cast-2026-10-17/landing.png` | 324,158 | `04144797458aa4ea0d7fd47ea004340a132f6cf5369c4e434711a985174f7a7a` |
+| `docs/evidence/star-cast-2026-10-17/mixed-cast.png` | 638,500 | `364acc70cb1abe37415a7484c83b2ccbd5030ebb65cbaaca0466c48229cc0dfb` |
+| `docs/evidence/star-cast-luminous-2026-10-17/material-review.png` | 943,772 | `f1d16a5b291f7a90fa4ff56ff3e0d6bdcb1a4418b207382263549addda6f6a16` |
+| `docs/evidence/star-cast-luminous-2026-10-17/crowded-board.png` | 1,076,164 | `bc483f3a504acaf48271413458e227c2fa9a3f3fe97fdb4bbf4b4a5cef5166cc` |
+| `docs/evidence/star-cast-motion-2026-10-17/Spark.png` | 288,560 | `5a60390921b3c0a7cced2fac571f79f1a902cff17ad220ac561481925ec66623` |
+| `docs/evidence/star-cast-motion-2026-10-17/Sunny.png` | 365,939 | `8cf5754255c5110bcff32918fb83280fcc8a9a38a04bcaa7b5339462340dd061` |
+| `docs/evidence/star-cast-motion-2026-10-17/Pip.png` | 411,486 | `3b38c3462256b0bdb01196aab48f6619d088f577927a09e8960c081254cafcf7` |
+| `docs/evidence/star-cast-motion-2026-10-17/Twinkle.png` | 361,417 | `f82295b577eedbd73fdadf1c496b9c995f73126542b01eb2f6eb217c764dfd91` |
+| `docs/evidence/star-cast-motion-2026-10-17/Nova.png` | 278,296 | `1c2a5994202f8be13f3eaef3a7c94b4d1aea15024ec17e4eeaa8905b809724ea` |
+| `docs/evidence/star-cast-motion-2026-10-17/Dusk.png` | 289,176 | `e56a351f66e576d25deca17f222a0b9f874e3a9ff7a4b22be8bb0ea5d97af283` |
+| `docs/evidence/compact-ui-2026-10-16/paused.png` | 674,890 | `df3dcea6b37dd7063dde3453d9297cd076fd5f8055ec32cb3a42bcf2f7ae1d65` |
+| `docs/evidence/dark-starfalls-2026-10-16/automatic-after-clear-paused.png` | 829,335 | `e45e8bfbf09100c4545b5f0fd21c95b51cf5dd73733f66ec3270242bb3aa364c` |
+| `docs/evidence/dark-starfalls-2026-10-16/automatic-calm-after-dismissal.png` | 853,782 | `3f56ed780abee7f2e1776e8789b0f4a05b43c1ddc2b2468a192a583013a32151` |
+| `docs/evidence/dark-starfalls-2026-10-16/automatic-empty-preview.png` | 743,317 | `1c23751f1b59858e56a82434e24eab2b979bfcd5288ef149434f4a34626b0539` |
+| `docs/evidence/dark-starfalls-2026-10-16/automatic-matchable.png` | 842,056 | `57b4417f00b9da0f3bb600476cc474bdf50591d4b3383ed0553d6bd0ae665063` |
+| `docs/evidence/dark-starfalls-2026-10-16/automatic-overflow.png` | 1,205,107 | `e5569360203404348c0c9176d3183a8025efe7e79c76b003a012efae02cb2204` |
+| `docs/evidence/dark-starfalls-2026-10-16/browser-ready.png` | 27,435 | `b66f2bedf26f5c619b70676f89e62aa652c983ee976c6e6ad4421a0fa5aa3c15` |
+| `docs/evidence/starfall-balance-2026-10-16/balance-frequent-dark-star-shower-three.png` | 795,422 | `6b5e0b13d2f15fbdd5d63949c315262ba1aaccc4192ff53dfc12e7e4fc947e3f` |
+| `docs/evidence/starfall-balance-2026-10-16/balance-brisk-no-dark-stars.png` | 814,539 | `2a8c93df30d8920d23233847514f780684823159e016465f1d71f24994c1a418` |
+| `docs/evidence/starfall-balance-2026-10-16/browser-ready.png` | 37,474 | `91fcabd169d921c8a75895861f8462538df537be227f62130b69b0d35b1aa12a` |
+
+**Scope and limits:** Four representative frames were inspected directly: luminous largest text (retained failure), luminous crowded board, dark-star browser handoff and compact paused play. Reports/manifests and references were reviewed for all 21 selections; not every image was visually reinspected. Current selected captures, recent Opal/gravity/chat evidence, unique accessibility/Reduce Motion records, motion samples, unresolved experiment comparisons and the cast sheet cited as an artwork source remain. Packaged/source artwork and sealed payloads are outside this retirement batch. Remaining images are not thereby certified current or necessary indefinitely.
+
+**Batch verification:** All 21 deleted files recover byte-for-byte from the published recovery revision. Scanned 1,262 repository Markdown/HTML relative targets with no references to the retired images; all 33 changed-document targets resolve. Only these seven documentation files and 21 selected image paths changed; historical manifests and retained evidence are unchanged. Hygiene and diff checks passed. The working tree now contains 169 tracked evidence images totaling 104,884,798 bytes. No app source/resources/configuration changed; core/build/native interaction/animation/actual VoiceOver/device checks are inapplicable and were not run. Rendered Markdown was not checked. Next cleanup should review a named superseded surface against replacement evidence; unresolved comparison and accessibility records remain protected.
+
 ## Cleanup verification — October 17, 2026
 
 **Result:** Verified for repository cleanup; current gameplay appearance remains unverified. Tested source: the recovery revision above plus this documentation/image-retirement working-tree change. No app source, resource or build-setting changes.
