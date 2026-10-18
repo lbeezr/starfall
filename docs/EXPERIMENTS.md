@@ -4,7 +4,7 @@ This is the authoritative status register for gameplay and presentation experime
 
 ## Current decisions
 
-Opal follow-up analysis keeps the adopted rules unchanged: the [source-bound study](evidence/opal-choice-study-2026-10-17/README.md) and [native two-clear comparison](evidence/opal-native-planning-2026-10-17/README.md) support a situational planning example, not a universal preservation strategy or human preference claim. The Debug fixture is regression support in the normal app; no new runtime trial route or lab app. Next decision follows observed comprehension under automatic storm play.
+Opal follow-up analysis keeps the adopted rules unchanged: the [source-bound study](evidence/opal-choice-study-2026-10-17/README.md) and [native two-clear comparison](evidence/opal-native-planning-2026-10-17/README.md) support a situational planning example, not a universal preservation strategy or human preference claim. The Debug fixture is regression support in the normal app; no new runtime trial route or lab app. The [timing sensitivity](evidence/pacing-sensitivity-2026-10-17/README.md) keeps current cadence unchanged and targets native input-ready windows plus observed planning during falling. Next decision follows observed comprehension under automatic storm play.
 
 **Delivery policy:** User-requested improvements go directly into the normal Starfall app, with test-only fixtures where needed. Do not create a separate lab app unless explicitly requested. Historical research below does not authorize a new export or install.
 

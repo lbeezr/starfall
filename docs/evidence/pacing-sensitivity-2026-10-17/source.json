@@ -1,0 +1,123 @@
+{
+  "base": "30ce546fbf32a9bc1adfbb7b9ede4037d276a37a",
+  "boundsChecks": "Equal cadence, zero/NaN reaction, excessive trace step and unsupported cadence rejected with exit 2 before output directory creation.",
+  "commonInputSHA256": {
+    "App/FallingSkyHUD.swift": "02d9cd028f0e634f6805b013ee8b5893b934c698faec810eb26ab43b4bd3694b",
+    "App/FallingSkyStore.swift": "b7e880e8bf1ac0b2e3e305ff36156965e8883546fddaa767043bcc056bb35be9",
+    "App/ObservatoryReviewFixture.swift": "9a4750756375afdbfdd710795dcb50a24a3005b3fd1f71e4a4274a35fe0f4aae",
+    "App/SkyFlowState.swift": "ca597f926d65007b576425e429f6a286fead653cda7d85746797c6acee356b6a",
+    "App/SkySaveArchive.swift": "b337f095b793e666e61bd2ca73aea03e7f38ea6085b341883fd239327714a5f1",
+    "Sources/StarfallCore/ConstellationFixture.swift": "7456a989971ac554c0fba1935873acb5f7f3786b3d388150fd0e74fc85eb2c4e",
+    "Sources/StarfallCore/FallingSky.swift": "ce0a47ed62ff3ff2a41fc2b3a43eb8c20dd19039e44e668c327ecd94fcfae255",
+    "Sources/StarfallCore/Game.swift": "9ab2d57af8fe0ee804ce56e762eb5833a08ae5f39e8916ffaa0fe708d90e7086",
+    "Sources/StarfallCore/RefillMapping.swift": "608be41f40c945b18aba5512bac16b7c4de4eb8a2747d6fe54a895392b38e5f7",
+    "Sources/StarfallCore/SkyCadence.swift": "a01a1ab5fe50e7677bd2e1af75563a5bcc316e1828e921e7da2f572202b76b8c",
+    "Sources/StarfallCore/SkyGeneration.swift": "ecddcf4ef645fce9058691339c5fe5d850299c03860e886f5a745f30a59dc70b",
+    "Sources/StarfallCore/StarfallBalance.swift": "32525ba2f346cf843863b1cb1cba8a2fab66d088b9dc7ac308867f1520c329ec",
+    "Sources/StarfallCore/StarfallChallenge.swift": "0475f660c21ae42cce0df8c11dc40adbbb841e58b6c66b82a1293c720bd26b72",
+    "Tests/StarfallCoreTests/TimingCycleFixture.swift": "51936d184a8f60df63abe1489006011abb02431fedf310eca0afb9180513d189",
+    "tools/mechanics/ConstellationFixture.swift": "fd503491d7a31b4303db343a2bd89e5197fe7cabe4f433ab188bf9c142662512",
+    "tools/mechanics/PacingChecks.swift": "abe53f443fd16b862ceffc2ea1ca19ae8b68d84c0e953a6a6d0f0b1374037f8a",
+    "tools/mechanics/PacingMeasure.swift": "b6121e4911ce6357bd0861eceab474acc2af774fac5bb48a1b1731e885188ec0",
+    "tools/mechanics/PacingSupport.swift": "0752ea64ca72b21a4514b5e4210bd9facbbb1ca6aac5879ed3df131401297dc6",
+    "tools/mechanics/compare-pacing.py": "54c735b58f5ea39ad29c9d4d37a80ad5e0a8ea6ac8c6768f8868060236b813be"
+  },
+  "defaultCompatibility": "Parent implementation from git archive; twelve-run default JSON exactly equals updated default smoke. Temporary archive helper initially failed under system Python tarfile API, then noncanonical /var path; bundled Python plus resolved archive path completed the comparison. No production source change resulted.",
+  "dirtyPaths": [
+    " M tools/mechanics/PacingMeasure.swift",
+    " M tools/mechanics/README.md",
+    " M tools/mechanics/compare-pacing.py",
+    "?? docs/evidence/pacing-sensitivity-2026-10-17/"
+  ],
+  "runs": [
+    {
+      "command": [
+        "python3",
+        "tools/mechanics/compare-pacing.py",
+        "--seeds",
+        "16",
+        "--seconds",
+        "120",
+        "--baseline-cadence",
+        "announcedCycleV1",
+        "--candidate-cadence",
+        "announcedCycleV2",
+        "--reaction-seconds",
+        "0.25",
+        "--output",
+        "artifacts/pacing-sensitivity/reaction-025"
+      ],
+      "output": "artifacts/pacing-sensitivity/reaction-025",
+      "reactionSeconds": 0.25,
+      "reportSHA256": "e1b8ded7f456517ff13061fad5711b7bd28bc24726353e295efe6fe435a2ebce",
+      "source": "30ce546fbf32a9bc1adfbb7b9ede4037d276a37a"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/mechanics/compare-pacing.py",
+        "--seeds",
+        "16",
+        "--seconds",
+        "120",
+        "--baseline-cadence",
+        "announcedCycleV1",
+        "--candidate-cadence",
+        "announcedCycleV2",
+        "--reaction-seconds",
+        "0.75",
+        "--output",
+        "artifacts/pacing-sensitivity/reaction-075"
+      ],
+      "output": "artifacts/pacing-sensitivity/reaction-075",
+      "reactionSeconds": 0.75,
+      "reportSHA256": "38e787b387ac1e9c80344109088fb6a4da086175acba17b81436b33cdfec7b48",
+      "source": "30ce546fbf32a9bc1adfbb7b9ede4037d276a37a"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/mechanics/compare-pacing.py",
+        "--seeds",
+        "16",
+        "--seconds",
+        "120",
+        "--baseline-cadence",
+        "announcedCycleV1",
+        "--candidate-cadence",
+        "announcedCycleV2",
+        "--reaction-seconds",
+        "1.5",
+        "--output",
+        "artifacts/pacing-sensitivity/reaction-150"
+      ],
+      "output": "artifacts/pacing-sensitivity/reaction-150",
+      "reactionSeconds": 1.5,
+      "reportSHA256": "2f13f7443f6ba35e256092af6c65fa142855f66c5dd4ce9d19c5eb81f6e011cc",
+      "source": "30ce546fbf32a9bc1adfbb7b9ede4037d276a37a"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/mechanics/compare-pacing.py",
+        "--seeds",
+        "16",
+        "--seconds",
+        "120",
+        "--baseline-cadence",
+        "announcedCycleV1",
+        "--candidate-cadence",
+        "announcedCycleV2",
+        "--reaction-seconds",
+        "0.75",
+        "--output",
+        "artifacts/pacing-sensitivity/reaction-075-repeat"
+      ],
+      "output": "artifacts/pacing-sensitivity/reaction-075-repeat",
+      "reactionSeconds": 0.75,
+      "reportSHA256": "38e787b387ac1e9c80344109088fb6a4da086175acba17b81436b33cdfec7b48",
+      "source": "30ce546fbf32a9bc1adfbb7b9ede4037d276a37a"
+    }
+  ],
+  "verification": "91 Core tests pass; unchanged app/Core; offline runner self-checks and every committed Core replay passed. No new native, animation, actual VoiceOver, device or human result."
+}
