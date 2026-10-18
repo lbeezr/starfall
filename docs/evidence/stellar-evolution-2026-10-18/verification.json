@@ -1,0 +1,19 @@
+{
+  "source": "d0e9dd3fe91984728910229ba1c50b8b76c96ee7",
+  "runtime_changes": [
+    "App/CriticalMassPresentation.swift"
+  ],
+  "sha256": {
+    "App/CriticalMassPresentation.swift": "31c06542bdf1652fffc6f88579f61dad55be26549c09700fe7e9a23042e3bd24",
+    "AppTests/CriticalMassProductionTests.swift": "8e0906abf10c392e02f37c5b4e288098dacce28c05cde4428be0b2b2c4adaaf6"
+  },
+  "simulator": "7D94F0F5-486F-47E3-A2ED-9B35F61FCD66",
+  "device": "iPhone 17e",
+  "os": "iOS 27.0",
+  "toolchain": "Xcode 27.1 (27A9275)",
+  "configuration": "Debug arm64",
+  "captures": {
+    "dev-d0e9dd3__critical-warning__iphone-17e__default-text.jpg": "41ba5d7482bbcd666607253b1257d69d992e0533d3688b853623563cfa7ec3c3",
+    "dev-d0e9dd3__cast-evolution__iphone-17e__quiet.jpg": "1190c4e37188890c3fb5a2bcad5696cf47ad86738ec646217eb51622300a2865"
+  }
+}

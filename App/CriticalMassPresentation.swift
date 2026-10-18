@@ -9,31 +9,37 @@ import StarfallCore
         float light = dot(color.rgb, vec3(0.2126, 0.7152, 0.0722));
         float body = smoothstep(0.10, 0.42, light);
         vec3 purple = u_corruption.rgb * (0.35 + light * 0.90) * color.a;
-        gl_FragColor = vec4(mix(color.rgb, purple, body * 0.94), color.a) * v_color_mix;
+        // Corruption advances from the outer facets; the original family remains at the heart.
+        float edge = length((v_tex_coord - vec2(0.5)) * 2.0);
+        float front = smoothstep(0.70 - u_pressure * 0.60, 0.90 - u_pressure * 0.60, edge);
+        gl_FragColor = vec4(mix(color.rgb, purple, body * front * 0.88), color.a) * v_color_mix;
     }
     """
 
     static func configure(_ node: FallingSkyCharacter, game: FallingSky, cell: Cell, step: CGFloat) {
         guard game.hasCriticalMass else { return }
-        guard node.gem.isCritical else { return }
+        guard node.gem.stellarAge >= CriticalMassRule.showersPerStage else { return }
         let shader = SKShader(source: corruptionShader)
-        shader.uniforms = [SKUniform(name: "u_corruption", vectorFloat4: StarfallTheme.Dusk.corruption)]
+        shader.uniforms = [
+            SKUniform(name: "u_corruption", vectorFloat4: StarfallTheme.Dusk.corruption),
+            SKUniform(name: "u_pressure", float: Float(node.gem.stellarAge) / Float(CriticalMassRule.collapseAge))
+        ]
         node.character.shader = shader
+        guard node.gem.isCritical else { return }
         let cue = SKNode(); cue.name = "sky.critical-mass"
-        // A broken inward diamond distinguishes corruption from violet Nova and value glints.
+        // Four inward chevrons convey compression without a facial mark or color alone.
         let path = CGMutablePath()
         for direction in [CGVector(dx: 0, dy: 1), CGVector(dx: 1, dy: 0), CGVector(dx: 0, dy: -1), CGVector(dx: -1, dy: 0)] {
-            path.move(to: CGPoint(x: direction.dx * step * 0.48, y: direction.dy * step * 0.48))
-            path.addLine(to: CGPoint(x: direction.dx * step * 0.36, y: direction.dy * step * 0.36))
+            let tangent = CGVector(dx: -direction.dy, dy: direction.dx)
+            path.move(to: CGPoint(x: (direction.dx * 0.46 + tangent.dx * 0.055) * step,
+                                 y: (direction.dy * 0.46 + tangent.dy * 0.055) * step))
+            path.addLine(to: CGPoint(x: direction.dx * step * 0.38, y: direction.dy * step * 0.38))
+            path.addLine(to: CGPoint(x: (direction.dx * 0.46 - tangent.dx * 0.055) * step,
+                                    y: (direction.dy * 0.46 - tangent.dy * 0.055) * step))
         }
         let marks = SKShapeNode(path: path)
         marks.strokeColor = StarfallTheme.Dusk.rim; marks.lineWidth = 2.5
         cue.addChild(marks)
-        let core = SKShapeNode(circleOfRadius: step * 0.1)
-        core.fillColor = StarfallTheme.Dusk.core
-        core.strokeColor = StarfallTheme.Dusk.rim
-        core.position = CGPoint(x: 0, y: -step * 0.22)
-        cue.addChild(core)
         cue.zPosition = 3; node.addChild(cue)
     }
 
