@@ -28,3 +28,5 @@ Start with [the roadmap](ROADMAP.md), [writing process](WRITING.md), and [visual
 [Development build identities](DEVELOPMENT_BUILDS.md) owns one-app updates from main, `dev`/release-candidate labels and the development/RC accessibility cadence.
 
 [Third debt pass](TECH_DEBT_THIRD_PASS.md): ranked terminal-restore, native CI lifecycle, tablet clearance and default-game evidence work.
+
+[Fourth debt pass](TECH_DEBT_FOURTH_PASS.md): current-result feedback ownership and simulator subprocess cancellation.

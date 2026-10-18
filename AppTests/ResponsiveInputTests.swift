@@ -4,6 +4,38 @@ import StarfallCore
 @testable import Starfall
 
 final class ResponsiveInputTests: XCTestCase {
+    @MainActor func testAutomaticShowerCannotReplaceNewerClearDialogueInEitherCompletionOrder() throws {
+        var initial = FallingSky(seed: 0, generation: .current)
+        for _ in 0..<23 {
+            _ = initial.letStarsFall()
+            if let cell = initial.legalGroups.first?.first { _ = initial.clear(cell) }
+        }
+        for reversed in [false, true] {
+            let suite = "AutomaticDialogue.\(UUID())", defaults = UserDefaults(suiteName: suite)!
+            defer { defaults.removePersistentDomain(forName: suite) }
+            try SkySaveArchive.save(initial, to: defaults)
+            let presenter = FallingSkyRecorder(), clock = ManualRainClock(), feedback = SkyFeedbackRecorder()
+            let store = FallingSkyStore(defaults: defaults, arguments: [], presenter: presenter, clock: clock, feedback: feedback)
+            store.setSuspended(false); store.togglePause()
+            clock.advance(store.showerInterval)
+            XCTAssertEqual(presenter.completions.count, 1)
+            let cell = try XCTUnwrap(store.game.legalGroups.compactMap(\.first).first { store.canClear($0) })
+            store.clear(cell)
+            XCTAssertEqual(presenter.completions.count, 2)
+            let latest = store.game
+            let expected = SkyDialogueLibrary.contextual(store.guideLine, game: latest, cadence: store.nextShowerCadence)
+            for index in reversed ? [1, 0] : [0, 1] { presenter.completions[index]() }
+            XCTAssertEqual(store.dialogue.line, expected)
+            XCTAssertEqual(feedback.announcements.last, expected.spokenText)
+            XCTAssertFalse(store.busy)
+            XCTAssertEqual(store.game, latest)
+            XCTAssertEqual(SkySaveArchive.load(from: defaults), latest)
+            let revision = store.dialogue.revision
+            presenter.completions[0]()
+            XCTAssertEqual(store.dialogue.revision, revision)
+        }
+    }
+
     @MainActor func testIndependentClearsCompleteInEitherOrderWithoutLosingLatestSave() throws {
         for reversed in [false, true] {
             let suite = "ConcurrentClears.\(UUID())"
