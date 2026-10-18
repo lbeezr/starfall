@@ -4,7 +4,7 @@
 
 Address four ranked findings on clean main `b5ec445` in separate verified batches. The highest priority is a reproduced launch-time precondition failure while migrating a valid terminal gravity save. This is a compatibility correction, not a new mechanic.
 
-**Next action:** verify clean integrated main and canonical device delivery; minimum-iOS and actual VoiceOver remain separate RC acceptance.
+**Next action:** verify canonical delivery when the configured phone reconnects; provision minimum-iOS and complete actual VoiceOver before RC. Clean integrated-main checks are recorded in the report.
 
 | Rank | Workstream | Observable acceptance | Status |
 | --- | --- | --- | --- |

@@ -1,10 +1,10 @@
 # Third debt pass: restore and native acceptance reliability
 
-**Result:** Verified for the four scoped fixes; integration and RC limits below · **Owner:** current implementer · **Date:** 2026-10-18
+**Result:** Verified for the four scoped fixes; RC/device limits below · **Owner:** current implementer · **Date:** 2026-10-18
 
 [Ranked scope and acceptance](../../TECH_DEBT_THIRD_PASS.md). Main `b5ec445` is the starting source; the checkout was clean and origin was already up to date. This report records separate core, build, native, visual and physical-device results as batches finish.
 
-**Next action:** clean-main verification and canonical delivery; complete minimum-iOS/actual VoiceOver before RC.
+**Next action:** canonical delivery when the phone reconnects; complete minimum-iOS/actual VoiceOver before RC.
 
 ## Baseline reproduction
 
@@ -83,3 +83,11 @@ Integration also passed selection of all six real shipping-game PNGs exported by
 ## Tablet test teardown follow-up
 
 A final ownership review moved each expanded matrix launch's termination into its iteration's `defer`, preserving the original test's scope-exit cleanup instead of relying only on the success-path last line. The four-variant native method passed again (127 s, zero failures/skips) on `508b259` plus this test-only change. No app/runtime/capture inputs changed. This is a code ownership correction; an injected XCTest assertion-failure teardown was not run. Clean integrated Core/hosted/build checks follow after merge.
+
+## Clean merged-main checkpoint
+
+The four ranked workstreams merged through PRs [#122](https://github.com/lbeezr/starfall/pull/122), [#123](https://github.com/lbeezr/starfall/pull/123), [#124](https://github.com/lbeezr/starfall/pull/124) and [#125](https://github.com/lbeezr/starfall/pull/125), with test-teardown follow-up [#126](https://github.com/lbeezr/starfall/pull/126). Clean main `5d72e0e88039c9de9e3b0b7bbace397ff012f27d` passed `swift test` (165), the complete StarfallAppTests target (266, zero failures/skips), Release simulator compilation, all 53 tooling tests (9 export, 8 lifecycle, 12 RC, 3 native-plan, 21 updater), Bash syntax, hygiene and `git diff --check`. Debug compilation is included in hosted testing. Source/resource runtime comparison against the tested layout commit `db4007f` is empty (`git diff db4007f HEAD -- App Sources Package.swift Starfall.xcodeproj`). The only later test change is the separately verified matrix teardown.
+
+Hosted/native build context: Xcode 27.1, iPhone 17e / iOS 27.0 QA device from task 1, Debug / ad-hoc simulator signing; Release uses `CODE_SIGNING_ALLOWED=NO`. Raw clean-check logs use `/tmp/starfall-third-integrated-*` and XcodeBuildMCP. No dirty build inputs existed. These checks do not replace the source-bound native/visual results above or certify the complete primary CI job.
+
+`python3 scripts/rc-platforms.py --plan-only` on this source still fails explicitly for missing `minimum-ios`; no fallback or runtime download occurred. Canonical device status remains waiting for the configured phone. Actual physical installation, minimum-iOS, Stage Manager and full actual VoiceOver acceptance remain open. This checkpoint's documentation-only publication does not change the tested app/Core/test/runtime inputs.
