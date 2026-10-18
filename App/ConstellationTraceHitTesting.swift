@@ -15,7 +15,7 @@ enum ConstellationTraceHitTesting {
             .filter { game.constellationGroup(at: $0).count >= 5 }
         return candidates.compactMap { cell -> (Cell, CGFloat)? in
             let center = mapping.viewPoint(cell)
-            let distance = hypot(point.x-center.x, point.y-center.y)
+            let distance = CGFloat(hypot(point.x-center.x, point.y-center.y))
             return distance <= radius(cell, mapping: mapping) ? (cell, distance) : nil
         }.min { $0.1 < $1.1 }?.0
     }

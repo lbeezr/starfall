@@ -1,0 +1,15 @@
+{
+  "base": "316f8cbdc7cdca39a0a76e1cff52f4e2f3f57dc9",
+  "dirtyPaths": [
+    " M App/ConstellationTraceHitTesting.swift",
+    " M AppTests/TraceInputPolishTests.swift",
+    "?? docs/evidence/trace-hit-compatibility-2026-10-17/"
+  ],
+  "error": "ConstellationTraceHitTesting.swift:19:63: cannot convert value of type '(Cell, Double)' to closure result type '(Cell, CGFloat)?'",
+  "failedJob": 117538311346,
+  "failedRun": 39081128237,
+  "sourceSHA256": {
+    "App/ConstellationTraceHitTesting.swift": "b15e75b0845f4948cdd1edd1a09c451f7bcc0d70d266462aeb5e5c1c003d5fb6",
+    "AppTests/TraceInputPolishTests.swift": "95734b187429e311a30b16990bed79836ce16853b642e02b7c4eb904e30a7608"
+  }
+}
