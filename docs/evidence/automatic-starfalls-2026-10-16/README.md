@@ -1,5 +1,7 @@
 # Automatic starfalls validation — 16 October 2026
 
+**Historical screenshots retired October 17, 2026.** This report describes its original source only. The superseded image files were removed from the working tree; [the retirement record and Git recovery instructions](../../SCREENSHOTS.md#retired-screenshots) preserve their provenance. Use [the visual reference](../../design/VISUAL_REFERENCE.md) for selected references.
+
 Device: dedicated **Starfall Accumulation Lab**, iPhone 17 Pro, iOS 27 simulator, UDID `FBB33D71-C642-4705-B63F-F71A3A7CA62C`. Xcode 27, arm64 simulator builds, shared `Starfall` scheme. No physical-device validation is claimed.
 
 ## Automated checks
