@@ -16,7 +16,7 @@ Grown-star readability now uses a luminous double silhouette, two glints and a g
 
 Dusk now offers a space-versus-reward choice: three feeding showers consume its gray neighbors for no points, while an adjacent match dissolves it early. [Production contract](design/DUSK_FEEDING.md) and [verification](evidence/dusk-feeding-2026-10-18/README.md). Next observe whether a new player recognizes the final feeding warning and deliberately uses the collapse.
 
-The retained [technique roster](design/STAR_TECHNIQUES.md) is reconciled with current main, including v6 saves, Dusk feeding, responsive columns and current presentation. Core, hosted, native, layout and animation checks pass. Publish and deliver through the guarded updater, then observe human play. [Source-bound status](evidence/technique-current-main-2026-10-18/README.md).
+The retained [technique roster](design/STAR_TECHNIQUES.md) is reconciled with current main, including v6 saves, Dusk feeding, responsive columns and current presentation. Core, hosted, native, layout and animation checks pass. Merged and delivered through the guarded updater with unchanged saved bytes; observe human play next. [Source-bound status](evidence/technique-current-main-2026-10-18/README.md).
 
 ## Current mechanics integration — October 17, 2026
 
