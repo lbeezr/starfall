@@ -4,13 +4,13 @@ import StarfallCore
 
 // Historical experiment.* accessibility IDs remain stable for automation and assistive clients.
 @MainActor struct FallingSkyView: View {
-    @State private var store = FallingSkyStore.forSkyFlowApp()
+    @State private var store: FallingSkyStore
     @State private var interaction = SkyInteractionSession()
     private var trace: ConstellationTraceIntent { interaction.trace }
     private var technique: SkyTechniqueIntent { interaction.technique }
     @State private var menu: SkyMenuDestination?
     private var settings: Bool { menu != nil }
-    @State private var flow = SkyFlowState()
+    @State private var flow: SkyFlowState
     @State private var environmentGeneration = 0
     @State private var handoffLeaving = false
     @AccessibilityFocusState private var menuFocused: Bool
@@ -27,6 +27,15 @@ import StarfallCore
             : AnyLayout(HStackLayout(spacing: StarfallTheme.Spacing.medium))
     }
     @Namespace private var matchingGroups
+
+    init() {
+        self.init(store: .forSkyFlowApp(), flow: SkyFlowState())
+    }
+
+    init(store: FallingSkyStore, flow: SkyFlowState) {
+        _store = State(initialValue: store)
+        _flow = State(initialValue: flow)
+    }
 
     private var endingReady: Bool { flow.screen == .playing && store.game.isOver && !store.busy }
     private var ceremonyScreen: SkyFlowScreen? {
