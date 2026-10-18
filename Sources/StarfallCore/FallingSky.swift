@@ -587,7 +587,10 @@ public struct FallingSky: Codable, Equatable, Sendable {
               (0...(balance.darkStars.showerGap.map { $0.upperBound - 1 } ?? 0)).contains(showersUntilDark),
               darkStarsCleared >= 0, darkStarsCleared <= starsLanded,
               incoming.allSatisfy({ (0..<7).contains($0.column) && $0.id >= 0 && (!$0.isLight || $0.kind == nil) && $0.gravityKind != .hole && ($0.gravityKind == nil || ($0.kind == nil && !$0.isLight)) }),
+              Set(incoming.map(\.id)).count == incoming.count,
               blockedColumn.map({ (0..<7).contains($0) }) ?? true else { return false }
+        // Overflow is committed only when a shower encounters a full column.
+        if let column = blockedColumn, SkyBoardSettling.height(board, column: column) != 7 { return false }
         // Retired and lost light are disjoint parts of landed light. Bound each
         // subtraction before conservation arithmetic, including corrupted archives.
         let magnetic = retiredMagnetic ?? 0

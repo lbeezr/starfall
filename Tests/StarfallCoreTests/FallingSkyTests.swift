@@ -434,3 +434,45 @@ extension FallingSkyTests {
         }
     }
 }
+
+
+extension FallingSkyTests {
+    func testSaveRejectsDuplicateForecastIdentityAndImpossibleOverflow() throws {
+        func decode(_ fields: [String: Any]) throws -> FallingSky {
+            try JSONDecoder().decode(FallingSky.self, from: JSONSerialization.data(withJSONObject: fields))
+        }
+        for original in [FallingSky.freshSurvival(seed: 5), FallingSky(seed: 5), FallingSky(challenge: .firstLight)] {
+            XCTAssertTrue(original.isValidSave)
+            let fields = try XCTUnwrap(JSONSerialization.jsonObject(with: JSONEncoder().encode(original)) as? [String: Any])
+            var duplicate = fields
+            var incoming = try XCTUnwrap(fields["incoming"] as? [[String: Any]])
+            XCTAssertGreaterThan(incoming.count, 1)
+            incoming[1]["id"] = incoming[0]["id"]
+            duplicate["incoming"] = incoming
+            XCTAssertFalse(try decode(duplicate).isValidSave)
+            for column in 0..<7 {
+                var overflow = fields; overflow["blockedColumn"] = column
+                XCTAssertFalse(try decode(overflow).isValidSave)
+            }
+        }
+    }
+
+    func testGeneratedSavesAndReplayRemainValidAcrossRules() throws {
+        var terminalCount = 0
+        for seed in 0..<24 {
+            for initial in [FallingSky.freshSurvival(seed: UInt64(seed)), FallingSky(seed: UInt64(seed)), FallingSky(challenge: .firstLight)] {
+                var game = initial
+                for _ in 0..<100 where !game.isOver {
+                    XCTAssertTrue(game.isValidSave)
+                    var replay = try JSONDecoder().decode(FallingSky.self, from: JSONEncoder().encode(game))
+                    XCTAssertTrue(replay.isValidSave)
+                    XCTAssertNotNil(game.letStarsFall()); XCTAssertNotNil(replay.letStarsFall())
+                    XCTAssertEqual(game, replay)
+                }
+                if game.isOver { terminalCount += 1 }
+                XCTAssertTrue(game.isValidSave, "Terminal overflow retains its full column")
+            }
+        }
+        XCTAssertGreaterThan(terminalCount, 0)
+    }
+}
