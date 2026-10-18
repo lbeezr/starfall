@@ -9,13 +9,7 @@ final class StarCastTests: XCTestCase {
         let kinds = StarCast.Identity.allCases
         for kind in kinds {
             let name = StarCast.character(for: kind).name
-            let body: UIImage
-            if kind == .magnet || kind == .hole {
-                body = StarCast.image(for:kind)
-                XCTAssertNil(UIImage(named:"StarCast" + name), "Gravity is owned by the shared procedural material")
-            } else {
-                body = try XCTUnwrap(UIImage(named: "StarCast" + name), "Missing bundled body for \(name)")
-            }
+            let body = try XCTUnwrap(UIImage(named: "StarCast" + name), "Missing bundled body for \(name)")
             XCTAssertEqual(body.size, CGSize(width: 256, height: 256))
             XCTAssertNotEqual(try XCTUnwrap(body.cgImage).alphaInfo, CGImageAlphaInfo.none)
             let offset = StarCast.groundOffset(for: kind, radius: 20)
@@ -299,7 +293,7 @@ final class StarCastTests: XCTestCase {
                 else { neutralAlpha = alpha }
                 expressions.insert(Data(pixels))
             }
-            // Gravity objects have a fixed glyph; the seven faced stars keep authored expressions.
+            // Gravity objects have a fixed material; the seven faced stars keep authored expressions.
             XCTAssertEqual(expressions.count, kind == .magnet || kind == .hole ? 1 : 4)
         }
     }
@@ -435,7 +429,7 @@ final class StarCastTests: XCTestCase {
                     }
                 }
             }
-            XCTAssertEqual(unique.count, kind == .magnet || kind == .hole ? 1 : 12, "Fixed gravity glyphs share one frame; faced stars retain all twelve authored poses")
+            XCTAssertEqual(unique.count, kind == .magnet || kind == .hole ? 1 : 12, "Packaged gravity objects share one frame; faced stars retain all twelve authored poses")
             let attachment = XCTAttachment(image: sheet)
             attachment.name = "star-cast-sheet-" + StarCast.character(for: kind).name
             attachment.lifetime = .keepAlways; add(attachment)
@@ -445,9 +439,10 @@ final class StarCastTests: XCTestCase {
     @MainActor func testCastReviewSheetAtBoardAndHeroSizes() {
         let kinds = StarCast.Identity.allCases
         let format = UIGraphicsImageRendererFormat(); format.scale = 2
-        let sheet = UIGraphicsImageRenderer(size: CGSize(width: 980, height: 670), format: format).image { render in
+        let width = CGFloat(kinds.count) * 140
+        let sheet = UIGraphicsImageRenderer(size: CGSize(width: width, height: 670), format: format).image { render in
             UIColor(red: 0.06, green: 0.08, blue: 0.17, alpha: 1).setFill()
-            render.fill(CGRect(x: 0, y: 0, width: 980, height: 670))
+            render.fill(CGRect(x: 0, y: 0, width: width, height: 670))
             let labels: [NSAttributedString.Key: Any] = [.font: UIFont.systemFont(ofSize: 15, weight: .medium), .foregroundColor: UIColor.white]
             for (index, kind) in kinds.enumerated() {
                 let x = CGFloat(index) * 140
@@ -466,5 +461,34 @@ final class StarCastTests: XCTestCase {
         let attachment = XCTAttachment(image: sheet)
         attachment.name = "star-cast-materials-and-gameplay-scale"; attachment.lifetime = .keepAlways
         add(attachment)
+    }
+}
+
+
+extension StarCastTests {
+    @MainActor func testPackagedGravityKeepsOpaqueCenterAndOneSharedMaterialPerObject() throws {
+        var images: [Data] = []
+        for identity in [StarCast.Identity.magnet, .hole] {
+            let image = StarCast.image(for:identity)
+            let cg = try XCTUnwrap(image.cgImage)
+            var pixels = [UInt8](repeating:0,count:256*256*4)
+            let context = try XCTUnwrap(CGContext(data:&pixels,width:256,height:256,bitsPerComponent:8,
+                bytesPerRow:256*4,space:CGColorSpaceCreateDeviceRGB(),bitmapInfo:CGImageAlphaInfo.premultipliedLast.rawValue))
+            context.draw(cg,in:CGRect(x:0,y:0,width:256,height:256))
+            XCTAssertGreaterThanOrEqual(pixels[(128*256+128)*4+3],250,"The dark center must occlude the board")
+            XCTAssertEqual(pixels[3],0)
+            let texture = StarCast.texture(for:identity,expression:.idle)
+            for expression in StarCast.Expression.allCases {
+                for facing in StarCast.Facing.allCases {
+                    XCTAssertTrue(StarCast.texture(for:identity,expression:expression,facing:facing) === texture)
+                }
+            }
+            images.append(try XCTUnwrap(image.pngData()))
+        }
+        XCTAssertNotEqual(images[0],images[1])
+        for reference in [StarCast.Identity.dusk,.opal] {
+            XCTAssertFalse(images.contains(try XCTUnwrap(StarCast.image(for:reference).pngData())))
+        }
+        XCTAssertEqual(StarCast.cachedMaterialCount,86)
     }
 }

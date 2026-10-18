@@ -16,6 +16,12 @@ The v5 normal archive reads v4 envelopes and v3 raw skies without rewriting thei
 
 The [historical trial evidence](../evidence/gravity-orbit-2026-10-17/README.md) applies only to its pinned export. Its duplicated transforms, alternate bundle/save envelope and player fixture menu are retired on adoption. The original analysis below remains decision history, not current implementation documentation.
 
+## Production visual contract (2026-10-17)
+
+Replace the two arrow glyphs with packaged transparent art: a horizontal, gold-tipped teal magnetic crystal and an opaque dark hole surrounded by a blue-gold accretion ribbon. Keep both faceless so they read as special objects beside the expressive star cast. The ring and opposed tips distinguish them without color alone. Core rules, saves, forecasts, coordinate mapping and star identities stay unchanged.
+
+Acceptance: inspect 24/36/44-point materials and native normal/largest-text play; use one shared cached texture per object across board/flight/forecast; preserve alpha padding/aspect/pivot and bounded resources. Verify convergence, a brief local attraction cue, a contracting formation ring, captive orbit and release at full motion. Calm effects/system Reduce Motion keep identical committed outcomes and suppress the extra movement. Run focused material/store/native checks, Core, Debug/Release builds and hygiene. Keep source images, exact built-in imagegen prompts and packaging hashes under Artwork/StarCast. Actual VoiceOver and physical-device acceptance remain RC/device follow-up.
+
 ## What the original code analysis established
 
 Inspected committed runtime at `f35eba87311f5e9e56740b9677bceb699154e8ae`, plus the canonical trial fragments listed below. Working-tree differences at analysis start were the preceding research/register/navigation documents only.

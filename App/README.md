@@ -43,3 +43,5 @@ Gravity integration uses the normal target and v5 committed archive. Core owns o
 `ConstellationTouchSession` classifies every final sample, including sub-slop off-board releases and a first drag sample delivered on release. The surface cancels on changed configuration/detachment/multitouch; store-issued hold tickets reject releases from older gestures.
 
 Camera-layout selection reads the full local playfield canvas, beside the consuming overlay. Profiles require complete checked portrait dimensions and inset; resized/unknown/accessible viewports use the header. This is layout approval, not a claim that unknown hardware lacks a camera island.
+
+Magnetic crystals and gravity holes use `StarCastMagnet`/`StarCastHole` packaged artwork through the shared cast cache, including forecasts and arrivals. Theme supplies their blue-gold light colors; `GravityMotion` supplies finite child-art cues. [Art source and exact prompts](../Artwork/StarCast/README.md#magnetic-crystal-and-gravity-hole); [native visual evidence](../docs/evidence/gravity-art-2026-10-17/README.md).

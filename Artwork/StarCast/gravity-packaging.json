@@ -1,0 +1,33 @@
+{
+  "generator": "built-in image_gen",
+  "frames": {
+    "Magnet": {
+      "sourceBounds": [
+        102,
+        275,
+        1152,
+        977
+      ],
+      "bodySize": [
+        208,
+        139
+      ],
+      "sha256": "a0d7cfdd20a3156a8046d87a7a12fd2740217615c353821a6c09c9ac1e3f926d",
+      "sourceSHA256": "6b004d80be92732d4ba2429bd137a629e6fac11036a7a2bc659860501a985c79"
+    },
+    "Hole": {
+      "sourceBounds": [
+        39,
+        152,
+        1228,
+        1070
+      ],
+      "bodySize": [
+        208,
+        161
+      ],
+      "sha256": "4b5ca2815f5958877144753fc1094761192287ff8db725339ed783145a625ad3",
+      "sourceSHA256": "3ae52f58fc3d37662069803c4922fcfb394d7fbda2f4067a9d8882f03ab3d0e2"
+    }
+  }
+}

@@ -421,7 +421,7 @@ extension FallingSkyScene {
     }
 }
 
-// Appended to the scene owner in the isolated export. All motion presents Core phases.
+// Finite gravity presentation follows committed Core phases.
 extension FallingSkyScene {
     private func renderGravityField(_ field: OrbitField?) {
         grid.children.filter { $0.name == "gravity.field" }.forEach { $0.removeFromParent() }
@@ -431,12 +431,12 @@ extension FallingSkyScene {
         for cell in field.slots {
             let path = CGMutablePath(); path.move(to:center); path.addLine(to:point(cell))
             let line = SKShapeNode(path:path.copy(dashingWithPhase:0,lengths:[3,4]))
-            line.strokeColor = UIColor(StarfallTheme.Colors.actionPrimary).withAlphaComponent(0.65); line.lineWidth = 1.5
+            line.strokeColor = StarfallTheme.Gravity.orbitLight.withAlphaComponent(0.65); line.lineWidth = 1.5
             root.addChild(line)
         }
         for index in 0..<field.windowsRemaining {
             let dot=SKShapeNode(circleOfRadius:step*0.035)
-            dot.fillColor = .white; dot.strokeColor = .clear
+            dot.fillColor = StarfallTheme.Gravity.magneticLight; dot.strokeColor = .clear
             dot.position = CGPoint(x:center.x+CGFloat(index-1)*step*0.13,y:center.y-step*0.42)
             root.addChild(dot)
         }
@@ -452,6 +452,11 @@ extension FallingSkyScene {
                let hole=phase.board.firstIndex(where: { $0?.gravityKind == .hole }) {
                 disappearance.append(.move(to:point(Cell(hole/7,hole%7)),duration:duration))
             }
+            if phase.event == .collision, let node,
+               let hole = phase.board.firstIndex(where: { $0?.gravityKind == .hole }) {
+                let direction: CGFloat = point(Cell(hole/7,hole%7)).x > node.position.x ? 1 : -1
+                node.character.run(GravityMotion.attraction(direction: direction, step: step, duration: duration))
+            }
             node?.run(.sequence([.group(disappearance),.removeFromParent()]))
         }
         grid.removeAllChildren()
@@ -463,6 +468,9 @@ extension FallingSkyScene {
             if existing == nil {
                 node.position=destination; node.setScale(0.1); pieces.addChild(node); nodes[gem.id]=node
                 node.run(.scale(to:1,duration:duration))
+            }
+            if phase.event == .rotation, gem.gravityKind == .hole {
+                node.character.run(GravityMotion.ringResponse(duration: duration), withKey: "gravity.ring-response")
             }
             if cellsByID[gem.id] != cell {
                 if phase.event == .rotation, let field=phase.field {
@@ -493,9 +501,14 @@ extension FallingSkyScene {
         renderGravityField(phase.field)
         if phase.event == .collision, let index=phase.board.firstIndex(where: { $0?.gravityKind == .hole }) {
             let pulse=SKShapeNode(circleOfRadius:step*0.18); pulse.position=point(Cell(index/7,index%7))
-            pulse.strokeColor = UIColor(StarfallTheme.Colors.actionPrimary); pulse.lineWidth=2; pulse.glowWidth=3
+            pulse.strokeColor = StarfallTheme.Gravity.magneticLight; pulse.lineWidth=2; pulse.glowWidth=3
             effects.addChild(pulse)
             pulse.run(.sequence([.group([.scale(to:3,duration:duration),.fadeOut(withDuration:duration)]),.removeFromParent()]))
+            let infall = SKShapeNode(ellipseOf: CGSize(width: step * 1.1, height: step * 0.62))
+            infall.position = pulse.position
+            infall.strokeColor = StarfallTheme.Gravity.orbitLight; infall.lineWidth = 2
+            infall.name = "gravity.formation"; effects.addChild(infall)
+            infall.run(.sequence([.group([.scale(to: 0.12, duration: duration), .fadeOut(withDuration: duration)]), .removeFromParent()]))
         }
     }
     private func animateGravity(_ turn: FallingSkyTurn, from old: FallingSky, to game: FallingSky,
