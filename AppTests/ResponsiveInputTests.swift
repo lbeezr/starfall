@@ -73,6 +73,8 @@ final class ResponsiveInputTests: XCTestCase {
         store.clear(Cell(0,0)); store.clear(Cell(2,6))
         store.explainSettling(at: Cell(6,0))
         XCTAssertEqual(store.inputMessage, "Stars settling…")
+        XCTAssertEqual(store.dialogue.line?.text, "Stars settling…")
+        XCTAssertEqual(store.dialogue.line?.speaker, .spark)
         presenter.completions[0]()
         XCTAssertTrue(store.busy, "Another column still presents independently")
         XCTAssertNil(store.inputMessage, "The touched column is ready, so its wait cue must end")
@@ -156,6 +158,8 @@ final class ResponsiveInputTests: XCTestCase {
         let before = store.game
         store.explainInputFailure("Trace needs 5 matching stars")
         XCTAssertEqual(store.inputMessage, "Trace needs 5 matching stars")
+        XCTAssertEqual(store.dialogue.line?.text, "Trace needs 5 matching stars")
+        XCTAssertTrue(store.dialogue.visible)
         XCTAssertEqual(feedback.announcements, ["Trace needs 5 matching stars"])
         XCTAssertEqual(store.game, before)
     }

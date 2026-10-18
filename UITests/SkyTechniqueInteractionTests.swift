@@ -8,7 +8,10 @@ final class SkyTechniqueInteractionTests: XCTestCase {
         app.launchArguments = ["--starfalls-reset", "--technique-review", "--technique-example=\(example)", "-calmEffects", "NO"]
         if large { app.launchArguments += ["-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"] }
         app.launch()
-        XCTAssertTrue(app.buttons["technique.arrange"].waitForExistence(timeout: 10))
+        XCTAssertTrue(app.buttons["experiment.settings"].waitForExistence(timeout: 10))
+        XCTAssertFalse(app.buttons["technique.arrange"].exists)
+        XCTAssertFalse(app.staticTexts["dusk.cue"].exists)
+        XCTAssertFalse(app.staticTexts["sky.inputStatus"].exists)
         let board = app.otherElements["experiment.board"]
         XCTAssertGreaterThan(board.frame.width,app.frame.width * 0.95)
         XCTAssertGreaterThan(board.frame.height,app.frame.height * 0.95)
@@ -33,105 +36,25 @@ final class SkyTechniqueInteractionTests: XCTestCase {
         let end = app.buttons["experiment.cell.\(to.0).\(to.1)"].coordinate(withNormalizedOffset: CGVector(dx: 0.5,dy: 0.5))
         start.press(forDuration: 0.1,thenDragTo: end,withVelocity: .slow,thenHoldForDuration: hold)
     }
-    @MainActor func testExactSquareThenGravityCreatesDeliberateRelay() {
+    @MainActor func testTapRecipesRelayWithoutAnyModeOrMenuToggle() {
         let app = launch("relay"); defer { app.terminate() }
-        tap("technique.arrange", app)
-        tap("experiment.cell.0.0", app)
-        XCTAssertEqual(app.buttons["technique.activate"].label, "Clear square")
-        capture(app,"technique-square-selected")
-        tap("technique.activate",app); score(4,app)
-        // Gravity creates the aqua square; it waits for another deliberate action.
-        XCTAssertTrue(app.buttons["experiment.cell.0.1"].label.contains("Aqua"))
-        tap("experiment.cell.0.1", app)
-        tap("technique.activate",app); score(8,app)
+        tap("experiment.cell.0.0",app); score(4,app)
+        tap("experiment.cell.0.1",app); score(8,app)
         XCTAssertTrue(app.staticTexts["experiment.message"].label.contains("2-clear relay"))
-        XCTAssertEqual(app.buttons["technique.arrange"].label,"Arrange stars")
-        XCTAssertFalse(app.buttons["technique.arrange"].isEnabled)
         XCTAssertTrue(app.buttons["experiment.next"].exists)
-        XCTAssertTrue(app.buttons["experiment.pause"].exists)
-        capture(app,"technique-relay-complete")
+        capture(app,"gesture-only-relay")
+        tap("experiment.settings",app)
+        XCTAssertFalse(app.buttons["technique.arrange"].exists)
+        tap("experiment.done",app)
     }
-    @MainActor func testEmptyOpeningKeepsShowerControlsUntilStarsArrive() {
-        continueAfterFailure = false
+    @MainActor func testEmptyOpeningKeepsShowerControlsWithoutModeToggle() {
         let app = XCUIApplication()
         app.launchArguments = ["--starfalls-reset","--starfalls-seed=5","-calmEffects","NO"]
         app.launch(); defer { app.terminate() }
-        let arrange = app.buttons["technique.arrange"]
-        XCTAssertTrue(arrange.waitForExistence(timeout:10))
-        XCTAssertFalse(arrange.isEnabled)
-        XCTAssertTrue(app.buttons["experiment.pause"].exists)
-        let next = app.buttons["experiment.next"]
-        XCTAssertTrue(next.isEnabled); next.tap()
-        XCTAssertTrue(XCTNSPredicateExpectation(predicate:NSPredicate(format:"enabled == true"),object:arrange).wait(timeout:5))
-        arrange.tap()
-        XCTAssertEqual(arrange.label,"Finish arranging")
-    }
-    @MainActor func testNudgeWithButtonsAndSwipePreservesFourStarRecipe() {
-        let app = launch("nudge"); defer { app.terminate() }
-        tap("technique.arrange",app); tap("experiment.cell.1.2",app)
-        tap("technique.move.left",app); score(0,app)
-        tap("experiment.cell.0.0",app); tap("technique.activate",app); score(4,app)
-        capture(app,"technique-nudge-square")
-        tap("experiment.cell.1.2",app); tap("experiment.cell.1.3",app)
-        XCTAssertTrue(XCTNSPredicateExpectation(predicate:NSPredicate(format:"label CONTAINS %@","Mint"),object:app.buttons["experiment.cell.0.3"]).wait(timeout:5))
-        score(4,app)
-        app.terminate()
-        let swiping = launch("nudge"); defer { swiping.terminate() }
-        tap("technique.arrange",swiping); drag(swiping,from:(1,2),to:(1,1),hold:0.6); score(0,swiping)
-        tap("experiment.cell.0.0",swiping); tap("technique.activate",swiping); score(4,swiping)
-    }
-    /// Ordinary current-generation history, not a technique fixture with its clock disabled.
-    @MainActor func testDeliberateSquareSetupWhileAutomaticRainRuns() {
-        automaticSquareSetup(hold: 6)
-    }
-    @MainActor func testPromptSquareSetupWhileAutomaticRainRuns() {
-        automaticSquareSetup(hold: 0.2)
-    }
-    @MainActor private func automaticSquareSetup(hold: TimeInterval) {
-        continueAfterFailure = false
-        let app = XCUIApplication()
-        app.launchArguments = ["--starfalls-reset", "--starfalls-seed=0", "-calmEffects", "NO"]
-        app.launch(); defer { app.terminate() }
-        let board = app.otherElements["experiment.board"]
-        for shower in 1...6 {
-            tap("experiment.next", app)
-            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "value BEGINSWITH %@", "\(shower) showers,"), object: board).wait(timeout: 6))
-        }
-        // Resolve coordinates while paused; do not spend the live deadline on AX queries.
-        let start = app.buttons["experiment.cell.4.0"].coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5))
-        let end = app.buttons["experiment.cell.4.1"].coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5))
-        capture(app, "automatic-setup-before")
-        tap("experiment.pause", app)
-        start.press(forDuration: 0.1, thenDragTo: end, withVelocity: .slow, thenHoldForDuration: hold)
-        score(0, app)
-        // These existing targets are already on screen. Avoid adding seconds of
-        // redundant existence polling to a live two-second shower interval.
-        app.buttons["technique.arrange"].tap()
-        app.buttons["experiment.cell.1.0"].tap()
-        XCTAssertEqual(app.buttons["technique.activate"].label, "Clear square")
-        capture(app, "automatic-setup-square-selected")
-        let selectedAt = Int((board.value as? String ?? "").split(separator: " ").first ?? "")
-        XCTAssertNotNil(selectedAt)
-        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
-            guard let before = selectedAt,
-                  let now = Int((board.value as? String ?? "").split(separator: " ").first ?? "") else { return false }
-            return now > before
-        }, object: board).wait(timeout: 6), "The chosen recipe crosses a real automatic shower")
-        let activate = app.buttons["technique.activate"]
-        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true AND hittable == true"), object: activate).wait(timeout: 5))
-        activate.tap()
-        let observation = XCTAttachment(string: "hold=\(hold); board=\(board.value as? String ?? "unavailable"); score=\(app.staticTexts["experiment.score"].label); actionRemains=\(app.buttons["technique.activate"].exists)")
-        observation.name = "automatic-setup-commit-observation"; observation.lifetime = .keepAlways; add(observation)
-        score(4, app)
-        // Read after the clear; wait for a new shower rather than assuming an exact UI deadline.
-        let afterClear = Int((board.value as? String ?? "").split(separator: " ").first ?? "")
-        XCTAssertNotNil(afterClear)
-        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
-            guard let before = afterClear,
-                  let now = Int((board.value as? String ?? "").split(separator: " ").first ?? "") else { return false }
-            return now > before
-        }, object: board).wait(timeout: 10), "Automatic rain resumes after the held setup and recipe clear")
-        capture(app, "automatic-setup-rain-resumed")
+        XCTAssertTrue(app.buttons["experiment.next"].waitForExistence(timeout:10))
+        XCTAssertFalse(app.buttons["technique.arrange"].exists)
+        tap("experiment.next",app)
+        XCTAssertFalse(app.buttons["technique.arrange"].exists)
     }
     @MainActor func testSwipeAndHoldSwapsWithoutArrangeAndEmptyDestinationFalls() {
         let app = launch("nudge"); defer { app.terminate() }
@@ -144,7 +67,7 @@ final class SkyTechniqueInteractionTests: XCTestCase {
         start.press(forDuration:0.1,thenDragTo:neighbor,withVelocity:.slow,thenHoldForDuration:0.2)
         XCTAssertTrue(XCTNSPredicateExpectation(predicate:NSPredicate(format:"label CONTAINS %@","Aqua"),object:app.buttons["experiment.cell.1.1"]).wait(timeout:5))
         score(0,app)
-        XCTAssertEqual(app.buttons["technique.arrange"].label,"Arrange stars")
+        XCTAssertFalse(app.buttons["technique.arrange"].exists)
         let mint = app.buttons["experiment.cell.1.2"].coordinate(withNormalizedOffset:CGVector(dx:0.5,dy:0.5))
         let empty = app.buttons["experiment.cell.1.3"].coordinate(withNormalizedOffset:CGVector(dx:0.5,dy:0.5))
         mint.press(forDuration:0.1,thenDragTo:empty,withVelocity:.slow,thenHoldForDuration:0.2)
@@ -162,34 +85,24 @@ final class SkyTechniqueInteractionTests: XCTestCase {
         XCTAssertTrue(app.buttons["experiment.cell.0.5"].label.contains("Aqua"))
         capture(app,"technique-five-selected-one-retained")
     }
-    @MainActor func testSettingsAndBackgroundCancelSelection() {
-        let app = launch("relay"); defer { app.terminate() }
-        tap("technique.arrange",app); tap("experiment.cell.0.0",app)
-        tap("experiment.settings",app); tap("experiment.done",app)
-        XCTAssertFalse(app.buttons["technique.activate"].exists); score(0,app)
-        tap("technique.arrange",app); tap("experiment.cell.0.0",app)
+    @MainActor func testSettingsAndBackgroundLeaveGesturesReadyWithoutRetoggling() {
+        let app = launch("nudge"); defer { app.terminate() }
+        tap("experiment.settings",app)
+        XCTAssertFalse(app.buttons["technique.arrange"].exists)
+        tap("experiment.done",app)
         XCUIDevice.shared.press(.home); app.activate()
-        XCTAssertFalse(app.buttons["technique.activate"].exists); score(0,app)
-        tap("experiment.cell.0.0",app); tap("technique.activate",app); score(4,app)
-    }
-    @MainActor func testLargestTextRecipeActionsRemainReachable() {
-        let app = launch("relay",large:true); defer { app.terminate() }
-        tap("technique.arrange",app); tap("experiment.cell.0.0",app)
-        drag(app,from:(0,2),to:(3,2))
-        XCTAssertTrue(app.buttons["technique.activate"].exists,"Scrolling from an occupied star preserves the recipe selection")
-        XCTAssertFalse(app.staticTexts["sky.inputStatus"].exists,"Ordinary scrolling is not an interrupted touch")
-        tap("technique.activate",app,captureName:"technique-largest-text-selected-controls"); score(4,app)
-        capture(app,"technique-largest-text")
-    }
-    @MainActor func testOverlappingRecipesOfferAnExplicitCrossChoice() {
-        let app = launch("fork"); defer { app.terminate() }
-        tap("technique.arrange",app); tap("experiment.cell.2.1",app)
-        tap("technique.recipePicker",app)
-        let cross = app.buttons.matching(NSPredicate(format:"label BEGINSWITH %@","Cross ·")).firstMatch
-        XCTAssertTrue(cross.waitForExistence(timeout:5)); cross.tap()
-        XCTAssertEqual(app.buttons["technique.activate"].label,"Clear cross")
-        capture(app,"technique-fork-cross-choice")
-        tap("technique.activate",app); score(5,app)
+        let source = app.buttons["experiment.cell.1.2"]
+        let resumed = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+            app.state == .runningForeground && source.isEnabled && source.isHittable
+        }, object: nil).wait(timeout: 5)
+        if !resumed { capture(app,"gesture-resume-unavailable") }
+        XCTAssertTrue(resumed, app.debugDescription)
+        drag(app,from:(1,2),to:(1,1),hold:0.2)
+        let swapped = XCTNSPredicateExpectation(predicate:NSPredicate(format:"label CONTAINS %@","Aqua"),object:app.buttons["experiment.cell.1.1"]).wait(timeout:5)
+        if !swapped { capture(app,"gesture-resume-swap-missing") }
+        XCTAssertTrue(swapped, app.debugDescription)
+        tap("experiment.cell.0.0",app); score(4,app)
+        XCTAssertFalse(app.buttons["technique.activate"].exists)
     }
 
     @MainActor func testRescueCreatesHeadroomDissolvesDarkAndKeepsTheBank() {

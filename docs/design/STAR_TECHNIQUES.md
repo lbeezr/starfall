@@ -1,10 +1,10 @@
 # Arrange stars and build deliberate relays
 
-**Status:** Accepted; development checks verified · **Owner:** current implementer · **Updated:** October 18, 2026
+**Status:** Accepted; gesture-only development checks recorded, full-sky check unresolved · **Owner:** current implementer · **Updated:** October 18, 2026
 
 Give single-cell stars a controllable setup move and exact recipes while preserving falling stars. In survival, swipe one horizontal cell, hold briefly, then lift to exchange the stars. Empty destinations are allowed: unsupported stars fall after the slide. A matching four-star square or five-star cross can be cleared without spending surrounding stars. The next clear remains a player decision.
 
-**Decision:** Keep these as ordinary board actions, with no charge, bonus multiplier, progression or automatic cascade. First Light retains its existing rules. [Integration evidence](../evidence/technique-current-main-2026-10-18/README.md) owns verification and delivery status.
+**Decision:** Keep these as ordinary board actions, with no charge, bonus multiplier, progression or automatic cascade. First Light retains its existing rules. [Original integration evidence](../evidence/technique-current-main-2026-10-18/README.md) retains its source; [gesture-only correction](../evidence/dialogue-only-hud-2026-10-18/README.md) tracks removal of Arrange.
 
 ## What the player can learn
 
@@ -26,9 +26,8 @@ These are player strategies, not separate saved abilities. Debug reset-only exam
 
 A 150 ms dwell in the neighboring cell arms an exchange and displays its two-star preview. Lift on that same cell to commit. Returning to the source cancels the armed move; leaving the original row or crossing two columns disqualifies that contact. Quick swipes retain selected tracing behavior. Multi-touch, changed input generation, settings, backgrounding and scene replacement cancel pending input. The recognizer delivers contact immediately, before scroll views can defer UIView touches; one contact owns the held shower deadline through release/cancel/reset. Unavailable incidental samples preserve a trace; stale snapshots still cancel.
 
-Arrange offers tap controls for selecting a star, moving left/right, choosing an overlapping recipe, clearing it, or cancelling. Native accessibility actions open the same selection. At accessibility text sizes these controls reflow below the canvas and scroll. Ordinary taps still clear normal connected groups; the selected recipe spends only its exact ingredients. Opal can join a colored family; all-Opal recipes and Dusk ingredients are invalid.
+Board actions are direct gestures. Swipe sideways and hold briefly for an exchange; tap ordinary matches or trace exact squares/crosses. There is no Arrange mode, menu entry, toggle, neighbor-tap exchange or recipe picker. A completed/cancelled gesture returns directly to ordinary input. Native constellation accessibility actions retain exact trace selection without a mode. At accessibility text sizes character chat scrolls below the canvas. Opal can join a colored family; all-Opal recipes and Dusk ingredients are invalid.
 
-Arrange is unavailable while the sky is empty. If a committed clear removes the final stars, the intent exits Arrange and restores the ordinary paused-play controls, retaining relay feedback. A populated sky keeps the mode while discarding its stale selection. [Native correction and timing follow-up](../evidence/calibration-timing-and-arrange-2026-10-18/README.md).
 
 ## State and presentation
 
@@ -38,4 +37,4 @@ Exchanges spend no starlight and do not advance showers, RNG or forecast. Shared
 
 ## Acceptance and remaining questions
 
-Verify exact ingredients, Opal/Dusk interactions, deterministic continuation, stale callbacks, independent columns, interruption, native gestures and tap equivalents, full/quiet motion, largest text, normal flow/outcomes and Debug/Release target membership. Record each evidence level separately in the linked report. Actual VoiceOver acceptance belongs to the release candidate cadence. Human comprehension, timing comfort, free-exchange balance and enjoyment require observed play after delivery; seeded examples cannot establish them.
+Verify exact ingredients, Opal/Dusk interactions, deterministic continuation, stale callbacks, independent columns, interruption, native direct gestures, full/quiet motion, largest text, normal flow/outcomes and Debug/Release target membership. Record each evidence level separately in the linked report. Actual VoiceOver acceptance belongs to the release candidate cadence. Human comprehension, timing comfort, free-exchange balance and enjoyment require observed play after delivery; seeded examples cannot establish them.

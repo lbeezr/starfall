@@ -22,9 +22,11 @@ enum SkyDialogueLibrary {
 
 
 extension SkyDialogueLibrary {
-    static func contextual(_ result: SkyDialogueLine, game: FallingSky, cadence: SkyCadenceStep) -> SkyDialogueLine {
-        guard let context = timing(game: game, cadence: cadence) else { return result }
-        return line("guide.context", values: ["detail": result.text, "context": context.text])
+    static func contextual(_ result: SkyDialogueLine, game: FallingSky, cadence: SkyCadenceStep, includeTiming: Bool = true) -> SkyDialogueLine {
+        let context = [includeTiming ? timing(game: game, cadence: cadence)?.text : nil, DuskWarning(game: game)?.text]
+            .compactMap { $0 }.joined(separator: ". ")
+        guard !context.isEmpty else { return result }
+        return line("guide.context", values: ["detail": result.text, "context": context])
     }
 
     /// Read committed next-shower snapshots; content cannot schedule a storm or change its rules.

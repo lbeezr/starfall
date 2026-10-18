@@ -18,7 +18,6 @@ struct ConstellationTraceSurface: UIViewRepresentable {
     var contact: ((CGPoint) -> Bool)? = nil
     var feedback: ((String) -> Void)? = nil
     var hasSelectedNeighbor: (() -> Bool)? = nil
-    var arranging = false
     var swapStart: ((CGPoint) -> Bool)? = nil
     var beginSwap: ((CGPoint,CGPoint,UInt64) -> Bool)? = nil
     var endSwap: ((CGPoint) -> Void)? = nil
@@ -34,7 +33,7 @@ struct ConstellationTraceSurface: UIViewRepresentable {
     final class Surface: UIView {
         private(set) var input: ConstellationTraceSurface?
         func updateInput(_ value: ConstellationTraceSurface) {
-            if let old = input, old.generation != value.generation || old.size != value.size || old.arranging != value.arranging || !value.enabled {
+            if let old = input, old.generation != value.generation || old.size != value.size || !value.enabled {
                 cancelInput()
             }
             input = value
@@ -49,7 +48,7 @@ struct ConstellationTraceSurface: UIViewRepresentable {
             }
             capture.horizontalOnlyAtStart = { [weak self] point in
                 guard let input=self?.input else { return true }
-                return input.arranging || input.traceStart(point) == nil
+                return input.traceStart(point) == nil
             }
             // Recognizers receive raw contacts before UIScrollView can delay UIView
             // touch delivery. Keep admission, moves and terminal events on this owner.

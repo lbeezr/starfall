@@ -283,15 +283,13 @@ extension TraceInputPolishTests {
         _ = session.trace.begin(Cell(0,0), game: game, generation: 1, enabled: true)
         XCTAssertFalse(session.acquireHold(at: Cell(0,0)) { _ in nil })
         XCTAssertNil(session.trace.snapshot)
-        session.technique.setArranging(true)
-        session.technique.select(Cell(0,0), game: game, generation: 1)
+        let swapping = SkyTechniqueExample.nudge.game()
+        session.armSwap(from: Cell(1,2), to: Cell(1,1), game: swapping, generation: 1)
         session.cancelContact { _ in XCTFail("No owned hold") }
-        XCTAssertNotNil(session.technique.anchor, "Ordinary contact cancellation preserves explicit arrange selection")
-        session.invalidate { _ in XCTFail("No owned hold") }
         XCTAssertNil(session.technique.anchor)
-        XCTAssertTrue(session.technique.arranging, "Lifecycle invalidation preserves the explicit arrange mode")
-        session.reconcile(with: FallingSky(seed: 5)) { _ in XCTFail("No owned hold") }
-        XCTAssertFalse(session.technique.arranging, "Current-main empty-sky reconciliation remains authoritative")
+        XCTAssertFalse(session.technique.swapping)
+        session.invalidate { _ in XCTFail("No owned hold") }
+        XCTAssertNil(session.technique.snapshot)
     }
 }
 

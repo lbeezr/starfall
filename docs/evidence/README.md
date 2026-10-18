@@ -8,6 +8,8 @@ Dated, source-bound records of checks, comparisons and their limits.
 
 ## Start here
 
+[Dialogue and gesture-only HUD](dialogue-only-hud-2026-10-18/README.md) removes top messages and the entire Arrange mode; records direct-input verification and limits.
+
 [Current gameplay calibration](calibration-baseline-2026-10-18/README.md) identifies free-exchange survival tails in two seed cohorts, corrects drained-reward measurement and records blocked native interaction checks.
 
 [Timed calibration and empty-board Arrange](calibration-timing-and-arrange-2026-10-18/README.md) separates decision/contact time, retains the exchange rules and records the first native usability correction with before/after captures. The [current-source follow-up](calibration-timing-and-arrange-2026-10-18/FRESH_ROUNDS.md) adds fresh automatic passes, recipe/relay frame inspection and the corrected column-aware model; human feel and smoothness remain open.

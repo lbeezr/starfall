@@ -510,6 +510,10 @@
           "seconds": 8
         }
       ]
+    },
+    {
+      "id": "guide.input",
+      "lines": [{ "id": "guide.input.1", "speaker": "spark", "text": "{detail}", "priority": "help" }]
     }
   ]
 }
