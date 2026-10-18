@@ -1,0 +1,2775 @@
+{
+  "head": "edc893c6abf7f9b939fefc5f6909447c7e3b3974",
+  "inputSHA256": {
+    "Sources/StarfallCore/ConstellationFixture.swift": "9c8038dd4b51304f3c65dffc8f966bbe65fafa78b11d6ecdfd300895532cd253",
+    "Sources/StarfallCore/CriticalMassFixture.swift": "5ad27dffd95dd26171a107536190ae69a38f622169b50ea9a4d14df0a364d4f9",
+    "Sources/StarfallCore/CriticalMassRule.swift": "106b4eedad4e0a2aeb3dc9f7c8eac85219ff8acd923899e083a833b88f3039d3",
+    "Sources/StarfallCore/DuskFixture.swift": "9740935783394c05fdb591557c9ebdb15426228313f7245ed82ba87cf87dc26f",
+    "Sources/StarfallCore/DuskRules.swift": "76d3a62cbfa2da4674ebe3078d4e4b3c01282991fb151a21ca1c38c38beec8d6",
+    "Sources/StarfallCore/FallingSky.swift": "d6519d269f168981f5654f7360aa7a1afee0adbac6e17fe062765b0460bbfcae",
+    "Sources/StarfallCore/Game.swift": "9ab2d57af8fe0ee804ce56e762eb5833a08ae5f39e8916ffaa0fe708d90e7086",
+    "Sources/StarfallCore/GravityFieldRules.swift": "ef5308b515340c2eafe1b226cee70a27701a6e906b6c975380d13af818f4130c",
+    "Sources/StarfallCore/GravityOpportunityFixture.swift": "fe410f41722d690eec3ac67472bf82e421912e772252fdf4ac41819f50c08e4a",
+    "Sources/StarfallCore/RefillMapping.swift": "608be41f40c945b18aba5512bac16b7c4de4eb8a2747d6fe54a895392b38e5f7",
+    "Sources/StarfallCore/SkyCadence.swift": "a01a1ab5fe50e7677bd2e1af75563a5bcc316e1828e921e7da2f572202b76b8c",
+    "Sources/StarfallCore/SkyGeneration.swift": "03d62817aaace9a7354cffb15e7735a98246ed9d75643f0e354fab2aeb2d2d97",
+    "Sources/StarfallCore/SkyTechniqueExample.swift": "75c38131723930f1e5884b8d9e87ea8c0cce975b81bddf9ef89212d627e77c26",
+    "Sources/StarfallCore/StarRecipe.swift": "280c7529a613f75af7a47f510ae2a56969a417d2a3d3821c80db24d788ce1559",
+    "Sources/StarfallCore/StarfallBalance.swift": "32525ba2f346cf843863b1cb1cba8a2fab66d088b9dc7ac308867f1520c329ec",
+    "Sources/StarfallCore/StarfallChallenge.swift": "0475f660c21ae42cce0df8c11dc40adbbb841e58b6c66b82a1293c720bd26b72",
+    "App/FallingSkyStore.swift": "4838053e99a59719088e2c56c6dd91deeb08c0efcdf58384779dc589604f8c0e",
+    "App/ObservatoryReviewFixture.swift": "9a4750756375afdbfdd710795dcb50a24a3005b3fd1f71e4a4274a35fe0f4aae",
+    "App/SkySaveArchive.swift": "713ce3c032966c52097977373c8a504bef95a4a08a2087cca1b2e1604460955c",
+    "App/SkyFlowState.swift": "ca597f926d65007b576425e429f6a286fead653cda7d85746797c6acee356b6a",
+    "App/FallingSkyHUD.swift": "c70bac7b551582f9d0e782d995c3417a7ede25cfb601a926419f66919a200db0",
+    "App/FallingSkyPresentation.swift": "2245b63818e099a28ac4ed8aa450a3ba7bf4c449e7e3cc12c03190959799fda9",
+    "App/SkyTechniqueIntent.swift": "63795371808f93ba860ac793f063fb2020e4fa497241d8e78779dea0d89f6b2b",
+    "App/GameFeedback.swift": "113d0fe4b4764d29be416f469dbc617257cc10fe6efca693cb5638ebfc4a06b0",
+    "App/StarlightCelebration.swift": "750af3b91195b0ccf40627f4af2cba62ca33bbc30b9ff187cb552d54ff228c76",
+    "App/SkyDialogue.swift": "c1a24722a7e540c8250028401d74818ddf669edd5e2e8c3a4ce778876e34559e",
+    "App/SkyDialogueLibrary.swift": "4ea89b09a45d49dc165c1e71b830b168a27ac68bd032177dc04d4568c780d002",
+    "App/SkyCopy.swift": "b7c2dc11d2f4ebc847676c10717305e1a2f1a8b4997e26bdbda56b667abf75d5",
+    "App/DuskWarning.swift": "ec09fe9bd458ed7774931a341d7b606d132e19f14bfb668c28a2c7e4a9426fd1",
+    "App/DialogueScripts/observatory-dialogue.json": "a854725f517b6e166374876a8451a67d2d51363d88f572a34a6c282db1395ee4",
+    "App/FallingSkyScene.swift": "7d3e2ed4d1a165f822108e4b9159200a9fe7d0c965c206bf5fd54d5af21be05e",
+    "App/FallingSkyMotion.swift": "ec8c29f3965e3249b07b7b9465f2222a6d582331a2d8102102b52ea720c9ee91",
+    "App/CriticalMassPresentation.swift": "fbc7e9fdb8fc592fdaeca2cd35bab3d9ec7970bab0297abac4fc752a824f5b69",
+    "Tests/StarfallCoreTests/TimingCycleFixture.swift": "51936d184a8f60df63abe1489006011abb02431fedf310eca0afb9180513d189",
+    "tools/mechanics/CalibrationTrace.swift": "e38357ee2ba0953fe999d7aca740c9adb6beac984d3de28eb7533a11c3eaa5d3",
+    "tools/mechanics/PacingChecks.swift": "310639306cfe93f6bdfe19bbf53072e78ba5dbe100e47a64650de129142c5622",
+    "tools/mechanics/PacingMeasure.swift": "f5c2d5d6da8e923831f54aa051e494afdefc1796ffe148e694147b388a1b3206",
+    "tools/mechanics/PacingSupport.swift": "7a2f2c5564f988a2ba43e43a2a2f2799984974719c17f67592b5e376e4afba5c",
+    "tools/mechanics/compare-pacing.py": "db0c3ed848a66debac65a8f853f25f94f9bcf85ae30a720ff2bca96c51264c62"
+  },
+  "dirty": " M docs/design/CALIBRATION.md\n M tools/mechanics/PacingChecks.swift\n M tools/mechanics/PacingMeasure.swift\n M tools/mechanics/PacingSupport.swift\n M tools/mechanics/compare-pacing.py\n",
+  "toolchain": "Apple Swift version 6.4 (swiftlang-6.4.0.34.1 clang-2100.3.34.1)\nTarget: arm64-apple-macosx27.0.0\n",
+  "criticalMassRuleVersion": 1,
+  "timingModelVersion": "source-gravity-collapse-v5",
+  "cohorts": [
+    {
+      "name": "discovery",
+      "command": [
+        "python3",
+        "tools/mechanics/compare-pacing.py",
+        "--seeds",
+        "8",
+        "--seconds",
+        "180",
+        "--include-setups",
+        "--include-idle",
+        "--candidate-cadence",
+        "announcedCycleV2",
+        "--output",
+        "artifacts/calibration-critical-mass/discovery"
+      ],
+      "runsSHA256": "d600b33aa42c5036bdc7b48e1551fba8fc4f4958668611f3aeabdb2087f91956",
+      "parityCommits": 19202,
+      "groups": {
+        "full-motion-model/largest-clear/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 235,
+            "median": 247.5,
+            "p90": 270,
+            "max": 270
+          },
+          "showers": {
+            "min": 79,
+            "median": 81.0,
+            "p90": 84,
+            "max": 84
+          },
+          "lostStarlight": {
+            "min": 32,
+            "median": 40.0,
+            "p90": 63,
+            "max": 63
+          },
+          "collapseSources": 113,
+          "swallowedCells": 290,
+          "heldFraction": {
+            "min": 0.007388888888892275,
+            "median": 0.04666666666666774,
+            "p90": 0.07200000000000165,
+            "max": 0.07200000000000165
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.38200000000000045,
+            "median": 0.4183055555555599,
+            "p90": 0.46450000000000274,
+            "max": 0.46450000000000274
+          },
+          "exchanges": 0
+        },
+        "full-motion-model/height-safety/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 237,
+            "median": 250.5,
+            "p90": 279,
+            "max": 279
+          },
+          "showers": {
+            "min": 78,
+            "median": 80.5,
+            "p90": 82,
+            "max": 82
+          },
+          "lostStarlight": {
+            "min": 29,
+            "median": 45.5,
+            "p90": 57,
+            "max": 57
+          },
+          "collapseSources": 119,
+          "swallowedCells": 303,
+          "heldFraction": {
+            "min": 0.031333333333334164,
+            "median": 0.04900000000000161,
+            "p90": 0.08400000000000266,
+            "max": 0.08400000000000266
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.3820000000000011,
+            "median": 0.40202777777777976,
+            "p90": 0.417444444444445,
+            "max": 0.417444444444445
+          },
+          "exchanges": 0
+        },
+        "full-motion-model/trace-oriented/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 231,
+            "median": 246.5,
+            "p90": 270,
+            "max": 270
+          },
+          "showers": {
+            "min": 76,
+            "median": 80.0,
+            "p90": 84,
+            "max": 84
+          },
+          "lostStarlight": {
+            "min": 32,
+            "median": 40.0,
+            "p90": 61,
+            "max": 61
+          },
+          "collapseSources": 112,
+          "swallowedCells": 288,
+          "heldFraction": {
+            "min": 0.013333333333333839,
+            "median": 0.05500000000000132,
+            "p90": 0.09733333333333571,
+            "max": 0.09733333333333571
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.3695000000000025,
+            "median": 0.4091111111111135,
+            "p90": 0.4596666666666681,
+            "max": 0.4596666666666681
+          },
+          "exchanges": 0
+        },
+        "full-motion-model/setup-first/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 225,
+            "median": 234.5,
+            "p90": 260,
+            "max": 260
+          },
+          "showers": {
+            "min": 71,
+            "median": 74.0,
+            "p90": 76,
+            "max": 76
+          },
+          "lostStarlight": {
+            "min": 16,
+            "median": 27.5,
+            "p90": 41,
+            "max": 41
+          },
+          "collapseSources": 81,
+          "swallowedCells": 198,
+          "heldFraction": {
+            "min": 0.0842222222222248,
+            "median": 0.10827777777777856,
+            "p90": 0.1441111111111133,
+            "max": 0.1441111111111133
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.4234444444444464,
+            "median": 0.4403055555555575,
+            "p90": 0.4526666666666677,
+            "max": 0.4526666666666677
+          },
+          "exchanges": 195
+        },
+        "full-motion-model/idle/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 2,
+          "score": {
+            "min": 0,
+            "median": 0.0,
+            "p90": 0,
+            "max": 0
+          },
+          "showers": {
+            "min": 15,
+            "median": 89.0,
+            "p90": 89,
+            "max": 89
+          },
+          "lostStarlight": {
+            "min": 16,
+            "median": 269.5,
+            "p90": 292,
+            "max": 292
+          },
+          "collapseSources": 395,
+          "swallowedCells": 1212,
+          "heldFraction": {
+            "min": 0.0,
+            "median": 0.0,
+            "p90": 0.0,
+            "max": 0.0
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.5414876033057852,
+            "median": 0.6107500000000008,
+            "p90": 0.6337777777777791,
+            "max": 0.6337777777777791
+          },
+          "exchanges": 0
+        },
+        "quiet-model/largest-clear/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 286,
+            "median": 300.0,
+            "p90": 313,
+            "max": 313
+          },
+          "showers": {
+            "min": 84,
+            "median": 85.0,
+            "p90": 87,
+            "max": 87
+          },
+          "lostStarlight": {
+            "min": 17,
+            "median": 28.5,
+            "p90": 39,
+            "max": 39
+          },
+          "collapseSources": 89,
+          "swallowedCells": 200,
+          "heldFraction": {
+            "min": 0.022000000000000568,
+            "median": 0.046000000000000804,
+            "p90": 0.06066666666666814,
+            "max": 0.06066666666666814
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.048333333333334456,
+            "median": 0.05166666666666779,
+            "p90": 0.055000000000001194,
+            "max": 0.055000000000001194
+          },
+          "exchanges": 0
+        },
+        "quiet-model/height-safety/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 288,
+            "median": 300.0,
+            "p90": 313,
+            "max": 313
+          },
+          "showers": {
+            "min": 84,
+            "median": 85.0,
+            "p90": 87,
+            "max": 87
+          },
+          "lostStarlight": {
+            "min": 17,
+            "median": 27.5,
+            "p90": 39,
+            "max": 39
+          },
+          "collapseSources": 89,
+          "swallowedCells": 196,
+          "heldFraction": {
+            "min": 0.022000000000000568,
+            "median": 0.046000000000000804,
+            "p90": 0.058666666666667984,
+            "max": 0.058666666666667984
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.04833333333333437,
+            "median": 0.051666666666667825,
+            "p90": 0.055000000000001194,
+            "max": 0.055000000000001194
+          },
+          "exchanges": 0
+        },
+        "quiet-model/trace-oriented/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 280,
+            "median": 298.5,
+            "p90": 313,
+            "max": 313
+          },
+          "showers": {
+            "min": 82,
+            "median": 84.0,
+            "p90": 86,
+            "max": 86
+          },
+          "lostStarlight": {
+            "min": 17,
+            "median": 27.0,
+            "p90": 39,
+            "max": 39
+          },
+          "collapseSources": 87,
+          "swallowedCells": 196,
+          "heldFraction": {
+            "min": 0.03400000000000102,
+            "median": 0.05766666666666788,
+            "p90": 0.07266666666666839,
+            "max": 0.07266666666666839
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.0466666666666677,
+            "median": 0.051250000000001156,
+            "p90": 0.055000000000001194,
+            "max": 0.055000000000001194
+          },
+          "exchanges": 0
+        },
+        "quiet-model/setup-first/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 268,
+            "median": 293.5,
+            "p90": 299,
+            "max": 299
+          },
+          "showers": {
+            "min": 76,
+            "median": 78.0,
+            "p90": 82,
+            "max": 82
+          },
+          "lostStarlight": {
+            "min": 3,
+            "median": 15.0,
+            "p90": 21,
+            "max": 21
+          },
+          "collapseSources": 49,
+          "swallowedCells": 100,
+          "heldFraction": {
+            "min": 0.08122222222222295,
+            "median": 0.12000000000000133,
+            "p90": 0.14333333333333462,
+            "max": 0.14333333333333462
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.05666666666666783,
+            "median": 0.05958333333333463,
+            "p90": 0.06666666666666815,
+            "max": 0.06666666666666815
+          },
+          "exchanges": 179
+        },
+        "quiet-model/idle/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 2,
+          "score": {
+            "min": 0,
+            "median": 0.0,
+            "p90": 0,
+            "max": 0
+          },
+          "showers": {
+            "min": 15,
+            "median": 89.0,
+            "p90": 89,
+            "max": 89
+          },
+          "lostStarlight": {
+            "min": 16,
+            "median": 269.5,
+            "p90": 292,
+            "max": 292
+          },
+          "collapseSources": 395,
+          "swallowedCells": 1212,
+          "heldFraction": {
+            "min": 0.0,
+            "median": 0.0,
+            "p90": 0.0,
+            "max": 0.0
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.0716666666666682,
+            "median": 0.07333333333333493,
+            "p90": 0.0756756756756755,
+            "max": 0.0756756756756755
+          },
+          "exchanges": 0
+        }
+      }
+    },
+    {
+      "name": "confirmation",
+      "command": [
+        "python3",
+        "tools/mechanics/compare-pacing.py",
+        "--seed-start",
+        "64",
+        "--seeds",
+        "8",
+        "--seconds",
+        "180",
+        "--include-setups",
+        "--include-idle",
+        "--candidate-cadence",
+        "announcedCycleV2",
+        "--output",
+        "artifacts/calibration-critical-mass/confirmation"
+      ],
+      "runsSHA256": "b561cf08446fbe360a511ba1ac897a7399a0610fc40da1059fd01e037e90f53f",
+      "parityCommits": 19126,
+      "groups": {
+        "full-motion-model/largest-clear/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 246,
+            "median": 256.0,
+            "p90": 270,
+            "max": 270
+          },
+          "showers": {
+            "min": 78,
+            "median": 79.5,
+            "p90": 81,
+            "max": 81
+          },
+          "lostStarlight": {
+            "min": 23,
+            "median": 43.0,
+            "p90": 51,
+            "max": 51
+          },
+          "collapseSources": 106,
+          "swallowedCells": 265,
+          "heldFraction": {
+            "min": 0.05155555555555853,
+            "median": 0.061333333333334863,
+            "p90": 0.07266666666666786,
+            "max": 0.07266666666666786
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.3828888888888907,
+            "median": 0.40261111111111303,
+            "p90": 0.421944444444445,
+            "max": 0.421944444444445
+          },
+          "exchanges": 0
+        },
+        "full-motion-model/height-safety/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 232,
+            "median": 259.5,
+            "p90": 271,
+            "max": 271
+          },
+          "showers": {
+            "min": 79,
+            "median": 80.0,
+            "p90": 82,
+            "max": 82
+          },
+          "lostStarlight": {
+            "min": 27,
+            "median": 43.5,
+            "p90": 53,
+            "max": 53
+          },
+          "collapseSources": 111,
+          "swallowedCells": 278,
+          "heldFraction": {
+            "min": 0.042000000000000696,
+            "median": 0.05700000000000138,
+            "p90": 0.06933333333333475,
+            "max": 0.06933333333333475
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.38411111111111196,
+            "median": 0.4045555555555604,
+            "p90": 0.4188888888888914,
+            "max": 0.4188888888888914
+          },
+          "exchanges": 0
+        },
+        "full-motion-model/trace-oriented/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 242,
+            "median": 254.0,
+            "p90": 270,
+            "max": 270
+          },
+          "showers": {
+            "min": 78,
+            "median": 78.5,
+            "p90": 81,
+            "max": 81
+          },
+          "lostStarlight": {
+            "min": 23,
+            "median": 43.0,
+            "p90": 51,
+            "max": 51
+          },
+          "collapseSources": 106,
+          "swallowedCells": 265,
+          "heldFraction": {
+            "min": 0.05333333333333485,
+            "median": 0.06766666666666837,
+            "p90": 0.08000000000000179,
+            "max": 0.08000000000000179
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.37494444444444547,
+            "median": 0.4023333333333351,
+            "p90": 0.41905555555555624,
+            "max": 0.41905555555555624
+          },
+          "exchanges": 0
+        },
+        "full-motion-model/setup-first/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 225,
+            "median": 242.5,
+            "p90": 256,
+            "max": 256
+          },
+          "showers": {
+            "min": 71,
+            "median": 73.0,
+            "p90": 75,
+            "max": 75
+          },
+          "lostStarlight": {
+            "min": 17,
+            "median": 20.5,
+            "p90": 32,
+            "max": 32
+          },
+          "collapseSources": 65,
+          "swallowedCells": 142,
+          "heldFraction": {
+            "min": 0.0936666666666674,
+            "median": 0.1186666666666675,
+            "p90": 0.14455555555555688,
+            "max": 0.14455555555555688
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.409722222222223,
+            "median": 0.42988888888889093,
+            "p90": 0.4480555555555586,
+            "max": 0.4480555555555586
+          },
+          "exchanges": 194
+        },
+        "full-motion-model/idle/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 3,
+          "score": {
+            "min": 0,
+            "median": 0.0,
+            "p90": 0,
+            "max": 0
+          },
+          "showers": {
+            "min": 40,
+            "median": 89.0,
+            "p90": 89,
+            "max": 89
+          },
+          "lostStarlight": {
+            "min": 93,
+            "median": 253.5,
+            "p90": 279,
+            "max": 279
+          },
+          "collapseSources": 393,
+          "swallowedCells": 1203,
+          "heldFraction": {
+            "min": 0.0,
+            "median": 0.0,
+            "p90": 0.0,
+            "max": 0.0
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.5907222222222228,
+            "median": 0.6112427555361668,
+            "p90": 0.6363333333333343,
+            "max": 0.6363333333333343
+          },
+          "exchanges": 0
+        },
+        "quiet-model/largest-clear/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 266,
+            "median": 284.0,
+            "p90": 309,
+            "max": 309
+          },
+          "showers": {
+            "min": 81,
+            "median": 84.5,
+            "p90": 87,
+            "max": 87
+          },
+          "lostStarlight": {
+            "min": 21,
+            "median": 47.5,
+            "p90": 53,
+            "max": 53
+          },
+          "collapseSources": 127,
+          "swallowedCells": 307,
+          "heldFraction": {
+            "min": 0.02400000000000091,
+            "median": 0.050333333333334285,
+            "p90": 0.08800000000000145,
+            "max": 0.08800000000000145
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.045833333333334204,
+            "median": 0.05041666666666779,
+            "p90": 0.05333333333333452,
+            "max": 0.05333333333333452
+          },
+          "exchanges": 0
+        },
+        "quiet-model/height-safety/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 266,
+            "median": 284.5,
+            "p90": 309,
+            "max": 309
+          },
+          "showers": {
+            "min": 81,
+            "median": 84.5,
+            "p90": 87,
+            "max": 87
+          },
+          "lostStarlight": {
+            "min": 21,
+            "median": 47.5,
+            "p90": 54,
+            "max": 54
+          },
+          "collapseSources": 127,
+          "swallowedCells": 307,
+          "heldFraction": {
+            "min": 0.02400000000000091,
+            "median": 0.050333333333334285,
+            "p90": 0.08800000000000145,
+            "max": 0.08800000000000145
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.045833333333334204,
+            "median": 0.05041666666666779,
+            "p90": 0.05333333333333452,
+            "max": 0.05333333333333452
+          },
+          "exchanges": 0
+        },
+        "quiet-model/trace-oriented/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 259,
+            "median": 282.5,
+            "p90": 309,
+            "max": 309
+          },
+          "showers": {
+            "min": 81,
+            "median": 84.0,
+            "p90": 86,
+            "max": 86
+          },
+          "lostStarlight": {
+            "min": 21,
+            "median": 46.0,
+            "p90": 53,
+            "max": 53
+          },
+          "collapseSources": 126,
+          "swallowedCells": 304,
+          "heldFraction": {
+            "min": 0.03133333333333409,
+            "median": 0.05466666666666746,
+            "p90": 0.09000000000000397,
+            "max": 0.09000000000000397
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.045833333333334204,
+            "median": 0.05000000000000111,
+            "p90": 0.05250000000000124,
+            "max": 0.05250000000000124
+          },
+          "exchanges": 0
+        },
+        "quiet-model/setup-first/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 276,
+            "median": 285.0,
+            "p90": 296,
+            "max": 296
+          },
+          "showers": {
+            "min": 77,
+            "median": 79.0,
+            "p90": 81,
+            "max": 81
+          },
+          "lostStarlight": {
+            "min": 11,
+            "median": 18.5,
+            "p90": 24,
+            "max": 24
+          },
+          "collapseSources": 69,
+          "swallowedCells": 137,
+          "heldFraction": {
+            "min": 0.08588888888888929,
+            "median": 0.11325000000000204,
+            "p90": 0.13200000000000162,
+            "max": 0.13200000000000162
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.058333333333334604,
+            "median": 0.06083333333333466,
+            "p90": 0.06583333333333471,
+            "max": 0.06583333333333471
+          },
+          "exchanges": 196
+        },
+        "quiet-model/idle/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 3,
+          "score": {
+            "min": 0,
+            "median": 0.0,
+            "p90": 0,
+            "max": 0
+          },
+          "showers": {
+            "min": 40,
+            "median": 89.0,
+            "p90": 89,
+            "max": 89
+          },
+          "lostStarlight": {
+            "min": 93,
+            "median": 253.5,
+            "p90": 279,
+            "max": 279
+          },
+          "collapseSources": 393,
+          "swallowedCells": 1203,
+          "heldFraction": {
+            "min": 0.0,
+            "median": 0.0,
+            "p90": 0.0,
+            "max": 0.0
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.07166666666666824,
+            "median": 0.07345519049822732,
+            "p90": 0.0741666666666683,
+            "max": 0.0741666666666683
+          },
+          "exchanges": 0
+        }
+      }
+    },
+    {
+      "name": "slower",
+      "command": [
+        "python3",
+        "tools/mechanics/compare-pacing.py",
+        "--seeds",
+        "8",
+        "--seconds",
+        "180",
+        "--reaction-seconds",
+        "1.0",
+        "--include-setups",
+        "--include-idle",
+        "--candidate-cadence",
+        "announcedCycleV2",
+        "--output",
+        "artifacts/calibration-critical-mass/slower"
+      ],
+      "runsSHA256": "7108791e2e9610dff6f99fdbaaa3a1745cab99ba0b87bdd14df3eb4668eba6b1",
+      "parityCommits": 18429,
+      "groups": {
+        "full-motion-model/largest-clear/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 212,
+            "median": 230.5,
+            "p90": 237,
+            "max": 237
+          },
+          "showers": {
+            "min": 80,
+            "median": 81.5,
+            "p90": 84,
+            "max": 84
+          },
+          "lostStarlight": {
+            "min": 40,
+            "median": 54.5,
+            "p90": 68,
+            "max": 68
+          },
+          "collapseSources": 127,
+          "swallowedCells": 345,
+          "heldFraction": {
+            "min": 0.03066666666666767,
+            "median": 0.0626666666666683,
+            "p90": 0.07266666666666817,
+            "max": 0.07266666666666817
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.43849999999999917,
+            "median": 0.4667777777777762,
+            "p90": 0.48749999999999954,
+            "max": 0.48749999999999954
+          },
+          "exchanges": 0
+        },
+        "full-motion-model/height-safety/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 204,
+            "median": 227.0,
+            "p90": 239,
+            "max": 239
+          },
+          "showers": {
+            "min": 80,
+            "median": 81.0,
+            "p90": 84,
+            "max": 84
+          },
+          "lostStarlight": {
+            "min": 41,
+            "median": 53.5,
+            "p90": 78,
+            "max": 78
+          },
+          "collapseSources": 127,
+          "swallowedCells": 361,
+          "heldFraction": {
+            "min": 0.03400000000000072,
+            "median": 0.06611111111111165,
+            "p90": 0.0793333333333352,
+            "max": 0.0793333333333352
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.4383333333333313,
+            "median": 0.454527777777777,
+            "p90": 0.4798333333333329,
+            "max": 0.4798333333333329
+          },
+          "exchanges": 0
+        },
+        "full-motion-model/trace-oriented/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 212,
+            "median": 227.0,
+            "p90": 235,
+            "max": 235
+          },
+          "showers": {
+            "min": 79,
+            "median": 80.5,
+            "p90": 83,
+            "max": 83
+          },
+          "lostStarlight": {
+            "min": 40,
+            "median": 53.0,
+            "p90": 68,
+            "max": 68
+          },
+          "collapseSources": 126,
+          "swallowedCells": 342,
+          "heldFraction": {
+            "min": 0.04533333333333489,
+            "median": 0.07233333333333523,
+            "p90": 0.09000000000000243,
+            "max": 0.09000000000000243
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.43272222222222073,
+            "median": 0.4588055555555547,
+            "p90": 0.4795000000000005,
+            "max": 0.4795000000000005
+          },
+          "exchanges": 0
+        },
+        "full-motion-model/setup-first/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 170,
+            "median": 210.5,
+            "p90": 226,
+            "max": 226
+          },
+          "showers": {
+            "min": 73,
+            "median": 75.0,
+            "p90": 76,
+            "max": 76
+          },
+          "lostStarlight": {
+            "min": 35,
+            "median": 49.0,
+            "p90": 84,
+            "max": 84
+          },
+          "collapseSources": 106,
+          "swallowedCells": 308,
+          "heldFraction": {
+            "min": 0.11688888888889129,
+            "median": 0.13605555555555723,
+            "p90": 0.15788888888889144,
+            "max": 0.15788888888889144
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.4425000000000005,
+            "median": 0.46324999999999933,
+            "p90": 0.4814444444444427,
+            "max": 0.4814444444444427
+          },
+          "exchanges": 148
+        },
+        "full-motion-model/idle/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 2,
+          "score": {
+            "min": 0,
+            "median": 0.0,
+            "p90": 0,
+            "max": 0
+          },
+          "showers": {
+            "min": 15,
+            "median": 89.0,
+            "p90": 89,
+            "max": 89
+          },
+          "lostStarlight": {
+            "min": 16,
+            "median": 269.5,
+            "p90": 292,
+            "max": 292
+          },
+          "collapseSources": 395,
+          "swallowedCells": 1212,
+          "heldFraction": {
+            "min": 0.0,
+            "median": 0.0,
+            "p90": 0.0,
+            "max": 0.0
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.5414876033057852,
+            "median": 0.6107500000000008,
+            "p90": 0.6337777777777791,
+            "max": 0.6337777777777791
+          },
+          "exchanges": 0
+        },
+        "quiet-model/largest-clear/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 272,
+            "median": 281.5,
+            "p90": 297,
+            "max": 297
+          },
+          "showers": {
+            "min": 84,
+            "median": 84.0,
+            "p90": 86,
+            "max": 86
+          },
+          "lostStarlight": {
+            "min": 20,
+            "median": 40.5,
+            "p90": 53,
+            "max": 53
+          },
+          "collapseSources": 111,
+          "swallowedCells": 275,
+          "heldFraction": {
+            "min": 0.02933333333333409,
+            "median": 0.05800000000000097,
+            "p90": 0.060000000000001545,
+            "max": 0.060000000000001545
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.05083333333333445,
+            "median": 0.05500000000000123,
+            "p90": 0.06000000000000143,
+            "max": 0.06000000000000143
+          },
+          "exchanges": 0
+        },
+        "quiet-model/height-safety/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 267,
+            "median": 281.5,
+            "p90": 297,
+            "max": 297
+          },
+          "showers": {
+            "min": 84,
+            "median": 84.5,
+            "p90": 86,
+            "max": 86
+          },
+          "lostStarlight": {
+            "min": 29,
+            "median": 38.0,
+            "p90": 57,
+            "max": 57
+          },
+          "collapseSources": 116,
+          "swallowedCells": 284,
+          "heldFraction": {
+            "min": 0.03266666666666711,
+            "median": 0.05336111111111169,
+            "p90": 0.06200000000000144,
+            "max": 0.06200000000000144
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.050000000000001044,
+            "median": 0.05233333333333394,
+            "p90": 0.0550000000000013,
+            "max": 0.0550000000000013
+          },
+          "exchanges": 0
+        },
+        "quiet-model/trace-oriented/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 263,
+            "median": 274.5,
+            "p90": 294,
+            "max": 294
+          },
+          "showers": {
+            "min": 82,
+            "median": 84.0,
+            "p90": 85,
+            "max": 85
+          },
+          "lostStarlight": {
+            "min": 20,
+            "median": 43.0,
+            "p90": 53,
+            "max": 53
+          },
+          "collapseSources": 114,
+          "swallowedCells": 282,
+          "heldFraction": {
+            "min": 0.047333333333334775,
+            "median": 0.06000000000000141,
+            "p90": 0.07800000000000178,
+            "max": 0.07800000000000178
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.048333333333334415,
+            "median": 0.054277777777778424,
+            "p90": 0.05916666666666806,
+            "max": 0.05916666666666806
+          },
+          "exchanges": 0
+        },
+        "quiet-model/setup-first/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 252,
+            "median": 273.0,
+            "p90": 285,
+            "max": 285
+          },
+          "showers": {
+            "min": 75,
+            "median": 77.5,
+            "p90": 81,
+            "max": 81
+          },
+          "lostStarlight": {
+            "min": 11,
+            "median": 15.5,
+            "p90": 28,
+            "max": 28
+          },
+          "collapseSources": 50,
+          "swallowedCells": 115,
+          "heldFraction": {
+            "min": 0.0867777777777782,
+            "median": 0.1236111111111124,
+            "p90": 0.15444444444444635,
+            "max": 0.15444444444444635
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.05666666666666793,
+            "median": 0.0635277777777784,
+            "p90": 0.0691666666666683,
+            "max": 0.0691666666666683
+          },
+          "exchanges": 178
+        },
+        "quiet-model/idle/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 2,
+          "score": {
+            "min": 0,
+            "median": 0.0,
+            "p90": 0,
+            "max": 0
+          },
+          "showers": {
+            "min": 15,
+            "median": 89.0,
+            "p90": 89,
+            "max": 89
+          },
+          "lostStarlight": {
+            "min": 16,
+            "median": 269.5,
+            "p90": 292,
+            "max": 292
+          },
+          "collapseSources": 395,
+          "swallowedCells": 1212,
+          "heldFraction": {
+            "min": 0.0,
+            "median": 0.0,
+            "p90": 0.0,
+            "max": 0.0
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.0716666666666682,
+            "median": 0.07333333333333493,
+            "p90": 0.0756756756756755,
+            "max": 0.0756756756756755
+          },
+          "exchanges": 0
+        }
+      }
+    },
+    {
+      "name": "longer",
+      "command": [
+        "python3",
+        "tools/mechanics/compare-pacing.py",
+        "--seeds",
+        "8",
+        "--seconds",
+        "600",
+        "--include-setups",
+        "--include-idle",
+        "--candidate-cadence",
+        "announcedCycleV2",
+        "--output",
+        "artifacts/calibration-critical-mass/longer"
+      ],
+      "runsSHA256": "2fa0d611310b87208f94bd5989014f0393be6ebfa4c3dfa56a7546fb4759c9d3",
+      "parityCommits": 62065,
+      "groups": {
+        "full-motion-model/largest-clear/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 834,
+            "median": 853.5,
+            "p90": 890,
+            "max": 890
+          },
+          "showers": {
+            "min": 262,
+            "median": 266.0,
+            "p90": 270,
+            "max": 270
+          },
+          "lostStarlight": {
+            "min": 138,
+            "median": 145.5,
+            "p90": 174,
+            "max": 174
+          },
+          "collapseSources": 415,
+          "swallowedCells": 1065,
+          "heldFraction": {
+            "min": 0.034433333333334606,
+            "median": 0.054600000000001994,
+            "p90": 0.06440000000000214,
+            "max": 0.06440000000000214
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.40408333333333374,
+            "median": 0.4098833333333344,
+            "p90": 0.4341500000000001,
+            "max": 0.4341500000000001
+          },
+          "exchanges": 0
+        },
+        "full-motion-model/height-safety/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 809,
+            "median": 854.0,
+            "p90": 904,
+            "max": 904
+          },
+          "showers": {
+            "min": 262,
+            "median": 266.0,
+            "p90": 270,
+            "max": 270
+          },
+          "lostStarlight": {
+            "min": 122,
+            "median": 163.0,
+            "p90": 194,
+            "max": 194
+          },
+          "collapseSources": 410,
+          "swallowedCells": 1063,
+          "heldFraction": {
+            "min": 0.040200000000001415,
+            "median": 0.051800000000001845,
+            "p90": 0.06853333333333414,
+            "max": 0.06853333333333414
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.39338333333333375,
+            "median": 0.407991666666666,
+            "p90": 0.4206833333333331,
+            "max": 0.4206833333333331
+          },
+          "exchanges": 0
+        },
+        "full-motion-model/trace-oriented/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 819,
+            "median": 845.0,
+            "p90": 883,
+            "max": 883
+          },
+          "showers": {
+            "min": 257,
+            "median": 263.5,
+            "p90": 267,
+            "max": 267
+          },
+          "lostStarlight": {
+            "min": 132,
+            "median": 140.5,
+            "p90": 173,
+            "max": 173
+          },
+          "collapseSources": 405,
+          "swallowedCells": 1032,
+          "heldFraction": {
+            "min": 0.04840000000000184,
+            "median": 0.062100000000002036,
+            "p90": 0.08040000000000265,
+            "max": 0.08040000000000265
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.3911499999999998,
+            "median": 0.4056083333333327,
+            "p90": 0.42573333333333296,
+            "max": 0.42573333333333296
+          },
+          "exchanges": 0
+        },
+        "full-motion-model/setup-first/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 758,
+            "median": 789.0,
+            "p90": 837,
+            "max": 837
+          },
+          "showers": {
+            "min": 237,
+            "median": 242.5,
+            "p90": 245,
+            "max": 245
+          },
+          "lostStarlight": {
+            "min": 71,
+            "median": 99.5,
+            "p90": 126,
+            "max": 126
+          },
+          "collapseSources": 279,
+          "swallowedCells": 667,
+          "heldFraction": {
+            "min": 0.10586666666666797,
+            "median": 0.11515833333333497,
+            "p90": 0.13363333333333546,
+            "max": 0.13363333333333546
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.42471666666666663,
+            "median": 0.4346333333333319,
+            "p90": 0.44859999999999883,
+            "max": 0.44859999999999883
+          },
+          "exchanges": 647
+        },
+        "full-motion-model/idle/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 5,
+          "score": {
+            "min": 0,
+            "median": 0.0,
+            "p90": 0,
+            "max": 0
+          },
+          "showers": {
+            "min": 15,
+            "median": 263.0,
+            "p90": 293,
+            "max": 293
+          },
+          "lostStarlight": {
+            "min": 16,
+            "median": 843.5,
+            "p90": 968,
+            "max": 968
+          },
+          "collapseSources": 1147,
+          "swallowedCells": 3563,
+          "heldFraction": {
+            "min": 0.0,
+            "median": 0.0,
+            "p90": 0.0,
+            "max": 0.0
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.5414876033057852,
+            "median": 0.6228316270670415,
+            "p90": 0.6342833333333315,
+            "max": 0.6342833333333315
+          },
+          "exchanges": 0
+        },
+        "quiet-model/largest-clear/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 949,
+            "median": 960.5,
+            "p90": 990,
+            "max": 990
+          },
+          "showers": {
+            "min": 275,
+            "median": 280.0,
+            "p90": 281,
+            "max": 281
+          },
+          "lostStarlight": {
+            "min": 105,
+            "median": 132.5,
+            "p90": 140,
+            "max": 140
+          },
+          "collapseSources": 381,
+          "swallowedCells": 916,
+          "heldFraction": {
+            "min": 0.04200000000000125,
+            "median": 0.045100000000001444,
+            "p90": 0.06500000000000229,
+            "max": 0.06500000000000229
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.0477499999999965,
+            "median": 0.050624999999996256,
+            "p90": 0.05199999999999614,
+            "max": 0.05199999999999614
+          },
+          "exchanges": 0
+        },
+        "quiet-model/height-safety/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 949,
+            "median": 962.0,
+            "p90": 992,
+            "max": 992
+          },
+          "showers": {
+            "min": 275,
+            "median": 280.0,
+            "p90": 284,
+            "max": 284
+          },
+          "lostStarlight": {
+            "min": 108,
+            "median": 131.0,
+            "p90": 140,
+            "max": 140
+          },
+          "collapseSources": 382,
+          "swallowedCells": 918,
+          "heldFraction": {
+            "min": 0.03340000000000092,
+            "median": 0.044400000000001404,
+            "p90": 0.06500000000000229,
+            "max": 0.06500000000000229
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.0477499999999965,
+            "median": 0.05062499999999621,
+            "p90": 0.05199999999999616,
+            "max": 0.05199999999999616
+          },
+          "exchanges": 0
+        },
+        "quiet-model/trace-oriented/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 940,
+            "median": 953.0,
+            "p90": 987,
+            "max": 987
+          },
+          "showers": {
+            "min": 272,
+            "median": 278.0,
+            "p90": 280,
+            "max": 280
+          },
+          "lostStarlight": {
+            "min": 105,
+            "median": 132.5,
+            "p90": 135,
+            "max": 135
+          },
+          "collapseSources": 377,
+          "swallowedCells": 908,
+          "heldFraction": {
+            "min": 0.04680000000000147,
+            "median": 0.05320000000000179,
+            "p90": 0.07260000000000251,
+            "max": 0.07260000000000251
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.04724999999999654,
+            "median": 0.05046666666666227,
+            "p90": 0.051749999999996125,
+            "max": 0.051749999999996125
+          },
+          "exchanges": 0
+        },
+        "quiet-model/setup-first/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 932,
+            "median": 960.5,
+            "p90": 998,
+            "max": 998
+          },
+          "showers": {
+            "min": 256,
+            "median": 259.5,
+            "p90": 264,
+            "max": 264
+          },
+          "lostStarlight": {
+            "min": 34,
+            "median": 57.5,
+            "p90": 65,
+            "max": 65
+          },
+          "collapseSources": 185,
+          "swallowedCells": 400,
+          "heldFraction": {
+            "min": 0.10273333333333491,
+            "median": 0.116733333333335,
+            "p90": 0.12893333333333518,
+            "max": 0.12893333333333518
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.05906666666666078,
+            "median": 0.06037499999999539,
+            "p90": 0.06424999999999502,
+            "max": 0.06424999999999502
+          },
+          "exchanges": 628
+        },
+        "quiet-model/idle/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 5,
+          "score": {
+            "min": 0,
+            "median": 0.0,
+            "p90": 0,
+            "max": 0
+          },
+          "showers": {
+            "min": 15,
+            "median": 263.0,
+            "p90": 293,
+            "max": 293
+          },
+          "lostStarlight": {
+            "min": 16,
+            "median": 843.5,
+            "p90": 968,
+            "max": 968
+          },
+          "collapseSources": 1147,
+          "swallowedCells": 3563,
+          "heldFraction": {
+            "min": 0.0,
+            "median": 0.0,
+            "p90": 0.0,
+            "max": 0.0
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.07133096474446081,
+            "median": 0.07225528517947408,
+            "p90": 0.0756756756756755,
+            "max": 0.0756756756756755
+          },
+          "exchanges": 0
+        }
+      }
+    },
+    {
+      "name": "slower-cycle",
+      "command": [
+        "python3",
+        "tools/mechanics/compare-pacing.py",
+        "--seeds",
+        "8",
+        "--seconds",
+        "180",
+        "--include-setups",
+        "--include-idle",
+        "--baseline-cadence",
+        "announcedCycleV2",
+        "--candidate-cadence",
+        "announcedCycleV1",
+        "--output",
+        "artifacts/calibration-critical-mass/slower-cycle"
+      ],
+      "runsSHA256": "cb9e5b189a87a31c92e6f88f6889c2424107ff260cd2d2360b4f367ec23dc494",
+      "parityCommits": 19187,
+      "groups": {
+        "full-motion-model/largest-clear/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 235,
+            "median": 247.5,
+            "p90": 270,
+            "max": 270
+          },
+          "showers": {
+            "min": 79,
+            "median": 81.0,
+            "p90": 84,
+            "max": 84
+          },
+          "lostStarlight": {
+            "min": 32,
+            "median": 40.0,
+            "p90": 63,
+            "max": 63
+          },
+          "collapseSources": 113,
+          "swallowedCells": 290,
+          "heldFraction": {
+            "min": 0.007388888888892275,
+            "median": 0.04666666666666774,
+            "p90": 0.07200000000000165,
+            "max": 0.07200000000000165
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.38200000000000045,
+            "median": 0.4183055555555599,
+            "p90": 0.46450000000000274,
+            "max": 0.46450000000000274
+          },
+          "exchanges": 0
+        },
+        "full-motion-model/largest-clear/announcedCycleV1": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 193,
+            "median": 201.0,
+            "p90": 221,
+            "max": 221
+          },
+          "showers": {
+            "min": 58,
+            "median": 59.0,
+            "p90": 61,
+            "max": 61
+          },
+          "lostStarlight": {
+            "min": 10,
+            "median": 15.5,
+            "p90": 31,
+            "max": 31
+          },
+          "collapseSources": 55,
+          "swallowedCells": 129,
+          "heldFraction": {
+            "min": 0.0060000000000000496,
+            "median": 0.04066666666666756,
+            "p90": 0.05133333333333459,
+            "max": 0.05133333333333459
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.2635000000000007,
+            "median": 0.278083333333334,
+            "p90": 0.29950000000000065,
+            "max": 0.29950000000000065
+          },
+          "exchanges": 0
+        },
+        "full-motion-model/height-safety/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 237,
+            "median": 250.5,
+            "p90": 279,
+            "max": 279
+          },
+          "showers": {
+            "min": 78,
+            "median": 80.5,
+            "p90": 82,
+            "max": 82
+          },
+          "lostStarlight": {
+            "min": 29,
+            "median": 45.5,
+            "p90": 57,
+            "max": 57
+          },
+          "collapseSources": 119,
+          "swallowedCells": 303,
+          "heldFraction": {
+            "min": 0.031333333333334164,
+            "median": 0.04900000000000161,
+            "p90": 0.08400000000000266,
+            "max": 0.08400000000000266
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.3820000000000011,
+            "median": 0.40202777777777976,
+            "p90": 0.417444444444445,
+            "max": 0.417444444444445
+          },
+          "exchanges": 0
+        },
+        "full-motion-model/height-safety/announcedCycleV1": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 193,
+            "median": 204.5,
+            "p90": 220,
+            "max": 220
+          },
+          "showers": {
+            "min": 58,
+            "median": 59.0,
+            "p90": 61,
+            "max": 61
+          },
+          "lostStarlight": {
+            "min": 11,
+            "median": 17.0,
+            "p90": 31,
+            "max": 31
+          },
+          "collapseSources": 57,
+          "swallowedCells": 136,
+          "heldFraction": {
+            "min": 0.0060000000000000496,
+            "median": 0.03833333333333376,
+            "p90": 0.05133333333333459,
+            "max": 0.05133333333333459
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.2635000000000007,
+            "median": 0.27652777777777837,
+            "p90": 0.29950000000000065,
+            "max": 0.29950000000000065
+          },
+          "exchanges": 0
+        },
+        "full-motion-model/trace-oriented/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 231,
+            "median": 246.5,
+            "p90": 270,
+            "max": 270
+          },
+          "showers": {
+            "min": 76,
+            "median": 80.0,
+            "p90": 84,
+            "max": 84
+          },
+          "lostStarlight": {
+            "min": 32,
+            "median": 40.0,
+            "p90": 61,
+            "max": 61
+          },
+          "collapseSources": 112,
+          "swallowedCells": 288,
+          "heldFraction": {
+            "min": 0.013333333333333839,
+            "median": 0.05500000000000132,
+            "p90": 0.09733333333333571,
+            "max": 0.09733333333333571
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.3695000000000025,
+            "median": 0.4091111111111135,
+            "p90": 0.4596666666666681,
+            "max": 0.4596666666666681
+          },
+          "exchanges": 0
+        },
+        "full-motion-model/trace-oriented/announcedCycleV1": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 190,
+            "median": 201.0,
+            "p90": 214,
+            "max": 214
+          },
+          "showers": {
+            "min": 58,
+            "median": 59.0,
+            "p90": 61,
+            "max": 61
+          },
+          "lostStarlight": {
+            "min": 10,
+            "median": 15.5,
+            "p90": 31,
+            "max": 31
+          },
+          "collapseSources": 55,
+          "swallowedCells": 129,
+          "heldFraction": {
+            "min": 0.012000000000000278,
+            "median": 0.04433333333333442,
+            "p90": 0.05733333333333482,
+            "max": 0.05733333333333482
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.2635000000000007,
+            "median": 0.2749722222222204,
+            "p90": 0.29950000000000065,
+            "max": 0.29950000000000065
+          },
+          "exchanges": 0
+        },
+        "full-motion-model/setup-first/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 225,
+            "median": 234.5,
+            "p90": 260,
+            "max": 260
+          },
+          "showers": {
+            "min": 71,
+            "median": 74.0,
+            "p90": 76,
+            "max": 76
+          },
+          "lostStarlight": {
+            "min": 16,
+            "median": 27.5,
+            "p90": 41,
+            "max": 41
+          },
+          "collapseSources": 81,
+          "swallowedCells": 198,
+          "heldFraction": {
+            "min": 0.0842222222222248,
+            "median": 0.10827777777777856,
+            "p90": 0.1441111111111133,
+            "max": 0.1441111111111133
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.4234444444444464,
+            "median": 0.4403055555555575,
+            "p90": 0.4526666666666677,
+            "max": 0.4526666666666677
+          },
+          "exchanges": 195
+        },
+        "full-motion-model/setup-first/announcedCycleV1": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 192,
+            "median": 196.5,
+            "p90": 211,
+            "max": 211
+          },
+          "showers": {
+            "min": 55,
+            "median": 57.0,
+            "p90": 60,
+            "max": 60
+          },
+          "lostStarlight": {
+            "min": 5,
+            "median": 13.0,
+            "p90": 16,
+            "max": 16
+          },
+          "collapseSources": 40,
+          "swallowedCells": 77,
+          "heldFraction": {
+            "min": 0.0318888888888894,
+            "median": 0.06938888888888958,
+            "p90": 0.08566666666666777,
+            "max": 0.08566666666666777
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.288722222222223,
+            "median": 0.29552777777778,
+            "p90": 0.31744444444444825,
+            "max": 0.31744444444444825
+          },
+          "exchanges": 116
+        },
+        "full-motion-model/idle/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 2,
+          "score": {
+            "min": 0,
+            "median": 0.0,
+            "p90": 0,
+            "max": 0
+          },
+          "showers": {
+            "min": 15,
+            "median": 89.0,
+            "p90": 89,
+            "max": 89
+          },
+          "lostStarlight": {
+            "min": 16,
+            "median": 269.5,
+            "p90": 292,
+            "max": 292
+          },
+          "collapseSources": 395,
+          "swallowedCells": 1212,
+          "heldFraction": {
+            "min": 0.0,
+            "median": 0.0,
+            "p90": 0.0,
+            "max": 0.0
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.5414876033057852,
+            "median": 0.6107500000000008,
+            "p90": 0.6337777777777791,
+            "max": 0.6337777777777791
+          },
+          "exchanges": 0
+        },
+        "full-motion-model/idle/announcedCycleV1": {
+          "rounds": 8,
+          "overflows": 2,
+          "score": {
+            "min": 0,
+            "median": 0.0,
+            "p90": 0,
+            "max": 0
+          },
+          "showers": {
+            "min": 15,
+            "median": 62.0,
+            "p90": 62,
+            "max": 62
+          },
+          "lostStarlight": {
+            "min": 16,
+            "median": 177.0,
+            "p90": 197,
+            "max": 197
+          },
+          "collapseSources": 268,
+          "swallowedCells": 820,
+          "heldFraction": {
+            "min": 0.0,
+            "median": 0.0,
+            "p90": 0.0,
+            "max": 0.0
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.3932773109243696,
+            "median": 0.4320555555555562,
+            "p90": 0.4476666666666669,
+            "max": 0.4476666666666669
+          },
+          "exchanges": 0
+        },
+        "quiet-model/largest-clear/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 286,
+            "median": 300.0,
+            "p90": 313,
+            "max": 313
+          },
+          "showers": {
+            "min": 84,
+            "median": 85.0,
+            "p90": 87,
+            "max": 87
+          },
+          "lostStarlight": {
+            "min": 17,
+            "median": 28.5,
+            "p90": 39,
+            "max": 39
+          },
+          "collapseSources": 89,
+          "swallowedCells": 200,
+          "heldFraction": {
+            "min": 0.022000000000000568,
+            "median": 0.046000000000000804,
+            "p90": 0.06066666666666814,
+            "max": 0.06066666666666814
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.048333333333334456,
+            "median": 0.05166666666666779,
+            "p90": 0.055000000000001194,
+            "max": 0.055000000000001194
+          },
+          "exchanges": 0
+        },
+        "quiet-model/largest-clear/announcedCycleV1": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 205,
+            "median": 213.5,
+            "p90": 224,
+            "max": 224
+          },
+          "showers": {
+            "min": 59,
+            "median": 60.0,
+            "p90": 62,
+            "max": 62
+          },
+          "lostStarlight": {
+            "min": 10,
+            "median": 18.0,
+            "p90": 28,
+            "max": 28
+          },
+          "collapseSources": 59,
+          "swallowedCells": 132,
+          "heldFraction": {
+            "min": 0.0060000000000000496,
+            "median": 0.03566666666666697,
+            "p90": 0.047333333333334435,
+            "max": 0.047333333333334435
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.032500000000000716,
+            "median": 0.03625000000000078,
+            "p90": 0.04000000000000085,
+            "max": 0.04000000000000085
+          },
+          "exchanges": 0
+        },
+        "quiet-model/height-safety/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 288,
+            "median": 300.0,
+            "p90": 313,
+            "max": 313
+          },
+          "showers": {
+            "min": 84,
+            "median": 85.0,
+            "p90": 87,
+            "max": 87
+          },
+          "lostStarlight": {
+            "min": 17,
+            "median": 27.5,
+            "p90": 39,
+            "max": 39
+          },
+          "collapseSources": 89,
+          "swallowedCells": 196,
+          "heldFraction": {
+            "min": 0.022000000000000568,
+            "median": 0.046000000000000804,
+            "p90": 0.058666666666667984,
+            "max": 0.058666666666667984
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.04833333333333437,
+            "median": 0.051666666666667825,
+            "p90": 0.055000000000001194,
+            "max": 0.055000000000001194
+          },
+          "exchanges": 0
+        },
+        "quiet-model/height-safety/announcedCycleV1": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 205,
+            "median": 213.5,
+            "p90": 224,
+            "max": 224
+          },
+          "showers": {
+            "min": 59,
+            "median": 60.0,
+            "p90": 62,
+            "max": 62
+          },
+          "lostStarlight": {
+            "min": 10,
+            "median": 15.5,
+            "p90": 28,
+            "max": 28
+          },
+          "collapseSources": 57,
+          "swallowedCells": 126,
+          "heldFraction": {
+            "min": 0.0060000000000000496,
+            "median": 0.03566666666666697,
+            "p90": 0.05133333333333459,
+            "max": 0.05133333333333459
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.032500000000000716,
+            "median": 0.03625000000000079,
+            "p90": 0.04000000000000085,
+            "max": 0.04000000000000085
+          },
+          "exchanges": 0
+        },
+        "quiet-model/trace-oriented/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 280,
+            "median": 298.5,
+            "p90": 313,
+            "max": 313
+          },
+          "showers": {
+            "min": 82,
+            "median": 84.0,
+            "p90": 86,
+            "max": 86
+          },
+          "lostStarlight": {
+            "min": 17,
+            "median": 27.0,
+            "p90": 39,
+            "max": 39
+          },
+          "collapseSources": 87,
+          "swallowedCells": 196,
+          "heldFraction": {
+            "min": 0.03400000000000102,
+            "median": 0.05766666666666788,
+            "p90": 0.07266666666666839,
+            "max": 0.07266666666666839
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.0466666666666677,
+            "median": 0.051250000000001156,
+            "p90": 0.055000000000001194,
+            "max": 0.055000000000001194
+          },
+          "exchanges": 0
+        },
+        "quiet-model/trace-oriented/announcedCycleV1": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 200,
+            "median": 208.0,
+            "p90": 221,
+            "max": 221
+          },
+          "showers": {
+            "min": 59,
+            "median": 59.5,
+            "p90": 61,
+            "max": 61
+          },
+          "lostStarlight": {
+            "min": 10,
+            "median": 18.0,
+            "p90": 28,
+            "max": 28
+          },
+          "collapseSources": 59,
+          "swallowedCells": 132,
+          "heldFraction": {
+            "min": 0.012000000000000278,
+            "median": 0.041000000000001154,
+            "p90": 0.05400000000000107,
+            "max": 0.05400000000000107
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.032500000000000716,
+            "median": 0.03624999999999999,
+            "p90": 0.04000000000000085,
+            "max": 0.04000000000000085
+          },
+          "exchanges": 0
+        },
+        "quiet-model/setup-first/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 268,
+            "median": 293.5,
+            "p90": 299,
+            "max": 299
+          },
+          "showers": {
+            "min": 76,
+            "median": 78.0,
+            "p90": 82,
+            "max": 82
+          },
+          "lostStarlight": {
+            "min": 3,
+            "median": 15.0,
+            "p90": 21,
+            "max": 21
+          },
+          "collapseSources": 49,
+          "swallowedCells": 100,
+          "heldFraction": {
+            "min": 0.08122222222222295,
+            "median": 0.12000000000000133,
+            "p90": 0.14333333333333462,
+            "max": 0.14333333333333462
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.05666666666666783,
+            "median": 0.05958333333333463,
+            "p90": 0.06666666666666815,
+            "max": 0.06666666666666815
+          },
+          "exchanges": 179
+        },
+        "quiet-model/setup-first/announcedCycleV1": {
+          "rounds": 8,
+          "overflows": 0,
+          "score": {
+            "min": 200,
+            "median": 210.5,
+            "p90": 216,
+            "max": 216
+          },
+          "showers": {
+            "min": 55,
+            "median": 56.0,
+            "p90": 59,
+            "max": 59
+          },
+          "lostStarlight": {
+            "min": 2,
+            "median": 7.5,
+            "p90": 11,
+            "max": 11
+          },
+          "collapseSources": 28,
+          "swallowedCells": 56,
+          "heldFraction": {
+            "min": 0.043444444444445174,
+            "median": 0.09161111111111198,
+            "p90": 0.11055555555555661,
+            "max": 0.11055555555555661
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.04000000000000088,
+            "median": 0.042916666666667574,
+            "p90": 0.045000000000001074,
+            "max": 0.045000000000001074
+          },
+          "exchanges": 128
+        },
+        "quiet-model/idle/announcedCycleV2": {
+          "rounds": 8,
+          "overflows": 2,
+          "score": {
+            "min": 0,
+            "median": 0.0,
+            "p90": 0,
+            "max": 0
+          },
+          "showers": {
+            "min": 15,
+            "median": 89.0,
+            "p90": 89,
+            "max": 89
+          },
+          "lostStarlight": {
+            "min": 16,
+            "median": 269.5,
+            "p90": 292,
+            "max": 292
+          },
+          "collapseSources": 395,
+          "swallowedCells": 1212,
+          "heldFraction": {
+            "min": 0.0,
+            "median": 0.0,
+            "p90": 0.0,
+            "max": 0.0
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.0716666666666682,
+            "median": 0.07333333333333493,
+            "p90": 0.0756756756756755,
+            "max": 0.0756756756756755
+          },
+          "exchanges": 0
+        },
+        "quiet-model/idle/announcedCycleV1": {
+          "rounds": 8,
+          "overflows": 2,
+          "score": {
+            "min": 0,
+            "median": 0.0,
+            "p90": 0,
+            "max": 0
+          },
+          "showers": {
+            "min": 15,
+            "median": 62.0,
+            "p90": 62,
+            "max": 62
+          },
+          "lostStarlight": {
+            "min": 16,
+            "median": 177.0,
+            "p90": 197,
+            "max": 197
+          },
+          "collapseSources": 268,
+          "swallowedCells": 820,
+          "heldFraction": {
+            "min": 0.0,
+            "median": 0.0,
+            "p90": 0.0,
+            "max": 0.0
+          },
+          "blockedOpportunityFraction": {
+            "min": 0.04916666666666772,
+            "median": 0.05125000000000109,
+            "p90": 0.0550458715596328,
+            "max": 0.0550458715596328
+          },
+          "exchanges": 0
+        }
+      }
+    }
+  ],
+  "repeat": {
+    "identicalCompleteRuns": true,
+    "runs": 40
+  },
+  "native": [
+    {
+      "attachment": "native-input-windows-critical-mass_0_CE4AEE32-875E-4FC6-A0FC-BCD59BF4D774.json",
+      "rows": [
+        {
+          "arrivals": 5,
+          "cadenceID": "announcedCycleV2",
+          "collapseSources": 0,
+          "criticalMassRuleVersion": 1,
+          "density": "lighter",
+          "followingCadence": "steady",
+          "generation": 4,
+          "gravityPhases": 0,
+          "observedReady": true,
+          "presentationSeconds": 1.2225305000029039,
+          "readyToActualDueSeconds": 0.8331376666610595,
+          "readyToScheduledDeadlineSeconds": 0.7770898750022752,
+          "seed": 0,
+          "shower": 9
+        },
+        {
+          "arrivals": 5,
+          "cadenceID": "announcedCycleV2",
+          "collapseSources": 3,
+          "criticalMassRuleVersion": 1,
+          "density": "heavy",
+          "followingCadence": "faster",
+          "generation": 4,
+          "gravityPhases": 2,
+          "observedReady": false,
+          "readyToActualDueSeconds": 0,
+          "readyToScheduledDeadlineSeconds": 0,
+          "seed": 0,
+          "shower": 10
+        },
+        {
+          "arrivals": 5,
+          "cadenceID": "announcedCycleV2",
+          "collapseSources": 2,
+          "criticalMassRuleVersion": 1,
+          "density": "heavy",
+          "followingCadence": "faster",
+          "generation": 4,
+          "gravityPhases": 2,
+          "observedReady": true,
+          "presentationSeconds": 1.7108426249906188,
+          "readyToActualDueSeconds": 0.04816325000138022,
+          "readyToScheduledDeadlineSeconds": 0,
+          "seed": 0,
+          "shower": 11
+        },
+        {
+          "arrivals": 5,
+          "cadenceID": "announcedCycleV2",
+          "collapseSources": 0,
+          "criticalMassRuleVersion": 1,
+          "density": "heavy",
+          "followingCadence": "faster",
+          "generation": 4,
+          "gravityPhases": 0,
+          "observedReady": true,
+          "presentationSeconds": 1.2702385000011418,
+          "readyToActualDueSeconds": 0.46522358333459124,
+          "readyToScheduledDeadlineSeconds": 0.4296008749952307,
+          "seed": 0,
+          "shower": 12
+        },
+        {
+          "arrivals": 3,
+          "cadenceID": "announcedCycleV2",
+          "collapseSources": 0,
+          "criticalMassRuleVersion": 1,
+          "density": "lighter",
+          "followingCadence": "breathing",
+          "generation": 4,
+          "gravityPhases": 0,
+          "observedReady": true,
+          "presentationSeconds": 1.099901208333904,
+          "readyToActualDueSeconds": 1.4450959583336953,
+          "readyToScheduledDeadlineSeconds": 1.3995020416623447,
+          "seed": 0,
+          "shower": 13
+        }
+      ]
+    },
+    {
+      "attachment": "native-input-windows-critical-longer-cycle_0_A3B4C73F-CD47-4E3E-BE5C-D2CBAEDCDB91.json",
+      "rows": [
+        {
+          "arrivals": 5,
+          "cadenceID": "announcedCycleV1",
+          "collapseSources": 0,
+          "criticalMassRuleVersion": 1,
+          "density": "lighter",
+          "followingCadence": "steady",
+          "generation": 4,
+          "gravityPhases": 0,
+          "observedReady": true,
+          "presentationSeconds": 1.3472498750052182,
+          "readyToActualDueSeconds": 1.7329679999966174,
+          "readyToScheduledDeadlineSeconds": 1.6522199166647624,
+          "seed": 0,
+          "shower": 9
+        },
+        {
+          "arrivals": 5,
+          "cadenceID": "announcedCycleV1",
+          "collapseSources": 3,
+          "criticalMassRuleVersion": 1,
+          "density": "heavy",
+          "followingCadence": "faster",
+          "generation": 4,
+          "gravityPhases": 2,
+          "observedReady": true,
+          "presentationSeconds": 1.831053250003606,
+          "readyToActualDueSeconds": 0.7324508750025416,
+          "readyToScheduledDeadlineSeconds": 0.6687102500000037,
+          "seed": 0,
+          "shower": 10
+        },
+        {
+          "arrivals": 5,
+          "cadenceID": "announcedCycleV1",
+          "collapseSources": 2,
+          "criticalMassRuleVersion": 1,
+          "density": "heavy",
+          "followingCadence": "faster",
+          "generation": 4,
+          "gravityPhases": 2,
+          "observedReady": true,
+          "presentationSeconds": 1.854581125007826,
+          "readyToActualDueSeconds": 0.7177977083338192,
+          "readyToScheduledDeadlineSeconds": 0.6447393749986077,
+          "seed": 0,
+          "shower": 11
+        },
+        {
+          "arrivals": 5,
+          "cadenceID": "announcedCycleV1",
+          "collapseSources": 0,
+          "criticalMassRuleVersion": 1,
+          "density": "heavy",
+          "followingCadence": "faster",
+          "generation": 4,
+          "gravityPhases": 0,
+          "observedReady": true,
+          "presentationSeconds": 1.2836002500116592,
+          "readyToActualDueSeconds": 1.265725041666883,
+          "readyToScheduledDeadlineSeconds": 1.216025208326755,
+          "seed": 0,
+          "shower": 12
+        },
+        {
+          "arrivals": 3,
+          "cadenceID": "announcedCycleV1",
+          "collapseSources": 0,
+          "criticalMassRuleVersion": 1,
+          "density": "lighter",
+          "followingCadence": "breathing",
+          "generation": 4,
+          "gravityPhases": 0,
+          "observedReady": true,
+          "presentationSeconds": 1.1203644166671438,
+          "readyToActualDueSeconds": 2.4327135833300417,
+          "readyToScheduledDeadlineSeconds": 2.379083833337063,
+          "seed": 0,
+          "shower": 13
+        }
+      ]
+    }
+  ],
+  "limits": "Virtual clock and modeled presentation; policies are not human timing or optimal play. Native measurements are one fixed idle history, one simulator session, not touch or frame-quality acceptance.",
+  "integrated": {
+    "head": "e40fabe76b259279b76e671622b5ac11020d0512",
+    "main": "b24fde8e1084aaabdea8882cb1a299b5b799f450",
+    "inputSHA256": {
+      "Sources/StarfallCore/ConstellationFixture.swift": "9c8038dd4b51304f3c65dffc8f966bbe65fafa78b11d6ecdfd300895532cd253",
+      "Sources/StarfallCore/CriticalMassFixture.swift": "5ad27dffd95dd26171a107536190ae69a38f622169b50ea9a4d14df0a364d4f9",
+      "Sources/StarfallCore/CriticalMassRule.swift": "106b4eedad4e0a2aeb3dc9f7c8eac85219ff8acd923899e083a833b88f3039d3",
+      "Sources/StarfallCore/DuskFixture.swift": "9740935783394c05fdb591557c9ebdb15426228313f7245ed82ba87cf87dc26f",
+      "Sources/StarfallCore/DuskRules.swift": "76d3a62cbfa2da4674ebe3078d4e4b3c01282991fb151a21ca1c38c38beec8d6",
+      "Sources/StarfallCore/FallingSky.swift": "d6519d269f168981f5654f7360aa7a1afee0adbac6e17fe062765b0460bbfcae",
+      "Sources/StarfallCore/Game.swift": "9ab2d57af8fe0ee804ce56e762eb5833a08ae5f39e8916ffaa0fe708d90e7086",
+      "Sources/StarfallCore/GravityFieldRules.swift": "ef5308b515340c2eafe1b226cee70a27701a6e906b6c975380d13af818f4130c",
+      "Sources/StarfallCore/GravityOpportunityFixture.swift": "fe410f41722d690eec3ac67472bf82e421912e772252fdf4ac41819f50c08e4a",
+      "Sources/StarfallCore/RefillMapping.swift": "608be41f40c945b18aba5512bac16b7c4de4eb8a2747d6fe54a895392b38e5f7",
+      "Sources/StarfallCore/SkyCadence.swift": "a01a1ab5fe50e7677bd2e1af75563a5bcc316e1828e921e7da2f572202b76b8c",
+      "Sources/StarfallCore/SkyGeneration.swift": "03d62817aaace9a7354cffb15e7735a98246ed9d75643f0e354fab2aeb2d2d97",
+      "Sources/StarfallCore/SkyTechniqueExample.swift": "75c38131723930f1e5884b8d9e87ea8c0cce975b81bddf9ef89212d627e77c26",
+      "Sources/StarfallCore/StarRecipe.swift": "280c7529a613f75af7a47f510ae2a56969a417d2a3d3821c80db24d788ce1559",
+      "Sources/StarfallCore/StarfallBalance.swift": "32525ba2f346cf843863b1cb1cba8a2fab66d088b9dc7ac308867f1520c329ec",
+      "Sources/StarfallCore/StarfallChallenge.swift": "0475f660c21ae42cce0df8c11dc40adbbb841e58b6c66b82a1293c720bd26b72",
+      "App/FallingSkyStore.swift": "4838053e99a59719088e2c56c6dd91deeb08c0efcdf58384779dc589604f8c0e",
+      "App/ObservatoryReviewFixture.swift": "9a4750756375afdbfdd710795dcb50a24a3005b3fd1f71e4a4274a35fe0f4aae",
+      "App/SkySaveArchive.swift": "713ce3c032966c52097977373c8a504bef95a4a08a2087cca1b2e1604460955c",
+      "App/SkyFlowState.swift": "ca597f926d65007b576425e429f6a286fead653cda7d85746797c6acee356b6a",
+      "App/FallingSkyHUD.swift": "c70bac7b551582f9d0e782d995c3417a7ede25cfb601a926419f66919a200db0",
+      "App/FallingSkyPresentation.swift": "2245b63818e099a28ac4ed8aa450a3ba7bf4c449e7e3cc12c03190959799fda9",
+      "App/SkyTechniqueIntent.swift": "63795371808f93ba860ac793f063fb2020e4fa497241d8e78779dea0d89f6b2b",
+      "App/GameFeedback.swift": "113d0fe4b4764d29be416f469dbc617257cc10fe6efca693cb5638ebfc4a06b0",
+      "App/StarlightCelebration.swift": "535e467ca73eb859fc863c7940f7c211f93987756d8addc3ff874f9efc81a318",
+      "App/SkyDialogue.swift": "c1a24722a7e540c8250028401d74818ddf669edd5e2e8c3a4ce778876e34559e",
+      "App/SkyDialogueLibrary.swift": "4ea89b09a45d49dc165c1e71b830b168a27ac68bd032177dc04d4568c780d002",
+      "App/SkyCopy.swift": "b7c2dc11d2f4ebc847676c10717305e1a2f1a8b4997e26bdbda56b667abf75d5",
+      "App/DuskWarning.swift": "ec09fe9bd458ed7774931a341d7b606d132e19f14bfb668c28a2c7e4a9426fd1",
+      "App/DialogueScripts/observatory-dialogue.json": "a854725f517b6e166374876a8451a67d2d51363d88f572a34a6c282db1395ee4",
+      "App/FallingSkyScene.swift": "7d3e2ed4d1a165f822108e4b9159200a9fe7d0c965c206bf5fd54d5af21be05e",
+      "App/FallingSkyMotion.swift": "ec8c29f3965e3249b07b7b9465f2222a6d582331a2d8102102b52ea720c9ee91",
+      "App/CriticalMassPresentation.swift": "31c06542bdf1652fffc6f88579f61dad55be26549c09700fe7e9a23042e3bd24",
+      "Tests/StarfallCoreTests/TimingCycleFixture.swift": "51936d184a8f60df63abe1489006011abb02431fedf310eca0afb9180513d189",
+      "tools/mechanics/CalibrationTrace.swift": "e38357ee2ba0953fe999d7aca740c9adb6beac984d3de28eb7533a11c3eaa5d3",
+      "tools/mechanics/PacingChecks.swift": "310639306cfe93f6bdfe19bbf53072e78ba5dbe100e47a64650de129142c5622",
+      "tools/mechanics/PacingMeasure.swift": "f5c2d5d6da8e923831f54aa051e494afdefc1796ffe148e694147b388a1b3206",
+      "tools/mechanics/PacingSupport.swift": "7a2f2c5564f988a2ba43e43a2a2f2799984974719c17f67592b5e376e4afba5c",
+      "tools/mechanics/compare-pacing.py": "db0c3ed848a66debac65a8f853f25f94f9bcf85ae30a720ff2bca96c51264c62"
+    },
+    "repeatRuns": 40,
+    "identicalCompleteRuns": true,
+    "native": [
+      {
+        "attachment": "native-input-windows-critical-mass_0_44ABD5B6-9A05-4212-A0BA-7082A105C9CB.json",
+        "rows": [
+          {
+            "arrivals": 5,
+            "cadenceID": "announcedCycleV2",
+            "collapseSources": 0,
+            "criticalMassRuleVersion": 1,
+            "density": "lighter",
+            "followingCadence": "steady",
+            "generation": 4,
+            "gravityPhases": 0,
+            "observedReady": true,
+            "presentationSeconds": 1.3078982916631503,
+            "readyToActualDueSeconds": 0.7272835833282443,
+            "readyToScheduledDeadlineSeconds": 0.6918668750004144,
+            "seed": 0,
+            "shower": 9
+          },
+          {
+            "arrivals": 5,
+            "cadenceID": "announcedCycleV2",
+            "collapseSources": 3,
+            "criticalMassRuleVersion": 1,
+            "density": "heavy",
+            "followingCadence": "faster",
+            "generation": 4,
+            "gravityPhases": 2,
+            "observedReady": false,
+            "readyToActualDueSeconds": 0,
+            "readyToScheduledDeadlineSeconds": 0,
+            "seed": 0,
+            "shower": 10
+          },
+          {
+            "arrivals": 5,
+            "cadenceID": "announcedCycleV2",
+            "collapseSources": 2,
+            "criticalMassRuleVersion": 1,
+            "density": "heavy",
+            "followingCadence": "faster",
+            "generation": 4,
+            "gravityPhases": 2,
+            "observedReady": true,
+            "presentationSeconds": 1.6549998333357507,
+            "readyToActualDueSeconds": 0.10156929166987538,
+            "readyToScheduledDeadlineSeconds": 0.04478154167009052,
+            "seed": 0,
+            "shower": 11
+          },
+          {
+            "arrivals": 5,
+            "cadenceID": "announcedCycleV2",
+            "collapseSources": 0,
+            "criticalMassRuleVersion": 1,
+            "density": "heavy",
+            "followingCadence": "faster",
+            "generation": 4,
+            "gravityPhases": 0,
+            "observedReady": true,
+            "presentationSeconds": 1.266198583325604,
+            "readyToActualDueSeconds": 0.4676844166679075,
+            "readyToScheduledDeadlineSeconds": 0.43356404166843276,
+            "seed": 0,
+            "shower": 12
+          },
+          {
+            "arrivals": 3,
+            "cadenceID": "announcedCycleV2",
+            "collapseSources": 0,
+            "criticalMassRuleVersion": 1,
+            "density": "lighter",
+            "followingCadence": "breathing",
+            "generation": 4,
+            "gravityPhases": 0,
+            "observedReady": true,
+            "presentationSeconds": 1.166125291667413,
+            "readyToActualDueSeconds": 1.4070479583460838,
+            "readyToScheduledDeadlineSeconds": 1.3333464166789781,
+            "seed": 0,
+            "shower": 13
+          }
+        ]
+      },
+      {
+        "attachment": "native-input-windows-critical-longer-cycle_0_F29601A4-391E-4303-8EE9-E6CFC4884283.json",
+        "rows": [
+          {
+            "arrivals": 5,
+            "cadenceID": "announcedCycleV1",
+            "collapseSources": 0,
+            "criticalMassRuleVersion": 1,
+            "density": "lighter",
+            "followingCadence": "steady",
+            "generation": 4,
+            "gravityPhases": 0,
+            "observedReady": true,
+            "presentationSeconds": 1.2759767916722922,
+            "readyToActualDueSeconds": 1.7707851250015665,
+            "readyToScheduledDeadlineSeconds": 1.7236407083255472,
+            "seed": 0,
+            "shower": 9
+          },
+          {
+            "arrivals": 5,
+            "cadenceID": "announcedCycleV1",
+            "collapseSources": 3,
+            "criticalMassRuleVersion": 1,
+            "density": "heavy",
+            "followingCadence": "faster",
+            "generation": 4,
+            "gravityPhases": 2,
+            "observedReady": true,
+            "presentationSeconds": 1.7316913749964442,
+            "readyToActualDueSeconds": 0.8369814166653669,
+            "readyToScheduledDeadlineSeconds": 0.768153249999159,
+            "seed": 0,
+            "shower": 10
+          },
+          {
+            "arrivals": 5,
+            "cadenceID": "announcedCycleV1",
+            "collapseSources": 2,
+            "criticalMassRuleVersion": 1,
+            "density": "heavy",
+            "followingCadence": "faster",
+            "generation": 4,
+            "gravityPhases": 2,
+            "observedReady": true,
+            "presentationSeconds": 1.84608325001318,
+            "readyToActualDueSeconds": 0.7332967499969527,
+            "readyToScheduledDeadlineSeconds": 0.6532725416618632,
+            "seed": 0,
+            "shower": 11
+          },
+          {
+            "arrivals": 5,
+            "cadenceID": "announcedCycleV1",
+            "collapseSources": 0,
+            "criticalMassRuleVersion": 1,
+            "density": "heavy",
+            "followingCadence": "faster",
+            "generation": 4,
+            "gravityPhases": 0,
+            "observedReady": true,
+            "presentationSeconds": 1.2506296666542767,
+            "readyToActualDueSeconds": 1.2814234166726237,
+            "readyToScheduledDeadlineSeconds": 1.2492034583410714,
+            "seed": 0,
+            "shower": 12
+          },
+          {
+            "arrivals": 3,
+            "cadenceID": "announcedCycleV1",
+            "collapseSources": 0,
+            "criticalMassRuleVersion": 1,
+            "density": "lighter",
+            "followingCadence": "breathing",
+            "generation": 4,
+            "gravityPhases": 0,
+            "observedReady": true,
+            "presentationSeconds": 1.0676289583352627,
+            "readyToActualDueSeconds": 2.482030166662298,
+            "readyToScheduledDeadlineSeconds": 2.4321854166628327,
+            "seed": 0,
+            "shower": 13
+          }
+        ]
+      }
+    ]
+  }
+}

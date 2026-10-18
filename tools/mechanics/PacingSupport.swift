@@ -32,6 +32,7 @@ import StarfallCore
     var finishAt: Double? { presentations.map(\.finishAt).min() }
     var pendingCount: Int { presentations.count }
     private(set) var maximumPendingCount = 0
+    var collapseSources = 0, swallowedCells = 0
     var growthEvents = 0
     var blockedArrivals = 0
     let clock: PacingClock
@@ -40,9 +41,22 @@ import StarfallCore
     func animate(_ turn: FallingSkyTurn, from old: FallingSky, to game: FallingSky, completion: @escaping () -> Void) {
         growthEvents += turn.arrivals.filter(\.grew).count
         if turn.blockedColumn != nil { blockedArrivals += 1 }
-        let duration = reduceMotion ? PacingDuration.quiet : turn.arrivals.isEmpty && turn.blockedColumn == nil ? PacingDuration.clearDuration : PacingDuration.flightDuration + PacingDuration.arrivalStagger * Double(max(0, turn.arrivals.count - 1)) + PacingDuration.landingDuration
+        collapseSources += turn.stellarCollapses.count
+        swallowedCells += turn.stellarCollapses.reduce(into: Set<Cell>()) { $0.formUnion($1.consumed); $0.insert($1.center) }.count
+        let duration = Self.duration(of: turn, quiet: reduceMotion)
         presentations.append(.init(finishAt: clock.now + duration, completion: completion))
         maximumPendingCount = max(maximumPendingCount, presentations.count)
+    }
+    /// Mirrors scene dispatch; timeline and constants compile from production source.
+    static func duration(of turn: FallingSkyTurn, quiet: Bool) -> TimeInterval {
+        if quiet { return PacingDuration.quiet }
+        if !turn.gravityPhases.isEmpty {
+            let timeline = StarfallMotion.GravityTimeline(phases: turn.gravityPhases.map(\.event), arrivals: turn.arrivals.count)
+            let swallow = turn.stellarCollapses.isEmpty && turn.duskCollapses.isEmpty ? 0 : PacingDuration.collapseDuration
+            return swallow + timeline.completion
+        }
+        if turn.arrivals.isEmpty { return StarfallMotion.clearDuration }
+        return StarfallMotion.flightDuration + StarfallMotion.arrivalStagger * Double(turn.arrivals.count - 1) + StarfallMotion.landingDuration
     }
     func finish() {
         guard let index = presentations.indices.min(by: { presentations[$0].finishAt < presentations[$1].finishAt }) else { return }

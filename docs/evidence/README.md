@@ -10,6 +10,8 @@ Dated, source-bound records of checks, comparisons and their limits.
 
 ## Start here
 
+[Critical-mass calibration and native input windows](calibration-critical-mass-2026-10-18/README.md) compares idle/active play, corrects the presentation model and identifies the existing longer cycle as a candidate for fresh survival.
+
 [Dialogue and gesture-only HUD](dialogue-only-hud-2026-10-18/README.md) removes top messages and the entire Arrange mode; records direct-input verification and limits.
 
 [Current gameplay calibration](calibration-baseline-2026-10-18/README.md) identifies free-exchange survival tails in two seed cohorts, corrects drained-reward measurement and records blocked native interaction checks.
