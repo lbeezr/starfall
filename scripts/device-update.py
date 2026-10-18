@@ -136,6 +136,11 @@ def update(config, state):
         raise RuntimeError('Built app identity does not match the one-app contract.')
     run(['codesign', '--verify', '--deep', '--strict', str(app)], output=log)
     atomic_json(metadata, {'buildID': fingerprint, 'source': revision})
+    # A long local build can outlive the initial remote check. A now-known
+    # failure holds delivery, retaining this verified build for a later retry.
+    cloud_status = ci_status(config['repository'], revision)
+    if cloud_status == 'failed':
+        return 'Held: main CI failed before installation for ' + revision[:10]
     # No automatic launch: updating should not start the clock or trigger a fixture.
     run(['xcrun', 'devicectl', 'device', 'install', 'app', '--device', config['device'], str(app),
          '--timeout', '90', '--json-output', str(state / 'installation.json')], output=state / 'device.log')

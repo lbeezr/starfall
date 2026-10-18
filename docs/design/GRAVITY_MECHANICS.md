@@ -1,10 +1,10 @@
 # Turn a magnetic collision into a temporary orbit
 
-**Status:** Accepted for production; integration checks in progress · **Owner:** current implementer · **Updated:** 2026-10-17
+**Status:** Adopted; development checks passed · **Owner:** current implementer · **Updated:** 2026-10-17
 
 Dusk suppresses neighboring growth and dissolves beside a clear; Opal joins a chosen color. Separate magnetic pairs create temporary holes when a legal clear opens their middle. A hole captures up to four occupied colored neighbors, rotates them between settled matching windows, and closes on a captive clear or after three windows. Empty cells are never reserved. Floor captures usually start with two stars.
 
-The user requested adoption after merging [the isolated implementation](https://github.com/lbeezr/starfall/pull/42). The [production acceptance plan](GRAVITY_MECHANICS_PLAN.md#production-acceptance-2026-10-17) owns remaining checks. Human preference, actual VoiceOver acceptance, device performance and natural supply tuning remain unverified.
+The user requested adoption after merging [the isolated implementation](https://github.com/lbeezr/starfall/pull/42). The [production acceptance plan](GRAVITY_MECHANICS_PLAN.md#production-acceptance-2026-10-17) records acceptance and remaining human/device checks. Human preference, actual VoiceOver acceptance, device performance and natural supply tuning remain unverified.
 
 ## Production ownership and supply
 

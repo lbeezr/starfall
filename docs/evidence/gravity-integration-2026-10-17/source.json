@@ -1,0 +1,58 @@
+{
+  "runtimeSourceCommit": "abe27a1b95681d2959f5c1042403bb8ea0011d5d",
+  "localEquivalentCommit": "207b0cf927b4a54c6d485bdc8bf08c2ec335cc75",
+  "testedTree": "5d35f47f23e24d161fa00dad9a9e3fb09553d4f9",
+  "additionalMain": "9cb8fccd88a7c61761c83de387946645ba13a817",
+  "additionalMainRuntimeDiff": [],
+  "sha256": {
+    "App/ConstellationTraceHitTesting.swift": "b15e75b0845f4948cdd1edd1a09c451f7bcc0d70d266462aeb5e5c1c003d5fb6",
+    "App/ConstellationTraceSurface.swift": "8efcf82b89be97fba1213c511e7366f69b0171a4cd436775a77a794a56102d41",
+    "App/FallingSkyScene.swift": "30b165afefe5d6d3e02c54d17b12566384ac45042f5e37c966e45de2bdb07f18",
+    "App/FallingSkyStore.swift": "72182e28dc39b4f20650d5fee701b93494b32420fa6dfc00bf7735b7920c7e5f",
+    "App/FallingSkyView.swift": "3d6b5a175f72580ea4f5f84d5f45f57bc717bb5d05a3d756291ffd3d7789872c",
+    "App/README.md": "98a35d4381776817e1fc14b4517c01e6ed3fdf06a9731f097c036e0fd1110f6b",
+    "App/SkyPreferences.swift": "f5fa7947cae30caead2bcf6dd1e50f4fdbd4f369582f314a6081cbd98d58be9c",
+    "App/SkySaveArchive.swift": "46c14c814e84d0848c1b0f3beb911378bf01cffe87c02676286b1a82abba69c3",
+    "App/StarCast.swift": "2b1db3731be04e6fa4c9a1224873708d6d317c5b1406f7afdeaea1410b771f97",
+    "AppTests/FallingSkyStoreTests.swift": "6a1c44f33bd4f3e004ee37e9080b5e1eaeb7c700861a50b81a76b917a3bacb7b",
+    "AppTests/GravityStoreTests.swift": "1f14ebf8fbed46e4311662ed6db789b24265be790774418236188110e5cce029",
+    "AppTests/README.md": "e3663152a36bfeaec1685e16b7d85c7cf69b729ac61d4560bbf07a49f15ca79e",
+    "AppTests/StarCastTests.swift": "7ebd2c1f1ac0fbd772602282722f74d88a0f3bcd665e02ee44b375062c90c06f",
+    "AppTests/TraceInputPolishTests.swift": "db5ce2fd7bc3fcf92bdc21d0013807b7f44ffa26f8fb62487857a6a1aacd794a",
+    "Sources/StarfallCore/ConstellationFixture.swift": "a5171ffe6cf0747904aac570a6f986eec0fdf74eeb53f7062dc7b294dd25e385",
+    "Sources/StarfallCore/FallingSky.swift": "ee00fd02e3dd62c25fdbb158c24b7d93031af1bb52364acf2d2079728db7f9b2",
+    "Sources/StarfallCore/GravityFieldRules.swift": "ef5308b515340c2eafe1b226cee70a27701a6e906b6c975380d13af818f4130c",
+    "Sources/StarfallCore/README.md": "f5af98e2cca7e8f3a5a3e7929c7f53ab12b695d69dc88fc113756722a03e8b02",
+    "Sources/StarfallCore/SkyGeneration.swift": "be47904d5cbb187953fe0b307eb1b208a60539c72f4e7a2dbd356b1eac99fd57",
+    "Starfall.xcodeproj/project.pbxproj": "72641c1eec83ab85063f7f5f1fe05ad51bcb274249693bff52f19f5689aab9b4",
+    "UITests/ConstellationTraceNativeTests.swift": "794249c55f788dbb95e261d4307c1fe11206f668e422b4086031e46fc6a65866",
+    "UITests/FallingSkyInteractionTests.swift": "37e63ddb368d7d3c9410eb94ff44d72fee6355f06757c6b0b485d442b0c6a6c5",
+    "UITests/README.md": "be1a013b168d856e8e98a07feff1cdb0a794787f87b95aef782002d8d129adee"
+  },
+  "replay": {
+    "baseline": "a1d448092be1caba0be0c7d5cff71cb8c42f3fb3",
+    "states": 6460,
+    "sha256": "dc44150f411d7982c44d443288c2719bd35ea0e7068aba811dbb20a29f6f9c44",
+    "byteEqual": true
+  },
+  "captures": {
+    "captured.jpg": "77f3382f55e9ed08684540acdca2c56c4bcbe55d61c97ae7e70b83e623fdb54c",
+    "largest-text.jpg": "6bb78ce4c4c4eaa356a55ca7d175ce18905d70fef7e10c07e93d58cd65506c40"
+  },
+  "nativeMatrix": {
+    "combined": 8,
+    "prior": 9,
+    "finalMotion": 1
+  },
+  "motion": {
+    "file": "artifacts/gravity-integration-2026-10-17/final-floor-motion.mp4",
+    "durationSeconds": 38.098333333333336,
+    "sha256": "c376152da903bbeed2e523fff799664c2133ca92f40670004a54b7211567a4cc",
+    "inspectedSeconds": [
+      12.72,
+      13.08,
+      16.38,
+      16.62
+    ]
+  }
+}

@@ -1,10 +1,10 @@
 # Prove a controllable magnetic collision and orbit
 
-**Status:** Production integration in progress (user requested adoption) · **Owner:** current implementer · **Updated:** 2026-10-17
+**Status:** Adopted at user request; development acceptance passed · **Owner:** current implementer · **Updated:** 2026-10-17
 
 Integrate the accepted magnetic collision and temporary orbit into new skies in the normal game. Keep Dusk intact, Opal uncaptured and retained saves reproducible. The [design](GRAVITY_MECHANICS.md) selects occupied capture positions and explicit support gravity; comprehension of that gravity is the principal adoption risk.
 
-**Next action:** integrate and verify the normal game, then merge. Human preference remains unverified. [Implementation evidence](../evidence/gravity-orbit-2026-10-17/README.md) records source-bound checks; human preference remains unverified.
+**Next action:** observe natural supply with a human player and tune only from that evidence. Human preference remains unverified. [Production integration evidence](../evidence/gravity-integration-2026-10-17/README.md) records 109 Core, 153 hosted and eight combined-source native checks, retained-state replay and Debug/Release builds. [Implementation evidence](../evidence/gravity-orbit-2026-10-17/README.md) records source-bound checks; human preference remains unverified.
 
 ## Production acceptance (2026-10-17)
 

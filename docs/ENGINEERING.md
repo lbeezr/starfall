@@ -176,3 +176,7 @@ The user requested production adoption of the [gravity mechanic](design/GRAVITY_
 ## Touch ownership follow-up — October 17, 2026
 
 The [reliability design](design/RELIABILITY_POLISH.md) closes the sub-slop off-board release path with terminal sample classification and store-issued hold tickets. Configuration/size changes, disabled input, detachment and multitouch share cancellation. Physical multitouch/system interruption remains next-device acceptance; do not infer it from hosted surface cancellation. Late release cannot resume a newer hold.
+
+## Build-input identity and delivery race — October 17, 2026
+
+The runtime-input recipe includes package manifests/resolution as well as App/Sources/Config/project files, excludes Markdown documentation and user workspace state, and carries a version prefix. Before installation the updater repeats its exact-source CI check; failure during local validation retains the existing app and verified cached build. Pending CI is still a development policy, not UI acceptance. Trigger: new build-input locations or multi-tester distribution. Extend fingerprint behavior checks and require exact-source acceptance evidence before expanding delivery; do not infer runtime health from a signed bundle.
