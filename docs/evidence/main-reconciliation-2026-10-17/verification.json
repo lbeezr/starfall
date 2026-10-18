@@ -1,0 +1,40 @@
+{
+  "OS": "iOS 27.0",
+  "configuration": "Debug",
+  "coreLog": "/tmp/starfall-remote-reconcile-core.log",
+  "corePassed": 63,
+  "device": "iPhone 17e",
+  "dirtyStatusAtNativeExecution": "",
+  "failed": 0,
+  "hostedPassed": 98,
+  "localParent": "f24302d",
+  "nativeLog": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-27844ad883f3/logs/test_sim_2026-10-17T20-34-29-679Z_pid85535_b14f12e5.log",
+  "nativeResult": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-27844ad883f3/result-bundles/test_sim_2026-10-17T20-34-29-679Z_pid85535_531f5afd.xcresult",
+  "nativeUIPassed": 7,
+  "pushed": false,
+  "rawAttachments": "/tmp/starfall-reconcile-attachments",
+  "releaseBuild": "passed",
+  "releaseLog": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-27844ad883f3/logs/build_sim_2026-10-17T20-39-22-046Z_pid85535_d594dc4f.log",
+  "remoteParent": "9a0a93e86c0af84702a2d574be23308c25ab3299",
+  "selection": [
+    "StarfallAppTests",
+    "StarfallUITests/FallingSkyInteractionTests/testOpeningCascadeAllowsNativeClearBeforeLastWave",
+    "StarfallUITests/FallingSkyInteractionTests/testFirstLightGoalCompletionRestoreReplayAndSurvival",
+    "StarfallUITests/FallingSkyInteractionTests/testFirstLightCanOverflowWithoutCompletingGoal",
+    "StarfallUITests/FallingSkyInteractionTests/testLargestTextSettingsFeedbackAndDismissal",
+    "StarfallUITests/FallingSkyInteractionTests/testSystemReduceMotionKeepsManualPlayWorking",
+    "StarfallUITests/ObservatoryInteractionTests/testCastSettingsDismissalAndBackgroundPreserveBoard",
+    "StarfallUITests/ObservatoryInteractionTests/testLargestTextKeepsPropsAndPausedControlsReachable"
+  ],
+  "simulator": "536BCC00-751C-47BA-BC2F-C1702941CFC8",
+  "simulatorName": "Starfall Storm Choice 01a149f6",
+  "skipped": 0,
+  "testedCommit": "c28fa238d1bf9618f870d78baf0af359fc294996",
+  "xcodebuildArgs": [
+    "ARCHS=arm64",
+    "ONLY_ACTIVE_ARCH=YES",
+    "CODE_SIGNING_ALLOWED=NO",
+    "-parallel-testing-enabled",
+    "NO"
+  ]
+}

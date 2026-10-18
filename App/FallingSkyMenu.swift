@@ -3,6 +3,7 @@ import StarfallCore
 
 /// Settings receives value snapshots, bindings and narrow actions, never the store.
 struct FallingSkyMenu: View {
+    let leaderboard: SkyLeaderboard
     let paused: Bool
     let turns: Int
     let groups: Int
@@ -15,6 +16,7 @@ struct FallingSkyMenu: View {
     let pause: () -> Void
     let restart: (Bool) -> Void
     let firstLight: () -> Void
+    let observatory: () -> Void
     let setBalance: (StarfallBalance) -> Void
     let done: () -> Void
 
@@ -36,12 +38,19 @@ struct FallingSkyMenu: View {
                     Text("\(turns) showers · \(groups) matching groups ready")
                         .accessibilityIdentifier("experiment.roundSummary")
                 }
+                Section {
+                    Button(action: observatory) { Label("Back to Observatory", systemImage: "moon.stars") }
+                        .accessibilityIdentifier("sky.home")
+                }
                 Section("Feel & atmosphere") {
                     SkyPreferenceToggle(title: "Sound", symbol: "speaker.wave.2", value: $sound, identifier: "experiment.sound")
                     SkyPreferenceToggle(title: "Haptics", symbol: "waveform", value: $haptics, identifier: "experiment.haptics")
                     SkyPreferenceToggle(title: "Calm effects", symbol: "moon", value: $calm, identifier: "experiment.calm")
                 }
                 Section("Explore") {
+                    NavigationLink { SkyLeaderboardView(leaderboard: leaderboard).toolbar { dismissal } }
+                        label: { Label("Rankings", systemImage: "trophy") }
+                        .accessibilityIdentifier("rankings.open")
                     if !challenge {
                         NavigationLink { Form { balanceControls }.navigationTitle("Sky balance").toolbar { dismissal } }
                             label: { Label("Sky balance", systemImage: "slider.horizontal.3") }
@@ -76,6 +85,7 @@ struct FallingSkyMenu: View {
                 Text("A grown star beside one small match is enough. Each family has its own face and shape.")
             }
             Section("Follow the sky") {
+                Text("New skies open with a quick cascade. Start clearing as each wave settles; your selected shower pace follows the opening.")
                 Text("The comet trail fills toward the next shower. Clear space before a column fills. Clearing never delays the sky.")
                 Text("A matching arrival grows a small star. A grown star cannot grow again; the next star stacks above it.")
             }
@@ -93,7 +103,7 @@ struct FallingSkyMenu: View {
         VStack(alignment: .leading, spacing: 16) {
             Text("Try a balance").font(.headline).accessibilityAddTraits(.isHeader)
             VStack(alignment: .leading, spacing: 8) {
-                Text("Shower pace")
+                Text("Shower pace after the opening")
                 Picker("Shower pace", selection: Binding(get: { balance.pace }, set: { setBalance(StarfallBalance(pace: $0, darkStars: balance.darkStars)) })) {
                     ForEach(StarfallBalance.Pace.allCases, id: \.self) { pace in
                         Text(pace.title).tag(pace)

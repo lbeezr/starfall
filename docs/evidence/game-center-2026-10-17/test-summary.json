@@ -1,0 +1,37 @@
+{
+  "devicesAndConfigurations": [
+    {
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "8C140D96-FE53-4658-A7F5-84D259747EDB",
+        "deviceName": "Starfall Rankings QA",
+        "modelName": "iPhone 17e",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "expectedFailures": 0,
+      "failedTests": 0,
+      "passedTests": 35,
+      "skippedTests": 0,
+      "testPlanConfiguration": {
+        "configurationId": "1",
+        "configurationName": "Test Scheme Action"
+      }
+    }
+  ],
+  "environmentDescription": "Starfall \u00b7 Built with macOS 27.0.1",
+  "expectedFailures": 0,
+  "failedTests": 0,
+  "finishTime": 1792266719.717,
+  "passedTests": 35,
+  "result": "Passed",
+  "runtimeWarnings": [],
+  "skippedTests": 0,
+  "startTime": 1792266625.94,
+  "statistics": [],
+  "testFailures": [],
+  "title": "Test - Starfall",
+  "topInsights": [],
+  "totalTestCount": 35
+}

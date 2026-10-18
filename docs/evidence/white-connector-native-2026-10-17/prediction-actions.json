@@ -1,0 +1,70 @@
+{
+  "sourceManifest": "source.json",
+  "simulator": "536BCC00-751C-47BA-BC2F-C1702941CFC8",
+  "method": "Agent states intent from screenshot; parent executes native IDs; only two new decisions per example. Reset/prefix replay restores each example and is not an extra choice. Each driver call terminates/restores between observations. No continuous urgency evidence.",
+  "testOnlyDriverSHA256": "a91dc73e8d3b0ad880a7bda5e580b7d8997ea6f65b56271660ccc7f79f550661",
+  "runs": [
+    {
+      "fixture": "connection",
+      "commands": [
+        "reset",
+        "experiment.cell.1.0"
+      ],
+      "newChoices": [
+        "experiment.cell.1.0"
+      ],
+      "prefixReplayExcluded": false,
+      "showers": 6,
+      "score": 3,
+      "result": "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-27844ad883f3/result-bundles/test_sim_2026-10-17T19-56-34-956Z_pid85535_240e901e.xcresult",
+      "screenshot": "/tmp/starfall-white-prediction-connection/1E3374C1-CD5A-4F00-832F-FC4FA52E883D.png"
+    },
+    {
+      "fixture": "pressure",
+      "commands": [
+        "reset",
+        "experiment.cell.0.0"
+      ],
+      "newChoices": [
+        "experiment.cell.0.0"
+      ],
+      "prefixReplayExcluded": false,
+      "showers": 12,
+      "score": 3,
+      "result": "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-27844ad883f3/result-bundles/test_sim_2026-10-17T19-57-04-589Z_pid85535_8a4d8eaa.xcresult",
+      "screenshot": "/tmp/starfall-white-prediction-pressure/0525DAF1-B927-4BB9-A4EF-F68500CB81EA.png"
+    },
+    {
+      "fixture": "connection",
+      "commands": [
+        "reset",
+        "experiment.cell.1.0",
+        "experiment.next"
+      ],
+      "newChoices": [
+        "experiment.next"
+      ],
+      "prefixReplayExcluded": true,
+      "showers": 7,
+      "score": 3,
+      "result": "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-27844ad883f3/result-bundles/test_sim_2026-10-17T19-58-45-555Z_pid85535_682983b2.xcresult",
+      "screenshot": "/tmp/starfall-white-prediction-connection-next/964D3302-840F-42A2-B8A7-B9CA6A95CF4F.png"
+    },
+    {
+      "fixture": "pressure",
+      "commands": [
+        "reset",
+        "experiment.cell.0.0",
+        "experiment.cell.0.2"
+      ],
+      "newChoices": [
+        "experiment.cell.0.2"
+      ],
+      "prefixReplayExcluded": true,
+      "showers": 12,
+      "score": 6,
+      "result": "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-27844ad883f3/result-bundles/test_sim_2026-10-17T19-59-07-648Z_pid85535_e46c7821.xcresult",
+      "screenshot": "/tmp/starfall-white-prediction-pressure-order/73313DC4-9FFD-4CCA-84D9-2D361FE8F93E.png"
+    }
+  ]
+}

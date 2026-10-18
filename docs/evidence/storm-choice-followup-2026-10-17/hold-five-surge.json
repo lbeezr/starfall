@@ -1,0 +1,154 @@
+{
+  "cap" : 24,
+  "over" : true,
+  "policy" : "largest-ready-until-below-threshold; first canonical group wins ties",
+  "score" : 15,
+  "seed" : 17,
+  "threshold" : 5,
+  "trace" : [
+    {
+      "clears" : [
+
+      ],
+      "legalBeforeClearing" : 1,
+      "occupied" : 3,
+      "over" : false,
+      "score" : 0,
+      "shower" : 1
+    },
+    {
+      "clears" : [
+
+      ],
+      "legalBeforeClearing" : 1,
+      "occupied" : 6,
+      "over" : false,
+      "score" : 0,
+      "shower" : 2
+    },
+    {
+      "clears" : [
+
+      ],
+      "legalBeforeClearing" : 1,
+      "occupied" : 7,
+      "over" : false,
+      "score" : 0,
+      "shower" : 3
+    },
+    {
+      "clears" : [
+
+      ],
+      "legalBeforeClearing" : 1,
+      "occupied" : 8,
+      "over" : false,
+      "score" : 0,
+      "shower" : 4
+    },
+    {
+      "clears" : [
+        {
+          "column" : 0,
+          "row" : 0,
+          "value" : 5
+        },
+        {
+          "column" : 1,
+          "row" : 0,
+          "value" : 5
+        }
+      ],
+      "legalBeforeClearing" : 2,
+      "occupied" : 4,
+      "over" : false,
+      "score" : 10,
+      "shower" : 5
+    },
+    {
+      "clears" : [
+
+      ],
+      "legalBeforeClearing" : 2,
+      "occupied" : 8,
+      "over" : false,
+      "score" : 10,
+      "shower" : 6
+    },
+    {
+      "clears" : [
+
+      ],
+      "legalBeforeClearing" : 2,
+      "occupied" : 11,
+      "over" : false,
+      "score" : 10,
+      "shower" : 7
+    },
+    {
+      "clears" : [
+
+      ],
+      "legalBeforeClearing" : 4,
+      "occupied" : 14,
+      "over" : false,
+      "score" : 10,
+      "shower" : 8
+    },
+    {
+      "clears" : [
+
+      ],
+      "legalBeforeClearing" : 4,
+      "occupied" : 17,
+      "over" : false,
+      "score" : 10,
+      "shower" : 9
+    },
+    {
+      "clears" : [
+        {
+          "column" : 3,
+          "row" : 0,
+          "value" : 5
+        }
+      ],
+      "legalBeforeClearing" : 5,
+      "occupied" : 15,
+      "over" : false,
+      "score" : 15,
+      "shower" : 10
+    },
+    {
+      "clears" : [
+
+      ],
+      "legalBeforeClearing" : 6,
+      "occupied" : 18,
+      "over" : false,
+      "score" : 15,
+      "shower" : 11
+    },
+    {
+      "clears" : [
+
+      ],
+      "legalBeforeClearing" : 7,
+      "occupied" : 22,
+      "over" : false,
+      "score" : 15,
+      "shower" : 12
+    },
+    {
+      "clears" : [
+
+      ],
+      "legalBeforeClearing" : 7,
+      "occupied" : 23,
+      "over" : true,
+      "score" : 15,
+      "shower" : 13
+    }
+  ],
+  "turns" : 13
+}

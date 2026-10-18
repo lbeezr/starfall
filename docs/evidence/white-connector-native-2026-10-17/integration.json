@@ -1,0 +1,16 @@
+{
+  "testedSource": "78c07fe",
+  "sourceState": "clean committed archive",
+  "upstreamMain": "06143f839970e636bc74bfbf7146f6875f990721",
+  "productionRuntimeDiffFromMain": "none in App, Sources, Config or Starfall.xcodeproj",
+  "coreTests": 61,
+  "coreLog": "/tmp/starfall-mechanics-integration-core.log",
+  "archive": "/var/folders/fs/9shw9bf142jg3280dc9n3hhc0000gn/T/starfall-mechanics-integration-vpvqa05d",
+  "configuration": "Release",
+  "scheme": "Starfall",
+  "deviceOS": "iPhone17e / iOS27.0 Simulator",
+  "buildLog": "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-27844ad883f3/logs/build_sim_2026-10-17T20-06-08-819Z_pid85535_d33db3e3.log",
+  "result": "build passed; compile-only, not installed/launched",
+  "whiteLabCleanup": "com.starfall.whiteconnector.lab uninstalled from private simulator536BCC00-751C-47BA-BC2F-C1702941CFC8 after closing fixture study; no phone or regular save touched",
+  "scope": "Integrates tooling/design/evidence only; imports current main unchanged. No gameplay, network, signing or production save changes introduced by the mechanics work."
+}

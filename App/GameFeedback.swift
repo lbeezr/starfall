@@ -39,15 +39,28 @@ import StarfallCore
 /// Falling-sky cues use the same bounded local sound and haptic owner.
 @MainActor protocol FallingSkyFeedbackProviding: AnyObject {
     func collected(soundEnabled: Bool, hapticsEnabled: Bool, reducedMotion: Bool)
+    func collected(_ level: StarlightCelebration.Level, soundEnabled: Bool, hapticsEnabled: Bool, reducedMotion: Bool)
     func announce(_ message: String)
     func stopSounds()
 }
 
+extension FallingSkyFeedbackProviding {
+    // Existing injected feedback clients preserve their preference/recording contract.
+    func collected(_ level: StarlightCelebration.Level, soundEnabled: Bool, hapticsEnabled: Bool, reducedMotion: Bool) {
+        collected(soundEnabled: soundEnabled, hapticsEnabled: hapticsEnabled, reducedMotion: reducedMotion)
+    }
+}
+
 extension GameFeedback: FallingSkyFeedbackProviding {
     func collected(soundEnabled: Bool, hapticsEnabled: Bool, reducedMotion: Bool) {
-        if soundEnabled && !UIAccessibility.isVoiceOverRunning { sound.play() }
+        collected(.ordinary, soundEnabled: soundEnabled, hapticsEnabled: hapticsEnabled, reducedMotion: reducedMotion)
+    }
+
+    func collected(_ level: StarlightCelebration.Level, soundEnabled: Bool, hapticsEnabled: Bool, reducedMotion: Bool) {
+        if soundEnabled && !UIAccessibility.isVoiceOverRunning { sound.play(level) }
         if hapticsEnabled && !reducedMotion && !UIAccessibility.isReduceMotionEnabled {
-            impact.impactOccurred(intensity: 0.55)
+            if level == .ordinary { impact.impactOccurred(intensity: 0.55) }
+            else { notification.notificationOccurred(.success) }
         }
     }
 }

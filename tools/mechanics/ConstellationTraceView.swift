@@ -42,8 +42,6 @@ private extension FallingSkyView {
         store.scene.clearConstellationTrace()
         guard let outcome else { return }
         store.clearTracedConstellation(outcome.path, snapshot: outcome.snapshot, generation: outcome.generation)
-        // Commit synchronously first; effects never choose or delay the cleared set.
-        if store.game != outcome.snapshot { store.scene.constellationBurst(outcome.path) }
     }
     func accessibleTrace(_ cell: Cell) {
         if trace.snapshot == nil {

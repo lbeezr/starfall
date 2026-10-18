@@ -2,18 +2,22 @@
 
 <img src="App/Assets.xcassets/AppIcon.appiconset/Starfall-1024.png" width="96" alt="Starfall icon: Spark tumbling above lavender clouds">
 
-A small native iOS falling-sky puzzle. Clear matching stars as showers fill the board. Play at your own pace, or try **First Light**, one 18-starlight challenge. Progress stays on this device.
+A small native iOS falling-sky puzzle. Clear matching stars as showers fill the board. Play at your own pace, or try **First Light**, one 18-starlight challenge. Your sky stays on this device. Optional Game Center rankings compare completed standard skies with friends or all players; the game works fully offline and without signing in.
 
 [Roadmap](docs/ROADMAP.md) · [Visual reference and cast](docs/design/VISUAL_REFERENCE.md) · [Playtest](docs/PLAYTEST-FALLING-SKY.md) · [Documentation map](docs/README.md)
 
 ## How to play
 
 - **Clear a match:** Connected matching jewels must total at least 3 starlight. Normal jewels count as 1; large jewels count as 2. Clear beside a dark star to dissolve it and unblock nearby growth.
-- **Understand the sky:** While paused, Sunny explains growth, clear results and dark-star removal using the committed game outcome. Active play stays quiet.
+- **Understand the sky:** While paused, Sunny explains growth, clear results and dark-star removal using the committed game outcome. Routine arrivals stay quiet; clears show brief point awards.
 - **Control the showers:** Call the next shower yourself or clear while paused. Use the sky menu to pause or tune shower pace and dark-star frequency; Start/Resume and manual advance appear while paused.
-- **Try a goal:** Choose **Sky menu → Start First Light** to start a new round with steady showers, no dark stars and an 18-starlight target. Replay repeats it; New sky returns to survival. When a survival board fills, replay or start a new sky.
+- **Try a goal:** Choose **Try First Light** on Welcome or **First Light** in the sky menu to start a new round with steady showers, no dark stars and an 18-starlight target. Replay repeats it; New sky returns to survival. When a survival board fills, replay or start a new sky.
 
-New skies offer a match in the first shower. Matching colors travel together; dry boards receive a matching run in a later preview when a low column has room. The [compact HUD](docs/evidence/compact-hud-2026-10-17/README.md) keeps score/goal and the sky menu above the board, with an arrival cue instead of the exact forecast strip.
+New skies start empty, then open with four closely spaced animated showers. Clear between waves as they settle; the regular pace defaults to three seconds after the opening. Saved older skies and First Light keep their original cadence. New skies offer a match in the first shower. Matching colors travel together; dry boards receive a matching run in a later preview when a low column has room. The [compact HUD](docs/evidence/compact-hud-2026-10-17/README.md) keeps score/goal and the sky menu above the board, with an arrival cue instead of the exact forecast strip.
+
+The [sky flow](docs/design/SKY_FLOW.md) opens with Welcome/Resume, waits for Begin at Entry, and gives First Light wins and full skies their own endings. Cast stars settle while actions emerge; Calm effects and Reduce Motion show the settled screen. Another sky always waits for your choice.
+
+See [Game Center setup and offline behavior](docs/design/GAME_CENTER.md) before using live rankings. The Apple leaderboard and signing capability must be configured separately.
 
 ## Open and run
 
@@ -50,7 +54,7 @@ The character star cast is enabled by default in Debug and Release. The original
 - **Rules and saves:** Pure deterministic core, Codable state and on-device saving after committed events. Replay or New sky resets the round.
 - **Native presentation:** SwiftUI screens/settings and a SpriteKit board; five expressive star families plus Dusk. The original Debug puzzle keeps its crystal artwork and procedural fallback.
 - **Bounded motion:** Clear fragments, downward settling, diagonal refill, angled arrivals, weighted rebounds and survivor ripples (stronger at 5+ starlight). These present committed outcomes. [Connected contact](docs/evidence/star-contact-2026-10-17/README.md) adds local weight transfer, brief neighbor looks, surface light and a quiet resting sky.
-- **Feedback and accessibility:** Group outlines/count, clear rings and score popup; local sound/haptics on for new preferences (saved off is preserved; sound respects Silent Mode); Calm effects honors Reduce Motion. The VoiceOver alternative grid exposes row/column, jewel name and connected-group size.
+- **Feedback and accessibility:** Group outlines/count, clear rings and [starlight collection celebrations](docs/design/STARLIGHT_CELEBRATIONS.md) with a readable award and responsive total; local sound/haptics on for new preferences (saved off is preserved; sound respects Silent Mode); Calm effects honors Reduce Motion. The VoiceOver alternative grid exposes row/column, jewel name and connected-group size.
 
 Falling-sky artwork comes from the shared, bounded [star-cast material factory](docs/design/star-cast/README.md), used by the board, comets and HUD. It combines packaged Crystal Glow cutouts with authored expressive faces in a fixed cache; no external runtime dependency is needed.
 
@@ -65,7 +69,7 @@ The package records its pre-adoption handoff state and is preserved unchanged. R
 
 ## Product boundaries
 
-Falling sky is the default in Debug and Release. There is one optional challenge, with no campaign or unlock progression. No power-ups, backend, accounts, analytics, ads, purchases, paid assets or external SDKs.
+Falling sky is the default in Debug and Release. There is one optional challenge, with no campaign or unlock progression. No power-ups, custom backend, Starfall accounts, analytics, ads, purchases, paid assets or external SDKs. Optional Apple Game Center provides online identity and rankings; gameplay remains fully offline.
 
 `Config/Clean.xcconfig` supplies `STARFALL_CLEAN`; all existing configurations are clean. Monetization code, dependencies, UI and entitlements are physically absent. See `AGENTS.md` for the boundary for any future optional edition. No speculative monetization subsystem is implemented.
 
@@ -88,3 +92,5 @@ The selected [environment art direction and roadmap](docs/design/environments/PR
 The isolated [compact phase HUD trial](docs/evidence/compact-phase-2026-10-17/README.md) makes Surge playable with the committed score/menu layout and no forecast strip. Production generation remains unchanged pending observed comparison. A [matched Observatory pair](docs/evidence/observatory-phases-2026-10-17/README.md) now supports comparison on the integrated interface, with separate save suites and explicit accessibility/layout gaps.
 
 The latest [Starfall Lab drawing build](docs/evidence/constellation-trace-2026-10-17/README.md) clears only five or more matching stars traced by the player. It updates one stable isolated app; [development build IDs](docs/DEVELOPMENT_BUILDS.md) distinguish versions. Regular Starfall and its saved round remain intact until verified integration.
+
+The simulator-only [White Connector Lab](docs/evidence/white-connector-native-2026-10-17/README.md) completed a bounded choice study. Its ordering insight is retained; further white testing is parked while the selected tracing mechanic is evaluated. No extra phone app or production rule was added.

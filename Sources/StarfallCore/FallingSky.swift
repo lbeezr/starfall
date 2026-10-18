@@ -57,7 +57,16 @@ public struct FallingSky: Codable, Equatable, Sendable {
     private var savedBalance: StarfallBalance?
     // Missing in older saves: retain their original independent-color sky.
     private var cohesiveShowers: Bool?
-    public var balance: StarfallBalance { savedBalance ?? StarfallBalance() }
+    // Missing in historical saves: retain the original clock, including empty skies.
+    private var openingCascade: Bool?
+    public var hasOpeningCascade: Bool { openingCascade == true }
+    public var isOpeningCascade: Bool { hasOpeningCascade && turns < 4 }
+    /// A committed-turn schedule; presentation completions never choose the cadence.
+    public var automaticShowerDelay: Double {
+        guard isOpeningCascade else { return Double(balance.pace.rawValue) }
+        return turns == 0 ? 0.25 : 1.8
+    }
+    public var balance: StarfallBalance { savedBalance ?? StarfallBalance(pace: .steady) }
     public var outcome: Outcome {
         challenge?.outcome(score: score, overflowed: blockedColumn != nil)
             ?? (blockedColumn == nil ? .playing : .lost)
@@ -65,8 +74,9 @@ public struct FallingSky: Codable, Equatable, Sendable {
     public var isOver: Bool { outcome != .playing }
     public var occupiedCount: Int { board.compactMap { $0 }.count }
 
-    public init(seed: UInt64, balance: StarfallBalance = StarfallBalance()) {
+    public init(seed: UInt64, balance: StarfallBalance = StarfallBalance(), openingCascade: Bool = true) {
         self.seed = seed
+        self.openingCascade = openingCascade ? true : nil
         savedBalance = balance
         cohesiveShowers = true
         showersUntilDark = balance.darkStars.showerGap.map { $0.upperBound - 1 } ?? 0
@@ -77,7 +87,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
     }
 
     public init(challenge: StarfallChallenge) {
-        self.init(seed: challenge.seed, balance: challenge.balance)
+        self.init(seed: challenge.seed, balance: challenge.balance, openingCascade: false)
         self.challenge = challenge
     }
 
@@ -241,7 +251,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
     }
 
     public var isValidSave: Bool {
-        if let challenge, seed != challenge.seed || balance != challenge.balance { return false }
+        if let challenge, seed != challenge.seed || balance != challenge.balance || hasOpeningCascade { return false }
         guard board.count == 49, Self.showerSizes.contains(incoming.count),
               remainingColumns.allSatisfy({ (0..<7).contains($0) }),
               Set(remainingColumns).count == remainingColumns.count,

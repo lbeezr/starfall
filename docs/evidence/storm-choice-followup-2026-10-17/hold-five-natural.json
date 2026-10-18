@@ -1,0 +1,277 @@
+{
+  "cap" : 24,
+  "over" : false,
+  "policy" : "largest-ready-until-below-threshold; first canonical group wins ties",
+  "score" : 33,
+  "seed" : 17,
+  "threshold" : 5,
+  "trace" : [
+    {
+      "clears" : [
+
+      ],
+      "legalBeforeClearing" : 1,
+      "occupied" : 3,
+      "over" : false,
+      "score" : 0,
+      "shower" : 1
+    },
+    {
+      "clears" : [
+
+      ],
+      "legalBeforeClearing" : 1,
+      "occupied" : 6,
+      "over" : false,
+      "score" : 0,
+      "shower" : 2
+    },
+    {
+      "clears" : [
+
+      ],
+      "legalBeforeClearing" : 1,
+      "occupied" : 7,
+      "over" : false,
+      "score" : 0,
+      "shower" : 3
+    },
+    {
+      "clears" : [
+
+      ],
+      "legalBeforeClearing" : 1,
+      "occupied" : 8,
+      "over" : false,
+      "score" : 0,
+      "shower" : 4
+    },
+    {
+      "clears" : [
+        {
+          "column" : 0,
+          "row" : 0,
+          "value" : 5
+        },
+        {
+          "column" : 1,
+          "row" : 0,
+          "value" : 5
+        }
+      ],
+      "legalBeforeClearing" : 2,
+      "occupied" : 4,
+      "over" : false,
+      "score" : 10,
+      "shower" : 5
+    },
+    {
+      "clears" : [
+
+      ],
+      "legalBeforeClearing" : 2,
+      "occupied" : 8,
+      "over" : false,
+      "score" : 10,
+      "shower" : 6
+    },
+    {
+      "clears" : [
+
+      ],
+      "legalBeforeClearing" : 2,
+      "occupied" : 11,
+      "over" : false,
+      "score" : 10,
+      "shower" : 7
+    },
+    {
+      "clears" : [
+
+      ],
+      "legalBeforeClearing" : 4,
+      "occupied" : 14,
+      "over" : false,
+      "score" : 10,
+      "shower" : 8
+    },
+    {
+      "clears" : [
+
+      ],
+      "legalBeforeClearing" : 4,
+      "occupied" : 17,
+      "over" : false,
+      "score" : 10,
+      "shower" : 9
+    },
+    {
+      "clears" : [
+
+      ],
+      "legalBeforeClearing" : 4,
+      "occupied" : 19,
+      "over" : false,
+      "score" : 10,
+      "shower" : 10
+    },
+    {
+      "clears" : [
+
+      ],
+      "legalBeforeClearing" : 5,
+      "occupied" : 21,
+      "over" : false,
+      "score" : 10,
+      "shower" : 11
+    },
+    {
+      "clears" : [
+
+      ],
+      "legalBeforeClearing" : 5,
+      "occupied" : 22,
+      "over" : false,
+      "score" : 10,
+      "shower" : 12
+    },
+    {
+      "clears" : [
+
+      ],
+      "legalBeforeClearing" : 5,
+      "occupied" : 23,
+      "over" : false,
+      "score" : 10,
+      "shower" : 13
+    },
+    {
+      "clears" : [
+        {
+          "column" : 1,
+          "row" : 2,
+          "value" : 5
+        }
+      ],
+      "legalBeforeClearing" : 5,
+      "occupied" : 20,
+      "over" : false,
+      "score" : 15,
+      "shower" : 14
+    },
+    {
+      "clears" : [
+        {
+          "column" : 0,
+          "row" : 2,
+          "value" : 7
+        }
+      ],
+      "legalBeforeClearing" : 5,
+      "occupied" : 17,
+      "over" : false,
+      "score" : 22,
+      "shower" : 15
+    },
+    {
+      "clears" : [
+
+      ],
+      "legalBeforeClearing" : 4,
+      "occupied" : 20,
+      "over" : false,
+      "score" : 22,
+      "shower" : 16
+    },
+    {
+      "clears" : [
+
+      ],
+      "legalBeforeClearing" : 4,
+      "occupied" : 22,
+      "over" : false,
+      "score" : 22,
+      "shower" : 17
+    },
+    {
+      "clears" : [
+        {
+          "column" : 1,
+          "row" : 0,
+          "value" : 6
+        },
+        {
+          "column" : 2,
+          "row" : 0,
+          "value" : 5
+        }
+      ],
+      "legalBeforeClearing" : 4,
+      "occupied" : 18,
+      "over" : false,
+      "score" : 33,
+      "shower" : 18
+    },
+    {
+      "clears" : [
+
+      ],
+      "legalBeforeClearing" : 2,
+      "occupied" : 19,
+      "over" : false,
+      "score" : 33,
+      "shower" : 19
+    },
+    {
+      "clears" : [
+
+      ],
+      "legalBeforeClearing" : 2,
+      "occupied" : 21,
+      "over" : false,
+      "score" : 33,
+      "shower" : 20
+    },
+    {
+      "clears" : [
+
+      ],
+      "legalBeforeClearing" : 2,
+      "occupied" : 23,
+      "over" : false,
+      "score" : 33,
+      "shower" : 21
+    },
+    {
+      "clears" : [
+
+      ],
+      "legalBeforeClearing" : 2,
+      "occupied" : 24,
+      "over" : false,
+      "score" : 33,
+      "shower" : 22
+    },
+    {
+      "clears" : [
+
+      ],
+      "legalBeforeClearing" : 2,
+      "occupied" : 27,
+      "over" : false,
+      "score" : 33,
+      "shower" : 23
+    },
+    {
+      "clears" : [
+
+      ],
+      "legalBeforeClearing" : 2,
+      "occupied" : 29,
+      "over" : false,
+      "score" : 33,
+      "shower" : 24
+    }
+  ],
+  "turns" : 24
+}

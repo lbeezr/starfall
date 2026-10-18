@@ -1,0 +1,33 @@
+{
+  "baselineCoreSHA256": "61074a4fe42db5e2fb00b84c4551395b2165321ad0e4f7b51884706aaa4f6ebc",
+  "baselineSource": "202aabb50d83bf7c94c210dfa34f8a35b48880d5",
+  "candidateCoreSHA256": "25a53150a0f297685c5fbaa3375801cc6e66e922a3f0e74b4dbdb72aec52750e",
+  "ordinaryReplayEqual": true,
+  "ordinaryReplaySHA256": "d51c3f1c3d48d516bd9067f08dc26aae4796054093ea3ffd47ea1005e96bb3fe",
+  "ordinaryReplayStates": 2917,
+  "packageLog": "/var/folders/fs/9shw9bf142jg3280dc9n3hhc0000gn/T/starfall-white-connector-oezq8tr6/package-tests.log",
+  "packageTestsPassed": 70,
+  "policies": [
+    "first-ready-until-none",
+    "largest-ready-until-none"
+  ],
+  "scope": "Rules/fixtures only; no white spawning, app presentation, production source or normal saves changed",
+  "seeds": [
+    0,
+    39
+  ],
+  "showerCap": 24,
+  "toolSHA256": {
+    "tools/mechanics/WhiteConnectorOrdinaryReplay.swift": "e79a47aef2679a2ce26a76466fd06fcd1e3101fa4a0a1577d570b5b08ef35224",
+    "tools/mechanics/WhiteConnectorTests.swift": "eacbc731a16cf25e99647e184edc4d91e42e85c256b7c470e1ceb8109db969cb",
+    "tools/mechanics/check-white-connector.py": "2f2140322d5f291d0c13dd84bfcf0ec7fcbc09903a2246c1cb9f029abf4cc98d",
+    "tools/mechanics/white-connector.patch": "6dd8e54814ae367b8e218d58a20e4abbf586618dd718fcc07ab8a40461ca760f"
+  },
+  "workspace": "/var/folders/fs/9shw9bf142jg3280dc9n3hhc0000gn/T/starfall-white-connector-oezq8tr6",
+  "simulatorBuild": {
+    "configuration": "Debug",
+    "simulator": "iPhone 17e / iOS 27.0",
+    "result": "passed compile-only; not installed or launched",
+    "log": "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-27844ad883f3/logs/build_sim_2026-10-17T19-35-09-496Z_pid85535_c9096292.log"
+  }
+}

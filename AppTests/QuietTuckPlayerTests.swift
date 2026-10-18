@@ -4,6 +4,22 @@ import StarfallCore
 @testable import Starfall
 
 final class QuietTuckPlayerTests: XCTestCase {
+    @MainActor func testCelebrationUsesOneDistinctVoiceAndPreservesOrdinaryRotation() {
+        let output = RecordingTuckOutput()
+        let player = QuietTuckPlayer(output: output, notifications: NotificationCenter(), isActive: { true })
+        player.play(); player.play(.brilliant); player.play(.constellation); player.play()
+        XCTAssertEqual(output.takes, [0, 4, 5, 1])
+        player.stop(); XCTAssertEqual(output.stops, 1)
+    }
+
+    @MainActor func testCelebrationResourcesDecodeWithFiniteDuration() throws {
+        for name in BundledTuckOutput.celebrationNames {
+            let url = try XCTUnwrap(Bundle.main.url(forResource: name, withExtension: "wav", subdirectory: "Audio"))
+            let decoded = try AVAudioPlayer(contentsOf: url)
+            XCTAssertEqual(decoded.duration, 0.74, accuracy: 0.005)
+        }
+    }
+
     @MainActor func testRotationSurvivesStopsAndNeverQueuesPlayback() async {
         let output = RecordingTuckOutput()
         let player = QuietTuckPlayer(output: output, notifications: NotificationCenter(), isActive: { true })

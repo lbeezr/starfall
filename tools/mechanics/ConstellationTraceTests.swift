@@ -89,6 +89,9 @@ extension FallingSkyStoreTests {
         store.clear(Cell(1,3)); XCTAssertEqual(store.game,source)
         store.clearTracedConstellation(chosenTrace,snapshot:source,generation:ticket)
         XCTAssertEqual(store.game.score,5); XCTAssertTrue(store.busy)
+        XCTAssertEqual(store.celebration?.level, .constellation)
+        XCTAssertEqual(store.celebration?.path, chosenTrace)
+        XCTAssertEqual(Set(store.celebration?.cells ?? []), Set(chosenTrace))
         let committed = store.game
         store.clearTracedConstellation(chosenTrace,snapshot:source,generation:ticket)
         XCTAssertEqual(store.game,committed)

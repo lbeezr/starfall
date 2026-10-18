@@ -24,6 +24,13 @@ extension FallingSkyScene {
                 spark.run(.repeatForever(.sequence([.wait(forDuration: Double(index%3)*0.05), .fadeAlpha(to: 0.3, duration: 0.2), .fadeAlpha(to: 1, duration: 0.2)])))
             }
         }
+        let preview = SKLabelNode(text: ready
+            ? "+\(rendered?.value(of: Set(path)) ?? 0) ready"
+            : "\(Set(path).count) / 5 stars")
+        preview.name = "lab.trace.preview"; preview.fontName = "AvenirNext-Bold"
+        preview.fontSize = step * 0.32; preview.fontColor = .white
+        preview.position = CGPoint(x: point(path.last!).x, y: point(path.last!).y + step * 0.65)
+        constellationTrail.addChild(preview)
         let tip = SKShapeNode(circleOfRadius: step * 0.075)
         tip.name = "lab.trace.tip"; tip.fillColor = .white; tip.strokeColor = .clear
         tip.glowWidth = reduceMotion ? 0 : 5; tip.position = point(path.last!)
@@ -56,31 +63,4 @@ extension FallingSkyScene {
         }
     }
 
-    func constellationBurst(_ path: [Cell]) {
-        clearConstellationTrace()
-        guard !reduceMotion else { return }
-        let shape=CGMutablePath()
-        if let first=path.first { shape.move(to:point(first)) }
-        for cell in path.dropFirst() { shape.addLine(to:point(cell)) }
-        let pulseShape=SKShapeNode(path:shape)
-        pulseShape.name="lab.trace.release-shape";pulseShape.strokeColor = .white
-        pulseShape.lineWidth=2.8;pulseShape.glowWidth=6;pulseShape.alpha=0.8
-        effects.addChild(pulseShape)
-        pulseShape.run(.sequence([.fadeAlpha(to:1,duration:0.06),.wait(forDuration:0.08),.fadeOut(withDuration:0.2),.removeFromParent()]))
-        for cell in Set(path) {
-            let center = point(cell)
-            let pulse = SKShapeNode(circleOfRadius: step*0.15)
-            pulse.position = center; pulse.strokeColor = UIColor(StarfallTheme.Observatory.lanternGlow)
-            pulse.lineWidth = 2; pulse.glowWidth = 3
-            effects.addChild(pulse)
-            pulse.run(.sequence([.wait(forDuration:0.06),.group([.scale(to: 3, duration: 0.25), .fadeOut(withDuration: 0.3)]), .removeFromParent()]))
-            for index in 0..<6 {
-                let angle = CGFloat(index) * .pi / 3
-                let spark = SKShapeNode(circleOfRadius: step*0.025)
-                spark.position = center; spark.fillColor = .white; spark.strokeColor = .clear; spark.glowWidth = 2
-                effects.addChild(spark)
-                spark.run(.sequence([.wait(forDuration:0.12),.group([.moveBy(x: cos(angle)*step*0.7, y: sin(angle)*step*0.55, duration: 0.36), .fadeOut(withDuration: 0.4)]), .removeFromParent()]))
-            }
-        }
-    }
 }

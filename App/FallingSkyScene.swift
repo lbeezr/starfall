@@ -134,17 +134,6 @@ import StarfallCore
                 node.run(.sequence([.scale(to: 0.91, duration: StarfallMotion.gatherDuration), .group([.fadeOut(withDuration: 0.12), .scale(to: 1.2, duration: 0.12), .rotate(byAngle: 0.18, duration: 0.12)]), .removeFromParent()]))
             }
         }
-        if turn.collected > 0, !turn.cleared.isEmpty {
-            let label = SKLabelNode(text: "+\(turn.collected)")
-            label.fontName = "AvenirNext-Bold"; label.fontSize = step * 0.55
-            label.fontColor = .white; label.verticalAlignmentMode = .center
-            let center = turn.cleared.map { point($0) }.reduce(CGPoint.zero) {
-                CGPoint(x: $0.x + $1.x, y: $0.y + $1.y)
-            }
-            label.position = CGPoint(x: center.x / CGFloat(turn.cleared.count), y: center.y / CGFloat(turn.cleared.count))
-            effects.addChild(label)
-            label.run(.sequence([.group([.moveBy(x: 0, y: step * 0.45, duration: 0.32), .fadeOut(withDuration: 0.32)]), .removeFromParent()]))
-        }
         ripple(turn, from: old)
         for index in turn.settled.indices {
             if let gem = turn.settled[index], let node = nodes[gem.id],

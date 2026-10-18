@@ -37,11 +37,15 @@ import StarfallCore
 @MainActor @Observable final class FallingSkyStore {
     static let saveKey = "starfall.accumulation.v3"
     private(set) var game: FallingSky
+    private(set) var hasSavedSky = false
     private(set) var busy = false
     private(set) var suspended = true
     private(set) var isPaused = true
     private(set) var nextShowerDate: Date?
     private(set) var message = "Match stars worth three. Large stars count as two."
+    private(set) var celebration: StarlightCelebration?
+    @ObservationIgnored private var celebrationTask: Task<Void, Never>?
+    @ObservationIgnored private var celebrationSequence: UInt64 = 0
     private(set) var pending: FallingSkyTurn?
     var soundEnabled: Bool {
         didSet { defaults.set(soundEnabled, forKey: "soundEnabled"); if !soundEnabled { feedback.stopSounds() } }
@@ -49,6 +53,9 @@ import StarfallCore
     var hapticsEnabled: Bool {
         didSet { defaults.set(hapticsEnabled, forKey: "starfall.haptics") }
     }
+    @ObservationIgnored var rankedPlayerID: (() -> String?)?
+    @ObservationIgnored var rankedResultHandler: ((SkyRankedResult) -> Void)?
+    @ObservationIgnored private var rankingSession: SkyRankingSession
     let scene: FallingSkyScene
     @ObservationIgnored private let feedback: any FallingSkyFeedbackProviding
     @ObservationIgnored private let defaults: UserDefaults
@@ -57,7 +64,7 @@ import StarfallCore
     @ObservationIgnored private var generation: UInt64 = 0
     @ObservationIgnored private var rainGeneration: UInt64 = 0
     @ObservationIgnored private var deadline: TimeInterval?
-    @ObservationIgnored private var remaining: TimeInterval = 4
+    @ObservationIgnored private var remaining: TimeInterval = 0
     @ObservationIgnored private var rainDue = false
 
     init(defaults: UserDefaults = .standard,
@@ -77,11 +84,14 @@ import StarfallCore
         if !arguments.contains("--starfalls-reset"), let data = defaults.data(forKey: Self.saveKey),
            let saved = try? JSONDecoder().decode(FallingSky.self, from: data), saved.isValidSave {
             game = saved
+            hasSavedSky = true
+            rankingSession = SkyRankingSession.restore(defaults: defaults, gameData: data)
             message = saved.outcome == .won ? "First Light complete. Replay it or start a new sky." : saved.isOver ? "This sky is full. Replay it or try a new sky." : "Your sky is paused. Resume when you're ready."
         } else {
             let argument = arguments.first { $0.hasPrefix("--starfalls-seed=") }
             let seed = argument.flatMap { UInt64($0.dropFirst("--starfalls-seed=".count)) } ?? 5
             game = FallingSky(seed: seed)
+            rankingSession = SkyRankingSession(eligible: !arguments.contains("--starfalls-reset"))
         }
         #if DEBUG
         if arguments.contains("--starfalls-reset"), arguments.contains("--observatory-review") {
@@ -89,11 +99,14 @@ import StarfallCore
         }
         #endif
         remaining = showerInterval
-        scene.onLayout = { [weak self] in self?.settlePresentation() }
+        scene.onLayout = { [weak self] in
+            self?.feedback.stopSounds()
+            self?.settlePresentation()
+        }
     }
 
     var forecast: [IncomingStar] { pending?.forecast ?? game.incoming }
-    var showerInterval: TimeInterval { TimeInterval(game.balance.pace.rawValue) }
+    var showerInterval: TimeInterval { game.automaticShowerDelay }
     var canClear: Bool { !busy && !suspended && !game.isOver && !rainDue }
 
     func clear(_ cell: Cell) {
@@ -107,10 +120,32 @@ import StarfallCore
             return
         }
         if game.isOver { freezeClock() }
-        feedback.collected(soundEnabled: soundEnabled, hapticsEnabled: hapticsEnabled,
-                           reducedMotion: presenter.reduceMotion)
+        celebrate(turn, from: old)
         present(turn, from: old)
     }
+
+    /// Feedback has its own cancellable lifetime; it never holds the input gate.
+    func celebrate(_ turn: FallingSkyTurn, from old: FallingSky, path: [Cell] = []) {
+        cancelCelebration()
+        celebrationSequence &+= 1
+        guard let event = StarlightCelebration(id: celebrationSequence, turn: turn, from: old,
+                                               total: game.score, path: path) else { return }
+        celebration = event
+        feedback.collected(event.level, soundEnabled: soundEnabled, hapticsEnabled: hapticsEnabled,
+                           reducedMotion: presenter.reduceMotion)
+        celebrationTask = Task { [weak self] in
+            do { try await Task.sleep(for: .seconds(StarlightCelebration.duration)) }
+            catch { return }
+            guard let self, self.celebration?.id == event.id else { return }
+            self.celebration = nil; self.celebrationTask = nil
+        }
+    }
+
+    func cancelCelebration() {
+        celebrationTask?.cancel(); celebrationTask = nil; celebration = nil
+    }
+
+    deinit { celebrationTask?.cancel() }
 
     /// Explicit input works while paused too, without starting an automatic clock.
     func callShower() {
@@ -174,6 +209,7 @@ import StarfallCore
     private func present(_ turn: FallingSkyTurn, from old: FallingSky, announcesResult: Bool = true) {
         generation &+= 1
         let ticket = generation
+        if turn.collected == 0 { cancelCelebration() }
         busy = true; pending = turn
         let growth = turn.arrivals.filter(\.grew).count
         let dissolved = turn.cleared.filter { old.gem(at: $0)?.isDark == true }.count
@@ -192,7 +228,10 @@ import StarfallCore
         }
         // Automatic showers must not repeatedly interrupt exploration or menu speech.
         // Explicit actions and terminal results still speak; all messages remain readable.
-        let spokenResult = announcesResult || game.isOver ? message : nil
+        let clearSummary = celebration.map { receipt in
+            (receipt.title.map { $0 + " " } ?? "") + message + " Total \(receipt.total) starlight."
+        } ?? message
+        let spokenResult = announcesResult || game.isOver ? clearSummary : nil
         save() // Commit before animation: backgrounding cannot replay arrivals.
         presenter.animate(turn, from: old, to: game) { [weak self] in
             guard let self, self.generation == ticket, self.busy else { return }
@@ -210,8 +249,9 @@ import StarfallCore
         if sameSky, let challenge = game.challenge {
             game = FallingSky(challenge: challenge)
         } else {
-            game = FallingSky(seed: sameSky ? game.seed : UInt64.random(in: 0...UInt64.max), balance: game.balance)
+            game = FallingSky(seed: sameSky ? game.seed : UInt64.random(in: 0...UInt64.max), balance: game.balance, openingCascade: sameSky ? game.hasOpeningCascade : true)
         }
+        rankingSession = SkyRankingSession(eligible: game.challenge == nil && game.balance == StarfallBalance())
         remaining = showerInterval
         message = sameSky ? "Same sky, a fresh start. Start when you're ready." : "A new sky. Start when you're ready."
         save(); presenter.render(game)
@@ -223,6 +263,7 @@ import StarfallCore
         freezeClock()
         settlePresentation()
         game = FallingSky(challenge: .firstLight)
+        rankingSession = SkyRankingSession(eligible: false)
         remaining = showerInterval
         message = "Collect 18 starlight to complete First Light. Start the sky or call a shower."
         save(); presenter.render(game)
@@ -232,6 +273,7 @@ import StarfallCore
         guard game.challenge == nil, balance != game.balance else { return }
         freezeClock()
         game.setBalance(balance)
+        rankingSession.eligible = false
         remaining = showerInterval
         settlePresentation()
         message = "Balance updated. Your sky is ready when you are."
@@ -264,18 +306,44 @@ import StarfallCore
 
     func setReducedMotion(_ value: Bool) {
         guard presenter.reduceMotion != value else { return }
+        feedback.stopSounds()
         presenter.reduceMotion = value
         settlePresentation()
     }
 
     func settlePresentation() {
         generation &+= 1
+        cancelCelebration()
         pending = nil; busy = false
         presenter.render(game)
         deliverRainIfReady()
     }
 
+    func deliverRankedResult() {
+        guard let result = rankingSession.result, let rankedResultHandler else { return }
+        rankedResultHandler(result)
+        rankingSession.result = nil
+        persistRankingSession()
+    }
+
     private func save() {
-        if let data = try? JSONEncoder().encode(game) { defaults.set(data, forKey: Self.saveKey) }
+        guard let data = try? JSONEncoder().encode(game) else { return }
+        if game.isOver, !rankingSession.completed {
+            rankingSession.completed = true
+            if rankingSession.eligible, game.challenge == nil, game.balance == StarfallBalance(), game.score > 0 {
+                rankingSession.result = SkyRankedResult(score: game.score, playerID: rankedPlayerID?())
+            }
+        }
+        rankingSession.digest = SkyRankingSession.fingerprint(data)
+        hasSavedSky = true
+        defaults.set(data, forKey: Self.saveKey)
+        persistRankingSession()
+        deliverRankedResult()
+    }
+
+    private func persistRankingSession() {
+        if let data = try? JSONEncoder().encode(rankingSession) {
+            defaults.set(data, forKey: SkyRankingSession.key)
+        }
     }
 }

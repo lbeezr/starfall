@@ -51,16 +51,15 @@ def apply_trace(workspace: Path):
     core.write_text(trace_core(core.read_text()))
     edit('App/FallingSkyStore.swift', '    private(set) var pending: FallingSkyTurn?',
          '    private(set) var constellationInputGeneration: UInt64 = 0\n    var constellationTracing = false\n    private(set) var pending: FallingSkyTurn?')
-    edit('App/FallingSkyStore.swift', '        generation &+= 1\n        pending = nil;',
-         '        constellationInputGeneration &+= 1\n        generation &+= 1\n        pending = nil;')
+    edit('App/FallingSkyStore.swift', '        generation &+= 1\n        cancelCelebration()\n        pending = nil;',
+         '        constellationInputGeneration &+= 1\n        generation &+= 1\n        cancelCelebration()\n        pending = nil;')
     edit('App/FallingSkyStore.swift', 'guard let turn = game.clear(cell) else {', 'guard let turn = game.clearOrdinary(cell) else {')
     edit('App/FallingSkyStore.swift', '    /// Explicit input works while paused too,', '''    func clearTracedConstellation(_ path: [Cell], snapshot: FallingSky, generation ticket: UInt64) {
         guard canClear, game == snapshot, ticket == constellationInputGeneration else { return }
         let old = game
         guard let turn = game.clearConstellation(path) else { return }
         if game.isOver { freezeClock() }
-        feedback.collected(soundEnabled: soundEnabled, hapticsEnabled: hapticsEnabled,
-                           reducedMotion: presenter.reduceMotion)
+        celebrate(turn, from: old, path: path)
         present(turn, from: old)
     }
 
@@ -90,8 +89,8 @@ def apply_trace(workspace: Path):
          '    func togglePause() {\n        constellationInputGeneration &+= 1')
     edit('App/FallingSkyView.swift', 'return Button { store.clear(cell) } label:',
          'return Button { cancelConstellation(); store.clear(cell) } label:')
-    edit('App/FallingSkyView.swift', '        .onDisappear { store.setSuspended(true) }',
-         '        .onDisappear { cancelConstellation(); store.setSuspended(true) }\n        .onChange(of: store.constellationInputGeneration) { cancelConstellation() }\n        .onChange(of: store.game) { cancelConstellation() }\n        .onChange(of: store.canClear) { _, enabled in if !enabled { cancelConstellation() } }\n        .onChange(of: store.isPaused) { cancelConstellation() }')
+    edit('App/FallingSkyView.swift', '        .onDisappear { store.setSuspended(true); leaderboard.suspend() }',
+         '        .onDisappear { cancelConstellation(); store.setSuspended(true); leaderboard.suspend() }\n        .onChange(of: store.constellationInputGeneration) { cancelConstellation() }\n        .onChange(of: store.game) { cancelConstellation() }\n        .onChange(of: store.canClear) { _, enabled in if !enabled { cancelConstellation() } }\n        .onChange(of: store.isPaused) { cancelConstellation() }')
     edit('App/FallingSkyView.swift', '        let group = store.game.group(at: cell)',
          '        let group = store.game.orthogonalGroup(at: cell)')
     edit('App/FallingSkyView.swift', '.accessibilityValue("\\(group.count) matching stars, \\(value) starlight connected")',

@@ -1,0 +1,19 @@
+{
+  "analysisReportSHA256": "aa72471c5833693c45cc7c6ddb7eb3fb49fb21ebd7061dbbe915b88d99c0bf91",
+  "buildID": "dev.fecfaa150d",
+  "bundle": "com.starfall.constellations.candidate",
+  "fixtureCategory": "same-value-column-safety",
+  "fixtureSeed": 8,
+  "fixtureShower": 24,
+  "initialScore": 65,
+  "originalLab": "/Users/lbeezr/Developer/Starfall/artifacts/constellations/development-scroll-fixed/candidate",
+  "originalManifestSHA256": "5d8c8ff113122951c37b3c218e9a9c8487b3c26cd253669b0034e11aa30f6f56",
+  "runtimeUnchanged": true,
+  "scope": "Test-only committed-save and store-path bridge; no native swipe or extra phone install",
+  "toolSHA256": {
+    "TraceChoiceCaptureUITests.swift": "1551acf9c540bff1e0981e57b16204249ac7442faac35838c1c7a1747ed101e9",
+    "TraceChoiceStoreBridge.swift": "664ec3dbbce588046cf4abe86979f0993139fdfca31ec1e0181d6e7fb90c9c91",
+    "prepare-trace-choice-capture.py": "d2c491985609c03467e5e9e840d869020b40cc9304c07b71d480038426f17950"
+  },
+  "workspace": "/var/folders/fs/9shw9bf142jg3280dc9n3hhc0000gn/T/starfall-trace-choice-capture-7j71lbsu"
+}

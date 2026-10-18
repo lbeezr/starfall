@@ -1,0 +1,479 @@
+{
+  "beforeDecisionAtEight" : {
+    "board" : [
+      {
+        "grown" : true,
+        "id" : 23,
+        "kind" : 1
+      },
+      {
+        "grown" : true,
+        "id" : 13,
+        "kind" : 3
+      },
+      {
+        "grown" : true,
+        "id" : 15,
+        "kind" : 2
+      },
+      {
+        "grown" : false,
+        "id" : 8,
+        "kind" : 1
+      },
+      {
+        "grown" : false,
+        "id" : 4,
+        "kind" : 1
+      },
+      {
+        "grown" : false,
+        "id" : 5,
+        "kind" : 1
+      },
+      {
+        "grown" : true,
+        "id" : 6,
+        "kind" : 2
+      },
+      {
+        "grown" : false,
+        "id" : 25,
+        "kind" : 1
+      },
+      {
+        "grown" : false,
+        "id" : 19,
+        "kind" : 3
+      },
+      {
+        "grown" : true,
+        "id" : 17,
+        "kind" : 2
+      },
+      null,
+      {
+        "grown" : false,
+        "id" : 20,
+        "kind" : 0
+      },
+      null,
+      {
+        "grown" : false,
+        "id" : 22,
+        "kind" : 0
+      },
+      null,
+      {
+        "grown" : false,
+        "id" : 21,
+        "kind" : 0
+      },
+      {
+        "grown" : false,
+        "id" : 27,
+        "kind" : 2
+      },
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "cohesiveShowers" : true,
+    "darkStarsCleared" : 1,
+    "incoming" : [
+      {
+        "column" : 5,
+        "id" : 40,
+        "kind" : 3
+      },
+      {
+        "column" : 0,
+        "id" : 41,
+        "kind" : 3
+      },
+      {
+        "column" : 4,
+        "id" : 42,
+        "kind" : 3
+      }
+    ],
+    "pairedShowers" : true,
+    "random" : {
+      "state" : 10858069623537357410
+    },
+    "remainingColumns" : [
+      1,
+      2,
+      3,
+      6
+    ],
+    "savedBalance" : {
+      "darkStars" : "regular",
+      "pace" : 4
+    },
+    "score" : 8,
+    "seed" : 17,
+    "showersUntilDark" : 2,
+    "starsLanded" : 28,
+    "turns" : 8
+  },
+  "over" : false,
+  "score" : 37,
+  "seed" : 17,
+  "trace" : [
+    {
+      "command" : "reset",
+      "connectedValue" : 0,
+      "darkRemoved" : 0,
+      "delta" : 0,
+      "occupied" : 0,
+      "score" : 0,
+      "shower" : 0
+    },
+    {
+      "command" : "experiment.next",
+      "connectedValue" : 0,
+      "darkRemoved" : 0,
+      "delta" : 0,
+      "occupied" : 3,
+      "score" : 0,
+      "shower" : 1
+    },
+    {
+      "command" : "experiment.next",
+      "connectedValue" : 0,
+      "darkRemoved" : 0,
+      "delta" : 0,
+      "occupied" : 6,
+      "score" : 0,
+      "shower" : 2
+    },
+    {
+      "command" : "experiment.next",
+      "connectedValue" : 0,
+      "darkRemoved" : 0,
+      "delta" : 0,
+      "occupied" : 7,
+      "score" : 0,
+      "shower" : 3
+    },
+    {
+      "command" : "experiment.next",
+      "connectedValue" : 0,
+      "darkRemoved" : 0,
+      "delta" : 0,
+      "occupied" : 8,
+      "score" : 0,
+      "shower" : 4
+    },
+    {
+      "command" : "experiment.cell.0.2",
+      "connectedValue" : 3,
+      "darkRemoved" : 0,
+      "delta" : 3,
+      "occupied" : 5,
+      "score" : 3,
+      "shower" : 4
+    },
+    {
+      "command" : "experiment.next",
+      "connectedValue" : 0,
+      "darkRemoved" : 0,
+      "delta" : 0,
+      "occupied" : 8,
+      "score" : 3,
+      "shower" : 5
+    },
+    {
+      "command" : "experiment.next",
+      "connectedValue" : 0,
+      "darkRemoved" : 0,
+      "delta" : 0,
+      "occupied" : 12,
+      "score" : 3,
+      "shower" : 6
+    },
+    {
+      "command" : "experiment.cell.1.0",
+      "connectedValue" : 5,
+      "darkRemoved" : 1,
+      "delta" : 5,
+      "occupied" : 8,
+      "score" : 8,
+      "shower" : 6
+    },
+    {
+      "command" : "experiment.next",
+      "connectedValue" : 0,
+      "darkRemoved" : 1,
+      "delta" : 0,
+      "occupied" : 11,
+      "score" : 8,
+      "shower" : 7
+    },
+    {
+      "command" : "experiment.next",
+      "connectedValue" : 0,
+      "darkRemoved" : 1,
+      "delta" : 0,
+      "occupied" : 14,
+      "score" : 8,
+      "shower" : 8
+    },
+    {
+      "command" : "experiment.next",
+      "connectedValue" : 0,
+      "darkRemoved" : 1,
+      "delta" : 0,
+      "occupied" : 17,
+      "score" : 8,
+      "shower" : 9
+    },
+    {
+      "command" : "experiment.cell.0.0",
+      "connectedValue" : 3,
+      "darkRemoved" : 1,
+      "delta" : 3,
+      "occupied" : 15,
+      "score" : 11,
+      "shower" : 9
+    },
+    {
+      "command" : "experiment.next",
+      "connectedValue" : 0,
+      "darkRemoved" : 1,
+      "delta" : 0,
+      "occupied" : 17,
+      "score" : 11,
+      "shower" : 10
+    },
+    {
+      "command" : "experiment.next",
+      "connectedValue" : 0,
+      "darkRemoved" : 1,
+      "delta" : 0,
+      "occupied" : 19,
+      "score" : 11,
+      "shower" : 11
+    },
+    {
+      "command" : "experiment.cell.0.2",
+      "connectedValue" : 5,
+      "darkRemoved" : 1,
+      "delta" : 5,
+      "occupied" : 16,
+      "score" : 16,
+      "shower" : 11
+    },
+    {
+      "command" : "experiment.next",
+      "connectedValue" : 0,
+      "darkRemoved" : 1,
+      "delta" : 0,
+      "occupied" : 18,
+      "score" : 16,
+      "shower" : 12
+    },
+    {
+      "command" : "experiment.next",
+      "connectedValue" : 0,
+      "darkRemoved" : 1,
+      "delta" : 0,
+      "occupied" : 19,
+      "score" : 16,
+      "shower" : 13
+    },
+    {
+      "command" : "experiment.cell.0.1",
+      "connectedValue" : 4,
+      "darkRemoved" : 1,
+      "delta" : 4,
+      "occupied" : 16,
+      "score" : 20,
+      "shower" : 13
+    },
+    {
+      "command" : "experiment.next",
+      "connectedValue" : 0,
+      "darkRemoved" : 1,
+      "delta" : 0,
+      "occupied" : 19,
+      "score" : 20,
+      "shower" : 14
+    },
+    {
+      "command" : "experiment.next",
+      "connectedValue" : 0,
+      "darkRemoved" : 1,
+      "delta" : 0,
+      "occupied" : 21,
+      "score" : 20,
+      "shower" : 15
+    },
+    {
+      "command" : "experiment.cell.2.4",
+      "connectedValue" : 3,
+      "darkRemoved" : 2,
+      "delta" : 3,
+      "occupied" : 17,
+      "score" : 23,
+      "shower" : 15
+    },
+    {
+      "command" : "experiment.next",
+      "connectedValue" : 0,
+      "darkRemoved" : 2,
+      "delta" : 0,
+      "occupied" : 20,
+      "score" : 23,
+      "shower" : 16
+    },
+    {
+      "command" : "experiment.next",
+      "connectedValue" : 0,
+      "darkRemoved" : 2,
+      "delta" : 0,
+      "occupied" : 22,
+      "score" : 23,
+      "shower" : 17
+    },
+    {
+      "command" : "experiment.cell.0.2",
+      "connectedValue" : 5,
+      "darkRemoved" : 2,
+      "delta" : 5,
+      "occupied" : 18,
+      "score" : 28,
+      "shower" : 17
+    },
+    {
+      "command" : "experiment.next",
+      "connectedValue" : 0,
+      "darkRemoved" : 2,
+      "delta" : 0,
+      "occupied" : 21,
+      "score" : 28,
+      "shower" : 18
+    },
+    {
+      "command" : "experiment.cell.2.0",
+      "connectedValue" : 3,
+      "darkRemoved" : 3,
+      "delta" : 3,
+      "occupied" : 18,
+      "score" : 31,
+      "shower" : 18
+    },
+    {
+      "command" : "experiment.next",
+      "connectedValue" : 0,
+      "darkRemoved" : 3,
+      "delta" : 0,
+      "occupied" : 19,
+      "score" : 31,
+      "shower" : 19
+    },
+    {
+      "command" : "experiment.next",
+      "connectedValue" : 0,
+      "darkRemoved" : 3,
+      "delta" : 0,
+      "occupied" : 21,
+      "score" : 31,
+      "shower" : 20
+    },
+    {
+      "command" : "experiment.cell.2.4",
+      "connectedValue" : 3,
+      "darkRemoved" : 3,
+      "delta" : 3,
+      "occupied" : 18,
+      "score" : 34,
+      "shower" : 20
+    },
+    {
+      "command" : "experiment.next",
+      "connectedValue" : 0,
+      "darkRemoved" : 3,
+      "delta" : 0,
+      "occupied" : 19,
+      "score" : 34,
+      "shower" : 21
+    },
+    {
+      "command" : "experiment.next",
+      "connectedValue" : 0,
+      "darkRemoved" : 3,
+      "delta" : 0,
+      "occupied" : 20,
+      "score" : 34,
+      "shower" : 22
+    },
+    {
+      "command" : "experiment.cell.0.2",
+      "connectedValue" : 3,
+      "darkRemoved" : 3,
+      "delta" : 3,
+      "occupied" : 18,
+      "score" : 37,
+      "shower" : 22
+    },
+    {
+      "command" : "experiment.next",
+      "connectedValue" : 0,
+      "darkRemoved" : 3,
+      "delta" : 0,
+      "occupied" : 21,
+      "score" : 37,
+      "shower" : 23
+    },
+    {
+      "command" : "experiment.cell.0.1",
+      "connectedValue" : 2,
+      "darkRemoved" : 3,
+      "delta" : 0,
+      "occupied" : 21,
+      "score" : 37,
+      "shower" : 23
+    },
+    {
+      "command" : "experiment.next",
+      "connectedValue" : 0,
+      "darkRemoved" : 3,
+      "delta" : 0,
+      "occupied" : 25,
+      "score" : 37,
+      "shower" : 24
+    }
+  ],
+  "turns" : 24
+}

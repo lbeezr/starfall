@@ -2,7 +2,15 @@
 
 Behavior proposals, production contracts and research supporting decisions.
 
+[Starlight celebrations](STARLIGHT_CELEBRATIONS.md) investigates more prominent accumulation, dramatic clear/constellation feedback, and the separate design questions behind combos and recipes. User-approved mock and shared development implementation; constellation rules remain lab-only.
+
 ## Start here
+
+[Welcome, entry and sky endings](SKY_FLOW.md) owns the user-selected overlapping reveal and offline resume/replay behavior.
+
+[Optional Game Center rankings](GAME_CENTER.md) owns the implementation, offline/account contracts and required Apple service setup.
+
+[Rankings and ceremony](RANKINGS_AND_CEREMONY.md) researches small competitive groups and proposes entry, results, trophies and rank-change feedback; concept only, with offline and social scope distinguished.
 
 Use the [design template](../templates/DESIGN.md). Start with [shower phases](SHOWER_PHASES.md) for the active rhythm comparison, [visual reference](VISUAL_REFERENCE.md) for imagery, [star cast](star-cast/README.md) for runtime art, and [audio](audio/README.md) for sound. Older original-puzzle documents are context, not current scope; consult [the roadmap](../ROADMAP.md).
 
@@ -13,3 +21,5 @@ The [branding studies](branding/README.md) retain the editable wordmarks, sanctu
 [Diagonal constellation trial](CONSTELLATION_TRIAL.md) defines the isolated five-star connectivity comparison and its adoption gates.
 
 [Constellation tracing](CONSTELLATION_TRACE.md) supersedes whole-component taps with deliberately selected stars and bounded input/feedback.
+
+[White connector trial](WHITE_CONNECTOR_TRIAL.md) tests exclusive family choices and hold versus space timing, separately from storms and constellations. The completed fixture study remains outside production; further comparison is parked pending the selected-tracing choice baseline.

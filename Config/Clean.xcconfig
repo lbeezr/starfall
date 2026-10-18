@@ -13,3 +13,6 @@ MARKETING_VERSION = 0.1.0
 CURRENT_PROJECT_VERSION = 1
 CODE_SIGN_STYLE = Automatic
 ENABLE_USER_SCRIPT_SANDBOXING = YES
+
+// Optional Apple rankings; gameplay and local saves never require authentication.
+CODE_SIGN_ENTITLEMENTS = Config/GameCenter.entitlements

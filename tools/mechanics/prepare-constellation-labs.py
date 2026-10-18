@@ -111,9 +111,6 @@ for mode, title in [('baseline', 'Starfall Control'), ('candidate', 'Constellati
                               'NSPredicate(format: "value MATCHES %@", "([0-9]+ matching stars, )?3 starlight connected")')
         tests = tests.replace('"Large stars count as 2"', '"Large stars count as one star"')
         ui.write_text(tests)
-    edit('UITests/FallingSkyInteractionTests.swift',
-         '        let challenge = app.buttons["experiment.challenge"]\n        XCTAssertTrue',
-         '        let challenge = app.buttons["experiment.challenge"]\n        reveal(challenge, in: app)\n        XCTAssertTrue')
     if mode == 'candidate':
         apply_trace(workspace)
         # These inherited store regressions exercise ordinary tap actions. Their

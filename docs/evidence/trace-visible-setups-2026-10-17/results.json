@@ -1,0 +1,1638 @@
+{
+  "checks": [
+    "six-chain has exactly two connected fives",
+    "two-by-three has six connected fives",
+    "cap excludes incomplete enumeration",
+    "walks preserve chosen sets with bounded retracing",
+    "tap/trace duplicate outcome counted once",
+    "immediate probe cannot spend future arrivals or mutate its source"
+  ],
+  "fixtures": [
+    {
+      "branches": [
+        {
+          "bestFollowup": {
+            "selected": 3428,
+            "trace": [
+              {
+                "column": 2,
+                "row": 0
+              },
+              {
+                "column": 1,
+                "row": 1
+              },
+              {
+                "column": 2,
+                "row": 0
+              },
+              {
+                "column": 3,
+                "row": 1
+              },
+              {
+                "column": 4,
+                "row": 1
+              },
+              {
+                "column": 5,
+                "row": 0
+              },
+              {
+                "column": 6,
+                "row": 0
+              },
+              {
+                "column": 5,
+                "row": 0
+              },
+              {
+                "column": 4,
+                "row": 1
+              },
+              {
+                "column": 3,
+                "row": 1
+              },
+              {
+                "column": 2,
+                "row": 0
+              }
+            ]
+          },
+          "choice": {
+            "selected": 1924,
+            "trace": [
+              {
+                "column": 2,
+                "row": 0
+              },
+              {
+                "column": 1,
+                "row": 1
+              },
+              {
+                "column": 0,
+                "row": 1
+              },
+              {
+                "column": 1,
+                "row": 1
+              },
+              {
+                "column": 2,
+                "row": 1
+              },
+              {
+                "column": 3,
+                "row": 1
+              },
+              {
+                "column": 2,
+                "row": 1
+              },
+              {
+                "column": 1,
+                "row": 1
+              },
+              {
+                "column": 2,
+                "row": 0
+              }
+            ]
+          },
+          "result": {
+            "bestFollowupLight": 6,
+            "collected": 7,
+            "collectedPlusBestFollowup": 13,
+            "collectedPlusImmediateBestFollowup": 7,
+            "darknessRemoved": 1,
+            "heightsAfterClear": [
+              1,
+              2,
+              0,
+              1,
+              2,
+              5,
+              4
+            ],
+            "immediateBestFollowupLight": 0,
+            "occupiedAfterClear": 15,
+            "overflowAfterAnnouncedShower": false
+          }
+        },
+        {
+          "choice": {
+            "selected": 4068,
+            "trace": [
+              {
+                "column": 2,
+                "row": 0
+              },
+              {
+                "column": 1,
+                "row": 1
+              },
+              {
+                "column": 0,
+                "row": 1
+              },
+              {
+                "column": 1,
+                "row": 1
+              },
+              {
+                "column": 2,
+                "row": 1
+              },
+              {
+                "column": 3,
+                "row": 1
+              },
+              {
+                "column": 4,
+                "row": 1
+              },
+              {
+                "column": 5,
+                "row": 0
+              },
+              {
+                "column": 6,
+                "row": 0
+              },
+              {
+                "column": 5,
+                "row": 0
+              },
+              {
+                "column": 4,
+                "row": 1
+              },
+              {
+                "column": 3,
+                "row": 1
+              },
+              {
+                "column": 2,
+                "row": 1
+              },
+              {
+                "column": 1,
+                "row": 1
+              },
+              {
+                "column": 2,
+                "row": 0
+              }
+            ]
+          },
+          "result": {
+            "bestFollowupLight": 0,
+            "collected": 10,
+            "collectedPlusBestFollowup": 10,
+            "collectedPlusImmediateBestFollowup": 10,
+            "darknessRemoved": 1,
+            "heightsAfterClear": [
+              1,
+              2,
+              0,
+              1,
+              1,
+              4,
+              3
+            ],
+            "immediateBestFollowupLight": 0,
+            "occupiedAfterClear": 12,
+            "overflowAfterAnnouncedShower": false
+          }
+        }
+      ],
+      "category": "partial-beats-whole-with-followup",
+      "clearIndex": 0,
+      "initial": {
+        "board": [
+          {
+            "grown": false,
+            "id": 42,
+            "kind": 4
+          },
+          {
+            "grown": false,
+            "id": 44,
+            "kind": 4
+          },
+          {
+            "grown": true,
+            "id": 78,
+            "kind": 1
+          },
+          {
+            "grown": false,
+            "id": 43,
+            "kind": 4
+          },
+          {
+            "grown": false,
+            "id": 8,
+            "kind": 4
+          },
+          {
+            "grown": false,
+            "id": 3,
+            "kind": 1
+          },
+          {
+            "grown": false,
+            "id": 4,
+            "kind": 1
+          },
+          {
+            "grown": false,
+            "id": 75,
+            "kind": 1
+          },
+          {
+            "grown": false,
+            "id": 66,
+            "kind": 1
+          },
+          {
+            "grown": false,
+            "id": 80,
+            "kind": 1
+          },
+          {
+            "grown": true,
+            "id": 65,
+            "kind": 1
+          },
+          {
+            "grown": false,
+            "id": 82,
+            "kind": 1
+          },
+          {
+            "grown": false,
+            "id": 28,
+            "kind": 3
+          },
+          {
+            "grown": true,
+            "id": 34,
+            "kind": 4
+          },
+          null,
+          {
+            "grown": false,
+            "id": 74
+          },
+          null,
+          null,
+          null,
+          {
+            "grown": false,
+            "id": 35,
+            "kind": 4
+          },
+          {
+            "grown": false,
+            "id": 57,
+            "kind": 1
+          },
+          null,
+          {
+            "grown": false,
+            "id": 77,
+            "kind": 1
+          },
+          null,
+          null,
+          null,
+          {
+            "grown": false,
+            "id": 73,
+            "kind": 0
+          },
+          {
+            "grown": false,
+            "id": 69,
+            "kind": 2
+          },
+          null,
+          null,
+          null,
+          null,
+          null,
+          {
+            "grown": false,
+            "id": 81,
+            "kind": 1
+          },
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "cohesiveShowers": true,
+        "darkStarsCleared": 3,
+        "incoming": [
+          {
+            "column": 6,
+            "id": 110,
+            "kind": 1
+          },
+          {
+            "column": 2,
+            "id": 111,
+            "kind": 1
+          },
+          {
+            "column": 3,
+            "id": 112,
+            "kind": 1
+          }
+        ],
+        "random": {
+          "state": 10800781045927845413
+        },
+        "remainingColumns": [
+          0,
+          1,
+          4,
+          5,
+          6
+        ],
+        "savedBalance": {
+          "darkStars": "regular",
+          "pace": 4
+        },
+        "score": 56,
+        "seed": 4,
+        "showersUntilDark": 1,
+        "starsLanded": 83,
+        "turns": 22
+      },
+      "policy": "largest-whole-or-tap",
+      "seed": 4,
+      "shower": 22
+    },
+    {
+      "branches": [
+        {
+          "bestFollowup": {
+            "selected": 6,
+            "tap": {
+              "column": 1,
+              "row": 0
+            }
+          },
+          "choice": {
+            "selected": 2156,
+            "trace": [
+              {
+                "column": 2,
+                "row": 0
+              },
+              {
+                "column": 3,
+                "row": 0
+              },
+              {
+                "column": 4,
+                "row": 1
+              },
+              {
+                "column": 5,
+                "row": 0
+              },
+              {
+                "column": 6,
+                "row": 0
+              },
+              {
+                "column": 5,
+                "row": 0
+              },
+              {
+                "column": 4,
+                "row": 1
+              },
+              {
+                "column": 3,
+                "row": 0
+              },
+              {
+                "column": 2,
+                "row": 0
+              }
+            ]
+          },
+          "immediateBestFollowup": {
+            "selected": 6,
+            "tap": {
+              "column": 1,
+              "row": 0
+            }
+          },
+          "result": {
+            "bestFollowupLight": 3,
+            "collected": 7,
+            "collectedPlusBestFollowup": 10,
+            "collectedPlusImmediateBestFollowup": 10,
+            "darknessRemoved": 0,
+            "heightsAfterClear": [
+              1,
+              1,
+              1,
+              2,
+              1,
+              1,
+              1
+            ],
+            "immediateBestFollowupLight": 3,
+            "occupiedAfterClear": 8,
+            "overflowAfterAnnouncedShower": false
+          }
+        },
+        {
+          "choice": {
+            "selected": 2094,
+            "trace": [
+              {
+                "column": 1,
+                "row": 0
+              },
+              {
+                "column": 2,
+                "row": 0
+              },
+              {
+                "column": 3,
+                "row": 0
+              },
+              {
+                "column": 4,
+                "row": 1
+              },
+              {
+                "column": 5,
+                "row": 0
+              },
+              {
+                "column": 4,
+                "row": 1
+              },
+              {
+                "column": 3,
+                "row": 0
+              },
+              {
+                "column": 2,
+                "row": 0
+              },
+              {
+                "column": 1,
+                "row": 0
+              }
+            ]
+          },
+          "result": {
+            "bestFollowupLight": 0,
+            "collected": 7,
+            "collectedPlusBestFollowup": 7,
+            "collectedPlusImmediateBestFollowup": 7,
+            "darknessRemoved": 0,
+            "heightsAfterClear": [
+              1,
+              0,
+              1,
+              2,
+              1,
+              1,
+              2
+            ],
+            "immediateBestFollowupLight": 0,
+            "occupiedAfterClear": 8,
+            "overflowAfterAnnouncedShower": false
+          }
+        }
+      ],
+      "category": "same-value-before-shower",
+      "clearIndex": 0,
+      "initial": {
+        "board": [
+          {
+            "grown": true,
+            "id": 6,
+            "kind": 3
+          },
+          {
+            "grown": false,
+            "id": 16,
+            "kind": 4
+          },
+          {
+            "grown": true,
+            "id": 26,
+            "kind": 4
+          },
+          {
+            "grown": true,
+            "id": 13,
+            "kind": 4
+          },
+          {
+            "grown": false,
+            "id": 7,
+            "kind": 3
+          },
+          {
+            "grown": false,
+            "id": 15,
+            "kind": 4
+          },
+          {
+            "grown": false,
+            "id": 14,
+            "kind": 4
+          },
+          null,
+          null,
+          {
+            "grown": true,
+            "id": 28,
+            "kind": 4
+          },
+          {
+            "grown": false,
+            "id": 25,
+            "kind": 1
+          },
+          {
+            "grown": false,
+            "id": 18,
+            "kind": 4
+          },
+          {
+            "grown": false,
+            "id": 24,
+            "kind": 1
+          },
+          {
+            "grown": false,
+            "id": 23,
+            "kind": 1
+          },
+          null,
+          null,
+          null,
+          {
+            "grown": false,
+            "id": 29,
+            "kind": 4
+          },
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "cohesiveShowers": true,
+        "darkStarsCleared": 1,
+        "incoming": [
+          {
+            "column": 4,
+            "id": 40,
+            "kind": 1
+          }
+        ],
+        "random": {
+          "state": 15212755188474202747
+        },
+        "remainingColumns": [
+          1,
+          5,
+          6
+        ],
+        "savedBalance": {
+          "darkStars": "regular",
+          "pace": 4
+        },
+        "score": 13,
+        "seed": 0,
+        "showersUntilDark": 1,
+        "starsLanded": 31,
+        "turns": 8
+      },
+      "policy": "largest-whole-or-tap",
+      "seed": 0,
+      "shower": 8
+    },
+    {
+      "branches": [
+        {
+          "bestFollowup": {
+            "selected": 129,
+            "tap": {
+              "column": 0,
+              "row": 0
+            }
+          },
+          "choice": {
+            "selected": 1315844,
+            "trace": [
+              {
+                "column": 2,
+                "row": 0
+              },
+              {
+                "column": 3,
+                "row": 1
+              },
+              {
+                "column": 4,
+                "row": 2
+              },
+              {
+                "column": 5,
+                "row": 1
+              },
+              {
+                "column": 6,
+                "row": 2
+              },
+              {
+                "column": 5,
+                "row": 1
+              },
+              {
+                "column": 4,
+                "row": 2
+              },
+              {
+                "column": 3,
+                "row": 1
+              },
+              {
+                "column": 2,
+                "row": 0
+              }
+            ]
+          },
+          "result": {
+            "bestFollowupLight": 4,
+            "collected": 6,
+            "collectedPlusBestFollowup": 10,
+            "collectedPlusImmediateBestFollowup": 6,
+            "darknessRemoved": 0,
+            "heightsAfterClear": [
+              1,
+              1,
+              0,
+              1,
+              2,
+              2,
+              6
+            ],
+            "immediateBestFollowupLight": 0,
+            "occupiedAfterClear": 13,
+            "overflowAfterAnnouncedShower": false
+          }
+        },
+        {
+          "choice": {
+            "selected": 267270,
+            "trace": [
+              {
+                "column": 1,
+                "row": 0
+              },
+              {
+                "column": 2,
+                "row": 0
+              },
+              {
+                "column": 3,
+                "row": 1
+              },
+              {
+                "column": 4,
+                "row": 2
+              },
+              {
+                "column": 5,
+                "row": 1
+              },
+              {
+                "column": 4,
+                "row": 2
+              },
+              {
+                "column": 3,
+                "row": 1
+              },
+              {
+                "column": 2,
+                "row": 0
+              },
+              {
+                "column": 1,
+                "row": 0
+              }
+            ]
+          },
+          "result": {
+            "bestFollowupLight": 0,
+            "collected": 6,
+            "collectedPlusBestFollowup": 6,
+            "collectedPlusImmediateBestFollowup": 6,
+            "darknessRemoved": 0,
+            "heightsAfterClear": [
+              1,
+              0,
+              0,
+              1,
+              2,
+              2,
+              7
+            ],
+            "immediateBestFollowupLight": 0,
+            "occupiedAfterClear": 13,
+            "overflowAfterAnnouncedShower": true
+          }
+        }
+      ],
+      "category": "same-value-column-safety",
+      "clearIndex": 0,
+      "initial": {
+        "board": [
+          {
+            "grown": false,
+            "id": 72,
+            "kind": 3
+          },
+          {
+            "grown": false,
+            "id": 85,
+            "kind": 1
+          },
+          {
+            "grown": false,
+            "id": 87,
+            "kind": 1
+          },
+          {
+            "grown": false,
+            "id": 33,
+            "kind": 0
+          },
+          {
+            "grown": false,
+            "id": 8,
+            "kind": 0
+          },
+          {
+            "grown": false,
+            "id": 55,
+            "kind": 4
+          },
+          {
+            "grown": false,
+            "id": 25,
+            "kind": 2
+          },
+          null,
+          null,
+          null,
+          {
+            "grown": true,
+            "id": 70,
+            "kind": 1
+          },
+          {
+            "grown": false,
+            "id": 60,
+            "kind": 3
+          },
+          {
+            "grown": false,
+            "id": 71,
+            "kind": 1
+          },
+          {
+            "grown": false,
+            "id": 31,
+            "kind": 3
+          },
+          null,
+          null,
+          null,
+          null,
+          {
+            "grown": false,
+            "id": 84,
+            "kind": 1
+          },
+          {
+            "grown": false,
+            "id": 79,
+            "kind": 2
+          },
+          {
+            "grown": false,
+            "id": 38,
+            "kind": 1
+          },
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          {
+            "grown": false,
+            "id": 45,
+            "kind": 2
+          },
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          {
+            "grown": false,
+            "id": 56,
+            "kind": 4
+          },
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          {
+            "grown": false,
+            "id": 78
+          },
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          {
+            "grown": false,
+            "id": 86,
+            "kind": 1
+          }
+        ],
+        "cohesiveShowers": true,
+        "darkStarsCleared": 4,
+        "incoming": [
+          {
+            "column": 0,
+            "id": 120,
+            "kind": 3
+          },
+          {
+            "column": 0,
+            "id": 121,
+            "kind": 3
+          },
+          {
+            "column": 0,
+            "id": 122,
+            "kind": 3
+          },
+          {
+            "column": 6,
+            "id": 123,
+            "kind": 3
+          },
+          {
+            "column": 4,
+            "id": 124,
+            "kind": 3
+          }
+        ],
+        "random": {
+          "state": 17454148547877195725
+        },
+        "remainingColumns": [
+          0,
+          1,
+          2,
+          3,
+          5
+        ],
+        "savedBalance": {
+          "darkStars": "regular",
+          "pace": 4
+        },
+        "score": 65,
+        "seed": 8,
+        "showersUntilDark": 2,
+        "starsLanded": 88,
+        "turns": 24
+      },
+      "policy": "largest-whole-or-tap",
+      "seed": 8,
+      "shower": 24
+    },
+    {
+      "branches": [
+        {
+          "bestFollowup": {
+            "selected": 3428,
+            "trace": [
+              {
+                "column": 2,
+                "row": 0
+              },
+              {
+                "column": 1,
+                "row": 1
+              },
+              {
+                "column": 2,
+                "row": 0
+              },
+              {
+                "column": 3,
+                "row": 1
+              },
+              {
+                "column": 4,
+                "row": 1
+              },
+              {
+                "column": 5,
+                "row": 0
+              },
+              {
+                "column": 6,
+                "row": 0
+              },
+              {
+                "column": 5,
+                "row": 0
+              },
+              {
+                "column": 4,
+                "row": 1
+              },
+              {
+                "column": 3,
+                "row": 1
+              },
+              {
+                "column": 2,
+                "row": 0
+              }
+            ]
+          },
+          "choice": {
+            "selected": 1924,
+            "trace": [
+              {
+                "column": 2,
+                "row": 0
+              },
+              {
+                "column": 1,
+                "row": 1
+              },
+              {
+                "column": 0,
+                "row": 1
+              },
+              {
+                "column": 1,
+                "row": 1
+              },
+              {
+                "column": 2,
+                "row": 1
+              },
+              {
+                "column": 3,
+                "row": 1
+              },
+              {
+                "column": 2,
+                "row": 1
+              },
+              {
+                "column": 1,
+                "row": 1
+              },
+              {
+                "column": 2,
+                "row": 0
+              }
+            ]
+          },
+          "result": {
+            "bestFollowupLight": 6,
+            "collected": 7,
+            "collectedPlusBestFollowup": 13,
+            "collectedPlusImmediateBestFollowup": 7,
+            "darknessRemoved": 1,
+            "heightsAfterClear": [
+              1,
+              2,
+              0,
+              1,
+              2,
+              5,
+              4
+            ],
+            "immediateBestFollowupLight": 0,
+            "occupiedAfterClear": 15,
+            "overflowAfterAnnouncedShower": false
+          }
+        },
+        {
+          "choice": {
+            "selected": 3172,
+            "trace": [
+              {
+                "column": 2,
+                "row": 0
+              },
+              {
+                "column": 3,
+                "row": 1
+              },
+              {
+                "column": 4,
+                "row": 1
+              },
+              {
+                "column": 5,
+                "row": 0
+              },
+              {
+                "column": 6,
+                "row": 0
+              },
+              {
+                "column": 5,
+                "row": 0
+              },
+              {
+                "column": 4,
+                "row": 1
+              },
+              {
+                "column": 3,
+                "row": 1
+              },
+              {
+                "column": 2,
+                "row": 0
+              }
+            ]
+          },
+          "result": {
+            "bestFollowupLight": 0,
+            "collected": 7,
+            "collectedPlusBestFollowup": 7,
+            "collectedPlusImmediateBestFollowup": 7,
+            "darknessRemoved": 0,
+            "heightsAfterClear": [
+              2,
+              4,
+              1,
+              1,
+              1,
+              4,
+              3
+            ],
+            "immediateBestFollowupLight": 0,
+            "occupiedAfterClear": 16,
+            "overflowAfterAnnouncedShower": false
+          }
+        }
+      ],
+      "category": "same-value-followup",
+      "clearIndex": 0,
+      "initial": {
+        "board": [
+          {
+            "grown": false,
+            "id": 42,
+            "kind": 4
+          },
+          {
+            "grown": false,
+            "id": 44,
+            "kind": 4
+          },
+          {
+            "grown": true,
+            "id": 78,
+            "kind": 1
+          },
+          {
+            "grown": false,
+            "id": 43,
+            "kind": 4
+          },
+          {
+            "grown": false,
+            "id": 8,
+            "kind": 4
+          },
+          {
+            "grown": false,
+            "id": 3,
+            "kind": 1
+          },
+          {
+            "grown": false,
+            "id": 4,
+            "kind": 1
+          },
+          {
+            "grown": false,
+            "id": 75,
+            "kind": 1
+          },
+          {
+            "grown": false,
+            "id": 66,
+            "kind": 1
+          },
+          {
+            "grown": false,
+            "id": 80,
+            "kind": 1
+          },
+          {
+            "grown": true,
+            "id": 65,
+            "kind": 1
+          },
+          {
+            "grown": false,
+            "id": 82,
+            "kind": 1
+          },
+          {
+            "grown": false,
+            "id": 28,
+            "kind": 3
+          },
+          {
+            "grown": true,
+            "id": 34,
+            "kind": 4
+          },
+          null,
+          {
+            "grown": false,
+            "id": 74
+          },
+          null,
+          null,
+          null,
+          {
+            "grown": false,
+            "id": 35,
+            "kind": 4
+          },
+          {
+            "grown": false,
+            "id": 57,
+            "kind": 1
+          },
+          null,
+          {
+            "grown": false,
+            "id": 77,
+            "kind": 1
+          },
+          null,
+          null,
+          null,
+          {
+            "grown": false,
+            "id": 73,
+            "kind": 0
+          },
+          {
+            "grown": false,
+            "id": 69,
+            "kind": 2
+          },
+          null,
+          null,
+          null,
+          null,
+          null,
+          {
+            "grown": false,
+            "id": 81,
+            "kind": 1
+          },
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "cohesiveShowers": true,
+        "darkStarsCleared": 3,
+        "incoming": [
+          {
+            "column": 6,
+            "id": 110,
+            "kind": 1
+          },
+          {
+            "column": 2,
+            "id": 111,
+            "kind": 1
+          },
+          {
+            "column": 3,
+            "id": 112,
+            "kind": 1
+          }
+        ],
+        "random": {
+          "state": 10800781045927845413
+        },
+        "remainingColumns": [
+          0,
+          1,
+          4,
+          5,
+          6
+        ],
+        "savedBalance": {
+          "darkStars": "regular",
+          "pace": 4
+        },
+        "score": 56,
+        "seed": 4,
+        "showersUntilDark": 1,
+        "starsLanded": 83,
+        "turns": 22
+      },
+      "policy": "largest-whole-or-tap",
+      "seed": 4,
+      "shower": 22
+    }
+  ],
+  "frontierCap": 512,
+  "policies": {
+    "five-at-a-time-or-tap": {
+      "counts": {
+        "cappedStatesExcludedFromComparisons": 0,
+        "commitsPreservingPartOfLargerComponent": 13,
+        "decisionStates": 224,
+        "enumeratedFiveChoices": 90,
+        "maximumFiveChoicesInOneState": 17,
+        "ordinaryTapCommits": 204,
+        "statesWhereEqualFirstValueBeatsLargestTieOverTwoImmediateClears": 0,
+        "statesWherePartialHasHigherImmediateTwoClearPotential": 0,
+        "statesWherePartialHasHigherTwoClearPotential": 2,
+        "statesWhereSmallerFirstBeatsLargestOverTwoImmediateClears": 0,
+        "statesWithFiveStarChoice": 25,
+        "statesWithMultipleLegalChoices": 35,
+        "statesWithSameValueFiveAlternatives": 13,
+        "statesWithSameValueImmediateClearDifference": 5,
+        "statesWithSameValueNextClearDifference": 7,
+        "statesWithSameValueShowerSafetyDifference": 0,
+        "traceCommits": 20,
+        "tracedFiveFromLargerComponent": 12,
+        "wholeOrTapFallbacks": 0
+      },
+      "rounds": [
+        {
+          "clears": 15,
+          "overflow": false,
+          "score": 54,
+          "seed": 0,
+          "showers": 24
+        },
+        {
+          "clears": 16,
+          "overflow": false,
+          "score": 64,
+          "seed": 1,
+          "showers": 24
+        },
+        {
+          "clears": 10,
+          "overflow": true,
+          "score": 41,
+          "seed": 2,
+          "showers": 21
+        },
+        {
+          "clears": 14,
+          "overflow": false,
+          "score": 50,
+          "seed": 3,
+          "showers": 24
+        },
+        {
+          "clears": 14,
+          "overflow": false,
+          "score": 59,
+          "seed": 4,
+          "showers": 24
+        },
+        {
+          "clears": 10,
+          "overflow": true,
+          "score": 36,
+          "seed": 5,
+          "showers": 20
+        },
+        {
+          "clears": 10,
+          "overflow": true,
+          "score": 44,
+          "seed": 6,
+          "showers": 18
+        },
+        {
+          "clears": 15,
+          "overflow": false,
+          "score": 64,
+          "seed": 7,
+          "showers": 24
+        },
+        {
+          "clears": 16,
+          "overflow": false,
+          "score": 68,
+          "seed": 8,
+          "showers": 24
+        },
+        {
+          "clears": 14,
+          "overflow": true,
+          "score": 56,
+          "seed": 9,
+          "showers": 22
+        },
+        {
+          "clears": 19,
+          "overflow": false,
+          "score": 68,
+          "seed": 10,
+          "showers": 24
+        },
+        {
+          "clears": 14,
+          "overflow": false,
+          "score": 57,
+          "seed": 11,
+          "showers": 24
+        },
+        {
+          "clears": 9,
+          "overflow": true,
+          "score": 33,
+          "seed": 12,
+          "showers": 17
+        },
+        {
+          "clears": 18,
+          "overflow": false,
+          "score": 68,
+          "seed": 13,
+          "showers": 24
+        },
+        {
+          "clears": 15,
+          "overflow": false,
+          "score": 52,
+          "seed": 14,
+          "showers": 24
+        },
+        {
+          "clears": 15,
+          "overflow": false,
+          "score": 66,
+          "seed": 15,
+          "showers": 24
+        }
+      ]
+    },
+    "largest-whole-or-tap": {
+      "counts": {
+        "cappedStatesExcludedFromComparisons": 0,
+        "commitsPreservingPartOfLargerComponent": 0,
+        "decisionStates": 226,
+        "enumeratedFiveChoices": 88,
+        "maximumFiveChoicesInOneState": 17,
+        "ordinaryTapCommits": 205,
+        "statesWhereEqualFirstValueBeatsLargestTieOverTwoImmediateClears": 0,
+        "statesWherePartialHasHigherImmediateTwoClearPotential": 0,
+        "statesWherePartialHasHigherTwoClearPotential": 2,
+        "statesWhereSmallerFirstBeatsLargestOverTwoImmediateClears": 0,
+        "statesWithFiveStarChoice": 25,
+        "statesWithMultipleLegalChoices": 34,
+        "statesWithSameValueFiveAlternatives": 13,
+        "statesWithSameValueImmediateClearDifference": 4,
+        "statesWithSameValueNextClearDifference": 6,
+        "statesWithSameValueShowerSafetyDifference": 1,
+        "traceCommits": 21,
+        "tracedFiveFromLargerComponent": 0,
+        "wholeOrTapFallbacks": 0
+      },
+      "rounds": [
+        {
+          "clears": 15,
+          "overflow": false,
+          "score": 64,
+          "seed": 0,
+          "showers": 24
+        },
+        {
+          "clears": 16,
+          "overflow": false,
+          "score": 64,
+          "seed": 1,
+          "showers": 24
+        },
+        {
+          "clears": 10,
+          "overflow": true,
+          "score": 41,
+          "seed": 2,
+          "showers": 21
+        },
+        {
+          "clears": 14,
+          "overflow": false,
+          "score": 50,
+          "seed": 3,
+          "showers": 24
+        },
+        {
+          "clears": 15,
+          "overflow": false,
+          "score": 76,
+          "seed": 4,
+          "showers": 24
+        },
+        {
+          "clears": 10,
+          "overflow": true,
+          "score": 36,
+          "seed": 5,
+          "showers": 20
+        },
+        {
+          "clears": 10,
+          "overflow": true,
+          "score": 43,
+          "seed": 6,
+          "showers": 18
+        },
+        {
+          "clears": 15,
+          "overflow": false,
+          "score": 64,
+          "seed": 7,
+          "showers": 24
+        },
+        {
+          "clears": 17,
+          "overflow": false,
+          "score": 72,
+          "seed": 8,
+          "showers": 24
+        },
+        {
+          "clears": 14,
+          "overflow": true,
+          "score": 57,
+          "seed": 9,
+          "showers": 22
+        },
+        {
+          "clears": 19,
+          "overflow": false,
+          "score": 68,
+          "seed": 10,
+          "showers": 24
+        },
+        {
+          "clears": 14,
+          "overflow": false,
+          "score": 57,
+          "seed": 11,
+          "showers": 24
+        },
+        {
+          "clears": 9,
+          "overflow": true,
+          "score": 34,
+          "seed": 12,
+          "showers": 17
+        },
+        {
+          "clears": 18,
+          "overflow": false,
+          "score": 68,
+          "seed": 13,
+          "showers": 24
+        },
+        {
+          "clears": 15,
+          "overflow": false,
+          "score": 52,
+          "seed": 14,
+          "showers": 24
+        },
+        {
+          "clears": 15,
+          "overflow": false,
+          "score": 65,
+          "seed": 15,
+          "showers": 24
+        }
+      ]
+    }
+  },
+  "provenance": {
+    "inputSHA256": {
+      "tools/environments/export_lab.py": "f50c8987ad3d5f8d57c745e347876ac1929c410160d30f4543d88e538c08a193",
+      "tools/mechanics/TraceChoiceAnalysis.swift": "11de30fae3a566bb3e5a5d0ca590f0df45bf5efb3d1b2efa40c644ab7cc0575d",
+      "tools/mechanics/compare-trace-choices.py": "cf149a00781feb2e5502e8df0473fdba99fbe6fd4ee3a73485554204b8ebad47",
+      "tools/mechanics/constellation_candidate.py": "37da8832fb594bd5d0833623823a11fa43303d72ddbc2f8c5d1abd60cedced66",
+      "tools/mechanics/constellation_trace.py": "fa1bc07a7eeb264404e0a9ef8305928ec63eca9075d3f94656af5acfc6547227"
+    },
+    "packageCount": 61,
+    "packageLog": "/var/folders/fs/9shw9bf142jg3280dc9n3hhc0000gn/T/starfall-trace-choices-43viq600/package-tests.log",
+    "publishedTraceNativeBuild": "dev.fecfaa150d",
+    "publishedTraceNativeCoreMatch": true,
+    "source": "9ec96f8650224cfab79944391075b18dc61a3dc6",
+    "sourceDirtyStatus": "",
+    "traceCoreSHA256": "cdc7908765935046da463d699328a50da45b0297839511ecbb80cee0b2e7c099",
+    "workspace": "/var/folders/fs/9shw9bf142jg3280dc9n3hhc0000gn/T/starfall-trace-choices-43viq600"
+  },
+  "seeds": [
+    0,
+    15
+  ],
+  "showerCap": 24,
+  "stateChoiceCap": 1024
+}
