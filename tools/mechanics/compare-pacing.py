@@ -41,7 +41,7 @@ inputs = [*sorted((root/'Sources/StarfallCore').glob('*.swift')), root/'App/Fall
           root/'App/ObservatoryReviewFixture.swift', root/'App/SkySaveArchive.swift', root/'App/SkyFlowState.swift', root/'App/FallingSkyHUD.swift',
           root/'App/FallingSkyPresentation.swift', root/'App/SkyTechniqueIntent.swift',
           root/'App/GameFeedback.swift', root/'App/StarlightCelebration.swift',
-          root/'App/SkyDialogue.swift', root/'App/SkyDialogueLibrary.swift', root/'App/DialogueScripts/observatory-dialogue.json',
+          root/'App/SkyDialogue.swift', root/'App/SkyDialogueLibrary.swift', root/'App/SkyCopy.swift', root/'App/DuskWarning.swift', root/'App/DialogueScripts/observatory-dialogue.json',
           root/'App/FallingSkyScene.swift', root/'App/FallingSkyMotion.swift',
           root/'Tests/StarfallCoreTests/TimingCycleFixture.swift', *sorted((root/'tools/mechanics').glob('Pacing*.swift')), Path(__file__).resolve()]
 def hashes():
