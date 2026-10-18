@@ -78,7 +78,7 @@ Use `python3 tools/mechanics/prepare-observatory-labs.py --ref HEAD` for matched
 
 The current Observatory pair now uses the store's committed messages for paused guidance, including opening corrections and First Light's objective. [Feedback trial evidence](../../docs/evidence/paused-feedback-2026-10-17/README.md) records growth/clear/dark outcomes, interruption/restore, actual focused speech, small-phone captures and remaining maximum-text limits. The guide is now [adopted independently in production](../../docs/evidence/paused-guide-adoption-2026-10-17/README.md); modern exports inherit that owner, while recognized legacy snapshots receive the same adaptation. Flowing play stays quiet and candidate generator algorithms remain fixed for comparison.
 
-The pacing export/launch selector was retired when the user selected B for production. New skies use Core `announcedCycleV1` directly in Debug and Release. Historical exports remain reproducible from their recorded commits; current native checks run the ordinary app. See [adoption](../../docs/design/PACING_ADOPTION.md).
+The pacing export/launch selector was retired when the user selected B for production. New skies use Core `announcedCycleV2` directly in Debug and Release. Historical exports remain reproducible from their recorded commits; current native checks run the ordinary app. See [adoption](../../docs/design/PACING_ADOPTION.md).
 
 ## Magnetic collision and captive orbit
 
@@ -88,4 +88,6 @@ Gravity now belongs to the normal Starfall game. `Sources/StarfallCore` owns all
 
 The pacing runner consumes store-issued trace-hold tickets. Its standalone compilation includes the current save archive and extracts exact current phase/cadence/entry value declarations into temporary source; no duplicate timing or persistence algorithm is maintained. Scene readiness remains a test-only presentation substitute.
 
-After gravity integration, the standalone pacing consumer compiles Core with Debug fixtures and uses its canonical constellation fixture rather than a copied historical fixture. Its presentation durations remain a model; use current native recordings for gravity motion and do not treat this compatibility sample as measured device cadence or enjoyment.
+For a bounded timing sensitivity sample, pass `--baseline-cadence announcedCycleV1 --candidate-cadence announcedCycleV2 --reaction-seconds 0.75`. Supported cadence IDs are openingV1/announcedCycleV1/announcedCycleV2; baseline and candidate must differ. Recognition delay is assumed (0.05–5 seconds), trace steps default to 0.12 seconds (allowed 0.02–1). These options never change the app. Historical defaults remain openingV1 versus announcedCycleV1 at 0.45/0.12 seconds. Use distinct output folders and compare source hashes; neither simulation nor a chosen reaction delay measures human play.
+
+The standalone pacing Core library now builds with DEBUG so the current Store can use authoritative Core fixtures, including gravity. The old tool fixture is not compiled by this runner. Current-main compilation/replay smoke does not validate captive-star policies or gravity presentation durations; the pre-gravity sensitivity table remains source-bound.

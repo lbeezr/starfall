@@ -22,7 +22,7 @@ The camera contour now uses the dimensions of its consuming playfield rather tha
 
 ## Verification context
 
-Final source: main `0cd430effa85d02165351c67bedf197c9c168428` plus this PR's explicit App/HUD/theme, geometry/native tests, pacing-consumer compatibility and documentation edits. Concurrent gravity and automatic-storm work was preserved, including both appended native test extensions. No target/resource membership changes in this PR. Xcode 27.1 (27A9275), arm64, iOS 27.0 Simulator, Debug `dev.local` and Release compilation.
+Native runtime source: main `0cd430effa85d02165351c67bedf197c9c168428` plus this PR's explicit App/HUD/theme, geometry/native tests, pacing-consumer compatibility and documentation edits. Concurrent gravity and automatic-storm work was preserved, including both appended native test extensions. No target/resource membership changes in this PR. Later reconciliation with main `9fc0c57` changes only tooling/docs; its concurrent pacing PR #50 supplies the same canonical-fixture correction and adds current-cadence sensitivity options. Keep that implementation as the sole owner. Native runtime inputs are unchanged by this reconciliation. Xcode 27.1 (27A9275), arm64, iOS 27.0 Simulator, Debug `dev.local` and Release compilation.
 
 Raw logs under ignored `artifacts/reliability/`:
 
@@ -33,6 +33,6 @@ Raw logs under ignored `artifacts/reliability/`:
 - `layout-main-native.log`: earlier main `9cb8fcc` plus this batch, 144 hosted / six selected native cases passed, including the full win/loss/replay and Reduce Motion checks; these are not falsely attributed to later gravity source.
 - `layout-integrated-release.log`: Release generic simulator build passed. Debug native products compiled through the tests. Builds use Starfall project/scheme, `ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGNING_ALLOWED=NO`; native runs disable parallel testing and use bounded 120/200-second allowances (the existing two-round flow has its own 240-second budget).
 - `native-plan.log`, `updater-final.log`: 3 test-matrix checks and 13 updater checks passed. Hygiene and diff checks passed.
-- `current-pacing-consumer.log`: bounded one-seed/ten-second consumer smoke passed after compiling Core's canonical Debug fixtures, replacing the historical copied fixture. Its timings remain presentation models, not measured current gravity animation or device cadence.
+- `current-pacing-consumer.log`: bounded one-seed/ten-second consumer smoke passed after compiling Core's canonical Debug fixtures, replacing the historical copied fixture. The subsequent merged-current runner also passes a two-seed/60-second V1/V2 smoke with 0.75-second modeled reaction (`final-current-cadence.log`). These are presentation models, not measured current gravity animation, device cadence or human preference.
 
 Initial stronger forecast test queried the score as a Button instead of StaticText; the corrected lookup preserves the actual-route assertions. An initial attempt used a nonexistent device screenshot API; compilation was corrected to XCUIScreen. Those failed logs and the rejected app-window capture are retained. Full actual VoiceOver was not run during routine development.
