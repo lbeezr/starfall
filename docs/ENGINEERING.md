@@ -205,3 +205,9 @@ When adding phase batches, changing approach/contact/landing durations or cadenc
 ## Hosted Store test size — current planning integration (October 17)
 
 `AppTests/FallingSkyStoreTests.swift` reaches 1,209 lines after combining the main dialogue regressions with the current Opal/orbit deadline check. Retain it in this bounded integration because the new case directly reuses its private injected clock/presenter setup; moving unrelated tests or exposing helpers would mix a structural change into source reconciliation. Trigger: next change to Store test setup or cadence/dialogue ownership. Extract shared injected-clock/presenter construction into focused test support, then separate cohesive cadence/trace/dialogue suites, preserving assertions and target membership. Verify affected hosted suites and the native planning sibling; do not split by arbitrary line ranges.
+
+## Responsive input follow-up — October 17, 2026
+
+The [input contract](design/INTERACTION_FEEDBACK.md) reserves changed columns, including dissolved dark stars, and treats gravity phases as whole-board transactions. Trigger: next physical device playtest or any change to geometry, gravity phases, trace recognition or animation completion. Measure contact-to-outline delay with normal/largest text, short drift and curved traces, check haptic clarity, and compare repeated corrective taps with baseline. Simulator/native assertions establish the named ownership/touch cases, not physical feel. Keep full actual VoiceOver at RC, including constellation add/release/cancel and focus continuity. A future identity-based buffer needs observed boundary misses; do not add a blind coordinate queue.
+
+Historical timing snapshots' `canClear` Boolean describes a fully settled board. At the next input-window comparison, record per-cell readiness with `canClear(cell)`/`canContact(cell)`; treating the old global flag as “no available input” would undercount the new independent windows.

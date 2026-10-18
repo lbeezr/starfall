@@ -50,3 +50,5 @@ The magnetic saved role now presents as an **attraction field** using `StarCastF
 
 Gravity arrivals share the ordinary flight constructor. StarfallMotion.GravityTimeline owns phase durations and approach overlap; receiver responses and landings follow completed gravity motion. The scene presents committed outcomes and never schedules Core showers.
 
+
+`FallingSkyPresentation` derives the columns reserved by committed turns, using a whole-board reservation for orbit phases. Store and scene allow independent ready actions and reconcile against the newest game. The existing trace surface owns anchored contacts and eligible drag classification; [responsive input](../docs/design/INTERACTION_FEEDBACK.md) defines feedback, lifecycle and verification boundaries.

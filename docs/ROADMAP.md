@@ -10,6 +10,8 @@ Build a small, readable falling-sky puzzle worth replaying. **Constellation trac
 
 Character chat and complete shower trails are integrated into the current production target, preserving Opal, gravity, constellation input and saved generations. [Current integration checks](evidence/character-chat-production-2026-10-17/README.md) supersede the old-base delivery limit.
 
+[Responsive input integration](design/INTERACTION_FEEDBACK.md) replaces the global animation gate with column reservations and gives contacts/cancellations explicit feedback. Current production trace, dialogue, gravity and save behavior are retained; [integrated verification](evidence/responsive-input-2026-10-17/README.md) separates simulator checks from physical feel.
+
 ## Current mechanics integration — October 17, 2026
 
 The user approved the shared white connector and storm phases for the regular app, then selected the round Opal Orb and requested soft motion. [Current contract](design/WHITE_STAR_AND_STORMS.md) and [main-based integration evidence](evidence/opal-main-integration-2026-10-17/README.md) supersede the earlier research-only adoption boundary below. Preserve the independently adopted announced timing cycle. Development acceptance passed; Opal/storm integration merged in PR #37, with compiler compatibility in #39 and direct input/cadence polish in #40. The [bounded choice study](evidence/opal-choice-study-2026-10-17/README.md) and [native two-clear comparison](evidence/opal-native-planning-2026-10-17/README.md) establish situational scoring choices; actual combined human play and replay preference remain open. Pocketed alternate silhouettes carry no new mechanic or progression commitment.

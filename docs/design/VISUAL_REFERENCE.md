@@ -8,13 +8,13 @@ Selected icon, screens and six-star cast, with links to their sources. **Source-
 
 ## Capture index
 
-Status follows [the screenshot practice](../SCREENSHOTS.md). These legacy filenames retain their original provenance. No current-source parity review was performed for this documentation update, so none is certified **Current**. Use the linked reports for captured sources and environments; the next implementer touching each surface owns its refresh.
+Status follows [the screenshot practice](../SCREENSHOTS.md). These legacy filenames retain their original provenance. Active play was inspected against runtime snapshot `7e2bdc3f5a56`; the other entries retain their separate refresh limits. Use the linked reports for captured sources and environments; the next implementer touching each surface owns its refresh.
 
 | Surface | Status | Selected evidence / next check |
 | --- | --- | --- |
 | Welcome | Needs refresh | [Sky-flow welcome](../evidence/sky-flow-2026-10-17/welcome.jpg), [source report](../evidence/sky-flow-2026-10-17/README.md); compare relevant UI/art inputs before relying on current parity |
 | Entry | Needs refresh | [Sky-flow entry](../evidence/sky-flow-2026-10-17/entry.jpg), same source report; compare relevant UI/art inputs |
-| Active play | Needs refresh | No selected integrated-board capture; replace the historical compact-HUD reference below with a native capture of the integrated board |
+| Active play | Current for `7e2bdc3f5a56` | [Integrated active play](../evidence/responsive-input-2026-10-17/dev-49dcd0e-wip-7e2bdc3f5a56__active-play__iphone-17e__default-text.jpg), [source/parity record](../evidence/responsive-input-2026-10-17/README.md). Native reset fixture after Resume, normal motion/default text; does not establish natural opening, animation or device feel. |
 | Settings | Needs refresh | No selected current settings capture; capture default and largest-text layouts when next changing settings |
 | Outcomes | Needs refresh | [First Light win](../evidence/sky-flow-2026-10-17/flow-win.jpg) and [full sky](../evidence/sky-flow-2026-10-17/flow-full.jpg), same sky-flow source report; compare relevant UI/art inputs |
 

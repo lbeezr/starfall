@@ -139,6 +139,7 @@ import StarfallCore
                 if !showingCeremony && !settings {
                     VStack(spacing: StarfallTheme.Spacing.small) {
                         compactHeader(island: island)
+                        if !largeText, let message = store.inputMessage { SkyInputStatus(message: message) }
                         Spacer(minLength: 0)
                         if !largeText { guide(compact: compact, maximumHeight: footerHeight) }
                     }
@@ -158,6 +159,7 @@ import StarfallCore
     }
 
     @ViewBuilder private func guide(compact: Bool, maximumHeight: CGFloat? = nil) -> some View {
+        if largeText, let message = store.inputMessage { SkyInputStatus(message: message) }
         if !store.game.isOver {
             SkyDialogueOverlay(session: store.dialogue,
                                pausedLine: store.isPaused ? store.pausedGuideLine : nil,
@@ -259,13 +261,15 @@ import StarfallCore
                                 .position(x: frame.midX, y: frame.midY)
                         }
                     }
-                    ConstellationTraceSurface(size: geometry.size, enabled: store.canClear,
+                    ConstellationTraceSurface(size: geometry.size, enabled: !store.suspended && !store.game.isOver,
                                               generation: store.constellationInputGeneration,
                                               traceStart: { ConstellationTraceHitTesting.start(at: $0, mapping: mapping, game: store.game) },
                                               tap: { cell in cancelConstellation(); store.clear(cell) },
                                               begin: { beginConstellation($0, size: geometry.size) },
                                               move: { moveConstellation($0, size: geometry.size) },
-                                              end: releaseConstellation, cancel: cancelConstellation)
+                                              end: releaseConstellation, cancel: cancelConstellation,
+                                              contact: { beginBoardContact($0, size: geometry.size) },
+                                              feedback: store.explainInputFailure)
                     }
                 }
 
@@ -311,7 +315,7 @@ import StarfallCore
         .accessibilityAction(named: Text("Release constellation")) { releaseConstellation() }
         .accessibilityAction(named: Text("Cancel constellation")) { cancelConstellation() }
         .accessibilityRotorEntry(id: cell, in: matchingGroups)
-        .disabled(!store.canClear)
+        .disabled(!store.canClear(cell) && !store.constellationTracing)
     }
 
     private func gravityConsequence(_ cell: Cell) -> String {
@@ -419,12 +423,22 @@ private extension FallingSkyView {
     func cancelConstellation() {
         trace.cancel(); store.endConstellationHold(trace.holdTicket); trace.holdTicket = nil; store.scene.clearConstellationTrace()
     }
-    func beginConstellation(_ point: CGPoint, size: CGSize) {
+    func beginBoardContact(_ point: CGPoint, size: CGSize) -> Bool {
         cancelConstellation()
+        guard let cell = ObservatoryGeometry(size: size).cell(at: point) else { return false }
+        guard let ticket = store.beginConstellationHold(at: cell) else {
+            store.explainSettling(at: cell); return false
+        }
+        trace.holdTicket = ticket
+        store.showInputFeedback(nil)
+        store.scene.showContact(cell)
+        return true
+    }
+    func beginConstellation(_ point: CGPoint, size: CGSize) {
         guard let cell = ConstellationTraceHitTesting.start(at: point, mapping: ObservatoryGeometry(size: size), game: store.game) else { return }
-        _ = trace.begin(cell, game: store.game, generation: store.constellationInputGeneration, enabled: store.canClear)
+        _ = trace.begin(cell, game: store.game, generation: store.constellationInputGeneration, enabled: store.canTrace([cell]))
         if trace.snapshot != nil && trace.holdTicket == nil {
-            trace.holdTicket = store.beginConstellationHold()
+            trace.holdTicket = store.beginConstellationHold(at: trace.path.first)
             if trace.holdTicket == nil { trace.cancel() }
         }
         trace.lastFinger = point
@@ -433,11 +447,11 @@ private extension FallingSkyView {
     func moveConstellation(_ point: CGPoint, size: CGSize) {
         guard trace.snapshot != nil else { return }
         let mapping = ObservatoryGeometry(size: size)
-        guard mapping.cell(at: point) != nil else { cancelConstellation(); return }
+        guard mapping.cell(at: point) != nil else { cancelConstellation(); store.explainInputFailure("Trace canceled · left the board"); return }
         let previous = trace.lastFinger ?? point
         for cell in ConstellationTraceHitTesting.cells(from: previous, to: point, mapping: mapping, game: store.game) {
             let count = trace.count
-            if trace.visit(cell, ticket: trace.sequence, game: store.game, generation: store.constellationInputGeneration, enabled: store.canClear) {
+            if trace.visit(cell, ticket: trace.sequence, game: store.game, generation: store.constellationInputGeneration, enabled: store.canTrace(trace.path + [cell])) {
                 refreshConstellation()
                 if trace.count > count { traceFeedback.step(count: trace.count, enabled: store.hapticsEnabled && !reduceMotion && !calmEffects && !voiceOver) }
             }
@@ -446,24 +460,31 @@ private extension FallingSkyView {
         trace.lastFinger = point
         store.scene.moveConstellationTip(point)
     }
-    func refreshConstellation() { store.scene.showConstellationTrace(trace.path, ready: trace.count >= 5) }
+    func refreshConstellation() {
+        store.scene.showConstellationTrace(trace.path, ready: trace.count >= 5)
+        if trace.count > 0 { store.showInputFeedback(trace.count >= 5 ? "Release \(trace.count) stars" : "\(trace.count) / 5 stars") }
+    }
     func releaseConstellation() {
-        let outcome = trace.finish(ticket: trace.sequence, game: store.game, generation: store.constellationInputGeneration, enabled: store.canClear)
+        let hadTrace = trace.snapshot != nil
+        let outcome = trace.finish(ticket: trace.sequence, game: store.game, generation: store.constellationInputGeneration, enabled: store.canTrace(trace.path))
         store.scene.clearConstellationTrace()
         defer { store.endConstellationHold(trace.holdTicket); trace.holdTicket = nil }
-        guard let outcome else { return }
+        guard let outcome else {
+            if hadTrace { store.explainInputFailure("Trace needs 5 matching stars") }
+            return
+        }
         store.clearTracedConstellation(outcome.path, snapshot: outcome.snapshot, generation: outcome.generation)
         // Commit synchronously first; effects never choose or delay the cleared set.
         if store.game != outcome.snapshot { store.scene.constellationBurst(outcome.path) }
     }
     func accessibleTrace(_ cell: Cell) {
         if trace.snapshot == nil {
-            _ = trace.begin(cell, game: store.game, generation: store.constellationInputGeneration, enabled: store.canClear)
+            _ = trace.begin(cell, game: store.game, generation: store.constellationInputGeneration, enabled: store.canTrace(trace.path.isEmpty ? [cell] : trace.path + [cell]))
         } else {
-            _ = trace.visit(cell, ticket: trace.sequence, game: store.game, generation: store.constellationInputGeneration, enabled: store.canClear)
+            _ = trace.visit(cell, ticket: trace.sequence, game: store.game, generation: store.constellationInputGeneration, enabled: store.canTrace(trace.path.isEmpty ? [cell] : trace.path + [cell]))
         }
         if trace.snapshot != nil && trace.holdTicket == nil {
-            trace.holdTicket = store.beginConstellationHold()
+            trace.holdTicket = store.beginConstellationHold(at: trace.path.first)
             if trace.holdTicket == nil { trace.cancel() }
         }
         refreshConstellation()

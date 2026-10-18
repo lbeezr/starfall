@@ -5,6 +5,57 @@ import StarfallCore
 @testable import Starfall
 
 final class StarCastTests: XCTestCase {
+    @MainActor func testIndependentClearDoesNotCancelAnUnrelatedAnimatedShower() async throws {
+        guard !UIAccessibility.isReduceMotionEnabled && !UIAccessibility.isVoiceOverRunning else {
+            throw XCTSkip("Concurrent motion requires normal system motion")
+        }
+        let windowScene = try XCTUnwrap(UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.first)
+        let previous = windowScene.windows.first(where: \.isKeyWindow)
+        let view = SKView(frame: CGRect(x: 0, y: 0, width: 390, height: 844))
+        let window = UIWindow(windowScene: windowScene); window.frame = view.frame
+        let controller = UIViewController(); controller.view = view
+        window.rootViewController = controller; window.makeKeyAndVisible()
+        defer { view.presentScene(nil); window.isHidden = true; previous?.makeKey() }
+        let scene = FallingSkyScene(size: view.bounds.size); view.presentScene(scene)
+        var game = ObservatoryReviewFixture.game(dense: false)
+        scene.render(game)
+        let beforeRain = game
+        let rain = try XCTUnwrap(game.letStarsFall())
+        var rainDone = false, clearDone = false
+        scene.animate(rain, from: beforeRain, to: game) { rainDone = true }
+        let cell = try XCTUnwrap(game.legalGroups.compactMap(\.first).first { cell in
+            let group = game.group(at: cell)
+            return Set(group.union(game.darkStarsBeside(group)).map(\.column)).isDisjoint(with: rain.changingColumns)
+        })
+        let beforeClear = game
+        let clear = try XCTUnwrap(game.clear(cell))
+        scene.animate(clear, from: beforeClear, to: game) { clearDone = true }
+        scene.showContact(Cell(0,3))
+        var sawClearBeforeRain = false, sawFlight = false
+        let deadline = ContinuousClock.now + .seconds(3)
+        while (!rainDone || !clearDone) && ContinuousClock.now < deadline {
+            sawClearBeforeRain = sawClearBeforeRain || (clearDone && !rainDone)
+            sawFlight = sawFlight || scene.children[2].children.contains { $0.children.count > 1 }
+            try await Task.sleep(for: .milliseconds(16))
+        }
+        XCTAssertTrue(rainDone); XCTAssertTrue(clearDone)
+        XCTAssertTrue(sawClearBeforeRain); XCTAssertTrue(sawFlight)
+        XCTAssertEqual(scene.children[1].children.count, game.occupiedCount)
+        for case let node as FallingSkyCharacter in scene.children[1].children {
+            let index = try XCTUnwrap(game.board.firstIndex { $0?.id == node.gem.id })
+            XCTAssertEqual(node.gem, game.board[index])
+            let expected = ObservatoryGeometry(size: scene.size).scenePoint(Cell(index/7,index%7))
+            XCTAssertEqual(node.position.x, expected.x, accuracy: 0.01)
+            XCTAssertEqual(node.position.y, expected.y, accuracy: 0.01)
+            XCTAssertFalse(node.hasActions())
+        }
+        var contacts: [SKNode] = []
+        scene.enumerateChildNodes(withName: "//sky.input.contact") { node, _ in contacts.append(node) }
+        XCTAssertEqual(contacts.count, 1, "Completing other columns must preserve a live contact outline")
+        let capture = XCTAttachment(image: UIImage(cgImage: try XCTUnwrap(view.texture(from: scene)).cgImage()))
+        capture.name = "concurrent-arrival-final"; capture.lifetime = .keepAlways; add(capture)
+    }
+
     @MainActor func testCrystalBodiesArePackagedAndContactShadowsStaySeparate() throws {
         let kinds = StarCast.Identity.allCases
         for kind in kinds {
