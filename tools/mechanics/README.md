@@ -2,6 +2,12 @@
 
 **Current workflow:** Implement requested improvements directly in the regular Starfall app. Do not create or install separate labs unless the user explicitly asks. The exports below are historical research instructions, not a current play workflow. The constellation exporter is retired; reproduce old versions from their recorded commit.
 
+## Current Opal opportunity study
+
+`python3 tools/mechanics/study-opal-choices.py --output artifacts/opal-choices/new-run` compiles unchanged production Core and the bounded checker in a temporary directory. It writes source hashes, compiler/progress logs and runs.json without touching app saves or installing a lab. Defaults are seeds 0–63 and 24 showers; `--seed-start 64` selects the held-out range. Seed counts are bounded to 1–200 and horizons to 6–60 showers. Output directories must be new.
+
+The checker enumerates taps/full components/connected fives, validates actions with Core, and keeps oracle forecasts out of policy selection. [Plan and limits](../../docs/design/OPAL_CHOICE_STUDY.md), [discovery/held-out results](../../docs/evidence/opal-choice-study-2026-10-17/README.md). These are mechanical opportunity measurements, not human or timed-play results.
+
 ## Pacing comparison
 
 `python3 tools/mechanics/compare-pacing.py --seeds 16 --seconds 120` compiles the unchanged Debug Store and real trace intent on macOS, with a virtual clock and test-only scene/feedback substitutes. It uses the adopted Core cadence through a thin compatibility adapter in `Tests/StarfallCoreTests/TimingCycleFixture.swift`; its A lookup remains a tool-only historical comparison. No alternate algorithm or app selector is added. Requires Xcode command-line tools. The runner never installs or launches an app.

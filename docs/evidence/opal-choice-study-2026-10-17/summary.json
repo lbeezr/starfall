@@ -1,0 +1,143 @@
+{
+  "discovery": {
+    "seedStart": 0,
+    "seeds": 64,
+    "showerLimit": 24,
+    "summaries": [
+      {
+        "counts": {
+          "cappedOpalStates": 0,
+          "decisionStates": 1503,
+          "equalFirstImmediateGainStates": 2,
+          "opalStates": 471,
+          "opalStatesWithoutClear": 69,
+          "preservingForecastOracleGainStates": 27,
+          "preservingForecastOracleSafetyStates": 0,
+          "sharedOpalStates": 41,
+          "smallerFirstImmediateGainStates": 10,
+          "uncappedOpalDecisionStates": 402,
+          "waitForecastOracleGainStates": 14
+        },
+        "ended": 4,
+        "policy": "largest-immediate",
+        "rounds": 64,
+        "score": 4477,
+        "showers": 1507
+      },
+      {
+        "counts": {
+          "cappedOpalStates": 0,
+          "decisionStates": 1511,
+          "equalFirstImmediateGainStates": 3,
+          "opalStates": 497,
+          "opalStatesWithoutClear": 70,
+          "preservingForecastOracleGainStates": 28,
+          "preservingForecastOracleSafetyStates": 0,
+          "sharedOpalStates": 44,
+          "smallerFirstImmediateGainStates": 9,
+          "uncappedOpalDecisionStates": 427,
+          "waitForecastOracleGainStates": 15
+        },
+        "ended": 4,
+        "policy": "preserve-opal-on-score-ties",
+        "rounds": 64,
+        "score": 4519,
+        "showers": 1515
+      }
+    ]
+  },
+  "heldout": {
+    "seedStart": 64,
+    "seeds": 64,
+    "showerLimit": 24,
+    "summaries": [
+      {
+        "counts": {
+          "cappedOpalStates": 0,
+          "decisionStates": 1517,
+          "equalFirstImmediateGainStates": 0,
+          "opalStates": 467,
+          "opalStatesWithoutClear": 79,
+          "preservingForecastOracleGainStates": 24,
+          "preservingForecastOracleSafetyStates": 0,
+          "sharedOpalStates": 50,
+          "smallerFirstImmediateGainStates": 4,
+          "uncappedOpalDecisionStates": 388,
+          "waitForecastOracleGainStates": 9
+        },
+        "ended": 4,
+        "policy": "largest-immediate",
+        "rounds": 64,
+        "score": 4484,
+        "showers": 1521
+      },
+      {
+        "counts": {
+          "cappedOpalStates": 0,
+          "decisionStates": 1517,
+          "equalFirstImmediateGainStates": 0,
+          "opalStates": 491,
+          "opalStatesWithoutClear": 80,
+          "preservingForecastOracleGainStates": 24,
+          "preservingForecastOracleSafetyStates": 0,
+          "sharedOpalStates": 56,
+          "smallerFirstImmediateGainStates": 3,
+          "uncappedOpalDecisionStates": 411,
+          "waitForecastOracleGainStates": 8
+        },
+        "ended": 4,
+        "policy": "preserve-opal-on-score-ties",
+        "rounds": 64,
+        "score": 4481,
+        "showers": 1521
+      }
+    ]
+  },
+  "repeat": {
+    "seedStart": 0,
+    "seeds": 64,
+    "showerLimit": 24,
+    "summaries": [
+      {
+        "counts": {
+          "cappedOpalStates": 0,
+          "decisionStates": 1503,
+          "equalFirstImmediateGainStates": 2,
+          "opalStates": 471,
+          "opalStatesWithoutClear": 69,
+          "preservingForecastOracleGainStates": 27,
+          "preservingForecastOracleSafetyStates": 0,
+          "sharedOpalStates": 41,
+          "smallerFirstImmediateGainStates": 10,
+          "uncappedOpalDecisionStates": 402,
+          "waitForecastOracleGainStates": 14
+        },
+        "ended": 4,
+        "policy": "largest-immediate",
+        "rounds": 64,
+        "score": 4477,
+        "showers": 1507
+      },
+      {
+        "counts": {
+          "cappedOpalStates": 0,
+          "decisionStates": 1511,
+          "equalFirstImmediateGainStates": 3,
+          "opalStates": 497,
+          "opalStatesWithoutClear": 70,
+          "preservingForecastOracleGainStates": 28,
+          "preservingForecastOracleSafetyStates": 0,
+          "sharedOpalStates": 44,
+          "smallerFirstImmediateGainStates": 9,
+          "uncappedOpalDecisionStates": 427,
+          "waitForecastOracleGainStates": 15
+        },
+        "ended": 4,
+        "policy": "preserve-opal-on-score-ties",
+        "rounds": 64,
+        "score": 4519,
+        "showers": 1515
+      }
+    ]
+  }
+}
