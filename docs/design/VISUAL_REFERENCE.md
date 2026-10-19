@@ -1,12 +1,12 @@
 # Starfall visual reference
 
-**Future story concept:** [Lantern Landing’s five restoration views](lantern-landing-01/README.md) develop the approved world map’s first location with the Crystal Glow cast. Generated October 19, 2026; concept only, separate from the native nightscape evidence below. The [comparison viewer](lantern-landing-01/board.html) shows 0%, 25%, 50%, 75% and 100%.
+**Lantern Landing in First Light:** [Native acceptance](../evidence/lantern-landing-2026-10-19/README.md) verifies the implemented continuous phone/tablet scenes, all fifteen state captures and sampled normal-motion completion. Latest verified source: `8fb2e78`, runtime `dev.5afe4a3c23`. Publication, merge and phone delivery are authorized and pending. The [comparison viewer](lantern-landing-01/board.html) remains an offline concept tool; the other eleven map locations remain design work.
 
 **Adopted nightscapes:** [Moonwake, Nebula Cradle, Shatterlight Reach, Night Garden and Ringdrift](../evidence/nightscapes-2026-10-18/README.md) now have native phone/iPad evidence. Five separately controlled planes surround a centered playfield; sixteen alpha assets replace the platform paintings. [Production design](environments/night-production-09/README.md) owns composition and asset provenance. Publication/device status is recorded in the evidence report.
 
 The [approved scene kits](environments/scene-kits-07/README.md) and [painted night keys](environments/night-keys-08/README.md) remain concept references. Earlier celestial boards and Skysea are historical, superseded directions.
 
-**Status:** Reference · **Updated:** October 18, 2026
+**Status:** Reference · **Updated:** October 19, 2026
 
 Selected icon, screens and six-star cast, with links to their sources. **Source-bound references, not current-build certification:** check the linked source before drawing conclusions about current UI. Native composition and sampled normal motion are inspected for the nightscapes; actual VoiceOver, physical comfort and release acceptance remain separate checks. Follow [screenshot retention](../SCREENSHOTS.md) when replacing a visual.
 
@@ -20,6 +20,7 @@ Status follows [the screenshot practice](../SCREENSHOTS.md). These legacy filena
 
 | Surface | Status | Selected evidence / next check |
 | --- | --- | --- |
+| Lantern Landing / First Light | Current for sampled phone and tablet scenes; delivery pending | [Native captures and motion record](../evidence/lantern-landing-2026-10-19/README.md#visual-acceptance-boundary): fifteen milestones, tablet rotation/clears, compact-phone landscape and corrected largest text. Source `8fb2e78`, runtime `dev.5afe4a3c23`; retained stills identify their earlier unchanged-artwork sources. One tablet fitting briefly darkens at 50%. Native full-capacity clearance, physical play and RC VoiceOver remain unverified. |
 | Crystal-depth celebrations | Current for protected awards in the centered nightscape layout | [Final nightscape integration](../evidence/nightscapes-2026-10-18/README.md#final-integration-checks), source `1c624cb`, runtime `dev.235ece3931`. [Earlier board-clarity evidence](../evidence/board-clarity-2026-10-18/README.md) retains its separate source. Named/ordinary awards use the sky above playable rows; compact native type preserves legibility; maximum text stays below. [Prior central placement](../evidence/crystal-depth-native-2026-10-18/INTEGRATION.md) is historical for layout. Physical comfort and RC VoiceOver remain open. |
 | Committed action feedback | Current for sampled normal-motion Square result in Moonwake | [Consequence feedback](../evidence/consequence-feedback-2026-10-18/README.md), integrated source `0842a61`, runtime `dev.bf4ade9d68`. Guide and protected award agree on the exact clear; the next match remains visible. Physical comprehension and actual VoiceOver remain open. |
 | Edge-swipe feedback | Current for sampled default phone rejection | [Four-edge native acceptance](../evidence/edge-feedback-2026-10-18/README.md), runtime `dev.3be5031c35`, snapshot `e516aad66176`. Exact direction explanation remains below the unchanged board; the following tap succeeds. Physical comprehension remains open. |
@@ -37,6 +38,12 @@ Status follows [the screenshot practice](../SCREENSHOTS.md). These legacy filena
 | Save notices | Current for sampled phone default/maximum-text states | [Inspected rejection read-through and write-failure captures](../evidence/debt-followup-2026-10-18/README.md#6-visible-save-recovery-and-failure-notices); native Done/restore/background checks passed; actual VoiceOver remains RC work. |
 | Settings | Needs retained capture of the new five-location selector; native selection/dismissal passed; actual VoiceOver open | [Inspected hold/direction Help](../evidence/immediate-swipes-2026-10-18/README.md#inspected-native-presentation) retains its prior runtime source. [Contextual Help and inspected capture](../evidence/debt-followup-2026-10-18/README.md#5-rule-aware-help). Earlier reference: [Inspected pressure paragraph and complete Help verification](../evidence/critical-mass-2026-10-18/README.md), clean `fe5d954`, iPhone 17e/iOS 27.0. Done stays reachable, the final paragraph is reached, and dismissal preserves the round and shower input. The [pre-pressure full review](../evidence/calibration-timing-and-arrange-2026-10-18/HELP_ACCESSIBILITY.md) retains its `1ed6290` source. Actual VoiceOver remains RC work. |
 | Outcomes | Current for sampled compact/full-size overflow and largest-text result | [Ending/replay acceptance](../evidence/ending-replay-2026-10-19/README.md#inspected-native-appearance), clean `d9a0b59`, dev.07b4062290. Truthful blocked-arrival heading, exact score/reason, reachable actions and maximum-text scrolling; native First Light win/replay/restore passed. Earlier result captures retain their own historical source. Physical comprehension and actual VoiceOver remain open. |
+
+## Lantern Landing in First Light
+
+<img src="../evidence/lantern-landing-2026-10-19/dev-caa0c5f__lantern-100__ipad-air-11-m3__landscape.png" width="700" alt="Native restored Lantern Landing in iPad landscape, with the opened lantern at the left dock, a neighboring mooring and readable result actions">
+
+**Native `caa0c5f`, runtime `dev.4239835f1c`, iPad Air 11-inch (M3) / iOS 27.0 Simulator, default text.** The retained image shows the continuous wide composition; artwork is unchanged in the later verified source. [The acceptance record](../evidence/lantern-landing-2026-10-19/README.md) separately covers motion, the accessibility header correction and delivery status. This still does not establish physical play or actual VoiceOver.
 
 ## Current nightscapes
 

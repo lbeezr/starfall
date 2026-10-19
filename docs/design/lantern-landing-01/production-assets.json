@@ -1,5 +1,11 @@
 {
-  "status": "packaged; native acceptance pending",
+  "status": "packaged and development-verified; publication and delivery pending",
+  "acceptance": {
+    "source": "8fb2e78",
+    "runtime": "dev.5afe4a3c23",
+    "evidence": "../../evidence/lantern-landing-2026-10-19/README.md",
+    "limits": "Native full-capacity scenery clearance and physical play are unverified; actual VoiceOver is deferred to RC. One main-dock fitting in each tablet family is lit at 25%, dark at 50%, and lit again at 75%."
+  },
   "provenance": "board-prompts.json",
   "processing": "Unmodified generated PNGs. Each milestone renders as one continuous full painting with a proportion-preserving viewport crop. No spatial masks, center replacement, or split regions.",
   "assets": [

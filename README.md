@@ -6,7 +6,7 @@ A small native iOS falling-sky puzzle. Clear matching stars as showers fill the 
 
 [Roadmap](docs/ROADMAP.md) · [Visual reference and cast](docs/design/VISUAL_REFERENCE.md) · [Playtest](docs/PLAYTEST-FALLING-SKY.md) · [Documentation map](docs/README.md)
 
-**Future story direction:** The user approved Murk, the Hungry Moon, and all twelve illustrated locations. The rewritten [game bible](docs/design/STARFALL_GAME_BIBLE.md) and [world atlas](docs/design/WORLD_ATLAS.md) develop their lore, cast and restoration journey; the [concept explorer](docs/design/world-01/index.html) holds the written state sequences. This is design work, separate from the five nightscapes and mechanics already in the app.
+**Future story direction:** The user approved Murk, the Hungry Moon, and all twelve illustrated locations. The rewritten [game bible](docs/design/STARFALL_GAME_BIBLE.md) and [world atlas](docs/design/WORLD_ATLAS.md) develop their lore, cast and restoration journey; the [concept explorer](docs/design/world-01/index.html) holds the written state sequences. The wider journey remains design work. Lantern Landing is implemented within First Light; the other eleven locations and map traversal are not adopted.
 
 Help now includes optional interactive examples of squares, crosses, Opal and relays. Each button shows a real rule outcome while your sky stays paused.
 
@@ -16,7 +16,7 @@ Help now includes optional interactive examples of squares, crosses, Opal and re
 
 Score popups and celebration titles use the [crystal-depth alphabet](Artwork/CrystalComet/NATIVE.md), with brief letter turns, static quiet modes and native accessible text.
 
-**Lantern Landing is in native acceptance:** First Light now restores the approved overhead dock as you collect its existing 18-starlight goal. Collected light reaches the lantern, saved progress restores directly, and replay begins dark. [Production scope](docs/design/lantern-landing-01/PRODUCTION_PLAN.md).
+**Lantern Landing is implemented and development-verified:** First Light restores the approved dock through five states as you collect its existing 18-starlight goal. Bespoke phone and tablet scenes preserve continuous artwork; collected light reaches the lantern before the ending, saved progress restores directly, and replay begins dark. [Native evidence](docs/evidence/lantern-landing-2026-10-19/README.md) covers source `8fb2e78`, runtime `dev.5afe4a3c23`. Publication, merge and phone delivery are authorized and pending. [Production scope and remaining checks](docs/design/lantern-landing-01/PRODUCTION_PLAN.md).
 
 **Five layered nightscapes are integrated:** Moonwake, Nebula Cradle, Shatterlight Reach, Night Garden and Ringdrift. Gameplay stays centered while independent scenery fills the margins. Choose **Menu → Location** without changing the round. [Production art and contract](docs/design/environments/night-production-09/README.md) · [Native verification and delivery](docs/evidence/nightscapes-2026-10-18/README.md).
 

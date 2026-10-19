@@ -1,12 +1,12 @@
 # Starfall — game bible
 
-**Status:** Approved world and villain foundation; developed lore and story draft · **Owner:** Current implementer · **Updated:** October 18, 2026
+**Status:** Approved world and villain foundation; developed lore and story draft · **Owner:** Current implementer · **Updated:** October 19, 2026
 
 **A journey to bring the light back.** Murk, the Hungry Moon, has swallowed the starlight from twelve little places. Help the star cast bring them back to life, follow his trail across the sky, and return the light he has hoarded.
 
-The user approved **Murk as illustrated and all twelve map locations**. This rewrite develops their universe, relationships and story. New lore, character behavior and the ending below are authored proposals within that direction. The journey is not implemented; this document replaces the original crystal-puzzle premise as the creative authority.
+The user approved **Murk as illustrated and all twelve map locations**. This rewrite develops their universe, relationships and story. New lore, character behavior and the ending below are authored proposals within that direction. The wider journey is not implemented. Lantern Landing now supplies the existing First Light challenge; this document remains the creative authority for the proposed universe and replaces the original crystal-puzzle premise.
 
-**Read next:** [World atlas](WORLD_ATLAS.md) for each location’s life, appearance and distinction; [map explorer](world-01/index.html) for sixty restoration state notes; [restoration contract](STARLIGHT_RESTORATION.md) for the win and presentation boundary. **Visual study:** [Lantern Landing’s five restoration states](lantern-landing-01/README.md) now depict the actual cast. **Next production slice:** review these concepts and author the opening/restoration animatic, then prove one playable restoration before producing the full journey.
+**Read next:** [World atlas](WORLD_ATLAS.md) for each location’s life, appearance and distinction; [map explorer](world-01/index.html) for sixty restoration state notes; [restoration contract](STARLIGHT_RESTORATION.md) for the win and presentation boundary. **Implemented first slice:** [Lantern Landing](lantern-landing-01/README.md) restores through five states in First Light, with [native development evidence](../evidence/lantern-landing-2026-10-19/README.md) at source `8fb2e78`, runtime `dev.5afe4a3c23`. Publication, merge and phone delivery are authorized and pending. Observe that slice in human play before producing the wider journey; Murk’s opening theft and campaign story remain proposals.
 
 [Universe](#a-universe-on-a-neighborly-scale) · [Cast](#the-star-cast-carries-the-journey) · [Murk](#murk-the-hungry-moon) · [Journey](#the-twelve-location-journey) · [Story](#the-chapter-story) · [Puzzle](#the-puzzle-and-story-must-agree) · [Art and sound](#how-it-should-look-move-and-sound)
 
@@ -31,8 +31,9 @@ The tone combines quiet wonder with comic adventure. Concentration can have stak
 | --- | --- |
 | **User selected** | Starlight restoration as the story and win direction; Murk’s existing Hungry Moon design; the map and all twelve locations; concise theatrical villain appearances; connected miniature realms. |
 | **Existing approved cast** | Spark, Sunny, Pip, Twinkle, Nova and Dusk in their Crystal Glow identities. Production shapes and materials remain owned by the [cast contract](star-cast/README.md). |
+| **Implemented first slice** | Lantern Landing in the existing First Light challenge: 18 starlight, five score-derived scenes and bespoke phone/tablet compositions. This adopts no campaign or new save schema. |
 | **Developed here** | A lived-in neighborhood of stars; how light circulates; everyday culture; each cast member’s story role; Murk’s hoarding motive; four-act story and chapter ending. These details are proposals for continued development. |
-| **Open** | A separate recurring hero, exact playable targets and pressure, milestone pacing, scene timing, voice/music production and campaign save behavior. |
+| **Open** | A separate recurring hero, targets and pressure beyond First Light, campaign milestone pacing and scene timing, voice/music production and campaign save behavior. |
 
 The user suggested that the destinations might be where the stars live. This bible develops that idea as **homes and shared places**: gardens, docks, crossings, workshops and gathering spaces belong to the same community. It does not assign an exclusive birthplace or level to each color family.
 
@@ -136,7 +137,7 @@ Murk is absent during ordinary puzzle play in the first restoration comparison. 
 
 <img src="world-01/map-v1.png" width="700" alt="Approved twelve-location map: four tiers of small floating realms, from Lantern Landing at bottom left to Hollow Crown at upper left">
 
-**User-approved world concept — not runtime map UI.** The illustration mostly shows restored destinations. Miniature helpers are placeholders; production uses the approved cast. Individual dormant/intermediate artwork has not been produced. The [atlas](WORLD_ATLAS.md) develops the places; the [explorer](world-01/index.html) presents their written restoration sequence.
+**User-approved world concept — not runtime map UI.** The illustration mostly shows restored destinations. Miniature helpers are placeholders; production uses the approved cast. Lantern Landing has five implemented artwork states in three viewport families; the other eleven locations retain written restoration storyboards. The [atlas](WORLD_ATLAS.md) develops the places; the [explorer](world-01/index.html) presents their written restoration sequence.
 
 The map holds **twelve levels total**, grouped into four regions of three. Each region establishes a material and emotional language; every location has a different purpose and final action. This does not imply twelve larger worlds with additional unplanned level sets.
 
@@ -235,7 +236,7 @@ Restoration cannot supply strategy missing from the puzzle. Assess whether playe
 
 ### Current implementation is a separate baseline
 
-The app remains the falling-sky prototype with accumulating stars, automatic showers, pause/manual advance, matching growth, Opal, storms and local settings. Automatic aging is disabled; historical Dusk rounds retain their rules. The five native nightscapes remain the current settings, separate from this future story map. First Light is its separate fixed objective. The original 7×7, 70-jewel/18-move puzzle remains Debug material; its move limit and shard terminology do not define this journey. [Current product instructions](../../README.md), [mechanics adoption status](../EXPERIMENTS.md) and [validation](../VALIDATION.md) own live implementation facts.
+The app remains the falling-sky prototype with accumulating stars, automatic showers, pause/manual advance, matching growth, Opal, storms and local settings. Automatic aging is disabled; historical Dusk rounds retain their rules. The five native nightscapes remain survival settings, separate from the future story map. First Light now revives Lantern Landing through five scene states at its existing fixed 18-light objective; this does not add map traversal or another level. The original 7×7, 70-jewel/18-move puzzle remains Debug material; its move limit and shard terminology do not define this journey. [Current product instructions](../../README.md), [mechanics adoption status](../EXPERIMENTS.md) and [validation](../VALIDATION.md) own live implementation facts.
 
 Constellation tracing, swaps, recipes and other current mechanics follow their own adoption evidence. A location’s purpose does not automatically add gardening, musical timing, water routing or boss attacks. This rewrite changes no source, build configuration, saves or app resources.
 
@@ -292,13 +293,13 @@ Character sounds can be expressive breaths, delighted notes and small grumbles. 
 
 ## Production decisions and checks
 
-This is a complete creative rewrite for the chosen foundation, not a declaration that all lore or production assets are approved. Develop the first slice with the journey in view, and revise what does not work in observed play.
+This is a complete creative rewrite for the chosen foundation, not a declaration that all lore or production assets are approved. The first slice is implemented and development-verified; observe it in human play with the journey in view, and revise what does not work.
 
 | Next deliverable | What it must answer |
 | --- | --- |
-| Lantern Landing at five states with the real cast | Can someone identify the need, distinguish useful middle changes and anticipate the final welcome? |
+| Observe the implemented Lantern Landing slice | Native scene/motion checks pass; can a player identify the need, distinguish useful middle changes and anticipate the final welcome? Physical play and RC VoiceOver remain unverified. |
 | Opening theft and completion animatic | Do Murk’s intent, the stars’ safety and the player’s role read without dialogue? Is the approved design consistent? |
-| One bounded playable restoration | Is the target understandable, the finish earned and replay pleasant? Can the player explain a useful choice? |
+| Human play of First Light’s restoration | Is the target understandable, the finish earned and replay pleasant? Can the player explain a useful choice? Passing native checks do not answer these questions. |
 | Regional comparison after that proof | Do silhouette, materials, motion and reward distinguish twelve places without twelve new rule systems? |
 | Finale animatic | Does returning the hoard preserve earlier wins, resolve the story and leave a satisfying map? |
 

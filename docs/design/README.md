@@ -14,7 +14,7 @@ Behavior proposals, production contracts and research supporting decisions.
 
 ## Start here
 
-[Lantern Landing’s five restoration views](lantern-landing-01/README.md) now develop the first location with the actual Crystal Glow cast; the [comparison viewer](lantern-landing-01/board.html) shows 0–100%. Generated concepts only.
+[Lantern Landing](lantern-landing-01/README.md) is implemented and development-verified in optional First Light, with five restoration states and bespoke phone/tablet scenes. The [comparison viewer](lantern-landing-01/board.html) remains a concept; [native evidence](../evidence/lantern-landing-2026-10-19/README.md) records the actual app and pending delivery.
 
 The rewritten [game bible](STARFALL_GAME_BIBLE.md) owns the approved Murk/map foundation and developed lore, cast and story. The [world atlas](WORLD_ATLAS.md) gives all twelve future restoration locations their daily life, appearance and payoff. The [restoration contract](STARLIGHT_RESTORATION.md) owns proposed progress/win behavior; [approved art and explorer](world-01/README.md) retain the images and sixty written states. This story journey is not a replacement of the current native nightscapes or an implemented campaign.
 
