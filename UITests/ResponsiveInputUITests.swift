@@ -50,4 +50,28 @@ final class ResponsiveInputUITests: XCTestCase {
         let active = XCTAttachment(screenshot: XCUIScreen.main.screenshot())
         active.name = "responsive-active-play"; active.lifetime = .keepAlways; add(active)
     }
+
+    @MainActor func testOutwardSwipesExplainTheEdgeAndNextTapClears() {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchArguments = ["--starfalls-reset","--observatory-review","--observatory-dense","-calmEffects","NO"]
+        app.launch(); defer { app.terminate() }
+        XCTAssertTrue(app.buttons["experiment.cell.0.0"].waitForExistence(timeout:10))
+        let board = app.otherElements["experiment.board"], original = board.value as? String
+        for (cell,dx,dy) in [("3.0",-1.0,0.0),("3.6",1.0,0.0),("6.3",0.0,-1.0),("0.3",0.0,1.0)] {
+            let button = app.buttons["experiment.cell."+cell]
+            XCTAssertTrue(button.isHittable)
+            let origin = button.coordinate(withNormalizedOffset:CGVector(dx:0.5,dy:0.5))
+            let distance = min(button.frame.width,button.frame.height)*0.4
+            origin.press(forDuration:0.05,thenDragTo:origin.withOffset(CGVector(dx:dx*distance,dy:dy*distance)),withVelocity:.fast,thenHoldForDuration:0)
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate:NSPredicate(format:"label CONTAINS %@","That direction leaves the sky. Swipe inward."),object:app.staticTexts["experiment.message"]).wait(timeout:3))
+            XCTAssertEqual(board.value as? String,original)
+            score(0,app)
+        }
+        let image = XCTAttachment(screenshot:XCUIScreen.main.screenshot())
+        image.name = "outward-swipe-feedback"; image.lifetime = .keepAlways; add(image)
+        // This dense fixture includes the touching grown Amber: four stars worth five.
+        app.buttons["experiment.cell.0.0"].tap(); score(5,app)
+        XCTAssertFalse(app.staticTexts["experiment.message"].label.contains("Swipe inward"))
+    }
 }

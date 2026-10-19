@@ -803,6 +803,7 @@
     "input.interrupted": "Touch interrupted. Try again.",
     "input.oneFinger": "Use one finger to trace or move a star.",
     "input.sameStar": "To tap, lift on the star you touched.",
+    "input.swapEdge": "That direction leaves the sky. Swipe inward.",
     "input.buffered": "Move ready — finishing this motion.",
     "input.bufferExpired": "That move expired. Swipe or tap again.",
     "input.showerDue": "A shower is arriving. Try again when the stars settle.",

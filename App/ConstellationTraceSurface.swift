@@ -138,6 +138,7 @@ struct ConstellationTraceSurface: UIViewRepresentable {
                 input.swap?(from, to, input.generation)
                 input.cancel()
             case .trace: input.move(point)
+            case .blockedSwap: cancelInput(reason: SkyCopy.text(.inputSwapEdge))
             case .cancel: cancelInput(reason: SkyCopy.text(wasDrawing ? .inputTraceOffBoard : .inputSameStar))
             case .none: break
             }
@@ -220,7 +221,7 @@ struct ConstellationTraceSurface: UIViewRepresentable {
 /// A touch chooses its action once, independent of star color. Durations only
 /// select drawing while stationary; movement commits one directional exchange.
 struct ConstellationTouchSession {
-    enum Event: Equatable { case none, trace, swap(Cell, Cell), cancel }
+    enum Event: Equatable { case none, trace, swap(Cell, Cell), blockedSwap, cancel }
     enum Outcome: Equatable { case none, tap(Cell), trace, cancel }
     private enum Mode { case idle, pending, drawing, consumed }
     static let holdMilliseconds = SkyGestureTiming.drawingHoldMilliseconds
@@ -269,7 +270,7 @@ struct ConstellationTouchSession {
                 ? Cell(from.row, from.column + (dx > 0 ? 1 : -1))
                 : Cell(from.row + (dy < 0 ? 1 : -1), from.column)
             mode = .consumed
-            guard (0..<FallingSky.side).contains(to.row), (0..<FallingSky.side).contains(to.column) else { return .cancel }
+            guard (0..<FallingSky.side).contains(to.row), (0..<FallingSky.side).contains(to.column) else { return .blockedSwap }
             return .swap(from, to)
         }
         guard mapping.cell(at: point) != nil else { mode = .consumed; return .cancel }

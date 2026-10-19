@@ -73,3 +73,5 @@ Landing-place coverage lives in `ObservatoryGeometryTests.swift` (`LandingPlaceT
 The [crowded current-rule award sample](../docs/evidence/calibration-critical-mass-2026-10-18/AWARDS.md) restores fresh seed 28 after 29 showers, checks its exact +8 and independent Store admission, and captures four host layout/text variants through normal award expiry. Host layout captures do not establish native contact on that history or physical readability.
 
 `ResponsiveInputTests.testFreshOpeningContactBeforeAndAfterDeadlineOwnsOnlyCurrentState` checks the seed-28 first/second-shower boundary: admitted contact holds rain, later contact cannot clear moving state or queue a clear, and a new settled contact scores. This models a boundary consistent with the native sample, not its unobserved exact contact instant.
+
+Four-edge regressions distinguish blocked swaps from trace/nonfinite cancellation, reject stale hold callbacks and accept the next inward swap.

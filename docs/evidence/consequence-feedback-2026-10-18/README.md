@@ -6,7 +6,7 @@ Player clears and swaps now publish their result immediately after saving the co
 
 An exact square or cross receives the same celebration category through tap, held trace or explicit activation. Broader groups stay broader clears. An automatically removed neighboring Dusk is not a recipe ingredient; its more consequential removal explanation remains visible. Real traced paths remain intact in the celebration.
 
-**Next action:** Merge and verify canonical phone delivery, then finish the outward-swipe feedback correction before shower-pacing work. The prior [board-clarity batch is delivered](../board-clarity-2026-10-18/README.md).
+**Next action:** Finish the outward-swipe feedback correction before shower-pacing work. The prior [board-clarity batch is delivered](../board-clarity-2026-10-18/README.md).
 
 ## Inspected native result
 
@@ -50,3 +50,7 @@ Commands use `swift test --disable-sandbox` with the temporary module cache and 
 No rule, RNG, save schema, shower schedule, hit geometry, target membership, resource, sound or haptic change. First Light remains outside recipe classification. Final outcomes retain ceremony speech ownership. Interruptions still cancel receipts and presentation tickets; restore retains committed game state and discards transient copy. Human comprehension and actual VoiceOver timing remain separate observations, not claims made by the test suite.
 
 A separate input-adapter audit found that outward swipes at the board edge receive the generic “To tap, lift on the star you touched” message. Address that gesture-intent explanation in the next small priority-2 batch after this independently verified delivery; do not change gesture thresholds or add a new move rule.
+
+## Delivery
+
+[PR #144](https://github.com/lbeezr/starfall/pull/144) merged at `ba8ea71eeeb7453d88d144637b914c0d1a2b92bd`. Its tree matches the accepted local tree. The canonical updater installed and verified **`dev.bf4ade9d68`**, preserving player data and without launching the app. It reran Core checks and verified signing. Main CI was pending at installation, not reported passed. [delivery.json](delivery.json) retains the sanitized receipt.

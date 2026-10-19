@@ -95,6 +95,36 @@ final class TraceInputPolishTests: XCTestCase {
 
 
 extension TraceInputPolishTests {
+    @MainActor func testOutwardSwipeExplainsDirectionOnceAndNextContactStillSwaps() {
+        for size in [CGSize(width:320,height:568), CGSize(width:440,height:956), CGSize(width:1024,height:1366)] {
+            let mapping = LandingGeometry(size:size)
+            for (source,neighbor,dx,dy) in [(Cell(3,0),Cell(3,1),-1.0,0.0),
+                                          (Cell(3,6),Cell(3,5),1.0,0.0),
+                                          (Cell(6,3),Cell(5,3),0.0,-1.0),
+                                          (Cell(0,3),Cell(1,3),0.0,1.0)] {
+                let surface = ConstellationTraceSurface.Surface()
+                var feedback: [String] = [], swaps = 0, taps = 0, draws = 0
+                surface.updateInput(.init(size:size,enabled:true,generation:7,traceStart:{ _ in source },
+                    tap:{ _ in taps += 1 },begin:{ _ in draws += 1 },move:{ _ in draws += 1 },end:{ draws += 1 },cancel:{},
+                    feedback:{ feedback.append($0) },swapStart:{ _ in true },swap:{ from,to,_ in
+                        XCTAssertEqual(from,source); XCTAssertEqual(to,neighbor); swaps += 1
+                    }))
+                let origin = mapping.viewPoint(source)
+                let outward = CGPoint(x:origin.x+dx*40,y:origin.y+dy*40)
+                surface.beginInput(at:origin)
+                let oldTicket = surface.session.sequence
+                surface.moveInput(to:outward)
+                surface.endInput(at:outward)
+                surface.armDrawing(ticket:oldTicket,generation:7)
+                XCTAssertEqual(feedback,["That direction leaves the sky. Swipe inward."])
+                XCTAssertEqual(swaps,0); XCTAssertEqual(taps,0); XCTAssertEqual(draws,0)
+                surface.beginInput(at:origin)
+                surface.endInput(at:mapping.viewPoint(neighbor))
+                XCTAssertEqual(swaps,1); XCTAssertEqual(feedback.count,1)
+            }
+        }
+    }
+
     @MainActor func testFinalOnlyFlickBeyondBoardKeepsOneCardinalNeighbor() {
         for size in [CGSize(width:320,height:568), CGSize(width:440,height:956), CGSize(width:1024,height:1366)] {
             let mapping = LandingGeometry(size:size), source = Cell(3,3), center = mapping.viewPoint(source)
@@ -123,16 +153,16 @@ extension TraceInputPolishTests {
         }
     }
 
-    @MainActor func testOutwardDestinationsHeldExitsAndNonfiniteSamplesStillCancel() {
+    @MainActor func testOutwardDestinationsStayDistinctFromHeldExitsAndNonfiniteCancellation() {
         let mapping = LandingGeometry(size:.init(width:390,height:844))
         for (source,end) in [(Cell(0,0),CGPoint(x:-40,y:800)), (Cell(3,6),CGPoint(x:1000,y:400)),
                              (Cell(6,3),CGPoint(x:200,y:-1000)), (Cell(0,3),CGPoint(x:200,y:2000))] {
             var input = ConstellationTouchSession()
             let origin = mapping.viewPoint(source)
-            // Keep the intended outward axis unambiguous at curved edge cells.
+            // Keep the intended outward axis unambiguous at edge cells.
             let point = source.column == 0 || source.column == 6 ? CGPoint(x:end.x,y:origin.y) : CGPoint(x:origin.x,y:end.y)
             XCTAssertTrue(input.begin(at:origin,swapEligible:true))
-            XCTAssertEqual(input.move(to:point,mapping:mapping),.cancel)
+            XCTAssertEqual(input.move(to:point,mapping:mapping),.blockedSwap)
             XCTAssertEqual(input.finish(at:point,mapping:mapping),.none)
         }
         for point in [CGPoint(x:CGFloat.nan,y:0),CGPoint(x:0,y:CGFloat.infinity),CGPoint(x:-40,y:200)] {
