@@ -330,6 +330,34 @@
         "sha256": "1d289b603d61597469f5271f216aa6c4840b54723dea0e2883fe1229a8134593",
         "temporaryExport": "/private/tmp/silver-compact-final/D85BFB40-E307-4D36-AACC-4119E5BC2649.png",
         "inspected": true
+      },
+      {
+        "name": "flow-another-entry_0_4DA7CF55-6D2E-49F3-94A7-75E60090149B.png",
+        "sha256": "eb614be6103795098a8a2036381b11f087278f57f3ef01646200fb9f29f64569",
+        "temporaryExport": "/private/tmp/silver-merged-compact/F1FE34F6-724C-432A-B3ED-7AE2F5F9C08A.png",
+        "source": "64acd98 (native runtime unchanged)",
+        "inspected": true
+      },
+      {
+        "name": "flow-resume-welcome_0_32840EB2-3B87-49D8-835B-F6FE6F5FBCF8.png",
+        "sha256": "45d34c5378a0124788452f436275e1b4d2e2bd226e74d1da3a0f07047f58fe68",
+        "temporaryExport": "/private/tmp/silver-merged-compact/CA1D5D39-5E57-4FF1-A6C6-699AB4076C33.png",
+        "source": "64acd98 (native runtime unchanged)",
+        "inspected": true
+      },
+      {
+        "name": "flow-entry_0_DD5337F8-4013-4A8B-908F-ADE491D5F7ED.png",
+        "sha256": "eb614be6103795098a8a2036381b11f087278f57f3ef01646200fb9f29f64569",
+        "temporaryExport": "/private/tmp/silver-merged-compact/9E479F98-7A6A-458E-8547-3D6FB91DF267.png",
+        "source": "64acd98 (native runtime unchanged)",
+        "inspected": true
+      },
+      {
+        "name": "flow-welcome_0_683134EA-8ECA-400D-8A1A-C63681155710.png",
+        "sha256": "1d289b603d61597469f5271f216aa6c4840b54723dea0e2883fe1229a8134593",
+        "temporaryExport": "/private/tmp/silver-merged-compact/187820ED-3436-4E96-98F5-9946D316EB7E.png",
+        "source": "64acd98 (native runtime unchanged)",
+        "inspected": true
       }
     ]
   },
@@ -495,6 +523,6 @@
     "Stills establish sampled appearance; interaction and motion are separate evidence.",
     "HUD mutes25 pool cue; lower white controls cross brighter stone/runnel. Readable in these captures, not a measured contrast pass.",
     "Actual VoiceOver, physical gameplay/contrast/audio and browser rendering remain unverified.",
-    "Compact initial Open sky entry capture is mid-reveal and is not evidence of complete entry controls."
+    "Earlier compact initial Open sky entry capture is mid-reveal. The64acd98 recheck captures full entry copy and Begin after accepted test-readiness changes."
   ]
 }

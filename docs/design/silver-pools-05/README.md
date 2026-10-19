@@ -1,10 +1,10 @@
 # Silver Pools
 
-**Status:** Development verified; canonical delivery pending · **Updated:** October 19, 2026
+**Status:** Development verified and delivered · **Updated:** October 19, 2026
 
 Restore the shared flow through a suspended moonstone garden. Three descending basins, useful paths, planted terraces and nearby resting places make this a complete neighborhood. The fifth optional challenge keeps the existing seed-42 opening and 18-starlight objective.
 
-All fifteen native scene states, 49-star density/input, tablet rotation, compact layout, largest text with system Reduce Motion, recorded normal completion and Release compilation are verified within the [development evidence](../../evidence/silver-pools-2026-10-19/README.md). Publication and canonical delivery are next; no installation, physical play or full release-candidate acceptance is claimed.
+All fifteen native scene states, 49-star density/input, tablet rotation, compact layout, largest text with system Reduce Motion, recorded normal completion and Release compilation are verified within the [development evidence](../../evidence/silver-pools-2026-10-19/README.md). [PR #178](https://github.com/lbeezr/starfall/pull/178) is merged; the [canonical receipt](../../evidence/silver-pools-2026-10-19/delivery.json) verifies installation of `dev.98f8ba82e6` from main `47ff6ba` at 20:00:30 UTC. Main CI was pending at installation. Physical play and actual VoiceOver/full release-candidate acceptance remain separate follow-ups.
 
 Start with the [board reviewer](board.html), [production plan](PRODUCTION_PLAN.md) or [native verification record](../../evidence/silver-pools-2026-10-19/README.md). The [atlas](../WORLD_ATLAS.md#05--silver-pools--one-flow-through-the-whole-place) owns the setting; the [level-design kit](../level-design-kit/README.md) owns reusable composition, dimensional and camera guidance.
 
@@ -26,4 +26,4 @@ Scores 0/5/9/14/18 select these authored milestones; the HUD reports actual prog
 
 The reviewer uses the [shared restoration review engine](../environments/restoration-review.js), shared styles and actual cast assets. It offers phone/portrait/landscape, five states, score, density and geometry controls. Its static logic checks pass; browser rendering is unverified and it is not native evidence.
 
-[Prompt provenance](art-prompts.json) preserves all 30 attempts, including the rejected sparse direction and the richer retry the user approved. [Selected assets](production-assets.json) records exact generated sources, dimensions, SHA-256, Git blob hashes and byte matches. The verification record separates completed native visuals, motion and development accessibility samples from pending canonical delivery, physical play and actual VoiceOver at release candidate.
+[Prompt provenance](art-prompts.json) preserves all 30 attempts, including the rejected sparse direction and the richer retry the user approved. [Selected assets](production-assets.json) records exact generated sources, dimensions, SHA-256, Git blob hashes and byte matches. The verification record covers native visuals, motion, development accessibility samples and canonical delivery; physical play and actual VoiceOver at release candidate remain unverified.

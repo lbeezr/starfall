@@ -1,20 +1,22 @@
 # Silver Pools development and delivery
 
-**Result:** Verified for development; publication and delivery pending · **Date:** October 19, 2026
+**Result:** Verified for development and delivered · **Date:** October 19, 2026
 
 Silver Pools adds a fifth optional seed-42, 18-starlight challenge through the existing rule, save and presentation owners. The 329-test hosted suite, eleven selected phone/tablet/compact UI checks and Release build pass. All fifteen native scene states and a recorded normal-motion finish have been inspected, alongside dense boards, rotation, largest text and system Reduce Motion samples. No blocking visual issue was found; the first-pool cue beneath the HUD and lower control contrast remain visible development tradeoffs.
 
-**Next action:** Root publishes and merges the verified source/assets/evidence, then delivers current main through the canonical updater. Publication and delivery remain pending; no Silver Pools installation is claimed.
+**Delivered:** [PR #178](https://github.com/lbeezr/starfall/pull/178) is merged. The canonical updater installed `dev.98f8ba82e6` from main `47ff6ba` at 20:00:30 UTC and verified the actual phone installation. No reset, uninstall or automatic launch occurred. [Receipt](delivery.json). Main CI was pending at installation.
+
+**Next action:** Physical play should check early-pool recognition and lower-control contrast; full actual VoiceOver follows RC acceptance. These remain separate from verified installation.
 
 ## Completed development acceptance
 
-**Native source:** `aabd67346bf56ae27b9940a7d6d916559d16c218`, runtime `dev.98f8ba82e6`. Later `84ae918` changes the design kit, tooling and documentation without changing native inputs. Remaining working-tree changes are documentation, reviewer and evidence files. [Verification records](verification.json) retain exact selections, commands, result bundles, durations and source boundaries.
+**Native source:** `aabd67346bf56ae27b9940a7d6d916559d16c218`, runtime `dev.98f8ba82e6`. Later `84ae918` changes the design kit, tooling and documentation without changing native inputs. At those checks, remaining working-tree changes were documentation, reviewer and evidence files. [Verification records](verification.json) retain exact selections, commands, result bundles, durations and source boundaries.
 
 **Environment:** Starfall scheme, Debug tests and Release compilation, Xcode 27.1 (27A9275), macOS 27.0.1, arm64; iPhone 17e, iPhone SE (3rd generation) and iPad Air 11-inch (M3) Simulators on iOS 27.0 (24A434). Native tests run through XcodeBuildMCP with parallel testing disabled and isolated review saves. These are development checks, not the full release-candidate matrix.
 
 | Check | Observed result |
 | --- | --- |
-| Final Core package | 178 passed, zero failures, 12.824 seconds on84ae918 with accepted native inputs; final log and source in verification.json. |
+| Final Core package | 178 passed, zero failures, 12.824 seconds on `84ae918` with accepted native inputs; final log and source in verification.json. |
 | Hosted app suite | 329 passed, zero failures, skips or warnings. Covers the shared rule/save/presentation boundaries and resource registration. |
 | Phone states, win and accessibility samples | 3 passed: all five states keep the board fixed; a real winning clear persists its named result and replays at zero; maximum Dynamic Type with system Reduce Motion keeps result actions usable. |
 | Preview/cancel and Begin | 2 passed across Lantern Landing, Ribbon Crossing, Kite Harbor and Seed Moon. Preview cancellation retains each existing round; Begin replaces it with Silver Pools. |
@@ -58,10 +60,12 @@ Apple tools: Xcode 27.1 (27A9275), iOS 27.0 (24A434), arm64. Root owns native to
 
 ## Delivery and remaining limits
 
-Exact-source publication/merge and the canonical installation receipt remain pending. Development acceptance is complete within the sampled scenarios; it does not establish the full release-candidate matrix.
+Publication, merge and canonical installation are verified in [delivery.json](delivery.json). The updater repeated all 178 Core tests on a clean main archive, checked the signature and matched the OS-owned installation to its receipt. Development acceptance is complete within the sampled scenarios; it does not establish the full release-candidate matrix.
 
 Actual VoiceOver follows the release-candidate cadence and has not been performed here. Physical gameplay, contrast, audio and enjoyment remain unverified. A final `swift test` rerun on `84ae918` (native inputs identical to `aabd673`) passed all 178 tests in 12.824 seconds; `/private/tmp/silver-core-final.log` and `verification.json` distinguish it from the earlier probe.
 
 ## Reconciliation with current main
 
 Main advanced to `4f13da8` through PRs #176/#177 while Silver acceptance ran. Local merge `64acd98` preserves its entry screenshot readiness and coherent automatic-sky UI snapshots. Only UI-test/docs inputs changed; app/Core/resources and runtime `dev.98f8ba82e6` are identical to the accepted Silver source. The evidence index conflict retained both entries. The compact Welcome/Entry/background/another-sky test passed again on that merged source: one test, zero failures/skips/warnings, 68.333 seconds. This is additional to the eleven Silver development checks.
+
+The four compact recheck captures were inspected after the merge: both entry screens now show the fully revealed cast, complete instructions and entire Begin button. Their expected scrolling omits the upper eyebrow and lower Back action; no new visual blocker was found. The earlier mid-reveal capture remains historical evidence of that test-only timing issue.

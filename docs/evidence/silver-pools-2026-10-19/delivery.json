@@ -1,0 +1,49 @@
+{
+  "status": "Installed and on-device identity verified by canonical updater",
+  "verifiedAtUTC": "2026-10-19T20:00:30.453081+00:00",
+  "command": "python3 scripts/device-update.py run",
+  "sourceMain": "47ff6ba4322998316877a076cec1a2a8f48ee9b1",
+  "publishedFeatureCommit": "1c86a5855c8b2bfd2e752fc1cecf3ff0bf61fbef",
+  "localVerifiedTreeCommit": "791b6aba0db62c48e2ee58de53fa67084601882b",
+  "verifiedTree": "1d58b5c364bbcf9c39ce9ab60da6ef9f6c7360e1",
+  "treeEquality": "Published feature and merged main exactly match the verified local tree; git diff --exit-code passed.",
+  "runtime": "dev.98f8ba82e6",
+  "bundle": "com.starfall.prototype",
+  "bundleVersion": "1",
+  "shortVersion": "0.1.0",
+  "validation": {
+    "coreTests": "passed",
+    "signature": "verified",
+    "mainCIAtInstall": "pending"
+  },
+  "coreTests": {
+    "passed": 178,
+    "failed": 0,
+    "durationSeconds": 12.926,
+    "source": "Clean updater archive of main47ff6ba",
+    "logSHA256": "1dc44bc3aa9762292b6a5333580861434e1492e0aab4d7e8d8ac6d0886f19e3c"
+  },
+  "build": {
+    "configuration": "Debug-iphoneos",
+    "status": "BUILD SUCCEEDED",
+    "signature": "codesign --verify --deep --strict passed",
+    "runtimeIdentityVerified": true,
+    "warning": "App Intents metadata extraction skipped because no AppIntents.framework dependency; no App Intents feature is included."
+  },
+  "installation": {
+    "OSInventoryMatchesInstallReceipt": true,
+    "existingAppUpdated": true,
+    "reset": false,
+    "uninstall": false,
+    "automaticLaunch": false,
+    "deviceIdentityOmitted": true,
+    "privateInstallationURLOmitted": true
+  },
+  "pullRequest": "https://github.com/lbeezr/starfall/pull/178",
+  "remainingAcceptance": [
+    "Actual VoiceOver/full release-candidate matrix",
+    "Physical gameplay, cue recognition, contrast, audio and enjoyment",
+    "Browser rendering of offline reviewer"
+  ],
+  "mainReconciliation": "Accepted PR176/177 test-only changes included before publication; compact entry flow rechecked on local64acd98."
+}
