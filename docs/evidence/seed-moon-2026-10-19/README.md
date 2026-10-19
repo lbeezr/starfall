@@ -1,10 +1,10 @@
 # Seed Moon verification
 
-**Result:** Verified within development scope; publication/delivery pending · **Owner:** Current implementer · **Date:** October 19, 2026
+**Result:** Verified within development scope; merged and delivered · **Owner:** Current implementer · **Date:** October 19, 2026
 
-Seed Moon is the fourth selectable seed-42, 18-light challenge. All fifteen restoration states have been inspected natively across phone, iPad portrait and landscape. Hosted checks, phone win/restore/replay, largest text/system Reduce Motion, preview/cancel over all three prior locations, tablet rotation/clears and final phone dense input/motion pass within the source boundaries below. **Final compact, focused overflow and Release checks pass. Publication and canonical delivery remain pending.**
+Seed Moon is the fourth selectable seed-42, 18-light challenge. All fifteen restoration states have been inspected natively across phone, iPad portrait and landscape. Hosted checks, phone win/restore/replay, largest text/system Reduce Motion, preview/cancel over all three prior locations, tablet rotation/clears and final phone dense input/motion pass within the source boundaries below. **Final compact, focused overflow and Release checks pass. Merge and canonical installation are verified.**
 
-**Next action:** Publish and merge the change, then canonically deliver it and record the installation receipt against the [production plan](../../design/seed-moon-04/PRODUCTION_PLAN.md). Existing light transfer, whole-image restoration and the ordinary result own completion; no gardening system, scenery travelers, campaign or unlocks are added. Actual VoiceOver and physical play remain separate acceptance.
+**Next action:** Observe physical play and perform actual VoiceOver acceptance at RC; the [production plan](../../design/seed-moon-04/PRODUCTION_PLAN.md) and development delivery are complete. Existing light transfer, whole-image restoration and the ordinary result own completion; no gardening system, scenery travelers, campaign or unlocks are added. Actual VoiceOver and physical play remain separate acceptance.
 
 ## Verification context
 
@@ -18,7 +18,7 @@ Seed Moon is the fourth selectable seed-42, 18-light challenge. All fifteen rest
 
 | Check | Observed result | Source / evidence / limit |
 | --- | --- | --- |
-| Core rules/save | **178 passed, 0 failures**, 17.263 s wall | `swift test`, dirty `babc534`; `/tmp/starfall-seed-core-tests.log`. Existing seed/target/save identities retained. |
+| Core rules/save | **178 passed, 0 failures** in both runs | Earlier dirty `babc534`: 17.263 s wall, `/tmp/starfall-seed-core-tests.log`. Canonical delivery repeats all 178 on clean main `e823005`: 12.895 s, recorded in [delivery receipt](delivery.json). Existing seed/target/save identities retained. |
 | Python tooling | **55 passed**, 5.902 s | Earlier dirty boundary; `/tmp/starfall-seed-python-tests.log`. Expected child-process fixture failures/timeouts are not suite failures. |
 | Hosted app | **329 passed**, no failures/skips/warnings | `a0c7360`, 129.041 s. Includes stage-specific source-size fitting; separate from Core. |
 | Phone win and accessibility | **2 UI tests passed**, 110.019 s | `a0c7360`: native win, persisted named result and replay at zero; Accessibility XXXL with actual system Reduce Motion. Exported stills inspected; scrolling exposes large-text actions. |
@@ -32,7 +32,13 @@ Seed Moon is the fourth selectable seed-42, 18-light challenge. All fifteen rest
 | Debug / Release | **Both passed** | Debug at `b77a100`, 15.137 s; Release at `124fd21`, 16.744 s. Same runtime, no warnings/errors. |
 | Final tooling recheck | **15/15 passed** | Native-plan 3 + RC-platform 12 after the overflow test registration; separate from the earlier Python 55. |
 | Artwork provenance | **15 packaged/source byte matches; 20 attempts preserved** | [Prompt records](../../design/seed-moon-04/art-prompts.json) preserve originals and clearance corrections; [asset manifest](../../design/seed-moon-04/production-assets.json) owns selected hashes, dimensions and bytes. |
-| Merge / canonical delivery | **Pending** | No publication or installation receipt claimed. |
+| Merge / canonical delivery | **Verified** | [PR #174](https://github.com/lbeezr/starfall/pull/174) merged; canonical updater installed `dev.545382e6f6` from clean main `e823005` in the original app. Signature and OS-owned installation identity verified; main CI was pending at install. |
+
+## Publication and delivery
+
+[PR #174](https://github.com/lbeezr/starfall/pull/174) is merged. The [canonical delivery receipt](delivery.json) verifies **`dev.545382e6f6`** installed from main **`e8230055f15a463b5e1916a13312ef694476aaee`** in the original `com.starfall.prototype` app at **18:32:33.831971 UTC, October 19, 2026**. The publication record binds local verified source and published source to the same verified tree. Clean-main Core passed **178/178 in 12.895 s**; signature and OS-owned installation identity were verified. No reset/uninstall or automatic launch occurred.
+
+**Main CI was pending at installation.** Installation does not establish physical gameplay, audio, performance or actual VoiceOver acceptance.
 
 ## Native visual findings
 
@@ -52,6 +58,6 @@ Some manual-driver taps reported success without a state change; explicit 120 ms
 
 ## Remaining limits
 
-Publication and canonical delivery remain pending. Actual VoiceOver remains an RC requirement. Physical play, audio, sustained performance and human satisfaction are unobserved. Compact acceptance covers portrait; no independent Seed Moon compact-landscape runtime sample is claimed. This is not a full RC matrix.
+Merge and canonical installation are verified. Actual VoiceOver remains an RC requirement. Physical play, audio, sustained performance and human satisfaction are unobserved. Compact acceptance covers portrait; no independent Seed Moon compact-landscape runtime sample is claimed. This is not a full RC matrix.
 
 The offline reviewer passes syntax and 57 score/view combinations, fixed identities, 24/40/49/0 samples, milestones, guides, image status, query precedence, natural-size updates and cast paths. **Browser rendering is unverified:** the earlier local-file denial prohibited alternate-route workarounds; none were attempted. The other eight locations, map traversal and future user-generated clips remain outside this slice.
