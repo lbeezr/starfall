@@ -2,7 +2,7 @@
 
 <img src="App/Assets.xcassets/AppIcon.appiconset/Starfall-1024.png" width="96" alt="Starfall icon: Spark tumbling above lavender clouds">
 
-A small native iOS falling-sky puzzle. Clear matching stars as showers fill the board. Open sky remains the default; optional 18-starlight challenges restore individual places. **First Light / Lantern Landing** and **Ribbon Crossing** are implemented, development-verified and delivered to the existing app. [Kite Harbor](docs/design/kite-harbor-03/README.md) is implemented and [development-verified](docs/evidence/kite-harbor-2026-10-19/README.md) as the third optional challenge; merge and canonical delivery are pending. Progress stays on this device.
+A small native iOS falling-sky puzzle. Clear matching stars as showers fill the board. Open sky remains the default; optional 18-starlight challenges restore individual places. **First Light / Lantern Landing** and **Ribbon Crossing** are implemented, development-verified and delivered to the existing app. [Kite Harbor](docs/design/kite-harbor-03/README.md) is implemented and [development-verified](docs/evidence/kite-harbor-2026-10-19/README.md) as the third optional challenge. [PR #171](https://github.com/lbeezr/starfall/pull/171) is merged; the canonical updater verified `dev.b05d0b243e` installed from main `1c2682c` in the original app at 17:20:45 UTC. Main CI was pending at installation. Progress stays on this device.
 
 [Roadmap](docs/ROADMAP.md) · [Visual reference and cast](docs/design/VISUAL_REFERENCE.md) · [Playtest](docs/PLAYTEST-FALLING-SKY.md) · [Documentation map](docs/README.md)
 
