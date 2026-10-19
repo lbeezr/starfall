@@ -1,0 +1,438 @@
+{
+  "date": "2026-10-19",
+  "source": "c1bee15",
+  "runtime": "dev.84fd0fa338",
+  "environment": {
+    "xcode": "27.1 (27A9275)",
+    "os": "iOS 27.0 (24A434)",
+    "compact": "iPhone SE (3rd generation), Starfall Landing Compact Acceptance",
+    "large": "iPhone 16 Pro Max, Starfall Main 16 Pro Max QA"
+  },
+  "buildInputs": "Committed test/project source; only evidence/readme documentation dirty. Temporary calibration and failure probes explicitly identified below and removed before final integration.",
+  "runs": {
+    "compactStorm": {
+      "source": "af34db2",
+      "note": "Three fixed iterations of the same method, not retry until pass. Summary deduplicates method; all three executions retained.",
+      "summary": {
+        "status": "SUCCEEDED",
+        "durationMs": 77225,
+        "counts": {
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0
+        },
+        "target": "simulator"
+      },
+      "artifacts": {
+        "log": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c6187ff32363/logs/test_sim_2026-10-19T04-30-59-363Z_pid62736_2575150b.log",
+        "bundle": "artifacts/compact-native-acceptance/storm-observation.xcresult"
+      },
+      "tests": [
+        {
+          "suite": "ConstellationTraceNativeTests",
+          "test": "testAutomaticStormCountsRecoverWithoutManualShowersOrClears",
+          "status": "passed",
+          "durationMs": 17840
+        },
+        {
+          "suite": "ConstellationTraceNativeTests",
+          "test": "testAutomaticStormCountsRecoverWithoutManualShowersOrClears",
+          "status": "passed",
+          "durationMs": 18124
+        },
+        {
+          "suite": "ConstellationTraceNativeTests",
+          "test": "testAutomaticStormCountsRecoverWithoutManualShowersOrClears",
+          "status": "passed",
+          "durationMs": 17608
+        }
+      ]
+    },
+    "compactIntegration": {
+      "source": "d8c5b50",
+      "note": "System Reduce Motion leaked from earlier failed baseline; five full-motion preconditions failed and 23 checks skipped. Kept as failed evidence.",
+      "summary": {
+        "status": "FAILED",
+        "durationMs": 84603,
+        "counts": {
+          "passed": 277,
+          "failed": 5,
+          "skipped": 23
+        },
+        "target": "simulator"
+      },
+      "artifacts": {
+        "log": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c6187ff32363/logs/test_sim_2026-10-19T04-32-47-358Z_pid62736_6018241f.log",
+        "bundle": "artifacts/compact-native-acceptance/integration.xcresult"
+      },
+      "tests": [
+        {
+          "suite": "CrystalPilotTests",
+          "test": "testActualRendererCancellationRemovesFragmentsAndActions",
+          "status": "skipped",
+          "durationMs": 3
+        },
+        {
+          "suite": "CrystalPilotTests",
+          "test": "testLargeAquaClearCapsFragmentsAt48",
+          "status": "skipped",
+          "durationMs": 0
+        },
+        {
+          "suite": "DuskProductionTests",
+          "test": "testFullMotionCollapseAfterMaterialSheets",
+          "status": "skipped",
+          "durationMs": 255
+        },
+        {
+          "suite": "DuskProductionTests",
+          "test": "testFullMotionCollapseSwallowsAndResetsWithoutStaleCompletion",
+          "status": "skipped",
+          "durationMs": 1
+        },
+        {
+          "suite": "NativeInputWindowTests",
+          "test": "testIncomingFlightOverlapsRotationButLandsAfterIt",
+          "status": "skipped",
+          "durationMs": 2
+        },
+        {
+          "suite": "NativeInputWindowTests",
+          "test": "testOverlapReplacementCancelsOldCompletionAndQuietPresentationMatches",
+          "status": "skipped",
+          "durationMs": 1
+        },
+        {
+          "suite": "NativeInputWindowTests",
+          "test": "testRealSceneCriticalMassInputWindowsAcrossAutomaticStorm",
+          "status": "skipped",
+          "durationMs": 3
+        },
+        {
+          "suite": "NativeInputWindowTests",
+          "test": "testRealSceneFreshSurvivalInputWindowsAcrossAutomaticStorm",
+          "status": "skipped",
+          "durationMs": 2
+        },
+        {
+          "suite": "NativeInputWindowTests",
+          "test": "testRealSceneInputWindowsAcrossAutomaticStorm",
+          "status": "skipped",
+          "durationMs": 2
+        },
+        {
+          "suite": "NativeInputWindowTests",
+          "test": "testRealSceneInputWindowsAfterRetiringHistoricalOrbit",
+          "status": "skipped",
+          "durationMs": 102
+        },
+        {
+          "suite": "SkyTechniqueStoreTests",
+          "test": "testFullMotionExchangeSlidesBeforeFallingAndQuietModeKeepsOutcome",
+          "status": "skipped",
+          "durationMs": 1
+        },
+        {
+          "suite": "SkyTechniqueStoreTests",
+          "test": "testNativeHoldProgressArmsOnceAndQuietCueStaysStatic",
+          "status": "failed",
+          "durationMs": 187
+        },
+        {
+          "suite": "SkyTechniqueStoreTests",
+          "test": "testProductionSurfaceBuffersDuringMotionAndImmediatelyRetouchesQuietBoard",
+          "status": "failed",
+          "durationMs": 215
+        },
+        {
+          "suite": "SkyTechniqueStoreTests",
+          "test": "testUpwardEmptyExchangeAnimatesEvenWhenGravityReturnsToOrigin",
+          "status": "failed",
+          "durationMs": 60
+        },
+        {
+          "suite": "StarCastTests",
+          "test": "testAnimatedLandingsNeverExpandToTheTextureCanvas",
+          "status": "skipped",
+          "durationMs": 2
+        },
+        {
+          "suite": "StarCastTests",
+          "test": "testAuraPulseChangesOnlyOuterOpacityAndCancelsOnQuietSuspensionAndReplacement",
+          "status": "skipped",
+          "durationMs": 2
+        },
+        {
+          "suite": "StarCastTests",
+          "test": "testContactTransfersLocallyAndReturnsToStillness",
+          "status": "skipped",
+          "durationMs": 1
+        },
+        {
+          "suite": "StarCastTests",
+          "test": "testIndependentClearDoesNotCancelAnUnrelatedAnimatedShower",
+          "status": "skipped",
+          "durationMs": 1
+        },
+        {
+          "suite": "StarCastTests",
+          "test": "testOpalArrivalUsesItsOwnMaterialAndSurvivesCommittedRestore",
+          "status": "skipped",
+          "durationMs": 0
+        },
+        {
+          "suite": "StarCastTests",
+          "test": "testSkyRenderCancelsPendingFlightCompletion",
+          "status": "failed",
+          "durationMs": 7
+        },
+        {
+          "suite": "StarlightCelebrationTests",
+          "test": "testCrowdedCurrentSkyAwardsAtCompactLargeAndMaximumText",
+          "status": "failed",
+          "durationMs": 8830
+        },
+        {
+          "suite": "StarshardFamilyPilotTests",
+          "test": "testAnimatedCompletionFiresOnceForEveryKind",
+          "status": "skipped",
+          "durationMs": 2
+        },
+        {
+          "suite": "StarshardFamilyPilotTests",
+          "test": "testArrivalPreservesSurvivorRecoveryAndRefillIdentityAndCancelsAllTrails",
+          "status": "skipped",
+          "durationMs": 0
+        },
+        {
+          "suite": "StarshardFamilyPilotTests",
+          "test": "testEveryKindUsesOwnBoundedFragmentsAndCancellationCleansActions",
+          "status": "skipped",
+          "durationMs": 0
+        },
+        {
+          "suite": "StarshardFamilyPilotTests",
+          "test": "testFallbackClearSparkCountIsBoundedAndRepeatedNudgesReplaceActions",
+          "status": "skipped",
+          "durationMs": 1
+        },
+        {
+          "suite": "StarshardFamilyPilotTests",
+          "test": "testRapidInvalidNudgesAreReplaceableAndCalmCancelsThem",
+          "status": "skipped",
+          "durationMs": 0
+        },
+        {
+          "suite": "StarshardFamilyPilotTests",
+          "test": "testStoreCancellationResetAndCalmKeepCommittedRules",
+          "status": "skipped",
+          "durationMs": 0
+        },
+        {
+          "suite": "StarshardFamilyPilotTests",
+          "test": "testValidTurnRestoresAnInterruptedInvalidNudge",
+          "status": "skipped",
+          "durationMs": 1
+        }
+      ]
+    },
+    "compactMotionCalibration": {
+      "source": "d8c5b50 plus temporary calibration method",
+      "note": "Native Settings calibration; temporary source removed byte-for-byte.",
+      "summary": {
+        "status": "SUCCEEDED",
+        "durationMs": 18762,
+        "counts": {
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0
+        },
+        "target": "simulator"
+      },
+      "artifacts": {
+        "log": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c6187ff32363/logs/test_sim_2026-10-19T04-37-39-481Z_pid62736_975e9cb7.log",
+        "bundle": "artifacts/compact-native-acceptance/normal-motion-calibration.xcresult"
+      },
+      "tests": [
+        {
+          "suite": "FallingSkyInteractionTests",
+          "test": "testCalibrateNormalMotionForAcceptance",
+          "status": "passed",
+          "durationMs": 10246
+        }
+      ]
+    },
+    "motionFailureProbe": {
+      "source": "c1bee15 plus temporary failure and independent verification methods",
+      "note": "One deliberate assertion failure with continueAfterFailure=false; subsequent check verified Reduce Motion was restored off. Temporary edits removed byte-for-byte.",
+      "summary": {
+        "status": "FAILED",
+        "durationMs": 38986,
+        "counts": {
+          "passed": 1,
+          "failed": 1,
+          "skipped": 0
+        },
+        "target": "simulator"
+      },
+      "artifacts": {
+        "log": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c6187ff32363/logs/test_sim_2026-10-19T04-38-30-844Z_pid62736_322e2d82.log",
+        "bundle": "artifacts/compact-native-acceptance/failure-cleanup-probe.xcresult"
+      },
+      "tests": [
+        {
+          "suite": "CriticalMassInteractionTests",
+          "test": "testSystemReduceMotionPreservesImplosionOutcome",
+          "status": "failed",
+          "durationMs": 25372
+        },
+        {
+          "suite": "FallingSkyInteractionTests",
+          "test": "testVerifyNormalMotionAfterFailureProbe",
+          "status": "passed",
+          "durationMs": 8506
+        }
+      ]
+    },
+    "compactNormalIntegration": {
+      "source": "c1bee15",
+      "note": "All 303 hosted checks plus both affected real Reduce Motion flows; normal system motion verified before run.",
+      "summary": {
+        "status": "SUCCEEDED",
+        "durationMs": 192318,
+        "counts": {
+          "passed": 305,
+          "failed": 0,
+          "skipped": 0
+        },
+        "target": "simulator"
+      },
+      "artifacts": {
+        "log": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c6187ff32363/logs/test_sim_2026-10-19T04-39-39-789Z_pid62736_bc94713c.log",
+        "bundle": "artifacts/compact-native-acceptance/normal-integration.xcresult"
+      },
+      "tests": [
+        {
+          "suite": "CriticalMassInteractionTests",
+          "test": "testSystemReduceMotionPreservesImplosionOutcome",
+          "status": "passed",
+          "durationMs": 33734
+        },
+        {
+          "suite": "DuskInteractionTests",
+          "test": "testReducedMotionLargestTextKeepsThreatAndOutcomeReadable",
+          "status": "passed",
+          "durationMs": 33769
+        }
+      ]
+    },
+    "compactTargeted": {
+      "source": "188db84",
+      "summary": {
+        "passed": 15,
+        "failed": 1,
+        "skipped": 0
+      },
+      "bundle": "artifacts/compact-native-acceptance/targeted.xcresult",
+      "note": "Transport timed out after 300 seconds. Recovered completed existing result without restarting. Only automatic storm phase failed; all nine original visibility cases and six siblings passed."
+    },
+    "compactLarge": {
+      "source": "c1bee15",
+      "summary": {
+        "status": "SUCCEEDED",
+        "durationMs": 145845,
+        "counts": {
+          "passed": 6,
+          "failed": 0,
+          "skipped": 0
+        },
+        "target": "simulator"
+      },
+      "tests": [
+        {
+          "suite": "ConstellationTraceNativeTests",
+          "test": "testBuildIDMenuAndLargestTextTrace",
+          "status": "passed",
+          "durationMs": 23608
+        },
+        {
+          "suite": "ConstellationTraceNativeTests",
+          "test": "testCurrentOrbitFollowUpGuideReadsToEndWithoutMovingActionsOrBoard",
+          "status": "passed",
+          "durationMs": 30527
+        },
+        {
+          "suite": "ConstellationTraceNativeTests",
+          "test": "testInputRecoversAfterMultitouchBackgroundAndSupportedRotation",
+          "status": "passed",
+          "durationMs": 34800
+        },
+        {
+          "suite": "ConstellationTraceNativeTests",
+          "test": "testLongPausedGuidanceStaysBelowFrontStars",
+          "status": "passed",
+          "durationMs": 19419
+        },
+        {
+          "suite": "ConstellationTraceNativeTests",
+          "test": "testNativeGapSwipeAndRepeatedAttempt",
+          "status": "passed",
+          "durationMs": 15377
+        },
+        {
+          "suite": "ConstellationTraceNativeTests",
+          "test": "testNativeTraceIncludesOneOpalAndPreservesTheOther",
+          "status": "passed",
+          "durationMs": 13706
+        }
+      ],
+      "artifacts": {
+        "log": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c6187ff32363/logs/test_sim_2026-10-19T04-43-25-350Z_pid62736_023214a3.log",
+        "bundle": "artifacts/compact-native-acceptance/large-native.xcresult"
+      }
+    }
+  },
+  "core": {
+    "command": "swift test",
+    "passed": 172,
+    "failed": 0,
+    "log": "artifacts/compact-native-acceptance/core.log"
+  },
+  "release": {
+    "summary": {
+      "status": "SUCCEEDED",
+      "durationMs": 2178,
+      "target": "simulator"
+    },
+    "artifacts": {
+      "buildLogPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c6187ff32363/logs/build_sim_2026-10-19T04-45-59-813Z_pid62736_5197ab33.log"
+    },
+    "diagnostics": {
+      "warnings": [],
+      "errors": []
+    }
+  },
+  "nativeCommand": {
+    "scheme": "Starfall",
+    "configuration": "Debug",
+    "sdk": "iphonesimulator",
+    "args": [
+      "CODE_SIGNING_ALLOWED=NO",
+      "ARCHS=arm64",
+      "ONLY_ACTIVE_ARCH=YES",
+      "STARFALL_BUILD_ID=dev.84fd0fa338",
+      "-parallel-testing-enabled NO"
+    ],
+    "selection": "Exact methods listed per run; normal-integration also includes all StarfallAppTests; storm-observation uses -test-iterations 3."
+  },
+  "otherChecks": {
+    "ciHygiene": "passed",
+    "diffCheck": "passed",
+    "nativePlan": "3 Python checks passed; 116 development UI methods and 303 hosted methods preserved"
+  },
+  "limits": [
+    "No gameplay or UI geometry changes in this follow-up; existing gameplay evidence remains source-bound.",
+    "Full remote native matrix has not completed; last main run stopped at simulator inventory after Core172 passed.",
+    "Physical play, actual VoiceOver RC acceptance and minimum iOS 17 runtime remain unverified."
+  ]
+}

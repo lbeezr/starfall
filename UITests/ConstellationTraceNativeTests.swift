@@ -14,6 +14,10 @@ final class ConstellationTraceNativeTests: XCTestCase {
         XCTAssertTrue(XCTNSPredicateExpectation(predicate:NSPredicate(format:"label == %@","\(value) starlight"),object:app.staticTexts["experiment.score"]).wait(timeout:6))
     }
     @MainActor private func drag(_ app:XCUIApplication,from:(Int,Int),to:(Int,Int)) {
+        let before = app.otherElements["experiment.board"].value as? String
+        XCTAssertNotNil(before)
+        app.revealSkyControls([app.buttons["experiment.cell.\(from.0).\(from.1)"], app.buttons["experiment.cell.\(to.0).\(to.1)"]])
+        XCTAssertEqual(app.otherElements["experiment.board"].value as? String, before, "Preparing a paused trace must not change the sky")
         let start=app.buttons["experiment.cell.\(from.0).\(from.1)"].coordinate(withNormalizedOffset:CGVector(dx:0.5,dy:0.5))
         let end=app.buttons["experiment.cell.\(to.0).\(to.1)"].coordinate(withNormalizedOffset:CGVector(dx:0.5,dy:0.5))
         start.press(forDuration:0.4,thenDragTo:end,withVelocity:.slow,thenHoldForDuration:0.1)
@@ -187,6 +191,7 @@ extension ConstellationTraceNativeTests {
         let app = launch("opalChoice"); defer { app.terminate() }
         let guide = app.descendants(matching: .any).matching(identifier: "sky.dialogue").firstMatch
         for cell in ["experiment.cell.2.5", "experiment.cell.6.0"] {
+            app.revealSkyControls([app.buttons[cell]])
             app.buttons[cell].tap()
             score(24, app)
             XCTAssertTrue(guide.waitForExistence(timeout: 5))
@@ -195,23 +200,20 @@ extension ConstellationTraceNativeTests {
                     app.buttons["experiment.cell.0.\(column)"].frame.maxY,
                     "Long corrective copy must not cover the front row")
             }
-            XCTAssertTrue(app.buttons["experiment.next"].isHittable)
-            XCTAssertTrue(app.buttons["experiment.pause"].isHittable)
-            XCTAssertLessThanOrEqual(guide.frame.maxY, app.frame.maxY)
-            let actions = [app.buttons["experiment.next"].frame, app.buttons["experiment.pause"].frame]
-            let introduction = app.scrollViews.containing(.staticText, identifier: "experiment.message").firstMatch
-            if introduction.exists {
-                introduction.swipeUp()
-            } else {
-                // A larger viewport can fit the complete introduction without scrolling.
-                let message = app.staticTexts["experiment.message"]
-                XCTAssertTrue(message.isHittable)
-                XCTAssertGreaterThanOrEqual(message.frame.minY, guide.frame.minY)
-                XCTAssertLessThanOrEqual(message.frame.maxY, actions.map(\.minY).min()!)
+            let actionButtons = [app.buttons["experiment.next"], app.buttons["experiment.pause"]]
+            let actionFrames = actionButtons.map(\.frame)
+            let front = app.buttons["experiment.cell.0.0"], frontY = front.frame.minY
+            let boardValue = app.otherElements["experiment.board"].value as? String
+            XCTAssertNotNil(boardValue)
+            app.readSkyGuideToEnd(actions: actionButtons)
+            let translation = front.frame.minY - frontY
+            for (button, original) in zip(actionButtons, actionFrames) {
+                XCTAssertEqual(button.frame.minY, original.minY + translation, accuracy: 1,
+                               "Page scrolling moves board and actions together; inner guide scrolling moves neither")
+                XCTAssertEqual(button.frame.width, original.width, accuracy: 1)
+                XCTAssertEqual(button.frame.height, original.height, accuracy: 1)
             }
-            XCTAssertEqual(app.buttons["experiment.next"].frame, actions[0])
-            XCTAssertEqual(app.buttons["experiment.pause"].frame, actions[1])
-            XCTAssertTrue(app.buttons["experiment.next"].isHittable)
+            XCTAssertEqual(app.otherElements["experiment.board"].value as? String, boardValue)
             let capture = XCTAttachment(screenshot: app.screenshot())
             capture.name = "bounded-guide-read-to-end-\(cell)"; capture.lifetime = .keepAlways; add(capture)
         }
@@ -267,11 +269,17 @@ extension ConstellationTraceNativeTests {
     @MainActor func testAutomaticStormCountsRecoverWithoutManualShowersOrClears() {
         let app = launch("stormWarning"); defer { app.terminate() }
         score(22, app)
-        let phase = app.descendants(matching: .any).matching(identifier: "experiment.message").firstMatch
+        let phase = app.staticTexts["experiment.message"]
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label CONTAINS %@", "1 lighter shower"), object: phase).wait(timeout: 5))
         app.buttons["experiment.pause"].tap()
         for expected in ["Storm: 3 heavy showers left.", "Storm: 2 heavy showers left.", "Storm: 1 heavy shower left.", "9 lighter showers before the storm."] {
-            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label CONTAINS %@", expected), object: phase).wait(timeout: 8))
+            // A storm count can last 1.7 seconds. Evaluating an element predicate
+            // captures repeated hierarchy diagnostics on every miss and can skip
+            // that entire window. Read the exact label once per condition check.
+            let observed = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+                phase.label.contains(expected)
+            }, object: nil).wait(timeout: 8)
+            XCTAssertTrue(observed, "Missing \(expected); current guide: \(phase.label)")
             let capture = XCTAttachment(screenshot: app.screenshot())
             capture.name = "automatic-after-observing-" + expected
             capture.lifetime = .keepAlways; add(capture)
@@ -300,6 +308,7 @@ extension ConstellationTraceNativeTests {
         done.tap(); score(5,app)
         for identifier in ["experiment.settings", "experiment.cell.0.0", "experiment.cell.6.6", "experiment.pause", "experiment.next"] {
             let control = app.buttons[identifier]
+            app.revealSkyControls([control])
             XCTAssertTrue(control.isHittable,identifier)
             XCTAssertGreaterThanOrEqual(control.frame.minX,app.frame.minX,identifier)
             XCTAssertLessThanOrEqual(control.frame.maxX,app.frame.maxX,identifier)
@@ -365,20 +374,19 @@ extension ConstellationTraceNativeTests {
             for column in 0..<7 {
                 XCTAssertGreaterThanOrEqual(guide.frame.minY, app.buttons["experiment.cell.0.\(column)"].frame.maxY)
             }
-            let introduction = app.scrollViews.containing(.staticText, identifier: "experiment.message").firstMatch
-            if introduction.exists {
-                introduction.swipeUp()
-                for _ in 0..<3 where message.frame.maxY > introduction.frame.maxY + 1 { introduction.swipeUp() }
-                XCTAssertLessThanOrEqual(message.frame.maxY, introduction.frame.maxY + 1,
-                                         "The message ending must reach its scroll viewport")
+            let front = app.buttons["experiment.cell.0.0"], frontY = front.frame.minY
+            app.readSkyGuideToEnd(actions: actionButtons)
+            let translation = front.frame.minY - frontY
+            for (button, original) in zip(actionButtons, actionFrames) {
+                XCTAssertEqual(button.frame.minY, original.minY + translation, accuracy: 1)
+                XCTAssertEqual(button.frame.width, original.width, accuracy: 1)
+                XCTAssertEqual(button.frame.height, original.height, accuracy: 1)
             }
-            XCTAssertLessThanOrEqual(message.frame.maxY, actionFrames.map(\.minY).min()!)
-            XCTAssertEqual(actionButtons.map(\.frame), actionFrames)
-            XCTAssertTrue(actionButtons.allSatisfy(\.isHittable))
             XCTAssertEqual(board.value as? String, boardValue)
             let capture = XCTAttachment(screenshot: app.screenshot())
             capture.name = preserve ? "current-orbit-release-guide-ending" : "current-orbit-retained-guide-ending"
             capture.lifetime = .keepAlways; add(capture)
+            app.revealSkyControls([next])
             XCTAssertTrue(next.isHittable); next.tap(); score(preserve ? 35 : 36, app)
             app.terminate()
         }

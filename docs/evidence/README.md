@@ -1,5 +1,7 @@
 # Evidence index
 
+[Compact native acceptance](compact-native-acceptance-2026-10-19/README.md) classifies the ten recorded native failures, preserves exact gameplay assertions, and verifies cleanup after a deliberately failed system-motion check.
+
 [Five layered nightscapes](nightscapes-2026-10-18/README.md) records the centered native integration, checks, captures and canonical delivery. The earlier [celestial-platform evidence](celestial-boards-2026-10-18/README.md) remains historical.
 
 Dated, source-bound records of checks, comparisons and their limits.

@@ -4,7 +4,9 @@
 
 The loss headline now says “No room to land.” The existing exact column and committed score remain underneath. Replay has its own entry explanation: the same starting sky with current settings, or the fixed First Light opening. Both explain that the saved round stays until Begin.
 
-**Next action:** Merge and canonically deliver; then finish the separate compact-device CI follow-up.
+**Delivery:** [PR #150](https://github.com/lbeezr/starfall/pull/150) merged to `0bcc852`; canonical updater verified **dev.07b4062290** on the original phone. [Receipt](delivery.json): Core and signature passed; main CI pending at installation. No player-data reset or automatic launch.
+
+**Next action:** Finish the separate compact-device CI follow-up; observe physical comprehension on the delivered app.
 
 ## Scope and acceptance
 
@@ -27,3 +29,5 @@ The preceding Help main CI failed at simulator inventory after all 172 Core test
 <img src="dev-d9a0b59__overflow__iphone16promax__largest.jpg" width="220" alt="Largest text reflows the blocked-column reason and replay action in the scrollable ending">
 
 *Runtime evidence: clean `d9a0b59`, dev.07b4062290, normal motion. The SE3 and full-size result/replay captures were inspected. Maximum text requires scrolling; native tests reach replay, Home and New sky and preserve the result after cancel/background. Captures show legibility and placement, not animation quality or physical comprehension. [Capture provenance](captures.json). The additional [First Light overflow frame](dev-d9a0b59__overflow__iphone16promax__default.jpg) retains the actual zero-of-18 score and column 6.*
+
+The subsequent main-only CI run passed Core172, then timed out during simulator inventory before compiling the app. This is separate from the local native/build acceptance and installed receipt. [CI record](ci-inventory-timeout.json).

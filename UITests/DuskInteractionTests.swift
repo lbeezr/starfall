@@ -10,9 +10,10 @@ final class DuskInteractionTests: XCTestCase {
         return app
     }
     @MainActor private func ready(_ element: XCUIElement) {
-        let available = XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true AND hittable == true"), object: element).wait(timeout: 7)
+        let available = XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: element).wait(timeout: 7)
         if !available { capture(XCUIApplication(), "dusk-control-unavailable") }
         XCTAssertTrue(available, XCUIApplication().debugDescription)
+        XCUIApplication().revealSkyControls([element])
     }
     @MainActor private func capture(_ app: XCUIApplication, _ name: String) {
         let attachment = XCTAttachment(screenshot: app.screenshot())
@@ -80,11 +81,12 @@ final class DuskInteractionTests: XCTestCase {
     @MainActor func testReducedMotionLargestTextKeepsThreatAndOutcomeReadable() {
         let (settings, motion) = NativeSystemMotionSettings.open()
         let original = motion.value as? String == "1"
-        NativeSystemMotionSettings.set(true, on: motion); settings.terminate()
-        defer {
+        // XCTest owns cleanup even when continueAfterFailure stops this body.
+        addTeardownBlock { @MainActor in
             let (settings, motion) = NativeSystemMotionSettings.open()
             NativeSystemMotionSettings.set(original, on: motion); settings.terminate()
         }
+        NativeSystemMotionSettings.set(true, on: motion); settings.terminate()
         let app = launch("imminent", extra: ["-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"])
         defer { app.terminate() }
         let cue = app.staticTexts["experiment.message"], next = app.buttons["experiment.next"]

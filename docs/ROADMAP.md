@@ -1,6 +1,6 @@
 # Starfall roadmap
 
-The [gameplay quality workstream](GAMEPLAY_QUALITY.md) follows the gesture improvements. Readability and consequence feedback are delivered. The [shower forecast correction](evidence/shower-forecast-2026-10-18/README.md) is delivered. Interactive setup examples are delivered. Reward rhythm is delivered; ending/replay verification is in progress. Each verified batch merges and reaches the original phone app before the next priority.
+The [gameplay quality workstream](GAMEPLAY_QUALITY.md) follows the gesture improvements. All six priorities are delivered: board readability, immediate consequences, truthful shower forecasts, interactive setup examples, distinct rewards and clear endings/replay. Each verified batch reached the original phone app before the next priority. The [compact native follow-up](evidence/compact-native-acceptance-2026-10-19/README.md) classifies the ten recorded CI failures and strengthens test input and failure cleanup; physical-play acceptance remains open.
 
 The [gesture quality workstream](GESTURE_QUALITY.md) targets instant cardinal swaps, deliberate held drawing, forgiving strokes and dependable rapid follow-ups. Five separate batches cover recognition, follow-up admission, edge forgiveness, hold feedback and quiet response, with [source-bound verification](GESTURE_QUALITY.md#evidence-and-limits). All five are merged individually; [canonical delivery receipts](evidence/gesture-delivery-2026-10-18/README.md) distinguish installed identity from physical-play acceptance. Physical comfort determines final acceptance.
 
@@ -8,7 +8,7 @@ The [gesture quality workstream](GESTURE_QUALITY.md) targets instant cardinal sw
 
 [Directional swaps and one-gap tracing](evidence/forgiving-input-main-2026-10-18/README.md) address precision targeting in the current app. Physical phone/iPad comparison remains the next tuning decision.
 
-**Status:** Active · **Owner:** Current implementer · **Updated:** October 18, 2026, Eastern time
+**Status:** Active · **Owner:** Current implementer · **Updated:** October 19, 2026, Eastern time
 
 Build a small, readable falling-sky puzzle worth replaying. **Skillful survival arrangements extend the current matching and tracing.** Opal and storm phases are integrated in the regular game. Preserve its versioned generator/save contracts while tuning input, layout and timing. Historical lab comparisons do not define the current delivery workflow; human preference remains unverified.
 

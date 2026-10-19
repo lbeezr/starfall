@@ -8,7 +8,7 @@ A small native iOS falling-sky puzzle. Clear matching stars as showers fill the 
 
 Help now includes optional interactive examples of squares, crosses, Opal and relays. Each button shows a real rule outcome while your sky stays paused.
 
-[Gameplay quality](docs/GAMEPLAY_QUALITY.md) continues the same incremental process across readability, consequences, pacing, discovery, reward rhythm and replay. Each verified batch is merged and delivered before the next priority.
+[Gameplay quality](docs/GAMEPLAY_QUALITY.md) improvements are delivered across readability, consequences, pacing, discovery, reward rhythm and replay. Each verified batch was merged and delivered before the next priority; physical-play acceptance remains open.
 
 [Gesture improvements](docs/GESTURE_QUALITY.md) are merged in five individual batches, with [canonical phone delivery evidence](docs/evidence/gesture-delivery-2026-10-18/README.md). Physical-play acceptance and [mechanics calibration](docs/design/CALIBRATION.md) continue.
 
@@ -26,7 +26,7 @@ Player wording and character voices are authored in the [local copy catalogue](A
 - **Arrange a setup:** In survival, swipe left, right, up or down to exchange neighbors immediately. Each touch moves one space regardless of color. Stars exchanged into space fall normally. Hold then trace exact four-star squares or five-star crosses; surrounding stars stay. Build the next recipe, then clear again for a deliberate relay. [Techniques](docs/design/STAR_TECHNIQUES.md).
 - **Understand the sky:** Characters explain play, storm counts and timing warnings in one bottom chat. Tap the retained portrait to reread a message. Six conversation portraits and bundled scripts share one reusable presentation; [edit or preview dialogue](App/DialogueScripts/README.md).
 - **Control the showers:** Call the next shower yourself or clear while paused. Use the sky menu to pause or tune shower pace (retained Dusk rounds also keep dark-star frequency); Start/Resume and manual advance appear while paused.
-- **Try a goal:** Choose **Sky menu → Start First Light** to start a new round with steady showers, no dark stars and an 18-starlight target. Replay repeats it; New sky returns to survival. When a survival board fills, replay or start a new sky.
+- **Try a goal:** Choose **Sky menu → Start First Light** to start a new round with steady showers, no dark stars and an 18-starlight target. Replay repeats it; New sky returns to survival. When an arrival column has no room, replay or start a new sky.
 
 [Starlight celebrations](docs/design/STARLIGHT_CELEBRATIONS.md) connect committed clear awards to the total with harvested-family light, award-scaled strength and [Crystal Comet lettering](docs/evidence/crystal-comet-integration-2026-10-18/README.md) for major clears, recipes, constellations and causal relays. The user-approved [opalescent material refinement](docs/design/celebration-lettering/crystal-comet-01/OPALESCENCE.md) restores warm/cool facet light from the approved swatches. [Protected award placement](docs/evidence/board-clarity-2026-10-18/README.md) keeps lettering above playable rows, with readable compact/native fallbacks. Scoring and ready-column input stay unchanged; [native award captures](docs/evidence/starlight-celebrations-2026-10-18/VISIBLE_AWARDS.md) verify sampled visibility and record acceptance limits.
 

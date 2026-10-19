@@ -1,0 +1,12 @@
+{
+  "source": "b62158875060797cbf5236f15ba9c2d68c2e728d",
+  "run": 39197579729,
+  "job": 117883561834,
+  "url": "https://github.com/lbeezr/starfall/actions/runs/39197579729",
+  "toolchain": "Xcode 26.3 (17C529)",
+  "core": "172 passed",
+  "debug": "BUILD SUCCEEDED 04:11:15Z",
+  "release": "BUILD SUCCEEDED 04:13:03Z",
+  "conclusion": "cancelled by later main push; no full native acceptance",
+  "scope": "Confirms the Help and reward source compiles on the older CI toolchain, not merely local Xcode 27."
+}

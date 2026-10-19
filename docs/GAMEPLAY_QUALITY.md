@@ -1,10 +1,10 @@
 # Keep fast play readable, understandable and rewarding
 
-**Status:** Accepted · **Owner:** current implementer · **Updated:** 2026-10-18
+**Status:** Accepted · **Owner:** current implementer · **Updated:** 2026-10-19
 
 Polish the six gameplay priorities in order, merging and delivering each verified improvement through the canonical phone updater before starting the next. The player reported a “huge improvement” after the five gesture deliveries. Apply that same bounded process to the remaining experience.
 
-**Next action:** Clarify endings and replay, then finish the compact-device CI follow-up.
+**Next action:** Finish delivery of the verified compact-test follow-up, then use physical play to evaluate recognition, comfort and repeated-round preference across the six delivered priorities.
 
 ## Scope and success
 
@@ -12,10 +12,10 @@ Polish the six gameplay priorities in order, merging and delivering each verifie
 | --- | --- | --- | --- |
 | 1 | Read the next move | Award lettering stays outside every playable cell throughout its animation; independent follow-up moves remain available; default and maximum text remain readable. | Delivered: PR #142, `dev.d7e15ddf2a`; physical comfort open |
 | 2 | Understand consequences | Selection, committed clear, score gain and invalid actions give consistent, truthful feedback without covering the board or delaying input. | Delivered: PR #144/#146; physical comprehension open |
-| 3 | Fair shower rhythm | The arrival cue agrees with the actual deadline; interruptions preserve remaining time; no catch-up burst; current survival rules receive a reproducible pacing review. | Delivered: PR #147, dev.9020625ab7; both compiler builds verified; broader CI triage open |
+| 3 | Fair shower rhythm | The arrival cue agrees with the actual deadline; interruptions preserve remaining time; no catch-up burst; current survival rules receive a reproducible pacing review. | Delivered: PR #147, dev.9020625ab7; both compiler builds verified; ten recorded native failures classified |
 | 4 | Discover useful setups | Players can find and practice recipes, Opal use and causal relays through concrete examples; hints match current legal actions and never surprise-commit a move. | Delivered: PR #148, dev.14bd6d9ce3; physical comprehension open |
 | 5 | Reward rhythm | Clear, growth, recipe and relay feedback are distinguishable, bounded and synchronized with committed outcomes; rapid play does not pile up sounds/haptics or effects. | Delivered: PR #149, dev.9de7f44c3c; physical sound/haptic preference open |
-| 6 | End and replay | A final legal action resolves before the result; the reason and score are clear; replay and new sky have predictable save/seed behavior and survive interruptions. | Verified locally; merge/delivery pending |
+| 6 | End and replay | A final legal action resolves before the result; the reason and score are clear; replay and new sky have predictable save/seed behavior and survive interruptions. | Delivered: PR #150, dev.07b4062290; physical comprehension open |
 
 No new progression, power-ups, backend, analytics or automatic aging. Preserve saves, deterministic rules, native input and the original app. Each priority may need several small corrections; ship each verified correction separately.
 
@@ -91,8 +91,8 @@ The loss heading says the whole sky is full although one blocked column ends the
 - [x] The ending describes a blocked arrival even when other columns remain open; the actual score and blocked column survive restoration.
 - [x] Replay explains the same starting sky with current settings; First Light identifies its fixed opening and objective. Browsing/canceling entry preserves the saved round until Begin.
 - [x] A winning action commits and saves before presentation, with the final result revealed after settlement; interruption and stale completion cannot replace its score or restart the clock.
-- [x] Verify ordinary/challenge endings, replay/new sky, largest text, normal animation and system Reduce Motion; inspect native captures. Verification passes; merge and canonical delivery follow.
+- [x] Verify ordinary/challenge endings, replay/new sky, largest text, normal animation and system Reduce Motion; inspect native captures. Verified and canonically delivered: PR #150, dev.07b4062290.
 
 ## CI follow-up before closing the workstream
 
-Xcode 26.3 now builds both configurations, but the broader remote native run exposed older compact-layout assumptions and other failures before cancellation. Reproduce and classify them separately before claiming a green full matrix; preserve meaningful assertions and current scrolling behavior. [Source-bound log summary](evidence/shower-forecast-2026-10-18/ci-compatibility.json).
+Xcode 26.3 builds both configurations. All ten recorded native failures are classified and corrected in the [compact acceptance follow-up](evidence/compact-native-acceptance-2026-10-19/README.md), preserving game geometry, exact outcomes and normal animation. Final local integration passes 303 hosted checks plus both affected real Reduce Motion flows. A completed full remote matrix remains separate evidence; earlier canceled runs and an inventory timeout do not establish that acceptance.
