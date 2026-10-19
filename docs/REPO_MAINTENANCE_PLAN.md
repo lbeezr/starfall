@@ -1,12 +1,12 @@
 # Make Starfall easier to maintain and verify
 
-**Status:** Accepted — implementation in progress · **Owner:** current implementer · **Updated:** October 19, 2026, Eastern time
+**Status:** Accepted — maintenance rollout implemented; CI health/tuning remain open · **Owner:** current implementer · **Updated:** October 19, 2026, Eastern time
 
 Preserve Starfall’s existing safeguards while making current decisions easier to find, repeatable work easier to execute, and CI results more useful. Start with current-document reconciliation and a small instruction experiment; give remote CI diagnosis the first tooling priority. Add three repo skills only as their workflows prove useful.
 
 **Important limit:** The latest 20 GitHub Actions runs sampled contain 11 failures and nine cancellations, with no completed pass. The newest cancelled run includes UI failures before cancellation. This is a planning audit, not a native reproduction or a finding that all failures share one cause. [Source-bound baseline](evidence/repo-maintenance-2026-10-19/README.md).
 
-**Next action:** complete the bounded cleanup pilot and resolve the remaining [CI/native findings](evidence/repo-maintenance-2026-10-19/CI_DIAGNOSIS.md). Documentation reconciliation and one native regression correction are merged; scoped guidance and three skills have passed bounded validation. Current gameplay, save compatibility and canonical phone delivery remain authoritative.
+**Next action:** resolve the remaining [CI/native findings](evidence/repo-maintenance-2026-10-19/CI_DIAGNOSIS.md). Documentation reconciliation, one native regression correction, scoped guidance and three skills are merged. The bounded documentation-ownership pilot is verified. Current gameplay, save compatibility and canonical phone delivery remain authoritative.
 
 ## Scope and success
 
@@ -18,8 +18,9 @@ Preserve Starfall’s existing safeguards while making current decisions easier 
 - [x] Every relocated instruction has an identified owner; root-started tasks find the applicable local guidance.
 - [x] Representative tasks preserve safety and correctness while reducing unnecessary reading or commands. Report observed results rather than promising a percentage.
 - [x] Each added skill has a narrow trigger, explicit output, positive/negative examples and a demonstrated repository use.
-- [ ] Remote failure categories have exact source/run evidence; a full development matrix completes successfully before remote CI is called healthy.
-- [ ] Any removal has consumer/compatibility evidence and the relevant unchanged-behavior checks. Historical mechanics are not removed because their names sound obsolete.
+- [x] Remote failure categories have exact source/run evidence and a bounded native reproduction.
+- [ ] A full development matrix completes successfully before remote CI is called healthy.
+- [x] Any removal has consumer/compatibility evidence and the relevant unchanged-behavior checks. Historical mechanics are not removed because their names sound obsolete.
 
 ## Why this is the right adaptation
 
@@ -123,7 +124,7 @@ Reuse `ci-simulator.sh`, `simulator-command.py`, `simulator-lifecycle.sh`, `nati
 
 ## Make removal decisions from evidence
 
-Start the pilot in `tools/mechanics`, where historical exporters, source patches and comparison records already have documented owners. Classify each candidate as current runtime, retained compatibility/regression, historical reproduction, active comparison, verified unused or unresolved. This audit identifies a useful investigation area, not an approved deletion list.
+The implemented pilot consolidates conflicting current audio-generation summaries in `scripts/README.md`, supported by the generator, authoritative audio README and Git history. It preserves all runtime/tool payloads. `tools/mechanics` remains a later audit candidate, where historical exporters, source patches and comparison records already have documented owners. Classify each candidate as current runtime, retained compatibility/regression, historical reproduction, active comparison, verified unused or unresolved. This audit identifies a useful investigation area, not an approved deletion list.
 
 Before removing anything, inspect direct and indirect consumers: Swift calls, Codable fields/raw values, migration/replay paths, Debug launch/accessibility IDs, Xcode source/resource membership, bundled asset names, Python/shell wrappers and documentation commands. Check Git history and overlapping work. A zero-result text search cannot prove safety. In particular, retain historical gravity/Dusk/critical-mass readers and reset fixtures unless their compatibility purpose is explicitly superseded and verified.
 
