@@ -82,7 +82,7 @@ final class SkyTechniqueStoreTests: XCTestCase {
         store.requestInput(action, snapshot: store.game, generation: store.constellationInputGeneration)
     }
 
-    @MainActor func testProductionSurfaceBuffersDuringRealSwapAndFallInFullAndQuietMotion() async throws {
+    @MainActor func testProductionSurfaceBuffersDuringMotionAndImmediatelyRetouchesQuietBoard() async throws {
         XCTAssertFalse(UIAccessibility.isReduceMotionEnabled)
         let owner = try XCTUnwrap(UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.first)
         let prior = owner.windows.first(where: \.isKeyWindow)
@@ -120,19 +120,26 @@ final class SkyTechniqueStoreTests: XCTestCase {
             let started = ProcessInfo.processInfo.systemUptime
             surface.moveInput(to: mapping.viewPoint(Cell(1,3)))
             surface.endInput(at: mapping.viewPoint(Cell(1,3)))
-            XCTAssertTrue(store.busy)
+            XCTAssertEqual(store.busy,!quiet,"Quiet presentation has no remaining motion to own input")
             let first = store.game
             XCTAssertEqual(first.gem(at: Cell(0,3))?.id, id)
             refreshSurface()
             surface.beginInput(at: mapping.viewPoint(Cell(0,3)))
             surface.moveInput(to: mapping.viewPoint(Cell(0,4)))
             surface.endInput(at: mapping.viewPoint(Cell(0,4)))
-            XCTAssertNotNil(store.bufferedInput)
-            XCTAssertNotNil(scene.childNode(withName: "//sky.input.buffered.direction"))
-            XCTAssertEqual(store.game, first)
             var expected = first
             XCTAssertNotNil(expected.nudge(from: Cell(0,3), to: Cell(0,4)))
-            var firstMotion: TimeInterval?
+            if quiet {
+                XCTAssertNil(store.bufferedInput)
+                XCTAssertNil(scene.childNode(withName: "//sky.input.buffered.direction"))
+                XCTAssertFalse(store.busy)
+                XCTAssertEqual(store.game,expected,"The second quiet swipe commits during input delivery")
+            } else {
+                XCTAssertNotNil(store.bufferedInput)
+                XCTAssertNotNil(scene.childNode(withName: "//sky.input.buffered.direction"))
+                XCTAssertEqual(store.game,first)
+            }
+            var firstMotion: TimeInterval? = quiet ? ProcessInfo.processInfo.systemUptime - started : nil
             let initialPosition = mapping.scenePoint(Cell(1,2))
             let deadline = ContinuousClock.now + .seconds(3)
             while store.busy && ContinuousClock.now < deadline {

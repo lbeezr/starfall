@@ -160,6 +160,35 @@ final class NativeInputWindowTests: XCTestCase {
         XCTAssertTrue(scene.children[2].children.isEmpty)
     }
 
+    @MainActor func testQuietPresentationReleasesInputAsSoonAsFinalBoardIsRendered() throws {
+        let scene = FallingSkyScene(size: CGSize(width: 390, height: 844))
+        let host = try SceneHost(scene: scene); defer { host.close() }
+        scene.reduceMotion = true
+        var cases: [(FallingSky, FallingSkyTurn, FallingSky)] = []
+        let trace = SkyTechniqueExample.trace.game()
+        var clear = trace
+        cases.append((trace, try XCTUnwrap(clear.clear(Cell(0,0))), clear))
+        var swap = trace
+        cases.append((trace, try XCTUnwrap(swap.nudge(from:Cell(0,0),to:Cell(0,1))), swap))
+        let fresh = FallingSky.freshSurvival(seed:0)
+        var shower = fresh
+        cases.append((fresh, try XCTUnwrap(shower.letStarsFall()), shower))
+        var orbit = try naturalOrbit()
+        XCTAssertNotNil(orbit.letStarsFall())
+        let orbitBefore = orbit, phase = try XCTUnwrap(orbit.letStarsFall())
+        XCTAssertFalse(phase.presentationPhases.isEmpty)
+        cases.append((orbitBefore, phase, orbit))
+        for (old, turn, game) in cases {
+            scene.render(old)
+            var completions = 0
+            scene.animate(turn, from:old, to:game) { completions += 1 }
+            XCTAssertEqual(completions,1,"A rendered quiet board must not retain a delayed completion")
+            XCTAssertFalse(scene.hasActions(),"No completion may outlive the already finished presentation")
+            let visible = scene.children[1].children.compactMap { ($0 as? FallingSkyCharacter)?.gem }.sorted { $0.id < $1.id }
+            XCTAssertEqual(visible,game.board.compactMap { $0 }.sorted { $0.id < $1.id })
+        }
+    }
+
     @MainActor func testOverlapReplacementCancelsOldCompletionAndQuietPresentationMatches() async throws {
         guard !UIAccessibility.isReduceMotionEnabled && !UIAccessibility.isVoiceOverRunning else {
             throw XCTSkip("The cancellation reproduction starts with normal motion")

@@ -2,6 +2,8 @@
 
 Dated, source-bound records of checks, comparisons and their limits.
 
+[Quiet input response](quiet-input-2026-10-18/README.md) records the reproduced 150 ms lock and native presentation/admission checks.
+
 [Hold feedback](hold-feedback-2026-10-18/README.md) records native arming cues, haptic policy and delivery limits.
 
 [Coarse flick correction](gesture-edges-2026-10-18/README.md) reproduces final-sample loss and verifies the shared directional decision boundary.

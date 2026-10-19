@@ -4,7 +4,7 @@
 
 The user wants S-tier response, consistency, forgiveness, secondary actions and fast follow-ups, delivered incrementally. Ship each coherent, verified improvement through current main and the canonical phone updater. Simulator correctness and installation receipts are evidence of implementation and delivery; physical comfort still requires observation.
 
-**Next action:** publish the verified foundation (`codex/instant-swipe-foundation`) once the pending repository-specific approval is answered, then use the canonical updater. The separate follow-up branch (`codex/gesture-follow-up`) also passes development checks. Do not combine them into one delivery.
+**Next action:** publish the verified foundation (`codex/instant-swipe-foundation`) once the pending repository-specific approval is answered, then use the canonical updater. Keep the five prepared branches separate for publication and delivery; physical acceptance follows installation.
 
 ## Scope and acceptance
 
@@ -33,3 +33,17 @@ The [foundation report](evidence/immediate-swipes-2026-10-18/README.md) records 
 The [follow-up report](evidence/follow-up-input-2026-10-18/README.md) records batch 2. The [coarse-flick correction](evidence/gesture-edges-2026-10-18/README.md) records batch 3: the reproduced sample-ordering bug is corrected, and the original plus edge/drawing sibling checks pass. All three await individual publication/delivery; the user approved publishing, but automatic review requested more destination-specific authorization.
 
 The [hold-feedback report](evidence/hold-feedback-2026-10-18/README.md) records batch 4: native arming appearance, bounded progress and haptic policy pass development checks. It also awaits individual publication and delivery.
+
+The [quiet-response report](evidence/quiet-input-2026-10-18/README.md) records batch 5 and its remaining acceptance limits. All five branches are a dependent stack; reconcile each batch with current main and verify its own canonical installation before calling it shipped.
+
+## Prepared delivery stack
+
+| Order | Branch | Development result |
+| --- | --- | --- |
+| 1 | `codex/instant-swipe-foundation` | Current-main foundation, Debug/Release and native checks recorded |
+| 2 | `codex/gesture-follow-up` | Bounded follow-up and lifecycle/identity checks pass |
+| 3 | `codex/gesture-edge-forgiveness` | Four-direction coarse-sample regression and native checks pass |
+| 4 | `codex/gesture-hold-feedback` | Native armed cue inspected; normal/quiet and feedback policy checks pass |
+| 5 | `codex/gesture-quiet-response` | Final combined source: 169 Core, 286 hosted, 13 native checks pass; Debug/Release builds pass |
+
+No branch in this stack has been published, merged or installed by this workstream. Final development evidence is runtime `dev.8a753c144b`; earlier reports retain their exact independent sources. Automatic approval review rejected the source-tree upload again after the user's approval, requesting explicit authorization for publishing source to public `https://github.com/lbeezr/starfall`. The destination-specific confirmation is pending. The canonical updater additionally reports waiting for the configured iPhone. These blocks do not invalidate the local checks, and passing checks do not establish physical S-tier comfort.
