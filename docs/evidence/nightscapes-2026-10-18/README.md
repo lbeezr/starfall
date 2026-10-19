@@ -1,10 +1,12 @@
-# Five nightscapes ready for native delivery
+# Five nightscapes shipped to the iPhone
 
-**Result:** Development validation passed · **Owner:** current implementer · **Date:** October 18–19, 2026
+**Result:** Merged and device installation verified · **Owner:** current implementer · **Date:** October 18–19, 2026
 
 Moonwake, Nebula Cradle, Shatterlight Reach, Night Garden and Ringdrift now use sixteen separate alpha assets around a centered native playfield. All five are ordinary Location choices in Debug and Release. The existing shooting-star forecast, exact score, gestures, crystal award lettering and saved rounds remain intact. [Production acceptance](../../design/environments/night-production-09/README.md) and [asset provenance](../../design/environments/night-production-09/assets.json) define the scope.
 
-**Next action:** Publish the verified tree to main and run the canonical device updater; append its verified installation receipt here. This is development delivery. Actual VoiceOver, physical comfort, sustained-device performance and App Store release acceptance are not established by these checks.
+**Delivery:** [PR #143](https://github.com/lbeezr/starfall/pull/143) merged as `496ba704ee`. The canonical updater installed **`dev.235ece3931`** on the configured physical iPhone and verified its OS-owned identity. Choose **Menu → Location**. [Receipt](delivery.json) records the source and validation.
+
+**Next action:** No remaining integration/delivery work for these five settings. Physical comfort, sustained-device performance, Stage Manager and actual VoiceOver remain separate release acceptance; no physical play session or App Store release is claimed.
 
 ## Outcomes against acceptance
 
@@ -88,4 +90,6 @@ Shared cell boundaries initially differed by floating-point roundoff when comput
 
 ## Delivery
 
-Publication and canonical updater receipt pending. Do not infer a phone installation from simulator success.
+`python3 scripts/device-update.py run` completed with `Installed dev.235ece3931 from main 496ba704ee`. It archived clean GitHub main, reran all 169 core tests (zero failures), built signed Debug for the configured iPhone, verified the signature, installed without resetting/launching the app, and queried the OS app inventory to verify installation. The published runtime tree matched the validated local tree exactly.
+
+Main CI was **pending at installation**, consistent with the documented development-delivery policy; it is not reported as passed. The receipt is in [delivery.json](delivery.json). Original updater logs/receipts remain under `~/Library/Application Support/Starfall Device Updates/`; the published record omits the private installation URL and device identifier. Installation proves delivery, not human gameplay comfort.

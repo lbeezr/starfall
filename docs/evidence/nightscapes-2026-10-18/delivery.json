@@ -1,0 +1,21 @@
+{
+  "buildID": "dev.235ece3931",
+  "source": "496ba704ee22d3f8e17195233b00273eab9b345e",
+  "bundle": "com.starfall.prototype",
+  "bundleVersion": "1",
+  "validation": {
+    "coreTests": "passed",
+    "signature": "verified",
+    "mainCIAtInstall": "pending"
+  },
+  "recordedAtUtc": "2026-10-19T02:29:59.438767+00:00",
+  "delivery": "canonical scripts/device-update.py run",
+  "device": "configured physical iPhone",
+  "postInstallIdentity": "verified by canonical updater against OS app inventory",
+  "localReceiptSHA256": "7824884ed8fe0592396953dcfd63fc18db57f1446ad75a78679c51b088c466ca",
+  "coreTests": 169,
+  "coreFailures": 0,
+  "runtimeTreeMatchedLocal": "d40072575532dfdc85b2b5c88b17ba68d56d94cf",
+  "pullRequest": "https://github.com/lbeezr/starfall/pull/143",
+  "physicalPlaySession": "not run"
+}
