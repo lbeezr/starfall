@@ -32,7 +32,7 @@ Forecast tests assert the actual 148×50 contour on calibrated simulators and th
 
 `testCurrentStormOrbitChoiceThroughTwoNativeTapOrders` uses current gravity-generation seed 180 to verify native three-plus-five versus three-plus-three tap outcomes and inspect both follow-ups. The nine-light branch needs a curved trace; Core/hosted coverage is distinct from OS-level curved-gesture acceptance.
 
-`testCurrentOrbitFollowUpGuideReadsToEndWithoutMovingActionsOrBoard` scrolls both current field follow-ups to their timing suffix, checks the ending lies before pinned actions, preserves the board and then executes the next native clear. Inspect its captures to distinguish real read-through from accessible full-text labels alone.
+`testCurrentOrbitFollowUpGuideReadsToEndWithoutMovingActionsOrBoard` scrolls both current field follow-ups to their timing suffix, checks the ending lies before reachable actions, verifies that an outer page scroll translates board/actions together, preserves the board and then executes the next native clear. Inspect its captures to distinguish real read-through from accessible full-text labels alone.
 
 `GravityOpportunityNativeTests` follows the candidate's naturally reached seventh-wave pair through manual arrivals, collision and rotation, then compares eight- versus seven-light two-clear outcomes. Its second flow includes largest text, settings/background and retained restore. Debug fixtures require the explicit reset argument and use the normal app identity.
 
@@ -61,3 +61,5 @@ The focused constellation gap/off-center and quick directional swap checks exerc
 `SkyLessonInteractionTests` walks every explicit example action, checks exact rewards and reset, returns to unchanged live play, and checks largest-text/calm background and dismissal. These demonstrations teach consequences; they do not replace native swipe/hold training.
 
 The reward feedback acceptance repeats native recipe/relay clears, fast swaps followed by held tracing, settings/background and actual system Reduce Motion. These checks verify outcomes and lifecycle, not physical haptic or listening preference.
+
+`NativeSkyControls` reveals fully visible targets through the non-playing screen edge. Paused preparation checks retain exact board snapshots; fixed and flowing guide layouts have distinct coordinate expectations. `SkyFlowInteractionTests.swift` owns the unchanged flow suite separately from shared native settings helpers. [Compact regression evidence](../docs/evidence/compact-native-acceptance-2026-10-19/README.md).

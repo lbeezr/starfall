@@ -10,7 +10,8 @@ final class CriticalMassInteractionTests: XCTestCase {
         return app
     }
     @MainActor private func ready(_ element: XCUIElement) {
-        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true AND hittable == true"), object: element).wait(timeout: 8))
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: element).wait(timeout: 8))
+        XCUIApplication().revealSkyControls([element])
     }
     @MainActor private func capture(_ app: XCUIApplication, _ name: String) {
         let attachment = XCTAttachment(screenshot: app.screenshot())
@@ -79,11 +80,12 @@ final class CriticalMassInteractionTests: XCTestCase {
     @MainActor func testSystemReduceMotionPreservesImplosionOutcome() {
         let (settings, motion) = NativeSystemMotionSettings.open()
         let original = motion.value as? String == "1"
-        NativeSystemMotionSettings.set(true, on: motion); settings.terminate()
-        defer {
+        // XCTest owns cleanup even when continueAfterFailure stops this body.
+        addTeardownBlock { @MainActor in
             let (settings, motion) = NativeSystemMotionSettings.open()
             NativeSystemMotionSettings.set(original, on: motion); settings.terminate()
         }
+        NativeSystemMotionSettings.set(true, on: motion); settings.terminate()
         let app = launch(); defer { app.terminate() }
         XCTAssertTrue(app.buttons["experiment.cell.0.2"].label.contains("Stage 3"))
         let next = app.buttons["experiment.next"]

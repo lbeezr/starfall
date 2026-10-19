@@ -1,0 +1,181 @@
+{
+  "source": "0bcc8529a2f303a93c501fbabc6e5d27793b593f",
+  "runtime": "dev.07b4062290",
+  "summary": {
+    "status": "FAILED",
+    "durationMs": 181182,
+    "counts": {
+      "passed": 1,
+      "failed": 9,
+      "skipped": 0
+    },
+    "target": "simulator"
+  },
+  "tests": [
+    {
+      "suite": "ConstellationTraceNativeTests",
+      "test": "testAutomaticStormCountsRecoverWithoutManualShowersOrClears",
+      "status": "passed",
+      "durationMs": 20331
+    },
+    {
+      "suite": "ConstellationTraceNativeTests",
+      "test": "testBuildIDMenuAndLargestTextTrace",
+      "status": "failed",
+      "durationMs": 13241
+    },
+    {
+      "suite": "ConstellationTraceNativeTests",
+      "test": "testCurrentOrbitFollowUpGuideReadsToEndWithoutMovingActionsOrBoard",
+      "status": "failed",
+      "durationMs": 10784
+    },
+    {
+      "suite": "ConstellationTraceNativeTests",
+      "test": "testInputRecoversAfterMultitouchBackgroundAndSupportedRotation",
+      "status": "failed",
+      "durationMs": 23825
+    },
+    {
+      "suite": "ConstellationTraceNativeTests",
+      "test": "testLongPausedGuidanceStaysBelowFrontStars",
+      "status": "failed",
+      "durationMs": 8629
+    },
+    {
+      "suite": "CriticalMassInteractionTests",
+      "test": "testRescueRemainsARealScoringTap",
+      "status": "failed",
+      "durationMs": 15815
+    },
+    {
+      "suite": "CriticalMassInteractionTests",
+      "test": "testSystemReduceMotionPreservesImplosionOutcome",
+      "status": "failed",
+      "durationMs": 24447
+    },
+    {
+      "suite": "CriticalMassInteractionTests",
+      "test": "testWarningSwallowRestoreAndSettings",
+      "status": "failed",
+      "durationMs": 16050
+    },
+    {
+      "suite": "DuskInteractionTests",
+      "test": "testClearEarlyReleasesColorAndZeroRewardMatchStillClears",
+      "status": "failed",
+      "durationMs": 14446
+    },
+    {
+      "suite": "DuskInteractionTests",
+      "test": "testFiveFeedsCollapseAndRestoreCommittedResult",
+      "status": "failed",
+      "durationMs": 12992
+    }
+  ],
+  "diagnostics": {
+    "warnings": [],
+    "errors": [],
+    "testFailures": [
+      {
+        "suite": "ConstellationTraceNativeTests",
+        "test": "testBuildIDMenuAndLargestTextTrace",
+        "message": "XCTAssertTrue failed",
+        "location": "/Users/lbeezr/.codex/worktrees/bdbc/Starfall/UITests/ConstellationTraceNativeTests.swift:14"
+      },
+      {
+        "suite": "ConstellationTraceNativeTests",
+        "test": "testBuildIDMenuAndLargestTextTrace()",
+        "message": "XCTAssertTrue failed"
+      },
+      {
+        "suite": "ConstellationTraceNativeTests",
+        "test": "testCurrentOrbitFollowUpGuideReadsToEndWithoutMovingActionsOrBoard",
+        "message": "XCTAssertEqual failed: (\"[(144.5, 590.0, 103.5, 45.0), (32.0, 590.0, 100.5, 45.0)]\") is not equal to (\"[(144.5, 834.0, 103.5, 45.0), (32.0, 834.0, 100.5, 45.0)]\")",
+        "location": "/Users/lbeezr/.codex/worktrees/bdbc/Starfall/UITests/ConstellationTraceNativeTests.swift:376"
+      },
+      {
+        "suite": "ConstellationTraceNativeTests",
+        "test": "testCurrentOrbitFollowUpGuideReadsToEndWithoutMovingActionsOrBoard()",
+        "message": "XCTAssertEqual failed: (\"[(144.5, 590.0, 103.5, 45.0), (32.0, 590.0, 100.5, 45.0)]\") is not equal to (\"[(144.5, 834.0, 103.5, 45.0), (32.0, 834.0, 100.5, 45.0)]\")"
+      },
+      {
+        "suite": "ConstellationTraceNativeTests",
+        "test": "testInputRecoversAfterMultitouchBackgroundAndSupportedRotation",
+        "message": "XCTAssertTrue failed - experiment.pause",
+        "location": "/Users/lbeezr/.codex/worktrees/bdbc/Starfall/UITests/ConstellationTraceNativeTests.swift:303"
+      },
+      {
+        "suite": "ConstellationTraceNativeTests",
+        "test": "testInputRecoversAfterMultitouchBackgroundAndSupportedRotation()",
+        "message": "XCTAssertTrue failed - experiment.pause"
+      },
+      {
+        "suite": "ConstellationTraceNativeTests",
+        "test": "testLongPausedGuidanceStaysBelowFrontStars",
+        "message": "XCTAssertTrue failed",
+        "location": "/Users/lbeezr/.codex/worktrees/bdbc/Starfall/UITests/ConstellationTraceNativeTests.swift:198"
+      },
+      {
+        "suite": "ConstellationTraceNativeTests",
+        "test": "testLongPausedGuidanceStaysBelowFrontStars()",
+        "message": "XCTAssertTrue failed"
+      },
+      {
+        "suite": "CriticalMassInteractionTests",
+        "test": "testRescueRemainsARealScoringTap",
+        "message": "XCTAssertTrue failed",
+        "location": "/Users/lbeezr/.codex/worktrees/bdbc/Starfall/UITests/CriticalMassInteractionTests.swift:13"
+      },
+      {
+        "suite": "CriticalMassInteractionTests",
+        "test": "testRescueRemainsARealScoringTap()",
+        "message": "XCTAssertTrue failed"
+      },
+      {
+        "suite": "CriticalMassInteractionTests",
+        "test": "testSystemReduceMotionPreservesImplosionOutcome",
+        "message": "XCTAssertTrue failed",
+        "location": "/Users/lbeezr/.codex/worktrees/bdbc/Starfall/UITests/CriticalMassInteractionTests.swift:13"
+      },
+      {
+        "suite": "CriticalMassInteractionTests",
+        "test": "testSystemReduceMotionPreservesImplosionOutcome()",
+        "message": "XCTAssertTrue failed"
+      },
+      {
+        "suite": "CriticalMassInteractionTests",
+        "test": "testWarningSwallowRestoreAndSettings",
+        "message": "XCTAssertTrue failed",
+        "location": "/Users/lbeezr/.codex/worktrees/bdbc/Starfall/UITests/CriticalMassInteractionTests.swift:13"
+      },
+      {
+        "suite": "CriticalMassInteractionTests",
+        "test": "testWarningSwallowRestoreAndSettings()",
+        "message": "XCTAssertTrue failed"
+      },
+      {
+        "suite": "DuskInteractionTests",
+        "test": "testClearEarlyReleasesColorAndZeroRewardMatchStillClears",
+        "message": "XCTAssertTrue failed - Attributes: Application, 0x1104d4a00, pid: 61006, label: 'Starfall'",
+        "location": "/Users/lbeezr/.codex/worktrees/bdbc/Starfall/UITests/DuskInteractionTests.swift:15"
+      },
+      {
+        "suite": "DuskInteractionTests",
+        "test": "testClearEarlyReleasesColorAndZeroRewardMatchStillClears()",
+        "message": "XCTAssertTrue failed - Attributes: Application, 0x1104d4a00, pid: 61006, label: 'Starfall' [Full hierarchy retained in ignored baseline.xcresult.]"
+      },
+      {
+        "suite": "DuskInteractionTests",
+        "test": "testFiveFeedsCollapseAndRestoreCommittedResult",
+        "message": "XCTAssertTrue failed - Attributes: Application, 0x110533480, pid: 61136, label: 'Starfall'",
+        "location": "/Users/lbeezr/.codex/worktrees/bdbc/Starfall/UITests/DuskInteractionTests.swift:15"
+      },
+      {
+        "suite": "DuskInteractionTests",
+        "test": "testFiveFeedsCollapseAndRestoreCommittedResult()",
+        "message": "XCTAssertTrue failed - Attributes: Application, 0x110533480, pid: 61136, label: 'Starfall' [Full hierarchy retained in ignored baseline.xcresult.]"
+      }
+    ]
+  }
+}

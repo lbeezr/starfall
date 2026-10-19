@@ -1,0 +1,19 @@
+{
+  "source": "0bcc8529a2f303a93c501fbabc6e5d27793b593f",
+  "run": 39198577421,
+  "job": 117887188198,
+  "result": "infrastructure timeout before app compilation",
+  "core": {
+    "passed": 172,
+    "failed": 0
+  },
+  "inventory": {
+    "timeoutSeconds": 30,
+    "exitCode": 124,
+    "start": "2026-10-19T04:20:21.3045230Z",
+    "end": "2026-10-19T04:20:51.4755630Z"
+  },
+  "appBuild": "not reached",
+  "nativeTests": "not reached",
+  "url": "https://github.com/lbeezr/starfall/actions/runs/39198577421"
+}
