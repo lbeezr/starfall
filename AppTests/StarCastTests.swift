@@ -15,7 +15,10 @@ final class StarCastTests: XCTestCase {
             scene.enumerateChildNodes(withName: "//sky.input.contact") { node, _ in
                 if let cue = node as? SKShapeNode { cues.append(cue) }
             }
-            XCTAssertEqual(cues.count, ready ? 4 : 1)
+            scene.enumerateChildNodes(withName: "//sky.input.drawing.armed") { node, _ in
+                if let cue = node as? SKShapeNode { cues.append(cue) }
+            }
+            XCTAssertEqual(cues.count, ready ? 5 : 1)
             for cue in cues {
                 let path = try XCTUnwrap(cue.path)
                 var moves = 0, lines = 0, curvesOrClosures = 0

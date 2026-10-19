@@ -92,6 +92,9 @@ enum StarfallTheme {
         static let contactWidth: CGFloat = 2
         static let readyWidth: CGFloat = 3
         static let arrowWing: CGFloat = 0.12
+        static let holdInnerRadius: CGFloat = 0.43
+        static let holdOuterRadius: CGFloat = 0.64
+        static let holdMarkCount = 12
     }
 
     enum Typography {

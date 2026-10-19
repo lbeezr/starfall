@@ -464,26 +464,46 @@ extension FallingSkyScene {
         bufferedInputLayer.addChild(arrow)
     }
 
-    private func contactOutline(_ cell: Cell, ready: Bool) -> SKShapeNode {
+    private func contactOutline(_ cell: Cell, ready: Bool, armed: Bool = false) -> SKShapeNode {
         let rays = CGMutablePath()
         for index in 0..<4 {
-            let angle = CGFloat.pi / 4 + CGFloat(index) * .pi / 2
-            let inner = step * StarfallTheme.SelectionCue.innerRadius
-            let outer = step * StarfallTheme.SelectionCue.outerRadius
+            let angle = (armed ? 0 : CGFloat.pi / 4) + CGFloat(index) * .pi / 2
+            let inner = step * (armed ? StarfallTheme.SelectionCue.holdInnerRadius : StarfallTheme.SelectionCue.innerRadius)
+            let outer = step * (armed ? StarfallTheme.SelectionCue.holdOuterRadius : StarfallTheme.SelectionCue.outerRadius)
             rays.move(to: CGPoint(x: cos(angle) * inner, y: sin(angle) * inner))
             rays.addLine(to: CGPoint(x: cos(angle) * outer, y: sin(angle) * outer))
         }
         let cue = SKShapeNode(path: rays)
-        cue.name = "sky.input.contact"; cue.position = point(cell)
+        cue.name = armed ? "sky.input.drawing.armed" : "sky.input.contact"; cue.position = point(cell)
         cue.strokeColor = UIColor(StarfallTheme.Colors.textPrimary)
         cue.lineWidth = ready ? StarfallTheme.SelectionCue.readyWidth : StarfallTheme.SelectionCue.contactWidth
         cue.fillColor = .clear
         return cue
     }
 
-    func showContact(_ cell: Cell) {
+    func showContact(_ cell: Cell, drawingEligible: Bool = false) {
         clearConstellationTrace()
         constellationTrail.addChild(contactOutline(cell, ready: false))
+        guard drawingEligible, growthMotionEnabled else { return }
+        let progress = SKNode()
+        progress.name = "sky.input.hold.progress"; progress.position = point(cell)
+        for index in 0..<StarfallTheme.SelectionCue.holdMarkCount {
+            let angle = CGFloat(index % 4) * .pi / 2
+            let segment = CGFloat(index / 4)
+            let inner = step * StarfallTheme.SelectionCue.holdInnerRadius
+            let length = step * (StarfallTheme.SelectionCue.holdOuterRadius-StarfallTheme.SelectionCue.holdInnerRadius) / 3
+            let ray = CGMutablePath()
+            ray.move(to: CGPoint(x:cos(angle)*(inner+length*segment),y:sin(angle)*(inner+length*segment)))
+            ray.addLine(to: CGPoint(x:cos(angle)*(inner+length*(segment+0.8)),y:sin(angle)*(inner+length*(segment+0.8))))
+            let mark = SKShapeNode(path:ray)
+            mark.strokeColor = UIColor(StarfallTheme.Colors.textPrimary); mark.fillColor = .clear
+            mark.lineWidth = StarfallTheme.SelectionCue.contactWidth
+            mark.alpha = 0.15
+            let delay = SkyGestureTiming.drawingHoldDuration * Double(index+1) / Double(StarfallTheme.SelectionCue.holdMarkCount)
+            mark.run(.sequence([.wait(forDuration: delay), .fadeAlpha(to: 1, duration: 0.015)]))
+            progress.addChild(mark)
+        }
+        constellationTrail.addChild(progress)
     }
 
     func clearConstellationTrace() { constellationTrail.removeAllActions(); constellationTrail.removeAllChildren() }
@@ -491,6 +511,7 @@ extension FallingSkyScene {
     func showConstellationTrace(_ path: [Cell], ready: Bool) {
         clearConstellationTrace()
         guard path.count <= 196, !path.isEmpty else { return }
+        constellationTrail.addChild(contactOutline(path[0], ready:true, armed:true))
         let route = CGMutablePath()
         route.move(to: point(path[0]))
         for cell in path.dropFirst() { route.addLine(to: point(cell)) }
