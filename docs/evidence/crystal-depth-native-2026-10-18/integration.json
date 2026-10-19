@@ -99,5 +99,28 @@
       "source": "XCTest PNG exported with sips JPEG quality 90"
     }
   ],
-  "coreInputsUnchanged": true
+  "coreInputsUnchanged": true,
+  "publication": {
+    "pullRequest": "https://github.com/lbeezr/starfall/pull/140",
+    "head": "bfe0dbe76261612119aa1019594a33bec1775482",
+    "merge": "30384df4a4b5d80fc192f2ab78858cada35ab7ce",
+    "verifiedTree": "f257e6627cfef75572a748bde55947355d72a4c4",
+    "localFinalCommit": "c873777ee4240ea3ef624148a374c9e861d6309b"
+  },
+  "delivery": {
+    "buildID": "dev.b7e6e39e20",
+    "source": "30384df4a4b5d80fc192f2ab78858cada35ab7ce",
+    "bundle": "com.starfall.prototype",
+    "bundleVersion": "1",
+    "validation": {
+      "coreTests": "passed",
+      "signature": "verified",
+      "mainCIAtInstall": "pending"
+    },
+    "coreTests": 169,
+    "actualInventoryMatchesInstaller": true,
+    "installationURLSHA256": "f1c824bfb8b44cb28e907132a63f009192eafcded9d5c4c1b60f81b9e34df27a",
+    "launchResetOrUninstall": false,
+    "method": "scripts/device-update.py run; current-main archive"
+  }
 }
