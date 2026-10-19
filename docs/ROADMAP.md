@@ -1,6 +1,6 @@
 # Starfall roadmap
 
-The [gameplay quality workstream](GAMEPLAY_QUALITY.md) follows the gesture improvements. Readability and consequence feedback are delivered. The [shower forecast correction](evidence/shower-forecast-2026-10-18/README.md) is delivered. Interactive setup examples are in acceptance; reward rhythm and replay follow. Each verified batch merges and reaches the original phone app before the next priority.
+The [gameplay quality workstream](GAMEPLAY_QUALITY.md) follows the gesture improvements. Readability and consequence feedback are delivered. The [shower forecast correction](evidence/shower-forecast-2026-10-18/README.md) is delivered. Interactive setup examples are delivered. Reward rhythm is verified locally; ending/replay follows. Each verified batch merges and reaches the original phone app before the next priority.
 
 The [gesture quality workstream](GESTURE_QUALITY.md) targets instant cardinal swaps, deliberate held drawing, forgiving strokes and dependable rapid follow-ups. Five separate batches cover recognition, follow-up admission, edge forgiveness, hold feedback and quiet response, with [source-bound verification](GESTURE_QUALITY.md#evidence-and-limits). All five are merged individually; [canonical delivery receipts](evidence/gesture-delivery-2026-10-18/README.md) distinguish installed identity from physical-play acceptance. Physical comfort determines final acceptance.
 

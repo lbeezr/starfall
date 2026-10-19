@@ -79,3 +79,5 @@ Four-edge regressions distinguish blocked swaps from trace/nonfinite cancellatio
 Forecast regressions preserve the actual remainder through contact, pause grace and background, then verify one deferred shower with no catch-up. Quiet motion does not alter committed outcomes.
 
 Help-context tests expose only examples supported by the current or pending rules: no Open sky examples in First Light and no Opal example in legacy skies.
+
+Readiness regressions cover four-star squares, ordinary five-star traces, retracing, continued selection and expired hold/generation/snapshot cues. Audio tests decode all four celebration cues, start all eight bundled sources and exercise latest-only recipe/relay cancellation without claiming listening acceptance.

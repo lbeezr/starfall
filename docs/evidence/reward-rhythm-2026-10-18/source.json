@@ -1,0 +1,17 @@
+{
+  "runtimeCommit": "37b6198c8b068d2c01b80cda2f5948aa1924e383",
+  "nativeTestCommit": "f721b85ff967a2fb98b8073636a9b5837f32170a",
+  "runtimeBuildID": "dev.9de7f44c3c",
+  "hostedSource": "9f8b651 / dev.14659eadd3 before pointer-sample coalescing",
+  "dirtyRuntimePaths": [],
+  "environment": {
+    "xcode": "27.1 (27A9275)",
+    "swift": "6.4",
+    "simulator": "iPhone 16 Pro Max QA",
+    "os": "iOS 27.0 (24A434)",
+    "configuration": [
+      "Debug",
+      "Release"
+    ]
+  }
+}

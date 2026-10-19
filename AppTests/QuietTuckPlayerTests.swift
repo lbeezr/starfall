@@ -7,16 +7,16 @@ final class QuietTuckPlayerTests: XCTestCase {
     @MainActor func testCelebrationUsesOneDistinctVoiceAndPreservesOrdinaryRotation() {
         let output = RecordingTuckOutput()
         let player = QuietTuckPlayer(output: output, notifications: NotificationCenter(), isActive: { true })
-        player.play(); player.play(.brilliant); player.play(.constellation); player.play()
-        XCTAssertEqual(output.takes, [0, 4, 5, 1])
+        player.play(); player.play(.brilliant); player.play(.constellation); player.play(.recipe(.square)); player.play(.recipe(.cross)); player.play(.relay(2)); player.play(.relay(9)); player.play()
+        XCTAssertEqual(output.takes, [0, 4, 5, 6, 6, 7, 7, 1])
         player.stop(); XCTAssertEqual(output.stops, 1)
     }
 
     @MainActor func testCelebrationResourcesDecodeWithFiniteDuration() throws {
-        for name in BundledTuckOutput.celebrationNames {
+        for (name,duration) in zip(BundledTuckOutput.celebrationNames,[0.74,0.74,0.42,0.54]) {
             let url = try XCTUnwrap(Bundle.main.url(forResource: name, withExtension: "wav", subdirectory: "Audio"))
             let decoded = try AVAudioPlayer(contentsOf: url)
-            XCTAssertEqual(decoded.duration, 0.74, accuracy: 0.005)
+            XCTAssertEqual(decoded.duration, duration, accuracy: 0.005)
         }
     }
 
@@ -36,20 +36,20 @@ final class QuietTuckPlayerTests: XCTestCase {
         let output = RecordingTuckOutput()
         var active = true
         let player = QuietTuckPlayer(output: output, notifications: center, isActive: { active })
-        player.play()
+        player.play(); player.play(.recipe(.square))
         center.post(name: AVAudioSession.interruptionNotification, object: nil,
                     userInfo: [AVAudioSessionInterruptionTypeKey: AVAudioSession.InterruptionType.began.rawValue])
-        player.play()
-        XCTAssertEqual(output.takes, [0])
+        player.play(); player.play(.relay(2))
+        XCTAssertEqual(output.takes, [0, 6])
         center.post(name: AVAudioSession.interruptionNotification, object: nil,
                     userInfo: [AVAudioSessionInterruptionTypeKey: AVAudioSession.InterruptionType.ended.rawValue])
-        XCTAssertEqual(output.takes, [0])
+        XCTAssertEqual(output.takes, [0, 6])
         active = false
-        player.play()
-        XCTAssertEqual(output.takes, [0])
+        player.play(); player.play(.relay(2))
+        XCTAssertEqual(output.takes, [0, 6])
         active = true
-        player.play()
-        XCTAssertEqual(output.takes, [0, 1])
+        player.play(); player.play(.relay(2))
+        XCTAssertEqual(output.takes, [0, 6, 1, 7])
     }
 
     @MainActor func testHeadphoneDisconnectAndInactivityStopWithoutReplaying() async {
@@ -90,17 +90,17 @@ final class QuietTuckPlayerTests: XCTestCase {
         XCTAssertEqual(sound.stops, 1)
     }
 
-    @MainActor func testAllFourShippedFilesDecodeAndNativePlaybackCanStart() async throws {
+    @MainActor func testShippedFilesDecodeAndAllNativeCuesCanStart() async throws {
         for name in BundledTuckOutput.names {
             let url = try XCTUnwrap(Bundle.main.url(forResource: name, withExtension: "mp3", subdirectory: "Audio"))
             let decoded = try AVAudioPlayer(contentsOf: url)
             XCTAssertEqual(decoded.duration, 0.48, accuracy: 0.005)
             XCTAssertEqual(decoded.numberOfChannels, 2)
         }
-        let starts = (0..<4).map { expectation(description: "Native take \($0) starts") }
+        let starts = (0..<8).map { expectation(description: "Native take \($0) starts") }
         let queue = DispatchQueue(label: "StarfallNativeAudioTest")
         let output = BundledTuckOutput(queue: queue, didStart: { starts[$0].fulfill() })
-        for take in 0..<4 {
+        for take in 0..<8 {
             XCTAssertTrue(output.start(take: take))
             await fulfillment(of: [starts[take]], timeout: 5)
         }
@@ -116,14 +116,14 @@ final class QuietTuckPlayerTests: XCTestCase {
         let queue = DispatchQueue(label: "StarfallAudioCancellationTest")
         let started = expectation(description: "Only latest unmuted request starts")
         let output = BundledTuckOutput(queue: queue, didStart: { take in
-            XCTAssertEqual(take, 2)
+            XCTAssertEqual(take, 7)
             started.fulfill()
         })
         queue.suspend()
         XCTAssertTrue(output.start(take: 0))
-        XCTAssertTrue(output.start(take: 1))
+        XCTAssertTrue(output.start(take: 6))
         output.stop()
-        XCTAssertTrue(output.start(take: 2))
+        XCTAssertTrue(output.start(take: 7))
         queue.resume()
         await fulfillment(of: [started], timeout: 5)
         output.stop()

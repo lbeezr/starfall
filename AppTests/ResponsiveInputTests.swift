@@ -394,16 +394,21 @@ extension ResponsiveInputTests {
         let feedback = TracePolicyFeedback()
         let store = FallingSkyStore(defaults:defaults,arguments:["--starfalls-reset"],presenter:FallingSkyRecorder(),clock:ManualRainClock(),feedback:feedback)
         store.setSuspended(false); store.loadConstellationFixture(.diagonalSix)
-        store.traceStep(count:2)
+        let snapshot = store.game, generation = store.constellationInputGeneration
+        let path = (0..<6).map { Cell($0,$0) }
+        func step(_ count: Int, hold: UInt64?, epoch: UInt64? = nil) {
+            store.traceStep(path:Array(path.prefix(count)), snapshot:snapshot, generation:epoch ?? generation, holdTicket:hold)
+        }
+        step(2,hold:nil)
         XCTAssertTrue(feedback.steps.isEmpty)
         let hold = try XCTUnwrap(store.beginConstellationHold(at:Cell(0,0)))
-        store.traceStep(count:2)
-        store.hapticsEnabled=false; store.traceStep(count:3)
-        store.endConstellationHold(hold); store.traceStep(count:4)
+        step(2,hold:hold)
+        store.hapticsEnabled=false; step(3,hold:hold)
+        store.endConstellationHold(hold); step(4,hold:hold)
         store.setReducedMotion(true); store.hapticsEnabled=true
-        XCTAssertNotNil(store.beginConstellationHold(at:Cell(0,0)))
-        store.traceStep(count:5)
-        store.setSuspended(true); store.traceStep(count:6)
+        let quietHold = try XCTUnwrap(store.beginConstellationHold(at:Cell(0,0)))
+        step(5,hold:quietHold,epoch:store.constellationInputGeneration)
+        store.setSuspended(true); step(6,hold:quietHold)
         XCTAssertEqual(feedback.steps,[2,3,5])
         XCTAssertEqual(feedback.enabled,[true,false,false])
     }
@@ -413,9 +418,10 @@ extension ResponsiveInputTests {
     var announcements: [String] = []
     var steps: [Int] = []
     var enabled: [Bool] = []
+    var ready: [Bool] = []
     func collected(soundEnabled: Bool, hapticsEnabled: Bool, reducedMotion: Bool) {}
     func announce(_ message: String) { announcements.append(message) }
-    func traceStep(count: Int, enabled: Bool) { steps.append(count); self.enabled.append(enabled) }
+    func traceStep(count: Int, becameReady: Bool, enabled: Bool) { steps.append(count); ready.append(becameReady); self.enabled.append(enabled) }
     func stopSounds() {}
 }
 
@@ -448,5 +454,48 @@ extension ResponsiveInputTests {
         store.setSuspended(true)
         XCTAssertEqual(store.clearAvailability(Cell(0,0)), .suspended)
         XCTAssertEqual(store.traceAvailability([Cell(0,0)]), .suspended)
+    }
+}
+
+
+extension ResponsiveInputTests {
+    @MainActor func testTraceReadinessUsesTheActualPathOnceAndRejectsStaleCues() throws {
+        let suite = "TraceReady.\(UUID())", defaults = UserDefaults(suiteName:suite)!
+        defer { defaults.removePersistentDomain(forName:suite) }
+        let feedback = TracePolicyFeedback()
+        let store = FallingSkyStore(defaults:defaults,
+            arguments:["--starfalls-reset","--technique-review","--technique-example=bank"],
+            presenter:FallingSkyRecorder(),clock:ManualRainClock(),feedback:feedback)
+        store.setSuspended(false)
+        let snapshot = store.game, generation = store.constellationInputGeneration
+        let hold = try XCTUnwrap(store.beginConstellationHold(at:Cell(0,0)))
+        let square = [Cell(0,0),Cell(0,1),Cell(1,1),Cell(1,0)]
+        func step(_ path: [Cell], ticket: UInt64? = nil, epoch: UInt64? = nil, sky: FallingSky? = nil) {
+            store.traceStep(path:path,snapshot:sky ?? snapshot,generation:epoch ?? generation,holdTicket:ticket ?? hold)
+        }
+        step(Array(square.prefix(2))); step(Array(square.prefix(3))); step(square)
+        step(square + [Cell(1,1)]) // Retracing adds no star and repeats no ready cue.
+        step(square + [Cell(1,1),Cell(1,2)])
+        XCTAssertEqual(feedback.steps,[2,3,4,5])
+        XCTAssertEqual(feedback.ready,[false,false,true,false])
+        step(square + [Cell(6,6)]) // An invalid prefix cannot request feedback.
+        store.endConstellationHold(hold)
+        let replacement = try XCTUnwrap(store.beginConstellationHold(at:Cell(0,0)))
+        step(square) // Expired hold cannot claim the new contact.
+        step(square,ticket:replacement,epoch:generation &+ 1)
+        step(square,ticket:replacement,sky:FallingSky.freshSurvival(seed:9))
+        XCTAssertEqual(feedback.steps.count,4)
+        step(square,ticket:replacement)
+        XCTAssertEqual(feedback.ready,[false,false,true,false,true])
+        XCTAssertEqual(store.game,snapshot)
+        store.endConstellationHold(replacement)
+        store.loadConstellationFixture(.diagonalSix)
+        let diagonal = store.game, epoch = store.constellationInputGeneration
+        let diagonalHold = try XCTUnwrap(store.beginConstellationHold(at:Cell(0,0)))
+        for count in 2...6 {
+            store.traceStep(path:(0..<count).map { Cell($0,$0) }, snapshot:diagonal,
+                            generation:epoch,holdTicket:diagonalHold)
+        }
+        XCTAssertEqual(Array(feedback.ready.suffix(5)),[false,false,false,true,false])
     }
 }

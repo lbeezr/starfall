@@ -41,14 +41,14 @@ import StarfallCore
 @MainActor protocol FallingSkyFeedbackProviding: AnyObject {
     func collected(soundEnabled: Bool, hapticsEnabled: Bool, reducedMotion: Bool)
     func collected(_ level: StarlightCelebration.Level, soundEnabled: Bool, hapticsEnabled: Bool, reducedMotion: Bool)
-    func traceStep(count: Int, enabled: Bool)
+    func traceStep(count: Int, becameReady: Bool, enabled: Bool)
     func traceArmed(enabled: Bool)
     func announce(_ message: String)
     func stopSounds()
 }
 
 extension FallingSkyFeedbackProviding {
-    func traceStep(count: Int, enabled: Bool) {}
+    func traceStep(count: Int, becameReady: Bool, enabled: Bool) {}
     func traceArmed(enabled: Bool) {}
     // Existing injected feedback clients preserve their preference/recording contract.
     func collected(_ level: StarlightCelebration.Level, soundEnabled: Bool, hapticsEnabled: Bool, reducedMotion: Bool) {
@@ -69,9 +69,9 @@ extension GameFeedback: FallingSkyFeedbackProviding {
         }
     }
 
-    func traceStep(count: Int, enabled: Bool) {
+    func traceStep(count: Int, becameReady: Bool, enabled: Bool) {
         guard enabled, !UIAccessibility.isReduceMotionEnabled, !UIAccessibility.isVoiceOverRunning else { return }
-        if count == 5 { traceReady.impactOccurred(intensity: 0.8) }
+        if becameReady { traceReady.impactOccurred(intensity: 0.8) }
         else { impact.impactOccurred(intensity: min(0.85, 0.2 + Double(count) * 0.1)) }
         impact.prepare(); traceReady.prepare()
     }

@@ -66,16 +66,24 @@ extension ClearSoundPlaying {
     func play(_ level: StarlightCelebration.Level) {
         guard level != .ordinary else { play(); return }
         guard !interrupted, isActive() else { return }
-        _ = output.start(take: level == .brilliant ? 4 : 5)
+        let take: Int
+        switch level {
+        case .ordinary: return // Handled by the rotating ordinary path above.
+        case .brilliant: take = 4
+        case .constellation: take = 5
+        case .recipe: take = 6
+        case .relay: take = 7
+        }
+        _ = output.start(take: take)
     }
 
     func stop() { output.stop() }
 }
 
-/// Four local sources, one audible voice. Loading and session activation are lazy.
+/// Eight bounded local sources, one audible voice. Loading and session activation are lazy.
 @MainActor final class BundledTuckOutput: TuckAudioOutput {
     static let names = (1...4).map { String(format: "sf_quiet_tuck_%02d", $0) }
-    static let celebrationNames = ["sf_brilliant", "sf_constellation"]
+    static let celebrationNames = ["sf_brilliant", "sf_constellation", "sf_recipe", "sf_relay"]
     private let worker: TuckAudioWorker
     private let hasAllFiles: Bool
 
@@ -140,7 +148,7 @@ private final class TuckAudioWorker: @unchecked Sendable {
         guard isCurrent(token) else { return }
         if !attemptedLoad {
             attemptedLoad = true
-            // All four or silence: a packaging failure must never block a move.
+            // All packaged cues or silence: a packaging failure must never block a move.
             players = (try? urls.map { url in
                 let player = try AVAudioPlayer(contentsOf: url)
                 player.volume = 0.7

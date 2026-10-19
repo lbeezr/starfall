@@ -158,6 +158,16 @@ extension SkyTechniqueInteractionTests {
         app.buttons["experiment.cell.0.0"].tap(); score(3,app)
     }
 
+    @MainActor func testSystemReduceMotionPreservesHeldTraceAndRapidSwap() {
+        let (preferences, motion) = NativeSystemMotionSettings.open()
+        let original = motion.value as? String == "1"
+        NativeSystemMotionSettings.set(true,on:motion); preferences.terminate()
+        addTeardownBlock { @MainActor in
+            let (preferences,motion) = NativeSystemMotionSettings.open()
+            NativeSystemMotionSettings.set(original,on:motion); preferences.terminate()
+        }
+        testFastSameColorStrokeSwapsOnceThenHoldDrawClearsOnlyFive()
+    }
     @MainActor func testFastSameColorStrokeSwapsOnceThenHoldDrawClearsOnlyFive() {
         let app = launch("trace"); defer { app.terminate() }
         drag(app,from:(0,0),to:(0,4),hold:0.5)

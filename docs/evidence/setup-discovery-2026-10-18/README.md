@@ -4,7 +4,7 @@
 
 Help now offers four optional interactive examples: making a square, tracing a cross, including Opal and creating a relay. Each explicit button applies the real Core move to an isolated value, shows exact rewards and retains the surviving stars. Outlines identify the next move; the original board dimensions stay fixed through its steps. These are consequence demonstrations, not gesture-execution training.
 
-**Next action:** Merge and verify canonical delivery before reward rhythm.
+**Next action:** Continue reward rhythm; physical comprehension remains open.
 
 ## Outcomes and boundaries
 
@@ -34,3 +34,7 @@ The compact-layout run found a native test precision issue: a 44-point target wa
 ## Final local acceptance
 
 **172 Core tests passed.** The 29 affected hosted checks passed before the compact layout, with all 12 dialogue/catalogue checks passing again on the final runtime. Six distinct native checks pass across the recorded sources; the final three example checks pass on runtime dev.14bd6d9ce3 (normal, largest-text/calm and system Reduce Motion). The unchanged Help container also passed its complete largest-text read-through; pending First Light and rapid live gestures pass. Release Simulator build, hygiene and whitespace checks pass. Only evidence/documentation paths were dirty for final acceptance. Actual VoiceOver and physical comprehension remain separate; these checks do not certify an S-tier enjoyment rating.
+
+## Delivery
+
+[PR #148](https://github.com/lbeezr/starfall/pull/148) merged as 7322bcafb37523c15f6c65617a473d493301933d. Its tree exactly matches local publication ea77f43. The canonical updater verified actual installation of **dev.14bd6d9ce3** from that main, with Core tests/signature passed and main CI pending. [Sanitized receipt](delivery.json). No reset or automatic launch.

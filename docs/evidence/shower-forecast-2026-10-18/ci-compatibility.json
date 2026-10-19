@@ -1,0 +1,24 @@
+{
+  "source": "94da76e80c7817b193da4abe262659e32f033481",
+  "run": "https://github.com/lbeezr/starfall/actions/runs/39194373430",
+  "result": "cancelled by normal main-branch concurrency after PR148 merged; not green",
+  "toolchain": "Xcode 26.3 / iOS 26.2 SDK",
+  "corePassed": 169,
+  "builds": [
+    "2026-10-19T03:29:20.1541900Z ** BUILD SUCCEEDED **",
+    "2026-10-19T03:31:13.8369420Z ** BUILD SUCCEEDED **"
+  ],
+  "failures": [
+    "2026-10-19T03:33:47.1037790Z /Users/runner/work/starfall/starfall/UITests/ConstellationTraceNativeTests.swift:274: error: -[StarfallUITests.ConstellationTraceNativeTests testAutomaticStormCountsRecoverWithoutManualShowersOrClears] : XCTAssertTrue failed",
+    "2026-10-19T03:34:04.9820400Z /Users/runner/work/starfall/starfall/UITests/ConstellationTraceNativeTests.swift:14: error: -[StarfallUITests.ConstellationTraceNativeTests testBuildIDMenuAndLargestTextTrace] : XCTAssertTrue failed",
+    "2026-10-19T03:34:20.2088700Z /Users/runner/work/starfall/starfall/UITests/ConstellationTraceNativeTests.swift:376: error: -[StarfallUITests.ConstellationTraceNativeTests testCurrentOrbitFollowUpGuideReadsToEndWithoutMovingActionsOrBoard] : XCTAssertEqual failed: (\"[(144.5, 590.0, 103.5, 45.0), (32.0, 590.0, 100.5, 45.0)]\") is not equal to (\"[(144.5, 834.0, 103.5, 45.0), (32.0, 834.0, 100.5, 45.0)]\")",
+    "2026-10-19T03:35:17.9972710Z /Users/runner/work/starfall/starfall/UITests/ConstellationTraceNativeTests.swift:303: error: -[StarfallUITests.ConstellationTraceNativeTests testInputRecoversAfterMultitouchBackgroundAndSupportedRotation] : XCTAssertTrue failed - experiment.pause",
+    "2026-10-19T03:35:56.4102100Z /Users/runner/work/starfall/starfall/UITests/ConstellationTraceNativeTests.swift:198: error: -[StarfallUITests.ConstellationTraceNativeTests testLongPausedGuidanceStaysBelowFrontStars] : XCTAssertTrue failed",
+    "2026-10-19T03:41:11.4951060Z /Users/runner/work/starfall/starfall/UITests/CriticalMassInteractionTests.swift:13: error: -[StarfallUITests.CriticalMassInteractionTests testRescueRemainsARealScoringTap] : XCTAssertTrue failed",
+    "2026-10-19T03:41:55.0140080Z /Users/runner/work/starfall/starfall/UITests/CriticalMassInteractionTests.swift:13: error: -[StarfallUITests.CriticalMassInteractionTests testSystemReduceMotionPreservesImplosionOutcome] : XCTAssertTrue failed",
+    "2026-10-19T03:42:17.7291230Z /Users/runner/work/starfall/starfall/UITests/CriticalMassInteractionTests.swift:13: error: -[StarfallUITests.CriticalMassInteractionTests testWarningSwallowRestoreAndSettings] : XCTAssertTrue failed",
+    "2026-10-19T03:42:35.5761390Z /Users/runner/work/starfall/starfall/UITests/DuskInteractionTests.swift:15: error: -[StarfallUITests.DuskInteractionTests testClearEarlyReleasesColorAndZeroRewardMatchStillClears] : XCTAssertTrue failed - Attributes: Application, 0x1015e2100, pid: 52848, label: 'Starfall'",
+    "2026-10-19T03:42:52.0631730Z /Users/runner/work/starfall/starfall/UITests/DuskInteractionTests.swift:15: error: -[StarfallUITests.DuskInteractionTests testFiveFeedsCollapseAndRestoreCommittedResult] : XCTAssertTrue failed - Attributes: Application, 0x1016d5540, pid: 53401, label: 'Starfall'"
+  ],
+  "finding": "At least several failures assume compact footer buttons are immediately visible. The captured 375x667 hierarchy places the footer below the viewport in the accepted scrolling layout. Exact board-frame assertions also include decorative overflow. This is triage evidence, not proof that every failure is test-only."
+}
