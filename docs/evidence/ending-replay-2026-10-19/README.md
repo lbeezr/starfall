@@ -6,7 +6,7 @@ The loss headline now says “No room to land.” The existing exact column and 
 
 **Delivery:** [PR #150](https://github.com/lbeezr/starfall/pull/150) merged to `0bcc852`; canonical updater verified **dev.07b4062290** on the original phone. [Receipt](delivery.json): Core and signature passed; main CI pending at installation. No player-data reset or automatic launch.
 
-**Next action:** Finish the separate compact-device CI follow-up; observe physical comprehension on the delivered app.
+**Next action:** Observe physical comprehension on the delivered app. The separate [compact-device CI follow-up](../compact-native-acceptance-2026-10-19/README.md) is verified, merged and canonically delivered.
 
 ## Scope and acceptance
 

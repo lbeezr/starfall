@@ -1,10 +1,10 @@
 # Keep fast play readable, understandable and rewarding
 
-**Status:** Accepted · **Owner:** current implementer · **Updated:** 2026-10-19
+**Status:** Closed — all six priorities delivered; physical acceptance remains open · **Owner:** current implementer · **Updated:** 2026-10-19
 
 Polish the six gameplay priorities in order, merging and delivering each verified improvement through the canonical phone updater before starting the next. The player reported a “huge improvement” after the five gesture deliveries. Apply that same bounded process to the remaining experience.
 
-**Next action:** Finish delivery of the verified compact-test follow-up, then use physical play to evaluate recognition, comfort and repeated-round preference across the six delivered priorities.
+**Next action:** Use physical play to evaluate recognition, comfort and repeated-round preference across the six delivered priorities. The compact-test follow-up is merged and canonically delivered as `dev.84fd0fa338` ([receipt](evidence/compact-native-acceptance-2026-10-19/delivery.json)).
 
 ## Scope and success
 
