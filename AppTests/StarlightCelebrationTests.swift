@@ -104,8 +104,7 @@ final class StarlightCelebrationTests: XCTestCase {
             }
             XCTAssertTrue(store.sceneReady); XCTAssertFalse(store.suspended)
             let initial = windowImage(window)
-            let central = example != .nudge
-            let baseline = try awardInk(in: initial, central: central)
+            let baseline = try awardInk(in: initial)
             for action in 0..<(example == .relay ? 2 : 1) {
                 let oldTotal = store.game.score
                 switch example {
@@ -132,7 +131,7 @@ final class StarlightCelebrationTests: XCTestCase {
                 repeat {
                     await Task.yield()
                     let image = windowImage(window)
-                    if !captured, try awardInk(in: image, central: central) > baseline + 100 {
+                    if !captured, try awardInk(in: image) > baseline + 100 {
                         let attachment = XCTAttachment(image: image)
                         attachment.name = "game-award-\(example.rawValue)-\(action)"
                         attachment.lifetime = .keepAlways; add(attachment); captured = true
@@ -226,10 +225,12 @@ final class StarlightCelebrationTests: XCTestCase {
         }
     }
 
-    private func awardInk(in image: UIImage, central: Bool) throws -> Int {
+    private func awardInk(in image: UIImage) throws -> Int {
         let cg = try XCTUnwrap(image.cgImage)
-        let crop = try XCTUnwrap(cg.cropping(to: CGRect(x: 110 * image.scale, y: (central ? 320 : 115) * image.scale,
-            width: 170 * image.scale, height: (central ? 145 : 90) * image.scale)))
+        // The empty sky below the header and above the first playable row.
+        // Every category now uses this region; keep the same visible-ink threshold.
+        let crop = try XCTUnwrap(cg.cropping(to: CGRect(x: 30 * image.scale, y: 110 * image.scale,
+            width: 330 * image.scale, height: 85 * image.scale)))
         var pixels = [UInt8](repeating: 0, count: crop.width * crop.height * 4)
         let context = try XCTUnwrap(CGContext(data: &pixels, width: crop.width, height: crop.height,
             bitsPerComponent: 8, bytesPerRow: crop.width * 4, space: CGColorSpaceCreateDeviceRGB(),
@@ -345,14 +346,24 @@ final class StarlightCelebrationTests: XCTestCase {
         XCTAssertEqual(StarlightCelebration.energy(for: 98), 1)
     }
 
-    @MainActor func testSpecialCalloutMovesTowardCenterAndClearsHeaderOnPhoneAndTablet() {
-        for size in [CGSize(width: 375, height: 667), CGSize(width: 390, height: 844), CGSize(width: 1024, height: 1366)] {
-            let board = CGRect(origin: .zero, size: size)
-            let header = CGRect(x: 12, y: 47, width: size.width - 24, height: 44)
-            let y = StarlightCelebrationOverlay.centralCalloutY(board: board, header: header)
-            XCTAssertGreaterThan(y, header.maxY + 16)
-            XCTAssertGreaterThan(y, board.height * 0.3)
-            XCTAssertLessThan(y + 100, board.height * 0.65)
+    @MainActor func testAwardLetteringLeavesEveryPlayableRowClear() {
+        for size in [CGSize(width: 375, height: 667), CGSize(width: 390, height: 844),
+                     CGSize(width: 430, height: 932), CGSize(width: 1024, height: 1366)] {
+            for accessible in [false, true] {
+                let board = CGRect(origin: CGPoint(x: 13, y: 27), size: size)
+                let header = CGRect(x: 25, y: 74, width: size.width - 24, height: accessible ? 98 : 44)
+                let region = StarlightCelebrationOverlay.awardRegion(board: board, header: header, accessible: accessible)
+                XCTAssertGreaterThan(region.height, 20)
+                XCTAssertFalse(region.intersects(header))
+                XCTAssertTrue(board.contains(region))
+                for row in 0..<7 {
+                    for column in 0..<7 {
+                        let cell = ObservatoryGeometry(size: size).frame(Cell(row, column))
+                            .offsetBy(dx: board.minX, dy: board.minY)
+                        XCTAssertFalse(region.intersects(cell), "Every phase is clipped to this protected region")
+                    }
+                }
+            }
         }
     }
 

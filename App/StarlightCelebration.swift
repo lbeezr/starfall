@@ -92,21 +92,24 @@ struct StarlightCelebrationOverlay: View {
             let exit = min(1, max(0, (age - 1.08) / 0.32))
             let fade = quiet ? 1 : min(1, age / 0.07) * (1 - exit)
             let entrance = min(1, max(0, age - 0.04) / 0.22)
-            let recoil = event.title == nil ? 0 : sin(age * 48) * max(0, 1 - age / 0.28) * (2 + event.energy * 3)
+            let region = Self.awardRegion(board: board, header: header, accessible: textSize.isAccessibilitySize)
             ZStack(alignment: .topLeading) {
                 if !quiet {
                     Canvas { context, _ in draw(in: &context, age: age) }
                 }
-                CrystalCelebrationLabel(event: event, tint: accent, width: calloutWidth, showsTitle: showsTitle,
+                CrystalCelebrationLabel(event: event, tint: accent, width: region.width - 12,
+                                        height: region.height - 8, showsTitle: !textSize.isAccessibilitySize,
                                         age: age, quiet: quiet)
                 .multilineTextAlignment(.center)
                 .shadow(color: StarfallTheme.Colors.skyTop, radius: 3)
-                .shadow(color: accent.opacity(0.8), radius: quiet ? 0 : 10)
-                .frame(width: calloutWidth)
-                .scaleEffect(quiet ? 1 : (0.72 + 0.28 * entrance + (0.16 + event.energy * 0.12) * sin(entrance * .pi)))
-                .rotationEffect(.degrees(quiet ? 0 : recoil * 0.4))
-                .offset(x: calloutX + (quiet ? 0 : recoil),
-                        y: calloutY + (quiet ? 0 : 22 * (1 - entrance) - 32 * exit * exit))
+                .shadow(color: accent.opacity(0.8), radius: quiet ? 0 : 4)
+                .scaleEffect(quiet ? 1 : 0.84 + 0.16 * entrance)
+                .offset(y: quiet ? 0 : 4 * (1 - entrance) - 4 * exit * exit)
+                .frame(width: region.width, height: region.height)
+                // Bound glyphs, glow and movement together. A larger reward must
+                // never expand into a playable row or cover the score/header.
+                .clipped()
+                .position(x: region.midX, y: region.midY)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
             .opacity(fade)
@@ -115,29 +118,13 @@ struct StarlightCelebrationOverlay: View {
         .accessibilityHidden(true)
     }
 
-    private var mapping: ObservatoryGeometry { ObservatoryGeometry(size: board.size) }
-    private var hasSkyRoom: Bool { mapping.frame(Cell(6, 3)).minY + board.minY - header.maxY >= 88 }
-    private var showsTitle: Bool { !textSize.isAccessibilitySize }
-    private var usesLocalAward: Bool { event.title == nil && !textSize.isAccessibilitySize && !hasSkyRoom }
-    private var calloutWidth: CGFloat { usesLocalAward ? 128 : max(1, board.width - 32) }
-    private var awardOrigin: CGPoint {
-        let points = event.cells.map(location)
-        return CGPoint(x: points.map(\.x).reduce(0, +) / CGFloat(points.count),
-                       y: points.map(\.y).reduce(0, +) / CGFloat(points.count))
-    }
-    private var calloutX: CGFloat {
-        usesLocalAward ? max(board.minX + 8, min(board.maxX - 136, awardOrigin.x - 64)) : board.minX + 16
-    }
-    private var calloutY: CGFloat {
-        if textSize.isAccessibilitySize { return mapping.frame(Cell(0, 3)).maxY + board.minY + 8 }
-        if event.title != nil { return Self.centralCalloutY(board: board, header: header) }
-        if usesLocalAward { return awardOrigin.y - 48 }
-        return max(header.maxY + 8, mapping.frame(Cell(6, 3)).minY + board.minY - 80)
-    }
-
-    /// Shared with layout regression checks; placement uses the live canvas, not screen globals.
-    static func centralCalloutY(board: CGRect, header: CGRect) -> CGFloat {
-        max(header.maxY + 20, board.minY + board.height * 0.38)
+    /// One protected region for every award category, independent of occupied
+    /// cells or animation positions. Large text has a separate guide below the canvas.
+    static func awardRegion(board: CGRect, header: CGRect, accessible: Bool) -> CGRect {
+        let mapping = ObservatoryGeometry(size: board.size)
+        let top = accessible ? board.minY + mapping.frame(Cell(0, 3)).maxY + 8 : header.maxY + 4
+        let bottom = accessible ? board.maxY - 8 : board.minY + mapping.frame(Cell(6, 3)).minY - 8
+        return CGRect(x: board.minX + 16, y: top, width: max(0, board.width - 32), height: max(0, bottom - top))
     }
 
     private func color(_ contributor: StarlightCelebration.Contributor) -> Color {

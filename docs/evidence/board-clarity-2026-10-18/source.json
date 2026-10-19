@@ -1,0 +1,11 @@
+{
+  "baseCommit": "362586ff70148d1b47b6c9d4f7b3e8f141173030",
+  "runtimeBuildID": "dev.d7e15ddf2a",
+  "dirtyInputs": {
+    "App/CrystalCelebrationArtwork.swift": "4d7bca57aabaf78eff121cbab547342803a5469da1b4cc7b0024c9a6106e7b8f",
+    "App/StarfallTheme.swift": "064cee326b2097481fbc35fa76516fac1e42ba002d918f8334905fb97c9ea88c",
+    "App/StarlightCelebration.swift": "2efa0456b160229f8459e49c69e84d4f902b9ff0ad778409147d46e234059d6f",
+    "AppTests/StarlightCelebrationTests.swift": "246f303a4eec0283b83346a7f673c0de8fbc59fa80efdce26149908ec33e0bdd"
+  },
+  "snapshot": "b67ce0a9a362"
+}

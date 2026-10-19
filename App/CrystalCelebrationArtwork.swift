@@ -157,6 +157,7 @@ struct CrystalCelebrationLabel: View {
     let event: StarlightCelebration
     let tint: Color
     let width: CGFloat
+    let height: CGFloat
     let showsTitle: Bool
     let age: TimeInterval
     let quiet: Bool
@@ -166,16 +167,25 @@ struct CrystalCelebrationLabel: View {
         if !textSize.isAccessibilitySize, let family = CrystalCelebrationArtwork.shared.family,
            let award = family.award(event.collected),
            event.title == nil || family.run(event.title!) != nil {
-            VStack(spacing: StarfallTheme.Spacing.compact) {
-                if showsTitle, let title = event.title, let run = family.run(title) {
-                    CrystalGlyphLine(run: run, family: family,
-                        capHeight: StarfallTheme.Celebration.titleCapHeight,
-                        maximumWidth: min(width, StarfallTheme.Celebration.titleMaximumWidth), age: age, quiet: quiet)
+            let title = showsTitle ? event.title.flatMap(family.run) : nil
+            let gap = title == nil ? 0 : StarfallTheme.Spacing.small
+            let runWidth = award.width + (title?.width ?? 0)
+            let scale = max(0, min(StarfallTheme.Celebration.titleCapHeight / 160,
+                                  max(0, width - gap) / runWidth, max(0, height) / award.height))
+            if 160 * scale >= StarfallTheme.Celebration.minimumGlyphCapHeight {
+                HStack(spacing: gap) {
+                    if let title {
+                        CrystalGlyphLine(run: title, family: family, capHeight: 160 * scale,
+                                         maximumWidth: title.width * scale, age: age, quiet: quiet)
+                    }
+                    CrystalGlyphLine(run: award, family: family,
+                        capHeight: 160 * scale, maximumWidth: award.width * scale, age: age, quiet: quiet)
                 }
-                CrystalGlyphLine(run: award, family: family,
-                    capHeight: event.title == nil ? StarfallTheme.Celebration.ordinaryAwardHeight : StarfallTheme.Celebration.specialAwardHeight,
-                    maximumWidth: width, age: age, quiet: quiet)
+            } else {
+                compactLabel
             }
+        } else if !textSize.isAccessibilitySize {
+            compactLabel
         } else {
             VStack(spacing: StarfallTheme.Spacing.compact) {
                 if showsTitle, let title = event.title {
@@ -186,5 +196,20 @@ struct CrystalCelebrationLabel: View {
                     .foregroundStyle(StarfallTheme.Colors.textPrimary).monospacedDigit()
             }
         }
+    }
+
+    /// Small canvases use readable native type instead of miniature decorative
+    /// glyphs. The committed value stays visible even when a title cannot fit.
+    private var compactLabel: some View {
+        ViewThatFits(in: .horizontal) {
+            HStack(spacing: StarfallTheme.Spacing.small) {
+                if showsTitle, let title = event.title { Text(title) }
+                Text("+\(event.collected)").monospacedDigit()
+            }.fixedSize()
+            Text("+\(event.collected)").monospacedDigit().fixedSize()
+        }
+        .font(.headline)
+        .foregroundStyle(StarfallTheme.Colors.textPrimary)
+        .frame(maxWidth: max(0, width))
     }
 }
