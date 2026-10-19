@@ -1,0 +1,127 @@
+{
+  "cli": "0.163.0-alpha.10.2",
+  "method": "skills/list",
+  "forceReload": true,
+  "rows": [
+    {
+      "cwd": ".",
+      "skills": [
+        {
+          "name": "starfall-ci-triage",
+          "path": ".agents/skills/starfall-ci-triage/SKILL.md",
+          "scope": "repo",
+          "enabled": true
+        },
+        {
+          "name": "starfall-maintenance",
+          "path": ".agents/skills/starfall-maintenance/SKILL.md",
+          "scope": "repo",
+          "enabled": true
+        },
+        {
+          "name": "starfall-verify",
+          "path": ".agents/skills/starfall-verify/SKILL.md",
+          "scope": "repo",
+          "enabled": true
+        }
+      ],
+      "repo_errors": []
+    },
+    {
+      "cwd": "/App",
+      "skills": [
+        {
+          "name": "starfall-ci-triage",
+          "path": ".agents/skills/starfall-ci-triage/SKILL.md",
+          "scope": "repo",
+          "enabled": true
+        },
+        {
+          "name": "starfall-maintenance",
+          "path": ".agents/skills/starfall-maintenance/SKILL.md",
+          "scope": "repo",
+          "enabled": true
+        },
+        {
+          "name": "starfall-verify",
+          "path": ".agents/skills/starfall-verify/SKILL.md",
+          "scope": "repo",
+          "enabled": true
+        }
+      ],
+      "repo_errors": []
+    },
+    {
+      "cwd": "/Sources/StarfallCore",
+      "skills": [
+        {
+          "name": "starfall-ci-triage",
+          "path": ".agents/skills/starfall-ci-triage/SKILL.md",
+          "scope": "repo",
+          "enabled": true
+        },
+        {
+          "name": "starfall-maintenance",
+          "path": ".agents/skills/starfall-maintenance/SKILL.md",
+          "scope": "repo",
+          "enabled": true
+        },
+        {
+          "name": "starfall-verify",
+          "path": ".agents/skills/starfall-verify/SKILL.md",
+          "scope": "repo",
+          "enabled": true
+        }
+      ],
+      "repo_errors": []
+    },
+    {
+      "cwd": "/scripts",
+      "skills": [
+        {
+          "name": "starfall-ci-triage",
+          "path": ".agents/skills/starfall-ci-triage/SKILL.md",
+          "scope": "repo",
+          "enabled": true
+        },
+        {
+          "name": "starfall-maintenance",
+          "path": ".agents/skills/starfall-maintenance/SKILL.md",
+          "scope": "repo",
+          "enabled": true
+        },
+        {
+          "name": "starfall-verify",
+          "path": ".agents/skills/starfall-verify/SKILL.md",
+          "scope": "repo",
+          "enabled": true
+        }
+      ],
+      "repo_errors": []
+    },
+    {
+      "cwd": "/docs",
+      "skills": [
+        {
+          "name": "starfall-ci-triage",
+          "path": ".agents/skills/starfall-ci-triage/SKILL.md",
+          "scope": "repo",
+          "enabled": true
+        },
+        {
+          "name": "starfall-maintenance",
+          "path": ".agents/skills/starfall-maintenance/SKILL.md",
+          "scope": "repo",
+          "enabled": true
+        },
+        {
+          "name": "starfall-verify",
+          "path": ".agents/skills/starfall-verify/SKILL.md",
+          "scope": "repo",
+          "enabled": true
+        }
+      ],
+      "repo_errors": []
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "source": "50b42d59ce6c3ec96511ec36128851f7733b5491",
+  "kind": "one-pair check-selection comparison, no execution",
+  "model_and_effort": "inherited identically, no override; exact model/effort not exposed",
+  "tools": "same available tools; restricted to frozen packet reads and temporary result writes",
+  "task": "Frozen decision packet, source 50b42d59ce6c3ec96511ec36128851f7733b5491. This is a check-selection exercise, not an execution request. References in AGENTS.md are unavailable in this packet; use only the supplied facts and identify anything you need rather than assuming a pass.\n\nStarfall is a Swift package plus native SwiftUI/SpriteKit app. Available commands: python3 scripts/ci-hygiene.py; git diff --check; swift test; python3 scripts/test_device_update.py; python3 scripts/test_native_test_plan.py; python3 scripts/test_rc_platforms.py; python3 scripts/test_simulator_lifecycle.py; python3 scripts/test_export_native_evidence.py. Existing Xcode Starfall scheme contains StarfallAppTests and StarfallUITests. simulator-command.py runs xcrun operations in owned process groups with timeouts; test_simulator_lifecycle.py includes real spawned descendants and fake simctl cleanup. ci-simulator.sh is disposable-runner-only. Native build/test commands can use a selected local simulator and temporary DerivedData. Full actual VoiceOver is RC-only; ordinary development uses lightweight checks. device-update.py is the sole physical installation path.\n\nThree requests to evaluate independently:\n1. I corrected a stale two-cue sentence in scripts/README.md to link to App/Audio/README.md, which documents all four cues. No source, resources or build settings changed. What verification is needed?\n2. I changed simulator-command.py so timeout cleanup kills owned descendant processes, preserving the primary failure if cleanup also fails. App/Core/resources/build settings are untouched. What verification is needed?\n3. I changed SkySaveArchive.swift to reject a semantically invalid current v8 save instead of falling back to a historical archive. No schema or routing change was intended. What verification is needed?\n",
+  "instruction_change": "- - Run `python3 scripts/ci-hygiene.py` and `git diff --check`. Source changes also need `swift test`, affected hosted/UI tests, and a simulator build. Check Release when changing routing, build settings, resources or Debug-only fixtures. Check source/resource membership when adding files; a package test cannot prove an app target includes them.\n+ - Run `python3 scripts/ci-hygiene.py` and `git diff --check`. Swift changes also need `swift test`, affected hosted/UI tests, and a simulator build. Python/shell changes need affected behavioral tooling checks; also run native checks when Apple-operation behavior or app build inputs change. Documentation-only edits need links/ownership checks, with no unrelated app run. Check Release when changing routing, build settings, resources or Debug-only fixtures. Check source/resource membership when adding files; a package test cannot prove an app target includes them.\n",
+  "sha256": {
+    "baseline/AGENTS.md": "4432616bbb69d6755eb0bcba8471916a2ed5d7526c5583b9d8e1115a905d6644",
+    "baseline/TASK.txt": "60243e51df1e2618f0d0ab52cb7d2f12e76fc566a442eb49500220d92774f8a5",
+    "baseline/RESULT.md": "abaa262f8a97ea9fe44875c275b8c53c80a5a842e17f728308c41d4d158bb71b",
+    "candidate/AGENTS.md": "ef31a844608bfeed0e5c80d832327c974e1ce3d5ca893c76221cec6e43e0188e",
+    "candidate/TASK.txt": "60243e51df1e2618f0d0ab52cb7d2f12e76fc566a442eb49500220d92774f8a5",
+    "candidate/RESULT.md": "4f74ef13bf8cd8e4261431d84dfd1462a7df1268d64ef75440f6649e202d8f95"
+  },
+  "results": [
+    {
+      "request": "README ownership correction",
+      "baseline": "hygiene, diff, link/content checks; no app run",
+      "candidate": "same boundary",
+      "assessment": "preserved"
+    },
+    {
+      "request": "owned-descendant timeout correction",
+      "baseline": "lifecycle behavioral checks and native wrapper exercise, plus Swift tests/app build/gameplay tour because source was unqualified",
+      "candidate": "lifecycle behavioral checks and native wrapper exercise; no unrelated Swift/app/gameplay checks",
+      "assessment": "more precise selection while preserving the affected native boundary"
+    },
+    {
+      "request": "current-v8 semantic restore rejection",
+      "baseline": "core/hosted/native restore, build, old-save and interruption checks; no installation",
+      "candidate": "same important safety/compatibility boundary",
+      "assessment": "preserved"
+    }
+  ],
+  "limits": [
+    "No tests executed by evaluators",
+    "One decision sample per variant, not repeated trials",
+    "No cost, tokens, latency or production-selection accuracy measured",
+    "Packet facts describe real work classes but omit full patches and linked documents; evaluators correctly treated missing facts as execution limits"
+  ]
+}

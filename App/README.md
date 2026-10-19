@@ -1,5 +1,7 @@
 # iOS application
 
+[Native implementation and test instructions](AGENTS.md) give the local working contract.
+
 SwiftUI screens, main-actor stores and SpriteKit presentation for the native game.
 
 ## Start here

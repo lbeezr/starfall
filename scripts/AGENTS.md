@@ -1,0 +1,10 @@
+# Verification and delivery tooling
+
+Read [script ownership](README.md), the [verification matrix](../docs/ENGINEERING.md#verification-by-change) and the affected helper before changing scripts or `.github/workflows`.
+
+- Reuse `native_test_plan.py` for source-counted development/RC selection and `export_native_evidence.py` for compact exports. Keep exact count, failure and zero-skip gates. Do not duplicate the test inventory in skills or documents.
+- `ci-simulator.sh` is for disposable runners, requires runner context and owns simulator cleanup. For local checks select an installed simulator and temporary DerivedData; do not run the cloud orchestration blindly on the user's Mac.
+- Classify inventory/boot, compiler, test assertion, timeout, cancellation and export failures separately. Record source/run/job/attempt and environment. A cancelled run can contain real test failures; it is not a pass. Preserve primary failures when cleanup also fails.
+- Native subprocesses need bounded waits and ownership of their process group; cleanup may touch only resources this run owns. Reuse the lifecycle helpers. Investigate a measured cause before adding timeouts, retries, caching, concurrency or CI jobs. Do not broaden triggers or dispatch paid/manual CI incidentally; preserve existing public-main/budget policy.
+- Run affected behavioral tooling checks. Test real descendant cancellation when changing process ownership. A mocked command or Python pass does not prove an Apple operation succeeded. Keep small receipts durable and raw logs/results under ignored artifacts or temporary storage.
+- Keep updater changes separate from gameplay. `device-update.py` is the sole phone-delivery path: current-main ancestry/save reconciliation, exact-source gates, signature and actual installed-identity verification remain mandatory. Preserve its lock, copied-service packaging and installed-source receipts. Never bypass it with raw installation or reset player data. Emergency recovery needs explicit intent and the exact verified prior signed production build under that same lock.

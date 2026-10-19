@@ -2,7 +2,7 @@
 
 **Result:** Partially verified — batches in progress · **Owner:** current implementer · **Date:** October 19, 2026, Eastern time
 
-The [accepted plan](../../REPO_MAINTENANCE_PLAN.md) is being implemented in separate batches. Documentation now distinguishes current survival and v8 saves from historical aging/gravity/V2 research. Native CI diagnosis, instruction evaluation and skill validation follow independently; remote CI is not yet healthy.
+The [accepted plan](../../REPO_MAINTENANCE_PLAN.md) is being implemented in separate batches. Documentation now distinguishes current survival and v8 saves from historical aging/gravity/V2 research. CI diagnosis and the retained-Dusk correction are merged; scoped instructions and repo skills have completed bounded validation. Remote CI is not yet healthy.
 
 ## Batch 1 — current documentation
 
@@ -16,9 +16,13 @@ Acceptance: current summaries agree with those code boundaries; hygiene and `git
 
 [The diagnosis](CI_DIAGNOSIS.md) classifies all available logs in the original cohort and records six local reproductions. The retained-Dusk restore regression now uses the existing isolated fixture: 177 core tests and 9 selected native tests pass, with no runtime change. Other UI failures, inventory startup and partial/empty screenshot output remain explicit open findings; this batch does not claim healthy remote CI.
 
+## Batch 3 — scoped guidance and three skills
+
+[Guidance evidence](GUIDANCE.md) maps every original safeguard to root/local owners. Root guidance is 785 words (from 1,798); total instruction text is 1,993 words, with detailed boundary guidance loaded as needed. A fixed two-variant check-selection comparison preserved save/native safeguards while omitting unrelated app checks for a Python-only change. This is decision evidence, not a cost or speed benchmark.
+
+The three skills pass the skill-creator validator and actual Codex `skills/list` discovery from five working directories. Independent forward tasks cover all three workflows and six trigger/counterexample prompts. Existing commands and evidence owners are reused; no runtime/configuration/dependency/delivery change is introduced.
+
 ## Remaining work
 
 - Resolve the remaining CI/native findings recorded in the diagnosis; Xcode 27.1/iOS 27.0 differs from remote Xcode 26.3.
-- Evaluate scoped instructions and validate discovery; preserve each relocated invariant.
-- Add and forward-test the three repo skills using existing commands and source-bound artifacts.
 - Pilot one proven maintenance simplification and report measured benefit or uncertainty.

@@ -6,18 +6,18 @@ Preserve Starfall’s existing safeguards while making current decisions easier 
 
 **Important limit:** The latest 20 GitHub Actions runs sampled contain 11 failures and nine cancellations, with no completed pass. The newest cancelled run includes UI failures before cancellation. This is a planning audit, not a native reproduction or a finding that all failures share one cause. [Source-bound baseline](evidence/repo-maintenance-2026-10-19/README.md).
 
-**Next action:** Implement batch 1 below, then diagnose the recorded CI failures without weakening coverage. Instruction/skill improvements can proceed independently of blocked Apple tooling. Current gameplay, save compatibility and canonical phone delivery remain authoritative.
+**Next action:** complete the bounded cleanup pilot and resolve the remaining [CI/native findings](evidence/repo-maintenance-2026-10-19/CI_DIAGNOSIS.md). Documentation reconciliation and one native regression correction are merged; scoped guidance and three skills have passed bounded validation. Current gameplay, save compatibility and canonical phone delivery remain authoritative.
 
 ## Scope and success
 
-**Includes:** repository navigation, scoped `AGENTS.md` guidance, three proposed repo skills, instruction evaluation, maintenance triage and improvements to existing verification tools.
+**Includes:** repository navigation, scoped `AGENTS.md` guidance, three repo skills, instruction evaluation, maintenance triage and improvements to existing verification tools.
 
 **Excludes:** gameplay changes, new app identities, schema migration, dependency/framework adoption, automatic deletion campaigns, new scheduled jobs and changes to personal Codex/plugin configuration. Future Murk/world design remains distinct from implemented gameplay.
 
 - [x] Current entry points agree on fresh survival, retained saves, pacing, delivery and open RC acceptance.
-- [ ] Every relocated instruction has an identified owner; root-started tasks find the applicable local guidance.
-- [ ] Representative tasks preserve safety and correctness while reducing unnecessary reading or commands. Report observed results rather than promising a percentage.
-- [ ] Each added skill has a narrow trigger, explicit output, positive/negative examples and a demonstrated repository use.
+- [x] Every relocated instruction has an identified owner; root-started tasks find the applicable local guidance.
+- [x] Representative tasks preserve safety and correctness while reducing unnecessary reading or commands. Report observed results rather than promising a percentage.
+- [x] Each added skill has a narrow trigger, explicit output, positive/negative examples and a demonstrated repository use.
 - [ ] Remote failure categories have exact source/run evidence; a full development matrix completes successfully before remote CI is called healthy.
 - [ ] Any removal has consumer/compatibility evidence and the relevant unchanged-behavior checks. Historical mechanics are not removed because their names sound obsolete.
 
@@ -83,7 +83,7 @@ Keep a compact change-type verification table in `ENGINEERING.md` as the procedu
 | Tooling | Affected Python/shell behavioral checks; real native scenario when Apple behavior changes. Preserve service packaging/lock/install tests for updater changes. |
 | RC/delivery | Existing `DEVELOPMENT_BUILDS.md` gates; actual VoiceOver/minimum-OS/physical acceptance remain separate from the canonical delivery receipt. |
 
-Clarify that generic “source changes” means the affected boundary; Python-only tooling edits need meaningful tooling checks, not an unrelated gameplay tour. This is a proposed clarification to evaluate, not permission to bypass today’s instructions.
+The [bounded comparison](evidence/repo-maintenance-2026-10-19/GUIDANCE.md#check-selection-comparison) supports clarifying generic “source changes” by boundary. Python-only tooling edits need meaningful tooling checks and native integration when Apple-operation behavior changes, without an unrelated gameplay tour. The matrix is now the procedural owner.
 
 ## Add three repo skills, with narrow triggers
 
@@ -133,4 +133,4 @@ For each candidate record: owner/status, current source, consumers examined, evi
 
 The principal risks are losing a safety invariant while shortening instructions, mistaking compatibility code for dead code, and turning incomplete CI into an apparent pass. The relocation map, representative task comparisons, old-save coverage and unchanged native count/failure gates address those risks. Physical comfort, actual VoiceOver and minimum-iOS RC acceptance stay open under their existing owners; this plan does not close them.
 
-For this planning change, runtime rule/save, interruption, accessibility, screenshots, animation and device tests are **not applicable**: only documentation and a small CI metadata snapshot are added. No source, instructions, skills or CI settings are changed. The [audit record](evidence/repo-maintenance-2026-10-19/README.md) records document checks and read-only investigation limits. Implementation acceptance remains unchecked above.
+The initial [audit record](evidence/repo-maintenance-2026-10-19/README.md) remains historical. [Implementation evidence](evidence/repo-maintenance-2026-10-19/IMPLEMENTATION.md) records the merged docs/test batches and bounded guidance/skill validation, including failed visual acceptance and unresolved native CI. No runtime mechanics, CI settings, phone delivery or personal model configuration are changed. Timing/cost optimization remains deferred until a successful comparable CI baseline exists.

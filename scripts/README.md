@@ -1,5 +1,7 @@
 # Repository scripts
 
+[Tooling and CI instructions](AGENTS.md) give the local working contract.
+
 Hygiene checks, native CI validation and app-icon export tooling.
 
 ## Start here
