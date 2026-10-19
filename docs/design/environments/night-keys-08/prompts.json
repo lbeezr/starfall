@@ -1,0 +1,368 @@
+{
+  "tool": "built-in image_gen",
+  "date": "2026-10-18",
+  "scope": "Color and composition references derived from approved scene kits; flattened, not independent production layers",
+  "generations": [
+    {
+      "id": "moonwake",
+      "orientation": "wide",
+      "prompt": "Use case: stylized-concept. Asset type: Starfall game environment COLOR AND COMPOSITION KEY, one seamless landscape painting, roughly 4:3. Use the supplied two existing paintings as STYLE and PALETTE references only, not a request to duplicate their compositions. Refined hand-painted storybook cosmic fantasy, softly sculpted forms, luminous crystal-adjacent surfaces, broad painterly value masses, gentle wonder. This is a night journey for tiny colorful crystal-star characters that will be composited later: the central region x=27%..73%, y=10%..90% must be dark quiet open space with extremely low detail. The full scene must still read as a natural location, not an empty rectangle with a decorative border. Let a few very dim diffuse space textures cross the middle, never a bright landmark. Treat warm lights as tiny inhabited details. No people, characters, faces, jewels, UI, typography, letters, visible grid, dashed guidelines, frame, floor, deck, platform beneath the play area, god rays or shooting-star trails. No screenshot/device frame. Sparse tiny distant stars only; far fewer than reference paintings. All hard silhouettes and bright details outside that central region. Five readable depth zones will later be exported separately: continuous night, distant landmark, middle forms, signature prop, near fragment/atmosphere. Do not draw layer labels or a layer sheet. No watermark. MOONWAKE: refine the existing pearl-moon setting. A huge round pearl/lavender moon is mostly offscreen to the upper left; its gently faceted thin illuminated limb takes only the outer left quarter, never reaching center. Deep blue-black space fills most of image. One tiny delicate celestial chart-sail at upper right x88% y25%: gently curved unlit hull, a simple translucent triangular cream sail, single subtle warm lantern, small thin mast; astronomical exploratory craft, not pirate ship. Give it a faint curved dust current at far right, not a comet tail. One muted pearl-blue ice fragment is cropped near lower-left; no rubble belt, no foreground platform. Dominant silhouette one lunar curve and one fine triangular sail. Light from upper left. Restrained indigo/pearl with only the lantern warm. Keep enough visible curve to read as moon. Quiet, immense, inhabited.",
+      "version": "wide-v1",
+      "references": [
+        "/tmp/starfall-celestial-production/docs/design/environments/open-skies-05/moonwake-concept.png",
+        "/tmp/starfall-celestial-production/docs/design/environments/open-skies-05/nebula-concept.png"
+      ],
+      "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-40e05724-9a48-4be2-bfd2-44d0768c097f.png",
+      "selected": false,
+      "sha256": "6f31ac083cb7d5f3d58273802dd004b8686e07a58e776b701c175fe6a2db30c1",
+      "pixels": [
+        1448,
+        1086
+      ]
+    },
+    {
+      "id": "nebula",
+      "orientation": "wide",
+      "prompt": "Use case: stylized-concept. Asset type: Starfall game environment COLOR AND COMPOSITION KEY, one seamless landscape painting, roughly 4:3. Use the supplied two existing paintings as STYLE and PALETTE references only, not a request to duplicate their compositions. Refined hand-painted storybook cosmic fantasy, softly sculpted forms, luminous crystal-adjacent surfaces, broad painterly value masses, gentle wonder. This is a night journey for tiny colorful crystal-star characters that will be composited later: the central region x=27%..73%, y=10%..90% must be dark quiet open space with extremely low detail. The full scene must still read as a natural location, not an empty rectangle with a decorative border. Let a few very dim diffuse space textures cross the middle, never a bright landmark. Treat warm lights as tiny inhabited details. No people, characters, faces, jewels, UI, typography, letters, visible grid, dashed guidelines, frame, floor, deck, platform beneath the play area, god rays or shooting-star trails. No screenshot/device frame. Sparse tiny distant stars only; far fewer than reference paintings. All hard silhouettes and bright details outside that central region. Five readable depth zones will later be exported separately: continuous night, distant landmark, middle forms, signature prop, near fragment/atmosphere. Do not draw layer labels or a layer sheet. No watermark. THE NEBULA CRADLE: revise the existing nebula into TWO unequal, three-dimensional folds of gas, NOT a full wreath of bright cloud around every edge. Tall dense cool indigo fold cropped on upper-left and left edge, a LOWER short dusty rose/violet fold at far right, a large calm open blue-black gulf through center and top-right. The left fold has one clear dark C-shaped dust curl. Right lower fold holds one soft peach birth-light nested INSIDE the gas, diffuse and partially occluded, no sun disk, eyeball or star icon. Distant broad low-detail haze connects depth. Barely visible two near translucent wisps at extreme corners. Sense of sheltered travel through gas. Keep main cloud masses entirely in outer quarter and beyond frame; avoid cloud floor or centered bowl. Broad soft forms, very little glitter. Lavender, dusty rose, indigo, restrained warm peach.",
+      "version": "wide-v1",
+      "references": [
+        "/tmp/starfall-celestial-production/docs/design/environments/open-skies-05/moonwake-concept.png",
+        "/tmp/starfall-celestial-production/docs/design/environments/open-skies-05/nebula-concept.png"
+      ],
+      "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-cd8708f3-2b08-4df9-9baa-eeed1e382891.png",
+      "selected": false,
+      "sha256": "6c8dfdb46ad41af7f5acf83d24b4ca62f1991f588197ea98e83eaf6c35b11146",
+      "pixels": [
+        1448,
+        1086
+      ]
+    },
+    {
+      "id": "shatterlight",
+      "orientation": "wide",
+      "prompt": "Use case: stylized-concept. Asset type: Starfall game environment COLOR AND COMPOSITION KEY, one seamless landscape painting, roughly 4:3. Use the supplied two existing paintings as STYLE and PALETTE references only, not a request to duplicate their compositions. Refined hand-painted storybook cosmic fantasy, softly sculpted forms, luminous crystal-adjacent surfaces, broad painterly value masses, gentle wonder. This is a night journey for tiny colorful crystal-star characters that will be composited later: the central region x=27%..73%, y=10%..90% must be dark quiet open space with extremely low detail. The full scene must still read as a natural location, not an empty rectangle with a decorative border. Let a few very dim diffuse space textures cross the middle, never a bright landmark. Treat warm lights as tiny inhabited details. No people, characters, faces, jewels, UI, typography, letters, visible grid, dashed guidelines, frame, floor, deck, platform beneath the play area, god rays or shooting-star trails. No screenshot/device frame. Sparse tiny distant stars only; far fewer than reference paintings. All hard silhouettes and bright details outside that central region. Five readable depth zones will later be exported separately: continuous night, distant landmark, middle forms, signature prop, near fragment/atmosphere. Do not draw layer labels or a layer sheet. No watermark. SHATTERLIGHT REACH: a hushed passage between remnants of an old planet. In the far upper-left and left margin, three huge separated curved sections of a BROKEN SPHERICAL PLANET reproduce the same muted lavender geological bands, letting the eye reconstruct the old planetary curve. Wide dark gaps between pieces, no active explosion. Show curved fractured crust and concave interior geometry, not a row of floating flat islands. One smaller distant fragment at far upper right carries a tiny rounded observatory-lens shelter tucked into stone, with a single very small amber round window. No towers or village. One dark closer mineral shard at extreme lower right repeats the same strata. Center is immense blue-black open void. No fragments aligned beneath bottom row; no ground ledges. Very spare suspended dust only. Quiet resilience and cared-for surviving life, no threat, no green fel magic, no chains.",
+      "version": "wide-v1",
+      "references": [
+        "/tmp/starfall-celestial-production/docs/design/environments/open-skies-05/moonwake-concept.png",
+        "/tmp/starfall-celestial-production/docs/design/environments/open-skies-05/nebula-concept.png"
+      ],
+      "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-2e5301fa-02ad-4fe5-b8aa-a9c68c5092bf.png",
+      "selected": false,
+      "sha256": "7ccb354f74ab9940844512c76d17022662825d56d221fd81a1196ff965199cf0",
+      "pixels": [
+        1448,
+        1086
+      ]
+    },
+    {
+      "id": "garden",
+      "orientation": "wide",
+      "prompt": "Use case: stylized-concept. Asset type: Starfall game environment COLOR AND COMPOSITION KEY, one seamless landscape painting, roughly 4:3. Use the supplied two existing paintings as STYLE and PALETTE references only, not a request to duplicate their compositions. Refined hand-painted storybook cosmic fantasy, softly sculpted forms, luminous crystal-adjacent surfaces, broad painterly value masses, gentle wonder. This is a night journey for tiny colorful crystal-star characters that will be composited later: the central region x=27%..73%, y=10%..90% must be dark quiet open space with extremely low detail. The full scene must still read as a natural location, not an empty rectangle with a decorative border. Let a few very dim diffuse space textures cross the middle, never a bright landmark. Treat warm lights as tiny inhabited details. No people, characters, faces, jewels, UI, typography, letters, visible grid, dashed guidelines, frame, floor, deck, platform beneath the play area, god rays or shooting-star trails. No screenshot/device frame. Sparse tiny distant stars only; far fewer than reference paintings. All hard silhouettes and bright details outside that central region. Five readable depth zones will later be exported separately: continuous night, distant landmark, middle forms, signature prop, near fragment/atmosphere. Do not draw layer labels or a layer sheet. No watermark. THE NIGHT GARDEN: very high open NIGHT air over a fantastical alien canopy on a living planet. A broad sculptural fan of indigo/teal leaves enters from upper left corner, and a smaller different branching canopy enters from extreme lower right. Camera is in open air, not looking down at a lawn. Plants entirely at margins and far below; no garden bed or ground beneath the playable space. Large lobed leaf fans and elegant branching stems give a distinctive alien silhouette; no familiar oak silhouettes, no thorns. One warm amber lantern-pod is visibly ATTACHED to lower-right branch, tucked among leaves, softly lighting two neighboring edges. One tiny seed-moth glider rests adjacent: subtle papery folded wings, dark body, no eyes visible or cute character face. Indigo mist separates far canopy silhouettes; quiet ink-blue open sky through center. Very muted teal-violet leaves, no electric green, no more than two faint spores. Storybook cosmic ecology, grand open height, no jungle tunnel.",
+      "version": "wide-v1",
+      "references": [
+        "/tmp/starfall-celestial-production/docs/design/environments/open-skies-05/moonwake-concept.png",
+        "/tmp/starfall-celestial-production/docs/design/environments/open-skies-05/nebula-concept.png"
+      ],
+      "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-8226818d-47ef-4f7e-a252-308baa8ec2d4.png",
+      "selected": false,
+      "sha256": "e82ee1ba756b2848b3f11f963f1544ea05796716607aaa07ea5851ed70e78918",
+      "pixels": [
+        1448,
+        1086
+      ]
+    },
+    {
+      "id": "ringdrift",
+      "orientation": "wide",
+      "prompt": "Use case: stylized-concept. Asset type: Starfall game environment COLOR AND COMPOSITION KEY, one seamless landscape painting, roughly 4:3. Use the supplied two existing paintings as STYLE and PALETTE references only, not a request to duplicate their compositions. Refined hand-painted storybook cosmic fantasy, softly sculpted forms, luminous crystal-adjacent surfaces, broad painterly value masses, gentle wonder. This is a night journey for tiny colorful crystal-star characters that will be composited later: the central region x=27%..73%, y=10%..90% must be dark quiet open space with extremely low detail. The full scene must still read as a natural location, not an empty rectangle with a decorative border. Let a few very dim diffuse space textures cross the middle, never a bright landmark. Treat warm lights as tiny inhabited details. No people, characters, faces, jewels, UI, typography, letters, visible grid, dashed guidelines, frame, floor, deck, platform beneath the play area, god rays or shooting-star trails. No screenshot/device frame. Sparse tiny distant stars only; far fewer than reference paintings. All hard silhouettes and bright details outside that central region. Five readable depth zones will later be exported separately: continuous night, distant landmark, middle forms, signature prop, near fragment/atmosphere. Do not draw layer labels or a layer sheet. No watermark. RINGDRIFT: passing the night side of an immense ringed planet. A mostly shadowed muted blue-violet ROUND planet occupies the far left side, center slightly offscreen at x=-3% y42%, its diameter about 55% of canvas height so its right limb stays left of x23%. A very distinct broad THIN elliptical ice-ring system tilted roughly 35 degrees rises from lower-left to upper-left, wrapping BEHIND the spherical planet and emerging in FRONT across its lower-left hemisphere. Keep the ring silhouette in left quarter and near top margin; no bright diagonal through center. Rings must read as orbital ellipses in perspective, not parallel lines bordering play. A small dark shepherd moon with a cool rim sits far lower-right. At far upper-right, an extremely tiny distant version of Moonwake's chart-sail with cream triangular sail and one amber lantern. A single dim cropped ice sliver at extreme lower-left supplies nearer depth. Restrained blue-black/grey-lavender/cold pearl, one warm distant lantern. Planet and all bodies dark enough to sit behind colorful cast. Open void dominates, no rubble storm.",
+      "version": "wide-v1",
+      "references": [
+        "/tmp/starfall-celestial-production/docs/design/environments/open-skies-05/moonwake-concept.png",
+        "/tmp/starfall-celestial-production/docs/design/environments/open-skies-05/nebula-concept.png"
+      ],
+      "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-e881c88a-0e67-48e3-847e-9cb368f63dcf.png",
+      "selected": false,
+      "sha256": "e54f75994b39e4457353a75feeb4593d2ff1130147c3eecc937ec7defe26064f",
+      "pixels": [
+        1448,
+        1086
+      ]
+    },
+    {
+      "id": "moonwake",
+      "orientation": "phone",
+      "prompt": "Use case: stylized-concept / precise-object-edit. Create ONE exceptionally tall PORTRAIT color/composition painting for a phone display, aspect ratio 393:852 (about 1:2.17). This is an art-directed rearrangement of the supplied landscape scene, not a center crop. Keep the SAME world, materials, painterly brushwork, night palette, light direction, props and characterless environment. There is NO visible UI in the painting. The central phone play and control area is huge: the entire x=4%..96%, y=14%..86% must be quiet dark blue-black space, almost no visible stars or texture. Do not frame this space with a rectangular border or equal banks. All recognizable landmarks and all bright hard edges must fit above y=12% or below y=88%, with only very soft dark atmosphere at extreme side edges. Do not shrink or fabricate any game board. Keep a continuous natural sky, no horizontal panel boundary. Do NOT paste in the landscape as a thumbnail. No characters, eyes, faces, text, HUD, glyphs, dashed boxes, decorative UI, floor, platform, clouds under characters, grid, frame or watermark. The openness is intentional and will receive the fixed seven-column cast and existing controls later. MOONWAKE portrait: in top-left, the curve of a pearl moon cropped by top and left image edges, rightmost limb at x38%, bottommost limb at y11%. One tiny chart-sail at x84% y8%, a recognizable cream triangular sail and tiny amber lantern. Retain broad pearl lunar facets and delicate astronomical vessel from reference. A single muted ice fragment cropped at bottom-left below y91%. All other space quiet, no bright dust trail, no central stars. Moon and sail are small landmarks above the HUD, not over the game.",
+      "version": "phone-v1",
+      "references": [
+        "/tmp/starfall-celestial-production/docs/design/environments/night-keys-08/moonwake-wide.png"
+      ],
+      "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-900b319b-a914-4a7c-b98e-c0fe5a8586e8.png",
+      "selected": false,
+      "sha256": "8412cddf7bc223700714883e2b73c3f28c673cedebfa1f609880dec6c719cd7e",
+      "pixels": [
+        852,
+        1846
+      ]
+    },
+    {
+      "id": "nebula",
+      "orientation": "phone",
+      "prompt": "Use case: stylized-concept / precise-object-edit. Create ONE exceptionally tall PORTRAIT color/composition painting for a phone display, aspect ratio 393:852 (about 1:2.17). This is an art-directed rearrangement of the supplied landscape scene, not a center crop. Keep the SAME world, materials, painterly brushwork, night palette, light direction, props and characterless environment. There is NO visible UI in the painting. The central phone play and control area is huge: the entire x=4%..96%, y=14%..86% must be quiet dark blue-black space, almost no visible stars or texture. Do not frame this space with a rectangular border or equal banks. All recognizable landmarks and all bright hard edges must fit above y=12% or below y=88%, with only very soft dark atmosphere at extreme side edges. Do not shrink or fabricate any game board. Keep a continuous natural sky, no horizontal panel boundary. Do NOT paste in the landscape as a thumbnail. No characters, eyes, faces, text, HUD, glyphs, dashed boxes, decorative UI, floor, platform, clouds under characters, grid, frame or watermark. The openness is intentional and will receive the fixed seven-column cast and existing controls later. NEBULA portrait: one thick indigo folded gas curl confined to upper-left above y12%, curled shape visible against dark night. A different dusty rose fold cropped below y89% in lower-right with one soft warm BIRTH-LIGHT partly buried behind gas, not a circular sun disk or eye. No gas wreath. Only faint haze along the outer 2% side edges, dark center. Keep the upper and lower folds asymmetrical and at different depths.",
+      "version": "phone-v1",
+      "references": [
+        "/tmp/starfall-celestial-production/docs/design/environments/night-keys-08/nebula-wide.png"
+      ],
+      "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-c3cd8b32-e2f8-40b6-a09b-652c9f29f5ff.png",
+      "selected": false,
+      "sha256": "54288205e977271abff94cd26009bc458cee8dd7ce1f72bfbdac8145f283a5b3",
+      "pixels": [
+        852,
+        1846
+      ]
+    },
+    {
+      "id": "shatterlight",
+      "orientation": "phone",
+      "prompt": "Use case: stylized-concept / precise-object-edit. Create ONE exceptionally tall PORTRAIT color/composition painting for a phone display, aspect ratio 393:852 (about 1:2.17). This is an art-directed rearrangement of the supplied landscape scene, not a center crop. Keep the SAME world, materials, painterly brushwork, night palette, light direction, props and characterless environment. There is NO visible UI in the painting. The central phone play and control area is huge: the entire x=4%..96%, y=14%..86% must be quiet dark blue-black space, almost no visible stars or texture. Do not frame this space with a rectangular border or equal banks. All recognizable landmarks and all bright hard edges must fit above y=12% or below y=88%, with only very soft dark atmosphere at extreme side edges. Do not shrink or fabricate any game board. Keep a continuous natural sky, no horizontal panel boundary. Do NOT paste in the landscape as a thumbnail. No characters, eyes, faces, text, HUD, glyphs, dashed boxes, decorative UI, floor, platform, clouds under characters, grid, frame or watermark. The openness is intentional and will receive the fixed seven-column cast and existing controls later. SHATTERLIGHT portrait: three separated pieces of the former planet's CURVED broken shell across top-left and top edge, entirely above y12%; repeated curved lavender strata clearly tie them to one former sphere. Not three flat islands. A small darker geological fragment at lower-right below y90% holds the same very small rounded shelter and ONE warm circular observatory window; no building cluster or planted garden. Dark quiet center entirely open.",
+      "version": "phone-v1",
+      "references": [
+        "/tmp/starfall-celestial-production/docs/design/environments/night-keys-08/shatterlight-wide.png"
+      ],
+      "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-ac0e4f77-4cbb-4734-b2d9-c80652ab705a.png",
+      "selected": false,
+      "sha256": "8ca97070902ce6a290f0a941cf95e94f7cd8f9a0ba18b1a33c637785f2d00251",
+      "pixels": [
+        852,
+        1846
+      ]
+    },
+    {
+      "id": "ringdrift",
+      "orientation": "phone",
+      "prompt": "Use case: stylized-concept / precise-object-edit. Create ONE exceptionally tall PORTRAIT color/composition painting for a phone display, aspect ratio 393:852 (about 1:2.17). This is an art-directed rearrangement of the supplied landscape scene, not a center crop. Keep the SAME world, materials, painterly brushwork, night palette, light direction, props and characterless environment. There is NO visible UI in the painting. The central phone play and control area is huge: the entire x=4%..96%, y=14%..86% must be quiet dark blue-black space, almost no visible stars or texture. Do not frame this space with a rectangular border or equal banks. All recognizable landmarks and all bright hard edges must fit above y=12% or below y=88%, with only very soft dark atmosphere at extreme side edges. Do not shrink or fabricate any game board. Keep a continuous natural sky, no horizontal panel boundary. Do NOT paste in the landscape as a thumbnail. No characters, eyes, faces, text, HUD, glyphs, dashed boxes, decorative UI, floor, platform, clouds under characters, grid, frame or watermark. The openness is intentional and will receive the fixed seven-column cast and existing controls later. RINGDRIFT portrait: at the VERY TOP left, one recognizable round shadowed blue-violet planet of diameter 18% of IMAGE WIDTH, with its COMPLETE broad elliptical ring system twice planet width wrapping behind then in front at a shallow tilt about18degrees. Planet/ring group center x22%, y5%; whole group visible above y11%, with space around ring end, do not substitute a huge unidentifiable cropped arc. Keep near/far ring order coherent. Tiny distant Moonwake chart-sail at x86%,y8%. Small shepherd moon at lower-right x83%,y95%, and dim cropped ice at bottom-left. Everything between y14% and86% dark and quiet. This small but clear planetary silhouette is crucial to identifying the place on a phone.",
+      "version": "phone-v1",
+      "references": [
+        "/tmp/starfall-celestial-production/docs/design/environments/night-keys-08/ringdrift-wide.png"
+      ],
+      "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-4980fa1c-a334-4b36-b86e-1091be9ae055.png",
+      "selected": false,
+      "sha256": "44f48eb45f331df3185f2485ddb513093637871a03356023249386b8fa2a2ad6",
+      "pixels": [
+        852,
+        1846
+      ]
+    },
+    {
+      "id": "garden",
+      "orientation": "wide",
+      "version": "wide-v2",
+      "prompt": "Use case: precise-object-edit. Edit ONLY the small creature beside the amber lantern pod at lower right of this Starfall Night Garden painting. Replace the overly cute white birdlike animal with a very small dark seed-moth insect resting with two simple folded papery indigo wings, no visible eyes, face, beak, animal ears, limbs like arms, or character expression. Make it inconspicuous, about half the current creature size; this is background ecology, not another cast character. Preserve the attached amber lantern pod, branching plant, all other scenery, palette, lighting, scale, open central space and exact landscape composition. No extra additions, no text.",
+      "references": [
+        "/tmp/starfall-celestial-production/docs/design/environments/night-keys-08/garden-wide.png"
+      ],
+      "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-0324d21c-5acf-45d4-bf27-6bb8a11e297b.png",
+      "selected": false,
+      "sha256": "e3be7e8ec6f440509ea6bde66fd071e6b161876395c57b14ba3c749beaef07cb",
+      "pixels": [
+        1448,
+        1086
+      ]
+    },
+    {
+      "id": "moonwake",
+      "orientation": "phone",
+      "references": [
+        "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-900b319b-a914-4a7c-b98e-c0fe5a8586e8.png",
+        "/tmp/starfall-kit-checks/moonwake-phone.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Correct the FIRST image, preserving its tall 393:852 aspect ratio, world identity, night palette, brushwork and material quality. SECOND image is a layout DIAGRAM ONLY. Precisely match its extremely shallow top and bottom scenery zones and vast central negative space. Do NOT copy diagram shapes, star characters, dashed boxes, text or UI into the painting. In the diagram the first dashed reservation starts about 13% down. In your corrected painting, every bright upper scenic form must END ABOVE 12% down; the whole middle from 13% through 86% must be dark open blue-black sky, with no bright point, dust sparkle, plant, planet or hard edge. Move and REDUCE the upper landmarks to fit there; don't just darken them in place. Every bottom landmark must START BELOW 89% down. Preserve the full artwork, not a vignette on black paper. Seamlessly repaint vacated areas with the continuous very dark sky. Reduce and shift the pearl moon up so its curve terminates at y10% on left; move sail to x86%,y7% and halve its size. Remove the bright dust tail from sail. Keep single bottom-left ice fragment entirely below89%.",
+      "version": "phone-v2",
+      "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-707a9169-7970-4a4c-b5b9-73eaaa909ff7.png",
+      "selected": true,
+      "file": "moonwake-phone-key.png",
+      "sha256": "011be4b0951e0a9a4f2db789f33df3363aab538532cfc18cd8cef7973faf7eb4",
+      "pixels": [
+        852,
+        1846
+      ]
+    },
+    {
+      "id": "nebula",
+      "orientation": "phone",
+      "references": [
+        "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-c3cd8b32-e2f8-40b6-a09b-652c9f29f5ff.png",
+        "/tmp/starfall-kit-checks/nebula-phone.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Correct the FIRST image, preserving its tall 393:852 aspect ratio, world identity, night palette, brushwork and material quality. SECOND image is a layout DIAGRAM ONLY. Precisely match its extremely shallow top and bottom scenery zones and vast central negative space. Do NOT copy diagram shapes, star characters, dashed boxes, text or UI into the painting. In the diagram the first dashed reservation starts about 13% down. In your corrected painting, every bright upper scenic form must END ABOVE 12% down; the whole middle from 13% through 86% must be dark open blue-black sky, with no bright point, dust sparkle, plant, planet or hard edge. Move and REDUCE the upper landmarks to fit there; don't just darken them in place. Every bottom landmark must START BELOW 89% down. Preserve the full artwork, not a vignette on black paper. Seamlessly repaint vacated areas with the continuous very dark sky. Scale upper curled gas bank down to about40% of its present height and move it into upper-left, fully above12%. Make it a still recognizable hook-shaped fold. Move lower warm cloud pocket down into bottom10%. The birth-light must be a diffuse partially obscured warmth, no bright round disk. Keep irregular soft gas edges rather than a horizontal cutoff.",
+      "version": "phone-v2",
+      "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-ab710f2d-0069-4bf5-ac61-3bd3892a94b7.png",
+      "selected": true,
+      "file": "nebula-phone-key.png",
+      "sha256": "0e1b2ba6e7b761643de525818f4b6a2a81dd76e2e2a73eaefed1566541bbf20f",
+      "pixels": [
+        852,
+        1846
+      ]
+    },
+    {
+      "id": "shatterlight",
+      "orientation": "phone",
+      "references": [
+        "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-ac0e4f77-4cbb-4734-b2d9-c80652ab705a.png",
+        "/tmp/starfall-kit-checks/shatterlight-phone.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Correct the FIRST image, preserving its tall 393:852 aspect ratio, world identity, night palette, brushwork and material quality. SECOND image is a layout DIAGRAM ONLY. Precisely match its extremely shallow top and bottom scenery zones and vast central negative space. Do NOT copy diagram shapes, star characters, dashed boxes, text or UI into the painting. In the diagram the first dashed reservation starts about 13% down. In your corrected painting, every bright upper scenic form must END ABOVE 12% down; the whole middle from 13% through 86% must be dark open blue-black sky, with no bright point, dust sparkle, plant, planet or hard edge. Move and REDUCE the upper landmarks to fit there; don't just darken them in place. Every bottom landmark must START BELOW 89% down. Preserve the full artwork, not a vignette on black paper. Seamlessly repaint vacated areas with the continuous very dark sky. REMOVE the upper-right observatory fragment completely; there must be EXACTLY ONE shelter, the one at bottom right. Shrink and move the three upper shell fragments so they all fit entirely above12%, retaining the broken SPHERICAL curvature. Shrink and move bottom observatory fragment below89%; don't crop off its dome or window. Remove all chips and glitter in the protected middle.",
+      "version": "phone-v2",
+      "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-1e60933e-5eca-4349-8d81-08fca0318752.png",
+      "selected": true,
+      "file": "shatterlight-phone-key.png",
+      "sha256": "a7f21436f7297e8264b5e19b117a391bd482d655567099967b5e56180b803d65",
+      "pixels": [
+        853,
+        1844
+      ]
+    },
+    {
+      "id": "ringdrift",
+      "orientation": "phone",
+      "references": [
+        "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-4980fa1c-a334-4b36-b86e-1091be9ae055.png",
+        "/tmp/starfall-kit-checks/ringdrift-phone.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Correct the FIRST image, preserving its tall 393:852 aspect ratio, world identity, night palette, brushwork and material quality. SECOND image is a layout DIAGRAM ONLY. Precisely match its extremely shallow top and bottom scenery zones and vast central negative space. Do NOT copy diagram shapes, star characters, dashed boxes, text or UI into the painting. In the diagram the first dashed reservation starts about 13% down. In your corrected painting, every bright upper scenic form must END ABOVE 12% down; the whole middle from 13% through 86% must be dark open blue-black sky, with no bright point, dust sparkle, plant, planet or hard edge. Move and REDUCE the upper landmarks to fit there; don't just darken them in place. Every bottom landmark must START BELOW 89% down. Preserve the full artwork, not a vignette on black paper. Seamlessly repaint vacated areas with the continuous very dark sky. Reduce the entire upper planet AND complete ring system as one group by about45% and lift above12%. Keep its entire recognizably elliptical right-hand ring tip visible in top-left, and preserve coherent sphere/ring occlusion. The diagram is ONLY a region guide: keep the painting's recognizable planet, not the diagram's oversized cropped partial arcs. Tiny sail above10%. Move moon and ice below90%.",
+      "version": "phone-v2",
+      "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-39d2b017-a51b-4ae0-a25e-5455b5f3513f.png",
+      "selected": true,
+      "file": "ringdrift-phone-key.png",
+      "sha256": "9d2c16a7ea76ec8ab09b562869e6ad143aa9714ba37e1b3bbbf08adc5cab7ec0",
+      "pixels": [
+        852,
+        1846
+      ]
+    },
+    {
+      "id": "garden",
+      "orientation": "phone",
+      "references": [
+        "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-0324d21c-5acf-45d4-bf27-6bb8a11e297b.png",
+        "/tmp/starfall-kit-checks/garden-phone.png"
+      ],
+      "prompt": "Use case: stylized-concept / precise-object-edit. Create ONE exceptionally tall PORTRAIT color/composition painting for a phone display, aspect ratio 393:852 (about 1:2.17). This is an art-directed rearrangement of the supplied landscape scene, not a center crop. Keep the SAME world, materials, painterly brushwork, night palette, light direction, props and characterless environment. There is NO visible UI in the painting. The central phone play and control area is huge: the entire x=4%..96%, y=14%..86% must be quiet dark blue-black space, almost no visible stars or texture. Do not frame this space with a rectangular border or equal banks. All recognizable landmarks and all bright hard edges must fit above y=12% or below y=88%, with only very soft dark atmosphere at extreme side edges. Do not shrink or fabricate any game board. Keep a continuous natural sky, no horizontal panel boundary. Do NOT paste in the landscape as a thumbnail. No characters, eyes, faces, text, HUD, glyphs, dashed boxes, decorative UI, floor, platform, clouds under characters, grid, frame or watermark. The openness is intentional and will receive the fixed seven-column cast and existing controls later. NIGHT GARDEN portrait: a clear broad lobed ALIEN canopy fan, not ordinary deciduous leaves, enters upper-left entirely above y12%. At lower-right below y89% a small branching fan has ONE attached softly glowing amber lantern pod and one tiny resting seed-moth with folded papery wings. The moth must read as an inconspicuous small insect silhouette, no eyes, cartoon face, cute critter, animal ears or human features. No second bright pod. Dim indigo mist separates canopy depths at extreme bottom; no grounded forest floor. No leaves crossing central height. SECOND REFERENCE is the approved layout drawing: match its extremely shallow scenery zones and darkness through all three reserved rectangles. DO NOT draw any of its characters, text, dashed boxes or simple vector shapes. Main upper fan must fit entirely above12% of image height; lower pod below89%.",
+      "version": "phone-v1",
+      "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-51dd660b-6da2-44f3-be7d-e530c651baa0.png",
+      "selected": false,
+      "sha256": "8ca442f7f963c02f2c246dea6fcf604c7269bc43fefc166e27b5ddb64b216ed7",
+      "pixels": [
+        852,
+        1846
+      ]
+    },
+    {
+      "id": "garden",
+      "orientation": "phone",
+      "version": "phone-v2",
+      "prompt": "Use case: precise-object-edit. Make a narrowly targeted correction to this tall Night Garden environment. Preserve the exact tall canvas, dark open center, painterly night style, attached amber lantern-pod and color palette. At lower right, REMOVE the small pale birdlike animal to the right of the large glowing pod, and REMOVE the pale miniature animal/bud immediately above the pod. Replace BOTH with natural dark branch/leaf texture. Then place exactly ONE tiny flat dark indigo seed-moth insect silhouette resting below the pod: two closed papery wings, size only one eighth of the glowing pod's height, NO visible eyes, face, head-like ears, beak or cute character features. It should be nearly hidden against the branch. Reduce the upper-left canopy fan and lift it so its bright leaf edges stay wholly inside the top 11% of canvas, leaving dark open air beneath. Reduce the lower-right pod+branch grouping slightly and move down so all bright leaf edges are inside the bottom 11%. NO second glowing pod, NO eyes, NO creature characters anywhere. Keep the single warm attached lantern-pod as the one clear bright ecological detail. No text, guides or UI.",
+      "references": [
+        "/tmp/starfall-celestial-production/docs/design/environments/night-keys-08/garden-phone.png"
+      ],
+      "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-1520b415-a250-4c9e-a904-6bb957df626f.png",
+      "selected": true,
+      "file": "garden-phone-key.png",
+      "sha256": "24ed29c14022363c8b2e68e0494d0f18e8db95c781b0d23b0470c99d5d155c79",
+      "pixels": [
+        852,
+        1846
+      ]
+    },
+    {
+      "id": "moonwake",
+      "orientation": "wide",
+      "references": [
+        "/tmp/starfall-celestial-production/docs/design/environments/night-keys-08/moonwake-wide.png",
+        "/tmp/starfall-kit-checks/moonwake-wide.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Correct ONLY the scenic clearances in the FIRST supplied Starfall landscape painting. Preserve its landscape 4:3 canvas, night mood, palette, broad material treatment and destination identity. SECOND image is a placement diagram ONLY, showing fixed game and controls. Do NOT render its stars, dashed boxes, text, or vector art. The entire middle vertical strip x=26% through 74% from TOP TO BOTTOM must be VERY DARK, low-detail blue-black open space, including at the top where the HUD will sit. No bright cloud edge, tree branch, moon or ring can occupy that strip. All hard scenic silhouettes and localized warm lights must remain outside this strip, with a small dark gap before the invisible boundary. Do not paint a visible vertical seam, rectangle or border: gently blend the quiet space into the surrounding scene. Remove tiny bright star points inside the middle. Keep the game's future field exactly centered; no characters or UI are to be added. Move the entire pearl moon farther LEFT and slightly reduce it, so even its uppermost illuminated limb remains left of x24%. Keep its broad moon curve recognizable at left. Keep chart-sail at far right and remove the bright streaming tail behind it; a nearly invisible dust current is sufficient. One dim ice fragment at bottom-left. All other composition remains.",
+      "version": "wide-v3",
+      "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-13cac800-2d0a-4f92-b560-69c509f92a5b.png",
+      "selected": true,
+      "file": "moonwake-wide-key.png",
+      "sha256": "5151985015ba764a20f081a93f5bfe101e9b34fccdc73ef90215eff60229e922",
+      "pixels": [
+        1448,
+        1086
+      ]
+    },
+    {
+      "id": "nebula",
+      "orientation": "wide",
+      "references": [
+        "/tmp/starfall-celestial-production/docs/design/environments/night-keys-08/nebula-wide.png",
+        "/tmp/starfall-kit-checks/nebula-wide.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Correct ONLY the scenic clearances in the FIRST supplied Starfall landscape painting. Preserve its landscape 4:3 canvas, night mood, palette, broad material treatment and destination identity. SECOND image is a placement diagram ONLY, showing fixed game and controls. Do NOT render its stars, dashed boxes, text, or vector art. The entire middle vertical strip x=26% through 74% from TOP TO BOTTOM must be VERY DARK, low-detail blue-black open space, including at the top where the HUD will sit. No bright cloud edge, tree branch, moon or ring can occupy that strip. All hard scenic silhouettes and localized warm lights must remain outside this strip, with a small dark gap before the invisible boundary. Do not paint a visible vertical seam, rectangle or border: gently blend the quiet space into the surrounding scene. Remove tiny bright star points inside the middle. Keep the game's future field exactly centered; no characters or UI are to be added. Pull the upper-left cloud curl and ALL its illuminated edges farther left, fully inside the left quarter. Keep the dark C-shaped fold readable. Push lower-right rose bank farther right, fully inside right quarter. Reduce the birth-light from a little white disk to diffuse warmth obscured by gas. Keep two unequal masses; no wreath, no high-contrast cloud behind the future leftmost column.",
+      "version": "wide-v3",
+      "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-5b1068a0-8803-406a-b0ef-cdaa7fc4ab39.png",
+      "selected": true,
+      "file": "nebula-wide-key.png",
+      "sha256": "d9098f85ea0adf0acfd89315b756e51f2a90511e80833637b0a7ad1a97ccf33c",
+      "pixels": [
+        1448,
+        1086
+      ]
+    },
+    {
+      "id": "shatterlight",
+      "orientation": "wide",
+      "references": [
+        "/tmp/starfall-celestial-production/docs/design/environments/night-keys-08/shatterlight-wide.png",
+        "/tmp/starfall-kit-checks/shatterlight-wide.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Correct ONLY the scenic clearances in the FIRST supplied Starfall landscape painting. Preserve its landscape 4:3 canvas, night mood, palette, broad material treatment and destination identity. SECOND image is a placement diagram ONLY, showing fixed game and controls. Do NOT render its stars, dashed boxes, text, or vector art. The entire middle vertical strip x=26% through 74% from TOP TO BOTTOM must be VERY DARK, low-detail blue-black open space, including at the top where the HUD will sit. No bright cloud edge, tree branch, moon or ring can occupy that strip. All hard scenic silhouettes and localized warm lights must remain outside this strip, with a small dark gap before the invisible boundary. Do not paint a visible vertical seam, rectangle or border: gently blend the quiet space into the surrounding scene. Remove tiny bright star points inside the middle. Keep the game's future field exactly centered; no characters or UI are to be added. Move and reduce the upper-left broken shell fragments so all bright curved strata remain left of x24%, including at image top. Retain their shared curvature and dark gaps. Keep exactly one small shelter on far-right fragment. Remove most tiny rubble and chips, leaving only three main broken pieces and one dark nearer mineral mass at far lower-right. No bright rock arc beneath the central play field.",
+      "version": "wide-v3",
+      "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-ac91f70d-f56e-4795-b0ce-6ca6a3926975.png",
+      "selected": true,
+      "file": "shatterlight-wide-key.png",
+      "sha256": "84452ada7fe92d79d24c62a0d125a4971ec44dced0e5d4720627b676d8eb4a96",
+      "pixels": [
+        1448,
+        1086
+      ]
+    },
+    {
+      "id": "garden",
+      "orientation": "wide",
+      "references": [
+        "/tmp/starfall-celestial-production/docs/design/environments/night-keys-08/garden-wide-v2.png",
+        "/tmp/starfall-kit-checks/garden-wide.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Correct ONLY the scenic clearances in the FIRST supplied Starfall landscape painting. Preserve its landscape 4:3 canvas, night mood, palette, broad material treatment and destination identity. SECOND image is a placement diagram ONLY, showing fixed game and controls. Do NOT render its stars, dashed boxes, text, or vector art. The entire middle vertical strip x=26% through 74% from TOP TO BOTTOM must be VERY DARK, low-detail blue-black open space, including at the top where the HUD will sit. No bright cloud edge, tree branch, moon or ring can occupy that strip. All hard scenic silhouettes and localized warm lights must remain outside this strip, with a small dark gap before the invisible boundary. Do not paint a visible vertical seam, rectangle or border: gently blend the quiet space into the surrounding scene. Remove tiny bright star points inside the middle. Keep the game's future field exactly centered; no characters or UI are to be added. Shrink and move the upper-left canopy fan toward the corner so every bright leaf edge stays LEFT of x24%, even at the top of the image. Move the lower-right branch and single large amber pod farther RIGHT so all bright leaf edges stay RIGHT of x76%; preserve visibly attached pod. Remove the little pale birdlike characters/animal buds near the pod, replacing them with dark branch texture. One near-hidden seed-moth with two closed dark papery wings may remain, no eye or face, 1/8 the pod height. Simplify distant foliage into broad muted indigo atmospheric masses, especially at the bottom. Do not leave a bright leafy silhouette touching where a star will be. Open airborne height, no ground.",
+      "version": "wide-v3",
+      "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-88e654e4-d930-4b76-919d-16bb2682b513.png",
+      "selected": true,
+      "file": "garden-wide-key.png",
+      "sha256": "02cbc6787c9864eea2d62fd46e41fb011ca839ef5791c6a17bf7d8eef70d6816",
+      "pixels": [
+        1448,
+        1086
+      ]
+    },
+    {
+      "id": "ringdrift",
+      "orientation": "wide",
+      "references": [
+        "/tmp/starfall-celestial-production/docs/design/environments/night-keys-08/ringdrift-wide.png",
+        "/tmp/starfall-kit-checks/ringdrift-wide.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Correct ONLY the scenic clearances in the FIRST supplied Starfall landscape painting. Preserve its landscape 4:3 canvas, night mood, palette, broad material treatment and destination identity. SECOND image is a placement diagram ONLY, showing fixed game and controls. Do NOT render its stars, dashed boxes, text, or vector art. The entire middle vertical strip x=26% through 74% from TOP TO BOTTOM must be VERY DARK, low-detail blue-black open space, including at the top where the HUD will sit. No bright cloud edge, tree branch, moon or ring can occupy that strip. All hard scenic silhouettes and localized warm lights must remain outside this strip, with a small dark gap before the invisible boundary. Do not paint a visible vertical seam, rectangle or border: gently blend the quiet space into the surrounding scene. Remove tiny bright star points inside the middle. Keep the game's future field exactly centered; no characters or UI are to be added. Reduce the ENTIRE left planet and attached ring system together and move farther left until the outer right ring tip stays LEFT of x24%, including its upper sweep. Keep the complete orbit silhouette readable and coherent near/far ring occlusion, not just straight partial lines. Planet may remain cropped left, the ring tip must visibly turn back toward planet within the left quarter. Preserve distant sail upper-right and small shepherd moon lower-right. Reduce ice grit and remove bright comet-like sail trail.",
+      "version": "wide-v3",
+      "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-0f1d0d4a-ba06-431d-ba21-9cf745aaf2b3.png",
+      "selected": true,
+      "file": "ringdrift-wide-key.png",
+      "sha256": "17167e1e9968b92158c2ba290331a77d10b82b0231f3b18be5612f4b808daed8",
+      "pixels": [
+        1448,
+        1086
+      ]
+    }
+  ]
+}

@@ -40,7 +40,7 @@ final class TraceInputPolishTests: XCTestCase {
     @MainActor func testContinuousSamplingFindsCoarseAndGrazingHitsAtDifferentSizes() {
         let game = ConstellationFixture.diagonalSix.game()
         for size in [CGSize(width: 320, height: 568), CGSize(width: 414, height: 896), CGSize(width: 440, height: 956)] {
-            let mapping = ObservatoryGeometry(size: size)
+            let mapping = LandingGeometry(size: size)
             let cells = ConstellationTraceHitTesting.cells(from: mapping.viewPoint(Cell(0,0)),
                 to: mapping.viewPoint(Cell(4,4)), mapping: mapping, game: game)
             XCTAssertEqual(cells.filter { game.gem(at: $0)?.kind == .rose }, (0..<5).map { Cell($0,$0) })
@@ -61,7 +61,7 @@ final class TraceInputPolishTests: XCTestCase {
 
     @MainActor func testCurvedExcursionAndBranchRetracingKeepExactlyTheChosenStars() throws {
         let game = ConstellationFixture.diagonalSix.game()
-        let mapping = ObservatoryGeometry(size: CGSize(width: 414, height: 896))
+        let mapping = LandingGeometry(size: CGSize(width: 414, height: 896))
         let expected = (0..<5).map { Cell($0,$0) }
         var points = [mapping.viewPoint(Cell(0,0)), mapping.viewPoint(Cell(0,1)), mapping.viewPoint(Cell(0,0))]
         for cell in expected.dropFirst() {
@@ -97,7 +97,7 @@ final class TraceInputPolishTests: XCTestCase {
 extension TraceInputPolishTests {
     @MainActor func testFinalOnlyFlickBeyondBoardKeepsOneCardinalNeighbor() {
         for size in [CGSize(width:320,height:568), CGSize(width:440,height:956), CGSize(width:1024,height:1366)] {
-            let mapping = ObservatoryGeometry(size:size), source = Cell(3,3), center = mapping.viewPoint(source)
+            let mapping = LandingGeometry(size:size), source = Cell(3,3), center = mapping.viewPoint(source)
             let origin = CGPoint(x:center.x + mapping.frame(source).width*0.35, y:center.y-3)
             let destinations: [(CGPoint,Cell)] = [
                 (CGPoint(x:-40,y:origin.y+7),Cell(3,2)),
@@ -124,7 +124,7 @@ extension TraceInputPolishTests {
     }
 
     @MainActor func testOutwardDestinationsHeldExitsAndNonfiniteSamplesStillCancel() {
-        let mapping = ObservatoryGeometry(size:.init(width:390,height:844))
+        let mapping = LandingGeometry(size:.init(width:390,height:844))
         for (source,end) in [(Cell(0,0),CGPoint(x:-40,y:800)), (Cell(3,6),CGPoint(x:1000,y:400)),
                              (Cell(6,3),CGPoint(x:200,y:-1000)), (Cell(0,3),CGPoint(x:200,y:2000))] {
             var input = ConstellationTouchSession()
@@ -151,7 +151,7 @@ extension TraceInputPolishTests {
 
     @MainActor func testEdgeReleaseCancelsAndFinalOnlySampleSwapsOnce() {
         for size in [CGSize(width:320,height:568), CGSize(width:440,height:956)] {
-            let mapping = ObservatoryGeometry(size:size), surface = ConstellationTraceSurface.Surface()
+            let mapping = LandingGeometry(size:size), surface = ConstellationTraceSurface.Surface()
             let cell = Cell(0,0), center = mapping.viewPoint(cell)
             let start = CGPoint(x:center.x-mapping.frame(cell).width*0.48,y:center.y)
             var swaps = 0, taps = 0
@@ -199,7 +199,7 @@ extension TraceInputPolishTests {
     }
 
     func testStationaryHoldLocksDrawingAndMovementCannotLaterArmIt() {
-        let mapping = ObservatoryGeometry(size:CGSize(width:390,height:844))
+        let mapping = LandingGeometry(size:CGSize(width:390,height:844))
         let cell = Cell(1,2), origin = mapping.viewPoint(cell)
         var touch = ConstellationTouchSession()
         XCTAssertTrue(touch.begin(at:origin,swapEligible:true))
@@ -218,7 +218,7 @@ extension TraceInputPolishTests {
     }
 
     @MainActor func testPhysicalContactTicketExpiresEvenWhenNextTouchUsesTheSameOrigin() {
-        let mapping = ObservatoryGeometry(size: CGSize(width:390,height:844))
+        let mapping = LandingGeometry(size: CGSize(width:390,height:844))
         let origin = mapping.viewPoint(Cell(1,2))
         var touch = ConstellationTouchSession()
         XCTAssertTrue(touch.begin(at:origin))
@@ -379,7 +379,7 @@ extension TraceInputPolishTests {
 extension TraceInputPolishTests {
     func testFourDirectionsCommitBeforeBoundaryOnceRegardlessOfLaterMotion() {
         for size in [CGSize(width:320,height:568),CGSize(width:440,height:956),CGSize(width:834,height:1194)] {
-            let mapping = ObservatoryGeometry(size:size), cell = Cell(2,2), origin = mapping.viewPoint(cell)
+            let mapping = LandingGeometry(size:size), cell = Cell(2,2), origin = mapping.viewPoint(cell)
             let distance = ConstellationTouchSession.swapThreshold(cell,mapping:mapping) * 1.1
             for (dx,dy,to) in [(CGFloat(-1),CGFloat(0),Cell(2,1)),(1,0,Cell(2,3)),(0,-1,Cell(3,2)),(0,1,Cell(1,2))] {
                 let point = CGPoint(x:origin.x+distance*dx,y:origin.y+distance*dy)
@@ -398,9 +398,9 @@ extension TraceInputPolishTests {
     @MainActor func testOffCenterEllipseAndGapMissUseSharedRules() throws {
         let game = ConstellationFixture.horizontalFive.game()
         XCTAssertEqual(ConstellationTraceHitTesting.cells(from:.zero,to:.zero,
-            mapping:ObservatoryGeometry(size:.zero),game:game),[])
+            mapping:LandingGeometry(size:.zero),game:game),[])
         for size in [CGSize(width:320,height:568),CGSize(width:440,height:956),CGSize(width:834,height:1194)] {
-            let mapping = ObservatoryGeometry(size:size)
+            let mapping = LandingGeometry(size:size)
             let a = mapping.viewPoint(Cell(0,0)), b = mapping.viewPoint(Cell(0,4))
             let offset = mapping.frame(Cell(0,0)).height*0.38
             let hits = ConstellationTraceHitTesting.cells(from:CGPoint(x:a.x,y:a.y+offset),
@@ -466,7 +466,7 @@ extension TraceInputPolishTests {
 
 extension TraceInputPolishTests {
     @MainActor func testProductionSurfaceSwapsMatchingStarsBeforeReleaseAndNeverDraws() throws {
-        let size = CGSize(width:390,height:844), mapping = ObservatoryGeometry(size:size)
+        let size = CGSize(width:390,height:844), mapping = LandingGeometry(size:size)
         var game = SkyTechniqueExample.trace.game()
         let before = game, surface = ConstellationTraceSurface.Surface()
         var swaps = 0, draws = 0, taps = 0
@@ -489,7 +489,7 @@ extension TraceInputPolishTests {
     }
 
     @MainActor func testHoldTimerUsesCurrentTicketAndCancelledHoldsCannotDraw() async throws {
-        let size = CGSize(width:390,height:844), origin = ObservatoryGeometry(size:size).viewPoint(Cell(0,0))
+        let size = CGSize(width:390,height:844), origin = LandingGeometry(size:size).viewPoint(Cell(0,0))
         let surface = ConstellationTraceSurface.Surface()
         var draws = 0, taps = 0
         surface.updateInput(.init(size:size,enabled:true,generation:1,traceStart:{ _ in Cell(0,0) },
@@ -513,7 +513,7 @@ extension TraceInputPolishTests {
 
 extension TraceInputPolishTests {
     func testHoldOnNonTracingSwappableStarStillCannotFallBackToExchange() {
-        let mapping = ObservatoryGeometry(size:CGSize(width:390,height:844))
+        let mapping = LandingGeometry(size:CGSize(width:390,height:844))
         let origin = mapping.viewPoint(Cell(1,2))
         var contact = ConstellationTouchSession()
         XCTAssertTrue(contact.begin(at:origin,traceEligible:false,swapEligible:true))
@@ -525,7 +525,7 @@ extension TraceInputPolishTests {
     @MainActor func testPendingHoldCannotSurviveSurfaceReconfiguration() {
         for boundary in ["generation", "size", "disabled", "detach", "multitouch"] {
             let size = CGSize(width:390,height:844), surface = ConstellationTraceSurface.Surface()
-            let origin = ObservatoryGeometry(size:size).viewPoint(Cell(0,0))
+            let origin = LandingGeometry(size:size).viewPoint(Cell(0,0))
             var drawings = 0
             func input(size:CGSize = CGSize(width:390,height:844), enabled:Bool = true, generation:UInt64 = 1) -> ConstellationTraceSurface {
                 .init(size:size,enabled:enabled,generation:generation,traceStart:{ _ in Cell(0,0) },

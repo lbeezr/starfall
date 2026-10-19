@@ -14,6 +14,8 @@ import StarfallCore
     @State private var handoffLeaving = false
     @AccessibilityFocusState private var menuFocused: Bool
     @AppStorage("calmEffects") private var calmEffects = false
+    @AppStorage(LandingPlace.preferenceKey) private var savedPlace = LandingPlace.moonwake.rawValue
+    private var place: LandingPlace { LandingPlace.restored(savedPlace) }
     @Environment(\.colorSchemeContrast) private var environmentContrast
     @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
     @Environment(\.scenePhase) private var scenePhase
@@ -21,10 +23,6 @@ import StarfallCore
     @Environment(\.accessibilityVoiceOverEnabled) private var voiceOver
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     private var largeText: Bool { dynamicTypeSize.isAccessibilitySize }
-    private var controlLayout: AnyLayout {
-        largeText ? AnyLayout(VStackLayout(alignment: .leading, spacing: StarfallTheme.Spacing.small))
-            : AnyLayout(HStackLayout(spacing: StarfallTheme.Spacing.medium))
-    }
     @Namespace private var matchingGroups
 
     init() {
@@ -57,26 +55,31 @@ import StarfallCore
 
     var body: some View {
         ZStack {
+            LandingBackdrop(place: place).ignoresSafeArea()
             VStack(spacing: 0) {
                 GeometryReader { safeViewport in
-                    if largeText {
+                    // The playfield expands through safe-area insets. Classify that
+                    // same canvas so a small iPad is not mistaken for a short phone.
+                    let canvasHeight = safeViewport.size.height + safeViewport.safeAreaInsets.top + safeViewport.safeAreaInsets.bottom
+                    if largeText || canvasHeight < 740 {
+                        let height = max(largeText ? 1200 : 900, safeViewport.size.height)
+                        let mapping = LandingGeometry(size: CGSize(width: safeViewport.size.width, height: height), largeHeader: largeText)
                         ScrollView {
-                            VStack(spacing: StarfallTheme.Spacing.small) {
-                                playfield(insets: safeViewport.safeAreaInsets, compact: safeViewport.size.height < 750, allowsIsland: false)
-                                    .frame(height: safeViewport.size.height)
+                            VStack(spacing: 0) {
+                                playfield(insets: safeViewport.safeAreaInsets, compact: false, allowsIsland: false, expanded: true)
+                                    .frame(height: height)
+                                    .frame(height: mapping.accessibleCanvasEnd, alignment: .top).clipped()
                                 if !showingCeremony && !settings {
-                                    guide(compact: safeViewport.size.height < 750)
-                                        .accessibilityHidden(settings)
-                                        .padding(.horizontal, StarfallTheme.Spacing.medium)
-                                        .padding(.bottom, safeViewport.safeAreaInsets.bottom + StarfallTheme.Spacing.small)
+                                    guide(compact: false)
+                                        .padding(StarfallTheme.Landing.flowingApronInset)
+                                        .frame(maxWidth: .infinity)
+                                        .padding(.bottom, safeViewport.safeAreaInsets.bottom)
                                 }
                             }
-                        }
-                        .ignoresSafeArea()
+                        }.ignoresSafeArea()
                     } else {
                         playfield(insets: safeViewport.safeAreaInsets, compact: safeViewport.size.height < 750,
-                                  allowsIsland: true)
-                            .ignoresSafeArea()
+                                  allowsIsland: true).ignoresSafeArea()
                     }
                 }
             }
@@ -145,77 +148,113 @@ import StarfallCore
         .sheet(item: $menu, onDismiss: { if voiceOver && !showingCeremony { menuFocused = true } }) { destination in
             settingsView(destination)
         }
+        .overlayPreferenceValue(StarlightAnchors.self) { anchors in
+            GeometryReader { proxy in
+                if !settings, !showingCeremony, let receipt = store.celebration,
+                   let board = anchors[.board], let score = anchors[.score], let header = anchors[.header] {
+                    StarlightCelebrationOverlay(event: receipt, board: proxy[board], score: proxy[score], header: proxy[header], quiet: quietMotion)
+                        .id(receipt.id)
+                }
+            }.allowsHitTesting(false)
+        }
     }
 
-    /// The terrace owns its complete canvas. At accessibility sizes the guide is
-    /// a sibling below it, so text growth cannot cover projected stars or props.
-    private func playfield(insets: EdgeInsets, compact: Bool, allowsIsland: Bool) -> some View {
+    /// One centered canvas owns the stars. Accessible dialogue reflows below it.
+    private func playfield(insets: EdgeInsets, compact: Bool, allowsIsland: Bool, expanded: Bool = false) -> some View {
         GeometryReader { viewport in
+            let mapping = LandingGeometry(size: viewport.size, largeHeader: expanded && largeText)
+            let crown = mapping.crownFrame
+            let room = mapping.communicationContentFrame
             let island = allowsIsland && usesIslandTimer(size: viewport.size, topInset: insets.top)
-            let front = ObservatoryGeometry(size: viewport.size).frame(Cell(0, 0)).maxY
-            let footerHeight = max(0, viewport.size.height - front - insets.bottom
-                - 2 * StarfallTheme.Spacing.small)
             ZStack {
-                board.allowsHitTesting(!settings && !showingCeremony)
+                board(expanded: expanded).allowsHitTesting(!settings && !showingCeremony)
                 if !showingCeremony && !settings {
-                    VStack(spacing: StarfallTheme.Spacing.small) {
-                        compactHeader(island: island)
-                            .starlightAnchor(.header)
-                        Spacer(minLength: 0)
-                        if !largeText { guide(compact: compact, maximumHeight: footerHeight) }
+                    VStack(spacing: 4) {
+                        ViewThatFits(in: .horizontal) {
+                            HStack { scoreLabel; Spacer(minLength: 12); skyMenuButton }
+                            VStack(alignment: .leading, spacing: 4) { scoreLabel; skyMenuButton }
+                        }
+                        if !island { showerTrail(island: false, width: min(280, crown.width)) }
                     }
-                    .padding(.horizontal, StarfallTheme.Spacing.medium)
-                    .padding(.top, insets.top)
-                    .padding(.bottom, insets.bottom + StarfallTheme.Spacing.small)
+                    .frame(width: crown.width, height: crown.height)
+                    .starlightAnchor(.header).accessibilityElement(children: .contain)
+                    .accessibilityIdentifier("sky.header")
+                    .position(x: crown.midX, y: crown.midY)
+                    if !expanded {
+                        guide(compact: compact, maximumHeight: room.height, narrow: room.width < 280, externalControls: true)
+                            .frame(width: room.width, height: room.height, alignment: .center)
+                            .position(x: room.midX, y: room.midY)
+                        if !store.game.isOver {
+                            registered(landingAction(0), in: mapping.actionFrame(0))
+                            registered(landingAction(1), in: mapping.actionFrame(1))
+                        }
+                    }
                 }
             }
             .overlay(alignment: .top) {
                 if island && !showingCeremony && !settings {
-                    showerTrail(island: true)
-                        .allowsHitTesting(false)
+                    showerTrail(island: true).allowsHitTesting(false)
                 }
-            }
-            .overlayPreferenceValue(StarlightAnchors.self) { anchors in
-                GeometryReader { proxy in
-                    if !settings, !showingCeremony, let receipt = store.celebration,
-                       let board = anchors[.board], let score = anchors[.score], let header = anchors[.header] {
-                        StarlightCelebrationOverlay(event: receipt, board: proxy[board], score: proxy[score], header: proxy[header], quiet: quietMotion)
-                            .id(receipt.id)
-                    }
-                }.allowsHitTesting(false)
             }
             .accessibilityHidden(settings || showingCeremony)
         }
     }
 
-    @ViewBuilder private func guide(compact: Bool, maximumHeight: CGFloat? = nil) -> some View {
+    @ViewBuilder private func guide(compact: Bool, maximumHeight: CGFloat? = nil, narrow: Bool = false, externalControls: Bool = false) -> some View {
         if !store.game.isOver {
             SkyDialogueOverlay(session: store.dialogue,
                                pausedLine: store.isPaused ? store.pausedGuideLine : nil,
                                active: scenePhase == .active && !settings && !showingCeremony,
-                               next: store.nextDialogue, maximumHeight: maximumHeight) {
-                controlLayout {
-                    Button(store.game.turns == 0 ? SkyCopy.text(.actionStart) : SkyCopy.text(.actionResume)) { store.togglePause() }
-                        .disabled(store.suspended).accessibilityIdentifier("experiment.pause")
-                    if !largeText { Spacer(minLength: 0) }
-                    Button(SkyCopy.text(.actionNext)) { store.callShower() }
-                        .disabled(store.busy || store.suspended).accessibilityIdentifier("experiment.next")
-                }.buttonStyle(StarfallGameButtonStyle())
+                               next: store.nextDialogue, maximumHeight: maximumHeight, compact: narrow,
+                               embedded: true, externalControls: externalControls, embeddedInk: StarfallTheme.Landing.ink(place)) {
+                ViewThatFits(in: .horizontal) {
+                    HStack(spacing: StarfallTheme.Spacing.medium) { pauseControl; showerControl }
+                        .fixedSize(horizontal: true, vertical: false)
+                    VStack(alignment: .leading, spacing: StarfallTheme.Spacing.small) { pauseControl; showerControl }
+                }.buttonStyle(StarfallGameButtonStyle(tint: StarfallTheme.Landing.ink(place)))
             }
-            .padding(.trailing, largeText ? 0 : StarfallTheme.Layout.guidePropClearance)
-            .frame(maxWidth: .infinity, alignment: .leading)
         }
+    }
+    private var pauseControl: some View {
+        Button(store.isPaused ? (store.game.turns == 0 ? SkyCopy.text(.actionStart) : SkyCopy.text(.actionResume)) : SkyCopy.text(.actionPause)) { store.togglePause() }
+            .disabled(store.suspended).accessibilityIdentifier("experiment.pause")
+    }
+    private var showerControl: some View {
+        Button(SkyCopy.text(.actionNext)) { store.callShower() }
+            .disabled(store.busy || store.suspended).accessibilityIdentifier("experiment.next")
+    }
+
+    private func registered<Content: View>(_ content: Content, in frame: CGRect) -> some View {
+        content.frame(width: frame.width, height: frame.height)
+            .position(x: frame.midX, y: frame.midY)
+    }
+
+    private func landingAction(_ index: Int) -> some View {
+        Group {
+            if store.dialogue.visible && store.dialogue.scriptID != nil {
+                if index == 0 && store.dialogue.hasNext {
+                    Button(SkyCopy.text(.actionNextLine), action: store.nextDialogue)
+                        .accessibilityIdentifier("sky.dialogue.next")
+                } else if index == 1 {
+                    Button(SkyCopy.text(.actionClose)) { store.dialogue.dismiss() }
+                        .accessibilityIdentifier("sky.dialogue.close")
+                }
+            } else if index == 0 { pauseControl }
+            else { showerControl }
+        }
+        .buttonStyle(StarfallGameButtonStyle(tint: StarfallTheme.Landing.ink(place)))
+        .multilineTextAlignment(.center)
     }
 
     private func updateMotion() { store.setReducedMotion(reduceMotion || calmEffects || voiceOver) }
 
-    private func compactHeader(island: Bool) -> some View {
+    private var scoreLabel: some View {
         let quiet = quietMotion
         let celebrating = store.celebration != nil
-        return HStack(spacing: StarfallTheme.Spacing.small) {
+        return
             HStack(spacing: StarfallTheme.Spacing.compact) {
-                Image(systemName: "sparkle").foregroundStyle(StarfallTheme.Observatory.lanternGlow).accessibilityHidden(true)
-                Text(store.game.challenge.map { "\(store.game.score) / \($0.target)" } ?? "\(store.game.score)")
+                Image(systemName: "sparkle").font(StarfallTheme.Typography.hudGlyph).foregroundStyle(StarfallTheme.Observatory.lanternGlow).accessibilityHidden(true)
+                Text(store.game.challenge.map { "\(store.game.score.formatted()) / \($0.target.formatted())" } ?? store.game.score.formatted())
                     .font(StarfallTheme.Typography.gameTitle).monospacedDigit()
                     .accessibilityLabel(store.game.challenge.map { SkyCopy.text(.resultChallengeScore, values: ["score": String(store.game.score), "target": String($0.target)]) } ?? SkyCopy.text(.welcomeScore, values: ["score": String(store.game.score)]))
                     .accessibilityIdentifier("experiment.score")
@@ -229,25 +268,23 @@ import StarfallCore
                 CubicKeyframe(1, duration: 0.2)
             }
             .starlightAnchor(.score)
-            .foregroundStyle(StarfallTheme.Colors.textPrimary)
+            .foregroundStyle(StarfallTheme.Landing.ink(place))
             .shadow(color: StarfallTheme.Colors.skyTop, radius: 3)
             .frame(minHeight: StarfallTheme.Layout.minimumTarget).allowsHitTesting(false)
-            Spacer(minLength: 0)
-            if !island { showerTrail(island: false) }
-            Spacer(minLength: 0)
-            Button { menu = .game } label: { SkyMenuGlyph() }
-                .buttonStyle(StarfallGameButtonStyle())
-                .disabled(scenePhase != .active || store.suspended)
-                .accessibilityLabel(SkyCopy.text(.menuTitle)).accessibilityHint(SkyCopy.text(.menuHint))
-                .accessibilityIdentifier("experiment.settings").accessibilityFocused($menuFocused)
-        }
+    }
+    private var skyMenuButton: some View {
+        Button { menu = .game } label: { Text("Menu") }
+            .buttonStyle(StarfallGameButtonStyle(tint: StarfallTheme.Landing.ink(place)))
+            .disabled(scenePhase != .active || store.suspended)
+            .accessibilityLabel(SkyCopy.text(.menuTitle)).accessibilityHint(SkyCopy.text(.menuHint))
+            .accessibilityIdentifier("experiment.settings").accessibilityFocused($menuFocused)
     }
 
-    private func showerTrail(island: Bool) -> some View {
+    private func showerTrail(island: Bool, width: CGFloat = StarfallTheme.Layout.showerTrailWidth) -> some View {
         SkyShowerTrail(deadline: store.nextShowerDate, interval: store.showerInterval,
                        paused: store.isPaused || store.suspended || store.game.isOver,
                        arriving: store.pending?.arrivals.isEmpty == false,
-                       quiet: quietMotion, island: island, forecast: store.forecast)
+                       quiet: quietMotion, island: island, width: width, forecast: store.forecast)
     }
 
     /// Menu suspension must be released before applying a player pause choice.
@@ -259,13 +296,13 @@ import StarfallCore
         menu = nil
     }
 
-    private var board: some View {
+    private func board(expanded: Bool) -> some View {
         VStack(spacing: 0) {
             GeometryReader { geometry in
                 ZStack {
-                    ObservatoryEnvironment(active: scenePhase == .active && !settings && !showingCeremony,
-                                           reducedMotion: reduceMotion || calmEffects || voiceOver || reduceTransparency)
-                        .id(environmentGeneration)
+                    LandingEnvironment(place: place, active: scenePhase == .active && !settings && store.persistenceNotice == nil && !showingCeremony && !store.isPaused,
+                                           reducedMotion: reduceMotion || calmEffects || voiceOver || reduceTransparency, largeHeader: expanded && largeText)
+                        .id("\(environmentGeneration).\(place.rawValue)")
                     if environmentContrast == .increased || reduceTransparency {
                         Color.black.opacity(0.28).allowsHitTesting(false).accessibilityHidden(true)
                     }
@@ -273,7 +310,7 @@ import StarfallCore
                         .opacity(boardVisible ? 1 : 0)
                         .animation(quietMotion ? nil : .easeOut(duration: StarfallTheme.Ceremony.handoffDuration), value: boardVisible)
                         .allowsHitTesting(false).accessibilityHidden(true)
-                    let mapping = ObservatoryGeometry(size: geometry.size)
+                    let mapping = LandingGeometry(size: geometry.size)
                     if endingReady, let column = store.game.blockedColumn {
                         Path { path in
                             path.addLines(mapping.columnPolygon(column)); path.closeSubpath()
@@ -469,6 +506,7 @@ import StarfallCore
                            groups: store.game.legalGroups.count, over: store.game.isOver,
                            challenge: store.game.challenge != nil, helpContext: .init(game: store.game), balance: store.game.balance,
                            sound: $store.soundEnabled, haptics: $store.hapticsEnabled, calm: $calmEffects,
+                           place: Binding(get: { place }, set: { savedPlace = $0.rawValue }),
                            pause: togglePauseFromMenu,
                            restart: { same in handleFlowAction(same ? .replay : .another) },
                            firstLight: { handleFlowAction(.firstLight) },
@@ -511,7 +549,7 @@ private extension FallingSkyView {
     }
     func beginBoardContact(_ point: CGPoint, size: CGSize) -> Bool {
         cancelConstellation()
-        guard let cell = ObservatoryGeometry(size: size).cell(at: point) else { return false }
+        guard let cell = LandingGeometry(size: size).cell(at: point) else { return false }
         guard interaction.acquireHold(at: cell, using: store.beginResponsiveContact) else {
             store.explainSettling(at: cell); return false
         }
@@ -520,7 +558,7 @@ private extension FallingSkyView {
         return true
     }
     func beginConstellation(_ point: CGPoint, size: CGSize) {
-        guard let cell = ConstellationTraceHitTesting.start(at: point, mapping: ObservatoryGeometry(size: size), game: store.game) else {
+        guard let cell = ConstellationTraceHitTesting.start(at: point, mapping: LandingGeometry(size: size), game: store.game) else {
             store.explainInputFailure(SkyCopy.text(.inputTraceStart)); return
         }
         guard store.canTrace([cell]) else { store.explainSettling(at: cell); return }
@@ -534,7 +572,7 @@ private extension FallingSkyView {
     }
     func moveConstellation(_ point: CGPoint, size: CGSize) {
         guard trace.snapshot != nil else { return }
-        let mapping = ObservatoryGeometry(size: size)
+        let mapping = LandingGeometry(size: size)
         guard mapping.cell(at: point) != nil else { cancelConstellation(); store.explainInputFailure(SkyCopy.text(.inputTraceOffBoard)); return }
         let previous = trace.lastFinger ?? point
         for cell in ConstellationTraceHitTesting.cells(from: previous, to: point, mapping: mapping, game: store.game) {

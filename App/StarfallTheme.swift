@@ -105,6 +105,7 @@ enum StarfallTheme {
         static let status = Font.callout
         static let action = Font.headline
         static let gameTitle = Font.system(.headline, design: .rounded)
+        static let hudGlyph = Font.system(size: Layout.hudSymbolSide, weight: .medium)
         static let celebrationTitle = Font.system(.title, design: .rounded).weight(.heavy)
         static let celebrationRelayCount = Font.system(.title3, design: .serif).weight(.bold)
         static let celebrationAward = Font.system(.largeTitle, design: .rounded).weight(.heavy)
@@ -136,6 +137,9 @@ enum StarfallTheme {
 
     enum Layout {
         static let minimumTarget: CGFloat = 44
+        // A point of breathing room keeps compact controls above the native minimum after layout.
+        static let gameplayTarget = minimumTarget + 1
+        static let hudSymbolSide: CGFloat = 24
         static let actionHeight: CGFloat = 52
         static let contentWidth: CGFloat = 560
         static let menuWidth: CGFloat = 480
@@ -331,13 +335,14 @@ struct StarfallProgressStyle: ProgressViewStyle {
 
 /// Compact gameplay chrome retains a full native touch target at every text size.
 struct StarfallGameButtonStyle: ButtonStyle {
+    var tint = StarfallTheme.Colors.actionPrimary
     @Environment(\.isEnabled) private var isEnabled
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .font(StarfallTheme.Typography.gameDetail.weight(.medium))
-            .foregroundStyle(isEnabled ? StarfallTheme.Colors.actionPrimary : StarfallTheme.Colors.textDisabled)
+            .foregroundStyle(isEnabled ? tint : StarfallTheme.Colors.textDisabled)
             .padding(.horizontal, StarfallTheme.Spacing.small)
-            .frame(minWidth: StarfallTheme.Layout.minimumTarget, minHeight: StarfallTheme.Layout.minimumTarget)
+            .frame(minWidth: StarfallTheme.Layout.gameplayTarget, minHeight: StarfallTheme.Layout.gameplayTarget)
             .background(configuration.isPressed ? StarfallTheme.Colors.surfacePressed : .clear,
                         in: RoundedRectangle(cornerRadius: StarfallTheme.Radius.control))
             .contentShape(Rectangle())
@@ -353,5 +358,34 @@ extension StarfallTheme {
         static let resultTitleSize: CGFloat = 36
         static let settleDuration = 0.65
         static let actionsDelay = 0.36
+    }
+}
+
+extension StarfallTheme {
+    enum Landing {
+        static let nightCenter = Color(red: 0.025, green: 0.045, blue: 0.105)
+        static let distantStar = Color(red: 0.68, green: 0.72, blue: 0.94)
+        static let crownInset: CGFloat = 28
+        static let flowingApronInset: CGFloat = 32
+        static let portraitSide: CGFloat = 44
+        static func ink(_ place: LandingPlace) -> Color { Colors.textPrimary }
+        struct Material {
+            let rim: Color
+            let glow: Color
+        }
+        static func material(_ place: LandingPlace) -> Material {
+            switch place {
+            case .moonwake:
+                Material(rim: Color(red: 0.68, green: 0.66, blue: 0.83), glow: Observatory.lanternGlow)
+            case .nebula:
+                Material(rim: Color(red: 0.60, green: 0.45, blue: 0.62), glow: Color(red: 0.91, green: 0.66, blue: 0.91))
+            case .ringdrift:
+                Material(rim: Color(red: 0.87, green: 0.57, blue: 0.32), glow: Observatory.lanternGlow)
+            case .garden:
+                Material(rim: Color(red: 0.65, green: 0.90, blue: 0.89), glow: Color(red: 0.48, green: 0.95, blue: 1))
+            case .shatterlight:
+                Material(rim: Color(red: 0.82, green: 0.69, blue: 0.44), glow: Color(red: 1, green: 0.87, blue: 0.61))
+            }
+        }
     }
 }

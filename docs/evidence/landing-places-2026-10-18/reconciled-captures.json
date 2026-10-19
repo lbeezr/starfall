@@ -1,0 +1,12 @@
+{
+  "snapshot": "7b468f99",
+  "device": "iPhone SE (3rd generation), iOS 27.0 Simulator",
+  "configuration": "Debug, normal motion, Calm effects off, dense reset/review fixture",
+  "captures": {
+    "archive": "dev-ac6aeb3-wip-7b468f99__active-play__iphone-se3__archive.jpg",
+    "grotto": "dev-ac6aeb3-wip-7b468f99__active-play__iphone-se3__grotto.jpg",
+    "hearth": "dev-ac6aeb3-wip-7b468f99__active-play__iphone-se3__hearth.jpg",
+    "cloudsea": "dev-ac6aeb3-wip-7b468f99__active-play__iphone-se3__cloudsea.jpg",
+    "observatory": "dev-ac6aeb3-wip-7b468f99__active-play__iphone-se3__observatory.jpg"
+  }
+}

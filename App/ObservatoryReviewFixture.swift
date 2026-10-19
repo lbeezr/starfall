@@ -4,7 +4,7 @@ import StarfallCore
 #if DEBUG
 // Explicit reset-only Debug review sample; absent from Release initialization.
 @MainActor enum ObservatoryReviewFixture {
-    static func game(dense: Bool) -> FallingSky {
+    static func game(dense: Bool, score: Int = 0) -> FallingSky {
         let base = FallingSky(seed: 5)
         var object = try! JSONSerialization.jsonObject(with: JSONEncoder().encode(base)) as! [String: Any]
         var board: [Any] = Array(repeating: NSNull(), count: 49)
@@ -26,9 +26,9 @@ import StarfallCore
             }
         }
         object["board"] = board
-        object["starsLanded"] = value
-        object["turns"] = (value+4)/5
-        object["score"] = 0
+        object["starsLanded"] = value + score
+        object["turns"] = (value+score+4)/5
+        object["score"] = score
         object["darkStarsCleared"] = 0
         let game = try! JSONDecoder().decode(FallingSky.self, from: JSONSerialization.data(withJSONObject: object))
         precondition(game.isValidSave)

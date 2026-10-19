@@ -29,6 +29,8 @@ The approved [starlight celebration storyboard](design/STARLIGHT_CELEBRATIONS.md
 
 **Open limits:** No gameplay participant preference results or general physical-device acceptance. Crystal Glow art direction and character masters are user-approved; runtime verification and remaining limits are recorded in the [cast integration evidence](evidence/crystal-glow-integration-2026-10-17/README.md). Accessibility evidence remains source-bound.
 
+**Nightscape production:** All five approved destinations now use separated scenery around centered native gameplay. [Production contract](design/environments/night-production-09/README.md) and [verification/delivery record](evidence/nightscapes-2026-10-18/README.md) supersede the platform direction. No progression, rule or save change.
+
 Character chat and complete shower trails are integrated into the current production target, preserving Opal and constellation input. Gravity was subsequently retired through the save-normalization boundary below. [Current integration checks](evidence/character-chat-production-2026-10-17/README.md) supersede the old-base delivery limit.
 
 [Responsive input integration](design/INTERACTION_FEEDBACK.md) replaces the global animation gate with column reservations and gives contacts/cancellations explicit feedback. Current production trace, dialogue and save behavior are retained; the later gravity retirement is recorded below. [integrated verification](evidence/responsive-input-2026-10-17/README.md) separates simulator checks from physical feel.
@@ -73,24 +75,18 @@ The [screen-flow polish plan](SCREEN_FLOW_PLAN.md) adds a bounded presentation w
 | Establish the candidate | Retain the verified Debug/Release source record and close the [current RC blockers](ENGINEERING.md#active-debt-and-next-actions--october-18-2026); historical Xcode drift is not an active failure on this source. | The exact candidate builds and its remaining visual/upgrade gaps are explicit. |
 | Make choices engaging — active | Polish the adopted Opal/storm game directly, using current native fixtures and [observed play](PLAYTEST-FALLING-SKY.md). The [native input-window check](evidence/native-input-windows-2026-10-17/README.md) exposed orbit presentation blocking; the [overlap correction](evidence/gravity-flight-overlap-2026-10-17/README.md) reopens that interval. The [partial-input diagnostic](evidence/partial-input-measurement-2026-10-17/README.md) now distinguishes admitted ordinary groups from whole-board settling. Next observe planning during falling and physical comfort; simulated reaction delays are not player difficulty estimates. Historical lab comparisons are reference only. | Opening is playable within one settled shower; long dead stretches do not return in the regression sample; a player explains a useful choice and prefers a candidate or identifies the next issue. Adopt, remove, or name a bounded remaining question. |
 | Polish physical feel — active | Review arrivals, growth, clears and input on an iPhone; tune optional sound/haptics and profile repeated rounds. | Effects do not block decisions or input; effects stay bounded; device observations and profiles are retained. |
-| Build living places — active | Finish the integrated Moonlit Observatory’s acceptance, then prove the [environment production process](design/environments/PRODUCTION.md) with Cloudsea Conservatory. | Full-screen setting, real cast, two responsive props, coherent depth and quiet modes meet native/device/accessibility gates. Art-direction approval stays distinct from release acceptance. |
+| Five night journeys — integrated | Moonwake, Nebula Cradle, Shatterlight Reach, Night Garden and Ringdrift share centered geometry and independent scenery. | [Native checks and delivery](evidence/nightscapes-2026-10-18/README.md); physical comfort and RC accessibility remain separate. |
 | Explain danger and outcomes | Review nearly full columns, Dusk feeding/collapse, arrival information, overflow, replay and new sky. Keep landing places hidden and controls reachable on small screens/large text. | A first-time player explains the loss and next action; affected native input, settings dismissal and layout checks pass. |
 | Finish accessibility and reliability | Complete the native/device checks below. | Evidence distinguishes automation, visual review, actual VoiceOver and device observations. |
 | Prepare a shareable build | Reconcile acceptance/release docs, packaging and signing with the selected mechanics. | Reproducible signed build, known issues and device checklist; distribution only when requested. |
 
 Owners are the current implementer unless a work item names another owner. These are workstreams, not permission to expand scope or delay an independently verified batch.
 
-## Environment art direction — active
+## Environment art direction
 
-The user has selected five tactile, layered landing places and personally confirmed that the Observatory's telescope and lantern reactions deliver the intended delight. The [production strategy](design/environments/PRODUCTION.md) defines the repeatable brief → composition → separated art → native integration → motion/accessibility/device review → adoption process. The [five-place bible](design/environments/landing-places-01/README.md) owns location identities; the [Observatory adoption record](evidence/observatory-adoption-2026-10-17/README.md) owns current implementation evidence and limits. Observatory now runs in the actual game; the original lab is historical.
+The five approved nightscapes are integrated in regular Starfall, with a shared centered field and reusable layers. [Production and acceptance](design/environments/night-production-09/README.md) owns the current work. Improve these five before proposing a sixth; their order is not a campaign or unlock sequence.
 
-**Order:** finish Observatory's shipping pass; use Cloudsea Conservatory to establish reuse; then Comet Hearth, Prism Tide Grotto and Eventide Archive. Give each place its own materials, props, scenery, mood and acceptance record. Review enrichment after each adopted location and before release; improve these five before planning a sixth. This is a delivery sequence, not a campaign, unlock path or scheduled automation.
-
-The palette picker and duplicate lab code are retired; cosmic paintings remain historical references. They do not create parallel location-production workstreams. Gameplay comparisons can proceed independently; unrelated mechanics uncertainty must not delay a verified environmental integration.
-
-## Observatory interface refinement
-
-The [celestial interface specification](design/OBSERVATORY_INTERFACE.md) owns the current design-system pass: full-bleed artwork, compact constellation controls, a deadline-driven comet trail, Sunny guidance and separate settings/help/balance pages. Finish native/physical comparison and accessibility checks before extending the family to Cloudsea. Sound and haptics default on for new preferences while saved mute remains authoritative.
+The earlier Observatory/Cloudsea/platform direction is historical. Its [production strategy](design/environments/PRODUCTION.md), [five-place bible](design/environments/landing-places-01/README.md) and [physical-groove checks](evidence/environment-grooves-2026-10-18/README.md) explain the prior decisions. The existing shooting-star forecast, native menu and character dialogue continue in the nightscape layout. Sound and haptics retain saved preferences.
 
 ## Opening rhythm selected — October 17, 2026
 
@@ -209,6 +205,16 @@ The [scoped reliability design](design/RELIABILITY_POLISH.md) closes terminal to
 The retired gravity art remains only for historical reset-only Debug reproductions: an open attraction field and accretion-ring hole with shared cached materials. [Art acceptance](evidence/gravity-art-2026-10-17/README.md) records native checks separately from the remaining human gameplay study.
 
 [Device delivery guards](evidence/device-delivery-guards-2026-10-18/README.md) now detect external app replacements and reject stale delivery through the canonical updater. Privileged direct installation remains an OS/account permission boundary; no gameplay change is part of this fix.
+
+**Five-place integration, October 18:** all five locations have remembered selection and independent responsive props. Work was initially based on `f35eba8`; the user identified obsolete star circles, prompting reconciliation onto current main `ac6aeb3`. The current renderer, gestures, dialogue and v7 saves are preserved. [Current acceptance status](design/environments/production-set/README.md).
+
+The shared responsive foundation now separates stage, interactive props and extensible scenery. Compact landscape moves communication beside the stage; short narrow/accessibility layouts scroll. Compare soft inlays, curved ledges and a carved frame as later visual treatments; the first rigid sheet is not approved. Native source, tested sizes and remaining limits stay in the integration evidence.
+
+The user corrected the UI-fitting scope: score and communication grooves must exist in the environment artwork. Functional responsive layout is integrated, but the floating panel treatment is incomplete. Replace it with physically connected upper-ledge/lower-apron (or side-wing) recesses, keeping native content and shared hit geometry. The [board template](design/environments/BOARD_TEMPLATE.md) records the corrected contract and concept; framing shape remains flexible.
+
+**Physical fittings follow-up:** The regular app now uses five connected illustrated control rails/floors/message aprons, with a landscape wing and extensible surrounding wallpaper. Current main `33ae6fb` supplies the preserved gesture/copy baseline. [Native verification and remaining device/RC limits](evidence/environment-grooves-2026-10-18/README.md) supersede the earlier floating-panel completion gap above; material preference remains a human review decision.
+
+Final environment source reconciles latest origin/main `1ed6290`; 152 Core tests, 239 hosted methods and focused current native input checks pass. [Phone/tablet physical-groove gallery and acceptance limits](evidence/environment-grooves-2026-10-18/README.md#inspected-native-presentation).
 
 The [crowded celebration check](evidence/calibration-critical-mass-2026-10-18/AWARDS.md) adds a current-rule regression sample and four native host layout/text comparisons. Keep the current presentation; next assess repeated automatic/physical recognition, including the observed temporary survivor overlap.
 

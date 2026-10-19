@@ -227,10 +227,11 @@ final class StarlightCelebrationTests: XCTestCase {
 
     private func awardInk(in image: UIImage) throws -> Int {
         let cg = try XCTUnwrap(image.cgImage)
-        // The empty sky below the header and above the first playable row.
-        // Every category now uses this region; keep the same visible-ink threshold.
-        let crop = try XCTUnwrap(cg.cropping(to: CGRect(x: 30 * image.scale, y: 110 * image.scale,
-            width: 330 * image.scale, height: 85 * image.scale)))
+        // Inspect the protected band between the actual HUD and the first row.
+        let mapping = LandingGeometry(size: image.size)
+        let region = StarlightCelebrationOverlay.awardRegion(board: CGRect(origin:.zero,size:image.size),
+                                                             header:mapping.crownFrame,accessible:false)
+        let crop = try XCTUnwrap(cg.cropping(to: region.applying(CGAffineTransform(scaleX:image.scale,y:image.scale))))
         var pixels = [UInt8](repeating: 0, count: crop.width * crop.height * 4)
         let context = try XCTUnwrap(CGContext(data: &pixels, width: crop.width, height: crop.height,
             bitsPerComponent: 8, bytesPerRow: crop.width * 4, space: CGColorSpaceCreateDeviceRGB(),
@@ -350,15 +351,18 @@ final class StarlightCelebrationTests: XCTestCase {
         for size in [CGSize(width: 375, height: 667), CGSize(width: 390, height: 844),
                      CGSize(width: 430, height: 932), CGSize(width: 1024, height: 1366)] {
             for accessible in [false, true] {
-                let board = CGRect(origin: CGPoint(x: 13, y: 27), size: size)
-                let header = CGRect(x: 25, y: 74, width: size.width - 24, height: accessible ? 98 : 44)
+                let canvas = CGSize(width:size.width,height:accessible ? max(1200,size.height) : max(900,size.height))
+                let mapping = LandingGeometry(size:canvas,largeHeader:accessible)
+                let board = CGRect(origin: CGPoint(x: 13, y: 27), size: canvas)
+                let header = mapping.crownFrame.offsetBy(dx:board.minX,dy:board.minY)
                 let region = StarlightCelebrationOverlay.awardRegion(board: board, header: header, accessible: accessible)
                 XCTAssertGreaterThan(region.height, 20)
                 XCTAssertFalse(region.intersects(header))
                 XCTAssertTrue(board.contains(region))
+                if accessible { XCTAssertLessThanOrEqual(region.maxY,board.minY+mapping.accessibleCanvasEnd) }
                 for row in 0..<7 {
                     for column in 0..<7 {
-                        let cell = ObservatoryGeometry(size: size).frame(Cell(row, column))
+                        let cell = mapping.frame(Cell(row, column))
                             .offsetBy(dx: board.minX, dy: board.minY)
                         XCTAssertFalse(region.intersects(cell), "Every phase is clipped to this protected region")
                     }

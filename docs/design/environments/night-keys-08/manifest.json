@@ -1,0 +1,140 @@
+{
+  "status": "Ready for art review, not native adoption",
+  "sourceKitCommit": "003433f",
+  "tool": "built-in image_gen",
+  "selectedCount": 10,
+  "entries": [
+    {
+      "id": "moonwake",
+      "orientation": "phone",
+      "version": "phone-v2",
+      "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-707a9169-7970-4a4c-b5b9-73eaaa909ff7.png",
+      "selected": true,
+      "file": "moonwake-phone-key.png",
+      "sha256": "011be4b0951e0a9a4f2db789f33df3363aab538532cfc18cd8cef7973faf7eb4",
+      "pixels": [
+        852,
+        1846
+      ]
+    },
+    {
+      "id": "nebula",
+      "orientation": "phone",
+      "version": "phone-v2",
+      "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-ab710f2d-0069-4bf5-ac61-3bd3892a94b7.png",
+      "selected": true,
+      "file": "nebula-phone-key.png",
+      "sha256": "0e1b2ba6e7b761643de525818f4b6a2a81dd76e2e2a73eaefed1566541bbf20f",
+      "pixels": [
+        852,
+        1846
+      ]
+    },
+    {
+      "id": "shatterlight",
+      "orientation": "phone",
+      "version": "phone-v2",
+      "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-1e60933e-5eca-4349-8d81-08fca0318752.png",
+      "selected": true,
+      "file": "shatterlight-phone-key.png",
+      "sha256": "a7f21436f7297e8264b5e19b117a391bd482d655567099967b5e56180b803d65",
+      "pixels": [
+        853,
+        1844
+      ]
+    },
+    {
+      "id": "ringdrift",
+      "orientation": "phone",
+      "version": "phone-v2",
+      "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-39d2b017-a51b-4ae0-a25e-5455b5f3513f.png",
+      "selected": true,
+      "file": "ringdrift-phone-key.png",
+      "sha256": "9d2c16a7ea76ec8ab09b562869e6ad143aa9714ba37e1b3bbbf08adc5cab7ec0",
+      "pixels": [
+        852,
+        1846
+      ]
+    },
+    {
+      "id": "garden",
+      "orientation": "phone",
+      "version": "phone-v2",
+      "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-1520b415-a250-4c9e-a904-6bb957df626f.png",
+      "selected": true,
+      "file": "garden-phone-key.png",
+      "sha256": "24ed29c14022363c8b2e68e0494d0f18e8db95c781b0d23b0470c99d5d155c79",
+      "pixels": [
+        852,
+        1846
+      ]
+    },
+    {
+      "id": "moonwake",
+      "orientation": "wide",
+      "version": "wide-v3",
+      "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-13cac800-2d0a-4f92-b560-69c509f92a5b.png",
+      "selected": true,
+      "file": "moonwake-wide-key.png",
+      "sha256": "5151985015ba764a20f081a93f5bfe101e9b34fccdc73ef90215eff60229e922",
+      "pixels": [
+        1448,
+        1086
+      ]
+    },
+    {
+      "id": "nebula",
+      "orientation": "wide",
+      "version": "wide-v3",
+      "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-5b1068a0-8803-406a-b0ef-cdaa7fc4ab39.png",
+      "selected": true,
+      "file": "nebula-wide-key.png",
+      "sha256": "d9098f85ea0adf0acfd89315b756e51f2a90511e80833637b0a7ad1a97ccf33c",
+      "pixels": [
+        1448,
+        1086
+      ]
+    },
+    {
+      "id": "shatterlight",
+      "orientation": "wide",
+      "version": "wide-v3",
+      "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-ac91f70d-f56e-4795-b0ce-6ca6a3926975.png",
+      "selected": true,
+      "file": "shatterlight-wide-key.png",
+      "sha256": "84452ada7fe92d79d24c62a0d125a4971ec44dced0e5d4720627b676d8eb4a96",
+      "pixels": [
+        1448,
+        1086
+      ]
+    },
+    {
+      "id": "garden",
+      "orientation": "wide",
+      "version": "wide-v3",
+      "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-88e654e4-d930-4b76-919d-16bb2682b513.png",
+      "selected": true,
+      "file": "garden-wide-key.png",
+      "sha256": "02cbc6787c9864eea2d62fd46e41fb011ca839ef5791c6a17bf7d8eef70d6816",
+      "pixels": [
+        1448,
+        1086
+      ]
+    },
+    {
+      "id": "ringdrift",
+      "orientation": "wide",
+      "version": "wide-v3",
+      "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-0f1d0d4a-ba06-431d-ba21-9cf745aaf2b3.png",
+      "selected": true,
+      "file": "ringdrift-wide-key.png",
+      "sha256": "17167e1e9968b92158c2ba290331a77d10b82b0231f3b18be5612f4b808daed8",
+      "pixels": [
+        1448,
+        1086
+      ]
+    }
+  ],
+  "variants": "Unselected variants remain at their original built-in tool paths, with prompts and hashes recorded in prompts.json. Only selected paintings are vendored here.",
+  "layers": "Each key is opaque flattened artwork; see the approved scene kit for future separate alpha/pivot exports."
+}

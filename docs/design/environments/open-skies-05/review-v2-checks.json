@@ -1,0 +1,152 @@
+{
+  "date": "2026-10-18",
+  "kind": "Local Chrome browser concept only; not native evidence",
+  "sourceHashes": {
+    "index.html": "40dfb985bd2fe48331cadbea53f564c85c443068d6565c5c56b125a8866c035e",
+    "review.js": "fbb2f9f624ac0c76f40e963fcad63fa3d0b45ab8ec692a055e297ef698c51a00",
+    "review.css": "d56b318163a8dcb2eee60673c2483b48b193ab02e4c4389063e17c7645af9a11",
+    "forecast-snapshot.js": "af9b459df669adfb6fb347dca1ae077fc5d2dbe8caaac81a8f939a352e05163a"
+  },
+  "reports": [
+    {
+      "width": 1180,
+      "height": 820,
+      "side": 524,
+      "step": 74.85714285714286,
+      "centerX": 590,
+      "centerY": 410,
+      "world": "nebula",
+      "stars": 49,
+      "cells": 49,
+      "dx": 0.000030517578125,
+      "dy": 0.00006103515625,
+      "missing": 0,
+      "actionsInside": true,
+      "hudAbove": true,
+      "hudInside": true,
+      "forecast": [
+        "Sunny",
+        "Sunny",
+        "Opal"
+      ]
+    },
+    {
+      "width": 820,
+      "height": 1180,
+      "side": 588,
+      "step": 84,
+      "centerX": 410,
+      "centerY": 590,
+      "world": "nebula",
+      "stars": 49,
+      "cells": 49,
+      "dx": 0,
+      "dy": 0.000030517578125,
+      "missing": 0,
+      "actionsInside": true,
+      "hudAbove": true,
+      "hudInside": true,
+      "forecast": [
+        "Sunny",
+        "Sunny",
+        "Opal"
+      ]
+    },
+    {
+      "width": 393,
+      "height": 852,
+      "side": 361,
+      "step": 51.57142857142857,
+      "centerX": 196.5,
+      "centerY": 426,
+      "world": "nebula",
+      "stars": 49,
+      "cells": 49,
+      "dx": 0,
+      "dy": 0,
+      "missing": 0,
+      "actionsInside": true,
+      "hudAbove": true,
+      "hudInside": true,
+      "forecast": [
+        "Sunny",
+        "Sunny",
+        "Opal"
+      ]
+    },
+    {
+      "width": 1180,
+      "height": 820,
+      "side": 524,
+      "step": 74.85714285714286,
+      "centerX": 590,
+      "centerY": 410,
+      "world": "moonwake",
+      "stars": 49,
+      "cells": 49,
+      "dx": 0.000030517578125,
+      "dy": 0.00006103515625,
+      "missing": 0,
+      "actionsInside": true,
+      "hudAbove": true,
+      "hudInside": true,
+      "forecast": [
+        "Sunny",
+        "Sunny",
+        "Opal"
+      ]
+    },
+    {
+      "width": 820,
+      "height": 1180,
+      "side": 588,
+      "step": 84,
+      "centerX": 410,
+      "centerY": 590,
+      "world": "moonwake",
+      "stars": 49,
+      "cells": 49,
+      "dx": 0,
+      "dy": 0.000030517578125,
+      "missing": 0,
+      "actionsInside": true,
+      "hudAbove": true,
+      "hudInside": true,
+      "forecast": [
+        "Sunny",
+        "Sunny",
+        "Opal"
+      ]
+    },
+    {
+      "width": 393,
+      "height": 852,
+      "side": 361,
+      "step": 51.57142857142857,
+      "centerX": 196.5,
+      "centerY": 426,
+      "world": "moonwake",
+      "stars": 49,
+      "cells": 49,
+      "dx": 0,
+      "dy": 0,
+      "missing": 0,
+      "actionsInside": true,
+      "hudAbove": true,
+      "hudInside": true,
+      "forecast": [
+        "Sunny",
+        "Sunny",
+        "Opal"
+      ]
+    }
+  ],
+  "scoreCases": 42,
+  "maximumScore": "9,223,372,036,854,775,807",
+  "forecast": "Seed 23, five committed showers: Sunny, Sunny, Opal; paused hides trail",
+  "layers": "5 independent visibility controls",
+  "motion": "CSS transform changes while field stays fixed; Reduce Motion disables animation",
+  "controls": "passed",
+  "legacyCastPreviews": "49 stars and no missing images in both earlier viewers",
+  "narrowPageOverflow": false
+}

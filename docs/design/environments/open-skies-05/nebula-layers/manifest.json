@@ -1,0 +1,47 @@
+{
+  "tool": "built-in image_gen",
+  "reference": "../nebula-concept.png",
+  "status": "Layered concept assembly; not native assets",
+  "layers": [
+    {
+      "id": "deep-space",
+      "transparent": false,
+      "prompt": "Create ONE production-oriented layer derived from the supplied Nebula Cradle concept, for a five-layer 2.5D game scene. Preserve its indigo/navy, dusty rose/violet palette, soft painterly gas forms, light direction and whimsical celestial mood. Full 4:3 canvas, approximately 1448x1086. Registration: composition is centered at (50%,50%), future seven-column gameplay occupies x=27%..73%, y=18%..82%; that central rectangle must remain calm and completely free of foreground detail. No text, UI, characters, jewels, grid, floor, table, rim or platform. Do not produce a contact sheet. This is an isolated LAYER, not another flattened complete scene. Layer 1 / DEEP SPACE, opaque. Reconstruct the deep dark navy-plum open space behind ALL the cloudy forms. Remove every cloud, bright newborn star and dense nebula ridge from the reference. The entire canvas is a very restrained velvety depth gradient with faint distant galactic color toward outer corners and just a handful of barely perceptible distant specks at the margins. Center darkest and almost detail-free. Edge-to-edge open-space matte with no cloud border. This is the only opaque base layer.",
+      "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-52056db8-b193-4910-98a0-581d35c6ec5d.png",
+      "file": "deep-space.png",
+      "sha256": "ec0086dfcca43cd2e010e0fb5bc8386fd25fb6730242efe53690bf4c75595947"
+    },
+    {
+      "id": "distant-haze",
+      "transparent": true,
+      "prompt": "Create ONE production-oriented layer derived from the supplied Nebula Cradle concept, for a five-layer 2.5D game scene. Preserve its indigo/navy, dusty rose/violet palette, soft painterly gas forms, light direction and whimsical celestial mood. Full 4:3 canvas, approximately 1448x1086. Registration: composition is centered at (50%,50%), future seven-column gameplay occupies x=27%..73%, y=18%..82%; that central rectangle must remain calm and completely free of foreground detail. No text, UI, characters, jewels, grid, floor, table, rim or platform. Do not produce a contact sheet. This is an isolated LAYER, not another flattened complete scene. Layer 2 / DISTANT HAZE, genuine transparent RGBA background. Only softly diffused far-away rose/violet nebula vapor around the far outer left, top-right and bottom corners. NO sharp detailed cloud ridges or foreground masses, NO newborn star, NO dark opaque sky. Very low-opacity soft alpha gradients, broad airy volume. Middle 65% width must be fully transparent, as must most of the canvas. Cloud shapes should fade to transparency before the outermost 2% canvas boundary so the layer can shift a few pixels without showing a straight crop. Preserve empty space. Do not bake black, navy or checkerboard into transparent areas.",
+      "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-b05ed290-0da1-40f8-a0e2-815cacd6b0b1.png",
+      "file": "distant-haze.png",
+      "sha256": "c011b92e2ab93378ff1d61db37302d57715b89c851b02f78bac20ddf467a25f6"
+    },
+    {
+      "id": "left-cloud",
+      "transparent": true,
+      "prompt": "Create ONE production-oriented layer derived from the supplied Nebula Cradle concept, for a five-layer 2.5D game scene. Preserve its indigo/navy, dusty rose/violet palette, soft painterly gas forms, light direction and whimsical celestial mood. Full 4:3 canvas, approximately 1448x1086. Registration: composition is centered at (50%,50%), future seven-column gameplay occupies x=27%..73%, y=18%..82%; that central rectangle must remain calm and completely free of foreground detail. No text, UI, characters, jewels, grid, floor, table, rim or platform. Do not produce a contact sheet. This is an isolated LAYER, not another flattened complete scene. Layer 3 / LEFT CLOUD MASS, genuine transparent RGBA background. Isolate/repaint ONLY the reference's sculpted purple-indigo gas masses at the upper-left and lower-left, joined loosely by a few thin peripheral tendrils. Detailed volume and subdued peach-lavender edge lighting, soft natural irregular silhouettes. All pixels right of x=24% should be fully transparent; the middle 65% and right side must be completely empty. No distant sky, no stars, no opposite-side clouds, no broad haze over center. Leave 2% transparent overscan at canvas edges; taper mass softly into alpha there instead of a straight clipping edge. This layer must overlay deep space without a rectangular matte.",
+      "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-e5b1885a-feea-45e5-8b6a-55788bf72434.png",
+      "file": "left-cloud.png",
+      "sha256": "f2c016594a051b63d686719cdfc8a4b13e0c9f83ea4a87402b315814372f66bb"
+    },
+    {
+      "id": "right-cloud",
+      "transparent": true,
+      "prompt": "Create ONE production-oriented layer derived from the supplied Nebula Cradle concept, for a five-layer 2.5D game scene. Preserve its indigo/navy, dusty rose/violet palette, soft painterly gas forms, light direction and whimsical celestial mood. Full 4:3 canvas, approximately 1448x1086. Registration: composition is centered at (50%,50%), future seven-column gameplay occupies x=27%..73%, y=18%..82%; that central rectangle must remain calm and completely free of foreground detail. No text, UI, characters, jewels, grid, floor, table, rim or platform. Do not produce a contact sheet. This is an isolated LAYER, not another flattened complete scene. Layer 4 / RIGHT CLOUD MASS, genuine transparent RGBA background. Isolate/repaint ONLY the softly sculpted right-hand violet/rose nebula masses, curling down the extreme upper-right and lower-right corner. Preserve the warm diffuse peach light from the reference, but REMOVE the discrete bright newborn star (no star disk). Soft dimensional cloud edges, secondary detail compressed. All pixels left of x=77% should be fully transparent; middle and left side completely empty. No dark sky, no distant starfield, no left clouds, no full border. Leave 2% transparent overscan near outside canvas bounds, softly tapered alpha instead of a straight crop. Designed to independently anchor to the right edge.",
+      "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-1ef42423-bfb0-4f6b-ad84-224accec10db.png",
+      "file": "right-cloud.png",
+      "sha256": "c067a46b85bdb22377de6f2dc1606fd9988b079cb06a5e5ebe0e60afcc59028f"
+    },
+    {
+      "id": "near-wisps",
+      "transparent": true,
+      "prompt": "Create ONE production-oriented layer derived from the supplied Nebula Cradle concept, for a five-layer 2.5D game scene. Preserve its indigo/navy, dusty rose/violet palette, soft painterly gas forms, light direction and whimsical celestial mood. Full 4:3 canvas, approximately 1448x1086. Registration: composition is centered at (50%,50%), future seven-column gameplay occupies x=27%..73%, y=18%..82%; that central rectangle must remain calm and completely free of foreground detail. No text, UI, characters, jewels, grid, floor, table, rim or platform. Do not produce a contact sheet. This is an isolated LAYER, not another flattened complete scene. Layer 5 / NEAR WISPS, genuine transparent RGBA background. A few very soft translucent cool lavender strands of nebula gas in the extreme lower-left and upper-right corners ONLY, suggesting nearest atmospheric depth. Sparse, broad and softly defocused; these are quiet wisps, not large opaque clouds. Empty central 75% of canvas, including the entire lower center. No sparkles or star field, no newborn star, no hard edges, no sky matte, no interface. Keep visible material only inside the outer 12% corner areas. Natural transparency with very soft feathered alpha; leave a 2% fully transparent outer margin so subtle movement has safe overscan.",
+      "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-054da5f5-960b-4f6e-aa31-004572058c29.png",
+      "file": "near-wisps.png",
+      "sha256": "6604404043b3c52f12f93bf070082a5ca64e13348afdf0b00febd011bb29bd2c"
+    }
+  ]
+}

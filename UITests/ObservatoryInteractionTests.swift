@@ -5,7 +5,7 @@ final class ObservatoryInteractionTests: XCTestCase {
     @MainActor private func launch(dense: Bool = false, calm: Bool = false) -> XCUIApplication {
         continueAfterFailure = false
         let app = XCUIApplication()
-        app.launchArguments = ["--starfalls-reset", "--observatory-review"]
+        app.launchArguments = ["--starfalls-reset", "--observatory-review", "-landingPlace", "observatory"]
         if dense { app.launchArguments.append("--observatory-dense") }
         app.launchArguments += ["-calmEffects", calm ? "YES" : "NO"]
         app.launch()
@@ -20,7 +20,6 @@ final class ObservatoryInteractionTests: XCTestCase {
         let app = launch(); defer { app.terminate() }
         let menu = app.buttons["experiment.settings"]
         XCTAssertGreaterThanOrEqual(menu.frame.width, 44)
-        XCTAssertLessThanOrEqual(menu.frame.width, 52)
         XCTAssertEqual(app.staticTexts["experiment.message"].label, "Sunny. Tap a matching group to clear it. Small stars count as 1; grown stars count as 2. You need a total of 3. Dusk will eat 4 stars after 5 more showers with a touching star.")
         let before = app.otherElements["experiment.board"].value as? String
         capture(app, "Celestial-HUD-welcome")
@@ -36,7 +35,7 @@ final class ObservatoryInteractionTests: XCTestCase {
         capture(app, "Celestial-balance")
         app.buttons["experiment.done"].tap()
         XCTAssertEqual(app.otherElements["experiment.board"].value as? String, before)
-        XCTAssertTrue(app.buttons["landing.lantern"].isHittable)
+        XCTAssertFalse(app.buttons["landing.lantern"].exists)
     }
     /// Captures overlap for visual read-through; AX labels alone do not prove visible text.
     @MainActor func testLargestTextHelpReadsThroughAndReturnsToUnchangedRound() {
@@ -128,75 +127,12 @@ final class ObservatoryInteractionTests: XCTestCase {
     }
 }
 
-extension ObservatoryInteractionTests {
-    @MainActor func testLivingPropsRespondWithoutChangingBoardAndCancelOnMenu() {
-        let app = launch(); defer { app.terminate() }
-        let board = app.otherElements["experiment.board"]
-        XCTAssertGreaterThan(board.frame.height,app.frame.height*0.95)
-        let initial = board.value as? String
-        for id in ["landing.telescope","landing.lantern"] {
-            let prop = app.buttons[id]
-            XCTAssertTrue(prop.isHittable)
-            prop.tap()
-            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == %@", "Responding"), object: prop).wait(timeout: 2))
-            XCTAssertEqual(board.value as? String, initial)
-            capture(app,id+"-responding")
-            app.buttons["experiment.settings"].tap()
-            app.buttons["experiment.done"].tap()
-            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == %@", "At rest"), object: prop).wait(timeout: 3))
-            XCTAssertEqual(board.value as? String, initial)
-        }
-        capture(app,"Observatory-fullscreen-living")
-    }
-}
+
+
+
 
 extension ObservatoryInteractionTests {
-    @MainActor func testCalmPropResponsesAndManualClearUseSameOutcomes() {
-        let app = launch(calm: true); defer { app.terminate() }
-        let initial = app.otherElements["experiment.board"].value as? String
-        let telescope = app.buttons["landing.telescope"]
-        telescope.tap()
-        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == %@", "Responding"), object: telescope).wait(timeout: 2))
-        XCTAssertEqual(app.otherElements["experiment.board"].value as? String, initial)
-        let first = app.buttons["experiment.cell.0.0"]
-        let value = Int((first.value as! String).split(separator: ";").last!.split(separator: " ")[0])!
-        first.tap()
-        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "\(value) starlight"), object: app.staticTexts["experiment.score"]).wait(timeout: 5))
-        capture(app,"Observatory-calm-effects")
-    }
-}
 
-extension ObservatoryInteractionTests {
-    @MainActor func testRepeatedPropsBackgroundAndRestartRejectStaleResponses() {
-        let app = launch(); defer { app.terminate() }
-        let lantern = app.buttons["landing.lantern"]
-        let telescope = app.buttons["landing.telescope"]
-        lantern.doubleTap(); telescope.tap()
-        XCTAssertEqual(telescope.value as? String, "Responding")
-        XCTAssertEqual(lantern.value as? String, "At rest")
-        XCUIDevice.shared.press(.home); app.activate()
-        XCTAssertTrue(lantern.waitForExistence(timeout: 5))
-        XCTAssertEqual(lantern.value as? String, "At rest")
-        XCTAssertEqual(telescope.value as? String, "At rest")
-        telescope.tap()
-        app.buttons["experiment.settings"].tap()
-        XCTAssertFalse(app.buttons["experiment.cell.0.0"].exists)
-        XCTAssertFalse(lantern.exists)
-        app.buttons["experiment.replay"].tap()
-        XCTAssertTrue(app.buttons["sky.begin"].waitForExistence(timeout: 5))
-        XCTAssertFalse(app.buttons["experiment.cell.0.0"].exists)
-        app.buttons["sky.begin"].tap()
-        app.buttons["experiment.settings"].tap()
-        app.buttons["experiment.pause"].tap()
-        XCTAssertTrue(telescope.waitForExistence(timeout: 5))
-        XCTAssertEqual(telescope.value as? String, "At rest")
-        XCTAssertEqual(app.staticTexts["experiment.score"].label, "0 starlight")
-        XCTAssertTrue(app.buttons["experiment.pause"].exists)
-        let next = app.buttons["experiment.next"]
-        next.tap()
-        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: next).wait(timeout: 5))
-        XCTAssertEqual(telescope.value as? String, "At rest")
-    }
 
     @MainActor func testSupportedOrientationsPreserveNativeTargets() {
         let orientations: [UIDeviceOrientation] = UIDevice.current.userInterfaceIdiom == .pad
@@ -211,12 +147,8 @@ extension ObservatoryInteractionTests {
             }, object: nil).wait(timeout: 5), "Wait for the actual application viewport to rotate")
             let middle = app.buttons["experiment.cell.3.3"]
             XCTAssertEqual(middle.frame.midX, app.frame.midX, accuracy: 1)
-            for id in ["landing.telescope", "landing.lantern"] {
-                let prop = app.buttons[id]
-                XCTAssertTrue(prop.isHittable)
-                XCTAssertGreaterThanOrEqual(prop.frame.width, 44)
-                XCTAssertGreaterThanOrEqual(prop.frame.height, 44)
-            }
+            XCTAssertFalse(app.buttons["landing.telescope"].exists)
+            XCTAssertFalse(app.buttons["landing.lantern"].exists)
             let back = app.buttons["experiment.cell.6.6"]
             XCTAssertGreaterThanOrEqual(back.frame.width, 44)
             XCTAssertGreaterThanOrEqual(back.frame.height, 44)
@@ -232,63 +164,16 @@ extension ObservatoryInteractionTests {
         let app = XCUIApplication()
         app.launchArguments = ["--starfalls-reset", "--starfalls-seed=5", "-skyEnvironment", "aurora"]
         app.launch(); defer { app.terminate() }
-        XCTAssertTrue(app.buttons["landing.telescope"].waitForExistence(timeout: 10))
+        XCTAssertTrue(app.buttons["experiment.settings"].waitForExistence(timeout: 10))
         XCTAssertEqual(app.staticTexts["experiment.score"].label,"0 starlight")
         XCTAssertEqual(app.otherElements["experiment.board"].value as? String,"0 showers, 0 matching groups ready")
         app.buttons["experiment.settings"].tap()
         XCTAssertFalse(app.buttons["sky.environment"].exists)
-        XCTAssertTrue(app.staticTexts["Moonlit Observatory"].exists)
+        XCTAssertTrue(app.staticTexts["Moonwake"].exists)
     }
 }
 
-extension ObservatoryInteractionTests {
-    @MainActor func testLargestTextKeepsPropsAndPausedControlsReachable() {
-        continueAfterFailure = false
-        let app = XCUIApplication()
-        app.launchArguments = ["--starfalls-reset", "--observatory-review", "-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL", "-calmEffects", "NO"]
-        app.launch(); defer { app.terminate() }
-        XCTAssertTrue(app.buttons["experiment.settings"].waitForExistence(timeout: 10))
-        let initialShowers = Int((app.otherElements["experiment.board"].value as! String).split(separator: " ")[0])!
-        capture(app, "Observatory-largest-text-initial-board")
-        let guide = app.staticTexts["experiment.message"]
-        let front = app.buttons["experiment.cell.0.0"]
-        XCTAssertGreaterThanOrEqual(guide.frame.minY, front.frame.maxY,
-                                   "The growing guide must occupy space below projected stars")
-        let edge = app.buttons["experiment.cell.0.0"]
-        XCTAssertGreaterThanOrEqual(edge.frame.minX, app.frame.minX)
-        XCTAssertLessThanOrEqual(edge.frame.maxX, app.frame.maxX)
-        let value = Int((edge.value as! String).split(separator: ";").last!.split(separator: " ")[0])!
-        edge.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
-        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "\(value) starlight"), object: app.staticTexts["experiment.score"]).wait(timeout: 5))
 
-        for id in ["landing.telescope", "landing.lantern", "experiment.next"] {
-            let target = app.buttons[id]
-            for _ in 0..<5 where !target.isHittable { app.swipeUp() }
-            XCTAssertTrue(target.isHittable)
-            if id.hasPrefix("landing.") {
-                XCTAssertFalse(target.frame.intersects(app.buttons["experiment.next"].frame))
-                target.tap()
-                XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == %@", "Responding"), object: target).wait(timeout: 2))
-                capture(app,"Observatory-largest-text-"+id)
-            } else {
-                target.tap()
-                XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: target).wait(timeout: 5))
-                XCTAssertTrue((app.otherElements["experiment.board"].value as? String)?.hasPrefix("\(initialShowers+1) showers") == true)
-            }
-        }
-        let next = app.buttons["experiment.next"]
-        XCTAssertTrue(guide.label.hasPrefix("Sunny."), "One message attributes the speaker once")
-        XCTAssertFalse(app.staticTexts["sky.guide.title"].exists, "Decorative name is not a second spoken element")
-        XCTAssertGreaterThanOrEqual(next.frame.height, 44)
-        XCTAssertFalse(guide.label.isEmpty)
-        capture(app, "Observatory-largest-text-refined-guide")
-        for _ in 0..<5 where !app.buttons["experiment.settings"].isHittable { app.swipeDown() }
-        app.buttons["experiment.settings"].tap()
-        XCTAssertTrue(app.buttons["experiment.done"].waitForExistence(timeout: 5))
-        app.buttons["experiment.done"].tap()
-        XCTAssertTrue(app.buttons["experiment.settings"].waitForExistence(timeout: 5))
-    }
-}
 
 extension ObservatoryInteractionTests {
     /// Xcode 27's service drives the actual screen reader. Older SDKs retain the other native checks.
@@ -318,10 +203,6 @@ extension ObservatoryInteractionTests {
         XCTAssertEqual(app.staticTexts["experiment.score"].label, "0 starlight")
         activate()
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "5 starlight"), object: app.staticTexts["experiment.score"]).wait(timeout: 5))
-        try focus(app.buttons["landing.telescope"], expecting: "Observatory telescope"); activate()
-        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == %@", "Responding"), object: app.buttons["landing.telescope"]).wait(timeout: 2))
-        try focus(app.buttons["landing.lantern"], expecting: "Observatory lantern"); activate()
-        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == %@", "Responding"), object: app.buttons["landing.lantern"]).wait(timeout: 2))
         try focus(app.buttons["experiment.settings"], expecting: "Sky menu"); activate()
         XCTAssertTrue(app.buttons["experiment.done"].waitForExistence(timeout: 5))
         XCTAssertFalse(app.buttons["experiment.cell.0.0"].exists)
@@ -608,5 +489,117 @@ extension ObservatoryInteractionTests {
         #else
         throw XCTSkip("VoiceOver service requires Swift 6.4")
         #endif
+    }
+}
+
+/// Five shipping worlds share the same native input surface and save contract.
+final class LandingPlaceInteractionTests: XCTestCase {
+    private let places = ["observatory","cloudsea","hearth","grotto","archive"]
+
+    @MainActor private func launch(place: String? = nil, large: Bool = false, score: Int = 0, calm: Bool = false) -> XCUIApplication {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchArguments = ["--starfalls-reset","--observatory-review","--observatory-dense","-calmEffects",calm ? "YES":"NO"]
+        if let place { app.launchArguments += ["-landingPlace",place] }
+        if large { app.launchArguments += ["-UIPreferredContentSizeCategoryName","UICTContentSizeCategoryAccessibilityXXXL"] }
+        if score > 0 { app.launchArguments += ["--night-score=\(score)"] }
+        app.launch()
+        XCTAssertTrue(app.buttons["experiment.settings"].waitForExistence(timeout:10))
+        return app
+    }
+    @MainActor private func capture(_ name: String) {
+        let image = XCTAttachment(screenshot:XCUIScreen.main.screenshot())
+        image.name = name; image.lifetime = .keepAlways; add(image)
+    }
+    @MainActor private func select(_ place: String, app: XCUIApplication) {
+        app.buttons["experiment.settings"].tap()
+        app.skyMenuControl("landing.locations").tap()
+        let choice = app.buttons["landing.choose."+place]
+        app.revealSkyMenuElement(choice)
+        XCTAssertTrue(choice.isHittable); choice.tap()
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate:NSPredicate(format:"value == %@","Selected"),object:choice).wait(timeout:3))
+        app.buttons["experiment.done"].tap()
+        XCTAssertTrue(app.buttons["experiment.cell.0.0"].waitForExistence(timeout:5))
+    }
+    @MainActor func testAllWorldsKeepTheRoundAndCenteredCellsAcrossOrientations() {
+        let orientations: [UIDeviceOrientation] = UIDevice.current.userInterfaceIdiom == .pad ? [.portrait,.landscapeLeft] : [.portrait]
+        defer { XCUIDevice.shared.orientation = .portrait }
+        for orientation in orientations {
+            XCUIDevice.shared.orientation = orientation
+            let app = launch()
+            let board = app.otherElements["experiment.board"], score = app.staticTexts["experiment.score"]
+            let original = board.value as? String
+            for place in places {
+                select(place,app:app)
+                XCTAssertEqual(board.value as? String,original)
+                XCTAssertEqual(score.label,"0 starlight")
+                let middle = app.buttons["experiment.cell.3.3"]
+                XCTAssertEqual(middle.frame.midX,app.frame.midX,accuracy:1)
+                XCTAssertEqual(middle.frame.midY,app.frame.midY,accuracy:2)
+                for id in ["experiment.settings","experiment.next","experiment.pause","experiment.cell.0.0","experiment.cell.6.6"] {
+                    let control = app.buttons[id]
+                    XCTAssertTrue(control.isHittable,id)
+                    XCTAssertTrue(app.frame.contains(control.frame),id)
+                    XCTAssertGreaterThanOrEqual(control.frame.width,44,id)
+                    XCTAssertGreaterThanOrEqual(control.frame.height,44,id)
+                }
+                XCTAssertFalse(app.buttons["landing.telescope"].exists)
+                XCTAssertFalse(app.buttons["landing.lantern"].exists)
+                XCTAssertTrue(app.descendants(matching:.any)["experiment.arrivalCue"].exists)
+                capture("Night-world-\(place)-\(orientation.rawValue)")
+            }
+            // Actual native coordinate dispatch at opposite corners, after scenery replacement.
+            var total = 0
+            for cell in ["6.6","0.0"] {
+                let button = app.buttons["experiment.cell."+cell]
+                let points = Int((button.value as! String).split(separator:" ")[0])!
+                XCTAssertGreaterThanOrEqual(points,3); total += points
+                button.coordinate(withNormalizedOffset:CGVector(dx:0.5,dy:0.5)).tap()
+                XCTAssertTrue(XCTNSPredicateExpectation(predicate:NSPredicate(format:"label == %@","\(total) starlight"),object:score).wait(timeout:5))
+            }
+            let committed = board.value as? String
+            XCUIDevice.shared.press(.home);app.activate()
+            XCTAssertTrue(app.buttons["experiment.settings"].waitForExistence(timeout:5))
+            XCTAssertEqual(board.value as? String,committed)
+            app.terminate()
+        }
+    }
+    @MainActor func testLargeScoresAndLargestTextReflowWithoutCoveringStars() {
+        XCUIDevice.shared.orientation = .portrait
+        for (score,large) in [(100000,false),(1234567890,false),(100000,true)] {
+            let app = launch(large:large,score:score,calm:true)
+            let counter = app.staticTexts["experiment.score"], menu = app.buttons["experiment.settings"]
+            XCTAssertEqual(counter.label,"\(score) starlight")
+            XCTAssertGreaterThan(counter.frame.width,40)
+            XCTAssertTrue(app.frame.contains(counter.frame))
+            XCTAssertTrue(menu.isHittable)
+            XCTAssertFalse(counter.frame.intersects(menu.frame))
+            XCTAssertLessThanOrEqual(app.otherElements["sky.header"].frame.maxY,app.buttons["experiment.cell.6.6"].frame.minY)
+            capture("Night-score-\(score)-large-\(large)")
+            let next = app.buttons["experiment.next"]
+            for _ in 0..<8 where !next.isHittable {
+                let guide = app.staticTexts["experiment.message"]
+                let startY = guide.frame.minY < app.frame.maxY-100
+                    ? min(app.frame.maxY-60,max(app.frame.midY,guide.frame.minY+60))
+                    : app.buttons["experiment.cell.6.3"].frame.minY-16
+                app.coordinate(withNormalizedOffset:.zero).withOffset(CGVector(dx:app.frame.midX,dy:startY))
+                    .press(forDuration:0.05,thenDragTo:app.coordinate(withNormalizedOffset:.zero).withOffset(CGVector(dx:app.frame.midX,dy:100)))
+            }
+            XCTAssertTrue(next.isHittable)
+            XCTAssertGreaterThanOrEqual(next.frame.height,44)
+            capture("Night-controls-large-\(large)")
+            app.terminate()
+        }
+    }
+    @MainActor func testQuietWorldsKeepNativeCornerClearOutcome() {
+        for place in places {
+            let app = launch(place:place,calm:true)
+            let button = app.buttons["experiment.cell.0.0"]
+            let points = Int((button.value as! String).split(separator:" ")[0])!
+            button.coordinate(withNormalizedOffset:CGVector(dx:0.5,dy:0.5)).tap()
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate:NSPredicate(format:"label == %@","\(points) starlight"),object:app.staticTexts["experiment.score"]).wait(timeout:5))
+            capture("Night-quiet-\(place)")
+            app.terminate()
+        }
     }
 }

@@ -342,7 +342,8 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         }
         #if DEBUG
         if arguments.contains("--starfalls-reset"), arguments.contains("--observatory-review") {
-            game = ObservatoryReviewFixture.game(dense: arguments.contains("--observatory-dense")).adoptingFeedingDusk()
+            let reviewScore = arguments.first { $0.hasPrefix("--night-score=") }.flatMap { Int($0.dropFirst("--night-score=".count)) } ?? 0
+            game = ObservatoryReviewFixture.game(dense: arguments.contains("--observatory-dense"), score: min(2_000_000_000,max(0,reviewScore))).adoptingFeedingDusk()
         }
         #endif
         #if DEBUG

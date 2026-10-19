@@ -6,19 +6,25 @@ SwiftUI screens, main-actor stores and SpriteKit presentation for the native gam
 
 Deterministic rules belong in [StarfallCore](../Sources/StarfallCore/README.md). Build the shared Starfall scheme and run affected hosted/UI checks after source changes. Asset catalogs are packaged data; their sets are documented by this folder, not individual READMEs.
 
+## Player copy
+
 Player copy for regular Falling Sky lives in the [local dialogue/interface catalogue](DialogueScripts/README.md), including character voices, menu/help/results and accessibility text. `SkyCopy` exposes typed keys; the shared template validator rejects missing/extra values. Keep wording there and committed facts in the app/Core owners. Debug tooling and the original orthogonal puzzle retain their separate developer text.
 
-## Observatory environment
+## Landing environments
 
-Default Falling Sky uses the full-screen Observatory. `ObservatoryGeometry` owns artwork/prop registration and every render/touch coordinate; `ObservatoryEnvironment` owns bounded fog time and cancellable prop responses using narrow lifecycle inputs. Theme owns colors; core owns outcomes. The game view resets environment lifetime on replay/new challenge and suspends it under settings/background. Four `Observatory*.imageset` resources are generated art; exact prompts/provenance remain in [the source-art record](../docs/design/environments/landing-native-01/README.md).
+Falling Sky starts at Moonwake. Menu → Location remembers Moonwake, Nebula Cradle, Shatterlight Reach, Night Garden or Ringdrift without changing the round. `LandingPlace` owns identity and preserves historical preference values. `LandingGeometry` owns the centered rectangle used by SpriteKit, native cells, tracing and HUD placement. `NightSceneLayout` composes scenery around that rectangle; scenery cannot move gameplay.
+
+`LandingEnvironment` has five planes: still space, faint veil, distant landmark, story detail and near silhouette. Sixteen packaged alpha assets support independent placement: Moonwake's hull/cloth, Shatterlight's three fragments, Garden's pod/moth and Ringdrift's planet/rings remain separate. Its monotonic clock excludes paused time; backgrounding, menus, notices, ceremonies, Calm effects and Reduce Motion stop ambient motion. Decorative views have no store capability or hit targets. [Production prompts and asset hashes](../docs/design/environments/night-production-09/README.md) own the generation record. The former fifteen platform paintings are removed from app resources; historical concepts stay outside the target.
+
+`SkyDefaults` owns storage selection for both `FallingSkyStore.forSkyFlowApp` and the app root’s SwiftUI preference environment. Observatory reset/review runs use `Starfall.ObservatoryReview`; existing technique, dialogue and Sky Flow review suite names are preserved. Ordinary Debug/Release continues using standard defaults. The selector never clears a domain or writes during initialization.
 
 `ObservatoryReviewFixture` is compiled only in Debug and requires explicit reset/review arguments. It is native verification tooling, not an alternative game/environment. See [verification commands and boundaries](../tools/environments/README.md). `skyEnvironment` is retired: any retained local value is inert and game saves are untouched.
 
 `FallingSkyHUD` owns the selected transparent score/trail/menu row. [Character dialogue authoring](DialogueScripts/README.md) owns reusable scripts, speaker IDs and the Debug studio; `SkyDialogueBubble` renders one shared native chat surface for gameplay and ceremonies. `SkyTrailMotion` owns the straight/island forecast finish mapping. `FallingSkyMenu` receives snapshots, bindings and narrow actions, with dedicated help/balance pages. The trail reads the existing deadline; it never schedules showers. See [interface contracts](../docs/design/OBSERVATORY_INTERFACE.md).
 
-`StarCast` owns Crystal Glow materials for board, comets, HUD and previews: six packaged bodies, authored faces, shallow turns and a bounded 72-material cache. The scene owns separate contact shadows; their placement follows cached body height and grown size. See the [production contract](../docs/design/star-cast/README.md).
+`StarCast` owns Crystal Glow materials for board, comets, HUD and previews: six packaged bodies, authored faces, shallow turns and a bounded 72-material cache. The floating cast has no ground shadows; clear light is radial and stays at its source. See the [production contract](../docs/design/star-cast/README.md).
 
-Constellation drawing is now part of FallingSky: transient ordered input lives in `SkyInteractionSession` with one held-contact ticket, the native trace surface shares Observatory geometry with accessible buttons, and the scene presents a bounded trail/burst. Core validates the selected set; ordinary taps retain their original rules. Debug-only reset fixtures are not a second app or a menu route.
+Constellation drawing is now part of FallingSky: transient ordered input lives in `SkyInteractionSession` with one held-contact ticket, the native trace surface shares `LandingGeometry` with accessible buttons, and the scene presents a bounded trail/burst. Core validates the selected set; ordinary taps retain their original rules. Debug-only reset fixtures are not a second app or a menu route.
 
 The store schedules the core’s persisted opening cadence: four quick waves, then the chosen regular pace. Input opens between settled batches; [opening acceptance](../docs/evidence/opening-cascade-2026-10-17/README.md) records checks and limits.
 
@@ -78,6 +84,10 @@ Drawing starts on the full native star target and follows six-point movement. Th
 Store interruption cleanup has two small boundaries: `interruptPlay` freezes the deadline, then stops feedback and settles; `settleInterruptedPresentation` preserves the deadline for layout/motion changes. Balance freezes before changing cadence and settles afterward. Existing input generations, celebration cancellation and presentation epochs remain authoritative.
 
 `GameFeedback` owns trace selection haptics and all explicit accessibility announcements. The view passes count/value/readiness plus generation and hold values through the store; cancelled/replaced ownership cannot emit stale speech. Store preferences and device Reduce Motion/VoiceOver policy gate selection haptics, using the existing bounded generators.
+
+`LandingBackdrop` fills extra screen space from separate scenery plates. `LandingGeometry` owns the central stage, compact landscape companion column, prop registration and all 49 cell polygons; portrait artwork and compact terrace materials share that measured boundary. Short narrow and accessibility layouts scroll instead of shrinking targets.
+
+Compact-height and accessibility layouts use a scrolling canvas plus a growing dialogue/footer. Other sizes keep the centered board with score/forecast above and 128-point dialogue plus native actions below. Large scores use grouped exact digits; they never become abbreviated values. [Native layout evidence](../docs/evidence/nightscapes-2026-10-18/README.md) separates simulator checks from physical comfort and RC VoiceOver.
 
 Fresh survival skies use universal critical mass. `CriticalMassPresentation` renders committed age as advancing violet facets, inward chevrons and exact threatened cells; `StarCollapsePresentation` shares the bounded inward swallow with historical Dusk. `SkySaveArchive` writes v8, reads retained v3–v7 and preserves prior bytes. Retained replay keeps its mechanics; New sky selects aging. See [critical mass](../docs/design/CRITICAL_MASS.md).
 

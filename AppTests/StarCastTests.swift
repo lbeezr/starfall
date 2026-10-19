@@ -186,7 +186,7 @@ final class StarCastTests: XCTestCase {
         for case let node as FallingSkyCharacter in scene.children[1].children {
             let index = try XCTUnwrap(game.board.firstIndex { $0?.id == node.gem.id })
             XCTAssertEqual(node.gem, game.board[index])
-            let expected = ObservatoryGeometry(size: scene.size).scenePoint(Cell(index/7,index%7))
+            let expected = LandingGeometry(size: scene.size).scenePoint(Cell(index/7,index%7))
             XCTAssertEqual(node.position.x, expected.x, accuracy: 0.01)
             XCTAssertEqual(node.position.y, expected.y, accuracy: 0.01)
             XCTAssertFalse(node.hasActions())
@@ -198,7 +198,7 @@ final class StarCastTests: XCTestCase {
         capture.name = "concurrent-arrival-final"; capture.lifetime = .keepAlways; add(capture)
     }
 
-    @MainActor func testCrystalBodiesArePackagedAndContactShadowsStaySeparate() throws {
+    @MainActor func testCrystalBodiesStayPackagedAndOpenSpaceHasNoContactShadows() throws {
         let kinds = StarCast.Identity.allCases
         for kind in kinds {
             let name = StarCast.character(for: kind).name
@@ -219,15 +219,7 @@ final class StarCastTests: XCTestCase {
         for _ in 0..<3 {
             scene.render(game)
             let roots = scene.children[0].children.filter { $0.name?.hasPrefix("sky.ground.") == true }
-            XCTAssertEqual(roots.count, game.occupiedCount)
-            for root in roots {
-                let contact = try XCTUnwrap(root.childNode(withName: "sky.shadow.contact") as? SKShapeNode)
-                let soft = try XCTUnwrap(root.childNode(withName: "sky.shadow.soft") as? SKShapeNode)
-                XCTAssertGreaterThan(contact.fillColor.cgColor.alpha, soft.fillColor.cgColor.alpha)
-                XCTAssertLessThan(contact.frame.width, soft.frame.width)
-                XCTAssertFalse(root.hasActions())
-                XCTAssertEqual(root.children.count, 2)
-            }
+            XCTAssertTrue(roots.isEmpty,"Stars float in space without contact shadows")
         }
     }
 
@@ -275,7 +267,7 @@ final class StarCastTests: XCTestCase {
                         }
                     }
                 }
-                sawLight = sawLight || scene.children[2].children.contains { $0.name == "sky.surface-light" }
+                sawLight = sawLight || scene.children[2].children.contains { $0.name == "sky.clear-light" }
                 try await Task.sleep(for: .milliseconds(16))
             }
             XCTAssertTrue(complete)
@@ -289,7 +281,7 @@ final class StarCastTests: XCTestCase {
                 XCTAssertEqual(root.xScale, 1); XCTAssertEqual(root.yScale, 1)
                 let index = try XCTUnwrap(game.board.firstIndex { $0?.id == root.gem.id })
                 XCTAssertEqual(root.gem, game.board[index])
-                let expected = ObservatoryGeometry(size: scene.size).scenePoint(Cell(index/7, index%7))
+                let expected = LandingGeometry(size: scene.size).scenePoint(Cell(index/7, index%7))
                 XCTAssertEqual(root.position.x, expected.x, accuracy: 0.01)
                 XCTAssertEqual(root.position.y, expected.y, accuracy: 0.01)
                 XCTAssertEqual(root.zRotation, 0)
@@ -551,7 +543,7 @@ final class StarCastTests: XCTestCase {
         var complete = false
         scene.animate(turn, from: old, to: game) { complete = true }
         var observedRebound = false
-        let restingY = ObservatoryGeometry(size: scene.size).scenePoint(Cell(0,0)).y
+        let restingY = LandingGeometry(size: scene.size).scenePoint(Cell(0,0)).y
         // Sample throughout flight, landing, expression swap and settlement, not just the final frame.
         for _ in 0..<70 {
             try? await Task.sleep(for: .milliseconds(20))
@@ -702,7 +694,7 @@ extension StarCastTests {
             XCTAssertNil(scene.children[0].childNode(withName:"sky.ground.\(id)"))
         }
         let roots = scene.children[0].children.filter { $0.name?.hasPrefix("sky.ground.") == true }
-        XCTAssertEqual(roots.count,game.occupiedCount-fieldIDs.count)
+        XCTAssertTrue(roots.isEmpty)
         XCTAssertEqual(StarCast.character(for:.magnet).description,"Attraction field")
         XCTAssertNil(UIImage(named:"StarCastMagnet"),"The superseded solid star must not remain in the product")
     }
