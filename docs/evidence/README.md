@@ -2,6 +2,9 @@
 
 Dated, source-bound records of checks, comparisons and their limits.
 
+[Crystal-depth native integration](crystal-depth-native-2026-10-18/README.md) records the adopted alphabet renderer, fixed resource budget and native checks.
+
+[Crystal Comet alphabet sprites](crystal-comet-sprites-2026-10-18/README.md) records the full character/angle package, inspected assets and offline browser checks; native import remains separate.
 [Individual gesture deliveries](gesture-delivery-2026-10-18/README.md) links the five merged batches, canonical installation receipts and remaining physical/RC acceptance.
 
 [Quiet input response](quiet-input-2026-10-18/README.md) records the reproduced 150 ms lock and native presentation/admission checks.

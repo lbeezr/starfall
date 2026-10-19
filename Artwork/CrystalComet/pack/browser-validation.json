@@ -1,0 +1,16 @@
+{
+  "browser": "155.0.8059.85",
+  "configuration": "Headless Chrome over loopback for canvas inspection, 2× desktop raster; 900/390/320 CSS px; normal and reduced-motion contexts; direct file opening also checked",
+  "checks": [
+    "27 viewport/yaw/pitch combinations render populated, unclipped text without horizontal overflow.",
+    "Playback changes exported-sprite pixels and pause holds the selected view.",
+    "Replay returns to front and stops.",
+    "Changing pitch interrupts playback.",
+    "Rapid pitch changes settle on the latest requested angle plane.",
+    "Unsupported characters are identified explicitly.",
+    "Reduced-motion view remains static; keyboard angle inspection works.",
+    "No browser JavaScript errors.",
+    "Direct file opening loads all front-plane images and completes playback without a server."
+  ],
+  "limits": "Offline asset viewer only; no native gameplay, GPU-budget or actual VoiceOver acceptance."
+}

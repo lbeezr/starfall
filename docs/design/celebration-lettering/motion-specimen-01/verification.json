@@ -1,0 +1,30 @@
+{
+  "sourceCommit": "0d28c5089c4a34e8f210c35a0157988b47aaffc5",
+  "snapshot": "12b3777c44a1",
+  "sourceFiles": {
+    "prepare.cjs": "9c4d07c9dd1732132623b84afebc8a3ad4381de25ff29fa0ed0b47edba907ef7",
+    "specimen.template.html": "c293e3b8180cfa9d75119db5a67a905da1a24315b05386fe15623c18dd54c8ac",
+    "glyph-master.png": "30b5c8da05d8c6941d79528f910ee306e43c5e1bcac0afeca832a2c408cc3926",
+    "registration.json": "175c6666710c4a72f3d094c20541e5d77563baba2cfafa69c4ed62476636413b"
+  },
+  "browser": "155.0.8059.85",
+  "configuration": "Headless Chrome, deviceScaleFactor 2, 768/390/320 CSS px; phone/detail layouts; -35/0/+35 degree inspection; reduced-motion context",
+  "checks": [
+    "Playback changes pixels; pause stops elapsed time.",
+    "Both layouts at 768, 390 and 320 CSS px: all glyphs contained at -35, 0 and +35 degrees; no horizontal overflow.",
+    "Depth and flat render different pixels at matched 30-degree turn.",
+    "Angle control works with keyboard.",
+    "Replay completes and settles; no endless loop.",
+    "Reduced motion starts static and manual inspection remains usable.",
+    "No JavaScript errors."
+  ],
+  "sampleCount": 18,
+  "capture": "dev-0d28c50-wip-12b3777c44a1__relay-motion__browser__30deg.png",
+  "rawChecks": "/tmp/starfall-motion-checks.json",
+  "testCommand": "NODE_PATH=<bundled node_modules> node /tmp/check-starfall-motion.cjs",
+  "limitations": [
+    "Browser concept only; no native simulator/device/actual VoiceOver checks.",
+    "No app source, resources, rules, saves or build settings changed.",
+    "Painted front facets; deterministic geometric sides, no physical refraction."
+  ]
+}

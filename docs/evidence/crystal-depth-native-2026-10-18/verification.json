@@ -1,0 +1,65 @@
+{
+  "status": "passed",
+  "sourceSnapshot": "90d8d993cf63",
+  "runtimeFingerprint": "dev.f6b2c29f8f",
+  "environment": {
+    "xcode": "27.1 (27A9275)",
+    "simulator": "Starfall Celebration Visibility 01a14eb4 / iPhone 17e",
+    "simulatorID": "07A4D3FE-01D2-4A12-AB14-8D30399A71A3",
+    "runtime": "iOS 27.0",
+    "architecture": "arm64",
+    "localBuildOverrides": [
+      "ARCHS=arm64",
+      "ONLY_ACTIVE_ARCH=YES"
+    ]
+  },
+  "results": {
+    "core": {
+      "command": "swift test",
+      "passed": 165,
+      "failed": 0
+    },
+    "hosted": {
+      "selection": [
+        "StarfallAppTests/CrystalCelebrationArtworkTests",
+        "StarfallAppTests/StarlightCelebrationTests"
+      ],
+      "passed": 20,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 37.188
+    },
+    "interaction": {
+      "selection": [
+        "FallingSkyInteractionTests/testAutomaticRainThenPausedClearReplayAndSettings",
+        "FallingSkyInteractionTests/testSystemReduceMotionKeepsManualPlayWorking",
+        "ResponsiveInputUITests/testSixteenPointOrdinaryDriftClearsOnceAtNormalAndLargestText",
+        "SkyFlowInteractionTests/testFirstLightWinReplayAndFullSky",
+        "SkyTechniqueInteractionTests/testSettingsAndBackgroundLeaveGesturesReadyWithoutRetoggling",
+        "SkyTechniqueInteractionTests/testSwipeSpendsFiveFromSixAndShortTraceCancels",
+        "SkyTechniqueInteractionTests/testTapRecipesRelayWithoutAnyModeOrMenuToggle"
+      ],
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 294.666
+    },
+    "builds": {
+      "Debug": "build/run passed; screenshot inspected",
+      "Release": "build passed; all 16 native profile resources verified in Assets.car"
+    },
+    "hygiene": [
+      "python3 scripts/ci-hygiene.py",
+      "git diff --check",
+      "local Markdown file links",
+      "native profile hashes",
+      "runtime snapshot hashes"
+    ]
+  },
+  "limits": [
+    "Working-tree acceptance, not merged main or device delivery.",
+    "Actual VoiceOver deferred to RC.",
+    "Existing central callout can overlap surviving stars.",
+    "No measured physical frame pacing or process/GPU memory acceptance."
+  ]
+}

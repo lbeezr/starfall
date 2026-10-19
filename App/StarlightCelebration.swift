@@ -97,7 +97,8 @@ struct StarlightCelebrationOverlay: View {
                 if !quiet {
                     Canvas { context, _ in draw(in: &context, age: age) }
                 }
-                CrystalCelebrationLabel(event: event, tint: accent, width: calloutWidth, showsTitle: showsTitle)
+                CrystalCelebrationLabel(event: event, tint: accent, width: calloutWidth, showsTitle: showsTitle,
+                                        age: age, quiet: quiet)
                 .multilineTextAlignment(.center)
                 .shadow(color: StarfallTheme.Colors.skyTop, radius: 3)
                 .shadow(color: accent.opacity(0.8), radius: quiet ? 0 : 10)

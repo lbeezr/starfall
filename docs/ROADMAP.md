@@ -22,6 +22,8 @@ The approved [starlight celebration storyboard](design/STARLIGHT_CELEBRATIONS.md
 
 **Next actions:** Hold mechanics steady and follow the [calibration plan](design/CALIBRATION.md). [Critical-mass pacing adoption](evidence/calibration-critical-mass-2026-10-18/ADOPTION.md) selects the longer existing rhythm for fresh survival after measured implosion input starvation, preserving saved cadence and First Light. Observe recognition, gesture comfort and repeated-round preference at this baseline. Dense/large-text celebration comfort, physical feel and actual VoiceOver at RC remain separate acceptance work. Continue the canonical single-app updater; no feature-checkout device install.
 
+**Lettering adopted:** the user-approved [crystal-depth alphabet](../Artwork/CrystalComet/NATIVE.md) now composes score popups and celebration titles in normal Debug/Release, with finite per-letter turns and native/quiet fallbacks. [Native evidence](evidence/crystal-depth-native-2026-10-18/README.md) records checks and the remaining physical/dense-board limits; the full sprite pack remains the authoring master.
+
 
 **Open limits:** No gameplay participant preference results or general physical-device acceptance. Crystal Glow art direction and character masters are user-approved; runtime verification and remaining limits are recorded in the [cast integration evidence](evidence/crystal-glow-integration-2026-10-17/README.md). Accessibility evidence remains source-bound.
 

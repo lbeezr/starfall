@@ -1,0 +1,36 @@
+{
+  "reason": "Replaced in the app by the user-approved multi-angle alphabet; original bytes retained for provenance.",
+  "recoveryCommit": "0d28c5089c4a34e8f210c35a0157988b47aaffc5",
+  "assets": [
+    {
+      "formerPath": "App/Assets.xcassets/CelebrationBrilliant.imageset",
+      "retainedPath": "Artwork/Celebrations/retired-v1/CelebrationBrilliant.imageset",
+      "imageSHA256": "794f47993f5147f40a351a50397784a12dc5128639c2cae3b7fce87f9c39e4c7"
+    },
+    {
+      "formerPath": "App/Assets.xcassets/CelebrationConstellation.imageset",
+      "retainedPath": "Artwork/Celebrations/retired-v1/CelebrationConstellation.imageset",
+      "imageSHA256": "30b52b29fee53a53e141c7e32aafa7e75880f1ff8ba590329e12f9e1f29f323b"
+    },
+    {
+      "formerPath": "App/Assets.xcassets/CelebrationCross.imageset",
+      "retainedPath": "Artwork/Celebrations/retired-v1/CelebrationCross.imageset",
+      "imageSHA256": "e691abccd8e00887a29571fb6351fea34951d8e837d9b8b9e84863633dae87e5"
+    },
+    {
+      "formerPath": "App/Assets.xcassets/CelebrationGlyphs.imageset",
+      "retainedPath": "Artwork/Celebrations/retired-v1/CelebrationGlyphs.imageset",
+      "imageSHA256": "63d98c91a683cfb9b155aa344239acc48b4faf24112c75977017ec86fa3c1aaf"
+    },
+    {
+      "formerPath": "App/Assets.xcassets/CelebrationRelay.imageset",
+      "retainedPath": "Artwork/Celebrations/retired-v1/CelebrationRelay.imageset",
+      "imageSHA256": "fe416c804172eb6b4257465d83f0a845c5f70f81191c01e20b4fb74ffc926859"
+    },
+    {
+      "formerPath": "App/Assets.xcassets/CelebrationSquare.imageset",
+      "retainedPath": "Artwork/Celebrations/retired-v1/CelebrationSquare.imageset",
+      "imageSHA256": "63d48934112e0a4a729172e90c8542ff5380e493649a4990a114d3a4945612fa"
+    }
+  ]
+}
