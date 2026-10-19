@@ -397,43 +397,35 @@ final class FallingSkyInteractionTests: XCTestCase {
     }
 
     @MainActor func testDarkStarInfluenceRestoreAndAdjacentClear() {
-        let app = launch(); defer { app.terminate() }
-        app.buttons["experiment.settings"].tap()
-        let calm = app.switches["experiment.calm"]
-        app.revealSkyMenuElement(calm)
-        XCTAssertTrue(calm.waitForExistence(timeout: 5))
-        if calm.value as? String == "1" { calm.tap() }
-        app.buttons["experiment.done"].tap()
-        let shadedMatch = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND label CONTAINS %@ AND value MATCHES %@", "experiment.cell.", "drained by Dusk", "([3-9]|[1-9][0-9]) toward a match, [0-9]+ starlight if cleared")).firstMatch
-        let next = app.buttons["experiment.next"]
-        for _ in 0..<25 {
-            if shadedMatch.exists { break }
-            reveal(next, in: app)
-            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: next).wait(timeout: 5))
-            next.tap()
-            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: next).wait(timeout: 5))
-        }
-        XCTAssertTrue(shadedMatch.exists)
-        let beside = app.buttons[shadedMatch.identifier]
-        let dark = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Dusk,")).firstMatch
-        XCTAssertTrue(dark.exists)
-        let darkID = dark.identifier
-        let expectedScore = Int((beside.value as! String).split(separator: ";").last!.split(separator: " ")[0])!
+        continueAfterFailure = false
+        // Dusk is retained-save compatibility. Fresh survival deliberately has no
+        // Dusk supply, so use the existing committed fixture and isolated domain.
+        let app = XCUIApplication(); defer { app.terminate() }
+        app.launchArguments = ["--starfalls-reset", "--dialogue-review", "--dusk-fixture=unfed", "-calmEffects", "NO"]
+        app.launch()
+        let beside = app.buttons["experiment.cell.0.2"]
+        let dark = app.buttons["experiment.cell.0.3"]
+        XCTAssertTrue(beside.waitForExistence(timeout: 10))
+        XCTAssertTrue(dark.label.hasPrefix("Dusk"))
+        XCTAssertTrue(beside.label.contains("drained by Dusk"))
+        XCTAssertTrue((beside.value as? String ?? "").contains("1 starlight if cleared"))
         for star in app.descendants(matching: .any).matching(NSPredicate(format: "identifier BEGINSWITH %@", "experiment.incoming.")).allElementsBoundByIndex {
             XCTAssertFalse(star.label.contains("column"))
         }
         capture(app, "dark-star-and-shaded-neighbors")
         app.terminate()
-        app.launchArguments = ["--starfalls"]
+        app.launchArguments = ["--dialogue-review"]
         app.launch()
         resumeRestoredPaused(app)
         XCTAssertTrue(app.buttons["experiment.pause"].waitForExistence(timeout: 10))
         XCTAssertEqual(app.buttons["experiment.pause"].label, "Resume sky")
         XCTAssertTrue(dark.label.hasPrefix("Dusk"))
         XCTAssertTrue(beside.label.contains("drained by Dusk"))
+        XCTAssertTrue((beside.value as? String ?? "").contains("1 starlight if cleared"))
+        app.revealSkyControls([beside])
         beside.tap()
-        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "\(expectedScore) starlight"), object: app.staticTexts["experiment.score"]).wait(timeout: 3))
-        XCTAssertFalse(app.buttons[darkID].label.hasPrefix("Dusk"))
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "1 starlight"), object: app.staticTexts["experiment.score"]).wait(timeout: 3))
+        XCTAssertFalse(dark.label.hasPrefix("Dusk"))
         capture(app, "dark-star-dissolved-by-adjacent-clear")
     }
 

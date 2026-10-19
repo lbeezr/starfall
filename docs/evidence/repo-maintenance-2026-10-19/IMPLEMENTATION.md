@@ -12,9 +12,13 @@ Reconciled root/App READMEs, the roadmap and adoption register against `FallingS
 
 Acceptance: current summaries agree with those code boundaries; hygiene and `git diff --check` passed; 541 local Markdown file targets and changed-document whitespace passed. Historical evidence payloads and their results remain unchanged. This is documentation reconciliation, not native behavior acceptance; runtime/visual/animation/VoiceOver/device checks are not applicable to this batch.
 
+## Batch 2 — CI diagnosis and one regression
+
+[The diagnosis](CI_DIAGNOSIS.md) classifies all available logs in the original cohort and records six local reproductions. The retained-Dusk restore regression now uses the existing isolated fixture: 177 core tests and 9 selected native tests pass, with no runtime change. Other UI failures, inventory startup and partial/empty screenshot output remain explicit open findings; this batch does not claim healthy remote CI.
+
 ## Remaining work
 
-- Classify remote CI failures and reproduce the six latest UI assertions on the available local toolchain. Xcode 27.1/iOS 27.0 differs from remote Xcode 26.3; a local pass cannot close that environment gap.
+- Resolve the remaining CI/native findings recorded in the diagnosis; Xcode 27.1/iOS 27.0 differs from remote Xcode 26.3.
 - Evaluate scoped instructions and validate discovery; preserve each relocated invariant.
 - Add and forward-test the three repo skills using existing commands and source-bound artifacts.
 - Pilot one proven maintenance simplification and report measured benefit or uncertainty.
