@@ -14,6 +14,14 @@ Repair simulator discovery, remaining UI regressions and the partial screenshot 
 
 This is an evidence-backed environment correction, not proof that Apple's reported mechanism caused this timeout: no service crash sample was captured. The remote discovery receipt and full run must verify the outcome. Local static/tooling checks cannot emulate GitHub's VM.
 
+## Batch 2: room for the complete serial matrix
+
+[Run 39201250877](https://github.com/lbeezr/starfall/actions/runs/39201250877), source `515f7f8`, job `117894490089`, reached only 35 UI cases before cancellation at 05:23 UTC. Native UI began at 04:58:38; the completed cases consumed 1,445.977 seconds. Its 29 passing cases alone consumed 1,231.546 seconds (42.47 seconds/case); six cases failed. This is observed partial-run throughput, not a successful-suite median, and does not prove which cancellation mechanism fired.
+
+The current source-counted plan selects 120 UI and 316 hosted cases. Extrapolating only those passing UI durations gives about 85 minutes of UI work, before setup, Debug/Release builds, hosted tests and export. A 35-minute whole-job cap is incompatible with that workload. Raise the single-job bound to 150 minutes to accommodate the existing coverage and variation; keep the 90/240-second UI test bounds, hosted/operation bounds, serial execution, zero-retry policy and all count/skip gates. Revisit the estimate using the first complete passing run, not failed-test elapsed time. No new runner or parallel job is added.
+
+Verification: all five existing Python suites pass (55 checks); the workflow parses with Ruby's YAML parser, hygiene and diff checks pass. These checks use main `451219d` plus the workflow/script README/evidence changes. No runtime input changes. Complete remote timing remains pending.
+
 ## UI and capture investigation
 
 The compact SE simulator used by the maintenance reproduction was in landscape at the fresh launch, while earlier XCTest attachments had portrait dimensions and cropped content. The fresh simulator screenshot renders its visible landscape viewport. Investigate orientation/setup and scrolling at the native test boundary before changing game rendering. Preserve existing outcome assertions, historical Dusk fixtures, normal-motion checks and all selected tests.
