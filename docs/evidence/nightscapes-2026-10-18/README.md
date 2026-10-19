@@ -20,7 +20,9 @@ Moonwake, Nebula Cradle, Shatterlight Reach, Night Garden and Ringdrift now use 
 
 ## Tested source and commands
 
-Final runtime source: `08af480b47570e58b05b2dc99099b30cf458b9f8`, fingerprint **`dev.0c86648902`**. Earlier phone/Air captures and tests use `f40be2e` / runtime `dev.37c8873b91`; the only subsequent runtime change is the small-iPad viewport classification described below. `d4a6493` reconciled main `362586ff70148d1b47b6c9d4f7b3e8f141173030` without runtime changes. Subsequent edits in this evidence batch are documentation/captures only. Local validation used `/tmp/starfall-celestial-production`; retained source IDs describe that history, while the published commit will have an equivalent tree.
+Final runtime source: `1c624cb93fe868ffd9e5f49745da694b6a9e66ca`, fingerprint **`dev.235ece3931`**, reconciled with main `c985a97` (protected award placement). Earlier phone/Air captures and tests use `f40be2e` / `dev.37c8873b91`; mini centering uses `08af480` / `dev.0c86648902`. The final integration adds reserved award space, a higher default header, margin art fitted to the remaining space, and a separate accessible award region below the cells. It preserves the centered board and current main's award rendering.
+
+Local validation used `/tmp/starfall-celestial-production`, with no dirty runtime inputs. Subsequent evidence edits are documentation/captures only. GitHub commit `f9ab535` has exactly the same tree as local `1c624cb`; the final evidence commit does not change its runtime fingerprint. [PR #143](https://github.com/lbeezr/starfall/pull/143) owns publication.
 
 Toolchain: Xcode 27.1 (`27A9275`), arm64, iOS 27.0 Simulator. Debug test builds used `Starfall`, `ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGNING_ALLOWED=NO`, DerivedData `/tmp/starfall-celestial-build`. Release used `/tmp/starfall-night-release-build`. No iOS 17 runtime or physical interaction session was run.
 
@@ -39,6 +41,20 @@ Toolchain: Xcode 27.1 (`27A9275`), arm64, iOS 27.0 Simulator. Debug test builds 
 Raw XCResults are in `~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-27844ad883f3/result-bundles/`: hosted `test_sim_2026-10-19T01-20-28-140Z_pid56979_b3e8630e.xcresult`; phone `test_sim_2026-10-19T01-26-35-552Z_pid56979_7b670e61.xcresult`; Air `test_sim_2026-10-19T01-43-43-612Z_pid56979_fa5b9a33.xcresult`; mini rerun `test_sim_2026-10-19T01-51-27-403Z_pid56979_6b0757e2.xcresult`. Compact-phone bundle: `test_sim_2026-10-19T01-57-09-199Z_pid56979_0c46432a.xcresult`. Final Release log: `logs/build_sim_2026-10-19T01-56-43-958Z_pid56979_74bf263d.log` under the same workspace. Raw output is temporary local evidence, not a repository dependency.
 
 The fresh-survival manual run reset only the isolated review namespace, with `--starfalls-reset --sky-flow-review -landingPlace observatory -calmEffects NO`. It went from welcome/entry through automatic showers to a full sky, with normal motion. `/tmp/night-normal-play.mp4` is 118.49 seconds; the inspected 62.2–62.8 second interval shows the arrival path and landing. The run does not establish sustained frame rate or device comfort. Two initial automation attempts did not settle promptly during transitions; subsequent native snapshots/taps and the bounded UI cases completed. No test assertion was relaxed to hide this.
+
+## Final integration checks
+
+At `1c624cb`, the phone run passed **22 checks**: `StarlightCelebrationTests`, `LandingArchitectureGeometryTests`, `LandingPlaceTests` and all `LandingPlaceInteractionTests`. The mini rerun passed all **3** location cases, including both orientations, large scores, maximum text and calm outcomes. The compact iPhone SE large-score/maximum-text case also passed at this source. Release rebuilt successfully with zero reported warnings/errors. The normal-motion full-game award cases visibly render ordinary, recipe, trace and relay awards; crowded current-rule captures preserve the independent remaining match.
+
+Final artifacts under the same XcodeBuildMCP workspace: phone `test_sim_2026-10-19T02-12-21-056Z_pid56979_7d0de822.xcresult`; mini `test_sim_2026-10-19T02-12-57-439Z_pid56979_76479326.xcresult`; Release `build_sim_2026-10-19T02-12-28-045Z_pid56979_b171399f.log`. Compact-phone result: `test_sim_2026-10-19T02-23-11-006Z_pid56979_47e6124c.xcresult`. Earlier core and gesture results above remain applicable to their unchanged implementation; this focused rerun does not claim a new complete 293-test pass.
+
+<img src="dev-1c624cb__moonwake-crowded-award__host-430x932__default.png" width="270" alt="Native Moonwake with Brilliant plus eight in a reserved band above the remaining stars">
+
+**Native `1c624cb`, 430×932 hosted view on iPhone 17e / iOS 27.0, current fresh-survival rules, default text, normal motion.** The award stays below the forecast and above the first playable row. Maximum-text +8 was separately inspected below the board; all five final phone scenes were re-inspected.
+
+![Final mini layout with reserved award clearance above the centered board](dev-1c624cb__moonwake__ipad-mini__landscape.png)
+
+**Native `1c624cb`, iPad mini A17 Pro / iOS 27.0, default text, paused historical compatibility fixture.** The header moved upward to reserve awards while the board and control centers stayed fixed. Source-bound earlier wide compositions below retain the previous header position.
 
 ## Corrections found during verification
 

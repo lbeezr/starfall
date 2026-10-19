@@ -62,5 +62,21 @@
     "source": "08af480",
     "variant": "normal motion, default text, paused historical Dusk review fixture",
     "device": "iPad mini A17 Pro, iOS 27.0 Simulator"
+  },
+  {
+    "file": "dev-1c624cb__moonwake-crowded-award__host-430x932__default.png",
+    "sha256": "cd0cda8f7807ec0b396185ccba2c69d3a4e426b58bb29334e312ff24a1a6f9e2",
+    "source": "1c624cb",
+    "attachment": "178FCD5E-8CFD-4B53-A9FB-A2639DEC6EE6.png",
+    "variant": "current fresh-survival rules, default text, normal motion",
+    "device": "430x932 native hosted view, iPhone 17e / iOS 27.0 Simulator"
+  },
+  {
+    "file": "dev-1c624cb__moonwake__ipad-mini__landscape.png",
+    "sha256": "734462d79faac1639bcd7d2f14a8a12eeba22ee7902e2faf66cd14962188aee8",
+    "source": "1c624cb",
+    "attachment": "25824B61-D30F-4432-844A-B847C999249C.png",
+    "variant": "default text, paused historical Dusk review fixture, normal motion enabled",
+    "device": "iPad mini A17 Pro / iOS 27.0 Simulator"
   }
 ]
