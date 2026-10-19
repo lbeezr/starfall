@@ -1,0 +1,87 @@
+{
+  "base": "6c479615cacd46dc396fb009a082ca45d8b63ad7",
+  "testSourceSHA256": "8dd70b0a732f0101451229443d653cc34980da43c9174dc13df81bcd11310354",
+  "environment": "Debug; Xcode 27.1 (27A9275); iOS 27.0",
+  "core": {
+    "passed": 177,
+    "failed": 0,
+    "seconds": 31.632,
+    "note": "Unchanged core inputs; first layout-test snapshot."
+  },
+  "runs": [
+    {
+      "device": "iPhone SE (3rd generation)",
+      "summary": {
+        "status": "SUCCEEDED",
+        "durationMs": 115297,
+        "counts": {
+          "passed": 2,
+          "failed": 0,
+          "skipped": 0
+        },
+        "target": "simulator"
+      },
+      "artifacts": {
+        "buildLogPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-5baffeb4084c/logs/test_sim_2026-10-19T16-00-43-859Z_pid95357_a74c0834.log",
+        "xcresultPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-5baffeb4084c/result-bundles/test_sim_2026-10-19T16-00-43-859Z_pid95357_674b4bed.xcresult",
+        "testProductsPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-5baffeb4084c/test-products/test_sim_2026-10-19T16-00-43-859Z_pid95357_d1400649.xctestproducts"
+      },
+      "diagnostics": {
+        "warnings": [],
+        "errors": [],
+        "testFailures": []
+      },
+      "testCases": [
+        {
+          "suite": "FallingSkyInteractionTests",
+          "test": "testCompactHUDMenuSuspendsWithoutChangingPauseChoice",
+          "status": "passed",
+          "durationMs": 42525
+        },
+        {
+          "suite": "FallingSkyInteractionTests",
+          "test": "testPausedGuideReportsGrowthDarkOutcomesAndRestore",
+          "status": "passed",
+          "durationMs": 55288
+        }
+      ]
+    },
+    {
+      "device": "iPhone 17e",
+      "summary": {
+        "status": "SUCCEEDED",
+        "durationMs": 131275,
+        "counts": {
+          "passed": 2,
+          "failed": 0,
+          "skipped": 0
+        },
+        "target": "simulator"
+      },
+      "artifacts": {
+        "buildLogPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-5baffeb4084c/logs/test_sim_2026-10-19T16-02-57-528Z_pid95357_a663183b.log",
+        "xcresultPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-5baffeb4084c/result-bundles/test_sim_2026-10-19T16-02-57-528Z_pid95357_a3694c47.xcresult",
+        "testProductsPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-5baffeb4084c/test-products/test_sim_2026-10-19T16-00-43-859Z_pid95357_d1400649.xctestproducts"
+      },
+      "diagnostics": {
+        "warnings": [],
+        "errors": [],
+        "testFailures": []
+      },
+      "testCases": [
+        {
+          "suite": "FallingSkyInteractionTests",
+          "test": "testCompactHUDMenuSuspendsWithoutChangingPauseChoice",
+          "status": "passed",
+          "durationMs": 48006
+        },
+        {
+          "suite": "FallingSkyInteractionTests",
+          "test": "testPausedGuideReportsGrowthDarkOutcomesAndRestore",
+          "status": "passed",
+          "durationMs": 54048
+        }
+      ]
+    }
+  ]
+}
