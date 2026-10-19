@@ -17,7 +17,7 @@ final class RibbonCrossingInteractionTests: XCTestCase {
     @MainActor private func launch(score: Int, lantern: Bool = false, largestText: Bool = false) -> XCUIApplication {
         continueAfterFailure = false
         let app = XCUIApplication()
-        app.launchArguments = ["--starfalls-reset", "--dialogue-review",
+        app.launchArguments = ["--starfalls-reset", "--dialogue-review", "--world-legacy-review",
                                "--\(lantern ? "lantern" : "ribbon")-restoration-review=\(score)", "-calmEffects", "NO"]
         if largestText {
             app.launchArguments += ["-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"]
@@ -120,7 +120,7 @@ final class RibbonCrossingInteractionTests: XCTestCase {
         XCTAssertNotNil(retained)
 
         tap("experiment.settings", in: app)
-        app.skyMenuControl("experiment.ribbon-crossing").tap()
+        app.worldVisitControl("ribbonCrossing").tap()
         XCTAssertTrue(app.buttons["sky.begin"].waitForExistence(timeout: 5))
         XCTAssertEqual(app.staticTexts["sky.title"].label, "Ribbon Crossing")
         XCTAssertTrue(app.staticTexts["sky.subtitle"].label.contains("18 starlight"))
@@ -137,7 +137,7 @@ final class RibbonCrossingInteractionTests: XCTestCase {
 
         tap("experiment.settings", in: app)
         app.skyMenuControl("sky.home").tap()
-        tap("sky.ribbon-crossing", in: app)
+        app.worldVisitControl("ribbonCrossing").tap()
         XCTAssertTrue(app.buttons["sky.begin"].waitForExistence(timeout: 5))
         XCTAssertEqual(app.staticTexts["sky.title"].label, "Ribbon Crossing")
         tap("sky.begin", in: app)

@@ -3,7 +3,7 @@ import StarfallCore
 
 /// Navigation is presentation state; the Codable sky remains authoritative for outcomes.
 enum SkyFlowScreen: Equatable {
-    case welcome, entry, playing, won, full
+    case welcome, entry, playing, won, full, worldMap
 
     static func initial(arguments: [String] = ProcessInfo.processInfo.arguments) -> Self {
         #if DEBUG
@@ -14,7 +14,7 @@ enum SkyFlowScreen: Equatable {
         return .welcome
     }
 }
-enum SkyFlowAction: Equatable { case start, firstLight, ribbonCrossing, kiteHarbor, seedMoon, silverPools, begin, resume, replay, another, home, preferences }
+enum SkyFlowAction: Equatable { case start, firstLight, ribbonCrossing, kiteHarbor, seedMoon, silverPools, begin, resume, replay, another, home, preferences, worldMap, worldBack, tutorial }
 
 @MainActor struct SkyFlowCeremony: View {
     let screen: SkyFlowScreen
@@ -142,7 +142,7 @@ enum SkyFlowAction: Equatable { case start, firstLight, ribbonCrossing, kiteHarb
         case .entry: challenge?.entryKicker ?? SkyCopy.text(.flowOpen)
         case .won: challenge?.completionKicker ?? SkyCopy.text(.flowComplete)
         case .full: SkyCopy.text(.flowRoundOver)
-        case .playing: ""
+        case .playing, .worldMap: ""
         }
     }
     private var title: String {
@@ -151,7 +151,7 @@ enum SkyFlowAction: Equatable { case start, firstLight, ribbonCrossing, kiteHarb
         case .entry: challenge?.locationTitle ?? SkyCopy.text(.flowEntry)
         case .won: challenge?.restoredTitle ?? SkyCopy.text(.flowWon)
         case .full: SkyCopy.text(.flowFull)
-        case .playing: ""
+        case .playing, .worldMap: ""
         }
     }
     private var dialogueLine: SkyDialogueLine {
@@ -162,7 +162,7 @@ enum SkyFlowAction: Equatable { case start, firstLight, ribbonCrossing, kiteHarb
             (entry ?? .initial).introduction(challenge: challenge)
         case .won, .full:
             SkyDialogueLibrary.line(screen == .won ? "ceremony.result" : "ceremony.full", values: ["score": result?.scoreLabel ?? SkyCopy.text(.resultScore, values: ["score": String(welcome.score)]), "reason": result?.reason ?? ""])
-        case .playing: SkyDialogueLibrary.line("guide.opening")
+        case .playing, .worldMap: SkyDialogueLibrary.line("guide.opening")
         }
     }
 
@@ -199,22 +199,22 @@ enum SkyFlowAction: Equatable { case start, firstLight, ribbonCrossing, kiteHarb
         VStack(spacing: StarfallTheme.Spacing.small) {
             switch screen {
             case .welcome:
+                flowButton(SkyCopy.text(.worldPlay), action: .worldMap, id: "sky.worldMap", primary: true)
                 if welcome.canContinue {
-                    flowButton(SkyCopy.text(.actionContinue), action: .resume, id: "sky.resume", primary: true)
+                    flowButton(SkyCopy.text(.actionContinue), action: .resume, id: "sky.resume")
                 }
-                flowButton(SkyCopy.text(.actionNew), action: .start, id: "sky.start", primary: !welcome.canContinue)
+                flowButton(SkyCopy.text(.flowOpen), action: .start, id: "sky.start")
                 if welcome.hasSavedSky && welcome.ended {
                     flowButton(SkyCopy.text(.actionViewLast), action: .resume, id: "sky.resume")
                 }
-                ForEach(StarfallChallenge.allCases, id: \.self) { choice in
-                    flowButton(choice.actionLabel, action: choice.flowAction, id: choice.welcomeIdentifier)
-                }
+                flowButton(SkyCopy.text(.practiceTitle), action: .tutorial, id: "sky.learn")
                 preferencesButton
             case .entry:
                 flowButton(SkyCopy.text(.actionBegin), action: .begin, id: "sky.begin", primary: true)
                 flowButton(SkyCopy.text(.actionHome), action: .home, id: "sky.home")
                 preferencesButton
             case .won, .full:
+                flowButton(SkyCopy.text(.worldReturn), action: .worldMap, id: "sky.worldMap", primary: true)
                 if screen == .won {
                     flowButton(SkyCopy.text(.actionNew), action: .another, id: "experiment.new", primary: true)
                     flowButton(challenge?.replayLabel ?? SkyCopy.text(.actionReplay), action: .replay, id: "experiment.replay")
@@ -223,7 +223,7 @@ enum SkyFlowAction: Equatable { case start, firstLight, ribbonCrossing, kiteHarb
                     flowButton(SkyCopy.text(.actionNew), action: .another, id: "experiment.new")
                 }
                 flowButton(SkyCopy.text(.actionHome), action: .home, id: "sky.home")
-            case .playing: EmptyView()
+            case .playing, .worldMap: EmptyView()
             }
         }
 

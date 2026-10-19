@@ -85,7 +85,7 @@ final class FallingSkyInteractionTests: XCTestCase {
 
     @MainActor private func startFirstLight(_ app: XCUIApplication) {
         openMenu(app)
-        let challenge = app.skyMenuControl("experiment.challenge")
+        let challenge = app.worldVisitControl("firstLight")
         XCTAssertTrue(challenge.waitForExistence(timeout: 5)); challenge.tap()
         XCTAssertTrue(app.buttons["sky.begin"].waitForExistence(timeout: 5))
         XCTAssertEqual(app.staticTexts["sky.title"].label, "Lantern Landing")

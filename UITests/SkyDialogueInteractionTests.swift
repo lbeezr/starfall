@@ -154,7 +154,7 @@ final class SkyDialogueInteractionTests: XCTestCase {
         // Expiry/reopening needs a quiet message interval, not an assumption
         // that a live threat will stop replacing the current guidance.
         app.buttons["experiment.settings"].tap()
-        app.skyMenuControl("experiment.challenge").tap()
+        app.worldVisitControl("firstLight").tap()
         XCTAssertTrue(app.buttons["sky.begin"].waitForExistence(timeout: 5))
         app.buttons["sky.begin"].tap()
         let message = app.staticTexts["experiment.message"]

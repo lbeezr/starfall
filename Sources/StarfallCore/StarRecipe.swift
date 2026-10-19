@@ -39,7 +39,7 @@ extension FallingSky {
     public func selectedClearCells(along path: [Cell]) -> Set<Cell>? { constellationCells(along:path) }
 
     public var canArrangeStars: Bool {
-        !isOver && challenge == nil && orbit == nil && !board.contains { $0?.gravityKind != nil }
+        !isOver && supportsArrangingStars && orbit == nil && !board.contains { $0?.gravityKind != nil }
     }
 
     public func canNudge(from: Cell, to: Cell) -> Bool {

@@ -20,10 +20,10 @@ class RestorationInteractionScenarios: XCTestCase {
         var route: String {
             switch self {
             case .lantern: "firstLight"
-            case .ribbon: "ribbon-crossing"
-            case .kite: "kite-harbor"
-            case .seed: "seed-moon"
-            case .silver: "silver-pools"
+            case .ribbon: "ribbonCrossing"
+            case .kite: "kiteHarbor"
+            case .seed: "seedMoon"
+            case .silver: "silverPools"
             }
         }
         var title: String {
@@ -41,7 +41,7 @@ class RestorationInteractionScenarios: XCTestCase {
         let location = selected ?? self.location
         continueAfterFailure = false
         let app = XCUIApplication()
-        app.launchArguments = ["--starfalls-reset", "--dialogue-review",
+        app.launchArguments = ["--starfalls-reset", "--dialogue-review", "--world-legacy-review",
                                "--\(location.rawValue)-restoration-review=\(score)", "-calmEffects", "NO"]
         if dense { app.launchArguments.append("--restoration-dense") }
         if largestText {
@@ -198,7 +198,7 @@ class RestorationInteractionScenarios: XCTestCase {
             XCTAssertNotNil(retained)
 
             tap("experiment.settings", in: app)
-            app.skyMenuControl("experiment.\(self.location.route)").tap()
+            app.worldVisitControl(self.location.route).tap()
             XCTAssertTrue(app.buttons["sky.begin"].waitForExistence(timeout: 5))
             XCTAssertEqual(app.staticTexts["sky.title"].label, self.location.title)
             XCTAssertTrue(app.staticTexts["sky.subtitle"].label.contains("18 starlight"))
@@ -215,7 +215,7 @@ class RestorationInteractionScenarios: XCTestCase {
 
             tap("experiment.settings", in: app)
             app.skyMenuControl("sky.home").tap()
-            tap("sky.\(self.location.route)", in: app)
+            app.worldVisitControl(self.location.route).tap()
             XCTAssertTrue(app.buttons["sky.begin"].waitForExistence(timeout: 5))
             XCTAssertEqual(app.staticTexts["sky.title"].label, self.location.title)
             tap("sky.begin", in: app)

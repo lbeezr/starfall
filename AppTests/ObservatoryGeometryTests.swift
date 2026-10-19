@@ -150,34 +150,16 @@ extension SkyShowerPlacementTests {
     }
 }
 
-final class LandingPlaceTests: XCTestCase {
-    func testPreferencesPreserveAllFiveHistoricalDestinations() {
-        XCTAssertEqual(LandingPlace.restored("removed-location"), .moonwake)
-        XCTAssertEqual(["observatory","cloudsea","hearth","grotto","archive"].map(LandingPlace.restored), LandingPlace.allCases)
-        XCTAssertEqual(Set(LandingPlace.allCases.map(\.title)).count,5)
-        XCTAssertNotEqual(LandingPlace.preferenceKey,"skyEnvironment")
-    }
-    @MainActor func testProductionComponentsArePackagedWithRealAlpha() throws {
-        let names = ["NightVeil","NightIce","MoonwakeMoon","MoonwakeHull","MoonwakeCloth","NebulaBankLeft","NebulaBankRight","ShatterlightCrown","ShatterlightCrescent","ShatterlightShard","ShatterlightShelter","GardenCanopy","GardenPod","GardenMoth","RingdriftPlanet","RingdriftRings"]
-        for name in names {
-            let image = try XCTUnwrap(UIImage(named:name)?.cgImage,name)
-            XCTAssertGreaterThan(image.width,256)
-            XCTAssertGreaterThan(image.height,256)
-            XCTAssertTrue([CGImageAlphaInfo.premultipliedFirst,.premultipliedLast,.first,.last].contains(image.alphaInfo),name)
+final class OfficialWorldArtworkTests: XCTestCase {
+    @MainActor func testOfficialMapReplacesRetiredNightscapeResources() throws {
+        for name in ["WorldMapDamaged", "WorldMapRestored"] {
+            let map = try XCTUnwrap(UIImage(named: name)?.cgImage)
+            XCTAssertEqual(map.width, 1024); XCTAssertEqual(map.height, 1536)
         }
-    }
-    func testLandmarksAndLocalPropsLeaveTheBoardAndControlsClear() {
-        for size in [CGSize(width:320,height:900),CGSize(width:369,height:800),CGSize(width:440,height:956),CGSize(width:834,height:1194),CGSize(width:1194,height:834)] {
-            for large in [false,true] {
-                let canvas = large ? CGSize(width:size.width,height:max(1200,size.height)) : size
-                let map = LandingGeometry(size:canvas,largeHeader:large), scene = NightSceneLayout(size:canvas,largeHeader:large)
-                for art in [scene.landmark,scene.detail,scene.nearLeft,scene.nearRight,scene.nearMoon] {
-                    for region in [map.arenaFrame,map.crownFrame,map.communicationContentFrame,map.actionFrame(0),map.actionFrame(1)] {
-                        XCTAssertFalse(art.intersects(region),"\(canvas) \(art) overlaps \(region)")
-                    }
-                }
-            }
+        for name in ["NightVeil", "NightIce", "MoonwakeMoon", "MoonwakeHull", "MoonwakeCloth", "NebulaBankLeft", "NebulaBankRight", "ShatterlightCrown", "ShatterlightCrescent", "ShatterlightShard", "ShatterlightShelter", "GardenCanopy", "GardenPod", "GardenMoth", "RingdriftPlanet", "RingdriftRings"] {
+            XCTAssertNil(UIImage(named: name), name)
         }
+        XCTAssertEqual(WorldLocation.allCases.compactMap(\.challenge), StarfallChallenge.allCases)
     }
 }
 

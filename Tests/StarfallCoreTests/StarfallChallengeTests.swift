@@ -92,4 +92,61 @@ final class StarfallChallengeTests: XCTestCase {
             XCTAssertThrowsError(try JSONDecoder().decode(FallingSky.self, from: JSONSerialization.data(withJSONObject: json)))
         }
     }
+    func testEveryChallengeAdoptsActionsWithoutChangingHistoryOrContinuation() throws {
+        for challenge in StarfallChallenge.allCases {
+            var fresh = FallingSky(challenge: challenge)
+            XCTAssertTrue(fresh.supportsArrangingStars)
+            for _ in 0..<4 { fresh.letStarsFall() }
+            var fields = try XCTUnwrap(JSONSerialization.jsonObject(with: JSONEncoder().encode(fresh)) as? [String: Any])
+            fields.removeValue(forKey: "savedChallengeActions")
+            let oldBytes = try JSONSerialization.data(withJSONObject: fields)
+            let old = try JSONDecoder().decode(FallingSky.self, from: oldBytes)
+            XCTAssertFalse(old.canArrangeStars)
+            XCTAssertTrue(old.isValidSave)
+            let migrated = old.adoptingCurrentChallengeActions()
+            XCTAssertEqual(migrated, fresh)
+            XCTAssertEqual(migrated.adoptingCurrentChallengeActions(), migrated)
+            XCTAssertEqual(old.replay().challengeActionVersion, 0)
+            XCTAssertEqual(migrated.replay(), FallingSky(challenge: challenge))
+            var reference = old, updated = migrated
+            reference.letStarsFall(); updated.letStarsFall()
+            XCTAssertEqual(updated, reference.adoptingCurrentChallengeActions())
+            let cell = try XCTUnwrap(migrated.board.enumerated().first { $0.element != nil }.map { Cell($0.offset / 7, $0.offset % 7) })
+            var arranged = migrated
+            let target = Cell(cell.row, cell.column == 6 ? 5 : cell.column + 1)
+            XCTAssertEqual(arranged.nudge(from: cell, to: target)?.collected, 0)
+            XCTAssertEqual(arranged.incoming, migrated.incoming)
+            XCTAssertEqual(arranged.turns, migrated.turns)
+            XCTAssertTrue(arranged.isValidSave)
+            XCTAssertEqual(try JSONDecoder().decode(FallingSky.self, from: JSONEncoder().encode(arranged)), arranged)
+        }
+    }
+
+    func testEveryChallengeUsesExactSquareAndCrossSelections() throws {
+        for challenge in StarfallChallenge.allCases {
+            for lesson in [SkyLesson.square, .cross] {
+                var example = lesson.game()
+                if lesson == .square { lesson.moves[0].perform(in: &example) }
+                var fields = try XCTUnwrap(JSONSerialization.jsonObject(with: JSONEncoder().encode(example)) as? [String: Any])
+                fields["challenge"] = challenge.rawValue
+                fields["savedChallengeActions"] = 1
+                var game = try JSONDecoder().decode(FallingSky.self, from: JSONSerialization.data(withJSONObject: fields))
+                let before = game
+                let turn = try XCTUnwrap(lesson.moves.last?.perform(in: &game))
+                XCTAssertEqual(turn.collected, lesson == .square ? 4 : 5)
+                XCTAssertEqual(game.incoming, before.incoming)
+                XCTAssertEqual(game.occupiedCount, before.occupiedCount - turn.cleared.count)
+            }
+        }
+    }
+
+    func testUnknownOrMisplacedActionVersionRejectsSave() throws {
+        for base in [FallingSky(challenge: .firstLight), FallingSky.freshSurvival(seed: 42)] {
+            var fields = try XCTUnwrap(JSONSerialization.jsonObject(with: JSONEncoder().encode(base)) as? [String: Any])
+            fields["savedChallengeActions"] = base.challenge == nil ? 1 : 99
+            let game = try JSONDecoder().decode(FallingSky.self, from: JSONSerialization.data(withJSONObject: fields))
+            XCTAssertFalse(game.isValidSave)
+        }
+    }
+
 }

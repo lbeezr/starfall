@@ -1,0 +1,66 @@
+[
+  {
+    "file": "dev-6c2483a-wip-3c1c09b7a7__world-damaged__iphone-17e.png",
+    "sourceManifest": "source-before-header.json",
+    "device": "iphone-17e",
+    "label": "official-world-map-phone",
+    "sha256": "cad8481664cb487015eb6f591362dbfd3903577622cf2021d6b3036b232052fa",
+    "attachment": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+      "deviceName": "Starfall Landing Acceptance",
+      "exportedFileName": "5B814BCE-FC15-41CE-92BA-A20FF3CBEDE6.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "official-world-map-phone_0_75115E55-1B77-4E84-9F2E-80348026CC10.png",
+      "timestamp": 1792446193.579
+    }
+  },
+  {
+    "file": "dev-6c2483a-wip-3c1c09b7a7__world-first-repair__iphone-17e.png",
+    "sourceManifest": "source-before-header.json",
+    "device": "iphone-17e",
+    "label": "world-lantern-repaired-path-revealed",
+    "sha256": "0f7ea69df131326c58043a355886c1db27109e5fe562ee4c99f21a6f68f8fd1e",
+    "attachment": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+      "deviceName": "Starfall Landing Acceptance",
+      "exportedFileName": "5D8B0D21-3E65-4C5A-BDAD-B4BEE46DD56D.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "world-lantern-repaired-path-revealed_0_E7FB8BB5-CFCC-4EDA-9414-806433CA1D13.png",
+      "timestamp": 1792446272.134
+    }
+  },
+  {
+    "file": "dev-6c2483a-wip-3c1c09b7a7__world-damaged__ipad-landscape.png",
+    "sourceManifest": "source-before-header.json",
+    "device": "ipad-landscape",
+    "label": "world-map-landscape",
+    "sha256": "95e2771b0b2af45f92d1418b8d3b7f71bd1a4dc8e34a1af27e26704bf58b3cce",
+    "attachment": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+      "deviceName": "Starfall Landing Tablet Acceptance",
+      "exportedFileName": "77AB472F-B45D-4ABF-BF96-F3A46D829BA8.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "world-map-landscape_0_5E4C5B4D-D79E-4F6B-B99D-2A0D5E1A1E35.png",
+      "timestamp": 1792446127.265
+    }
+  },
+  {
+    "file": "dev-6c2483a-wip-ac5579652b__world-places__iphone-se3-ax3xl.png",
+    "sourceManifest": "source.json",
+    "device": "iphone-se3-ax3xl",
+    "label": "world-largest-text-list",
+    "sha256": "ed429487a998e37d0e27266905c77f2a4790bc539d58616ca092e05272cf894b",
+    "attachment": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "EA0F7A30-21E1-4995-93F5-C4A983F4A354",
+      "deviceName": "Starfall Landing Compact Acceptance",
+      "exportedFileName": "383A9DF7-C1A0-4A2B-95E0-EFDDE05167BD.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "world-largest-text-list_0_815A83CF-2133-4DB1-9199-7D35F51CC60B.png",
+      "timestamp": 1792446301.692
+    }
+  }
+]

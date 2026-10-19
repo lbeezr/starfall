@@ -292,7 +292,10 @@ extension ObservatoryInteractionTests {
         app.launch(); defer { app.terminate() }
         XCTAssertTrue(app.buttons["experiment.settings"].waitForExistence(timeout: 10))
         try vo.choose(app.buttons["experiment.settings"], expecting: "Sky menu")
-        try vo.choose(app.buttons["experiment.challenge"], expecting: "First Light")
+        try vo.choose(app.buttons["sky.worldMap"], expecting: "World map")
+        XCTAssertTrue(app.buttons["world.visit"].waitForExistence(timeout: 5))
+        app.revealSkyControls([app.buttons["world.visit"]])
+        try vo.choose(app.buttons["world.visit"], expecting: "Lantern Landing")
         try vo.choose(app.buttons["sky.begin"], expecting: "Begin")
         try vo.choose(app.buttons["experiment.settings"], expecting: "Sky menu")
         try vo.choose(app.buttons["experiment.pause"], expecting: "Pause sky")
@@ -494,7 +497,7 @@ extension ObservatoryInteractionTests {
 
 /// Five shipping worlds share the same native input surface and save contract.
 final class LandingPlaceInteractionTests: XCTestCase {
-    private let places = ["observatory","cloudsea","hearth","grotto","archive"]
+    private let places = ["firstLight","ribbonCrossing","kiteHarbor","seedMoon","silverPools"]
 
     @MainActor private func launch(place: String? = nil, large: Bool = false, score: Int = 0, calm: Bool = false) -> XCUIApplication {
         continueAfterFailure = false
@@ -513,12 +516,15 @@ final class LandingPlaceInteractionTests: XCTestCase {
     }
     @MainActor private func select(_ place: String, app: XCUIApplication) {
         app.buttons["experiment.settings"].tap()
-        app.skyMenuControl("landing.locations").tap()
-        let choice = app.buttons["landing.choose."+place]
+        app.skyMenuControl("sky.worldMap").tap()
+        XCTAssertTrue(app.buttons["world.list"].waitForExistence(timeout: 5))
+        if app.buttons["world.node.firstLight"].exists { app.buttons["world.list"].tap() }
+        let choice = app.buttons["world.place."+place]
         app.revealSkyMenuElement(choice)
+        app.revealSkyControls([choice])
         XCTAssertTrue(choice.isHittable); choice.tap()
-        XCTAssertTrue(XCTNSPredicateExpectation(predicate:NSPredicate(format:"value == %@","Selected"),object:choice).wait(timeout:3))
-        app.buttons["experiment.done"].tap()
+        XCTAssertTrue(app.staticTexts["world.selection"].exists)
+        app.buttons["world.done"].tap()
         XCTAssertTrue(app.buttons["experiment.cell.0.0"].waitForExistence(timeout:5))
     }
     @MainActor func testAllWorldsKeepTheRoundAndCenteredCellsAcrossOrientations() {
@@ -546,7 +552,7 @@ final class LandingPlaceInteractionTests: XCTestCase {
                 XCTAssertFalse(app.buttons["landing.telescope"].exists)
                 XCTAssertFalse(app.buttons["landing.lantern"].exists)
                 XCTAssertTrue(app.descendants(matching:.any)["experiment.arrivalCue"].exists)
-                capture("Night-world-\(place)-\(orientation.rawValue)")
+                capture("Official-map-\(place)-\(orientation.rawValue)")
             }
             // Actual native coordinate dispatch at opposite corners, after scenery replacement.
             var total = 0

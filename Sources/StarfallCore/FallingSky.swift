@@ -124,6 +124,18 @@ public struct FallingSky: Codable, Equatable, Sendable {
     }
     public private(set) var blockedColumn: Int?
     public private(set) var challenge: StarfallChallenge?
+    // Missing in retained rounds: preserve historical raw replay until explicit app migration.
+    private var savedChallengeActions: Int?
+    public var challengeActionVersion: Int { savedChallengeActions ?? 0 }
+    public var supportsArrangingStars: Bool { challenge == nil || challengeActionVersion == 1 }
+
+    /// Add current input actions without changing any committed state or seeded supply.
+    public func adoptingCurrentChallengeActions() -> FallingSky {
+        guard challenge != nil, challengeActionVersion == 0 else { return self }
+        var result = self
+        result.savedChallengeActions = 1
+        return result
+    }
     public let seed: UInt64
     private var random: SeededRandom
     private var remainingColumns: [Int] = []
@@ -184,6 +196,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
     public init(challenge: StarfallChallenge) {
         self.init(seed: challenge.seed, balance: challenge.balance, openingCascade: false, generation: .legacy)
         self.challenge = challenge
+        savedChallengeActions = 1
     }
 
     /// Reset committed play while retaining timing, tuning and historical generation rules.
@@ -383,7 +396,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
     public func constellationCells(along path: [Cell]) -> Set<Cell>? {
         guard isValidConstellationPrefix(path) else { return nil }
         let cells = Set(path)
-        return cells.count >= 5 || (challenge == nil && cells.count == 4 && recipe(matching:cells)?.shape == .square) ? cells : nil
+        return cells.count >= 5 || (supportsArrangingStars && cells.count == 4 && recipe(matching:cells)?.shape == .square) ? cells : nil
     }
 
     @discardableResult public mutating func clearConstellation(_ path: [Cell]) -> FallingSkyTurn? {
@@ -573,7 +586,9 @@ public struct FallingSky: Codable, Equatable, Sendable {
     }
 
     public var isValidSave: Bool {
-        guard [nil, CriticalMassRule.version, CriticalMassRule.retiredVersion].contains(savedCriticalMassRule),
+        guard [nil, 1].contains(savedChallengeActions),
+              savedChallengeActions == nil || challenge != nil,
+              [nil, CriticalMassRule.version, CriticalMassRule.retiredVersion].contains(savedCriticalMassRule),
               !hasPocketedDusk || (challenge == nil && generation == .standardSky && duskRule == .legacy
                 && !board.contains(where: { $0?.isDark == true }) && !incoming.contains(where: \.isDark)),
               board.allSatisfy({ ($0?.validStellarAge(enabled: hasCriticalMass) ?? true) && (($0?.stellarAge ?? 0) == 0 || ($0?.stellarAge ?? 0) < turns) }),

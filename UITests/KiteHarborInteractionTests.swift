@@ -28,7 +28,7 @@ final class KiteHarborInteractionTests: XCTestCase {
     @MainActor private func launch(score: Int, location: ReviewLocation = .kite, largestText: Bool = false) -> XCUIApplication {
         continueAfterFailure = false
         let app = XCUIApplication()
-        app.launchArguments = ["--starfalls-reset", "--dialogue-review",
+        app.launchArguments = ["--starfalls-reset", "--dialogue-review", "--world-legacy-review",
                                "--\(location.rawValue)-restoration-review=\(score)", "-calmEffects", "NO"]
         if largestText {
             app.launchArguments += ["-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"]
@@ -131,7 +131,7 @@ final class KiteHarborInteractionTests: XCTestCase {
             XCTAssertNotNil(retained)
 
             tap("experiment.settings", in: app)
-            app.skyMenuControl("experiment.kite-harbor").tap()
+            app.worldVisitControl("kiteHarbor").tap()
             XCTAssertTrue(app.buttons["sky.begin"].waitForExistence(timeout: 5))
             XCTAssertEqual(app.staticTexts["sky.title"].label, "Kite Harbor")
             XCTAssertTrue(app.staticTexts["sky.subtitle"].label.contains("18 starlight"))
@@ -148,7 +148,7 @@ final class KiteHarborInteractionTests: XCTestCase {
 
             tap("experiment.settings", in: app)
             app.skyMenuControl("sky.home").tap()
-            tap("sky.kite-harbor", in: app)
+            app.worldVisitControl("kiteHarbor").tap()
             XCTAssertTrue(app.buttons["sky.begin"].waitForExistence(timeout: 5))
             XCTAssertEqual(app.staticTexts["sky.title"].label, "Kite Harbor")
             tap("sky.begin", in: app)

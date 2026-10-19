@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-19",
+  "tool": "Built-in image_gen",
+  "status": "User-requested localized removal; concept only, not runtime map or native acceptance.",
+  "input": "map-v1.png",
+  "output": "map-v2-no-helpers.png",
+  "generatedSource": "/Users/lbeezr/.codex/generated_images/01a155d0-d1bd-7ed1-be0b-711397a0f71d/exec-162fb1ec-56d9-4605-9860-1d6e59904c16.png",
+  "prompt": "Use case: precise-object-edit.\nAsset type: existing Starfall twelve-location world-map reference illustration.\nEdit target: the provided portrait map image, not a style reference.\nPrimary request: Remove ONLY the small group of colorful alien/sprite/star-like creatures floating in the lower-left area between the 01 Lantern Landing dock and the 02 Ribbon Crossing bridge. The group is roughly at x=200–440, y=1100–1250 in the 1024×1536 original. Remove every little aqua, yellow, green, pink and purple creature in that group, including their faces, limbs and character-shaped glow. Fill their former area naturally with the existing deep blue starry sky and subtle surrounding cloud/atmosphere; preserve the dotted gold travel route and bridge structures.\nConstraints: Keep the entire map otherwise unchanged as closely as possible: exact twelve destinations and badges 01–12, all landmarks and bridges, route order, full portrait composition, dimensions/aspect, lighting, colors, title STARFALL, subtitle A journey to bring the light back, footer 12 LOCATION CONCEPT • NOT GAMEPLAY, and the large Murk villain cameo at upper left. Do not remove Murk. Do not replace the removed group with any other character or sprite. Do not add objects, labels or new paths. This is a narrowly localized removal, not a redraw or redesign. Preserve opaque background.",
+  "inspection": "Removed the five unfamiliar colored creatures near locations 01–02. All twelve numbered destinations, bridges, major route, title, subtitle, footer and Murk remain visually present. Generative edit; no claim of pixel identity outside the edited area.",
+  "dimensions": {
+    "width": 1024,
+    "height": 1536
+  },
+  "inputSHA256": "a4cbd12fc3ae5941dc33795f01b44253a4e99519aaf052be949717a7e490394b",
+  "outputSHA256": "925e5ea7ec12193a523f352e182c3ae98ebc2cf7b78533bc49200a8a5366d4d0"
+}

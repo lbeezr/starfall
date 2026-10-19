@@ -1,0 +1,352 @@
+{
+  "core": {
+    "passed": 184,
+    "failed": 0,
+    "log": "/tmp/starfall-world-core-final.log"
+  },
+  "runs": [
+    {
+      "id": "all-five-input-and-initial-hosted",
+      "device": "phone",
+      "sourceStage": "Before final tutorial/footer and full-page corrections",
+      "log": "test_sim_2026-10-19T21-03-13-926Z_pid1417_d14a3c17.log",
+      "xcresult": "test_sim_2026-10-19T21-03-13-926Z_pid1417_a9dee941.xcresult",
+      "counts": {
+        "passed": 338,
+        "failed": 3,
+        "skipped": 0
+      },
+      "targets": {
+        "StarfallUITests": {
+          "passed": 5,
+          "failed": 3,
+          "skipped": 0
+        },
+        "StarfallAppTests": {
+          "passed": 333,
+          "failed": 0,
+          "skipped": 0
+        }
+      },
+      "nativeCases": [
+        {
+          "suite": "SkyLessonInteractionTests",
+          "name": "testEveryExampleUsesExplicitMovesAndReturnsToUnchangedRound",
+          "result": "failed"
+        },
+        {
+          "suite": "SkyLessonInteractionTests",
+          "name": "testLargestTextQuietExampleSurvivesBackgroundAndDismissal",
+          "result": "failed"
+        },
+        {
+          "suite": "SkyLessonInteractionTests",
+          "name": "testSystemReduceMotionExamplesKeepTheSameOutcomes",
+          "result": "failed"
+        },
+        {
+          "suite": "WorldJourneyInteractionTests",
+          "name": "testAllFiveLocationsAcceptFourDirectionSwapsAndClears",
+          "result": "passed"
+        },
+        {
+          "suite": "WorldJourneyInteractionTests",
+          "name": "testLargestTextMapAndPracticeSurviveBackground",
+          "result": "passed"
+        },
+        {
+          "suite": "WorldJourneyInteractionTests",
+          "name": "testMapSeparatesLockedAndUnavailableAndEntryCanCancel",
+          "result": "passed"
+        },
+        {
+          "suite": "WorldJourneyInteractionTests",
+          "name": "testRepairLightsMapAndPersistsWithoutUnlockingUnbuiltPlaces",
+          "result": "passed"
+        },
+        {
+          "suite": "WorldJourneyInteractionTests",
+          "name": "testTutorialRealTapSwapTraceRetryAndExitPreserveRound",
+          "result": "passed"
+        }
+      ]
+    },
+    {
+      "id": "ribbon-entry-and-hosted",
+      "device": "compact",
+      "sourceStage": "Before full-page correction; unchanged entry/store rules",
+      "log": "test_sim_2026-10-19T21-16-56-467Z_pid1417_b79af2c0.log",
+      "xcresult": "test_sim_2026-10-19T21-16-56-467Z_pid1417_8a22b40a.xcresult",
+      "counts": {
+        "passed": 334,
+        "failed": 0,
+        "skipped": 0
+      },
+      "targets": {
+        "StarfallUITests": {
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0
+        },
+        "StarfallAppTests": {
+          "passed": 333,
+          "failed": 0,
+          "skipped": 0
+        }
+      },
+      "nativeCases": [
+        {
+          "suite": "RibbonCrossingInteractionTests",
+          "name": "testRibbonPreviewCancellationRetainsLanternSaveUntilBegin",
+          "result": "passed"
+        }
+      ]
+    },
+    {
+      "id": "native-recipes-and-reduce-motion",
+      "device": "phone",
+      "sourceStage": "Final tutorial actions/footer; before full-page map",
+      "log": "test_sim_2026-10-19T21-20-32-077Z_pid1417_9fc89fc0.log",
+      "xcresult": "test_sim_2026-10-19T21-20-32-077Z_pid1417_0504320b.xcresult",
+      "counts": {
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0
+      },
+      "targets": {
+        "StarfallUITests": {
+          "passed": 3,
+          "failed": 0,
+          "skipped": 0
+        }
+      },
+      "nativeCases": [
+        {
+          "suite": "SkyLessonInteractionTests",
+          "name": "testEveryExampleUsesExplicitMovesAndReturnsToUnchangedRound",
+          "result": "passed"
+        },
+        {
+          "suite": "SkyLessonInteractionTests",
+          "name": "testLargestTextQuietExampleSurvivesBackgroundAndDismissal",
+          "result": "passed"
+        },
+        {
+          "suite": "SkyLessonInteractionTests",
+          "name": "testSystemReduceMotionExamplesKeepTheSameOutcomes",
+          "result": "passed"
+        }
+      ]
+    },
+    {
+      "id": "complete-hosted-and-compact-input",
+      "device": "compact",
+      "sourceStage": "Full-page route before child AX containment and Play/Continue refinement",
+      "log": "test_sim_2026-10-19T21-31-40-065Z_pid1417_cebe84d8.log",
+      "xcresult": "test_sim_2026-10-19T21-31-40-065Z_pid1417_f0476127.xcresult",
+      "counts": {
+        "passed": 335,
+        "failed": 1,
+        "skipped": 0
+      },
+      "targets": {
+        "StarfallUITests": {
+          "passed": 1,
+          "failed": 1,
+          "skipped": 0
+        },
+        "StarfallAppTests": {
+          "passed": 334,
+          "failed": 0,
+          "skipped": 0
+        }
+      },
+      "nativeCases": [
+        {
+          "suite": "WorldJourneyInteractionTests",
+          "name": "testLargestTextMapAndPracticeSurviveBackground",
+          "result": "failed"
+        },
+        {
+          "suite": "WorldJourneyInteractionTests",
+          "name": "testTutorialRealTapSwapTraceRetryAndExitPreserveRound",
+          "result": "passed"
+        }
+      ]
+    },
+    {
+      "id": "tablet-landscape-flow",
+      "device": "tablet",
+      "sourceStage": "Full-page map before Play/Continue; virtualized menu lookup failed and was corrected",
+      "log": "test_sim_2026-10-19T21-33-42-139Z_pid1417_b4a81aee.log",
+      "xcresult": "test_sim_2026-10-19T21-33-42-139Z_pid1417_0d6f0901.xcresult",
+      "counts": {
+        "passed": 2,
+        "failed": 1,
+        "skipped": 0
+      },
+      "targets": {
+        "StarfallUITests": {
+          "passed": 2,
+          "failed": 1,
+          "skipped": 0
+        }
+      },
+      "nativeCases": [
+        {
+          "suite": "SkyFlowInteractionTests",
+          "name": "testLandscapeWelcomeEntryAndPreferences",
+          "result": "passed"
+        },
+        {
+          "suite": "WorldJourneyInteractionTests",
+          "name": "testMapSeparatesLockedAndUnavailableAndEntryCanCancel",
+          "result": "failed"
+        },
+        {
+          "suite": "WorldJourneyInteractionTests",
+          "name": "testRepairLightsMapAndPersistsWithoutUnlockingUnbuiltPlaces",
+          "result": "passed"
+        }
+      ]
+    },
+    {
+      "id": "resume-copy-reproducer",
+      "device": "phone",
+      "sourceStage": "Play/Continue before strict placeholder correction",
+      "log": "test_sim_2026-10-19T21-40-10-938Z_pid1417_e14bc165.log",
+      "xcresult": "test_sim_2026-10-19T21-40-10-938Z_pid1417_a3aeb982.xcresult",
+      "counts": {
+        "passed": 28,
+        "failed": 1,
+        "skipped": 0
+      },
+      "targets": {
+        "StarfallUITests": {
+          "passed": 1,
+          "failed": 1,
+          "skipped": 0
+        },
+        "StarfallAppTests": {
+          "passed": 27,
+          "failed": 0,
+          "skipped": 0
+        }
+      },
+      "nativeCases": [
+        {
+          "suite": "WorldJourneyInteractionTests",
+          "name": "testMapSeparatesLockedAndUnavailableAndEntryCanCancel",
+          "result": "failed"
+        },
+        {
+          "suite": "WorldJourneyInteractionTests",
+          "name": "testRepairLightsMapAndPersistsWithoutUnlockingUnbuiltPlaces",
+          "result": "passed"
+        }
+      ]
+    },
+    {
+      "id": "final-tablet-map-and-copy",
+      "device": "tablet",
+      "sourceStage": "source-before-header.json",
+      "log": "test_sim_2026-10-19T21-41-44-838Z_pid1417_d158af2a.log",
+      "xcresult": "test_sim_2026-10-19T21-41-44-838Z_pid1417_51e7dcd1.xcresult",
+      "counts": {
+        "passed": 14,
+        "failed": 0,
+        "skipped": 0
+      },
+      "targets": {
+        "StarfallUITests": {
+          "passed": 2,
+          "failed": 0,
+          "skipped": 0
+        },
+        "StarfallAppTests": {
+          "passed": 12,
+          "failed": 0,
+          "skipped": 0
+        }
+      },
+      "nativeCases": [
+        {
+          "suite": "WorldJourneyInteractionTests",
+          "name": "testMapSeparatesLockedAndUnavailableAndEntryCanCancel",
+          "result": "passed"
+        },
+        {
+          "suite": "WorldJourneyInteractionTests",
+          "name": "testRepairLightsMapAndPersistsWithoutUnlockingUnbuiltPlaces",
+          "result": "passed"
+        }
+      ]
+    },
+    {
+      "id": "final-phone-map-flow-world-copy",
+      "device": "phone",
+      "sourceStage": "source-before-header.json",
+      "log": "test_sim_2026-10-19T21-42-57-438Z_pid1417_29281848.log",
+      "xcresult": "test_sim_2026-10-19T21-42-57-438Z_pid1417_273f8350.xcresult",
+      "counts": {
+        "passed": 41,
+        "failed": 0,
+        "skipped": 0
+      },
+      "targets": {
+        "StarfallUITests": {
+          "passed": 2,
+          "failed": 0,
+          "skipped": 0
+        },
+        "StarfallAppTests": {
+          "passed": 39,
+          "failed": 0,
+          "skipped": 0
+        }
+      },
+      "nativeCases": [
+        {
+          "suite": "WorldJourneyInteractionTests",
+          "name": "testMapSeparatesLockedAndUnavailableAndEntryCanCancel",
+          "result": "passed"
+        },
+        {
+          "suite": "WorldJourneyInteractionTests",
+          "name": "testRepairLightsMapAndPersistsWithoutUnlockingUnbuiltPlaces",
+          "result": "passed"
+        }
+      ]
+    },
+    {
+      "id": "final-compact-accessibility",
+      "device": "compact",
+      "sourceStage": "source.json",
+      "log": "test_sim_2026-10-19T21-44-35-523Z_pid1417_42d8702e.log",
+      "xcresult": "test_sim_2026-10-19T21-44-35-523Z_pid1417_c6360866.xcresult",
+      "counts": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0
+      },
+      "targets": {
+        "StarfallUITests": {
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0
+        }
+      },
+      "nativeCases": [
+        {
+          "suite": "WorldJourneyInteractionTests",
+          "name": "testLargestTextMapAndPracticeSurviveBackground",
+          "result": "passed"
+        }
+      ]
+    }
+  ],
+  "releaseBuild": "build_sim_2026-10-19T21-46-30-496Z_pid1417_808f8f9a.log",
+  "runtime": "dev.ac5579652b",
+  "actualVoiceOver": false,
+  "physicalDevice": false
+}

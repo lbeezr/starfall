@@ -376,24 +376,5 @@ extension StarfallTheme {
         static let crownInset: CGFloat = 28
         static let flowingApronInset: CGFloat = 32
         static let portraitSide: CGFloat = 44
-        static func ink(_ place: LandingPlace) -> Color { Colors.textPrimary }
-        struct Material {
-            let rim: Color
-            let glow: Color
-        }
-        static func material(_ place: LandingPlace) -> Material {
-            switch place {
-            case .moonwake:
-                Material(rim: Color(red: 0.68, green: 0.66, blue: 0.83), glow: Observatory.lanternGlow)
-            case .nebula:
-                Material(rim: Color(red: 0.60, green: 0.45, blue: 0.62), glow: Color(red: 0.91, green: 0.66, blue: 0.91))
-            case .ringdrift:
-                Material(rim: Color(red: 0.87, green: 0.57, blue: 0.32), glow: Observatory.lanternGlow)
-            case .garden:
-                Material(rim: Color(red: 0.65, green: 0.90, blue: 0.89), glow: Color(red: 0.48, green: 0.95, blue: 1))
-            case .shatterlight:
-                Material(rim: Color(red: 0.82, green: 0.69, blue: 0.44), glow: Color(red: 1, green: 0.87, blue: 0.61))
-            }
-        }
     }
 }
