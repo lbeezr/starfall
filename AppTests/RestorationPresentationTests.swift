@@ -96,14 +96,33 @@ final class RestorationPresentationTests: XCTestCase {
                     XCTAssertTrue(names.insert(name).inserted, "Two device states share the asset \(name)")
                     let image = try XCTUnwrap(UIImage(named: name), "Missing packaged \(name)")
                     let pixels = try XCTUnwrap(image.cgImage, "Missing raster for \(name)")
-                    XCTAssertEqual(pixels.width, Int(artwork.sourceSize.width), name)
-                    XCTAssertEqual(pixels.height, Int(artwork.sourceSize.height), name)
+                    let source = artwork.sourceSize(for: stage)
+                    XCTAssertEqual(pixels.width, Int(source.width), name)
+                    XCTAssertEqual(pixels.height, Int(source.height), name)
                     XCTAssertEqual(image.size.width / image.size.height,
-                                   artwork.sourceSize.width / artwork.sourceSize.height, accuracy: 0.000001, name)
+                                   source.width / source.height, accuracy: 0.000001, name)
                 }
             }
         }
-        XCTAssertEqual(names.count, 45)
+        XCTAssertEqual(names.count, 60)
+    }
+
+    @MainActor func testSeedLandscapePaintingsFillCanvasAtTheirActualPixelAspectRatio() throws {
+        let artwork = RestorationArtwork(challenge: .seedMoon, composition: .tabletLandscape)
+        let canvases = [CGSize(width: 1366, height: 1024), CGSize(width: 1133, height: 744),
+                        CGSize(width: 844, height: 393)]
+        for stage in StarlightRestoration.Milestone.allCases {
+            let name = artwork.asset(for: stage)
+            let image = try XCTUnwrap(UIImage(named: name), "Missing packaged \(name)")
+            let pixels = try XCTUnwrap(image.cgImage, "Missing raster for \(name)")
+            for size in canvases {
+                let layout = RestorationLayout(size: size, artwork: artwork, milestone: stage)
+                XCTAssertEqual(layout.imageFrame.width / layout.imageFrame.height,
+                               CGFloat(pixels.width) / CGFloat(pixels.height), accuracy: 0.000001, name)
+                XCTAssertTrue(layout.imageFrame.insetBy(dx: -0.001, dy: -0.001)
+                    .contains(CGRect(origin: .zero, size: size)), "Painting leaves an edge at \(size): \(name)")
+            }
+        }
     }
 
     func testRestorationLightStaysVisibleOutsideNativeBoardAcrossViewportFamilies() {

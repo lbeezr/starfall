@@ -1,0 +1,851 @@
+{
+  "title": "Seed Moon production artwork provenance",
+  "date": "2026-10-19",
+  "status": "All fifteen selected paintings are packaged and byte-verified, including phone050 correction; native clearance recheck pending.",
+  "preservation": "The two original provenance documents are retained as unchanged nested JSON records, preserving every exact prompt, attempt, source/reference path, selection, native iteration note and inspection. Original document byte counts and SHA256 hashes are recorded. Independently verified source/reference file hashes are indexed below.",
+  "generationAttemptCount": 20,
+  "selectedAssetCount": 15,
+  "original_documents": {
+    "phone-art-provenance.json": {
+      "sha256": "ed6af679df71d7ac4b2d6dbf3f3acb5aa972beb61b07196b3846c228f824ddb9",
+      "bytes": 16665
+    },
+    "tablet-art-provenance.json": {
+      "sha256": "6ce01d0b3934436435dd6bb1b42264bea4007eb9e7c9a810ab37e1a3915fe0c6",
+      "bytes": 32626
+    }
+  },
+  "inspection": {
+    "scope": "Source-art inspection and file verification; no claim of completed native acceptance.",
+    "selectedCount": 15,
+    "notes": [
+      "One fixed pearl moon cradle and seed progress from dormant roots to a shoot, closed golden bud at75%, and open petals at100%.",
+      "Gold forms were corrected for native header clearance; all iteration details are preserved in their original records.",
+      "Tablet landscape source widths differ by one pixel across states; bytes remain unmodified and per-milestone dimensions are registered by the renderer.",
+      "Portrait25 is a subtle root/seed warmth stage; native legibility remains part of parent acceptance.",
+      "Subsequent phone050 correction raises its thin shoot above the native header; root packaged it byte-for-byte in b77a100 after the tablet test run. Native clearance recheck is pending. Original phone050 record remains preserved verbatim."
+    ]
+  },
+  "verified_source_and_reference_files": [
+    {
+      "path": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-6cf3f6bb-e7be-40bc-a9c8-effe2993cc13.png",
+      "sha256": "0e67100a27d6771c69dc7b55e0beb2b74ab884960f5d021313dbe17c467dd03e",
+      "pixels": [
+        887,
+        1774
+      ],
+      "bytes": 2442308,
+      "gitBlobSha": "48a0b69204e5fd0f0075397dc2463cd35fff691a"
+    },
+    {
+      "path": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-722b6932-ac81-4d47-858a-897a71eab3cc.png",
+      "sha256": "9a123c3a569c06ecf17ece685fccf3b999993425ce699d15ce96f835ff23956a",
+      "pixels": [
+        887,
+        1774
+      ],
+      "bytes": 2244023,
+      "gitBlobSha": "07bca7781cc4ede8d32b8bc38e347de452bd3a70"
+    },
+    {
+      "path": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-c93d5415-bb54-4eff-9975-69e8d8eb8a44.png",
+      "sha256": "bca2a69a10a98d610b26530f6ccf838c3392a80c2aaef0da6111be3a64f744c0",
+      "pixels": [
+        887,
+        1774
+      ],
+      "bytes": 2287967,
+      "gitBlobSha": "a7c48f85233df016c648416cd362bb223a04fe32"
+    },
+    {
+      "path": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-17d40c59-5080-41aa-8001-1adcb996abde.png",
+      "sha256": "30400d7134ebe2c6851b0de550b0942f65a66725a2d1e1a2882fd3f49d923e95",
+      "pixels": [
+        887,
+        1774
+      ],
+      "bytes": 2278829,
+      "gitBlobSha": "99b277cd1234220e0ee7ee06b85a3327effc5271"
+    },
+    {
+      "path": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-2af4d94e-6d61-4eaf-beff-2e88d4acfe2e.png",
+      "sha256": "ecf19395dace8039f82889672860fdd285c6f16baebdb28250d14c0e9b9bd8e5",
+      "pixels": [
+        887,
+        1774
+      ],
+      "bytes": 2271182,
+      "gitBlobSha": "6f571d6184f0200f54ca36e59edb0951a335878e"
+    },
+    {
+      "path": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-037f9d21-58f3-4309-aa6e-7c9d56121bbe.png",
+      "sha256": "ddf3d320ac13304a167ce54f63e15ae5ec0864ca06e638556db46fff8a2ae13f",
+      "pixels": [
+        887,
+        1774
+      ],
+      "bytes": 2277677,
+      "gitBlobSha": "6b329c774fe88af7e8c093154384f41abcd5527a"
+    },
+    {
+      "path": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-05b41ef2-2cbe-4f48-b211-4fd3511adea1.png",
+      "sha256": "cd7f6b7c948c26bfb624ad2b2d2afce44316ce31521cd56cf774fe84810c2936",
+      "pixels": [
+        887,
+        1774
+      ],
+      "bytes": 2196527,
+      "gitBlobSha": "eab7c7fa48067afbc53b78f7d5e84d7702ddc52b"
+    },
+    {
+      "path": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-9e99f627-c965-4431-a8a7-c337fb7d336b.png",
+      "sha256": "cbf9c046fb91136ba6e9d532347c59bf420e4522fa3d5511421fe39a5c576060",
+      "pixels": [
+        1086,
+        1448
+      ],
+      "bytes": 2546600,
+      "gitBlobSha": "fc2eb60d0dca693745cd432c1c7fedf8c5b13128"
+    },
+    {
+      "path": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-7596de1c-2ed2-423f-af52-d3d5f6eb65f3.png",
+      "sha256": "63c23728784dea641eb65e5ad1d92ad5304d499fed40c649a7eda07bb3eb6ff4",
+      "pixels": [
+        1086,
+        1448
+      ],
+      "bytes": 2377420,
+      "gitBlobSha": "cb4aec3bac288ac3ef7dadc263f6005b1591f62e"
+    },
+    {
+      "path": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-24bd8291-0e5a-4a9a-bb53-aa3424a1803c.png",
+      "sha256": "382b53fc405e98c07cff121e84ca39a483e0cc27fd63109b934f16cd5bf6235c",
+      "pixels": [
+        1447,
+        1087
+      ],
+      "bytes": 2442891,
+      "gitBlobSha": "c20c2d1fc36b8d7f66157b3eaa43d05697aac2b4"
+    },
+    {
+      "path": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-e815384d-c0f8-4d8a-b078-4463a17a25cc.png",
+      "sha256": "c0c3fec2cfcbc389d5539f843ddc9609868d89378627cb68b4081fef5db84a8b",
+      "pixels": [
+        1086,
+        1448
+      ],
+      "bytes": 2244503,
+      "gitBlobSha": "2440b0ae1573dffe076b8ada4e80869f11d600ff"
+    },
+    {
+      "path": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-e0e2a537-d6c1-4629-a55e-d9f1358ed15d.png",
+      "sha256": "2bafd042f9d202914bd5aa83f32139b560c0620e363abaf0f22b8e16025773d8",
+      "pixels": [
+        1447,
+        1087
+      ],
+      "bytes": 2309965,
+      "gitBlobSha": "4dac5e4e737b543265e576b8a3a9da2202f7d1cd"
+    },
+    {
+      "path": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-803bb5f7-9960-4a8b-96ed-1d2c059de1ef.png",
+      "sha256": "abd1c14a4cbd9b0f506aaafcc277077226fb1f804d8bc2a61e8e3cbdc4db08bc",
+      "pixels": [
+        1446,
+        1087
+      ],
+      "bytes": 2284648,
+      "gitBlobSha": "dd46dbe28761f6055ffa245265efd41622ef9c5a"
+    },
+    {
+      "path": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-6f351405-d0da-43df-bc3c-5d6730dfd800.png",
+      "sha256": "4773d215510d8e360e8cf772e860b467286b2da4f5e06b19b0f40f5e1ac2272d",
+      "pixels": [
+        1086,
+        1448
+      ],
+      "bytes": 2222291,
+      "gitBlobSha": "313abddccca026af5aed5f10129348356de0ebd3"
+    },
+    {
+      "path": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-1c9cabf5-8948-4361-aeaa-6e3f4b0178d9.png",
+      "sha256": "da20d8baaf16487396709e98313c98084b4443fb23058a524fbc5990bb16cf9a",
+      "pixels": [
+        1086,
+        1448
+      ],
+      "bytes": 2197470,
+      "gitBlobSha": "ce3bb95105615b1f9f778f7f39ddbbb32b7d6ebe"
+    },
+    {
+      "path": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-bd5c3ecc-f5db-489c-8803-60630d5b0e49.png",
+      "sha256": "e759c6fd2be63972ecb9b4f7d08bb2f29f95c8c1328a78431ed37f7b45cf26d0",
+      "pixels": [
+        1446,
+        1087
+      ],
+      "bytes": 2291178,
+      "gitBlobSha": "44b74bd0595fb90e8b3df7979913b832aba1d429"
+    },
+    {
+      "path": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-8101b2ea-f158-4ba9-a6a2-3c42c7328a3a.png",
+      "sha256": "321a206c245c1eed8c10a7c565fd203e9cd4ef6d4afbd5e33f21817fcb11d1fe",
+      "pixels": [
+        1446,
+        1087
+      ],
+      "bytes": 2221331,
+      "gitBlobSha": "107f3b9fc0f9ee262f2d3f5dcee189a37ba8f5e8"
+    },
+    {
+      "path": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-0bb47f13-a938-4fc4-8aeb-01634abaefba.png",
+      "sha256": "b450a2915622c103017bc8eeef020372c5e7f0a85300e32d13c6ab9a93ea4acf",
+      "pixels": [
+        1086,
+        1448
+      ],
+      "bytes": 2193087,
+      "gitBlobSha": "daf983bc10e1eedd2c473379d6894c2cce6b42b8"
+    },
+    {
+      "path": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-8ce9d300-9842-4d2c-9137-2aa80dec1911.png",
+      "sha256": "e24980ed839a67222a1b5e6015dab530b7a4597dc6a1552c56b97493dc2fdfb8",
+      "pixels": [
+        1086,
+        1448
+      ],
+      "bytes": 2207129,
+      "gitBlobSha": "ca4f0552183fb28771f397f29f32c6d5bc314382"
+    },
+    {
+      "path": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-afb53f0c-ae25-4326-80ea-66cc4eea85ed.png",
+      "sha256": "8e9f7ef6f514be75b23f96767cedff3dc28f245594b244016ff55ddbdc0a2e64",
+      "pixels": [
+        887,
+        1774
+      ],
+      "bytes": 2222422,
+      "gitBlobSha": "5e92ae4267dcf102d801db6e91ed3e8a6619d86c"
+    }
+  ],
+  "original_records": {
+    "phone-art-provenance.json": {
+      "title": "Seed Moon phone restoration artwork",
+      "mode": "built-in image_gen",
+      "date": "2026-10-19",
+      "processing": "Unmodified PNG copies; no cropping, retouching, resizing or composite edits outside image_gen.",
+      "variants": [
+        {
+          "milestone": 100,
+          "role": "master",
+          "prompt": "Use case: stylized-concept. Asset type: finished full-screen iPhone portrait background painting for the Starfall puzzle game's fourth playable zone, Seed Moon, 100% restored. Create ONE image, exact portrait 1:2 ratio, ideally 887x1774 pixels. Premium polished storybook 3D diorama with rounded moonstone, translucent botanical jade, luminous roots and fine tactile details, cohesive with a gentle celestial toy-like universe. Camera floats high above looking down obliquely, zoomed far back: this is a playable board environment with the destination in the upper background, not a close-up scene.\nScene: a small round pale pearl moon shell, already split into two broad softly worn halves, cradles one magical seed. A single curling translucent mint stem rises from it and opens at the top into a broad five-leaf shelter canopy, pale jade outer leaves and one soft ivory-gold luminous center. The shell remains the recognizable round base. Connected warm-mint root veins follow old seams in the shell and down its little stone ledge; a tiny empty resting ledge and one gardening scoop suggest care, but NO people or creatures. Make this green living shelter clearly different from docks/boats/lanterns.\nComposition is critical: place this entire moon garden in the UPPER LEFT third, spanning approximately x 4\u201358%, y 2\u201328%. The open canopy and brightest little center must be near x 24%, y 7%, fully inside the image, away from the top-center score HUD. Keep the top-center/right mostly dark blue-teal sky. Preserve a large continuous dark indigo/teal/lilac sky playfield from y32% through86%, with quiet natural nebula texture, sparse pinprick distant stars, and low violet clouds around the outer edges only. Lower edge: a few peripheral crescent moonstone pebbles with subtle mint root veins at the two bottom corners, dark underneath future white controls. No bright white clouds across the lower central control area. This is a single natural continuous painting: NO rectangular board, NO center clearing/mask/vignette patch, NO horizontal cloud seam. The sky texture must continue through the center. Moon shell should feel floating in sky, not occupying the board.\nFull restoration: canopy spread and central bud open, luminous sheltered nook under its leaves, all roots gently connected and glowing. Emotional tone warm, safe, hopeful; cool region palette remains blue/mint/opal with restrained warm core. No text, numbers, letters, logos, watermarks, UI, tiles, jewels, characters, faces, eyes, hands, walking figures, bridges, boats, lanterns or villain. Keep radiance softer than bright playable crystal stars that will be added by the actual game.",
+          "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-6cf3f6bb-e7be-40bc-a9c8-effe2993cc13.png",
+          "selectedMilestone": 75,
+          "inspection": "Strong moon/canopy silhouette and continuous sky; upright gold center remains closed, so retained as 75% instead of100.",
+          "sha256": "0e67100a27d6771c69dc7b55e0beb2b74ab884960f5d021313dbe17c467dd03e",
+          "pixels": [
+            887,
+            1774
+          ],
+          "bytes": 2442308,
+          "asset": "App/Assets.xcassets/SeedMoon075.imageset/scene.png",
+          "selected": false
+        },
+        {
+          "milestone": 100,
+          "role": "open-bud correction",
+          "prompt": "Use case: precise-object-edit. Edit the attached Seed Moon phone background for its 100% restored ending. Keep the EXACT 1:2 portrait camera, resolution, single split pearl moon shell, scoop/ledge, roots, green leaves, all rock positions, distant stars, sky and cloud composition unchanged. Change ONLY the upright GOLD central CLOSED bud at upper-left (roughly x30%,y8%): open that bud fully into a wide shallow five-petalled ivory-gold flower canopy. Its petals unfurl outward and slightly downward, visibly exposing a small warm luminous center; it must now read as a fully OPEN umbrella of petals with shelter beneath, NOT a standing teardrop bud. Keep it in the same upper-left footprint, fully within image and away from top-center/right HUD. Existing green outer leaves stay in place beneath the open golden petals. Give the sheltered nook a gentle warm reflection, preserving all already-connected mint roots. No new branches, no extra bulbs, no objects removed, no people, characters, faces, text, tiles or UI. Natural continuous background; no masks/center darkening/clearing. One full-quality native portrait painting, no panels or comparison sheet.",
+          "reference": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-6cf3f6bb-e7be-40bc-a9c8-effe2993cc13.png",
+          "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-722b6932-ac81-4d47-858a-897a71eab3cc.png",
+          "selectedMilestone": 100,
+          "inspection": "Five ivory-gold petals open outward with exposed center, existing shell/sky/green leaves retained. Final shelter now reads distinctly from the75closedbud.",
+          "sha256": "9a123c3a569c06ecf17ece685fccf3b999993425ce699d15ce96f835ff23956a",
+          "pixels": [
+            887,
+            1774
+          ],
+          "bytes": 2244023,
+          "asset": "App/Assets.xcassets/SeedMoon100.imageset/scene.png",
+          "selected": false
+        },
+        {
+          "milestone": 0,
+          "prompt": "Use case: precise-object-edit. Create ONE earlier restoration-state painting from this Seed Moon phone reference, exact same 1:2 portrait size and camera. This is a fixed multi-state puzzle background: LOCK the split round pearl moon shell silhouette, shell cracks, ledge, small scoop, distant nebula/cloud/star shapes, bottom corner rocks and their placements. Keep every surviving element in the same screen position. Change botanical growth and its illumination only; recolor shell/vegetation light gently with progress. Keep the huge uninterrupted natural sky playable area exactly continuous, not masked, no vignette patch or cloud seam. No text, UI, grid, jewels, characters, faces, people, villain, extra moons or extra plants. Final states grow from the one same seed in the same original shell.\n0% RESTORED: the moon garden is asleep and dim, still clearly readable against the blue-teal dusk. Remove the entire tall stem and canopy above the seed; in the shell rests ONLY the same tightly curled pale tan seed at its existing base position, with a small curled unlit pale-green tip hugging it. All roots are faint dark seam patterns, NO luminous roots anywhere including bottom stones. Low ground growth is sparse grey-mint sleepy moss, no fresh vine chains or gold sparkle. The empty upper-left area where future stem/canopy will rise is naturally continuous matching sky. Retain shell opening, stone ledge, scoop and all other scene identity. Soft cool illumination, no obvious bright light source, not black or frightening.",
+          "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-c93d5415-bb54-4eff-9975-69e8d8eb8a44.png",
+          "selectedMilestone": 0,
+          "reference": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-6cf3f6bb-e7be-40bc-a9c8-effe2993cc13.png",
+          "inspection": "Dormant pearl seed, no tall shoot, main shell roots dim, readable cool scene; bottom mint seams retain subtle ambient color.",
+          "sha256": "bca2a69a10a98d610b26530f6ccf838c3392a80c2aaef0da6111be3a64f744c0",
+          "pixels": [
+            887,
+            1774
+          ],
+          "bytes": 2287967,
+          "asset": "App/Assets.xcassets/SeedMoon000.imageset/scene.png",
+          "selected": true
+        },
+        {
+          "milestone": 25,
+          "prompt": "Use case: precise-object-edit. Create ONE earlier restoration-state painting from this Seed Moon phone reference, exact same 1:2 portrait size and camera. This is a fixed multi-state puzzle background: LOCK the split round pearl moon shell silhouette, shell cracks, ledge, small scoop, distant nebula/cloud/star shapes, bottom corner rocks and their placements. Keep every surviving element in the same screen position. Change botanical growth and its illumination only; recolor shell/vegetation light gently with progress. Keep the huge uninterrupted natural sky playable area exactly continuous, not masked, no vignette patch or cloud seam. No text, UI, grid, jewels, characters, faces, people, villain, extra moons or extra plants. Final states grow from the one same seed in the same original shell.\n25% RESTORED: keep the seed tightly curled at its original base position. There is NO upright shoot and NO canopy above it yet. Restore just ONE distinct gently luminous mint root tip running from the seed down into one existing left-front shell seam. All other root veins remain dim unlit patterns. One tiny mint curled sprout peeks from the base of the seed but does not rise into a stalk. Low moss remains sparse and sleepy, mostly muted grey-mint; no full ring of fresh leaves or vines. Shell and sky still cool, but the single root emits a small hopeful pool of light. Bottom stones' veins stay dim. Preserve the original shell, ledge and scoop exactly.",
+          "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-17d40c59-5080-41aa-8001-1adcb996abde.png",
+          "selectedMilestone": 25,
+          "reference": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-6cf3f6bb-e7be-40bc-a9c8-effe2993cc13.png",
+          "inspection": "One connected left-front mint root lights and small curl emerges; shell and sky remain fixed.",
+          "sha256": "30400d7134ebe2c6851b0de550b0942f65a66725a2d1e1a2882fd3f49d923e95",
+          "pixels": [
+            887,
+            1774
+          ],
+          "bytes": 2278829,
+          "asset": "App/Assets.xcassets/SeedMoon025.imageset/scene.png",
+          "selected": true
+        },
+        {
+          "milestone": 50,
+          "prompt": "Use case: precise-object-edit. Create ONE earlier restoration-state painting from this Seed Moon phone reference, exact same 1:2 portrait size and camera. This is a fixed multi-state puzzle background: LOCK the split round pearl moon shell silhouette, shell cracks, ledge, small scoop, distant nebula/cloud/star shapes, bottom corner rocks and their placements. Keep every surviving element in the same screen position. Change botanical growth and its illumination only; recolor shell/vegetation light gently with progress. Keep the huge uninterrupted natural sky playable area exactly continuous, not masked, no vignette patch or cloud seam. No text, UI, grid, jewels, characters, faces, people, villain, extra moons or extra plants. Final states grow from the one same seed in the same original shell.\n50% RESTORED: roots have reconnected along the existing shell seams and glow gently mint, including a few existing veins on the bottom corner stones. The same seed now raises ONE curved slender green shoot following the reference stem's curve but only reaching about halfway up toward the final canopy; its tip at about x30%,y13% ends in a small tightly curled green bud and two tiny furled leaf tips. NO broad leaves, NO golden flower, NO large closed golden bud yet. Remove the big canopy from reference and replace its old region with matching untouched sky. Low moss and a few tiny ground leaves are now fresh mint. Midway hopeful light, softer than the final glowing plant. Keep shell, scoop and ledge fixed.",
+          "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-2af4d94e-6d61-4eaf-beff-2e88d4acfe2e.png",
+          "selectedMilestone": 50,
+          "reference": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-6cf3f6bb-e7be-40bc-a9c8-effe2993cc13.png",
+          "inspection": "Connected main root network, raised slender shoot and small furled tip; no broad canopy yet.",
+          "sha256": "ecf19395dace8039f82889672860fdd285c6f16baebdb28250d14c0e9b9bd8e5",
+          "pixels": [
+            887,
+            1774
+          ],
+          "bytes": 2271182,
+          "asset": "App/Assets.xcassets/SeedMoon050.imageset/scene.png",
+          "selected": true
+        },
+        {
+          "milestone": 75,
+          "selectedMilestone": 75,
+          "role": "native HUD clearance correction",
+          "reference": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-6cf3f6bb-e7be-40bc-a9c8-effe2993cc13.png",
+          "prompt": "Use case: precise-object-edit. Native gameplay clearance correction for this EXACT Seed Moon iPhone 1:2 portrait painting, keeping EXACT887x1774 size and all existing pixel composition outside the upper golden plant form. Do not move the pearl seed, shell, roots, ledge, scoop, green outer supporting leaves, clouds, corner rocks or any sky texture. Change ONLY the upright CLOSED GOLD bud at top left. Make this golden form 80% of its current size and move it upward a little, using a short curved gold-green neck to reconnect it to the unmoved green leaf cradle. Target its luminous center around x30%, y5.8%; the entire golden form should fit between y1.5% and y9.5%, with visible sky margin above. Preserve the existing closed teardrop shape with NO open petals; this is75% before completion. The purpose is to keep the golden landmark wholly ABOVE a native HUD that starts at y10%; do not draw the HUD. Do not change the main green leaves or lower seed/shell. No new objects, stars, characters, text, UI, blank patch, masks, center clearing or horizontal seam. Keep this scene otherwise identical.",
+          "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-037f9d21-58f3-4309-aa6e-7c9d56121bbe.png",
+          "inspection": "Inspected: golden form now fits above native HUD band; fixed pearl seed, main shell, root network and continuous sky retained. Full native recheck follows.",
+          "selected": true,
+          "sha256": "ddf3d320ac13304a167ce54f63e15ae5ec0864ca06e638556db46fff8a2ae13f",
+          "pixels": [
+            887,
+            1774
+          ],
+          "bytes": 2277677,
+          "asset": "App/Assets.xcassets/SeedMoon075.imageset/scene.png"
+        },
+        {
+          "milestone": 100,
+          "selectedMilestone": 100,
+          "role": "native HUD clearance correction",
+          "reference": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-722b6932-ac81-4d47-858a-897a71eab3cc.png",
+          "prompt": "Use case: precise-object-edit. Native gameplay clearance correction for this EXACT Seed Moon iPhone 1:2 portrait painting, keeping EXACT887x1774 size and all existing pixel composition outside the upper golden plant form. Do not move the pearl seed, shell, roots, ledge, scoop, green outer supporting leaves, clouds, corner rocks or any sky texture. Change ONLY the OPEN IVORY-GOLD flower at top left. Make this golden form 80% of its current size and move it upward a little, using a short curved gold-green neck to reconnect it to the unmoved green leaf cradle. Target its luminous center around x30%, y5.8%; the entire golden form should fit between y1.5% and y9.5%, with visible sky margin above. Preserve the existing five outward-open petals, visible glowing center and sheltering umbrella silhouette; this is100% after completion. The purpose is to keep the golden landmark wholly ABOVE a native HUD that starts at y10%; do not draw the HUD. Do not change the main green leaves or lower seed/shell. No new objects, stars, characters, text, UI, blank patch, masks, center clearing or horizontal seam. Keep this scene otherwise identical.",
+          "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-05b41ef2-2cbe-4f48-b211-4fd3511adea1.png",
+          "inspection": "Inspected: golden form now fits above native HUD band; fixed pearl seed, main shell, root network and continuous sky retained. Full native recheck follows.",
+          "selected": true,
+          "sha256": "cd7f6b7c948c26bfb624ad2b2d2afce44316ce31521cd56cf774fe84810c2936",
+          "pixels": [
+            887,
+            1774
+          ],
+          "bytes": 2196527,
+          "asset": "App/Assets.xcassets/SeedMoon100.imageset/scene.png"
+        }
+      ],
+      "nativeIteration": {
+        "initialPhoneScreenshot": "/var/folders/fs/9shw9bf142jg3280dc9n3hhc0000gn/T/screenshot_optimized_147901ec-1eb3-45c5-a39c-2841221b9a12.jpg",
+        "finding": "Header partly overlaps golden bud at75; revise golden forms only before final acceptance. Initial Debug source was dirty babc534 with only phone assets available, not final native verification."
+      }
+    },
+    "tablet-art-provenance.json": {
+      "generator": "built-in image_gen",
+      "preservation": "Generated PNG bytes copied without pixel edits",
+      "generations": [
+        {
+          "family": "TabletPortrait",
+          "state": 100,
+          "revision": 1,
+          "status": "superseded_shell_entered_board",
+          "prompt": "Use case: precise-object-edit, bespoke game-board composition. Recompose this approved fully restored Seed Moon phone painting into a 3:4 TABLET PORTRAIT plate, ideally exactly1086x1448pixels. This is a new authored layout of the SAME one moon and plant, NOT a crop, stretch or another location. Preserve exact identity: one round split pearl/opal moonstone cradle with a worn opening, one pearlescent seed sphere nestled in the base, one curled/twisted green-gold stem, mint leaf canopy, translucent mint roots following the existing shell seams, tiny ivory scoop and stone resting ledge. At100% the ONE central bud has opened into FIVE ivory-gold translucent petals surrounding an exposed warm luminous center, above the mint leaves, making a little sheltered hollow beneath. No second flower or separate extra bud. Camera is distant, high above a playable sky board. Place the single moon cradle along the upper-left shoulder roughly x=.03-.34,y=.12-.29. The plant rises so its exposed final flower center is near x=.19,y=.065, with the key opening and main petals fully inside top 10% and safely inset from the top edge. This keeps the final opening above an invisible native HUD zone across x=.13-.87,y=.11-.18: do NOT draw UI or a placeholder. Make the plant modest in scale; do not stretch a canopy across the screen. Central/lower region x=.17-.84,y=.30-.86 remains natural quiet dark navy-teal sky with sparse low-contrast star dust. Soft dusk-lilac and teal nebula wisps frame only edges; this Wild Moons location has no docks, wood, ropes, architecture, lanterns or warm harbor clouds. Keep bottom-center x=.16-.84,y=.84-1 dark for native controls; only a few tiny pale moonstone hints in extreme bottom corners, no bright cloud bank across the bottom. One continuous illustrated sky, no center mask/fade, flat panel, local blur or hard seam. No characters, faces, travelers, text, UI, grids, tiles, logos, watermarks, extra trees or flowers. Opaque, polished tangible storybook materials and same pearlescent green/gold lighting as the source.",
+          "references": [
+            "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-722b6932-ac81-4d47-858a-897a71eab3cc.png"
+          ],
+          "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-9e99f627-c965-4431-a8a7-c337fb7d336b.png",
+          "sha256": "cbf9c046fb91136ba6e9d532347c59bf420e4522fa3d5511421fe39a5c576060",
+          "dimensions": {
+            "width": 1086,
+            "height": 1448
+          },
+          "bytes": 2546600,
+          "referenceMetadata": [
+            {
+              "path": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-722b6932-ac81-4d47-858a-897a71eab3cc.png",
+              "sha256": "9a123c3a569c06ecf17ece685fccf3b999993425ce699d15ce96f835ff23956a",
+              "dimensions": {
+                "width": 887,
+                "height": 1774
+              },
+              "bytes": 2244023
+            }
+          ]
+        },
+        {
+          "family": "TabletPortrait",
+          "state": 100,
+          "revision": 2,
+          "status": "superseded_gold_opening_overlapped_small_tablet_hud",
+          "prompt": "Use case: precise-object-edit. Correct ONLY placement and scale of the complete upper-left Seed Moon assembly in this 1086x1448 portrait painting. Treat the ONE moon cradle, seed, curled stem, leaves, five-petal open flower, tiny scoop, ledge and all attached roots as one rigid group. Reduce that entire group uniformly to 80% of its current size and move it UP and LEFT. Its resulting full bounding box should be approximately x=.03 to.33,y=.015 to.29. The flower's exposed luminous center should land around x=.18,y=.070, safely ABOVE the native HUD zone beginning y=.11. The bottom of the moon shell must end ABOVE y=.29, leaving the central/lower board completely free. Preserve exact proportions and identities within the group; no redesign, no extra flower, no extra bud, no change to the five petals, stem curl or scoop. Repaint the vacated region as a seamless continuation of the existing teal/lilac starry sky with naturally low contrast, not a mask or flat patch. Keep all other edge clouds and bottom moonstone hints exactly unchanged, and keep lower-center dark. No UI, text, grid, faces, characters, or travel elements. Same exact image dimensions, same continuous background art style.",
+          "references": [
+            "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-9e99f627-c965-4431-a8a7-c337fb7d336b.png"
+          ],
+          "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-7596de1c-2ed2-423f-af52-d3d5f6eb65f3.png",
+          "sha256": "63c23728784dea641eb65e5ad1d92ad5304d499fed40c649a7eda07bb3eb6ff4",
+          "dimensions": {
+            "width": 1086,
+            "height": 1448
+          },
+          "bytes": 2377420,
+          "referenceMetadata": [
+            {
+              "path": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-9e99f627-c965-4431-a8a7-c337fb7d336b.png",
+              "sha256": "cbf9c046fb91136ba6e9d532347c59bf420e4522fa3d5511421fe39a5c576060",
+              "dimensions": {
+                "width": 1086,
+                "height": 1448
+              },
+              "bytes": 2546600
+            }
+          ]
+        },
+        {
+          "family": "TabletLandscape",
+          "state": 100,
+          "revision": 1,
+          "status": "selected",
+          "prompt": "Use case: precise-object-edit, bespoke game-board composition. Recompose this approved fully restored Seed Moon phone painting into a 4:3 TABLET LANDSCAPE plate, ideally exactly1448x1086pixels. This is a new authored wide layout of the SAME one moon and plant, NOT a crop, stretch or another location. Preserve exact identity: one round split pearl/opal moonstone cradle with a worn opening, one pearlescent seed sphere nestled at the base, one curled/twisted green-gold stem, mint leaf canopy, translucent mint roots following existing shell seams, tiny ivory scoop and stone resting ledge. At100% the ONE central bud opens into FIVE ivory-gold translucent petals around an exposed warm luminous center above mint leaves, making a small shelter underneath. No second flower, no extra separate bud. Camera is distant high overhead, zoomed back for a playable sky board. Confine the moon cradle and plant to the LEFT peripheral area x=.025-.285. The cradle rests around x=.14,y=.34; canopy rises above it with exposed final flower center near x=.15,y=.16. Entire plant and shell must remain left of x=.29, out of the central native HUD and board. Let asymmetry feel intentional with only small quiet moonstone pieces on extreme right edge and bottom corners, no second main moon/tree. The broad center x=.31-.81,y=.23-.88 is continuous naturally quiet navy-teal space with sparse subtle stars; no branches/leaves/root strands extending across that area. Soft dusk-lilac and teal nebula at outer boundaries establishes Wild Moons; no docks, wood, ropes, architecture or lanterns. Keep lower-center x=.25-.80,y=.83-1 dark behind future controls, no bright clouds across bottom. No center mask/fade, inserted panel, blur strip or cut; one continuous illustrated sky. No characters, faces, travelers, text, UI, grid, tiles, logos, watermarks, extra trees or flowers. Opaque polished tangible storybook materials and same pearl-green-gold identity as source.",
+          "references": [
+            "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-722b6932-ac81-4d47-858a-897a71eab3cc.png"
+          ],
+          "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-24bd8291-0e5a-4a9a-bb53-aa3424a1803c.png",
+          "packagedPath": "App/Assets.xcassets/SeedMoonTabletLandscape100.imageset/scene.png",
+          "sha256": "382b53fc405e98c07cff121e84ca39a483e0cc27fd63109b934f16cd5bf6235c",
+          "dimensions": {
+            "width": 1447,
+            "height": 1087
+          },
+          "bytes": 2442891,
+          "referenceMetadata": [
+            {
+              "path": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-722b6932-ac81-4d47-858a-897a71eab3cc.png",
+              "sha256": "9a123c3a569c06ecf17ece685fccf3b999993425ce699d15ce96f835ff23956a",
+              "dimensions": {
+                "width": 887,
+                "height": 1774
+              },
+              "bytes": 2244023
+            }
+          ],
+          "packagedByteEqualityVerified": true,
+          "inspection": "Viewed generated output directly. Fixed shell, seed, scoop and sky composition retained; expected growth state visible; no baked characters, UI or central panel."
+        },
+        {
+          "family": "TabletPortrait",
+          "state": 100,
+          "revision": 3,
+          "prompt": "Precise edit of the supplied Seed Moon tablet portrait painting. Preserve EXACT output dimensions 1086x1448 and the entire existing image: same camera, one moon cradle, pearl seed center, stem, mint leaves, roots, scoop, pebbles, sky, clouds and every corner moon. ONLY resize and reposition the GOLD open flower at the very top of the plant. Make the five ivory-gold petals 80% of their current size, and move their exposed center up to normalized x=.193,y=.063. The full gold petals including lower tips must end ABOVE normalized y=.085, with their top around y=.035. Preserve exactly FIVE open petals exposing the warm golden center, not a closed bud or second flower. Extend the very short golden neck joining the gold flower to the existing fixed mint leaves if needed, but do NOT move leaves, pearl seed, shell or other stem. Preserve the pearl seed at x=.189,y=.164. Seamlessly restore a tiny area of natural sky vacated by the moved gold flower, no panel/mask/fade/rectangle. Keep all lower imagery absolutely unchanged. No characters, faces, text, UI or tiles. This is the same 100% restoration master; do not otherwise restyle, brighten or change it.",
+          "references": [
+            "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-7596de1c-2ed2-423f-af52-d3d5f6eb65f3.png"
+          ],
+          "status": "selected",
+          "packagedPath": "App/Assets.xcassets/SeedMoonTabletPortrait100.imageset/scene.png",
+          "sha256": "c0c3fec2cfcbc389d5539f843ddc9609868d89378627cb68b4081fef5db84a8b",
+          "dimensions": {
+            "width": 1086,
+            "height": 1448
+          },
+          "bytes": 2244503,
+          "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-e815384d-c0f8-4d8a-b078-4463a17a25cc.png",
+          "referenceMetadata": [
+            {
+              "path": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-7596de1c-2ed2-423f-af52-d3d5f6eb65f3.png",
+              "sha256": "63c23728784dea641eb65e5ad1d92ad5304d499fed40c649a7eda07bb3eb6ff4",
+              "dimensions": {
+                "width": 1086,
+                "height": 1448
+              },
+              "bytes": 2377420
+            }
+          ],
+          "packagedByteEqualityVerified": true,
+          "inspection": "Viewed generated output directly. Fixed shell, seed, scoop and sky composition retained; expected growth state visible; no baked characters, UI or central panel."
+        },
+        {
+          "family": "TabletLandscape",
+          "state": 75,
+          "revision": 1,
+          "prompt": "Precise restoration-state edit. FIRST image is the target tablet landscape Seed Moon painting; SECOND phone reference illustrates the CLOSED golden bud shape only, never its camera/layout. Preserve EXACT target canvas 1447x1087 and all target scene geometry: split pearl moon shell, fixed pearl seed at x=.170,y=.355, curled green-gold stem, tiny ivory scoop, ledge, sky pattern, clouds, background moons and corner placement. Produce 75% restored state. Replace ONLY the fully open five gold petals at the plant top with ONE upright CLOSED golden teardrop bud attached to the same stem and surrounded by the existing unfolded mint leaves. The closed bud has smooth touching petals and no visible interior/stamens, no exposed central glow. Its tip reaches near the original flower top; leaves remain unfolded to make clear 75% growth. Roots along existing shell seams glow mint, canopy leaves healthy but slightly less luminous than final. Pearl seed softly lit, moon largely revived. Retain one plant only. Continuous quiet dark navy-teal central play area and lower controls space exactly as original. No characters, faces, text, UI, grid, tiles, panels, masks or fades. No new shell cracks/rocks; do not translate or scale any fixed object.",
+          "references": [
+            "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-24bd8291-0e5a-4a9a-bb53-aa3424a1803c.png",
+            "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-6cf3f6bb-e7be-40bc-a9c8-effe2993cc13.png"
+          ],
+          "status": "selected",
+          "packagedPath": "App/Assets.xcassets/SeedMoonTabletLandscape075.imageset/scene.png",
+          "sha256": "2bafd042f9d202914bd5aa83f32139b560c0620e363abaf0f22b8e16025773d8",
+          "dimensions": {
+            "width": 1447,
+            "height": 1087
+          },
+          "bytes": 2309965,
+          "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-e0e2a537-d6c1-4629-a55e-d9f1358ed15d.png",
+          "referenceMetadata": [
+            {
+              "path": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-24bd8291-0e5a-4a9a-bb53-aa3424a1803c.png",
+              "sha256": "382b53fc405e98c07cff121e84ca39a483e0cc27fd63109b934f16cd5bf6235c",
+              "dimensions": {
+                "width": 1447,
+                "height": 1087
+              },
+              "bytes": 2442891
+            },
+            {
+              "path": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-6cf3f6bb-e7be-40bc-a9c8-effe2993cc13.png",
+              "sha256": "0e67100a27d6771c69dc7b55e0beb2b74ab884960f5d021313dbe17c467dd03e",
+              "dimensions": {
+                "width": 887,
+                "height": 1774
+              },
+              "bytes": 2442308
+            }
+          ],
+          "packagedByteEqualityVerified": true,
+          "inspection": "Viewed generated output directly. Fixed shell, seed, scoop and sky composition retained; expected growth state visible; no baked characters, UI or central panel."
+        },
+        {
+          "family": "TabletLandscape",
+          "state": 0,
+          "revision": 1,
+          "prompt": "Precise restoration-state edit of this target tablet landscape Seed Moon painting. Preserve EXACT canvas 1447x1087, fixed camera and all permanent geometry: split pearl/opal moon shell, opening/ledge, pearl seed sphere centered x=.170,y=.355, tiny ivory scoop, stones, sky texture, clouds, distant corner moon fragments. This is the SAME place at 0% restoration. Remove all tall stem, all canopy leaves and all golden flower forms entirely; restore the vacated space above shell seamlessly to the SAME natural navy-teal sky. The ONE pearl seed remains fixed in its bed, asleep and dim, tightly wrapped by a small curled dormant tendril at its base. Barely visible root tracery follows the shell's EXACT existing seams, completely dark. Existing ground plants tiny, curled, muted and dormant. Pearl moon cool dusty grey-lilac, no warm emission or mint light. The scene is gentle and melancholy, never scary. Do not damage or alter shell topology, make new cracks, add rubble or change scale. Keep continuous textured sky with no rectangular clearings, vignette mask, compositing fade or center seam. No characters/faces/text/UI/grid/tiles. Only growth state and local material illumination change; all permanent landmarks stay registered.",
+          "references": [
+            "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-24bd8291-0e5a-4a9a-bb53-aa3424a1803c.png"
+          ],
+          "status": "selected",
+          "packagedPath": "App/Assets.xcassets/SeedMoonTabletLandscape000.imageset/scene.png",
+          "sha256": "abd1c14a4cbd9b0f506aaafcc277077226fb1f804d8bc2a61e8e3cbdc4db08bc",
+          "dimensions": {
+            "width": 1446,
+            "height": 1087
+          },
+          "bytes": 2284648,
+          "dimensionNote": "Image generator returned one fewer horizontal pixel than requested1447; source bytes unchanged.",
+          "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-803bb5f7-9960-4a8b-96ed-1d2c059de1ef.png",
+          "referenceMetadata": [
+            {
+              "path": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-24bd8291-0e5a-4a9a-bb53-aa3424a1803c.png",
+              "sha256": "382b53fc405e98c07cff121e84ca39a483e0cc27fd63109b934f16cd5bf6235c",
+              "dimensions": {
+                "width": 1447,
+                "height": 1087
+              },
+              "bytes": 2442891
+            }
+          ],
+          "packagedByteEqualityVerified": true,
+          "inspection": "Viewed generated output directly. Fixed shell, seed, scoop and sky composition retained; expected growth state visible; no baked characters, UI or central panel."
+        },
+        {
+          "family": "TabletPortrait",
+          "state": 0,
+          "revision": 1,
+          "prompt": "Precise restoration-state edit of this tablet portrait Seed Moon painting. Output EXACT1086x1448. Preserve exact camera and all permanent landmarks: split pearl moon shell, ledge, pearl seed centered x=.189,y=.164, ivory scoop, stones, clouds, distant corner moons and sky texture. Render0%restoration: remove all tall stem, all large leaves and gold flower completely, replacing their vacated area seamlessly with original natural sky. One dim sleeping pearl seed remains fixed, wrapped in a small tightly curled dormant tendril. Root patterns along the existing shell seams barely visible and entirely unlit. Small ground plants remain curled, muted and dormant. Shell is cool dusty lilac/grey pearl with no mint or gold emission. Keep intact existing shell shape and seams\u2014no new damage/rubble. Quiet melancholy rather than frightening. All sky stars/clouds, placements, scale, crop and field remain exactly fixed. No additional items or plant, characters/faces/text/UI/tiles/grid. No center mask/fade/rectangle, no compositing seam.",
+          "references": [
+            "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-e815384d-c0f8-4d8a-b078-4463a17a25cc.png"
+          ],
+          "status": "selected",
+          "packagedPath": "App/Assets.xcassets/SeedMoonTabletPortrait000.imageset/scene.png",
+          "sha256": "4773d215510d8e360e8cf772e860b467286b2da4f5e06b19b0f40f5e1ac2272d",
+          "dimensions": {
+            "width": 1086,
+            "height": 1448
+          },
+          "bytes": 2222291,
+          "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-6f351405-d0da-43df-bc3c-5d6730dfd800.png",
+          "referenceMetadata": [
+            {
+              "path": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-e815384d-c0f8-4d8a-b078-4463a17a25cc.png",
+              "sha256": "c0c3fec2cfcbc389d5539f843ddc9609868d89378627cb68b4081fef5db84a8b",
+              "dimensions": {
+                "width": 1086,
+                "height": 1448
+              },
+              "bytes": 2244503
+            }
+          ],
+          "packagedByteEqualityVerified": true,
+          "inspection": "Viewed generated output directly. Fixed shell, seed, scoop and sky composition retained; expected growth state visible; no baked characters, UI or central panel."
+        },
+        {
+          "family": "TabletPortrait",
+          "state": 75,
+          "revision": 1,
+          "prompt": "Precise restoration-state edit of this exact tablet portrait Seed Moon painting. Keep EXACT1086x1448canvas. Preserve every permanent landmark and sky detail: moon shell, pearl seed at x=.189,y=.164, scoop, stones, roots, mint leaves, stem, clouds, corner moons, camera and scale. Change ONLY the five open gold petals at top into ONE CLOSED upright golden bud. 75% restoration: healthy unfolded mint leaves remain at same positions, roots softly glow along existing shell seams; the central gold bud stays fully closed, no visible stamens/interior. Closed bud occupies approximately x=.177-.225,y=.033-.075, attached to same gold neck, above mint leaves. Its whole GOLD body MUST end above y=.085 for native header clearance. Do not enlarge entire garden, move seed or spread leaves. No second plant/bud, no exposed flower center. Preserve quiet continuous navy-teal sky and dark lower field unchanged. No characters/faces/text/UI/tiles/grid/panels/masks/fades.",
+          "references": [
+            "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-e815384d-c0f8-4d8a-b078-4463a17a25cc.png"
+          ],
+          "status": "selected",
+          "packagedPath": "App/Assets.xcassets/SeedMoonTabletPortrait075.imageset/scene.png",
+          "sha256": "da20d8baaf16487396709e98313c98084b4443fb23058a524fbc5990bb16cf9a",
+          "dimensions": {
+            "width": 1086,
+            "height": 1448
+          },
+          "bytes": 2197470,
+          "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-1c9cabf5-8948-4361-aeaa-6e3f4b0178d9.png",
+          "referenceMetadata": [
+            {
+              "path": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-e815384d-c0f8-4d8a-b078-4463a17a25cc.png",
+              "sha256": "c0c3fec2cfcbc389d5539f843ddc9609868d89378627cb68b4081fef5db84a8b",
+              "dimensions": {
+                "width": 1086,
+                "height": 1448
+              },
+              "bytes": 2244503
+            }
+          ],
+          "packagedByteEqualityVerified": true,
+          "inspection": "Viewed generated output directly. Fixed shell, seed, scoop and sky composition retained; expected growth state visible; no baked characters, UI or central panel."
+        },
+        {
+          "family": "TabletLandscape",
+          "state": 50,
+          "revision": 1,
+          "prompt": "Precise restoration-state edit of this target tablet landscape Seed Moon painting. Keep EXACT1447x1087canvas, camera and composition. SAME split pearl shell, fixed pearl seed centered x=.170,y=.355, same scoop/ledge/stones/clouds/distant moons and sky texture. Render50% restored: roots now connect as a clearly glowing mint network along the shell's EXACT existing seams. A SINGLE slender curled green shoot rises from the fixed pearl seed to about y=.25, with only two tiny folded leaf tips. Remove the large mature mint canopy and gold flower completely; there is NO gold bud or open flower at50%. Replace vacated upper sky naturally with unchanged surrounding sky pattern, never with a panel. Pearl seed gently warm, shell partially revived, small existing ground plants beginning to wake. Keep geometry of shell/seed/scoop fixed and do not introduce cracks or new objects. The mature stem will grow along this same route later. Preserve continuous dark navy-teal central/lower gameplay field. No characters/faces/text/UI/grid/tiles/masks/fades; one plant only.",
+          "references": [
+            "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-24bd8291-0e5a-4a9a-bb53-aa3424a1803c.png"
+          ],
+          "status": "selected",
+          "packagedPath": "App/Assets.xcassets/SeedMoonTabletLandscape050.imageset/scene.png",
+          "sha256": "e759c6fd2be63972ecb9b4f7d08bb2f29f95c8c1328a78431ed37f7b45cf26d0",
+          "dimensions": {
+            "width": 1446,
+            "height": 1087
+          },
+          "bytes": 2291178,
+          "dimensionNote": "Generator dimension variance preserved; renderer registers actual per-state size.",
+          "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-bd5c3ecc-f5db-489c-8803-60630d5b0e49.png",
+          "referenceMetadata": [
+            {
+              "path": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-24bd8291-0e5a-4a9a-bb53-aa3424a1803c.png",
+              "sha256": "382b53fc405e98c07cff121e84ca39a483e0cc27fd63109b934f16cd5bf6235c",
+              "dimensions": {
+                "width": 1447,
+                "height": 1087
+              },
+              "bytes": 2442891
+            }
+          ],
+          "packagedByteEqualityVerified": true,
+          "inspection": "Viewed generated output directly. Fixed shell, seed, scoop and sky composition retained; expected growth state visible; no baked characters, UI or central panel."
+        },
+        {
+          "family": "TabletLandscape",
+          "state": 25,
+          "revision": 1,
+          "prompt": "Precisely edit this dormant Seed Moon tablet landscape plate into25%restored. Preserve exact camera, composition, all sky/clouds, shell shape/seams, ledge, ivory scoop, stones and fixed pearl seed at x=.170,y=.355. Output target1447x1087pixels with same full-frame content; no crop or scale shift. The seed remains curled in its bed with NO tall stem, NO canopy, NO golden bud or flower. Illuminate ONE small mint root tip leaving the seed base and entering one existing seam down the front-left interior of the shell. Only this first root segment glows; the rest of the shell root network remains dark. Pearl seed receives a subtle warm internal gleam, the dusty shell stays predominantly cool grey-lilac. Small plants still curled/dormant. This is a modest but legible first restoration, not the full connected root system. Keep all permanent landmarks and continuous dark navy-teal sky fixed. No new cracks, added stones, characters, faces, text, UI/grid/tiles/masks or fades.",
+          "references": [
+            "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-803bb5f7-9960-4a8b-96ed-1d2c059de1ef.png"
+          ],
+          "status": "selected",
+          "packagedPath": "App/Assets.xcassets/SeedMoonTabletLandscape025.imageset/scene.png",
+          "sha256": "321a206c245c1eed8c10a7c565fd203e9cd4ef6d4afbd5e33f21817fcb11d1fe",
+          "dimensions": {
+            "width": 1446,
+            "height": 1087
+          },
+          "bytes": 2221331,
+          "dimensionNote": "Generator dimension variance preserved; renderer registers actual per-state size.",
+          "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-8101b2ea-f158-4ba9-a6a2-3c42c7328a3a.png",
+          "referenceMetadata": [
+            {
+              "path": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-803bb5f7-9960-4a8b-96ed-1d2c059de1ef.png",
+              "sha256": "abd1c14a4cbd9b0f506aaafcc277077226fb1f804d8bc2a61e8e3cbdc4db08bc",
+              "dimensions": {
+                "width": 1446,
+                "height": 1087
+              },
+              "bytes": 2284648
+            }
+          ],
+          "packagedByteEqualityVerified": true,
+          "inspection": "Viewed generated output directly. Fixed shell, seed, scoop and sky composition retained; expected growth state visible; no baked characters, UI or central panel."
+        },
+        {
+          "family": "TabletPortrait",
+          "state": 25,
+          "revision": 1,
+          "prompt": "Precisely edit this dormant Seed Moon tablet portrait painting into25%restored. Preserve EXACT1086x1448canvas, camera, crop, moon shell/ledge/scoop/stones, pearl seed at x=.189,y=.164, every cloud/sky detail and corner moon. Seed stays curled in its bed with no tall stem, no large leaves/canopy, no golden bud or flower. One single small mint root tip wakes, glows, and enters one existing seam just below the seed toward the front-left shell face. Only this first narrow root segment glows; remaining network dark. Subtle warmth begins within the SAME fixed pearl seed; shell still predominantly dusty cool lilac/grey, tiny ground plants dormant. No moving or changing permanent objects, no new cracks/rubble, no new plant. Keep the sky unchanged and continuous with no central mask/fade/rectangle. No characters/faces/text/UI/grid/tiles. The single glowing root segment should be legible but restrained compared with the full network at50%.",
+          "references": [
+            "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-6f351405-d0da-43df-bc3c-5d6730dfd800.png"
+          ],
+          "status": "selected",
+          "packagedPath": "App/Assets.xcassets/SeedMoonTabletPortrait025.imageset/scene.png",
+          "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-0bb47f13-a938-4fc4-8aeb-01634abaefba.png",
+          "sha256": "b450a2915622c103017bc8eeef020372c5e7f0a85300e32d13c6ab9a93ea4acf",
+          "dimensions": {
+            "width": 1086,
+            "height": 1448
+          },
+          "bytes": 2193087,
+          "referenceMetadata": [
+            {
+              "path": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-6f351405-d0da-43df-bc3c-5d6730dfd800.png",
+              "sha256": "4773d215510d8e360e8cf772e860b467286b2da4f5e06b19b0f40f5e1ac2272d",
+              "dimensions": {
+                "width": 1086,
+                "height": 1448
+              },
+              "bytes": 2222291
+            }
+          ],
+          "packagedByteEqualityVerified": true,
+          "inspection": "Viewed generated output directly. Fixed shell, seed, scoop and sky composition retained; expected growth state visible; no baked characters, UI or central panel."
+        },
+        {
+          "family": "TabletPortrait",
+          "state": 50,
+          "revision": 1,
+          "prompt": "Precisely edit this target tablet portrait Seed Moon painting into50%restored. Output EXACT1086x1448. Preserve camera, placement, scale and all permanent geometry: split pearl shell, seed fixed x=.189,y=.164, same ivory scoop, ledge, stones, clouds, distant corner moons and starry sky. Connected mint roots now softly glow along the existing shell seams (no new seams). A SINGLE slender green-gold shoot curls upward from the seed only to approximately y=.105, with one or two tiny folded leaf tips. Remove mature large mint leaves/canopy and golden open flower completely; no gold bud yet. Seamlessly restore vacated area above young shoot with matching original sky, never a panel or empty blur. Pearl seed gently warm, shell partly revived, existing tiny ground plants waking. Keep all permanent landmark positions exact; no additional seed/plant, no new cracks/stones or changed proportions. Central and lower navy-teal playfield stays continuous and unchanged. No characters/faces/text/UI/tiles/grid/masks/fades.",
+          "references": [
+            "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-e815384d-c0f8-4d8a-b078-4463a17a25cc.png"
+          ],
+          "status": "selected",
+          "packagedPath": "App/Assets.xcassets/SeedMoonTabletPortrait050.imageset/scene.png",
+          "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-8ce9d300-9842-4d2c-9137-2aa80dec1911.png",
+          "sha256": "e24980ed839a67222a1b5e6015dab530b7a4597dc6a1552c56b97493dc2fdfb8",
+          "dimensions": {
+            "width": 1086,
+            "height": 1448
+          },
+          "bytes": 2207129,
+          "referenceMetadata": [
+            {
+              "path": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-e815384d-c0f8-4d8a-b078-4463a17a25cc.png",
+              "sha256": "c0c3fec2cfcbc389d5539f843ddc9609868d89378627cb68b4081fef5db84a8b",
+              "dimensions": {
+                "width": 1086,
+                "height": 1448
+              },
+              "bytes": 2244503
+            }
+          ],
+          "packagedByteEqualityVerified": true,
+          "inspection": "Viewed generated output directly. Fixed shell, seed, scoop and sky composition retained; expected growth state visible; no baked characters, UI or central panel."
+        }
+      ],
+      "inspectionScope": "Generated raster inspection and byte/dimension verification only. Native HUD, input, motion and device acceptance owned by parent task.",
+      "selectedCount": 10,
+      "attemptCount": 12,
+      "dimensionPolicy": "Original PNG bytes preserved. Portrait1086x1448 throughout. Landscape000/025/050 returned1446x1087;075/100 returned1447x1087. Parent accepted one-pixel variance and registers per-milestone source sizes.",
+      "normalizedRegistrationCandidates": {
+        "TabletPortrait": {
+          "seedCenter": [
+            0.189,
+            0.164
+          ],
+          "visibleRootJunction": [
+            0.172,
+            0.232
+          ],
+          "focalRectIncludingFlowerAndPearl": [
+            0.085,
+            0.025,
+            0.215,
+            0.16
+          ],
+          "note": "Gold opening corrected above normal header. Use visible root junction if native header covers pearl; expanded Dynamic Type requires native review."
+        },
+        "TabletLandscape": {
+          "seedCenter": [
+            0.17,
+            0.355
+          ],
+          "focalRectIncludingFlowerAndPearl": [
+            0.05,
+            0.11,
+            0.245,
+            0.275
+          ],
+          "note": "Left peripheral moon and canopy; native acceptance pending."
+        }
+      }
+    }
+  },
+  "subsequent_corrections": [
+    {
+      "id": "phone050-shoot-header-clearance",
+      "record": {
+        "title": "Seed Moon phone050 native HUD clearance candidate",
+        "date": "2026-10-19",
+        "generator": "built-in image_gen",
+        "milestone": 50,
+        "role": "native HUD clearance correction",
+        "selected": false,
+        "packaged": false,
+        "prompt": "Precise native-HUD clearance edit. FIRST image is the actual target phone050 Seed Moon painting; SECOND is phone075, used ONLY to show the safe upper vertical region and existing plant alignment. Never copy the second image's mature broad leaves, canopy, golden closed bud, or lighting. Output EXACT887x1774pixels, unchanged full-frame camera/composition. Preserve everything in the FIRST image except the height of its single early shoot: exact split pearl moon shell, seed sphere centered x=.301,y=.214, fixed lower stem base, glowing mint root network on existing shell seams, scoop, ledge, stones, small ground plants, all sky/clouds/stars/corner moons, light and color. Extend only the slender green-gold HALF-GROWN shoot upward along its existing graceful curve. Put its upper tip and one or two SMALL green leaf blades within normalized y=.035-.085, approximately x=.27-.35. Aim tip y=.042, small leaf cluster centered around y=.065, entire upper leaf cluster above y=.085. The plant remains a thin early sprout with a bare narrow stem: no large supporting leaves, no broad canopy, no bulbous closed bud, NO gold bud or open flower. The second image shows where the75gold bud safely clears the header, but this50stage should have a small mint sprout there instead. Preserve the FIRST image's registered shell/seed/root topology and warm50% lighting exactly; do not move, shrink or enlarge the moon garden. Keep continuous unbroken sky behind the shoot, no panel, mask, fade or blank center. No characters, faces, text, UI, grid or tiles. This is a surgical height correction, not a new painting style or more advanced restoration.",
+        "references": [
+          "/Users/lbeezr/.codex-workspaces/worktrees/ios-a412ced0-1da1-4bc5-8682-a9ef02f52407/Starfall/App/Assets.xcassets/SeedMoon050.imageset/scene.png",
+          "/Users/lbeezr/.codex-workspaces/worktrees/ios-a412ced0-1da1-4bc5-8682-a9ef02f52407/Starfall/App/Assets.xcassets/SeedMoon075.imageset/scene.png"
+        ],
+        "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-afb53f0c-ae25-4326-80ea-66cc4eea85ed.png",
+        "inspection": "Generated output inspected directly. Shell, pearl seed, scoop, root network and continuous sky remain registered. Thin single shoot extends into upper protected region; upper mint tip and small left leaf are above y=.085. No mature supporting canopy, gold bud, flower, character or baked UI. The lowest small side leaf remains around y=.09-.105; no native acceptance claim.",
+        "nativeValidation": "Pending parent review; existing packaged assets and committed provenance unchanged.",
+        "sha256": "8e9f7ef6f514be75b23f96767cedff3dc28f245594b244016ff55ddbdc0a2e64",
+        "pixels": [
+          887,
+          1774
+        ],
+        "bytes": 2222422,
+        "gitBlobSha": "5e92ae4267dcf102d801db6e91ed3e8a6619d86c",
+        "referenceMetadata": [
+          {
+            "path": "/Users/lbeezr/.codex-workspaces/worktrees/ios-a412ced0-1da1-4bc5-8682-a9ef02f52407/Starfall/App/Assets.xcassets/SeedMoon050.imageset/scene.png",
+            "sha256": "ecf19395dace8039f82889672860fdd285c6f16baebdb28250d14c0e9b9bd8e5",
+            "pixels": [
+              887,
+              1774
+            ],
+            "bytes": 2271182,
+            "gitBlobSha": "6f571d6184f0200f54ca36e59edb0951a335878e"
+          },
+          {
+            "path": "/Users/lbeezr/.codex-workspaces/worktrees/ios-a412ced0-1da1-4bc5-8682-a9ef02f52407/Starfall/App/Assets.xcassets/SeedMoon075.imageset/scene.png",
+            "sha256": "ddf3d320ac13304a167ce54f63e15ae5ec0864ca06e638556db46fff8a2ae13f",
+            "pixels": [
+              887,
+              1774
+            ],
+            "bytes": 2277677,
+            "gitBlobSha": "6b329c774fe88af7e8c093154384f41abcd5527a"
+          }
+        ]
+      },
+      "selection": {
+        "selected": true,
+        "packaged": true,
+        "status": "selected_packaged_native_clearance_pending",
+        "asset": "App/Assets.xcassets/SeedMoon050.imageset/scene.png",
+        "supersedes_source_record": "art-prompts.json#/original_records/phone-art-provenance.json/variants/4",
+        "reason": "Root accepted the source-art candidate after native phone50 review found its original shoot hidden by the HUD, then copied it after the tablet test run. Corrective PNG committed as b77a100; native clearance recheck is pending.",
+        "packagedCommit": "b77a1003f5d22b9da67d5d4c54f3515481d45ea3"
+      }
+    }
+  ],
+  "selection_overrides": [
+    {
+      "asset": "App/Assets.xcassets/SeedMoon050.imageset/scene.png",
+      "milestone": 50,
+      "family": "phone",
+      "source_record": "art-prompts.json#/subsequent_corrections/0/record",
+      "supersedes_source_record": "art-prompts.json#/original_records/phone-art-provenance.json/variants/4",
+      "status": "selected_packaged_native_clearance_pending"
+    }
+  ]
+}

@@ -105,7 +105,9 @@ final class RestorationFlowTests: XCTestCase {
         LocationContract(challenge: .ribbonCrossing, prefix: "ribbon", title: "Ribbon Crossing",
                          guide: "guide.ribbon-won.1", result: "Ribbon Crossing complete! The cloud banks are connected again."),
         LocationContract(challenge: .kiteHarbor, prefix: "kite", title: "Kite Harbor",
-                         guide: "guide.kite-won.1", result: "Kite Harbor complete! The fleet is aloft and ready to depart.")
+                         guide: "guide.kite-won.1", result: "Kite Harbor complete! The fleet is aloft and ready to depart."),
+        LocationContract(challenge: .seedMoon, prefix: "seed", title: "Seed Moon",
+                         guide: "guide.seed-won.1", result: "Seed Moon complete! The sleeping seed has grown into a glowing shelter.")
     ]
 
     @MainActor func testEachWinningClearCommitsBeforeSettlementAndRestoresWithoutClock() throws {
@@ -144,6 +146,8 @@ final class RestorationFlowTests: XCTestCase {
 
     func testCopyAndHelpFollowSelectedIdentityForEntryReplayWinAndOverflow() throws {
         XCTAssertEqual(locations.map(\.challenge), StarfallChallenge.allCases)
+        XCTAssertEqual(StarfallChallenge.seedMoon.welcomeIdentifier, "sky.seed-moon")
+        XCTAssertEqual(StarfallChallenge.seedMoon.menuIdentifier, "experiment.seed-moon")
         XCTAssertEqual(StarfallChallenge.kiteHarbor.welcomeIdentifier, "sky.kite-harbor")
         XCTAssertEqual(StarfallChallenge.kiteHarbor.menuIdentifier, "experiment.kite-harbor")
         XCTAssertEqual(StarfallChallenge.ribbonCrossing.welcomeIdentifier, "sky.ribbon-crossing")
@@ -173,6 +177,7 @@ final class RestorationFlowTests: XCTestCase {
                            "\(challenge.title) · 9 of 18 starlight · Automatic showers paused")
         }
         XCTAssertTrue(StarfallChallenge.kiteHarbor.helpText.hasPrefix("Raise Kite Harbor’s sails with 18 starlight."))
+        XCTAssertTrue(StarfallChallenge.seedMoon.helpText.hasPrefix("Wake Seed Moon with 18 starlight."))
     }
 
     @MainActor func testReviewFixturesRequireOneIsolatedResetChoiceAndUseRealScoring() throws {

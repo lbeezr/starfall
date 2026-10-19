@@ -321,11 +321,13 @@ extension SkySaveArchiveTests {
     }
 
     @MainActor func testShippedV8ChallengesKeepExactBytesIdentityPreviewAndReplay() throws {
-        // Ribbon shipped the same fixed round with its own raw challenge identity.
-        // Substitute that literal wire value, independently of the current encoder.
-        for challenge in [StarfallChallenge.firstLight, .ribbonCrossing] {
+        // Ribbon and Kite shipped the same fixed round with their own identities.
+        // Substitute literal historical wire values, independently of today’s encoder.
+        let shipped: [(StarfallChallenge, String)] = [(.firstLight, "firstLight"),
+            (.ribbonCrossing, "ribbonCrossing"), (.kiteHarbor, "kiteHarbor")]
+        for (challenge, identity) in shipped {
             let bytes = Data(String(decoding: preRibbonFirstLightV8, as: UTF8.self)
-                .replacingOccurrences(of: "\"challenge\":\"firstLight\"", with: "\"challenge\":\"\(challenge.rawValue)\"").utf8)
+                .replacingOccurrences(of: "\"challenge\":\"firstLight\"", with: "\"challenge\":\"\(identity)\"").utf8)
             let defaults = makeDefaults()
             defaults.set(bytes, forKey: SkySaveArchive.key)
             let retained = try SkySaveArchive.decode(bytes)
@@ -337,8 +339,8 @@ extension SkySaveArchiveTests {
             XCTAssertEqual(store.game, retained)
             XCTAssertTrue(store.isPaused)
             XCTAssertEqual(defaults.data(forKey: SkySaveArchive.key), bytes)
-            let preview = try XCTUnwrap(RestorationPresentation.selected(game: store.game, entry: .kiteHarbor))
-            XCTAssertEqual(preview.challenge, .kiteHarbor)
+            let preview = try XCTUnwrap(RestorationPresentation.selected(game: store.game, entry: .seedMoon))
+            XCTAssertEqual(preview.challenge, .seedMoon)
             XCTAssertEqual(preview.progress.score, 0)
             XCTAssertEqual(store.game, retained)
             XCTAssertEqual(defaults.data(forKey: SkySaveArchive.key), bytes)

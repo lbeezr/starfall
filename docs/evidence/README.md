@@ -1,5 +1,7 @@
 # Evidence index
 
+[Seed Moon](seed-moon-2026-10-19/README.md) records the fourth challenge’s source-art package, earlier Core/tooling, 329 hosted checks, phone flow/accessibility/preview, tablet rotation/clears and final phone dense input/motion. Compact, Release and focused overflow checks pass; publication and canonical delivery remain pending.
+
 [Kite Harbor](kite-harbor-2026-10-19/README.md) records the third challenge’s verified development scope: Core/tooling, all fifteen native states, phone/tablet/compact interaction, normal motion, dense input and Release. The initial hosted probe failure and corrected targeted rerun remain visible. Merge and canonical installation are verified; actual VoiceOver and physical play remain separate.
 
 [Ribbon Crossing](ribbon-crossing-2026-10-19/README.md) records the second optional challenge’s Core/hosted/tooling and phone/tablet development checks, all fifteen inspected states, and final normal-motion completion without bridge traversal. It separates verified development checks from verified canonical installation from physical play and RC VoiceOver, which remain unverified.
