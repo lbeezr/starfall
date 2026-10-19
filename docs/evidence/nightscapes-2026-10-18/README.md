@@ -6,7 +6,7 @@ Moonwake, Nebula Cradle, Shatterlight Reach, Night Garden and Ringdrift now use 
 
 **Delivery:** [PR #143](https://github.com/lbeezr/starfall/pull/143) merged as `496ba704ee`. The canonical updater installed **`dev.235ece3931`** on the configured physical iPhone and verified its OS-owned identity. Choose **Menu → Location**. [Receipt](delivery.json) records the source and validation.
 
-**Next action:** No remaining integration/delivery work for these five settings. Physical comfort, sustained-device performance, Stage Manager and actual VoiceOver remain separate release acceptance; no physical play session or App Store release is claimed.
+**Next action:** Integration and phone delivery are complete. The independent GitHub simulator rerun remains pending as recorded below. Physical comfort, sustained-device performance, Stage Manager and actual VoiceOver remain separate release acceptance; no physical play session or App Store release is claimed.
 
 ## Outcomes against acceptance
 
@@ -93,3 +93,8 @@ Shared cell boundaries initially differed by floating-point roundoff when comput
 `python3 scripts/device-update.py run` completed with `Installed dev.235ece3931 from main 496ba704ee`. It archived clean GitHub main, reran all 169 core tests (zero failures), built signed Debug for the configured iPhone, verified the signature, installed without resetting/launching the app, and queried the OS app inventory to verify installation. The published runtime tree matched the validated local tree exactly.
 
 Main CI was **pending at installation**, consistent with the documented development-delivery policy; it is not reported as passed. The receipt is in [delivery.json](delivery.json). Original updater logs/receipts remain under `~/Library/Application Support/Starfall Device Updates/`; the published record omits the private installation URL and device identifier. Installation proves delivery, not human gameplay comfort.
+
+
+**Post-delivery remote CI:** [Run 39190046905](https://github.com/lbeezr/starfall/actions/runs/39190046905) later failed while `xcrun simctl list devices available --json` exceeded the existing 30-second inventory limit (exit 124). All 169 cloud core tests passed; app compilation/native UI tests were not reached. One rerun of the failed job was requested through GitHub and is in progress at this record. No timeout, retry policy, test assertion or product code was changed to hide the failure. Local native acceptance and the verified physical installation above are separate evidence; remote CI is not claimed green.
+
+**Local checkouts:** The attached `environment-redesign` branch retains the complete work/history. The primary checkout's `main` at `f35eba8` has separate local commits and could not fast-forward; it was preserved unchanged. Device delivery used clean GitHub main through the canonical updater, never that older local branch.

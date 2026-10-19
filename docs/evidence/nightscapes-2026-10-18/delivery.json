@@ -17,5 +17,12 @@
   "coreFailures": 0,
   "runtimeTreeMatchedLocal": "d40072575532dfdc85b2b5c88b17ba68d56d94cf",
   "pullRequest": "https://github.com/lbeezr/starfall/pull/143",
-  "physicalPlaySession": "not run"
+  "physicalPlaySession": "not run",
+  "postDeliveryCI": {
+    "run": "https://github.com/lbeezr/starfall/actions/runs/39190046905",
+    "initialAttempt": "failed during simulator inventory: xcrun simctl list devices available --json exceeded its existing 30-second limit; core 169 passed; app build/native tests not reached",
+    "retry": "one failed-job rerun requested; in progress when this record was written",
+    "failedJob": 117860638044,
+    "retryJob": 117861877937
+  }
 }
