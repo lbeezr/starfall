@@ -6,6 +6,8 @@ A small native iOS falling-sky puzzle. Clear matching stars as showers fill the 
 
 [Roadmap](docs/ROADMAP.md) · [Visual reference and cast](docs/design/VISUAL_REFERENCE.md) · [Playtest](docs/PLAYTEST-FALLING-SKY.md) · [Documentation map](docs/README.md)
 
+**Future story direction:** The user approved Murk, the Hungry Moon, and all twelve illustrated locations. The rewritten [game bible](docs/design/STARFALL_GAME_BIBLE.md) and [world atlas](docs/design/WORLD_ATLAS.md) develop their lore, cast and restoration journey; the [concept explorer](docs/design/world-01/index.html) holds the written state sequences. This is design work, separate from the five nightscapes and mechanics already in the app.
+
 Help now includes optional interactive examples of squares, crosses, Opal and relays. Each button shows a real rule outcome while your sky stays paused.
 
 [Gameplay quality](docs/GAMEPLAY_QUALITY.md) improvements are delivered across readability, consequences, pacing, discovery, reward rhythm and replay. Each verified batch was merged and delivered before the next priority; physical-play acceptance remains open.

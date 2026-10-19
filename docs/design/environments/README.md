@@ -1,5 +1,7 @@
 # Starfall environments
 
+**Future restoration journey:** [The game bible](../STARFALL_GAME_BIBLE.md), [world atlas](../WORLD_ATLAS.md) and [approved Murk/map package](../world-01/README.md) develop twelve story locations, each with a distinct restoration reward. Lantern Landing is the recommended first proof. The journey is separate from the native five-nightscape set below; this documentation changes no runtime environment.
+
 Start with [five native nightscapes](night-production-09/README.md) and their [verification/delivery record](../../evidence/nightscapes-2026-10-18/README.md). Moonwake, Nebula Cradle, Shatterlight Reach, Night Garden and Ringdrift use separated alpha scenery, centered gameplay and the existing forecast. The [approved color keys](night-keys-08/README.md) and [scene kits](scene-kits-07/README.md) are their concept sources.
 
 **Historical studies:** [WoW sky research](alien-nightscapes-06/README.md), [open skies](open-skies-05/README.md), [celestial platforms](celestial-worlds-04/README.md) and the [earlier production strategy](PRODUCTION.md) explain the direction changes. Their concepts are not runtime evidence. `concept-cast.js` owns illustrative cast composition in offline reviews.

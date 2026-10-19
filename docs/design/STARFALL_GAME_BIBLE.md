@@ -1,98 +1,320 @@
-# STARFALL
-## Mini game bible · 16 October 2026
+# Starfall — game bible
 
-**A little pocket of moonlight. Release the light inside fallen crystals and help the sky shine again.**
+**Status:** Approved world and villain foundation; developed lore and story draft · **Owner:** Current implementer · **Updated:** October 18, 2026
 
-Design direction and compact art/game handoff. This document describes the approved premise and separates existing behavior from planned presentation. Numerical balance remains provisional. It does not expand the prototype's feature scope.
+**A journey to bring the light back.** Murk, the Hungry Moon, has swallowed the starlight from twelve little places. Help the star cast bring them back to life, follow his trail across the sky, and return the light he has hoarded.
 
-## 1. The world and the promise
+The user approved **Murk as illustrated and all twelve map locations**. This rewrite develops their universe, relationships and story. New lore, character behavior and the ending below are authored proposals within that direction. The journey is not implemented; this document replaces the original crystal-puzzle premise as the creative authority.
 
-**Premise.** Starshards hold starlight. Joining matching shards releases their light toward a constellation; reaching the round's goal illuminates the sky. The player is restoring a small, beautiful night sky, one satisfying choice at a time.
+**Read next:** [World atlas](WORLD_ATLAS.md) for each location’s life, appearance and distinction; [map explorer](world-01/index.html) for sixty restoration state notes; [restoration contract](STARLIGHT_RESTORATION.md) for the win and presentation boundary. **Next production slice:** storyboard Lantern Landing with the actual cast, then prove one playable restoration before producing the full journey.
 
-**Feeling.** Quiet wonder, tactile delight, gentle concentration. A round should feel like handling precious little objects in a moonlit dream. Relaxing does not mean passive: the move limit gives choices weight, without a timer or urgency effects.
+[Universe](#a-universe-on-a-neighborly-scale) · [Cast](#the-star-cast-carries-the-journey) · [Murk](#murk-the-hungry-moon) · [Journey](#the-twelve-location-journey) · [Story](#the-chapter-story) · [Puzzle](#the-puzzle-and-story-must-agree) · [Art and sound](#how-it-should-look-move-and-sound)
 
-**Three pillars**
-- **Beautiful to touch:** solid, chunky crystals with believable facets, small tilts and responsive highlights
-- **A readable little ritual:** choose a group, release its light, watch the board settle, choose again
-- **One coherent night:** materials, sky, motion, words and sound all express the same calm celestial world
+## The experience we promise
 
-**World boundaries.** The sky, the starshards and their released light are enough story for the first version. No exposition screen, named kingdom, factions or lore glossary. A distant hill silhouette or crystal-ball-like intimacy may inform atmosphere, but is a proposed composition, not a new scene or feature requirement. Moon imagery is atmospheric; no moon-phase rules, calendar or changing difficulty is implied.
+The player arrives somewhere that ought to be wonderful. A lantern cannot welcome anyone, a bridge cannot carry its neighbors, or an orchard cannot sing. The place still shows enough of its former life to make its absence felt. Stars tumble in, faces brighten, and each useful clear sends a little life back into the scene. At the end, something happens that could not happen at the beginning.
 
-The references contribute a sense of falling-star magic, storybook warmth and lunar spectacle. All artwork and visual grammar must be original: do not reproduce recognizable characters, spell icons, interfaces, names or signature compositions. The quality ambition is precision and charm at every interaction, not the size of a commercial adventure.
+The pleasure has three parts: **I made a good puzzle choice. I helped these characters. I can see what my work accomplished.** A progress counter supports that feeling; the restored place makes it memorable.
 
-**Optional later companion.** A small original guide could notice or gather released light. It never eats paid resources, demands feeding or establishes a collection economy. No mascot design is approved for production; the companion in the older concept image is illustrative, not a requirement.
+| Pillar | What it asks of the game |
+| --- | --- |
+| Small places worth caring about | Give each realm a daily purpose, a recognizable landmark and evidence that someone belongs there. |
+| Light shared through play | Connect committed puzzle progress to useful, legible environmental changes. Stars are willing helpers. |
+| An achievement with an ending | Announce the job, let the player anticipate its finish, and complete it with a distinctive local event. |
+| A playful journey through a coherent night | Keep the tactile cast, warm humor and readable miniature worlds together across changing materials and moods. |
 
-## 2. The game, in one round
+The tone combines quiet wonder with comic adventure. Concentration can have stakes without becoming frantic or punitive. Gloom is a temporary loss of warmth and activity. Restored night remains night: moonlight, cool shadows and peaceful darkness are beautiful parts of this universe.
 
-**Platform:** iPhone first, iOS 17+, SwiftUI shell and SpriteKit board. The deterministic game rules remain independent of rendering.
+## What is settled and what this rewrite develops
 
-- A **7 × 7** board contains five kinds of starshard, each with a unique color and silhouette
-- Tap **3 or more matching shards connected horizontally or vertically**; diagonal contact does not count
-- Every valid group uses **one move**. Each cleared shard contributes **one starlight** toward this round's goal
-- Provisional tuning: **70 starlight in 18 valid moves**. There is no timer; invalid taps spend nothing
-- Surviving shards fall down within their columns. Refill restores the board; newly formed groups do not automatically clear or score
-- Reaching the goal wins, including on the final move. Otherwise zero moves ends the round
-- A dead board receives bounded, free recovery so play can continue. The current implementation replaces three bottom-row cells to ensure a group; do not depict this as a full-board shuffle
+| Status | Direction |
+| --- | --- |
+| **User selected** | Starlight restoration as the story and win direction; Murk’s existing Hungry Moon design; the map and all twelve locations; concise theatrical villain appearances; connected miniature realms. |
+| **Existing approved cast** | Spark, Sunny, Pip, Twinkle, Nova and Dusk in their Crystal Glow identities. Production shapes and materials remain owned by the [cast contract](star-cast/README.md). |
+| **Developed here** | A lived-in neighborhood of stars; how light circulates; everyday culture; each cast member’s story role; Murk’s hoarding motive; four-act story and chapter ending. These details are proposals for continued development. |
+| **Open** | A separate recurring hero, exact playable targets and pressure, milestone pacing, scene timing, voice/music production and campaign save behavior. |
 
-**Starlight is the fiction for the existing cleared-shard count.** It is not an additional score formula, persistent balance, inventory, purchasable currency or reward to spend. The static HUD constellation visualizes that same progress, with no second goal or extra animation before another turn. The score remains truthful above 70; only the progress fraction caps at its goal.
+The user suggested that the destinations might be where the stars live. This bible develops that idea as **homes and shared places**: gardens, docks, crossings, workshops and gathering spaces belong to the same community. It does not assign an exclusive birthplace or level to each color family.
 
-**Screen hierarchy.** Keep Menu / Starfall / Settings, then progress and moves, then the dominant square board, a status area that can grow with text and New game. Use the existing safe-area layout and full-cell hit targets. Atmosphere stays behind play. The compact constellation sits beside the progress rail; preserve the board and essential labels as layouts adapt to larger text.
+The earlier exploration of a non-celestial villain is superseded by the explicit choice of Murk. A separate hero remains possible; the ensemble can carry this chapter without waiting for another character design.
 
-**Words the player sees — implemented copy**
-- Goal label: **Starlight · 0 / 70**; turns: **18 moves** / **1 move**
-- Menu instruction: **Tap 3 or more matching starshards connected horizontally or vertically.**
-- Menu rules/help: **1 shard = 1 starlight. No timer. Groups of one or two spend no move.**
-- Ordinary clear: **+{N} starlight**; recovery and terminal messages take precedence
-- Win: **Sky illuminated**; detail: **{N} starlight released**
-- Loss: **Out of moves**; detail: **{N} of 70 starlight released**
-- Actions/settings: **New game**, **Continue**, **Menu**, **Settings**, **Gentle sound**, **Calm effects**
+## A universe on a neighborly scale
 
-Use “starshard” for a board piece, “group” for connected matching pieces, “starlight” for round progress and “constellation” for its sky visualization. The [screen copy](../../App/StarfallApp.swift) and [HUD](../../App/StarlightHUD.swift) already use much of this vocabulary. **Remaining consistency pass:** [GameStore](../../App/GameStore.swift) still uses “jewels” in initial/invalid instructions and score announcements, and “cluster” in restart/recovery messages. The proposed invalid wording is **Find 3 matching shards connected horizontally or vertically**; recovery wording is **A new group is ready**, retaining the existing explanation that no extra move was used. VoiceOver keeps descriptive kind names, position and group size; the score accessibility label still reads “{N} of 70 jewels cleared” for compatibility. Changing that contract to starlight needs its own source and native verification.
+### The sky is a place to live
 
-## 3. Art direction: Candy Glass / Moonlight
+Starfall’s sky is an archipelago of small inhabited realms suspended among cloud banks, moonstone and deep blue space. A realm is large enough to have a life of its own and small enough to recognize as a single silhouette. Distance feels like a journey between villages, gardens and harbors, even when the route crosses a sea of stars.
 
-**Palette and silhouettes are a contract, not decoration.** Rose circle **#FF5999**; aqua diamond **#47D9FF**; amber upward triangle **#FFC247**; violet hexagon **#B37DFF**; mint axis-aligned square **#59FFB8**. Keep shapes identifiable without color. Background moves from midnight **#090E2B** toward muted plum **#2E1A4A**. Near-white text and pale-cyan progress accents sit above subdued scenery.
+The map depicts one connected neighborhood within a larger universe. It does not need a named empire, a royal family or a cosmic creation myth. The places feel older than this particular adventure: a polished handrail, a repaired sail and a fruit basket tell us people have cared for them before.
 
-**Material.** Candy Glass means luminous colored crystal, not gummy candy or flat neon. A generous body, broad bevels and a few purposeful facets should read at actual phone size. Use a consistent camera, light direction, scale and center pivot across all five types. Highlights should reveal volume without bleaching away the identifying color. Preserve spacing between pieces; sparkle never obscures a neighboring silhouette.
+The realms share gravity within their little landing places. Between them, stars can drift on local currents; boats, bridges and the ferry carry groups safely across longer gaps. Floating does not mean every traveler can instantly reach every destination. Murk’s comet-like flight lets him range ahead, while the cast restores the communal routes behind him. This is the fiction behind the journey, not a new movement simulation.
 
-**Approved material reference.** The first aqua tilt video remains the approved directional pilot: 3D geometry rendered offline at several angles, then displayed as 2D sprite frames. Keep that genuine change of visible facet and reflection. It is not runtime 3D, physics-based gameplay glass or dynamic refraction of the live board. The original aqua asset remains available through the explicit Debug-only `--crystal-pilot` comparison; it is separate from the current default family. The [earlier quality review](CRYSTAL_QUALITY_REVIEW.md) records that older family's pale highlights and grain. Directional approval does not establish native acceptance of a replacement.
+### What starlight does
 
-**Art handoff and runtime adoption.** The [sealed v2 family](../../Artwork/Crystals/v2/README.md) is now the default in Debug and Release. This is newly authored editable Blender geometry, material and lighting, not recovered original source or an alpha-identical replacement. Its [manifest](../../Artwork/Crystals/v2/manifest.json) and [recreation review](../../Artwork/Crystals/v2/review/REVIEW.md) preserve provenance, source-reproduction receipts and explicit old-to-new geometry differences. The package's `runtime_adopted: false` records its sealed pre-adoption handoff state; runtime integration copies the five imagesets into the app without rewriting that evidence.
+Starlight is the warmth that lets this world express its character. In a lantern it welcomes; in a seed it encourages growth; in a mill it becomes useful motion; in a bell it becomes a voice. Materials guide it differently: cloth carries it along stitches, roots along veins, glass through reflections and copper along channels.
 
-Each transparent atlas contains nine 256 px frames, with neutral index 4 (zero-based) and a fixed center pivot. [StarshardArtwork](../../App/StarshardArtwork.swift) validates padded frames, caches textures and normalizes neutral silhouette size. The scene uses the family only when all five kinds load; any missing or malformed member selects the existing procedural material factory for the complete board. Preserve full canvases and centered anchors during material refinement. Protect atlas edges from filtering bleed and check dark-background fringes. Judge both neutral and moving crystals at roughly **34 pt visible size** on the existing narrow-phone layout, not only enlarged renders. Offline package checks and runtime activation do not establish native sampling, motion, accessibility or device-memory acceptance; exact executed checks belong in the [validation record](../VALIDATION.md).
+Living stars carry a small glow of their own and willingly share it. Matching gathers that glow into a useful release. A star that helps does not die, shatter into a soul or become fuel. Story animation should let the helper lift, tumble or drift out of the active space while its light travels onward. The current clear effects are implementation history; any new treatment requires its own motion proof.
 
-**The sky.** Sparse, low-contrast stars and restrained moonlight provide depth. The current backdrop is static and the board uses a quiet opaque surface. The HUD has a small original constellation showing the existing progress fraction; keep its arrangement distinct from a copied zodiac or branded emblem. No scenic effect may compete with the group under the player's finger.
+Light circulates between inhabited places. Tending a garden, keeping a lamp or repairing a channel helps it continue. This is a simple story rule, not an economic or scientific system. Nobody pays light to enter a stage, buy a repair or maintain a home.
 
-## 4. Motion, sound and finish
+Murk removes the light already held in a place and interrupts its circulation. He leaves the underlying form intact but dormant: ribbons sag, color retreats, mechanisms fall still and living shapes curl inward. The stars retain enough personal glow to begin helping. Their work restarts each local place; the final return of Murk’s larger hoard reconnects the whole neighborhood. Earlier victories are complete and real before the finale.
 
-**One turn has one readable sequence.** Touch responds; the selected group clears; surviving pieces settle; refill arrives; control returns. Keep the existing single-turn input lock and interruption safety. Visual drama must never create an extra move, score event or accidental double tap.
+### Darkness belongs here too
 
-**Touch and clear.** Target a small tilt with a facet-light change, not continuous wobbling. Clearing should feel like chunky crystal breaking into a few substantial fragments and releasing soft sparks. Keep fragments local and short-lived, with a hard total cap; a large group must not produce a proportional screenful of debris. The desired feeling is a crisp release, not an explosive blast. [JewelScene](../../App/JewelScene.swift) implements a static touch-down preview of valid groups by dimming other pieces. Moving off the starting cell cancels; input commits only when the tracked touch ends in that same cell. The preview does not spend a move.
+Murk’s wrongdoing is taking what others need and refusing to share it. His dark body is not proof of evil. Dusk belongs to the friendly cast; Night’s Edge is worth restoring without turning it into daylight. Quiet, shadow, winter and sleep have healthy places here.
 
-**Shooting-star refill — implemented, aesthetic acceptance pending.** [StarfallArrivalEffects](../../App/StarfallArrivalEffects.swift) moves survivors straight down within their own columns before new shards travel diagonally down-left from beyond the board's upper/right edge into their assigned cells. The board clips the off-board portion; this is not yet travel through the surrounding sky. Arrival staggering and trails are bounded, with at most one trail per affected column; recovery replacements fade in place. These are presentation paths over deterministic destinations, with no change to adjacency, scoring or piece identity. Inspect trajectories, crossing paths, timing and settled clarity in play before approving the treatment's feel.
+Depict damage as understandable interruption. A loose seam, closed bud or stationary water thread gives the player a concrete job. Avoid devastated villages, frightened captives and residents whose distress punishes a failed attempt. The stars are disappointed and determined, then delighted by small successes.
 
-**Constellation release — planned presentation beyond the static HUD.** A restrained stream of light may connect the clear to sky progress, with one brief completion glow at the goal. Neither effect is implemented. Coalesce sparks for large groups. HUD progress remains immediate and authoritative; decorative travel must not hold input or simulate extra points.
+### How the community lives
 
-**Calm effects / Reduce Motion.** Preserve all rules, outcomes and information. Omit tilt, flying fragments, long trails and moving sky effects; use settled states and restrained static emphasis. Respect the system setting. VoiceOver must identify groups and results without needing to see animation. No shake, flash, strobe or flashing low-move warning.
+The stars gather in sheltered nooks beneath canopies, around warm lanterns and beside familiar workspaces. They use ribbons to mark routes, hang little lights at welcomes, send parcels by kite boat and recognize places by their sounds. A repaired object can remain charmingly patched; restoration does not erase its history.
 
-**Sound direction — quiet-tuck starter integrated.** The user selected all four short, muted quiet-tuck takes as the material anchor, finding glassy resonance lightweight and sparkly. [GameFeedback](../../App/GameFeedback.swift) now rotates those four local contacts once per valid clear, including terminal clears, through [QuietTuckPlayer](../../App/QuietTuckPlayer.swift). Keep rounded warmth, short damping and space between actions; avoid brittle shattering, reward-machine fanfares and one note per shard. Gentle sound stays optional and off by default; silence is a complete experience. Haptics retain their existing Calm effects/Reduce Motion policy. Fuller clears, a soft completion resolution and sparse warm music remain exploration; no extra settle or music layer is connected. The [integration record](audio/INTEGRATION.md) separates native checks from audible/haptic quality and physical-device acceptance.
+Show inhabitants in small readable groups rather than filling every terrace with NPCs. A waiting traveler, a gardener checking a bud or two friends watching a ferry is enough. These are story and art roles, not quests, dialogue trees or collectible characters. The first chapter needs no new named supporting cast.
 
-## 5. Scope, status and acceptance
+## The star cast carries the journey
 
-**Implementation status:** this revision describes the sealed v2 family's runtime adoption and the integrated quiet-tuck sound starter. The [design system](DESIGN_SYSTEM.md) records shared presentation contracts; the [validation record](../VALIDATION.md) identifies executed native checks and their exact source/evidence limits. The sealed artwork package retains its earlier handoff status. Source existence is not visual, device or human acceptance, and this documentation update performs no new native run.
+<img src="../evidence/crystal-glow-integration-2026-10-17/materials.png" width="720" alt="Approved Crystal Glow cast: aqua Spark, amber Sunny, mint Pip, rose Twinkle, violet Nova and dark Dusk, each with four expressions">
 
-**Existing baseline:** 7 × 7 rules, five color/shape kinds, 70/18 tuning, downward gravity and top refill, immediate starlight HUD with a static constellation, inline outcomes, local save/resume, touch preview/cancellation, diagonal refill presentation and accessibility/settings paths. The complete v2 crystal family and its bounded fragments are now the ordinary Debug and Release rendering path, with a complete procedural fallback and no family-enabling launch argument. The original aqua pilot remains an explicit Debug-only `--crystal-pilot` comparison, using procedural artwork for the other four kinds. The legacy asset and sealed v2 source package remain distinct.
+**Existing native cast reference:** renderer export at source `6cc9efd`, iPhone 17e / iOS 27.0. [Verification limits](../evidence/crystal-glow-integration-2026-10-17/README.md). This establishes existing visual vocabulary, not new story animation. The personalities below extend the approved appearance cues as proposed writing direction.
 
-**Approved direction, still to finish:** cohesive moonlit starshard world; the aqua pilot's pre-rendered 3D material direction; satisfying touch/clear effects. Remaining work includes copy consistency, native review and device profiling of the adopted family, motion/feel review, the proposed clear-to-constellation light/glow and sound exploration beyond the integrated quiet-tuck starter. Actual VoiceOver, system Reduce Motion operation, broader layout coverage, audible/haptic feel, physical-device performance and human play balance retain their source-bound evidence limits. Settings now opens directly in a large sheet at every text size; its old medium-height presentation is retired. The captured medium-sheet text-clipping report remains unresolved historical evidence, not a proven false positive. Preserve these boundaries when assessing the checklist below.
+| Character | Story personality and useful action | Comic vulnerability | A moment to develop |
+| --- | --- | --- | --- |
+| **Spark** | Curious, quick to notice an opening and eager to see what lies beyond it. Often looks toward the next destination first. | Starts moving before checking that everyone is ready. | At Ribbon Crossing, leans toward the gap; waits, then takes the first step after the repair. |
+| **Sunny** | Welcoming and encouraging. Makes a strange place approachable and notices when someone needs company. | Tries so hard to reassure everyone that a surprise catches the smile mid-sentence. | At Lantern Landing, invites the others into the first warm circle. |
+| **Pip** | Practical and inquisitive. Examines how things fit, trying a small adjustment before a grand gesture. | Gets absorbed in a tiny detail while a large change unfolds behind them. | At Sunwheel Mill, follows a cold channel, then discovers the whole wheel moving. |
+| **Twinkle** | Attentive to mood and beauty. Notices the first returning color or a neighbor’s small achievement. | Hangs back to admire something and has to hurry after the group. | At Silver Pools, sees the first reflection and draws the others close. |
+| **Nova** | Unhurried and observant. Notices patterns after watching them settle. | Occasionally rests in exactly the spot everyone is about to use. | At Bell Choir, opens sleepy eyes just before the final chime answers. |
+| **Dusk** | Mischievous and comfortable in shadow. A playful member of the same friendly group. | Enjoys a harmless surprise and sometimes startles themself. | At Aurora Falls, peeks from a dark arch, then joins the others beneath the colors. |
 
-**Avoid outright:** timer pressure; power-ups; level maps; progression systems; accounts/backend; shop, currencies, ads, IAP or external SDKs; random reward language; consumptive mascot loops; overlapping jewel silhouettes; full-screen bloom; idle jewel movement; aggressive camera motion; extra modal celebration steps; copied IP. No paid assets or external publication are part of this handoff.
+These behaviors should read without dialogue. They are not abilities, exclusive level solutions or bonuses. Any family can help any place. Avoid a single repetitive gag: Sunny can worry, Nova can act quickly and Dusk can be tender.
 
-**Done means checked at phone scale**
-1. All 49 cells and five silhouettes are immediately legible; text, safe areas, large text and at least 44 pt control targets are verified on Apple tooling
-2. Valid, invalid and diagonal taps, rapid taps, final-move wins, free recovery, restart and interrupted/resumed turns produce exactly the correct settled board, move count and score
-3. Neutral/tilted art keeps color identity, aligned pivots, clean alpha edges and stable apparent size; no atlas bleeding or distracting grain at device size
-4. Clear fragments and refill trails are bounded, cannot obscure the next decision, and leave no transient nodes behind; frame pacing and memory are profiled on a supported device
-5. Calm effects, Reduce Motion, VoiceOver labels/focus/results and sound off/on work in play, settings and resume. Decoration carries no exclusive information
-6. A first-time player can explain: “Match three connected shards, release their light, illuminate the sky.” No new feature is needed to make that premise clear
+The names act as recognizable faces of the family ensemble. Board pieces need not each receive a biography, and repeated family appearances do not imply a cloning plot. If unique named story leads and background family members are distinguished in production, establish that visually before writing individual histories.
 
-**Working references:** VISUAL_HANDOFF.md supplies the earlier implementation/layout baseline; STARFALL_VISUAL_TARGET.png is a mood mockup, not a screenshot or production atlas. Its mascot and result overlay are not approved scope, and its idle progress/highlight are illustration errors. The approved aqua v1 pilot supplies the material/multi-angle reference. Where the older layered-material recommendation differs, this bible establishes the newer pre-rendered-3D direction while preserving 2D runtime and the small prototype scope.
+**Dusk and dark stars:** the existing obstruction is a puzzle rule, not evidence that Dusk serves Murk. Do not depict a neighboring clear as hurting a friendly character. The eventual restoration-story animation should show a safe departure or release; current retained Dusk rules remain unchanged. No redemption mechanic, family conversion or revised score is implied.
+
+### Does Starfall need a separate hero?
+
+A recurring traveler could give future games another point of view: someone who befriends the stars, notices local needs and has a recognizable approach to problems. Their personality should work away from this particular light crisis. A curious, generous helper would give Murk’s possessive appetite a useful counterpart.
+
+For this chapter, the stars already have agency and the player’s choices cause restoration. A new hero could join later, but should earn a role before occupying every screen. No species, name, costume or hero artwork is selected. Keep Murk’s approved design intact while that separate question develops.
+
+## Murk, the Hungry Moon
+
+<img src="world-01/murk-v1.png" width="900" alt="Approved Murk concept sheet: a dark moon with a pale crescent rim, detached crescent hands, smoky tail, expressive eyes and four brief theft-story panels">
+
+**User-approved character concept, October 18 — not a production rig or gameplay capture.** Preserve this design. The original [built-in image prompts](world-01/prompts.json) and image remain unchanged. The map cameo is a smaller, sharper interpretation; use this sheet for close performance and consistency.
+
+### His desire and his mistake
+
+Murk loves beautiful light. He thinks a beautiful thing becomes more satisfying when it belongs entirely to him. A glowing lantern delights him; then he notices the next glow and wants that too. He confuses collecting everything with having enough.
+
+That motive supplies mischief without an elaborate tragic origin. He understands that he is taking something, and his furtive glance makes the theft intentional. He cares more about his next mouthful and grand appearance than the place he leaves behind. Keep him funny without making the harm invisible.
+
+He becomes smugly larger as stolen colors collect within his moonstone body. At Hollow Crown, he has occupied an existing communal light reservoir and gathered excess light there. He treats its broken ring as a throne and its contents as his private treasure. He did not create the world or secretly build all twelve places.
+
+### Preserve his recognizable shape
+
+Keep the lopsided charcoal-violet orb, asymmetric pale crescent rim, detached crescent hands, strong brows, expressive eyes, greedy expandable mouth and soft smoky tail. His body feels solid; the tail supplies loose movement and traces his departure. Stolen colors inside him are the visual record of his behavior.
+
+His scale can expand for a gloat or finale composition while the silhouette stays readable. Do not add a wizard costume, weapons or a monster transformation to make later scenes feel bigger. The existing face supports vanity, appetite, irritation and alarm.
+
+The glowing shapes inside his mouth in the concept are light, not captive helpers. Production staging must make the source clear: the ribbon comes from a lamp, fruit or reservoir while the living cast remains visibly safe outside. This clarifies the acting without redesigning him.
+
+### His performance vocabulary
+
+| Beat | Character action | Variation across the journey |
+| --- | --- | --- |
+| **Arrive** | Glides in as though the place has been waiting for him; notices the most appealing glow. | A broad introduction; later a furtive peek or an attempt to arrive unnoticed. |
+| **Feast** | Reaches, inhales and gathers light into his mouth with greedy concentration. | A lantern’s long ribbon; a tempting fruit; an interrupted attempt later. |
+| **Gloat** | Closes his eyes, pats his bright belly or displays the glow as his accomplishment. | Satisfaction becomes irritation when repaired places shine behind him. |
+| **Flee** | Leaves with a smoky flourish, spoiled by a backward glance or startled hiccup. | Confidence gives way to hurried attempts to hide the hoard. |
+
+Communicate each scene in a few clear actions. Do not replay a complete theft everywhere. The user’s Kamek reference informs the brief entrance, unmistakable act and exit; our character, movement and setting remain original. [Reference provenance](STARLIGHT_RESTORATION.md#kamek-reference-a-brief-entrance-with-a-clear-consequence) distinguishes the user’s observation from source research.
+
+Murk is absent during ordinary puzzle play in the first restoration comparison. No random sabotage, stolen player score or boss attack is implied. His presence comes from the trail, transition glimpses and comic responses to progress.
+
+## The twelve-location journey
+
+<img src="world-01/map-v1.png" width="700" alt="Approved twelve-location map: four tiers of small floating realms, from Lantern Landing at bottom left to Hollow Crown at upper left">
+
+**User-approved world concept — not runtime map UI.** The illustration mostly shows restored destinations. Miniature helpers are placeholders; production uses the approved cast. Individual dormant/intermediate artwork has not been produced. The [atlas](WORLD_ATLAS.md) develops the places; the [explorer](world-01/index.html) presents their written restoration sequence.
+
+The map holds **twelve levels total**, grouped into four regions of three. Each region establishes a material and emotional language; every location has a different purpose and final action. This does not imply twelve larger worlds with additional unplanned level sets.
+
+| Region | Locations, in route order | How the journey changes |
+| --- | --- | --- |
+| **Soft Skies** | 01 Lantern Landing → 02 Ribbon Crossing → 03 Kite Harbor | Find a welcome, reconnect neighbors and set out together. |
+| **Wild Moons** | 04 Seed Moon → 05 Silver Pools → 06 Frostfruit Orchard | Discover that the loss reaches growing and living places. |
+| **Clockwork Belt** | 07 Sunwheel Mill → 08 Bell Choir → 09 Starferry Station | Recovered places begin answering and supporting one another. |
+| **Night’s Edge** | 10 Aurora Falls → 11 Petal Beacon → 12 Hollow Crown | Find the hoard, restore its circulation and complete the return home. |
+
+The proposed route is linear and readable. A finished landmark lights its outgoing connection; the next destination follows from the local payoff. Clear reachable/in-progress/restored labels and shapes support color. An accessible location list mirrors the illustrated selection.
+
+Completed places stay restored. The player may revisit the finished scene or explicitly replay its restoration as a reenactment. An unfinished attempt can resume committed progress; retry restarts that attempt without showing homes destroyed again. Campaign persistence and migration need specification before implementation; this is not an implemented save contract.
+
+## The chapter story
+
+### Opening — the light goes missing
+
+Start close, at Lantern Landing. A few stars prepare an ordinary welcome: a lantern glows, a ribbon stirs and a traveler approaches. This small activity makes the loss legible without explaining the universe.
+
+Murk appears above the lantern. He admires it, checks whether anyone is looking, and draws its glow into a colored ribbon. The lantern goes quiet; pennants hang. He savors the new colors, gives a self-satisfied glance and departs along a smoky arc. The stars remain safe beside the dim dock.
+
+Sunny gathers the group. Spark notices a small glimmer still inside the lantern. The first shower brings helpers to the landing surface. The player sees one concrete job: **Bring the lantern back to life.** Entry waits for Begin; the first useful clear produces a small response. A lengthy prologue would weaken this connection.
+
+### Act I — we can help
+
+Lantern Landing teaches the emotional rule: the player’s actions bring warmth back. Ribbon Crossing turns warmth into connection. Its final seam lets an actual group cross, so the next destination feels earned. At Kite Harbor, shared success becomes departure: sails open and boats lift toward Wild Moons.
+
+Murk catches sight of the fleet. He looks back at the light behind it, briefly confused that anything he drained could shine again. His composure returns, and he hurries ahead. The cast has both a reason to travel and evidence that its help works.
+
+### Act II — these places are alive
+
+Seed Moon changes the scale of care. A closed seed becomes shelter rather than another machine to switch on. Silver Pools connects individual successes into a continuous flow. Frostfruit Orchard brings back a winter community’s gentle sound and drifting seeds, preserving its cool identity.
+
+The cast does not chase Murk past places that need help. It pauses, notices and restores them. That repeated choice defines the ensemble. At the orchard Murk tries for a newly glowing fruit; its returning chime surprises him into a hurried exit. His greed interferes with his dignity.
+
+### Act III — the neighborhood answers
+
+At Sunwheel Mill, restored motion sends a useful golden pulse onward. Bell Choir answers with a shared phrase. That answer wakes Starferry Station’s departure star. The next restoration then raises its canopy and completes the route across the wider gap.
+
+This is the story’s turn: the stars are no longer a tiny group following a trail through isolated damage. Places they have helped are visibly connected. The ferry departure echoes the smaller kite launch through a broader silhouette, steadier motion and a view of lights behind them. It celebrates accumulated work without adding a second objective to the local win.
+
+### Act IV — let the light go
+
+Aurora Falls gives a breath after the ferry crossing. Movement returns to a wide curtain of color; restored night feels expansive and peaceful. Petal Beacon narrows that wonder into direction. Its opening lens reveals Hollow Crown and Murk’s hoard.
+
+Murk tries to conceal the glow behind his round body, then realizes it escapes around him. The joke communicates the situation immediately. He retreats into the reservoir, clutching at everything he has gathered.
+
+At Hollow Crown the player does what the journey has taught: restore a place so it can work. The final task repairs the reservoir’s ring and circulation. Murk’s defeat follows from that restoration; it introduces no combat system.
+
+### Finale — a complete return
+
+The proposed ending has six readable beats:
+
+1. **The final clear commits the win.** Showers stop and the last missing segment settles. The player already succeeded.
+2. **The reservoir opens.** Trapped colors separate into outward streams. The light belongs to the whole scene, not a score fountain.
+3. **Murk loses his hoard.** As the stored glow returns to circulation, his inflated posture subsides. He tries to keep one last wisp and hiccups it free. He remains the same recognizable moon.
+4. **The map answers.** Briefly echo the actual places: moving vanes, answering bells, fruit lanterns, sails and the welcoming dock. Prior repairs remain intact.
+5. **The cast gathers.** Return the emotional focus to Lantern Landing, where the welcome can now happen. A few arrivals or shared looks complete the opening’s interrupted activity.
+6. **The player can stay.** Settle on the restored map with revisit and replay available. Let a final quiet image breathe.
+
+Recommended last Murk beat: he drifts away looking back, embarrassed, with a faint hiccup in his smoky trail. His escape takes no light from the restored map. This closes the conflict while leaving his personality available for another story; a sequel cliffhanger is unnecessary.
+
+His redemption is not required. Nor must he be destroyed or revealed as secretly good. The chapter ends because the neighborhood has its light back and the player can see the result.
+
+### Vignette plan
+
+| Placement | Essential story information | Scale |
+| --- | --- | --- |
+| Before 01 | Murk steals; the cast chooses to help. | Full introductory four-beat theft. |
+| After 03 | Their work succeeds; Murk notices. | Brief reaction during departure. |
+| At 06’s completion | Life returns; greed makes him comic. | Failed snatch and startled retreat. |
+| After 08, optional | The world becomes cheerful behind him. | Irritated listening reaction; omit if pacing feels crowded. |
+| At 11’s completion | The hoard and destination are revealed. | One attempt to hide it. |
+| After 12 | The light returns and the journey is complete. | Short authored finale and settled endpoint. |
+
+Exact durations need animatic testing. Ordinary entries use a local need and a cast reaction; they do not all require Murk footage. Skipping or quiet presentation reaches the same stage, objective and completion. Replays enter promptly. No story callback awards points, unlocks a stage or advances showers.
+
+## The puzzle and story must agree
+
+The proposed level objective is **collect the announced amount of starlight to complete this place’s restoration before the playable space overflows**. Pause/manual play remains supported in the first comparison. Author exact goals and pacing after demonstrating useful choices; First Light’s existing target of 18 is not a universal campaign target.
+
+Progress is one truthful value. A clear contributes to the goal; the environment presents it. The player does not spend earned light on separate repairs, tap every prop, fill hidden sub-meters or empty the board to claim a win. A large finishing clear may pass several visual checkpoints; excess score must not invalidate success.
+
+The five review states are **need → response → change → near-completion → purpose restored**. The explorer labels them 0/25/50/75/100%; these are storyboard checkpoints, not locked numeric gates. Life should return between major events. The final event remains worth reaching after the middle is already attractive.
+
+| Layer | Role in the experience |
+| --- | --- |
+| Puzzle choice | Creates a committed result: light gained, room made or a useful configuration preserved. |
+| Immediate response | A clear, expression and restrained light transfer make the action responsive. |
+| Restoration | A seam joins, a root reconnects or a mechanism moves as the job advances. |
+| Completion | The location performs its distinctive final action, then stays satisfying at rest. |
+| Journey | The completed place and connection remain visible on the map. |
+
+Restoration cannot supply strategy missing from the puzzle. Assess whether players understand a choice, anticipate the finishing clear and want another round. Simulated balance samples and passing builds are not evidence of satisfaction.
+
+### Current implementation is a separate baseline
+
+The app remains the falling-sky prototype with accumulating stars, automatic showers, pause/manual advance, matching growth, Opal, storms and local settings. Automatic aging is disabled; historical Dusk rounds retain their rules. The five native nightscapes remain the current settings, separate from this future story map. First Light is its separate fixed objective. The original 7×7, 70-jewel/18-move puzzle remains Debug material; its move limit and shard terminology do not define this journey. [Current product instructions](../../README.md), [mechanics adoption status](../EXPERIMENTS.md) and [validation](../VALIDATION.md) own live implementation facts.
+
+Constellation tracing, swaps, recipes and other current mechanics follow their own adoption evidence. A location’s purpose does not automatically add gardening, musical timing, water routing or boss attacks. This rewrite changes no source, build configuration, saves or app resources.
+
+## How it should look, move and sound
+
+### Shared visual language
+
+Use the approved map’s miniature composition: clear silhouettes, solid rounded structures, hand-finished details, soft cloud supports and luminous materials against spacious blue-violet sky. Keep one coherent light and camera language. A realm needs a readable outer shape before decorative detail.
+
+The actual Crystal Glow cast supplies a sharper, brighter focal point than most scenery. Test its real silhouettes early. Background star ornaments should not resemble selectable pieces at the same scale. The board remains dominant and controls readable from the darkest state onward.
+
+Architecture uses recognizable tasks and domestic scale: a dock to wait on, a bridge to cross, a sheltered place to sit. Avoid interchangeable glowing temples. Hollow Crown can be grand because smaller places establish what its light supports.
+
+| Region | Material and light | Characteristic motion and sound |
+| --- | --- | --- |
+| Soft Skies | Cream ceramic, rosewood, lavender cloth; honey-colored welcomes in cloud space. | Unfurling ribbons, lifting sails, soft fabric and warm wooden contacts. |
+| Wild Moons | Rooted moonstone, mint water, translucent frost; light inside living or flowing forms. | Growth, connected streams, fruit sways; water and sparse glass-like chimes. |
+| Clockwork Belt | Rounded copper, slate, timber and golden glass; light follows useful routes. | Turning, answering and departure; a slow mechanical pulse and rounded bells. |
+| Night’s Edge | Dark glass, pale petals, silver stone and restrained prismatic color; healthy darkness remains. | Flowing curtains, opening forms and outward release; spacious air and a quiet musical return. |
+
+These are creative sound and motion roles, not generated assets. The [atlas](WORLD_ATLAS.md) makes individual differences concrete; [current nightscape production](environments/night-production-09/README.md) owns the existing native scenery contract.
+
+### Restoration changes behavior
+
+Do not apply one saturation slider to every stage. At 0%, purpose is interrupted. At the first milestone, a small action becomes possible. The middle changes relationships or motion. Near the end, a remaining gap makes the finish understandable. At 100%, life continues beyond the celebration.
+
+An orchard remains wintry; a pool remains cool; night remains dark enough to admire the stars. Completion returns function and character, not maximum brightness. The map should show different kinds of success.
+
+### Animation and audio
+
+Keep weight in landings, readable faces and generous pauses between gestures. Murk’s floating hands and loose tail exaggerate intent; the stars’ compact bodies retain their shapes. Selective movement makes a scene inhabited without everything bobbing at once.
+
+One clear has a coherent sound response, not one competing sound per star. Build from the existing warm contact direction; regional ambience adds identity at low density. A common short melodic idea could return in different materials and resolve in the finale. This is a composition brief, not a music system or recorded soundtrack.
+
+Silence is complete. Every chime, warning, restoration beat and villain joke needs a visible equivalent. Calm effects and Reduce Motion retain the information and settled rewards with less travel and oscillation. Full animation in ordinary play remains part of acceptance; stills cannot establish it.
+
+## Language and storytelling rules
+
+Use concrete verbs and short invitations: **Light the lantern. Mend the crossing. Wake the seed. Let the water flow.** Pair local purpose with the measurable goal. Names should be memorable enough for a child to say and specific enough for an artist to picture.
+
+Possible completion lines are “The crossing is open,” “The orchard sings again” and “The light is home.” These are proposed copy, not current UI strings. Avoid announcing the whole universe restored at the end of an early level.
+
+Character sounds can be expressive breaths, delighted notes and small grumbles. Dialogue, if used, adds personality rather than explains what is already visible. The action should survive without dialogue; essential instructions and outcomes still require readable text and native accessibility semantics.
+
+| Term | Meaning in this bible |
+| --- | --- |
+| **Star / star cast** | Living helpers and familiar families. “Starshard” belongs to the old crystal-puzzle premise. |
+| **Starlight** | Shared light and the round’s progress; not currency, a soul or consumable inventory. |
+| **Restoration** | Returning a location’s useful life through one completed puzzle objective. |
+| **Realm / location** | One small place and one level in this chapter. |
+| **Region** | Three related locations with shared atmosphere and pacing. |
+| **Murk** | The Hungry Moon; he/him in this draft. Preserve the user’s final spelling and chosen design. |
+| **Hollow Crown** | An existing communal reservoir occupied by Murk, not a hidden thirteenth location. |
+
+## Production decisions and checks
+
+This is a complete creative rewrite for the chosen foundation, not a declaration that all lore or production assets are approved. Develop the first slice with the journey in view, and revise what does not work in observed play.
+
+| Next deliverable | What it must answer |
+| --- | --- |
+| Lantern Landing at five states with the real cast | Can someone identify the need, distinguish useful middle changes and anticipate the final welcome? |
+| Opening theft and completion animatic | Do Murk’s intent, the stars’ safety and the player’s role read without dialogue? Is the approved design consistent? |
+| One bounded playable restoration | Is the target understandable, the finish earned and replay pleasant? Can the player explain a useful choice? |
+| Regional comparison after that proof | Do silhouette, materials, motion and reward distinguish twelve places without twelve new rule systems? |
+| Finale animatic | Does returning the hoard preserve earlier wins, resolve the story and leave a satisfying map? |
+
+Choose hero involvement before scripting hero-dependent shots; settle save/retry semantics before campaign implementation; set targets after observable puzzle choices; match the map cameo to the approved sheet when making the first Murk production asset. The current implementer owns these follow-ups with user review of creative results.
+
+Implementation must satisfy [restoration acceptance](STARLIGHT_RESTORATION.md#acceptance-and-decision-points) and the [current environment contract](environments/night-production-09/README.md): deterministic outcomes and saves, interruption safety, sparse/dense readability, native interaction, full/reduced motion and release-stage accessibility. No campaign, backend, purchases or monetization code is introduced by this bible.
+
+## Authority and revision record
+
+- **This bible:** current premise, lore, cast writing, Murk and story arc.
+- **[World atlas](WORLD_ATLAS.md):** each place’s daily life, art direction and distinctive payoff.
+- **[World data](world-01/world-data.js):** the explorer’s ordered records and exact five-state notes; update this owner when revising those notes.
+- **[Restoration contract](STARLIGHT_RESTORATION.md):** progress, win, replay and runtime boundaries.
+- **[Art package](world-01/README.md):** original images, provenance and explorer review.
+- **[Roadmap](../ROADMAP.md) and [experiments](../EXPERIMENTS.md):** implementation priorities and adoption status.
+
+October 18: the user approved Murk as made and all twelve locations, then requested this full lore, universe and story rewrite. The [October 16 mini bible](STARFALL_GAME_BIBLE-original-puzzle-2026-10-16.md) is preserved unchanged for its original puzzle and art references. Its prohibition on maps and its starshard/move-limit premise are superseded for this creative direction; current app behavior remains separately documented.
+
+**Evidence boundary:** the map, Murk sheet and existing cast export were visually inspected. New lore, stage prose and scenes are design work; no new native build, gameplay, animation, actual VoiceOver, device or human-play acceptance is claimed. Documentation/link/hygiene results are recorded with the [concept package](world-01/README.md#verification).

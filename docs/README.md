@@ -27,7 +27,7 @@ Start with [the roadmap](ROADMAP.md), [writing process](WRITING.md), and [visual
 
 [EXPERIMENTS.md](EXPERIMENTS.md) owns adoption status; [ENGINEERING.md](ENGINEERING.md) owns concrete technical risks. Do not infer current acceptance from an old report.
 
-[Environment production](design/environments/PRODUCTION.md) is the repeatable art-direction process and roadmap for the five selected living locations.
+The rewritten [game bible](design/STARFALL_GAME_BIBLE.md), [world atlas](design/WORLD_ATLAS.md) and [art package](design/world-01/README.md) develop the approved Murk and twelve-location restoration journey. This future story design is separate from the [five native nightscapes](design/environments/night-production-09/README.md); it does not change current gameplay or campaign persistence.
 
 [Observatory interface direction](design/OBSERVATORY_INTERFACE.md) owns the selected A HUD, comet progress trail, cast guidance and menu component family.
 
