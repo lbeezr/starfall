@@ -9,6 +9,18 @@ from unittest.mock import patch
 spec = importlib.util.spec_from_file_location('rc_platforms', Path(__file__).with_name('rc-platforms.py'))
 rc = importlib.util.module_from_spec(spec); spec.loader.exec_module(rc)
 
+MINIMUM_IOS_TESTS = [
+    'StarfallUITests/SkyFlowInteractionTests/testWelcomeEntryBackgroundAndAnotherSky',
+    'StarfallUITests/SkyFlowInteractionTests/testFirstLightWinReplayAndFullSky',
+    'StarfallUITests/FallingSkyInteractionTests/testSystemReduceMotionKeepsManualPlayWorking',
+]
+TABLET_TESTS = [
+    'StarfallUITests/SkyFlowInteractionTests/testLandscapeWelcomeEntryAndPreferences',
+    'StarfallUITests/LanternLandingInteractionTests/testTabletRotationKeepsRestorationAndNativeInput',
+    'StarfallUITests/SkyFlowInteractionTests/testLargestTextWelcomeEntryAndBackRemainReachable',
+    'StarfallUITests/CriticalMassInteractionTests/testLargestTextCalmKeepsWarningAndHelpUsable',
+]
+
 
 class RCPlatformsTests(unittest.TestCase):
     def inventory(self):
@@ -24,8 +36,8 @@ class RCPlatformsTests(unittest.TestCase):
     def test_minimum_os_is_not_satisfied_by_newest_phone_and_custom_names_are_supported(self):
         selected = rc.select_platforms(self.inventory())
         self.assertEqual([s['udid'] for s in selected], ['old', 'pad'])
-        self.assertIn(rc.TABLET_TEST, selected[1]['tests'])
-        self.assertNotIn(rc.TABLET_TEST, selected[0]['tests'])
+        self.assertEqual(selected[0]['tests'], MINIMUM_IOS_TESTS)
+        self.assertEqual(selected[1]['tests'], TABLET_TESTS)
 
     def test_missing_minimum_runtime_or_tablet_blocks_acceptance(self):
         data = self.inventory(); del data['devices']['com.apple.CoreSimulator.SimRuntime.iOS-17-5']
@@ -36,31 +48,41 @@ class RCPlatformsTests(unittest.TestCase):
             rc.select_platforms(data)
 
     def test_selected_tests_cannot_pass_with_skips_or_missing_executions(self):
-        good = dict(passedTests=3, totalTestCount=3, failedTests=0, skippedTests=0)
-        rc.verify_summary(good, 3)
-        for field in good:
-            bad = {**good, field: good[field] + 1}
-            with self.assertRaises(ValueError): rc.verify_summary(bad, 3)
-        with self.assertRaises(ValueError): rc.verify_summary({}, 3)
+        for count in (len(MINIMUM_IOS_TESTS), len(TABLET_TESTS)):
+            good = dict(passedTests=count, totalTestCount=count, failedTests=0, skippedTests=0)
+            rc.verify_summary(good, count)
+            for field in good:
+                bad = {**good, field: good[field] + 1}
+                with self.assertRaises(ValueError): rc.verify_summary(bad, count)
+            with self.assertRaises(ValueError): rc.verify_summary({}, count)
+        with self.assertRaises(ValueError):
+            rc.verify_summary(dict(passedTests=3, totalTestCount=3, failedTests=0, skippedTests=0), len(TABLET_TESTS))
 
     def test_matrix_names_exist_and_iphone_plan_accounts_for_tablet_exclusion(self):
         from native_test_plan import plan, TABLET_ONLY
         root = Path(__file__).resolve().parents[1]
-        expected, _ = plan(root, 'dev')
-        names = [n for values in expected['StarfallUITests']['testMethodsBySource'].values() for n in values]
-        self.assertNotIn('testLandscapeWelcomeEntryAndPreferences', names)
-        self.assertEqual(list(TABLET_ONLY.values()), [rc.TABLET_TEST])
-        source = '\n'.join(p.read_text() for p in (root / 'UITests').glob('*.swift'))
+        self.assertEqual(rc.TESTS, {'minimum-ios': MINIMUM_IOS_TESTS, 'tablet': TABLET_TESTS})
+        self.assertTrue(set(TABLET_ONLY.values()).issubset(rc.TESTS['tablet']))
+        self.assertTrue(set(TABLET_ONLY.values()).isdisjoint(rc.TESTS['minimum-ios']))
+        for stage in ('dev', 'rc'):
+            expected, _ = plan(root, stage)
+            names = [n for values in expected['StarfallUITests']['testMethodsBySource'].values() for n in values]
+            self.assertTrue(set(TABLET_ONLY).isdisjoint(names), stage)
         for tests in rc.TESTS.values():
-            for identifier in tests: self.assertIn('func ' + identifier.rsplit('/', 1)[1] + '(', source)
+            self.assertEqual(len(tests), len(set(tests)))
+            for identifier in tests:
+                target, source, method = identifier.split('/')
+                self.assertEqual(target, 'StarfallUITests')
+                self.assertIn('func ' + method + '(', (root / 'UITests' / (source + '.swift')).read_text())
 
     def test_command_preserves_selected_device_bounded_waits_and_ad_hoc_signing(self):
-        selection = rc.select_platforms(self.inventory())[0]
-        command = rc.test_command(selection, Path('/tmp/derived'), Path('/tmp/result'))
-        self.assertIn('platform=iOS Simulator,id=old', command)
-        self.assertIn('240', command); self.assertIn('CODE_SIGN_IDENTITY=-', command)
-        self.assertEqual(sum(arg.startswith('-only-testing:') for arg in command), 3)
-        self.assertFalse(any('skip-testing' in arg for arg in command))
+        for selection, tests in zip(rc.select_platforms(self.inventory()), (MINIMUM_IOS_TESTS, TABLET_TESTS)):
+            command = rc.test_command(selection, Path('/tmp/derived'), Path('/tmp/result'))
+            self.assertIn('platform=iOS Simulator,id=' + selection['udid'], command)
+            self.assertIn('240', command); self.assertIn('CODE_SIGN_IDENTITY=-', command)
+            self.assertEqual([arg for arg in command if arg.startswith('-only-testing:')],
+                             ['-only-testing:' + name for name in tests])
+            self.assertFalse(any('skip-testing' in arg for arg in command))
 
 
 class RCExecutionTests(unittest.TestCase):
@@ -85,7 +107,8 @@ class RCExecutionTests(unittest.TestCase):
 
         def export(*args, **kwargs):
             if summary_error: raise summary_error
-            return json.dumps(summary or dict(passedTests=3, totalTestCount=3, failedTests=0, skippedTests=0)).encode()
+            count = len(TABLET_TESTS)
+            return json.dumps(summary if summary is not None else dict(passedTests=count, totalTestCount=count, failedTests=0, skippedTests=0)).encode()
 
         with patch.object(rc.subprocess, 'run', side_effect=run), patch.object(rc.subprocess, 'check_output', side_effect=export):
             error = None

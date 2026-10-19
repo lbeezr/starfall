@@ -7,13 +7,14 @@ import shutil
 import subprocess
 import tempfile
 
-TABLET_TEST = 'StarfallUITests/SkyFlowInteractionTests/testLandscapeWelcomeEntryAndPreferences'
+from native_test_plan import TABLET_ONLY
+
 TESTS = {
     'minimum-ios': [
         'StarfallUITests/SkyFlowInteractionTests/testWelcomeEntryBackgroundAndAnotherSky',
         'StarfallUITests/SkyFlowInteractionTests/testFirstLightWinReplayAndFullSky',
         'StarfallUITests/FallingSkyInteractionTests/testSystemReduceMotionKeepsManualPlayWorking'],
-    'tablet': [TABLET_TEST,
+    'tablet': [*TABLET_ONLY.values(),
         'StarfallUITests/SkyFlowInteractionTests/testLargestTextWelcomeEntryAndBackRemainReachable',
         'StarfallUITests/CriticalMassInteractionTests/testLargestTextCalmKeepsWarningAndHelpUsable'],
 }
