@@ -1,0 +1,116 @@
+{
+  "base": "2d94194742847def4195c526000b7852768bf7d6",
+  "testSourceSHA256": "d9b8cec49639fd6612f9fa772b681d3ca0f88cf49afd63906bd841b4339598e9",
+  "products": "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-5baffeb4084c/test-products/test_sim_2026-10-19T16-52-31-717Z_pid95357_bda3dcf7.xctestproducts",
+  "simulator": "8A220F57-FA99-452A-A864-16FC01D9CB58",
+  "stage": "dev",
+  "results": [
+    {
+      "stage": "hosted",
+      "command": [
+        "xcodebuild",
+        "-testProductsPath",
+        "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-5baffeb4084c/test-products/test_sim_2026-10-19T16-52-31-717Z_pid95357_bda3dcf7.xctestproducts",
+        "-destination",
+        "platform=iOS Simulator,id=8A220F57-FA99-452A-A864-16FC01D9CB58",
+        "-collect-test-diagnostics",
+        "never",
+        "-parallel-testing-enabled",
+        "NO",
+        "-test-timeouts-enabled",
+        "YES",
+        "-default-test-execution-time-allowance",
+        "90",
+        "-maximum-test-execution-time-allowance",
+        "180",
+        "-only-testing:StarfallAppTests",
+        "-resultBundlePath",
+        "/private/tmp/starfall-ci-combined-2d94194/hosted.xcresult",
+        "test-without-building"
+      ],
+      "started": "2026-10-19T16:58:43.939443+00:00",
+      "exitCode": 0,
+      "ended": "2026-10-19T17:00:53.980196+00:00",
+      "counts": {
+        "passedTests": 328,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "totalTestCount": 328
+      },
+      "countGate": "passed"
+    },
+    {
+      "stage": "ui",
+      "command": [
+        "xcodebuild",
+        "-testProductsPath",
+        "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-5baffeb4084c/test-products/test_sim_2026-10-19T16-52-31-717Z_pid95357_bda3dcf7.xctestproducts",
+        "-destination",
+        "platform=iOS Simulator,id=8A220F57-FA99-452A-A864-16FC01D9CB58",
+        "-collect-test-diagnostics",
+        "never",
+        "-parallel-testing-enabled",
+        "NO",
+        "-test-timeouts-enabled",
+        "YES",
+        "-default-test-execution-time-allowance",
+        "90",
+        "-maximum-test-execution-time-allowance",
+        "240",
+        "-only-testing:StarfallUITests",
+        "-resultBundlePath",
+        "/private/tmp/starfall-ci-combined-2d94194/ui.xcresult",
+        "-skip-testing:StarfallUITests/FallingSkyInteractionTests/testVoiceOverReadsPausedGrowthFeedback",
+        "-skip-testing:StarfallUITests/ObservatoryInteractionTests/testVoiceOverSpeechActivationPropsClearAndMenuFocus",
+        "-skip-testing:StarfallUITests/ObservatoryInteractionTests/testVoiceOverLargestTextOverflowAndReplay",
+        "-skip-testing:StarfallUITests/ObservatoryInteractionTests/testVoiceOverAutomaticRainMenuAndBackground",
+        "-skip-testing:StarfallUITests/ObservatoryInteractionTests/testVoiceOverFullFirstLightRoundRestoreAndReplay",
+        "-skip-testing:StarfallUITests/ObservatoryInteractionTests/testVoiceOverOpalIdentityActivationAndStormCue",
+        "-skip-testing:StarfallUITests/SkyFlowInteractionTests/testLandscapeWelcomeEntryAndPreferences",
+        "-skip-testing:StarfallUITests/LanternLandingInteractionTests/testTabletRotationKeepsRestorationAndNativeInput",
+        "-skip-testing:StarfallUITests/RibbonCrossingInteractionTests/testTabletRotationKeepsRibbonRestorationAndNativeInput",
+        "test-without-building"
+      ],
+      "started": "2026-10-19T17:00:54.133753+00:00",
+      "exitCode": 0,
+      "ended": "2026-10-19T18:16:42.487136+00:00",
+      "counts": {
+        "passedTests": 123,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "totalTestCount": 123
+      },
+      "countGate": "passed"
+    }
+  ],
+  "preparedSource": {
+    "base": "d385397a5fd8e777279272015148e7cdd54ed3a0",
+    "changedNativeInputs": {
+      "UITests/FallingSkyInteractionTests.swift": "d9b8cec49639fd6612f9fa772b681d3ca0f88cf49afd63906bd841b4339598e9",
+      "UITests/NativeSkyControls.swift": "0fa4e24ed5d89704510c5ad2fedbd5a5fbaac94a6a52a03ff3ca7c0f57d538ec",
+      "UITests/PacingCueUITests.swift": "dc62a073ebf97c444af268c1ea48f26aa6b285543afb14cc226cadd7c4311f0d",
+      "UITests/SkyDialogueInteractionTests.swift": "5f5b30c64bbba6c53177f1cf5446efd55d897f119be5925cfef78b46c8520fd6",
+      "UITests/SkyLessonInteractionTests.swift": "20898b651512fb98fafc7b1b18c0a381e2890efea6e08e4e0dc3936a37cf327b"
+    }
+  },
+  "cleanCheckout": true,
+  "expectedCounts": {
+    "hosted": 328,
+    "ui": 123
+  },
+  "uiSeconds": 4546.151,
+  "export": {
+    "testPassed": true,
+    "xcodebuildExitCode": 0,
+    "namedScreenshotsExported": 39,
+    "partialEvidenceOnly": false,
+    "complete": true,
+    "errors": []
+  },
+  "manifestSHA256": "050711ee5216b5696f367537bddfe5f6142bdbdf9ef32d4449e4312a4f1c388c",
+  "visualInspection": {
+    "result": "No portrait black crop. Entry capture preceded the action-panel reveal; the separate correction is verified in entry-capture-readiness.json.",
+    "limits": "Source 2d94194 before Kite and storm observation changes; not current-main remote acceptance.",
+    "scope": "39 exported full-phone PNGs reviewed in contact sheets; family-rose-before, rapid-input-settled, flow-entry, island-timer-active, flow-win and flow-full inspected individually."
+  }
+}

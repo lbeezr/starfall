@@ -39,6 +39,12 @@ final class SkyFlowInteractionTests: XCTestCase {
         let screenshot = app.frame.width > app.frame.height ? XCUIScreen.main.screenshot() : app.screenshot()
         let image = XCTAttachment(screenshot: screenshot); image.name = name; image.lifetime = .keepAlways; add(image)
     }
+    @MainActor private func captureEntry(_ app: XCUIApplication, _ name: String) {
+        // The heading precedes the animated action panel. A title alone does not
+        // establish a usable entry screen, especially in a compact viewport.
+        app.revealSkyControls([app.buttons["sky.begin"]])
+        capture(app, name)
+    }
     @MainActor private func pause(_ app: XCUIApplication) {
         tap("experiment.settings", app); tap("experiment.pause", app)
         XCTAssertTrue(app.buttons["experiment.next"].waitForExistence(timeout: 5))
@@ -51,7 +57,7 @@ final class SkyFlowInteractionTests: XCTestCase {
         tap("sky.start", app)
         XCTAssertEqual(app.staticTexts["sky.title"].label, "Make room for the stars")
         XCTAssertFalse(app.buttons["experiment.settings"].exists)
-        capture(app, "flow-entry")
+        captureEntry(app, "flow-entry")
         XCUIDevice.shared.press(.home); app.activate()
         XCTAssertTrue(app.buttons["sky.begin"].waitForExistence(timeout: 5))
         XCTAssertFalse(app.buttons["experiment.cell.0.0"].exists)
@@ -78,7 +84,7 @@ final class SkyFlowInteractionTests: XCTestCase {
         tap("experiment.settings", app); tap("experiment.new", app)
         XCTAssertTrue(app.buttons["sky.begin"].waitForExistence(timeout: 5))
         XCTAssertFalse(app.buttons["experiment.cell.0.0"].exists)
-        capture(app, "flow-another-entry")
+        captureEntry(app, "flow-another-entry")
     }
     @MainActor func testFirstLightWinReplayAndFullSky() {
         // Two bounded rounds (up to 50 + 40 native actions), then a persisted ending relaunch.
@@ -102,7 +108,7 @@ final class SkyFlowInteractionTests: XCTestCase {
         tap("experiment.replay", app)
         XCTAssertEqual(app.staticTexts["sky.title"].label, "Lantern Landing")
         XCTAssertTrue(app.staticTexts["sky.subtitle"].label.contains("same First Light opening"))
-        capture(app, "flow-first-light-replay-explanation")
+        captureEntry(app, "flow-first-light-replay-explanation")
         tap("sky.begin", app); pause(app)
         for _ in 0..<40 {
             if outcome.exists { break }
@@ -122,7 +128,7 @@ final class SkyFlowInteractionTests: XCTestCase {
         XCTAssertEqual(outcome.label, "No room to land")
         tap("experiment.new", app)
         XCTAssertEqual(app.staticTexts["sky.title"].label, "Make room for the stars")
-        capture(app, "flow-fresh-after-full")
+        captureEntry(app, "flow-fresh-after-full")
     }
 
     @MainActor func testResultActionsRemainHittableAboveTheVisibleFinalBoard() {
@@ -139,7 +145,7 @@ final class SkyFlowInteractionTests: XCTestCase {
         tap("experiment.replay", app)
         XCTAssertTrue(app.buttons["sky.begin"].waitForExistence(timeout: 5))
         XCTAssertTrue(app.staticTexts["sky.subtitle"].label.contains("current sky settings"))
-        capture(app, "flow-replay-explanation")
+        captureEntry(app, "flow-replay-explanation")
         XCTAssertFalse(app.buttons["experiment.cell.0.0"].exists)
     }
 
@@ -196,7 +202,7 @@ final class SkyFlowInteractionTests: XCTestCase {
         tap("experiment.settings", app); tap("sky.home", app)
         tap("sky.firstLight", app)
         XCTAssertEqual(app.staticTexts["sky.title"].label, "Lantern Landing")
-        capture(app, "entry-staged-over-retained-sky")
+        captureEntry(app, "entry-staged-over-retained-sky")
         app.terminate(); app.launchArguments = ["--sky-flow-review"]; app.launch()
         tap("sky.resume", app)
         assertRetained()
@@ -217,13 +223,13 @@ final class SkyFlowInteractionTests: XCTestCase {
         let begin = app.buttons["sky.begin"]
         XCTAssertGreaterThanOrEqual(begin.frame.height, 44)
         XCTAssertFalse(app.buttons["experiment.cell.0.0"].exists)
-        capture(app, "flow-reduced-entry")
+        captureEntry(app, "flow-reduced-entry")
         tap("sky.begin", app); pause(app)
         tap("experiment.next", app)
         tap("experiment.settings", app); tap("experiment.replay", app)
         XCTAssertTrue(begin.waitForExistence(timeout: 5))
         XCTAssertFalse(app.buttons["experiment.cell.0.0"].exists)
-        capture(app, "flow-reduced-replay")
+        captureEntry(app, "flow-reduced-replay")
     }
     @MainActor func testRejectedSaveNoticeSurvivesBackgroundAndReplacementRestoresNormally() {
         let app = launch(largest: true, review: ["--save-rejection-review"]); defer { app.terminate() }
@@ -279,7 +285,7 @@ final class SkyFlowInteractionTests: XCTestCase {
         tap("experiment.done", app)
         XCTAssertEqual(app.staticTexts["sky.title"].label, "Lantern Landing")
         XCTAssertFalse(app.buttons["experiment.next"].exists)
-        capture(app, "first-light-entry-after-help")
+        captureEntry(app, "first-light-entry-after-help")
         tap("sky.home", app)
         XCTAssertFalse(app.buttons["sky.resume"].exists, "Reading pending Help does not save or begin a round")
     }
@@ -372,7 +378,7 @@ final class SkyFlowInteractionTests: XCTestCase {
         capture(app, "flow-largest-welcome-preferences")
         tap("experiment.done", app)
         tap("sky.firstLight", app)
-        capture(app, "flow-largest-entry")
+        captureEntry(app, "flow-largest-entry")
         tap("sky.home", app)
         XCTAssertFalse(app.buttons["sky.resume"].exists, "Canceling an unbegun round must not create a save")
         tap("sky.firstLight", app)

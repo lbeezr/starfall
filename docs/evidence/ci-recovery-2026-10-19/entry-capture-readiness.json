@@ -1,0 +1,211 @@
+{
+  "source": "618e2c8303c0683eb27e9697837e59bd81d3e743",
+  "dirtyNativeInputs": {
+    "UITests/SkyFlowInteractionTests.swift": "60a02f54445e7226f2c2501fcef45257f552614e0c270fe30e1df9ce579d9db9"
+  },
+  "command": [
+    "xcodebuild",
+    "-project",
+    "Starfall.xcodeproj",
+    "-scheme",
+    "Starfall",
+    "-configuration",
+    "Debug",
+    "-destination",
+    "platform=iOS Simulator,id=8A220F57-FA99-452A-A864-16FC01D9CB58",
+    "-derivedDataPath",
+    "/private/tmp/starfall-ci-layout-derived",
+    "-collect-test-diagnostics",
+    "never",
+    "-parallel-testing-enabled",
+    "NO",
+    "-test-timeouts-enabled",
+    "YES",
+    "-default-test-execution-time-allowance",
+    "90",
+    "-maximum-test-execution-time-allowance",
+    "240",
+    "-resultBundlePath",
+    "/private/tmp/starfall-ci-entry-check/tests.xcresult",
+    "ARCHS=arm64",
+    "ONLY_ACTIVE_ARCH=YES",
+    "CODE_SIGNING_ALLOWED=YES",
+    "CODE_SIGN_IDENTITY=-",
+    "DEVELOPMENT_TEAM=",
+    "CODE_SIGN_STYLE=Manual",
+    "-only-testing:StarfallUITests/SkyFlowInteractionTests/testWelcomeEntryBackgroundAndAnotherSky",
+    "-only-testing:StarfallUITests/SkyFlowInteractionTests/testFirstLightWinReplayAndFullSky",
+    "-only-testing:StarfallUITests/SkyFlowInteractionTests/testResultActionsRemainHittableAboveTheVisibleFinalBoard",
+    "-only-testing:StarfallUITests/SkyFlowInteractionTests/testEntryCancellationAndTerminationRetainThePlayedSky",
+    "-only-testing:StarfallUITests/SkyFlowInteractionTests/testReducedMotionEntryAndReplayKeepExplicitBegin",
+    "-only-testing:StarfallUITests/SkyFlowInteractionTests/testPendingFirstLightHelpUsesChallengeRulesAndPreservesEntry",
+    "-only-testing:StarfallUITests/SkyFlowInteractionTests/testLargestTextWelcomeEntryAndBackRemainReachable",
+    "test"
+  ],
+  "started": "2026-10-19T18:20:21.171946+00:00",
+  "exitCode": 0,
+  "ended": "2026-10-19T18:27:24.653048+00:00",
+  "counts": {
+    "passedTests": 7,
+    "failedTests": 0,
+    "skippedTests": 0,
+    "totalTestCount": 7
+  },
+  "cases": [
+    {
+      "test": "StarfallUITests.SkyFlowInteractionTests testEntryCancellationAndTerminationRetainThePlayedSky",
+      "result": "passed",
+      "seconds": 67.018
+    },
+    {
+      "test": "StarfallUITests.SkyFlowInteractionTests testFirstLightWinReplayAndFullSky",
+      "result": "passed",
+      "seconds": 150.484
+    },
+    {
+      "test": "StarfallUITests.SkyFlowInteractionTests testLargestTextWelcomeEntryAndBackRemainReachable",
+      "result": "passed",
+      "seconds": 37.437
+    },
+    {
+      "test": "StarfallUITests.SkyFlowInteractionTests testPendingFirstLightHelpUsesChallengeRulesAndPreservesEntry",
+      "result": "passed",
+      "seconds": 19.81
+    },
+    {
+      "test": "StarfallUITests.SkyFlowInteractionTests testReducedMotionEntryAndReplayKeepExplicitBegin",
+      "result": "passed",
+      "seconds": 42.775
+    },
+    {
+      "test": "StarfallUITests.SkyFlowInteractionTests testResultActionsRemainHittableAboveTheVisibleFinalBoard",
+      "result": "passed",
+      "seconds": 15.646
+    },
+    {
+      "test": "StarfallUITests.SkyFlowInteractionTests testWelcomeEntryBackgroundAndAnotherSky",
+      "result": "passed",
+      "seconds": 57.732
+    }
+  ],
+  "environment": {
+    "configuration": "Debug",
+    "Xcode": "27.1 (27A9275)",
+    "device": "iPhone 17e Simulator",
+    "OS": "iOS 27.0 (24A434)",
+    "appIdentity": {
+      "StarfallBuildID": "dev.local",
+      "CFBundleShortVersionString": "0.1.0",
+      "CFBundleVersion": "1"
+    }
+  },
+  "core": {
+    "command": "swift test",
+    "passed": 178,
+    "failed": 0,
+    "seconds": 29.257
+  },
+  "limits": "UI-test-only correction. App/core/save/artwork unchanged. No Release, actual VoiceOver or physical-device acceptance claimed.",
+  "compact": {
+    "tool": "XcodeBuildMCP test_sim",
+    "simulator": "ACD3AD49-0505-4773-BDF7-143DFDC83D41",
+    "device": "iPhone SE (3rd generation) / iOS 27.0",
+    "configuration": "Debug",
+    "extraArgs": [
+      "-only-testing:StarfallUITests/SkyFlowInteractionTests/testWelcomeEntryBackgroundAndAnotherSky",
+      "-only-testing:StarfallUITests/SkyFlowInteractionTests/testLargestTextWelcomeEntryAndBackRemainReachable",
+      "-parallel-testing-enabled",
+      "NO",
+      "-test-timeouts-enabled",
+      "YES",
+      "-default-test-execution-time-allowance",
+      "90",
+      "-maximum-test-execution-time-allowance",
+      "240"
+    ],
+    "result": "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-5baffeb4084c/result-bundles/test_sim_2026-10-19T18-28-29-388Z_pid95357_01db6438.xcresult",
+    "counts": {
+      "passedTests": 2,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "totalTestCount": 2
+    },
+    "actionSeconds": 138.856,
+    "caseSeconds": {
+      "testLargestTextWelcomeEntryAndBackRemainReachable": 47.334,
+      "testWelcomeEntryBackgroundAndAnotherSky": 60.577
+    }
+  },
+  "images": [
+    {
+      "file": "dev-2d94194__entry-early__iphone-17e__normal-motion.jpg",
+      "sha256": "33e62807a3ea13f8cf7a1d84113de6c5ef334324ce26e7844249634dd31468f1",
+      "originalPNG": "/private/tmp/starfall-ci-combined-2d94194/evidence/flow-entry.png",
+      "originalSHA256": "01e8ba1c50f63e9957b46896c73d585f81107250b5e12ab27f33a7177ccef985"
+    },
+    {
+      "file": "dev-618e2c8-wip-60a02f54__entry-ready__iphone-17e__normal-motion.jpg",
+      "sha256": "1c09314172e52310b0f21b0020f0bae7ff127512e208be41823f7610993e3865",
+      "originalPNG": "/private/tmp/starfall-ci-entry-check/attachments/40963596-368C-4F41-B547-DD050F3C54F9.png",
+      "originalSHA256": "a1c38cd1ac259b181c7f81afcc91d980ad0ae2a0b8be1a3d22a5802453ca5879"
+    }
+  ],
+  "inspection": "Default and largest-text entry captures inspected on both phones. Begin and its panel are visible; compact and largest-text pages scroll. Tall replay and Reduce Motion are tested separately. Still images do not certify animation quality.",
+  "seedMoonRecheck": {
+    "source": "c7a0c68",
+    "base": "e8230055f15a463b5e1916a13312ef694476aaee",
+    "dirtyNativeInputs": {},
+    "description": "Clean native source at build start; later rebase onto 2357b20 changes documentation only. Shared entry original and largest-text regression checks.",
+    "tool": "XcodeBuildMCP test_sim",
+    "simulator": "8A220F57-FA99-452A-A864-16FC01D9CB58",
+    "configuration": "Debug",
+    "extraArgs": [
+      "-only-testing:StarfallUITests/SkyFlowInteractionTests/testWelcomeEntryBackgroundAndAnotherSky",
+      "-only-testing:StarfallUITests/SkyFlowInteractionTests/testLargestTextWelcomeEntryAndBackRemainReachable",
+      "-parallel-testing-enabled",
+      "NO",
+      "-test-timeouts-enabled",
+      "YES",
+      "-default-test-execution-time-allowance",
+      "90",
+      "-maximum-test-execution-time-allowance",
+      "240"
+    ],
+    "result": "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-5baffeb4084c/result-bundles/test_sim_2026-10-19T18-37-57-675Z_pid95357_fe66c61d.xcresult",
+    "counts": {
+      "passedTests": 2,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "totalTestCount": 2
+    },
+    "core": {
+      "command": "swift test",
+      "passed": 178,
+      "failed": 0,
+      "seconds": 30.739
+    },
+    "hosted": {
+      "tool": "XcodeBuildMCP test_sim",
+      "testProductsPath": "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-5baffeb4084c/test-products/test_sim_2026-10-19T18-37-57-675Z_pid95357_8509d3f0.xctestproducts",
+      "extraArgs": [
+        "-only-testing:StarfallAppTests",
+        "-parallel-testing-enabled",
+        "NO",
+        "-test-timeouts-enabled",
+        "YES",
+        "-default-test-execution-time-allowance",
+        "90",
+        "-maximum-test-execution-time-allowance",
+        "180"
+      ],
+      "result": "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-5baffeb4084c/result-bundles/test_sim_2026-10-19T18-40-36-546Z_pid95357_e326efa0.xcresult",
+      "counts": {
+        "passedTests": 329,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "totalTestCount": 329
+      },
+      "actionSeconds": 127.4
+    }
+  }
+}

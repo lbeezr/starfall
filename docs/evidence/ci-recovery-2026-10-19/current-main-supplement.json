@@ -1,0 +1,114 @@
+{
+  "base": "1c2682c35f51f67be8af75e9ecce1d4f0c046007",
+  "changedNativeInputs": {
+    "UITests/ConstellationTraceNativeTests.swift": "fba08900c1bf167b1079c76a5282700090da47420d2ee6dfe79ef300bc357a8a",
+    "UITests/NativeSkyControls.swift": "2d19e59297027c454d3edf0bfb07d6b5ffce9210285597ed8e15933f08c62eca"
+  },
+  "environment": "Debug; Xcode 27.1 (27A9275); iPhone 17e / iOS 27.0",
+  "products": "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-5baffeb4084c/test-products/test_sim_2026-10-19T17-29-27-986Z_pid95357_c11881e6.xctestproducts",
+  "simulator": "10B3F3B6-B3B3-4CBE-BE07-5F42F8108105",
+  "results": [
+    {
+      "stage": "hosted",
+      "expected": 328,
+      "command": [
+        "xcodebuild",
+        "-testProductsPath",
+        "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-5baffeb4084c/test-products/test_sim_2026-10-19T17-29-27-986Z_pid95357_c11881e6.xctestproducts",
+        "-destination",
+        "platform=iOS Simulator,id=10B3F3B6-B3B3-4CBE-BE07-5F42F8108105",
+        "-collect-test-diagnostics",
+        "never",
+        "-parallel-testing-enabled",
+        "NO",
+        "-test-timeouts-enabled",
+        "YES",
+        "-default-test-execution-time-allowance",
+        "90",
+        "-maximum-test-execution-time-allowance",
+        "180",
+        "-resultBundlePath",
+        "/private/tmp/starfall-ci-kite-main/hosted.xcresult",
+        "-only-testing:StarfallAppTests",
+        "test-without-building"
+      ],
+      "started": "2026-10-19T17:31:48.445758+00:00",
+      "exitCode": 0,
+      "ended": "2026-10-19T17:34:24.638635+00:00",
+      "counts": {
+        "passedTests": 328,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "totalTestCount": 328
+      },
+      "summarySHA256": "35bad7dacd35f9b5e0773699242c44f21bc2b02609ce0025754d72e2837bd865"
+    },
+    {
+      "stage": "ui",
+      "expected": 3,
+      "command": [
+        "xcodebuild",
+        "-testProductsPath",
+        "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-5baffeb4084c/test-products/test_sim_2026-10-19T17-29-27-986Z_pid95357_c11881e6.xctestproducts",
+        "-destination",
+        "platform=iOS Simulator,id=10B3F3B6-B3B3-4CBE-BE07-5F42F8108105",
+        "-collect-test-diagnostics",
+        "never",
+        "-parallel-testing-enabled",
+        "NO",
+        "-test-timeouts-enabled",
+        "YES",
+        "-default-test-execution-time-allowance",
+        "90",
+        "-maximum-test-execution-time-allowance",
+        "240",
+        "-resultBundlePath",
+        "/private/tmp/starfall-ci-kite-main/ui.xcresult",
+        "-only-testing:StarfallUITests/KiteHarborInteractionTests",
+        "-skip-testing:StarfallUITests/KiteHarborInteractionTests/testTabletRotationKeepsKiteRestorationAndNativeInput",
+        "test-without-building"
+      ],
+      "started": "2026-10-19T17:34:24.796297+00:00",
+      "exitCode": 0,
+      "ended": "2026-10-19T17:38:37.200500+00:00",
+      "counts": {
+        "passedTests": 3,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "totalTestCount": 3
+      },
+      "summarySHA256": "77e89d9ea791f087b28cafc37245ea98e0fb311c4b90c82d7b69aebb5a193730"
+    }
+  ],
+  "acceptedSource": "618e2c8303c0683eb27e9697837e59bd81d3e743",
+  "nativeInputParity": "All native changes from the recorded base are the two hash-matched UI inputs; remaining differences are docs.",
+  "changedPathsFromBase": [
+    "App/README.md",
+    "README.md",
+    "UITests/ConstellationTraceNativeTests.swift",
+    "UITests/NativeSkyControls.swift",
+    "docs/EXPERIMENTS.md",
+    "docs/README.md",
+    "docs/ROADMAP.md",
+    "docs/design/README.md",
+    "docs/design/STARFALL_GAME_BIBLE.md",
+    "docs/design/STARLIGHT_RESTORATION.md",
+    "docs/design/VISUAL_REFERENCE.md",
+    "docs/design/WORLD_ATLAS.md",
+    "docs/design/kite-harbor-03/PRODUCTION_PLAN.md",
+    "docs/design/kite-harbor-03/README.md",
+    "docs/design/world-01/README.md",
+    "docs/evidence/README.md",
+    "docs/evidence/ci-recovery-2026-10-19/README.md",
+    "docs/evidence/ci-recovery-2026-10-19/storm-observation.json",
+    "docs/evidence/kite-harbor-2026-10-19/README.md",
+    "docs/evidence/kite-harbor-2026-10-19/delivery.json"
+  ],
+  "countGate": "passed",
+  "core": {
+    "passed": 178,
+    "failed": 0,
+    "command": "swift test",
+    "log": "/private/tmp/starfall-ci-kite-main-core.log"
+  }
+}
