@@ -405,3 +405,7 @@ Trigger: canonical delivery of each batch, or any new physical-input rejection. 
 ## Protected award readability — October 18, 2026
 
 [Board clarity](evidence/board-clarity-2026-10-18/README.md) corrects the central-lettering survivor overlap recorded above. Every award category uses one projected region outside playable rows, including its motion/glow; compact decorative lettering falls back to readable native type. The regression examines all cells and four canvas sizes; current normal-motion crowded captures cover default/maximum text. Trails and clear particles remain unchanged. Trigger: the next physical fast-play review or any new distraction report. Check repeated dense clears, small-phone recognition and real device frame pacing; screenshots and Store admission do not establish comfort. Full actual VoiceOver remains the RC gate.
+
+## Committed consequence feedback — October 18, 2026
+
+[Consequence feedback](evidence/consequence-feedback-2026-10-18/README.md) moves player results to the commit boundary and prevents deferred presentation from overwriting newer help. Exact recipe classification is shared across input methods, preserving broader-group outcomes and adjacent automatic Dusk removal. Trigger: a new stale/incorrect-result report, any new clear type, or the next RC. Verify commit-time copy, reversed/duplicate completions, interruption, exact selected-set reward and actual VoiceOver timing. Human comprehension and auditory comfort remain separate from logical feedback ownership.

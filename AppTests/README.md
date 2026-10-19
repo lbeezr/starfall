@@ -40,7 +40,7 @@ The current Opal/orbit planning deadline test commits the field-releasing clear,
 
 `ResponsiveInputTests` covers independent presentation/save ownership, current gravity reservations, anchored drift, held contact and stale result dialogue. `StarCastTests` verifies that a real independent clear does not cancel an unrelated falling animation.
 
-SkyDialogueTests covers the committed-score/visible-message boundary: prior help persists until presentation completion, then exact clear feedback appears, while restoring the committed round discards transient copy.
+SkyDialogueTests covers the committed-score/visible-message boundary: player clears and swaps publish exact feedback immediately; older completions cannot replace newer help or repeat speech. Manual/automatic showers respect dialogue revision ownership. Restoring the committed round discards transient copy.
 
 `DuskProductionTests` covers committed collapse/save before animation, stale callbacks, v5/v6 adoption into v7, zero-reward clears, gray materials, warning stages and sampled full-motion infall/arrival.
 

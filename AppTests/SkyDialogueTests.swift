@@ -234,7 +234,45 @@ final class SkyDialogueTests: XCTestCase {
 
 
 extension SkyDialogueTests {
-    @MainActor func testCommittedClearPublishesFeedbackAfterPresentationAndRestoresWithoutTransientCopy() throws {
+    @MainActor func testNewerHelpSurvivesPlayerAndShowerCompletionWithoutDuplicateSpeech() throws {
+        for action in ["clear", "swap", "manualShower", "automaticShower"] {
+            let suite = "Starfall.FeedbackOwnership.\(UUID())", defaults = UserDefaults(suiteName: suite)!
+            defer { defaults.removePersistentDomain(forName: suite) }
+            defaults.set(try SkySaveArchive.encode(ObservatoryReviewFixture.game(dense: false)), forKey: SkySaveArchive.key)
+            let presenter = FallingSkyRecorder(), feedback = SkyFeedbackRecorder(), clock = ManualRainClock()
+            let store = FallingSkyStore(defaults: defaults,
+                arguments: [], presenter: presenter, clock: clock, feedback: feedback)
+            store.setSuspended(false)
+            switch action {
+            case "clear": store.clear(Cell(0, 0))
+            case "swap": XCTAssertTrue(store.requestInput(.swap(Cell(0, 2), Cell(0, 3)), snapshot: store.game,
+                                                          generation: store.constellationInputGeneration))
+            case "automaticShower": store.togglePause(); clock.advance(store.showerInterval)
+            default: store.callShower()
+            }
+            XCTAssertEqual(presenter.completions.count, 1)
+            if action == "clear" || action == "swap" {
+                XCTAssertEqual(store.dialogue.line, store.pausedGuideLine)
+                XCTAssertEqual(feedback.announcements.last, store.pausedGuideLine.spokenText,
+                               "Committed result is immediate")
+            }
+            let empty = try XCTUnwrap((0..<7).map { Cell(6, $0) }.first {
+                store.canClear($0) && store.game.gem(at: $0) == nil
+            })
+            store.clear(empty) // A newer invalid tap asks for help on an independent column.
+            XCTAssertTrue(store.pausedGuideLine.text.contains("matching"))
+            XCTAssertNil(store.inputMessage, "Ordinary help must not rely on the trace-error guard")
+            let line = store.dialogue.line, revision = store.dialogue.revision
+            let announcements = feedback.announcements
+            presenter.finish(); presenter.finish()
+            XCTAssertEqual(store.dialogue.line, line)
+            XCTAssertEqual(store.dialogue.revision, revision)
+            XCTAssertEqual(feedback.announcements, announcements)
+            store.setSuspended(true)
+        }
+    }
+
+    @MainActor func testCommittedClearPublishesFeedbackImmediatelyAndRestoresWithoutTransientCopy() throws {
         let suite = "Starfall.DialogueCompletion.\(UUID())", defaults = UserDefaults(suiteName: suite)!
         defer { defaults.removePersistentDomain(forName: suite) }
         defaults.set(try SkySaveArchive.encode(FallingSky(seed: 5, generation: .current, duskRule: .patientFeeding)), forKey: SkySaveArchive.key)
@@ -254,10 +292,11 @@ extension SkyDialogueTests {
         XCTAssertGreaterThanOrEqual(value, 3)
         store.clear(cell)
         XCTAssertEqual(store.game.score, value, "Core reward commits before the result animation")
-        XCTAssertEqual(store.pausedGuideLine, help, "Visible copy stays at its prior event until presentation completion")
-        presenter.finish()
         let clear = SkyDialogueLibrary.line("guide.clear", values: ["score": String(value)])
         XCTAssertEqual(store.pausedGuideLine, SkyDialogueLibrary.contextual(clear, game: store.game, cadence: store.nextShowerCadence))
+        let revision = store.dialogue.revision
+        presenter.finish()
+        XCTAssertEqual(store.dialogue.revision, revision, "Presentation completion must not repeat committed feedback")
         let committed = store.game
         let restored = FallingSkyStore(defaults: defaults, arguments: [],
             presenter: FallingSkyRecorder(), clock: ManualRainClock())

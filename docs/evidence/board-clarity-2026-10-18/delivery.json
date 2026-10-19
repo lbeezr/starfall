@@ -1,0 +1,16 @@
+{
+  "buildID": "dev.d7e15ddf2a",
+  "source": "c985a97f023489d6d26ec24b6287cbba0525eae0",
+  "bundle": "com.starfall.prototype",
+  "bundleVersion": "1",
+  "validation": {
+    "coreTests": "passed",
+    "signature": "verified",
+    "mainCIAtInstall": "pending"
+  },
+  "pullRequest": "https://github.com/lbeezr/starfall/pull/142",
+  "method": "scripts/device-update.py run; clean current-main archive; actual installation identity verified",
+  "testedTree": "914ae45e5f2f45ee1d49d2a32fcdb818a0a2715b",
+  "playerDataReset": false,
+  "physicalComfort": "Not yet observed for this batch"
+}

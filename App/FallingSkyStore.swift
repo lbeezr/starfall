@@ -677,6 +677,12 @@ enum SkyTerminalSpeech { case feedback, ceremony }
 
     private func present(_ turn: FallingSkyTurn, from old: FallingSky, announcesResult: Bool = true, previousCadence: SkyCadenceStep? = nil, path: [Cell] = [], recipe: StarRecipe? = nil) {
         let isShower = !turn.arrivals.isEmpty || turn.blockedColumn != nil
+        // The exact committed selection names its achievement, independent of
+        // whether it arrived through a tap, held trace or accessible action.
+        // Neighboring Dusk removals are consequences, not recipe ingredients.
+        let selected = path.isEmpty ? turn.cleared.filter { old.gem(at: $0)?.isDark == false } : Set(path)
+        let resolvedRecipe = recipe ?? (old.canArrangeStars
+            ? old.recipe(matching: selected) : nil)
         invalidateInput(isShower ? (announcesResult ? "manualShower" : "automaticShower") : "clear")
         if turn.exchange != nil {
             techniqueRelay.reset(); techniqueResult = SkyCopy.text(.techniqueMoved)
@@ -684,10 +690,10 @@ enum SkyTerminalSpeech { case feedback, ceremony }
             techniqueRelay.record(before:old,after:game,cleared:turn.cleared)
             techniqueResult = techniqueRelay.depth > 1 ? SkyCopy.text(.techniqueRelay, values: ["count": String(techniqueRelay.depth)]) : SkyCopy.text(.techniqueSupport)
         }
-        celebrate(turn, from: old, path: path, recipe: recipe)
+        celebrate(turn, from: old, path: path, recipe: resolvedRecipe)
         let ticket = presentations.begin(turn)
         guideLine = SkyDialogueLibrary.result(for: turn, from: old, to: game,
-            tracedCount: Set(path).count, recipe: recipe, relayDepth: techniqueRelay.depth,
+            tracedCount: Set(path).count, recipe: resolvedRecipe, relayDepth: techniqueRelay.depth,
             techniqueResult: techniqueResult)
         // The committed phase/cadence has one visible and spoken owner. No queued notices.
         let transition = SkyDialogueLibrary.transition(from: old, to: game,
@@ -699,6 +705,11 @@ enum SkyTerminalSpeech { case feedback, ceremony }
             SkyDialogueLibrary.contextual($0, game: game, cadence: nextShowerCadence, includeTiming: false)
         } ?? (announcesResult || game.isOver || (DuskWarning(game: game) != nil || CriticalMassPresentation.warning(game: game) != nil) ? resultLine : nil)
         save() // Commit before animation: backgrounding cannot replay arrivals.
+        let publishesImmediately = !isShower && announcesResult && !game.isOver
+        if publishesImmediately, let spokenResult {
+            publishResult(spokenResult, interrupt: true, announces: true)
+        }
+        let dialogueRevision = dialogue.revision
         presenter.animate(turn, from: old, to: game) { [weak self] in
             guard let self, self.presentations.complete(ticket) else { return }
             if let columns = self.inputFeedback?.waitingColumns, columns.isDisjoint(with: self.changingColumns) {
@@ -706,12 +717,11 @@ enum SkyTerminalSpeech { case feedback, ceremony }
             }
             if self.deliverBufferedInputIfReady() { return }
             // Completion order cannot give an older automatic result ownership of current feedback.
-            if self.inputFeedback == nil, let spokenResult, self.presentations.isLatest(ticket),
+            if !publishesImmediately, self.inputFeedback == nil, let spokenResult,
+               self.dialogue.revision == dialogueRevision, self.presentations.isLatest(ticket),
                !self.game.isOver || self.terminalSpeech == .feedback {
-                let accepted = self.dialogue.show(spokenResult, interrupt: announcesResult)
-                if accepted && (announcesResult || self.game.isOver || announcesTransition) {
-                    self.feedback.announce(spokenResult.spokenText)
-                }
+                self.publishResult(spokenResult, interrupt: announcesResult,
+                                   announces: announcesResult || self.game.isOver || announcesTransition)
             }
             self.deliverRainIfReady()
             #if DEBUG
@@ -721,6 +731,10 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         #if DEBUG
         observeTiming(.state)
         #endif
+    }
+
+    private func publishResult(_ line: SkyDialogueLine, interrupt: Bool, announces: Bool) {
+        if dialogue.show(line, interrupt: interrupt), announces { feedback.announce(line.spokenText) }
     }
 
     /// Called only after Entry has consumed its pending choice. The round remains

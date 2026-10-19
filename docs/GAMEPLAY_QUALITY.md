@@ -4,14 +4,14 @@
 
 Polish the six gameplay priorities in order, merging and delivering each verified improvement through the canonical phone updater before starting the next. The player reported a “huge improvement” after the five gesture deliveries. Apply that same bounded process to the remaining experience.
 
-**Next action:** Keep celebration lettering out of playable rows on current main, preserving the newly shipped crystal glyphs and normal animation.
+**Next action:** Audit consequence feedback after the verified [board-clarity delivery](evidence/board-clarity-2026-10-18/README.md).
 
 ## Scope and success
 
 | Order | Priority | Observable acceptance | Status |
 | --- | --- | --- | --- |
-| 1 | Read the next move | Award lettering stays outside every playable cell throughout its animation; independent follow-up moves remain available; default and maximum text remain readable. | In progress |
-| 2 | Understand consequences | Selection, committed clear, score gain and invalid actions give consistent, truthful feedback without covering the board or delaying input. | Pending |
+| 1 | Read the next move | Award lettering stays outside every playable cell throughout its animation; independent follow-up moves remain available; default and maximum text remain readable. | Delivered: PR #142, `dev.d7e15ddf2a`; physical comfort open |
+| 2 | Understand consequences | Selection, committed clear, score gain and invalid actions give consistent, truthful feedback without covering the board or delaying input. | In progress |
 | 3 | Fair shower rhythm | The arrival cue agrees with the actual deadline; interruptions preserve remaining time; no catch-up burst; current survival rules receive a reproducible pacing review. | Pending |
 | 4 | Discover useful setups | Players can find and practice recipes, Opal use and causal relays through concrete examples; hints match current legal actions and never surprise-commit a move. | Pending |
 | 5 | Reward rhythm | Clear, growth, recipe and relay feedback are distinguishable, bounded and synchronized with committed outcomes; rapid play does not pile up sounds/haptics or effects. | Pending |
@@ -32,8 +32,18 @@ Use the shared board projection and live header bounds to place a compact horizo
 - [x] Reproduce the current obstruction and add a regression for all playable cells, compact/tall/tablet geometry and animation phases.
 - [x] Inspect actual normal-motion crowded captures at compact/large sizes and default/maximum text; verify ordinary, recipe, trace and relay values still render.
 - [x] Verify rapid follow-up input, interruptions, restart, settings and Reduce Motion using affected native/hosted checks; keep rule/save tests green.
-- [ ] Merge the verified source and record actual canonical installation before priority 2.
+- [x] Merge the verified source and record actual canonical installation before priority 2.
 
 ## Evidence and limits
 
 Tests and native captures establish specific behavior, not an S-tier enjoyment rating. Physical speed, recognition, sound/haptic preference and repeated-round enjoyment require observation on the installed app. Record those limits with each delivery and incorporate player feedback without making it a new permission gate. Actual VoiceOver remains part of release-candidate acceptance, not routine iteration.
+
+## Second batch: immediate committed consequences
+
+The guide currently retains earlier instructions until a player-action animation completes, even though the score and award have committed. A traced four-star square also takes the generic constellation wording route, while explicit recipe activation names the square. A related reproduction shows adjacent automatic Dusk removal obscuring the tap recipe name. Correct the shared Store presentation boundary, without changing legal moves, awards or saved state.
+
+- [x] Committed player clears and swaps publish their exact result immediately; completion never announces it twice or restores older copy over a newer instruction.
+- [x] Automatic presentation completions cannot overwrite feedback created after that presentation began.
+- [x] The same exact recipe set receives the same shape classification through tap, held trace and explicit accessible activation; extra neighboring stars are never silently classified as an exact recipe.
+- [x] Final outcomes retain ceremony speech ownership; interruption/restore discards transient feedback; current rules, saves and follow-up input remain unchanged.
+- [ ] Verify focused reproductions, affected hosted/native checks and inspected normal-motion feedback, then merge and canonically deliver. Before priority 3, correct the separately observed outward-swipe rejection wording: it currently explains a tap even though movement chose a swipe.

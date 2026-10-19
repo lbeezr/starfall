@@ -1,0 +1,12 @@
+{
+  "baseCommit": "c985a97f023489d6d26ec24b6287cbba0525eae0",
+  "runtimeBuildID": "dev.f441a271c0",
+  "dirtyInputs": {
+    "App/FallingSkyStore.swift": "3bab90db685471fb5c056b391f83ca0cb85d600a729ff4d25a1437ddae8fadaf",
+    "App/StarlightCelebration.swift": "70c17e388d77eea270d4f10bbe95ee338697ce559ad72c4c3c195648b632dc48",
+    "AppTests/SkyDialogueTests.swift": "1dad35cbc9326402035ef90b319a6e91deec88b33c06895b7ae1a8b033fa317d",
+    "AppTests/SkyTechniqueStoreTests.swift": "0561636dab5504babd9e3d41508454feaea818f8e767b2fac99a5c0c2ecb0959",
+    "UITests/SkyTechniqueInteractionTests.swift": "c3c32f706d0f4abbc88544a6d1fcdb1e9462d87d4592b6c9476be507dbadf95a"
+  },
+  "snapshot": "fe665b7ffd66"
+}
