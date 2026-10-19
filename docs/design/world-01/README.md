@@ -4,7 +4,7 @@
 
 The approved foundation is **Murk, the Hungry Moon**, and twelve connected places the star cast restores. Preserve the character sheet and the map’s destinations. The user subsequently requested a full creative rewrite: the [game bible](../STARFALL_GAME_BIBLE.md) now owns lore, characters and story; the [world atlas](../WORLD_ATLAS.md) develops every place’s life, appearance and distinctive reward.
 
-**Start here:** Open the [concept explorer](index.html) to select a numbered location and read its five restoration states. The [restoration contract](../STARLIGHT_RESTORATION.md) owns progress and the win boundary. **Next production slice:** Lantern Landing’s five-state composition with the real cast and a brief opening animatic, followed by one playable proof.
+**Start here:** Open the [concept explorer](index.html) to select a numbered location and read its five restoration states. The [restoration contract](../STARLIGHT_RESTORATION.md) owns progress and the win boundary. **Revised visual study:** [Lantern Landing’s overhead playfield](../lantern-landing-01/board.html) places existing star bodies in the seven-column field above the landing. It supersedes the rejected close-up scene composition. **Current production slice:** Lantern Landing is implemented and development-verified in optional First Light; see its [native evidence](../../evidence/lantern-landing-2026-10-19/README.md). Main integration and phone delivery are pending. The twelve-location traversal remains a design concept.
 
 ## The approved images
 
@@ -14,7 +14,7 @@ The approved foundation is **Murk, the Hungry Moon**, and twelve connected place
 
 <img src="map-v1.png" width="700" alt="Approved twelve-location Starfall map, a winding route across four tiers of miniature realms">
 
-**User-approved map and location concept — not runtime UI or a saved progress state.** The artwork mostly depicts restored destinations. Dormant/intermediate states remain written storyboards. The small map cameo is sharper than the character sheet; match future close appearances to that sheet. Tiny helper shapes are placeholders for the approved Crystal Glow cast.
+**User-approved map and location concept — not runtime UI or a saved progress state.** The artwork mostly depicts restored destinations. Dormant/intermediate states remain written storyboards except for the separate [Lantern Landing implementation and concept study](../lantern-landing-01/README.md). The small map cameo is sharper than the character sheet; match future close appearances to that sheet. Tiny helper shapes are placeholders for the approved Crystal Glow cast.
 
 Both original PNGs and the exact [generation prompts](prompts.json) are retained. No new character or map images were generated for the bible rewrite.
 

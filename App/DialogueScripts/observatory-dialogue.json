@@ -86,7 +86,7 @@
         {
           "id": "guide.won.1",
           "speaker": "sunny",
-          "text": "First Light complete! You collected {score} starlight. Nicely done.",
+          "text": "First Light complete! You collected {score} starlight. Lantern Landing is glowing again!",
           "priority": "outcome"
         }
       ]
@@ -190,7 +190,7 @@
         {
           "id": "guide.first-light.1",
           "speaker": "sunny",
-          "text": "Collect 18 starlight before a column fills. Tap Start sky to begin.",
+          "text": "Lantern Landing needs 18 starlight. Clear matching stars to bring its lanterns back.",
           "priority": "help"
         }
       ]
@@ -246,7 +246,7 @@
         {
           "id": "first-light.replay.1",
           "speaker": "sunny",
-          "text": "Try the same First Light opening again. Collect 18 starlight. Your saved round stays until you tap Begin.",
+          "text": "Try the same First Light opening and restore Lantern Landing with 18 starlight. Your saved round stays until you tap Begin.",
           "priority": "help"
         }
       ]
@@ -257,7 +257,7 @@
         {
           "id": "first-light.entry.1",
           "speaker": "sunny",
-          "text": "Collect 18 starlight before a column fills. A short challenge, one sky at a time.",
+          "text": "Murk swallowed Lantern Landing’s light. Collect 18 starlight to restore the landing before an arriving star runs out of room.",
           "priority": "help"
         }
       ]
@@ -268,7 +268,7 @@
         {
           "id": "sky.won.1",
           "speaker": "sunny",
-          "text": "First Light complete! You collected {score} starlight.",
+          "text": "Lantern Landing is restored! You collected {score} starlight. The lanterns are welcoming stars again.",
           "priority": "outcome"
         }
       ]
@@ -655,7 +655,7 @@
     "menu.observatory": "Moonlit Observatory",
     "menu.explore": "Play & settings",
     "menu.firstLight": "First Light · 18 starlight",
-    "menu.firstLightHint": "Shows the challenge before you choose Begin",
+    "menu.firstLightHint": "Restore Lantern Landing with 18 starlight. Preview the challenge before Begin.",
     "menu.hint": "Pause, settings and how to play",
     "preferences.title": "Sound & motion",
     "preferences.sound": "Sound",
@@ -679,17 +679,19 @@
     "flow.brand": "STARFALL",
     "flow.open": "OPEN SKY",
     "flow.firstLight": "FIRST LIGHT",
-    "flow.complete": "CHALLENGE COMPLETE",
+    "flow.complete": "FIRST LIGHT COMPLETE",
     "flow.roundOver": "ROUND OVER",
     "flow.welcome": "Welcome to the Observatory",
     "flow.entry": "Make room for the stars",
-    "flow.challenge": "Collect 18 starlight",
-    "flow.won": "First Light complete!",
+    "flow.challenge": "Lantern Landing",
+    "flow.won": "Lantern Landing restored!",
     "flow.full": "No room to land",
     "flow.preparing": "Preparing your sky…",
+    "lantern.title": "Lantern Landing",
+    "lantern.restoration": "Lantern Landing, {percent}% restored",
     "result.score": "{score} starlight collected",
     "result.challengeScore": "{score} of {target} starlight collected",
-    "result.won": "First Light complete!",
+    "result.won": "First Light complete! Lantern Landing is restored.",
     "result.blocked": "Column {column} had no room for the next star.",
     "result.full": "There was no room for the next star.",
     "result.announcement": "{reason} {score}.",
@@ -792,8 +794,8 @@
     "help.swap": "In Open sky, swipe a star left, right, up or down to swap with its neighbor immediately. Each swipe moves one space, whatever the colors. Moving into an empty space lets stars fall. Hold still first when you want to draw a constellation.",
     "help.recipe": "In Open sky, a square uses exactly 4 matching stars; a cross uses 5. An Opal Orb can join their color. Trace the shape to clear only those stars.",
     "help.relay": "Clearing supporting stars can drop others into a new shape. Clear that new shape to build a relay. Shapes wait until you clear them: there is no automatic chain reaction or score multiplier.",
-    "help.challengeTitle": "First Light",
-    "help.challenge": "Collect 18 starlight before a column fills. Use tap matches or five-star traces. Showers arrive at a steady pace. This challenge has no swaps, shape recipes, Dusk, Opal Orbs or storms.",
+    "help.challengeTitle": "First Light · Lantern Landing",
+    "help.challenge": "Restore Lantern Landing with 18 starlight. Each clear brings its light back. Finish before an arriving star has nowhere to land. Use tap matches or five-star traces. Showers arrive at a steady pace. This challenge has no swaps, shape recipes, Dusk, Opal Orbs or storms.",
     "technique.choose": "Tap a star to move it or choose a shape.",
     "technique.recipe": "Shape",
     "technique.square": "Square",

@@ -1,0 +1,125 @@
+{
+  "captures": [
+    {
+      "file": "dev-8fb2e78__active-board__iphone-se3__landscape-normal-motion.jpg",
+      "source": "8fb2e787a4ce9f36d9dd5f3e80a327c5977e2788",
+      "runtime_identity": "dev.5afe4a3c23",
+      "sha256": "297d7209d23cec46889730a04dda6c72ba5328365d93bb824f73ed0dbc29da3e",
+      "bytes": 83294,
+      "configuration": "Debug",
+      "platform": "iOS 27.0 Simulator (24A434)",
+      "text": "default",
+      "system_reduce_motion": "off",
+      "status": "native still; unmodified export; see README for scope"
+    },
+    {
+      "file": "dev-8fb2e78__active-restoration__iphone-17e__largest-text-reduce-motion.png",
+      "source": "8fb2e787a4ce9f36d9dd5f3e80a327c5977e2788",
+      "runtime_identity": "dev.5afe4a3c23",
+      "sha256": "06a916fa775a82e2edcaf2ba705f0eeb9ad721e742adf288ae9450d98b6c7135",
+      "bytes": 2782308,
+      "configuration": "Debug",
+      "platform": "iOS 27.0 Simulator (24A434)",
+      "text": "largest accessibility",
+      "system_reduce_motion": "on",
+      "status": "native still; unmodified export; see README for scope"
+    },
+    {
+      "file": "dev-8fb2e78__replay-entry__iphone-17e__normal-motion.png",
+      "source": "8fb2e787a4ce9f36d9dd5f3e80a327c5977e2788",
+      "runtime_identity": "dev.5afe4a3c23",
+      "sha256": "a728d2de0410aa1b6ee4d21262b12e2574da50a3a671332722199058a643bfee",
+      "bytes": 2695973,
+      "configuration": "Debug",
+      "platform": "iOS 27.0 Simulator (24A434)",
+      "text": "default",
+      "system_reduce_motion": "off",
+      "status": "native still; unmodified export; see README for scope"
+    },
+    {
+      "file": "dev-8fb2e78__restored-actions__iphone-se3__landscape-normal-motion.jpg",
+      "source": "8fb2e787a4ce9f36d9dd5f3e80a327c5977e2788",
+      "runtime_identity": "dev.5afe4a3c23",
+      "sha256": "1b560b25acf7567ad81aca58bc032450f3db0560e5a5f1af45af45fc802ca18d",
+      "bytes": 67595,
+      "configuration": "Debug",
+      "platform": "iOS 27.0 Simulator (24A434)",
+      "text": "default",
+      "system_reduce_motion": "off",
+      "status": "native still; unmodified export; see README for scope"
+    },
+    {
+      "file": "dev-caa0c5f__lantern-000__iphone-17e__default-text.png",
+      "source": "caa0c5fefe5f50b0494b1f27ede7e6adc6d76f67",
+      "runtime_identity": "dev.4239835f1c",
+      "sha256": "c517a8c1c2df83f01e3a7f3563dd7ef86abdb47445248a23d4909b9e88d3f4fe",
+      "bytes": 3496855,
+      "configuration": "Debug",
+      "platform": "iOS 27.0 Simulator (24A434)",
+      "text": "default",
+      "system_reduce_motion": "off",
+      "status": "native still; unmodified export; see README for scope"
+    },
+    {
+      "file": "dev-caa0c5f__lantern-025__ipad-air-11-m3__portrait.png",
+      "source": "9872853c1cc672987ab24144d67985d5d34f2262",
+      "runtime_identity": "dev.4239835f1c",
+      "sha256": "ea721927e727a844964e4d85db8e7dd55bc4135d5a3c587b80281e4c189ac6ca",
+      "bytes": 5040714,
+      "configuration": "Debug",
+      "platform": "iOS 27.0 Simulator (24A434)",
+      "text": "default",
+      "system_reduce_motion": "off",
+      "status": "native still; unmodified export; see README for scope"
+    },
+    {
+      "file": "dev-caa0c5f__lantern-100__ipad-air-11-m3__landscape.png",
+      "source": "9872853c1cc672987ab24144d67985d5d34f2262",
+      "runtime_identity": "dev.4239835f1c",
+      "sha256": "b2524be21f2783f800f34cb39a3864dc5fe7da451407807519cb2ebd011bb9a8",
+      "bytes": 4925130,
+      "configuration": "Debug",
+      "platform": "iOS 27.0 Simulator (24A434)",
+      "text": "default",
+      "system_reduce_motion": "off",
+      "status": "native still; unmodified export; see README for scope"
+    },
+    {
+      "file": "dev-caa0c5f__lantern-100__iphone-17e__default-text.png",
+      "source": "caa0c5fefe5f50b0494b1f27ede7e6adc6d76f67",
+      "runtime_identity": "dev.4239835f1c",
+      "sha256": "dbd3090c45acdb18eaf5c04949d12b8b55b01ba7cedb8ece6dd38ece2662f399",
+      "bytes": 2572973,
+      "configuration": "Debug",
+      "platform": "iOS 27.0 Simulator (24A434)",
+      "text": "default",
+      "system_reduce_motion": "off",
+      "status": "native still; unmodified export; see README for scope"
+    },
+    {
+      "file": "dev-caa0c5f__restored__iphone-17e__largest-text-reduce-motion.png",
+      "source": "caa0c5fefe5f50b0494b1f27ede7e6adc6d76f67",
+      "runtime_identity": "dev.4239835f1c",
+      "sha256": "b99a0548582da49a84c5888d429fb2368a73a35ea613e6956fe0bf654171bc34",
+      "bytes": 875823,
+      "configuration": "Debug",
+      "platform": "iOS 27.0 Simulator (24A434)",
+      "text": "largest accessibility",
+      "system_reduce_motion": "on",
+      "status": "native still; unmodified export; see README for scope"
+    },
+    {
+      "file": "dev-8fb2e78__crowded-40-stars__iphone-17e__normal-motion.jpg",
+      "source": "8fb2e787a4ce9f36d9dd5f3e80a327c5977e2788",
+      "runtime_fingerprint": "dev.5afe4a3c23",
+      "displayed_build_id": "dev.local (direct simulator relaunch without build-ID environment)",
+      "sha256": "e8c5405d75c1aef940f4eb4c565319c9952b11276e8840ff59241a4871db9af7",
+      "bytes": 103260,
+      "configuration": "Debug",
+      "platform": "iOS 27.0 Simulator (24A434)",
+      "text": "default",
+      "system_reduce_motion": "off",
+      "status": "native still; unmodified export; previously installed final-source binary"
+    }
+  ]
+}

@@ -469,3 +469,9 @@ Reward feedback now validates held-path identity and Core readiness before signa
 ### Ending/replay test organization — October 19, 2026
 
 The cohesive sky-flow suite was extracted byte-for-byte into `UITests/SkyFlowInteractionTests.swift` with explicit target membership. The parent is 800 lines; the source-counted 116-UI/303-hosted matrix is preserved and both ending/replay native flows pass. [Evidence](evidence/compact-native-acceptance-2026-10-19/README.md).
+
+## Lantern Landing artwork and device acceptance — October 19, 2026
+
+[Lantern Landing evidence](evidence/lantern-landing-2026-10-19/README.md) verifies the continuous-image correction, three scene compositions, native rotation/input, compact landscape, largest-text/Reduce Motion flow and a recorded normal-motion win. The split-region fade caused the cloud seam; the renderer now owns one whole-image transform per milestone, independent of board geometry. Compact phone landscape uses the portrait-tablet painting on its tall scroll canvas.
+
+One tablet main-dock fitting is lit at 25%, dark at 50%, then lit at 75%. Trigger: next tablet artwork revision; retain the fixed camera and compare each fitting across all five states, then inspect native crossfades in both orientations. Whole-image lantern opening is a crossfade rather than an articulated rig. Full-capacity native artwork readability and physical play remain separate from sparse simulator fixtures and browser density previews. Trigger: first physical feedback or RC; inspect a dense playable sky, compact scrolling, motion and actual VoiceOver without changing rules to obtain a favorable capture.

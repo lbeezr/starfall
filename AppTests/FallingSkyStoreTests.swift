@@ -44,6 +44,62 @@ final class FallingSkyStoreTests: XCTestCase {
         XCTAssertTrue(SkyDefaults.forApp(arguments: ["--observatory-review"]) === ordinary)
         XCTAssertTrue(SkyDefaults.forApp(arguments: ["--starfalls-reset"]) === ordinary)
     }
+
+    @MainActor func testLanternReviewFixturesRetainFirstLightRulesAndFinishThroughARealClear() throws {
+        let suite = "Starfall.LanternFixture.\(UUID().uuidString)"
+        let defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
+        defer { defaults.removePersistentDomain(forName: suite) }
+        for score in [0, 5, 9, 14, 18] {
+            let presenter = FallingSkyRecorder()
+            let store = FallingSkyStore(defaults: defaults,
+                arguments: ["--starfalls-reset", "--dialogue-review", "--lantern-restoration-review=\(score)"],
+                presenter: presenter, clock: ManualRainClock())
+            XCTAssertTrue(store.game.isValidSave)
+            XCTAssertEqual(store.game.challenge, .firstLight)
+            XCTAssertEqual(store.game.seed, StarfallChallenge.firstLight.seed)
+            XCTAssertEqual(store.game.balance, StarfallChallenge.firstLight.balance)
+            XCTAssertEqual(store.game.score, score)
+            XCTAssertFalse(store.game.board.contains { $0?.isDark == true })
+            XCTAssertFalse(store.game.incoming.contains(where: \.isDark))
+            XCTAssertEqual(store.game.restoration, StarlightRestoration(score: score, target: 18))
+            if score == 14 {
+                store.setSuspended(false)
+                store.clear(Cell(0, 0))
+                XCTAssertTrue(store.busy)
+                XCTAssertEqual(store.game.score, 18)
+                XCTAssertEqual(store.game.outcome, .won)
+                XCTAssertEqual(store.game.restoration?.milestone, .complete)
+                presenter.finish()
+                XCTAssertFalse(store.busy)
+                store.setSuspended(true)
+            }
+        }
+    }
+
+    @MainActor func testLanternReviewRequiresResetDialogueReviewAndABoundedScore() throws {
+        let suite = "Starfall.LanternFixtureGuards.\(UUID().uuidString)"
+        let defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
+        defer { defaults.removePersistentDomain(forName: suite) }
+        let original = FallingSky.freshSurvival(seed: 91)
+        let saved = try SkySaveArchive.encode(original)
+        defaults.set(saved, forKey: FallingSkyStore.saveKey)
+        let fixture = "--lantern-restoration-review=14"
+        let cases = [
+            [fixture], ["--dialogue-review", fixture], ["--starfalls-reset", fixture],
+            ["--starfalls-reset", "--dialogue-review"],
+            ["--starfalls-reset", "--dialogue-review", "--lantern-restoration-review=-1"],
+            ["--starfalls-reset", "--dialogue-review", "--lantern-restoration-review=19"],
+            ["--starfalls-reset", "--dialogue-review", "--lantern-restoration-review=invalid"]
+        ]
+        for arguments in cases {
+            let store = FallingSkyStore(defaults: defaults, arguments: arguments,
+                presenter: FallingSkyRecorder(), clock: ManualRainClock())
+            XCTAssertNil(store.game.challenge, "Unexpected fixture for \(arguments)")
+            XCTAssertNil(store.game.restoration)
+            XCTAssertEqual(store.game, arguments.contains("--starfalls-reset") ? FallingSky.freshSurvival(seed: 5) : original)
+            XCTAssertEqual(defaults.data(forKey: FallingSkyStore.saveKey), saved, "Fixture parsing must not write the retained archive")
+        }
+    }
     #endif
 
     @MainActor func testWelcomeSaveAvailabilityDoesNotWriteOrAdvanceSky() throws {
@@ -494,6 +550,7 @@ final class FallingSkyStoreTests: XCTestCase {
         store.startFirstLight()
         let initial = store.game
         XCTAssertEqual(initial.challenge, .firstLight)
+        XCTAssertEqual(initial.restoration?.milestone, .unrestored)
         XCTAssertNil(clock.deadline); XCTAssertTrue(store.isPaused)
         store.togglePause()
         for _ in 0..<30 where !store.game.isOver {
@@ -505,18 +562,22 @@ final class FallingSkyStoreTests: XCTestCase {
         XCTAssertEqual(store.game.outcome, .won)
         XCTAssertNil(clock.deadline); XCTAssertFalse(store.canClear)
         let completed = store.game
+        XCTAssertEqual(completed.restoration?.milestone, .complete)
         clock.advance(100); store.callShower(); store.togglePause(); store.clear(Cell(0, 0))
         XCTAssertEqual(store.game, completed)
         let restored = FallingSkyStore(defaults: defaults, arguments: [], presenter: FallingSkyRecorder(), clock: ManualRainClock())
         XCTAssertEqual(restored.game, completed); XCTAssertTrue(restored.message.contains("complete"))
         restored.restart(sameSky: false)
         XCTAssertNil(restored.game.challenge)
+        XCTAssertNil(restored.game.restoration)
         XCTAssertEqual(restored.game.balance, StarfallBalance())
         XCTAssertEqual(restored.game.cadenceID, .announcedCycleV1)
         store.restart(sameSky: true)
         XCTAssertEqual(store.game, initial); XCTAssertTrue(store.isPaused)
+        XCTAssertEqual(store.game.restoration?.milestone, .unrestored)
         store.restart(sameSky: false)
         XCTAssertNil(store.game.challenge); XCTAssertEqual(store.game.outcome, .playing)
+        XCTAssertNil(store.game.restoration)
     }
 
     @MainActor func testLeavingOverflowedChallengeRestoresNormalCadenceAndBalance() {

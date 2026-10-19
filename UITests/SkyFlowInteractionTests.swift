@@ -95,12 +95,12 @@ final class SkyFlowInteractionTests: XCTestCase {
             if outcome.exists { break }
             if legal.exists { legal.tap() } else { tap("experiment.next", app) }
         }
-        XCTAssertEqual(outcome.label, "First Light complete!")
+        XCTAssertEqual(outcome.label, "Lantern Landing restored!")
         XCTAssertFalse(app.buttons["experiment.cell.0.0"].exists)
         XCTAssertTrue(app.buttons["experiment.replay"].isHittable, "Result actions remain usable during the celebration")
         capture(app, "flow-win")
         tap("experiment.replay", app)
-        XCTAssertEqual(app.staticTexts["sky.title"].label, "Collect 18 starlight")
+        XCTAssertEqual(app.staticTexts["sky.title"].label, "Lantern Landing")
         XCTAssertTrue(app.staticTexts["sky.subtitle"].label.contains("same First Light opening"))
         capture(app, "flow-first-light-replay-explanation")
         tap("sky.begin", app); pause(app)
@@ -195,7 +195,7 @@ final class SkyFlowInteractionTests: XCTestCase {
         }
         tap("experiment.settings", app); tap("sky.home", app)
         tap("sky.firstLight", app)
-        XCTAssertEqual(app.staticTexts["sky.title"].label, "Collect 18 starlight")
+        XCTAssertEqual(app.staticTexts["sky.title"].label, "Lantern Landing")
         capture(app, "entry-staged-over-retained-sky")
         app.terminate(); app.launchArguments = ["--sky-flow-review"]; app.launch()
         tap("sky.resume", app)
@@ -272,12 +272,12 @@ final class SkyFlowInteractionTests: XCTestCase {
         tap("sky.firstLight", app)
         tap("sky.preferences", app); tap("experiment.help", app)
         XCTAssertTrue(app.navigationBars["How to play"].waitForExistence(timeout: 5))
-        let objective = app.staticTexts.containing(NSPredicate(format: "label BEGINSWITH %@", "Collect 18 starlight before a column fills.")).firstMatch
+        let objective = app.staticTexts.containing(NSPredicate(format: "label BEGINSWITH %@", "Restore Lantern Landing with 18 starlight.")).firstMatch
         for _ in 0..<10 where !objective.exists || !objective.isHittable { app.swipeUp() }
         XCTAssertTrue(objective.exists); XCTAssertTrue(objective.isHittable)
         capture(app, "first-light-entry-help")
         tap("experiment.done", app)
-        XCTAssertEqual(app.staticTexts["sky.title"].label, "Collect 18 starlight")
+        XCTAssertEqual(app.staticTexts["sky.title"].label, "Lantern Landing")
         XCTAssertFalse(app.buttons["experiment.next"].exists)
         capture(app, "first-light-entry-after-help")
         tap("sky.home", app)

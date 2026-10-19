@@ -35,7 +35,7 @@ struct FallingSkyMenu: View {
                         .accessibilityIdentifier("experiment.replay")
                     Button { restart(false) } label: { Label(SkyCopy.text(.actionNew), systemImage: "sparkles") }
                         .accessibilityIdentifier("experiment.new")
-                } header: { Text(place.title) } footer: {
+                } header: { Text(challenge ? SkyCopy.text(.lanternTitle) : place.title) } footer: {
                     Text(SkyCopy.text(.a11yBoardSummary, values: ["showers": String(turns), "groups": String(groups)]))
                         .accessibilityIdentifier("experiment.roundSummary")
                 }
@@ -43,9 +43,11 @@ struct FallingSkyMenu: View {
                     Button(action: observatory) { Label(SkyCopy.text(.actionHome), systemImage: "moon.stars") }
                         .accessibilityIdentifier("sky.home")
                 }
-                 Section("Atmosphere") {
-                    NavigationLink { locations.toolbar { dismissal } } label: { LabeledContent("Location", value: place.title) }
-                        .accessibilityIdentifier("landing.locations")
+                if !challenge {
+                    Section("Atmosphere") {
+                        NavigationLink { locations.toolbar { dismissal } } label: { LabeledContent("Location", value: place.title) }
+                            .accessibilityIdentifier("landing.locations")
+                    }
                 }
                SkyFeelSection(sound: $sound, haptics: $haptics, calm: $calm)
                 Section {

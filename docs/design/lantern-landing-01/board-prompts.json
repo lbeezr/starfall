@@ -1,0 +1,109 @@
+{
+  "title": "Lantern Landing — playable-zone composition revision",
+  "date": "2026-10-19",
+  "mode": "built-in imagegen",
+  "status": "Proposed board composition; not native gameplay",
+  "source_commit": "548660b1f78e9d34775eb0ee601e91f146a898ac",
+  "correction": "User rejected close diorama; pull camera back above the landing, keep seven-column central sky playable, restore environment at edges.",
+  "master": {
+    "prompt": "Use case: stylized-concept.\nCreate a PORTRAIT mobile puzzle-game ENVIRONMENT BACKGROUND for Starfall's Lantern Landing at 100% restored. Intended canvas 1024 x 2048 (tall 1:2 portrait). BACKGROUND ONLY: the real game will place its own crystal star pieces and controls above this painting.\n\nREFERENCES:\nImage 1: previous Lantern Landing close-up. Use its rosewood dock, rounded rope posts, hinged cream-and-brass lantern and lavender cloud materials ONLY. Its composition is WRONG: completely redesign camera and placement. Remove all six decorative characters.\nImage 2: actual Starfall phone gameplay screenshot. Use its quiet centered square play area, floating foreground stars and uncluttered hierarchy as a COMPOSITION constraint only. Do not include that screenshot's moon, boat, any text, characters, streaks or UI.\n\nPRIMARY CORRECTION:\nWe are now floating HIGH ABOVE Lantern Landing, looking DOWN at the place from a gently angled bird's-eye / 70-degree overhead camera. The camera has pulled back substantially. This must read as a PLAYABLE GAME ZONE with dimensional scenic corners, not a cinematic landscape, a horizon view, a close-up dock, a dollhouse portrait, or a rectangular painting behind a UI card. Think physical board-game environment discipline: broad calm center, charming tangible surroundings that belong to one location.\n\nCOMPOSITION, STRICT:\nThe central gameplay region occupies x=3% to 97% of image width and y=28% to 73% of image height. This entire large square-like region must be an uninterrupted, very dark midnight-indigo pocket of open sky, with only extremely faint atmospheric depth. Absolutely NO structures, ropes, posts, bright stars, plank seams, clouds, dramatic nebula, decorative frame, glowing border, grid, bright rays or reflections inside that reserved area. No visible rectangle delimiting the zone. It is open sky in the world, not a panel.\nThe location's main little wooden dock and its warm generous lantern are seen from ABOVE at the upper-left/upper-middle, wholly above y=25%. Their scale is smaller than the earlier close-up but the lantern remains a readable distinct landmark. Top-down roof/panel faces and plank surfaces are visible, no front-facing scenic horizon. Build one lovely small cluster: rounded rosewood arrival deck, rope posts, a bench, one big cream-and-brass lantern on a short sturdy mast, lavender pennants. The upper ceramic lantern shutters are OPEN and amber light warms ONLY that dock cluster.\nAt upper right, a narrow curved gangway leads off the dock toward a cloud bank at the outer edge. Its rails stay above y=25% or at the far outer edges, NEVER through the playable sky.\nAt the bottom below y=78%, a near curved edge of another part of the same landing, a mooring post, coiled rope and soft lavender cloud fringe give the composition foreground depth. Keep central bottom x=25..75% mostly dark and uncluttered for small native controls. No big message plaque. Use asymmetry, connected craftsmanship and three dimensional contact shadows.\nA few cloud banks occupy upper and lower outer corners, with a soft atmospheric gap separating them from the large playable center. The sky connects naturally through the whole composition. No visible horizon, no row of distant mountains or islands behind a close-up stage.\nThe scene remains midnight even when fully restored. Warmth stays in the lantern's corner, not under gameplay pieces.\n\nSTYLE:\nPremium stylized 3D storybook puzzle-game artwork, broad readable forms, thick rounded rosewood planks, aged golden brass, cream ceramic, soft lavender cloud volume. Softly painted materials with simplified detail at phone scale. The center must stay visually subordinate to the colorful star pieces that will later be rendered over it. No characters or eyes anywhere. No text, no title, no letters, no UI, no watermark, no game pieces, no visible cells.",
+    "source_hint": "Generated images are saved to /Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956 as /Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-9f67c45f-e731-4b4a-8164-5b0f9b441ff2.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "reference_paths": [
+      "restored-100-v1.png",
+      "../../evidence/nightscapes-2026-10-18/dev-f40be2e__moonwake-opening__iphone-17e__normal-motion.jpg"
+    ]
+  },
+  "variants": [
+    {
+      "percent": 0,
+      "prompt": "Edit this PORTRAIT Lantern Landing playable-zone background into the specified restoration state. This is an environment-only plate for a mobile game.\nLOCK THE CAMERA AND PLAY SPACE: identical canvas/aspect, overhead perspective, zoomed-back composition, dark open central sky, top dock silhouette/footprint, curved upper-right gangway, bench/chest, posts, ropes, cloud banks and bottom foreground dock edge. The empty central sky is reserved for an actual seven-column game board; DO NOT add any detail, light beams, clouds, marks, UI, panels, grid or characters there. No stars with faces anywhere. No central wooden platform. No text.\nRetain the same midnight blue/lavender night and background exposure. Change ONLY the restoration condition of the existing dock, lantern, nearby brass fittings and pennants. The lower foreground wood edge belongs to the same place and shares its state. The same recognizable cream-and-brass oval lantern and hinged panels must be retained. No new architecture or props. This is NOT a new scene or angle. STATE 0%: The lantern upper cream panels are fully CLOSED into their original oval shell, opaque, cool and unlit. The small lower glass wick chamber is also completely UNLIT. No warm lamp reflection on the top dock. The mast leans a little while its foot stays planted. Both top dock and foreground plank edge are weathered gray-brown rosewood, gently warped and faded, with a few small splits; all posts still safe and intact. Brass tarnished, ropes a little slack, pennants limp faded lavender. Star-shaped brass ornaments unlit. The scene has lost its welcome but is perfectly readable, not demolished or pitch black. Keep the star-game center unchanged, dark and empty.",
+      "source_hint": "Generated images are saved to /Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956 as /Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-ec55fef6-9178-4163-b39f-bf59e4b55986.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "reference": "initial 100% master"
+    },
+    {
+      "percent": 25,
+      "prompt": "Edit this PORTRAIT Lantern Landing playable-zone background into the specified restoration state. This is an environment-only plate for a mobile game.\nLOCK THE CAMERA AND PLAY SPACE: identical canvas/aspect, overhead perspective, zoomed-back composition, dark open central sky, top dock silhouette/footprint, curved upper-right gangway, bench/chest, posts, ropes, cloud banks and bottom foreground dock edge. The empty central sky is reserved for an actual seven-column game board; DO NOT add any detail, light beams, clouds, marks, UI, panels, grid or characters there. No stars with faces anywhere. No central wooden platform. No text.\nRetain the same midnight blue/lavender night and background exposure. Change ONLY the restoration condition of the existing dock, lantern, nearby brass fittings and pennants. The lower foreground wood edge belongs to the same place and shares its state. The same recognizable cream-and-brass oval lantern and hinged panels must be retained. No new architecture or props. This is NOT a new scene or angle. STATE 25%: The lantern upper cream panels are fully CLOSED into an oval shell, opaque, cool and unlit. Only one small wick in the lower transparent glass bowl has caught: a tiny warm flame and one small reflection on the nearest dock plank. No full lantern bloom. Dock and foreground edge still worn/faded, brass tarnished, mast leaning a little in the same anchored location, ropes and pennants slack. The rest is mostly dormant. No glowing decorative stars yet. Keep central sky identical and empty. The small first flame must be the only significant recovery.",
+      "source_hint": "Generated images are saved to /Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956 as /Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-db3f4cde-5385-473f-8490-b7dd071af2c3.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "reference": "initial 100% master"
+    },
+    {
+      "percent": 50,
+      "prompt": "Edit this PORTRAIT Lantern Landing playable-zone background into the specified restoration state. This is an environment-only plate for a mobile game.\nLOCK THE CAMERA AND PLAY SPACE: identical canvas/aspect, overhead perspective, zoomed-back composition, dark open central sky, top dock silhouette/footprint, curved upper-right gangway, bench/chest, posts, ropes, cloud banks and bottom foreground dock edge. The empty central sky is reserved for an actual seven-column game board; DO NOT add any detail, light beams, clouds, marks, UI, panels, grid or characters there. No stars with faces anywhere. No central wooden platform. No text.\nRetain the same midnight blue/lavender night and background exposure. Change ONLY the restoration condition of the existing dock, lantern, nearby brass fittings and pennants. The lower foreground wood edge belongs to the same place and shares its state. The same recognizable cream-and-brass oval lantern and hinged panels must be retained. No new architecture or props. This is NOT a new scene or angle. STATE 50%: Upper cream ceramic lantern shutters are fully CLOSED into an opaque oval chamber and entirely UNLIT. The lower glass bowl has a modest steady golden wick. Mast is upright. Existing star-shaped brass fittings on the dock posts, gangway and foreground near edge now softly light; keep the effect confined to those objects. Some nearby rosewood and brass have regained color, but much of the wooden decking remains worn and dull. Pennants begin to lift softly. Intermediate repair, not fully polished. No free-floating light paths through the playable sky. Central field stays identical, dark and empty.",
+      "source_hint": "Generated images are saved to /Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956 as /Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-e5394344-0e30-4f40-ab0f-314c76f30365.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "reference": "initial 100% master"
+    },
+    {
+      "percent": 75,
+      "prompt": "Edit this PORTRAIT Lantern Landing playable-zone background into the specified restoration state. This is an environment-only plate for a mobile game.\nLOCK THE CAMERA AND PLAY SPACE: identical canvas/aspect, overhead perspective, zoomed-back composition, dark open central sky, top dock silhouette/footprint, curved upper-right gangway, bench/chest, posts, ropes, cloud banks and bottom foreground dock edge. The empty central sky is reserved for an actual seven-column game board; DO NOT add any detail, light beams, clouds, marks, UI, panels, grid or characters there. No stars with faces anywhere. No central wooden platform. No text.\nRetain the same midnight blue/lavender night and background exposure. Change ONLY the restoration condition of the existing dock, lantern, nearby brass fittings and pennants. The lower foreground wood edge belongs to the same place and shares its state. The same recognizable cream-and-brass oval lantern and hinged panels must be retained. No new architecture or props. This is NOT a new scene or angle. STATE 75%: All rosewood, brass, dock planks, ropes, gangway and foreground near edge are repaired as in the source. The cream ceramic panels of the LARGE UPPER LANTERN CHAMBER have folded CLOSED into the same oval shell: opaque, cool and entirely UNLIT. Lower glass wick chamber glows warmly but modestly. Existing brass star fittings are softly lit on the dock, gangway and foreground edge. Pennants gently lift. Nearly welcoming; the unopened upper chamber is the one clear unfinished part. Keep the vast central sky equally dark, calm and empty. No large final rays or bloom yet.",
+      "source_hint": "Generated images are saved to /Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956 as /Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-d9ee41ad-defb-45bb-92d9-20ca167dced2.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "reference": "initial 100% master"
+    }
+  ],
+  "continuity_correction": {
+    "prompt": "Edit image 1 only. Preserve every pixel of its composition, camera, dock geometry, lantern state, colors and dark empty central playfield as closely as possible. Image 2 is ONLY a lighting-continuity reference for the existing architectural star fittings.\nThe small existing brass star-shaped ornaments attached to the dock posts, upper-right gangway posts and two foreground mooring posts need to retain the soft warm internal golden glow visible in image 2. Illuminate these SAME existing small star fittings, without replacing their shape, moving them, inventing new fixtures or adding light trails. Contained golden cores and very small halos, not blazing fire. Do not dim or close/open the main lantern: retain EXACTLY its state from image 1. No other changes. Central gameplay sky remains untouched, dark and empty; no text, stars with faces, game pieces or UI. Preserve portrait size.",
+    "targets": [
+      75,
+      100
+    ],
+    "reference": "50% version's glowing post fittings",
+    "results": [
+      {
+        "percent": 75,
+        "source_hint": "Generated images are saved to /Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956 as /Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-38ce170b-2660-496f-ae3a-d6dee6dd676f.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      {
+        "percent": 100,
+        "source_hint": "Generated images are saved to /Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956 as /Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-a4156f05-a97e-413e-bad8-d9f16591c731.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      }
+    ]
+  },
+  "selected": [
+    {
+      "percent": 0,
+      "file": "background-000-v2.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-ec55fef6-9178-4163-b39f-bf59e4b55986.png",
+      "width": 887,
+      "height": 1774,
+      "sha256": "4988b409b96087c51328195f017e3da5386ff208a05ac0e2ea95e8568a755df5"
+    },
+    {
+      "percent": 25,
+      "file": "background-025-v2.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-db3f4cde-5385-473f-8490-b7dd071af2c3.png",
+      "width": 887,
+      "height": 1774,
+      "sha256": "4f2eee3efbcc4efbf5a668f1caccc1a98fc06470f586c437d7f9179ae0c2d55e"
+    },
+    {
+      "percent": 50,
+      "file": "background-050-v2.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-e5394344-0e30-4f40-ab0f-314c76f30365.png",
+      "width": 887,
+      "height": 1774,
+      "sha256": "ba7256f32bf15f8d83cf87eb096702ff552aaee59648f24ff94454e15e574991"
+    },
+    {
+      "percent": 75,
+      "file": "background-075-v2.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-38ce170b-2660-496f-ae3a-d6dee6dd676f.png",
+      "width": 887,
+      "height": 1774,
+      "sha256": "9c813651bee9bb8480ec32469cac136fcbe281ef4b2f783cbc0c32f7363dde85"
+    },
+    {
+      "percent": 100,
+      "file": "background-100-v2.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-a4156f05-a97e-413e-bad8-d9f16591c731.png",
+      "width": 887,
+      "height": 1774,
+      "sha256": "e7806e535dbd1d769c744c976aab08fbf3d4ca38a652239f28fa229dda72d8dd"
+    }
+  ],
+  "review_source_hashes": {
+    "board.html": "36f5036e3b3318a158c928fc293e7c3bd3815e6599baa45abee7f01fe791f5c9",
+    "board.js": "0ff0fddd64799d6863146ee7468d4f0652280993404248393ff5b6a8c799f574",
+    "board.css": "7cb5f5ed81d6298673befa5b50d44d457f659e745f729172178a8db366e078e6",
+    "dev-548660b1-wip__board-v2-partly__browser.png": "f9684156c0a160db9ee10a066c689f03b7fbbc9700bc7958a1f803d23e7f3967",
+    "dev-548660b1-wip__board-v2-dense__browser.png": "5d8f27b0843a91d7b68c98b7e65449853f6d0cf9f9df9ef22fabc9755fb6fd5e"
+  }
+}

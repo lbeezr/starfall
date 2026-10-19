@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lantern Landing · Restoration study</title>
+  <style>
+    :root { color-scheme: dark; font-family: ui-sans-serif, system-ui, sans-serif; background: #0b1020; color: #f5eddd; }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    main { max-width: 1360px; margin: auto; padding: 28px 32px 36px; }
+    header { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 20px; }
+    .eyebrow { color: #cbb786; letter-spacing: .18em; text-transform: uppercase; font-size: .7rem; font-weight: 650; margin: 0 0 8px; }
+    h1 { font-family: Georgia, serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 400; margin: 0; letter-spacing: -.03em; }
+    header p:last-child { color: #b6b5cd; max-width: 365px; font-size: .9rem; line-height: 1.5; margin: 0; }
+    figure { margin: 0; }
+    .scene { display: block; width: 100%; height: auto; max-height: 480px; object-fit: contain; background: #070b16; border-radius: 12px; }
+    figcaption { display: flex; gap: 24px; align-items: baseline; padding: 17px 0 20px; }
+    h2 { font-size: 1.1rem; font-weight: 550; margin: 0; flex: 0 0 270px; }
+    #description { color: #c8c6d8; line-height: 1.5; font-size: .95rem; margin: 0; }
+    nav { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+    button { font: inherit; text-align: left; border: 1px solid #34364b; background: #151b30; color: #d7d3e1; border-radius: 9px; padding: 0; overflow: hidden; cursor: pointer; min-height: 48px; }
+    button img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+    button span { display: block; padding: 10px 12px; font-size: .85rem; }
+    button strong { color: #f4e0ac; margin-right: 6px; font-weight: 650; }
+    button .short-name { display: inline; padding: 0; }
+    button[aria-pressed="true"] { border-color: #f0cf83; box-shadow: 0 0 0 2px #f0cf8333; background: #2b2830; }
+    button:hover { border-color: #c9b783; }
+    button:focus-visible, a:focus-visible { outline: 3px solid #9bdfff; outline-offset: 4px; }
+    footer { display: flex; justify-content: space-between; gap: 20px; color: #9699b3; margin-top: 22px; font-size: .78rem; line-height: 1.6; }
+    footer p { margin: 0; }
+    a { color: #d9c99b; }
+    @media (max-width: 700px) {
+      main { padding: 22px 16px; }
+      header, figcaption, footer { display: block; }
+      header p:last-child { margin-top: 12px; }
+      figcaption h2 { margin-bottom: 7px; }
+      nav { gap: 7px; }
+      button span { padding: 10px 5px; text-align: center; }
+      button .short-name { display: none; }
+      .scene { max-height: none; }
+      footer p + p { margin-top: 10px; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <div><p class="eyebrow">Starfall · Soft Skies / 01</p><h1>Lantern Landing · early scene study</h1></div>
+    <p>Superseded for gameplay composition. <a href="board.html">Open the revised overhead playfield study.</a></p>
+  </header>
+  <figure>
+    <img class="scene" id="scene" src="restored-000-v1.png" width="1536" height="1024" alt="Six crystal stars arrive on a worn wooden dock; its leaning mast holds a closed, unlit lantern above lavender clouds.">
+    <figcaption aria-live="polite" aria-atomic="true"><h2 id="state-title">0% · The quiet landing</h2><p id="description">The lantern is cold. The wood is worn, the fittings are dark, and the six stars have just arrived.</p></figcaption>
+  </figure>
+  <nav aria-label="Choose a restoration state">
+    <button type="button" data-state="0" aria-pressed="true" aria-label="Show 0 percent restored: The quiet landing"><img src="restored-000-v1.png" alt=""><span><strong>0%</strong><span class="short-name">Arrival</span></span></button>
+    <button type="button" data-state="25" aria-pressed="false" aria-label="Show 25 percent restored: The first spark"><img src="restored-025-v1.png" alt=""><span><strong>25%</strong><span class="short-name">First spark</span></span></button>
+    <button type="button" data-state="50" aria-pressed="false" aria-label="Show 50 percent restored: Light reconnects"><img src="restored-050-v1.png" alt=""><span><strong>50%</strong><span class="short-name">Reconnect</span></span></button>
+    <button type="button" data-state="75" aria-pressed="false" aria-label="Show 75 percent restored: Almost home"><img src="restored-075-v1.png" alt=""><span><strong>75%</strong><span class="short-name">Almost home</span></span></button>
+    <button type="button" data-state="100" aria-pressed="false" aria-label="Show 100 percent restored: A place to belong"><img src="restored-100-v1.png" alt=""><span><strong>100%</strong><span class="short-name">Welcome</span></span></button>
+  </nav>
+  <footer>
+    <p>Spark · Sunny · Pip · Twinkle · Nova · Dusk<br>Concept art · 19 October 2026 · Not gameplay footage</p>
+    <p><a id="full-size" href="restored-000-v1.png">Open selected image at full size</a><br><a href="README.md">Art notes and generation prompts</a> · <a href="../world-01/index.html">World map</a></p>
+  </footer>
+</main>
+<script>
+  const states = {
+    0: { title: 'The quiet landing', description: 'The lantern is cold. The wood is worn, the fittings are dark, and the six stars have just arrived.', alt: 'Six crystal stars arrive on a worn wooden dock; its leaning mast holds a closed, unlit lantern above lavender clouds.' },
+    25: { title: 'The first spark', description: 'A small wick catches in the lower chamber. Its first warm reflection reaches the boards; the rest of the landing waits.', alt: 'The same six stars watch a small golden wick catch beneath the lantern’s still closed upper chamber on the worn dock.' },
+    50: { title: 'Light reconnects', description: 'The mast stands upright. Light travels between the star-shaped fittings and along the gangway as the landing begins to work again.', alt: 'The lantern mast is upright and glowing golden lines connect the dock’s star fittings; six crystal stars smile beside the repaired path.' },
+    75: { title: 'Almost home', description: 'The boards are repaired, the rosewood is rich again, and the brass shines. The lantern’s closed upper chamber is the last unfinished piece.', alt: 'Smooth repaired rosewood boards and polished brass surround the six stars, while the large upper lantern chamber stays closed and unlit.' },
+    100: { title: 'A place to belong', description: 'The lantern opens its cream panels and pours warm light over the landing. The six stars gather beneath it: the welcome is complete.', alt: 'The lantern’s cream shutters open around a golden light; Spark, Sunny, Pip, Twinkle, Nova and Dusk gather in its warm light on the restored dock.' }
+  };
+  function selectState(percent) {
+    const state = states[percent];
+    const path = `restored-${String(percent).padStart(3, '0')}-v1.png`;
+    document.getElementById('scene').src = path;
+    document.getElementById('scene').alt = state.alt;
+    document.getElementById('state-title').textContent = `${percent}% · ${state.title}`;
+    document.getElementById('description').textContent = state.description;
+    document.getElementById('full-size').href = path;
+    document.querySelectorAll('button[data-state]').forEach(button => button.setAttribute('aria-pressed', String(Number(button.dataset.state) === percent)));
+  }
+  document.querySelectorAll('button[data-state]').forEach(button => button.addEventListener('click', () => selectState(Number(button.dataset.state))));
+  for (const percent of [25, 50, 75, 100]) { const image = new Image(); image.src = `restored-${String(percent).padStart(3, '0')}-v1.png`; }
+</script>
+</body>
+</html>
