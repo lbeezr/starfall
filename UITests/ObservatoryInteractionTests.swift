@@ -54,7 +54,7 @@ final class ObservatoryInteractionTests: XCTestCase {
         let navigation = app.navigationBars["How to play"]
         XCTAssertTrue(navigation.waitForExistence(timeout: 5))
         let last = app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@",
-            "Collect 18 starlight before a column fills.")).firstMatch
+            "Restore Lantern Landing with 18 starlight.")).firstMatch
         var reachedEnd = false
         // The original 48-step budget was sampled on 16 Pro Max. On 17e,
         // XXXL still reaches the swaps section at step 47; preserve overlapping
@@ -317,8 +317,8 @@ extension ObservatoryInteractionTests {
                 }, object: nil).wait(timeout: 5))
             }
         }
-        XCTAssertEqual(outcome.label, "First Light complete!")
-        try vo.focus(outcome, expecting: "First Light complete!")
+        XCTAssertEqual(outcome.label, "Lantern Landing restored!")
+        try vo.focus(outcome, expecting: "Lantern Landing restored!")
         let score = app.staticTexts["experiment.score"].label
         capture(app, "VoiceOver-First-Light-complete")
         XCUIDevice.shared.press(.home)
@@ -328,7 +328,7 @@ extension ObservatoryInteractionTests {
         vo.resetFocus()
         try vo.choose(app.buttons["sky.resume"], expecting: "View last sky")
         XCTAssertTrue(outcome.waitForExistence(timeout: 10))
-        try vo.focus(outcome, expecting: "First Light complete!")
+        try vo.focus(outcome, expecting: "Lantern Landing restored!")
         try vo.choose(app.buttons["experiment.replay"], expecting: "Replay First Light")
         try vo.choose(app.buttons["sky.begin"], expecting: "Begin")
         try vo.choose(app.buttons["experiment.settings"], expecting: "Sky menu")

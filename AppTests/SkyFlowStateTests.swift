@@ -181,7 +181,11 @@ final class SkyFlowStateTests: XCTestCase {
             XCTAssertEqual(store.game.outcome, .won)
             XCTAssertTrue(store.busy, "Core commits the final clear before presentation settles")
             let committed = store.game
-            XCTAssertEqual(try SkySaveArchive.decode(XCTUnwrap(defaults.data(forKey: FallingSkyStore.saveKey))), committed)
+            let archive = try XCTUnwrap(defaults.data(forKey: FallingSkyStore.saveKey))
+            XCTAssertEqual(store.game.restoration?.milestone, .complete)
+            XCTAssertEqual(store.game.restoration?.score, committed.score)
+            XCTAssertEqual(try SkySaveArchive.decode(archive), committed)
+            XCTAssertEqual(defaults.data(forKey: FallingSkyStore.saveKey), archive, "Reading restoration never writes an archive")
             if interrupted { store.setSuspended(true) }
             presenter.finish()
             XCTAssertFalse(store.busy)
@@ -190,6 +194,8 @@ final class SkyFlowStateTests: XCTestCase {
             XCTAssertNil(clock.deadline)
             let restored = FallingSkyStore(defaults: defaults, arguments: [], presenter: FallingSkyRecorder(), clock: ManualRainClock())
             XCTAssertEqual(SkyResultSnapshot(game: restored.game), SkyResultSnapshot(game: committed))
+            XCTAssertEqual(restored.game.restoration, committed.restoration)
+            XCTAssertEqual(restored.game.restoration?.milestone, .complete)
         }
     }
 
@@ -306,7 +312,7 @@ final class SkyFlowStateTests: XCTestCase {
         XCTAssertGreaterThanOrEqual(result.score, 18)
         XCTAssertEqual(result.score, game.score)
         XCTAssertEqual(result.target, 18)
-        XCTAssertEqual(result.reason, "First Light complete!")
+        XCTAssertEqual(result.reason, "First Light complete! Lantern Landing is restored.")
     }
 }
 

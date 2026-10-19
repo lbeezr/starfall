@@ -47,6 +47,9 @@ import StarfallCore
         flow.entry?.isChallenge(replayingChallenge: store.game.challenge != nil) ?? (store.game.challenge != nil)
     }
     private var quietMotion: Bool { reduceMotion || calmEffects || voiceOver }
+    private var restoration: StarlightRestoration? {
+        LanternLandingPresentation.selected(game: store.game, entry: flow.entry)
+    }
 
     private func usesIslandTimer(size: CGSize, topInset: CGFloat) -> Bool {
         SkyShowerPlacement.usesIsland(hardware: SkyShowerPlacement.hardware, size: size,
@@ -69,7 +72,8 @@ import StarfallCore
             GeometryReader { proxy in
                 if !settings, !showingCeremony, let receipt = store.celebration,
                    let board = anchors[.board], let score = anchors[.score], let header = anchors[.header] {
-                    StarlightCelebrationOverlay(event: receipt, board: proxy[board], score: proxy[score], header: proxy[header], quiet: quietMotion)
+                    StarlightCelebrationOverlay(event: receipt, board: proxy[board], score: proxy[score], header: proxy[header], quiet: quietMotion,
+                                               lightDestination: anchors[.lantern].map { proxy[$0] })
                         .id(receipt.id)
                 }
             }.allowsHitTesting(false)
@@ -187,6 +191,13 @@ import StarfallCore
                         if !island { showerTrail(island: false, width: min(280, crown.width)) }
                     }
                     .frame(width: crown.width, height: crown.height)
+                    .background {
+                        if restoration != nil {
+                            RoundedRectangle(cornerRadius: StarfallTheme.Radius.panel)
+                                .fill(StarfallTheme.Lantern.sky.opacity(StarfallTheme.Lantern.hudOpacity))
+                                .padding(.horizontal, -4)
+                        }
+                    }
                     .starlightAnchor(.header).accessibilityElement(children: .contain)
                     .accessibilityIdentifier("sky.header")
                     .position(x: crown.midX, y: crown.midY)
@@ -222,6 +233,13 @@ import StarfallCore
                         .fixedSize(horizontal: true, vertical: false)
                     VStack(alignment: .leading, spacing: StarfallTheme.Spacing.small) { pauseControl; showerControl }
                 }.buttonStyle(StarfallGameButtonStyle(tint: StarfallTheme.Landing.ink(place)))
+            }
+            .background {
+                if restoration != nil {
+                    RoundedRectangle(cornerRadius: StarfallTheme.Radius.panel)
+                        .fill(StarfallTheme.Lantern.sky.opacity(StarfallTheme.Lantern.hudOpacity))
+                        .padding(.horizontal, -8).padding(.vertical, -4)
+                }
             }
         }
     }
@@ -264,11 +282,18 @@ import StarfallCore
         return
             HStack(spacing: StarfallTheme.Spacing.compact) {
                 Image(systemName: "sparkle").font(StarfallTheme.Typography.hudGlyph).foregroundStyle(StarfallTheme.Observatory.lanternGlow).accessibilityHidden(true)
-                Text(store.game.challenge.map { "\(store.game.score.formatted()) / \($0.target.formatted())" } ?? store.game.score.formatted())
+                VStack(alignment: .leading, spacing: 1) {
+                    if let restoration {
+                        Text(SkyCopy.text(.lanternRestoration, values: ["percent": String(Int((restoration.fraction * 100).rounded()))]))
+                            .font(StarfallTheme.Typography.skyCaption)
+                            .accessibilityIdentifier("lantern.restoration")
+                    }
+                    Text(store.game.challenge.map { "\(store.game.score.formatted()) / \($0.target.formatted())" } ?? store.game.score.formatted())
                     .font(StarfallTheme.Typography.gameTitle).monospacedDigit()
                     .accessibilityLabel(store.game.challenge.map { SkyCopy.text(.resultChallengeScore, values: ["score": String(store.game.score), "target": String($0.target)]) } ?? SkyCopy.text(.welcomeScore, values: ["score": String(store.game.score)]))
                     .accessibilityIdentifier("experiment.score")
                     .accessibilityHint(SkyCopy.text(.a11yBoardHint, values: ["summary": boardSummary]))
+                }
             }
             .keyframeAnimator(initialValue: CGFloat(1), trigger: store.game.score) { content, scale in
                 content.scaleEffect(quiet || !celebrating ? 1 : scale, anchor: .leading)
@@ -308,9 +333,17 @@ import StarfallCore
         VStack(spacing: 0) {
             GeometryReader { geometry in
                 ZStack {
-                    LandingEnvironment(place: place, active: scenePhase == .active && !settings && store.persistenceNotice == nil && !showingCeremony && !store.isPaused,
+                    if let restoration {
+                        LanternLandingEnvironment(restoration: restoration,
+                                                  active: scenePhase == .active && !settings && store.persistenceNotice == nil,
+                                                  ambientActive: !showingCeremony && !store.isPaused,
+                                                  quiet: quietMotion || reduceTransparency, largeHeader: expanded && largeText)
+                            .id("lantern.\(environmentGeneration)")
+                    } else {
+                        LandingEnvironment(place: place, active: scenePhase == .active && !settings && store.persistenceNotice == nil && !showingCeremony && !store.isPaused,
                                            reducedMotion: reduceMotion || calmEffects || voiceOver || reduceTransparency, largeHeader: expanded && largeText)
-                        .id("\(environmentGeneration).\(place.rawValue)")
+                            .id("\(environmentGeneration).\(place.rawValue)")
+                    }
                     if environmentContrast == .increased || reduceTransparency {
                         Color.black.opacity(0.28).allowsHitTesting(false).accessibilityHidden(true)
                     }

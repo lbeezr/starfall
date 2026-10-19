@@ -357,6 +357,13 @@ enum SkyTerminalSpeech { case feedback, ceremony }
             let reviewScore = arguments.first { $0.hasPrefix("--night-score=") }.flatMap { Int($0.dropFirst("--night-score=".count)) } ?? 0
             game = ObservatoryReviewFixture.game(dense: arguments.contains("--observatory-dense"), score: min(2_000_000_000,max(0,reviewScore))).adoptingFeedingDusk()
         }
+        // Explicit reset plus the existing isolated review suite prevents this
+        // deterministic art/interaction sample from replacing a player's save.
+        if arguments.contains("--starfalls-reset"), arguments.contains("--dialogue-review"),
+           let score = arguments.first(where: { $0.hasPrefix("--lantern-restoration-review=") })
+            .flatMap({ Int($0.dropFirst("--lantern-restoration-review=".count)) }), (0...18).contains(score) {
+            game = ObservatoryReviewFixture.game(dense: false, score: score, challenge: .firstLight)
+        }
         #endif
         #if DEBUG
         if arguments.contains("--starfalls-reset"), let name = arguments.first(where: { $0.hasPrefix("--constellation-fixture=") }),

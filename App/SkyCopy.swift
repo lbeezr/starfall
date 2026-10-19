@@ -108,6 +108,8 @@ enum SkyCopy {
         case flowWon = "flow.won"
         case flowFull = "flow.full"
         case flowPreparing = "flow.preparing"
+        case lanternTitle = "lantern.title"
+        case lanternRestoration = "lantern.restoration"
         case resultScore = "result.score"
         case resultChallengeScore = "result.challengeScore"
         case resultWon = "result.won"

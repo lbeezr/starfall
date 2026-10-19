@@ -4,8 +4,8 @@ import StarfallCore
 #if DEBUG
 // Explicit reset-only Debug review sample; absent from Release initialization.
 @MainActor enum ObservatoryReviewFixture {
-    static func game(dense: Bool, score: Int = 0) -> FallingSky {
-        let base = FallingSky(seed: 5)
+    static func game(dense: Bool, score: Int = 0, challenge: StarfallChallenge? = nil) -> FallingSky {
+        let base = challenge.map(FallingSky.init(challenge:)) ?? FallingSky(seed: 5)
         var object = try! JSONSerialization.jsonObject(with: JSONEncoder().encode(base)) as! [String: Any]
         var board: [Any] = Array(repeating: NSNull(), count: 49)
         let height = dense ? 7 : 3
@@ -16,8 +16,11 @@ import StarfallCore
                 // Independent three-star groups at front/back corners for projected coordinate taps.
                 if row == 0 && column < 3 { kind = .amber }
                 if row == height-1 && column >= 4 { kind = .aqua }
-                if row == 1 && column == 3 { kind = nil }
-                let grown = row == 1 && column == 1
+                if challenge == nil && row == 1 && column == 3 { kind = nil }
+                if challenge != nil && row == 1 && column == 1 { kind = .mint }
+                // First Light has no Dusk. Its bottom-left trio awards four light,
+                // allowing the 14-point review to finish through an ordinary tap.
+                let grown = row == (challenge == nil ? 1 : 0) && column == 1
                 var gem: [String: Any] = ["id": id, "grown": grown]
                 if let kind { gem["kind"] = kind.rawValue }
                 board[row*7+column] = gem

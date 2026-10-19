@@ -74,7 +74,7 @@ final class FallingSkyInteractionTests: XCTestCase {
         let challenge = app.skyMenuControl("experiment.challenge")
         XCTAssertTrue(challenge.waitForExistence(timeout: 5)); challenge.tap()
         XCTAssertTrue(app.buttons["sky.begin"].waitForExistence(timeout: 5))
-        XCTAssertEqual(app.staticTexts["sky.title"].label, "Collect 18 starlight")
+        XCTAssertEqual(app.staticTexts["sky.title"].label, "Lantern Landing")
         app.buttons["sky.begin"].tap()
         togglePause(app)
         XCTAssertTrue(app.buttons["experiment.next"].waitForExistence(timeout: 5))
@@ -191,7 +191,7 @@ final class FallingSkyInteractionTests: XCTestCase {
             if legal.exists { legal.tap() }
             else { reveal(next, in: app); next.tap() }
         }
-        XCTAssertEqual(outcome.label, "First Light complete!")
+        XCTAssertEqual(outcome.label, "Lantern Landing restored!")
         XCTAssertFalse(next.exists)
         XCTAssertTrue(app.buttons["experiment.replay"].isHittable)
         XCTAssertTrue(app.buttons["experiment.new"].isHittable)
@@ -199,12 +199,12 @@ final class FallingSkyInteractionTests: XCTestCase {
         app.terminate(); app.launchArguments = []; app.launch()
         XCTAssertTrue(app.buttons["sky.resume"].waitForExistence(timeout: 10)); app.buttons["sky.resume"].tap()
         XCTAssertTrue(outcome.waitForExistence(timeout: 10))
-        XCTAssertEqual(outcome.label, "First Light complete!")
+        XCTAssertEqual(outcome.label, "Lantern Landing restored!")
         XCTAssertFalse(next.exists)
         let replay = app.buttons["experiment.replay"]
         if !replay.exists { app.buttons["experiment.settings"].tap() }; reveal(replay, in: app); replay.tap()
         XCTAssertTrue(app.buttons["sky.begin"].waitForExistence(timeout: 5))
-        XCTAssertEqual(app.staticTexts["sky.title"].label, "Collect 18 starlight")
+        XCTAssertEqual(app.staticTexts["sky.title"].label, "Lantern Landing")
         XCTAssertFalse(outcome.exists)
         app.buttons["sky.home"].tap()
         app.buttons["sky.start"].tap()

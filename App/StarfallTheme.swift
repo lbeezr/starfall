@@ -362,6 +362,12 @@ extension StarfallTheme {
 }
 
 extension StarfallTheme {
+    enum Lantern {
+        static let sky = Color(red: 0.018, green: 0.033, blue: 0.105)
+        static let restorationDuration: TimeInterval = 0.85
+        static let hudOpacity = 0.68
+    }
+
     enum Landing {
         static let nightCenter = Color(red: 0.025, green: 0.045, blue: 0.105)
         static let distantStar = Color(red: 0.68, green: 0.72, blue: 0.94)

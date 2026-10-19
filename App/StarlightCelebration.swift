@@ -59,7 +59,7 @@ struct StarlightCelebration: Equatable, Identifiable {
     }
 }
 
-enum StarlightAnchor: Hashable { case board, score, header }
+enum StarlightAnchor: Hashable { case board, score, header, lantern }
 struct StarlightAnchors: PreferenceKey {
     static var defaultValue: [StarlightAnchor: Anchor<CGRect>] { [:] }
     static func reduce(value: inout [StarlightAnchor: Anchor<CGRect>], nextValue: () -> [StarlightAnchor: Anchor<CGRect>]) {
@@ -84,6 +84,7 @@ struct StarlightCelebrationOverlay: View {
     let score: CGRect
     let header: CGRect
     let quiet: Bool
+    var lightDestination: CGRect? = nil
     @Environment(\.dynamicTypeSize) private var textSize
 
     var body: some View {
@@ -176,7 +177,8 @@ struct StarlightCelebrationOverlay: View {
             }
         }
         // Six packets maximum. All represent one committed award, not individual points.
-        let destination = CGPoint(x: score.midX, y: score.midY)
+        let target = lightDestination ?? score
+        let destination = CGPoint(x: target.midX, y: target.midY)
         for (index, contributor) in event.packets.enumerated() {
             let point = location(contributor.cell)
             let tint = color(contributor)
