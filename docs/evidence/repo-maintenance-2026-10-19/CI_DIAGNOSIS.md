@@ -34,7 +34,7 @@ Baseline runtime/test source: `548660b1f78e9d34775eb0ee601e91f146a898ac`; only d
 
 Related paths examined: existing `DuskInteractionTests`, `NativeSkyControls`, menu scrolling, `DuskFixture`, `SkyDefaults`, restore/replay/fresh entry and balance controls. This bounds the diagnosis; it does not eliminate every UI failure class.
 
-Fix source: merged docs base `88a869a0e9a454eb9274275584e48452e9176f56` plus **only build-affecting dirty path** `UITests/FallingSkyInteractionTests.swift`, SHA-256 `fdbc8cad02186ad951e5ec6ad2f93aa07144a5a6dacf97f12f49a1599a8d60e5`. Concurrent instruction/document drafts do not enter the app build. App/Core/resources/project files are unchanged.
+Fix source: current main `a1398d1b971c30c7557a8059b2d0b3466696ba66` (includes independently merged Lantern Landing PR #154) plus **only build-affecting dirty path** `UITests/FallingSkyInteractionTests.swift`, SHA-256 `fdbc8cad02186ad951e5ec6ad2f93aa07144a5a6dacf97f12f49a1599a8d60e5`. Concurrent instruction/document drafts do not enter the app build. App/Core/resources/project files are unchanged relative to that main. The baseline and candidate therefore have different app revisions; the durations are observations, not a controlled performance comparison.
 
 | Check | Result |
 | --- | --- |
