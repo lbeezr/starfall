@@ -1,0 +1,92 @@
+[
+  {
+    "run": "registration",
+    "snapshot": null,
+    "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=21025903-D90D-4E30-BA74-45D3EFB2F5E4,arch=arm64\" -derivedDataPath artifacts/environment-grooves-2026-10-18/Derived -resultBundlePath artifacts/environment-grooves-2026-10-18/registration.xcresult CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -parallel-testing-enabled NO -collect-test-diagnostics never \"-only-testing:StarfallAppTests/ObservatoryGeometryTests\" \"-only-testing:StarfallAppTests/LandingPlaceTests\" \"-only-testing:StarfallAppTests/LandingArchitectureGeometryTests\" \"-only-testing:StarfallUITests/LandingHeaderInteractionTests\" \"-only-testing:StarfallUITests/LandingPlaceInteractionTests/testEveryPlaceKeepsRoundRespondsAndClearsAtBothEdges\" test",
+    "result": "** TEST SUCCEEDED **"
+  },
+  {
+    "run": "final-phone",
+    "snapshot": "3c988d0841d6",
+    "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=21025903-D90D-4E30-BA74-45D3EFB2F5E4\" -derivedDataPath artifacts/environment-grooves-2026-10-18/Derived -resultBundlePath artifacts/environment-grooves-2026-10-18/final-phone.xcresult CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -parallel-testing-enabled NO -collect-test-diagnostics never \"-only-testing:StarfallAppTests\" \"-only-testing:StarfallUITests/LandingHeaderInteractionTests\" \"-only-testing:StarfallUITests/LandingPlaceInteractionTests\" \"-only-testing:StarfallUITests/SkyTechniqueInteractionTests\" \"-only-testing:StarfallUITests/FallingSkyInteractionTests/testFirstLightWinReplayAndFullSky\" test",
+    "result": "** TEST FAILED **"
+  },
+  {
+    "run": "tablet",
+    "snapshot": "3c988d0841d6",
+    "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=4BA9208F-2CF6-45E6-BCB7-4DC93198295D\" -derivedDataPath artifacts/environment-grooves-2026-10-18/Derived -resultBundlePath artifacts/environment-grooves-2026-10-18/tablet.xcresult CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -parallel-testing-enabled NO -collect-test-diagnostics never \"-only-testing:StarfallUITests/ObservatoryInteractionTests/testSupportedOrientationsPreserveNativeTargets\" \"-only-testing:StarfallUITests/LandingPlaceInteractionTests/testEveryPlaceKeepsRoundRespondsAndClearsAtBothEdges\" test-without-building",
+    "result": "** TEST EXECUTE SUCCEEDED **"
+  },
+  {
+    "run": "compact",
+    "snapshot": "3c988d0841d6",
+    "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=EA0F7A30-21E1-4995-93F5-C4A983F4A354\" -derivedDataPath artifacts/environment-grooves-2026-10-18/Derived -resultBundlePath artifacts/environment-grooves-2026-10-18/compact.xcresult CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -parallel-testing-enabled NO -collect-test-diagnostics never \"-only-testing:StarfallUITests/LandingHeaderInteractionTests\" \"-only-testing:StarfallUITests/ObservatoryInteractionTests/testActualCastSparseDenseAndProjectedCornerTaps\" \"-only-testing:StarfallUITests/FallingSkyInteractionTests/testSystemReduceMotionKeepsManualPlayWorking\" test-without-building",
+    "result": "** TEST EXECUTE FAILED **"
+  },
+  {
+    "run": "revised-tablet",
+    "snapshot": "a43cbe57db8a",
+    "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=4BA9208F-2CF6-45E6-BCB7-4DC93198295D\" -derivedDataPath artifacts/environment-grooves-2026-10-18/Revised -resultBundlePath artifacts/environment-grooves-2026-10-18/revised-tablet.xcresult CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -parallel-testing-enabled NO -collect-test-diagnostics never \"-only-testing:StarfallAppTests\" \"-only-testing:StarfallUITests/ObservatoryInteractionTests/testSupportedOrientationsPreserveNativeTargets\" test",
+    "result": "** TEST FAILED **"
+  },
+  {
+    "run": "hosted-serial",
+    "snapshot": "88c790ab7a2f",
+    "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=21025903-D90D-4E30-BA74-45D3EFB2F5E4\" -derivedDataPath artifacts/environment-grooves-2026-10-18/Revised -resultBundlePath artifacts/environment-grooves-2026-10-18/hosted-serial.xcresult CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -parallel-testing-enabled NO -collect-test-diagnostics never \"-only-testing:StarfallAppTests\" test",
+    "result": "** TEST SUCCEEDED **"
+  },
+  {
+    "run": "native-corrected",
+    "snapshot": "88c790ab7a2f",
+    "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=21025903-D90D-4E30-BA74-45D3EFB2F5E4\" -derivedDataPath artifacts/environment-grooves-2026-10-18/Revised -resultBundlePath artifacts/environment-grooves-2026-10-18/native-corrected.xcresult CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -parallel-testing-enabled NO -collect-test-diagnostics never \"-only-testing:StarfallUITests/LandingPlaceInteractionTests/testEveryPlaceKeepsRoundRespondsAndClearsAtBothEdges\" \"-only-testing:StarfallUITests/LandingPlaceInteractionTests/testCompactLandscapeLocationsKeepNativeArenaAndMessagesSeparate\" \"-only-testing:StarfallUITests/SkyFlowInteractionTests/testFirstLightWinReplayAndFullSky\" test-without-building",
+    "result": "** TEST EXECUTE SUCCEEDED **"
+  },
+  {
+    "run": "release-corrected",
+    "snapshot": "88c790ab7a2f",
+    "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Release -destination \"generic/platform=iOS Simulator\" -derivedDataPath artifacts/environment-grooves-2026-10-18/Release CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES build",
+    "result": "** BUILD SUCCEEDED **"
+  },
+  {
+    "run": "header-corrected",
+    "snapshot": "88c790ab7a2f",
+    "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=EA0F7A30-21E1-4995-93F5-C4A983F4A354\" -derivedDataPath artifacts/environment-grooves-2026-10-18/Revised -resultBundlePath artifacts/environment-grooves-2026-10-18/header-corrected.xcresult CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -parallel-testing-enabled NO -collect-test-diagnostics never \"-only-testing:StarfallUITests/LandingHeaderInteractionTests\" test-without-building",
+    "result": "** TEST EXECUTE SUCCEEDED **"
+  },
+  {
+    "run": "tablet-corrected",
+    "snapshot": "88c790ab7a2f",
+    "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=4BA9208F-2CF6-45E6-BCB7-4DC93198295D\" -derivedDataPath artifacts/environment-grooves-2026-10-18/Revised -resultBundlePath artifacts/environment-grooves-2026-10-18/tablet-corrected.xcresult CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -parallel-testing-enabled NO -collect-test-diagnostics never \"-only-testing:StarfallUITests/ObservatoryInteractionTests/testSupportedOrientationsPreserveNativeTargets\" test-without-building",
+    "result": "** TEST EXECUTE SUCCEEDED **"
+  },
+  {
+    "run": "main-integration",
+    "snapshot": "b48eef2925b0",
+    "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=21025903-D90D-4E30-BA74-45D3EFB2F5E4\" -derivedDataPath artifacts/environment-grooves-2026-10-18/Revised -resultBundlePath artifacts/environment-grooves-2026-10-18/main-integration.xcresult CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -parallel-testing-enabled NO -collect-test-diagnostics never \"-only-testing:StarfallAppTests\" \"-only-testing:StarfallUITests/ConstellationTraceNativeTests/testNativeGapSwipeAndRepeatedAttempt\" \"-only-testing:StarfallUITests/ConstellationTraceNativeTests/testNativeOffCenterStrokeAcquiresFive\" \"-only-testing:StarfallUITests/SkyTechniqueInteractionTests/testQuickDirectionalSwapDoesNotRequireDestinationCell\" \"-only-testing:StarfallUITests/LandingHeaderInteractionTests\" test",
+    "result": "** TEST FAILED **"
+  },
+  {
+    "run": "main-release",
+    "snapshot": "b48eef2925b0",
+    "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Release -destination \"generic/platform=iOS Simulator\" -derivedDataPath artifacts/environment-grooves-2026-10-18/Release CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES build",
+    "result": "** BUILD SUCCEEDED **"
+  },
+  {
+    "run": "main-core",
+    "snapshot": "b48eef2925b0",
+    "command": "swift test",
+    "result": "completed; see log/test totals"
+  },
+  {
+    "run": "viewport-final",
+    "snapshot": "a2a7b3a1f4d4",
+    "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=21025903-D90D-4E30-BA74-45D3EFB2F5E4\" -derivedDataPath artifacts/environment-grooves-2026-10-18/Revised -resultBundlePath artifacts/environment-grooves-2026-10-18/viewport-final.xcresult CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -parallel-testing-enabled NO -collect-test-diagnostics never \"-only-testing:StarfallAppTests\" \"-only-testing:StarfallUITests/LandingPlaceInteractionTests/testArchivePhysicalRecessAcrossOrientations\" test",
+    "result": "** TEST SUCCEEDED **"
+  },
+  {
+    "run": "viewport-release",
+    "snapshot": "a2a7b3a1f4d4",
+    "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Release -destination \"generic/platform=iOS Simulator\" -derivedDataPath artifacts/environment-grooves-2026-10-18/Release CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES build",
+    "result": "** BUILD SUCCEEDED **"
+  }
+]

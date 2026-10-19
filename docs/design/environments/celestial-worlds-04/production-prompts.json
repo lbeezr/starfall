@@ -1,0 +1,130 @@
+{
+  "tool": "Built-in Imagegen",
+  "date": "2026-10-18",
+  "prompts": [
+    {
+      "id": "crescent",
+      "name": "Crescent Observatory",
+      "prompt": "Use case: stylized-concept. Asset: production landscape environment painting for Starfall, wide aspect ratio 2.17:1, ideally 1848 x 852.\nReference image is the approved portrait Crescent Observatory. Recompose its SAME place, material palette, large instruments and lovingly crafted tactile 2.5D art into the following measured landscape arrangement. No text or characters.\nLEFT 57% of the image is the gameplay court. Across its top at y2–12% place three EMPTY recessed dark controls: score x8–20%, long five-socket forecast x23–43%, circular menu x46–53%. The quiet broad dark court below occupies x5–54%, y16–95%, with narrow tactile rims and no scenery within it. Its low-contrast field must remain empty, no diagram or stars. This is the dominant playable area. The left court has NO large top props above it.\nRIGHT 43% is an attached observatory workbench sharing the court's foundation. Place the reference's two large iconic instruments and small glimpse of cosmos at x60–98%, y0–40%. Place a single broad EMPTY dark reading recess at x61–94%, y47–77%. Place two EMPTY dark action wells centered x69% and x86%, y88%, each roughly 13% wide by 13% tall. Keep their materials continuous with the reading shelf and main court; no floating pasted panel or visible collage seam. A small secondary prop from the portrait belongs at the outer far-right edge near y42%, clear of reading and actions.\nThe whole scene is connected handcrafted architecture with visible supports and contact shadows. Preserve Crescent Observatory's identity and dark central palette from reference. Keep large left court clear for all seven rows. Main imagery moves to the upper RIGHT; do not reuse portrait layout or put an instrument over the left court. No UI text, logos, faces, game pieces, square cell grid or watermark. The bright crystal cast will be composited separately and should outshine the muted scenery."
+    },
+    {
+      "id": "nebula",
+      "name": "Nebula Nursery",
+      "prompt": "Use case: stylized-concept. Asset: production landscape environment painting for Starfall, wide aspect ratio 2.17:1, ideally 1848 x 852.\nReference image is the approved portrait Nebula Nursery. Recompose its SAME place, material palette, large instruments and lovingly crafted tactile 2.5D art into the following measured landscape arrangement. No text or characters.\nLEFT 57% of the image is the gameplay court. Across its top at y2–12% place three EMPTY recessed dark controls: score x8–20%, long five-socket forecast x23–43%, circular menu x46–53%. The quiet broad dark court below occupies x5–54%, y16–95%, with narrow tactile rims and no scenery within it. Its low-contrast field must remain empty, no diagram or stars. This is the dominant playable area. The left court has NO large top props above it.\nRIGHT 43% is an attached observatory workbench sharing the court's foundation. Place the reference's two large iconic instruments and small glimpse of cosmos at x60–98%, y0–40%. Place a single broad EMPTY dark reading recess at x61–94%, y47–77%. Place two EMPTY dark action wells centered x69% and x86%, y88%, each roughly 13% wide by 13% tall. Keep their materials continuous with the reading shelf and main court; no floating pasted panel or visible collage seam. A small secondary prop from the portrait belongs at the outer far-right edge near y42%, clear of reading and actions.\nThe whole scene is connected handcrafted architecture with visible supports and contact shadows. Preserve Nebula Nursery's identity and dark central palette from reference. Keep large left court clear for all seven rows. Main imagery moves to the upper RIGHT; do not reuse portrait layout or put an instrument over the left court. No UI text, logos, faces, game pieces, square cell grid or watermark. The bright crystal cast will be composited separately and should outshine the muted scenery."
+    },
+    {
+      "id": "orbital",
+      "name": "Orbital Orrery",
+      "prompt": "Use case: stylized-concept. Asset: production landscape environment painting for Starfall, wide aspect ratio 2.17:1, ideally 1848 x 852.\nReference image is the approved portrait Orbital Orrery. Recompose its SAME place, material palette, large instruments and lovingly crafted tactile 2.5D art into the following measured landscape arrangement. No text or characters.\nLEFT 57% of the image is the gameplay court. Across its top at y2–12% place three EMPTY recessed dark controls: score x8–20%, long five-socket forecast x23–43%, circular menu x46–53%. The quiet broad dark court below occupies x5–54%, y16–95%, with narrow tactile rims and no scenery within it. Its low-contrast field must remain empty, no diagram or stars. This is the dominant playable area. The left court has NO large top props above it.\nRIGHT 43% is an attached observatory workbench sharing the court's foundation. Place the reference's two large iconic instruments and small glimpse of cosmos at x60–98%, y0–40%. Place a single broad EMPTY dark reading recess at x61–94%, y47–77%. Place two EMPTY dark action wells centered x69% and x86%, y88%, each roughly 13% wide by 13% tall. Keep their materials continuous with the reading shelf and main court; no floating pasted panel or visible collage seam. A small secondary prop from the portrait belongs at the outer far-right edge near y42%, clear of reading and actions.\nThe whole scene is connected handcrafted architecture with visible supports and contact shadows. Preserve Orbital Orrery's identity and dark central palette from reference. Keep large left court clear for all seven rows. Main imagery moves to the upper RIGHT; do not reuse portrait layout or put an instrument over the left court. No UI text, logos, faces, game pieces, square cell grid or watermark. The bright crystal cast will be composited separately and should outshine the muted scenery."
+    },
+    {
+      "id": "aurora",
+      "name": "Aurora Spire",
+      "prompt": "Use case: stylized-concept. Asset: production landscape environment painting for Starfall, wide aspect ratio 2.17:1, ideally 1848 x 852.\nReference image is the approved portrait Aurora Spire. Recompose its SAME place, material palette, large instruments and lovingly crafted tactile 2.5D art into the following measured landscape arrangement. No text or characters.\nLEFT 57% of the image is the gameplay court. Across its top at y2–12% place three EMPTY recessed dark controls: score x8–20%, long five-socket forecast x23–43%, circular menu x46–53%. The quiet broad dark court below occupies x5–54%, y16–95%, with narrow tactile rims and no scenery within it. Its low-contrast field must remain empty, no diagram or stars. This is the dominant playable area. The left court has NO large top props above it.\nRIGHT 43% is an attached observatory workbench sharing the court's foundation. Place the reference's two large iconic instruments and small glimpse of cosmos at x60–98%, y0–40%. Place a single broad EMPTY dark reading recess at x61–94%, y47–77%. Place two EMPTY dark action wells centered x69% and x86%, y88%, each roughly 13% wide by 13% tall. Keep their materials continuous with the reading shelf and main court; no floating pasted panel or visible collage seam. A small secondary prop from the portrait belongs at the outer far-right edge near y42%, clear of reading and actions.\nThe whole scene is connected handcrafted architecture with visible supports and contact shadows. Preserve Aurora Spire's identity and dark central palette from reference. Keep large left court clear for all seven rows. Main imagery moves to the upper RIGHT; do not reuse portrait layout or put an instrument over the left court. No UI text, logos, faces, game pieces, square cell grid or watermark. The bright crystal cast will be composited separately and should outshine the muted scenery."
+    },
+    {
+      "id": "spiral",
+      "name": "Spiral Archive",
+      "prompt": "Use case: stylized-concept. Asset: production landscape environment painting for Starfall, wide aspect ratio 2.17:1, ideally 1848 x 852.\nReference image is the approved portrait Spiral Archive. Recompose its SAME place, material palette, large instruments and lovingly crafted tactile 2.5D art into the following measured landscape arrangement. No text or characters.\nLEFT 57% of the image is the gameplay court. Across its top at y2–12% place three EMPTY recessed dark controls: score x8–20%, long five-socket forecast x23–43%, circular menu x46–53%. The quiet broad dark court below occupies x5–54%, y16–95%, with narrow tactile rims and no scenery within it. Its low-contrast field must remain empty, no diagram or stars. This is the dominant playable area. The left court has NO large top props above it.\nRIGHT 43% is an attached observatory workbench sharing the court's foundation. Place the reference's two large iconic instruments and small glimpse of cosmos at x60–98%, y0–40%. Place a single broad EMPTY dark reading recess at x61–94%, y47–77%. Place two EMPTY dark action wells centered x69% and x86%, y88%, each roughly 13% wide by 13% tall. Keep their materials continuous with the reading shelf and main court; no floating pasted panel or visible collage seam. A small secondary prop from the portrait belongs at the outer far-right edge near y42%, clear of reading and actions.\nThe whole scene is connected handcrafted architecture with visible supports and contact shadows. Preserve Spiral Archive's identity and dark central palette from reference. Keep large left court clear for all seven rows. Main imagery moves to the upper RIGHT; do not reuse portrait layout or put an instrument over the left court. No UI text, logos, faces, game pieces, square cell grid or watermark. The bright crystal cast will be composited separately and should outshine the muted scenery."
+    }
+  ],
+  "foregroundPrompts": [
+    {
+      "id": "crescent",
+      "prompt": "Use case: precise-object-edit. Extract and faithfully reconstruct ONLY the lower-right crescent moonphase lantern from the reference Starfall board. Deliver a clean transparent-background isolated prop, centered in a square 1024 x 1024 canvas, with generous transparent margin. Keep its exact material, colors, handmade softly rounded 2.5D style, near-front camera angle and lighting. Include its own compact support/base and attached hinge or mount, but NO surrounding stone floor, reading panel, frame, other objects, text, labels or background. Do not change the design. This cutout will preserve the prop's proportions when the native reading panel grows for accessibility."
+    },
+    {
+      "id": "nebula",
+      "prompt": "Use case: precise-object-edit. Extract and faithfully reconstruct ONLY the lower-right small petal-capped nebula vessel from the reference Starfall board. Deliver a clean transparent-background isolated prop, centered in a square 1024 x 1024 canvas, with generous transparent margin. Keep its exact material, colors, handmade softly rounded 2.5D style, near-front camera angle and lighting. Include its own compact support/base and attached hinge or mount, but NO surrounding stone floor, reading panel, frame, other objects, text, labels or background. Do not change the design. This cutout will preserve the prop's proportions when the native reading panel grows for accessibility."
+    },
+    {
+      "id": "orbital",
+      "prompt": "Use case: precise-object-edit. Extract and faithfully reconstruct ONLY the lower-right small blue-globe orbital dial and brass gimbal from the reference Starfall board. Deliver a clean transparent-background isolated prop, centered in a square 1024 x 1024 canvas, with generous transparent margin. Keep its exact material, colors, handmade softly rounded 2.5D style, near-front camera angle and lighting. Include its own compact support/base and attached hinge or mount, but NO surrounding stone floor, reading panel, frame, other objects, text, labels or background. Do not change the design. This cutout will preserve the prop's proportions when the native reading panel grows for accessibility."
+    },
+    {
+      "id": "aurora",
+      "prompt": "Use case: precise-object-edit. Extract and faithfully reconstruct ONLY the lower-right small silver prism shutter instrument from the reference Starfall board. Deliver a clean transparent-background isolated prop, centered in a square 1024 x 1024 canvas, with generous transparent margin. Keep its exact material, colors, handmade softly rounded 2.5D style, near-front camera angle and lighting. Include its own compact support/base and attached hinge or mount, but NO surrounding stone floor, reading panel, frame, other objects, text, labels or background. Do not change the design. This cutout will preserve the prop's proportions when the native reading panel grows for accessibility."
+    },
+    {
+      "id": "spiral",
+      "prompt": "Use case: precise-object-edit. Extract and faithfully reconstruct ONLY the lower-right small hinged celestial compass from the reference Starfall board. Deliver a clean transparent-background isolated prop, centered in a square 1024 x 1024 canvas, with generous transparent margin. Keep its exact material, colors, handmade softly rounded 2.5D style, near-front camera angle and lighting. Include its own compact support/base and attached hinge or mount, but NO surrounding stone floor, reading panel, frame, other objects, text, labels or background. Do not change the design. This cutout will preserve the prop's proportions when the native reading panel grows for accessibility."
+    }
+  ],
+  "assets": [
+    {
+      "name": "CrescentPortrait.imageset",
+      "source": "/tmp/starfall-celestial-production/docs/design/environments/celestial-worlds-04/crescent-concept.png",
+      "sha256": "0796d8435e093a9a9f50323a8deb0d89722aae105dd01734ff3d16ffe9871487"
+    },
+    {
+      "name": "CrescentLandscape.imageset",
+      "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-7c8f84f9-b9a1-4596-b3f5-789646e1d77b.png",
+      "sha256": "08037359a64bf2ba7b7052e4e8f24e7046dd18a32ff088483757505c449d3718"
+    },
+    {
+      "name": "CrescentForeground.imageset",
+      "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-98b29d18-1b1f-4243-a8ef-bf8b95444814.png",
+      "sha256": "35ce82652e2014ba2e300dcf02ca84225a70fb2c63deafcb5780bda831834300"
+    },
+    {
+      "name": "NebulaPortrait.imageset",
+      "source": "/tmp/starfall-celestial-production/docs/design/environments/celestial-worlds-04/nebula-concept.png",
+      "sha256": "b609ba7c0f8ba62552894cf436a4343b1b422ddf0dcd989bad288210dbdafe43"
+    },
+    {
+      "name": "NebulaLandscape.imageset",
+      "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-5b9eb383-1689-4009-9045-6ad0277ad6d5.png",
+      "sha256": "ce64608eae943e3ed1a26395a9382ff1d42b96c7bd969ad740e74cbfd2c52988"
+    },
+    {
+      "name": "NebulaForeground.imageset",
+      "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-9d27be13-e24a-48ce-bc3e-d0bb7bd607cb.png",
+      "sha256": "d5dc9272f445861ecc717df9ddab6a6502811b52c98a52e53fe3aa667d8ba60a"
+    },
+    {
+      "name": "OrbitalPortrait.imageset",
+      "source": "/tmp/starfall-celestial-production/docs/design/environments/celestial-worlds-04/orbital-concept.png",
+      "sha256": "dc5aee45652020836e2f64e1348edaf71df10520192e4a233b6afc0d64ceca2d"
+    },
+    {
+      "name": "OrbitalLandscape.imageset",
+      "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-9652974b-2ad0-417f-b5a5-6a436219f8fb.png",
+      "sha256": "5079e2a019d709108d4b608bbd48a2b58911819f50598dd6a0e55870b5173f62"
+    },
+    {
+      "name": "OrbitalForeground.imageset",
+      "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-ae5c201a-96bc-4995-b4a5-d2f48afd5325.png",
+      "sha256": "6679e55c846f8acb8d04d34a0ff1f60ae4f167d2bad95641936c8fdb8f632bff"
+    },
+    {
+      "name": "AuroraPortrait.imageset",
+      "source": "/tmp/starfall-celestial-production/docs/design/environments/celestial-worlds-04/aurora-concept.png",
+      "sha256": "7da1f914f4ef75f8b2f82671ff7347fbde3cfefc93d0db85d2209067224fabf4"
+    },
+    {
+      "name": "AuroraLandscape.imageset",
+      "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-c4875a2b-8035-4d57-a85b-1acdb7d1d387.png",
+      "sha256": "9c84935e596acf561c1bf301838be94d6cf911be73483600361754226d0fece5"
+    },
+    {
+      "name": "AuroraForeground.imageset",
+      "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-fbfcff5e-e605-457a-bbf1-f53b23e080bf.png",
+      "sha256": "47f5b7b4cf298c383f8c52700204538de7e8f944a31e30769d65f695d90b8128"
+    },
+    {
+      "name": "SpiralPortrait.imageset",
+      "source": "/tmp/starfall-celestial-production/docs/design/environments/celestial-worlds-04/spiral-concept.png",
+      "sha256": "5c3ab7d41fa0e4a4e1fdcc8b1a3010f83299849f056d6da0833d64856877e815"
+    },
+    {
+      "name": "SpiralLandscape.imageset",
+      "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-77feccfc-64bc-4039-aae6-dde498b4bf53.png",
+      "sha256": "3768d32b98705c2e881bfb455d97c187270d0db1c39051b9cd018f3c63d83663"
+    },
+    {
+      "name": "SpiralForeground.imageset",
+      "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-a282d18f-58ce-4d0e-82c6-22932c3a869c.png",
+      "sha256": "f4b2f4b66e99bd2c5a2ed58717b27e865fb1a30c361a82d88fbd5706700bf29d"
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "date": "2026-10-18",
+  "kind": "Chromium HTML composition review, not native app verification",
+  "reports": [
+    {
+      "world": "crescent",
+      "stars": 49,
+      "cells": 49,
+      "missing": []
+    },
+    {
+      "world": "nebula",
+      "stars": 49,
+      "cells": 49,
+      "missing": []
+    },
+    {
+      "world": "orbital",
+      "stars": 49,
+      "cells": 49,
+      "missing": []
+    },
+    {
+      "world": "aurora",
+      "stars": 49,
+      "cells": 49,
+      "missing": []
+    },
+    {
+      "world": "spiral",
+      "stars": 49,
+      "cells": 49,
+      "missing": []
+    },
+    {
+      "reviewControls": "passed",
+      "layoutsCompared": [
+        "proposed",
+        "current"
+      ],
+      "mobileWidth": 390,
+      "overflow": false
+    }
+  ],
+  "source": {
+    "baseCommit": "8452480197216a80cccd3c2608dded77933a8e8a",
+    "workingTree": "celestial-worlds-04 documentation and shared HTML review configuration; no App, Sources, Tests or project changes",
+    "native": "Not run; concepts and browser review only"
+  },
+  "additionalChecks": {
+    "originalFiveWorldComposition": "pixel-identical before and after shared viewer configuration",
+    "readingOverflow": [
+      {
+        "world": "crescent",
+        "overflow": false
+      },
+      {
+        "world": "nebula",
+        "overflow": false
+      },
+      {
+        "world": "orbital",
+        "overflow": false
+      },
+      {
+        "world": "aurora",
+        "overflow": false
+      },
+      {
+        "world": "spiral",
+        "overflow": false
+      }
+    ],
+    "scriptErrors": [],
+    "externalRequests": []
+  },
+  "visualInspection": {
+    "inspected": [
+      "five full 49-position portrait captures",
+      "five-world overview with actual body cutouts",
+      "390 x 844 CSS viewport, expanded reading and geometry overlay"
+    ],
+    "findings": "Clear central fields and distinct cast silhouettes in these static samples. Final reading and Spiral action anchors corrected.",
+    "limits": [
+      "HTML faces and controls are illustrative",
+      "art-direction targets are not measured contrast ratios",
+      "native registration, Dynamic Type, tablet landscape and motion remain unverified",
+      "current app mapping remains a source-bound alternate, not adopted geometry"
+    ]
+  },
+  "renderInputSHA256": {
+    "docs/design/environments/celestial-worlds-04/index.html": "be0fc6c9f835d2d1975ebffbaf535b6ae7163d0f340c36eca255ca2e51a121f2",
+    "docs/design/environments/celestial-worlds-04/worlds.js": "f6e8e10717fbe8d52b4626d95efbf4ba7118c9611b08b13bca5a4c675133caee",
+    "docs/design/environments/celestial-worlds-04/review.css": "32c7ecb08bc0b3194bd8d1057dd895a3b2082d0c2c987d8de8e7e6a34c1bff8f",
+    "docs/design/environments/celestial-worlds-04/capture-review.cjs": "a501180f2c87b53a7eae6ebb799629cf93ffffda8eae654c715e3f2e54278916",
+    "docs/design/environments/living-worlds-03/review.js": "993fd4fab53c1d0e3b0a024c05ce9950ec896ed7471e8ca8fa5a21f762daa31e",
+    "docs/design/environments/living-worlds-03/review.css": "30ea40dd0b82596f3ade7edd876e522f8ea297eabb2dfe084d1b1f6541a54294",
+    "docs/design/environments/living-worlds-03/capture-review.cjs": "4f00cede60b6656932e8857859aba6617579e3c502ed32dfeffd6bd68a1a5739",
+    "docs/design/environments/celestial-worlds-04/nebula-concept.png": "b609ba7c0f8ba62552894cf436a4343b1b422ddf0dcd989bad288210dbdafe43",
+    "docs/design/environments/celestial-worlds-04/spiral-concept.png": "5c3ab7d41fa0e4a4e1fdcc8b1a3010f83299849f056d6da0833d64856877e815",
+    "docs/design/environments/celestial-worlds-04/crescent-concept.png": "0796d8435e093a9a9f50323a8deb0d89722aae105dd01734ff3d16ffe9871487",
+    "docs/design/environments/celestial-worlds-04/aurora-concept.png": "7da1f914f4ef75f8b2f82671ff7347fbde3cfefc93d0db85d2209067224fabf4",
+    "docs/design/environments/celestial-worlds-04/orbital-concept.png": "dc5aee45652020836e2f64e1348edaf71df10520192e4a233b6afc0d64ceca2d"
+  },
+  "verification": [
+    "Chromium composition captures and review controls passed",
+    "original roster screenshot pixel-identical after shared configuration",
+    "no HTTP requests or JavaScript errors in inspected pages",
+    "local Markdown link and JSON checks passed",
+    "python3 scripts/ci-hygiene.py passed",
+    "git diff --check passed"
+  ]
+}

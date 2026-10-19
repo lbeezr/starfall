@@ -1,0 +1,176 @@
+[
+  {
+    "retained": "dev-7ddc837-wip-6ae29cfa__archive-portrait__iphone-17e.jpg",
+    "test": "LandingPlaceInteractionTests/testEveryPlaceKeepsRoundRespondsAndClearsAtBothEdges()",
+    "suite": "accepted-phone.xcresult",
+    "attachment": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+      "deviceName": "Starfall Landing Acceptance",
+      "exportedFileName": "626181F5-9475-49C5-A6D7-98DD75C31C47.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "Location-archive-dense_0_C64F7303-C3E7-4ED5-9AE1-D2E0548B6E9F.png",
+      "timestamp": 1792332695.604
+    },
+    "source": "accepted-source.json",
+    "note": "accepted-phone app/resource inputs match accepted-source; header fixture setup changed after that phone bundle, corrected in accepted-compact.",
+    "retained_sha256": "16a45e3578dbda073ffcdb0f9ed7eb9f2968f9042bd9c9cbd0ec99f7e87e5fbc",
+    "export": "JPEG quality 82; original dimensions retained; raw PNG remains in ignored xcresult attachment export."
+  },
+  {
+    "retained": "dev-7ddc837-wip-6ae29cfa__grotto-portrait__iphone-17e.jpg",
+    "test": "LandingPlaceInteractionTests/testEveryPlaceKeepsRoundRespondsAndClearsAtBothEdges()",
+    "suite": "accepted-phone.xcresult",
+    "attachment": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+      "deviceName": "Starfall Landing Acceptance",
+      "exportedFileName": "98B8C919-4174-44DC-9DE3-670614BE78EE.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "Location-grotto-dense_0_4D4D9579-5388-4AB7-BAEE-6A6D322431EF.png",
+      "timestamp": 1792332663.763
+    },
+    "source": "accepted-source.json",
+    "note": "accepted-phone app/resource inputs match accepted-source; header fixture setup changed after that phone bundle, corrected in accepted-compact.",
+    "retained_sha256": "a9666a91b688cb27e18c897decfa39d8556339711b9257909aa1ae245c349428",
+    "export": "JPEG quality 82; original dimensions retained; raw PNG remains in ignored xcresult attachment export."
+  },
+  {
+    "retained": "dev-7ddc837-wip-6ae29cfa__hearth-portrait__iphone-17e.jpg",
+    "test": "LandingPlaceInteractionTests/testEveryPlaceKeepsRoundRespondsAndClearsAtBothEdges()",
+    "suite": "accepted-phone.xcresult",
+    "attachment": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+      "deviceName": "Starfall Landing Acceptance",
+      "exportedFileName": "585B2B0D-D698-4F14-B1BE-A4ECFD6B046E.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "Location-hearth-dense_0_3B290330-D4D5-40D5-867B-3C59652CA2B8.png",
+      "timestamp": 1792332632.641
+    },
+    "source": "accepted-source.json",
+    "note": "accepted-phone app/resource inputs match accepted-source; header fixture setup changed after that phone bundle, corrected in accepted-compact.",
+    "retained_sha256": "31ca4d1d2fbd8f1abfe0514eed436c9ac4b6e373f92f8db82e683ce75a7e22e1",
+    "export": "JPEG quality 82; original dimensions retained; raw PNG remains in ignored xcresult attachment export."
+  },
+  {
+    "retained": "dev-7ddc837-wip-6ae29cfa__cloudsea-portrait__iphone-17e.jpg",
+    "test": "LandingPlaceInteractionTests/testEveryPlaceKeepsRoundRespondsAndClearsAtBothEdges()",
+    "suite": "accepted-phone.xcresult",
+    "attachment": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+      "deviceName": "Starfall Landing Acceptance",
+      "exportedFileName": "5A4E3E6F-11FA-4090-9347-0AAE91E59F80.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "Location-cloudsea-dense_0_0357C817-B808-491E-8549-5753403D061D.png",
+      "timestamp": 1792332598.696
+    },
+    "source": "accepted-source.json",
+    "note": "accepted-phone app/resource inputs match accepted-source; header fixture setup changed after that phone bundle, corrected in accepted-compact.",
+    "retained_sha256": "2fbc125526d6c4724945ec7962c006f04d66e4956373201ae99c34cf26a7fa8f",
+    "export": "JPEG quality 82; original dimensions retained; raw PNG remains in ignored xcresult attachment export."
+  },
+  {
+    "retained": "dev-7ddc837-wip-6ae29cfa__observatory-portrait__iphone-17e.jpg",
+    "test": "LandingPlaceInteractionTests/testEveryPlaceKeepsRoundRespondsAndClearsAtBothEdges()",
+    "suite": "accepted-phone.xcresult",
+    "attachment": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+      "deviceName": "Starfall Landing Acceptance",
+      "exportedFileName": "6C90270C-2C58-4F87-B55B-85C5D22A4C49.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "Location-observatory-dense_0_79E975BE-2071-4DEC-858E-F8964EBCF2FA.png",
+      "timestamp": 1792332568.443
+    },
+    "source": "accepted-source.json",
+    "note": "accepted-phone app/resource inputs match accepted-source; header fixture setup changed after that phone bundle, corrected in accepted-compact.",
+    "retained_sha256": "3689fbd96537235fe284f00838ca5330f0c93450e5dea41a47643ba6d0041f3f",
+    "export": "JPEG quality 82; original dimensions retained; raw PNG remains in ignored xcresult attachment export."
+  },
+  {
+    "retained": "dev-7ddc837-wip-6ae29cfa__largest-text-header__iphone-se3.jpg",
+    "test": "LandingHeaderInteractionTests/testLargestTextScoreAndControlsStayBeforeTheArena()",
+    "suite": "accepted-compact.xcresult",
+    "attachment": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "EA0F7A30-21E1-4995-93F5-C4A983F4A354",
+      "deviceName": "Starfall Landing Compact Acceptance",
+      "exportedFileName": "7ECC3185-C7CC-4FAC-BC74-2CD7102AD133.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "Landing-largest-text-visible-score_0_6D5984E9-2E8E-4B5C-8E61-6F5F4E267B1E.png",
+      "timestamp": 1792332662.041
+    },
+    "source": "accepted-source.json",
+    "note": "Same source as accepted-source.json",
+    "retained_sha256": "68f43deab2c6c3eeffb282cece75c5939bef7c1db44255ed2cbb8b289899183b",
+    "export": "JPEG quality 82; original dimensions retained; raw PNG remains in ignored xcresult attachment export."
+  },
+  {
+    "retained": "dev-7ddc837-wip-6ae29cfa__archive-compact-landscape__iphone-se3.jpg",
+    "test": "LandingPlaceInteractionTests/testCompactLandscapeLocationsKeepNativeArenaAndMessagesSeparate()",
+    "suite": "accepted-compact.xcresult",
+    "attachment": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "EA0F7A30-21E1-4995-93F5-C4A983F4A354",
+      "deviceName": "Starfall Landing Compact Acceptance",
+      "exportedFileName": "5EE44D4C-B202-4068-AA2B-28986473F70A.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "Location-archive-compact-landscape_0_E77A80F6-5600-4E65-B05B-03B77A17F147.png",
+      "timestamp": 1792332797.68
+    },
+    "source": "accepted-source.json",
+    "note": "Same source as accepted-source.json",
+    "retained_sha256": "28c66c2a0956183638d560f13e4f7117a2a9503c44a215b9b0ea312b90d304c4",
+    "export": "JPEG quality 82; original dimensions retained; raw PNG remains in ignored xcresult attachment export."
+  },
+  {
+    "retained": "dev-7ddc837-wip-6ae29cfa__archive-portrait__ipad-air11.jpg",
+    "retained_sha256": "10491e49df78c1b0ac04bd615c84e0d9c1dda259afecab7450bb56b30d08fda3",
+    "suite": "accepted-tablet.xcresult",
+    "attachment": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+      "deviceName": "Starfall Landing Tablet Acceptance",
+      "exportedFileName": "BF838576-34E3-40E2-A649-4DD1BC449176.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "Location-archive-dense_0_E0DC2A29-FE47-4570-9C5B-9580542CC688.png",
+      "timestamp": 1792333080.277
+    },
+    "source": "accepted-source.json",
+    "export": "JPEG quality 82, original native dimensions; raw PNG retained in ignored attachment export."
+  },
+  {
+    "retained": "dev-7ddc837-wip-6ae29cfa__cloudsea-portrait__ipad-air11.jpg",
+    "retained_sha256": "ab4f7535b002c6226f8702d1e000a1b28ebd0365d2c6427d4d590a22e2f47cc5",
+    "suite": "accepted-tablet.xcresult",
+    "attachment": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+      "deviceName": "Starfall Landing Tablet Acceptance",
+      "exportedFileName": "EF35AA04-E37A-4D63-92EC-FBBF26D775D0.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "Location-cloudsea-dense_0_4038ECC4-391F-4474-A717-131B7F05BD32.png",
+      "timestamp": 1792332970.308
+    },
+    "source": "accepted-source.json",
+    "export": "JPEG quality 82, original native dimensions; raw PNG retained in ignored attachment export."
+  },
+  {
+    "retained": "dev-7ddc837-wip-6ae29cfa__observatory-landscape__ipad-air11.jpg",
+    "retained_sha256": "cb59f074d89fd6df26c95a371f3e20a8d67a78eff904875181314aec31c06f95",
+    "suite": "accepted-tablet.xcresult",
+    "attachment": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+      "deviceName": "Starfall Landing Tablet Acceptance",
+      "exportedFileName": "3DBE6524-D895-4D36-9421-A321154AF888.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "Observatory-native-orientation-3_0_5472F77E-CE2E-4A4F-9A92-FBA81B23031B.png",
+      "timestamp": 1792333133.08
+    },
+    "source": "accepted-source.json",
+    "export": "JPEG quality 82, original native dimensions; raw PNG retained in ignored attachment export."
+  }
+]

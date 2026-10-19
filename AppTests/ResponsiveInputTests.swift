@@ -137,7 +137,7 @@ final class ResponsiveInputTests: XCTestCase {
     }
 
     @MainActor func testNonSwappingTouchKeepsTapToleranceWithoutDrawingFallback() {
-        let mapping = ObservatoryGeometry(size:CGSize(width:390,height:844))
+        let mapping = LandingGeometry(size:CGSize(width:390,height:844))
         let cell = Cell(0,0), origin = mapping.viewPoint(cell)
         for distance in [0,4,7,8,12,18] as [CGFloat] {
             var session = ConstellationTouchSession()

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Starfall · Night journeys</title>
+  <link rel="stylesheet" href="review.css">
+  <script src="../concept-cast.js" defer></script>
+  <script src="forecast-snapshot.js" defer></script>
+  <script src="review.js" defer></script>
+</head>
+<body>
+  <header><p class="eyebrow">STARFALL / NIGHT JOURNEYS / 05</p><h1>Little stars. An enormous universe.</h1><p class="intro">The same travelers, arriving somewhere new. Always night. Always room to play.</p><p class="status">Browser concept · packaged crystal bodies with illustrative faces and controls · not a native build</p></header>
+  <nav aria-label="Choose a setting"><button data-world="nebula" aria-pressed="true">The Nebula Cradle</button><button data-world="moonwake" aria-pressed="false">Moonwake</button></nav>
+  <section class="controls" aria-label="Composition controls">
+    <label>View <select id="device"><option value="wide">iPad landscape</option><option value="tall">iPad portrait</option><option value="phone">iPhone portrait</option></select></label>
+    <label>Stars <select id="density"><option value="half">Gathering</option><option value="sparse">A few arrivals</option><option value="dense">All 49 positions</option><option value="empty">Scenery only</option></select></label>
+    <label><input id="guides" type="checkbox"> Center and cell guides</label>
+    <label><input id="scenery" type="checkbox" checked> Scenery</label>
+  </section>
+  <details class="study-controls"><summary>Inspect layers, motion and HUD states</summary>
+    <div class="controls">
+      <label>Composition <select id="composition"><option value="layers">Five separate layers</option><option value="painting">Original painting</option></select></label>
+      <label><input id="motion" type="checkbox" checked> Ambient motion</label>
+      <label>State <select id="state"><option value="playing">Playing</option><option value="paused">Paused</option></select></label>
+      <label>Starlight <select id="score"><option>0</option><option>99999</option><option selected>100000</option><option>999999</option><option>1000000</option><option>999999999</option><option>9223372036854775807</option></select></label>
+      <label>Shower progress <input id="progress" type="range" min="0" max="100" value="48"><output id="progress-value">48%</output></label>
+    </div>
+    <fieldset id="layer-controls"><legend>Nebula layers</legend></fieldset>
+    <p class="status" id="layer-note"></p>
+    <p class="status">Forecast: a real seeded three-star sample; progress is a manual presentation sample. The board and score are independent composition fixtures. Preview controls below are illustrative.</p>
+  </details>
+  <main>
+    <div class="preview"><div class="screen" role="img" aria-label="Night journey composition concept">
+      <div class="scenery"><img class="backdrop" alt=""><div class="layer-stack" aria-hidden="true"></div></div>
+      <div class="veil"></div>
+      <div class="field"><div class="stars"></div><div class="cell-guides" aria-hidden="true"></div></div>
+      <div class="center-guides" aria-hidden="true"></div>
+      <div class="hud"><div class="score-label">Starlight</div><div class="score"></div><div class="menu">Menu</div><div class="forecast"><span class="forecast-label">Next shower</span><div class="trail"><i class="trail-track"></i><i class="trail-tail"></i><i class="trail-head"></i><div class="incoming"></div></div></div></div>
+      <div class="guide">Paused</div>
+      <div class="actions"><span class="pause-action">Pause</span><span>Next shower</span></div>
+    </div></div>
+    <p id="measurement" class="measurement" aria-live="polite"></p>
+    <section class="description"><h2 id="world-name"></h2><p id="world-description"></p><p id="world-tradeoff" class="tradeoff"></p></section>
+  </main>
+  <footer>Moonwake and Nebula Cradle are the starting points. Skysea Crossing is retired from this comparison. <a href="README.md">Composition and layer notes</a> · <a href="../alien-nightscapes-06/README.md">WoW research and the journey idea</a>.</footer>
+</body>
+</html>

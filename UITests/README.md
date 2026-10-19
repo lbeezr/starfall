@@ -46,6 +46,8 @@ Paused clear-feedback checks wait for the exact result text after score commitme
 
 The responsive-input regression uses 7-point ordinary drift at normal/largest text. Selected-five native drawing includes a hold then fast stroke beginning at the target rim; partial/outside traces must still cancel without ordinary-clear fallback.
 
+`LandingPlaceInteractionTests` exercises all five remembered menu choices, portrait/landscape centering, native opposite-edge taps, background/resume, exact large scores and largest-text scrolling. Calm checks preserve the same clear outcomes. Its explicit Observatory fixtures use isolated defaults.
+
 `CriticalMassInteractionTests` exercises the reset-only age-eight review history: native rescue, warned collapse, settings/background/restore and largest-text calm help. It uses isolated dialogue-review defaults, not player saves.
 
 The focused constellation gap/off-center and quick directional swap checks exercise approximate strokes without destination-cell targeting.

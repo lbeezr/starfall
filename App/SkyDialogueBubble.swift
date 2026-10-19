@@ -5,6 +5,9 @@ struct SkyDialogueBubble<Actions: View>: View {
     let line: SkyDialogueLine
     var messageIdentifier = "experiment.message"
     var maximumHeight: CGFloat? = nil
+    var compact = false
+    var embedded = false
+    var embeddedInk = StarfallTheme.Colors.textPrimary
     @ViewBuilder let actions: Actions
     @Environment(\.dynamicTypeSize) private var textSize
 
@@ -13,44 +16,44 @@ struct SkyDialogueBubble<Actions: View>: View {
             if maximumHeight != nil {
                 ViewThatFits(in: .vertical) {
                     introduction.fixedSize(horizontal: false, vertical: true)
-                    ScrollView { introduction }
-                }
+                    ScrollView { introduction }.clipped()
+                }.frame(maxHeight: maximumHeight).clipped()
             } else { introduction }
             actions
         }
-        .padding(StarfallTheme.Spacing.medium)
+        .padding(embedded ? 0 : StarfallTheme.Spacing.medium)
         .background {
-            SkySpeechShape(tail: !textSize.isAccessibilitySize)
+            if !embedded { SkySpeechShape(tail: !textSize.isAccessibilitySize && !compact)
                 .fill(StarfallTheme.Dialogue.surface)
                 .overlay {
-                    SkySpeechShape(tail: !textSize.isAccessibilitySize)
+                    SkySpeechShape(tail: !textSize.isAccessibilitySize && !compact)
                         .stroke(StarfallTheme.Dialogue.brass.opacity(0.8), lineWidth: 1)
                 }
-                .shadow(color: StarfallTheme.Colors.skyTop.opacity(0.55), radius: 5, y: 3)
+                .shadow(color: StarfallTheme.Colors.skyTop.opacity(0.55), radius: 5, y: 3) }
         }
         .frame(maxHeight: maximumHeight, alignment: .bottom)
-        .padding(.leading, textSize.isAccessibilitySize ? 0 : StarfallTheme.Dialogue.portraitOverlap)
+        .padding(.leading, textSize.isAccessibilitySize || compact || embedded ? 0 : StarfallTheme.Dialogue.portraitOverlap)
         .frame(maxWidth: StarfallTheme.Layout.menuWidth)
         .accessibilityElement(children: .contain)
         .accessibilityIdentifier("sky.dialogue")
     }
     private var introduction: some View {
             HStack(alignment: .top, spacing: StarfallTheme.Spacing.small) {
-                if !textSize.isAccessibilitySize {
-                    SkyDialoguePortrait(speaker: line.speaker)
-                        .padding(.leading, -StarfallTheme.Dialogue.portraitOverlap)
-                        .padding(.top, -StarfallTheme.Spacing.small)
+                if !textSize.isAccessibilitySize && !compact {
+                    SkyDialoguePortrait(speaker: line.speaker, side: embedded ? StarfallTheme.Landing.portraitSide : StarfallTheme.Dialogue.portraitSide, embedded: embedded)
+                        .padding(.leading, embedded ? 0 : -StarfallTheme.Dialogue.portraitOverlap)
+                        .padding(.top, embedded ? 0 : -StarfallTheme.Spacing.small)
                 }
                 VStack(alignment: .leading, spacing: StarfallTheme.Spacing.compact) {
                     Text(line.speaker.name)
                         .font(StarfallTheme.Typography.skyHeading)
                         .dynamicTypeSize(...StarfallTheme.Typography.GuideTitleRole.character.maximumTextSize)
-                        .foregroundStyle(StarfallTheme.Dialogue.brass)
+                        .foregroundStyle(embedded ? embeddedInk : StarfallTheme.Dialogue.brass)
                         .accessibilityIdentifier("sky.guide.title")
                         .accessibilityHidden(true)
                     Text(line.text)
                         .font(StarfallTheme.Typography.supporting)
-                        .foregroundStyle(StarfallTheme.Dialogue.ink)
+                        .foregroundStyle(embedded ? embeddedInk : StarfallTheme.Dialogue.ink)
                         .fixedSize(horizontal: false, vertical: true)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -64,14 +67,15 @@ struct SkyDialogueBubble<Actions: View>: View {
 struct SkyDialoguePortrait: View {
     let speaker: SkySpeaker
     var side = StarfallTheme.Dialogue.portraitSide
+    var embedded = false
     var body: some View {
         Image(speaker.portraitAsset)
             .resizable().scaledToFit()
             .padding(StarfallTheme.Spacing.compact)
             .frame(width: side, height: side)
             .background {
-                Circle().fill(StarfallTheme.Dialogue.surface)
-                    .overlay(Circle().stroke(StarfallTheme.Dialogue.brass.opacity(0.8), lineWidth: 1))
+                if !embedded { Circle().fill(StarfallTheme.Dialogue.surface)
+                    .overlay(Circle().stroke(StarfallTheme.Dialogue.brass.opacity(0.8), lineWidth: 1)) }
             }
             .accessibilityHidden(true)
     }
@@ -99,6 +103,10 @@ private struct SkySpeechShape: Shape {
     let active: Bool
     let next: () -> Void
     var maximumHeight: CGFloat? = nil
+    var compact = false
+    var embedded = false
+    var externalControls = false
+    var embeddedInk = StarfallTheme.Colors.textPrimary
     @ViewBuilder let actions: Actions
     @Environment(\.accessibilityVoiceOverEnabled) private var voiceOver
     private var scriptPresented: Bool { session.visible && session.scriptID != nil }
@@ -110,16 +118,16 @@ private struct SkySpeechShape: Shape {
         Group {
             if let line {
                 if expanded {
-                    SkyDialogueBubble(line: line, maximumHeight: maximumHeight) {
+                    SkyDialogueBubble(line: line, maximumHeight: maximumHeight, compact: compact, embedded: embedded, embeddedInk: embeddedInk) {
                         if pausedLine != nil && !scriptPresented {
-                            actions
+                            if !externalControls { actions }
                             if session.scriptID != nil, let retained = session.line {
                                 Button(SkyCopy.text(.actionReadMessage, values: ["speaker": retained.speaker.name])) { session.reopen() }
                                     .buttonStyle(StarfallButtonStyle(role: .quiet))
                                     .accessibilityIdentifier("sky.dialogue.reopen")
                             }
                         }
-                        else if session.hasNext || line.seconds == nil || voiceOver {
+                        else if !externalControls && (session.hasNext || line.seconds == nil || voiceOver) {
                             HStack {
                                 if session.hasNext {
                                     Button(SkyCopy.text(.actionNextLine), action: next)

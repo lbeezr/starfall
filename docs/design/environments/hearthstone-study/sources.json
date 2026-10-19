@@ -1,0 +1,677 @@
+{
+  "inspected": "2026-10-18",
+  "purpose": "External visual research; not app assets or a license to reuse the artwork",
+  "method": "Downloaded public reference images; inspected comparisons and selected detailed views; sampled published GIF frames. No live Hearthstone client session.",
+  "references": [
+    {
+      "family": "Main battlefield",
+      "name": "Stormwind",
+      "inspection": "Full-board still",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Battlefield_-_Stormwind.jpg/900px-Battlefield_-_Stormwind.jpg?29f281",
+      "download_sha256": "0f70eae676465f5ecf4330e660e4742542c40a2c30cef1c869f8ffab502dc1c6"
+    },
+    {
+      "family": "Main battlefield",
+      "name": "Orgrimmar",
+      "inspection": "Full-board still",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Battlefield_-_Orgrimmar.jpg/900px-Battlefield_-_Orgrimmar.jpg?480a44",
+      "download_sha256": "6ebcb25cf87d3f6c699d71e83ac88d59179b7304fdc0223bb9a52f5132ba8fb5"
+    },
+    {
+      "family": "Main battlefield",
+      "name": "Pandaria",
+      "inspection": "Full-board still",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Hearthstone_Pandaria.png/900px-Hearthstone_Pandaria.png?92c879",
+      "download_sha256": "fa923dc4ac006e850ce7204d0173d6b2dcf005eb51cb4228e747bea52c826abf"
+    },
+    {
+      "family": "Main battlefield",
+      "name": "Stranglethorn",
+      "inspection": "Full-board still",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Gameboard-stranglethornvale-medium.jpg/900px-Gameboard-stranglethornvale-medium.jpg?74e0de",
+      "download_sha256": "84a46b78e93937ebff56ef5fed35a8a5379acef269bec1f5d91c5011bba95b67"
+    },
+    {
+      "family": "Main battlefield",
+      "name": "Naxxramas",
+      "inspection": "Full-board still",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Battlefield_-_Naxxramas.jpg/900px-Battlefield_-_Naxxramas.jpg?d3dfe2",
+      "download_sha256": "151581896bd3b1a6b62af284cc4704a3f651e162f814b89a1aafa5dafbe82c63"
+    },
+    {
+      "family": "Main battlefield",
+      "name": "Goblins vs Gnomes",
+      "inspection": "Full-board still",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Battlefield_-_Goblins_vs_Gnomes.jpg/900px-Battlefield_-_Goblins_vs_Gnomes.jpg?48e840",
+      "download_sha256": "b1059c0d081c564466f5c2831aaa9ca87eeb63da78fcd5205e06e81cab52fd99"
+    },
+    {
+      "family": "Main battlefield",
+      "name": "Blackrock Mountain",
+      "inspection": "Full-board still",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Battlefield_-_Blackrock_Mountain.jpg/900px-Battlefield_-_Blackrock_Mountain.jpg?5c667f",
+      "download_sha256": "26e2d27045279210765d6a421c322556152a6618f18666bc7c91d16c1aeaa0d9"
+    },
+    {
+      "family": "Main battlefield",
+      "name": "The Grand Tournament",
+      "inspection": "Full-board still",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Battlefield_-_The_Grand_Tournament.jpg/900px-Battlefield_-_The_Grand_Tournament.jpg?363fcf",
+      "download_sha256": "35aa6cae7717194eaacafb6d6fba0e1416cbbd98994004f0233fb1a0dcbe2b5b"
+    },
+    {
+      "family": "Main battlefield",
+      "name": "Excavation Site",
+      "inspection": "Full-board still",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Battlefield_-_Excavation.png/900px-Battlefield_-_Excavation.png?69946d",
+      "download_sha256": "9e75e53088c7f4f43d58e2cb71eb6efe0371df7303eeebf0f36ca8cdcec7cfc8"
+    },
+    {
+      "family": "Main battlefield",
+      "name": "The Museum",
+      "inspection": "Full-board still",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Battlefield_-_The_Hall_of_Explorers.png/900px-Battlefield_-_The_Hall_of_Explorers.png?51406c",
+      "download_sha256": "a81ad132687d7ca0a9ac87f6495563e2708cb4ea0c9b1da432b22c8a16721686"
+    },
+    {
+      "family": "Main battlefield",
+      "name": "Whispers of the Old Gods",
+      "inspection": "Full-board still",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Battlefield_-_Whispers_of_the_Old_Gods.jpg/900px-Battlefield_-_Whispers_of_the_Old_Gods.jpg?4c3807",
+      "download_sha256": "bfda351c97eaf417ec505d92d070b33247529720ff868beb3164993900fa79e9"
+    },
+    {
+      "family": "Main battlefield",
+      "name": "Karazhan",
+      "inspection": "Full-board still",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Battlefield_-_One_Night_in_Karazhan.jpg/900px-Battlefield_-_One_Night_in_Karazhan.jpg?dbebd7",
+      "download_sha256": "e7b7ae600c3637594f1e4f5e67069c211f60d2f4bbdc6fb11d8fe482b3abc50f"
+    },
+    {
+      "family": "Main battlefield",
+      "name": "Gadgetzan",
+      "inspection": "Full-board still",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Battlefield_-_Mean_Streets_of_Gadgetzan.jpg/900px-Battlefield_-_Mean_Streets_of_Gadgetzan.jpg?a8b257",
+      "download_sha256": "ecb00e179e09c15f70af8af76115fea0e1818a0cd42218fb2a58de4a6fd9824f"
+    },
+    {
+      "family": "Main battlefield",
+      "name": "Un'Goro",
+      "inspection": "Full-board still",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Battlefield_-_Journey_to_Un%27Goro.jpg/900px-Battlefield_-_Journey_to_Un%27Goro.jpg?5684f2",
+      "download_sha256": "adab7ed08c379a0a142ea46a096ae4e5fa7fa608f127d0fd153d081e57d57340"
+    },
+    {
+      "family": "Main battlefield",
+      "name": "Icecrown Citadel",
+      "inspection": "Full-board still",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Battlefield_-_Knights_of_the_Frozen_Throne.jpg/900px-Battlefield_-_Knights_of_the_Frozen_Throne.jpg?9f31d5",
+      "download_sha256": "788dc5ee2bd9323d71d4856d8d4e91fbb8793d97b44684f27c176bb23c7645ed"
+    },
+    {
+      "family": "Main battlefield",
+      "name": "The Catacombs",
+      "inspection": "Full-board still",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Battlefield_-_Kobolds_and_Catacombs.jpg/900px-Battlefield_-_Kobolds_and_Catacombs.jpg?cc7170",
+      "download_sha256": "7d0b8a5de041bf3a8a9ab78fa3c3c0024ee5af741a24953b23b5342f61cdef50"
+    },
+    {
+      "family": "Main battlefield",
+      "name": "The Witchwood",
+      "inspection": "Full-board still",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Battlefield_-_The_Witchwood.jpg/900px-Battlefield_-_The_Witchwood.jpg?dbd4ea",
+      "download_sha256": "8a99afa7e5efcbf63769f1a8cc42293bcd630e68776d4241d88f7770bc9eb355"
+    },
+    {
+      "family": "Main battlefield",
+      "name": "The Boomsday Project",
+      "inspection": "Full-board still",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Battlefield_-_The_Boomsday_Project.jpg/900px-Battlefield_-_The_Boomsday_Project.jpg?d77ace",
+      "download_sha256": "93550f1c6405823363e9676908e07dfc304cb734f107b83e730a95ba37f4092c"
+    },
+    {
+      "family": "Main battlefield",
+      "name": "Gurubashi Arena",
+      "inspection": "Full-board still",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Battlefield_-_Rastakhan%27s_Rumble.jpg/900px-Battlefield_-_Rastakhan%27s_Rumble.jpg?41b379",
+      "download_sha256": "477e70a04b7256034611021adc388bba7dae66f1b4a9c0ab224682e4b56fbbfc"
+    },
+    {
+      "family": "Main battlefield",
+      "name": "Dalaran",
+      "inspection": "Full-board still",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Battlefield_-_Rise_of_Shadows.jpg/900px-Battlefield_-_Rise_of_Shadows.jpg?e4372e",
+      "download_sha256": "494dcf6037b26dc43c30910abbf6b30ad3379fcbacec4e609f28f7a58ab2c18d"
+    },
+    {
+      "family": "Main battlefield",
+      "name": "Uldum Tomb",
+      "inspection": "Full-board still",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Battlefield_-_Saviors_of_Uldum.jpg/900px-Battlefield_-_Saviors_of_Uldum.jpg?3538db",
+      "download_sha256": "37a72d26f440b5ecfbf1ed8229428c32e7021e7b73f0c2aaa29ead97806610a2"
+    },
+    {
+      "family": "Main battlefield",
+      "name": "Uldum City",
+      "inspection": "Full-board still",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Battlefield_-_Saviors_of_Uldum2.jpg/900px-Battlefield_-_Saviors_of_Uldum2.jpg?68038b",
+      "download_sha256": "ef0c4b7a9169f75ac1e6dff097582451587f2a8bd11780948835feca20c86b60"
+    },
+    {
+      "family": "Main battlefield",
+      "name": "Dragonblight",
+      "inspection": "Full-board still",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Battlefield_-_Descent_of_Dragons.jpg/900px-Battlefield_-_Descent_of_Dragons.jpg?7301ba",
+      "download_sha256": "b5df62f465e6ac69c309ab207262aa88cdc87b8e0e64acda90e0de1bb8a2ced6"
+    },
+    {
+      "family": "Main battlefield",
+      "name": "Outland",
+      "inspection": "Full-board still",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Battlefield_-_Ashes_of_Outland.jpg/900px-Battlefield_-_Ashes_of_Outland.jpg?295ddd",
+      "download_sha256": "2f9ef3d5972fce4c50c4a8b89fc390492ba438eab9f6f50f975f69a44f839fab"
+    },
+    {
+      "family": "Main battlefield",
+      "name": "Scholomance",
+      "inspection": "Full-board still",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Battlefield_-_Scholomance_Academy.jpg/900px-Battlefield_-_Scholomance_Academy.jpg?ea2f91",
+      "download_sha256": "ccb479df5047acd897dec909ab30ef2f5353f986ed37e2d2312ee8c3acff84d0"
+    },
+    {
+      "family": "Main battlefield",
+      "name": "Darkmoon Faire",
+      "inspection": "Full-board still",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Battlefield_-_Madness_at_the_Darkmoon_Faire.jpg/900px-Battlefield_-_Madness_at_the_Darkmoon_Faire.jpg?5cf997",
+      "download_sha256": "281d83343dcb6fd3d09fd2c49af82e3b3b4c56644ed7da18bd757b562769b3e5"
+    },
+    {
+      "family": "Main battlefield",
+      "name": "The Barrens",
+      "inspection": "Full-board still",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Battlefield_-_Forged_in_the_Barrens.jpg/900px-Battlefield_-_Forged_in_the_Barrens.jpg?cdfae1",
+      "download_sha256": "57253bed0039c0f8ee0ca8775aae02cf1225ffcb8de755611f019a07cc70ae15"
+    },
+    {
+      "family": "Main battlefield",
+      "name": "Stormwind (United in Stormwind)",
+      "inspection": "Full-board still",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Battlefield_-_United_in_Stormwind.jpg/900px-Battlefield_-_United_in_Stormwind.jpg?cb7012",
+      "download_sha256": "e7dff6e72ea9b4f04428d6441ec69c26882a87bd93dca133b9ccffdda5c77eec"
+    },
+    {
+      "family": "Main battlefield",
+      "name": "Alterac Valley",
+      "inspection": "Full-board still",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Battlefield_-_Fractured_in_Alterac_Valley.jpg/900px-Battlefield_-_Fractured_in_Alterac_Valley.jpg?238120",
+      "download_sha256": "a65e830a7e040aa37ace95c9a7e9356554925ee70ee55d6090684d51419a51e6"
+    },
+    {
+      "family": "Main battlefield",
+      "name": "The Sunken City",
+      "inspection": "Full-board still",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Battlefield_-_Voyage_to_the_Sunken_City.jpg/900px-Battlefield_-_Voyage_to_the_Sunken_City.jpg?179c37",
+      "download_sha256": "e15e076e1e47b52d6cc2a44e7a308b908b25443005d4ed25967cdc34ff71f799"
+    },
+    {
+      "family": "Main battlefield",
+      "name": "Revendreth",
+      "inspection": "Full-board still",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Battlefield_-_Murder_at_Castle_Nathria.jpg/900px-Battlefield_-_Murder_at_Castle_Nathria.jpg?aa213d",
+      "download_sha256": "721df8fa867ee1c8a7424e5904e4eaa68949ea314cb2281cd07fda46dcc29e18"
+    },
+    {
+      "family": "Main battlefield",
+      "name": "March of the Lich King",
+      "inspection": "Full-board still",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Battlefield_-_March_of_the_Lich_King.jpg/900px-Battlefield_-_March_of_the_Lich_King.jpg?4366fa",
+      "download_sha256": "e9bf9d5bbc72ea934dd02b0817ae97a3c175b5f6fd9430156b2188e0ba22108f"
+    },
+    {
+      "family": "Main battlefield",
+      "name": "Festival of Legends",
+      "inspection": "Full-board still",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Battlefield_-_Festival_of_Legends.jpg/900px-Battlefield_-_Festival_of_Legends.jpg?a8af9a",
+      "download_sha256": "6d2e182afb1b5315df164155dd24ee61e4c39a9524e358ee2740de94373a542d"
+    },
+    {
+      "family": "Main battlefield",
+      "name": "TITANS",
+      "inspection": "Full-board still",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Battlefield_-_TITANS.jpg/900px-Battlefield_-_TITANS.jpg?d6dee3",
+      "download_sha256": "daf9550495e5d38bc33218e665737595ec6be64871162bdb4169f3edac4c9938"
+    },
+    {
+      "family": "Main battlefield",
+      "name": "Showdown in the Badlands",
+      "inspection": "Full-board still",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Battlefield_-_Showdown_in_the_Badlands.jpg/900px-Battlefield_-_Showdown_in_the_Badlands.jpg?4ac195",
+      "download_sha256": "29dd47026607723b0c4a0fd37ffcc2113ab0dfc1eb1a6cb3b1db7f161facdf0d"
+    },
+    {
+      "family": "Main battlefield",
+      "name": "Whizbang's Workshop",
+      "inspection": "Full-board still",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Battlefield_-_Whizbang%27s_Workshop.jpg/900px-Battlefield_-_Whizbang%27s_Workshop.jpg?2d25b7",
+      "download_sha256": "9dbe5b23dcc5eda2ddcb339fd4dcaffd816b2a9556843997109789c3197cfa9e"
+    },
+    {
+      "family": "Main battlefield",
+      "name": "Year of the Raptor \u2014 Emerald Dream",
+      "inspection": "Full-board still",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Battlefield_-_Year_of_the_Raptor.jpg/500px-Battlefield_-_Year_of_the_Raptor.jpg?b3a626",
+      "download_sha256": "517bc570fb2293ef7d03e204fb33a790cdb37acfe0e3c652a695ac2eb27d8372"
+    },
+    {
+      "family": "Main battlefield",
+      "name": "Year of the Raptor \u2014 Lost City",
+      "inspection": "Full-board still",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Battlefield_-_Year_of_the_Raptor_%28Lost_City%29.jpg/500px-Battlefield_-_Year_of_the_Raptor_%28Lost_City%29.jpg?b78f90",
+      "download_sha256": "9fa93a53f197209d2d184767fd6ddef2b0e192898842d77d07db60182886d0ec"
+    },
+    {
+      "family": "Main battlefield",
+      "name": "Year of the Raptor \u2014 Timeways",
+      "inspection": "Unreleased/unused reference",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Battlefield_-_Year_of_the_Raptor_%28Timeways%29.jpg/500px-Battlefield_-_Year_of_the_Raptor_%28Timeways%29.jpg?750783",
+      "download_sha256": "944446042ea77ec888defde3e55c98da1535dca1a681c9c3c445a08274467daa"
+    },
+    {
+      "family": "Main battlefield",
+      "name": "CATACLYSM",
+      "inspection": "Full-board still",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Battlefield_-_CATACLYSM.jpg/900px-Battlefield_-_CATACLYSM.jpg?dca53b",
+      "download_sha256": "3f89ebac447b4b0bad07a2ba6045837aab360ef0df5d48e9cac16cd2dba3d8ad"
+    },
+    {
+      "family": "Main battlefield",
+      "name": "Orgrimmar (Winter Veil)",
+      "inspection": "Full-board still",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Battlefield_-_Winter_Veil_Orgrimmar.jpg/900px-Battlefield_-_Winter_Veil_Orgrimmar.jpg?110b19",
+      "download_sha256": "eec0b5cf60478e952adb16effc6de774aed8752fd1822355f1a70d8e9bc96165"
+    },
+    {
+      "family": "Main battlefield",
+      "name": "Stormwind (Winter Veil)",
+      "inspection": "Full-board still",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Battlefield_-_Winter_Veil_Stormwind.jpg/900px-Battlefield_-_Winter_Veil_Stormwind.jpg?ff56b3",
+      "download_sha256": "abeaa38ebe48ce1fc97652630aece1daef36e59cf3598d0639482c8ffe80c1d1"
+    },
+    {
+      "family": "Main battlefield",
+      "name": "Stranglethorn (Year of the Mammoth)",
+      "inspection": "Full-board still",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Battlefield_-_Stranglethorn_%28Year_of_the_Mammoth%29.png/900px-Battlefield_-_Stranglethorn_%28Year_of_the_Mammoth%29.png?5c30a9",
+      "download_sha256": "aed4fcb3b0a6529794d49b453618a98c54b97ed9f578549893c32629971f7eb6"
+    },
+    {
+      "family": "Main battlefield",
+      "name": "Uldum Tomb (Hallow's End)",
+      "inspection": "Full-board still",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Battlefield_-_Uldum_Tomb_%28Hallow%27s_End%29.jpg/900px-Battlefield_-_Uldum_Tomb_%28Hallow%27s_End%29.jpg?5a482e",
+      "download_sha256": "2dbb3e9897c15fa17e216d216f60266e5a8de4ba3edfd4147e48993517a5fbee"
+    },
+    {
+      "family": "Main battlefield",
+      "name": "Orgrimmar \u2014 Hallow's End (unused)",
+      "inspection": "Unreleased/unused reference",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Battlefield_-_Orgrimmar_%28Hallow%27s_End%29.jpg/500px-Battlefield_-_Orgrimmar_%28Hallow%27s_End%29.jpg?88861a",
+      "download_sha256": "480ebd588f7e721a1695d6d90f889fb2ff9fccb66b1139d079e0d519ef8801be"
+    },
+    {
+      "family": "Main battlefield",
+      "name": "Pandaria \u2014 Hallow's End (unused)",
+      "inspection": "Unreleased/unused reference",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Battlefield_-_Pandaria_%28Hallow%27s_End%29.jpg/500px-Battlefield_-_Pandaria_%28Hallow%27s_End%29.jpg?a027e3",
+      "download_sha256": "751b77c7f8c46c87c42224e307e6d9838b9a34b3d5669260b96db15be79be9a1"
+    },
+    {
+      "family": "Main battlefield",
+      "name": "Stranglethorn \u2014 Hallow's End (unused)",
+      "inspection": "Unreleased/unused reference",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Battlefield_-_Stranglethorn_%28Hallow%27s_End%29.jpg/500px-Battlefield_-_Stranglethorn_%28Hallow%27s_End%29.jpg?a56b69",
+      "download_sha256": "e7d8c5716c530454710d13ac1795bb4ed0891532c41de2f7a0f8d4cca664c8e4"
+    },
+    {
+      "family": "Main battlefield",
+      "name": "Ragnaros the Firelord",
+      "inspection": "Full-board still",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlefield",
+      "image_url": "https://hearthstone.wiki.gg/images/thumb/Ragnaros_hero_-_Battlefield_2.jpg/900px-Ragnaros_hero_-_Battlefield_2.jpg?13d37f",
+      "download_sha256": "ac99dbb81b89fe42f57dc7ee7803db6c5cb55183716e78c851b08adc10bbc540"
+    },
+    {
+      "family": "Battlegrounds",
+      "name": "Classic",
+      "inspection": "Default phase visible in official Jade Gardens/Cosmic Study preview sequences",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlegrounds/Board",
+      "image_url": "https://hearthstone.wiki.gg/images/BgBoard1.png",
+      "download_sha256": "09d28bfd17f9590ddc196859a4ab5802f33ab56c2ec6603ff4ca0bd07d5f7a71"
+    },
+    {
+      "family": "Battlegrounds",
+      "name": "Anniversary",
+      "inspection": "Prop icon only \u2014 full composition unverified",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlegrounds/Board",
+      "image_url": "https://hearthstone.wiki.gg/images/BgBoard54.png",
+      "download_sha256": "c3b931700fda2b617cf4e39f4321cd1a427fac6aca813f5f166fa4d0b7cb2978"
+    },
+    {
+      "family": "Battlegrounds",
+      "name": "Arena of Champions",
+      "inspection": "Prop icon only \u2014 full composition unverified",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlegrounds/Board",
+      "image_url": "https://hearthstone.wiki.gg/images/BgBoard3.png",
+      "download_sha256": "1d08c55690a7c543b07350b047634002c5ce97937ba04bce3768089e43f6609a"
+    },
+    {
+      "family": "Battlegrounds",
+      "name": "Cosmic Study",
+      "inspection": "Official full-board preview frames; artist credits",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlegrounds/Board",
+      "image_url": "https://hearthstone.wiki.gg/images/BgBoard17.png",
+      "download_sha256": "3de21c67254c8c3c2b74da37380dafb1697e604834dbc527576dd54d125a8c36"
+    },
+    {
+      "family": "Battlegrounds",
+      "name": "Creepy Crypt",
+      "inspection": "Prop icon only \u2014 full composition unverified",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlegrounds/Board",
+      "image_url": "https://hearthstone.wiki.gg/images/BgBoard50.png",
+      "download_sha256": "47f52d60c3f08b27b3c1646a6d5e8c0bacd3b51849e44cf2a11d3f8fdd071225"
+    },
+    {
+      "family": "Battlegrounds",
+      "name": "Crystallarium",
+      "inspection": "Prop icon only \u2014 full composition unverified",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlegrounds/Board",
+      "image_url": "https://hearthstone.wiki.gg/images/BgBoard30.png",
+      "download_sha256": "34f094cb7a3292117357d3ddbeff906c811968767082bde2984a6a6f217e9846"
+    },
+    {
+      "family": "Battlegrounds",
+      "name": "Dragon Grounds",
+      "inspection": "Prop icon only \u2014 full composition unverified",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlegrounds/Board",
+      "image_url": "https://hearthstone.wiki.gg/images/BgBoard53.png",
+      "download_sha256": "4bde44bbaf55d9c84148ed518415e6537295268dded8f3ff36a290a03268821a"
+    },
+    {
+      "family": "Battlegrounds",
+      "name": "E.T.C's Main Stage",
+      "inspection": "Prop icon only \u2014 full composition unverified",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlegrounds/Board",
+      "image_url": "https://hearthstone.wiki.gg/images/BgBoard43.png",
+      "download_sha256": "e42bda66c08b58279cf950c590e9da75e8c2fa97483c637922d1c154a2380e90"
+    },
+    {
+      "family": "Battlegrounds",
+      "name": "Forbidden Library",
+      "inspection": "Prop icon only \u2014 full composition unverified",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlegrounds/Board",
+      "image_url": "https://hearthstone.wiki.gg/images/BgBoard45.png",
+      "download_sha256": "380bb602462c49ae40b462cfcd7717ccd739fee15f7c18bde2ccf6e34893112f"
+    },
+    {
+      "family": "Battlegrounds",
+      "name": "Jade Gardens",
+      "inspection": "Official full-board preview frames; artist credits",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlegrounds/Board",
+      "image_url": "https://hearthstone.wiki.gg/images/BgBoard4.png",
+      "download_sha256": "a0c824a0b6346fcc46e48bccd5e0c40a4214f221ceac963e5821028e30c5d4cd"
+    },
+    {
+      "family": "Battlegrounds",
+      "name": "Karazhan Forever",
+      "inspection": "Prop icon only \u2014 full composition unverified",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlegrounds/Board",
+      "image_url": "https://hearthstone.wiki.gg/images/BgBoard25.png",
+      "download_sha256": "c885173fbec4b58cb8d179de3b8f5859a8a837ff22869a6dba2e6f72842a878f"
+    },
+    {
+      "family": "Battlegrounds",
+      "name": "Mecha Makerspace",
+      "inspection": "Prop icon only \u2014 full composition unverified",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlegrounds/Board",
+      "image_url": "https://hearthstone.wiki.gg/images/BgBoard18.png",
+      "download_sha256": "460e819662fc98985b903a6f0823fd44087c570cc9aac703eeeee9266f8ef2af"
+    },
+    {
+      "family": "Battlegrounds",
+      "name": "Sandy Shores",
+      "inspection": "Complete published board painting via a reproduction; artist credit verified",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlegrounds/Board",
+      "image_url": "https://hearthstone.wiki.gg/images/BgBoard27.png",
+      "download_sha256": "8e4f5dd12aa663b14b2e51269451cb9b72845bd412cf6d130a1e13d55971e03b"
+    },
+    {
+      "family": "Battlegrounds",
+      "name": "Shipwreck Cove",
+      "inspection": "Prop icon only \u2014 full composition unverified",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlegrounds/Board",
+      "image_url": "https://hearthstone.wiki.gg/images/BgBoard20.png",
+      "download_sha256": "1fde4b45641eabebd140bc3bce73882bddbda8f25d1ba4f4a63be74fb923c92d"
+    },
+    {
+      "family": "Battlegrounds",
+      "name": "The Ramparts",
+      "inspection": "Prop icon only \u2014 full composition unverified",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlegrounds/Board",
+      "image_url": "https://hearthstone.wiki.gg/images/BgBoard40.png",
+      "download_sha256": "cd5f2e3a867ca61e50fbbe5562e287929c071eaf73152b1a67020c82af507f0c"
+    },
+    {
+      "family": "Battlegrounds",
+      "name": "Corgle Field",
+      "inspection": "Prop icon only \u2014 full composition unverified",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlegrounds/Board",
+      "image_url": "https://hearthstone.wiki.gg/images/BgBoard42.png",
+      "download_sha256": "36c8379aad78afb06d086ddbcc010e1d3bbb05d4dd2711f06e6f113a24e3bc92"
+    },
+    {
+      "family": "Battlegrounds",
+      "name": "Festival Grounds",
+      "inspection": "Prop icon only \u2014 full composition unverified",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlegrounds/Board",
+      "image_url": "https://hearthstone.wiki.gg/images/BgBoard46.png",
+      "download_sha256": "7a5f2f3803c9f2f8142623dd961b2d1754aa595935afbfc6e3bcbc0333323618"
+    },
+    {
+      "family": "Battlegrounds",
+      "name": "Nomi's Eatery",
+      "inspection": "Two full-board artist wireframes, including a mobile view",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlegrounds/Board",
+      "image_url": "https://hearthstone.wiki.gg/images/BgBoard36.png",
+      "download_sha256": "758040bf3cb35a4dd76d48ea15ef41e34ab9adaaaa3e05984755e28fd21c844b"
+    },
+    {
+      "family": "Battlegrounds",
+      "name": "Sands of Time",
+      "inspection": "Prop icon only \u2014 full composition unverified",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlegrounds/Board",
+      "image_url": "https://hearthstone.wiki.gg/images/BgBoard49.png",
+      "download_sha256": "a296251d2f0a2b207692777ceac35d8d38ca710add49e0e60e6c872ce63503d7"
+    },
+    {
+      "family": "Battlegrounds",
+      "name": "Tinker Town Takeover",
+      "inspection": "Prop icon only \u2014 full composition unverified",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlegrounds/Board",
+      "image_url": "https://hearthstone.wiki.gg/images/BgBoard37.png",
+      "download_sha256": "066a784cabf0650b67585c32d8edbfaf592ecc811452ae7ebc86f116a195a7ae"
+    },
+    {
+      "family": "Battlegrounds",
+      "name": "Haunted Hallows",
+      "inspection": "Prop icon only \u2014 full composition unverified",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlegrounds/Board",
+      "image_url": "https://hearthstone.wiki.gg/images/BgBoard35.png",
+      "download_sha256": "85d4c66f09c97dbc9f54972f3f7ee8d9e87f93165cc5c2cd9cdcb1c8d15e5f8c"
+    },
+    {
+      "family": "Battlegrounds",
+      "name": "Murloc Hideaway",
+      "inspection": "Official full-board preview frames and published board painting",
+      "source_page": "https://hearthstone.wiki.gg/wiki/Battlegrounds/Board",
+      "image_url": "https://hearthstone.wiki.gg/images/BgBoard26.png",
+      "download_sha256": "a767566031cc90e5f584fb6077be943890a0940480c66adcb75831cb9d1b845f"
+    },
+    {
+      "name": "Cosmic Study preview",
+      "image_url": "https://bnetcmsus-a.akamaihd.net/cms/content_entry_media/i4/I4VHDPKLM0A01643933494602.gif",
+      "download_sha256": "93fd1c587f81a51b6dba3557ba38c3b7be9aead51affda4261d036c8ca9acefa"
+    },
+    {
+      "name": "Jade Gardens preview",
+      "image_url": "https://bnetcmsus-a.akamaihd.net/cms/content_entry_media/tl/TL5NUC9O2G831643933472876.gif",
+      "download_sha256": "03ea1576a73e6e1533f264cd31582b35051041a3a9d9968ff66e6a121dd71ab8"
+    },
+    {
+      "name": "Murloc Hideaway preview",
+      "image_url": "https://bnetcmsus-a.akamaihd.net/cms/content_entry_media/i2/I2U2PQ6CSUOO1663721726186.gif",
+      "download_sha256": "2ce2fd046b441237f3326205990d990864059ab99732f20e45bff4dd0ca0237d"
+    },
+    {
+      "name": "Sandy Shores reproduction",
+      "image_url": "https://i.pinimg.com/originals/69/89/0f/69890ff847325c0a6ae1b71bf64d9c07.png",
+      "download_sha256": "d1557c9e3ea96fd69a5154123f3377e345993f40f9016957c3b6534fb6f7b638"
+    },
+    {
+      "name": "Murloc Hideaway painting reproduction",
+      "image_url": "https://media.esports.gg/uploads/2022/12/Hearthstone-Winter-Veil-mooncolony-mooncolony-hearthstone-murloc-s-hideaway-combat-1024x662.jpg",
+      "download_sha256": "2217a29adbbed86706e197f7817513be40d208937c520026f791a431172c6e9d"
+    },
+    {
+      "name": "Karazhan chess screenshot",
+      "image_url": "https://bnetcmsus-a.akamaihd.net/cms/gallery/vv/VVWYEFJPWDRN1475741592888.jpg",
+      "download_sha256": "c5f820b4f417633fd4ff0968d321b83f92dd7c199bb1d8a8f54093e9c5381233"
+    },
+    {
+      "name": "Nomi mobile wireframe",
+      "image_url": "https://cdnb.artstation.com/p/assets/images/images/060/880/817/large/erica-c-lyons-nomiskitchen-unity-view-mobile-wireframe.jpg?1679510771",
+      "download_sha256": "23fcc166abe52c7a0497b30c7c040dc862a0692fb624d37f2b6980cc9858d97b"
+    },
+    {
+      "name": "Nomi wider wireframe",
+      "image_url": "https://cdna.artstation.com/p/assets/images/images/060/880/820/large/erica-c-lyons-nomiskitchen-unity-view-wireframe.jpg?1679510781",
+      "download_sha256": "3c1faee18c8685799cabcb19086cc7a33208b43491146bbb2bd36c0ff32f5279"
+    }
+  ],
+  "retained_files": [
+    {
+      "file": "bg-contact-0.jpg",
+      "sha256": "c76273f32308df50ffcc7f11ff4587948842be6e7f6ad7f0a55583fa62ed766e"
+    },
+    {
+      "file": "bg-contact-12.jpg",
+      "sha256": "d2735342a8277f417033648b518d2fe740a95d3fda4f077299bda51c217cec50"
+    },
+    {
+      "file": "catalog-1.jpg",
+      "sha256": "098d32db20c39fe2339ff6acb4c46582671db4421d7866a3d831a53865bd6966"
+    },
+    {
+      "file": "catalog-2.jpg",
+      "sha256": "ece8708a92ef2f8ab71c449e74c0999c741149be14876c65f512a3cb4cd1f8e9"
+    },
+    {
+      "file": "catalog-3.jpg",
+      "sha256": "0d751fc0eff39b1e4721e27f4049197ca4d4293ee7d0aed3adc9ab4bf8b1f8cc"
+    },
+    {
+      "file": "catalog-4.jpg",
+      "sha256": "cb9a3e9079c113e8492af80b3455aaf50d750989b79edcbda50dd206d9095b4c"
+    },
+    {
+      "file": "catalog-5.jpg",
+      "sha256": "48a8e425439ca7e880fedc98f093d82b43bb5e89505b12ad6bf1c6299983f848"
+    },
+    {
+      "file": "catalog-6.jpg",
+      "sha256": "2ad4865663b35ff59226d5f56959a5b3c8ebc24d316dcceca921f621e89c443a"
+    },
+    {
+      "file": "chess.jpg",
+      "sha256": "fb985888e08f5be6ad7024371f537a178d37265577444374350cc052b684e4c5"
+    },
+    {
+      "file": "comparison.jpg",
+      "sha256": "83c19b6064dd395a984ac7cc5f2ac3e870a04084d4797126b81a47ccc89dd058"
+    },
+    {
+      "file": "cosmic-study-sequence.jpg",
+      "sha256": "57711a59e040ad2ff711f3ca989fb030ff2dab455152e5bc221217abebb7fff6"
+    },
+    {
+      "file": "jade-gardens-sequence.jpg",
+      "sha256": "e223dcda1f6a7f0827657d70c24628425de3bda742addc42b728ea6eb00dacff"
+    },
+    {
+      "file": "murloc-hideaway-sequence.jpg",
+      "sha256": "c215a47cfaaf1535b5a9aeb6ab96c5bbee6cc0d7ee75f567eadb033996d19305"
+    },
+    {
+      "file": "murloc-hideaway.jpg",
+      "sha256": "f6e8d3855d37681718f45b24bce7b9223590b113c980f08c6d8f5f9ff5462595"
+    },
+    {
+      "file": "nomi-wireframe-0.jpg",
+      "sha256": "b16d0b33feaee6cd34842cf4e027c4bfebcca301f9d791fde08ef58fbb3ccc29"
+    },
+    {
+      "file": "nomi-wireframe-1.jpg",
+      "sha256": "599e4c13feb8532609eb6f0006dc8dff5608864746994d75c956f889c945e5bd"
+    },
+    {
+      "file": "sandy-shores.jpg",
+      "sha256": "eb346ee7d3423421d3d2b8f4e8ddc67b6ec69ecc787f55e64d94e8c4ca2af73d"
+    }
+  ]
+}

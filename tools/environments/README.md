@@ -13,3 +13,5 @@ Debug-only review: `--starfalls-reset --observatory-review` supplies the real ca
 [Production strategy](../../docs/design/environments/PRODUCTION.md), [adoption evidence](../../docs/evidence/observatory-adoption-2026-10-17/README.md), and [original native proof](../../docs/design/environments/landing-native-01/README.md) separate current acceptance from historical work. Exact artwork prompts remain in the design record; four packaged imagesets own runtime assets. Raw logs, traces and movies stay under ignored `artifacts/`.
 
 `export_committed_tree` captures a validated Git archive at an explicit commit and hashes its inputs. The [gravity trial](../mechanics/README.md#magnetic-collision-and-captive-orbit) uses it to keep current-main edits and normal saves outside an isolated candidate.
+
+The integrated runtime uses `App/LandingGeometry.swift` and `App/LandingEnvironment.swift`. The [production set](../../docs/design/environments/production-set/README.md) records asset provenance and acceptance; tools here are authoring support.

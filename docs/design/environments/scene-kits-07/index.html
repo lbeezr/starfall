@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Starfall · Scene kits & storyboards</title><link rel="stylesheet" href="review.css"><script src="../concept-cast.js" defer></script><script src="kit-data.js" defer></script><script src="diagrams.js" defer></script><script src="review.js" defer></script></head>
+<body>
+<header><p class="eyebrow">STARFALL / SCENE KITS / 07</p><h1>Design the journey before painting it.</h1><p class="intro">Five destinations. Separate layers and props. A small story in each.</p><p class="status">Pre-generation planning · simple shape diagrams and existing cast assets · no new artwork or native changes</p><a href="../alien-nightscapes-06/index.html">WoW reference study</a> <span aria-hidden="true">·</span> <a href="README.md">Shared art handoff</a></header>
+<nav aria-label="Choose a scene kit" id="kit-nav"></nav>
+<main>
+<section class="brief"><p class="eyebrow" id="kit-number"></p><h2 id="kit-title"></h2><p class="subtitle" id="kit-subtitle"></p><p id="premise"></p><div class="palette" id="palette"></div><p class="palette-note" id="palette-note"></p></section>
+<section class="composition" aria-label="Composition and layers">
+<div class="drawing-column">
+<div class="controls"><label>Composition <select id="device"><option value="wide">iPad landscape</option><option value="tall">iPad portrait</option><option value="phone">Phone portrait</option></select></label><label>Cast <select id="density"><option value="sparse">A few stars</option><option value="dense">All 49 positions</option><option value="empty">Scenery only</option></select></label><label><input id="guides" type="checkbox" checked> Reserved regions</label><label><input id="gray" type="checkbox"> Grayscale</label></div>
+<div class="stage-wrap"><div class="stage"><div class="diagram"></div><div class="cast" aria-label="Existing cast shown for scale"></div></div></div>
+<p class="caption">Shape and placement study, not final art. Dashed regions are planning guides. The actual HUD and game controls stay native.</p>
+<p class="camera" id="camera"></p><p class="camera" id="portrait"></p>
+</div>
+<aside aria-label="Layer stack"><h3>Five depth planes</h3><p class="aside-note">Back → front. Hide a plane to inspect its role. Props remain separate assets within it.</p><div id="layer-list"></div><button id="restore" type="button">Show all layers</button><p class="caption">Every scenic plane stays behind the cast. “Near” never means covering a star or a control.</p></aside>
+</section>
+<section class="story"><h3>Three storyboard frames</h3><p class="section-note">Review poses for the same location—not a blocking intro, level sequence or new game mode. The third frame enlarges the local accent for art review; the game camera stays fixed. Select a frame to inspect its proposed change.</p><div class="story-grid" id="story-grid"></div><p class="beat-detail" id="beat-detail" aria-live="polite"></p></section>
+<section><h3>Two signature props or forms</h3><div class="prop-grid" id="prop-grid"></div></section>
+<section class="decision"><h3>Resolve before generation</h3><p id="question"></p><p><strong>Keep out:</strong> <span id="reject"></span></p></section>
+<details class="inventory"><summary>Asset inventory and handoff</summary><p id="asset-count"></p><div class="table-wrap"><table><thead><tr><th scope="col">Asset / plane</th><th scope="col">Placement</th><th scope="col">Separation and registration</th></tr></thead><tbody id="asset-rows"></tbody></table></div><p class="caption">These are proposed outputs. IDs do not mean files exist. Artwork generation starts only after the kit’s composition and prop choices are settled.</p></details>
+<details id="reference-details"><summary>Existing mood reference</summary><figure><img id="reference-image" alt=""><figcaption id="reference-caption"></figcaption></figure></details>
+<section class="shared"><h3>One universe, a stable game.</h3><p>Keep the same cast and warm points of light across the journey. No platforms, scene-specific rules, collectible scenery or new progression. Only local environmental accents move; Reduce Motion uses the quiet settled pose. A future implementation must cancel scenic activity on interruption without affecting committed gameplay.</p></section>
+</main><footer><a href="README.md">Scope and verification</a> · <a href="../open-skies-05/index.html">Earlier layered Nebula proof</a><p>No full-generation pass has started. These diagrams describe composition and intended behavior; they do not prove finished-art quality, native touch behavior or animation performance.</p></footer>
+</body></html>

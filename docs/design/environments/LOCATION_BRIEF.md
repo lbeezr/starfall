@@ -13,6 +13,7 @@ Copy this into a location's own README when starting that place. Fill only field
 - **Distinctive silhouette / distant landmark:**
 - **Primary and secondary materials / light:**
 - **Quiet play surface / HUD safe zones:**
+- **Visible arena boundary:** Register the usable platform rim to the shared seven-by-seven perimeter; specify edge/corner clearance for grown stars, contact shadows and full targets. Review empty/full boards and resized native corner taps.
 - **Depth planes and foreground occlusion:**
 - **Two signature props:** Describe appearance, full native target, response, quiet-mode feedback and cancellation behavior.
 - **One or two ambient motifs:** Describe movement range, pause/quiet behavior and why it supports the mood.

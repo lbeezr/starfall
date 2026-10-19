@@ -7,7 +7,7 @@ import StarfallCore
 final class ObservatoryGeometryTests: XCTestCase {
     func testColumnOutlineContainsItsStarsAndExcludesNeighborCenters() {
         for size in [CGSize(width: 375, height: 667), CGSize(width: 390, height: 844), CGSize(width: 1024, height: 768)] {
-            let mapping = ObservatoryGeometry(size: size)
+            let mapping = LandingGeometry(size: size)
             for column in 0..<7 {
                 let path = CGMutablePath()
                 path.addLines(between: mapping.columnPolygon(column)); path.closeSubpath()
@@ -21,8 +21,8 @@ final class ObservatoryGeometryTests: XCTestCase {
     }
 
     @MainActor func testProjectionRoundTripAndSharedEdgesOnPortraitSizes() {
-        for size in [CGSize(width: 375, height: 1000), CGSize(width: 440, height: 956), CGSize(width: 350, height: 610), CGSize(width: 378, height: 690), CGSize(width: 536, height: 930), CGSize(width: 768, height: 1024), CGSize(width: 1024, height: 768), CGSize(width: 375, height: 667)] {
-            let mapping = ObservatoryGeometry(size: size)
+        for size in [CGSize(width: 320, height: 640), CGSize(width: 667, height: 375), CGSize(width: 852, height: 393), CGSize(width: 375, height: 1000), CGSize(width: 440, height: 956), CGSize(width: 350, height: 610), CGSize(width: 378, height: 690), CGSize(width: 536, height: 930), CGSize(width: 768, height: 1024), CGSize(width: 1024, height: 768), CGSize(width: 375, height: 667)] {
+            let mapping = LandingGeometry(size: size)
             for row in 0..<7 { for column in 0..<7 {
                 let cell = Cell(row, column)
                 let center = mapping.viewPoint(cell)
@@ -32,7 +32,7 @@ final class ObservatoryGeometryTests: XCTestCase {
                 let frame = mapping.frame(cell)
                 XCTAssertGreaterThanOrEqual(frame.width, 44)
                 XCTAssertGreaterThanOrEqual(frame.height, 44)
-                XCTAssertTrue(CGRect(origin: .zero, size: size).contains(frame))
+                XCTAssertTrue(CGRect(origin: .zero, size: size).contains(frame), "\(size) \(cell) \(frame)")
                 let polygon = mapping.polygon(cell)
                 if column < 6 {
                     let next = mapping.polygon(Cell(row,column+1))
@@ -47,27 +47,30 @@ final class ObservatoryGeometryTests: XCTestCase {
             XCTAssertNil(mapping.cell(at: .zero))
         }
     }
-    func testPortraitArtworkReachesBothScreenEdgesWithoutStretching() {
-        for size in [CGSize(width: 440, height: 956), CGSize(width: 393, height: 852), CGSize(width: 375, height: 667)] {
-            let rect = ObservatoryGeometry(size: size).imageRect
-            XCTAssertLessThanOrEqual(rect.minY, 0.001)
-            XCTAssertGreaterThanOrEqual(rect.maxY, size.height-0.001)
-            XCTAssertEqual(rect.width/rect.height, ObservatoryGeometry.artworkAspect, accuracy: 0.0001)
+    func testBodyAndAwardSizingFitBothAxesOfTheSharedCell() {
+        for size in [CGSize(width: 667, height: 375), CGSize(width: 852, height: 393),
+                     CGSize(width: 1133, height: 744), CGSize(width: 369, height: 800)] {
+            let mapping = LandingGeometry(size: size)
+            for row in 0..<7 { for column in 0..<7 {
+                let cell = mapping.frame(Cell(row,column))
+                XCTAssertLessThanOrEqual(mapping.starStep, cell.height + 0.001)
+                XCTAssertLessThanOrEqual(mapping.starStep, cell.width * 1.05)
+            } }
         }
     }
-    @MainActor func testLayeredArtworkIsIncludedAndTransparentLayersDecode() throws {
-        for name in ["ObservatoryBackground", "ObservatoryTelescope", "ObservatoryLantern", "ObservatoryFog"] {
-            let image = try XCTUnwrap(UIImage(named: name))
-            let pixels = try XCTUnwrap(image.cgImage)
-            XCTAssertGreaterThan(pixels.height, 1700)
-            XCTAssertLessThan(pixels.height, 1900)
-            if name != "ObservatoryBackground" {
-                XCTAssertTrue([CGImageAlphaInfo.premultipliedFirst,.premultipliedLast,.first,.last].contains(pixels.alphaInfo))
-            }
+
+    func testBoardIsCenteredInBothAxesIndependentOfSceneryAndHeaderSize() {
+        for size in [CGSize(width:320,height:640),CGSize(width:393,height:852),CGSize(width:834,height:1194),CGSize(width:1194,height:834)] {
+            let normal = LandingGeometry(size:size), large = LandingGeometry(size:size,largeHeader:true)
+            XCTAssertEqual(normal.arenaFrame.midX,size.width/2,accuracy:0.001)
+            XCTAssertEqual(normal.arenaFrame.midY,size.height/2,accuracy:0.001)
+            XCTAssertEqual(normal.arenaFrame,large.arenaFrame)
+            XCTAssertEqual(normal.viewPoint(Cell(3,3)).x,size.width/2,accuracy:0.001)
+            XCTAssertEqual(normal.viewPoint(Cell(3,3)).y,size.height/2,accuracy:0.001)
         }
     }
-    @MainActor func testAmbientClockFreezesWithoutCatchUpAndPropsDoNotOverlapCells() {
-        var clock = ObservatoryAmbientClock()
+    @MainActor func testAmbientClockFreezesWithoutCatchUp() {
+        var clock = LandingAmbientClock()
         clock.setRunning(true, at: 10)
         XCTAssertEqual(clock.phase(at: 12), 2)
         clock.setRunning(false, at: 12)
@@ -77,15 +80,7 @@ final class ObservatoryGeometryTests: XCTestCase {
         XCTAssertEqual(clock.phase(at: 1002), 4)
         clock.setRunning(false, at: 1002)
         XCTAssertEqual(clock.phase(at: 5000), 4)
-        let mapping = ObservatoryGeometry(size: CGSize(width: 369, height: 800))
-        for prop in [ObservatoryProp.telescope,.lantern] {
-            let frame = mapping.propFrame(prop)
-            XCTAssertGreaterThanOrEqual(frame.width,44)
-            XCTAssertGreaterThanOrEqual(frame.height,44)
-            for row in 0..<7 { for column in 0..<7 {
-                XCTAssertFalse(frame.intersects(mapping.frame(Cell(row,column))))
-            } }
-        }
+
     }
     #if DEBUG
     @MainActor func testFixturesValidateAndRetainCastAndDeterministicFuture() throws {
@@ -111,7 +106,7 @@ final class ObservatoryGeometryTests: XCTestCase {
         let sprites = characters.map(\.character)
         XCTAssertEqual(sprites.count, 49)
         for row in 0..<7 { for column in 0..<7 {
-            let point = ObservatoryGeometry(size: scene.size).scenePoint(Cell(row,column))
+            let point = LandingGeometry(size: scene.size).scenePoint(Cell(row,column))
             // SpriteKit stores node coordinates as Float; subpixel tolerance preserves the contract.
             let matches = characters.filter { hypot($0.position.x-point.x,$0.position.y-point.y) < 0.001 }
             XCTAssertEqual(matches.count,1)
@@ -151,6 +146,63 @@ extension SkyShowerPlacementTests {
                 XCTAssertFalse(SkyShowerPlacement.usesIsland(hardware:hardware,size:CGSize(width:size.width+delta,height:size.height),topInset:62,accessible:false))
             }
             XCTAssertFalse(SkyShowerPlacement.usesIsland(hardware:hardware,size:size,topInset:62,accessible:true))
+        }
+    }
+}
+
+final class LandingPlaceTests: XCTestCase {
+    func testPreferencesPreserveAllFiveHistoricalDestinations() {
+        XCTAssertEqual(LandingPlace.restored("removed-location"), .moonwake)
+        XCTAssertEqual(["observatory","cloudsea","hearth","grotto","archive"].map(LandingPlace.restored), LandingPlace.allCases)
+        XCTAssertEqual(Set(LandingPlace.allCases.map(\.title)).count,5)
+        XCTAssertNotEqual(LandingPlace.preferenceKey,"skyEnvironment")
+    }
+    @MainActor func testProductionComponentsArePackagedWithRealAlpha() throws {
+        let names = ["NightVeil","NightIce","MoonwakeMoon","MoonwakeHull","MoonwakeCloth","NebulaBankLeft","NebulaBankRight","ShatterlightCrown","ShatterlightCrescent","ShatterlightShard","ShatterlightShelter","GardenCanopy","GardenPod","GardenMoth","RingdriftPlanet","RingdriftRings"]
+        for name in names {
+            let image = try XCTUnwrap(UIImage(named:name)?.cgImage,name)
+            XCTAssertGreaterThan(image.width,256)
+            XCTAssertGreaterThan(image.height,256)
+            XCTAssertTrue([CGImageAlphaInfo.premultipliedFirst,.premultipliedLast,.first,.last].contains(image.alphaInfo),name)
+        }
+    }
+    func testLandmarksAndLocalPropsLeaveTheBoardAndControlsClear() {
+        for size in [CGSize(width:320,height:900),CGSize(width:369,height:800),CGSize(width:440,height:956),CGSize(width:834,height:1194),CGSize(width:1194,height:834)] {
+            for large in [false,true] {
+                let canvas = large ? CGSize(width:size.width,height:max(1200,size.height)) : size
+                let map = LandingGeometry(size:canvas,largeHeader:large), scene = NightSceneLayout(size:canvas,largeHeader:large)
+                for art in [scene.landmark,scene.detail,scene.nearLeft,scene.nearRight,scene.nearMoon] {
+                    for region in [map.arenaFrame,map.crownFrame,map.communicationContentFrame,map.actionFrame(0),map.actionFrame(1)] {
+                        XCTAssertFalse(art.intersects(region),"\(canvas) \(art) overlaps \(region)")
+                    }
+                }
+            }
+        }
+    }
+}
+
+final class LandingArchitectureGeometryTests: XCTestCase {
+    func testEmptyViewportHasNoInputCellsOrInvalidProjectionRange() {
+        for size in [CGSize.zero,CGSize(width:0,height:844),CGSize(width:390,height:0)] {
+            let mapping = LandingGeometry(size:size)
+            XCTAssertEqual(mapping.arenaFrame,.zero)
+            XCTAssertNil(mapping.cell(at:.zero))
+            for row in 0..<7 { for column in 0..<7 { XCTAssertEqual(mapping.frame(Cell(row,column)),.zero) } }
+        }
+    }
+    func testHeaderDialogueAndActionsStayOutsideEveryCell() {
+        for size in [CGSize(width:320,height:900),CGSize(width:369,height:800),CGSize(width:440,height:956),CGSize(width:834,height:1194),CGSize(width:1194,height:834)] {
+            let map = LandingGeometry(size:size)
+            for row in 0..<7 { for column in 0..<7 {
+                let cell = Cell(row,column), frame = map.frame(cell)
+                for region in [map.crownFrame,map.communicationContentFrame,map.actionFrame(0),map.actionFrame(1)] {
+                    XCTAssertFalse(frame.intersects(region))
+                    XCTAssertTrue(CGRect(origin:.zero,size:size).contains(region))
+                }
+                XCTAssertEqual(map.cell(at:map.viewPoint(cell)),cell)
+                XCTAssertGreaterThanOrEqual(frame.height,44)
+                XCTAssertGreaterThanOrEqual(frame.width,44)
+            } }
         }
     }
 }

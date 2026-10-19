@@ -13,6 +13,7 @@ struct FallingSkyMenu: View {
     @Binding var sound: Bool
     @Binding var haptics: Bool
     @Binding var calm: Bool
+    @Binding var place: LandingPlace
     let pause: () -> Void
     let restart: (Bool) -> Void
     let firstLight: () -> Void
@@ -34,7 +35,7 @@ struct FallingSkyMenu: View {
                         .accessibilityIdentifier("experiment.replay")
                     Button { restart(false) } label: { Label(SkyCopy.text(.actionNew), systemImage: "sparkles") }
                         .accessibilityIdentifier("experiment.new")
-                } header: { Text(SkyCopy.text(.menuObservatory)) } footer: {
+                } header: { Text(place.title) } footer: {
                     Text(SkyCopy.text(.a11yBoardSummary, values: ["showers": String(turns), "groups": String(groups)]))
                         .accessibilityIdentifier("experiment.roundSummary")
                 }
@@ -42,7 +43,11 @@ struct FallingSkyMenu: View {
                     Button(action: observatory) { Label(SkyCopy.text(.actionHome), systemImage: "moon.stars") }
                         .accessibilityIdentifier("sky.home")
                 }
-                SkyFeelSection(sound: $sound, haptics: $haptics, calm: $calm)
+                 Section("Atmosphere") {
+                    NavigationLink { locations.toolbar { dismissal } } label: { LabeledContent("Location", value: place.title) }
+                        .accessibilityIdentifier("landing.locations")
+                }
+               SkyFeelSection(sound: $sound, haptics: $haptics, calm: $calm)
                 Section {
                     if !challenge {
                         NavigationLink { Form { balanceControls }.navigationTitle(SkyCopy.text(.menuBalance)).toolbar { dismissal } }
@@ -74,6 +79,41 @@ struct FallingSkyMenu: View {
         }
         .tint(StarfallTheme.Colors.actionPrimary)
         .presentationDetents([.large])
+    }
+
+    private var locations: some View {
+        List {
+            Section {
+                ForEach(LandingPlace.allCases) { candidate in
+                    Button {
+                        place = candidate
+                    } label: {
+                        HStack(spacing: StarfallTheme.Spacing.medium) {
+                            Image(candidate.landmarkAsset).resizable().scaledToFit()
+                                .frame(width: 54, height: 72, alignment: .top).clipped()
+                                .clipShape(RoundedRectangle(cornerRadius: StarfallTheme.Radius.control))
+                                .accessibilityHidden(true)
+                            VStack(alignment: .leading, spacing: StarfallTheme.Spacing.compact) {
+                                Text(candidate.title).font(StarfallTheme.Typography.heading)
+                                Text(candidate.detail).font(StarfallTheme.Typography.supporting)
+                                    .foregroundStyle(StarfallTheme.Colors.textSecondary)
+                            }.fixedSize(horizontal: false, vertical: true)
+                            Spacer(minLength: 0)
+                            if candidate == place {
+                                Image(systemName: "checkmark.circle.fill").accessibilityHidden(true)
+                            }
+                        }.frame(minHeight: StarfallTheme.Layout.minimumTarget)
+                    }
+                    .accessibilityLabel(candidate.title)
+                    .accessibilityValue(candidate == place ? "Selected" : "")
+                    .accessibilityHint("Change the nightscape while keeping this sky")
+                    .accessibilityAddTraits(candidate == place ? .isSelected : [])
+                    .accessibilityIdentifier("landing.choose." + candidate.rawValue)
+                }
+            } footer: {
+                Text("Travel between five nightscapes. Changing location keeps your stars and score.")
+            }
+        }.navigationTitle("Location")
     }
 
     private var dismissal: some ToolbarContent { SkyMenuDone(done: done) }

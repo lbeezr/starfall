@@ -42,7 +42,7 @@ final class SkyTechniqueStoreTests: XCTestCase {
         XCTAssertTrue(ready)
         for quiet in [false,true] {
             scene.reduceMotion = quiet
-            let surface = ConstellationTraceSurface.Surface(), mapping = ObservatoryGeometry(size:scene.size)
+            let surface = ConstellationTraceSurface.Surface(), mapping = LandingGeometry(size:scene.size)
             var armed = 0
             surface.updateInput(.init(size:scene.size,enabled:true,generation:1,traceStart:{ _ in cell },tap:{ _ in },
                 begin:{ _ in armed += 1; scene.showConstellationTrace([cell],ready:false) },move:{ _ in },end:{},
@@ -102,7 +102,7 @@ final class SkyTechniqueStoreTests: XCTestCase {
             let readyDeadline = ContinuousClock.now + .seconds(2)
             while !ready && ContinuousClock.now < readyDeadline { try await Task.sleep(for: .milliseconds(5)) }
             XCTAssertTrue(ready)
-            let mapping = ObservatoryGeometry(size: scene.size)
+            let mapping = LandingGeometry(size: scene.size)
             let session = SkyInteractionSession(), surface = ConstellationTraceSurface.Surface()
             func refreshSurface() {
                 surface.updateInput(.init(size: scene.size, enabled: store.canReceiveInput, generation: store.constellationInputGeneration,
@@ -431,7 +431,7 @@ final class SkyTechniqueStoreTests: XCTestCase {
         let before=SkyTechniqueExample.nudge.game();var after=before
         let turn=try XCTUnwrap(after.nudge(from:Cell(1,2),to:Cell(1,3)))
         let id=try XCTUnwrap(before.gem(at:Cell(1,2))?.id)
-        let origin=ObservatoryGeometry(size:scene.size).scenePoint(Cell(1,2))
+        let origin=LandingGeometry(size:scene.size).scenePoint(Cell(1,2))
         var complete=false,sideways=false,fall=false
         scene.render(before)
         // The host must deliver an update before a timed exchange starts. Otherwise
@@ -454,7 +454,7 @@ final class SkyTechniqueStoreTests: XCTestCase {
         }
         XCTAssertTrue(complete);XCTAssertTrue(sideways);XCTAssertTrue(fall)
         let final=try XCTUnwrap(scene.childNode(withName:"//sky.star.\(id)"))
-        let destination=ObservatoryGeometry(size:scene.size).scenePoint(Cell(0,3))
+        let destination=LandingGeometry(size:scene.size).scenePoint(Cell(0,3))
         // SpriteKit action coordinates round through Float; compare below a thousandth of a point.
         XCTAssertEqual(final.position.x,destination.x,accuracy:0.001)
         XCTAssertEqual(final.position.y,destination.y,accuracy:0.001)
@@ -467,19 +467,16 @@ final class SkyTechniqueStoreTests: XCTestCase {
         XCTAssertEqual(quiet.position.x,destination.x,accuracy:0.001)
         XCTAssertEqual(quiet.position.y,destination.y,accuracy:0.001)
 
-        // A second, disjoint turn must not reschedule the first column's falling star or shadow.
+        // A second, disjoint turn must not reschedule the first column's falling star.
         scene.reduceMotion=false;scene.render(before)
         var firstComplete=false,secondComplete=false
         scene.animate(turn,from:before,to:after) { firstComplete=true }
         let moving=try XCTUnwrap(scene.childNode(withName:"//sky.star.\(id)"))
-        let shadow=try XCTUnwrap(scene.childNode(withName:"//sky.ground.\(id)"))
         let movement=try XCTUnwrap(moving.action(forKey:"sky.settle"))
-        let shadowMovement=try XCTUnwrap(shadow.action(forKey:"sky.settle"))
         var second=after
         let secondTurn=try XCTUnwrap(second.nudge(from:Cell(1,0),to:Cell(1,1)))
         scene.animate(secondTurn,from:after,to:second) { secondComplete=true }
         XCTAssertTrue(moving.action(forKey:"sky.settle") === movement)
-        XCTAssertTrue(shadow.action(forKey:"sky.settle") === shadowMovement)
         let overlapDeadline=ContinuousClock.now + .seconds(5)
         while (!firstComplete || !secondComplete) && ContinuousClock.now < overlapDeadline {
             try await Task.sleep(for:.milliseconds(20))
@@ -536,7 +533,7 @@ extension SkyTechniqueStoreTests {
         let turn = try XCTUnwrap(after.nudge(from:Cell(0,0),to:Cell(1,0)))
         XCTAssertEqual(before,after)
         let id = try XCTUnwrap(before.gem(at:Cell(0,0))?.id)
-        let origin = ObservatoryGeometry(size:scene.size).scenePoint(Cell(0,0))
+        let origin = LandingGeometry(size:scene.size).scenePoint(Cell(0,0))
         scene.render(before)
         var ready = false
         scene.run(.run { ready = true }, withKey:"test.host-ready")

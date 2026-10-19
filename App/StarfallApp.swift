@@ -11,10 +11,10 @@ import StarfallCore
             if ProcessInfo.processInfo.arguments.contains("--classic") || ProcessInfo.processInfo.arguments.contains("--demo") {
                 StarfallView()
             } else {
-                FallingSkyView()
+                FallingSkyView().defaultAppStorage(SkyDefaults.forApp())
             }
             #else
-            FallingSkyView()
+            FallingSkyView().defaultAppStorage(SkyDefaults.forApp())
             #endif
             }
         }

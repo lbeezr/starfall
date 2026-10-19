@@ -1,0 +1,39 @@
+{
+  "tool": "built-in image_gen",
+  "purpose": "Separate outer scenery plates; stage art and native cell coordinates remain authoritative. Non-repeating full-bleed cover with soft overlap; no platform or UI.",
+  "final_assets": {
+    "Observatory": {
+      "asset": "ObservatoryWallpaper",
+      "source": "/Users/lbeezr/.codex/generated_images/01a14eb6-7a91-7b60-ae8a-52ec0f28d24e/exec-e79ac54e-91d4-4090-8acb-5583b517a9bf.png",
+      "reference": "App/Assets.xcassets/ObservatoryBackground.imageset/art.png"
+    },
+    "Cloudsea": {
+      "asset": "CloudseaWallpaper",
+      "source": "/Users/lbeezr/.codex/generated_images/01a14eb6-7a91-7b60-ae8a-52ec0f28d24e/exec-f77c1086-7abb-4d87-a520-55bb5cb7283f.png",
+      "reference": "App/Assets.xcassets/CloudseaBackground.imageset/art.png"
+    },
+    "Hearth": {
+      "asset": "HearthWallpaper",
+      "source": "/Users/lbeezr/.codex/generated_images/01a14eb6-7a91-7b60-ae8a-52ec0f28d24e/exec-17e8b1da-2e41-4499-a243-2ec54256ddcd.png",
+      "reference": "App/Assets.xcassets/HearthBackground.imageset/art.png"
+    },
+    "Grotto": {
+      "asset": "GrottoWallpaper",
+      "source": "/Users/lbeezr/.codex/generated_images/01a14eb6-7a91-7b60-ae8a-52ec0f28d24e/exec-9e633bca-966e-411b-86d2-945e1c966bcb.png",
+      "reference": "App/Assets.xcassets/GrottoBackground.imageset/art.png"
+    },
+    "Archive": {
+      "asset": "ArchiveWallpaper",
+      "source": "/Users/lbeezr/.codex/generated_images/01a14eb6-7a91-7b60-ae8a-52ec0f28d24e/exec-cb96d1cd-0cf0-4650-88cc-cb4ab76550e3.png",
+      "reference": "App/Assets.xcassets/ArchiveBackground.imageset/art.png"
+    }
+  },
+  "rejected_landmarks": {
+    "Observatory": "exec-0cbea7bd-20e7-47c6-8921-6043ae70863b.png",
+    "Cloudsea": "exec-30c6cd6e-325a-499d-abe7-f2dbd4a337ab.png",
+    "Hearth": "exec-ecd8dc40-3307-48f0-9af9-518a372f4972.png",
+    "Archive": "exec-2360b0e5-bf3d-4d88-8382-8a6ea88bbd86.png"
+  },
+  "creative_brief": "Generate full-bleed companion outer scenery from each packaged background as a palette/material reference. Clouds, mist, water vapor and faint distant architecture fill spare screen space. Keep all four middle edges and the center quiet for soft overlap. Exclude playable platforms, slabs, props, characters, game pieces, text, UI, frames and large astronomical landmarks. Preserve painterly finish and light. This is a production brief; final image sources are retained below.",
+  "revision_brief": "Paint out large moons, suns, comets and orbit/black-hole landmarks in the rejected drafts, replacing them with surrounding quiet atmosphere; preserve colors, cloud banks, lighting and ordinary tiny stars. No stage or UI."
+}

@@ -1,0 +1,129 @@
+[
+  {
+    "filename": "dev-86ae25e-wip-88c790ab7a2f__archive-bevel-rejected__iphone-17e__landscape.jpg",
+    "attachment": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+      "deviceName": "Starfall Landing Acceptance",
+      "exportedFileName": "765708E5-368D-44BD-94AB-43BE1C78E250.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "Location-archive-compact-landscape_0_45DA7777-03B1-4005-9FAE-1162F5301F7F.png",
+      "timestamp": 1792336828.271
+    },
+    "test": "LandingPlaceInteractionTests/testCompactLandscapeLocationsKeepNativeArenaAndMessagesSeparate()",
+    "snapshot": "88c790ab7a2f",
+    "status": "Historical: action text crossed the bright bevel; corrected separately"
+  },
+  {
+    "filename": "dev-86ae25e-wip-88c790ab7a2f__grotto-portrait__iphone-17e__default-text.jpg",
+    "attachment": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+      "deviceName": "Starfall Landing Acceptance",
+      "exportedFileName": "430CF7B5-8411-4BE8-B378-A9F98D755E37.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "Location-grotto-dense_0_A00C0149-985F-4B9A-875F-4A8439EB0B19.png",
+      "timestamp": 1792336979.949
+    },
+    "test": "LandingPlaceInteractionTests/testEveryPlaceKeepsRoundRespondsAndClearsAtBothEdges()",
+    "snapshot": "88c790ab7a2f"
+  },
+  {
+    "filename": "dev-86ae25e-wip-88c790ab7a2f__hearth-portrait__iphone-17e__default-text.jpg",
+    "attachment": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+      "deviceName": "Starfall Landing Acceptance",
+      "exportedFileName": "F75327F2-4FC9-47E7-966E-E3A8AA197AE3.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "Location-hearth-dense_0_9601C338-B486-44EC-A9B2-548D9F2E04B3.png",
+      "timestamp": 1792336939.671
+    },
+    "test": "LandingPlaceInteractionTests/testEveryPlaceKeepsRoundRespondsAndClearsAtBothEdges()",
+    "snapshot": "88c790ab7a2f"
+  },
+  {
+    "filename": "dev-86ae25e-wip-88c790ab7a2f__cloudsea-portrait__iphone-17e__default-text.jpg",
+    "attachment": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+      "deviceName": "Starfall Landing Acceptance",
+      "exportedFileName": "B6DFE843-EE42-4FF7-81FE-79C24E106813.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "Location-cloudsea-dense_0_5DE6EF5E-49C6-4C6D-B0C2-221A89C1A6EF.png",
+      "timestamp": 1792336905.839
+    },
+    "test": "LandingPlaceInteractionTests/testEveryPlaceKeepsRoundRespondsAndClearsAtBothEdges()",
+    "snapshot": "88c790ab7a2f"
+  },
+  {
+    "filename": "dev-86ae25e-wip-88c790ab7a2f__observatory-portrait__iphone-17e__default-text.jpg",
+    "attachment": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+      "deviceName": "Starfall Landing Acceptance",
+      "exportedFileName": "5F443B2D-5674-45CB-89B5-1C6A47A5FD8A.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "Location-observatory-dense_0_C81EF252-DB9B-402D-B8EB-B646A2C68DE5.png",
+      "timestamp": 1792336872.902
+    },
+    "test": "LandingPlaceInteractionTests/testEveryPlaceKeepsRoundRespondsAndClearsAtBothEdges()",
+    "snapshot": "88c790ab7a2f"
+  },
+  {
+    "filename": "dev-86ae25e-wip-88c790ab7a2f__first-light-full__iphone-17e__default-text.jpg",
+    "attachment": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+      "deviceName": "Starfall Landing Acceptance",
+      "exportedFileName": "F515A1D0-3256-47B9-A74F-435DAA27B354.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "flow-full_0_B1A1C1A4-175F-4E30-91D7-F3771AE8C2E6.png",
+      "timestamp": 1792337173.099
+    },
+    "test": "SkyFlowInteractionTests/testFirstLightWinReplayAndFullSky()",
+    "snapshot": "88c790ab7a2f"
+  },
+  {
+    "filename": "dev-86ae25e-wip-88c790ab7a2f__first-light-win__iphone-17e__default-text.jpg",
+    "attachment": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+      "deviceName": "Starfall Landing Acceptance",
+      "exportedFileName": "9D54233F-F991-4ABB-B667-464E029B64D8.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "flow-win_0_56705B52-A319-4075-94B0-EDD40E6837D3.png",
+      "timestamp": 1792337101.686
+    },
+    "test": "SkyFlowInteractionTests/testFirstLightWinReplayAndFullSky()",
+    "snapshot": "88c790ab7a2f"
+  },
+  {
+    "filename": "dev-5007bc7-wip-a2a7b3a1f4d4__archive-landscape__iphone-17e__default-text.jpg",
+    "attachment": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+      "deviceName": "Starfall Landing Acceptance",
+      "exportedFileName": "9CABCFD8-A959-41D7-A978-BE70368EFFD8.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "Archive-recess-landscape_0_609DFDF0-92A8-47D8-AE3A-08DACD66C265.png",
+      "timestamp": 1792337526.495
+    },
+    "test": "LandingPlaceInteractionTests/testArchivePhysicalRecessAcrossOrientations()",
+    "snapshot": "a2a7b3a1f4d4"
+  },
+  {
+    "filename": "dev-5007bc7-wip-a2a7b3a1f4d4__archive-portrait__iphone-17e__default-text.jpg",
+    "attachment": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+      "deviceName": "Starfall Landing Acceptance",
+      "exportedFileName": "6E8FE425-9254-47DC-8352-D50D344C2013.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "Archive-recess-portrait_0_FBCF5D86-15E5-41D2-977E-2CE86FC0CB23.png",
+      "timestamp": 1792337517.154
+    },
+    "test": "LandingPlaceInteractionTests/testArchivePhysicalRecessAcrossOrientations()",
+    "snapshot": "a2a7b3a1f4d4"
+  }
+]

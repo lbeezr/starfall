@@ -1,0 +1,10 @@
+/* Reuse the approved composition template. Local anchors follow visual inspection. */
+@import url("../living-worlds-03/review.css");
+.world-card .score{left:23%;top:23%}
+.world-card .forecast{left:35.5%;top:20.7%}
+.world-card .menu-mark{left:70.9%;top:20.7%}
+.world-card .reading{top:78%;left:15%;width:58%}
+.world-card .actions{top:90%;left:15%;width:56%}
+/* Keep the sample copy inside the shallow painted reading insets. */
+.world-card .reading{top:76.9%;left:16%;width:65%;height:8%}
+.world-card[data-world=spiral] .actions{top:90.3%;left:21.5%;width:54%}
