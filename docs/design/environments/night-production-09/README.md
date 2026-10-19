@@ -1,8 +1,8 @@
 # Five playable night journeys
 
-**Status:** Accepted for production · **Owner:** current implementer · **Updated:** 2026-10-18
+**Status:** Adopted and delivered · **Owner:** current implementer · **Updated:** 2026-10-18
 
-Ship Moonwake, Nebula Cradle, Shatterlight Reach, Night Garden and Ringdrift as cosmetic settings for the existing game. The approved [color keys](../night-keys-08/README.md) establish their appearance; the [scene kits](../scene-kits-07/README.md) establish their layers and props. User approval now includes native integration and delivery.
+Moonwake, Nebula Cradle, Shatterlight Reach, Night Garden and Ringdrift shipped as cosmetic settings for the existing game in `dev.235ece3931`. The approved [color keys](../night-keys-08/README.md) establish their appearance; the [scene kits](../scene-kits-07/README.md) establish their layers and props. User approval now includes native integration and delivery.
 
 **Implementation:** sixteen alpha assets are packaged in the regular Debug/Release app. `LandingGeometry` centers gameplay; `NightSceneLayout` composes the scenery around it. [Native verification and delivery](../../../evidence/nightscapes-2026-10-18/README.md) records the tested source and remaining physical/RC limits.
 
