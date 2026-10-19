@@ -4,14 +4,26 @@ extension XCUIApplication {
     /// Sample faster than the quiet forecast's one-second display cadence.
     /// Query membership avoids stale-element retries while the label changes.
     @MainActor func waitForApproachingShower(timeout: TimeInterval, file: StaticString = #filePath, line: UInt = #line) {
-        let approaching = descendants(matching: .any).matching(NSPredicate(
-            format: "identifier == %@ AND label == %@", "experiment.arrivalCue", "Shower approaching"))
+        waitForSkyElement(matching: NSPredicate(format: "identifier == %@ AND label == %@",
+            "experiment.arrivalCue", "Shower approaching"), timeout: timeout,
+            failure: "The approaching forecast did not appear", file: file, line: line)
+    }
+
+    @MainActor func waitForSkyGuide(containing text: String, timeout: TimeInterval, file: StaticString = #filePath, line: UInt = #line) {
+        waitForSkyElement(matching: NSPredicate(format: "identifier == %@ AND label CONTAINS %@",
+            "experiment.message", text), timeout: timeout,
+            failure: "Missing guide: \(text)", file: file, line: line)
+    }
+
+    @MainActor private func waitForSkyElement(matching predicate: NSPredicate, timeout: TimeInterval,
+                                              failure: String, file: StaticString, line: UInt) {
+        let matches = descendants(matching: .any).matching(predicate)
         let deadline = ContinuousClock.now + .seconds(timeout)
         repeat {
-            if approaching.count == 1 { return }
+            if matches.count == 1 { return }
             RunLoop.current.run(until: Date().addingTimeInterval(0.1))
         } while ContinuousClock.now < deadline
-        XCTFail("The approaching forecast did not appear within \(timeout) seconds", file: file, line: line)
+        XCTFail("\(failure) within \(timeout) seconds", file: file, line: line)
     }
 
     /// Physical input needs visible targets. Scroll through the non-playing edge so
