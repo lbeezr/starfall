@@ -1,5 +1,7 @@
 # Design documents
 
+[Level-design kit](level-design-kit/README.md) is the current starting point for restoration-board art: native dimensions and bleed guides, camera and star-scale references, the reusable brief, and the Hearthstone research translated into production checks.
+
 Behavior proposals, production contracts and research supporting decisions.
 
 [Quiet input response](QUIET_INPUT_RESPONSE.md) releases input when the static final board is already rendered.

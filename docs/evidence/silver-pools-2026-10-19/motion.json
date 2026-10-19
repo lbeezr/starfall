@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "date": "2026-10-19",
+  "source": "84ae918 (native inputs identical to aabd67346bf56ae27b9940a7d6d916559d16c218)",
+  "runtime": "dev.98f8ba82e6",
+  "device": "iPhone17e",
+  "os": "iOS27.0(24A434)",
+  "configuration": "Debug",
+  "systemReduceMotion": false,
+  "systemMotionCheck": "simctl defaults read com.apple.Accessibility ReduceMotionEnabled returned0 before successful recording",
+  "calmEffects": false,
+  "scenario": "Paused14/18 review fixture; native three-amber group (one grown) clears for4 and wins.",
+  "input": "Current native elementRef with combined down/up,0.12s contact.",
+  "video": {
+    "temporaryPath": "/private/tmp/silver-win-aabd673.mp4",
+    "bytes": 2652348,
+    "sha256": "17aaaf13b31303f31ef1dcfe63fcb4570b867f3856c953dd234b3af60df2e4a7",
+    "requestedCaptureFPS": 30
+  },
+  "observations": [
+    {
+      "seconds": "0\u20131.25",
+      "observed": "Held drop and14/18 stable."
+    },
+    {
+      "seconds": 1.5,
+      "observed": "Selection rays mark touched amber group."
+    },
+    {
+      "seconds": 1.75,
+      "observed": "18/18 and +4 commit; three gold packets rise from removed group, remaining stars settle."
+    },
+    {
+      "seconds": 2,
+      "observed": "Whole-painting crossfade shows ghost of held drop over emerging continuous thread; +4 remains."
+    },
+    {
+      "seconds": 2.25,
+      "observed": "Continuous arch cascade is complete; named result and actions appear."
+    },
+    {
+      "seconds": "2.5\u20134.5",
+      "observed": "Native celebration cast settles above readable dialogue and all three result actions."
+    }
+  ],
+  "visualReview": "Root inspected13 decoded frames at0,0.5,1,1.25,1.5,1.75,2,2.25,2.5,2.75,3,3.5,4.5seconds. No scenery traveler or center mask.",
+  "toolingNotes": [
+    "Initial separate touch-up with delay was rejected by tool validation; outcome wait timed out because finger was not released. Released using fresh ref, stopped initial video, relaunched isolated fixture and used supported combined down/up successfully.",
+    "Initial video-stop omitted required outputFile; corrected while same recording remained active.",
+    "Sandboxed AVFoundation decode failed(-11821); authorized media-service decode succeeded. Temporary extractor reports deprecated copyCGImage API; app build has no warnings.",
+    "Later MCP tap for Observatory reported success with unchanged screen;120ms contact succeeded. Cause unestablished; automated native tests passed without blanket retries."
+  ],
+  "limits": [
+    "Frame samples establish observed sequence, not frame-rate performance.",
+    "Audio, physical-device motion and actual VoiceOver not evaluated.",
+    "Raw videos/frames are disposable; source/hash retained."
+  ]
+}

@@ -6,7 +6,7 @@ Seed Moon restores a curled seed inside a small cracked moon until its bud opens
 
 ## Start here
 
-Read the [observable acceptance](PRODUCTION_PLAN.md), [atlas entry](../WORLD_ATLAS.md#04--seed-moon--enough-light-to-make-shelter) and [five authored beats](../world-01/world-data.js). The [composition reviewer](board.html) compares the three viewport families, five states and a fixed sample made from actual Crystal Glow body assets. It is a static review tool, not a playable round or native evidence.
+Read the [observable acceptance](PRODUCTION_PLAN.md), [atlas entry](../WORLD_ATLAS.md#04--seed-moon--enough-light-to-make-shelter) and [five authored beats](../world-01/world-data.js). The [composition reviewer](board.html), using the shared [review engine](../environments/restoration-review.js), compares the three viewport families, five states and a fixed sample made from actual Crystal Glow body assets. It is a static review tool, not a playable round or native evidence.
 
 <img src="../world-01/map-v1.png" width="540" alt="Approved world concept with Seed Moon numbered 04, a luminous green shoot inside a pale cracked round shell">
 

@@ -1,0 +1,260 @@
+{
+  "status": "Development verified: all fifteen selected paintings are packaged, byte-verified and inspected natively; canonical delivery pending.",
+  "provenance": "art-prompts.json",
+  "processing": "Selected generated PNGs copied byte-for-byte without pixel edits. Native rendering owns whole-image fitting; no source art was resampled, cropped, composited or recolored during packaging.",
+  "verification": {
+    "date": "2026-10-19",
+    "generationRecordsPreserved": 30,
+    "originalDocumentsPreserved": 3,
+    "packagedSourceByteMatches": 15,
+    "sourceSha256DimensionsBytesVerified": true,
+    "selectedSourceSha256DimensionsBytesVerified": true,
+    "gitBlobSHAIndependentlyVerifiedWithGitHashObject": true,
+    "originalDocumentSHA256Verified": true,
+    "nativeValidation": "Verified for development at native source aabd67346bf56ae27b9940a7d6d916559d16c218 / runtime dev.98f8ba82e6; later 84ae918 has unchanged native inputs. All fifteen states, 49-star density/input, tablet rotation, compact layout, largest text/system Reduce Motion, recorded normal completion and Release compilation pass within the evidence scope. Canonical delivery, physical play and actual VoiceOver/full release-candidate acceptance remain pending. See ../../evidence/silver-pools-2026-10-19/README.md. Original nested source records remain source-bound.",
+    "pendingPackagingAssets": [],
+    "missingSourcesOrReferences": []
+  },
+  "assets": [
+    {
+      "family": "phone",
+      "milestone": 0,
+      "asset": "App/Assets.xcassets/SilverPools000.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a1520c-4a69-75b1-9d1e-2ff5c67b1e0b/exec-3966cd8c-6a62-4260-8593-0d407f5a23cd.png",
+      "sha256": "05358732d934d4afbdd9ce5252a431ca891786cbfa4ea68549a302a09c07e83a",
+      "pixels": [
+        887,
+        1774
+      ],
+      "bytes": 2990901,
+      "gitBlobSha": "7b7c916e2a131ebecf4f929b4fe3317e67c5b8a5",
+      "source_record": "art-prompts.json#/original_records/silver-phone-art.json/attempts/9",
+      "packagingStatus": "packaged",
+      "selectionBasis": "Exact packaged PNG SHA256 matched one generated attempt; complete source/package bytes also equal."
+    },
+    {
+      "family": "phone",
+      "milestone": 25,
+      "asset": "App/Assets.xcassets/SilverPools025.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a1520c-4a69-75b1-9d1e-2ff5c67b1e0b/exec-5f25eaa2-77da-448d-b2d1-127c5abaa981.png",
+      "sha256": "97b9188a384813386ccf6f1169f35142896344c4b9234bf1846da25be01ae930",
+      "pixels": [
+        887,
+        1774
+      ],
+      "bytes": 2954701,
+      "gitBlobSha": "0707891ba7bb62f5290e1d9ad0a877d0517103cf",
+      "source_record": "art-prompts.json#/original_records/silver-phone-art.json/attempts/8",
+      "packagingStatus": "packaged",
+      "selectionBasis": "Exact packaged PNG SHA256 matched one generated attempt; complete source/package bytes also equal."
+    },
+    {
+      "family": "phone",
+      "milestone": 50,
+      "asset": "App/Assets.xcassets/SilverPools050.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a1520c-4a69-75b1-9d1e-2ff5c67b1e0b/exec-32e80d6c-1e6f-45cf-9a7f-643a078165d9.png",
+      "sha256": "b085649459afc6434ed4035c5f0f7c10c3eb9bec9341a8e979b72e56abe52326",
+      "pixels": [
+        887,
+        1774
+      ],
+      "bytes": 2938699,
+      "gitBlobSha": "fede9263b770d515b7e3e515174b5624728b2b7e",
+      "source_record": "art-prompts.json#/original_records/silver-phone-art.json/attempts/7",
+      "packagingStatus": "packaged",
+      "selectionBasis": "Exact packaged PNG SHA256 matched one generated attempt; complete source/package bytes also equal."
+    },
+    {
+      "family": "phone",
+      "milestone": 75,
+      "asset": "App/Assets.xcassets/SilverPools075.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a1520c-4a69-75b1-9d1e-2ff5c67b1e0b/exec-18a70193-3dc4-4d55-850e-78b5d4d2adb5.png",
+      "sha256": "a72ac9895813230f59b38a712847561d192e256f113cbe99d05b2a056c6b397d",
+      "pixels": [
+        887,
+        1774
+      ],
+      "bytes": 2921340,
+      "gitBlobSha": "8758fe0cd300df122579f660225c995e7471f67c",
+      "source_record": "art-prompts.json#/original_records/silver-phone-art.json/attempts/6",
+      "packagingStatus": "packaged",
+      "selectionBasis": "Exact packaged PNG SHA256 matched one generated attempt; complete source/package bytes also equal."
+    },
+    {
+      "family": "phone",
+      "milestone": 100,
+      "asset": "App/Assets.xcassets/SilverPools100.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a1520c-4a69-75b1-9d1e-2ff5c67b1e0b/exec-7d7de863-997f-4fa9-bcd7-53946859d9c7.png",
+      "sha256": "4878ed3b0352da6aed145b8e44357637e45a43079d33991d6ca692def3c59fae",
+      "pixels": [
+        887,
+        1774
+      ],
+      "bytes": 2964529,
+      "gitBlobSha": "8e14198754048cf8cfcb8eea950d3899b79ad809",
+      "source_record": "art-prompts.json#/original_records/silver-phone-art.json/attempts/5",
+      "packagingStatus": "packaged",
+      "selectionBasis": "Exact packaged PNG SHA256 matched one generated attempt; complete source/package bytes also equal."
+    },
+    {
+      "family": "tabletPortrait",
+      "milestone": 0,
+      "asset": "App/Assets.xcassets/SilverPoolsTabletPortrait000.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a1520c-0804-7062-bc06-c04d23396021/exec-2399ba1b-a8c8-446f-b2e5-a7d9527bd9f4.png",
+      "sha256": "6df7b1ed5324aa8819fe09f0e794e70af9c54714f8259410fb9c40468cab541c",
+      "pixels": [
+        1086,
+        1448
+      ],
+      "bytes": 2595963,
+      "gitBlobSha": "c78b2b0614d193d4c0087d3a7252953feb6e368f",
+      "source_record": "art-prompts.json#/original_records/silver-portrait-art.json/attempts/10",
+      "packagingStatus": "packaged",
+      "selectionBasis": "Exact packaged PNG SHA256 matched one generated attempt; complete source/package bytes also equal."
+    },
+    {
+      "family": "tabletPortrait",
+      "milestone": 25,
+      "asset": "App/Assets.xcassets/SilverPoolsTabletPortrait025.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a1520c-0804-7062-bc06-c04d23396021/exec-fca53138-410e-4af1-ac9b-8e2832b0ad5d.png",
+      "sha256": "d0ed83c1f8878986bd821c61c5938e08d45091d03396950eea941c0261a2f102",
+      "pixels": [
+        1086,
+        1448
+      ],
+      "bytes": 2620550,
+      "gitBlobSha": "f962c9353bc95ee0834a923f9edc8de8ceab7da5",
+      "source_record": "art-prompts.json#/original_records/silver-portrait-art.json/attempts/9",
+      "packagingStatus": "packaged",
+      "selectionBasis": "Exact packaged PNG SHA256 matched one generated attempt; complete source/package bytes also equal."
+    },
+    {
+      "family": "tabletPortrait",
+      "milestone": 50,
+      "asset": "App/Assets.xcassets/SilverPoolsTabletPortrait050.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a1520c-0804-7062-bc06-c04d23396021/exec-b0916fe0-397c-4b59-9f28-92160c215963.png",
+      "sha256": "411a3bb1a659a8e0242ed8a37d9ce7879f4d4185416f8f8a8dae6eed83597054",
+      "pixels": [
+        1086,
+        1448
+      ],
+      "bytes": 2599489,
+      "gitBlobSha": "c57a1f216fd046d5c39e3ef91e6efad942c5404f",
+      "source_record": "art-prompts.json#/original_records/silver-portrait-art.json/attempts/8",
+      "packagingStatus": "packaged",
+      "selectionBasis": "Exact packaged PNG SHA256 matched one generated attempt; complete source/package bytes also equal."
+    },
+    {
+      "family": "tabletPortrait",
+      "milestone": 75,
+      "asset": "App/Assets.xcassets/SilverPoolsTabletPortrait075.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a1520c-0804-7062-bc06-c04d23396021/exec-6af0ac77-c619-4bd2-bbb7-b1e634ccaced.png",
+      "sha256": "eb55c8eca0e39ae2de8c00dec4841aa4e2c7c0b9d0cf079a65c6ff47d90c379d",
+      "pixels": [
+        1086,
+        1448
+      ],
+      "bytes": 2609785,
+      "gitBlobSha": "158ab3fc10f08aa08e8870bace061641852321ef",
+      "source_record": "art-prompts.json#/original_records/silver-portrait-art.json/attempts/7",
+      "packagingStatus": "packaged",
+      "selectionBasis": "Exact packaged PNG SHA256 matched one generated attempt; complete source/package bytes also equal."
+    },
+    {
+      "family": "tabletPortrait",
+      "milestone": 100,
+      "asset": "App/Assets.xcassets/SilverPoolsTabletPortrait100.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a1520c-0804-7062-bc06-c04d23396021/exec-a72aea92-f46b-4833-93bc-0c273cfd2b50.png",
+      "sha256": "86ef7187cdfae24794b1928d526d98c2847178d2e3578e947e7af37a817abd17",
+      "pixels": [
+        1086,
+        1448
+      ],
+      "bytes": 2679143,
+      "gitBlobSha": "dcf35dd61b76845babb0d7b8d8c28ac2507adabd",
+      "source_record": "art-prompts.json#/original_records/silver-portrait-art.json/attempts/6",
+      "packagingStatus": "packaged",
+      "selectionBasis": "Exact packaged PNG SHA256 matched one generated attempt; complete source/package bytes also equal."
+    },
+    {
+      "family": "tabletLandscape",
+      "milestone": 0,
+      "asset": "App/Assets.xcassets/SilverPoolsTabletLandscape000.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-87d2028f-b8ef-46f6-9dd6-046e642b1e95.png",
+      "sha256": "c85cb3d8e020a5f67143f8e7e28307c2e8b104397c6ca9c54ace6d0b35b05108",
+      "pixels": [
+        1446,
+        1087
+      ],
+      "bytes": 2947553,
+      "gitBlobSha": "9935be9fbd6c79ea0d0449dd265299d23a3fd227",
+      "source_record": "art-prompts.json#/original_records/silver-landscape-art.json/generations/6",
+      "packagingStatus": "packaged",
+      "selectionBasis": "Exact packaged PNG SHA256 matched one generated attempt; complete source/package bytes also equal."
+    },
+    {
+      "family": "tabletLandscape",
+      "milestone": 25,
+      "asset": "App/Assets.xcassets/SilverPoolsTabletLandscape025.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-45220015-d239-4684-881e-6c4008c9832e.png",
+      "sha256": "0862a6185e2104b072ef31e7d7d3280a8446d8094fc9ac03d1ca4759143d8cc2",
+      "pixels": [
+        1447,
+        1087
+      ],
+      "bytes": 2942897,
+      "gitBlobSha": "83dfe04fe579ee7d0bf744409c3bf3bb31f83c61",
+      "source_record": "art-prompts.json#/original_records/silver-landscape-art.json/generations/7",
+      "packagingStatus": "packaged",
+      "selectionBasis": "Exact packaged PNG SHA256 matched one generated attempt; complete source/package bytes also equal."
+    },
+    {
+      "family": "tabletLandscape",
+      "milestone": 50,
+      "asset": "App/Assets.xcassets/SilverPoolsTabletLandscape050.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-cb030ab6-9f2d-46ca-b598-865de783c843.png",
+      "sha256": "d4a7c53dc9bda647a0d348f82c30f326735f51d5adc21119b4286e42c129eea5",
+      "pixels": [
+        1447,
+        1087
+      ],
+      "bytes": 2948922,
+      "gitBlobSha": "42edb78aafecd0637ae703e549618df7c630b937",
+      "source_record": "art-prompts.json#/original_records/silver-landscape-art.json/generations/8",
+      "packagingStatus": "packaged",
+      "selectionBasis": "Exact packaged PNG SHA256 matched one generated attempt; complete source/package bytes also equal."
+    },
+    {
+      "family": "tabletLandscape",
+      "milestone": 75,
+      "asset": "App/Assets.xcassets/SilverPoolsTabletLandscape075.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-2270c328-b3c4-40f2-a646-0f8ea16903de.png",
+      "sha256": "e70195c53cf01c8a973c099278a4b939805ad26cada75fdd5aa8af104ffb4d8d",
+      "pixels": [
+        1446,
+        1087
+      ],
+      "bytes": 2907967,
+      "gitBlobSha": "8a83de1d164af4661163f59625270d15368642b0",
+      "source_record": "art-prompts.json#/original_records/silver-landscape-art.json/generations/5",
+      "packagingStatus": "packaged",
+      "selectionBasis": "Exact packaged PNG SHA256 matched one generated attempt; complete source/package bytes also equal."
+    },
+    {
+      "family": "tabletLandscape",
+      "milestone": 100,
+      "asset": "App/Assets.xcassets/SilverPoolsTabletLandscape100.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-635a87ed-05e0-491e-8d33-a4ff36fdc5fc.png",
+      "sha256": "57e7b2c16ea71b010cf6423cebd37fe18fcfe416c6c8a69d57c0f00d8a06744c",
+      "pixels": [
+        1447,
+        1087
+      ],
+      "bytes": 3016186,
+      "gitBlobSha": "84168341e31b73ab5dd5b953f2b782eb96c2da35",
+      "source_record": "art-prompts.json#/original_records/silver-landscape-art.json/generations/4",
+      "packagingStatus": "packaged",
+      "selectionBasis": "Exact packaged PNG SHA256 matched one generated attempt; complete source/package bytes also equal."
+    }
+  ]
+}

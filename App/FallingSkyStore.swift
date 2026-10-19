@@ -778,6 +778,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         case .ribbonCrossing: startChallenge(.ribbonCrossing)
         case .kiteHarbor: startChallenge(.kiteHarbor)
         case .seedMoon: startChallenge(.seedMoon)
+        case .silverPools: startChallenge(.silverPools)
         }
     }
 

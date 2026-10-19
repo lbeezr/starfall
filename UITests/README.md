@@ -6,6 +6,12 @@ XCTest flows exercising the app through native controls on Apple tooling.
 
 Run relevant flows through the Starfall scheme. Keep bounded condition-based waits and isolated test saves. Report actual VoiceOver and full-motion observations separately from automation.
 
+`RestorationInteractionScenarios` owns the shared native win/restore/replay, dense overflow, preview/Begin, largest-text/Reduce Motion and tablet rotation/real-clear scenarios used by Seed Moon and Silver Pools. Their named test methods keep suite selection explicit. Shared helpers select all five challenge identities and preserve native button/cell semantics; adding a location must not duplicate these flows.
+
+`SilverPoolsInteractionTests` adds the fifth challenge’s phone five-state geometry check, dense rapid-clear/settings/background regression and tablet full-board completion in both orientations. Its ordinary tablet scenario captures all ten portrait/landscape states and executes real clears. [Current Silver evidence](../docs/evidence/silver-pools-2026-10-19/README.md) records 11 selected native UI checks passing at runtime `dev.98f8ba82e6`, source `aabd673` (native-equivalent `84ae918`), with all fifteen phone/tablet artwork states inspected and normal motion checked separately. Development verification is complete within that scope; canonical installation, physical play and full release-candidate accessibility remain pending.
+
+Restoration fixtures require Debug, `--starfalls-reset`, `--dialogue-review` and a valid score argument such as `--silver-restoration-review=14`; `--restoration-dense` fills the board. They use isolated review saves. [Native test selection](../scripts/native_test_plan.py) owns phone/tablet classification, including both Silver tablet methods. Source-art or [design-kit](../docs/design/level-design-kit/README.md) overlays cannot replace inspecting the attached native captures.
+
 `ConstellationTraceNativeTests` verifies selected five from six, short/outside cancellation, ordinary taps, retained relaunch and largest-text tracing/build metadata in the same Starfall target. Fixtures require Debug and explicit local reset arguments.
 
 `ConstellationTraceNativeTests` now holds an eligible touch across a five-second automatic deadline before dragging and verifies that the chosen five clear. The same suite preserves ordinary tap, Opal and large-text checks. Hosted checks own exact deadline arithmetic.

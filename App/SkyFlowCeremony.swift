@@ -14,7 +14,7 @@ enum SkyFlowScreen: Equatable {
         return .welcome
     }
 }
-enum SkyFlowAction: Equatable { case start, firstLight, ribbonCrossing, kiteHarbor, seedMoon, begin, resume, replay, another, home, preferences }
+enum SkyFlowAction: Equatable { case start, firstLight, ribbonCrossing, kiteHarbor, seedMoon, silverPools, begin, resume, replay, another, home, preferences }
 
 @MainActor struct SkyFlowCeremony: View {
     let screen: SkyFlowScreen

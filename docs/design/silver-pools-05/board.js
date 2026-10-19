@@ -1,0 +1,1 @@
+window.STARFALL_RESTORATION_REVIEW = { locationID: 5, assetPrefix: 'SilverPools', exportName: 'silverPoolsBoardReview', stateNames: ['The terraces are dry', 'The first basin fills', 'A stream reconnects', 'One droplet waits', 'One continuous cascade'] };

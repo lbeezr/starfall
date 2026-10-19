@@ -1,0 +1,226 @@
+{
+  "base": "2357b20197bbaa2832d353b0dbed3a46fead0d2f",
+  "stage": "initial implementation; incomplete art; development checks only",
+  "files": [
+    {
+      "path": ".agents/skills/starfall-level-design/SKILL.md",
+      "sha256": "c6f553ea7cb7acbba2de7bb8d71aefd695eef46092105e8c9c63bf85dff62166"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "1268167b21fd6baf5b34c032231e732db2f5f90e257129bbec111e4a8e00a235"
+    },
+    {
+      "path": "App/Assets.xcassets/SilverPools100.imageset/Contents.json",
+      "sha256": "30cfacb4e2a36d4b66093823d5730c9a43a59608c1b09304caeefddafd5c6b3a"
+    },
+    {
+      "path": "App/Assets.xcassets/SilverPools100.imageset/scene.png",
+      "sha256": "4878ed3b0352da6aed145b8e44357637e45a43079d33991d6ca692def3c59fae"
+    },
+    {
+      "path": "App/Assets.xcassets/SilverPoolsTabletLandscape100.imageset/Contents.json",
+      "sha256": "30cfacb4e2a36d4b66093823d5730c9a43a59608c1b09304caeefddafd5c6b3a"
+    },
+    {
+      "path": "App/Assets.xcassets/SilverPoolsTabletLandscape100.imageset/scene.png",
+      "sha256": "e80505757d34e440f8e41e73c5c0cab6141163ccafdd7294a45fc2d621bd223a"
+    },
+    {
+      "path": "App/Assets.xcassets/SilverPoolsTabletPortrait100.imageset/Contents.json",
+      "sha256": "30cfacb4e2a36d4b66093823d5730c9a43a59608c1b09304caeefddafd5c6b3a"
+    },
+    {
+      "path": "App/Assets.xcassets/SilverPoolsTabletPortrait100.imageset/scene.png",
+      "sha256": "86ef7187cdfae24794b1928d526d98c2847178d2e3578e947e7af37a817abd17"
+    },
+    {
+      "path": "App/DialogueScripts/observatory-dialogue.json",
+      "sha256": "3ee8e7855ab7be9a37d9ee462d01a0df90c2cb6e108530825c7e8d885b228097"
+    },
+    {
+      "path": "App/FallingSkyStore.swift",
+      "sha256": "e6c8601498bb1d2baa2c1973987abed5851efebb73a52581b353d11d3c5f2e5b"
+    },
+    {
+      "path": "App/RestorationEnvironment.swift",
+      "sha256": "b0e7f8dd3d3e189001b31c08dd9b7af911e90305ac5f9ed8d9f19a641a1ef977"
+    },
+    {
+      "path": "App/RestorationPresentation.swift",
+      "sha256": "6248329e0fe3f6d0f49c302c7b91d81683c46d8b962e7318576764e049622bec"
+    },
+    {
+      "path": "App/SkyCopy.swift",
+      "sha256": "6fa41c87b26e54484b3b17c19d1f4944c9668733ad0ea63a0f2806fa4b54faf6"
+    },
+    {
+      "path": "App/SkyFlowCeremony.swift",
+      "sha256": "904716e18f649a7e8ad2d1b177358836b3043f1fc6d6aa337b70bfc65efa2208"
+    },
+    {
+      "path": "App/SkyFlowState.swift",
+      "sha256": "4f707f124cab29e808926332cb44eb77c52eee9543ab2f8a719c67c9a02a5bc4"
+    },
+    {
+      "path": "App/SkyPreferences.swift",
+      "sha256": "616a6058ac4a6015c1f715cd5f7cec5782568795d27c3a615d2b52e185cee8b8"
+    },
+    {
+      "path": "AppTests/RestorationFlowTests.swift",
+      "sha256": "572ce45fadc8f0b650251b653e32262a362e90425f76ffbc31b1629f2c64f884"
+    },
+    {
+      "path": "AppTests/RestorationPresentationTests.swift",
+      "sha256": "df8eaf24b405bd7921916167e2eb3cd31dabab60f1ce5d50e7688d23d7ae2e6b"
+    },
+    {
+      "path": "AppTests/SkyFlowStateTests.swift",
+      "sha256": "906d915c0b194984e1fb7fbd1580a7ce551412d5aaddfbaf3af7c96306ed2ea4"
+    },
+    {
+      "path": "AppTests/SkySaveArchiveTests.swift",
+      "sha256": "9fa8edab23f7683751c8cee0be8e276cb81deb13a6d1b579a3dbb850420105cc"
+    },
+    {
+      "path": "Sources/StarfallCore/StarfallChallenge.swift",
+      "sha256": "f9fbab5b41ddaa99bfcd85c64774c3aa26cf8dff29cd6b76905a36db36b954a7"
+    },
+    {
+      "path": "Starfall.xcodeproj/project.pbxproj",
+      "sha256": "5776ec3007cbd900ee238f51f98c5aa07ca8ab56f77ca0661e34a63a02701bf1"
+    },
+    {
+      "path": "Tests/StarfallCoreTests/StarfallChallengeTests.swift",
+      "sha256": "2c6c21cbe7b850c44ec66c9440ccff909376a50ca1e29fc48de8c895428818f9"
+    },
+    {
+      "path": "UITests/RestorationInteractionScenarios.swift",
+      "sha256": "e7d99f1c6cdd37e9903944cad20303e7bd2e5cdf866771d1ec67e60b3ba1850b"
+    },
+    {
+      "path": "UITests/SeedMoonInteractionTests.swift",
+      "sha256": "cace9cf723300d0efbac495179f23c620afccd55d217648d009fef08052dbfb9"
+    },
+    {
+      "path": "UITests/SilverPoolsInteractionTests.swift",
+      "sha256": "84d20444b96748b51e8ba27e6ebdbb9a83676689f9f42fb4718cf65b3b3fe7aa"
+    },
+    {
+      "path": "docs/design/README.md",
+      "sha256": "1120502752ed040ad0719af1e70be30113760a12a111606f43c530a468f688c4"
+    },
+    {
+      "path": "docs/design/VISUAL_REFERENCE.md",
+      "sha256": "5c3f7ae8d4b279d1f52653ff25542932be69c69bb3896d63ef02b432d2bb8eff"
+    },
+    {
+      "path": "docs/design/environments/README.md",
+      "sha256": "be904b54b393e9aaef78a0b29e52eeb24b0a2a9cea6230fc23ea6bab77741754"
+    },
+    {
+      "path": "docs/design/environments/restoration-review.js",
+      "sha256": "22c09bd4adc875ba6f5bfcc8637c104d6abf3e2c8f88cefa31fec5f3f41b71bb"
+    },
+    {
+      "path": "docs/design/level-design-kit/BRIEF.md",
+      "sha256": "0e51fda3ca99b7f9c697f84c530331be0ca87414844218e8cba65d4000efbbab"
+    },
+    {
+      "path": "docs/design/level-design-kit/CAMERA.md",
+      "sha256": "82a21665262b1e1c58d53241a93b1b71a0429eed25a645bbd3c7cb25b99da98b"
+    },
+    {
+      "path": "docs/design/level-design-kit/README.md",
+      "sha256": "858e643afa18836c936023d4d17f3146bae94576f7892d17e4da7f149ee57c93"
+    },
+    {
+      "path": "docs/design/level-design-kit/camera-reference.svg",
+      "sha256": "08b92f155e78772c970a70a1046902010f8a58f94485c92f6c553c909999361d"
+    },
+    {
+      "path": "docs/design/level-design-kit/ipad-landscape.svg",
+      "sha256": "1c73eb57f2343659b8527f38ed5ca190d38781e71b0b3cb5a3747dcfd20e313f"
+    },
+    {
+      "path": "docs/design/level-design-kit/ipad-portrait.svg",
+      "sha256": "de7203525ae3827004041e6f2fd807cdf9f91497724d59c9175f91ee31921e6b"
+    },
+    {
+      "path": "docs/design/level-design-kit/native-layouts.json",
+      "sha256": "2a9aa0076c5d2133453144ebe6edeb1231d1a36844323cd548bfa3648bd63769"
+    },
+    {
+      "path": "docs/design/level-design-kit/overview.png",
+      "sha256": "18d07cb1d390e8ffcb86fadee3198a800cb595b5821d7015213ac3b1004fb6f4"
+    },
+    {
+      "path": "docs/design/level-design-kit/phone.svg",
+      "sha256": "ca8f7260a2187bb7a68d6f87d8c3376de873cce8a74f71c6a219f915a34c27d8"
+    },
+    {
+      "path": "docs/design/level-design-kit/scale-reference.png",
+      "sha256": "7f63df5bd441afb4407fb48608ad708623faa0cabcbfd641cfdb1e9efa5d08ed"
+    },
+    {
+      "path": "docs/design/level-design-kit/scale-reference.svg",
+      "sha256": "cc352344970f938dc2cf50c1c852f07ce5a8b14a7fc5a82dded7313f62339658"
+    },
+    {
+      "path": "docs/design/level-design-kit/source-ipad-landscape.svg",
+      "sha256": "97a41a0deccc01a9b45edb4a77cfcdfbba8bec8087b989cdcae736fd6200bee7"
+    },
+    {
+      "path": "docs/design/level-design-kit/source-ipad-portrait.svg",
+      "sha256": "a2c7e04d61b8d0b0c4f5064d5760d524ed110f27711745e27214107f5ffdb123"
+    },
+    {
+      "path": "docs/design/level-design-kit/source-phone.svg",
+      "sha256": "8fb4ce0535dd505ef3d93e61524f141fa91d07edef212144aa845424ea554ab8"
+    },
+    {
+      "path": "docs/design/seed-moon-04/README.md",
+      "sha256": "ef927bdabd9a99ce9a3039a4c6593a5d60ee76dd625a9d955724be5bf54ff097"
+    },
+    {
+      "path": "docs/design/seed-moon-04/board.html",
+      "sha256": "7af06623c27b9b9a8ae2195064346475d4b28d7b4e237e925657b4fe9f46f93c"
+    },
+    {
+      "path": "docs/design/seed-moon-04/board.js",
+      "sha256": "7fcd18d9744cfce9cde3bbd544145f7ac42e24bf9290f4387b51f0b2134dd784"
+    },
+    {
+      "path": "docs/design/silver-pools-05/PRODUCTION_PLAN.md",
+      "sha256": "a4330235a3744b3dbc077b5bc8b5a9dfcd2067ad210385c2c7f11c338b20c667"
+    },
+    {
+      "path": "docs/design/silver-pools-05/README.md",
+      "sha256": "d3dca2c756e14b7706dbd5e9a7630453ea6976627142f7a314b86e7984e97437"
+    },
+    {
+      "path": "docs/design/silver-pools-05/board.html",
+      "sha256": "00b175feeea480da17607180e138f7943520e8f8ed7a4ef6a1453e7440da9e5e"
+    },
+    {
+      "path": "docs/design/silver-pools-05/board.js",
+      "sha256": "296b46d2d61b96e82dea4070960e0483b9f61386350a6dc9b4ff8e58720e50ab"
+    },
+    {
+      "path": "scripts/export_level_layouts.swift",
+      "sha256": "f81692a941f1b8dab2e0a9493064279d638d5b3e89fb83a1433c15718a8ecfef"
+    },
+    {
+      "path": "scripts/level-design-kit.py",
+      "sha256": "5faeb8e3335ecdfaea2083ee86950d4a8f45dd9273d6fa9869141b72783b7030"
+    },
+    {
+      "path": "scripts/native_test_plan.py",
+      "sha256": "b33865e18f7f7d2e4aafd4bf42c17d3ff1086b673d5c6e94956ad622727c5a53"
+    },
+    {
+      "path": "scripts/test_rc_platforms.py",
+      "sha256": "6f6f0b7c7c8b00ab59bc5808ac22bafa1cfc4db37713da7fecca619bd39b095f"
+    }
+  ]
+}
