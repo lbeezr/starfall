@@ -1,0 +1,417 @@
+{
+  "environment": "Debug; Xcode 27.1 (27A9275); iOS 27.0; iPhone 17e unless specified",
+  "snapshots": {
+    "initial": {
+      "base": "c40aad5a7d8b099b85cc0c788edce08db8d1c9e1",
+      "changedNativeInputs": {
+        "UITests/PacingCueUITests.swift": "73bd599af99fb51df22ad4a715c290cb08c2894581bc0375d2df0a464f18994d",
+        "UITests/NativeSkyControls.swift": "253ba9530264c1293e674474a7cbc7c997f88ad6916a87d113db26bd607fee9f",
+        "UITests/FallingSkyInteractionTests.swift": "d9b8cec49639fd6612f9fa772b681d3ca0f88cf49afd63906bd841b4339598e9",
+        "UITests/SkyDialogueInteractionTests.swift": "5f5b30c64bbba6c53177f1cf5446efd55d897f119be5925cfef78b46c8520fd6"
+      },
+      "environment": "Debug; Xcode 27.1 (27A9275); iPhone 17e / iOS 27.0",
+      "matrix": {
+        "ui": 123,
+        "hosted": 328
+      }
+    },
+    "menuAdmission": {
+      "base": "d385397a5fd8e777279272015148e7cdd54ed3a0",
+      "changedNativeInputs": {
+        "UITests/FallingSkyInteractionTests.swift": "d9b8cec49639fd6612f9fa772b681d3ca0f88cf49afd63906bd841b4339598e9",
+        "UITests/NativeSkyControls.swift": "0fa4e24ed5d89704510c5ad2fedbd5a5fbaac94a6a52a03ff3ca7c0f57d538ec",
+        "UITests/PacingCueUITests.swift": "1bf693fba7f026a14cd2730a20d3f9e6757f6d1971031818f0e6d0b81aecb078",
+        "UITests/SkyDialogueInteractionTests.swift": "5f5b30c64bbba6c53177f1cf5446efd55d897f119be5925cfef78b46c8520fd6",
+        "UITests/SkyLessonInteractionTests.swift": "20898b651512fb98fafc7b1b18c0a381e2890efea6e08e4e0dc3936a37cf327b"
+      },
+      "environment": "Debug; Xcode 27.1 (27A9275); iOS 27.0",
+      "testProducts": "test_sim_2026-10-19T16-48-24-063Z_pid95357_3d09a057.xctestproducts"
+    },
+    "final": {
+      "base": "d385397a5fd8e777279272015148e7cdd54ed3a0",
+      "changedNativeInputs": {
+        "UITests/FallingSkyInteractionTests.swift": "d9b8cec49639fd6612f9fa772b681d3ca0f88cf49afd63906bd841b4339598e9",
+        "UITests/NativeSkyControls.swift": "0fa4e24ed5d89704510c5ad2fedbd5a5fbaac94a6a52a03ff3ca7c0f57d538ec",
+        "UITests/PacingCueUITests.swift": "dc62a073ebf97c444af268c1ea48f26aa6b285543afb14cc226cadd7c4311f0d",
+        "UITests/SkyDialogueInteractionTests.swift": "5f5b30c64bbba6c53177f1cf5446efd55d897f119be5925cfef78b46c8520fd6",
+        "UITests/SkyLessonInteractionTests.swift": "20898b651512fb98fafc7b1b18c0a381e2890efea6e08e4e0dc3936a37cf327b"
+      }
+    }
+  },
+  "baseline": {
+    "source": {
+      "base": "045ec94357635301be37bb6b4a96eda221c5a11a",
+      "testSourceSHA256": "43e830cccddc6a6b536c39ce11968f9406f6573893879624188d2e5c5122d08f",
+      "products": "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-5baffeb4084c/test-products/test_sim_2026-10-19T15-33-55-719Z_pid95357_1fb83a19.xctestproducts",
+      "simulator": "E3916976-4970-4FF4-855E-54A0DD50850D",
+      "stage": "dev"
+    },
+    "passed": 108,
+    "failed": 12,
+    "skipped": 0,
+    "total": 120,
+    "seconds": 4112.444,
+    "failures": [
+      {
+        "test": "FallingSkyInteractionTests/testCompactHUDMenuSuspendsWithoutChangingPauseChoice",
+        "result": "failed",
+        "seconds": 8.17
+      },
+      {
+        "test": "FallingSkyInteractionTests/testPausedGuideReportsGrowthDarkOutcomesAndRestore",
+        "result": "failed",
+        "seconds": 32.516
+      },
+      {
+        "test": "PacingCueUITests/testActiveForecastAndPhaseCueKeepSeparateSpace",
+        "result": "failed",
+        "seconds": 31.661
+      },
+      {
+        "test": "PacingCueUITests/testLargestClearUsesVisibleNativeCells",
+        "result": "failed",
+        "seconds": 37.972
+      },
+      {
+        "test": "PacingCueUITests/testLargestTextKeepsCueVisibleWithControls",
+        "result": "failed",
+        "seconds": 67.671
+      },
+      {
+        "test": "PacingCueUITests/testNormalMotionWarningFasterBreathing",
+        "result": "failed",
+        "seconds": 87.3
+      },
+      {
+        "test": "PacingCueUITests/testQuietForecastApproachesBeforeTheShower",
+        "result": "failed",
+        "seconds": 21.647
+      },
+      {
+        "test": "PacingCueUITests/testSystemReduceMotionForecastApproachesBeforeTheShower",
+        "result": "failed",
+        "seconds": 51.854
+      },
+      {
+        "test": "PacingCueUITests/testSystemReduceMotionKeepsLabels",
+        "result": "failed",
+        "seconds": 89.253
+      },
+      {
+        "test": "ShowerForecastInteractionTests/testCadenceForecastMenuBackgroundAndSafeAreaFallback",
+        "result": "failed",
+        "seconds": 22.837
+      },
+      {
+        "test": "SkyDialogueInteractionTests/testLargestTextChatReflowsBelowBoardAndPreviewRemainsUsable",
+        "result": "failed",
+        "seconds": 14.101
+      },
+      {
+        "test": "SkyLessonInteractionTests/testEveryExampleUsesExplicitMovesAndReturnsToUnchangedRound",
+        "result": "failed",
+        "seconds": 18.534
+      }
+    ],
+    "note": "Prepared UI source hash matches 6c47961; this pre-Ribbon 120-case probe is failure inventory, not current-source acceptance."
+  },
+  "focusedRuns": [
+    {
+      "snapshot": "initial",
+      "log": "/private/tmp/starfall-ci-forecast-c40aad5/ui.log",
+      "result": "/private/tmp/starfall-ci-forecast-c40aad5/ui.xcresult",
+      "cases": [
+        {
+          "test": "FallingSkyInteractionTests/testCompactHUDMenuSuspendsWithoutChangingPauseChoice",
+          "result": "passed",
+          "seconds": 38.666
+        },
+        {
+          "test": "PacingCueUITests/testActiveForecastAndPhaseCueKeepSeparateSpace",
+          "result": "passed",
+          "seconds": 43.494
+        },
+        {
+          "test": "PacingCueUITests/testLargestClearUsesVisibleNativeCells",
+          "result": "passed",
+          "seconds": 69.072
+        },
+        {
+          "test": "PacingCueUITests/testLargestTextKeepsCueVisibleWithControls",
+          "result": "passed",
+          "seconds": 165.531
+        },
+        {
+          "test": "PacingCueUITests/testNormalForecastApproachesBeforeTheShower",
+          "result": "passed",
+          "seconds": 21.529
+        },
+        {
+          "test": "PacingCueUITests/testNormalMotionWarningFasterBreathing",
+          "result": "passed",
+          "seconds": 126.764
+        },
+        {
+          "test": "PacingCueUITests/testQuietForecastApproachesBeforeTheShower",
+          "result": "failed",
+          "seconds": 23.861
+        },
+        {
+          "test": "PacingCueUITests/testSystemReduceMotionForecastApproachesBeforeTheShower",
+          "result": "failed",
+          "seconds": 53.45
+        },
+        {
+          "test": "PacingCueUITests/testSystemReduceMotionKeepsLabels",
+          "result": "passed",
+          "seconds": 133.366
+        },
+        {
+          "test": "ShowerForecastInteractionTests/testCadenceForecastMenuBackgroundAndSafeAreaFallback",
+          "result": "passed",
+          "seconds": 23.585
+        },
+        {
+          "test": "SkyDialogueInteractionTests/testActiveMessageCanBeReopenedWithoutStoppingAutomaticShowers",
+          "result": "passed",
+          "seconds": 25.654
+        },
+        {
+          "test": "SkyDialogueInteractionTests/testNormalMotionForecastCompletesSeveralAutomaticCycles",
+          "result": "passed",
+          "seconds": 58.541
+        }
+      ]
+    },
+    {
+      "snapshot": "initial",
+      "log": "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-5baffeb4084c/logs/test_sim_2026-10-19T16-27-34-918Z_pid95357_9429467f.log",
+      "result": "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-5baffeb4084c/result-bundles/test_sim_2026-10-19T16-27-34-918Z_pid95357_f37b6b3d.xcresult",
+      "cases": [
+        {
+          "test": "SkyDialogueInteractionTests/testBundledScriptSwitchesAllSpeakersAndKeepsPausedRound",
+          "result": "passed",
+          "seconds": 43.786
+        },
+        {
+          "test": "SkyDialogueInteractionTests/testLargestTextChatReflowsBelowBoardAndPreviewRemainsUsable",
+          "result": "passed",
+          "seconds": 45.226
+        }
+      ]
+    },
+    {
+      "snapshot": "menuAdmission",
+      "log": "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-5baffeb4084c/logs/test_sim_2026-10-19T16-48-24-063Z_pid95357_91ae9787.log",
+      "result": "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-5baffeb4084c/result-bundles/test_sim_2026-10-19T16-48-24-063Z_pid95357_5467d416.xcresult",
+      "cases": [
+        {
+          "test": "FallingSkyInteractionTests/testCompactHUDMenuSuspendsWithoutChangingPauseChoice",
+          "result": "passed",
+          "seconds": 30.587
+        },
+        {
+          "test": "PacingCueUITests/testNormalForecastApproachesBeforeTheShower",
+          "result": "passed",
+          "seconds": 24.8
+        },
+        {
+          "test": "PacingCueUITests/testQuietForecastApproachesBeforeTheShower",
+          "result": "failed",
+          "seconds": 28.591
+        },
+        {
+          "test": "PacingCueUITests/testSystemReduceMotionForecastApproachesBeforeTheShower",
+          "result": "passed",
+          "seconds": 48.037
+        },
+        {
+          "test": "SkyLessonInteractionTests/testEveryExampleUsesExplicitMovesAndReturnsToUnchangedRound",
+          "result": "passed",
+          "seconds": 46.102
+        },
+        {
+          "test": "SkyLessonInteractionTests/testLargestTextQuietExampleSurvivesBackgroundAndDismissal",
+          "result": "passed",
+          "seconds": 32.598
+        },
+        {
+          "test": "SkyLessonInteractionTests/testSystemReduceMotionExamplesKeepTheSameOutcomes",
+          "result": "passed",
+          "seconds": 77.959
+        }
+      ]
+    },
+    {
+      "snapshot": "final",
+      "log": "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-5baffeb4084c/logs/test_sim_2026-10-19T16-52-31-717Z_pid95357_2b6e1720.log",
+      "result": "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-5baffeb4084c/result-bundles/test_sim_2026-10-19T16-52-31-717Z_pid95357_beae3364.xcresult",
+      "cases": [
+        {
+          "test": "PacingCueUITests/testNormalForecastApproachesBeforeTheShower",
+          "result": "passed",
+          "seconds": 32.699
+        },
+        {
+          "test": "PacingCueUITests/testQuietForecastApproachesBeforeTheShower",
+          "result": "passed",
+          "seconds": 26.444
+        },
+        {
+          "test": "PacingCueUITests/testSystemReduceMotionForecastApproachesBeforeTheShower",
+          "result": "passed",
+          "seconds": 45.979
+        }
+      ]
+    }
+  ],
+  "finalDistinctCases": [
+    {
+      "test": "FallingSkyInteractionTests/testCompactHUDMenuSuspendsWithoutChangingPauseChoice",
+      "result": "passed",
+      "seconds": 30.587,
+      "snapshot": "menuAdmission",
+      "resultBundle": "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-5baffeb4084c/result-bundles/test_sim_2026-10-19T16-48-24-063Z_pid95357_5467d416.xcresult"
+    },
+    {
+      "test": "PacingCueUITests/testActiveForecastAndPhaseCueKeepSeparateSpace",
+      "result": "passed",
+      "seconds": 43.494,
+      "snapshot": "initial",
+      "resultBundle": "/private/tmp/starfall-ci-forecast-c40aad5/ui.xcresult"
+    },
+    {
+      "test": "PacingCueUITests/testLargestClearUsesVisibleNativeCells",
+      "result": "passed",
+      "seconds": 69.072,
+      "snapshot": "initial",
+      "resultBundle": "/private/tmp/starfall-ci-forecast-c40aad5/ui.xcresult"
+    },
+    {
+      "test": "PacingCueUITests/testLargestTextKeepsCueVisibleWithControls",
+      "result": "passed",
+      "seconds": 165.531,
+      "snapshot": "initial",
+      "resultBundle": "/private/tmp/starfall-ci-forecast-c40aad5/ui.xcresult"
+    },
+    {
+      "test": "PacingCueUITests/testNormalForecastApproachesBeforeTheShower",
+      "result": "passed",
+      "seconds": 32.699,
+      "snapshot": "final",
+      "resultBundle": "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-5baffeb4084c/result-bundles/test_sim_2026-10-19T16-52-31-717Z_pid95357_beae3364.xcresult"
+    },
+    {
+      "test": "PacingCueUITests/testNormalMotionWarningFasterBreathing",
+      "result": "passed",
+      "seconds": 126.764,
+      "snapshot": "initial",
+      "resultBundle": "/private/tmp/starfall-ci-forecast-c40aad5/ui.xcresult"
+    },
+    {
+      "test": "PacingCueUITests/testQuietForecastApproachesBeforeTheShower",
+      "result": "passed",
+      "seconds": 26.444,
+      "snapshot": "final",
+      "resultBundle": "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-5baffeb4084c/result-bundles/test_sim_2026-10-19T16-52-31-717Z_pid95357_beae3364.xcresult"
+    },
+    {
+      "test": "PacingCueUITests/testSystemReduceMotionForecastApproachesBeforeTheShower",
+      "result": "passed",
+      "seconds": 45.979,
+      "snapshot": "final",
+      "resultBundle": "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-5baffeb4084c/result-bundles/test_sim_2026-10-19T16-52-31-717Z_pid95357_beae3364.xcresult"
+    },
+    {
+      "test": "PacingCueUITests/testSystemReduceMotionKeepsLabels",
+      "result": "passed",
+      "seconds": 133.366,
+      "snapshot": "initial",
+      "resultBundle": "/private/tmp/starfall-ci-forecast-c40aad5/ui.xcresult"
+    },
+    {
+      "test": "ShowerForecastInteractionTests/testCadenceForecastMenuBackgroundAndSafeAreaFallback",
+      "result": "passed",
+      "seconds": 23.585,
+      "snapshot": "initial",
+      "resultBundle": "/private/tmp/starfall-ci-forecast-c40aad5/ui.xcresult"
+    },
+    {
+      "test": "SkyDialogueInteractionTests/testActiveMessageCanBeReopenedWithoutStoppingAutomaticShowers",
+      "result": "passed",
+      "seconds": 25.654,
+      "snapshot": "initial",
+      "resultBundle": "/private/tmp/starfall-ci-forecast-c40aad5/ui.xcresult"
+    },
+    {
+      "test": "SkyDialogueInteractionTests/testNormalMotionForecastCompletesSeveralAutomaticCycles",
+      "result": "passed",
+      "seconds": 58.541,
+      "snapshot": "initial",
+      "resultBundle": "/private/tmp/starfall-ci-forecast-c40aad5/ui.xcresult"
+    },
+    {
+      "test": "SkyDialogueInteractionTests/testBundledScriptSwitchesAllSpeakersAndKeepsPausedRound",
+      "result": "passed",
+      "seconds": 43.786,
+      "snapshot": "initial",
+      "resultBundle": "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-5baffeb4084c/result-bundles/test_sim_2026-10-19T16-27-34-918Z_pid95357_f37b6b3d.xcresult"
+    },
+    {
+      "test": "SkyDialogueInteractionTests/testLargestTextChatReflowsBelowBoardAndPreviewRemainsUsable",
+      "result": "passed",
+      "seconds": 45.226,
+      "snapshot": "initial",
+      "resultBundle": "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-5baffeb4084c/result-bundles/test_sim_2026-10-19T16-27-34-918Z_pid95357_f37b6b3d.xcresult"
+    },
+    {
+      "test": "SkyLessonInteractionTests/testEveryExampleUsesExplicitMovesAndReturnsToUnchangedRound",
+      "result": "passed",
+      "seconds": 46.102,
+      "snapshot": "menuAdmission",
+      "resultBundle": "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-5baffeb4084c/result-bundles/test_sim_2026-10-19T16-48-24-063Z_pid95357_5467d416.xcresult"
+    },
+    {
+      "test": "SkyLessonInteractionTests/testLargestTextQuietExampleSurvivesBackgroundAndDismissal",
+      "result": "passed",
+      "seconds": 32.598,
+      "snapshot": "menuAdmission",
+      "resultBundle": "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-5baffeb4084c/result-bundles/test_sim_2026-10-19T16-48-24-063Z_pid95357_5467d416.xcresult"
+    },
+    {
+      "test": "SkyLessonInteractionTests/testSystemReduceMotionExamplesKeepTheSameOutcomes",
+      "result": "passed",
+      "seconds": 77.959,
+      "snapshot": "menuAdmission",
+      "resultBundle": "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-5baffeb4084c/result-bundles/test_sim_2026-10-19T16-48-24-063Z_pid95357_5467d416.xcresult"
+    }
+  ],
+  "compactSupplement": {
+    "device": "iPhone SE (3rd generation)",
+    "forecast": {
+      "result": "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-5baffeb4084c/result-bundles/test_sim_2026-10-19T16-49-17-813Z_pid95357_fcac98a2.xcresult",
+      "snapshot": "menuAdmission",
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "note": "All three motion modes; final adds an explicit menu-admission wait verified on the 17e."
+    },
+    "largestTextLesson": {
+      "result": "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-5baffeb4084c/result-bundles/test_sim_2026-10-19T16-45-29-081Z_pid95357_255d4956.xcresult",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 37.851,
+      "testSourceSHA256": "20898b651512fb98fafc7b1b18c0a381e2890efea6e08e4e0dc3936a37cf327b",
+      "note": "Final lesson input; other cases in this mixed probe failed at the then-obsolete direct pause cleanup and are not reported as passing."
+    }
+  },
+  "limits": [
+    "17 distinct affected UI methods pass across bounded source-identified runs; no full current UI or remote pass claimed.",
+    "The initial 12-case probe passed 10 and failed two short forecast observations. The seven-case probe passed six and failed quiet menu dismissal before the explicit menu-admission wait.",
+    "The seven-case MCP call reached its 300-second transport limit; Xcode completed normally with six passes/one failure in its result bundle.",
+    "Full hosted: 328/328, core: 178/178, separately recorded. No app, rule, save, resource or build-setting changes.",
+    "Inspected compact lesson before/complete, tall and compact forecast, and largest-text dialogue images. Long live dialogue scrolls; a clipped accessibility frame does not prove all text fits simultaneously. Debug studio controls still wrap at maximum text; see ENGINEERING.",
+    "No actual VoiceOver or physical-device acceptance in this development batch."
+  ]
+}

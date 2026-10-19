@@ -168,11 +168,7 @@ final class FallingSkyInteractionTests: XCTestCase {
         waitForShowers(1, in: app)
         let cue = app.descendants(matching: .any)["experiment.arrivalCue"].firstMatch
         XCTAssertTrue(cue.exists)
-        // Read the short-lived cue directly; formatting a failed element
-        // predicate captures a hierarchy and can miss its 1.25-second window.
-        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
-            cue.label == "Shower approaching"
-        }, object: nil).wait(timeout: 8), cue.label)
+        app.waitForApproachingShower(timeout: 8)
         capture(app, "compact-hud-active-arrival-cue")
         openMenu(app)
         let pause = app.buttons["experiment.pause"]
@@ -758,8 +754,10 @@ final class ShowerForecastInteractionTests: XCTestCase {
         app.launch()
         XCTAssertTrue(app.buttons["experiment.pause"].waitForExistence(timeout: 10))
         XCTAssertTrue(cue.waitForExistence(timeout: 5))
-        XCTAssertEqual(cue.frame.midY, app.buttons["experiment.settings"].frame.midY, accuracy: 1,
-                       "Accessibility text retains the safe-area header forecast")
+        XCTAssertTrue(app.otherElements["sky.header"].frame.contains(cue.frame),
+                      "Accessibility text retains the safe-area header forecast")
+        XCTAssertGreaterThanOrEqual(cue.frame.minY, app.buttons["experiment.settings"].frame.maxY,
+                                    "The accessible forecast has its own row below the menu")
     }
 }
 
