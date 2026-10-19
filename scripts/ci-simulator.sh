@@ -182,9 +182,10 @@ Path('artifacts/app-icon-result.json').write_text(json.dumps({
 print('PASS: built app has AppIcon metadata and nonempty compiled asset catalog.')
 PY
 
-# Keep the readiness barrier before status-bar setup, installation and launches.
+# Keep the readiness barrier before installation and launches. Do not depend on
+# cosmetic status-bar overrides: simctl can hang there after bootstatus succeeds.
+# Captures retain the simulator's actual clock/battery; app validation stays strict.
 timed_simctl boot-ready 180 xcrun simctl bootstatus "$SIMULATOR_ID" -b
-timed_simctl status-bar 60 xcrun simctl status_bar "$SIMULATOR_ID" override --time '9:41' --batteryState charged --batteryLevel 100
 test -d "$APP"
 timed_simctl install 300 xcrun simctl install "$SIMULATOR_ID" "$APP"
 capture_state() {

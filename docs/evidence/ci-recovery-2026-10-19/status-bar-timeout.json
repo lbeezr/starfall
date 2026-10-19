@@ -1,0 +1,69 @@
+{
+  "run": "https://github.com/lbeezr/starfall/actions/runs/39279682027",
+  "attempt": 1,
+  "job": 118152932449,
+  "source": "6c479615cacd46dc396fb009a082ca45d8b63ad7",
+  "provenance": [
+    "source_commit=6c479615cacd46dc396fb009a082ca45d8b63ad7",
+    "workflow_run=https://github.com/lbeezr/starfall/actions/runs/39279682027",
+    "runner_arch=arm64",
+    "developer_dir=/Applications/Xcode_26.6.app/Contents/Developer",
+    "Xcode 26.6",
+    "Build version 17F113",
+    "Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101)",
+    "Target: arm64-apple-macosx26.0",
+    "initial_arguments=--demo (seed 42; save writes suppressed)",
+    "settled_arguments=--demo --demo-clear (real first legal clear before render; no animation)",
+    "simulator_udid=726D52AF-426A-408A-974D-CA8B9BE8A479",
+    "simulator_runtime=com.apple.CoreSimulator.SimRuntime.iOS-26-5",
+    "simulator_name=iPhone Air"
+  ],
+  "stages": [
+    {
+      "stage": "inventory",
+      "startedUTC": "2026-10-19T15:46:43.090327+00:00",
+      "elapsedSeconds": 4.63,
+      "limitSeconds": 30.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "boot",
+      "startedUTC": "2026-10-19T15:46:47.969579+00:00",
+      "elapsedSeconds": 3.219,
+      "limitSeconds": 60.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "boot-ready",
+      "startedUTC": "2026-10-19T15:53:02.026296+00:00",
+      "elapsedSeconds": 96.898,
+      "limitSeconds": 180.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "status-bar",
+      "startedUTC": "2026-10-19T15:54:42.493601+00:00",
+      "elapsedSeconds": 63.698,
+      "limitSeconds": 60.0,
+      "exitCode": 124,
+      "error": "Command '['xcrun', 'simctl', 'status_bar', '726D52AF-426A-408A-974D-CA8B9BE8A479', 'override', '--time', '9:41', '--batteryState', 'charged', '--batteryLevel', '100']' timed out after 60.0 seconds"
+    },
+    {
+      "stage": "shutdown",
+      "startedUTC": "2026-10-19T15:56:00.673407+00:00",
+      "elapsedSeconds": 9.665,
+      "limitSeconds": 30.0,
+      "exitCode": 0,
+      "error": null
+    }
+  ],
+  "beforeFailure": {
+    "corePassed": 177,
+    "debugBuild": "passed",
+    "releaseBuild": "passed"
+  },
+  "nativeTests": "not reached"
+}
