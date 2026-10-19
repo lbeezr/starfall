@@ -740,6 +740,50 @@
           "priority": "help"
         }
       ]
+    },
+    {
+      "id": "guide.silver-pools",
+      "lines": [
+        {
+          "id": "guide.silver-pools.1",
+          "speaker": "sunny",
+          "text": "Restore Silver Pools with 18 starlight. Clear matching stars to fill its dry terraces and reconnect the silver cascade.",
+          "priority": "help"
+        }
+      ]
+    },
+    {
+      "id": "guide.silver-won",
+      "lines": [
+        {
+          "id": "guide.silver-won.1",
+          "speaker": "sunny",
+          "text": "Silver Pools complete! You collected {score} starlight. One silver cascade flows through every pool!",
+          "priority": "outcome"
+        }
+      ]
+    },
+    {
+      "id": "silver-pools.entry",
+      "lines": [
+        {
+          "id": "silver-pools.entry.1",
+          "speaker": "sunny",
+          "text": "Murk took the light from Silver Pools. Collect 18 starlight to reconnect its pools before an arriving star runs out of room.",
+          "priority": "help"
+        }
+      ]
+    },
+    {
+      "id": "silver-pools.replay",
+      "lines": [
+        {
+          "id": "silver-pools.replay.1",
+          "speaker": "sunny",
+          "text": "Try the same Silver Pools opening and reconnect its pools with 18 starlight. Your saved round stays until you tap Begin.",
+          "priority": "help"
+        }
+      ]
     }
   ],
   "copy": {
@@ -896,7 +940,7 @@
     "lesson.retry": "Try again",
     "lesson.score": "{score} starlight in this example",
     "lesson.gain": "+{gain} starlight",
-    "lesson.noClear": "Swapped \u00b7 no stars cleared",
+    "lesson.noClear": "Swapped · no stars cleared",
     "lesson.exampleNote": "Outlined stars show the next move. Use the button to see it, then try the described gesture in your sky.",
     "lesson.failed": "This example is no longer ready for that move. Try again to reset it.",
     "help.tapTitle": "Tap a matching group",
@@ -1040,6 +1084,18 @@
     "seed.restoration": "Seed Moon, {percent}% restored",
     "result.seedWon": "Seed Moon complete! The sleeping seed has grown into a glowing shelter.",
     "help.seedTitle": "Seed Moon · Wake the seed",
-    "help.seed": "Wake Seed Moon with 18 starlight. Each clear helps the sleeping seed grow roots, leaves and a glowing shelter inside the split moon. Finish before an arriving star has nowhere to land. Use tap matches or five-star traces. Showers arrive at a steady pace. This challenge has no swaps, shape recipes, Dusk, Opal Orbs or storms."
+    "help.seed": "Wake Seed Moon with 18 starlight. Each clear helps the sleeping seed grow roots, leaves and a glowing shelter inside the split moon. Finish before an arriving star has nowhere to land. Use tap matches or five-star traces. Showers arrive at a steady pace. This challenge has no swaps, shape recipes, Dusk, Opal Orbs or storms.",
+    "action.silverPools": "Try Silver Pools",
+    "action.replaySilverPools": "Replay Silver Pools",
+    "menu.silverPools": "Silver Pools · 18 starlight",
+    "menu.silverPoolsHint": "Restore Silver Pools with 18 starlight. Preview the challenge before Begin.",
+    "flow.silverPools": "SILVER POOLS",
+    "flow.silverComplete": "SILVER POOLS COMPLETE",
+    "flow.silverWon": "Silver Pools restored!",
+    "silver.title": "Silver Pools",
+    "silver.restoration": "Silver Pools, {percent}% restored",
+    "result.silverWon": "Silver Pools complete! One silver cascade now flows through every pool.",
+    "help.silverTitle": "Silver Pools · Restore flow",
+    "help.silver": "Restore Silver Pools with 18 starlight. Each clear fills the dry terraces, raises lily steps and reconnects the pools. Finish before an arriving star has nowhere to land. Use tap matches or five-star traces. Showers arrive at a steady pace. This challenge has no swaps, shape recipes, Dusk, Opal Orbs or storms."
   }
 }

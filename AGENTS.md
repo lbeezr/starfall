@@ -15,6 +15,8 @@ Before editing, inspect `git status --short`, the relevant folder README and loc
 | Scripts, CI, build or delivery tooling | [Tooling instructions](scripts/AGENTS.md), including `.github/workflows` |
 | Plans, designs, reports, README changes | [Documentation instructions](docs/AGENTS.md) |
 
+For level artwork and restoration compositions, use the [level-design kit](docs/design/level-design-kit/README.md) and [level-design skill](.agents/skills/starfall-level-design/SKILL.md), including the camera, native layout/bleed templates and actual-star scale references.
+
 For recurring work, load only the relevant repo skill: [verify](.agents/skills/starfall-verify/SKILL.md), [CI triage](.agents/skills/starfall-ci-triage/SKILL.md), or [bounded maintenance](.agents/skills/starfall-maintenance/SKILL.md). Skills reuse the contracts below; they add no approval gates or delivery authorization.
 
 ## Ownership and durable fixes

@@ -1,0 +1,500 @@
+{
+  "schemaVersion": 1,
+  "topic": "Silver Pools native visual acceptance",
+  "updated": "2026-10-19",
+  "sourceCommit": "aabd67346bf56ae27b9940a7d6d916559d16c218",
+  "runtime": "dev.98f8ba82e6",
+  "sourceBoundary": "Later84ae918 changes only design kit/tooling/docs; native inputs are identical. Remaining dirty paths are docs/reviewer/evidence, not native build inputs.",
+  "environment": "iOS27.0 (24A434), iPhone17e / iPad Air11-inch(M3), default text/normal motion unless caption says otherwise.",
+  "processing": "Nine retained images are byte-identical copies of seven native PNG attachments and two small tool-exported JPEGs; no resizing, cropping, reorientation or re-encoding for retention. Landscape EXIF orientation preserved.",
+  "coverage": {
+    "families": 3,
+    "states": [
+      0,
+      25,
+      50,
+      75,
+      100
+    ],
+    "currentStateCount": 15,
+    "allStateStillsInspected": true,
+    "reviewedAttachments": [
+      {
+        "name": "silver-largest-text-reduce-motion-restored_0_9AC2638D-10C8-420B-839B-64241A4C19FD.png",
+        "sha256": "f22474fbde56c87137de5a1a57ef80ef882d1968e2eb1f514ac0e3f024d3de2d",
+        "temporaryExport": "/private/tmp/silver-phone-main/115C69E5-B157-4C39-ACE3-8191D1FD8063.png",
+        "inspected": true
+      },
+      {
+        "name": "silver-largest-text-reduce-motion-before-clear_0_BD22BF80-C5C5-43C0-8614-2AEB7C94A330.png",
+        "sha256": "71faf0c9acdf9d06b928e2b4f631a86d9d4da7f52df9c76ce42d67f66dcee6b7",
+        "temporaryExport": "/private/tmp/silver-phone-main/EB32CFB7-F663-4DB1-B3A9-9D26F969DF5C.png",
+        "inspected": true
+      },
+      {
+        "name": "silver-phone-scene-100-score-18-normal-motion_0_54C968E6-0B36-4148-AB3E-21BC6AE5E8EE.png",
+        "sha256": "39ed9c43f45ebeecf2954d802d63c12cdfbfa71fb70442cc92f6fbee34e2b988",
+        "temporaryExport": "/private/tmp/silver-phone-main/1F34CE7D-D964-4B07-B928-B476FF327757.png",
+        "inspected": true
+      },
+      {
+        "name": "silver-phone-scene-75-score-14-normal-motion_0_B9867279-639D-4521-B54C-710991258952.png",
+        "sha256": "9982547c272b000078d9d60507c2557d24dc6ee2505edad790bf0a669ae71a24",
+        "temporaryExport": "/private/tmp/silver-phone-main/E9449195-A88A-491A-9AE9-2C874788A6F1.png",
+        "inspected": true
+      },
+      {
+        "name": "silver-phone-scene-50-score-9-normal-motion_0_99E20466-742B-41C1-9DEE-0D76A1D1D072.png",
+        "sha256": "df9ddc19793019b0feed001ceec8fee9617555edd221f0863c36efc89571cce8",
+        "temporaryExport": "/private/tmp/silver-phone-main/4D5E1F3A-4421-4D5B-B35D-70527315046B.png",
+        "inspected": true
+      },
+      {
+        "name": "silver-phone-scene-25-score-5-normal-motion_0_76AEA330-46BB-46A5-98D6-48A5C22962B8.png",
+        "sha256": "0cc837e556ec88696306c1dbb2b2c9a4dd293bd157f301de651a6b3637355a46",
+        "temporaryExport": "/private/tmp/silver-phone-main/D7DA3287-7416-4EB4-A449-35E35DE54354.png",
+        "inspected": true
+      },
+      {
+        "name": "silver-phone-scene-0-score-0-normal-motion_0_734156EC-3082-4071-A793-535180E6FA5F.png",
+        "sha256": "4549a79ea58ff3b3f43c1c7d2a99303c13ca2184d6d8136a24d90c781d4ece24",
+        "temporaryExport": "/private/tmp/silver-phone-main/83102380-2F92-4210-9A92-DECC2ADA982A.png",
+        "inspected": true
+      },
+      {
+        "name": "silver-replay-reset-to-unrestored_0_75764CBA-5103-4425-9961-FC2AAD558306.png",
+        "sha256": "39d94c1364c669aa6a91d579dcaff6803fe37a4c9e58ce9ca17c5fff5e09be9b",
+        "temporaryExport": "/private/tmp/silver-phone-main/F9E6ABF1-22AA-45B5-B601-8EA6B82C22B6.png",
+        "inspected": true
+      },
+      {
+        "name": "silver-restored-after-relaunch_0_37E6319E-BCFA-4957-84CB-02E87C9BC146.png",
+        "sha256": "915608992f03ab0d84f39a627be3d1a7f8198a06850d729c5656c35e09cc0f24",
+        "temporaryExport": "/private/tmp/silver-phone-main/AFED5D4E-4CD7-46F5-AEB1-E476668A5F35.png",
+        "inspected": true
+      },
+      {
+        "name": "silver-restored-after-native-winning-clear-normal-motion_0_8D82BE63-DC7A-43AB-BD4A-B76C6D193F57.png",
+        "sha256": "59df31daa3732f8df7ca84b73cc64a3af460124c575bd1a830ce141e1077b74c",
+        "temporaryExport": "/private/tmp/silver-phone-main/5D9BB7B7-B715-44BF-B8DA-C3184E98F93D.png",
+        "inspected": true
+      },
+      {
+        "name": "silver-before-winning-clear-normal-motion_0_758D35D6-0515-4E73-B0BF-453207850B1C.png",
+        "sha256": "37f2622cc3b63e54b7af17455313358852a0545588c7f487206dcdf1313e1bda",
+        "temporaryExport": "/private/tmp/silver-phone-main/B04A676D-109E-49B0-84EE-87D01CCB029F.png",
+        "inspected": true
+      },
+      {
+        "name": "silver-begin-replaces-retained-seed-with-unrestored-location_0_44B450E2-C2EE-4CA1-BF17-B91D9A4C7AF6.png",
+        "sha256": "9273073d4688407e49b50173a8f86fa5322a4c4e6b93000b043a48a28e31e60d",
+        "temporaryExport": "/private/tmp/silver-preview/7F73151F-EBE1-4D8F-98A6-3423AD95CC60.png",
+        "inspected": true
+      },
+      {
+        "name": "silver-entry-over-retained-half-restored-seed_0_966665A2-E37B-411E-8AB4-AE9839344664.png",
+        "sha256": "53e75e4d1e9670bb29dfc703598154b4dfec140d8100c5e14c69abdef2429a33",
+        "temporaryExport": "/private/tmp/silver-preview/535F5F4F-0DAE-4F7D-B674-2AE67D173B84.png",
+        "inspected": true
+      },
+      {
+        "name": "silver-begin-replaces-retained-kite-with-unrestored-location_0_E2377976-3332-4825-BC7C-FBD2CBA7C161.png",
+        "sha256": "36c0b4a64a701668d1aa1d7ca8d5444d835fb2e6d27fc39c7a5c9d8308449e1c",
+        "temporaryExport": "/private/tmp/silver-preview/D3842DDE-6AEA-4ACC-9EE5-5E80917E051A.png",
+        "inspected": true
+      },
+      {
+        "name": "silver-entry-over-retained-half-restored-kite_0_2458A4C1-7186-4395-89CF-4884B473098D.png",
+        "sha256": "53e75e4d1e9670bb29dfc703598154b4dfec140d8100c5e14c69abdef2429a33",
+        "temporaryExport": "/private/tmp/silver-preview/7FE3D997-98F2-4866-BBFA-8E7265967E13.png",
+        "inspected": true
+      },
+      {
+        "name": "silver-begin-replaces-retained-ribbon-with-unrestored-location_0_6428F876-E228-44F6-8661-0F15504D9A8B.png",
+        "sha256": "eb42cf832dac7269625347c3ac1679f3978213e478839f55af3e48829929cf89",
+        "temporaryExport": "/private/tmp/silver-preview/B332616F-F444-41BA-9D71-2E567E089839.png",
+        "inspected": true
+      },
+      {
+        "name": "silver-entry-over-retained-half-restored-ribbon_0_60B503B8-476A-40E5-9067-6ECB34C7B165.png",
+        "sha256": "53e75e4d1e9670bb29dfc703598154b4dfec140d8100c5e14c69abdef2429a33",
+        "temporaryExport": "/private/tmp/silver-preview/9FE8C183-A6E0-4CDF-AD92-25752AF60A26.png",
+        "inspected": true
+      },
+      {
+        "name": "silver-begin-replaces-retained-lantern-with-unrestored-location_0_14190A66-9F3C-4425-9215-A4B08A3C7EBA.png",
+        "sha256": "4159eddcb050caf64534586797a9efd35a6a549c74fc6d40edfb8d8847fa9649",
+        "temporaryExport": "/private/tmp/silver-preview/255A087B-3501-484F-A543-CF5F895D88EC.png",
+        "inspected": true
+      },
+      {
+        "name": "silver-entry-over-retained-half-restored-lantern_0_7B4CD86D-E5BF-4C8B-850C-0CD1AFF67C8C.png",
+        "sha256": "53e75e4d1e9670bb29dfc703598154b4dfec140d8100c5e14c69abdef2429a33",
+        "temporaryExport": "/private/tmp/silver-preview/CC336B61-C467-4064-907A-DAFA034148C1.png",
+        "inspected": true
+      },
+      {
+        "name": "silver-dense-overflow-replay-reset-to-unrestored_0_ACDFF500-8ADD-41EE-8E96-4169560DAAD5.png",
+        "sha256": "55cc3d7b76c7ead654d2598639cf0157774d6f420829165e4ea896559485f524",
+        "temporaryExport": "/private/tmp/silver-dense-final/BAC41C75-624A-43E7-B08D-470DD1566E82.png",
+        "inspected": true
+      },
+      {
+        "name": "silver-dense-native-overflow-zero-score-normal-motion_0_017BD30F-D273-45E0-94F6-C7D1C4511977.png",
+        "sha256": "e5ea9a8e5fa011958ac2d9f5e0874b7119ce687adce4447edc2e902cefa44e9c",
+        "temporaryExport": "/private/tmp/silver-dense-final/C8CCF351-0F9E-4B15-8D8F-DBEA1005917F.png",
+        "inspected": true
+      },
+      {
+        "name": "silver-dense-before-native-next-shower-normal-motion_0_8631FAC4-50FB-4AE5-93AF-127CEE78744A.png",
+        "sha256": "d13eafa70005d4b4cafe80a725f337f5cfe65264117ce0d5ef782acf333e91bc",
+        "temporaryExport": "/private/tmp/silver-dense-final/A834426A-701D-48E8-9BF6-2CD481C3C7AC.png",
+        "inspected": true
+      },
+      {
+        "name": "silver-dense-retained-after-settings-background_0_7D86C97C-1039-4FD1-9FF7-CFAD50325453.png",
+        "sha256": "fd7eb0c81d69f48cb8cad1d575f453a35b8886b3f022f564a284794ebd326acd",
+        "temporaryExport": "/private/tmp/silver-dense-final/2130B5AA-7F75-4BD7-B5EF-0BC77288C6DB.png",
+        "inspected": true
+      },
+      {
+        "name": "silver-dense-after-rapid-clear_0_CE6C418F-C8F5-4193-AA65-20B241F17BF9.png",
+        "sha256": "fd7eb0c81d69f48cb8cad1d575f453a35b8886b3f022f564a284794ebd326acd",
+        "temporaryExport": "/private/tmp/silver-dense-final/B0397C49-78F3-4D6C-BB65-5AAC6895AC67.png",
+        "inspected": true
+      },
+      {
+        "name": "silver-dense-before-rapid-clear_0_9E44835F-E364-4BE5-A868-5CE7F54BFFF4.png",
+        "sha256": "e71cd822fa3d7bc1e1368d51dd79def5289db93a4984247028907f082799c5fe",
+        "temporaryExport": "/private/tmp/silver-dense-final/898D38B9-DED6-4379-BC0B-DC64AD7E62D2.png",
+        "inspected": true
+      },
+      {
+        "name": "silver-tablet-portrait-100-after-native-win_0_B48511F1-6779-4F68-A811-82FED728DA7C.png",
+        "sha256": "11e613fe2da4332d1f86c1a8738f6c308321b4e8c605abd5b8946dfb774be396",
+        "temporaryExport": "/private/tmp/silver-tablet-final/F9A563E8-58D1-4882-BE14-3F4A7DAC7D3F.png",
+        "inspected": true
+      },
+      {
+        "name": "silver-tablet-portrait-dense-075-before-native-win_0_25B521B0-53F0-4A58-885A-5940757E6B42.png",
+        "sha256": "cfa775e497b87627d83ff239fefe292d1b013f1b6a9a9dba150bc8908d64d66c",
+        "temporaryExport": "/private/tmp/silver-tablet-final/E5746876-9FA0-40AA-9B53-5B11950669BC.png",
+        "inspected": true
+      },
+      {
+        "name": "silver-tablet-landscape-100-after-native-win_0_A04C31ED-778D-4E8D-8A60-3AB78C77FB08.png",
+        "sha256": "58c44d047e2b6d69f04b7d5bf12d3e917c36d6dcc37663a361d6c19d75a484e5",
+        "temporaryExport": "/private/tmp/silver-tablet-final/809F88F7-4F2A-4101-888C-AA4BD4B93A60.png",
+        "inspected": true
+      },
+      {
+        "name": "silver-tablet-landscape-dense-075-before-native-win_0_1ACD059D-AB35-448A-98E4-62FCCB88CB0E.png",
+        "sha256": "0b5f78871cd40a5ed668d04324bea589b4edfa207ddc1b7e2e2d11e05b708a35",
+        "temporaryExport": "/private/tmp/silver-tablet-final/F0E130B7-9C66-43F4-B149-32669B9DE65D.png",
+        "inspected": true
+      },
+      {
+        "name": "silver-tablet-landscape-scene-100-score-18-normal-motion_0_1B1BAD37-7B00-45E4-B9C2-B265046085EB.png",
+        "sha256": "d12d4f4e9fd790878e541302be9ffa9b46197ad410d42a22b2f699d0dc83a6b4",
+        "temporaryExport": "/private/tmp/silver-tablet-final/D369D2D2-20CD-4886-A4DB-C70EDC12197D.png",
+        "inspected": true
+      },
+      {
+        "name": "silver-tablet-landscape-scene-75-score-14-normal-motion_0_22991E0E-C4AF-4B53-B31A-EBECF5D15478.png",
+        "sha256": "749039ef51b1f5bace4769d7f44837736f96e621bd8c914619dfe3ddef1f248f",
+        "temporaryExport": "/private/tmp/silver-tablet-final/57AF5924-4DEA-4F9F-971A-B621C587CC8D.png",
+        "inspected": true
+      },
+      {
+        "name": "silver-tablet-landscape-scene-50-score-9-normal-motion_0_D95B7102-C205-4C87-B45D-139AA432DC4B.png",
+        "sha256": "933baf5867699787eb71741ecd281bbf3db4fc7520f16d67fa33f5025a5c9e2e",
+        "temporaryExport": "/private/tmp/silver-tablet-final/ED80E4F8-5816-4C6F-86A7-506D82644057.png",
+        "inspected": true
+      },
+      {
+        "name": "silver-tablet-landscape-scene-25-score-5-normal-motion_0_B107EF23-4B8D-431C-9D39-FC26BB35FA81.png",
+        "sha256": "5049079873ae28bd9971001d3bd10b53631cc5e075ca972be4009d0fdf436d3b",
+        "temporaryExport": "/private/tmp/silver-tablet-final/CC038BCD-167A-4A3F-B742-95245E892B7F.png",
+        "inspected": true
+      },
+      {
+        "name": "silver-tablet-landscape-scene-0-score-0-normal-motion_0_D9C73EAC-0A31-45D0-8D1F-3A9DCEA3B2DC.png",
+        "sha256": "199fcf0acbe71331b8b5ea9fafa513971ecc0ab7f0a88a90395ab657cba29d92",
+        "temporaryExport": "/private/tmp/silver-tablet-final/9FE6B67C-6C12-40FF-9EA0-2CEB0C1CCCEE.png",
+        "inspected": true
+      },
+      {
+        "name": "silver-tablet-portrait-scene-100-score-18-normal-motion_0_9DD08F3E-9983-4E7D-AD54-79FFF7A8F599.png",
+        "sha256": "79d80f9b6545f78ecee9c1ffa50884267c88e748602daf5d9086b846d2a64eb0",
+        "temporaryExport": "/private/tmp/silver-tablet-final/E8D72D19-C64F-4C0D-999C-969E13FBA973.png",
+        "inspected": true
+      },
+      {
+        "name": "silver-tablet-portrait-scene-75-score-14-normal-motion_0_EDF3E91A-2172-4579-9FCA-5EF5ACE3A372.png",
+        "sha256": "0e67ca924e6e36af59ab87b8b196a8048b5ec3295979772bd80c5922a0b13040",
+        "temporaryExport": "/private/tmp/silver-tablet-final/6FF48C05-B19A-4754-94AA-1FB658E304C9.png",
+        "inspected": true
+      },
+      {
+        "name": "silver-tablet-portrait-scene-50-score-9-normal-motion_0_6F4F0FB2-51C1-45BC-807E-0D505607A95B.png",
+        "sha256": "4ff832ed46be448f44518becae9cc3cf05d6b1a1531c0c6f46b5a718899f6688",
+        "temporaryExport": "/private/tmp/silver-tablet-final/71AA3164-1D7C-4AA2-B0D1-FC5FBEAE2AFF.png",
+        "inspected": true
+      },
+      {
+        "name": "silver-tablet-portrait-scene-25-score-5-normal-motion_0_296024E6-8891-4A3C-9B94-0631505F1031.png",
+        "sha256": "fc9868e41dd22c6822fa61d76c44ec1a13cbb91eefba96a73af081bfea640788",
+        "temporaryExport": "/private/tmp/silver-tablet-final/FB97FB1A-C5B9-428F-9BD6-62DF77F1E08E.png",
+        "inspected": true
+      },
+      {
+        "name": "silver-tablet-portrait-scene-0-score-0-normal-motion_0_F94212FF-8CCA-4C08-A78F-76241206977F.png",
+        "sha256": "de27057db700a93ef6c7f535e57368022bc5b7b2197647eb0e251efd9d4df664",
+        "temporaryExport": "/private/tmp/silver-tablet-final/D2EC92B6-AA76-4B6B-ACC8-6A9B3C87CABF.png",
+        "inspected": true
+      },
+      {
+        "name": "silver-tablet-portrait-after-second-native-clear-normal-motion_0_BE7738B0-64B0-4148-9B87-6275DA9A47AF.png",
+        "sha256": "2657ca5617ea52f51d61f247bc075c79d878a4eec7f69cdeb15638a2fcddedd9",
+        "temporaryExport": "/private/tmp/silver-tablet-final/95B93B46-F92C-4CBE-BFC7-75B5D5D49D9C.png",
+        "inspected": true
+      },
+      {
+        "name": "silver-tablet-portrait-retained-after-landscape-clear-normal-motion_0_03E46EB2-5B02-45E7-B631-9258B8E57A15.png",
+        "sha256": "c3d2737faaa2f81eecf122ab6fc7bfd06f84a2ec6c31ad3716ca4f2ae8146c47",
+        "temporaryExport": "/private/tmp/silver-tablet-final/300E35B1-BC6B-4ACA-9F25-57228C84DE20.png",
+        "inspected": true
+      },
+      {
+        "name": "silver-tablet-landscape-after-native-clear-normal-motion_0_01051E45-5487-4F4D-8574-F7F3903337EF.png",
+        "sha256": "2ff0a4e0557771ce7ee6e00dd33a21b6e4745f306c46b2188d9eca4c8be12a25",
+        "temporaryExport": "/private/tmp/silver-tablet-final/F07E1D12-4D48-4BD7-9C00-E8CE447A27ED.png",
+        "inspected": true
+      },
+      {
+        "name": "silver-tablet-landscape-retained-before-clear-normal-motion_0_F77C7458-E776-4BAD-8CE3-92D57DB4C558.png",
+        "sha256": "d9e6e6a110229c4d0c374afff9e4e87ac3a67e0abc0e64127ba41ca3c4b3ebdc",
+        "temporaryExport": "/private/tmp/silver-tablet-final/A9E0B7AC-25D5-441B-BD1B-CEF935E6A3F0.png",
+        "inspected": true
+      },
+      {
+        "name": "silver-tablet-portrait-before-rotation-normal-motion_0_4BD81FD6-4850-4806-8557-DE3AF42EAB60.png",
+        "sha256": "c39b4b4cf7841b3d4135959a5b5772baa821ffdec28966a848f4e15190e4d315",
+        "temporaryExport": "/private/tmp/silver-tablet-final/EC5D0E98-9FE8-4D1F-963C-B844FF251C6D.png",
+        "inspected": true
+      },
+      {
+        "name": "silver-replay-reset-to-unrestored_0_99C1FF31-E36A-436A-8E2D-AFE12890D298.png",
+        "sha256": "33303be9f45263091e1ed89f208876cd2be8658f86f52ec15876824e4e4d3af2",
+        "temporaryExport": "/private/tmp/silver-compact-final/E18DD436-3E63-41C5-98B6-B76B5B3D63E0.png",
+        "inspected": true
+      },
+      {
+        "name": "silver-restored-after-relaunch_0_CDA87673-530A-4B7E-BE07-954C1854E453.png",
+        "sha256": "963132cc826ea88a8def55db33fff254f890b5696ea17aadcb0fc7fa042ab806",
+        "temporaryExport": "/private/tmp/silver-compact-final/63CB19BD-B49C-4F8C-9BE4-86AF1879F6DA.png",
+        "inspected": true
+      },
+      {
+        "name": "silver-restored-after-native-winning-clear-normal-motion_0_82FD044F-9DC8-47C6-A4C9-49208B76CFA3.png",
+        "sha256": "e84bd2ee8ac9913e864e45fcb644ae4a1635169eded1dd21e2a9e5b324e4c41f",
+        "temporaryExport": "/private/tmp/silver-compact-final/F395A2D9-CDEB-40BB-915F-5D5958558A7F.png",
+        "inspected": true
+      },
+      {
+        "name": "silver-before-winning-clear-normal-motion_0_AE7B4E7D-4FB1-45C7-B808-BABB95EA7015.png",
+        "sha256": "0b7956db70bf4bee3ce5e6048dc7f176f96a99ac34bf58057e1b263bd24b134e",
+        "temporaryExport": "/private/tmp/silver-compact-final/73FEEE0A-8E3A-4056-98F3-38143C720C0C.png",
+        "inspected": true
+      },
+      {
+        "name": "flow-another-entry_0_2691E715-821A-4564-A906-0E1BC37FC66C.png",
+        "sha256": "22b8b8545dedfda7e95543c54cdca6acf5d8b41d1790c5bb2c381983da3e75bf",
+        "temporaryExport": "/private/tmp/silver-compact-final/FE596312-6CC7-4C7C-A32A-8BB8A76720E0.png",
+        "inspected": true
+      },
+      {
+        "name": "flow-resume-welcome_0_7CE9781D-F5F6-4A7E-9C4B-B0788B66F4B6.png",
+        "sha256": "c41ad2b5ddff12cdc029da160055879e8cb003e2705ad811632e393fa7b96456",
+        "temporaryExport": "/private/tmp/silver-compact-final/385FCC1F-4D8D-4545-974C-4B1C3566D76E.png",
+        "inspected": true
+      },
+      {
+        "name": "flow-entry_0_50747CEA-FEB3-4479-B4B9-62E460CE507B.png",
+        "sha256": "b3bc2269efa28d67a9a9fc97fbd36d920c2d85771c5dcc39f93fb43a1e5168c5",
+        "temporaryExport": "/private/tmp/silver-compact-final/60F60F7F-D5C9-463F-B7D3-ED42BBE34896.png",
+        "inspected": true
+      },
+      {
+        "name": "flow-welcome_0_E2A13008-63BF-426B-8910-6089CDB882B7.png",
+        "sha256": "1d289b603d61597469f5271f216aa6c4840b54723dea0e2883fe1229a8134593",
+        "temporaryExport": "/private/tmp/silver-compact-final/D85BFB40-E307-4D36-AACC-4119E5BC2649.png",
+        "inspected": true
+      }
+    ]
+  },
+  "retained": [
+    {
+      "file": "dev-aabd673__silver-025__iphone-17e__default-text.png",
+      "sourceExport": "/private/tmp/silver-phone-main/D7DA3287-7416-4EB4-A449-35E35DE54354.png",
+      "sha256": "0cc837e556ec88696306c1dbb2b2c9a4dd293bd157f301de651a6b3637355a46",
+      "bytes": 4672161,
+      "encodedPixels": [
+        1170,
+        2532
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "caption": "First basin water beneath translucent HUD; subtle early cue.",
+      "status": "Current"
+    },
+    {
+      "file": "dev-aabd673__silver-100__iphone-17e__native-win.png",
+      "sourceExport": "/private/tmp/silver-phone-main/5D9BB7B7-B715-44BF-B8DA-C3184E98F93D.png",
+      "sha256": "59df31daa3732f8df7ca84b73cc64a3af460124c575bd1a830ce141e1077b74c",
+      "bytes": 3373894,
+      "encodedPixels": [
+        1170,
+        2532
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "caption": "Native winning clear, released arch thread and named result.",
+      "status": "Current"
+    },
+    {
+      "file": "dev-aabd673__silver-100__iphone-17e__ax3xl-scrolled-result.png",
+      "sourceExport": "/private/tmp/silver-phone-main/115C69E5-B157-4C39-ACE3-8191D1FD8063.png",
+      "sha256": "f22474fbde56c87137de5a1a57ef80ef882d1968e2eb1f514ac0e3f024d3de2d",
+      "bytes": 860337,
+      "encodedPixels": [
+        1170,
+        2532
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "caption": "Largest text/system Reduce Motion result after scroll; Back continues below viewport.",
+      "status": "Current"
+    },
+    {
+      "file": "dev-aabd673__silver-050__ipad-air11-m3__portrait.png",
+      "sourceExport": "/private/tmp/silver-tablet-final/71AA3164-1D7C-4AA2-B0D1-FC5FBEAE2AFF.png",
+      "sha256": "4ff832ed46be448f44518becae9cc3cf05d6b1a1531c0c6f46b5a718899f6688",
+      "bytes": 5553940,
+      "encodedPixels": [
+        1640,
+        2360
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        1640,
+        2360
+      ],
+      "caption": "Two filled pools connected; third dry.",
+      "status": "Current"
+    },
+    {
+      "file": "dev-aabd673__silver-075__ipad-air11-m3__landscape-49-stars.png",
+      "sourceExport": "/private/tmp/silver-tablet-final/F0E130B7-9C66-43F4-B149-32669B9DE65D.png",
+      "sha256": "0b5f78871cd40a5ed668d04324bea589b4edfa207ddc1b7e2e2d11e05b708a35",
+      "bytes": 6219067,
+      "encodedPixels": [
+        1640,
+        2360
+      ],
+      "orientation": 8,
+      "displayPixels": [
+        2360,
+        1640
+      ],
+      "caption": "Held droplet with visible gap, all three pools connected and49 native stars.",
+      "status": "Current"
+    },
+    {
+      "file": "dev-aabd673__silver-100__ipad-air11-m3__landscape-native-win.png",
+      "sourceExport": "/private/tmp/silver-tablet-final/809F88F7-4F2A-4101-888C-AA4BD4B93A60.png",
+      "sha256": "58c44d047e2b6d69f04b7d5bf12d3e917c36d6dcc37663a361d6c19d75a484e5",
+      "bytes": 5498275,
+      "encodedPixels": [
+        1640,
+        2360
+      ],
+      "orientation": 8,
+      "displayPixels": [
+        2360,
+        1640
+      ],
+      "caption": "Actual dense-board winning clear with complete cascade and readable result actions.",
+      "status": "Current"
+    },
+    {
+      "file": "dev-aabd673__welcome-five-challenges__iphone-17e__scrolled.jpg",
+      "sourceExport": "/var/folders/fs/9shw9bf142jg3280dc9n3hhc0000gn/T/screenshot_optimized_750ee351-fa57-4296-9b31-30b4537520d5.jpg",
+      "sha256": "d9eae26de6d65e59f548f8c6515beeb7c96545c2a9fc0b7efa7a7c945699aa3a",
+      "bytes": 94583,
+      "encodedPixels": [
+        369,
+        800
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        369,
+        800
+      ],
+      "caption": "Scrolled Welcome exposes all five challenge choices; upper title is outside viewport.",
+      "status": "Current",
+      "source": "84ae918 (native inputs identical to aabd673)"
+    },
+    {
+      "file": "dev-aabd673__sky-menu-five-challenges__iphone-17e__scrolled.jpg",
+      "sourceExport": "/var/folders/fs/9shw9bf142jg3280dc9n3hhc0000gn/T/screenshot_optimized_eabb9f47-b3f6-40da-b7b4-8433448b5497.jpg",
+      "sha256": "2ac731d0a9f803e832000330627b4e288e94debb16e9c57cbe582a8bdad6c3a9",
+      "bytes": 49238,
+      "encodedPixels": [
+        369,
+        800
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        369,
+        800
+      ],
+      "caption": "Scrolled Sky menu exposes all five challenges, Help, Done and dev.98f8ba82e6 build label.",
+      "status": "Current",
+      "source": "84ae918 (native inputs identical to aabd673)"
+    },
+    {
+      "file": "dev-aabd673__silver-100__iphone-se3__native-win-scrolled.png",
+      "sourceExport": "/private/tmp/silver-compact-final/F395A2D9-CDEB-40BB-915F-5D5958558A7F.png",
+      "sha256": "e84bd2ee8ac9913e864e45fcb644ae4a1635169eded1dd21e2a9e5b324e4c41f",
+      "bytes": 1259932,
+      "encodedPixels": [
+        750,
+        1334
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        750,
+        1334
+      ],
+      "caption": "Compact native win: full completion copy, New sky and Replay; Back begins below viewport.",
+      "status": "Current",
+      "source": "84ae918 (native inputs identical to aabd673)"
+    }
+  ],
+  "limits": [
+    "Stills establish sampled appearance; interaction and motion are separate evidence.",
+    "HUD mutes25 pool cue; lower white controls cross brighter stone/runnel. Readable in these captures, not a measured contrast pass.",
+    "Actual VoiceOver, physical gameplay/contrast/audio and browser rendering remain unverified.",
+    "Compact initial Open sky entry capture is mid-reveal and is not evidence of complete entry controls."
+  ]
+}

@@ -1,0 +1,256 @@
+{
+  "status": "Verified for development; publication and delivery pending",
+  "sourceCommit": "aabd67346bf56ae27b9940a7d6d916559d16c218",
+  "runtimeFingerprint": "dev.98f8ba82e6",
+  "sourceBoundary": "All app, resource, Core, native-test and Xcode inputs committed. Dirty files are documentation, reviewer and guide tooling; no dirty native build inputs.",
+  "environment": {
+    "scheme": "Starfall",
+    "configuration": "Debug unless stated",
+    "xcode": "27.1 (27A9275)",
+    "macOS": "27.0.1",
+    "simulatorOS": "iOS 27.0 (24A434)",
+    "arch": "arm64",
+    "phone": "iPhone 17e",
+    "tablet": "iPad Air 11-inch (M3)",
+    "compact": "iPhone SE (3rd generation)"
+  },
+  "checks": [
+    {
+      "name": "Hosted app suite",
+      "source": "aabd67346bf56ae27b9940a7d6d916559d16c218",
+      "tool": "XcodeBuildMCP test_sim",
+      "arguments": [
+        "-parallel-testing-enabled",
+        "NO",
+        "-only-testing:StarfallAppTests"
+      ],
+      "profile": "lantern-phone",
+      "installedBuildLabel": "dev.local (default; runtime fingerprint computed separately)",
+      "passed": 329,
+      "failed": 0,
+      "skipped": 0,
+      "warnings": 0,
+      "durationSeconds": 128.943,
+      "resultBundle": "test_sim_2026-10-19T19-22-47-796Z_pid14605_0010e6a3.xcresult"
+    },
+    {
+      "name": "Python tooling",
+      "source": "aabd673 plus new guide script and docs",
+      "command": "python3 -m unittest discover -s scripts -p 'test_*.py'",
+      "passed": 55,
+      "failed": 0,
+      "durationSeconds": 5.27,
+      "log": "/private/tmp/silver-final-python.log"
+    },
+    {
+      "name": "Level-design kit",
+      "source": "compiled native export after final Silver registration",
+      "observed": "6 layouts /294 cells; all10 source hashes match; all SVG XML parses; overview, scale and camera PNGs visually inspected; independent43-link review passed. Old-hash and missing-hash offline inputs remain unverified; end-to-end stale snapshot preserves original ownership separately from generation inputs.",
+      "limit": "Authoring diagrams, not universal safe areas or native acceptance. Skill metadata validated with Ruby YAML; the supplied Python skill validator was unavailable because PyYAML is absent."
+    },
+    {
+      "name": "Shared offline reviewer",
+      "observed": "Seed and Silver each pass57 score/view combinations; fixed identities,24/40/49/0 samples, milestone/query/guide controls and natural-size updates.",
+      "limit": "Logic only; browser rendering remains unverified after earlier local-file access denial; no alternate route attempted."
+    },
+    {
+      "name": "Phone win, all five states and largest text/system Reduce Motion",
+      "source": "aabd67346bf56ae27b9940a7d6d916559d16c218",
+      "runtime": "dev.98f8ba82e6",
+      "tool": "XcodeBuildMCP test_sim",
+      "profile": "lantern-phone",
+      "selection": [
+        "testSilverWinningClearPersistsNamedResultAndReplayStartsAtZero",
+        "testSilverLargestTextSystemReduceMotionWinKeepsResultActionsUsable",
+        "testSilverPhoneAllFiveStatesKeepNativeBoardFixed"
+      ],
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "warnings": 0,
+      "durationSeconds": 164.36,
+      "resultBundle": "test_sim_2026-10-19T19-25-13-469Z_pid14605_e18d0337.xcresult",
+      "attachments": "11 exported to /private/tmp/silver-phone-main; five default state stills plus largest-text before/after inspected by root"
+    },
+    {
+      "name": "Preview/cancel over all four previous challenges",
+      "source": "84ae918 (native inputs identical to aabd673)",
+      "runtime": "dev.98f8ba82e6",
+      "tool": "XcodeBuildMCP test_sim",
+      "profile": "lantern-phone",
+      "selection": [
+        "testSilverPreviewCancellationRetainsLanternAndRibbonUntilBegin",
+        "testSilverPreviewCancellationRetainsKiteAndSeedUntilBegin"
+      ],
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "warnings": 0,
+      "durationSeconds": 242.271,
+      "resultBundle": "test_sim_2026-10-19T19-28-14-990Z_pid14605_76afb251.xcresult"
+    },
+    {
+      "name": "Dense phone overflow, rapid clear and interruptions",
+      "source": "84ae918 (native inputs identical to aabd673)",
+      "runtime": "dev.98f8ba82e6",
+      "tool": "XcodeBuildMCP test_sim",
+      "profile": "lantern-phone",
+      "selection": [
+        "testSilverDenseOverflowKeepsNamedReplayAndRestartsAtZero",
+        "testSilverDenseRapidClearSurvivesSettingsAndBackground"
+      ],
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "warnings": 0,
+      "durationSeconds": 96.736,
+      "resultBundle": "test_sim_2026-10-19T19-33-17-040Z_pid14605_bd3f6334.xcresult"
+    },
+    {
+      "name": "All tablet states, rotation and dense completion",
+      "source": "84ae918 (native inputs identical to aabd673)",
+      "runtime": "dev.98f8ba82e6",
+      "tool": "XcodeBuildMCP test_sim",
+      "profile": "lantern-tablet",
+      "selection": [
+        "testTabletRotationKeepsSilverRestorationAndNativeInput",
+        "testTabletDenseSilverCompletionKeepsNativeInput"
+      ],
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "warnings": 0,
+      "durationSeconds": 217.605,
+      "resultBundle": "test_sim_2026-10-19T19-35-23-164Z_pid14605_77b72a4b.xcresult"
+    },
+    {
+      "name": "Compact Silver win/relaunch/replay and Open sky flow",
+      "source": "84ae918 (native inputs identical to aabd673)",
+      "runtime": "dev.98f8ba82e6",
+      "tool": "XcodeBuildMCP test_sim",
+      "profile": "lantern-compact",
+      "selection": [
+        "testSilverWinningClearPersistsNamedResultAndReplayStartsAtZero",
+        "testWelcomeEntryBackgroundAndAnotherSky"
+      ],
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "warnings": 0,
+      "durationSeconds": 136.839,
+      "resultBundle": "test_sim_2026-10-19T19-40-02-349Z_pid14605_d9b75596.xcresult"
+    },
+    {
+      "name": "Release simulator build",
+      "source": "84ae918 (native inputs identical to aabd673)",
+      "runtime": "dev.98f8ba82e6",
+      "tool": "XcodeBuildMCP build_sim",
+      "profile": "lantern-release",
+      "status": "SUCCEEDED",
+      "warnings": 0,
+      "errors": 0,
+      "durationSeconds": 16.958,
+      "log": "build_sim_2026-10-19T19-42-46-122Z_pid14605_f86dbb20.log"
+    },
+    {
+      "name": "Normal-motion completion",
+      "source": "84ae918 (native inputs identical to aabd673)",
+      "runtime": "dev.98f8ba82e6",
+      "observed": "Native14\u219218 clear, three gold packets, whole-image crossfade, released arch thread and ordinary result/celebration;13decodedframes inspected.",
+      "record": "motion.json",
+      "limit": "Not a performance, audio or physical-play benchmark."
+    },
+    {
+      "name": "Final navigation",
+      "observed": "Five challenge choices readable in inspected scrolled Welcome and Sky menu; actual Silver entry/Begin0/18 reached.",
+      "record": "captures.json"
+    },
+    {
+      "name": "Final Core package",
+      "source": "84ae918 (native inputs identical to aabd673)",
+      "command": "swift test",
+      "passed": 178,
+      "failed": 0,
+      "durationSeconds": 12.824,
+      "log": "/private/tmp/silver-core-final.log"
+    },
+    {
+      "name": "Final source and documentation hygiene",
+      "observed": "ci-hygiene and diff--check pass;902 local Markdown/image links resolve; all10 native-layout owner hashes match current source. Markdown and browser rendered documents remain unverified."
+    },
+    {
+      "name": "Reconciled-main compact entry flow",
+      "source": "64acd98",
+      "runtime": "dev.98f8ba82e6",
+      "tool": "XcodeBuildMCP test_sim",
+      "profile": "lantern-compact",
+      "selection": [
+        "testWelcomeEntryBackgroundAndAnotherSky"
+      ],
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "warnings": 0,
+      "durationSeconds": 68.333,
+      "resultBundle": "test_sim_2026-10-19T19-54-00-223Z_pid14605_ec89a6e7.xcresult"
+    }
+  ],
+  "earlierProbes": [
+    {
+      "name": "Core package",
+      "passed": 178,
+      "failed": 0,
+      "durationSeconds": 17.805,
+      "source": "base2357b201 plus evolving working tree; initial-snapshot.json records subsequent dirty inputs",
+      "log": "/private/tmp/silver-core.log"
+    },
+    {
+      "name": "Shared Seed win/restore/replay extraction",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "durationSeconds": 72.877,
+      "resultBundle": "test_sim_2026-10-19T18-49-21-787Z_pid14605_f129fab0.xcresult",
+      "source": "evolving working tree before final assets"
+    },
+    {
+      "name": "Selected flow/save suites",
+      "passed": 42,
+      "failed": 0,
+      "skipped": 0,
+      "durationSeconds": 16.067,
+      "resultBundle": "test_sim_2026-10-19T19-03-04-014Z_pid14605_4c2fcc2e.xcresult",
+      "source": "evolving working tree before final assets"
+    },
+    {
+      "name": "Tablet dense master native win",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "durationSeconds": 74.742,
+      "resultBundle": "test_sim_2026-10-19T19-15-05-900Z_pid14605_af4cd9cb.xcresult",
+      "source": "dev.silver-art-probe label; evolving working tree with approved075/100 assets; not final-source acceptance"
+    }
+  ],
+  "remaining": [
+    "Publish/merge/canonical installation"
+  ],
+  "limits": [
+    "Development, not full RC matrix",
+    "Actual VoiceOver and physical gameplay not performed",
+    "Offline reviewer logic checked; browser rendering unverified"
+  ],
+  "visualReview": {
+    "phone": "All 11 primary, 8 preview/Begin and 6 dense captures inspected by independent reviewers; root also inspected five states and largest text. No blocker; first-pool cue subdued under HUD and lower white controls cross bright stone/runnel. Dense49 faces remain readable.",
+    "tabletPortrait": "All10 captures inspected: five states, dense75/100 and rotation/clears. No blocker. HUD mutes25 pool; lower white control contrast weaker. Full cascade and all result actions visible.",
+    "tabletLandscape": "All9 captures inspected: five states, dense75/100 and rotation/clear. No blocker. Distinct held drop/cascade outsideHUD/result; all49 stars readable including busy left column. Full arch/bowls survive crop; no center seam/mask.",
+    "limit": "Stills establish sampled appearance; native tests establish interaction. No measured contrast, physical play or actual VoiceOver acceptance.",
+    "compact": "All8 inspected. Silver drop/gap, complete cascade, two-line result and replay0 clear; controls reflow/scroll, no horizontal clipping. Retained win viewport shows New sky and Replay fully; Back begins below. First Open sky entry capture is mid-reveal, not evidence of complete entry controls; Another-entry shows instructions and Begin."
+  },
+  "mainReconciliation": {
+    "base": "4f13da8bf10a41cc136d8eb24120e8ca90c7c7a3",
+    "localMerge": "64acd98",
+    "changes": "PR176/177 UI-test snapshot/capture readiness and evidence only; app/Core/resource inputs unchanged",
+    "runtime": "dev.98f8ba82e6"
+  }
+}

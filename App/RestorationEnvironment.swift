@@ -78,6 +78,7 @@ struct RestorationArtwork {
         case .ribbonCrossing: location = "RibbonCrossing"
         case .kiteHarbor: location = "KiteHarbor"
         case .seedMoon: location = "SeedMoon"
+        case .silverPools: location = "SilverPools"
         }
         let suffix: String
         switch composition {
@@ -93,6 +94,12 @@ struct RestorationArtwork {
 
     func sourceSize(for milestone: StarlightRestoration.Milestone) -> CGSize {
         // Register generated pixels exactly; fitting never resamples the source files.
+        if challenge == .silverPools && composition == .tabletLandscape {
+            switch milestone {
+            case .quarter, .half, .complete: return CGSize(width: 1447, height: 1087)
+            case .unrestored, .threeQuarters: return CGSize(width: 1446, height: 1087)
+            }
+        }
         if challenge == .seedMoon && composition == .tabletLandscape {
             switch milestone {
             case .unrestored, .quarter, .half: return CGSize(width: 1446, height: 1087)
@@ -126,6 +133,12 @@ struct RestorationArtwork {
             case .phone: center = CGPoint(x: 0.326, y: 0.064); width = 0.045
             case .tabletPortrait: center = CGPoint(x: 0.254, y: 0.133); width = 0.045
             case .tabletLandscape: center = CGPoint(x: 0.092, y: 0.115); width = 0.03
+            }
+        case .silverPools:
+            switch composition {
+            case .phone: center = CGPoint(x: 0.26, y: 0.042); width = 0.035
+            case .tabletPortrait: center = CGPoint(x: 0.22, y: 0.035); width = 0.03
+            case .tabletLandscape: center = CGPoint(x: 0.154, y: 0.085); width = 0.03
             }
         case .seedMoon:
             // The fixed seed/root receives light before the canopy grows. The
@@ -164,6 +177,14 @@ struct RestorationArtwork {
             case .phone: return CGRect(x: 0.18, y: 0.035, width: 0.23, height: 0.175)
             case .tabletPortrait: return CGRect(x: 0.10, y: 0.015, width: 0.24, height: 0.23)
             case .tabletLandscape: return CGRect(x: 0.035, y: 0.025, width: 0.18, height: 0.28)
+            }
+        case .silverPools:
+            // The held droplet and released thread are the protected final beat;
+            // the surrounding garden may continue behind native interface surfaces.
+            switch composition {
+            case .phone: return CGRect(x: 0.12, y: 0.008, width: 0.28, height: 0.09)
+            case .tabletPortrait: return CGRect(x: 0.10, y: 0.008, width: 0.25, height: 0.09)
+            case .tabletLandscape: return CGRect(x: 0.055, y: 0.005, width: 0.20, height: 0.28)
             }
         case .seedMoon:
             // Protect the canopy and its seed recipient through the result handoff.

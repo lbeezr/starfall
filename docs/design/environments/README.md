@@ -4,7 +4,7 @@
 
 Start with [five native nightscapes](night-production-09/README.md) and their [verification/delivery record](../../evidence/nightscapes-2026-10-18/README.md). Moonwake, Nebula Cradle, Shatterlight Reach, Night Garden and Ringdrift use separated alpha scenery, centered gameplay and the existing forecast. The [approved color keys](night-keys-08/README.md) and [scene kits](scene-kits-07/README.md) are their concept sources.
 
-**Historical studies:** [WoW sky research](alien-nightscapes-06/README.md), [open skies](open-skies-05/README.md), [celestial platforms](celestial-worlds-04/README.md) and the [earlier production strategy](PRODUCTION.md) explain the direction changes. Their concepts are not runtime evidence. `concept-cast.js` owns illustrative cast composition in offline reviews.
+**Historical studies:** [WoW sky research](alien-nightscapes-06/README.md), [open skies](open-skies-05/README.md), [celestial platforms](celestial-worlds-04/README.md) and the [earlier production strategy](PRODUCTION.md) explain the direction changes. Their concepts are not runtime evidence. `concept-cast.js` owns illustrative cast composition in offline reviews. `restoration-review.css` owns their shared review styling. `restoration-review.js` owns shared viewport, score, milestone and fixed-board behavior for Seed Moon and Silver Pools; their folders supply location data and copy.
 
 - [Five-place bible and concepts](landing-places-01/README.md) owns distinct identities and art references.
 - [Five-place integration](production-set/README.md) owns the October 18 expansion, shared arena boundary and selector acceptance.
