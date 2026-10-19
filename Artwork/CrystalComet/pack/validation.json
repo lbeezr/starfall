@@ -1,0 +1,36 @@
+{
+  "status": "Asset checks passed; native integration not run",
+  "characters": 106,
+  "visibleGlyphs": 105,
+  "angleViews": 45,
+  "sprites": 4725,
+  "maximumTextureEdge": 1536,
+  "atlasBytes": 115534569,
+  "frontComponentCounts": {
+    "j": 2,
+    "?": 2,
+    "!": 2,
+    "i": 2,
+    "%": 3,
+    "÷": 3,
+    ";": 2,
+    ":": 2,
+    "\"": 2,
+    "“": 2,
+    "”": 2,
+    "…": 3
+  },
+  "checks": [
+    "All 106 characters, 105 visible glyphs and 45 unique angle pairs present.",
+    "All 4,725 sprites nonempty, inside bounded textures, non-overlapping and surrounded by two transparent pixels.",
+    "Every frame resolves to the same glyph baseline/pivot and invariant advance at all angles.",
+    "Front-view detached components verified for punctuation, quotes, percent, i and j, including the repaired question and division glyphs.",
+    "Animated preview preserves the 3.08-second exported-sprite sequence; WebP coalesces identical consecutive angle frames.",
+    "All registered source artwork hashes match."
+  ],
+  "limits": [
+    "Painted front facets, geometric edges; no physical refraction.",
+    "No native app/device import or performance acceptance.",
+    "Review artistic legibility separately from structural validation."
+  ]
+}

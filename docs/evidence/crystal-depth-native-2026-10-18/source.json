@@ -1,0 +1,81 @@
+{
+  "base": "0d28c5089c4a34e8f210c35a0157988b47aaffc5",
+  "snapshot": "90d8d993cf63",
+  "runtimeFingerprint": "dev.f6b2c29f8f",
+  "inputs": {
+    "App/Assets.xcassets/CrystalDepthM05.imageset/Contents.json": "aca2479791a84f0579e16b0e9a6288fd7fe1b7151556c6b260cb70da8833faea",
+    "App/Assets.xcassets/CrystalDepthM05.imageset/atlas.png": "2ef39d065d6fbdbeca3f451210a2d6901e2e62af10ead67485a6142a31ec4777",
+    "App/Assets.xcassets/CrystalDepthM10.imageset/Contents.json": "aca2479791a84f0579e16b0e9a6288fd7fe1b7151556c6b260cb70da8833faea",
+    "App/Assets.xcassets/CrystalDepthM10.imageset/atlas.png": "423846456217ccebe56ffbd5d8f3c82695de2da61162c57f3cdf75a40120a279",
+    "App/Assets.xcassets/CrystalDepthM15.imageset/Contents.json": "aca2479791a84f0579e16b0e9a6288fd7fe1b7151556c6b260cb70da8833faea",
+    "App/Assets.xcassets/CrystalDepthM15.imageset/atlas.png": "68ef50d8a6a4fb827e60f84c7349aace3d5ff7b5d14f59e8a0ebf2a7f82c480f",
+    "App/Assets.xcassets/CrystalDepthM20.imageset/Contents.json": "aca2479791a84f0579e16b0e9a6288fd7fe1b7151556c6b260cb70da8833faea",
+    "App/Assets.xcassets/CrystalDepthM20.imageset/atlas.png": "b927e539e88945495a47438243dc8af260606da6398f3f5d5cc2de014b9e78e6",
+    "App/Assets.xcassets/CrystalDepthM25.imageset/Contents.json": "aca2479791a84f0579e16b0e9a6288fd7fe1b7151556c6b260cb70da8833faea",
+    "App/Assets.xcassets/CrystalDepthM25.imageset/atlas.png": "3e653fcef0ce3cdf676ae4aa8d247a75050c2068267216c1f1596521ffb31f06",
+    "App/Assets.xcassets/CrystalDepthM30.imageset/Contents.json": "aca2479791a84f0579e16b0e9a6288fd7fe1b7151556c6b260cb70da8833faea",
+    "App/Assets.xcassets/CrystalDepthM30.imageset/atlas.png": "7617c3846489365d7f1e5235a3e633db99a6f5015e6862666c5beef252467186",
+    "App/Assets.xcassets/CrystalDepthM35.imageset/Contents.json": "aca2479791a84f0579e16b0e9a6288fd7fe1b7151556c6b260cb70da8833faea",
+    "App/Assets.xcassets/CrystalDepthM35.imageset/atlas.png": "cdee8ed0478371188410a2c2a51897f89916e41255103806f93b9087510d2092",
+    "App/Assets.xcassets/CrystalDepthMetrics.dataset/Contents.json": "28c025f033918cb6e872e50af1996fadffee2969fd0b4092f88d2dde7b4d5636",
+    "App/Assets.xcassets/CrystalDepthMetrics.dataset/font.json": "d55acd798069f51b7202655719a33875935432321ef8fc5946854f0c08a62258",
+    "App/Assets.xcassets/CrystalDepthP05.imageset/Contents.json": "aca2479791a84f0579e16b0e9a6288fd7fe1b7151556c6b260cb70da8833faea",
+    "App/Assets.xcassets/CrystalDepthP05.imageset/atlas.png": "a3ed8e6e5a3cb6c027072a96351296cbfe65f69afec726338a699b991dcaba44",
+    "App/Assets.xcassets/CrystalDepthP10.imageset/Contents.json": "aca2479791a84f0579e16b0e9a6288fd7fe1b7151556c6b260cb70da8833faea",
+    "App/Assets.xcassets/CrystalDepthP10.imageset/atlas.png": "2093d831a471956a43764870c838c144f5c6b7497f5f26b6b0e8043c128bd603",
+    "App/Assets.xcassets/CrystalDepthP15.imageset/Contents.json": "aca2479791a84f0579e16b0e9a6288fd7fe1b7151556c6b260cb70da8833faea",
+    "App/Assets.xcassets/CrystalDepthP15.imageset/atlas.png": "8c775c9439ff02a276b512e680c13232471f64a7ee083c33cb53b62cad13bd66",
+    "App/Assets.xcassets/CrystalDepthP20.imageset/Contents.json": "aca2479791a84f0579e16b0e9a6288fd7fe1b7151556c6b260cb70da8833faea",
+    "App/Assets.xcassets/CrystalDepthP20.imageset/atlas.png": "e8c7228b0c57a5a06f074b466120b339e49d6222aad3b932410f312b9a4acd2c",
+    "App/Assets.xcassets/CrystalDepthP25.imageset/Contents.json": "aca2479791a84f0579e16b0e9a6288fd7fe1b7151556c6b260cb70da8833faea",
+    "App/Assets.xcassets/CrystalDepthP25.imageset/atlas.png": "270a81731e2d75bbf25ccaa41453c19ad1f26334c29bb71c6995b586e1ab685d",
+    "App/Assets.xcassets/CrystalDepthP30.imageset/Contents.json": "aca2479791a84f0579e16b0e9a6288fd7fe1b7151556c6b260cb70da8833faea",
+    "App/Assets.xcassets/CrystalDepthP30.imageset/atlas.png": "413e88777192c2e4ddb899c6d88c0c55868d5594363b1d01f443ff4b0d6a7e88",
+    "App/Assets.xcassets/CrystalDepthP35.imageset/Contents.json": "aca2479791a84f0579e16b0e9a6288fd7fe1b7151556c6b260cb70da8833faea",
+    "App/Assets.xcassets/CrystalDepthP35.imageset/atlas.png": "ca5c35f2e68a1fbbf0a93fcaa9aeca2670e6e3673608b6adf4ccaea1f207aeb8",
+    "App/Assets.xcassets/CrystalDepthZ00.imageset/Contents.json": "aca2479791a84f0579e16b0e9a6288fd7fe1b7151556c6b260cb70da8833faea",
+    "App/Assets.xcassets/CrystalDepthZ00.imageset/atlas.png": "b3843b2c7b099efd2c7e0d8b7a13808f81fd26876aa526466f09d49fcc01397e",
+    "App/CrystalCelebrationArtwork.swift": "ca07b2cbe39c33d285e14f56dbd371b5d3a8b14fcd45fb0a6b491b001960e432",
+    "App/StarfallTheme.swift": "1f085ad5ae29a8ce58ea59b2b1286315ea5d1a3d8b75f2a5f52a21840f5991ac",
+    "App/StarlightCelebration.swift": "f048a03eecc02059a2acda778689f7e8a20c55d47726ee9c86ad68ee1b342da4",
+    "AppTests/CrystalCelebrationArtworkTests.swift": "114f6a3b86cb6510a1f36e233b41f4f191096d9b83bd135b32363925e385abaf",
+    "Artwork/CrystalComet/build/native.cjs": "6413a039f85b164585fc9f0513890e915abdfca00e4b7d381ea14abcf2f0af87",
+    "Artwork/CrystalComet/native-profile.json": "2b0cfbafa802cbc4fd872213101412769ab9dd33c79621cc2d53a005a4ab31a8"
+  },
+  "removedRuntimeInputs": [
+    "App/Assets.xcassets/CelebrationBrilliant.imageset",
+    "App/Assets.xcassets/CelebrationConstellation.imageset",
+    "App/Assets.xcassets/CelebrationCross.imageset",
+    "App/Assets.xcassets/CelebrationGlyphs.imageset",
+    "App/Assets.xcassets/CelebrationRelay.imageset",
+    "App/Assets.xcassets/CelebrationSquare.imageset"
+  ],
+  "captures": [
+    {
+      "path": "dev-0d28c50-wip-90d8d993cf63__relay-award__iphone-17e__normal.png",
+      "attachment": "F4C7FF7A-A7F7-4D31-9D25-81580978DCE1.png",
+      "sha256": "8563ab87e8932042a913eec79c52889ba29d9d562c2ddbea7a180c20d2dd3913"
+    },
+    {
+      "path": "dev-0d28c50-wip-90d8d993cf63__crowded-brilliant__host-375x667__default.png",
+      "attachment": "92FBDF83-1BD4-4F1F-86D6-E77F2CBD4C0E.png",
+      "sha256": "4fe814a4f4cfbc18bf4a36c685a8e6dcd3b7a359aec2bb8641f7bd5f292abe17"
+    },
+    {
+      "path": "dev-0d28c50-wip-90d8d993cf63__crowded-award__host-430x932__maximum-text.png",
+      "attachment": "BED9BF90-09E9-469E-938C-034E78497398.png",
+      "sha256": "8cc3ba7654a7ec89044f55c7e7945b16b152fc036ee221f2aa10a3231d6e95cd"
+    },
+    {
+      "path": "dev-0d28c50-wip-90d8d993cf63__glyph-turn__iphone-17e__early.png",
+      "attachment": "02813C89-41CD-49D6-AD3B-8BC1E415BC7E.png",
+      "sha256": "413a4556d8516607bf8372869b47a0d5f7293e20463e2525016f615635e47f44"
+    },
+    {
+      "path": "dev-0d28c50-wip-90d8d993cf63__glyph-turn__iphone-17e__mid.png",
+      "attachment": "6B9AEEFC-B8D1-425B-9BA9-F834B3D4D26F.png",
+      "sha256": "d219b51676be930e5547d7a862f47319c8c55e2654bfe9bb14b8bd43b7a1f11b"
+    }
+  ],
+  "context": "Working-tree Debug hosted captures; Xcode 27.1; iOS 27.0; dedicated iPhone 17e simulator. Full-motion test scenes with default and maximum text. No physical device validation."
+}

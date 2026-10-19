@@ -14,17 +14,9 @@ enum StarfallTheme {
     }
     enum Celebration {
         static let titleMaximumWidth: CGFloat = 330
-        static let titleHeight: CGFloat = 76
+        static let titleCapHeight: CGFloat = 50
         static let ordinaryAwardHeight: CGFloat = 42
         static let specialAwardHeight: CGFloat = 50
-        static let glyphSpacing: CGFloat = 2
-        static let refraction: [Color] = [
-            Color(red: 1, green: 0.78, blue: 0.50),
-            Color(red: 1, green: 0.58, blue: 0.80),
-            Color(red: 0.65, green: 0.49, blue: 1),
-            Color(red: 0.30, green: 0.83, blue: 1),
-            Color(red: 0.81, green: 0.94, blue: 1)
-        ]
     }
     enum Colors {
         static let launchBackground = Color("LaunchBackground")

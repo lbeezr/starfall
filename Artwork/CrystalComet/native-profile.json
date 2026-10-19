@@ -1,0 +1,28 @@
+{
+  "sourceManifestSHA256": "b39e9b36f8c809dabca7e368b67f2c9d1a296a04cb033c4511a88c5492612028",
+  "generatorSHA256": "6413a039f85b164585fc9f0513890e915abdfca00e4b7d381ea14abcf2f0af87",
+  "characters": 106,
+  "visibleGlyphs": 105,
+  "views": 15,
+  "rasterCapHeight": 96,
+  "decodedAtlasBytes": 54263808,
+  "pngBytes": 20974327,
+  "outputs": {
+    "CrystalDepthM35.imageset/atlas.png": "cdee8ed0478371188410a2c2a51897f89916e41255103806f93b9087510d2092",
+    "CrystalDepthM30.imageset/atlas.png": "7617c3846489365d7f1e5235a3e633db99a6f5015e6862666c5beef252467186",
+    "CrystalDepthM25.imageset/atlas.png": "3e653fcef0ce3cdf676ae4aa8d247a75050c2068267216c1f1596521ffb31f06",
+    "CrystalDepthM20.imageset/atlas.png": "b927e539e88945495a47438243dc8af260606da6398f3f5d5cc2de014b9e78e6",
+    "CrystalDepthM15.imageset/atlas.png": "68ef50d8a6a4fb827e60f84c7349aace3d5ff7b5d14f59e8a0ebf2a7f82c480f",
+    "CrystalDepthM10.imageset/atlas.png": "423846456217ccebe56ffbd5d8f3c82695de2da61162c57f3cdf75a40120a279",
+    "CrystalDepthM05.imageset/atlas.png": "2ef39d065d6fbdbeca3f451210a2d6901e2e62af10ead67485a6142a31ec4777",
+    "CrystalDepthZ00.imageset/atlas.png": "b3843b2c7b099efd2c7e0d8b7a13808f81fd26876aa526466f09d49fcc01397e",
+    "CrystalDepthP05.imageset/atlas.png": "a3ed8e6e5a3cb6c027072a96351296cbfe65f69afec726338a699b991dcaba44",
+    "CrystalDepthP10.imageset/atlas.png": "2093d831a471956a43764870c838c144f5c6b7497f5f26b6b0e8043c128bd603",
+    "CrystalDepthP15.imageset/atlas.png": "8c775c9439ff02a276b512e680c13232471f64a7ee083c33cb53b62cad13bd66",
+    "CrystalDepthP20.imageset/atlas.png": "e8c7228b0c57a5a06f074b466120b339e49d6222aad3b932410f312b9a4acd2c",
+    "CrystalDepthP25.imageset/atlas.png": "270a81731e2d75bbf25ccaa41453c19ad1f26334c29bb71c6995b586e1ab685d",
+    "CrystalDepthP30.imageset/atlas.png": "413e88777192c2e4ddb899c6d88c0c55868d5594363b1d01f443ff4b0d6a7e88",
+    "CrystalDepthP35.imageset/atlas.png": "ca5c35f2e68a1fbbf0a93fcaa9aeca2670e6e3673608b6adf4ccaea1f207aeb8",
+    "CrystalDepthMetrics.dataset/font.json": "d55acd798069f51b7202655719a33875935432321ef8fc5946854f0c08a62258"
+  }
+}

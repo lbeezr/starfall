@@ -8,6 +8,8 @@ A small native iOS falling-sky puzzle. Clear matching stars as showers fill the 
 
 [Gesture improvements](docs/GESTURE_QUALITY.md) are merged in five individual batches, with [canonical phone delivery evidence](docs/evidence/gesture-delivery-2026-10-18/README.md). Physical-play acceptance and [mechanics calibration](docs/design/CALIBRATION.md) continue.
 
+Score popups and celebration titles use the [crystal-depth alphabet](Artwork/CrystalComet/NATIVE.md), with brief letter turns, static quiet modes and native accessible text.
+
 Player wording and character voices are authored in the [local copy catalogue](App/DialogueScripts/README.md), with typed interface keys, validated templates and an in-app dialogue preview.
 
 ## How to play

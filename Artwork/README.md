@@ -9,3 +9,5 @@ Use [AppIcon](AppIcon/README.md) for current branding, [StarCast](StarCast/READM
 [Conversation portraits](Dialogue/README.md) retain the six generated dialogue masters and prompts; native 256×256 exports live in the app asset catalog.
 
 [Celebrations](Celebrations/README.md) owns provenance and source registrations for the selected Crystal Comet title/glyph material; packaged PNGs remain in the app asset catalog.
+
+[Crystal Comet sprites](CrystalComet/README.md) extends the selected lettering into the full uppercase/lowercase alphabet, numerals and punctuation at 45 angles. It owns the offline source/build pipeline and sprite-pack handoff; app integration is separate.

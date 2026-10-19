@@ -6,6 +6,8 @@
 
 **Next action:** review physical feel and dense-board readability for the approved [Crystal Comet integration](crystal-comet-01/INTEGRATION.md). The user approved the [complete concept set](crystal-comet-01/README.md) and requested production integration. [Native evidence](../../evidence/crystal-comet-integration-2026-10-18/README.md) records the implemented PNG material and companion glyphs; no SVG or font-file authorship is claimed.
 
+**Alphabet extension:** the user selected crystal depth in the [Relay! / +128 motion specimen](motion-specimen-01/README.md). The [complete sprite pack](../../../Artwork/CrystalComet/README.md) provides uppercase/lowercase, numerals and punctuation at 45 angles, with asset/browser verification. The user subsequently approved [native adoption](../../../Artwork/CrystalComet/NATIVE.md); the normal game composes exact titles and awards from a bounded turn profile.
+
 ![Three lettering concepts: Starlight Pearl with warm sculpted curves, Crystal Burst with faceted angular letters, and Comet Sweep with flowing inclined letterforms](lettering-directions-01.png)
 
 **Concept — not implementation evidence.** Generated with the built-in ImageGen tool from the [actual central-callout capture](../../evidence/harvest-feedback-2026-10-18/README.md) and [historical Soft Landing/Soft Bloom study](../branding/round-02/README.md). Backgrounds are illustrative reinterpretations. This is a raster comparison sheet, not editable SVG, a new font or packaged assets. Exact prompt and provenance: [generation.json](generation.json).

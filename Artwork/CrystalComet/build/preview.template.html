@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Crystal Comet sprite pack</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,sans-serif;color:#f0edf9;background:#0d1128}*{box-sizing:border-box}body{margin:0;padding:28px}main{max-width:1100px;margin:auto}h1{font-size:24px;font-weight:500;margin:0 0 8px}p{color:#bfb6d5;line-height:1.5}label{display:flex;flex-direction:column;gap:7px;min-width:0}input,select,button{font:inherit;color:#f0edf9;background:#22213c;border:1px solid #686080;border-radius:9px;padding:10px}button{min-height:44px}input[type=range]{width:100%;padding:10px 0}input[type=text]{width:100%}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #a7dbff;outline-offset:3px}.controls{display:grid;grid-template-columns:minmax(180px,1fr) 110px 150px;gap:14px;margin:22px 0}.inspection{display:grid;grid-template-columns:1fr 180px;gap:24px;margin:20px 0}canvas{width:100%;height:330px;display:block;border-radius:14px;background:radial-gradient(ellipse at center,#2c2342,#10132b)}.row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.note{font-size:13px}.sheet{width:100%;height:auto;display:block;margin:24px 0}a{color:#b7dfff}#status{min-height:1.5em}output{font-variant-numeric:tabular-nums}.error{color:#ffb6b6}@media(max-width:600px){body{padding:18px}.controls{grid-template-columns:1fr 1fr}.controls label:first-child{grid-column:1/-1}.inspection{grid-template-columns:1fr}canvas{height:250px}}
+</style></head><body><main>
+<h1>Crystal Comet</h1><p>106 characters · 45 views per visible glyph · 4,725 sprites</p>
+<div class="controls"><label>Try the lettering<input id="copy" type="text" maxlength="40" value="Starfall! +128" spellcheck="false"></label><label>Cap size<select id="size"><option value="48">48 px</option><option value="64" selected>64 px</option><option value="80">80 px</option></select></label><label>Vertical tilt<select id="pitch"><option value="-12">Up: −12°</option><option value="0" selected>Front: 0°</option><option value="12">Down: +12°</option></select></label></div>
+<canvas id="stage" role="img" aria-label="Animated Crystal Comet sprite text">Starfall! +128</canvas>
+<div class="inspection"><label>Horizontal turn <output id="angleValue">0°</output><input id="yaw" type="range" min="-35" max="35" step="5" value="0"></label><div class="row"><button id="play" type="button">Replay turn</button><button id="pause" type="button">Pause</button></div></div>
+<p id="status" role="status" aria-live="polite">Loading the front views…</p>
+<p class="note">This viewer reads reduced-size previews of the packed PNG sprites. The pack includes full-size transparent PNG atlases, frame coordinates, baselines and pivots. Painted front facets and geometric sides; no live 3D model or physical refraction.</p>
+<details><summary>Character set and angle sheet</summary><img class="sheet" src="previews/character-set.png" alt="Complete uppercase, lowercase, numerals and punctuation"><img class="sheet" src="previews/angle-views.png" alt="Nine registered yaw and pitch examples"></details>
+<p class="note"><a href="README.md">Usage notes</a> · <a href="font.json">Font metrics</a> · <a href="manifest.json">Package manifest</a></p>
+</main><script>
+const MODEL=__MODEL__;
+const canvas=document.getElementById('stage'),ctx=canvas.getContext('2d'),copy=document.getElementById('copy'),size=document.getElementById('size'),pitch=document.getElementById('pitch'),yaw=document.getElementById('yaw'),angleValue=document.getElementById('angleValue'),status=document.getElementById('status'),play=document.getElementById('play'),pause=document.getElementById('pause');
+let generation=0,images=new Map(),playing=false,raf=0,startTime=0,ready=false;
+const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+const id=c=>'u'+c.codePointAt(0).toString(16).padStart(4,'0');
+const viewAt=(turn,tilt)=>MODEL.views.find(v=>v.yaw===turn&&v.pitch===tilt);
+function stop(){playing=false;cancelAnimationFrame(raf);raf=0;document.body.dataset.playing='false';}
+function render(){
+ if(!ready)return;const rect=canvas.getBoundingClientRect(),dpr=Math.min(devicePixelRatio||1,2);
+ canvas.width=Math.round(rect.width*dpr);canvas.height=Math.round(rect.height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);
+ const view=viewAt(Number(yaw.value),Number(pitch.value)),image=images.get(view.id);if(!image)return;
+ const text=copy.value,unsupported=[...new Set([...text].filter(c=>!MODEL.glyphs[id(c)]))];
+ const scale=Math.min(Number(size.value)/160,(rect.width-36)/Math.max(1,[...text].reduce((sum,c)=>sum+(MODEL.glyphs[id(c)]?.advance||64),0)));
+ const total=[...text].reduce((sum,c)=>sum+(MODEL.glyphs[id(c)]?.advance||64),0)*scale;let x=(rect.width-total)/2;const baseline=rect.height/2+64*scale;
+ for(const c of text){const g=MODEL.glyphs[id(c)],f=view.frames[id(c)];if(f){const r=f.rect;ctx.drawImage(image,r.x*.5,r.y*.5,r.w*.5,r.h*.5,x+f.originOffset.x*scale,baseline+f.originOffset.y*scale,r.w*scale,r.h*scale);}x+=(g?.advance||64)*scale;}
+ canvas.setAttribute('aria-label',text||'Empty lettering preview');angleValue.value=yaw.value+'°';
+ if(unsupported.length){status.textContent='Outside this character set: '+unsupported.join(' ');status.className='error';}else{status.className='';if(!playing)status.textContent=reduced.matches?'Static preview · use the turn control to inspect angles':'Ready · all views at this tilt loaded';}
+ document.body.dataset.ready='true';document.body.dataset.view=view.id;
+}
+async function loadPlane(){
+ stop();ready=false;document.body.dataset.ready='false';play.disabled=true;const current=++generation;status.textContent='Loading angle views…';const views=MODEL.views.filter(v=>v.pitch===Number(pitch.value));
+ try{const loaded=await Promise.all(views.map(v=>new Promise((resolve,reject)=>{const img=new Image();img.onload=()=>resolve([v.id,img]);img.onerror=()=>reject(Error(v.preview));img.src=v.preview;})));if(current!==generation)return;images=new Map(loaded);ready=true;play.disabled=false;render();}
+ catch(e){if(current===generation){status.textContent='A preview image could not load: '+e.message;status.className='error';}}
+}
+function tick(now){if(!playing)return;const t=(now-startTime)/2400;if(t>=1){yaw.value='0';stop();render();return;}yaw.value=String(Math.round(35*Math.sin(t*Math.PI*2)/5)*5);render();document.body.dataset.playing='true';raf=requestAnimationFrame(tick);}
+play.addEventListener('click',()=>{if(!ready)return;stop();playing=true;document.body.dataset.playing='true';startTime=performance.now();status.textContent='Playing packed angle frames';raf=requestAnimationFrame(tick);});
+pause.addEventListener('click',()=>{stop();render();});yaw.addEventListener('input',()=>{stop();render();});pitch.addEventListener('change',loadPlane);copy.addEventListener('input',()=>{stop();render();});size.addEventListener('change',render);
+document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();});reduced.addEventListener('change',()=>{stop();render();});new ResizeObserver(render).observe(canvas);loadPlane();
+</script></body></html>

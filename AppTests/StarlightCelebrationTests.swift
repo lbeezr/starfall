@@ -155,10 +155,11 @@ final class StarlightCelebrationTests: XCTestCase {
     /// Attachments support visual review; assertions alone do not establish readability.
     @MainActor func testCrowdedCurrentSkyAwardsAtCompactLargeAndMaximumText() async throws {
         var game = FallingSky.freshSurvival(seed: 28)
-        // With automatic aging retired, this seed reaches a dense, live sky at
-        // twelve showers; the historical 29-shower sample now overflows at 15.
+        // With automatic aging retired, the old 29-shower history is terminal.
+        // Twelve showers retain a dense live sky and the same exact +8 award.
         for _ in 0..<12 { XCTAssertNotNil(game.letStarsFall()) }
         XCTAssertFalse(game.isOver)
+        XCTAssertFalse(game.hasCriticalMass)
         XCTAssertEqual(game.board.compactMap { $0 }.count, 33)
         let group = try XCTUnwrap(game.legalGroups.max(by: {
             game.reward(of: Set($0)) < game.reward(of: Set($1))
