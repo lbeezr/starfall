@@ -6,6 +6,8 @@ This is the authoritative status register for gameplay and presentation experime
 
 ## Current decisions
 
+[One bounded follow-up](design/FOLLOW_UP_INPUT.md) extends the user-approved normal gesture path without a pilot flag. Its 650 ms limit covers ordinary swap/fall and clear presentation; snapshot/identity checks, latest-touch replacement and lifecycle cancellation prevent stale replay. [Evidence and delivery status](evidence/follow-up-input-2026-10-18/README.md); phone tuning remains open.
+
 [Bounded native contact tracing](evidence/calibration-critical-mass-2026-10-18/CONTACT_DIAGNOSIS.md) is closed and removed. In its new automatic sample, two misses reach touch-down after the shower owns all columns; twelve admitted contacts commit normally. Only source-bound evidence and the historical patch remain; no app flag, logger or input/rule change is adopted. Physical comfort and earlier uninstrumented attempts retain their limits.
 
 [Immediate swipes and hold-to-draw](design/IMMEDIATE_SWIPES.md) are user-approved for the regular app. All four directions exchange on movement, including matching colors; a stationary 300 ms hold reserves drawing. This replaces release/dwell arbitration without a pilot flag or save-schema change. [Verification](evidence/immediate-swipes-2026-10-18/README.md) records the exact source and remaining physical-feel limits.

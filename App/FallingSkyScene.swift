@@ -14,6 +14,7 @@ import StarfallCore
     private var animatingColumns: Set<Int> = []
     private let pieces = SKNode(), effects = SKNode(), grid = SKNode()
     private let constellationTrail = SKNode()
+    private let bufferedInputLayer = SKNode()
     private var step: CGFloat { ObservatoryGeometry(size: size).imageRect.width / 7.7 }
 
     override init(size: CGSize) {
@@ -23,6 +24,7 @@ import StarfallCore
         addChild(grid); addChild(pieces); addChild(effects)
         effects.zPosition = 20
         constellationTrail.zPosition = 12; addChild(constellationTrail)
+        bufferedInputLayer.zPosition = 13; addChild(bufferedInputLayer)
     }
     override convenience init() { self.init(size: CGSize(width: 350, height: 350)) }
     required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -116,7 +118,7 @@ import StarfallCore
 
     private func renderSnapshot(_ game: FallingSky, preservingInput: Bool) {
         rendered = game
-        if !preservingInput { constellationTrail.removeAllChildren() }
+        if !preservingInput { constellationTrail.removeAllChildren(); showBufferedInput(nil) }
         removeAllActions(); effects.removeAllChildren(); effects.removeAllActions()
         for node in nodes.values { node.setGrowthMotion(false) }
         pieces.removeAllChildren(); grid.removeAllChildren(); nodes.removeAll(); cellsByID.removeAll()
@@ -433,6 +435,35 @@ import StarfallCore
 
 
 extension FallingSkyScene {
+    func showBufferedInput(_ action: SkyPlayerInput?) {
+        bufferedInputLayer.removeAllChildren()
+        guard let action else { return }
+        let outline = contactOutline(action.source, ready: true)
+        outline.name = "sky.input.buffered"
+        bufferedInputLayer.addChild(outline)
+        guard let destination = action.destination else { return }
+        let from = point(action.source), to = point(destination)
+        let length = hypot(to.x - from.x, to.y - from.y)
+        guard length > 0 else { return }
+        let direction = CGVector(dx: (to.x-from.x)/length, dy: (to.y-from.y)/length)
+        let tip = CGPoint(x: from.x + direction.dx*length*0.65, y: from.y + direction.dy*length*0.65)
+        let wing = step * StarfallTheme.SelectionCue.arrowWing
+        let route = CGMutablePath()
+        route.move(to: CGPoint(x: from.x + direction.dx*step*StarfallTheme.SelectionCue.innerRadius,
+                              y: from.y + direction.dy*step*StarfallTheme.SelectionCue.innerRadius))
+        route.addLine(to: tip)
+        for sign: CGFloat in [-1, 1] {
+            route.move(to: CGPoint(x: tip.x-direction.dx*wing-direction.dy*wing*sign,
+                                  y: tip.y-direction.dy*wing+direction.dx*wing*sign))
+            route.addLine(to: tip)
+        }
+        let arrow = SKShapeNode(path: route)
+        arrow.name = "sky.input.buffered.direction"
+        arrow.strokeColor = UIColor(StarfallTheme.Colors.textPrimary)
+        arrow.lineWidth = StarfallTheme.SelectionCue.readyWidth
+        bufferedInputLayer.addChild(arrow)
+    }
+
     private func contactOutline(_ cell: Cell, ready: Bool) -> SKShapeNode {
         let rays = CGMutablePath()
         for index in 0..<4 {
@@ -445,7 +476,7 @@ extension FallingSkyScene {
         let cue = SKShapeNode(path: rays)
         cue.name = "sky.input.contact"; cue.position = point(cell)
         cue.strokeColor = UIColor(StarfallTheme.Colors.textPrimary)
-        cue.lineWidth = ready ? 3 : 2
+        cue.lineWidth = ready ? StarfallTheme.SelectionCue.readyWidth : StarfallTheme.SelectionCue.contactWidth
         cue.fillColor = .clear
         return cue
     }

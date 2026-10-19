@@ -2,6 +2,8 @@
 
 Dated, source-bound records of checks, comparisons and their limits.
 
+[Rapid follow-up input](follow-up-input-2026-10-18/README.md) records bounded admission, identity/clock/lifecycle checks and delivery limits. [Immediate swipes](immediate-swipes-2026-10-18/README.md) is the preceding independent batch.
+
 [Copy rewrite and content ownership](copy-rewrite-2026-10-18/README.md) records the shared catalogue, six voices, event-specific teasing/celebration and native verification limits.
 
 [Focused gravity exposure](gravity-focused-playtest-2026-10-17/README.md) compares unchanged production with temporary frequent supply, records native precursor/rotation/release observations, and recommends readable activation before more frequency. The candidate was not adopted.

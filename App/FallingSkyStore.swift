@@ -9,6 +9,11 @@ import StarfallCore
     func render(_ game: FallingSky)
     func animate(_ turn: FallingSkyTurn, from old: FallingSky,
                  to game: FallingSky, completion: @escaping () -> Void)
+    func showBufferedInput(_ action: SkyPlayerInput?)
+}
+
+extension FallingSkyPresenting {
+    func showBufferedInput(_ action: SkyPlayerInput?) {}
 }
 
 /// One cancellable deadline; no repeating timer or catch-up queue.
@@ -126,14 +131,26 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     private(set) var constellationTracing = false
     private var constellationHold: UInt64?
     private var constellationHoldSequence: UInt64 = 0
+    private(set) var bufferedInput: SkyBufferedInput?
+    @ObservationIgnored private var bufferedInputTask: Task<Void, Never>?
+    @ObservationIgnored private var bufferedInputSequence: UInt64 = 0
 
     /// Only the owner may release a live hold; late callbacks cannot resume a newer touch.
     @discardableResult func beginConstellationHold(at cell: Cell? = nil) -> UInt64? {
-        guard (cell.map(canContact) ?? canClear), constellationHold == nil else { return nil }
+        beginContact(at: cell, allowingSettling: false)
+    }
+    @discardableResult func beginResponsiveContact(at cell: Cell?) -> UInt64? {
+        beginContact(at: cell, allowingSettling: true)
+    }
+    private func beginContact(at cell: Cell?, allowingSettling: Bool) -> UInt64? {
+        guard (allowingSettling ? canReceiveInput : (cell.map(canContact) ?? canClear)), constellationHold == nil else { return nil }
         constellationHoldSequence &+= 1
         constellationHold = constellationHoldSequence
         constellationTracing = true
         freezeClock(for: .contact)
+        // A newly touched star replaces a pending intention before any completion
+        // can execute beneath this contact. The new hold owns the frozen clock.
+        cancelBufferedInput()
         #if DEBUG
         observeTiming(.state)
         #endif
@@ -142,7 +159,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     func endConstellationHold(_ ticket: UInt64?) {
         guard let ticket, constellationHold == ticket else { return }
         constellationHold = nil; constellationTracing = false
-        armClock()
+        if !deliverBufferedInputIfReady() { armClock() }
         #if DEBUG
         observeTiming(.state)
         #endif
@@ -278,6 +295,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         #endif
     }
     private func invalidateInput(_ reason: String) {
+        cancelBufferedInput()
         endConstellationHold(constellationHold)
         showInputFeedback(nil)
         constellationInputGeneration &+= 1
@@ -405,6 +423,76 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     }
     func canTrace(_ path: [Cell]) -> Bool { traceAvailability(path).isReady }
 
+    /// Physical and accessibility requests may wait briefly; direct commit APIs
+    /// remain strict so stale callers never gain an implicit replay queue.
+    @discardableResult func requestTap(_ cell: Cell) -> Bool {
+        requestInput(.tap(cell), snapshot: game, generation: constellationInputGeneration)
+    }
+
+    @discardableResult func requestInput(_ action: SkyPlayerInput, snapshot: FallingSky, generation: UInt64) -> Bool {
+        guard snapshot == game, generation == constellationInputGeneration, canReceiveInput else { return false }
+        cancelBufferedInput()
+        guard let turn = action.preview(in: game) else {
+            if case .tap(let cell) = action { clear(cell) }
+            return false
+        }
+        let availability = inputPolicy.reserving(turn.changingColumns)
+        if availability.isReady { return executeInput(action) }
+        guard case .settling = availability else { return false }
+        bufferedInputSequence &+= 1
+        guard let pending = SkyBufferedInput(ticket: bufferedInputSequence, action: action, game: game, now: clock.now) else { return false }
+        bufferedInput = pending
+        freezeClock(for: .contact)
+        presenter.showBufferedInput(action)
+        showInputFeedback(SkyCopy.text(.inputBuffered))
+        feedback.announce(SkyCopy.text(.inputBuffered))
+        bufferedInputTask = Task { @MainActor [weak self] in
+            do { try await Task.sleep(for: .seconds(SkyBufferedInput.lifetime)) } catch { return }
+            guard !Task.isCancelled else { return }
+            self?.expireBufferedInput(ticket: pending.ticket)
+        }
+        return true
+    }
+
+    private func executeInput(_ action: SkyPlayerInput) -> Bool {
+        switch action {
+        case .tap(let cell):
+            guard !constellationTracing, canClear(cell) else { return false }
+            let before = game; clear(cell); return game != before
+        case .swap(let from, let to):
+            return performTechnique(.nudge(from, to), snapshot: game, generation: constellationInputGeneration)
+        }
+    }
+
+    func cancelBufferedInput() {
+        guard bufferedInput != nil else { return }
+        bufferedInput = nil
+        bufferedInputTask?.cancel(); bufferedInputTask = nil
+        presenter.showBufferedInput(nil)
+        showInputFeedback(nil)
+        armClock()
+    }
+
+    func expireBufferedInput(ticket: UInt64) {
+        guard bufferedInput?.ticket == ticket else { return }
+        cancelBufferedInput()
+        if !suspended && !game.isOver { explainInputFailure(SkyCopy.text(.inputBufferExpired)) }
+    }
+
+    @discardableResult private func deliverBufferedInputIfReady() -> Bool {
+        guard let pending = bufferedInput else { return false }
+        guard pending.matches(game), clock.now <= pending.deadline else {
+            expireBufferedInput(ticket: pending.ticket); return false
+        }
+        guard !constellationTracing, canReceiveInput,
+              let turn = pending.action.preview(in: game),
+              inputPolicy.reserving(turn.changingColumns).isReady else { return false }
+        // Retire before committing. Reentrant or stale presenter completions can
+        // neither execute twice nor clear a replacement pending action.
+        cancelBufferedInput()
+        return executeInput(pending.action)
+    }
+
     func clear(_ cell: Cell) {
         guard canReceiveInput, !constellationTracing else { return }
         guard canClear(cell) else { explainSettling(at: cell); return }
@@ -486,7 +574,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         celebrationTask?.cancel(); celebrationTask = nil; celebration = nil
     }
 
-    deinit { celebrationTask?.cancel() }
+    deinit { celebrationTask?.cancel(); bufferedInputTask?.cancel() }
 
     /// Explicit input works while paused too, without starting an automatic clock.
     func callShower() {
@@ -519,7 +607,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         #if DEBUG
         guard !isTechniqueFixture else { return }
         #endif
-        guard !constellationTracing, !isPaused, !suspended, !game.isOver, deadline == nil, !rainDue else { return }
+        guard !constellationTracing, bufferedInput == nil, !isPaused, !suspended, !game.isOver, deadline == nil, !rainDue else { return }
         rainGeneration &+= 1
         let ticket = rainGeneration
         deadline = clock.now + remaining
@@ -562,7 +650,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     }
 
     private func deliverRainIfReady() {
-        guard rainDue, !busy, !constellationTracing, !suspended, !isPaused, !game.isOver else { return }
+        guard rainDue, !busy, !constellationTracing, bufferedInput == nil, !suspended, !isPaused, !game.isOver else { return }
         let dueDeadline = deadline
         rainDue = false
         deadline = nil
@@ -611,8 +699,9 @@ enum SkyTerminalSpeech { case feedback, ceremony }
             if let columns = self.inputFeedback?.waitingColumns, columns.isDisjoint(with: self.changingColumns) {
                 self.showInputFeedback(nil)
             }
+            if self.deliverBufferedInputIfReady() { return }
             // Completion order cannot give an older automatic result ownership of current feedback.
-            if let spokenResult, self.presentations.isLatest(ticket),
+            if self.inputFeedback == nil, let spokenResult, self.presentations.isLatest(ticket),
                !self.game.isOver || self.terminalSpeech == .feedback {
                 let accepted = self.dialogue.show(spokenResult, interrupt: announcesResult)
                 if accepted && (announcesResult || self.game.isOver || announcesTransition) {

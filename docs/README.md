@@ -2,6 +2,8 @@
 
 Current decisions, design contracts, verification summaries and historical evidence.
 
+[Gesture quality](GESTURE_QUALITY.md) sequences immediate movement, rapid follow-ups, forgiving direction and clear held-drawing feedback as separate deliveries.
+
 [Technical debt shipping](TECH_DEBT_PLAN.md) tracks the seven independent reductions and their verification.
 
 [Six follow-up debt fixes](TECH_DEBT_FOLLOWUP.md) tracks the next independently shipped corrections.

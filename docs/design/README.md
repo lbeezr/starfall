@@ -2,6 +2,8 @@
 
 Behavior proposals, production contracts and research supporting decisions.
 
+[Follow-up input](FOLLOW_UP_INPUT.md) retains one recent tap or swap while its stars finish presentation; [immediate swipes](IMMEDIATE_SWIPES.md) owns movement versus held drawing.
+
 [Starlight celebrations](STARLIGHT_CELEBRATIONS.md) investigates more prominent accumulation, dramatic clear/constellation feedback, and the separate design questions behind combos and recipes. User-approved mock and normal-target integration using existing constellation, recipe, relay and Dusk rules.
 
 ## Start here

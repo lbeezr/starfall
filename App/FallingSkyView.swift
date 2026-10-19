@@ -309,7 +309,7 @@ import StarfallCore
                                               end: releaseConstellation, cancel: cancelConstellation,
                                               contact: { beginBoardContact($0, size: geometry.size) },
                                               feedback: store.explainInputFailure,
-                                              swapStart: { point in mapping.cell(at:point).map { store.game.canArrangeStars && store.game.gem(at:$0) != nil && store.canContact($0) } ?? false },
+                                              swapStart: { point in mapping.cell(at:point).map { store.game.canArrangeStars && store.game.gem(at:$0) != nil && store.canReceiveInput } ?? false },
                                               swap: commitDirectSwap)
                     }
                 }
@@ -371,7 +371,7 @@ import StarfallCore
                     let title: SkyCopy.Key = [.techniqueMoveLeft, .techniqueMoveRight, .techniqueMoveUp, .techniqueMoveDown][direction]
                     Button(SkyCopy.text(title)) {
                         cancelConstellation()
-                        _ = store.performTechnique(.nudge(cell, destination), snapshot: snapshot, generation: generation)
+                        _ = store.requestInput(.swap(cell, destination), snapshot: snapshot, generation: generation)
                     }
                 }
             }
@@ -380,7 +380,7 @@ import StarfallCore
         .accessibilityAction(named: Text(SkyCopy.text(.actionTraceRelease))) { releaseConstellation() }
         .accessibilityAction(named: Text(SkyCopy.text(.actionTraceCancel))) { cancelConstellation() }
         .accessibilityRotorEntry(id: cell, in: matchingGroups)
-        .disabled(!store.canClear(cell) && !store.constellationTracing)
+        .disabled(!store.canReceiveInput)
     }
 
     private func gravityConsequence(_ cell: Cell) -> String {
@@ -492,28 +492,27 @@ private struct ObservatoryCellShape: Shape {
 private extension FallingSkyView {
     func tapBoardCell(_ cell: Cell) {
         cancelConstellation()
-        store.clear(cell)
+        store.requestTap(cell)
     }
     func commitDirectSwap(from: Cell, to: Cell, generation: UInt64) {
         defer { cancelConstellation() }
         guard store.constellationTracing, generation == store.constellationInputGeneration else { return }
-        guard store.canContact(from) else { store.explainSettling(at: from); return }
-        guard store.canContact(to) else { store.explainSettling(at: to); return }
         let snapshot = store.game
-        _ = store.performTechnique(.nudge(from, to), snapshot: snapshot, generation: generation)
+        _ = store.requestInput(.swap(from, to), snapshot: snapshot, generation: generation)
     }
     func cancelConstellation() {
         interaction.cancelContact(release: store.endConstellationHold)
         store.scene.clearConstellationTrace()
     }
     func invalidateInteraction() {
+        store.cancelBufferedInput()
         interaction.invalidate(release: store.endConstellationHold)
         store.scene.clearConstellationTrace()
     }
     func beginBoardContact(_ point: CGPoint, size: CGSize) -> Bool {
         cancelConstellation()
         guard let cell = ObservatoryGeometry(size: size).cell(at: point) else { return false }
-        guard interaction.acquireHold(at: cell, using: store.beginConstellationHold) else {
+        guard interaction.acquireHold(at: cell, using: store.beginResponsiveContact) else {
             store.explainSettling(at: cell); return false
         }
         store.showInputFeedback(nil)
@@ -524,6 +523,7 @@ private extension FallingSkyView {
         guard let cell = ConstellationTraceHitTesting.start(at: point, mapping: ObservatoryGeometry(size: size), game: store.game) else {
             store.explainInputFailure(SkyCopy.text(.inputTraceStart)); return
         }
+        guard store.canTrace([cell]) else { store.explainSettling(at: cell); return }
         _ = trace.begin(cell, game: store.game, generation: store.constellationInputGeneration, enabled: store.canTrace([cell]))
         if trace.snapshot != nil {
             interaction.acquireHold(at: trace.path.first, using: store.beginConstellationHold)
