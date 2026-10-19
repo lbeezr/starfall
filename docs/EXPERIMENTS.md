@@ -2,6 +2,8 @@
 
 **October 18 decision:** [Automatic aging is disabled](evidence/aging-disabled-2026-10-18/README.md) at the user’s request: fresh and restored critical-mass skies have no purple aging or implosions. Matching growth and cadence remain. Historical critical-mass rules/fixtures remain for save compatibility and regression, with no player toggle to re-enable them.
 
+[Quiet presentation completion](design/QUIET_INPUT_RESPONSE.md) removes the artificial 150 ms lock from ordinary and phased presentation. Full animation timing and Core outcomes are unchanged; [verification](evidence/quiet-input-2026-10-18/README.md) remains separate from physical acceptance.
+
 [Hold feedback](design/HOLD_DRAW_FEEDBACK.md) extends the normal gesture path with bounded open rays and a preference-aware arming haptic. No new trial route or rule change. [Checks and delivery limits](evidence/hold-feedback-2026-10-18/README.md).
 
 This is the authoritative status register for gameplay and presentation experiments. The roadmap describes priorities; historical evidence describes the source that was actually tested. Neither implicitly promotes a candidate. The repository's small, offline, clean-edition scope still applies.

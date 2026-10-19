@@ -2,6 +2,8 @@
 
 Behavior proposals, production contracts and research supporting decisions.
 
+[Quiet input response](QUIET_INPUT_RESPONSE.md) releases input when the static final board is already rendered.
+
 [Hold-to-draw feedback](HOLD_DRAW_FEEDBACK.md) defines open-ray progress and a distinct armed state.
 
 [Gesture edges](GESTURE_EDGES.md) specifies valid long flicks and unchanged tap/drawing boundaries.

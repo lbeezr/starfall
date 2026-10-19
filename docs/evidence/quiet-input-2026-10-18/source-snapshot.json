@@ -1,0 +1,9 @@
+{
+  "baseCommit": "e350abaf89a39048afd2c398d4ebd2fa8e0e8c7d",
+  "runtimeBuildID": "dev.8a753c144b",
+  "dirtyInputs": {
+    "App/FallingSkyScene.swift": "15dba5e9b4c3ccb4419d2707f8c8005c2ad3839b7d0205b9c246b972df3367e8",
+    "AppTests/NativeInputWindowTests.swift": "488d806335c6bcf39ea5c424f113ea690bf52243ff67d190899692afbd74b388",
+    "AppTests/SkyTechniqueStoreTests.swift": "21f6258e13dcc9b5422991fa854e8e244ffdae11347237f03b362f47d7aeadb9"
+  }
+}

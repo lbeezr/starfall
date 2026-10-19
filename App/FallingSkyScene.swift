@@ -183,8 +183,8 @@ import StarfallCore
         rendered = game
         if view == nil { render(game); completion(); return }
         if reduceMotion || UIAccessibility.isReduceMotionEnabled || UIAccessibility.isVoiceOverRunning {
-            renderColumns(columns, from: game)
-            run(.sequence([.wait(forDuration: 0.15), .run { [weak self] in self?.finishColumns(columns, completion: completion) }]))
+            // The committed quiet board is already final; release its input ownership now.
+            finishColumns(columns, completion: completion)
             return
         }
         for cell in turn.cleared {
@@ -662,7 +662,7 @@ extension FallingSkyScene {
         render(old); rendered=game
         guard view != nil else { render(game); completion(); return }
         if reduceMotion || UIAccessibility.isReduceMotionEnabled || UIAccessibility.isVoiceOverRunning {
-            render(game); run(.sequence([.wait(forDuration:0.15),.run(completion)])); return
+            render(game); completion(); return
         }
         let timeline = StarfallMotion.PhaseTimeline(phases: turn.presentationPhases.map(\.event), arrivals: turn.arrivals.count)
         var phases: [SKAction] = []
