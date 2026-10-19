@@ -4,7 +4,9 @@
 
 All ten recorded native failures are classified and corrected. Nine used obsolete viewport assumptions; one missed a short storm phase during repeated hierarchy diagnostics. Tests now follow the actual scrolling playfield, and failed system-motion tests restore their setting through XCTest teardown. Game rules, saves, geometry and animation are unchanged.
 
-**Next action:** Merge the verified follow-up and deliver current main through the canonical updater. Observe the next complete remote matrix separately.
+**Delivery:** [PR #151](https://github.com/lbeezr/starfall/pull/151) merged to `515f7f8`; the canonical updater verified **dev.84fd0fa338** on the original phone. Core tests and signature passed; main CI was pending at installation. [Receipt](delivery.json). No player-data reset or automatic launch.
+
+**Next action:** Use the installed app for physical-play acceptance; observe the next complete remote matrix separately.
 
 ## Acceptance
 
