@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kite Harbor · Playfield composition</title>
+  <link rel="stylesheet" href="board.css">
+  <script src="../world-01/world-data.js" defer></script>
+  <script src="../environments/concept-cast.js" defer></script>
+  <script src="board.js" defer></script>
+</head>
+<body>
+  <main id="review" data-viewport="phone">
+    <header>
+      <div><p class="eyebrow">Starfall · Soft Skies / 03</p><h1>Above Kite Harbor</h1></div>
+      <p class="status">Playfield composition study <br>Existing crystal bodies · Illustrated setting</p>
+    </header>
+
+    <div class="review-layout">
+      <figure class="preview">
+        <div class="stage" id="stage" role="img" aria-label="Kite Harbor at 100 percent restored with 24 crystal stars arranged in seven gameplay columns.">
+          <img id="background" class="background" src="../../../App/Assets.xcassets/KiteHarbor100.imageset/scene.png" alt="" width="887" height="1774">
+          <div class="cast" id="cast" aria-hidden="true"></div>
+          <svg class="geometry" id="geometry" viewBox="0 0 393 852" aria-hidden="true" hidden></svg>
+          <p class="image-error" id="image-error" hidden>Artwork for this view and state has not been packaged yet. The fixed cast overlay remains available for geometry review.</p>
+        </div>
+        <figcaption><span id="sample-caption">24 stars · seven columns</span><span id="canvas-caption">393 × 852 reference canvas</span></figcaption>
+      </figure>
+
+      <aside class="review-panel" aria-label="Composition review">
+        <div class="intro">
+          <p class="eyebrow">Sails awake. A harbor ready to leave.</p>
+          <h2>The sky is the playing field.</h2>
+          <p>Look down toward rosewood berths and a fan of paper-kite sails. Their mooring lights return around the field while actual stars remain clear and readable.</p>
+        </div>
+
+        <section aria-labelledby="viewport-label">
+          <h3 id="viewport-label">View of the same harbor</h3>
+          <nav class="viewport-buttons" aria-label="Choose a viewport composition">
+            <button type="button" data-viewport="phone" aria-pressed="true">Phone</button>
+            <button type="button" data-viewport="tablet-portrait" aria-pressed="false">iPad portrait</button>
+            <button type="button" data-viewport="tablet-landscape" aria-pressed="false">iPad landscape</button>
+          </nav>
+          <p class="fine-print viewport-note">Each view uses its own continuous artwork. Restoration and board sample stay selected when you change the view.</p>
+        </section>
+
+        <section aria-labelledby="restoration-label">
+          <h3 id="restoration-label">Restoration</h3>
+          <label class="select-label" for="score">Collected starlight</label>
+          <div class="score-control"><input id="score" type="range" min="0" max="18" step="1" value="18"><output id="score-output" for="score">18 / 18 light · 100%</output></div>
+          <p class="fine-print score-note">Score selects the artwork at 0, 5, 9, 14 and 18 light. Buttons below select those five scene milestones.</p>
+          <nav class="state-buttons" aria-label="Choose a restoration state">
+            <button type="button" data-state="0" aria-pressed="false" aria-label="Show 0 percent artwork milestone">0%</button>
+            <button type="button" data-state="25" aria-pressed="false" aria-label="Show 25 percent artwork milestone">25%</button>
+            <button type="button" data-state="50" aria-pressed="false" aria-label="Show 50 percent artwork milestone">50%</button>
+            <button type="button" data-state="75" aria-pressed="false" aria-label="Show 75 percent artwork milestone">75%</button>
+            <button type="button" data-state="100" aria-pressed="true" aria-label="Show 100 percent artwork milestone">100%</button>
+          </nav>
+          <div class="state-note" aria-live="polite" aria-atomic="true">
+            <p class="state-kicker" id="state-kicker">100% · Purpose restored</p>
+            <p id="state-description">The mast catches light and the kite fleet lifts gently into the sky.</p>
+          </div>
+          <p class="fine-print">The words describe the authored beat. The board stays fixed for comparison. The planned native finish uses light transfer, a crossfade to the buoyant fleet and the normal result. Boats remain visible above their berths. Character travel is reserved for future user-generated clips; none are implemented here.</p>
+        </section>
+
+        <section class="sample-controls" aria-labelledby="sample-label">
+          <h3 id="sample-label">Inspect the playfield</h3>
+          <label class="select-label" for="density">Board sample</label>
+          <select id="density">
+            <option value="partly">Partly filled · 24 stars</option>
+            <option value="crowded">Crowded field · 40 stars</option>
+            <option value="dense">Full field · 49 stars</option>
+            <option value="empty">Environment only</option>
+          </select>
+          <label class="check-label"><input id="show-geometry" type="checkbox"><span>Show the seven-column geometry</span></label>
+          <p class="fine-print">The partly filled sample includes five connected aqua stars. This is a fixed layout for visual review; tapping the stars does not play a round.</p>
+        </section>
+
+        <details>
+          <summary>What this study can establish</summary>
+          <p>The center uses the current <a href="../../../App/LandingGeometry.swift">LandingGeometry</a> formula on the selected reference canvas. <span id="geometry-description">A 381 × 381 field is centered at x=6, y=235.5.</span> Crystal bodies come from the app’s existing assets; faces use the shared offline review renderer.</p>
+          <p>These are generated artwork compositions, not native screenshots. Each background is one full image, without spatial fades or center replacement. Native safe areas, HUD, controls, motion, hit targets and accessibility require the separate checks in the <a href="PRODUCTION_PLAN.md">production plan</a>; none are established by this browser view. Reference canvases do not represent every device size.</p>
+        </details>
+
+        <div class="links"><a id="full-size" href="../../../App/Assets.xcassets/KiteHarbor100.imageset/scene.png">Open background</a><a href="README.md">Design notes</a><a href="../world-01/index.html">World map</a></div>
+      </aside>
+    </div>
+
+    <footer>Composition concept · Not a running game · Artwork and board geometry remain separate.</footer>
+  </main>
+</body>
+</html>

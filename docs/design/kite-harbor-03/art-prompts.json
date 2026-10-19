@@ -1,0 +1,635 @@
+{
+  "title": "Kite Harbor production artwork provenance",
+  "date": "2026-10-19",
+  "status": "All fifteen selected source paintings inspected; native acceptance pending",
+  "preservation": "The two original provenance documents below are retained verbatim as nested records, including every prompt, superseded attempt, inspection and landmark. Original UTF-8 document hashes and sizes are recorded for preservation checks.",
+  "generationAttemptCount": 21,
+  "selectedAssetCount": 15,
+  "original_documents": {
+    "phone-art-provenance.json": {
+      "sha256": "cc32e4124bbcf98edea03fdd61557a00ac44e9f43c8311e41436d336feec8d16",
+      "bytes": 15220
+    },
+    "tablet-art-provenance.json": {
+      "sha256": "3eae62fbcb341dda2ef74371f582a27e5cda0b407be18b02be25109ef6bf2bc0",
+      "bytes": 36784
+    }
+  },
+  "inspection": {
+    "scope": "Source-art inspection only; no native acceptance claim",
+    "selectedCount": 15,
+    "notes": [
+      "All five phone and all ten tablet paintings inspected on October 19, 2026.",
+      "Camera, three boats and dock topology stay identifiable within each family; restored sails and lights accumulate.",
+      "Lead fixture is dark at 75% and lit at 100%; fleet remains visible and ready for departure.",
+      "Central sky stays clear; no baked-in characters or material artwork blockers found."
+    ]
+  },
+  "phone_landmark": {
+    "sourceSize": [
+      887,
+      1774
+    ],
+    "leadFixtureApproximateNormalizedCenter": [
+      0.326,
+      0.064
+    ]
+  },
+  "original_records": {
+    "phone-art-provenance.json": {
+  "title": "Kite Harbor phone production paintings",
+  "mode": "built-in imagegen",
+  "date": "2026-10-19",
+  "variants": [
+    {
+      "state": 100,
+      "key": "phone100v1",
+      "status": "superseded: fourth boat and insufficient mast clearance",
+      "prompt": "Use case: stylized-concept. Asset type: FINAL PRODUCTION GAME BACKGROUND, full-bleed tall iPhone portrait aspect 1:2, target 887x1774. Create Kite Harbor at 100% restored for Starfall. Input image1 is the approved world map: use ONLY location03's graceful tiny sailboat harbor as the subject reference; ignore lettering, other locations, cast and villain. Input image2 is Lantern Landing phone production art: preserve this exact luxurious toy-diorama painted-3D material language, distant overhead camera, navy cosmic sky/violet clouds, and the same large uninterrupted central/lower negative space for the live puzzle pieces, but design the NEW harbor.\nScene: viewed from high above, pulled far back, a compact crescent rosewood quay floats in violet clouds in the upper 28-32% of the image. Exactly THREE small slender wood-and-folded-paper kite boats sit gently buoyant just above their berths. Lead boat at upper left/left center has a cream kite-shaped sail, a slender mast with a small luminous golden five-point brass mast-star (an architectural fitting, no face). Other two have pale dusty-rose and pale icy-blue kite sails. Broad kite-like paper planes with subtle fold seams, slender elegant hulls, extremely simple short rigging entirely confined above the top third. Cream ceramic mooring bollards with warm star-shaped inlays; modest warm lanterns and softly curved pennants. The nearest mooring and lead mast-star are the readable restoration landmarks. Lead star approximately x28%, y10-15%; entire harbor finishes above y32%. Same shared rosewood/cream/gold/lavender world as reference.\nAt completion all three sails open, mooring stars lit, pennants gently lifted; a few tiny light sparkles close to the boats suggest buoyancy. Boats remain clearly visible at home above their berths; no departing fleet vanishing from frame. This is one still painting, no cutscene.\nComposition: upper scenic harbor plus sparse cropped lower-corner cloud/ceramic mooring accents; the full center from x12..88%, y36..85% is continuous dark atmospheric starry sky, subtly textured, naturally quiet. NO board-shaped patch, vignette hole, rectangle, local blur, clearing/fade, center mask or separately composed panel. Whole image continuous, deliberate native portrait composition, preserve dark central playfield and small scenic scale. No large stars in middle, no characters, faces, people, UI, numbers, text, logos, grid or watermarks. No bridge copying from reference, no sea/water ocean; this is a sky harbor. No boats/ropes crossing central play area. Single polished image, not a contact sheet.",
+      "file": "exec-749f3822-eda0-4ef3-bbbe-78bc581bb361.png",
+      "refs": [
+        "/Users/lbeezr/.codex-workspaces/worktrees/ios-a412ced0-1da1-4bc5-8682-a9ef02f52407/Starfall/docs/design/world-01/map-v1.png",
+        "/Users/lbeezr/.codex-workspaces/worktrees/ios-a412ced0-1da1-4bc5-8682-a9ef02f52407/Starfall/App/Assets.xcassets/LanternLanding100.imageset/scene.png"
+      ],
+      "family": "phone",
+      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-749f3822-eda0-4ef3-bbbe-78bc581bb361.png",
+      "sha256": "11e31e168c0160bbd7d96d04f2362a6e1bc9be926f263f8c092b0209f7d06e3e",
+      "pixels": [
+        887,
+        1774
+      ]
+    },
+    {
+      "state": 100,
+      "key": "phone100v2",
+      "status": "selected",
+      "prompt": "Edit target: attached Kite Harbor phone background. Preserve the polished painted3D style, exact 1:2 aspect887x1774, continuous navy sky/clouds and bottom foreground. This is a precise production composition correction. Make exactly THREE boats: remove the small fourth boat currently behind the main cream-sailed boat, including its extra mast and rigging. Keep the cream lead boat, pink boat, and blue boat, each with its own berth. Slightly pull the entire upper harbor farther back so its three boats and quay are around15% smaller, with a comfortable strip of navy sky above the tallest mast. The lead mast's golden star MUST be around x31%, y7% of the complete image, not against the top edge; harbor should still end before y32%. This is important for camera/notch clearance. Retain a clear luminous architectural maststar as the finish landmark and all three open pale sails. Preserve the complete dark central playfield with natural faint stars, no patch/mask/vignette hole. Do not add a fourth boat, characters, faces, labels, UI or any elements in the open field. Keep all other styling and lower-corner accents. One finished continuous painting.",
+      "file": "exec-f3618df2-b69f-4cd6-bee5-1aca8cf6b256.png",
+      "refs": [
+        "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-749f3822-eda0-4ef3-bbbe-78bc581bb361.png"
+      ],
+      "family": "phone",
+      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-f3618df2-b69f-4cd6-bee5-1aca8cf6b256.png",
+      "sha256": "dc2235c524d5a5464dcd433f24d4ab4f861cf5e25305823b4c30a9aec50bf23c",
+      "pixels": [
+        887,
+        1774
+      ],
+      "asset": "App/Assets.xcassets/KiteHarbor100.imageset/scene.png"
+    },
+    {
+      "state": 75,
+      "key": "phone75",
+      "status": "selected",
+      "prompt": "Edit the attached final Kite Harbor background into a prior restoration milestone. Exact same887x1774 phone canvas, same high overhead camera, same harbor outline, EXACTLY the same THREE boats (cream left, pink middle, blue right) in the same berths, same hulls, masts, canopy, crates, quay, lowerforeground, cloud silhouettes and starfield. Preserve all coordinates, proportions and native full-image composition. Keep open dark central/lower field identical; no center fade/mask/patch. No characters, people, faces, UI, text, numbers, extra boats or additional ropes. Change only the restoration state described. The mast-star is brass architectural decoration not a character. One continuous polished painted3D production image. 75%: almost ready. Keep all three sails unfurled, pale cream/rose/blue and all restored dock/mooring lamps glowing. Turn OFF ONLY the lead cream boat's tall mast star at x32.5%, y6.5%: it is an unmistakable dark bronze star silhouette with no golden halo. Keep its sail's ornamental star non-emissive. The three boat hulls rest just slightly lower in their existing berths rather than lifted; remove lift sparkles beneath them. Flags softly extended. This must be visually almost complete, with a single clearly unlit lead mast star anticipating100%. Preserve all other light already restored.",
+      "file": "exec-08e22c71-c94a-46f7-a415-9db4215a1cbb.png",
+      "refs": [
+        "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-f3618df2-b69f-4cd6-bee5-1aca8cf6b256.png"
+      ],
+      "family": "phone",
+      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-08e22c71-c94a-46f7-a415-9db4215a1cbb.png",
+      "sha256": "391cf6a353264ea0134f75692e5baefd6d75002b3dafb06a7534f78fc578752c",
+      "pixels": [
+        887,
+        1774
+      ],
+      "asset": "App/Assets.xcassets/KiteHarbor075.imageset/scene.png"
+    },
+    {
+      "state": 0,
+      "key": "phone0",
+      "status": "selected",
+      "prompt": "Edit the attached final Kite Harbor background into a prior restoration milestone. Exact same887x1774 phone canvas, same high overhead camera, same harbor outline, EXACTLY the same THREE boats (cream left, pink middle, blue right) in the same berths, same hulls, masts, canopy, crates, quay, lowerforeground, cloud silhouettes and starfield. Preserve all coordinates, proportions and native full-image composition. Keep open dark central/lower field identical; no center fade/mask/patch. No characters, people, faces, UI, text, numbers, extra boats or additional ropes. Change only the restoration state described. The mast-star is brass architectural decoration not a character. One continuous polished painted3D production image. 0%: dormant and faded, not destroyed. All three cream/pink/blue sails are tightly furled/slack against their masts, so much more of the empty harbor sky/basin shows between the thin mast silhouettes; retain each boat hull at its same berth. Every mast star, every mooring star, every lantern (including lowerforeground) is unlit cold brass, no warm halo/reflection. Canopycloth droops slightly but its supports unchanged; flags limp. Palette dusk blue-gray, faded pale sail colors, slightly weathered rosewood, cool violet clouds. Dark harbor basin with no glimmer trails or lift sparkle. No smashed docks or broken poles. Keep starfield and lighting in the open playfield stable enough for the same piece readability. Physical folded-sail change is essential, not just a dim version of the restored state.",
+      "file": "exec-12d1a012-f9f2-4e41-b96b-f44f551eed4d.png",
+      "refs": [
+        "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-f3618df2-b69f-4cd6-bee5-1aca8cf6b256.png"
+      ],
+      "family": "phone",
+      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-12d1a012-f9f2-4e41-b96b-f44f551eed4d.png",
+      "sha256": "74424ba367bdd23a48489b9c1bc5e17846b10ff73ba5179ee535ce22ec4af131",
+      "pixels": [
+        887,
+        1774
+      ],
+      "asset": "App/Assets.xcassets/KiteHarbor000.imageset/scene.png"
+    },
+    {
+      "state": 50,
+      "key": "phone50",
+      "status": "selected",
+      "prompt": "Edit only the restoration state of the attached Kite Harbor production background. Maintain exact887x1774 image size/camera, same3boat hulls and masts in exactsameberths, identicalquay/canopy/crates/cloudsilhouettes/stars/bottomforeground. Do not change topology or move any structural element. Continuous full painting; center remains identical dark naturally textured sky, no patch/mask/fade rectangle. No characters/faces/people/UI/text/labels/numbers/newboats or extra ropes. Polished toy-diorama painted3D. Make50% restoration. The lead cream sail and central pink sail are fully open, their colors gently restored. The right blue sail is still narrowly furled around its unchanged mast. All three mast-tip stars remain DARK including the prominent lead brass star atx32.6%y6.4%, no halo. About half the dock lamps/mooringstars glow: keep left/near-side and center-front lamps and ceramic star inlays warm, but rightmost quay and back-right workshop lamps remain unlit. Preserve any already restored nearest leftmooringincludingbottomleft foreground; bottomright foregroundmooringremains dark. Flags begin to curve in a breeze. Boats still rest in their berths, no lift sparkles or departure. Clear mid-progress physical change, not only brightness. Keep identical backgroundskyandcloudshapes.",
+      "file": "exec-3d27164d-5335-41c6-8507-e5c967ed27c9.png",
+      "refs": [
+        "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-08e22c71-c94a-46f7-a415-9db4215a1cbb.png"
+      ],
+      "family": "phone",
+      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-3d27164d-5335-41c6-8507-e5c967ed27c9.png",
+      "sha256": "29c48f3a15881c892616f6944266ecbfaf8b4d983236394fbaec693f628df049",
+      "pixels": [
+        887,
+        1774
+      ],
+      "asset": "App/Assets.xcassets/KiteHarbor050.imageset/scene.png"
+    },
+    {
+      "state": 25,
+      "key": "phone25v1",
+      "status": "superseded: first light on cloth ornament rather than ceramic mooring",
+      "prompt": "Edit only the restoration state of the attached Kite Harbor production background. Maintain exact887x1774 image size/camera, same3boat hulls and masts in exactsameberths, identicalquay/canopy/crates/cloudsilhouettes/stars/bottomforeground. Do not change topology or move any structural element. Continuous full painting; center remains identical dark naturally textured sky, no patch/mask/fade rectangle. No characters/faces/people/UI/text/labels/numbers/newboats or extra ropes. Polished toy-diorama painted3D. Make25% restoration from dormant0. Only the left lead cream sail is beginning to open: partially lifted triangular cloth, about half its fullyrestored width; it still has slack folds. Middle pink and right blue sails remain tightly furled against their masts. Nearest front-left quay mooring's star inlay and its lantern glow softly, with one small warm reflection on adjacent wood. Also light the nearest bottom-left foregroundmooringinlay aspartofsamefirstwarmsection; all other lanterns/mooringstars/maststars stay dark, especially prominent leadtipstar. Palette mostly cool fadedblueviolet with small returned cream sailcolor. Flags mostly limp. No lift sparkles, boats stay in sameberths. Physical firstsailopening + firstwarmmooring; not a completedharbor.",
+      "file": "exec-90e2a9e8-23c3-471f-b47c-ae25af2c2af9.png",
+      "refs": [
+        "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-12d1a012-f9f2-4e41-b96b-f44f551eed4d.png"
+      ],
+      "family": "phone",
+      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-90e2a9e8-23c3-471f-b47c-ae25af2c2af9.png",
+      "sha256": "34529eb2b62624826c939b0cba081d42f1334c629df446937306f3acbab436ec",
+      "pixels": [
+        887,
+        1774
+      ]
+    },
+    {
+      "state": 25,
+      "key": "phone25v2",
+      "status": "selected",
+      "prompt": "Precise tiny lighting correction to this 25% Kite Harbor phone painting. Preserve every pixel of composition, the exactly3boats and their current partial/furled sail states, canvas887x1774, darkness, clouds andsky. At the nearest front-left ceramic harbor mooring (approximately x17%,y21% of wholeimage, above the left end of the front quay), light its existing star-shaped inlay and the lantern sitting on top with a soft warmgold glow. This is the first mooring coming backtolife. The little star ornament on the cloth banner immediately to its lower-right should return to ordinary unlit gold cloth decoration, not a new light source. Keep bottom-leftforegroundmooringstar alreadyglowing. All other lanterns, maststars, mooringstars remainunlit. Do not add/remove/reshape anything and do not move boats, maststar, flags or quay. No characters or text. One continuous productionpainting.",
+      "file": "exec-21840913-8e4b-41e4-b4ef-a7aeb4b698df.png",
+      "refs": [
+        "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-90e2a9e8-23c3-471f-b47c-ae25af2c2af9.png"
+      ],
+      "family": "phone",
+      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-21840913-8e4b-41e4-b4ef-a7aeb4b698df.png",
+      "sha256": "6b27f8e9ea0f731756f4c9199c39b507dd67c2a06108510cdda7bc498db09bdf",
+      "pixels": [
+        887,
+        1774
+      ],
+      "asset": "App/Assets.xcassets/KiteHarbor025.imageset/scene.png"
+    }
+  ]
+}
+,
+    "tablet-art-provenance.json": {
+  "generator": "built-in image_gen",
+  "scope": "Tablet portrait and landscape; generated bytes copied without pixel edits",
+  "generations": [
+    {
+      "family": "TabletPortrait",
+      "state": 100,
+      "revision": 1,
+      "status": "superseded_registration",
+      "prompt": "Use case: style-transfer / precise-object-edit. Edit image 1 into the fully restored KITE HARBOR location while preserving its polished 3D storybook material language, distant overhead camera, violet cloud border and continuous deep navy starry negative-space field. Image 2 is supporting style/reference only: location 03 at the bottom-right shows the elegant small kite-sailing craft. Do not copy map labels, characters, numbers or title. Output a single continuous 3:4 portrait game background, ideally 1086 x 1448 pixels, opaque. Replace the lantern/crossing structures with a modest broad curved rosewood quay with cream ceramic mooring posts and exactly THREE small paper-kite boats, slender cream/rosewood hulls, simple restrained rigging, broad folded-paper planes as sails in pearlescent mint, lilac and pale coral. They read as a little floating sky harbor, not sea boats in water. Main fleet and quay live across the upper 25-30% of the image and outer side corners only; camera is zoomed well back, viewed from high above. Reserve the central/lower play area, x=0.18 to0.84 and y=0.28 to0.88, as naturally quiet dark navy sky, no ropes/sails/docks/bright stars or props behind it. Avoid large lower foreground structure. Choose lead mint-sailed boat on upper left with a small elegant eight-point gold mast-star fixture at about x=.23,y=.17. The two smaller boats fan toward upper-center and upper-right, all sails wholly above the central board area. 100% state: all three sails opened and gently full of wind, two peripheral flags curving, mooring lamps warm, the lead mast star glowing gold; boats look light and buoyant just above their fixed berths with tiny soft hover shadows. No travel trails. One continuous illustrated world with natural navy sky everywhere between clouds; no added center mask, panel, blur strip or hard transition. No characters, faces, collectible stars, text, UI, grid, logos or watermark. The lone mast-star and ceramic star-shaped fittings are architectural ornaments without faces. Keep harbor uncluttered, welcoming, toy-like, rendered as beautifully lit tangible materials matching image 1.",
+      "references": [
+        "/Users/lbeezr/.codex-workspaces/worktrees/ios-a412ced0-1da1-4bc5-8682-a9ef02f52407/Starfall/App/Assets.xcassets/LanternLandingTabletPortrait100.imageset/scene.png",
+        "/Users/lbeezr/.codex-workspaces/worktrees/ios-a412ced0-1da1-4bc5-8682-a9ef02f52407/Starfall/docs/design/world-01/map-v1.png"
+      ],
+      "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-d0dba80e-f4a9-41ba-8be1-61085ff02078.png",
+      "sha256": "2ff02ab6c35d2da7a5bd3677c83d7cab53bed57751ccf29d9b0baa05de0b57d3",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "bytes": 2410948,
+      "referenceMetadata": [
+        {
+          "path": "/Users/lbeezr/.codex-workspaces/worktrees/ios-a412ced0-1da1-4bc5-8682-a9ef02f52407/Starfall/App/Assets.xcassets/LanternLandingTabletPortrait100.imageset/scene.png",
+          "sha256": "266da45162db39b13693456c7be7eb675950e5c93a26ee0de1e93dd3664a4c17",
+          "bytes": 2532395,
+          "dimensions": [
+            1086,
+            1448
+          ]
+        },
+        {
+          "path": "/Users/lbeezr/.codex-workspaces/worktrees/ios-a412ced0-1da1-4bc5-8682-a9ef02f52407/Starfall/docs/design/world-01/map-v1.png",
+          "sha256": "a4cbd12fc3ae5941dc33795f01b44253a4e99519aaf052be949717a7e490394b",
+          "bytes": 2865261,
+          "dimensions": [
+            1024,
+            1536
+          ]
+        }
+      ]
+    },
+    {
+      "family": "TabletPortrait",
+      "state": 100,
+      "revision": 2,
+      "status": "selected",
+      "prompt": "Use case: precise-object-edit. This is the approved fully restored Kite Harbor master. Make ONLY a tiny lighting/fixture registration correction. Preserve every pixel of camera, quay, hulls, sail silhouettes, clouds, navy sky, framing and output dimensions. Change the glowing star finials at the very tips of all three masts to small plain brass caps, so none of those upper tips is a focal light. On the lead mint/cream-sailed boat at left, turn its existing star ornament at the mast/sail junction (near x=.22, y=.16) into the ONE prominent warm glowing golden mast-star fixture, physically attached to the mast's short crosspiece. Do not add a new star elsewhere or change rigging. This lower fixture is the focus of the later final restoration. Other sail star ornaments remain subdued pale decorative embroidery, not emissive lights. Keep warm mooring lanterns and the fully open buoyant sails unchanged. No faces, characters, text, UI or grid. One continuous background; no center masks or local blur patches. Keep exactly the same image dimensions.",
+      "references": [
+        "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-d0dba80e-f4a9-41ba-8be1-61085ff02078.png"
+      ],
+      "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-ced0b1f4-08be-4112-9881-fd7a4ccedb1c.png",
+      "packagedPath": "App/Assets.xcassets/KiteHarborTabletPortrait100.imageset/scene.png",
+      "sha256": "acc2a38435a5ec5c491de942e948485c272088aa99a0d99e4a74cfb1aefb784c",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "bytes": 2289457,
+      "referenceMetadata": [
+        {
+          "path": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-d0dba80e-f4a9-41ba-8be1-61085ff02078.png",
+          "sha256": "2ff02ab6c35d2da7a5bd3677c83d7cab53bed57751ccf29d9b0baa05de0b57d3",
+          "bytes": 2410948,
+          "dimensions": [
+            1086,
+            1448
+          ]
+        }
+      ]
+    },
+    {
+      "family": "TabletLandscape",
+      "state": 100,
+      "revision": 1,
+      "status": "superseded_registration",
+      "prompt": "Use case: style-transfer / precise-object-edit. Edit image 1 into the fully restored KITE HARBOR location while preserving its polished 3D storybook material language, distant overhead camera, violet cloud border and continuous deep navy starry negative-space field. Replace the cloth bridge and anchors entirely with the harbor specified below. Image 2 is supporting style/reference only: location 03 at bottom-right shows the elegant small kite-sailing craft. Do not copy map labels, characters, numbers or title. Output one continuous 4:3 landscape game background, ideally 1448 x 1086 pixels, opaque. A modest broad curved rosewood quay with cream ceramic mooring posts and exactly THREE small paper-kite boats, slender cream/rosewood hulls, simple restrained rigging, broad folded-paper planes as sails in pearlescent mint, lilac and pale coral. They read as a little floating sky harbor, no water. The three boats and quay spread in an airy shallow fan along the TOP EDGE and outer corners, main detailed silhouettes confined above y=.24; lower small corner mooring hints only. The distant high overhead camera has zoomed well back. Keep the native play area x=.23 to.79,y=.27 to.91 naturally quiet dark navy sky with no rigging, ropes, sails, docks, objects or bright stars crossing it. The lead mint-sailed boat is upper-left; its small elegant eight-point gold mast-star fixture sits near x=.20,y=.18, outside the board. Two smaller boats fan toward upper-center and upper-right, with all sails well above the open board sky. 100% state: three sails opened and gently full of wind, two peripheral flags curve, mooring lamps warm, lead mast star glows gold; boats feel light and buoyant just above fixed berths with tiny hover shadows. No travel trails. One continuous illustrated world; natural quiet sky between violet clouds, no added center mask/panel/blur strip/hard transition. No characters, faces, collectible stars, text, UI, grid, logos or watermark. The sole mast-star and ceramic star-shaped fittings are architectural ornaments without faces. Keep the harbor uncluttered, welcoming and toy-like with beautifully lit tangible materials matching image 1.",
+      "references": [
+        "/Users/lbeezr/.codex-workspaces/worktrees/ios-a412ced0-1da1-4bc5-8682-a9ef02f52407/Starfall/App/Assets.xcassets/RibbonCrossingTabletLandscape100.imageset/scene.png",
+        "/Users/lbeezr/.codex-workspaces/worktrees/ios-a412ced0-1da1-4bc5-8682-a9ef02f52407/Starfall/docs/design/world-01/map-v1.png"
+      ],
+      "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-dee40733-f835-451f-aa79-746554e6f49f.png",
+      "sha256": "58e46b5da1b10e25ed4d6879d46aed3e9254059ae89428e4bb9baf267d8aa60f",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "bytes": 2445938,
+      "referenceMetadata": [
+        {
+          "path": "/Users/lbeezr/.codex-workspaces/worktrees/ios-a412ced0-1da1-4bc5-8682-a9ef02f52407/Starfall/App/Assets.xcassets/RibbonCrossingTabletLandscape100.imageset/scene.png",
+          "sha256": "1c53e027e3d5decc83a108063e1f3836cb75a89f2279ee2fd484ad66c57f87f9",
+          "bytes": 2352081,
+          "dimensions": [
+            1448,
+            1086
+          ]
+        },
+        {
+          "path": "/Users/lbeezr/.codex-workspaces/worktrees/ios-a412ced0-1da1-4bc5-8682-a9ef02f52407/Starfall/docs/design/world-01/map-v1.png",
+          "sha256": "a4cbd12fc3ae5941dc33795f01b44253a4e99519aaf052be949717a7e490394b",
+          "bytes": 2865261,
+          "dimensions": [
+            1024,
+            1536
+          ]
+        }
+      ]
+    },
+    {
+      "family": "TabletLandscape",
+      "state": 100,
+      "revision": 2,
+      "status": "selected",
+      "prompt": "Use case: precise-object-edit. This is the approved fully restored Kite Harbor master. Make ONLY a tiny lighting/fixture registration correction. Preserve every pixel of camera, quay, hulls, sail silhouettes, clouds, navy sky, framing and output dimensions. Change the glowing star finials at the very tips of all three masts to small plain brass caps, so none of those upper tips is a focal light. On the lead mint/cream-sailed boat at left, turn its existing star ornament at the mast/sail junction (near x=.145, y=.19) into the ONE prominent warm glowing golden mast-star fixture, physically attached to the mast's short crosspiece. Do not add a new star elsewhere or change rigging. This lower fixture is the focus of the later final restoration. Other sail star ornaments remain subdued pale decorative embroidery, not emissive lights. Keep warm mooring lanterns and the fully open buoyant sails unchanged. No faces, characters, text, UI or grid. One continuous background; no center masks or local blur patches. Keep exactly the same image dimensions.",
+      "references": [
+        "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-dee40733-f835-451f-aa79-746554e6f49f.png"
+      ],
+      "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-b698303b-52f2-45e3-a328-dbb262522150.png",
+      "packagedPath": "App/Assets.xcassets/KiteHarborTabletLandscape100.imageset/scene.png",
+      "sha256": "a27f8ff4e3e327cb4f06de8223199d565a5ff11157f4768bcec56dc6fcd20ed6",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "bytes": 2392855,
+      "referenceMetadata": [
+        {
+          "path": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-dee40733-f835-451f-aa79-746554e6f49f.png",
+          "sha256": "58e46b5da1b10e25ed4d6879d46aed3e9254059ae89428e4bb9baf267d8aa60f",
+          "bytes": 2445938,
+          "dimensions": [
+            1448,
+            1086
+          ]
+        }
+      ]
+    },
+    {
+      "family": "TabletPortrait",
+      "state": 0,
+      "revision": 1,
+      "status": "selected",
+      "prompt": "Use case: precise-object-edit. Derive state 0% from this exact fully restored Kite Harbor master. Output same dimensions and framing. 0% restoration: still and unpowered harbor. Keep the EXACT three hulls, three mast positions, quay geometry, ceramic posts, ropes' anchor points, clouds and sky unchanged. Fold all THREE sails into visibly gathered/drooping narrow cloth attached to their original masts; broad kite-paper planes are furled with recognizable mint/lilac/coral colors now muted grey pastel. All flags hang limp rather than waving. Every mooring lantern and architectural star light is OFF, including the large star fixture on the left lead boat at its mint sail/mast junction around x=.254,y=.133; all are dark matte bronze/cream objects with no warm emissive glow. No golden hover sparkles. Boat hulls remain in exactly their original berths; do not move boats, remove boats, add boats or redraw the docks. Make the cold quiet mood through unlit fittings and folded sails only, not a global dark overlay. Clouds and central navy sky preserve their precise original contours and subtle texture. Hard invariants: unchanged camera, pixel registration, background sky and cloud silhouettes, quay footprint, three boat hulls and masts, object count, main light fixture location, and clear central playfield. Only the described sail/flag poses and local light emission may change. No faces, characters, text, UI, grid, extra props, local blur, center mask, cut or seam. Preserve the existing polished tangible 3D storybook art style.",
+      "references": [
+        "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-ced0b1f4-08be-4112-9881-fd7a4ccedb1c.png"
+      ],
+      "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-e1cebf83-0ac6-4fd2-abdd-b57896b9aa65.png",
+      "packagedPath": "App/Assets.xcassets/KiteHarborTabletPortrait000.imageset/scene.png",
+      "sha256": "c6947cf7e68b84aa21c4d63473b78ec27b2f3112b2194c6a684d1352f06b62b8",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "bytes": 2199381,
+      "referenceMetadata": [
+        {
+          "path": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-ced0b1f4-08be-4112-9881-fd7a4ccedb1c.png",
+          "sha256": "acc2a38435a5ec5c491de942e948485c272088aa99a0d99e4a74cfb1aefb784c",
+          "bytes": 2289457,
+          "dimensions": [
+            1086,
+            1448
+          ]
+        }
+      ]
+    },
+    {
+      "family": "TabletPortrait",
+      "state": 25,
+      "revision": 1,
+      "status": "superseded_secondary_sails_opened_too_far",
+      "prompt": "Use case: precise-object-edit. Derive state 25% from this exact fully restored Kite Harbor master. Output same dimensions and framing. 25% restoration: ONLY the nearest mooring on the LEFT has returned to warm light, including its closest single lantern and ceramic star fitting. All other lanterns/mooring stars remain off and dark matte bronze/cream. One sail begins to lift: the LEFT mint lead boat's sail opens roughly halfway into a modest little triangle; the CENTER lilac and RIGHT coral sails remain gathered/drooping narrow cloth attached to their original masts. Left flag lifts slightly while center/right flags hang limp. Keep the large star fixture on the left lead boat at its mint sail/mast junction around x=.254,y=.133 DARK, unlit, no gold emissive edge. Boats remain at their original three berths; no hover sparks. Hard invariants: preserve camera and pixel registration, precise background sky and cloud silhouettes, quay footprint, all three hulls and mast positions, object count, focal fixture position, and open dark central board field. Only the described sail/flag poses and local lamp emission may change. No faces, characters, text, UI, grid, extra props, local blur, center mask, cut or seam. Preserve the existing polished tangible 3D storybook material style.",
+      "references": [
+        "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-ced0b1f4-08be-4112-9881-fd7a4ccedb1c.png"
+      ],
+      "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-72175e10-9d87-4f13-a238-8f6a45d4f3e7.png",
+      "sha256": "3db81d0683e069a124a2e9ec581dbdfecd1808161cdd86f8ece9e9cab61ce0b2",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "bytes": 2233068,
+      "referenceMetadata": [
+        {
+          "path": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-ced0b1f4-08be-4112-9881-fd7a4ccedb1c.png",
+          "sha256": "acc2a38435a5ec5c491de942e948485c272088aa99a0d99e4a74cfb1aefb784c",
+          "bytes": 2289457,
+          "dimensions": [
+            1086,
+            1448
+          ]
+        }
+      ]
+    },
+    {
+      "family": "TabletPortrait",
+      "state": 25,
+      "revision": 2,
+      "status": "selected",
+      "prompt": "Use case: precise-object-edit. This exact image is Kite Harbor at 0% restoration. Make a minimal edit to show 25% restoration. Change ONLY these two things on the LEFT lead boat/berth: (1) lift just its mint sail from the gathered bundle into a half-open small triangular shape, with a gentle lift to its own green flag, (2) light the nearest LEFT ceramic mooring-star and its adjacent lantern in warm gold. Keep the lead boat's mast-star unlit matte dark bronze. IMPORTANT: the CENTER lilac boat and RIGHT coral boat must keep their existing tightly FURLED/DROOPING sails exactly as shown in this input, with their flags limp and lights OFF. Do not open either of those two sails. Keep every other lamp and ceramic mooring star dark. Absolutely preserve the exact three hull positions and sizes, mast positions, original dock shape, cloud silhouettes, background sky, camera, framing and dimensions. No new rigging, objects, stars, characters, faces, text, grid or UI. No center fade/mask/blur. A tiny first recovery: one lifting mint sail and one warm berth, the rest remains still. Preserve the unpowered input's other details precisely.",
+      "references": [
+        "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-e1cebf83-0ac6-4fd2-abdd-b57896b9aa65.png"
+      ],
+      "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-b38fe19c-341d-4900-a648-dbb42633a762.png",
+      "packagedPath": "App/Assets.xcassets/KiteHarborTabletPortrait025.imageset/scene.png",
+      "sha256": "39ebd52982fd2ff613b503d1bd3c1b5a6843e89a2f19161d2078fd855a465105",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "bytes": 2155949,
+      "referenceMetadata": [
+        {
+          "path": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-e1cebf83-0ac6-4fd2-abdd-b57896b9aa65.png",
+          "sha256": "c6947cf7e68b84aa21c4d63473b78ec27b2f3112b2194c6a684d1352f06b62b8",
+          "bytes": 2199381,
+          "dimensions": [
+            1086,
+            1448
+          ]
+        }
+      ]
+    },
+    {
+      "family": "TabletPortrait",
+      "state": 50,
+      "revision": 1,
+      "status": "selected",
+      "prompt": "Use case: precise-object-edit. Derive state 50% from this exact fully restored Kite Harbor master. Output same dimensions and framing. 50% restoration: several sails unfold. The CENTER lilac and RIGHT coral boat sails now open to their recognizable broad triangular shapes; the LEFT mint lead sail is partly open, about three-quarters of its full size, still with a soft fold so it is not quite ready. The left and center harbor mooring lanterns and ceramic star fittings glow warm; the far-right outer mooring and bottom corner fittings remain off. Flags begin drawing long soft curves. Keep the large star fixture on the left lead boat at its mint sail/mast junction around x=.254,y=.133 DARK matte bronze/violet, unlit, no gold emissive edge; this final lead mast light must not switch on yet. All three hulls stay at the exact same berths. No hover sparks. Hard invariants: preserve camera and pixel registration, precise background sky and cloud silhouettes, quay footprint, all three hulls and mast positions, object count, focal fixture position, and open dark central board field. Only the described sail/flag poses and local lamp emission may change. No faces, characters, text, UI, grid, extra props, local blur, center mask, cut or seam. Preserve the existing polished tangible 3D storybook material style.",
+      "references": [
+        "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-ced0b1f4-08be-4112-9881-fd7a4ccedb1c.png"
+      ],
+      "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-7d3584bf-9474-49a4-a4f0-4eb842f8d65b.png",
+      "packagedPath": "App/Assets.xcassets/KiteHarborTabletPortrait050.imageset/scene.png",
+      "sha256": "68fc31a4ea5b2e5e4b9c17e590e62dc6af614771049284cd17bd60ff69e2e6cd",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "bytes": 2230794,
+      "referenceMetadata": [
+        {
+          "path": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-ced0b1f4-08be-4112-9881-fd7a4ccedb1c.png",
+          "sha256": "acc2a38435a5ec5c491de942e948485c272088aa99a0d99e4a74cfb1aefb784c",
+          "bytes": 2289457,
+          "dimensions": [
+            1086,
+            1448
+          ]
+        }
+      ]
+    },
+    {
+      "family": "TabletPortrait",
+      "state": 75,
+      "revision": 1,
+      "status": "selected",
+      "prompt": "Use case: precise-object-edit. Derive state 75% from this exact fully restored Kite Harbor master. Output same dimensions and framing. 75% restoration: the whole harbor is almost ready. Keep all mooring lanterns warm and all three sails open, flags stretched in gentle breeze, but turn OFF the large star fixture on the left lead boat at its mint sail/mast junction around x=.254,y=.133: it must be a visibly dark matte bronze/violet star with no glow or bright rim. The fleet remains at the same three berths and the lead sail is ready. Remove any golden hover sparkle under hulls; keep hull position exactly unchanged. The dark lead mast-star is the one final thing still missing. Other sail embroidery remains pale subdued cloth. This is distinct from complete100 through that dark fixture. Hard invariants: unchanged camera, pixel registration, background sky and cloud silhouettes, quay footprint, three boat hulls and masts, object count, main light fixture location, and clear central playfield. Only the described sail/flag poses and local light emission may change. No faces, characters, text, UI, grid, extra props, local blur, center mask, cut or seam. Preserve the existing polished tangible 3D storybook art style.",
+      "references": [
+        "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-ced0b1f4-08be-4112-9881-fd7a4ccedb1c.png"
+      ],
+      "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-7e51204d-8285-45f6-b478-c5651d0cbb1e.png",
+      "packagedPath": "App/Assets.xcassets/KiteHarborTabletPortrait075.imageset/scene.png",
+      "sha256": "dffaab4b220595555723162375e011409d0799b901ffe72828be2894267cf584",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "bytes": 2224425,
+      "referenceMetadata": [
+        {
+          "path": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-ced0b1f4-08be-4112-9881-fd7a4ccedb1c.png",
+          "sha256": "acc2a38435a5ec5c491de942e948485c272088aa99a0d99e4a74cfb1aefb784c",
+          "bytes": 2289457,
+          "dimensions": [
+            1086,
+            1448
+          ]
+        }
+      ]
+    },
+    {
+      "family": "TabletLandscape",
+      "state": 0,
+      "revision": 1,
+      "status": "selected",
+      "prompt": "Use case: precise-object-edit. Derive state 0% from this exact fully restored Kite Harbor master. Output same dimensions and framing. 0% restoration: still and unpowered harbor. Keep the EXACT three hulls, three mast positions, quay geometry, ceramic posts, ropes' anchor points, clouds and sky unchanged. Fold all THREE sails into visibly gathered/drooping narrow cloth attached to their original masts; broad kite-paper planes are furled with recognizable mint/lilac/coral colors now muted grey pastel. All flags hang limp rather than waving. Every mooring lantern and architectural star light is OFF, including the small star fixture attached to the left lead mast just below its cap, around x=.092,y=.115; all are dark matte bronze/cream objects with no warm emissive glow. No golden hover sparkles. Boat hulls remain in exactly their original berths; do not move boats, remove boats, add boats or redraw the docks. Make the cold quiet mood through unlit fittings and folded sails only, not a global dark overlay. Clouds and central navy sky preserve their precise original contours and subtle texture. Hard invariants: unchanged camera, pixel registration, background sky and cloud silhouettes, quay footprint, three boat hulls and masts, object count, main light fixture location, and clear central playfield. Only the described sail/flag poses and local light emission may change. No faces, characters, text, UI, grid, extra props, local blur, center mask, cut or seam. Preserve the existing polished tangible 3D storybook art style.",
+      "references": [
+        "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-b698303b-52f2-45e3-a328-dbb262522150.png"
+      ],
+      "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-60bb2244-f485-4e27-8bbe-2c2705d7af95.png",
+      "packagedPath": "App/Assets.xcassets/KiteHarborTabletLandscape000.imageset/scene.png",
+      "sha256": "a38b0f743ac1021f65450738ca083eb41d05da69a739cc2d6ec8ae698c07cb66",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "bytes": 2388764,
+      "referenceMetadata": [
+        {
+          "path": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-b698303b-52f2-45e3-a328-dbb262522150.png",
+          "sha256": "a27f8ff4e3e327cb4f06de8223199d565a5ff11157f4768bcec56dc6fcd20ed6",
+          "bytes": 2392855,
+          "dimensions": [
+            1448,
+            1086
+          ]
+        }
+      ]
+    },
+    {
+      "family": "TabletLandscape",
+      "state": 25,
+      "revision": 1,
+      "status": "superseded_secondary_sails_opened_too_far",
+      "prompt": "Use case: precise-object-edit. Derive state 25% from this exact fully restored Kite Harbor master. Output same dimensions and framing. 25% restoration: ONLY the nearest mooring on the LEFT has returned to warm light, including its closest single lantern and ceramic star fitting. All other lanterns/mooring stars remain off and dark matte bronze/cream. One sail begins to lift: the LEFT mint lead boat's sail opens roughly halfway into a modest little triangle; the CENTER lilac and RIGHT coral sails remain gathered/drooping narrow cloth attached to their original masts. Left flag lifts slightly while center/right flags hang limp. Keep the small star fixture attached to the left lead mast just below its cap, around x=.092,y=.115 DARK, unlit, no gold emissive edge. Boats remain at their original three berths; no hover sparks. Hard invariants: preserve camera and pixel registration, precise background sky and cloud silhouettes, quay footprint, all three hulls and mast positions, object count, focal fixture position, and open dark central board field. Only the described sail/flag poses and local lamp emission may change. No faces, characters, text, UI, grid, extra props, local blur, center mask, cut or seam. Preserve the existing polished tangible 3D storybook material style.",
+      "references": [
+        "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-b698303b-52f2-45e3-a328-dbb262522150.png"
+      ],
+      "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-55688d08-eb13-4d4a-98d0-2c6607fddd68.png",
+      "sha256": "c3206bcf6ba6e664df16b56c2f3e4fe7c9b6cfa2bd0dd41322a42a7de8552ea0",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "bytes": 2376505,
+      "referenceMetadata": [
+        {
+          "path": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-b698303b-52f2-45e3-a328-dbb262522150.png",
+          "sha256": "a27f8ff4e3e327cb4f06de8223199d565a5ff11157f4768bcec56dc6fcd20ed6",
+          "bytes": 2392855,
+          "dimensions": [
+            1448,
+            1086
+          ]
+        }
+      ]
+    },
+    {
+      "family": "TabletLandscape",
+      "state": 25,
+      "revision": 2,
+      "status": "selected",
+      "prompt": "Use case: precise-object-edit. This exact image is Kite Harbor at 0% restoration. Make a minimal edit to show 25% restoration. Change ONLY these two things on the LEFT lead boat/berth: (1) lift just its mint sail from the gathered bundle into a half-open small triangular shape, with a gentle lift to its own green flag, (2) light the nearest LEFT ceramic mooring-star and its adjacent lantern in warm gold. Keep the lead boat's mast-star unlit matte dark bronze. IMPORTANT: the CENTER lilac boat and RIGHT coral boat must keep their existing tightly FURLED/DROOPING sails exactly as shown in this input, with their flags limp and lights OFF. Do not open either of those two sails. Keep every other lamp and ceramic mooring star dark. Absolutely preserve the exact three hull positions and sizes, mast positions, original dock shape, cloud silhouettes, background sky, camera, framing and dimensions. No new rigging, objects, stars, characters, faces, text, grid or UI. No center fade/mask/blur. A tiny first recovery: one lifting mint sail and one warm berth, the rest remains still. Preserve the unpowered input's other details precisely.",
+      "references": [
+        "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-60bb2244-f485-4e27-8bbe-2c2705d7af95.png"
+      ],
+      "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-3ba8d49a-773a-48ed-87dc-8f842e999cb9.png",
+      "packagedPath": "App/Assets.xcassets/KiteHarborTabletLandscape025.imageset/scene.png",
+      "sha256": "07cae057448f459858ad4a2def26c1677e35bbfe7cc70c75cbe58bb44b12fdd1",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "bytes": 2370984,
+      "referenceMetadata": [
+        {
+          "path": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-60bb2244-f485-4e27-8bbe-2c2705d7af95.png",
+          "sha256": "a38b0f743ac1021f65450738ca083eb41d05da69a739cc2d6ec8ae698c07cb66",
+          "bytes": 2388764,
+          "dimensions": [
+            1448,
+            1086
+          ]
+        }
+      ]
+    },
+    {
+      "family": "TabletLandscape",
+      "state": 50,
+      "revision": 1,
+      "status": "selected",
+      "prompt": "Use case: precise-object-edit. Derive state 50% from this exact fully restored Kite Harbor master. Output same dimensions and framing. 50% restoration: several sails unfold. The CENTER lilac and RIGHT coral boat sails now open to their recognizable broad triangular shapes; the LEFT mint lead sail is partly open, about three-quarters of its full size, still with a soft fold so it is not quite ready. The left and center harbor mooring lanterns and ceramic star fittings glow warm; the far-right outer mooring and bottom corner fittings remain off. Flags begin drawing long soft curves. Keep the small star fixture attached to the left lead mast just below its cap, around x=.092,y=.115 DARK matte bronze/violet, unlit, no gold emissive edge; this final lead mast light must not switch on yet. All three hulls stay at the exact same berths. No hover sparks. Hard invariants: preserve camera and pixel registration, precise background sky and cloud silhouettes, quay footprint, all three hulls and mast positions, object count, focal fixture position, and open dark central board field. Only the described sail/flag poses and local lamp emission may change. No faces, characters, text, UI, grid, extra props, local blur, center mask, cut or seam. Preserve the existing polished tangible 3D storybook material style.",
+      "references": [
+        "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-b698303b-52f2-45e3-a328-dbb262522150.png"
+      ],
+      "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-8593a8ea-c89b-43ac-b897-478dcf838eec.png",
+      "packagedPath": "App/Assets.xcassets/KiteHarborTabletLandscape050.imageset/scene.png",
+      "sha256": "8206b298ce660c4d1ef85c9fdee0f63ea6f02f78329f015dff5a0a080ad60a08",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "bytes": 2384131,
+      "referenceMetadata": [
+        {
+          "path": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-b698303b-52f2-45e3-a328-dbb262522150.png",
+          "sha256": "a27f8ff4e3e327cb4f06de8223199d565a5ff11157f4768bcec56dc6fcd20ed6",
+          "bytes": 2392855,
+          "dimensions": [
+            1448,
+            1086
+          ]
+        }
+      ]
+    },
+    {
+      "family": "TabletLandscape",
+      "state": 75,
+      "revision": 1,
+      "status": "selected",
+      "prompt": "Use case: precise-object-edit. Derive state 75% from this exact fully restored Kite Harbor master. Output same dimensions and framing. 75% restoration: the whole harbor is almost ready. Keep all mooring lanterns warm and all three sails open, flags stretched in gentle breeze, but turn OFF the small star fixture attached to the left lead mast just below its cap, around x=.092,y=.115: it must be a visibly dark matte bronze/violet star with no glow or bright rim. The fleet remains at the same three berths and the lead sail is ready. Remove any golden hover sparkle under hulls; keep hull position exactly unchanged. The dark lead mast-star is the one final thing still missing. Other sail embroidery remains pale subdued cloth. This is distinct from complete100 through that dark fixture. Hard invariants: unchanged camera, pixel registration, background sky and cloud silhouettes, quay footprint, three boat hulls and masts, object count, main light fixture location, and clear central playfield. Only the described sail/flag poses and local light emission may change. No faces, characters, text, UI, grid, extra props, local blur, center mask, cut or seam. Preserve the existing polished tangible 3D storybook art style.",
+      "references": [
+        "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-b698303b-52f2-45e3-a328-dbb262522150.png"
+      ],
+      "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-bde39eb3-1b43-4cfd-81cb-81078443acf3.png",
+      "packagedPath": "App/Assets.xcassets/KiteHarborTabletLandscape075.imageset/scene.png",
+      "sha256": "7471e9eddbc9586cb443941474d688e6d505321186b3dcafeba76a9500a7bf19",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "bytes": 2375929,
+      "referenceMetadata": [
+        {
+          "path": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-b698303b-52f2-45e3-a328-dbb262522150.png",
+          "sha256": "a27f8ff4e3e327cb4f06de8223199d565a5ff11157f4768bcec56dc6fcd20ed6",
+          "bytes": 2392855,
+          "dimensions": [
+            1448,
+            1086
+          ]
+        }
+      ]
+    }
+  ],
+  "inspection": {
+    "scope": "Generated-image inspection only; native framing and gameplay are not validated here",
+    "selectedCount": 10,
+    "notes": [
+      "Camera, boat hulls, quay footprint and cloud silhouettes retained within each family.",
+      "0% has furled sails and unlit fittings; corrected 25% raises one mint sail while the other two remain furled.",
+      "50% unfolds several sails with some peripheral lights still dark; 75% lights the harbor but retains a dark lead fixture; 100% restores the fixture.",
+      "No characters, text, UI, grid, center masks or split plates baked in.",
+      "Generated cloth pose and local shading vary naturally between stages; source PNGs are packaged byte-for-byte without pixel edits."
+    ]
+  },
+  "landmarks": {
+    "TabletPortrait": {
+      "sourceSize": [
+        1086,
+        1448
+      ],
+      "leadFixtureApproximateNormalizedCenter": [
+        0.254,
+        0.133
+      ]
+    },
+    "TabletLandscape": {
+      "sourceSize": [
+        1448,
+        1086
+      ],
+      "leadFixtureApproximateNormalizedCenter": [
+        0.092,
+        0.115
+      ]
+    }
+  }
+}
+
+  }
+}

@@ -1,0 +1,175 @@
+{
+  "schema": 1,
+  "date": "2026-10-19",
+  "runtime": "dev.b05d0b243e",
+  "appSource": "c89ea67a3151dad9e589846bf5d82cf47d787511",
+  "integratedSource": "1bb2b51441b65af65468bf25d4e191a66df8a1d2",
+  "mainIntegrated": "2d94194742847def4195c526000b7852768bf7d6",
+  "workingTreeDifferences": "Documentation and evidence only; no uncommitted app, resource, core or test inputs.",
+  "environment": {
+    "xcode": "27.1 (27A9275)",
+    "macOS": "27.0.1",
+    "iOS": "27.0 (24A434)",
+    "architecture": "arm64",
+    "scheme": "Starfall",
+    "debugSigningArgs": [
+      "ARCHS=arm64",
+      "ONLY_ACTIVE_ARCH=YES",
+      "CODE_SIGN_IDENTITY=-",
+      "CODE_SIGNING_ALLOWED=YES",
+      "DEVELOPMENT_TEAM=",
+      "CODE_SIGN_STYLE=Manual"
+    ]
+  },
+  "initialPhone": {
+    "source": "c89ea67",
+    "device": "iPhone 17e",
+    "configuration": "Debug",
+    "command": "XcodeBuildMCP test_sim",
+    "extraArgs": [
+      "STARFALL_BUILD_ID=dev.b05d0b243e",
+      "-parallel-testing-enabled",
+      "NO",
+      "-only-testing:StarfallAppTests",
+      "-only-testing:StarfallUITests/KiteHarborInteractionTests/testKiteWinningClearPersistsNamedResultAndReplayStartsAtZero",
+      "-only-testing:StarfallUITests/KiteHarborInteractionTests/testKitePreviewCancellationRetainsBothExistingLocationsUntilBegin",
+      "-only-testing:StarfallUITests/KiteHarborInteractionTests/testKiteLargestTextSystemReduceMotionWinKeepsResultActionsUsable"
+    ],
+    "passed": 330,
+    "failed": 1,
+    "skipped": 0,
+    "hostedPassed": 327,
+    "hostedTotal": 328,
+    "uiPassed": 3,
+    "durationSeconds": 353.803,
+    "xcresult": "test_sim_2026-10-19T16-51-10-261Z_pid14605_7e99dfef.xcresult",
+    "failure": "StarlightCelebrationTests/testRestoredSceneryAnchorResolvesTheExpandedCanvasInOverlayCoordinates: strict canvas size rejected pixel alignment; PR169 correction adopted, affected class rerun below.",
+    "transport": "MCP response timed out at300s; underlying Xcode execution completed and xcresult recovered."
+  },
+  "runs": [
+    {
+      "key": "kiteAnchorTests",
+      "source": "1bb2b51",
+      "device": "iPhone 17e",
+      "configuration": "Debug",
+      "command": "XcodeBuildMCP test_sim",
+      "extraArgs": [
+        "STARFALL_BUILD_ID=dev.b05d0b243e",
+        "-parallel-testing-enabled",
+        "NO",
+        "-only-testing:StarfallAppTests/StarlightCelebrationTests"
+      ],
+      "summary": {
+        "status": "SUCCEEDED",
+        "durationMs": 27290,
+        "counts": {
+          "passed": 17,
+          "failed": 0,
+          "skipped": 0
+        },
+        "target": "simulator"
+      },
+      "diagnostics": {
+        "warnings": [],
+        "errors": [],
+        "testFailures": []
+      },
+      "artifacts": {
+        "buildLogPath": "test_sim_2026-10-19T16-58-22-027Z_pid14605_2b6932b7.log",
+        "xcresultPath": "test_sim_2026-10-19T16-58-22-027Z_pid14605_f5a13ce3.xcresult",
+        "testProductsPath": "test_sim_2026-10-19T16-58-22-027Z_pid14605_ad8b3473.xctestproducts"
+      }
+    },
+    {
+      "key": "kiteTabletTests",
+      "source": "1bb2b51",
+      "device": "iPad Air 11-inch (M3)",
+      "configuration": "Debug",
+      "command": "XcodeBuildMCP test_sim",
+      "extraArgs": [
+        "STARFALL_BUILD_ID=dev.b05d0b243e",
+        "-parallel-testing-enabled",
+        "NO",
+        "-only-testing:StarfallUITests/KiteHarborInteractionTests/testTabletRotationKeepsKiteRestorationAndNativeInput"
+      ],
+      "summary": {
+        "status": "SUCCEEDED",
+        "durationMs": 197206,
+        "counts": {
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0
+        },
+        "target": "simulator"
+      },
+      "diagnostics": {
+        "warnings": [],
+        "errors": [],
+        "testFailures": []
+      },
+      "artifacts": {
+        "buildLogPath": "test_sim_2026-10-19T17-01-05-180Z_pid14605_ee635899.log",
+        "xcresultPath": "test_sim_2026-10-19T17-01-05-180Z_pid14605_b76ae6a8.xcresult",
+        "testProductsPath": "test_sim_2026-10-19T17-01-05-180Z_pid14605_4469c3c2.xctestproducts"
+      }
+    },
+    {
+      "key": "kiteCompactTests",
+      "source": "1bb2b51",
+      "device": "iPhone SE (3rd generation)",
+      "configuration": "Debug",
+      "command": "XcodeBuildMCP test_sim",
+      "extraArgs": [
+        "STARFALL_BUILD_ID=dev.b05d0b243e",
+        "-parallel-testing-enabled",
+        "NO",
+        "-only-testing:StarfallUITests/KiteHarborInteractionTests/testKiteWinningClearPersistsNamedResultAndReplayStartsAtZero",
+        "-only-testing:StarfallUITests/RibbonCrossingInteractionTests/testRibbonWinningClearPersistsNamedResultAndReplayStartsAtZero",
+        "-only-testing:StarfallUITests/LanternLandingInteractionTests/testNativeWinningClearPersistsRestorationAndReplayStartsAtZero",
+        "-only-testing:StarfallUITests/FallingSkyInteractionTests/testAutomaticRainThenPausedClearReplayAndSettings"
+      ],
+      "summary": {
+        "status": "SUCCEEDED",
+        "durationMs": 276734,
+        "counts": {
+          "passed": 4,
+          "failed": 0,
+          "skipped": 0
+        },
+        "target": "simulator"
+      },
+      "diagnostics": {
+        "warnings": [],
+        "errors": [],
+        "testFailures": []
+      },
+      "artifacts": {
+        "buildLogPath": "test_sim_2026-10-19T17-04-45-302Z_pid14605_5f529d7a.log",
+        "xcresultPath": "test_sim_2026-10-19T17-04-45-302Z_pid14605_9f84788e.xcresult",
+        "testProductsPath": "test_sim_2026-10-19T17-04-45-302Z_pid14605_08211de4.xctestproducts"
+      }
+    },
+    {
+      "key": "kiteReleaseBuild",
+      "source": "1bb2b51",
+      "device": "iPhone 17e",
+      "configuration": "Release",
+      "command": "XcodeBuildMCP build_sim",
+      "extraArgs": [
+        "STARFALL_BUILD_ID=dev.b05d0b243e"
+      ],
+      "summary": {
+        "status": "SUCCEEDED",
+        "durationMs": 15303,
+        "target": "simulator"
+      },
+      "diagnostics": {
+        "warnings": [],
+        "errors": []
+      },
+      "artifacts": {
+        "buildLogPath": "build_sim_2026-10-19T17-10-14-209Z_pid14605_16da44d9.log"
+      }
+    }
+  ]
+}

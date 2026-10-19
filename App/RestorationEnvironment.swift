@@ -71,7 +71,12 @@ struct RestorationArtwork {
     let composition: RestorationComposition
 
     func asset(for milestone: StarlightRestoration.Milestone) -> String {
-        let location = challenge == .firstLight ? "LanternLanding" : "RibbonCrossing"
+        let location: String
+        switch challenge {
+        case .firstLight: location = "LanternLanding"
+        case .ribbonCrossing: location = "RibbonCrossing"
+        case .kiteHarbor: location = "KiteHarbor"
+        }
         let suffix: String
         switch composition {
         case .phone: suffix = ""
@@ -92,17 +97,24 @@ struct RestorationArtwork {
 
     var normalizedLight: CGRect {
         let center: CGPoint, width: CGFloat
-        if challenge == .ribbonCrossing {
+        switch challenge {
+        case .ribbonCrossing:
             switch composition {
             case .phone: center = CGPoint(x: 0.476, y: 0.248); width = 0.035
             case .tabletPortrait: center = CGPoint(x: 0.315, y: 0.160); width = 0.03
             case .tabletLandscape: center = CGPoint(x: 0.214, y: 0.219); width = 0.025
             }
-        } else {
+        case .firstLight:
             switch composition {
             case .phone: center = CGPoint(x: 0.333, y: 0.080); width = 0.06
             case .tabletPortrait: center = CGPoint(x: 0.218, y: 0.079); width = 0.05
             case .tabletLandscape: center = CGPoint(x: 0.161, y: 0.316); width = 0.04
+            }
+        case .kiteHarbor:
+            switch composition {
+            case .phone: center = CGPoint(x: 0.326, y: 0.064); width = 0.045
+            case .tabletPortrait: center = CGPoint(x: 0.254, y: 0.133); width = 0.045
+            case .tabletLandscape: center = CGPoint(x: 0.092, y: 0.115); width = 0.03
             }
         }
         let height = width * sourceSize.width / sourceSize.height
@@ -112,18 +124,28 @@ struct RestorationArtwork {
     /// Keep the identifying prop (or crossing seam) inside the viewport while
     /// moving only the complete image within its existing aspect-fill overflow.
     var normalizedFocal: CGRect {
-        if challenge == .ribbonCrossing {
+        switch challenge {
+        case .ribbonCrossing:
             switch composition {
             case .phone: return CGRect(x: 0.43, y: 0.20, width: 0.10, height: 0.08)
             // Keep the upper cloud bank and seam visible on wide scrolling canvases.
             case .tabletPortrait: return CGRect(x: 0.27, y: 0.05, width: 0.10, height: 0.15)
             case .tabletLandscape: return CGRect(x: 0.18, y: 0.035, width: 0.08, height: 0.23)
             }
-        }
-        switch composition {
-        case .phone: return CGRect(x: 0.22, y: 0.025, width: 0.23, height: 0.12)
-        case .tabletPortrait: return CGRect(x: 0.13, y: 0.025, width: 0.17, height: 0.12)
-        case .tabletLandscape: return CGRect(x: 0.085, y: 0.23, width: 0.16, height: 0.215)
+        case .firstLight:
+            switch composition {
+            case .phone: return CGRect(x: 0.22, y: 0.025, width: 0.23, height: 0.12)
+            case .tabletPortrait: return CGRect(x: 0.13, y: 0.025, width: 0.17, height: 0.12)
+            case .tabletLandscape: return CGRect(x: 0.085, y: 0.23, width: 0.16, height: 0.215)
+            }
+        case .kiteHarbor:
+            // Register the lead boat and its star, including enough upper sky to
+            // preserve the mast when a large-text canvas crops the whole image.
+            switch composition {
+            case .phone: return CGRect(x: 0.18, y: 0.035, width: 0.23, height: 0.175)
+            case .tabletPortrait: return CGRect(x: 0.10, y: 0.015, width: 0.24, height: 0.23)
+            case .tabletLandscape: return CGRect(x: 0.035, y: 0.025, width: 0.18, height: 0.28)
+            }
         }
     }
 

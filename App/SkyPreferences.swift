@@ -26,6 +26,7 @@ struct SkyHelpContext: Equatable {
         case .fresh: .init(game: .freshSurvival(seed: game.seed, balance: game.balance))
         case .firstLight: .init(game: FallingSky(challenge: .firstLight))
         case .ribbonCrossing: .init(game: FallingSky(challenge: .ribbonCrossing))
+        case .kiteHarbor: .init(game: FallingSky(challenge: .kiteHarbor))
         case .initial, .replay, nil: .init(game: game)
         }
     }

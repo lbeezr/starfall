@@ -23,7 +23,7 @@ final class SkyFlowStateTests: XCTestCase {
             store.setSuspended(true)
             let original = store.game
             let core = try XCTUnwrap(defaults.data(forKey: FallingSkyStore.saveKey))
-            for action in [SkyFlowAction.start, .firstLight, .ribbonCrossing, .replay, .another] {
+            for action in [SkyFlowAction.start, .firstLight, .ribbonCrossing, .kiteHarbor, .replay, .another] {
                 var flow = SkyFlowState(arguments: action == .replay || action == .another ? ["--starfalls-reset"] : [])
                 XCTAssertEqual(flow.handle(action, hasSavedSky: true), .staged)
                 XCTAssertEqual(flow.screen, .entry)
@@ -153,6 +153,8 @@ final class SkyFlowStateTests: XCTestCase {
         XCTAssertNil(SkyEntryRequest.fresh.selectedChallenge(replaying: .firstLight))
         XCTAssertEqual(SkyEntryRequest.firstLight.selectedChallenge(replaying: nil), .firstLight)
         XCTAssertEqual(SkyEntryRequest.ribbonCrossing.selectedChallenge(replaying: .firstLight), .ribbonCrossing)
+        XCTAssertEqual(SkyEntryRequest.kiteHarbor.selectedChallenge(replaying: .ribbonCrossing), .kiteHarbor)
+        XCTAssertEqual(SkyEntryRequest.replay.selectedChallenge(replaying: .kiteHarbor), .kiteHarbor)
         XCTAssertEqual(SkyEntryRequest.replay.selectedChallenge(replaying: .firstLight), .firstLight)
         XCTAssertEqual(SkyEntryRequest.replay.selectedChallenge(replaying: .ribbonCrossing), .ribbonCrossing)
         XCTAssertNil(SkyEntryRequest.initial.selectedChallenge(replaying: nil))
@@ -283,7 +285,7 @@ final class SkyFlowStateTests: XCTestCase {
 
     func testScenicResultReflowIsLimitedToSuccessfulRestoration() {
         for screen in [SkyFlowScreen.welcome, .entry, .playing, .won, .full] {
-            for challenge: StarfallChallenge? in [nil, .firstLight, .ribbonCrossing] {
+            for challenge: StarfallChallenge? in [nil] + StarfallChallenge.allCases.map(Optional.some) {
                 let layout = SkyCeremonyLayout(screen: screen, challenge: challenge, safeAreaTop: 59)
                 let restored = screen == .won && challenge != nil
                 XCTAssertEqual(layout.isRestoredResult, restored)

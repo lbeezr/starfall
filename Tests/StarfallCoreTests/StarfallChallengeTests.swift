@@ -28,15 +28,16 @@ final class StarfallChallengeTests: XCTestCase {
 
     func testChallengesShareFixedRulesButKeepDistinctEncodedIdentity() throws {
         let lantern = FallingSky(challenge: .firstLight)
-        let ribbon = FallingSky(challenge: .ribbonCrossing)
         XCTAssertEqual(StarfallChallenge.firstLight.rawValue, "firstLight")
         XCTAssertEqual(try JSONEncoder().encode(StarfallChallenge.firstLight), Data(#""firstLight""#.utf8))
         XCTAssertEqual(try JSONEncoder().encode(StarfallChallenge.ribbonCrossing), Data(#""ribbonCrossing""#.utf8))
-        XCTAssertNotEqual(lantern, ribbon)
-        XCTAssertEqual(lantern.board, ribbon.board)
-        XCTAssertEqual(lantern.incoming, ribbon.incoming)
+        XCTAssertEqual(try JSONEncoder().encode(StarfallChallenge.kiteHarbor), Data(#""kiteHarbor""#.utf8))
+        XCTAssertEqual(StarfallChallenge.allCases.count, 3)
         for challenge in StarfallChallenge.allCases {
             let game = FallingSky(challenge: challenge)
+            XCTAssertEqual(game.board, lantern.board)
+            XCTAssertEqual(game.incoming, lantern.incoming)
+            if challenge != .firstLight { XCTAssertNotEqual(game, lantern) }
             XCTAssertEqual(challenge.target, 18)
             XCTAssertEqual(game.seed, 42)
             XCTAssertEqual(game.generation, .legacy)
@@ -64,7 +65,7 @@ final class StarfallChallengeTests: XCTestCase {
         }
     }
 
-    func testGoalCompletionTakesPrecedenceOverOverflowForBothChallenges() {
+    func testGoalCompletionTakesPrecedenceOverOverflowForEveryChallenge() {
         for challenge in StarfallChallenge.allCases {
             XCTAssertEqual(challenge.outcome(score: 18, overflowed: true), .won)
             XCTAssertEqual(challenge.outcome(score: 22, overflowed: false), .won)

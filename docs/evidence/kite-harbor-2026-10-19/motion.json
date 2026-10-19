@@ -1,0 +1,47 @@
+{
+  "source": "1bb2b51441b65af65468bf25d4e191a66df8a1d2",
+  "runtime": "dev.b05d0b243e",
+  "device": "iPhone 17e Simulator",
+  "os": "iOS 27.0",
+  "configuration": "Debug",
+  "orientation": "portrait",
+  "systemReduceMotion": false,
+  "calmEffects": false,
+  "video": {
+    "path": "/private/tmp/kite-win-1bb2b51.mp4",
+    "retained": false,
+    "sha256": "76c20d7f7624b6bd16625051fb01195cbe1b2d5cbe5c22f6a5d5a6073358c8f4",
+    "bytes": 1990674,
+    "durationSeconds": 6.278
+  },
+  "inspection": {
+    "inspector": "root agent",
+    "method": "AVFoundation frame decode at the recorded times, including quarter-second sampling around the final transfer.",
+    "frameTimesSeconds": [
+      0,
+      1,
+      2,
+      2.25,
+      2.5,
+      2.75,
+      3,
+      3.25,
+      3.5,
+      3.75,
+      4,
+      5,
+      6
+    ],
+    "observations": [
+      "Actual native finishing clear commits score 14 to 18.",
+      "Gold light packets travel upward at 2.5 seconds; the lead mast star is bright at 2.75 seconds.",
+      "The ordinary result is visible from 3.25 seconds onward; no tiny travelers or world-traversal sequence observed."
+    ]
+  },
+  "limits": [
+    "This is a bounded visual observation of one phone finishing clear, not a performance benchmark or exhaustive animation test.",
+    "Still screenshots are separate evidence and do not establish motion.",
+    "Audio, actual VoiceOver and physical-device play were not evaluated by this recording.",
+    "The raw video remains a disposable local artifact; its hash and inspection summary are retained."
+  ]
+}
