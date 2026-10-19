@@ -144,9 +144,20 @@ final class FallingSkyInteractionTests: XCTestCase {
 
     @MainActor func testCompactHUDMenuSuspendsWithoutChangingPauseChoice() {
         let app = launch(); defer { app.terminate() }
+        let flowingGuide = app.scrollViews.containing(.button, identifier: "experiment.cell.0.0").firstMatch.exists
+        func assertRunningControls() {
+            if flowingGuide {
+                XCTAssertFalse(app.buttons["experiment.pause"].exists)
+                XCTAssertFalse(app.buttons["experiment.next"].exists)
+            } else {
+                // The fixed landing canvas keeps both actions outside its guide.
+                XCTAssertEqual(app.buttons["experiment.pause"].label, "Pause sky")
+                XCTAssertTrue(app.buttons["experiment.pause"].isHittable)
+                XCTAssertTrue(app.buttons["experiment.next"].isHittable)
+            }
+        }
         togglePause(app)
-        XCTAssertFalse(app.buttons["experiment.pause"].exists)
-        XCTAssertFalse(app.buttons["experiment.next"].exists)
+        assertRunningControls()
         XCTAssertTrue(app.staticTexts["experiment.message"].label.contains("Clear matching stars"),
                       "Starting the sky now gives one brief bottom character message")
         XCTAssertFalse(app.staticTexts["experiment.turns"].exists)
@@ -157,7 +168,11 @@ final class FallingSkyInteractionTests: XCTestCase {
         waitForShowers(1, in: app)
         let cue = app.descendants(matching: .any)["experiment.arrivalCue"].firstMatch
         XCTAssertTrue(cue.exists)
-        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "Shower approaching"), object: cue).wait(timeout: 8))
+        // Read the short-lived cue directly; formatting a failed element
+        // predicate captures a hierarchy and can miss its 1.25-second window.
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+            cue.label == "Shower approaching"
+        }, object: nil).wait(timeout: 8), cue.label)
         capture(app, "compact-hud-active-arrival-cue")
         openMenu(app)
         let pause = app.buttons["experiment.pause"]
@@ -171,7 +186,7 @@ final class FallingSkyInteractionTests: XCTestCase {
         app.buttons["experiment.done"].tap()
         let before = showers(app)
         waitForShowers(before + 1, in: app)
-        XCTAssertFalse(pause.exists, "Dismissing the menu resumes a running sky without leaving a pause control on the board")
+        assertRunningControls()
         togglePause(app)
         XCTAssertEqual(app.buttons["experiment.pause"].label, "Resume sky")
         remainsPaused(app)
@@ -582,6 +597,14 @@ extension FallingSkyInteractionTests {
                 capture(app, "paused-guide-production-growth")
             }
         }
+        XCTAssertEqual(app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Dusk,")).count, 0,
+                       "Fresh survival does not generate historical Dusk")
+        // Retained Dusk dialogue needs retained history. This fixture also has
+        // a remote Violet group and a drained Amber group beside Dusk.
+        app.terminate()
+        app.launchArguments = ["--starfalls-reset", "--dialogue-review", "--dusk-fixture=imminent"]
+        app.launch()
+        XCTAssertTrue(next.waitForExistence(timeout: 10))
         XCTAssertTrue(guide.label.contains("turn gray and earn no starlight"))
         let dark = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Dusk,"))
         XCTAssertEqual(dark.count, 1)
@@ -590,7 +613,7 @@ extension FallingSkyInteractionTests {
         XCTAssertTrue(guide.label.contains("Clear a matching group beside me"))
         XCTAssertEqual(app.staticTexts["experiment.score"].label, "0 starlight")
         XCTAssertEqual(app.otherElements["experiment.board"].value as? String, before)
-        let remote = app.buttons["experiment.cell.0.0"]
+        let remote = app.buttons["experiment.cell.0.6"]
         let remoteText = try XCTUnwrap(remote.value as? String)
         let remoteValue = try XCTUnwrap(Int(remoteText.split(separator: " ").first ?? ""))
         XCTAssertGreaterThanOrEqual(remoteValue, 3)
@@ -600,7 +623,7 @@ extension FallingSkyInteractionTests {
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label BEGINSWITH %@", "Pip. +\(remoteValue) starlight."), object: guide).wait(timeout: 5), guide.label)
         XCTAssertFalse(guide.label.contains("dissolved"))
         XCTAssertEqual(dark.count, 1, "The unrelated clear does not remove the blocker")
-        let adjacent = app.buttons["experiment.cell.0.1"]
+        let adjacent = app.buttons["experiment.cell.0.2"]
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: adjacent).wait(timeout: 5))
         let adjacentText = try XCTUnwrap(adjacent.value as? String)
         let adjacentWeight = try XCTUnwrap(Int(adjacentText.split(separator: " ").first ?? ""))
@@ -615,7 +638,7 @@ extension FallingSkyInteractionTests {
         XCTAssertEqual(app.staticTexts["experiment.score"].label, "\(total) starlight")
         let summary = guide.label
         capture(app, "paused-guide-production-dark-dissolved")
-        app.buttons["experiment.settings"].tap()
+        openMenu(app)
         let done = app.buttons["experiment.done"]
         XCTAssertTrue(done.waitForExistence(timeout: 5)); done.tap()
         XCTAssertTrue(guide.waitForExistence(timeout: 5)); XCTAssertEqual(guide.label, summary)
@@ -623,7 +646,7 @@ extension FallingSkyInteractionTests {
         let resume = app.buttons["experiment.pause"]
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: resume).wait(timeout: 5))
         XCTAssertEqual(guide.label, summary)
-        app.terminate(); app.launchArguments = []; app.launch()
+        app.terminate(); app.launchArguments = ["--dialogue-review"]; app.launch()
         resumeRestoredPaused(app)
         XCTAssertTrue(guide.waitForExistence(timeout: 10))
         XCTAssertEqual(app.buttons["experiment.pause"].label, "Resume sky")
