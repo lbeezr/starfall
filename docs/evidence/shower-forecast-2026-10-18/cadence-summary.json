@@ -1,0 +1,94 @@
+{
+  "coreSource": "1ddd5f267bd13d31e48ebc4b7a628aadb097c170",
+  "seedRange": [
+    0,
+    63
+  ],
+  "capShowers": 120,
+  "generator": "FallingSky.freshSurvival; current no-aging survival, default balance",
+  "cadence": "announcedCycleV1; opening 0.25, 1.8, 1.8, 1.8; then 6x3s, 3x2.5s, 3x3.5s",
+  "limit": "Instant tap-only policies; no thinking, gestures, hold time, swaps or constellations. Scheduled seconds are not human round duration.",
+  "summary": [
+    {
+      "policy": "idle",
+      "runs": 64,
+      "lost": 64,
+      "minMedianMax": {
+        "showers": [
+          14,
+          18.0,
+          23
+        ],
+        "scheduledSeconds": [
+          34.65,
+          47.65,
+          62.15
+        ],
+        "moves": [
+          0,
+          0.0,
+          0
+        ],
+        "score": [
+          0,
+          0.0,
+          0
+        ]
+      }
+    },
+    {
+      "policy": "oneGreedyTapPerShower",
+      "runs": 64,
+      "lost": 64,
+      "minMedianMax": {
+        "showers": [
+          15,
+          51.5,
+          112
+        ],
+        "scheduledSeconds": [
+          38.15,
+          147.9,
+          329.65
+        ],
+        "moves": [
+          10,
+          40.5,
+          95
+        ],
+        "score": [
+          38,
+          161.5,
+          379
+        ]
+      }
+    },
+    {
+      "policy": "exhaustGreedyTapGroups",
+      "runs": 64,
+      "lost": 62,
+      "minMedianMax": {
+        "showers": [
+          22,
+          54.5,
+          120
+        ],
+        "scheduledSeconds": [
+          59.65,
+          157.15,
+          352.65
+        ],
+        "moves": [
+          16,
+          47.5,
+          121
+        ],
+        "score": [
+          63,
+          177.0,
+          454
+        ]
+      }
+    }
+  ]
+}

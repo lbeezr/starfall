@@ -75,3 +75,5 @@ The [crowded current-rule award sample](../docs/evidence/calibration-critical-ma
 `ResponsiveInputTests.testFreshOpeningContactBeforeAndAfterDeadlineOwnsOnlyCurrentState` checks the seed-28 first/second-shower boundary: admitted contact holds rain, later contact cannot clear moving state or queue a clear, and a new settled contact scores. This models a boundary consistent with the native sample, not its unobserved exact contact instant.
 
 Four-edge regressions distinguish blocked swaps from trace/nonfinite cancellation, reject stale hold callbacks and accept the next inward swap.
+
+Forecast regressions preserve the actual remainder through contact, pause grace and background, then verify one deferred shower with no catch-up. Quiet motion does not alter committed outcomes.

@@ -4,15 +4,15 @@
 
 Polish the six gameplay priorities in order, merging and delivering each verified improvement through the canonical phone updater before starting the next. The player reported a “huge improvement” after the five gesture deliveries. Apply that same bounded process to the remaining experience.
 
-**Next action:** Correct outward-swipe rejection wording after the verified [immediate consequence delivery](evidence/consequence-feedback-2026-10-18/README.md), then review shower pacing.
+**Next action:** Make the shower forecast preserve real remaining time during holds and continue updating in quiet motion.
 
 ## Scope and success
 
 | Order | Priority | Observable acceptance | Status |
 | --- | --- | --- | --- |
 | 1 | Read the next move | Award lettering stays outside every playable cell throughout its animation; independent follow-up moves remain available; default and maximum text remain readable. | Delivered: PR #142, `dev.d7e15ddf2a`; physical comfort open |
-| 2 | Understand consequences | Selection, committed clear, score gain and invalid actions give consistent, truthful feedback without covering the board or delaying input. | In progress |
-| 3 | Fair shower rhythm | The arrival cue agrees with the actual deadline; interruptions preserve remaining time; no catch-up burst; current survival rules receive a reproducible pacing review. | Pending |
+| 2 | Understand consequences | Selection, committed clear, score gain and invalid actions give consistent, truthful feedback without covering the board or delaying input. | Delivered: PR #144/#146; physical comprehension open |
+| 3 | Fair shower rhythm | The arrival cue agrees with the actual deadline; interruptions preserve remaining time; no catch-up burst; current survival rules receive a reproducible pacing review. | In progress |
 | 4 | Discover useful setups | Players can find and practice recipes, Opal use and causal relays through concrete examples; hints match current legal actions and never surprise-commit a move. | Pending |
 | 5 | Reward rhythm | Clear, growth, recipe and relay feedback are distinguishable, bounded and synchronized with committed outcomes; rapid play does not pile up sounds/haptics or effects. | Pending |
 | 6 | End and replay | A final legal action resolves before the result; the reason and score are clear; replay and new sky have predictable save/seed behavior and survive interruptions. | Pending |
@@ -55,4 +55,13 @@ An outward swipe currently produces tap instructions. Keep the recognized intent
 - [x] Verify all four outward directions give the edge explanation, with no swap, clear or delayed hold.
 - [x] Preserve valid final-only/coarse swipes, held traces leaving the board, and interrupted/nonfinite samples.
 - [x] Check all four real native edge swipes and a successful next move with normal motion; verify the packaged copy and Release build.
-- [ ] Merge and deliver before priority 3.
+- [x] Merge and deliver before priority 3: PR #146, `dev.3be5031c35`.
+
+## Fourth batch: a truthful shower forecast
+
+The countdown currently uses a wall-clock date that becomes nil during admitted contact. Its fallback displays a fresh full interval even though the scheduler preserves the real remainder. Quiet motion pauses its timeline entirely. Give the renderer a narrow read of the Store-owned monotonic countdown; keep timing rules and save contracts unchanged.
+
+- [x] The forecast progresses with the actual deadline, freezes at the actual remainder on contact/pause, resumes continuously, and shows due/arriving without resetting early.
+- [x] Quiet motion updates timing at a low discrete cadence; normal motion retains smooth presentation and the same outcomes.
+- [ ] Preserve interruption grace, single-deadline/no-catch-up behavior, current forecasts, settings and rapid inputs. Test the clock boundary and native normal/quiet operation; inspect a source-bound capture before merge/delivery.
+- [x] Review current no-aging survival cadence with reproducible samples separately; do not infer enjoyment or change balance from one fixed-seed sample.

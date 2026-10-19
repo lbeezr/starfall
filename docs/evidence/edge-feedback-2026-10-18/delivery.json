@@ -1,0 +1,12 @@
+{
+  "buildID": "dev.3be5031c35",
+  "source": "1ddd5f267bd13d31e48ebc4b7a628aadb097c170",
+  "bundle": "com.starfall.prototype",
+  "bundleVersion": "1",
+  "validation": {
+    "coreTests": "passed",
+    "signature": "verified",
+    "mainCIAtInstall": "pending"
+  },
+  "delivery": "canonical updater; actual installed identity verified; player data preserved"
+}

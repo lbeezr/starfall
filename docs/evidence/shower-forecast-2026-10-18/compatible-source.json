@@ -1,0 +1,6 @@
+{
+  "commit": "ce00692359b53a695172313e364a244cbd7845f8",
+  "runtimeBuildID": "dev.9020625ab7",
+  "dirtyRuntimePaths": [],
+  "change": "Separate unchanged scene composition, lifecycle modifiers and modal/award presentation into smaller view expressions."
+}

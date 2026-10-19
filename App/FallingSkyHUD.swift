@@ -71,12 +71,19 @@ enum SkyShowerPlacement {
     }
 }
 
-/// Presentation reads the store's deadline. It never schedules or commits a shower.
-@MainActor struct SkyShowerTrail: View {
-    let deadline: Date?
+/// Presentation-only values sampled from the existing scheduler, including held time.
+struct SkyShowerCountdown: Equatable {
+    let remaining: TimeInterval
     let interval: TimeInterval
+    let advancing: Bool
     let paused: Bool
     let arriving: Bool
+    var progress: Double { arriving ? 1 : max(0, min(1, 1-remaining/interval)) }
+}
+
+/// The read capability cannot schedule or commit a shower.
+@MainActor struct SkyShowerTrail: View {
+    let readCountdown: () -> SkyShowerCountdown
     let quiet: Bool
     var island = false
     var width = StarfallTheme.Layout.showerTrailWidth
@@ -87,10 +94,21 @@ enum SkyShowerPlacement {
         let miniatures = forecast.prefix(FallingSky.maximumShowerSize).map {
             Image(uiImage: StarCast.image(for: .init($0)))
         }
-        TimelineView(.animation(minimumInterval: quiet ? 1 : 1.0/30, paused: paused || quiet)) { context in
-            let remaining = max(0, deadline?.timeIntervalSince(context.date) ?? interval)
-            let progress = arriving ? 1 : max(0, min(1, 1-remaining/interval))
-            Canvas { drawing, size in
+        let countdown = readCountdown()
+        if countdown.advancing {
+            // Quiet timing remains informative with discrete updates. It is not
+            // an animation schedule, which may stop under system Reduce Motion.
+            TimelineView(.periodic(from: .now, by: quiet ? 1 : 1.0/30)) { _ in
+                content(readCountdown(), miniatures: miniatures)
+            }
+        } else {
+            content(countdown, miniatures: miniatures)
+        }
+    }
+
+    private func content(_ countdown: SkyShowerCountdown, miniatures: [Image]) -> some View {
+        let progress = countdown.progress
+        return Canvas { drawing, size in
                 if island {
                     drawIsland(in: &drawing, size: size, progress: progress, miniatures: miniatures)
                     return
@@ -131,14 +149,13 @@ enum SkyShowerPlacement {
             }
             .frame(width: island ? StarfallTheme.IslandTimer.width : width,
                    height: island ? StarfallTheme.IslandTimer.height : 28)
-            .opacity(paused ? 0.55 : 1)
+            .opacity(countdown.paused ? 0.55 : 1)
             .accessibilityElement(children: .ignore)
-            .accessibilityLabel(paused ? SkyCopy.text(.statusPaused) : arriving ? SkyCopy.text(.statusArriving) : remaining <= 1.25 ? SkyCopy.text(.statusApproaching) : SkyCopy.text(.statusFlowing))
+            .accessibilityLabel(countdown.paused ? SkyCopy.text(.statusPaused) : countdown.arriving ? SkyCopy.text(.statusArriving) : countdown.remaining <= 1.25 ? SkyCopy.text(.statusApproaching) : SkyCopy.text(.statusFlowing))
             .accessibilityValue(forecast.map {
                 StarCast.character(for: .init($0)).description
             }.joined(separator: ", then "))
             .accessibilityIdentifier("experiment.arrivalCue")
-        }
     }
 
     /// The upper capsule contour is sampled by distance; head and trail share one mapping.

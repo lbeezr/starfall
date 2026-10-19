@@ -1,6 +1,39 @@
 import XCTest
 
 final class PacingCueUITests: XCTestCase {
+    @MainActor private func countdown(calm: Bool) {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchArguments = ["--starfalls-reset","--observatory-review","-calmEffects",calm ? "YES":"NO"]
+        app.launch(); defer { app.terminate() }
+        XCTAssertTrue(app.buttons["experiment.settings"].waitForExistence(timeout:10))
+        app.buttons["experiment.settings"].tap()
+        app.skyMenuControl("experiment.balance").tap()
+        app.buttons["experiment.pace"].tap(); app.buttons["Gentle · 6 seconds"].tap()
+        app.buttons["experiment.done"].tap()
+        let board = app.otherElements["experiment.board"], original = board.value as? String
+        let forecast = app.descendants(matching:.any)["experiment.arrivalCue"].firstMatch
+        app.buttons["experiment.pause"].tap()
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate:NSPredicate(format:"label == %@","Shower approaching"),object:forecast).wait(timeout:5.5))
+        XCTAssertEqual(board.value as? String,original,"The cue must approach before the shower commits")
+        capture(app,"countdown-approaching-\(calm ? "quiet" : "normal")")
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate:NSPredicate(format:"value != %@",original!),object:board).wait(timeout:3))
+        app.buttons["experiment.pause"].tap()
+    }
+
+    @MainActor func testQuietForecastApproachesBeforeTheShower() { countdown(calm:true) }
+    @MainActor func testNormalForecastApproachesBeforeTheShower() { countdown(calm:false) }
+    @MainActor func testSystemReduceMotionForecastApproachesBeforeTheShower() {
+        let (preferences, motion) = NativeSystemMotionSettings.open()
+        let original = motion.value as? String == "1"
+        NativeSystemMotionSettings.set(true,on:motion); preferences.terminate()
+        addTeardownBlock { @MainActor in
+            let (preferences,motion) = NativeSystemMotionSettings.open()
+            NativeSystemMotionSettings.set(original,on:motion); preferences.terminate()
+        }
+        countdown(calm:false)
+    }
+
     override func setUpWithError() throws {
         // Sixteen native shower actions plus system Settings setup/restoration.
         executionTimeAllowance = 240
