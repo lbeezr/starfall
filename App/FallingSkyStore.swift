@@ -359,13 +359,12 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         }
         // Explicit reset plus the existing isolated review suite prevents this
         // deterministic art/interaction sample from replacing a player's save.
-        let restorationReviews: [(StarfallChallenge, String)] = [
-            (.firstLight, "--lantern-restoration-review="), (.ribbonCrossing, "--ribbon-restoration-review=")
-        ]
-        let requestedReviews = restorationReviews.filter { _, prefix in arguments.contains(where: { $0.hasPrefix(prefix) }) }
+        let requestedReviews = StarfallChallenge.allCases.flatMap { challenge in
+            let prefix = challenge.restorationReviewArgumentPrefix
+            return arguments.filter { $0.hasPrefix(prefix) }.map { (challenge, String($0.dropFirst(prefix.count))) }
+        }
         if arguments.contains("--starfalls-reset"), arguments.contains("--dialogue-review"), requestedReviews.count == 1,
-           let (challenge, prefix) = requestedReviews.first,
-           let score = arguments.first(where: { $0.hasPrefix(prefix) }).flatMap({ Int($0.dropFirst(prefix.count)) }),
+           let (challenge, value) = requestedReviews.first, let score = Int(value),
            (0...challenge.target).contains(score) {
             game = ObservatoryReviewFixture.game(dense: arguments.contains("--restoration-dense"), score: score, challenge: challenge)
         }
@@ -777,6 +776,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         case .replay: restart(sameSky: true)
         case .firstLight: startFirstLight()
         case .ribbonCrossing: startChallenge(.ribbonCrossing)
+        case .kiteHarbor: startChallenge(.kiteHarbor)
         }
     }
 

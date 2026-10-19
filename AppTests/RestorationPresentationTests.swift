@@ -88,7 +88,7 @@ final class RestorationPresentationTests: XCTestCase {
 
     @MainActor func testEveryRestorationAssetIsPackagedAtTheRegisteredAspectRatio() throws {
         var names: Set<String> = []
-        for challenge in [StarfallChallenge.firstLight, .ribbonCrossing] {
+        for challenge in StarfallChallenge.allCases {
             for composition in RestorationComposition.allCases {
                 let artwork = RestorationArtwork(challenge: challenge, composition: composition)
                 for stage in StarlightRestoration.Milestone.allCases {
@@ -103,10 +103,10 @@ final class RestorationPresentationTests: XCTestCase {
                 }
             }
         }
-        XCTAssertEqual(names.count, 30)
+        XCTAssertEqual(names.count, 45)
     }
 
-    func testRibbonSeamStaysVisibleOutsideNativeBoardAcrossViewportFamilies() {
+    func testRestorationLightStaysVisibleOutsideNativeBoardAcrossViewportFamilies() {
         let samples: [(CGSize, Bool, Bool)] = [
             (.init(width: 393, height: 852), false, false),
             (.init(width: 375, height: 900), false, false),
@@ -121,17 +121,19 @@ final class RestorationPresentationTests: XCTestCase {
             (.init(width: 1366, height: 1024), true, true),
             (.init(width: 1024, height: 1200), true, true)
         ]
-        for (size, tablet, landscape) in samples {
-            let composition = RestorationComposition.selected(isTablet: tablet, isLandscape: landscape, size: size)
-            let artwork = RestorationArtwork(challenge: .ribbonCrossing, composition: composition)
-            let layout = RestorationLayout(size: size, artwork: artwork)
-            let canvas = CGRect(origin: .zero, size: size)
-            let board = LandingGeometry(size: size).arenaFrame
-            XCTAssertTrue(layout.imageFrame.insetBy(dx: -0.001, dy: -0.001).contains(canvas))
-            XCTAssertTrue(canvas.contains(layout.light), "Seam cropped at \(size)")
-            XCTAssertFalse(board.intersects(layout.light), "Seam overlaps stars at \(size)")
-            XCTAssertTrue(canvas.insetBy(dx: -0.001, dy: -0.001).contains(layout.focal), "Landmark cropped at \(size)")
-            XCTAssertTrue(layout.focal.contains(layout.light), "Landmark no longer contains the seam at \(size)")
+        for challenge in StarfallChallenge.allCases {
+            for (size, tablet, landscape) in samples {
+                let composition = RestorationComposition.selected(isTablet: tablet, isLandscape: landscape, size: size)
+                let artwork = RestorationArtwork(challenge: challenge, composition: composition)
+                let layout = RestorationLayout(size: size, artwork: artwork)
+                let canvas = CGRect(origin: .zero, size: size)
+                let board = LandingGeometry(size: size).arenaFrame
+                XCTAssertTrue(layout.imageFrame.insetBy(dx: -0.001, dy: -0.001).contains(canvas))
+                XCTAssertTrue(canvas.contains(layout.light), "Light cropped for \(challenge) at \(size)")
+                XCTAssertFalse(board.intersects(layout.light), "Light overlaps stars for \(challenge) at \(size)")
+                XCTAssertTrue(canvas.insetBy(dx: -0.001, dy: -0.001).contains(layout.focal), "Landmark cropped for \(challenge) at \(size)")
+                XCTAssertTrue(layout.focal.contains(layout.light), "Landmark no longer contains the light for \(challenge) at \(size)")
+            }
         }
     }
 

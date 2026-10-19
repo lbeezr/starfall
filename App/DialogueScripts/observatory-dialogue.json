@@ -652,6 +652,50 @@
           "priority": "help"
         }
       ]
+    },
+    {
+      "id": "guide.kite-harbor",
+      "lines": [
+        {
+          "id": "guide.kite-harbor.1",
+          "speaker": "sunny",
+          "text": "Raise Kite Harbor’s sails with 18 starlight. Clear matching stars to bring light back to the moorings and the fleet.",
+          "priority": "help"
+        }
+      ]
+    },
+    {
+      "id": "guide.kite-won",
+      "lines": [
+        {
+          "id": "guide.kite-won.1",
+          "speaker": "sunny",
+          "text": "Kite Harbor complete! You collected {score} starlight. The fleet is aloft and ready to depart!",
+          "priority": "outcome"
+        }
+      ]
+    },
+    {
+      "id": "kite-harbor.entry",
+      "lines": [
+        {
+          "id": "kite-harbor.entry.1",
+          "speaker": "sunny",
+          "text": "Murk took the light from Kite Harbor. Collect 18 starlight to raise its sails before an arriving star runs out of room.",
+          "priority": "help"
+        }
+      ]
+    },
+    {
+      "id": "kite-harbor.replay",
+      "lines": [
+        {
+          "id": "kite-harbor.replay.1",
+          "speaker": "sunny",
+          "text": "Try the same Kite Harbor opening and raise the sails with 18 starlight. Your saved round stays until you tap Begin.",
+          "priority": "help"
+        }
+      ]
     }
   ],
   "copy": {
@@ -928,6 +972,18 @@
     "ribbon.restoration": "Ribbon Crossing, {percent}% restored",
     "result.ribbonWon": "Ribbon Crossing complete! The cloud banks are connected again.",
     "help.ribbonTitle": "Ribbon Crossing · Reconnect the path",
-    "help.ribbon": "Reconnect Ribbon Crossing with 18 starlight. Each clear helps join the stitched path between the cloud banks. Finish before an arriving star has nowhere to land. Use tap matches or five-star traces. Showers arrive at a steady pace. This challenge has no swaps, shape recipes, Dusk, Opal Orbs or storms."
+    "help.ribbon": "Reconnect Ribbon Crossing with 18 starlight. Each clear helps join the stitched path between the cloud banks. Finish before an arriving star has nowhere to land. Use tap matches or five-star traces. Showers arrive at a steady pace. This challenge has no swaps, shape recipes, Dusk, Opal Orbs or storms.",
+    "action.kiteHarbor": "Try Kite Harbor",
+    "action.replayKiteHarbor": "Replay Kite Harbor",
+    "menu.kiteHarbor": "Kite Harbor · 18 starlight",
+    "menu.kiteHarborHint": "Raise Kite Harbor’s sails with 18 starlight. Preview the challenge before Begin.",
+    "flow.kiteHarbor": "KITE HARBOR",
+    "flow.kiteComplete": "HARBOR COMPLETE",
+    "flow.kiteWon": "Kite Harbor restored!",
+    "kite.title": "Kite Harbor",
+    "kite.restoration": "Kite Harbor, {percent}% restored",
+    "result.kiteWon": "Kite Harbor complete! The fleet is aloft and ready to depart.",
+    "help.kiteTitle": "Kite Harbor · Raise the sails",
+    "help.kite": "Raise Kite Harbor’s sails with 18 starlight. Each clear restores the moorings and helps the paper-kite fleet lift. Finish before an arriving star has nowhere to land. Use tap matches or five-star traces. Showers arrive at a steady pace. This challenge has no swaps, shape recipes, Dusk, Opal Orbs or storms."
   }
 }

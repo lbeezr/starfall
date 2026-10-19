@@ -1,0 +1,209 @@
+{
+  "status": "Fifteen packaged source paintings inspected; native acceptance pending",
+  "provenance": "art-prompts.json",
+  "processing": "Selected generated PNGs copied byte-for-byte without pixel edits; each packaged asset is identical to its recorded source. Whole-image fitting belongs to the native renderer.",
+  "verification": {
+    "date": "2026-10-19",
+    "generationRecordsPreserved": 21,
+    "packagedSourceByteMatches": 15,
+    "sourceSha256DimensionsBytesVerified": true,
+    "nativeValidation": "pending"
+  },
+  "assets": [
+    {
+      "family": "phone",
+      "milestone": 0,
+      "asset": "App/Assets.xcassets/KiteHarbor000.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-12d1a012-f9f2-4e41-b96b-f44f551eed4d.png",
+      "sha256": "74424ba367bdd23a48489b9c1bc5e17846b10ff73ba5179ee535ce22ec4af131",
+      "pixels": [
+        887,
+        1774
+      ],
+      "bytes": 2242442,
+      "source_record": "art-prompts.json#/original_records/phone-art-provenance.json/variants/3"
+    },
+    {
+      "family": "phone",
+      "milestone": 25,
+      "asset": "App/Assets.xcassets/KiteHarbor025.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-21840913-8e4b-41e4-b4ef-a7aeb4b698df.png",
+      "sha256": "6b27f8e9ea0f731756f4c9199c39b507dd67c2a06108510cdda7bc498db09bdf",
+      "pixels": [
+        887,
+        1774
+      ],
+      "bytes": 2265595,
+      "source_record": "art-prompts.json#/original_records/phone-art-provenance.json/variants/6"
+    },
+    {
+      "family": "phone",
+      "milestone": 50,
+      "asset": "App/Assets.xcassets/KiteHarbor050.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-3d27164d-5335-41c6-8507-e5c967ed27c9.png",
+      "sha256": "29c48f3a15881c892616f6944266ecbfaf8b4d983236394fbaec693f628df049",
+      "pixels": [
+        887,
+        1774
+      ],
+      "bytes": 2294353,
+      "source_record": "art-prompts.json#/original_records/phone-art-provenance.json/variants/4"
+    },
+    {
+      "family": "phone",
+      "milestone": 75,
+      "asset": "App/Assets.xcassets/KiteHarbor075.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-08e22c71-c94a-46f7-a415-9db4215a1cbb.png",
+      "sha256": "391cf6a353264ea0134f75692e5baefd6d75002b3dafb06a7534f78fc578752c",
+      "pixels": [
+        887,
+        1774
+      ],
+      "bytes": 2257116,
+      "source_record": "art-prompts.json#/original_records/phone-art-provenance.json/variants/2"
+    },
+    {
+      "family": "phone",
+      "milestone": 100,
+      "asset": "App/Assets.xcassets/KiteHarbor100.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-f3618df2-b69f-4cd6-bee5-1aca8cf6b256.png",
+      "sha256": "dc2235c524d5a5464dcd433f24d4ab4f861cf5e25305823b4c30a9aec50bf23c",
+      "pixels": [
+        887,
+        1774
+      ],
+      "bytes": 2267189,
+      "source_record": "art-prompts.json#/original_records/phone-art-provenance.json/variants/1"
+    },
+    {
+      "family": "tabletPortrait",
+      "milestone": 0,
+      "asset": "App/Assets.xcassets/KiteHarborTabletPortrait000.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-e1cebf83-0ac6-4fd2-abdd-b57896b9aa65.png",
+      "sha256": "c6947cf7e68b84aa21c4d63473b78ec27b2f3112b2194c6a684d1352f06b62b8",
+      "pixels": [
+        1086,
+        1448
+      ],
+      "bytes": 2199381,
+      "source_record": "art-prompts.json#/original_records/tablet-art-provenance.json/generations/4"
+    },
+    {
+      "family": "tabletPortrait",
+      "milestone": 25,
+      "asset": "App/Assets.xcassets/KiteHarborTabletPortrait025.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-b38fe19c-341d-4900-a648-dbb42633a762.png",
+      "sha256": "39ebd52982fd2ff613b503d1bd3c1b5a6843e89a2f19161d2078fd855a465105",
+      "pixels": [
+        1086,
+        1448
+      ],
+      "bytes": 2155949,
+      "source_record": "art-prompts.json#/original_records/tablet-art-provenance.json/generations/6"
+    },
+    {
+      "family": "tabletPortrait",
+      "milestone": 50,
+      "asset": "App/Assets.xcassets/KiteHarborTabletPortrait050.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-7d3584bf-9474-49a4-a4f0-4eb842f8d65b.png",
+      "sha256": "68fc31a4ea5b2e5e4b9c17e590e62dc6af614771049284cd17bd60ff69e2e6cd",
+      "pixels": [
+        1086,
+        1448
+      ],
+      "bytes": 2230794,
+      "source_record": "art-prompts.json#/original_records/tablet-art-provenance.json/generations/7"
+    },
+    {
+      "family": "tabletPortrait",
+      "milestone": 75,
+      "asset": "App/Assets.xcassets/KiteHarborTabletPortrait075.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-7e51204d-8285-45f6-b478-c5651d0cbb1e.png",
+      "sha256": "dffaab4b220595555723162375e011409d0799b901ffe72828be2894267cf584",
+      "pixels": [
+        1086,
+        1448
+      ],
+      "bytes": 2224425,
+      "source_record": "art-prompts.json#/original_records/tablet-art-provenance.json/generations/8"
+    },
+    {
+      "family": "tabletPortrait",
+      "milestone": 100,
+      "asset": "App/Assets.xcassets/KiteHarborTabletPortrait100.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-ced0b1f4-08be-4112-9881-fd7a4ccedb1c.png",
+      "sha256": "acc2a38435a5ec5c491de942e948485c272088aa99a0d99e4a74cfb1aefb784c",
+      "pixels": [
+        1086,
+        1448
+      ],
+      "bytes": 2289457,
+      "source_record": "art-prompts.json#/original_records/tablet-art-provenance.json/generations/1"
+    },
+    {
+      "family": "tabletLandscape",
+      "milestone": 0,
+      "asset": "App/Assets.xcassets/KiteHarborTabletLandscape000.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-60bb2244-f485-4e27-8bbe-2c2705d7af95.png",
+      "sha256": "a38b0f743ac1021f65450738ca083eb41d05da69a739cc2d6ec8ae698c07cb66",
+      "pixels": [
+        1448,
+        1086
+      ],
+      "bytes": 2388764,
+      "source_record": "art-prompts.json#/original_records/tablet-art-provenance.json/generations/9"
+    },
+    {
+      "family": "tabletLandscape",
+      "milestone": 25,
+      "asset": "App/Assets.xcassets/KiteHarborTabletLandscape025.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-3ba8d49a-773a-48ed-87dc-8f842e999cb9.png",
+      "sha256": "07cae057448f459858ad4a2def26c1677e35bbfe7cc70c75cbe58bb44b12fdd1",
+      "pixels": [
+        1448,
+        1086
+      ],
+      "bytes": 2370984,
+      "source_record": "art-prompts.json#/original_records/tablet-art-provenance.json/generations/11"
+    },
+    {
+      "family": "tabletLandscape",
+      "milestone": 50,
+      "asset": "App/Assets.xcassets/KiteHarborTabletLandscape050.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-8593a8ea-c89b-43ac-b897-478dcf838eec.png",
+      "sha256": "8206b298ce660c4d1ef85c9fdee0f63ea6f02f78329f015dff5a0a080ad60a08",
+      "pixels": [
+        1448,
+        1086
+      ],
+      "bytes": 2384131,
+      "source_record": "art-prompts.json#/original_records/tablet-art-provenance.json/generations/12"
+    },
+    {
+      "family": "tabletLandscape",
+      "milestone": 75,
+      "asset": "App/Assets.xcassets/KiteHarborTabletLandscape075.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-bde39eb3-1b43-4cfd-81cb-81078443acf3.png",
+      "sha256": "7471e9eddbc9586cb443941474d688e6d505321186b3dcafeba76a9500a7bf19",
+      "pixels": [
+        1448,
+        1086
+      ],
+      "bytes": 2375929,
+      "source_record": "art-prompts.json#/original_records/tablet-art-provenance.json/generations/13"
+    },
+    {
+      "family": "tabletLandscape",
+      "milestone": 100,
+      "asset": "App/Assets.xcassets/KiteHarborTabletLandscape100.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-b698303b-52f2-45e3-a328-dbb262522150.png",
+      "sha256": "a27f8ff4e3e327cb4f06de8223199d565a5ff11157f4768bcec56dc6fcd20ed6",
+      "pixels": [
+        1448,
+        1086
+      ],
+      "bytes": 2392855,
+      "source_record": "art-prompts.json#/original_records/tablet-art-provenance.json/generations/3"
+    }
+  ]
+}

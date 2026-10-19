@@ -18,7 +18,7 @@ import StarfallCore
                 if row == height-1 && column >= 4 { kind = .aqua }
                 if challenge == nil && row == 1 && column == 3 { kind = nil }
                 if challenge != nil && row == 1 && column == 1 { kind = .mint }
-                // First Light has no Dusk. Its bottom-left trio awards four light,
+                // Restoration challenges have no Dusk. The bottom-left trio awards four light,
                 // allowing the 14-point review to finish through an ordinary tap.
                 let grown = row == (challenge == nil ? 1 : 0) && column == 1
                 var gem: [String: Any] = ["id": id, "grown": grown]

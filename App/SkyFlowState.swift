@@ -3,12 +3,13 @@ import StarfallCore
 
 /// An uncommitted choice. Browsing Entry never constructs or saves a replacement game.
 enum SkyEntryRequest: Equatable, CaseIterable {
-    case initial, fresh, replay, firstLight, ribbonCrossing
+    case initial, fresh, replay, firstLight, ribbonCrossing, kiteHarbor
 
     func selectedChallenge(replaying challenge: StarfallChallenge?) -> StarfallChallenge? {
         switch self {
         case .firstLight: .firstLight
         case .ribbonCrossing: .ribbonCrossing
+        case .kiteHarbor: .kiteHarbor
         case .replay: challenge
         case .initial, .fresh: nil
         }
@@ -48,9 +49,9 @@ struct SkyFlowState: Equatable {
         case .start:
             guard screen == .welcome else { return nil }
             return stage(hasSavedSky ? .fresh : .initial)
-        case .firstLight, .ribbonCrossing:
-            guard screen != .entry else { return nil }
-            return stage(action == .firstLight ? .firstLight : .ribbonCrossing)
+        case .firstLight: return stageChallenge(.firstLight)
+        case .ribbonCrossing: return stageChallenge(.ribbonCrossing)
+        case .kiteHarbor: return stageChallenge(.kiteHarbor)
         case .replay, .another:
             guard screen == .playing || screen == .won || screen == .full else { return nil }
             return stage(action == .replay ? .replay : .fresh)
@@ -91,6 +92,11 @@ struct SkyFlowState: Equatable {
         generation &+= 1
         handoff = SkyPlayHandoff(id: generation, source: source, startsClock: startsClock)
         screen = .playing
+    }
+
+    private mutating func stageChallenge(_ request: SkyEntryRequest) -> SkyFlowEffect? {
+        guard screen != .entry else { return nil }
+        return stage(request)
     }
 
     private mutating func stage(_ request: SkyEntryRequest) -> SkyFlowEffect {
