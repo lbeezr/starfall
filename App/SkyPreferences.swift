@@ -8,18 +8,20 @@ struct SkyHelpContext: Equatable {
     let duskRule: DuskRule
     let restorationChallenge: StarfallChallenge?
     var challenge: Bool { restorationChallenge != nil }
+    let arranging: Bool
     let openingCascade: Bool
     let opalStorms: Bool
 
     init(game: FallingSky) {
         pocketedDusk = game.hasPocketedDusk
         criticalMass = game.hasCriticalMass; duskRule = game.duskRule
+        arranging = game.supportsArrangingStars
         openingCascade = game.hasOpeningCascade
         restorationChallenge = game.challenge
         opalStorms = game.generation != .legacy
     }
 
-    var lessons: [SkyLesson] { challenge ? [] : SkyLesson.allCases.filter { $0 != .opal || opalStorms } }
+    var lessons: [SkyLesson] { !arranging ? [] : SkyLesson.allCases.filter { $0 != .opal || opalStorms } }
 
     static func selected(game: FallingSky, entry: SkyEntryRequest?) -> Self {
         switch entry {
@@ -86,14 +88,9 @@ struct SkyHowToPlay: View {
     let done: () -> Void
     var body: some View {
         List {
-            if !context.lessons.isEmpty {
-                Section {
-                    Text(SkyCopy.text(.lessonIntro))
-                    ForEach(context.lessons, id: \.self) { lesson in
-                        NavigationLink(lesson.title) { SkyLessonView(lesson: lesson).toolbar { SkyMenuDone(done: done) } }
-                            .accessibilityIdentifier("lesson.open." + lesson.rawValue)
-                    }
-                } header: { Text(SkyCopy.text(.lessonTitle)) }
+            Section(SkyCopy.text(.practiceTitle)) {
+                NavigationLink(SkyCopy.text(.practiceTitle)) { SkyTutorialView(done: done) }
+                    .accessibilityIdentifier("sky.learn")
             }
             Section(SkyCopy.text(.helpTapTitle)) {
                 Text(SkyCopy.text(.helpTap))
@@ -138,7 +135,7 @@ struct SkyHowToPlay: View {
             Section(SkyCopy.text(.helpPauseTitle)) {
                 Text(SkyCopy.text(.helpPause))
             }
-            if !context.challenge {
+            if context.arranging {
                 Section(SkyCopy.text(.helpArrangeTitle)) {
                     Text(SkyCopy.text(.helpSwap))
                     Text(SkyCopy.text(.helpRecipe))

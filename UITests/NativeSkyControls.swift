@@ -1,6 +1,20 @@
 import XCTest
 
 extension XCUIApplication {
+    /// Enter via the shipping world picker, preserving its explicit Begin ceremony.
+    @MainActor func worldVisitControl(_ location: String) -> XCUIElement {
+        let map = skyMenuControl("sky.worldMap")
+        revealSkyControls([map]); map.tap()
+        XCTAssertTrue(buttons["world.list"].waitForExistence(timeout: 5))
+        if buttons["world.node.firstLight"].exists { buttons["world.list"].tap() }
+        let place = buttons["world.place." + location]
+        revealSkyMenuElement(place); revealSkyControls([place]); place.tap()
+        let visit = buttons["world.visit"]
+        revealSkyControls([visit])
+        XCTAssertTrue(visit.isEnabled)
+        return visit
+    }
+
     /// Sample faster than the quiet forecast's one-second display cadence.
     /// Query membership avoids stale-element retries while the label changes.
     @MainActor func waitForApproachingShower(timeout: TimeInterval, file: StaticString = #filePath, line: UInt = #line) {
@@ -34,7 +48,28 @@ extension XCUIApplication {
                 XCTFail("Missing sky control: \(control.identifier)", file: file, line: line); return
             }
         }
-        let viewport = frame.insetBy(dx: 0, dy: 22)
+        // Fixed footer actions may legitimately reach the bottom of an SE screen;
+        // scroll clipping and visible bars, rather than a guessed safe inset, bound input.
+        var viewport = frame
+        // A form sheet and an inner guide have smaller visible regions than the
+        // application window. Use the actual owning scroll view, including on iPad.
+        let scroll = controls.first.flatMap { first in
+            scrollViews.containing(.button, identifier: first.identifier).allElementsBoundByIndex
+                .filter { candidate in controls.allSatisfy { candidate.buttons[$0.identifier].exists } }
+                .min { $0.frame.width * $0.frame.height < $1.frame.width * $1.frame.height }
+        }
+        if let scroll { viewport = viewport.intersection(scroll.frame) }
+        // A scroll row can report hittable behind a floating navigation bar.
+        // Toolbar buttons themselves remain valid in that bar.
+        let toolbarTargets = controls.allSatisfy { navigationBars.buttons.matching(identifier: $0.identifier).firstMatch.exists }
+        let visibleBar = navigationBars.allElementsBoundByIndex.last {
+            $0.buttons.allElementsBoundByIndex.contains(where: \.isHittable)
+                || $0.staticTexts.allElementsBoundByIndex.contains(where: \.isHittable)
+        }
+        if !toolbarTargets, let bar = visibleBar {
+            let top = max(viewport.minY, bar.frame.maxY - 1)
+            viewport = CGRect(x: viewport.minX, y: top, width: viewport.width, height: max(0, viewport.maxY - top))
+        }
         for _ in 0..<8 {
             let bounds = controls.map(\.frame).reduce(CGRect.null) { $0.union($1) }
             if viewport.contains(bounds) {
@@ -46,7 +81,10 @@ extension XCUIApplication {
             }
             let up = bounds.maxY > viewport.maxY
             let distance = min(frame.height * 0.45, max(24, up ? bounds.maxY - viewport.maxY + 8 : viewport.minY - bounds.minY + 8))
-            let start = coordinate(withNormalizedOffset: CGVector(dx: 0.002, dy: up ? 0.75 : 0.25))
+            let surface = scroll ?? self
+            let containsBoard = scroll?.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@", "experiment.cell.")).firstMatch.exists ?? true
+            let scrollX = !containsBoard || visibleBar != nil ? 0.12 : 0.002
+            let start = surface.coordinate(withNormalizedOffset: CGVector(dx: scrollX, dy: up ? 0.75 : 0.25))
             start.press(forDuration: 0.05, thenDragTo: start.withOffset(CGVector(dx: 0, dy: up ? -distance : distance)),
                         withVelocity: .slow, thenHoldForDuration: 0.1)
         }

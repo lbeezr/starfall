@@ -76,6 +76,8 @@ enum SkyTerminalSpeech { case feedback, ceremony }
 
 // Existing persistence keys and launch arguments survive the production naming promotion.
 @MainActor @Observable final class FallingSkyStore {
+    private(set) var tutorial: SkyTutorialRun?
+    let journey: WorldJourneyStore
     var terminalSpeech: SkyTerminalSpeech = .feedback
     static let saveKey = SkySaveArchive.key
     private(set) var game: FallingSky
@@ -215,7 +217,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         guard canReceiveInput, ticket == constellationInputGeneration,
               holdTicket == constellationHold, count == 0 || holdTicket != nil else { return }
         let message = count > 0
-            ? SkyCopy.text(.inputTraceAnnouncement, values: ["count": String(count), "score": String(value), "status": SkyCopy.text(ready ? .inputTraceReleaseReady : game.challenge == nil ? .inputTraceShort : .inputTraceChallengeShort)])
+            ? SkyCopy.text(.inputTraceAnnouncement, values: ["count": String(count), "score": String(value), "status": SkyCopy.text(ready ? .inputTraceReleaseReady : game.supportsArrangingStars ? .inputTraceShort : .inputTraceChallengeShort)])
             : SkyCopy.text(.inputTraceCanceled)
         feedback.announce(message)
     }
@@ -327,8 +329,11 @@ enum SkyTerminalSpeech { case feedback, ceremony }
          presenter: (any FallingSkyPresenting)? = nil,
          clock: (any FallingSkyRainScheduling)? = nil,
          feedback: (any FallingSkyFeedbackProviding)? = nil,
+         tutorial: SkyTutorial? = nil,
          archiveWriter: @escaping @MainActor (FallingSky, UserDefaults) throws -> Void = SkySaveArchive.save) {
         self.defaults = defaults
+        journey = WorldJourneyStore(defaults: defaults, ignoreSaved: tutorial != nil || arguments.contains("--starfalls-reset"))
+        self.tutorial = tutorial.map(SkyTutorialRun.init)
         self.archiveWriter = archiveWriter
         self.feedback = feedback ?? GameFeedback()
         soundEnabled = defaults.object(forKey: "soundEnabled") == nil ? true : defaults.bool(forKey: "soundEnabled")
@@ -338,21 +343,24 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         self.scene = scene
         self.presenter = presenter ?? scene
         // SwiftUI may construct stores for discarded view values. Keep initialization read-only.
-        if !arguments.contains("--starfalls-reset"), case .loaded(let saved) = SkySaveArchive.inspect(from: defaults) {
-            game = saved.removingGravity().adoptingFeedingDusk().disablingAutomaticAging()
+        if tutorial == nil, !arguments.contains("--starfalls-reset"), case .loaded(let saved) = SkySaveArchive.inspect(from: defaults) {
+            game = saved.removingGravity().adoptingFeedingDusk().disablingAutomaticAging().adoptingCurrentChallengeActions()
             hasSavedSky = true
             guide(saved.outcome == .won ? (saved.challenge?.wonGuideID ?? "guide.won") : saved.isOver ? "guide.full" : "guide.restore", values: saved.isOver ? ["score": String(saved.score)] : [:])
         } else {
             let argument = arguments.first { $0.hasPrefix("--starfalls-seed=") }
             let seed = argument.flatMap { UInt64($0.dropFirst("--starfalls-seed=".count)) } ?? 5
             game = FallingSky.freshSurvival(seed: seed)
-            if !arguments.contains("--starfalls-reset"), case .rejected(let key) = SkySaveArchive.inspect(from: defaults) {
+            if tutorial == nil, !arguments.contains("--starfalls-reset"), case .rejected(let key) = SkySaveArchive.inspect(from: defaults) {
                 rejectedSaveKey = key
                 persistenceNotice = .rejected
                 Self.persistenceLog.error("Rejected sky archive; preserving it before the next committed save")
             }
         }
         #if DEBUG
+        if arguments.contains("--starfalls-reset"), arguments.contains("--dialogue-review"), arguments.contains("--world-legacy-review") {
+            journey.useLegacyReviewAccess()
+        }
         if arguments.contains("--starfalls-reset"), arguments.contains("--observatory-review") {
             let reviewScore = arguments.first { $0.hasPrefix("--night-score=") }.flatMap { Int($0.dropFirst("--night-score=".count)) } ?? 0
             game = ObservatoryReviewFixture.game(dense: arguments.contains("--observatory-dense"), score: min(2_000_000_000,max(0,reviewScore))).adoptingFeedingDusk()
@@ -403,6 +411,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
             game = CriticalMassFixture.game()
         }
         #endif
+        if let tutorial { game = tutorial.game(); persistenceNotice = nil; hasSavedSky = false }
         refreshCadence()
         remaining = showerInterval
         scene.decorativeMotionActive = !suspended
@@ -630,7 +639,9 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         #endif
         invalidateInput("pause")
         guard !suspended, !game.isOver else { return }
+        let before = game
         isPaused.toggle()
+        self.tutorial?.observe(isPaused ? .pause : .resume, before: before, after: game)
         if isPaused {
             interruptPlay(reason: "pause")
             dialogue.reset(); guide("guide.paused")
@@ -641,6 +652,10 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     }
 
     private func armClock() {
+        if let tutorial {
+            guard tutorial.chapter.allowsClock, !tutorial.complete, !tutorial.needsRetry,
+                  tutorial.next != .pause else { return }
+        }
         #if DEBUG
         guard !isTechniqueFixture else { return }
         #endif
@@ -707,6 +722,16 @@ enum SkyTerminalSpeech { case feedback, ceremony }
 
     private func present(_ turn: FallingSkyTurn, from old: FallingSky, announcesResult: Bool = true, previousCadence: SkyCadenceStep? = nil, path: [Cell] = [], recipe: StarRecipe? = nil) {
         let isShower = !turn.arrivals.isEmpty || turn.blockedColumn != nil
+        if tutorial != nil {
+            let action: SkyTutorial.Action
+            if let exchange = turn.exchange { action = .swap(exchange.from, exchange.to) }
+            else if isShower { action = announcesResult ? .shower : .automaticShower }
+            else if !path.isEmpty { action = .trace(path) }
+            else if let recipe { action = .trace(SkyTutorial.walk(recipe)) }
+            else { action = .tap(turn.cleared.sorted { $0.row == $1.row ? $0.column < $1.column : $0.row < $1.row }.first ?? Cell(0,0)) }
+            tutorial?.observe(action, before: old, after: game)
+            if tutorial?.complete == true || tutorial?.needsRetry == true || tutorial?.next == .pause { freezeClock() }
+        }
         // The exact committed selection names its achievement, independent of
         // whether it arrived through a tap, held trace or accessible action.
         // Neighboring Dusk removals are consequences, not recipe ingredients.
@@ -795,7 +820,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         let replayAllowed = sameSky
         #endif
         if replayAllowed {
-            game = game.removingGravity().adoptingFeedingDusk().disablingAutomaticAging().replay()
+            game = game.removingGravity().adoptingFeedingDusk().disablingAutomaticAging().adoptingCurrentChallengeActions().replay()
         } else {
             // First Light's fixed balance belongs to that challenge, not the next normal sky.
             let balance = game.challenge == nil ? game.balance : StarfallBalance()
@@ -925,12 +950,25 @@ enum SkyTerminalSpeech { case feedback, ceremony }
 
     func dismissPersistenceNotice() { persistenceNotice = nil }
 
+    func loadTutorial(_ chapter: SkyTutorial) {
+        guard tutorial != nil else { return }
+        isPaused = true
+        interruptPlay(reason: "tutorial")
+        tutorial = SkyTutorialRun(chapter)
+        game = chapter.game()
+        refreshCadence(); remaining = showerInterval
+        dialogue.reset()
+        presenter.render(game)
+    }
+
     private func save() {
+        guard tutorial == nil else { return }
         #if DEBUG
         guard !isTechniqueFixture else { return }
         #endif
         do {
             try archiveWriter(game, defaults)
+            try journey.record(game)
             hasSavedSky = true
             saveFailed = false
             if persistenceNotice == .failed { persistenceNotice = nil }

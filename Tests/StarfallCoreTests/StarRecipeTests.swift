@@ -115,8 +115,10 @@ final class StarRecipeTests: XCTestCase {
         XCTAssertEqual(game.occupiedCount,0)
     }
 
-    func testFirstLightRejectsExtraActionsWithoutMutation() {
-        var game = FallingSky(challenge: .firstLight)
+    func testHistoricalFirstLightRejectsExtraActionsWithoutMutation() throws {
+        var fields = try XCTUnwrap(JSONSerialization.jsonObject(with: JSONEncoder().encode(FallingSky(challenge: .firstLight))) as? [String: Any])
+        fields.removeValue(forKey: "savedChallengeActions")
+        var game = try JSONDecoder().decode(FallingSky.self, from: JSONSerialization.data(withJSONObject: fields))
         game.letStarsFall()
         let old = game
         XCTAssertNil(game.nudge(from: Cell(0,0), to: Cell(0,1)))

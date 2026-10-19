@@ -3,6 +3,29 @@ import StarfallCore
 @testable import Starfall
 
 final class SkyFlowStateTests: XCTestCase {
+    func testWorldMapIsAPageAndReturnsToItsOriginWithoutBeginningARound() {
+        for arguments in [[], ["--starfalls-reset"]] {
+            var flow = SkyFlowState(arguments: arguments)
+            let origin = flow.screen
+            XCTAssertEqual(flow.handle(.worldMap, hasSavedSky: true), .worldMap)
+            XCTAssertEqual(flow.screen, .worldMap)
+            XCTAssertNil(flow.entry); XCTAssertNil(flow.handoff)
+            XCTAssertNil(flow.handle(.worldMap, hasSavedSky: true))
+            XCTAssertEqual(flow.handle(.worldBack, hasSavedSky: true), origin == .playing ? .continued : .home)
+            XCTAssertEqual(flow.screen, origin)
+            _ = flow.handle(.worldMap, hasSavedSky: true)
+            XCTAssertEqual(flow.handle(.firstLight, hasSavedSky: true), .staged)
+            XCTAssertEqual(flow.screen, .entry)
+            XCTAssertNil(flow.handle(.worldBack, hasSavedSky: true))
+        }
+        var flow = SkyFlowState(arguments: [])
+        _ = flow.handle(.worldMap, hasSavedSky: true)
+        XCTAssertEqual(flow.handle(.resume, hasSavedSky: true), .continued)
+        XCTAssertEqual(flow.screen, .playing)
+        XCTAssertEqual(flow.handoff?.source, .worldMap)
+        XCTAssertEqual(flow.handoff?.startsClock, false)
+        XCTAssertNil(flow.entry)
+    }
     @MainActor private func make(legacyClock: Bool = false) -> (FallingSkyStore, FallingSkyRecorder, ManualRainClock, UserDefaults) {
         let suite = "Starfall.Entry.\(UUID())"
         let defaults = UserDefaults(suiteName: suite)!
@@ -370,7 +393,7 @@ extension SkyFlowStateTests {
         }
         XCTAssertEqual(SkyHelpContext(game: fresh).lessons, SkyLesson.allCases)
         XCTAssertEqual(SkyHelpContext(game: retained).lessons, [.square, .cross, .relay])
-        XCTAssertTrue(SkyHelpContext(game: challenge).lessons.isEmpty)
+        XCTAssertEqual(SkyHelpContext(game: challenge).lessons, [.square, .cross, .relay])
         let dusk = SkyHelpContext(game: retained)
         XCTAssertFalse(dusk.criticalMass); XCTAssertFalse(dusk.challenge); XCTAssertEqual(dusk.duskRule, .patientFeeding)
         var flow = SkyFlowState(arguments: [])

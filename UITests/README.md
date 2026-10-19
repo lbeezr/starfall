@@ -52,7 +52,7 @@ Paused clear-feedback checks wait for the exact result text after score commitme
 
 The responsive-input regression uses 7-point ordinary drift at normal/largest text. Selected-five native drawing includes a hold then fast stroke beginning at the target rim; partial/outside traces must still cancel without ordinary-clear fallback.
 
-`LandingPlaceInteractionTests` exercises all five remembered menu choices, portrait/landscape centering, native opposite-edge taps, background/resume, exact large scores and largest-text scrolling. Calm checks preserve the same clear outcomes. Its explicit Observatory fixtures use isolated defaults.
+`LandingPlaceInteractionTests` now browses the five official destinations without entering; it preserves its portrait/landscape centering, native opposite-edge taps, background/resume, exact large scores and largest-text scrolling. Calm checks preserve the same clear outcomes. Its explicit Observatory fixtures use isolated defaults.
 
 `CriticalMassInteractionTests` exercises the reset-only age-eight review history: native rescue, warned collapse, settings/background/restore and largest-text calm help. It uses isolated dialogue-review defaults, not player saves.
 
@@ -64,7 +64,7 @@ The focused constellation gap/off-center and quick directional swap checks exerc
 
 `PacingCueUITests` checks that normal, calm and system Reduce Motion forecasts approach before commitment and actually arrive afterward. Bounded state predicates replace guessed animation sleeps.
 
-`SkyLessonInteractionTests` walks every explicit example action, checks exact rewards and reset, returns to unchanged live play, and checks largest-text/calm background and dismissal. These demonstrations teach consequences; they do not replace native swipe/hold training.
+`SkyLessonInteractionTests` exercises real tutorial square/cross/Opal/relay moves, exact rewards, Retry, unchanged live play and maximum-text/system Reduce Motion lifecycle. `WorldJourneyInteractionTests` covers map locks versus unavailable content, cancellation, native swaps in all five locations, tap/swap/held-trace practice and durable repair after relaunch. `worldVisitControl` selects through the shipping map. A reset-only `--world-legacy-review` flag, additionally gated by `--dialogue-review`, models an existing install for older cross-location preview tests without inventing completion.
 
 The reward feedback acceptance repeats native recipe/relay clears, fast swaps followed by held tracing, settings/background and actual system Reduce Motion. These checks verify outcomes and lifecycle, not physical haptic or listening preference.
 

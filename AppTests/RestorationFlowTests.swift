@@ -167,6 +167,8 @@ final class RestorationFlowTests: XCTestCase {
             }
             XCTAssertTrue(SkyEntryRequest.replay.introduction(challenge: challenge).text.contains("Your saved round stays until you tap Begin."))
             XCTAssertTrue(challenge.helpText.contains(location.title))
+            XCTAssertTrue(challenge.helpText.contains("Swipe neighboring stars"))
+            XCTAssertFalse(challenge.helpText.contains("no swaps"))
             XCTAssertEqual(challenge.restorationLabel(progress: .init(score: 9, target: 18)), "\(location.title), 50% restored")
             XCTAssertEqual(challenge.restorationLabel(progress: .init(score: 22, target: 18)), "\(location.title), 100% restored")
             var full = FallingSky(challenge: challenge)
@@ -223,4 +225,28 @@ final class RestorationFlowTests: XCTestCase {
             XCTAssertTrue(dense.game.isValidSave)
         }
     }
+    @MainActor func testV8RestorationMigratesActionsOnActivationAndKeepsOriginalBytes() throws {
+        for challenge in StarfallChallenge.allCases {
+            let original = progressed(challenge)
+            var fields = try XCTUnwrap(JSONSerialization.jsonObject(with: JSONEncoder().encode(original)) as? [String: Any])
+            fields.removeValue(forKey: "savedChallengeActions")
+            let bytes = try JSONSerialization.data(withJSONObject: ["schemaVersion": 8, "game": fields], options: [.sortedKeys])
+            let (_, _, _, defaults) = try make()
+            defaults.set(bytes, forKey: SkySaveArchive.agingKey)
+            let presenter = FallingSkyRecorder(), clock = ManualRainClock()
+            let store = FallingSkyStore(defaults: defaults, arguments: [], presenter: presenter, clock: clock)
+            XCTAssertEqual(store.game, original)
+            XCTAssertTrue(store.game.canArrangeStars)
+            XCTAssertTrue(SkyHelpContext(game: store.game).arranging)
+            XCTAssertNil(defaults.object(forKey: SkySaveArchive.key))
+            store.setSuspended(false)
+            XCTAssertEqual(try SkySaveArchive.decode(XCTUnwrap(defaults.data(forKey: SkySaveArchive.key))), original)
+            XCTAssertEqual(defaults.data(forKey: SkySaveArchive.agingKey), bytes)
+            store.restart(sameSky: true)
+            XCTAssertEqual(store.game, FallingSky(challenge: challenge))
+            defaults.set(Data("broken".utf8), forKey: SkySaveArchive.key)
+            XCTAssertNil(SkySaveArchive.load(from: defaults), "Never fall back to the old v8 round")
+        }
+    }
+
 }

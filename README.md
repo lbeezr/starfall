@@ -2,15 +2,17 @@
 
 <img src="App/Assets.xcassets/AppIcon.appiconset/Starfall-1024.png" width="96" alt="Starfall icon: Spark tumbling above lavender clouds">
 
-A small, offline iOS falling-sky puzzle. Clear matching stars as showers fill the board, or collect 18 starlight to restore a place. Open sky remains the default; progress stays on this device. All five optional challenges are implemented, development-verified and delivered.
+A small, offline iOS falling-sky puzzle. Clear matching stars as showers fill the board, or collect 18 starlight to restore a place. Open sky remains the default; progress stays on this device. Five restoration locations are playable through the world map; seven more remain in production planning.
 
 [Roadmap](docs/ROADMAP.md) · [Visual reference and cast](docs/design/VISUAL_REFERENCE.md) · [Playtest](docs/PLAYTEST-FALLING-SKY.md) · [Documentation map](docs/README.md)
 
-**Story and locations:** Murk, the Hungry Moon, has stolen the light from twelve places. The [game bible](docs/design/STARFALL_GAME_BIBLE.md) and [world atlas](docs/design/WORLD_ATLAS.md) develop the approved setting. Lantern Landing, Ribbon Crossing, Kite Harbor, Seed Moon and Silver Pools use the same seed-42 opening and 18-light objective. The other seven locations and map traversal remain concepts; there is no campaign or unlock progression.
+**Official world integration:** [Shared mechanics, the painted map and playable tutorial](docs/OFFICIAL_LOCATIONS_AND_TUTORIAL_PLAN.md) replace the old Try list. All five locations accept swaps and recipes. A new journey starts with Lantern Landing; repairing a place lights its map landmark and opens the next ready location. Existing players keep access to the five previously available places. [Development verification](docs/evidence/official-world-2026-10-19/README.md) records the source and acceptance limits; this change has not been installed on the phone.
+
+**Story and locations:** Murk, the Hungry Moon, has stolen the light from twelve places. The [game bible](docs/design/STARFALL_GAME_BIBLE.md) and [world atlas](docs/design/WORLD_ATLAS.md) develop the setting. The five ready places retain seed 42 and the 18-light objective. The other seven have map identities but cannot be entered until their content is ready.
 
 **Restoration status:** [Lantern Landing](docs/evidence/lantern-landing-2026-10-19/README.md), [Ribbon Crossing](docs/evidence/ribbon-crossing-2026-10-19/README.md), [Kite Harbor](docs/evidence/kite-harbor-2026-10-19/README.md) and [Seed Moon](docs/evidence/seed-moon-2026-10-19/README.md) have delivered development builds; their linked reports retain exact sources, installation receipts and acceptance limits. [Silver Pools](docs/design/silver-pools-05/PRODUCTION_PLAN.md) restores a connected water garden through the shared challenge flow. Its [development verification](docs/evidence/silver-pools-2026-10-19/README.md) passes at `dev.98f8ba82e6`; the [canonical delivery receipt](docs/evidence/silver-pools-2026-10-19/delivery.json) verifies installation from main `47ff6ba` after [PR #178](https://github.com/lbeezr/starfall/pull/178), without reset or automatic launch. Main CI was pending at installation. Full release-candidate accessibility and physical play remain separate acceptance. The [level-design kit](docs/design/level-design-kit/README.md) supplies reusable composition, native-layout, camera and star-scale guidance.
 
-Help now includes optional interactive examples of squares, crosses, Opal and relays. Each button shows a real rule outcome while your sky stays paused.
+Learn to Play offers 21 replayable practice chapters using the real board and gestures. Matching, swaps, traces, recipes, relays and scoring setups share their rules and regression scenarios with normal play; practice leaves the saved sky and world untouched.
 
 [Gameplay quality](docs/GAMEPLAY_QUALITY.md) improvements are delivered across readability, consequences, pacing, discovery, reward rhythm and replay. Each verified batch was merged and delivered before the next priority; physical-play acceptance remains open.
 
@@ -18,7 +20,7 @@ Help now includes optional interactive examples of squares, crosses, Opal and re
 
 Score popups and celebration titles use the [crystal-depth alphabet](Artwork/CrystalComet/NATIVE.md), with brief letter turns, static quiet modes and native accessible text.
 
-**Five layered nightscapes are integrated:** Moonwake, Nebula Cradle, Shatterlight Reach, Night Garden and Ringdrift. Gameplay stays centered while independent scenery fills the margins. Choose **Menu → Location** without changing the round. [Production art and contract](docs/design/environments/night-production-09/README.md) · [Native verification and delivery](docs/evidence/nightscapes-2026-10-18/README.md).
+The five old nightscapes and their picker are retired. Open Sky uses completed Lantern Landing scenery independently of score or world progress. Historical [nightscape artwork and evidence](docs/design/environments/night-production-09/README.md) remain outside the target.
 
 Player wording and character voices are authored in the [local copy catalogue](App/DialogueScripts/README.md), with typed interface keys, validated templates and an in-app dialogue preview.
 
@@ -98,7 +100,7 @@ The package records its pre-adoption handoff state and is preserved unchanged. R
 
 ## Product boundaries
 
-Falling sky is the default in Debug and Release. All five optional restoration challenges are delivered and share one fixed objective, with no campaign or unlock progression. No power-ups, backend, accounts, analytics, ads, purchases, paid assets or external SDKs.
+Falling sky is the default in Debug and Release. Five ready restoration locations share a fixed objective and local world progression. No power-ups, backend, accounts, analytics, ads, purchases, paid assets or external SDKs.
 
 `Config/Clean.xcconfig` supplies `STARFALL_CLEAN`; all existing configurations are clean. Monetization code, dependencies, UI and entitlements are physically absent. See `AGENTS.md` for the boundary for any future optional edition. No speculative monetization subsystem is implemented.
 
@@ -110,7 +112,7 @@ See the [engineering guide and concrete debt register](docs/ENGINEERING.md) for 
 
 See `docs/VALIDATION.md` for exact executed checks and outstanding checks. Apple-platform compilation, simulator launch, screenshots, accessibility behavior and physical-device behavior must not be inferred from passing pure-core tests.
 
-New installations start in **Moonwake**. Existing location preferences map to the five nightscapes; the score, stars and saved round are preserved. The scenery has no gameplay touch targets. Compact screens and accessibility text use a scrolling layout with the same seven-column coordinate mapping.
+Open Sky uses completed **Lantern Landing** scenery. Existing old-scenery preferences are inert; score, stars and the saved round are preserved. The scenery has no gameplay touch targets. Compact screens and accessibility text use a scrolling layout with the same seven-column coordinate mapping.
 
 Requested improvements go directly into regular Starfall. Build the shared scheme and update the existing installation; create no separate lab unless explicitly requested. Historical trials remain in the [adoption register](docs/EXPERIMENTS.md). [Current drawing, full-window and cadence fixes](docs/evidence/main-polish-2026-10-17/README.md) record tests and remaining physical/RC checks.
 

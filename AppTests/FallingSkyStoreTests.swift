@@ -15,12 +15,12 @@ final class FallingSkyStoreTests: XCTestCase {
         review.removePersistentDomain(forName: suiteName)
         let ordinary = UserDefaults.standard
         let normalSave = ordinary.data(forKey: FallingSkyStore.saveKey)
-        let normalPlace = ordinary.string(forKey: LandingPlace.preferenceKey)
+        let normalPlace = ordinary.string(forKey: "landingPlace")
         let normalSound = ordinary.object(forKey: "soundEnabled") as? Bool
         let normalHaptics = ordinary.object(forKey: "starfall.haptics") as? Bool
         let arguments = ["--starfalls-reset", "--observatory-review"]
         let selected = SkyDefaults.forApp(arguments: arguments)
-        selected.set("archive", forKey: LandingPlace.preferenceKey)
+        selected.set("archive", forKey: "landingPlace")
         let store = FallingSkyStore.forSkyFlowApp(arguments: arguments)
         defer { store.setSuspended(true) }
         XCTAssertEqual(store.game, ObservatoryReviewFixture.game(dense: false).adoptingFeedingDusk())
@@ -33,11 +33,11 @@ final class FallingSkyStoreTests: XCTestCase {
         let committed = try SkySaveArchive.decode(saved)
         XCTAssertEqual(committed, expected)
         XCTAssertGreaterThan(committed.score, 0)
-        XCTAssertEqual(review.string(forKey: LandingPlace.preferenceKey), "archive")
+        XCTAssertEqual(review.string(forKey: "landingPlace"), "archive")
         XCTAssertEqual(review.object(forKey: "soundEnabled") as? Bool, false)
         XCTAssertEqual(review.object(forKey: "starfall.haptics") as? Bool, false)
         XCTAssertEqual(ordinary.data(forKey: FallingSkyStore.saveKey), normalSave)
-        XCTAssertEqual(ordinary.string(forKey: LandingPlace.preferenceKey), normalPlace)
+        XCTAssertEqual(ordinary.string(forKey: "landingPlace"), normalPlace)
         XCTAssertEqual(ordinary.object(forKey: "soundEnabled") as? Bool, normalSound)
         XCTAssertEqual(ordinary.object(forKey: "starfall.haptics") as? Bool, normalHaptics)
         XCTAssertTrue(SkyDefaults.forApp(arguments: []) === ordinary)

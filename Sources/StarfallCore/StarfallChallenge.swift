@@ -1,4 +1,4 @@
-/// Directly selectable authored rounds, without campaign or unlock state.
+/// Authored round identities and rules. WorldJourney owns access separately.
 public enum StarfallChallenge: String, Codable, CaseIterable, Equatable, Sendable {
     case firstLight, ribbonCrossing, kiteHarbor, seedMoon, silverPools
 

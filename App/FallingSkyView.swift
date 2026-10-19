@@ -4,6 +4,7 @@ import StarfallCore
 
 // Historical experiment.* accessibility IDs remain stable for automation and assistive clients.
 @MainActor struct FallingSkyView: View {
+    private var tutorialExit: (() -> Void)?
     @State private var store: FallingSkyStore
     @State private var interaction = SkyInteractionSession()
     private var trace: ConstellationTraceIntent { interaction.trace }
@@ -14,8 +15,6 @@ import StarfallCore
     @State private var handoffLeaving = false
     @AccessibilityFocusState private var menuFocused: Bool
     @AppStorage("calmEffects") private var calmEffects = false
-    @AppStorage(LandingPlace.preferenceKey) private var savedPlace = LandingPlace.moonwake.rawValue
-    private var place: LandingPlace { LandingPlace.restored(savedPlace) }
     @Environment(\.colorSchemeContrast) private var environmentContrast
     @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
     @Environment(\.scenePhase) private var scenePhase
@@ -29,14 +28,15 @@ import StarfallCore
         self.init(store: .forSkyFlowApp(), flow: SkyFlowState())
     }
 
-    init(store: FallingSkyStore, flow: SkyFlowState) {
+    init(store: FallingSkyStore, flow: SkyFlowState, tutorialExit: (() -> Void)? = nil) {
+        self.tutorialExit = tutorialExit
         _store = State(initialValue: store)
         _flow = State(initialValue: flow)
     }
 
-    private var endingReady: Bool { flow.screen == .playing && store.game.isOver && !store.busy }
+    private var endingReady: Bool { store.tutorial == nil && flow.screen == .playing && store.game.isOver && !store.busy }
     private var ceremonyScreen: SkyFlowScreen? {
-        if let handoff = flow.handoff { return handoff.source }
+        if let handoff = flow.handoff { return handoff.source == .worldMap ? nil : handoff.source }
         if endingReady { return store.game.outcome == .won ? .won : .full }
         return flow.screen == .playing ? nil : flow.screen
     }
@@ -109,9 +109,17 @@ import StarfallCore
         .task(id: handoffKey) { await presentHandoff() }
     }
 
-    private var sceneContent: some View {
+    @ViewBuilder private var sceneContent: some View {
+        if flow.screen == .worldMap {
+            worldMap
+        } else {
+            gameContent
+        }
+    }
+
+    private var gameContent: some View {
         ZStack {
-            LandingBackdrop(place: place).ignoresSafeArea()
+            SkyBackdrop().ignoresSafeArea()
             VStack(spacing: 0) {
                 GeometryReader { safeViewport in
                     // The playfield expands through safe-area insets. Classify that
@@ -233,17 +241,29 @@ import StarfallCore
     }
 
     @ViewBuilder private func guide(compact: Bool, maximumHeight: CGFloat? = nil, narrow: Bool = false, externalControls: Bool = false) -> some View {
-        if !store.game.isOver {
+        if let run = store.tutorial {
+            VStack(spacing: StarfallTheme.Spacing.medium) {
+                SkyTutorialGuide(run: run, constrained: maximumHeight != nil, retry: { store.loadTutorial(run.chapter) },
+                                 next: { chapter in store.loadTutorial(chapter) }, exit: { tutorialExit?() })
+                    .frame(height: maximumHeight)
+                if !externalControls {
+                    ViewThatFits(in: .horizontal) {
+                        HStack { pauseControl; showerControl }.fixedSize(horizontal: true, vertical: false)
+                        VStack { pauseControl; showerControl }
+                    }.buttonStyle(StarfallGameButtonStyle(tint: StarfallTheme.Colors.textPrimary))
+                }
+            }
+        } else if !store.game.isOver {
             SkyDialogueOverlay(session: store.dialogue,
                                pausedLine: store.isPaused ? store.pausedGuideLine : nil,
                                active: scenePhase == .active && !settings && !showingCeremony,
                                next: store.nextDialogue, maximumHeight: maximumHeight, compact: narrow,
-                               embedded: true, externalControls: externalControls, embeddedInk: StarfallTheme.Landing.ink(place)) {
+                               embedded: true, externalControls: externalControls, embeddedInk: StarfallTheme.Colors.textPrimary) {
                 ViewThatFits(in: .horizontal) {
                     HStack(spacing: StarfallTheme.Spacing.medium) { pauseControl; showerControl }
                         .fixedSize(horizontal: true, vertical: false)
                     VStack(alignment: .leading, spacing: StarfallTheme.Spacing.small) { pauseControl; showerControl }
-                }.buttonStyle(StarfallGameButtonStyle(tint: StarfallTheme.Landing.ink(place)))
+                }.buttonStyle(StarfallGameButtonStyle(tint: StarfallTheme.Colors.textPrimary))
             }
             .background {
                 if restoration != nil {
@@ -281,7 +301,7 @@ import StarfallCore
             } else if index == 0 { pauseControl }
             else { showerControl }
         }
-        .buttonStyle(StarfallGameButtonStyle(tint: StarfallTheme.Landing.ink(place)))
+        .buttonStyle(StarfallGameButtonStyle(tint: StarfallTheme.Colors.textPrimary))
         .multilineTextAlignment(.center)
     }
 
@@ -315,15 +335,15 @@ import StarfallCore
                 CubicKeyframe(1, duration: 0.2)
             }
             .starlightAnchor(.score)
-            .foregroundStyle(StarfallTheme.Landing.ink(place))
+            .foregroundStyle(StarfallTheme.Colors.textPrimary)
             .shadow(color: StarfallTheme.Colors.skyTop, radius: 3)
             .frame(minHeight: StarfallTheme.Layout.minimumTarget).allowsHitTesting(false)
     }
     private var skyMenuButton: some View {
-        Button { menu = .game } label: { Text("Menu") }
-            .buttonStyle(StarfallGameButtonStyle(tint: StarfallTheme.Landing.ink(place)))
+        Button { if let tutorialExit { tutorialExit() } else { menu = .game } } label: { Text(tutorialExit == nil ? "Menu" : SkyCopy.text(.practiceExit)) }
+            .buttonStyle(StarfallGameButtonStyle(tint: StarfallTheme.Colors.textPrimary))
             .disabled(scenePhase != .active || store.suspended)
-            .accessibilityLabel(SkyCopy.text(.menuTitle)).accessibilityHint(SkyCopy.text(.menuHint))
+            .accessibilityLabel(tutorialExit == nil ? SkyCopy.text(.menuTitle) : SkyCopy.text(.practiceExit)).accessibilityHint(SkyCopy.text(.menuHint))
             .accessibilityIdentifier("experiment.settings").accessibilityFocused($menuFocused)
     }
 
@@ -345,18 +365,14 @@ import StarfallCore
         VStack(spacing: 0) {
             GeometryReader { geometry in
                 ZStack {
-                    if let restoration {
-                        RestorationEnvironment(presentation: restoration,
-                                                  active: scenePhase == .active && !settings && store.persistenceNotice == nil,
-                                                  ambientActive: !showingCeremony && !store.isPaused,
-                                                  quiet: quietMotion || reduceTransparency, isTablet: UIDevice.current.userInterfaceIdiom == .pad,
-                                                  isLandscape: landscape)
-                            .id("\(restoration.challenge.rawValue).\(environmentGeneration)")
-                    } else {
-                        LandingEnvironment(place: place, active: scenePhase == .active && !settings && store.persistenceNotice == nil && !showingCeremony && !store.isPaused,
-                                           reducedMotion: reduceMotion || calmEffects || voiceOver || reduceTransparency, largeHeader: expanded && largeText)
-                            .id("\(environmentGeneration).\(place.rawValue)")
-                    }
+                    let scenery = restoration ?? RestorationPresentation(challenge: .firstLight,
+                        progress: StarlightRestoration(score: 18, target: 18))
+                    RestorationEnvironment(presentation: scenery,
+                                           active: scenePhase == .active && !settings && store.persistenceNotice == nil,
+                                           ambientActive: !showingCeremony && !store.isPaused,
+                                           quiet: quietMotion || reduceTransparency, isTablet: UIDevice.current.userInterfaceIdiom == .pad,
+                                           isLandscape: landscape)
+                        .id("\(scenery.challenge.rawValue).\(environmentGeneration)")
                     if environmentContrast == .increased || reduceTransparency {
                         Color.black.opacity(0.28).allowsHitTesting(false).accessibilityHidden(true)
                     }
@@ -497,7 +513,7 @@ import StarfallCore
     }
 
     private func updateSuspension() {
-        store.setSuspended(scenePhase != .active || settings || store.persistenceNotice != nil || showingCeremony || !store.sceneReady)
+        store.setSuspended(scenePhase != .active || settings || store.persistenceNotice != nil || showingCeremony || flow.handoff != nil || !store.sceneReady)
     }
 
     private func finishHandoffIfReady() {
@@ -534,6 +550,11 @@ import StarfallCore
         guard scenePhase == .active,
               let effect = flow.handle(action, hasSavedSky: store.hasSavedSky, entryID: entryID) else { return }
         switch effect {
+        case .worldMap:
+            store.setSuspended(true)
+        case .tutorial:
+            menu = .tutorial
+            return
         case .preferences:
             menu = .welcome
             return
@@ -550,8 +571,26 @@ import StarfallCore
         menu = nil
     }
 
+    private var worldMap: some View {
+        WorldMapView(journey: store.journey.journey, quiet: quietMotion, recovered: store.journey.recovered,
+                         select: { location in try? store.journey.select(location) },
+                         enter: { challenge in
+                             guard let location = WorldLocation(rawValue: challenge.rawValue),
+                                   store.journey.journey.canEnter(location) else { return }
+                             handleFlowAction(challenge.flowAction)
+                         }, resume: canResumeMapLocation ? { handleFlowAction(.resume) } : nil,
+                         learn: { menu = .tutorial }, done: { handleFlowAction(.worldBack) })
+    }
+
+    private var canResumeMapLocation: Bool {
+        store.hasSavedSky && !store.game.isOver && store.game.challenge != nil
+            && store.journey.journey.selected.challenge == store.game.challenge
+    }
+
     @ViewBuilder private func settingsView(_ destination: SkyMenuDestination) -> some View {
         switch destination {
+        case .tutorial:
+            SkyTutorialView(done: { menu = nil })
         case .welcome:
             SkyWelcomePreferences(sound: $store.soundEnabled, haptics: $store.hapticsEnabled, calm: $calmEffects,
                                   context: .selected(game: store.game, entry: flow.entry), done: { menu = nil })
@@ -560,10 +599,9 @@ import StarfallCore
                            groups: store.game.legalGroups.count, over: store.game.isOver,
                            challenge: store.game.challenge, helpContext: .init(game: store.game), balance: store.game.balance,
                            sound: $store.soundEnabled, haptics: $store.hapticsEnabled, calm: $calmEffects,
-                           place: Binding(get: { place }, set: { savedPlace = $0.rawValue }),
                            pause: togglePauseFromMenu,
                            restart: { same in handleFlowAction(same ? .replay : .another) },
-                           startChallenge: { handleFlowAction($0.flowAction) },
+                           worldMap: { handleFlowAction(.worldMap) }, learn: { menu = .tutorial },
                            observatory: { handleFlowAction(.home) },
                            setBalance: store.setBalance, done: { menu = nil })
         }
@@ -663,7 +701,7 @@ private extension FallingSkyView {
         let hold = interaction.holdTicket
         defer { interaction.endContact(ticket: hold, release: store.endConstellationHold) }
         guard let outcome else {
-            if hadTrace { store.explainInputFailure(SkyCopy.text(store.game.challenge == nil ? .inputTraceShort : .inputTraceChallengeShort)) }
+            if hadTrace { store.explainInputFailure(SkyCopy.text(store.game.supportsArrangingStars ? .inputTraceShort : .inputTraceChallengeShort)) }
             return
         }
         store.clearTracedConstellation(outcome.path, snapshot: outcome.snapshot, generation: outcome.generation)
@@ -688,6 +726,6 @@ private extension FallingSkyView {
 }
 
 private enum SkyMenuDestination: Identifiable {
-    case game, welcome
+    case game, welcome, tutorial
     var id: Self { self }
 }

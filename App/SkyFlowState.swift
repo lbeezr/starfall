@@ -19,7 +19,7 @@ enum SkyEntryRequest: Equatable, CaseIterable {
 }
 
 enum SkyFlowEffect: Equatable {
-    case staged, began(SkyEntryRequest), continued, home, preferences
+    case staged, began(SkyEntryRequest), continued, home, preferences, worldMap, tutorial
 }
 
 struct SkyPlayHandoff: Equatable {
@@ -36,15 +36,27 @@ struct SkyFlowState: Equatable {
     private(set) var entry: SkyEntryRequest?
     private(set) var entryID: UInt64?
     private(set) var handoff: SkyPlayHandoff?
+    private var mapOrigin: SkyFlowScreen?
     private var generation: UInt64 = 0
 
     init(arguments: [String] = ProcessInfo.processInfo.arguments) {
         screen = SkyFlowScreen.initial(arguments: arguments)
     }
 
+    init(practice: SkyTutorial) { screen = .playing }
+
     mutating func handle(_ action: SkyFlowAction, hasSavedSky: Bool, entryID expectedID: UInt64? = nil) -> SkyFlowEffect? {
         guard handoff == nil || action == .home else { return nil }
         switch action {
+        case .worldMap:
+            guard screen != .worldMap, screen != .entry else { return nil }
+            mapOrigin = screen; screen = .worldMap
+            return .worldMap
+        case .worldBack:
+            guard screen == .worldMap else { return nil }
+            screen = mapOrigin ?? .welcome; mapOrigin = nil
+            return screen == .playing ? .continued : .home
+        case .tutorial: return .tutorial
         case .preferences:
             guard screen == .welcome || screen == .entry else { return nil }
             return .preferences
@@ -65,12 +77,13 @@ struct SkyFlowState: Equatable {
             beginHandoff(from: .entry, startsClock: true)
             return .began(request)
         case .resume:
-            guard screen == .welcome, hasSavedSky else { return nil }
-            beginHandoff(from: .welcome, startsClock: false)
+            guard screen == .welcome || screen == .worldMap, hasSavedSky else { return nil }
+            let source = screen; mapOrigin = nil
+            beginHandoff(from: source, startsClock: false)
             return .continued
         case .home:
             guard screen != .welcome else { return nil }
-            entry = nil; entryID = nil; handoff = nil; screen = .welcome
+            entry = nil; entryID = nil; handoff = nil; mapOrigin = nil; screen = .welcome
             return .home
         }
     }
@@ -104,6 +117,7 @@ struct SkyFlowState: Equatable {
     }
 
     private mutating func stage(_ request: SkyEntryRequest) -> SkyFlowEffect {
+        mapOrigin = nil
         generation &+= 1; entryID = generation
         entry = request; screen = .entry
         return .staged

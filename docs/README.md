@@ -8,6 +8,8 @@
 
 Current decisions, design contracts, verification summaries and historical evidence.
 
+[Official locations and tutorial](OFFICIAL_LOCATIONS_AND_TUTORIAL_PLAN.md) documents the implemented painted map, local repairs and progression, retired nightscapes, shared board actions and real practice scenarios. [Development evidence](evidence/official-world-2026-10-19/README.md) records validation and remaining acceptance.
+
 [Gesture delivery evidence](evidence/gesture-delivery-2026-10-18/README.md) records the five individual merges and canonical phone receipts.
 
 [Gesture quality](GESTURE_QUALITY.md) sequences immediate movement, rapid follow-ups, forgiving direction and clear held-drawing feedback as separate deliveries.

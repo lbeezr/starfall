@@ -49,3 +49,5 @@ Gravity specials are retired from normal play. `SkyGeneration.standardSky` suppl
 Terminal overflow is committed history. Gravity retirement may compact a losing column; existing retired-mass accounting preserves that outcome without reopening play. Ordinary unretired saves still validate full-column overflow. See [terminal migration coverage](../../docs/evidence/debt-third-pass-2026-10-18/README.md#1-terminal-gravity-retirement).
 
 `SkyLesson` supplies four fixed Help examples and their explicit moves in Debug and Release. Every move calls existing swap, tap or constellation rules; examples own no save, clock, progression or random generation.
+
+`WorldJourney` records valid committed restoration wins and derives local access from ready content. `SkyTutorial` supplies 21 disposable reference scenarios through the same rules; `SkyTutorialRun` validates committed action outcomes without persistence. Challenge action version 1 enables current swaps and recipes while preserving historical supply, RNG and cadence. Raw historical decoding remains available; the app owns explicit adoption and archive versioning.

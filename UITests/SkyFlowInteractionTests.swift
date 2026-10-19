@@ -91,7 +91,7 @@ final class SkyFlowInteractionTests: XCTestCase {
         executionTimeAllowance = 240
         requireNormalMotion()
         let app = launch(); defer { app.terminate() }
-        tap("sky.firstLight", app); tap("sky.begin", app); pause(app)
+        app.worldVisitControl("firstLight").tap(); tap("sky.begin", app); pause(app)
         let next = app.buttons["experiment.next"], outcome = app.staticTexts["experiment.outcome"]
         for _ in 0..<50 {
             if outcome.exists { break }
@@ -187,20 +187,18 @@ final class SkyFlowInteractionTests: XCTestCase {
             XCTAssertEqual(app.staticTexts["experiment.score"].label, score)
             XCTAssertTrue(next.exists, "Continue preserves the intentional pause")
         }
-        for choice in ["experiment.new", "experiment.replay", "experiment.challenge"] {
+        for choice in ["experiment.new", "experiment.replay", "sky.worldMap"] {
             tap("experiment.settings", app)
             // Form may not materialize an offscreen Explore row until scrolled.
-            if choice == "experiment.challenge" {
-                for _ in 0..<6 where !app.buttons[choice].exists { app.swipeUp() }
-            }
-            tap(choice, app)
+            if choice == "sky.worldMap" { app.worldVisitControl("firstLight").tap() }
+            else { tap(choice, app) }
             XCTAssertTrue(app.buttons["sky.begin"].waitForExistence(timeout: 5))
             XCTAssertFalse(app.buttons["experiment.cell.0.0"].exists)
             tap("sky.home", app); tap("sky.resume", app)
             assertRetained()
         }
         tap("experiment.settings", app); tap("sky.home", app)
-        tap("sky.firstLight", app)
+        app.worldVisitControl("firstLight").tap()
         XCTAssertEqual(app.staticTexts["sky.title"].label, "Lantern Landing")
         captureEntry(app, "entry-staged-over-retained-sky")
         app.terminate(); app.launchArguments = ["--sky-flow-review"]; app.launch()
@@ -219,7 +217,7 @@ final class SkyFlowInteractionTests: XCTestCase {
             NativeSystemMotionSettings.set(original, on: toggle); settings.terminate()
         }
         let app = launch(); defer { app.terminate() }
-        tap("sky.firstLight", app)
+        app.worldVisitControl("firstLight").tap()
         let begin = app.buttons["sky.begin"]
         XCTAssertGreaterThanOrEqual(begin.frame.height, 44)
         XCTAssertFalse(app.buttons["experiment.cell.0.0"].exists)
@@ -275,7 +273,7 @@ final class SkyFlowInteractionTests: XCTestCase {
 
     @MainActor func testPendingFirstLightHelpUsesChallengeRulesAndPreservesEntry() {
         let app = launch(); defer { app.terminate() }
-        tap("sky.firstLight", app)
+        app.worldVisitControl("firstLight").tap()
         tap("sky.preferences", app); tap("experiment.help", app)
         XCTAssertTrue(app.navigationBars["How to play"].waitForExistence(timeout: 5))
         let objective = app.staticTexts.containing(NSPredicate(format: "label BEGINSWITH %@", "Restore Lantern Landing with 18 starlight.")).firstMatch
@@ -308,7 +306,7 @@ final class SkyFlowInteractionTests: XCTestCase {
         capture(app, "welcome-help-before-begin")
         tap("experiment.done", app)
         XCTAssertFalse(app.buttons["sky.resume"].exists)
-        tap("sky.firstLight", app); tap("sky.begin", app); pause(app)
+        app.worldVisitControl("firstLight").tap(); tap("sky.begin", app); pause(app)
         tap("experiment.settings", app)
         XCTAssertEqual(sound.value as? String, selected)
         sound.switches.firstMatch.tap() // Restore the review preference; normal defaults were never used.
@@ -350,13 +348,13 @@ final class SkyFlowInteractionTests: XCTestCase {
                     (app.frame.width > app.frame.height) == (orientation == .landscapeLeft)
                 }, object: nil).wait(timeout: 5))
                 let variant = "\(orientation.rawValue)-\(largest ? "largest" : "default")"
-                for id in ["sky.start", "sky.firstLight"] { _ = revealFully(id, in: app) }
+                for id in ["sky.start", "sky.worldMap"] { _ = revealFully(id, in: app) }
                 let preferences = revealFully("sky.preferences", in: app)
                 capture(app, "tablet-welcome-safe-" + variant)
                 preferences.tap()
                 XCTAssertTrue(app.switches["experiment.sound"].waitForExistence(timeout: 5))
                 app.buttons["experiment.done"].tap()
-                revealFully("sky.firstLight", in: app).tap()
+                app.worldVisitControl("firstLight").tap()
                 _ = revealFully("sky.begin", in: app)
                 _ = revealFully("sky.home", in: app)
                 revealFully("sky.preferences", in: app).tap()
@@ -377,11 +375,11 @@ final class SkyFlowInteractionTests: XCTestCase {
         XCTAssertTrue(app.switches["experiment.sound"].waitForExistence(timeout: 5))
         capture(app, "flow-largest-welcome-preferences")
         tap("experiment.done", app)
-        tap("sky.firstLight", app)
+        app.worldVisitControl("firstLight").tap()
         captureEntry(app, "flow-largest-entry")
         tap("sky.home", app)
         XCTAssertFalse(app.buttons["sky.resume"].exists, "Canceling an unbegun round must not create a save")
-        tap("sky.firstLight", app)
+        app.worldVisitControl("firstLight").tap()
         tap("sky.begin", app)
         pause(app)
         tap("experiment.settings", app)
