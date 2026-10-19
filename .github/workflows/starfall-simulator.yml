@@ -62,7 +62,9 @@ jobs:
     # Xcode 26.4+ fixes a simdiskimaged hang; macOS 15 tops out at 26.3.
     # Keep the standard ARM64 runner and the bounded inventory command.
     runs-on: macos-26
-    timeout-minutes: 35
+    # 29 passing UI cases took 20.5 minutes in run 39201250877; the development
+    # plan now selects 120, followed by hosted tests. Preserve per-test bounds.
+    timeout-minutes: 150
     defaults:
       run:
         shell: bash
