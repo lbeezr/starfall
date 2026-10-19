@@ -1,0 +1,476 @@
+{
+  "schema": 1,
+  "date": "2026-10-19",
+  "status": "Development acceptance passed; publication and canonical delivery pending",
+  "appSource": "b77a1003f5d22b9da67d5d4c54f3515481d45ea3",
+  "runtime": "dev.545382e6f6",
+  "baseMain": "618e2c8",
+  "workingTreeDifferences": "Documentation and evidence only; no uncommitted app, resource, core or test inputs.",
+  "environment": {
+    "xcode": "27.1 (27A9275)",
+    "macOS": "27.0.1",
+    "iOS": "27.0 (24A434)",
+    "architecture": "arm64",
+    "scheme": "Starfall"
+  },
+  "runs": [
+    {
+      "key": "seedHosted",
+      "source": "a0c7360",
+      "device": "iPhone 17e",
+      "configuration": "Debug",
+      "extraArgs": [
+        "-only-testing:StarfallAppTests"
+      ],
+      "runtimeFingerprint": "dev.017575ea43",
+      "embeddedBuildID": "dev.local",
+      "summary": {
+        "status": "SUCCEEDED",
+        "durationMs": 129041,
+        "counts": {
+          "passed": 329,
+          "failed": 0,
+          "skipped": 0
+        }
+      },
+      "artifacts": {
+        "buildLogPath": "test_sim_2026-10-19T17-51-40-120Z_pid14605_7045a995.log",
+        "xcresultPath": "test_sim_2026-10-19T17-51-40-120Z_pid14605_69ce4f34.xcresult"
+      },
+      "diagnostics": {
+        "warnings": [],
+        "errors": [],
+        "testFailures": []
+      }
+    },
+    {
+      "key": "seedPhoneWin",
+      "source": "a0c7360",
+      "device": "iPhone 17e",
+      "configuration": "Debug",
+      "command": "XcodeBuildMCP test_sim",
+      "extraArgs": [
+        "STARFALL_BUILD_ID=dev.017575ea43",
+        "-parallel-testing-enabled",
+        "NO",
+        "-only-testing:StarfallUITests/SeedMoonInteractionTests/testSeedWinningClearPersistsNamedResultAndReplayStartsAtZero",
+        "-only-testing:StarfallUITests/SeedMoonInteractionTests/testSeedLargestTextSystemReduceMotionWinKeepsResultActionsUsable"
+      ],
+      "summary": {
+        "status": "SUCCEEDED",
+        "durationMs": 110019,
+        "counts": {
+          "passed": 2,
+          "failed": 0,
+          "skipped": 0
+        },
+        "target": "simulator"
+      },
+      "diagnostics": {
+        "warnings": [],
+        "errors": [],
+        "testFailures": []
+      },
+      "artifacts": {
+        "buildLogPath": "test_sim_2026-10-19T17-54-22-944Z_pid14605_517edbf5.log",
+        "xcresultPath": "test_sim_2026-10-19T17-54-22-944Z_pid14605_78496d0b.xcresult",
+        "testProductsPath": "test_sim_2026-10-19T17-54-22-945Z_pid14605_d0d79da3.xctestproducts"
+      }
+    },
+    {
+      "key": "seedPreview",
+      "source": "a0c7360",
+      "device": "iPhone 17e",
+      "configuration": "Debug",
+      "command": "XcodeBuildMCP test_sim",
+      "extraArgs": [
+        "STARFALL_BUILD_ID=dev.017575ea43",
+        "-parallel-testing-enabled",
+        "NO",
+        "-only-testing:StarfallUITests/SeedMoonInteractionTests/testSeedPreviewCancellationRetainsAllThreeExistingLocationsUntilBegin"
+      ],
+      "summary": {
+        "status": "SUCCEEDED",
+        "durationMs": 175421,
+        "counts": {
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0
+        },
+        "target": "simulator"
+      },
+      "diagnostics": {
+        "warnings": [],
+        "errors": [],
+        "testFailures": []
+      },
+      "artifacts": {
+        "buildLogPath": "test_sim_2026-10-19T17-56-22-226Z_pid14605_71186b3e.log",
+        "xcresultPath": "test_sim_2026-10-19T17-56-22-226Z_pid14605_960ca09c.xcresult",
+        "testProductsPath": "test_sim_2026-10-19T17-56-22-226Z_pid14605_887b2835.xctestproducts"
+      }
+    },
+    {
+      "key": "seedTablet",
+      "source": "a0c7360",
+      "device": "iPad Air 11-inch (M3)",
+      "configuration": "Debug",
+      "command": "XcodeBuildMCP test_sim",
+      "extraArgs": [
+        "STARFALL_BUILD_ID=dev.017575ea43",
+        "-parallel-testing-enabled",
+        "NO",
+        "-only-testing:StarfallUITests/SeedMoonInteractionTests/testTabletRotationKeepsSeedRestorationAndNativeInput"
+      ],
+      "summary": {
+        "status": "SUCCEEDED",
+        "durationMs": 172725,
+        "counts": {
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0
+        },
+        "target": "simulator"
+      },
+      "diagnostics": {
+        "warnings": [],
+        "errors": [],
+        "testFailures": []
+      },
+      "artifacts": {
+        "buildLogPath": "test_sim_2026-10-19T18-01-33-336Z_pid14605_c2cabbfe.log",
+        "xcresultPath": "test_sim_2026-10-19T18-01-33-336Z_pid14605_b5dd3b48.xcresult",
+        "testProductsPath": "test_sim_2026-10-19T18-01-33-336Z_pid14605_c28816f6.xctestproducts"
+      },
+      "testCases": [
+        {
+          "suite": "SeedMoonInteractionTests",
+          "test": "testTabletRotationKeepsSeedRestorationAndNativeInput",
+          "status": "passed",
+          "durationMs": 154200
+        }
+      ]
+    },
+    {
+      "key": "seedCorrectionBuild",
+      "source": "b77a100",
+      "device": "iPhone 17e",
+      "configuration": "Debug",
+      "command": "XcodeBuildMCP build_run_sim",
+      "extraArgs": [
+        "STARFALL_BUILD_ID=dev.545382e6f6"
+      ],
+      "summary": {
+        "status": "SUCCEEDED",
+        "durationMs": 15137,
+        "target": "simulator"
+      },
+      "diagnostics": {
+        "warnings": [],
+        "errors": []
+      },
+      "artifacts": {
+        "buildLogPath": "build_run_sim_2026-10-19T18-05-41-894Z_pid14605_a1a6af07.log",
+        "runtimeLogPath": "com.starfall.prototype_2026-10-19T18-05-55-218Z_helperpid95737_ownerpid14605_569e0b24.log",
+        "osLogPath": "com.starfall.prototype_oslog_2026-10-19T18-05-57-024Z_helperpid95924_ownerpid14605_61e994f1.log"
+      }
+    },
+    {
+      "key": "seedFocused",
+      "source": "124fd21",
+      "device": "iPhone 17e",
+      "configuration": "Debug",
+      "command": "XcodeBuildMCP test_sim",
+      "extraArgs": [
+        "STARFALL_BUILD_ID=dev.545382e6f6",
+        "-parallel-testing-enabled",
+        "NO",
+        "-only-testing:StarfallAppTests/RestorationPresentationTests",
+        "-only-testing:StarfallUITests/SeedMoonInteractionTests/testSeedDenseOverflowKeepsNamedReplayAndRestartsAtZero"
+      ],
+      "summary": {
+        "status": "SUCCEEDED",
+        "durationMs": 62344,
+        "counts": {
+          "passed": 13,
+          "failed": 0,
+          "skipped": 0
+        },
+        "target": "simulator"
+      },
+      "diagnostics": {
+        "warnings": [],
+        "errors": [],
+        "testFailures": []
+      },
+      "artifacts": {
+        "buildLogPath": "test_sim_2026-10-19T18-17-29-942Z_pid14605_b339cfa6.log",
+        "xcresultPath": "test_sim_2026-10-19T18-17-29-942Z_pid14605_f7a91c67.xcresult",
+        "testProductsPath": "test_sim_2026-10-19T18-17-29-942Z_pid14605_9195034b.xctestproducts"
+      },
+      "testCases": [
+        {
+          "suite": "SeedMoonInteractionTests",
+          "test": "testSeedDenseOverflowKeepsNamedReplayAndRestartsAtZero",
+          "status": "passed",
+          "durationMs": 52579
+        },
+        {
+          "suite": "RestorationPresentationTests",
+          "test": "testArtworkFamilyUsesIdiomViewportAndActualCanvasShape",
+          "status": "passed",
+          "durationMs": 1
+        },
+        {
+          "suite": "RestorationPresentationTests",
+          "test": "testChallengePreviewAndCancelPreserveSavedRestoration",
+          "status": "passed",
+          "durationMs": 4
+        },
+        {
+          "suite": "RestorationPresentationTests",
+          "test": "testEveryRestorationAssetIsPackagedAtTheRegisteredAspectRatio",
+          "status": "passed",
+          "durationMs": 5
+        },
+        {
+          "suite": "RestorationPresentationTests",
+          "test": "testExpandedLandscapeCanvasKeepsWholeLanternAboveBoardWithoutExposingAnEdge",
+          "status": "passed",
+          "durationMs": 0
+        },
+        {
+          "suite": "RestorationPresentationTests",
+          "test": "testOpenSkyDoesNotAcquireRestorationFromInitialOrReplayEntry",
+          "status": "passed",
+          "durationMs": 0
+        },
+        {
+          "suite": "RestorationPresentationTests",
+          "test": "testOpenSkyPreviewHidesRetainedChallengeUntilCancel",
+          "status": "passed",
+          "durationMs": 3
+        },
+        {
+          "suite": "RestorationPresentationTests",
+          "test": "testRestorationLightStaysVisibleOutsideNativeBoardAcrossViewportFamilies",
+          "status": "passed",
+          "durationMs": 0
+        },
+        {
+          "suite": "RestorationPresentationTests",
+          "test": "testRestorationSceneryKeepsTheSharedBoardAndHeaderFrames",
+          "status": "passed",
+          "durationMs": 1
+        },
+        {
+          "suite": "RestorationPresentationTests",
+          "test": "testRestorationUsesCommittedClearBeforePresentationFinishes",
+          "status": "passed",
+          "durationMs": 11
+        },
+        {
+          "suite": "RestorationPresentationTests",
+          "test": "testResultClearanceFollowsMappedSceneryAcrossExpandedAndScrolledCanvases",
+          "status": "passed",
+          "durationMs": 0
+        },
+        {
+          "suite": "RestorationPresentationTests",
+          "test": "testSeedLandscapePaintingsFillCanvasAtTheirActualPixelAspectRatio",
+          "status": "passed",
+          "durationMs": 0
+        },
+        {
+          "suite": "RestorationPresentationTests",
+          "test": "testWholePaintingFillsCanvasAndKeepsItsRegisteredLanternDestination",
+          "status": "passed",
+          "durationMs": 0
+        }
+      ]
+    },
+    {
+      "key": "seedCompact1",
+      "source": "124fd21c39a71030723c0485882839e546e032a0",
+      "runtime": "dev.545382e6f6",
+      "device": "iPhone SE (3rd generation)",
+      "configuration": "Debug",
+      "command": "XcodeBuildMCP test_sim",
+      "extraArgs": [
+        "STARFALL_BUILD_ID=dev.545382e6f6",
+        "-parallel-testing-enabled",
+        "NO",
+        "-only-testing:StarfallUITests/SeedMoonInteractionTests/testSeedWinningClearPersistsNamedResultAndReplayStartsAtZero",
+        "-only-testing:StarfallUITests/KiteHarborInteractionTests/testKiteWinningClearPersistsNamedResultAndReplayStartsAtZero"
+      ],
+      "summary": {
+        "status": "SUCCEEDED",
+        "durationMs": 150855,
+        "counts": {
+          "passed": 2,
+          "failed": 0,
+          "skipped": 0
+        },
+        "target": "simulator"
+      },
+      "diagnostics": {
+        "warnings": [],
+        "errors": [],
+        "testFailures": []
+      },
+      "artifacts": {
+        "buildLogPath": "test_sim_2026-10-19T18-18-36-448Z_pid14605_083702a2.log",
+        "xcresultPath": "test_sim_2026-10-19T18-18-36-448Z_pid14605_3ed82af4.xcresult",
+        "testProductsPath": "test_sim_2026-10-19T18-18-36-448Z_pid14605_47a4e7d8.xctestproducts"
+      },
+      "testCases": [
+        {
+          "suite": "KiteHarborInteractionTests",
+          "test": "testKiteWinningClearPersistsNamedResultAndReplayStartsAtZero",
+          "status": "passed",
+          "durationMs": 64773
+        },
+        {
+          "suite": "SeedMoonInteractionTests",
+          "test": "testSeedWinningClearPersistsNamedResultAndReplayStartsAtZero",
+          "status": "passed",
+          "durationMs": 69206
+        }
+      ]
+    },
+    {
+      "key": "seedCompact2",
+      "source": "124fd21c39a71030723c0485882839e546e032a0",
+      "runtime": "dev.545382e6f6",
+      "device": "iPhone SE (3rd generation)",
+      "configuration": "Debug",
+      "command": "XcodeBuildMCP test_sim",
+      "extraArgs": [
+        "STARFALL_BUILD_ID=dev.545382e6f6",
+        "-parallel-testing-enabled",
+        "NO",
+        "-only-testing:StarfallUITests/LanternLandingInteractionTests/testNativeWinningClearPersistsRestorationAndReplayStartsAtZero",
+        "-only-testing:StarfallUITests/FallingSkyInteractionTests/testAutomaticRainThenPausedClearReplayAndSettings"
+      ],
+      "summary": {
+        "status": "SUCCEEDED",
+        "durationMs": 134140,
+        "counts": {
+          "passed": 2,
+          "failed": 0,
+          "skipped": 0
+        },
+        "target": "simulator"
+      },
+      "diagnostics": {
+        "warnings": [],
+        "errors": [],
+        "testFailures": []
+      },
+      "artifacts": {
+        "buildLogPath": "test_sim_2026-10-19T18-21-47-845Z_pid14605_1cb3dd43.log",
+        "xcresultPath": "test_sim_2026-10-19T18-21-47-845Z_pid14605_b9819702.xcresult",
+        "testProductsPath": "test_sim_2026-10-19T18-21-47-845Z_pid14605_f1ca722e.xctestproducts"
+      },
+      "testCases": [
+        {
+          "suite": "FallingSkyInteractionTests",
+          "test": "testAutomaticRainThenPausedClearReplayAndSettings",
+          "status": "passed",
+          "durationMs": 69811
+        },
+        {
+          "suite": "LanternLandingInteractionTests",
+          "test": "testNativeWinningClearPersistsRestorationAndReplayStartsAtZero",
+          "status": "passed",
+          "durationMs": 59598
+        }
+      ]
+    },
+    {
+      "key": "seedRelease",
+      "source": "124fd21c39a71030723c0485882839e546e032a0",
+      "runtime": "dev.545382e6f6",
+      "device": "iPhone 17e",
+      "configuration": "Release",
+      "command": "XcodeBuildMCP build_sim",
+      "extraArgs": [
+        "STARFALL_BUILD_ID=dev.545382e6f6"
+      ],
+      "summary": {
+        "status": "SUCCEEDED",
+        "durationMs": 16744,
+        "target": "simulator"
+      },
+      "diagnostics": {
+        "warnings": [],
+        "errors": []
+      },
+      "artifacts": {
+        "buildLogPath": "build_sim_2026-10-19T18-24-08-344Z_pid14605_abd7d5ae.log"
+      }
+    }
+  ],
+  "testSource": "124fd21c39a71030723c0485882839e546e032a0",
+  "accessibility": {
+    "development": "Largest Dynamic Type and actual system Reduce Motion passed; native cell/action semantics and bounds asserted.",
+    "actualVoiceOver": "Not run; full acceptance belongs to release-candidate cadence."
+  },
+  "limits": [
+    "No physical gameplay, audio, performance benchmark or human enjoyment claim.",
+    "Browser rendering was not tested; offline reviewer logic and references were checked.",
+    "Full hosted suite at a0; final art correction rechecked by 12 hosted resource/layout tests and native phone appearance/input. UI-only overflow test added at 124fd21."
+  ],
+  "earlierRuns": [
+    {
+      "command": "swift test",
+      "source": "Dirty working tree based on babc534762f90e75bc0d5af60ae85ab075342777; only Core changes were the two listed blobs, identical to committed Seed implementation.",
+      "result": {
+        "passed": 178,
+        "failed": 0,
+        "durationSeconds": 17.263
+      },
+      "finishedUTC": "2026-10-19T17:34:26Z",
+      "sourceBlobs": {
+        "Sources/StarfallCore/StarfallChallenge.swift": "d0f4143561d94276fb3ff73c547a6fa7845503bb",
+        "Tests/StarfallCoreTests/StarfallChallengeTests.swift": "0ce59c1d50111ccf16082d91b84ef5962805f26b",
+        "Package.swift": "4f2b2c1646684214f317f35b8e1b91a4b2092a4b"
+      },
+      "log": "/tmp/starfall-seed-core-tests.log",
+      "sha256": "3bf6cef87b173936af3235cf525ba5e3737363ce6ce317892bd6deac586031ba"
+    },
+    {
+      "command": "Existing updater/native-plan/RC-platform/lifecycle/export Python suites",
+      "source": "Earlier dirty babc534 boundary; see report.",
+      "result": {
+        "passed": 55,
+        "failed": 0,
+        "durationSeconds": 5.902
+      },
+      "log": "/tmp/starfall-seed-python-tests.log",
+      "sha256": "7ca703f9e93c9f79ba2cd4774638837aa406d408895006860f36ca1cdeacdc79"
+    }
+  ],
+  "toolingRecheck": {
+    "source": "124fd21c39a71030723c0485882839e546e032a0",
+    "workingTreeDifferences": "Documentation and evidence only.",
+    "commands": [
+      "python3 -m unittest discover -s scripts -p 'test_native_test_plan.py'",
+      "python3 -m unittest discover -s scripts -p 'test_rc_platforms.py'"
+    ],
+    "passed": [
+      3,
+      12
+    ],
+    "failed": 0,
+    "note": "Rerun after adding the focused overflow UI test; runtime fingerprint unchanged."
+  },
+  "finalAcceptance": {
+    "hosted": "329/329 at a0c7360; final12/12 resource/layout recheck at124fd21.",
+    "ui": "9/9 executions across iPhone17e, SE3 and iPadAir11M3. Includes normal/ReduceMotion win, save/relaunch/replay, previewcancel3priorlocations, rotation/nativeclears, denseoverflow and priorlocation/OpenSky regressions.",
+    "visual": "All15native states, finalphone50dense49starclear, Welcome/Menufourchoices and compact captures; see captures.json.",
+    "motion": "Normal finalclear14→18 recorded/inspected; see motion.json.",
+    "build": "Final Debug and Release simulator builds passed with zero diagnostics.",
+    "delivery": "Pending canonical updater after merge."
+  }
+}

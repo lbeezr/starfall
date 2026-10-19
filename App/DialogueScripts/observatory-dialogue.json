@@ -696,6 +696,50 @@
           "priority": "help"
         }
       ]
+    },
+    {
+      "id": "guide.seed-moon",
+      "lines": [
+        {
+          "id": "guide.seed-moon.1",
+          "speaker": "sunny",
+          "text": "Wake Seed Moon with 18 starlight. Clear matching stars to help its sleeping seed grow into a glowing shelter.",
+          "priority": "help"
+        }
+      ]
+    },
+    {
+      "id": "guide.seed-won",
+      "lines": [
+        {
+          "id": "guide.seed-won.1",
+          "speaker": "sunny",
+          "text": "Seed Moon complete! You collected {score} starlight. The seed has grown into a glowing shelter!",
+          "priority": "outcome"
+        }
+      ]
+    },
+    {
+      "id": "seed-moon.entry",
+      "lines": [
+        {
+          "id": "seed-moon.entry.1",
+          "speaker": "sunny",
+          "text": "Murk took the light from Seed Moon. Collect 18 starlight to wake the seed in the split moon before an arriving star runs out of room.",
+          "priority": "help"
+        }
+      ]
+    },
+    {
+      "id": "seed-moon.replay",
+      "lines": [
+        {
+          "id": "seed-moon.replay.1",
+          "speaker": "sunny",
+          "text": "Try the same Seed Moon opening and wake its sleeping seed with 18 starlight. Your saved round stays until you tap Begin.",
+          "priority": "help"
+        }
+      ]
     }
   ],
   "copy": {
@@ -984,6 +1028,18 @@
     "kite.restoration": "Kite Harbor, {percent}% restored",
     "result.kiteWon": "Kite Harbor complete! The fleet is aloft and ready to depart.",
     "help.kiteTitle": "Kite Harbor · Raise the sails",
-    "help.kite": "Raise Kite Harbor’s sails with 18 starlight. Each clear restores the moorings and helps the paper-kite fleet lift. Finish before an arriving star has nowhere to land. Use tap matches or five-star traces. Showers arrive at a steady pace. This challenge has no swaps, shape recipes, Dusk, Opal Orbs or storms."
+    "help.kite": "Raise Kite Harbor’s sails with 18 starlight. Each clear restores the moorings and helps the paper-kite fleet lift. Finish before an arriving star has nowhere to land. Use tap matches or five-star traces. Showers arrive at a steady pace. This challenge has no swaps, shape recipes, Dusk, Opal Orbs or storms.",
+    "action.seedMoon": "Try Seed Moon",
+    "action.replaySeedMoon": "Replay Seed Moon",
+    "menu.seedMoon": "Seed Moon · 18 starlight",
+    "menu.seedMoonHint": "Wake Seed Moon with 18 starlight. Preview the challenge before Begin.",
+    "flow.seedMoon": "SEED MOON",
+    "flow.seedComplete": "SEED MOON COMPLETE",
+    "flow.seedWon": "Seed Moon restored!",
+    "seed.title": "Seed Moon",
+    "seed.restoration": "Seed Moon, {percent}% restored",
+    "result.seedWon": "Seed Moon complete! The sleeping seed has grown into a glowing shelter.",
+    "help.seedTitle": "Seed Moon · Wake the seed",
+    "help.seed": "Wake Seed Moon with 18 starlight. Each clear helps the sleeping seed grow roots, leaves and a glowing shelter inside the split moon. Finish before an arriving star has nowhere to land. Use tap matches or five-star traces. Showers arrive at a steady pace. This challenge has no swaps, shape recipes, Dusk, Opal Orbs or storms."
   }
 }

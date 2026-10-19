@@ -19,6 +19,7 @@ TABLET_TESTS = [
     'StarfallUITests/LanternLandingInteractionTests/testTabletRotationKeepsRestorationAndNativeInput',
     'StarfallUITests/RibbonCrossingInteractionTests/testTabletRotationKeepsRibbonRestorationAndNativeInput',
     'StarfallUITests/KiteHarborInteractionTests/testTabletRotationKeepsKiteRestorationAndNativeInput',
+    'StarfallUITests/SeedMoonInteractionTests/testTabletRotationKeepsSeedRestorationAndNativeInput',
     'StarfallUITests/SkyFlowInteractionTests/testLargestTextWelcomeEntryAndBackRemainReachable',
     'StarfallUITests/CriticalMassInteractionTests/testLargestTextCalmKeepsWarningAndHelpUsable',
 ]

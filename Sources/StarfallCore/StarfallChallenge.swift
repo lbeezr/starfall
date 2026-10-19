@@ -1,12 +1,13 @@
 /// Directly selectable authored rounds, without campaign or unlock state.
 public enum StarfallChallenge: String, Codable, CaseIterable, Equatable, Sendable {
-    case firstLight, ribbonCrossing, kiteHarbor
+    case firstLight, ribbonCrossing, kiteHarbor, seedMoon
 
     public var title: String {
         switch self {
         case .firstLight: "First Light"
         case .ribbonCrossing: "Ribbon Crossing"
         case .kiteHarbor: "Kite Harbor"
+        case .seedMoon: "Seed Moon"
         }
     }
     public var target: Int { 18 }

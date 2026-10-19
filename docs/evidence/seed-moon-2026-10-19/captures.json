@@ -1,0 +1,2477 @@
+{
+  "schemaVersion": 1,
+  "topic": "Seed Moon native visual acceptance",
+  "updated": "2026-10-19",
+  "sources": [
+    {
+      "commit": "a0c73606d68b332dad12d2d3aa3b827ea4a10960",
+      "runtime": "dev.017575ea43",
+      "scope": "Initial complete app/asset checkpoint; all native phone/preview/tablet attachments and original manual phone0/25/50."
+    },
+    {
+      "commit": "b77a1003f5d22b9da67d5d4c54f3515481d45ea3",
+      "runtime": "dev.545382e6f6",
+      "scope": "Corrected phone50 painting only; all tablet paintings, renderer and other runtime inputs unchanged. Final manual dense50, Welcome, Sky menu and overflow use this source."
+    },
+    {
+      "commit": "124fd21c39a71030723c0485882839e546e032a0",
+      "runtime": "dev.545382e6f6",
+      "scope": "Adds the focused Seed overflow/replay UI test only; runtime and artwork remain identical to b77a100. Compact Seed and Kite native win/relaunch/replay captures use this tested source."
+    }
+  ],
+  "processing": "Eleven retained images are byte-identical copies of their supplied native exports: seven PNGs and four small JPEGs. No image was resized, cropped, reoriented or re-encoded for retention. Other reviewed captures remain disposable originals.",
+  "pixelMetadata": "Tablet PNGs encode 1640\u00d72360; landscape orientation 8 displays 2360\u00d71640. Both encoded and display sizes are recorded, with original orientation metadata preserved.",
+  "validationReference": "verification.json",
+  "motionReference": "motion.json",
+  "limits": [
+    "Stills establish sampled appearance only. Native interactions and animation observations are separate evidence.",
+    "Actual VoiceOver, physical-device comfort and contrast, and browser presentation are not established by these captures.",
+    "Portrait25% has a visible but subtle root tip below the HUD; the pearl is partly obscured. Lower phone controls over pale clouds are readable on Simulator; physical contrast remains unverified.",
+    "The two original phone50% captures are Historical after b77a100; they are not retained as selected images.",
+    "Scrolled captures intentionally omit some upper or lower content. Captions describe each visible viewport rather than claiming simultaneous full-page visibility."
+  ],
+  "coverage": {
+    "complete": true,
+    "families": 3,
+    "statesPerFamily": [
+      0,
+      25,
+      50,
+      75,
+      100
+    ],
+    "currentStateCount": 15,
+    "records": [
+      {
+        "family": "phone",
+        "state": 0,
+        "captureId": "manual-phone-000"
+      },
+      {
+        "family": "phone",
+        "state": 25,
+        "captureId": "manual-phone-025"
+      },
+      {
+        "family": "phone",
+        "state": 50,
+        "captureId": "manual-phone-050-corrected-dense"
+      },
+      {
+        "family": "phone",
+        "state": 75,
+        "captureId": "phone-7b0d5da1-a1e1-4fd8-b196-784ea9fafe14"
+      },
+      {
+        "family": "phone",
+        "state": 100,
+        "captureId": "phone-370d8104-11a9-45a3-ac8f-15d79a223c82"
+      },
+      {
+        "family": "tablet-landscape",
+        "state": 100,
+        "captureId": "tablet-54ed492b-3abb-42e8-a42d-1379f6259b51"
+      },
+      {
+        "family": "tablet-landscape",
+        "state": 75,
+        "captureId": "tablet-22d34d2e-c57c-4cdf-97dc-0d810e3dd0a1"
+      },
+      {
+        "family": "tablet-landscape",
+        "state": 50,
+        "captureId": "tablet-645b9b4d-e8d5-440b-b30e-19daee423f2c"
+      },
+      {
+        "family": "tablet-landscape",
+        "state": 25,
+        "captureId": "tablet-4cc9fe2a-f633-4ecf-8a4c-8eee0620d3db"
+      },
+      {
+        "family": "tablet-landscape",
+        "state": 0,
+        "captureId": "tablet-4661e4c4-2b6d-4d8e-80fa-fab35ae19c6b"
+      },
+      {
+        "family": "tablet-portrait",
+        "state": 100,
+        "captureId": "tablet-ea00a2dd-abe4-4f2d-948f-a2550d40689c"
+      },
+      {
+        "family": "tablet-portrait",
+        "state": 75,
+        "captureId": "tablet-9a905d5a-a51d-4622-b653-9b0f3bca1c3a"
+      },
+      {
+        "family": "tablet-portrait",
+        "state": 50,
+        "captureId": "tablet-8f88adcb-a6b6-450b-873b-0d63d7ce8adb"
+      },
+      {
+        "family": "tablet-portrait",
+        "state": 25,
+        "captureId": "tablet-a118ece3-5e8c-42d3-918e-bcbf7580094d"
+      },
+      {
+        "family": "tablet-portrait",
+        "state": 0,
+        "captureId": "tablet-edec435b-4630-4781-bc29-aa8b2f1f6bb6"
+      }
+    ]
+  },
+  "inspectionRuns": {
+    "phone": {
+      "sourceCommit": "a0c73606d68b332dad12d2d3aa3b827ea4a10960",
+      "runtimeBuild": "dev.017575ea43",
+      "deviceModel": "iPhone 17e",
+      "os": "iOS 27",
+      "configuration": "Debug",
+      "nativeRunReportedByParent": {
+        "passed": 2,
+        "failed": 0
+      },
+      "nativeManifestPath": "/private/tmp/seed-phone-attachments/manifest.json",
+      "inspectionScope": "Six exported native phone still images, visually inspected with view_image. No Apple tooling was run for this inspection.",
+      "limitations": [
+        "Stills do not establish animation or motion quality. Normal-motion metadata describes the test configuration only.",
+        "Actual VoiceOver and physical-device acceptance were not performed by this inspection.",
+        "The scrolled Accessibility XXXL result does not show the complete third action or upper scenic landmark; native interaction assertions are separate evidence."
+      ],
+      "result": "No blocking visual issue found in the six captures. Retained three byte-identical PNGs; existing evidence reports and capture indexes were not edited."
+    },
+    "preview": {
+      "sourceCommit": "a0c73606d68b332dad12d2d3aa3b827ea4a10960",
+      "runtimeBuild": "dev.017575ea43",
+      "deviceModel": "iPhone 17e",
+      "os": "iOS 27",
+      "configuration": "Debug",
+      "nativeRunReportedByParent": {
+        "passed": 1,
+        "failed": 0,
+        "durationSeconds": 175.421,
+        "warnings": 0,
+        "errors": 0
+      },
+      "nativeManifestPath": "/private/tmp/seed-preview-attachments/manifest.json",
+      "inspectionScope": "Six exported native phone still images: Seed Moon preview and post-Begin state over each of Lantern Landing, Ribbon Crossing and Kite Harbor. All visually inspected with view_image. No Apple tooling run for this inspection.",
+      "limitations": [
+        "Stills show presentation only; preservation of prior committed state and cancellation behavior depend on the separate native assertions.",
+        "These captures do not establish animation quality, actual VoiceOver behavior or physical-device acceptance.",
+        "This evidence remains tied to a0c7360, before any proposed phone 50% artwork revision."
+      ],
+      "result": "No blocking visual issue found. Retained only the requested entry-over-Kite image as a byte-identical PNG; existing evidence reports and indexes were not edited."
+    },
+    "tablet": {
+      "sourceCommit": "a0c73606d68b332dad12d2d3aa3b827ea4a10960",
+      "runtimeBuild": "dev.017575ea43",
+      "deviceModel": "iPad Air 11-inch (M3)",
+      "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+      "os": "iOS 27.0 (24A434)",
+      "architecture": "arm64",
+      "configuration": "Debug",
+      "nativeRunReportedByParent": {
+        "passed": 1,
+        "failed": 0,
+        "durationSeconds": 172.725,
+        "warnings": 0,
+        "errors": 0,
+        "skips": 0
+      },
+      "nativeManifestPath": "/private/tmp/seed-tablet-attachments/manifest.json",
+      "inspectionScope": "All 15 exported tablet PNGs: ten milestone scenes across portrait and landscape, plus five native-clear/rotation captures. Each visually inspected with view_image; no Apple tooling run for this inspection.",
+      "sourceContinuityNote": "Parent reports subsequent b77a100/runtime dev.545382e6f6 changes only the phone 50% PNG. All tablet source images, renderer and other app/test inputs remain identical. These captures retain their actual a0c7360 source identity.",
+      "limitations": [
+        "Stills do not establish animation quality; normal-motion labels describe test configuration, not observed motion.",
+        "Native hit targets, stable identity and exact geometry are separate native test assertions; still inspection supports only the visible arrangements.",
+        "Actual VoiceOver and physical-device acceptance were not performed in this inspection."
+      ],
+      "result": "No blocking visual issue found. Portrait 25% is readable but subtle, with a small root tip below the HUD and the pearl partly covered. Later shoots, closed buds and open flowers are visibly distinct. Continuous sky, controls and result text remain readable. Two byte-identical images retained; existing reports/indexes untouched.",
+      "pixelMetadataNote": "All exported PNGs encode 1640\u00d72360 pixels. Portrait files use EXIF orientation 1; landscape files use EXIF orientation 8 and display at 2360\u00d71640. Retained bytes and orientation metadata are preserved unchanged."
+    },
+    "compact": {
+      "sourceCommit": "124fd21c39a71030723c0485882839e546e032a0",
+      "runtimeBuild": "dev.545382e6f6",
+      "deviceModel": "iPhone SE (3rd generation)",
+      "os": "iOS 27.0 (24A434)",
+      "xcode": "27.1 (27A9275)",
+      "configuration": "Debug",
+      "nativeRunReportedByParent": {
+        "passed": 2,
+        "failed": 0,
+        "durationSeconds": 150.855
+      },
+      "nativeManifestPath": "/private/tmp/seed-compact-attachments/manifest.json",
+      "inspectionScope": "All eight exported compact Seed/Kite PNGs independently inspected with view_image; no Apple tooling run by the reviewer.",
+      "result": "No blocking visual issue. Closed 75% / open 100% landmarks remain distinct; headings and dialogue reflow; native-win frames show New sky and Replay fully. Other content extends beyond the tall scroll viewport as noted per capture.",
+      "limitations": [
+        "Stills do not establish motion quality, native activation, actual VoiceOver or physical-device acceptance."
+      ]
+    }
+  },
+  "captures": [
+    {
+      "attachment": "0C559F8B-9F6C-4786-B5FC-A263AD48C2A3.png",
+      "attachmentName": "seed-largest-text-reduce-motion-restored_0_4EC29758-0C3A-4ADB-B432-6FDE57F1D270.png",
+      "sourcePath": "/private/tmp/seed-phone-attachments/0C559F8B-9F6C-4786-B5FC-A263AD48C2A3.png",
+      "testIdentifier": "SeedMoonInteractionTests/testSeedLargestTextSystemReduceMotionWinKeepsResultActionsUsable()",
+      "capturedAtUTC": "2026-10-19T17:54:57.863000+00:00",
+      "pixels": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bytes": 741550,
+      "sha256": "abdf33e1de46bc320ea5fe6769f8f8916c71d6b86ec3e55a382c11a1261a2a31",
+      "visuallyInspected": true,
+      "blockingVisualIssue": false,
+      "screen": "Seed Moon completed result, deliberately scrolled to dialogue/actions, painting 100%",
+      "textSize": "Accessibility XXXL",
+      "systemReduceMotion": true,
+      "notes": [
+        "Sunny, the full completion / 18 of 18 dialogue, New sky and the two-line Replay Seed Moon action wrap naturally without horizontal truncation.",
+        "The start of Back to Observatory appears at the lower edge; the rest of that action is below this scroll viewport.",
+        "The result heading and open canopy are above the viewport because the result has been scrolled. This capture supports large-text reflow, not simultaneous visibility of all result content."
+      ],
+      "concerns": [],
+      "retainedPath": "docs/evidence/seed-moon-2026-10-19/dev-a0c7360__seed-100__iphone-17e__ax3xl-reduce-motion-scrolled.png",
+      "retainedByteIdentical": true,
+      "captureId": "phone-0c559f8b-9f6c-4786-b5fc-a263ad48c2a3",
+      "path": "dev-a0c7360__seed-100__iphone-17e__ax3xl-reduce-motion-scrolled.png",
+      "retained": true,
+      "source": "a0c73606d68b332dad12d2d3aa3b827ea4a10960",
+      "runtime": "dev.017575ea43",
+      "device": "iPhone 17e Simulator",
+      "os": "iOS 27",
+      "configuration": "Debug",
+      "inspectionRun": "phone",
+      "inspectedBy": [
+        "bible_audit"
+      ],
+      "status": "Current",
+      "calmEffects": false,
+      "orientation": "portrait",
+      "score": 18,
+      "paintingMilestonePercent": 100,
+      "encodedPixels": {
+        "width": 1170,
+        "height": 2532
+      },
+      "displayPixels": {
+        "width": 1170,
+        "height": 2532
+      },
+      "exifOrientation": 1
+    },
+    {
+      "attachment": "ED229C83-9817-4BE0-87B1-B76BFDDA8E61.png",
+      "attachmentName": "seed-largest-text-reduce-motion-before-clear_0_45340180-9AE5-4C8F-9AEA-B0EED29D2552.png",
+      "sourcePath": "/private/tmp/seed-phone-attachments/ED229C83-9817-4BE0-87B1-B76BFDDA8E61.png",
+      "testIdentifier": "SeedMoonInteractionTests/testSeedLargestTextSystemReduceMotionWinKeepsResultActionsUsable()",
+      "capturedAtUTC": "2026-10-19T17:54:47.940000+00:00",
+      "pixels": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bytes": 3204040,
+      "sha256": "432df48afba11a29c2fc08a0ddfc86bdb57db8a874acdb7d9b81751db54b7d75",
+      "visuallyInspected": true,
+      "blockingVisualIssue": false,
+      "screen": "Seed Moon before winning clear, score 14/18, painting 75%",
+      "textSize": "Accessibility XXXL",
+      "systemReduceMotion": true,
+      "notes": [
+        "The closed bud remains above the reflowed large-text HUD. The full Seed Moon, 78% restored label, 14/18 and Menu have no horizontal clipping.",
+        "The large HUD covers some leaf, seed and moon detail; three occupied rows remain clearly visible below.",
+        "Guidance and lower actions are beyond this scroll viewport. This still alone does not establish their visibility or usability."
+      ],
+      "concerns": [],
+      "retainedPath": null,
+      "retainedByteIdentical": false,
+      "captureId": "phone-ed229c83-9817-4be0-87b1-b76bfdda8e61",
+      "path": "/private/tmp/seed-phone-attachments/ED229C83-9817-4BE0-87B1-B76BFDDA8E61.png",
+      "retained": false,
+      "source": "a0c73606d68b332dad12d2d3aa3b827ea4a10960",
+      "runtime": "dev.017575ea43",
+      "device": "iPhone 17e Simulator",
+      "os": "iOS 27",
+      "configuration": "Debug",
+      "inspectionRun": "phone",
+      "inspectedBy": [
+        "bible_audit"
+      ],
+      "status": "Current",
+      "calmEffects": false,
+      "orientation": "portrait",
+      "score": 14,
+      "paintingMilestonePercent": 75,
+      "encodedPixels": {
+        "width": 1170,
+        "height": 2532
+      },
+      "displayPixels": {
+        "width": 1170,
+        "height": 2532
+      },
+      "exifOrientation": 1
+    },
+    {
+      "attachment": "574944EF-9841-4AB8-AE79-3E583042270E.png",
+      "attachmentName": "seed-replay-reset-to-unrestored_0_5504ED92-5033-4C33-8855-FF58A9909ADF.png",
+      "sourcePath": "/private/tmp/seed-phone-attachments/574944EF-9841-4AB8-AE79-3E583042270E.png",
+      "testIdentifier": "SeedMoonInteractionTests/testSeedWinningClearPersistsNamedResultAndReplayStartsAtZero()",
+      "capturedAtUTC": "2026-10-19T17:56:01.164000+00:00",
+      "pixels": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bytes": 3582916,
+      "sha256": "97a4aecd41d59ac906d3920ca77ce14f37fbdcdfce9e1dfee683aa8bc7ea0f13",
+      "visuallyInspected": true,
+      "blockingVisualIssue": false,
+      "screen": "Seed Moon replay begun at score 0/18, painting 0%",
+      "textSize": "Default",
+      "systemReduceMotion": false,
+      "notes": [
+        "The HUD reads Seed Moon, 0% restored and 0/18. The sleeping seed and split moon have no shoot.",
+        "Menu, forecast, Twinkle pause guidance, Start sky and Next shower are visible. The field is empty at this captured restart instant."
+      ],
+      "concerns": [
+        "Non-blocking: lower white control text crosses lighter clouds and has less contrast than the HUD; it remains readable in this capture."
+      ],
+      "retainedPath": null,
+      "retainedByteIdentical": false,
+      "captureId": "phone-574944ef-9841-4ab8-ae79-3e583042270e",
+      "path": "/private/tmp/seed-phone-attachments/574944EF-9841-4AB8-AE79-3E583042270E.png",
+      "retained": false,
+      "source": "a0c73606d68b332dad12d2d3aa3b827ea4a10960",
+      "runtime": "dev.017575ea43",
+      "device": "iPhone 17e Simulator",
+      "os": "iOS 27",
+      "configuration": "Debug",
+      "inspectionRun": "phone",
+      "inspectedBy": [
+        "bible_audit"
+      ],
+      "status": "Current",
+      "calmEffects": false,
+      "orientation": "portrait",
+      "score": 0,
+      "paintingMilestonePercent": 0,
+      "encodedPixels": {
+        "width": 1170,
+        "height": 2532
+      },
+      "displayPixels": {
+        "width": 1170,
+        "height": 2532
+      },
+      "exifOrientation": 1
+    },
+    {
+      "attachment": "AE0535C5-FDA0-4CD7-9E8E-3258B5DC223D.png",
+      "attachmentName": "seed-restored-after-relaunch_0_FBDE72AA-6C5B-4CFE-8662-71DBE23E8388.png",
+      "sourcePath": "/private/tmp/seed-phone-attachments/AE0535C5-FDA0-4CD7-9E8E-3258B5DC223D.png",
+      "testIdentifier": "SeedMoonInteractionTests/testSeedWinningClearPersistsNamedResultAndReplayStartsAtZero()",
+      "capturedAtUTC": "2026-10-19T17:55:46.332000+00:00",
+      "pixels": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bytes": 2710190,
+      "sha256": "17d8e17bd6112e9a30baa9a41cb4bccc57a7573b0010ab3f9ed4758892048d1d",
+      "visuallyInspected": true,
+      "blockingVisualIssue": false,
+      "screen": "Seed Moon saved completed round after relaunch, painting 100%",
+      "textSize": "Default",
+      "systemReduceMotion": false,
+      "notes": [
+        "The open canopy, named completion heading, full dialogue and all three result actions remain readable after relaunch.",
+        "The captured structure matches the winning result without an apparent layout regression."
+      ],
+      "concerns": [],
+      "retainedPath": null,
+      "retainedByteIdentical": false,
+      "captureId": "phone-ae0535c5-fda0-4cd7-9e8e-3258b5dc223d",
+      "path": "/private/tmp/seed-phone-attachments/AE0535C5-FDA0-4CD7-9E8E-3258B5DC223D.png",
+      "retained": false,
+      "source": "a0c73606d68b332dad12d2d3aa3b827ea4a10960",
+      "runtime": "dev.017575ea43",
+      "device": "iPhone 17e Simulator",
+      "os": "iOS 27",
+      "configuration": "Debug",
+      "inspectionRun": "phone",
+      "inspectedBy": [
+        "bible_audit"
+      ],
+      "status": "Current",
+      "calmEffects": false,
+      "orientation": "portrait",
+      "score": 18,
+      "paintingMilestonePercent": 100,
+      "encodedPixels": {
+        "width": 1170,
+        "height": 2532
+      },
+      "displayPixels": {
+        "width": 1170,
+        "height": 2532
+      },
+      "exifOrientation": 1
+    },
+    {
+      "attachment": "370D8104-11A9-45A3-AC8F-15D79A223C82.png",
+      "attachmentName": "seed-restored-after-native-winning-clear-normal-motion_0_E9EB81A8-4BCA-4940-95DB-CC136683E4EC.png",
+      "sourcePath": "/private/tmp/seed-phone-attachments/370D8104-11A9-45A3-AC8F-15D79A223C82.png",
+      "testIdentifier": "SeedMoonInteractionTests/testSeedWinningClearPersistsNamedResultAndReplayStartsAtZero()",
+      "capturedAtUTC": "2026-10-19T17:55:36.102000+00:00",
+      "pixels": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bytes": 2709293,
+      "sha256": "ad39a9137da41e34a93b5140624c174f6141e0b5ccf0edbd29e3f33bdd9c239c",
+      "visuallyInspected": true,
+      "blockingVisualIssue": false,
+      "screen": "Seed Moon completed by native winning clear, score 18/18, painting 100%",
+      "textSize": "Default",
+      "systemReduceMotion": false,
+      "notes": [
+        "The open luminous flower canopy is fully visible above the result heading. The pearl seed remains identifiable; the lower shell is partly behind the heading.",
+        "Seed Moon complete / Seed Moon restored! and the full Sunny completion dialogue are readable.",
+        "New sky, Replay Seed Moon and Back to Observatory are all fully visible. No horizontal clipping is visible."
+      ],
+      "concerns": [],
+      "retainedPath": "docs/evidence/seed-moon-2026-10-19/dev-a0c7360__seed-100__iphone-17e__native-win.png",
+      "retainedByteIdentical": true,
+      "captureId": "phone-370d8104-11a9-45a3-ac8f-15d79a223c82",
+      "path": "dev-a0c7360__seed-100__iphone-17e__native-win.png",
+      "retained": true,
+      "source": "a0c73606d68b332dad12d2d3aa3b827ea4a10960",
+      "runtime": "dev.017575ea43",
+      "device": "iPhone 17e Simulator",
+      "os": "iOS 27",
+      "configuration": "Debug",
+      "inspectionRun": "phone",
+      "inspectedBy": [
+        "bible_audit"
+      ],
+      "status": "Current",
+      "calmEffects": false,
+      "orientation": "portrait",
+      "score": 18,
+      "paintingMilestonePercent": 100,
+      "encodedPixels": {
+        "width": 1170,
+        "height": 2532
+      },
+      "displayPixels": {
+        "width": 1170,
+        "height": 2532
+      },
+      "exifOrientation": 1
+    },
+    {
+      "attachment": "7B0D5DA1-A1E1-4FD8-B196-784EA9FAFE14.png",
+      "attachmentName": "seed-before-winning-clear-normal-motion_0_25F516EC-FA1F-426A-929A-5555219B9C44.png",
+      "sourcePath": "/private/tmp/seed-phone-attachments/7B0D5DA1-A1E1-4FD8-B196-784EA9FAFE14.png",
+      "testIdentifier": "SeedMoonInteractionTests/testSeedWinningClearPersistsNamedResultAndReplayStartsAtZero()",
+      "capturedAtUTC": "2026-10-19T17:55:30.044000+00:00",
+      "pixels": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bytes": 3707473,
+      "sha256": "1ba83ee373685e6b07891536017262ab8503a4917840e52f321af87cf8ba9657",
+      "visuallyInspected": true,
+      "blockingVisualIssue": false,
+      "screen": "Seed Moon active play, score 14/18, painting 75%",
+      "textSize": "Default",
+      "systemReduceMotion": false,
+      "notes": [
+        "Closed golden bud is clearly visible above the HUD. Leaves sit partly behind the translucent HUD; the pearl seed and lit root seam remain visible below it.",
+        "Seed Moon, 78% restored, 14/18, Menu and forecast are readable. The three occupied rows and grown star retain clear silhouettes and faces.",
+        "Sunny guidance and Resume sky / Next shower controls are visible. The continuous painting has no middle cut or mask."
+      ],
+      "concerns": [
+        "Non-blocking: lower white control text crosses lighter clouds and has less contrast than the HUD; it remains readable in this capture."
+      ],
+      "retainedPath": "docs/evidence/seed-moon-2026-10-19/dev-a0c7360__seed-075__iphone-17e__default-text.png",
+      "retainedByteIdentical": true,
+      "captureId": "phone-7b0d5da1-a1e1-4fd8-b196-784ea9fafe14",
+      "path": "dev-a0c7360__seed-075__iphone-17e__default-text.png",
+      "retained": true,
+      "source": "a0c73606d68b332dad12d2d3aa3b827ea4a10960",
+      "runtime": "dev.017575ea43",
+      "device": "iPhone 17e Simulator",
+      "os": "iOS 27",
+      "configuration": "Debug",
+      "inspectionRun": "phone",
+      "inspectedBy": [
+        "bible_audit"
+      ],
+      "status": "Current",
+      "calmEffects": false,
+      "orientation": "portrait",
+      "score": 14,
+      "paintingMilestonePercent": 75,
+      "encodedPixels": {
+        "width": 1170,
+        "height": 2532
+      },
+      "displayPixels": {
+        "width": 1170,
+        "height": 2532
+      },
+      "exifOrientation": 1
+    },
+    {
+      "attachment": "4CE019C2-1EC1-41EC-983B-CF7A12BFE593.png",
+      "attachmentName": "seed-begin-replaces-retained-kite-with-sleeping-seed_0_380450D1-E374-4CFF-9A5E-7DCBE72ADA49.png",
+      "sourcePath": "/private/tmp/seed-preview-attachments/4CE019C2-1EC1-41EC-983B-CF7A12BFE593.png",
+      "testIdentifier": "SeedMoonInteractionTests/testSeedPreviewCancellationRetainsAllThreeExistingLocationsUntilBegin()",
+      "capturedAtUTC": "2026-10-19T17:59:06.258000+00:00",
+      "pixels": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bytes": 3583051,
+      "sha256": "f4581be00d0d562d01ba07ac2983fc8e07dadbfecb214185ec7fdf11ff2c04a8",
+      "stage": "begin",
+      "priorRetainedChallenge": "kite",
+      "textSize": "Default",
+      "visuallyInspected": true,
+      "blockingVisualIssue": false,
+      "notes": [
+        "The HUD reads Seed Moon, 0% restored and 0/18 after Begin. The sleeping pearl seed and split moon are visible with no shoot.",
+        "Menu, the shower forecast and complete Twinkle pause guidance are readable. Start sky and Next shower are visible.",
+        "The field is empty at this captured restart instant; the continuous painting has no split or middle mask."
+      ],
+      "concerns": [
+        "Non-blocking: lower white control text crosses pale clouds and has less contrast than the HUD; it remains readable in this capture."
+      ],
+      "retainedPath": null,
+      "retainedByteIdentical": false,
+      "captureId": "preview-4ce019c2-1ec1-41ec-983b-cf7a12bfe593",
+      "path": "/private/tmp/seed-preview-attachments/4CE019C2-1EC1-41EC-983B-CF7A12BFE593.png",
+      "retained": false,
+      "source": "a0c73606d68b332dad12d2d3aa3b827ea4a10960",
+      "runtime": "dev.017575ea43",
+      "device": "iPhone 17e Simulator",
+      "os": "iOS 27",
+      "configuration": "Debug",
+      "inspectionRun": "preview",
+      "inspectedBy": [
+        "bible_audit"
+      ],
+      "status": "Current",
+      "calmEffects": false,
+      "orientation": "portrait",
+      "score": 0,
+      "paintingMilestonePercent": 0,
+      "screen": "Seed Moon begin",
+      "encodedPixels": {
+        "width": 1170,
+        "height": 2532
+      },
+      "displayPixels": {
+        "width": 1170,
+        "height": 2532
+      },
+      "exifOrientation": 1
+    },
+    {
+      "attachment": "1FA4C113-A37C-4778-9755-4D1FF5FDF854.png",
+      "attachmentName": "seed-entry-over-retained-half-restored-kite_0_6C478AEB-78D0-422A-9026-BD53DF40D875.png",
+      "sourcePath": "/private/tmp/seed-preview-attachments/1FA4C113-A37C-4778-9755-4D1FF5FDF854.png",
+      "testIdentifier": "SeedMoonInteractionTests/testSeedPreviewCancellationRetainsAllThreeExistingLocationsUntilBegin()",
+      "capturedAtUTC": "2026-10-19T17:58:32.235000+00:00",
+      "pixels": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bytes": 2818311,
+      "sha256": "0f02025f002e1e45dfb0b07eb9093cb4e1e35c05edbe031c72115490c5c7a43f",
+      "stage": "entry",
+      "priorRetainedChallenge": "kite",
+      "textSize": "Default",
+      "visuallyInspected": true,
+      "blockingVisualIssue": false,
+      "notes": [
+        "Seed Moon title, sleeping pearl seed and split moon are identifiable. The three cast members are fully visible.",
+        "Sunny entry copy states the 18-starlight objective and arriving-star overflow condition; all text wraps without clipping.",
+        "Begin, Back to Observatory and Settings & help are fully visible and readable.",
+        "The preview presents Seed Moon artwork. The prior retained round is not directly visible, so preservation and cancellation are established by the separate native assertions, not this still."
+      ],
+      "concerns": [],
+      "retainedPath": "docs/evidence/seed-moon-2026-10-19/dev-a0c7360__seed-entry-over-kite__iphone-17e__default-text.png",
+      "retainedByteIdentical": true,
+      "captureId": "preview-1fa4c113-a37c-4778-9755-4d1ff5fdf854",
+      "path": "dev-a0c7360__seed-entry-over-kite__iphone-17e__default-text.png",
+      "retained": true,
+      "source": "a0c73606d68b332dad12d2d3aa3b827ea4a10960",
+      "runtime": "dev.017575ea43",
+      "device": "iPhone 17e Simulator",
+      "os": "iOS 27",
+      "configuration": "Debug",
+      "inspectionRun": "preview",
+      "inspectedBy": [
+        "bible_audit"
+      ],
+      "status": "Current",
+      "calmEffects": false,
+      "orientation": "portrait",
+      "score": 0,
+      "paintingMilestonePercent": 0,
+      "screen": "Seed Moon entry",
+      "encodedPixels": {
+        "width": 1170,
+        "height": 2532
+      },
+      "displayPixels": {
+        "width": 1170,
+        "height": 2532
+      },
+      "exifOrientation": 1
+    },
+    {
+      "attachment": "3479B4DE-B3A4-48FF-8200-8DEF4B70144D.png",
+      "attachmentName": "seed-begin-replaces-retained-ribbon-with-sleeping-seed_0_57FEFD43-7C4B-49D4-9A4A-F33AFEEF4D51.png",
+      "sourcePath": "/private/tmp/seed-preview-attachments/3479B4DE-B3A4-48FF-8200-8DEF4B70144D.png",
+      "testIdentifier": "SeedMoonInteractionTests/testSeedPreviewCancellationRetainsAllThreeExistingLocationsUntilBegin()",
+      "capturedAtUTC": "2026-10-19T17:58:16.374000+00:00",
+      "pixels": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bytes": 3583043,
+      "sha256": "6489b87f21af0d7dc79ea2717b7e5349ec02c8e210eafa73a28d130d6ea3940b",
+      "stage": "begin",
+      "priorRetainedChallenge": "ribbon",
+      "textSize": "Default",
+      "visuallyInspected": true,
+      "blockingVisualIssue": false,
+      "notes": [
+        "The HUD reads Seed Moon, 0% restored and 0/18 after Begin. The sleeping pearl seed and split moon are visible with no shoot.",
+        "Menu, the shower forecast and complete Twinkle pause guidance are readable. Start sky and Next shower are visible.",
+        "The field is empty at this captured restart instant; the continuous painting has no split or middle mask."
+      ],
+      "concerns": [
+        "Non-blocking: lower white control text crosses pale clouds and has less contrast than the HUD; it remains readable in this capture."
+      ],
+      "retainedPath": null,
+      "retainedByteIdentical": false,
+      "captureId": "preview-3479b4de-b3a4-48ff-8200-8def4b70144d",
+      "path": "/private/tmp/seed-preview-attachments/3479B4DE-B3A4-48FF-8200-8DEF4B70144D.png",
+      "retained": false,
+      "source": "a0c73606d68b332dad12d2d3aa3b827ea4a10960",
+      "runtime": "dev.017575ea43",
+      "device": "iPhone 17e Simulator",
+      "os": "iOS 27",
+      "configuration": "Debug",
+      "inspectionRun": "preview",
+      "inspectedBy": [
+        "bible_audit"
+      ],
+      "status": "Current",
+      "calmEffects": false,
+      "orientation": "portrait",
+      "score": 0,
+      "paintingMilestonePercent": 0,
+      "screen": "Seed Moon begin",
+      "encodedPixels": {
+        "width": 1170,
+        "height": 2532
+      },
+      "displayPixels": {
+        "width": 1170,
+        "height": 2532
+      },
+      "exifOrientation": 1
+    },
+    {
+      "attachment": "5E665CFA-357A-4290-B436-DB4E0747C21B.png",
+      "attachmentName": "seed-entry-over-retained-half-restored-ribbon_0_12700BE9-792E-4A09-8EB3-2E605D920207.png",
+      "sourcePath": "/private/tmp/seed-preview-attachments/5E665CFA-357A-4290-B436-DB4E0747C21B.png",
+      "testIdentifier": "SeedMoonInteractionTests/testSeedPreviewCancellationRetainsAllThreeExistingLocationsUntilBegin()",
+      "capturedAtUTC": "2026-10-19T17:57:42.479000+00:00",
+      "pixels": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bytes": 2818311,
+      "sha256": "0f02025f002e1e45dfb0b07eb9093cb4e1e35c05edbe031c72115490c5c7a43f",
+      "stage": "entry",
+      "priorRetainedChallenge": "ribbon",
+      "textSize": "Default",
+      "visuallyInspected": true,
+      "blockingVisualIssue": false,
+      "notes": [
+        "Seed Moon title, sleeping pearl seed and split moon are identifiable. The three cast members are fully visible.",
+        "Sunny entry copy states the 18-starlight objective and arriving-star overflow condition; all text wraps without clipping.",
+        "Begin, Back to Observatory and Settings & help are fully visible and readable.",
+        "The preview presents Seed Moon artwork. The prior retained round is not directly visible, so preservation and cancellation are established by the separate native assertions, not this still."
+      ],
+      "concerns": [],
+      "retainedPath": null,
+      "retainedByteIdentical": false,
+      "captureId": "preview-5e665cfa-357a-4290-b436-db4e0747c21b",
+      "path": "/private/tmp/seed-preview-attachments/5E665CFA-357A-4290-B436-DB4E0747C21B.png",
+      "retained": false,
+      "source": "a0c73606d68b332dad12d2d3aa3b827ea4a10960",
+      "runtime": "dev.017575ea43",
+      "device": "iPhone 17e Simulator",
+      "os": "iOS 27",
+      "configuration": "Debug",
+      "inspectionRun": "preview",
+      "inspectedBy": [
+        "bible_audit"
+      ],
+      "status": "Current",
+      "calmEffects": false,
+      "orientation": "portrait",
+      "score": 0,
+      "paintingMilestonePercent": 0,
+      "screen": "Seed Moon entry",
+      "encodedPixels": {
+        "width": 1170,
+        "height": 2532
+      },
+      "displayPixels": {
+        "width": 1170,
+        "height": 2532
+      },
+      "exifOrientation": 1
+    },
+    {
+      "attachment": "165629CF-B0FC-4CD6-94E3-E92ED8FC928B.png",
+      "attachmentName": "seed-begin-replaces-retained-lantern-with-sleeping-seed_0_592001E5-DFB4-4459-9F74-31C8BED190F3.png",
+      "sourcePath": "/private/tmp/seed-preview-attachments/165629CF-B0FC-4CD6-94E3-E92ED8FC928B.png",
+      "testIdentifier": "SeedMoonInteractionTests/testSeedPreviewCancellationRetainsAllThreeExistingLocationsUntilBegin()",
+      "capturedAtUTC": "2026-10-19T17:57:26.449000+00:00",
+      "pixels": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bytes": 3583234,
+      "sha256": "d67f7833e3df4cb63105040644493f7c19ad904231060a7452389fa18b1c0ca8",
+      "stage": "begin",
+      "priorRetainedChallenge": "lantern",
+      "textSize": "Default",
+      "visuallyInspected": true,
+      "blockingVisualIssue": false,
+      "notes": [
+        "The HUD reads Seed Moon, 0% restored and 0/18 after Begin. The sleeping pearl seed and split moon are visible with no shoot.",
+        "Menu, the shower forecast and complete Twinkle pause guidance are readable. Start sky and Next shower are visible.",
+        "The field is empty at this captured restart instant; the continuous painting has no split or middle mask."
+      ],
+      "concerns": [
+        "Non-blocking: lower white control text crosses pale clouds and has less contrast than the HUD; it remains readable in this capture."
+      ],
+      "retainedPath": null,
+      "retainedByteIdentical": false,
+      "captureId": "preview-165629cf-b0fc-4cd6-94e3-e92ed8fc928b",
+      "path": "/private/tmp/seed-preview-attachments/165629CF-B0FC-4CD6-94E3-E92ED8FC928B.png",
+      "retained": false,
+      "source": "a0c73606d68b332dad12d2d3aa3b827ea4a10960",
+      "runtime": "dev.017575ea43",
+      "device": "iPhone 17e Simulator",
+      "os": "iOS 27",
+      "configuration": "Debug",
+      "inspectionRun": "preview",
+      "inspectedBy": [
+        "bible_audit"
+      ],
+      "status": "Current",
+      "calmEffects": false,
+      "orientation": "portrait",
+      "score": 0,
+      "paintingMilestonePercent": 0,
+      "screen": "Seed Moon begin",
+      "encodedPixels": {
+        "width": 1170,
+        "height": 2532
+      },
+      "displayPixels": {
+        "width": 1170,
+        "height": 2532
+      },
+      "exifOrientation": 1
+    },
+    {
+      "attachment": "E517B9BE-F8EA-4324-AFCB-9F46C2F5D8CC.png",
+      "attachmentName": "seed-entry-over-retained-half-restored-lantern_0_F4E0D244-73E9-4DAB-B701-351C62921619.png",
+      "sourcePath": "/private/tmp/seed-preview-attachments/E517B9BE-F8EA-4324-AFCB-9F46C2F5D8CC.png",
+      "testIdentifier": "SeedMoonInteractionTests/testSeedPreviewCancellationRetainsAllThreeExistingLocationsUntilBegin()",
+      "capturedAtUTC": "2026-10-19T17:56:52.398000+00:00",
+      "pixels": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bytes": 2818311,
+      "sha256": "0f02025f002e1e45dfb0b07eb9093cb4e1e35c05edbe031c72115490c5c7a43f",
+      "stage": "entry",
+      "priorRetainedChallenge": "lantern",
+      "textSize": "Default",
+      "visuallyInspected": true,
+      "blockingVisualIssue": false,
+      "notes": [
+        "Seed Moon title, sleeping pearl seed and split moon are identifiable. The three cast members are fully visible.",
+        "Sunny entry copy states the 18-starlight objective and arriving-star overflow condition; all text wraps without clipping.",
+        "Begin, Back to Observatory and Settings & help are fully visible and readable.",
+        "The preview presents Seed Moon artwork. The prior retained round is not directly visible, so preservation and cancellation are established by the separate native assertions, not this still."
+      ],
+      "concerns": [],
+      "retainedPath": null,
+      "retainedByteIdentical": false,
+      "captureId": "preview-e517b9be-f8ea-4324-afcb-9f46c2f5d8cc",
+      "path": "/private/tmp/seed-preview-attachments/E517B9BE-F8EA-4324-AFCB-9F46C2F5D8CC.png",
+      "retained": false,
+      "source": "a0c73606d68b332dad12d2d3aa3b827ea4a10960",
+      "runtime": "dev.017575ea43",
+      "device": "iPhone 17e Simulator",
+      "os": "iOS 27",
+      "configuration": "Debug",
+      "inspectionRun": "preview",
+      "inspectedBy": [
+        "bible_audit"
+      ],
+      "status": "Current",
+      "calmEffects": false,
+      "orientation": "portrait",
+      "score": 0,
+      "paintingMilestonePercent": 0,
+      "screen": "Seed Moon entry",
+      "encodedPixels": {
+        "width": 1170,
+        "height": 2532
+      },
+      "displayPixels": {
+        "width": 1170,
+        "height": 2532
+      },
+      "exifOrientation": 1
+    },
+    {
+      "attachment": "54ED492B-3ABB-42E8-A42D-1379F6259B51.png",
+      "attachmentName": "seed-tablet-landscape-scene-100-score-18-normal-motion_0_AAB98732-D6DB-439B-ADF0-D58D85630A5F.png",
+      "sourcePath": "/private/tmp/seed-tablet-attachments/54ED492B-3ABB-42E8-A42D-1379F6259B51.png",
+      "testIdentifier": "SeedMoonInteractionTests/testTabletRotationKeepsSeedRestorationAndNativeInput()",
+      "capturedAtUTC": "2026-10-19T18:04:13.412000+00:00",
+      "pixels": {
+        "width": 1640,
+        "height": 2360
+      },
+      "bytes": 4472109,
+      "sha256": "56bb27653eae6655552e911d6f328112b15f5481d36fc2b0b9a5cc0cf9a7c131",
+      "orientation": "landscape",
+      "captureKind": "milestone fixture",
+      "score": 18,
+      "paintingMilestonePercent": 100,
+      "textSize": "Default",
+      "systemReduceMotion": false,
+      "visuallyInspected": true,
+      "blockingVisualIssue": false,
+      "notes": [
+        "The open luminous flower canopy, leaves, pearl and split moon are fully visible at left. The flower is clearly distinct from the closed 75% bud.",
+        "The named result heading, ceremony stars, full Sunny completion dialogue and New sky, Replay Seed Moon and Back to Observatory actions are all visible and readable. The panel fits within the lower screen edge.",
+        "The sky and corner moons form one continuous full-frame painting; no middle cut or opaque cloud mask is visible."
+      ],
+      "concerns": [],
+      "retainedPath": "docs/evidence/seed-moon-2026-10-19/dev-a0c7360__seed-100__ipad-air-11-m3__landscape.png",
+      "retainedByteIdentical": true,
+      "encodedPixels": {
+        "width": 1640,
+        "height": 2360
+      },
+      "exifOrientation": 8,
+      "displayPixels": {
+        "width": 2360,
+        "height": 1640
+      },
+      "captureId": "tablet-54ed492b-3abb-42e8-a42d-1379f6259b51",
+      "path": "dev-a0c7360__seed-100__ipad-air-11-m3__landscape.png",
+      "retained": true,
+      "source": "a0c73606d68b332dad12d2d3aa3b827ea4a10960",
+      "runtime": "dev.017575ea43",
+      "device": "iPad Air 11-inch (M3) Simulator",
+      "os": "iOS 27.0 (24A434)",
+      "configuration": "Debug",
+      "inspectionRun": "tablet",
+      "inspectedBy": [
+        "bible_audit"
+      ],
+      "status": "Current",
+      "calmEffects": false
+    },
+    {
+      "attachment": "22D34D2E-C57C-4CDF-97DC-0D810E3DD0A1.png",
+      "attachmentName": "seed-tablet-landscape-scene-75-score-14-normal-motion_0_75D617C5-F771-4387-A0CF-074D84473731.png",
+      "sourcePath": "/private/tmp/seed-tablet-attachments/22D34D2E-C57C-4CDF-97DC-0D810E3DD0A1.png",
+      "testIdentifier": "SeedMoonInteractionTests/testTabletRotationKeepsSeedRestorationAndNativeInput()",
+      "capturedAtUTC": "2026-10-19T18:04:04.580000+00:00",
+      "pixels": {
+        "width": 1640,
+        "height": 2360
+      },
+      "bytes": 4887727,
+      "sha256": "1c3643a1ca9805a51c77db69c04861e46e5f981c588b827dcd4f1b9045d9baa3",
+      "orientation": "landscape",
+      "captureKind": "milestone fixture",
+      "score": 14,
+      "paintingMilestonePercent": 75,
+      "textSize": "Default",
+      "systemReduceMotion": false,
+      "visuallyInspected": true,
+      "blockingVisualIssue": false,
+      "notes": [
+        "The large closed gold bud and surrounding leaves are fully visible with clear margins from the HUD, screen edge and board. The closed shape is distinct from the 100% flower.",
+        "The sky and corner moons form one continuous full-frame painting; no middle cut or opaque cloud mask is visible.",
+        "The HUD title, score, Menu, forecast, guide text, Resume sky and Next shower are visible and readable. The stars have clear individual silhouettes and faces."
+      ],
+      "concerns": [],
+      "retainedPath": null,
+      "retainedByteIdentical": false,
+      "encodedPixels": {
+        "width": 1640,
+        "height": 2360
+      },
+      "exifOrientation": 8,
+      "displayPixels": {
+        "width": 2360,
+        "height": 1640
+      },
+      "captureId": "tablet-22d34d2e-c57c-4cdf-97dc-0d810e3dd0a1",
+      "path": "/private/tmp/seed-tablet-attachments/22D34D2E-C57C-4CDF-97DC-0D810E3DD0A1.png",
+      "retained": false,
+      "source": "a0c73606d68b332dad12d2d3aa3b827ea4a10960",
+      "runtime": "dev.017575ea43",
+      "device": "iPad Air 11-inch (M3) Simulator",
+      "os": "iOS 27.0 (24A434)",
+      "configuration": "Debug",
+      "inspectionRun": "tablet",
+      "inspectedBy": [
+        "bible_audit"
+      ],
+      "status": "Current",
+      "calmEffects": false
+    },
+    {
+      "attachment": "645B9B4D-E8D5-440B-B30E-19DAEE423F2C.png",
+      "attachmentName": "seed-tablet-landscape-scene-50-score-9-normal-motion_0_D82A8B23-4230-4E49-AEEE-BE5EF54FD707.png",
+      "sourcePath": "/private/tmp/seed-tablet-attachments/645B9B4D-E8D5-440B-B30E-19DAEE423F2C.png",
+      "testIdentifier": "SeedMoonInteractionTests/testTabletRotationKeepsSeedRestorationAndNativeInput()",
+      "capturedAtUTC": "2026-10-19T18:03:54.781000+00:00",
+      "pixels": {
+        "width": 1640,
+        "height": 2360
+      },
+      "bytes": 4860515,
+      "sha256": "4af0669b0a8695397b036612cdb7f2b6372a76d993d06f89037ac6d80eb5e0d6",
+      "orientation": "landscape",
+      "captureKind": "milestone fixture",
+      "score": 9,
+      "paintingMilestonePercent": 50,
+      "textSize": "Default",
+      "systemReduceMotion": false,
+      "visuallyInspected": true,
+      "blockingVisualIssue": false,
+      "notes": [
+        "A bright curling shoot with a leaf rises above the pearl, with broader lit root seams below. The full landmark remains clear of the HUD and board.",
+        "The sky and corner moons form one continuous full-frame painting; no middle cut or opaque cloud mask is visible.",
+        "The HUD title, score, Menu, forecast, guide text, Resume sky and Next shower are visible and readable. The stars have clear individual silhouettes and faces."
+      ],
+      "concerns": [],
+      "retainedPath": null,
+      "retainedByteIdentical": false,
+      "encodedPixels": {
+        "width": 1640,
+        "height": 2360
+      },
+      "exifOrientation": 8,
+      "displayPixels": {
+        "width": 2360,
+        "height": 1640
+      },
+      "captureId": "tablet-645b9b4d-e8d5-440b-b30e-19daee423f2c",
+      "path": "/private/tmp/seed-tablet-attachments/645B9B4D-E8D5-440B-B30E-19DAEE423F2C.png",
+      "retained": false,
+      "source": "a0c73606d68b332dad12d2d3aa3b827ea4a10960",
+      "runtime": "dev.017575ea43",
+      "device": "iPad Air 11-inch (M3) Simulator",
+      "os": "iOS 27.0 (24A434)",
+      "configuration": "Debug",
+      "inspectionRun": "tablet",
+      "inspectedBy": [
+        "bible_audit"
+      ],
+      "status": "Current",
+      "calmEffects": false
+    },
+    {
+      "attachment": "4CC9FE2A-F633-4ECF-8A4C-8EEE0620D3DB.png",
+      "attachmentName": "seed-tablet-landscape-scene-25-score-5-normal-motion_0_B5E9A721-0B67-4ED6-A569-5C812421A5C0.png",
+      "sourcePath": "/private/tmp/seed-tablet-attachments/4CC9FE2A-F633-4ECF-8A4C-8EEE0620D3DB.png",
+      "testIdentifier": "SeedMoonInteractionTests/testTabletRotationKeepsSeedRestorationAndNativeInput()",
+      "capturedAtUTC": "2026-10-19T18:03:44.888000+00:00",
+      "pixels": {
+        "width": 1640,
+        "height": 2360
+      },
+      "bytes": 4730794,
+      "sha256": "cc853066b0652cc97289c7ec5b75cda3a72fc10574e15464591e6ed03deb509d",
+      "orientation": "landscape",
+      "captureKind": "milestone fixture",
+      "score": 5,
+      "paintingMilestonePercent": 25,
+      "textSize": "Default",
+      "systemReduceMotion": false,
+      "visuallyInspected": true,
+      "blockingVisualIssue": false,
+      "notes": [
+        "The pearl is warmer and the first green root seam is clearly visible down the front of the shell. The whole landmark is clear of the HUD and board.",
+        "The sky and corner moons form one continuous full-frame painting; no middle cut or opaque cloud mask is visible.",
+        "The HUD title, score, Menu, forecast, guide text, Resume sky and Next shower are visible and readable. The stars have clear individual silhouettes and faces."
+      ],
+      "concerns": [],
+      "retainedPath": null,
+      "retainedByteIdentical": false,
+      "encodedPixels": {
+        "width": 1640,
+        "height": 2360
+      },
+      "exifOrientation": 8,
+      "displayPixels": {
+        "width": 2360,
+        "height": 1640
+      },
+      "captureId": "tablet-4cc9fe2a-f633-4ecf-8a4c-8eee0620d3db",
+      "path": "/private/tmp/seed-tablet-attachments/4CC9FE2A-F633-4ECF-8A4C-8EEE0620D3DB.png",
+      "retained": false,
+      "source": "a0c73606d68b332dad12d2d3aa3b827ea4a10960",
+      "runtime": "dev.017575ea43",
+      "device": "iPad Air 11-inch (M3) Simulator",
+      "os": "iOS 27.0 (24A434)",
+      "configuration": "Debug",
+      "inspectionRun": "tablet",
+      "inspectedBy": [
+        "bible_audit"
+      ],
+      "status": "Current",
+      "calmEffects": false
+    },
+    {
+      "attachment": "4661E4C4-2B6D-4D8E-80FA-FAB35AE19C6B.png",
+      "attachmentName": "seed-tablet-landscape-scene-0-score-0-normal-motion_0_307D0B0F-92EC-484C-A7EB-9E089C3AF610.png",
+      "sourcePath": "/private/tmp/seed-tablet-attachments/4661E4C4-2B6D-4D8E-80FA-FAB35AE19C6B.png",
+      "testIdentifier": "SeedMoonInteractionTests/testTabletRotationKeepsSeedRestorationAndNativeInput()",
+      "capturedAtUTC": "2026-10-19T18:03:34.862000+00:00",
+      "pixels": {
+        "width": 1640,
+        "height": 2360
+      },
+      "bytes": 4827338,
+      "sha256": "4ec86910b02d0695e406067be5bebab8b5d476ab3334fe5c571501d635fa00b7",
+      "orientation": "landscape",
+      "captureKind": "milestone fixture",
+      "score": 0,
+      "paintingMilestonePercent": 0,
+      "textSize": "Default",
+      "systemReduceMotion": false,
+      "visuallyInspected": true,
+      "blockingVisualIssue": false,
+      "notes": [
+        "The sleeping pearl and split moon are fully visible at left, clear of the centered HUD and board. No shoot is present.",
+        "The sky and corner moons form one continuous full-frame painting; no middle cut or opaque cloud mask is visible.",
+        "The HUD title, score, Menu, forecast, guide text, Resume sky and Next shower are visible and readable. The stars have clear individual silhouettes and faces."
+      ],
+      "concerns": [],
+      "retainedPath": null,
+      "retainedByteIdentical": false,
+      "encodedPixels": {
+        "width": 1640,
+        "height": 2360
+      },
+      "exifOrientation": 8,
+      "displayPixels": {
+        "width": 2360,
+        "height": 1640
+      },
+      "captureId": "tablet-4661e4c4-2b6d-4d8e-80fa-fab35ae19c6b",
+      "path": "/private/tmp/seed-tablet-attachments/4661E4C4-2B6D-4D8E-80FA-FAB35AE19C6B.png",
+      "retained": false,
+      "source": "a0c73606d68b332dad12d2d3aa3b827ea4a10960",
+      "runtime": "dev.017575ea43",
+      "device": "iPad Air 11-inch (M3) Simulator",
+      "os": "iOS 27.0 (24A434)",
+      "configuration": "Debug",
+      "inspectionRun": "tablet",
+      "inspectedBy": [
+        "bible_audit"
+      ],
+      "status": "Current",
+      "calmEffects": false
+    },
+    {
+      "attachment": "EA00A2DD-ABE4-4F2D-948F-A2550D40689C.png",
+      "attachmentName": "seed-tablet-portrait-scene-100-score-18-normal-motion_0_3081BF64-ED21-4AA9-95DD-FE18631D1D42.png",
+      "sourcePath": "/private/tmp/seed-tablet-attachments/EA00A2DD-ABE4-4F2D-948F-A2550D40689C.png",
+      "testIdentifier": "SeedMoonInteractionTests/testTabletRotationKeepsSeedRestorationAndNativeInput()",
+      "capturedAtUTC": "2026-10-19T18:03:24.300000+00:00",
+      "pixels": {
+        "width": 1640,
+        "height": 2360
+      },
+      "bytes": 4264109,
+      "sha256": "a70fd4dc6d08f5701adad50e4bafa57603fc48d41c785098730329f16a65bd70",
+      "orientation": "portrait",
+      "captureKind": "milestone fixture",
+      "score": 18,
+      "paintingMilestonePercent": 100,
+      "textSize": "Default",
+      "systemReduceMotion": false,
+      "visuallyInspected": true,
+      "blockingVisualIssue": false,
+      "notes": [
+        "The open luminous flower, leaves, stem, pearl and split moon are fully visible at upper left with no HUD over the landmark.",
+        "The named result heading, three ceremony stars, full Sunny dialogue and all three actions are readable. The heading overlaps dimmed board survivors as part of the existing result composition.",
+        "The sky and corner moons form one continuous full-frame painting; no middle cut or opaque cloud mask is visible."
+      ],
+      "concerns": [],
+      "retainedPath": null,
+      "retainedByteIdentical": false,
+      "encodedPixels": {
+        "width": 1640,
+        "height": 2360
+      },
+      "exifOrientation": 1,
+      "displayPixels": {
+        "width": 1640,
+        "height": 2360
+      },
+      "captureId": "tablet-ea00a2dd-abe4-4f2d-948f-a2550d40689c",
+      "path": "/private/tmp/seed-tablet-attachments/EA00A2DD-ABE4-4F2D-948F-A2550D40689C.png",
+      "retained": false,
+      "source": "a0c73606d68b332dad12d2d3aa3b827ea4a10960",
+      "runtime": "dev.017575ea43",
+      "device": "iPad Air 11-inch (M3) Simulator",
+      "os": "iOS 27.0 (24A434)",
+      "configuration": "Debug",
+      "inspectionRun": "tablet",
+      "inspectedBy": [
+        "bible_audit"
+      ],
+      "status": "Current",
+      "calmEffects": false
+    },
+    {
+      "attachment": "9A905D5A-A51D-4622-B653-9B0F3BCA1C3A.png",
+      "attachmentName": "seed-tablet-portrait-scene-75-score-14-normal-motion_0_A19EDAA3-E9F1-449D-9F45-95A4CDA770D7.png",
+      "sourcePath": "/private/tmp/seed-tablet-attachments/9A905D5A-A51D-4622-B653-9B0F3BCA1C3A.png",
+      "testIdentifier": "SeedMoonInteractionTests/testTabletRotationKeepsSeedRestorationAndNativeInput()",
+      "capturedAtUTC": "2026-10-19T18:03:15.435000+00:00",
+      "pixels": {
+        "width": 1640,
+        "height": 2360
+      },
+      "bytes": 4765931,
+      "sha256": "dc0c8fa604f108dfdc487281bb01e2c18ff69464a3be633f82588593c2feced8",
+      "orientation": "portrait",
+      "captureKind": "milestone fixture",
+      "score": 14,
+      "paintingMilestonePercent": 75,
+      "textSize": "Default",
+      "systemReduceMotion": false,
+      "visuallyInspected": true,
+      "blockingVisualIssue": false,
+      "notes": [
+        "The closed gold bud and upper leaves are clearly visible above the HUD, with space below the screen top. Root seams remain visible below the HUD. The bud is unambiguously closed.",
+        "The sky and corner moons form one continuous full-frame painting; no middle cut or opaque cloud mask is visible.",
+        "The HUD title, score, Menu, forecast, guide text, Resume sky and Next shower are visible and readable. The stars have clear individual silhouettes and faces."
+      ],
+      "concerns": [],
+      "retainedPath": null,
+      "retainedByteIdentical": false,
+      "encodedPixels": {
+        "width": 1640,
+        "height": 2360
+      },
+      "exifOrientation": 1,
+      "displayPixels": {
+        "width": 1640,
+        "height": 2360
+      },
+      "captureId": "tablet-9a905d5a-a51d-4622-b653-9b0f3bca1c3a",
+      "path": "/private/tmp/seed-tablet-attachments/9A905D5A-A51D-4622-B653-9B0F3BCA1C3A.png",
+      "retained": false,
+      "source": "a0c73606d68b332dad12d2d3aa3b827ea4a10960",
+      "runtime": "dev.017575ea43",
+      "device": "iPad Air 11-inch (M3) Simulator",
+      "os": "iOS 27.0 (24A434)",
+      "configuration": "Debug",
+      "inspectionRun": "tablet",
+      "inspectedBy": [
+        "bible_audit"
+      ],
+      "status": "Current",
+      "calmEffects": false
+    },
+    {
+      "attachment": "8F88ADCB-A6B6-450B-873B-0D63D7CE8ADB.png",
+      "attachmentName": "seed-tablet-portrait-scene-50-score-9-normal-motion_0_250841BF-F01F-47E1-A6FB-10A34B44092D.png",
+      "sourcePath": "/private/tmp/seed-tablet-attachments/8F88ADCB-A6B6-450B-873B-0D63D7CE8ADB.png",
+      "testIdentifier": "SeedMoonInteractionTests/testTabletRotationKeepsSeedRestorationAndNativeInput()",
+      "capturedAtUTC": "2026-10-19T18:03:05.549000+00:00",
+      "pixels": {
+        "width": 1640,
+        "height": 2360
+      },
+      "bytes": 4781851,
+      "sha256": "34b03f24fa199b1eebfd9d00b50ff1e0f65bccbfa1e3917227b983087836a613",
+      "orientation": "portrait",
+      "captureKind": "milestone fixture",
+      "score": 9,
+      "paintingMilestonePercent": 50,
+      "textSize": "Default",
+      "systemReduceMotion": false,
+      "visuallyInspected": true,
+      "blockingVisualIssue": false,
+      "notes": [
+        "The thin shoot and two leaves rise clearly above the HUD. Green root seams are visible below the HUD on the shell; the pearl and lower stem remain partly behind the panel.",
+        "The sky and corner moons form one continuous full-frame painting; no middle cut or opaque cloud mask is visible.",
+        "The HUD title, score, Menu, forecast, guide text, Resume sky and Next shower are visible and readable. The stars have clear individual silhouettes and faces."
+      ],
+      "concerns": [],
+      "retainedPath": "docs/evidence/seed-moon-2026-10-19/dev-a0c7360__seed-050__ipad-air-11-m3__portrait.png",
+      "retainedByteIdentical": true,
+      "encodedPixels": {
+        "width": 1640,
+        "height": 2360
+      },
+      "exifOrientation": 1,
+      "displayPixels": {
+        "width": 1640,
+        "height": 2360
+      },
+      "captureId": "tablet-8f88adcb-a6b6-450b-873b-0d63d7ce8adb",
+      "path": "dev-a0c7360__seed-050__ipad-air-11-m3__portrait.png",
+      "retained": true,
+      "source": "a0c73606d68b332dad12d2d3aa3b827ea4a10960",
+      "runtime": "dev.017575ea43",
+      "device": "iPad Air 11-inch (M3) Simulator",
+      "os": "iOS 27.0 (24A434)",
+      "configuration": "Debug",
+      "inspectionRun": "tablet",
+      "inspectedBy": [
+        "bible_audit"
+      ],
+      "status": "Current",
+      "calmEffects": false
+    },
+    {
+      "attachment": "A118ECE3-5E8C-42D3-918E-BCBF7580094D.png",
+      "attachmentName": "seed-tablet-portrait-scene-25-score-5-normal-motion_0_C621B836-067A-49C2-9DB3-C52479F49EFA.png",
+      "sourcePath": "/private/tmp/seed-tablet-attachments/A118ECE3-5E8C-42D3-918E-BCBF7580094D.png",
+      "testIdentifier": "SeedMoonInteractionTests/testTabletRotationKeepsSeedRestorationAndNativeInput()",
+      "capturedAtUTC": "2026-10-19T18:02:55.705000+00:00",
+      "pixels": {
+        "width": 1640,
+        "height": 2360
+      },
+      "bytes": 4765667,
+      "sha256": "b86b5a328b994d76ef0258e1650583c07e39ede0e7ee3627e2d5775baaba1941",
+      "orientation": "portrait",
+      "captureKind": "milestone fixture",
+      "score": 5,
+      "paintingMilestonePercent": 25,
+      "textSize": "Default",
+      "systemReduceMotion": false,
+      "visuallyInspected": true,
+      "blockingVisualIssue": false,
+      "notes": [
+        "Compared with 0%, a small mint-green root tip is visible just below the HUD, below the pearl, and the seed area is warmer. The pearl remains partly behind the HUD.",
+        "The first-growth cue is readable but subtle and easier to identify by comparison; it is not a large silhouette change.",
+        "The sky and corner moons form one continuous full-frame painting; no middle cut or opaque cloud mask is visible.",
+        "The HUD title, score, Menu, forecast, guide text, Resume sky and Next shower are visible and readable. The stars have clear individual silhouettes and faces."
+      ],
+      "concerns": [
+        "Non-blocking: the 0% to 25% restoration cue is small and partly contextualized by the HUD-covered pearl; record the subtlety rather than claiming a prominent growth change."
+      ],
+      "retainedPath": null,
+      "retainedByteIdentical": false,
+      "encodedPixels": {
+        "width": 1640,
+        "height": 2360
+      },
+      "exifOrientation": 1,
+      "displayPixels": {
+        "width": 1640,
+        "height": 2360
+      },
+      "captureId": "tablet-a118ece3-5e8c-42d3-918e-bcbf7580094d",
+      "path": "/private/tmp/seed-tablet-attachments/A118ECE3-5E8C-42D3-918E-BCBF7580094D.png",
+      "retained": false,
+      "source": "a0c73606d68b332dad12d2d3aa3b827ea4a10960",
+      "runtime": "dev.017575ea43",
+      "device": "iPad Air 11-inch (M3) Simulator",
+      "os": "iOS 27.0 (24A434)",
+      "configuration": "Debug",
+      "inspectionRun": "tablet",
+      "inspectedBy": [
+        "bible_audit"
+      ],
+      "status": "Current",
+      "calmEffects": false
+    },
+    {
+      "attachment": "EDEC435B-4630-4781-BC29-AA8B2F1F6BB6.png",
+      "attachmentName": "seed-tablet-portrait-scene-0-score-0-normal-motion_0_5B3FD173-E7D8-4E0F-AE1E-A7F5CEEF3BE6.png",
+      "sourcePath": "/private/tmp/seed-tablet-attachments/EDEC435B-4630-4781-BC29-AA8B2F1F6BB6.png",
+      "testIdentifier": "SeedMoonInteractionTests/testTabletRotationKeepsSeedRestorationAndNativeInput()",
+      "capturedAtUTC": "2026-10-19T18:02:45.901000+00:00",
+      "pixels": {
+        "width": 1640,
+        "height": 2360
+      },
+      "bytes": 4807496,
+      "sha256": "7ad79abaa2d7581fc8ec48f2906e41b71778524f7dcde6df61a33d7dac284ab6",
+      "orientation": "portrait",
+      "captureKind": "milestone fixture",
+      "score": 0,
+      "paintingMilestonePercent": 0,
+      "textSize": "Default",
+      "systemReduceMotion": false,
+      "visuallyInspected": true,
+      "blockingVisualIssue": false,
+      "notes": [
+        "The sleeping pearl and split shell remain identifiable at upper left. The HUD covers part of the pearl and rear rim; no shoot is present.",
+        "The sky and corner moons form one continuous full-frame painting; no middle cut or opaque cloud mask is visible.",
+        "The HUD title, score, Menu, forecast, guide text, Resume sky and Next shower are visible and readable. The stars have clear individual silhouettes and faces."
+      ],
+      "concerns": [],
+      "retainedPath": null,
+      "retainedByteIdentical": false,
+      "encodedPixels": {
+        "width": 1640,
+        "height": 2360
+      },
+      "exifOrientation": 1,
+      "displayPixels": {
+        "width": 1640,
+        "height": 2360
+      },
+      "captureId": "tablet-edec435b-4630-4781-bc29-aa8b2f1f6bb6",
+      "path": "/private/tmp/seed-tablet-attachments/EDEC435B-4630-4781-BC29-AA8B2F1F6BB6.png",
+      "retained": false,
+      "source": "a0c73606d68b332dad12d2d3aa3b827ea4a10960",
+      "runtime": "dev.017575ea43",
+      "device": "iPad Air 11-inch (M3) Simulator",
+      "os": "iOS 27.0 (24A434)",
+      "configuration": "Debug",
+      "inspectionRun": "tablet",
+      "inspectedBy": [
+        "bible_audit"
+      ],
+      "status": "Current",
+      "calmEffects": false
+    },
+    {
+      "attachment": "1662ECEF-824E-4394-B80D-F676B314D0A3.png",
+      "attachmentName": "seed-tablet-portrait-after-second-native-clear-normal-motion_0_AAA5C7DD-B0FD-4DA5-ADA1-7D791F8C02D3.png",
+      "sourcePath": "/private/tmp/seed-tablet-attachments/1662ECEF-824E-4394-B80D-F676B314D0A3.png",
+      "testIdentifier": "SeedMoonInteractionTests/testTabletRotationKeepsSeedRestorationAndNativeInput()",
+      "capturedAtUTC": "2026-10-19T18:02:36.108000+00:00",
+      "pixels": {
+        "width": 1640,
+        "height": 2360
+      },
+      "bytes": 4707116,
+      "sha256": "d0ff84ce59d7d2418ea145ecee0be34d8691a50ddf7868dcf710e93c441a6fd8",
+      "orientation": "portrait",
+      "captureKind": "native clear / rotation sequence",
+      "score": 13,
+      "paintingMilestonePercent": 50,
+      "textSize": "Default",
+      "systemReduceMotion": false,
+      "visuallyInspected": true,
+      "blockingVisualIssue": false,
+      "notes": [
+        "The thin shoot and two leaves rise clearly above the HUD. Green root seams are visible below the HUD on the shell; the pearl and lower stem remain partly behind the panel.",
+        "After the second native clear the HUD reads 13/18 and 72% restored. Four aqua stars are gone, and Pip reports +4 starlight.",
+        "The painting correctly remains at the 50% milestone because score 13 has not reached the 75% threshold of 14.",
+        "The sky and corner moons form one continuous full-frame painting; no middle cut or opaque cloud mask is visible.",
+        "The HUD title, score, Menu, forecast, guide text, Resume sky and Next shower are visible and readable. The stars have clear individual silhouettes and faces."
+      ],
+      "concerns": [],
+      "retainedPath": null,
+      "retainedByteIdentical": false,
+      "encodedPixels": {
+        "width": 1640,
+        "height": 2360
+      },
+      "exifOrientation": 1,
+      "displayPixels": {
+        "width": 1640,
+        "height": 2360
+      },
+      "captureId": "tablet-1662ecef-824e-4394-b80d-f676b314d0a3",
+      "path": "/private/tmp/seed-tablet-attachments/1662ECEF-824E-4394-B80D-F676B314D0A3.png",
+      "retained": false,
+      "source": "a0c73606d68b332dad12d2d3aa3b827ea4a10960",
+      "runtime": "dev.017575ea43",
+      "device": "iPad Air 11-inch (M3) Simulator",
+      "os": "iOS 27.0 (24A434)",
+      "configuration": "Debug",
+      "inspectionRun": "tablet",
+      "inspectedBy": [
+        "bible_audit"
+      ],
+      "status": "Current",
+      "calmEffects": false
+    },
+    {
+      "attachment": "7B43AF23-A507-44B4-84A3-DD566D6A0BC8.png",
+      "attachmentName": "seed-tablet-portrait-retained-after-landscape-clear-normal-motion_0_9D65346E-6F32-40AF-AFA5-84C6878293A6.png",
+      "sourcePath": "/private/tmp/seed-tablet-attachments/7B43AF23-A507-44B4-84A3-DD566D6A0BC8.png",
+      "testIdentifier": "SeedMoonInteractionTests/testTabletRotationKeepsSeedRestorationAndNativeInput()",
+      "capturedAtUTC": "2026-10-19T18:02:30.141000+00:00",
+      "pixels": {
+        "width": 1640,
+        "height": 2360
+      },
+      "bytes": 4730606,
+      "sha256": "eccf79b54f288a56021ae6c46bc93af1480caced068dad52e3d88be4df190306",
+      "orientation": "portrait",
+      "captureKind": "native clear / rotation sequence",
+      "score": 9,
+      "paintingMilestonePercent": 50,
+      "textSize": "Default",
+      "systemReduceMotion": false,
+      "visuallyInspected": true,
+      "blockingVisualIssue": false,
+      "notes": [
+        "The thin shoot and two leaves rise clearly above the HUD. Green root seams are visible below the HUD on the shell; the pearl and lower stem remain partly behind the panel.",
+        "After returning to portrait the HUD retains 9/18 and 50% restored. The visible settled arrangement and +4 starlight dialogue match the landscape result.",
+        "The sky and corner moons form one continuous full-frame painting; no middle cut or opaque cloud mask is visible.",
+        "The HUD title, score, Menu, forecast, guide text, Resume sky and Next shower are visible and readable. The stars have clear individual silhouettes and faces."
+      ],
+      "concerns": [],
+      "retainedPath": null,
+      "retainedByteIdentical": false,
+      "encodedPixels": {
+        "width": 1640,
+        "height": 2360
+      },
+      "exifOrientation": 1,
+      "displayPixels": {
+        "width": 1640,
+        "height": 2360
+      },
+      "captureId": "tablet-7b43af23-a507-44b4-84a3-dd566d6a0bc8",
+      "path": "/private/tmp/seed-tablet-attachments/7B43AF23-A507-44B4-84A3-DD566D6A0BC8.png",
+      "retained": false,
+      "source": "a0c73606d68b332dad12d2d3aa3b827ea4a10960",
+      "runtime": "dev.017575ea43",
+      "device": "iPad Air 11-inch (M3) Simulator",
+      "os": "iOS 27.0 (24A434)",
+      "configuration": "Debug",
+      "inspectionRun": "tablet",
+      "inspectedBy": [
+        "bible_audit"
+      ],
+      "status": "Current",
+      "calmEffects": false
+    },
+    {
+      "attachment": "A95EC003-B956-484E-8543-2DBE0CAD1E30.png",
+      "attachmentName": "seed-tablet-landscape-after-native-clear-normal-motion_0_D3827CE7-156B-4AF8-91A5-FE091CEF1303.png",
+      "sourcePath": "/private/tmp/seed-tablet-attachments/A95EC003-B956-484E-8543-2DBE0CAD1E30.png",
+      "testIdentifier": "SeedMoonInteractionTests/testTabletRotationKeepsSeedRestorationAndNativeInput()",
+      "capturedAtUTC": "2026-10-19T18:02:24.975000+00:00",
+      "pixels": {
+        "width": 1640,
+        "height": 2360
+      },
+      "bytes": 4818632,
+      "sha256": "e4f5bb3ff6c089fcadf4a5940d9f282abd9611a2cab52f61a26161328091f057",
+      "orientation": "landscape",
+      "captureKind": "native clear / rotation sequence",
+      "score": 9,
+      "paintingMilestonePercent": 50,
+      "textSize": "Default",
+      "systemReduceMotion": false,
+      "visuallyInspected": true,
+      "blockingVisualIssue": false,
+      "notes": [
+        "A bright curling shoot with a leaf rises above the pearl, with broader lit root seams below. The full landmark remains clear of the HUD and board.",
+        "After the landscape native clear the HUD reads 9/18 and 50% restored. The amber trio is gone, the left columns have settled, and Pip reports +4 starlight.",
+        "The sky and corner moons form one continuous full-frame painting; no middle cut or opaque cloud mask is visible.",
+        "The HUD title, score, Menu, forecast, guide text, Resume sky and Next shower are visible and readable. The stars have clear individual silhouettes and faces."
+      ],
+      "concerns": [],
+      "retainedPath": null,
+      "retainedByteIdentical": false,
+      "encodedPixels": {
+        "width": 1640,
+        "height": 2360
+      },
+      "exifOrientation": 8,
+      "displayPixels": {
+        "width": 2360,
+        "height": 1640
+      },
+      "captureId": "tablet-a95ec003-b956-484e-8543-2dbe0cad1e30",
+      "path": "/private/tmp/seed-tablet-attachments/A95EC003-B956-484E-8543-2DBE0CAD1E30.png",
+      "retained": false,
+      "source": "a0c73606d68b332dad12d2d3aa3b827ea4a10960",
+      "runtime": "dev.017575ea43",
+      "device": "iPad Air 11-inch (M3) Simulator",
+      "os": "iOS 27.0 (24A434)",
+      "configuration": "Debug",
+      "inspectionRun": "tablet",
+      "inspectedBy": [
+        "bible_audit"
+      ],
+      "status": "Current",
+      "calmEffects": false
+    },
+    {
+      "attachment": "37E06C21-DFB3-4DEA-BE8A-FD9F03BB19D1.png",
+      "attachmentName": "seed-tablet-landscape-retained-before-clear-normal-motion_0_79C8B858-0653-4BE2-8283-905E98AF4608.png",
+      "sourcePath": "/private/tmp/seed-tablet-attachments/37E06C21-DFB3-4DEA-BE8A-FD9F03BB19D1.png",
+      "testIdentifier": "SeedMoonInteractionTests/testTabletRotationKeepsSeedRestorationAndNativeInput()",
+      "capturedAtUTC": "2026-10-19T18:02:18.754000+00:00",
+      "pixels": {
+        "width": 1640,
+        "height": 2360
+      },
+      "bytes": 4731215,
+      "sha256": "77db3b3db48d0112af0080dcf26c1d950928fc924c54f947d5caac210c379bea",
+      "orientation": "landscape",
+      "captureKind": "native clear / rotation sequence",
+      "score": 5,
+      "paintingMilestonePercent": 25,
+      "textSize": "Default",
+      "systemReduceMotion": false,
+      "visuallyInspected": true,
+      "blockingVisualIssue": false,
+      "notes": [
+        "The pearl is warmer and the first green root seam is clearly visible down the front of the shell. The whole landmark is clear of the HUD and board.",
+        "After rotation into landscape the HUD still reads 5/18 and 28% restored; the same three occupied rows and grown amber star are visually recognizable.",
+        "The sky and corner moons form one continuous full-frame painting; no middle cut or opaque cloud mask is visible.",
+        "The HUD title, score, Menu, forecast, guide text, Resume sky and Next shower are visible and readable. The stars have clear individual silhouettes and faces."
+      ],
+      "concerns": [],
+      "retainedPath": null,
+      "retainedByteIdentical": false,
+      "encodedPixels": {
+        "width": 1640,
+        "height": 2360
+      },
+      "exifOrientation": 8,
+      "displayPixels": {
+        "width": 2360,
+        "height": 1640
+      },
+      "captureId": "tablet-37e06c21-dfb3-4dea-be8a-fd9f03bb19d1",
+      "path": "/private/tmp/seed-tablet-attachments/37E06C21-DFB3-4DEA-BE8A-FD9F03BB19D1.png",
+      "retained": false,
+      "source": "a0c73606d68b332dad12d2d3aa3b827ea4a10960",
+      "runtime": "dev.017575ea43",
+      "device": "iPad Air 11-inch (M3) Simulator",
+      "os": "iOS 27.0 (24A434)",
+      "configuration": "Debug",
+      "inspectionRun": "tablet",
+      "inspectedBy": [
+        "bible_audit"
+      ],
+      "status": "Current",
+      "calmEffects": false
+    },
+    {
+      "attachment": "CDEA860E-3C1E-4378-8804-690CF5EE797D.png",
+      "attachmentName": "seed-tablet-portrait-before-rotation-normal-motion_0_50A829B5-E2B2-4CAE-8460-279ED157BE5E.png",
+      "sourcePath": "/private/tmp/seed-tablet-attachments/CDEA860E-3C1E-4378-8804-690CF5EE797D.png",
+      "testIdentifier": "SeedMoonInteractionTests/testTabletRotationKeepsSeedRestorationAndNativeInput()",
+      "capturedAtUTC": "2026-10-19T18:02:13.542000+00:00",
+      "pixels": {
+        "width": 1640,
+        "height": 2360
+      },
+      "bytes": 4765439,
+      "sha256": "38eee57a8cad3125b47a1e86a0eaae40093324f7805c937ad020ae41114b909a",
+      "orientation": "portrait",
+      "captureKind": "native clear / rotation sequence",
+      "score": 5,
+      "paintingMilestonePercent": 25,
+      "textSize": "Default",
+      "systemReduceMotion": false,
+      "visuallyInspected": true,
+      "blockingVisualIssue": false,
+      "notes": [
+        "Compared with 0%, a small mint-green root tip is visible just below the HUD, below the pearl, and the seed area is warmer. The pearl remains partly behind the HUD.",
+        "The first-growth cue is readable but subtle and easier to identify by comparison; it is not a large silhouette change.",
+        "Before rotation the HUD reads 5/18 and 28% restored. The initial three rows of stars are visible with one grown amber star.",
+        "The sky and corner moons form one continuous full-frame painting; no middle cut or opaque cloud mask is visible.",
+        "The HUD title, score, Menu, forecast, guide text, Resume sky and Next shower are visible and readable. The stars have clear individual silhouettes and faces."
+      ],
+      "concerns": [
+        "Non-blocking: the 0% to 25% restoration cue is small and partly contextualized by the HUD-covered pearl; record the subtlety rather than claiming a prominent growth change."
+      ],
+      "retainedPath": null,
+      "retainedByteIdentical": false,
+      "encodedPixels": {
+        "width": 1640,
+        "height": 2360
+      },
+      "exifOrientation": 1,
+      "displayPixels": {
+        "width": 1640,
+        "height": 2360
+      },
+      "captureId": "tablet-cdea860e-3c1e-4378-8804-690cf5ee797d",
+      "path": "/private/tmp/seed-tablet-attachments/CDEA860E-3C1E-4378-8804-690CF5EE797D.png",
+      "retained": false,
+      "source": "a0c73606d68b332dad12d2d3aa3b827ea4a10960",
+      "runtime": "dev.017575ea43",
+      "device": "iPad Air 11-inch (M3) Simulator",
+      "os": "iOS 27.0 (24A434)",
+      "configuration": "Debug",
+      "inspectionRun": "tablet",
+      "inspectedBy": [
+        "bible_audit"
+      ],
+      "status": "Current",
+      "calmEffects": false
+    },
+    {
+      "captureId": "manual-phone-000",
+      "sourcePath": "/var/folders/fs/9shw9bf142jg3280dc9n3hhc0000gn/T/screenshot_optimized_ad6ce0f9-5a6e-484a-a7f5-9d1a82611827.jpg",
+      "source": "a0c73606d68b332dad12d2d3aa3b827ea4a10960",
+      "runtime": "dev.017575ea43",
+      "score": 0,
+      "paintingMilestonePercent": 0,
+      "screen": "active challenge",
+      "notes": [
+        "Sleeping pearl seed and split moon are visible below the readable HUD; there is no shoot or illuminated growth seam. The scene is continuous.",
+        "The HUD shows 0/18; native star faces and guidance are readable. Lower white controls remain readable against pale clouds, with weaker contrast than the HUD."
+      ],
+      "path": "/var/folders/fs/9shw9bf142jg3280dc9n3hhc0000gn/T/screenshot_optimized_ad6ce0f9-5a6e-484a-a7f5-9d1a82611827.jpg",
+      "retainedPath": null,
+      "retained": false,
+      "retainedByteIdentical": false,
+      "sha256": "c709f7e9038384a217ca6fdec96a522839aa31a460fb7cd6d31e5c888ff1a3ff",
+      "bytes": 93372,
+      "pixels": {
+        "width": 369,
+        "height": 800
+      },
+      "encodedPixels": {
+        "width": 369,
+        "height": 800
+      },
+      "displayPixels": {
+        "width": 369,
+        "height": 800
+      },
+      "exifOrientation": 1,
+      "device": "iPhone 17e Simulator",
+      "os": "iOS 27.0 (24A434)",
+      "configuration": "Debug",
+      "orientation": "portrait",
+      "textSize": "Default",
+      "systemReduceMotion": false,
+      "calmEffects": false,
+      "visuallyInspected": true,
+      "inspectedBy": [
+        "root",
+        "bible_audit"
+      ],
+      "inspectionRun": "manual",
+      "blockingVisualIssue": false,
+      "capturedAtUTC": null,
+      "timestampNote": "Original capture timestamp was not retained in the supplied manual capture record.",
+      "status": "Current",
+      "concerns": []
+    },
+    {
+      "captureId": "manual-phone-025",
+      "sourcePath": "/var/folders/fs/9shw9bf142jg3280dc9n3hhc0000gn/T/screenshot_optimized_ecb2fe5d-1d47-4e40-96f0-ec31c01ab137.jpg",
+      "source": "a0c73606d68b332dad12d2d3aa3b827ea4a10960",
+      "runtime": "dev.017575ea43",
+      "score": 5,
+      "paintingMilestonePercent": 25,
+      "screen": "active challenge",
+      "notes": [
+        "The pearl is warmer and a mint root seam glows down the front of the split moon, visibly differing from the sleeping 0% state.",
+        "HUD shows 5/18 and 28% restored. Scene, star cast, guide and lower controls remain continuous and readable."
+      ],
+      "path": "/var/folders/fs/9shw9bf142jg3280dc9n3hhc0000gn/T/screenshot_optimized_ecb2fe5d-1d47-4e40-96f0-ec31c01ab137.jpg",
+      "retainedPath": null,
+      "retained": false,
+      "retainedByteIdentical": false,
+      "sha256": "416aac69b29d272260cd5dd7ac6dc9d223fb79ca000c6428a9167f3fefb4500e",
+      "bytes": 93182,
+      "pixels": {
+        "width": 369,
+        "height": 800
+      },
+      "encodedPixels": {
+        "width": 369,
+        "height": 800
+      },
+      "displayPixels": {
+        "width": 369,
+        "height": 800
+      },
+      "exifOrientation": 1,
+      "device": "iPhone 17e Simulator",
+      "os": "iOS 27.0 (24A434)",
+      "configuration": "Debug",
+      "orientation": "portrait",
+      "textSize": "Default",
+      "systemReduceMotion": false,
+      "calmEffects": false,
+      "visuallyInspected": true,
+      "inspectedBy": [
+        "root",
+        "bible_audit"
+      ],
+      "inspectionRun": "manual",
+      "blockingVisualIssue": false,
+      "capturedAtUTC": null,
+      "timestampNote": "Original capture timestamp was not retained in the supplied manual capture record.",
+      "status": "Current",
+      "concerns": []
+    },
+    {
+      "captureId": "manual-phone-050-superseded",
+      "sourcePath": "/var/folders/fs/9shw9bf142jg3280dc9n3hhc0000gn/T/screenshot_optimized_0181a7ec-e679-4b7a-afbf-820372789931.jpg",
+      "source": "a0c73606d68b332dad12d2d3aa3b827ea4a10960",
+      "runtime": "dev.017575ea43",
+      "score": 9,
+      "paintingMilestonePercent": 50,
+      "screen": "active challenge",
+      "status": "Historical",
+      "notes": [
+        "The shoot passes behind the HUD, leaving part of its thin upper growth obscured. Superseded by the corrected phone 50% painting at b77a100."
+      ],
+      "supersededBy": "manual-phone-050-corrected-dense",
+      "path": "/var/folders/fs/9shw9bf142jg3280dc9n3hhc0000gn/T/screenshot_optimized_0181a7ec-e679-4b7a-afbf-820372789931.jpg",
+      "retainedPath": null,
+      "retained": false,
+      "retainedByteIdentical": false,
+      "sha256": "363715d1e4d4215d372d084b4cffd239e483800ec9ca554a8c855d55df320812",
+      "bytes": 94206,
+      "pixels": {
+        "width": 369,
+        "height": 800
+      },
+      "encodedPixels": {
+        "width": 369,
+        "height": 800
+      },
+      "displayPixels": {
+        "width": 369,
+        "height": 800
+      },
+      "exifOrientation": 1,
+      "device": "iPhone 17e Simulator",
+      "os": "iOS 27.0 (24A434)",
+      "configuration": "Debug",
+      "orientation": "portrait",
+      "textSize": "Default",
+      "systemReduceMotion": false,
+      "calmEffects": false,
+      "visuallyInspected": true,
+      "inspectedBy": [
+        "root",
+        "bible_audit"
+      ],
+      "inspectionRun": "manual",
+      "blockingVisualIssue": false,
+      "capturedAtUTC": null,
+      "timestampNote": "Original capture timestamp was not retained in the supplied manual capture record.",
+      "concerns": []
+    },
+    {
+      "captureId": "manual-phone-050-dense-superseded",
+      "sourcePath": "/var/folders/fs/9shw9bf142jg3280dc9n3hhc0000gn/T/screenshot_optimized_1c109d8c-0755-4269-aeb3-7ece0ff67d2a.jpg",
+      "source": "a0c73606d68b332dad12d2d3aa3b827ea4a10960",
+      "runtime": "dev.017575ea43",
+      "score": 9,
+      "paintingMilestonePercent": 50,
+      "screen": "49-star active challenge",
+      "status": "Historical",
+      "notes": [
+        "The 49-star field and score 9 are visible before the recorded rapid-input check. The thin shoot is partly hidden by the HUD; this painting is superseded by b77a100.",
+        "Root separately reports that four same-cell batch inputs committed one 9-to-13 clear and left 46 occupied targets; the pre-input still does not prove that interaction."
+      ],
+      "nativeInteractionReportedByRoot": {
+        "beforeScore": 9,
+        "afterScore": 13,
+        "beforeOccupiedTargets": 49,
+        "afterOccupiedTargets": 46,
+        "batchTaps": 4
+      },
+      "supersededBy": "manual-phone-050-corrected-dense",
+      "path": "/var/folders/fs/9shw9bf142jg3280dc9n3hhc0000gn/T/screenshot_optimized_1c109d8c-0755-4269-aeb3-7ece0ff67d2a.jpg",
+      "retainedPath": null,
+      "retained": false,
+      "retainedByteIdentical": false,
+      "sha256": "06e42f23fdbae1e055d1a372ba00bbac47745e766d018c8bedd4f625c40b94dd",
+      "bytes": 107607,
+      "pixels": {
+        "width": 369,
+        "height": 800
+      },
+      "encodedPixels": {
+        "width": 369,
+        "height": 800
+      },
+      "displayPixels": {
+        "width": 369,
+        "height": 800
+      },
+      "exifOrientation": 1,
+      "device": "iPhone 17e Simulator",
+      "os": "iOS 27.0 (24A434)",
+      "configuration": "Debug",
+      "orientation": "portrait",
+      "textSize": "Default",
+      "systemReduceMotion": false,
+      "calmEffects": false,
+      "visuallyInspected": true,
+      "inspectedBy": [
+        "root",
+        "bible_audit"
+      ],
+      "inspectionRun": "manual",
+      "blockingVisualIssue": false,
+      "capturedAtUTC": null,
+      "timestampNote": "Original capture timestamp was not retained in the supplied manual capture record.",
+      "concerns": []
+    },
+    {
+      "captureId": "manual-phone-050-corrected-dense",
+      "sourcePath": "/var/folders/fs/9shw9bf142jg3280dc9n3hhc0000gn/T/screenshot_optimized_14791202-df0a-45f9-945a-7f0af713bbf1.jpg",
+      "source": "b77a1003f5d22b9da67d5d4c54f3515481d45ea3",
+      "runtime": "dev.545382e6f6",
+      "score": 9,
+      "paintingMilestonePercent": 50,
+      "screen": "49-star active challenge",
+      "notes": [
+        "The corrected thin shoot and upper leaves are clearly visible above the HUD. The fixed pearl recipient and glowing root seams remain below the HUD.",
+        "All 49 occupied star positions are visible; the upper row overlaps part of the moon artwork, while star faces and silhouettes remain recognizable. The HUD reads 9/18 and 50% restored.",
+        "The full-frame sky remains continuous. Guide and lower white controls remain readable; physical contrast has not been established."
+      ],
+      "path": "dev-b77a100__seed-050__iphone-17e__49-stars.jpg",
+      "retainedPath": "docs/evidence/seed-moon-2026-10-19/dev-b77a100__seed-050__iphone-17e__49-stars.jpg",
+      "retained": true,
+      "retainedByteIdentical": true,
+      "sha256": "0de2bd627ddfb607a769152fbea787c177d667d8583636d1db929f2f1f752a07",
+      "bytes": 109368,
+      "pixels": {
+        "width": 369,
+        "height": 800
+      },
+      "encodedPixels": {
+        "width": 369,
+        "height": 800
+      },
+      "displayPixels": {
+        "width": 369,
+        "height": 800
+      },
+      "exifOrientation": 1,
+      "device": "iPhone 17e Simulator",
+      "os": "iOS 27.0 (24A434)",
+      "configuration": "Debug",
+      "orientation": "portrait",
+      "textSize": "Default",
+      "systemReduceMotion": false,
+      "calmEffects": false,
+      "visuallyInspected": true,
+      "inspectedBy": [
+        "root",
+        "bible_audit"
+      ],
+      "inspectionRun": "manual",
+      "blockingVisualIssue": false,
+      "capturedAtUTC": null,
+      "timestampNote": "Original capture timestamp was not retained in the supplied manual capture record.",
+      "status": "Current",
+      "concerns": []
+    },
+    {
+      "captureId": "manual-welcome-four-challenges",
+      "sourcePath": "/var/folders/fs/9shw9bf142jg3280dc9n3hhc0000gn/T/screenshot_optimized_fbcb664f-a38c-4169-9bc3-36567cbc095a.jpg",
+      "source": "b77a1003f5d22b9da67d5d4c54f3515481d45ea3",
+      "runtime": "dev.545382e6f6",
+      "screen": "Welcome, scrolled to all four direct challenges",
+      "notes": [
+        "New sky, View last sky, Try First Light, Try Ribbon Crossing, Try Kite Harbor, Try Seed Moon and Settings & help are all visible and readable.",
+        "Sunny summarizes the retained Seed Moon 0/18 completed round. The upper title/cast is partly outside the viewport because the page is deliberately scrolled; the four choices have no clipped text."
+      ],
+      "path": "dev-b77a100__welcome-four-challenges__iphone-17e__scrolled.jpg",
+      "retainedPath": "docs/evidence/seed-moon-2026-10-19/dev-b77a100__welcome-four-challenges__iphone-17e__scrolled.jpg",
+      "retained": true,
+      "retainedByteIdentical": true,
+      "sha256": "df66bcdf124191703041f3b429599a7c23c938a0377794d9c29e8fe680f944e7",
+      "bytes": 68872,
+      "pixels": {
+        "width": 369,
+        "height": 800
+      },
+      "encodedPixels": {
+        "width": 369,
+        "height": 800
+      },
+      "displayPixels": {
+        "width": 369,
+        "height": 800
+      },
+      "exifOrientation": 1,
+      "device": "iPhone 17e Simulator",
+      "os": "iOS 27.0 (24A434)",
+      "configuration": "Debug",
+      "orientation": "portrait",
+      "textSize": "Default",
+      "systemReduceMotion": false,
+      "calmEffects": false,
+      "visuallyInspected": true,
+      "inspectedBy": [
+        "root",
+        "bible_audit"
+      ],
+      "inspectionRun": "manual",
+      "blockingVisualIssue": false,
+      "capturedAtUTC": null,
+      "timestampNote": "Original capture timestamp was not retained in the supplied manual capture record.",
+      "status": "Current",
+      "concerns": []
+    },
+    {
+      "captureId": "manual-sky-menu-four-challenges",
+      "sourcePath": "/var/folders/fs/9shw9bf142jg3280dc9n3hhc0000gn/T/screenshot_optimized_10a351e6-6776-4ed7-8ede-e32b1c04dbc7.jpg",
+      "source": "b77a1003f5d22b9da67d5d4c54f3515481d45ea3",
+      "runtime": "dev.545382e6f6",
+      "screen": "Sky menu, scrolled to all four direct challenges",
+      "notes": [
+        "The four 18-starlight choices First Light, Ribbon Crossing, Kite Harbor and Seed Moon are visible together with readable labels.",
+        "Done, Sound, Haptics, Calm effects, How to play and the Debug Dialogue studio are visible. The upper section caption passes behind the navigation bar at this deliberate scroll position.",
+        "The visible runtime label reads dev.545382e6f6. This capture does not show the entire location-selector or Help flow."
+      ],
+      "path": "dev-b77a100__sky-menu-four-challenges__iphone-17e__scrolled.jpg",
+      "retainedPath": "docs/evidence/seed-moon-2026-10-19/dev-b77a100__sky-menu-four-challenges__iphone-17e__scrolled.jpg",
+      "retained": true,
+      "retainedByteIdentical": true,
+      "sha256": "286807668988270691fcebe2ce8c8408718fc7f0f69399ea5aeaedc591a61801",
+      "bytes": 44190,
+      "pixels": {
+        "width": 369,
+        "height": 800
+      },
+      "encodedPixels": {
+        "width": 369,
+        "height": 800
+      },
+      "displayPixels": {
+        "width": 369,
+        "height": 800
+      },
+      "exifOrientation": 1,
+      "device": "iPhone 17e Simulator",
+      "os": "iOS 27.0 (24A434)",
+      "configuration": "Debug",
+      "orientation": "portrait",
+      "textSize": "Default",
+      "systemReduceMotion": false,
+      "calmEffects": false,
+      "visuallyInspected": true,
+      "inspectedBy": [
+        "root",
+        "bible_audit"
+      ],
+      "inspectionRun": "manual",
+      "blockingVisualIssue": false,
+      "capturedAtUTC": null,
+      "timestampNote": "Original capture timestamp was not retained in the supplied manual capture record.",
+      "status": "Current",
+      "concerns": []
+    },
+    {
+      "captureId": "manual-seed-overflow-000",
+      "sourcePath": "/var/folders/fs/9shw9bf142jg3280dc9n3hhc0000gn/T/screenshot_optimized_47aaeedd-d767-451d-96a9-7622a6f3a224.jpg",
+      "source": "b77a1003f5d22b9da67d5d4c54f3515481d45ea3",
+      "runtime": "dev.545382e6f6",
+      "score": 0,
+      "paintingMilestonePercent": 0,
+      "screen": "Seed Moon overflow result",
+      "notes": [
+        "No room to land is readable above the dense final board. The highlighted blocked column remains visible.",
+        "Twinkle states that Column 4 had no room and that 0 of 18 starlight was collected. Replay Seed Moon, New sky and Back to Observatory are fully visible.",
+        "The sleeping seed painting remains continuous. This still records the resulting screen; root separately records the successful touch-down/up input and earlier failed driver taps."
+      ],
+      "path": "dev-b77a100__seed-overflow-000__iphone-17e__default-text.jpg",
+      "retainedPath": "docs/evidence/seed-moon-2026-10-19/dev-b77a100__seed-overflow-000__iphone-17e__default-text.jpg",
+      "retained": true,
+      "retainedByteIdentical": true,
+      "sha256": "aaf54319deac7f3d7d46441602c47b984e8c9def2a8f3d25b362647c11f527a6",
+      "bytes": 92855,
+      "pixels": {
+        "width": 369,
+        "height": 800
+      },
+      "encodedPixels": {
+        "width": 369,
+        "height": 800
+      },
+      "displayPixels": {
+        "width": 369,
+        "height": 800
+      },
+      "exifOrientation": 1,
+      "device": "iPhone 17e Simulator",
+      "os": "iOS 27.0 (24A434)",
+      "configuration": "Debug",
+      "orientation": "portrait",
+      "textSize": "Default",
+      "systemReduceMotion": false,
+      "calmEffects": false,
+      "visuallyInspected": true,
+      "inspectedBy": [
+        "root",
+        "bible_audit"
+      ],
+      "inspectionRun": "manual",
+      "blockingVisualIssue": false,
+      "capturedAtUTC": null,
+      "timestampNote": "Original capture timestamp was not retained in the supplied manual capture record.",
+      "status": "Current",
+      "concerns": []
+    },
+    {
+      "captureId": "compact-b6c9beeb-7293-44ce-8142-34d4c9ae5bf2",
+      "attachment": "B6C9BEEB-7293-44CE-8142-34D4C9AE5BF2.png",
+      "attachmentName": "kite-replay-reset-to-unrestored_0_C0BB46DD-CEBF-4CB7-B712-1027A1DEAFCC.png",
+      "sourcePath": "/private/tmp/seed-compact-attachments/B6C9BEEB-7293-44CE-8142-34D4C9AE5BF2.png",
+      "path": "/private/tmp/seed-compact-attachments/B6C9BEEB-7293-44CE-8142-34D4C9AE5BF2.png",
+      "retainedPath": null,
+      "retained": false,
+      "retainedByteIdentical": false,
+      "source": "124fd21c39a71030723c0485882839e546e032a0",
+      "runtime": "dev.545382e6f6",
+      "device": "iPhone SE (3rd generation) Simulator",
+      "deviceId": "EA0F7A30-21E1-4995-93F5-C4A983F4A354",
+      "os": "iOS 27.0 (24A434)",
+      "configuration": "Debug",
+      "pixels": {
+        "width": 750,
+        "height": 1334
+      },
+      "encodedPixels": {
+        "width": 750,
+        "height": 1334
+      },
+      "displayPixels": {
+        "width": 750,
+        "height": 1334
+      },
+      "exifOrientation": 1,
+      "bytes": 1373711,
+      "sha256": "3de41a6470a6432a3a0d153e595da2767c074b49fbd91d58396ef9f2344bfe9b",
+      "orientation": "portrait",
+      "textSize": "Default",
+      "systemReduceMotion": false,
+      "calmEffects": false,
+      "score": 0,
+      "paintingMilestonePercent": 0,
+      "screen": "Kite Harbor replay at zero",
+      "testIdentifier": "KiteHarborInteractionTests/testKiteWinningClearPersistsNamedResultAndReplayStartsAtZero()",
+      "capturedAtUTC": "2026-10-19T18:19:46.542000+00:00",
+      "inspectionRun": "compact",
+      "visuallyInspected": true,
+      "inspectedBy": [
+        "bible_audit"
+      ],
+      "blockingVisualIssue": false,
+      "status": "Current",
+      "notes": [
+        "The HUD reads Kite Harbor, 0% restored and 0/18. The captured restart field is empty.",
+        "The harbor has lowered sails and a dark mast star, restoring the unrestored scene.",
+        "The top scroll position leaves guidance and lower controls below the viewport. The sky remains continuous, with no horizontal clipping or middle mask."
+      ],
+      "concerns": []
+    },
+    {
+      "captureId": "compact-fcb227d1-f4f6-4f0e-83d5-e2b32c512da8",
+      "attachment": "FCB227D1-F4F6-4F0E-83D5-E2B32C512DA8.png",
+      "attachmentName": "kite-restored-after-relaunch_0_2541907E-BF25-4760-9225-B5A2DE6FF513.png",
+      "sourcePath": "/private/tmp/seed-compact-attachments/FCB227D1-F4F6-4F0E-83D5-E2B32C512DA8.png",
+      "path": "/private/tmp/seed-compact-attachments/FCB227D1-F4F6-4F0E-83D5-E2B32C512DA8.png",
+      "retainedPath": null,
+      "retained": false,
+      "retainedByteIdentical": false,
+      "source": "124fd21c39a71030723c0485882839e546e032a0",
+      "runtime": "dev.545382e6f6",
+      "device": "iPhone SE (3rd generation) Simulator",
+      "deviceId": "EA0F7A30-21E1-4995-93F5-C4A983F4A354",
+      "os": "iOS 27.0 (24A434)",
+      "configuration": "Debug",
+      "pixels": {
+        "width": 750,
+        "height": 1334
+      },
+      "encodedPixels": {
+        "width": 750,
+        "height": 1334
+      },
+      "displayPixels": {
+        "width": 750,
+        "height": 1334
+      },
+      "exifOrientation": 1,
+      "bytes": 1222390,
+      "sha256": "299736edc6dfbf0fd7ae2d1fc5f56006c4e7d64b7430a2614c974415bb4231ac",
+      "orientation": "portrait",
+      "textSize": "Default",
+      "systemReduceMotion": false,
+      "calmEffects": false,
+      "score": 18,
+      "paintingMilestonePercent": 100,
+      "screen": "Kite Harbor saved result after relaunch",
+      "testIdentifier": "KiteHarborInteractionTests/testKiteWinningClearPersistsNamedResultAndReplayStartsAtZero()",
+      "capturedAtUTC": "2026-10-19T18:19:29.027000+00:00",
+      "inspectionRun": "compact",
+      "visuallyInspected": true,
+      "inspectedBy": [
+        "bible_audit"
+      ],
+      "blockingVisualIssue": false,
+      "status": "Current",
+      "notes": [
+        "The completed harbor and illuminated lead mast star are clearly visible above the result heading.",
+        "The Kite Harbor restored heading reflows to two readable lines. The three ceremony stars and complete 18-of-18 dialogue remain readable without horizontal clipping.",
+        "The saved result is shown at the higher initial scroll position. New sky is partly visible at the bottom and Replay is below this viewport. Separate native assertions exercise Replay after scrolling."
+      ],
+      "concerns": []
+    },
+    {
+      "captureId": "compact-e71c7e3e-4cc2-4670-8e30-f17739543e01",
+      "attachment": "E71C7E3E-4CC2-4670-8E30-F17739543E01.png",
+      "attachmentName": "kite-restored-after-native-winning-clear-normal-motion_0_1CF2D76B-CE60-4D0A-93F1-BF07CAB9A5F1.png",
+      "sourcePath": "/private/tmp/seed-compact-attachments/E71C7E3E-4CC2-4670-8E30-F17739543E01.png",
+      "path": "/private/tmp/seed-compact-attachments/E71C7E3E-4CC2-4670-8E30-F17739543E01.png",
+      "retainedPath": null,
+      "retained": false,
+      "retainedByteIdentical": false,
+      "source": "124fd21c39a71030723c0485882839e546e032a0",
+      "runtime": "dev.545382e6f6",
+      "device": "iPhone SE (3rd generation) Simulator",
+      "deviceId": "EA0F7A30-21E1-4995-93F5-C4A983F4A354",
+      "os": "iOS 27.0 (24A434)",
+      "configuration": "Debug",
+      "pixels": {
+        "width": 750,
+        "height": 1334
+      },
+      "encodedPixels": {
+        "width": 750,
+        "height": 1334
+      },
+      "displayPixels": {
+        "width": 750,
+        "height": 1334
+      },
+      "exifOrientation": 1,
+      "bytes": 1089955,
+      "sha256": "bbd80708c6d1a274d15eec0982433b29f4856de716ba397b3882fbbc1f9621cd",
+      "orientation": "portrait",
+      "textSize": "Default",
+      "systemReduceMotion": false,
+      "calmEffects": false,
+      "score": 18,
+      "paintingMilestonePercent": 100,
+      "screen": "Kite Harbor native winning result, scrolled",
+      "testIdentifier": "KiteHarborInteractionTests/testKiteWinningClearPersistsNamedResultAndReplayStartsAtZero()",
+      "capturedAtUTC": "2026-10-19T18:19:16.733000+00:00",
+      "inspectionRun": "compact",
+      "visuallyInspected": true,
+      "inspectedBy": [
+        "bible_audit"
+      ],
+      "blockingVisualIssue": false,
+      "status": "Current",
+      "notes": [
+        "The completed harbor and illuminated lead mast star are clearly visible above the result heading.",
+        "The Kite Harbor restored heading reflows to two readable lines. The three ceremony stars and complete 18-of-18 dialogue remain readable without horizontal clipping.",
+        "The result has been scrolled to show the complete New sky and Replay actions. Back to Observatory begins at the bottom edge and continues below the viewport; a scroll indicator is visible."
+      ],
+      "concerns": []
+    },
+    {
+      "captureId": "compact-a4122938-2edd-4be1-923d-5ce2b2baa268",
+      "attachment": "A4122938-2EDD-4BE1-923D-5CE2B2BAA268.png",
+      "attachmentName": "kite-before-winning-clear-normal-motion_0_24B615A1-9165-4E41-97AF-C85DEEF94503.png",
+      "sourcePath": "/private/tmp/seed-compact-attachments/A4122938-2EDD-4BE1-923D-5CE2B2BAA268.png",
+      "path": "/private/tmp/seed-compact-attachments/A4122938-2EDD-4BE1-923D-5CE2B2BAA268.png",
+      "retainedPath": null,
+      "retained": false,
+      "retainedByteIdentical": false,
+      "source": "124fd21c39a71030723c0485882839e546e032a0",
+      "runtime": "dev.545382e6f6",
+      "device": "iPhone SE (3rd generation) Simulator",
+      "deviceId": "EA0F7A30-21E1-4995-93F5-C4A983F4A354",
+      "os": "iOS 27.0 (24A434)",
+      "configuration": "Debug",
+      "pixels": {
+        "width": 750,
+        "height": 1334
+      },
+      "encodedPixels": {
+        "width": 750,
+        "height": 1334
+      },
+      "displayPixels": {
+        "width": 750,
+        "height": 1334
+      },
+      "exifOrientation": 1,
+      "bytes": 1483292,
+      "sha256": "7cf6f234db695d1b8d3837202e38110ce76884c98eee8ffd6c37055a1370ee1f",
+      "orientation": "portrait",
+      "textSize": "Default",
+      "systemReduceMotion": false,
+      "calmEffects": false,
+      "score": 14,
+      "paintingMilestonePercent": 75,
+      "screen": "Kite Harbor active challenge",
+      "testIdentifier": "KiteHarborInteractionTests/testKiteWinningClearPersistsNamedResultAndReplayStartsAtZero()",
+      "capturedAtUTC": "2026-10-19T18:19:09.592000+00:00",
+      "inspectionRun": "compact",
+      "visuallyInspected": true,
+      "inspectedBy": [
+        "bible_audit"
+      ],
+      "blockingVisualIssue": false,
+      "status": "Current",
+      "notes": [
+        "Kite Harbor HUD reads 14/18 and 78% restored without horizontal clipping. Three occupied star rows remain clear below the continuous painting.",
+        "The lead mast star remains dark while sails and surrounding harbor lights are visible. The HUD overlaps lower sails, without obscuring the mast finish cue.",
+        "The capture shows the top of the tall scrolling canvas. Guidance and lower controls are below this viewport, not established by this still."
+      ],
+      "concerns": []
+    },
+    {
+      "captureId": "compact-91a4d6c1-c9e3-4a7b-b2d7-a4c720d9b291",
+      "attachment": "91A4D6C1-C9E3-4A7B-B2D7-A4C720D9B291.png",
+      "attachmentName": "seed-replay-reset-to-unrestored_0_70E67E13-A224-4107-844F-7F4A3A0AE371.png",
+      "sourcePath": "/private/tmp/seed-compact-attachments/91A4D6C1-C9E3-4A7B-B2D7-A4C720D9B291.png",
+      "path": "/private/tmp/seed-compact-attachments/91A4D6C1-C9E3-4A7B-B2D7-A4C720D9B291.png",
+      "retainedPath": null,
+      "retained": false,
+      "retainedByteIdentical": false,
+      "source": "124fd21c39a71030723c0485882839e546e032a0",
+      "runtime": "dev.545382e6f6",
+      "device": "iPhone SE (3rd generation) Simulator",
+      "deviceId": "EA0F7A30-21E1-4995-93F5-C4A983F4A354",
+      "os": "iOS 27.0 (24A434)",
+      "configuration": "Debug",
+      "pixels": {
+        "width": 750,
+        "height": 1334
+      },
+      "encodedPixels": {
+        "width": 750,
+        "height": 1334
+      },
+      "displayPixels": {
+        "width": 750,
+        "height": 1334
+      },
+      "exifOrientation": 1,
+      "bytes": 1395820,
+      "sha256": "bd5e44372961a3e88feff268075c6e210f5838fcf5cf9be3a892ed9fa5fda32a",
+      "orientation": "portrait",
+      "textSize": "Default",
+      "systemReduceMotion": false,
+      "calmEffects": false,
+      "score": 0,
+      "paintingMilestonePercent": 0,
+      "screen": "Seed Moon replay at zero",
+      "testIdentifier": "SeedMoonInteractionTests/testSeedWinningClearPersistsNamedResultAndReplayStartsAtZero()",
+      "capturedAtUTC": "2026-10-19T18:20:54.268000+00:00",
+      "inspectionRun": "compact",
+      "visuallyInspected": true,
+      "inspectedBy": [
+        "bible_audit"
+      ],
+      "blockingVisualIssue": false,
+      "status": "Current",
+      "notes": [
+        "The HUD reads Seed Moon, 0% restored and 0/18. The captured restart field is empty.",
+        "The sleeping seed and split moon are visible with no shoot.",
+        "The top scroll position leaves guidance and lower controls below the viewport. The sky remains continuous, with no horizontal clipping or middle mask."
+      ],
+      "concerns": []
+    },
+    {
+      "captureId": "compact-27c6b7b4-55b4-4b41-bdd9-72435d328205",
+      "attachment": "27C6B7B4-55B4-4B41-BDD9-72435D328205.png",
+      "attachmentName": "seed-restored-after-relaunch_0_627479B5-3B1A-4BA6-835D-A3BD828CA863.png",
+      "sourcePath": "/private/tmp/seed-compact-attachments/27C6B7B4-55B4-4B41-BDD9-72435D328205.png",
+      "path": "/private/tmp/seed-compact-attachments/27C6B7B4-55B4-4B41-BDD9-72435D328205.png",
+      "retainedPath": null,
+      "retained": false,
+      "retainedByteIdentical": false,
+      "source": "124fd21c39a71030723c0485882839e546e032a0",
+      "runtime": "dev.545382e6f6",
+      "device": "iPhone SE (3rd generation) Simulator",
+      "deviceId": "EA0F7A30-21E1-4995-93F5-C4A983F4A354",
+      "os": "iOS 27.0 (24A434)",
+      "configuration": "Debug",
+      "pixels": {
+        "width": 750,
+        "height": 1334
+      },
+      "encodedPixels": {
+        "width": 750,
+        "height": 1334
+      },
+      "displayPixels": {
+        "width": 750,
+        "height": 1334
+      },
+      "exifOrientation": 1,
+      "bytes": 1154630,
+      "sha256": "bb793c17597303ba119cef7233f338f3fd0040588c9fdeab1d2fc2c458c8fad9",
+      "orientation": "portrait",
+      "textSize": "Default",
+      "systemReduceMotion": false,
+      "calmEffects": false,
+      "score": 18,
+      "paintingMilestonePercent": 100,
+      "screen": "Seed Moon saved result after relaunch",
+      "testIdentifier": "SeedMoonInteractionTests/testSeedWinningClearPersistsNamedResultAndReplayStartsAtZero()",
+      "capturedAtUTC": "2026-10-19T18:20:34.052000+00:00",
+      "inspectionRun": "compact",
+      "visuallyInspected": true,
+      "inspectedBy": [
+        "bible_audit"
+      ],
+      "blockingVisualIssue": false,
+      "status": "Current",
+      "notes": [
+        "The open luminous flower and upper leaves are clearly visible above the result heading.",
+        "The Seed Moon restored heading reflows to two readable lines. The three ceremony stars and complete 18-of-18 dialogue remain readable without horizontal clipping.",
+        "The saved result is shown at the higher initial scroll position. New sky is partly visible at the bottom and Replay is below this viewport. Separate native assertions exercise Replay after scrolling."
+      ],
+      "concerns": []
+    },
+    {
+      "captureId": "compact-0eb94f18-ea9a-458e-93b6-b03a0055a274",
+      "attachment": "0EB94F18-EA9A-458E-93B6-B03A0055A274.png",
+      "attachmentName": "seed-restored-after-native-winning-clear-normal-motion_0_ECC7B9C9-2620-4A86-B36D-35855531AAAF.png",
+      "sourcePath": "/private/tmp/seed-compact-attachments/0EB94F18-EA9A-458E-93B6-B03A0055A274.png",
+      "path": "dev-124fd21__seed-100__iphone-se3__native-win-scrolled.png",
+      "retainedPath": "docs/evidence/seed-moon-2026-10-19/dev-124fd21__seed-100__iphone-se3__native-win-scrolled.png",
+      "retained": true,
+      "retainedByteIdentical": true,
+      "source": "124fd21c39a71030723c0485882839e546e032a0",
+      "runtime": "dev.545382e6f6",
+      "device": "iPhone SE (3rd generation) Simulator",
+      "deviceId": "EA0F7A30-21E1-4995-93F5-C4A983F4A354",
+      "os": "iOS 27.0 (24A434)",
+      "configuration": "Debug",
+      "pixels": {
+        "width": 750,
+        "height": 1334
+      },
+      "encodedPixels": {
+        "width": 750,
+        "height": 1334
+      },
+      "displayPixels": {
+        "width": 750,
+        "height": 1334
+      },
+      "exifOrientation": 1,
+      "bytes": 1016782,
+      "sha256": "de09472c64ee08471ac4dd22b4c5127d5567cbeb15de2f86b0f0d97f4c97231e",
+      "orientation": "portrait",
+      "textSize": "Default",
+      "systemReduceMotion": false,
+      "calmEffects": false,
+      "score": 18,
+      "paintingMilestonePercent": 100,
+      "screen": "Seed Moon native winning result, scrolled",
+      "testIdentifier": "SeedMoonInteractionTests/testSeedWinningClearPersistsNamedResultAndReplayStartsAtZero()",
+      "capturedAtUTC": "2026-10-19T18:20:20.514000+00:00",
+      "inspectionRun": "compact",
+      "visuallyInspected": true,
+      "inspectedBy": [
+        "bible_audit"
+      ],
+      "blockingVisualIssue": false,
+      "status": "Current",
+      "notes": [
+        "The open luminous flower and upper leaves are clearly visible above the result heading.",
+        "The Seed Moon restored heading reflows to two readable lines. The three ceremony stars and complete 18-of-18 dialogue remain readable without horizontal clipping.",
+        "The result has been scrolled to show the complete New sky and Replay actions. Back to Observatory begins at the bottom edge and continues below the viewport; a scroll indicator is visible."
+      ],
+      "concerns": []
+    },
+    {
+      "captureId": "compact-7cc943d6-ff4a-4fff-9719-82d5eb2f8ac9",
+      "attachment": "7CC943D6-FF4A-4FFF-9719-82D5EB2F8AC9.png",
+      "attachmentName": "seed-before-winning-clear-normal-motion_0_D7EC6228-3BD2-485F-836E-31836DF78833.png",
+      "sourcePath": "/private/tmp/seed-compact-attachments/7CC943D6-FF4A-4FFF-9719-82D5EB2F8AC9.png",
+      "path": "/private/tmp/seed-compact-attachments/7CC943D6-FF4A-4FFF-9719-82D5EB2F8AC9.png",
+      "retainedPath": null,
+      "retained": false,
+      "retainedByteIdentical": false,
+      "source": "124fd21c39a71030723c0485882839e546e032a0",
+      "runtime": "dev.545382e6f6",
+      "device": "iPhone SE (3rd generation) Simulator",
+      "deviceId": "EA0F7A30-21E1-4995-93F5-C4A983F4A354",
+      "os": "iOS 27.0 (24A434)",
+      "configuration": "Debug",
+      "pixels": {
+        "width": 750,
+        "height": 1334
+      },
+      "encodedPixels": {
+        "width": 750,
+        "height": 1334
+      },
+      "displayPixels": {
+        "width": 750,
+        "height": 1334
+      },
+      "exifOrientation": 1,
+      "bytes": 1471678,
+      "sha256": "f87aa27e28e0540f85d2d59edd6ff0d754da74af2fcd2040b6ff5f90f8ea1766",
+      "orientation": "portrait",
+      "textSize": "Default",
+      "systemReduceMotion": false,
+      "calmEffects": false,
+      "score": 14,
+      "paintingMilestonePercent": 75,
+      "screen": "Seed Moon active challenge",
+      "testIdentifier": "SeedMoonInteractionTests/testSeedWinningClearPersistsNamedResultAndReplayStartsAtZero()",
+      "capturedAtUTC": "2026-10-19T18:20:13.244000+00:00",
+      "inspectionRun": "compact",
+      "visuallyInspected": true,
+      "inspectedBy": [
+        "bible_audit"
+      ],
+      "blockingVisualIssue": false,
+      "status": "Current",
+      "notes": [
+        "Seed Moon HUD reads 14/18 and 78% restored without horizontal clipping. Three occupied star rows remain clear below the continuous painting.",
+        "The closed gold bud and upper leaves are clearly visible above the HUD. The panel partly covers the pearl and lower foliage; root seams remain visible below.",
+        "The capture shows the top of the tall scrolling canvas. Guidance and lower controls are below this viewport, not established by this still."
+      ],
+      "concerns": []
+    }
+  ]
+}

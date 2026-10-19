@@ -23,9 +23,10 @@ import StarfallCore
                 ForEach(StarlightRestoration.Milestone.allCases, id: \.rawValue) { stage in
                     // Reached layers stay opaque beneath the next complete-image
                     // crossfade. There are no independent regions or center masks.
+                    let painting = RestorationLayout(size: geometry.size, artwork: artwork, milestone: stage)
                     Image(artwork.asset(for: stage)).resizable()
-                        .frame(width: layout.imageFrame.width, height: layout.imageFrame.height)
-                        .position(x: layout.imageFrame.midX, y: layout.imageFrame.midY)
+                        .frame(width: painting.imageFrame.width, height: painting.imageFrame.height)
+                        .position(x: painting.imageFrame.midX, y: painting.imageFrame.midY)
                         .opacity(stage.rawValue <= presentation.progress.milestone.rawValue ? 1 : 0)
                         .animation(active && !quiet ? .easeInOut(duration: StarfallTheme.Restoration.restorationDuration) : nil,
                                    value: presentation.progress.milestone)
@@ -76,6 +77,7 @@ struct RestorationArtwork {
         case .firstLight: location = "LanternLanding"
         case .ribbonCrossing: location = "RibbonCrossing"
         case .kiteHarbor: location = "KiteHarbor"
+        case .seedMoon: location = "SeedMoon"
         }
         let suffix: String
         switch composition {
@@ -86,12 +88,21 @@ struct RestorationArtwork {
         return location + suffix + String(format: "%03d", milestone.rawValue)
     }
 
-    var sourceSize: CGSize {
-        // Registered pixel dimensions shared by each location’s device family.
+    /// Light and focal registration use the completed painting as their reference.
+    var sourceSize: CGSize { sourceSize(for: .complete) }
+
+    func sourceSize(for milestone: StarlightRestoration.Milestone) -> CGSize {
+        // Register generated pixels exactly; fitting never resamples the source files.
+        if challenge == .seedMoon && composition == .tabletLandscape {
+            switch milestone {
+            case .unrestored, .quarter, .half: return CGSize(width: 1446, height: 1087)
+            case .threeQuarters, .complete: return CGSize(width: 1447, height: 1087)
+            }
+        }
         switch composition {
-        case .phone: CGSize(width: 887, height: 1774)
-        case .tabletPortrait: CGSize(width: 1086, height: 1448)
-        case .tabletLandscape: CGSize(width: 1448, height: 1086)
+        case .phone: return CGSize(width: 887, height: 1774)
+        case .tabletPortrait: return CGSize(width: 1086, height: 1448)
+        case .tabletLandscape: return CGSize(width: 1448, height: 1086)
         }
     }
 
@@ -115,6 +126,14 @@ struct RestorationArtwork {
             case .phone: center = CGPoint(x: 0.326, y: 0.064); width = 0.045
             case .tabletPortrait: center = CGPoint(x: 0.254, y: 0.133); width = 0.045
             case .tabletLandscape: center = CGPoint(x: 0.092, y: 0.115); width = 0.03
+            }
+        case .seedMoon:
+            // The fixed seed/root receives light before the canopy grows. The
+            // portrait tablet uses its root seam below the native header.
+            switch composition {
+            case .phone: center = CGPoint(x: 0.301, y: 0.214); width = 0.045
+            case .tabletPortrait: center = CGPoint(x: 0.160, y: 0.214); width = 0.024
+            case .tabletLandscape: center = CGPoint(x: 0.170, y: 0.355); width = 0.03
             }
         }
         let height = width * sourceSize.width / sourceSize.height
@@ -146,6 +165,13 @@ struct RestorationArtwork {
             case .tabletPortrait: return CGRect(x: 0.10, y: 0.015, width: 0.24, height: 0.23)
             case .tabletLandscape: return CGRect(x: 0.035, y: 0.025, width: 0.18, height: 0.28)
             }
+        case .seedMoon:
+            // Protect the canopy and its seed recipient through the result handoff.
+            switch composition {
+            case .phone: return CGRect(x: 0.06, y: 0.03, width: 0.48, height: 0.20)
+            case .tabletPortrait: return CGRect(x: 0.085, y: 0.02, width: 0.215, height: 0.22)
+            case .tabletLandscape: return CGRect(x: 0.05, y: 0.11, width: 0.245, height: 0.275)
+            }
         }
     }
 
@@ -156,9 +182,18 @@ struct RestorationArtwork {
 struct RestorationLayout {
     let size: CGSize
     let artwork: RestorationArtwork
+    let milestone: StarlightRestoration.Milestone
+
+    /// The default completed-state transform owns the persistent light/scenery
+    /// anchors. Each painting can select its own pixels without moving those anchors.
+    init(size: CGSize, artwork: RestorationArtwork, milestone: StarlightRestoration.Milestone = .complete) {
+        self.size = size
+        self.artwork = artwork
+        self.milestone = milestone
+    }
 
     var imageFrame: CGRect {
-        let source = artwork.sourceSize
+        let source = artwork.sourceSize(for: milestone)
         let scale = max(size.width / source.width, size.height / source.height)
         let image = CGSize(width: source.width * scale, height: source.height * scale)
         let focal = artwork.normalizedFocal

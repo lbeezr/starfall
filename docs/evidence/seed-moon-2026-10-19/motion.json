@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "date": "2026-10-19",
+  "source": "b77a1003f5d22b9da67d5d4c54f3515481d45ea3",
+  "runtime": "dev.545382e6f6",
+  "device": "iPhone 17e",
+  "os": "iOS 27.0 (24A434)",
+  "configuration": "Debug",
+  "systemReduceMotion": false,
+  "calmEffects": false,
+  "scenario": "Seed Moon score14 paused; normal 3-star native clear commits +4 and reaches18. Actual Crystal Glow cast and ordinary result.",
+  "input": "Fresh native element reference, explicit touch down/up with 0.12s contact.",
+  "video": {
+    "temporaryPath": "/private/tmp/seed-win-b77a100-touch.mp4",
+    "bytes": 1895921,
+    "sha256": "7bd5a8c16c864817528839d1fa2b71112948fbf0aa7a14aac96531789570aa1f",
+    "requestedCaptureFPS": 30
+  },
+  "observations": [
+    {
+      "seconds": "0–1",
+      "observed": "14/18 and closed golden bud remain stable."
+    },
+    {
+      "seconds": 1.25,
+      "observed": "Selection rays begin around the touched star group."
+    },
+    {
+      "seconds": 1.5,
+      "observed": "Score commits18/18, +4 award appears and three gold packets rise from the cleared group."
+    },
+    {
+      "seconds": 1.75,
+      "observed": "Packets arrive at visible pearl seed; whole-painting transition begins."
+    },
+    {
+      "seconds": 2,
+      "observed": "Packets finish, stars settle and open canopy becomes stronger."
+    },
+    {
+      "seconds": 2.25,
+      "observed": "Ordinary named result appears beneath open flower canopy with celebration cast."
+    },
+    {
+      "seconds": "2.5–4.5",
+      "observed": "Result settles with readable replay, new-sky and Observatory actions."
+    }
+  ],
+  "visualReview": "Root inspected decoded frames at0,0.5,1,1.25,1.5,1.75,2,2.25,2.5,2.75,3,3.5,4.5seconds. No extra traveler animation; transient old/new bud overlap is the existing whole-painting crossfade.",
+  "manualDriverIssue": {
+    "observed": "MCP tap reported success without changing state twice on Next shower and twice on finishing cell; each bounded10s predicate timed out. Explicit120ms touch at the same observed native controls committed both actions.",
+    "rootCause": "Not established; no runtime change was made on the basis of this driver observation.",
+    "nativeCheck": "XCTest normal win tests and testSeedDenseOverflowKeepsNamedReplayAndRestartsAtZero passed. Overflow test fails on any unchanged state, with no blanket retry.",
+    "unsuccessfulTemporaryVideos": [
+      "/private/tmp/seed-win-b77a100-attempt1.mp4",
+      "/private/tmp/seed-win-b77a100.mp4"
+    ]
+  },
+  "limits": [
+    "Frame inspection demonstrates observed transfer/restoration/result sequence, not a frame-rate benchmark.",
+    "No audio or physical-device motion acceptance.",
+    "Raw video and decoded frames are disposable temporary evidence; this manifest retains the source and hash."
+  ]
+}

@@ -3,13 +3,14 @@ import StarfallCore
 
 /// An uncommitted choice. Browsing Entry never constructs or saves a replacement game.
 enum SkyEntryRequest: Equatable, CaseIterable {
-    case initial, fresh, replay, firstLight, ribbonCrossing, kiteHarbor
+    case initial, fresh, replay, firstLight, ribbonCrossing, kiteHarbor, seedMoon
 
     func selectedChallenge(replaying challenge: StarfallChallenge?) -> StarfallChallenge? {
         switch self {
         case .firstLight: .firstLight
         case .ribbonCrossing: .ribbonCrossing
         case .kiteHarbor: .kiteHarbor
+        case .seedMoon: .seedMoon
         case .replay: challenge
         case .initial, .fresh: nil
         }
@@ -52,6 +53,7 @@ struct SkyFlowState: Equatable {
         case .firstLight: return stageChallenge(.firstLight)
         case .ribbonCrossing: return stageChallenge(.ribbonCrossing)
         case .kiteHarbor: return stageChallenge(.kiteHarbor)
+        case .seedMoon: return stageChallenge(.seedMoon)
         case .replay, .another:
             guard screen == .playing || screen == .won || screen == .full else { return nil }
             return stage(action == .replay ? .replay : .fresh)

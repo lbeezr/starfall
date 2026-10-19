@@ -24,6 +24,7 @@ extension StarfallChallenge {
         case .firstLight: .firstLight
         case .ribbonCrossing: .ribbonCrossing
         case .kiteHarbor: .kiteHarbor
+        case .seedMoon: .seedMoon
         }
     }
     var dialoguePrefix: String {
@@ -31,6 +32,7 @@ extension StarfallChallenge {
         case .firstLight: "first-light"
         case .ribbonCrossing: "ribbon-crossing"
         case .kiteHarbor: "kite-harbor"
+        case .seedMoon: "seed-moon"
         }
     }
     var wonGuideID: String {
@@ -38,6 +40,7 @@ extension StarfallChallenge {
         case .firstLight: "guide.won"
         case .ribbonCrossing: "guide.ribbon-won"
         case .kiteHarbor: "guide.kite-won"
+        case .seedMoon: "guide.seed-won"
         }
     }
     var welcomeIdentifier: String {
@@ -45,6 +48,7 @@ extension StarfallChallenge {
         case .firstLight: "sky.firstLight"
         case .ribbonCrossing: "sky.ribbon-crossing"
         case .kiteHarbor: "sky.kite-harbor"
+        case .seedMoon: "sky.seed-moon"
         }
     }
     var menuIdentifier: String {
@@ -52,6 +56,7 @@ extension StarfallChallenge {
         case .firstLight: "experiment.challenge"
         case .ribbonCrossing: "experiment.ribbon-crossing"
         case .kiteHarbor: "experiment.kite-harbor"
+        case .seedMoon: "experiment.seed-moon"
         }
     }
     var restorationIdentifier: String {
@@ -59,6 +64,7 @@ extension StarfallChallenge {
         case .firstLight: "lantern.restoration"
         case .ribbonCrossing: "ribbon.restoration"
         case .kiteHarbor: "kite.restoration"
+        case .seedMoon: "seed.restoration"
         }
     }
     #if DEBUG
@@ -67,34 +73,36 @@ extension StarfallChallenge {
         case .firstLight: "--lantern-restoration-review="
         case .ribbonCrossing: "--ribbon-restoration-review="
         case .kiteHarbor: "--kite-restoration-review="
+        case .seedMoon: "--seed-restoration-review="
         }
     }
     #endif
 
-    var locationTitle: String { copy(.lanternTitle, .ribbonTitle, .kiteTitle) }
-    var welcomeTitle: String { copy(.welcomeChallenge, .ribbonTitle, .kiteTitle) }
-    var actionLabel: String { copy(.actionFirstLight, .actionRibbonCrossing, .actionKiteHarbor) }
-    var replayLabel: String { copy(.actionReplayFirstLight, .actionReplayRibbonCrossing, .actionReplayKiteHarbor) }
-    var menuLabel: String { copy(.menuFirstLight, .menuRibbonCrossing, .menuKiteHarbor) }
-    var menuHint: String { copy(.menuFirstLightHint, .menuRibbonCrossingHint, .menuKiteHarborHint) }
-    var entryKicker: String { copy(.flowFirstLight, .flowRibbonCrossing, .flowKiteHarbor) }
-    var completionKicker: String { copy(.flowComplete, .flowRibbonComplete, .flowKiteComplete) }
-    var restoredTitle: String { copy(.flowWon, .flowRibbonWon, .flowKiteWon) }
-    var resultReason: String { copy(.resultWon, .resultRibbonWon, .resultKiteWon) }
-    var helpTitle: String { copy(.helpChallengeTitle, .helpRibbonTitle, .helpKiteTitle) }
-    var helpText: String { copy(.helpChallenge, .helpRibbon, .helpKite) }
+    var locationTitle: String { copy(.lanternTitle, .ribbonTitle, .kiteTitle, .seedTitle) }
+    var welcomeTitle: String { copy(.welcomeChallenge, .ribbonTitle, .kiteTitle, .seedTitle) }
+    var actionLabel: String { copy(.actionFirstLight, .actionRibbonCrossing, .actionKiteHarbor, .actionSeedMoon) }
+    var replayLabel: String { copy(.actionReplayFirstLight, .actionReplayRibbonCrossing, .actionReplayKiteHarbor, .actionReplaySeedMoon) }
+    var menuLabel: String { copy(.menuFirstLight, .menuRibbonCrossing, .menuKiteHarbor, .menuSeedMoon) }
+    var menuHint: String { copy(.menuFirstLightHint, .menuRibbonCrossingHint, .menuKiteHarborHint, .menuSeedMoonHint) }
+    var entryKicker: String { copy(.flowFirstLight, .flowRibbonCrossing, .flowKiteHarbor, .flowSeedMoon) }
+    var completionKicker: String { copy(.flowComplete, .flowRibbonComplete, .flowKiteComplete, .flowSeedComplete) }
+    var restoredTitle: String { copy(.flowWon, .flowRibbonWon, .flowKiteWon, .flowSeedWon) }
+    var resultReason: String { copy(.resultWon, .resultRibbonWon, .resultKiteWon, .resultSeedWon) }
+    var helpTitle: String { copy(.helpChallengeTitle, .helpRibbonTitle, .helpKiteTitle, .helpSeedTitle) }
+    var helpText: String { copy(.helpChallenge, .helpRibbon, .helpKite, .helpSeed) }
 
     func restorationLabel(progress: StarlightRestoration) -> String {
-        copy(.lanternRestoration, .ribbonRestoration, .kiteRestoration,
+        copy(.lanternRestoration, .ribbonRestoration, .kiteRestoration, .seedRestoration,
              values: ["percent": String(Int((progress.fraction * 100).rounded()))])
     }
 
-    private func copy(_ firstLight: SkyCopy.Key, _ ribbonCrossing: SkyCopy.Key, _ kiteHarbor: SkyCopy.Key, values: [String: String] = [:]) -> String {
+    private func copy(_ firstLight: SkyCopy.Key, _ ribbonCrossing: SkyCopy.Key, _ kiteHarbor: SkyCopy.Key, _ seedMoon: SkyCopy.Key, values: [String: String] = [:]) -> String {
         let key: SkyCopy.Key
         switch self {
         case .firstLight: key = firstLight
         case .ribbonCrossing: key = ribbonCrossing
         case .kiteHarbor: key = kiteHarbor
+        case .seedMoon: key = seedMoon
         }
         return SkyCopy.text(key, values: values)
     }
