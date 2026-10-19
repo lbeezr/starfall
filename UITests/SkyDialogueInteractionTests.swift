@@ -27,6 +27,10 @@ final class SkyDialogueInteractionTests: XCTestCase {
         XCTAssertEqual(app.buttons["experiment.pause"].label, "Resume sky")
     }
     @MainActor private func reveal(_ element: XCUIElement, in app: XCUIApplication, up: Bool = true) {
+        if app.buttons["experiment.cell.0.0"].exists {
+            app.revealSkyControls([element])
+            return
+        }
         for _ in 0..<6 where !element.isHittable { if up { app.swipeUp() } else { app.swipeDown() } }
         XCTAssertTrue(element.isHittable)
     }
@@ -38,7 +42,12 @@ final class SkyDialogueInteractionTests: XCTestCase {
             let top = app.navigationBars.firstMatch.exists ? app.navigationBars.firstMatch.frame.maxY : app.frame.minY
             return !frame.isEmpty && frame.minY >= top && frame.maxY <= app.frame.maxY
         }
-        for _ in 0..<6 where !visible() { app.swipeUp() }
+        if app.buttons["experiment.cell.0.0"].exists {
+            // A center-screen swipe can be consumed as a game gesture.
+            app.revealSkyControls([text])
+        } else {
+            for _ in 0..<6 where !visible() { app.swipeUp() }
+        }
         XCTAssertTrue(visible(), "The complete noninteractive message must fit in the visible viewport")
     }
 

@@ -15,6 +15,9 @@ final class SkyLessonInteractionTests: XCTestCase {
     @MainActor private func press(_ app: XCUIApplication, _ id: String) {
         let button = app.buttons[id]
         for _ in 0..<8 where !button.isHittable { app.swipeUp() }
+        // A partly exposed lazy row can be hittable while its tap lands outside
+        // the visible sheet. Bring the whole target into the viewport first.
+        app.revealSkyControls([button])
         XCTAssertTrue(button.isHittable); XCTAssertTrue(button.isEnabled)
         // Accessibility frames subtract floating-point coordinates; preserve the 44-point requirement.
         XCTAssertGreaterThanOrEqual(button.frame.height,44 - 1e-9, id)
@@ -29,7 +32,11 @@ final class SkyLessonInteractionTests: XCTestCase {
         for (lesson, gains) in [("square",[0,4]),("cross",[5]),("opal",[3]),("relay",[4,8])] {
             press(app,"lesson.open."+lesson)
             XCTAssertEqual(app.staticTexts["lesson.score"].label,"0 starlight in this example")
-            XCTAssertTrue(app.buttons["experiment.done"].isHittable)
+            // Lesson content can register before its animated navigation toolbar
+            // accepts input. Wait for that readiness without suppressing motion.
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+                app.buttons["experiment.done"].isHittable
+            }, object: nil).wait(timeout: 5))
             capture(lesson+"-before")
             for score in gains {
                 press(app,"lesson.advance")

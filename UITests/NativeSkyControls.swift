@@ -1,6 +1,19 @@
 import XCTest
 
 extension XCUIApplication {
+    /// Sample faster than the quiet forecast's one-second display cadence.
+    /// Query membership avoids stale-element retries while the label changes.
+    @MainActor func waitForApproachingShower(timeout: TimeInterval, file: StaticString = #filePath, line: UInt = #line) {
+        let approaching = descendants(matching: .any).matching(NSPredicate(
+            format: "identifier == %@ AND label == %@", "experiment.arrivalCue", "Shower approaching"))
+        let deadline = ContinuousClock.now + .seconds(timeout)
+        repeat {
+            if approaching.count == 1 { return }
+            RunLoop.current.run(until: Date().addingTimeInterval(0.1))
+        } while ContinuousClock.now < deadline
+        XCTFail("The approaching forecast did not appear within \(timeout) seconds", file: file, line: line)
+    }
+
     /// Physical input needs visible targets. Scroll through the non-playing edge so
     /// revealing a control cannot be interpreted as a swap or held constellation.
     @MainActor func revealSkyControls(_ controls: [XCUIElement], file: StaticString = #filePath, line: UInt = #line) {
