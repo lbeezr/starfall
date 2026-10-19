@@ -70,29 +70,16 @@ final class SkyTechniqueStoreTests: XCTestCase {
         XCTAssertFalse(store.isTechniqueFixture);XCTAssertEqual(store.game.generation,.current)
         XCTAssertTrue(store.game.isValidSave);XCTAssertNotNil(defaults.data(forKey:SkySaveArchive.key))
     }
-    func testSwapDwellCannotRearmAfterLeavingRowOrCrossingTwoColumns() {
-        let mapping=ObservatoryGeometry(size:.init(width:390,height:844)),origin=mapping.viewPoint(Cell(1,2))
-        var dwell=SkySwapDwell()
-        dwell.visit(origin:origin,point:mapping.viewPoint(Cell(1,1)),mapping:mapping)
-        XCTAssertEqual(dwell.target,Cell(1,1))
-        dwell.visit(origin:origin,point:origin,mapping:mapping);XCTAssertNil(dwell.target)
-        dwell.visit(origin:origin,point:mapping.viewPoint(Cell(1,1)),mapping:mapping)
-        XCTAssertEqual(dwell.target,Cell(1,1))
-        dwell.visit(origin:origin,point:mapping.viewPoint(Cell(2,1)),mapping:mapping)
-        dwell.visit(origin:origin,point:mapping.viewPoint(Cell(1,1)),mapping:mapping)
-        XCTAssertFalse(dwell.eligible);XCTAssertNil(dwell.target)
-        dwell=SkySwapDwell()
-        dwell.visit(origin:origin,point:mapping.viewPoint(Cell(1,4)),mapping:mapping)
-        dwell.visit(origin:origin,point:mapping.viewPoint(Cell(1,3)),mapping:mapping)
-        XCTAssertFalse(dwell.eligible);XCTAssertNil(dwell.target)
-        for departure in [origin,mapping.viewPoint(Cell(2,3)),mapping.viewPoint(Cell(1,4))] {
-            dwell=SkySwapDwell()
-            dwell.visit(origin:origin,point:mapping.viewPoint(Cell(1,3)),mapping:mapping)
-            dwell.arm();dwell.visit(origin:origin,point:departure,mapping:mapping)
-            dwell.visit(origin:origin,point:mapping.viewPoint(Cell(1,3)),mapping:mapping)
-            XCTAssertFalse(dwell.eligible,"Leaving an armed target cannot rearm on return")
-            XCTAssertNil(dwell.target)
-        }
+    @MainActor func testVerticalExchangeOwnsOneColumnAndRejectsAnotherBeforeCompletion() throws {
+        let (store,presenter,_,_) = fixture("nudge")
+        let before = store.game, first = try XCTUnwrap(before.gem(at:Cell(0,2)))
+        XCTAssertTrue(store.performTechnique(.nudge(Cell(0,2),Cell(1,2)),snapshot:before,generation:store.constellationInputGeneration))
+        XCTAssertEqual(store.game.gem(at:Cell(1,2))?.id,first.id)
+        XCTAssertEqual(store.changingColumns,[2])
+        XCTAssertFalse(store.performTechnique(.nudge(Cell(1,2),Cell(0,2)),snapshot:store.game,generation:store.constellationInputGeneration))
+        presenter.finish()
+        XCTAssertTrue(store.performTechnique(.nudge(Cell(1,2),Cell(0,2)),snapshot:store.game,generation:store.constellationInputGeneration))
+        XCTAssertEqual(store.game,before)
     }
     @MainActor func testIndependentExchangesKeepCurrentColumnOwnershipAndCompletionOrder() {
         let (store,presenter,_,_)=fixture("nudge")
@@ -204,18 +191,55 @@ final class SkyTechniqueStoreTests: XCTestCase {
         }
     }
 
-    @MainActor func testDirectSwapTargetsCannotSurviveCancelOrReconciliation() {
-        let game = SkyTechniqueExample.nudge.game(), intent = SkyTechniqueIntent()
-        intent.armSwap(Cell(1,2),to:Cell(1,1),game:game,generation:5)
-        XCTAssertTrue(intent.swapping)
-        XCTAssertEqual(intent.preview, [Cell(1,2), Cell(1,1)])
-        intent.cancel()
-        XCTAssertFalse(intent.swapping); XCTAssertNil(intent.snapshot)
-        XCTAssertNil(intent.anchor); XCTAssertNil(intent.swapDestination)
-        intent.armSwap(Cell(1,2),to:Cell(1,1),game:game,generation:6)
-        intent.reconcile(with:game)
-        XCTAssertFalse(intent.swapping); XCTAssertTrue(intent.preview.isEmpty)
-        intent.armSwap(Cell(1,2),to:Cell(3,1),game:game,generation:7)
-        XCTAssertNil(intent.snapshot, "An invalid destination cannot leave an armed swap")
+    @MainActor func testHeldSwapCommitsAndRetiresTheContactBeforeRelease() throws {
+        let (store,presenter,_,_) = fixture("trace")
+        let before = store.game
+        let hold = try XCTUnwrap(store.beginConstellationHold(at:Cell(0,0)))
+        XCTAssertTrue(store.performTechnique(.nudge(Cell(0,0),Cell(0,1)),snapshot:before,generation:store.constellationInputGeneration))
+        XCTAssertEqual(store.game.gem(at:Cell(0,1))?.id,before.gem(at:Cell(0,0))?.id)
+        XCTAssertFalse(store.constellationTracing, "Committed presentation invalidates the held input ticket")
+        let committed = store.game
+        store.endConstellationHold(hold)
+        presenter.finish()
+        XCTAssertEqual(store.game,committed)
+    }
+}
+
+extension SkyTechniqueStoreTests {
+    @MainActor func testUpwardEmptyExchangeAnimatesEvenWhenGravityReturnsToOrigin() async throws {
+        XCTAssertFalse(UIAccessibility.isReduceMotionEnabled)
+        let view = SKView(frame:.init(x:0,y:0,width:390,height:844))
+        let owner = try XCTUnwrap(UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.first)
+        let prior = owner.windows.first(where: \.isKeyWindow), window = UIWindow(windowScene:owner)
+        let controller = UIViewController(); controller.view = view; window.rootViewController = controller
+        window.frame = view.frame; window.makeKeyAndVisible()
+        let scene = FallingSkyScene(size:view.bounds.size); view.presentScene(scene)
+        defer { view.presentScene(nil); window.isHidden = true; prior?.makeKey() }
+        let before = SkyTechniqueExample.trace.game(); var after = before
+        let turn = try XCTUnwrap(after.nudge(from:Cell(0,0),to:Cell(1,0)))
+        XCTAssertEqual(before,after)
+        let id = try XCTUnwrap(before.gem(at:Cell(0,0))?.id)
+        let origin = ObservatoryGeometry(size:scene.size).scenePoint(Cell(0,0))
+        scene.render(before)
+        var ready = false
+        scene.run(.run { ready = true }, withKey:"test.host-ready")
+        let firstFrame = ContinuousClock.now + .seconds(2)
+        while !ready && ContinuousClock.now < firstFrame { try await Task.sleep(for:.milliseconds(10)) }
+        XCTAssertTrue(ready)
+        var completed = false, rose = false
+        scene.animate(turn,from:before,to:after) { completed = true }
+        let deadline = ContinuousClock.now + .seconds(3)
+        while !completed && ContinuousClock.now < deadline {
+            if let node = scene.childNode(withName:"//sky.star.\(id)") { rose = rose || node.position.y > origin.y + 4 }
+            try await Task.sleep(for:.milliseconds(10))
+        }
+        XCTAssertTrue(completed); XCTAssertTrue(rose,"A real upward motion must be visible before falling back")
+        XCTAssertEqual(try XCTUnwrap(scene.childNode(withName:"//sky.star.\(id)")).position.y,origin.y,accuracy:0.001)
+        scene.reduceMotion = true; scene.render(before); completed = false
+        scene.animate(turn,from:before,to:after) { completed = true }
+        XCTAssertEqual(try XCTUnwrap(scene.childNode(withName:"//sky.star.\(id)")).position.y,origin.y,accuracy:0.001)
+        let quietDeadline = ContinuousClock.now + .seconds(2)
+        while !completed && ContinuousClock.now < quietDeadline { try await Task.sleep(for:.milliseconds(10)) }
+        XCTAssertTrue(completed)
     }
 }

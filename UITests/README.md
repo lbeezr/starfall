@@ -36,15 +36,15 @@ Forecast tests assert the actual 148×50 contour on calibrated simulators and th
 
 `GravityOpportunityNativeTests` follows the candidate's naturally reached seventh-wave pair through manual arrivals, collision and rotation, then compares eight- versus seven-light two-clear outcomes. Its second flow includes largest text, settings/background and retained restore. Debug fixtures require the explicit reset argument and use the normal app identity.
 
-`ResponsiveInputUITests` exercises an actual 8-point ordinary drift at normal/largest text and readable incomplete-trace feedback, using existing reset-only routes and isolated dialogue-review saves.
+`ResponsiveInputUITests` exercises an actual 7-point ordinary drift at normal/largest text and readable incomplete-trace feedback, using existing reset-only routes and isolated dialogue-review saves.
 
 Paused clear-feedback checks wait for the exact result text after score commitment, matching the presentation-owned dialogue boundary. Restore requires the complete restore message and Resume sky semantics; the strict approaching-cue expectation remains unchanged pending its older-runner investigation.
 
 `DuskInteractionTests` uses reset-only fixtures in the normal app to verify five feeds, early color release, valid zero-reward clears, settings/background/restore, and readable largest-text Reduce Motion outcomes.
 
-`SkyTechniqueInteractionTests` exercises mode-free recipe taps and relays, direct swipe-and-hold exchanges and empty-space falls, selected tracing, and gesture readiness after settings/background interruption. Hosted recipe-path tests cover exact square/cross selection; native constellation tests cover largest-text tracing. Full animation and actual VoiceOver evidence remain separate.
+`SkyTechniqueInteractionTests` exercises mode-free recipe taps and relays, immediate four-direction exchanges and empty-space falls, selected tracing, and gesture readiness after settings/background interruption. Hosted recipe-path tests cover exact square/cross selection; native constellation tests cover largest-text tracing. Full animation and actual VoiceOver evidence remain separate.
 
-The responsive-input regression uses 16-point ordinary drift at normal/largest text. Selected-five native drawing includes a fast swipe beginning at the target rim; partial/outside traces must still cancel without ordinary-clear fallback.
+The responsive-input regression uses 7-point ordinary drift at normal/largest text. Selected-five native drawing includes a hold then fast stroke beginning at the target rim; partial/outside traces must still cancel without ordinary-clear fallback.
 
 `CriticalMassInteractionTests` exercises the reset-only age-eight review history: native rescue, warned collapse, settings/background/restore and largest-text calm help. It uses isolated dialogue-review defaults, not player saves.
 

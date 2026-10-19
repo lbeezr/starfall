@@ -136,26 +136,22 @@ final class ResponsiveInputTests: XCTestCase {
         XCTAssertEqual(store.game, committed)
     }
 
-    @MainActor func testDriftingOrdinaryTouchIsAnchoredAndNeverBecomesAnUnavailableTrace() {
-        let mapping = ObservatoryGeometry(size: CGSize(width: 390, height: 844))
+    @MainActor func testNonSwappingTouchKeepsTapToleranceWithoutDrawingFallback() {
+        let mapping = ObservatoryGeometry(size:CGSize(width:390,height:844))
         let cell = Cell(0,0), origin = mapping.viewPoint(cell)
         for distance in [0,4,7,8,12,18] as [CGFloat] {
             var session = ConstellationTouchSession()
-            XCTAssertTrue(session.begin(at: origin, traceEligible: false))
-            let end = CGPoint(x: origin.x+distance, y: origin.y)
-            XCTAssertFalse(session.move(to: end))
-            XCTAssertEqual(session.finish(at: end, mapping: mapping), .tap(cell))
-            XCTAssertEqual(session.finish(at: end, mapping: mapping), .cancel)
+            XCTAssertTrue(session.begin(at:origin,traceEligible:false))
+            let end = CGPoint(x:origin.x+distance,y:origin.y)
+            XCTAssertEqual(session.move(to:end,mapping:mapping),.none)
+            XCTAssertEqual(session.finish(at:end,mapping:mapping),.tap(cell))
+            XCTAssertEqual(session.finish(at:end,mapping:mapping),.cancel)
         }
         var session = ConstellationTouchSession()
-        XCTAssertTrue(session.begin(at: origin, traceEligible: false))
-        XCTAssertFalse(session.move(to: CGPoint(x: origin.x+20, y: origin.y)))
-        XCTAssertTrue(session.canceled)
-        XCTAssertEqual(session.finish(at: origin, mapping: mapping), .cancel)
-        XCTAssertTrue(session.begin(at: origin))
-        XCTAssertTrue(session.move(to: CGPoint(x: origin.x+8, y: origin.y)))
-        XCTAssertTrue(session.move(to: CGPoint(x: origin.x+12, y: origin.y)))
-        XCTAssertEqual(session.finish(at: origin, mapping: mapping), .tap(cell))
+        XCTAssertTrue(session.begin(at:origin,traceEligible:false))
+        XCTAssertEqual(session.move(to:CGPoint(x:origin.x+20,y:origin.y),mapping:mapping),.cancel)
+        XCTAssertFalse(session.armTrace(ticket:session.sequence))
+        XCTAssertEqual(session.finish(at:origin,mapping:mapping),.none)
     }
 
     @MainActor func testReadyContactDuringAnotherClearFreezesRainAndRejectsStaleRelease() throws {

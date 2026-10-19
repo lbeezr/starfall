@@ -29,3 +29,5 @@ Gravity specials are retired from normal play. `SkyGeneration.standardSky` suppl
 `CriticalMassTests` covers birth/buried/Opal aging, warning windows, rescue/exchange, isolated and overlapping simultaneous collapses, no chains, before-arrival headroom, accounting, invalid ages and seeded policy/replay compatibility.
 
 `ConstellationGapCoreTests` covers one/repeated empty midpoints, blockers, Opal family anchoring and committed replay.
+
+`StarRecipeTests` checks all four exchange directions, same-family identity preservation, empty-space gravity and deterministic restored continuation. `CriticalMassTests` verifies vertical same-family exchanges retain each star’s distinct age.

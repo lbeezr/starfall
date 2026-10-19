@@ -15,11 +15,12 @@ final class StarRecipeTests: XCTestCase {
         return FallingSky(board: board, incoming: [.init(id: 100, kind: .rose, column: 6)])
     }
 
-    func testConstellationStartsShareFiveStarAndSquareEligibility() {
+    func testConstellationCanStartOnAnyColoredStarWhileCompletionStillNeedsFiveOrSquare() {
         let five = sky(["AAAAA.."]), square = sky(["AA.....","AA....."])
         XCTAssertTrue(five.canStartConstellation(at: Cell(0,0)))
         XCTAssertTrue(square.canStartConstellation(at: Cell(0,0)))
-        XCTAssertFalse(sky(["AAA...."]).canStartConstellation(at: Cell(0,0)))
+        XCTAssertTrue(sky(["AAA...."]).canStartConstellation(at: Cell(0,0)))
+        XCTAssertNil(sky(["AAA...."]).constellationCells(along:[Cell(0,0),Cell(0,1),Cell(0,2)]))
         XCTAssertFalse(square.canStartConstellation(at: Cell(6,6)))
         var board = square.board
         board[0] = .init(id:0,kind:nil,light:true)
@@ -76,12 +77,12 @@ final class StarRecipeTests: XCTestCase {
         XCTAssertEqual(Set(game.board.compactMap { $0?.id }), Set(before.board.compactMap { $0?.id }))
     }
 
-    func testEmptySpaceNudgeDropsAndRejectsInvalidOrMeaninglessMoves() {
+    func testEmptySpaceNudgeDropsAndRejectsInvalidMoves() {
         var game = sky(["..AA...", "..S....", "..A...."])
         let top = game.gem(at: Cell(2,2))
         XCTAssertNotNil(game.nudge(from: Cell(2,2), to: Cell(2,1)))
         XCTAssertEqual(game.gem(at: Cell(0,1)), top)
-        for pair in [(Cell(0,2),Cell(0,3)),(Cell(0,0),Cell(0,1)),(Cell(-1,1),Cell(-1,2)),(Cell(0,2),Cell(1,2)),(Cell(0,2),Cell(0,7))] {
+        for pair in [(Cell(0,2),Cell(1,3)),(Cell(0,0),Cell(0,1)),(Cell(-1,1),Cell(-1,2)),(Cell(0,2),Cell(-1,2)),(Cell(0,2),Cell(0,7)),(Cell(0,2),Cell(7,2))] {
             let old = game
             XCTAssertNil(game.nudge(from: pair.0, to: pair.1)); XCTAssertEqual(game, old)
         }
@@ -276,5 +277,38 @@ extension StarRecipeTests {
         XCTAssertFalse(moved.isDrained(at:Cell(0,1)))
         XCTAssertEqual(moved.score,0);XCTAssertEqual(moved.lostStarlight,0)
         XCTAssertEqual(moved.incoming,base.incoming)
+    }
+}
+
+
+extension StarRecipeTests {
+    func testFourDirectionExchangesPreserveIdentityAndNeverAutoClear() throws {
+        let authored = sky(["AAAAAAA","ASAPAAA","AAAAAAA"])
+        var saved = try XCTUnwrap(JSONSerialization.jsonObject(with:JSONEncoder().encode(authored)) as? [String:Any])
+        saved["turns"] = 10
+        let before = try JSONDecoder().decode(FallingSky.self,from:JSONSerialization.data(withJSONObject:saved))
+        XCTAssertTrue(before.isValidSave)
+        for to in [Cell(1,1),Cell(1,3),Cell(0,2),Cell(2,2)] {
+            var game = before
+            let source = try XCTUnwrap(game.gem(at:Cell(1,2)))
+            let target = try XCTUnwrap(game.gem(at:to))
+            let turn = try XCTUnwrap(game.nudge(from:Cell(1,2),to:to))
+            XCTAssertEqual(game.gem(at:to),source)
+            XCTAssertEqual(game.gem(at:Cell(1,2)),target)
+            XCTAssertTrue(turn.cleared.isEmpty); XCTAssertEqual(game.score,before.score)
+            XCTAssertEqual(game.incoming,before.incoming); XCTAssertEqual(game.turns,before.turns)
+            XCTAssertTrue(game.isValidSave)
+            var restored = try JSONDecoder().decode(FallingSky.self,from:JSONEncoder().encode(game))
+            game.letStarsFall(); restored.letStarsFall()
+            XCTAssertEqual(restored,game)
+        }
+    }
+
+    func testUpIntoEmptySpaceFallsBackButStillReportsExchange() throws {
+        var game = sky(["A......"])
+        let before = game
+        let turn = try XCTUnwrap(game.nudge(from:Cell(0,0),to:Cell(1,0)))
+        XCTAssertNotNil(turn.exchange)
+        XCTAssertEqual(game,before, "Gravity remains authoritative after the upward move")
     }
 }

@@ -16,7 +16,7 @@ final class ConstellationTraceNativeTests: XCTestCase {
     @MainActor private func drag(_ app:XCUIApplication,from:(Int,Int),to:(Int,Int)) {
         let start=app.buttons["experiment.cell.\(from.0).\(from.1)"].coordinate(withNormalizedOffset:CGVector(dx:0.5,dy:0.5))
         let end=app.buttons["experiment.cell.\(to.0).\(to.1)"].coordinate(withNormalizedOffset:CGVector(dx:0.5,dy:0.5))
-        start.press(forDuration:0.1,thenDragTo:end,withVelocity:.slow,thenHoldForDuration:0.1)
+        start.press(forDuration:0.4,thenDragTo:end,withVelocity:.slow,thenHoldForDuration:0.1)
     }
     @MainActor func testNativeSwipeClearsChosenFiveAndLeavesSixth() {
         let app=launch();defer {app.terminate()}
@@ -24,7 +24,7 @@ final class ConstellationTraceNativeTests: XCTestCase {
         // Begin near the native target's rim, outside the old inset start circle.
         let start = app.buttons["experiment.cell.0.0"].coordinate(withNormalizedOffset:CGVector(dx:0.04,dy:0.5))
         let end = app.buttons["experiment.cell.4.4"].coordinate(withNormalizedOffset:CGVector(dx:0.5,dy:0.5))
-        start.press(forDuration:0.05,thenDragTo:end,withVelocity:.fast,thenHoldForDuration:0)
+        start.press(forDuration:0.4,thenDragTo:end,withVelocity:.fast,thenHoldForDuration:0)
         score(5,app)
         let rose=app.buttons.matching(NSPredicate(format:"identifier BEGINSWITH 'experiment.cell.' AND label CONTAINS 'Twinkle'"))
         XCTAssertEqual(rose.count,1)
@@ -51,7 +51,7 @@ final class ConstellationTraceNativeTests: XCTestCase {
         let app=launch();defer {app.terminate()}
         drag(app,from:(0,0),to:(3,3));score(0,app)
         let start=app.buttons["experiment.cell.0.0"].coordinate(withNormalizedOffset:CGVector(dx:0.5,dy:0.5))
-        start.press(forDuration:0.1,thenDragTo:app.coordinate(withNormalizedOffset:CGVector(dx:0.5,dy:0.1)))
+        start.press(forDuration:0.4,thenDragTo:app.coordinate(withNormalizedOffset:CGVector(dx:0.5,dy:0.1)))
         score(0,app)
         app.terminate()
         let normal=launch("five")
@@ -73,7 +73,7 @@ final class ConstellationTraceNativeTests: XCTestCase {
         let app=launch("horizontalFive");defer {app.terminate()}
         let start=app.buttons["experiment.cell.0.0"].coordinate(withNormalizedOffset:CGVector(dx:0.5,dy:0.88))
         let end=app.buttons["experiment.cell.0.4"].coordinate(withNormalizedOffset:CGVector(dx:0.5,dy:0.88))
-        start.press(forDuration:0.1,thenDragTo:end,withVelocity:.slow,thenHoldForDuration:0.1)
+        start.press(forDuration:0.4,thenDragTo:end,withVelocity:.slow,thenHoldForDuration:0.1)
         score(5,app)
     }
 
@@ -97,15 +97,16 @@ extension ConstellationTraceNativeTests {
         score(24, app)
         let orb = app.buttons["experiment.cell.2.5"]
         XCTAssertTrue(orb.label.contains("White Opal Orb"))
-        XCTAssertTrue((orb.value as? String)?.contains("1 starlight") == true)
+        XCTAssertEqual(orb.value as? String, "Earns no starlight; still connects matching stars")
         orb.tap(); score(24, app)
-        app.buttons["experiment.cell.0.6"].tap(); score(29, app)
+        // Feeding Dusk drains both shared orbs; the three colored stars still pay.
+        app.buttons["experiment.cell.0.6"].tap(); score(27, app)
         XCTAssertEqual(app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'experiment.cell.' AND label CONTAINS 'White Opal Orb'")).count, 0)
         let capture = XCTAttachment(screenshot: app.screenshot()); capture.name = "opal-colored-tap-consumes-shared-orbs"
         capture.lifetime = .keepAlways; add(capture)
         app.terminate(); app.launchArguments = []; app.launch()
         XCTAssertTrue(app.buttons["sky.resume"].waitForExistence(timeout: 10))
-        app.buttons["sky.resume"].tap(); score(29, app)
+        app.buttons["sky.resume"].tap(); score(27, app)
     }
     @MainActor func testStormWarningCountRecoveryAndMenuSuspension() {
         let app = launch("stormWarning"); defer { app.terminate() }
@@ -146,9 +147,10 @@ extension ConstellationTraceNativeTests {
         XCTAssertEqual(orbs.count, 2)
         let before = XCTAttachment(screenshot: app.screenshot()); before.name = "opal-native-before-trace"
         before.lifetime = .keepAlways; add(before)
-        drag(app, from: (0,2), to: (4,2)); score(20, app)
+        // The retained sky adopts feeding Dusk: one traced star is drained.
+        drag(app, from: (0,2), to: (4,2)); score(19, app)
         XCTAssertEqual(orbs.count, 1)
-        app.buttons["experiment.cell.0.2"].tap(); score(20, app)
+        app.buttons["experiment.cell.0.2"].tap(); score(19, app)
         let after = XCTAttachment(screenshot: app.screenshot()); after.name = "opal-native-selected-trace"
         after.lifetime = .keepAlways; add(after)
     }
@@ -353,8 +355,9 @@ extension ConstellationTraceNativeTests {
             XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true AND value == %@", preserve ? "5 toward a tap match; 2 starlight if cleared" : "3 toward a tap match"), object: next).wait(timeout: 6))
             let guide = app.descendants(matching: .any).matching(identifier: "sky.dialogue").firstMatch
             let message = app.staticTexts["experiment.message"]
-            XCTAssertTrue(message.label.contains(preserve ? "The hole closed" : "after 2 more showers left"))
-            XCTAssertTrue(message.label.hasSuffix("Showers are closer together"))
+            XCTAssertTrue(message.label.contains(preserve ? "The hole closed" : "after 2 more showers."), message.label)
+            XCTAssertTrue(message.label.contains("Showers are closer together now."), message.label)
+            XCTAssertTrue(message.label.hasSuffix("Dusk will eat \(preserve ? 4 : 3) stars after 5 more showers with a touching star."), message.label)
             let board = app.otherElements["experiment.board"], boardValue = board.value as? String
             XCTAssertNotNil(boardValue)
             let actionButtons = [app.buttons["experiment.next"], app.buttons["experiment.pause"]]

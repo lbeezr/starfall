@@ -155,8 +155,11 @@ final class StarlightCelebrationTests: XCTestCase {
     /// Attachments support visual review; assertions alone do not establish readability.
     @MainActor func testCrowdedCurrentSkyAwardsAtCompactLargeAndMaximumText() async throws {
         var game = FallingSky.freshSurvival(seed: 28)
-        for _ in 0..<29 { XCTAssertNotNil(game.letStarsFall()) }
-        XCTAssertEqual(game.board.compactMap { $0 }.count, 26)
+        // With automatic aging retired, this seed reaches a dense, live sky at
+        // twelve showers; the historical 29-shower sample now overflows at 15.
+        for _ in 0..<12 { XCTAssertNotNil(game.letStarsFall()) }
+        XCTAssertFalse(game.isOver)
+        XCTAssertEqual(game.board.compactMap { $0 }.count, 33)
         let group = try XCTUnwrap(game.legalGroups.max(by: {
             game.reward(of: Set($0)) < game.reward(of: Set($1))
         }))
@@ -164,7 +167,7 @@ final class StarlightCelebrationTests: XCTestCase {
         XCTAssertTrue(game.legalGroups.contains { Set($0.map(\.column)).isDisjoint(with: Set(group.map(\.column))) })
         let chosen = (game: game, group: group)
         XCTAssertFalse(UIAccessibility.isReduceMotionEnabled, "Do not use quiet motion to validate this scenario")
-        let note = XCTAttachment(string: "seed=28; showers=29; occupied=26; reward=8; group=\(group)")
+        let note = XCTAttachment(string: "seed=28; showers=12; occupied=33; reward=8; group=\(group)")
         note.name = "crowded-current-history"; note.lifetime = .keepAlways; add(note)
         let scene = try XCTUnwrap(UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.first)
         let previous = scene.windows.first(where: \.isKeyWindow)

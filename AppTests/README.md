@@ -52,7 +52,7 @@ Gravity specials are retired from normal play. `SkyGeneration.standardSky` suppl
 
 `StarlightCelebrationTests` also uses a hosted SwiftUI window to verify that header registration preserves the nested score and sibling board anchors. It covers concurrent receipt replacement, current save restore, rewarding Opal/drained Dusk distinctions, zero-reward clears, validated trace/recipe/relay categories, interruption and independent expiry.
 
-Logical interaction regressions in `TraceInputPolishTests` cover trace-to-swap hold continuity, exactly-once release, stale terminals and failed admission; store/recognizer interruption tests remain separate boundary coverage.
+Logical interaction regressions in `TraceInputPolishTests` cover movement-versus-hold ownership, exactly-once release, stale terminals and failed admission; store/recognizer interruption tests remain separate boundary coverage.
 
 `ResponsiveInputTests` verifies the shared admission matrix, paused explicit actions, independent ready columns, deferred showers and rejection without replay.
 
@@ -64,7 +64,7 @@ Rendered-award checks capture the complete `FallingSkyView` in an isolated foreg
 
 `CriticalMassProductionTests` checks v8/v7 archive boundaries, new versus retained/First Light routing, committed collapse across interruption/restore/restart, and static corruption materials.
 
-`TraceInputPolishTests` also checks direction-derived swap targets and off-center elliptical acquisition at phone/tablet sizes.
+`TraceInputPolishTests` checks immediate four-direction swaps before release, same-color identity exchange, one action per contact, held-drawing ownership, timer tickets and off-center elliptical acquisition at phone/tablet sizes.
 
 `SkySaveArchiveTests` owns archive migration/validation and `SkyPhasePresentationTests` owns forecast presentation. Both were extracted unchanged from the general Store suite, with explicit hosted target membership.
 

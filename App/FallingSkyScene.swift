@@ -209,22 +209,29 @@ import StarfallCore
             label.run(.sequence([.group([.moveBy(x: 0, y: step * 0.45, duration: 0.32), .fadeOut(withDuration: 0.32)]), .removeFromParent()]))
         }
         ripple(turn, from: old)
+        var exchangeDuration = StarfallMotion.exchangeSlideDuration
         for index in turn.settled.indices where columns.contains(index % 7) {
             if let gem = turn.settled[index], let node = nodes[gem.id],
-               cellsByID[gem.id] != Cell(index/7, index%7) {
-                let move = SKAction.move(to: point(Cell(index/7, index%7)), duration: 0.20)
-                move.timingMode = .easeInEaseOut
+               cellsByID[gem.id] != Cell(index/7, index%7) || turn.exchange.map({
+                   old.gem(at: $0.from)?.id == gem.id || old.gem(at: $0.to)?.id == gem.id
+               }) == true {
                 let waypoint = turn.exchange.flatMap { exchange -> Cell? in
                     if old.gem(at:exchange.from)?.id == gem.id { return exchange.to }
                     if old.gem(at:exchange.to)?.id == gem.id { return exchange.from }
                     return nil
                 }
+                let restingCell = Cell(index/7, index%7)
+                let settles = (waypoint ?? cellsByID[gem.id]) != restingCell
+                let settlingDuration: TimeInterval = settles ? 0.20 : 0
+                exchangeDuration = max(exchangeDuration, StarfallMotion.exchangeSlideDuration + settlingDuration)
+                let move = SKAction.move(to: point(restingCell), duration: settlingDuration)
+                move.timingMode = .easeInEaseOut
                 let lead = waypoint.map { SKAction.move(to:point($0),duration:StarfallMotion.exchangeSlideDuration) }
                     ?? .wait(forDuration:turn.exchange == nil ? StarfallMotion.gravityStart : StarfallMotion.exchangeSlideDuration)
                 node.run(.sequence([lead,move]),withKey:"sky.settle")
                 if let shadow = grid.childNode(withName: "sky.ground.\(gem.id)") {
                     let destination = point(Cell(index/7, index%7))
-                    let moveShadow = SKAction.move(to: CGPoint(x: destination.x, y: destination.y - groundOffset(gem)), duration: 0.20)
+                    let moveShadow = SKAction.move(to: CGPoint(x: destination.x, y: destination.y - groundOffset(gem)), duration: settlingDuration)
                     moveShadow.timingMode = .easeInEaseOut
                     let leadShadow = waypoint.map { cell in
                         let target=point(cell)
@@ -235,7 +242,7 @@ import StarfallCore
             }
         }
         if turn.arrivals.isEmpty {
-            run(.sequence([.wait(forDuration: StarfallMotion.clearDuration), .run { [weak self] in self?.finishColumns(columns, completion: completion) }]))
+            run(.sequence([.wait(forDuration: turn.exchange == nil ? StarfallMotion.clearDuration : exchangeDuration), .run { [weak self] in self?.finishColumns(columns, completion: completion) }]))
             return
         }
         run(.sequence([arrivalFlights(turn.arrivals), .wait(forDuration: StarfallMotion.landingDuration),

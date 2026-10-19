@@ -235,3 +235,17 @@ extension CriticalMassTests {
         XCTAssertEqual(dusk.disablingAutomaticAging(), dusk)
     }
 }
+
+extension CriticalMassTests {
+    func testSameFamilyVerticalExchangeKeepsDistinctAgesAndContinuation() throws {
+        var game = try fixture([(Cell(0,2),.aqua,false,2),(Cell(1,2),.aqua,false,8)])
+        let young = game.gem(at:Cell(0,2)), old = game.gem(at:Cell(1,2))
+        XCTAssertNotNil(game.nudge(from:Cell(0,2),to:Cell(1,2)))
+        XCTAssertEqual(game.gem(at:Cell(1,2)),young)
+        XCTAssertEqual(game.gem(at:Cell(0,2)),old)
+        XCTAssertTrue(game.isValidSave)
+        var restored = try JSONDecoder().decode(FallingSky.self,from:JSONEncoder().encode(game))
+        game.letStarsFall(); restored.letStarsFall()
+        XCTAssertEqual(game,restored)
+    }
+}

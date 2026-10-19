@@ -31,10 +31,10 @@ final class SkyTechniqueInteractionTests: XCTestCase {
     @MainActor private func capture(_ app: XCUIApplication, _ name: String) {
         let image = XCTAttachment(screenshot: app.screenshot()); image.name = name; image.lifetime = .keepAlways; add(image)
     }
-    @MainActor private func drag(_ app: XCUIApplication, from: (Int,Int), to: (Int,Int), hold: TimeInterval = 0.1) {
+    @MainActor private func drag(_ app: XCUIApplication, from: (Int,Int), to: (Int,Int), hold: TimeInterval = 0.1, draw: Bool = false) {
         let start = app.buttons["experiment.cell.\(from.0).\(from.1)"].coordinate(withNormalizedOffset: CGVector(dx: 0.5,dy: 0.5))
         let end = app.buttons["experiment.cell.\(to.0).\(to.1)"].coordinate(withNormalizedOffset: CGVector(dx: 0.5,dy: 0.5))
-        start.press(forDuration: 0.1,thenDragTo: end,withVelocity: .slow,thenHoldForDuration: hold)
+        start.press(forDuration: draw ? 0.4 : 0.05,thenDragTo: end,withVelocity: .slow,thenHoldForDuration: hold)
     }
     @MainActor func testTapRecipesRelayWithoutAnyModeOrMenuToggle() {
         let app = launch("relay"); defer { app.terminate() }
@@ -56,7 +56,7 @@ final class SkyTechniqueInteractionTests: XCTestCase {
         tap("experiment.next",app)
         XCTAssertFalse(app.buttons["technique.arrange"].exists)
     }
-    @MainActor func testSwipeAndHoldSwapsWithoutArrangeAndEmptyDestinationFalls() {
+    @MainActor func testImmediateSwipeSwapsWithoutArrangeAndEmptyDestinationFalls() {
         let app = launch("nudge"); defer { app.terminate() }
         let start = app.buttons["experiment.cell.1.2"].coordinate(withNormalizedOffset: CGVector(dx:0.5,dy:0.5))
         let neighbor = app.buttons["experiment.cell.1.1"].coordinate(withNormalizedOffset: CGVector(dx:0.5,dy:0.5))
@@ -76,8 +76,8 @@ final class SkyTechniqueInteractionTests: XCTestCase {
     @MainActor func testSwipeSpendsFiveFromSixAndShortTraceCancels() {
         let app = launch("trace"); defer { app.terminate() }
         app.buttons["experiment.cell.0.0"].twoFingerTap(); score(0,app)
-        drag(app,from:(0,0),to:(0,3)); score(0,app)
-        drag(app,from:(0,0),to:(0,4)); score(5,app)
+        drag(app,from:(0,0),to:(0,3),draw:true); score(0,app)
+        drag(app,from:(0,0),to:(0,4),draw:true); score(5,app)
         XCTAssertTrue(app.buttons["experiment.cell.0.5"].label.contains("Aqua"))
         capture(app,"technique-five-selected-one-retained")
     }
@@ -125,5 +125,60 @@ extension SkyTechniqueInteractionTests {
         XCTAssertTrue(XCTNSPredicateExpectation(predicate:NSPredicate(format:"label CONTAINS %@","Aqua"),object:app.buttons["experiment.cell.1.1"]).wait(timeout:5))
         score(0,app)
         capture(app,"short-directional-swap")
+    }
+}
+
+extension SkyTechniqueInteractionTests {
+    @MainActor func testFourDirectionSwapsAndHeldDestinationNeverDrawOrRepeat() {
+        let app = launch("nudge"); defer { app.terminate() }
+        for (from,to,name) in [((1,2),(1,1),"Aqua"),((1,1),(1,2),"Aqua"),
+                               ((0,2),(1,2),"Mint"),((1,2),(0,2),"Mint")] {
+            let source = app.buttons["experiment.cell.\(from.0).\(from.1)"]
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate:NSPredicate(format:"enabled == true"),object:source).wait(timeout:5))
+            drag(app,from:from,to:to,hold:0.5)
+            let target = app.buttons["experiment.cell.\(to.0).\(to.1)"]
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate:NSPredicate(format:"label CONTAINS %@ AND enabled == true",name),object:target).wait(timeout:5))
+            score(0,app)
+        }
+        capture(app,"four-direction-exchanges")
+        app.buttons["experiment.cell.0.0"].tap(); score(3,app)
+    }
+
+    @MainActor func testFastSameColorStrokeSwapsOnceThenHoldDrawClearsOnlyFive() {
+        let app = launch("trace"); defer { app.terminate() }
+        drag(app,from:(0,0),to:(0,4),hold:0.5)
+        score(0,app)
+        XCTAssertEqual(app.buttons.matching(NSPredicate(format:"identifier BEGINSWITH 'experiment.cell.' AND label CONTAINS 'Aqua'")).count,6)
+        drag(app,from:(0,0),to:(0,4),draw:true)
+        score(5,app)
+        XCTAssertTrue(app.buttons["experiment.cell.0.5"].label.contains("Aqua"))
+        capture(app,"held-five-after-same-color-swipe")
+    }
+}
+
+extension SkyTechniqueInteractionTests {
+    @MainActor func testHoldWithoutCompleteConstellationNeverFallsBackToSwapOrTap() {
+        let app = launch("nudge"); defer { app.terminate() }
+        drag(app,from:(1,2),to:(1,1),draw:true)
+        score(0,app)
+        XCTAssertTrue(app.buttons["experiment.cell.1.2"].label.contains("Aqua"))
+        XCTAssertTrue(app.buttons["experiment.cell.1.1"].label.contains("Mint"))
+        XCTAssertTrue(app.staticTexts["experiment.message"].label.contains("Trace 5 matching stars"))
+        drag(app,from:(1,2),to:(1,1))
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate:NSPredicate(format:"label CONTAINS %@","Aqua"),object:app.buttons["experiment.cell.1.1"]).wait(timeout:5))
+        score(0,app)
+    }
+}
+
+extension SkyTechniqueInteractionTests {
+    @MainActor func testVerticalSwipesOwnTheBoardAtLargestTextSize() {
+        let app = launch("nudge",large:true); defer { app.terminate() }
+        drag(app,from:(0,2),to:(1,2))
+        let upper = app.buttons["experiment.cell.1.2"]
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate:NSPredicate(format:"label CONTAINS %@ AND enabled == true","Mint"),object:upper).wait(timeout:5))
+        drag(app,from:(1,2),to:(0,2))
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate:NSPredicate(format:"label CONTAINS %@","Mint"),object:app.buttons["experiment.cell.0.2"]).wait(timeout:5))
+        score(0,app)
+        capture(app,"vertical-swaps-largest-text")
     }
 }

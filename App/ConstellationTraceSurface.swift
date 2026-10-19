@@ -2,9 +2,8 @@ import SwiftUI
 import UIKit
 import StarfallCore
 
-
-// UIKit gives the board an explicit release/cancel/multitouch contract. The native
-// SwiftUI star buttons remain the accessibility controls behind this touch surface.
+// UIKit owns physical contact/release/cancel. Native star buttons remain the
+// accessibility controls behind the surface; all outcomes still go through Core.
 struct ConstellationTraceSurface: UIViewRepresentable {
     let size: CGSize
     let enabled: Bool
@@ -17,160 +16,156 @@ struct ConstellationTraceSurface: UIViewRepresentable {
     let cancel: () -> Void
     var contact: ((CGPoint) -> Bool)? = nil
     var feedback: ((String) -> Void)? = nil
-    var hasSelectedNeighbor: (() -> Bool)? = nil
     var swapStart: ((CGPoint) -> Bool)? = nil
-    var beginSwap: ((CGPoint,CGPoint,UInt64) -> Bool)? = nil
-    var endSwap: ((CGPoint) -> Void)? = nil
+    var swap: ((Cell, Cell, UInt64) -> Void)? = nil
 
     func makeUIView(context: Context) -> Surface {
         let view = Surface(); view.installCapture(); view.isMultipleTouchEnabled = true
         view.isAccessibilityElement = false; view.accessibilityElementsHidden = true
         return view
     }
-    func updateUIView(_ view: Surface, context: Context) {
-        view.updateInput(self)
-    }
+    func updateUIView(_ view: Surface, context: Context) { view.updateInput(self) }
+
     final class Surface: UIView {
         private(set) var input: ConstellationTraceSurface?
+        private let capture = CaptureRecognizer()
+        private weak var scrollOwner: UIScrollView?
+        private var primary: UITouch?
+        private(set) var session = ConstellationTouchSession()
+        private var blocked = false
+        private var holdTask: Task<Void, Never>?
+
         func updateInput(_ value: ConstellationTraceSurface) {
             if let old = input, old.generation != value.generation || old.size != value.size || !value.enabled {
                 cancelInput()
             }
             input = value
         }
-        private let capture = CaptureRecognizer()
-        private weak var scrollOwner: UIScrollView?
         func installCapture() {
             capture.cancelsTouchesInView = false
             capture.shouldStart = { [weak self] point in
-                guard let self, let input=self.input, input.enabled else { return false }
+                guard let input = self?.input, input.enabled else { return false }
                 return ObservatoryGeometry(size: input.size).cell(at: point) != nil
             }
-            capture.horizontalOnlyAtStart = { [weak self] point in
-                guard let input=self?.input else { return true }
-                return input.traceStart(point) == nil
+            capture.yieldsToScrollAtStart = { [weak self] point in
+                guard let input = self?.input else { return true }
+                return input.traceStart(point) == nil && input.swapStart?(point) != true
             }
-            // Recognizers receive raw contacts before UIScrollView can delay UIView
-            // touch delivery. Keep admission, moves and terminal events on this owner.
             capture.beganContact = { [weak self] touches, event in self?.beginContact(touches, event: event) }
             capture.movedContact = { [weak self] touches, event in self?.moveContact(touches, event: event) }
             capture.endedContact = { [weak self] touches, event in self?.endContact(touches, event: event) }
             capture.cancelledContact = { [weak self] in
-                guard let self else { return }
-                guard self.primary != nil else { return }
+                guard let self, self.primary != nil else { return }
                 self.cancelInput(reason: self.capture.yieldedToScroll ? nil : SkyCopy.text(.inputInterrupted))
             }
             addGestureRecognizer(capture)
         }
         override func didMoveToWindow() {
             super.didMoveToWindow()
-            var ancestor=superview
-            while let view=ancestor {
-                if let scroll=view as? UIScrollView {
-                    if scrollOwner !== scroll { scroll.panGestureRecognizer.require(toFail:capture);scrollOwner=scroll }
+            var ancestor = superview
+            while let view = ancestor {
+                if let scroll = view as? UIScrollView {
+                    if scrollOwner !== scroll { scroll.panGestureRecognizer.require(toFail: capture); scrollOwner = scroll }
                     break
                 }
-                ancestor=view.superview
+                ancestor = view.superview
             }
         }
-        private var primary: UITouch?
-        private var session = ConstellationTouchSession()
-        private var blocked = false
-        private var swapTask: Task<Void,Never>?
-        private var swapDwell = SkySwapDwell()
-        private var swapArmed = false
         override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
             guard let input, input.enabled else { return false }
             return ObservatoryGeometry(size: input.size).cell(at: point) != nil
         }
         func cancelInput(reason: String? = nil) {
-            swapTask?.cancel(); swapTask = nil; swapDwell = SkySwapDwell(); swapArmed = false
-            capture.cancelCapture(); input?.cancel(); primary = nil; session.cancel(); blocked = true
+            holdTask?.cancel(); holdTask = nil
+            // Retire the local ticket before cancellation can reenter via UIKit/SwiftUI.
+            primary = nil; session.cancel(); blocked = true
+            capture.cancelCapture(); input?.cancel()
             if let reason { input?.feedback?(reason) }
         }
         override func willMove(toWindow newWindow: UIWindow?) { if newWindow == nil { cancelInput() } }
+
         private func beginContact(_ touches: Set<UITouch>, event: UIEvent?) {
-            guard primary == nil, touches.count == 1, (event?.allTouches?.count ?? 1) == 1 else { cancelInput(reason: SkyCopy.text(.inputOneFinger)); return }
-            blocked = false; swapDwell = SkySwapDwell(); swapArmed = false; primary = touches.first
-            let origin = primary!.location(in: self)
-            let eligible = input?.traceStart(origin) != nil
-            guard session.begin(at: origin, traceEligible: eligible || input?.swapStart?(origin) == true) else { cancelInput(); return }
-            guard input?.contact?(origin) != false else { primary = nil; session.cancel(); blocked = true; return }
-            // Own the hold on touch-down, before drag recognition; release still taps normally.
-            if eligible { input?.begin(origin) }
+            guard primary == nil, touches.count == 1, (event?.allTouches?.count ?? 1) == 1,
+                  let touch = touches.first else { cancelInput(reason: SkyCopy.text(.inputOneFinger)); return }
+            primary = touch
+            beginInput(at: touch.location(in: self))
         }
         private func moveContact(_ touches: Set<UITouch>, event: UIEvent?) {
-            guard !blocked, let primary, touches.contains(primary), let input else { return }
+            guard !blocked, let primary, touches.contains(primary) else { return }
             guard (event?.allTouches?.count ?? 1) == 1 else { cancelInput(reason: SkyCopy.text(.inputOneFinger)); return }
-            let location = primary.location(in: self)
-            if session.move(to: location) {
-                for touch in (event?.coalescedTouches(for: primary) ?? [primary]).suffix(64) {
-                    guard !blocked else { break }
-                    let point = touch.location(in: self)
-                    input.move(point)
-                    if input.hasSelectedNeighbor?() == true { session.claimDrag() }
-                    updateSwapHold(point, input:input)
-                }
-            } else if session.canceled { cancelInput(reason: SkyCopy.text(.inputSameStar)) }
-        }
-        private func updateSwapHold(_ point: CGPoint, input: ConstellationTraceSurface) {
-            guard let origin=session.origin, input.swapStart?(origin) == true else { return }
-            let previous=swapDwell.target
-            swapDwell.visit(origin:origin,point:point,mapping:ObservatoryGeometry(size:input.size))
-            if swapArmed {
-                if !swapDwell.eligible { cancelInput(reason:SkyCopy.text(.inputSwapCanceled)) }
-                return
-            }
-            guard previous != swapDwell.target else { return }
-            swapTask?.cancel(); swapTask=nil
-            guard let target=swapDwell.target else { return }
-            let contact = session.sequence
-            swapTask=Task { @MainActor [weak self] in
-                do { try await Task.sleep(for:.milliseconds(150)) } catch { return }
-                guard !Task.isCancelled, let self, self.session.sequence == contact,
-                      !self.blocked, self.primary != nil, self.swapDwell.target == target,
-                      let current=self.input, current.enabled, current.generation == input.generation else { return }
-                self.swapArmed = current.beginSwap?(origin,ObservatoryGeometry(size:current.size).viewPoint(target),current.generation) == true
-                if self.swapArmed { self.swapDwell.arm() }
+            for touch in (event?.coalescedTouches(for: primary) ?? [primary]).suffix(64) {
+                guard !blocked else { break }
+                moveInput(to: touch.location(in: self))
             }
         }
         private func endContact(_ touches: Set<UITouch>, event: UIEvent?) {
-            guard !blocked, let primary, touches.contains(primary), let input else { cancelInput(); return }
+            guard !blocked, let primary, touches.contains(primary) else { cancelInput(); return }
             guard (event?.allTouches?.count ?? 1) == 1 else { cancelInput(reason: SkyCopy.text(.inputOneFinger)); return }
-            let location = primary.location(in: self)
-            // Classify final-only movement before considering a quick swap, so a
-            // matching neighbor reached on lift retains selected-trace precedence.
-            if !swapArmed, session.move(to: location) {
-                input.move(location)
-                if input.hasSelectedNeighbor?() == true { session.claimDrag() }
+            endInput(at: primary.location(in: self))
+        }
+
+        // These sample methods are the production adapter, also exercised without
+        // constructing synthetic UITouch objects in hosted regression checks.
+        func beginInput(at origin: CGPoint) {
+            guard let input, input.enabled else { cancelInput(); return }
+            blocked = false
+            guard session.begin(at: origin, traceEligible: input.traceStart(origin) != nil,
+                                swapEligible: input.swapStart?(origin) == true),
+                  input.contact?(origin) != false else { cancelInput(); return }
+            guard session.canHold else { return }
+            let ticket = session.sequence, generation = input.generation
+            holdTask = Task { @MainActor [weak self] in
+                do { try await Task.sleep(for: .milliseconds(ConstellationTouchSession.holdMilliseconds)) }
+                catch { return }
+                guard !Task.isCancelled else { return }
+                self?.armDrawing(ticket: ticket, generation: generation)
             }
-            updateSwapHold(location, input: input)
-            swapTask?.cancel(); swapTask=nil
-            if !swapArmed, input.hasSelectedNeighbor?() != true,
-               let origin = session.origin, let target = swapDwell.target, swapDwell.eligible {
-                swapArmed = input.beginSwap?(origin, ObservatoryGeometry(size: input.size).viewPoint(target), input.generation) == true
+        }
+        func armDrawing(ticket: UInt64, generation: UInt64) {
+            guard !blocked, let input, input.enabled, input.generation == generation,
+                  let origin = session.origin, session.armTrace(ticket: ticket) else { return }
+            input.begin(origin)
+        }
+        func moveInput(to point: CGPoint) {
+            guard !blocked, let input else { return }
+            let wasDrawing = session.isDrawing
+            let event = session.move(to: point, mapping: ObservatoryGeometry(size: input.size))
+            if !session.canHold { holdTask?.cancel(); holdTask = nil }
+            switch event {
+            case .swap(let from, let to):
+                // Session is consumed before committing: redraw, finger-up and old
+                // hold timers cannot turn this contact into another board action.
+                input.swap?(from, to, input.generation)
+                input.cancel()
+            case .trace: input.move(point)
+            case .cancel: cancelInput(reason: SkyCopy.text(wasDrawing ? .inputTraceOffBoard : .inputSameStar))
+            case .none: break
             }
-            let outcome = session.finish(at: location, mapping: ObservatoryGeometry(size: input.size))
-            self.primary = nil
-            if swapArmed { input.endSwap?(location); swapArmed=false; return }
+        }
+        func endInput(at point: CGPoint) {
+            // A final-only sample follows exactly the same directional decision.
+            moveInput(to: point)
+            guard !blocked, let input else { return }
+            holdTask?.cancel(); holdTask = nil; primary = nil
+            let outcome = session.finish(at: point, mapping: ObservatoryGeometry(size: input.size))
             switch outcome {
-            case .trace: input.move(location); input.end()
+            case .trace: input.end()
             case .tap(let cell): input.cancel(); input.tap(cell)
-            case .cancel: input.cancel(); input.feedback?(SkyCopy.text(.inputSameStar))
+            case .cancel, .none: input.cancel()
             }
         }
     }
-    // A trace starting on an eligible star wins over the accessibility-size
-    // scroll container. Other board starts yield on vertical movement to scroll.
+    // Occupied interactive stars own all directions. Empty board starts may scroll.
     final class CaptureRecognizer: UIGestureRecognizer {
         var beganContact: ((Set<UITouch>, UIEvent) -> Void)?
         var movedContact: ((Set<UITouch>, UIEvent) -> Void)?
         var endedContact: ((Set<UITouch>, UIEvent) -> Void)?
         var cancelledContact: (() -> Void)?
         var shouldStart: ((CGPoint)->Bool)?
-        var horizontalOnlyAtStart: ((CGPoint)->Bool)?
+        var yieldsToScrollAtStart: ((CGPoint)->Bool)?
         private(set) var yieldedToScroll = false
         private var origin=CGPoint.zero
+        private var yieldsToScroll = true
         override func touchesBegan(_ touches:Set<UITouch>,with event:UIEvent) {
             yieldedToScroll = false
             guard touches.count==1, event.allTouches?.count==1, let touch=touches.first else {
@@ -178,6 +173,7 @@ struct ConstellationTraceSurface: UIViewRepresentable {
             }
             origin=touch.location(in:view)
             guard shouldStart?(origin) == true else { state = .failed; return }
+            yieldsToScroll = yieldsToScrollAtStart?(origin) == true
             beganContact?(touches, event)
         }
         override func touchesMoved(_ touches:Set<UITouch>,with event:UIEvent) {
@@ -185,9 +181,9 @@ struct ConstellationTraceSurface: UIViewRepresentable {
                   let touch=touches.first else { return }
             let point=touch.location(in:view)
             if state == .possible {
-                let horizontalOnly = horizontalOnlyAtStart?(origin) == true
+                let horizontalOnly = yieldsToScroll
                 let distance = hypot(point.x-origin.x,point.y-origin.y)
-                let recognitionDistance = horizontalOnly ? ConstellationTouchSession.tapSlop : ConstellationTouchSession.dragThreshold
+                let recognitionDistance = horizontalOnly ? ConstellationTouchSession.tapSlop : ConstellationTouchSession.holdSlop
                 if distance > recognitionDistance || (!horizontalOnly && distance == recognitionDistance) {
                     if horizontalOnly && abs(point.y-origin.y) > abs(point.x-origin.x) {
                         yieldedToScroll = true
@@ -221,85 +217,74 @@ struct ConstellationTraceSurface: UIViewRepresentable {
 
 }
 
-/// One physical touch has exactly one terminal classification. Kept independent of
-/// UITouch so boundary samples and interruption sequences exercise production logic.
+/// A touch chooses its action once, independent of star color. Durations only
+/// select drawing while stationary; movement commits one directional exchange.
 struct ConstellationTouchSession {
-    enum Outcome: Equatable { case tap(Cell), trace, cancel }
-    static let dragThreshold: CGFloat = 6
+    enum Event: Equatable { case none, trace, swap(Cell, Cell), cancel }
+    enum Outcome: Equatable { case none, tap(Cell), trace, cancel }
+    private enum Mode { case idle, pending, drawing, consumed }
+    static let holdMilliseconds = 300
+    static let holdSlop: CGFloat = 8
     static let tapSlop: CGFloat = 18
-    private var traceEligible = true
+    private var mode = Mode.idle
+    private var traceEligible = false
+    private var swapEligible = false
     private var maximumDistance: CGFloat = 0
-    private var selectedNeighbor = false
-    private(set) var canceled = false
     private(set) var sequence: UInt64 = 0
     private(set) var origin: CGPoint?
-    private(set) var dragging = false
+    var isDrawing: Bool { mode == .drawing }
+    var canHold: Bool { mode == .pending && (traceEligible || swapEligible) && maximumDistance <= Self.holdSlop }
 
-    mutating func begin(at point: CGPoint, traceEligible: Bool = true) -> Bool {
+    static func swapThreshold(_ cell: Cell, mapping: ObservatoryGeometry) -> CGFloat {
+        let frame = mapping.frame(cell)
+        return min(18, max(12, min(frame.width, frame.height) * 0.25))
+    }
+    mutating func begin(at point: CGPoint, traceEligible: Bool = true, swapEligible: Bool = false) -> Bool {
         guard origin == nil else { cancel(); return false }
-        sequence &+= 1
-        origin = point; dragging = false; canceled = false; self.traceEligible = traceEligible
-        maximumDistance = 0; selectedNeighbor = false
+        sequence &+= 1; origin = point; mode = .pending; maximumDistance = 0
+        self.traceEligible = traceEligible; self.swapEligible = swapEligible
         return true
     }
-    @discardableResult mutating func move(to point: CGPoint) -> Bool {
-        guard let origin, !canceled else { return false }
-        let distance = hypot(point.x-origin.x, point.y-origin.y)
-        maximumDistance = max(maximumDistance, distance)
-        if traceEligible { dragging = dragging || distance >= Self.dragThreshold }
-        else if distance > Self.tapSlop { canceled = true }
-        return dragging
+    mutating func armTrace(ticket: UInt64) -> Bool {
+        guard ticket == sequence, canHold else { return false }
+        mode = .drawing
+        return true
     }
-    /// Sticky intent: a partial constellation must never fall back to an ordinary clear.
-    mutating func claimDrag() { selectedNeighbor = true }
-
+    mutating func move(to point: CGPoint, mapping: ObservatoryGeometry) -> Event {
+        guard let origin, mode == .pending || mode == .drawing else { return .none }
+        guard let from = mapping.cell(at: origin), mapping.cell(at: point) != nil else {
+            mode = .consumed; return .cancel
+        }
+        let dx = point.x-origin.x, dy = point.y-origin.y
+        maximumDistance = max(maximumDistance, hypot(dx, dy))
+        if mode == .drawing { return .trace }
+        if swapEligible, max(abs(dx), abs(dy)) >= Self.swapThreshold(from, mapping: mapping) {
+            // UIKit y increases down the screen; Core row zero is the bottom.
+            let to = abs(dx) >= abs(dy)
+                ? Cell(from.row, from.column + (dx > 0 ? 1 : -1))
+                : Cell(from.row + (dy < 0 ? 1 : -1), from.column)
+            mode = .consumed
+            guard (0..<FallingSky.side).contains(to.row), (0..<FallingSky.side).contains(to.column) else { return .cancel }
+            return .swap(from, to)
+        }
+        if !swapEligible && maximumDistance > Self.tapSlop && !canHold { mode = .consumed; return .cancel }
+        return .none
+    }
     mutating func finish(at point: CGPoint, mapping: ObservatoryGeometry) -> Outcome {
         defer { cancel() }
-        guard let origin, !canceled else { return .cancel }
-        let isDrawing = move(to: point)
-        guard !canceled else { return .cancel }
-        if !selectedNeighbor, maximumDistance <= Self.tapSlop,
-           let cell = mapping.cell(at: origin), mapping.cell(at: point) == cell { return .tap(cell) }
-        return isDrawing ? .trace : .cancel
+        guard let origin else { return .cancel }
+        switch mode {
+        case .drawing: return mapping.cell(at: point) == nil ? .cancel : .trace
+        case .pending:
+            guard maximumDistance <= Self.tapSlop, let cell = mapping.cell(at: origin),
+                  mapping.cell(at: point) == cell else { return .cancel }
+            return .tap(cell)
+        case .consumed: return .none
+        case .idle: return .cancel
+        }
     }
     mutating func cancel() {
-        sequence &+= 1; origin = nil; dragging = false; canceled = false
-        maximumDistance = 0; selectedNeighbor = false
-    }
-}
-
-/// Directional one-neighbor target shared by dwell and quick release. Small drift
-/// may cross a cell border; deliberate reversal, another neighbor or leaving cancels.
-struct SkySwapDwell {
-    private(set) var eligible = true
-    private(set) var target: Cell?
-    private var armed = false
-    mutating func arm() { armed = eligible && target != nil }
-
-    static func threshold(_ cell: Cell, mapping: ObservatoryGeometry) -> CGFloat {
-        min(24, max(12, mapping.frame(cell).width * 0.25))
-    }
-    mutating func visit(origin: CGPoint, point: CGPoint, mapping: ObservatoryGeometry) {
-        guard eligible else { return }
-        guard let first = mapping.cell(at: origin), mapping.cell(at: point) != nil else {
-            eligible = false; target = nil; return
-        }
-        let frame = mapping.frame(first), dx = point.x-origin.x, dy = point.y-origin.y
-        let threshold = Self.threshold(first, mapping: mapping)
-        guard abs(dy) <= frame.height * 0.75, abs(dx) < frame.width * 1.5 else {
-            eligible = false; target = nil; return
-        }
-        if let target {
-            let direction: CGFloat = target.column > first.column ? 1 : -1
-            if dx * direction < threshold * 0.5 {
-                self.target = nil
-                if armed { eligible = false }
-            }
-            return
-        }
-        guard abs(dx) >= threshold, abs(dx) >= abs(dy) * 1.25 else { return }
-        let candidate = Cell(first.row, first.column + (dx > 0 ? 1 : -1))
-        guard (0..<7).contains(candidate.column) else { eligible = false; return }
-        target = candidate
+        sequence &+= 1; origin = nil; mode = .idle; maximumDistance = 0
+        traceEligible = false; swapEligible = false
     }
 }
