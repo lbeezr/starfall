@@ -14,7 +14,7 @@ Behavior proposals, production contracts and research supporting decisions.
 
 ## Start here
 
-[Lantern Landing](lantern-landing-01/README.md) is implemented and development-verified in optional First Light, with five restoration states and bespoke phone/tablet scenes. The [comparison viewer](lantern-landing-01/board.html) remains a concept; [native evidence](../evidence/lantern-landing-2026-10-19/README.md) records the actual app and pending delivery.
+[Lantern Landing](lantern-landing-01/README.md) is implemented, merged and delivered in optional First Light, with five restoration states and bespoke phone/tablet scenes. The [comparison viewer](lantern-landing-01/board.html) remains a concept; [native evidence and verified installation](../evidence/lantern-landing-2026-10-19/README.md) record `dev.5afe4a3c23`, delivered from main `ab868b5` in the original app. Native dense-board checks cover 40 stars; physical play and actual VoiceOver at RC remain separate acceptance.
 
 The rewritten [game bible](STARFALL_GAME_BIBLE.md) owns the approved Murk/map foundation and developed lore, cast and story. The [world atlas](WORLD_ATLAS.md) gives all twelve future restoration locations their daily life, appearance and payoff. The [restoration contract](STARLIGHT_RESTORATION.md) owns proposed progress/win behavior; [approved art and explorer](world-01/README.md) retain the images and sixty written states. This story journey is not a replacement of the current native nightscapes or an implemented campaign.
 

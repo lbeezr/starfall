@@ -1,10 +1,10 @@
 # Starfall world concept package
 
-**Status:** Murk and all twelve locations approved by the user · **Owner:** Current implementer · **Updated:** October 18, 2026
+**Status:** Murk and all twelve locations approved by the user · **Owner:** Current implementer · **Updated:** October 19, 2026
 
 The approved foundation is **Murk, the Hungry Moon**, and twelve connected places the star cast restores. Preserve the character sheet and the map’s destinations. The user subsequently requested a full creative rewrite: the [game bible](../STARFALL_GAME_BIBLE.md) now owns lore, characters and story; the [world atlas](../WORLD_ATLAS.md) develops every place’s life, appearance and distinctive reward.
 
-**Start here:** Open the [concept explorer](index.html) to select a numbered location and read its five restoration states. The [restoration contract](../STARLIGHT_RESTORATION.md) owns progress and the win boundary. **Revised visual study:** [Lantern Landing’s overhead playfield](../lantern-landing-01/board.html) places existing star bodies in the seven-column field above the landing. It supersedes the rejected close-up scene composition. **Current production slice:** Lantern Landing is implemented and development-verified in optional First Light; see its [native evidence](../../evidence/lantern-landing-2026-10-19/README.md). Main integration and phone delivery are pending. The twelve-location traversal remains a design concept.
+**Start here:** Open the [concept explorer](index.html) to select a numbered location and read its five restoration states. The [restoration contract](../STARLIGHT_RESTORATION.md) owns progress and the win boundary. **Revised visual study:** [Lantern Landing’s overhead playfield](../lantern-landing-01/board.html) places existing star bodies in the seven-column field above the landing. It supersedes the rejected close-up scene composition. **Current production slice:** Lantern Landing is implemented and development-verified in optional First Light; see its [native evidence](../../evidence/lantern-landing-2026-10-19/README.md). Main integration is complete in [PR #154](https://github.com/lbeezr/starfall/pull/154); the canonical updater verified installation of `dev.5afe4a3c23` from main `ab868b5` in the original `com.starfall.prototype` app on October 19 at 14:53:57 UTC. Physical play and actual VoiceOver at RC remain separate acceptance. The twelve-location traversal remains a design concept.
 
 ## The approved images
 
