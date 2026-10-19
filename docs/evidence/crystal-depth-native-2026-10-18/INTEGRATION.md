@@ -1,6 +1,6 @@
 # Crystal-depth lettering on current main
 
-**Result:** Verified locally; publication and canonical phone delivery follow · **Date:** October 18, 2026
+**Result:** Verified in Simulator and installed through the canonical updater · **Date:** October 18, 2026
 
 The approved alphabet renderer is combined with main `c10d409`, including aging retirement, immediate swipes, bounded follow-up input, edge forgiveness, hold feedback and quiet-input response. Local runtime/test source `b6e1d45ee98040b96191ac4cdb0a09398feccf85` has build identity **dev.b7e6e39e20**. The lettering adds no rule, save-schema or input change. [Integration metadata](integration.json) records source identities and captures.
 
@@ -27,3 +27,11 @@ An integration run exposed the old crowded fixture's dependence on automatic agi
 <img src="dev-b6e1d45__crowded-brilliant__host-375x667__default.jpg" width="260" alt="Current dense sky with crystal Brilliant and exact plus-eight award"> <img src="dev-b6e1d45__crowded-award__host-430x932__maximum-text.jpg" width="260" alt="Current maximum-text native plus-eight fallback below the board">
 
 **Native hosted captures, final runtime/test source; JPEG exports of the inspected XCTest PNGs.** The dense live fixture uses normal animation. The lettering settles visibly; the existing central placement briefly overlaps surviving stars. At maximum text, the native award sits below the board and the dialogue continues below the viewport. These frames establish sampled appearance, not physical comfort, measured memory or frame-time acceptance. Earlier images in the [original integration report](README.md) retain their original source and historical context.
+
+## Verified phone delivery
+
+[PR #140](https://github.com/lbeezr/starfall/pull/140) merged as `30384df4a4b5d80fc192f2ab78858cada35ab7ce`. Published tree `f257e6627cfef75572a748bde55947355d72a4c4` exactly matches local final `c873777`; the connected GitHub app changed commit metadata, not tested contents. The canonical updater archived that current main, passed 169 Core tests, built and verified the signature, then installed **dev.b7e6e39e20** over `com.starfall.prototype` on the configured physical iPhone. The OS-owned app inventory matched both the installer location and bundle version 1.
+
+Remote main CI was pending at installation, as permitted for development delivery; this is not a remote-CI pass. The updater did not launch, reset or uninstall the app. Actual installation is verified; on-phone gameplay, memory/frame timing, human comfort and actual VoiceOver remain unverified. The next action is ordinary human play with the accepted lettering; retain the existing physical/dense-board and RC follow-ups. No deployment tooling changed.
+
+Local receipts: `installed.json`, `installation.json`, `apps.json`, `status.json`, `core-tests.log` and `build.log` under `~/Library/Application Support/Starfall Device Updates/`. The compact metadata records identities and match results without publishing the device installation path.
