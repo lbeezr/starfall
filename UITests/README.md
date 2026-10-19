@@ -53,3 +53,5 @@ The responsive-input regression uses 7-point ordinary drift at normal/largest te
 The focused constellation gap/off-center and quick directional swap checks exercise approximate strokes without destination-cell targeting.
 
 `FreshSkyPlaytests.testRepeatedAutomaticVisibleMatchesSeed28` extends the same visible-only driver to 90 seconds for repeated ordinary awards and contact observations. [Source-bound automatic sample](../docs/evidence/calibration-critical-mass-2026-10-18/AUTOMATIC.md) records its non-scoring attempts and limits; a passing test does not imply every attempted contact scored.
+
+`ResponsiveInputUITests.testOutwardSwipesExplainTheEdgeAndNextTapClears` checks truthful copy on all four edges, unchanged board/score and a successful following tap with normal motion.

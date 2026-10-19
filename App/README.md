@@ -110,3 +110,5 @@ Contact clock holds preserve the exact remaining shower time; only pause/backgro
 Ceremonies reserve bottom scroll space using theme spacing. Welcome, Entry and result actions can be brought fully above the system Home area at large text and landscape sizes; native tests check complete frames as well as activation. This does not change the board projection.
 
 **Aging retired:** Ordinary fresh and restored critical-mass skies disable automatic aging and purple warnings. Migration precedes scene presentation; matching growth, committed preview, score and cadence remain. Help and Dusk controls follow the selected core rule. Historical Debug fixtures remain regression tooling.
+
+Outward cardinal swipes preserve a blocked-swap result through the touch adapter, so the guide explains the edge instead of giving tap instructions.

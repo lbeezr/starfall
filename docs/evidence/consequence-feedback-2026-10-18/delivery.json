@@ -1,0 +1,12 @@
+{
+  "buildID": "dev.bf4ade9d68",
+  "source": "ba8ea71eeeb7453d88d144637b914c0d1a2b92bd",
+  "bundle": "com.starfall.prototype",
+  "bundleVersion": "1",
+  "validation": {
+    "coreTests": "passed",
+    "signature": "verified",
+    "mainCIAtInstall": "pending"
+  },
+  "delivery": "canonical scripts/device-update.py run; actual installed identity verified; no reset or launch"
+}

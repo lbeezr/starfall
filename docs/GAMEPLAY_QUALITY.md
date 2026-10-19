@@ -4,7 +4,7 @@
 
 Polish the six gameplay priorities in order, merging and delivering each verified improvement through the canonical phone updater before starting the next. The player reported a “huge improvement” after the five gesture deliveries. Apply that same bounded process to the remaining experience.
 
-**Next action:** Deliver the [immediate consequence feedback](evidence/consequence-feedback-2026-10-18/README.md) reconciled with the accepted nightscapes, then correct outward-swipe rejection wording before shower pacing.
+**Next action:** Correct outward-swipe rejection wording after the verified [immediate consequence delivery](evidence/consequence-feedback-2026-10-18/README.md), then review shower pacing.
 
 ## Scope and success
 
@@ -46,4 +46,13 @@ The guide currently retains earlier instructions until a player-action animation
 - [x] Automatic presentation completions cannot overwrite feedback created after that presentation began.
 - [x] The same exact recipe set receives the same shape classification through tap, held trace and explicit accessible activation; extra neighboring stars are never silently classified as an exact recipe.
 - [x] Final outcomes retain ceremony speech ownership; interruption/restore discards transient feedback; current rules, saves and follow-up input remain unchanged.
-- [ ] Verify focused reproductions, affected hosted/native checks and inspected normal-motion feedback, then merge and canonically deliver. Before priority 3, correct the separately observed outward-swipe rejection wording: it currently explains a tap even though movement chose a swipe.
+- [x] Verify focused reproductions, affected hosted/native checks and inspected normal-motion feedback, then merge and canonically deliver: PR #144, `dev.bf4ade9d68`.
+
+## Third batch: truthful edge-swipe feedback
+
+An outward swipe currently produces tap instructions. Keep the recognized intent explicit through the production adapter: explain that the chosen direction leaves the sky, consume this contact once, and immediately accept a new contact.
+
+- [x] Verify all four outward directions give the edge explanation, with no swap, clear or delayed hold.
+- [x] Preserve valid final-only/coarse swipes, held traces leaving the board, and interrupted/nonfinite samples.
+- [x] Check all four real native edge swipes and a successful next move with normal motion; verify the packaged copy and Release build.
+- [ ] Merge and deliver before priority 3.

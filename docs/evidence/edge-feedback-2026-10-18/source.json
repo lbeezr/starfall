@@ -1,0 +1,23 @@
+{
+  "base": "ba8ea71eeeb7453d88d144637b914c0d1a2b92bd",
+  "snapshot": "e516aad66176",
+  "runtimeBuildID": "dev.3be5031c35",
+  "files": {
+    "App/ConstellationTraceSurface.swift": "b71e2a7ca384d201e5e3172cab005e2d3aeee857fe527b6bf8d3d6d18114bf5b",
+    "App/DialogueScripts/observatory-dialogue.json": "d4d88e268452e72119de1e34f75825661e213f52d07f85d3c3b84c65b36ab1d2",
+    "App/SkyCopy.swift": "9db6dbc6151282e9db75f10dad2c5f25d948a4d3471a47bad3825a22e08635bb",
+    "AppTests/TraceInputPolishTests.swift": "a968ca177e10f228b9a6adf69e7c04f239135927021d6562314949326577e225",
+    "UITests/ResponsiveInputUITests.swift": "302e30254f7f5edfe63ff2680554d7be198a6aaada77a6851b3df6b094072231"
+  },
+  "initialAcceptance": {
+    "snapshot": "e59f41cde66e",
+    "files": {
+      "App/ConstellationTraceSurface.swift": "b71e2a7ca384d201e5e3172cab005e2d3aeee857fe527b6bf8d3d6d18114bf5b",
+      "App/DialogueScripts/observatory-dialogue.json": "d4d88e268452e72119de1e34f75825661e213f52d07f85d3c3b84c65b36ab1d2",
+      "App/SkyCopy.swift": "9db6dbc6151282e9db75f10dad2c5f25d948a4d3471a47bad3825a22e08635bb",
+      "AppTests/TraceInputPolishTests.swift": "a968ca177e10f228b9a6adf69e7c04f239135927021d6562314949326577e225",
+      "UITests/ResponsiveInputUITests.swift": "f95dc3dc138b5bb2cd03d986d3594fafb64b72af3bb6227bf4fa95c6064a3ef1"
+    }
+  },
+  "rerunNote": "Only the native test expectation changed: the authored four-star Amber group includes a grown star and awards five."
+}
