@@ -1,0 +1,104 @@
+{
+  "base": "045ec94357635301be37bb6b4a96eda221c5a11a",
+  "environment": "Xcode 27.1 (27A9275); Debug; iPhone 17e / iOS 27.0",
+  "runs": [
+    {
+      "testSourceSHA256": "b2f5ac4042a2bdbb1217104e0fd6abd38e116702d93073743feb11c0c3410a5f",
+      "summary": {
+        "status": "SUCCEEDED",
+        "durationMs": 126038,
+        "counts": {
+          "passed": 7,
+          "failed": 0,
+          "skipped": 0
+        },
+        "target": "simulator"
+      },
+      "artifacts": {
+        "buildLogPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-5baffeb4084c/logs/test_sim_2026-10-19T15-31-41-928Z_pid95357_02bd4fdb.log",
+        "xcresultPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-5baffeb4084c/result-bundles/test_sim_2026-10-19T15-31-41-928Z_pid95357_08ac2b73.xcresult",
+        "testProductsPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-5baffeb4084c/test-products/test_sim_2026-10-19T15-31-41-929Z_pid95357_2faf41ab.xctestproducts"
+      },
+      "diagnostics": {
+        "warnings": [],
+        "errors": [],
+        "testFailures": []
+      },
+      "testCases": [
+        {
+          "suite": "FallingSkyInteractionTests",
+          "test": "testBalanceControlsPreserveBoardPersistAndChangeArrivals",
+          "status": "passed",
+          "durationMs": 108578
+        },
+        {
+          "suite": "CriticalMassProductionTests",
+          "test": "testCommitRestoreInterruptionRestartAndWarnings",
+          "status": "passed",
+          "durationMs": 16
+        },
+        {
+          "suite": "CriticalMassProductionTests",
+          "test": "testEvolutionRetainsIdentityAndShowsCommittedAgeInQuietMotion",
+          "status": "passed",
+          "durationMs": 551
+        },
+        {
+          "suite": "CriticalMassProductionTests",
+          "test": "testNewSkiesAndReplayDisablePressure",
+          "status": "passed",
+          "durationMs": 7
+        },
+        {
+          "suite": "CriticalMassProductionTests",
+          "test": "testPurpleKeepsSilhouetteAndStaticNonColorMarkerInQuietMotion",
+          "status": "passed",
+          "durationMs": 4
+        },
+        {
+          "suite": "CriticalMassProductionTests",
+          "test": "testRetainedCriticalCadenceRestoresReplaysAndOnlyFreshSwitches",
+          "status": "passed",
+          "durationMs": 13
+        },
+        {
+          "suite": "CriticalMassProductionTests",
+          "test": "testV7IsPreservedAndMalformedV8DoesNotResurrectIt",
+          "status": "passed",
+          "durationMs": 6
+        }
+      ]
+    },
+    {
+      "testSourceSHA256": "43e830cccddc6a6b536c39ce11968f9406f6573893879624188d2e5c5122d08f",
+      "summary": {
+        "status": "SUCCEEDED",
+        "durationMs": 47116,
+        "counts": {
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0
+        },
+        "target": "simulator"
+      },
+      "artifacts": {
+        "buildLogPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-5baffeb4084c/logs/test_sim_2026-10-19T15-33-55-719Z_pid95357_61334814.log",
+        "xcresultPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-5baffeb4084c/result-bundles/test_sim_2026-10-19T15-33-55-719Z_pid95357_52d849c3.xcresult",
+        "testProductsPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-5baffeb4084c/test-products/test_sim_2026-10-19T15-33-55-719Z_pid95357_1fb83a19.xctestproducts"
+      },
+      "diagnostics": {
+        "warnings": [],
+        "errors": [],
+        "testFailures": []
+      },
+      "testCases": [
+        {
+          "suite": "FallingSkyInteractionTests",
+          "test": "testLargestTextSettingsFeedbackAndDismissal",
+          "status": "passed",
+          "durationMs": 40454
+        }
+      ]
+    }
+  ]
+}

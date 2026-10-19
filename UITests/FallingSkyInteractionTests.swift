@@ -276,7 +276,7 @@ final class FallingSkyInteractionTests: XCTestCase {
         XCTAssertTrue(settings.waitForExistence(timeout: 10)); settings.tap()
         for id in ["experiment.sound", "experiment.haptics", "experiment.calm"] {
             let control = app.switches[id]
-            reveal(control, in: app)
+            app.revealSkyMenuElement(control)
             XCTAssertTrue(control.isHittable)
             if control.value as? String != "1" { control.tap() }
             XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == %@", "1"), object: control).wait(timeout: 3))
@@ -296,7 +296,7 @@ final class FallingSkyInteractionTests: XCTestCase {
         XCTAssertTrue(settings.waitForExistence(timeout: 10)); settings.tap()
         for id in ["experiment.sound", "experiment.haptics", "experiment.calm"] {
             let control = app.switches[id]
-            reveal(control, in: app)
+            app.revealSkyMenuElement(control)
             XCTAssertEqual(control.value as? String, "1")
             control.tap() // Leave optional feedback and Calm effects off after the check.
         }
@@ -448,34 +448,73 @@ final class FallingSkyInteractionTests: XCTestCase {
     }
 
     @MainActor func testBalanceControlsPreserveBoardPersistAndChangeArrivals() {
-        let app = launch(); defer { app.terminate() }
-        togglePause(app)
-        waitForShowers(1, in: app)
-        togglePause(app)
-        let occupied = app.buttons["experiment.cell.0.0"].label
-        let pausedBoard = app.otherElements["experiment.board"].value as? String
+        // Fresh/retained setup, restore and two replays exceed the default UI
+        // allowance; individual control/commit waits remain bounded at 5 seconds.
+        executionTimeAllowance = 180
+        let app = XCUIApplication(); defer { app.terminate() }
+        app.launchArguments = ["--starfalls-reset", "--dialogue-review", "-calmEffects", "NO"]
+        app.launch()
+        XCTAssertTrue(app.buttons["experiment.next"].waitForExistence(timeout: 10))
+        let freshBoard = app.otherElements["experiment.board"].value as? String
         openMenu(app)
         app.skyMenuControl("experiment.balance").tap()
         let pace = app.buttons["experiment.pace"], frequency = app.buttons["experiment.darkFrequency"]
         XCTAssertTrue(pace.waitForExistence(timeout: 5))
-        pace.tap(); app.buttons["Gentle · 6s"].tap()
+        XCTAssertFalse(frequency.exists, "Fresh survival deliberately has no Dusk arrival control")
+        pace.tap(); app.buttons["Gentle · 6 seconds"].tap()
+        app.buttons["experiment.done"].tap()
+        XCTAssertEqual(app.otherElements["experiment.board"].value as? String, freshBoard)
+
+        // Dusk frequency belongs to retained rounds. Use the existing isolated,
+        // committed-history fixture instead of expecting Dusk in a fresh sky.
+        app.terminate()
+        app.launchArguments = ["--starfalls-reset", "--dialogue-review", "--dusk-fixture=unfed", "-calmEffects", "NO"]
+        app.launch()
+        XCTAssertTrue(app.buttons["experiment.next"].waitForExistence(timeout: 10))
+        let occupied = app.buttons["experiment.cell.0.2"].label
+        XCTAssertTrue(occupied.contains("Amber"))
+        let pausedBoard = app.otherElements["experiment.board"].value as? String
+        openMenu(app)
+        app.skyMenuControl("experiment.balance").tap()
+        XCTAssertTrue(pace.waitForExistence(timeout: 5))
+        pace.tap(); app.buttons["Gentle · 6 seconds"].tap()
         frequency.tap(); app.buttons["Frequent"].tap()
         XCTAssertTrue(app.staticTexts["experiment.balanceDetail"].label.contains("2–3 showers"))
         capture(app, "balance-gentle-frequent-settings")
         app.buttons["experiment.done"].tap()
         XCTAssertEqual(app.otherElements["experiment.board"].value as? String, pausedBoard)
-        XCTAssertEqual(app.buttons["experiment.cell.0.0"].label, occupied)
+        XCTAssertEqual(app.buttons["experiment.cell.0.2"].label, occupied)
         XCTAssertEqual(app.buttons["experiment.pause"].label, "Resume sky")
-        let replay = app.buttons["experiment.replay"]
-        if !replay.exists { openMenu(app) }; reveal(replay, in: app); replay.tap()
-        togglePause(app)
-        // The opening is independent of the selected ongoing pace.
-        waitForShowers(4, in: app, timeout: 12)
-        waitForShowers(5, in: app, timeout: 10)
-        togglePause(app)
+
+        @MainActor func replayAndCallShowers(_ count: Int) {
+            openMenu(app)
+            app.skyMenuControl("experiment.replay").tap()
+            XCTAssertTrue(app.buttons["sky.begin"].waitForExistence(timeout: 5))
+            togglePause(app) // Begin the retained round through the real ceremony.
+            togglePause(app) // Freeze its ongoing clock before testing arrival policy.
+            // Brisk can commit a shower while Begin and the menu pause are tapped.
+            // Count that real outcome rather than assuming the UI can pause instantly.
+            let initial = showers(app)
+            XCTAssertLessThan(initial, count)
+            guard initial < count else { return }
+            let next = app.buttons["experiment.next"]
+            for expected in (initial + 1)...count {
+                app.revealSkyControls([next])
+                XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: next).wait(timeout: 5))
+                next.tap()
+                XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+                    self.observedShowers(app) == expected
+                }, object: nil).wait(timeout: 5))
+            }
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: next).wait(timeout: 5))
+        }
+
+        // These retained skies have no opening cascade. Count actual native manual
+        // showers; the separate normal-motion/clock tests own automatic timing.
+        replayAndCallShowers(5)
         XCTAssertTrue(app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Dusk,")).count > 0)
-        capture(app, "balance-frequent-dark-star-shower-three")
-        app.terminate(); app.launchArguments = ["--starfalls"]; app.launch()
+        capture(app, "balance-frequent-dark-star-shower-five")
+        app.terminate(); app.launchArguments = ["--dialogue-review"]; app.launch()
         resumeRestoredPaused(app)
         XCTAssertTrue(app.buttons["experiment.pause"].waitForExistence(timeout: 10))
         XCTAssertEqual(app.buttons["experiment.pause"].label, "Resume sky")
@@ -486,13 +525,10 @@ final class FallingSkyInteractionTests: XCTestCase {
         app.buttons["experiment.resetBalance"].tap()
         XCTAssertTrue((pace.label + String(describing: pace.value)).contains("Brisk"))
         XCTAssertTrue((frequency.label + String(describing: frequency.value)).contains("Regular"))
-        pace.tap(); app.buttons["Brisk · cycle"].tap()
+        pace.tap(); app.buttons["Brisk · changing pace"].tap()
         frequency.tap(); app.buttons["None"].tap()
         app.buttons["experiment.done"].tap()
-        if !replay.exists { openMenu(app) }; reveal(replay, in: app); replay.tap()
-        togglePause(app)
-        waitForShowers(4, in: app, timeout: 16)
-        togglePause(app)
+        replayAndCallShowers(4)
         XCTAssertEqual(app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Dusk,")).count, 0)
         capture(app, "balance-brisk-no-dark-stars")
     }
