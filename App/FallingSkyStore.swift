@@ -89,7 +89,6 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     private(set) var suspended = true
     private(set) var sceneReady = false
     private(set) var isPaused = true
-    private(set) var nextShowerDate: Date?
     /// Interval/phase leading to the next shower, including while paused or overdue.
     private(set) var nextShowerCadence: SkyCadenceStep = .init(delay: 4, phase: .steady)
     let dialogue = SkyDialogueSession()
@@ -232,9 +231,9 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     @ObservationIgnored private let presenter: any FallingSkyPresenting
     @ObservationIgnored private let clock: any FallingSkyRainScheduling
     @ObservationIgnored private var rainGeneration: UInt64 = 0
-    @ObservationIgnored private var deadline: TimeInterval?
-    @ObservationIgnored private var remaining: TimeInterval = 0
-    @ObservationIgnored private var rainDue = false
+    private var deadline: TimeInterval?
+    private var remaining: TimeInterval = 0
+    private var rainDue = false
     #if DEBUG
     @ObservationIgnored private var timingLookup: ((FallingSky) -> SkyCadenceStep)?
     @ObservationIgnored private var timingObserver: ((TimingEvent) -> Void)?
@@ -398,6 +397,14 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     var phaseCue: SkyPhaseCue? { SkyPhaseCue(game: game, pending: pending) }
     var forecast: [IncomingStar] { pending?.forecast ?? game.incoming }
     var showerInterval: TimeInterval { nextShowerCadence.delay }
+    /// The renderer samples the scheduler's monotonic clock and frozen remainder.
+    /// It cannot schedule, resume or commit rain through this value boundary.
+    var showerCountdown: SkyShowerCountdown {
+        .init(remaining: rainDue ? 0 : max(0, deadline.map { $0 - clock.now } ?? remaining),
+              interval: showerInterval, advancing: deadline != nil && !rainDue,
+              paused: isPaused || suspended || game.isOver,
+              arriving: pending?.arrivals.isEmpty == false || rainDue)
+    }
     var inputPolicy: SkyInputPolicy {
         .init(suspended: suspended, gameOver: game.isOver, showerDue: rainDue,
               changingColumns: changingColumns, presenting: busy)
@@ -617,7 +624,6 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         rainGeneration &+= 1
         let ticket = rainGeneration
         deadline = clock.now + remaining
-        nextShowerDate = Date().addingTimeInterval(remaining)
         #if DEBUG
         observeTiming(.scheduled)
         #endif
@@ -626,7 +632,6 @@ enum SkyTerminalSpeech { case feedback, ceremony }
             #if DEBUG
             self.observeTiming(.due)
             #endif
-            self.nextShowerDate = nil
             self.rainDue = true
             #if DEBUG
             if self.busy { self.observeTiming(.deferred) }
@@ -652,7 +657,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         }
         rainGeneration &+= 1
         clock.cancel()
-        deadline = nil; nextShowerDate = nil; rainDue = false
+        deadline = nil; rainDue = false
     }
 
     private func deliverRainIfReady() {

@@ -1,0 +1,13 @@
+{
+  "base": "1ddd5f267bd13d31e48ebc4b7a628aadb097c170",
+  "snapshot": "d7b3658a2852",
+  "runtimeBuildID": "dev.ec06fde86d",
+  "files": {
+    "App/FallingSkyHUD.swift": "a3c1d413c91608cfa423a812f7e35551bb21113efc324dea7af537d857c36250",
+    "App/FallingSkyStore.swift": "9e0b29f053c21ad46213c2cdc36419aa09cd45c6d3078510e142587dda173595",
+    "App/FallingSkyView.swift": "5f4a314e7989859a580081954d374e47cb17c3c4f0c982f91771b48de759e6a4",
+    "AppTests/FallingSkyStoreTests.swift": "ef84a857ce9cb1dfc78906340f905dce425ea1418720fa0c44906ff5a10402e9",
+    "UITests/PacingCueUITests.swift": "236061e1bec0cebdeb9a8bd68adbc573810ff718211c6ca6e3e3a37de5a41878"
+  },
+  "focusedRun": "Same product inputs; the focused run preceded addition of the system Reduce Motion test method. Full hosted/native use these exact inputs."
+}

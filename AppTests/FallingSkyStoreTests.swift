@@ -249,7 +249,7 @@ final class FallingSkyStoreTests: XCTestCase {
         let (store, presenter, clock, _) = makeStore()
         store.togglePause(); clock.advance(2)
         store.togglePause(); clock.advance(100)
-        XCTAssertEqual(store.game.turns, 0); XCTAssertNil(store.nextShowerDate)
+        XCTAssertEqual(store.game.turns, 0); XCTAssertFalse(store.showerCountdown.advancing)
         store.togglePause(); clock.advance(1.9); XCTAssertEqual(store.game.turns, 0)
         clock.advance(0.1); XCTAssertEqual(store.game.turns, 1)
         store.setSuspended(true)
@@ -260,6 +260,53 @@ final class FallingSkyStoreTests: XCTestCase {
         store.setSuspended(false)
         clock.advance(3.9); XCTAssertEqual(store.game.turns, 1)
         clock.advance(0.1); XCTAssertEqual(store.game.turns, 2)
+    }
+
+    @MainActor func testForecastUsesHeldRemainderAndActualDeadlineThroughDeferredRain() throws {
+        let (store, presenter, clock, _) = makeStore()
+        store.togglePause(); clock.advance(1.5)
+        XCTAssertEqual(store.showerCountdown.remaining,2.5,accuracy:0.001)
+        XCTAssertEqual(store.showerCountdown.progress,0.375,accuracy:0.001)
+        XCTAssertTrue(store.showerCountdown.advancing)
+        let hold = try XCTUnwrap(store.beginConstellationHold())
+        let frozen = store.showerCountdown
+        XCTAssertFalse(frozen.advancing); XCTAssertFalse(frozen.paused)
+        clock.advance(40)
+        XCTAssertEqual(store.showerCountdown,frozen)
+        store.endConstellationHold(hold)
+        XCTAssertEqual(store.showerCountdown.progress,frozen.progress,accuracy:0.001)
+        XCTAssertEqual(try XCTUnwrap(clock.deadline)-clock.now,frozen.remaining,accuracy:0.001)
+        clock.advance(2.5)
+        XCTAssertEqual(store.game.turns,1)
+        XCTAssertTrue(store.showerCountdown.arriving); XCTAssertEqual(store.showerCountdown.progress,1)
+        clock.advance(100)
+        XCTAssertEqual(store.game.turns,1)
+        XCTAssertEqual(store.showerCountdown.remaining,0)
+        XCTAssertFalse(store.showerCountdown.advancing)
+        presenter.finish(); presenter.finish()
+        XCTAssertEqual(store.game.turns,2)
+        XCTAssertFalse(store.showerCountdown.arriving)
+        XCTAssertEqual(store.showerCountdown.remaining,4,accuracy:0.001)
+        XCTAssertEqual(store.showerCountdown.progress,0)
+    }
+
+    @MainActor func testForecastPreservesPauseGraceBackgroundAndQuietOutcome() {
+        let (store, presenter, clock, _) = makeStore()
+        store.togglePause(); clock.advance(3.9)
+        store.togglePause()
+        XCTAssertTrue(store.showerCountdown.paused)
+        XCTAssertFalse(store.showerCountdown.advancing)
+        XCTAssertEqual(store.showerCountdown.remaining,0.5,accuracy:0.001)
+        let frozen = store.showerCountdown
+        store.setReducedMotion(true); clock.advance(100)
+        XCTAssertEqual(store.showerCountdown,frozen)
+        store.setSuspended(true); clock.advance(100); store.setSuspended(false)
+        XCTAssertEqual(store.showerCountdown,frozen)
+        store.togglePause(); clock.advance(0.49)
+        XCTAssertEqual(store.game.turns,0)
+        clock.advance(0.01); presenter.finish()
+        XCTAssertEqual(store.game.turns,1)
+        XCTAssertEqual(store.showerCountdown.remaining,4,accuracy:0.001)
     }
 
     @MainActor func testLateClockAndLongAnimationNeverQueueABurst() {

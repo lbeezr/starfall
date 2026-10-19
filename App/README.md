@@ -112,3 +112,5 @@ Ceremonies reserve bottom scroll space using theme spacing. Welcome, Entry and r
 **Aging retired:** Ordinary fresh and restored critical-mass skies disable automatic aging and purple warnings. Migration precedes scene presentation; matching growth, committed preview, score and cadence remain. Help and Dusk controls follow the selected core rule. Historical Debug fixtures remain regression tooling.
 
 Outward cardinal swipes preserve a blocked-swap result through the touch adapter, so the guide explains the edge instead of giving tap instructions.
+
+The shower trail reads a narrow monotonic countdown snapshot, including held remainder and due state. Frozen states render once; normal and quiet periodic updates cannot schedule or commit rain. `FallingSkyView` separates scene composition, lifecycle observation and modal/award expressions while retaining the same state owners.

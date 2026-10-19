@@ -4,7 +4,7 @@
 
 Outward swipes now say “That direction leaves the sky. Swipe inward.” The directional recognizer preserves a blocked-swipe result through the production adapter, rather than converting it into generic tap cancellation. The contact is consumed once; the next contact remains available immediately. This is the final small consequence-feedback correction before shower pacing.
 
-**Next action:** Merge this verified correction and verify canonical phone delivery, then begin shower pacing.
+**Next action:** Proceed to shower pacing; incorporate physical-play feedback when available.
 
 ## Acceptance and root cause
 
@@ -27,3 +27,7 @@ The hosted checks include the shipped copy inventory and all four-edge/recovery 
 <img src="dev-ba8ea71-wip-e516aad66176__edge-feedback__iphone-16-pro-max__normal.jpg" width="240" alt="The guide explains that the swipe direction leaves the sky, below an unchanged dense star board">
 
 *Inspected native iPhone 16 Pro Max / iOS 27.0 Simulator, default text and normal motion, `dev.3be5031c35`. The historical dense fixture includes Dusk for compatibility; it is not fresh survival. JPEG reduced to 1280 pixels high. All four native gestures leave this board unchanged, and the subsequent tap awards five. The image establishes readable copy placement, not physical comfort.*
+
+## Delivery
+
+[PR #146](https://github.com/lbeezr/starfall/pull/146) merged at `1ddd5f267bd13d31e48ebc4b7a628aadb097c170`, with the same tree as accepted local `302f0af`. The canonical updater installed and verified **`dev.3be5031c35`** after Core/signature checks, preserving player data. Main CI was pending at installation. [delivery.json](delivery.json) is the sanitized receipt.

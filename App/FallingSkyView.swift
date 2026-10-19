@@ -54,6 +54,57 @@ import StarfallCore
     }
 
     var body: some View {
+        lifecycleContent
+        .alert(store.persistenceNotice?.title ?? "", isPresented: Binding(
+            get: { store.persistenceNotice != nil && !settings },
+            set: { if !$0 { store.dismissPersistenceNotice() } })) {
+                Button(SkyCopy.text(.actionDone)) { store.dismissPersistenceNotice() }
+            } message: {
+                Text(store.persistenceNotice?.message ?? "")
+            }
+        .sheet(item: $menu, onDismiss: { if voiceOver && !showingCeremony { menuFocused = true } }) { destination in
+            settingsView(destination)
+        }
+        .overlayPreferenceValue(StarlightAnchors.self) { anchors in
+            GeometryReader { proxy in
+                if !settings, !showingCeremony, let receipt = store.celebration,
+                   let board = anchors[.board], let score = anchors[.score], let header = anchors[.header] {
+                    StarlightCelebrationOverlay(event: receipt, board: proxy[board], score: proxy[score], header: proxy[header], quiet: quietMotion)
+                        .id(receipt.id)
+                }
+            }.allowsHitTesting(false)
+        }
+    }
+
+    /// Keep lifecycle observation separate from the scene expression for older compilers.
+    private var lifecycleContent: some View {
+        sceneContent
+        .preferredColorScheme(.dark)
+        .statusBarHidden(!settings)
+        .tint(StarfallTheme.Colors.actionPrimary)
+        .onAppear { CrystalCelebrationArtwork.shared.prewarm(); store.terminalSpeech = .ceremony; updateSuspension(); store.settlePresentation(); updateMotion() }
+        .onDisappear { invalidateInteraction(); store.setSuspended(true); store.terminalSpeech = .feedback }
+        .onChange(of: store.constellationInputGeneration) { invalidateInteraction() }
+        .onChange(of: store.game) {
+            interaction.reconcile(with: store.game, release: store.endConstellationHold)
+            store.scene.clearConstellationTrace()
+        }
+        .onChange(of: store.canClear) { _, enabled in if !enabled { cancelConstellation() } }
+        .onChange(of: store.isPaused) { cancelConstellation() }
+        .onChange(of: scenePhase) { invalidateInteraction(); updateSuspension() }
+        .onChange(of: store.persistenceNotice) { invalidateInteraction(); finishHandoffIfReady(); updateSuspension() }
+        .onChange(of: settings) { finishHandoffIfReady(); updateSuspension() }
+        .onChange(of: store.sceneReady) { finishHandoffIfReady(); updateSuspension() }
+        .onChange(of: flow) { cancelConstellation(); updateSuspension() }
+        .onChange(of: endingReady) { updateSuspension() }
+        .onChange(of: reduceMotion) { updateMotion() }
+        .onChange(of: voiceOver) { updateMotion() }
+        .onChange(of: calmEffects) { updateMotion() }
+        .onChange(of: reduceMotion) { invalidateInteraction() }
+        .task(id: handoffKey) { await presentHandoff() }
+    }
+
+    private var sceneContent: some View {
         ZStack {
             LandingBackdrop(place: place).ignoresSafeArea()
             VStack(spacing: 0) {
@@ -114,48 +165,6 @@ import StarfallCore
                 .accessibilityIdentifier("sky.preparing")
                 .zIndex(2)
             }
-        }
-        .preferredColorScheme(.dark)
-        .statusBarHidden(!settings)
-        .tint(StarfallTheme.Colors.actionPrimary)
-        .onAppear { CrystalCelebrationArtwork.shared.prewarm(); store.terminalSpeech = .ceremony; updateSuspension(); store.settlePresentation(); updateMotion() }
-        .onDisappear { invalidateInteraction(); store.setSuspended(true); store.terminalSpeech = .feedback }
-        .onChange(of: store.constellationInputGeneration) { invalidateInteraction() }
-        .onChange(of: store.game) {
-            interaction.reconcile(with: store.game, release: store.endConstellationHold)
-            store.scene.clearConstellationTrace()
-        }
-        .onChange(of: store.canClear) { _, enabled in if !enabled { cancelConstellation() } }
-        .onChange(of: store.isPaused) { cancelConstellation() }
-        .onChange(of: scenePhase) { invalidateInteraction(); updateSuspension() }
-        .onChange(of: store.persistenceNotice) { invalidateInteraction(); finishHandoffIfReady(); updateSuspension() }
-        .onChange(of: settings) { finishHandoffIfReady(); updateSuspension() }
-        .onChange(of: store.sceneReady) { finishHandoffIfReady(); updateSuspension() }
-        .onChange(of: flow) { cancelConstellation(); updateSuspension() }
-        .onChange(of: endingReady) { updateSuspension() }
-        .onChange(of: reduceMotion) { updateMotion() }
-        .onChange(of: voiceOver) { updateMotion() }
-        .onChange(of: calmEffects) { updateMotion() }
-        .onChange(of: reduceMotion) { invalidateInteraction() }
-        .task(id: handoffKey) { await presentHandoff() }
-        .alert(store.persistenceNotice?.title ?? "", isPresented: Binding(
-            get: { store.persistenceNotice != nil && !settings },
-            set: { if !$0 { store.dismissPersistenceNotice() } })) {
-                Button(SkyCopy.text(.actionDone)) { store.dismissPersistenceNotice() }
-            } message: {
-                Text(store.persistenceNotice?.message ?? "")
-            }
-        .sheet(item: $menu, onDismiss: { if voiceOver && !showingCeremony { menuFocused = true } }) { destination in
-            settingsView(destination)
-        }
-        .overlayPreferenceValue(StarlightAnchors.self) { anchors in
-            GeometryReader { proxy in
-                if !settings, !showingCeremony, let receipt = store.celebration,
-                   let board = anchors[.board], let score = anchors[.score], let header = anchors[.header] {
-                    StarlightCelebrationOverlay(event: receipt, board: proxy[board], score: proxy[score], header: proxy[header], quiet: quietMotion)
-                        .id(receipt.id)
-                }
-            }.allowsHitTesting(false)
         }
     }
 
@@ -281,9 +290,7 @@ import StarfallCore
     }
 
     private func showerTrail(island: Bool, width: CGFloat = StarfallTheme.Layout.showerTrailWidth) -> some View {
-        SkyShowerTrail(deadline: store.nextShowerDate, interval: store.showerInterval,
-                       paused: store.isPaused || store.suspended || store.game.isOver,
-                       arriving: store.pending?.arrivals.isEmpty == false,
+        SkyShowerTrail(readCountdown: { store.showerCountdown },
                        quiet: quietMotion, island: island, width: width, forecast: store.forecast)
     }
 
