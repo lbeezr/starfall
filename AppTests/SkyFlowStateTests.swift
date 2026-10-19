@@ -287,6 +287,9 @@ extension SkyFlowStateTests {
             XCTAssertTrue(firstLight.challenge); XCTAssertFalse(firstLight.criticalMass)
             XCTAssertFalse(firstLight.openingCascade); XCTAssertFalse(firstLight.opalStorms)
         }
+        XCTAssertEqual(SkyHelpContext(game: fresh).lessons, SkyLesson.allCases)
+        XCTAssertEqual(SkyHelpContext(game: retained).lessons, [.square, .cross, .relay])
+        XCTAssertTrue(SkyHelpContext(game: challenge).lessons.isEmpty)
         let dusk = SkyHelpContext(game: retained)
         XCTAssertFalse(dusk.criticalMass); XCTAssertFalse(dusk.challenge); XCTAssertEqual(dusk.duskRule, .patientFeeding)
         var flow = SkyFlowState(arguments: [])

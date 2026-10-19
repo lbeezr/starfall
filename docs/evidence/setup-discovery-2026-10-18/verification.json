@@ -1,0 +1,680 @@
+{
+  "core": {
+    "passed": 172,
+    "failed": 0,
+    "source": "Core files in 85f2d4b; unchanged in 774cf98"
+  },
+  "firstAttempt": {
+    "summary": {
+      "status": "FAILED",
+      "durationMs": 60494,
+      "counts": {
+        "passed": 30,
+        "failed": 1,
+        "skipped": 0
+      },
+      "target": "simulator"
+    },
+    "artifacts": {
+      "buildLogPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c6187ff32363/logs/test_sim_2026-10-19T03-30-08-434Z_pid62736_d3eac5b6.log",
+      "xcresultPath": "artifacts/setup-discovery/focused.xcresult",
+      "testProductsPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c6187ff32363/test-products/test_sim_2026-10-19T03-30-08-435Z_pid62736_339ab47d.xctestproducts"
+    },
+    "diagnostics": {
+      "warnings": [],
+      "errors": [],
+      "testFailures": [
+        {
+          "suite": "SkyLessonInteractionTests",
+          "test": "testEveryExampleUsesExplicitMovesAndReturnsToUnchangedRound",
+          "message": "XCTAssertEqual failed: (\"Optional(\"0 showers, 0 matching groups ready\")\") is not equal to (\"Optional(\"0 showers, 0 matching groups\")\")",
+          "location": "/Users/lbeezr/.codex/worktrees/bdbc/Starfall/UITests/SkyLessonInteractionTests.swift:46"
+        },
+        {
+          "suite": "SkyLessonInteractionTests",
+          "test": "testEveryExampleUsesExplicitMovesAndReturnsToUnchangedRound()",
+          "message": "XCTAssertEqual failed: (\"Optional(\"0 showers, 0 matching groups ready\")\") is not equal to (\"Optional(\"0 showers, 0 matching groups\")\")"
+        }
+      ]
+    },
+    "testCases": [
+      {
+        "suite": "SkyLessonInteractionTests",
+        "test": "testEveryExampleUsesExplicitMovesAndReturnsToUnchangedRound",
+        "status": "failed",
+        "durationMs": 23335
+      },
+      {
+        "suite": "SkyLessonInteractionTests",
+        "test": "testLargestTextQuietExampleSurvivesBackgroundAndDismissal",
+        "status": "passed",
+        "durationMs": 25738
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testAllSpeakerAssetsArePackagedWithTransparentMarginsAtBoundedSize",
+        "status": "passed",
+        "durationMs": 6
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testCatalogRendersEveryBundledScriptAndRejectsAuthoringErrors",
+        "status": "passed",
+        "durationMs": 4
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testCommittedClearPublishesFeedbackImmediatelyAndRestoresWithoutTransientCopy",
+        "status": "passed",
+        "durationMs": 17
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testContextKeepsTheOriginalSpeakerAndForecastTense",
+        "status": "passed",
+        "durationMs": 1
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testDuskHelpUsesTheRetainedRuleAndTraceCelebrationUsesDistinctStars",
+        "status": "passed",
+        "durationMs": 6
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testDuskTeasesOnlyAfterCommittedConsumptionOrAnActuallyDrainedClear",
+        "status": "passed",
+        "durationMs": 8
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testEveryForecastStarFinishesOnBothPathsBeforeReset",
+        "status": "passed",
+        "durationMs": 3
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testExpiryRejectsStaleCallbacksAfterNewMessageReopenAndReset",
+        "status": "passed",
+        "durationMs": 0
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testIslandPlacementFallsBackForUnknownSmallAndAccessibleLayouts",
+        "status": "passed",
+        "durationMs": 0
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testNewerHelpSurvivesPlayerAndShowerCompletionWithoutDuplicateSpeech",
+        "status": "passed",
+        "durationMs": 15
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testSpeakerSequenceAndPriorityHaveOneCurrentMessageAndNoBacklog",
+        "status": "passed",
+        "durationMs": 0
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testTypedInterfaceInventoryAndTemplatesRejectMissingExtraAndInjectedValues",
+        "status": "passed",
+        "durationMs": 5
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testBeginKeepsInitialSeedAndExistingReplayGenerationContracts",
+        "status": "passed",
+        "durationMs": 6
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testBeginRejectsDuplicateAndStaleEntryActions",
+        "status": "passed",
+        "durationMs": 0
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testBrowsingAndCancelingEveryReplacementPreservesCommittedSave",
+        "status": "passed",
+        "durationMs": 9
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testCanceledHandoffRejectsLateReadinessAndDoesNotReopenPlay",
+        "status": "passed",
+        "durationMs": 0
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testCancelingCompletedSkyReplayKeepsTheSavedOutcome",
+        "status": "passed",
+        "durationMs": 20
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testCastEntranceKeepsCompleteRasterAndShadowInsideItsRegion",
+        "status": "passed",
+        "durationMs": 1
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testContinueRetainsPauseChoiceAndClockRemainder",
+        "status": "passed",
+        "durationMs": 6
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testEntryObjectiveDescribesPendingChoiceInsteadOfRetainedRound",
+        "status": "passed",
+        "durationMs": 0
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testFreshEntryAndCancelNeverCreatesASave",
+        "status": "passed",
+        "durationMs": 1
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testHandoffRequiresSettledReadyActiveAndModalFreeAdmission",
+        "status": "passed",
+        "durationMs": 0
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testHelpUsesCurrentOrPendingRulesWithoutCommittingEntry",
+        "status": "passed",
+        "durationMs": 0
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testOpeningContinuePreservesTheExistingResumeGrace",
+        "status": "passed",
+        "durationMs": 3
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testPreferencesNeverStageOrReplaceASkyAndAreBlockedDuringHandoff",
+        "status": "passed",
+        "durationMs": 0
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testResultSnapshotKeepsTheActualWinningScoreIncludingOvershoot",
+        "status": "passed",
+        "durationMs": 1
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testResultSnapshotsExplainOrdinaryAndChallengeOverflowAfterRestore",
+        "status": "passed",
+        "durationMs": 3
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testSceneDetachmentSynchronouslyFreezesAndRejectsADueClock",
+        "status": "passed",
+        "durationMs": 2
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testWelcomeSummaryDistinguishesSavedModePauseAndCompletedSkies",
+        "status": "passed",
+        "durationMs": 2
+      }
+    ]
+  },
+  "corrected": {
+    "summary": {
+      "status": "SUCCEEDED",
+      "durationMs": 77819,
+      "counts": {
+        "passed": 32,
+        "failed": 0,
+        "skipped": 0
+      },
+      "target": "simulator"
+    },
+    "artifacts": {
+      "buildLogPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c6187ff32363/logs/test_sim_2026-10-19T03-32-21-631Z_pid62736_e1c6a047.log",
+      "xcresultPath": "artifacts/setup-discovery/final-focused.xcresult",
+      "testProductsPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c6187ff32363/test-products/test_sim_2026-10-19T03-32-21-631Z_pid62736_1ea2ffbc.xctestproducts"
+    },
+    "diagnostics": {
+      "warnings": [],
+      "errors": [],
+      "testFailures": []
+    },
+    "testCases": [
+      {
+        "suite": "SkyFlowInteractionTests",
+        "test": "testPendingFirstLightHelpUsesChallengeRulesAndPreservesEntry",
+        "status": "passed",
+        "durationMs": 18259
+      },
+      {
+        "suite": "SkyLessonInteractionTests",
+        "test": "testEveryExampleUsesExplicitMovesAndReturnsToUnchangedRound",
+        "status": "passed",
+        "durationMs": 25421
+      },
+      {
+        "suite": "SkyLessonInteractionTests",
+        "test": "testLargestTextQuietExampleSurvivesBackgroundAndDismissal",
+        "status": "passed",
+        "durationMs": 24413
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testAllSpeakerAssetsArePackagedWithTransparentMarginsAtBoundedSize",
+        "status": "passed",
+        "durationMs": 5
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testCatalogRendersEveryBundledScriptAndRejectsAuthoringErrors",
+        "status": "passed",
+        "durationMs": 5
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testCommittedClearPublishesFeedbackImmediatelyAndRestoresWithoutTransientCopy",
+        "status": "passed",
+        "durationMs": 16
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testContextKeepsTheOriginalSpeakerAndForecastTense",
+        "status": "passed",
+        "durationMs": 1
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testDuskHelpUsesTheRetainedRuleAndTraceCelebrationUsesDistinctStars",
+        "status": "passed",
+        "durationMs": 6
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testDuskTeasesOnlyAfterCommittedConsumptionOrAnActuallyDrainedClear",
+        "status": "passed",
+        "durationMs": 8
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testEveryForecastStarFinishesOnBothPathsBeforeReset",
+        "status": "passed",
+        "durationMs": 4
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testExpiryRejectsStaleCallbacksAfterNewMessageReopenAndReset",
+        "status": "passed",
+        "durationMs": 0
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testIslandPlacementFallsBackForUnknownSmallAndAccessibleLayouts",
+        "status": "passed",
+        "durationMs": 0
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testNewerHelpSurvivesPlayerAndShowerCompletionWithoutDuplicateSpeech",
+        "status": "passed",
+        "durationMs": 16
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testSpeakerSequenceAndPriorityHaveOneCurrentMessageAndNoBacklog",
+        "status": "passed",
+        "durationMs": 0
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testTypedInterfaceInventoryAndTemplatesRejectMissingExtraAndInjectedValues",
+        "status": "passed",
+        "durationMs": 6
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testBeginKeepsInitialSeedAndExistingReplayGenerationContracts",
+        "status": "passed",
+        "durationMs": 7
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testBeginRejectsDuplicateAndStaleEntryActions",
+        "status": "passed",
+        "durationMs": 1
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testBrowsingAndCancelingEveryReplacementPreservesCommittedSave",
+        "status": "passed",
+        "durationMs": 10
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testCanceledHandoffRejectsLateReadinessAndDoesNotReopenPlay",
+        "status": "passed",
+        "durationMs": 0
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testCancelingCompletedSkyReplayKeepsTheSavedOutcome",
+        "status": "passed",
+        "durationMs": 21
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testCastEntranceKeepsCompleteRasterAndShadowInsideItsRegion",
+        "status": "passed",
+        "durationMs": 1
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testContinueRetainsPauseChoiceAndClockRemainder",
+        "status": "passed",
+        "durationMs": 6
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testEntryObjectiveDescribesPendingChoiceInsteadOfRetainedRound",
+        "status": "passed",
+        "durationMs": 0
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testFreshEntryAndCancelNeverCreatesASave",
+        "status": "passed",
+        "durationMs": 1
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testHandoffRequiresSettledReadyActiveAndModalFreeAdmission",
+        "status": "passed",
+        "durationMs": 0
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testHelpUsesCurrentOrPendingRulesWithoutCommittingEntry",
+        "status": "passed",
+        "durationMs": 0
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testOpeningContinuePreservesTheExistingResumeGrace",
+        "status": "passed",
+        "durationMs": 2
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testPreferencesNeverStageOrReplaceASkyAndAreBlockedDuringHandoff",
+        "status": "passed",
+        "durationMs": 0
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testResultSnapshotKeepsTheActualWinningScoreIncludingOvershoot",
+        "status": "passed",
+        "durationMs": 1
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testResultSnapshotsExplainOrdinaryAndChallengeOverflowAfterRestore",
+        "status": "passed",
+        "durationMs": 2
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testSceneDetachmentSynchronouslyFreezesAndRejectsADueClock",
+        "status": "passed",
+        "durationMs": 2
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testWelcomeSummaryDistinguishesSavedModePauseAndCompletedSkies",
+        "status": "passed",
+        "durationMs": 2
+      }
+    ]
+  },
+  "beforeCompactLayoutNative": {
+    "summary": {
+      "status": "SUCCEEDED",
+      "durationMs": 168208,
+      "counts": {
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0
+      },
+      "target": "simulator"
+    },
+    "artifacts": {
+      "buildLogPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c6187ff32363/logs/test_sim_2026-10-19T03-34-07-363Z_pid62736_1ff12a9a.log",
+      "xcresultPath": "artifacts/setup-discovery/native-acceptance.xcresult",
+      "testProductsPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c6187ff32363/test-products/test_sim_2026-10-19T03-34-07-363Z_pid62736_00717162.xctestproducts"
+    },
+    "diagnostics": {
+      "warnings": [],
+      "errors": [],
+      "testFailures": []
+    },
+    "testCases": [
+      {
+        "suite": "ObservatoryInteractionTests",
+        "test": "testLargestTextHelpReadsThroughAndReturnsToUnchangedRound",
+        "status": "passed",
+        "durationMs": 105303
+      },
+      {
+        "suite": "SkyLessonInteractionTests",
+        "test": "testSystemReduceMotionExamplesKeepTheSameOutcomes",
+        "status": "passed",
+        "durationMs": 46405
+      },
+      {
+        "suite": "SkyTechniqueInteractionTests",
+        "test": "testFastSameColorStrokeSwapsOnceThenHoldDrawClearsOnlyFive",
+        "status": "passed",
+        "durationMs": 11508
+      }
+    ]
+  },
+  "compactAttempt": {
+    "summary": {
+      "status": "FAILED",
+      "durationMs": 82768,
+      "counts": {
+        "passed": 13,
+        "failed": 2,
+        "skipped": 0
+      },
+      "target": "simulator"
+    },
+    "artifacts": {
+      "buildLogPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c6187ff32363/logs/test_sim_2026-10-19T03-37-14-902Z_pid62736_c6110823.log",
+      "xcresultPath": "artifacts/setup-discovery/compact-final.xcresult",
+      "testProductsPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c6187ff32363/test-products/test_sim_2026-10-19T03-37-14-902Z_pid62736_9d1ce758.xctestproducts"
+    },
+    "diagnostics": {
+      "warnings": [],
+      "errors": [],
+      "testFailures": [
+        {
+          "suite": "SkyLessonInteractionTests",
+          "test": "testEveryExampleUsesExplicitMovesAndReturnsToUnchangedRound",
+          "message": "XCTAssertGreaterThanOrEqual failed: (\"43.99999999999994\") is less than (\"44.0\")",
+          "location": "/Users/lbeezr/.codex/worktrees/bdbc/Starfall/UITests/SkyLessonInteractionTests.swift:19"
+        },
+        {
+          "suite": "SkyLessonInteractionTests",
+          "test": "testEveryExampleUsesExplicitMovesAndReturnsToUnchangedRound()",
+          "message": "XCTAssertGreaterThanOrEqual failed: (\"43.99999999999994\") is less than (\"44.0\")"
+        },
+        {
+          "suite": "SkyLessonInteractionTests",
+          "test": "testSystemReduceMotionExamplesKeepTheSameOutcomes",
+          "message": "XCTAssertGreaterThanOrEqual failed: (\"43.99999999999994\") is less than (\"44.0\")",
+          "location": "/Users/lbeezr/.codex/worktrees/bdbc/Starfall/UITests/SkyLessonInteractionTests.swift:19"
+        },
+        {
+          "suite": "SkyLessonInteractionTests",
+          "test": "testSystemReduceMotionExamplesKeepTheSameOutcomes()",
+          "message": "XCTAssertGreaterThanOrEqual failed: (\"43.99999999999994\") is less than (\"44.0\")"
+        }
+      ]
+    },
+    "testCases": [
+      {
+        "suite": "SkyLessonInteractionTests",
+        "test": "testEveryExampleUsesExplicitMovesAndReturnsToUnchangedRound",
+        "status": "failed",
+        "durationMs": 14316
+      },
+      {
+        "suite": "SkyLessonInteractionTests",
+        "test": "testLargestTextQuietExampleSurvivesBackgroundAndDismissal",
+        "status": "passed",
+        "durationMs": 25877
+      },
+      {
+        "suite": "SkyLessonInteractionTests",
+        "test": "testSystemReduceMotionExamplesKeepTheSameOutcomes",
+        "status": "failed",
+        "durationMs": 34679
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testAllSpeakerAssetsArePackagedWithTransparentMarginsAtBoundedSize",
+        "status": "passed",
+        "durationMs": 6
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testCatalogRendersEveryBundledScriptAndRejectsAuthoringErrors",
+        "status": "passed",
+        "durationMs": 5
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testCommittedClearPublishesFeedbackImmediatelyAndRestoresWithoutTransientCopy",
+        "status": "passed",
+        "durationMs": 16
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testContextKeepsTheOriginalSpeakerAndForecastTense",
+        "status": "passed",
+        "durationMs": 1
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testDuskHelpUsesTheRetainedRuleAndTraceCelebrationUsesDistinctStars",
+        "status": "passed",
+        "durationMs": 5
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testDuskTeasesOnlyAfterCommittedConsumptionOrAnActuallyDrainedClear",
+        "status": "passed",
+        "durationMs": 8
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testEveryForecastStarFinishesOnBothPathsBeforeReset",
+        "status": "passed",
+        "durationMs": 3
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testExpiryRejectsStaleCallbacksAfterNewMessageReopenAndReset",
+        "status": "passed",
+        "durationMs": 0
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testIslandPlacementFallsBackForUnknownSmallAndAccessibleLayouts",
+        "status": "passed",
+        "durationMs": 0
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testNewerHelpSurvivesPlayerAndShowerCompletionWithoutDuplicateSpeech",
+        "status": "passed",
+        "durationMs": 14
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testSpeakerSequenceAndPriorityHaveOneCurrentMessageAndNoBacklog",
+        "status": "passed",
+        "durationMs": 0
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testTypedInterfaceInventoryAndTemplatesRejectMissingExtraAndInjectedValues",
+        "status": "passed",
+        "durationMs": 4
+      }
+    ]
+  },
+  "finalNative": {
+    "summary": {
+      "status": "SUCCEEDED",
+      "durationMs": 102826,
+      "counts": {
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0
+      },
+      "target": "simulator"
+    },
+    "artifacts": {
+      "buildLogPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c6187ff32363/logs/test_sim_2026-10-19T03-40-45-127Z_pid62736_d7d1a2f8.log",
+      "xcresultPath": "artifacts/setup-discovery/compact-native-corrected.xcresult",
+      "testProductsPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c6187ff32363/test-products/test_sim_2026-10-19T03-40-45-127Z_pid62736_d61be42f.xctestproducts"
+    },
+    "diagnostics": {
+      "warnings": [],
+      "errors": [],
+      "testFailures": []
+    },
+    "testCases": [
+      {
+        "suite": "SkyLessonInteractionTests",
+        "test": "testEveryExampleUsesExplicitMovesAndReturnsToUnchangedRound",
+        "status": "passed",
+        "durationMs": 25939
+      },
+      {
+        "suite": "SkyLessonInteractionTests",
+        "test": "testLargestTextQuietExampleSurvivesBackgroundAndDismissal",
+        "status": "passed",
+        "durationMs": 24763
+      },
+      {
+        "suite": "SkyLessonInteractionTests",
+        "test": "testSystemReduceMotionExamplesKeepTheSameOutcomes",
+        "status": "passed",
+        "durationMs": 46467
+      }
+    ]
+  },
+  "release": {
+    "summary": {
+      "status": "SUCCEEDED",
+      "durationMs": 11198,
+      "target": "simulator"
+    },
+    "artifacts": {
+      "buildLogPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c6187ff32363/logs/build_sim_2026-10-19T03-42-38-074Z_pid62736_838bf247.log"
+    },
+    "diagnostics": {
+      "warnings": [],
+      "errors": []
+    }
+  }
+}

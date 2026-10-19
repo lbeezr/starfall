@@ -114,3 +114,5 @@ Ceremonies reserve bottom scroll space using theme spacing. Welcome, Entry and r
 Outward cardinal swipes preserve a blocked-swap result through the touch adapter, so the guide explains the edge instead of giving tap instructions.
 
 The shower trail reads a narrow monotonic countdown snapshot, including held remainder and due state. Frozen states render once; normal and quiet periodic updates cannot schedule or commit rain. `FallingSkyView` separates scene composition, lifecycle observation and modal/award expressions while retaining the same state owners.
+
+`SkyLessonView` offers optional interactive Help examples using shared cast materials and explicit Core moves. It owns a local value only, with no live Store, archive or shower clock. Only the diagram animates; instructions and exact points update immediately.

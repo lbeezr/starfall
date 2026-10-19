@@ -1,0 +1,12 @@
+{
+  "buildID": "dev.9020625ab7",
+  "source": "94da76e80c7817b193da4abe262659e32f033481",
+  "bundleVersion": "1",
+  "validation": {
+    "coreTests": "passed",
+    "signature": "verified",
+    "mainCIAtInstall": "pending"
+  },
+  "pullRequest": "https://github.com/lbeezr/starfall/pull/147",
+  "installation": "Canonical updater verified actual installed application; no reset or launch."
+}

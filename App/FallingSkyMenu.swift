@@ -57,7 +57,7 @@ struct FallingSkyMenu: View {
                             .accessibilityHint(SkyCopy.text(.menuFirstLightHint))
                             .accessibilityIdentifier("experiment.challenge")
                     }
-                    NavigationLink { SkyHowToPlay(context: helpContext).toolbar { dismissal } } label: { Label(SkyCopy.text(.menuHelp), systemImage: "questionmark.circle") }
+                    NavigationLink { SkyHowToPlay(context: helpContext, done: done).toolbar { dismissal } } label: { Label(SkyCopy.text(.menuHelp), systemImage: "questionmark.circle") }
                         .accessibilityIdentifier("experiment.help")
                 } header: { Text(SkyCopy.text(.menuExplore)) } footer: {
                     Text(Bundle.main.object(forInfoDictionaryKey: "StarfallBuildID") as? String ?? "dev.local")

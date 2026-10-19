@@ -57,3 +57,5 @@ The focused constellation gap/off-center and quick directional swap checks exerc
 `ResponsiveInputUITests.testOutwardSwipesExplainTheEdgeAndNextTapClears` checks truthful copy on all four edges, unchanged board/score and a successful following tap with normal motion.
 
 `PacingCueUITests` checks that normal, calm and system Reduce Motion forecasts approach before commitment and actually arrive afterward. Bounded state predicates replace guessed animation sleeps.
+
+`SkyLessonInteractionTests` walks every explicit example action, checks exact rewards and reset, returns to unchanged live play, and checks largest-text/calm background and dismissal. These demonstrations teach consequences; they do not replace native swipe/hold training.
