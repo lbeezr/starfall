@@ -1,0 +1,45 @@
+{
+  "observed_at_utc": "2026-10-19T14:53:57Z",
+  "feature_pull_request": "https://github.com/lbeezr/starfall/pull/154",
+  "ci_correction_pull_request": "https://github.com/lbeezr/starfall/pull/157",
+  "merged_main": "ab868b5f7653b0f3207f78bc39a6d8b89ab17ed9",
+  "runtime_fingerprint": "dev.5afe4a3c23",
+  "bundle": "com.starfall.prototype",
+  "bundle_version": "1",
+  "marketing_version": "0.1.0",
+  "command": "python3 scripts/device-update.py run",
+  "status": "Installed and subsequently verified up to date",
+  "new_installation_verified": true,
+  "validation": {
+    "coreTests": "passed",
+    "signature": "verified",
+    "mainCIAtInstall": "pending"
+  },
+  "private_receipt_sha256": "ed766dfab7a3e67292c1b4f0f6d8791ea7f93d9905e6eb8166e5014f811b001a",
+  "remote_ci_at_install": {
+    "run_id": 39272769637,
+    "url": "https://github.com/lbeezr/starfall/actions/runs/39272769637",
+    "preflight": "passed",
+    "simulator_job": "in_progress"
+  },
+  "earlier_hold": {
+    "source": "a1398d1b971c30c7557a8059b2d0b3466696ba66",
+    "run_id": 39271285998,
+    "reason": "RC tablet-test registry omitted the new rotation method",
+    "resolved_by_pr": 157
+  },
+  "physical_gameplay": "not run",
+  "actual_voiceover": "deferred to RC",
+  "data_reset_or_uninstall": false,
+  "remote_ci_after_install": {
+    "run_id": 39272769637,
+    "attempt": 1,
+    "status": "failed",
+    "phase": "simulator inventory",
+    "timeout_seconds": 30,
+    "exit_code": 124,
+    "app_compilation": "not reached",
+    "targeted_rerun_requested_at_utc": "2026-10-19T14:57:06Z",
+    "rerun_status": "pending"
+  }
+}

@@ -1,10 +1,13 @@
 {
-  "status": "packaged and development-verified; publication and delivery pending",
+  "status": "packaged, development-verified, merged and delivered",
   "acceptance": {
     "source": "8fb2e78",
     "runtime": "dev.5afe4a3c23",
+    "delivered_source": "ab868b5f7653b0f3207f78bc39a6d8b89ab17ed9",
+    "installation_verified_at": "2026-10-19T14:53:57Z",
+    "bundle_identifier": "com.starfall.prototype",
     "evidence": "../../evidence/lantern-landing-2026-10-19/README.md",
-    "limits": "Native full-capacity scenery clearance and physical play are unverified; actual VoiceOver is deferred to RC. One main-dock fitting in each tablet family is lit at 25%, dark at 50%, and lit again at 75%."
+    "limits": "Native dense-board clearance covers 40 stars, with rapid taps committing exactly one clear. Full 49-star native coverage is a future follow-up; physical play is unverified and actual VoiceOver is deferred to RC. One main-dock fitting in each tablet family is lit at 25%, dark at 50%, and lit again at 75%."
   },
   "provenance": "board-prompts.json",
   "processing": "Unmodified generated PNGs. Each milestone renders as one continuous full painting with a proportion-preserving viewport crop. No spatial masks, center replacement, or split regions.",
