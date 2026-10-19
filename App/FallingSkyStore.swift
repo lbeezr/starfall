@@ -334,7 +334,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
            let name = arguments.first(where: { $0.hasPrefix("--technique-example=") }),
            let example = SkyTechniqueExample(rawValue:String(name.dropFirst("--technique-example=".count))) {
             game = example.game(); isTechniqueFixture = true
-            guide("guide.fixture",values:["detail":example.title + " review board. Trace a recipe or swipe and hold."])
+            guide("guide.fixture",values:["detail":example.title + " review board. Swipe to move, or hold then draw a recipe."])
         }
         #endif
         refreshCadence()

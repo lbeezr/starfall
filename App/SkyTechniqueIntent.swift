@@ -6,28 +6,6 @@ enum SkyBoardAction {
     case nudge(Cell, Cell)
 }
 
-/// A direct swipe owns one transient snapshot and generation; it is never saved.
-@MainActor @Observable final class SkyTechniqueIntent {
-    private(set) var swapping = false
-    private(set) var swapDestination: Cell?
-    private(set) var anchor: Cell?
-    private(set) var snapshot: FallingSky?
-    private(set) var generation: UInt64 = 0
-    var preview: [Cell] {
-        guard swapping, let anchor, let swapDestination else { return [] }
-        return [anchor, swapDestination]
-    }
-
-    func reconcile(with game: FallingSky) { cancel() }
-    func cancel() { anchor = nil; snapshot = nil; swapping = false; swapDestination = nil }
-    func armSwap(_ cell: Cell, to destination: Cell, game: FallingSky, generation: UInt64) {
-        cancel()
-        guard game.canNudge(from: cell, to: destination) else { return }
-        anchor = cell; swapDestination = destination; snapshot = game
-        self.generation = generation; swapping = true
-    }
-}
-
 /// Descriptive only: every continuation must spend a recipe created by the preceding clear.
 struct SkyTechniqueRelay {
     private var followups: [StarRecipe] = []
@@ -53,11 +31,9 @@ extension StarRecipe {
 }
 
 /// Logical contact ownership, separate from UIKit's physical recognizer and Core rules.
-/// A trace may become a swap without releasing its shower hold. Every terminal path
-/// clears local selection before releasing the ticket, so reentrant updates see idle state.
+/// Every terminal path clears local selection before releasing the ticket, so reentrant updates see idle state.
 @MainActor @Observable final class SkyInteractionSession {
     let trace = ConstellationTraceIntent()
-    let technique = SkyTechniqueIntent()
     private(set) var holdTicket: UInt64?
 
     @discardableResult func acquireHold(at cell: Cell?, using acquire: (Cell?) -> UInt64?) -> Bool {
@@ -67,17 +43,11 @@ extension StarRecipe {
         return holdTicket != nil
     }
 
-    func armSwap(from: Cell, to: Cell, game: FallingSky, generation: UInt64) {
-        trace.cancel()
-        technique.armSwap(from, to: to, game: game, generation: generation)
-    }
-
     func endContact(ticket: UInt64?, release: (UInt64?) -> Void) {
         guard ticket == holdTicket else { return }
         let owned = holdTicket
         holdTicket = nil
         trace.cancel()
-        if technique.swapping { technique.cancel() }
         if let owned { release(owned) }
     }
 
@@ -87,12 +57,10 @@ extension StarRecipe {
 
     func reconcile(with game: FallingSky, release: (UInt64?) -> Void) {
         cancelContact(release: release)
-        technique.reconcile(with: game)
     }
 
     func invalidate(release: (UInt64?) -> Void) {
         cancelContact(release: release)
-        technique.cancel()
     }
 }
 

@@ -95,32 +95,25 @@ final class TraceInputPolishTests: XCTestCase {
 
 
 extension TraceInputPolishTests {
-    @MainActor func testEdgeReleaseAlwaysTerminatesAndFinalMotionIsClassified() throws {
+    @MainActor func testEdgeReleaseCancelsAndFinalOnlySampleSwapsOnce() {
         for size in [CGSize(width:320,height:568), CGSize(width:440,height:956)] {
-            let mapping = ObservatoryGeometry(size:size), game = ConstellationFixture.diagonalSix.game()
+            let mapping = ObservatoryGeometry(size:size), surface = ConstellationTraceSurface.Surface()
             let cell = Cell(0,0), center = mapping.viewPoint(cell)
             let start = CGPoint(x:center.x-mapping.frame(cell).width*0.48,y:center.y)
-            let outside = CGPoint(x:start.x-7.9,y:start.y)
-            XCTAssertEqual(ConstellationTraceHitTesting.start(at:start,mapping:mapping,game:game),cell)
-            XCTAssertNil(mapping.cell(at:outside))
-            var touch = ConstellationTouchSession()
-            XCTAssertTrue(touch.begin(at:start))
-            XCTAssertTrue(touch.move(to:outside))
-            XCTAssertEqual(touch.finish(at:outside,mapping:mapping),.trace)
-            XCTAssertNil(touch.origin)
-            XCTAssertEqual(touch.finish(at:center,mapping:mapping),.cancel,"Duplicate terminal event cannot tap")
-            XCTAssertTrue(touch.begin(at:center))
-            XCTAssertEqual(touch.finish(at:mapping.viewPoint(Cell(4,4)),mapping:mapping),.trace,
-                "The final sample can cross drag slop without a preceding move callback")
-            XCTAssertNil(touch.origin)
-            XCTAssertTrue(touch.begin(at:center))
-            touch.cancel()
-            XCTAssertEqual(touch.finish(at:center,mapping:mapping),.cancel)
-            XCTAssertTrue(touch.begin(at:center))
-            XCTAssertEqual(touch.finish(at:center,mapping:mapping),.tap(cell))
-            XCTAssertTrue(touch.begin(at:center))
-            XCTAssertFalse(touch.begin(at:center),"A second touch admission cancels the session")
-            XCTAssertNil(touch.origin)
+            var swaps = 0, taps = 0
+            surface.updateInput(.init(size:size,enabled:true,generation:1,traceStart:{ _ in cell },
+                tap:{ _ in taps += 1 },begin:{ _ in },move:{ _ in },end:{},cancel:{},
+                swapStart:{ _ in true },swap:{ _,_,_ in swaps += 1 }))
+            surface.beginInput(at:start)
+            surface.endInput(at:CGPoint(x:start.x-7.9,y:start.y))
+            XCTAssertEqual(swaps,0); XCTAssertEqual(taps,0)
+            surface.beginInput(at:center)
+            surface.endInput(at:mapping.viewPoint(Cell(0,1)))
+            XCTAssertEqual(swaps,1, "Final-only movement still commits")
+            surface.endInput(at:center)
+            XCTAssertEqual(swaps,1); XCTAssertEqual(taps,0)
+            surface.beginInput(at:center); surface.endInput(at:center)
+            XCTAssertEqual(taps,1)
         }
     }
 
@@ -151,26 +144,23 @@ extension TraceInputPolishTests {
         clock.advance(0.1); XCTAssertEqual(store.game.turns,source.turns+1)
     }
 
-    @MainActor func testEarlyDrawingAndTapDriftKeepDistinctStickyIntent() {
-        let mapping = ObservatoryGeometry(size: CGSize(width:390,height:844))
-        let cell = Cell(0,3), origin = mapping.viewPoint(cell)
-        for distance: CGFloat in [6,12,16,18] {
-            var touch = ConstellationTouchSession()
-            XCTAssertTrue(touch.begin(at:origin))
-            let point = CGPoint(x:origin.x+distance,y:origin.y)
-            XCTAssertTrue(touch.move(to:point), "Preview starts without waiting for tap slop")
-            XCTAssertEqual(touch.finish(at:origin,mapping:mapping),.tap(cell))
-        }
-        var selected = ConstellationTouchSession()
-        XCTAssertTrue(selected.begin(at:origin))
-        selected.claimDrag()
-        _ = selected.move(to:CGPoint(x:origin.x+6,y:origin.y))
-        XCTAssertEqual(selected.finish(at:origin,mapping:mapping),.trace,
-                       "Selected neighbors prevent partial drawings from becoming whole-group clears")
-        XCTAssertTrue(selected.begin(at:origin))
-        _ = selected.move(to:CGPoint(x:origin.x+19,y:origin.y))
-        XCTAssertEqual(selected.finish(at:origin,mapping:mapping),.trace,
-                       "A larger excursion remains drawing even on return")
+    func testStationaryHoldLocksDrawingAndMovementCannotLaterArmIt() {
+        let mapping = ObservatoryGeometry(size:CGSize(width:390,height:844))
+        let cell = Cell(1,2), origin = mapping.viewPoint(cell)
+        var touch = ConstellationTouchSession()
+        XCTAssertTrue(touch.begin(at:origin,swapEligible:true))
+        XCTAssertEqual(touch.move(to:CGPoint(x:origin.x+7,y:origin.y),mapping:mapping),.none)
+        XCTAssertTrue(touch.armTrace(ticket:touch.sequence))
+        XCTAssertEqual(touch.move(to:mapping.viewPoint(Cell(1,3)),mapping:mapping),.trace)
+        XCTAssertEqual(touch.finish(at:origin,mapping:mapping),.trace, "A held selection never taps on return")
+        XCTAssertTrue(touch.begin(at:origin,swapEligible:true))
+        let stale = touch.sequence
+        _ = touch.move(to:CGPoint(x:origin.x+9,y:origin.y),mapping:mapping)
+        _ = touch.move(to:origin,mapping:mapping)
+        XCTAssertFalse(touch.armTrace(ticket:stale), "Excursion cannot become a hold after returning")
+        XCTAssertEqual(touch.move(to:mapping.viewPoint(Cell(1,3)),mapping:mapping),.swap(cell,Cell(1,3)))
+        XCTAssertFalse(touch.armTrace(ticket:stale))
+        XCTAssertEqual(touch.finish(at:origin,mapping:mapping),.none)
     }
 
     @MainActor func testPhysicalContactTicketExpiresEvenWhenNextTouchUsesTheSameOrigin() {
@@ -251,7 +241,7 @@ extension TraceInputPolishTests {
 }
 
 extension TraceInputPolishTests {
-    @MainActor func testLogicalContactOwnsHoldAcrossTraceToSwapAndReleasesExactlyOnce() throws {
+    @MainActor func testLogicalContactReleasesExactlyOnceBeforeReentrantAcquisition() throws {
         let session = SkyInteractionSession(), game = SkyTechniqueExample.nudge.game()
         var releases: [UInt64] = []
         var acquired = 0
@@ -260,12 +250,9 @@ extension TraceInputPolishTests {
         XCTAssertEqual(acquired, 1)
         let pair = try XCTUnwrap((0..<7).flatMap { row in (0..<6).map { (Cell(row,$0),Cell(row,$0+1)) } }
             .first { game.canNudge(from: $0.0, to: $0.1) })
-        session.armSwap(from: pair.0, to: pair.1, game: game, generation: 3)
-        XCTAssertTrue(session.technique.swapping)
         XCTAssertEqual(session.holdTicket, 7)
         session.endContact(ticket: 7) { ticket in
             XCTAssertNil(session.holdTicket)
-            XCTAssertFalse(session.technique.swapping)
             XCTAssertNil(session.trace.snapshot)
             releases.append(ticket!)
         }
@@ -283,13 +270,9 @@ extension TraceInputPolishTests {
         _ = session.trace.begin(Cell(0,0), game: game, generation: 1, enabled: true)
         XCTAssertFalse(session.acquireHold(at: Cell(0,0)) { _ in nil })
         XCTAssertNil(session.trace.snapshot)
-        let swapping = SkyTechniqueExample.nudge.game()
-        session.armSwap(from: Cell(1,2), to: Cell(1,1), game: swapping, generation: 1)
         session.cancelContact { _ in XCTFail("No owned hold") }
-        XCTAssertNil(session.technique.anchor)
-        XCTAssertFalse(session.technique.swapping)
         session.invalidate { _ in XCTFail("No owned hold") }
-        XCTAssertNil(session.technique.snapshot)
+        XCTAssertNil(session.trace.snapshot)
     }
 }
 
@@ -340,23 +323,20 @@ extension TraceInputPolishTests {
 
 
 extension TraceInputPolishTests {
-    func testDirectionalSwapTargetsBeforeCellBoundaryAndToleratesWobble() {
+    func testFourDirectionsCommitBeforeBoundaryOnceRegardlessOfLaterMotion() {
         for size in [CGSize(width:320,height:568),CGSize(width:440,height:956),CGSize(width:834,height:1194)] {
-            let mapping = ObservatoryGeometry(size:size), cell = Cell(1,2)
-            let frame = mapping.frame(cell), origin = mapping.viewPoint(cell)
-            let distance = SkySwapDwell.threshold(cell,mapping:mapping) * 1.1
-            for direction: CGFloat in [-1,1] {
-                let point = CGPoint(x:origin.x+distance*direction,y:origin.y+2)
+            let mapping = ObservatoryGeometry(size:size), cell = Cell(2,2), origin = mapping.viewPoint(cell)
+            let distance = ConstellationTouchSession.swapThreshold(cell,mapping:mapping) * 1.1
+            for (dx,dy,to) in [(CGFloat(-1),CGFloat(0),Cell(2,1)),(1,0,Cell(2,3)),(0,-1,Cell(3,2)),(0,1,Cell(1,2))] {
+                let point = CGPoint(x:origin.x+distance*dx,y:origin.y+distance*dy)
                 XCTAssertEqual(mapping.cell(at:point),cell)
-                var dwell = SkySwapDwell()
-                dwell.visit(origin:origin,point:point,mapping:mapping)
-                XCTAssertEqual(dwell.target,Cell(1,2+Int(direction)))
-                dwell.arm()
-                let wobble = CGPoint(x:point.x,y:origin.y+frame.height*0.6)
-                dwell.visit(origin:origin,point:wobble,mapping:mapping)
-                XCTAssertTrue(dwell.eligible); XCTAssertEqual(dwell.target,Cell(1,2+Int(direction)))
-                dwell.visit(origin:origin,point:origin,mapping:mapping)
-                XCTAssertFalse(dwell.eligible); XCTAssertNil(dwell.target)
+                var touch = ConstellationTouchSession()
+                XCTAssertTrue(touch.begin(at:origin,swapEligible:true))
+                XCTAssertEqual(touch.move(to:point,mapping:mapping),.swap(cell,to))
+                XCTAssertEqual(touch.move(to:origin,mapping:mapping),.none)
+                XCTAssertEqual(touch.move(to:mapping.viewPoint(Cell(4,4)),mapping:mapping),.none)
+                XCTAssertEqual(touch.finish(at:point,mapping:mapping),.none)
+                XCTAssertFalse(touch.armTrace(ticket:touch.sequence))
             }
         }
     }
@@ -425,6 +405,90 @@ extension TraceInputPolishTests {
             XCTAssertNil(clock.deadline)
             if background { store.setSuspended(false) } else { store.togglePause() }
             XCTAssertEqual(try XCTUnwrap(clock.deadline)-clock.now, 0.5, accuracy: 0.001)
+        }
+    }
+}
+
+
+extension TraceInputPolishTests {
+    @MainActor func testProductionSurfaceSwapsMatchingStarsBeforeReleaseAndNeverDraws() throws {
+        let size = CGSize(width:390,height:844), mapping = ObservatoryGeometry(size:size)
+        var game = SkyTechniqueExample.trace.game()
+        let before = game, surface = ConstellationTraceSurface.Surface()
+        var swaps = 0, draws = 0, taps = 0
+        surface.updateInput(.init(size:size,enabled:true,generation:4,traceStart:{ _ in Cell(0,0) },
+            tap:{ _ in taps += 1 },begin:{ _ in draws += 1 },move:{ _ in draws += 1 },end:{ draws += 1 },cancel:{},
+            swapStart:{ _ in true },swap:{ from,to,_ in
+                XCTAssertNotNil(game.nudge(from:from,to:to)); swaps += 1
+            }))
+        let origin = mapping.viewPoint(Cell(0,0)), target = mapping.viewPoint(Cell(0,1))
+        surface.beginInput(at:origin)
+        let hold = surface.session.sequence
+        surface.moveInput(to:target)
+        XCTAssertEqual(game.gem(at:Cell(0,1))?.id,before.gem(at:Cell(0,0))?.id, "Committed while contact is still down")
+        XCTAssertNotNil(surface.session.origin)
+        surface.armDrawing(ticket:hold,generation:4)
+        surface.moveInput(to:mapping.viewPoint(Cell(0,5)))
+        surface.endInput(at:target)
+        XCTAssertEqual(swaps,1); XCTAssertEqual(draws,0); XCTAssertEqual(taps,0)
+        XCTAssertEqual(game.score,0)
+    }
+
+    @MainActor func testHoldTimerUsesCurrentTicketAndCancelledHoldsCannotDraw() async throws {
+        let size = CGSize(width:390,height:844), origin = ObservatoryGeometry(size:size).viewPoint(Cell(0,0))
+        let surface = ConstellationTraceSurface.Surface()
+        var draws = 0, taps = 0
+        surface.updateInput(.init(size:size,enabled:true,generation:1,traceStart:{ _ in Cell(0,0) },
+            tap:{ _ in taps += 1 },begin:{ _ in draws += 1 },move:{ _ in },end:{},cancel:{},swapStart:{ _ in true }))
+        surface.beginInput(at:origin)
+        let old = surface.session.sequence
+        XCTAssertEqual(draws,0)
+        surface.cancelInput()
+        surface.beginInput(at:origin)
+        surface.armDrawing(ticket:old,generation:1)
+        surface.armDrawing(ticket:surface.session.sequence,generation:0)
+        XCTAssertEqual(draws,0)
+        let deadline = ContinuousClock.now + .seconds(2)
+        while draws == 0 && ContinuousClock.now < deadline { try await Task.sleep(for:.milliseconds(20)) }
+        XCTAssertEqual(draws,1)
+        surface.endInput(at:origin)
+        XCTAssertEqual(taps,0,"Releasing a stationary held star cannot clear a tap group")
+    }
+}
+
+
+extension TraceInputPolishTests {
+    func testHoldOnNonTracingSwappableStarStillCannotFallBackToExchange() {
+        let mapping = ObservatoryGeometry(size:CGSize(width:390,height:844))
+        let origin = mapping.viewPoint(Cell(1,2))
+        var contact = ConstellationTouchSession()
+        XCTAssertTrue(contact.begin(at:origin,traceEligible:false,swapEligible:true))
+        XCTAssertTrue(contact.armTrace(ticket:contact.sequence))
+        XCTAssertEqual(contact.move(to:mapping.viewPoint(Cell(1,3)),mapping:mapping),.trace)
+        XCTAssertEqual(contact.finish(at:origin,mapping:mapping),.trace)
+    }
+
+    @MainActor func testPendingHoldCannotSurviveSurfaceReconfiguration() {
+        for boundary in ["generation", "size", "disabled", "detach", "multitouch"] {
+            let size = CGSize(width:390,height:844), surface = ConstellationTraceSurface.Surface()
+            let origin = ObservatoryGeometry(size:size).viewPoint(Cell(0,0))
+            var drawings = 0
+            func input(size:CGSize = CGSize(width:390,height:844), enabled:Bool = true, generation:UInt64 = 1) -> ConstellationTraceSurface {
+                .init(size:size,enabled:enabled,generation:generation,traceStart:{ _ in Cell(0,0) },
+                    tap:{ _ in XCTFail("Interrupted holds cannot tap") },begin:{ _ in drawings += 1 },move:{ _ in },end:{},cancel:{})
+            }
+            surface.updateInput(input()); surface.beginInput(at:origin)
+            let ticket = surface.session.sequence
+            switch boundary {
+            case "generation": surface.updateInput(input(generation:2))
+            case "size": surface.updateInput(input(size:CGSize(width:844,height:390)))
+            case "disabled": surface.updateInput(input(enabled:false))
+            case "detach": surface.willMove(toWindow:nil)
+            default: surface.cancelInput()
+            }
+            surface.armDrawing(ticket:ticket,generation:1)
+            surface.endInput(at:origin)
+            XCTAssertEqual(drawings,0,boundary)
         }
     }
 }

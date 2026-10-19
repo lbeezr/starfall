@@ -1,10 +1,12 @@
 # Forgiving swaps and constellation drawing
 
-**Status:** Accepted for current-app integration · **Owner:** current implementer · **Updated:** 2026-10-18
+**Status:** Selected-path geometry retained; swap arbitration superseded · **Owner:** current implementer · **Updated:** 2026-10-18
 
 Make a directional stroke acquire matching stars without requiring exact center hits, and preserve the selected path through empty space or incidental nonmatching contact. The user reports roughly 30–40% failed swipes; that is an observation, not a measured reproduction rate. This record began with the earlier lab. Main now owns tracing and direct horizontal swaps; apply the remaining changes in those current owners, without reviving the retired exporter.
 
 **Next action:** Compare physical feel on phone and iPad after the recorded simulator checks.
+
+**October 18 follow-up:** [Immediate four-direction swipes](IMMEDIATE_SWIPES.md) replace the horizontal release/dwell decision below. Hold still first to draw; neighbor color never changes a quick swipe into a trace. The earlier thresholds and arbitration remain source-bound design history; elliptical path acquisition and one-gap Core links are retained.
 
 ## Research and decision
 

@@ -18,7 +18,7 @@ Default Falling Sky uses the full-screen Observatory. `ObservatoryGeometry` owns
 
 `StarCast` owns Crystal Glow materials for board, comets, HUD and previews: six packaged bodies, authored faces, shallow turns and a bounded 72-material cache. The scene owns separate contact shadows; their placement follows cached body height and grown size. See the [production contract](../docs/design/star-cast/README.md).
 
-Constellation drawing is now part of FallingSky: transient ordered input lives in `SkyInteractionSession` beside technique selection, the native trace surface shares Observatory geometry with accessible buttons, and the scene presents a bounded trail/burst. Core validates the selected set; ordinary taps retain their original rules. Debug-only reset fixtures are not a second app or a menu route.
+Constellation drawing is now part of FallingSky: transient ordered input lives in `SkyInteractionSession` with one held-contact ticket, the native trace surface shares Observatory geometry with accessible buttons, and the scene presents a bounded trail/burst. Core validates the selected set; ordinary taps retain their original rules. Debug-only reset fixtures are not a second app or a menu route.
 
 The store schedules the core’s persisted opening cadence: four quick waves, then the chosen regular pace. Input opens between settled batches; [opening acceptance](../docs/evidence/opening-cascade-2026-10-17/README.md) records checks and limits.
 
@@ -38,7 +38,7 @@ The optional `SkyCadenceCue` reads `nextShowerCadence` only. Baseline supplies n
 
 `FallingSkyScene` reports attached, sized presentation readiness. Scene detachment synchronously suspends the store. `SkyFlowState` gates a cancellable 240 ms handoff; scene readiness alone never starts a round.
 
-`ConstellationTraceSurface` owns touch lifetime and coalesced samples; `ConstellationTraceHitTesting` maps continuous segments through the shared projection. The store holds its single shower deadline from eligible touch-down to release/cancel. Spatial misses keep the chosen path; stale state still cancels. The HUD reserves phase-copy space inside the full-window canvas, so it cannot crop scenery or hide the camera inset. Resting star rings are removed; the traced thread and finite sparks indicate selection.
+`ConstellationTraceSurface` owns touch lifetime and coalesced samples; `ConstellationTraceHitTesting` maps continuous segments through the shared projection. The store holds its single shower deadline from eligible touch-down until exchange commitment or drawing release/cancel. Spatial misses keep the chosen path; stale state still cancels. The HUD reserves phase-copy space inside the full-window canvas, so it cannot crop scenery or hide the camera inset. Resting star rings are removed; the traced thread and finite sparks indicate selection.
 
 Gravity integration uses the normal target and v5 committed archive. Core owns occupied orbit supports and saved `gravityOrbits` supply; retained generations remain unchanged. `GravityStoreTests` covers committed saves and interrupted phases; Debug reset-only histories support native verification. See [the integration plan](../docs/design/GRAVITY_MECHANICS_PLAN.md).
 
@@ -61,7 +61,7 @@ Grown colored stars carry a luminous double silhouette and paired glints in `Fal
 
 Gravity specials are retired from normal play. `SkyGeneration.standardSky` supplies ordinary/Opal/storm play; `FallingSky.removingGravity()` retires validated historical specials without changing survivor identities, score, RNG, cadence or outcomes. The store applies it on restore and same-sky replay, persisting only on activation/commit. Historical raw rules and reset-only Debug fixtures remain regression tooling; the normal app never routes into them. See [removal evidence](../docs/evidence/gravity-removal-2026-10-17/README.md).
 
-`SkyTechniqueIntent` owns the transient direct-swap snapshot. There is no Arrange mode, toggle or tap-arrangement panel; recipes use the existing trace input. The existing trace surface owns swipe-and-hold dwell and cancellation, while Core validates and the current store commits/saves/reserves columns. See [technique contract](../docs/design/STAR_TECHNIQUES.md).
+`ConstellationTouchSession` gives movement priority: one four-direction exchange on displacement, or a stationary 300 ms hold followed by drawing. `ConstellationTraceSurface` owns the timer, physical contact and cancellation; `SkyInteractionSession` owns trace state and the rain ticket. There is no swap preview state or Arrange mode. Core validates and the store commits/saves/reserves columns. See [technique contract](../docs/design/STAR_TECHNIQUES.md).
 
 `ConstellationTraceSurface.CaptureRecognizer` owns raw physical contact delivery before scroll arbitration, including terminal/reset cancellation. The store owns its ticketed shower hold. `SkySaveArchive` writes v7 and reads retained v3–v6 archives without overwriting their bytes. Current Dusk warnings and marks derive the limit from the saved Core rule.
 
@@ -71,7 +71,7 @@ Drawing starts on the full native star target and follows six-point movement. Th
 
 `StarlightCelebration` presents an already committed award, with immutable pre-clear family/reward contributors and a validated trace/recipe outline. Collection trails inherit the contributing material color and scale with actual awarded points; special callouts enter near the central terrace, while exceptional awards add one translucent aurora. Quiet modes keep a static exact award. See [harvest acceptance](../docs/design/HARVEST_FEEDBACK.md). The store owns its bounded replacement/expiry/cancellation; its overlay uses real board/header/score anchors through a shared registration that preserves nested preferences. Selection and release share recipe drawing order. Ready-column input, current saves, Dusk rewards and dialogue remain independent. Selection uses open sparkle rays; clear bursts use scattered glints without enclosing rings. The quiet overlay owns the same full canvas as normal motion. See [native visibility checks](../docs/evidence/starlight-celebrations-2026-10-18/VISIBLE_AWARDS.md).
 
-`SkyInteractionSession` owns logical trace/swap selection and the held store ticket. Its terminal transition clears local state before releasing exactly once; stale terminal tickets cannot end a replacement contact. The recognizer retains physical-contact ownership, and the store retains clock/generation ownership.
+`SkyInteractionSession` owns logical trace selection and the held store ticket. Its terminal transition clears local state before releasing exactly once; stale terminal tickets cannot end a replacement contact. The recognizer retains physical-contact ownership, and the store retains clock/generation ownership.
 
 `SkyInputPolicy` gives contact, clear, trace and technique admission the same explicit global/column reasons. Core still decides action legality. Automatic pause permits explicit play; suspension and an already-due shower do not.
 

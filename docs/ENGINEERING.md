@@ -383,3 +383,12 @@ Tablet lower-edge spacing is corrected by [scrollable ceremony clearance](eviden
 [Default-game capture acceptance](evidence/debt-third-pass-2026-10-18/README.md#4-default-game-ci-capture-acceptance) now requires six Falling Sky frames alongside classic coverage, with explicit partial export/error status. The complete primary CI job still owns its existing full test-count gate; isolated export tests and selected native captures do not certify an entire run.
 
 The [canonical physical installation checkpoint](evidence/debt-third-pass-2026-10-18/README.md#canonical-physical-installation-checkpoint) verifies build `dev.93d68284ce` against current main's runtime. This closes installation-pending status; physical gameplay feel, actual VoiceOver and minimum-iOS acceptance remain separate gates.
+
+
+## Immediate swipe ownership — October 18, 2026
+
+[Contract](design/IMMEDIATE_SWIPES.md) and [source-bound verification](evidence/immediate-swipes-2026-10-18/README.md). Gesture selection depends on displacement versus a stationary hold, never neighbor family. One consumed physical contact cannot swap twice or become a tap/trace on release. Vertical empty-space exchanges preserve gravity and must animate even when the committed star returns to its original cell. After canonical delivery, observe short thumb strokes, deliberate holds and rapid retouch on phone; record misses and latency before tuning the 300 ms hold or displacement threshold. Actual VoiceOver remains an RC gate.
+
+The 1,159-line `UITests/FallingSkyInteractionTests.swift`, approaching the modularization review threshold, is retained for this batch's single duration update to its historical gravity-trace regression. No responsibilities are added. At the next gravity-test extension, move the cohesive `GravityTraceUITests` class into its own target member and verify discovery plus retained legacy-fixture behavior; do not mix that extraction with the gesture-rule change.
+
+The user identified rapid follow-up rejection as the next fast-play concern. Next input refinement: compare a short single-intent buffer against current rejection, tied to stable star identity and current adjacency rather than screen coordinates. Require immediate registered feedback, bounded expiry, and cancellation on disappearance, restart, background, Settings or incompatible board change. Validate rapid retouch on a physical phone and deterministic sibling cases before adoption; no queued-input behavior is implemented in the immediate-swipe batch.

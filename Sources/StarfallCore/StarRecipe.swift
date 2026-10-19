@@ -43,11 +43,10 @@ extension FallingSky {
     }
 
     public func canNudge(from: Cell, to: Cell) -> Bool {
-        guard canArrangeStars,
-              (0..<Self.side).contains(from.row), (0..<Self.side).contains(from.column),
-              (0..<Self.side).contains(to.column), from.row == to.row,
-              abs(from.column-to.column) == 1, let first = gem(at: from) else { return false }
-        if let second = gem(at: to), first.identity == second.identity && first.grown == second.grown && first.duskFeeds == second.duskFeeds { return false }
-        return true
+        canArrangeStars
+            && (0..<Self.side).contains(from.row) && (0..<Self.side).contains(from.column)
+            && (0..<Self.side).contains(to.row) && (0..<Self.side).contains(to.column)
+            && abs(from.row-to.row) + abs(from.column-to.column) == 1
+            && gem(at: from) != nil
     }
 }

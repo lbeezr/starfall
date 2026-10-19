@@ -375,9 +375,9 @@ public struct FallingSky: Codable, Equatable, Sendable {
 
     /// Start eligibility is shared by native hit testing and transient selections.
     public func canStartConstellation(at cell: Cell) -> Bool {
-        guard !isOver, gem(at: cell)?.kind != nil else { return false }
-        return constellationGroup(at: cell).count >= 5
-            || (challenge == nil && recipes(containing: cell).contains { $0.shape == .square })
+        // Holding chooses drawing even before a complete constellation exists.
+        // Completion still validates family, links and the selected distinct count.
+        !isOver && gem(at: cell)?.kind != nil
     }
 
     public func constellationCells(along path: [Cell]) -> Set<Cell>? {

@@ -1,0 +1,24 @@
+{
+  "base": "99803b38abf044bb2d0247acf79de70ac2410b7e",
+  "runtimeBuildID": "dev.b8688c35ad",
+  "dirtySourceSHA256": {
+    "App/ConstellationTraceSurface.swift": "774e6162cf486d244daa13acd72123945b62d1a265ddec9775df0883850bd781",
+    "App/DialogueScripts/observatory-dialogue.json": "888eafee88963ad6a625deab5b7f549b1b7fa5f3162f773b6d624d16cad3b3c7",
+    "App/FallingSkyScene.swift": "ad298ebebc61244f4d36191cfc76ff5e76ae12d2e81837593d5ac648d7b9bdbb",
+    "App/FallingSkyStore.swift": "67a5c22838e1cbc100e680e0de0da58667e3688f38e2351c3a4df4c266e6f4a4",
+    "App/FallingSkyView.swift": "24af1d4581f9e3c3d8c932e5cad9401f273d8b5d5ba7dd56cde6e00512eae5fc",
+    "App/SkyCopy.swift": "cb5ab51d8cecf5a91eac3f1b87893d5ed5dafe0b2344566a574e9b4fad66ce0e",
+    "App/SkyTechniqueIntent.swift": "ca6e6b0991822e7bac96f87020108d367542c58f78cfaa91d06227b8931cf21e",
+    "AppTests/ResponsiveInputTests.swift": "ce4f6e1a47b2c8abde8ea2d86b90f2138127c6938d135e99b19661f0d592452d",
+    "AppTests/SkyTechniqueStoreTests.swift": "964bce50c3f4877bc1d7d5f4377a32b5998dd8850b82cccb95e5e35ae64351fb",
+    "AppTests/TraceInputPolishTests.swift": "4588b3014fa3e31e12caa5b12779b075179ff0db9dad0d754215052386c92453",
+    "Sources/StarfallCore/FallingSky.swift": "a772c90e81e3beb7cfc98ea04c72868e301dc921547d3f03c575bb41b7503c78",
+    "Sources/StarfallCore/StarRecipe.swift": "fc64bc197ccc4616461346664eb584f5761bd47bda5752341bbd745e1a96a6af",
+    "Tests/StarfallCoreTests/CriticalMassTests.swift": "9fa53d3a8f0ec422ae110ff2eba629696706d5aeac6f1738984448dac1bc61de",
+    "Tests/StarfallCoreTests/StarRecipeTests.swift": "227d7802d3c858ad256ba1a3f44c31f466f6e0a6133d08b1da81fac9887f21f6",
+    "UITests/ConstellationTraceNativeTests.swift": "881404bf755c8d4b751b5938826ba13dd4a535f09b4ef03bae4299024ffb31a1",
+    "UITests/FallingSkyInteractionTests.swift": "4991f1c35c1989b94ec3c367c0cc10c0de909941cbb2b907c509b77f809b2922",
+    "UITests/ResponsiveInputUITests.swift": "7b65cc673be523188cac1644d856c048447495c6178b926cbb622c55ae359a94",
+    "UITests/SkyTechniqueInteractionTests.swift": "7571d7d1bbd5a1e4dc687ac43ee8445c74d96da75f8cfb184152e43b05aea4a2"
+  }
+}

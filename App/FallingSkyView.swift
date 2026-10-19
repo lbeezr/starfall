@@ -7,7 +7,6 @@ import StarfallCore
     @State private var store: FallingSkyStore
     @State private var interaction = SkyInteractionSession()
     private var trace: ConstellationTraceIntent { interaction.trace }
-    private var technique: SkyTechniqueIntent { interaction.technique }
     @State private var menu: SkyMenuDestination?
     private var settings: Bool { menu != nil }
     @State private var flow: SkyFlowState
@@ -127,14 +126,13 @@ import StarfallCore
         .onChange(of: store.isPaused) { cancelConstellation() }
         .onChange(of: scenePhase) { invalidateInteraction(); updateSuspension() }
         .onChange(of: store.persistenceNotice) { invalidateInteraction(); finishHandoffIfReady(); updateSuspension() }
-        .onChange(of: settings) { technique.cancel(); finishHandoffIfReady(); updateSuspension() }
+        .onChange(of: settings) { finishHandoffIfReady(); updateSuspension() }
         .onChange(of: store.sceneReady) { finishHandoffIfReady(); updateSuspension() }
-        .onChange(of: flow) { cancelConstellation(); technique.cancel(); updateSuspension() }
+        .onChange(of: flow) { cancelConstellation(); updateSuspension() }
         .onChange(of: endingReady) { updateSuspension() }
         .onChange(of: reduceMotion) { updateMotion() }
         .onChange(of: voiceOver) { updateMotion() }
         .onChange(of: calmEffects) { updateMotion() }
-        .onChange(of: technique.preview) { refreshTechnique() }
         .onChange(of: reduceMotion) { invalidateInteraction() }
         .task(id: handoffKey) { await presentHandoff() }
         .alert(store.persistenceNotice?.title ?? "", isPresented: Binding(
@@ -311,10 +309,8 @@ import StarfallCore
                                               end: releaseConstellation, cancel: cancelConstellation,
                                               contact: { beginBoardContact($0, size: geometry.size) },
                                               feedback: store.explainInputFailure,
-                                              hasSelectedNeighbor: { trace.count > 1 || technique.swapping },
                                               swapStart: { point in mapping.cell(at:point).map { store.game.canArrangeStars && store.game.gem(at:$0) != nil && store.canContact($0) } ?? false },
-                                              beginSwap: { armDirectSwap($0,to:$1,generation:$2,size:geometry.size) },
-                                              endSwap: { finishDirectSwap($0,size:geometry.size) })
+                                              swap: commitDirectSwap)
                     }
                 }
 
@@ -368,10 +364,12 @@ import StarfallCore
         .accessibilityCustomContent(Text(SkyCopy.text(.a11yDuskConsequence)), Text(DuskWarning.consequence(game: store.game, cell: cell)))
         .accessibilityIdentifier("experiment.cell.\(cell.row).\(cell.column)")
         .accessibilityActions {
-            ForEach([-1, 1], id: \.self) { offset in
-                let destination = Cell(cell.row, cell.column + offset)
+            ForEach(0..<4, id: \.self) { direction in
+                let destination = [Cell(cell.row, cell.column-1), Cell(cell.row, cell.column+1),
+                                   Cell(cell.row+1, cell.column), Cell(cell.row-1, cell.column)][direction]
                 if snapshot.canNudge(from: cell, to: destination) {
-                    Button(offset < 0 ? SkyCopy.text(.techniqueMoveLeft) : SkyCopy.text(.techniqueMoveRight)) {
+                    let title: SkyCopy.Key = [.techniqueMoveLeft, .techniqueMoveRight, .techniqueMoveUp, .techniqueMoveDown][direction]
+                    Button(SkyCopy.text(title)) {
                         cancelConstellation()
                         _ = store.performTechnique(.nudge(cell, destination), snapshot: snapshot, generation: generation)
                     }
@@ -496,28 +494,13 @@ private extension FallingSkyView {
         cancelConstellation()
         store.clear(cell)
     }
-    func refreshTechnique() {
-        if technique.swapping { store.scene.showConstellationTrace(technique.preview, ready: true) }
-    }
-
-    func armDirectSwap(_ origin: CGPoint, to point: CGPoint, generation: UInt64, size: CGSize) -> Bool {
-        let mapping=ObservatoryGeometry(size:size)
-        guard store.constellationTracing, generation == store.constellationInputGeneration,
-              let from=mapping.cell(at:origin), let to=mapping.cell(at:point),
-              store.game.canNudge(from:from,to:to), store.canContact(from), store.canContact(to) else { return false }
-        interaction.armSwap(from:from,to:to,game:store.game,generation:generation)
-        refreshTechnique()
-        store.traceStep(count:5)
-        store.showInputFeedback(SkyCopy.text(.inputSwapReady))
-        return technique.swapping
-    }
-    func finishDirectSwap(_ point: CGPoint, size: CGSize) {
+    func commitDirectSwap(from: Cell, to: Cell, generation: UInt64) {
         defer { cancelConstellation() }
-        guard technique.swapping, let from=technique.anchor, let to=technique.swapDestination,
-              ObservatoryGeometry(size:size).cell(at:point) != nil, let snapshot=technique.snapshot else { return }
-        let generation=technique.generation
-        technique.cancel()
-        _ = store.performTechnique(.nudge(from,to),snapshot:snapshot,generation:generation)
+        guard store.constellationTracing, generation == store.constellationInputGeneration else { return }
+        guard store.canContact(from) else { store.explainSettling(at: from); return }
+        guard store.canContact(to) else { store.explainSettling(at: to); return }
+        let snapshot = store.game
+        _ = store.performTechnique(.nudge(from, to), snapshot: snapshot, generation: generation)
     }
     func cancelConstellation() {
         interaction.cancelContact(release: store.endConstellationHold)
@@ -538,16 +521,18 @@ private extension FallingSkyView {
         return true
     }
     func beginConstellation(_ point: CGPoint, size: CGSize) {
-        guard let cell = ConstellationTraceHitTesting.start(at: point, mapping: ObservatoryGeometry(size: size), game: store.game) else { return }
+        guard let cell = ConstellationTraceHitTesting.start(at: point, mapping: ObservatoryGeometry(size: size), game: store.game) else {
+            store.explainInputFailure(SkyCopy.text(.inputTraceStart)); return
+        }
         _ = trace.begin(cell, game: store.game, generation: store.constellationInputGeneration, enabled: store.canTrace([cell]))
         if trace.snapshot != nil {
             interaction.acquireHold(at: trace.path.first, using: store.beginConstellationHold)
         }
         trace.lastFinger = point
         refreshConstellation()
+        if trace.snapshot != nil { store.traceStep(count: 1) }
     }
     func moveConstellation(_ point: CGPoint, size: CGSize) {
-        guard !technique.swapping else { return }
         guard trace.snapshot != nil else { return }
         let mapping = ObservatoryGeometry(size: size)
         guard mapping.cell(at: point) != nil else { cancelConstellation(); store.explainInputFailure(SkyCopy.text(.inputTraceOffBoard)); return }
@@ -560,7 +545,7 @@ private extension FallingSkyView {
             }
             if trace.snapshot == nil {
                 // The physical contact still owns its clock hold until terminal delivery;
-                // a different-family neighbor may yet arm a direct swap.
+                // drawing never falls back to a swap or an ordinary tap.
                 store.scene.clearConstellationTrace(); return
             }
         }
@@ -590,7 +575,6 @@ private extension FallingSkyView {
 
     }
     func accessibleTrace(_ cell: Cell) {
-        technique.cancel()
         if trace.snapshot == nil {
             _ = trace.begin(cell, game: store.game, generation: store.constellationInputGeneration, enabled: store.canTrace(trace.path.isEmpty ? [cell] : trace.path + [cell]))
         } else {
