@@ -59,7 +59,9 @@ jobs:
           ((github.event_name == 'push' && github.ref == 'refs/heads/main' &&
             github.event.repository.private == false) ||
            (github.event_name == 'workflow_dispatch' && inputs.budget_confirmed == true)) }}
-    runs-on: macos-15
+    # Xcode 26.4+ fixes a simdiskimaged hang; macOS 15 tops out at 26.3.
+    # Keep the standard ARM64 runner and the bounded inventory command.
+    runs-on: macos-26
     timeout-minutes: 35
     defaults:
       run:
