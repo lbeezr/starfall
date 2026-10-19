@@ -1,0 +1,29 @@
+[
+  {
+    "id": "skysea",
+    "prompt": "Use case: stylized-concept. Asset type: landscape 4:3 iPad game environment background, original Starfall aerial world. Create a beautiful premium hand-painted 2.5D fantasy game background called Skysea Crossing. We are floating HIGH AMONG CLOUDS AT BLUE HOUR, looking through a clear pocket of AIR. Broad sculpted indigo and lavender cumulus masses curl in from the OUTERMOST left/right corners, with soft silver-blue light and a restrained warm peach rim from a moon outside the image. Tiny distant observatory balloons may appear at the very far upper-left and lower-right periphery, each small, suspended visibly by its balloon; no ground under them. A few dim distant stars beyond. Composition CRITICAL: leave the middle 65 percent of width and middle 75 percent of height extremely quiet deep desaturated blue air with a subtle depth gradient, so bright small crystal characters can later be overlaid and clearly read. The background flows continuously behind that central emptiness; do not paint a dark rectangle or separate board. Clouds surround air without forming a hard bowl or ledge. Near cloud shapes have substantial illustrative volume; distant clouds are very soft. Charming, tactile, generous shapes, close readable silhouettes, no photorealism. Not an interface screenshot. NO characters, NO jewels, NO grid, NO play surface, NO table, NO stone platform, NO floor, NO basin, NO border, NO solid rim, NO UI, NO letters. The lower center remains open air like the rest; do not make a horizontal cloud shelf under gameplay. No bright stars or busy cloud details behind the future center playfield.",
+    "tool": "built-in image_gen",
+    "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-1679ddd8-f324-4f50-b4e6-f00413f7b054.png",
+    "file": "skysea-concept.png",
+    "sha256": "9aa4e4f7b6a9089a4b0a8e6abb9cd633cf5d3499cd1788eda767dbc2e176d156",
+    "status": "Concept backdrop only; no runtime adoption"
+  },
+  {
+    "id": "nebula",
+    "prompt": "Use case: stylized-concept. Asset type: landscape 4:3 iPad game environment background, original Starfall celestial world. Create a premium painterly 2.5D fantasy game background called The Nebula Cradle. The viewer and future characters float INSIDE A VAST OPEN NEBULA, no surface below them. Large velvety indigo, dusty rose and violet gaseous forms sweep around the extreme outer corners, suggesting soft folded curtains or an open flower of cosmic dust while staying naturally nebulous. A small warm newborn star shines at the far upper right edge in the distance, a few faint light seeds embedded in the nebula ONLY at the outer edges. The forms are richly shaped, comforting and magical, distinct from ordinary water clouds. Composition CRITICAL: middle 65 percent width and middle 75 percent height remain dark desaturated plum/navy SPACE with a calm subtle depth gradient so bright crystal star characters can be overlaid. This is continuous surrounding space, not a rectangular board inset. The lower center is also open deep space; no ground/horizon/rim supporting stars. Clear large readable silhouettes, restrained light, a few lustrous pastel edge highlights, no fine visual noise. Original welcoming world, beautiful game production illustration, no hard science realism. NO interface, NO text, NO characters, NO gemstones, NO grid, NO board, NO platform, NO floor, NO vessel, NO instruments, NO frame. Avoid bright central focal light or spiral behind the gameplay. Make the center inviting empty volume, with dimensional atmosphere on the margins.",
+    "tool": "built-in image_gen",
+    "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-2f17d6b1-55ef-4482-9d8c-aa813d433237.png",
+    "file": "nebula-concept.png",
+    "sha256": "d65560272c5eac78956a8001b885af79228ac7d0d54469e5d20170fc8abf037f",
+    "status": "Concept backdrop only; no runtime adoption"
+  },
+  {
+    "id": "moonwake",
+    "prompt": "Use case: stylized-concept. Asset type: landscape 4:3 iPad game environment background, original Starfall outer-space world. Create a beautiful premium hand-painted 2.5D fantasy game background called Moonwake. The future playable stars will float freely in a spacious quiet pocket BETWEEN celestial bodies, not on anything. A huge softly faceted pearl-lavender moon arcs partly into the frame from the far upper-left corner, its lit edge restrained and its surface shadowed. A thin elegant stream of icy comet dust and a few tiny distant drifting fragments curves along the very far lower-right edge, leading behind the moon at great depth, without making a rim, a ring around a board, or a path under the stars. One tiny distant astronomical sailboat crosses near the extreme right margin, charming and mysterious. Deep ink-blue space and distant soft galaxy haze tie the composition together; muted teal, lavender, champagne palette compatible with bright aqua, yellow, pink, green and purple crystal characters. Composition CRITICAL: middle 65 percent width and middle 75 percent height remain calm dark low-detail space with a subtle luminous depth gradient, no central planet, no busy starfield, no focal galaxy behind gameplay. The negative space flows continuously to the open lower-center edge. Shapes feel crafted and illustrative with soft bold volume; whimsical fantasy, not photorealistic NASA scene. NO characters, NO gems, NO game grid, NO table, NO platform, NO floor, NO walls, NO frame, NO UI, NO text. No large visible horizontal physical support anywhere.",
+    "tool": "built-in image_gen",
+    "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-7b9425c9-faa2-4fe5-be43-51b19a6a2ff8.png",
+    "file": "moonwake-concept.png",
+    "sha256": "3dac1a862e49341cec68d204382674ccdbcb3ab3f83530da95e7844066c1e8c6",
+    "status": "Concept backdrop only; no runtime adoption"
+  }
+]

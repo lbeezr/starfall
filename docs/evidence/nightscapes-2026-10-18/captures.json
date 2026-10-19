@@ -1,0 +1,82 @@
+[
+  {
+    "file": "dev-f40be2e__moonwake__ipad-air11__landscape.png",
+    "sha256": "635255c26c1a63a4742364a7fb34cef455b59c1def778eee8b848e40428786eb",
+    "attachment": "9E90C01A-0461-44DD-8A2E-E364A6E9DD2D.png",
+    "source": "f40be2e",
+    "variant": "normal motion, default text, paused historical Dusk review fixture",
+    "device": "iPad Air 11-inch M3, iOS 27.0 Simulator"
+  },
+  {
+    "file": "dev-f40be2e__nebula-cradle__ipad-air11__landscape.png",
+    "sha256": "20bfe39ab0a82967f57294e80578ef5dcdcb15eb08c8c06fa6539687503ef416",
+    "attachment": "3B3BFC65-5C54-497F-B4B5-CB7784AE43C2.png",
+    "source": "f40be2e",
+    "variant": "normal motion, default text, paused historical Dusk review fixture",
+    "device": "iPad Air 11-inch M3, iOS 27.0 Simulator"
+  },
+  {
+    "file": "dev-f40be2e__shatterlight-reach__ipad-air11__landscape.png",
+    "sha256": "1cefbd0a2a7cbca8f7416964a942008bdaf73deb4a344222f2444fce0d54781e",
+    "attachment": "05FC4E4D-515D-4AE6-8C68-F3BFD8127186.png",
+    "source": "f40be2e",
+    "variant": "normal motion, default text, paused historical Dusk review fixture",
+    "device": "iPad Air 11-inch M3, iOS 27.0 Simulator"
+  },
+  {
+    "file": "dev-f40be2e__night-garden__ipad-air11__landscape.png",
+    "sha256": "f36cc45d48dd2eedf4ef0fb8b72f1671414c8806f7bb090e82106afbf7d9aca2",
+    "attachment": "0A3770CE-3CAA-420B-AE5E-0F98AF959F24.png",
+    "source": "f40be2e",
+    "variant": "normal motion, default text, paused historical Dusk review fixture",
+    "device": "iPad Air 11-inch M3, iOS 27.0 Simulator"
+  },
+  {
+    "file": "dev-f40be2e__ringdrift__ipad-air11__landscape.png",
+    "sha256": "afbec68da0a3cb791f50e967ee41e2441f6a448e37cb03ad8c7e2c11d24bd1f0",
+    "attachment": "2F1335A8-73C1-4675-880E-B14F13127E43.png",
+    "source": "f40be2e",
+    "variant": "normal motion, default text, paused historical Dusk review fixture",
+    "device": "iPad Air 11-inch M3, iOS 27.0 Simulator"
+  },
+  {
+    "file": "dev-f40be2e__score-1234567890__iphone-17e__default-text.png",
+    "sha256": "ec772ed965a69bbaea238af1165376f52b0f506e1b114d6c94bb58169e99edd2",
+    "attachment": "7309B994-ADC1-4C3D-8A27-78C04D0FE4AA.png",
+    "source": "f40be2e",
+    "variant": "Calm effects, default text, score fixture",
+    "device": "iPhone 17e, iOS 27.0 Simulator"
+  },
+  {
+    "file": "dev-f40be2e__moonwake-opening__iphone-17e__normal-motion.jpg",
+    "sha256": "4b527b395cc9c7af3b77b8f83583c85e71f9ca339900dee822635762ce134348",
+    "source": "f40be2e",
+    "variant": "normal fresh survival opening, default text, Calm effects off",
+    "device": "iPhone 17e, iOS 27.0 Simulator",
+    "capture": "XcodeBuildMCP optimized JPEG"
+  },
+  {
+    "file": "dev-08af480__moonwake__ipad-mini__landscape.png",
+    "sha256": "f96a0554c71b5337a85815179d14eb1e21d252485640aa0d0af945593b32b42a",
+    "attachment": "A80B05C5-A14A-4C39-B0DD-31EE3CB36DDC.png",
+    "source": "08af480",
+    "variant": "normal motion, default text, paused historical Dusk review fixture",
+    "device": "iPad mini A17 Pro, iOS 27.0 Simulator"
+  },
+  {
+    "file": "dev-1c624cb__moonwake-crowded-award__host-430x932__default.png",
+    "sha256": "cd0cda8f7807ec0b396185ccba2c69d3a4e426b58bb29334e312ff24a1a6f9e2",
+    "source": "1c624cb",
+    "attachment": "178FCD5E-8CFD-4B53-A9FB-A2639DEC6EE6.png",
+    "variant": "current fresh-survival rules, default text, normal motion",
+    "device": "430x932 native hosted view, iPhone 17e / iOS 27.0 Simulator"
+  },
+  {
+    "file": "dev-1c624cb__moonwake__ipad-mini__landscape.png",
+    "sha256": "734462d79faac1639bcd7d2f14a8a12eeba22ee7902e2faf66cd14962188aee8",
+    "source": "1c624cb",
+    "attachment": "25824B61-D30F-4432-844A-B847C999249C.png",
+    "variant": "default text, paused historical Dusk review fixture, normal motion enabled",
+    "device": "iPad mini A17 Pro / iOS 27.0 Simulator"
+  }
+]

@@ -4,7 +4,7 @@
 
 Polish the six gameplay priorities in order, merging and delivering each verified improvement through the canonical phone updater before starting the next. The player reported a “huge improvement” after the five gesture deliveries. Apply that same bounded process to the remaining experience.
 
-**Next action:** Audit consequence feedback after the verified [board-clarity delivery](evidence/board-clarity-2026-10-18/README.md).
+**Next action:** Deliver the [immediate consequence feedback](evidence/consequence-feedback-2026-10-18/README.md) reconciled with the accepted nightscapes, then correct outward-swipe rejection wording before shower pacing.
 
 ## Scope and success
 

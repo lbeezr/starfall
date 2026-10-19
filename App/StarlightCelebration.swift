@@ -121,10 +121,11 @@ struct StarlightCelebrationOverlay: View {
     /// One protected region for every award category, independent of occupied
     /// cells or animation positions. Large text has a separate guide below the canvas.
     static func awardRegion(board: CGRect, header: CGRect, accessible: Bool) -> CGRect {
-        let mapping = ObservatoryGeometry(size: board.size)
+        let mapping = LandingGeometry(size: board.size, largeHeader: accessible)
         let top = accessible ? board.minY + mapping.frame(Cell(0, 3)).maxY + 8 : header.maxY + 4
-        let bottom = accessible ? board.maxY - 8 : board.minY + mapping.frame(Cell(6, 3)).minY - 8
-        return CGRect(x: board.minX + 16, y: top, width: max(0, board.width - 32), height: max(0, bottom - top))
+        let bottom = accessible ? board.minY + mapping.accessibleCanvasEnd - 8 : board.minY + mapping.frame(Cell(6, 3)).minY - 8
+        return CGRect(x: board.minX + mapping.arenaFrame.minX + 8, y: top,
+                      width: max(0, mapping.arenaFrame.width - 16), height: max(0, bottom - top))
     }
 
     private func color(_ contributor: StarlightCelebration.Contributor) -> Color {
@@ -135,7 +136,7 @@ struct StarlightCelebrationOverlay: View {
     }
 
     private func location(_ cell: Cell) -> CGPoint {
-        let local = ObservatoryGeometry(size: board.size).viewPoint(cell)
+        let local = LandingGeometry(size: board.size).viewPoint(cell)
         return CGPoint(x: local.x + board.minX, y: local.y + board.minY)
     }
 
@@ -146,7 +147,7 @@ struct StarlightCelebrationOverlay: View {
                              y: points.map(\.y).reduce(0, +) / CGFloat(points.count))
         let energy = event.energy
         let strong = event.level != .ordinary
-        let step = ObservatoryGeometry(size: board.size).imageRect.width / 7.7
+        let step = LandingGeometry(size: board.size).starStep
         if event.isExceptional, age < 0.85 {
             let t = min(1, max(0, age - 0.06) / 0.79)
             var aurora = context

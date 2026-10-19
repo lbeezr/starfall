@@ -39,7 +39,9 @@ Behavior proposals, production contracts and research supporting decisions.
 
 Use the [design template](../templates/DESIGN.md). Start with [shower phases](SHOWER_PHASES.md) for the active rhythm comparison, [visual reference](VISUAL_REFERENCE.md) for imagery, [star cast](star-cast/README.md) for runtime art, and [audio](audio/README.md) for sound. Older original-puzzle documents are context, not current scope; consult [the roadmap](../ROADMAP.md).
 
-For living scene work, start with [environment art direction and production](environments/PRODUCTION.md), the [five-place bible](environments/landing-places-01/README.md), and the [native Observatory evidence](environments/landing-native-01/README.md).
+For scene work, start with [five layered nightscapes](environments/night-production-09/README.md) and their [native verification](../evidence/nightscapes-2026-10-18/README.md). The approved color keys and scene kits remain concept references.
+
+The historical [five celestial homes](environments/celestial-worlds-04/README.md) preceded the approved nightscape redesign: new astronomical locations and cast-compatible palettes using the accepted [living-worlds template](environments/living-worlds-03/README.md). Both follow the [Hearthstone board study](environments/hearthstone-study/README.md); these platform concepts were superseded before publication.
 
 The [branding studies](branding/README.md) retain the editable wordmarks, sanctuary covers and falling-icon comparisons outside the app target.
 

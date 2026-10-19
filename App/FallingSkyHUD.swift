@@ -27,18 +27,19 @@ struct SkyPhaseCue: Equatable {
 
 /// Authored vector constellation, sharp at every display scale; no new raster pipeline.
 struct SkyMenuGlyph: View {
+    var ink = StarfallTheme.Colors.textPrimary
     var body: some View {
         Canvas { context, size in
             let points = [CGPoint(x: size.width*0.15, y: size.height*0.65),
                           CGPoint(x: size.width*0.45, y: size.height*0.25),
                           CGPoint(x: size.width*0.8, y: size.height*0.55)]
             var path = Path(); path.addLines(points)
-            context.stroke(path, with: .color(StarfallTheme.Colors.actionPrimary.opacity(0.7)), lineWidth: 1)
+            context.stroke(path, with: .color(ink.opacity(0.7)), lineWidth: 1)
             for point in points {
                 context.fill(Path(ellipseIn: CGRect(x: point.x-2, y: point.y-2, width: 4, height: 4)),
-                             with: .color(StarfallTheme.Colors.textPrimary))
+                             with: .color(ink))
             }
-        }.frame(width: 24, height: 24).accessibilityHidden(true)
+        }.frame(width: StarfallTheme.Layout.hudSymbolSide, height: StarfallTheme.Layout.hudSymbolSide).accessibilityHidden(true)
     }
 }
 
@@ -78,6 +79,7 @@ enum SkyShowerPlacement {
     let arriving: Bool
     let quiet: Bool
     var island = false
+    var width = StarfallTheme.Layout.showerTrailWidth
     var forecast: [IncomingStar] = []
 
     var body: some View {
@@ -85,7 +87,7 @@ enum SkyShowerPlacement {
         let miniatures = forecast.prefix(FallingSky.maximumShowerSize).map {
             Image(uiImage: StarCast.image(for: .init($0)))
         }
-        TimelineView(.periodic(from: .now, by: quiet ? 1 : 1.0/30)) { context in
+        TimelineView(.animation(minimumInterval: quiet ? 1 : 1.0/30, paused: paused || quiet)) { context in
             let remaining = max(0, deadline?.timeIntervalSince(context.date) ?? interval)
             let progress = arriving ? 1 : max(0, min(1, 1-remaining/interval))
             Canvas { drawing, size in
@@ -127,9 +129,9 @@ enum SkyShowerPlacement {
                     CGPoint(x: start.x + (end.x - start.x) * fraction, y: start.y)
                 }
             }
-            .frame(width: island ? StarfallTheme.IslandTimer.width : StarfallTheme.Layout.showerTrailWidth,
+            .frame(width: island ? StarfallTheme.IslandTimer.width : width,
                    height: island ? StarfallTheme.IslandTimer.height : 28)
-            .opacity(paused ? 0 : 1)
+            .opacity(paused ? 0.55 : 1)
             .accessibilityElement(children: .ignore)
             .accessibilityLabel(paused ? SkyCopy.text(.statusPaused) : arriving ? SkyCopy.text(.statusArriving) : remaining <= 1.25 ? SkyCopy.text(.statusApproaching) : SkyCopy.text(.statusFlowing))
             .accessibilityValue(forecast.map {

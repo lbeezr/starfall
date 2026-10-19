@@ -45,7 +45,7 @@ struct ConstellationTraceSurface: UIViewRepresentable {
             capture.cancelsTouchesInView = false
             capture.shouldStart = { [weak self] point in
                 guard let input = self?.input, input.enabled else { return false }
-                return ObservatoryGeometry(size: input.size).cell(at: point) != nil
+                return LandingGeometry(size: input.size).cell(at: point) != nil
             }
             capture.yieldsToScrollAtStart = { [weak self] point in
                 guard let input = self?.input else { return true }
@@ -73,7 +73,7 @@ struct ConstellationTraceSurface: UIViewRepresentable {
         }
         override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
             guard let input, input.enabled else { return false }
-            return ObservatoryGeometry(size: input.size).cell(at: point) != nil
+            return LandingGeometry(size: input.size).cell(at: point) != nil
         }
         func cancelInput(reason: String? = nil) {
             holdTask?.cancel(); holdTask = nil
@@ -129,7 +129,7 @@ struct ConstellationTraceSurface: UIViewRepresentable {
         func moveInput(to point: CGPoint) {
             guard !blocked, let input else { return }
             let wasDrawing = session.isDrawing
-            let event = session.move(to: point, mapping: ObservatoryGeometry(size: input.size))
+            let event = session.move(to: point, mapping: LandingGeometry(size: input.size))
             if !session.canHold { holdTask?.cancel(); holdTask = nil }
             switch event {
             case .swap(let from, let to):
@@ -147,7 +147,7 @@ struct ConstellationTraceSurface: UIViewRepresentable {
             moveInput(to: point)
             guard !blocked, let input else { return }
             holdTask?.cancel(); holdTask = nil; primary = nil
-            let outcome = session.finish(at: point, mapping: ObservatoryGeometry(size: input.size))
+            let outcome = session.finish(at: point, mapping: LandingGeometry(size: input.size))
             switch outcome {
             case .trace: input.end()
             case .tap(let cell): input.cancel(); input.tap(cell)
@@ -235,7 +235,7 @@ struct ConstellationTouchSession {
     var isDrawing: Bool { mode == .drawing }
     var canHold: Bool { mode == .pending && (traceEligible || swapEligible) && maximumDistance <= Self.holdSlop }
 
-    static func swapThreshold(_ cell: Cell, mapping: ObservatoryGeometry) -> CGFloat {
+    static func swapThreshold(_ cell: Cell, mapping: LandingGeometry) -> CGFloat {
         let frame = mapping.frame(cell)
         return min(18, max(12, min(frame.width, frame.height) * 0.25))
     }
@@ -250,7 +250,7 @@ struct ConstellationTouchSession {
         mode = .drawing
         return true
     }
-    mutating func move(to point: CGPoint, mapping: ObservatoryGeometry) -> Event {
+    mutating func move(to point: CGPoint, mapping: LandingGeometry) -> Event {
         guard let origin, mode == .pending || mode == .drawing else { return .none }
         guard let from = mapping.cell(at: origin), point.x.isFinite, point.y.isFinite else {
             mode = .consumed; return .cancel
@@ -276,7 +276,7 @@ struct ConstellationTouchSession {
         if !swapEligible && maximumDistance > Self.tapSlop && !canHold { mode = .consumed; return .cancel }
         return .none
     }
-    mutating func finish(at point: CGPoint, mapping: ObservatoryGeometry) -> Outcome {
+    mutating func finish(at point: CGPoint, mapping: LandingGeometry) -> Outcome {
         defer { cancel() }
         guard let origin else { return .cancel }
         switch mode {

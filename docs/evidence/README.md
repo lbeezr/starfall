@@ -1,5 +1,7 @@
 # Evidence index
 
+[Five layered nightscapes](nightscapes-2026-10-18/README.md) records the centered native integration, checks, captures and canonical delivery. The earlier [celestial-platform evidence](celestial-boards-2026-10-18/README.md) remains historical.
+
 Dated, source-bound records of checks, comparisons and their limits.
 
 [Crystal-depth native integration](crystal-depth-native-2026-10-18/README.md) records the adopted alphabet renderer, fixed resource budget and native checks.
@@ -75,6 +77,10 @@ Start with [the roadmap](../ROADMAP.md) for current priorities or [visual refere
 - [Actual device installation and stale-delivery guards](device-delivery-guards-2026-10-18/README.md): guarded updater activation, rollback/overwrite regression tests and privileged-access limits.
 
 [Input centralization](interaction-centralization-2026-10-18/README.md) records four separate interaction, admission, interruption and feedback extractions, with per-batch source and native verification.
+
+- [Five landing places](landing-places-2026-10-18/README.md): remembered locations, layered props and shared arena geometry; records the obsolete-baseline correction and current-main verification separately.
+
+- [Environmental grooves, October 18](environment-grooves-2026-10-18/README.md): physical control/message recesses across five locations, responsive native registration and source-bound checks.
 
 [Forgiving current-app input](forgiving-input-main-2026-10-18/README.md) records directional swaps, empty-gap constellations and current-main regression checks.
 

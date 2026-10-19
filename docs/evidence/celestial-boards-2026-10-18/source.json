@@ -1,0 +1,70 @@
+{
+  "source": "b5a7a02a7c7434ac9e9d3975ef69d7f7281e12ab",
+  "runtimeBuildID": "dev.4de18c939b",
+  "dirtyRuntimeInputs": [],
+  "testOnlyDifference": "Observatory actual VoiceOver expectation renamed to the production lantern label; full VoiceOver deferred to RC.",
+  "toolchain": "Xcode 27.1 (27A9275), Swift 6.4, iOS SDK 27.1",
+  "captures": [
+    {
+      "file": "dev-e71716e__crescent-dense__iphone-17e__default-text.jpg",
+      "source": "e71716e",
+      "context": "iPhone 17e / iOS 27.0 Simulator; default text; normal motion; Calm effects off; isolated dense review fixture",
+      "sha256": "c0ccf277e2aa7a4521f891343d39cb87fc221d7cd9c690c89c96420cc327489d"
+    },
+    {
+      "file": "dev-e71716e__nebula-dense__iphone-17e__default-text.jpg",
+      "source": "e71716e",
+      "context": "iPhone 17e / iOS 27.0 Simulator; default text; normal motion; Calm effects off; isolated dense review fixture",
+      "sha256": "6d425368e68d254aef184b588d468fc22f420303dd04907a2bd585f342a50aea"
+    },
+    {
+      "file": "dev-e71716e__orbital-dense__iphone-17e__default-text.jpg",
+      "source": "e71716e",
+      "context": "iPhone 17e / iOS 27.0 Simulator; default text; normal motion; Calm effects off; isolated dense review fixture",
+      "sha256": "bf28b35aa4aaaaed0c96c789f4bf0af086dec3d782848478a5050cfb483027d5"
+    },
+    {
+      "file": "dev-e71716e__aurora-dense__iphone-17e__default-text.jpg",
+      "source": "e71716e",
+      "context": "iPhone 17e / iOS 27.0 Simulator; default text; normal motion; Calm effects off; isolated dense review fixture",
+      "sha256": "29354a9f0cb102a80545772bb2906f12db5cf91dd29896a13faf4e4d9f23155a"
+    },
+    {
+      "file": "dev-e71716e__spiral-dense__iphone-17e__default-text.jpg",
+      "source": "e71716e",
+      "context": "iPhone 17e / iOS 27.0 Simulator; default text; normal motion; Calm effects off; isolated dense review fixture",
+      "sha256": "4f63fcb6136618bbc8f2e19d91be18e17ee3b95a421ae7cdf6faae978f3455f4"
+    },
+    {
+      "file": "dev-e71716e__aurora-landscape__ipad-mini__default-text.png",
+      "source": "e71716e",
+      "context": "iPad mini / iOS 27.0 Simulator; default text; native landscape test",
+      "sha256": "8589dc32ade8bd845b486ad01cc97edcef1140eda2be0833557687468acfa4bb"
+    },
+    {
+      "file": "dev-30b09d8__score-and-menu__ipad-mini__largest-text.png",
+      "source": "30b09d8",
+      "context": "iPad mini / iOS 27.0 Simulator; largest Dynamic Type; native header test",
+      "sha256": "2f72aed787c01fd8953240d699316e6940e37765e327369acba308f333a1c01c"
+    }
+  ],
+  "sourceHashes": {
+    "App/LandingGeometry.swift": "d1b4d688e3b867c367994248353c2df72d63f0c29043e086b9648347a0266699",
+    "App/LandingEnvironment.swift": "a1f16811ae90c3876430f7b72301eb3809fc97540a7f5ffbeb6e819b52b91f77",
+    "App/LandingPlace.swift": "3bbadd13fb66d797358a2825e4c4b1b3fb7aa73fbd142ba65b9661e866e24c2f",
+    "App/FallingSkyView.swift": "7452249996226c7dfc93c7088f90402a45aaa4f1605eae535c332cd60847f258",
+    "App/FallingSkyScene.swift": "eec8d42527ffc3afd5341e05545f2f5cef3609abb38de0b556f314eade6eaf18",
+    "App/StarlightCelebration.swift": "8a9e314fed73473698bc4e381c2be6499e6d5f86e36817facaf5a635e4dbf4a7",
+    "App/SkyFlowCeremony.swift": "06ce61304f18640f72286a7ace6df7524f6ce2fb3604d851896c0fdc5f48f11d",
+    "App/SkyDefaults.swift": "2ef8e6667f5526143e03a2b39a561e8e3ade9d6e4c09e1e68bcc040a99ea7a59",
+    "App/SkyDialogueBubble.swift": "edde131bd365d2a7bd7c4e727f723ade648390db4a1ea3b8880c7cc4aaf2716e"
+  },
+  "parity": "e71716e to b5a7a02: LandingGeometry, LandingEnvironment, LandingPlace, packaged artwork, FallingSkyScene and StarlightCelebration unchanged. New main changes affect terminal save validation and ceremony clearance; 6fd8b94 also pauses scenery behind save notices.",
+  "motion": {
+    "temporaryFile": "/tmp/celestial-normal-motion.mp4",
+    "source": "e71716e",
+    "durationSeconds": 68.6017,
+    "sha256": "f549ee9ed555d45265056b9bdcc24e368d75fe6b04829fa957b9538520358db2",
+    "review": "Native 30 fps recording; exact samples at 42.50 and 42.80 seconds show clear award and interpolated survivor descent. Still-frame review is not a real-time smoothness or physical-performance measurement."
+  }
+}

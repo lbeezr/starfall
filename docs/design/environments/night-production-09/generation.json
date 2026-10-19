@@ -1,0 +1,128 @@
+[
+  {
+    "name": "NightVeil",
+    "prompt": "Generate one production game scenery asset. Reference image sets the painterly jewel-like brush texture and navy/periwinkle palette. Isolate ONLY one loose tall curl of faint blue-violet interstellar dust, irregular and feathered, no stars, moon, vessel, ice or objects. Genuine transparent background throughout all negative space, with low-opacity wispy edges. Entire narrow cloud curl visible with margin. Gentle dark values for layering over deep navy; avoid bright white centers. One shape, portrait canvas. No text, UI, floor, border or shadow.",
+    "reference": "/tmp/starfall-celestial-production/docs/design/environments/night-keys-08/moonwake-wide-key.png",
+    "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-72e99cb1-88ea-4a4b-9c1f-96336e47fc1b.png",
+    "selected": true
+  },
+  {
+    "name": "MoonwakeMoon",
+    "prompt": "Generate one isolated complete moon disk as a production alpha asset matching the reference's pearl-lavender faceted painted moon. Entire round sphere inside canvas with 8% transparent margin; luminous pearl crescent at upper-right and deep indigo shadowed left hemisphere, subtle crystalline lunar facets. Preserve richly painted storybook material, not photoreal. No halo, atmosphere, stars, dust, background, ship or floor. Genuine transparent outside disk. Do not crop sphere. Square canvas. No UI or text.",
+    "reference": "/tmp/starfall-celestial-production/docs/design/environments/night-keys-08/moonwake-wide-key.png",
+    "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-4cbc6faf-6d21-480b-8612-50be456784b6.png",
+    "selected": true
+  },
+  {
+    "name": "MoonwakeSail",
+    "prompt": "Generate one tiny celestial chart-sailing vessel from the reference as a production alpha prop. Whole delicate boat-shaped ivory/brass hull with one mast and pale lavender triangular cloth sail, warm single lantern tucked at mast base. It floats in space, no water, waves, platform, ground, cast shadow, trail, stars or background. Keep exact painterly jewel-like mood of reference, no characters. One complete silhouette centered on transparent background with generous margin, landscape canvas. Sail and vessel read clearly at 60 pixels. No extra props or text.",
+    "reference": "/tmp/starfall-celestial-production/docs/design/environments/night-keys-08/moonwake-wide-key.png",
+    "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-28e87890-a43d-4b08-a59a-38ca0f20f53c.png",
+    "selected": false
+  },
+  {
+    "name": "NightIce",
+    "prompt": "Generate one isolated complete irregular small lunar ice fragment as a production alpha foreground prop, matching lower-left ice in reference. Indigo crystalline core with pale lavender/pearl thin illuminated upper-left edge, broad simple asymmetrical facets, subtle muted cyan. Entire shape visible with transparent margin, no other stones, dust, glow cloud, star, background, ground, text or shadow. Square canvas, painterly faceted style, dark readable silhouette. Genuine transparent background.",
+    "reference": "/tmp/starfall-celestial-production/docs/design/environments/night-keys-08/moonwake-wide-key.png",
+    "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-b45d161a-c727-4dfc-ba83-22b77b55b8ec.png",
+    "selected": true
+  },
+  {
+    "name": "NebulaBankLeft",
+    "reference": "/tmp/starfall-celestial-production/docs/design/environments/night-keys-08/nebula-wide-key.png",
+    "prompt": "Use case: stylized-concept. Create one production game scenery alpha asset. The reference image defines painterly faceted texture, dark nighttime palette and subject identity. A single tall, asymmetric indigo cloud bank shaped like a loose C with a curled upper lip, matching the LEFT nebula bank in the reference. Deep indigo scalloped cloud forms with lavender and faint warm rose inner light, irregular translucent feathery perimeter. Wide transparent gap inside the C; entire cloud visible with margins. No second bank, black sky, stars, characters or borders. Portrait canvas. Genuine transparent background with preserved alpha; NO opaque backdrop, drop shadow, checkerboard drawing, text, UI or characters. Keep the reference's tender celestial mood, not generic neon sci-fi. This is a separately composited component, not a scene or collage.",
+    "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-af5d7c8c-1ad7-4a7c-b3b3-b8da68afe91a.png",
+    "selected": true
+  },
+  {
+    "name": "NebulaBankRight",
+    "reference": "/tmp/starfall-celestial-production/docs/design/environments/night-keys-08/nebula-wide-key.png",
+    "prompt": "Use case: stylized-concept. Create one production game scenery alpha asset. The reference image defines painterly faceted texture, dark nighttime palette and subject identity. A single low diagonal rose-lavender nebula bank with a small warm birth-light pocket half buried between cloud folds, matching BOTTOM RIGHT of reference. Indigo shadows, restrained creamy peach inner illumination, painterly scalloped forms, entire bank visible with soft translucent edges. Broad asymmetrical triangular shape. No other cloud banks, stars, planet or sky, no comet. Square canvas. Genuine transparent background with preserved alpha; NO opaque backdrop, drop shadow, checkerboard drawing, text, UI or characters. Keep the reference's tender celestial mood, not generic neon sci-fi. This is a separately composited component, not a scene or collage.",
+    "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-955687dc-7f60-4802-b4d5-603f5d752277.png",
+    "selected": true
+  },
+  {
+    "name": "ShatterlightArc",
+    "reference": "/tmp/starfall-celestial-production/docs/design/environments/night-keys-08/shatterlight-wide-key.png",
+    "prompt": "Use case: stylized-concept. Create one production game scenery alpha asset. The reference image defines painterly faceted texture, dark nighttime palette and subject identity. Only the broken planetary arc from left of reference, made of three separate curved indigo-lavender crust fragments with broad transparent gaps between them. Together suggest one shattered spherical shell; curved strata and pearl inner edges. One complete cluster fully visible within square canvas. Not a column of flat ledges; no buildings, stars, dust, horizon, floor or background. Genuine transparent background with preserved alpha; NO opaque backdrop, drop shadow, checkerboard drawing, text, UI or characters. Keep the reference's tender celestial mood, not generic neon sci-fi. This is a separately composited component, not a scene or collage.",
+    "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-fd69bab0-e833-4b95-b1e5-61fb55a94fac.png",
+    "selected": false
+  },
+  {
+    "name": "ShatterlightShelter",
+    "reference": "/tmp/starfall-celestial-production/docs/design/environments/night-keys-08/shatterlight-wide-key.png",
+    "prompt": "Use case: stylized-concept. Create one production game scenery alpha asset. The reference image defines painterly faceted texture, dark nighttime palette and subject identity. Only the small distant observatory on a single floating curved planet fragment from top-right of reference. Tiny rounded blue observatory dome, one warm amber lens window, few broken crystalline forms attached to the same tapered dark indigo rock. Entire complete prop centered with generous transparent margin. No separate floating islands, stars, sky, dust, trails or ground. Painterly, compact and legible at 80 pixels. Genuine transparent background with preserved alpha; NO opaque backdrop, drop shadow, checkerboard drawing, text, UI or characters. Keep the reference's tender celestial mood, not generic neon sci-fi. This is a separately composited component, not a scene or collage.",
+    "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-ebb4fe8c-d645-426d-aad8-762b6c028116.png",
+    "selected": true
+  },
+  {
+    "name": "GardenCanopy",
+    "reference": "/tmp/starfall-celestial-production/docs/design/environments/night-keys-08/garden-wide-key.png",
+    "prompt": "Use case: stylized-concept. Create one production game scenery alpha asset. The reference image defines painterly faceted texture, dark nighttime palette and subject identity. One isolated alien canopy branch with four large broad lobed fan leaves, as seen upper-left of reference. Sweeping diagonal dark branch, deep indigo and muted periwinkle foliage, tiny soft pearl/rose rim light. Clearly botanical, no crystals, no flowers, fruits, ground, trees, horizon or sky. Complete branch-and-leaves cluster with transparent gaps and transparent margin. Landscape canvas. Genuine transparent background with preserved alpha; NO opaque backdrop, drop shadow, checkerboard drawing, text, UI or characters. Keep the reference's tender celestial mood, not generic neon sci-fi. This is a separately composited component, not a scene or collage.",
+    "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-b9d2b1f0-8262-4537-94fc-f7db875f84ba.png",
+    "selected": true
+  },
+  {
+    "name": "GardenPod",
+    "reference": "/tmp/starfall-celestial-production/docs/design/environments/night-keys-08/garden-wide-key.png",
+    "prompt": "Use case: stylized-concept. Create one production game scenery alpha asset. The reference image defines painterly faceted texture, dark nighttime palette and subject identity. One isolated attached hanging amber seed pod on a curved small branch with two broad lobed indigo/periwinkle fan leaves, based on lower-right reference. Warm restrained pod light through natural veined shell, no bright aura. Entire branching silhouette visible with margin, no floor, pots, platform, mushrooms, sky or other props. Painterly elegant alien plant, landscape canvas. Genuine transparent background with preserved alpha; NO opaque backdrop, drop shadow, checkerboard drawing, text, UI or characters. Keep the reference's tender celestial mood, not generic neon sci-fi. This is a separately composited component, not a scene or collage.",
+    "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-7a935a7e-b08f-47f7-8c6b-230f1ecd9009.png",
+    "selected": true
+  },
+  {
+    "name": "RingdriftPlanet",
+    "reference": "/tmp/starfall-celestial-production/docs/design/environments/night-keys-08/ringdrift-wide-key.png",
+    "prompt": "Use case: stylized-concept. Create one production game scenery alpha asset. The reference image defines painterly faceted texture, dark nighttime palette and subject identity. Only one whole dark indigo-violet planet disk matching the reference, without any rings. Restrained pale lavender crescent on upper-left rim, shadowed blue hemisphere, broad painterly crystalline surface texture. Full circle centered with 8% transparent margin, no ring, halo, other moon, stars, dust or background. Square canvas. Genuine transparent background with preserved alpha; NO opaque backdrop, drop shadow, checkerboard drawing, text, UI or characters. Keep the reference's tender celestial mood, not generic neon sci-fi. This is a separately composited component, not a scene or collage.",
+    "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-7792ca8f-f2c7-43a4-ad6a-5b6e8cafad55.png",
+    "selected": true
+  },
+  {
+    "name": "RingdriftRings",
+    "reference": "/tmp/starfall-celestial-production/docs/design/environments/night-keys-08/ringdrift-wide-key.png",
+    "prompt": "Use case: stylized-concept. Create one production game scenery alpha asset. The reference image defines painterly faceted texture, dark nighttime palette and subject identity. Only the complete oblique elliptical planetary ring system from reference, with no planet. One narrow oval ring band, multiple fine lavender/blue concentric grooves and sparse pebble-size ice flecks, transparent central hole, full thin ellipse tilted from lower-left to upper-right about 25 degrees. Clearly 3D foreshortened ring. Not a spiral or swirling portal. No planet, moon, stars, sky or glow cloud. Entire ellipse has generous transparent margin. Landscape canvas. Genuine transparent background with preserved alpha; NO opaque backdrop, drop shadow, checkerboard drawing, text, UI or characters. Keep the reference's tender celestial mood, not generic neon sci-fi. This is a separately composited component, not a scene or collage.",
+    "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-870e9c6a-5e75-4add-b0b7-85526b9d3815.png",
+    "selected": true
+  },
+  {
+    "name": "MoonwakeHull",
+    "reference": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-28e87890-a43d-4b08-a59a-38ca0f20f53c.png",
+    "prompt": "Edit target: the attached celestial sailboat asset. Produce the HULL AND MAST component only on exactly the same landscape canvas and registration: preserve the hull, brass mast, rigging, unlit lantern housing, painting style, position and scale. Remove the triangular cloth sail entirely, leaving genuinely transparent empty space behind the mast and rigging. Remove broad surrounding glow; lantern glass should be dim amber with no emitted glow. Do not move or resize any surviving parts. No background, water, stars, shadows, text, extra objects. Genuine alpha transparency.",
+    "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-81c81094-799f-481e-a3f0-1e776facc093.png",
+    "selected": true
+  },
+  {
+    "name": "MoonwakeCloth",
+    "reference": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-28e87890-a43d-4b08-a59a-38ca0f20f53c.png",
+    "prompt": "Edit target: attached celestial sailboat asset. Produce the CLOTH SAIL component only on exactly the same landscape canvas and registration. Preserve just the one lavender triangular sail, its fine edge and painted facets at identical pixel position and scale. Remove hull, mast, rigging, lantern, ornaments and glow completely to transparent empty space. Keep full canvas, do not recenter or enlarge the sail. Genuine transparent background; no additional marks, shadows, backdrop or text.",
+    "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-21600049-0472-4de5-8f79-b75697c4404f.png",
+    "selected": true
+  },
+  {
+    "name": "GardenMoth",
+    "reference": "/tmp/starfall-celestial-production/docs/design/environments/night-keys-08/garden-wide-key.png",
+    "prompt": "Create one tiny isolated seed-moth production alpha prop in the painterly night-garden style of reference. Small elongated seed-like dark indigo body, two broad narrow folded dusty lavender wings with faint pearl veins. Wings are half-open, elegant non-anthropomorphic silhouette, no eyes or face or star shape. This is a distant background insect, not a collectible or character. Entire insect visible with generous transparent margin on square canvas. No glow, stars, garden, branch, dust, trail, text or background.",
+    "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-5f187639-c77b-41cc-a4b7-f1213792a3a3.png",
+    "selected": true
+  },
+  {
+    "name": "ShatterlightCrown",
+    "reference": "/tmp/starfall-celestial-production/docs/design/environments/night-keys-08/shatterlight-wide-key.png",
+    "prompt": "Create ONE separate production scenery prop using the attached Shatterlight reference as style and material guidance. One large broken upper cap from a hollow spherical planet shell: a single sweeping indigo-violet curved crust, three-dimensional thick strata along its torn lower edge, pearl-lavender inner rim at upper-right. The shape suggests an incomplete curved world, not a full sphere or flat island. Entire single shape visible with generous transparent margin, painterly faceted texture matching the reference. No other fragments, buildings, floating stones, dust, stars, sky, ground, text or glow aura. Genuine transparent background. Square canvas. Do not crop the object.",
+    "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-bb216844-d6be-400a-95e8-f9dba4fe6cdd.png",
+    "selected": true
+  },
+  {
+    "name": "ShatterlightCrescent",
+    "reference": "/tmp/starfall-celestial-production/docs/design/environments/night-keys-08/shatterlight-wide-key.png",
+    "prompt": "Create ONE separate production scenery prop using the attached Shatterlight reference as style and material guidance. One medium crescent-shaped fragment of a hollow spherical planet shell: an irregular curved indigo-violet wedge with visibly curved strata along the broken cut and a restrained pearl-lavender edge. It should look like a part of a round broken world, not a boat or flat platform. Entire single shape visible with generous transparent margin, painterly faceted texture matching the reference. No other fragments, buildings, floating stones, dust, stars, sky, ground, text or glow aura. Genuine transparent background. Square canvas. Do not crop the object.",
+    "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-987a4873-cc17-44d9-a787-bd6f5257233e.png",
+    "selected": true
+  },
+  {
+    "name": "ShatterlightShard",
+    "reference": "/tmp/starfall-celestial-production/docs/design/environments/night-keys-08/shatterlight-wide-key.png",
+    "prompt": "Create ONE separate production scenery prop using the attached Shatterlight reference as style and material guidance. One narrow elongated curved lower shard from a hollow planet shell, pointed indigo-violet stone with a pearl-lavender torn edge, asymmetrical and organically fractured. Its curvature relates to a broken spherical world, no flat shelf. Entire single shape visible with generous transparent margin, painterly faceted texture matching the reference. No other fragments, buildings, floating stones, dust, stars, sky, ground, text or glow aura. Genuine transparent background. Square canvas. Do not crop the object.",
+    "source": "/Users/lbeezr/.codex/generated_images/01a14fad-353c-75b0-89b9-cbb11f7e7d24/exec-b1808ec6-4af1-442b-9668-929a4dc3ddab.png",
+    "selected": true
+  }
+]

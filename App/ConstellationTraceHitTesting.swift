@@ -4,12 +4,12 @@ import StarfallCore
 /// Input geometry only: visits still pass through intent and committed core validation.
 /// Analytic segment/ellipse intersections retain grazing hits even in coarse touch samples.
 enum ConstellationTraceHitTesting {
-    static func radii(_ cell: Cell, mapping: ObservatoryGeometry) -> CGSize {
+    static func radii(_ cell: Cell, mapping: LandingGeometry) -> CGSize {
         let frame = mapping.frame(cell)
         return CGSize(width: frame.width * 0.52, height: frame.height * 0.52)
     }
 
-    static func start(at point: CGPoint, mapping: ObservatoryGeometry, game: FallingSky) -> Cell? {
+    static func start(at point: CGPoint, mapping: LandingGeometry, game: FallingSky) -> Cell? {
         // A draw starts on the same native target as a tap. A smaller circle
         // previously left a dead rim inside an otherwise usable star cell.
         guard let cell = mapping.cell(at: point), game.canStartConstellation(at: cell) else { return nil }
@@ -17,7 +17,7 @@ enum ConstellationTraceHitTesting {
     }
 
     static func cells(from start: CGPoint, to end: CGPoint,
-                      mapping: ObservatoryGeometry, game: FallingSky) -> [Cell] {
+                      mapping: LandingGeometry, game: FallingSky) -> [Cell] {
         let dx = end.x-start.x, dy = end.y-start.y
         var hits: [(cell: Cell, entry: CGFloat)] = []
         for row in 0..<7 { for column in 0..<7 {

@@ -140,3 +140,14 @@ Naming, source provenance, reference status and disposal rules are now linked fr
 ### Main integration checks — October 17, 2026
 
 Applied only this documentation/retirement batch to GitHub main `60bb9d66ec95d9921377f3316d8049423bff088c`, preserving newer character-chat, launch-screen and pacing guidance. Replaced the local-only recovery revision with that published main revision after verifying all 13 image hashes. All 98 changed-document relative targets resolve, all 13 retired images recover exactly, hygiene and diff checks pass. App source/resources/build configuration are unchanged; native tests/builds are inapplicable.
+
+### October 18, 2026 — publication boundary for two historical references
+
+Automatic upload review rejected these two obsolete references while preparing nightscape delivery: the rejected Skysea concept was outside the approved five-world scope, and the historical Observatory screenshot was not admitted for connector export. Neither image is required by the current app or selected capture index. They are omitted from publication, with the prior native report and original manifests preserved. No retry through another upload path was made.
+
+**Local recovery revision:** `d4a6493fd6f1b27cdd9364ffd93c96a640095e33` in the environment worktree. This commit is local history, not a public recovery link.
+
+| Local historical path | Bytes | SHA-256 |
+| --- | ---: | --- |
+| `docs/design/environments/open-skies-05/skysea-tall-concept.jpg` | 70965 | `6b1ff85fa4c20b7cc1bd4340991255fd9c57cc46d39fd87b6c61270826786ce3` |
+| `docs/evidence/landing-places-2026-10-18/dev-7ddc837-wip-6ae29cfa__observatory-landscape__ipad-air11.jpg` | 705762 | `cb59f074d89fd6df26c95a371f3e20a8d67a78eff904875181314aec31c06f95` |

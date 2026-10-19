@@ -1,0 +1,31 @@
+{
+  "tool": "built-in image_gen",
+  "purpose": "Compact terrace material plates, registered to shared normalized floor coordinates. Texture plates resize to the measured stage; characters and props preserve aspect.",
+  "assets": {
+    "Observatory": {
+      "source": "/Users/lbeezr/.codex/generated_images/01a14eb6-7a91-7b60-ae8a-52ec0f28d24e/exec-f913842f-c3e5-45ff-a3b9-b74fd948381e.png",
+      "reference": "/Users/lbeezr/.codex/generated_images/01a14eb6-7a91-7b60-ae8a-52ec0f28d24e/exec-eec71070-4709-4ef5-b188-706afcc70b5f.png",
+      "editPrompt": "Edit this square empty game terrace for a short landscape display. Keep its material, colors, lighting and quiet uninterrupted floor. Make the FRONT / BOTTOM RIM a very thin edge within the bottom 3% of the image (y=0.97 to 1.0). Move the existing front rim and thick front wall completely down to that bottom edge. Expand the bare floor downward so it stays uninterrupted through y=0.96, including both lower corners. The floor must occupy x=0.06 through 0.94 and y=0.06 through 0.96 with NO raised rim or wall in that rectangle. Camera almost directly overhead; nearly zero front thickness. Keep the top and side edges thin, small rounded corners only. No grid, circles, markings, stars, props, characters, sky or text. Do not add a rigid outer UI frame. One simple painterly empty floor with a narrow physical edge."
+    },
+    "Cloudsea": {
+      "source": "/Users/lbeezr/.codex/generated_images/01a14eb6-7a91-7b60-ae8a-52ec0f28d24e/exec-9e6cf447-bb75-41af-bdb1-2bce72f3ed34.png",
+      "reference": "/Users/lbeezr/.codex/generated_images/01a14eb6-7a91-7b60-ae8a-52ec0f28d24e/exec-4086eee7-6291-4c3c-8ec2-88b94c4a277b.png",
+      "editPrompt": "Edit this square empty game terrace for a short landscape display. Keep its material, colors, lighting and quiet uninterrupted floor. Make the FRONT / BOTTOM RIM a very thin edge within the bottom 3% of the image (y=0.97 to 1.0). Move the existing front rim and thick front wall completely down to that bottom edge. Expand the bare floor downward so it stays uninterrupted through y=0.96, including both lower corners. The floor must occupy x=0.06 through 0.94 and y=0.06 through 0.96 with NO raised rim or wall in that rectangle. Camera almost directly overhead; nearly zero front thickness. Keep the top and side edges thin, small rounded corners only. No grid, circles, markings, stars, props, characters, sky or text. Do not add a rigid outer UI frame. One simple painterly empty floor with a narrow physical edge."
+    },
+    "Hearth": {
+      "source": "/Users/lbeezr/.codex/generated_images/01a14eb6-7a91-7b60-ae8a-52ec0f28d24e/exec-ceb00a5d-7ad8-4dfd-b35e-37e7bce6d1c4.png",
+      "reference": "/Users/lbeezr/.codex/generated_images/01a14eb6-7a91-7b60-ae8a-52ec0f28d24e/exec-0f69fddb-bf40-4d5a-a0f7-f324c08ce6d2.png",
+      "editPrompt": "Edit this square empty game terrace for a short landscape display. Keep its material, colors, lighting and quiet uninterrupted floor. Make the FRONT / BOTTOM RIM a very thin edge within the bottom 3% of the image (y=0.97 to 1.0). Move the existing front rim and thick front wall completely down to that bottom edge. Expand the bare floor downward so it stays uninterrupted through y=0.96, including both lower corners. The floor must occupy x=0.06 through 0.94 and y=0.06 through 0.96 with NO raised rim or wall in that rectangle. Camera almost directly overhead; nearly zero front thickness. Keep the top and side edges thin, small rounded corners only. No grid, circles, markings, stars, props, characters, sky or text. Do not add a rigid outer UI frame. One simple painterly empty floor with a narrow physical edge."
+    },
+    "Grotto": {
+      "source": "/Users/lbeezr/.codex/generated_images/01a14eb6-7a91-7b60-ae8a-52ec0f28d24e/exec-67cf9e3a-28b4-4910-b31a-baca66aeaf4d.png",
+      "reference": "/Users/lbeezr/.codex/generated_images/01a14eb6-7a91-7b60-ae8a-52ec0f28d24e/exec-d41097c7-51df-4e7f-b2a7-e830d047aaa8.png",
+      "editPrompt": "Edit this square empty game terrace for a short landscape display. Keep its material, colors, lighting and quiet uninterrupted floor. Make the FRONT / BOTTOM RIM a very thin edge within the bottom 3% of the image (y=0.97 to 1.0). Move the existing front rim and thick front wall completely down to that bottom edge. Expand the bare floor downward so it stays uninterrupted through y=0.96, including both lower corners. The floor must occupy x=0.06 through 0.94 and y=0.06 through 0.96 with NO raised rim or wall in that rectangle. Camera almost directly overhead; nearly zero front thickness. Keep the top and side edges thin, small rounded corners only. No grid, circles, markings, stars, props, characters, sky or text. Do not add a rigid outer UI frame. One simple painterly empty floor with a narrow physical edge."
+    },
+    "Archive": {
+      "source": "/Users/lbeezr/.codex/generated_images/01a14eb6-7a91-7b60-ae8a-52ec0f28d24e/exec-1379b165-37b0-4617-980c-11de65c0eccd.png",
+      "reference": "/Users/lbeezr/.codex/generated_images/01a14eb6-7a91-7b60-ae8a-52ec0f28d24e/exec-8336d6b1-c3bc-4038-a582-ccba006335cb.png",
+      "editPrompt": "Edit this square empty game terrace for a short landscape display. Keep its material, colors, lighting and quiet uninterrupted floor. Make the FRONT / BOTTOM RIM a very thin edge within the bottom 3% of the image (y=0.97 to 1.0). Move the existing front rim and thick front wall completely down to that bottom edge. Expand the bare floor downward so it stays uninterrupted through y=0.96, including both lower corners. The floor must occupy x=0.06 through 0.94 and y=0.06 through 0.96 with NO raised rim or wall in that rectangle. Camera almost directly overhead; nearly zero front thickness. Keep the top and side edges thin, small rounded corners only. No grid, circles, markings, stars, props, characters, sky or text. Do not add a rigid outer UI frame. One simple painterly empty floor with a narrow physical edge."
+    }
+  }
+}

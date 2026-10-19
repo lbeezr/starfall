@@ -1,0 +1,385 @@
+{
+  "date": "2026-10-18",
+  "scope": "Static browser composition; no native or animation acceptance",
+  "sourceKitCommit": "003433f",
+  "sourceHashes": {
+    "index.html": "b07c87610049ef27d712db30722fb5e8459fdf992f4826f9d4628c2a4d60c38e",
+    "review.js": "c623327d6cb33d05ced98b44aaf23c6a3b4151a64680cbd7cd8d25ab4e498d9d",
+    "review.css": "aef7579049d1abc1aef2285cc68d6b177b210ad1c2b849eab990602219a68923",
+    "check-review.cjs": "f2de6bce02abf9ad1eecc06e868d4d63a456ee3d4a8485f4e1310bfd58ad9edb",
+    "../scene-kits-07/kit-data.js": "96130fece7fa7b4be63dc320d3090afdf02224137c984e4f4dc147940ea54331",
+    "../scene-kits-07/diagrams.js": "062f44feabe0f6ef024842e4e6cef8383bfb0e620f5b11e82400fc05c16c7a3e",
+    "../concept-cast.js": "9ce2304b44ccc83e1ef801d214403ddb6cdee34a74d79b37856aeac39c887417",
+    "manifest.json": "0401e449941a6b4f18098a0d986025c6597856c9b3925240dac34c4a7c564216",
+    "prompts.json": "6b2e59ae426bcdede2d30af1e5a19af4173df02df5db2be782d5bdd252df85ee"
+  },
+  "reports": [
+    {
+      "kit": "moonwake",
+      "density": "sparse",
+      "profile": "wide",
+      "count": 6,
+      "dx": 0.0078125,
+      "dy": 0.015625,
+      "overflow": false
+    },
+    {
+      "kit": "moonwake",
+      "density": "sparse",
+      "profile": "phone",
+      "count": 6,
+      "dx": 0.015625,
+      "dy": 0.015625,
+      "overflow": false
+    },
+    {
+      "kit": "moonwake",
+      "density": "gathering",
+      "profile": "wide",
+      "count": 24,
+      "dx": 0.0078125,
+      "dy": 0.015625,
+      "overflow": false
+    },
+    {
+      "kit": "moonwake",
+      "density": "gathering",
+      "profile": "phone",
+      "count": 24,
+      "dx": 0.015625,
+      "dy": 0.015625,
+      "overflow": false
+    },
+    {
+      "kit": "moonwake",
+      "density": "dense",
+      "profile": "wide",
+      "count": 49,
+      "dx": 0.0078125,
+      "dy": 0.015625,
+      "overflow": false
+    },
+    {
+      "kit": "moonwake",
+      "density": "dense",
+      "profile": "phone",
+      "count": 49,
+      "dx": 0.015625,
+      "dy": 0.015625,
+      "overflow": false
+    },
+    {
+      "kit": "moonwake",
+      "density": "empty",
+      "profile": "wide",
+      "count": 0,
+      "dx": 0.0078125,
+      "dy": 0.015625,
+      "overflow": false
+    },
+    {
+      "kit": "moonwake",
+      "density": "empty",
+      "profile": "phone",
+      "count": 0,
+      "dx": 0.015625,
+      "dy": 0.015625,
+      "overflow": false
+    },
+    {
+      "kit": "nebula",
+      "density": "sparse",
+      "profile": "wide",
+      "count": 6,
+      "dx": 0.0078125,
+      "dy": 0.015625,
+      "overflow": false
+    },
+    {
+      "kit": "nebula",
+      "density": "sparse",
+      "profile": "phone",
+      "count": 6,
+      "dx": 0.015625,
+      "dy": 0.015625,
+      "overflow": false
+    },
+    {
+      "kit": "nebula",
+      "density": "gathering",
+      "profile": "wide",
+      "count": 24,
+      "dx": 0.0078125,
+      "dy": 0.015625,
+      "overflow": false
+    },
+    {
+      "kit": "nebula",
+      "density": "gathering",
+      "profile": "phone",
+      "count": 24,
+      "dx": 0.015625,
+      "dy": 0.015625,
+      "overflow": false
+    },
+    {
+      "kit": "nebula",
+      "density": "dense",
+      "profile": "wide",
+      "count": 49,
+      "dx": 0.0078125,
+      "dy": 0.015625,
+      "overflow": false
+    },
+    {
+      "kit": "nebula",
+      "density": "dense",
+      "profile": "phone",
+      "count": 49,
+      "dx": 0.015625,
+      "dy": 0.015625,
+      "overflow": false
+    },
+    {
+      "kit": "nebula",
+      "density": "empty",
+      "profile": "wide",
+      "count": 0,
+      "dx": 0.0078125,
+      "dy": 0.015625,
+      "overflow": false
+    },
+    {
+      "kit": "nebula",
+      "density": "empty",
+      "profile": "phone",
+      "count": 0,
+      "dx": 0.015625,
+      "dy": 0.015625,
+      "overflow": false
+    },
+    {
+      "kit": "shatterlight",
+      "density": "sparse",
+      "profile": "wide",
+      "count": 6,
+      "dx": 0.0078125,
+      "dy": 0.015625,
+      "overflow": false
+    },
+    {
+      "kit": "shatterlight",
+      "density": "sparse",
+      "profile": "phone",
+      "count": 6,
+      "dx": 0.015625,
+      "dy": 0.015625,
+      "overflow": false
+    },
+    {
+      "kit": "shatterlight",
+      "density": "gathering",
+      "profile": "wide",
+      "count": 24,
+      "dx": 0.0078125,
+      "dy": 0.015625,
+      "overflow": false
+    },
+    {
+      "kit": "shatterlight",
+      "density": "gathering",
+      "profile": "phone",
+      "count": 24,
+      "dx": 0.015625,
+      "dy": 0.015625,
+      "overflow": false
+    },
+    {
+      "kit": "shatterlight",
+      "density": "dense",
+      "profile": "wide",
+      "count": 49,
+      "dx": 0.0078125,
+      "dy": 0.015625,
+      "overflow": false
+    },
+    {
+      "kit": "shatterlight",
+      "density": "dense",
+      "profile": "phone",
+      "count": 49,
+      "dx": 0.015625,
+      "dy": 0.015625,
+      "overflow": false
+    },
+    {
+      "kit": "shatterlight",
+      "density": "empty",
+      "profile": "wide",
+      "count": 0,
+      "dx": 0.0078125,
+      "dy": 0.015625,
+      "overflow": false
+    },
+    {
+      "kit": "shatterlight",
+      "density": "empty",
+      "profile": "phone",
+      "count": 0,
+      "dx": 0.015625,
+      "dy": 0.015625,
+      "overflow": false
+    },
+    {
+      "kit": "garden",
+      "density": "sparse",
+      "profile": "wide",
+      "count": 6,
+      "dx": 0.0078125,
+      "dy": 0.015625,
+      "overflow": false
+    },
+    {
+      "kit": "garden",
+      "density": "sparse",
+      "profile": "phone",
+      "count": 6,
+      "dx": 0.015625,
+      "dy": 0.015625,
+      "overflow": false
+    },
+    {
+      "kit": "garden",
+      "density": "gathering",
+      "profile": "wide",
+      "count": 24,
+      "dx": 0.0078125,
+      "dy": 0.015625,
+      "overflow": false
+    },
+    {
+      "kit": "garden",
+      "density": "gathering",
+      "profile": "phone",
+      "count": 24,
+      "dx": 0.015625,
+      "dy": 0.015625,
+      "overflow": false
+    },
+    {
+      "kit": "garden",
+      "density": "dense",
+      "profile": "wide",
+      "count": 49,
+      "dx": 0.0078125,
+      "dy": 0.015625,
+      "overflow": false
+    },
+    {
+      "kit": "garden",
+      "density": "dense",
+      "profile": "phone",
+      "count": 49,
+      "dx": 0.015625,
+      "dy": 0.015625,
+      "overflow": false
+    },
+    {
+      "kit": "garden",
+      "density": "empty",
+      "profile": "wide",
+      "count": 0,
+      "dx": 0.0078125,
+      "dy": 0.015625,
+      "overflow": false
+    },
+    {
+      "kit": "garden",
+      "density": "empty",
+      "profile": "phone",
+      "count": 0,
+      "dx": 0.015625,
+      "dy": 0.015625,
+      "overflow": false
+    },
+    {
+      "kit": "ringdrift",
+      "density": "sparse",
+      "profile": "wide",
+      "count": 6,
+      "dx": 0.0078125,
+      "dy": 0.015625,
+      "overflow": false
+    },
+    {
+      "kit": "ringdrift",
+      "density": "sparse",
+      "profile": "phone",
+      "count": 6,
+      "dx": 0.015625,
+      "dy": 0.015625,
+      "overflow": false
+    },
+    {
+      "kit": "ringdrift",
+      "density": "gathering",
+      "profile": "wide",
+      "count": 24,
+      "dx": 0.0078125,
+      "dy": 0.015625,
+      "overflow": false
+    },
+    {
+      "kit": "ringdrift",
+      "density": "gathering",
+      "profile": "phone",
+      "count": 24,
+      "dx": 0.015625,
+      "dy": 0.015625,
+      "overflow": false
+    },
+    {
+      "kit": "ringdrift",
+      "density": "dense",
+      "profile": "wide",
+      "count": 49,
+      "dx": 0.0078125,
+      "dy": 0.015625,
+      "overflow": false
+    },
+    {
+      "kit": "ringdrift",
+      "density": "dense",
+      "profile": "phone",
+      "count": 49,
+      "dx": 0.015625,
+      "dy": 0.015625,
+      "overflow": false
+    },
+    {
+      "kit": "ringdrift",
+      "density": "empty",
+      "profile": "wide",
+      "count": 0,
+      "dx": 0.0078125,
+      "dy": 0.015625,
+      "overflow": false
+    },
+    {
+      "kit": "ringdrift",
+      "density": "empty",
+      "profile": "phone",
+      "count": 0,
+      "dx": 0.015625,
+      "dy": 0.015625,
+      "overflow": false
+    }
+  ],
+  "generatedArtwork": "All selected images decoded",
+  "regions": "HUD, centered full field and action reservations toggled",
+  "grayscale": "all five sampled with dense cast",
+  "keyboard": "Enter selects destination",
+  "narrow390px": "no horizontal page overflow",
+  "reducedMotion": "no animations exist",
+  "errors": []
+}

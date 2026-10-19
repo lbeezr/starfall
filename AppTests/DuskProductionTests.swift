@@ -139,7 +139,7 @@ final class DuskProductionTests: XCTestCase {
         scene.animate(turn,from:before,to:after){complete=true}
         let deadline=ContinuousClock.now + .seconds(5)
         let consumedID=try XCTUnwrap(before.gem(at:Cell(0,2))?.id)
-        let origin=ObservatoryGeometry(size:scene.size).scenePoint(Cell(0,2))
+        let origin=LandingGeometry(size:scene.size).scenePoint(Cell(0,2))
         while ContinuousClock.now < deadline && !complete {
             sawHole = sawHole || scene.childNode(withName:"//dusk.collapse") != nil
             if let star=scene.childNode(withName:"//sky.star.\(consumedID)") {

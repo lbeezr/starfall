@@ -279,34 +279,28 @@ private struct SkyCelebration: View, Animatable {
 
 
 extension FallingSkyStore {
-    @MainActor static func forSkyFlowApp() -> FallingSkyStore {
+    @MainActor static func forSkyFlowApp(arguments: [String] = ProcessInfo.processInfo.arguments) -> FallingSkyStore {
+        let defaults = SkyDefaults.forApp(arguments: arguments)
         #if DEBUG
-        let arguments = ProcessInfo.processInfo.arguments
-        if arguments.contains("--technique-review") {
-            return FallingSkyStore(defaults:UserDefaults(suiteName:"Starfall.TechniqueReview")!,arguments:arguments)
-        }
-        if arguments.contains("--dialogue-review") {
-            return FallingSkyStore(defaults: UserDefaults(suiteName: "Starfall.DialogueReview")!, arguments: arguments)
-        }
-        if arguments.contains("--sky-flow-review") {
-            let defaults = UserDefaults(suiteName: "Starfall.SkyFlowReview")!
-            // Reset-only fixtures use the same player app and isolated review defaults.
-            if arguments.contains("--starfalls-reset"), arguments.contains("--save-rejection-review") {
+        if arguments.contains("--sky-flow-review"),
+           !arguments.contains("--technique-review"), !arguments.contains("--dialogue-review"),
+           arguments.contains("--starfalls-reset") {
+            // Fixture mutation belongs to store creation, never preference-domain selection.
+            if arguments.contains("--save-rejection-review") {
                 defaults.removePersistentDomain(forName: "Starfall.SkyFlowReview")
                 defaults.set(Data("unreadable review save".utf8), forKey: SkySaveArchive.key)
                 return FallingSkyStore(defaults: defaults, arguments: arguments.filter { $0 != "--starfalls-reset" })
             }
-            if arguments.contains("--starfalls-reset"), arguments.contains("--save-failure-review") {
+            if arguments.contains("--save-failure-review") {
                 var failedOnce = false
                 return FallingSkyStore(defaults: defaults, arguments: arguments, archiveWriter: { game, defaults in
                     if !failedOnce { failedOnce = true; throw SkySaveArchive.Failure.unsupportedOrInvalid }
                     try SkySaveArchive.save(game, to: defaults)
                 })
             }
-            return FallingSkyStore(defaults: defaults, arguments: arguments)
         }
         #endif
-        return FallingSkyStore()
+        return FallingSkyStore(defaults: defaults, arguments: arguments)
     }
 }
 

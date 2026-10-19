@@ -12,6 +12,8 @@ A small native iOS falling-sky puzzle. Clear matching stars as showers fill the 
 
 Score popups and celebration titles use the [crystal-depth alphabet](Artwork/CrystalComet/NATIVE.md), with brief letter turns, static quiet modes and native accessible text.
 
+**Five layered nightscapes are integrated:** Moonwake, Nebula Cradle, Shatterlight Reach, Night Garden and Ringdrift. Gameplay stays centered while independent scenery fills the margins. Choose **Menu → Location** without changing the round. [Production art and contract](docs/design/environments/night-production-09/README.md) · [Native verification and delivery](docs/evidence/nightscapes-2026-10-18/README.md).
+
 Player wording and character voices are authored in the [local copy catalogue](App/DialogueScripts/README.md), with typed interface keys, validated templates and an in-app dialogue preview.
 
 ## How to play
@@ -102,11 +104,11 @@ See the [engineering guide and concrete debt register](docs/ENGINEERING.md) for 
 
 See `docs/VALIDATION.md` for exact executed checks and outstanding checks. Apple-platform compilation, simulator launch, screenshots, accessibility behavior and physical-device behavior must not be inferred from passing pure-core tests.
 
-Default play takes place in **Moonlit Observatory**: full-screen cosmic scenery, an angled terrace, gently drifting fog and a telescope/lantern that respond to taps. The earlier palette picker is retired; saved rounds and shower rules stay the same. [Integration evidence and remaining device/accessibility limits](docs/evidence/observatory-adoption-2026-10-17/README.md).
+New installations start in **Moonwake**. Existing location preferences map to the five nightscapes; the score, stars and saved round are preserved. The scenery has no gameplay touch targets. Compact screens and accessibility text use a scrolling layout with the same seven-column coordinate mapping.
 
 Requested improvements go directly into regular Starfall. Build the shared scheme and update the existing installation; create no separate lab unless explicitly requested. Historical trials remain in the [adoption register](docs/EXPERIMENTS.md). [Current drawing, full-window and cadence fixes](docs/evidence/main-polish-2026-10-17/README.md) record tests and remaining physical/RC checks.
 
-The selected [environment art direction](docs/design/environments/PRODUCTION.md) develops five living landing places. Finish Moonlit Observatory before Cloudsea; there is no parallel player route.
+The selected [nightscape art direction](docs/design/environments/night-production-09/README.md) supplies five destinations in the regular app. No unlock progression or alternate player route is added.
 
 The [shower forecast](docs/evidence/shower-forecast-adoption-2026-10-17/README.md) follows the upper camera contour on the calibrated iPhone 17 and iPhone 16 Pro Max portrait layouts. Other iPhones, tablets and accessible layouts show the same ordered incoming stars along a straight header trail. Physical camera fit remains unverified.
 
@@ -118,4 +120,5 @@ Dusk now feeds toward a zero-point neighborhood collapse; Opal still joins a col
 
 Phone delivery now verifies the actual installation and rejects stale main history. [Delivery guards and their limits](docs/evidence/device-delivery-guards-2026-10-18/README.md) record the active service and checks.
 
+The score/menu and dialogue now occupy [physical recesses in each environment](docs/design/environments/BOARD_TEMPLATE.md). Portrait uses a front apron; landscape uses a connected wing. Separate scenery fills extra space, while larger text scrolls with full-size controls. [Current implementation evidence](docs/evidence/environment-grooves-2026-10-18/README.md) separates native checks from remaining device/RC acceptance.
 [Active technical debt and RC blockers](docs/ENGINEERING.md#active-debt-and-next-actions--october-18-2026) distinguish current risks from the historical record; [seven independent shipping tasks](docs/TECH_DEBT_PLAN.md) link their verification.

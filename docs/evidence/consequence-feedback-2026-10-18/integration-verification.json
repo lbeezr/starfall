@@ -1,0 +1,134 @@
+{
+  "source": "0842a61956943d102bc034a179373a160c6e75fe",
+  "runtimeFingerprint": "dev.bf4ade9d68",
+  "core": {
+    "passed": 169,
+    "failed": 0
+  },
+  "hosted": {
+    "summary": {
+      "status": "SUCCEEDED",
+      "durationMs": 116226,
+      "counts": {
+        "passed": 297,
+        "failed": 0,
+        "skipped": 0
+      },
+      "target": "simulator"
+    },
+    "diagnostics": {
+      "warnings": [],
+      "errors": [],
+      "testFailures": []
+    },
+    "artifacts": {
+      "buildLogPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c6187ff32363/logs/test_sim_2026-10-19T02-33-29-856Z_pid62736_4f4595c3.log",
+      "xcresultPath": "artifacts/consequence-feedback/integrated-hosted.xcresult",
+      "testProductsPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c6187ff32363/test-products/test_sim_2026-10-19T02-33-29-856Z_pid62736_439b19ac.xctestproducts"
+    }
+  },
+  "native": {
+    "summary": {
+      "status": "SUCCEEDED",
+      "durationMs": 151530,
+      "counts": {
+        "passed": 6,
+        "failed": 0,
+        "skipped": 0
+      },
+      "target": "simulator"
+    },
+    "diagnostics": {
+      "warnings": [],
+      "errors": [],
+      "testFailures": []
+    },
+    "artifacts": {
+      "buildLogPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c6187ff32363/logs/test_sim_2026-10-19T02-35-40-025Z_pid62736_fdf4c464.log",
+      "xcresultPath": "artifacts/consequence-feedback/integrated-native.xcresult",
+      "testProductsPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c6187ff32363/test-products/test_sim_2026-10-19T02-35-40-025Z_pid62736_7f8b376e.xctestproducts"
+    },
+    "testCases": [
+      {
+        "suite": "FallingSkyInteractionTests",
+        "test": "testSystemReduceMotionKeepsManualPlayWorking",
+        "status": "passed",
+        "durationMs": 31239
+      },
+      {
+        "suite": "LandingPlaceInteractionTests",
+        "test": "testAllWorldsKeepTheRoundAndCenteredCellsAcrossOrientations",
+        "status": "passed",
+        "durationMs": 45715
+      },
+      {
+        "suite": "ResponsiveInputUITests",
+        "test": "testIncompleteTraceExplainsCancellationAndNextTapStillWorks",
+        "status": "passed",
+        "durationMs": 18920
+      },
+      {
+        "suite": "SkyTechniqueInteractionTests",
+        "test": "testFastSameColorStrokeSwapsOnceThenHoldDrawClearsOnlyFive",
+        "status": "passed",
+        "durationMs": 11560
+      },
+      {
+        "suite": "SkyTechniqueInteractionTests",
+        "test": "testSettingsAndBackgroundLeaveGesturesReadyWithoutRetoggling",
+        "status": "passed",
+        "durationMs": 19387
+      },
+      {
+        "suite": "SkyTechniqueInteractionTests",
+        "test": "testTapRecipesRelayWithoutAnyModeOrMenuToggle",
+        "status": "passed",
+        "durationMs": 18977
+      }
+    ]
+  },
+  "flow": {
+    "summary": {
+      "status": "SUCCEEDED",
+      "durationMs": 151780,
+      "counts": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0
+      },
+      "target": "simulator"
+    },
+    "diagnostics": {
+      "warnings": [],
+      "errors": [],
+      "testFailures": []
+    },
+    "artifacts": {
+      "buildLogPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c6187ff32363/logs/test_sim_2026-10-19T02-38-33-879Z_pid62736_7ba154ba.log",
+      "xcresultPath": "artifacts/consequence-feedback/integrated-flow.xcresult",
+      "testProductsPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c6187ff32363/test-products/test_sim_2026-10-19T02-38-33-879Z_pid62736_602ea4f8.xctestproducts"
+    },
+    "testCases": [
+      {
+        "suite": "SkyFlowInteractionTests",
+        "test": "testFirstLightWinReplayAndFullSky",
+        "status": "passed",
+        "durationMs": 147099
+      }
+    ]
+  },
+  "release": {
+    "summary": {
+      "status": "SUCCEEDED",
+      "durationMs": 8446,
+      "target": "simulator"
+    },
+    "diagnostics": {
+      "warnings": [],
+      "errors": []
+    },
+    "artifacts": {
+      "buildLogPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c6187ff32363/logs/build_sim_2026-10-19T02-41-12-861Z_pid62736_1e68b7e4.log"
+    }
+  }
+}

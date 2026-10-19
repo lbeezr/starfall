@@ -62,6 +62,8 @@ Teardown regressions cover all eight replacement/layout/motion/balance/suspensio
 
 Rendered-award checks capture the complete `FallingSkyView` in an isolated foreground UIKit host for ordinary, square, cross, constellation and relay commits, and require award pixels in a sky region excluding the counter. A separate normal/quiet check guards stable award placement. StarCast selection checks require four open sparkle rays with no enclosing path and preserve cancellation cleanup. [Native captures and limits](../docs/evidence/starlight-celebrations-2026-10-18/VISIBLE_AWARDS.md).
 
+Landing-place coverage lives in `ObservatoryGeometryTests.swift` (`LandingPlaceTests`): centered arena/cell geometry, sixteen bundled alpha assets, scenery/control exclusion and preference compatibility. The store regression checks that Observatory review game/preferences use isolated defaults.
+
 `CriticalMassProductionTests` checks v8/v7 archive boundaries, new versus retained/First Light routing, committed collapse across interruption/restore/restart, and static corruption materials.
 
 `TraceInputPolishTests` checks immediate four-direction swaps before release, same-color identity exchange, one action per contact, held-drawing ownership, timer tickets and off-center elliptical acquisition at phone/tablet sizes.

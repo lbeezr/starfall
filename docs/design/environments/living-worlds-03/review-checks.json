@@ -1,0 +1,63 @@
+{
+  "date": "2026-10-18",
+  "kind": "Chromium HTML composition review, not native app verification",
+  "reports": [
+    {
+      "world": "observatory",
+      "stars": 49,
+      "cells": 49,
+      "missing": []
+    },
+    {
+      "world": "cloudsea",
+      "stars": 49,
+      "cells": 49,
+      "missing": []
+    },
+    {
+      "world": "hearth",
+      "stars": 49,
+      "cells": 49,
+      "missing": []
+    },
+    {
+      "world": "grotto",
+      "stars": 49,
+      "cells": 49,
+      "missing": []
+    },
+    {
+      "world": "archive",
+      "stars": 49,
+      "cells": 49,
+      "missing": []
+    },
+    {
+      "reviewControls": "passed",
+      "layoutsCompared": [
+        "proposed",
+        "current"
+      ],
+      "mobileWidth": 390,
+      "overflow": false
+    }
+  ],
+  "referenceSource": "b7e9760; documentation-only work in scratch clone",
+  "visualInspection": {
+    "allFiveDenseCompositions": "inspected",
+    "fiveWorldOverview": "inspected",
+    "mobileExpandedReading": "inspected",
+    "nativeValidation": "not run; no app source or resources changed",
+    "limits": "Proposed portrait spacing is unadopted. Current app mapping exposes some edge/rail conflicts. Production landscape, safe areas, actual Dynamic Type and motion remain open."
+  },
+  "renderInputHashes": {
+    "review.css": "30ea40dd0b82596f3ade7edd876e522f8ea297eabb2dfe084d1b1f6541a54294",
+    "cloudsea-v2.png": "761688dfa27bf9136202aa9527ff4da58b3e370aa8db72bcec8b089241faf0c0",
+    "observatory-v2.png": "ae557b53d0cd12511a026854fccc80f6ed343bce8a287c5ee139a5f0e031e6bd",
+    "review.js": "bd3dcec94fae06d0b444bd8fc7824c5888bc4da03fb3a72c342aad8a745bf927",
+    "index.html": "6c06cbabd28a6329341b7419e4738a03a29b3dd30d109230320ba175ba0462bf",
+    "grotto-v2.png": "7c0ac18b7634808877fe3ca774f64aa20cba617a63e72b21503296310ed9ac16",
+    "archive-v2.png": "3336bad9a47d262c30743ddb8b1f890f106ee2ba6b0acb2bbe66a5cf3706169f",
+    "hearth-v2.png": "b0595f8648db95642b0f0670c37c4690deed8f98cb1594672003f186a971ddcc"
+  }
+}
