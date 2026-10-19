@@ -1,5 +1,7 @@
 # Evidence index
 
+[Ribbon Crossing](ribbon-crossing-2026-10-19/README.md) records the second optional challenge’s Core/hosted/tooling and phone/tablet development checks, all fifteen inspected states, and final normal-motion completion without bridge traversal. It separates verified development checks from pending device delivery, physical play and RC VoiceOver.
+
 [Repository maintenance baseline](repo-maintenance-2026-10-19/README.md) records the read-only guidance audit, recent CI conclusions and three inspected job logs behind the upgrade proposal.
 
 [Compact native acceptance](compact-native-acceptance-2026-10-19/README.md) classifies the ten recorded native failures, preserves exact gameplay assertions, and verifies cleanup after a deliberately failed system-motion check.

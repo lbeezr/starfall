@@ -69,11 +69,11 @@ window.STARFALL_WORLD = {
         "The first anchor lights and a short section unfurls.",
         "Two spans rise toward one another; stitched star patterns reconnect.",
         "Almost the entire crossing holds its shape. The final middle seam is still loose.",
-        "The seam joins in a soft ripple and a tiny procession of stars crosses."
+        "The final seam joins and the crossing is restored."
       ],
       "puzzle": "Make the consequence of freeing a crowded column easy to recognize.",
       "story": "Murk’s smoky trail points across the gap; no repeated theft scene.",
-      "payoff": "The cast can visibly cross what was broken.",
+      "payoff": "The restored ribbon reconnects the two cloud banks.",
       "connection": "The repaired crossing reaches Kite Harbor."
     },
     {

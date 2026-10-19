@@ -5,13 +5,13 @@ import StarfallCore
 @testable import Starfall
 
 final class StarlightCelebrationTests: XCTestCase {
-    func testEveryLanternPacketArrivesBeforeTheWinningClearHandsOff() {
-        let flight = StarlightCelebration.packetFlight(toLantern: true)
+    func testEveryRestorationPacketArrivesBeforeTheWinningClearHandsOff() {
+        let flight = StarlightCelebration.packetFlight(toRestoration: true)
         XCTAssertEqual(StarlightCelebration.maximumPackets, 6)
         XCTAssertEqual(flight.start, StarfallMotion.gatherDuration)
         for index in 0..<StarlightCelebration.maximumPackets {
             XCTAssertLessThan(flight.arrivalTime(packetIndex: index), StarfallMotion.clearDuration,
-                              "Packet \(index) must reach the lantern before the result removes the overlay")
+                              "Packet \(index) must reach the location before the result removes the overlay")
             XCTAssertEqual(flight.progress(at: StarfallMotion.clearDuration, packetIndex: index), 1)
         }
         XCTAssertEqual(flight.arrivalTime(packetIndex: 5), 0.455, accuracy: 0.000001)
@@ -19,7 +19,7 @@ final class StarlightCelebrationTests: XCTestCase {
     }
 
     func testScoreDestinationKeepsItsExistingPacketTiming() {
-        let flight = StarlightCelebration.packetFlight(toLantern: false)
+        let flight = StarlightCelebration.packetFlight(toRestoration: false)
         XCTAssertEqual(flight.start, 0.15)
         XCTAssertEqual(flight.duration, 0.48)
         XCTAssertEqual(flight.stagger, 0.025)
@@ -30,7 +30,7 @@ final class StarlightCelebrationTests: XCTestCase {
         XCTAssertEqual(flight.progress(at: StarlightCelebration.duration, packetIndex: 5), 1)
     }
 
-    @MainActor func testHeaderRegistrationPreservesNestedScoreAndSiblingBoard() async throws {
+    @MainActor func testHeaderRegistrationPreservesNestedScoreBoardAndRestorationLight() async throws {
         let registered = expectation(description: "All celebration anchors reach the overlay")
         var didRegister = false
         var observed: Set<StarlightAnchor> = []
@@ -38,7 +38,13 @@ final class StarlightCelebrationTests: XCTestCase {
             Text("12").starlightAnchor(.score)
         }
         .starlightAnchor(.header)
-        .background { Color.clear.starlightAnchor(.board) }
+        .background {
+            ZStack {
+                Color.clear.starlightAnchor(.board)
+                Color.clear.frame(width: 18, height: 18).starlightAnchor(.restorationLight)
+                Color.clear.frame(width: 100, height: 80).starlightAnchor(.restorationScenery)
+            }
+        }
         .overlayPreferenceValue(StarlightAnchors.self) { anchors in
             Color.clear
                 .onAppear { inspect(Set(anchors.keys)) }
@@ -46,7 +52,7 @@ final class StarlightCelebrationTests: XCTestCase {
         }
         func inspect(_ roles: Set<StarlightAnchor>) {
             observed = roles
-            if roles == [.score, .header, .board], !didRegister {
+            if roles == [.score, .header, .board, .restorationLight, .restorationScenery], !didRegister {
                 didRegister = true; registered.fulfill()
             }
         }
@@ -57,7 +63,58 @@ final class StarlightCelebrationTests: XCTestCase {
         window.makeKeyAndVisible()
         defer { window.isHidden = true; window.rootViewController = nil; previous?.makeKey() }
         await fulfillment(of: [registered], timeout: 3)
-        XCTAssertEqual(observed, [.score, .header, .board])
+        XCTAssertEqual(observed, [.score, .header, .board, .restorationLight, .restorationScenery])
+    }
+
+    @MainActor func testRestoredSceneryAnchorResolvesTheExpandedCanvasInOverlayCoordinates() async throws {
+        let scene = try XCTUnwrap(UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.first)
+        let previous = scene.windows.first(where: \.isKeyWindow)
+        let window = UIWindow(windowScene: scene)
+        // SwiftUI aligns the positioned region to device pixels. Its fractional
+        // origin/extent can differ from the analytic rectangle by one pixel.
+        let physicalPixel = 1 / window.screen.scale
+        let registered = expectation(description: "Mapped scenery reaches the overlay after canvas translation")
+        let size = CGSize(width: 375, height: 1200)
+        let layout = RestorationLayout(size: size, artwork: .init(challenge: .ribbonCrossing, composition: .phone))
+        var observed: CGRect?
+        var didRegister = false
+        func inspect(canvas: CGRect, scenery: CGRect) {
+            observed = scenery
+            let expected = layout.restoredSceneryBounds.offsetBy(dx: canvas.minX, dy: canvas.minY)
+            if canvas.size == size, abs(scenery.maxY - expected.maxY) <= physicalPixel, !didRegister {
+                didRegister = true; registered.fulfill()
+            }
+        }
+        let probe = ZStack(alignment: .topLeading) {
+            RestorationEnvironment(presentation: .init(challenge: .ribbonCrossing,
+                                                       progress: .init(score: 18, target: 18)),
+                                   active: false, ambientActive: false, quiet: true)
+                .frame(width: size.width, height: size.height)
+                .starlightAnchor(.board)
+                .offset(x: 17, y: -145)
+        }
+        .frame(width: 500, height: 852, alignment: .topLeading)
+        .overlayPreferenceValue(StarlightAnchors.self) { anchors in
+            GeometryReader { geometry in
+                if let canvas = anchors[.board], let scenery = anchors[.restorationScenery] {
+                    let canvasFrame = geometry[canvas], sceneryFrame = geometry[scenery]
+                    Color.clear
+                        .onAppear { inspect(canvas: canvasFrame, scenery: sceneryFrame) }
+                        .onChange(of: canvasFrame) { _, value in inspect(canvas: value, scenery: sceneryFrame) }
+                        .onChange(of: sceneryFrame) { _, value in inspect(canvas: canvasFrame, scenery: value) }
+                }
+            }
+        }
+        window.rootViewController = UIHostingController(rootView: probe)
+        window.makeKeyAndVisible()
+        defer { window.isHidden = true; window.rootViewController = nil; previous?.makeKey() }
+        await fulfillment(of: [registered], timeout: 3)
+        let scenery = try XCTUnwrap(observed)
+        let expected = layout.restoredSceneryBounds.offsetBy(dx: 17, dy: -145)
+        XCTAssertEqual(scenery.minX, expected.minX, accuracy: physicalPixel)
+        XCTAssertEqual(scenery.minY, expected.minY, accuracy: physicalPixel)
+        XCTAssertEqual(scenery.width, expected.width, accuracy: physicalPixel)
+        XCTAssertEqual(scenery.height, expected.height, accuracy: physicalPixel)
     }
 
     @MainActor func testOrdinaryAwardActuallyRendersAboveTheBoard() async throws {

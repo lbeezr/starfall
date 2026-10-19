@@ -16,6 +16,7 @@ VOICEOVER_RC = {
 TABLET_ONLY = {
     'testLandscapeWelcomeEntryAndPreferences': 'StarfallUITests/SkyFlowInteractionTests/testLandscapeWelcomeEntryAndPreferences',
     'testTabletRotationKeepsRestorationAndNativeInput': 'StarfallUITests/LanternLandingInteractionTests/testTabletRotationKeepsRestorationAndNativeInput',
+    'testTabletRotationKeepsRibbonRestorationAndNativeInput': 'StarfallUITests/RibbonCrossingInteractionTests/testTabletRotationKeepsRibbonRestorationAndNativeInput',
 }
 METHOD = re.compile(r'^\s*(?:@\w+(?:\([^)]*\))?\s+)*func\s+(test\w+)\s*\(\s*\)', re.MULTILINE)
 

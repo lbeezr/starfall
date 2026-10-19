@@ -1,0 +1,34 @@
+{
+  "source": "4dff9836249f69923b42ce9491a022b97a942c8a",
+  "runtime": "dev.453e081fb5",
+  "device": "iPhone 17e Simulator iOS 27.0 (24A434)",
+  "normalMotion": true,
+  "calmEffects": false,
+  "systemReduceMotion": false,
+  "path": "/private/tmp/ribbon-win-4dff983.mp4",
+  "retained": false,
+  "durationSeconds": 5.195,
+  "sha256": "5ef169dff7d6428f5ac9394a569afbb5823b9fcfa44951451ec719412b138d52",
+  "observations": [
+    {
+      "seconds": [
+        0.25,
+        0.75
+      ],
+      "observed": "14 light, open seam, 78% progress."
+    },
+    {
+      "seconds": 1.25,
+      "observed": "Actual Amber clear begins."
+    },
+    {
+      "seconds": 2.0,
+      "observed": "Committed 18 light; +4 arrives and whole painting transitions to joined seam."
+    },
+    {
+      "seconds": 3.0,
+      "observed": "Joined bridge; ordinary result and actions visible. No characters traverse the bridge."
+    }
+  ],
+  "limits": "Sampled final normal-motion transition. Not audio, physical-device feel or sustained performance evidence."
+}

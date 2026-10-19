@@ -70,7 +70,7 @@ extension SkyDialogueLibrary {
         let growth = turn.arrivals.filter(\.grew).count
         let dissolved = turn.cleared.filter { old.gem(at: $0)?.isDark == true }.count
         if game.outcome == .won {
-            result = line("guide.won", values: ["score": String(game.score)])
+            result = line(game.challenge?.wonGuideID ?? "guide.won", values: ["score": String(game.score)])
         } else if turn.blockedColumn != nil {
             result = line("guide.full", values: ["score": String(game.score)])
         } else if !turn.stellarCollapses.isEmpty {

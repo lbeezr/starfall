@@ -4,9 +4,9 @@
 
 **A journey to bring the light back.** Murk, the Hungry Moon, has swallowed the starlight from twelve little places. Help the star cast bring them back to life, follow his trail across the sky, and return the light he has hoarded.
 
-The user approved **Murk as illustrated and all twelve map locations**. This rewrite develops their universe, relationships and story. New lore, character behavior and the ending below are authored proposals within that direction. The wider journey is not implemented. Lantern Landing now supplies the existing First Light challenge; this document remains the creative authority for the proposed universe and replaces the original crystal-puzzle premise.
+The user approved **Murk as illustrated and all twelve map locations**. This rewrite develops their universe, relationships and story. New lore, character behavior and the ending below are authored proposals within that direction. Lantern Landing supplies First Light; Ribbon Crossing is the implemented second optional challenge, with verified development evidence and canonical installation pending. The remaining ten locations and map traversal remain concepts. This document remains the creative authority for the proposed universe and replaces the original crystal-puzzle premise.
 
-**Read next:** [World atlas](WORLD_ATLAS.md) for each location’s life, appearance and distinction; [map explorer](world-01/index.html) for sixty restoration state notes; [restoration contract](STARLIGHT_RESTORATION.md) for the win and presentation boundary. **Implemented first slice:** [Lantern Landing](lantern-landing-01/README.md) restores through five states in First Light, with [native development evidence](../evidence/lantern-landing-2026-10-19/README.md) at source `8fb2e78`, runtime `dev.5afe4a3c23`. Merged in [PR #154](https://github.com/lbeezr/starfall/pull/154); the canonical updater verified installation of `dev.5afe4a3c23` from main `ab868b5` in the original `com.starfall.prototype` app on October 19 at 14:53:57 UTC. Observe that slice in human play before producing the wider journey; Murk’s opening theft and campaign story remain proposals.
+**Read next:** [World atlas](WORLD_ATLAS.md) for each location’s life, appearance and distinction; [map explorer](world-01/index.html) for sixty restoration state notes; [restoration contract](STARLIGHT_RESTORATION.md) for the win and presentation boundary. **Delivered first slice:** [Lantern Landing](lantern-landing-01/README.md) restores through five states in First Light, with [native development evidence](../evidence/lantern-landing-2026-10-19/README.md) at source `8fb2e78`, runtime `dev.5afe4a3c23`. Merged in [PR #154](https://github.com/lbeezr/starfall/pull/154); the canonical updater verified installation of `dev.5afe4a3c23` from main `ab868b5` in the original `com.starfall.prototype` app on October 19 at 14:53:57 UTC. **Next:** Verify [Ribbon Crossing’s canonical installation](ribbon-crossing-02/PRODUCTION_PLAN.md). [Development evidence](../evidence/ribbon-crossing-2026-10-19/README.md) covers all fifteen inspected states, phone/tablet interaction, normal/quiet completion and final hosted/Release passes. Human satisfaction, Murk’s opening theft and the campaign story remain unverified proposals.
 
 [Universe](#a-universe-on-a-neighborly-scale) · [Cast](#the-star-cast-carries-the-journey) · [Murk](#murk-the-hungry-moon) · [Journey](#the-twelve-location-journey) · [Story](#the-chapter-story) · [Puzzle](#the-puzzle-and-story-must-agree) · [Art and sound](#how-it-should-look-move-and-sound)
 
@@ -32,6 +32,7 @@ The tone combines quiet wonder with comic adventure. Concentration can have stak
 | **User selected** | Starlight restoration as the story and win direction; Murk’s existing Hungry Moon design; the map and all twelve locations; concise theatrical villain appearances; connected miniature realms. |
 | **Existing approved cast** | Spark, Sunny, Pip, Twinkle, Nova and Dusk in their Crystal Glow identities. Production shapes and materials remain owned by the [cast contract](star-cast/README.md). |
 | **Implemented first slice** | Lantern Landing in the existing First Light challenge: 18 starlight, five score-derived scenes and bespoke phone/tablet compositions. This adopts no campaign or new save schema. |
+| **Implemented and development-verified second slice** | Ribbon Crossing uses the same seed-42 opening and 18-light rules. Source-bound evidence covers all fifteen scenes, phone/tablet interaction, normal/quiet completion and final hosted/Release passes. Canonical installation is pending. Open sky remains the default. |
 | **Developed here** | A lived-in neighborhood of stars; how light circulates; everyday culture; each cast member’s story role; Murk’s hoarding motive; four-act story and chapter ending. These details are proposals for continued development. |
 | **Open** | A separate recurring hero, targets and pressure beyond First Light, campaign milestone pacing and scene timing, voice/music production and campaign save behavior. |
 
@@ -79,7 +80,7 @@ Show inhabitants in small readable groups rather than filling every terrace with
 
 | Character | Story personality and useful action | Comic vulnerability | A moment to develop |
 | --- | --- | --- | --- |
-| **Spark** | Curious, quick to notice an opening and eager to see what lies beyond it. Often looks toward the next destination first. | Starts moving before checking that everyone is ready. | At Ribbon Crossing, leans toward the gap; waits, then takes the first step after the repair. |
+| **Spark** | Curious, quick to notice an opening and eager to see what lies beyond it. Often looks toward the next destination first. | Starts moving before checking that everyone is ready. | In a future travel cutscene at Ribbon Crossing, leans toward the gap, waits, then takes the first step after the repair. |
 | **Sunny** | Welcoming and encouraging. Makes a strange place approachable and notices when someone needs company. | Tries so hard to reassure everyone that a surprise catches the smile mid-sentence. | At Lantern Landing, invites the others into the first warm circle. |
 | **Pip** | Practical and inquisitive. Examines how things fit, trying a small adjustment before a grand gesture. | Gets absorbed in a tiny detail while a large change unfolds behind them. | At Sunwheel Mill, follows a cold channel, then discovers the whole wheel moving. |
 | **Twinkle** | Attentive to mood and beauty. Notices the first returning color or a neighbor’s small achievement. | Hangs back to admire something and has to hurry after the group. | At Silver Pools, sees the first reflection and draws the others close. |
@@ -137,7 +138,7 @@ Murk is absent during ordinary puzzle play in the first restoration comparison. 
 
 <img src="world-01/map-v1.png" width="700" alt="Approved twelve-location map: four tiers of small floating realms, from Lantern Landing at bottom left to Hollow Crown at upper left">
 
-**User-approved world concept — not runtime map UI.** The illustration mostly shows restored destinations. Miniature helpers are placeholders; production uses the approved cast. Lantern Landing has five implemented artwork states in three viewport families; the other eleven locations retain written restoration storyboards. The [atlas](WORLD_ATLAS.md) develops the places; the [explorer](world-01/index.html) presents their written restoration sequence.
+**User-approved world concept — not runtime map UI.** The illustration mostly shows restored destinations. Miniature helpers are placeholders; production uses the approved cast. Lantern Landing has five implemented artwork states in three viewport families; Ribbon Crossing also has five implemented states in three viewport families. The remaining ten locations retain written restoration storyboards. The [atlas](WORLD_ATLAS.md) develops the places; the [explorer](world-01/index.html) presents their written restoration sequence.
 
 The map holds **twelve levels total**, grouped into four regions of three. Each region establishes a material and emotional language; every location has a different purpose and final action. This does not imply twelve larger worlds with additional unplanned level sets.
 
@@ -164,7 +165,7 @@ Sunny gathers the group. Spark notices a small glimmer still inside the lantern.
 
 ### Act I — we can help
 
-Lantern Landing teaches the emotional rule: the player’s actions bring warmth back. Ribbon Crossing turns warmth into connection. Its final seam lets an actual group cross, so the next destination feels earned. At Kite Harbor, shared success becomes departure: sails open and boats lift toward Wild Moons.
+Lantern Landing teaches the emotional rule: the player’s actions bring warmth back. Ribbon Crossing turns warmth into connection. Its final seam reconnects the banks, making the next destination reachable in the story. A future generated travel clip can show the cast using that route; the current puzzle finishes with its restored image and normal result. At Kite Harbor, shared success becomes departure: sails open and boats lift toward Wild Moons.
 
 Murk catches sight of the fleet. He looks back at the light behind it, briefly confused that anything he drained could shine again. His composure returns, and he hurries ahead. The cast has both a reason to travel and evidence that its help works.
 
@@ -236,7 +237,7 @@ Restoration cannot supply strategy missing from the puzzle. Assess whether playe
 
 ### Current implementation is a separate baseline
 
-The app remains the falling-sky prototype with accumulating stars, automatic showers, pause/manual advance, matching growth, Opal, storms and local settings. Automatic aging is disabled; historical Dusk rounds retain their rules. The five native nightscapes remain survival settings, separate from the future story map. First Light now revives Lantern Landing through five scene states at its existing fixed 18-light objective; this does not add map traversal or another level. The original 7×7, 70-jewel/18-move puzzle remains Debug material; its move limit and shard terminology do not define this journey. [Current product instructions](../../README.md), [mechanics adoption status](../EXPERIMENTS.md) and [validation](../VALIDATION.md) own live implementation facts.
+The app remains the falling-sky prototype with accumulating stars, automatic showers, pause/manual advance, matching growth, Opal, storms and local settings. Automatic aging is disabled; historical Dusk rounds retain their rules. Open sky stays the default, and its five native nightscapes remain separate from the future story map. First Light revives Lantern Landing through five scene states; Ribbon Crossing is the second directly selectable challenge. Both retain seed 42, the fixed 18-light goal and existing overflow rule, with no campaign or unlocks. Ribbon has source-bound development acceptance for its scenes, phone/tablet interaction, completion and builds; canonical installation remains pending. The original 7×7, 70-jewel/18-move puzzle remains Debug material; its move limit and shard terminology do not define this journey. [Current product instructions](../../README.md), [mechanics adoption status](../EXPERIMENTS.md) and [validation](../VALIDATION.md) own live implementation facts.
 
 Constellation tracing, swaps, recipes and other current mechanics follow their own adoption evidence. A location’s purpose does not automatically add gardening, musical timing, water routing or boss attacks. This rewrite changes no source, build configuration, saves or app resources.
 
@@ -266,6 +267,8 @@ Do not apply one saturation slider to every stage. At 0%, purpose is interrupted
 An orchard remains wintry; a pool remains cool; night remains dark enough to admire the stars. Completion returns function and character, not maximum brightness. The map should show different kinds of success.
 
 ### Animation and audio
+
+**World travel is reserved for future generated clips/cutscenes.** The user removed the tiny walking characters from Ribbon Crossing; no travel clips are implemented. Its current finish uses the existing light packets, crossfade to the joined-seam image and normal result ceremony. Board stars and the usual ceremony cast keep their established roles. Other proposed travel scenes below and elsewhere in the story are future cinematic beats, not runtime requirements.
 
 Keep weight in landings, readable faces and generous pauses between gestures. Murk’s floating hands and loose tail exaggerate intent; the stars’ compact bodies retain their shapes. Selective movement makes a scene inhabited without everything bobbing at once.
 
@@ -297,6 +300,7 @@ This is a complete creative rewrite for the chosen foundation, not a declaration
 
 | Next deliverable | What it must answer |
 | --- | --- |
+| Deliver Ribbon Crossing | Bounded development acceptance is recorded for all fifteen states, phone/tablet interaction, completion and builds. Follow the [production plan](ribbon-crossing-02/PRODUCTION_PLAN.md) to verify canonical installation; actual VoiceOver and physical play remain separate. |
 | Observe the implemented Lantern Landing slice | Native scene/motion checks pass; can a player identify the need, distinguish useful middle changes and anticipate the final welcome? Physical play and RC VoiceOver remain unverified. |
 | Opening theft and completion animatic | Do Murk’s intent, the stars’ safety and the player’s role read without dialogue? Is the approved design consistent? |
 | Human play of First Light’s restoration | Is the target understandable, the finish earned and replay pleasant? Can the player explain a useful choice? Passing native checks do not answer these questions. |

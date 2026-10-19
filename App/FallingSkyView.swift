@@ -43,12 +43,13 @@ import StarfallCore
     private var showingCeremony: Bool { ceremonyScreen != nil }
     private var boardVisible: Bool { flow.screen == .playing }
     private var handoffKey: String { "\(flow.handoff?.id.description ?? "none")-\(scenePhase == .active)-\(quietMotion)" }
-    private var entryChallenge: Bool {
-        flow.entry?.isChallenge(replayingChallenge: store.game.challenge != nil) ?? (store.game.challenge != nil)
+    private var entryChallenge: StarfallChallenge? {
+        if let entry = flow.entry { return entry.selectedChallenge(replaying: store.game.challenge) }
+        return store.game.challenge
     }
     private var quietMotion: Bool { reduceMotion || calmEffects || voiceOver }
-    private var restoration: StarlightRestoration? {
-        LanternLandingPresentation.selected(game: store.game, entry: flow.entry)
+    private var restoration: RestorationPresentation? {
+        RestorationPresentation.selected(game: store.game, entry: flow.entry)
     }
 
     private func usesIslandTimer(size: CGSize, topInset: CGFloat) -> Bool {
@@ -73,7 +74,7 @@ import StarfallCore
                 if !settings, !showingCeremony, let receipt = store.celebration,
                    let board = anchors[.board], let score = anchors[.score], let header = anchors[.header] {
                     StarlightCelebrationOverlay(event: receipt, board: proxy[board], score: proxy[score], header: proxy[header], quiet: quietMotion,
-                                               lightDestination: anchors[.lantern].map { proxy[$0] })
+                                               lightDestination: anchors[.restorationLight].map { proxy[$0] })
                         .id(receipt.id)
                 }
             }.allowsHitTesting(false)
@@ -139,21 +140,25 @@ import StarfallCore
                     }
                 }
             }
-            if let ceremonyScreen {
-                let entryID = flow.entryID
-                SkyFlowCeremony(screen: ceremonyScreen,
-                                challenge: entryChallenge,
-                                entry: flow.entry,
-                                result: endingReady ? SkyResultSnapshot(game: store.game) : nil,
-                                welcome: SkyWelcomeSnapshot(game: store.game, hasSavedSky: store.hasSavedSky, paused: store.isPaused),
-                                active: scenePhase == .active && flow.handoff == nil && !settings, quiet: quietMotion, modal: settings,
-                                action: { handleFlowAction($0, entryID: entryID) })
-                    // Ceremony owns inactive AX elements. An extra hidden(false)
-                    // container here masks native child hit results on iPad.
-                    .id(String(describing: ceremonyScreen))
-                    .opacity(flow.handoff != nil && handoffLeaving ? 0 : 1)
-                    .allowsHitTesting(flow.handoff == nil && !settings)
-                    .zIndex(1)
+            .overlayPreferenceValue(StarlightAnchors.self) { anchors in
+                if let ceremonyScreen {
+                    GeometryReader { geometry in
+                        let entryID = flow.entryID
+                        SkyFlowCeremony(screen: ceremonyScreen,
+                                        challenge: entryChallenge,
+                                        entry: flow.entry,
+                                        result: endingReady ? SkyResultSnapshot(game: store.game) : nil,
+                                        welcome: SkyWelcomeSnapshot(game: store.game, hasSavedSky: store.hasSavedSky, paused: store.isPaused),
+                                        active: scenePhase == .active && flow.handoff == nil && !settings, quiet: quietMotion, modal: settings,
+                                        restoredSceneryBounds: anchors[.restorationScenery].map { geometry[$0] },
+                                        action: { handleFlowAction($0, entryID: entryID) })
+                            // Ceremony owns inactive AX elements. An extra hidden(false)
+                            // container here masks native child hit results on iPad.
+                            .id(String(describing: ceremonyScreen))
+                            .opacity(flow.handoff != nil && handoffLeaving ? 0 : 1)
+                            .allowsHitTesting(flow.handoff == nil && !settings)
+                    }
+                }
             }
             if flow.handoff?.preparing == true {
                 VStack(spacing: StarfallTheme.Spacing.medium) {
@@ -200,7 +205,7 @@ import StarfallCore
                     .background {
                         if restoration != nil {
                             RoundedRectangle(cornerRadius: StarfallTheme.Radius.panel)
-                                .fill(StarfallTheme.Lantern.sky.opacity(StarfallTheme.Lantern.hudOpacity))
+                                .fill(StarfallTheme.Restoration.sky.opacity(StarfallTheme.Restoration.hudOpacity))
                                 .padding(.horizontal, -4)
                         }
                     }
@@ -243,7 +248,7 @@ import StarfallCore
             .background {
                 if restoration != nil {
                     RoundedRectangle(cornerRadius: StarfallTheme.Radius.panel)
-                        .fill(StarfallTheme.Lantern.sky.opacity(StarfallTheme.Lantern.hudOpacity))
+                        .fill(StarfallTheme.Restoration.sky.opacity(StarfallTheme.Restoration.hudOpacity))
                         .padding(.horizontal, -8).padding(.vertical, -4)
                 }
             }
@@ -290,10 +295,10 @@ import StarfallCore
                 Image(systemName: "sparkle").font(StarfallTheme.Typography.hudGlyph).foregroundStyle(StarfallTheme.Observatory.lanternGlow).accessibilityHidden(true)
                 VStack(alignment: .leading, spacing: 1) {
                     if let restoration {
-                        Text(SkyCopy.text(.lanternRestoration, values: ["percent": String(Int((restoration.fraction * 100).rounded()))]))
+                        Text(restoration.challenge.restorationLabel(progress: restoration.progress))
                             .font(StarfallTheme.Typography.skyCaption)
                             .fixedSize(horizontal: false, vertical: true)
-                            .accessibilityIdentifier("lantern.restoration")
+                            .accessibilityIdentifier(restoration.challenge.restorationIdentifier)
                     }
                     Text(store.game.challenge.map { "\(store.game.score.formatted()) / \($0.target.formatted())" } ?? store.game.score.formatted())
                     .font(StarfallTheme.Typography.gameTitle).monospacedDigit()
@@ -341,12 +346,12 @@ import StarfallCore
             GeometryReader { geometry in
                 ZStack {
                     if let restoration {
-                        LanternLandingEnvironment(restoration: restoration,
+                        RestorationEnvironment(presentation: restoration,
                                                   active: scenePhase == .active && !settings && store.persistenceNotice == nil,
                                                   ambientActive: !showingCeremony && !store.isPaused,
                                                   quiet: quietMotion || reduceTransparency, isTablet: UIDevice.current.userInterfaceIdiom == .pad,
                                                   isLandscape: landscape)
-                            .id("lantern.\(environmentGeneration)")
+                            .id("\(restoration.challenge.rawValue).\(environmentGeneration)")
                     } else {
                         LandingEnvironment(place: place, active: scenePhase == .active && !settings && store.persistenceNotice == nil && !showingCeremony && !store.isPaused,
                                            reducedMotion: reduceMotion || calmEffects || voiceOver || reduceTransparency, largeHeader: expanded && largeText)
@@ -553,12 +558,12 @@ import StarfallCore
         case .game:
             FallingSkyMenu(paused: store.isPaused, turns: store.game.turns,
                            groups: store.game.legalGroups.count, over: store.game.isOver,
-                           challenge: store.game.challenge != nil, helpContext: .init(game: store.game), balance: store.game.balance,
+                           challenge: store.game.challenge, helpContext: .init(game: store.game), balance: store.game.balance,
                            sound: $store.soundEnabled, haptics: $store.hapticsEnabled, calm: $calmEffects,
                            place: Binding(get: { place }, set: { savedPlace = $0.rawValue }),
                            pause: togglePauseFromMenu,
                            restart: { same in handleFlowAction(same ? .replay : .another) },
-                           firstLight: { handleFlowAction(.firstLight) },
+                           startChallenge: { handleFlowAction($0.flowAction) },
                            observatory: { handleFlowAction(.home) },
                            setBalance: store.setBalance, done: { menu = nil })
         }

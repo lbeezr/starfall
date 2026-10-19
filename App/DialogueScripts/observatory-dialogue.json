@@ -608,6 +608,50 @@
                 "seconds": 6
             }
         ]
+    },
+    {
+      "id": "guide.ribbon-crossing",
+      "lines": [
+        {
+          "id": "guide.ribbon-crossing.1",
+          "speaker": "sunny",
+          "text": "Ribbon Crossing needs 18 starlight. Clear matching stars to reconnect the path between the cloud banks.",
+          "priority": "help"
+        }
+      ]
+    },
+    {
+      "id": "guide.ribbon-won",
+      "lines": [
+        {
+          "id": "guide.ribbon-won.1",
+          "speaker": "sunny",
+          "text": "Ribbon Crossing complete! You collected {score} starlight. The stars can reach each other again!",
+          "priority": "outcome"
+        }
+      ]
+    },
+    {
+      "id": "ribbon-crossing.entry",
+      "lines": [
+        {
+          "id": "ribbon-crossing.entry.1",
+          "speaker": "sunny",
+          "text": "Murk took the light from Ribbon Crossing. Collect 18 starlight to reconnect its stitched path before an arriving star runs out of room.",
+          "priority": "help"
+        }
+      ]
+    },
+    {
+      "id": "ribbon-crossing.replay",
+      "lines": [
+        {
+          "id": "ribbon-crossing.replay.1",
+          "speaker": "sunny",
+          "text": "Try the same Ribbon Crossing opening and reconnect the path with 18 starlight. Your saved round stays until you tap Begin.",
+          "priority": "help"
+        }
+      ]
     }
   ],
   "copy": {
@@ -683,7 +727,6 @@
     "flow.roundOver": "ROUND OVER",
     "flow.welcome": "Welcome to the Observatory",
     "flow.entry": "Make room for the stars",
-    "flow.challenge": "Lantern Landing",
     "flow.won": "Lantern Landing restored!",
     "flow.full": "No room to land",
     "flow.preparing": "Preparing your sky…",
@@ -873,6 +916,18 @@
     "prop.telescopeHint": "Tilt the telescope for a glint of light",
     "prop.lanternHint": "Make the lantern glow",
     "prop.responding": "Responding",
-    "prop.rest": "At rest"
+    "prop.rest": "At rest",
+    "action.ribbonCrossing": "Try Ribbon Crossing",
+    "action.replayRibbonCrossing": "Replay Ribbon Crossing",
+    "menu.ribbonCrossing": "Ribbon Crossing · 18 starlight",
+    "menu.ribbonCrossingHint": "Reconnect Ribbon Crossing with 18 starlight. Preview the challenge before Begin.",
+    "flow.ribbonCrossing": "RIBBON CROSSING",
+    "flow.ribbonComplete": "CROSSING COMPLETE",
+    "flow.ribbonWon": "Ribbon Crossing restored!",
+    "ribbon.title": "Ribbon Crossing",
+    "ribbon.restoration": "Ribbon Crossing, {percent}% restored",
+    "result.ribbonWon": "Ribbon Crossing complete! The cloud banks are connected again.",
+    "help.ribbonTitle": "Ribbon Crossing · Reconnect the path",
+    "help.ribbon": "Reconnect Ribbon Crossing with 18 starlight. Each clear helps join the stitched path between the cloud banks. Finish before an arriving star has nowhere to land. Use tap matches or five-star traces. Showers arrive at a steady pace. This challenge has no swaps, shape recipes, Dusk, Opal Orbs or storms."
   }
 }

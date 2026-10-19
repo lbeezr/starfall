@@ -42,8 +42,8 @@ struct StarlightCelebration: Equatable, Identifiable {
             min(1, max(0, (age - start - Double(packetIndex) * stagger) / duration))
         }
     }
-    static func packetFlight(toLantern: Bool) -> PacketFlight {
-        if toLantern {
+    static func packetFlight(toRestoration: Bool) -> PacketFlight {
+        if toRestoration {
             // Deliver every packet before the ordinary clear hands off to the
             // result. The committed win and its controls never wait for this art.
             return PacketFlight(start: StarfallMotion.gatherDuration, duration: 0.32, stagger: 0.015)
@@ -81,7 +81,7 @@ struct StarlightCelebration: Equatable, Identifiable {
     }
 }
 
-enum StarlightAnchor: Hashable { case board, score, header, lantern }
+enum StarlightAnchor: Hashable { case board, score, header, restorationLight, restorationScenery }
 struct StarlightAnchors: PreferenceKey {
     static var defaultValue: [StarlightAnchor: Anchor<CGRect>] { [:] }
     static func reduce(value: inout [StarlightAnchor: Anchor<CGRect>], nextValue: () -> [StarlightAnchor: Anchor<CGRect>]) {
@@ -201,7 +201,7 @@ struct StarlightCelebrationOverlay: View {
         // Six packets maximum. All represent one committed award, not individual points.
         let target = lightDestination ?? score
         let destination = CGPoint(x: target.midX, y: target.midY)
-        let flight = StarlightCelebration.packetFlight(toLantern: lightDestination != nil)
+        let flight = StarlightCelebration.packetFlight(toRestoration: lightDestination != nil)
         for (index, contributor) in event.packets.enumerated() {
             let point = location(contributor.cell)
             let tint = color(contributor)
