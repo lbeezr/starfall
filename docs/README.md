@@ -1,5 +1,7 @@
 # Documentation map
 
+[Documentation instructions](AGENTS.md) give the local working contract.
+
 [Repository maintenance](REPO_MAINTENANCE_PLAN.md) tracks the accepted rollout of current-document reconciliation, CI diagnosis, scoped agent guidance and three repo skills. [Batch evidence](evidence/repo-maintenance-2026-10-19/IMPLEMENTATION.md) distinguishes implemented work from remaining checks.
 
 [Gameplay quality](GAMEPLAY_QUALITY.md) tracks the six ordered polishing priorities and their observable acceptance.

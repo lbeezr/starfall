@@ -51,7 +51,7 @@ Choose the smallest durable correction that covers the demonstrated mechanism. A
 
 1. Inspect `git status --short` and the change's boundary. Preserve other edits, especially Xcode project configuration. Identify whether a rule/save, lifecycle, rendering, layout, asset or build contract changes.
 2. Make the smallest complete change. Keep seeded rule decisions separate from presentation timing. Add focused behavioral regression coverage for a changed contract, not tests that repeat its implementation.
-3. Run `python3 scripts/ci-hygiene.py`, `git diff --check`, and `swift test`. Run affected native hosted/UI checks and a simulator build for app changes. The shared Starfall scheme includes app tests; core package tests run separately. Use an installed simulator and a temporary DerivedData directory. The cloud script is for disposable runners, not a local machine: it selects, boots and shuts down a simulator and requires runner variables.
+3. Select checks using [verification by change](#verification-by-change). Run `python3 scripts/ci-hygiene.py` and `git diff --check` for every batch; Swift changes also need `swift test`, affected native hosted/UI checks and a simulator build. The shared Starfall scheme includes app tests; core package tests run separately. Use an installed simulator and a temporary DerivedData directory. The cloud script is for disposable runners, not a local machine: it selects, boots and shuts down a simulator and requires runner variables.
 4. For UI changes, inspect normal and accessibility-size screenshots and exercise actual touch alignment, rapid input, outcomes, restart and interruptions. Exercise full animations separately from reduced-motion alternatives. For assets, use existing validators under tools/art-quality; preserve canonical handoff files and fallback behavior.
 5. Review explicit staged paths and the staged diff. A new App/AppTests/UITests file must be included in its Xcode target; a Swift package file is discovered separately. Check both Debug and Release when changing configuration or resources. Do not broaden CI triggers or dispatch paid/manual runs as incidental cleanup.
 6. Integrate verified work in small batches. Verify remote head and tree after publication, including connector publication that changes commit metadata. Update the relevant evidence index and roadmap; keep previous evidence historical.
@@ -59,6 +59,21 @@ Choose the smallest durable correction that covers the demonstrated mechanism. A
 The hygiene script checks tracked generated/user files and ordinary imports of UI/platform game frameworks in StarfallCore. It examines tracked paths and current core file contents, including local edits. It does not prove deterministic behavior, parse all Swift import syntax, validate target membership, scan credentials, or establish clean-commit/native acceptance. Existing CI retains its separate builds, test-count checks, privacy/resource checks and evidence export.
 
 Actual VoiceOver sessions follow the [development/RC cadence](DEVELOPMENT_BUILDS.md#accessibility-checks-by-build-stage). Use lightweight accessibility checks while iterating; reserve full spoken/focus/rotor acceptance for release candidates. This current policy supersedes earlier VoiceOver timing triggers in the follow-ups below, without changing their recorded results or closing known defects.
+
+## Verification by change
+
+Choose checks from the changed contract, including indirect build/resource consumers. This table owns selection; repo skills route here rather than maintaining another command/test inventory. Missing tooling is an explicit gap, never a pass. Use the existing development/RC cadence and preserve source-counted native failure/skip gates.
+
+| Change | Required evidence |
+| --- | --- |
+| Documentation or instructions only | Hygiene and diff checks; local links and folder ownership. For guidance/skills, validate discovery, trigger boundaries and representative task decisions. No unrelated app run when app inputs are unchanged. |
+| Swift behavior or tests | `swift test`, affected hosted/UI cases and a simulator build, plus hygiene/diff. Rule/RNG/save changes need deterministic replay and old-save coverage. A native test repair must preserve its intended behavioral assertion and representative siblings. |
+| UI, geometry or motion | Above plus actual native taps, relevant normal/rapid input, win/loss, restart, background/resume, settings dismissal and Reduce Motion. Inspect default/large-text captures; separately exercise full animations. Lightweight accessibility during development; full actual VoiceOver at RC. |
+| Routing, resources, build settings or Debug fixtures | Relevant checks above plus Debug/Release builds and source/resource target membership. Package tests cannot establish app membership or release routing. |
+| Python/shell/tooling | Affected behavioral tooling tests, hygiene/diff and actual commands where safe. Run native checks when Apple-operation behavior or app inputs change; pure tooling/docs changes do not need an unrelated gameplay tour. Process ownership needs real descendant cancellation checks. Updater changes preserve service packaging, locking/signature/install checks in a separate batch. |
+| RC or requested delivery | [Development/RC gates](DEVELOPMENT_BUILDS.md), minimum-OS/tablet roles, actual VoiceOver and physical acceptance remain distinct. Delivery uses only the canonical updater; ordinary verification does not authorize installation. |
+
+Use `python3 scripts/native_test_plan.py --stage dev` or `--stage rc` for current source-counted selection; results go to ignored `artifacts/`. `scripts/README.md` describes the five existing tooling suites and export/platform owners. A selected subset is reported as a subset, not a complete development pass. See the [maintenance evaluation](evidence/repo-maintenance-2026-10-19/GUIDANCE.md) for instruction checks and their limits.
 
 ## Evidence discipline
 

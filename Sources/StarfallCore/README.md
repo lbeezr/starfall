@@ -1,5 +1,7 @@
 # StarfallCore
 
+[Core implementation and compatibility instructions](AGENTS.md) give the local working contract.
+
 Deterministic rules, seeded randomness and committed save/outcome values, without UI imports.
 
 ## Start here
