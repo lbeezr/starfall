@@ -39,6 +39,8 @@ final class SkyTechniqueInteractionTests: XCTestCase {
     @MainActor func testTapRecipesRelayWithoutAnyModeOrMenuToggle() {
         let app = launch("relay"); defer { app.terminate() }
         tap("experiment.cell.0.0",app); score(4,app)
+        XCTAssertTrue(app.staticTexts["experiment.message"].label.contains("Square"))
+        capture(app,"committed-square-feedback")
         tap("experiment.cell.0.1",app); score(8,app)
         XCTAssertTrue(app.staticTexts["experiment.message"].label.contains("2-clear relay"))
         XCTAssertTrue(app.buttons["experiment.next"].exists)

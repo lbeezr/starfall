@@ -52,7 +52,7 @@ struct StarlightCelebration: Equatable, Identifiable {
             old.gem(at: cell).map { Contributor(cell: cell, identity: $0.identity, reward: old.reward(of: [cell])) }
         }
         // Only the validated input path supplied by the store names a constellation.
-        self.path = recipe?.presentationPath ?? path
+        self.path = path.isEmpty ? (recipe?.presentationPath ?? []) : path
         if relayDepth > 1 { level = .relay(relayDepth) }
         else if let recipe { level = .recipe(recipe.shape) }
         else { level = path.isEmpty ? (turn.collected >= 8 ? .brilliant : .ordinary) : .constellation }

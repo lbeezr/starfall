@@ -346,6 +346,71 @@ final class SkyTechniqueStoreTests: XCTestCase {
         presenter.finish();store.setSuspended(true)
         XCTAssertEqual(store.techniqueResult,"")
     }
+
+    @MainActor func testExactRecipeFeedbackMatchesTapTraceAndAccessibleActivation() throws {
+        for example in ["relay", "fork"] {
+            // The fork's tap group includes extra neighbors; only its trace and
+            // explicit activation spend the exact cross.
+            for input in (example == "relay" ? [0, 1, 2] : [1, 2]) {
+                let (store, presenter, _, _) = fixture(example)
+                let recipe = try XCTUnwrap(store.game.recipes.first { example == "relay" ? $0.shape == .square : $0.shape == .cross })
+                let old = store.game
+                let path = recipe.presentationPath
+                switch input {
+                case 0: store.clear(try XCTUnwrap(recipe.cells.first))
+                case 1: store.clearTracedConstellation(path, snapshot: old, generation: store.constellationInputGeneration)
+                default: XCTAssertTrue(store.performTechnique(.recipe(recipe), snapshot: old, generation: store.constellationInputGeneration))
+                }
+                var expected = old
+                let turn = try XCTUnwrap(expected.activate(recipe))
+                XCTAssertEqual(store.game, expected)
+                XCTAssertEqual(store.celebration?.level, .recipe(recipe.shape))
+                XCTAssertEqual(store.celebration?.collected, turn.collected)
+                XCTAssertEqual(store.guideLine.id, "guide.recipe.1")
+                XCTAssertTrue(store.pausedGuideLine.text.contains("+\(turn.collected) starlight"))
+                if input == 1 { XCTAssertEqual(store.celebration?.path, path) }
+                let revision = store.dialogue.revision
+                presenter.finish()
+                XCTAssertEqual(store.dialogue.revision, revision)
+                store.setSuspended(true)
+            }
+        }
+    }
+
+    @MainActor func testBroaderTapGroupDoesNotClaimAnExactRecipe() throws {
+        let (store, presenter, _, _) = fixture("fork")
+        let recipe = try XCTUnwrap(store.game.recipes.first { $0.shape == .cross })
+        let cell = try XCTUnwrap(recipe.cells.first)
+        XCTAssertGreaterThan(store.game.group(at: cell).count, recipe.cells.count)
+        var expected = store.game
+        let turn = try XCTUnwrap(expected.clear(cell))
+        store.clear(cell)
+        XCTAssertEqual(store.game, expected)
+        XCTAssertEqual(store.celebration?.collected, turn.collected)
+        XCTAssertEqual(store.celebration?.level, .brilliant)
+        XCTAssertEqual(store.guideLine.id, "guide.clear.1")
+        presenter.finish(); store.setSuspended(true)
+    }
+
+    @MainActor func testAdjacentDuskRemovalDoesNotChangeTheSelectedRecipeName() throws {
+        for trace in [false, true] {
+            let (store, presenter, _, _) = fixture("rescue")
+            XCTAssertTrue(store.performTechnique(.nudge(Cell(0, 3), Cell(0, 4)),
+                snapshot: store.game, generation: store.constellationInputGeneration))
+            presenter.finish()
+            let recipe = try XCTUnwrap(store.game.recipes.first { $0.cells.contains(Cell(0, 5)) })
+            let old = store.game
+            if trace {
+                store.clearTracedConstellation(recipe.presentationPath, snapshot: old,
+                                              generation: store.constellationInputGeneration)
+            } else { store.clear(Cell(0, 5)) }
+            XCTAssertEqual(store.game.score, 4)
+            XCTAssertNil(store.game.gem(at: Cell(0, 4)), "The neighboring Dusk is removed by the same committed clear")
+            XCTAssertEqual(store.celebration?.level, .recipe(.square))
+            XCTAssertTrue(store.guideLine.text.contains("removed"), "Keep the more consequential Dusk explanation")
+            presenter.finish(); store.setSuspended(true)
+        }
+    }
     @MainActor func testNewActionsRejectStaleInputBusyColumnsAndFirstLight() throws {
         let (store,presenter,_,_)=fixture("nudge")
         let old=store.game,ticket=store.constellationInputGeneration

@@ -6,7 +6,9 @@ All award categories now share a protected region above the playable rows. Maxim
 
 The original obstruction is reproduced and corrected. Physical recognition during repeated fast play remains unmeasured. This is the first delivery in the [gameplay quality plan](../../GAMEPLAY_QUALITY.md).
 
-**Next action:** Merge and verify canonical phone installation before priority 2.
+**Delivered:** [PR #142](https://github.com/lbeezr/starfall/pull/142), main `c985a97f023489d6d26ec24b6287cbba0525eae0`; canonical updater verified the original phone app as `dev.d7e15ddf2a`. [Sanitized delivery receipt](delivery.json) records the installation and pending cloud CI at install. No player data was reset.
+
+**Next action:** Proceed to consequence feedback; incorporate physical readability feedback when available.
 
 ## Inspected native appearance
 
@@ -30,7 +32,7 @@ Inspected the compact default entry and middle frames, compact maximum-text midd
 | Simulator build | Debug tests and Release build passed | No resource/target membership changed. |
 | Hygiene / diff | Passed | `python3 scripts/ci-hygiene.py`; `git diff --check`. |
 | Actual VoiceOver | Not run | Routine iteration; full session remains an RC gate. |
-| Physical phone | Not delivered yet | Canonical current-main installation and player comfort are separate checks. |
+| Physical phone | Installation verified | Canonical current-main archive, core tests and signed installation identity passed. Player comfort remains unmeasured. |
 
 ## Responsible boundary and remaining risk
 

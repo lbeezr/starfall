@@ -97,7 +97,7 @@ Fresh survival skies use universal critical mass. `CriticalMassPresentation` ren
 
 `SkySaveArchive.inspect` distinguishes missing, loaded and rejected archives. Before a successful replacement, one `starfall.accumulation.rejected` recovery slot preserves the rejected property-list value and source key; it never automatically restores an older round. Initialization stays read-only. Store encoding failures are observable through `saveFailed` and local OSLog, while prior bytes remain unchanged.
 
-`SkyPresentationLedger` owns outstanding turn tickets, column reservations, pending forecast selection and epoch invalidation. It owns no clock, scene or save. `SkyDialogueLibrary.result` selects turn wording from immutable committed values; the store retains session delivery, speech policy and save-before-animation ordering.
+`SkyPresentationLedger` owns outstanding turn tickets, column reservations, pending forecast selection and epoch invalidation. It owns no clock, scene or save. `SkyDialogueLibrary.result` selects turn wording from immutable committed values; the store retains session delivery, speech policy and save-before-animation ordering. Player-action results publish at commit; deferred shower/outcome feedback must still own both the presentation ticket and dialogue revision.
 
 Idle input admission skips copied-game simulations when no presentation reserves columns. Busy-board admission still simulates the exact Core action; the real commit remains authoritative in every case.
 

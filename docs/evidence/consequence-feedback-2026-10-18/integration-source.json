@@ -1,0 +1,7 @@
+{
+  "commit": "0842a61956943d102bc034a179373a160c6e75fe",
+  "main": "496ba704ee22d3f8e17195233b00273eab9b345e",
+  "runtimeFingerprint": "dev.bf4ade9d68",
+  "runtimeDirtyPaths": [],
+  "note": "Clean integration source. Hosted tests used default dev.local bundle label; native/release builds inject the runtime fingerprint. Subsequent evidence edits do not affect runtime identity."
+}
