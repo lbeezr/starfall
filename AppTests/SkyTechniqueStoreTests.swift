@@ -5,6 +5,79 @@ import StarfallCore
 @testable import Starfall
 
 final class SkyTechniqueStoreTests: XCTestCase {
+    @MainActor func testDrawingArmingFeedbackRequiresContactAndRespectsPreferences() throws {
+        let suite = "Starfall.HoldFeedback.\(UUID())", defaults = UserDefaults(suiteName:suite)!
+        defer { defaults.removePersistentDomain(forName:suite) }
+        let feedback = SkyFeedbackRecorder()
+        let store = FallingSkyStore(defaults:defaults,arguments:["--starfalls-reset","--technique-review","--technique-example=trace"],
+                                    presenter:FallingSkyRecorder(),clock:ManualRainClock(),feedback:feedback)
+        store.setSuspended(false)
+        store.traceArmed(); XCTAssertTrue(feedback.armedPreferences.isEmpty)
+        let hold = try XCTUnwrap(store.beginConstellationHold(at:Cell(0,0)))
+        store.traceArmed()
+        store.hapticsEnabled = false; store.traceArmed()
+        store.endConstellationHold(hold); store.traceArmed()
+        XCTAssertEqual(feedback.armedPreferences,[true,false])
+        store.hapticsEnabled = true; store.setReducedMotion(true)
+        let quietHold = try XCTUnwrap(store.beginConstellationHold(at:Cell(0,0)))
+        store.traceArmed(); store.endConstellationHold(quietHold)
+        XCTAssertEqual(feedback.armedPreferences,[true,false,false])
+        store.setSuspended(true); store.traceArmed()
+        XCTAssertEqual(feedback.armedPreferences.count,3)
+    }
+
+    @MainActor func testNativeHoldProgressArmsOnceAndQuietCueStaysStatic() async throws {
+        XCTAssertFalse(UIAccessibility.isReduceMotionEnabled)
+        let owner = try XCTUnwrap(UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.first)
+        let prior = owner.windows.first(where:\.isKeyWindow), window = UIWindow(windowScene:owner)
+        let view = SKView(frame:.init(x:0,y:0,width:390,height:844)), controller = UIViewController()
+        controller.view = view; window.rootViewController = controller; window.frame = view.frame; window.makeKeyAndVisible()
+        defer { view.presentScene(nil); window.isHidden = true; prior?.makeKey() }
+        let scene = FallingSkyScene(size:view.bounds.size)
+        let game = SkyTechniqueExample.trace.game(), cell = Cell(0,2)
+        scene.render(game); view.presentScene(scene)
+        var ready = false; scene.run(.run { ready = true },withKey:"test.hold-ready")
+        let readyDeadline = ContinuousClock.now + .seconds(2)
+        while !ready && ContinuousClock.now < readyDeadline { try await Task.sleep(for:.milliseconds(5)) }
+        XCTAssertTrue(ready)
+        for quiet in [false,true] {
+            scene.reduceMotion = quiet
+            let surface = ConstellationTraceSurface.Surface(), mapping = ObservatoryGeometry(size:scene.size)
+            var armed = 0
+            surface.updateInput(.init(size:scene.size,enabled:true,generation:1,traceStart:{ _ in cell },tap:{ _ in },
+                begin:{ _ in armed += 1; scene.showConstellationTrace([cell],ready:false) },move:{ _ in },end:{},
+                cancel:{ scene.clearConstellationTrace() },contact:{ _ in scene.showContact(cell,drawingEligible:true); return true },swapStart:{ _ in true }))
+            surface.beginInput(at:mapping.viewPoint(cell))
+            let progress = scene.childNode(withName:"//sky.input.hold.progress")
+            if quiet { XCTAssertNil(progress) }
+            else {
+                XCTAssertEqual(progress?.children.count,12)
+                for mark in try XCTUnwrap(progress).children { XCTAssertEqual(mark.alpha,0.15,accuracy:0.001) }
+                let progressDeadline = ContinuousClock.now + .seconds(1)
+                while progress?.children.first?.alpha ?? 0 < 0.9 && ContinuousClock.now < progressDeadline {
+                    try await Task.sleep(for:.milliseconds(5))
+                }
+                XCTAssertLessThan(progress?.children.last?.alpha ?? 1,0.9,"The cue progresses rather than appearing complete immediately")
+                let pending = XCTAttachment(image:UIImage(cgImage:try XCTUnwrap(view.texture(from:scene)?.cgImage())))
+                pending.name = "hold-progress-native-scene"; pending.lifetime = .keepAlways; add(pending)
+            }
+            let armedDeadline = ContinuousClock.now + .seconds(2)
+            while armed == 0 && ContinuousClock.now < armedDeadline { try await Task.sleep(for:.milliseconds(5)) }
+            XCTAssertEqual(armed,1)
+            XCTAssertNil(scene.childNode(withName:"//sky.input.hold.progress"))
+            XCTAssertNotNil(scene.childNode(withName:"//sky.input.drawing.armed"))
+            let image = XCTAttachment(image:UIImage(cgImage:try XCTUnwrap(view.texture(from:scene)?.cgImage())))
+            image.name = "hold-armed-\(quiet ? "quiet" : "full")-native-scene"; image.lifetime = .keepAlways; add(image)
+            let stale = surface.session.sequence
+            surface.cancelInput(); surface.armDrawing(ticket:stale,generation:1)
+            XCTAssertEqual(armed,1)
+            XCTAssertNil(scene.childNode(withName:"//sky.input.drawing.armed"))
+            scene.showContact(cell,drawingEligible:false)
+            XCTAssertNil(scene.childNode(withName:"//sky.input.hold.progress"))
+            scene.clearConstellationTrace()
+        }
+    }
+
     @MainActor private func request(_ action: SkyPlayerInput, in store: FallingSkyStore) -> Bool {
         store.requestInput(action, snapshot: store.game, generation: store.constellationInputGeneration)
     }

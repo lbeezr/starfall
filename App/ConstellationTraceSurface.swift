@@ -223,7 +223,7 @@ struct ConstellationTouchSession {
     enum Event: Equatable { case none, trace, swap(Cell, Cell), cancel }
     enum Outcome: Equatable { case none, tap(Cell), trace, cancel }
     private enum Mode { case idle, pending, drawing, consumed }
-    static let holdMilliseconds = 300
+    static let holdMilliseconds = SkyGestureTiming.drawingHoldMilliseconds
     static let holdSlop: CGFloat = 8
     static let tapSlop: CGFloat = 18
     private var mode = Mode.idle

@@ -186,6 +186,11 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     }
 
     /// Selection cues share device/preference policy with committed feedback.
+    func traceArmed() {
+        guard canReceiveInput, constellationTracing else { return }
+        feedback.traceArmed(enabled: hapticsEnabled && !presenter.reduceMotion)
+    }
+
     func traceStep(count: Int) {
         guard canReceiveInput, constellationTracing, count > 0 else { return }
         feedback.traceStep(count: count, enabled: hapticsEnabled && !presenter.reduceMotion)

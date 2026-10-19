@@ -1,0 +1,16 @@
+{
+  "baseCommit": "8d29bc137e73fa97ac5fa6dec9c4fb53572d5758",
+  "runtimeBuildID": "dev.0f08b779a9",
+  "dirtyInputs": {
+    "App/ConstellationTraceSurface.swift": "caa8ec4f315a1daa5d901641c0c4c153510341fc6fa42e49f02daab2242c1998",
+    "App/FallingSkyScene.swift": "766701f9280d2d16975f99583d58037bc08e7b525fb706cab0be4dd9e369ba21",
+    "App/FallingSkyStore.swift": "3214c03e9ed174be9d97f668c02516b5ed1dadab94915bd03f4b8e76473b812b",
+    "App/FallingSkyView.swift": "dddf86c5148045f90db2e56b3ccc56683582f302920eacb576daa6ef84bdfba2",
+    "App/GameFeedback.swift": "cf443e8b42412b58e357656855b11c4a6e20123854f477ce199f4d8b037c0613",
+    "App/SkyTechniqueIntent.swift": "59288bb3c8af9dfae19f37fed0b1bd451082317bbf4c249fcd6497867c104408",
+    "App/StarfallTheme.swift": "08aff7535dc175b7bcaa49a57160d0fb392cb2bdce47c233a992b91f603d348a",
+    "AppTests/FallingSkyTestSupport.swift": "a25872520f5d79dbcef03fe0a6ec2e39078888fc4f358f4047181316970b14e9",
+    "AppTests/SkyTechniqueStoreTests.swift": "f88d6d8081eedcb94f78319f2569d9caf275de6cc7e8e3059088f0a6bc420f68",
+    "AppTests/StarCastTests.swift": "550fd1d5fec15e244188d40922fd865384f8ca2d397f283fa0de439724f55426"
+  }
+}

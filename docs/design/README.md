@@ -2,6 +2,8 @@
 
 Behavior proposals, production contracts and research supporting decisions.
 
+[Hold-to-draw feedback](HOLD_DRAW_FEEDBACK.md) defines open-ray progress and a distinct armed state.
+
 [Gesture edges](GESTURE_EDGES.md) specifies valid long flicks and unchanged tap/drawing boundaries.
 
 [Follow-up input](FOLLOW_UP_INPUT.md) retains one recent tap or swap while its stars finish presentation; [immediate swipes](IMMEDIATE_SWIPES.md) owns movement versus held drawing.

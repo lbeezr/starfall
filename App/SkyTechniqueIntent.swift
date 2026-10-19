@@ -1,6 +1,11 @@
 import SwiftUI
 import StarfallCore
 
+enum SkyGestureTiming {
+    static let drawingHoldMilliseconds = 300
+    static var drawingHoldDuration: TimeInterval { Double(drawingHoldMilliseconds) / 1_000 }
+}
+
 enum SkyBoardAction {
     case recipe(StarRecipe)
     case nudge(Cell, Cell)

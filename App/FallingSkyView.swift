@@ -516,7 +516,7 @@ private extension FallingSkyView {
             store.explainSettling(at: cell); return false
         }
         store.showInputFeedback(nil)
-        store.scene.showContact(cell)
+        store.scene.showContact(cell, drawingEligible: store.game.canStartConstellation(at: cell) && store.canTrace([cell]))
         return true
     }
     func beginConstellation(_ point: CGPoint, size: CGSize) {
@@ -530,7 +530,7 @@ private extension FallingSkyView {
         }
         trace.lastFinger = point
         refreshConstellation()
-        if trace.snapshot != nil { store.traceStep(count: 1) }
+        if trace.snapshot != nil { store.traceArmed() }
     }
     func moveConstellation(_ point: CGPoint, size: CGSize) {
         guard trace.snapshot != nil else { return }

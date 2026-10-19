@@ -35,6 +35,8 @@ import StarfallCore
 
 
 @MainActor final class SkyFeedbackRecorder: FallingSkyFeedbackProviding {
+    var armedPreferences: [Bool] = []
+    func traceArmed(enabled: Bool) { armedPreferences.append(enabled) }
     var clears = 0, stops = 0
     var announcements: [String] = []
     var sound = false, haptics = false
