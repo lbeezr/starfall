@@ -116,6 +116,18 @@ final class SkyTechniqueInteractionTests: XCTestCase {
 
 
 extension SkyTechniqueInteractionTests {
+    @MainActor func testLongFastFlickPastBoardEdgeStillMovesOneNeighbor() {
+        let app = launch("nudge"); defer { app.terminate() }
+        let source = app.buttons["experiment.cell.1.2"]
+        let start = source.coordinate(withNormalizedOffset:CGVector(dx:0.65,dy:0.5))
+        let end = app.coordinate(withNormalizedOffset:.zero).withOffset(CGVector(dx:2,dy:source.frame.midY))
+        start.press(forDuration:0.05,thenDragTo:end,withVelocity:.fast,thenHoldForDuration:0)
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate:NSPredicate(format:"label CONTAINS %@","Aqua"),object:app.buttons["experiment.cell.1.1"]).wait(timeout:5))
+        XCTAssertTrue(app.buttons["experiment.cell.1.2"].label.contains("Mint"))
+        score(0,app)
+        tap("experiment.cell.0.0",app); score(4,app)
+    }
+
     @MainActor func testQuickDirectionalSwapDoesNotRequireDestinationCell() {
         let app = launch("nudge"); defer { app.terminate() }
         let cell = app.buttons["experiment.cell.1.2"]

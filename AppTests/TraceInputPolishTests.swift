@@ -95,6 +95,60 @@ final class TraceInputPolishTests: XCTestCase {
 
 
 extension TraceInputPolishTests {
+    @MainActor func testFinalOnlyFlickBeyondBoardKeepsOneCardinalNeighbor() {
+        for size in [CGSize(width:320,height:568), CGSize(width:440,height:956), CGSize(width:1024,height:1366)] {
+            let mapping = ObservatoryGeometry(size:size), source = Cell(3,3), center = mapping.viewPoint(source)
+            let origin = CGPoint(x:center.x + mapping.frame(source).width*0.35, y:center.y-3)
+            let destinations: [(CGPoint,Cell)] = [
+                (CGPoint(x:-40,y:origin.y+7),Cell(3,2)),
+                (CGPoint(x:size.width+40,y:origin.y-7),Cell(3,4)),
+                (CGPoint(x:origin.x+7,y:-40),Cell(4,3)),
+                (CGPoint(x:origin.x-7,y:size.height+40),Cell(2,3))
+            ]
+            for (end,destination) in destinations {
+                let surface = ConstellationTraceSurface.Surface()
+                var swaps: [(Cell,Cell)] = [], taps = 0, draws = 0
+                surface.updateInput(.init(size:size,enabled:true,generation:9,traceStart:{ _ in source },
+                    tap:{ _ in taps += 1 },begin:{ _ in draws += 1 },move:{ _ in draws += 1 },end:{ draws += 1 },cancel:{},
+                    swapStart:{ _ in true },swap:{ from,to,_ in swaps.append((from,to)) }))
+                surface.beginInput(at:origin)
+                let ticket = surface.session.sequence
+                surface.endInput(at:end)
+                surface.moveInput(to:center)
+                surface.armDrawing(ticket:ticket,generation:9)
+                XCTAssertEqual(swaps.count,1)
+                XCTAssertEqual(swaps.first?.0,source); XCTAssertEqual(swaps.first?.1,destination)
+                XCTAssertEqual(taps,0); XCTAssertEqual(draws,0)
+            }
+        }
+    }
+
+    @MainActor func testOutwardDestinationsHeldExitsAndNonfiniteSamplesStillCancel() {
+        let mapping = ObservatoryGeometry(size:.init(width:390,height:844))
+        for (source,end) in [(Cell(0,0),CGPoint(x:-40,y:800)), (Cell(3,6),CGPoint(x:1000,y:400)),
+                             (Cell(6,3),CGPoint(x:200,y:-1000)), (Cell(0,3),CGPoint(x:200,y:2000))] {
+            var input = ConstellationTouchSession()
+            let origin = mapping.viewPoint(source)
+            // Keep the intended outward axis unambiguous at curved edge cells.
+            let point = source.column == 0 || source.column == 6 ? CGPoint(x:end.x,y:origin.y) : CGPoint(x:origin.x,y:end.y)
+            XCTAssertTrue(input.begin(at:origin,swapEligible:true))
+            XCTAssertEqual(input.move(to:point,mapping:mapping),.cancel)
+            XCTAssertEqual(input.finish(at:point,mapping:mapping),.none)
+        }
+        for point in [CGPoint(x:CGFloat.nan,y:0),CGPoint(x:0,y:CGFloat.infinity),CGPoint(x:-40,y:200)] {
+            var input = ConstellationTouchSession()
+            XCTAssertTrue(input.begin(at:mapping.viewPoint(Cell(3,3)),swapEligible:true))
+            XCTAssertTrue(input.armTrace(ticket:input.sequence))
+            XCTAssertEqual(input.move(to:point,mapping:mapping),.cancel)
+            XCTAssertEqual(input.finish(at:point,mapping:mapping),.none)
+        }
+        for point in [CGPoint(x:CGFloat.nan,y:0),CGPoint(x:0,y:CGFloat.infinity)] {
+            var input = ConstellationTouchSession()
+            XCTAssertTrue(input.begin(at:mapping.viewPoint(Cell(3,3)),swapEligible:true))
+            XCTAssertEqual(input.move(to:point,mapping:mapping),.cancel)
+        }
+    }
+
     @MainActor func testEdgeReleaseCancelsAndFinalOnlySampleSwapsOnce() {
         for size in [CGSize(width:320,height:568), CGSize(width:440,height:956)] {
             let mapping = ObservatoryGeometry(size:size), surface = ConstellationTraceSurface.Surface()

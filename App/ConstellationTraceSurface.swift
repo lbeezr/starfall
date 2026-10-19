@@ -252,13 +252,18 @@ struct ConstellationTouchSession {
     }
     mutating func move(to point: CGPoint, mapping: ObservatoryGeometry) -> Event {
         guard let origin, mode == .pending || mode == .drawing else { return .none }
-        guard let from = mapping.cell(at: origin), mapping.cell(at: point) != nil else {
+        guard let from = mapping.cell(at: origin), point.x.isFinite, point.y.isFinite else {
             mode = .consumed; return .cancel
         }
         let dx = point.x-origin.x, dy = point.y-origin.y
         maximumDistance = max(maximumDistance, hypot(dx, dy))
-        if mode == .drawing { return .trace }
+        if mode == .drawing {
+            guard mapping.cell(at: point) != nil else { mode = .consumed; return .cancel }
+            return .trace
+        }
         if swapEligible, max(abs(dx), abs(dy)) >= Self.swapThreshold(from, mapping: mapping) {
+            // A fast/coarse sample may already be outside the board. Direction
+            // names one adjacent destination; that destination owns validity.
             // UIKit y increases down the screen; Core row zero is the bottom.
             let to = abs(dx) >= abs(dy)
                 ? Cell(from.row, from.column + (dx > 0 ? 1 : -1))
@@ -267,6 +272,7 @@ struct ConstellationTouchSession {
             guard (0..<FallingSky.side).contains(to.row), (0..<FallingSky.side).contains(to.column) else { return .cancel }
             return .swap(from, to)
         }
+        guard mapping.cell(at: point) != nil else { mode = .consumed; return .cancel }
         if !swapEligible && maximumDistance > Self.tapSlop && !canHold { mode = .consumed; return .cancel }
         return .none
     }
