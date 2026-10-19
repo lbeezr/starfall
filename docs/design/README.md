@@ -14,6 +14,8 @@ Behavior proposals, production contracts and research supporting decisions.
 
 ## Start here
 
+The rewritten [game bible](STARFALL_GAME_BIBLE.md) owns the approved Murk/map foundation and developed lore, cast and story. The [world atlas](WORLD_ATLAS.md) gives all twelve future restoration locations their daily life, appearance and payoff. The [restoration contract](STARLIGHT_RESTORATION.md) owns proposed progress/win behavior; [approved art and explorer](world-01/README.md) retain the images and sixty written states. This story journey is not a replacement of the current native nightscapes or an implemented campaign.
+
 [Celebration lettering](celebration-lettering/README.md) compares custom Pearl, Crystal and Comet treatments for central reward notices; concept only; the [complete Crystal Comet set](celebration-lettering/crystal-comet-01/README.md) develops the user-selected Crystal Burst lead with a 70/20/10 supporting blend.
 
 [Harvest feedback](HARVEST_FEEDBACK.md) refines scoring light and central combo celebrations without changing the committed award.
