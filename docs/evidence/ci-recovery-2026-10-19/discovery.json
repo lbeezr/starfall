@@ -1,0 +1,26 @@
+{
+  "run": 39276071444,
+  "attempt": 1,
+  "job": 118140589482,
+  "source": "451219d71fc46cfa247331a544df98002dca976f",
+  "runner": "macos-26-arm64",
+  "image": "20261013.0424.1",
+  "macOS": "26.6.2 (25G83)",
+  "xcode": "26.6 (17F113)",
+  "stages": [
+    {
+      "name": "inventory",
+      "limitSeconds": 30,
+      "elapsedSeconds": 7.132,
+      "exitCode": 0
+    },
+    {
+      "name": "boot",
+      "limitSeconds": 60,
+      "elapsedSeconds": 4.994,
+      "exitCode": 0
+    }
+  ],
+  "debugBuild": "passed",
+  "fullRun": "cancelled by subsequent verified integration; not full acceptance"
+}

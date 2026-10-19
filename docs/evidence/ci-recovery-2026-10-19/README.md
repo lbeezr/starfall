@@ -1,10 +1,10 @@
 # Recover full development CI
 
-**Result:** In progress · **Owner:** current implementer · **Date:** October 19, 2026
+**Result:** Partially verified · **Owner:** current implementer · **Date:** October 19, 2026
 
 Repair simulator discovery, remaining UI regressions and the partial screenshot captures in separate verified batches. Acceptance requires a complete development run: tooling checks, core tests, Debug/Release builds, source-counted UI/hosted matrices with zero failures/skips, and valid compact evidence. Native screenshots require direct inspection; a passing assertion alone does not accept rendering. Physical delivery and full RC VoiceOver are outside this development task.
 
-**Next action:** Verify discovery on the updated runner, reproduce the UI cases with explicit orientation, and inspect fresh captures before claiming closure.
+**Next action:** Complete the full development matrix on the merged fixes, inspect its exported evidence and record the passing source/run before closing remote acceptance.
 
 ## Batch 1: simulator host
 
@@ -13,6 +13,8 @@ Repair simulator discovery, remaining UI regressions and the partial screenshot 
 [Apple's Xcode 26.4 notes](https://developer.apple.com/documentation/xcode-release-notes/xcode-26_4-release-notes) identify a repaired `simdiskimaged` loop that could hang simulator commands (172343027), and require macOS 26.2+. [GitHub's macOS 26 image](https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md) includes Xcode 26.6. Change the existing job to standard `macos-26`; retain the 30-second discovery bound, one runner, matrix, public-main triggers and cost guard. [Standard runners remain free for public repositories](https://docs.github.com/en/actions/reference/runners/github-hosted-runners#standard-github-hosted-runners-for-public-repositories).
 
 This is an evidence-backed environment correction, not proof that Apple's reported mechanism caused this timeout: no service crash sample was captured. The remote discovery receipt and full run must verify the outcome. Local static/tooling checks cannot emulate GitHub's VM.
+
+**Remote result:** [Run 39276071444](https://github.com/lbeezr/starfall/actions/runs/39276071444), source `451219d`, completed inventory in 7.132 seconds and boot in 4.994 seconds on macOS 26.6.2 / Xcode 26.6, then passed the Debug build. [Compact receipt](discovery.json). The next verified integration cancelled that run during Release compilation; this proves successful discovery/build on the new environment, not full CI acceptance or a universal cure for simulator service failures.
 
 ## Batch 2: room for the complete serial matrix
 
@@ -39,3 +41,13 @@ Exact selected methods: `testCompactHUDMenuSuspendsWithoutChangingPauseChoice`, 
 | <img src="dev-451219d-wip-38b36fae__dusk-before__iphone-se3__portrait.jpg" width="225" alt="Portrait Moonwake with the score and menu above the visible Dusk and shaded stars"> | <img src="dev-451219d-wip-38b36fae__cascade-clear__iphone-se3__portrait.jpg" width="225" alt="Portrait Moonwake showing three starlight and the surviving stars after an early cascade clear"> |
 
 **Native source `451219d` + test snapshot `38b36fae`, SE3 / iOS 27.0, default text.** These size-reduced JPEG previews preserve the original PNG hashes in the manifest. Both original attachments and the compact paused-actions capture were inspected: the prior black crop is absent, stars/score/menu render, and the scrollable controls are readable. This closes the demonstrated portrait capture failure, not all landscape or device rendering. The normal-motion cascade test clears before its fourth wave with Calm Effects and system Reduce Motion off; stills alone do not establish animation quality. First Light win/restore/replay and menu interruption pass; actual VoiceOver, physical play and full remote CI remain separate acceptance.
+
+## Batch 4: fresh and retained balance contracts
+
+**Verified subset:** the repaired balance case and all six `CriticalMassProductionTests` pass (7/7), then the largest-text settings/restore case passes (1/1), with zero skips. Debug / Xcode 27.1 / iPhone 17e / iOS 27.0; [source hashes, commands' result paths and case durations](balance-readiness.json) distinguish the two test snapshots. Native actions build the test targets. Core: 177 pass; hygiene/diff pass. No app/core/save/resource changes; Release is inapplicable to these test-only changes.
+
+The balance case now explicitly verifies fresh survival has a pace control and no Dusk-frequency control, then exercises the retained `unfed` Dusk fixture in the existing isolated review defaults. It uses current pace labels, preserves an occupied cell and committed board through changes, verifies saved Gentle/Frequent settings after relaunch, resets defaults and verifies Frequent versus None at exact shower counts. Native manual showers finish the sequence because retained skies deliberately have no fresh opening cascade; automatic timing remains covered by the unchanged opening/menu/background cases. A shower committed during Begin/menu admission counts toward that exact total.
+
+The first probe's new zero-before-pause assumption failed after a legitimate Brisk arrival; the corrected test passes in 108.578 seconds. Its explicit 180-second outer allowance contains fresh/retained setup, restore and two replays; individual 5-second waits, assertions and normal motion remain. The native invocation enables the same 90-second default/240-second maximum policy as CI. This is a measured case allowance, not a blanket retry or assertion relaxation.
+
+The broader SE3 probe also exposed two largest-text switch callers using the board helper for lazy menu rows. Those callers now use the existing menu helper; the final native case passes in 40.454 seconds and restores feedback preferences. The balance and largest-text fixes were tested separately; this is not a full-class pass. The earlier broad probe exceeded the MCP transport's 300-second response window, continued in Xcode and was explicitly stopped before its class-wide selection could reach an RC-only VoiceOver method. Its completed failures remain recorded above. The complete local/remote development runs use the planner's existing exclusions and exact-count gates.
