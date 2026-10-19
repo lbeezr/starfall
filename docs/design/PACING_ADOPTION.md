@@ -10,6 +10,8 @@ Use the previously isolated B cadence in ordinary Debug and Release play. The us
 
 **Next action:** Verify the promoted production source, merge one PR and deliver exact main through the existing one-app updater. Preserve the phone's current round; it retains its saved timing until a new sky is started.
 
+**Current status, October 19:** The V2 promotion below is retained as source-bound history. Fresh survival now selects V1 through `FallingSky.freshSurvival`; saved V2 remains supported. Use the [October 18 calibration](../evidence/calibration-critical-mass-2026-10-18/ADOPTION.md) and [current register](../EXPERIMENTS.md) for present behavior. The original delivery checkbox below is historical, not the current delivery status.
+
 ## Player behavior and boundaries
 
 Core `SkyCadenceID.announcedCycleV2` owns the current algorithm; V1 remains for exact saved replay; new skies persist that version. Count n selects the interval after n committed showers, leading to shower n+1. Counts 0–3 retain the opening. After count 4, slot `(n−4) % 12` selects six steady, three faster and three breathing intervals. Slot 5 warns before the last steady shower. Manual showers advance the same count. Clears, pauses, animation callbacks and wall time do not choose phases.

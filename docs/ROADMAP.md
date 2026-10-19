@@ -39,14 +39,14 @@ Character chat and complete shower trails are integrated into the current produc
 
 Grown-star readability now uses a luminous double silhouette, two glints and a gentle outer-aura pulse. [Integration evidence](evidence/grown-star-readability-2026-10-17/PULSE.md) records native checks; next confirm uncoached recognition and dense-board comfort with the reporting tester.
 
-Fresh survival replaces Dusk arrivals with [universal critical mass](design/CRITICAL_MASS.md): buried stars and Opal age, develop violet edges at stage two, gain inward compression marks at stage three and implode at stage four. The confusing static black dot is removed; violet advances inward while family detail remains visible. Retained rounds keep feeding Dusk. Next observe rescue versus sacrifice and whether automatic cleanup makes waiting too effective; timing and human preference remain open.
+**Current survival:** automatic aging is disabled in fresh and restored critical-mass skies; matching growth remains and Dusk stays absent from fresh supply. Historical Dusk rounds retain their rules. [Aging retirement](evidence/aging-disabled-2026-10-18/README.md) supersedes the earlier rescue/implosion direction; those raw rules and fixtures remain compatibility coverage.
 
 The retained [technique roster](design/STAR_TECHNIQUES.md) is reconciled with current main, including v6 saves, Dusk feeding, responsive columns and current presentation. Core, hosted, native, layout and animation checks pass. Merged and delivered through the guarded updater with unchanged saved bytes; observe human play next. [Source-bound status](evidence/technique-current-main-2026-10-18/README.md).
 
 
 [Copy rewrite](evidence/copy-rewrite-2026-10-18/README.md) integrates clearer instructions, six distinct character voices and event-based celebrations/advice/teasing through the shared local catalogue. Human first-play comprehension and reaction frequency remain to be assessed.
 
-## Current mechanics integration — October 17, 2026
+## Adopted mechanics and historical integration — October 17, 2026
 
 The user approved the shared white connector and storm phases for the regular app, then selected the round Opal Orb and requested soft motion. [Current contract](design/WHITE_STAR_AND_STORMS.md) and [main-based integration evidence](evidence/opal-main-integration-2026-10-17/README.md) supersede the earlier research-only adoption boundary below. Preserve the independently adopted announced timing cycle. Development acceptance passed; Opal/storm integration merged in PR #37, with compiler compatibility in #39 and direct input/cadence polish in #40. The [bounded choice study](evidence/opal-choice-study-2026-10-17/README.md) and [native two-clear comparison](evidence/opal-native-planning-2026-10-17/README.md) establish situational scoring choices; actual combined human play and replay preference remain open. Pocketed alternate silhouettes carry no new mechanic or progression commitment.
 
@@ -90,15 +90,17 @@ The five approved nightscapes are integrated in regular Starfall, with a shared 
 
 The earlier Observatory/Cloudsea/platform direction is historical. Its [production strategy](design/environments/PRODUCTION.md), [five-place bible](design/environments/landing-places-01/README.md) and [physical-groove checks](evidence/environment-grooves-2026-10-18/README.md) explain the prior decisions. The existing shooting-star forecast, native menu and character dialogue continue in the nightscape layout. Sound and haptics retain saved preferences.
 
-## Opening rhythm selected — October 17, 2026
+## Current rhythm and historical timing evidence
 
-The user selected an empty sky with an animated opening cascade, clearing before the intro finishes, and a three-second regular pace using existing wave sizes. [Current implementation and acceptance](evidence/opening-cascade-2026-10-17/README.md) separates source/native checks from human enjoyment. Existing isolated shower-generation comparisons remain separate; this timing change does not adopt their mechanics. The [Core cadence contract](design/PACING_CORE_CONTRACT.md) now defines explicit timing versions and replay; candidate B remains test-only pending native/human comparison.
+Fresh survival starts empty with four quick animated showers, then uses the existing V1 rhythm at brisk pace: six 3-second, three 2.5-second and three 3.5-second intervals. [Adopted calibration](evidence/calibration-critical-mass-2026-10-18/ADOPTION.md) owns that decision; saved skies and replay retain their cadence. Gentle/steady stay fixed, and First Light stays fixed without the opening. The earlier V2/B comparison is historical; its temporary selector is removed.
 
-The [current gravity/phase diagnostic](evidence/current-storm-choices-2026-10-17/README.md) confirms more simultaneous sampled selections during storms in two fresh seed cohorts, while immediate Opal-preservation gains remain situational. Untimed reward policies rarely encounter active orbits; use ordinary native play for recognition, execution and combined-strategy evidence before tuning supply.
+The [historical gravity/phase diagnostic](evidence/current-storm-choices-2026-10-17/README.md) confirms more simultaneous sampled selections during storms in two fresh seed cohorts, while immediate Opal-preservation gains remain situational. Untimed reward policies rarely encounter active orbits; use ordinary native play for recognition, execution and combined-strategy evidence before tuning supply.
 
-The [current native planning check](evidence/current-opal-native-2026-10-17/README.md) follows seed 180 at the storm boundary. Its stronger follow-up comes from releasing an occupied field, while Opal remains unused. Native taps and the curved nine-light OS-input path are verified on the recorded simulator; human/physical evidence remains open. This is a prepared paused comparison, not measured storm-pressure performance.
+The [historical native planning check](evidence/current-opal-native-2026-10-17/README.md) follows seed 180 at the storm boundary. Its stronger follow-up comes from releasing an occupied field, while Opal remains unused. Native taps and the curved nine-light OS-input path are verified on the recorded simulator; human/physical evidence remains open. This is a prepared paused comparison, not measured storm-pressure performance.
 
-## The next gameplay decision
+## Historical shower-comparison decision
+
+The following comparison describes the pre-adoption research question. Opal/storm phases are now adopted and gravity is retired; [current decisions](EXPERIMENTS.md) govern new work. These records do not authorize a new lab export or install.
 
 **Question:** Do shower changes create useful decisions and a readable rhythm, rather than more groups that feel equivalent?
 
@@ -132,9 +134,9 @@ The [engineering register](ENGINEERING.md) owns technical risks; the [release ch
 
 ## Current game and scope
 
-Falling sky is the default in Debug and Release: a 7×7 board, five jewel kinds, orthogonal matches worth 3+, growth, dark stars, automatic showers, pause, manual next shower and local balance controls. Full falling animations and accessible reduced-motion alternatives remain required. Existing saves retain their generation behavior.
+Falling sky is the default in Debug and Release: a 7×7 board, five colored star families plus Opal, orthogonal matches worth 3+, growth, selected-set constellations, immediate survival exchanges, automatic showers and local pause/balance controls. Fresh survival disables aging and Dusk supply; retained Dusk rounds keep their rules. Restore/replay preserves saved cadence and validated state through the explicit retirement migrations. Full falling animations and accessible quiet alternatives remain required.
 
-The [compact HUD](evidence/compact-hud-2026-10-17/README.md) uses score/goal, a quiet menu and an arrival cue instead of exact forecast/countdown/status rows. Pause is in the menu; Start/Resume and manual advance appear while paused. **Whether that simplification preserves useful decisions still needs observed play.** Any phase cue must work within that constraint.
+The current HUD shows score/goal, a sky menu and the ordered shower trail; one bottom character chat explains committed results. Pause and local tuning live in the menu; Start/Resume and manual advance appear while paused. [Current app boundaries](../App/README.md) and [five nightscapes](design/environments/night-production-09/README.md) supersede the older cue-only HUD. Recognition and physical comfort still need observed play.
 
 First Light is one optional fixed-seed-42, 18-starlight challenge, with steady showers and no dark stars. Entry from Settings starts a new round. Validate completion/retry and compare goal-driven play with survival before considering more skies.
 
@@ -145,7 +147,7 @@ No campaign, unlocks, XP, currency, power-ups, backend, accounts, analytics, ads
 
 - [Strategy baseline](evidence/falling-sky-strategy-2026-10-16/README.md): across 200 seeds, about 10% of match-ready states in one-clear-per-shower policies offer multiple groups; largest-first and first-group scores are nearly identical. This motivates investigation, not a conclusion about enjoyment.
 - [Expanded baseline](evidence/mechanics-baseline-2026-10-17/README.md): clear-all offers alternatives in 6.7% of decision states; 43.0% of surviving shower states are dry, with no sampled dry run beyond one shower. Preserve those denominators in comparisons.
-- Implemented feedback includes faster comets, paused clears, group outlines/count, clear rings/score popups and optional local sound/haptics. Keep sound/haptics off by default, mute immediate, and check silent mode and interruptions.
+- Implemented feedback includes faster comets, paused clears, group outlines/count, clear rings/score popups and optional local sound/haptics. That source used sound/haptics off by default. Current new preferences enable both; saved off values are preserved. Verify immediate mute, Silent Mode and interruptions against the current app.
 - The star cast is integrated in Debug and Release with shared board/comet/preview materials and non-color silhouettes: [rendering contract](design/star-cast/README.md), [native evidence](evidence/star-cast-2026-10-17/README.md). The [motion revision](evidence/star-cast-motion-2026-10-17/README.md) adds twelve frames per character, partial turns and grown/clear expressions. The [luminous revision](evidence/star-cast-luminous-2026-10-17/README.md) addresses eyes and emitted light; integration did not establish final art approval.
 - Adopted [physical reactions](evidence/physical-reactions-2026-10-17/README.md) add angled arrivals, weight-sensitive rebounds and distance-delayed survivor ripples. They present committed turns; no collision-driven rules or supernova recoloring are adopted.
 - [Connected contact](evidence/star-contact-2026-10-17/README.md) extends that presentation with one real receiver, local character looks, surface light and a gather/release clear. No new rule, save schema or perpetual idle action. Human, VoiceOver and device feel remain open.
@@ -198,9 +200,13 @@ The selected [overlapping sky flow](design/SKY_FLOW.md) adds Welcome/Resume, exp
 
 The user selected the [curved shower forecast](evidence/shower-forecast-adoption-2026-10-17/README.md). It is default on calibrated iPhone 17 portrait; other hardware and accessible layouts retain a complete straight header forecast. Next verify physical fit/system-island expansion and forecast recognition before adding more camera profiles. The lower arc remains unused.
 
-**Current pacing decision (October 17):** The user selected the announced cycle for normal new skies and requested PR → main → existing-phone delivery. [Adoption and acceptance](design/PACING_ADOPTION.md) supersedes the comparative session requirement; enjoyment and device feel remain unmeasured until observed.
+**Historical pacing decision (October 17; fresh V1 calibration supersedes new-sky V2):** The user selected the announced cycle for normal new skies and requested PR → main → existing-phone delivery. [Adoption and acceptance](design/PACING_ADOPTION.md) supersedes the comparative session requirement; enjoyment and device feel remain unmeasured until observed.
 
-## Reliability integration
+## Historical integration follow-ups
+
+These dated notes retain the original sources and next actions. The current engineering index and decisions above own remaining work.
+
+### Reliability integration
 
 The [scoped reliability design](design/RELIABILITY_POLISH.md) closes terminal touch ownership, package build identity and local-canvas camera placement in regular Starfall. Retain physical expanded-Island, curved/multitouch, haptic/recognition and actual VoiceOver acceptance as explicit next-device/RC work; no additional lab or speculative hint/performance framework is required.
 
