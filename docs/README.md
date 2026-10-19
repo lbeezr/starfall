@@ -2,6 +2,8 @@
 
 Current decisions, design contracts, verification summaries and historical evidence.
 
+[Gesture delivery evidence](evidence/gesture-delivery-2026-10-18/README.md) records the five individual merges and canonical phone receipts.
+
 [Gesture quality](GESTURE_QUALITY.md) sequences immediate movement, rapid follow-ups, forgiving direction and clear held-drawing feedback as separate deliveries.
 
 [Technical debt shipping](TECH_DEBT_PLAN.md) tracks the seven independent reductions and their verification.

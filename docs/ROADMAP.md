@@ -1,6 +1,6 @@
 # Starfall roadmap
 
-The [gesture quality workstream](GESTURE_QUALITY.md) targets instant cardinal swaps, deliberate held drawing, forgiving strokes and dependable rapid follow-ups. Five separate batches cover recognition, follow-up admission, edge forgiveness, hold feedback and quiet response, with [source-bound verification](GESTURE_QUALITY.md#evidence-and-limits). Automatic review still blocks publication despite the user’s approval; destination-specific confirmation and canonical delivery remain pending. Physical comfort determines final acceptance.
+The [gesture quality workstream](GESTURE_QUALITY.md) targets instant cardinal swaps, deliberate held drawing, forgiving strokes and dependable rapid follow-ups. Five separate batches cover recognition, follow-up admission, edge forgiveness, hold feedback and quiet response, with [source-bound verification](GESTURE_QUALITY.md#evidence-and-limits). All five are merged individually; [canonical delivery receipts](evidence/gesture-delivery-2026-10-18/README.md) distinguish installed identity from physical-play acceptance. Physical comfort determines final acceptance.
 
 **October 18 decision:** [Automatic aging is disabled](evidence/aging-disabled-2026-10-18/README.md) at the user’s request: fresh and restored critical-mass skies have no purple aging or implosions. Matching growth and cadence remain. Historical critical-mass rules/fixtures remain for save compatibility and regression, with no player toggle to re-enable them.
 
