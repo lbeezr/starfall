@@ -1,5 +1,7 @@
 # Documentation map
 
+[Gameplay quality](GAMEPLAY_QUALITY.md) tracks the six ordered polishing priorities and their observable acceptance.
+
 Current decisions, design contracts, verification summaries and historical evidence.
 
 [Gesture delivery evidence](evidence/gesture-delivery-2026-10-18/README.md) records the five individual merges and canonical phone receipts.

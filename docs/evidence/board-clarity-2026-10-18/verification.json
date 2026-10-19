@@ -1,0 +1,89 @@
+{
+  "source": "362586ff70148d1b47b6c9d4f7b3e8f141173030",
+  "snapshot": "b67ce0a9a362",
+  "runtimeBuildID": "dev.d7e15ddf2a",
+  "core": {
+    "passed": 169,
+    "failed": 0
+  },
+  "hosted": {
+    "passed": 287,
+    "failed": 0,
+    "skipped": 0,
+    "resultBundle": "artifacts/gameplay-board-clarity/hosted-2.xcresult"
+  },
+  "native": {
+    "summary": {
+      "status": "SUCCEEDED",
+      "durationMs": 248586,
+      "counts": {
+        "passed": 6,
+        "failed": 0,
+        "skipped": 0
+      },
+      "target": "simulator"
+    },
+    "artifacts": {
+      "buildLogPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c6187ff32363/logs/test_sim_2026-10-19T01-58-14-987Z_pid62736_2b37679a.log",
+      "xcresultPath": "artifacts/gameplay-board-clarity/native.xcresult",
+      "testProductsPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c6187ff32363/test-products/test_sim_2026-10-19T01-58-14-988Z_pid62736_2f301b99.xctestproducts"
+    },
+    "diagnostics": {
+      "warnings": [],
+      "errors": [],
+      "testFailures": []
+    },
+    "testCases": [
+      {
+        "suite": "FallingSkyInteractionTests",
+        "test": "testSystemReduceMotionKeepsManualPlayWorking",
+        "status": "passed",
+        "durationMs": 30348
+      },
+      {
+        "suite": "ResponsiveInputUITests",
+        "test": "testSevenPointOrdinaryDriftClearsOnceAtNormalAndLargestText",
+        "status": "passed",
+        "durationMs": 14328
+      },
+      {
+        "suite": "SkyFlowInteractionTests",
+        "test": "testFirstLightWinReplayAndFullSky",
+        "status": "passed",
+        "durationMs": 148977
+      },
+      {
+        "suite": "SkyTechniqueInteractionTests",
+        "test": "testFastSameColorStrokeSwapsOnceThenHoldDrawClearsOnlyFive",
+        "status": "passed",
+        "durationMs": 11305
+      },
+      {
+        "suite": "SkyTechniqueInteractionTests",
+        "test": "testSettingsAndBackgroundLeaveGesturesReadyWithoutRetoggling",
+        "status": "passed",
+        "durationMs": 19147
+      },
+      {
+        "suite": "SkyTechniqueInteractionTests",
+        "test": "testTapRecipesRelayWithoutAnyModeOrMenuToggle",
+        "status": "passed",
+        "durationMs": 19331
+      }
+    ]
+  },
+  "release": {
+    "summary": {
+      "status": "SUCCEEDED",
+      "durationMs": 5627,
+      "target": "simulator"
+    },
+    "artifacts": {
+      "buildLogPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c6187ff32363/logs/build_sim_2026-10-19T02-02-49-940Z_pid62736_fecff5c3.log"
+    },
+    "diagnostics": {
+      "warnings": [],
+      "errors": []
+    }
+  }
+}

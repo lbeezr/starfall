@@ -13,10 +13,8 @@ enum StarfallTheme {
         static let corner: CGFloat = 24
     }
     enum Celebration {
-        static let titleMaximumWidth: CGFloat = 330
         static let titleCapHeight: CGFloat = 50
-        static let ordinaryAwardHeight: CGFloat = 42
-        static let specialAwardHeight: CGFloat = 50
+        static let minimumGlyphCapHeight: CGFloat = 24
     }
     enum Colors {
         static let launchBackground = Color("LaunchBackground")

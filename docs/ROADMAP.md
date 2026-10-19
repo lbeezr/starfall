@@ -1,5 +1,7 @@
 # Starfall roadmap
 
+The [gameplay quality workstream](GAMEPLAY_QUALITY.md) follows the gesture improvements. First: protect readable next moves during awards; then consequences, shower fairness, setup discovery, reward rhythm and replay. Each verified batch merges and reaches the original phone app before the next priority.
+
 The [gesture quality workstream](GESTURE_QUALITY.md) targets instant cardinal swaps, deliberate held drawing, forgiving strokes and dependable rapid follow-ups. Five separate batches cover recognition, follow-up admission, edge forgiveness, hold feedback and quiet response, with [source-bound verification](GESTURE_QUALITY.md#evidence-and-limits). All five are merged individually; [canonical delivery receipts](evidence/gesture-delivery-2026-10-18/README.md) distinguish installed identity from physical-play acceptance. Physical comfort determines final acceptance.
 
 **October 18 decision:** [Automatic aging is disabled](evidence/aging-disabled-2026-10-18/README.md) at the user’s request: fresh and restored critical-mass skies have no purple aging or implosions. Matching growth and cadence remain. Historical critical-mass rules/fixtures remain for save compatibility and regression, with no player toggle to re-enable them.
