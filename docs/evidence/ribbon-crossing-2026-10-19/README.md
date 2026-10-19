@@ -6,7 +6,7 @@ Ribbon Crossing is the second directly selectable 18-light challenge beside Firs
 
 **Confirmed:** Core 178/178; final focused hosted 49/49; compact win/replay; tablet rotation, native clears and ten states; Release build; all fifteen paintings inspected. Final normal-motion video shows the gap closing with ordinary result feedback. **Limits:** actual VoiceOver is deferred to RC, physical play is unverified, and the 49-star native sample establishes appearance only.
 
-**Next action:** Publish and merge the verified tree, then install current main through the canonical updater and record its installed-identity receipt. The [production plan](../../design/ribbon-crossing-02/PRODUCTION_PLAN.md) owns acceptance; this folder owns source-bound checks and selected captures. Raw logs, bundles and video remain disposable local artifacts.
+**Delivered:** [PR #167](https://github.com/lbeezr/starfall/pull/167) merged; the canonical updater verified `dev.453e081fb5` installed in the original app from main `c40aad5` at **16:25:49 UTC**. [Sanitized receipt](delivery.json). GitHub main CI was pending at installation. **Next action:** Physical play review and actual VoiceOver at RC; no delivery action remains. The [production plan](../../design/ribbon-crossing-02/PRODUCTION_PLAN.md) owns acceptance; this folder owns source-bound checks and selected captures. Raw logs, bundles and video remain disposable local artifacts.
 
 ## Outcomes against acceptance
 
@@ -20,7 +20,7 @@ Ribbon Crossing is the second directly selectable 18-light challenge beside Firs
 | Accessibility | **Development checks pass** | Largest-text/system-Reduce-Motion win and reachable actions pass at `a9b9612`; final change removes decorative traversal only. Final hosted geometry probe passes and compact result scroll/replay passes. Actual VoiceOver not run; required at RC. |
 | Sibling behavior | **Pass for sampled paths** | Compact Lantern win/replay and survival rain/pause/clear/replay/settings pass at `c5c0359`; final removal is Ribbon-only decoration. |
 | Builds | **Pass** | Final Debug test build and Release simulator build, zero warnings. |
-| Main / physical delivery | **Pending** | Requires merged-main comparison and canonical updater receipt; no feature-checkout phone installation. Physical play and enjoyment are separate from installation. |
+| Main / physical delivery | **Installed and identity verified** | Main `c40aad5` exactly matches the verified publication tree; canonical updater reran 178 Core tests, built/signed and verified the original app installation. Main CI was pending. Physical play and enjoyment remain unverified. |
 
 ## Selected native appearance
 
@@ -53,7 +53,7 @@ Native runs use the shared `Starfall` scheme through XcodeBuildMCP `test_sim` wi
 
 The five Python suites passed **55 checks**: `python3 scripts/test_device_update.py` (21), `test_native_test_plan.py` (3), `test_rc_platforms.py` (12), `test_simulator_lifecycle.py` (10), `test_export_native_evidence.py` (9). Development discovery contains 123 UI / 328 hosted methods; discovery is not execution. Tablet-only routing and six development-deferred actual-VoiceOver methods remain explicit.
 
-The offline reviewer passed `node --check board.js` and a minimal-DOM logic check of 57 score/view combinations, fixed identities, densities and guides. The atlas JS check covers twelve locations and sixty restoration descriptions. **Browser rendering remains unverified:** the tool denied the attempted local-file URL and prohibited alternate-route workarounds; none were attempted. Native acceptance above is separate. Final hygiene and whitespace results are recorded with the publication snapshot.
+The offline reviewer passed `node --check board.js` and a minimal-DOM logic check of 57 score/view combinations, fixed identities, densities and guides. The atlas JS check covers twelve locations and sixty restoration descriptions. **Browser rendering remains unverified:** the tool denied the attempted local-file URL and prohibited alternate-route workarounds; none were attempted. Native acceptance above is separate. Final hygiene and whitespace passed on clean publication snapshot `c657453`; all 15 asset hashes and 7 retained capture hashes match their manifests. A fresh `swift test` on that clean integrated tree passed 178 checks in 16.151 s (the first sandboxed invocation was blocked by compiler-cache access; the approved cache-access rerun passed).
 
 ## Resolved findings and remaining limits
 
@@ -64,3 +64,9 @@ On compact phones the longer Ribbon result scrolls. An assertion expected Replay
 The user requested environment-only completion. `4dff983` removes the bridge procession, its path/task state and bespoke ripple. The ordinary result stars, score/light feedback and whole-painting restoration remain. Final video and both tablet completion captures verify this distinction. Earlier traversal recordings and 100% captures are historical and are not final acceptance evidence.
 
 No new campaign, rule timing or animation-derived score/save state is introduced. No audio, sustained performance, physical comfort or human enjoyment claim is made. Revisit actual VoiceOver at RC and dense input/physical play before broader acceptance. The remaining ten locations and future travel clips remain design work.
+
+## Publication and delivery
+
+Local clean source `c657453` and published commit `ea3afa5` share tree **`ea1243ff35e90a55d0ff0d777c9ff1a63085ce47`**. Main merge `c40aad5` has that same tree; no uncommitted inputs were shipped. The latest main CI-maintenance changes were preserved. An independent source/resource review found no blockers.
+
+`python3 scripts/device-update.py run` archived current main, passed all 178 Core tests (14.306 s), built and verified the signed phone app, installed it without reset/uninstall, then checked its OS-owned installation identity. The sanitized [delivery receipt](delivery.json) records source, runtime and CI status without the private installation location. The updater does not launch the game automatically. Full GitHub CI was **pending**, not claimed passed. Installation is not physical gameplay or VoiceOver acceptance.

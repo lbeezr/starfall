@@ -1,6 +1,6 @@
 # Evidence index
 
-[Ribbon Crossing](ribbon-crossing-2026-10-19/README.md) records the second optional challenge’s Core/hosted/tooling and phone/tablet development checks, all fifteen inspected states, and final normal-motion completion without bridge traversal. It separates verified development checks from pending device delivery, physical play and RC VoiceOver.
+[Ribbon Crossing](ribbon-crossing-2026-10-19/README.md) records the second optional challenge’s Core/hosted/tooling and phone/tablet development checks, all fifteen inspected states, and final normal-motion completion without bridge traversal. It separates verified development checks from verified canonical installation from physical play and RC VoiceOver, which remain unverified.
 
 [Repository maintenance baseline](repo-maintenance-2026-10-19/README.md) records the read-only guidance audit, recent CI conclusions and three inspected job logs behind the upgrade proposal.
 

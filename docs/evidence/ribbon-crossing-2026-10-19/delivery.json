@@ -1,0 +1,21 @@
+{
+  "buildID": "dev.453e081fb5",
+  "source": "c40aad5a7d8b099b85cc0c788edce08db8d1c9e1",
+  "bundle": "com.starfall.prototype",
+  "bundleVersion": "1",
+  "validation": {
+    "coreTests": "passed",
+    "signature": "verified",
+    "mainCIAtInstall": "pending"
+  },
+  "recordedAtUTC": "2026-10-19T16:25:49.063940+00:00",
+  "method": "python3 scripts/device-update.py run",
+  "pullRequest": "https://github.com/lbeezr/starfall/pull/167",
+  "publishedHead": "ea3afa5ea1f68011716308ef4b0a432ff8c17ff9",
+  "verifiedLocalSource": "c657453b6c08b4824ecc130e83a8ce1fd88a7f61",
+  "verifiedTree": "ea1243ff35e90a55d0ff0d777c9ff1a63085ce47",
+  "actualInstallationIdentityVerified": true,
+  "installationURL": "omitted from public receipt",
+  "physicalPlay": "not run",
+  "actualVoiceOver": "deferred to RC"
+}
