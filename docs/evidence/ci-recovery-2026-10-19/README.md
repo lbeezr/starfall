@@ -25,3 +25,17 @@ Verification: all five existing Python suites pass (55 checks); the workflow par
 ## UI and capture investigation
 
 The compact SE simulator used by the maintenance reproduction was in landscape at the fresh launch, while earlier XCTest attachments had portrait dimensions and cropped content. The fresh simulator screenshot renders its visible landscape viewport. Investigate orientation/setup and scrolling at the native test boundary before changing game rendering. Preserve existing outcome assertions, historical Dusk fixtures, normal-motion checks and all selected tests.
+
+## Batch 3: native input readiness and portrait captures
+
+**Verified subset:** five UI cases pass, zero failures/skips, on Xcode 27.1 / iOS 27.0 / iPhone SE (3rd generation), Debug. Source `451219d` plus only `UITests/FallingSkyInteractionTests.swift` as a native build input; [hashes and capture provenance](readiness.json) identify that snapshot. Subsequent workflow/docs commits do not change those runtime/test inputs. `swift test` passes all 177 cases; the native test action builds the app and test targets. Hygiene/diff checks pass. Release is inapplicable to this test-only correction.
+
+The class now explicitly starts in portrait and reuses the existing non-playing-edge scroll helper for sky controls; menu navigation shares one local helper. The Calm Effects row is reached through the existing lazy-menu helper. Compact scrolling keeps both paused actions physically reachable; the original board-size, hittability, exact score, menu suspension, forecast-label, restoration and early-cascade assertions remain. No timeout, motion, rule or save changes were made.
+
+Exact selected methods: `testCompactHUDMenuSuspendsWithoutChangingPauseChoice`, `testCompactPlayfieldKeepsControlsVisible`, `testDarkStarInfluenceRestoreAndAdjacentClear`, `testFirstLightGoalCompletionRestoreReplayAndSurvival`, and `testOpeningCascadeAllowsNativeClearBeforeLastWave` in `FallingSkyInteractionTests`, serial, via XcodeBuildMCP `test_sim`. The initial orientation/menu-only probe passed three and exposed the remaining compact offscreen-action assumption; the final helper correction passes all five in 197.817 seconds.
+
+| Retained Dusk before clear | Fresh cascade after early native clear |
+| --- | --- |
+| <img src="dev-451219d-wip-38b36fae__dusk-before__iphone-se3__portrait.jpg" width="225" alt="Portrait Moonwake with the score and menu above the visible Dusk and shaded stars"> | <img src="dev-451219d-wip-38b36fae__cascade-clear__iphone-se3__portrait.jpg" width="225" alt="Portrait Moonwake showing three starlight and the surviving stars after an early cascade clear"> |
+
+**Native source `451219d` + test snapshot `38b36fae`, SE3 / iOS 27.0, default text.** These size-reduced JPEG previews preserve the original PNG hashes in the manifest. Both original attachments and the compact paused-actions capture were inspected: the prior black crop is absent, stars/score/menu render, and the scrollable controls are readable. This closes the demonstrated portrait capture failure, not all landscape or device rendering. The normal-motion cascade test clears before its fourth wave with Calm Effects and system Reduce Motion off; stills alone do not establish animation quality. First Light win/restore/replay and menu interruption pass; actual VoiceOver, physical play and full remote CI remain separate acceptance.

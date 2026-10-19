@@ -1,0 +1,67 @@
+{
+  "source": "451219d71fc46cfa247331a544df98002dca976f",
+  "dirtyBuildInputs": {
+    "UITests/FallingSkyInteractionTests.swift": "38b36fae9665ebb4c424929f9eed9e0c99bdcb29439ea270d3ffc44e4cbcfba3"
+  },
+  "runtimeBuild": "dev.local",
+  "xcode": "27.1 (27A9275)",
+  "simulator": "iPhone SE (3rd generation), iOS 27.0",
+  "configuration": "Debug",
+  "orientation": "portrait",
+  "testResult": "test_sim_2026-10-19T15-16-42-545Z_pid95357_0d3c21ca.xcresult",
+  "passed": 5,
+  "failed": 0,
+  "skipped": 0,
+  "captures": [
+    {
+      "name": "compact-hud-paused",
+      "sha256": "a801eb178c58998bdc112d958055c12b715fdbea1035ea02dfac4fb33d7ba115",
+      "bytes": 1064199
+    },
+    {
+      "name": "compact-hud-active-arrival-cue",
+      "sha256": "af4b4104004470c6f04bbb94d2d854f5a163e51007d79fd78b39c381a4939d86",
+      "bytes": 995646
+    },
+    {
+      "name": "compact-sky-cleared",
+      "sha256": "a4a59498ea08512a6497592429fd96843a50d4173d109cf20e544caad3662155",
+      "bytes": 988779
+    },
+    {
+      "name": "compact-sky-opening",
+      "sha256": "f01b175c2038e720b3e0bbcf5abc223b1c6aa1755560e399ee89b87b7f13d0cb",
+      "bytes": 998004
+    },
+    {
+      "name": "dark-star-dissolved-by-adjacent-clear",
+      "sha256": "578e7711669ab299b33b84f3be66d065bbda6220707aec7810957c5baca06604",
+      "bytes": 1012257
+    },
+    {
+      "name": "dark-star-and-shaded-neighbors",
+      "sha256": "80315d124c0e0615982cec269a71af149a508a11904b1419e305899f62ee3a36",
+      "bytes": 1026526
+    },
+    {
+      "name": "first-light-complete",
+      "sha256": "612c2c3251ebd663d0ff2a6e10e198ca2f963c4ee361e53ceb8531b21ac0fc48",
+      "bytes": 929256
+    },
+    {
+      "name": "cascade-completed",
+      "sha256": "5ea6e8aced07f1f5d3c8da986850d9e6ead6b0e24873016d7614d5f0aa5ececd",
+      "bytes": 986121
+    },
+    {
+      "name": "cascade-clear-before-last-wave",
+      "sha256": "a1dd7efc94b7856df91a263de5436d8ada0a9fa6ba4a745437cd81fe1911a07d",
+      "bytes": 968215
+    },
+    {
+      "name": "cascade-empty-before-start",
+      "sha256": "9cb407e94000e29cc30b99e62d57fdba7859b81e27d6dbb50417c88bc7bbf1fd",
+      "bytes": 995336
+    }
+  ]
+}
