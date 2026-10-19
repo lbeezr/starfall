@@ -59,3 +59,5 @@ The focused constellation gap/off-center and quick directional swap checks exerc
 `PacingCueUITests` checks that normal, calm and system Reduce Motion forecasts approach before commitment and actually arrive afterward. Bounded state predicates replace guessed animation sleeps.
 
 `SkyLessonInteractionTests` walks every explicit example action, checks exact rewards and reset, returns to unchanged live play, and checks largest-text/calm background and dismissal. These demonstrations teach consequences; they do not replace native swipe/hold training.
+
+The reward feedback acceptance repeats native recipe/relay clears, fast swaps followed by held tracing, settings/background and actual system Reduce Motion. These checks verify outcomes and lifecycle, not physical haptic or listening preference.

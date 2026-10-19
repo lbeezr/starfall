@@ -582,17 +582,21 @@ private extension FallingSkyView {
         let mapping = LandingGeometry(size: size)
         guard mapping.cell(at: point) != nil else { cancelConstellation(); store.explainInputFailure(SkyCopy.text(.inputTraceOffBoard)); return }
         let previous = trace.lastFinger ?? point
+        let previousCount = trace.count
         for cell in ConstellationTraceHitTesting.cells(from: previous, to: point, mapping: mapping, game: store.game) {
-            let count = trace.count
             if trace.visit(cell, ticket: trace.sequence, game: store.game, generation: store.constellationInputGeneration, enabled: store.canTrace(trace.path + [cell])) {
                 refreshConstellation()
-                if trace.count > count { store.traceStep(count: trace.count) }
             }
             if trace.snapshot == nil {
                 // The physical contact still owns its clock hold until terminal delivery;
                 // drawing never falls back to a swap or an ordinary tap.
                 store.scene.clearConstellationTrace(); return
             }
+        }
+        // A coarse sample may cross several stars. Send one cue for its final selection.
+        if trace.count > previousCount, let snapshot = trace.snapshot {
+            store.traceStep(path: trace.path, snapshot: snapshot, generation: trace.generation,
+                            holdTicket: interaction.holdTicket)
         }
         trace.lastFinger = point
         store.scene.moveConstellationTip(point)

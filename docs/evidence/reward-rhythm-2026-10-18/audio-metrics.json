@@ -1,0 +1,38 @@
+[
+  {
+    "path": "App/Audio/sf_brilliant.wav",
+    "sha256": "b755f95fac23d9810346c6643758ec8464277382d10b2fc9e8d9d483d0fe5e3a",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 0.74,
+    "peak": 0.350341796875,
+    "rms": 0.05994144776808184
+  },
+  {
+    "path": "App/Audio/sf_constellation.wav",
+    "sha256": "a465dbd5584e8daee6c1a2fc3178b31cefefa909e96c5ca9a00e1e0a1beb3306",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 0.74,
+    "peak": 0.363616943359375,
+    "rms": 0.07281841538620012
+  },
+  {
+    "path": "App/Audio/sf_recipe.wav",
+    "sha256": "972e83cb2fcdc84adf3a39f257cfd3748a87a9f8b7c02b9c98ad2806659e9f51",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 0.42,
+    "peak": 0.35321044921875,
+    "rms": 0.06926689738127079
+  },
+  {
+    "path": "App/Audio/sf_relay.wav",
+    "sha256": "cb6a83d7109c684038b7503b3fdf542f9016757d1e6383ae182fc9a7236b73ee",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 0.54,
+    "peak": 0.3109130859375,
+    "rms": 0.06962619245434974
+  }
+]

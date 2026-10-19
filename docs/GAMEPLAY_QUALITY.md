@@ -4,7 +4,7 @@
 
 Polish the six gameplay priorities in order, merging and delivering each verified improvement through the canonical phone updater before starting the next. The player reported a “huge improvement” after the five gesture deliveries. Apply that same bounded process to the remaining experience.
 
-**Next action:** Add concrete, interactive setup examples in Help.
+**Next action:** Align readiness haptics and reward sounds with the committed action.
 
 ## Scope and success
 
@@ -12,9 +12,9 @@ Polish the six gameplay priorities in order, merging and delivering each verifie
 | --- | --- | --- | --- |
 | 1 | Read the next move | Award lettering stays outside every playable cell throughout its animation; independent follow-up moves remain available; default and maximum text remain readable. | Delivered: PR #142, `dev.d7e15ddf2a`; physical comfort open |
 | 2 | Understand consequences | Selection, committed clear, score gain and invalid actions give consistent, truthful feedback without covering the board or delaying input. | Delivered: PR #144/#146; physical comprehension open |
-| 3 | Fair shower rhythm | The arrival cue agrees with the actual deadline; interruptions preserve remaining time; no catch-up burst; current survival rules receive a reproducible pacing review. | Delivered: PR #147, dev.9020625ab7; older-compiler CI pending |
-| 4 | Discover useful setups | Players can find and practice recipes, Opal use and causal relays through concrete examples; hints match current legal actions and never surprise-commit a move. | In progress |
-| 5 | Reward rhythm | Clear, growth, recipe and relay feedback are distinguishable, bounded and synchronized with committed outcomes; rapid play does not pile up sounds/haptics or effects. | Pending |
+| 3 | Fair shower rhythm | The arrival cue agrees with the actual deadline; interruptions preserve remaining time; no catch-up burst; current survival rules receive a reproducible pacing review. | Delivered: PR #147, dev.9020625ab7; both compiler builds verified; broader CI triage open |
+| 4 | Discover useful setups | Players can find and practice recipes, Opal use and causal relays through concrete examples; hints match current legal actions and never surprise-commit a move. | Delivered: PR #148, dev.14bd6d9ce3; physical comprehension open |
+| 5 | Reward rhythm | Clear, growth, recipe and relay feedback are distinguishable, bounded and synchronized with committed outcomes; rapid play does not pile up sounds/haptics or effects. | Verified locally; merge/delivery pending |
 | 6 | End and replay | A final legal action resolves before the result; the reason and score are clear; replay and new sky have predictable save/seed behavior and survive interruptions. | Pending |
 
 No new progression, power-ups, backend, analytics or automatic aging. Preserve saves, deterministic rules, native input and the original app. Each priority may need several small corrections; ship each verified correction separately.
@@ -73,4 +73,17 @@ Add optional interactive examples at the top of Help for making a square, tracin
 - [x] Square/cross traces spend exactly their selected stars; a swap creates a shape without clearing; Opal joins the chosen color; a relay's second recipe is absent before and created by the first clear.
 - [x] Actions remain explicit, hints describe legal moves in the shown state, retry is local, and leaving/reopening examples cannot mutate or replace a saved round.
 - [x] Show shared cast art, actual before/after movement and exact points; Reduce Motion keeps the same result. Preserve native button semantics, non-color descriptions and readable largest text.
-- [ ] Verify Core examples, native example steps and interruption/dismissal, inspect screenshots, build Release, merge and canonically deliver before reward rhythm.
+- [x] Verify Core examples, native example steps and interruption/dismissal, inspect screenshots, build Release, merge and canonically deliver before reward rhythm: PR #148, dev.14bd6d9ce3.
+
+## Sixth batch: truthful readiness and distinct rewards
+
+Readiness haptics currently fire only at five selected stars, even though a valid four-star square is ready to release. Recipes and relays also use the same sound as a generic constellation. Keep cues at the authoritative selection/commit boundaries, preserve all preferences and one-voice cancellation, and distinguish deliberate recipes and causal relays with short local cues.
+
+- [x] Signal readiness when Core first accepts the actual held path, including four-star squares; no duplicate signal on retracing or the fifth star after an already-ready square.
+- [x] Reject stale hold/generation/snapshot cues and preserve haptics, calm effects, system Reduce Motion and VoiceOver policy.
+- [x] Give recipes and relays distinct bounded audio cues; preserve ordinary take rotation, interrupt/mute/background cancellation and commit-time routing. Growth keeps its existing visible landing/grown cue without adding automatic audio noise.
+- [ ] Verify generated files, real bundled playback and rapid/interrupted actions; merge and canonically deliver before ending/replay. Physical auditory/haptic preference remains open.
+
+## CI follow-up before closing the workstream
+
+Xcode 26.3 now builds both configurations, but the broader remote native run exposed older compact-layout assumptions and other failures before cancellation. Reproduce and classify them separately before claiming a green full matrix; preserve meaningful assertions and current scrolling behavior. [Source-bound log summary](evidence/shower-forecast-2026-10-18/ci-compatibility.json).

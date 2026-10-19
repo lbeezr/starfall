@@ -1,0 +1,515 @@
+{
+  "core": {
+    "passed": 172,
+    "failed": 0
+  },
+  "focusedInitial": {
+    "summary": {
+      "status": "FAILED",
+      "durationMs": 8997,
+      "counts": {
+        "passed": 27,
+        "failed": 1,
+        "skipped": 0
+      },
+      "target": "simulator"
+    },
+    "artifacts": {
+      "buildLogPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c6187ff32363/logs/test_sim_2026-10-19T03-51-01-688Z_pid62736_4439c37e.log",
+      "xcresultPath": "artifacts/reward-rhythm/focused.xcresult",
+      "testProductsPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c6187ff32363/test-products/test_sim_2026-10-19T03-51-01-688Z_pid62736_c06b206f.xctestproducts"
+    },
+    "diagnostics": {
+      "warnings": [],
+      "errors": [],
+      "testFailures": [
+        {
+          "suite": "ResponsiveInputTests",
+          "test": "testTraceHapticsSharePreferencesAndRequireLiveInputOwnership",
+          "message": "XCTAssertEqual failed: (\"[2, 3]\") is not equal to (\"[2, 3, 5]\")",
+          "location": "/Users/lbeezr/.codex/worktrees/bdbc/Starfall/AppTests/ResponsiveInputTests.swift:412"
+        },
+        {
+          "suite": "ResponsiveInputTests",
+          "test": "testTraceHapticsSharePreferencesAndRequireLiveInputOwnership",
+          "message": "XCTAssertEqual failed: (\"[true, false]\") is not equal to (\"[true, false, false]\")",
+          "location": "/Users/lbeezr/.codex/worktrees/bdbc/Starfall/AppTests/ResponsiveInputTests.swift:413"
+        },
+        {
+          "suite": "ResponsiveInputTests",
+          "test": "testTraceHapticsSharePreferencesAndRequireLiveInputOwnership()",
+          "message": "XCTAssertEqual failed: (\"[2, 3]\") is not equal to (\"[2, 3, 5]\")"
+        },
+        {
+          "suite": "ResponsiveInputTests",
+          "test": "testTraceHapticsSharePreferencesAndRequireLiveInputOwnership()",
+          "message": "XCTAssertEqual failed: (\"[true, false]\") is not equal to (\"[true, false, false]\")"
+        }
+      ]
+    },
+    "testCases": [
+      {
+        "suite": "QuietTuckPlayerTests",
+        "test": "testAllFourShippedFilesDecodeAndNativePlaybackCanStart",
+        "status": "passed",
+        "durationMs": 335
+      },
+      {
+        "suite": "QuietTuckPlayerTests",
+        "test": "testCelebrationResourcesDecodeWithFiniteDuration",
+        "status": "passed",
+        "durationMs": 1
+      },
+      {
+        "suite": "QuietTuckPlayerTests",
+        "test": "testCelebrationUsesOneDistinctVoiceAndPreservesOrdinaryRotation",
+        "status": "passed",
+        "durationMs": 1
+      },
+      {
+        "suite": "QuietTuckPlayerTests",
+        "test": "testFeedbackUsesOneSelectedContactForEveryOutcomeAndHonorsMute",
+        "status": "passed",
+        "durationMs": 1
+      },
+      {
+        "suite": "QuietTuckPlayerTests",
+        "test": "testHeadphoneDisconnectAndInactivityStopWithoutReplaying",
+        "status": "passed",
+        "durationMs": 1
+      },
+      {
+        "suite": "QuietTuckPlayerTests",
+        "test": "testInterruptedAndInactiveTapsAreDroppedWithoutReplay",
+        "status": "passed",
+        "durationMs": 0
+      },
+      {
+        "suite": "QuietTuckPlayerTests",
+        "test": "testMissingResourcesFailSilently",
+        "status": "passed",
+        "durationMs": 1
+      },
+      {
+        "suite": "QuietTuckPlayerTests",
+        "test": "testMuteInvalidatesQueuedAudioBeforeItCanStart",
+        "status": "passed",
+        "durationMs": 1
+      },
+      {
+        "suite": "QuietTuckPlayerTests",
+        "test": "testRejectedPlaybackRequestDoesNotConsumeSelectedTake",
+        "status": "passed",
+        "durationMs": 0
+      },
+      {
+        "suite": "QuietTuckPlayerTests",
+        "test": "testRotationSurvivesStopsAndNeverQueuesPlayback",
+        "status": "passed",
+        "durationMs": 0
+      },
+      {
+        "suite": "QuietTuckPlayerTests",
+        "test": "testSlowAudioQueueDropsSupersededAndMutedRequests",
+        "status": "passed",
+        "durationMs": 24
+      },
+      {
+        "suite": "ResponsiveInputTests",
+        "test": "testAdmissionReasonsKeepReadyColumnsIndependentAndGlobalRestrictionsConsistent",
+        "status": "passed",
+        "durationMs": 0
+      },
+      {
+        "suite": "ResponsiveInputTests",
+        "test": "testAutomaticShowerCannotReplaceNewerClearDialogueInEitherCompletionOrder",
+        "status": "passed",
+        "durationMs": 17
+      },
+      {
+        "suite": "ResponsiveInputTests",
+        "test": "testClearDuringUnrelatedArrivalRetainsShowerAndRejectsStaleCompletions",
+        "status": "passed",
+        "durationMs": 6
+      },
+      {
+        "suite": "ResponsiveInputTests",
+        "test": "testExplicitInputFailureHasReadableAndSpokenFeedbackWithoutACommit",
+        "status": "passed",
+        "durationMs": 2
+      },
+      {
+        "suite": "ResponsiveInputTests",
+        "test": "testFreshOpeningContactBeforeAndAfterDeadlineOwnsOnlyCurrentState",
+        "status": "passed",
+        "durationMs": 7
+      },
+      {
+        "suite": "ResponsiveInputTests",
+        "test": "testGravityPresentationKeepsItsNecessaryWholeBoardReservation",
+        "status": "passed",
+        "durationMs": 4
+      },
+      {
+        "suite": "ResponsiveInputTests",
+        "test": "testIdleAdmissionIsRuleIndependentAndDoesNotMutateCommittedState",
+        "status": "passed",
+        "durationMs": 8
+      },
+      {
+        "suite": "ResponsiveInputTests",
+        "test": "testIndependentClearsCompleteInEitherOrderWithoutLosingLatestSave",
+        "status": "passed",
+        "durationMs": 11
+      },
+      {
+        "suite": "ResponsiveInputTests",
+        "test": "testNonSwappingTouchKeepsTapToleranceWithoutDrawingFallback",
+        "status": "passed",
+        "durationMs": 0
+      },
+      {
+        "suite": "ResponsiveInputTests",
+        "test": "testOlderClearCompletionDoesNotReplaceANewerResult",
+        "status": "passed",
+        "durationMs": 4
+      },
+      {
+        "suite": "ResponsiveInputTests",
+        "test": "testPausedExplicitActionsAndDueShowerUseSharedAdmissionReasons",
+        "status": "passed",
+        "durationMs": 4
+      },
+      {
+        "suite": "ResponsiveInputTests",
+        "test": "testReadyContactDuringAnotherClearFreezesRainAndRejectsStaleRelease",
+        "status": "passed",
+        "durationMs": 4
+      },
+      {
+        "suite": "ResponsiveInputTests",
+        "test": "testShowerBetweenReadinessQueryAndContactDoesNotQueueAStaleClear",
+        "status": "passed",
+        "durationMs": 10
+      },
+      {
+        "suite": "ResponsiveInputTests",
+        "test": "testTraceHapticsSharePreferencesAndRequireLiveInputOwnership",
+        "status": "failed",
+        "durationMs": 42
+      },
+      {
+        "suite": "ResponsiveInputTests",
+        "test": "testTraceReadinessUsesTheActualPathOnceAndRejectsStaleCues",
+        "status": "passed",
+        "durationMs": 1
+      },
+      {
+        "suite": "ResponsiveInputTests",
+        "test": "testTraceSpeechUsesInjectedFeedbackAndRejectsExpiredHoldOrGeneration",
+        "status": "passed",
+        "durationMs": 3
+      },
+      {
+        "suite": "ResponsiveInputTests",
+        "test": "testWaitingFeedbackEndsWithItsColumnsAndStaleTraceCannotLeaveANewNotice",
+        "status": "passed",
+        "durationMs": 6
+      }
+    ]
+  },
+  "policyCorrection": {
+    "summary": {
+      "status": "SUCCEEDED",
+      "durationMs": 4143,
+      "counts": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0
+      },
+      "target": "simulator"
+    },
+    "artifacts": {
+      "buildLogPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c6187ff32363/logs/test_sim_2026-10-19T03-51-25-145Z_pid62736_f34d7b72.log",
+      "xcresultPath": "artifacts/reward-rhythm/policy-corrected.xcresult",
+      "testProductsPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c6187ff32363/test-products/test_sim_2026-10-19T03-51-25-145Z_pid62736_0bc26a66.xctestproducts"
+    },
+    "diagnostics": {
+      "warnings": [],
+      "errors": [],
+      "testFailures": []
+    },
+    "testCases": [
+      {
+        "suite": "ResponsiveInputTests",
+        "test": "testTraceHapticsSharePreferencesAndRequireLiveInputOwnership",
+        "status": "passed",
+        "durationMs": 5
+      }
+    ]
+  },
+  "hosted": {
+    "status": "SUCCEEDED",
+    "durationMs": 113845,
+    "counts": {
+      "passed": 301,
+      "failed": 0,
+      "skipped": 0
+    },
+    "target": "simulator"
+  },
+  "finalAcceptance": {
+    "summary": {
+      "status": "SUCCEEDED",
+      "durationMs": 61085,
+      "counts": {
+        "passed": 31,
+        "failed": 0,
+        "skipped": 0
+      },
+      "target": "simulator"
+    },
+    "artifacts": {
+      "buildLogPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c6187ff32363/logs/test_sim_2026-10-19T03-54-50-595Z_pid62736_643b211d.log",
+      "xcresultPath": "artifacts/reward-rhythm/final-acceptance.xcresult",
+      "testProductsPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c6187ff32363/test-products/test_sim_2026-10-19T03-54-50-595Z_pid62736_66ae765d.xctestproducts"
+    },
+    "diagnostics": {
+      "warnings": [],
+      "errors": [],
+      "testFailures": []
+    },
+    "testCases": [
+      {
+        "suite": "SkyTechniqueInteractionTests",
+        "test": "testFastSameColorStrokeSwapsOnceThenHoldDrawClearsOnlyFive",
+        "status": "passed",
+        "durationMs": 11868
+      },
+      {
+        "suite": "SkyTechniqueInteractionTests",
+        "test": "testSettingsAndBackgroundLeaveGesturesReadyWithoutRetoggling",
+        "status": "passed",
+        "durationMs": 19516
+      },
+      {
+        "suite": "SkyTechniqueInteractionTests",
+        "test": "testTapRecipesRelayWithoutAnyModeOrMenuToggle",
+        "status": "passed",
+        "durationMs": 19531
+      },
+      {
+        "suite": "QuietTuckPlayerTests",
+        "test": "testCelebrationResourcesDecodeWithFiniteDuration",
+        "status": "passed",
+        "durationMs": 4
+      },
+      {
+        "suite": "QuietTuckPlayerTests",
+        "test": "testCelebrationUsesOneDistinctVoiceAndPreservesOrdinaryRotation",
+        "status": "passed",
+        "durationMs": 1
+      },
+      {
+        "suite": "QuietTuckPlayerTests",
+        "test": "testFeedbackUsesOneSelectedContactForEveryOutcomeAndHonorsMute",
+        "status": "passed",
+        "durationMs": 2
+      },
+      {
+        "suite": "QuietTuckPlayerTests",
+        "test": "testHeadphoneDisconnectAndInactivityStopWithoutReplaying",
+        "status": "passed",
+        "durationMs": 1
+      },
+      {
+        "suite": "QuietTuckPlayerTests",
+        "test": "testInterruptedAndInactiveTapsAreDroppedWithoutReplay",
+        "status": "passed",
+        "durationMs": 0
+      },
+      {
+        "suite": "QuietTuckPlayerTests",
+        "test": "testMissingResourcesFailSilently",
+        "status": "passed",
+        "durationMs": 1
+      },
+      {
+        "suite": "QuietTuckPlayerTests",
+        "test": "testMuteInvalidatesQueuedAudioBeforeItCanStart",
+        "status": "passed",
+        "durationMs": 1
+      },
+      {
+        "suite": "QuietTuckPlayerTests",
+        "test": "testRejectedPlaybackRequestDoesNotConsumeSelectedTake",
+        "status": "passed",
+        "durationMs": 0
+      },
+      {
+        "suite": "QuietTuckPlayerTests",
+        "test": "testRotationSurvivesStopsAndNeverQueuesPlayback",
+        "status": "passed",
+        "durationMs": 0
+      },
+      {
+        "suite": "QuietTuckPlayerTests",
+        "test": "testShippedFilesDecodeAndAllNativeCuesCanStart",
+        "status": "passed",
+        "durationMs": 274
+      },
+      {
+        "suite": "QuietTuckPlayerTests",
+        "test": "testSlowAudioQueueDropsSupersededAndMutedRequests",
+        "status": "passed",
+        "durationMs": 21
+      },
+      {
+        "suite": "ResponsiveInputTests",
+        "test": "testAdmissionReasonsKeepReadyColumnsIndependentAndGlobalRestrictionsConsistent",
+        "status": "passed",
+        "durationMs": 0
+      },
+      {
+        "suite": "ResponsiveInputTests",
+        "test": "testAutomaticShowerCannotReplaceNewerClearDialogueInEitherCompletionOrder",
+        "status": "passed",
+        "durationMs": 15
+      },
+      {
+        "suite": "ResponsiveInputTests",
+        "test": "testClearDuringUnrelatedArrivalRetainsShowerAndRejectsStaleCompletions",
+        "status": "passed",
+        "durationMs": 6
+      },
+      {
+        "suite": "ResponsiveInputTests",
+        "test": "testExplicitInputFailureHasReadableAndSpokenFeedbackWithoutACommit",
+        "status": "passed",
+        "durationMs": 2
+      },
+      {
+        "suite": "ResponsiveInputTests",
+        "test": "testFreshOpeningContactBeforeAndAfterDeadlineOwnsOnlyCurrentState",
+        "status": "passed",
+        "durationMs": 7
+      },
+      {
+        "suite": "ResponsiveInputTests",
+        "test": "testGravityPresentationKeepsItsNecessaryWholeBoardReservation",
+        "status": "passed",
+        "durationMs": 4
+      },
+      {
+        "suite": "ResponsiveInputTests",
+        "test": "testIdleAdmissionIsRuleIndependentAndDoesNotMutateCommittedState",
+        "status": "passed",
+        "durationMs": 6
+      },
+      {
+        "suite": "ResponsiveInputTests",
+        "test": "testIndependentClearsCompleteInEitherOrderWithoutLosingLatestSave",
+        "status": "passed",
+        "durationMs": 9
+      },
+      {
+        "suite": "ResponsiveInputTests",
+        "test": "testNonSwappingTouchKeepsTapToleranceWithoutDrawingFallback",
+        "status": "passed",
+        "durationMs": 0
+      },
+      {
+        "suite": "ResponsiveInputTests",
+        "test": "testOlderClearCompletionDoesNotReplaceANewerResult",
+        "status": "passed",
+        "durationMs": 4
+      },
+      {
+        "suite": "ResponsiveInputTests",
+        "test": "testPausedExplicitActionsAndDueShowerUseSharedAdmissionReasons",
+        "status": "passed",
+        "durationMs": 4
+      },
+      {
+        "suite": "ResponsiveInputTests",
+        "test": "testReadyContactDuringAnotherClearFreezesRainAndRejectsStaleRelease",
+        "status": "passed",
+        "durationMs": 4
+      },
+      {
+        "suite": "ResponsiveInputTests",
+        "test": "testShowerBetweenReadinessQueryAndContactDoesNotQueueAStaleClear",
+        "status": "passed",
+        "durationMs": 10
+      },
+      {
+        "suite": "ResponsiveInputTests",
+        "test": "testTraceHapticsSharePreferencesAndRequireLiveInputOwnership",
+        "status": "passed",
+        "durationMs": 3
+      },
+      {
+        "suite": "ResponsiveInputTests",
+        "test": "testTraceReadinessUsesTheActualPathOnceAndRejectsStaleCues",
+        "status": "passed",
+        "durationMs": 1
+      },
+      {
+        "suite": "ResponsiveInputTests",
+        "test": "testTraceSpeechUsesInjectedFeedbackAndRejectsExpiredHoldOrGeneration",
+        "status": "passed",
+        "durationMs": 3
+      },
+      {
+        "suite": "ResponsiveInputTests",
+        "test": "testWaitingFeedbackEndsWithItsColumnsAndStaleTraceCannotLeaveANewNotice",
+        "status": "passed",
+        "durationMs": 5
+      }
+    ]
+  },
+  "systemMotion": {
+    "summary": {
+      "status": "SUCCEEDED",
+      "durationMs": 37869,
+      "counts": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0
+      },
+      "target": "simulator"
+    },
+    "artifacts": {
+      "buildLogPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c6187ff32363/logs/test_sim_2026-10-19T03-57-09-044Z_pid62736_a3cd9d6d.log",
+      "xcresultPath": "artifacts/reward-rhythm/system-motion.xcresult",
+      "testProductsPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c6187ff32363/test-products/test_sim_2026-10-19T03-57-09-044Z_pid62736_3b25712e.xctestproducts"
+    },
+    "diagnostics": {
+      "warnings": [],
+      "errors": [],
+      "testFailures": []
+    },
+    "testCases": [
+      {
+        "suite": "SkyTechniqueInteractionTests",
+        "test": "testSystemReduceMotionPreservesHeldTraceAndRapidSwap",
+        "status": "passed",
+        "durationMs": 32987
+      }
+    ]
+  },
+  "release": {
+    "summary": {
+      "status": "SUCCEEDED",
+      "durationMs": 5543,
+      "target": "simulator"
+    },
+    "artifacts": {
+      "buildLogPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c6187ff32363/logs/build_sim_2026-10-19T03-58-49-702Z_pid62736_3280c5f0.log"
+    },
+    "diagnostics": {
+      "warnings": [],
+      "errors": []
+    }
+  }
+}

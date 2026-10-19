@@ -57,3 +57,7 @@ The retained screenshot was visually inspected. Normal-motion native outcomes ar
 ## Delivery
 
 [PR #147](https://github.com/lbeezr/starfall/pull/147) merged as `94da76e80c7817b193da4abe262659e32f033481`; its tree exactly matches local publication `62c002b`. The canonical updater verified actual installation of **dev.9020625ab7** from that main commit, with Core tests and signature checks passed. Main CI was pending at installation. [Sanitized receipt](delivery.json). No player-data reset or automatic launch. [The remote Xcode 26.3 run](https://github.com/lbeezr/starfall/actions/runs/39194373430) remains an open compiler acceptance item.
+
+## Older compiler result and broader CI limits
+
+The completed logs confirm **Xcode 26.3 Debug and Release builds passed**, with 169 Core tests passing. The root-view type-check failure is corrected on that compiler. [Compact CI record](ci-compatibility.json). The run was canceled by the configured concurrency policy when PR #148 merged, after several broader native failures; it is not a green CI result. The 375×667 hierarchy exposes offscreen footer controls in the accepted scrolling layout, and some older assertions assume fixed board/control frames. Each failure still needs classification and a focused reproduction before changing assertions.

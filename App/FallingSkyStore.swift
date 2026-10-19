@@ -130,6 +130,8 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     private(set) var constellationTracing = false
     private var constellationHold: UInt64?
     private var constellationHoldSequence: UInt64 = 0
+    @ObservationIgnored private var traceFeedbackCount = 0
+    @ObservationIgnored private var traceReadySignaled = false
     private(set) var bufferedInput: SkyBufferedInput?
     @ObservationIgnored private var bufferedInputTask: Task<Void, Never>?
     @ObservationIgnored private var bufferedInputSequence: UInt64 = 0
@@ -146,6 +148,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         constellationHoldSequence &+= 1
         constellationHold = constellationHoldSequence
         constellationTracing = true
+        traceFeedbackCount = 0; traceReadySignaled = false
         freezeClock(for: .contact)
         // A newly touched star replaces a pending intention before any completion
         // can execute beneath this contact. The new hold owns the frozen clock.
@@ -158,6 +161,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     func endConstellationHold(_ ticket: UInt64?) {
         guard let ticket, constellationHold == ticket else { return }
         constellationHold = nil; constellationTracing = false
+        traceFeedbackCount = 0; traceReadySignaled = false
         if !deliverBufferedInputIfReady() { armClock() }
         #if DEBUG
         observeTiming(.state)
@@ -190,9 +194,18 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         feedback.traceArmed(enabled: hapticsEnabled && !presenter.reduceMotion)
     }
 
-    func traceStep(count: Int) {
-        guard canReceiveInput, constellationTracing, count > 0 else { return }
-        feedback.traceStep(count: count, enabled: hapticsEnabled && !presenter.reduceMotion)
+    func traceStep(path: [Cell], snapshot: FallingSky, generation: UInt64, holdTicket: UInt64?) {
+        guard canReceiveInput, constellationTracing, let holdTicket, holdTicket == constellationHold,
+              generation == constellationInputGeneration, snapshot == game,
+              canTrace(path), game.isValidConstellationPrefix(path) else { return }
+        let count = Set(path).count
+        guard count > traceFeedbackCount else { return }
+        let ready = game.constellationCells(along: path) != nil
+        let becameReady = ready && !traceReadySignaled
+        traceFeedbackCount = count
+        traceReadySignaled = traceReadySignaled || ready
+        feedback.traceStep(count: count, becameReady: becameReady,
+                           enabled: hapticsEnabled && !presenter.reduceMotion)
     }
 
     /// A value snapshot cannot announce after its generation/hold was replaced.
