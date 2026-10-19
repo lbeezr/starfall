@@ -76,12 +76,18 @@ final class StarlightCelebrationTests: XCTestCase {
         let registered = expectation(description: "Mapped scenery reaches the overlay after canvas translation")
         let size = CGSize(width: 375, height: 1200)
         let layout = RestorationLayout(size: size, artwork: .init(challenge: .ribbonCrossing, composition: .phone))
+        var observedCanvas: CGRect?
         var observed: CGRect?
         var didRegister = false
         func inspect(canvas: CGRect, scenery: CGRect) {
+            observedCanvas = canvas
             observed = scenery
             let expected = layout.restoredSceneryBounds.offsetBy(dx: canvas.minX, dy: canvas.minY)
-            if canvas.size == size, abs(scenery.maxY - expected.maxY) <= physicalPixel, !didRegister {
+            // The expanded canvas is pixel-aligned too: a 1200-point frame can
+            // resolve to 1200⅓ points on a 3× display after this translation.
+            if abs(canvas.width - size.width) <= physicalPixel,
+               abs(canvas.height - size.height) <= physicalPixel,
+               abs(scenery.maxY - expected.maxY) <= physicalPixel, !didRegister {
                 didRegister = true; registered.fulfill()
             }
         }
@@ -109,6 +115,11 @@ final class StarlightCelebrationTests: XCTestCase {
         window.makeKeyAndVisible()
         defer { window.isHidden = true; window.rootViewController = nil; previous?.makeKey() }
         await fulfillment(of: [registered], timeout: 3)
+        let canvas = try XCTUnwrap(observedCanvas)
+        XCTAssertEqual(canvas.minX, 17, accuracy: physicalPixel)
+        XCTAssertEqual(canvas.minY, -145, accuracy: physicalPixel)
+        XCTAssertEqual(canvas.width, size.width, accuracy: physicalPixel)
+        XCTAssertEqual(canvas.height, size.height, accuracy: physicalPixel)
         let scenery = try XCTUnwrap(observed)
         let expected = layout.restoredSceneryBounds.offsetBy(dx: 17, dy: -145)
         XCTAssertEqual(scenery.minX, expected.minX, accuracy: physicalPixel)

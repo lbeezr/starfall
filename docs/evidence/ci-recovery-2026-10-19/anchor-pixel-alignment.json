@@ -1,0 +1,93 @@
+{
+  "base": "c40aad5a7d8b099b85cc0c788edce08db8d1c9e1",
+  "changedNativeInputs": {
+    "UITests/PacingCueUITests.swift": "73bd599af99fb51df22ad4a715c290cb08c2894581bc0375d2df0a464f18994d",
+    "UITests/NativeSkyControls.swift": "253ba9530264c1293e674474a7cbc7c997f88ad6916a87d113db26bd607fee9f",
+    "UITests/FallingSkyInteractionTests.swift": "d9b8cec49639fd6612f9fa772b681d3ca0f88cf49afd63906bd841b4339598e9",
+    "UITests/SkyDialogueInteractionTests.swift": "5f5b30c64bbba6c53177f1cf5446efd55d897f119be5925cfef78b46c8520fd6",
+    "AppTests/StarlightCelebrationTests.swift": "c4a04b61c40490f6cd1499472054919a5e641a00819f138808b27e5227e58cd5"
+  },
+  "environment": "Debug; Xcode 27.1 (27A9275); iPhone 17e / iOS 27.0",
+  "matrix": {
+    "ui": 123,
+    "hosted": 328
+  },
+  "scope": "Hosted anchor correction; the four listed UI inputs were present but are not part of this batch. c9af504 adds documentation only to c40aad5.",
+  "reproduction": {
+    "result": "327 passed, 1 failed, 0 skipped",
+    "resultPath": "/private/tmp/starfall-ci-forecast-c40aad5/hosted.xcresult",
+    "diagnosticResult": "test_sim_2026-10-19T16-34-56-091Z_pid95357_567140b0.xcresult",
+    "canvas": [
+      17,
+      -145.16666666666666,
+      375,
+      1200.3333333333333
+    ],
+    "expectedSize": [
+      375,
+      1200
+    ],
+    "physicalPixel": 0.3333333333333333,
+    "sceneryEdgeError": 0.3333333333333144,
+    "cause": "Exact canvas-size equality rejected native pixel alignment; scenery assertions already permitted one physical pixel."
+  },
+  "verification": {
+    "focused17e": {
+      "passed": 17,
+      "failed": 0,
+      "skipped": 0,
+      "result": "test_sim_2026-10-19T16-39-35-269Z_pid95357_eae98047.xcresult",
+      "note": "All StarlightCelebrationTests; a separate unmodified lesson case also passed."
+    },
+    "focusedSE3": {
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 0.049,
+      "result": "test_sim_2026-10-19T16-40-59-825Z_pid95357_7edca93f.xcresult",
+      "note": "Anchor case passes at 2x. Two lesson methods passed and one failed separately; no full mixed-run pass claimed."
+    },
+    "fullHosted": {
+      "passed": 328,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 116.243,
+      "result": "/private/tmp/starfall-ci-anchor-full/hosted.xcresult",
+      "commandReceipt": {
+        "base": "c40aad5a7d8b099b85cc0c788edce08db8d1c9e1",
+        "preparedWith": "Four UI batch inputs plus the anchor correction; later lesson/helper edits not in these products",
+        "command": [
+          "xcodebuild",
+          "-testProductsPath",
+          "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-5baffeb4084c/test-products/test_sim_2026-10-19T16-39-35-269Z_pid95357_4f076182.xctestproducts",
+          "-destination",
+          "platform=iOS Simulator,id=10B3F3B6-B3B3-4CBE-BE07-5F42F8108105",
+          "-collect-test-diagnostics",
+          "never",
+          "-parallel-testing-enabled",
+          "NO",
+          "-test-timeouts-enabled",
+          "YES",
+          "-default-test-execution-time-allowance",
+          "90",
+          "-maximum-test-execution-time-allowance",
+          "180",
+          "-resultBundlePath",
+          "/private/tmp/starfall-ci-anchor-full/hosted.xcresult",
+          "-only-testing:StarfallAppTests",
+          "test-without-building"
+        ],
+        "started": 1792428195.3906891,
+        "exitCode": 0,
+        "elapsed": 116.2425057888031
+      }
+    },
+    "core": {
+      "passed": 178,
+      "failed": 0,
+      "log": "/private/tmp/starfall-ci-c40-core.log"
+    },
+    "hygiene": "passed",
+    "diffCheck": "passed"
+  }
+}
