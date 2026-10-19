@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "date": "2026-10-19",
-  "status": "Development acceptance passed; publication and canonical delivery pending",
+  "status": "Development acceptance passed; merged and canonical installation verified.",
   "appSource": "b77a1003f5d22b9da67d5d4c54f3515481d45ea3",
   "runtime": "dev.545382e6f6",
   "baseMain": "618e2c8",
@@ -469,8 +469,9 @@
     "hosted": "329/329 at a0c7360; final12/12 resource/layout recheck at124fd21.",
     "ui": "9/9 executions across iPhone17e, SE3 and iPadAir11M3. Includes normal/ReduceMotion win, save/relaunch/replay, previewcancel3priorlocations, rotation/nativeclears, denseoverflow and priorlocation/OpenSky regressions.",
     "visual": "All15native states, finalphone50dense49starclear, Welcome/Menufourchoices and compact captures; see captures.json.",
-    "motion": "Normal finalclear14→18 recorded/inspected; see motion.json.",
+    "motion": "Normal finalclear14\u219218 recorded/inspected; see motion.json.",
     "build": "Final Debug and Release simulator builds passed with zero diagnostics.",
-    "delivery": "Pending canonical updater after merge."
-  }
+    "delivery": "PR174 merged; canonical updater installed dev.545382e6f6 from clean main e8230055f15a463b5e1916a13312ef694476aaee at18:32:33UTC. See delivery.json; cloud CI pending at installation."
+  },
+  "deliveryReference": "delivery.json"
 }

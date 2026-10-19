@@ -1,0 +1,30 @@
+{
+  "buildID": "dev.545382e6f6",
+  "source": "e8230055f15a463b5e1916a13312ef694476aaee",
+  "bundle": "com.starfall.prototype",
+  "bundleVersion": "1",
+  "validation": {
+    "coreTests": "passed",
+    "signature": "verified",
+    "mainCIAtInstall": "pending"
+  },
+  "verificationRecordedAt": "2026-10-19T18:32:33.831971+00:00",
+  "method": "python3 scripts/device-update.py run; archived current main, no reset/uninstall, verified OS-owned installation identity",
+  "publication": {
+    "pullRequest": "https://github.com/lbeezr/starfall/pull/174",
+    "localVerifiedSource": "fb5d5400b3b856942ecb62e16f33ae2b80c0a7ab",
+    "publishedSource": "16321eaf6efc5b74e1df44ada5091d97543480eb",
+    "verifiedTree": "3f0b59415d3a4d58cc3ffa25ce59c5915e5ddeb9"
+  },
+  "cleanMainCore": {
+    "passed": 178,
+    "failed": 0,
+    "durationSeconds": 12.895,
+    "logSha256": "4a177c67a35113835b794295a42f2df74137c9c3e1243b8239fdbcc4bb26f82e"
+  },
+  "limits": [
+    "Installation is not physical gameplay, audio, performance or actual VoiceOver acceptance.",
+    "The updater does not launch the app automatically.",
+    "Main CI was pending at installation; no full cloud-matrix pass is claimed."
+  ]
+}
