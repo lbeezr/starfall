@@ -1,0 +1,216 @@
+{
+  "run": "https://github.com/lbeezr/starfall/actions/runs/39295546359",
+  "source": "618e2c8303c0683eb27e9697837e59bd81d3e743",
+  "attempt": 1,
+  "job": 118207559126,
+  "environment": {
+    "Xcode": "26.6 (17F113)",
+    "simulator": "iPhone Air",
+    "OS": "iOS 26.5"
+  },
+  "conclusion": "Cancelled by subsequent accepted Seed Moon merge; two real fresh-sky failures preceded cancellation.",
+  "failedCases": [
+    {
+      "test": "FreshSkyPlaytests.testFreshAutomaticVisibleMatchesSeed180",
+      "file": "UITests/FreshSkyPlaytests.swift",
+      "line": 36,
+      "seconds": 69.691,
+      "operation": "Sequential per-cell value read after terminal screen replaced the board"
+    },
+    {
+      "test": "FreshSkyPlaytests.testRepeatedAutomaticVisibleMatchesSeed28",
+      "file": "UITests/FreshSkyPlaytests.swift",
+      "line": 47,
+      "seconds": 53.691,
+      "operation": "Chosen cell frame read after terminal screen replaced the board"
+    }
+  ],
+  "excerpts": [
+    "2026-10-19T18:20:35.2296010Z     t =    68.41s     Find the \"experiment.cell.5.4\" Button (retry 2)\n2026-10-19T18:20:35.2769870Z     t =    68.46s     Collecting debug information to assist test failure triage\n2026-10-19T18:20:35.2850820Z     t =    68.46s         Requesting snapshot of accessibility hierarchy for app with pid 93967\n2026-10-19T18:20:35.3795690Z     t =    68.56s     Requesting snapshot of accessibility hierarchy for app with pid 93967\n2026-10-19T18:20:35.4498400Z     t =    68.64s     Find: Descendants matching type Button\n2026-10-19T18:20:35.4532960Z     t =    68.64s     Find: Elements matching predicate '\"experiment.cell.5.4\" IN identifiers'\n2026-10-19T18:20:35.4578630Z     t =    68.64s     Requesting snapshot of accessibility hierarchy for app with pid 93967\n2026-10-19T18:20:35.8641300Z /Users/runner/work/starfall/starfall/UITests/FreshSkyPlaytests.swift:36: error: -[StarfallUITests.FreshSkyPlaytests testFreshAutomaticVisibleMatchesSeed180] : Failed to get matching snapshot: No matches found for Elements matching predicate '\"experiment.cell.5.4\" IN identifiers' from input {(\n2026-10-19T18:20:35.8642590Z     Button, identifier: 'experiment.replay', label: 'Replay this sky',\n2026-10-19T18:20:35.8643050Z     Button, identifier: 'experiment.new', label: 'New sky',",
+    "2026-10-19T18:22:30.5622960Z     t =    52.78s         Find the \"experiment.cell.0.5\" Button (retry 2)\n2026-10-19T18:22:30.6103670Z     t =    52.83s         Collecting debug information to assist test failure triage\n2026-10-19T18:22:30.6178280Z     t =    52.83s             Requesting snapshot of accessibility hierarchy for app with pid 98878\n2026-10-19T18:22:30.7145510Z     t =    52.93s         Requesting snapshot of accessibility hierarchy for app with pid 98878\n2026-10-19T18:22:30.8006550Z     t =    53.00s         Find: Descendants matching type Button\n2026-10-19T18:22:30.8117420Z     t =    53.01s         Find: Elements matching predicate '\"experiment.cell.0.5\" IN identifiers'\n2026-10-19T18:22:30.8363520Z     t =    53.01s         Requesting snapshot of accessibility hierarchy for app with pid 98878\n2026-10-19T18:22:30.9085710Z /Users/runner/work/starfall/starfall/UITests/FreshSkyPlaytests.swift:47: error: -[StarfallUITests.FreshSkyPlaytests testRepeatedAutomaticVisibleMatchesSeed28] : Failed to get matching snapshot: No matches found for Elements matching predicate '\"experiment.cell.0.5\" IN identifiers' from input {(\n2026-10-19T18:22:30.9188740Z     Button, identifier: 'experiment.replay', label: 'Replay this sky',\n2026-10-19T18:22:30.9362770Z     Button, identifier: 'experiment.new', label: 'New sky',"
+  ],
+  "relatedPaths": "Same sampler also read board.value live after the loop. Searched native tests for 49-cell scans and snapshot usage; this is the only sequential full-board value scan. Existing automatic-overflow lifecycle flow uses terminal-aware existence waits.",
+  "acceptance": "Three existing automatic samples and a natural-overflow snapshot regression pass with normal effects, unchanged time bounds and scoring assertions. Existing automatic-overflow lifecycle sibling passes. Full current-source remote CI remains required.",
+  "tall": {
+    "source": "f1947682616bc1195832d0b0fdb451f9e5eec456",
+    "dirtyNativeInputs": {
+      "UITests/FreshSkyPlaytests.swift": "6d8977d1db80736fa4bcceae79a03ec7761bdcc300f789f7bd7736b836360c70"
+    },
+    "command": [
+      "xcodebuild",
+      "-project",
+      "Starfall.xcodeproj",
+      "-scheme",
+      "Starfall",
+      "-configuration",
+      "Debug",
+      "-destination",
+      "platform=iOS Simulator,id=8A220F57-FA99-452A-A864-16FC01D9CB58",
+      "-derivedDataPath",
+      "/private/tmp/starfall-ci-layout-derived",
+      "-collect-test-diagnostics",
+      "never",
+      "-parallel-testing-enabled",
+      "NO",
+      "-test-timeouts-enabled",
+      "YES",
+      "-default-test-execution-time-allowance",
+      "90",
+      "-maximum-test-execution-time-allowance",
+      "240",
+      "-resultBundlePath",
+      "/private/tmp/starfall-ci-fresh-snapshot/tests.xcresult",
+      "ARCHS=arm64",
+      "ONLY_ACTIVE_ARCH=YES",
+      "CODE_SIGNING_ALLOWED=YES",
+      "CODE_SIGN_IDENTITY=-",
+      "DEVELOPMENT_TEAM=",
+      "CODE_SIGN_STYLE=Manual",
+      "-only-testing:StarfallUITests/FreshSkyPlaytests",
+      "-only-testing:StarfallUITests/FallingSkyInteractionTests/testBackgroundRelaunchAndAutomaticOverflow",
+      "test"
+    ],
+    "started": "2026-10-19T18:45:14.467665+00:00",
+    "exitCode": 0,
+    "ended": "2026-10-19T18:50:35.838397+00:00",
+    "counts": {
+      "passedTests": 5,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "totalTestCount": 5
+    },
+    "environment": {
+      "configuration": "Debug",
+      "Xcode": "27.1 (27A9275)",
+      "simulator": "iPhone 17e",
+      "OS": "iOS 27.0 (24A434)",
+      "identity": "dev.local / 0.1.0 / 1",
+      "motion": "Calm Effects explicitly NO; system Reduce Motion inherited, no forced quiet mode."
+    },
+    "cases": [
+      {
+        "test": "StarfallUITests.FallingSkyInteractionTests testBackgroundRelaunchAndAutomaticOverflow",
+        "result": "passed",
+        "seconds": 80.061
+      },
+      {
+        "test": "StarfallUITests.FreshSkyPlaytests testFreshAutomaticVisibleMatchesSeed180",
+        "result": "passed",
+        "seconds": 52.997
+      },
+      {
+        "test": "StarfallUITests.FreshSkyPlaytests testFreshAutomaticVisibleMatchesSeed5",
+        "result": "passed",
+        "seconds": 52.955
+      },
+      {
+        "test": "StarfallUITests.FreshSkyPlaytests testRepeatedAutomaticVisibleMatchesSeed28",
+        "result": "passed",
+        "seconds": 98.009
+      },
+      {
+        "test": "StarfallUITests.FreshSkyPlaytests testVisibleObservationSurvivesAutomaticOverflow",
+        "result": "passed",
+        "seconds": 10.761
+      }
+    ],
+    "observations": [
+      {
+        "seed": 28,
+        "final": "attempts=40; nonScoring=19; final=97 starlight; board=28 showers, 0 matching groups ready; terminal=false",
+        "file": "/private/tmp/starfall-ci-fresh-snapshot/attachments/1FCD8254-9CEC-4A48-8E4F-6467BB767F0C.txt",
+        "sha256": "f36606c6925bcf69a184e658e830fb11ddb34ac6c740e2d42273e3b5a0689438"
+      },
+      {
+        "seed": 5,
+        "final": "attempts=20; nonScoring=11; final=46 starlight; board=15 showers, 0 matching groups ready; terminal=false",
+        "file": "/private/tmp/starfall-ci-fresh-snapshot/attachments/35AE78E9-CD98-4112-9CD2-A0F89BE334FC.txt",
+        "sha256": "587203e10de65ba556ccd7ca007621ea94508edac4474b129a1acaa4d4269790"
+      },
+      {
+        "seed": 180,
+        "final": "attempts=20; nonScoring=10; final=44 starlight; board=15 showers, 0 matching groups ready; terminal=false",
+        "file": "/private/tmp/starfall-ci-fresh-snapshot/attachments/24D4A9A0-4CF2-4A55-ABA3-DBAB1DB2501C.txt",
+        "sha256": "1de6da74c9fe563a832e69ecff0f68a11251b4b6e36368133bee37450414befa"
+      }
+    ]
+  },
+  "core": {
+    "command": "swift test",
+    "passed": 178,
+    "failed": 0,
+    "seconds": 14.931
+  },
+  "inspection": {
+    "files": [
+      {
+        "path": "/private/tmp/starfall-ci-fresh-snapshot/attachments/8069B0BA-CEB2-431D-97B0-D37F04C58CA3.png",
+        "sha256": "5d599ac0defb138c0a161e520a7bfdab92589d9363849254d2135adcfd236989"
+      },
+      {
+        "path": "/private/tmp/starfall-ci-fresh-snapshot/attachments/C35943EF-0F5B-4456-997D-BA24E1427547.png",
+        "sha256": "d74000d0f44d492dea88751f6c3be74d5ce0867ebee6a2a6a295f21a0624c326"
+      }
+    ],
+    "result": "Tall seed-180 first clear and the dense terminal capture inspected: portrait rendering intact; terminal dialogue and all three actions visible. Active capture records a transient animated clear, not settled-board or animation-quality acceptance.",
+    "compactFiles": [
+      {
+        "path": "/private/tmp/starfall-ci-fresh-compact/attachments/8211320E-D8EF-4A3D-8EA0-631858ECEFAD.png",
+        "sha256": "d03ddaac16efd78ebccf0373b5e61dc08dfba31ce3e9e4e425f55bca6a65d469"
+      },
+      {
+        "path": "/private/tmp/starfall-ci-fresh-compact/attachments/434EBC73-79B6-4D11-9BD6-44B7A209792F.png",
+        "sha256": "1cf2df039a218d2ffab967ed35380ba81af69c7a26fd444e446e81cc79b25869"
+      }
+    ],
+    "compactResult": "First-clear and terminal captures inspected. The first capture is during the clear effect, with a temporarily empty playfield; it is not a settled-board acceptance image. Terminal dialogue and all three actions render within the compact viewport."
+  },
+  "compact": {
+    "tool": "XcodeBuildMCP test_sim",
+    "source": "f1947682616bc1195832d0b0fdb451f9e5eec456",
+    "dirtyNativeInputs": {
+      "UITests/FreshSkyPlaytests.swift": "6d8977d1db80736fa4bcceae79a03ec7761bdcc300f789f7bd7736b836360c70"
+    },
+    "simulator": "ACD3AD49-0505-4773-BDF7-143DFDC83D41",
+    "device": "iPhone SE (3rd generation) / iOS 27.0",
+    "configuration": "Debug",
+    "extraArgs": [
+      "-only-testing:StarfallUITests/FreshSkyPlaytests/testFreshAutomaticVisibleMatchesSeed180",
+      "-only-testing:StarfallUITests/FreshSkyPlaytests/testVisibleObservationSurvivesAutomaticOverflow",
+      "-parallel-testing-enabled",
+      "NO",
+      "-test-timeouts-enabled",
+      "YES",
+      "-default-test-execution-time-allowance",
+      "90",
+      "-maximum-test-execution-time-allowance",
+      "240"
+    ],
+    "result": "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-5baffeb4084c/result-bundles/test_sim_2026-10-19T18-51-01-897Z_pid95357_59b94fc9.xcresult",
+    "counts": {
+      "passedTests": 2,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "totalTestCount": 2
+    },
+    "actionSeconds": 99.0,
+    "cases": [
+      {
+        "test": "StarfallUITests.FreshSkyPlaytests testFreshAutomaticVisibleMatchesSeed180",
+        "result": "passed",
+        "seconds": 54.791
+      },
+      {
+        "test": "StarfallUITests.FreshSkyPlaytests testVisibleObservationSurvivesAutomaticOverflow",
+        "result": "passed",
+        "seconds": 10.591
+      }
+    ],
+    "observations": {
+      "final": "attempts=14; nonScoring=5; final=44 starlight; board=16 showers, 1 matching groups ready; terminal=false",
+      "file": "/private/tmp/starfall-ci-fresh-compact/attachments/F61AEDDB-C094-46D2-B176-7718D426CF6E.txt",
+      "sha256": "f703884ee094b6f344e3a5ef03168a1066fa8485c0a62c382b9a0647de05dc2e"
+    }
+  },
+  "status": "Focused native checks verified; full current-source remote CI pending."
+}
