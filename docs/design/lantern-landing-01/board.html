@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lantern Landing · Playfield composition</title>
+  <link rel="stylesheet" href="board.css">
+  <script src="../world-01/world-data.js" defer></script>
+  <script src="../environments/concept-cast.js" defer></script>
+  <script src="board.js" defer></script>
+</head>
+<body>
+  <main id="review" data-viewport="phone">
+    <header>
+      <div><p class="eyebrow">Starfall · Soft Skies / 01</p><h1>Above Lantern Landing</h1></div>
+      <p class="status">Playfield composition study <br>Existing crystal bodies · Illustrated setting</p>
+    </header>
+
+    <div class="review-layout">
+      <figure class="preview">
+        <div class="stage" id="stage" role="img" aria-label="Lantern Landing at 100 percent restored with 24 crystal stars arranged in seven gameplay columns.">
+          <img id="background" class="background" src="background-100-v2.png" alt="" width="887" height="1774">
+          <div class="cast" id="cast" aria-hidden="true"></div>
+          <svg class="geometry" id="geometry" viewBox="0 0 393 852" aria-hidden="true" hidden></svg>
+          <p class="image-error" id="image-error" hidden>This background is not available yet.</p>
+        </div>
+        <figcaption><span id="sample-caption">24 stars · seven columns</span><span id="canvas-caption">393 × 852 reference canvas</span></figcaption>
+      </figure>
+
+      <aside class="review-panel" aria-label="Composition review">
+        <div class="intro">
+          <p class="eyebrow">A place below. Room to play above.</p>
+          <h2>The sky is the playing field.</h2>
+          <p>Look down toward the landing from an open field of stars. The lantern and dock give the world its character while the center stays clear for play.</p>
+        </div>
+
+        <section aria-labelledby="viewport-label">
+          <h3 id="viewport-label">View of the same landing</h3>
+          <nav class="viewport-buttons" aria-label="Choose a viewport composition">
+            <button type="button" data-viewport="phone" aria-pressed="true">Phone</button>
+            <button type="button" data-viewport="tablet-portrait" aria-pressed="false">iPad portrait</button>
+            <button type="button" data-viewport="tablet-landscape" aria-pressed="false">iPad landscape</button>
+          </nav>
+          <p class="fine-print viewport-note">Each view uses its own continuous artwork. Restoration and board sample stay selected when you change the view.</p>
+        </section>
+
+        <section aria-labelledby="restoration-label">
+          <h3 id="restoration-label">Restoration</h3>
+          <nav class="state-buttons" aria-label="Choose a restoration state">
+            <button type="button" data-state="0" aria-pressed="false" aria-label="Show 0 percent restored">0%</button>
+            <button type="button" data-state="25" aria-pressed="false" aria-label="Show 25 percent restored">25%</button>
+            <button type="button" data-state="50" aria-pressed="false" aria-label="Show 50 percent restored">50%</button>
+            <button type="button" data-state="75" aria-pressed="false" aria-label="Show 75 percent restored">75%</button>
+            <button type="button" data-state="100" aria-pressed="true" aria-label="Show 100 percent restored">100%</button>
+          </nav>
+          <div class="state-note" aria-live="polite" aria-atomic="true">
+            <p class="state-kicker" id="state-kicker">100% · Purpose restored</p>
+            <p id="state-description">The lantern opens fully and casts a welcoming circle. The star cast gathers beneath it.</p>
+          </div>
+          <p class="fine-print">The words describe the restoration beat. The same board sample stays in place so the setting is easy to compare; no characters are baked into these backgrounds.</p>
+        </section>
+
+        <section class="sample-controls" aria-labelledby="sample-label">
+          <h3 id="sample-label">Inspect the playfield</h3>
+          <label class="select-label" for="density">Board sample</label>
+          <select id="density">
+            <option value="partly">Partly filled · 24 stars</option>
+            <option value="dense">Full field · 49 stars</option>
+            <option value="empty">Environment only</option>
+          </select>
+          <label class="check-label"><input id="show-geometry" type="checkbox"><span>Show the seven-column geometry</span></label>
+          <p class="fine-print">The partly filled sample includes five connected aqua stars. This is a fixed layout for visual review; tapping the stars does not play a round.</p>
+        </section>
+
+        <details>
+          <summary>What this study can establish</summary>
+          <p>The center uses the current <a href="../../../App/LandingGeometry.swift">LandingGeometry</a> formula on the selected reference canvas. <span id="geometry-description">A 381 × 381 field is centered at x=6, y=235.5.</span> Crystal bodies come from the app’s existing assets; faces use the shared offline review renderer.</p>
+          <p>These are generated artwork compositions, not native screenshots. Each background is one full image, without spatial fades or center replacement. Native safe areas, HUD, controls, motion, hit targets and accessibility require separate review. Reference canvases do not represent every device size.</p>
+        </details>
+
+        <div class="links"><a id="full-size" href="background-100-v2.png">Open background</a><a href="README.md">Design notes</a><a href="../world-01/index.html">World map</a></div>
+      </aside>
+    </div>
+
+    <footer>Composition concept · Not a running game · Artwork and board geometry remain separate.</footer>
+  </main>
+</body>
+</html>

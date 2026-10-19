@@ -16,6 +16,8 @@ Help now includes optional interactive examples of squares, crosses, Opal and re
 
 Score popups and celebration titles use the [crystal-depth alphabet](Artwork/CrystalComet/NATIVE.md), with brief letter turns, static quiet modes and native accessible text.
 
+**Lantern Landing is in native acceptance:** First Light now restores the approved overhead dock as you collect its existing 18-starlight goal. Collected light reaches the lantern, saved progress restores directly, and replay begins dark. [Production scope](docs/design/lantern-landing-01/PRODUCTION_PLAN.md).
+
 **Five layered nightscapes are integrated:** Moonwake, Nebula Cradle, Shatterlight Reach, Night Garden and Ringdrift. Gameplay stays centered while independent scenery fills the margins. Choose **Menu → Location** without changing the round. [Production art and contract](docs/design/environments/night-production-09/README.md) · [Native verification and delivery](docs/evidence/nightscapes-2026-10-18/README.md).
 
 Player wording and character voices are authored in the [local copy catalogue](App/DialogueScripts/README.md), with typed interface keys, validated templates and an in-app dialogue preview.
@@ -28,7 +30,7 @@ Player wording and character voices are authored in the [local copy catalogue](A
 - **Arrange a setup:** In survival, swipe left, right, up or down to exchange neighbors immediately. Each touch moves one space regardless of color. Stars exchanged into space fall normally. Hold then trace exact four-star squares or five-star crosses; surrounding stars stay. Build the next recipe, then clear again for a deliberate relay. [Techniques](docs/design/STAR_TECHNIQUES.md).
 - **Understand the sky:** Characters explain play, storm counts and timing warnings in one bottom chat. Tap the retained portrait to reread a message. Six conversation portraits and bundled scripts share one reusable presentation; [edit or preview dialogue](App/DialogueScripts/README.md).
 - **Control the showers:** Call the next shower yourself or clear while paused. Use the sky menu to pause or tune shower pace (retained Dusk rounds also keep dark-star frequency); Start/Resume and manual advance appear while paused.
-- **Try a goal:** Choose **Sky menu → Start First Light** to start a new round with steady showers, no dark stars and an 18-starlight target. Replay repeats it; New sky returns to survival. When an arrival column has no room, replay or start a new sky.
+- **Try a goal:** Choose **Try First Light** or **Sky menu → Start First Light** to revive Lantern Landing with steady showers, no dark stars and an 18-starlight target. Replay repeats it; New sky returns to survival. When an arrival column has no room, replay or start a new sky.
 
 [Starlight celebrations](docs/design/STARLIGHT_CELEBRATIONS.md) connect committed clear awards to the total with harvested-family light, award-scaled strength and [Crystal Comet lettering](docs/evidence/crystal-comet-integration-2026-10-18/README.md) for major clears, recipes, constellations and causal relays. The user-approved [opalescent material refinement](docs/design/celebration-lettering/crystal-comet-01/OPALESCENCE.md) restores warm/cool facet light from the approved swatches. [Protected award placement](docs/evidence/board-clarity-2026-10-18/README.md) keeps lettering above playable rows, with readable compact/native fallbacks. Scoring and ready-column input stay unchanged; [native award captures](docs/evidence/starlight-celebrations-2026-10-18/VISIBLE_AWARDS.md) verify sampled visibility and record acceptance limits.
 

@@ -121,7 +121,8 @@ import StarfallCore
                         let mapping = LandingGeometry(size: CGSize(width: safeViewport.size.width, height: height), largeHeader: largeText)
                         ScrollView {
                             VStack(spacing: 0) {
-                                playfield(insets: safeViewport.safeAreaInsets, compact: false, allowsIsland: false, expanded: true)
+                                playfield(insets: safeViewport.safeAreaInsets, compact: false, allowsIsland: false, expanded: true,
+                                          landscape: safeViewport.size.width > canvasHeight)
                                     .frame(height: height)
                                     .frame(height: mapping.accessibleCanvasEnd, alignment: .top).clipped()
                                 if !showingCeremony && !settings {
@@ -134,7 +135,7 @@ import StarfallCore
                         }.ignoresSafeArea()
                     } else {
                         playfield(insets: safeViewport.safeAreaInsets, compact: safeViewport.size.height < 750,
-                                  allowsIsland: true).ignoresSafeArea()
+                                  allowsIsland: true, landscape: safeViewport.size.width > canvasHeight).ignoresSafeArea()
                     }
                 }
             }
@@ -174,19 +175,24 @@ import StarfallCore
     }
 
     /// One centered canvas owns the stars. Accessible dialogue reflows below it.
-    private func playfield(insets: EdgeInsets, compact: Bool, allowsIsland: Bool, expanded: Bool = false) -> some View {
+    private func playfield(insets: EdgeInsets, compact: Bool, allowsIsland: Bool, expanded: Bool = false, landscape: Bool = false) -> some View {
         GeometryReader { viewport in
             let mapping = LandingGeometry(size: viewport.size, largeHeader: expanded && largeText)
             let crown = mapping.crownFrame
             let room = mapping.communicationContentFrame
             let island = allowsIsland && usesIslandTimer(size: viewport.size, topInset: insets.top)
             ZStack {
-                board(expanded: expanded).allowsHitTesting(!settings && !showingCeremony)
+                board(expanded: expanded, landscape: landscape).allowsHitTesting(!settings && !showingCeremony)
                 if !showingCeremony && !settings {
                     VStack(spacing: 4) {
-                        ViewThatFits(in: .horizontal) {
-                            HStack { scoreLabel; Spacer(minLength: 12); skyMenuButton }
+                        if largeText {
                             VStack(alignment: .leading, spacing: 4) { scoreLabel; skyMenuButton }
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        } else {
+                            ViewThatFits(in: .horizontal) {
+                                HStack { scoreLabel; Spacer(minLength: 12); skyMenuButton }
+                                VStack(alignment: .leading, spacing: 4) { scoreLabel; skyMenuButton }
+                            }
                         }
                         if !island { showerTrail(island: false, width: min(280, crown.width)) }
                     }
@@ -286,6 +292,7 @@ import StarfallCore
                     if let restoration {
                         Text(SkyCopy.text(.lanternRestoration, values: ["percent": String(Int((restoration.fraction * 100).rounded()))]))
                             .font(StarfallTheme.Typography.skyCaption)
+                            .fixedSize(horizontal: false, vertical: true)
                             .accessibilityIdentifier("lantern.restoration")
                     }
                     Text(store.game.challenge.map { "\(store.game.score.formatted()) / \($0.target.formatted())" } ?? store.game.score.formatted())
@@ -329,7 +336,7 @@ import StarfallCore
         menu = nil
     }
 
-    private func board(expanded: Bool) -> some View {
+    private func board(expanded: Bool, landscape: Bool) -> some View {
         VStack(spacing: 0) {
             GeometryReader { geometry in
                 ZStack {
@@ -337,7 +344,8 @@ import StarfallCore
                         LanternLandingEnvironment(restoration: restoration,
                                                   active: scenePhase == .active && !settings && store.persistenceNotice == nil,
                                                   ambientActive: !showingCeremony && !store.isPaused,
-                                                  quiet: quietMotion || reduceTransparency, largeHeader: expanded && largeText)
+                                                  quiet: quietMotion || reduceTransparency, isTablet: UIDevice.current.userInterfaceIdiom == .pad,
+                                                  isLandscape: landscape)
                             .id("lantern.\(environmentGeneration)")
                     } else {
                         LandingEnvironment(place: place, active: scenePhase == .active && !settings && store.persistenceNotice == nil && !showingCeremony && !store.isPaused,

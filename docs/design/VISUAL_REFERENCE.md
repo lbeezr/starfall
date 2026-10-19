@@ -1,5 +1,7 @@
 # Starfall visual reference
 
+**Future story concept:** [Lantern Landing’s five restoration views](lantern-landing-01/README.md) develop the approved world map’s first location with the Crystal Glow cast. Generated October 19, 2026; concept only, separate from the native nightscape evidence below. The [comparison viewer](lantern-landing-01/board.html) shows 0%, 25%, 50%, 75% and 100%.
+
 **Adopted nightscapes:** [Moonwake, Nebula Cradle, Shatterlight Reach, Night Garden and Ringdrift](../evidence/nightscapes-2026-10-18/README.md) now have native phone/iPad evidence. Five separately controlled planes surround a centered playfield; sixteen alpha assets replace the platform paintings. [Production design](environments/night-production-09/README.md) owns composition and asset provenance. Publication/device status is recorded in the evidence report.
 
 The [approved scene kits](environments/scene-kits-07/README.md) and [painted night keys](environments/night-keys-08/README.md) remain concept references. Earlier celestial boards and Skysea are historical, superseded directions.

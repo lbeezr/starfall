@@ -23,10 +23,32 @@ struct StarlightCelebration: Equatable, Identifiable {
         if case .relay = level { return true }
         return collected >= 8
     }
+    static let maximumPackets = 6
     var packets: [Contributor] {
-        let count = min(6, contributors.count)
+        let count = min(Self.maximumPackets, contributors.count)
         guard count > 1 else { return contributors }
         return (0..<count).map { contributors[$0 * (contributors.count - 1) / (count - 1)] }
+    }
+    struct PacketFlight {
+        let start: TimeInterval
+        let duration: TimeInterval
+        let stagger: TimeInterval
+
+        func arrivalTime(packetIndex: Int) -> TimeInterval {
+            start + Double(packetIndex) * stagger + duration
+        }
+
+        func progress(at age: TimeInterval, packetIndex: Int) -> Double {
+            min(1, max(0, (age - start - Double(packetIndex) * stagger) / duration))
+        }
+    }
+    static func packetFlight(toLantern: Bool) -> PacketFlight {
+        if toLantern {
+            // Deliver every packet before the ordinary clear hands off to the
+            // result. The committed win and its controls never wait for this art.
+            return PacketFlight(start: StarfallMotion.gatherDuration, duration: 0.32, stagger: 0.015)
+        }
+        return PacketFlight(start: 0.15, duration: 0.48, stagger: 0.025)
     }
     let level: Level
     static let duration: TimeInterval = 1.4
@@ -179,11 +201,12 @@ struct StarlightCelebrationOverlay: View {
         // Six packets maximum. All represent one committed award, not individual points.
         let target = lightDestination ?? score
         let destination = CGPoint(x: target.midX, y: target.midY)
+        let flight = StarlightCelebration.packetFlight(toLantern: lightDestination != nil)
         for (index, contributor) in event.packets.enumerated() {
             let point = location(contributor.cell)
             let tint = color(contributor)
             let weight = Double(contributor.reward - 1) * 0.65
-            let t = min(1, max(0, (age - 0.15 - Double(index) * 0.025) / 0.48))
+            let t = flight.progress(at: age, packetIndex: index)
             guard t > 0, t < 1 else { continue }
             let control = CGPoint(x: point.x - board.width * 0.18, y: destination.y + (point.y - destination.y) * 0.35)
             func along(_ progress: Double) -> CGPoint {

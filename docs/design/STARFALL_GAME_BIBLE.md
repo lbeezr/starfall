@@ -6,7 +6,7 @@
 
 The user approved **Murk as illustrated and all twelve map locations**. This rewrite develops their universe, relationships and story. New lore, character behavior and the ending below are authored proposals within that direction. The journey is not implemented; this document replaces the original crystal-puzzle premise as the creative authority.
 
-**Read next:** [World atlas](WORLD_ATLAS.md) for each location’s life, appearance and distinction; [map explorer](world-01/index.html) for sixty restoration state notes; [restoration contract](STARLIGHT_RESTORATION.md) for the win and presentation boundary. **Next production slice:** storyboard Lantern Landing with the actual cast, then prove one playable restoration before producing the full journey.
+**Read next:** [World atlas](WORLD_ATLAS.md) for each location’s life, appearance and distinction; [map explorer](world-01/index.html) for sixty restoration state notes; [restoration contract](STARLIGHT_RESTORATION.md) for the win and presentation boundary. **Visual study:** [Lantern Landing’s five restoration states](lantern-landing-01/README.md) now depict the actual cast. **Next production slice:** review these concepts and author the opening/restoration animatic, then prove one playable restoration before producing the full journey.
 
 [Universe](#a-universe-on-a-neighborly-scale) · [Cast](#the-star-cast-carries-the-journey) · [Murk](#murk-the-hungry-moon) · [Journey](#the-twelve-location-journey) · [Story](#the-chapter-story) · [Puzzle](#the-puzzle-and-story-must-agree) · [Art and sound](#how-it-should-look-move-and-sound)
 

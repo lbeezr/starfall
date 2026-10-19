@@ -1,0 +1,157 @@
+{
+  "status": "packaged; native acceptance pending",
+  "provenance": "board-prompts.json",
+  "processing": "Unmodified generated PNGs. Each milestone renders as one continuous full painting with a proportion-preserving viewport crop. No spatial masks, center replacement, or split regions.",
+  "assets": [
+    {
+      "milestone": 0,
+      "asset": "App/Assets.xcassets/LanternLanding000.imageset/scene.png",
+      "source": "background-000-v2.png",
+      "sha256": "4988b409b96087c51328195f017e3da5386ff208a05ac0e2ea95e8568a755df5"
+    },
+    {
+      "milestone": 25,
+      "asset": "App/Assets.xcassets/LanternLanding025.imageset/scene.png",
+      "source": "background-025-v2.png",
+      "sha256": "4f2eee3efbcc4efbf5a668f1caccc1a98fc06470f586c437d7f9179ae0c2d55e"
+    },
+    {
+      "milestone": 50,
+      "asset": "App/Assets.xcassets/LanternLanding050.imageset/scene.png",
+      "source": "background-050-v2.png",
+      "sha256": "ba7256f32bf15f8d83cf87eb096702ff552aaee59648f24ff94454e15e574991"
+    },
+    {
+      "milestone": 75,
+      "asset": "App/Assets.xcassets/LanternLanding075.imageset/scene.png",
+      "source": "background-075-v2.png",
+      "sha256": "9c813651bee9bb8480ec32469cac136fcbe281ef4b2f783cbc0c32f7363dde85"
+    },
+    {
+      "milestone": 100,
+      "asset": "App/Assets.xcassets/LanternLanding100.imageset/scene.png",
+      "source": "background-100-v2.png",
+      "sha256": "e7806e535dbd1d769c744c976aab08fbf3d4ca38a652239f28fa229dda72d8dd"
+    },
+    {
+      "family": "tabletPortrait",
+      "milestone": 100,
+      "asset": "App/Assets.xcassets/LanternLandingTabletPortrait100.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-56b96fdf-dd7c-44bb-b9fd-30283570411e.png",
+      "prompt": "tablet-prompts.json",
+      "sha256": "266da45162db39b13693456c7be7eb675950e5c93a26ee0de1e93dd3664a4c17",
+      "pixels": [
+        1086,
+        1448
+      ]
+    },
+    {
+      "family": "tabletPortrait",
+      "milestone": 0,
+      "asset": "App/Assets.xcassets/LanternLandingTabletPortrait000.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-af4d5abe-16ec-4005-b3d6-003f25bd36b1.png",
+      "prompt": "tablet-prompts.json",
+      "sha256": "52fe574f64c46202d8787a78451b1e586270277ccf8d09c67bf97f2a6b4a4a66",
+      "pixels": [
+        1086,
+        1448
+      ]
+    },
+    {
+      "family": "tabletPortrait",
+      "milestone": 25,
+      "asset": "App/Assets.xcassets/LanternLandingTabletPortrait025.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-dc51c7e6-6aec-4fd1-91c3-5062dbd9d423.png",
+      "prompt": "tablet-prompts.json",
+      "sha256": "92bdd0c66c71ef6499026f6c4f5921af76f222c8e50c90441a4246be39c642c2",
+      "pixels": [
+        1086,
+        1448
+      ]
+    },
+    {
+      "family": "tabletPortrait",
+      "milestone": 50,
+      "asset": "App/Assets.xcassets/LanternLandingTabletPortrait050.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-4fd40083-bcd6-44f9-8580-ca070c91c15a.png",
+      "prompt": "tablet-prompts.json",
+      "sha256": "f490ed30cb54866d62927892783042884a961564956c1cf075ec96f51793369b",
+      "pixels": [
+        1086,
+        1448
+      ]
+    },
+    {
+      "family": "tabletPortrait",
+      "milestone": 75,
+      "asset": "App/Assets.xcassets/LanternLandingTabletPortrait075.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-b0de6fd2-35fa-4edf-b2a6-58f8ba429cdd.png",
+      "prompt": "tablet-prompts.json",
+      "sha256": "7befccd69bb6d464340ae2f6627ca9711386dae93add2648a684b533b1251508",
+      "pixels": [
+        1086,
+        1448
+      ]
+    },
+    {
+      "family": "tabletLandscape",
+      "milestone": 100,
+      "asset": "App/Assets.xcassets/LanternLandingTabletLandscape100.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-9f175ea4-a3ba-427a-8ef1-f1646f4e25ac.png",
+      "prompt": "tablet-prompts.json",
+      "sha256": "f148a05cf4f2956335112f25b777de0aaa69a5379a81882c929a8f12674be1c6",
+      "pixels": [
+        1448,
+        1086
+      ]
+    },
+    {
+      "family": "tabletLandscape",
+      "milestone": 0,
+      "asset": "App/Assets.xcassets/LanternLandingTabletLandscape000.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-34a5c926-d6b8-4d37-9bdc-fb1d9a331768.png",
+      "prompt": "tablet-prompts.json",
+      "sha256": "6eed632490ea3f9bfd72981deab82b34eeb954c9c63f53621ff2f10b1b47a44d",
+      "pixels": [
+        1448,
+        1086
+      ]
+    },
+    {
+      "family": "tabletLandscape",
+      "milestone": 25,
+      "asset": "App/Assets.xcassets/LanternLandingTabletLandscape025.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-ec997d4d-52d1-42ca-b3ee-70527169631f.png",
+      "prompt": "tablet-prompts.json",
+      "sha256": "7b5437071dc696d151905ab1bc958a1410d418f2db57d26a03205f14421c769d",
+      "pixels": [
+        1448,
+        1086
+      ]
+    },
+    {
+      "family": "tabletLandscape",
+      "milestone": 50,
+      "asset": "App/Assets.xcassets/LanternLandingTabletLandscape050.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-efef5b7c-57f5-4d94-986d-0ccedec35b1e.png",
+      "prompt": "tablet-prompts.json",
+      "sha256": "6184fbbd24627dbd2c80cced2bda60337aced447d9ce1695a67d1c7b5c2bae43",
+      "pixels": [
+        1448,
+        1086
+      ]
+    },
+    {
+      "family": "tabletLandscape",
+      "milestone": 75,
+      "asset": "App/Assets.xcassets/LanternLandingTabletLandscape075.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-78c7e058-9bed-4a1e-af58-1658e37019ab.png",
+      "prompt": "tablet-prompts.json",
+      "sha256": "112bac01f2b10a3dd7c74673bec05b660ab94d0313e5f83388b42cdb8b48529b",
+      "pixels": [
+        1448,
+        1086
+      ]
+    }
+  ]
+}

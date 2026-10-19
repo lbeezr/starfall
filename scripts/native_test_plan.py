@@ -13,7 +13,10 @@ VOICEOVER_RC = {
         'testVoiceOverFullFirstLightRoundRestoreAndReplay',
         'testVoiceOverOpalIdentityActivationAndStormCue'},
 }
-TABLET_ONLY = {'testLandscapeWelcomeEntryAndPreferences': 'StarfallUITests/SkyFlowInteractionTests/testLandscapeWelcomeEntryAndPreferences'}
+TABLET_ONLY = {
+    'testLandscapeWelcomeEntryAndPreferences': 'StarfallUITests/SkyFlowInteractionTests/testLandscapeWelcomeEntryAndPreferences',
+    'testTabletRotationKeepsRestorationAndNativeInput': 'StarfallUITests/LanternLandingInteractionTests/testTabletRotationKeepsRestorationAndNativeInput',
+}
 METHOD = re.compile(r'^\s*(?:@\w+(?:\([^)]*\))?\s+)*func\s+(test\w+)\s*\(\s*\)', re.MULTILINE)
 
 

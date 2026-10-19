@@ -194,4 +194,93 @@ final class LanternLandingInteractionTests: XCTestCase {
         XCTAssertTrue(app.buttons["sky.begin"].waitForExistence(timeout: 5))
         XCTAssertEqual(app.staticTexts["sky.title"].label, "Lantern Landing")
     }
+
+    @MainActor func testTabletRotationKeepsRestorationAndNativeInput() throws {
+        // Listed in the tablet-only native matrix for the two bespoke iPad
+        // compositions. Supported phone landscape is verified separately.
+        guard UIDevice.current.userInterfaceIdiom == .pad else {
+            throw XCTSkip("This check targets the tablet portrait and landscape compositions")
+        }
+        executionTimeAllowance = 180
+        setSystemMotion(reduced: false)
+        XCUIDevice.shared.orientation = .portrait
+        let app = launch(score: 5)
+        defer {
+            app.terminate()
+            XCUIDevice.shared.orientation = .portrait
+        }
+        let mappedIDs = ["experiment.cell.0.0", "experiment.cell.0.6", "experiment.cell.3.3",
+                         "experiment.cell.6.0", "experiment.cell.6.6"]
+        @MainActor func identities() -> [String] {
+            mappedIDs.map { identifier in
+                let cell = app.buttons[identifier]
+                return "\(identifier):\(cell.label):\(cell.value as? String ?? "")"
+            }
+        }
+        @MainActor func assertMappedPlayfield() {
+            XCTAssertEqual(app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@", "experiment.cell.")).count, 49)
+            let bottomLeft = app.buttons["experiment.cell.0.0"].frame
+            let bottomRight = app.buttons["experiment.cell.0.6"].frame
+            let topLeft = app.buttons["experiment.cell.6.0"].frame
+            let topRight = app.buttons["experiment.cell.6.6"].frame
+            let center = app.buttons["experiment.cell.3.3"].frame
+            XCTAssertLessThan(topLeft.midY, bottomLeft.midY, "Core row zero stays at the bottom")
+            XCTAssertLessThan(bottomLeft.midX, bottomRight.midX)
+            XCTAssertEqual(bottomLeft.width, bottomLeft.height, accuracy: 1)
+            XCTAssertEqual(topLeft.midX, bottomLeft.midX, accuracy: 1)
+            XCTAssertEqual(topRight.midX, bottomRight.midX, accuracy: 1)
+            XCTAssertEqual(center.midX, (bottomLeft.midX + bottomRight.midX) / 2, accuracy: 1)
+            XCTAssertEqual(center.midY, (topLeft.midY + bottomLeft.midY) / 2, accuracy: 1)
+            for identifier in mappedIDs + ["experiment.settings", "experiment.pause", "experiment.next"] {
+                let control = app.buttons[identifier]
+                XCTAssertTrue(control.isHittable, "Native target remains reachable: \(identifier)")
+                XCTAssertTrue(app.frame.contains(control.frame), "Native target remains within the viewport: \(identifier)")
+            }
+        }
+        @MainActor func rotate(to orientation: UIDeviceOrientation) {
+            XCUIDevice.shared.orientation = orientation
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+                (app.frame.width > app.frame.height) == orientation.isLandscape
+                    && app.buttons["experiment.settings"].isHittable
+            }, object: nil).wait(timeout: 8))
+        }
+
+        rotate(to: .portrait)
+        assertRestoration(28, score: 5, in: app)
+        assertMappedPlayfield()
+        let initialFrames = mappedIDs.map { app.buttons[$0].frame }
+        let initialIdentities = identities()
+        let board = app.otherElements["experiment.board"]
+        let initialBoard = board.value as? String
+        XCTAssertNotNil(initialBoard)
+        capture(app, "lantern-tablet-portrait-before-rotation-normal-motion")
+
+        rotate(to: .landscapeLeft)
+        assertRestoration(28, score: 5, in: app)
+        assertMappedPlayfield()
+        XCTAssertEqual(board.value as? String, initialBoard, "Rotation cannot commit a shower or clear")
+        XCTAssertEqual(identities(), initialIdentities, "The same native cells keep their stars after rotation")
+        capture(app, "lantern-tablet-landscape-retained-before-clear-normal-motion")
+        clearAmberTrio(in: app)
+        assertRestoration(50, score: 9, in: app)
+        let clearedBoard = board.value as? String
+        let clearedIdentities = identities()
+        capture(app, "lantern-tablet-landscape-after-native-clear-normal-motion")
+
+        rotate(to: .portrait)
+        assertRestoration(50, score: 9, in: app)
+        assertMappedPlayfield()
+        XCTAssertEqual(board.value as? String, clearedBoard, "The landscape clear survives the return to portrait")
+        XCTAssertEqual(identities(), clearedIdentities)
+        XCTAssertEqual(mappedIDs.map { app.buttons[$0].frame }, initialFrames,
+                       "Returning to portrait restores the same native coordinate mapping")
+        capture(app, "lantern-tablet-portrait-retained-after-landscape-clear-normal-motion")
+
+        let aqua = app.buttons["experiment.cell.2.6"]
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true AND value CONTAINS %@",
+                                                                      "4 toward a tap match"), object: aqua).wait(timeout: 5))
+        tap("experiment.cell.2.6", in: app)
+        assertRestoration(72, score: 13, in: app)
+        capture(app, "lantern-tablet-portrait-after-second-native-clear-normal-motion")
+    }
 }

@@ -6,7 +6,7 @@ These twelve connected places form a lived-in corner of the universe: gathering 
 
 The user approved **Murk and all twelve map locations**. This atlas develops their purpose, appearance and relationships within that direction; the new details are proposals, not implemented content. The [game bible](STARFALL_GAME_BIBLE.md) owns the story and canon. [world-data.js](world-01/world-data.js) owns the exact order and five restoration-state notes used by the [concept explorer](world-01/index.html).
 
-**Next action:** Use Lantern Landing to develop one complete five-state environment and phone-scale gameplay composition. Its success should establish the production method before expanding to the other eleven places. This is a recommended slice, not a claim that implementation has begun.
+**Next action:** Review [Lantern Landing’s five-state concept study](lantern-landing-01/README.md), then author its construction, opening/restoration animatic and phone-scale gameplay composition. This first slice should establish the production method before expanding to the other eleven places; the generated views do not establish implementation.
 
 ## A small universe with a daily life
 

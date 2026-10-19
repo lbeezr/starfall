@@ -5,6 +5,31 @@ import StarfallCore
 @testable import Starfall
 
 final class StarlightCelebrationTests: XCTestCase {
+    func testEveryLanternPacketArrivesBeforeTheWinningClearHandsOff() {
+        let flight = StarlightCelebration.packetFlight(toLantern: true)
+        XCTAssertEqual(StarlightCelebration.maximumPackets, 6)
+        XCTAssertEqual(flight.start, StarfallMotion.gatherDuration)
+        for index in 0..<StarlightCelebration.maximumPackets {
+            XCTAssertLessThan(flight.arrivalTime(packetIndex: index), StarfallMotion.clearDuration,
+                              "Packet \(index) must reach the lantern before the result removes the overlay")
+            XCTAssertEqual(flight.progress(at: StarfallMotion.clearDuration, packetIndex: index), 1)
+        }
+        XCTAssertEqual(flight.arrivalTime(packetIndex: 5), 0.455, accuracy: 0.000001)
+        XCTAssertEqual(flight.progress(at: 0, packetIndex: 0), 0)
+    }
+
+    func testScoreDestinationKeepsItsExistingPacketTiming() {
+        let flight = StarlightCelebration.packetFlight(toLantern: false)
+        XCTAssertEqual(flight.start, 0.15)
+        XCTAssertEqual(flight.duration, 0.48)
+        XCTAssertEqual(flight.stagger, 0.025)
+        XCTAssertEqual(flight.progress(at: 0.14, packetIndex: 0), 0)
+        XCTAssertEqual(flight.progress(at: 0.39, packetIndex: 0), 0.5, accuracy: 0.000001)
+        XCTAssertEqual(flight.arrivalTime(packetIndex: 0), 0.63, accuracy: 0.000001)
+        XCTAssertEqual(flight.arrivalTime(packetIndex: 5), 0.755, accuracy: 0.000001)
+        XCTAssertEqual(flight.progress(at: StarlightCelebration.duration, packetIndex: 5), 1)
+    }
+
     @MainActor func testHeaderRegistrationPreservesNestedScoreAndSiblingBoard() async throws {
         let registered = expectation(description: "All celebration anchors reach the overlay")
         var didRegister = false
