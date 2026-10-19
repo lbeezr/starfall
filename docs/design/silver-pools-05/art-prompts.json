@@ -1,7 +1,7 @@
 {
   "title": "Silver Pools production artwork provenance",
   "date": "2026-10-19",
-  "status": "Development verified: all fifteen selected paintings are packaged and byte-verified, with native acceptance recorded in ../../evidence/silver-pools-2026-10-19/README.md. Canonical delivery pending; nested source-generation records remain unchanged and source-bound.",
+  "status": "Development verified and delivered: all fifteen selected paintings are packaged and byte-verified, with native acceptance recorded in ../../evidence/silver-pools-2026-10-19/README.md and canonical installation in delivery.json beside that report. Nested source-generation records remain unchanged and source-bound.",
   "preservation": "The three original provenance documents are retained as unchanged nested JSON records. Every attempt, exact prompt, reference/source path and hash, rejected sparse direction, selection, inspection and native-iteration note remains intact. Original document byte counts and SHA256 hashes identify the frozen inputs. No original record is rewritten to reflect current selection.",
   "generationAttemptCount": 30,
   "selectedAssetCount": 15,

@@ -1,10 +1,10 @@
 # Restore Silver Pools in the regular app
 
-**Status:** Development verified; publication and delivery pending · **Owner:** Current implementer · **Updated:** October 19, 2026
+**Status:** Closed — development verified and delivered · **Owner:** Current implementer · **Updated:** October 19, 2026
 
 Add Silver Pools as the fifth directly selectable seed-42, 18-starlight challenge. Its dry common garden regains one uninterrupted flow: basin, stream, lily steps, held droplet, then the complete silver cascade. The existing committed win, light transfer, whole-image transition and ordinary named result own completion.
 
-**Next action:** Publish and merge the verified source/assets/evidence, then ship current main through the canonical updater. The [native evidence](../../evidence/silver-pools-2026-10-19/README.md) records development acceptance at `aabd673` / `dev.98f8ba82e6`: 329 hosted tests, eleven selected phone/tablet/compact UI checks, Release compilation, all fifteen scene states and a [recorded normal-motion finish](../../evidence/silver-pools-2026-10-19/motion.json). Later `84ae918` changes only design guidance/tooling/docs; native inputs are identical.
+**Delivered:** [PR #178](https://github.com/lbeezr/starfall/pull/178) is merged; the [canonical receipt](../../evidence/silver-pools-2026-10-19/delivery.json) verifies `dev.98f8ba82e6` from main `47ff6ba`. Physical play and RC accessibility remain separate next checks. The [native evidence](../../evidence/silver-pools-2026-10-19/README.md) records development acceptance at `aabd673` / `dev.98f8ba82e6`: 329 hosted tests, eleven selected phone/tablet/compact UI checks, Release compilation, all fifteen scene states and a [recorded normal-motion finish](../../evidence/silver-pools-2026-10-19/motion.json). Later `84ae918` changes only design guidance/tooling/docs; native inputs are identical.
 
 The [atlas](../WORLD_ATLAS.md#05--silver-pools--one-flow-through-the-whole-place) and [world data](../world-01/world-data.js) own the setting and authored beats. No new water or gardening rule, campaign, unlock, scenery traveler or separate cutscene is included.
 
@@ -23,7 +23,7 @@ The [atlas](../WORLD_ATLAS.md#05--silver-pools--one-flow-through-the-whole-place
 - [x] Complete the two compact-phone UI checks and inspect their captured layout separately. Silver win/relaunch/replay and Open sky flow pass; all eight captured layouts are inspected.
 - [x] Record and inspect a normal-motion finishing clear and named result; verify replay through native UI tests. Thirteen recorded frame samples show selection, committed light transfer, whole-painting restoration and the settled result. Frame-rate performance is not measured.
 - [x] Complete Release compilation: passed with zero warnings/errors. Source commits, dirty paths, environment, failures, stills and motion remain distinct in the evidence.
-- [ ] Publish and merge the verified source/assets/evidence; deliver current main into the original phone app through `scripts/device-update.py`, without reset or automatic launch, and retain the verified installation receipt.
+- [x] Publish and merge the verified source/assets/evidence; deliver current main into the original phone app through `scripts/device-update.py`, without reset or automatic launch, and retain the verified installation receipt.
 
 ## Five authored beats
 

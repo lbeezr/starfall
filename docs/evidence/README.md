@@ -1,6 +1,6 @@
 # Evidence index
 
-[Silver Pools](silver-pools-2026-10-19/README.md) records development acceptance of the fifth challenge: all fifteen native states, dense input, rotation, phone/compact interaction, largest text/system Reduce Motion, recorded normal completion and Release. Publication and canonical delivery are pending; actual VoiceOver and physical play remain separate.
+[Silver Pools](silver-pools-2026-10-19/README.md) records development acceptance of the fifth challenge: all fifteen native states, dense input, rotation, phone/compact interaction, largest text/system Reduce Motion, recorded normal completion and Release. Publication and canonical installation are verified; actual VoiceOver and physical play remain separate.
 
 [CI recovery](ci-recovery-2026-10-19/README.md) records simulator setup, UI test and screenshot-readiness fixes in verified batches. The complete local probe passes on its recorded source; full current-source remote development acceptance remains open.
 

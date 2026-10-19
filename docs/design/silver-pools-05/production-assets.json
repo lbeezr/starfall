@@ -1,5 +1,5 @@
 {
-  "status": "Development verified: all fifteen selected paintings are packaged, byte-verified and inspected natively; canonical delivery pending.",
+  "status": "Development verified and delivered: all fifteen selected paintings are packaged, byte-verified and inspected natively; canonical installation of dev.98f8ba82e6 is recorded in ../../evidence/silver-pools-2026-10-19/delivery.json.",
   "provenance": "art-prompts.json",
   "processing": "Selected generated PNGs copied byte-for-byte without pixel edits. Native rendering owns whole-image fitting; no source art was resampled, cropped, composited or recolored during packaging.",
   "verification": {
@@ -11,7 +11,7 @@
     "selectedSourceSha256DimensionsBytesVerified": true,
     "gitBlobSHAIndependentlyVerifiedWithGitHashObject": true,
     "originalDocumentSHA256Verified": true,
-    "nativeValidation": "Verified for development at native source aabd67346bf56ae27b9940a7d6d916559d16c218 / runtime dev.98f8ba82e6; later 84ae918 has unchanged native inputs. All fifteen states, 49-star density/input, tablet rotation, compact layout, largest text/system Reduce Motion, recorded normal completion and Release compilation pass within the evidence scope. Canonical delivery, physical play and actual VoiceOver/full release-candidate acceptance remain pending. See ../../evidence/silver-pools-2026-10-19/README.md. Original nested source records remain source-bound.",
+    "nativeValidation": "Verified for development at native source aabd67346bf56ae27b9940a7d6d916559d16c218 / runtime dev.98f8ba82e6; later 84ae918 has unchanged native inputs. All fifteen states, 49-star density/input, tablet rotation, compact layout, largest text/system Reduce Motion, recorded normal completion and Release compilation pass within the evidence scope. Canonical installation from main47ff6ba is verified by ../../evidence/silver-pools-2026-10-19/delivery.json; main CI was pending at installation. Physical play and actual VoiceOver/full release-candidate acceptance remain unverified. See ../../evidence/silver-pools-2026-10-19/README.md. Original nested source records remain source-bound.",
     "pendingPackagingAssets": [],
     "missingSourcesOrReferences": []
   },

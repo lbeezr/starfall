@@ -1,5 +1,5 @@
 {
-  "status": "Verified for development; publication and delivery pending",
+  "status": "Verified for development; published, merged and canonical installation verified",
   "sourceCommit": "aabd67346bf56ae27b9940a7d6d916559d16c218",
   "runtimeFingerprint": "dev.98f8ba82e6",
   "sourceBoundary": "All app, resource, Core, native-test and Xcode inputs committed. Dirty files are documentation, reviewer and guide tooling; no dirty native build inputs.",
@@ -232,9 +232,7 @@
       "source": "dev.silver-art-probe label; evolving working tree with approved075/100 assets; not final-source acceptance"
     }
   ],
-  "remaining": [
-    "Publish/merge/canonical installation"
-  ],
+  "remaining": [],
   "limits": [
     "Development, not full RC matrix",
     "Actual VoiceOver and physical gameplay not performed",
@@ -251,6 +249,8 @@
     "base": "4f13da8bf10a41cc136d8eb24120e8ca90c7c7a3",
     "localMerge": "64acd98",
     "changes": "PR176/177 UI-test snapshot/capture readiness and evidence only; app/Core/resource inputs unchanged",
-    "runtime": "dev.98f8ba82e6"
-  }
+    "runtime": "dev.98f8ba82e6",
+    "visualRecheck": "All4 compact screenshots inspected; complete entry copy/Begin captured after readiness fix, no horizontal clipping or new blocker."
+  },
+  "deliveryReference": "delivery.json"
 }
