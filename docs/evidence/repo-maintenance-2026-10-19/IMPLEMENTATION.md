@@ -1,8 +1,8 @@
 # Repository maintenance implementation
 
-**Result:** Partially verified — batches in progress · **Owner:** current implementer · **Date:** October 19, 2026, Eastern time
+**Result:** Verified maintenance rollout; CI acceptance remains open · **Owner:** current implementer · **Date:** October 19, 2026, Eastern time
 
-The [accepted plan](../../REPO_MAINTENANCE_PLAN.md) is being implemented in separate batches. Documentation now distinguishes current survival and v8 saves from historical aging/gravity/V2 research. CI diagnosis and the retained-Dusk correction are merged; scoped instructions and repo skills have completed bounded validation. Remote CI is not yet healthy.
+The [accepted plan](../../REPO_MAINTENANCE_PLAN.md) was implemented in separate verified maintenance batches. Documentation now distinguishes current survival and v8 saves from historical aging/gravity/V2 research. CI diagnosis and the retained-Dusk correction are merged; scoped instructions and repo skills have completed bounded validation. Remote CI is not yet healthy.
 
 ## Batch 1 — current documentation
 
@@ -22,7 +22,18 @@ Acceptance: current summaries agree with those code boundaries; hygiene and `git
 
 The three skills pass the skill-creator validator and actual Codex `skills/list` discovery from five working directories. Independent forward tasks cover all three workflows and six trigger/counterexample prompts. Existing commands and evidence owners are reused; no runtime/configuration/dependency/delivery change is introduced.
 
-## Remaining work
+## Batch 4 — bounded ownership cleanup
+
+The new maintenance skill independently audited `scripts/README.md`, `scripts/generate-celebration-audio.py`, `App/Audio/README.md` and their history. Two conflicting current summaries described two versus four generated WAVs. `1a151c8` introduced the two-cue summary; `fcef490` added recipe/relay cues and appended a second paragraph. The generator and audio README already agree on four outputs.
+
+Replaced both scripts summaries with one link to the audio README under an Audio generation heading. The generator, audio README, assets, runtime inputs and historical evidence are unchanged. Recovery source for the removed wording: `73ad2beddb4c247fe9190f356c518f433731ef31:scripts/README.md`. This pilot chooses demonstrated documentation drift over an unproven mechanics-exporter deletion. No claim about unused runtime code follows.
+
+Acceptance: one generator entry in the script map; its link resolves to the existing authoritative reproduction instructions; source/history support the correction; hygiene, diff and local-link checks pass. Audio regeneration/listening, native builds, motion, VoiceOver and phone delivery are inapplicable to this docs-only change. Rendered Markdown was not inspected. The benefit is removal of contradictory current instructions, not measured runtime or cost savings.
+
+## Integration and remaining work
+
+Documentation [PR #155](https://github.com/lbeezr/starfall/pull/155), CI diagnosis/regression [PR #156](https://github.com/lbeezr/starfall/pull/156), and guidance/skills [PR #159](https://github.com/lbeezr/starfall/pull/159) are merged. Each published tree was compared with the verified local tree; concurrent main work was preserved. The ownership cleanup is a separate final documentation batch.
+
 
 - Resolve the remaining CI/native findings recorded in the diagnosis; Xcode 27.1/iOS 27.0 differs from remote Xcode 26.3.
-- Pilot one proven maintenance simplification and report measured benefit or uncertainty.
+- Measure completed CI runs before considering timing/cost tuning. No successful-run baseline exists in the retained cohort, so no cache, concurrency, retry, timeout or trigger change is justified by it.

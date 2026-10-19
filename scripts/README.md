@@ -30,7 +30,9 @@ Build identity includes `Package.swift`, optional root/package-workspace resolut
 
 The updater queries the real app installation on every check. URL/version mismatch, a missing app or a legacy receipt triggers a verified current-main repair, including when source/runtime fingerprints are unchanged. It rejects non-descendant main, re-fetches before delivery, and verifies post-install identity before recording success. Device inventory failure defers the operation. See [delivery guards and their permission limit](../docs/DEVELOPMENT_BUILDS.md#reject-stale-delivery-and-detect-external-replacements). The first guarded run refreshes an old receipt through one verified reinstall; it never launches or resets the app. Tests include real Git ancestry plus mocked device/build/CI failures.
 
-`generate-celebration-audio.py` deterministically regenerates the two original local WAV celebration cues in `App/Audio`, using only Python’s standard library and no external samples or service.
+## Audio generation
+
+`generate-celebration-audio.py` reproduces the local celebration cues. See [runtime audio](../App/Audio/README.md) for regeneration and asset ownership.
 
 
 ## Release and RC platform gates
@@ -48,5 +50,3 @@ The manual workflow exposes `dev`/`rc` under the existing budget confirmation; p
 ## Required default-game captures
 
 `export_native_evidence.py` owns the compact native screenshot selection for `ci-simulator.sh`. It retains the 33 classic regression frames and requires six Falling Sky captures: Welcome, Entry, automatic forecast/active play, critical-mass rescue, First Light win and full sky. A successful native run with only classic captures fails evidence acceptance. Names match exact labels or Xcode's underscore suffix; exports reject duplicates, non-flat paths, symlinks, unknown/oversized images and oversized manifests. Run `python3 scripts/test_export_native_evidence.py` for real-file export/count/failure cases. Failed native runs may export available images with an explicit incomplete status, even if their summary is missing; only this exporter's previous owned outputs are cleared. This does not certify screenshot appearance, animation, actual VoiceOver or physical-device behavior.
-
-`generate-celebration-audio.py` deterministically regenerates the four original local celebration WAVs. Recipe and relay durations are bounded independently; existing brilliant/constellation bytes remain unchanged. No network, samples or third-party tools are used.
