@@ -1,0 +1,52 @@
+[
+  {
+    "buildID": "dev.5294727fd1",
+    "source": "e4e672a7a51855f38d21e5c2c94cdb9c33edff57",
+    "bundle": "com.starfall.prototype",
+    "validation": {
+      "coreTests": "passed",
+      "signature": "verified",
+      "mainCIAtInstall": "pending"
+    }
+  },
+  {
+    "buildID": "dev.677341325c",
+    "source": "764c53cc07146003f8f6babc770c238b04e416a9",
+    "bundle": "com.starfall.prototype",
+    "validation": {
+      "coreTests": "passed",
+      "signature": "verified",
+      "mainCIAtInstall": "pending"
+    }
+  },
+  {
+    "buildID": "dev.5e10acea62",
+    "source": "4c145d6b79ecac16ff4f7a11b27f505bc2c663cf",
+    "bundle": "com.starfall.prototype",
+    "validation": {
+      "coreTests": "passed",
+      "signature": "verified",
+      "mainCIAtInstall": "pending"
+    }
+  },
+  {
+    "buildID": "dev.0f08b779a9",
+    "source": "64223e65ef9b6d353c6ff1d2c8bbf99300a94cc6",
+    "bundle": "com.starfall.prototype",
+    "validation": {
+      "coreTests": "passed",
+      "signature": "verified",
+      "mainCIAtInstall": "pending"
+    }
+  },
+  {
+    "buildID": "dev.8a753c144b",
+    "source": "ec6d638eecc84152651eabd1d00107c9fe69e249",
+    "bundle": "com.starfall.prototype",
+    "validation": {
+      "coreTests": "passed",
+      "signature": "verified",
+      "mainCIAtInstall": "pending"
+    }
+  }
+]

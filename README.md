@@ -6,7 +6,7 @@ A small native iOS falling-sky puzzle. Clear matching stars as showers fill the 
 
 [Roadmap](docs/ROADMAP.md) · [Visual reference and cast](docs/design/VISUAL_REFERENCE.md) · [Playtest](docs/PLAYTEST-FALLING-SKY.md) · [Documentation map](docs/README.md)
 
-Current work targets [fast, consistent gestures](docs/GESTURE_QUALITY.md), shipped in individual verified batches alongside [mechanics calibration](docs/design/CALIBRATION.md).
+[Gesture improvements](docs/GESTURE_QUALITY.md) are merged in five individual batches, with [canonical phone delivery evidence](docs/evidence/gesture-delivery-2026-10-18/README.md). Physical-play acceptance and [mechanics calibration](docs/design/CALIBRATION.md) continue.
 
 Player wording and character voices are authored in the [local copy catalogue](App/DialogueScripts/README.md), with typed interface keys, validated templates and an in-app dialogue preview.
 

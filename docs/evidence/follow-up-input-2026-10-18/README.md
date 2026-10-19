@@ -2,9 +2,9 @@
 
 **Result:** Partially verified · **Owner:** current implementer · **Date:** October 18, 2026
 
-Valid taps and swaps on moving columns now register immediately and wait for presentation to release their stars. One intention lasts at most 650 ms, is tied to the committed board and star identities, and is replaced by a newer touch. [Acceptance contract](../../design/FOLLOW_UP_INPUT.md). This is the second gesture delivery; publication and physical comfort remain unverified.
+Valid taps and swaps on moving columns now register immediately and wait for presentation to release their stars. One intention lasts at most 650 ms, is tied to the committed board and star identities, and is replaced by a newer touch. [Acceptance contract](../../design/FOLLOW_UP_INPUT.md). This is the second gesture delivery; publication and canonical installation are recorded separately from unverified physical comfort.
 
-**Next action:** publish after repository-specific approval, then deliver each batch separately through the canonical updater. Development checks pass; direction forgiveness, held-drawing feedback and physical acceptance remain later individual batches.
+**Next action:** observe physical thumb play after the [individual canonical delivery](../gesture-delivery-2026-10-18/README.md). Development checks and merged-source identity are verified; physical comfort and actual VoiceOver remain open. Earlier verification below retains its original source.
 
 ## Outcomes against acceptance
 

@@ -4,7 +4,7 @@
 
 The shared recognizer now decides the adjacent destination from displacement before testing that destination's bounds. A final sample beyond the board can therefore commit one valid neighboring move. Held drawings, actual outward destinations and non-finite samples still cancel. [Acceptance](../../design/GESTURE_EDGES.md).
 
-**Next action:** publish/deliver this as the third individual gesture batch after the preceding two. Automatic publication review remains blocked despite the user's approval; a destination-specific response is pending.
+**Next action:** observe physical thumb play after the [individual canonical delivery](../gesture-delivery-2026-10-18/README.md). Development checks and merged-source identity are verified; physical comfort and actual VoiceOver remain open. Earlier verification below retains its original source.
 
 ## Root cause and scope
 

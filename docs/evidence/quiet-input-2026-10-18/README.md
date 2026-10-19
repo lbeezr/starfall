@@ -4,7 +4,7 @@
 
 Quiet rendering previously showed the final board while retaining input ownership for another 150 ms. Ordinary column presentation and phased gravity presentation now complete immediately after their final render. The production recognizer commits a second quiet swap without buffering; full motion retains its animation and bounded follow-up. [Acceptance](../../design/QUIET_INPUT_RESPONSE.md).
 
-**Next action:** publish and deliver this fifth independent batch, then observe physical thumb play. Publication remains blocked by automatic review pending destination-specific authorization despite the user's approval; the canonical updater reports it is waiting for the configured iPhone.
+**Next action:** observe physical thumb play after the [individual canonical delivery](../gesture-delivery-2026-10-18/README.md). Development checks and merged-source identity are verified; physical comfort and actual VoiceOver remain open. Earlier verification below retains its original source.
 
 ## Root cause and scope
 

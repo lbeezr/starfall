@@ -4,7 +4,7 @@
 
 Eligible contact builds twelve short segments along four open rays during the existing 300 ms hold. Arming replaces them with solid rays, joining the four diagonal contact rays, and emits one distinct preference-aware haptic. Quiet modes use static contact and armed states. [Acceptance](../../design/HOLD_DRAW_FEEDBACK.md).
 
-**Next action:** publish and deliver this fourth independent batch after the preceding three. Publication remains blocked by automatic review pending destination-specific authorization; physical haptic comfort and actual VoiceOver remain unverified.
+**Next action:** observe physical thumb play after the [individual canonical delivery](../gesture-delivery-2026-10-18/README.md). Development checks and merged-source identity are verified; physical comfort and actual VoiceOver remain open. Earlier verification below retains its original source.
 
 ## Verification
 

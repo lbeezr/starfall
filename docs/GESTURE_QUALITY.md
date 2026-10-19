@@ -4,7 +4,7 @@
 
 The user wants S-tier response, consistency, forgiveness, secondary actions and fast follow-ups, delivered incrementally. Ship each coherent, verified improvement through current main and the canonical phone updater. Simulator correctness and installation receipts are evidence of implementation and delivery; physical comfort still requires observation.
 
-**Next action:** publish the verified foundation (`codex/instant-swipe-foundation`) once the pending repository-specific approval is answered, then use the canonical updater. Keep the five prepared branches separate for publication and delivery; physical acceptance follows installation.
+**Next action:** record physical thumb-play feedback on installed runtime `dev.8a753c144b`. The five code batches are merged individually; [delivery record](evidence/gesture-delivery-2026-10-18/README.md) separates installation from gameplay acceptance.
 
 ## Scope and acceptance
 
@@ -30,13 +30,9 @@ Reuse existing gesture, contact, presenter and feedback owners. No backend, tele
 
 The [foundation report](evidence/immediate-swipes-2026-10-18/README.md) records the existing native/test evidence. The [visual reference](design/VISUAL_REFERENCE.md) owns selected captures. Stable identity, immediate acknowledgment and cancellation are required before buffering can ship; a blind queue is not an acceptable intermediate version. Phone availability may defer delivery, but must not delay independent implementation and review.
 
-The [follow-up report](evidence/follow-up-input-2026-10-18/README.md) records batch 2. The [coarse-flick correction](evidence/gesture-edges-2026-10-18/README.md) records batch 3: the reproduced sample-ordering bug is corrected, and the original plus edge/drawing sibling checks pass. All three await individual publication/delivery; the user approved publishing, but automatic review requested more destination-specific authorization.
+The [follow-up report](evidence/follow-up-input-2026-10-18/README.md), [coarse-flick correction](evidence/gesture-edges-2026-10-18/README.md), [hold-feedback report](evidence/hold-feedback-2026-10-18/README.md), and [quiet-response report](evidence/quiet-input-2026-10-18/README.md) retain the independent development checks. All five code batches are merged and individually installed; the [canonical receipts](evidence/gesture-delivery-2026-10-18/README.md) record each installation and its limits.
 
-The [hold-feedback report](evidence/hold-feedback-2026-10-18/README.md) records batch 4: native arming appearance, bounded progress and haptic policy pass development checks. It also awaits individual publication and delivery.
-
-The [quiet-response report](evidence/quiet-input-2026-10-18/README.md) records batch 5 and its remaining acceptance limits. All five branches are a dependent stack; reconcile each batch with current main and verify its own canonical installation before calling it shipped.
-
-## Prepared delivery stack
+## Integrated delivery stack
 
 | Order | Branch | Development result |
 | --- | --- | --- |
@@ -46,4 +42,4 @@ The [quiet-response report](evidence/quiet-input-2026-10-18/README.md) records b
 | 4 | `codex/gesture-hold-feedback` | Native armed cue inspected; normal/quiet and feedback policy checks pass |
 | 5 | `codex/gesture-quiet-response` | Final combined source: 169 Core, 286 hosted, 13 native checks pass; Debug/Release builds pass |
 
-No branch in this stack has been published, merged or installed by this workstream. Final development evidence is runtime `dev.8a753c144b`; earlier reports retain their exact independent sources. Automatic approval review rejected the source-tree upload again after the user's approval, requesting explicit authorization for publishing source to public `https://github.com/lbeezr/starfall`. The destination-specific confirmation is pending. The canonical updater additionally reports waiting for the configured iPhone. These blocks do not invalidate the local checks, and passing checks do not establish physical S-tier comfort.
+All five branches were published and merged independently in PRs [#134](https://github.com/lbeezr/starfall/pull/134), [#135](https://github.com/lbeezr/starfall/pull/135), [#136](https://github.com/lbeezr/starfall/pull/136), [#137](https://github.com/lbeezr/starfall/pull/137) and [#138](https://github.com/lbeezr/starfall/pull/138). Final runtime `dev.8a753c144b` is byte-identical to the verified local source. The user’s explicit destination-specific authorization resolved the earlier publication block. Canonical receipts and physical acceptance remain distinct: installation verifies the app identity, while repeated thumb play must establish feel.

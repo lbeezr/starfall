@@ -2,6 +2,8 @@
 
 Dated, source-bound records of checks, comparisons and their limits.
 
+[Individual gesture deliveries](gesture-delivery-2026-10-18/README.md) links the five merged batches, canonical installation receipts and remaining physical/RC acceptance.
+
 [Quiet input response](quiet-input-2026-10-18/README.md) records the reproduced 150 ms lock and native presentation/admission checks.
 
 [Hold feedback](hold-feedback-2026-10-18/README.md) records native arming cues, haptic policy and delivery limits.

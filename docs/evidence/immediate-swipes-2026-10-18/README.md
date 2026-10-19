@@ -4,7 +4,7 @@
 
 Movement now commits one exchange immediately; a stationary 300 ms hold selects constellation drawing. Neighbor color never changes gesture meaning. [Acceptance contract](../../design/IMMEDIATE_SWIPES.md) was written before implementation. Development checks establish deterministic behavior and simulator interaction; physical timing/comfort and actual VoiceOver remain unverified.
 
-**Next action:** Publish the verified first batch once the pending repository-specific approval is answered, then deliver through the canonical updater. After delivery, observe short thumb strokes, rapid retouch and accidental holds on phone. This checkout has not been delivered to a physical device. [Current-main integration](#current-main-integration) supersedes the original-base test context below.
+**Next action:** observe physical thumb play after the [individual canonical delivery](../gesture-delivery-2026-10-18/README.md). Development checks and merged-source identity are verified; physical comfort and actual VoiceOver remain open. Earlier verification below retains its original source.
 
 ## Outcomes against acceptance
 
