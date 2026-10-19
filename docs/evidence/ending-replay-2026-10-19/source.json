@@ -1,0 +1,13 @@
+{
+  "source": "d9a0b595d78c648b9d714646743c29122dd9ddf9",
+  "runtime": "dev.07b4062290",
+  "dirtyBuildInputs": [],
+  "toolchain": "Xcode 27.1 (27A9275), Swift 6.4",
+  "simulator": {
+    "name": "Starfall Main 16 Pro Max QA",
+    "model": "iPhone 16 Pro Max",
+    "os": "iOS 27.0 (24A434)",
+    "id": "5107CBBF-108B-4B94-9125-A873F948A38C"
+  },
+  "configuration": "Debug and Release"
+}

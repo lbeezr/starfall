@@ -118,3 +118,5 @@ The shower trail reads a narrow monotonic countdown snapshot, including held rem
 `SkyLessonView` offers optional interactive Help examples using shared cast materials and explicit Core moves. It owns a local value only, with no live Store, archive or shower clock. Only the diagram animates; instructions and exact points update immediately.
 
 Trace readiness feedback validates the actual path, snapshot, generation and held contact at the Store boundary. It signals the first legal release once (including four-star squares), deduplicates retracing and coalesces coarse pointer samples. Recipe and relay audio have distinct short cues through the existing one-voice owner.
+
+Replay entry receives only its pending choice; the result headline describes a blocked arrival while the committed snapshot owns the exact column and score. [Acceptance](../docs/evidence/ending-replay-2026-10-19/README.md).

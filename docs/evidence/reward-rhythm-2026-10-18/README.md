@@ -4,7 +4,9 @@
 
 A four-star square now receives its ready haptic when Core accepts that path. Retracing or adding a fifth star to an already-ready square does not signal readiness again. Recipes and relays have distinct short local sounds, routed through the existing one-voice cancellation boundary. Physical sound/haptic preference remains unmeasured.
 
-**Next action:** Merge and canonically deliver before ending/replay.
+**Delivery:** [PR #149](https://github.com/lbeezr/starfall/pull/149) merged to `b621588`; canonical updater verified **dev.9de7f44c3c** on the original phone. [Receipt](delivery.json): Core and signature passed; main CI pending at installation. No player-data reset or automatic launch.
+
+**Next action:** Observe physical sound/haptic preference on the installed app; continue ending/replay.
 
 ## Correction and examined boundaries
 

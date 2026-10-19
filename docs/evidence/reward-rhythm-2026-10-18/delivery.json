@@ -1,0 +1,11 @@
+{
+  "buildID": "dev.9de7f44c3c",
+  "source": "b62158875060797cbf5236f15ba9c2d68c2e728d",
+  "bundle": "com.starfall.prototype",
+  "bundleVersion": "1",
+  "validation": {
+    "coreTests": "passed",
+    "signature": "verified",
+    "mainCIAtInstall": "pending"
+  }
+}

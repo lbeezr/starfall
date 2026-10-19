@@ -224,7 +224,7 @@ final class FallingSkyInteractionTests: XCTestCase {
                 app.staticTexts["experiment.outcome"].exists || next.isEnabled
             }, object: nil).wait(timeout: 5))
         }
-        XCTAssertEqual(app.staticTexts["experiment.outcome"].label, "This sky is full")
+        XCTAssertEqual(app.staticTexts["experiment.outcome"].label, "No room to land")
         XCTAssertFalse(app.buttons["experiment.cell.0.0"].exists)
         XCTAssertFalse(next.exists)
         capture(app, "first-light-overflow")
@@ -744,6 +744,8 @@ final class SkyFlowInteractionTests: XCTestCase {
         capture(app, "flow-win")
         tap("experiment.replay", app)
         XCTAssertEqual(app.staticTexts["sky.title"].label, "Collect 18 starlight")
+        XCTAssertTrue(app.staticTexts["sky.subtitle"].label.contains("same First Light opening"))
+        capture(app, "flow-first-light-replay-explanation")
         tap("sky.begin", app); pause(app)
         for _ in 0..<40 {
             if outcome.exists { break }
@@ -752,7 +754,7 @@ final class SkyFlowInteractionTests: XCTestCase {
             if !outcome.exists { tap("experiment.next", app) }
         }
         XCTAssertTrue(outcome.waitForExistence(timeout: 5))
-        XCTAssertEqual(outcome.label, "This sky is full")
+        XCTAssertEqual(outcome.label, "No room to land")
         XCTAssertTrue(app.staticTexts["experiment.score"].label.contains("had no room for the next star"))
         XCTAssertEqual(app.buttons["experiment.replay"].label, "Replay First Light")
         XCTAssertTrue(app.staticTexts["experiment.score"].label.contains("of 18"))
@@ -760,7 +762,7 @@ final class SkyFlowInteractionTests: XCTestCase {
         app.terminate(); app.launchArguments = ["--sky-flow-review"]; app.launch()
         tap("sky.resume", app)
         XCTAssertTrue(outcome.waitForExistence(timeout: 5))
-        XCTAssertEqual(outcome.label, "This sky is full")
+        XCTAssertEqual(outcome.label, "No room to land")
         tap("experiment.new", app)
         XCTAssertEqual(app.staticTexts["sky.title"].label, "Make room for the stars")
         capture(app, "flow-fresh-after-full")
@@ -774,12 +776,37 @@ final class SkyFlowInteractionTests: XCTestCase {
         tap("sky.start", app); tap("sky.begin", app)
         let outcome = app.staticTexts["experiment.outcome"]
         XCTAssertTrue(outcome.waitForExistence(timeout: 12))
-        XCTAssertEqual(outcome.label, "This sky is full")
+        XCTAssertEqual(outcome.label, "No room to land")
         capture(app, "result-input-over-visible-board")
         XCTAssertTrue(app.buttons["experiment.replay"].isHittable)
         tap("experiment.replay", app)
         XCTAssertTrue(app.buttons["sky.begin"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["sky.subtitle"].label.contains("current sky settings"))
+        capture(app, "flow-replay-explanation")
         XCTAssertFalse(app.buttons["experiment.cell.0.0"].exists)
+    }
+
+    @MainActor func testLargestEndingReplayRetainsResultAcrossBackgroundAndCancel() {
+        let app = launch(largest: true, review: ["--observatory-review", "--observatory-dense"])
+        defer { app.terminate() }
+        tap("sky.start", app); tap("sky.begin", app)
+        let outcome = app.staticTexts["experiment.outcome"]
+        XCTAssertTrue(outcome.waitForExistence(timeout: 12))
+        XCTAssertEqual(outcome.label, "No room to land")
+        let score = app.staticTexts["experiment.score"].label
+        XCTAssertTrue(score.contains("had no room for the next star"))
+        capture(app, "flow-ending-largest")
+        tap("experiment.replay", app)
+        XCTAssertTrue(app.staticTexts["sky.subtitle"].label.contains("Your saved round stays until you tap Begin."))
+        XCUIDevice.shared.press(.home); app.activate()
+        XCTAssertTrue(app.buttons["sky.begin"].waitForExistence(timeout: 5))
+        capture(app, "flow-replay-largest-background")
+        tap("sky.home", app); tap("sky.resume", app)
+        XCTAssertTrue(outcome.waitForExistence(timeout: 5))
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, score)
+        tap("experiment.new", app)
+        XCTAssertFalse(app.buttons["experiment.cell.0.0"].exists)
+        XCTAssertTrue(app.staticTexts["sky.subtitle"].label.contains("each shower"))
     }
 
     @MainActor func testEntryCancellationAndTerminationRetainThePlayedSky() {

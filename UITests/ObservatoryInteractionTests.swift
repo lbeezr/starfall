@@ -239,8 +239,8 @@ extension ObservatoryInteractionTests {
                 outcome.exists || app.otherElements["experiment.board"].value as? String != before
             }, object: nil).wait(timeout: 5))
         }
-        XCTAssertEqual(outcome.label, "This sky is full")
-        try vo.focus(outcome, expecting: "This sky is full")
+        XCTAssertEqual(outcome.label, "No room to land")
+        try vo.focus(outcome, expecting: "No room to land")
         capture(app, "VoiceOver-largest-text-overflow")
         try vo.advance(to: "Replay this sky", limit: 6)
         try vo.choose(app.buttons["experiment.replay"], expecting: "Replay this sky")

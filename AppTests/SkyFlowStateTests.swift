@@ -156,6 +156,43 @@ final class SkyFlowStateTests: XCTestCase {
         XCTAssertFalse(SkyEntryRequest.initial.isChallenge(replayingChallenge: false))
     }
 
+    func testReplayIntroductionExplainsThePendingModeAndReplacementBoundary() {
+        for challenge in [false, true] {
+            let replay = SkyEntryRequest.replay.introduction(challenge: challenge)
+            XCTAssertTrue(replay.text.contains("Your saved round stays until you tap Begin."))
+            XCTAssertTrue(replay.text.contains(challenge ? "same First Light opening" : "current sky settings"))
+            for entry in [SkyEntryRequest.initial, .fresh, .firstLight] {
+                let fresh = entry.introduction(challenge: challenge)
+                XCTAssertNotEqual(replay.id, fresh.id)
+                XCTAssertTrue(fresh.text.contains(challenge ? "18 starlight" : "each shower"))
+            }
+        }
+    }
+
+    @MainActor func testWinningClearSavesFinalScoreBeforeSettlementAndSurvivesInterruption() throws {
+        for interrupted in [false, true] {
+            let (store, presenter, clock, defaults) = make()
+            store.startFirstLight(); store.setSuspended(false)
+            for _ in 0..<100 where !store.game.isOver {
+                if let cell = store.game.legalGroups.first?.first { store.clear(cell) }
+                else { store.callShower() }
+                if !store.game.isOver { presenter.finish() }
+            }
+            XCTAssertEqual(store.game.outcome, .won)
+            XCTAssertTrue(store.busy, "Core commits the final clear before presentation settles")
+            let committed = store.game
+            XCTAssertEqual(try SkySaveArchive.decode(XCTUnwrap(defaults.data(forKey: FallingSkyStore.saveKey))), committed)
+            if interrupted { store.setSuspended(true) }
+            presenter.finish()
+            XCTAssertFalse(store.busy)
+            store.setSuspended(false); clock.advance(100); presenter.finish()
+            XCTAssertEqual(store.game, committed)
+            XCTAssertNil(clock.deadline)
+            let restored = FallingSkyStore(defaults: defaults, arguments: [], presenter: FallingSkyRecorder(), clock: ManualRainClock())
+            XCTAssertEqual(SkyResultSnapshot(game: restored.game), SkyResultSnapshot(game: committed))
+        }
+    }
+
     func testHandoffRequiresSettledReadyActiveAndModalFreeAdmission() throws {
         var flow = SkyFlowState(arguments: [])
         _ = flow.handle(.start, hasSavedSky: false)
@@ -216,7 +253,7 @@ final class SkyFlowStateTests: XCTestCase {
         for _ in 0..<40 where !game.isOver { _ = game.letStarsFall() }
         let ended = SkyWelcomeSnapshot(game: game, hasSavedSky: true, paused: true)
         XCTAssertFalse(ended.canContinue); XCTAssertTrue(ended.ended)
-        XCTAssertTrue(ended.summary?.contains("Sky full") == true)
+        XCTAssertTrue(ended.summary?.contains("Round over") == true)
     }
 
     func testCastEntranceKeepsCompleteRasterAndShadowInsideItsRegion() {
@@ -250,6 +287,7 @@ final class SkyFlowStateTests: XCTestCase {
             XCTAssertFalse(result.won)
             XCTAssertEqual(result.target, challenge ? 18 : nil)
             let column = try XCTUnwrap(game.blockedColumn)
+            XCTAssertTrue(game.board.contains(nil), "A blocked arrival need not fill every column")
             XCTAssertTrue(result.reason.contains("Column \(column+1)"))
             let restored = try JSONDecoder().decode(FallingSky.self, from: JSONEncoder().encode(game))
             XCTAssertEqual(SkyResultSnapshot(game: restored), result)

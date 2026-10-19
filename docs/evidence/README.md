@@ -89,3 +89,5 @@ Start with [the roadmap](../ROADMAP.md) for current priorities or [visual refere
 [Third debt pass](debt-third-pass-2026-10-18/README.md) records ranked restore and native acceptance reliability work.
 
 [Fourth debt pass](debt-fourth-pass-2026-10-18/README.md) records reproduced stale dialogue and surviving subprocesses, with source-bound verification.
+
+[Clear endings and replay choices](ending-replay-2026-10-19/README.md) records truthful overflow headings, pending replay explanations and final-score/save verification.
