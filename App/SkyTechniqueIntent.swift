@@ -6,6 +6,51 @@ enum SkyBoardAction {
     case nudge(Cell, Cell)
 }
 
+/// A request names the committed stars, never an animation's node coordinates.
+enum SkyPlayerInput: Equatable {
+    case tap(Cell)
+    case swap(Cell, Cell)
+
+    var source: Cell {
+        switch self { case .tap(let cell), .swap(let cell, _): cell }
+    }
+    var destination: Cell? {
+        if case .swap(_, let cell) = self { return cell }
+        return nil
+    }
+    func preview(in game: FallingSky) -> FallingSkyTurn? {
+        var next = game
+        switch self {
+        case .tap(let cell): return next.clear(cell)
+        case .swap(let from, let to): return next.nudge(from: from, to: to)
+        }
+    }
+}
+
+struct SkyBufferedInput: Equatable {
+    // Covers the ordinary 340 ms swap/fall and 560 ms clear presentation.
+    // Identity checks and replacement on new contact prevent delayed retargeting.
+    static let lifetime: TimeInterval = 0.65
+    let ticket: UInt64
+    let action: SkyPlayerInput
+    let snapshot: FallingSky
+    let sourceID: Int
+    let destinationID: Int?
+    let deadline: TimeInterval
+
+    init?(ticket: UInt64, action: SkyPlayerInput, game: FallingSky, now: TimeInterval) {
+        guard let sourceID = game.gem(at: action.source)?.id, action.preview(in: game) != nil else { return nil }
+        self.ticket = ticket; self.action = action; snapshot = game
+        self.sourceID = sourceID
+        destinationID = action.destination.flatMap { game.gem(at: $0)?.id }
+        deadline = now + Self.lifetime
+    }
+    func matches(_ game: FallingSky) -> Bool {
+        snapshot == game && game.gem(at: action.source)?.id == sourceID
+            && action.destination.flatMap { game.gem(at: $0)?.id } == destinationID
+    }
+}
+
 /// Descriptive only: every continuation must spend a recipe created by the preceding clear.
 struct SkyTechniqueRelay {
     private var followups: [StarRecipe] = []

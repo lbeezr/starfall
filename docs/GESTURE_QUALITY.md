@@ -4,7 +4,7 @@
 
 The user wants S-tier response, consistency, forgiveness, secondary actions and fast follow-ups, delivered incrementally. Ship each coherent, verified improvement through current main and the canonical phone updater. Simulator correctness and installation receipts are evidence of implementation and delivery; physical comfort still requires observation.
 
-**Next action:** integrate the already verified immediate-swipe foundation, preserving current main's feedback ownership fix and save contract; then ship follow-up admission separately.
+**Next action:** publish the verified foundation (`codex/instant-swipe-foundation`) once the pending repository-specific approval is answered, then use the canonical updater. The separate follow-up branch (`codex/gesture-follow-up`) also passes development checks. Do not combine them into one delivery.
 
 ## Scope and acceptance
 
@@ -29,3 +29,5 @@ Reuse existing gesture, contact, presenter and feedback owners. No backend, tele
 ## Evidence and limits
 
 The [foundation report](evidence/immediate-swipes-2026-10-18/README.md) records the existing native/test evidence. The [visual reference](design/VISUAL_REFERENCE.md) owns selected captures. Stable identity, immediate acknowledgment and cancellation are required before buffering can ship; a blind queue is not an acceptable intermediate version. Phone availability may defer delivery, but must not delay independent implementation and review.
+
+The [follow-up report](evidence/follow-up-input-2026-10-18/README.md) records the next separate batch. For batch 3, inspect coarse final samples that leave the board: the current recognizer checks the sampled point before computing a valid cardinal neighbor, so an otherwise valid long flick can cancel. Preserve rejection of actual out-of-board destinations and cancellation of held drawings that leave the playfield. Add off-center, coarse and edge regressions before changing the shared decision boundary.

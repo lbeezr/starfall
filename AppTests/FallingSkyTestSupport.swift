@@ -23,6 +23,8 @@ import StarfallCore
     var reduceMotion = false
     var lastRendered: FallingSky?
     var completions: [() -> Void] = []
+    var bufferedCue: SkyPlayerInput?
+    func showBufferedInput(_ action: SkyPlayerInput?) { bufferedCue = action }
     func render(_ game: FallingSky) { lastRendered = game }
     func animate(_ turn: FallingSkyTurn, from old: FallingSky,
                  to game: FallingSky, completion: @escaping () -> Void) {

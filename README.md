@@ -6,14 +6,14 @@ A small native iOS falling-sky puzzle. Clear matching stars as showers fill the 
 
 [Roadmap](docs/ROADMAP.md) · [Visual reference and cast](docs/design/VISUAL_REFERENCE.md) · [Playtest](docs/PLAYTEST-FALLING-SKY.md) · [Documentation map](docs/README.md)
 
-Current work focuses on [calibrating the existing mechanics](docs/design/CALIBRATION.md), starting with free-exchange balance and repeatable native play.
+Current work targets [fast, consistent gestures](docs/GESTURE_QUALITY.md), shipped in individual verified batches alongside [mechanics calibration](docs/design/CALIBRATION.md).
 
 Player wording and character voices are authored in the [local copy catalogue](App/DialogueScripts/README.md), with typed interface keys, validated templates and an in-app dialogue preview.
 
 ## How to play
 
 - **Clear a match:** Horizontally or vertically connected matching jewels must total at least 3 starlight. Normal jewels count as 1; large jewels with a luminous double silhouette and paired glints count as 2. Their soft aura gently pulses in normal motion. Clear beside Dusk to dissolve it early; gray neighbors still match and grow, but score zero until released.
-- **Keep playing:** Ready groups stay interactive while other columns settle. A contact outline acknowledges touch; changing columns briefly wait, and short ordinary finger drift stays a tap.
+- **Keep playing:** Ready groups stay interactive while other columns settle. One recent tap or swap can wait briefly for its stars, with a visible outline/arrow acknowledgment. A new touch replaces that intention; changed boards and interruptions cancel it. Short ordinary finger drift stays a tap.
 - **Draw a constellation:** Hold a star until it glows, then draw through five or more matching stars, beside one another or across one empty space in a straight line, including diagonals, then lift. Only the stars you traced clear; retrace to branch. Drawing holds the next shower until release or cancellation.
 - **Arrange a setup:** In survival, swipe left, right, up or down to exchange neighbors immediately. Each touch moves one space regardless of color. Stars exchanged into space fall normally. Hold then trace exact four-star squares or five-star crosses; surrounding stars stay. Build the next recipe, then clear again for a deliberate relay. [Techniques](docs/design/STAR_TECHNIQUES.md).
 - **Understand the sky:** Characters explain play, storm counts and timing warnings in one bottom chat. Tap the retained portrait to reread a message. Six conversation portraits and bundled scripts share one reusable presentation; [edit or preview dialogue](App/DialogueScripts/README.md).

@@ -89,6 +89,9 @@ enum StarfallTheme {
     enum SelectionCue {
         static let innerRadius: CGFloat = 0.39
         static let outerRadius: CGFloat = 0.52
+        static let contactWidth: CGFloat = 2
+        static let readyWidth: CGFloat = 3
+        static let arrowWing: CGFloat = 0.12
     }
 
     enum Typography {

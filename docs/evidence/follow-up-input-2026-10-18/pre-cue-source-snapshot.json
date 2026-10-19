@@ -1,0 +1,15 @@
+{
+  "baseCommit": "0d13695d0c6cc861108739776428fb3aa0f6b2f1",
+  "runtimeBuildID": "dev.b92f2e664e",
+  "dirtyInputs": {
+    "App/DialogueScripts/observatory-dialogue.json": "42ae508d11a0f74485b762d4527241adc7d064b0139730735a4163d4755ceb7f",
+    "App/FallingSkyScene.swift": "45a97a5807edf1ee54eb420912fa03f4eac4e0851573f1f78acb18c6b9b06907",
+    "App/FallingSkyStore.swift": "a01361f84dab63584ba9809913811e955fbbe503c29f7d4a99bee9fe00b414a8",
+    "App/FallingSkyView.swift": "da35e401e549382f8e9bf8b0b4bd3e18480c2bb266e1a719dd0f88814600f02d",
+    "App/SkyCopy.swift": "1aa9d2b6bf45015c9e71abb9739917997af1420346d23533e7e861b5eb797559",
+    "App/SkyTechniqueIntent.swift": "581dd2a2ba4b8e5e16597790b0a025c3b66fd1e48e8f5fa6fefa1b6398142dc0",
+    "App/StarfallTheme.swift": "bd31e4d733cf2adb251a9475bbf959189e350f5791e12cd8bc4f030e4a8b1ae4",
+    "AppTests/FallingSkyTestSupport.swift": "98f7eb8360131b044ec2f55b00a7a3382db2acb73d2ca9b02a29f7c707664623",
+    "AppTests/SkyTechniqueStoreTests.swift": "3b45079cdd1fdb821089b7f581b6e15eac249c4e94198af0f501f7a8aea960ae"
+  }
+}
