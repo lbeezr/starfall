@@ -1,12 +1,12 @@
 # Kite Harbor verification
 
-**Result:** Verified development scope; delivery pending · **Owner:** Current implementer · **Date:** October 19, 2026
+**Result:** Verified development scope and canonical delivery · **Owner:** Current implementer · **Date:** October 19, 2026
 
 Kite Harbor adds a third selectable 18-light challenge with seed 42 and the existing rules. Five whole-image paintings per viewport restore its sails and mooring lights; completion uses existing light feedback and the ordinary result. Open sky remains the default. There are no campaign unlocks, tiny travelers or departure clips.
 
-**Confirmed:** Core 178/178, Python tooling 55/55, all fifteen source paintings, all fifteen native scene states, three phone UI tests, the tablet rotation/state test, four compact sibling tests, a 49-star native clear and one normal-motion finishing clear. The first combined run passed **330/331** tests: one hosted canvas-size probe failed, then **17/17 affected hosted tests passed** after its correction. This is not a single clean rerun of the entire hosted suite. **Merge and canonical delivery remain pending.** Actual VoiceOver and physical play retain separate acceptance.
+**Confirmed:** Core 178/178, Python tooling 55/55, all fifteen source paintings, all fifteen native scene states, three phone UI tests, the tablet rotation/state test, four compact sibling tests, a 49-star native clear and one normal-motion finishing clear. The first combined run passed **330/331** tests: one hosted canvas-size probe failed, then **17/17 affected hosted tests passed** after its correction. This is not a single clean rerun of the entire hosted suite. **Merged and canonically installed.** Actual VoiceOver and physical play retain separate acceptance.
 
-**Next action:** Root integrates the verified [production scope](../../design/kite-harbor-03/PRODUCTION_PLAN.md), then records the canonical installation receipt. This folder owns acceptance evidence; the [design package](../../design/kite-harbor-03/README.md) owns artwork and the offline reviewer.
+**Next action:** Observe physical play and portrait contrast before RC accessibility acceptance; the [development production scope](../../design/kite-harbor-03/PRODUCTION_PLAN.md) and canonical delivery are complete. This folder owns acceptance evidence; the [design package](../../design/kite-harbor-03/README.md) owns artwork and the offline reviewer.
 
 ## Verification context
 
@@ -34,7 +34,13 @@ The Core run used dirty base `0874a53`, with package inputs matching `c89ea67`, 
 | Tablet input / rotation / states | **1/1 UI test passed**, 197.206 s; 0 failures/skips/warnings | `1bb2b51`; bundle `test_sim_2026-10-19T17-01-05-180Z_pid14605_b76ae6a8.xcresult`. Actual 5→9 landscape and 9→13 portrait clears; stable 49-cell mapping and sampled identities through rotation. All ten state assertions passed, and all ten tablet images were independently inspected without a blocking rendering/layout issue. |
 | Compact / representative siblings | **4/4 passed**, 276.734 s; 0 failures/skips/warnings | `1bb2b51`, iPhone SE 3/iOS 27.0; bundle `test_sim_2026-10-19T17-04-45-302Z_pid14605_9f84788e.xcresult`. Kite/Ribbon/Lantern native win, saved result and replay; Open sky automatic rain, paused clear, replay and settings. Six selected appearance frames inspected. |
 | Debug / Release / membership | **Debug tests and Release build passed** | Release at `1bb2b51`, unchanged `dev.b05d0b243e`: 15.303 s, 0 warnings/errors; `build_sim_2026-10-19T17-10-14-209Z_pid14605_16da44d9.log`. Native tests separately establish the Debug target and selected resources. |
-| Integration / delivery / physical play | **Pending** | No Kite merge or canonical installation receipt claimed. Physical play and human satisfaction are not observed. |
+| Integration / canonical delivery | **Verified** | [PR #171](https://github.com/lbeezr/starfall/pull/171) merged; the canonical updater installed `dev.b05d0b243e` from main `1c2682c` at 17:20:45.613 UTC. Core 178 passed again; signed build and OS-owned installation identity verified. Main CI was pending at installation. Physical play remains unobserved. |
+
+## Publication and delivery
+
+[PR #171](https://github.com/lbeezr/starfall/pull/171) merged the verified implementation. Local publication source `a8760ff`, published source `3eed4d0` and merged main `1c2682c` share tree `d413ce1599c6da7ee6225608b7ce18e3c67b5403`; publication did not change the tested app content.
+
+The [canonical receipt](delivery.json) verifies installation at **17:20:45.613 UTC** of `dev.b05d0b243e` from main `1c2682c35f51f67be8af75e9ecce1d4f0c046007` into the original `com.starfall.prototype`, bundle version 1. `python3 scripts/device-update.py run` repeated all **178 Core tests** successfully in 15.569 s, built/signature-verified the signed app and confirmed its actual device installation identity. It did not reset, uninstall or automatically launch the app. **Main CI was pending at installation.** Installation does not establish physical gameplay, audio, performance or actual VoiceOver acceptance.
 
 ## Selected phone evidence
 

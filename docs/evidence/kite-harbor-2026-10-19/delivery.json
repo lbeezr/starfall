@@ -1,0 +1,23 @@
+{
+  "buildID": "dev.b05d0b243e",
+  "source": "1c2682c35f51f67be8af75e9ecce1d4f0c046007",
+  "bundle": "com.starfall.prototype",
+  "bundleVersion": "1",
+  "validation": {
+    "coreTests": "passed",
+    "signature": "verified",
+    "mainCIAtInstall": "pending"
+  },
+  "verificationRecordedAt": "2026-10-19T17:20:45.613022+00:00",
+  "method": "python3 scripts/device-update.py run; archived current main, no reset/uninstall, verified OS-owned installation identity",
+  "publication": {
+    "pullRequest": "https://github.com/lbeezr/starfall/pull/171",
+    "localVerifiedSource": "a8760ff7c2457cbff950e4b723570da97074988e",
+    "publishedSource": "3eed4d0b898b78afab788c9102d3d9801c1d5e42",
+    "verifiedTree": "d413ce1599c6da7ee6225608b7ce18e3c67b5403"
+  },
+  "limits": [
+    "Installation is not physical gameplay, audio, performance or actual VoiceOver acceptance.",
+    "The updater does not launch the app automatically."
+  ]
+}
