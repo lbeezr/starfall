@@ -1,0 +1,375 @@
+{
+  "core": {
+    "passed": 172,
+    "command": "swift test --disable-sandbox",
+    "log": "artifacts/ending-replay/core.log"
+  },
+  "acceptance": {
+    "summary": {
+      "status": "SUCCEEDED",
+      "durationMs": 247076,
+      "counts": {
+        "passed": 49,
+        "failed": 0,
+        "skipped": 0
+      },
+      "target": "simulator"
+    },
+    "artifacts": {
+      "buildLogPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c6187ff32363/logs/test_sim_2026-10-19T04-06-51-938Z_pid62736_f0e57f85.log",
+      "xcresultPath": "artifacts/ending-replay/acceptance.xcresult",
+      "testProductsPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c6187ff32363/test-products/test_sim_2026-10-19T04-06-51-938Z_pid62736_e2f3f4e8.xctestproducts"
+    },
+    "diagnostics": {
+      "warnings": [],
+      "errors": [],
+      "testFailures": []
+    },
+    "testCases": [
+      {
+        "suite": "SkyFlowInteractionTests",
+        "test": "testFirstLightWinReplayAndFullSky",
+        "status": "passed",
+        "durationMs": 148432
+      },
+      {
+        "suite": "SkyFlowInteractionTests",
+        "test": "testLargestEndingReplayRetainsResultAcrossBackgroundAndCancel",
+        "status": "passed",
+        "durationMs": 31071
+      },
+      {
+        "suite": "SkyFlowInteractionTests",
+        "test": "testReducedMotionEntryAndReplayKeepExplicitBegin",
+        "status": "passed",
+        "durationMs": 41094
+      },
+      {
+        "suite": "SkyFlowInteractionTests",
+        "test": "testResultActionsRemainHittableAboveTheVisibleFinalBoard",
+        "status": "passed",
+        "durationMs": 14699
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testAllSpeakerAssetsArePackagedWithTransparentMarginsAtBoundedSize",
+        "status": "passed",
+        "durationMs": 8
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testCatalogRendersEveryBundledScriptAndRejectsAuthoringErrors",
+        "status": "passed",
+        "durationMs": 5
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testCommittedClearPublishesFeedbackImmediatelyAndRestoresWithoutTransientCopy",
+        "status": "passed",
+        "durationMs": 16
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testContextKeepsTheOriginalSpeakerAndForecastTense",
+        "status": "passed",
+        "durationMs": 1
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testDuskHelpUsesTheRetainedRuleAndTraceCelebrationUsesDistinctStars",
+        "status": "passed",
+        "durationMs": 4
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testDuskTeasesOnlyAfterCommittedConsumptionOrAnActuallyDrainedClear",
+        "status": "passed",
+        "durationMs": 8
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testEveryForecastStarFinishesOnBothPathsBeforeReset",
+        "status": "passed",
+        "durationMs": 3
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testExpiryRejectsStaleCallbacksAfterNewMessageReopenAndReset",
+        "status": "passed",
+        "durationMs": 0
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testIslandPlacementFallsBackForUnknownSmallAndAccessibleLayouts",
+        "status": "passed",
+        "durationMs": 0
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testNewerHelpSurvivesPlayerAndShowerCompletionWithoutDuplicateSpeech",
+        "status": "passed",
+        "durationMs": 30
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testSpeakerSequenceAndPriorityHaveOneCurrentMessageAndNoBacklog",
+        "status": "passed",
+        "durationMs": 0
+      },
+      {
+        "suite": "SkyDialogueTests",
+        "test": "testTypedInterfaceInventoryAndTemplatesRejectMissingExtraAndInjectedValues",
+        "status": "passed",
+        "durationMs": 4
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testBeginKeepsInitialSeedAndExistingReplayGenerationContracts",
+        "status": "passed",
+        "durationMs": 6
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testBeginRejectsDuplicateAndStaleEntryActions",
+        "status": "passed",
+        "durationMs": 0
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testBrowsingAndCancelingEveryReplacementPreservesCommittedSave",
+        "status": "passed",
+        "durationMs": 9
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testCanceledHandoffRejectsLateReadinessAndDoesNotReopenPlay",
+        "status": "passed",
+        "durationMs": 0
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testCancelingCompletedSkyReplayKeepsTheSavedOutcome",
+        "status": "passed",
+        "durationMs": 20
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testCastEntranceKeepsCompleteRasterAndShadowInsideItsRegion",
+        "status": "passed",
+        "durationMs": 1
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testContinueRetainsPauseChoiceAndClockRemainder",
+        "status": "passed",
+        "durationMs": 7
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testEntryObjectiveDescribesPendingChoiceInsteadOfRetainedRound",
+        "status": "passed",
+        "durationMs": 0
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testFreshEntryAndCancelNeverCreatesASave",
+        "status": "passed",
+        "durationMs": 2
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testHandoffRequiresSettledReadyActiveAndModalFreeAdmission",
+        "status": "passed",
+        "durationMs": 0
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testHelpUsesCurrentOrPendingRulesWithoutCommittingEntry",
+        "status": "passed",
+        "durationMs": 0
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testOpeningContinuePreservesTheExistingResumeGrace",
+        "status": "passed",
+        "durationMs": 3
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testPreferencesNeverStageOrReplaceASkyAndAreBlockedDuringHandoff",
+        "status": "passed",
+        "durationMs": 0
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testReplayIntroductionExplainsThePendingModeAndReplacementBoundary",
+        "status": "passed",
+        "durationMs": 0
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testResultSnapshotKeepsTheActualWinningScoreIncludingOvershoot",
+        "status": "passed",
+        "durationMs": 1
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testResultSnapshotsExplainOrdinaryAndChallengeOverflowAfterRestore",
+        "status": "passed",
+        "durationMs": 3
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testSceneDetachmentSynchronouslyFreezesAndRejectsADueClock",
+        "status": "passed",
+        "durationMs": 2
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testWelcomeSummaryDistinguishesSavedModePauseAndCompletedSkies",
+        "status": "passed",
+        "durationMs": 1
+      },
+      {
+        "suite": "SkyFlowStateTests",
+        "test": "testWinningClearSavesFinalScoreBeforeSettlementAndSurvivesInterruption",
+        "status": "passed",
+        "durationMs": 21
+      },
+      {
+        "suite": "SkySaveArchiveTests",
+        "test": "testCurrentEnvelopePreservesWhiteIdentityAndRejectsWrongSchemasAndInvalidCore",
+        "status": "passed",
+        "durationMs": 8
+      },
+      {
+        "suite": "SkySaveArchiveTests",
+        "test": "testCurrentEnvelopeTakesPrecedenceAndInitializationDoesNotWrite",
+        "status": "passed",
+        "durationMs": 4
+      },
+      {
+        "suite": "SkySaveArchiveTests",
+        "test": "testFailedEncodingLeavesCurrentAndRecoverySlotsUntouched",
+        "status": "passed",
+        "durationMs": 2
+      },
+      {
+        "suite": "SkySaveArchiveTests",
+        "test": "testLegacyMigrationWaitsForActivationAndPreservesExactSkyAndOldBytes",
+        "status": "passed",
+        "durationMs": 8
+      },
+      {
+        "suite": "SkySaveArchiveTests",
+        "test": "testMalformedV4DoesNotFallbackAndV4CannotAdmitGravity",
+        "status": "passed",
+        "durationMs": 2
+      },
+      {
+        "suite": "SkySaveArchiveTests",
+        "test": "testMissingValidAndUnsupportedArchivesHaveDistinctResults",
+        "status": "passed",
+        "durationMs": 3
+      },
+      {
+        "suite": "SkySaveArchiveTests",
+        "test": "testPresentInvalidCurrentSaveNeverResurrectsLegacyRound",
+        "status": "passed",
+        "durationMs": 3
+      },
+      {
+        "suite": "SkySaveArchiveTests",
+        "test": "testRawModernSkyCannotMasqueradeAsLegacySave",
+        "status": "passed",
+        "durationMs": 5
+      },
+      {
+        "suite": "SkySaveArchiveTests",
+        "test": "testRejectedArchivesSurviveActivationRestartAndSubsequentWrites",
+        "status": "passed",
+        "durationMs": 13
+      },
+      {
+        "suite": "SkySaveArchiveTests",
+        "test": "testRejectionNoticeAcknowledgementIsReadOnlyAndDoesNotEraseBackupIntent",
+        "status": "passed",
+        "durationMs": 3
+      },
+      {
+        "suite": "SkySaveArchiveTests",
+        "test": "testSaveFailureNoticeIsBoundedPreservesPreviousSaveAndRearmsOnlyAfterSuccess",
+        "status": "passed",
+        "durationMs": 3
+      },
+      {
+        "suite": "SkySaveArchiveTests",
+        "test": "testSemanticallyInvalidCurrentSkyRejectsWithoutLegacyFallbackOrWrites",
+        "status": "passed",
+        "durationMs": 5
+      },
+      {
+        "suite": "SkySaveArchiveTests",
+        "test": "testTerminalGravityRestorePreservesLossAcrossMigrationActivationAndRelaunch",
+        "status": "passed",
+        "durationMs": 15
+      },
+      {
+        "suite": "SkySaveArchiveTests",
+        "test": "testV4MigrationPreservesGenerationForecastReplayAndBytes",
+        "status": "passed",
+        "durationMs": 7
+      }
+    ]
+  },
+  "compact": {
+    "summary": {
+      "status": "SUCCEEDED",
+      "durationMs": 83214,
+      "counts": {
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0
+      },
+      "target": "simulator"
+    },
+    "artifacts": {
+      "buildLogPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c6187ff32363/logs/test_sim_2026-10-19T04-11-27-821Z_pid62736_e521dcd0.log",
+      "xcresultPath": "artifacts/ending-replay/compact.xcresult",
+      "testProductsPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c6187ff32363/test-products/test_sim_2026-10-19T04-11-27-821Z_pid62736_002e815a.xctestproducts"
+    },
+    "diagnostics": {
+      "warnings": [],
+      "errors": [],
+      "testFailures": []
+    },
+    "testCases": [
+      {
+        "suite": "SkyFlowInteractionTests",
+        "test": "testLargestEndingReplayRetainsResultAcrossBackgroundAndCancel",
+        "status": "passed",
+        "durationMs": 42353
+      },
+      {
+        "suite": "SkyFlowInteractionTests",
+        "test": "testResultActionsRemainHittableAboveTheVisibleFinalBoard",
+        "status": "passed",
+        "durationMs": 13427
+      }
+    ]
+  },
+  "release": {
+    "summary": {
+      "status": "SUCCEEDED",
+      "durationMs": 5647,
+      "target": "simulator"
+    },
+    "artifacts": {
+      "buildLogPath": "~/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c6187ff32363/logs/build_sim_2026-10-19T04-11-17-111Z_pid62736_fe0c03ab.log"
+    },
+    "diagnostics": {
+      "warnings": [],
+      "errors": []
+    }
+  }
+}

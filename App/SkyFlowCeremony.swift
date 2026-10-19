@@ -19,6 +19,7 @@ enum SkyFlowAction: Equatable { case start, firstLight, begin, resume, replay, a
 @MainActor struct SkyFlowCeremony: View {
     let screen: SkyFlowScreen
     let challenge: Bool
+    let entry: SkyEntryRequest?
     let result: SkyResultSnapshot?
     let welcome: SkyWelcomeSnapshot
     let active: Bool
@@ -151,7 +152,7 @@ enum SkyFlowAction: Equatable { case start, firstLight, begin, resume, replay, a
         case .welcome:
             SkyDialogueLibrary.line("ceremony.welcome", values: ["summary": welcome.summary ?? ""])
         case .entry:
-            SkyDialogueLibrary.line(challenge ? "first-light.entry" : "observatory.entry")
+            (entry ?? .initial).introduction(challenge: challenge)
         case .won, .full:
             SkyDialogueLibrary.line(screen == .won ? "ceremony.result" : "ceremony.full", values: ["score": result?.scoreLabel ?? SkyCopy.text(.resultScore, values: ["score": String(welcome.score)]), "reason": result?.reason ?? ""])
         case .playing: SkyDialogueLibrary.line("guide.opening")

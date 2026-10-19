@@ -4,7 +4,7 @@
 
 Polish the six gameplay priorities in order, merging and delivering each verified improvement through the canonical phone updater before starting the next. The player reported a “huge improvement” after the five gesture deliveries. Apply that same bounded process to the remaining experience.
 
-**Next action:** Align readiness haptics and reward sounds with the committed action.
+**Next action:** Clarify endings and replay, then finish the compact-device CI follow-up.
 
 ## Scope and success
 
@@ -14,8 +14,8 @@ Polish the six gameplay priorities in order, merging and delivering each verifie
 | 2 | Understand consequences | Selection, committed clear, score gain and invalid actions give consistent, truthful feedback without covering the board or delaying input. | Delivered: PR #144/#146; physical comprehension open |
 | 3 | Fair shower rhythm | The arrival cue agrees with the actual deadline; interruptions preserve remaining time; no catch-up burst; current survival rules receive a reproducible pacing review. | Delivered: PR #147, dev.9020625ab7; both compiler builds verified; broader CI triage open |
 | 4 | Discover useful setups | Players can find and practice recipes, Opal use and causal relays through concrete examples; hints match current legal actions and never surprise-commit a move. | Delivered: PR #148, dev.14bd6d9ce3; physical comprehension open |
-| 5 | Reward rhythm | Clear, growth, recipe and relay feedback are distinguishable, bounded and synchronized with committed outcomes; rapid play does not pile up sounds/haptics or effects. | Verified locally; merge/delivery pending |
-| 6 | End and replay | A final legal action resolves before the result; the reason and score are clear; replay and new sky have predictable save/seed behavior and survive interruptions. | Pending |
+| 5 | Reward rhythm | Clear, growth, recipe and relay feedback are distinguishable, bounded and synchronized with committed outcomes; rapid play does not pile up sounds/haptics or effects. | Delivered: PR #149, dev.9de7f44c3c; physical sound/haptic preference open |
+| 6 | End and replay | A final legal action resolves before the result; the reason and score are clear; replay and new sky have predictable save/seed behavior and survive interruptions. | Verified locally; merge/delivery pending |
 
 No new progression, power-ups, backend, analytics or automatic aging. Preserve saves, deterministic rules, native input and the original app. Each priority may need several small corrections; ship each verified correction separately.
 
@@ -82,7 +82,16 @@ Readiness haptics currently fire only at five selected stars, even though a vali
 - [x] Signal readiness when Core first accepts the actual held path, including four-star squares; no duplicate signal on retracing or the fifth star after an already-ready square.
 - [x] Reject stale hold/generation/snapshot cues and preserve haptics, calm effects, system Reduce Motion and VoiceOver policy.
 - [x] Give recipes and relays distinct bounded audio cues; preserve ordinary take rotation, interrupt/mute/background cancellation and commit-time routing. Growth keeps its existing visible landing/grown cue without adding automatic audio noise.
-- [ ] Verify generated files, real bundled playback and rapid/interrupted actions; merge and canonically deliver before ending/replay. Physical auditory/haptic preference remains open.
+- [x] Verify generated files, real bundled playback and rapid/interrupted actions; merge and canonically deliver before ending/replay. Physical auditory/haptic preference remains open.
+
+## Seventh batch: clear endings and predictable replay
+
+The loss heading says the whole sky is full although one blocked column ends the round. Replay also reuses the fresh-entry explanation. Keep the committed column/score reason, describe replay before Begin, and preserve the existing explicit replacement and save boundary.
+
+- [x] The ending describes a blocked arrival even when other columns remain open; the actual score and blocked column survive restoration.
+- [x] Replay explains the same starting sky with current settings; First Light identifies its fixed opening and objective. Browsing/canceling entry preserves the saved round until Begin.
+- [x] A winning action commits and saves before presentation, with the final result revealed after settlement; interruption and stale completion cannot replace its score or restart the clock.
+- [x] Verify ordinary/challenge endings, replay/new sky, largest text, normal animation and system Reduce Motion; inspect native captures. Verification passes; merge and canonical delivery follow.
 
 ## CI follow-up before closing the workstream
 

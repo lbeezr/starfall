@@ -1,0 +1,12 @@
+{
+  "source": "7322bcafb37523c15f6c65617a473d493301933d",
+  "run": 39196135300,
+  "job": 117879462623,
+  "url": "https://github.com/lbeezr/starfall/actions/runs/39196135300",
+  "result": "failed before app build",
+  "core": "172 passed",
+  "failure": "simulator inventory exceeded its 30-second bound; exit 124",
+  "appBuild": "not reached",
+  "nativeTests": "not reached",
+  "inference": "Runner/simulator inventory availability failure; no app compilation or gameplay conclusion follows."
+}

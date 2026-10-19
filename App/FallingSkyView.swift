@@ -138,6 +138,7 @@ import StarfallCore
                 let entryID = flow.entryID
                 SkyFlowCeremony(screen: ceremonyScreen,
                                 challenge: entryChallenge,
+                                entry: flow.entry,
                                 result: endingReady ? SkyResultSnapshot(game: store.game) : nil,
                                 welcome: SkyWelcomeSnapshot(game: store.game, hasSavedSky: store.hasSavedSky, paused: store.isPaused),
                                 active: scenePhase == .active && flow.handoff == nil && !settings, quiet: quietMotion, modal: settings,

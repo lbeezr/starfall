@@ -230,6 +230,28 @@
       ]
     },
     {
+      "id": "observatory.replay",
+      "lines": [
+        {
+          "id": "observatory.replay.1",
+          "speaker": "sunny",
+          "text": "Same starting sky, with your current sky settings. Your saved round stays until you tap Begin.",
+          "priority": "help"
+        }
+      ]
+    },
+    {
+      "id": "first-light.replay",
+      "lines": [
+        {
+          "id": "first-light.replay.1",
+          "speaker": "sunny",
+          "text": "Try the same First Light opening again. Collect 18 starlight. Your saved round stays until you tap Begin.",
+          "priority": "help"
+        }
+      ]
+    },
+    {
       "id": "first-light.entry",
       "lines": [
         {
@@ -663,7 +685,7 @@
     "flow.entry": "Make room for the stars",
     "flow.challenge": "Collect 18 starlight",
     "flow.won": "First Light complete!",
-    "flow.full": "This sky is full",
+    "flow.full": "No room to land",
     "flow.preparing": "Preparing your sky…",
     "result.score": "{score} starlight collected",
     "result.challengeScore": "{score} of {target} starlight collected",
@@ -674,7 +696,7 @@
     "welcome.open": "Open sky",
     "welcome.challenge": "First Light",
     "welcome.complete": "Complete",
-    "welcome.full": "Sky full",
+    "welcome.full": "Round over",
     "welcome.paused": "Automatic showers paused",
     "welcome.running": "Automatic showers",
     "welcome.summary": "{mode} · {score} · {state}",

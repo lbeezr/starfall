@@ -1,5 +1,13 @@
 import StarfallCore
 
+extension SkyEntryRequest {
+    /// Explains the pending choice without reading or replacing the retained round.
+    func introduction(challenge: Bool) -> SkyDialogueLine {
+        let mode = challenge ? "first-light" : "observatory"
+        return SkyDialogueLibrary.line(mode + (self == .replay ? ".replay" : ".entry"))
+    }
+}
+
 /// Committed values only: results remain explainable after process restoration.
 struct SkyResultSnapshot: Equatable {
     let won: Bool
