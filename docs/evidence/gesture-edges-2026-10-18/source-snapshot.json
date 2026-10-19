@@ -1,0 +1,9 @@
+{
+  "baseCommit": "e46358fd84baa5fa4b47d0d4103f2b9f78244735",
+  "runtimeBuildID": "dev.5e10acea62",
+  "dirtyInputs": {
+    "App/ConstellationTraceSurface.swift": "7ecf760f92b86617daccc8d981b92324daf18049c5902f436ee14cf3495c4905",
+    "AppTests/TraceInputPolishTests.swift": "cdb4c4ab22514a9a31cd6b79a9b3212e87000746839cca63a236ff8409bb43a6",
+    "UITests/SkyTechniqueInteractionTests.swift": "6b9385dfe8584eacb01d86c3244cb4f9ed7bc7e9143432284d49fbf8b2756790"
+  }
+}

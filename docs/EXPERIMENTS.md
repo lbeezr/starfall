@@ -6,6 +6,8 @@ This is the authoritative status register for gameplay and presentation experime
 
 ## Current decisions
 
+[Coarse flick forgiveness](design/GESTURE_EDGES.md) corrects the normal shared recognizer: an outside sample may still name a valid adjacent move; actual outward moves and held drawing exits cancel. [Source-bound checks and delivery](evidence/gesture-edges-2026-10-18/README.md). No new mode, pilot route or rule change.
+
 [One bounded follow-up](design/FOLLOW_UP_INPUT.md) extends the user-approved normal gesture path without a pilot flag. Its 650 ms limit covers ordinary swap/fall and clear presentation; snapshot/identity checks, latest-touch replacement and lifecycle cancellation prevent stale replay. [Evidence and delivery status](evidence/follow-up-input-2026-10-18/README.md); phone tuning remains open.
 
 [Bounded native contact tracing](evidence/calibration-critical-mass-2026-10-18/CONTACT_DIAGNOSIS.md) is closed and removed. In its new automatic sample, two misses reach touch-down after the shower owns all columns; twelve admitted contacts commit normally. Only source-bound evidence and the historical patch remain; no app flag, logger or input/rule change is adopted. Physical comfort and earlier uninstrumented attempts retain their limits.
