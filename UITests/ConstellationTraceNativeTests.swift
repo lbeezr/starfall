@@ -273,18 +273,14 @@ extension ConstellationTraceNativeTests {
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label CONTAINS %@", "1 lighter shower"), object: phase).wait(timeout: 5))
         app.buttons["experiment.pause"].tap()
         for expected in ["Storm: 3 heavy showers left.", "Storm: 2 heavy showers left.", "Storm: 1 heavy shower left.", "9 lighter showers before the storm."] {
-            // A storm count can last 1.7 seconds. Evaluating an element predicate
-            // captures repeated hierarchy diagnostics on every miss and can skip
-            // that entire window. Read the exact label once per condition check.
-            let observed = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
-                phase.label.contains(expected)
-            }, object: nil).wait(timeout: 8)
-            XCTAssertTrue(observed, "Missing \(expected); current guide: \(phase.label)")
-            let capture = XCTAttachment(screenshot: app.screenshot())
-            capture.name = "automatic-after-observing-" + expected
-            capture.lifetime = .keepAlways; add(capture)
+            // A phase can last 1.7 seconds; a remote screenshot took 2.26 seconds.
+            // Observe the complete sequence before doing any capture work.
+            app.waitForSkyGuide(containing: expected, timeout: 8)
         }
         score(22, app)
+        let capture = XCTAttachment(screenshot: app.screenshot())
+        capture.name = "automatic-storm-recovered"
+        capture.lifetime = .keepAlways; add(capture)
     }
     @MainActor func testInputRecoversAfterMultitouchBackgroundAndSupportedRotation() {
         let app = launch(); defer { app.terminate(); XCUIDevice.shared.orientation = .portrait }

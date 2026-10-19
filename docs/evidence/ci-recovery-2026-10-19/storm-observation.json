@@ -1,0 +1,96 @@
+{
+  "base": "1c2682c35f51f67be8af75e9ecce1d4f0c046007",
+  "changedNativeInputs": {
+    "UITests/ConstellationTraceNativeTests.swift": "fba08900c1bf167b1079c76a5282700090da47420d2ee6dfe79ef300bc357a8a",
+    "UITests/NativeSkyControls.swift": "2d19e59297027c454d3edf0bfb07d6b5ffce9210285597ed8e15933f08c62eca"
+  },
+  "environment": "Debug; Xcode 27.1 (27A9275); iPhone 17e / iOS 27.0",
+  "reproduction": {
+    "run": 39290050989,
+    "attempt": 1,
+    "source": "2d94194742847def4195c526000b7852768bf7d6",
+    "job": 118188738546,
+    "environment": "ARM64 macOS 26 / Xcode 26.6 (17F113) / iPhone Air / iOS 26.5",
+    "runConclusion": "cancelled after another workstream merged Kite Harbor",
+    "assertion": "Missing Storm: 1 heavy shower left.; current guide: Nova. 6 lighter showers before the storm.",
+    "testSeconds": 50.266,
+    "phaseSeconds": 1.7,
+    "captureGapSeconds": 2.26,
+    "excerpt": [
+      "2026-10-19T17:19:41.7405090Z     t =    29.53s Find the Target Application 'com.starfall.prototype'",
+      "2026-10-19T17:19:43.1651570Z     t =    30.71s Added attachment named 'automatic-after-observing-Storm: 3 heavy showers left.'",
+      "2026-10-19T17:19:43.7496780Z     t =    31.92s Find the \"experiment.message\" StaticText",
+      "2026-10-19T17:19:44.5659210Z     t =    32.91s Find the Target Application 'com.starfall.prototype'",
+      "2026-10-19T17:19:46.9456750Z     t =    35.17s Added attachment named 'automatic-after-observing-Storm: 2 heavy showers left.'",
+      "2026-10-19T17:19:47.9495020Z     t =    36.41s Find the \"experiment.message\" StaticText",
+      "2026-10-19T17:19:49.0876380Z     t =    37.43s Find the \"experiment.message\" StaticText",
+      "2026-10-19T17:19:55.3334570Z     t =    43.45s     Find the \"experiment.message\" StaticText (retry 1)",
+      "2026-10-19T17:19:55.4251850Z     t =    43.46s     Find the \"experiment.message\" StaticText (retry 2)",
+      "2026-10-19T17:19:55.5427320Z     t =    43.46s     Collecting debug information to assist test failure triage",
+      "2026-10-19T17:19:55.7261500Z     t =    43.46s         Requesting snapshot of accessibility hierarchy for app with pid 36608",
+      "2026-10-19T17:19:56.2085130Z     t =    43.47s     Requesting snapshot of accessibility hierarchy for app with pid 36608",
+      "2026-10-19T17:19:56.2086760Z     t =    43.48s Find the \"experiment.message\" StaticText",
+      "2026-10-19T17:20:00.5549520Z /Users/runner/work/starfall/starfall/UITests/ConstellationTraceNativeTests.swift:282: error: -[StarfallUITests.ConstellationTraceNativeTests testAutomaticStormCountsRecoverWithoutManualShowersOrClears] : XCTAssertTrue failed - Missing Storm: 1 heavy shower left.; current guide: Nova. 6 lighter showers before the storm. More time between showers now. Dusk will eat 3 stars after 1 more shower with a touching star.",
+      "2026-10-19T17:20:02.2181010Z Test Case '-[StarfallUITests.ConstellationTraceNativeTests testAutomaticStormCountsRecoverWithoutManualShowersOrClears]' failed (50.266 seconds)."
+    ]
+  },
+  "integrationNote": "babc534 adds delivery documentation only to 1c2682c; the two recorded UI edits are the complete pending native changes.",
+  "checks": [
+    {
+      "device": "iPhone 17e",
+      "cases": [
+        {
+          "test": "ConstellationTraceNativeTests/testAutomaticStormCountsRecoverWithoutManualShowersOrClears",
+          "result": "passed",
+          "seconds": 19.819
+        },
+        {
+          "test": "ConstellationTraceNativeTests/testStormWarningCountRecoveryAndMenuSuspension",
+          "result": "passed",
+          "seconds": 22.376
+        },
+        {
+          "test": "PacingCueUITests/testQuietForecastApproachesBeforeTheShower",
+          "result": "passed",
+          "seconds": 25.107
+        }
+      ],
+      "resultBundle": "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-5baffeb4084c/result-bundles/test_sim_2026-10-19T17-29-27-986Z_pid95357_feddf3f9.xcresult",
+      "skipped": 0
+    },
+    {
+      "device": "iPhone SE (3rd generation)",
+      "cases": [
+        {
+          "test": "ConstellationTraceNativeTests/testAutomaticStormCountsRecoverWithoutManualShowersOrClears",
+          "result": "passed",
+          "seconds": 20.383
+        },
+        {
+          "test": "PacingCueUITests/testQuietForecastApproachesBeforeTheShower",
+          "result": "passed",
+          "seconds": 30.701
+        }
+      ],
+      "resultBundle": "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-5baffeb4084c/result-bundles/test_sim_2026-10-19T17-31-49-754Z_pid95357_c86dc60d.xcresult",
+      "skipped": 0
+    }
+  ],
+  "core": {
+    "source": "1c2682c",
+    "passed": 178,
+    "failed": 0,
+    "seconds": 34.768,
+    "log": "/private/tmp/starfall-ci-kite-main-core.log"
+  },
+  "analogousPaths": [
+    "Manual storm loop: paused between manual showers, so its capture cannot skip an automatic state.",
+    "Forecast countdown: the unchanged-board check precedes capture; later observation uses a persistent committed-board change.",
+    "Automatic dialogue cycles: capture is followed by a monotonic shower-count threshold, not a short-lived exact phase."
+  ],
+  "captureReview": "Tall and compact automatic-storm-recovered attachments were inspected: score 22 and the nine-lighter-showers message are visible. The compact long guide continues below the viewport; stills are not animation evidence.",
+  "limits": [
+    "No retries, exclusions, timeout increases, motion suppression, app changes or weakened phase/score assertions.",
+    "The complete 126-UI/328-hosted current-main development run remains required. Local fixes do not prove the remote timing result."
+  ]
+}
