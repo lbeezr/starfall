@@ -1,8 +1,13 @@
-/// One authored objective for testing goal-driven play before a campaign exists.
-public enum StarfallChallenge: String, Codable, Equatable, Sendable {
-    case firstLight
+/// Directly selectable authored rounds, without campaign or unlock state.
+public enum StarfallChallenge: String, Codable, CaseIterable, Equatable, Sendable {
+    case firstLight, ribbonCrossing
 
-    public var title: String { "First Light" }
+    public var title: String {
+        switch self {
+        case .firstLight: "First Light"
+        case .ribbonCrossing: "Ribbon Crossing"
+        }
+    }
     public var target: Int { 18 }
     public var seed: UInt64 { 42 }
     public var balance: StarfallBalance { .init(pace: .steady, darkStars: .none) }

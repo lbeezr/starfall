@@ -7,7 +7,7 @@ struct FallingSkyMenu: View {
     let turns: Int
     let groups: Int
     let over: Bool
-    let challenge: Bool
+    let challenge: StarfallChallenge?
     let helpContext: SkyHelpContext
     let balance: StarfallBalance
     @Binding var sound: Bool
@@ -16,7 +16,7 @@ struct FallingSkyMenu: View {
     @Binding var place: LandingPlace
     let pause: () -> Void
     let restart: (Bool) -> Void
-    let firstLight: () -> Void
+    let startChallenge: (StarfallChallenge) -> Void
     let observatory: () -> Void
     let setBalance: (StarfallBalance) -> Void
     let done: () -> Void
@@ -35,7 +35,7 @@ struct FallingSkyMenu: View {
                         .accessibilityIdentifier("experiment.replay")
                     Button { restart(false) } label: { Label(SkyCopy.text(.actionNew), systemImage: "sparkles") }
                         .accessibilityIdentifier("experiment.new")
-                } header: { Text(challenge ? SkyCopy.text(.lanternTitle) : place.title) } footer: {
+                } header: { Text(challenge?.locationTitle ?? place.title) } footer: {
                     Text(SkyCopy.text(.a11yBoardSummary, values: ["showers": String(turns), "groups": String(groups)]))
                         .accessibilityIdentifier("experiment.roundSummary")
                 }
@@ -43,7 +43,7 @@ struct FallingSkyMenu: View {
                     Button(action: observatory) { Label(SkyCopy.text(.actionHome), systemImage: "moon.stars") }
                         .accessibilityIdentifier("sky.home")
                 }
-                if !challenge {
+                if challenge == nil {
                     Section("Atmosphere") {
                         NavigationLink { locations.toolbar { dismissal } } label: { LabeledContent("Location", value: place.title) }
                             .accessibilityIdentifier("landing.locations")
@@ -51,13 +51,15 @@ struct FallingSkyMenu: View {
                 }
                SkyFeelSection(sound: $sound, haptics: $haptics, calm: $calm)
                 Section {
-                    if !challenge {
+                    if challenge == nil {
                         NavigationLink { Form { balanceControls }.navigationTitle(SkyCopy.text(.menuBalance)).toolbar { dismissal } }
                             label: { Label(SkyCopy.text(.menuBalance), systemImage: "slider.horizontal.3") }
                             .accessibilityIdentifier("experiment.balance")
-                        Button(action: firstLight) { Label(SkyCopy.text(.menuFirstLight), systemImage: "star.circle") }
-                            .accessibilityHint(SkyCopy.text(.menuFirstLightHint))
-                            .accessibilityIdentifier("experiment.challenge")
+                    }
+                    ForEach(StarfallChallenge.allCases, id: \.self) { choice in
+                        Button { startChallenge(choice) } label: { Label(choice.menuLabel, systemImage: "star.circle") }
+                            .accessibilityHint(choice.menuHint)
+                            .accessibilityIdentifier(choice.menuIdentifier)
                     }
                     NavigationLink { SkyHowToPlay(context: helpContext, done: done).toolbar { dismissal } } label: { Label(SkyCopy.text(.menuHelp), systemImage: "questionmark.circle") }
                         .accessibilityIdentifier("experiment.help")

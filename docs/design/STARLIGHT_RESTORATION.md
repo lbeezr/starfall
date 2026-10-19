@@ -1,12 +1,12 @@
 # Design stages around what the stars restore
 
-**Status:** Draft · **Owner:** Current implementer · **Updated:** October 18, 2026
+**Status:** Two bounded challenges implemented and development-verified; Ribbon delivery pending; wider journey proposed · **Owner:** Current implementer · **Updated:** October 19, 2026
 
-**Chosen foundation:** Murk, the Hungry Moon, and all twelve map locations are user-approved. The rewritten [game bible](STARFALL_GAME_BIBLE.md) owns the lore, cast and story; the [world atlas](WORLD_ATLAS.md) develops each place. This document owns the proposed connection between committed starlight, visible restoration and the level win.
+**Chosen foundation:** Murk, the Hungry Moon, and all twelve map locations are user-approved. The rewritten [game bible](STARFALL_GAME_BIBLE.md) owns the lore, cast and story; the [world atlas](WORLD_ATLAS.md) develops each place. This document owns the connection between committed starlight, visible restoration and the level win, with implementation status tracked separately for each bounded challenge.
 
 **Recommendation:** Give each level one announced starlight objective. Its completion restores a recognizable local purpose. Intermediate states, targets and pressure need playable validation; the former Observatory-first proposal and 6/12/18 milestones are superseded.
 
-**Next action:** Develop Lantern Landing at 0/25/50/75/100% with the real cast, then make one bounded playable comparison. These are art checkpoints, not fixed production thresholds. [Experiment status](../EXPERIMENTS.md) owns adoption; current runtime environments, First Light and saves remain unchanged.
+**Next action:** Verify [Ribbon Crossing’s canonical installation](ribbon-crossing-02/PRODUCTION_PLAN.md). Its [development evidence](../evidence/ribbon-crossing-2026-10-19/README.md) covers all fifteen inspected states, phone/tablet interaction, normal/quiet completion and final hosted/Release passes. [Lantern Landing](lantern-landing-01/README.md) is delivered; Ribbon uses the same seed-42 opening, 18-light goal and overflow rule. Committed scores 0/5/9/14/18 select the 0/25/50/75/100 artwork, while text reports actual clamped progress. [Experiment status](../EXPERIMENTS.md) owns adoption. Open sky remains the default; the remaining ten locations, map traversal and persistent-world progress remain concepts.
 
 ## Start with a purpose worth bringing back
 
@@ -61,7 +61,7 @@ If implemented, the vignette presents the authored initial condition. Completion
 
 Use small continuous responses between major changes so ordinary clears still feel useful. Several authored states can sit on top of continuous committed progress; we do not need 101 separate backgrounds. Checkpoints need not be equally spaced in the playable design. Avoid front-loading every interesting change and leaving a long wait for completion.
 
-Percentages describe completion of this stage's announced job, not screen brightness or completion of an entire world. The player-facing HUD might use a light count, percentage or another clear progress cue; that presentation is still open. Lighting, structure, movement, life and sound can change independently. A quiet night scene can be fully restored at 100%.
+Percentages describe completion of this stage's announced job, not screen brightness or completion of an entire world. The two bounded challenges use the exact light count and a location restoration percentage; wider journey presentation remains open. Lighting, structure, movement, life and sound can change independently. A quiet night scene can be fully restored at 100%.
 
 ## Transformation variety behind the stage proposal
 
@@ -69,7 +69,7 @@ The examples below motivated contrasting repair, awakening and harmony. The appr
 
 | Exploratory idea | 0% | 50% | 100% payoff |
 | --- | --- | --- | --- |
-| **Broken star bridge — reconnect** | A graceful arc is split into drifting sections, with a destination visible beyond | Sections align and paths of light connect some spans | The final span joins; a small procession crosses and the distant destination answers |
+| **Broken star bridge — reconnect** | A graceful arc is split into drifting sections, with a destination visible beyond | Sections align and paths of light connect some spans | The final span joins and reconnects the route to the distant destination |
 | **Sleeping seed moon — awaken** | A curled seed rests on a small bare moon, with hints of roots beneath the surface | Roots reconnect and shoots unfold across the moon | The central seed opens into a luminous canopy, sheltering the little stars |
 | **Silent sky choir — restore harmony** | Suspended bell-like forms hang out of alignment, their light patterns interrupted | Restored forms sway and answer each other in visible pulses | The ensemble produces a brief shared phrase and settles into a gentle rhythm; the visual completion works with sound off |
 
@@ -79,7 +79,7 @@ These examples can be replaced entirely. Existing location names, assets and pri
 
 <img src="../evidence/crystal-glow-integration-2026-10-17/materials.png" width="480" alt="Existing six-family Crystal Glow star cast with idle, surprised, delighted and smiling expressions">
 
-**Native cast reference, not a stage storyboard:** source `6cc9efd`, iPhone 17e / iOS 27.0. [Source and verification limits](../evidence/crystal-glow-integration-2026-10-17/README.md). This is the existing character vocabulary to test against new scenes; it does not prescribe a location or show restoration. The world package has overview concept art, but the five individual states of each stage have not been rendered.
+**Native cast reference, not a stage storyboard:** source `6cc9efd`, iPhone 17e / iOS 27.0. [Source and verification limits](../evidence/crystal-glow-integration-2026-10-17/README.md). This is the existing character vocabulary to test against new scenes; it does not prescribe a location or show restoration. Lantern has five implemented states in three viewport families; Ribbon also has five implemented states in three viewport families. The remaining ten locations retain concept art and written beats.
 
 ## How restoration defines the ending
 
@@ -87,7 +87,7 @@ The initial candidate uses one announced starlight objective. A clear contribute
 
 For this candidate, normalized progress is collected starlight divided by the authored target, capped at completion. Keep the uncapped score. Core owns the result; the environment presents it. A rounded HUD must not announce 100% before the goal actually commits. One large clear can cross several milestones; settle all the resulting changes without forcing a chain of cutscenes.
 
-Choose the target and pressure after specifying the stage's purpose and testing useful puzzle decisions. First Light's 18 is an existing technical baseline, not a target for every stage. Retain overflow as the initial failure constraint for comparison, with pause/manual play supported. Stage-specific goals, altered rules or a different failure model need an explicit next design rather than being inferred from a prop.
+Choose future targets and pressure after specifying the stage's purpose and testing useful puzzle decisions. First Light and Ribbon Crossing intentionally share seed 42 and the 18-light target; this is not a target for every future stage. Both retain overflow, with pause/manual play supported. Stage-specific goals, altered rules or a different failure model need an explicit next design rather than being inferred from a prop.
 
 Restoration is direct feedback for the round's progress. No spend screen, repair currency or required prop tapping is proposed. Do not divide light among several independent errands in the first test. The win condition should stay easy to explain while the transformation becomes richer.
 
@@ -99,27 +99,31 @@ The user has approved all twelve locations across the illustrated map. The [worl
 
 ## Production boundaries
 
-The [current nightscape contract](environments/night-production-09/README.md) owns native scenery boundaries. The [earlier environment production process](environments/PRODUCTION.md) retains historical composition and acceptance guidance. Future restoration stages require explicit composition, geometry, asset and lifecycle checks. Extend its [brief](environments/LOCATION_BRIEF.md) with the chosen transformation and state sequence before making final art.
+The [Lantern production plan](lantern-landing-01/PRODUCTION_PLAN.md) and [Ribbon production plan](ribbon-crossing-02/PRODUCTION_PLAN.md) own the two challenge scenes; the [nightscape contract](environments/night-production-09/README.md) owns open-sky scenery. The [earlier environment production process](environments/PRODUCTION.md) retains historical guidance. Future restoration stages require explicit composition, geometry, asset and lifecycle checks, with their own transformation and state sequence before final art.
+
+**Latest completion decision:** Ribbon uses the existing light transfer, a full-image crossfade to its joined seam, and the normal result. The user removed the separate walking characters and ripple. World travel belongs to future generated clips/cutscenes, which are not implemented; playable stars and the existing ceremony cast remain unchanged.
 
 - Derive scene state from committed progress. Restoring a save shows the correct settled stage; background, settings, restart and scene replacement cancel stale effects. Animation callbacks never award light, schedule showers or determine completion.
 - Keep geometry and input stable through the restoration. For the first candidate, scenery changes do not move the playable board, change hit targets or consume gameplay RNG. Any later geometry proposal needs its own native mapping checks.
-- Use independently authored elements for structural changes and light. Preserve faces, silhouettes, non-color cues and text contrast at every state; darkness is environmental mood, not reduced usability.
+- Render each challenge scene as one continuous whole artwork, with bespoke phone portrait, iPad portrait and iPad landscape compositions; no center clearing, masks or split regions. Keep the real cast and bounded feedback separate. Preserve faces, silhouettes, non-color cues and text contrast at every state; darkness is environmental mood, not reduced usability.
 - Calm effects and Reduce Motion retain the same completed scene with reduced transitions. Progress and results have text/native semantics; sound and color never carry the only completion cue. Follow the [development/RC accessibility cadence](../DEVELOPMENT_BUILDS.md#accessibility-checks-by-build-stage).
 
 ## Acceptance and decision points
 
 Hypothesis: a stage chosen for its restoration arc makes progress and completion more meaningful than the same puzzle with only a counter and ending ceremony. Human observation must assess satisfaction separately from rule correctness.
 
+Lantern’s [development acceptance and delivery](../evidence/lantern-landing-2026-10-19/README.md) are complete within their recorded limits; human satisfaction is still unmeasured. Ribbon’s [observable acceptance plan](ribbon-crossing-02/PRODUCTION_PLAN.md) records its verified development scope and pending installation. The wider story questions below remain open; they do not reopen the user’s authorization of these two bounded challenges.
+
 - [x] **World selection:** The user approved Murk as made and all twelve map locations on October 18. This is creative approval, not native or gameplay acceptance.
-- [ ] **First-stage storyboard:** Compare Lantern Landing’s five states. A reviewer can identify the initial need, distinguish the middle states and explain the payoff without labels. The theft communicates what was taken, keeps helpers visibly safe and connects the player’s actions to its return.
+- [ ] **Story comprehension:** Observe whether a player can identify Lantern Landing’s initial need, distinguish the middle states and explain the payoff without labels. The proposed theft should communicate what was taken, keep helpers visibly safe and connect the player’s actions to its return; it is not implemented by either challenge.
 - [ ] **Gameplay fit:** Before implementing the selected candidate, specify its target, pressure, save/retry behavior and comparison baseline. A player can identify a useful choice and anticipate the finishing clear. More light collected does not by itself prove skill or enjoyment.
 - [ ] **Human comparison:** Compare one bounded stage with and without its restoration presentation, including replay. Record whether the scene adds satisfaction, distracts from play, or loses its appeal on repetition. Counterevidence remains visible.
 - [ ] **Visual and motion checks:** Inspect all states with sparse/dense boards, largest text, full/reduced animation and sound off. Verify a large clear crossing several thresholds. A concept strip or still cannot verify runtime motion.
 - [ ] **Rules and lifecycle checks:** Verify threshold/overshoot/rounding, terminal lock, partial/completed restore, rapid input, overflow, replay, settings dismissal and background/resume. Source/resource work needs focused regression checks, core and affected native tests, simulator builds and appropriate Release checks.
-- [ ] **Adoption decision:** After the selected stage's matched human round/replay comparison and applicable native checks, adopt, revise or remove it. Name the remaining question and next check for any extension. Keep a single bounded candidate rather than accumulating permanent pilot routes.
+- [ ] **Wider production decision:** Use the bounded challenges’ native evidence and observed human round/replay comparisons to decide how to develop the remaining ten locations. Name the remaining question and next check for any extension; do not add permanent pilot routes or infer campaign acceptance from attractive scenery.
 
 ## Limits and current status
 
-The world package contains approved stage identities and Murk’s design. The bible develops lore and a chapter ending; target amount, milestone pacing, visual state changes and persistent-world behavior still need validation. Dusk remains a friendly cast member, with no villain/minion link adopted. A compelling restoration cannot compensate for interchangeable puzzle choices. The current implementer owns the comparisons and records those findings separately.
+The world package contains approved stage identities and Murk’s design. Lantern Landing is delivered; Ribbon Crossing is implemented and development-verified, pending canonical installation. Both use the fixed 18-light contract; targets for the remaining ten locations, journey pacing and persistent-world behavior are still proposals. Dusk remains a friendly cast member, with no villain/minion link adopted. A compelling restoration cannot compensate for interchangeable puzzle choices. The current implementer owns the comparisons and records those findings separately.
 
-This is a design revision only. Existing cast imagery was inspected; the map and Murk concepts are user-approved, but individual restoration-state artwork, native behavior and human-play satisfaction have not been validated. Current production rules, environments and saves are unchanged. Local file/image links, whitespace and repository hygiene passed after this revision; Markdown rendering has not been independently reviewed. App builds/tests are not applicable to this documentation-only change.
+This document is the design contract, not a fresh verification report. Existing cast imagery, the approved map and the three Ribbon completion paintings were inspected; generated art is not native evidence. Lantern’s source-bound checks remain in its linked report. Ribbon’s linked development report records phone/tablet behavior, all fifteen inspected states, recorded normal completion and final hosted/Release passes. Canonical installation is pending; human-play satisfaction, actual VoiceOver at RC and physical play require their own observations. Markdown rendering has not been independently reviewed.

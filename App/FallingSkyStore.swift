@@ -341,7 +341,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         if !arguments.contains("--starfalls-reset"), case .loaded(let saved) = SkySaveArchive.inspect(from: defaults) {
             game = saved.removingGravity().adoptingFeedingDusk().disablingAutomaticAging()
             hasSavedSky = true
-            guide(saved.outcome == .won ? "guide.won" : saved.isOver ? "guide.full" : "guide.restore", values: saved.isOver ? ["score": String(saved.score)] : [:])
+            guide(saved.outcome == .won ? (saved.challenge?.wonGuideID ?? "guide.won") : saved.isOver ? "guide.full" : "guide.restore", values: saved.isOver ? ["score": String(saved.score)] : [:])
         } else {
             let argument = arguments.first { $0.hasPrefix("--starfalls-seed=") }
             let seed = argument.flatMap { UInt64($0.dropFirst("--starfalls-seed=".count)) } ?? 5
@@ -359,10 +359,15 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         }
         // Explicit reset plus the existing isolated review suite prevents this
         // deterministic art/interaction sample from replacing a player's save.
-        if arguments.contains("--starfalls-reset"), arguments.contains("--dialogue-review"),
-           let score = arguments.first(where: { $0.hasPrefix("--lantern-restoration-review=") })
-            .flatMap({ Int($0.dropFirst("--lantern-restoration-review=".count)) }), (0...18).contains(score) {
-            game = ObservatoryReviewFixture.game(dense: false, score: score, challenge: .firstLight)
+        let restorationReviews: [(StarfallChallenge, String)] = [
+            (.firstLight, "--lantern-restoration-review="), (.ribbonCrossing, "--ribbon-restoration-review=")
+        ]
+        let requestedReviews = restorationReviews.filter { _, prefix in arguments.contains(where: { $0.hasPrefix(prefix) }) }
+        if arguments.contains("--starfalls-reset"), arguments.contains("--dialogue-review"), requestedReviews.count == 1,
+           let (challenge, prefix) = requestedReviews.first,
+           let score = arguments.first(where: { $0.hasPrefix(prefix) }).flatMap({ Int($0.dropFirst(prefix.count)) }),
+           (0...challenge.target).contains(score) {
+            game = ObservatoryReviewFixture.game(dense: arguments.contains("--restoration-dense"), score: score, challenge: challenge)
         }
         #endif
         #if DEBUG
@@ -771,6 +776,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         case .fresh: restart(sameSky: false)
         case .replay: restart(sameSky: true)
         case .firstLight: startFirstLight()
+        case .ribbonCrossing: startChallenge(.ribbonCrossing)
         }
     }
 
@@ -823,7 +829,9 @@ enum SkyTerminalSpeech { case feedback, ceremony }
 
     #endif
 
-    func startFirstLight() {
+    func startFirstLight() { startChallenge(.firstLight) }
+
+    func startChallenge(_ challenge: StarfallChallenge) {
         #if DEBUG
         isTechniqueFixture = false
         #endif
@@ -832,10 +840,10 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         #endif
         isPaused = true
         interruptPlay(reason: "challenge")
-        game = FallingSky(challenge: .firstLight)
+        game = FallingSky(challenge: challenge)
         refreshCadence()
         remaining = showerInterval
-        dialogue.reset(); guide("guide.first-light")
+        dialogue.reset(); guide("guide." + challenge.dialoguePrefix)
         save(); presenter.render(game)
     }
 

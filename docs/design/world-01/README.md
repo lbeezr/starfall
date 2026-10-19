@@ -6,6 +6,8 @@ The approved foundation is **Murk, the Hungry Moon**, and twelve connected place
 
 **Start here:** Open the [concept explorer](index.html) to select a numbered location and read its five restoration states. The [restoration contract](../STARLIGHT_RESTORATION.md) owns progress and the win boundary. **Revised visual study:** [Lantern Landing’s overhead playfield](../lantern-landing-01/board.html) places existing star bodies in the seven-column field above the landing. It supersedes the rejected close-up scene composition. **Current production slice:** Lantern Landing is implemented and development-verified in optional First Light; see its [native evidence](../../evidence/lantern-landing-2026-10-19/README.md). Main integration is complete in [PR #154](https://github.com/lbeezr/starfall/pull/154); the canonical updater verified installation of `dev.5afe4a3c23` from main `ab868b5` in the original `com.starfall.prototype` app on October 19 at 14:53:57 UTC. Physical play and actual VoiceOver at RC remain separate acceptance. The twelve-location traversal remains a design concept.
 
+**Second slice implemented and development-verified; delivery pending:** [Ribbon Crossing](../ribbon-crossing-02/README.md) adds a directly selectable challenge using the same seed-42 opening and 18-light rules. Its [acceptance record](../../evidence/ribbon-crossing-2026-10-19/README.md) records all fifteen inspected scene states, phone/tablet interaction, recorded normal completion and final hosted/Release passes. Canonical installation is pending. The remaining ten locations and map traversal remain concepts; Open sky stays the default, with no campaign or unlocks.
+
 ## The approved images
 
 <img src="murk-v1.png" width="900" alt="Approved Murk character concept, including crescent-rimmed moon body, floating hands, smoky tail, expressions and a four-beat theft sequence">
@@ -14,7 +16,7 @@ The approved foundation is **Murk, the Hungry Moon**, and twelve connected place
 
 <img src="map-v1.png" width="700" alt="Approved twelve-location Starfall map, a winding route across four tiers of miniature realms">
 
-**User-approved map and location concept — not runtime UI or a saved progress state.** The artwork mostly depicts restored destinations. Dormant/intermediate states remain written storyboards except for the separate [Lantern Landing implementation and concept study](../lantern-landing-01/README.md). The small map cameo is sharper than the character sheet; match future close appearances to that sheet. Tiny helper shapes are placeholders for the approved Crystal Glow cast.
+**User-approved map and location concept — not runtime UI or a saved progress state.** The artwork mostly depicts restored destinations. [Lantern Landing](../lantern-landing-01/README.md) has implemented states; [Ribbon Crossing](../ribbon-crossing-02/README.md) also has five implemented states in three viewport families; its development acceptance is recorded and canonical installation remains pending. The remaining ten locations retain written restoration storyboards. The small map cameo is sharper than the character sheet; match future close appearances to that sheet. Tiny helper shapes are placeholders for the approved Crystal Glow cast.
 
 Both original PNGs and the exact [generation prompts](prompts.json) are retained. No new character or map images were generated for the bible rewrite.
 
@@ -35,7 +37,7 @@ python3 -m http.server 8769 --bind 127.0.0.1 --directory docs/design
 - The user approved Murk **as made** and loved all twelve map locations. The final spelling is **Murk**. Earlier non-celestial antagonist exploration is closed by this choice.
 - The user suggested these might be the stars’ homes. The bible and atlas develop shared neighborhoods, gardens, workplaces and routes; exact residences remain an authored proposal.
 - A separate recurring hero remains open. It is not a prerequisite for the ensemble story and does not reopen Murk’s design.
-- The journey, detailed lore, state pacing and finale are design work. Current app rules, routing, environments and saves are unchanged.
+- The journey, detailed lore and finale are design work. Lantern and Ribbon’s bounded implementation status is tracked above; this historical map package itself changes no app rules, routing, environments or saves.
 
 ## References and provenance
 

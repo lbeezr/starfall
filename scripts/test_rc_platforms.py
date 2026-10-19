@@ -17,6 +17,7 @@ MINIMUM_IOS_TESTS = [
 TABLET_TESTS = [
     'StarfallUITests/SkyFlowInteractionTests/testLandscapeWelcomeEntryAndPreferences',
     'StarfallUITests/LanternLandingInteractionTests/testTabletRotationKeepsRestorationAndNativeInput',
+    'StarfallUITests/RibbonCrossingInteractionTests/testTabletRotationKeepsRibbonRestorationAndNativeInput',
     'StarfallUITests/SkyFlowInteractionTests/testLargestTextWelcomeEntryAndBackRemainReachable',
     'StarfallUITests/CriticalMassInteractionTests/testLargestTextCalmKeepsWarningAndHelpUsable',
 ]

@@ -351,6 +351,8 @@ struct StarfallGameButtonStyle: ButtonStyle {
 
 extension StarfallTheme {
     enum Ceremony {
+        /// Full-canvas landmark band left visible above a restored-result heading.
+        static let restoredSceneBottom: CGFloat = 230
         static let handoffDuration = 0.24
         static let gold = Color("CeremonyGold")
         static let goldPressed = Color(red: 0.90, green: 0.76, blue: 0.48)
@@ -362,7 +364,7 @@ extension StarfallTheme {
 }
 
 extension StarfallTheme {
-    enum Lantern {
+    enum Restoration {
         static let sky = Color(red: 0.018, green: 0.033, blue: 0.105)
         static let restorationDuration: TimeInterval = 0.85
         static let hudOpacity = 0.68

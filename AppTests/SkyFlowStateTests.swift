@@ -23,7 +23,7 @@ final class SkyFlowStateTests: XCTestCase {
             store.setSuspended(true)
             let original = store.game
             let core = try XCTUnwrap(defaults.data(forKey: FallingSkyStore.saveKey))
-            for action in [SkyFlowAction.start, .firstLight, .replay, .another] {
+            for action in [SkyFlowAction.start, .firstLight, .ribbonCrossing, .replay, .another] {
                 var flow = SkyFlowState(arguments: action == .replay || action == .another ? ["--starfalls-reset"] : [])
                 XCTAssertEqual(flow.handle(action, hasSavedSky: true), .staged)
                 XCTAssertEqual(flow.screen, .entry)
@@ -150,19 +150,21 @@ final class SkyFlowStateTests: XCTestCase {
     }
 
     func testEntryObjectiveDescribesPendingChoiceInsteadOfRetainedRound() {
-        XCTAssertFalse(SkyEntryRequest.fresh.isChallenge(replayingChallenge: true))
-        XCTAssertTrue(SkyEntryRequest.firstLight.isChallenge(replayingChallenge: false))
-        XCTAssertTrue(SkyEntryRequest.replay.isChallenge(replayingChallenge: true))
-        XCTAssertFalse(SkyEntryRequest.initial.isChallenge(replayingChallenge: false))
+        XCTAssertNil(SkyEntryRequest.fresh.selectedChallenge(replaying: .firstLight))
+        XCTAssertEqual(SkyEntryRequest.firstLight.selectedChallenge(replaying: nil), .firstLight)
+        XCTAssertEqual(SkyEntryRequest.ribbonCrossing.selectedChallenge(replaying: .firstLight), .ribbonCrossing)
+        XCTAssertEqual(SkyEntryRequest.replay.selectedChallenge(replaying: .firstLight), .firstLight)
+        XCTAssertEqual(SkyEntryRequest.replay.selectedChallenge(replaying: .ribbonCrossing), .ribbonCrossing)
+        XCTAssertNil(SkyEntryRequest.initial.selectedChallenge(replaying: nil))
     }
 
     func testReplayIntroductionExplainsThePendingModeAndReplacementBoundary() {
         for challenge in [false, true] {
-            let replay = SkyEntryRequest.replay.introduction(challenge: challenge)
+            let replay = SkyEntryRequest.replay.introduction(challenge: challenge ? .firstLight : nil)
             XCTAssertTrue(replay.text.contains("Your saved round stays until you tap Begin."))
             XCTAssertTrue(replay.text.contains(challenge ? "same First Light opening" : "current sky settings"))
             for entry in [SkyEntryRequest.initial, .fresh, .firstLight] {
-                let fresh = entry.introduction(challenge: challenge)
+                let fresh = entry.introduction(challenge: challenge ? .firstLight : nil)
                 XCTAssertNotEqual(replay.id, fresh.id)
                 XCTAssertTrue(fresh.text.contains(challenge ? "18 starlight" : "each shower"))
             }
@@ -260,6 +262,35 @@ final class SkyFlowStateTests: XCTestCase {
         let ended = SkyWelcomeSnapshot(game: game, hasSavedSky: true, paused: true)
         XCTAssertFalse(ended.canContinue); XCTAssertTrue(ended.ended)
         XCTAssertTrue(ended.summary?.contains("Round over") == true)
+    }
+
+    func testRestoredResultLeavesTheFullCanvasLandmarkBandClearAcrossSafeAreas() {
+        for challenge in StarfallChallenge.allCases {
+            // Covers flat/landscape, tablet and notched phone safe areas. The
+            // clearance also applies when the scene's canvas scrolls to 900 pt.
+            for safeAreaTop: CGFloat in [0, 20, 24, 44, 59, 62] {
+                let layout = SkyCeremonyLayout(screen: .won, challenge: challenge, safeAreaTop: safeAreaTop)
+                let headingTop = safeAreaTop + StarfallTheme.Spacing.section
+                    + layout.minimumTopSpace + layout.spacing
+                XCTAssertEqual(headingTop, 230, accuracy: 0.001,
+                               "The restored landmark must remain above the result heading")
+                XCTAssertGreaterThanOrEqual(layout.minimumTopSpace, 0)
+            }
+        }
+        let insetBeyondLandmark = SkyCeremonyLayout(screen: .won, challenge: .ribbonCrossing, safeAreaTop: 250)
+        XCTAssertEqual(insetBeyondLandmark.minimumTopSpace, 0)
+    }
+
+    func testScenicResultReflowIsLimitedToSuccessfulRestoration() {
+        for screen in [SkyFlowScreen.welcome, .entry, .playing, .won, .full] {
+            for challenge: StarfallChallenge? in [nil, .firstLight, .ribbonCrossing] {
+                let layout = SkyCeremonyLayout(screen: screen, challenge: challenge, safeAreaTop: 59)
+                let restored = screen == .won && challenge != nil
+                XCTAssertEqual(layout.isRestoredResult, restored)
+                XCTAssertEqual(layout.spacing, restored ? StarfallTheme.Spacing.medium : StarfallTheme.Spacing.section)
+                if !restored { XCTAssertEqual(layout.minimumTopSpace, 0) }
+            }
+        }
     }
 
     func testCastEntranceKeepsCompleteRasterAndShadowInsideItsRegion() {

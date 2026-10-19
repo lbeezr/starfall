@@ -1,0 +1,172 @@
+{
+  "status": "Packaged unmodified generated PNGs; all fifteen native states inspected, final completion verified at dev.453e081fb5. Device installation recorded separately.",
+  "provenance": "art-prompts.json",
+  "processing": "Unmodified generated PNGs. One continuous complete painting per stage. Proportion-preserving whole-image viewport placement; no center mask, replacement, spatial fade or split regions.",
+  "assets": [
+    {
+      "family": "phone",
+      "milestone": 0,
+      "asset": "App/Assets.xcassets/RibbonCrossing000.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-93f7a27e-b815-4123-9a06-996276cb34da.png",
+      "sha256": "84d6a096707452018fa3eabc2050497b7417070b19cf9d73d0c16d311ace8f29",
+      "pixels": [
+        887,
+        1774
+      ]
+    },
+    {
+      "family": "phone",
+      "milestone": 25,
+      "asset": "App/Assets.xcassets/RibbonCrossing025.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-7374df99-9e82-4f3f-8704-e4638dd36c2c.png",
+      "sha256": "ed98ed8498523a14ea21b8af8e2d3c750f6a4f4a143fef99da3a1bf540749ccc",
+      "pixels": [
+        887,
+        1774
+      ]
+    },
+    {
+      "family": "phone",
+      "milestone": 50,
+      "asset": "App/Assets.xcassets/RibbonCrossing050.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-2dd03632-3791-49cb-9fc5-9e44735400cd.png",
+      "sha256": "91cb6c65a017383f093c62075f0c06152dd45c77385ec835ba2b945020a151ca",
+      "pixels": [
+        887,
+        1774
+      ]
+    },
+    {
+      "family": "phone",
+      "milestone": 75,
+      "asset": "App/Assets.xcassets/RibbonCrossing075.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-34f8d32e-fc27-437b-9715-44394b82bd57.png",
+      "sha256": "0d1ffe37d2873cbb80da606d609c398d25281ac63eab0bec4eccedcfbbd273a5",
+      "pixels": [
+        887,
+        1774
+      ]
+    },
+    {
+      "family": "phone",
+      "milestone": 100,
+      "asset": "App/Assets.xcassets/RibbonCrossing100.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-cc01ccd3-4042-469a-88b3-9cca281babb7.png",
+      "sha256": "e6eb6bc710b5f43e6ac3b5faab29e18ef66b75ff14855f7d56d19e231b4e1438",
+      "pixels": [
+        887,
+        1774
+      ]
+    },
+    {
+      "family": "tabletLandscape",
+      "milestone": 0,
+      "asset": "App/Assets.xcassets/RibbonCrossingTabletLandscape000.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-cadc68e6-94e1-4955-b874-a320b916f4fa.png",
+      "sha256": "b47c93e9f3300187d23e38c2a16f837fc0cc1f71b38e9230c4b27c0b5ff450d4",
+      "pixels": [
+        1448,
+        1086
+      ]
+    },
+    {
+      "family": "tabletLandscape",
+      "milestone": 25,
+      "asset": "App/Assets.xcassets/RibbonCrossingTabletLandscape025.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-09a59828-4507-41b4-a675-9f3314f73e73.png",
+      "sha256": "104b04432bc175a0fefd347e513a03163b25deb29453f24c26d607a8e250c32e",
+      "pixels": [
+        1448,
+        1086
+      ]
+    },
+    {
+      "family": "tabletLandscape",
+      "milestone": 50,
+      "asset": "App/Assets.xcassets/RibbonCrossingTabletLandscape050.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-ffb06785-b052-494e-8046-ecea35c5fc4a.png",
+      "sha256": "2b0ddf485a1a6164750abf4fc63457ddb2dd341fc2488da5831d202628630402",
+      "pixels": [
+        1448,
+        1086
+      ]
+    },
+    {
+      "family": "tabletLandscape",
+      "milestone": 75,
+      "asset": "App/Assets.xcassets/RibbonCrossingTabletLandscape075.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-9cb29440-89e1-4d0b-8732-c29a0c6c15b6.png",
+      "sha256": "956bb17f039d89451de8beb24c23d8f0117966cca2f002e7e971a217422a4f5e",
+      "pixels": [
+        1448,
+        1086
+      ]
+    },
+    {
+      "family": "tabletLandscape",
+      "milestone": 100,
+      "asset": "App/Assets.xcassets/RibbonCrossingTabletLandscape100.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-07c292da-90ea-4ae8-9e68-d2c84199ef2a.png",
+      "sha256": "1c53e027e3d5decc83a108063e1f3836cb75a89f2279ee2fd484ad66c57f87f9",
+      "pixels": [
+        1448,
+        1086
+      ]
+    },
+    {
+      "family": "tabletPortrait",
+      "milestone": 0,
+      "asset": "App/Assets.xcassets/RibbonCrossingTabletPortrait000.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-7e14dd27-05d1-455a-9d89-5fb10f721ea7.png",
+      "sha256": "e9176020022be2d0ac6e3d4279b590c2a8aa1532558157c36c508ad041dfd238",
+      "pixels": [
+        1086,
+        1448
+      ]
+    },
+    {
+      "family": "tabletPortrait",
+      "milestone": 25,
+      "asset": "App/Assets.xcassets/RibbonCrossingTabletPortrait025.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-69ba29fe-9dd1-46cc-b5fc-04df4fdbadb7.png",
+      "sha256": "fca5489d5cd0b0643393de4b24a53f5e107c013dae39a2a3865b850cd0ad3abd",
+      "pixels": [
+        1086,
+        1448
+      ]
+    },
+    {
+      "family": "tabletPortrait",
+      "milestone": 50,
+      "asset": "App/Assets.xcassets/RibbonCrossingTabletPortrait050.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-5f5aebcc-44d3-4e56-8bea-db11c29f29ff.png",
+      "sha256": "4c24005f0aa0abae9c05fa094f80f0db927bccfd8bf27b062d5437ea550b3ff5",
+      "pixels": [
+        1086,
+        1448
+      ]
+    },
+    {
+      "family": "tabletPortrait",
+      "milestone": 75,
+      "asset": "App/Assets.xcassets/RibbonCrossingTabletPortrait075.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-cbc4174f-6d20-4792-b01c-234bf7d78048.png",
+      "sha256": "55a22982a2fc3ad7191dd2720820ea6b0e98af7dc5a91a36c43005cf46f4fef3",
+      "pixels": [
+        1086,
+        1448
+      ]
+    },
+    {
+      "family": "tabletPortrait",
+      "milestone": 100,
+      "asset": "App/Assets.xcassets/RibbonCrossingTabletPortrait100.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-3905ea8f-9f1a-46a2-8a7b-21931b822a69.png",
+      "sha256": "6e17e1e1fe5996525e50cad1c7b5f505b0dc8dcfaf24ec71535bec05b8801cee",
+      "pixels": [
+        1086,
+        1448
+      ]
+    }
+  ]
+}

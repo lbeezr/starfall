@@ -6,14 +6,16 @@ struct SkyHelpContext: Equatable {
     let criticalMass: Bool
     let pocketedDusk: Bool
     let duskRule: DuskRule
-    let challenge: Bool
+    let restorationChallenge: StarfallChallenge?
+    var challenge: Bool { restorationChallenge != nil }
     let openingCascade: Bool
     let opalStorms: Bool
 
     init(game: FallingSky) {
         pocketedDusk = game.hasPocketedDusk
         criticalMass = game.hasCriticalMass; duskRule = game.duskRule
-        challenge = game.challenge != nil; openingCascade = game.hasOpeningCascade
+        openingCascade = game.hasOpeningCascade
+        restorationChallenge = game.challenge
         opalStorms = game.generation != .legacy
     }
 
@@ -23,6 +25,7 @@ struct SkyHelpContext: Equatable {
         switch entry {
         case .fresh: .init(game: .freshSurvival(seed: game.seed, balance: game.balance))
         case .firstLight: .init(game: FallingSky(challenge: .firstLight))
+        case .ribbonCrossing: .init(game: FallingSky(challenge: .ribbonCrossing))
         case .initial, .replay, nil: .init(game: game)
         }
     }
@@ -139,8 +142,8 @@ struct SkyHowToPlay: View {
                     Text(SkyCopy.text(.helpRelay))
                 }
             }
-            Section(SkyCopy.text(.helpChallengeTitle)) {
-                Text(SkyCopy.text(.helpChallenge))
+            Section(context.restorationChallenge?.helpTitle ?? SkyCopy.text(.helpChallengeTitle)) {
+                Text(context.restorationChallenge?.helpText ?? SkyCopy.text(.helpChallenge))
             }
         }.navigationTitle(SkyCopy.text(.menuHelp))
     }

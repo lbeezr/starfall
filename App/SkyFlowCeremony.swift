@@ -14,17 +14,18 @@ enum SkyFlowScreen: Equatable {
         return .welcome
     }
 }
-enum SkyFlowAction: Equatable { case start, firstLight, begin, resume, replay, another, home, preferences }
+enum SkyFlowAction: Equatable { case start, firstLight, ribbonCrossing, begin, resume, replay, another, home, preferences }
 
 @MainActor struct SkyFlowCeremony: View {
     let screen: SkyFlowScreen
-    let challenge: Bool
+    let challenge: StarfallChallenge?
     let entry: SkyEntryRequest?
     let result: SkyResultSnapshot?
     let welcome: SkyWelcomeSnapshot
     let active: Bool
     let quiet: Bool
     let modal: Bool
+    let restoredSceneryBounds: CGRect?
     let action: (SkyFlowAction) -> Void
     @ScaledMetric(relativeTo: .largeTitle) private var titleSize = StarfallTheme.Ceremony.titleSize
     @ScaledMetric(relativeTo: .largeTitle) private var resultTitleSize = StarfallTheme.Ceremony.resultTitleSize
@@ -43,6 +44,9 @@ enum SkyFlowAction: Equatable { case start, firstLight, begin, resume, replay, a
 
     var body: some View {
         GeometryReader { geometry in
+            let layout = SkyCeremonyLayout(screen: screen, challenge: challenge,
+                                           safeAreaTop: geometry.safeAreaInsets.top,
+                                           restoredSceneryBounds: restoredSceneryBounds)
             ZStack {
                 LinearGradient(colors: [StarfallTheme.Colors.skyTop.opacity(0.3), .clear,
                                         StarfallTheme.Colors.skyTop.opacity(0.85)],
@@ -52,13 +56,16 @@ enum SkyFlowAction: Equatable { case start, firstLight, begin, resume, replay, a
                     SkyCelebration(progress: burst).allowsHitTesting(false).accessibilityHidden(true)
                 }
                 ScrollView {
-                    VStack(spacing: StarfallTheme.Spacing.section) {
+                    VStack(spacing: layout.spacing) {
+                        if layout.isRestoredResult {
+                            Spacer(minLength: layout.minimumTopSpace)
+                        }
                         heading.accessibilityHidden(!active)
                         if textSize.isAccessibilitySize {
                             revealedActions
                             decorativeCast
                         } else {
-                            Spacer(minLength: 0)
+                            if !layout.isRestoredResult { Spacer(minLength: 0) }
                             decorativeCast
                             if !terminal { Spacer(minLength: 0) }
                             revealedActions
@@ -113,7 +120,7 @@ enum SkyFlowAction: Equatable { case start, firstLight, begin, resume, replay, a
                 .font(StarfallTheme.Typography.display(size: terminal ? resultTitleSize : titleSize))
                 .foregroundStyle(StarfallTheme.Ceremony.gold)
                 .accessibilityAddTraits(.isHeader)
-                .accessibilityLabel(screen == .won ? SkyCopy.text(.flowWon) : screen == .full ? SkyCopy.text(.flowFull) : title)
+                .accessibilityLabel(title)
                 .accessibilityIdentifier(terminal ? "experiment.outcome" : "sky.title")
                 .accessibilityValue(terminal ? "\(result?.scoreLabel ?? ""). \(screen == .full ? result?.reason ?? "" : "")" : "")
                 .accessibilityFocused($headingFocused)
@@ -132,8 +139,8 @@ enum SkyFlowAction: Equatable { case start, firstLight, begin, resume, replay, a
     private var kicker: String {
         switch screen {
         case .welcome: SkyCopy.text(.flowBrand)
-        case .entry: challenge ? SkyCopy.text(.flowFirstLight) : SkyCopy.text(.flowOpen)
-        case .won: SkyCopy.text(.flowComplete)
+        case .entry: challenge?.entryKicker ?? SkyCopy.text(.flowOpen)
+        case .won: challenge?.completionKicker ?? SkyCopy.text(.flowComplete)
         case .full: SkyCopy.text(.flowRoundOver)
         case .playing: ""
         }
@@ -141,8 +148,8 @@ enum SkyFlowAction: Equatable { case start, firstLight, begin, resume, replay, a
     private var title: String {
         switch screen {
         case .welcome: SkyCopy.text(.flowWelcome)
-        case .entry: challenge ? SkyCopy.text(.flowChallenge) : SkyCopy.text(.flowEntry)
-        case .won: SkyCopy.text(.flowWon)
+        case .entry: challenge?.locationTitle ?? SkyCopy.text(.flowEntry)
+        case .won: challenge?.restoredTitle ?? SkyCopy.text(.flowWon)
         case .full: SkyCopy.text(.flowFull)
         case .playing: ""
         }
@@ -199,7 +206,9 @@ enum SkyFlowAction: Equatable { case start, firstLight, begin, resume, replay, a
                 if welcome.hasSavedSky && welcome.ended {
                     flowButton(SkyCopy.text(.actionViewLast), action: .resume, id: "sky.resume")
                 }
-                flowButton(SkyCopy.text(.actionFirstLight), action: .firstLight, id: "sky.firstLight")
+                ForEach(StarfallChallenge.allCases, id: \.self) { choice in
+                    flowButton(choice.actionLabel, action: choice.flowAction, id: choice.welcomeIdentifier)
+                }
                 preferencesButton
             case .entry:
                 flowButton(SkyCopy.text(.actionBegin), action: .begin, id: "sky.begin", primary: true)
@@ -208,9 +217,9 @@ enum SkyFlowAction: Equatable { case start, firstLight, begin, resume, replay, a
             case .won, .full:
                 if screen == .won {
                     flowButton(SkyCopy.text(.actionNew), action: .another, id: "experiment.new", primary: true)
-                    flowButton(SkyCopy.text(.actionReplayFirstLight), action: .replay, id: "experiment.replay")
+                    flowButton(challenge?.replayLabel ?? SkyCopy.text(.actionReplay), action: .replay, id: "experiment.replay")
                 } else {
-                    flowButton(challenge ? SkyCopy.text(.actionReplayFirstLight) : SkyCopy.text(.actionReplay), action: .replay, id: "experiment.replay", primary: true)
+                    flowButton(challenge?.replayLabel ?? SkyCopy.text(.actionReplay), action: .replay, id: "experiment.replay", primary: true)
                     flowButton(SkyCopy.text(.actionNew), action: .another, id: "experiment.new")
                 }
                 flowButton(SkyCopy.text(.actionHome), action: .home, id: "sky.home")
@@ -255,6 +264,28 @@ enum SkyFlowAction: Equatable { case start, firstLight, begin, resume, replay, a
             catch { return }
             celebrating = false
         }
+    }
+}
+
+/// The scenery fills the safe area; the ceremony starts inside it. Keep the
+/// restored landmark visible without tying clearance to a short scroll viewport.
+struct SkyCeremonyLayout {
+    let screen: SkyFlowScreen
+    let challenge: StarfallChallenge?
+    let safeAreaTop: CGFloat
+    var restoredSceneryBounds: CGRect? = nil
+
+    var isRestoredResult: Bool { screen == .won && challenge != nil }
+    var spacing: CGFloat {
+        isRestoredResult ? StarfallTheme.Spacing.medium : StarfallTheme.Spacing.section
+    }
+    var minimumTopSpace: CGFloat {
+        guard isRestoredResult else { return 0 }
+        let baseline = StarfallTheme.Ceremony.restoredSceneBottom - safeAreaTop
+        // Anchors are already in ceremony coordinates, including the source
+        // canvas's safe-area extension and any gameplay scroll offset.
+        let scenicBottom = restoredSceneryBounds.map { $0.maxY + StarfallTheme.Spacing.medium } ?? baseline
+        return max(0, max(baseline, scenicBottom) - StarfallTheme.Spacing.section - spacing)
     }
 }
 

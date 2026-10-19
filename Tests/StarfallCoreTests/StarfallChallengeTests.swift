@@ -2,52 +2,91 @@ import XCTest
 @testable import StarfallCore
 
 final class StarfallChallengeTests: XCTestCase {
-    func testFirstLightCanBeCompletedAndLocksFurtherInput() throws {
-        var game = FallingSky(challenge: .firstLight)
-        XCTAssertEqual(game.challenge, .firstLight)
-        XCTAssertEqual(game.score, 0); XCTAssertEqual(game.outcome, .playing)
-        for _ in 0..<30 where !game.isOver {
-            game.letStarsFall()
-            while !game.isOver, let cell = game.legalGroups.first?.first { game.clear(cell) }
+    func testEachChallengeCanBeCompletedRestoredAndReplayedWithItsOwnIdentity() throws {
+        for challenge in StarfallChallenge.allCases {
+            var game = FallingSky(challenge: challenge)
+            let opening = game
+            XCTAssertEqual(game.challenge, challenge)
+            XCTAssertEqual(game.score, 0); XCTAssertEqual(game.outcome, .playing)
+            for _ in 0..<30 where !game.isOver {
+                game.letStarsFall()
+                while !game.isOver, let cell = game.legalGroups.first?.first { game.clear(cell) }
+                XCTAssertTrue(game.isValidSave)
+            }
+            XCTAssertEqual(game.outcome, .won)
+            XCTAssertGreaterThanOrEqual(game.score, 18)
+            XCTAssertEqual(game.restoration?.milestone, .complete)
+            let completed = game
+            XCTAssertNil(game.letStarsFall()); XCTAssertNil(game.clear(Cell(0, 0)))
+            XCTAssertEqual(game, completed)
+            let restored = try JSONDecoder().decode(FallingSky.self, from: JSONEncoder().encode(game))
+            XCTAssertEqual(restored, game); XCTAssertEqual(restored.outcome, .won)
+            XCTAssertEqual(restored.replay(), opening)
+            XCTAssertEqual(restored.replay().challenge, challenge)
+        }
+    }
+
+    func testChallengesShareFixedRulesButKeepDistinctEncodedIdentity() throws {
+        let lantern = FallingSky(challenge: .firstLight)
+        let ribbon = FallingSky(challenge: .ribbonCrossing)
+        XCTAssertEqual(StarfallChallenge.firstLight.rawValue, "firstLight")
+        XCTAssertEqual(try JSONEncoder().encode(StarfallChallenge.firstLight), Data(#""firstLight""#.utf8))
+        XCTAssertEqual(try JSONEncoder().encode(StarfallChallenge.ribbonCrossing), Data(#""ribbonCrossing""#.utf8))
+        XCTAssertNotEqual(lantern, ribbon)
+        XCTAssertEqual(lantern.board, ribbon.board)
+        XCTAssertEqual(lantern.incoming, ribbon.incoming)
+        for challenge in StarfallChallenge.allCases {
+            let game = FallingSky(challenge: challenge)
+            XCTAssertEqual(challenge.target, 18)
+            XCTAssertEqual(game.seed, 42)
+            XCTAssertEqual(game.generation, .legacy)
+            XCTAssertEqual(game.cadenceID, .originalV1)
+            XCTAssertFalse(game.hasOpeningCascade)
+            XCTAssertFalse(game.hasCriticalMass)
+            XCTAssertFalse(game.hasPocketedDusk)
+            XCTAssertEqual(game.duskRule, .legacy)
             XCTAssertTrue(game.isValidSave)
         }
-        XCTAssertEqual(game.outcome, .won)
-        XCTAssertGreaterThanOrEqual(game.score, 18)
-        let completed = game
-        XCTAssertNil(game.letStarsFall()); XCTAssertNil(game.clear(Cell(0, 0)))
-        XCTAssertEqual(game, completed)
-        let restored = try JSONDecoder().decode(FallingSky.self, from: JSONEncoder().encode(game))
-        XCTAssertEqual(restored, game); XCTAssertEqual(restored.outcome, .won)
     }
 
-    func testChallengeHasFixedBalanceAndNoDarkStars() {
-        var game = FallingSky(challenge: .firstLight)
-        let original = game
-        game.setBalance(.init(pace: .brisk, darkStars: .frequent))
-        XCTAssertEqual(game, original)
-        for _ in 0..<40 where !game.isOver {
-            XCTAssertFalse(game.incoming.contains(where: \.isDark))
-            game.letStarsFall()
+    func testEachChallengeHasFixedBalanceNoDarkStarsAndOverflowFailure() {
+        for challenge in StarfallChallenge.allCases {
+            var game = FallingSky(challenge: challenge)
+            let original = game
+            game.setBalance(.init(pace: .brisk, darkStars: .frequent))
+            XCTAssertEqual(game, original)
+            for _ in 0..<40 where !game.isOver {
+                XCTAssertFalse(game.incoming.contains(where: \.isDark))
+                game.letStarsFall()
+            }
+            XCTAssertEqual(game.outcome, .lost)
+            XCTAssertTrue(game.isValidSave)
         }
-        XCTAssertEqual(game.outcome, .lost)
-        XCTAssertTrue(game.isValidSave)
     }
 
-    func testGoalCompletionTakesPrecedenceOverOverflow() {
-        XCTAssertEqual(StarfallChallenge.firstLight.outcome(score: 18, overflowed: true), .won)
-        XCTAssertEqual(StarfallChallenge.firstLight.outcome(score: 17, overflowed: true), .lost)
-        XCTAssertEqual(StarfallChallenge.firstLight.outcome(score: 17, overflowed: false), .playing)
+    func testGoalCompletionTakesPrecedenceOverOverflowForBothChallenges() {
+        for challenge in StarfallChallenge.allCases {
+            XCTAssertEqual(challenge.outcome(score: 18, overflowed: true), .won)
+            XCTAssertEqual(challenge.outcome(score: 22, overflowed: false), .won)
+            XCTAssertEqual(challenge.outcome(score: 17, overflowed: true), .lost)
+            XCTAssertEqual(challenge.outcome(score: 17, overflowed: false), .playing)
+        }
     }
 
-    func testRejectsChallengeSaveWithDifferentBalanceOrSeed() throws {
-        let game = FallingSky(challenge: .firstLight)
-        var json = try XCTUnwrap(JSONSerialization.jsonObject(with: JSONEncoder().encode(game)) as? [String: Any])
-        json["seed"] = 43
-        let restored = try JSONDecoder().decode(FallingSky.self, from: JSONSerialization.data(withJSONObject: json))
-        XCTAssertFalse(restored.isValidSave)
-        json["seed"] = game.seed
-        json["savedBalance"] = try JSONSerialization.jsonObject(with: JSONEncoder().encode(StarfallBalance()))
-        let wrongBalance = try JSONDecoder().decode(FallingSky.self, from: JSONSerialization.data(withJSONObject: json))
-        XCTAssertFalse(wrongBalance.isValidSave)
+    func testRejectsChallengeSaveWithDifferentBalanceOrSeedOrUnknownIdentity() throws {
+        for challenge in StarfallChallenge.allCases {
+            let game = FallingSky(challenge: challenge)
+            var json = try XCTUnwrap(JSONSerialization.jsonObject(with: JSONEncoder().encode(game)) as? [String: Any])
+            json["seed"] = 43
+            let restored = try JSONDecoder().decode(FallingSky.self, from: JSONSerialization.data(withJSONObject: json))
+            XCTAssertFalse(restored.isValidSave)
+            json["seed"] = game.seed
+            json["savedBalance"] = try JSONSerialization.jsonObject(with: JSONEncoder().encode(StarfallBalance()))
+            let wrongBalance = try JSONDecoder().decode(FallingSky.self, from: JSONSerialization.data(withJSONObject: json))
+            XCTAssertFalse(wrongBalance.isValidSave)
+            json["savedBalance"] = try JSONSerialization.jsonObject(with: JSONEncoder().encode(challenge.balance))
+            json["challenge"] = "futureCrossing"
+            XCTAssertThrowsError(try JSONDecoder().decode(FallingSky.self, from: JSONSerialization.data(withJSONObject: json)))
+        }
     }
 }
