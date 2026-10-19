@@ -107,6 +107,19 @@
       "text": "largest accessibility",
       "system_reduce_motion": "on",
       "status": "native still; unmodified export; see README for scope"
+    },
+    {
+      "file": "dev-8fb2e78__crowded-40-stars__iphone-17e__normal-motion.jpg",
+      "source": "8fb2e787a4ce9f36d9dd5f3e80a327c5977e2788",
+      "runtime_fingerprint": "dev.5afe4a3c23",
+      "displayed_build_id": "dev.local (direct simulator relaunch without build-ID environment)",
+      "sha256": "e8c5405d75c1aef940f4eb4c565319c9952b11276e8840ff59241a4871db9af7",
+      "bytes": 103260,
+      "configuration": "Debug",
+      "platform": "iOS 27.0 Simulator (24A434)",
+      "text": "default",
+      "system_reduce_motion": "off",
+      "status": "native still; unmodified export; previously installed final-source binary"
     }
   ]
 }

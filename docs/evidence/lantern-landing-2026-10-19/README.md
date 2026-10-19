@@ -91,4 +91,12 @@ All five native milestones were inspected in each main composition, plus tablet 
 
 The earlier packet timing could outlive the clear-to-result handoff. Shared packet timing now bounds six lantern packets to 0.455 seconds, before the 0.56-second handoff, while retaining ordinary score-destination timing. Hosted checks verify both destinations; the native recording verifies the sampled win visually. The fix adds no score/save dependency on animation, result delay or input gate.
 
-Retained capture hashes and contexts are in [captures.json](captures.json). They are unmodified native exports. Full-capacity native scene readability, physical gameplay and actual VoiceOver are not established by the sparse milestone captures, browser density preview or hosted award tests.
+Retained capture hashes and contexts are in [captures.json](captures.json). They are unmodified native exports. Full-capacity 49-star native scene readability, physical gameplay and actual VoiceOver remain unverified. The additional 40-star native check below establishes a crowded playable sample, not the full-capacity boundary.
+
+### Crowded board and rapid input
+
+A final manual native pass used the already-installed `8fb2e78` Debug binary on iPhone 17e, default text, system Reduce Motion off and Calm Effects off. The direct relaunch omitted the build-ID environment, so Settings displayed `dev.local`; the recorded runtime fingerprint is computed from the installed source inputs, not that label. Manual showers reached **40 occupied stars**, score 5/18 and 28% restored. The inspected scene has continuous clouds, readable star silhouettes/faces and clear controls.
+
+<img src="dev-8fb2e78__crowded-40-stars__iphone-17e__normal-motion.jpg" width="230" alt="Native Lantern Landing with forty actual stars, readable progress and controls, and continuous clouds behind the field">
+
+**Native simulator capture — source `8fb2e78`, 40-star active board, default text and normal motion.** Four consecutive native taps on the same bottom-left amber group produced one clear: 5 → 9 light, 28% → 50% restoration, and 40 → 37 occupied stars. Settings opened and Done returned to the same paused 9-light board. Individual automation `tap` calls had stopped dispatching visibly; native touch down/up worked, so no app input failure is inferred from those no-op tool calls. The full 49-star boundary was not reached. Raw post-clear/settings capture: `/private/tmp/dev-5afe4a3c23__lantern-after-rapid-settings__iphone17e__calm-off.jpg`.
