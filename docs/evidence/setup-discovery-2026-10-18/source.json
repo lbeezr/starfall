@@ -1,0 +1,18 @@
+{
+  "runtimeCommit": "774cf986db1815dc95fa92df57380287560cce31",
+  "systemMotionTestCommit": "1c0dea1437ebc53e113710c17b0913026be59686",
+  "runtimeBuildID": "dev.14bd6d9ce3",
+  "dirtyRuntimePaths": [],
+  "environment": {
+    "xcode": "27.1 (27A9275)",
+    "swift": "6.4",
+    "simulator": "iPhone 16 Pro Max QA",
+    "os": "iOS 27.0 (24A434)",
+    "configuration": [
+      "Debug",
+      "Release"
+    ]
+  },
+  "priorRuntimeCommit": "85f2d4b31003bb28e6439ba2b6c6712a59363f61",
+  "nativeFramePrecisionTestCommit": "882c3933f051a789ced2fabee4246216e6c445c7"
+}

@@ -6,6 +6,8 @@ A small native iOS falling-sky puzzle. Clear matching stars as showers fill the 
 
 [Roadmap](docs/ROADMAP.md) · [Visual reference and cast](docs/design/VISUAL_REFERENCE.md) · [Playtest](docs/PLAYTEST-FALLING-SKY.md) · [Documentation map](docs/README.md)
 
+Help now includes optional interactive examples of squares, crosses, Opal and relays. Each button shows a real rule outcome while your sky stays paused.
+
 [Gameplay quality](docs/GAMEPLAY_QUALITY.md) continues the same incremental process across readability, consequences, pacing, discovery, reward rhythm and replay. Each verified batch is merged and delivered before the next priority.
 
 [Gesture improvements](docs/GESTURE_QUALITY.md) are merged in five individual batches, with [canonical phone delivery evidence](docs/evidence/gesture-delivery-2026-10-18/README.md). Physical-play acceptance and [mechanics calibration](docs/design/CALIBRATION.md) continue.

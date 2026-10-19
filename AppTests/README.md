@@ -77,3 +77,5 @@ The [crowded current-rule award sample](../docs/evidence/calibration-critical-ma
 Four-edge regressions distinguish blocked swaps from trace/nonfinite cancellation, reject stale hold callbacks and accept the next inward swap.
 
 Forecast regressions preserve the actual remainder through contact, pause grace and background, then verify one deferred shower with no catch-up. Quiet motion does not alter committed outcomes.
+
+Help-context tests expose only examples supported by the current or pending rules: no Open sky examples in First Light and no Opal example in legacy skies.

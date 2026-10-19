@@ -4,7 +4,7 @@
 
 The forecast now samples the Store's monotonic scheduler and frozen remainder. Holding a star or pausing no longer visually restarts its journey. Quiet motion updates once per second instead of freezing the forecast; normal presentation retains 30 updates per second. Neither path schedules or commits rain.
 
-**Next action:** Publish the verified tree, then verify the older compiler and canonical phone delivery before setup discovery.
+**Next action:** Continue setup discovery; follow the open older-compiler CI result.
 
 ## Acceptance and findings
 
@@ -53,3 +53,7 @@ Commit `ce00692` separates scene composition, lifecycle observation and modal/aw
 Core **169 passed** on unchanged Core inputs. After the view extraction, **300 hosted and eight native checks passed**, with zero failures or skips; Release Simulator build passed. Native checks cover normal/calm/system Reduce Motion countdowns, maximum text, all five nightscapes in both orientations, settings/background, fast same-color swaps and held tracing, First Light win/replay and full-sky loss. [verification.json](verification.json) separates the pre-extraction and final-source runs. Only evidence/documentation paths changed after clean runtime commit `ce00692`. Hygiene and whitespace checks passed. No new source/resource files require target membership.
 
 The retained screenshot was visually inspected. Normal-motion native outcomes are exercised; sustained physical frame pacing, subjective fairness and actual VoiceOver are not established. Older-compiler CI and phone delivery remain pending.
+
+## Delivery
+
+[PR #147](https://github.com/lbeezr/starfall/pull/147) merged as `94da76e80c7817b193da4abe262659e32f033481`; its tree exactly matches local publication `62c002b`. The canonical updater verified actual installation of **dev.9020625ab7** from that main commit, with Core tests and signature checks passed. Main CI was pending at installation. [Sanitized receipt](delivery.json). No player-data reset or automatic launch. [The remote Xcode 26.3 run](https://github.com/lbeezr/starfall/actions/runs/39194373430) remains an open compiler acceptance item.

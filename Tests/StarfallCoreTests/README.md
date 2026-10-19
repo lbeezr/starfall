@@ -31,3 +31,5 @@ Gravity specials are retired from normal play. `SkyGeneration.standardSky` suppl
 `ConstellationGapCoreTests` covers one/repeated empty midpoints, blockers, Opal family anchoring and committed replay.
 
 `StarRecipeTests` checks all four exchange directions, same-family identity preservation, empty-space gravity and deterministic restored continuation. `CriticalMassTests` verifies vertical same-family exchanges retain each star’s distinct age.
+
+`SkyLessonTests` verifies every authored example move, exact rewards and surviving identities, Opal family selection, and a second recipe created by the preceding swap/clear.

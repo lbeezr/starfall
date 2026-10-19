@@ -17,6 +17,8 @@ struct SkyHelpContext: Equatable {
         opalStorms = game.generation != .legacy
     }
 
+    var lessons: [SkyLesson] { challenge ? [] : SkyLesson.allCases.filter { $0 != .opal || opalStorms } }
+
     static func selected(game: FallingSky, entry: SkyEntryRequest?) -> Self {
         switch entry {
         case .fresh: .init(game: .freshSurvival(seed: game.seed, balance: game.balance))
@@ -51,7 +53,7 @@ struct SkyWelcomePreferences: View {
             Form {
                 SkyFeelSection(sound: $sound, haptics: $haptics, calm: $calm)
                 Section {
-                    NavigationLink { SkyHowToPlay(context: context).toolbar { SkyMenuDone(done: done) } }
+                    NavigationLink { SkyHowToPlay(context: context, done: done).toolbar { SkyMenuDone(done: done) } }
                         label: { Label(SkyCopy.text(.menuHelp), systemImage: "questionmark.circle") }
                         .accessibilityIdentifier("experiment.help")
                 }
@@ -75,8 +77,18 @@ struct SkyMenuDone: ToolbarContent {
 
 struct SkyHowToPlay: View {
     let context: SkyHelpContext
+    let done: () -> Void
     var body: some View {
         List {
+            if !context.lessons.isEmpty {
+                Section {
+                    Text(SkyCopy.text(.lessonIntro))
+                    ForEach(context.lessons, id: \.self) { lesson in
+                        NavigationLink(lesson.title) { SkyLessonView(lesson: lesson).toolbar { SkyMenuDone(done: done) } }
+                            .accessibilityIdentifier("lesson.open." + lesson.rawValue)
+                    }
+                } header: { Text(SkyCopy.text(.lessonTitle)) }
+            }
             Section(SkyCopy.text(.helpTapTitle)) {
                 Text(SkyCopy.text(.helpTap))
                 Text(SkyCopy.text(.helpIdentity))

@@ -4,7 +4,7 @@
 
 Polish the six gameplay priorities in order, merging and delivering each verified improvement through the canonical phone updater before starting the next. The player reported a “huge improvement” after the five gesture deliveries. Apply that same bounded process to the remaining experience.
 
-**Next action:** Make the shower forecast preserve real remaining time during holds and continue updating in quiet motion.
+**Next action:** Add concrete, interactive setup examples in Help.
 
 ## Scope and success
 
@@ -12,8 +12,8 @@ Polish the six gameplay priorities in order, merging and delivering each verifie
 | --- | --- | --- | --- |
 | 1 | Read the next move | Award lettering stays outside every playable cell throughout its animation; independent follow-up moves remain available; default and maximum text remain readable. | Delivered: PR #142, `dev.d7e15ddf2a`; physical comfort open |
 | 2 | Understand consequences | Selection, committed clear, score gain and invalid actions give consistent, truthful feedback without covering the board or delaying input. | Delivered: PR #144/#146; physical comprehension open |
-| 3 | Fair shower rhythm | The arrival cue agrees with the actual deadline; interruptions preserve remaining time; no catch-up burst; current survival rules receive a reproducible pacing review. | In progress |
-| 4 | Discover useful setups | Players can find and practice recipes, Opal use and causal relays through concrete examples; hints match current legal actions and never surprise-commit a move. | Pending |
+| 3 | Fair shower rhythm | The arrival cue agrees with the actual deadline; interruptions preserve remaining time; no catch-up burst; current survival rules receive a reproducible pacing review. | Delivered: PR #147, dev.9020625ab7; older-compiler CI pending |
+| 4 | Discover useful setups | Players can find and practice recipes, Opal use and causal relays through concrete examples; hints match current legal actions and never surprise-commit a move. | In progress |
 | 5 | Reward rhythm | Clear, growth, recipe and relay feedback are distinguishable, bounded and synchronized with committed outcomes; rapid play does not pile up sounds/haptics or effects. | Pending |
 | 6 | End and replay | A final legal action resolves before the result; the reason and score are clear; replay and new sky have predictable save/seed behavior and survive interruptions. | Pending |
 
@@ -63,5 +63,14 @@ The countdown currently uses a wall-clock date that becomes nil during admitted 
 
 - [x] The forecast progresses with the actual deadline, freezes at the actual remainder on contact/pause, resumes continuously, and shows due/arriving without resetting early.
 - [x] Quiet motion updates timing at a low discrete cadence; normal motion retains smooth presentation and the same outcomes.
-- [ ] Preserve interruption grace, single-deadline/no-catch-up behavior, current forecasts, settings and rapid inputs. Test the clock boundary and native normal/quiet operation; inspect a source-bound capture before merge/delivery.
+- [x] Preserve interruption grace, single-deadline/no-catch-up behavior, current forecasts, settings and rapid inputs. Test the clock boundary and native normal/quiet operation; inspect a source-bound capture before merge/delivery.
 - [x] Review current no-aging survival cadence with reproducible samples separately; do not infer enjoyment or change balance from one fixed-seed sample.
+
+## Fifth batch: examples that show useful setups
+
+Add optional interactive examples at the top of Help for making a square, tracing a cross, including Opal and creating a relay. Each explicit action applies the actual Core rule to a small authored board; it displays the real reward and resulting arrangement. These are demonstrations of mechanics, not a replacement gesture-training mode. Keep the active round suspended through the existing Help sheet, with no access to its store, save or clock.
+
+- [x] Square/cross traces spend exactly their selected stars; a swap creates a shape without clearing; Opal joins the chosen color; a relay's second recipe is absent before and created by the first clear.
+- [x] Actions remain explicit, hints describe legal moves in the shown state, retry is local, and leaving/reopening examples cannot mutate or replace a saved round.
+- [x] Show shared cast art, actual before/after movement and exact points; Reduce Motion keeps the same result. Preserve native button semantics, non-color descriptions and readable largest text.
+- [ ] Verify Core examples, native example steps and interruption/dismissal, inspect screenshots, build Release, merge and canonically deliver before reward rhythm.
