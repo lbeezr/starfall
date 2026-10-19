@@ -36,7 +36,7 @@ The store schedules the core’s persisted opening cadence: four quick waves, th
 
 Ordinary Debug/Release launches open Welcome. Historical `--starfalls-reset` board fixtures still open paused play; add `--sky-flow-review` to test the production welcome flow with isolated `Starfall.SkyFlowReview` defaults. Relaunch with only `--sky-flow-review` to exercise restore. This is Debug verification setup, not a player mode.
 
-The optional `SkyCadenceCue` reads `nextShowerCadence` only. Baseline supplies no cue; candidate copy and a persistent large-text placement do not own scheduling.
+`SkyCadenceCue` presents the committed cadence forecast; copy and placement never own scheduling. The former B comparison is historical, with no runtime selector.
 
 `SkyShowerPlacement` selects the calibrated iPhone 17 and iPhone 16 Pro Max portrait camera contours. All other hardware/viewports and accessible layouts use the safe-area header. Both show the same committed ordered forecast through `SkyShowerTrail`; there is no trial flag. [Adoption and device limits](../docs/evidence/shower-forecast-adoption-2026-10-17/README.md).
 
@@ -46,20 +46,20 @@ The optional `SkyCadenceCue` reads `nextShowerCadence` only. Baseline supplies n
 
 `ConstellationTraceSurface` owns touch lifetime and coalesced samples; `ConstellationTraceHitTesting` maps continuous segments through the shared projection. The store holds its single shower deadline from eligible touch-down until exchange commitment or drawing release/cancel. Spatial misses keep the chosen path; stale state still cancels. The HUD reserves phase-copy space inside the full-window canvas, so it cannot crop scenery or hide the camera inset. Resting star rings are removed; the traced thread and finite sparks indicate selection.
 
-Gravity integration uses the normal target and v5 committed archive. Core owns occupied orbit supports and saved `gravityOrbits` supply; retained generations remain unchanged. `GravityStoreTests` covers committed saves and interrupted phases; Debug reset-only histories support native verification. See [the integration plan](../docs/design/GRAVITY_MECHANICS_PLAN.md).
+Historical gravity integration used the v5 archive. Retained Core readers, `GravityStoreTests` and reset-only Debug histories preserve compatibility and regression coverage. Normal new, restored and replayed games apply gravity retirement; see [removal evidence](../docs/evidence/gravity-removal-2026-10-17/README.md).
 
 `ConstellationTouchSession` classifies every final sample, including sub-slop off-board releases and a first drag sample delivered on release. The surface cancels on changed configuration/detachment/multitouch; store-issued hold tickets reject releases from older gestures.
 
 Camera-layout selection reads the full local playfield canvas, beside the consuming overlay. Profiles require complete checked portrait dimensions and inset; resized/unknown/accessible viewports use the header. This is layout approval, not a claim that unknown hardware lacks a camera island.
 
-Attraction fields and gravity holes use `StarCastField`/`StarCastHole` packaged artwork through the shared cast cache, including forecasts and arrivals. Theme supplies their blue-gold light colors; `GravityMotion` supplies finite child-art cues. [Art source and exact prompts](../Artwork/StarCast/README.md#magnetic-crystal-and-gravity-hole); [native visual evidence](../docs/evidence/gravity-art-2026-10-17/README.md).
+Historical gravity fixtures use `StarCastField`/`StarCastHole` through the shared cast cache and finite `GravityMotion` cues. These are retained presentation/compatibility paths, not ordinary fresh-survival mechanics. [Art provenance](../Artwork/StarCast/README.md#magnetic-crystal-and-gravity-hole).
 
-The magnetic saved role now presents as an **attraction field** using `StarCastField`: an open aura with transparent center, no ground shadow, physical bounce or contact response. The shared material owns board/forecast/flight appearance; existing occupied-cell/collision rules remain unchanged. The original magnetic crystal is retained only as historical source art.
+The historical magnetic saved role presents as an attraction field with a transparent center and no ground shadow; ordinary new/restore/replay paths retire the special before play.
 
 Gravity arrivals share the ordinary flight constructor. StarfallMotion.PhaseTimeline owns phase durations and approach overlap; receiver responses and landings follow completed gravity motion. The scene presents committed outcomes and never schedules Core showers.
 
 
-Gravity supply is versioned by Core. New skies select the current generation; retained skies and replay keep their saved rules. The archive rejects every gravity-capable generation in the older v4 envelope, including the expanded-opportunity generation before any special arrives.
+Core versions historical gravity supply. The archive rejects gravity-capable generations in a v4 envelope, including expanded-opportunity generations before any special arrives. Preserve those readers and checks when editing compatibility.
 
 `FallingSkyPresentation` derives the columns reserved by committed turns, using a whole-board reservation for orbit phases. Store and scene allow independent ready actions and reconcile against the newest game. The existing trace surface owns anchored contacts and eligible drag classification; [responsive input](../docs/design/INTERACTION_FEEDBACK.md) defines feedback, lifecycle and verification boundaries.
 
@@ -69,7 +69,7 @@ Gravity specials are retired from normal play. `SkyGeneration.standardSky` suppl
 
 `ConstellationTouchSession` gives movement priority: one four-direction exchange on displacement, or a stationary 300 ms hold followed by drawing. `ConstellationTraceSurface` owns the timer, physical contact and cancellation; `SkyInteractionSession` owns trace state and the rain ticket. There is no swap preview state or Arrange mode. Core validates and the store commits/saves/reserves columns. See [technique contract](../docs/design/STAR_TECHNIQUES.md).
 
-`ConstellationTraceSurface.CaptureRecognizer` owns raw physical contact delivery before scroll arbitration, including terminal/reset cancellation. The store owns its ticketed shower hold. `SkySaveArchive` writes v7 and reads retained v3–v6 archives without overwriting their bytes. Current Dusk warnings and marks derive the limit from the saved Core rule.
+`ConstellationTraceSurface.CaptureRecognizer` owns raw physical contact delivery before scroll arbitration, including terminal/reset cancellation. The store owns its ticketed shower hold. `SkySaveArchive` writes v8 and reads validated retained v3–v7 archives without overwriting their original keys. A present invalid current archive never falls back to an older round. Current Dusk warnings and marks derive the limit from the saved Core rule.
 
 Drawing starts on the full native star target and follows six-point movement. The touch session separates early preview from sticky drawing intent, preserving small same-cell tap drift without turning partial selections into ordinary clears.
 
@@ -89,7 +89,7 @@ Store interruption cleanup has two small boundaries: `interruptPlay` freezes the
 
 Compact-height and accessibility layouts use a scrolling canvas plus a growing dialogue/footer. Other sizes keep the centered board with score/forecast above and 128-point dialogue plus native actions below. Large scores use grouped exact digits; they never become abbreviated values. [Native layout evidence](../docs/evidence/nightscapes-2026-10-18/README.md) separates simulator checks from physical comfort and RC VoiceOver.
 
-Fresh survival skies use universal critical mass. `CriticalMassPresentation` renders committed age as advancing violet facets, inward chevrons and exact threatened cells; `StarCollapsePresentation` shares the bounded inward swallow with historical Dusk. `SkySaveArchive` writes v8, reads retained v3–v7 and preserves prior bytes. Retained replay keeps its mechanics; New sky selects aging. See [critical mass](../docs/design/CRITICAL_MASS.md).
+Fresh and restored critical-mass skies disable automatic aging and purple warnings through the Core migration before scene presentation. Historical reset fixtures still exercise `CriticalMassPresentation`; `StarCollapsePresentation` also supports retained Dusk. Matching growth, committed preview, score and saved cadence are preserved. [Current aging decision](../docs/evidence/aging-disabled-2026-10-18/README.md).
 
 [Touch intent](../docs/design/TOUCH_INTENT.md) defines direction-based horizontal swaps and projected elliptical trace acquisition; Core owns gap legality.
 
@@ -109,7 +109,7 @@ Contact clock holds preserve the exact remaining shower time; only pause/backgro
 
 Ceremonies reserve bottom scroll space using theme spacing. Welcome, Entry and result actions can be brought fully above the system Home area at large text and landscape sizes; native tests check complete frames as well as activation. This does not change the board projection.
 
-**Aging retired:** Ordinary fresh and restored critical-mass skies disable automatic aging and purple warnings. Migration precedes scene presentation; matching growth, committed preview, score and cadence remain. Help and Dusk controls follow the selected core rule. Historical Debug fixtures remain regression tooling.
+Historical Dusk rounds retain their saved feeding rules. Fresh survival has no Dusk arrivals or aging toggle; First Light keeps its fixed objective and cadence. Help and controls describe the selected Core rules.
 
 Outward cardinal swipes preserve a blocked-swap result through the touch adapter, so the guide explains the edge instead of giving tap instructions.
 
