@@ -1,5 +1,5 @@
 {
-  "status": "Verified development subset; publication/installation pending",
+  "status": "Verified development subset; canonical main installation verified separately in delivery.json",
   "baseCommit": "c31d890f95616d4c24cf31b3668885ca97c2f8d7",
   "mainBase": "5ae17f204f085861a681b7a9c5184efa0b97feef",
   "configuration": "Debug/Release",
@@ -120,7 +120,7 @@
   "limits": [
     "Development subset, not full dev/RC matrix",
     "Physical play/comfort, actual VoiceOver, minimum iOS and sustained performance not measured",
-    "Installation to be recorded separately; screenshots do not establish enjoyment"
+    "Canonical installed identity is verified; installation does not establish enjoyment."
   ],
   "builds": {
     "Debug": "passed build-for-testing and current-source native test builds",
@@ -128,5 +128,12 @@
     "releaseLog": "/tmp/starfall-cascade-release.log",
     "membership": "SkyResolutionPhase.swift and StoryScore.swift compiled into StarfallCore in Release; observatory-dialogue.json copied in the Release app; existing app/test target file membership retained"
   },
-  "releaseCommand": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Release -destination \"platform=iOS Simulator,id=E739068A-AC67-424C-9430-1FE5578902FE\" -derivedDataPath /tmp/starfall-cascade-native ARCHS=arm64 ONLY_ACTIVE_ARCH=YES build"
+  "releaseCommand": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Release -destination \"platform=iOS Simulator,id=E739068A-AC67-424C-9430-1FE5578902FE\" -derivedDataPath /tmp/starfall-cascade-native ARCHS=arm64 ONLY_ACTIVE_ARCH=YES build",
+  "publication": {
+    "localCommit": "6617f32",
+    "publishedCommit": "614a055d408a6be0a8b82acf1f33bd3b9b5b6ee5",
+    "mergeCommit": "d885d1f833eff850835d6d78d39be0092b39aaff",
+    "exactTree": "f33265e44e9e03991ecec65074639ebac7505669",
+    "dirtyRuntimeDifferencesAtPublication": []
+  }
 }

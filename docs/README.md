@@ -2,7 +2,7 @@
 
 [Documentation instructions](AGENTS.md) give the local working contract.
 
-[Story Mode gameplay plan](STORY_MODE_GAMEPLAY_PLAN.md) proposes distinct decisions, theatrical scores, optional mastery and a campaign content budget. [Lantern/Ribbon revision 2](evidence/story-cascades-2026-10-20/README.md) is implemented with verification pending: half-full openings, automatic exact recipes and causal chains, preserving 150,000/220,000 targets and retained rounds. The [revision 1 record](evidence/story-first-pair-2026-10-20/README.md) keeps its original development checks. Later redesign, ratings and multiplayer remain proposals.
+[Story Mode gameplay plan](STORY_MODE_GAMEPLAY_PLAN.md) proposes distinct decisions, theatrical scores, optional mastery and a campaign content budget. [Lantern/Ribbon revision 2](evidence/story-cascades-2026-10-20/README.md) is development verified and delivered: half-full openings, automatic exact recipes and causal chains, preserving 150,000/220,000 targets and retained rounds. The [revision 1 record](evidence/story-first-pair-2026-10-20/README.md) keeps its original development checks. Later redesign, ratings and multiplayer remain proposals.
 
 [Competitive pacing research](design/PUZZLE_PACING_RESEARCH.md) records the sparse-board feedback, primary sources and selected direction. Revision 2 uses 24/25 opening stars and five mixed incoming stars per shower, retaining the six-/four-second cadence. Native verification, human balance and delivery remain separate acceptance. The [Pokémon Puzzle League guide](design/POKEMON_PUZZLE_LEAGUE_REFERENCE.md) retains the primary reference and future local versus/co-op direction.
 

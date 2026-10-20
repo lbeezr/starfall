@@ -1,6 +1,6 @@
 # Lantern and Ribbon automatic cascades
 
-**Status: development verified; publication and phone delivery pending.** New Lantern and Ribbon visits use rapid half-full openings, automatic square/cross pops and causal combo awards. **213 Core tests, 203 distinct selected hosted tests and two native UI scenarios pass**, with Debug/Release builds and inspected normal-motion samples. This is a development subset; physical play, actual VoiceOver and minimum-OS acceptance remain open. Competitive grounding and its limits remain in [puzzle pacing research](../../design/PUZZLE_PACING_RESEARCH.md).
+**Status: development verified, merged and delivered.** New Lantern and Ribbon visits use rapid half-full openings, automatic square/cross pops and causal combo awards. **213 Core tests, 203 distinct selected hosted tests and two native UI scenarios pass**, with Debug/Release builds and inspected normal-motion samples. This is a development subset; physical play, actual VoiceOver and minimum-OS acceptance remain open. Competitive grounding and its limits remain in [puzzle pacing research](../../design/PUZZLE_PACING_RESEARCH.md).
 
 | Quick opening rain | A falling follow-up earns a chain |
 | --- | --- |
@@ -31,4 +31,4 @@ The first run exposed old tap-only win assumptions and revision/trace expectatio
 
 Review also caught two entrance boundaries: a layout/motion interruption now rearms an eligible shower deadline, and a scene-level quiet completion emits one aggregate receipt when it supplies no phase callbacks. Dedicated tests cover both and stale callbacks. No animation awards points.
 
-Raw logs, xcresults and the full recording are disposable under `/tmp`; selected frames and small summaries are retained here. Publication and canonical installation will be recorded separately. Continue/Replay preserve old rounds; select a new visit from the Story map to try revision two.
+Raw logs, xcresults and the full recording are disposable under `/tmp`; selected frames and small summaries are retained here. [PR #196](https://github.com/lbeezr/starfall/pull/196) is merged. The [canonical receipt](delivery.json) verifies `dev.181bb2c16e` installed from current main `d885d1f8`; its clean export passed 213 Core tests and signature verification, with remote main CI pending. The published tree exactly matches local verified tree `f33265e44e9e03991ecec65074639ebac7505669`. Continue/Replay preserve old rounds; select a new visit from the Story map to try revision two.
