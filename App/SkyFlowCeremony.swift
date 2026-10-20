@@ -55,32 +55,41 @@ enum SkyFlowAction: Equatable { case start, firstLight, ribbonCrossing, kiteHarb
                 if screen == .won && celebrating {
                     SkyCelebration(progress: burst).allowsHitTesting(false).accessibilityHidden(true)
                 }
-                ScrollView {
-                    VStack(spacing: layout.spacing) {
-                        if layout.isRestoredResult {
-                            Spacer(minLength: layout.minimumTopSpace)
+                if screen == .welcome {
+                    observatoryHome(height: geometry.size.height)
+                } else {
+                    VStack(spacing: 0) {
+                        if screen == .entry { entryNavigation }
+                        ScrollView {
+                            VStack(spacing: layout.spacing) {
+                                if layout.isRestoredResult {
+                                    Spacer(minLength: layout.minimumTopSpace)
+                                }
+                                heading.accessibilityHidden(!active)
+                                if textSize.isAccessibilitySize {
+                                    revealedActions
+                                    decorativeCast
+                                } else {
+                                    if !layout.isRestoredResult { Spacer(minLength: 0) }
+                                    decorativeCast
+                                    if !terminal { Spacer(minLength: 0) }
+                                    revealedActions
+                                }
+                            }
+                            .padding(StarfallTheme.Spacing.section)
+                            .frame(maxWidth: StarfallTheme.Layout.menuWidth)
+                            .frame(minHeight: max(0, geometry.size.height - StarfallTheme.Spacing.section
+                                - (screen == .entry ? StarfallTheme.Layout.gameplayTarget + StarfallTheme.Spacing.small : 0)), alignment: .center)
+                            .frame(maxWidth: .infinity)
                         }
-                        heading.accessibilityHidden(!active)
-                        if textSize.isAccessibilitySize {
-                            revealedActions
-                            decorativeCast
-                        } else {
-                            if !layout.isRestoredResult { Spacer(minLength: 0) }
-                            decorativeCast
-                            if !terminal { Spacer(minLength: 0) }
-                            revealedActions
-                        }
+                        .safeAreaPadding(.bottom, StarfallTheme.Spacing.section)
+                        .scrollBounceBehavior(.basedOnSize)
                     }
-                    .padding(StarfallTheme.Spacing.section)
-                    .frame(maxWidth: StarfallTheme.Layout.menuWidth)
-                    .frame(minHeight: max(0, geometry.size.height - StarfallTheme.Spacing.section), alignment: .center)
-                    .frame(maxWidth: .infinity)
                 }
-                .safeAreaPadding(.bottom, StarfallTheme.Spacing.section)
-                .scrollBounceBehavior(.basedOnSize)
             }
         }
-        .accessibilityIdentifier("sky.flow.\(String(describing: screen))")
+        // Child controls own identifiers. A GeometryReader identifier propagates
+        // into icon-only buttons and replaces their explicit Settings/Back IDs.
         .task(id: motionKey) { await reveal() }
         .onDisappear { revealed = true }
         .onChange(of: modal) { old, new in
@@ -97,13 +106,120 @@ enum SkyFlowAction: Equatable { case start, firstLight, ribbonCrossing, kiteHarb
         }
     }
 
+    /// Home is navigation in the world, not a character's dialogue bubble.
+    /// Only the existing flow actions can stage or resume a retained round.
+    private func observatoryHome(height: CGFloat) -> some View {
+        VStack(spacing: 0) {
+            HStack {
+                Spacer(minLength: 0)
+                preferencesUtility
+            }
+            .padding(.horizontal, StarfallTheme.Spacing.page)
+            .padding(.top, StarfallTheme.Spacing.small)
+            ScrollView {
+                VStack(spacing: StarfallTheme.Spacing.section) {
+                    VStack(spacing: StarfallTheme.Spacing.small) {
+                        Text(SkyCopy.text(.flowBrand))
+                            .font(textSize.isAccessibilitySize ? StarfallTheme.Typography.title : StarfallTheme.Typography.display(size: titleSize))
+                            .foregroundStyle(StarfallTheme.Colors.textPrimary)
+                            .accessibilityAddTraits(.isHeader)
+                            .accessibilityLabel(SkyCopy.text(.flowWelcome))
+                            .accessibilityIdentifier("sky.title")
+                            .accessibilityFocused($headingFocused)
+                        Text(SkyCopy.text(.homeObservatory))
+                            .font(StarfallTheme.Typography.skyHeading)
+                            .foregroundStyle(StarfallTheme.Ceremony.gold)
+                    }
+                    .multilineTextAlignment(.center)
+                    .shadow(color: StarfallTheme.Colors.skyTop, radius: 5)
+                    if !textSize.isAccessibilitySize {
+                        VStack(spacing: 0) {
+                            Spacer(minLength: 0)
+                            cast(compact: true)
+                                .frame(height: SkyCastFormation.height(terminal: true))
+                                .clipped()
+                            Spacer(minLength: 0)
+                        }
+                        .frame(minHeight: SkyCastFormation.height(terminal: true))
+                    }
+                    VStack(spacing: StarfallTheme.Spacing.medium) {
+                        modeButton(.story, title: SkyCopy.text(.homeStoryMode), action: .worldMap, id: "sky.worldMap")
+                        modeButton(.freePlay, title: SkyCopy.text(.homeFreePlay), action: .start, id: "sky.start")
+                        modeButton(.tutorial, title: SkyCopy.text(.homeTutorial), action: .tutorial, id: "sky.learn")
+                    }
+                    if let summary = welcome.summary {
+                        VStack(spacing: StarfallTheme.Spacing.compact) {
+                            Button(SkyCopy.text(welcome.ended ? .actionViewLast : .actionContinue)) { action(.resume) }
+                                .buttonStyle(StarfallButtonStyle(role: .quiet, expands: true))
+                                .accessibilityIdentifier("sky.resume")
+                            Text(summary)
+                                .font(StarfallTheme.Typography.supporting)
+                                .foregroundStyle(StarfallTheme.Colors.textPrimary)
+                                .fixedSize(horizontal: false, vertical: true)
+                                .multilineTextAlignment(.center)
+                                .accessibilityIdentifier("sky.subtitle")
+                        }
+                    }
+                }
+                .frame(maxWidth: StarfallTheme.Layout.menuWidth)
+                .padding(.horizontal, StarfallTheme.Spacing.section)
+                .padding(.top, StarfallTheme.Spacing.medium)
+                .padding(.bottom, StarfallTheme.Spacing.section)
+                .frame(minHeight: max(0, height - 68), alignment: .bottom)
+                .frame(maxWidth: .infinity)
+            }
+            .scrollBounceBehavior(.basedOnSize)
+        }
+        .allowsHitTesting(active)
+        .disabled(!active)
+        .accessibilityHidden(!active)
+    }
+
+    private func modeButton(_ mode: ObservatoryMode, title: String, action choice: SkyFlowAction, id: String) -> some View {
+        Button { action(choice) } label: {
+            ObservatoryModeLabel(mode: mode, title: title)
+        }
+        .buttonStyle(StarfallButtonStyle(role: .ceremonyPrimary, expands: true))
+        .accessibilityIdentifier(id)
+    }
+
+    private var preferencesUtility: some View {
+        Button { action(.preferences) } label: { ObservatoryIcon(.settings) }
+            .buttonStyle(StarfallGameButtonStyle(tint: StarfallTheme.Colors.textPrimary))
+            .accessibilityLabel(SkyCopy.text(.menuSettings))
+            .accessibilityIdentifier("sky.preferences")
+            .accessibilityFocused($preferencesFocused)
+    }
+
+    private var entryNavigation: some View {
+        HStack {
+            Button { action(.home) } label: { ObservatoryIcon(.back) }
+                .buttonStyle(StarfallGameButtonStyle(tint: StarfallTheme.Colors.textPrimary))
+                .accessibilityLabel(SkyCopy.text(.actionHome))
+                .accessibilityIdentifier("sky.home")
+            Spacer(minLength: 0)
+            preferencesUtility
+        }
+        .padding(.horizontal, StarfallTheme.Spacing.page)
+        .padding(.top, StarfallTheme.Spacing.small)
+    }
+
     private var decorativeCast: some View {
-        cast.frame(height: SkyCastFormation.height(terminal: terminal)).clipped()
+        cast().frame(height: SkyCastFormation.height(terminal: terminal || screen == .entry)).clipped()
     }
     private var revealedActions: some View {
-        SkyDialogueBubble(line: dialogueLine, messageIdentifier: terminal ? "experiment.score" : "sky.subtitle") {
+        VStack(spacing: StarfallTheme.Spacing.large) {
+            Text(dialogueLine.text)
+                .font(StarfallTheme.Typography.supporting)
+                .foregroundStyle(StarfallTheme.Colors.textPrimary)
+                .multilineTextAlignment(.center)
+                .fixedSize(horizontal: false, vertical: true)
+                .accessibilityLabel(dialogueLine.spokenText)
+                .accessibilityIdentifier(terminal ? "experiment.score" : "sky.subtitle")
             actions
         }
+            .padding(.horizontal, StarfallTheme.Spacing.small)
+            .shadow(color: StarfallTheme.Colors.skyTop, radius: 5)
             .opacity(controls ? 1 : 0)
             .offset(y: controls || quiet ? 0 : 24)
             .allowsHitTesting(controls && active)
@@ -117,7 +233,8 @@ enum SkyFlowAction: Equatable { case start, firstLight, ribbonCrossing, kiteHarb
                 .font(StarfallTheme.Typography.skyCaption).tracking(2)
                 .foregroundStyle(StarfallTheme.Colors.actionPrimary)
             Text(title)
-                .font(StarfallTheme.Typography.display(size: terminal ? resultTitleSize : titleSize))
+                .font(textSize.isAccessibilitySize ? StarfallTheme.Typography.title
+                    : StarfallTheme.Typography.display(size: terminal ? resultTitleSize : titleSize))
                 .foregroundStyle(StarfallTheme.Ceremony.gold)
                 .accessibilityAddTraits(.isHeader)
                 .accessibilityLabel(title)
@@ -129,11 +246,6 @@ enum SkyFlowAction: Equatable { case start, firstLight, ribbonCrossing, kiteHarb
         .multilineTextAlignment(.center)
         .shadow(color: StarfallTheme.Colors.skyTop, radius: 6)
         .padding(terminal ? StarfallTheme.Spacing.medium : 0)
-        .background {
-            if terminal {
-                RoundedRectangle(cornerRadius: StarfallTheme.Radius.panel).fill(StarfallTheme.Colors.skyTop.opacity(0.88))
-            }
-        }
     }
 
     private var kicker: String {
@@ -166,9 +278,11 @@ enum SkyFlowAction: Equatable { case start, firstLight, ribbonCrossing, kiteHarb
         }
     }
 
-    private var cast: some View {
+    private func cast(compact: Bool = false) -> some View {
         GeometryReader { geometry in
-            let formation = SkyCastFormation(width: geometry.size.width, terminal: terminal, welcome: screen == .welcome)
+            let formation = SkyCastFormation(width: geometry.size.width,
+                                             terminal: compact || terminal || screen == .entry,
+                                             welcome: screen == .welcome && !compact)
             ZStack {
                 if screen == .won, let hero = formation.stars.first {
                     Circle().fill(StarfallTheme.Ceremony.gold.opacity(0.15))
@@ -199,20 +313,9 @@ enum SkyFlowAction: Equatable { case start, firstLight, ribbonCrossing, kiteHarb
         VStack(spacing: StarfallTheme.Spacing.small) {
             switch screen {
             case .welcome:
-                flowButton(SkyCopy.text(.worldPlay), action: .worldMap, id: "sky.worldMap", primary: true)
-                if welcome.canContinue {
-                    flowButton(SkyCopy.text(.actionContinue), action: .resume, id: "sky.resume")
-                }
-                flowButton(SkyCopy.text(.flowOpen), action: .start, id: "sky.start")
-                if welcome.hasSavedSky && welcome.ended {
-                    flowButton(SkyCopy.text(.actionViewLast), action: .resume, id: "sky.resume")
-                }
-                flowButton(SkyCopy.text(.practiceTitle), action: .tutorial, id: "sky.learn")
-                preferencesButton
+                EmptyView()
             case .entry:
                 flowButton(SkyCopy.text(.actionBegin), action: .begin, id: "sky.begin", primary: true)
-                flowButton(SkyCopy.text(.actionHome), action: .home, id: "sky.home")
-                preferencesButton
             case .won, .full:
                 flowButton(SkyCopy.text(.worldReturn), action: .worldMap, id: "sky.worldMap", primary: true)
                 if screen == .won {
@@ -228,14 +331,6 @@ enum SkyFlowAction: Equatable { case start, firstLight, ribbonCrossing, kiteHarb
         }
 
     }
-    private var preferencesButton: some View {
-        Button { action(.preferences) } label: {
-            Label(SkyCopy.text(.menuSettings), systemImage: "slider.horizontal.3")
-        }
-        .buttonStyle(StarfallButtonStyle(role: .quiet, expands: true))
-        .accessibilityIdentifier("sky.preferences").accessibilityFocused($preferencesFocused)
-    }
-
     private func flowButton(_ label: String, action choice: SkyFlowAction, id: String, primary: Bool = false) -> some View {
         Button(label) { action(choice) }
             .buttonStyle(StarfallButtonStyle(role: primary ? .ceremonyPrimary : .quiet, expands: true))

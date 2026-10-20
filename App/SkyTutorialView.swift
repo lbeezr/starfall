@@ -83,30 +83,80 @@ struct SkyTutorialView: View {
         self.done = done; _chapter = State(initialValue: initial)
     }
     var body: some View {
-        NavigationStack {
-            List {
-                Section {
-                    Text(SkyCopy.text(.practiceIntro))
-                }
-                Section(SkyCopy.text(.practiceChapters)) {
-                    ForEach(SkyTutorial.allCases) { lesson in
-                        Button { chapter = lesson } label: {
-                            Text(lesson.title).font(.headline).padding(.vertical, 6)
-                                .frame(minHeight: 44, alignment: .leading)
-                        }.accessibilityIdentifier("tutorial.chapter.\(lesson.id)")
+        VStack(spacing: 0) {
+            HStack(spacing: StarfallTheme.Spacing.medium) {
+                Text(SkyCopy.text(.practiceTitle))
+                    .font(StarfallTheme.Typography.title)
+                    .foregroundStyle(StarfallTheme.Colors.textPrimary)
+                    .accessibilityAddTraits(.isHeader)
+                    .fixedSize(horizontal: false, vertical: true)
+                Spacer(minLength: StarfallTheme.Spacing.small)
+                Button(SkyCopy.text(.actionDone), action: done)
+                    .buttonStyle(StarfallButtonStyle(role: .quiet))
+                    .accessibilityIdentifier("tutorial.done")
+            }
+            .padding(.horizontal, StarfallTheme.Spacing.page)
+            .padding(.vertical, StarfallTheme.Spacing.small)
+            ScrollView {
+                VStack(alignment: .leading, spacing: StarfallTheme.Spacing.section) {
+                    HStack(alignment: .top, spacing: StarfallTheme.Spacing.large) {
+                        ObservatoryEmblem(.tutorial)
+                        Text(SkyCopy.text(.practiceIntro))
+                            .font(StarfallTheme.Typography.body)
+                            .foregroundStyle(StarfallTheme.Colors.textPrimary)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                    .padding(.vertical, StarfallTheme.Spacing.medium)
+                    Text(SkyCopy.text(.practiceChapters))
+                        .font(StarfallTheme.Typography.skyHeading)
+                        .foregroundStyle(StarfallTheme.Ceremony.gold)
+                        .accessibilityAddTraits(.isHeader)
+                    VStack(spacing: 0) {
+                        ForEach(SkyTutorial.allCases) { lesson in
+                            Button { chapter = lesson } label: {
+                                HStack(spacing: StarfallTheme.Spacing.medium) {
+                                    ObservatoryIcon(lesson.interfaceGlyph, size: 20)
+                                        .foregroundStyle(StarfallTheme.Ceremony.gold)
+                                    Text(lesson.title)
+                                        .font(StarfallTheme.Typography.skyHeading)
+                                        .foregroundStyle(StarfallTheme.Colors.textPrimary)
+                                        .fixedSize(horizontal: false, vertical: true)
+                                    Spacer(minLength: StarfallTheme.Spacing.small)
+                                    ObservatoryIcon(.next, size: 20)
+                                        .foregroundStyle(StarfallTheme.Colors.textSecondary)
+                                }
+                                .padding(.vertical, StarfallTheme.Spacing.large)
+                                .frame(minHeight: StarfallTheme.Layout.minimumTarget, alignment: .leading)
+                                .contentShape(Rectangle())
+                            }
+                            .buttonStyle(.plain)
+                            .accessibilityIdentifier("tutorial.chapter.\(lesson.id)")
+                            Divider()
+                        }
                     }
                 }
+                .frame(maxWidth: StarfallTheme.Layout.contentWidth, alignment: .leading)
+                .padding(StarfallTheme.Spacing.section)
+                .frame(maxWidth: .infinity)
             }
-            .navigationTitle(SkyCopy.text(.practiceTitle)).navigationBarTitleDisplayMode(.inline)
-            .safeAreaInset(edge: .bottom) {
-                Button(SkyCopy.text(.actionDone), action: done)
-                    .buttonStyle(StarfallButtonStyle(role: .quiet, expands: true))
-                    .accessibilityIdentifier("tutorial.done")
-                    .padding(8).background(StarfallTheme.Colors.skyTop)
-            }
-            .fullScreenCover(item: $chapter) { lesson in
-                SkyTutorialPlayer(chapter: lesson, exit: { chapter = nil })
-            }
+            .scrollBounceBehavior(.basedOnSize)
+        }
+        .background { SkyBackdrop().ignoresSafeArea() }
+        .fullScreenCover(item: $chapter) { lesson in
+            SkyTutorialPlayer(chapter: lesson, exit: { chapter = nil })
+        }
+    }
+}
+
+private extension SkyTutorial {
+    var interfaceGlyph: ObservatoryGlyph {
+        switch self {
+        case .exchange, .emptySpace: .direction
+        case .trace, .diagonal, .gap, .branch, .square, .cross, .trim, .fork: .trace
+        case .showers: .pause
+        case .storm, .room: .freePlay
+        case .restoration: .story
+        default: .tutorial
         }
     }
 }
@@ -136,12 +186,12 @@ struct SkyTutorialGuide: View {
             if constrained { ScrollView { content }.scrollBounceBehavior(.basedOnSize) }
             else { content }
         }
-        .background(StarfallTheme.Colors.skyTop.opacity(0.94), in: RoundedRectangle(cornerRadius: 12))
-        .foregroundStyle(.white)
+        .starfallPanel(inset: StarfallTheme.Spacing.medium)
+        .foregroundStyle(StarfallTheme.Colors.textPrimary)
     }
     private var content: some View {
             VStack(alignment: .leading, spacing: 8) {
-                Text(run.chapter.title).font(.headline).accessibilityAddTraits(.isHeader)
+                Text(run.chapter.title).font(StarfallTheme.Typography.skyHeading).accessibilityAddTraits(.isHeader)
                     .accessibilityIdentifier("tutorial.title")
                 Text(run.complete ? SkyCopy.text(.practiceComplete) : run.needsRetry ? SkyCopy.text(.practiceRetryMessage) : run.next?.instruction ?? "")
                     .font(.subheadline).fixedSize(horizontal: false, vertical: true)
@@ -154,7 +204,7 @@ struct SkyTutorialGuide: View {
                     HStack { actions }.fixedSize(horizontal: true, vertical: false)
                     VStack(alignment: .leading) { actions }
                 }.buttonStyle(StarfallButtonStyle(role: .quiet))
-            }.padding(8)
+            }
     }
     @ViewBuilder private var actions: some View {
         Button(SkyCopy.text(.practiceRetry), action: retry).accessibilityIdentifier("tutorial.retry")

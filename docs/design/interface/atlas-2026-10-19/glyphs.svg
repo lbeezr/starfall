@@ -1,0 +1,205 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900" role="img" aria-labelledby="glyph-title glyph-desc">
+<title id="glyph-title">Starfall authored interface glyphs — concept specification</title><desc id="glyph-desc">Twenty original 24-unit outline symbols and their visible gallery. One and a half unit strokes with rounded caps and joins. Native dimensions and accessibility have not been validated.</desc>
+<defs><linearGradient id="enamel" x2="0" y2="1"><stop stop-color="#1c3049"/><stop offset=".4" stop-color="#101d30"/><stop offset="1" stop-color="#0e192a"/></linearGradient>
+<linearGradient id="brass" x2="0" y2="1"><stop stop-color="#f0d79a"/><stop offset="1" stop-color="#b58c4f"/></linearGradient>
+<linearGradient id="page" x2=".5" y2="1"><stop stop-color="#142239"/><stop offset=".55" stop-color="#0b1425"/><stop offset="1" stop-color="#101b2d"/></linearGradient><symbol xmlns="http://www.w3.org/2000/svg" id="sf-tutorial" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m5.2 16.7 3.7-7.1m2.7-.2 5.3 4m1.9-2 .9-5.2" />
+      <circle cx="4.5" cy="18" r="1.5" />
+      <circle cx="9.7" cy="8.2" r="1.8" />
+      <circle cx="18" cy="14.5" r="1.6" />
+      <path d="m20 2 1.1 2L23 5l-1.9 1L20 8l-1.1-2L17 5l1.9-1Z" />
+    </symbol>
+
+<symbol xmlns="http://www.w3.org/2000/svg" id="sf-freeplay" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M17.4 8.8c2.8 1.9 4.1 4.5 3 6.4-1.5 2.5-6.6 2.5-11.4-.3s-7.5-7.2-6-9.7c1.1-1.9 4.3-2.4 7.8-1.3" />
+      <path d="M6.6 15.2c-2.8-1.9-4.1-4.5-3-6.4 1.1-1.9 4.3-2.4 7.8-1.3M13.2 20.1c3.5 1.1 6.7.6 7.8-1.3" />
+      <path d="m16.2 3.2 1.3 2.6 2.7 1.3-2.7 1.3-1.3 2.6-1.3-2.6-2.7-1.3 2.7-1.3Z" />
+    </symbol>
+
+<symbol xmlns="http://www.w3.org/2000/svg" id="sf-story" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9.5 5V4a2.5 2.5 0 0 1 5 0v1M7 7h10M8 7l-1.5 11h11L16 7M6.5 18 8 21h8l1.5-3M9 5h6l2 2H7Z" />
+      <path d="m12 9.5 1 2.2 2 1-2 1-1 2.2-1-2.2-2-1 2-1Z" />
+    </symbol>
+
+<symbol xmlns="http://www.w3.org/2000/svg" id="sf-settings" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M17.4 6.6a7.6 7.6 0 0 1 .5 10.2M14.3 19.2a7.6 7.6 0 0 1-9.9-7.1M5.2 8.4a7.6 7.6 0 0 1 8.4-3.8" />
+      <path d="m15.5 3.5 2.1 2.1-2.1 2.1-2.1-2.1ZM17 17l2 2-2 2-2-2ZM4 7l2 2-2 2-2-2Z" />
+      <circle cx="12" cy="12" r="2.4" />
+      <path d="m12 12 2-2" />
+    </symbol>
+
+<symbol xmlns="http://www.w3.org/2000/svg" id="sf-back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m14.5 5-7 7 7 7M7.5 12h13" />
+    </symbol>
+
+<symbol xmlns="http://www.w3.org/2000/svg" id="sf-next" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m9.5 5 7 7-7 7M3.5 12h13" />
+    </symbol>
+
+<symbol xmlns="http://www.w3.org/2000/svg" id="sf-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M7 4.5 20 12 7 19.5Z" />
+    </symbol>
+
+<symbol xmlns="http://www.w3.org/2000/svg" id="sf-pause" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="6" y="4.5" width="3.5" height="15" rx="1" />
+      <rect x="14.5" y="4.5" width="3.5" height="15" rx="1" />
+    </symbol>
+
+<symbol xmlns="http://www.w3.org/2000/svg" id="sf-sound" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10.5 5 5.8 9H2.5v6h3.3l4.7 4ZM14.5 8.5a5 5 0 0 1 0 7M17.5 5a9.5 9.5 0 0 1 0 14" />
+    </symbol>
+
+<symbol xmlns="http://www.w3.org/2000/svg" id="sf-haptic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="4" width="8" height="16" rx="2" />
+      <path d="m4.5 7.5-2 3 2 3-2 3m17-9 2 3-2 3 2 3M11 17h2" />
+    </symbol>
+
+<symbol xmlns="http://www.w3.org/2000/svg" id="sf-calm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M13.5 3.6A8.4 8.4 0 1 0 20.4 16 7.5 7.5 0 0 1 13.5 3.6Z" />
+      <path d="m18 3 1 2.2L21.2 6 19 7l-1 2.2L17 7l-2.2-1 2.2-.8Z" />
+    </symbol>
+
+<symbol xmlns="http://www.w3.org/2000/svg" id="sf-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m3 11 9-8 9 8M5.5 9v11h13V9M10 20v-6h4v6" />
+      <path d="m12 7 1.3 1.5L12 10l-1.3-1.5Z" />
+    </symbol>
+
+<symbol xmlns="http://www.w3.org/2000/svg" id="sf-replay" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 9a8 8 0 1 1 .8 8M4 3.5V9h5.5" />
+    </symbol>
+
+<symbol id="sf-help" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8.6 8.1a3.5 3.5 0 0 1 6.8 1.2c0 2.5-3.4 2.6-3.4 5"/><path d="m12 17.2.6.8-.6.8-.6-.8Z"/><circle cx="12" cy="12" r="9"/></symbol>
+<symbol id="sf-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+<symbol id="sf-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h12M8 12h12M8 18h12M3 6h1M3 12h1M3 18h1"/></symbol>
+<symbol id="sf-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.5 5 5 10-11"/></symbol>
+<symbol id="sf-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 10V7a4.5 4.5 0 0 1 9 0v3"/><rect x="5" y="10" width="14" height="11" rx="2"/><path d="m12 13 1 1.3-1 1.3-1-1.3ZM12 15.6v2"/></symbol>
+<symbol id="sf-direction" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 12h18m-6-6-3-3-3 3m6 12-3 3-3-3M6 9l-3 3 3 3m12-6 3 3-3 3"/></symbol>
+<symbol id="sf-trace" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5.3 16.4 3.8-7.8 5.4 3.9 4.2-7.3m-12.3 12 10.6.5"/><circle cx="4.5" cy="18" r="1.6"/><circle cx="9.8" cy="7.2" r="1.6"/><circle cx="15.5" cy="13.5" r="1.6"/><circle cx="19.5" cy="3.8" r="1.6"/><circle cx="18.5" cy="18" r="1.6"/></symbol></defs>
+<rect x="0" y="0" width="1400" height="900" rx="0" fill="url(#page)" stroke="none" stroke-width="1"/>
+<text x="48" y="48" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#d8b46f" text-anchor="start" letter-spacing="2">STARFALL  /  INTERFACE ATLAS</text>
+<text x="48" y="92" font-family="Georgia, serif" font-size="36" font-weight="400" fill="#f3ead7" text-anchor="start">An instrument for every action.</text>
+<text x="48" y="122" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#b6bfd0" text-anchor="start">20 authored glyphs · 24-unit masters · 1.5-unit strokes · no imported icon library</text>
+<rect x="48" y="160" width="248" height="133" rx="12" fill="url(#enamel)" stroke="#665638" stroke-width="1"/>
+<circle cx="96" cy="209" r="29" fill="#0b1525" stroke="#6a583b"/>
+<use href="#sf-story" x="78" y="191" width="36" height="36" color="#d8b46f"/>
+<text x="64" y="268" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#f3ead7" text-anchor="start">Story · lantern</text>
+<use href="#sf-story" x="238" y="198" width="24" height="24" color="#f3ead7"/>
+<text x="250" y="243" font-family="Arial, sans-serif" font-size="12" font-weight="400" fill="#98a6b9" text-anchor="middle">24</text>
+<rect x="312" y="160" width="248" height="133" rx="12" fill="url(#enamel)" stroke="#665638" stroke-width="1"/>
+<circle cx="360" cy="209" r="29" fill="#0b1525" stroke="#6a583b"/>
+<use href="#sf-freeplay" x="342" y="191" width="36" height="36" color="#d8b46f"/>
+<text x="328" y="268" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#f3ead7" text-anchor="start">Free Play · comet</text>
+<use href="#sf-freeplay" x="502" y="198" width="24" height="24" color="#f3ead7"/>
+<text x="514" y="243" font-family="Arial, sans-serif" font-size="12" font-weight="400" fill="#98a6b9" text-anchor="middle">24</text>
+<rect x="576" y="160" width="248" height="133" rx="12" fill="url(#enamel)" stroke="#665638" stroke-width="1"/>
+<circle cx="624" cy="209" r="29" fill="#0b1525" stroke="#6a583b"/>
+<use href="#sf-tutorial" x="606" y="191" width="36" height="36" color="#d8b46f"/>
+<text x="592" y="268" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#f3ead7" text-anchor="start">Tutorial · constellation</text>
+<use href="#sf-tutorial" x="766" y="198" width="24" height="24" color="#f3ead7"/>
+<text x="778" y="243" font-family="Arial, sans-serif" font-size="12" font-weight="400" fill="#98a6b9" text-anchor="middle">24</text>
+<rect x="840" y="160" width="248" height="133" rx="12" fill="url(#enamel)" stroke="#665638" stroke-width="1"/>
+<circle cx="888" cy="209" r="29" fill="#0b1525" stroke="#6a583b"/>
+<use href="#sf-settings" x="870" y="191" width="36" height="36" color="#d8b46f"/>
+<text x="856" y="268" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#f3ead7" text-anchor="start">Settings · dial</text>
+<use href="#sf-settings" x="1030" y="198" width="24" height="24" color="#f3ead7"/>
+<text x="1042" y="243" font-family="Arial, sans-serif" font-size="12" font-weight="400" fill="#98a6b9" text-anchor="middle">24</text>
+<rect x="1104" y="160" width="248" height="133" rx="12" fill="url(#enamel)" stroke="#665638" stroke-width="1"/>
+<circle cx="1152" cy="209" r="29" fill="#0b1525" stroke="#6a583b"/>
+<use href="#sf-back" x="1134" y="191" width="36" height="36" color="#d8b46f"/>
+<text x="1120" y="268" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#f3ead7" text-anchor="start">Back</text>
+<use href="#sf-back" x="1294" y="198" width="24" height="24" color="#f3ead7"/>
+<text x="1306" y="243" font-family="Arial, sans-serif" font-size="12" font-weight="400" fill="#98a6b9" text-anchor="middle">24</text>
+<rect x="48" y="311" width="248" height="133" rx="12" fill="url(#enamel)" stroke="#665638" stroke-width="1"/>
+<circle cx="96" cy="360" r="29" fill="#0b1525" stroke="#6a583b"/>
+<use href="#sf-next" x="78" y="342" width="36" height="36" color="#d8b46f"/>
+<text x="64" y="419" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#f3ead7" text-anchor="start">Next</text>
+<use href="#sf-next" x="238" y="349" width="24" height="24" color="#f3ead7"/>
+<text x="250" y="394" font-family="Arial, sans-serif" font-size="12" font-weight="400" fill="#98a6b9" text-anchor="middle">24</text>
+<rect x="312" y="311" width="248" height="133" rx="12" fill="url(#enamel)" stroke="#665638" stroke-width="1"/>
+<circle cx="360" cy="360" r="29" fill="#0b1525" stroke="#6a583b"/>
+<use href="#sf-play" x="342" y="342" width="36" height="36" color="#d8b46f"/>
+<text x="328" y="419" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#f3ead7" text-anchor="start">Play / resume</text>
+<use href="#sf-play" x="502" y="349" width="24" height="24" color="#f3ead7"/>
+<text x="514" y="394" font-family="Arial, sans-serif" font-size="12" font-weight="400" fill="#98a6b9" text-anchor="middle">24</text>
+<rect x="576" y="311" width="248" height="133" rx="12" fill="url(#enamel)" stroke="#665638" stroke-width="1"/>
+<circle cx="624" cy="360" r="29" fill="#0b1525" stroke="#6a583b"/>
+<use href="#sf-pause" x="606" y="342" width="36" height="36" color="#d8b46f"/>
+<text x="592" y="419" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#f3ead7" text-anchor="start">Pause</text>
+<use href="#sf-pause" x="766" y="349" width="24" height="24" color="#f3ead7"/>
+<text x="778" y="394" font-family="Arial, sans-serif" font-size="12" font-weight="400" fill="#98a6b9" text-anchor="middle">24</text>
+<rect x="840" y="311" width="248" height="133" rx="12" fill="url(#enamel)" stroke="#665638" stroke-width="1"/>
+<circle cx="888" cy="360" r="29" fill="#0b1525" stroke="#6a583b"/>
+<use href="#sf-sound" x="870" y="342" width="36" height="36" color="#d8b46f"/>
+<text x="856" y="419" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#f3ead7" text-anchor="start">Sound</text>
+<use href="#sf-sound" x="1030" y="349" width="24" height="24" color="#f3ead7"/>
+<text x="1042" y="394" font-family="Arial, sans-serif" font-size="12" font-weight="400" fill="#98a6b9" text-anchor="middle">24</text>
+<rect x="1104" y="311" width="248" height="133" rx="12" fill="url(#enamel)" stroke="#665638" stroke-width="1"/>
+<circle cx="1152" cy="360" r="29" fill="#0b1525" stroke="#6a583b"/>
+<use href="#sf-haptic" x="1134" y="342" width="36" height="36" color="#d8b46f"/>
+<text x="1120" y="419" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#f3ead7" text-anchor="start">Haptics</text>
+<use href="#sf-haptic" x="1294" y="349" width="24" height="24" color="#f3ead7"/>
+<text x="1306" y="394" font-family="Arial, sans-serif" font-size="12" font-weight="400" fill="#98a6b9" text-anchor="middle">24</text>
+<rect x="48" y="462" width="248" height="133" rx="12" fill="url(#enamel)" stroke="#665638" stroke-width="1"/>
+<circle cx="96" cy="511" r="29" fill="#0b1525" stroke="#6a583b"/>
+<use href="#sf-calm" x="78" y="493" width="36" height="36" color="#d8b46f"/>
+<text x="64" y="570" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#f3ead7" text-anchor="start">Calm effects</text>
+<use href="#sf-calm" x="238" y="500" width="24" height="24" color="#f3ead7"/>
+<text x="250" y="545" font-family="Arial, sans-serif" font-size="12" font-weight="400" fill="#98a6b9" text-anchor="middle">24</text>
+<rect x="312" y="462" width="248" height="133" rx="12" fill="url(#enamel)" stroke="#665638" stroke-width="1"/>
+<circle cx="360" cy="511" r="29" fill="#0b1525" stroke="#6a583b"/>
+<use href="#sf-home" x="342" y="493" width="36" height="36" color="#d8b46f"/>
+<text x="328" y="570" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#f3ead7" text-anchor="start">Observatory</text>
+<use href="#sf-home" x="502" y="500" width="24" height="24" color="#f3ead7"/>
+<text x="514" y="545" font-family="Arial, sans-serif" font-size="12" font-weight="400" fill="#98a6b9" text-anchor="middle">24</text>
+<rect x="576" y="462" width="248" height="133" rx="12" fill="url(#enamel)" stroke="#665638" stroke-width="1"/>
+<circle cx="624" cy="511" r="29" fill="#0b1525" stroke="#6a583b"/>
+<use href="#sf-replay" x="606" y="493" width="36" height="36" color="#d8b46f"/>
+<text x="592" y="570" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#f3ead7" text-anchor="start">Replay</text>
+<use href="#sf-replay" x="766" y="500" width="24" height="24" color="#f3ead7"/>
+<text x="778" y="545" font-family="Arial, sans-serif" font-size="12" font-weight="400" fill="#98a6b9" text-anchor="middle">24</text>
+<rect x="840" y="462" width="248" height="133" rx="12" fill="url(#enamel)" stroke="#665638" stroke-width="1"/>
+<circle cx="888" cy="511" r="29" fill="#0b1525" stroke="#6a583b"/>
+<use href="#sf-help" x="870" y="493" width="36" height="36" color="#d8b46f"/>
+<text x="856" y="570" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#f3ead7" text-anchor="start">Help</text>
+<use href="#sf-help" x="1030" y="500" width="24" height="24" color="#f3ead7"/>
+<text x="1042" y="545" font-family="Arial, sans-serif" font-size="12" font-weight="400" fill="#98a6b9" text-anchor="middle">24</text>
+<rect x="1104" y="462" width="248" height="133" rx="12" fill="url(#enamel)" stroke="#665638" stroke-width="1"/>
+<circle cx="1152" cy="511" r="29" fill="#0b1525" stroke="#6a583b"/>
+<use href="#sf-close" x="1134" y="493" width="36" height="36" color="#d8b46f"/>
+<text x="1120" y="570" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#f3ead7" text-anchor="start">Close</text>
+<use href="#sf-close" x="1294" y="500" width="24" height="24" color="#f3ead7"/>
+<text x="1306" y="545" font-family="Arial, sans-serif" font-size="12" font-weight="400" fill="#98a6b9" text-anchor="middle">24</text>
+<rect x="48" y="613" width="248" height="133" rx="12" fill="url(#enamel)" stroke="#665638" stroke-width="1"/>
+<circle cx="96" cy="662" r="29" fill="#0b1525" stroke="#6a583b"/>
+<use href="#sf-list" x="78" y="644" width="36" height="36" color="#d8b46f"/>
+<text x="64" y="721" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#f3ead7" text-anchor="start">Places list</text>
+<use href="#sf-list" x="238" y="651" width="24" height="24" color="#f3ead7"/>
+<text x="250" y="696" font-family="Arial, sans-serif" font-size="12" font-weight="400" fill="#98a6b9" text-anchor="middle">24</text>
+<rect x="312" y="613" width="248" height="133" rx="12" fill="url(#enamel)" stroke="#665638" stroke-width="1"/>
+<circle cx="360" cy="662" r="29" fill="#0b1525" stroke="#6a583b"/>
+<use href="#sf-check" x="342" y="644" width="36" height="36" color="#d8b46f"/>
+<text x="328" y="721" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#f3ead7" text-anchor="start">Selected / complete</text>
+<use href="#sf-check" x="502" y="651" width="24" height="24" color="#f3ead7"/>
+<text x="514" y="696" font-family="Arial, sans-serif" font-size="12" font-weight="400" fill="#98a6b9" text-anchor="middle">24</text>
+<rect x="576" y="613" width="248" height="133" rx="12" fill="url(#enamel)" stroke="#665638" stroke-width="1"/>
+<circle cx="624" cy="662" r="29" fill="#0b1525" stroke="#6a583b"/>
+<use href="#sf-lock" x="606" y="644" width="36" height="36" color="#d8b46f"/>
+<text x="592" y="721" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#f3ead7" text-anchor="start">Locked</text>
+<use href="#sf-lock" x="766" y="651" width="24" height="24" color="#f3ead7"/>
+<text x="778" y="696" font-family="Arial, sans-serif" font-size="12" font-weight="400" fill="#98a6b9" text-anchor="middle">24</text>
+<rect x="840" y="613" width="248" height="133" rx="12" fill="url(#enamel)" stroke="#665638" stroke-width="1"/>
+<circle cx="888" cy="662" r="29" fill="#0b1525" stroke="#6a583b"/>
+<use href="#sf-direction" x="870" y="644" width="36" height="36" color="#d8b46f"/>
+<text x="856" y="721" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#f3ead7" text-anchor="start">Move direction</text>
+<use href="#sf-direction" x="1030" y="651" width="24" height="24" color="#f3ead7"/>
+<text x="1042" y="696" font-family="Arial, sans-serif" font-size="12" font-weight="400" fill="#98a6b9" text-anchor="middle">24</text>
+<rect x="1104" y="613" width="248" height="133" rx="12" fill="url(#enamel)" stroke="#665638" stroke-width="1"/>
+<circle cx="1152" cy="662" r="29" fill="#0b1525" stroke="#6a583b"/>
+<use href="#sf-trace" x="1134" y="644" width="36" height="36" color="#d8b46f"/>
+<text x="1120" y="721" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#f3ead7" text-anchor="start">Trace</text>
+<use href="#sf-trace" x="1294" y="651" width="24" height="24" color="#f3ead7"/>
+<text x="1306" y="696" font-family="Arial, sans-serif" font-size="12" font-weight="400" fill="#98a6b9" text-anchor="middle">24</text>
+<path d="M48 790H1352" stroke="#465369" stroke-width="1"/>
+<text x="48" y="823" font-family="Georgia, serif" font-size="20" font-weight="400" fill="#f3ead7" text-anchor="start">Same visual weight. Distinct silhouettes. Labels carry the meaning.</text>
+<text x="48" y="853" font-family="Arial, sans-serif" font-size="15" font-weight="400" fill="#b6bfd0" text-anchor="start">Concept specification · illustration scale only · native touch targets, focus and contrast remain unverified.</text>
+</svg>

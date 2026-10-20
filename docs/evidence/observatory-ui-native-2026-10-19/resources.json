@@ -1,0 +1,751 @@
+{
+  "status": "pass",
+  "checked_at_utc": "2026-10-20T00:46:33.481414+00:00",
+  "source_head": "cfd6ab75af5408d74c4850dcecac2b2b50215b46",
+  "scope": "Read-only source/export/import/project and compiled simulator catalog verification; no native interaction tests run.",
+  "source": {
+    "glyphs": 20,
+    "raster_roles": 6,
+    "manifest_hashes_checked": 124,
+    "unique_source_export_files": 124,
+    "png_exports_alpha_and_dimensions_checked": 78,
+    "pdf_vector_pages_checked": 20,
+    "svg_xml_and_stroke_contracts_checked": 20
+  },
+  "app_catalog": {
+    "image_sets": 26,
+    "imported_payload_files": 38,
+    "pdf_files": 20,
+    "png_density_files": 18,
+    "payload_sha_matches": 38,
+    "encoded_payload_bytes": 814454,
+    "catalog_source_bytes_including_json": 822467,
+    "decoded_raster_bytes_all_scales": 3024896,
+    "decoded_raster_bytes_3x": 1944576,
+    "orphan_files": []
+  },
+  "compiled_catalogs": {
+    "Debug": {
+      "status": "pass",
+      "path": "/tmp/starfall-observatory-native/Build/Products/Debug-iphonesimulator/Starfall.app/Assets.car",
+      "sha256": "b88fbc01d69c0103798283c79285229f18892c846cff46014afaf14006deeb8f",
+      "catalog_bytes": 187654120,
+      "unique_resources": 26,
+      "rendition_records": 46,
+      "resources": [
+        {
+          "name": "ObservatoryButtonAction",
+          "kind": "raster",
+          "point_size": [
+            320,
+            64
+          ],
+          "raster_scales": [
+            3
+          ],
+          "preserved_vector": false
+        },
+        {
+          "name": "ObservatoryEmblemFreeplay",
+          "kind": "raster",
+          "point_size": [
+            48,
+            48
+          ],
+          "raster_scales": [
+            3
+          ],
+          "preserved_vector": false
+        },
+        {
+          "name": "ObservatoryEmblemStory",
+          "kind": "raster",
+          "point_size": [
+            48,
+            48
+          ],
+          "raster_scales": [
+            3
+          ],
+          "preserved_vector": false
+        },
+        {
+          "name": "ObservatoryEmblemTutorial",
+          "kind": "raster",
+          "point_size": [
+            48,
+            48
+          ],
+          "raster_scales": [
+            3
+          ],
+          "preserved_vector": false
+        },
+        {
+          "name": "ObservatoryGlyphBack",
+          "kind": "glyph",
+          "point_size": [
+            24,
+            24
+          ],
+          "raster_scales": [
+            3
+          ],
+          "preserved_vector": true
+        },
+        {
+          "name": "ObservatoryGlyphCalm",
+          "kind": "glyph",
+          "point_size": [
+            24,
+            24
+          ],
+          "raster_scales": [
+            3
+          ],
+          "preserved_vector": true
+        },
+        {
+          "name": "ObservatoryGlyphCheck",
+          "kind": "glyph",
+          "point_size": [
+            24,
+            24
+          ],
+          "raster_scales": [
+            3
+          ],
+          "preserved_vector": true
+        },
+        {
+          "name": "ObservatoryGlyphClose",
+          "kind": "glyph",
+          "point_size": [
+            24,
+            24
+          ],
+          "raster_scales": [
+            3
+          ],
+          "preserved_vector": true
+        },
+        {
+          "name": "ObservatoryGlyphDirection",
+          "kind": "glyph",
+          "point_size": [
+            24,
+            24
+          ],
+          "raster_scales": [
+            3
+          ],
+          "preserved_vector": true
+        },
+        {
+          "name": "ObservatoryGlyphFreeplay",
+          "kind": "glyph",
+          "point_size": [
+            24,
+            24
+          ],
+          "raster_scales": [
+            3
+          ],
+          "preserved_vector": true
+        },
+        {
+          "name": "ObservatoryGlyphHaptic",
+          "kind": "glyph",
+          "point_size": [
+            24,
+            24
+          ],
+          "raster_scales": [
+            3
+          ],
+          "preserved_vector": true
+        },
+        {
+          "name": "ObservatoryGlyphHelp",
+          "kind": "glyph",
+          "point_size": [
+            24,
+            24
+          ],
+          "raster_scales": [
+            3
+          ],
+          "preserved_vector": true
+        },
+        {
+          "name": "ObservatoryGlyphHome",
+          "kind": "glyph",
+          "point_size": [
+            24,
+            24
+          ],
+          "raster_scales": [
+            3
+          ],
+          "preserved_vector": true
+        },
+        {
+          "name": "ObservatoryGlyphList",
+          "kind": "glyph",
+          "point_size": [
+            24,
+            24
+          ],
+          "raster_scales": [
+            3
+          ],
+          "preserved_vector": true
+        },
+        {
+          "name": "ObservatoryGlyphLock",
+          "kind": "glyph",
+          "point_size": [
+            24,
+            24
+          ],
+          "raster_scales": [
+            3
+          ],
+          "preserved_vector": true
+        },
+        {
+          "name": "ObservatoryGlyphNext",
+          "kind": "glyph",
+          "point_size": [
+            24,
+            24
+          ],
+          "raster_scales": [
+            3
+          ],
+          "preserved_vector": true
+        },
+        {
+          "name": "ObservatoryGlyphPause",
+          "kind": "glyph",
+          "point_size": [
+            24,
+            24
+          ],
+          "raster_scales": [
+            3
+          ],
+          "preserved_vector": true
+        },
+        {
+          "name": "ObservatoryGlyphPlay",
+          "kind": "glyph",
+          "point_size": [
+            24,
+            24
+          ],
+          "raster_scales": [
+            3
+          ],
+          "preserved_vector": true
+        },
+        {
+          "name": "ObservatoryGlyphReplay",
+          "kind": "glyph",
+          "point_size": [
+            24,
+            24
+          ],
+          "raster_scales": [
+            3
+          ],
+          "preserved_vector": true
+        },
+        {
+          "name": "ObservatoryGlyphSettings",
+          "kind": "glyph",
+          "point_size": [
+            24,
+            24
+          ],
+          "raster_scales": [
+            3
+          ],
+          "preserved_vector": true
+        },
+        {
+          "name": "ObservatoryGlyphSound",
+          "kind": "glyph",
+          "point_size": [
+            24,
+            24
+          ],
+          "raster_scales": [
+            3
+          ],
+          "preserved_vector": true
+        },
+        {
+          "name": "ObservatoryGlyphStory",
+          "kind": "glyph",
+          "point_size": [
+            24,
+            24
+          ],
+          "raster_scales": [
+            3
+          ],
+          "preserved_vector": true
+        },
+        {
+          "name": "ObservatoryGlyphTrace",
+          "kind": "glyph",
+          "point_size": [
+            24,
+            24
+          ],
+          "raster_scales": [
+            3
+          ],
+          "preserved_vector": true
+        },
+        {
+          "name": "ObservatoryGlyphTutorial",
+          "kind": "glyph",
+          "point_size": [
+            24,
+            24
+          ],
+          "raster_scales": [
+            3
+          ],
+          "preserved_vector": true
+        },
+        {
+          "name": "ObservatoryPanelReading",
+          "kind": "raster",
+          "point_size": [
+            160,
+            160
+          ],
+          "raster_scales": [
+            3
+          ],
+          "preserved_vector": false
+        },
+        {
+          "name": "ObservatoryUtilityBezel",
+          "kind": "raster",
+          "point_size": [
+            32,
+            32
+          ],
+          "raster_scales": [
+            3
+          ],
+          "preserved_vector": false
+        }
+      ]
+    },
+    "Release": {
+      "status": "pass",
+      "path": "/tmp/starfall-observatory-release/Build/Products/Release-iphonesimulator/Starfall.app/Assets.car",
+      "sha256": "2482d3b1f8e77c27ddab54db4649eb52a6f1e2f71e10b761edf4a91ba9134de8",
+      "catalog_bytes": 190481912,
+      "unique_resources": 26,
+      "rendition_records": 98,
+      "resources": [
+        {
+          "name": "ObservatoryButtonAction",
+          "kind": "raster",
+          "point_size": [
+            320,
+            64
+          ],
+          "raster_scales": [
+            1,
+            2,
+            3
+          ],
+          "preserved_vector": false
+        },
+        {
+          "name": "ObservatoryEmblemFreeplay",
+          "kind": "raster",
+          "point_size": [
+            48,
+            48
+          ],
+          "raster_scales": [
+            1,
+            2,
+            3
+          ],
+          "preserved_vector": false
+        },
+        {
+          "name": "ObservatoryEmblemStory",
+          "kind": "raster",
+          "point_size": [
+            48,
+            48
+          ],
+          "raster_scales": [
+            1,
+            2,
+            3
+          ],
+          "preserved_vector": false
+        },
+        {
+          "name": "ObservatoryEmblemTutorial",
+          "kind": "raster",
+          "point_size": [
+            48,
+            48
+          ],
+          "raster_scales": [
+            1,
+            2,
+            3
+          ],
+          "preserved_vector": false
+        },
+        {
+          "name": "ObservatoryGlyphBack",
+          "kind": "glyph",
+          "point_size": [
+            24,
+            24
+          ],
+          "raster_scales": [
+            1,
+            2,
+            3
+          ],
+          "preserved_vector": true
+        },
+        {
+          "name": "ObservatoryGlyphCalm",
+          "kind": "glyph",
+          "point_size": [
+            24,
+            24
+          ],
+          "raster_scales": [
+            1,
+            2,
+            3
+          ],
+          "preserved_vector": true
+        },
+        {
+          "name": "ObservatoryGlyphCheck",
+          "kind": "glyph",
+          "point_size": [
+            24,
+            24
+          ],
+          "raster_scales": [
+            1,
+            2,
+            3
+          ],
+          "preserved_vector": true
+        },
+        {
+          "name": "ObservatoryGlyphClose",
+          "kind": "glyph",
+          "point_size": [
+            24,
+            24
+          ],
+          "raster_scales": [
+            1,
+            2,
+            3
+          ],
+          "preserved_vector": true
+        },
+        {
+          "name": "ObservatoryGlyphDirection",
+          "kind": "glyph",
+          "point_size": [
+            24,
+            24
+          ],
+          "raster_scales": [
+            1,
+            2,
+            3
+          ],
+          "preserved_vector": true
+        },
+        {
+          "name": "ObservatoryGlyphFreeplay",
+          "kind": "glyph",
+          "point_size": [
+            24,
+            24
+          ],
+          "raster_scales": [
+            1,
+            2,
+            3
+          ],
+          "preserved_vector": true
+        },
+        {
+          "name": "ObservatoryGlyphHaptic",
+          "kind": "glyph",
+          "point_size": [
+            24,
+            24
+          ],
+          "raster_scales": [
+            1,
+            2,
+            3
+          ],
+          "preserved_vector": true
+        },
+        {
+          "name": "ObservatoryGlyphHelp",
+          "kind": "glyph",
+          "point_size": [
+            24,
+            24
+          ],
+          "raster_scales": [
+            1,
+            2,
+            3
+          ],
+          "preserved_vector": true
+        },
+        {
+          "name": "ObservatoryGlyphHome",
+          "kind": "glyph",
+          "point_size": [
+            24,
+            24
+          ],
+          "raster_scales": [
+            1,
+            2,
+            3
+          ],
+          "preserved_vector": true
+        },
+        {
+          "name": "ObservatoryGlyphList",
+          "kind": "glyph",
+          "point_size": [
+            24,
+            24
+          ],
+          "raster_scales": [
+            1,
+            2,
+            3
+          ],
+          "preserved_vector": true
+        },
+        {
+          "name": "ObservatoryGlyphLock",
+          "kind": "glyph",
+          "point_size": [
+            24,
+            24
+          ],
+          "raster_scales": [
+            1,
+            2,
+            3
+          ],
+          "preserved_vector": true
+        },
+        {
+          "name": "ObservatoryGlyphNext",
+          "kind": "glyph",
+          "point_size": [
+            24,
+            24
+          ],
+          "raster_scales": [
+            1,
+            2,
+            3
+          ],
+          "preserved_vector": true
+        },
+        {
+          "name": "ObservatoryGlyphPause",
+          "kind": "glyph",
+          "point_size": [
+            24,
+            24
+          ],
+          "raster_scales": [
+            1,
+            2,
+            3
+          ],
+          "preserved_vector": true
+        },
+        {
+          "name": "ObservatoryGlyphPlay",
+          "kind": "glyph",
+          "point_size": [
+            24,
+            24
+          ],
+          "raster_scales": [
+            1,
+            2,
+            3
+          ],
+          "preserved_vector": true
+        },
+        {
+          "name": "ObservatoryGlyphReplay",
+          "kind": "glyph",
+          "point_size": [
+            24,
+            24
+          ],
+          "raster_scales": [
+            1,
+            2,
+            3
+          ],
+          "preserved_vector": true
+        },
+        {
+          "name": "ObservatoryGlyphSettings",
+          "kind": "glyph",
+          "point_size": [
+            24,
+            24
+          ],
+          "raster_scales": [
+            1,
+            2,
+            3
+          ],
+          "preserved_vector": true
+        },
+        {
+          "name": "ObservatoryGlyphSound",
+          "kind": "glyph",
+          "point_size": [
+            24,
+            24
+          ],
+          "raster_scales": [
+            1,
+            2,
+            3
+          ],
+          "preserved_vector": true
+        },
+        {
+          "name": "ObservatoryGlyphStory",
+          "kind": "glyph",
+          "point_size": [
+            24,
+            24
+          ],
+          "raster_scales": [
+            1,
+            2,
+            3
+          ],
+          "preserved_vector": true
+        },
+        {
+          "name": "ObservatoryGlyphTrace",
+          "kind": "glyph",
+          "point_size": [
+            24,
+            24
+          ],
+          "raster_scales": [
+            1,
+            2,
+            3
+          ],
+          "preserved_vector": true
+        },
+        {
+          "name": "ObservatoryGlyphTutorial",
+          "kind": "glyph",
+          "point_size": [
+            24,
+            24
+          ],
+          "raster_scales": [
+            1,
+            2,
+            3
+          ],
+          "preserved_vector": true
+        },
+        {
+          "name": "ObservatoryPanelReading",
+          "kind": "raster",
+          "point_size": [
+            160,
+            160
+          ],
+          "raster_scales": [
+            1,
+            2,
+            3
+          ],
+          "preserved_vector": false
+        },
+        {
+          "name": "ObservatoryUtilityBezel",
+          "kind": "raster",
+          "point_size": [
+            32,
+            32
+          ],
+          "raster_scales": [
+            1,
+            2,
+            3
+          ],
+          "preserved_vector": false
+        }
+      ]
+    }
+  },
+  "project_membership": {
+    "sources": {
+      "Starfall": {
+        "file": "ObservatoryArtwork.swift",
+        "source_memberships": 1
+      },
+      "StarfallAppTests": {
+        "file": "ObservatoryArtworkTests.swift",
+        "source_memberships": 1
+      }
+    },
+    "app_asset_catalog_memberships": 1,
+    "framework_package_buildconfig_and_script_definitions_unchanged": true
+  },
+  "boundary_checks": {
+    "core_changed": [],
+    "rule_save_owner_changed": [],
+    "capability_manifest_changed": [],
+    "network_or_sdk_tokens_added": [],
+    "basis": "git diff HEAD plus untracked source files; project framework/package/build-configuration/script objects compared to HEAD"
+  },
+  "limits": [
+    "Catalogs are simulator products; this is not canonical phone installation evidence.",
+    "Device thinning may retain only3x raster entries; all source densities were validated independently.",
+    "No native visual, VoiceOver, animation, frame-pacing or resident-memory claim is made."
+  ]
+}

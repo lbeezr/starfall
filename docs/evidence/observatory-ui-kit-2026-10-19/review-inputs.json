@@ -1,0 +1,11 @@
+{
+  "source": "cfd6ab7",
+  "scope": "Source artwork and local browser specimen; no native build inputs",
+  "sha256": {
+    "PROMPTS.json": "50922cb89169372266bc0d4a4f6c2503236c74ec35cc985fe8714aa062f67bb8",
+    "glyph-manifest.json": "ecc93a04d844c1e442947baf8977467b318406bebfbc41bc9e8827d528d50c3d",
+    "raster-manifest.json": "b3a7b12bef91b1e03c6047ae7cabdfcb58708c6550d20aebb98f78511c3288fc",
+    "review.html": "b1739ffcc930195a4c20fc4244922abf417ae484d216be362a24f485f539807e",
+    "previews/cfd6ab7-dirty__browser-specimen__1280x720__default.png": "67527fe67eba4ef8e2ff7eb56c72be08dee7edb4f0288bccdbdb431a70ea6c3d"
+  }
+}

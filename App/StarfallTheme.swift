@@ -5,8 +5,8 @@ import UIKit
 /// separate owners; screens compose these roles rather than invent local tokens.
 enum StarfallTheme {
     enum Dialogue {
-        static let surface = Color(red: 0.055, green: 0.055, blue: 0.145)
-        static let brass = Color(red: 0.98, green: 0.78, blue: 0.43)
+        static let surface = Colors.surface
+        static let brass = Colors.actionPrimary
         static let ink = Colors.textPrimary
         static let portraitSide: CGFloat = 64
         static let portraitOverlap: CGFloat = 16
@@ -22,15 +22,15 @@ enum StarfallTheme {
         static let skyBottom = Palette.plum
         static let surface = Palette.nightglass
         static let surfacePressed = Palette.litNightglass
-        static let outline = Palette.slate
+        static let outline = Palette.softBrass
         static let textPrimary = Palette.moonlight
         static let textSecondary = Palette.lavender
         static let textDisabled = Palette.mutedLavender
-        static let actionPrimary = Palette.ice
-        static let actionPrimaryPressed = Palette.blueIce
+        static let actionPrimary = Palette.brass
+        static let actionPrimaryPressed = Palette.softBrass
         static let onActionPrimary = Palette.midnight
         static let actionDisabled = Palette.litNightglass
-        static let focus = Palette.ice
+        static let focus = Palette.moonlight
         static let progressFill = Palette.ice
         static let progressTrack = Palette.slate
         static let positiveStatus = Palette.ice
@@ -99,12 +99,12 @@ enum StarfallTheme {
 
         static let displayBaseSize: CGFloat = 52
         static let title = Font.system(.title2, design: .serif).weight(.medium)
-        static let heading = Font.headline
+        static let heading = Font.system(.headline, design: .serif).weight(.semibold)
         static let body = Font.body
         static let supporting = Font.subheadline
         static let status = Font.callout
-        static let action = Font.headline
-        static let gameTitle = Font.system(.headline, design: .rounded)
+        static let action = Font.system(.headline, design: .serif).weight(.semibold)
+        static let gameTitle = Font.system(.headline, design: .serif).weight(.semibold)
         static let hudGlyph = Font.system(size: Layout.hudSymbolSide, weight: .medium)
         static let celebrationTitle = Font.system(.title, design: .rounded).weight(.heavy)
         static let celebrationRelayCount = Font.system(.title3, design: .serif).weight(.bold)
@@ -137,6 +137,9 @@ enum StarfallTheme {
 
     enum Layout {
         static let minimumTarget: CGFloat = 44
+        // Native compact sheets scale their content slightly; retain a full
+        // 44pt target after that presentation transform.
+        static let preferenceTarget: CGFloat = 48
         // A point of breathing room keeps compact controls above the native minimum after layout.
         static let gameplayTarget = minimumTarget + 1
         static let hudSymbolSide: CGFloat = 24
@@ -164,13 +167,15 @@ enum StarfallTheme {
     }
 
     private enum Palette {
-        static let midnight = Color(red: 9 / 255, green: 14 / 255, blue: 43 / 255)
-        static let plum = Color(red: 46 / 255, green: 26 / 255, blue: 74 / 255)
-        static let nightglass = Color(red: 29 / 255, green: 33 / 255, blue: 64 / 255)
-        static let litNightglass = Color(red: 48 / 255, green: 54 / 255, blue: 82 / 255)
-        static let moonlight = Color(red: 244 / 255, green: 241 / 255, blue: 255 / 255)
-        static let lavender = Color(red: 197 / 255, green: 199 / 255, blue: 221 / 255)
-        static let mutedLavender = Color(red: 164 / 255, green: 173 / 255, blue: 199 / 255)
+        static let midnight = Color(red: 8 / 255, green: 15 / 255, blue: 26 / 255)
+        static let plum = Color(red: 19 / 255, green: 25 / 255, blue: 43 / 255)
+        static let nightglass = Color(red: 16 / 255, green: 28 / 255, blue: 44 / 255)
+        static let litNightglass = Color(red: 29 / 255, green: 43 / 255, blue: 61 / 255)
+        static let moonlight = Color(red: 240 / 255, green: 233 / 255, blue: 218 / 255)
+        static let lavender = Color(red: 202 / 255, green: 200 / 255, blue: 196 / 255)
+        static let mutedLavender = Color(red: 176 / 255, green: 170 / 255, blue: 159 / 255)
+        static let brass = Color(red: 224 / 255, green: 191 / 255, blue: 123 / 255)
+        static let softBrass = Color(red: 145 / 255, green: 126 / 255, blue: 89 / 255)
         static let ice = Color(red: 176 / 255, green: 237 / 255, blue: 255 / 255)
         static let blueIce = Color(red: 144 / 255, green: 211 / 255, blue: 233 / 255)
         static let slate = Color(red: 102 / 255, green: 119 / 255, blue: 155 / 255)
@@ -178,7 +183,7 @@ enum StarfallTheme {
 }
 
 /// A common action contract: native Button semantics, a full hit shape, wrapping
-/// Dynamic Type, and immediate solid-color state changes without scale or motion.
+/// Dynamic Type, and immediate material state changes without scale or motion.
 struct StarfallButtonStyle: ButtonStyle {
     enum Role { case primary, ceremonyPrimary, secondary, quiet }
 
@@ -189,46 +194,41 @@ struct StarfallButtonStyle: ButtonStyle {
 
     func makeBody(configuration: Configuration) -> some View {
         let shape = RoundedRectangle(cornerRadius: StarfallTheme.Radius.control, style: .continuous)
-        configuration.label
+        Group {
+            if role == .quiet {
+                configuration.label
+                    .padding(.horizontal, StarfallTheme.Spacing.small)
+                    .padding(.vertical, StarfallTheme.Spacing.compact)
+                    .frame(minWidth: StarfallTheme.Layout.minimumTarget,
+                           maxWidth: expands ? .infinity : nil,
+                           minHeight: StarfallTheme.Layout.minimumTarget)
+                    .background(configuration.isPressed && isEnabled ? StarfallTheme.Colors.surfacePressed : .clear, in: shape)
+            } else {
+                ObservatoryActionLayout(expands: expands) {
+                    configuration.label.fixedSize(horizontal: false, vertical: true)
+                }
+                .background {
+                    ObservatorySurface(skin: .action, pressed: configuration.isPressed && isEnabled,
+                                       enabled: isEnabled, subdued: role == .secondary)
+                }
+            }
+        }
             .font(StarfallTheme.Typography.action)
             .multilineTextAlignment(.center)
-            .fixedSize(horizontal: false, vertical: true)
-            .padding(.horizontal, role == .quiet ? StarfallTheme.Spacing.small : StarfallTheme.Spacing.large)
-            .padding(.vertical, role == .quiet ? StarfallTheme.Spacing.compact : StarfallTheme.Spacing.small)
-            .frame(minWidth: StarfallTheme.Layout.minimumTarget,
-                   maxWidth: expands ? .infinity : nil,
-                   minHeight: role == .quiet ? StarfallTheme.Layout.minimumTarget : StarfallTheme.Layout.actionHeight)
             .foregroundStyle(foreground)
-            .background(background(pressed: configuration.isPressed), in: shape)
             .overlay {
-                shape.strokeBorder(isFocused ? StarfallTheme.Colors.focus : StarfallTheme.Colors.outline,
-                                   lineWidth: isFocused ? StarfallTheme.Layout.focusWidth
-                                   : (role == .secondary ? StarfallTheme.Layout.borderWidth : 0))
+                if isFocused {
+                    shape.strokeBorder(StarfallTheme.Colors.focus, lineWidth: StarfallTheme.Layout.focusWidth)
+                }
             }
-            .contentShape(shape)
+            .contentShape(Rectangle())
             // Native VoiceOver and keyboard focus effects remain enabled.
             .transaction { $0.animation = nil }
     }
 
     private var foreground: Color {
         guard isEnabled else { return StarfallTheme.Colors.textDisabled }
-        return role == .primary || role == .ceremonyPrimary ? StarfallTheme.Colors.onActionPrimary : StarfallTheme.Colors.actionPrimary
-    }
-
-    private func background(pressed: Bool) -> Color {
-        guard isEnabled else {
-            return role == .quiet ? .clear : StarfallTheme.Colors.actionDisabled
-        }
-        switch role {
-        case .primary:
-            return pressed ? StarfallTheme.Colors.actionPrimaryPressed : StarfallTheme.Colors.actionPrimary
-        case .ceremonyPrimary:
-            return pressed ? StarfallTheme.Ceremony.goldPressed : StarfallTheme.Ceremony.gold
-        case .secondary:
-            return pressed ? StarfallTheme.Colors.surfacePressed : StarfallTheme.Colors.surface
-        case .quiet:
-            return pressed ? StarfallTheme.Colors.surfacePressed : .clear
-        }
+        return role == .quiet ? StarfallTheme.Colors.actionPrimary : StarfallTheme.Colors.textPrimary
     }
 }
 
@@ -240,16 +240,20 @@ private struct StarfallPanelStyle: ViewModifier {
         content
             .padding(inset)
             .background {
-                RoundedRectangle(cornerRadius: StarfallTheme.Radius.panel, style: .continuous)
-                    .fill(StarfallTheme.Colors.surface)
-                    .overlay {
-                        RoundedRectangle(cornerRadius: StarfallTheme.Radius.panel, style: .continuous)
-                            .strokeBorder(StarfallTheme.Colors.outline,
-                                          lineWidth: contrast == .increased ? StarfallTheme.Layout.focusWidth
-                                          : StarfallTheme.Layout.borderWidth)
-                    }
-                    .allowsHitTesting(false)
-                    .accessibilityHidden(true)
+                // Compact gameplay notices retain a small native surface. Full
+                // reading panels opt into the registered 32-point fittings.
+                if inset >= 32 {
+                    ObservatorySurface()
+                } else {
+                    RoundedRectangle(cornerRadius: StarfallTheme.Radius.control, style: .continuous)
+                        .fill(StarfallTheme.Colors.surface)
+                        .overlay {
+                            RoundedRectangle(cornerRadius: StarfallTheme.Radius.control, style: .continuous)
+                                .strokeBorder(StarfallTheme.Colors.outline,
+                                              lineWidth: contrast == .increased ? StarfallTheme.Layout.focusWidth : 1)
+                        }
+                        .allowsHitTesting(false).accessibilityHidden(true)
+                }
             }
     }
 }
@@ -337,15 +341,28 @@ struct StarfallProgressStyle: ProgressViewStyle {
 struct StarfallGameButtonStyle: ButtonStyle {
     var tint = StarfallTheme.Colors.actionPrimary
     @Environment(\.isEnabled) private var isEnabled
+    @Environment(\.isFocused) private var focused
+    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
+    @Environment(\.colorSchemeContrast) private var contrast
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .font(StarfallTheme.Typography.gameDetail.weight(.medium))
             .foregroundStyle(isEnabled ? tint : StarfallTheme.Colors.textDisabled)
             .padding(.horizontal, StarfallTheme.Spacing.small)
             .frame(minWidth: StarfallTheme.Layout.gameplayTarget, minHeight: StarfallTheme.Layout.gameplayTarget)
-            .background(configuration.isPressed ? StarfallTheme.Colors.surfacePressed : .clear,
-                        in: RoundedRectangle(cornerRadius: StarfallTheme.Radius.control))
+            .background {
+                if configuration.isPressed && isEnabled || reduceTransparency || contrast == .increased {
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(configuration.isPressed ? StarfallTheme.Colors.surfacePressed : StarfallTheme.Colors.surface)
+                }
+            }
+            .overlay {
+                if focused {
+                    RoundedRectangle(cornerRadius: 10).strokeBorder(StarfallTheme.Colors.focus, lineWidth: 2)
+                }
+            }
             .contentShape(Rectangle())
+            .transaction { $0.animation = nil }
     }
 }
 

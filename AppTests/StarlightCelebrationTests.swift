@@ -444,7 +444,8 @@ final class StarlightCelebrationTests: XCTestCase {
         for size in [CGSize(width: 375, height: 667), CGSize(width: 390, height: 844),
                      CGSize(width: 430, height: 932), CGSize(width: 1024, height: 1366)] {
             for accessible in [false, true] {
-                let canvas = CGSize(width:size.width,height:accessible ? max(1200,size.height) : max(900,size.height))
+                let reading = FallingSkyView.readingCanvas(viewport: size, accessible: accessible)
+                let canvas = reading.size
                 let mapping = LandingGeometry(size:canvas,largeHeader:accessible)
                 let board = CGRect(origin: CGPoint(x: 13, y: 27), size: canvas)
                 let header = mapping.crownFrame.offsetBy(dx:board.minX,dy:board.minY)
@@ -452,7 +453,11 @@ final class StarlightCelebrationTests: XCTestCase {
                 XCTAssertGreaterThan(region.height, 20)
                 XCTAssertFalse(region.intersects(header))
                 XCTAssertTrue(board.contains(region))
-                if accessible { XCTAssertLessThanOrEqual(region.maxY,board.minY+mapping.accessibleCanvasEnd) }
+                if accessible {
+                    XCTAssertLessThanOrEqual(region.maxY, board.minY + reading.visibleHeight)
+                    let guideTop = board.minY + reading.visibleHeight + StarfallTheme.Spacing.small
+                    XCTAssertLessThan(region.maxY, guideTop, "Accessible awards must end before the reading guide")
+                }
                 for row in 0..<7 {
                     for column in 0..<7 {
                         let cell = mapping.frame(Cell(row, column))

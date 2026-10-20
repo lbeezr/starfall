@@ -1,0 +1,515 @@
+{
+  "capturedAtUTC": "2026-10-20T01:20:03.663177+00:00",
+  "runs": [
+    {
+      "name": "native-checks",
+      "runtime": "dev.68e5909355",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=862714B3-4526-470F-85BB-7FB33EAA1E87\" -derivedDataPath /tmp/starfall-observatory-native ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGNING_ALLOWED=NO -parallel-testing-enabled NO -collect-test-diagnostics never \"-only-testing:StarfallAppTests\" \"-only-testing:StarfallUITests/SkyFlowInteractionTests\" \"-skip-testing:StarfallUITests/SkyFlowInteractionTests/testLandscapeWelcomeEntryAndPreferences\" \"-only-testing:StarfallUITests/WorldJourneyInteractionTests\" \"-only-testing:StarfallUITests/FallingSkyInteractionTests/testCompactHUDMenuSuspendsWithoutChangingPauseChoice\" \"-only-testing:StarfallUITests/FallingSkyInteractionTests/testLargestTextSettingsFeedbackAndDismissal\" \"-only-testing:StarfallUITests/FallingSkyInteractionTests/testSystemReduceMotionKeepsManualPlayWorking\" \"-only-testing:StarfallUITests/FallingSkyInteractionTests/testAutomaticRainThenPausedClearReplayAndSettings\" \"-only-testing:StarfallUITests/ObservatoryInteractionTests/testActualCastSparseDenseAndProjectedCornerTaps\" \"-only-testing:StarfallUITests/ObservatoryInteractionTests/testCastSettingsDismissalAndBackgroundPreserveBoard\" \"-only-testing:StarfallUITests/LandingPlaceInteractionTests/testLargeScoresAndLargestTextReflowWithoutCoveringStars\" \"-only-testing:StarfallUITests/SkyTechniqueInteractionTests/testFastSameColorStrokeSwapsOnceThenHoldDrawClearsOnlyFive\" \"-only-testing:StarfallUITests/SkyTechniqueInteractionTests/testSettingsAndBackgroundLeaveGesturesReadyWithoutRetoggling\" \"-only-testing:StarfallUITests/SkyTechniqueInteractionTests/testVerticalSwipesOwnTheBoardAtLargestTextSize\" -resultBundlePath /tmp/starfall-observatory-native-checks.xcresult test",
+      "resultBundle": "/tmp/starfall-observatory-native-checks.xcresult",
+      "status": "failed",
+      "counts": {
+        "StarfallAppTests": {
+          "passed": 337,
+          "failed": 0,
+          "skipped": 0
+        },
+        "StarfallUITests": {
+          "passed": 20,
+          "failed": 6,
+          "skipped": 0
+        }
+      },
+      "logSHA256": "7ef70c05dbc6ba873644c499802cc9031c4a015994c225325a891c773362054b",
+      "completedMethods": [
+        {
+          "method": "StarfallUITests/FallingSkyInteractionTests/testAutomaticRainThenPausedClearReplayAndSettings",
+          "status": "passed",
+          "seconds": 120.241
+        },
+        {
+          "method": "StarfallUITests/FallingSkyInteractionTests/testCompactHUDMenuSuspendsWithoutChangingPauseChoice",
+          "status": "passed",
+          "seconds": 41.579
+        },
+        {
+          "method": "StarfallUITests/FallingSkyInteractionTests/testLargestTextSettingsFeedbackAndDismissal",
+          "status": "passed",
+          "seconds": 39.85
+        },
+        {
+          "method": "StarfallUITests/FallingSkyInteractionTests/testSystemReduceMotionKeepsManualPlayWorking",
+          "status": "passed",
+          "seconds": 32.691
+        },
+        {
+          "method": "StarfallUITests/LandingPlaceInteractionTests/testLargeScoresAndLargestTextReflowWithoutCoveringStars",
+          "status": "passed",
+          "seconds": 26.341
+        },
+        {
+          "method": "StarfallUITests/ObservatoryInteractionTests/testActualCastSparseDenseAndProjectedCornerTaps",
+          "status": "passed",
+          "seconds": 20.422
+        },
+        {
+          "method": "StarfallUITests/ObservatoryInteractionTests/testCastSettingsDismissalAndBackgroundPreserveBoard",
+          "status": "passed",
+          "seconds": 11.499
+        },
+        {
+          "method": "StarfallUITests/SkyFlowInteractionTests/testEntryCancellationAndTerminationRetainThePlayedSky",
+          "status": "failed",
+          "seconds": 26.712
+        },
+        {
+          "method": "StarfallUITests/SkyFlowInteractionTests/testFirstLightWinReplayAndFullSky",
+          "status": "passed",
+          "seconds": 157.724
+        },
+        {
+          "method": "StarfallUITests/SkyFlowInteractionTests/testLargestEndingReplayRetainsResultAcrossBackgroundAndCancel",
+          "status": "failed",
+          "seconds": 24.704
+        },
+        {
+          "method": "StarfallUITests/SkyFlowInteractionTests/testLargestTextWelcomeEntryAndBackRemainReachable",
+          "status": "failed",
+          "seconds": 10.561
+        },
+        {
+          "method": "StarfallUITests/SkyFlowInteractionTests/testPendingFirstLightHelpUsesChallengeRulesAndPreservesEntry",
+          "status": "failed",
+          "seconds": 16.413
+        },
+        {
+          "method": "StarfallUITests/SkyFlowInteractionTests/testReducedMotionEntryAndReplayKeepExplicitBegin",
+          "status": "passed",
+          "seconds": 51.25
+        },
+        {
+          "method": "StarfallUITests/SkyFlowInteractionTests/testRejectedSaveNoticeSurvivesBackgroundAndReplacementRestoresNormally",
+          "status": "passed",
+          "seconds": 29.345
+        },
+        {
+          "method": "StarfallUITests/SkyFlowInteractionTests/testResultActionsRemainHittableAboveTheVisibleFinalBoard",
+          "status": "passed",
+          "seconds": 16.732
+        },
+        {
+          "method": "StarfallUITests/SkyFlowInteractionTests/testSaveFailureNoticeAcknowledgementResumesHandoffAndDoesNotRepeat",
+          "status": "passed",
+          "seconds": 28.004
+        },
+        {
+          "method": "StarfallUITests/SkyFlowInteractionTests/testWelcomeEntryBackgroundAndAnotherSky",
+          "status": "passed",
+          "seconds": 62.201
+        },
+        {
+          "method": "StarfallUITests/SkyFlowInteractionTests/testWelcomePreferencesShareValuesWithPlayAndDoNotCreateASave",
+          "status": "failed",
+          "seconds": 9.497
+        },
+        {
+          "method": "StarfallUITests/SkyTechniqueInteractionTests/testFastSameColorStrokeSwapsOnceThenHoldDrawClearsOnlyFive",
+          "status": "passed",
+          "seconds": 12.352
+        },
+        {
+          "method": "StarfallUITests/SkyTechniqueInteractionTests/testSettingsAndBackgroundLeaveGesturesReadyWithoutRetoggling",
+          "status": "passed",
+          "seconds": 18.958
+        },
+        {
+          "method": "StarfallUITests/SkyTechniqueInteractionTests/testVerticalSwipesOwnTheBoardAtLargestTextSize",
+          "status": "passed",
+          "seconds": 10.388
+        },
+        {
+          "method": "StarfallUITests/WorldJourneyInteractionTests/testAllFiveLocationsAcceptFourDirectionSwapsAndClears",
+          "status": "passed",
+          "seconds": 158.561
+        },
+        {
+          "method": "StarfallUITests/WorldJourneyInteractionTests/testLargestTextMapAndPracticeSurviveBackground",
+          "status": "passed",
+          "seconds": 46.286
+        },
+        {
+          "method": "StarfallUITests/WorldJourneyInteractionTests/testMapSeparatesLockedAndUnavailableAndEntryCanCancel",
+          "status": "failed",
+          "seconds": 41.924
+        },
+        {
+          "method": "StarfallUITests/WorldJourneyInteractionTests/testRepairLightsMapAndPersistsWithoutUnlockingUnbuiltPlaces",
+          "status": "passed",
+          "seconds": 23.512
+        },
+        {
+          "method": "StarfallUITests/WorldJourneyInteractionTests/testTutorialRealTapSwapTraceRetryAndExitPreserveRound",
+          "status": "passed",
+          "seconds": 118.817
+        }
+      ]
+    },
+    {
+      "name": "compact-fixed",
+      "runtime": "dev.818f578f8b",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=02B7AF2E-1F1C-40F6-AA83-C67EA962B656\" -derivedDataPath /tmp/starfall-observatory-compact ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGNING_ALLOWED=NO -parallel-testing-enabled NO -collect-test-diagnostics never \"-only-testing:StarfallUITests/SkyFlowInteractionTests/testLargestTextWelcomeEntryAndBackRemainReachable\" \"-only-testing:StarfallUITests/SkyFlowInteractionTests/testLargestEndingReplayRetainsResultAcrossBackgroundAndCancel\" \"-only-testing:StarfallUITests/FallingSkyInteractionTests/testCompactPlayfieldKeepsControlsVisible\" \"-only-testing:StarfallUITests/FallingSkyInteractionTests/testLargestTextSettingsFeedbackAndDismissal\" -resultBundlePath /tmp/starfall-observatory-compact-fixed.xcresult test",
+      "resultBundle": "/tmp/starfall-observatory-compact-fixed.xcresult",
+      "status": "passed",
+      "counts": {
+        "StarfallUITests": {
+          "passed": 4,
+          "failed": 0,
+          "skipped": 0
+        }
+      },
+      "logSHA256": "cd95d04d1b7dab48eb44167e80df3b91b2c3352cd33b6b9a2d10f53c99798f61",
+      "completedMethods": [
+        {
+          "method": "StarfallUITests/FallingSkyInteractionTests/testCompactPlayfieldKeepsControlsVisible",
+          "status": "passed",
+          "seconds": 11.921
+        },
+        {
+          "method": "StarfallUITests/FallingSkyInteractionTests/testLargestTextSettingsFeedbackAndDismissal",
+          "status": "passed",
+          "seconds": 36.259
+        },
+        {
+          "method": "StarfallUITests/SkyFlowInteractionTests/testLargestEndingReplayRetainsResultAcrossBackgroundAndCancel",
+          "status": "passed",
+          "seconds": 32.665
+        },
+        {
+          "method": "StarfallUITests/SkyFlowInteractionTests/testLargestTextWelcomeEntryAndBackRemainReachable",
+          "status": "passed",
+          "seconds": 52.838
+        }
+      ]
+    },
+    {
+      "name": "compact-motion",
+      "runtime": "dev.818f578f8b",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=02B7AF2E-1F1C-40F6-AA83-C67EA962B656\" -derivedDataPath /tmp/starfall-observatory-compact ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGNING_ALLOWED=NO -parallel-testing-enabled NO -collect-test-diagnostics never \"-only-testing:StarfallUITests/SkyFlowInteractionTests/testWelcomeEntryBackgroundAndAnotherSky\" -resultBundlePath /tmp/starfall-observatory-compact-motion.xcresult test",
+      "resultBundle": "/tmp/starfall-observatory-compact-motion.xcresult",
+      "status": "passed",
+      "counts": {
+        "StarfallUITests": {
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0
+        }
+      },
+      "logSHA256": "f5ec92d4d4acdb1584b0a0852ca714c0790f1536cfdc3153f44df0cb3cd9b73d",
+      "completedMethods": [
+        {
+          "method": "StarfallUITests/SkyFlowInteractionTests/testWelcomeEntryBackgroundAndAnotherSky",
+          "status": "passed",
+          "seconds": 62.335
+        }
+      ]
+    },
+    {
+      "name": "tablet-native-controls-20261019",
+      "runtime": "dev.818f578f8b",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=377B8820-20E2-413E-B64F-D9E4CEB86AF4\" -derivedDataPath /tmp/starfall-observatory-tablet -resultBundlePath /tmp/starfall-observatory-tablet-native-controls-20261019.xcresult -collect-test-diagnostics never -parallel-testing-enabled NO \"-only-testing:StarfallUITests/SkyFlowInteractionTests/testLandscapeWelcomeEntryAndPreferences\" \"-only-testing:StarfallUITests/WorldJourneyInteractionTests/testMapSeparatesLockedAndUnavailableAndEntryCanCancel\" ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGNING_ALLOWED=NO test",
+      "resultBundle": "/tmp/starfall-observatory-tablet-native-controls-20261019.xcresult",
+      "status": "failed",
+      "counts": {
+        "StarfallUITests": {
+          "passed": 1,
+          "failed": 1,
+          "skipped": 0
+        }
+      },
+      "logSHA256": "5f4556565a5227f0dc120fdeebb0e3bd0835c492f8204dbd642dad5dd005955b",
+      "completedMethods": [
+        {
+          "method": "StarfallUITests/SkyFlowInteractionTests/testLandscapeWelcomeEntryAndPreferences",
+          "status": "passed",
+          "seconds": 111.972
+        },
+        {
+          "method": "StarfallUITests/WorldJourneyInteractionTests/testMapSeparatesLockedAndUnavailableAndEntryCanCancel",
+          "status": "failed",
+          "seconds": 81.262
+        }
+      ]
+    },
+    {
+      "name": "tablet-scroll-shape-20261019",
+      "runtime": "failed contentShape hypothesis; not adopted",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=377B8820-20E2-413E-B64F-D9E4CEB86AF4\" -derivedDataPath /tmp/starfall-observatory-tablet -resultBundlePath /tmp/starfall-observatory-tablet-scroll-shape-20261019.xcresult -collect-test-diagnostics never -parallel-testing-enabled NO \"-only-testing:StarfallUITests/WorldJourneyInteractionTests/testMapSeparatesLockedAndUnavailableAndEntryCanCancel\" \"-only-testing:StarfallUITests/ObservatoryInteractionTests/testSupportedOrientationsPreserveNativeTargets\" ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGNING_ALLOWED=NO test",
+      "resultBundle": "/tmp/starfall-observatory-tablet-scroll-shape-20261019.xcresult",
+      "status": "failed",
+      "counts": {
+        "StarfallUITests": {
+          "passed": 1,
+          "failed": 1,
+          "skipped": 0
+        }
+      },
+      "logSHA256": "92af701b31ac16840d3c57c6a2783d901b34436d8ceaf9b8c0ea8a57ad559e50",
+      "completedMethods": [
+        {
+          "method": "StarfallUITests/ObservatoryInteractionTests/testSupportedOrientationsPreserveNativeTargets",
+          "status": "passed",
+          "seconds": 30.833
+        },
+        {
+          "method": "StarfallUITests/WorldJourneyInteractionTests/testMapSeparatesLockedAndUnavailableAndEntryCanCancel",
+          "status": "failed",
+          "seconds": 81.062
+        }
+      ]
+    },
+    {
+      "name": "tablet-scroll-owner-20261019",
+      "runtime": "dev.f0badc738c",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=377B8820-20E2-413E-B64F-D9E4CEB86AF4\" -derivedDataPath /tmp/starfall-observatory-tablet -resultBundlePath /tmp/starfall-observatory-tablet-scroll-owner-20261019.xcresult -collect-test-diagnostics never -parallel-testing-enabled NO \"-only-testing:StarfallUITests/WorldJourneyInteractionTests/testMapSeparatesLockedAndUnavailableAndEntryCanCancel\" \"-only-testing:StarfallUITests/FallingSkyInteractionTests/testLargestTextSettingsFeedbackAndDismissal\" \"-only-testing:StarfallUITests/SkyFlowInteractionTests/testWelcomePreferencesShareValuesWithPlayAndDoNotCreateASave\" ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGNING_ALLOWED=NO test",
+      "resultBundle": "/tmp/starfall-observatory-tablet-scroll-owner-20261019.xcresult",
+      "status": "failed",
+      "counts": {
+        "StarfallUITests": {
+          "passed": 2,
+          "failed": 1,
+          "skipped": 0
+        }
+      },
+      "logSHA256": "dfb609bcf0fc2911ce3a80b2e11e94f0aa2e9fda485251563fce0389213199a6",
+      "completedMethods": [
+        {
+          "method": "StarfallUITests/FallingSkyInteractionTests/testLargestTextSettingsFeedbackAndDismissal",
+          "status": "passed",
+          "seconds": 35.238
+        },
+        {
+          "method": "StarfallUITests/SkyFlowInteractionTests/testWelcomePreferencesShareValuesWithPlayAndDoNotCreateASave",
+          "status": "failed",
+          "seconds": 7.521
+        },
+        {
+          "method": "StarfallUITests/WorldJourneyInteractionTests/testMapSeparatesLockedAndUnavailableAndEntryCanCancel",
+          "status": "passed",
+          "seconds": 80.71
+        }
+      ]
+    },
+    {
+      "name": "phone-final",
+      "runtime": "dev.f0badc738c",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=862714B3-4526-470F-85BB-7FB33EAA1E87\" -derivedDataPath /tmp/starfall-observatory-native ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGNING_ALLOWED=NO -parallel-testing-enabled NO -collect-test-diagnostics never \"-only-testing:StarfallUITests/SkyFlowInteractionTests/testEntryCancellationAndTerminationRetainThePlayedSky\" \"-only-testing:StarfallUITests/SkyFlowInteractionTests/testLargestEndingReplayRetainsResultAcrossBackgroundAndCancel\" \"-only-testing:StarfallUITests/SkyFlowInteractionTests/testLargestTextWelcomeEntryAndBackRemainReachable\" \"-only-testing:StarfallUITests/SkyFlowInteractionTests/testPendingFirstLightHelpUsesChallengeRulesAndPreservesEntry\" \"-only-testing:StarfallUITests/SkyFlowInteractionTests/testWelcomePreferencesShareValuesWithPlayAndDoNotCreateASave\" \"-only-testing:StarfallUITests/WorldJourneyInteractionTests/testMapSeparatesLockedAndUnavailableAndEntryCanCancel\" \"-only-testing:StarfallUITests/FallingSkyInteractionTests/testLargestTextSettingsFeedbackAndDismissal\" \"-only-testing:StarfallUITests/LandingPlaceInteractionTests/testLargeScoresAndLargestTextReflowWithoutCoveringStars\" \"-only-testing:StarfallAppTests/ObservatoryArtworkTests\" -resultBundlePath /tmp/starfall-observatory-phone-final.xcresult test",
+      "resultBundle": "/tmp/starfall-observatory-phone-final.xcresult",
+      "status": "failed",
+      "counts": {
+        "StarfallAppTests": {
+          "passed": 3,
+          "failed": 0,
+          "skipped": 0
+        },
+        "StarfallUITests": {
+          "passed": 7,
+          "failed": 1,
+          "skipped": 0
+        }
+      },
+      "logSHA256": "b2d0a261e91c6909af3e2258488b3d0f4d5445e4e56c6568ac9787db1c759e40",
+      "completedMethods": [
+        {
+          "method": "StarfallUITests/FallingSkyInteractionTests/testLargestTextSettingsFeedbackAndDismissal",
+          "status": "passed",
+          "seconds": 41.464
+        },
+        {
+          "method": "StarfallUITests/LandingPlaceInteractionTests/testLargeScoresAndLargestTextReflowWithoutCoveringStars",
+          "status": "passed",
+          "seconds": 25.944
+        },
+        {
+          "method": "StarfallUITests/SkyFlowInteractionTests/testEntryCancellationAndTerminationRetainThePlayedSky",
+          "status": "passed",
+          "seconds": 72.169
+        },
+        {
+          "method": "StarfallUITests/SkyFlowInteractionTests/testLargestEndingReplayRetainsResultAcrossBackgroundAndCancel",
+          "status": "passed",
+          "seconds": 30.963
+        },
+        {
+          "method": "StarfallUITests/SkyFlowInteractionTests/testLargestTextWelcomeEntryAndBackRemainReachable",
+          "status": "passed",
+          "seconds": 45.693
+        },
+        {
+          "method": "StarfallUITests/SkyFlowInteractionTests/testPendingFirstLightHelpUsesChallengeRulesAndPreservesEntry",
+          "status": "passed",
+          "seconds": 26.932
+        },
+        {
+          "method": "StarfallUITests/SkyFlowInteractionTests/testWelcomePreferencesShareValuesWithPlayAndDoNotCreateASave",
+          "status": "failed",
+          "seconds": 7.312
+        },
+        {
+          "method": "StarfallUITests/WorldJourneyInteractionTests/testMapSeparatesLockedAndUnavailableAndEntryCanCancel",
+          "status": "passed",
+          "seconds": 78.003
+        }
+      ]
+    },
+    {
+      "name": "compact-acceptance",
+      "runtime": "dev.f6e24b6999",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=02B7AF2E-1F1C-40F6-AA83-C67EA962B656\" -derivedDataPath /tmp/starfall-observatory-compact ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGNING_ALLOWED=NO -parallel-testing-enabled NO -collect-test-diagnostics never \"-only-testing:StarfallUITests/LandingPlaceInteractionTests/testLargeScoresAndLargestTextReflowWithoutCoveringStars\" \"-only-testing:StarfallUITests/SkyTechniqueInteractionTests/testVerticalSwipesOwnTheBoardAtLargestTextSize\" \"-only-testing:StarfallUITests/SkyFlowInteractionTests/testWelcomePreferencesShareValuesWithPlayAndDoNotCreateASave\" \"-only-testing:StarfallAppTests/StarlightCelebrationTests\" -resultBundlePath /tmp/starfall-observatory-compact-acceptance.xcresult test",
+      "resultBundle": "/tmp/starfall-observatory-compact-acceptance.xcresult",
+      "status": "failed",
+      "counts": {
+        "StarfallAppTests": {
+          "passed": 17,
+          "failed": 0,
+          "skipped": 0
+        },
+        "StarfallUITests": {
+          "passed": 1,
+          "failed": 2,
+          "skipped": 0
+        }
+      },
+      "logSHA256": "0c7e7eea2f8c840873f2864e1d4df5ebb02f2ebb19179bf03560b70704cb6645",
+      "completedMethods": [
+        {
+          "method": "StarfallUITests/LandingPlaceInteractionTests/testLargeScoresAndLargestTextReflowWithoutCoveringStars",
+          "status": "failed",
+          "seconds": 25.775
+        },
+        {
+          "method": "StarfallUITests/SkyFlowInteractionTests/testWelcomePreferencesShareValuesWithPlayAndDoNotCreateASave",
+          "status": "failed",
+          "seconds": 8.665
+        },
+        {
+          "method": "StarfallUITests/SkyTechniqueInteractionTests/testVerticalSwipesOwnTheBoardAtLargestTextSize",
+          "status": "passed",
+          "seconds": 12.364
+        }
+      ]
+    },
+    {
+      "name": "tablet-switch-20261019",
+      "runtime": "dev.f6e24b6999",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=377B8820-20E2-413E-B64F-D9E4CEB86AF4\" -derivedDataPath /tmp/starfall-observatory-tablet -resultBundlePath /tmp/starfall-observatory-tablet-switch-20261019.xcresult -collect-test-diagnostics never -parallel-testing-enabled NO \"-only-testing:StarfallUITests/SkyFlowInteractionTests/testWelcomePreferencesShareValuesWithPlayAndDoNotCreateASave\" ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGNING_ALLOWED=NO test",
+      "resultBundle": "/tmp/starfall-observatory-tablet-switch-20261019.xcresult",
+      "status": "passed",
+      "counts": {
+        "StarfallUITests": {
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0
+        }
+      },
+      "logSHA256": "052f42c4e9109a516ca53472e9d97daef7d7af21d1f950409419417577ea8bcd",
+      "completedMethods": [
+        {
+          "method": "StarfallUITests/SkyFlowInteractionTests/testWelcomePreferencesShareValuesWithPlayAndDoNotCreateASave",
+          "status": "passed",
+          "seconds": 35.518
+        }
+      ]
+    },
+    {
+      "name": "compact-final-two",
+      "runtime": "dev.77015d0909",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=02B7AF2E-1F1C-40F6-AA83-C67EA962B656\" -derivedDataPath /tmp/starfall-observatory-compact -resultBundlePath /tmp/starfall-observatory-compact-final-two.xcresult -collect-test-diagnostics never -parallel-testing-enabled NO \"-only-testing:StarfallUITests/SkyFlowInteractionTests/testWelcomePreferencesShareValuesWithPlayAndDoNotCreateASave\" \"-only-testing:StarfallUITests/LandingPlaceInteractionTests/testLargeScoresAndLargestTextReflowWithoutCoveringStars\" ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGNING_ALLOWED=NO test",
+      "resultBundle": "/tmp/starfall-observatory-compact-final-two.xcresult",
+      "status": "failed",
+      "counts": {
+        "StarfallUITests": {
+          "passed": 1,
+          "failed": 1,
+          "skipped": 0
+        }
+      },
+      "logSHA256": "1dee10f0cebf15d6ce23738264493007cf95efefb86fd93afea1cc6e2627226f",
+      "completedMethods": [
+        {
+          "method": "StarfallUITests/LandingPlaceInteractionTests/testLargeScoresAndLargestTextReflowWithoutCoveringStars",
+          "status": "passed",
+          "seconds": 28.091
+        },
+        {
+          "method": "StarfallUITests/SkyFlowInteractionTests/testWelcomePreferencesShareValuesWithPlayAndDoNotCreateASave",
+          "status": "failed",
+          "seconds": 28.017
+        }
+      ]
+    },
+    {
+      "name": "compact-switch-final",
+      "runtime": "dev.77015d0909",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=02B7AF2E-1F1C-40F6-AA83-C67EA962B656\" -derivedDataPath /tmp/starfall-observatory-compact -resultBundlePath /tmp/starfall-observatory-compact-switch-final.xcresult -collect-test-diagnostics never -parallel-testing-enabled NO \"-only-testing:StarfallUITests/SkyFlowInteractionTests/testWelcomePreferencesShareValuesWithPlayAndDoNotCreateASave\" ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGNING_ALLOWED=NO test",
+      "resultBundle": "/tmp/starfall-observatory-compact-switch-final.xcresult",
+      "status": "failed",
+      "counts": {
+        "StarfallUITests": {
+          "passed": 0,
+          "failed": 1,
+          "skipped": 0
+        }
+      },
+      "logSHA256": "d9527137f89d68eb4c7c8c5162bf6390b91a4b4c313b5eb70f076ee1420806b8",
+      "completedMethods": [
+        {
+          "method": "StarfallUITests/SkyFlowInteractionTests/testWelcomePreferencesShareValuesWithPlayAndDoNotCreateASave",
+          "status": "failed",
+          "seconds": 34.347
+        }
+      ]
+    },
+    {
+      "name": "compact-switch-owned",
+      "runtime": "dev.77015d0909",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=02B7AF2E-1F1C-40F6-AA83-C67EA962B656\" -derivedDataPath /tmp/starfall-observatory-compact -resultBundlePath /tmp/starfall-observatory-compact-switch-owned.xcresult -collect-test-diagnostics never -parallel-testing-enabled NO \"-only-testing:StarfallUITests/SkyFlowInteractionTests/testWelcomePreferencesShareValuesWithPlayAndDoNotCreateASave\" ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGNING_ALLOWED=NO test",
+      "resultBundle": "/tmp/starfall-observatory-compact-switch-owned.xcresult",
+      "status": "passed",
+      "counts": {
+        "StarfallUITests": {
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0
+        }
+      },
+      "logSHA256": "eeaa18c11ab87e30bfddb6b0d1289ca61495e5083a4c9f06b46364203f74ac68",
+      "completedMethods": [
+        {
+          "method": "StarfallUITests/SkyFlowInteractionTests/testWelcomePreferencesShareValuesWithPlayAndDoNotCreateASave",
+          "status": "passed",
+          "seconds": 37.696
+        }
+      ]
+    }
+  ],
+  "coverage": {
+    "distinctAffectedUICasesWithPassingEvidence": 29,
+    "fullUIMatrix": false,
+    "policy": "Reuse unaffected passing cases from recorded source epochs; rerun failed and changed boundaries. Retain all intermediate failures."
+  },
+  "builds": [
+    {
+      "runtime": "dev.77015d0909",
+      "configuration": "Release",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Release -destination \"platform=iOS Simulator,id=862714B3-4526-470F-85BB-7FB33EAA1E87\" -derivedDataPath /tmp/starfall-observatory-release ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGNING_ALLOWED=NO build",
+      "result": "passed",
+      "logSHA256": "a4ec11aac4daa13696e0161d4ec56f811cc94a8bd30b6bb3020e48fd438ae3b8"
+    }
+  ],
+  "core": {
+    "command": "swift test",
+    "passed": 184,
+    "failed": 0,
+    "sourceScope": "Core inputs unchanged since base cfd6ab75",
+    "logSHA256": "f6797e36c1fcd3854aef1d0cf6bc78c1738b2d56fa234672dd38af805479dcea"
+  }
+}

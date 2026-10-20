@@ -53,6 +53,9 @@ final class SkyFlowInteractionTests: XCTestCase {
         requireNormalMotion()
         let app = launch(); defer { app.terminate() }
         XCTAssertFalse(app.buttons["experiment.cell.0.0"].exists)
+        XCTAssertEqual(app.buttons["sky.worldMap"].label, "Story Mode")
+        XCTAssertEqual(app.buttons["sky.start"].label, "Free Play")
+        XCTAssertEqual(app.buttons["sky.learn"].label, "Tutorial")
         capture(app, "flow-welcome")
         tap("sky.start", app)
         XCTAssertEqual(app.staticTexts["sky.title"].label, "Make room for the stars")
@@ -295,9 +298,12 @@ final class SkyFlowInteractionTests: XCTestCase {
         let sound = app.switches["experiment.sound"]
         XCTAssertTrue(sound.waitForExistence(timeout: 5))
         let original = sound.value as? String
-        let nativeSwitch = sound.switches.firstMatch
-        XCTAssertTrue(nativeSwitch.isHittable)
-        nativeSwitch.tap()
+        // The authored Toggle exposes its full row as the native switch target.
+        XCTAssertTrue(sound.isEnabled)
+        XCTAssertTrue(sound.isHittable)
+        XCTAssertGreaterThanOrEqual(sound.frame.width, 44)
+        XCTAssertGreaterThanOrEqual(sound.frame.height, 44)
+        sound.tap()
         capture(app, "welcome-preferences")
         let selected = original == "1" ? "0" : "1"
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == %@", selected), object: sound).wait(timeout: 3))
@@ -309,7 +315,10 @@ final class SkyFlowInteractionTests: XCTestCase {
         app.worldVisitControl("firstLight").tap(); tap("sky.begin", app); pause(app)
         tap("experiment.settings", app)
         XCTAssertEqual(sound.value as? String, selected)
-        sound.switches.firstMatch.tap() // Restore the review preference; normal defaults were never used.
+        app.revealSkyControls([sound])
+        XCTAssertTrue(sound.isEnabled)
+        XCTAssertTrue(sound.isHittable)
+        sound.tap() // Restore the review preference; normal defaults were never used.
         tap("sky.home", app)
         XCTAssertTrue(app.staticTexts["sky.subtitle"].waitForExistence(timeout: 5))
         XCTAssertTrue(app.staticTexts["sky.subtitle"].label.contains("First Light"))

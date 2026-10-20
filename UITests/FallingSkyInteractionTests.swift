@@ -144,17 +144,10 @@ final class FallingSkyInteractionTests: XCTestCase {
 
     @MainActor func testCompactHUDMenuSuspendsWithoutChangingPauseChoice() {
         let app = launch(); defer { app.terminate() }
-        let flowingGuide = app.scrollViews.containing(.button, identifier: "experiment.cell.0.0").firstMatch.exists
         func assertRunningControls() {
-            if flowingGuide {
-                XCTAssertFalse(app.buttons["experiment.pause"].exists)
-                XCTAssertFalse(app.buttons["experiment.next"].exists)
-            } else {
-                // The fixed landing canvas keeps both actions outside its guide.
-                XCTAssertEqual(app.buttons["experiment.pause"].label, "Pause sky")
-                XCTAssertTrue(app.buttons["experiment.pause"].isHittable)
-                XCTAssertTrue(app.buttons["experiment.next"].isHittable)
-            }
+            XCTAssertFalse(app.buttons["experiment.pause"].exists,
+                           "Automatic play keeps manual controls in the pause menu")
+            XCTAssertFalse(app.buttons["experiment.next"].exists)
         }
         togglePause(app)
         assertRunningControls()
@@ -194,6 +187,10 @@ final class FallingSkyInteractionTests: XCTestCase {
         let board = app.otherElements["experiment.board"]
         XCTAssertGreaterThan(board.frame.height, app.frame.height * 0.70)
         XCTAssertTrue(app.buttons["experiment.settings"].isHittable)
+        let header = app.otherElements["sky.header"]
+        XCTAssertLessThan(header.frame.minY, app.frame.height * 0.15,
+                          "Gameplay instruments belong to the top safe edge")
+        XCTAssertLessThanOrEqual(header.frame.maxY, app.buttons["experiment.cell.6.6"].frame.minY)
         // Compact canvases intentionally scroll; keep both paused actions reachable.
         app.revealSkyControls([app.buttons["experiment.pause"], app.buttons["experiment.next"]])
         XCTAssertTrue(app.buttons["experiment.pause"].isHittable)

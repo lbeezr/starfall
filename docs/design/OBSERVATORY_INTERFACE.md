@@ -1,6 +1,12 @@
 # Observatory interface direction
 
-2026-10-17 · Active production refinement. Observatory first; Cloudsea deferred.
+2026-10-17 · Earlier production direction and source-bound history.
+
+**October 19 native adoption:** The [game UI system](GAME_UI_SYSTEM.md) owns the material and layout contract adopted for development. The normal target uses dedicated utility glyphs, illustrated home emblems, shared action/panel skins, a three-mode home and viewport-edge gameplay instruments. Entry/results, world/tutorial and preferences use the shared roles. Exact coverage and canonical delivery status are recorded in the [native evidence](../evidence/observatory-ui-native-2026-10-19/README.md), with inspected appearances in the [capture index](../evidence/observatory-ui-native-2026-10-19/captures.json). The [source asset-kit checks](../evidence/observatory-ui-kit-2026-10-19/README.md) retain their separate export/browser scope.
+
+## Historical October 17 direction
+
+The sections below retain the earlier design and source-bound implementation history. They are superseded where the current system changes materials, navigation, geometry ownership or dedicated SVG requirements; they do not describe acceptance of the October 19 candidate.
 
 ## Intent and acceptance
 

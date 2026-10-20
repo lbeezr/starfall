@@ -82,25 +82,38 @@ struct WorldMapView: View {
         }
     }
     private var navigation: some View {
-        HStack(spacing: 12) {
-            Button(action: done) {
-                HStack {
-                    Image(systemName: "chevron.left").font(.system(size: 20, weight: .semibold))
-                    if !textSize.isAccessibilitySize { Text(SkyCopy.text(.worldBack)) }
-                }.frame(minWidth: 44, minHeight: 44)
-            }.accessibilityLabel(SkyCopy.text(.worldBack)).accessibilityIdentifier("world.done")
-            Spacer(minLength: 0)
-            Button(action: { list.toggle() }) {
-                Label(SkyCopy.text(list ? .worldMap : .worldPlaces), systemImage: list ? "map" : "list.bullet")
-                    .labelStyle(.iconOnly).font(.system(size: 20, weight: .semibold)).frame(width: 44, height: 44)
-            }.accessibilityIdentifier("world.list")
-            Button(action: learn) {
-                Label(SkyCopy.text(.practiceTitle), systemImage: "book.closed")
-                    .labelStyle(.iconOnly).font(.system(size: 20, weight: .semibold)).frame(width: 44, height: 44)
-            }.accessibilityIdentifier("world.learn")
+        VStack(alignment: .leading, spacing: StarfallTheme.Spacing.small) {
+            if textSize.isAccessibilitySize { navigationTitle }
+            HStack(spacing: 12) {
+                Button(action: done) {
+                    ObservatoryIcon(.back)
+                }
+                .buttonStyle(StarfallGameButtonStyle(tint: StarfallTheme.Colors.textPrimary))
+                .accessibilityLabel(SkyCopy.text(.worldBack)).accessibilityIdentifier("world.done")
+                if !textSize.isAccessibilitySize { navigationTitle }
+                Spacer(minLength: 0)
+                Button(action: { list.toggle() }) {
+                    ObservatoryIcon(list ? .story : .list)
+                }
+                .buttonStyle(StarfallGameButtonStyle(tint: StarfallTheme.Colors.textPrimary))
+                .accessibilityLabel(SkyCopy.text(list ? .worldMap : .worldPlaces))
+                .accessibilityIdentifier("world.list")
+                Button(action: learn) {
+                    ObservatoryIcon(.tutorial)
+                }
+                .buttonStyle(StarfallGameButtonStyle(tint: StarfallTheme.Colors.textPrimary))
+                .accessibilityLabel(SkyCopy.text(.practiceTitle)).accessibilityIdentifier("world.learn")
+            }
         }
-        .font(.headline).foregroundStyle(StarfallTheme.Colors.actionPrimary)
-        .buttonStyle(.plain).padding(.horizontal, 20).padding(.vertical, 4)
+        .padding(.horizontal, StarfallTheme.Spacing.page)
+        .padding(.vertical, StarfallTheme.Spacing.compact)
+    }
+    private var navigationTitle: some View {
+        Text(SkyCopy.text(list || textSize.isAccessibilitySize ? .worldPlaces : .worldMap))
+            .font(StarfallTheme.Typography.title)
+            .foregroundStyle(StarfallTheme.Colors.textPrimary)
+            .accessibilityAddTraits(.isHeader)
+            .fixedSize(horizontal: false, vertical: true)
     }
     private var painting: some View {
         GeometryReader { canvas in
@@ -115,6 +128,7 @@ struct WorldMapView: View {
             if recovered { Text(SkyCopy.text(.worldRecovery)).font(.callout) }
             selection
         }
+        .starfallPanel(inset: StarfallTheme.Spacing.large)
         .frame(maxWidth: StarfallTheme.Layout.menuWidth, alignment: .leading)
         .padding(.horizontal, 24).padding(.top, 12)
         .frame(maxWidth: .infinity)
@@ -123,19 +137,32 @@ struct WorldMapView: View {
         VStack(spacing: 0) {
             ForEach(WorldLocation.allCases) { location in
                 Button { choose(location) } label: {
-                    HStack {
-                        Image(systemName: journey.completed.contains(location) ? "sparkle" : journey.canEnter(location) ? "moon" : "cloud.fog").accessibilityHidden(true)
-                        VStack(alignment: .leading) {
-                            Text(location.title).font(.headline)
-                            Text(location.status(in: journey)).font(.subheadline)
+                    HStack(spacing: StarfallTheme.Spacing.medium) {
+                        ObservatoryIcon(journey.completed.contains(location) ? .check : journey.canEnter(location) ? .story : .lock)
+                            .foregroundStyle(StarfallTheme.Ceremony.gold)
+                        VStack(alignment: .leading, spacing: StarfallTheme.Spacing.compact) {
+                            Text(location.title).font(StarfallTheme.Typography.skyHeading)
+                                .foregroundStyle(StarfallTheme.Colors.textPrimary)
+                            Text(location.status(in: journey)).font(StarfallTheme.Typography.supporting)
+                                .foregroundStyle(StarfallTheme.Colors.textSecondary)
                         }
-                        Spacer()
-                        if selected == location { Image(systemName: "checkmark.circle.fill") }
-                    }.frame(minHeight: 54).padding(.horizontal).contentShape(Rectangle())
-                }.buttonStyle(.plain).accessibilityIdentifier("world.place.\(location.id)")
+                        Spacer(minLength: StarfallTheme.Spacing.small)
+                        if selected == location { ObservatoryIcon(.check, size: 20) }
+                    }
+                    .frame(minHeight: 54)
+                    .padding(StarfallTheme.Spacing.large)
+                    .background(selected == location ? StarfallTheme.Colors.surfacePressed.opacity(0.6) : .clear)
+                    .contentShape(Rectangle())
+                }
+                .buttonStyle(.plain)
+                .accessibilityAddTraits(selected == location ? .isSelected : [])
+                .accessibilityIdentifier("world.place.\(location.id)")
                 Divider()
             }
         }
+        .frame(maxWidth: StarfallTheme.Layout.contentWidth)
+        .padding(.horizontal, StarfallTheme.Spacing.page)
+        .frame(maxWidth: .infinity)
     }
     private func choose(_ location: WorldLocation) {
         select(location)

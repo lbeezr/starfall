@@ -25,21 +25,51 @@ struct SkyPhaseCue: Equatable {
     }
 }
 
-/// Authored vector constellation, sharp at every display scale; no new raster pipeline.
+/// Exact native values remain independent of decorative materials and animations.
+struct SkyScoreInstrument: View {
+    let score: Int
+    var target: Int? = nil
+    var restorationLabel: String? = nil
+    var restorationIdentifier: String? = nil
+    let hint: String
+
+    var body: some View {
+        HStack(spacing: StarfallTheme.Spacing.small) {
+            ObservatoryIcon(.story, size: 20)
+                .foregroundStyle(StarfallTheme.Dialogue.brass)
+            VStack(alignment: .leading, spacing: StarfallTheme.Spacing.compact) {
+                if let restorationLabel {
+                    Text(restorationLabel)
+                        .font(StarfallTheme.Typography.skyCaption)
+                        .foregroundStyle(StarfallTheme.Colors.textSecondary)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .accessibilityIdentifier(restorationIdentifier ?? "sky.restoration")
+                }
+                Text(target.map { "\(score.formatted()) / \($0.formatted())" } ?? score.formatted())
+                    .font(StarfallTheme.Typography.gameTitle)
+                    .monospacedDigit()
+                    .fixedSize(horizontal: false, vertical: true)
+                    .accessibilityLabel(target.map {
+                        SkyCopy.text(.resultChallengeScore, values: ["score": String(score), "target": String($0)])
+                    } ?? SkyCopy.text(.welcomeScore, values: ["score": String(score)]))
+                    .accessibilityIdentifier("experiment.score")
+                    .accessibilityHint(hint)
+            }
+        }
+        .foregroundStyle(StarfallTheme.Colors.textPrimary)
+        .shadow(color: StarfallTheme.Colors.skyTop, radius: 2)
+        .frame(minHeight: StarfallTheme.Layout.minimumTarget)
+        .starlightAnchor(.score)
+        .allowsHitTesting(false)
+    }
+}
+
+/// One authored utility glyph, with native menu semantics supplied by its button.
 struct SkyMenuGlyph: View {
     var ink = StarfallTheme.Colors.textPrimary
     var body: some View {
-        Canvas { context, size in
-            let points = [CGPoint(x: size.width*0.15, y: size.height*0.65),
-                          CGPoint(x: size.width*0.45, y: size.height*0.25),
-                          CGPoint(x: size.width*0.8, y: size.height*0.55)]
-            var path = Path(); path.addLines(points)
-            context.stroke(path, with: .color(ink.opacity(0.7)), lineWidth: 1)
-            for point in points {
-                context.fill(Path(ellipseIn: CGRect(x: point.x-2, y: point.y-2, width: 4, height: 4)),
-                             with: .color(ink))
-            }
-        }.frame(width: StarfallTheme.Layout.hudSymbolSide, height: StarfallTheme.Layout.hudSymbolSide).accessibilityHidden(true)
+        ObservatoryIcon(.pause, size: StarfallTheme.Layout.hudSymbolSide)
+            .foregroundStyle(ink)
     }
 }
 
@@ -118,25 +148,27 @@ struct SkyShowerCountdown: Equatable {
                 let end = CGPoint(x: size.width-inset, y: start.y)
                 let head = CGPoint(x: start.x+(end.x-start.x)*progress, y: start.y)
                 var track = Path(); track.move(to: start); track.addLine(to: end)
-                drawing.stroke(track, with: .color(StarfallTheme.Colors.skyTop.opacity(0.9)), style: StrokeStyle(lineWidth: 5, lineCap: .round))
+                drawing.stroke(track, with: .color(StarfallTheme.Colors.skyTop.opacity(0.9)), style: StrokeStyle(lineWidth: 4, lineCap: .round))
                 drawing.stroke(track, with: .color(StarfallTheme.Colors.textSecondary.opacity(0.48)), style: StrokeStyle(lineWidth: 1, lineCap: .round))
                 var tail = Path(); tail.move(to: start); tail.addLine(to: head)
                 let light = GraphicsContext.Shading.linearGradient(
                     Gradient(colors: [StarfallTheme.Colors.actionPrimary.opacity(0.12), StarfallTheme.Colors.actionPrimary, StarfallTheme.Colors.textPrimary]),
                     startPoint: start, endPoint: CGPoint(x: max(start.x+1, head.x), y: head.y))
-                drawing.drawLayer { glow in
-                    glow.addFilter(.blur(radius: 3))
-                    glow.stroke(tail, with: light, style: StrokeStyle(lineWidth: 7, lineCap: .round))
+                if !quiet {
+                    drawing.drawLayer { glow in
+                        glow.addFilter(.blur(radius: 2))
+                        glow.stroke(tail, with: light, style: StrokeStyle(lineWidth: 4, lineCap: .round))
+                    }
                 }
-                drawing.stroke(tail, with: light, style: StrokeStyle(lineWidth: 2.5, lineCap: .round))
+                drawing.stroke(tail, with: light, style: StrokeStyle(lineWidth: 1.5, lineCap: .round))
                 if !quiet {
                     // Eight analytic particles: no random state, allocation pool, emitter or completions.
                     for index in 0..<8 {
                         let age = (progress*3 + Double(index)/8).truncatingRemainder(dividingBy: 1)
                         let x = head.x-CGFloat(age)*42
                         guard x > start.x else { continue }
-                        let drift = sin(Double(index)*2.4+age*5)*age*8
-                        let radius: CGFloat = index.isMultiple(of: 3) ? 1.3 : 0.8
+                        let drift = sin(Double(index)*2.4+age*5)*age*4
+                        let radius: CGFloat = index.isMultiple(of: 3) ? 1 : 0.6
                         let point = CGPoint(x: x, y: head.y+drift)
                         let dust = CGRect(x: point.x-radius, y: point.y-radius, width: radius*2, height: radius*2)
                         drawing.fill(Path(ellipseIn: dust), with: .color((index.isMultiple(of: 2) ? StarfallTheme.Observatory.lanternGlow : StarfallTheme.Colors.actionPrimary).opacity((1-age)*0.9)))

@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" role="img" aria-labelledby="title">
+  <title id="title">Starfall — Draw a constellation</title>
+  <path d="M5 16.5L8 8.9M9.7 8.3L13.2 11.2M15.2 10.7L18.3 5.8M19 6V16.5"/><circle cx="4.5" cy="18" r="1.5"/><circle cx="8.5" cy="7.5" r="1.5"/><circle cx="14.5" cy="12" r="1.5"/><circle cx="19" cy="4.5" r="1.5"/><circle cx="19" cy="18" r="1.5"/>
+</svg>

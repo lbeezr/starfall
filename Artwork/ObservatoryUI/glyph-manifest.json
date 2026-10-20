@@ -1,0 +1,1643 @@
+{
+  "schema_version": 1,
+  "family": "Starfall Observatory utility glyphs",
+  "count": 20,
+  "authored_date": "2026-10-19",
+  "canvas": [
+    24,
+    24
+  ],
+  "stroke_width": 1.5,
+  "line_cap": "round",
+  "line_join": "round",
+  "fill": "none",
+  "color_behavior": {
+    "svg": "currentColor; no baked glow, background, text or palette",
+    "png": "black RGB with antialiased alpha; 24-point templates at 1x, 2x and 3x",
+    "pdf": "black stroked vector paths on a transparent 24-by-24-point page",
+    "native_intent": "Template rendering with a semantic foreground tint; app membership is not added by this kit"
+  },
+  "provenance": {
+    "original_work": true,
+    "authoring": "Original assistant-authored SVG geometry, refined for this Starfall utility family; no icon library or generated bitmap source",
+    "concept_source": "docs/design/interface/atlas-2026-10-19/glyphs.svg",
+    "concept_source_sha256": "b3754000b892e1a1608f9bd40b6a8da2f01dcabb4ed9d3bf1487b01f177c3869",
+    "production_source": "masters/glyphs/*.svg are authoritative; exports are derived",
+    "refinements": "Open comet trails, simpler interiors, separated trace points, consistent stroke weight and safe frame margins"
+  },
+  "bounds_method": "Nonzero-alpha support rasterized at 12x, divided by 12; approximate stroked ink bounds, not path control bounds. Max edges are exclusive.",
+  "generator": "build/glyphs.py",
+  "renderer_versions": {
+    "sharp": "0.35.5",
+    "librsvg": "2.63.2"
+  },
+  "validation": {
+    "xml": "20 standalone SVGs parsed; explicit absolute paths, circles and rounded rectangles only",
+    "png": "60 RGBA exports checked for dimensions, nonempty alpha, black template ink and transparent outer frame",
+    "pdf": "20 single-page 24-point PDFs checked for vector-only content, page bounds, transparent frame and independent PDFium rendering at 12x; weighted alpha overlap with SVG rendering is at least 0.95",
+    "native": "Not imported, built or tested in the app. 20/24/32 preview pixels are optical specimens, not verified native dimensions or touch targets."
+  },
+  "preview": "previews/glyphs.png",
+  "glyphs": [
+    {
+      "id": "story",
+      "role": "Story mode",
+      "usage": "Lantern; story navigation only.",
+      "svg": {
+        "path": "masters/glyphs/story.svg",
+        "sha256": "7a8413fef7e0f35fb63cbe9eeb86e7ab30a87ffba00f853dc4a39493714b494c"
+      },
+      "pdf": {
+        "path": "exports/glyphs/story.pdf",
+        "points": [
+          24,
+          24
+        ],
+        "sha256": "70e98c236432f68256149e12f85c4b1776212b7ec4d0d9e126847528d64a278a"
+      },
+      "png": [
+        {
+          "path": "exports/glyphs/story@1x.png",
+          "scale": 1,
+          "pixels": [
+            24,
+            24
+          ],
+          "alpha_bounds_px": [
+            5,
+            1,
+            19,
+            22
+          ],
+          "sha256": "d82c970040d1317944356e5609d5c1f82ae0302005645d82bb15c1f5d8fcb8ef"
+        },
+        {
+          "path": "exports/glyphs/story@2x.png",
+          "scale": 2,
+          "pixels": [
+            48,
+            48
+          ],
+          "alpha_bounds_px": [
+            11,
+            2,
+            37,
+            44
+          ],
+          "sha256": "e1db3d12ffedcc594f0fe6f40e5535c71dd77b8b4b7c30d6300e50495fd8b332"
+        },
+        {
+          "path": "exports/glyphs/story@3x.png",
+          "scale": 3,
+          "pixels": [
+            72,
+            72
+          ],
+          "alpha_bounds_px": [
+            17,
+            3,
+            55,
+            66
+          ],
+          "sha256": "da12dbb3d95eb26aa0bc85cc6f3abf35894f29b2c8f047b448ef66accb928cf0"
+        }
+      ],
+      "ink_bounds_24": [
+        5.75,
+        1.25,
+        18.25,
+        21.75
+      ],
+      "svg_pdf_comparison": {
+        "scale": 12,
+        "weighted_alpha_iou": 0.998548,
+        "pdf_alpha_bounds_px": [
+          69,
+          15,
+          219,
+          261
+        ]
+      }
+    },
+    {
+      "id": "freeplay",
+      "role": "Free play",
+      "usage": "Four-point comet with three open trails; no orbital ring.",
+      "svg": {
+        "path": "masters/glyphs/freeplay.svg",
+        "sha256": "93971b467f96132b5459805db7a1faa11ac59728e6ede8e9dbe13a3ee0358cd2"
+      },
+      "pdf": {
+        "path": "exports/glyphs/freeplay.pdf",
+        "points": [
+          24,
+          24
+        ],
+        "sha256": "0b7376231350987a4475a960e1a737ca86c033116afa76bc32d46969c8c12667"
+      },
+      "png": [
+        {
+          "path": "exports/glyphs/freeplay@1x.png",
+          "scale": 1,
+          "pixels": [
+            24,
+            24
+          ],
+          "alpha_bounds_px": [
+            2,
+            2,
+            22,
+            22
+          ],
+          "sha256": "b1fbd9713f79e234f443b550057f5afbdb34654e69ab189fd341e5a3dfb3c298"
+        },
+        {
+          "path": "exports/glyphs/freeplay@2x.png",
+          "scale": 2,
+          "pixels": [
+            48,
+            48
+          ],
+          "alpha_bounds_px": [
+            4,
+            4,
+            44,
+            44
+          ],
+          "sha256": "9f2f268ffeb47f15be57769bcde736d28bcbfaf1c0e732bb964adcc4a90554ab"
+        },
+        {
+          "path": "exports/glyphs/freeplay@3x.png",
+          "scale": 3,
+          "pixels": [
+            72,
+            72
+          ],
+          "alpha_bounds_px": [
+            6,
+            6,
+            66,
+            66
+          ],
+          "sha256": "20779d30258c62d478e0e3417317e48d39d72775d6e70f5ed09dcc87687b47f6"
+        }
+      ],
+      "ink_bounds_24": [
+        2.0,
+        2.0,
+        22.0,
+        21.75
+      ],
+      "svg_pdf_comparison": {
+        "scale": 12,
+        "weighted_alpha_iou": 0.996293,
+        "pdf_alpha_bounds_px": [
+          24,
+          24,
+          264,
+          261
+        ]
+      }
+    },
+    {
+      "id": "tutorial",
+      "role": "Tutorial",
+      "usage": "Connected constellation with a destination star.",
+      "svg": {
+        "path": "masters/glyphs/tutorial.svg",
+        "sha256": "902c2d230bfc7f1ae36edb4eed0a46c175270b40f121beb945764970f5a8f921"
+      },
+      "pdf": {
+        "path": "exports/glyphs/tutorial.pdf",
+        "points": [
+          24,
+          24
+        ],
+        "sha256": "2ef80bdaf7088907a694976fe40ec15dc33ce0f08403ae1ceb73b854ea712c09"
+      },
+      "png": [
+        {
+          "path": "exports/glyphs/tutorial@1x.png",
+          "scale": 1,
+          "pixels": [
+            24,
+            24
+          ],
+          "alpha_bounds_px": [
+            2,
+            2,
+            23,
+            21
+          ],
+          "sha256": "ee9ff0be72b4a4b0ec3c879ff732b352bbfb1a55c5e2eceb3d530e88ee27389a"
+        },
+        {
+          "path": "exports/glyphs/tutorial@2x.png",
+          "scale": 2,
+          "pixels": [
+            48,
+            48
+          ],
+          "alpha_bounds_px": [
+            4,
+            4,
+            46,
+            41
+          ],
+          "sha256": "277b88d0b32f6a6e13b975ae493ad2ceff6e93c93c44840a3997aca798778827"
+        },
+        {
+          "path": "exports/glyphs/tutorial@3x.png",
+          "scale": 3,
+          "pixels": [
+            72,
+            72
+          ],
+          "alpha_bounds_px": [
+            6,
+            6,
+            69,
+            61
+          ],
+          "sha256": "4527185a7c42879881d0904e0fbd4e2a0ba72ef680ed901fd515ef2d24f6634a"
+        }
+      ],
+      "ink_bounds_24": [
+        2.25,
+        2.0,
+        22.75,
+        20.25
+      ],
+      "svg_pdf_comparison": {
+        "scale": 12,
+        "weighted_alpha_iou": 0.997772,
+        "pdf_alpha_bounds_px": [
+          27,
+          24,
+          273,
+          243
+        ]
+      }
+    },
+    {
+      "id": "settings",
+      "role": "Settings",
+      "usage": "Orbital adjustment dial; three settings points.",
+      "svg": {
+        "path": "masters/glyphs/settings.svg",
+        "sha256": "3ab2bf6635d7e9026d39d523f1c2ea931637f30ff93e7413d28a14c6a572426b"
+      },
+      "pdf": {
+        "path": "exports/glyphs/settings.pdf",
+        "points": [
+          24,
+          24
+        ],
+        "sha256": "eb24372c23f01ad715c8911daa446d74b441eeead7e1b3608daa1460ced93817"
+      },
+      "png": [
+        {
+          "path": "exports/glyphs/settings@1x.png",
+          "scale": 1,
+          "pixels": [
+            24,
+            24
+          ],
+          "alpha_bounds_px": [
+            1,
+            2,
+            21,
+            22
+          ],
+          "sha256": "f90f8c677302c8e97ba0d97e89b7f24d2acf1835887aa9e130e24630e0a9375d"
+        },
+        {
+          "path": "exports/glyphs/settings@2x.png",
+          "scale": 2,
+          "pixels": [
+            48,
+            48
+          ],
+          "alpha_bounds_px": [
+            3,
+            5,
+            41,
+            43
+          ],
+          "sha256": "b7a7a892be9f4b695e9978a750a53273de6bc5b92a9f96217e349527ad729bbf"
+        },
+        {
+          "path": "exports/glyphs/settings@3x.png",
+          "scale": 3,
+          "pixels": [
+            72,
+            72
+          ],
+          "alpha_bounds_px": [
+            5,
+            7,
+            61,
+            64
+          ],
+          "sha256": "4d0c7717fd52a47d1fc2445ea699298f5bedc8105d02e59b92016d37ba2c9c73"
+        }
+      ],
+      "ink_bounds_24": [
+        1.8333,
+        2.5,
+        20.0833,
+        21.25
+      ],
+      "svg_pdf_comparison": {
+        "scale": 12,
+        "weighted_alpha_iou": 0.996552,
+        "pdf_alpha_bounds_px": [
+          22,
+          30,
+          241,
+          255
+        ]
+      }
+    },
+    {
+      "id": "back",
+      "role": "Back",
+      "usage": "Back navigation or previous item.",
+      "svg": {
+        "path": "masters/glyphs/back.svg",
+        "sha256": "2cf6c095aad287c5b1f160d3a007cdc29f2a732a0808e1e803abaf0e62bb7754"
+      },
+      "pdf": {
+        "path": "exports/glyphs/back.pdf",
+        "points": [
+          24,
+          24
+        ],
+        "sha256": "56afbc09875791614378ea00067f124e8955b11cd010c9038f42b47c60403650"
+      },
+      "png": [
+        {
+          "path": "exports/glyphs/back@1x.png",
+          "scale": 1,
+          "pixels": [
+            24,
+            24
+          ],
+          "alpha_bounds_px": [
+            2,
+            4,
+            22,
+            20
+          ],
+          "sha256": "b5a55837f06db0661e486067474cee8f9588957051a308e4872d6c0f9cf2f25c"
+        },
+        {
+          "path": "exports/glyphs/back@2x.png",
+          "scale": 2,
+          "pixels": [
+            48,
+            48
+          ],
+          "alpha_bounds_px": [
+            4,
+            8,
+            44,
+            40
+          ],
+          "sha256": "b5696d72c5ada86eb98d69b0f03343c3c3e7c7e7204d51f83aa4180952d0cc0b"
+        },
+        {
+          "path": "exports/glyphs/back@3x.png",
+          "scale": 3,
+          "pixels": [
+            72,
+            72
+          ],
+          "alpha_bounds_px": [
+            6,
+            12,
+            66,
+            60
+          ],
+          "sha256": "99bf6922530472e551bc664ad1feec4e7b38fca8fb39ef8416e485f59870dedb"
+        }
+      ],
+      "ink_bounds_24": [
+        2.25,
+        4.25,
+        21.75,
+        19.75
+      ],
+      "svg_pdf_comparison": {
+        "scale": 12,
+        "weighted_alpha_iou": 0.998137,
+        "pdf_alpha_bounds_px": [
+          27,
+          51,
+          261,
+          237
+        ]
+      }
+    },
+    {
+      "id": "next",
+      "role": "Next",
+      "usage": "Forward navigation or next item.",
+      "svg": {
+        "path": "masters/glyphs/next.svg",
+        "sha256": "fd8a352a75963868167eb3de9638d4c411836893231e658f9d6ad2d8f12116f3"
+      },
+      "pdf": {
+        "path": "exports/glyphs/next.pdf",
+        "points": [
+          24,
+          24
+        ],
+        "sha256": "ab179fed347281fff23fff3a43c9f055afd5dfe499dee79e4d991e4b158c1d50"
+      },
+      "png": [
+        {
+          "path": "exports/glyphs/next@1x.png",
+          "scale": 1,
+          "pixels": [
+            24,
+            24
+          ],
+          "alpha_bounds_px": [
+            2,
+            4,
+            22,
+            20
+          ],
+          "sha256": "59a05c215930ab42f111f0957a06739539fb48e14f588038f81f8fbcc07dea1c"
+        },
+        {
+          "path": "exports/glyphs/next@2x.png",
+          "scale": 2,
+          "pixels": [
+            48,
+            48
+          ],
+          "alpha_bounds_px": [
+            4,
+            8,
+            44,
+            40
+          ],
+          "sha256": "a41bf0c69caeddf8c5d91227a8c4b3b7849f4986c713f51c3e633a65d7ad09f2"
+        },
+        {
+          "path": "exports/glyphs/next@3x.png",
+          "scale": 3,
+          "pixels": [
+            72,
+            72
+          ],
+          "alpha_bounds_px": [
+            6,
+            12,
+            66,
+            60
+          ],
+          "sha256": "8fb085b1d0f3d2a9690ce0918ba189ce3089f37599c0c36e39806b68cb9205c7"
+        }
+      ],
+      "ink_bounds_24": [
+        2.25,
+        4.25,
+        21.75,
+        19.75
+      ],
+      "svg_pdf_comparison": {
+        "scale": 12,
+        "weighted_alpha_iou": 0.998206,
+        "pdf_alpha_bounds_px": [
+          27,
+          51,
+          261,
+          237
+        ]
+      }
+    },
+    {
+      "id": "play",
+      "role": "Play",
+      "usage": "Begin or resume an action; label supplies the exact verb.",
+      "svg": {
+        "path": "masters/glyphs/play.svg",
+        "sha256": "0baf1afa17a1912ffa57806041fed1f0f724b9ccc12ee0d3f515fbd7f4ac0e01"
+      },
+      "pdf": {
+        "path": "exports/glyphs/play.pdf",
+        "points": [
+          24,
+          24
+        ],
+        "sha256": "065875e9a9294c06a8604d5adf63ceb796af339ac533e9664a77e84a2f6d3ed8"
+      },
+      "png": [
+        {
+          "path": "exports/glyphs/play@1x.png",
+          "scale": 1,
+          "pixels": [
+            24,
+            24
+          ],
+          "alpha_bounds_px": [
+            6,
+            4,
+            21,
+            20
+          ],
+          "sha256": "9c76c8ddfa77ca20ce3304f16734d4c288c70710ff7136040ba82b34fcabcead"
+        },
+        {
+          "path": "exports/glyphs/play@2x.png",
+          "scale": 2,
+          "pixels": [
+            48,
+            48
+          ],
+          "alpha_bounds_px": [
+            12,
+            8,
+            42,
+            40
+          ],
+          "sha256": "93c35b10a430332db2d5f69632c8d8b2964ed5cd9622be26a952746754532a96"
+        },
+        {
+          "path": "exports/glyphs/play@3x.png",
+          "scale": 3,
+          "pixels": [
+            72,
+            72
+          ],
+          "alpha_bounds_px": [
+            18,
+            12,
+            63,
+            60
+          ],
+          "sha256": "0257dcf79c3fd236d018328b87dd9a37c6860e190331de777279c6ed4da13113"
+        }
+      ],
+      "ink_bounds_24": [
+        6.25,
+        4.0,
+        20.75,
+        20.0
+      ],
+      "svg_pdf_comparison": {
+        "scale": 12,
+        "weighted_alpha_iou": 0.998141,
+        "pdf_alpha_bounds_px": [
+          75,
+          48,
+          249,
+          240
+        ]
+      }
+    },
+    {
+      "id": "pause",
+      "role": "Pause",
+      "usage": "Pause the active sky.",
+      "svg": {
+        "path": "masters/glyphs/pause.svg",
+        "sha256": "5db8302d4540a7d8409af58642f046ee08ed7d7a07ed874cd626bbcea1dad639"
+      },
+      "pdf": {
+        "path": "exports/glyphs/pause.pdf",
+        "points": [
+          24,
+          24
+        ],
+        "sha256": "1abe8c85b4e02bd227aeaadd33872f73247f5e374d35d457acb665be30b42713"
+      },
+      "png": [
+        {
+          "path": "exports/glyphs/pause@1x.png",
+          "scale": 1,
+          "pixels": [
+            24,
+            24
+          ],
+          "alpha_bounds_px": [
+            5,
+            4,
+            19,
+            20
+          ],
+          "sha256": "bd192ce1fa40d7568ecd8a14e1a7d7cd8599bcb5c35f3e121194b09ed8320057"
+        },
+        {
+          "path": "exports/glyphs/pause@2x.png",
+          "scale": 2,
+          "pixels": [
+            48,
+            48
+          ],
+          "alpha_bounds_px": [
+            11,
+            8,
+            37,
+            40
+          ],
+          "sha256": "fd8349f978541d8dde3ce7abcc22914435c46761530c27dddc900147da8f2012"
+        },
+        {
+          "path": "exports/glyphs/pause@3x.png",
+          "scale": 3,
+          "pixels": [
+            72,
+            72
+          ],
+          "alpha_bounds_px": [
+            17,
+            12,
+            55,
+            60
+          ],
+          "sha256": "a4d2304690543cfffa168981a68d3f240ba5f59f960b53a0635b3c2513b0ce9d"
+        }
+      ],
+      "ink_bounds_24": [
+        5.75,
+        4.25,
+        18.25,
+        19.75
+      ],
+      "svg_pdf_comparison": {
+        "scale": 12,
+        "weighted_alpha_iou": 0.999246,
+        "pdf_alpha_bounds_px": [
+          69,
+          51,
+          219,
+          237
+        ]
+      }
+    },
+    {
+      "id": "sound",
+      "role": "Sound",
+      "usage": "Sound preference; state is conveyed by the associated control.",
+      "svg": {
+        "path": "masters/glyphs/sound.svg",
+        "sha256": "98f7198e945e71ec1553bbd6c1fc0e56224cd3f302a95371191fb1312cc4c20b"
+      },
+      "pdf": {
+        "path": "exports/glyphs/sound.pdf",
+        "points": [
+          24,
+          24
+        ],
+        "sha256": "808eac9d4bd6a3ec2242aae92889bacb1993385e22bb42d27d516bc2fb3bad19"
+      },
+      "png": [
+        {
+          "path": "exports/glyphs/sound@1x.png",
+          "scale": 1,
+          "pixels": [
+            24,
+            24
+          ],
+          "alpha_bounds_px": [
+            2,
+            4,
+            22,
+            20
+          ],
+          "sha256": "3f643aaf38d41c54f8306b956d54a14a74e21348bdb6edcd83a3e83f4df52ea0"
+        },
+        {
+          "path": "exports/glyphs/sound@2x.png",
+          "scale": 2,
+          "pixels": [
+            48,
+            48
+          ],
+          "alpha_bounds_px": [
+            4,
+            8,
+            43,
+            40
+          ],
+          "sha256": "779bf126d5016905624ea853cbcf88e229652b49b387b0d84090a558130e8fda"
+        },
+        {
+          "path": "exports/glyphs/sound@3x.png",
+          "scale": 3,
+          "pixels": [
+            72,
+            72
+          ],
+          "alpha_bounds_px": [
+            6,
+            12,
+            64,
+            60
+          ],
+          "sha256": "0205762e415e23b50dd7b786ca4564835adf5c65e3f009791c99aa2f53c4fb88"
+        }
+      ],
+      "ink_bounds_24": [
+        2.0,
+        4.25,
+        21.0833,
+        19.75
+      ],
+      "svg_pdf_comparison": {
+        "scale": 12,
+        "weighted_alpha_iou": 0.997479,
+        "pdf_alpha_bounds_px": [
+          24,
+          51,
+          253,
+          237
+        ]
+      }
+    },
+    {
+      "id": "haptic",
+      "role": "Haptics",
+      "usage": "Haptic preference; state is conveyed by the associated control.",
+      "svg": {
+        "path": "masters/glyphs/haptic.svg",
+        "sha256": "5363d4f80ec67949b66cdf13de45a804a43e4d0bca8ad5f6c958c0aff58075ca"
+      },
+      "pdf": {
+        "path": "exports/glyphs/haptic.pdf",
+        "points": [
+          24,
+          24
+        ],
+        "sha256": "dfa011e02aceacc9a0d53ac2edc45b8f6eda28cc0d1fb288632bbe2595526a9e"
+      },
+      "png": [
+        {
+          "path": "exports/glyphs/haptic@1x.png",
+          "scale": 1,
+          "pixels": [
+            24,
+            24
+          ],
+          "alpha_bounds_px": [
+            2,
+            3,
+            22,
+            21
+          ],
+          "sha256": "90f41c6f3af5e5a0c5471d82c17a7a9b91e4b6d9a90cd39417b8a7b5bfc0d9d5"
+        },
+        {
+          "path": "exports/glyphs/haptic@2x.png",
+          "scale": 2,
+          "pixels": [
+            48,
+            48
+          ],
+          "alpha_bounds_px": [
+            4,
+            6,
+            44,
+            42
+          ],
+          "sha256": "c7c44cd4c425210011a62d87f7da722fad980e00f480280fe85f5fe35608b3f1"
+        },
+        {
+          "path": "exports/glyphs/haptic@3x.png",
+          "scale": 3,
+          "pixels": [
+            72,
+            72
+          ],
+          "alpha_bounds_px": [
+            6,
+            9,
+            66,
+            63
+          ],
+          "sha256": "cae00f6491613172c340bb1eb945389b577720db6512c1e14687e2ab2921d27a"
+        }
+      ],
+      "ink_bounds_24": [
+        2.0,
+        3.25,
+        22.0,
+        20.75
+      ],
+      "svg_pdf_comparison": {
+        "scale": 12,
+        "weighted_alpha_iou": 0.998251,
+        "pdf_alpha_bounds_px": [
+          24,
+          39,
+          264,
+          249
+        ]
+      }
+    },
+    {
+      "id": "calm",
+      "role": "Calmer effects",
+      "usage": "Calmer visual effects preference, using a moon and star.",
+      "svg": {
+        "path": "masters/glyphs/calm.svg",
+        "sha256": "0b730c8b2b7fabbb13452c93151494a27e73ccdad676eff167d24907c98ee453"
+      },
+      "pdf": {
+        "path": "exports/glyphs/calm.pdf",
+        "points": [
+          24,
+          24
+        ],
+        "sha256": "359de62ec415ad4554f406cb3e458e2bc43cdd4b96c10401fc2acd7d653553fa"
+      },
+      "png": [
+        {
+          "path": "exports/glyphs/calm@1x.png",
+          "scale": 1,
+          "pixels": [
+            24,
+            24
+          ],
+          "alpha_bounds_px": [
+            2,
+            2,
+            22,
+            22
+          ],
+          "sha256": "8a3a959632b220b17bc376d8abd4bf1063822766f6be27f84c353d694d36c6be"
+        },
+        {
+          "path": "exports/glyphs/calm@2x.png",
+          "scale": 2,
+          "pixels": [
+            48,
+            48
+          ],
+          "alpha_bounds_px": [
+            5,
+            4,
+            44,
+            43
+          ],
+          "sha256": "60f0447850dd9f323ab74d3aaa383a8cf337d7c54765e1be392988cd097372ae"
+        },
+        {
+          "path": "exports/glyphs/calm@3x.png",
+          "scale": 3,
+          "pixels": [
+            72,
+            72
+          ],
+          "alpha_bounds_px": [
+            8,
+            6,
+            66,
+            64
+          ],
+          "sha256": "fb3134f14720f45e390b5cd277ed4d4014eab2ba0c758a0d60b730a235426e2a"
+        }
+      ],
+      "ink_bounds_24": [
+        2.75,
+        2.25,
+        21.75,
+        21.25
+      ],
+      "svg_pdf_comparison": {
+        "scale": 12,
+        "weighted_alpha_iou": 0.996297,
+        "pdf_alpha_bounds_px": [
+          33,
+          27,
+          261,
+          255
+        ]
+      }
+    },
+    {
+      "id": "home",
+      "role": "Home",
+      "usage": "Return to the Observatory home screen.",
+      "svg": {
+        "path": "masters/glyphs/home.svg",
+        "sha256": "e530c2a06c6ea508fb17dd564274f769bf005ec34463530edee86964dcc7e143"
+      },
+      "pdf": {
+        "path": "exports/glyphs/home.pdf",
+        "points": [
+          24,
+          24
+        ],
+        "sha256": "ffe521e6769a8f9094424d740923d8ecf886b0644c6a4756a5cb409ca7f18ed9"
+      },
+      "png": [
+        {
+          "path": "exports/glyphs/home@1x.png",
+          "scale": 1,
+          "pixels": [
+            24,
+            24
+          ],
+          "alpha_bounds_px": [
+            2,
+            2,
+            22,
+            21
+          ],
+          "sha256": "454d7c7d49810d77b03d5f3c999eaf80675c0becaec2a182fc849a88dc1fb01f"
+        },
+        {
+          "path": "exports/glyphs/home@2x.png",
+          "scale": 2,
+          "pixels": [
+            48,
+            48
+          ],
+          "alpha_bounds_px": [
+            4,
+            4,
+            44,
+            42
+          ],
+          "sha256": "4228225220a7b6c778f1ff5724b9d8bb517a3eed29ce279264b17d56cc5b1001"
+        },
+        {
+          "path": "exports/glyphs/home@3x.png",
+          "scale": 3,
+          "pixels": [
+            72,
+            72
+          ],
+          "alpha_bounds_px": [
+            6,
+            6,
+            66,
+            63
+          ],
+          "sha256": "a62ecd0f62bfbb6d6d924b2e826be7bccb35613646fa4c0b47769e8f630f4d64"
+        }
+      ],
+      "ink_bounds_24": [
+        2.25,
+        2.25,
+        21.75,
+        20.75
+      ],
+      "svg_pdf_comparison": {
+        "scale": 12,
+        "weighted_alpha_iou": 0.998828,
+        "pdf_alpha_bounds_px": [
+          27,
+          27,
+          261,
+          249
+        ]
+      }
+    },
+    {
+      "id": "replay",
+      "role": "Replay / restart",
+      "usage": "Repeat or start again; label supplies the exact consequence.",
+      "svg": {
+        "path": "masters/glyphs/replay.svg",
+        "sha256": "e8e689cbf13d753efbdb76eff8e20a767abd58106c8e068a43f75d757967b394"
+      },
+      "pdf": {
+        "path": "exports/glyphs/replay.pdf",
+        "points": [
+          24,
+          24
+        ],
+        "sha256": "2035053188da6d894ea2ec236e34155ea94ab4c82f83b3d66e81a254e1faf964"
+      },
+      "png": [
+        {
+          "path": "exports/glyphs/replay@1x.png",
+          "scale": 1,
+          "pixels": [
+            24,
+            24
+          ],
+          "alpha_bounds_px": [
+            3,
+            2,
+            21,
+            21
+          ],
+          "sha256": "c6ab881b932745a4f55a8543095283e98ae3dcc19d1ec18dfee9e7a5cca55cb3"
+        },
+        {
+          "path": "exports/glyphs/replay@2x.png",
+          "scale": 2,
+          "pixels": [
+            48,
+            48
+          ],
+          "alpha_bounds_px": [
+            7,
+            5,
+            42,
+            42
+          ],
+          "sha256": "b4d381ec6aa73e5b576a397a44f56c62883a0267a2a9077ae4a005bef4a27816"
+        },
+        {
+          "path": "exports/glyphs/replay@3x.png",
+          "scale": 3,
+          "pixels": [
+            72,
+            72
+          ],
+          "alpha_bounds_px": [
+            10,
+            8,
+            63,
+            63
+          ],
+          "sha256": "8fc2e85cca9b3ca78b76e44547c0d28592d0b036624360a59ae9b8967af50495"
+        }
+      ],
+      "ink_bounds_24": [
+        3.5,
+        2.75,
+        20.75,
+        20.75
+      ],
+      "svg_pdf_comparison": {
+        "scale": 12,
+        "weighted_alpha_iou": 0.9964,
+        "pdf_alpha_bounds_px": [
+          42,
+          33,
+          249,
+          249
+        ]
+      }
+    },
+    {
+      "id": "help",
+      "role": "Help / hint",
+      "usage": "Contextual explanation or tutorial hint.",
+      "svg": {
+        "path": "masters/glyphs/help.svg",
+        "sha256": "b3145396197b0c5c58f0bfdb1bfb53b620fe0fa90aa2b021a8e53ad4bd5d1fdc"
+      },
+      "pdf": {
+        "path": "exports/glyphs/help.pdf",
+        "points": [
+          24,
+          24
+        ],
+        "sha256": "e4c04521c3be59abbb62a89ffb0b01f7847b13bb938d65d3d77637ebf094b0f4"
+      },
+      "png": [
+        {
+          "path": "exports/glyphs/help@1x.png",
+          "scale": 1,
+          "pixels": [
+            24,
+            24
+          ],
+          "alpha_bounds_px": [
+            2,
+            2,
+            22,
+            22
+          ],
+          "sha256": "9e043a6c39506abf097f53e550d2e83a37f159491c843164ee7f93af4c0691f5"
+        },
+        {
+          "path": "exports/glyphs/help@2x.png",
+          "scale": 2,
+          "pixels": [
+            48,
+            48
+          ],
+          "alpha_bounds_px": [
+            4,
+            4,
+            44,
+            44
+          ],
+          "sha256": "d44573d11054d6cfdf9e7d78f0a0f1906de64a1b18e6a1346b78e776b9b8c24b"
+        },
+        {
+          "path": "exports/glyphs/help@3x.png",
+          "scale": 3,
+          "pixels": [
+            72,
+            72
+          ],
+          "alpha_bounds_px": [
+            6,
+            6,
+            66,
+            66
+          ],
+          "sha256": "c979c5f23090757f3b3a1922cd4090abcd934d63a1a8e88d0de7c969580aa5d9"
+        }
+      ],
+      "ink_bounds_24": [
+        2.25,
+        2.25,
+        21.75,
+        21.75
+      ],
+      "svg_pdf_comparison": {
+        "scale": 12,
+        "weighted_alpha_iou": 0.993188,
+        "pdf_alpha_bounds_px": [
+          27,
+          27,
+          261,
+          261
+        ]
+      }
+    },
+    {
+      "id": "close",
+      "role": "Close",
+      "usage": "Dismiss the current temporary surface.",
+      "svg": {
+        "path": "masters/glyphs/close.svg",
+        "sha256": "2378bab01a4263aeba3644909b96809c094c91e9bc00e33849701150809b7161"
+      },
+      "pdf": {
+        "path": "exports/glyphs/close.pdf",
+        "points": [
+          24,
+          24
+        ],
+        "sha256": "1d3ee2dea891bfaa2c08de413c41ec38cb8e3a6499c3d183961bd12750b4648d"
+      },
+      "png": [
+        {
+          "path": "exports/glyphs/close@1x.png",
+          "scale": 1,
+          "pixels": [
+            24,
+            24
+          ],
+          "alpha_bounds_px": [
+            5,
+            5,
+            19,
+            19
+          ],
+          "sha256": "1ecef87f8e36c1b6d3fa189849fb1333e1e0aef6cd13c59dffd378f685c71edd"
+        },
+        {
+          "path": "exports/glyphs/close@2x.png",
+          "scale": 2,
+          "pixels": [
+            48,
+            48
+          ],
+          "alpha_bounds_px": [
+            10,
+            10,
+            38,
+            38
+          ],
+          "sha256": "13ee2898915347c63a2bc700917f17d1f0857918ad8484a88c4cdf37bc7100ba"
+        },
+        {
+          "path": "exports/glyphs/close@3x.png",
+          "scale": 3,
+          "pixels": [
+            72,
+            72
+          ],
+          "alpha_bounds_px": [
+            15,
+            15,
+            57,
+            57
+          ],
+          "sha256": "4188339ae4a7ee1e1cb6ea454c7dd1b5151f754a9437b3b628f0b85a3408dd98"
+        }
+      ],
+      "ink_bounds_24": [
+        5.25,
+        5.25,
+        18.75,
+        18.75
+      ],
+      "svg_pdf_comparison": {
+        "scale": 12,
+        "weighted_alpha_iou": 0.997434,
+        "pdf_alpha_bounds_px": [
+          63,
+          63,
+          225,
+          225
+        ]
+      }
+    },
+    {
+      "id": "list",
+      "role": "List / steps",
+      "usage": "A list of destinations or tutorial steps, with a visible label.",
+      "svg": {
+        "path": "masters/glyphs/list.svg",
+        "sha256": "173474d9cd272e0abd7b85c06cb96246b6df3ed27d6492ae5a24a2b4ab92514f"
+      },
+      "pdf": {
+        "path": "exports/glyphs/list.pdf",
+        "points": [
+          24,
+          24
+        ],
+        "sha256": "a94c856d4c248454423c1264f2095c19dcee74f23c4b1107879aec9ae1d6cd21"
+      },
+      "png": [
+        {
+          "path": "exports/glyphs/list@1x.png",
+          "scale": 1,
+          "pixels": [
+            24,
+            24
+          ],
+          "alpha_bounds_px": [
+            2,
+            5,
+            21,
+            19
+          ],
+          "sha256": "12c1f4aff40c34870228264e24ae3ec95d074118cea9dec2e1af2e2e8383face"
+        },
+        {
+          "path": "exports/glyphs/list@2x.png",
+          "scale": 2,
+          "pixels": [
+            48,
+            48
+          ],
+          "alpha_bounds_px": [
+            5,
+            10,
+            42,
+            38
+          ],
+          "sha256": "4ea13f69318ad183dfcff83f8d878dcb461b03428f3d9445278542b7cac90ac7"
+        },
+        {
+          "path": "exports/glyphs/list@3x.png",
+          "scale": 3,
+          "pixels": [
+            72,
+            72
+          ],
+          "alpha_bounds_px": [
+            8,
+            15,
+            63,
+            57
+          ],
+          "sha256": "3392c8280f59936a466274ba54c75d21d24a96d75cdf4980775ba1a688e51ad0"
+        }
+      ],
+      "ink_bounds_24": [
+        2.75,
+        5.25,
+        20.75,
+        18.75
+      ],
+      "svg_pdf_comparison": {
+        "scale": 12,
+        "weighted_alpha_iou": 0.997951,
+        "pdf_alpha_bounds_px": [
+          33,
+          63,
+          249,
+          225
+        ]
+      }
+    },
+    {
+      "id": "check",
+      "role": "Complete",
+      "usage": "Completion or selection indicator; not a standalone action.",
+      "svg": {
+        "path": "masters/glyphs/check.svg",
+        "sha256": "63d0eee10fc7d3f082a7646ee9d5ad2d638ce8e44a3e5c3372e004fb6bd1d128"
+      },
+      "pdf": {
+        "path": "exports/glyphs/check.pdf",
+        "points": [
+          24,
+          24
+        ],
+        "sha256": "243e24fa72b110a4aa7932a335c75ec12006910f6ae5c507e64dc8b2b8c5d509"
+      },
+      "png": [
+        {
+          "path": "exports/glyphs/check@1x.png",
+          "scale": 1,
+          "pixels": [
+            24,
+            24
+          ],
+          "alpha_bounds_px": [
+            3,
+            5,
+            21,
+            19
+          ],
+          "sha256": "eb3b3970bf6d23381649814fa056446af19aea6782b7d18128df7f4d33dda0b6"
+        },
+        {
+          "path": "exports/glyphs/check@2x.png",
+          "scale": 2,
+          "pixels": [
+            48,
+            48
+          ],
+          "alpha_bounds_px": [
+            7,
+            11,
+            41,
+            37
+          ],
+          "sha256": "41e44872862f3200e5f0cbe2e66d8e380a4f391b7a2dfc7cd23933b58f624bf2"
+        },
+        {
+          "path": "exports/glyphs/check@3x.png",
+          "scale": 3,
+          "pixels": [
+            72,
+            72
+          ],
+          "alpha_bounds_px": [
+            11,
+            17,
+            61,
+            55
+          ],
+          "sha256": "bb588a098abbda0a407bfcd51d94fe10aa8a74519fa6344acecde5f7ab5aa958"
+        }
+      ],
+      "ink_bounds_24": [
+        3.75,
+        5.75,
+        20.25,
+        18.25
+      ],
+      "svg_pdf_comparison": {
+        "scale": 12,
+        "weighted_alpha_iou": 0.997698,
+        "pdf_alpha_bounds_px": [
+          45,
+          69,
+          243,
+          219
+        ]
+      }
+    },
+    {
+      "id": "lock",
+      "role": "Locked",
+      "usage": "Unavailable destination; pair with the actual lock reason.",
+      "svg": {
+        "path": "masters/glyphs/lock.svg",
+        "sha256": "a8e7be291ada83e6b86f78ed098e0f93cb1250d8fb1f83c19fd7812c28dea688"
+      },
+      "pdf": {
+        "path": "exports/glyphs/lock.pdf",
+        "points": [
+          24,
+          24
+        ],
+        "sha256": "5190258931d473875f0982cb6e931faccedb0011c89b9a6bd416002e11f564ae"
+      },
+      "png": [
+        {
+          "path": "exports/glyphs/lock@1x.png",
+          "scale": 1,
+          "pixels": [
+            24,
+            24
+          ],
+          "alpha_bounds_px": [
+            4,
+            1,
+            20,
+            22
+          ],
+          "sha256": "b79a9ffd9d4ba9e86c0a5e04b11b697d9989f69cb384c0ebf90016590213c599"
+        },
+        {
+          "path": "exports/glyphs/lock@2x.png",
+          "scale": 2,
+          "pixels": [
+            48,
+            48
+          ],
+          "alpha_bounds_px": [
+            8,
+            3,
+            40,
+            44
+          ],
+          "sha256": "17a39d94b33f0da4edacfa933f28f9a3c063ad3e6cf4149a0bd20a2010d99146"
+        },
+        {
+          "path": "exports/glyphs/lock@3x.png",
+          "scale": 3,
+          "pixels": [
+            72,
+            72
+          ],
+          "alpha_bounds_px": [
+            12,
+            5,
+            60,
+            66
+          ],
+          "sha256": "29e7c70bbc31dbb896be57e146e2e65141926f4dda4fbc4499265d7411d8c3d7"
+        }
+      ],
+      "ink_bounds_24": [
+        4.25,
+        1.75,
+        19.75,
+        21.75
+      ],
+      "svg_pdf_comparison": {
+        "scale": 12,
+        "weighted_alpha_iou": 0.998024,
+        "pdf_alpha_bounds_px": [
+          51,
+          21,
+          237,
+          261
+        ]
+      }
+    },
+    {
+      "id": "direction",
+      "role": "Flow direction",
+      "usage": "Direction adjustment affordance, not a drag-instruction label.",
+      "svg": {
+        "path": "masters/glyphs/direction.svg",
+        "sha256": "08be7e11b5ff2cdec8068adceb5f71eb374b3bd0870b3a565e38e6c3e1dd156f"
+      },
+      "pdf": {
+        "path": "exports/glyphs/direction.pdf",
+        "points": [
+          24,
+          24
+        ],
+        "sha256": "396884d8e82dd8424358d945a716b93c707f3d98b90c16ba201405c637b7c36c"
+      },
+      "png": [
+        {
+          "path": "exports/glyphs/direction@1x.png",
+          "scale": 1,
+          "pixels": [
+            24,
+            24
+          ],
+          "alpha_bounds_px": [
+            2,
+            2,
+            22,
+            22
+          ],
+          "sha256": "8e86a1de77dc28ab0cfa8a6df5a6509223b841b3943f9e0081d5f1d8d6021ea5"
+        },
+        {
+          "path": "exports/glyphs/direction@2x.png",
+          "scale": 2,
+          "pixels": [
+            48,
+            48
+          ],
+          "alpha_bounds_px": [
+            4,
+            4,
+            44,
+            44
+          ],
+          "sha256": "ad9c75a720a7ad95aa15b093a62af77779c61eba53f7c2e6a204df89558eae6f"
+        },
+        {
+          "path": "exports/glyphs/direction@3x.png",
+          "scale": 3,
+          "pixels": [
+            72,
+            72
+          ],
+          "alpha_bounds_px": [
+            6,
+            6,
+            66,
+            66
+          ],
+          "sha256": "5e9e39d3e7366ebbc9402711398d5553ed7b98a8b89662a349ac98d540844045"
+        }
+      ],
+      "ink_bounds_24": [
+        2.25,
+        2.25,
+        21.75,
+        21.75
+      ],
+      "svg_pdf_comparison": {
+        "scale": 12,
+        "weighted_alpha_iou": 0.997641,
+        "pdf_alpha_bounds_px": [
+          27,
+          27,
+          261,
+          261
+        ]
+      }
+    },
+    {
+      "id": "trace",
+      "role": "Trace",
+      "usage": "Five connected points; associated label explains the actual-star rule.",
+      "svg": {
+        "path": "masters/glyphs/trace.svg",
+        "sha256": "d3ec89c19533a092a372312a08b27b32802e4a1a4c8a0152d524f155623f072f"
+      },
+      "pdf": {
+        "path": "exports/glyphs/trace.pdf",
+        "points": [
+          24,
+          24
+        ],
+        "sha256": "d00c7c4da7fc42e2e84e35cfbfba1da035c12c2f411cf11f454255456393074d"
+      },
+      "png": [
+        {
+          "path": "exports/glyphs/trace@1x.png",
+          "scale": 1,
+          "pixels": [
+            24,
+            24
+          ],
+          "alpha_bounds_px": [
+            2,
+            2,
+            22,
+            21
+          ],
+          "sha256": "d160c494f2f0f6db1fad1c76e57c663ae17d61ccdf898ecc9489fadc956ef27f"
+        },
+        {
+          "path": "exports/glyphs/trace@2x.png",
+          "scale": 2,
+          "pixels": [
+            48,
+            48
+          ],
+          "alpha_bounds_px": [
+            4,
+            4,
+            43,
+            41
+          ],
+          "sha256": "fea5840459553174993c5b07d0ac79f584bc08ea5b1cd5e66f1f0f3602e30e40"
+        },
+        {
+          "path": "exports/glyphs/trace@3x.png",
+          "scale": 3,
+          "pixels": [
+            72,
+            72
+          ],
+          "alpha_bounds_px": [
+            6,
+            6,
+            64,
+            61
+          ],
+          "sha256": "1ce9a0df612658db15e71062a093f93d04cb9f8ba11271963042b0c69ef7db52"
+        }
+      ],
+      "ink_bounds_24": [
+        2.25,
+        2.25,
+        21.25,
+        20.25
+      ],
+      "svg_pdf_comparison": {
+        "scale": 12,
+        "weighted_alpha_iou": 0.998081,
+        "pdf_alpha_bounds_px": [
+          27,
+          27,
+          255,
+          243
+        ]
+      }
+    }
+  ]
+}

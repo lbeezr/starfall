@@ -1,0 +1,270 @@
+{
+  "purpose": "Disposable input to the source-bound final native evidence writer. Historical failures and source-level correction attempts; no unchanged retries.",
+  "capturedAtUTC": "2026-10-20T01:08:09.543456+00:00",
+  "baselineSource": "cfd6ab75af5408d74c4850dcecac2b2b50215b46",
+  "epochs": [
+    {
+      "id": "initial",
+      "runtime": "dev.68e5909355",
+      "sourceChange": "Original native integration; sky.flow.<screen> identifier remained on the ceremony GeometryReader.",
+      "finding": "The visible native Settings/Back Buttons inherited sky.flow.welcome or sky.flow.entry instead of their leaf identifiers.",
+      "captureDir": "compact-captures",
+      "runtimeAttribution": "Runtime identifiers supplied by parent from source/build epochs; method results extracted from the named logs.",
+      "runNames": [
+        "native-checks",
+        "compact"
+      ],
+      "axEvidence": [
+        {
+          "path": "/tmp/starfall-observatory-compact-captures/6FE3694C-05BE-4DC8-A5FE-433B6B3249C6.txt",
+          "line": 15,
+          "excerpt": "Button, 0x10a45b200, {{20.0, 8.0}, {45.0, 45.0}}, identifier: 'sky.flow.entry', label: 'Back to Observatory' <AX element pid: 89870, elementOrHash.elementID: 4780453120.558>"
+        },
+        {
+          "path": "/tmp/starfall-observatory-compact-captures/6FE3694C-05BE-4DC8-A5FE-433B6B3249C6.txt",
+          "line": 17,
+          "excerpt": "Button, 0x10a45a300, {{310.0, 8.0}, {45.0, 45.0}}, identifier: 'sky.flow.entry', label: 'Settings & help' <AX element pid: 89870, elementOrHash.elementID: 4780453920.559>"
+        },
+        {
+          "path": "/tmp/starfall-observatory-compact-captures/820F9F73-6607-47B9-94AE-31326A622600.txt",
+          "line": 15,
+          "excerpt": "Button, 0x113ca1900, {{310.0, 8.0}, {45.0, 45.0}}, identifier: 'sky.flow.welcome', label: 'Settings & help' <AX element pid: 90212, elementOrHash.elementID: 4718296064.12>"
+        }
+      ]
+    },
+    {
+      "id": "leaf-ignore",
+      "runtime": "dev.94ed5b6493",
+      "sourceChange": "Added accessibilityElement(children: .ignore) to Settings and Entry Back; ancestor identifier remained.",
+      "finding": "Ancestor identifier inheritance remained. Exported leaves were also Other elements rather than Buttons, so native Button queries still failed.",
+      "captureDir": "compact-ax-captures",
+      "runtimeAttribution": "Runtime identifiers supplied by parent from source/build epochs; method results extracted from the named logs.",
+      "runNames": [
+        "compact-ax"
+      ],
+      "axEvidence": [
+        {
+          "path": "/tmp/starfall-observatory-compact-ax-captures/56CF4E82-D792-4FAE-AE45-0DE03AE0EB47.txt",
+          "line": 15,
+          "excerpt": "Other, 0x1132892c0, {{310.0, 8.0}, {45.0, 45.0}}, identifier: 'sky.flow.welcome', label: 'Settings & help' <AX element pid: 92016, elementOrHash.elementID: 4705811776.12>"
+        },
+        {
+          "path": "/tmp/starfall-observatory-compact-ax-captures/903D5E60-39F7-46A1-BD5B-FD887868892F.txt",
+          "line": 15,
+          "excerpt": "Other, 0x109c95400, {{20.0, 8.0}, {45.0, 45.0}}, identifier: 'sky.flow.entry', label: 'Back to Observatory' <AX element pid: 91687, elementOrHash.elementID: 4809914272.564>"
+        },
+        {
+          "path": "/tmp/starfall-observatory-compact-ax-captures/903D5E60-39F7-46A1-BD5B-FD887868892F.txt",
+          "line": 18,
+          "excerpt": "Other, 0x109c97980, {{310.0, 8.0}, {45.0, 45.0}}, identifier: 'sky.flow.entry', label: 'Settings & help' <AX element pid: 91687, elementOrHash.elementID: 4809913312.565>"
+        }
+      ]
+    },
+    {
+      "id": "ancestor-removed-leaf-ignore",
+      "runtime": "dev.5303537c77",
+      "sourceChange": "Removed the unused ceremony ancestor identifier, retaining the two leaf ignore modifiers.",
+      "finding": "Leaf identifiers became sky.preferences and sky.home, but exported accessibility type remained Other rather than Button.",
+      "captureDir": "compact-parent-ax-captures",
+      "runtimeAttribution": "Runtime identifiers supplied by parent from source/build epochs; method results extracted from the named logs.",
+      "runNames": [
+        "compact-parent-ax"
+      ],
+      "axEvidence": [
+        {
+          "path": "/tmp/starfall-observatory-compact-parent-ax-captures/8B288895-FE6A-4362-B59F-FFB512C983B0.txt",
+          "line": 15,
+          "excerpt": "Other, 0x10a40dcc0, {{20.0, 8.0}, {45.0, 45.0}}, identifier: 'sky.home', label: 'Back to Observatory' <AX element pid: 92884, elementOrHash.elementID: 4734544192.562>"
+        },
+        {
+          "path": "/tmp/starfall-observatory-compact-parent-ax-captures/8B288895-FE6A-4362-B59F-FFB512C983B0.txt",
+          "line": 18,
+          "excerpt": "Other, 0x10a40f840, {{310.0, 8.0}, {45.0, 45.0}}, identifier: 'sky.preferences', label: 'Settings & help' <AX element pid: 92884, elementOrHash.elementID: 4734545152.563>"
+        },
+        {
+          "path": "/tmp/starfall-observatory-compact-parent-ax-captures/B78D2032-9011-44B5-88C7-733563E1FC19.txt",
+          "line": 15,
+          "excerpt": "Other, 0x113a952c0, {{310.0, 8.0}, {45.0, 45.0}}, identifier: 'sky.preferences', label: 'Settings & help' <AX element pid: 93246, elementOrHash.elementID: 4714216608.12>"
+        }
+      ]
+    }
+  ],
+  "runs": [
+    {
+      "name": "native-checks",
+      "runtime": "dev.68e5909355",
+      "resultBundle": "/tmp/starfall-observatory-native-checks.xcresult",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=862714B3-4526-470F-85BB-7FB33EAA1E87\" -derivedDataPath /tmp/starfall-observatory-native ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGNING_ALLOWED=NO -parallel-testing-enabled NO -collect-test-diagnostics never \"-only-testing:StarfallAppTests\" \"-only-testing:StarfallUITests/SkyFlowInteractionTests\" \"-skip-testing:StarfallUITests/SkyFlowInteractionTests/testLandscapeWelcomeEntryAndPreferences\" \"-only-testing:StarfallUITests/WorldJourneyInteractionTests\" \"-only-testing:StarfallUITests/FallingSkyInteractionTests/testCompactHUDMenuSuspendsWithoutChangingPauseChoice\" \"-only-testing:StarfallUITests/FallingSkyInteractionTests/testLargestTextSettingsFeedbackAndDismissal\" \"-only-testing:StarfallUITests/FallingSkyInteractionTests/testSystemReduceMotionKeepsManualPlayWorking\" \"-only-testing:StarfallUITests/FallingSkyInteractionTests/testAutomaticRainThenPausedClearReplayAndSettings\" \"-only-testing:StarfallUITests/ObservatoryInteractionTests/testActualCastSparseDenseAndProjectedCornerTaps\" \"-only-testing:StarfallUITests/ObservatoryInteractionTests/testCastSettingsDismissalAndBackgroundPreserveBoard\" \"-only-testing:StarfallUITests/LandingPlaceInteractionTests/testLargeScoresAndLargestTextReflowWithoutCoveringStars\" \"-only-testing:StarfallUITests/SkyTechniqueInteractionTests/testFastSameColorStrokeSwapsOnceThenHoldDrawClearsOnlyFive\" \"-only-testing:StarfallUITests/SkyTechniqueInteractionTests/testSettingsAndBackgroundLeaveGesturesReadyWithoutRetoggling\" \"-only-testing:StarfallUITests/SkyTechniqueInteractionTests/testVerticalSwipesOwnTheBoardAtLargestTextSize\" -resultBundlePath /tmp/starfall-observatory-native-checks.xcresult test",
+      "runComplete": true,
+      "runStatus": "failed",
+      "snapshot": {
+        "capturedAtUTC": "2026-10-20T01:08:09.543456+00:00",
+        "bytes": 779269,
+        "sha256": "7ef70c05dbc6ba873644c499802cc9031c4a015994c225325a891c773362054b"
+      },
+      "completedCounts": {
+        "passed": 357,
+        "failed": 6,
+        "skipped": 0
+      },
+      "failures": [
+        {
+          "method": "StarfallUITests/SkyFlowInteractionTests/testEntryCancellationAndTerminationRetainThePlayedSky",
+          "expectedIdentifier": "sky.home",
+          "expectedElementType": "Button",
+          "assertionSource": "UITests/SkyFlowInteractionTests.swift:29",
+          "failure": "XCTAssertTrue failed",
+          "logLine": 1755
+        },
+        {
+          "method": "StarfallUITests/SkyFlowInteractionTests/testLargestEndingReplayRetainsResultAcrossBackgroundAndCancel",
+          "expectedIdentifier": "sky.home",
+          "expectedElementType": "Button",
+          "assertionSource": "UITests/SkyFlowInteractionTests.swift:29",
+          "failure": "XCTAssertTrue failed",
+          "logLine": 3040
+        },
+        {
+          "method": "StarfallUITests/SkyFlowInteractionTests/testLargestTextWelcomeEntryAndBackRemainReachable",
+          "expectedIdentifier": "sky.preferences",
+          "expectedElementType": "Button",
+          "assertionSource": "UITests/SkyFlowInteractionTests.swift:29",
+          "failure": "XCTAssertTrue failed",
+          "logLine": 3083
+        },
+        {
+          "method": "StarfallUITests/SkyFlowInteractionTests/testPendingFirstLightHelpUsesChallengeRulesAndPreservesEntry",
+          "expectedIdentifier": "sky.preferences",
+          "expectedElementType": "Button",
+          "assertionSource": "UITests/SkyFlowInteractionTests.swift:29",
+          "failure": "XCTAssertTrue failed",
+          "logLine": 3201
+        },
+        {
+          "method": "StarfallUITests/SkyFlowInteractionTests/testWelcomePreferencesShareValuesWithPlayAndDoNotCreateASave",
+          "expectedIdentifier": "sky.preferences",
+          "expectedElementType": "Button",
+          "assertionSource": "UITests/SkyFlowInteractionTests.swift:29",
+          "failure": "XCTAssertTrue failed",
+          "logLine": 4439
+        },
+        {
+          "method": "StarfallUITests/WorldJourneyInteractionTests/testMapSeparatesLockedAndUnavailableAndEntryCanCancel",
+          "expectedIdentifier": "sky.home",
+          "expectedElementType": "Button",
+          "assertionSource": "UITests/WorldJourneyInteractionTests.swift:16",
+          "failure": "XCTAssertTrue failed - sky.home",
+          "logLine": 6136
+        }
+      ]
+    },
+    {
+      "name": "compact",
+      "runtime": "dev.68e5909355",
+      "resultBundle": "/tmp/starfall-observatory-compact.xcresult",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=02B7AF2E-1F1C-40F6-AA83-C67EA962B656\" -derivedDataPath /tmp/starfall-observatory-compact ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGNING_ALLOWED=NO -parallel-testing-enabled NO -collect-test-diagnostics never \"-only-testing:StarfallUITests/SkyFlowInteractionTests/testLargestTextWelcomeEntryAndBackRemainReachable\" \"-only-testing:StarfallUITests/SkyFlowInteractionTests/testLargestEndingReplayRetainsResultAcrossBackgroundAndCancel\" \"-only-testing:StarfallUITests/FallingSkyInteractionTests/testCompactPlayfieldKeepsControlsVisible\" \"-only-testing:StarfallUITests/ObservatoryInteractionTests/testActualCastSparseDenseAndProjectedCornerTaps\" -resultBundlePath /tmp/starfall-observatory-compact.xcresult test",
+      "runComplete": true,
+      "runStatus": "failed",
+      "snapshot": {
+        "capturedAtUTC": "2026-10-20T01:08:09.543456+00:00",
+        "bytes": 306087,
+        "sha256": "f77d82af0f7dae0834526dad51110b88ad52019411147beceaab40d44b829427"
+      },
+      "completedCounts": {
+        "passed": 2,
+        "failed": 2,
+        "skipped": 0
+      },
+      "failures": [
+        {
+          "method": "StarfallUITests/SkyFlowInteractionTests/testLargestEndingReplayRetainsResultAcrossBackgroundAndCancel",
+          "expectedIdentifier": "sky.home",
+          "expectedElementType": "Button",
+          "assertionSource": "UITests/SkyFlowInteractionTests.swift:29",
+          "failure": "XCTAssertTrue failed",
+          "logLine": 1941
+        },
+        {
+          "method": "StarfallUITests/SkyFlowInteractionTests/testLargestTextWelcomeEntryAndBackRemainReachable",
+          "expectedIdentifier": "sky.preferences",
+          "expectedElementType": "Button",
+          "assertionSource": "UITests/SkyFlowInteractionTests.swift:29",
+          "failure": "XCTAssertTrue failed",
+          "logLine": 1984
+        }
+      ]
+    },
+    {
+      "name": "compact-ax",
+      "runtime": "dev.94ed5b6493",
+      "resultBundle": "/tmp/starfall-observatory-compact-ax.xcresult",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=02B7AF2E-1F1C-40F6-AA83-C67EA962B656\" -derivedDataPath /tmp/starfall-observatory-compact ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGNING_ALLOWED=NO -parallel-testing-enabled NO -collect-test-diagnostics never \"-only-testing:StarfallUITests/SkyFlowInteractionTests/testLargestTextWelcomeEntryAndBackRemainReachable\" \"-only-testing:StarfallUITests/SkyFlowInteractionTests/testLargestEndingReplayRetainsResultAcrossBackgroundAndCancel\" -resultBundlePath /tmp/starfall-observatory-compact-ax.xcresult test",
+      "runComplete": true,
+      "runStatus": "failed",
+      "snapshot": {
+        "capturedAtUTC": "2026-10-20T01:08:09.543456+00:00",
+        "bytes": 66059,
+        "sha256": "945025dae4b3e70f5384797a342d46770f2dc8366ddb40dc1e73af2e9825dad5"
+      },
+      "completedCounts": {
+        "passed": 0,
+        "failed": 2,
+        "skipped": 0
+      },
+      "failures": [
+        {
+          "method": "StarfallUITests/SkyFlowInteractionTests/testLargestEndingReplayRetainsResultAcrossBackgroundAndCancel",
+          "expectedIdentifier": "sky.home",
+          "expectedElementType": "Button",
+          "assertionSource": "UITests/SkyFlowInteractionTests.swift:29",
+          "failure": "XCTAssertTrue failed",
+          "logLine": 314
+        },
+        {
+          "method": "StarfallUITests/SkyFlowInteractionTests/testLargestTextWelcomeEntryAndBackRemainReachable",
+          "expectedIdentifier": "sky.preferences",
+          "expectedElementType": "Button",
+          "assertionSource": "UITests/SkyFlowInteractionTests.swift:29",
+          "failure": "XCTAssertTrue failed",
+          "logLine": 357
+        }
+      ]
+    },
+    {
+      "name": "compact-parent-ax",
+      "runtime": "dev.5303537c77",
+      "resultBundle": "/tmp/starfall-observatory-compact-parent-ax.xcresult",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=02B7AF2E-1F1C-40F6-AA83-C67EA962B656\" -derivedDataPath /tmp/starfall-observatory-compact ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGNING_ALLOWED=NO -parallel-testing-enabled NO -collect-test-diagnostics never \"-only-testing:StarfallUITests/SkyFlowInteractionTests/testLargestTextWelcomeEntryAndBackRemainReachable\" \"-only-testing:StarfallUITests/SkyFlowInteractionTests/testLargestEndingReplayRetainsResultAcrossBackgroundAndCancel\" -resultBundlePath /tmp/starfall-observatory-compact-parent-ax.xcresult test",
+      "runComplete": true,
+      "runStatus": "failed",
+      "snapshot": {
+        "capturedAtUTC": "2026-10-20T01:08:09.543456+00:00",
+        "bytes": 68041,
+        "sha256": "d68c46c0847b49a6cf4b8ceee65cbd23202b90ad3e610e5ec630d7b3d90fd04e"
+      },
+      "completedCounts": {
+        "passed": 0,
+        "failed": 2,
+        "skipped": 0
+      },
+      "failures": [
+        {
+          "method": "StarfallUITests/SkyFlowInteractionTests/testLargestEndingReplayRetainsResultAcrossBackgroundAndCancel",
+          "expectedIdentifier": "sky.home",
+          "expectedElementType": "Button",
+          "assertionSource": "UITests/SkyFlowInteractionTests.swift:29",
+          "failure": "XCTAssertTrue failed",
+          "logLine": 319
+        },
+        {
+          "method": "StarfallUITests/SkyFlowInteractionTests/testLargestTextWelcomeEntryAndBackRemainReachable",
+          "expectedIdentifier": "sky.preferences",
+          "expectedElementType": "Button",
+          "assertionSource": "UITests/SkyFlowInteractionTests.swift:29",
+          "failure": "XCTAssertTrue failed",
+          "logLine": 362
+        }
+      ]
+    }
+  ]
+}
