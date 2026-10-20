@@ -1,0 +1,12 @@
+{
+  "sourceCommit": "d057696934621b4e9f34a3d57f620d28fe9eb262",
+  "sourceTree": "19ea82d60376ff70f7be28185a78fd6e224d081e",
+  "archiveDirectory": "/var/folders/fs/9shw9bf142jg3280dc9n3hhc0000gn/T/sunwheel-accepted-source-kdz0a_x9/source",
+  "workingRuntimeInputFingerprint": "dev.a15832d0fd",
+  "archiveRuntimeInputFingerprint": "dev.a15832d0fd",
+  "testSourceCount": 74,
+  "matchingTestSourceCount": 74,
+  "mismatches": [],
+  "checkedUTC": "2026-10-20T16:25:44.127597+00:00",
+  "scope": "Clean Git archive has exactly the tested runtime inputs and test bytes; no test execution inside this export."
+}

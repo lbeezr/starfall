@@ -16,6 +16,7 @@ final class WorldJourneyTests: XCTestCase {
         XCTAssertTrue(store.journey.journey.legacyAccess)
         XCTAssertTrue(store.journey.journey.canEnter(.silverPools))
         XCTAssertFalse(store.journey.journey.canEnter(.frostfruitOrchard))
+        XCTAssertFalse(store.journey.journey.canEnter(.sunwheelMill))
         XCTAssertTrue(store.journey.journey.completed.isEmpty)
         XCTAssertNil(defaults.data(forKey: WorldJourneyStore.key))
         try store.journey.select(.seedMoon)
@@ -130,7 +131,7 @@ final class WorldJourneyTests: XCTestCase {
         XCTAssertNil(clock.deadline); XCTAssertNil(defaults.data(forKey: SkySaveArchive.key))
     }
 
-    @MainActor func testSilverRepairUnlocksFrostfruitAndItsCompletionPersistsWithoutUnlockingSunwheel() throws {
+    @MainActor func testSilverRepairUnlocksFrostfruitAndItsCompletionPersistsAndUnlocksSunwheel() throws {
         let defaults = defaults(), presenter = FallingSkyRecorder()
         try SkySaveArchive.save(ObservatoryReviewFixture.game(dense: false, score: 14, challenge: .silverPools), to: defaults)
         let silver = FallingSkyStore(defaults: defaults, arguments: [], presenter: presenter, clock: ManualRainClock())
@@ -144,12 +145,24 @@ final class WorldJourneyTests: XCTestCase {
         presenter.finish()
         try SkySaveArchive.save(ObservatoryReviewFixture.game(dense: false, score: 14, challenge: .frostfruitOrchard), to: defaults)
         let orchard = FallingSkyStore(defaults: defaults, arguments: [], presenter: presenter, clock: ManualRainClock())
+        let lockedMill = try XCTUnwrap(WorldMapPresentation(journey: orchard.journey.journey,
+                                                            selected: .sunwheelMill).destination(.sunwheelMill))
+        XCTAssertFalse(lockedMill.canEnter)
+        XCTAssertFalse(lockedMill.restored)
         orchard.setSuspended(false); orchard.clear(Cell(0, 0))
         XCTAssertEqual(orchard.game.outcome, .won)
         let restored = WorldJourneyStore(defaults: defaults).journey
         XCTAssertEqual(restored.completed, [.silverPools, .frostfruitOrchard])
-        XCTAssertEqual(restored.selected, .frostfruitOrchard)
-        XCTAssertFalse(restored.canEnter(.sunwheelMill))
+        XCTAssertEqual(restored.selected, .sunwheelMill)
+        XCTAssertTrue(restored.canEnter(.sunwheelMill))
+        XCTAssertFalse(restored.canEnter(.bellChoir))
+        let map = WorldMapPresentation(journey: restored, selected: restored.selected)
+        let readyMill = try XCTUnwrap(map.destination(.sunwheelMill))
+        XCTAssertTrue(readyMill.canEnter)
+        XCTAssertFalse(readyMill.restored, "Unlocking must keep the mill's damaged island until its own repair")
+        XCTAssertTrue(try XCTUnwrap(map.destination(.frostfruitOrchard)).restored)
+        let millArtwork = try XCTUnwrap(WorldMapContent.production.islands.first { $0.location == .sunwheelMill })
+        XCTAssertEqual(millArtwork.asset(restored: readyMill.restored), millArtwork.damagedAsset)
         XCTAssertEqual(try SkySaveArchive.decode(XCTUnwrap(defaults.data(forKey: SkySaveArchive.key))), orchard.game)
     }
 
@@ -166,6 +179,63 @@ final class WorldJourneyTests: XCTestCase {
                                         presenter: FallingSkyRecorder(), clock: ManualRainClock())
             XCTAssertEqual(store.journey.journey.completed, arguments == valid ? [.silverPools] : [])
             XCTAssertEqual(store.journey.journey.canEnter(.frostfruitOrchard), arguments == valid)
+            XCTAssertNil(defaults.data(forKey: WorldJourneyStore.key), "Review construction remains read-only")
+            XCTAssertNil(defaults.data(forKey: SkySaveArchive.key))
+        }
+    }
+
+    @MainActor func testSunwheelCompletionCommitsBeforeAnimationAndRecoversInterruptedWorldWrite() throws {
+        let defaults = defaults(), presenter = FallingSkyRecorder()
+        let oldWorld = Data(#"{"version":1,"journey":{"completed":["frostfruitOrchard"],"selected":"frostfruitOrchard","legacyAccess":false}}"#.utf8)
+        defaults.set(oldWorld, forKey: WorldJourneyStore.key)
+        try SkySaveArchive.save(ObservatoryReviewFixture.game(dense: false, score: 14, challenge: .sunwheelMill), to: defaults)
+        let store = FallingSkyStore(defaults: defaults, arguments: [], presenter: presenter, clock: ManualRainClock())
+        XCTAssertTrue(store.journey.journey.canEnter(.sunwheelMill))
+        XCTAssertEqual(defaults.data(forKey: WorldJourneyStore.key), oldWorld, "Restore construction is read-only")
+        store.setSuspended(false); store.clear(Cell(0, 0))
+        XCTAssertTrue(store.busy)
+        XCTAssertEqual(store.game.outcome, .won)
+        XCTAssertEqual(store.journey.journey.completed, [.frostfruitOrchard, .sunwheelMill])
+        XCTAssertEqual(store.journey.journey.selected, .sunwheelMill)
+        XCTAssertFalse(store.journey.journey.canEnter(.bellChoir))
+        let map = WorldMapPresentation(journey: store.journey.journey, selected: .sunwheelMill)
+        let restoredMill = try XCTUnwrap(map.destination(.sunwheelMill))
+        XCTAssertTrue(restoredMill.restored)
+        XCTAssertTrue(restoredMill.canEnter)
+        let millArtwork = try XCTUnwrap(WorldMapContent.production.islands.first { $0.location == .sunwheelMill })
+        XCTAssertEqual(millArtwork.asset(restored: restoredMill.restored), millArtwork.restoredAsset)
+        let committed = try XCTUnwrap(defaults.data(forKey: SkySaveArchive.key))
+        XCTAssertEqual(try SkySaveArchive.decode(committed), store.game)
+        // A termination after round persistence but before world persistence is repaired on read.
+        defaults.set(oldWorld, forKey: WorldJourneyStore.key)
+        let repaired = WorldJourneyStore(defaults: defaults)
+        XCTAssertEqual(repaired.journey.completed, [.frostfruitOrchard, .sunwheelMill])
+        XCTAssertEqual(defaults.data(forKey: WorldJourneyStore.key), oldWorld)
+        try repaired.record(store.game)
+        let envelope = try XCTUnwrap(JSONSerialization.jsonObject(with: XCTUnwrap(defaults.data(forKey: WorldJourneyStore.key))) as? [String: Any])
+        XCTAssertEqual(envelope["version"] as? Int, 1)
+        XCTAssertEqual(SkySaveArchive.schemaVersion, 10)
+        XCTAssertEqual(defaults.data(forKey: SkySaveArchive.key), committed)
+        presenter.finish()
+        store.beginEntry(.replay)
+        XCTAssertEqual(store.game, FallingSky(challenge: .sunwheelMill))
+        XCTAssertEqual(store.journey.journey.completed, [.frostfruitOrchard, .sunwheelMill])
+    }
+
+    @MainActor func testEarnedFrostfruitReviewRequiresResetDialogueAndOneValidRestorationSelection() throws {
+        let flag = "--world-frostfruit-complete-review"
+        let valid = ["--starfalls-reset", "--dialogue-review", "--sunwheel-restoration-review=9", flag]
+        for arguments in [valid, [flag], ["--starfalls-reset", flag],
+                          ["--dialogue-review", "--sunwheel-restoration-review=9", flag],
+                          ["--starfalls-reset", "--dialogue-review", flag],
+                          ["--starfalls-reset", "--dialogue-review", "--sunwheel-restoration-review=19", flag],
+                          valid + ["--frostfruit-restoration-review=9"]] {
+            let defaults = defaults()
+            let store = FallingSkyStore(defaults: defaults, arguments: arguments,
+                                        presenter: FallingSkyRecorder(), clock: ManualRainClock())
+            XCTAssertEqual(store.journey.journey.completed, arguments == valid ? [.frostfruitOrchard] : [])
+            XCTAssertEqual(store.journey.journey.canEnter(.sunwheelMill), arguments == valid)
+            XCTAssertFalse(store.journey.journey.canEnter(.bellChoir))
             XCTAssertNil(defaults.data(forKey: WorldJourneyStore.key), "Review construction remains read-only")
             XCTAssertNil(defaults.data(forKey: SkySaveArchive.key))
         }

@@ -35,7 +35,7 @@ final class StoryChallengeTests: XCTestCase {
             XCTAssertFalse(game.hasPocketedDusk)
             XCTAssertNil(game.forecastPhase)
         }
-        for challenge in [StarfallChallenge.kiteHarbor, .seedMoon, .silverPools, .frostfruitOrchard] {
+        for challenge in [StarfallChallenge.kiteHarbor, .seedMoon, .silverPools, .frostfruitOrchard, .sunwheelMill] {
             XCTAssertEqual(FallingSky.freshChallenge(challenge), FallingSky(challenge: challenge))
         }
     }

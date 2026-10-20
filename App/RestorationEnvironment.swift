@@ -80,6 +80,7 @@ struct RestorationArtwork {
         case .seedMoon: location = "SeedMoon"
         case .silverPools: location = "SilverPools"
         case .frostfruitOrchard: location = "FrostfruitOrchard"
+        case .sunwheelMill: location = "SunwheelMill"
         }
         let suffix: String
         switch composition {
@@ -145,6 +146,13 @@ struct RestorationArtwork {
             case .tabletPortrait: center = CGPoint(x: 0.396, y: 0.098); width = 0.04
             case .tabletLandscape: center = CGPoint(x: 0.254, y: 0.235); width = 0.04
             }
+        case .sunwheelMill:
+            // The split copper outlet receives light and opens at completion.
+            switch composition {
+            case .phone: center = CGPoint(x: 0.645, y: 0.197); width = 0.045
+            case .tabletPortrait: center = CGPoint(x: 0.532, y: 0.139); width = 0.04
+            case .tabletLandscape: center = CGPoint(x: 0.226, y: 0.387); width = 0.04
+            }
         case .silverPools:
             switch composition {
             case .phone: center = CGPoint(x: 0.26, y: 0.042); width = 0.035
@@ -195,6 +203,13 @@ struct RestorationArtwork {
             case .phone: return CGRect(x: 0.34, y: 0.14, width: 0.20, height: 0.095)
             case .tabletPortrait: return CGRect(x: 0.32, y: 0.045, width: 0.16, height: 0.11)
             case .tabletLandscape: return CGRect(x: 0.20, y: 0.14, width: 0.11, height: 0.17)
+            }
+        case .sunwheelMill:
+            // Protect the outlet aperture through the closed/open finish.
+            switch composition {
+            case .phone: return CGRect(x: 0.51, y: 0.16, width: 0.27, height: 0.09)
+            case .tabletPortrait: return CGRect(x: 0.43, y: 0.105, width: 0.22, height: 0.07)
+            case .tabletLandscape: return CGRect(x: 0.15, y: 0.32, width: 0.15, height: 0.12)
             }
         case .silverPools:
             // The held droplet and released thread are the protected final beat;

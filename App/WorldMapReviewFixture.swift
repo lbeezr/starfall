@@ -49,7 +49,7 @@ enum WorldMapReviewFixture: String, CaseIterable {
         case .twoRepairs: try world.select(.kiteHarbor)
         case .allReady: break // Recording every repair selects the last ready location.
         case .locked: try world.select(.frostfruitOrchard)
-        case .unbuilt: try world.select(.sunwheelMill)
+        case .unbuilt: try world.select(.bellChoir)
         case .retained:
             let round = ObservatoryReviewFixture.game(dense: false, score: 9, challenge: .kiteHarbor)
             try SkySaveArchive.save(round, to: defaults)

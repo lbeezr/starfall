@@ -23,6 +23,8 @@ TABLET_ONLY = {
     'testTabletDenseSilverCompletionKeepsNativeInput': 'StarfallUITests/SilverPoolsInteractionTests/testTabletDenseSilverCompletionKeepsNativeInput',
     'testTabletRotationKeepsFrostfruitRestorationAndNativeInput': 'StarfallUITests/FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput',
     'testTabletDenseFrostfruitCompletionKeepsNativeInput': 'StarfallUITests/FrostfruitOrchardInteractionTests/testTabletDenseFrostfruitCompletionKeepsNativeInput',
+    'testTabletRotationKeepsSunwheelRestorationAndNativeInput': 'StarfallUITests/SunwheelMillInteractionTests/testTabletRotationKeepsSunwheelRestorationAndNativeInput',
+    'testTabletDenseSunwheelCompletionKeepsNativeInput': 'StarfallUITests/SunwheelMillInteractionTests/testTabletDenseSunwheelCompletionKeepsNativeInput',
 }
 METHOD = re.compile(r'^\s*(?:@\w+(?:\([^)]*\))?\s+)*func\s+(test\w+)\s*\(\s*\)', re.MULTILINE)
 

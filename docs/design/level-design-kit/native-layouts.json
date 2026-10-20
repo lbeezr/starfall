@@ -1,18 +1,19 @@
 {
   "generationSourceSHA256": {
-    "App/Assets.xcassets/StarCastSunny.imageset/body.png": "2791d9b7ff953be9d22859eef00d4fef2bb665f51f13f142a79fd866e72b5a6d",
-    "App/FallingSkyHUD.swift": "f55bbaabf97939a7d88ae9c06c1585cf9eaeeb8b3db1d93e47253f5ef53a61fc",
-    "App/FallingSkyMotion.swift": "fca8ffe1b9396edccb397cad3ff891bbe1a8ad59f86d7d101a263e1a4569d1a9",
-    "App/FallingSkyView.swift": "cc773d18316b5054bed7948e46ef100225411916af442b5d81ac30bf7723bbdd",
+    "App/Assets.xcassets/SkyPieceSunny.imageset/body.png": "f57f51dddc067ca6adc1abfadd6dcd681bc366f0b39279514ecddc7c3db9a631",
+    "App/FallingSkyHUD.swift": "3e18d4262426f27d81ae1b45bc1e0b6f18af826dcf7fcd1dc4cfcb1a63c3faf6",
+    "App/FallingSkyMotion.swift": "581b07dc57d3508fd025a96d59d952a9148c377356a2cffd55cc160dc0d15a08",
+    "App/FallingSkyView.swift": "1dee32f727a0544407731e037c24a0069dec9f14fd7ffa9152b9cc888bfa1fe6",
     "App/LandingGeometry.swift": "4b5e3dff6d03dfa4ff2cdb92f1da403265153432e46c2d805222227de459040d",
     "App/ObservatoryArtwork.swift": "3307cdba2bdddc804be54aba02d5858befb9f73306b173ff9d11463c9ae977e5",
-    "App/RestorationEnvironment.swift": "aa031661c1d98adc6266c6cbeb10554b4ad3113b48d8eaae41816c00fbd54a99",
-    "App/SkyDialogueBubble.swift": "74907707d1e9eb72affd012f5aa74e3cc60349c7ab21bb39403e80fd0d2180a2",
-    "App/SkyFlowCeremony.swift": "757ea25e1e7a14b1bd4b42ddd311b870064a76356f8c18ef38e7825182998f79",
-    "App/StarCast.swift": "049e611c99da7849c090aca2674938becbfae78895aae7e7045a1286df95177b",
-    "App/StarfallTheme.swift": "a5fe8c0455f83db9487a30e815db3cea266e253d4899d67e57aaeac42848f10f",
+    "App/RestorationEnvironment.swift": "605738fb5f0b4885ed28e0f806e773e345079ad7a845101b2bd5190192f61ba0",
+    "App/SkyDialogueBubble.swift": "0b063fd5ccf76cd446faabb39d67aaa1f091aab33a21a12c5366c87938cdcc93",
+    "App/SkyFlowCeremony.swift": "8c0ad12104556d27f6c989218c39112b412415e30bb36da77b6c500406825a0f",
+    "App/SkyPiece.swift": "f7a4f5df8f53f82ff9af7633d9e4dfbfd313e2746a44ea1359fb544d59e258d5",
+    "App/StarCast.swift": "da40b3e235e15d15ed51a23b2d568551b880ffa6fc76fc746694e45fe9037107",
+    "App/StarfallTheme.swift": "a6eb98708f24cb4bde38a57057c0f45661da1c6176d48c519bb5e17651fd273f",
     "scripts/export_level_layouts.swift": "21103274cd80c32678d65cd27ca6c1fcae03f860fe619f7cb8f8069ff301aa14",
-    "scripts/level-design-kit.py": "3745e861deb5dd6948e0fbd29ee2ee7a9d0d5ab897b1766ca53712a76930b548"
+    "scripts/level-design-kit.py": "89bff0e1aabd2fb1c66cfc25c1779ea2c344e89d6811dfcf8a5084d431edb1c1"
   },
   "geometryExport": {
     "command": "swiftc -module-cache-path <temporary-cache> -I <core-products> -L <core-products> -lStarfallCore App/LandingGeometry.swift scripts/export_level_layouts.swift -o <temporary-exporter>",
@@ -21,7 +22,7 @@
     "method": "compiled-app-geometry",
     "sourceOwnership": "compiled-current-sources"
   },
-  "guideSchemaVersion": 3,
+  "guideSchemaVersion": 4,
   "layouts": [
     {
       "accessibleCanvasEnd": 636.5,
@@ -3230,14 +3231,32 @@
   ],
   "recommendations": {
     "board": "Contrast priority, not a blank area, mask, crop or compositing seam",
-    "bodyScaleStatus": "nominal normal/grown authored body; real alpha shape, texture padding and motion vary",
+    "bodyScaleStatus": "authored SkyPieceSunny shell at production sizing; native LivingLight fill/shader, aura and deformation are omitted",
     "crop": "Hatched margins are cropped by the center-cover reference only. Do not place essential story details there; runtime uses focal-adjusted whole-image placement",
     "expanded": "Reading-heavy and accessibility layouts put the HUD above a scrolling board and the guide/actions after it. Legacy reservation rectangles do not describe this flow. Wide 1024\u00d71200 uses portrait restoration art",
     "landmark": "Place the completion landmark and recipient away from native cells, label allocations and result coverage",
     "legacyGeometryReservations": "LandingGeometry crownFrame, communicationContentFrame and actionFrame values are retained only as unused geometry references. They do not locate the current HUD, dialogue or action controls and are not drawn as protected UI rectangles.",
     "nativeBodyWidthFractions": {
-      "grown": 0.86,
+      "grown": 0.92,
       "normal": 0.7
+    },
+    "pieceScale": {
+      "alphaBounds": [
+        24,
+        38,
+        232,
+        217
+      ],
+      "material": "App/Assets.xcassets/SkyPieceSunny.imageset/body.png",
+      "materialOwner": "App/SkyPiece.swift:makeNode",
+      "radiusOwner": "App/FallingSkyMotion.swift:StarfallMotion",
+      "rasterSide": 256.0,
+      "registeredSilhouetteSide": 212.0,
+      "registrationOwner": "App/StarCast.swift",
+      "visibleMaximumCellFractions": {
+        "grown": 0.9026415094339624,
+        "normal": 0.6867924528301886
+      }
     },
     "propScaleStatus": "starting bands, not hard quotas or a cap on whole scenery",
     "propSizeBandsInNormalStarBodies": {
@@ -3256,7 +3275,7 @@
     },
     "result": "Central column up to 480 pt; height is content/Dynamic-Type dependent. Heading clearance uses the resolved scenery anchor and a 230 pt baseline; inspect actual result UI",
     "softBleedCellFraction": 0.15,
-    "softBleedStatus": "provisional maximum inside the perimeter, not permission to cover faces or bright silhouettes",
+    "softBleedStatus": "provisional maximum inside the perimeter, not permission to cover gameplay pieces or bright silhouettes",
     "ui": "Violet viewport-edge markers are schematic, not measured coverage bounds. FallingSkyView places a ViewThatFits HUD at the safe top and a dynamically measured dialogue/action group at the safe bottom. Insets, text, forecast mode and Observatory skins affect actual coverage; inspect native captures.",
     "world": "Build a rich connected place; continuity, supporting structures and depth remain behind all overlays"
   },
@@ -3312,19 +3331,20 @@
     }
   },
   "sourceSHA256": {
-    "App/Assets.xcassets/StarCastSunny.imageset/body.png": "2791d9b7ff953be9d22859eef00d4fef2bb665f51f13f142a79fd866e72b5a6d",
-    "App/FallingSkyHUD.swift": "f55bbaabf97939a7d88ae9c06c1585cf9eaeeb8b3db1d93e47253f5ef53a61fc",
-    "App/FallingSkyMotion.swift": "fca8ffe1b9396edccb397cad3ff891bbe1a8ad59f86d7d101a263e1a4569d1a9",
-    "App/FallingSkyView.swift": "cc773d18316b5054bed7948e46ef100225411916af442b5d81ac30bf7723bbdd",
+    "App/Assets.xcassets/SkyPieceSunny.imageset/body.png": "f57f51dddc067ca6adc1abfadd6dcd681bc366f0b39279514ecddc7c3db9a631",
+    "App/FallingSkyHUD.swift": "3e18d4262426f27d81ae1b45bc1e0b6f18af826dcf7fcd1dc4cfcb1a63c3faf6",
+    "App/FallingSkyMotion.swift": "581b07dc57d3508fd025a96d59d952a9148c377356a2cffd55cc160dc0d15a08",
+    "App/FallingSkyView.swift": "1dee32f727a0544407731e037c24a0069dec9f14fd7ffa9152b9cc888bfa1fe6",
     "App/LandingGeometry.swift": "4b5e3dff6d03dfa4ff2cdb92f1da403265153432e46c2d805222227de459040d",
     "App/ObservatoryArtwork.swift": "3307cdba2bdddc804be54aba02d5858befb9f73306b173ff9d11463c9ae977e5",
-    "App/RestorationEnvironment.swift": "aa031661c1d98adc6266c6cbeb10554b4ad3113b48d8eaae41816c00fbd54a99",
-    "App/SkyDialogueBubble.swift": "74907707d1e9eb72affd012f5aa74e3cc60349c7ab21bb39403e80fd0d2180a2",
-    "App/SkyFlowCeremony.swift": "757ea25e1e7a14b1bd4b42ddd311b870064a76356f8c18ef38e7825182998f79",
-    "App/StarCast.swift": "049e611c99da7849c090aca2674938becbfae78895aae7e7045a1286df95177b",
-    "App/StarfallTheme.swift": "a5fe8c0455f83db9487a30e815db3cea266e253d4899d67e57aaeac42848f10f",
+    "App/RestorationEnvironment.swift": "605738fb5f0b4885ed28e0f806e773e345079ad7a845101b2bd5190192f61ba0",
+    "App/SkyDialogueBubble.swift": "0b063fd5ccf76cd446faabb39d67aaa1f091aab33a21a12c5366c87938cdcc93",
+    "App/SkyFlowCeremony.swift": "8c0ad12104556d27f6c989218c39112b412415e30bb36da77b6c500406825a0f",
+    "App/SkyPiece.swift": "f7a4f5df8f53f82ff9af7633d9e4dfbfd313e2746a44ea1359fb544d59e258d5",
+    "App/StarCast.swift": "da40b3e235e15d15ed51a23b2d568551b880ffa6fc76fc746694e45fe9037107",
+    "App/StarfallTheme.swift": "a6eb98708f24cb4bde38a57057c0f45661da1c6176d48c519bb5e17651fd273f",
     "scripts/export_level_layouts.swift": "21103274cd80c32678d65cd27ca6c1fcae03f860fe619f7cb8f8069ff301aa14",
-    "scripts/level-design-kit.py": "3745e861deb5dd6948e0fbd29ee2ee7a9d0d5ab897b1766ca53712a76930b548"
+    "scripts/level-design-kit.py": "89bff0e1aabd2fb1c66cfc25c1779ea2c344e89d6811dfcf8a5084d431edb1c1"
   },
   "status": "technical authoring guide; not native visual acceptance",
   "units": {

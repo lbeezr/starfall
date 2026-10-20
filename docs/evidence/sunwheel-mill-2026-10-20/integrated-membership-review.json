@@ -1,0 +1,429 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "/root/sunwheel_runtime",
+  "reviewedAtUTC": "2026-10-20T16:14:01.872032+00:00",
+  "result": "pass",
+  "postMergeAcceptance": true,
+  "workingTreeStatus": [],
+  "blockingFindings": [],
+  "scope": "Read-only source/resource membership refresh for final accepted source d057696 after latest-main integration, with accepted-01 hosted 361/361 result. No new Apple tool or test run performed by this audit.",
+  "checks": {
+    "uiSource": {
+      "path": "UITests/SunwheelMillInteractionTests.swift",
+      "fileReferenceCount": 1,
+      "buildFileCount": 1,
+      "sourcesPhaseMemberships": [
+        {
+          "phaseID": "000000000000000000000025",
+          "line": 233,
+          "occurrences": 1
+        }
+      ],
+      "target": "StarfallUITests",
+      "productionOrHostedMembership": false
+    },
+    "resources": {
+      "catalog": "App/Assets.xcassets",
+      "normalTarget": "Starfall",
+      "resourcePhaseMemberships": [
+        {
+          "phaseID": "00000000000000000000000C",
+          "line": 217,
+          "occurrences": 1
+        }
+      ],
+      "sunwheelImageSets": 15,
+      "uniqueSunwheelPNGHashes": 15,
+      "universalRasterPerSet": true,
+      "expectedNamesAndRegisteredDimensionsMatch": true,
+      "configurationRestriction": null,
+      "same15ArtworkHashesAsB7Audit": true
+    },
+    "targetsAndDependencies": {
+      "applicationTargets": [
+        "Starfall"
+      ],
+      "testTargets": [
+        "StarfallUITests",
+        "StarfallAppTests"
+      ],
+      "packageProducts": [
+        "local StarfallCore"
+      ],
+      "remotePackageReferences": 0,
+      "shellScriptBuildPhases": 0,
+      "entitlementFilesFound": 0,
+      "forbiddenNetworkSDKMonetizationSearchMatches": 0,
+      "privacyTracking": false,
+      "privacyTrackingDomains": [],
+      "privacyCollectedDataTypes": []
+    }
+  },
+  "ownerLines": [
+    {
+      "path": "Starfall.xcodeproj/project.pbxproj",
+      "line": 25,
+      "reason": "Sunwheel UI source file reference."
+    },
+    {
+      "path": "Starfall.xcodeproj/project.pbxproj",
+      "line": 26,
+      "reason": "Unique Sunwheel UI build file."
+    },
+    {
+      "path": "Starfall.xcodeproj/project.pbxproj",
+      "line": 229,
+      "reason": "UITests group owns the source reference."
+    },
+    {
+      "path": "Starfall.xcodeproj/project.pbxproj",
+      "line": 233,
+      "reason": "Only Sources phase containing Sunwheel UI build file, exactly once."
+    },
+    {
+      "path": "Starfall.xcodeproj/project.pbxproj",
+      "line": 228,
+      "reason": "StarfallUITests owns that Sources phase."
+    },
+    {
+      "path": "Starfall.xcodeproj/project.pbxproj",
+      "line": 257,
+      "reason": "Asset catalog file reference."
+    },
+    {
+      "path": "Starfall.xcodeproj/project.pbxproj",
+      "line": 258,
+      "reason": "Asset catalog build file."
+    },
+    {
+      "path": "Starfall.xcodeproj/project.pbxproj",
+      "line": 204,
+      "reason": "App group resolves catalog path beneath App."
+    },
+    {
+      "path": "Starfall.xcodeproj/project.pbxproj",
+      "line": 217,
+      "reason": "Normal app Resources phase contains the catalog exactly once."
+    },
+    {
+      "path": "Starfall.xcodeproj/project.pbxproj",
+      "line": 218,
+      "reason": "Single application target Starfall owns that Resources phase."
+    },
+    {
+      "path": "Starfall.xcodeproj/project.pbxproj",
+      "line": 223,
+      "reason": "Debug application configuration inherits shared clean settings; no source/resource exclusion."
+    },
+    {
+      "path": "Starfall.xcodeproj/project.pbxproj",
+      "line": 224,
+      "reason": "Release application configuration inherits same shared settings; no source/resource exclusion."
+    },
+    {
+      "path": "Starfall.xcodeproj/project.pbxproj",
+      "line": 40,
+      "reason": "Hosted resource-test source reference."
+    },
+    {
+      "path": "Starfall.xcodeproj/project.pbxproj",
+      "line": 41,
+      "reason": "Hosted resource-test build file."
+    },
+    {
+      "path": "Starfall.xcodeproj/project.pbxproj",
+      "line": 249,
+      "reason": "Resource test appears once in StarfallAppTests Sources phase."
+    },
+    {
+      "path": "Starfall.xcodeproj/project.pbxproj",
+      "line": 254,
+      "reason": "Hosted tests use the normal Starfall.app test host."
+    },
+    {
+      "path": "AppTests/RestorationPresentationTests.swift",
+      "line": 89,
+      "reason": "Packaging test iterates all challenges, compositions and restoration milestones."
+    },
+    {
+      "path": "AppTests/RestorationPresentationTests.swift",
+      "line": 96,
+      "reason": "Rejects duplicate asset names."
+    },
+    {
+      "path": "AppTests/RestorationPresentationTests.swift",
+      "line": 97,
+      "reason": "UIImage named lookup must load each packaged asset in host."
+    },
+    {
+      "path": "AppTests/RestorationPresentationTests.swift",
+      "line": 98,
+      "reason": "Each loaded image must expose raster CGImage."
+    },
+    {
+      "path": "AppTests/RestorationPresentationTests.swift",
+      "line": 100,
+      "reason": "Exact pixel width/height and aspect ratio checked against registration."
+    },
+    {
+      "path": "AppTests/RestorationPresentationTests.swift",
+      "line": 107,
+      "reason": "Exactly 105 unique paintings required."
+    },
+    {
+      "path": "Sources/StarfallCore/StarfallChallenge.swift",
+      "line": 3,
+      "reason": "Seven challenge identities including Sunwheel Mill."
+    },
+    {
+      "path": "App/RestorationEnvironment.swift",
+      "line": 62,
+      "reason": "Three composition families."
+    },
+    {
+      "path": "Sources/StarfallCore/StarlightRestoration.swift",
+      "line": 3,
+      "reason": "Five milestone states."
+    },
+    {
+      "path": "App/RestorationEnvironment.swift",
+      "line": 83,
+      "reason": "Canonical SunwheelMill asset prefix."
+    },
+    {
+      "path": "App/RestorationEnvironment.swift",
+      "line": 86,
+      "reason": "Composition suffix mapping and zero-padded milestone asset naming."
+    },
+    {
+      "path": "App/RestorationEnvironment.swift",
+      "line": 114,
+      "reason": "Exact source dimensions used by all Sunwheel families."
+    },
+    {
+      "path": "Starfall.xcodeproj/project.pbxproj",
+      "line": 202,
+      "reason": "Project lists one application and two test targets; local package only."
+    },
+    {
+      "path": "Starfall.xcodeproj/project.pbxproj",
+      "line": 225,
+      "reason": "Local Swift package reference."
+    },
+    {
+      "path": "Starfall.xcodeproj/project.pbxproj",
+      "line": 226,
+      "reason": "Only package product is StarfallCore."
+    },
+    {
+      "path": "Package.swift",
+      "line": 3,
+      "reason": "Core library/test package has no external dependencies."
+    },
+    {
+      "path": "Config/Clean.xcconfig",
+      "line": 2,
+      "reason": "Common clean compilation condition."
+    },
+    {
+      "path": "Config/PrivacyInfo.xcprivacy",
+      "line": 5,
+      "reason": "Tracking false; tracking domains and collected data arrays empty."
+    }
+  ],
+  "existingHostedEvidence": {
+    "verificationFile": "/private/tmp/sunwheel-native/accepted-01/hosted/verification.json",
+    "runtimeBuildID": "dev.a15832d0fd",
+    "sourceCommit": "d057696934621b4e9f34a3d57f620d28fe9eb262",
+    "scope": "Accepted post-merge development run with clean before/after working tree and unchanged test input fingerprint.",
+    "counts": {
+      "passedTests": 361,
+      "totalTestCount": 361,
+      "failedTests": 0,
+      "skippedTests": 0
+    },
+    "sourceBeforeFile": "/private/tmp/sunwheel-native/accepted-01/hosted/source-before.json",
+    "sourceAfterFile": "/private/tmp/sunwheel-native/accepted-01/hosted/source-after.json",
+    "testInputsSHA256": "7235c1eb3ab97323f46421e348fe769ad83590035298582df8874016d3f5a9dd",
+    "resourceTestName": "RestorationPresentationTests.testEveryRestorationAssetIsPackagedAtTheRegisteredAspectRatio",
+    "resourceTestCurrentSHA256": "0fb9d9ec34038f4bd23b1fc44e15b318204d08eb3e73f3e56b0fc46631d36857",
+    "currentTestMatchesRecordedSource": true,
+    "log": "/private/tmp/sunwheel-native/accepted-01/hosted/xcodebuild.log",
+    "testPassedLogLine": 1748,
+    "aggregatePassedLogLine": 2563,
+    "allTestsSucceededLogLine": 2576
+  },
+  "assets": [
+    {
+      "asset": "SunwheelMill000",
+      "contents": "App/Assets.xcassets/SunwheelMill000.imageset/Contents.json",
+      "filenameLine": 4,
+      "idiomLine": 5,
+      "png": "App/Assets.xcassets/SunwheelMill000.imageset/scene.png",
+      "width": 887,
+      "height": 1774,
+      "sha256": "71eafc51e1133507a54a1019bc166ecf664b7cfe60b51a27e895fe60acddf4d2"
+    },
+    {
+      "asset": "SunwheelMill025",
+      "contents": "App/Assets.xcassets/SunwheelMill025.imageset/Contents.json",
+      "filenameLine": 4,
+      "idiomLine": 5,
+      "png": "App/Assets.xcassets/SunwheelMill025.imageset/scene.png",
+      "width": 887,
+      "height": 1774,
+      "sha256": "68214a4e9955a4ce80ed2a77bbb25c57a9ad50d09f916482d4f0283703dbf0c7"
+    },
+    {
+      "asset": "SunwheelMill050",
+      "contents": "App/Assets.xcassets/SunwheelMill050.imageset/Contents.json",
+      "filenameLine": 4,
+      "idiomLine": 5,
+      "png": "App/Assets.xcassets/SunwheelMill050.imageset/scene.png",
+      "width": 887,
+      "height": 1774,
+      "sha256": "c329685f49c69fba91f9dbf87fb41362d86f02fe5bee15af226926cb538a9872"
+    },
+    {
+      "asset": "SunwheelMill075",
+      "contents": "App/Assets.xcassets/SunwheelMill075.imageset/Contents.json",
+      "filenameLine": 4,
+      "idiomLine": 5,
+      "png": "App/Assets.xcassets/SunwheelMill075.imageset/scene.png",
+      "width": 887,
+      "height": 1774,
+      "sha256": "b19f683af57c2f6a82284305c570b9077f1e4f0b478d1dcba6d2e907afc8892e"
+    },
+    {
+      "asset": "SunwheelMill100",
+      "contents": "App/Assets.xcassets/SunwheelMill100.imageset/Contents.json",
+      "filenameLine": 4,
+      "idiomLine": 5,
+      "png": "App/Assets.xcassets/SunwheelMill100.imageset/scene.png",
+      "width": 887,
+      "height": 1774,
+      "sha256": "c29726025d8e30f77bba7be73dd82984c0ddb263496b02c2f58656a8fde110cf"
+    },
+    {
+      "asset": "SunwheelMillTabletLandscape000",
+      "contents": "App/Assets.xcassets/SunwheelMillTabletLandscape000.imageset/Contents.json",
+      "filenameLine": 4,
+      "idiomLine": 5,
+      "png": "App/Assets.xcassets/SunwheelMillTabletLandscape000.imageset/scene.png",
+      "width": 1448,
+      "height": 1086,
+      "sha256": "05b7d2ff4db53b5e3fa07469ea02afd9aa1fd5e4cbe675ba73b620dd0e403ffe"
+    },
+    {
+      "asset": "SunwheelMillTabletLandscape025",
+      "contents": "App/Assets.xcassets/SunwheelMillTabletLandscape025.imageset/Contents.json",
+      "filenameLine": 4,
+      "idiomLine": 5,
+      "png": "App/Assets.xcassets/SunwheelMillTabletLandscape025.imageset/scene.png",
+      "width": 1448,
+      "height": 1086,
+      "sha256": "f47d2048ec23cf5a08e705c44a304d474a55cbb1376774ffd6cd86407ba7cdca"
+    },
+    {
+      "asset": "SunwheelMillTabletLandscape050",
+      "contents": "App/Assets.xcassets/SunwheelMillTabletLandscape050.imageset/Contents.json",
+      "filenameLine": 4,
+      "idiomLine": 5,
+      "png": "App/Assets.xcassets/SunwheelMillTabletLandscape050.imageset/scene.png",
+      "width": 1448,
+      "height": 1086,
+      "sha256": "376213462d2a7764b7082dd03b74fe1232783c6dd218dc8b22003619bad01dcb"
+    },
+    {
+      "asset": "SunwheelMillTabletLandscape075",
+      "contents": "App/Assets.xcassets/SunwheelMillTabletLandscape075.imageset/Contents.json",
+      "filenameLine": 4,
+      "idiomLine": 5,
+      "png": "App/Assets.xcassets/SunwheelMillTabletLandscape075.imageset/scene.png",
+      "width": 1448,
+      "height": 1086,
+      "sha256": "64d4d4f15790a3ceb733d639c7f536397ac9591e1b88a21fce3a1820f53977a9"
+    },
+    {
+      "asset": "SunwheelMillTabletLandscape100",
+      "contents": "App/Assets.xcassets/SunwheelMillTabletLandscape100.imageset/Contents.json",
+      "filenameLine": 4,
+      "idiomLine": 5,
+      "png": "App/Assets.xcassets/SunwheelMillTabletLandscape100.imageset/scene.png",
+      "width": 1448,
+      "height": 1086,
+      "sha256": "37259cffdbf81c30c6eb4dfc909dcef7e88b267f9b2e6668df3255d2199c0a19"
+    },
+    {
+      "asset": "SunwheelMillTabletPortrait000",
+      "contents": "App/Assets.xcassets/SunwheelMillTabletPortrait000.imageset/Contents.json",
+      "filenameLine": 4,
+      "idiomLine": 5,
+      "png": "App/Assets.xcassets/SunwheelMillTabletPortrait000.imageset/scene.png",
+      "width": 1086,
+      "height": 1448,
+      "sha256": "a1953a34ed7f496079fb56d251de18ffc73fbd5bca0e93d12370ae63213963f5"
+    },
+    {
+      "asset": "SunwheelMillTabletPortrait025",
+      "contents": "App/Assets.xcassets/SunwheelMillTabletPortrait025.imageset/Contents.json",
+      "filenameLine": 4,
+      "idiomLine": 5,
+      "png": "App/Assets.xcassets/SunwheelMillTabletPortrait025.imageset/scene.png",
+      "width": 1086,
+      "height": 1448,
+      "sha256": "5e3f8b4bbecdd4ff0bd109f47d50fb0be4c2b8b078874866d751c98a274e0dec"
+    },
+    {
+      "asset": "SunwheelMillTabletPortrait050",
+      "contents": "App/Assets.xcassets/SunwheelMillTabletPortrait050.imageset/Contents.json",
+      "filenameLine": 4,
+      "idiomLine": 5,
+      "png": "App/Assets.xcassets/SunwheelMillTabletPortrait050.imageset/scene.png",
+      "width": 1086,
+      "height": 1448,
+      "sha256": "fd3c8b2c8607d3883146c728f08c9bea2319827d6bb432ac20a80432262f0225"
+    },
+    {
+      "asset": "SunwheelMillTabletPortrait075",
+      "contents": "App/Assets.xcassets/SunwheelMillTabletPortrait075.imageset/Contents.json",
+      "filenameLine": 4,
+      "idiomLine": 5,
+      "png": "App/Assets.xcassets/SunwheelMillTabletPortrait075.imageset/scene.png",
+      "width": 1086,
+      "height": 1448,
+      "sha256": "4d30cbe783ea1cf254a23148e86f2048e2e37a9874b933c9f35ac04a5ba5a567"
+    },
+    {
+      "asset": "SunwheelMillTabletPortrait100",
+      "contents": "App/Assets.xcassets/SunwheelMillTabletPortrait100.imageset/Contents.json",
+      "filenameLine": 4,
+      "idiomLine": 5,
+      "png": "App/Assets.xcassets/SunwheelMillTabletPortrait100.imageset/scene.png",
+      "width": 1086,
+      "height": 1448,
+      "sha256": "117feaf109b4dbd5cf7d1abe748f68325e4b48a082e68529d7859549365b40d9"
+    }
+  ],
+  "limitations": [
+    "Static source/project audit plus accepted-01 existing hosted result; no new build, link, Apple tool, binary entitlement or physical-device check.",
+    "Accepted run provenance is supplied by its recorded source-before/source-after and runtime build ID. Both record clean source d057696 and the same test fingerprint.",
+    "The hosted packaging test proves 105 unique names, successful host-bundle image loading and exact registered dimensions/aspect ratios. It does not prove image uniqueness, visual quality or animation; all 15 Sunwheel source PNG hashes were separately checked unique and unchanged.",
+    "Forbidden API/import search and dependency/configuration inspection are bounded to App, Sources, Config, project and Package.swift; not a general security audit.",
+    "Parent-reported Core 199 and Release success are separate evidence; this report does not claim to have rerun them.",
+    "Final phone/tablet still review and native interaction acceptance remain separate from membership."
+  ],
+  "acceptedSourceCommit": "d057696934621b4e9f34a3d57f620d28fe9eb262",
+  "runtimeBuildID": "dev.a15832d0fd",
+  "sourceBinding": "Accepted hosted source-before/source-after both record d057696 and clean working tree; reviewed source/resource bytes are also recorded here. No Git command was run in this refresh.",
+  "reviewedOwnerFileHashes": {
+    "App/RestorationEnvironment.swift": "605738fb5f0b4885ed28e0f806e773e345079ad7a845101b2bd5190192f61ba0",
+    "AppTests/RestorationPresentationTests.swift": "0fb9d9ec34038f4bd23b1fc44e15b318204d08eb3e73f3e56b0fc46631d36857",
+    "Config/Clean.xcconfig": "4650ec2003b522e5f57696746d755b382349e97b5acb0085e4c0224322b4fa0e",
+    "Config/PrivacyInfo.xcprivacy": "a331d51864743ebe4e00dd22360b4a538b6b3ac26a6b3eb54094e60a36959a12",
+    "Package.swift": "eec5498d6247b9a8f867437a120c72e82c1c7999b694f1b47a546ce3f3207a41",
+    "Sources/StarfallCore/StarfallChallenge.swift": "714330f1ed5fb52f07917a56ad88912df026b2341fb890e4d768a242049bbbd9",
+    "Sources/StarfallCore/StarlightRestoration.swift": "66b48ac3dccde26b78a534b42241c8ba2da3a81ddee7e0779fb18fad9937accb",
+    "Starfall.xcodeproj/project.pbxproj": "1691c1357f6e9f1a8cf0a9eedeba7845db46af6010de0e1b9c4311952b11a74d"
+  }
+}

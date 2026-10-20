@@ -595,19 +595,26 @@
     },
     {
       "id": "guide.input",
-      "lines": [{ "id": "guide.input.1", "speaker": "spark", "text": "{detail}", "priority": "help" }]
+      "lines": [
+        {
+          "id": "guide.input.1",
+          "speaker": "spark",
+          "text": "{detail}",
+          "priority": "help"
+        }
+      ]
     },
     {
-        "id": "guide.stellar-collapse",
-        "lines": [
-            {
-                "id": "guide.stellar-collapse.result",
-                "speaker": "nova",
-                "text": "A star reached critical mass. The implosion swallowed {count} stars for no starlight.",
-                "priority": "outcome",
-                "seconds": 6
-            }
-        ]
+      "id": "guide.stellar-collapse",
+      "lines": [
+        {
+          "id": "guide.stellar-collapse.result",
+          "speaker": "nova",
+          "text": "A star reached critical mass. The implosion swallowed {count} stars for no starlight.",
+          "priority": "outcome",
+          "seconds": 6
+        }
+      ]
     },
     {
       "id": "guide.ribbon-crossing",
@@ -891,6 +898,50 @@
           "id": "guide.ribbon-crossing.story.1",
           "speaker": "pip",
           "text": "Ribbon Crossing needs {target} starlight. Swipe to bring stars together, or hold and draw through five matching stars. Only your traced stars clear.",
+          "priority": "help"
+        }
+      ]
+    },
+    {
+      "id": "guide.sunwheel-mill",
+      "lines": [
+        {
+          "id": "guide.sunwheel-mill.1",
+          "speaker": "sunny",
+          "text": "Restore Sunwheel Mill with 18 starlight. Clear matching stars to light its copper wheel and open the outlet.",
+          "priority": "help"
+        }
+      ]
+    },
+    {
+      "id": "guide.sunwheel-won",
+      "lines": [
+        {
+          "id": "guide.sunwheel-won.1",
+          "speaker": "sunny",
+          "text": "Sunwheel Mill complete! You collected {score} starlight. The outlet is open and golden light flows onward!",
+          "priority": "outcome"
+        }
+      ]
+    },
+    {
+      "id": "sunwheel-mill.entry",
+      "lines": [
+        {
+          "id": "sunwheel-mill.entry.1",
+          "speaker": "sunny",
+          "text": "Murk took the light from Sunwheel Mill. Collect 18 starlight to restore its copper wheel and open the outlet before an arriving star runs out of room.",
+          "priority": "help"
+        }
+      ]
+    },
+    {
+      "id": "sunwheel-mill.replay",
+      "lines": [
+        {
+          "id": "sunwheel-mill.replay.1",
+          "speaker": "sunny",
+          "text": "Try the same Sunwheel Mill opening and restore its golden channels with 18 starlight. Your saved round stays until you tap Begin.",
           "priority": "help"
         }
       ]
@@ -1300,6 +1351,18 @@
     "frostfruit.restoration": "Frostfruit Orchard, {percent}% restored",
     "result.frostfruitWon": "Frostfruit Orchard complete! The crown has opened and luminous seeds drift through the winter garden.",
     "help.frostfruitTitle": "Frostfruit Orchard · Wake the winter garden",
-    "help.frostfruit": "Restore Frostfruit Orchard with 18 starlight. Each clear lights its frosted branches and glass fruit. Finish to open the central crown and release luminous seeds before an arriving star has nowhere to land. Swipe neighboring stars to arrange matches, tap groups or hold and draw selected traces and shape recipes. Showers arrive at a steady pace. This place has no Dusk, Opal Orbs or storms."
+    "help.frostfruit": "Restore Frostfruit Orchard with 18 starlight. Each clear lights its frosted branches and glass fruit. Finish to open the central crown and release luminous seeds before an arriving star has nowhere to land. Swipe neighboring stars to arrange matches, tap groups or hold and draw selected traces and shape recipes. Showers arrive at a steady pace. This place has no Dusk, Opal Orbs or storms.",
+    "action.sunwheelMill": "Try Sunwheel Mill",
+    "action.replaySunwheelMill": "Replay Sunwheel Mill",
+    "menu.sunwheelMill": "Sunwheel Mill · 18 starlight",
+    "menu.sunwheelMillHint": "Restore Sunwheel Mill with 18 starlight. Preview the challenge before Begin.",
+    "flow.sunwheelMill": "SUNWHEEL MILL",
+    "flow.sunwheelComplete": "THE MILL IS RESTORED",
+    "flow.sunwheelWon": "Sunwheel Mill restored!",
+    "sunwheel.title": "Sunwheel Mill",
+    "sunwheel.restoration": "Sunwheel Mill, {percent}% restored",
+    "result.sunwheelWon": "Sunwheel Mill complete! The outlet is open and golden light flows onward.",
+    "help.sunwheelTitle": "Sunwheel Mill · Let the light flow onward",
+    "help.sunwheel": "Restore Sunwheel Mill with 18 starlight. Each clear returns light to its copper wheel and golden channels. Finish to open the outlet and send light onward before an arriving star has nowhere to land. Swipe neighboring stars to arrange matches, tap groups or hold and draw selected traces and shape recipes. Showers arrive at a steady pace. This place has no Dusk, Opal Orbs or storms."
   }
 }

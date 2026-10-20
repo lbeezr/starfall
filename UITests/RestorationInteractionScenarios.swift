@@ -16,7 +16,7 @@ class RestorationInteractionScenarios: XCTestCase {
     }
 
     enum ReviewLocation: String {
-        case lantern, ribbon, kite, seed, silver, frostfruit
+        case lantern, ribbon, kite, seed, silver, frostfruit, sunwheel
         var route: String {
             switch self {
             case .lantern: "firstLight"
@@ -25,6 +25,7 @@ class RestorationInteractionScenarios: XCTestCase {
             case .seed: "seedMoon"
             case .silver: "silverPools"
             case .frostfruit: "frostfruitOrchard"
+            case .sunwheel: "sunwheelMill"
             }
         }
         var title: String {
@@ -35,6 +36,7 @@ class RestorationInteractionScenarios: XCTestCase {
             case .seed: "Seed Moon"
             case .silver: "Silver Pools"
             case .frostfruit: "Frostfruit Orchard"
+            case .sunwheel: "Sunwheel Mill"
             }
         }
     }
@@ -46,6 +48,7 @@ class RestorationInteractionScenarios: XCTestCase {
         app.launchArguments = ["--starfalls-reset", "--dialogue-review", "--world-legacy-review",
                                "--\(location.rawValue)-restoration-review=\(score)", "-calmEffects", "NO"]
         if self.location == .frostfruit { app.launchArguments.append("--world-silver-complete-review") }
+        if self.location == .sunwheel { app.launchArguments.append("--world-frostfruit-complete-review") }
         if dense { app.launchArguments.append("--restoration-dense") }
         if largestText {
             app.launchArguments += ["-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"]

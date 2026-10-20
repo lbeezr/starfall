@@ -1,4 +1,4 @@
-// Static art review. LandingGeometry.swift and StarCast.swift remain runtime owners.
+// Static art review. LandingGeometry.swift and the selected material owners remain authoritative.
 (() => {
   const review = window.STARFALL_RESTORATION_REVIEW;
   const viewports = {
@@ -6,6 +6,9 @@
     'tablet-portrait': { label: 'iPad portrait', width: 768, height: 1024, sourceWidth: 1086, sourceHeight: 1448, assetPrefix: review.assetPrefix + 'TabletPortrait' },
     'tablet-landscape': { label: 'iPad landscape', width: 1024, height: 768, sourceWidth: 1448, sourceHeight: 1086, assetPrefix: review.assetPrefix + 'TabletLandscape' }
   };
+  for (const [key, reference] of Object.entries(review.layoutReferences ?? {})) {
+    if (Object.hasOwn(viewports, key)) Object.assign(viewports[key], { width: reference.width, height: reference.height });
+  }
   const samples = { partly: [2, 4, 3, 5, 3, 4, 3], crowded: [7, 6, 5, 7, 5, 6, 4], dense: Array(7).fill(7), empty: Array(7).fill(0) };
   const families = ['Spark', 'Sunny', 'Pip', 'Twinkle', 'Nova'];
   const aquaGroup = new Set(['2,1', '3,1', '4,1', '3,2', '3,3']);
@@ -31,32 +34,43 @@
 
   function renderSample() {
     const canvas = viewports[viewport];
-    // Mirror the existing seven-column native mapping at reference point sizes.
-    const side = Math.min(canvas.width - 12, Math.max(308, canvas.height - 420), 620);
-    const field = { x: (canvas.width - side) / 2, y: (canvas.height - side) / 2, side };
-    const step = side / 7;
+    // New reviews can consume the compiled kit. Historical reviews retain their
+    // source-bound static geometry and cast appearance.
+    const reference = review.layoutReferences?.[viewport];
+    const side = reference?.board.width ?? Math.min(canvas.width - 12, Math.max(308, canvas.height - 420), 620);
+    const field = { x: reference?.board.x ?? (canvas.width - side) / 2,
+      y: reference?.board.y ?? (canvas.height - side) / 2, side };
+    const step = reference?.cellStep ?? side / 7;
     const density = $('density').value;
     const positions = [];
+    const grownEnabled = review.pieceRendering && $('show-grown')?.checked;
     $('cast').replaceChildren();
     for (let column = 0; column < 7; column++) {
       for (let row = 0; row < samples[density][column]; row++) {
         const name = nameAt(column, row);
         const holder = document.createElement('div');
-        // Shared renderer assumes environments/<study>; normalize only its asset root.
-        holder.innerHTML = window.StarfallConceptCast.star(name).replaceAll('src="../../../../App/', 'src="../../../App/');
+        const grown = Boolean(grownEnabled && ((column === 2 && row === 1) || (column === 4 && row === 2)));
+        if (review.pieceRendering) {
+          holder.innerHTML = `<div class="star${grown ? ' grown' : ''}" role="img" aria-label="${name}${grown ? ', grown' : ''}"><img src="../../../App/Assets.xcassets/${review.pieceRendering.assetPrefix}${name}.imageset/body.png" alt=""></div>`;
+        } else {
+          // Historical renderer assumes environments/<study>; normalize only its asset root.
+          holder.innerHTML = window.StarfallConceptCast.star(name).replaceAll('src="../../../../App/', 'src="../../../App/');
+        }
         const star = holder.firstElementChild;
         const x = field.x + (column + .5) * step;
         const y = field.y + (6 - row + .5) * step;
-        const spriteSide = step * .7 * 256 / 212;
+        const piece = review.pieceRendering;
+        const spriteSide = piece ? step * piece.diameterFractions[grown ? 'grown' : 'normal'] * piece.rasterSide / piece.silhouetteSide :
+          step * .7 * 256 / 212;
         Object.assign(star.style, { left: `${x / canvas.width * 100}%`, top: `${y / canvas.height * 100}%`, width: `${spriteSide / canvas.width * 100}%` });
-        Object.assign(star.dataset, { row, column, family: name });
+        Object.assign(star.dataset, { row, column, family: name, grown });
         $('cast').append(star);
-        positions.push({ column, row, name, x, y });
+        positions.push({ column, row, name, x, y, grown, spriteSide });
       }
     }
     const count = positions.length;
     const progress = Math.round(score / 18 * 100);
-    $('sample-caption').textContent = count ? `${count} stars · seven columns` : 'Environment only · board position unchanged';
+    $('sample-caption').textContent = count ? `${count} ${review.pieceRendering ? 'pieces' : 'stars'} · seven columns${positions.some(position => position.grown) ? ' · 2 grown' : ''}` : 'Environment only · board position unchanged';
     $('stage').setAttribute('aria-label', `${canvas.label}: ${place.name}, ${score} of 18 light, ${progress} percent restored, ${percent} percent artwork${count ? `, ${count} crystal stars in seven gameplay columns` : ', environment only'}. Static composition concept, not a running game.`);
     $('canvas-caption').textContent = `${canvas.width} × ${canvas.height} reference canvas`;
     $('geometry-description').textContent = `A ${side} × ${side} field is centered at x=${field.x}, y=${field.y}.`;
@@ -98,7 +112,7 @@
     $('score-output').textContent = `${score} / 18 light · ${Math.round(score / 18 * 100)}%`;
     $('score').setAttribute('aria-valuetext', `${score} of 18 starlight, ${Math.round(score / 18 * 100)} percent restored`);
     $('state-kicker').textContent = `${percent}% scene · ${stateNames[index]}`;
-    $('state-description').textContent = place.states[index];
+    $('state-description').textContent = review.stateDescriptions?.[index] ?? place.states[index];
     document.querySelectorAll('[data-state]').forEach(button => button.setAttribute('aria-pressed', String(Number(button.dataset.state) === percent)));
     renderSample();
   }
@@ -110,6 +124,7 @@
     selectScore(score);
   }
   $('background').addEventListener('error', () => { $('image-error').hidden = false; });
+  $('show-grown')?.addEventListener('change', renderSample);
   $('background').addEventListener('load', () => {
     syncBackgroundSize();
     $('image-error').hidden = true;

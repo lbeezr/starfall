@@ -515,7 +515,7 @@ extension ObservatoryInteractionTests {
 
 /// Shipping worlds share the same native input surface and save contract.
 final class LandingPlaceInteractionTests: XCTestCase {
-    private let places: [RestorationInteractionScenarios.ReviewLocation] = [.lantern, .ribbon, .kite, .seed, .silver, .frostfruit]
+    private let places: [RestorationInteractionScenarios.ReviewLocation] = [.lantern, .ribbon, .kite, .seed, .silver, .frostfruit, .sunwheel]
 
     @MainActor private func launch(place: RestorationInteractionScenarios.ReviewLocation? = nil, large: Bool = false, score: Int = 0, calm: Bool = false) -> XCUIApplication {
         continueAfterFailure = false

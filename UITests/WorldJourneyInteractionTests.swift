@@ -61,7 +61,7 @@ final class WorldJourneyInteractionTests: XCTestCase {
         let viewport = app.frame.intersection(app.scrollViews["world.canvas"].frame)
         let frames = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@", "world.node."))
             .allElementsBoundByIndex.map { ($0.identifier, $0.frame) }
-        XCTAssertEqual(frames.count, 6)
+        XCTAssertEqual(frames.count, 7)
         let visible = frames.filter { !$0.1.isEmpty && viewport.intersects($0.1) }
         for (index, marker) in visible.enumerated() {
             for sibling in visible.dropFirst(index + 1) {
@@ -77,7 +77,8 @@ final class WorldJourneyInteractionTests: XCTestCase {
             ("kiteHarbor", "Kite Harbor", "Restore Ribbon Crossing first"),
             ("seedMoon", "Seed Moon", "Restore Kite Harbor first"),
             ("silverPools", "Silver Pools", "Restore Seed Moon first"),
-            ("frostfruitOrchard", "Frostfruit Orchard", "Restore Silver Pools first")
+            ("frostfruitOrchard", "Frostfruit Orchard", "Restore Silver Pools first"),
+            ("sunwheelMill", "Sunwheel Mill", "Restore Frostfruit Orchard first")
         ]
         let markers = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@", "world.node."))
         XCTAssertEqual(markers.count, places.count, "Every built destination has one foreground map marker")
@@ -122,14 +123,14 @@ final class WorldJourneyInteractionTests: XCTestCase {
         tap("world.list", app)
         XCTAssertEqual(app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@", "world.place.")).count, 12)
         XCTAssertFalse(app.buttons["world.node.firstLight"].exists)
-        tap("world.place.sunwheelMill", app)
-        XCTAssertEqual(app.staticTexts["world.selection"].label, "Sunwheel Mill")
+        tap("world.place.bellChoir", app)
+        XCTAssertEqual(app.staticTexts["world.selection"].label, "Bell Choir")
         XCTAssertEqual(app.staticTexts["world.status"].label, "Not yet available")
         XCTAssertFalse(app.buttons["world.visit"].exists)
-        XCTAssertTrue(app.buttons["world.place.sunwheelMill"].isSelected)
+        XCTAssertTrue(app.buttons["world.place.bellChoir"].isSelected)
         tap("world.list", app)
         XCTAssertTrue(app.buttons["world.node.firstLight"].waitForExistence(timeout: 5))
-        XCTAssertEqual(app.staticTexts["world.selection"].label, "Sunwheel Mill")
+        XCTAssertEqual(app.staticTexts["world.selection"].label, "Bell Choir")
         XCTAssertEqual(app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@", "world.node."))
             .allElementsBoundByIndex.filter(\.isSelected).count, 0,
                        "An unbuilt selection must not falsely select a built destination")
@@ -171,6 +172,9 @@ final class WorldJourneyInteractionTests: XCTestCase {
         XCTAssertEqual(app.staticTexts["world.status"].label, "Restore Silver Pools first")
         XCTAssertFalse(app.buttons["world.visit"].exists)
         tap("world.place.sunwheelMill", app)
+        XCTAssertEqual(app.staticTexts["world.status"].label, "Restore Frostfruit Orchard first")
+        XCTAssertFalse(app.buttons["world.visit"].exists)
+        tap("world.place.bellChoir", app)
         XCTAssertEqual(app.staticTexts["world.status"].label, "Not yet available")
         XCTAssertFalse(app.buttons["world.visit"].exists)
         tap("world.place.firstLight", app); tap("world.visit", app)
@@ -241,7 +245,7 @@ final class WorldJourneyInteractionTests: XCTestCase {
         capture("world-extra-large-retained-card", app)
         // Growing card copy must not squeeze markers into one another or leave
         // them unreachable. Scroll through the real page when it needs room.
-        for location in ["frostfruitOrchard", "silverPools", "seedMoon", "kiteHarbor", "ribbonCrossing", "firstLight"] {
+        for location in ["sunwheelMill", "frostfruitOrchard", "silverPools", "seedMoon", "kiteHarbor", "ribbonCrossing", "firstLight"] {
             let marker = app.buttons["world.node." + location]
             revealMapMarker(marker, app)
             let title = marker.label
@@ -405,7 +409,7 @@ final class WorldJourneyInteractionTests: XCTestCase {
 
     @MainActor func testAllReadyLocationsAcceptFourDirectionSwapsAndClears() {
         executionTimeAllowance = 300
-        for location in ["lantern", "ribbon", "kite", "seed", "silver", "frostfruit"] {
+        for location in ["lantern", "ribbon", "kite", "seed", "silver", "frostfruit", "sunwheel"] {
             let app = XCUIApplication()
             app.launchArguments = ["--starfalls-reset", "--dialogue-review", "--\(location)-restoration-review=0", "-calmEffects", "NO"]
             app.launch()
@@ -433,9 +437,10 @@ final class WorldJourneyInteractionTests: XCTestCase {
         XCTAssertEqual(app.buttons["world.node.firstLight"].value as? String, "Restored")
         XCTAssertEqual(app.buttons["world.node.ribbonCrossing"].value as? String, "Ready to restore")
         XCTAssertEqual(app.buttons["world.node.frostfruitOrchard"].value as? String, "Restore Silver Pools first")
-        XCTAssertFalse(app.buttons["world.node.sunwheelMill"].exists)
+        XCTAssertEqual(app.buttons["world.node.sunwheelMill"].value as? String, "Restore Frostfruit Orchard first")
+        XCTAssertFalse(app.buttons["world.node.bellChoir"].exists)
         capture("world-lantern-repaired-path-revealed", app)
-        tap("world.list", app); tap("world.place.sunwheelMill", app)
+        tap("world.list", app); tap("world.place.bellChoir", app)
         XCTAssertEqual(app.staticTexts["world.status"].label, "Not yet available")
         XCTAssertFalse(app.buttons["world.visit"].exists)
         app.terminate(); app.launchArguments = ["--dialogue-review"]; app.launch()
@@ -508,9 +513,11 @@ final class WorldJourneyInteractionTests: XCTestCase {
         XCTAssertEqual(app.staticTexts["world.selection"].label, "Frostfruit Orchard")
         XCTAssertEqual(app.staticTexts["world.status"].label, "Ready to restore")
         XCTAssertEqual(app.buttons["world.node.silverPools"].value as? String, "Restored")
-        XCTAssertFalse(app.buttons["world.node.sunwheelMill"].exists)
+        XCTAssertEqual(app.buttons["world.node.sunwheelMill"].value as? String, "Restore Frostfruit Orchard first")
+        XCTAssertFalse(app.buttons["world.node.bellChoir"].exists)
         tap("world.list", app)
-        XCTAssertEqual(app.buttons["world.place.sunwheelMill"].value as? String, "Not yet available")
+        XCTAssertEqual(app.buttons["world.place.sunwheelMill"].value as? String, "Restore Frostfruit Orchard first")
+        XCTAssertEqual(app.buttons["world.place.bellChoir"].value as? String, "Not yet available")
         XCTAssertTrue(app.buttons["world.place.frostfruitOrchard"].isSelected)
         tap("world.list", app)
         capture("frostfruit-ready-after-silver-repair", app)
@@ -526,6 +533,51 @@ final class WorldJourneyInteractionTests: XCTestCase {
         XCTAssertEqual(app.staticTexts["experiment.score"].label, "0 of 18 starlight collected")
         XCTAssertTrue(app.descendants(matching: .any)["frostfruit.restoration"].firstMatch.exists)
         capture("frostfruit-entered-from-earned-map-unlock", app)
+    }
+
+    @MainActor func testFrostfruitWinningClearUnlocksSunwheelAndPersistsItsMapEntry() {
+        let app = XCUIApplication()
+        app.launchArguments = ["--starfalls-reset", "--dialogue-review", "--frostfruit-restoration-review=14", "-calmEffects", "NO"]
+        app.launch(); defer { app.terminate() }
+        XCTAssertTrue(app.buttons["experiment.cell.0.0"].waitForExistence(timeout: 10))
+        tap("experiment.settings", app); tap("sky.worldMap", app)
+        let sunwheel = app.buttons["world.node.sunwheelMill"]
+        revealMapMarker(sunwheel, app)
+        sunwheel.coordinate(withNormalizedOffset: .init(dx: 0.5, dy: 0.5)).tap()
+        XCTAssertTrue(XCTNSPredicateExpectation(
+            predicate: NSPredicate(format: "label == %@", "Sunwheel Mill"),
+            object: app.staticTexts["world.selection"]).wait(timeout: 5))
+        XCTAssertTrue(sunwheel.isSelected)
+        XCTAssertEqual(app.staticTexts["world.status"].label, "Restore Frostfruit Orchard first")
+        XCTAssertFalse(app.buttons["world.visit"].exists)
+        tap("world.done", app)
+        tap("experiment.cell.0.0", app)
+        XCTAssertTrue(app.staticTexts["experiment.outcome"].waitForExistence(timeout: 10))
+        tap("sky.worldMap", app)
+        XCTAssertEqual(app.staticTexts["world.selection"].label, "Sunwheel Mill")
+        XCTAssertEqual(app.staticTexts["world.status"].label, "Ready to restore")
+        XCTAssertEqual(app.buttons["world.node.frostfruitOrchard"].value as? String, "Restored")
+        XCTAssertFalse(app.buttons["world.node.bellChoir"].exists)
+        tap("world.list", app)
+        XCTAssertEqual(app.buttons["world.place.bellChoir"].value as? String, "Not yet available")
+        XCTAssertTrue(app.buttons["world.place.sunwheelMill"].isSelected)
+        tap("world.list", app)
+        app.waitForVisibleWorldMapMarker(sunwheel)
+        capture("sunwheel-ready-after-frostfruit-repair", app)
+        app.terminate(); app.launchArguments = ["--dialogue-review", "-calmEffects", "NO"]; app.launch()
+        tap("sky.worldMap", app)
+        XCTAssertEqual(app.staticTexts["world.selection"].label, "Sunwheel Mill")
+        app.waitForVisibleWorldMapMarker(sunwheel)
+        tap("world.visit", app)
+        XCTAssertTrue(app.buttons["sky.begin"].waitForExistence(timeout: 5))
+        XCTAssertEqual(app.staticTexts["sky.title"].label, "Sunwheel Mill")
+        XCTAssertFalse(app.buttons["experiment.cell.0.0"].exists, "Entry must not replace the repaired Frostfruit round before Begin")
+        tap("sky.begin", app)
+        XCTAssertTrue(app.buttons["experiment.settings"].waitForExistence(timeout: 10))
+        tap("experiment.settings", app); tap("experiment.pause", app)
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, "0 of 18 starlight collected")
+        XCTAssertTrue(app.descendants(matching: .any)["sunwheel.restoration"].firstMatch.exists)
+        capture("sunwheel-entered-from-earned-map-unlock", app)
     }
 
 }

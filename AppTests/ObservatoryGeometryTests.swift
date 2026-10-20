@@ -156,6 +156,10 @@ final class OfficialWorldArtworkTests: XCTestCase {
         let content = WorldMapContent.production
         XCTAssertEqual(content.islands.map(\.location), WorldLocation.allCases.filter { $0.challenge != nil },
                        "Every playable destination must have exactly one island in progression order")
+        XCTAssertEqual(Set(content.islands.flatMap { [$0.damagedAsset, $0.restoredAsset] }).count,
+                       content.islands.count * 2, "Each destination needs its own damaged and restored pair")
+        XCTAssertEqual(content.connections.last, WorldMapConnection(source: .frostfruitOrchard, destination: .sunwheelMill),
+                       "The painted route must reach the newest ready destination")
         for artwork in content.islands {
             let registration = artwork.registration
             let attachments = [registration.markerAnchor, registration.leadingPort, registration.trailingPort,
@@ -404,7 +408,7 @@ final class WorldMapLayoutTests: XCTestCase {
 
     func testAddingAnIslandPreservesCompactRowSpacing() {
         let production = WorldMapContent.production
-        let expansion = WorldMapIslandArtwork(location: .sunwheelMill, damagedAsset: "unused-damaged",
+        let expansion = WorldMapIslandArtwork(location: .bellChoir, damagedAsset: "unused-damaged",
                                               restoredAsset: "unused-restored", registration: .squareIsland)
         XCTAssertFalse(production.islands.contains { $0.location == expansion.location })
         let expanded = WorldMapContent(islands: production.islands + [expansion], connections: production.connections)
@@ -425,7 +429,7 @@ final class WorldMapLayoutTests: XCTestCase {
     }
 
     func testPairedTabletRowsKeepProgressionConnectionsInTheSameColumn() {
-        for count in [5, 6] {
+        for count in [5, 6, 7] {
             let islands = WorldLocation.allCases.prefix(count).map {
                 WorldMapIslandArtwork(location: $0, damagedAsset: "unused-damaged",
                                       restoredAsset: "unused-restored", registration: .squareIsland)
@@ -481,31 +485,47 @@ final class WorldMapLayoutTests: XCTestCase {
         }
     }
 
-    @MainActor func testTabletOverviewFitsAllCurrentDestinationsAtNativeTextSizes() {
-        let content = WorldMapContent.production
-        // Three portrait rows need 920pt at the 280pt minimum row budget;
-        // landscape's two rows fit comfortably in 630pt.
-        for viewport in [CGSize(width: 834, height: 920), CGSize(width: 1194, height: 630)] {
-            for textSize in [DynamicTypeSize.large, .xLarge] {
-                let world = measuredWorld(content: content, viewport: viewport, textSize: textSize)
-                let viewportBounds = CGRect(origin: .zero, size: viewport)
-                XCTAssertLessThanOrEqual(world.size.height, viewport.height + 0.001)
-                let frames = content.islands.map { world.nodeFrame($0.location) }
-                for frame in frames {
-                    XCTAssertTrue(viewportBounds.insetBy(dx: -0.001, dy: -0.001).contains(frame))
-                    XCTAssertGreaterThanOrEqual(frame.width, WorldMapLayout.minimumIslandSide)
-                    XCTAssertGreaterThanOrEqual(frame.height, 44)
+    @MainActor func testTabletWorldFitsSixIslandsAndScrollsSevenWithoutShrinkingNativeTargets() {
+        let production = WorldMapContent.production
+        for count in [6, 7] {
+            let content = WorldMapContent(islands: Array(production.islands.prefix(count)),
+                                          connections: Array(production.connections.prefix(count - 1)))
+            XCTAssertEqual(content.islands.count, count)
+            // Six islands fit three portrait or two landscape rows. The seventh
+            // adds a fourth / third row, extending the scrollable world instead
+            // of reducing the existing island, label or target size contracts.
+            for viewport in [CGSize(width: 834, height: 920), CGSize(width: 1194, height: 630)] {
+                for textSize in [DynamicTypeSize.large, .xLarge] {
+                    let world = measuredWorld(content: content, viewport: viewport, textSize: textSize)
+                    let viewportBounds = CGRect(origin: .zero, size: viewport)
+                    let worldBounds = CGRect(origin: .zero, size: world.size)
+                    if count == 6 {
+                        XCTAssertLessThanOrEqual(world.size.height, viewport.height + 0.001)
+                    } else {
+                        XCTAssertGreaterThan(world.size.height, viewport.height)
+                    }
+                    let frames = content.islands.map { world.nodeFrame($0.location) }
+                    let expectedRows = viewport.width < 1050 ? (count == 7 ? 4 : 3) : (count == 7 ? 3 : 2)
+                    XCTAssertEqual(Set(frames.map(\.midY)).count, expectedRows)
+                    for frame in frames {
+                        XCTAssertTrue(worldBounds.insetBy(dx: -0.001, dy: -0.001).contains(frame))
+                        if count == 6 {
+                            XCTAssertTrue(viewportBounds.insetBy(dx: -0.001, dy: -0.001).contains(frame))
+                        }
+                        XCTAssertGreaterThanOrEqual(frame.width, WorldMapLayout.minimumIslandSide)
+                        XCTAssertGreaterThanOrEqual(frame.height, 44)
+                    }
+                    for (index, frame) in frames.enumerated() {
+                        for other in frames.dropFirst(index + 1) { XCTAssertFalse(frame.intersects(other)) }
+                    }
+                    let renderer = WorldMapPainting(journey: WorldJourney(), selected: .firstLight, quiet: true,
+                                                   select: { _ in }, maximumNodeHeight: viewport.height, content: content)
+                        .environment(\.dynamicTypeSize, textSize)
+                    let nativeSize = UIHostingController(rootView: renderer)
+                        .sizeThatFits(in: CGSize(width: viewport.width, height: CGFloat.infinity))
+                    XCTAssertEqual(nativeSize.height, world.size.height, accuracy: 0.001,
+                                   "The scene must use the same row budget as its native destination controls")
                 }
-                for (index, frame) in frames.enumerated() {
-                    for other in frames.dropFirst(index + 1) { XCTAssertFalse(frame.intersects(other)) }
-                }
-                let renderer = WorldMapPainting(journey: WorldJourney(), selected: .firstLight, quiet: true,
-                                               select: { _ in }, maximumNodeHeight: viewport.height)
-                    .environment(\.dynamicTypeSize, textSize)
-                let nativeSize = UIHostingController(rootView: renderer)
-                    .sizeThatFits(in: CGSize(width: viewport.width, height: CGFloat.infinity))
-                XCTAssertEqual(nativeSize.height, world.size.height, accuracy: 0.001,
-                               "The scene must use the same row budget as its native destination controls")
             }
         }
     }

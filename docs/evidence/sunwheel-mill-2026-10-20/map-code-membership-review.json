@@ -1,0 +1,335 @@
+{
+  "reviewedAtUTC": "2026-10-20T16:56:58.994458+00:00",
+  "sourceCommit": "49d54fcab24984c73262849b853e23e8ecd93e3e",
+  "derivedSourceFingerprint": "dev.6fa54c5e65",
+  "baselineCommit": "f4144ec2159416dbf479f6294cc5e561bfa0070b",
+  "workingTreeStatusAtStart": "",
+  "result": "no source or resource membership blocker found",
+  "blockingFindings": [],
+  "preservedMainOwnerSHA256": {
+    "App/WorldMapPainting.swift": "ae960a0574cd83d10dd08a98750f16473559490d0b831a44e9b0c9c620349ea8",
+    "App/WorldMapView.swift": "69bc68e2d896429e3957c8da8fc07af95d9a7c296068234820451d496fa14ab4",
+    "App/WorldMapMarker.swift": "778f4007cf62deefe96c37cd2dbe18f035865d3d27e0667aa319a2491e0f8ab2",
+    "App/SkySaveArchive.swift": "93ef2356dfa9c8988b61e99ce7d85c638d5e0aa3c1f8ad94a90dfae6d87e95e2",
+    "App/WorldJourneyStore.swift": "4a6c9a573b200481ac0b87e2ca5f1482c18a71a2c2530e463102d1e5c15f640d",
+    "Sources/StarfallCore/WorldJourney.swift": "5cf0887beb4ab0fc74733eebbfbb84f0b6a21af9444641546cb799b180889036",
+    "Sources/StarfallCore/StoryChallenge.swift": "ff33d94f4dc58fd81fdd9350fb8cc067902afcefe700b7192b3516e20a23593b",
+    "Sources/StarfallCore/FallingSky.swift": "5088093f405c1c3f0cf56091917795e5ef24bf3d540f448bb4c135324b0fa430",
+    "App/LivingLight.swift": "5f07b22795525cc850b001de239f2d8dc0ce0ecc26f7714885ba17bad37afa63",
+    "App/SkyPiece.swift": "f7a4f5df8f53f82ff9af7633d9e4dfbfd313e2746a44ea1359fb544d59e258d5",
+    "App/ConstellationTraceSurface.swift": "bd5053a7e50eb3638f8cf2c2d4fc621ebe5ebc2c4bd25856a8f39753fede5ea4",
+    "App/FallingSkyView.swift": "1dee32f727a0544407731e037c24a0069dec9f14fd7ffa9152b9cc888bfa1fe6",
+    "App/SkyDialogueBubble.swift": "0b063fd5ccf76cd446faabb39d67aaa1f091aab33a21a12c5366c87938cdcc93",
+    "App/SkyDialogueStudio.swift": "f91bd69919f3338c98d9c5b47dddb1a9d2d6c6828de45ca0e95adca7eec7c6b0",
+    "App/SkyTutorialView.swift": "32aa1dd09ce73227d0735450c96461bdf8e5fbf9c66423d0a53854200371222c",
+    "App/SkyDefaults.swift": "807d668ce3bfd31487658c18f15b984b1628f6d2337678be53724419abe89d41",
+    "Package.swift": "eec5498d6247b9a8f867437a120c72e82c1c7999b694f1b47a546ce3f3207a41",
+    "Config/Clean.xcconfig": "4650ec2003b522e5f57696746d755b382349e97b5acb0085e4c0224322b4fa0e",
+    "Config/PrivacyInfo.xcprivacy": "a331d51864743ebe4e00dd22360b4a538b6b3ac26a6b3eb54094e60a36959a12"
+  },
+  "preservedUpstreamMapAndPieceResourceCount": 42,
+  "existingDialogueSemanticChanges": [],
+  "projectGraphDelta": {
+    "Starfall.sources": {
+      "count": 55,
+      "removed": [],
+      "added": []
+    },
+    "Starfall.resources": {
+      "count": 5,
+      "removed": [],
+      "added": []
+    },
+    "StarfallUITests.sources": {
+      "count": 25,
+      "removed": [],
+      "added": [
+        "SunwheelMillInteractionTests.swift"
+      ]
+    },
+    "StarfallUITests.resources": {
+      "count": 0,
+      "removed": [],
+      "added": []
+    },
+    "StarfallAppTests.sources": {
+      "count": 31,
+      "removed": [],
+      "added": []
+    },
+    "StarfallAppTests.resources": {
+      "count": 0,
+      "removed": [],
+      "added": []
+    }
+  },
+  "testSourceFiles": {
+    "AppTests": 30,
+    "UITests": 25,
+    "Tests/StarfallCoreTests": 21
+  },
+  "sharedHostedFixture": "The preserved Tests/StarfallCoreTests/TimingCycleFixture.swift is also explicitly included in StarfallAppTests.",
+  "projectOwners": {
+    "normalApp": "Starfall.xcodeproj/project.pbxproj:228",
+    "catalogReference": "Starfall.xcodeproj/project.pbxproj:267",
+    "normalResources": "Starfall.xcodeproj/project.pbxproj:227",
+    "hostedSources": "Starfall.xcodeproj/project.pbxproj:259",
+    "uiSources": "Starfall.xcodeproj/project.pbxproj:243",
+    "sunwheelUITest": "Starfall.xcodeproj/project.pbxproj:35"
+  },
+  "sunwheelBoards": {
+    "all15BytesMatchAcceptedSource": "d057696",
+    "all15HashesUnique": true,
+    "assets": [
+      {
+        "asset": "SunwheelMill000",
+        "sha256": "71eafc51e1133507a54a1019bc166ecf664b7cfe60b51a27e895fe60acddf4d2",
+        "size": [
+          887,
+          1774
+        ]
+      },
+      {
+        "asset": "SunwheelMill025",
+        "sha256": "68214a4e9955a4ce80ed2a77bbb25c57a9ad50d09f916482d4f0283703dbf0c7",
+        "size": [
+          887,
+          1774
+        ]
+      },
+      {
+        "asset": "SunwheelMill050",
+        "sha256": "c329685f49c69fba91f9dbf87fb41362d86f02fe5bee15af226926cb538a9872",
+        "size": [
+          887,
+          1774
+        ]
+      },
+      {
+        "asset": "SunwheelMill075",
+        "sha256": "b19f683af57c2f6a82284305c570b9077f1e4f0b478d1dcba6d2e907afc8892e",
+        "size": [
+          887,
+          1774
+        ]
+      },
+      {
+        "asset": "SunwheelMill100",
+        "sha256": "c29726025d8e30f77bba7be73dd82984c0ddb263496b02c2f58656a8fde110cf",
+        "size": [
+          887,
+          1774
+        ]
+      },
+      {
+        "asset": "SunwheelMillTabletLandscape000",
+        "sha256": "05b7d2ff4db53b5e3fa07469ea02afd9aa1fd5e4cbe675ba73b620dd0e403ffe",
+        "size": [
+          1448,
+          1086
+        ]
+      },
+      {
+        "asset": "SunwheelMillTabletLandscape025",
+        "sha256": "f47d2048ec23cf5a08e705c44a304d474a55cbb1376774ffd6cd86407ba7cdca",
+        "size": [
+          1448,
+          1086
+        ]
+      },
+      {
+        "asset": "SunwheelMillTabletLandscape050",
+        "sha256": "376213462d2a7764b7082dd03b74fe1232783c6dd218dc8b22003619bad01dcb",
+        "size": [
+          1448,
+          1086
+        ]
+      },
+      {
+        "asset": "SunwheelMillTabletLandscape075",
+        "sha256": "64d4d4f15790a3ceb733d639c7f536397ac9591e1b88a21fce3a1820f53977a9",
+        "size": [
+          1448,
+          1086
+        ]
+      },
+      {
+        "asset": "SunwheelMillTabletLandscape100",
+        "sha256": "37259cffdbf81c30c6eb4dfc909dcef7e88b267f9b2e6668df3255d2199c0a19",
+        "size": [
+          1448,
+          1086
+        ]
+      },
+      {
+        "asset": "SunwheelMillTabletPortrait000",
+        "sha256": "a1953a34ed7f496079fb56d251de18ffc73fbd5bca0e93d12370ae63213963f5",
+        "size": [
+          1086,
+          1448
+        ]
+      },
+      {
+        "asset": "SunwheelMillTabletPortrait025",
+        "sha256": "5e3f8b4bbecdd4ff0bd109f47d50fb0be4c2b8b078874866d751c98a274e0dec",
+        "size": [
+          1086,
+          1448
+        ]
+      },
+      {
+        "asset": "SunwheelMillTabletPortrait050",
+        "sha256": "fd3c8b2c8607d3883146c728f08c9bea2319827d6bb432ac20a80432262f0225",
+        "size": [
+          1086,
+          1448
+        ]
+      },
+      {
+        "asset": "SunwheelMillTabletPortrait075",
+        "sha256": "4d30cbe783ea1cf254a23148e86f2048e2e37a9874b933c9f35ac04a5ba5a567",
+        "size": [
+          1086,
+          1448
+        ]
+      },
+      {
+        "asset": "SunwheelMillTabletPortrait100",
+        "sha256": "117feaf109b4dbd5cf7d1abe748f68325e4b48a082e68529d7859549365b40d9",
+        "size": [
+          1086,
+          1448
+        ]
+      }
+    ]
+  },
+  "sunwheelMapPair": {
+    "catalogueOwner": "App/WorldMapArtwork.swift:71",
+    "alpha128Union": [
+      23,
+      18,
+      1241,
+      1233
+    ],
+    "anchors": {
+      "marker": [
+        0.5,
+        0.65
+      ],
+      "leading": [
+        0.1,
+        0.57
+      ],
+      "trailing": [
+        0.94,
+        0.58
+      ],
+      "upper": [
+        0.78,
+        0.32
+      ],
+      "lower": [
+        0.53,
+        0.71
+      ]
+    },
+    "assets": [
+      {
+        "asset": "WorldMapIslandSunwheelRestored",
+        "sha256": "f3b0ef23c7e110c3286e213b263fcc227e3fc76d256e7e79788404f847b2610f",
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alpha128Bounds": [
+          24,
+          18,
+          1241,
+          1231
+        ],
+        "cornerAlpha": [
+          1,
+          0,
+          1,
+          0
+        ],
+        "anchorAlpha": {
+          "marker": 252,
+          "leading": 251,
+          "trailing": 251,
+          "upper": 252,
+          "lower": 252
+        }
+      },
+      {
+        "asset": "WorldMapIslandSunwheelDamaged",
+        "sha256": "03af6a6b199cc8ae6bf357be11866cf06ce780500ca37f37bf6836e6fd154cfc",
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alpha128Bounds": [
+          23,
+          18,
+          1241,
+          1233
+        ],
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "anchorAlpha": {
+          "marker": 253,
+          "leading": 253,
+          "trailing": 253,
+          "upper": 253,
+          "lower": 253
+        }
+      }
+    ],
+    "visualReview": "Both exact catalogue PNGs independently viewed during registration: shared framing/terrain, dormant closed outlet versus glowing restored wheel and open golden flow. Native map fit remains for current run."
+  },
+  "testAssessment": [
+    {
+      "owner": "AppTests/ObservatoryGeometryTests.swift:155",
+      "finding": "Ready catalogue equality, unique repair pairs, Frostfruit-to-Sunwheel route, image loading, dimensions, alpha union and solid attachment pixels are asserted."
+    },
+    {
+      "owner": "AppTests/ObservatoryGeometryTests.swift:488",
+      "finding": "Six-island fit remains covered; seven-island overflow requires four portrait/three landscape rows with unchanged native size, separation and geometry agreement."
+    },
+    {
+      "owner": "AppTests/WorldMapReviewFixtureTests.swift:55",
+      "finding": "Seven isolated review states use production readers: allReady earns seven/Sunwheel selected; unbuilt is Bell Choir; restore stays read-only."
+    },
+    {
+      "owner": "AppTests/WorldJourneyTests.swift:134",
+      "finding": "Frostfruit completion unlocks damaged Sunwheel; its own committed win selects restored artwork before animation completes."
+    },
+    {
+      "owner": "App/SkyFlowState.swift:84",
+      "finding": "Upstream Entry Back identity, origin retention, stale-callback rejection and Begin boundary are preserved; Ceremony still emits entryBack."
+    },
+    {
+      "owner": "UITests/WorldMapReviewInteractionTests.swift:66",
+      "finding": "Seven markers, Sunwheel allReady Entry/Back and portrait/landscape visibility; unbuilt Bell Choir is list-only."
+    },
+    {
+      "owner": "UITests/WorldJourneyInteractionTests.swift:538",
+      "finding": "Bounded scrolling and physical coordinate tap, earned Frostfruit repair, ready Sunwheel, relaunch, Entry board absence and explicit Begin at 0/18."
+    }
+  ],
+  "nonBlockingCoverageObservation": {
+    "owner": "AppTests/SkyFlowStateTests.swift:31",
+    "finding": "Hosted map-origin Entry Back array retains six actions. Native allReady meaningfully covers Sunwheel map-origin Entry/Back, selection/state and board-absence; production branch is generic and preserved. Parent keeps frozen inputs rather than adding redundant enumeration."
+  },
+  "limitations": [
+    "Read-only source/project/asset audit; no Apple commands or builds/tests run. Parent-owned validation is separate.",
+    "Graph preserves every upstream source/resource membership. Source assets alone do not prove compiled bundle loading or native fit.",
+    "Only this requested temporary report was written; no source or repository mutation."
+  ]
+}

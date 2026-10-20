@@ -1,0 +1,135 @@
+{
+  "reviewedAt": "2026-10-20T15:30:08.669996+00:00",
+  "scope": "Source artwork visual continuity only; not native appearance, input, motion or device acceptance",
+  "assets": [
+    {
+      "asset": "App/Assets.xcassets/SunwheelMill100.imageset/scene.png",
+      "state": 100,
+      "family": "phone",
+      "sha256": "c29726025d8e30f77bba7be73dd82984c0ddb263496b02c2f58656a8fde110cf",
+      "inspected": true
+    },
+    {
+      "asset": "App/Assets.xcassets/SunwheelMillTabletLandscape100.imageset/scene.png",
+      "state": 100,
+      "family": "tabletLandscape",
+      "sha256": "37259cffdbf81c30c6eb4dfc909dcef7e88b267f9b2e6668df3255d2199c0a19",
+      "inspected": true
+    },
+    {
+      "asset": "App/Assets.xcassets/SunwheelMill075.imageset/scene.png",
+      "state": 75,
+      "family": "phone",
+      "sha256": "b19f683af57c2f6a82284305c570b9077f1e4f0b478d1dcba6d2e907afc8892e",
+      "inspected": true
+    },
+    {
+      "asset": "App/Assets.xcassets/SunwheelMill000.imageset/scene.png",
+      "state": 0,
+      "family": "phone",
+      "sha256": "71eafc51e1133507a54a1019bc166ecf664b7cfe60b51a27e895fe60acddf4d2",
+      "inspected": true
+    },
+    {
+      "asset": "App/Assets.xcassets/SunwheelMill025.imageset/scene.png",
+      "state": 25,
+      "family": "phone",
+      "sha256": "68214a4e9955a4ce80ed2a77bbb25c57a9ad50d09f916482d4f0283703dbf0c7",
+      "inspected": true
+    },
+    {
+      "asset": "App/Assets.xcassets/SunwheelMill050.imageset/scene.png",
+      "state": 50,
+      "family": "phone",
+      "sha256": "c329685f49c69fba91f9dbf87fb41362d86f02fe5bee15af226926cb538a9872",
+      "inspected": true
+    },
+    {
+      "asset": "App/Assets.xcassets/SunwheelMillTabletLandscape075.imageset/scene.png",
+      "state": 75,
+      "family": "tabletLandscape",
+      "sha256": "64d4d4f15790a3ceb733d639c7f536397ac9591e1b88a21fce3a1820f53977a9",
+      "inspected": true
+    },
+    {
+      "asset": "App/Assets.xcassets/SunwheelMillTabletLandscape000.imageset/scene.png",
+      "state": 0,
+      "family": "tabletLandscape",
+      "sha256": "05b7d2ff4db53b5e3fa07469ea02afd9aa1fd5e4cbe675ba73b620dd0e403ffe",
+      "inspected": true
+    },
+    {
+      "asset": "App/Assets.xcassets/SunwheelMillTabletLandscape025.imageset/scene.png",
+      "state": 25,
+      "family": "tabletLandscape",
+      "sha256": "f47d2048ec23cf5a08e705c44a304d474a55cbb1376774ffd6cd86407ba7cdca",
+      "inspected": true
+    },
+    {
+      "asset": "App/Assets.xcassets/SunwheelMillTabletLandscape050.imageset/scene.png",
+      "state": 50,
+      "family": "tabletLandscape",
+      "sha256": "376213462d2a7764b7082dd03b74fe1232783c6dd218dc8b22003619bad01dcb",
+      "inspected": true
+    },
+    {
+      "asset": "App/Assets.xcassets/SunwheelMillTabletPortrait075.imageset/scene.png",
+      "state": 75,
+      "family": "tabletPortrait",
+      "sha256": "4d30cbe783ea1cf254a23148e86f2048e2e37a9874b933c9f35ac04a5ba5a567",
+      "inspected": true
+    },
+    {
+      "asset": "App/Assets.xcassets/SunwheelMillTabletPortrait000.imageset/scene.png",
+      "state": 0,
+      "family": "tabletPortrait",
+      "sha256": "a1953a34ed7f496079fb56d251de18ffc73fbd5bca0e93d12370ae63213963f5",
+      "inspected": true
+    },
+    {
+      "asset": "App/Assets.xcassets/SunwheelMillTabletPortrait025.imageset/scene.png",
+      "state": 25,
+      "family": "tabletPortrait",
+      "sha256": "5e3f8b4bbecdd4ff0bd109f47d50fb0be4c2b8b078874866d751c98a274e0dec",
+      "inspected": true
+    },
+    {
+      "asset": "App/Assets.xcassets/SunwheelMillTabletPortrait050.imageset/scene.png",
+      "state": 50,
+      "family": "tabletPortrait",
+      "sha256": "fd3c8b2c8607d3883146c728f08c9bea2319827d6bb432ac20a80432262f0225",
+      "inspected": true
+    },
+    {
+      "asset": "App/Assets.xcassets/SunwheelMillTabletPortrait100.imageset/scene.png",
+      "state": 100,
+      "family": "tabletPortrait",
+      "sha256": "117feaf109b4dbd5cf7d1abe748f68325e4b48a082e68529d7859549365b40d9",
+      "inspected": true
+    }
+  ],
+  "byteValidation": {
+    "distinctPNGCount": 15,
+    "manifestDimensionsAndSHA256": "pass",
+    "exactOriginalOutputEqualityCount": 15
+  },
+  "findings": [
+    "All three families visibly progress from no lit vanes through one, three and five, retaining earlier progress.",
+    "Every pre-win state keeps a closed outlet and dark outgoing/foreground channels. Final states visibly open the outlet and introduce golden onward flow.",
+    "Final landscape 75% removes the duplicate third leaf.",
+    "Final portrait 100% was derived from selected portrait 75% and resolves the former visibly shifted outlet pair.",
+    "Phone 75%/100% keep a coherent two-leaf closure/opening.",
+    "Final portrait 100% spreads brighter gold over more foreground decking; final native controls and contrast remain to inspect."
+  ],
+  "masterEvidenceLimit": "Production owner reports 1/1 master-fit test with 16 captures of 21-piece partial board using previous portrait 100%. Separate direct 49-piece inspections cover phone/portrait only. This source-art review does not expand that scope.",
+  "docsEdited": [
+    "docs/design/sunwheel-mill-07/README.md",
+    "docs/design/sunwheel-mill-07/PRODUCTION_PLAN.md"
+  ],
+  "checks": {
+    "hygiene": "pass",
+    "diffCheck": "pass",
+    "localTargets": 14,
+    "missing": []
+  }
+}

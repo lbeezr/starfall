@@ -1,0 +1,372 @@
+{
+  "schemaVersion": 1,
+  "reviewedAtUTC": "2026-10-20T17:05:49.621569+00:00",
+  "reviewType": "Sunwheel Mill final modular-map integration iPad original still-image visual review",
+  "status": "passed",
+  "sourceCommit": "49d54fcab24984c73262849b853e23e8ecd93e3e",
+  "runtimeBuildID": "dev.6fa54c5e65",
+  "derivedSourceFingerprint": "dev.6fa54c5e65",
+  "literalSimulatorBuildID": "dev.local",
+  "identityClarification": "dev.6fa54c5e65 is the verification record source fingerprint; dev.local is the parent-confirmed literal Simulator Info.plist build identifier.",
+  "captureManifest": "/private/tmp/sunwheel-native/map-01/tablet/captures.json",
+  "captureManifestFileSHA256": "46bb5dea365c87c87fb05c54f1041701b25c2bdcb83524861f522e352e12c769",
+  "rawExportManifestSHA256": "d52e0666e567ed3468e9af3bbcb8574bd3065a373526fc6f1d672c96a1a50a8b",
+  "verificationRecord": "/private/tmp/sunwheel-native/map-01/tablet/verification.json",
+  "verificationRecordSHA256": "8d72eb5cb06d44bd17b37dcc4ba4512c90431febc0e40060f8479956154323ee",
+  "testResult": {
+    "selectedTests": 1,
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "xcodebuildExitCode": 0,
+    "source": "completed parent-owned tablet verification record"
+  },
+  "captureCount": 16,
+  "hashVerifiedCount": 16,
+  "visuallyInspectedCount": 16,
+  "uniqueCaptureHashes": 15,
+  "captureBytes": 93481548,
+  "blockingFindings": [],
+  "summary": [
+    "All five restoration states were inspected in both iPad orientations, plus the five rotation/native-clear frames and final landscape action frame.",
+    "The outlet remains closed at 75% and opens with onward golden light only at 100%. The payoff remains visible above portrait result UI and beside landscape result UI.",
+    "Living-light pieces preserve clear silhouettes, glow edges and size differences against the starfield and perimeter. Native-clear frames show readable committed scores and feedback after rotation.",
+    "Detailed mill, stone terraces, bridge, lanterns and workshop construction persists throughout the sequence. No center-clearing mask, cloud seam or rectangular background fade was observed.",
+    "HUD, dialogue and result action labels remain readable and contained. The upstream dialogue reading panel is visibly separate UI below remaining pieces, not a background-clearing mask."
+  ],
+  "nonBlockingObservations": [
+    "Landscape crops the extreme top vane tip; the wheel identity and restoration state remain clear.",
+    "The portrait score overlaps the top vane without making the score unreadable.",
+    "The lowest-left amber piece overlaps warm foliage in portrait while retaining its luminous outline.",
+    "The last two landscape 100% captures are byte-identical; 16 exports contain 15 unique images."
+  ],
+  "limitations": [
+    "This bounded map-integration rerun contains partial boards and rotation/native-clear captures, not 49-piece dense-board captures. It does not independently renew earlier dense-board acceptance.",
+    "The 100% milestone frames show result composition; a real terminal-win action is not inferred solely from those stills. Native interaction evidence comes from the parent-owned passing test.",
+    "Static screenshots establish only appearance at captured instants, not motion quality, timing or absence of transient issues.",
+    "Development Simulator evidence only; no physical installation or actual VoiceOver review is claimed.",
+    "Every original PNG was opened with view_image. Tool display resizing did not modify retained bytes; original EXIF orientation, dimensions and hashes were verified without edits."
+  ],
+  "captures": [
+    {
+      "index": 0,
+      "name": "sunwheel-tablet-portrait-before-rotation-normal-motion",
+      "rawPath": "/private/tmp/sunwheel-native/map-01/tablet/attachments/9B4467E9-9B39-4C95-B89A-5C351EEDAD6B.png",
+      "sha256": "5a567153d82fa015a184d98484646d9027ec9cbb8e31382f8d5eba225975cf3a",
+      "bytes": 5609501,
+      "storedPixelDimensions": [
+        1640,
+        2360
+      ],
+      "exifOrientation": 1,
+      "displayPixelDimensions": [
+        1640,
+        2360
+      ],
+      "hashVerified": true,
+      "visuallyInspectedOriginal": true,
+      "status": "passed",
+      "findings": "Portrait before rotation: 5/18, one vane and hub lit, outlet closed. Living-light pieces have distinct silhouettes and one enlarged amber piece; HUD and actions fit."
+    },
+    {
+      "index": 1,
+      "name": "sunwheel-tablet-landscape-retained-before-clear-normal-motion",
+      "rawPath": "/private/tmp/sunwheel-native/map-01/tablet/attachments/4046881A-AF9C-4462-A2C2-788DDF6C5E0C.png",
+      "sha256": "e5702533704bd3d3dfb1040e575ba9f1f3b28ef84e9368b70eb8b7b700ac0be2",
+      "bytes": 5904530,
+      "storedPixelDimensions": [
+        1640,
+        2360
+      ],
+      "exifOrientation": 8,
+      "displayPixelDimensions": [
+        2360,
+        1640
+      ],
+      "hashVerified": true,
+      "visuallyInspectedOriginal": true,
+      "status": "passed",
+      "findings": "Landscape after rotation retains the partial board and 5/18. Mill, bridge and workshop remain distinct, outlet closed, actions unobscured."
+    },
+    {
+      "index": 2,
+      "name": "sunwheel-tablet-landscape-after-native-clear-normal-motion",
+      "rawPath": "/private/tmp/sunwheel-native/map-01/tablet/attachments/29B2C44E-8AEF-4666-91BD-B76E10C36CBD.png",
+      "sha256": "b39aea813868ea8efff746fab930ef60f685b526257b8751ab46e1e97946ec48",
+      "bytes": 5823797,
+      "storedPixelDimensions": [
+        1640,
+        2360
+      ],
+      "exifOrientation": 8,
+      "displayPixelDimensions": [
+        2360,
+        1640
+      ],
+      "hashVerified": true,
+      "visuallyInspectedOriginal": true,
+      "status": "passed",
+      "findings": "Landscape after native clear: 9/18 and lit mill/three vanes. Closed outlet remains visible. Pip feedback panel stays below the remaining pieces; Close and bottom actions are readable."
+    },
+    {
+      "index": 3,
+      "name": "sunwheel-tablet-portrait-retained-after-landscape-clear-normal-motion",
+      "rawPath": "/private/tmp/sunwheel-native/map-01/tablet/attachments/7D2E3393-8653-4427-9BE1-0F3D23B0E81F.png",
+      "sha256": "d7632f49bfcad7f792deeccdaa62924ad166c990ce90b5693e2db9383215a4db",
+      "bytes": 5790483,
+      "storedPixelDimensions": [
+        1640,
+        2360
+      ],
+      "exifOrientation": 1,
+      "displayPixelDimensions": [
+        1640,
+        2360
+      ],
+      "hashVerified": true,
+      "visuallyInspectedOriginal": true,
+      "status": "passed",
+      "findings": "Portrait after rotation back retains 9/18 and half-restored mill, closed outlet and readable pieces/actions. Feedback is collapsed to the portrait control."
+    },
+    {
+      "index": 4,
+      "name": "sunwheel-tablet-portrait-after-second-native-clear-normal-motion",
+      "rawPath": "/private/tmp/sunwheel-native/map-01/tablet/attachments/F0BCA29C-9610-4CA5-B884-C202013BCA10.png",
+      "sha256": "d353fb53fbef297e56fbb1929cd7af24a29080fa60837c3bec2690752c14c73c",
+      "bytes": 5640599,
+      "storedPixelDimensions": [
+        1640,
+        2360
+      ],
+      "exifOrientation": 1,
+      "displayPixelDimensions": [
+        1640,
+        2360
+      ],
+      "hashVerified": true,
+      "visuallyInspectedOriginal": true,
+      "status": "passed",
+      "findings": "Portrait after second native clear: 13/18 with fewer pieces and half-restored scene. Pip +4 feedback is readable below the remaining pieces, with bottom actions fully visible."
+    },
+    {
+      "index": 5,
+      "name": "sunwheel-tablet-portrait-scene-0-score-0-normal-motion",
+      "rawPath": "/private/tmp/sunwheel-native/map-01/tablet/attachments/1210C85C-54C7-4AC6-AE43-3EFA57D413A8.png",
+      "sha256": "39d83d2fe32f60ea82ad5d5e4e5b7a200c3462ffbbcf43175079b144565c1e0e",
+      "bytes": 5604273,
+      "storedPixelDimensions": [
+        1640,
+        2360
+      ],
+      "exifOrientation": 1,
+      "displayPixelDimensions": [
+        1640,
+        2360
+      ],
+      "hashVerified": true,
+      "visuallyInspectedOriginal": true,
+      "status": "passed",
+      "findings": "Portrait 0%: dormant mill, all vanes and lamps dark, closed outlet/dry channels; 21 piece silhouettes and grown amber remain readable."
+    },
+    {
+      "index": 6,
+      "name": "sunwheel-tablet-portrait-scene-25-score-5-normal-motion",
+      "rawPath": "/private/tmp/sunwheel-native/map-01/tablet/attachments/9E1985FC-C2D6-410D-8ED6-D11990815B31.png",
+      "sha256": "17edd97980263ae2c6cae987d0f92cf20eecf238ee4d63fb1781bdb928aa1e63",
+      "bytes": 5609451,
+      "storedPixelDimensions": [
+        1640,
+        2360
+      ],
+      "exifOrientation": 1,
+      "displayPixelDimensions": [
+        1640,
+        2360
+      ],
+      "hashVerified": true,
+      "visuallyInspectedOriginal": true,
+      "status": "passed",
+      "findings": "Portrait 25%: top vane/hub and nearby bench glow, remaining vanes and mill dark; outlet closed, pieces and HUD readable."
+    },
+    {
+      "index": 7,
+      "name": "sunwheel-tablet-portrait-scene-50-score-9-normal-motion",
+      "rawPath": "/private/tmp/sunwheel-native/map-01/tablet/attachments/607AFEAD-CD69-4C6A-A777-CD4C992C9C9B.png",
+      "sha256": "79259c4641d8a7cd708a155a42a5814995fd7948792ab87682d7486bb4e56ab8",
+      "bytes": 5809140,
+      "storedPixelDimensions": [
+        1640,
+        2360
+      ],
+      "exifOrientation": 1,
+      "displayPixelDimensions": [
+        1640,
+        2360
+      ],
+      "hashVerified": true,
+      "visuallyInspectedOriginal": true,
+      "status": "passed",
+      "findings": "Portrait 50%: three vanes and mill glow, two vanes remain dark, distant lamps dormant; outlet closed. No geometry or cloud discontinuity observed."
+    },
+    {
+      "index": 8,
+      "name": "sunwheel-tablet-portrait-scene-75-score-14-normal-motion",
+      "rawPath": "/private/tmp/sunwheel-native/map-01/tablet/attachments/AFD65AF6-C1B4-44BB-92CE-F1B9D0AB1F6D.png",
+      "sha256": "e69795fec736c666be54d6806529a7123a2a69d0faf6904ed995d85de72792cd",
+      "bytes": 6015229,
+      "storedPixelDimensions": [
+        1640,
+        2360
+      ],
+      "exifOrientation": 1,
+      "displayPixelDimensions": [
+        1640,
+        2360
+      ],
+      "hashVerified": true,
+      "visuallyInspectedOriginal": true,
+      "status": "passed",
+      "findings": "Portrait 75%: all vanes and lamps lit, warm terraces and foreground construction; outlet still visibly closed and channel unlit. Pieces remain separated from the warm perimeter."
+    },
+    {
+      "index": 9,
+      "name": "sunwheel-tablet-portrait-scene-100-score-18-normal-motion",
+      "rawPath": "/private/tmp/sunwheel-native/map-01/tablet/attachments/6FDEEE0A-A06A-4868-9BC0-B5084282215C.png",
+      "sha256": "0d67fd9a986d920ea0cd2bdb3c25137e0814a4a34d351e2220bb39b7fc3cfa15",
+      "bytes": 5331967,
+      "storedPixelDimensions": [
+        1640,
+        2360
+      ],
+      "exifOrientation": 1,
+      "displayPixelDimensions": [
+        1640,
+        2360
+      ],
+      "hashVerified": true,
+      "visuallyInspectedOriginal": true,
+      "status": "passed",
+      "findings": "Portrait 100%: open outlet and golden onward channel clearly above result UI; foreground flow also visible below it. Completion title, all four actions and celebration stars fit."
+    },
+    {
+      "index": 10,
+      "name": "sunwheel-tablet-landscape-scene-0-score-0-normal-motion",
+      "rawPath": "/private/tmp/sunwheel-native/map-01/tablet/attachments/F08BFFB5-8425-46E6-AB13-19BEBC3AD0D0.png",
+      "sha256": "181eaad37753e8dde3e16b84fdee49ba2e7a2922decfc54fdcd54781059bf61d",
+      "bytes": 6171960,
+      "storedPixelDimensions": [
+        1640,
+        2360
+      ],
+      "exifOrientation": 8,
+      "displayPixelDimensions": [
+        2360,
+        1640
+      ],
+      "hashVerified": true,
+      "visuallyInspectedOriginal": true,
+      "status": "passed",
+      "findings": "Landscape 0%: dormant five-vane mill and workshop, closed outlet and dark channel. Detailed perimeter surrounds the readable 21-piece board."
+    },
+    {
+      "index": 11,
+      "name": "sunwheel-tablet-landscape-scene-25-score-5-normal-motion",
+      "rawPath": "/private/tmp/sunwheel-native/map-01/tablet/attachments/B822B8B7-8E81-4DC1-9D89-E659B837E92D.png",
+      "sha256": "fbeb661e468a07bb8179f65acd61df4f01263a87fc64dc8155416051ca84073a",
+      "bytes": 5904393,
+      "storedPixelDimensions": [
+        1640,
+        2360
+      ],
+      "exifOrientation": 8,
+      "displayPixelDimensions": [
+        2360,
+        1640
+      ],
+      "hashVerified": true,
+      "visuallyInspectedOriginal": true,
+      "status": "passed",
+      "findings": "Landscape 25%: top vane/hub and nearby workbench glow, rest dormant; closed outlet and retained board remain clear."
+    },
+    {
+      "index": 12,
+      "name": "sunwheel-tablet-landscape-scene-50-score-9-normal-motion",
+      "rawPath": "/private/tmp/sunwheel-native/map-01/tablet/attachments/0D333557-DFE9-4E33-A3EC-DC888DFBB5C2.png",
+      "sha256": "97f9c2430c2248a572ccc3b213dad54d5d192a88089fb681e58832332c9aba3d",
+      "bytes": 5982837,
+      "storedPixelDimensions": [
+        1640,
+        2360
+      ],
+      "exifOrientation": 8,
+      "displayPixelDimensions": [
+        2360,
+        1640
+      ],
+      "hashVerified": true,
+      "visuallyInspectedOriginal": true,
+      "status": "passed",
+      "findings": "Landscape 50%: three lit vanes and lit mill, two dark vanes and distant unlit workshop; outlet remains closed. Piece outlines and action text remain clear."
+    },
+    {
+      "index": 13,
+      "name": "sunwheel-tablet-landscape-scene-75-score-14-normal-motion",
+      "rawPath": "/private/tmp/sunwheel-native/map-01/tablet/attachments/0199CBBD-EAE5-4697-9A19-0C7E3ADDDC88.png",
+      "sha256": "2cabc2baab3713358b18070748f2af0d392ee3b51d229a2a741a3d97e72c0f75",
+      "bytes": 6351758,
+      "storedPixelDimensions": [
+        1640,
+        2360
+      ],
+      "exifOrientation": 8,
+      "displayPixelDimensions": [
+        2360,
+        1640
+      ],
+      "hashVerified": true,
+      "visuallyInspectedOriginal": true,
+      "status": "passed",
+      "findings": "Landscape 75%: five vanes, bridge, workshop and perimeter lanterns glow. Closed outlet still distinct; downstream channel remains dark. All board pieces and HUD/actions readable."
+    },
+    {
+      "index": 14,
+      "name": "sunwheel-tablet-landscape-scene-100-score-18-normal-motion",
+      "rawPath": "/private/tmp/sunwheel-native/map-01/tablet/attachments/86B6BE23-53F6-4358-9865-2E0997BA48D8.png",
+      "sha256": "dba5f2314d10740c962140fbd675788952ff28b5bd0d00f459a0b60fa53340bb",
+      "bytes": 5965815,
+      "storedPixelDimensions": [
+        1640,
+        2360
+      ],
+      "exifOrientation": 8,
+      "displayPixelDimensions": [
+        2360,
+        1640
+      ],
+      "hashVerified": true,
+      "visuallyInspectedOriginal": true,
+      "status": "passed",
+      "findings": "Landscape 100%: gate visibly open, golden channel and waterfall unobscured to the left of completion UI. All result actions and text fit, including Return to world map and Back to Observatory."
+    },
+    {
+      "index": 15,
+      "name": "sunwheel-tablet-landscape-final-result-action-visible",
+      "rawPath": "/private/tmp/sunwheel-native/map-01/tablet/attachments/CFDFAB74-8F8B-4F6C-99C2-D0DA9CBF3791.png",
+      "sha256": "dba5f2314d10740c962140fbd675788952ff28b5bd0d00f459a0b60fa53340bb",
+      "bytes": 5965815,
+      "storedPixelDimensions": [
+        1640,
+        2360
+      ],
+      "exifOrientation": 8,
+      "displayPixelDimensions": [
+        2360,
+        1640
+      ],
+      "hashVerified": true,
+      "visuallyInspectedOriginal": true,
+      "status": "passed",
+      "findings": "Landscape final action frame matches the preceding 100% bytes. Independently opened: all result actions remain visible, with open outlet/golden waterfall preserved alongside them."
+    }
+  ]
+}

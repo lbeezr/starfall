@@ -1,0 +1,87 @@
+{
+  "schema": 1,
+  "status": "passed-with-scope-limits",
+  "sourceCommit": "d057696934621b4e9f34a3d57f620d28fe9eb262",
+  "runtimeInputFingerprint": "dev.a15832d0fd",
+  "literalSimulatorBuildLabel": "dev.local",
+  "device": "iPhone17e Simulator/iOS27.0",
+  "configuration": "Debug, default text, normal motion",
+  "recording": {
+    "localPath": "/private/tmp/sunwheel-accepted-phone.mp4",
+    "bytes": 63684843,
+    "sha256": "bed7071222019a8bfdba9182b540b5aad86f1c6623e4584188f898ea0e21c8fe",
+    "startEpochMilliseconds": 1792512705074,
+    "durationSeconds": 202.88833333333332,
+    "requestedFPS": 30,
+    "tool": "XcodeBuildMCP.record_sim_video"
+  },
+  "inspection": "Native-oriented, full-resolution exports sampled at4fps from132 through141.75seconds; selected inspected frames below. No continuous-playback or frame-time claim.",
+  "extraction": {
+    "command": "python3 scripts/simulator-command.py --receipt /private/tmp/sunwheel-accepted-motion-timings.jsonl sunwheel-accepted-transition-frames 60 swift -module-cache-path /private/tmp/sunwheel-video-module-cache /private/tmp/frostfruit-motion-frames.swift /private/tmp/sunwheel-accepted-phone.mp4 /private/tmp/sunwheel-accepted-transition-frames 132 142",
+    "elapsedSeconds": 7.075,
+    "helperSHA256": "0f165ae1f8d0680fea5517f09847cbc75282b92f9845fd645cab0d9d69c283f2",
+    "pixelProcessing": "AVFoundation native frame decode only; no edits to recording/source paintings."
+  },
+  "inspectedFrames": [
+    {
+      "seconds": 133,
+      "localPath": "/private/tmp/sunwheel-accepted-transition-frames/frame-133.00.png",
+      "sha256": "83d62a9359227261e0defd502375b1477bbd5fbf089757549efa27bff6d869f4",
+      "observation": "14/18, three rows of living-light pieces, all five vanes and ordinary lamps lit; outlet closed and onward/foreground channels dark."
+    },
+    {
+      "seconds": 135,
+      "localPath": "/private/tmp/sunwheel-accepted-transition-frames/frame-135.00.png",
+      "sha256": "ec49bc0bc4cfb780bdb9b2024866fb6667402a5cc36256dc17e86b9e9f5e2beb",
+      "observation": "Pre-clear composition and controls remain steady and legible."
+    },
+    {
+      "seconds": 136,
+      "localPath": "/private/tmp/sunwheel-accepted-transition-frames/frame-136.00.png",
+      "sha256": "7f6964938dd1d0c1341c45ff1df42b790e0d2a12f4fc4f2b5aa56cedb0a643fb",
+      "observation": "Still14/18 with closed gate before native winning clear."
+    },
+    {
+      "seconds": 137,
+      "localPath": "/private/tmp/sunwheel-accepted-transition-frames/frame-137.00.png",
+      "sha256": "8b55d5edbf902b326915febcb5aee9671b6868ecc9e5c3b8df7e23398a640645",
+      "observation": "18/18 and +4 are visible; three golden transfer trails travel from the cleared Sunny group toward the mill while gate remains closed."
+    },
+    {
+      "seconds": 137.25,
+      "localPath": "/private/tmp/sunwheel-accepted-transition-frames/frame-137.25.png",
+      "sha256": "19fd6ca04880884a39ce8af3ab31742ccc69309321a8c5e559d11bb73caf6177",
+      "observation": "Whole-painting transition reveals open leaves and golden onward/foreground flow. Surviving pieces settle down; contours and inner lights remain distinct."
+    },
+    {
+      "seconds": 137.5,
+      "localPath": "/private/tmp/sunwheel-accepted-transition-frames/frame-137.50.png",
+      "sha256": "0e329025d26d0d6561f8216cc6c139035b02ace4e94b8a64e94e9a9bbb652551",
+      "observation": "Open outlet and golden flow are fully visible above the restored result. Full result text and all four actions remain legible."
+    },
+    {
+      "seconds": 138,
+      "localPath": "/private/tmp/sunwheel-accepted-transition-frames/frame-138.00.png",
+      "sha256": "cfd0a9f66fd6ceefc32de6a5006f21715934814c35de2e881ddfe673e0fe94b8",
+      "observation": "Completed result stays settled; finite celebration motes appear."
+    },
+    {
+      "seconds": 139.5,
+      "localPath": "/private/tmp/sunwheel-accepted-transition-frames/frame-139.50.png",
+      "sha256": "7bd911706d7bbd79e484d3256789bd021104fa3b7aa4876774a671f5efb9ae58",
+      "observation": "Restored result remains stable with onward flow visible."
+    }
+  ],
+  "findings": [
+    "Committed score precedes the transfer and completed painting.",
+    "Closed75% \u2192 open100% outlet payoff is readable and the scene retains its connected geography.",
+    "No blank center rectangle or cloud-mask seam appears in the inspected transition.",
+    "Current living-light bodies stay readable through clearing and settling."
+  ],
+  "limits": [
+    "Dense rapid-clear had already completed when recording began; its stills/assertions are separate evidence.",
+    "Saved-win background/relaunch/replay behavior is asserted by the native test and inspected stills, not inferred from this sampled finish.",
+    "No measured frame pacing, continuous-video playback, physical play, haptic/audio, wheel rotation or actual VoiceOver claim."
+  ],
+  "reviewedUTC": "2026-10-20T16:17:01.938139+00:00"
+}

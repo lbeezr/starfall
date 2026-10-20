@@ -35,7 +35,8 @@ final class StarfallChallengeTests: XCTestCase {
         XCTAssertEqual(try JSONEncoder().encode(StarfallChallenge.seedMoon), Data(#""seedMoon""#.utf8))
         XCTAssertEqual(try JSONEncoder().encode(StarfallChallenge.silverPools), Data(#""silverPools""#.utf8))
         XCTAssertEqual(try JSONEncoder().encode(StarfallChallenge.frostfruitOrchard), Data(#""frostfruitOrchard""#.utf8))
-        XCTAssertEqual(StarfallChallenge.allCases.count, 6)
+        XCTAssertEqual(try JSONEncoder().encode(StarfallChallenge.sunwheelMill), Data(#""sunwheelMill""#.utf8))
+        XCTAssertEqual(StarfallChallenge.allCases.count, 7)
         for challenge in StarfallChallenge.allCases {
             let game = FallingSky(challenge: challenge)
             XCTAssertEqual(game.board, lantern.board)

@@ -1,0 +1,58 @@
+{
+  "checkedUTC": "2026-10-20T17:16:13.425073+00:00",
+  "nativeSource": "49d54fcab24984c73262849b853e23e8ecd93e3e",
+  "runtimeInputFingerprint": "dev.6fa54c5e65",
+  "baselineMain": "f4144ec2159416dbf479f6294cc5e561bfa0070b",
+  "matchingTestSources": 76,
+  "commands": [
+    {
+      "command": "python3 scripts/ci-hygiene.py",
+      "exitCode": 0
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0
+    },
+    {
+      "command": "python3 /private/tmp/check-sunwheel-doc-links.py",
+      "exitCode": 0,
+      "files": 19,
+      "checked": 1300,
+      "missing": []
+    }
+  ],
+  "workingTree": [
+    " M App/README.md",
+    " M README.md",
+    " M Sources/StarfallCore/README.md",
+    " M docs/ENGINEERING.md",
+    " M docs/EXPERIMENTS.md",
+    " M docs/OFFICIAL_LOCATIONS_AND_TUTORIAL_PLAN.md",
+    " M docs/README.md",
+    " M docs/ROADMAP.md",
+    " M docs/design/README.md",
+    " M docs/design/STARFALL_GAME_BIBLE.md",
+    " M docs/design/STARLIGHT_RESTORATION.md",
+    " M docs/design/VISUAL_REFERENCE.md",
+    " M docs/design/WORLD_ATLAS.md",
+    " M docs/design/sunwheel-mill-07/PRODUCTION_PLAN.md",
+    " M docs/design/sunwheel-mill-07/README.md",
+    " M docs/design/sunwheel-mill-07/art-prompts.json",
+    " M docs/design/sunwheel-mill-07/map-island/README.md",
+    " M docs/evidence/README.md",
+    " M docs/evidence/sunwheel-mill-2026-10-20/README.md",
+    "?? docs/evidence/sunwheel-mill-2026-10-20/MAP_INTEGRATION.md",
+    "?? docs/evidence/sunwheel-mill-2026-10-20/dev-49d54fc__sunwheel-earned-map__iphone-17e__default-text.png",
+    "?? docs/evidence/sunwheel-mill-2026-10-20/dev-49d54fc__sunwheel-restored-map__ipad-air11__landscape.png",
+    "?? docs/evidence/sunwheel-mill-2026-10-20/map-captures.json",
+    "?? docs/evidence/sunwheel-mill-2026-10-20/map-code-membership-review.json",
+    "?? docs/evidence/sunwheel-mill-2026-10-20/map-compact-tablet-visual-review.json",
+    "?? docs/evidence/sunwheel-mill-2026-10-20/map-integration-verification.json",
+    "?? docs/evidence/sunwheel-mill-2026-10-20/map-kit-regeneration.json",
+    "?? docs/evidence/sunwheel-mill-2026-10-20/map-phone-visual-review.json",
+    "?? docs/evidence/sunwheel-mill-2026-10-20/map-source-equivalence.json",
+    "?? docs/evidence/sunwheel-mill-2026-10-20/map-source.json",
+    "?? docs/evidence/sunwheel-mill-2026-10-20/map-tablet-visual-review.json"
+  ],
+  "scope": "Publication preparation after source-bound verification; current dirty paths are documentation, evidence and untouched original native PNG copies. No runtime or test input changes."
+}

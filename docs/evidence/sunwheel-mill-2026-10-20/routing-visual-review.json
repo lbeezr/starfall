@@ -1,0 +1,277 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "/root/sunwheel_runtime",
+  "reviewedAtUTC": "2026-10-20T15:58:41.517741+00:00",
+  "result": "pass",
+  "blockingFindings": [],
+  "candidateCommit": "b7f4fd8c81ced657e502a94efb4c27d5ad159a23",
+  "runtimeBuildID": "dev.fdc51ddb01",
+  "preLatestMainMergeEvidence": true,
+  "postMergeAcceptance": false,
+  "captureManifest": "/private/tmp/sunwheel-native/development-01/routing/captures.json",
+  "captureManifestFileSHA256": "3c54e42bc20f9ccb9ef6bcda54b1b522bf2f548678811f91bcd74d3fdc2b68a2",
+  "exportManifestSHA256": "b408cd50fbaf05169b1ecf6a6b806e7afa0ab9ed6cca18bbca8918c1e69de50d",
+  "reviewedCaptureCount": 29,
+  "uniqueCaptureHashes": 29,
+  "allCaptureSHA256Verified": true,
+  "scope": "Original development-01 routing Simulator stills on candidate b7 before latest-main living-light merge.",
+  "summary": [
+    "Earned map sequence visibly restores Frostfruit and reveals Sunwheel with the correct title, selection marker, ready status and Visit action. Entry displays dormant Sunwheel at 0/18 with its closed outlet.",
+    "Initial Lantern entry, repaired Lantern/relaunch, Silver-to-Frostfruit readiness and Frostfruit entry retain correct location art and legible map actions.",
+    "All seven native swap/clear and quiet-corner captures show the correct restoration painting and readable actual pieces, score, dialogue and actions.",
+    "All seven Official-map-* captures correctly show the same retained Open Sky board after preview cancellation. Their names identify the cancelled preview, not the displayed restoration location.",
+    "No visible blank/missing artwork, center-clearing rectangle, cloud seam, blocking crop or unreadable action was found in these captures."
+  ],
+  "evidenceInterpretation": [
+    {
+      "path": "UITests/WorldJourneyInteractionTests.swift",
+      "line": 207,
+      "finding": "Earned Frostfruit test first asserts Sunwheel locked; commits a native Frostfruit winning clear, then asserts Ready to restore, Frostfruit Restored and Bell Choir Not yet available. It relaunches, visits Sunwheel, begins and checks 0/18 before the entry capture."
+    },
+    {
+      "path": "UITests/ObservatoryInteractionTests.swift",
+      "line": 551,
+      "finding": "Official-map captures are taken after selecting a map preview and cancelling with world.done; board and score are asserted unchanged. The retained historical dense Open Sky fixture explains its completed Lantern scenery and historical special."
+    },
+    {
+      "path": "UITests/ObservatoryInteractionTests.swift",
+      "line": 626,
+      "finding": "Quiet captures use isolated dense restoration fixtures with calm effects, then a native corner clear and exact score assertion."
+    }
+  ],
+  "testSourceBinding": [
+    {
+      "path": "UITests/WorldJourneyInteractionTests.swift",
+      "sha256": "9bcf578ba9a0c0709e74793cef5894e0e23f52976a2699ab023669c8d7a92937",
+      "matchesRecordedTestSource": true
+    },
+    {
+      "path": "UITests/ObservatoryInteractionTests.swift",
+      "sha256": "88c6a8675e7075fc538e209dedf0eef4d9e3add9ccf6b1dd49891b647995592b",
+      "matchesRecordedTestSource": true
+    }
+  ],
+  "existingRunVerification": {
+    "path": "/private/tmp/sunwheel-native/development-01/routing/verification.json",
+    "counts": {
+      "passedTests": 7,
+      "totalTestCount": 7,
+      "failedTests": 0,
+      "skippedTests": 0
+    },
+    "runtimeBuildID": "dev.fdc51ddb01",
+    "sourceCommit": "b7f4fd8c81ced657e502a94efb4c27d5ad159a23"
+  },
+  "limitations": [
+    "This report reviews stills; interaction assertions and save/relaunch behavior belong to the separately recorded 7/7 native run.",
+    "Stills with trails or quiet effects do not establish normal animation timing, fluidity, actual VoiceOver behavior or physical-device acceptance.",
+    "Candidate b7 predates the latest-main living-light merge. These captures must not be described as post-merge material or runtime acceptance.",
+    "No images were edited, recompressed, copied or rotated; original PNG bytes and orientation metadata were retained. Display previews may be scaled by the viewing tool.",
+    "The 29 routing stills do not replace the separate five-stage and tablet visual reviews."
+  ],
+  "captures": [
+    {
+      "name": "official-world-map-phone",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/routing/attachments/D5C0255C-0D8F-439F-901F-F1DD2BEFA9FD.png",
+      "sha256": "c1f6f931c9182082fc7068350f3d2dbc4952210cd6dbeaae39c1042c83ec382f",
+      "reviewed": true,
+      "finding": "Initial map selects Lantern Landing as Ready to restore; start landmark, card and Visit action are readable."
+    },
+    {
+      "name": "official-lantern-after-map-entry",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/routing/attachments/D4040371-0EE7-41BA-BAC7-6827B2A6729E.png",
+      "sha256": "9261dce8151aaae57876d1850d7fc2dd0054b487fb8262d3006d055a69f1dbd3",
+      "reviewed": true,
+      "finding": "Lantern Landing begins at 0/18 with unlit lantern painting; actual pieces, HUD and controls fit."
+    },
+    {
+      "name": "world-lantern-repaired-path-revealed",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/routing/attachments/6C32E28D-8B73-4039-83F0-721EB3DC5AA8.png",
+      "sha256": "770d0dea34dd674e41542fb8cc7c32fe07f25b3280eec9b5ea2e80dc0852168a",
+      "reviewed": true,
+      "finding": "Repaired Lantern landmark and illuminated path lead to Ribbon Crossing Ready to restore; card and Visit action fit."
+    },
+    {
+      "name": "world-repair-after-relaunch",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/routing/attachments/146B079F-60DB-4AC8-8C63-73A0E68F94E8.png",
+      "sha256": "d7af55b1768079b0d0750c73072fd7bc366589ec807a60e82b230b69fb3f02e3",
+      "reviewed": true,
+      "finding": "Relaunch retains the repaired Lantern landmark and Ribbon readiness; selection and Visit action remain clear."
+    },
+    {
+      "name": "frostfruit-ready-after-silver-repair",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/routing/attachments/BECD3B67-4150-4DFF-A444-68FB3B712211.png",
+      "sha256": "685f570a1cf703179e64bf913469fafd54728bc7ebb750bb093fbae20589384d",
+      "reviewed": true,
+      "finding": "Repaired Silver Pools and path lead to Frostfruit Orchard Ready to restore; full title and Visit label fit."
+    },
+    {
+      "name": "frostfruit-entered-from-earned-map-unlock",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/routing/attachments/4FE05892-7853-42B1-A95E-3BD35D30FCBB.png",
+      "sha256": "be16eb43dbcdb71e2f0079bc2839606b8835df9818ac5f60c6c4e4d9a8cd7659",
+      "reviewed": true,
+      "finding": "Earned Frostfruit entry displays the correct unlit snowy orchard at 0/18; three actual opening pieces and controls fit."
+    },
+    {
+      "name": "sunwheel-ready-after-frostfruit-repair",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/routing/attachments/63A7F94E-A2C0-467C-9687-6F578F82BE71.png",
+      "sha256": "ace3747dc695febbb1ef0a11d51e308c03044546a99224e0a7e99868cef19bf0",
+      "reviewed": true,
+      "finding": "Repaired Frostfruit landmark and illuminated onward path lead to selected Sunwheel Mill Ready to restore; unbuilt landmarks remain dark and selection marker/card are clear."
+    },
+    {
+      "name": "sunwheel-entered-from-earned-map-unlock",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/routing/attachments/5B2323B3-D90B-47B7-A64E-15DEE173260F.png",
+      "sha256": "589d6a6fc18b242b192cbdcc1f2e5c1506c5f41bb176923b6330a7b954a76a67",
+      "reviewed": true,
+      "finding": "Earned Sunwheel entry displays the dormant mill and closed outlet at 0/18; actual opening pieces and controls are readable."
+    },
+    {
+      "name": "lantern-official-native-swap-and-clear",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/routing/attachments/D8E9D476-87B6-4424-829B-BD5729A791D1.png",
+      "sha256": "9f3f7ae7616104f74e755c124adf3464a240967e67c0eb59e0fa6f4638fec3d3",
+      "reviewed": true,
+      "finding": "Lantern Landing native swap/clear capture shows its correct un-restored painting and 4/18 score; remaining pieces, +4 callout, dialogue and controls are readable. In-flight trails and disabled Next shower are a transient still, not motion acceptance."
+    },
+    {
+      "name": "ribbon-official-native-swap-and-clear",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/routing/attachments/7A972098-3AA7-4784-9B47-FD79F90BDFC3.png",
+      "sha256": "ff67055fb315a679782341f2f1c2ea4a80fb89a66c4815079ebb6dc25aa3a929",
+      "reviewed": true,
+      "finding": "Ribbon Crossing native swap/clear capture shows its correct un-restored painting and 4/18 score; remaining pieces, +4 callout, dialogue and controls are readable. In-flight trails and disabled Next shower are a transient still, not motion acceptance."
+    },
+    {
+      "name": "kite-official-native-swap-and-clear",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/routing/attachments/80C5FD9F-A509-4775-9207-711E1A3737CB.png",
+      "sha256": "0c85002c7f689548de7e797c49c2efc9e10040354b54ddc64299b86d460a1247",
+      "reviewed": true,
+      "finding": "Kite Harbor native swap/clear capture shows its correct un-restored painting and 4/18 score; remaining pieces, +4 callout, dialogue and controls are readable. In-flight trails and disabled Next shower are a transient still, not motion acceptance."
+    },
+    {
+      "name": "seed-official-native-swap-and-clear",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/routing/attachments/C7DB5955-1C2C-4243-B422-A0F542007FE2.png",
+      "sha256": "1b179efc5341de578db386c0e85f28f0f09fa6268c173d24853e5e73cef6af6e",
+      "reviewed": true,
+      "finding": "Seed Moon native swap/clear capture shows its correct un-restored painting and 4/18 score; remaining pieces, +4 callout, dialogue and controls are readable. In-flight trails and disabled Next shower are a transient still, not motion acceptance."
+    },
+    {
+      "name": "silver-official-native-swap-and-clear",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/routing/attachments/5573C76E-47CB-4E1A-B63B-C571057FB661.png",
+      "sha256": "d201b135245fad3bbd98d40274193aecc34f0c63c5e836e73570cfe4991be859",
+      "reviewed": true,
+      "finding": "Silver Pools native swap/clear capture shows its correct un-restored painting and 4/18 score; remaining pieces, +4 callout, dialogue and controls are readable. In-flight trails and disabled Next shower are a transient still, not motion acceptance."
+    },
+    {
+      "name": "frostfruit-official-native-swap-and-clear",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/routing/attachments/FF873414-C5D1-4A51-BCDD-C2020EA4EC64.png",
+      "sha256": "ac1f3314d55b643edf07f278ca0bcd6f6618580d921d46fc14da0e4fc74c8fa5",
+      "reviewed": true,
+      "finding": "Frostfruit Orchard native swap/clear capture shows its correct un-restored painting and 4/18 score; remaining pieces, +4 callout, dialogue and controls are readable. In-flight trails and disabled Next shower are a transient still, not motion acceptance."
+    },
+    {
+      "name": "sunwheel-official-native-swap-and-clear",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/routing/attachments/D137F415-5A6E-463A-B254-C88B85FF9883.png",
+      "sha256": "3a9c73cbd47ad393bdd1cf583fed5a973d80cf863461c03102bd4f8761312ca5",
+      "reviewed": true,
+      "finding": "Sunwheel Mill native swap/clear capture shows its correct un-restored painting and 4/18 score; remaining pieces, +4 callout, dialogue and controls are readable. In-flight trails and disabled Next shower are a transient still, not motion acceptance."
+    },
+    {
+      "name": "Official-map-firstLight-1",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/routing/attachments/28CACAC0-F6F6-49B9-8041-C24FA75B8321.png",
+      "sha256": "3d67a657f8ad09ebe58fde25fb5b55bff1c8f28d40b53dfd076c907aaab26e06",
+      "reviewed": true,
+      "finding": "After Lantern Landing map preview cancellation, the retained Open Sky board stays over completed Lantern scenery at score 0. This intentionally shows retention, not entry into the selected restoration location. All cells and controls remain visible."
+    },
+    {
+      "name": "Official-map-ribbonCrossing-1",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/routing/attachments/B42D8202-AAEB-46DA-87C1-C07776BE7F2B.png",
+      "sha256": "26c1ebfbc680a2dfaf609f59dba16b2e8fcffce32a1ef7acb20e30bc1f55a2b0",
+      "reviewed": true,
+      "finding": "After Ribbon Crossing map preview cancellation, the retained Open Sky board stays over completed Lantern scenery at score 0. This intentionally shows retention, not entry into the selected restoration location. All cells and controls remain visible."
+    },
+    {
+      "name": "Official-map-kiteHarbor-1",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/routing/attachments/30DD71CA-BCF4-4814-91CD-E03C775D6AF1.png",
+      "sha256": "9bc1808e5adbd149c996c9118c6608d0dac20957e8a4bea5272eb80c101c7776",
+      "reviewed": true,
+      "finding": "After Kite Harbor map preview cancellation, the retained Open Sky board stays over completed Lantern scenery at score 0. This intentionally shows retention, not entry into the selected restoration location. All cells and controls remain visible."
+    },
+    {
+      "name": "Official-map-seedMoon-1",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/routing/attachments/010B93CE-9F2E-4B22-9459-C68320BC5BB1.png",
+      "sha256": "96eaf30666e44e25d896af0194527b83914408ef1a514ad307a5d919684f51c9",
+      "reviewed": true,
+      "finding": "After Seed Moon map preview cancellation, the retained Open Sky board stays over completed Lantern scenery at score 0. This intentionally shows retention, not entry into the selected restoration location. All cells and controls remain visible."
+    },
+    {
+      "name": "Official-map-silverPools-1",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/routing/attachments/E056E366-622F-4A12-B281-D27DDCE6694F.png",
+      "sha256": "3304ed3449fc08b6b7c69dc070a44bf4cd46c2d91d6ae2603d12573b351e8b21",
+      "reviewed": true,
+      "finding": "After Silver Pools map preview cancellation, the retained Open Sky board stays over completed Lantern scenery at score 0. This intentionally shows retention, not entry into the selected restoration location. All cells and controls remain visible."
+    },
+    {
+      "name": "Official-map-frostfruitOrchard-1",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/routing/attachments/42B58622-39DB-4822-861B-3CFD082C8ED5.png",
+      "sha256": "cd50890c761188feed6551f73326db4dc2b98eda6dc1398c34e6f9958d2832f5",
+      "reviewed": true,
+      "finding": "After Frostfruit Orchard map preview cancellation, the retained Open Sky board stays over completed Lantern scenery at score 0. This intentionally shows retention, not entry into the selected restoration location. All cells and controls remain visible."
+    },
+    {
+      "name": "Official-map-sunwheelMill-1",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/routing/attachments/EFFCFDFD-1DD3-4576-8D9E-F3F7F4BA1ADF.png",
+      "sha256": "8c4a7c297854a5adb2da71370035eaa1806fbbfbe62831268bf400bf34761668",
+      "reviewed": true,
+      "finding": "After Sunwheel Mill map preview cancellation, the retained Open Sky board stays over completed Lantern scenery at score 0. This intentionally shows retention, not entry into the selected restoration location. All cells and controls remain visible."
+    },
+    {
+      "name": "Restoration-quiet-firstLight",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/routing/attachments/B788D6D5-B0A1-48E3-9118-ACDC59830193.png",
+      "sha256": "d860b7b2e9db64a54551af255872734ff10d15127742ac0c1a00b9edf50fd3d9",
+      "reviewed": true,
+      "finding": "Lantern Landing quiet-corner clear shows its correct painting and 4/18 score with retained board pieces; fixed +4 callout, dialogue and actions remain clear."
+    },
+    {
+      "name": "Restoration-quiet-ribbonCrossing",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/routing/attachments/EFE2E8B6-F34B-413C-B180-ABDA3E9132F1.png",
+      "sha256": "3cc9265463babeef3c451d1e5d0960192a7c0718ca1fab8389e34fa5e789f057",
+      "reviewed": true,
+      "finding": "Ribbon Crossing quiet-corner clear shows its correct painting and 4/18 score with retained board pieces; fixed +4 callout, dialogue and actions remain clear."
+    },
+    {
+      "name": "Restoration-quiet-kiteHarbor",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/routing/attachments/F0E40171-9723-4FE8-A785-CCFD4667FA14.png",
+      "sha256": "4b8d49ef094e0994405eaef93492c001f72733c72647990f05ef6e2ad70d4c62",
+      "reviewed": true,
+      "finding": "Kite Harbor quiet-corner clear shows its correct painting and 4/18 score with retained board pieces; fixed +4 callout, dialogue and actions remain clear."
+    },
+    {
+      "name": "Restoration-quiet-seedMoon",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/routing/attachments/7BEFEEF7-BEBC-4F79-AE74-FB0A84BE1466.png",
+      "sha256": "d376961b6cfdaee2b0b2573bfddbe030bd9dd989057955b7582e90faa5902ff8",
+      "reviewed": true,
+      "finding": "Seed Moon quiet-corner clear shows its correct painting and 4/18 score with retained board pieces; fixed +4 callout, dialogue and actions remain clear."
+    },
+    {
+      "name": "Restoration-quiet-silverPools",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/routing/attachments/60CFE2CC-20BC-468E-AC9A-D70A79666F7C.png",
+      "sha256": "edf4d90544cf58cb79e1a93604e0baae9d9c1692a62f118e4668a20a302249b7",
+      "reviewed": true,
+      "finding": "Silver Pools quiet-corner clear shows its correct painting and 4/18 score with retained board pieces; fixed +4 callout, dialogue and actions remain clear."
+    },
+    {
+      "name": "Restoration-quiet-frostfruitOrchard",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/routing/attachments/7B9AEA54-A74C-4AC1-BAC8-EBCF74D2406A.png",
+      "sha256": "883f64566b70c0ed1d51938ba0106de0223ef98e7eda3a79e020fb34ff4ddc69",
+      "reviewed": true,
+      "finding": "Frostfruit Orchard quiet-corner clear shows its correct painting and 4/18 score with retained board pieces; fixed +4 callout, dialogue and actions remain clear."
+    },
+    {
+      "name": "Restoration-quiet-sunwheelMill",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/routing/attachments/D6C01500-AA7E-413E-A909-9AB9EDCBA438.png",
+      "sha256": "1e439062a1f76365231383f645792054be9e09ebb3d37dcf013c858f3c28f09a",
+      "reviewed": true,
+      "finding": "Sunwheel Mill quiet-corner clear shows its correct painting and 4/18 score with retained board pieces; fixed +4 callout, dialogue and actions remain clear."
+    }
+  ]
+}

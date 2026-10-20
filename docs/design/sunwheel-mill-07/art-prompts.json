@@ -1,0 +1,606 @@
+[
+  {
+    "id": "phone-100-master-01",
+    "request": {
+      "prompt": "Use case: stylized-concept. Asset: finished game-board environment painting for Starfall, Sunwheel Mill, PHONE PORTRAIT at 100% restored. Create one 1:2 tall illustration, target 887x1774, no UI. Reference1 is ONLY a native-layout responsibility guide: do not paint its rectangles, labels, grid, or game pieces. Reference2 is ONLY the overhead camera construction. Reference3 Lantern Landing supplies premium painterly 3D craft, substantial connected terrain and intimate scale. Reference4 the world map supplies Sunwheel Mill's identity (the warm copper flower windmill on the middle-left island); depict this ONE location, not a map or montage.\nScene: a rich friendly working mill suspended above an indigo starry universe, softly billowing lavender clouds at the outer edges. One broad U-shaped upper terrace supports a LOW rounded slate-and-timber workshop with golden windows, a sturdy copper bearing and a broad FIVE-vane flower-like copper wheel, with rounded golden glass petal inserts and clear gaps. Thick pale warm moonstone platforms, worn timber joins, golden/copper rails, steps, a tiny sheltered bench, a reachable polishing ledge with a cloth and oiling pot, and a little supported footbridge explain how people use the place. Autumn amber leaves and moss provide restrained living details. Not snow. No gear teeth, belts, industrial danger, characters, faces, selectable stars, text or controls.\nCamera: coherent high three-quarter OVERHEAD, working 55 degrees above the horizontal, yaw0 roll0, orthographic-like nearly parallel edges and no visible horizon. Show broad top surfaces, thick front faces and grounded supports. Upper main mill terrace spans the width roughly within top 27% of image, with wheel left and low workshop behind/right. Wheel may enter very top scenic space. At roughly x62%,y21% put a distinct generous copper OUTLET APERTURE on the front terrace: two rounded solid copper gate leaves have opened sideways, revealing a luminous golden throat, at least 14% image width, plainly visible BELOW the top HUD zone and ABOVE the playable middle. A single contained golden stream flows from this opening along a curved channel toward the upper-right path beyond the frame. This aperture is the important final reward. All FIVE glass vane inserts, central bearing, ordinary lamps and upstream channels glow warmly. The wheel is in one fixed supported pose.\nContinue connected side steps near the outer margins; in the bottom 15% bring a substantial close timber/copper bridge and moonstone channel into frame, partially cropped to establish near depth, linked by side terrain to the mill. Preserve rich crafted architecture rather than shrinking the mill to a lone little icon. Through the broad central playable span y29\u201373%, continue natural restrained indigo sky/soft cloud and quiet surfaces behind game pieces; avoid sharp scenic highlights and architecture through this area. It is part of the same continuous painting, not a cleared rectangle, blur, vignette, empty cutout, mask or fog divider. Scenery stays fully detailed with authentic materials elsewhere. One beautiful coherent painting, lush but readable, warm copper light against deep midnight blues. Do not copy any lettering, heroes, villain, or paths of stars from the map.",
+      "referenced_image_paths": [
+        "/Users/lbeezr/.codex-workspaces/worktrees/ios-a412ced0-1da1-4bc5-8682-a9ef02f52407/Starfall/docs/design/level-design-kit/source-phone.png",
+        "/Users/lbeezr/.codex-workspaces/worktrees/ios-a412ced0-1da1-4bc5-8682-a9ef02f52407/Starfall/docs/design/level-design-kit/camera-reference.png",
+        "/Users/lbeezr/.codex-workspaces/worktrees/ios-a412ced0-1da1-4bc5-8682-a9ef02f52407/Starfall/App/Assets.xcassets/LanternLanding100.imageset/scene.png",
+        "/Users/lbeezr/.codex-workspaces/worktrees/ios-a412ced0-1da1-4bc5-8682-a9ef02f52407/Starfall/App/Assets.xcassets/WorldMapRestored.imageset/world-restored.png"
+      ],
+      "transparent_background": false
+    },
+    "original": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-7bf8af8c-e723-44b4-8715-c3834448c71b.png",
+    "status": "Rejected framing: tall cliff and downward outlet stream crowd top gameplay rows. Replaced by phone-100-master-02; retained as provenance only.",
+    "sha256": "696abbcb530902fda6414264ff50b3f0093c9f8d1b20e1dd4f1a4e7003fc1af2",
+    "pixelSize": [
+      887,
+      1774
+    ],
+    "referenceHashes": [
+      {
+        "path": "/Users/lbeezr/.codex-workspaces/worktrees/ios-a412ced0-1da1-4bc5-8682-a9ef02f52407/Starfall/docs/design/level-design-kit/source-phone.png",
+        "sha256": "c0fae1d5c2b7e2c89d28bef9fa163249fbff0f80ab8a42ec861e1366f9faa74b"
+      },
+      {
+        "path": "/Users/lbeezr/.codex-workspaces/worktrees/ios-a412ced0-1da1-4bc5-8682-a9ef02f52407/Starfall/docs/design/level-design-kit/camera-reference.png",
+        "sha256": "9d5156c35f6e31945f0cb6e67b380f5238a17374ae20b998b458a79a3479f868"
+      },
+      {
+        "path": "/Users/lbeezr/.codex-workspaces/worktrees/ios-a412ced0-1da1-4bc5-8682-a9ef02f52407/Starfall/App/Assets.xcassets/LanternLanding100.imageset/scene.png",
+        "sha256": "e7806e535dbd1d769c744c976aab08fbf3d4ca38a652239f28fa229dda72d8dd"
+      },
+      {
+        "path": "/Users/lbeezr/.codex-workspaces/worktrees/ios-a412ced0-1da1-4bc5-8682-a9ef02f52407/Starfall/App/Assets.xcassets/WorldMapRestored.imageset/world-restored.png",
+        "sha256": "467febb84e34cac7da8a71db506def7bbd926e730fea51f2f6a2382fd2ce0a5d"
+      }
+    ]
+  },
+  {
+    "id": "phone-100-master-02",
+    "request": {
+      "prompt": "Use case: precise-object-edit. Edit the FIRST Sunwheel Mill painting for native phone clearance. Second image is only the technical layout guide; never paint its marks. Preserve exact 1:2 portrait format, entire atmosphere, all five copper glass vanes, low slate workshop, warm materials, outlet opening and rich connected construction, the close foreground bridge and its entire bottom composition. Change ONLY the upper terrace's lower apron and its outgoing channel: the upper mill needs to finish at roughly 27% of image height (480 pixels on a1774px canvas), leaving the playing span below. Keep the wheel/mill/outlet same generous sizes and top positions. Shorten and recompose the long front steps and deep hanging cliff into a substantial SHALLOW ledge; no tall crystal teeth dangling down into the central sky. Fold the front timber deck backward so it stays under the mill rather than advancing toward the viewer. The two open outlet gate leaves remain conspicuous around x62%,y21%. Its golden stream must turn RIGHT along the upper terrace and continue toward the upper-right path, instead of pouring DOWN into the playing sky. No waterfall below the upper ledge. Main structure should still be rich and physically supported, with top surfaces and thick shallow front edges. Keep the coherent55degree overhead view, not a low-angle island vista. Do not globally miniaturize the mill, remove the workshop details, blank a rectangle, mask or blur the center. Preserve the continuous blue starry sky and outer cloud shapes below the shortened ledge; no characters, pieces, UI, text, labels, grid or horizon.",
+      "referenced_image_paths": [
+        "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-7bf8af8c-e723-44b4-8715-c3834448c71b.png",
+        "/Users/lbeezr/.codex-workspaces/worktrees/ios-a412ced0-1da1-4bc5-8682-a9ef02f52407/Starfall/docs/design/level-design-kit/source-phone.png"
+      ],
+      "transparent_background": false
+    },
+    "original": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-289eb3b2-79d2-4deb-9204-6e4e1a2e23ab.png",
+    "status": "Adopted packaged painting; source continuity and native board review accepted at d057696/dev.a15832d0fd. Unchanged board artwork retained through map-integration verification at 49d54fc/dev.6fa54c5e65. Publication and canonical installation pending.",
+    "family": "phone",
+    "state": 100,
+    "selected": true,
+    "sha256": "c29726025d8e30f77bba7be73dd82984c0ddb263496b02c2f58656a8fde110cf",
+    "pixelSize": [
+      887,
+      1774
+    ],
+    "referenceHashes": [
+      {
+        "path": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-7bf8af8c-e723-44b4-8715-c3834448c71b.png",
+        "sha256": "696abbcb530902fda6414264ff50b3f0093c9f8d1b20e1dd4f1a4e7003fc1af2"
+      },
+      {
+        "path": "/Users/lbeezr/.codex-workspaces/worktrees/ios-a412ced0-1da1-4bc5-8682-a9ef02f52407/Starfall/docs/design/level-design-kit/source-phone.png",
+        "sha256": "c0fae1d5c2b7e2c89d28bef9fa163249fbff0f80ab8a42ec861e1366f9faa74b"
+      }
+    ],
+    "asset": "App/Assets.xcassets/SunwheelMill100.imageset/scene.png"
+  },
+  {
+    "id": "portrait-100-master-01",
+    "request": {
+      "prompt": "Use case: stylized-concept. Recompose FIRST Sunwheel Mill reference as a BESPOKE iPad PORTRAIT game-board environment, 3:4 aspect target1086x1448. Preserve its charming warm slate-and-timber workshop, five rounded copper/glass flower vanes, split copper outlet gates, autumn plants, honey light channels and indigo-lavender universe. This is the SAME mill seen in a wider working yard, not a stretched crop. SECOND reference is exact layout responsibility guide ONLY; do not paint its shapes/text/pieces. THIRD camera reference sets55degree overhead, yaw0 roll0 orthographic-like, no horizon.\nNative fit is crucial: broad connected UPPER TERRACE fills the full width but is SHALLOW vertically, confined principally to top19% of canvas. Use high overhead view of low supported architecture, wheel at upper left, round slate workshop upper center/right, a visible bridge and working bench joining them. Keep an obvious generous OPEN OUTLET at x51%,y14%, ABOVE where playable stars begin. Two curved copper gate leaves open sideways around a large golden aperture; light turns right through a shallow channel along the upper path and exits beyond the edge. Keep all five golden vane inserts and bearing lit. Avoid a descending waterfall or deep hanging island crystals below the terrace. Use broad horizontal top surfaces and a shallow thick front edge, detailed crafted construction rather than tiny isolated props. Some wheel vanes may approach the uppermost frame; the outlet must sit below the thin top HUD zone yet above19%.\nBelow this upper terrace, the central 80% width from y21\u201379% remains continuous low-contrast indigo starry sky with sparse subtle cloud shadows. It is natural continuous environment, never a rectangle, frame or fog mask. Side stairs can extend down the outer10% margins and connect to a LARGE close foreground workshop footbridge and carved channel occupying bottom20%; its solid posts, cloth, lamp and cropped slate edges give near depth. Foreground channel lit at100, farther upper outlet open. Preserve rich connectedness and the warm helpful workshop feeling. All scenery is one complete original painting with no characters, faces, text, gameplay pieces, grid, UI, labels, watermark or perspective horizon. Do not simply paste or shrink the phone island; compose broad upper and foreground terrain for the native portrait ratio.",
+      "referenced_image_paths": [
+        "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-7bf8af8c-e723-44b4-8715-c3834448c71b.png",
+        "/Users/lbeezr/.codex-workspaces/worktrees/ios-a412ced0-1da1-4bc5-8682-a9ef02f52407/Starfall/docs/design/level-design-kit/source-ipad-portrait.png",
+        "/Users/lbeezr/.codex-workspaces/worktrees/ios-a412ced0-1da1-4bc5-8682-a9ef02f52407/Starfall/docs/design/level-design-kit/camera-reference.png"
+      ],
+      "transparent_background": false
+    },
+    "original": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-f297e13e-b32c-41e2-b0b5-7a0fd4e3f167.png",
+    "status": "Rejected fit: upper terrace reaches 32%, overlapping top gameplay rows; revise before state generation.",
+    "sha256": "4e13e449373f4f19c03b4c5e9321e66eb4b7a6ffb7f775e717b2bd6b41e217d5",
+    "pixelSize": [
+      1086,
+      1448
+    ],
+    "referenceHashes": [
+      {
+        "path": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-7bf8af8c-e723-44b4-8715-c3834448c71b.png",
+        "sha256": "696abbcb530902fda6414264ff50b3f0093c9f8d1b20e1dd4f1a4e7003fc1af2"
+      },
+      {
+        "path": "/Users/lbeezr/.codex-workspaces/worktrees/ios-a412ced0-1da1-4bc5-8682-a9ef02f52407/Starfall/docs/design/level-design-kit/source-ipad-portrait.png",
+        "sha256": "2c86c1849075d9d0f42beec94a2e05863b18190ffcdf28a773c29ffa8d49967a"
+      },
+      {
+        "path": "/Users/lbeezr/.codex-workspaces/worktrees/ios-a412ced0-1da1-4bc5-8682-a9ef02f52407/Starfall/docs/design/level-design-kit/camera-reference.png",
+        "sha256": "9d5156c35f6e31945f0cb6e67b380f5238a17374ae20b998b458a79a3479f868"
+      }
+    ]
+  },
+  {
+    "id": "landscape-100-master-01",
+    "request": {
+      "prompt": "Use case: stylized-concept. Recompose FIRST Sunwheel Mill reference as a BESPOKE iPad LANDSCAPE game-board environment,4:3 aspect target1448x1086. Same warm round slate-and-timber workshop, exactly FIVE broad rounded copper/glass petal vanes, golden light channels, autumn plants and continuous indigo-lavender sky. SECOND image is a technical native-layout guide ONLY, do not paint guide shapes/text/stars. THIRD supplies camera55degree high overhead yaw0roll0 orthographic-like, no visible horizon.\nBuild a substantial connected scene, not a small isolated island. Put the broad five-vane wheel and low mill on a generous supported LEFT terrace occupying left30% of canvas. The wheel stands at upper-left and the workshop below/beside it with warm golden windows, service ledge, little oiling pot and bench. A conspicuous copper OUTLET on this left terrace at roughly x22%,y47% has two curved solid gate leaves open sideways, revealing a clear golden aperture. Golden light flows downward/left along a fixed channel past a little footbridge, never across the central playable region. All five petal glass inserts, central bearing, upstream channels and ordinary lamps are lit. This gate is the final restoration cue, keep it well left of x33% and larger than a native grown piece.\nA supported arched footbridge/upper walkway connects the LEFT mill to a RIGHT working yard across the upper22% of the composition, above the board. On right32% create a substantial resting/working terrace, sheltered bench, broad table, polished spare copper fittings, amber shrubs and an outward path to the next community. Both places share masonry/timber/rail design, thick edges, believable joints, gentlecontact shadows. In bottom20% a close copper railing, timber bridge and a lit channel cross partly cropped, continuing the route. SIDE stairs support this entire connected structure. Preserve broad top faces and shallow thick cliff ledges, not pointed huge underside stalactites.\nCenter x34\u201366%,y28\u201373% is naturally continuous subdued indigo starry sky with gentle peripheral clouds so actual native pieces remain legible. No painted clear rectangle, blur, middle fade, mask, grid, geometric frame, bright stream or hard architecture in that central span. Keep great richness at the sides and near/far layers; native readable space does not mean stripping the whole world. No characters/faces/playingpieces/words/UI/labels/watermark. One coherent finished100%painting; no montage; not portrait art stretched wide.",
+      "referenced_image_paths": [
+        "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-7bf8af8c-e723-44b4-8715-c3834448c71b.png",
+        "/Users/lbeezr/.codex-workspaces/worktrees/ios-a412ced0-1da1-4bc5-8682-a9ef02f52407/Starfall/docs/design/level-design-kit/source-ipad-landscape.png",
+        "/Users/lbeezr/.codex-workspaces/worktrees/ios-a412ced0-1da1-4bc5-8682-a9ef02f52407/Starfall/docs/design/level-design-kit/camera-reference.png"
+      ],
+      "transparent_background": false
+    },
+    "original": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-2e8e6b59-8db1-4231-bc38-6ef4656445cd.png",
+    "status": "Adopted packaged painting; source continuity and native board review accepted at d057696/dev.a15832d0fd. Unchanged board artwork retained through map-integration verification at 49d54fc/dev.6fa54c5e65. Publication and canonical installation pending.",
+    "family": "tabletLandscape",
+    "state": 100,
+    "selected": true,
+    "sha256": "37259cffdbf81c30c6eb4dfc909dcef7e88b267f9b2e6668df3255d2199c0a19",
+    "pixelSize": [
+      1448,
+      1086
+    ],
+    "referenceHashes": [
+      {
+        "path": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-7bf8af8c-e723-44b4-8715-c3834448c71b.png",
+        "sha256": "696abbcb530902fda6414264ff50b3f0093c9f8d1b20e1dd4f1a4e7003fc1af2"
+      },
+      {
+        "path": "/Users/lbeezr/.codex-workspaces/worktrees/ios-a412ced0-1da1-4bc5-8682-a9ef02f52407/Starfall/docs/design/level-design-kit/source-ipad-landscape.png",
+        "sha256": "fc61687adc3560ed00da8826a7969a9ebb8a4c079d6b10869050a09855272831"
+      },
+      {
+        "path": "/Users/lbeezr/.codex-workspaces/worktrees/ios-a412ced0-1da1-4bc5-8682-a9ef02f52407/Starfall/docs/design/level-design-kit/camera-reference.png",
+        "sha256": "9d5156c35f6e31945f0cb6e67b380f5238a17374ae20b998b458a79a3479f868"
+      }
+    ],
+    "asset": "App/Assets.xcassets/SunwheelMillTabletLandscape100.imageset/scene.png"
+  },
+  {
+    "id": "portrait-100-master-02",
+    "request": {
+      "prompt": "Precise composition correction of this Sunwheel Mill iPad portrait painting. Keep exact3:4ratio, style, lavish materials, sky and whole foreground bridge. RECOMPOSE THE ENTIRE UPPER MILL TERRACE into a broad shallow distant upper strip occupying only top19% of this1448px-high canvas: its front stone edge must end above y275px, not y450. This requires moving the terrace BACK and making its structures smaller in this composition. Make the FIVE-vane copper flower wheel about160px tall at x200,y85, and a low wide workshop about140px tall beside it. Shorten the front-to-back deck and stairs; show overhead roofs and tops, no deep dangling cliffs. The upper mill may look farther away than the large close foreground bridge: that depth is intentional. Keep warm copper details, lamps, workcloth, bench and plants along this broad shallow strip. At x610,y220 the two open copper outlet gates surround a generous golden opening about135px wide; its golden channel runs RIGHT along the top terrace and out the edge. Nothing bright or architectural crosses below y275 except small side stairs outside x100..985. From y300 to1150 the large central width should remain naturally continuous indigo sky, with detailed clouds along outer margins, not a mask or cleared rectangle. Preserve the bottom foreground bridge exactly and its generous scale. Need an overhead playable game-board composition, not an island postcard. All five glass petals, bearing and lamps illuminated100%. No characters, text, UI or guide marks. Reference2 is the exact playfield guide; colored areas must NOT appear in output.",
+      "referenced_image_paths": [
+        "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-f297e13e-b32c-41e2-b0b5-7a0fd4e3f167.png",
+        "/Users/lbeezr/.codex-workspaces/worktrees/ios-a412ced0-1da1-4bc5-8682-a9ef02f52407/Starfall/docs/design/level-design-kit/source-ipad-portrait.png"
+      ],
+      "transparent_background": false
+    },
+    "original": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-03e5d8f4-3296-42f6-bc0c-01e0c2bb698e.png",
+    "status": "Superseded after historical native master probe; final portrait-100-master-03 derives from the selected closed 75% outlet. Retained as provenance only.",
+    "sha256": "cb41b0428c0ef705bb0b2165648bf79aaf7d93a98c10f4968a70112cbbc043e0",
+    "pixelSize": [
+      1086,
+      1448
+    ],
+    "referenceHashes": [
+      {
+        "path": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-f297e13e-b32c-41e2-b0b5-7a0fd4e3f167.png",
+        "sha256": "4e13e449373f4f19c03b4c5e9321e66eb4b7a6ffb7f775e717b2bd6b41e217d5"
+      },
+      {
+        "path": "/Users/lbeezr/.codex-workspaces/worktrees/ios-a412ced0-1da1-4bc5-8682-a9ef02f52407/Starfall/docs/design/level-design-kit/source-ipad-portrait.png",
+        "sha256": "2c86c1849075d9d0f42beec94a2e05863b18190ffcdf28a773c29ffa8d49967a"
+      }
+    ]
+  },
+  {
+    "id": "phone-075-01",
+    "family": "phone",
+    "state": 75,
+    "request": {
+      "prompt": "Use case: precise-object-edit. This exact Sunwheel Mill painting is the edit target. Make its75%restoration state. Preserve EXACT camera, aspect, crop, dimensions, five-vane pose and silhouettes, mill/terraces/bridges/rails/props/clouds/sky; do not add, move, resize or redesign buildings. All FIVE glass vane inserts, central bearing, ordinary lamps and workshop windows STAY warmly lit. Change only the final outlet and downstream illumination: pivot the TWO COPPER OUTLET GATE LEAVES together across their channel to form a plainly CLOSED solid copper barrier, meeting at a central seam. There must be NO bright aperture between them and no golden light leaking below. The gates are the prominent paired curved copper panels on the front of the upper mill terrace (not the vanes). The upward/inlet part of the system can remain warmly lit, but turn OFF the outgoing golden stream on the path running to the upper-right and the entire golden stream through the large foreground channel. Retain those physical channels as clear cool slate/copper troughs with muted violet ambient reflection; remove only their emitted gold. Keep ordinary foreground lanterns lit. This is the ready-but-not-yet-complete scene, with five restored golden vanes and a distinctly shut outlet, not a dim version of the finished painting. Nothing changes in sky or central gameplay clearance. No text, marks, characters or pieces.",
+      "referenced_image_paths": [
+        "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-289eb3b2-79d2-4deb-9204-6e4e1a2e23ab.png"
+      ],
+      "transparent_background": false
+    },
+    "original": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-410f4ae3-b1b3-45e7-85b0-dff519e267f6.png",
+    "status": "Adopted packaged painting; source continuity and native board review accepted at d057696/dev.a15832d0fd. Unchanged board artwork retained through map-integration verification at 49d54fc/dev.6fa54c5e65. Publication and canonical installation pending.",
+    "selected": true,
+    "sha256": "b19f683af57c2f6a82284305c570b9077f1e4f0b478d1dcba6d2e907afc8892e",
+    "pixelSize": [
+      887,
+      1774
+    ],
+    "referenceHashes": [
+      {
+        "path": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-289eb3b2-79d2-4deb-9204-6e4e1a2e23ab.png",
+        "sha256": "c29726025d8e30f77bba7be73dd82984c0ddb263496b02c2f58656a8fde110cf"
+      }
+    ],
+    "asset": "App/Assets.xcassets/SunwheelMill075.imageset/scene.png"
+  },
+  {
+    "id": "tabletPortrait-075-01",
+    "family": "tabletPortrait",
+    "state": 75,
+    "request": {
+      "prompt": "Use case: precise-object-edit. This exact Sunwheel Mill painting is the edit target. Make its75%restoration state. Preserve EXACT camera, aspect, crop, dimensions, five-vane pose and silhouettes, mill/terraces/bridges/rails/props/clouds/sky; do not add, move, resize or redesign buildings. All FIVE glass vane inserts, central bearing, ordinary lamps and workshop windows STAY warmly lit. Change only the final outlet and downstream illumination: pivot the TWO COPPER OUTLET GATE LEAVES together across their channel to form a plainly CLOSED solid copper barrier, meeting at a central seam. There must be NO bright aperture between them and no golden light leaking below. The gates are the prominent paired curved copper panels on the front of the upper mill terrace (not the vanes). The upward/inlet part of the system can remain warmly lit, but turn OFF the outgoing golden stream on the path running to the upper-right and the entire golden stream through the large foreground channel. Retain those physical channels as clear cool slate/copper troughs with muted violet ambient reflection; remove only their emitted gold. Keep ordinary foreground lanterns lit. This is the ready-but-not-yet-complete scene, with five restored golden vanes and a distinctly shut outlet, not a dim version of the finished painting. Nothing changes in sky or central gameplay clearance. No text, marks, characters or pieces.",
+      "referenced_image_paths": [
+        "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-03e5d8f4-3296-42f6-bc0c-01e0c2bb698e.png"
+      ],
+      "transparent_background": false
+    },
+    "original": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-165c799d-9cf3-4c2b-a0b8-45180701ceca.png",
+    "status": "Superseded during outlet continuity correction by tabletPortrait-075-03; retained as provenance only.",
+    "sha256": "ede939a8194db03e6fee49aeb44e277c75772408d7ffbd1521ac95670f0cb968",
+    "pixelSize": [
+      1086,
+      1448
+    ],
+    "referenceHashes": [
+      {
+        "path": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-03e5d8f4-3296-42f6-bc0c-01e0c2bb698e.png",
+        "sha256": "cb41b0428c0ef705bb0b2165648bf79aaf7d93a98c10f4968a70112cbbc043e0"
+      }
+    ]
+  },
+  {
+    "id": "phone-000-01",
+    "family": "phone",
+    "state": 0,
+    "request": {
+      "prompt": "Use case: precise-object-edit. Edit this exact Sunwheel Mill75%painting into the specified earlier restoration state. Lock exact aspect/crop/dimensions, camera, every building and prop silhouette, ALL FIVE vane positions, the CLOSED COPPER OUTLET, dark onward channels, clouds and sky. No scene recomposition. The mill remains a rich built place, never demolished, simplified or recolored wholesale. Keep sky and gameplay span unchanged. Only alter localized restoration lighting and material vitality as follows. 0% UNRESTORED: All FIVE petal glass inserts and central bearing are UNLIT blue-gray glass in weathered copper frames. All windows, workshop lamps and foreground lanterns are OFF, with dark indigo glass and no golden glow. All inlet and onward troughs are dry and dark. Copper and timber have quiet cool patina; shrubs are softly muted rust/gray, not bright gold. Keep sufficient soft blue-violet ambient light to read all the detailed masonry, bench, cloth and work ledge. Closed copper outlet has no light leakage. This is melancholy but inviting, no ominous monsters or ruin rubble. No text, UI, selectable pieces, extra decorative stars, faces or characters.",
+      "referenced_image_paths": [
+        "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-410f4ae3-b1b3-45e7-85b0-dff519e267f6.png"
+      ],
+      "transparent_background": false
+    },
+    "original": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-85a544e8-2dad-4445-a981-1e42d39a34e0.png",
+    "status": "Adopted packaged painting; source continuity and native board review accepted at d057696/dev.a15832d0fd. Unchanged board artwork retained through map-integration verification at 49d54fc/dev.6fa54c5e65. Publication and canonical installation pending.",
+    "selected": true,
+    "sha256": "71eafc51e1133507a54a1019bc166ecf664b7cfe60b51a27e895fe60acddf4d2",
+    "pixelSize": [
+      887,
+      1774
+    ],
+    "referenceHashes": [
+      {
+        "path": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-410f4ae3-b1b3-45e7-85b0-dff519e267f6.png",
+        "sha256": "b19f683af57c2f6a82284305c570b9077f1e4f0b478d1dcba6d2e907afc8892e"
+      }
+    ],
+    "asset": "App/Assets.xcassets/SunwheelMill000.imageset/scene.png"
+  },
+  {
+    "id": "phone-025-01",
+    "family": "phone",
+    "state": 25,
+    "request": {
+      "prompt": "Use case: precise-object-edit. Edit this exact Sunwheel Mill75%painting into the specified earlier restoration state. Lock exact aspect/crop/dimensions, camera, every building and prop silhouette, ALL FIVE vane positions, the CLOSED COPPER OUTLET, dark onward channels, clouds and sky. No scene recomposition. The mill remains a rich built place, never demolished, simplified or recolored wholesale. Keep sky and gameplay span unchanged. Only alter localized restoration lighting and material vitality as follows. 25% RESTORED: Light ONLY the TOP VERTICAL petal glass insert of the five-vane wheel, and its CENTRAL BEARING, in warm gold. The other FOUR petals\u2014upper-left, upper-right, lower-left, lower-right\u2014remain unlit cool blue-gray glass in copper frames, not gold. A small local working-light near the wheel and SHORT inlet seam at its base glow softly. ALL remaining workshop windows/lamps, terrace lamps and foreground lanterns stay OFF and cool. Plants and stone mostly muted like an awaiting-restoration place. Closed outlet and all outgoing/foreground channels stay dark. One small first reward, exact architecture retained. No text, UI, selectable pieces, extra decorative stars, faces or characters.",
+      "referenced_image_paths": [
+        "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-410f4ae3-b1b3-45e7-85b0-dff519e267f6.png"
+      ],
+      "transparent_background": false
+    },
+    "original": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-b61827b6-17db-4c81-bb3a-e7dc0dd68822.png",
+    "status": "Adopted packaged painting; source continuity and native board review accepted at d057696/dev.a15832d0fd. Unchanged board artwork retained through map-integration verification at 49d54fc/dev.6fa54c5e65. Publication and canonical installation pending.",
+    "selected": true,
+    "sha256": "68214a4e9955a4ce80ed2a77bbb25c57a9ad50d09f916482d4f0283703dbf0c7",
+    "pixelSize": [
+      887,
+      1774
+    ],
+    "referenceHashes": [
+      {
+        "path": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-410f4ae3-b1b3-45e7-85b0-dff519e267f6.png",
+        "sha256": "b19f683af57c2f6a82284305c570b9077f1e4f0b478d1dcba6d2e907afc8892e"
+      }
+    ],
+    "asset": "App/Assets.xcassets/SunwheelMill025.imageset/scene.png"
+  },
+  {
+    "id": "phone-050-01",
+    "family": "phone",
+    "state": 50,
+    "request": {
+      "prompt": "Use case: precise-object-edit. Edit this exact Sunwheel Mill75%painting into the specified earlier restoration state. Lock exact aspect/crop/dimensions, camera, every building and prop silhouette, ALL FIVE vane positions, the CLOSED COPPER OUTLET, dark onward channels, clouds and sky. No scene recomposition. The mill remains a rich built place, never demolished, simplified or recolored wholesale. Keep sky and gameplay span unchanged. Only alter localized restoration lighting and material vitality as follows. 50% RESTORED: Light exactly THREE petal glass inserts: TOP VERTICAL, UPPER-LEFT and UPPER-RIGHT, plus central bearing. The LOWER-LEFT and LOWER-RIGHT glass petals remain UNLIT cool blue-gray, not gold. Restore warm workshop windows and local lamps around wheel/service bench, plus a continuous subtle golden inlet seam connecting wheel base to workshop. Keep far path lamps and ALL close foreground lanterns OFF/cool, and mute plants around those unrestored outer/foreground places. Closed outlet stays shut; outgoing upper-right path trough and entire foreground trough stay dark. Restoration accumulates, with visibly more warm mill activity than one-petal25% but less than all-five75%. No text, UI, selectable pieces, extra decorative stars, faces or characters.",
+      "referenced_image_paths": [
+        "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-410f4ae3-b1b3-45e7-85b0-dff519e267f6.png"
+      ],
+      "transparent_background": false
+    },
+    "original": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-b5421626-afcc-4308-8a95-adca3d0c293c.png",
+    "status": "Adopted packaged painting; source continuity and native board review accepted at d057696/dev.a15832d0fd. Unchanged board artwork retained through map-integration verification at 49d54fc/dev.6fa54c5e65. Publication and canonical installation pending.",
+    "selected": true,
+    "sha256": "c329685f49c69fba91f9dbf87fb41362d86f02fe5bee15af226926cb538a9872",
+    "pixelSize": [
+      887,
+      1774
+    ],
+    "referenceHashes": [
+      {
+        "path": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-410f4ae3-b1b3-45e7-85b0-dff519e267f6.png",
+        "sha256": "b19f683af57c2f6a82284305c570b9077f1e4f0b478d1dcba6d2e907afc8892e"
+      }
+    ],
+    "asset": "App/Assets.xcassets/SunwheelMill050.imageset/scene.png"
+  },
+  {
+    "id": "tabletPortrait-075-02",
+    "family": "tabletPortrait",
+    "state": 75,
+    "request": {
+      "prompt": "Precise small local correction of FIRST image (Sunwheel Mill75%portrait). Preserve every pixel/composition except the CLOSED copper outlet gate on the upper terrace. SECOND image is the100%reference: its separated gate leaves pivot at the two sides of an outlet aboutx510..725. In the75%FIRST painting the closed gate has become too narrow and shifted left. Correct this one gate: make the closed arched double-leaf copper barrier span the SAME two fixed hinge positions as reference2 (roughlyx510and725on1086pxcanvas), meeting at a central seam aroundx615. It must physically close the whole aperture that opens in the100%reference. Maintain perspective and correct support, no added different gates. Keep closed copper opaque without light leaking, same dark upper-right and foreground troughs, all five glass petals and ordinary lamps lit. Do not move the wheel, workshop, plants, sky, bridge, existing fence, terrace silhouette or camera. Preserve exact3:4canvas.",
+      "referenced_image_paths": [
+        "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-165c799d-9cf3-4c2b-a0b8-45180701ceca.png",
+        "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-03e5d8f4-3296-42f6-bc0c-01e0c2bb698e.png"
+      ],
+      "transparent_background": false
+    },
+    "original": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-31b96617-79a6-4002-9232-a65f23b8ec6f.png",
+    "status": "Superseded during outlet continuity correction by tabletPortrait-075-03; retained as provenance only.",
+    "sha256": "0cda0d41e011949742374ff3f9cfb523acea8befa1793245fdab4e3e022dd7d0",
+    "pixelSize": [
+      1086,
+      1448
+    ],
+    "referenceHashes": [
+      {
+        "path": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-165c799d-9cf3-4c2b-a0b8-45180701ceca.png",
+        "sha256": "ede939a8194db03e6fee49aeb44e277c75772408d7ffbd1521ac95670f0cb968"
+      },
+      {
+        "path": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-03e5d8f4-3296-42f6-bc0c-01e0c2bb698e.png",
+        "sha256": "cb41b0428c0ef705bb0b2165648bf79aaf7d93a98c10f4968a70112cbbc043e0"
+      }
+    ]
+  },
+  {
+    "id": "tabletLandscape-075-01",
+    "family": "tabletLandscape",
+    "state": 75,
+    "request": {
+      "prompt": "Use case: precise-object-edit. This exact Sunwheel Mill painting is the edit target. Make its75%restoration state. Preserve EXACT camera, aspect, crop, dimensions, five-vane pose and silhouettes, mill/terraces/bridges/rails/props/clouds/sky; do not add, move, resize or redesign buildings. All FIVE glass vane inserts, central bearing, ordinary lamps and workshop windows STAY warmly lit. Change only the final outlet and downstream illumination: pivot the TWO COPPER OUTLET GATE LEAVES together across their channel to form a plainly CLOSED solid copper barrier, meeting at a central seam. There must be NO bright aperture between them and no golden light leaking below. The gates are the prominent paired curved copper panels on the LEFT mill terrace around x22%,y38% (not the vanes). The upward/inlet part of the system can remain warmly lit, but turn OFF the outgoing golden stream on the path running down the LEFT side and the entire golden stream through the large foreground channel. Retain those physical channels as clear cool slate/copper troughs with muted violet ambient reflection; remove only their emitted gold. Keep ordinary foreground lanterns lit. This is the ready-but-not-yet-complete scene, with five restored golden vanes and a distinctly shut outlet, not a dim version of the finished painting. Nothing changes in sky or central gameplay clearance. No text, marks, characters or pieces.",
+      "referenced_image_paths": [
+        "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-2e8e6b59-8db1-4231-bc38-6ef4656445cd.png"
+      ],
+      "transparent_background": false
+    },
+    "original": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-2723c31d-d5ba-457f-adcb-311b37e3c7d8.png",
+    "status": "Reject: extra right open gate retained beside new closed barrier.",
+    "sha256": "627268284f8ed47f5474101552507b3d4a5fc20debbe2769ab1b36430d83183e",
+    "pixelSize": [
+      1448,
+      1086
+    ],
+    "referenceHashes": [
+      {
+        "path": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-2e8e6b59-8db1-4231-bc38-6ef4656445cd.png",
+        "sha256": "37259cffdbf81c30c6eb4dfc909dcef7e88b267f9b2e6668df3255d2199c0a19"
+      }
+    ]
+  },
+  {
+    "id": "tabletLandscape-075-02",
+    "family": "tabletLandscape",
+    "state": 75,
+    "request": {
+      "prompt": "Use case: precise-object-edit. Correct ONLY the copper outlet gate in this exact75%Sunwheel Mill LANDSCAPE painting. There is currently an erroneous small closed double-door at x240..340 AND a leftover open leaf at x365..418. These must be ONE closed TWO-leaf gate spanning the full original outlet between its two existing fixed supports, left support aroundx230,y405 and right support aroundx410,y395. Remove the leftover separate right open leaf by rotating it into the single closed gate. Exactly TWO copper leaves meet at ONE central seam, fully closing the channel, with NO third panel and no remaining open upright panel behind it. The closed barrier should run in perspective from left support to right support, across the channel aperture, visibly around180pixels wide. Use matching curved copper tops, worn smooth joints and hinges anchored to the existing supports. Do not add new masonry posts. Preserve everything outside this small gate area EXACTLY: all five lit petals, workshop, plants, lamps, bridge, stairs, subtle cool DRY troughs, sky, clouds and camera. All outgoing and foreground channels remain dark, no gold streams, no waterfall, no bright aperture. Exact4:3canvas. No labels, characters or UI.",
+      "referenced_image_paths": [
+        "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-2723c31d-d5ba-457f-adcb-311b37e3c7d8.png"
+      ],
+      "transparent_background": false
+    },
+    "original": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-4be456b8-7c31-403a-992f-83fc69d152cd.png",
+    "status": "Adopted packaged painting; source continuity and native board review accepted at d057696/dev.a15832d0fd. Unchanged board artwork retained through map-integration verification at 49d54fc/dev.6fa54c5e65. Publication and canonical installation pending.",
+    "selected": true,
+    "sha256": "64d4d4f15790a3ceb733d639c7f536397ac9591e1b88a21fce3a1820f53977a9",
+    "pixelSize": [
+      1448,
+      1086
+    ],
+    "referenceHashes": [
+      {
+        "path": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-2723c31d-d5ba-457f-adcb-311b37e3c7d8.png",
+        "sha256": "627268284f8ed47f5474101552507b3d4a5fc20debbe2769ab1b36430d83183e"
+      }
+    ],
+    "asset": "App/Assets.xcassets/SunwheelMillTabletLandscape075.imageset/scene.png"
+  },
+  {
+    "id": "tabletLandscape-000-01",
+    "family": "tabletLandscape",
+    "state": 0,
+    "request": {
+      "prompt": "Use case: precise-object-edit. Edit this exact Sunwheel Mill75%painting into the specified earlier restoration state. Lock exact aspect/crop/dimensions, camera, every building and prop silhouette, ALL FIVE vane positions, the CLOSED COPPER OUTLET, dark onward channels, clouds and sky. No scene recomposition. The mill remains a rich built place, never demolished, simplified or recolored wholesale. Keep sky and gameplay span unchanged. Only alter localized restoration lighting and material vitality as follows. 0% UNRESTORED: All FIVE petal glass inserts and central bearing are UNLIT blue-gray glass in weathered copper frames. All windows, workshop lamps and foreground lanterns are OFF, with dark indigo glass and no golden glow. All inlet and onward troughs are dry and dark. Copper and timber have quiet cool patina; shrubs are softly muted rust/gray, not bright gold. Keep sufficient soft blue-violet ambient light to read all the detailed masonry, bench, cloth and work ledge. Closed copper outlet has no light leakage. This is melancholy but inviting, no ominous monsters or ruin rubble. In this WIDE view, right-hand workyard and its lamps stay unlit at0/25/50, joining restoration at75. No text, UI, selectable pieces, extra decorative stars, faces or characters.",
+      "referenced_image_paths": [
+        "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-4be456b8-7c31-403a-992f-83fc69d152cd.png"
+      ],
+      "transparent_background": false
+    },
+    "original": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-56c0dc4c-f403-4914-a93f-abb9af56a9f9.png",
+    "status": "Adopted packaged painting; source continuity and native board review accepted at d057696/dev.a15832d0fd. Unchanged board artwork retained through map-integration verification at 49d54fc/dev.6fa54c5e65. Publication and canonical installation pending.",
+    "selected": true,
+    "sha256": "05b7d2ff4db53b5e3fa07469ea02afd9aa1fd5e4cbe675ba73b620dd0e403ffe",
+    "pixelSize": [
+      1448,
+      1086
+    ],
+    "referenceHashes": [
+      {
+        "path": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-4be456b8-7c31-403a-992f-83fc69d152cd.png",
+        "sha256": "64d4d4f15790a3ceb733d639c7f536397ac9591e1b88a21fce3a1820f53977a9"
+      }
+    ],
+    "asset": "App/Assets.xcassets/SunwheelMillTabletLandscape000.imageset/scene.png"
+  },
+  {
+    "id": "tabletLandscape-025-01",
+    "family": "tabletLandscape",
+    "state": 25,
+    "request": {
+      "prompt": "Use case: precise-object-edit. Edit this exact Sunwheel Mill75%painting into the specified earlier restoration state. Lock exact aspect/crop/dimensions, camera, every building and prop silhouette, ALL FIVE vane positions, the CLOSED COPPER OUTLET, dark onward channels, clouds and sky. No scene recomposition. The mill remains a rich built place, never demolished, simplified or recolored wholesale. Keep sky and gameplay span unchanged. Only alter localized restoration lighting and material vitality as follows. 25% RESTORED: Light ONLY the TOP VERTICAL petal glass insert of the five-vane wheel, and its CENTRAL BEARING, in warm gold. The other FOUR petals\u2014upper-left, upper-right, lower-left, lower-right\u2014remain unlit cool blue-gray glass in copper frames, not gold. A small local working-light near the wheel and SHORT inlet seam at its base glow softly. ALL remaining workshop windows/lamps, terrace lamps and foreground lanterns stay OFF and cool. Plants and stone mostly muted like an awaiting-restoration place. Closed outlet and all outgoing/foreground channels stay dark. One small first reward, exact architecture retained. In this WIDE view, right-hand workyard and its lamps stay unlit at0/25/50, joining restoration at75. No text, UI, selectable pieces, extra decorative stars, faces or characters.",
+      "referenced_image_paths": [
+        "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-4be456b8-7c31-403a-992f-83fc69d152cd.png"
+      ],
+      "transparent_background": false
+    },
+    "original": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-f858f181-1c83-4491-9e43-fd88b470cbbb.png",
+    "status": "Adopted packaged painting; source continuity and native board review accepted at d057696/dev.a15832d0fd. Unchanged board artwork retained through map-integration verification at 49d54fc/dev.6fa54c5e65. Publication and canonical installation pending.",
+    "selected": true,
+    "sha256": "f47d2048ec23cf5a08e705c44a304d474a55cbb1376774ffd6cd86407ba7cdca",
+    "pixelSize": [
+      1448,
+      1086
+    ],
+    "referenceHashes": [
+      {
+        "path": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-4be456b8-7c31-403a-992f-83fc69d152cd.png",
+        "sha256": "64d4d4f15790a3ceb733d639c7f536397ac9591e1b88a21fce3a1820f53977a9"
+      }
+    ],
+    "asset": "App/Assets.xcassets/SunwheelMillTabletLandscape025.imageset/scene.png"
+  },
+  {
+    "id": "tabletLandscape-050-01",
+    "family": "tabletLandscape",
+    "state": 50,
+    "request": {
+      "prompt": "Use case: precise-object-edit. Edit this exact Sunwheel Mill75%painting into the specified earlier restoration state. Lock exact aspect/crop/dimensions, camera, every building and prop silhouette, ALL FIVE vane positions, the CLOSED COPPER OUTLET, dark onward channels, clouds and sky. No scene recomposition. The mill remains a rich built place, never demolished, simplified or recolored wholesale. Keep sky and gameplay span unchanged. Only alter localized restoration lighting and material vitality as follows. 50% RESTORED: Light exactly THREE petal glass inserts: TOP VERTICAL, UPPER-LEFT and UPPER-RIGHT, plus central bearing. The LOWER-LEFT and LOWER-RIGHT glass petals remain UNLIT cool blue-gray, not gold. Restore warm workshop windows and local lamps around wheel/service bench, plus a continuous subtle golden inlet seam connecting wheel base to workshop. Keep far path lamps and ALL close foreground lanterns OFF/cool, and mute plants around those unrestored outer/foreground places. Closed outlet stays shut; outgoing upper-right path trough and entire foreground trough stay dark. Restoration accumulates, with visibly more warm mill activity than one-petal25% but less than all-five75%. In this WIDE view, right-hand workyard and its lamps stay unlit at0/25/50, joining restoration at75. No text, UI, selectable pieces, extra decorative stars, faces or characters.",
+      "referenced_image_paths": [
+        "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-4be456b8-7c31-403a-992f-83fc69d152cd.png"
+      ],
+      "transparent_background": false
+    },
+    "original": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-66b94e2b-cfbc-463a-b169-338a2491f38f.png",
+    "status": "Adopted packaged painting; source continuity and native board review accepted at d057696/dev.a15832d0fd. Unchanged board artwork retained through map-integration verification at 49d54fc/dev.6fa54c5e65. Publication and canonical installation pending.",
+    "selected": true,
+    "sha256": "376213462d2a7764b7082dd03b74fe1232783c6dd218dc8b22003619bad01dcb",
+    "pixelSize": [
+      1448,
+      1086
+    ],
+    "referenceHashes": [
+      {
+        "path": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-4be456b8-7c31-403a-992f-83fc69d152cd.png",
+        "sha256": "64d4d4f15790a3ceb733d639c7f536397ac9591e1b88a21fce3a1820f53977a9"
+      }
+    ],
+    "asset": "App/Assets.xcassets/SunwheelMillTabletLandscape050.imageset/scene.png"
+  },
+  {
+    "id": "tabletPortrait-075-03",
+    "family": "tabletPortrait",
+    "state": 75,
+    "request": {
+      "prompt": "Use case: precise-object-edit. Edit FIRST image, the100%Sunwheel Mill portrait, into75%. SECOND image is reference ONLY for dark trough illumination, not gate geometry. Preserve EXACT FIRST-image camera, buildings, wheel pose, sky, foreground, lamps and TWO ORIGINAL GATE HINGE POSTS. Important gate correction: in FIRST image the two original tall copper hinge pillars are aroundx563andx680,y160on1086x1448canvas; the gate leaves currently swing outward from these posts. Rotate ONLY THESE TWO existing leaves inward until they meet at a seam between the posts, aroundx620. The closed copper barrier spans ONLY the aperture BETWEEN ORIGINAL POSTS; the hinges, stone threshold and their supporting masonry DO NOT MOVE. NO added center post, no smaller gate shifted left, no third panel, no new fence or pillars. This is exactly the same original gate, now shut across its channel. Keep all FIVE wheel petals, bearing, workshop windows and ordinary lamps glowing as in FIRST. Turn OFF emitted golden light in the outgoing upper-right path trough and the entire big foreground trough; they become dark cool violet slate/copper channels as in SECOND, retaining physical channel shapes. No golden aperture or outgoing stream at75; closed opaque copper with a central seam. Do not alter anything else or add text/characters/UI. Exact3:4portrait.",
+      "referenced_image_paths": [
+        "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-03e5d8f4-3296-42f6-bc0c-01e0c2bb698e.png",
+        "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-31b96617-79a6-4002-9232-a65f23b8ec6f.png"
+      ],
+      "transparent_background": false
+    },
+    "original": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-c5ee99fd-d650-47ae-816c-76feb6b3c3e1.png",
+    "status": "Adopted packaged painting; source continuity and native board review accepted at d057696/dev.a15832d0fd. Unchanged board artwork retained through map-integration verification at 49d54fc/dev.6fa54c5e65. Publication and canonical installation pending.",
+    "selected": true,
+    "sha256": "4d30cbe783ea1cf254a23148e86f2048e2e37a9874b933c9f35ac04a5ba5a567",
+    "pixelSize": [
+      1086,
+      1448
+    ],
+    "referenceHashes": [
+      {
+        "path": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-03e5d8f4-3296-42f6-bc0c-01e0c2bb698e.png",
+        "sha256": "cb41b0428c0ef705bb0b2165648bf79aaf7d93a98c10f4968a70112cbbc043e0"
+      },
+      {
+        "path": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-31b96617-79a6-4002-9232-a65f23b8ec6f.png",
+        "sha256": "0cda0d41e011949742374ff3f9cfb523acea8befa1793245fdab4e3e022dd7d0"
+      }
+    ],
+    "asset": "App/Assets.xcassets/SunwheelMillTabletPortrait075.imageset/scene.png"
+  },
+  {
+    "id": "tabletPortrait-000-01",
+    "family": "tabletPortrait",
+    "state": 0,
+    "request": {
+      "prompt": "Use case: precise-object-edit. Edit this exact Sunwheel Mill75%painting into the specified earlier restoration state. Lock exact aspect/crop/dimensions, camera, every building and prop silhouette, ALL FIVE vane positions, the CLOSED COPPER OUTLET, dark onward channels, clouds and sky. No scene recomposition. The mill remains a rich built place, never demolished, simplified or recolored wholesale. Keep sky and gameplay span unchanged. Only alter localized restoration lighting and material vitality as follows. 0% UNRESTORED: All FIVE petal glass inserts and central bearing are UNLIT blue-gray glass in weathered copper frames. All windows, workshop lamps and foreground lanterns are OFF, with dark indigo glass and no golden glow. All inlet and onward troughs are dry and dark. Copper and timber have quiet cool patina; shrubs are softly muted rust/gray, not bright gold. Keep sufficient soft blue-violet ambient light to read all the detailed masonry, bench, cloth and work ledge. Closed copper outlet has no light leakage. This is melancholy but inviting, no ominous monsters or ruin rubble. No text, UI, selectable pieces, extra decorative stars, faces or characters.",
+      "referenced_image_paths": [
+        "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-c5ee99fd-d650-47ae-816c-76feb6b3c3e1.png"
+      ],
+      "transparent_background": false
+    },
+    "original": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-bb954604-7f5e-4c77-9633-af9cc61041a4.png",
+    "status": "Adopted packaged painting; source continuity and native board review accepted at d057696/dev.a15832d0fd. Unchanged board artwork retained through map-integration verification at 49d54fc/dev.6fa54c5e65. Publication and canonical installation pending.",
+    "selected": true,
+    "sha256": "a1953a34ed7f496079fb56d251de18ffc73fbd5bca0e93d12370ae63213963f5",
+    "pixelSize": [
+      1086,
+      1448
+    ],
+    "referenceHashes": [
+      {
+        "path": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-c5ee99fd-d650-47ae-816c-76feb6b3c3e1.png",
+        "sha256": "4d30cbe783ea1cf254a23148e86f2048e2e37a9874b933c9f35ac04a5ba5a567"
+      }
+    ],
+    "asset": "App/Assets.xcassets/SunwheelMillTabletPortrait000.imageset/scene.png"
+  },
+  {
+    "id": "tabletPortrait-025-01",
+    "family": "tabletPortrait",
+    "state": 25,
+    "request": {
+      "prompt": "Use case: precise-object-edit. Edit this exact Sunwheel Mill75%painting into the specified earlier restoration state. Lock exact aspect/crop/dimensions, camera, every building and prop silhouette, ALL FIVE vane positions, the CLOSED COPPER OUTLET, dark onward channels, clouds and sky. No scene recomposition. The mill remains a rich built place, never demolished, simplified or recolored wholesale. Keep sky and gameplay span unchanged. Only alter localized restoration lighting and material vitality as follows. 25% RESTORED: Light ONLY the TOP VERTICAL petal glass insert of the five-vane wheel, and its CENTRAL BEARING, in warm gold. The other FOUR petals\u2014upper-left, upper-right, lower-left, lower-right\u2014remain unlit cool blue-gray glass in copper frames, not gold. A small local working-light near the wheel and SHORT inlet seam at its base glow softly. ALL remaining workshop windows/lamps, terrace lamps and foreground lanterns stay OFF and cool. Plants and stone mostly muted like an awaiting-restoration place. Closed outlet and all outgoing/foreground channels stay dark. One small first reward, exact architecture retained. No text, UI, selectable pieces, extra decorative stars, faces or characters.",
+      "referenced_image_paths": [
+        "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-c5ee99fd-d650-47ae-816c-76feb6b3c3e1.png"
+      ],
+      "transparent_background": false
+    },
+    "original": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-a1da00f1-b950-4add-82ab-9ebcaa420303.png",
+    "status": "Adopted packaged painting; source continuity and native board review accepted at d057696/dev.a15832d0fd. Unchanged board artwork retained through map-integration verification at 49d54fc/dev.6fa54c5e65. Publication and canonical installation pending.",
+    "selected": true,
+    "sha256": "5e3f8b4bbecdd4ff0bd109f47d50fb0be4c2b8b078874866d751c98a274e0dec",
+    "pixelSize": [
+      1086,
+      1448
+    ],
+    "referenceHashes": [
+      {
+        "path": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-c5ee99fd-d650-47ae-816c-76feb6b3c3e1.png",
+        "sha256": "4d30cbe783ea1cf254a23148e86f2048e2e37a9874b933c9f35ac04a5ba5a567"
+      }
+    ],
+    "asset": "App/Assets.xcassets/SunwheelMillTabletPortrait025.imageset/scene.png"
+  },
+  {
+    "id": "tabletPortrait-050-01",
+    "family": "tabletPortrait",
+    "state": 50,
+    "request": {
+      "prompt": "Use case: precise-object-edit. Edit this exact Sunwheel Mill75%painting into the specified earlier restoration state. Lock exact aspect/crop/dimensions, camera, every building and prop silhouette, ALL FIVE vane positions, the CLOSED COPPER OUTLET, dark onward channels, clouds and sky. No scene recomposition. The mill remains a rich built place, never demolished, simplified or recolored wholesale. Keep sky and gameplay span unchanged. Only alter localized restoration lighting and material vitality as follows. 50% RESTORED: Light exactly THREE petal glass inserts: TOP VERTICAL, UPPER-LEFT and UPPER-RIGHT, plus central bearing. The LOWER-LEFT and LOWER-RIGHT glass petals remain UNLIT cool blue-gray, not gold. Restore warm workshop windows and local lamps around wheel/service bench, plus a continuous subtle golden inlet seam connecting wheel base to workshop. Keep far path lamps and ALL close foreground lanterns OFF/cool, and mute plants around those unrestored outer/foreground places. Closed outlet stays shut; outgoing upper-right path trough and entire foreground trough stay dark. Restoration accumulates, with visibly more warm mill activity than one-petal25% but less than all-five75%. No text, UI, selectable pieces, extra decorative stars, faces or characters.",
+      "referenced_image_paths": [
+        "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-c5ee99fd-d650-47ae-816c-76feb6b3c3e1.png"
+      ],
+      "transparent_background": false
+    },
+    "original": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-f83f9d19-9965-4392-ad46-19147a2711a0.png",
+    "status": "Adopted packaged painting; source continuity and native board review accepted at d057696/dev.a15832d0fd. Unchanged board artwork retained through map-integration verification at 49d54fc/dev.6fa54c5e65. Publication and canonical installation pending.",
+    "selected": true,
+    "sha256": "fd3c8b2c8607d3883146c728f08c9bea2319827d6bb432ac20a80432262f0225",
+    "pixelSize": [
+      1086,
+      1448
+    ],
+    "referenceHashes": [
+      {
+        "path": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-c5ee99fd-d650-47ae-816c-76feb6b3c3e1.png",
+        "sha256": "4d30cbe783ea1cf254a23148e86f2048e2e37a9874b933c9f35ac04a5ba5a567"
+      }
+    ],
+    "asset": "App/Assets.xcassets/SunwheelMillTabletPortrait050.imageset/scene.png"
+  },
+  {
+    "id": "portrait-100-master-03",
+    "family": "tabletPortrait",
+    "state": 100,
+    "request": {
+      "prompt": "Use case: precise-object-edit. This image is the75%Sunwheel Mill iPad portrait board. Make100% by opening ONLY ITS EXACT EXISTING closed copper gate and restoring outgoing flow. Treat every other object's geometry as immutable. The gate has two leaves meeting at a seam nearx578. Its leftmost and rightmost hinges are nearx510andx648. Keep those two outer hinge positions, supports and stone threshold FIXED. Swing the LEFT existing leaf outward toward the LEFT, and the RIGHT leaf outward toward the RIGHT, revealing an opening BETWEEN those original hinges. No new posts, no relocated gate, no third panel and no change to the terrace outline. Where the middle seam was, now show a clear open golden aperture with no solid panel. Flowing golden light pours through the open aperture, turns right along the already existing upper-right trough, and lights the already existing large foreground trough. Exactly the same masonry channels, just flowinggoldnow. Allfivepetals/bearing/workshop/lamps stay lit as they already are. Preserve clouds/sky, plants, wheel, roofs, camera, bridge, everyotherobject and exact3:4canvas. Only gate-leaf rotation plus outgoing stream illumination changes. No words/characters/UI. This is a continuous registered state transition of the SAME gate, not a redraw.",
+      "referenced_image_paths": [
+        "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-c5ee99fd-d650-47ae-816c-76feb6b3c3e1.png"
+      ],
+      "transparent_background": false
+    },
+    "original": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-c21128d1-3f56-4011-8a79-3be6c2d0c4ea.png",
+    "status": "Adopted packaged painting; source continuity and native board review accepted at d057696/dev.a15832d0fd. Unchanged board artwork retained through map-integration verification at 49d54fc/dev.6fa54c5e65. Publication and canonical installation pending.",
+    "selected": true,
+    "sha256": "117feaf109b4dbd5cf7d1abe748f68325e4b48a082e68529d7859549365b40d9",
+    "pixelSize": [
+      1086,
+      1448
+    ],
+    "referenceHashes": [
+      {
+        "path": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-c5ee99fd-d650-47ae-816c-76feb6b3c3e1.png",
+        "sha256": "4d30cbe783ea1cf254a23148e86f2048e2e37a9874b933c9f35ac04a5ba5a567"
+      }
+    ],
+    "asset": "App/Assets.xcassets/SunwheelMillTabletPortrait100.imageset/scene.png"
+  }
+]

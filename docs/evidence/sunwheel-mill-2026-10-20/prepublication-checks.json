@@ -1,0 +1,73 @@
+{
+  "checkedUTC": "2026-10-20T16:38:36.616475+00:00",
+  "runtimeSourceCommit": "d057696934621b4e9f34a3d57f620d28fe9eb262",
+  "runtimeInputFingerprint": "dev.a15832d0fd",
+  "stagedPaths": [
+    "App/README.md",
+    "README.md",
+    "Sources/StarfallCore/README.md",
+    "docs/ENGINEERING.md",
+    "docs/EXPERIMENTS.md",
+    "docs/OFFICIAL_LOCATIONS_AND_TUTORIAL_PLAN.md",
+    "docs/README.md",
+    "docs/ROADMAP.md",
+    "docs/design/README.md",
+    "docs/design/STARFALL_GAME_BIBLE.md",
+    "docs/design/STARLIGHT_RESTORATION.md",
+    "docs/design/VISUAL_REFERENCE.md",
+    "docs/design/WORLD_ATLAS.md",
+    "docs/design/sunwheel-mill-07/PRODUCTION_PLAN.md",
+    "docs/design/sunwheel-mill-07/README.md",
+    "docs/design/sunwheel-mill-07/art-prompts.json",
+    "docs/evidence/README.md",
+    "docs/evidence/sunwheel-mill-2026-10-20/README.md",
+    "docs/evidence/sunwheel-mill-2026-10-20/captures.json",
+    "docs/evidence/sunwheel-mill-2026-10-20/dev-d057696__sunwheel-075__iphone-17e__default-text.png",
+    "docs/evidence/sunwheel-mill-2026-10-20/dev-d057696__sunwheel-dense-075__ipad-air11__landscape.png",
+    "docs/evidence/sunwheel-mill-2026-10-20/dev-d057696__sunwheel-restored__ipad-air11__portrait.png",
+    "docs/evidence/sunwheel-mill-2026-10-20/integrated-code-review.json",
+    "docs/evidence/sunwheel-mill-2026-10-20/integrated-compact-routing-visual-review.json",
+    "docs/evidence/sunwheel-mill-2026-10-20/integrated-membership-review.json",
+    "docs/evidence/sunwheel-mill-2026-10-20/integrated-motion-review.json",
+    "docs/evidence/sunwheel-mill-2026-10-20/integrated-phone-visual-review.json",
+    "docs/evidence/sunwheel-mill-2026-10-20/integrated-static-verification.json",
+    "docs/evidence/sunwheel-mill-2026-10-20/integrated-tablet-visual-review.json",
+    "docs/evidence/sunwheel-mill-2026-10-20/integrated-verification.json",
+    "docs/evidence/sunwheel-mill-2026-10-20/routing-visual-review.json",
+    "docs/evidence/sunwheel-mill-2026-10-20/source-equivalence.json",
+    "docs/evidence/sunwheel-mill-2026-10-20/source.json",
+    "docs/evidence/sunwheel-mill-2026-10-20/verification.json"
+  ],
+  "commands": [
+    {
+      "command": [
+        "python3",
+        "scripts/ci-hygiene.py"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS: tracked-file hygiene and core UI-import guard. Native validation is separate."
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--cached",
+        "--check"
+      ],
+      "exitCode": 0,
+      "stdout": ""
+    },
+    {
+      "command": [
+        "python3",
+        "/private/tmp/check-sunwheel-doc-links.py"
+      ],
+      "exitCode": 0,
+      "stdout": "{\n  \"files\": 17,\n  \"checked\": 1169,\n  \"missing\": []\n}"
+    }
+  ],
+  "sourceBoundary": "All staged paths are documentation/evidence. Runtime and all74 test sources match the tested clean-archive comparison. This record itself is added after the checks; the staged hygiene/whitespace gate is repeated before commit.",
+  "staticVerification": "integrated-static-verification.json",
+  "cleanSourceEquivalence": "source-equivalence.json",
+  "nativeEvidence": "integrated-verification.json"
+}
