@@ -31,6 +31,8 @@ import StarfallCore
         let growth = Self.bodyScale(for: gem)
         character.size = CGSize(width: smallSize.width * growth, height: smallSize.height * growth)
         showExpression(expression)
+        LivingLight.setDrain(0, on: character)
+        LivingLight.setPressure(0, on: character)
         growthCue.isHidden = gem.value != 2
         if let aura = growthCue.children.first as? SKSpriteNode {
             aura.color = StarCast.Identity(gem).color
@@ -119,7 +121,13 @@ import StarfallCore
         guard pieceMotionEnabled, gem.isLight else { return }
         cancelLocalMotion()
         character.warpGeometry = OpalMotion.squashed
+        LivingLight.land(character, identity: .opal, direction: 1)
         character.run(OpalMotion.rebound(), withKey: SkyPieceMotion.responseKey)
+    }
+
+    func attend() {
+        guard pieceMotionEnabled else { return }
+        LivingLight.attend(character, identity: .init(gem), direction: gem.id.isMultiple(of: 2) ? -1 : 1)
     }
 
     /// Finite, local response. Replacing it resets the local anchor rather than accumulating kicks.
@@ -315,6 +323,7 @@ enum StarfallMotion {
 
     static func reset(_ node: SKSpriteNode) {
         node.removeAction(forKey: responseKey); node.removeAction(forKey: flightKey)
+        LivingLight.reset(node)
         restorePose(node)
     }
 
@@ -325,6 +334,7 @@ enum StarfallMotion {
     static func prepareFlight(_ node: SKSpriteNode, identity: StarCast.Identity, direction: CGFloat) {
         reset(node)
         guard identity != .magnet && identity != .hole else { return }
+        LivingLight.prepareFlight(node, identity: identity, direction: direction)
         let profile = profile(for: identity), poses = poses(for: identity)
         let roll = profile.flightRoll * direction
         node.subdivisionLevels = 2
@@ -343,6 +353,7 @@ enum StarfallMotion {
                      step: CGFloat, grown: Bool) {
         reset(node)
         guard identity != .magnet && identity != .hole else { return }
+        LivingLight.land(node, identity: identity, direction: direction)
         let profile = profile(for: identity), poses = poses(for: identity)
         node.subdivisionLevels = 2
         node.warpGeometry = identity == .opal ? OpalMotion.squashed : poses.impact
@@ -365,6 +376,7 @@ enum StarfallMotion {
     static func respond(_ node: SKSpriteNode, identity: StarCast.Identity, direction: CGFloat,
                         impulse: CGVector, step: CGFloat) {
         reset(node)
+        LivingLight.respond(node, identity: identity, direction: direction, impulse: impulse)
         let profile = profile(for: identity), poses = poses(for: identity)
         node.subdivisionLevels = 2
         node.warpGeometry = identity == .opal ? OpalMotion.round : round

@@ -1,10 +1,30 @@
-# Crystal Glow body sources
+# Gameplay shell and character body sources
 
-## Faceless gameplay pieces
+## Living starlight shells
+
+The seven `SkyPiece{Name}` catalog bodies are now translucent shell layers for the approved living-light direction. They retain the faceless family outlines while leaving a broad open interior for one responsive light. The existing image-set names are reused; the opaque faceted bodies remain in the historical source plate below. These source/export checks do not establish native animation, gameplay or phone acceptance.
+
+<img src="living-shell-twinkle-source-v1.png" width="240" alt="Generated rose Twinkle membrane with a tall diamond outline and a translucent center">
+
+**Generated shell layer — incomplete without renderer-owned light.** No core, face, paired highlights, particles or ground shadow is baked into the asset. The source viewer may make transparent central colors look opaque; the packaged center alphas range from 3 to 71 out of 255.
+
+Spark, Sunny, Dusk and Opal reuse the four [approved study](../../docs/design/star-cast/living-starlight-2026-10-20/README.md) exports byte-for-byte. Their [unaltered source plate](living-shells-study-source-v1.png) and [exact prompt](living-shells-study-prompt-v1.txt) are preserved here. Pip, Twinkle and Nova were generated individually with the built-in image tool, using the original silhouettes and approved membrane materials as references:
+
+| Family | Accepted source | Exact prompt |
+| --- | --- | --- |
+| Pip | [Mint wedge](living-shell-pip-source-v2.png) | [Material and proportion correction](living-shell-pip-prompt-v2.txt) |
+| Twinkle | [Tall rose diamond](living-shell-twinkle-source-v1.png) | [Shell prompt](living-shell-twinkle-prompt-v1.txt) |
+| Nova | [Low violet lens](living-shell-nova-source-v2.png) | [Material and proportion correction](living-shell-nova-prompt-v2.txt) |
+
+The [packaging receipt](living-shells-packaging.json) binds every source, prompt, original generation path, crop, fit and output hash, including the two unselected width trials. New sources use alpha ≥8 only to find bounds, four source pixels of crop padding, proportional Lanczos fitting to a maximum 208-pixel span and a centered 256×256 transparent canvas. Partial alpha is preserved without normalization, repainting, resculpting or lighting composites. The four study exports reproduce from their recorded regions/crops with optimized PNG encoding; new individual exports use ordinary PNG encoding. Existing `Contents.json` files are unchanged.
+
+All seven exports have transparent padding, bounded dimensions and closed rims at the renderer's alpha-8 exterior flood-fill threshold. Source and packaged images were inspected; actual movement and contrast against native scenery belong to the integrated app checks. The existing faceted-export command below is historical and must not overwrite these canonical shell exports.
+
+## Historical faceted gameplay pieces
 
 `shards-bodies-v1.png` is the seven-piece transparent production source generated with the built-in OpenAI image tool from the [approved character/piece board](../../docs/design/star-cast/characters-and-shards-2026-10-20/pairing-v2-opal.png). Its [exact prompt](shards-prompt-v1.txt) preserves the selected silhouettes and colors while removing all faces, labels and surrounding light. Original generated file: `exec-2ff72747-057f-4380-b27c-60ab2cf300f0.png`; the source is copied byte-for-byte.
 
-Run `python3 tools/art-quality/package_star_cast.py --shards` with Pillow to reproduce the seven `SkyPiece{Name}` image sets. The [packaging receipt](shards-packaging.json) records source/prompt/output hashes, explicit crop regions, 256-pixel canvas, centered pivot and 208-pixel maximum body span. Fixed equal grid slicing would clip Nova's right tip, so extraction regions follow the actual source spacing. The shared packager isolates the connected body and fits it without repainting. All seven assets are faceless; Opal is a round pearl. Material shading is baked into the bodies; fall/contact transforms and the grown aura belong to the renderer. See the [motion contract](../../docs/design/star-cast/characters-and-shards-2026-10-20/MOTION.md).
+The historical command `python3 tools/art-quality/package_star_cast.py --shards` reproduces the original faceted exports; run it only in an archival checkout because it writes the same catalog names now occupied by shells. The [historical packaging receipt](shards-packaging.json) records source/prompt/output hashes, explicit crop regions, 256-pixel canvas, centered pivot and 208-pixel maximum body span. Fixed equal grid slicing would clip Nova's right tip, so extraction regions follow the actual source spacing. The shared packager isolates the connected body and fits it without repainting. All seven assets are faceless; Opal is a round pearl. See the [motion contract](../../docs/design/star-cast/characters-and-shards-2026-10-20/MOTION.md).
 
 The original `StarCast` assets below remain the face-bearing character sources for story and ceremony. Gameplay has a separate material role; historical gravity objects retain their existing cutouts.
 

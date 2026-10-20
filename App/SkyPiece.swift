@@ -9,11 +9,12 @@ import StarfallCore
     static let rasterSide = StarCast.rasterSide
     static let silhouetteSide = StarCast.silhouetteSide
     static let maximumMaterials = StarCast.Identity.allCases.count
-    static let maximumRasterBytes = maximumMaterials * rasterSide * rasterSide * 4
+    static let maximumRasterBytes = 7 * LivingLight.rasterBytesPerFamily + 2 * rasterSide * rasterSide * 4
 
     private struct Material {
         let image: UIImage
         let texture: SKTexture
+        let light: LivingLight.Material?
     }
     private static var materials: [StarCast.Identity: Material] = [:]
     static var cachedMaterialCount: Int { materials.count }
@@ -35,6 +36,9 @@ import StarfallCore
         let side = max(0, radius.isFinite ? radius : 0) * 2 * CGFloat(rasterSide) / silhouetteSide
         node.size = CGSize(width: side, height: side)
         node.name = "sky-piece.\(StarCast.character(for: identity).name)"
+        if let light = material(for: identity).light {
+            LivingLight.configure(node, identity: identity, material: light)
+        }
         return node
     }
 
@@ -43,7 +47,17 @@ import StarfallCore
     static func setMaterial(for identity: StarCast.Identity, on node: SKSpriteNode) {
         let size = node.size
         let anchor = node.anchorPoint
-        node.texture = texture(for: identity)
+        let next = material(for: identity)
+        if node.texture !== next.texture {
+            LivingLight.reset(node)
+            node.texture = next.texture
+            node.name = "sky-piece.\(StarCast.character(for: identity).name)"
+            if let light = next.light {
+                LivingLight.configure(node, identity: identity, material: light)
+            } else {
+                node.shader = nil
+            }
+        }
         node.size = size
         node.anchorPoint = anchor
     }
@@ -71,16 +85,17 @@ import StarfallCore
         if identity == .magnet || identity == .hole {
             // Retained historical objects share their original faceless material, not another raster.
             result = Material(image: StarCast.image(for: identity),
-                              texture: StarCast.texture(for: identity, expression: .idle))
+                              texture: StarCast.texture(for: identity, expression: .idle), light: nil)
         } else {
             let assetName = "SkyPiece" + StarCast.character(for: identity).name
             guard let image = UIImage(named: assetName) else {
                 preconditionFailure("Missing gameplay piece: " + assetName)
             }
-            let texture = SKTexture(image: image)
+            let light = LivingLight.material(shell: image, identity: identity)
+            let texture = SKTexture(image: light.image)
             texture.filteringMode = .linear
             texture.usesMipmaps = false
-            result = Material(image: image, texture: texture)
+            result = Material(image: light.image, texture: texture, light: light)
         }
         materials[identity] = result
         return result

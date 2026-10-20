@@ -20,7 +20,8 @@ final class CriticalMassProductionTests: XCTestCase {
         let gem = try XCTUnwrap(store.game.gem(at: Cell(0,2)))
         let node = FallingSkyCharacter(gem: gem, step: 44)
         CriticalMassPresentation.configure(node, game: store.game, cell: Cell(0,2), step: 44)
-        XCTAssertNil(node.character.shader)
+        XCTAssertEqual(LivingLight.pressure(on: node.character), 0)
+        XCTAssertNotNil(node.character.value(forAttributeNamed: "a_light"))
         XCTAssertNil(node.childNode(withName: "sky.critical-mass"))
         let before = store.game
         store.setSuspended(true); clock.advance(100); XCTAssertEqual(store.game, before)
@@ -126,9 +127,12 @@ final class CriticalMassProductionTests: XCTestCase {
                 XCTAssertEqual(node.gem, gem)
                 XCTAssertEqual(node.gem.value, fresh.value)
                 if age >= 3 {
-                    XCTAssertEqual(try XCTUnwrap(node.character.shader?.uniformNamed("u_pressure")).floatValue,
+                    XCTAssertEqual(LivingLight.pressure(on: node.character),
                                    Float(age) / Float(CriticalMassRule.collapseAge), accuracy: 0.001)
-                } else { XCTAssertNil(node.character.shader) }
+                } else {
+                    XCTAssertEqual(LivingLight.pressure(on: node.character), 0)
+                    XCTAssertNotNil(node.character.value(forAttributeNamed: "a_light"))
+                }
                 let cue = node.childNode(withName: "sky.critical-mass")
                 XCTAssertEqual(cue != nil, age >= 6)
                 XCTAssertEqual(cue?.children.count ?? 0, age >= 6 ? 1 : 0,

@@ -113,7 +113,13 @@ final class DuskProductionTests: XCTestCase {
         XCTAssertNil(scene.childNode(withName:"//sky.growth-lock"))
         let characters=scene.children[1].children.compactMap { $0 as? FallingSkyCharacter }
         XCTAssertEqual(characters.count,game.occupiedCount)
-        XCTAssertEqual(characters.filter { $0.character.shader != nil }.count,3)
+        XCTAssertEqual(characters.filter {
+            LivingLight.drain(on: $0.character) > 0
+        }.count,3)
+        for node in characters {
+            XCTAssertNotNil(node.character.value(forAttributeNamed: "a_light"))
+            XCTAssertNotNil(node.character.value(forAttributeNamed: "a_drain"))
+        }
         scene.reduceMotion=true;scene.size = .init(width:350,height:560);scene.render(game)
         XCTAssertNotNil(scene.childNode(withName:"//dusk.progress"))
         XCTAssertNil(scene.childNode(withName:"//dusk.collapse"))

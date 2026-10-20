@@ -1,0 +1,372 @@
+{
+  "generator": "built-in image_gen",
+  "status": "Canonical translucent shell materials; native lighting, motion and delivery acceptance recorded separately.",
+  "sourcePlate": "living-shells-study-source-v1.png",
+  "sourcePlateSHA256": "21fcd5ab1d0b153ad15a8d2b5d47f9cae80d387e68fd19a42fc4425288457264",
+  "sourcePlateOriginalPath": "/Users/lbeezr/.codex/generated_images/01a1593f-f12e-7fb1-80a7-9344aef2182a/exec-7e8d0169-6e52-4e08-b203-68ecfd291465.png",
+  "sourcePlatePrompt": "living-shells-study-prompt-v1.txt",
+  "sourcePlatePromptSHA256": "c5c8b184c05565d464f489234839185086f3b79140635916d877cd74b7662534",
+  "operations": "Four approved exports copied byte-for-byte. New single-body sources cropped to alpha>=8 bounds plus4sourcepixels, proportionally Lanczos fitted to max208pixels, centered on transparent256canvas. Original partial alpha retained; no alpha normalization, repainting, compositing, distortion or artistic postprocessing.",
+  "canvas": [
+    256,
+    256
+  ],
+  "maximumFittedSpan": 208,
+  "anchor": [
+    0.5,
+    0.5
+  ],
+  "pieces": {
+    "Spark": {
+      "region": [
+        0,
+        0,
+        768,
+        530
+      ],
+      "cropWithinRegion": [
+        120,
+        42,
+        710,
+        519
+      ],
+      "fittedSize": [
+        208,
+        168
+      ],
+      "pasteAt": [
+        24,
+        44
+      ],
+      "output": "App/Assets.xcassets/SkyPieceSpark.imageset/body.png",
+      "source": "living-shells-study-source-v1.png",
+      "approvedExport": "docs/design/star-cast/living-starlight-2026-10-20/spark-shell-v1.png",
+      "outputSHA256": "78f42140529feff55ca74cda2eacdfa8a5ee89b7799f10ade36c67004ab8acd6",
+      "outputAlpha8Bounds": [
+        25,
+        45,
+        231,
+        211
+      ],
+      "outputCenterAlpha": 46,
+      "outputAlphaExtrema": [
+        0,
+        255
+      ],
+      "contentsSHA256": "bd5fe0cd7d564c4709a88048f8c8a62e9ddd9fefebdb4aa8c1e0cb438e7b0df3",
+      "pngOptimize": true,
+      "maskCheck": {
+        "exteriorAlphaThreshold": 8,
+        "centerInsideClosedRim": true,
+        "filledPixelCount": 20426
+      }
+    },
+    "Sunny": {
+      "region": [
+        768,
+        0,
+        1536,
+        530
+      ],
+      "cropWithinRegion": [
+        47,
+        38,
+        607,
+        521
+      ],
+      "fittedSize": [
+        208,
+        179
+      ],
+      "pasteAt": [
+        24,
+        38
+      ],
+      "output": "App/Assets.xcassets/SkyPieceSunny.imageset/body.png",
+      "source": "living-shells-study-source-v1.png",
+      "approvedExport": "docs/design/star-cast/living-starlight-2026-10-20/sunny-shell-v1.png",
+      "outputSHA256": "f57f51dddc067ca6adc1abfadd6dcd681bc366f0b39279514ecddc7c3db9a631",
+      "outputAlpha8Bounds": [
+        25,
+        39,
+        231,
+        216
+      ],
+      "outputCenterAlpha": 12,
+      "outputAlphaExtrema": [
+        0,
+        255
+      ],
+      "contentsSHA256": "bd5fe0cd7d564c4709a88048f8c8a62e9ddd9fefebdb4aa8c1e0cb438e7b0df3",
+      "pngOptimize": true,
+      "maskCheck": {
+        "exteriorAlphaThreshold": 8,
+        "centerInsideClosedRim": true,
+        "filledPixelCount": 24453
+      }
+    },
+    "Dusk": {
+      "region": [
+        0,
+        530,
+        768,
+        1024
+      ],
+      "cropWithinRegion": [
+        238,
+        0,
+        751,
+        463
+      ],
+      "fittedSize": [
+        208,
+        188
+      ],
+      "pasteAt": [
+        24,
+        34
+      ],
+      "output": "App/Assets.xcassets/SkyPieceDusk.imageset/body.png",
+      "source": "living-shells-study-source-v1.png",
+      "approvedExport": "docs/design/star-cast/living-starlight-2026-10-20/dusk-shell-v1.png",
+      "outputSHA256": "5cf7e490524fb0f5a49d2a0686beda315451b23e1996ced160bcfcddbbb7bcee",
+      "outputAlpha8Bounds": [
+        25,
+        35,
+        231,
+        221
+      ],
+      "outputCenterAlpha": 71,
+      "outputAlphaExtrema": [
+        0,
+        255
+      ],
+      "contentsSHA256": "bd5fe0cd7d564c4709a88048f8c8a62e9ddd9fefebdb4aa8c1e0cb438e7b0df3",
+      "pngOptimize": true,
+      "maskCheck": {
+        "exteriorAlphaThreshold": 8,
+        "centerInsideClosedRim": true,
+        "filledPixelCount": 22942
+      }
+    },
+    "Opal": {
+      "region": [
+        768,
+        530,
+        1536,
+        1024
+      ],
+      "cropWithinRegion": [
+        102,
+        12,
+        552,
+        457
+      ],
+      "fittedSize": [
+        208,
+        206
+      ],
+      "pasteAt": [
+        24,
+        25
+      ],
+      "output": "App/Assets.xcassets/SkyPieceOpal.imageset/body.png",
+      "source": "living-shells-study-source-v1.png",
+      "approvedExport": "docs/design/star-cast/living-starlight-2026-10-20/opal-shell-v1.png",
+      "outputSHA256": "ec20dcbcaa9086e0a4c1118ee2682d32d893e346a98262a0d78d9a41905cd6ed",
+      "outputAlpha8Bounds": [
+        26,
+        26,
+        230,
+        229
+      ],
+      "outputCenterAlpha": 13,
+      "outputAlphaExtrema": [
+        0,
+        255
+      ],
+      "contentsSHA256": "bd5fe0cd7d564c4709a88048f8c8a62e9ddd9fefebdb4aa8c1e0cb438e7b0df3",
+      "pngOptimize": true,
+      "maskCheck": {
+        "exteriorAlphaThreshold": 8,
+        "centerInsideClosedRim": true,
+        "filledPixelCount": 32468
+      }
+    },
+    "Pip": {
+      "source": "living-shell-pip-source-v2.png",
+      "sourceOriginalPath": "/Users/lbeezr/.codex/generated_images/01a15946-c5cb-7683-beeb-29698f4d2cff/exec-abb5ae8d-00d0-477e-931a-2bbd73e2f876.png",
+      "sourceSHA256": "65722b5d055ef0acb80ba0f0d01b2a5a8e1cb6e067737f6f43e1974a95bcbd4e",
+      "prompt": "living-shell-pip-prompt-v2.txt",
+      "promptSHA256": "017558773687d87c8e71b2cc060436c36f0dd7a3e464a9c7975b688de15f7023",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "detectedAlpha8Bounds": [
+        97,
+        216,
+        1159,
+        1072
+      ],
+      "crop": [
+        93,
+        212,
+        1163,
+        1076
+      ],
+      "fittedSize": [
+        208,
+        168
+      ],
+      "pasteAt": [
+        24,
+        44
+      ],
+      "output": "App/Assets.xcassets/SkyPiecePip.imageset/body.png",
+      "outputSHA256": "976fa99c826c20013a2cc706801542de69810ed6a48e5177cb9b021d9b63c93e",
+      "outputAlpha8Bounds": [
+        24,
+        44,
+        232,
+        212
+      ],
+      "outputCenterAlpha": 16,
+      "outputAlphaExtrema": [
+        0,
+        255
+      ],
+      "contentsSHA256": "bd5fe0cd7d564c4709a88048f8c8a62e9ddd9fefebdb4aa8c1e0cb438e7b0df3",
+      "pngOptimize": false,
+      "maskCheck": {
+        "exteriorAlphaThreshold": 8,
+        "centerInsideClosedRim": true,
+        "filledPixelCount": 23162
+      }
+    },
+    "Twinkle": {
+      "source": "living-shell-twinkle-source-v1.png",
+      "sourceOriginalPath": "/Users/lbeezr/.codex/generated_images/01a15946-c5cb-7683-beeb-29698f4d2cff/exec-2c90ac97-d402-43c9-b268-beae1a61e628.png",
+      "sourceSHA256": "d797072c075e5f262f18ca7d36f30b73d1e96fdc06de24a446714ec4a8020156",
+      "prompt": "living-shell-twinkle-prompt-v1.txt",
+      "promptSHA256": "eacaeaad393333b0dad2f21d29160a4e839a749fff7c7b06b87f132a8670ae91",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "detectedAlpha8Bounds": [
+        188,
+        47,
+        1067,
+        1183
+      ],
+      "crop": [
+        184,
+        43,
+        1071,
+        1187
+      ],
+      "fittedSize": [
+        161,
+        208
+      ],
+      "pasteAt": [
+        47,
+        24
+      ],
+      "output": "App/Assets.xcassets/SkyPieceTwinkle.imageset/body.png",
+      "outputSHA256": "00d985f5c541f0250e5554d76d8a17c72139fe98dbfd27f8a724d0ab9f0e9d1d",
+      "outputAlpha8Bounds": [
+        47,
+        24,
+        208,
+        232
+      ],
+      "outputCenterAlpha": 37,
+      "outputAlphaExtrema": [
+        0,
+        255
+      ],
+      "contentsSHA256": "bd5fe0cd7d564c4709a88048f8c8a62e9ddd9fefebdb4aa8c1e0cb438e7b0df3",
+      "pngOptimize": false,
+      "maskCheck": {
+        "exteriorAlphaThreshold": 8,
+        "centerInsideClosedRim": true,
+        "filledPixelCount": 13299
+      }
+    },
+    "Nova": {
+      "source": "living-shell-nova-source-v2.png",
+      "sourceOriginalPath": "/Users/lbeezr/.codex/generated_images/01a15946-c5cb-7683-beeb-29698f4d2cff/exec-3fd98785-6c55-49a0-b220-e53181fcf861.png",
+      "sourceSHA256": "95742aa00f6bdb5041c67c84705d590e1f04283e3a9a9ff358aa7823e6aea5ae",
+      "prompt": "living-shell-nova-prompt-v2.txt",
+      "promptSHA256": "7972a1f01615415e7f846ecd07007694f4824446b367f540baf7d134aa57fe0a",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "detectedAlpha8Bounds": [
+        135,
+        335,
+        1119,
+        922
+      ],
+      "crop": [
+        131,
+        331,
+        1123,
+        926
+      ],
+      "fittedSize": [
+        208,
+        125
+      ],
+      "pasteAt": [
+        24,
+        65
+      ],
+      "output": "App/Assets.xcassets/SkyPieceNova.imageset/body.png",
+      "outputSHA256": "7804653971e2e6754bf03c4f532fc97a5eb99066fc1e796a0bcd5d0da2904e73",
+      "outputAlpha8Bounds": [
+        25,
+        65,
+        232,
+        189
+      ],
+      "outputCenterAlpha": 3,
+      "outputAlphaExtrema": [
+        0,
+        255
+      ],
+      "contentsSHA256": "bd5fe0cd7d564c4709a88048f8c8a62e9ddd9fefebdb4aa8c1e0cb438e7b0df3",
+      "pngOptimize": false,
+      "maskCheck": {
+        "exteriorAlphaThreshold": 8,
+        "centerInsideClosedRim": true,
+        "filledPixelCount": 15533
+      }
+    }
+  },
+  "historicalFacetedSource": {
+    "path": "shards-bodies-v1.png",
+    "sha256": "e81f2983a33c5e1914433265cc77e4c911a5493b8b707b630c2a061caf7033ec"
+  },
+  "unselectedTrials": [
+    {
+      "family": "Pip",
+      "sourceOriginalPath": "/Users/lbeezr/.codex/generated_images/01a15946-c5cb-7683-beeb-29698f4d2cff/exec-0af8fb9b-6279-4113-b93f-f4357cfec292.png",
+      "sourceSHA256": "ebfe7ba74aa6f741870cb06fd743c417f8ea70aabebef925b38cd67ca9b9ed59",
+      "prompt": "living-shell-pip-prompt-v1.txt",
+      "promptSHA256": "8b49de080b2278c5a3989c8cbe7d8b508f0b1eec73b49f0c434f2c8ca94aad7d",
+      "reason": "Wedge too wide:1.386 versus original~1.22."
+    },
+    {
+      "family": "Nova",
+      "sourceOriginalPath": "/Users/lbeezr/.codex/generated_images/01a15946-c5cb-7683-beeb-29698f4d2cff/exec-a3c500be-ba98-4daf-9d73-82966c124a16.png",
+      "sourceSHA256": "d38dbf006cd866cc3edf89c6130ecac919802aa35626f9084d9ee0e5b417dee1",
+      "prompt": "living-shell-nova-prompt-v1.txt",
+      "promptSHA256": "247daf347e3f7de8b662732c0ec0d5ffd822bbd07796f232efa7920a3be25e34",
+      "reason": "Lens too flat:2.133 versus original~1.60."
+    }
+  ]
+}

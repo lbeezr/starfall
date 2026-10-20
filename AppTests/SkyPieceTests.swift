@@ -21,12 +21,21 @@ final class SkyPieceTests: XCTestCase {
         SkyPiece.prewarm()
         StarCast.prewarm()
         XCTAssertEqual(SkyPiece.cachedMaterialCount, 9)
-        XCTAssertEqual(SkyPiece.maximumRasterBytes, 2_359_296)
+        XCTAssertEqual(SkyPiece.maximumRasterBytes, 6_029_312,
+                       "Seven rest/shell/mask sets and two shared historical textures stay bounded")
         for identity in families {
             let name = StarCast.character(for: identity).name
             let asset = try XCTUnwrap(UIImage(named: "SkyPiece" + name))
             let gameplay = SkyPiece.image(for: identity)
-            XCTAssertEqual(try pixels(gameplay), try pixels(asset), "Gameplay must use the authored faceless body without composited expressions")
+            let shellPixels = try pixels(asset), gameplayPixels = try pixels(gameplay)
+            XCTAssertNotEqual(gameplayPixels, shellPixels, "The shared resting material must fill the translucent shell with light")
+            let shellAlpha = stride(from: 3, to: shellPixels.count, by: 4).map { shellPixels[$0] }
+            let gameplayAlpha = stride(from: 3, to: gameplayPixels.count, by: 4).map { gameplayPixels[$0] }
+            XCTAssertGreaterThan(shellAlpha.filter { $0 > 8 && $0 < 240 }.count, 256,
+                                 "Every authored shell needs a translucent interior")
+            XCTAssertGreaterThan(gameplayAlpha.filter { $0 >= 240 }.count,
+                                 shellAlpha.filter { $0 >= 240 }.count,
+                                 "The resting composite must give the translucent interior visible substance")
             XCTAssertNotEqual(try pixels(gameplay), try pixels(StarCast.image(for: identity)), "Story and gameplay materials have separate roles")
             let texture = SkyPiece.texture(for: identity)
             let portrait = StarCast.texture(for: identity, expression: .idle)
@@ -37,6 +46,9 @@ final class SkyPieceTests: XCTestCase {
                         node.showExpression(expression, facing: facing)
                         XCTAssertTrue(node.character.texture === texture)
                         XCTAssertEqual(node.character.name, "sky-piece." + name)
+                        XCTAssertNotNil(node.character.value(forAttributeNamed: "a_light"))
+                        XCTAssertEqual(LivingLight.drain(on: node.character), 0)
+                        XCTAssertEqual(LivingLight.pressure(on: node.character), 0)
                     }
                 }
             }
@@ -61,7 +73,7 @@ final class SkyPieceTests: XCTestCase {
             XCTAssertEqual(image.size, CGSize(width: 256, height: 256))
             let rgba = try pixels(image)
             let alpha = stride(from: 3, to: rgba.count, by: 4).map { rgba[$0] }
-            XCTAssertTrue(alpha.contains(255))
+            XCTAssertTrue(alpha.contains { $0 >= 240 }, "A luminous interior must remain substantial against the scene")
             for y in 0..<256 { for x in 0..<256 where x < 18 || x >= 238 || y < 18 || y >= 238 {
                 XCTAssertEqual(alpha[y * 256 + x], 0, "Pieces need transparent clearance around every edge")
             } }
@@ -69,6 +81,45 @@ final class SkyPieceTests: XCTestCase {
             silhouettes.insert(Data(stride(from: 3, to: small.count, by: 4).map { small[$0] >= 128 ? 255 : 0 }))
         }
         XCTAssertEqual(silhouettes.count, families.count, "All seven families must retain different silhouettes at the smallest review size")
+    }
+
+    @MainActor func testRestingNativeLightMatchesTheCachedForecastMaterial() throws {
+        let size = CGSize(width: 256, height: 256)
+        let view = SKView(frame: CGRect(origin: .zero, size: size))
+        defer { view.presentScene(nil) }
+        var pairs: [(UIImage, UIImage)] = []
+        for identity in families {
+            let scene = SKScene(size: size)
+            scene.backgroundColor = .clear
+            let node = SkyPiece.makeNode(for: identity, radius: SkyPiece.silhouetteSide / 2)
+            node.position = CGPoint(x: 128, y: 128)
+            scene.addChild(node); view.presentScene(scene)
+            XCTAssertNotNil(node.value(forAttributeNamed: "a_light"))
+            let live = UIImage(cgImage: try XCTUnwrap(view.texture(from: scene, crop: CGRect(origin: .zero, size: size))).cgImage())
+            node.shader = nil
+            let cached = UIImage(cgImage: try XCTUnwrap(view.texture(from: scene, crop: CGRect(origin: .zero, size: size))).cgImage())
+            let livePixels = try pixels(live), cachedPixels = try pixels(cached)
+            var difference = 0, comparedChannels = 0
+            for offset in stride(from: 0, to: livePixels.count, by: 4)
+                where max(livePixels[offset + 3], cachedPixels[offset + 3]) > 8 {
+                for channel in 0..<4 {
+                    difference += abs(Int(livePixels[offset + channel]) - Int(cachedPixels[offset + channel]))
+                    comparedChannels += 1
+                }
+            }
+            XCTAssertGreaterThan(comparedChannels, 256, "Native materials must actually render")
+            XCTAssertLessThan(Double(difference) / Double(max(1, comparedChannels)), 12,
+                              "\(identity): board and forecast resting materials must agree despite GPU sampling/rounding")
+            pairs.append((live, cached))
+        }
+        let format = UIGraphicsImageRendererFormat(); format.scale = 1
+        let review = UIGraphicsImageRenderer(size: CGSize(width: 256, height: CGFloat(pairs.count * 128)), format: format).image { _ in
+            for (row, pair) in pairs.enumerated() {
+                pair.0.draw(in: CGRect(x: 0, y: CGFloat(row * 128), width: 128, height: 128))
+                pair.1.draw(in: CGRect(x: 128, y: CGFloat(row * 128), width: 128, height: 128))
+            }
+        }
+        attach(review, name: "living-light-native-rest-left-cached-forecast-right")
     }
 
     @MainActor func testMaterialRefreshPreservesChildPoseAndResetRestoresIt() {
@@ -96,6 +147,27 @@ final class SkyPieceTests: XCTestCase {
             assertStill(root)
             XCTAssertEqual(node.size, neutralSize)
             XCTAssertEqual(node.anchorPoint, anchor)
+        }
+    }
+
+    @MainActor func testLivingLightStateIsLocalAndResetPreservesCommittedDrain() throws {
+        for identity in families {
+            let first = FallingSkyCharacter(gem: gem(identity, id: 1), step: 45)
+            let second = FallingSkyCharacter(gem: gem(identity, id: 2), step: 45)
+            let firstShader = try XCTUnwrap(first.character.shader)
+            let secondShader = try XCTUnwrap(second.character.shader)
+            XCTAssertTrue(firstShader === secondShader, "Pieces of one family reuse one immutable shader program")
+            XCTAssertTrue(first.character.texture === second.character.texture,
+                          "Independent presentation state still reuses the bounded resting material")
+            first.setDrain(1)
+            XCTAssertEqual(LivingLight.drain(on: first.character), 1)
+            XCTAssertEqual(LivingLight.drain(on: second.character), 0)
+            LivingLight.reset(first.character)
+            XCTAssertTrue(first.character.shader === firstShader)
+            XCTAssertEqual(LivingLight.drain(on: first.character), 1,
+                           "Cancelling decorative light cannot erase committed historical drainage")
+            XCTAssertEqual(LivingLight.offset(on: first.character), .zero)
+            XCTAssertFalse(LivingLight.isResponding(on: first.character))
         }
     }
 
@@ -147,7 +219,7 @@ final class SkyPieceTests: XCTestCase {
                 for (index, side) in [CGFloat(24), 36, 44].enumerated() {
                     let node = SkyPiece.makeNode(for: identity, radius: side / 2)
                     node.position = CGPoint(x: x + 24 + CGFloat(index) * 46, y: y)
-                    if row == 2 { node.color = .black; node.colorBlendFactor = 1 }
+                    if row == 2 { node.shader = nil; node.color = .black; node.colorBlendFactor = 1 }
                     if row == 3 { node.shader = grayscale }
                     scene.addChild(node)
                 }
@@ -189,6 +261,10 @@ final class SkyPieceTests: XCTestCase {
             label(StarCast.character(for: identity).name, at: CGPoint(x: root.position.x, y: 350), in: scene, size: 10)
             return root
         }
+        let restingNeighbor = FallingSkyCharacter(gem: gem(families[0], id: 99), step: 56)
+        restingNeighbor.position = CGPoint(x: 32, y: 88)
+        scene.addChild(restingNeighbor)
+        label("Still Spark", at: CGPoint(x: 32, y: 118), in: scene, size: 9)
         view.presentScene(scene)
         var firstFrame = false
         scene.run(.run { firstFrame = true }, withKey: "review.ready")
@@ -203,10 +279,11 @@ final class SkyPieceTests: XCTestCase {
             attach(image, name: name)
             if reviewFrames.count < 48 { reviewFrames.append(image) }
         }
-        func sample(_ phase: String) async throws {
-            var observed = Set<Int>(), frame = 0
+        func sample(_ phase: String, movesBody: Bool = true) async throws {
+            var observed = Set<Int>(), observedLight = Set<Int>(), frame = 0
             let deadline = ContinuousClock.now + .seconds(2)
             repeat {
+                assertStill(restingNeighbor)
                 for (index, root) in roots.enumerated() {
                     let art = root.character
                     XCTAssertTrue(art.position.x.isFinite && art.position.y.isFinite && art.zRotation.isFinite)
@@ -214,9 +291,21 @@ final class SkyPieceTests: XCTestCase {
                     XCTAssertGreaterThan(art.yScale, 0.7); XCTAssertLessThan(art.yScale, 1.3)
                     XCTAssertLessThan(hypot(art.position.x, art.position.y), 20)
                     XCTAssertTrue(art.texture === SkyPiece.texture(for: families[index]))
+                    let light = LivingLight.offset(on: art)
+                    XCTAssertTrue(light.x.isFinite && light.y.isFinite)
+                    XCTAssertLessThanOrEqual(hypot(light.x, light.y), LivingLight.maximumOffset + 0.0001,
+                                             "Internal light must stay within its shared material bounds")
+                    if hypot(light.x, light.y) > 0.0001 { observedLight.insert(index) }
                     if abs(art.zRotation) > 0.005 || abs(art.xScale - 1) > 0.005
                         || abs(art.yScale - 1) > 0.005 || hypot(art.position.x, art.position.y) > 0.1 {
                         observed.insert(index)
+                    }
+                    if !movesBody {
+                        XCTAssertEqual(art.position, .zero)
+                        XCTAssertEqual(art.xScale, 1, accuracy: 0.0001)
+                        XCTAssertEqual(art.yScale, 1, accuracy: 0.0001)
+                        XCTAssertEqual(art.zRotation, 0, accuracy: 0.0001)
+                        XCTAssertNil(art.warpGeometry, "Attention moves internal light, not the playable body")
                     }
                 }
                 if frame.isMultiple(of: 3) {
@@ -225,7 +314,9 @@ final class SkyPieceTests: XCTestCase {
                 frame += 1
                 try await Task.sleep(for: .milliseconds(20))
             } while roots.contains(where: { $0.hasActions() || $0.character.hasActions() }) && ContinuousClock.now < deadline
-            XCTAssertEqual(observed.count, roots.count, "Every family must show a sampled \(phase) response")
+            XCTAssertEqual(observed.count, movesBody ? roots.count : 0,
+                           "\(phase) must preserve its intended body-motion contract")
+            XCTAssertEqual(observedLight.count, roots.count, "Every family must show a sampled internal-light \(phase) response")
             XCTAssertTrue(roots.allSatisfy { !$0.hasActions() && !$0.character.hasActions() }, "\(phase) must finish within its finite budget")
         }
         try capture("sky-piece-motion-before")
@@ -249,6 +340,21 @@ final class SkyPieceTests: XCTestCase {
         phaseLabel.text = "Settled"
         for root in roots { assertStill(root); XCTAssertEqual(root.position.y, 170, accuracy: 0.001) }
         try capture("sky-piece-motion-settled")
+        phaseLabel.text = "Attention"
+        for root in roots { root.attend() }
+        try await sample("attention", movesBody: false)
+        for root in roots { assertStill(root); XCTAssertEqual(root.position.y, 170, accuracy: 0.001) }
+        for root in roots {
+            for _ in 0..<5 { root.attend() }
+            root.cancelLocalMotion()
+            assertStill(root)
+        }
+        try await Task.sleep(for: .milliseconds(700))
+        for root in roots {
+            assertStill(root)
+            XCTAssertEqual(root.position.y, 170, accuracy: 0.001,
+                           "Replaced or cancelled attention cannot revive a stale response")
+        }
         phaseLabel.text = "Grown bodies · one cell apart"
         for (index, root) in roots.enumerated() {
             root.update(gem(families[index], id: index, grown: true), expression: .grown)
@@ -277,6 +383,7 @@ final class SkyPieceTests: XCTestCase {
             root.setPieceMotion(false); assertStill(root)
             root.land(direction: -1, step: 56)
             root.acknowledge(from: .zero, impulse: CGVector(dx: 1, dy: 1), step: 56)
+            root.attend()
             assertStill(root)
             XCTAssertEqual(root.position.y, 170, accuracy: 0.001)
         }
@@ -301,7 +408,10 @@ final class SkyPieceTests: XCTestCase {
         scene.render(game)
         func roots() -> [FallingSkyCharacter] { scene.children[1].children.compactMap { $0 as? FallingSkyCharacter } }
         func startResponse() {
-            for root in roots() { root.land(direction: 1, step: 45) }
+            for root in roots() {
+                root.land(direction: 1, step: 45)
+                root.attend()
+            }
         }
         startResponse()
         scene.reduceMotion = true
@@ -333,6 +443,8 @@ final class SkyPieceTests: XCTestCase {
         XCTAssertEqual(art.zRotation, 0, accuracy: 0.0001, file: file, line: line)
         XCTAssertNil(art.warpGeometry, file: file, line: line)
         XCTAssertFalse(art.hasActions(), file: file, line: line)
+        XCTAssertEqual(LivingLight.offset(on: art), .zero, file: file, line: line)
+        XCTAssertFalse(LivingLight.isResponding(on: art), file: file, line: line)
     }
 
     @MainActor private func pixels(_ image: UIImage, side: Int = 256) throws -> [UInt8] {
