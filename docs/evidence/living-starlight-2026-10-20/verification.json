@@ -1,5 +1,5 @@
 {
-  "status": "Development verified; ready for publication; canonical delivery pending",
+  "status": "Development verified, merged and canonically delivered; physical/RC gates remain open",
   "scope": "Focused checks, not the complete hosted/UI/RC matrix",
   "sourceRecord": "source.json",
   "baseCommit": "d94903b69e864218ca2643ddc191676324f69654",
@@ -10,7 +10,8 @@
     "device": "iPhone17e Simulator",
     "simulatorID": "D65C5E40-734F-42BF-8F91-97E980ED19C2",
     "OS": "iOS27.0",
-    "Xcode": "27.1 (27A9275)"
+    "Xcode": "27.1 (27A9275)",
+    "simulatorAppBuildLabel": "dev.local"
   },
   "checks": [
     {
@@ -273,8 +274,29 @@
     }
   ],
   "visualEvidence": "captures.json",
-  "publication": "pending",
-  "canonicalDelivery": "pending",
+  "publication": {
+    "status": "merged",
+    "pullRequest": "https://github.com/lbeezr/starfall/pull/190",
+    "publishedHead": "dd8364b02299eb4bc12f514742922609dacfe920",
+    "verifiedGitTree": "8f2535d33569ce77d63d6d59e93c5019956ea7cf",
+    "mergedMain": "c6e3a35af2f98112150b0fc7c6932e4eed479971"
+  },
+  "canonicalDelivery": {
+    "status": "installed and OS-owned installation verified",
+    "record": "delivery.json",
+    "verifiedAtUTC": "2026-10-20T15:43:05.349772+00:00",
+    "installedBuildLabel": "dev.e2b265734e",
+    "installedSource": "c6e3a35af2f98112150b0fc7c6932e4eed479971",
+    "device": "Original paired iPhone 16 Pro Max",
+    "OS": "iOS 26.6.2",
+    "validation": {
+      "coreTests": "passed",
+      "signature": "verified",
+      "mainCIAtInstall": "pending"
+    },
+    "OSInventoryMatchesReceipt": true,
+    "playerData": "No reset, uninstall or automatic launch"
+  },
   "physicalPlay": "not run; installation will not establish recognition or sustained performance",
   "minimumIOS": "not run; existing iOS17 RC gate remains open",
   "actualVoiceOver": "deferred to RC; not run on this development build",
@@ -303,6 +325,12 @@
       "Inner light remained inside varied silhouettes; unrelated pieces did not move continuously.",
       "Five colored families remained visible on the full 49-piece board."
     ],
-    "limits": "Sampled frames, not continuous frame-time profiling or physical play; all seven family responses separately exercised by hosted native actions. Raw video remains disposable."
-  }
+    "limits": "Sampled frames, not continuous frame-time profiling or physical play; all seven family responses separately exercised by hosted native actions. Raw video remains disposable.",
+    "simulatorAppBuildLabel": "dev.local",
+    "computedRuntimeInputFingerprint": "dev.e2b265734e"
+  },
+  "runtimeBuildIDMeaning": "Computed runtime-input fingerprint from scripts/build_identity.py; not the simulator app Info.plist label.",
+  "simulatorAppBuildLabel": "dev.local",
+  "simulatorBuildLabelEvidence": "Both Debug and Release simulator Info.plists report StarfallBuildID=dev.local; xcodebuild commands omitted STARFALL_BUILD_ID.",
+  "documentationCorrection": "Simulator literal build label is dev.local; runtimeBuildID is the computed input fingerprint. Runtime inputs, capture bytes and test outcomes are unchanged; no native rerun required."
 }

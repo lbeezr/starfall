@@ -1,0 +1,25 @@
+{
+  "status": "installed and OS-owned installation verified",
+  "verifiedAtUTC": "2026-10-20T15:43:05.349772+00:00",
+  "method": "python3 scripts/device-update.py run",
+  "pullRequest": "https://github.com/lbeezr/starfall/pull/190",
+  "publishedHead": "dd8364b02299eb4bc12f514742922609dacfe920",
+  "verifiedGitTree": "8f2535d33569ce77d63d6d59e93c5019956ea7cf",
+  "device": "Original paired iPhone16ProMax",
+  "OS": "iOS26.6.2",
+  "receipt": {
+    "buildID": "dev.e2b265734e",
+    "source": "c6e3a35af2f98112150b0fc7c6932e4eed479971",
+    "bundle": "com.starfall.prototype",
+    "installationURL": "file:///private/var/containers/Bundle/Application/4C98ACEE-6B3A-4E98-B735-A5ED540865AB/Starfall.app/",
+    "bundleVersion": "1",
+    "validation": {
+      "coreTests": "passed",
+      "signature": "verified",
+      "mainCIAtInstall": "pending"
+    }
+  },
+  "OSInventoryMatchesReceipt": true,
+  "playerData": "Updater installs in place; no reset, uninstall or automatic launch",
+  "physicalPlay": "not run"
+}
