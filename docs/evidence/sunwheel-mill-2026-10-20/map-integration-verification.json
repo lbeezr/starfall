@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "status": "DEVELOPMENT_VERIFIED_DELIVERY_PENDING",
+  "status": "DEVELOPMENT_VERIFIED_DELIVERED",
   "updatedUTC": "2026-10-20T17:14:58.272135+00:00",
   "source": {
     "sourceCommit": "49d54fcab24984c73262849b853e23e8ecd93e3e",
@@ -2709,11 +2709,17 @@
     "Development evidence; actual VoiceOver/full RC, minimum-iOS17 rendering, measured contrast, physical play and frame pacing remain unverified.",
     "Native stills and assertions do not establish continuous motion quality. The earlier sampled normal-motion recording retains its original d057696 source.",
     "Static reviewers use authored shells rather than native LivingLight shader output.",
-    "Publication and canonical installation require their own exact-source receipt."
+    "Publication and canonical installation are separately verified in delivery.json; physical play remains unverified."
   ],
   "nonProductFailures": [
     "The compact native tests passed 2/2 with zero failures/skips, but the temporary export selection expected the conditional Places recovery attachment. The actual passing branch used the map. File-only correction indexed that existing exact attachment; original failed export record and PNGs are retained unchanged. No Apple rerun or assertion change.",
     "First clean-export helper invocation used tarfile.extractall(filter=...) on the system Python version lacking that keyword; it failed before comparison. The bundled Python completed the unchanged helper and all 76 files/fingerprint match.",
     "One Git blob upload assembled too few base64 chunks and returned a different SHA. The SHA gate rejected it; the orphan blob is not used in any tree. Correct complete bytes were reuploaded and matched their local Git SHAs."
-  ]
+  ],
+  "delivery": {
+    "receipt": "delivery.json",
+    "pullRequest": "https://github.com/lbeezr/starfall/pull/194",
+    "mergeCommit": "ec1d5d14b3cc803ceeebaf45079339a93af7eec2",
+    "installedBuildID": "dev.6fa54c5e65"
+  }
 }

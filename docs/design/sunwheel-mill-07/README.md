@@ -1,12 +1,14 @@
 # Sunwheel Mill
 
-**Status:** Adopted for development; publication and installation pending · **Updated:** October 20, 2026 · **Owner:** Current implementer
+**Status:** Adopted for development; publication and installation verified · **Updated:** October 20, 2026 · **Owner:** Current implementer
 
 Restore a community workshop that sends useful light onward. A broad copper flower-wheel rises above a low slate-and-timber mill; connected working terraces, bearing access, channels and a footbridge explain how this place is used. At completion, its closed outlet opens and a golden ribbon reaches the onward route toward Bell Choir.
 
 Fifteen distinct paintings are packaged and source-accepted: five cumulative states for each of three bespoke compositions: iPhone, iPad portrait and iPad landscape. Start with the [art brief](BRIEF.md), [production acceptance](PRODUCTION_PLAN.md) or [board reviewer](board.html). The reviewer uses the packaged faceless piece shells, with ordinary and representative grown sizes, over one continuous painting. It omits native `LivingLight` interior fill/shader, aura and deformation. It is a composition study, not native gameplay evidence.
 
 The [atlas](../WORLD_ATLAS.md#07--sunwheel-mill--useful-work-starts-again) owns the approved identity and story. The [level-design kit](../level-design-kit/README.md) owns camera, layout, bleed and scale. The [current piece contract](../star-cast/README.md#motion-material-and-growth) distinguishes faceless gameplay pieces from the expressive story cast. No walking residents are painted into the board.
+
+**Sunwheel delivery:** [PR #194](https://github.com/lbeezr/starfall/pull/194) is merged. The [canonical receipt](../../evidence/sunwheel-mill-2026-10-20/delivery.json) verifies `dev.6fa54c5e65` installed from main `ec1d5d1` through `scripts/device-update.py`. The development checks retain their recorded sources; installation does not establish physical play, measured contrast or actual VoiceOver.
 
 | Painting | Visible restoration |
 | --- | --- |
@@ -26,8 +28,8 @@ The [selected asset manifest](production-assets.json) records all fifteen App pa
 
 **Selected packaged source paintings — not native captures.** All fifteen were visually inspected for cumulative vane/lamplight, fixed scenery and the closed-to-open outlet. This does not establish native UI contrast, input or transitions.
 
-[Original board verification](../../evidence/sunwheel-mill-2026-10-20/README.md) passes at `d057696` / `dev.a15832d0fd`, with the current living-light pieces and first-pair Story rules integrated. Source-bound Core, hosted, phone/tablet/compact and routing checks pass with zero skips; Sunwheel native stills and sampled normal completion are inspected. [Three retained native captures](../../evidence/sunwheel-mill-2026-10-20/captures.json) show the closed 75% outlet, dense landscape board and open-outlet portrait result. Publication and canonical installation remain pending. Physical play, measured contrast, continuous-playback performance, actual VoiceOver and full RC retain separate acceptance.
+[Original board verification](../../evidence/sunwheel-mill-2026-10-20/README.md) passes at `d057696` / `dev.a15832d0fd`, with the current living-light pieces and first-pair Story rules integrated. Source-bound Core, hosted, phone/tablet/compact and routing checks pass with zero skips; Sunwheel native stills and sampled normal completion are inspected. [Three retained native captures](../../evidence/sunwheel-mill-2026-10-20/captures.json) show the closed 75% outlet, dense landscape board and open-outlet portrait result. Publication and canonical installation are verified in the [delivery receipt](../../evidence/sunwheel-mill-2026-10-20/delivery.json). Physical play, measured contrast, continuous-playback performance, actual VoiceOver and full RC retain separate acceptance.
 
-[Latest map-integration verification](../../evidence/sunwheel-mill-2026-10-20/MAP_INTEGRATION.md) passes at `49d54fc` / `dev.6fa54c5e65`, adding the [two transparent map sprites](map-island/README.md) through the existing modular renderer. The fifteen board paintings are unchanged. The newer report records affected UI/routing checks separately from the original full board/state and sampled-motion evidence. Publication and canonical installation remain pending.
+[Latest map-integration verification](../../evidence/sunwheel-mill-2026-10-20/MAP_INTEGRATION.md) passes at `49d54fc` / `dev.6fa54c5e65`, adding the [two transparent map sprites](map-island/README.md) through the existing modular renderer. The fifteen board paintings are unchanged. The newer report records affected UI/routing checks separately from the original full board/state and sampled-motion evidence. Publication and canonical installation are verified in the [delivery receipt](../../evidence/sunwheel-mill-2026-10-20/delivery.json).
 
 The [production plan](PRODUCTION_PLAN.md) retains the incomplete pre-derivation sparse/dense review gate and the limited historical master probe. Later final-state checks establish their own coverage; they do not rewrite that sequence.

@@ -1,8 +1,8 @@
 # Sunwheel Mill verification
 
-**Result: Development verified; publication and canonical installation pending** · **Owner:** Current implementer · **Date:** October 20, 2026
+**Result: Development verified, merged and installed on the original phone** · **Owner:** Current implementer · **Date:** October 20, 2026
 
-The [current map integration](MAP_INTEGRATION.md) at `49d54fc` / `dev.6fa54c5e65` includes main `f4144ec` and Sunwheel's [damaged/restored map island pair](../../design/sunwheel-mill-07/map-island/README.md). It passes 199 Core, 386 hosted and ten selected native tests, with 53 selected original screenshots inspected, plus Release and clean-export equivalence. The fifteen gameplay paintings remain byte-identical. Publication and installation remain separate pending steps.
+The [current map integration](MAP_INTEGRATION.md) at `49d54fc` / `dev.6fa54c5e65` includes main `f4144ec` and Sunwheel's [damaged/restored map island pair](../../design/sunwheel-mill-07/map-island/README.md). It passes 199 Core, 386 hosted and ten selected native tests, with 53 selected original screenshots inspected, plus Release and clean-export equivalence. The fifteen gameplay paintings remain byte-identical. Merged in [PR #194](https://github.com/lbeezr/starfall/pull/194). The [canonical delivery receipt](delivery.json) verifies `dev.6fa54c5e65` installed on the original iPhone from main `ec1d5d14b3cc803ceeebaf45079339a93af7eec2`, with Core tests and signature checks passed and actual installed identity verified. Player data was preserved; the updater did not launch the game. Main CI was pending at installation; physical play and actual VoiceOver remain separate.
 
 Sunwheel Mill is the seventh playable restoration, earned after a committed Frostfruit Orchard repair. Fifteen distinct paintings cover 0%, 25%, 50%, 75% and 100% in bespoke iPhone, iPad portrait and iPad landscape compositions. The original board-development checks below pass at `d057696`, with no failures or skips. All 67 selected native captures from that run were inspected without a blocking finding; those counts and sampled motion retain their original source.
 
