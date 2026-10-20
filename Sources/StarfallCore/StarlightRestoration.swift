@@ -35,6 +35,6 @@ public struct StarlightRestoration: Equatable, Sendable {
 
 extension FallingSky {
     public var restoration: StarlightRestoration? {
-        challenge.map { StarlightRestoration(score: score, target: $0.target) }
+        displayTarget.map { StarlightRestoration(score: displayScore, target: $0) }
     }
 }

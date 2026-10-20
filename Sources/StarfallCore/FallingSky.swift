@@ -72,6 +72,8 @@ public struct FallingSkyTurn: Sendable {
     public var duskCollapses: [DuskCollapse] = []
     public var duskAffectedColumns: Set<Int> = []
     public var presentationPhases: [SkyPresentationPhase] = []
+    public let award: SkyScoreAward?
+    public var displayAward: Int { award?.displayPoints ?? collected }
     /// Compatibility spelling for historical tools. These phases also present ordinary collapses.
     public var gravityPhases: [SkyPresentationPhase] {
         get { presentationPhases }
@@ -83,6 +85,26 @@ public struct FallingSkyTurn: Sendable {
     public let forecast: [IncomingStar]
     public let arrivals: [Arrival]
     public let blockedColumn: Int?
+
+    init(exchange: Exchange? = nil, stellarCollapses: [StarCollapse] = [],
+         stellarAffectedColumns: Set<Int> = [], duskCollapses: [DuskCollapse] = [],
+         duskAffectedColumns: Set<Int> = [], presentationPhases: [SkyPresentationPhase] = [],
+         award: SkyScoreAward? = nil, cleared: Set<Cell>, collected: Int,
+         settled: [StarfallGem?], forecast: [IncomingStar], arrivals: [Arrival], blockedColumn: Int?) {
+        self.exchange = exchange
+        self.stellarCollapses = stellarCollapses
+        self.stellarAffectedColumns = stellarAffectedColumns
+        self.duskCollapses = duskCollapses
+        self.duskAffectedColumns = duskAffectedColumns
+        self.presentationPhases = presentationPhases
+        self.award = award
+        self.cleared = cleared
+        self.collected = collected
+        self.settled = settled
+        self.forecast = forecast
+        self.arrivals = arrivals
+        self.blockedColumn = blockedColumn
+    }
 }
 
 public struct FallingSky: Codable, Equatable, Sendable {
@@ -126,6 +148,28 @@ public struct FallingSky: Codable, Equatable, Sendable {
     public private(set) var challenge: StarfallChallenge?
     // Missing in retained rounds: preserve historical raw replay until explicit app migration.
     private var savedChallengeActions: Int?
+    private var savedChallengeRevision: Int?
+    private var storyScoreLedger: StoryScoreLedger?
+    public var challengeRevision: Int { savedChallengeRevision ?? 0 }
+    private var storyDefinition: StoryChallengeDefinition? {
+        guard challengeRevision == StoryChallengeDefinition.revision, let challenge else { return nil }
+        return StoryChallengeDefinition(challenge)
+    }
+    /// Player-facing points for this saved revision; `score` remains conserved light.
+    public var displayScore: Int {
+        guard challengeRevision != 0 else { return score }
+        let (units, unitOverflow) = score.addingReportingOverflow(storyScoreLedger?.bonusUnits ?? 0)
+        let (points, pointOverflow) = units.multipliedReportingOverflow(by: 1_000)
+        return unitOverflow || pointOverflow ? Int.max : points
+    }
+    /// The saved round's objective, including an unchanged historical 18-light finish.
+    public var displayTarget: Int? { storyDefinition?.target ?? challenge?.target }
+    public func displayAward(for turn: FallingSkyTurn) -> Int { turn.displayAward }
+    /// Pure award preview. Callers still validate the selected action before committing.
+    public func displayReward(of cells: Set<Cell>) -> Int {
+        guard storyDefinition != nil else { return reward(of: cells) }
+        return scoreAward(for: cells).displayPoints
+    }
     public var challengeActionVersion: Int { savedChallengeActions ?? 0 }
     public var supportsArrangingStars: Bool { challenge == nil || challengeActionVersion == 1 }
 
@@ -161,8 +205,8 @@ public struct FallingSky: Codable, Equatable, Sendable {
     public var automaticShowerDelay: Double { cadenceStep.delay }
     public var balance: StarfallBalance { savedBalance ?? StarfallBalance(pace: .steady) }
     public var outcome: Outcome {
-        challenge?.outcome(score: score, overflowed: blockedColumn != nil)
-            ?? (blockedColumn == nil ? .playing : .lost)
+        if let target = displayTarget, displayScore >= target { return .won }
+        return blockedColumn == nil ? .playing : .lost
     }
     public var isOver: Bool { outcome != .playing }
     public var occupiedCount: Int { board.compactMap { $0 }.count }
@@ -193,10 +237,28 @@ public struct FallingSky: Codable, Equatable, Sendable {
                    cadence: .announcedCycleV1, criticalMass: true).disablingAutomaticAging()
     }
 
+    /// Historical unversioned content, also used by the disposable restoration lesson.
+    /// Normal new visits use `freshChallenge`; saved rounds restore their own revision.
     public init(challenge: StarfallChallenge) {
         self.init(seed: challenge.seed, balance: challenge.balance, openingCascade: false, generation: .legacy)
         self.challenge = challenge
         savedChallengeActions = 1
+    }
+
+    /// New visits select current authored content. Resume and replay never call this.
+    public static func freshChallenge(_ challenge: StarfallChallenge) -> FallingSky {
+        guard let definition = StoryChallengeDefinition(challenge) else { return FallingSky(challenge: challenge) }
+        var game = FallingSky(seed: definition.seed, balance: definition.balance, openingCascade: false)
+        game.challenge = challenge
+        game.savedChallengeActions = 1
+        game.savedChallengeRevision = StoryChallengeDefinition.revision
+        game.storyScoreLedger = StoryScoreLedger()
+        game.board = definition.initialBoard
+        game.starsLanded = definition.initialLight
+        game.random = SeededRandom(seed: definition.seed)
+        game.remainingColumns = []
+        game.incoming = definition.shower(number: 1)
+        return game
     }
 
     /// Reset committed play while retaining timing, tuning and historical generation rules.
@@ -207,6 +269,11 @@ public struct FallingSky: Codable, Equatable, Sendable {
         replay.score = 0
         replay.turns = 0
         replay.starsLanded = 0
+        if let definition = storyDefinition {
+            replay.board = definition.initialBoard
+            replay.starsLanded = definition.initialLight
+            replay.storyScoreLedger = StoryScoreLedger()
+        }
         replay.darkStarsCleared = 0
         replay.unscoredStarlight = duskRule != .legacy || hasPocketedDusk ? 0 : nil
         replay.orbit = nil; replay.nextGravityID = nil; replay.retiredMagnetic = nil
@@ -426,6 +493,8 @@ public struct FallingSky: Codable, Equatable, Sendable {
     private mutating func clearCommitted(_ cells: Set<Cell>) -> FallingSkyTurn {
         let before = self
         let collected = reward(of: cells)
+        let award = storyDefinition == nil ? nil : scoreAward(for: cells)
+        if let award { storyScoreLedger?.record(stars: award.clearedStarCount) }
         if duskRule != .legacy { unscoredStarlight = lostStarlight + value(of: cells) - collected }
         if orbit != nil || board.contains(where: { $0?.gravityKind != nil }) {
             var phases: [SkyPresentationPhase] = []
@@ -440,8 +509,14 @@ public struct FallingSky: Codable, Equatable, Sendable {
         score += collected
         for cell in removed { board[cell.row * Self.side + cell.column] = nil }
         board = SkyBoardSettling.settle(board)
-        return .init(stellarAffectedColumns: criticalMassChangedColumns(from: before), duskAffectedColumns: duskChangedColumns(from: before), cleared: removed, collected: collected, settled: board,
+        return .init(stellarAffectedColumns: criticalMassChangedColumns(from: before), duskAffectedColumns: duskChangedColumns(from: before), award: award, cleared: removed, collected: collected, settled: board,
                      forecast: incoming, arrivals: [], blockedColumn: nil)
+    }
+
+    private func scoreAward(for cells: Set<Cell>) -> SkyScoreAward {
+        let collected = reward(of: cells)
+        let stars = cells.filter { !isDrained(at: $0) && (gem(at: $0)?.value ?? 0) > 0 }.count
+        return SkyScoreAward(baseLight: collected, clearedStarCount: stars)
     }
 
     /// Clock-independent event: the presentation layer decides when the sky advances.
@@ -484,6 +559,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
     }
 
     private mutating func nextShower() -> [IncomingStar] {
+        if let definition = storyDefinition { return definition.shower(number: turns + 1) }
         let modern = generation != .legacy && challenge == nil && turns >= 4
         let storm = modern && generation.phase(for: turns + 1)?.isStorm == true
         let sizes = [1, 2, 2, 3, 3, 3, 5]
@@ -586,6 +662,22 @@ public struct FallingSky: Codable, Equatable, Sendable {
     }
 
     public var isValidSave: Bool {
+        guard [nil, StoryChallengeDefinition.revision].contains(savedChallengeRevision) else { return false }
+        if let definition = storyDefinition {
+            guard challengeActionVersion == 1, seed == definition.seed, balance == definition.balance,
+                  !hasOpeningCascade, generation == .legacy, duskRule == .legacy, darkStarsCleared == 0,
+                  savedCriticalMassRule == nil, turns >= 0, turns < Int.max / 6 - 1,
+                  board.allSatisfy({ $0 == nil || ($0?.kind != nil && $0?.gravityKind == nil && $0?.isLight != true) }),
+                  incoming == definition.shower(number: blockedColumn == nil ? turns + 1 : max(1, turns)),
+                  storyScoreLedger?.isValid(light: score, target: definition.target) == true else { return false }
+            let expectedLight = definition.initialLight + definition.suppliedLight(after: turns)
+            if blockedColumn == nil {
+                guard starsLanded == expectedLight else { return false }
+            } else {
+                guard turns > 0, starsLanded >= definition.initialLight + definition.suppliedLight(after: turns - 1),
+                      starsLanded < expectedLight else { return false }
+            }
+        } else if savedChallengeRevision != nil || storyScoreLedger != nil { return false }
         guard [nil, 1].contains(savedChallengeActions),
               savedChallengeActions == nil || challenge != nil,
               [nil, CriticalMassRule.version, CriticalMassRule.retiredVersion].contains(savedCriticalMassRule),
@@ -603,7 +695,8 @@ public struct FallingSky: Codable, Equatable, Sendable {
             if generation != .standardSky && (nextGravityID != nil || retiredMagnetic != nil) { return false }
         }
         if generation == .legacy && (incoming.contains(where: \.isLight) || board.contains(where: { $0?.isLight == true })) { return false }
-        if let challenge, seed != challenge.seed || balance != challenge.balance || hasOpeningCascade || generation != .legacy { return false }
+        if let challenge, storyDefinition == nil,
+           seed != challenge.seed || balance != challenge.balance || hasOpeningCascade || generation != .legacy { return false }
         if let savedCadence, (savedCadence != .originalV1) != (openingCascade == true) { return false }
         guard board.count == 49, Self.showerSizes.contains(incoming.count),
               remainingColumns.allSatisfy({ (0..<7).contains($0) }),
@@ -628,7 +721,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
         let gems = board.compactMap { $0 }
         guard Set(gems.map(\.id)).count == gems.count,
               gems.allSatisfy({ $0.id >= 0 && $0.id < max(starsLanded, nextGravityID ?? 0) && !(($0.isDark || $0.isLight) && $0.grown) && (!$0.isLight || $0.kind == nil) }),
-              starsLanded <= turns * Self.maximumShowerSize,
+              starsLanded <= turns * Self.maximumShowerSize + (storyDefinition?.initialLight ?? 0),
               score == available - gems.reduce(0, { $0 + ($1.gravityKind == .hole ? 2 : $1.gravityKind == .magnet || $1.isDark ? 1 : $1.value) }) else { return false }
         guard gravityStateValid else { return false }
         if orbit != nil { return true }

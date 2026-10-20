@@ -34,7 +34,7 @@ final class RestorationFlowTests: XCTestCase {
                 XCTAssertEqual(flow.handle(choice.flowAction, hasSavedSky: true), .staged)
                 let preview = try XCTUnwrap(RestorationPresentation.selected(game: store.game, entry: flow.entry))
                 XCTAssertEqual(preview.challenge, choice)
-                XCTAssertEqual(preview.progress, StarlightRestoration(score: 0, target: 18))
+                XCTAssertEqual(preview.progress, FallingSky.freshChallenge(choice).restoration)
                 XCTAssertEqual(SkyHelpContext.selected(game: store.game, entry: flow.entry).restorationChallenge, choice)
                 XCTAssertTrue(flow.entry?.introduction(challenge: choice).text.contains(choice.locationTitle) == true)
                 clock.advance(100)
@@ -79,7 +79,7 @@ final class RestorationFlowTests: XCTestCase {
                     return XCTFail("Expected the explicit Begin boundary")
                 }
                 store.beginEntry(request)
-                let opening = FallingSky(challenge: destination)
+                let opening = FallingSky.freshChallenge(destination)
                 XCTAssertEqual(store.game, opening)
                 XCTAssertTrue(store.isPaused); XCTAssertTrue(store.suspended)
                 XCTAssertEqual(try SkySaveArchive.decode(XCTUnwrap(defaults.data(forKey: SkySaveArchive.key))), opening)
@@ -164,11 +164,19 @@ final class RestorationFlowTests: XCTestCase {
             let challenge = location.challenge
             XCTAssertEqual(challenge.restorationIdentifier, "\(location.prefix).restoration")
             let selected = try XCTUnwrap(SkyEntryRequest.allCases.first { $0 != .replay && $0.selectedChallenge(replaying: nil) == challenge })
+            let fresh = FallingSky.freshChallenge(challenge)
             for entry in [selected, .replay] {
                 let line = entry.introduction(challenge: challenge)
                 XCTAssertTrue(line.text.contains(location.title))
-                XCTAssertTrue(line.text.contains("18 starlight"))
+                let target = entry == .replay ? 18 : try XCTUnwrap(fresh.displayTarget)
+                XCTAssertTrue(line.text.contains("\(SkyCopy.score(target)) starlight"))
             }
+            let freshTarget = SkyCopy.score(try XCTUnwrap(fresh.displayTarget))
+            XCTAssertTrue(fresh.challengeHelpText?.contains("\(freshTarget) starlight") == true)
+            XCTAssertTrue(fresh.challengeGuideLine?.text.contains("\(freshTarget) starlight") == true)
+            let freshReplay = SkyEntryRequest.replay.introduction(challenge: challenge,
+                replayingRevision: fresh.challengeRevision, replayingTarget: fresh.displayTarget)
+            XCTAssertTrue(freshReplay.text.contains("\(freshTarget) starlight"))
             XCTAssertTrue(SkyEntryRequest.replay.introduction(challenge: challenge).text.contains("Your saved round stays until you tap Begin."))
             XCTAssertTrue(challenge.helpText.contains(location.title))
             XCTAssertTrue(challenge.helpText.contains("Swipe neighboring stars"))

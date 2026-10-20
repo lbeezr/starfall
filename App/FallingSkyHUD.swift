@@ -40,15 +40,31 @@ struct SkyScoreInstrument: View {
                 .accessibilityLabel(restorationLabel ?? "")
                 .accessibilityIdentifier(restorationIdentifier ?? "sky.score.symbol")
                 .accessibilityHidden(restorationLabel == nil)
-                Text(target.map { "\(score.formatted()) / \($0.formatted())" } ?? score.formatted())
-                    .font(StarfallTheme.Typography.gameTitle)
-                    .monospacedDigit()
-                    .fixedSize(horizontal: false, vertical: true)
-                    .accessibilityLabel(target.map {
-                        SkyCopy.text(.resultChallengeScore, values: ["score": String(score), "target": String($0)])
-                    } ?? SkyCopy.text(.welcomeScore, values: ["score": String(score)]))
-                    .accessibilityIdentifier("experiment.score")
-                    .accessibilityHint(hint)
+            Group {
+                if let target {
+                    ViewThatFits(in: .horizontal) {
+                        Text("\(score.formatted()) / \(target.formatted())").fixedSize()
+                        VStack(alignment: .leading, spacing: StarfallTheme.Spacing.compact) {
+                            Text(score.formatted())
+                            Text("/ \(target.formatted())")
+                        }
+                        .fixedSize(horizontal: false, vertical: true)
+                    }
+                } else {
+                    Text(score.formatted()).fixedSize(horizontal: false, vertical: true)
+                }
+            }
+            .font(StarfallTheme.Typography.gameTitle)
+            .monospacedDigit()
+            .accessibilityRepresentation {
+                // Reflow changes only the visible layout. Keep one native text
+                // element with the same identity and complete score in both forms.
+                Text(target.map {
+                    SkyCopy.text(.resultChallengeScore, values: ["score": score.formatted(), "target": $0.formatted()])
+                } ?? SkyCopy.text(.welcomeScore, values: ["score": score.formatted()]))
+                .accessibilityIdentifier("experiment.score")
+                .accessibilityHint(hint)
+            }
         }
         .foregroundStyle(StarfallTheme.Colors.textPrimary)
         .shadow(color: StarfallTheme.Colors.skyTop, radius: 2)

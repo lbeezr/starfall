@@ -12,6 +12,7 @@ public enum StarfallChallenge: String, Codable, CaseIterable, Equatable, Sendabl
         case .frostfruitOrchard: "Frostfruit Orchard"
         }
     }
+    /// Historical unversioned contract. Revised rounds expose their saved displayTarget.
     public var target: Int { 18 }
     public var seed: UInt64 { 42 }
     public var balance: StarfallBalance { .init(pace: .steady, darkStars: .none) }

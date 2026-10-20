@@ -15,7 +15,8 @@ import StarfallCore
     init(defaults: UserDefaults, ignoreSaved: Bool = false) {
         self.defaults = defaults
         let saved = ignoreSaved ? nil : SkySaveArchive.load(from: defaults)
-        let priorInstall = !ignoreSaved && defaults.object(forKey: SkySaveArchive.key) == nil && saved != nil
+        let priorInstall = !ignoreSaved && defaults.object(forKey: SkySaveArchive.key) == nil
+            && defaults.object(forKey: SkySaveArchive.worldKey) == nil && saved != nil
         if !ignoreSaved, let raw = defaults.object(forKey: Self.key) {
             if let data = raw as? Data,
                let envelope = try? JSONDecoder().decode(Envelope.self, from: data),

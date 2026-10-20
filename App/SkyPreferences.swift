@@ -7,6 +7,8 @@ struct SkyHelpContext: Equatable {
     let pocketedDusk: Bool
     let duskRule: DuskRule
     let restorationChallenge: StarfallChallenge?
+    let restorationHelp: String?
+    let scaledPoints: Bool
     var challenge: Bool { restorationChallenge != nil }
     let arranging: Bool
     let openingCascade: Bool
@@ -18,22 +20,15 @@ struct SkyHelpContext: Equatable {
         arranging = game.supportsArrangingStars
         openingCascade = game.hasOpeningCascade
         restorationChallenge = game.challenge
+        restorationHelp = game.challengeHelpText
+        scaledPoints = game.challengeRevision > 0
         opalStorms = game.generation != .legacy
     }
 
     var lessons: [SkyLesson] { !arranging ? [] : SkyLesson.allCases.filter { $0 != .opal || opalStorms } }
 
     static func selected(game: FallingSky, entry: SkyEntryRequest?) -> Self {
-        switch entry {
-        case .fresh: .init(game: .freshSurvival(seed: game.seed, balance: game.balance))
-        case .firstLight: .init(game: FallingSky(challenge: .firstLight))
-        case .ribbonCrossing: .init(game: FallingSky(challenge: .ribbonCrossing))
-        case .kiteHarbor: .init(game: FallingSky(challenge: .kiteHarbor))
-        case .seedMoon: .init(game: FallingSky(challenge: .seedMoon))
-        case .silverPools: .init(game: FallingSky(challenge: .silverPools))
-        case .frostfruitOrchard: .init(game: FallingSky(challenge: .frostfruitOrchard))
-        case .initial, .replay, nil: .init(game: game)
-        }
+        .init(game: entry?.previewGame(retaining: game) ?? game)
     }
 }
 
@@ -134,7 +129,7 @@ struct SkyHowToPlay: View {
             }
             SkyMenuSection(SkyCopy.text(.helpTapTitle)) {
                 Text(SkyCopy.text(.helpTap))
-                Text(SkyCopy.text(.helpIdentity))
+                Text(SkyCopy.text(context.scaledPoints ? .helpStoryIdentity : .helpIdentity))
             }
             if context.criticalMass {
                 SkyMenuSection(SkyCopy.text(.massTitle)) {
@@ -183,7 +178,7 @@ struct SkyHowToPlay: View {
                 }
             }
             SkyMenuSection(context.restorationChallenge?.helpTitle ?? SkyCopy.text(.helpChallengeTitle)) {
-                Text(context.restorationChallenge?.helpText ?? SkyCopy.text(.helpChallenge))
+                Text(context.restorationHelp ?? FallingSky.freshChallenge(.firstLight).challengeHelpText ?? SkyCopy.text(.helpChallenge))
             }
         }
     }

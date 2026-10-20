@@ -129,49 +129,66 @@ final class StarlightCelebrationTests: XCTestCase {
     }
 
     @MainActor func testOrdinaryAwardActuallyRendersAboveTheBoard() async throws {
-        for quiet in [false, true] {
-            let scene = try XCTUnwrap(UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.first)
-            let previous = scene.windows.first(where: \.isKeyWindow)
-            let window = UIWindow(windowScene: scene)
-            window.frame = CGRect(x: 0, y: 0, width: 390, height: 844)
-            let host = UIHostingController(rootView: AnyView(Color.black))
-            window.rootViewController = host; window.makeKeyAndVisible()
-            defer { window.isHidden = true; window.rootViewController = nil; previous?.makeKey() }
-            host.view.layoutIfNeeded()
-            let before = SkyTechniqueExample.rescue.game()
-            var after = before
-            let turn = try XCTUnwrap(after.clear(Cell(0, 0)))
-            let receipt = try XCTUnwrap(StarlightCelebration(id: 1, turn: turn, from: before, total: after.score))
-            host.rootView = AnyView(StarlightCelebrationOverlay(event: receipt,
-                board: CGRect(x: 0, y: 0, width: 390, height: 844),
-                score: CGRect(x: 12, y: 59, width: 35, height: 21),
-                header: CGRect(x: 12, y: 47, width: 366, height: 44), quiet: quiet).background(Color.black))
-            var brightPixels = 0
-            var capture: UIImage?
-            let deadline = ContinuousClock.now + .milliseconds(900)
-            repeat {
-                await Task.yield()
-                host.view.layoutIfNeeded()
-                let image = UIGraphicsImageRenderer(bounds: window.bounds).image { _ in
-                    window.drawHierarchy(in: window.bounds, afterScreenUpdates: true)
-                }
-                capture = image
-                let cg = try XCTUnwrap(image.cgImage)
-                let crop = try XCTUnwrap(cg.cropping(to: CGRect(x: 130 * image.scale, y: 100 * image.scale,
-                    width: 130 * image.scale, height: 110 * image.scale)))
-                var pixels = [UInt8](repeating: 0, count: crop.width * crop.height * 4)
-                let context = try XCTUnwrap(CGContext(data: &pixels, width: crop.width, height: crop.height,
-                    bitsPerComponent: 8, bytesPerRow: crop.width * 4, space: CGColorSpaceCreateDeviceRGB(),
-                    bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue))
-                context.draw(crop, in: CGRect(x: 0, y: 0, width: crop.width, height: crop.height))
-                brightPixels = stride(from: 0, to: pixels.count, by: 4).filter {
-                    pixels[$0] > 100 || pixels[$0+1] > 100 || pixels[$0+2] > 100
-                }.count
-                if brightPixels < 40 { try await Task.sleep(for: .milliseconds(20)) }
-            } while brightPixels < 40 && ContinuousClock.now < deadline
-            let attachment = XCTAttachment(image: try XCTUnwrap(capture))
-            attachment.name = "ordinary-award-rendered-\(quiet ? "quiet" : "normal")"; attachment.lifetime = .keepAlways; add(attachment)
-            XCTAssertGreaterThan(brightPixels, 40, "The committed +3 must render in the sky, not merely exist in receipt state")
+        var banked = FallingSky.freshChallenge(.firstLight)
+        XCTAssertNotNil(banked.clear(Cell(0, 4)))
+        XCTAssertNotNil(banked.letStarsFall())
+        let scenarios: [(name: String, game: FallingSky, light: Int, points: Int)] = [
+            ("ordinary-award-rendered", SkyTechniqueExample.rescue.game(), 3, 3),
+            ("story-7000", FallingSky.freshChallenge(.firstLight), 5, 7_000),
+            ("story-10000", banked, 8, 10_000)
+        ]
+        let scene = try XCTUnwrap(UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.first)
+        let previous = scene.windows.first(where: \.isKeyWindow)
+        let window = UIWindow(windowScene: scene)
+        window.frame = CGRect(x: 0, y: 0, width: 390, height: 844)
+        let host = UIHostingController(rootView: AnyView(Color.black))
+        window.rootViewController = host; window.makeKeyAndVisible()
+        defer { window.isHidden = true; window.rootViewController = nil; previous?.makeKey() }
+        host.view.layoutIfNeeded()
+        for scenario in scenarios {
+            for quiet in [false, true] {
+                var after = scenario.game
+                let turn = try XCTUnwrap(after.clear(Cell(0, 0)))
+                let receipt = try XCTUnwrap(StarlightCelebration(id: 1, turn: turn,
+                    from: scenario.game, total: after.displayScore))
+                XCTAssertEqual(receipt.collected, scenario.light)
+                XCTAssertEqual(receipt.displayAward, scenario.points)
+                XCTAssertEqual(receipt.awardText, "+\(scenario.points.formatted())")
+                XCTAssertEqual(after.displayScore - scenario.game.displayScore, receipt.displayAward)
+                let captureName = "\(scenario.name)-\(quiet ? "quiet" : "normal")"
+                host.rootView = AnyView(StarlightCelebrationOverlay(event: receipt,
+                    board: CGRect(x: 0, y: 0, width: 390, height: 844),
+                    score: CGRect(x: 12, y: 59, width: 35, height: 21),
+                    header: CGRect(x: 12, y: 47, width: 366, height: 44), quiet: quiet)
+                    .background(Color.black).id(captureName))
+                var brightPixels = 0
+                var capture: UIImage?
+                let deadline = ContinuousClock.now + .milliseconds(900)
+                repeat {
+                    await Task.yield()
+                    host.view.layoutIfNeeded()
+                    let image = UIGraphicsImageRenderer(bounds: window.bounds).image { _ in
+                        window.drawHierarchy(in: window.bounds, afterScreenUpdates: true)
+                    }
+                    capture = image
+                    let cg = try XCTUnwrap(image.cgImage)
+                    let crop = try XCTUnwrap(cg.cropping(to: CGRect(x: 130 * image.scale, y: 100 * image.scale,
+                        width: 130 * image.scale, height: 110 * image.scale)))
+                    var pixels = [UInt8](repeating: 0, count: crop.width * crop.height * 4)
+                    let context = try XCTUnwrap(CGContext(data: &pixels, width: crop.width, height: crop.height,
+                        bitsPerComponent: 8, bytesPerRow: crop.width * 4, space: CGColorSpaceCreateDeviceRGB(),
+                        bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue))
+                    context.draw(crop, in: CGRect(x: 0, y: 0, width: crop.width, height: crop.height))
+                    brightPixels = stride(from: 0, to: pixels.count, by: 4).filter {
+                        pixels[$0] > 100 || pixels[$0+1] > 100 || pixels[$0+2] > 100
+                    }.count
+                    if brightPixels < 40 { try await Task.sleep(for: .milliseconds(20)) }
+                } while brightPixels < 40 && ContinuousClock.now < deadline
+                let attachment = XCTAttachment(image: try XCTUnwrap(capture))
+                attachment.name = captureName; attachment.lifetime = .keepAlways; add(attachment)
+                XCTAssertGreaterThan(brightPixels, 40,
+                    "The committed \(receipt.awardText) must render in the sky, not merely exist in receipt state")
+            }
         }
     }
 
@@ -455,6 +472,64 @@ final class StarlightCelebrationTests: XCTestCase {
         XCTAssertTrue(zip(energies, energies.dropFirst()).allSatisfy { $0 < $1 })
         XCTAssertEqual(StarlightCelebration.energy(for: 18), 1)
         XCTAssertEqual(StarlightCelebration.energy(for: 98), 1)
+    }
+
+    @MainActor func testStoryAwardsKeepExactPointsSeparateFromLightAndEffectIntensity() throws {
+        var game = FallingSky.freshChallenge(.firstLight)
+        let opening = game
+        let ordinaryTurn = try XCTUnwrap(game.clear(Cell(0, 4)))
+        let ordinary = try XCTUnwrap(StarlightCelebration(id: 1, turn: ordinaryTurn,
+            from: opening, total: game.displayScore))
+        XCTAssertEqual(ordinary.collected, 3)
+        XCTAssertEqual(ordinary.displayAward, 3_000)
+        XCTAssertEqual(ordinary.awardText, "+\(3_000.formatted())")
+        XCTAssertEqual(ordinary.total, 3_000)
+        XCTAssertEqual(ordinary.level, .ordinary)
+        XCTAssertEqual(ordinary.energy, 0)
+        XCTAssertFalse(ordinary.isExceptional, "Adding three zeroes must not promote an ordinary clear")
+
+        XCTAssertNotNil(game.letStarsFall())
+        let grown = game
+        let largeTurn = try XCTUnwrap(game.clear(Cell(0, 0)))
+        let large = try XCTUnwrap(StarlightCelebration(id: 2, turn: largeTurn,
+            from: grown, total: game.displayScore))
+        XCTAssertEqual(large.collected, 8)
+        XCTAssertEqual(large.displayAward, 10_000, "Five actual stars earn the committed two-thousand bonus")
+        XCTAssertEqual(large.awardText, "+\(10_000.formatted())")
+        XCTAssertEqual(large.total, 13_000)
+        XCTAssertEqual(large.level, .brilliant)
+        XCTAssertTrue(large.isExceptional)
+        XCTAssertEqual(large.energy, 1.0 / 3.0, accuracy: 0.000001)
+        XCTAssertEqual(large.contributors.count, 5)
+        XCTAssertEqual(large.contributors.map(\.reward).reduce(0, +), 8)
+        XCTAssertEqual(large.packets.count, 5, "Points and bonus never allocate extra particle packets")
+        game = game.replay()
+        XCTAssertEqual(ordinary.total, 3_000)
+        XCTAssertEqual(large.total, 13_000, "Later play never changes a committed receipt")
+        XCTAssertEqual(large.displayAward, largeTurn.displayAward)
+    }
+
+    @MainActor func testStorySizeBonusHasACalloutWithoutInflatingParticleEnergyOrLegacyCategories() throws {
+        let opening = FallingSky.freshChallenge(.firstLight)
+        var game = opening
+        let turn = try XCTUnwrap(game.clear(Cell(0, 0)))
+        let receipt = try XCTUnwrap(StarlightCelebration(id: 1, turn: turn,
+            from: opening, total: game.displayScore))
+        XCTAssertEqual(receipt.collected, 5)
+        XCTAssertEqual(receipt.displayAward, 7_000)
+        XCTAssertEqual(receipt.level, .brilliant)
+        XCTAssertEqual(receipt.title, SkyCopy.text(.celebrationBrilliant))
+        XCTAssertEqual(receipt.energy, 2.0 / 15.0, accuracy: 0.000001)
+        XCTAssertFalse(receipt.isExceptional, "A size bonus earns a callout, not a full aurora on every clear")
+
+        let legacy = SkyTechniqueExample.trace.game()
+        var oldGame = legacy
+        let oldTurn = try XCTUnwrap(oldGame.clear(Cell(0, 0)))
+        let oldReceipt = try XCTUnwrap(StarlightCelebration(id: 2, turn: oldTurn,
+            from: legacy, total: oldGame.displayScore))
+        XCTAssertEqual(oldReceipt.collected, 6)
+        XCTAssertEqual(oldReceipt.displayAward, 6)
+        XCTAssertEqual(oldReceipt.level, .ordinary)
     }
 
     @MainActor func testAwardLetteringLeavesEveryPlayableRowClear() {

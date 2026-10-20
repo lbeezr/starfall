@@ -102,7 +102,7 @@ final class FallingSkyInteractionTests: XCTestCase {
         app.buttons["sky.begin"].tap()
         togglePause(app)
         XCTAssertTrue(app.buttons["experiment.next"].waitForExistence(timeout: 5))
-        XCTAssertEqual(app.staticTexts["experiment.score"].label, "0 of 18 starlight collected")
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, "0 of \(150_000.formatted(.number.grouping(.automatic))) starlight collected")
     }
 
     @MainActor func testOpeningCascadeAllowsNativeClearBeforeLastWave() {
@@ -215,15 +215,16 @@ final class FallingSkyInteractionTests: XCTestCase {
     }
 
     @MainActor func testFirstLightGoalCompletionRestoreReplayAndSurvival() {
+        executionTimeAllowance = 600
         let app = launch(); defer { app.terminate() }
         startFirstLight(app)
         let next = app.buttons["experiment.next"]
         let outcome = app.staticTexts["experiment.outcome"]
-        for _ in 0..<50 {
+        for _ in 0..<160 {
             if outcome.exists { break }
             XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in outcome.exists || next.isEnabled }, object: nil).wait(timeout: 5))
             if outcome.exists { break }
-            let legal = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND value MATCHES %@", "experiment.cell.", "([3-9]|[1-9][0-9]) toward a tap match")).firstMatch
+            let legal = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND value MATCHES %@ AND enabled == true", "experiment.cell.", "([3-9]|[1-9][0-9]) toward a tap match(; [0-9,]+ starlight if cleared)?")).firstMatch
             if legal.exists { legal.tap() }
             else { reveal(next, in: app); next.tap() }
         }

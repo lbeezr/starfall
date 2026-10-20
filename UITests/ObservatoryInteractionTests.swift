@@ -70,7 +70,7 @@ final class ObservatoryInteractionTests: XCTestCase {
         let title = app.staticTexts["sky.menu.title"]
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "How to play"), object: title).wait(timeout: 5))
         let last = app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@",
-            "Restore Lantern Landing with 18 starlight.")).firstMatch
+            "Restore Lantern Landing with \(150_000.formatted(.number.grouping(.automatic))) starlight.")).firstMatch
         var reachedEnd = false
         // The original 48-step budget was sampled on 16 Pro Max. On 17e,
         // XXXL still reaches the swaps section at step 47; preserve overlapping
@@ -299,6 +299,7 @@ extension ObservatoryInteractionTests {
     }
 
     @MainActor func testVoiceOverFullFirstLightRoundRestoreAndReplay() throws {
+        executionTimeAllowance = 600
         #if compiler(>=6.4)
         guard #available(iOS 27.0, *) else { throw XCTSkip("VoiceOver service requires iOS 27") }
         continueAfterFailure = false
@@ -317,11 +318,11 @@ extension ObservatoryInteractionTests {
         try vo.choose(app.buttons["experiment.pause"], expecting: "Pause sky")
         XCTAssertTrue(app.buttons["experiment.next"].waitForExistence(timeout: 5))
         let outcome = app.staticTexts["experiment.outcome"]
-        for _ in 0..<50 {
+        for _ in 0..<160 {
             if outcome.exists { break }
             let next = app.buttons["experiment.next"]
             XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: next).wait(timeout: 5))
-            let legal = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND value MATCHES %@", "experiment.cell.", "([3-9]|[1-9][0-9]) toward a tap match")).firstMatch
+            let legal = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND value MATCHES %@ AND enabled == true", "experiment.cell.", "([3-9]|[1-9][0-9]) toward a tap match(; [0-9,]+ starlight if cleared)?")).firstMatch
             if legal.exists {
                 let score = app.staticTexts["experiment.score"].label
                 try vo.choose(legal, expecting: legal.label)
@@ -352,7 +353,7 @@ extension ObservatoryInteractionTests {
         try vo.choose(app.buttons["sky.begin"], expecting: "Begin")
         try vo.choose(app.buttons["experiment.settings"], expecting: "Sky menu")
         try vo.choose(app.buttons["experiment.pause"], expecting: "Pause sky")
-        XCTAssertEqual(app.staticTexts["experiment.score"].label, "0 of 18 starlight collected")
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, "0 of \(150_000.formatted(.number.grouping(.automatic))) starlight collected")
         XCTAssertFalse(outcome.exists)
         try vo.choose(app.buttons["experiment.next"], expecting: "Next shower")
         try vo.choose(app.buttons["experiment.settings"], expecting: "Sky menu")
@@ -596,7 +597,7 @@ final class LandingPlaceInteractionTests: XCTestCase {
         for (score,large) in [(100000,false),(1234567890,false),(100000,true)] {
             let app = launch(large:large,score:score,calm:true)
             let counter = app.staticTexts["experiment.score"], menu = app.buttons["experiment.settings"]
-            XCTAssertEqual(counter.label,"\(score) starlight")
+            XCTAssertEqual(counter.label,"\(score.formatted(.number.grouping(.automatic))) starlight")
             XCTAssertGreaterThan(counter.frame.width,40)
             XCTAssertTrue(app.frame.contains(counter.frame))
             XCTAssertTrue(menu.isHittable)

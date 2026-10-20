@@ -550,14 +550,17 @@ final class FallingSkyStoreTests: XCTestCase {
         store.startFirstLight()
         let initial = store.game
         XCTAssertEqual(initial.challenge, .firstLight)
+        XCTAssertEqual(initial, FallingSky.freshChallenge(.firstLight))
+        XCTAssertEqual(initial.displayTarget, 150_000)
         XCTAssertEqual(initial.restoration?.milestone, .unrestored)
         XCTAssertNil(clock.deadline); XCTAssertTrue(store.isPaused)
         store.togglePause()
-        for _ in 0..<30 where !store.game.isOver {
-            clock.advance(4); presenter.finish()
+        // Clear available groups between actual scheduled gentle showers.
+        for _ in 0..<80 where !store.game.isOver {
             while !store.game.isOver, let cell = store.game.legalGroups.first?.first {
                 store.clear(cell); presenter.finish()
             }
+            if !store.game.isOver { clock.advance(store.showerInterval); presenter.finish() }
         }
         XCTAssertEqual(store.game.outcome, .won)
         XCTAssertNil(clock.deadline); XCTAssertFalse(store.canClear)
@@ -606,7 +609,7 @@ final class FallingSkyStoreTests: XCTestCase {
         XCTAssertFalse(store.busy); XCTAssertTrue(store.isPaused)
         XCTAssertNil(clock.deadline)
         store.setPace(.brisk)
-        XCTAssertEqual(store.game.balance, StarfallChallenge.firstLight.balance)
+        XCTAssertEqual(store.game.balance, challenge.balance)
     }
 
     @MainActor func testManualShowersAndClearsWorkPausedWithoutStartingClock() throws {
@@ -907,8 +910,10 @@ extension FallingSkyStoreTests {
         store.restart(sameSky: true)
         XCTAssertEqual(store.game, initial.replay()); XCTAssertEqual(store.showerInterval, 4)
         store.startFirstLight()
-        XCTAssertEqual(store.showerInterval, 4); XCTAssertEqual(store.nextShowerCadence.phase, .steady)
+        XCTAssertEqual(store.showerInterval, 6); XCTAssertEqual(store.nextShowerCadence.phase, .steady)
         store.togglePause(); clock.advance(4)
+        XCTAssertEqual(store.game.turns, 0, "New Lantern keeps its gentle deadline instead of the historical four-second pace")
+        clock.advance(2)
         XCTAssertEqual(store.game.turns, 1)
     }
 

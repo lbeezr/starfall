@@ -225,7 +225,7 @@ final class RestorationPresentationTests: XCTestCase {
             let preview = try XCTUnwrap(RestorationPresentation.selected(game: store.game, entry: flow.entry))
             XCTAssertEqual(preview.challenge, .firstLight)
             XCTAssertEqual(preview.progress.fraction, 0)
-            XCTAssertEqual(preview.progress.target, StarfallChallenge.firstLight.target)
+            XCTAssertEqual(preview.progress.target, action == .replay ? original.displayTarget : FallingSky.freshChallenge(.firstLight).displayTarget)
             XCTAssertEqual(flow, staged)
             XCTAssertEqual(flow.handle(.home, hasSavedSky: true), .home)
             XCTAssertEqual(RestorationPresentation.selected(game: store.game, entry: flow.entry)?.progress, original.restoration)

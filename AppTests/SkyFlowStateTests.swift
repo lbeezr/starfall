@@ -117,10 +117,10 @@ final class SkyFlowStateTests: XCTestCase {
         XCTAssertEqual(store.game, initial)
         XCTAssertNil(clock.deadline)
         store.beginEntry(.firstLight)
-        XCTAssertEqual(store.game, FallingSky(challenge: .firstLight))
+        XCTAssertEqual(store.game, FallingSky.freshChallenge(.firstLight))
         XCTAssertTrue(store.isPaused); XCTAssertTrue(store.suspended)
         store.beginEntry(.replay)
-        XCTAssertEqual(store.game, FallingSky(challenge: .firstLight))
+        XCTAssertEqual(store.game, FallingSky.freshChallenge(.firstLight))
         store.beginEntry(.fresh)
         XCTAssertNil(store.game.challenge)
         XCTAssertTrue(store.game.hasOpeningCascade)
@@ -197,7 +197,7 @@ final class SkyFlowStateTests: XCTestCase {
             for entry in [SkyEntryRequest.initial, .fresh, .firstLight] {
                 let fresh = entry.introduction(challenge: challenge ? .firstLight : nil)
                 XCTAssertNotEqual(replay.id, fresh.id)
-                XCTAssertTrue(fresh.text.contains(challenge ? "18 starlight" : "each shower"))
+                XCTAssertTrue(fresh.text.contains(challenge ? "\(SkyCopy.score(150_000)) starlight" : "each shower"))
             }
         }
     }
@@ -206,7 +206,8 @@ final class SkyFlowStateTests: XCTestCase {
         for interrupted in [false, true] {
             let (store, presenter, clock, defaults) = make()
             store.startFirstLight(); store.setSuspended(false)
-            for _ in 0..<100 where !store.game.isOver {
+            // The authored first-clear policy takes 105 actions, including 56 showers.
+            for _ in 0..<160 where !store.game.isOver {
                 if let cell = store.game.legalGroups.first?.first { store.clear(cell) }
                 else { store.callShower() }
                 if !store.game.isOver { presenter.finish() }
@@ -216,7 +217,7 @@ final class SkyFlowStateTests: XCTestCase {
             let committed = store.game
             let archive = try XCTUnwrap(defaults.data(forKey: FallingSkyStore.saveKey))
             XCTAssertEqual(store.game.restoration?.milestone, .complete)
-            XCTAssertEqual(store.game.restoration?.score, committed.score)
+            XCTAssertEqual(store.game.restoration?.score, committed.displayScore)
             XCTAssertEqual(try SkySaveArchive.decode(archive), committed)
             XCTAssertEqual(defaults.data(forKey: FallingSkyStore.saveKey), archive, "Reading restoration never writes an archive")
             if interrupted { store.setSuspended(true) }
@@ -364,17 +365,30 @@ final class SkyFlowStateTests: XCTestCase {
     }
 
     func testResultSnapshotKeepsTheActualWinningScoreIncludingOvershoot() throws {
-        var game = FallingSky(challenge: .firstLight)
-        for _ in 0..<100 where !game.isOver {
-            if let cell = game.legalGroups.first?.first { _ = game.clear(cell) }
-            else { _ = game.letStarsFall() }
+        let openings = [FallingSky(challenge: .firstLight),
+                        FallingSky.freshChallenge(.firstLight),
+                        FallingSky.freshChallenge(.ribbonCrossing)]
+        for opening in openings {
+            var game = opening
+            for _ in 0..<256 where !game.isOver {
+                if let cell = game.legalGroups.first?.first { _ = game.clear(cell) }
+                else { _ = game.letStarsFall() }
+            }
+            let result = try XCTUnwrap(SkyResultSnapshot(game: game))
+            let target = try XCTUnwrap(game.displayTarget)
+            XCTAssertTrue(result.won)
+            XCTAssertGreaterThanOrEqual(result.score, target)
+            XCTAssertEqual(result.score, game.displayScore)
+            XCTAssertEqual(result.target, target)
+            XCTAssertEqual(result.scoreLabel, "\(SkyCopy.score(game.displayScore)) of \(SkyCopy.score(target)) starlight collected")
+            XCTAssertEqual(result.reason, game.challenge?.resultReason)
+            let restored = try JSONDecoder().decode(FallingSky.self, from: JSONEncoder().encode(game))
+            XCTAssertEqual(SkyResultSnapshot(game: restored), result)
+            let welcome = SkyWelcomeSnapshot(game: restored, hasSavedSky: true, paused: true)
+            XCTAssertEqual(welcome.score, result.score)
+            XCTAssertEqual(welcome.target, result.target)
+            XCTAssertTrue(welcome.summary?.contains("\(SkyCopy.score(result.score)) of \(SkyCopy.score(target)) starlight") == true)
         }
-        let result = try XCTUnwrap(SkyResultSnapshot(game: game))
-        XCTAssertTrue(result.won)
-        XCTAssertGreaterThanOrEqual(result.score, 18)
-        XCTAssertEqual(result.score, game.score)
-        XCTAssertEqual(result.target, 18)
-        XCTAssertEqual(result.reason, "First Light complete! Lantern Landing is restored.")
     }
 }
 
@@ -392,7 +406,11 @@ extension SkyFlowStateTests {
             let firstLight = SkyHelpContext.selected(game: game, entry: .firstLight)
             XCTAssertTrue(firstLight.challenge); XCTAssertFalse(firstLight.criticalMass)
             XCTAssertFalse(firstLight.openingCascade); XCTAssertFalse(firstLight.opalStorms)
+            XCTAssertTrue(firstLight.scaledPoints)
+            XCTAssertTrue(firstLight.restorationHelp?.contains(SkyCopy.score(150_000)) == true)
         }
+        XCTAssertFalse(SkyHelpContext(game: challenge).scaledPoints)
+        XCTAssertTrue(SkyHelpContext(game: challenge).restorationHelp?.contains("18 starlight") == true)
         XCTAssertEqual(SkyHelpContext(game: fresh).lessons, SkyLesson.allCases)
         XCTAssertEqual(SkyHelpContext(game: retained).lessons, [.square, .cross, .relay])
         XCTAssertEqual(SkyHelpContext(game: challenge).lessons, [.square, .cross, .relay])

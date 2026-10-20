@@ -1,6 +1,6 @@
 # Starfall repository instructions
 
-Keep one small, offline iOS 17+ game using SwiftUI and SpriteKit, shared scheme `Starfall`. Falling sky is the normal Debug/Release game: deterministic accumulating stars, automatic showers with pause, local balance controls, and traces through at least five actual matching stars that clear only the traced set. Automatic critical-mass aging stays disabled in fresh and restored survival skies; historical Dusk rounds remain supported. First Light has one fixed 18-starlight objective. The original 7×7 puzzle remains Debug regression tooling.
+Keep one small, offline iOS 17+ game using SwiftUI and SpriteKit, shared scheme `Starfall`. Falling sky is the normal Debug/Release game: deterministic accumulating stars, automatic showers with pause, local balance controls, and traces through at least five actual matching stars that clear only the traced set. Automatic critical-mass aging stays disabled in fresh and restored survival skies; historical Dusk rounds remain supported. New Lantern Landing and Ribbon Crossing visits use versioned authored rules with 150,000/220,000-point objectives. Historical challenge saves and same-round replay retain their original 18-light rules; explicit new visits select the current definition. The original 7×7 puzzle remains Debug regression tooling.
 
 The user-authorized local world journey unlocks ready restoration locations and records completed repairs; tutorial practice never earns progression. No XP, power-ups, backend, accounts, paid assets, external SDKs, purchases or analytics. Ad/IAP SDKs, entitlements, tracking and monetization UI must remain absent. Any future monetized product needs a separate opt-in target with conditionally linked dependencies; a runtime hide flag is insufficient. Do not change another repository or add network features without a new request. Apply accepted work to the normal app; separate lab/control apps require an explicit user request. Reset-only Debug fixtures are test tooling.
 
@@ -16,6 +16,10 @@ Before editing, inspect `git status --short`, the relevant folder README and loc
 | Plans, designs, reports, README changes | [Documentation instructions](docs/AGENTS.md) |
 
 For level artwork and restoration compositions, use the [level-design kit](docs/design/level-design-kit/README.md) and [level-design skill](.agents/skills/starfall-level-design/SKILL.md), including the camera, native layout/bleed templates and actual-star scale references.
+
+The user's primary gameplay inspiration is **Pokémon Puzzle League (Nintendo 64)**. When uncertain about mechanics, progression, difficulty, scoring, spectacle or multiplayer, consult the [reference and adaptation guide](docs/design/POKEMON_PUZZLE_LEAGUE_REFERENCE.md), verify its actual behavior and propose how Starfall can develop it further. Keep reference facts, proposed adaptations and implemented rules distinct.
+
+Future local-network versus and cooperative restoration between nearby iPhones/iPads are user-requested directions, evoking linked handhelds and couch play. Record them in design work; the current scope remains offline until a multiplayer implementation task. No account, backend or online matchmaking is implied.
 
 For recurring work, load only the relevant repo skill: [verify](.agents/skills/starfall-verify/SKILL.md), [CI triage](.agents/skills/starfall-ci-triage/SKILL.md), or [bounded maintenance](.agents/skills/starfall-maintenance/SKILL.md). Skills reuse the contracts below; they add no approval gates or delivery authorization.
 

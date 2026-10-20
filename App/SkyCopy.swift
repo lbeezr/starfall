@@ -4,6 +4,11 @@ import StarfallCore
 /// English player copy from the same bundled catalogue as character dialogue.
 /// Stable typed keys prevent view/store typos; wording and templates stay in JSON.
 enum SkyCopy {
+    /// Exact native grouping; never abbreviate a committed award or objective.
+    static func score(_ value: Int) -> String {
+        value.formatted(.number.grouping(.automatic))
+    }
+
     /// Core grows from the bottom; every player-facing coordinate reads top-down.
     static func boardPosition(_ cell: Cell) -> (row: Int, column: Int) {
         (FallingSky.side - cell.row, cell.column + 1)
@@ -101,6 +106,9 @@ enum SkyCopy {
         case worldVisit = "worldVisit"
         case worldReturn = "worldReturn"
         case practiceExit = "practiceExit"
+        case helpStoryIdentity = "help.storyIdentity"
+        case helpStoryChallenge = "help.storyChallenge"
+        case helpStoryRibbon = "help.storyRibbon"
 
         case saveRejectedTitle = "save.rejectedTitle"
         case saveRejectedMessage = "save.rejectedMessage"
