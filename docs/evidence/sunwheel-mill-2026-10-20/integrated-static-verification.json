@@ -1,0 +1,182 @@
+{
+  "checkedUTC": "2026-10-20T16:27:27.031197+00:00",
+  "sourceCommit": "d057696934621b4e9f34a3d57f620d28fe9eb262",
+  "kit": {
+    "method": {
+      "command": "swiftc -module-cache-path <temporary-cache> -I <core-products> -L <core-products> -lStarfallCore App/LandingGeometry.swift scripts/export_level_layouts.swift -o <temporary-exporter>",
+      "coreProducts": "/Users/lbeezr/.codex-workspaces/worktrees/ios-a412ced0-1da1-4bc5-8682-a9ef02f52407/Starfall/.build/out/Products/Debug",
+      "inputSHA256": "2bff63844158d6b76afeb781fb328c6f109a2d4c3dcc05f37cf6660758802614",
+      "method": "compiled-app-geometry",
+      "sourceOwnership": "compiled-current-sources"
+    },
+    "ownerHashCount": 14,
+    "matchingOwnerHashes": 14,
+    "layouts": 6,
+    "cells": 294,
+    "mismatches": []
+  },
+  "packagedPaintings": [
+    {
+      "path": "App/Assets.xcassets/SunwheelMill100.imageset/scene.png",
+      "sha256": "c29726025d8e30f77bba7be73dd82984c0ddb263496b02c2f58656a8fde110cf",
+      "bytes": 2678445,
+      "pixelSize": [
+        887,
+        1774
+      ]
+    },
+    {
+      "path": "App/Assets.xcassets/SunwheelMillTabletLandscape100.imageset/scene.png",
+      "sha256": "37259cffdbf81c30c6eb4dfc909dcef7e88b267f9b2e6668df3255d2199c0a19",
+      "bytes": 3128547,
+      "pixelSize": [
+        1448,
+        1086
+      ]
+    },
+    {
+      "path": "App/Assets.xcassets/SunwheelMill075.imageset/scene.png",
+      "sha256": "b19f683af57c2f6a82284305c570b9077f1e4f0b478d1dcba6d2e907afc8892e",
+      "bytes": 2606469,
+      "pixelSize": [
+        887,
+        1774
+      ]
+    },
+    {
+      "path": "App/Assets.xcassets/SunwheelMill000.imageset/scene.png",
+      "sha256": "71eafc51e1133507a54a1019bc166ecf664b7cfe60b51a27e895fe60acddf4d2",
+      "bytes": 2537752,
+      "pixelSize": [
+        887,
+        1774
+      ]
+    },
+    {
+      "path": "App/Assets.xcassets/SunwheelMill025.imageset/scene.png",
+      "sha256": "68214a4e9955a4ce80ed2a77bbb25c57a9ad50d09f916482d4f0283703dbf0c7",
+      "bytes": 2490368,
+      "pixelSize": [
+        887,
+        1774
+      ]
+    },
+    {
+      "path": "App/Assets.xcassets/SunwheelMill050.imageset/scene.png",
+      "sha256": "c329685f49c69fba91f9dbf87fb41362d86f02fe5bee15af226926cb538a9872",
+      "bytes": 2495461,
+      "pixelSize": [
+        887,
+        1774
+      ]
+    },
+    {
+      "path": "App/Assets.xcassets/SunwheelMillTabletLandscape075.imageset/scene.png",
+      "sha256": "64d4d4f15790a3ceb733d639c7f536397ac9591e1b88a21fce3a1820f53977a9",
+      "bytes": 2892154,
+      "pixelSize": [
+        1448,
+        1086
+      ]
+    },
+    {
+      "path": "App/Assets.xcassets/SunwheelMillTabletLandscape000.imageset/scene.png",
+      "sha256": "05b7d2ff4db53b5e3fa07469ea02afd9aa1fd5e4cbe675ba73b620dd0e403ffe",
+      "bytes": 2901649,
+      "pixelSize": [
+        1448,
+        1086
+      ]
+    },
+    {
+      "path": "App/Assets.xcassets/SunwheelMillTabletLandscape025.imageset/scene.png",
+      "sha256": "f47d2048ec23cf5a08e705c44a304d474a55cbb1376774ffd6cd86407ba7cdca",
+      "bytes": 2705177,
+      "pixelSize": [
+        1448,
+        1086
+      ]
+    },
+    {
+      "path": "App/Assets.xcassets/SunwheelMillTabletLandscape050.imageset/scene.png",
+      "sha256": "376213462d2a7764b7082dd03b74fe1232783c6dd218dc8b22003619bad01dcb",
+      "bytes": 2726327,
+      "pixelSize": [
+        1448,
+        1086
+      ]
+    },
+    {
+      "path": "App/Assets.xcassets/SunwheelMillTabletPortrait075.imageset/scene.png",
+      "sha256": "4d30cbe783ea1cf254a23148e86f2048e2e37a9874b933c9f35ac04a5ba5a567",
+      "bytes": 2707046,
+      "pixelSize": [
+        1086,
+        1448
+      ]
+    },
+    {
+      "path": "App/Assets.xcassets/SunwheelMillTabletPortrait000.imageset/scene.png",
+      "sha256": "a1953a34ed7f496079fb56d251de18ffc73fbd5bca0e93d12370ae63213963f5",
+      "bytes": 2564862,
+      "pixelSize": [
+        1086,
+        1448
+      ]
+    },
+    {
+      "path": "App/Assets.xcassets/SunwheelMillTabletPortrait025.imageset/scene.png",
+      "sha256": "5e3f8b4bbecdd4ff0bd109f47d50fb0be4c2b8b078874866d751c98a274e0dec",
+      "bytes": 2534413,
+      "pixelSize": [
+        1086,
+        1448
+      ]
+    },
+    {
+      "path": "App/Assets.xcassets/SunwheelMillTabletPortrait050.imageset/scene.png",
+      "sha256": "fd3c8b2c8607d3883146c728f08c9bea2319827d6bb432ac20a80432262f0225",
+      "bytes": 2604189,
+      "pixelSize": [
+        1086,
+        1448
+      ]
+    },
+    {
+      "path": "App/Assets.xcassets/SunwheelMillTabletPortrait100.imageset/scene.png",
+      "sha256": "117feaf109b4dbd5cf7d1abe748f68325e4b48a082e68529d7859549365b40d9",
+      "bytes": 2661117,
+      "pixelSize": [
+        1086,
+        1448
+      ]
+    }
+  ],
+  "staticReviewerChecks": [
+    {
+      "command": [
+        "node",
+        "/private/tmp/check-sunwheel-reviewer.cjs"
+      ],
+      "helperSHA256": "3eb830f97a3451a0ef108f1915de274d7cd28e5e1a2a6dfb7951516e4e30f85d",
+      "output": "PASS: 57 score/view combinations; fixed identities, 24/40/49/0 samples, all milestone buttons, guides, image status, query precedence, exact natural dimensions on load/same-state selection and production faceless assets, grown toggling and exact neutral registration. Logic only; no browser/native rendering.",
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "node",
+        "/private/tmp/check-frostfruit-reviewer.cjs"
+      ],
+      "helperSHA256": "16ec6ab058584b825f18f17e3e04e15616c7df080ec40915f306ab2fd19fad33",
+      "output": "PASS: 57 score/view combinations; fixed identities, 24/40/49/0 samples, all milestone buttons, guides, image status, query precedence, exact natural dimensions on load/same-state selection and existing cast asset paths. Logic only; no browser/native rendering.",
+      "exitCode": 0
+    }
+  ],
+  "tooling": {
+    "command": "PYTHONPATH=scripts python3 -m unittest scripts/test_native_test_plan.py scripts/test_rc_platforms.py",
+    "passed": 15,
+    "failed": 0,
+    "durationSeconds": 0.067,
+    "logSHA256": "27184a1578a6b869791470fa2316719ce82fdecb38eb238b876c14120e227f25"
+  }
+}

@@ -92,7 +92,7 @@ final class SkyFlowStateTests: XCTestCase {
             store.setSuspended(true)
             let original = store.game
             let core = try XCTUnwrap(defaults.data(forKey: FallingSkyStore.saveKey))
-            for action in [SkyFlowAction.start, .firstLight, .ribbonCrossing, .kiteHarbor, .seedMoon, .silverPools, .frostfruitOrchard, .replay, .another] {
+            for action in [SkyFlowAction.start, .firstLight, .ribbonCrossing, .kiteHarbor, .seedMoon, .silverPools, .frostfruitOrchard, .sunwheelMill, .replay, .another] {
                 var flow = SkyFlowState(arguments: action == .replay || action == .another ? ["--starfalls-reset"] : [])
                 XCTAssertEqual(flow.handle(action, hasSavedSky: true), .staged)
                 XCTAssertEqual(flow.screen, .entry)
@@ -225,6 +225,8 @@ final class SkyFlowStateTests: XCTestCase {
         XCTAssertEqual(SkyEntryRequest.kiteHarbor.selectedChallenge(replaying: .ribbonCrossing), .kiteHarbor)
         XCTAssertEqual(SkyEntryRequest.silverPools.selectedChallenge(replaying: .seedMoon), .silverPools)
         XCTAssertEqual(SkyEntryRequest.replay.selectedChallenge(replaying: .silverPools), .silverPools)
+        XCTAssertEqual(SkyEntryRequest.sunwheelMill.selectedChallenge(replaying: .frostfruitOrchard), .sunwheelMill)
+        XCTAssertEqual(SkyEntryRequest.replay.selectedChallenge(replaying: .sunwheelMill), .sunwheelMill)
         XCTAssertEqual(SkyEntryRequest.frostfruitOrchard.selectedChallenge(replaying: .silverPools), .frostfruitOrchard)
         XCTAssertEqual(SkyEntryRequest.replay.selectedChallenge(replaying: .frostfruitOrchard), .frostfruitOrchard)
         XCTAssertEqual(SkyEntryRequest.seedMoon.selectedChallenge(replaying: .kiteHarbor), .seedMoon)

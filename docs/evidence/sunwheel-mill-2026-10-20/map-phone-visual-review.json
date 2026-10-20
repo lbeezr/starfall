@@ -1,0 +1,442 @@
+{
+  "reviewType": "independent original native Simulator still review",
+  "sourceCommit": "49d54fcab24984c73262849b853e23e8ecd93e3e",
+  "computedRuntimeBuildID": "dev.6fa54c5e65",
+  "runtimeBuildID": "dev.6fa54c5e65",
+  "literalSimulatorAppBuildLabel": "dev.local",
+  "buildLabelEvidence": "/private/tmp/starfall-sunwheel-phone/Build/Products/Debug-iphonesimulator/Starfall.app/Info.plist",
+  "reviewedAtUTC": "2026-10-20T17:06:40.551809+00:00",
+  "status": "passed",
+  "blockingFindings": [],
+  "phone": {
+    "status": "passed",
+    "captureIndex": "/private/tmp/sunwheel-native/map-01/phone/captures.json",
+    "captureIndexSHA256": "3c8c3c33344c64d0a06e97227bfae5dff9e6b9138d788a335c036bc7b362e7a5",
+    "nativeCounts": {
+      "totalTestCount": 3,
+      "passedTests": 3,
+      "failedTests": 0,
+      "skippedTests": 0
+    },
+    "environment": {
+      "architecture": "arm64",
+      "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+      "deviceName": "Starfall Landing Acceptance",
+      "modelName": "iPhone 17e",
+      "osBuildNumber": "24A434",
+      "osVersion": "27.0",
+      "platform": "iOS Simulator"
+    },
+    "selectedCaptureCount": 12,
+    "verifiedCaptureCount": 12,
+    "visuallyInspectedCaptureCount": 12,
+    "allSHA256AndByteCountsMatch": true,
+    "allPathsAreFlatOriginalPNGsWithoutSymlinks": true,
+    "captureBytes": 50616234,
+    "sourceBeforeAfterIdenticalAndClean": true,
+    "testInputsSHA256": "458c454166e066acb6c51473e66676346f661a56b58d4858c2ea6f7df65f892b",
+    "testSourceFileCount": 55,
+    "sourceBeforeEvidence": "/private/tmp/sunwheel-native/map-01/phone/source-before.json",
+    "sourceAfterEvidence": "/private/tmp/sunwheel-native/map-01/phone/source-after.json",
+    "commandEvidence": "/private/tmp/sunwheel-native/map-01/phone/command.json",
+    "verificationEvidence": "/private/tmp/sunwheel-native/map-01/phone/verification.json",
+    "conclusion": "All 12 originals inspected; no blocking visual finding. Five distinct restoration states retain detailed continuous scenery, separable normal bodies, readable results and consistent replay/background state.",
+    "captures": [
+      {
+        "name": "sunwheel-before-winning-clear-normal-motion",
+        "file": "03F2C2B7-A69D-4EAC-8D53-8D38C88C2508.png",
+        "rawPath": "/private/tmp/sunwheel-native/map-01/phone/attachments/03F2C2B7-A69D-4EAC-8D53-8D38C88C2508.png",
+        "sha256": "3b96d5d774c004f6e715f009fb9fa0e79957b17ab04a50f2d2452b143f4098de",
+        "bytes": 4543797,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+          "deviceName": "Starfall Landing Acceptance",
+          "exportedFileName": "03F2C2B7-A69D-4EAC-8D53-8D38C88C2508.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "sunwheel-before-winning-clear-normal-motion_0_466705A4-0584-4C07-B71D-E982395D20D0.png",
+          "timestamp": 1792515463.84
+        },
+        "size": [
+          1170,
+          2532
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "14/18 before winning clear: all five vanes and perimeter lights are lit, the outlet remains closed, and all 21 bodies including the grown amber piece are distinct. Both lower controls fit. Mill architecture, workshop tools and foliage retain rich detail outside the board."
+      },
+      {
+        "name": "sunwheel-restored-after-native-winning-clear-normal-motion",
+        "file": "2CDF703E-20CC-442D-A294-956B95A2F8E6.png",
+        "rawPath": "/private/tmp/sunwheel-native/map-01/phone/attachments/2CDF703E-20CC-442D-A294-956B95A2F8E6.png",
+        "sha256": "8dd56f882d74351ea0a970c7c8cb88037fe3c7b9a5cfe74b07745eb7b2e0757d",
+        "bytes": 3787391,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+          "deviceName": "Starfall Landing Acceptance",
+          "exportedFileName": "2CDF703E-20CC-442D-A294-956B95A2F8E6.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "sunwheel-restored-after-native-winning-clear-normal-motion_0_DEF94990-BDEB-4A4A-8B3F-4DC9A78ECC83.png",
+          "timestamp": 1792515470.061
+        },
+        "size": [
+          1170,
+          2532
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "Native winning clear: open outlet and golden onward channel are unobscured above the full named result. The 18-of-18 description and all four result actions fit without clipping."
+      },
+      {
+        "name": "sunwheel-restored-after-relaunch",
+        "file": "01BA07D1-9217-4B84-8771-365E14CD80FF.png",
+        "rawPath": "/private/tmp/sunwheel-native/map-01/phone/attachments/01BA07D1-9217-4B84-8771-365E14CD80FF.png",
+        "sha256": "2b3fc09800f8afa6cf3ee4dd4252fda939101d77f24b0355ac2c5c7d59f28515",
+        "bytes": 3788205,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+          "deviceName": "Starfall Landing Acceptance",
+          "exportedFileName": "01BA07D1-9217-4B84-8771-365E14CD80FF.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "sunwheel-restored-after-relaunch_0_9AF2AE61-6A90-4E05-B196-87802335AF80.png",
+          "timestamp": 1792515480.566
+        },
+        "size": [
+          1170,
+          2532
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "Relaunch preserves the restored outlet/channel and complete named result with all four actions. No stale unrepaired painting or overlapping result control is visible."
+      },
+      {
+        "name": "sunwheel-replay-reset-to-unrestored",
+        "file": "ACE7C67E-3D56-4AAA-9882-AFCBFD3EF743.png",
+        "rawPath": "/private/tmp/sunwheel-native/map-01/phone/attachments/ACE7C67E-3D56-4AAA-9882-AFCBFD3EF743.png",
+        "sha256": "192c8aaedcf532a13ab87136d58cd22a92901bbf59f3d2a7f8d8b659d362eb0c",
+        "bytes": 4246913,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+          "deviceName": "Starfall Landing Acceptance",
+          "exportedFileName": "ACE7C67E-3D56-4AAA-9882-AFCBFD3EF743.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "sunwheel-replay-reset-to-unrestored_0_EFAE14F9-3BE8-4DAE-AD84-77A324CB998D.png",
+          "timestamp": 1792515495.729
+        },
+        "size": [
+          1170,
+          2532
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "Replay returns to 0/18, the quiet mill and closed outlet, with an empty opening board and complete Start sky/Next shower controls. The forecast is captured during normal-motion presentation; this still does not establish animation quality."
+      },
+      {
+        "name": "sunwheel-phone-scene-0-score-0-normal-motion",
+        "file": "F027B6B4-A4E7-4C56-B903-7EFF9618AC3F.png",
+        "rawPath": "/private/tmp/sunwheel-native/map-01/phone/attachments/F027B6B4-A4E7-4C56-B903-7EFF9618AC3F.png",
+        "sha256": "7aade254b7a99a700be3dac28305df9ea1d50c3f0e26f3e1e4b163c8f9c4cb68",
+        "bytes": 4341355,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+          "deviceName": "Starfall Landing Acceptance",
+          "exportedFileName": "F027B6B4-A4E7-4C56-B903-7EFF9618AC3F.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "sunwheel-phone-scene-0-score-0-normal-motion_0_50F05D7E-AE3F-4074-9692-AC685BBA3ECF.png",
+          "timestamp": 1792515403.975
+        },
+        "size": [
+          1170,
+          2532
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "0% / 0 light: quiet five-vane mill, dark workshop and closed outlet retain detailed continuous terrain. All 21 pieces and lower controls are legible; no straight center-mask edge or background clearing patch is visible."
+      },
+      {
+        "name": "sunwheel-phone-scene-25-score-5-normal-motion",
+        "file": "889993F3-7C02-4C4C-AE54-025003ECFB48.png",
+        "rawPath": "/private/tmp/sunwheel-native/map-01/phone/attachments/889993F3-7C02-4C4C-AE54-025003ECFB48.png",
+        "sha256": "56c6ba4b17eeb0bde3a3e0a9916b6d859414bbf930dfcc9e0ace775a352a3f04",
+        "bytes": 4297796,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+          "deviceName": "Starfall Landing Acceptance",
+          "exportedFileName": "889993F3-7C02-4C4C-AE54-025003ECFB48.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "sunwheel-phone-scene-25-score-5-normal-motion_0_D36BF009-286D-4EAF-AA48-67A880E0C84B.png",
+          "timestamp": 1792515412.268
+        },
+        "size": [
+          1170,
+          2532
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "25% / 5 light: top vane and central bearing/power column become warm while the other vanes, workshop and perimeter remain quiet. Registration and board placement are consistent with 0%; all 21 piece bodies remain distinct."
+      },
+      {
+        "name": "sunwheel-phone-scene-50-score-9-normal-motion",
+        "file": "18FCD0A5-9751-4557-B3FD-0B0C37D636B3.png",
+        "rawPath": "/private/tmp/sunwheel-native/map-01/phone/attachments/18FCD0A5-9751-4557-B3FD-0B0C37D636B3.png",
+        "sha256": "7227c622e02c8385f0663f340ecca36eca367f91683b2c48a670c4a6c76453a6",
+        "bytes": 4368698,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+          "deviceName": "Starfall Landing Acceptance",
+          "exportedFileName": "18FCD0A5-9751-4557-B3FD-0B0C37D636B3.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "sunwheel-phone-scene-50-score-9-normal-motion_0_4F8E4DC6-28BD-41B7-834D-B074DF441740.png",
+          "timestamp": 1792515420.558
+        },
+        "size": [
+          1170,
+          2532
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "50% / 9 light: three vanes, the workshop and workbench are illuminated while the two lower vanes, distant lights and outlet remain inactive. Detailed surfaces persist and the continuous cloudy playfield has no masking seam."
+      },
+      {
+        "name": "sunwheel-phone-scene-75-score-14-normal-motion",
+        "file": "B71BF4A9-FE25-4F17-8EA0-4F791AE1EB41.png",
+        "rawPath": "/private/tmp/sunwheel-native/map-01/phone/attachments/B71BF4A9-FE25-4F17-8EA0-4F791AE1EB41.png",
+        "sha256": "88b8c4a070caf78f5d0a14b4dfce0c184181763f73da3eff1d1247fae7e50507",
+        "bytes": 4543129,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+          "deviceName": "Starfall Landing Acceptance",
+          "exportedFileName": "B71BF4A9-FE25-4F17-8EA0-4F791AE1EB41.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "sunwheel-phone-scene-75-score-14-normal-motion_0_1E0175C0-0260-4659-BA97-36A6B1D60985.png",
+          "timestamp": 1792515428.92
+        },
+        "size": [
+          1170,
+          2532
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "75% / 14 light: all five vanes, perimeter lanterns and lower bridge are lit; the outlet remains shut. Architecture and cloud positions align with prior states, and the 21 piece bodies remain separate."
+      },
+      {
+        "name": "sunwheel-phone-scene-100-score-18-normal-motion",
+        "file": "44124AA6-9872-4AD5-AC9B-DAE724B6B61C.png",
+        "rawPath": "/private/tmp/sunwheel-native/map-01/phone/attachments/44124AA6-9872-4AD5-AC9B-DAE724B6B61C.png",
+        "sha256": "d1f6d3437899a64c3afee7b3cbde741b0bee020b461f8a52ea4a13f673439954",
+        "bytes": 3788770,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+          "deviceName": "Starfall Landing Acceptance",
+          "exportedFileName": "44124AA6-9872-4AD5-AC9B-DAE724B6B61C.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "sunwheel-phone-scene-100-score-18-normal-motion_0_C028C1FE-CB0F-430D-BF78-4A82FF6304D4.png",
+          "timestamp": 1792515434.947
+        },
+        "size": [
+          1170,
+          2532
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "100% / 18 light: the outlet opens and the golden channel flows onward. The shared result overlay leaves that completion landmark clearly visible; all four actions and full result copy fit."
+      },
+      {
+        "name": "sunwheel-dense-before-rapid-clear",
+        "file": "D4A741F3-950D-44F7-9BE1-C18DA51C9C69.png",
+        "rawPath": "/private/tmp/sunwheel-native/map-01/phone/attachments/D4A741F3-950D-44F7-9BE1-C18DA51C9C69.png",
+        "sha256": "78d3fdfc57444996eb687608caa2c04935005a1abe868d4039e2ca535651b80d",
+        "bytes": 4487678,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+          "deviceName": "Starfall Landing Acceptance",
+          "exportedFileName": "D4A741F3-950D-44F7-9BE1-C18DA51C9C69.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "sunwheel-dense-before-rapid-clear_0_C8902026-4171-496B-9B7F-AE3419BB4BA1.png",
+          "timestamp": 1792515361.604
+        },
+        "size": [
+          1170,
+          2532
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "Dense 49-piece board at 9/18: each of five body families remains distinguishable, including the larger amber piece. Upper row clears the mill edge; lower row clears the controls. Continuous clouds remain visible behind the pieces without a center-mask boundary."
+      },
+      {
+        "name": "sunwheel-dense-after-rapid-clear",
+        "file": "A741D490-54CB-445F-8375-A6065069E7D7.png",
+        "rawPath": "/private/tmp/sunwheel-native/map-01/phone/attachments/A741D490-54CB-445F-8375-A6065069E7D7.png",
+        "sha256": "82d1877d0635fc709fabf36108a8dcf8e4584762addd8c2503cb150224ba2f15",
+        "bytes": 4211251,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+          "deviceName": "Starfall Landing Acceptance",
+          "exportedFileName": "A741D490-54CB-445F-8375-A6065069E7D7.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "sunwheel-dense-after-rapid-clear_0_EBB08CFA-0E6F-4D7D-9202-514F1AC7003E.png",
+          "timestamp": 1792515364.433
+        },
+        "size": [
+          1170,
+          2532
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "After rapid clear: 13/18 correctly retains the 50% painting, with three top-left gaps and 46 remaining separate bodies. Pip dialogue and Close fit below the board, and both bottom controls remain visible."
+      },
+      {
+        "name": "sunwheel-dense-retained-after-settings-background",
+        "file": "8A2187B3-45AA-4FB9-9273-527085FFDE40.png",
+        "rawPath": "/private/tmp/sunwheel-native/map-01/phone/attachments/8A2187B3-45AA-4FB9-9273-527085FFDE40.png",
+        "sha256": "82d1877d0635fc709fabf36108a8dcf8e4584762addd8c2503cb150224ba2f15",
+        "bytes": 4211251,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+          "deviceName": "Starfall Landing Acceptance",
+          "exportedFileName": "8A2187B3-45AA-4FB9-9273-527085FFDE40.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "sunwheel-dense-retained-after-settings-background_0_0ABBEEB7-3B96-4A65-811D-B7CC3756A5B2.png",
+          "timestamp": 1792515375.804
+        },
+        "size": [
+          1170,
+          2532
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "After settings and background return: the 13/18 board, three gaps, closed outlet and 50% lighting remain visually consistent. The dialogue panel and lower controls do not obscure a piece."
+      }
+    ]
+  },
+  "routing": {
+    "status": "passed",
+    "captureIndex": "/private/tmp/sunwheel-native/map-01/routing/captures.json",
+    "captureIndexSHA256": "1131bf1152187b863e4c00f9b8ef932ba1686e28586b14f195cd43d25e3ced67",
+    "nativeCounts": {
+      "totalTestCount": 2,
+      "passedTests": 2,
+      "failedTests": 0,
+      "skippedTests": 0
+    },
+    "environment": {
+      "architecture": "arm64",
+      "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+      "deviceName": "Starfall Landing Acceptance",
+      "modelName": "iPhone 17e",
+      "osBuildNumber": "24A434",
+      "osVersion": "27.0",
+      "platform": "iOS Simulator"
+    },
+    "selectedCaptureCount": 3,
+    "verifiedCaptureCount": 3,
+    "visuallyInspectedCaptureCount": 3,
+    "allSHA256AndByteCountsMatch": true,
+    "allPathsAreFlatOriginalPNGsWithoutSymlinks": true,
+    "captureBytes": 12557947,
+    "sourceBeforeAfterIdenticalAndClean": true,
+    "testInputsSHA256": "458c454166e066acb6c51473e66676346f661a56b58d4858c2ea6f7df65f892b",
+    "testSourceFileCount": 55,
+    "sourceBeforeEvidence": "/private/tmp/sunwheel-native/map-01/routing/source-before.json",
+    "sourceAfterEvidence": "/private/tmp/sunwheel-native/map-01/routing/source-after.json",
+    "commandEvidence": "/private/tmp/sunwheel-native/map-01/routing/command.json",
+    "verificationEvidence": "/private/tmp/sunwheel-native/map-01/routing/verification.json",
+    "buildLabelEvidence": "/private/tmp/starfall-sunwheel-phone/Build/Products/Debug-iphonesimulator/Starfall.app/Info.plist",
+    "conclusion": "All three originals inspected; no blocking visual finding. The seventh island remains fully visible and its lock/ready marker, neighboring repair state, connecting route, pinned card and explicit entry agree with progression.",
+    "captures": [
+      {
+        "name": "sunwheel-ready-after-frostfruit-repair",
+        "file": "1D82B514-49B0-417F-8A0F-3921F004EA80.png",
+        "rawPath": "/private/tmp/sunwheel-native/map-01/routing/attachments/1D82B514-49B0-417F-8A0F-3921F004EA80.png",
+        "sha256": "d100faace0a821ad9e65cd8c0a0939010b4998bc21162b63f82485a1ec3401fe",
+        "bytes": 4058895,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+          "deviceName": "Starfall Landing Acceptance",
+          "exportedFileName": "1D82B514-49B0-417F-8A0F-3921F004EA80.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "sunwheel-ready-after-frostfruit-repair_0_534328BB-1D4D-4DF3-AAA8-EE752F6123C7.png",
+          "timestamp": 1792515758.429
+        },
+        "size": [
+          1170,
+          2532
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "After earned Frostfruit repair, the complete damaged Sunwheel island and native name fit inside the map viewport. Its lantern marker, warm connecting route and Ready to restore status agree, while the neighboring orchard is visibly restored. The pinned card and full Visit Sunwheel Mill action are separate from the island; Scroll to explore explains the partially visible neighboring island."
+      },
+      {
+        "name": "sunwheel-entered-from-earned-map-unlock",
+        "file": "0A1C60B7-8364-4FF0-A295-B813108DC674.png",
+        "rawPath": "/private/tmp/sunwheel-native/map-01/routing/attachments/0A1C60B7-8364-4FF0-A295-B813108DC674.png",
+        "sha256": "75daabe13135deb6cbec81a50dc8d4eea15bfea11f7242aa993a5a414b0f1e36",
+        "bytes": 4246080,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+          "deviceName": "Starfall Landing Acceptance",
+          "exportedFileName": "0A1C60B7-8364-4FF0-A295-B813108DC674.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "sunwheel-entered-from-earned-map-unlock_0_E9F01578-5256-4484-A4E1-0BA01B4CA728.png",
+          "timestamp": 1792515785.623
+        },
+        "size": [
+          1170,
+          2532
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "Begin from the earned map unlock enters the quiet Sunwheel board at 0/18. Three aqua bodies are separate, the outlet is closed, the detailed mill and continuous sky match the phone 0% state, and both lower controls fit."
+      },
+      {
+        "name": "world-map-selected-locked-phone",
+        "file": "E682F504-658E-4144-851E-6ACE26AA0B93.png",
+        "rawPath": "/private/tmp/sunwheel-native/map-01/routing/attachments/E682F504-658E-4144-851E-6ACE26AA0B93.png",
+        "sha256": "edf18387218bb7d0e88f87395229dd5a7c07c93c2904c44ca3fa3aac41662677",
+        "bytes": 4252972,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+          "deviceName": "Starfall Landing Acceptance",
+          "exportedFileName": "E682F504-658E-4144-851E-6ACE26AA0B93.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "world-map-selected-locked-phone_0_FBA2EB30-A5E8-4B43-88F7-540DD35EC396.png",
+          "timestamp": 1792515832.677
+        },
+        "size": [
+          1170,
+          2532
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "Fresh locked selection shows the complete damaged Sunwheel island with a lock marker and selected name. The neighboring Frostfruit island remains unlit, and the route is muted. The pinned card reads Restore Frostfruit Orchard first with no Visit action. Header, Places control and scroll cue fit without crowding the selected island."
+      }
+    ]
+  },
+  "limitations": [
+    "No image edits, recompression, crops or composites. Original1170x2532 PNGs were viewed individually; the viewer displayed them at946x2048 without changing source files.",
+    "Still review does not establish normal-motion timing, actual VoiceOver, physical-device reading or sustained performance.",
+    "No Apple execution, simulator interaction, Git operation or repository edit performed by this reviewer.",
+    "Prior d057/accepted-01 reviews are historical and are not counted as current-source captures.",
+    "These routing stills show damaged Sunwheel in locked and earned-ready map states. Restored Sunwheel map-island visual coverage belongs to the separate map harness review; this report does not infer that appearance from source registration alone."
+  ],
+  "selectedCaptureCount": 15,
+  "verifiedCaptureCount": 15,
+  "visuallyInspectedCaptureCount": 15,
+  "allSHA256AndByteCountsMatch": true,
+  "totalOriginalPNGBytes": 63174181,
+  "conclusion": "All 12 phone and three routing original PNGs on 49d54fc / computed dev.6fa54c5e65 were individually viewed with hashes, byte counts and dimensions verified. No blocking visual finding. Root-owned receipts report phone 3/3 and routing 2/2, zero failures/skips. Actual simulator app label remains dev.local."
+}

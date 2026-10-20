@@ -1,0 +1,54 @@
+{
+  "sourceCommit": "49d54fcab24984c73262849b853e23e8ecd93e3e",
+  "runtimeInputFingerprint": "dev.6fa54c5e65",
+  "literalSimulatorBuildLabel": "dev.local",
+  "processing": "Unmodified original native PNG bytes; no resizing, recompression or pixel changes.",
+  "captures": [
+    {
+      "name": "sunwheel-ready-after-frostfruit-repair",
+      "file": "1D82B514-49B0-417F-8A0F-3921F004EA80.png",
+      "rawPath": "/private/tmp/sunwheel-native/map-01/routing/attachments/1D82B514-49B0-417F-8A0F-3921F004EA80.png",
+      "sha256": "d100faace0a821ad9e65cd8c0a0939010b4998bc21162b63f82485a1ec3401fe",
+      "bytes": 4058895,
+      "export": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+        "deviceName": "Starfall Landing Acceptance",
+        "exportedFileName": "1D82B514-49B0-417F-8A0F-3921F004EA80.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "sunwheel-ready-after-frostfruit-repair_0_534328BB-1D4D-4DF3-AAA8-EE752F6123C7.png",
+        "timestamp": 1792515758.429
+      },
+      "retainedFile": "dev-49d54fc__sunwheel-earned-map__iphone-17e__default-text.png",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "sourceCommit": "49d54fcab24984c73262849b853e23e8ecd93e3e",
+      "runtimeInputFingerprint": "dev.6fa54c5e65"
+    },
+    {
+      "name": "map-harness-allReady-landscape",
+      "file": "BF6351E8-9D96-48C0-8EDB-B8E0672E42CA.png",
+      "rawPath": "/private/tmp/sunwheel-native/map-tablet-01/routing/attachments/BF6351E8-9D96-48C0-8EDB-B8E0672E42CA.png",
+      "sha256": "92511c51d23383a0617d5a154859d4867fa1c3165e0d742e1bfd98125d9994ed",
+      "bytes": 5494430,
+      "export": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+        "deviceName": "Starfall Landing Tablet Acceptance",
+        "exportedFileName": "BF6351E8-9D96-48C0-8EDB-B8E0672E42CA.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "map-harness-allReady-landscape_0_5F97BE1F-D182-4930-A6CD-C8FD77A7A80E.png",
+        "timestamp": 1792516326.133
+      },
+      "retainedFile": "dev-49d54fc__sunwheel-restored-map__ipad-air11__landscape.png",
+      "dimensions": [
+        1640,
+        2360
+      ],
+      "sourceCommit": "49d54fcab24984c73262849b853e23e8ecd93e3e",
+      "runtimeInputFingerprint": "dev.6fa54c5e65"
+    }
+  ]
+}

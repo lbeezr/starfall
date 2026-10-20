@@ -1,0 +1,12 @@
+{
+  "sourceCommit": "49d54fcab24984c73262849b853e23e8ecd93e3e",
+  "sourceTree": "1658f3eb3ac8d376c977586cffc88b83f8707e51",
+  "archiveDirectory": "/var/folders/fs/9shw9bf142jg3280dc9n3hhc0000gn/T/sunwheel-map-source-pygfbysq/source",
+  "workingRuntimeInputFingerprint": "dev.6fa54c5e65",
+  "archiveRuntimeInputFingerprint": "dev.6fa54c5e65",
+  "testSourceCount": 76,
+  "matchingTestSourceCount": 76,
+  "mismatches": [],
+  "checkedUTC": "2026-10-20T16:59:48.365450+00:00",
+  "scope": "Clean Git archive matches the frozen runtime inputs and all 76 test files. Tests run in the recorded working checkout, not inside this export."
+}

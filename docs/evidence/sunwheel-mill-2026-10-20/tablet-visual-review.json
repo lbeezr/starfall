@@ -1,0 +1,221 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "/root/sunwheel_runtime",
+  "reviewedAtUTC": "2026-10-20T15:42:41.375332+00:00",
+  "result": "pass-with-nonblocking-observations",
+  "blockingFindings": [],
+  "captureManifest": "/private/tmp/sunwheel-native/development-01/tablet/captures.json",
+  "captureManifestFileSHA256": "0bb25a4d87f579bf84511a8ecde8e868545971ef098881fad7396254f67d8d89",
+  "exportManifestSHA256": "076ad1b48f4a50a6d25bd73b906e4a467a3c87e1ca3a7f0a42c56d2dffb9fd06",
+  "sourceCommit": "08277bc01c57da592a2b44cc537876b4a8b58038",
+  "runtimeBuildID": "dev.fdc51ddb01",
+  "scope": "Final development-01 tablet native stills; both iPad orientations, all five restoration stages, dense 49-piece boards, native clears/wins, rotation retention and terminal actions.",
+  "reviewedCaptureCount": 20,
+  "uniqueCaptureHashes": 19,
+  "allCaptureSHA256Verified": true,
+  "summary": [
+    "Both bespoke layouts preserve rich connected mill, workshop, bridge, terraces and foreground construction without intruding on essential board pieces.",
+    "Restoration progresses through localized wheel, building and lamp repairs. In both orientations the outlet is closed at 75%; only 100% opens it and sends golden light through the downstream channels.",
+    "All 49 pieces remain readable in both dense boards. HUD, dialogue and terminal actions remain legible and contained.",
+    "No visible center-clearing mask, rectangular fade seam or abrupt cloud edge was found. The intentional whole-scene terminal dimming leaves the open outlet and golden payoff visible."
+  ],
+  "nonblockingObservations": [
+    {
+      "severity": "minor",
+      "finding": "Landscape crops the extreme outer tip of the top wheel vane. The full wheel mechanism, identity and opening payoff remain understandable; this is an edge composition crop, not a gameplay obstruction.",
+      "captures": [
+        {
+          "name": "sunwheel-tablet-landscape-retained-before-clear-normal-motion",
+          "sha256": "428eb20485437eb34133ccba2b58f711b5a8fbd8c26cd138dd6ecda6ae1270f6",
+          "rawPath": "/private/tmp/sunwheel-native/development-01/tablet/attachments/E06EF81C-DD62-4A1B-A810-DDD35102BA1B.png"
+        },
+        {
+          "name": "sunwheel-tablet-landscape-scene-75-score-14-normal-motion",
+          "sha256": "be9514d43c36c5a1c0db2c62e75363ff19784944e96ef4b13f24acdffd8d2244",
+          "rawPath": "/private/tmp/sunwheel-native/development-01/tablet/attachments/AAB64365-F020-42E6-B34F-E08C45B49C51.png"
+        },
+        {
+          "name": "sunwheel-tablet-landscape-scene-100-score-18-normal-motion",
+          "sha256": "130644d9f7ab4a4c21aa9e82f4b91fb6182c329933653892711c01aa6107fbbf",
+          "rawPath": "/private/tmp/sunwheel-native/development-01/tablet/attachments/218D49DB-D507-45C7-A2B9-116108E93701.png"
+        }
+      ]
+    },
+    {
+      "severity": "minor",
+      "finding": "Portrait score text crosses the upper wheel vane. Text stays legible and no gate or play piece is obscured.",
+      "captures": [
+        {
+          "name": "sunwheel-tablet-portrait-before-rotation-normal-motion",
+          "sha256": "8d5eeea488eb7c6c7d654de0de61e2f45cc6c6fb4a3ae09f662644bbae253215",
+          "rawPath": "/private/tmp/sunwheel-native/development-01/tablet/attachments/C5D8F4CF-72F4-481B-88BD-A2E3A6EE550A.png"
+        },
+        {
+          "name": "sunwheel-tablet-portrait-scene-75-score-14-normal-motion",
+          "sha256": "e031223d5bf819a977226076a2a244e1e260cfc0ff813e629eb55e53223f9399",
+          "rawPath": "/private/tmp/sunwheel-native/development-01/tablet/attachments/FD0D9B1C-F7D2-4F5B-B471-AD445559FA31.png"
+        }
+      ]
+    },
+    {
+      "severity": "minor",
+      "finding": "The lower-left amber piece on the dense portrait board overlaps warm foliage. Its bright faceted silhouette remains distinct.",
+      "captures": [
+        {
+          "name": "sunwheel-tablet-portrait-dense-075-before-native-win",
+          "sha256": "35001848ce12041fb8aa10662c98f59ddb3cbf915f785fcb4d3cd73ce12c801a",
+          "rawPath": "/private/tmp/sunwheel-native/development-01/tablet/attachments/6410A9F1-3500-4960-8EF6-AB0E72821E2C.png"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Visual review of original raw PNG bytes displayed with orientation metadata; no image edits or recompression.",
+    "Capture names containing normal-motion do not establish animation timing or fluidity. Stills only were reviewed.",
+    "No physical-device, actual VoiceOver or broader-device acceptance is claimed.",
+    "Source commit plus development build ID describe the working development capture, not clean published-commit acceptance.",
+    "The landscape 100% scene and final-result-action captures are byte-identical; each requested PNG was still inspected."
+  ],
+  "captures": [
+    {
+      "name": "sunwheel-tablet-portrait-before-rotation-normal-motion",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/tablet/attachments/C5D8F4CF-72F4-481B-88BD-A2E3A6EE550A.png",
+      "sha256": "8d5eeea488eb7c6c7d654de0de61e2f45cc6c6fb4a3ae09f662644bbae253215",
+      "reviewed": true,
+      "finding": "5/18 score, first vane and hub lit; partial board and controls legible before rotation."
+    },
+    {
+      "name": "sunwheel-tablet-landscape-retained-before-clear-normal-motion",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/tablet/attachments/E06EF81C-DD62-4A1B-A810-DDD35102BA1B.png",
+      "sha256": "428eb20485437eb34133ccba2b58f711b5a8fbd8c26cd138dd6ecda6ae1270f6",
+      "reviewed": true,
+      "finding": "5/18 retained in landscape; clear pieces and outlet; minor top vane tip crop."
+    },
+    {
+      "name": "sunwheel-tablet-landscape-after-native-clear-normal-motion",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/tablet/attachments/2BA02FF9-428C-4A3D-9F88-D15BACE92A28.png",
+      "sha256": "fe54b451d0b6a3e535e7bc0b64e2a15450c319bd3b4b7ffd17c290afc4c87919",
+      "reviewed": true,
+      "finding": "9/18 after native clear; three vanes and mill windows lit, gate closed; Pip +4 dialogue and actions readable."
+    },
+    {
+      "name": "sunwheel-tablet-portrait-retained-after-landscape-clear-normal-motion",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/tablet/attachments/1A094820-DD56-451D-A616-95B1B44578DD.png",
+      "sha256": "386f74dcd4d151c8d151c867bf2c648e0158762a5b2b523444e98dc856510ef3",
+      "reviewed": true,
+      "finding": "9/18 and half-restored scene retained after return to portrait; remaining pieces clear."
+    },
+    {
+      "name": "sunwheel-tablet-portrait-after-second-native-clear-normal-motion",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/tablet/attachments/62D73A63-3428-4EC7-AF7D-0577F840DFA3.png",
+      "sha256": "ea321fdcee70269aa5320265ad5aefb1bb6a7294f3f422e602642327039830b2",
+      "reviewed": true,
+      "finding": "13/18 after second native clear; half-restored scene correctly retained, gate closed; dialogue and resume actions fit."
+    },
+    {
+      "name": "sunwheel-tablet-portrait-scene-0-score-0-normal-motion",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/tablet/attachments/D252285D-6F80-44F8-8500-7335205FB219.png",
+      "sha256": "688f3b4b5abbb73f10235974e358e1cd80aca34ff0a237d38d28e3682ee8d101",
+      "reviewed": true,
+      "finding": "Dormant wheel, lamps and mill retain rich construction; closed copper gate clear; piece colors and silhouettes readable."
+    },
+    {
+      "name": "sunwheel-tablet-portrait-scene-25-score-5-normal-motion",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/tablet/attachments/385D5A6D-8803-445B-AFC9-B9D9BA6A8F63.png",
+      "sha256": "f7fc0047fa3820dc11e0c306322b787e6b7c37d68ce530920e32d464e94139db",
+      "reviewed": true,
+      "finding": "One top vane and hub light while other repairs remain dormant; closed gate, clear pieces."
+    },
+    {
+      "name": "sunwheel-tablet-portrait-scene-50-score-9-normal-motion",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/tablet/attachments/338F8A91-96E6-4FBD-B7A6-82F1FAD9D5B2.png",
+      "sha256": "b209a0c832aeb27cd807e955e8f73a8f1220a9882e1af62b1a647578d51d397c",
+      "reviewed": true,
+      "finding": "Three upper vanes and mill windows lit; gate closed and downstream channel dark; clear pieces."
+    },
+    {
+      "name": "sunwheel-tablet-portrait-scene-75-score-14-normal-motion",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/tablet/attachments/FD0D9B1C-F7D2-4F5B-B471-AD445559FA31.png",
+      "sha256": "e031223d5bf819a977226076a2a244e1e260cfc0ff813e629eb55e53223f9399",
+      "reviewed": true,
+      "finding": "All five vanes and lamps warm; double copper gate still closed and downstream channel dark."
+    },
+    {
+      "name": "sunwheel-tablet-portrait-scene-100-score-18-normal-motion",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/tablet/attachments/20A02640-7B01-4424-BF23-0CA6365726FA.png",
+      "sha256": "37c484ea9efeb2220b3a7966658f7a6ade10218ed1ec6ac0a0962c6995c3cf6c",
+      "reviewed": true,
+      "finding": "Portrait gate visibly split outward with golden channel; opening unobstructed above result; all actions and cast fit."
+    },
+    {
+      "name": "sunwheel-tablet-landscape-scene-0-score-0-normal-motion",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/tablet/attachments/CCF255ED-2A1E-4416-95BB-AEAE281BD8E5.png",
+      "sha256": "9e603a3f1e5d8e37b410dab0af64c3c6be6f77e3330631267b76ef4c6402d4e2",
+      "reviewed": true,
+      "finding": "Dormant landscape keeps rich terraces and workshop; gate closed; pieces readable."
+    },
+    {
+      "name": "sunwheel-tablet-landscape-scene-25-score-5-normal-motion",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/tablet/attachments/EF113CA4-39DB-4BF5-B240-5ED0352912CA.png",
+      "sha256": "b241c6a07b2c6641e04ab031b544a03b7480c5477184085a1cc7fa9323109535",
+      "reviewed": true,
+      "finding": "One upper vane and hub lit; gate closed and downstream dark; native board readable."
+    },
+    {
+      "name": "sunwheel-tablet-landscape-scene-50-score-9-normal-motion",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/tablet/attachments/4F14109B-913E-40C3-AFA9-565FE29F7E2A.png",
+      "sha256": "3556450d582acaabac98437ef7a7dcd41c69b826a3675a44216e46ae3f0ac422",
+      "reviewed": true,
+      "finding": "Three upper vanes and mill windows lit; bridge/workshop lamps dormant; gate closed."
+    },
+    {
+      "name": "sunwheel-tablet-landscape-scene-75-score-14-normal-motion",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/tablet/attachments/AAB64365-F020-42E6-B34F-E08C45B49C51.png",
+      "sha256": "be9514d43c36c5a1c0db2c62e75363ff19784944e96ef4b13f24acdffd8d2244",
+      "reviewed": true,
+      "finding": "All vanes and lamps lit, gate closed and downstream dark; no terminal payoff leaked into 75%."
+    },
+    {
+      "name": "sunwheel-tablet-landscape-scene-100-score-18-normal-motion",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/tablet/attachments/218D49DB-D507-45C7-A2B9-116108E93701.png",
+      "sha256": "130644d9f7ab4a4c21aa9e82f4b91fb6182c329933653892711c01aa6107fbbf",
+      "reviewed": true,
+      "finding": "Open outlet and golden channel/fall visible to left of result; rich workshop and bridge remain clear; all actions fit."
+    },
+    {
+      "name": "sunwheel-tablet-landscape-final-result-action-visible",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/tablet/attachments/AD81860B-B413-41E7-9847-E486F6518144.png",
+      "sha256": "130644d9f7ab4a4c21aa9e82f4b91fb6182c329933653892711c01aa6107fbbf",
+      "reviewed": true,
+      "finding": "Final result actions fully visible and high contrast; exact duplicate PNG bytes of preceding landscape 100% capture."
+    },
+    {
+      "name": "sunwheel-tablet-landscape-dense-075-before-native-win",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/tablet/attachments/141F9CD4-2F38-4415-BF23-AE2492F9D135.png",
+      "sha256": "5e0579241d881def84ca5abb76b4059b205e84462a71949e2a64ca06c4200df5",
+      "reviewed": true,
+      "finding": "All 49 pieces visible with distinct color/shape and grown states; closed outlet unobstructed left of board."
+    },
+    {
+      "name": "sunwheel-tablet-landscape-100-after-native-win",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/tablet/attachments/1DE914C6-1943-409D-A80B-EFC0C217F92E.png",
+      "sha256": "cc36530052ce7d916278b1ab3180c9969ccd8520615c6e3dd193c5a0633cfedd",
+      "reviewed": true,
+      "finding": "Native win leaves outlet open and golden onward channel visible; result actions fit; particles in still do not establish motion quality."
+    },
+    {
+      "name": "sunwheel-tablet-portrait-dense-075-before-native-win",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/tablet/attachments/6410A9F1-3500-4960-8EF6-AB0E72821E2C.png",
+      "sha256": "35001848ce12041fb8aa10662c98f59ddb3cbf915f785fcb4d3cd73ce12c801a",
+      "reviewed": true,
+      "finding": "All 49 pieces visible and distinguishable; lower-left amber piece overlaps warm foliage but retains clear silhouette; closed outlet unobstructed."
+    },
+    {
+      "name": "sunwheel-tablet-portrait-100-after-native-win",
+      "rawPath": "/private/tmp/sunwheel-native/development-01/tablet/attachments/24A3E1B4-801F-471C-8424-40741EB09B34.png",
+      "sha256": "4f5c3cf685daa7fa7ef222d3fac44270dd032fb207a1697e58c8a6bf7af7ad93",
+      "reviewed": true,
+      "finding": "Native portrait win clearly opens the revised double gate and lights downstream channels; all terminal actions fit; particles are still evidence only."
+    }
+  ]
+}

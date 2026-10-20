@@ -1,0 +1,252 @@
+{
+  "reviewType": "independent visual inspection of original native Simulator PNGs",
+  "reviewedAtUTC": "2026-10-20T16:18:13.691426+00:00",
+  "sourceCommit": "d057696934621b4e9f34a3d57f620d28fe9eb262",
+  "computedRuntimeBuildID": "dev.a15832d0fd",
+  "literalSimulatorAppBuildLabel": "dev.local",
+  "buildLabelEvidence": "/private/tmp/starfall-sunwheel-phone/Build/Products/Debug-iphonesimulator/Starfall.app/Info.plist",
+  "captureIndex": "/private/tmp/sunwheel-native/accepted-01/phone/captures.json",
+  "captureIndexSHA256": "80da867e926c1799af3b857927a84ae002309e449860850601e65926bc57cbd1",
+  "captureIndexOriginalExportManifestSHA256": "8b733c0f94fc432564d26039f612a073af4634a2034457a05308eea52e43bce7",
+  "sourceBeforeAndAfterRuntimeAndTestInputsIdentical": true,
+  "sourceBeforeWorkingTreeStatus": [],
+  "sourceAfterWorkingTreeStatus": [
+    " M App/README.md",
+    " M README.md",
+    " M Sources/StarfallCore/README.md",
+    " M docs/ENGINEERING.md",
+    " M docs/EXPERIMENTS.md",
+    " M docs/OFFICIAL_LOCATIONS_AND_TUTORIAL_PLAN.md",
+    " M docs/README.md",
+    " M docs/ROADMAP.md",
+    " M docs/design/README.md",
+    " M docs/design/STARFALL_GAME_BIBLE.md",
+    " M docs/design/STARLIGHT_RESTORATION.md",
+    " M docs/design/VISUAL_REFERENCE.md",
+    " M docs/design/WORLD_ATLAS.md",
+    " M docs/design/sunwheel-mill-07/PRODUCTION_PLAN.md",
+    " M docs/design/sunwheel-mill-07/README.md",
+    " M docs/evidence/README.md",
+    "?? axe-video-2026-10-20T16:11:45Z.mp4",
+    "?? docs/evidence/sunwheel-mill-2026-10-20/routing-visual-review.json"
+  ],
+  "sourceAfterNote": "Only recorded documentation/evidence and an untracked recording changed; runtime and native test fingerprints are unchanged.",
+  "environment": {
+    "architecture": "arm64",
+    "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+    "deviceName": "Starfall Landing Acceptance",
+    "modelName": "iPhone 17e",
+    "osBuildNumber": "24A434",
+    "osVersion": "27.0",
+    "platform": "iOS Simulator"
+  },
+  "configuration": "Debug",
+  "nativeCounts": {
+    "totalTestCount": 4,
+    "passedTests": 4,
+    "failedTests": 0,
+    "skippedTests": 0
+  },
+  "selectedCaptureCount": 14,
+  "verifiedCaptureCount": 14,
+  "visuallyInspectedCaptureCount": 14,
+  "rawPNGDimensions": [
+    1170,
+    2532
+  ],
+  "rawBytes": 57031513,
+  "inspectionDisplay": "functions.view_image displayed the original paths at946x2048; no files were resized, copied, recompressed or edited.",
+  "hashVerification": "Every original PNG signature, byte length and SHA256 matched its selected capture index entry; exact14 required names present.",
+  "blockingFindings": [],
+  "conclusion": "No blocking visual regression in these14 final merged-source phone stills. All five restoration paintings remain distinct with a closed75% / open100% outlet reward; living-light pieces remain legible in sparse and full49-cell boards.",
+  "scopeNotes": [
+    "Default score is complete and readable; one-digit0/5/9 values reflow above /18 while14/13 use one line. This shared HUD reflow does not obscure the protected outlet.",
+    "Largest-text captures establish readable content and the exposed Replay action at the captured scroll positions; earlier/later page content is outside those stills.",
+    "Passed native assertions establish input, score, restore/replay and Reduce Motion execution separately; these stills do not measure shader evolution, transition timing or physical motion quality.",
+    "Normal-motion video/frame review is owned separately by root. No actual VoiceOver, physical device or minimum-OS acceptance is claimed."
+  ],
+  "captures": [
+    {
+      "name": "sunwheel-before-winning-clear-normal-motion",
+      "rawPath": "/private/tmp/sunwheel-native/accepted-01/phone/attachments/A2C53982-1D86-460C-8A0A-F44A79FFA9C2.png",
+      "sha256": "60d908bc37424e456dad5dce73334bc3cb90096f7c9eca00e4179fc0e0c36fdb",
+      "bytes": 4543374,
+      "size": [
+        1170,
+        2532
+      ],
+      "visuallyInspected": true,
+      "blockingFindings": [],
+      "observation": "14/18; all five wheel inserts and lamps glow, outlet is still shut. Ordinary and larger grown body are distinct; manual controls are fully visible."
+    },
+    {
+      "name": "sunwheel-restored-after-native-winning-clear-normal-motion",
+      "rawPath": "/private/tmp/sunwheel-native/accepted-01/phone/attachments/55EBEF6C-56D5-4556-BC30-B0DFCDC1E0B7.png",
+      "sha256": "8dd56f882d74351ea0a970c7c8cb88037fe3c7b9a5cfe74b07745eb7b2e0757d",
+      "bytes": 3787391,
+      "size": [
+        1170,
+        2532
+      ],
+      "visuallyInspected": true,
+      "blockingFindings": [],
+      "observation": "Open outlet and continuous onward golden channel visible above complete result. Exact18/18 text and all four result actions fit the default viewport."
+    },
+    {
+      "name": "sunwheel-restored-after-relaunch",
+      "rawPath": "/private/tmp/sunwheel-native/accepted-01/phone/attachments/B0B8C213-3DBB-4E5F-BC4B-0AF28D97898E.png",
+      "sha256": "1bc797b25e7f1b195af24b26f9524f86aee3956e73f890c47881ceddc327dedc",
+      "bytes": 3788118,
+      "size": [
+        1170,
+        2532
+      ],
+      "visuallyInspected": true,
+      "blockingFindings": [],
+      "observation": "Same complete mill,18/18 result and all named actions retained visibly after relaunch."
+    },
+    {
+      "name": "sunwheel-replay-reset-to-unrestored",
+      "rawPath": "/private/tmp/sunwheel-native/accepted-01/phone/attachments/AA91F942-411F-4A35-B672-D4565FEA3A47.png",
+      "sha256": "5482a8b2a764c2eb41fb11ea9b5227c20d7dd676f70d42307a48b5e04cd44b97",
+      "bytes": 4246880,
+      "size": [
+        1170,
+        2532
+      ],
+      "visuallyInspected": true,
+      "blockingFindings": [],
+      "observation": "0/18, dark closed outlet and empty historical opening restored; Start sky and Next shower remain visible."
+    },
+    {
+      "name": "sunwheel-largest-text-reduce-motion-before-clear",
+      "rawPath": "/private/tmp/sunwheel-native/accepted-01/phone/attachments/2649A3A7-7899-4E19-A486-3EB004D158B2.png",
+      "sha256": "bd95876226cbb9265a55aef80638463d00ec9b67175e73874818fab66b1bf4bb",
+      "bytes": 3985545,
+      "size": [
+        1170,
+        2532
+      ],
+      "visuallyInspected": true,
+      "blockingFindings": [],
+      "observation": "Large14/18 header and forecast are separated from the scrolling board. Closed outlet remains readable; visible piece rows retain their proportions. Lower controls are outside this still viewport."
+    },
+    {
+      "name": "sunwheel-largest-text-reduce-motion-restored",
+      "rawPath": "/private/tmp/sunwheel-native/accepted-01/phone/attachments/36BFAE8B-B209-4084-8C3A-237368EE0D1A.png",
+      "sha256": "f13f2253e389e4e17d641965d508f2c1a4c2b41741a594ed79c8afed91555df6",
+      "bytes": 2428631,
+      "size": [
+        1170,
+        2532
+      ],
+      "visuallyInspected": true,
+      "blockingFindings": [],
+      "observation": "Scrolled result shows readable18of18 continuation, fully framed Return to world map/New sky/Replay Sunwheel Mill actions. Replay wraps across three lines without truncation. Title and earlier text are above the viewport; this is not a full-page-fit claim."
+    },
+    {
+      "name": "sunwheel-phone-scene-0-score-0-normal-motion",
+      "rawPath": "/private/tmp/sunwheel-native/accepted-01/phone/attachments/B841C45C-A080-41F6-B3B7-3A9039730CAC.png",
+      "sha256": "fffad18468ff938acba35a59268c2712b2337b0f7678bfdf33d4045bb26d7bde",
+      "bytes": 4341389,
+      "size": [
+        1170,
+        2532
+      ],
+      "visuallyInspected": true,
+      "blockingFindings": [],
+      "observation": "Quiet wheel, glass, workshop and lamps; physically closed outlet. Sparse living-light bodies are distinct against the continuous sky."
+    },
+    {
+      "name": "sunwheel-phone-scene-25-score-5-normal-motion",
+      "rawPath": "/private/tmp/sunwheel-native/accepted-01/phone/attachments/FB3797AC-0472-4DDC-9D42-28E49EE5B6CB.png",
+      "sha256": "741f39859e95cb0acc8db6e18111d726caa1ca4b76f7592c6acf6ab72720eeb7",
+      "bytes": 4298242,
+      "size": [
+        1170,
+        2532
+      ],
+      "visuallyInspected": true,
+      "blockingFindings": [],
+      "observation": "Central bearing and one upper vane glow; remaining four inserts and outlet remain quiet. Board alignment and controls unchanged."
+    },
+    {
+      "name": "sunwheel-phone-scene-50-score-9-normal-motion",
+      "rawPath": "/private/tmp/sunwheel-native/accepted-01/phone/attachments/C2830739-B7F3-4038-BA9C-5397265DCEC8.png",
+      "sha256": "baf6a1cb7e864b80db4b92d7bad21e2999a45adb3e22883756e065fd72068835",
+      "bytes": 4368973,
+      "size": [
+        1170,
+        2532
+      ],
+      "visuallyInspected": true,
+      "blockingFindings": [],
+      "observation": "Three vanes and workshop illumination are restored; lower two vanes and outlet remain dark/closed. Gameplay bodies stay distinct."
+    },
+    {
+      "name": "sunwheel-phone-scene-75-score-14-normal-motion",
+      "rawPath": "/private/tmp/sunwheel-native/accepted-01/phone/attachments/25682397-E93F-450E-BBF3-698BC24A50BE.png",
+      "sha256": "9796aae65a5fc578f3d36244852bc3f9053d2c312afcb30573fd86ea056a7667",
+      "bytes": 4543552,
+      "size": [
+        1170,
+        2532
+      ],
+      "visuallyInspected": true,
+      "blockingFindings": [],
+      "observation": "All five vanes and perimeter lights glow; outlet remains visibly closed and onward channel is dark. Same gameplay framing."
+    },
+    {
+      "name": "sunwheel-phone-scene-100-score-18-normal-motion",
+      "rawPath": "/private/tmp/sunwheel-native/accepted-01/phone/attachments/2CA3E696-DD77-43C3-B136-E43AC8AAD8BA.png",
+      "sha256": "d1f6d3437899a64c3afee7b3cbde741b0bee020b461f8a52ea4a13f673439954",
+      "bytes": 3788770,
+      "size": [
+        1170,
+        2532
+      ],
+      "visuallyInspected": true,
+      "blockingFindings": [],
+      "observation": "Open copper gate leaves around visible aperture and lit onward channel produce a distinct completion. Full default result and actions are readable."
+    },
+    {
+      "name": "sunwheel-dense-before-rapid-clear",
+      "rawPath": "/private/tmp/sunwheel-native/accepted-01/phone/attachments/834268A8-C849-41CC-BB9D-8C58BCA6CD75.png",
+      "sha256": "9f210661bc449042b0f9eaa9f797346ee78d1294554a89c13e1907019e268744",
+      "bytes": 4488146,
+      "size": [
+        1170,
+        2532
+      ],
+      "visuallyInspected": true,
+      "blockingFindings": [],
+      "observation": "All49 occupied cells show separated five-family silhouettes and bright interiors; the grown amber body is larger without merging with neighbors. Scenery and controls do not cover a playable row."
+    },
+    {
+      "name": "sunwheel-dense-after-rapid-clear",
+      "rawPath": "/private/tmp/sunwheel-native/accepted-01/phone/attachments/7EB576BB-2512-40B4-85DA-F43B745B3898.png",
+      "sha256": "82d1877d0635fc709fabf36108a8dcf8e4584762addd8c2503cb150224ba2f15",
+      "bytes": 4211251,
+      "size": [
+        1170,
+        2532
+      ],
+      "visuallyInspected": true,
+      "blockingFindings": [],
+      "observation": "13/18 after clear; three top gaps and settled columns visible.50% painting remains correct below14-light threshold. Pip+4 dialogue sits below occupied rows, above manual controls."
+    },
+    {
+      "name": "sunwheel-dense-retained-after-settings-background",
+      "rawPath": "/private/tmp/sunwheel-native/accepted-01/phone/attachments/92C1E698-5FBE-49C6-B135-582CD405C80C.png",
+      "sha256": "82d1877d0635fc709fabf36108a8dcf8e4584762addd8c2503cb150224ba2f15",
+      "bytes": 4211251,
+      "size": [
+        1170,
+        2532
+      ],
+      "visuallyInspected": true,
+      "blockingFindings": [],
+      "observation": "Visible board,13/18,50% closed-outlet painting and Pip+4 dialogue match post-clear. File bytes equal the preceding post-clear screenshot; this supports retained appearance, not animation behavior."
+    }
+  ]
+}

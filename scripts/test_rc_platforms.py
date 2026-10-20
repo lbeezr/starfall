@@ -24,6 +24,8 @@ TABLET_TESTS = [
     'StarfallUITests/SilverPoolsInteractionTests/testTabletDenseSilverCompletionKeepsNativeInput',
     'StarfallUITests/FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput',
     'StarfallUITests/FrostfruitOrchardInteractionTests/testTabletDenseFrostfruitCompletionKeepsNativeInput',
+    'StarfallUITests/SunwheelMillInteractionTests/testTabletRotationKeepsSunwheelRestorationAndNativeInput',
+    'StarfallUITests/SunwheelMillInteractionTests/testTabletDenseSunwheelCompletionKeepsNativeInput',
     'StarfallUITests/SkyFlowInteractionTests/testLargestTextWelcomeEntryAndBackRemainReachable',
     'StarfallUITests/CriticalMassInteractionTests/testLargestTextCalmKeepsWarningAndHelpUsable',
 ]

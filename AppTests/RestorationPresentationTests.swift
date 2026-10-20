@@ -104,7 +104,7 @@ final class RestorationPresentationTests: XCTestCase {
                 }
             }
         }
-        XCTAssertEqual(names.count, 90)
+        XCTAssertEqual(names.count, 105)
     }
 
     @MainActor func testSeedLandscapePaintingsFillCanvasAtTheirActualPixelAspectRatio() throws {

@@ -15,16 +15,16 @@ final class WorldMapReviewInteractionTests: XCTestCase {
     private let reviews = [
         Review(state: "fresh", title: "Lantern Landing", status: "Ready to restore", completedCount: 0),
         Review(state: "twoRepairs", title: "Kite Harbor", status: "Ready to restore", completedCount: 2),
-        Review(state: "allReady", title: "Frostfruit Orchard", status: "Restored", completedCount: 6),
+        Review(state: "allReady", title: "Sunwheel Mill", status: "Restored", completedCount: 7),
         Review(state: "locked", title: "Frostfruit Orchard", status: "Restore Silver Pools first", completedCount: 0, visit: false),
-        Review(state: "unbuilt", title: "Sunwheel Mill", status: "Not yet available", completedCount: 0, visit: false),
+        Review(state: "unbuilt", title: "Bell Choir", status: "Not yet available", completedCount: 0, visit: false),
         Review(state: "retained", title: "Kite Harbor", status: "Ready to restore", completedCount: 2, resume: true),
         Review(state: "recovery", title: "Ribbon Crossing", status: "Ready to restore", completedCount: 1, recovery: true)
     ]
     private let destinations = [
         ("firstLight", "Lantern Landing"), ("ribbonCrossing", "Ribbon Crossing"),
         ("kiteHarbor", "Kite Harbor"), ("seedMoon", "Seed Moon"), ("silverPools", "Silver Pools"),
-        ("frostfruitOrchard", "Frostfruit Orchard")
+        ("frostfruitOrchard", "Frostfruit Orchard"), ("sunwheelMill", "Sunwheel Mill")
     ]
 
     @MainActor private func launch(_ state: String, textSize: String? = nil) -> XCUIApplication {
@@ -86,13 +86,14 @@ final class WorldMapReviewInteractionTests: XCTestCase {
                 app.waitForVisibleWorldMapMarker(app.buttons["world.node." + selected.0])
             }
             capture("map-harness-" + review.state + "-portrait", app)
-            if review.state == "twoRepairs", app.frame.width > 700 {
+            if ["twoRepairs", "allReady"].contains(review.state), app.frame.width > 700 {
                 XCUIDevice.shared.orientation = .landscapeLeft
                 XCTAssertTrue(XCTNSPredicateExpectation(
                     predicate: NSPredicate { _, _ in app.frame.width > app.frame.height }, object: nil).wait(timeout: 5))
                 assertSelection(review, app)
-                app.waitForVisibleWorldMapMarker(app.buttons["world.node.kiteHarbor"])
-                capture("map-harness-two-repairs-landscape", app)
+                let selectedID = review.state == "allReady" ? "sunwheelMill" : "kiteHarbor"
+                app.waitForVisibleWorldMapMarker(app.buttons["world.node." + selectedID])
+                capture(review.state == "allReady" ? "map-harness-allReady-landscape" : "map-harness-two-repairs-landscape", app)
                 XCUIDevice.shared.orientation = .portrait
                 XCTAssertTrue(XCTNSPredicateExpectation(
                     predicate: NSPredicate { _, _ in app.frame.height > app.frame.width }, object: nil).wait(timeout: 5))
@@ -106,7 +107,7 @@ final class WorldMapReviewInteractionTests: XCTestCase {
                 assertSelection(review, app)
             } else {
                 tap("world.list", app)
-                let selectedID = review.state == "unbuilt" ? "sunwheelMill" : "frostfruitOrchard"
+                let selectedID = review.state == "unbuilt" ? "bellChoir" : "frostfruitOrchard"
                 XCTAssertTrue(app.buttons["world.place." + selectedID].isSelected)
                 XCTAssertFalse(app.buttons["world.visit"].exists)
             }
@@ -315,7 +316,6 @@ final class WorldMapReviewInteractionTests: XCTestCase {
                 XCTAssertEqual(place.value as? String, status)
             }
             for (id, title) in [
-                ("sunwheelMill", "Sunwheel Mill"),
                 ("bellChoir", "Bell Choir"), ("starferryStation", "Starferry Station"),
                 ("auroraFalls", "Aurora Falls"), ("petalBeacon", "Petal Beacon"), ("hollowCrown", "Hollow Crown")
             ] {

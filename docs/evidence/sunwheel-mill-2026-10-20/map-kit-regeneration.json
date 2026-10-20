@@ -1,0 +1,16 @@
+{
+  "ownerHashesMatched": 14,
+  "changedOwners": [
+    "App/FallingSkyView.swift",
+    "App/SkyDialogueBubble.swift",
+    "App/SkyFlowCeremony.swift"
+  ],
+  "geometryUnchanged": true,
+  "recommendationsUnchanged": true,
+  "sourceMappingsUnchanged": true,
+  "changedPNGorSVG": [],
+  "pngFiles": 6,
+  "svgFiles": 8,
+  "geometryExport": "compiled-app-geometry",
+  "sourceOwnership": "compiled-current-sources"
+}

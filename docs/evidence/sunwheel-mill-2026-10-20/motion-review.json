@@ -1,0 +1,84 @@
+{
+  "schema": 1,
+  "status": "passed-with-scope-limits",
+  "reviewedUTC": "2026-10-20T15:50:46.350055+00:00",
+  "runtimeBuildID": "dev.fdc51ddb01",
+  "integrationSource": "b7f4fd8c81ced657e502a94efb4c27d5ad159a23",
+  "device": "iPhone 17e Simulator, iOS27.0",
+  "configuration": "Debug; normal motion",
+  "recording": {
+    "localPath": "/private/tmp/sunwheel-final-clear.mp4",
+    "bytes": 50787849,
+    "sha256": "1b846b162883f193e4f765f1dd8a663dfa1c630bde6f6c84be5a3a5e5151f4e5",
+    "startUTC": "2026-10-20T15:40:17.982Z",
+    "durationSeconds": 148.4616667,
+    "requestedFPS": 30,
+    "tool": "XcodeBuildMCP simulator video recording"
+  },
+  "inspection": "Inspected native full-resolution frame exports sampled at 4fps, with selected observations below. This is sampled recorded animation evidence, not a continuous playback or frame-pacing measurement.",
+  "extraction": {
+    "helper": "/private/tmp/frostfruit-motion-frames.swift",
+    "helperSHA256": "0f165ae1f8d0680fea5517f09847cbc75282b92f9845fd645cab0d9d69c283f2",
+    "command": "python3 scripts/simulator-command.py --receipt /private/tmp/sunwheel-motion-frame-timings.jsonl sunwheel-motion-transition-frames 60 swift -module-cache-path /private/tmp/sunwheel-video-module-cache /private/tmp/frostfruit-motion-frames.swift /private/tmp/sunwheel-final-clear.mp4 /private/tmp/sunwheel-final-transition-frames 80 90",
+    "processing": "AVFoundation native-oriented, full-size frames; video and source paintings unchanged; no compositing/recompression of retained native screenshots."
+  },
+  "frames": [
+    {
+      "seconds": 80.0,
+      "localPath": "/private/tmp/sunwheel-final-transition-frames/frame-80.00.png",
+      "sha256": "0c464c0fa91bb59835ed92112688652099b026287986f4426381e7177cb1d126",
+      "observation": "14/18; wheel and ordinary lamps lit, copper outlet closed, foreground channel dark."
+    },
+    {
+      "seconds": 83.5,
+      "localPath": "/private/tmp/sunwheel-final-transition-frames/frame-83.50.png",
+      "sha256": "12ca7330605fd027006c3dfa7fd4d5cf319c3691c72f209932f67c74319de748",
+      "observation": "Final native trace begins from the retained 14/18 state; outlet remains closed."
+    },
+    {
+      "seconds": 84.0,
+      "localPath": "/private/tmp/sunwheel-final-transition-frames/frame-84.00.png",
+      "sha256": "dff4274555bbf3fb9f11c084af45d8adc681bfb6002842bef54822fcc1a37700",
+      "observation": "Score commits to18/18 and +4 appears; outlet has not yet changed."
+    },
+    {
+      "seconds": 84.25,
+      "localPath": "/private/tmp/sunwheel-final-transition-frames/frame-84.25.png",
+      "sha256": "0ab37dbcfc6cf5ad435eb8c9225105803414e463afc0f5b2e99169e341bc642a",
+      "observation": "Three golden transfer trails are visible toward the mill under +4; outlet still closed."
+    },
+    {
+      "seconds": 84.5,
+      "localPath": "/private/tmp/sunwheel-final-transition-frames/frame-84.50.png",
+      "sha256": "a063b73342535c1b0b0103810a92836a46e66a9eb8822298b25bd64107763b45",
+      "observation": "Gate/painting transition is underway toward open outlet and outgoing light."
+    },
+    {
+      "seconds": 84.75,
+      "localPath": "/private/tmp/sunwheel-final-transition-frames/frame-84.75.png",
+      "sha256": "490d3d8550a1b2b671a6e1d024aa38b2a786989f1db9e7f4883e969018f3091a",
+      "observation": "Open outlet, golden onward flow and restored result panels are visible; all result actions legible."
+    },
+    {
+      "seconds": 85.5,
+      "localPath": "/private/tmp/sunwheel-final-transition-frames/frame-85.50.png",
+      "sha256": "54653c937d3f8b25bac73b901c74a16d04e92e487a36f625138f7e954c3c9df2",
+      "observation": "Completed mill and result actions remain settled and legible."
+    },
+    {
+      "seconds": 87.0,
+      "localPath": "/private/tmp/sunwheel-final-transition-frames/frame-87.00.png",
+      "sha256": "3b2498ab55f6462ffeefce1a3e533d68520b2b7d2af4f90a0b352ca499d7b159",
+      "observation": "Simulator Home appears during intentional background/relaunch test."
+    }
+  ],
+  "findings": [
+    "Committed score precedes light-transfer and completed painting; final outlet payoff remains visible above result panels.",
+    "No visible blank center mask or cloud seam in the inspected frames.",
+    "Background/relaunch test verifies retained win and replay separately; Home at87s is its intentional interruption."
+  ],
+  "limits": [
+    "No measured frame-rate/smoothness, continuous video-playback, wheel-rotation, haptics, audio, physical-play or actual VoiceOver acceptance.",
+    "Earlier 15fps dense recording did not reach100%; retained only as disposable non-final footage."
+  ]
+}

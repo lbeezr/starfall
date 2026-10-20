@@ -60,12 +60,14 @@ final class SkyTutorialTests: XCTestCase {
             progress.record(game); progress.record(game)
             XCTAssertTrue(progress.completed.contains(location))
         }
-        XCTAssertEqual(progress.completed.count, 6)
+        XCTAssertEqual(progress.completed.count, 7)
         XCTAssertTrue(progress.canEnter(.frostfruitOrchard))
-        XCTAssertFalse(progress.canEnter(.sunwheelMill))
+        XCTAssertTrue(progress.canEnter(.sunwheelMill))
+        XCTAssertFalse(progress.canEnter(.bellChoir))
         let legacy = WorldJourney(legacyAccess: true)
         XCTAssertTrue(legacy.canEnter(.silverPools)); XCTAssertTrue(legacy.completed.isEmpty)
         XCTAssertFalse(legacy.canEnter(.frostfruitOrchard))
+        XCTAssertFalse(legacy.canEnter(.sunwheelMill))
         XCTAssertFalse(legacy.canEnter(.hollowCrown))
         XCTAssertEqual(try JSONDecoder().decode(WorldJourney.self, from: JSONEncoder().encode(progress)), progress)
     }
@@ -94,5 +96,45 @@ final class SkyTutorialTests: XCTestCase {
         let restored = try JSONDecoder().decode(WorldJourney.self, from: JSONEncoder().encode(progress))
         XCTAssertEqual(restored, progress)
         XCTAssertTrue(restored.canEnter(.frostfruitOrchard))
+    }
+
+    func testSunwheelRequiresCommittedFrostfruitRepairAndCannotUnlockUnbuiltBellChoir() throws {
+        var progress = WorldJourney(legacyAccess: true)
+        var orchard = FallingSky(challenge: .frostfruitOrchard)
+        progress.record(orchard)
+        XCTAssertFalse(progress.canEnter(.sunwheelMill))
+        for _ in 0..<100 where !orchard.isOver {
+            if let cell = orchard.legalGroups.first?.first { _ = orchard.clear(cell) }
+            else { _ = orchard.letStarsFall() }
+        }
+        XCTAssertEqual(orchard.outcome, .won)
+        progress.record(orchard)
+        XCTAssertEqual(progress.completed, [.frostfruitOrchard])
+        XCTAssertTrue(progress.canEnter(.sunwheelMill))
+        XCTAssertEqual(progress.selected, .sunwheelMill)
+        var mill = FallingSky(challenge: .sunwheelMill)
+        for _ in 0..<100 where !mill.isOver {
+            if let cell = mill.legalGroups.first?.first { _ = mill.clear(cell) }
+            else { _ = mill.letStarsFall() }
+        }
+        progress.record(mill)
+        XCTAssertEqual(mill.outcome, .won)
+        XCTAssertEqual(progress.completed, [.frostfruitOrchard, .sunwheelMill])
+        XCTAssertEqual(progress.selected, .sunwheelMill)
+        XCTAssertFalse(progress.canEnter(.bellChoir))
+        XCTAssertNil(WorldLocation.bellChoir.challenge)
+        XCTAssertEqual(try JSONDecoder().decode(WorldJourney.self, from: JSONEncoder().encode(progress)), progress)
+    }
+
+    func testPreviouslySavedFrostfruitCompletionMakesSunwheelReadyWithoutInventingNewWins() throws {
+        let bytes = Data(#"{"completed":["frostfruitOrchard"],"selected":"frostfruitOrchard","legacyAccess":false}"#.utf8)
+        let retained = try JSONDecoder().decode(WorldJourney.self, from: bytes)
+        XCTAssertTrue(retained.isValid)
+        XCTAssertTrue(retained.canEnter(.sunwheelMill))
+        XCTAssertEqual(retained.selected, .frostfruitOrchard)
+        XCTAssertEqual(retained.completed, [.frostfruitOrchard])
+        XCTAssertFalse(retained.canEnter(.bellChoir))
+        let unbuilt = Data(#"{"completed":["bellChoir"],"selected":"bellChoir","legacyAccess":false}"#.utf8)
+        XCTAssertFalse(try JSONDecoder().decode(WorldJourney.self, from: unbuilt).isValid)
     }
 }

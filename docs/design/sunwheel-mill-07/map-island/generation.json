@@ -1,0 +1,135 @@
+{
+  "tool": "built-in image_gen",
+  "pixelProcessing": "None; alpha analysis only. Selected PNG bytes copied unchanged.",
+  "assets": [
+    {
+      "state": "restored",
+      "original": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-0a2fb74d-57e7-4fda-b668-6bc372c6a144.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "f3b0ef23c7e110c3286e213b263fcc227e3fc76d256e7e79788404f847b2610f",
+      "bytes": 2444445,
+      "visibleAlpha128Bounds": [
+        24,
+        18,
+        1241,
+        1231
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "zeroAlphaPixels": 600034,
+      "corners": [
+        1,
+        0,
+        1,
+        0
+      ],
+      "anchorAlpha": {
+        "marker": 252,
+        "leading": 251,
+        "trailing": 251,
+        "upper": 252,
+        "lower": 252
+      },
+      "asset": "App/Assets.xcassets/WorldMapIslandSunwheelRestored.imageset/sunwheel-restored.png"
+    },
+    {
+      "state": "damaged",
+      "original": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-28b8a0be-9247-4ae8-9c24-e0b9a19ace91.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "03af6a6b199cc8ae6bf357be11866cf06ce780500ca37f37bf6836e6fd154cfc",
+      "bytes": 2571198,
+      "visibleAlpha128Bounds": [
+        23,
+        18,
+        1241,
+        1233
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "zeroAlphaPixels": 594916,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "anchorAlpha": {
+        "marker": 253,
+        "leading": 253,
+        "trailing": 253,
+        "upper": 253,
+        "lower": 253
+      },
+      "asset": "App/Assets.xcassets/WorldMapIslandSunwheelDamaged.imageset/sunwheel-damaged.png"
+    }
+  ],
+  "unionAlpha128Bounds": [
+    23,
+    18,
+    1241,
+    1233
+  ],
+  "anchors": {
+    "marker": [
+      0.5,
+      0.65
+    ],
+    "leading": [
+      0.1,
+      0.57
+    ],
+    "trailing": [
+      0.94,
+      0.58
+    ],
+    "upper": [
+      0.78,
+      0.32
+    ],
+    "lower": [
+      0.53,
+      0.71
+    ]
+  },
+  "generationRecords": [
+    {
+      "id": "sunwheel-map-restored-01",
+      "prompt": "Use case: stylized-concept. Production game sprite: one RESTORED SUNWHEEL MILL world-map island on a genuinely transparent RGBA background, square canvas.\nImage1 is ONLY the map-family reference for camera, luminous painterly materials, cohesive floating-island silhouette and generous complete-canvas framing. Image2 is the Sunwheel location identity reference: adapt its mill and workshop to one small whole floating island, NOT its gameplay-board framing.\nCreate a distinct substantial floating stone workshop island with an immediately recognizable five-petal copper-and-golden-glass sunwheel on the upper left, low round slate-roof mill on upper right, warm golden illuminated windows, lanterns, rich orange autumn climbing foliage, and a front stone terrace with practical workbench, oil jug, little copper components and neatly coiled cloth. A small open double-leaf wooden outlet below the wheel releases a restrained golden light stream along a stone channel to the island edge. The five wheel vanes are luminous golden glass. This is the completely restored state.\nCamera: elevated orthographic three-quarter, approximately55degrees down, no horizon; match image1's object viewpoint and miniature scale. The island top, complete buildings/wheel and pointed rocky underside all remain fully inside the square canvas with about4percent transparent exterior margin. Keep a clear stone front path around x50percent/y72percent for the app's native marker, without painting a marker.\nOne connected compact island, no other islands, no background sky/cloud layer, no floating scattered particles, no halo rectangle, no cropped objects, no outgoing bridge fragments. Exactly five big vanes. Preserve highly crafted architectural/material richness at small map scale. No characters, faces, eyes, baked UI, text, names, icons, badges, borders or labels. True alpha outside the island and through structural gaps. Export one image only.",
+      "refs": [
+        "/Users/lbeezr/.codex-workspaces/worktrees/ios-a412ced0-1da1-4bc5-8682-a9ef02f52407/Starfall/App/Assets.xcassets/WorldMapIslandFrostfruitRestored.imageset/frostfruit-restored.png",
+        "/Users/lbeezr/.codex-workspaces/worktrees/ios-a412ced0-1da1-4bc5-8682-a9ef02f52407/Starfall/App/Assets.xcassets/SunwheelMillTabletLandscape100.imageset/scene.png"
+      ],
+      "output": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-0a2fb74d-57e7-4fda-b668-6bc372c6a144.png",
+      "referenceSHA256": {
+        "/Users/lbeezr/.codex-workspaces/worktrees/ios-a412ced0-1da1-4bc5-8682-a9ef02f52407/Starfall/App/Assets.xcassets/WorldMapIslandFrostfruitRestored.imageset/frostfruit-restored.png": "6a6143a55c4eeee860540ca28100f8bd78079bf41f98ecee836be73efb41c288",
+        "/Users/lbeezr/.codex-workspaces/worktrees/ios-a412ced0-1da1-4bc5-8682-a9ef02f52407/Starfall/App/Assets.xcassets/SunwheelMillTabletLandscape100.imageset/scene.png": "37259cffdbf81c30c6eb4dfc909dcef7e88b267f9b2e6668df3255d2199c0a19"
+      }
+    },
+    {
+      "id": "sunwheel-map-damaged-01",
+      "prompt": "Use case: precise-object-edit. This image is the exact edit target: the RESTORED Sunwheel Mill world-map island. Produce its DORMANT / 0% RESTORED counterpart, on the same square genuinely transparent RGBA canvas.\nRegistration is essential: preserve exact camera, framing, object scale, floating rocky silhouette, complete five-vane wheel outline, wheel angle, building, terraces, staircase, workbench and every path location. Do not move, add, remove, redesign or crop any structure. Keep the rich connected scene and real material details.\nChange only restoration condition. All five golden glass wheel vanes become unlit smoky blue-gray frosted glass in the same copper frames; the hub is dim and unlit. All windows and lanterns go dark. Close the double wooden outlet leaves completely across the same opening directly below the wheel: two opaque weathered wooden leaves meeting at the center; there is no light visible behind or through them. The existing golden channel and downward spill are entirely dark and dry; retain the stone channel and island boundary with no luminous waterfall. The rock underside has no internal golden glow. The autumn foliage remains richly detailed but muted dusty copper/plum, slightly tired; preserve its positions. Add restrained surface weathering and a cool desaturated twilight ambient palette without opaque atmospheric overlays. Every small bench item stays intact and readable.\nNo warm emissive light anywhere; no gold glow, sparkling energy or particles. No characters, faces, text, UI, markers, new bridges, background sky/clouds, checkerboard or opaque matte. Genuine alpha outside island and through existing structural gaps. One registered transparent PNG, exact same composition and dimensions as target.",
+      "refs": [
+        "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-0a2fb74d-57e7-4fda-b668-6bc372c6a144.png"
+      ],
+      "output": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-28b8a0be-9247-4ae8-9c24-e0b9a19ace91.png",
+      "referenceSHA256": {
+        "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-0a2fb74d-57e7-4fda-b668-6bc372c6a144.png": "f3b0ef23c7e110c3286e213b263fcc227e3fc76d256e7e79788404f847b2610f"
+      }
+    }
+  ],
+  "status": "Source artwork inspected; current-main native map integration acceptance pending",
+  "registrationScope": "Alpha measurements plus optical attachment points, not native fit evidence. Both sources retain original bytes.",
+  "decodedSourceBytes": 12580128
+}

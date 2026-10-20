@@ -111,7 +111,9 @@ final class RestorationFlowTests: XCTestCase {
         LocationContract(challenge: .silverPools, prefix: "silver", title: "Silver Pools",
                          guide: "guide.silver-won.1", result: "Silver Pools complete! One silver cascade now flows through every pool."),
         LocationContract(challenge: .frostfruitOrchard, prefix: "frostfruit", title: "Frostfruit Orchard",
-                         guide: "guide.frostfruit-won.1", result: "Frostfruit Orchard complete! The crown has opened and luminous seeds drift through the winter garden.")
+                         guide: "guide.frostfruit-won.1", result: "Frostfruit Orchard complete! The crown has opened and luminous seeds drift through the winter garden."),
+        LocationContract(challenge: .sunwheelMill, prefix: "sunwheel", title: "Sunwheel Mill",
+                         guide: "guide.sunwheel-won.1", result: "Sunwheel Mill complete! The outlet is open and golden light flows onward.")
     ]
 
     @MainActor func testEachWinningClearCommitsBeforeSettlementAndRestoresWithoutClock() throws {
@@ -150,6 +152,8 @@ final class RestorationFlowTests: XCTestCase {
 
     func testCopyAndHelpFollowSelectedIdentityForEntryReplayWinAndOverflow() throws {
         XCTAssertEqual(locations.map(\.challenge), StarfallChallenge.allCases)
+        XCTAssertEqual(StarfallChallenge.sunwheelMill.welcomeIdentifier, "sky.sunwheel-mill")
+        XCTAssertEqual(StarfallChallenge.sunwheelMill.menuIdentifier, "experiment.sunwheel-mill")
         XCTAssertEqual(StarfallChallenge.frostfruitOrchard.welcomeIdentifier, "sky.frostfruit-orchard")
         XCTAssertEqual(StarfallChallenge.frostfruitOrchard.menuIdentifier, "experiment.frostfruit-orchard")
         XCTAssertEqual(StarfallChallenge.silverPools.welcomeIdentifier, "sky.silver-pools")
@@ -196,6 +200,7 @@ final class RestorationFlowTests: XCTestCase {
         }
         XCTAssertTrue(StarfallChallenge.kiteHarbor.helpText.hasPrefix("Raise Kite Harbor’s sails with 18 starlight."))
         XCTAssertTrue(StarfallChallenge.silverPools.helpText.hasPrefix("Restore Silver Pools with 18 starlight."))
+        XCTAssertTrue(StarfallChallenge.sunwheelMill.helpText.hasPrefix("Restore Sunwheel Mill with 18 starlight."))
         XCTAssertTrue(StarfallChallenge.frostfruitOrchard.helpText.hasPrefix("Restore Frostfruit Orchard with 18 starlight."))
         XCTAssertTrue(StarfallChallenge.seedMoon.helpText.hasPrefix("Wake Seed Moon with 18 starlight."))
     }
@@ -239,7 +244,8 @@ final class RestorationFlowTests: XCTestCase {
         }
     }
     @MainActor func testV8RestorationMigratesActionsOnActivationAndKeepsOriginalBytes() throws {
-        for challenge in StarfallChallenge.allCases {
+        // Freeze the v8 inventory; newly added locations use the current envelope.
+        for challenge in [StarfallChallenge.firstLight, .ribbonCrossing, .kiteHarbor, .seedMoon, .silverPools] {
             let original = progressed(challenge)
             var fields = try XCTUnwrap(JSONSerialization.jsonObject(with: JSONEncoder().encode(original)) as? [String: Any])
             fields.removeValue(forKey: "savedChallengeActions")

@@ -1,0 +1,548 @@
+{
+  "reviewedAtUTC": "2026-10-20T15:49:57.985793+00:00",
+  "reviewer": "sunwheel_native_checks",
+  "status": "no_blocking_visual_findings",
+  "scope": "Read-only inspection of every indexed original native PNG: 29 phone and 8 compact captures. Still-image visual assessment, separate from native test execution and motion review.",
+  "reviewMethod": "Opened each original PNG with view_image. Phone images displayed at 946x2048 from 1170x2532; compact images at native 750x1334. No source pixels were edited or derived images created.",
+  "blockingFindings": [],
+  "hashVerification": {
+    "expected": 37,
+    "verified": 37,
+    "mismatches": 0
+  },
+  "batches": {
+    "phone": {
+      "captureIndex": "/private/tmp/sunwheel-native/development-01/phone/captures.json",
+      "captureIndexSHA256": "677e31177f2b8be85a6d3f8b5d7be0bfab375df00d3c035519068955ef304e6c",
+      "verification": "/private/tmp/sunwheel-native/development-01/phone/verification.json",
+      "verificationSHA256": "12aad2d35a2d012d64a33189d09b3e93983f8595818d0e8e90dd78fcc0d36973",
+      "sourceCommitBefore": "08277bc01c57da592a2b44cc537876b4a8b58038",
+      "sourceCommitAfter": "b7f4fd8c81ced657e502a94efb4c27d5ad159a23",
+      "runtimeBuildID": "dev.fdc51ddb01",
+      "testInputsSHA256": "8f881c67bba896200f893727a585e2960fbde572fe9514ee7dc1c17ecdbcb75f",
+      "runtimeAndTestInputsStable": true,
+      "sourceSnapshotSHA256": {
+        "before": "ced1803d29f4e72a24bb5912b7bc24f75e7a749b21ebaaf3e4a719551b24edfa",
+        "after": "0213d37e6e8c72d4908cb44658fa7f8f1a75a70a53a0b9efb26443822bd3839f"
+      },
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+        "deviceName": "Starfall Landing Acceptance",
+        "modelName": "iPhone 17e",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "summaryCounts": {
+        "passedTests": 8,
+        "totalTestCount": 8,
+        "failedTests": 0,
+        "skippedTests": 0
+      },
+      "reviewedCaptures": [
+        {
+          "index": 0,
+          "name": "sunwheel-before-winning-clear-normal-motion",
+          "sha256": "22f9421cff023e44906cc37d045aa19e26066aff139d8a03aa39c4165af98ed2",
+          "dimensions": [
+            1170,
+            2532
+          ],
+          "visuallyInspected": true
+        },
+        {
+          "index": 1,
+          "name": "sunwheel-restored-after-native-winning-clear-normal-motion",
+          "sha256": "fd7548ef7e66c0d091cf1a5749db45f9e2a311a5b3138639bd9d22b007413441",
+          "dimensions": [
+            1170,
+            2532
+          ],
+          "visuallyInspected": true
+        },
+        {
+          "index": 2,
+          "name": "sunwheel-restored-after-relaunch",
+          "sha256": "371a7317cf00694907e18d92ef3bf9eaf6ad91a035df28f9a8edb36f010f351d",
+          "dimensions": [
+            1170,
+            2532
+          ],
+          "visuallyInspected": true
+        },
+        {
+          "index": 3,
+          "name": "sunwheel-replay-reset-to-unrestored",
+          "sha256": "a8fbb5f7045c6a92b04b7315e683ed1beebf3f084368e5856fdaabe99d15cd00",
+          "dimensions": [
+            1170,
+            2532
+          ],
+          "visuallyInspected": true
+        },
+        {
+          "index": 4,
+          "name": "sunwheel-dense-before-native-next-shower-normal-motion",
+          "sha256": "ad02399cfe08e2242927f2b113ffd3a40f5af45e9c491414f367d7024add9551",
+          "dimensions": [
+            1170,
+            2532
+          ],
+          "visuallyInspected": true
+        },
+        {
+          "index": 5,
+          "name": "sunwheel-dense-native-overflow-zero-score-normal-motion",
+          "sha256": "7005fb73fd76f379d220ddb8c8a46117550efdfc915b5dbde76d6e493ce6f6b3",
+          "dimensions": [
+            1170,
+            2532
+          ],
+          "visuallyInspected": true
+        },
+        {
+          "index": 6,
+          "name": "sunwheel-dense-overflow-replay-reset-to-unrestored",
+          "sha256": "0e704cbedb8a32d83394e2da69a608841c0cc37e120e08ff55ecbf47d1619309",
+          "dimensions": [
+            1170,
+            2532
+          ],
+          "visuallyInspected": true
+        },
+        {
+          "index": 7,
+          "name": "sunwheel-largest-text-reduce-motion-before-clear",
+          "sha256": "ca35de81ae9bc7579087d3689b8e3793ea0b4c58549c9b4c31760851aa4c0c89",
+          "dimensions": [
+            1170,
+            2532
+          ],
+          "visuallyInspected": true
+        },
+        {
+          "index": 8,
+          "name": "sunwheel-largest-text-reduce-motion-restored",
+          "sha256": "135bb34b0bd2c75869e2be3c6981fe42860bd40cb3a6d3207400aeae741db0c0",
+          "dimensions": [
+            1170,
+            2532
+          ],
+          "visuallyInspected": true
+        },
+        {
+          "index": 9,
+          "name": "sunwheel-entry-over-retained-half-restored-lantern",
+          "sha256": "ac617e52cfd84e0de5437af5d918720ca8e9d36b1c834d468dec42059e7105ae",
+          "dimensions": [
+            1170,
+            2532
+          ],
+          "visuallyInspected": true
+        },
+        {
+          "index": 10,
+          "name": "sunwheel-begin-replaces-retained-lantern-with-unrestored-location",
+          "sha256": "e036d97ecae188e016fae0cf01da1924e4321307fa3af52f54c059345268de25",
+          "dimensions": [
+            1170,
+            2532
+          ],
+          "visuallyInspected": true
+        },
+        {
+          "index": 11,
+          "name": "sunwheel-entry-over-retained-half-restored-ribbon",
+          "sha256": "ac617e52cfd84e0de5437af5d918720ca8e9d36b1c834d468dec42059e7105ae",
+          "dimensions": [
+            1170,
+            2532
+          ],
+          "visuallyInspected": true
+        },
+        {
+          "index": 12,
+          "name": "sunwheel-begin-replaces-retained-ribbon-with-unrestored-location",
+          "sha256": "d806f162244844f38c3806552ca181ab128b528c0429cbfe78d93cc9a33f1fc0",
+          "dimensions": [
+            1170,
+            2532
+          ],
+          "visuallyInspected": true
+        },
+        {
+          "index": 13,
+          "name": "sunwheel-entry-over-retained-half-restored-kite",
+          "sha256": "ac617e52cfd84e0de5437af5d918720ca8e9d36b1c834d468dec42059e7105ae",
+          "dimensions": [
+            1170,
+            2532
+          ],
+          "visuallyInspected": true
+        },
+        {
+          "index": 14,
+          "name": "sunwheel-begin-replaces-retained-kite-with-unrestored-location",
+          "sha256": "9fcd22ea6f296be9a0fe9778ca8246afa73604dc66013ad3ce0bca9e26957422",
+          "dimensions": [
+            1170,
+            2532
+          ],
+          "visuallyInspected": true
+        },
+        {
+          "index": 15,
+          "name": "sunwheel-entry-over-retained-half-restored-seed",
+          "sha256": "ac617e52cfd84e0de5437af5d918720ca8e9d36b1c834d468dec42059e7105ae",
+          "dimensions": [
+            1170,
+            2532
+          ],
+          "visuallyInspected": true
+        },
+        {
+          "index": 16,
+          "name": "sunwheel-begin-replaces-retained-seed-with-unrestored-location",
+          "sha256": "33c23e949b9ea39466c52133a7adb2ba2d814160962f74c96c498ff02139e2ed",
+          "dimensions": [
+            1170,
+            2532
+          ],
+          "visuallyInspected": true
+        },
+        {
+          "index": 17,
+          "name": "sunwheel-entry-over-retained-half-restored-silver",
+          "sha256": "ac617e52cfd84e0de5437af5d918720ca8e9d36b1c834d468dec42059e7105ae",
+          "dimensions": [
+            1170,
+            2532
+          ],
+          "visuallyInspected": true
+        },
+        {
+          "index": 18,
+          "name": "sunwheel-begin-replaces-retained-silver-with-unrestored-location",
+          "sha256": "20d5695ce6668d64f2cc194d5b1c42f40318de0613c9878232b3cae7e36a211c",
+          "dimensions": [
+            1170,
+            2532
+          ],
+          "visuallyInspected": true
+        },
+        {
+          "index": 19,
+          "name": "sunwheel-entry-over-retained-half-restored-frostfruit",
+          "sha256": "ac617e52cfd84e0de5437af5d918720ca8e9d36b1c834d468dec42059e7105ae",
+          "dimensions": [
+            1170,
+            2532
+          ],
+          "visuallyInspected": true
+        },
+        {
+          "index": 20,
+          "name": "sunwheel-begin-replaces-retained-frostfruit-with-unrestored-location",
+          "sha256": "4eb8870ffa3e3859f43919341334f070d5215416e4862db8459f5266ce445f3c",
+          "dimensions": [
+            1170,
+            2532
+          ],
+          "visuallyInspected": true
+        },
+        {
+          "index": 21,
+          "name": "sunwheel-phone-scene-0-score-0-normal-motion",
+          "sha256": "47cb0783f71680977a16452c0f24a98d4d75ace330a8f804f6c747dfac1e09ac",
+          "dimensions": [
+            1170,
+            2532
+          ],
+          "visuallyInspected": true
+        },
+        {
+          "index": 22,
+          "name": "sunwheel-phone-scene-25-score-5-normal-motion",
+          "sha256": "7411fd4e07440dba36d8831043105e29d65f5bc4c9c5e37fbc77c40e994cfe6a",
+          "dimensions": [
+            1170,
+            2532
+          ],
+          "visuallyInspected": true
+        },
+        {
+          "index": 23,
+          "name": "sunwheel-phone-scene-50-score-9-normal-motion",
+          "sha256": "0076aeeeac90e0c1468d2d7ce0aa11a4447d73d0bbfeee2ce829bc6c181aca3e",
+          "dimensions": [
+            1170,
+            2532
+          ],
+          "visuallyInspected": true
+        },
+        {
+          "index": 24,
+          "name": "sunwheel-phone-scene-75-score-14-normal-motion",
+          "sha256": "2f76d2a7ac6eb369d11e6dc4ffaace1051dd559d44ac14070a80bdc759e3083d",
+          "dimensions": [
+            1170,
+            2532
+          ],
+          "visuallyInspected": true
+        },
+        {
+          "index": 25,
+          "name": "sunwheel-phone-scene-100-score-18-normal-motion",
+          "sha256": "575648a038ed7fadc07b76dd96acceb647cfe93ebeb63880c6fe76affacc5048",
+          "dimensions": [
+            1170,
+            2532
+          ],
+          "visuallyInspected": true
+        },
+        {
+          "index": 26,
+          "name": "sunwheel-dense-before-rapid-clear",
+          "sha256": "4a1bae25e1ad0661d1af9df02c362c4f8e33352a32dda3256bdbf0c7d7d80870",
+          "dimensions": [
+            1170,
+            2532
+          ],
+          "visuallyInspected": true
+        },
+        {
+          "index": 27,
+          "name": "sunwheel-dense-after-rapid-clear",
+          "sha256": "6c234e6cf376852533259096bafdd9e4f3275564da2d12d04a39936b71f84ef5",
+          "dimensions": [
+            1170,
+            2532
+          ],
+          "visuallyInspected": true
+        },
+        {
+          "index": 28,
+          "name": "sunwheel-dense-retained-after-settings-background",
+          "sha256": "6c234e6cf376852533259096bafdd9e4f3275564da2d12d04a39936b71f84ef5",
+          "dimensions": [
+            1170,
+            2532
+          ],
+          "visuallyInspected": true
+        }
+      ]
+    },
+    "compact": {
+      "captureIndex": "/private/tmp/sunwheel-native/development-01/compact/captures.json",
+      "captureIndexSHA256": "87c3e765e0f53bdfc4cdbea1f074343b1ca1a9ff61441c667cbc48e9524f0c78",
+      "verification": "/private/tmp/sunwheel-native/development-01/compact/verification.json",
+      "verificationSHA256": "f9ebc2a1e4c812cc0f9016c158176f63967817144a6b90bc39b1b8a5ec1e7929",
+      "sourceCommitBefore": "b7f4fd8c81ced657e502a94efb4c27d5ad159a23",
+      "sourceCommitAfter": "b7f4fd8c81ced657e502a94efb4c27d5ad159a23",
+      "runtimeBuildID": "dev.fdc51ddb01",
+      "testInputsSHA256": "8f881c67bba896200f893727a585e2960fbde572fe9514ee7dc1c17ecdbcb75f",
+      "runtimeAndTestInputsStable": true,
+      "sourceSnapshotSHA256": {
+        "before": "d73b28d579e86beff688490c376761292b0a2a644688ccf6126cac369727f8bf",
+        "after": "655a1cb80280f1ead81fb4b48e15971cb905b7b3fcec6c7e0abf89689fe49c52"
+      },
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "EA0F7A30-21E1-4995-93F5-C4A983F4A354",
+        "deviceName": "Starfall Landing Compact Acceptance",
+        "modelName": "iPhone SE (3rd generation)",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "summaryCounts": {
+        "passedTests": 2,
+        "totalTestCount": 2,
+        "failedTests": 0,
+        "skippedTests": 0
+      },
+      "reviewedCaptures": [
+        {
+          "index": 0,
+          "name": "sunwheel-before-winning-clear-normal-motion",
+          "sha256": "842d77a23498384a9dd8428ebfa5b9e4ae74f473d1729943ebc5d8d982169e61",
+          "dimensions": [
+            750,
+            1334
+          ],
+          "visuallyInspected": true
+        },
+        {
+          "index": 1,
+          "name": "sunwheel-restored-after-native-winning-clear-normal-motion",
+          "sha256": "01d60dccf06cd21a2c396f53515ea13929e163952a723ba0307521f2bea783ee",
+          "dimensions": [
+            750,
+            1334
+          ],
+          "visuallyInspected": true
+        },
+        {
+          "index": 2,
+          "name": "sunwheel-restored-after-relaunch",
+          "sha256": "bd1c84e5c2d3f9983fdd2f0595095b8efc3d60cdde70b1f86389300e94ee9865",
+          "dimensions": [
+            750,
+            1334
+          ],
+          "visuallyInspected": true
+        },
+        {
+          "index": 3,
+          "name": "sunwheel-replay-reset-to-unrestored",
+          "sha256": "2e20ca07974e6266d6a2e1b0443ee785efa73384a3b981862639f807bdd6f8c8",
+          "dimensions": [
+            750,
+            1334
+          ],
+          "visuallyInspected": true
+        },
+        {
+          "index": 4,
+          "name": "flow-win",
+          "sha256": "d52d3c6f026ae697d9147cab6365719fc9d216144cef28ebd9d7c01a7961f18b",
+          "dimensions": [
+            750,
+            1334
+          ],
+          "visuallyInspected": true
+        },
+        {
+          "index": 5,
+          "name": "flow-first-light-replay-explanation",
+          "sha256": "38acea6f2241cc4597bfa451cc61d5e4f69fc90ca6db91ad8c6944da6fa8ef89",
+          "dimensions": [
+            750,
+            1334
+          ],
+          "visuallyInspected": true
+        },
+        {
+          "index": 6,
+          "name": "flow-full",
+          "sha256": "fa8aea123de746eac15ff29dac3b000c1ebf884ab067fbcba1c7a54bdaa5c7fc",
+          "dimensions": [
+            750,
+            1334
+          ],
+          "visuallyInspected": true
+        },
+        {
+          "index": 7,
+          "name": "flow-fresh-after-full",
+          "sha256": "15bc64bf6253049cd7ca620973539018cfc4303825a2d4182ad5f9fc25a19bcb",
+          "dimensions": [
+            750,
+            1334
+          ],
+          "visuallyInspected": true
+        }
+      ]
+    }
+  },
+  "observations": [
+    {
+      "area": "five restoration paintings",
+      "result": "pass",
+      "detail": "Phone 0% shows a dark wheel/workshop and closed outlet. 25% lights the top paddle and wheel hub/base. 50% lights three paddles plus workshop. 75% lights all five paddles, perimeter and foreground but keeps outlet closed. 100% opens the outlet with golden onward light. Mill, channel, cloud framing and playfield remain aligned across states.",
+      "phoneCaptureIndices": [
+        21,
+        22,
+        23,
+        24,
+        25
+      ]
+    },
+    {
+      "area": "default phone winning result, relaunch and replay",
+      "result": "pass",
+      "detail": "The closed 75% outlet is unobstructed before the clear; after the win and relaunch the open outlet remains visible above the named result. Result body and all four actions are readable and inside the viewport. Replay returns to the dark closed-outlet painting, 0/18 and Start sky/Next shower.",
+      "phoneCaptureIndices": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "area": "dense 49-cell board, overflow and rapid clear",
+      "result": "pass",
+      "detail": "All seven rows and seven columns are visually separable on the dark sky with readable family silhouettes. The mill remains above the occupied grid; footer controls remain clear. Overflow at zero score retains the unrestored painting and named replay. The rapid clear changes 9 to 13, retains the correct 50% painting, and preserves board/dialogue framing after settings and background. The dialogue stays below the last occupied row.",
+      "phoneCaptureIndices": [
+        4,
+        5,
+        6,
+        26,
+        27,
+        28
+      ]
+    },
+    {
+      "area": "largest Dynamic Type with system Reduce Motion",
+      "result": "pass_with_scope_note",
+      "detail": "Large score and separated shower preview remain readable above the enlarged board. The terminal capture is intentionally scrolled to the action area: Return to world map, New sky and the full wrapped Replay Sunwheel Mill label fit their cards without horizontal clipping. Content above this viewport is scrolled out, so this still is not evidence that the entire result page fits at once. Successful native test separately exercised reveal and replay.",
+      "phoneCaptureIndices": [
+        7,
+        8
+      ]
+    },
+    {
+      "area": "preview over six retained old rounds and Begin",
+      "result": "pass",
+      "detail": "All six preview captures show the dark Sunwheel painting, correctly named title, 18-starlight objective, legible explanation, cast, back/settings and Begin. No old level artwork or score leaks into the preview. All six post-Begin captures show the fresh dark Sunwheel board at 0/18 with visible Start sky/Next shower. Retained-old-round persistence itself is established by the existing native assertions, not these static preview PNGs.",
+      "phoneCaptureIndices": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ]
+    },
+    {
+      "area": "compact Sunwheel winner, relaunch and replay",
+      "result": "pass",
+      "detail": "The compact frame crops the outer upper wheel edge but retains its hub, workshop and full outlet. Closed outlet at 75% and open luminous outlet at 100% are distinct. Native pieces, score and lower controls remain readable. Full winning result and actions fit; relaunch retains it. Replay restores the dark 0/18 board with visible controls.",
+      "compactCaptureIndices": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "area": "compact sibling First Light and Open Sky flows",
+      "result": "pass",
+      "detail": "Lantern winning result, replay explanation, zero-score loss and fresh Open Sky entry show their correct names, artwork and actions without clipping. The 20-of-18 winning total is a valid overshooting clear, with the fixed objective still 18. No Sunwheel identity/art leaks into sibling flows.",
+      "compactCaptureIndices": [
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "area": "contrast and decoration",
+      "result": "pass_by_visual_inspection",
+      "detail": "Native piece silhouettes and labels remain legible against the cool sky; the warm mill restoration is concentrated above and below the board. No new rectangular center clearing/fade boundary or decorative walkers appear. UI cast on entry/result and the dialogue portrait are separate existing UI elements. This is qualitative visual assessment, not a measured WCAG contrast or actual VoiceOver audit."
+    }
+  ],
+  "limitations": [
+    "No Apple process, simulator interaction, native rerun, code edit or image edit was performed for this review.",
+    "Continuous normal-motion animation is owned by the parent review; still captures do not establish transition timing or smoothness.",
+    "Actual VoiceOver, physical-device inspection and published-commit acceptance are outside this review.",
+    "Phone execution straddled a commit change from 08277bc01c57da592a2b44cc537876b4a8b58038 to b7f4fd8c81ced657e502a94efb4c27d5ad159a23, while recorded runtimeBuildID and native-test input hashes remained identical. This review binds to those recorded working-tree inputs, not an unqualified clean-commit claim."
+  ]
+}

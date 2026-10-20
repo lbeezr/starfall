@@ -1,0 +1,897 @@
+{
+  "reviewType": "independent original native Simulator still review",
+  "sourceCommit": "d057696934621b4e9f34a3d57f620d28fe9eb262",
+  "computedRuntimeBuildID": "dev.a15832d0fd",
+  "literalSimulatorAppBuildLabel": "dev.local",
+  "buildLabelEvidence": "/private/tmp/starfall-sunwheel-compact/Build/Products/Debug-iphonesimulator/Starfall.app/Info.plist",
+  "reviewedAtUTC": "2026-10-20T16:36:41.681766+00:00",
+  "status": "passed",
+  "blockingFindings": [],
+  "compact": {
+    "captureIndex": "/private/tmp/sunwheel-native/accepted-01/compact/captures.json",
+    "captureIndexSHA256": "252d50d5f03faa6489480ed45225de6482e993355c54aab52071f0869e392ad3",
+    "nativeCounts": {
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0
+    },
+    "environment": {
+      "architecture": "arm64",
+      "deviceId": "EA0F7A30-21E1-4995-93F5-C4A983F4A354",
+      "deviceName": "Starfall Landing Compact Acceptance",
+      "modelName": "iPhone SE (3rd generation)",
+      "osBuildNumber": "24A434",
+      "osVersion": "27.0",
+      "platform": "iOS Simulator"
+    },
+    "originalPNGDimensions": [
+      750,
+      1334
+    ],
+    "selectedCaptureCount": 4,
+    "verifiedCaptureCount": 4,
+    "visuallyInspectedCaptureCount": 4,
+    "allSHA256AndByteCountsMatch": true,
+    "sourceBeforeAfterRuntimeAndTestInputsIdentical": true,
+    "testInputsSHA256": "7235c1eb3ab97323f46421e348fe769ad83590035298582df8874016d3f5a9dd",
+    "conclusion": "No blocking visual finding in compact default-text Sunwheel win/relaunch/replay; protected outlet remains visible and result controls fit.",
+    "captures": [
+      {
+        "name": "sunwheel-before-winning-clear-normal-motion",
+        "file": "CD2F7F8E-DF4F-4647-9246-2CE0C959FF91.png",
+        "rawPath": "/private/tmp/sunwheel-native/accepted-01/compact/attachments/CD2F7F8E-DF4F-4647-9246-2CE0C959FF91.png",
+        "sha256": "15222b40af0c4db186d37ccf29e6411654cc8d98d1427df843f8ae9d55e59962",
+        "bytes": 1815874,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "EA0F7A30-21E1-4995-93F5-C4A983F4A354",
+          "deviceName": "Starfall Landing Compact Acceptance",
+          "exportedFileName": "CD2F7F8E-DF4F-4647-9246-2CE0C959FF91.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "sunwheel-before-winning-clear-normal-motion_0_84396F52-BE4D-40BA-BB13-6472C95C378E.png",
+          "timestamp": 1792513175.473
+        },
+        "size": [
+          750,
+          1334
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "14/18; upper outside wheel tips are cropped by the compact viewport, while the bearing, workshop and full closed outlet remain visible. All21 occupied bodies, including the grown amber piece, are separate; Resume sky/Next shower fit fully."
+      },
+      {
+        "name": "sunwheel-restored-after-native-winning-clear-normal-motion",
+        "file": "1CE1AD32-6F16-4FC1-A49A-93B41BC27A87.png",
+        "rawPath": "/private/tmp/sunwheel-native/accepted-01/compact/attachments/1CE1AD32-6F16-4FC1-A49A-93B41BC27A87.png",
+        "sha256": "01d60dccf06cd21a2c396f53515ea13929e163952a723ba0307521f2bea783ee",
+        "bytes": 1392017,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "EA0F7A30-21E1-4995-93F5-C4A983F4A354",
+          "deviceName": "Starfall Landing Compact Acceptance",
+          "exportedFileName": "1CE1AD32-6F16-4FC1-A49A-93B41BC27A87.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "sunwheel-restored-after-native-winning-clear-normal-motion_0_5F66E660-3854-4D8B-A830-B8DA8A4589B9.png",
+          "timestamp": 1792513181.457
+        },
+        "size": [
+          750,
+          1334
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "Open outlet and golden onward channel visible above the complete result.18of18 message and all four result actions fit inside750x1334 without clipping."
+      },
+      {
+        "name": "sunwheel-restored-after-relaunch",
+        "file": "67D144BA-B6BA-413D-A469-1CE0E3CEC705.png",
+        "rawPath": "/private/tmp/sunwheel-native/accepted-01/compact/attachments/67D144BA-B6BA-413D-A469-1CE0E3CEC705.png",
+        "sha256": "1df78a99a4fa9c0b6f7a35ee7141665792814cf6355f3289b2e61b493299e1b3",
+        "bytes": 1392136,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "EA0F7A30-21E1-4995-93F5-C4A983F4A354",
+          "deviceName": "Starfall Landing Compact Acceptance",
+          "exportedFileName": "67D144BA-B6BA-413D-A469-1CE0E3CEC705.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "sunwheel-restored-after-relaunch_0_D688DA01-B9B3-49DF-8501-F14971184961.png",
+          "timestamp": 1792513191.882
+        },
+        "size": [
+          750,
+          1334
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "Restored outlet/18of18/result actions remain visibly consistent after relaunch."
+      },
+      {
+        "name": "sunwheel-replay-reset-to-unrestored",
+        "file": "3316667D-0D9E-4A36-A265-2C641EC8967B.png",
+        "rawPath": "/private/tmp/sunwheel-native/accepted-01/compact/attachments/3316667D-0D9E-4A36-A265-2C641EC8967B.png",
+        "sha256": "966b195112d31bbf9a080498cddf829b8f0627c74aacf375d563716ccd1c58ff",
+        "bytes": 1725133,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "EA0F7A30-21E1-4995-93F5-C4A983F4A354",
+          "deviceName": "Starfall Landing Compact Acceptance",
+          "exportedFileName": "3316667D-0D9E-4A36-A265-2C641EC8967B.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "sunwheel-replay-reset-to-unrestored_0_4EA931E4-D7BB-43FB-86CE-16B883A08453.png",
+          "timestamp": 1792513207.015
+        },
+        "size": [
+          750,
+          1334
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "Replay returns to0/18, closed quiet mill and empty historical opening. Start sky/Next shower remain fully visible; no residual result overlay."
+      }
+    ]
+  },
+  "routing": {
+    "status": "passed",
+    "captureIndex": "/private/tmp/sunwheel-native/accepted-01/routing/captures.json",
+    "captureIndexSHA256": "d9e1d6503fb4dbcc494a0794a5406f9f98d0406f21068f12f9a7dc095dd7b915",
+    "nativeCounts": {
+      "totalTestCount": 7,
+      "passedTests": 7,
+      "failedTests": 0,
+      "skippedTests": 0
+    },
+    "environment": {
+      "architecture": "arm64",
+      "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+      "deviceName": "Starfall Landing Acceptance",
+      "modelName": "iPhone 17e",
+      "osBuildNumber": "24A434",
+      "osVersion": "27.0",
+      "platform": "iOS Simulator"
+    },
+    "originalPNGDimensions": [
+      1170,
+      2532
+    ],
+    "selectedCaptureCount": 29,
+    "verifiedCaptureCount": 29,
+    "visuallyInspectedCaptureCount": 29,
+    "allSHA256AndByteCountsMatch": true,
+    "allPathsAreFlatOriginalPNGsWithoutSymlinks": true,
+    "sourceBeforeAfterRuntimeAndTestInputsIdentical": true,
+    "testInputsSHA256": "7235c1eb3ab97323f46421e348fe769ad83590035298582df8874016d3f5a9dd",
+    "testSourceFileCount": 53,
+    "buildLabelEvidence": "/private/tmp/starfall-sunwheel-phone/Build/Products/Debug-iphonesimulator/Starfall.app/Info.plist",
+    "literalSimulatorAppBuildLabel": "dev.local",
+    "sourceBeforeEvidence": "/private/tmp/sunwheel-native/accepted-01/routing/source-before.json",
+    "sourceAfterEvidence": "/private/tmp/sunwheel-native/accepted-01/routing/source-after.json",
+    "workingTreeStatusBefore": [
+      " M App/README.md",
+      " M README.md",
+      " M Sources/StarfallCore/README.md",
+      " M docs/ENGINEERING.md",
+      " M docs/EXPERIMENTS.md",
+      " M docs/OFFICIAL_LOCATIONS_AND_TUTORIAL_PLAN.md",
+      " M docs/README.md",
+      " M docs/ROADMAP.md",
+      " M docs/design/README.md",
+      " M docs/design/STARFALL_GAME_BIBLE.md",
+      " M docs/design/STARLIGHT_RESTORATION.md",
+      " M docs/design/VISUAL_REFERENCE.md",
+      " M docs/design/WORLD_ATLAS.md",
+      " M docs/design/sunwheel-mill-07/PRODUCTION_PLAN.md",
+      " M docs/design/sunwheel-mill-07/README.md",
+      " M docs/evidence/README.md",
+      "?? docs/evidence/sunwheel-mill-2026-10-20/routing-visual-review.json"
+    ],
+    "workingTreeStatusAfter": [
+      " M App/README.md",
+      " M README.md",
+      " M Sources/StarfallCore/README.md",
+      " M docs/ENGINEERING.md",
+      " M docs/EXPERIMENTS.md",
+      " M docs/OFFICIAL_LOCATIONS_AND_TUTORIAL_PLAN.md",
+      " M docs/README.md",
+      " M docs/ROADMAP.md",
+      " M docs/design/README.md",
+      " M docs/design/STARFALL_GAME_BIBLE.md",
+      " M docs/design/STARLIGHT_RESTORATION.md",
+      " M docs/design/VISUAL_REFERENCE.md",
+      " M docs/design/WORLD_ATLAS.md",
+      " M docs/design/sunwheel-mill-07/PRODUCTION_PLAN.md",
+      " M docs/design/sunwheel-mill-07/README.md",
+      " M docs/evidence/README.md",
+      "?? docs/evidence/sunwheel-mill-2026-10-20/captures.json",
+      "?? docs/evidence/sunwheel-mill-2026-10-20/dev-d057696__sunwheel-075__iphone-17e__default-text.png",
+      "?? docs/evidence/sunwheel-mill-2026-10-20/dev-d057696__sunwheel-dense-075__ipad-air11__landscape.png",
+      "?? docs/evidence/sunwheel-mill-2026-10-20/dev-d057696__sunwheel-restored__ipad-air11__portrait.png",
+      "?? docs/evidence/sunwheel-mill-2026-10-20/routing-visual-review.json"
+    ],
+    "commandEvidence": "/private/tmp/sunwheel-native/accepted-01/routing/command.json",
+    "verificationEvidence": "/private/tmp/sunwheel-native/accepted-01/routing/verification.json",
+    "captureBytes": 113629601,
+    "conclusion": "All 29 original routing stills inspected; no blocking visual finding. Earned access, map repair persistence, preview cancellation and representative native clear outcomes remain coherent across all seven ready locations. Original round preservation captures intentionally retain Lantern Landing.",
+    "captures": [
+      {
+        "name": "official-world-map-phone",
+        "file": "8E29882E-5826-4B82-9535-48219A4A064F.png",
+        "rawPath": "/private/tmp/sunwheel-native/accepted-01/routing/attachments/8E29882E-5826-4B82-9535-48219A4A064F.png",
+        "sha256": "c1f6f931c9182082fc7068350f3d2dbc4952210cd6dbeaae39c1042c83ec382f",
+        "bytes": 3240708,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+          "deviceName": "Starfall Landing Acceptance",
+          "exportedFileName": "8E29882E-5826-4B82-9535-48219A4A064F.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "official-world-map-phone_0_EAAFD290-D2BE-4A86-BBD0-8650FB9D64CB.png",
+          "timestamp": 1792513654.794
+        },
+        "size": [
+          1170,
+          2532
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "Map header, complete map image, selected Lantern Landing ready card and Visit action fit. Unreached landmarks remain dim; selection is visible."
+      },
+      {
+        "name": "official-lantern-after-map-entry",
+        "file": "6F80E684-2CF3-4556-BFB0-9AD0B299F86E.png",
+        "rawPath": "/private/tmp/sunwheel-native/accepted-01/routing/attachments/6F80E684-2CF3-4556-BFB0-9AD0B299F86E.png",
+        "sha256": "50217f74540b2c2bfa1a8d221012d749ec82874f124c4cdc8611b633e5208793",
+        "bytes": 3602874,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+          "deviceName": "Starfall Landing Acceptance",
+          "exportedFileName": "6F80E684-2CF3-4556-BFB0-9AD0B299F86E.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "official-lantern-after-map-entry_0_A6100967-4E8D-4422-8560-7305DB91C10D.png",
+          "timestamp": 1792513714.787
+        },
+        "size": [
+          1170,
+          2532
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "Fresh authored Lantern Landing displays 0/150,000 with its eight-piece opening. Five aqua and three rose bodies remain distinct, and Start sky/Next shower are fully visible."
+      },
+      {
+        "name": "world-lantern-repaired-path-revealed",
+        "file": "D1C0B878-B9F7-4525-A356-FD8487D95EEA.png",
+        "rawPath": "/private/tmp/sunwheel-native/accepted-01/routing/attachments/D1C0B878-B9F7-4525-A356-FD8487D95EEA.png",
+        "sha256": "82659cf81a60e37fa6ab4d4a086443f9814071bc384af61ac1feb69343ab15e9",
+        "bytes": 3287550,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+          "deviceName": "Starfall Landing Acceptance",
+          "exportedFileName": "D1C0B878-B9F7-4525-A356-FD8487D95EEA.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "world-lantern-repaired-path-revealed_0_84012ECA-E8E2-4B57-B17D-934B83965A3A.png",
+          "timestamp": 1792513741.914
+        },
+        "size": [
+          1170,
+          2532
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "Lantern Landing is visibly repaired; Ribbon Crossing is revealed and selected with Ready to restore and the complete Visit Ribbon Crossing action."
+      },
+      {
+        "name": "world-repair-after-relaunch",
+        "file": "0A636460-C2E3-4051-975E-131AA81FFAEA.png",
+        "rawPath": "/private/tmp/sunwheel-native/accepted-01/routing/attachments/0A636460-C2E3-4051-975E-131AA81FFAEA.png",
+        "sha256": "d7af55b1768079b0d0750c73072fd7bc366589ec807a60e82b230b69fb3f02e3",
+        "bytes": 3287568,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+          "deviceName": "Starfall Landing Acceptance",
+          "exportedFileName": "0A636460-C2E3-4051-975E-131AA81FFAEA.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "world-repair-after-relaunch_0_537213C9-C6FC-4D8F-9CD1-5073588F53EA.png",
+          "timestamp": 1792513750.81
+        },
+        "size": [
+          1170,
+          2532
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "After relaunch the repaired Lantern map state and selected Ribbon ready card remain visibly consistent, without clipped text or controls."
+      },
+      {
+        "name": "frostfruit-ready-after-silver-repair",
+        "file": "BE34DFD1-1D9C-4349-AA6C-9519C26190F0.png",
+        "rawPath": "/private/tmp/sunwheel-native/accepted-01/routing/attachments/BE34DFD1-1D9C-4349-AA6C-9519C26190F0.png",
+        "sha256": "b4e0be182b3bb246599ab49491073e75d3891bf1a2cf7f53737d12edb1de2923",
+        "bytes": 3356525,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+          "deviceName": "Starfall Landing Acceptance",
+          "exportedFileName": "BE34DFD1-1D9C-4349-AA6C-9519C26190F0.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "frostfruit-ready-after-silver-repair_0_18394D87-B5D9-420E-8E86-AA6D1F6813EB.png",
+          "timestamp": 1792513780.324
+        },
+        "size": [
+          1170,
+          2532
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "Silver Pools is lit and Frostfruit Orchard is selected as Ready to restore; long location title and Visit Frostfruit Orchard action fit."
+      },
+      {
+        "name": "frostfruit-entered-from-earned-map-unlock",
+        "file": "0657BE6E-FBDE-4E98-99F3-9CAD9B8EA3A1.png",
+        "rawPath": "/private/tmp/sunwheel-native/accepted-01/routing/attachments/0657BE6E-FBDE-4E98-99F3-9CAD9B8EA3A1.png",
+        "sha256": "d374c5563a716f67ad13dddad28069fa2f78eb34e391e36c728e049392225b71",
+        "bytes": 4987234,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+          "deviceName": "Starfall Landing Acceptance",
+          "exportedFileName": "0657BE6E-FBDE-4E98-99F3-9CAD9B8EA3A1.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "frostfruit-entered-from-earned-map-unlock_0_FFAF6933-64D8-4C3D-B619-285C1ED94877.png",
+          "timestamp": 1792513806.407
+        },
+        "size": [
+          1170,
+          2532
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "Earned Frostfruit entry shows the quiet orchard, 0/18, three separate aqua bodies and complete Resume sky/Next shower controls."
+      },
+      {
+        "name": "sunwheel-ready-after-frostfruit-repair",
+        "file": "4A3B13C3-4BE6-4BAA-B107-E886CEDD13AC.png",
+        "rawPath": "/private/tmp/sunwheel-native/accepted-01/routing/attachments/4A3B13C3-4BE6-4BAA-B107-E886CEDD13AC.png",
+        "sha256": "9e3c3fb9e90f16486612db486d1ef3a730a534824953c0d3c1556dc211632eb3",
+        "bytes": 3364179,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+          "deviceName": "Starfall Landing Acceptance",
+          "exportedFileName": "4A3B13C3-4BE6-4BAA-B107-E886CEDD13AC.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "sunwheel-ready-after-frostfruit-repair_0_D49A2ECD-D2AA-4A95-A075-911369A3501E.png",
+          "timestamp": 1792513617.92
+        },
+        "size": [
+          1170,
+          2532
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "Frostfruit Orchard is lit and Sunwheel Mill is selected as Ready to restore, with the connecting path and complete Visit Sunwheel Mill action visible."
+      },
+      {
+        "name": "sunwheel-entered-from-earned-map-unlock",
+        "file": "67D37965-D9DA-4801-98E4-947109F24D66.png",
+        "rawPath": "/private/tmp/sunwheel-native/accepted-01/routing/attachments/67D37965-D9DA-4801-98E4-947109F24D66.png",
+        "sha256": "9ddec88cec37eaa445de1af6027e3e84c3d2fcd5cf8926803fb88d4ff11b295b",
+        "bytes": 4246166,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+          "deviceName": "Starfall Landing Acceptance",
+          "exportedFileName": "67D37965-D9DA-4801-98E4-947109F24D66.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "sunwheel-entered-from-earned-map-unlock_0_1357329E-0881-4D3F-8892-D9B0F1C39EC5.png",
+          "timestamp": 1792513644.017
+        },
+        "size": [
+          1170,
+          2532
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "Earned Sunwheel entry shows the quiet mill with closed outlet, 0/18 and three separate aqua bodies. Both lower controls fit and the protected outlet is unobscured."
+      },
+      {
+        "name": "lantern-official-native-swap-and-clear",
+        "file": "10031FD3-F85A-4B09-BC00-3B9792075487.png",
+        "rawPath": "/private/tmp/sunwheel-native/accepted-01/routing/attachments/10031FD3-F85A-4B09-BC00-3B9792075487.png",
+        "sha256": "31c437a5801a10678e890c87e957f5bfcc9e3c0fd38bbbd06191dc0b67ca6be8",
+        "bytes": 3550275,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+          "deviceName": "Starfall Landing Acceptance",
+          "exportedFileName": "10031FD3-F85A-4B09-BC00-3B9792075487.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "lantern-official-native-swap-and-clear_0_C3A03CC2-A769-49C8-B513-4DA59D571889.png",
+          "timestamp": 1792513394.044
+        },
+        "size": [
+          1170,
+          2532
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "Lantern Landing native swap/clear outcome displays 4/18, +4 feedback and the three cleared lower-left positions with the other bodies separate. Pip dialogue, Close and both bottom controls fit; the transient Next shower disabled appearance is consistent across this captured feedback phase."
+      },
+      {
+        "name": "ribbon-official-native-swap-and-clear",
+        "file": "513DDF2E-8825-4A43-AD7D-F5C178CA2147.png",
+        "rawPath": "/private/tmp/sunwheel-native/accepted-01/routing/attachments/513DDF2E-8825-4A43-AD7D-F5C178CA2147.png",
+        "sha256": "46898b3f58b769c9163ac732dcc49075de692a0d9327d211e33bbde988bc6a01",
+        "bytes": 3714511,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+          "deviceName": "Starfall Landing Acceptance",
+          "exportedFileName": "513DDF2E-8825-4A43-AD7D-F5C178CA2147.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "ribbon-official-native-swap-and-clear_0_FC190770-5E84-49AF-B348-57257BCF30D6.png",
+          "timestamp": 1792513425.508
+        },
+        "size": [
+          1170,
+          2532
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "Ribbon Crossing native swap/clear outcome displays 4/18, +4 feedback and the three cleared lower-left positions with the other bodies separate. Pip dialogue, Close and both bottom controls fit; the transient Next shower disabled appearance is consistent across this captured feedback phase."
+      },
+      {
+        "name": "kite-official-native-swap-and-clear",
+        "file": "2C7F7005-F789-4C88-BDF7-CEB66E0AF06E.png",
+        "rawPath": "/private/tmp/sunwheel-native/accepted-01/routing/attachments/2C7F7005-F789-4C88-BDF7-CEB66E0AF06E.png",
+        "sha256": "0e2b6c09989a24f0783f4c16632dfa3abd7821fd4f23ccbb4fb6c98457ac8d31",
+        "bytes": 3759303,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+          "deviceName": "Starfall Landing Acceptance",
+          "exportedFileName": "2C7F7005-F789-4C88-BDF7-CEB66E0AF06E.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "kite-official-native-swap-and-clear_0_A000C9D8-5053-4875-BBEF-4F8F46505D7D.png",
+          "timestamp": 1792513458.561
+        },
+        "size": [
+          1170,
+          2532
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "Kite Harbor native swap/clear outcome displays 4/18, +4 feedback and the three cleared lower-left positions with the other bodies separate. Pip dialogue, Close and both bottom controls fit; the transient Next shower disabled appearance is consistent across this captured feedback phase."
+      },
+      {
+        "name": "seed-official-native-swap-and-clear",
+        "file": "74112026-C539-42D2-8A4E-E9423AA5CC74.png",
+        "rawPath": "/private/tmp/sunwheel-native/accepted-01/routing/attachments/74112026-C539-42D2-8A4E-E9423AA5CC74.png",
+        "sha256": "ef73fabeef08bdf73219aa76ad21c8624af7debd346afeba48eb3d15c0308740",
+        "bytes": 3724880,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+          "deviceName": "Starfall Landing Acceptance",
+          "exportedFileName": "74112026-C539-42D2-8A4E-E9423AA5CC74.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "seed-official-native-swap-and-clear_0_5D29E723-6E33-4CD7-954B-2A03CE48DB7A.png",
+          "timestamp": 1792513490.168
+        },
+        "size": [
+          1170,
+          2532
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "Seed Moon native swap/clear outcome displays 4/18, +4 feedback and the three cleared lower-left positions with the other bodies separate. Pip dialogue, Close and both bottom controls fit; the transient Next shower disabled appearance is consistent across this captured feedback phase."
+      },
+      {
+        "name": "silver-official-native-swap-and-clear",
+        "file": "751F3CD9-8008-4B1E-9EB3-58E47153C3A5.png",
+        "rawPath": "/private/tmp/sunwheel-native/accepted-01/routing/attachments/751F3CD9-8008-4B1E-9EB3-58E47153C3A5.png",
+        "sha256": "d96357d9ff6a2797cc87a98d6f8c8dedb8b79934ad1c621b1c36d911f88fcd53",
+        "bytes": 4600007,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+          "deviceName": "Starfall Landing Acceptance",
+          "exportedFileName": "751F3CD9-8008-4B1E-9EB3-58E47153C3A5.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "silver-official-native-swap-and-clear_0_A724AB97-7257-45E5-8B4C-5ADE4FA392BB.png",
+          "timestamp": 1792513522.596
+        },
+        "size": [
+          1170,
+          2532
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "Silver Pools native swap/clear outcome displays 4/18, +4 feedback and the three cleared lower-left positions with the other bodies separate. Pip dialogue, Close and both bottom controls fit; the transient Next shower disabled appearance is consistent across this captured feedback phase."
+      },
+      {
+        "name": "frostfruit-official-native-swap-and-clear",
+        "file": "D2BCEAAE-E2A5-48AF-87BE-AC9466F3D321.png",
+        "rawPath": "/private/tmp/sunwheel-native/accepted-01/routing/attachments/D2BCEAAE-E2A5-48AF-87BE-AC9466F3D321.png",
+        "sha256": "4009ac7944880b933865de635d56309f61f242326d807181040d6d129c0211f5",
+        "bytes": 4728618,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+          "deviceName": "Starfall Landing Acceptance",
+          "exportedFileName": "D2BCEAAE-E2A5-48AF-87BE-AC9466F3D321.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "frostfruit-official-native-swap-and-clear_0_852065CD-405F-42C2-8B58-4F32460198E8.png",
+          "timestamp": 1792513555.636
+        },
+        "size": [
+          1170,
+          2532
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "Frostfruit Orchard native swap/clear outcome displays 4/18, +4 feedback and the three cleared lower-left positions with the other bodies separate. Pip dialogue, Close and both bottom controls fit; the transient Next shower disabled appearance is consistent across this captured feedback phase."
+      },
+      {
+        "name": "sunwheel-official-native-swap-and-clear",
+        "file": "3545561A-18D4-4078-8292-9A73DE9D08DD.png",
+        "rawPath": "/private/tmp/sunwheel-native/accepted-01/routing/attachments/3545561A-18D4-4078-8292-9A73DE9D08DD.png",
+        "sha256": "388bab0ad13252eb7caaf12e85fa895b0ae5f2e1d329ec0ad721167adb49498c",
+        "bytes": 4102760,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+          "deviceName": "Starfall Landing Acceptance",
+          "exportedFileName": "3545561A-18D4-4078-8292-9A73DE9D08DD.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "sunwheel-official-native-swap-and-clear_0_D2EA72D9-324E-4F59-936F-6295D801FCC0.png",
+          "timestamp": 1792513587.889
+        },
+        "size": [
+          1170,
+          2532
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "Sunwheel Mill native swap/clear outcome displays 4/18, +4 feedback and the three cleared lower-left positions with the other bodies separate. Pip dialogue, Close and both bottom controls fit; the transient Next shower disabled appearance is consistent across this captured feedback phase."
+      },
+      {
+        "name": "Official-map-firstLight-1",
+        "file": "63422494-98A7-468B-BD05-5C53B9F28BC6.png",
+        "rawPath": "/private/tmp/sunwheel-native/accepted-01/routing/attachments/63422494-98A7-468B-BD05-5C53B9F28BC6.png",
+        "sha256": "ba3628ba799996e3190685b14a6ab25e793d64b605c6b45d6854502f4938dad4",
+        "bytes": 3892555,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+          "deviceName": "Starfall Landing Acceptance",
+          "exportedFileName": "63422494-98A7-468B-BD05-5C53B9F28BC6.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "Official-map-firstLight-1_0_BC02F9D2-93A6-47B3-B1AE-41D53C12167B.png",
+          "timestamp": 1792513239.993
+        },
+        "size": [
+          1170,
+          2532
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "After selecting and cancelling the Lantern Landing map preview, the original dense Lantern survival round remains visible: score 0, 49 occupied cells including the larger amber and central purple special piece with its four dim neighbors. All cell bodies remain separate, the board is centered, and both lower controls fit. This capture documents round preservation, not a change to the selected destination background."
+      },
+      {
+        "name": "Official-map-ribbonCrossing-1",
+        "file": "D94CB2D3-510E-4656-B2AF-5DF4AE48D76F.png",
+        "rawPath": "/private/tmp/sunwheel-native/accepted-01/routing/attachments/D94CB2D3-510E-4656-B2AF-5DF4AE48D76F.png",
+        "sha256": "0a09e2d2c2e3ca83f4f9064bfa74509f5f42bd200729fff77b06b14f63e01e5e",
+        "bytes": 3893256,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+          "deviceName": "Starfall Landing Acceptance",
+          "exportedFileName": "D94CB2D3-510E-4656-B2AF-5DF4AE48D76F.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "Official-map-ribbonCrossing-1_0_087686BD-BE07-4F67-AE75-57B2489B036C.png",
+          "timestamp": 1792513249.61
+        },
+        "size": [
+          1170,
+          2532
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "After selecting and cancelling the Ribbon Crossing map preview, the original dense Lantern survival round remains visible: score 0, 49 occupied cells including the larger amber and central purple special piece with its four dim neighbors. All cell bodies remain separate, the board is centered, and both lower controls fit. This capture documents round preservation, not a change to the selected destination background."
+      },
+      {
+        "name": "Official-map-kiteHarbor-1",
+        "file": "B0D9A95C-4542-4CAC-BE86-A670CF42AFBD.png",
+        "rawPath": "/private/tmp/sunwheel-native/accepted-01/routing/attachments/B0D9A95C-4542-4CAC-BE86-A670CF42AFBD.png",
+        "sha256": "5012b30c7173a9b5ff4795b2813f28e1a6c12961241e141eb2c42a638505cdfb",
+        "bytes": 3892422,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+          "deviceName": "Starfall Landing Acceptance",
+          "exportedFileName": "B0D9A95C-4542-4CAC-BE86-A670CF42AFBD.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "Official-map-kiteHarbor-1_0_B692AE40-90EF-42E6-AAB3-DC2141ECE8C2.png",
+          "timestamp": 1792513259.246
+        },
+        "size": [
+          1170,
+          2532
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "After selecting and cancelling the Kite Harbor map preview, the original dense Lantern survival round remains visible: score 0, 49 occupied cells including the larger amber and central purple special piece with its four dim neighbors. All cell bodies remain separate, the board is centered, and both lower controls fit. This capture documents round preservation, not a change to the selected destination background."
+      },
+      {
+        "name": "Official-map-seedMoon-1",
+        "file": "1318DFD7-87A2-4AAF-B861-B36C7C70AD8A.png",
+        "rawPath": "/private/tmp/sunwheel-native/accepted-01/routing/attachments/1318DFD7-87A2-4AAF-B861-B36C7C70AD8A.png",
+        "sha256": "b9b4ed752e0ff49fc1a53c662ce8f6684b5e8c8c6442c2da45ed2d326bf4b68c",
+        "bytes": 3893203,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+          "deviceName": "Starfall Landing Acceptance",
+          "exportedFileName": "1318DFD7-87A2-4AAF-B861-B36C7C70AD8A.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "Official-map-seedMoon-1_0_BA68F413-6D5C-43CC-B515-EB0206E5791B.png",
+          "timestamp": 1792513269.11
+        },
+        "size": [
+          1170,
+          2532
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "After selecting and cancelling the Seed Moon map preview, the original dense Lantern survival round remains visible: score 0, 49 occupied cells including the larger amber and central purple special piece with its four dim neighbors. All cell bodies remain separate, the board is centered, and both lower controls fit. This capture documents round preservation, not a change to the selected destination background."
+      },
+      {
+        "name": "Official-map-silverPools-1",
+        "file": "651C2E58-4A19-46FA-857F-13D2CC7C7870.png",
+        "rawPath": "/private/tmp/sunwheel-native/accepted-01/routing/attachments/651C2E58-4A19-46FA-857F-13D2CC7C7870.png",
+        "sha256": "c74c24e514c4fc632d4ca2dbaeb0318120cbbaf51d6f39d71dc661a381d75e5b",
+        "bytes": 3892249,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+          "deviceName": "Starfall Landing Acceptance",
+          "exportedFileName": "651C2E58-4A19-46FA-857F-13D2CC7C7870.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "Official-map-silverPools-1_0_79A07424-D5DF-40EB-974D-2A2567B6FE2B.png",
+          "timestamp": 1792513278.821
+        },
+        "size": [
+          1170,
+          2532
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "After selecting and cancelling the Silver Pools map preview, the original dense Lantern survival round remains visible: score 0, 49 occupied cells including the larger amber and central purple special piece with its four dim neighbors. All cell bodies remain separate, the board is centered, and both lower controls fit. This capture documents round preservation, not a change to the selected destination background."
+      },
+      {
+        "name": "Official-map-frostfruitOrchard-1",
+        "file": "9BF1CE60-0432-4C3D-8F3D-D230931E8739.png",
+        "rawPath": "/private/tmp/sunwheel-native/accepted-01/routing/attachments/9BF1CE60-0432-4C3D-8F3D-D230931E8739.png",
+        "sha256": "5cfa2136f1c2a60d6d359ad14b023bc7ad229a45c06c51b51df5c0c47c190f63",
+        "bytes": 3893273,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+          "deviceName": "Starfall Landing Acceptance",
+          "exportedFileName": "9BF1CE60-0432-4C3D-8F3D-D230931E8739.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "Official-map-frostfruitOrchard-1_0_6C48F5F2-3872-408B-B3A0-BBFFF04658F2.png",
+          "timestamp": 1792513288.443
+        },
+        "size": [
+          1170,
+          2532
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "After selecting and cancelling the Frostfruit Orchard map preview, the original dense Lantern survival round remains visible: score 0, 49 occupied cells including the larger amber and central purple special piece with its four dim neighbors. All cell bodies remain separate, the board is centered, and both lower controls fit. This capture documents round preservation, not a change to the selected destination background."
+      },
+      {
+        "name": "Official-map-sunwheelMill-1",
+        "file": "B7A5D295-2B1E-431B-8F68-D1147C1AE55D.png",
+        "rawPath": "/private/tmp/sunwheel-native/accepted-01/routing/attachments/B7A5D295-2B1E-431B-8F68-D1147C1AE55D.png",
+        "sha256": "847a6b8748edd76edd8a859e40c12544772c86a5d3cdc1d8d8d7909b6e297ff3",
+        "bytes": 3892460,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+          "deviceName": "Starfall Landing Acceptance",
+          "exportedFileName": "B7A5D295-2B1E-431B-8F68-D1147C1AE55D.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "Official-map-sunwheelMill-1_0_C941AF73-40DA-40DF-B423-D911F1370426.png",
+          "timestamp": 1792513298.627
+        },
+        "size": [
+          1170,
+          2532
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "After selecting and cancelling the Sunwheel Mill map preview, the original dense Lantern survival round remains visible: score 0, 49 occupied cells including the larger amber and central purple special piece with its four dim neighbors. All cell bodies remain separate, the board is centered, and both lower controls fit. This capture documents round preservation, not a change to the selected destination background."
+      },
+      {
+        "name": "Restoration-quiet-firstLight",
+        "file": "4A22363A-9A7F-438E-9CC4-7D339BC8D64D.png",
+        "rawPath": "/private/tmp/sunwheel-native/accepted-01/routing/attachments/4A22363A-9A7F-438E-9CC4-7D339BC8D64D.png",
+        "sha256": "33fd5574774030aa1691b28cb0106e77584566a6360fc3ffd0f250a372e5032a",
+        "bytes": 3691496,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+          "deviceName": "Starfall Landing Acceptance",
+          "exportedFileName": "4A22363A-9A7F-438E-9CC4-7D339BC8D64D.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "Restoration-quiet-firstLight_0_2292BE4B-9786-45C9-90D7-30F4DB69833F.png",
+          "timestamp": 1792513312.182
+        },
+        "size": [
+          1170,
+          2532
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "Lantern Landing quiet restoration corner-clear outcome displays 4/18, +4 feedback and 46 separate remaining bodies with three top-left gaps. Pip dialogue and Close fit below the board; Resume sky/Next shower remain fully visible. The quiet 0% painting is consistent with progress below the first restoration threshold."
+      },
+      {
+        "name": "Restoration-quiet-ribbonCrossing",
+        "file": "6E15A541-60E1-4141-B409-5868758E804D.png",
+        "rawPath": "/private/tmp/sunwheel-native/accepted-01/routing/attachments/6E15A541-60E1-4141-B409-5868758E804D.png",
+        "sha256": "63d9b5d3b237aba4f66a7b0853e6aa639ea63d09a8b700b1f4e53380a998521b",
+        "bytes": 3823397,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+          "deviceName": "Starfall Landing Acceptance",
+          "exportedFileName": "6E15A541-60E1-4141-B409-5868758E804D.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "Restoration-quiet-ribbonCrossing_0_E1176856-0BE7-4587-9D21-0086E395E988.png",
+          "timestamp": 1792513320.391
+        },
+        "size": [
+          1170,
+          2532
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "Ribbon Crossing quiet restoration corner-clear outcome displays 4/18, +4 feedback and 46 separate remaining bodies with three top-left gaps. Pip dialogue and Close fit below the board; Resume sky/Next shower remain fully visible. The quiet 0% painting is consistent with progress below the first restoration threshold."
+      },
+      {
+        "name": "Restoration-quiet-kiteHarbor",
+        "file": "2CFAC2F5-4916-4C16-9820-3A44CDA19F70.png",
+        "rawPath": "/private/tmp/sunwheel-native/accepted-01/routing/attachments/2CFAC2F5-4916-4C16-9820-3A44CDA19F70.png",
+        "sha256": "772818d23eb511eef12e481e966808028ecfd4a342bfb6d15b742fac2b1d0390",
+        "bytes": 3873879,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+          "deviceName": "Starfall Landing Acceptance",
+          "exportedFileName": "2CFAC2F5-4916-4C16-9820-3A44CDA19F70.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "Restoration-quiet-kiteHarbor_0_48369DC8-D721-4E8F-968F-E5F0CB52D340.png",
+          "timestamp": 1792513328.613
+        },
+        "size": [
+          1170,
+          2532
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "Kite Harbor quiet restoration corner-clear outcome displays 4/18, +4 feedback and 46 separate remaining bodies with three top-left gaps. Pip dialogue and Close fit below the board; Resume sky/Next shower remain fully visible. The quiet 0% painting is consistent with progress below the first restoration threshold."
+      },
+      {
+        "name": "Restoration-quiet-seedMoon",
+        "file": "A84400AB-184B-4865-B5D7-C994444EE0E6.png",
+        "rawPath": "/private/tmp/sunwheel-native/accepted-01/routing/attachments/A84400AB-184B-4865-B5D7-C994444EE0E6.png",
+        "sha256": "82402c645048261585b52ed64ed9a498d7956fab5a2237af811b2b3ea759b0a1",
+        "bytes": 3811694,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+          "deviceName": "Starfall Landing Acceptance",
+          "exportedFileName": "A84400AB-184B-4865-B5D7-C994444EE0E6.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "Restoration-quiet-seedMoon_0_3C1C14D5-BE01-4060-8687-067D78559642.png",
+          "timestamp": 1792513337.001
+        },
+        "size": [
+          1170,
+          2532
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "Seed Moon quiet restoration corner-clear outcome displays 4/18, +4 feedback and 46 separate remaining bodies with three top-left gaps. Pip dialogue and Close fit below the board; Resume sky/Next shower remain fully visible. The quiet 0% painting is consistent with progress below the first restoration threshold."
+      },
+      {
+        "name": "Restoration-quiet-silverPools",
+        "file": "0784C9AB-733E-42ED-9E37-6A5D8DAB7399.png",
+        "rawPath": "/private/tmp/sunwheel-native/accepted-01/routing/attachments/0784C9AB-733E-42ED-9E37-6A5D8DAB7399.png",
+        "sha256": "825004ff65bfd49fb66a8fd38b1d9fc395ac823e2fb6b641c504166a917d6660",
+        "bytes": 4665198,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+          "deviceName": "Starfall Landing Acceptance",
+          "exportedFileName": "0784C9AB-733E-42ED-9E37-6A5D8DAB7399.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "Restoration-quiet-silverPools_0_4FB2AC52-3D3E-4466-9D93-90CEA5E8C336.png",
+          "timestamp": 1792513345.282
+        },
+        "size": [
+          1170,
+          2532
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "Silver Pools quiet restoration corner-clear outcome displays 4/18, +4 feedback and 46 separate remaining bodies with three top-left gaps. Pip dialogue and Close fit below the board; Resume sky/Next shower remain fully visible. The quiet 0% painting is consistent with progress below the first restoration threshold."
+      },
+      {
+        "name": "Restoration-quiet-frostfruitOrchard",
+        "file": "8E0673A4-7764-4B89-91C9-7F8E55A5019F.png",
+        "rawPath": "/private/tmp/sunwheel-native/accepted-01/routing/attachments/8E0673A4-7764-4B89-91C9-7F8E55A5019F.png",
+        "sha256": "53520dff12b1a91384f54b445676ddeb3d00e1963176dc0ac62128981ca437d3",
+        "bytes": 4780545,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+          "deviceName": "Starfall Landing Acceptance",
+          "exportedFileName": "8E0673A4-7764-4B89-91C9-7F8E55A5019F.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "Restoration-quiet-frostfruitOrchard_0_142BCB10-EF2F-4D0D-B5F9-FE15C106B2D5.png",
+          "timestamp": 1792513353.785
+        },
+        "size": [
+          1170,
+          2532
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "Frostfruit Orchard quiet restoration corner-clear outcome displays 4/18, +4 feedback and 46 separate remaining bodies with three top-left gaps. Pip dialogue and Close fit below the board; Resume sky/Next shower remain fully visible. The quiet 0% painting is consistent with progress below the first restoration threshold."
+      },
+      {
+        "name": "Restoration-quiet-sunwheelMill",
+        "file": "256ECA3A-32D8-4E1D-B892-6E6F8CD32AE4.png",
+        "rawPath": "/private/tmp/sunwheel-native/accepted-01/routing/attachments/256ECA3A-32D8-4E1D-B892-6E6F8CD32AE4.png",
+        "sha256": "f2374e8acc71072e97aa73b15dcba542e838cbfd26e0f9a3cb3eeef02211121e",
+        "bytes": 4180816,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+          "deviceName": "Starfall Landing Acceptance",
+          "exportedFileName": "256ECA3A-32D8-4E1D-B892-6E6F8CD32AE4.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "Restoration-quiet-sunwheelMill_0_C103251C-7D2F-4AD3-868D-370531A59E1B.png",
+          "timestamp": 1792513362.324
+        },
+        "size": [
+          1170,
+          2532
+        ],
+        "visuallyInspected": true,
+        "blockingFindings": [],
+        "observation": "Sunwheel Mill quiet restoration corner-clear outcome displays 4/18, +4 feedback and 46 separate remaining bodies with three top-left gaps. Pip dialogue and Close fit below the board; Resume sky/Next shower remain fully visible. The quiet 0% painting is consistent with progress below the first restoration threshold."
+      }
+    ]
+  },
+  "limitations": [
+    "No pixel edits, recompression, crops or composites used. Compact originals are 750x1334; routing originals are 1170x2532 and the image viewer displayed them at 946x2048 without changing retained files.",
+    "These findings concern Simulator stills. Normal-motion behavior, actual VoiceOver and physical-device acceptance remain separate.",
+    "No Apple execution or Git/code changes performed by this reviewer. Source snapshot records retain the concurrent documentation-only working-tree state; runtime and all 53 AppTests/UITests source hashes match before and after the routing run.",
+    "Historical 18-light reset fixtures shown in clear-outcome captures do not establish authored Lantern/Ribbon challenge balance. The fresh Lantern map-entry capture independently shows the current 150,000 objective."
+  ],
+  "selectedCaptureCount": 33,
+  "verifiedCaptureCount": 33,
+  "visuallyInspectedCaptureCount": 33,
+  "allSHA256AndByteCountsMatch": true,
+  "totalOriginalPNGBytes": 119954761,
+  "conclusion": "No blocking visual finding in all four compact and all 29 routing original captures. Bound to d057696934621b4e9f34a3d57f620d28fe9eb262 / computed dev.a15832d0fd; literal simulator application label is dev.local. Root-owned native batches report 1/1 compact and 7/7 routing, zero failures and skips."
+}

@@ -57,9 +57,9 @@ final class WorldMapReviewFixtureTests: XCTestCase {
         let cases: [(WorldMapReviewFixture, Set<WorldLocation>, WorldLocation, StarfallChallenge?, Outcome?, Bool)] = [
             (.fresh, [], .firstLight, nil, nil, false),
             (.twoRepairs, [.firstLight, .ribbonCrossing], .kiteHarbor, .ribbonCrossing, .won, false),
-            (.allReady, [.firstLight, .ribbonCrossing, .kiteHarbor, .seedMoon, .silverPools, .frostfruitOrchard], .frostfruitOrchard, .frostfruitOrchard, .won, false),
+            (.allReady, [.firstLight, .ribbonCrossing, .kiteHarbor, .seedMoon, .silverPools, .frostfruitOrchard, .sunwheelMill], .sunwheelMill, .sunwheelMill, .won, false),
             (.locked, [], .frostfruitOrchard, nil, nil, false),
-            (.unbuilt, [], .sunwheelMill, nil, nil, false),
+            (.unbuilt, [], .bellChoir, nil, nil, false),
             (.retained, [.firstLight, .ribbonCrossing], .kiteHarbor, .kiteHarbor, .playing, false),
             (.recovery, [.firstLight], .ribbonCrossing, .firstLight, .won, true)
         ]
@@ -92,9 +92,10 @@ final class WorldMapReviewFixtureTests: XCTestCase {
                 XCTAssertFalse(store.journey.journey.canEnter(selection))
             }
             if fixture == .allReady {
-                XCTAssertEqual(store.journey.journey.completed.count, 6)
+                XCTAssertEqual(store.journey.journey.completed.count, 7)
                 XCTAssertTrue(WorldLocation.allCases.filter { $0.challenge != nil }
                     .allSatisfy(store.journey.journey.canEnter))
+                XCTAssertFalse(store.journey.journey.canEnter(.bellChoir))
             }
             let roundBytes = defaults.data(forKey: SkySaveArchive.key)
             let worldBytes = defaults.data(forKey: WorldJourneyStore.key)

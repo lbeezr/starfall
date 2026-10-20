@@ -15,6 +15,7 @@ import html
 import json
 import math
 import os
+import re
 from pathlib import Path
 import subprocess
 import tempfile
@@ -24,15 +25,15 @@ from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "docs/design/level-design-kit"
-SUNNY = ROOT / "App/Assets.xcassets/StarCastSunny.imageset/body.png"
+SUNNY = ROOT / "App/Assets.xcassets/SkyPieceSunny.imageset/body.png"
 SOURCES = (
     "App/LandingGeometry.swift", "scripts/export_level_layouts.swift",
     "App/FallingSkyView.swift", "App/FallingSkyHUD.swift",
     "App/SkyDialogueBubble.swift", "App/ObservatoryArtwork.swift",
     "App/RestorationEnvironment.swift",
     "App/SkyFlowCeremony.swift", "App/StarfallTheme.swift",
-    "App/FallingSkyMotion.swift", "App/StarCast.swift",
-    "App/Assets.xcassets/StarCastSunny.imageset/body.png",
+    "App/FallingSkyMotion.swift", "App/StarCast.swift", "App/SkyPiece.swift",
+    "App/Assets.xcassets/SkyPieceSunny.imageset/body.png",
     "scripts/level-design-kit.py",
 )
 REFERENCES = {
@@ -48,7 +49,29 @@ PALETTE = {
     "grid": "#a56478", "crop": "#304153", "cropLine": "#d4dce6",
 }
 BLEED_FRACTION = 0.15
-BODY_FRACTIONS = {"normal": 0.70, "grown": 0.86}
+
+
+def swift_scalar(path: str, name: str) -> float:
+    source = (ROOT / path).read_text()
+    matches = re.findall(r"static let " + re.escape(name) + r"(?:\s*:\s*[A-Za-z]+)?\s*=\s*([0-9.]+)(?:\s|$)", source)
+    if len(matches) != 1:
+        raise ValueError(f"Expected one numeric production constant: {path}:{name}")
+    return float(matches[0])
+
+
+# Read the production owners; the guide must not retain independent growth sizing.
+BODY_FRACTIONS = {
+    "normal": 2 * swift_scalar("App/FallingSkyMotion.swift", "pieceRadius"),
+    "grown": 2 * swift_scalar("App/FallingSkyMotion.swift", "grownPieceRadius"),
+}
+RASTER_SIDE = swift_scalar("App/StarCast.swift", "rasterSide")
+SILHOUETTE_SIDE = swift_scalar("App/StarCast.swift", "silhouetteSide")
+SUNNY_IMAGE = Image.open(SUNNY).convert("RGBA")
+SUNNY_BOUNDS = SUNNY_IMAGE.getbbox()
+if SUNNY_IMAGE.size != (RASTER_SIDE, RASTER_SIDE) or SUNNY_BOUNDS is None:
+    raise ValueError("SkyPieceSunny no longer matches the shared centered raster registration")
+SUNNY_EXTENT = max(SUNNY_BOUNDS[2] - SUNNY_BOUNDS[0], SUNNY_BOUNDS[3] - SUNNY_BOUNDS[1])
+VISIBLE_FRACTIONS = {key: value * SUNNY_EXTENT / SILHOUETTE_SIDE for key, value in BODY_FRACTIONS.items()}
 
 
 def digest(path: Path) -> str:
@@ -167,24 +190,21 @@ class Drawing:
         self.draw.text((x, y), message, font=font(size, bold), fill=color,
                        anchor={"left": "lt", "center": "mt", "right": "rt"}[anchor])
 
-    def star(self, x: float, y: float, side: float, color: str, width: float = 1):
-        points = []
-        for index in range(10):
-            angle = -math.pi / 2 + index * math.pi / 5
-            radius = side / 2 * (1 if index % 2 == 0 else 0.46)
-            points.append((x + math.cos(angle) * radius, y + math.sin(angle) * radius))
-        self.line(points + [points[0]], color, width)
-
-    def sunny(self, x: float, y: float, body_width: float):
+    def sunny(self, x: float, y: float, nominal_width: float, opacity: float = 1):
+        # The authored shell uses SkyPiece.makeNode's radius-to-raster formula.
+        # Native LivingLight interior composition and shader are deliberately omitted.
+        # Alpha bounds are measured for annotation only, never stretched to fill a cell.
         data = SUNNY.read_bytes()
-        source = Image.open(SUNNY).convert("RGBA")
-        bbox = source.getbbox()
-        assert bbox is not None
-        scale = body_width / (bbox[2] - bbox[0])
-        width, height = source.width * scale, source.height * scale
+        scale = nominal_width / SILHOUETTE_SIDE
+        width, height = SUNNY_IMAGE.width * scale, SUNNY_IMAGE.height * scale
         left, top = x - width / 2, y - height / 2
-        self.parts.append(f'<image x="{left:.4f}" y="{top:.4f}" width="{width:.4f}" height="{height:.4f}" href="data:image/png;base64,{base64.b64encode(data).decode()}"/>')
-        resized = source.resize((round(width), round(height)), Image.Resampling.LANCZOS)
+        if not getattr(self, "sunny_defined", False):
+            self.parts.append(f'<defs><image id="sky-piece-sunny" width="{SUNNY_IMAGE.width}" height="{SUNNY_IMAGE.height}" href="data:image/png;base64,{base64.b64encode(data).decode()}"/></defs>')
+            self.sunny_defined = True
+        self.parts.append(f'<use href="#sky-piece-sunny" transform="translate({left:.4f} {top:.4f}) scale({scale:.6f})" opacity="{opacity}"/>')
+        resized = SUNNY_IMAGE.resize((round(width), round(height)), Image.Resampling.LANCZOS)
+        if opacity < 1:
+            resized.putalpha(resized.getchannel("A").point(lambda value: round(value * opacity)))
         self.image.paste(resized, (round(left), round(top)), resized)
 
     def paste(self, other: "Drawing", x: float, y: float, scale: float):
@@ -215,8 +235,8 @@ def draw_layout(layout: dict, mapping: dict | None = None) -> Drawing:
         canvas.rectangle(frame, "none", PALETTE["grid"], 0.7 * scale)
         grown = cell["row"] == 5 and cell["column"] == 4
         side = frame["width"] * BODY_FRACTIONS["grown" if grown else "normal"]
-        canvas.star(frame["x"] + frame["width"] / 2, frame["y"] + frame["height"] / 2,
-                    side, PALETTE["text"] if grown else "#b58091", (1.3 if grown else 0.7) * scale)
+        canvas.sunny(frame["x"] + frame["width"] / 2, frame["y"] + frame["height"] / 2,
+                     side, 1 if grown else 0.42)
     # The current HUD and guide use measured SwiftUI content at viewport edges.
     # LandingGeometry's former chrome rectangles are not their coverage. Use
     # schematic markers rather than inventing safe insets or fixed text heights.
@@ -274,8 +294,8 @@ def overview(layouts: dict[str, dict], panels: dict[str, Drawing]) -> Drawing:
     canvas.text(48, 91, "Exact app geometry + provisional art direction. These are guides, not masks or native visual acceptance.", 24, PALETTE["muted"])
     legends = [
         ("world", "CONNECTED WORLD", ["Layer architecture, terrain and paths.", "Teal is opportunity, not a fill quota."]),
-        ("board", "CONTRAST PRIORITY", ["Keep faces and silhouettes distinct.", "Red does not mean blank or cut out."]),
-        ("bleed", "SOFT EDGE BLEED", ["Up to 0.15 cell inside board edge.", "Provisional; never permission over faces."]),
+        ("board", "CONTRAST PRIORITY", ["Keep pieces and silhouettes distinct.", "Red does not mean blank or cut out."]),
+        ("bleed", "SOFT EDGE BLEED", ["Up to 0.15 cell inside board edge.", "Provisional; never obscure bodies."]),
         ("ui", "VIEWPORT-EDGE UI", ["Markers show placement, not bounds.", "Measure actual HUD, guide and actions."]),
     ]
     for index, (color, title, lines) in enumerate(legends):
@@ -307,12 +327,12 @@ def overview(layouts: dict[str, dict], panels: dict[str, Drawing]) -> Drawing:
 
 
 def scale_reference() -> Drawing:
-    canvas = Drawing(1600, 1060, "Starfall character and environmental prop scale reference")
-    canvas.text(48, 36, "Use the actual star cast as your scale reference", 39, bold=True)
-    canvas.text(48, 91, "Sunny's original packaged body is embedded unchanged. This technical plate resizes only its displayed copy.", 23, PALETTE["muted"])
-    canvas.text(48, 137, "Nominal body widths: normal 0.70 cell · grown 0.86 cell. Texture padding and animation are not body size.", 23, PALETTE["muted"])
+    canvas = Drawing(1600, 1060, "Starfall gameplay piece and environmental prop scale reference")
+    canvas.text(48, 36, "Use the authored shell to check gameplay piece scale", 39, bold=True)
+    canvas.text(48, 91, "Unchanged SkyPieceSunny shell at production sizing; native living-light fill, shader, aura and deformation are omitted.", 23, PALETTE["muted"])
+    canvas.text(48, 137, f"Nominal diameters: ordinary {BODY_FRACTIONS['normal']:.2f} cell · grown {BODY_FRACTIONS['grown']:.2f} cell. Visible extents: {VISIBLE_FRACTIONS['normal']:.3f} / {VISIBLE_FRACTIONS['grown']:.3f}; aura extends farther.", 23, PALETTE["muted"])
     cell = 160
-    for x, fraction, label in ((100, 0.70, "Normal"), (360, 0.86, "Grown")):
+    for x, fraction, label in ((100, BODY_FRACTIONS["normal"], "Ordinary"), (360, BODY_FRACTIONS["grown"], "Grown")):
         canvas.rectangle(rect(x, 205, cell, cell), PALETTE["board"], PALETTE["boardLine"], 2)
         canvas.sunny(x + cell / 2, 285, cell * fraction)
         canvas.text(x + cell / 2, 389, f'{label} · {fraction:.2f} cell', 24, bold=True, anchor="center")
@@ -329,7 +349,7 @@ def scale_reference() -> Drawing:
         y = 555 + index * 126
         canvas.text(48, y, title, 26, bold=True)
         canvas.text(48, y + 36, label, 23, PALETTE["worldLine"])
-        canvas.sunny(320, y + 27, 80)
+        canvas.sunny(320, y + 27, 80 * SILHOUETTE_SIDE / SUNNY_EXTENT)
         canvas.rectangle(rect(410, y + 2, maximum * 80, 54), PALETTE["world"], PALETTE["worldLine"], 2)
         canvas.rectangle(rect(410, y + 2, minimum * 80, 54), "#266d6b", PALETTE["worldLine"], 2)
         canvas.text(930, y + 12, examples, 21, PALETTE["muted"])
@@ -363,16 +383,22 @@ def main() -> None:
     generation_hashes = {path: digest(ROOT / path) for path in SOURCES}
     source_hashes = (generation_hashes if provenance["method"] == "compiled-app-geometry"
                      else exported.get("sourceSHA256", {}))
-    report = {**exported, "guideSchemaVersion": 3, "status": "technical authoring guide; not native visual acceptance",
+    report = {**exported, "guideSchemaVersion": 4, "status": "technical authoring guide; not native visual acceptance",
               "geometryExport": provenance, "sourceSHA256": source_hashes,
               "generationSourceSHA256": generation_hashes,
               "units": {"nativeLayouts": "points", "sourcePanels": "artwork pixels", "origin": "top-left; positive y downward; Core row 0 is the bottom row"},
               "sourcePanelMappings": mappings,
               "recommendations": {
                   "softBleedCellFraction": BLEED_FRACTION,
-                  "softBleedStatus": "provisional maximum inside the perimeter, not permission to cover faces or bright silhouettes",
+                  "softBleedStatus": "provisional maximum inside the perimeter, not permission to cover gameplay pieces or bright silhouettes",
                   "nativeBodyWidthFractions": BODY_FRACTIONS,
-                  "bodyScaleStatus": "nominal normal/grown authored body; real alpha shape, texture padding and motion vary",
+                  "bodyScaleStatus": "authored SkyPieceSunny shell at production sizing; native LivingLight fill/shader, aura and deformation are omitted",
+                  "pieceScale": {"material": str(SUNNY.relative_to(ROOT)), "rasterSide": RASTER_SIDE,
+                                 "registeredSilhouetteSide": SILHOUETTE_SIDE, "alphaBounds": SUNNY_BOUNDS,
+                                 "visibleMaximumCellFractions": VISIBLE_FRACTIONS,
+                                 "radiusOwner": "App/FallingSkyMotion.swift:StarfallMotion",
+                                 "materialOwner": "App/SkyPiece.swift:makeNode",
+                                 "registrationOwner": "App/StarCast.swift"},
                   "propSizeBandsInNormalStarBodies": {"detail": [0.5, 1], "secondary": [2, 3], "hero": [4, 6]},
                   "propScaleStatus": "starting bands, not hard quotas or a cap on whole scenery",
                   "world": "Build a rich connected place; continuity, supporting structures and depth remain behind all overlays",
@@ -385,6 +411,21 @@ def main() -> None:
                   "crop": "Hatched margins are cropped by the center-cover reference only. Do not place essential story details there; runtime uses focal-adjusted whole-image placement",
               }}
     (args.output / "native-layouts.json").write_text(json.dumps(report, indent=2, sort_keys=True) + "\n")
+    reviewer_contract = {
+        "schemaVersion": 1,
+        "status": "composition review with authored shells; no native LivingLight fill/shader, aura, UI or motion acceptance",
+        "geometryExport": provenance["sourceOwnership"],
+        "sourceSHA256": source_hashes,
+        "layouts": {key: {"width": value["width"], "height": value["height"],
+                          "board": value["board"], "cellStep": value["cellStep"]}
+                    for key, value in layouts.items() if key in REFERENCES},
+        "piece": {"assetPrefix": "SkyPiece", "rasterSide": RASTER_SIDE,
+                  "silhouetteSide": SILHOUETTE_SIDE, "diameterFractions": BODY_FRACTIONS},
+    }
+    (args.output / "reference-layouts.js").write_text(
+        "// Generated by scripts/level-design-kit.py. Native owners and source hashes are retained.\n"
+        + "window.STARFALL_LEVEL_DESIGN_KIT = "
+        + json.dumps(reviewer_contract, indent=2, sort_keys=True) + ";\n")
     print(json.dumps({"output": str(args.output), "layouts": len(exported["layouts"]),
                       "nativePanels": len(panels), "sourcePanels": len(mappings),
                       "geometryMethod": provenance["method"], "sunnySHA256": digest(SUNNY)}, indent=2))

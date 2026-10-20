@@ -1,0 +1,69 @@
+{
+  "status": "Current source-bound native captures",
+  "processing": "Exact original PNG bytes copied; no resize, recompression, compositing, pixel changes or metadata removal.",
+  "sourceBoundary": "Runtime and test files match committed d057696; documentation changes and temporary recording are excluded from runtime inputs.",
+  "environment": "Debug iOS27.0 Simulator; default text and normal motion",
+  "captures": [
+    {
+      "file": "dev-d057696__sunwheel-075__iphone-17e__default-text.png",
+      "capture": "sunwheel-phone-scene-75-score-14-normal-motion",
+      "batch": "phone",
+      "sourceCommit": "d057696934621b4e9f34a3d57f620d28fe9eb262",
+      "runtimeInputFingerprint": "dev.a15832d0fd",
+      "literalSimulatorBuildLabel": "dev.local",
+      "sha256": "9796aae65a5fc578f3d36244852bc3f9053d2c312afcb30573fd86ea056a7667",
+      "bytes": 4543552,
+      "exportMetadata": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+        "deviceName": "Starfall Landing Acceptance",
+        "exportedFileName": "25682397-E93F-450E-BBF3-698BC24A50BE.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "sunwheel-phone-scene-75-score-14-normal-motion_0_13D33FD7-0077-448F-9F89-24EFACD2A53D.png",
+        "timestamp": 1792512804.287
+      },
+      "originalRawPath": "/private/tmp/sunwheel-native/accepted-01/phone/attachments/25682397-E93F-450E-BBF3-698BC24A50BE.png"
+    },
+    {
+      "file": "dev-d057696__sunwheel-dense-075__ipad-air11__landscape.png",
+      "capture": "sunwheel-tablet-landscape-dense-075-before-native-win",
+      "batch": "tablet",
+      "sourceCommit": "d057696934621b4e9f34a3d57f620d28fe9eb262",
+      "runtimeInputFingerprint": "dev.a15832d0fd",
+      "literalSimulatorBuildLabel": "dev.local",
+      "sha256": "1d4a4f01f86d4d5d16bb7b520672e9637c26cfa7339bdcdfb23cb260c2c91b61",
+      "bytes": 6434325,
+      "exportMetadata": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+        "deviceName": "Starfall Landing Tablet Acceptance",
+        "exportedFileName": "044BAC65-FF42-4085-91BB-7E9EB826586A.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "sunwheel-tablet-landscape-dense-075-before-native-win_0_6A82ADBF-1B21-4E20-AAB2-190D26513C2B.png",
+        "timestamp": 1792512930.873
+      },
+      "originalRawPath": "/private/tmp/sunwheel-native/accepted-01/tablet/attachments/044BAC65-FF42-4085-91BB-7E9EB826586A.png"
+    },
+    {
+      "file": "dev-d057696__sunwheel-restored__ipad-air11__portrait.png",
+      "capture": "sunwheel-tablet-portrait-100-after-native-win",
+      "batch": "tablet",
+      "sourceCommit": "d057696934621b4e9f34a3d57f620d28fe9eb262",
+      "runtimeInputFingerprint": "dev.a15832d0fd",
+      "literalSimulatorBuildLabel": "dev.local",
+      "sha256": "7a955f2396199326b4026c64ec5b44ffc9db9297db3e9b6c934777de7b368d39",
+      "bytes": 5401183,
+      "exportMetadata": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+        "deviceName": "Starfall Landing Tablet Acceptance",
+        "exportedFileName": "5594D9B2-7E9E-4653-9E32-5B58DB69CD5B.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "sunwheel-tablet-portrait-100-after-native-win_0_68E584E3-E8BD-4879-9273-59A4343FEDE6.png",
+        "timestamp": 1792512950.6
+      },
+      "originalRawPath": "/private/tmp/sunwheel-native/accepted-01/tablet/attachments/5594D9B2-7E9E-4653-9E32-5B58DB69CD5B.png"
+    }
+  ],
+  "limits": "Selected stills do not establish animation, actual VoiceOver, measured contrast or physical play."
+}

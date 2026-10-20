@@ -378,6 +378,9 @@ enum SkyTerminalSpeech { case feedback, ceremony }
             if arguments.contains("--world-silver-complete-review") {
                 journey.useReviewCompletion(ObservatoryReviewFixture.game(dense: false, score: 18, challenge: .silverPools))
             }
+            if arguments.contains("--world-frostfruit-complete-review") {
+                journey.useReviewCompletion(ObservatoryReviewFixture.game(dense: false, score: 18, challenge: .frostfruitOrchard))
+            }
         }
         #endif
         #if DEBUG
@@ -808,6 +811,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         case .seedMoon: startChallenge(.seedMoon)
         case .silverPools: startChallenge(.silverPools)
         case .frostfruitOrchard: startChallenge(.frostfruitOrchard)
+        case .sunwheelMill: startChallenge(.sunwheelMill)
         }
     }
 

@@ -1,0 +1,546 @@
+{
+  "status": "passed",
+  "blockingFindings": [],
+  "sourceCommit": "49d54fcab24984c73262849b853e23e8ecd93e3e",
+  "runtimeBuildID": "dev.6fa54c5e65",
+  "literalSimulatorBuildLabel": "dev.local",
+  "reviewedUTC": "2026-10-20T17:14:57.870963+00:00",
+  "selectedCaptureCount": 22,
+  "additionalReadingCaptures": 1,
+  "visuallyInspectedOriginals": 23,
+  "tabletMap": {
+    "selectedCaptures": 11,
+    "testResult": {
+      "passedTests": 2,
+      "totalTestCount": 2,
+      "failedTests": 0,
+      "skippedTests": 0
+    },
+    "captures": [
+      {
+        "name": "map-harness-fresh-portrait",
+        "file": "E2A94DB1-6BCB-48C0-B618-FE5BD0EC7FBD.png",
+        "rawPath": "/private/tmp/sunwheel-native/map-tablet-01/routing/attachments/E2A94DB1-6BCB-48C0-B618-FE5BD0EC7FBD.png",
+        "sha256": "31487c4e2b92c43dd74055424e8be0580558cb1cf39e22c0c45975805a5ad216",
+        "bytes": 5464312,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+          "deviceName": "Starfall Landing Tablet Acceptance",
+          "exportedFileName": "E2A94DB1-6BCB-48C0-B618-FE5BD0EC7FBD.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "map-harness-fresh-portrait_0_782EF013-0053-4F6F-9535-9E350895B6F6.png",
+          "timestamp": 1792516271.923
+        },
+        "storedPixelSize": [
+          1640,
+          2360
+        ],
+        "EXIFOrientation": 1,
+        "visuallyInspectedOriginal": true
+      },
+      {
+        "name": "map-harness-twoRepairs-portrait",
+        "file": "3F7770F7-DE34-4767-B6F1-5D33A4F19005.png",
+        "rawPath": "/private/tmp/sunwheel-native/map-tablet-01/routing/attachments/3F7770F7-DE34-4767-B6F1-5D33A4F19005.png",
+        "sha256": "bebbd36d8ec319295c1b453dc32463d888d2e17d2a0486a4289372298453ea8b",
+        "bytes": 5462221,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+          "deviceName": "Starfall Landing Tablet Acceptance",
+          "exportedFileName": "3F7770F7-DE34-4767-B6F1-5D33A4F19005.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "map-harness-twoRepairs-portrait_0_31C67071-0D58-42DC-B93D-3191E3774514.png",
+          "timestamp": 1792516294.107
+        },
+        "storedPixelSize": [
+          1640,
+          2360
+        ],
+        "EXIFOrientation": 1,
+        "visuallyInspectedOriginal": true
+      },
+      {
+        "name": "map-harness-allReady-portrait",
+        "file": "E3EB650C-ACE7-4284-983D-9A5813A229EE.png",
+        "rawPath": "/private/tmp/sunwheel-native/map-tablet-01/routing/attachments/E3EB650C-ACE7-4284-983D-9A5813A229EE.png",
+        "sha256": "a18eaecb74311e5f2a2f15b9c2ced1f6f35fbcbe86b599890772003cf0c4488e",
+        "bytes": 5735733,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+          "deviceName": "Starfall Landing Tablet Acceptance",
+          "exportedFileName": "E3EB650C-ACE7-4284-983D-9A5813A229EE.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "map-harness-allReady-portrait_0_77124FB2-F347-46F9-8F8D-35D7F36A89EC.png",
+          "timestamp": 1792516322.544
+        },
+        "storedPixelSize": [
+          1640,
+          2360
+        ],
+        "EXIFOrientation": 1,
+        "visuallyInspectedOriginal": true
+      },
+      {
+        "name": "map-harness-locked-portrait",
+        "file": "33F825A5-3BC6-460E-A6EA-F0004DC8B146.png",
+        "rawPath": "/private/tmp/sunwheel-native/map-tablet-01/routing/attachments/33F825A5-3BC6-460E-A6EA-F0004DC8B146.png",
+        "sha256": "f9dbd096c9609f5135fe3220216536ff3bdbfd7183a93857230eec943fe614db",
+        "bytes": 5690740,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+          "deviceName": "Starfall Landing Tablet Acceptance",
+          "exportedFileName": "33F825A5-3BC6-460E-A6EA-F0004DC8B146.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "map-harness-locked-portrait_0_960645A0-10A5-49E0-87A0-0E3AEBEE999E.png",
+          "timestamp": 1792516350.157
+        },
+        "storedPixelSize": [
+          1640,
+          2360
+        ],
+        "EXIFOrientation": 1,
+        "visuallyInspectedOriginal": true
+      },
+      {
+        "name": "map-harness-unbuilt-portrait",
+        "file": "0559D22B-955A-48F3-B36E-BBD0148DEBAC.png",
+        "rawPath": "/private/tmp/sunwheel-native/map-tablet-01/routing/attachments/0559D22B-955A-48F3-B36E-BBD0148DEBAC.png",
+        "sha256": "c13d24007407c36b474afb2909b28fa2dcc9ad6c517a2c564e0cdd9e32542a8f",
+        "bytes": 5450257,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+          "deviceName": "Starfall Landing Tablet Acceptance",
+          "exportedFileName": "0559D22B-955A-48F3-B36E-BBD0148DEBAC.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "map-harness-unbuilt-portrait_0_C7921913-9B7C-425F-85EA-B0983F33AD92.png",
+          "timestamp": 1792516365.503
+        },
+        "storedPixelSize": [
+          1640,
+          2360
+        ],
+        "EXIFOrientation": 1,
+        "visuallyInspectedOriginal": true
+      },
+      {
+        "name": "map-harness-retained-portrait",
+        "file": "3F4AD069-228B-4B9C-A4AA-60FF055CF6B8.png",
+        "rawPath": "/private/tmp/sunwheel-native/map-tablet-01/routing/attachments/3F4AD069-228B-4B9C-A4AA-60FF055CF6B8.png",
+        "sha256": "461dc06e0e903fe2ba48f99507c789fad800e0549861e3473ad4f839c64bd260",
+        "bytes": 5454274,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+          "deviceName": "Starfall Landing Tablet Acceptance",
+          "exportedFileName": "3F4AD069-228B-4B9C-A4AA-60FF055CF6B8.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "map-harness-retained-portrait_0_AB78FA0A-9E0D-4E7E-A688-46F80483DEFC.png",
+          "timestamp": 1792516382.225
+        },
+        "storedPixelSize": [
+          1640,
+          2360
+        ],
+        "EXIFOrientation": 1,
+        "visuallyInspectedOriginal": true
+      },
+      {
+        "name": "map-harness-recovery-portrait",
+        "file": "67C9ECCB-513B-40FE-9B0D-FB4A3F7DF0BC.png",
+        "rawPath": "/private/tmp/sunwheel-native/map-tablet-01/routing/attachments/67C9ECCB-513B-40FE-9B0D-FB4A3F7DF0BC.png",
+        "sha256": "7c7531214121b0b513aefaacf2e6d9b3ed18974da8820c6b1d3e6996b8b20110",
+        "bytes": 5419902,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+          "deviceName": "Starfall Landing Tablet Acceptance",
+          "exportedFileName": "67C9ECCB-513B-40FE-9B0D-FB4A3F7DF0BC.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "map-harness-recovery-portrait_0_62B79169-0479-46EF-B130-52F046034362.png",
+          "timestamp": 1792516404.649
+        },
+        "storedPixelSize": [
+          1640,
+          2360
+        ],
+        "EXIFOrientation": 1,
+        "visuallyInspectedOriginal": true
+      },
+      {
+        "name": "map-harness-two-repairs-landscape",
+        "file": "30594651-E6D6-4290-BF98-273159391D83.png",
+        "rawPath": "/private/tmp/sunwheel-native/map-tablet-01/routing/attachments/30594651-E6D6-4290-BF98-273159391D83.png",
+        "sha256": "bca075e77bf4605ae4420ee363fe389c136d1250f78b5189cf9262d2b99c0d9d",
+        "bytes": 5618719,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+          "deviceName": "Starfall Landing Tablet Acceptance",
+          "exportedFileName": "30594651-E6D6-4290-BF98-273159391D83.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "map-harness-two-repairs-landscape_0_E96CE313-06AB-4D22-AB53-6995269D2DA1.png",
+          "timestamp": 1792516298.309
+        },
+        "storedPixelSize": [
+          1640,
+          2360
+        ],
+        "EXIFOrientation": 8,
+        "visuallyInspectedOriginal": true
+      },
+      {
+        "name": "map-harness-allReady-landscape",
+        "file": "BF6351E8-9D96-48C0-8EDB-B8E0672E42CA.png",
+        "rawPath": "/private/tmp/sunwheel-native/map-tablet-01/routing/attachments/BF6351E8-9D96-48C0-8EDB-B8E0672E42CA.png",
+        "sha256": "92511c51d23383a0617d5a154859d4867fa1c3165e0d742e1bfd98125d9994ed",
+        "bytes": 5494430,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+          "deviceName": "Starfall Landing Tablet Acceptance",
+          "exportedFileName": "BF6351E8-9D96-48C0-8EDB-B8E0672E42CA.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "map-harness-allReady-landscape_0_5F97BE1F-D182-4930-A6CD-C8FD77A7A80E.png",
+          "timestamp": 1792516326.133
+        },
+        "storedPixelSize": [
+          1640,
+          2360
+        ],
+        "EXIFOrientation": 8,
+        "visuallyInspectedOriginal": true
+      },
+      {
+        "name": "world-map-selected-locked-phone",
+        "file": "2547C09B-4051-4113-879F-339BB0A22299.png",
+        "rawPath": "/private/tmp/sunwheel-native/map-tablet-01/routing/attachments/2547C09B-4051-4113-879F-339BB0A22299.png",
+        "sha256": "75ec8859fa9f1504d8506e4df9c4f2ee65ad017808609d84b494fada88aab309",
+        "bytes": 5690471,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+          "deviceName": "Starfall Landing Tablet Acceptance",
+          "exportedFileName": "2547C09B-4051-4113-879F-339BB0A22299.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "world-map-selected-locked-phone_0_63EB4910-0366-4C4F-ADA9-1F6849655CA4.png",
+          "timestamp": 1792516216.889
+        },
+        "storedPixelSize": [
+          1640,
+          2360
+        ],
+        "EXIFOrientation": 1,
+        "visuallyInspectedOriginal": true
+      },
+      {
+        "name": "world-map-selected-locked-landscape",
+        "file": "6B32230D-E26D-48C7-9567-FB12CE329D38.png",
+        "rawPath": "/private/tmp/sunwheel-native/map-tablet-01/routing/attachments/6B32230D-E26D-48C7-9567-FB12CE329D38.png",
+        "sha256": "9ad3a3b6b9f28bef336e77439c51880ceb401168a54fb81b77709f85b01c4766",
+        "bytes": 5424587,
+        "export": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+          "deviceName": "Starfall Landing Tablet Acceptance",
+          "exportedFileName": "6B32230D-E26D-48C7-9567-FB12CE329D38.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "world-map-selected-locked-landscape_0_0AA57B3A-1B8D-464F-AED9-7BA44065A958.png",
+          "timestamp": 1792516251.176
+        },
+        "storedPixelSize": [
+          1640,
+          2360
+        ],
+        "EXIFOrientation": 8,
+        "visuallyInspectedOriginal": true
+      }
+    ],
+    "observations": [
+      "All eleven original exports individually viewed by parent, hashes/bytes and metadata independently checked.",
+      "AllReady shows complete glowing five-vane Sunwheel, lit workshop and golden outlet flow in portrait and landscape; marker, selected name and revisit action are fully visible.",
+      "Locked Sunwheel uses the damaged sprite and lock, with Restore Frostfruit Orchard first and no visit action; physical taps and rotation passed.",
+      "Mixed repairs visibly distinguish bright restored Lantern/Ribbon from dormant ready Kite Harbor and later locked islands.",
+      "Retained Continue and Start again remain readable. Recovery prose is complete and does not overlap the visit action. Unbuilt Bell Choir remains unavailable with no invented island.",
+      "No visible rectangular alpha matte, center-clearing mask, pin detachment or overlap between the selected island and pinned action panel."
+    ],
+    "nonBlockingObservations": [
+      "Offscreen unselected island rows and labels are clipped at the scrolling viewport as expected; Scroll to explore remains visible.",
+      "The legacy capture name world-map-selected-locked-phone is a portrait iPad image in this explicitly selected iPad run.",
+      "Landscape PNGs retain their original stored dimensions and EXIF orientation; displayed orientation was inspected without pixel conversion."
+    ]
+  },
+  "compactReportSHA256": "f39fc6a27fb71991c4ed78a074a8e80bba2bfe6bf7380e6ca76be05473be03b0",
+  "compact": {
+    "schemaVersion": 1,
+    "reviewedAtUTC": "2026-10-20T17:12:30.896693+00:00",
+    "reviewType": "Sunwheel Mill final modular-map integration compact-phone original still-image review",
+    "status": "passed",
+    "blockingFindings": [],
+    "sourceCommit": "49d54fcab24984c73262849b853e23e8ecd93e3e",
+    "runtimeBuildID": "dev.6fa54c5e65",
+    "derivedSourceFingerprint": "dev.6fa54c5e65",
+    "literalSimulatorBuildID": "dev.local",
+    "identityClarification": "The verification record dev.6fa54c5e65 is the derived source fingerprint, not the parent-confirmed literal Simulator Info.plist build identifier dev.local.",
+    "captureManifest": "/private/tmp/sunwheel-native/map-01/compact/captures-export-correction.json",
+    "captureManifestFileSHA256": "6d7360c7e8558feafb80c6e94808f8caf294dcc71e8ee3b3ce1074713adc47a0",
+    "rawExportManifestSHA256": "577d335c8f999a2fc9c582ab795a5230ade4765f14d6f9b44a85388e38c5d197",
+    "verificationRecord": "/private/tmp/sunwheel-native/map-01/compact/verification-export-correction.json",
+    "verificationRecordSHA256": "4599a8035c91d3236541a0e04aacab642e50c5a598104134cb959d833596e563",
+    "testResult": {
+      "selectedTests": 2,
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "xcodebuildExitCode": 0,
+      "source": "parent-owned original native run and corrected export selection record"
+    },
+    "exportCorrection": {
+      "originalVerificationPath": "/private/tmp/sunwheel-native/map-01/compact/verification.json",
+      "originalVerificationSHA256": "c7810f7e644f54032d6e8c5e285eca47bd85b0eef4dfbb8bafcc450b389ae4d7",
+      "originalError": "Expected exactly one named attachment map-harness-recovery-extra-large-places; found 0",
+      "resolution": "The passing test followed the extra-large map branch. The selector was corrected to the existing exact map-harness-recovery-extra-large-map attachment name. No Apple rerun, source edit, assertion change or PNG mutation was made.",
+      "originalEvidenceHashesIndependentlyReverified": true
+    },
+    "requiredCaptureCount": 11,
+    "requiredCaptureBytes": 14921520,
+    "additionalReadingCaptureCount": 1,
+    "totalCaptureCount": 12,
+    "hashVerifiedCount": 12,
+    "visuallyInspectedCount": 12,
+    "uniqueCaptureHashes": 12,
+    "totalCaptureBytes": 15669831,
+    "summary": [
+      "All eleven corrected required captures and the one additional reading-1 frame were opened as original PNGs and verified against retained hashes; all are 750 by 1334 portrait images.",
+      "Sunwheel Mill has a complete, richly detailed restored island at a consistent map scale. Its golden vanes, open outlet, waterfall, selected check marker and Revisit action remain clear in the compact viewport.",
+      "The seven review states display coherent selection/status/availability, including locked Frostfruit, unbuilt Bell Choir, retained Continue/Start again and recovery actions.",
+      "At extra-large text, the retained and recovery cards fit with distinct controls. The recovery layout uses the valid map branch, with a complete island above the card.",
+      "At the largest accessibility text size, Places provides vertical reading space. Reading-0 and reading-1 overlap and together show the complete recovery paragraph through Your current sky is unchanged, without horizontal clipping or dropped words."
+    ],
+    "nonBlockingObservations": [
+      "Neighbor destination labels may be partly clipped at the top edge of the scrolling map; the selected island/title and pinned status/actions are complete.",
+      "The unbuilt Bell Choir inspection intentionally keeps the existing map viewport rather than drawing an unavailable island.",
+      "The largest-text reading frames do not include the below-fold Visit action; reachability and return-state assertions are established by the passing native test rather than inferred from these screenshots."
+    ],
+    "limitations": [
+      "Static image review only; this does not establish motion quality or actual VoiceOver operation.",
+      "Development Simulator evidence only; no physical installation is claimed.",
+      "Compact portrait map and text-layout review only. Parent independently reviews tablet map captures and separate gameplay-board evidence.",
+      "Original raw PNGs and metadata were retained; view_image display was read-only."
+    ],
+    "captures": [
+      {
+        "index": 0,
+        "name": "map-harness-fresh-portrait",
+        "requiredCapture": true,
+        "rawPath": "/private/tmp/sunwheel-native/map-01/compact/attachments/77A59F03-DC29-489E-ABBD-3DA50AB73523.png",
+        "sha256": "0827e18b0b85a8e0e76bdfb5318a479aef75283e6890069063b5ee14a77a57c1",
+        "bytes": 1495602,
+        "storedPixelDimensions": [
+          750,
+          1334
+        ],
+        "exifOrientation": 1,
+        "hashVerified": true,
+        "visuallyInspectedOriginal": true,
+        "status": "passed",
+        "findings": "Fresh: complete Lantern Landing island, selected marker and title, Ready to restore status and Visit action fit. Neighbor label at the viewport top belongs to the scrolling route."
+      },
+      {
+        "index": 1,
+        "name": "map-harness-twoRepairs-portrait",
+        "requiredCapture": true,
+        "rawPath": "/private/tmp/sunwheel-native/map-01/compact/attachments/30874F75-26B0-4547-A4D6-D3C61F1F6FEA.png",
+        "sha256": "256d45c7c8060d1db01aef8e039fdcb26aa928dd8b0ef13e5bbc106cc95335d1",
+        "bytes": 1504967,
+        "storedPixelDimensions": [
+          750,
+          1334
+        ],
+        "exifOrientation": 1,
+        "hashVerified": true,
+        "visuallyInspectedOriginal": true,
+        "status": "passed",
+        "findings": "Two repairs: Kite Harbor island/selected marker and title fit; Ready to restore and Visit Kite Harbor remain fully readable. Seed Moon neighbor label is clipped only by the scroll viewport."
+      },
+      {
+        "index": 2,
+        "name": "map-harness-allReady-portrait",
+        "requiredCapture": true,
+        "rawPath": "/private/tmp/sunwheel-native/map-01/compact/attachments/210BF5D0-038E-4D5F-AB0E-5CC72E655822.png",
+        "sha256": "df112652ea366474112756699fc3ae14ac6e3a528165a0d86595defd6778f272",
+        "bytes": 1569370,
+        "storedPixelDimensions": [
+          750,
+          1334
+        ],
+        "exifOrientation": 1,
+        "hashVerified": true,
+        "visuallyInspectedOriginal": true,
+        "status": "passed",
+        "findings": "All ready: bespoke restored Sunwheel Mill island appears at matching scale, with all five golden vanes, open outlet and golden fall visible. Check marker, title, Restored status and Revisit action are clear."
+      },
+      {
+        "index": 3,
+        "name": "map-harness-locked-portrait",
+        "requiredCapture": true,
+        "rawPath": "/private/tmp/sunwheel-native/map-01/compact/attachments/36676330-500D-4EAD-936B-3998B0093E04.png",
+        "sha256": "0d542a43853adb4dfacb5ee0f3f874db30970b14c1cd7fce45d34e49ddea210c",
+        "bytes": 1603537,
+        "storedPixelDimensions": [
+          750,
+          1334
+        ],
+        "exifOrientation": 1,
+        "hashVerified": true,
+        "visuallyInspectedOriginal": true,
+        "status": "passed",
+        "findings": "Locked: complete Frostfruit Orchard island with lock marker and Restore Silver Pools first message. No Visit action appears; Sunwheel neighboring label is visible above the scroll selection."
+      },
+      {
+        "index": 4,
+        "name": "map-harness-unbuilt-portrait",
+        "requiredCapture": true,
+        "rawPath": "/private/tmp/sunwheel-native/map-01/compact/attachments/9D4FDD8B-7C6A-42EE-837D-E7683294AA51.png",
+        "sha256": "92590a17d63079e926f023de81561d5467f257ac588d6d54e0aee9589933d7db",
+        "bytes": 1491362,
+        "storedPixelDimensions": [
+          750,
+          1334
+        ],
+        "exifOrientation": 1,
+        "hashVerified": true,
+        "visuallyInspectedOriginal": true,
+        "status": "passed",
+        "findings": "Unbuilt: Bell Choir is identified as Not yet available with readable explanatory prose and no Visit action. Existing unselected islands remain on the map; no invented Bell Choir island or selected marker appears."
+      },
+      {
+        "index": 5,
+        "name": "map-harness-retained-portrait",
+        "requiredCapture": true,
+        "rawPath": "/private/tmp/sunwheel-native/map-01/compact/attachments/3DA87B9B-2B1B-431A-80D0-5C59C21802CA.png",
+        "sha256": "f3d76c4cb5e5ef1929cb4db63ff5401a7633053b392f5263075446f0bf3818ab",
+        "bytes": 1447080,
+        "storedPixelDimensions": [
+          750,
+          1334
+        ],
+        "exifOrientation": 1,
+        "hashVerified": true,
+        "visuallyInspectedOriginal": true,
+        "status": "passed",
+        "findings": "Retained: Kite Harbor island and title remain fully visible. Continue is primary; Start again is separately readable and spaced beneath it."
+      },
+      {
+        "index": 6,
+        "name": "map-harness-recovery-portrait",
+        "requiredCapture": true,
+        "rawPath": "/private/tmp/sunwheel-native/map-01/compact/attachments/36E08363-A89A-4FB0-B509-68D3FB0AAEB3.png",
+        "sha256": "4ca59b9497b6bbebff43bdc0617d00f400fd3a9e8aec0c9e821ad5c9a112fcc6",
+        "bytes": 1456856,
+        "storedPixelDimensions": [
+          750,
+          1334
+        ],
+        "exifOrientation": 1,
+        "hashVerified": true,
+        "visuallyInspectedOriginal": true,
+        "status": "passed",
+        "findings": "Recovery: all three recovery-message sentences are visible above Ribbon Crossing, Ready to restore and Visit action. Island and selected marker remain clear and separate from the pinned card."
+      },
+      {
+        "index": 7,
+        "name": "map-harness-retained-extra-large",
+        "requiredCapture": true,
+        "rawPath": "/private/tmp/sunwheel-native/map-01/compact/attachments/1E493505-5EB3-4513-A151-FEF2C6DF1D15.png",
+        "sha256": "803927ab250e3245d1091ed966fac8c5fad559e8a95c7a7330bcc4c645fffd4d",
+        "bytes": 1436875,
+        "storedPixelDimensions": [
+          750,
+          1334
+        ],
+        "exifOrientation": 1,
+        "hashVerified": true,
+        "visuallyInspectedOriginal": true,
+        "status": "passed",
+        "findings": "Retained extra large: enlarged title/status and Continue/Start again remain contained and distinct; full Kite Harbor island fits the remaining viewport."
+      },
+      {
+        "index": 8,
+        "name": "map-harness-recovery-extra-large-map",
+        "requiredCapture": true,
+        "rawPath": "/private/tmp/sunwheel-native/map-01/compact/attachments/7A2BC366-5CDE-4E3C-B337-3F2ED10D39BF.png",
+        "sha256": "9dea19e0e846a584ec9ee5d3c0d6fc79f86c02bb69c1aa0c1bca62663f7bb8ca",
+        "bytes": 1376918,
+        "storedPixelDimensions": [
+          750,
+          1334
+        ],
+        "exifOrientation": 1,
+        "hashVerified": true,
+        "visuallyInspectedOriginal": true,
+        "status": "passed",
+        "findings": "Recovery extra large map: complete four-line recovery message, Ribbon Crossing title/status and taller Visit card fit. The map branch keeps the island and marker fully visible above the pinned card."
+      },
+      {
+        "index": 9,
+        "name": "map-harness-recovery-largest-text-reading-0",
+        "requiredCapture": true,
+        "rawPath": "/private/tmp/sunwheel-native/map-01/compact/attachments/8D3F7F77-8E75-463E-8D1A-D0AB3CB95881.png",
+        "sha256": "533485886e1f51bf509d20a8a67847377e2d82df199ab5786fa99ea1029b4ab6",
+        "bytes": 790646,
+        "storedPixelDimensions": [
+          750,
+          1334
+        ],
+        "exifOrientation": 1,
+        "hashVerified": true,
+        "visuallyInspectedOriginal": true,
+        "status": "passed",
+        "findings": "Largest-text reading 0: Places fallback has no ineffective Map toggle. The recovery paragraph starts at Some world progress could not be read and continues through saved round has been, with the next line partly at the scroll edge. All line widths fit without horizontal clipping."
+      },
+      {
+        "index": 10,
+        "name": "map-harness-recovery-largest-text",
+        "requiredCapture": true,
+        "rawPath": "/private/tmp/sunwheel-native/map-01/compact/attachments/8685D638-BC2F-419C-B2C3-F7C721EF10CD.png",
+        "sha256": "a7135077bec45ad865e8e6098dd5c898945bc18179e3e714c873aeec614796fa",
+        "bytes": 748307,
+        "storedPixelDimensions": [
+          750,
+          1334
+        ],
+        "exifOrientation": 1,
+        "hashVerified": true,
+        "visuallyInspectedOriginal": true,
+        "status": "passed",
+        "findings": "Largest-text terminal reading frame: overlap begins at read. Any completed saved round and reaches recovered. Your current sky is unchanged. The final sentence fits completely; header remains separate and readable."
+      },
+      {
+        "index": 11,
+        "name": "map-harness-recovery-largest-text-reading-1",
+        "requiredCapture": false,
+        "rawPath": "/private/tmp/sunwheel-native/map-01/compact/attachments/C14D8AD2-8E1A-420C-B46F-587CD7F7BD34.png",
+        "sha256": "18e46292180b5b6a7e62d925e388f859257f5dff5ae94a9e667f3044580260f3",
+        "bytes": 748311,
+        "storedPixelDimensions": [
+          750,
+          1334
+        ],
+        "exifOrientation": 1,
+        "hashVerified": true,
+        "visuallyInspectedOriginal": true,
+        "status": "passed",
+        "findings": "Additional reading 1: the overlapping physical-pan frame likewise shows read. Any completed saved round has been recovered. Your current sky is unchanged. No omitted intermediate text or horizontally cut words are visible."
+      }
+    ]
+  },
+  "limits": [
+    "Still-image review and recorded native assertions only; no continuous motion, measured contrast, actual VoiceOver or physical-device gameplay claim.",
+    "Map frames do not renew board dense49 coverage."
+  ]
+}

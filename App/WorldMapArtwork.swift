@@ -67,7 +67,12 @@ struct WorldMapContent: Equatable {
                    body: CGRect(x: 26, y: 31, width: 1221, height: 1188),
                    marker: CGPoint(x: 0.50, y: 0.71), // Front path below the fruit and collecting trays.
                    leading: CGPoint(x: 0.055, y: 0.59), trailing: CGPoint(x: 0.95, y: 0.56),
-                   upper: CGPoint(x: 0.88, y: 0.41), lower: CGPoint(x: 0.52, y: 0.75))
+                   upper: CGPoint(x: 0.88, y: 0.41), lower: CGPoint(x: 0.52, y: 0.75)),
+            island(.sunwheelMill, name: "Sunwheel", source: CGSize(width: 1254, height: 1254),
+                   body: CGRect(x: 23, y: 18, width: 1218, height: 1215),
+                   marker: CGPoint(x: 0.50, y: 0.65), // Front stone path below the workbench.
+                   leading: CGPoint(x: 0.10, y: 0.57), trailing: CGPoint(x: 0.94, y: 0.58),
+                   upper: CGPoint(x: 0.78, y: 0.32), lower: CGPoint(x: 0.53, y: 0.71))
         ]
         return Self(
             islands: islands,
