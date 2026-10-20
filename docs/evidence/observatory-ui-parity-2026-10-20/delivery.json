@@ -1,0 +1,41 @@
+{
+  "recordedAtUTC": "2026-10-20T13:55:17.022822+00:00",
+  "publication": {
+    "pullRequest": "https://github.com/lbeezr/starfall/pull/185",
+    "codeCommit": "a360fd7f5aad5d1fec61eb726720714e60f253d4",
+    "mainMergeCommit": "386b2f8fad44d1f9c8379a00b03af6b10ca9861c",
+    "tree": "d0f9d22cb7a5d2fe32526f401324501b74538854",
+    "cleanLocalCheckoutVerified": true,
+    "localAndRemoteTreesMatched": true,
+    "runtime": "dev.4bcedba5e6"
+  },
+  "delivery": {
+    "command": "python3 scripts/device-update.py run",
+    "status": "Installed dev.4bcedba5e6 from main 386b2f8fad",
+    "bundle": "com.starfall.prototype",
+    "buildID": "dev.4bcedba5e6",
+    "source": "386b2f8fad44d1f9c8379a00b03af6b10ca9861c",
+    "bundleVersion": "1",
+    "validation": {
+      "coreTests": "passed",
+      "signature": "verified",
+      "mainCIAtInstall": "pending"
+    },
+    "device": "Original configured paired iPhone 16 Pro Max",
+    "deviceOS": "iOS 26.6.2",
+    "observedTransport": "wired",
+    "installedIdentityVerified": true,
+    "automaticallyLaunched": false,
+    "playerDataReset": false,
+    "coreTests": {
+      "passed": 184,
+      "failed": 0
+    },
+    "rawReceiptSHA256": "d4373241ba9f6965c2d7b22ba5b34e5ea07c73f3810efdf59fca901f9156023a"
+  },
+  "limits": [
+    "Verified installation is not physical-play acceptance.",
+    "Actual VoiceOver and iOS17 runtime acceptance remain open.",
+    "Remote full native matrix was not run by this delivery."
+  ]
+}
