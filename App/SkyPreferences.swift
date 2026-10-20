@@ -42,7 +42,7 @@ struct SkyFeelSection: View {
     @Binding var haptics: Bool
     @Binding var calm: Bool
     var body: some View {
-        Section(SkyCopy.text(.preferencesTitle)) {
+        SkyMenuSection(SkyCopy.text(.preferencesTitle)) {
             SkyPreferenceToggle(title: SkyCopy.text(.preferencesSound), symbol: "speaker.wave.2", value: $sound, identifier: "experiment.sound")
             SkyPreferenceToggle(title: SkyCopy.text(.preferencesHaptics), symbol: "waveform", value: $haptics, identifier: "experiment.haptics")
             SkyPreferenceToggle(title: SkyCopy.text(.preferencesCalm), symbol: "moon", value: $calm, identifier: "experiment.calm")
@@ -56,21 +56,25 @@ struct SkyWelcomePreferences: View {
     @Binding var calm: Bool
     let context: SkyHelpContext
     let done: () -> Void
+    @Environment(\.dynamicTypeSize) private var textSize
     var body: some View {
         NavigationStack {
-            Form {
+            SkyMenuSurface {
                 SkyFeelSection(sound: $sound, haptics: $haptics, calm: $calm)
-                Section {
-                    NavigationLink { SkyHowToPlay(context: context, done: done).toolbar { SkyMenuDone(done: done) } }
-                        label: { Label(SkyCopy.text(.menuHelp), systemImage: "questionmark.circle") }
-                        .accessibilityIdentifier("experiment.help")
-                }
+                NavigationLink { SkyHowToPlay(context: context, done: done).toolbar { SkyMenuDone(done: done) } }
+                    label: { SkyMenuRow(SkyCopy.text(.menuHelp), glyph: .help, disclosure: true) }
+                    .buttonStyle(StarfallButtonStyle(role: .quiet))
+                    .accessibilityIdentifier("experiment.help")
             }
-            .scrollContentBackground(.hidden).background(StarfallTheme.Colors.skyTop)
             .navigationTitle(SkyCopy.text(.menuSettings)).navigationBarTitleDisplayMode(.inline)
             .toolbar { SkyMenuDone(done: done) }
         }
-        .tint(StarfallTheme.Colors.actionPrimary).presentationDetents([.large])
+        .tint(StarfallTheme.Colors.actionPrimary)
+        .preferredColorScheme(.dark)
+        .presentationBackground(StarfallTheme.Colors.skyTop)
+        .presentationDetents(textSize.isAccessibilitySize ? [.large] : [.medium, .large])
+        .presentationContentInteraction(.scrolls)
+        .presentationDragIndicator(.visible)
     }
 }
 
@@ -78,7 +82,9 @@ struct SkyMenuDone: ToolbarContent {
     let done: () -> Void
     var body: some ToolbarContent {
         ToolbarItem(placement: .confirmationAction) {
-            Button(SkyCopy.text(.actionDone), action: done).accessibilityIdentifier("experiment.done")
+            Button(SkyCopy.text(.actionDone), action: done)
+                .font(StarfallTheme.Typography.action)
+                .accessibilityIdentifier("experiment.done")
         }
     }
 }
@@ -87,43 +93,46 @@ struct SkyHowToPlay: View {
     let context: SkyHelpContext
     let done: () -> Void
     var body: some View {
-        List {
-            Section(SkyCopy.text(.practiceTitle)) {
-                NavigationLink(SkyCopy.text(.practiceTitle)) { SkyTutorialView(done: done) }
+        SkyMenuSurface {
+            SkyMenuSection(SkyCopy.text(.practiceTitle)) {
+                NavigationLink { SkyTutorialView(done: done) } label: {
+                    SkyMenuRow(SkyCopy.text(.practiceTitle), glyph: .tutorial, disclosure: true)
+                }
+                    .buttonStyle(StarfallButtonStyle(role: .quiet))
                     .accessibilityIdentifier("sky.learn")
             }
-            Section(SkyCopy.text(.helpTapTitle)) {
+            SkyMenuSection(SkyCopy.text(.helpTapTitle)) {
                 Text(SkyCopy.text(.helpTap))
                 Text(SkyCopy.text(.helpIdentity))
             }
             if context.criticalMass {
-                Section(SkyCopy.text(.massTitle)) {
+                SkyMenuSection(SkyCopy.text(.massTitle)) {
                     Text(SkyCopy.text(.massHelp))
                     Text(SkyCopy.text(.massHelpCollapse))
                     Text(SkyCopy.text(.massHelpValue))
                 }
             }
-            Section(SkyCopy.text(.helpTraceTitle)) {
+            SkyMenuSection(SkyCopy.text(.helpTraceTitle)) {
                 Text(SkyCopy.text(.helpTrace))
                 Text(SkyCopy.text(.helpBranch))
                 Text(SkyCopy.text(.helpAccessibleTrace))
             }
-            Section(SkyCopy.text(.helpShowerTitle)) {
+            SkyMenuSection(SkyCopy.text(.helpShowerTitle)) {
                 if context.openingCascade { Text(SkyCopy.text(.helpOpening)) }
                 Text(SkyCopy.text(.helpForecast))
                 Text(SkyCopy.text(.helpGrowth))
             }
             if context.opalStorms {
-                Section(SkyCopy.text(.helpOpalTitle)) {
+                SkyMenuSection(SkyCopy.text(.helpOpalTitle)) {
                     Text(SkyCopy.text(.helpOpal))
                 }
-                Section(SkyCopy.text(.helpStormTitle)) {
+                SkyMenuSection(SkyCopy.text(.helpStormTitle)) {
                     Text(SkyCopy.text(.helpStorm))
                     Text(SkyCopy.text(.helpRetained))
                 }
             }
             if !context.pocketedDusk && !context.challenge {
-                Section(SkyCopy.text(.helpDuskTitle)) {
+                SkyMenuSection(SkyCopy.text(.helpDuskTitle)) {
                     if context.duskRule == .legacy {
                         Text(SkyCopy.text(.helpDarkLegacy))
                     } else {
@@ -132,39 +141,108 @@ struct SkyHowToPlay: View {
                     }
                 }
             }
-            Section(SkyCopy.text(.helpPauseTitle)) {
+            SkyMenuSection(SkyCopy.text(.helpPauseTitle)) {
                 Text(SkyCopy.text(.helpPause))
             }
             if context.arranging {
-                Section(SkyCopy.text(.helpArrangeTitle)) {
+                SkyMenuSection(SkyCopy.text(.helpArrangeTitle)) {
                     Text(SkyCopy.text(.helpSwap))
                     Text(SkyCopy.text(.helpRecipe))
                     Text(SkyCopy.text(.helpRelay))
                 }
             }
-            Section(context.restorationChallenge?.helpTitle ?? SkyCopy.text(.helpChallengeTitle)) {
+            SkyMenuSection(context.restorationChallenge?.helpTitle ?? SkyCopy.text(.helpChallengeTitle)) {
                 Text(context.restorationChallenge?.helpText ?? SkyCopy.text(.helpChallenge))
             }
         }.navigationTitle(SkyCopy.text(.menuHelp))
     }
 }
 
-/// Large reading sizes get a whole native toggle row rather than a squeezed switch.
+/// The authored treatment keeps the native toggle's value and accessibility semantics.
 struct SkyPreferenceToggle: View {
     let title: String
     let symbol: String
     @Binding var value: Bool
     let identifier: String
-    @Environment(\.dynamicTypeSize) private var size
     var body: some View {
-        Group {
-            if size.isAccessibilitySize {
-                Toggle(isOn: $value) { Label(title, systemImage: symbol).frame(maxWidth: .infinity, alignment: .leading) }
-                    .toggleStyle(.button)
-            } else {
-                Toggle(isOn: $value) { Label(title, systemImage: symbol) }.toggleStyle(.switch)
+        Toggle(isOn: $value) {
+            HStack(spacing: StarfallTheme.Spacing.medium) {
+                ObservatoryIcon(systemName: symbol, size: 20)
+                    .foregroundStyle(StarfallTheme.Dialogue.brass)
+                Text(title).fixedSize(horizontal: false, vertical: true)
             }
-        }.frame(minHeight: StarfallTheme.Layout.minimumTarget)
+        }
+            .toggleStyle(ObservatoryToggleStyle())
+            .frame(minHeight: StarfallTheme.Layout.minimumTarget)
             .accessibilityIdentifier(identifier)
+    }
+}
+
+/// One scrolling reading instrument shared by settings, help and balance.
+/// The system sheet owns its bottom anchoring and the navigation bar owns Done.
+struct SkyMenuSurface<Content: View>: View {
+    @ViewBuilder let content: Content
+
+    var body: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: StarfallTheme.Spacing.section) {
+                content
+            }
+            .font(StarfallTheme.Typography.body)
+            .foregroundStyle(StarfallTheme.Colors.textPrimary)
+            .frame(maxWidth: StarfallTheme.Layout.menuWidth, alignment: .leading)
+            .observatoryReadingPanel()
+            .padding(StarfallTheme.Spacing.small)
+            .frame(maxWidth: .infinity)
+        }
+        .scrollBounceBehavior(.basedOnSize)
+        .background(StarfallTheme.Colors.skyTop)
+        .toolbarBackground(StarfallTheme.Colors.skyTop, for: .navigationBar)
+    }
+}
+
+struct SkyMenuSection<Content: View>: View {
+    let title: String
+    @ViewBuilder let content: Content
+
+    init(_ title: String, @ViewBuilder content: () -> Content) {
+        self.title = title
+        self.content = content()
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: StarfallTheme.Spacing.medium) {
+            Text(title)
+                .font(StarfallTheme.Typography.skyHeading)
+                .foregroundStyle(StarfallTheme.Dialogue.brass)
+                .fixedSize(horizontal: false, vertical: true)
+                .accessibilityAddTraits(.isHeader)
+            content
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+}
+
+struct SkyMenuRow: View {
+    let title: String
+    let glyph: ObservatoryGlyph
+    var disclosure = false
+
+    init(_ title: String, glyph: ObservatoryGlyph, disclosure: Bool = false) {
+        self.title = title
+        self.glyph = glyph
+        self.disclosure = disclosure
+    }
+
+    var body: some View {
+        HStack(spacing: StarfallTheme.Spacing.medium) {
+            ObservatoryIcon(glyph, size: 20)
+                .foregroundStyle(StarfallTheme.Dialogue.brass)
+            Text(title).fixedSize(horizontal: false, vertical: true)
+            Spacer(minLength: StarfallTheme.Spacing.small)
+            if disclosure { ObservatoryIcon(.next, size: 16) }
+        }
+        .frame(maxWidth: .infinity, minHeight: StarfallTheme.Layout.minimumTarget, alignment: .leading)
+        .multilineTextAlignment(.leading)
     }
 }

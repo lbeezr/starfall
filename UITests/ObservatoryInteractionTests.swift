@@ -585,11 +585,16 @@ final class LandingPlaceInteractionTests: XCTestCase {
             let next = app.buttons["experiment.next"]
             for _ in 0..<8 where !next.isHittable {
                 let guide = app.staticTexts["experiment.message"]
+                let apron = app.buttons["experiment.cell.0.3"].frame.maxY + 24
+                // The header is fixed. Once the board has scrolled upward, use
+                // its visible empty apron instead of dragging over that header.
                 let startY = guide.frame.minY < app.frame.maxY-100
                     ? min(app.frame.maxY-60,max(app.frame.midY,guide.frame.minY+60))
+                    : apron < app.frame.maxY-40 ? apron
                     : app.buttons["experiment.cell.6.3"].frame.minY-16
+                let endY = app.otherElements["sky.header"].frame.maxY + 8
                 app.coordinate(withNormalizedOffset:.zero).withOffset(CGVector(dx:app.frame.midX,dy:startY))
-                    .press(forDuration:0.05,thenDragTo:app.coordinate(withNormalizedOffset:.zero).withOffset(CGVector(dx:app.frame.midX,dy:100)))
+                    .press(forDuration:0.05,thenDragTo:app.coordinate(withNormalizedOffset:.zero).withOffset(CGVector(dx:app.frame.midX,dy:endY)))
             }
             XCTAssertTrue(next.isHittable)
             XCTAssertGreaterThanOrEqual(next.frame.height,44)

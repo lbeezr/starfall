@@ -1,5 +1,9 @@
 # Evidence index
 
+[Observatory native UI integration](observatory-ui-native-2026-10-19/README.md) records development adoption in the normal app, source manifests, exact native verification coverage and canonical delivery status. Its [capture index](observatory-ui-native-2026-10-19/captures.json) identifies inspected UI images and their exact source inputs.
+
+[Observatory UI asset kit](observatory-ui-kit-2026-10-19/README.md) records generated source art, twenty authored utility glyphs, reproducible exports, geometry and browser specimen checks. The native integration record above owns subsequent app import and screen validation.
+
 [Silver Pools](silver-pools-2026-10-19/README.md) records development acceptance of the fifth challenge: all fifteen native states, dense input, rotation, phone/compact interaction, largest text/system Reduce Motion, recorded normal completion and Release. Publication and canonical installation are verified; actual VoiceOver and physical play remain separate.
 
 [CI recovery](ci-recovery-2026-10-19/README.md) records simulator setup, UI test and screenshot-readiness fixes in verified batches. The complete local probe passes on its recorded source; full current-source remote development acceptance remains open.

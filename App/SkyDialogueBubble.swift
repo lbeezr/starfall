@@ -12,37 +12,49 @@ struct SkyDialogueBubble<Actions: View>: View {
     @Environment(\.dynamicTypeSize) private var textSize
 
     var body: some View {
-        VStack(alignment: .leading, spacing: StarfallTheme.Spacing.small) {
-            if maximumHeight != nil {
-                ViewThatFits(in: .vertical) {
-                    introduction.fixedSize(horizontal: false, vertical: true)
-                    ScrollView { introduction }.clipped()
-                }.frame(maxHeight: maximumHeight).clipped()
-            } else { introduction }
-            actions
-        }
-        .padding(embedded ? 0 : StarfallTheme.Spacing.medium)
-        .background {
-            if !embedded { SkySpeechShape(tail: !textSize.isAccessibilitySize && !compact)
-                .fill(StarfallTheme.Dialogue.surface)
-                .overlay {
-                    SkySpeechShape(tail: !textSize.isAccessibilitySize && !compact)
-                        .stroke(StarfallTheme.Dialogue.brass.opacity(0.8), lineWidth: 1)
-                }
-                .shadow(color: StarfallTheme.Colors.skyTop.opacity(0.55), radius: 5, y: 3) }
-        }
+        fittedContent
         .frame(maxHeight: maximumHeight, alignment: .bottom)
-        .padding(.leading, textSize.isAccessibilitySize || compact || embedded ? 0 : StarfallTheme.Dialogue.portraitOverlap)
         .frame(maxWidth: StarfallTheme.Layout.menuWidth)
         .accessibilityElement(children: .contain)
         .accessibilityIdentifier("sky.dialogue")
     }
+
+    private var fittedContent: some View {
+        Group {
+            if let maximumHeight {
+                // Fit the complete message and actions first. Only the introduction
+                // scrolls when constrained, so native actions keep their full targets.
+                ViewThatFits(in: .vertical) {
+                    messageSurface(scrolling: false)
+                        .fixedSize(horizontal: false, vertical: true)
+                    messageSurface(scrolling: true)
+                }
+                .frame(maxHeight: maximumHeight, alignment: .bottom)
+            } else {
+                messageSurface(scrolling: false)
+            }
+        }
+    }
+
+    @ViewBuilder private func messageSurface(scrolling: Bool) -> some View {
+        if embedded { messageContent(scrolling: scrolling) }
+        else { messageContent(scrolling: scrolling).starfallPanel(inset: StarfallTheme.Spacing.medium) }
+    }
+
+    private func messageContent(scrolling: Bool) -> some View {
+        VStack(alignment: .leading, spacing: StarfallTheme.Spacing.small) {
+            if scrolling {
+                ScrollView { introduction }
+                    .scrollBounceBehavior(.basedOnSize)
+            } else { introduction }
+            actions.fixedSize(horizontal: false, vertical: true)
+        }
+    }
+
     private var introduction: some View {
             HStack(alignment: .top, spacing: StarfallTheme.Spacing.small) {
                 if !textSize.isAccessibilitySize && !compact {
-                    SkyDialoguePortrait(speaker: line.speaker, side: embedded ? StarfallTheme.Landing.portraitSide : StarfallTheme.Dialogue.portraitSide, embedded: embedded)
-                        .padding(.leading, embedded ? 0 : -StarfallTheme.Dialogue.portraitOverlap)
-                        .padding(.top, embedded ? 0 : -StarfallTheme.Spacing.small)
+                    SkyDialoguePortrait(speaker: line.speaker, side: StarfallTheme.Landing.portraitSide, embedded: true)
                 }
                 VStack(alignment: .leading, spacing: StarfallTheme.Spacing.compact) {
                     Text(line.speaker.name)
@@ -75,24 +87,9 @@ struct SkyDialoguePortrait: View {
             .frame(width: side, height: side)
             .background {
                 if !embedded { Circle().fill(StarfallTheme.Dialogue.surface)
-                    .overlay(Circle().stroke(StarfallTheme.Dialogue.brass.opacity(0.8), lineWidth: 1)) }
+                    .overlay(Circle().stroke(StarfallTheme.Dialogue.brass.opacity(0.45), lineWidth: 1)) }
             }
             .accessibilityHidden(true)
-    }
-}
-
-/// The small leading tail joins the portrait; text remains inside the rounded body.
-private struct SkySpeechShape: Shape {
-    let tail: Bool
-    func path(in rect: CGRect) -> Path {
-        var path = Path(roundedRect: rect, cornerRadius: StarfallTheme.Dialogue.corner)
-        if tail {
-            path.move(to: CGPoint(x: 1, y: 26))
-            path.addQuadCurve(to: CGPoint(x: -9, y: 38), control: CGPoint(x: -2, y: 34))
-            path.addQuadCurve(to: CGPoint(x: 1, y: 46), control: CGPoint(x: -2, y: 42))
-            path.closeSubpath()
-        }
-        return path
     }
 }
 
@@ -141,8 +138,10 @@ private struct SkySpeechShape: Shape {
                         }
                     }
                 } else {
-                    Button { session.reopen() } label: { SkyDialoguePortrait(speaker: line.speaker, side: 48) }
-                        .buttonStyle(.plain)
+                    Button { session.reopen() } label: {
+                        SkyDialoguePortrait(speaker: line.speaker, side: StarfallTheme.Layout.minimumTarget, embedded: true)
+                    }
+                        .buttonStyle(StarfallGameButtonStyle())
                         .accessibilityLabel(SkyCopy.text(.actionReadMessage, values: ["speaker": line.speaker.name]))
                         .accessibilityIdentifier("sky.dialogue.reopen")
                 }

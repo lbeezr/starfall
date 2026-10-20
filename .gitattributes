@@ -1,0 +1,2 @@
+# Vector PDF resources contain byte-offset tables and are not line-editable text.
+*.pdf binary

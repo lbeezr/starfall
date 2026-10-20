@@ -54,8 +54,8 @@ extension XCUIApplication {
         // A form sheet and an inner guide have smaller visible regions than the
         // application window. Use the actual owning scroll view, including on iPad.
         let scroll = controls.first.flatMap { first in
-            scrollViews.containing(.button, identifier: first.identifier).allElementsBoundByIndex
-                .filter { candidate in controls.allSatisfy { candidate.buttons[$0.identifier].exists } }
+            scrollViews.containing(first.elementType, identifier: first.identifier).allElementsBoundByIndex
+                .filter { candidate in controls.allSatisfy { candidate.descendants(matching: $0.elementType)[$0.identifier].exists } }
                 .min { $0.frame.width * $0.frame.height < $1.frame.width * $1.frame.height }
         }
         if let scroll { viewport = viewport.intersection(scroll.frame) }

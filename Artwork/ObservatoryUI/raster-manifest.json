@@ -1,0 +1,2103 @@
+{
+  "version": 1,
+  "title": "Observatory Instruments raster handoff",
+  "sourceCommit": "cfd6ab7",
+  "status": "Ready for specimen review; not native adoption or validation",
+  "recipe": {
+    "script": "build_rasters.mjs",
+    "sharp": "0.35.5",
+    "vips": "8.18.7",
+    "kernel": "lanczos3",
+    "color": "sRGB RGBA8; embedded sRGB ICC",
+    "crop": "Alpha >= 2 bounds + two source pixels; only detached alpha=1 outside crop discarded; all pixels inside crop retain RGBA until ordinary resampling.",
+    "padding": "Symmetric proportional fit in declared point canvas; no anisotropic source resize.",
+    "densities": [
+      1,
+      2,
+      3
+    ]
+  },
+  "coordinateConvention": "Top-left origin; bounds [left, top, right, bottom), right and bottom exclusive; insets [top, leading, bottom, trailing].",
+  "assets": [
+    {
+      "id": "emblem-story",
+      "purpose": "Story Mode lantern; aspect fit; separate native label.",
+      "source": {
+        "path": "masters/illustrations/emblem-story.png",
+        "sha256": "eb5191b091feca2836fb045b64a30a53de37d82fcf5e0655f8292dd31c3add0e",
+        "width": 1254,
+        "height": 1254,
+        "channels": 4,
+        "colorSpace": "srgb",
+        "encodedBytes": 903175,
+        "alphaNonzeroBounds": [
+          0,
+          37,
+          1230,
+          1244
+        ],
+        "alphaAtLeast2Bounds": [
+          264,
+          46,
+          984,
+          1208
+        ],
+        "alphaAtLeast128Bounds": [
+          267,
+          48,
+          981,
+          1205
+        ],
+        "cropBounds": [
+          262,
+          44,
+          986,
+          1210
+        ],
+        "discardedOutsideCrop": {
+          "pixelCount": 1211,
+          "maximumAlpha": 1
+        },
+        "provenance": "PROMPTS.json#emblem-story"
+      },
+      "pointCanvas": [
+        48,
+        48
+      ],
+      "intendedDisplayPoints": [
+        40,
+        48
+      ],
+      "anchor": {
+        "canvasCenter": [
+          24,
+          24
+        ],
+        "note": "Geometric registration; optical balance still requires native specimen review."
+      },
+      "exports": [
+        {
+          "path": "exports/emblems/emblem-story@1x.png",
+          "scale": 1,
+          "width": 48,
+          "height": 48,
+          "colorMode": "RGBA8",
+          "profile": "sRGB",
+          "sha256": "e6f3b4b7b5a7e561a03179371bdb821125513898a7722f021a491ea1b6aed3c8",
+          "encodedBytes": 3100,
+          "decodedRGBABytes": 9216,
+          "fitRectPixels": [
+            10,
+            2,
+            37,
+            46
+          ],
+          "alphaNonzeroBounds": [
+            10,
+            2,
+            37,
+            46
+          ],
+          "alphaAtLeast128Bounds": [
+            10,
+            2,
+            37,
+            46
+          ],
+          "outerTransparentPaddingPixels": [
+            2,
+            10,
+            2,
+            11
+          ],
+          "alphaWeightedCentroidPixels": [
+            23.5064,
+            24.7417
+          ],
+          "maximumAspectRoundingError": 0.0117
+        },
+        {
+          "path": "exports/emblems/emblem-story@2x.png",
+          "scale": 2,
+          "width": 96,
+          "height": 96,
+          "colorMode": "RGBA8",
+          "profile": "sRGB",
+          "sha256": "036729ef6208ed6113fd1dd74416311936882c59140e94edb0da1494f1cc8a25",
+          "encodedBytes": 9652,
+          "decodedRGBABytes": 36864,
+          "fitRectPixels": [
+            20,
+            4,
+            75,
+            92
+          ],
+          "alphaNonzeroBounds": [
+            20,
+            4,
+            75,
+            92
+          ],
+          "alphaAtLeast128Bounds": [
+            21,
+            4,
+            74,
+            92
+          ],
+          "outerTransparentPaddingPixels": [
+            4,
+            20,
+            4,
+            21
+          ],
+          "alphaWeightedCentroidPixels": [
+            47.5071,
+            49.5198
+          ],
+          "maximumAspectRoundingError": 0.0066
+        },
+        {
+          "path": "exports/emblems/emblem-story@3x.png",
+          "scale": 3,
+          "width": 144,
+          "height": 144,
+          "colorMode": "RGBA8",
+          "profile": "sRGB",
+          "sha256": "7e478c93a8a98b598aaa4d790d1c7b3f3beb2641f0c389c02c49b014c8022981",
+          "encodedBytes": 19629,
+          "decodedRGBABytes": 82944,
+          "fitRectPixels": [
+            31,
+            6,
+            113,
+            138
+          ],
+          "alphaNonzeroBounds": [
+            31,
+            6,
+            113,
+            138
+          ],
+          "alphaAtLeast128Bounds": [
+            32,
+            7,
+            112,
+            137
+          ],
+          "outerTransparentPaddingPixels": [
+            6,
+            31,
+            6,
+            31
+          ],
+          "alphaWeightedCentroidPixels": [
+            72.011,
+            74.2882
+          ],
+          "maximumAspectRoundingError": 0.0005
+        }
+      ]
+    },
+    {
+      "id": "emblem-freeplay",
+      "purpose": "Free Play comet; aspect fit; separate native label.",
+      "source": {
+        "path": "masters/illustrations/emblem-freeplay.png",
+        "sha256": "782fbd262a60cfe1fb248703b77635252828caf594fe6f97ff5b42d6e69b5064",
+        "width": 1254,
+        "height": 1254,
+        "channels": 4,
+        "colorSpace": "srgb",
+        "encodedBytes": 653705,
+        "alphaNonzeroBounds": [
+          31,
+          28,
+          1216,
+          1230
+        ],
+        "alphaAtLeast2Bounds": [
+          81,
+          59,
+          1198,
+          1142
+        ],
+        "alphaAtLeast128Bounds": [
+          84,
+          63,
+          1195,
+          1139
+        ],
+        "cropBounds": [
+          79,
+          57,
+          1200,
+          1144
+        ],
+        "discardedOutsideCrop": {
+          "pixelCount": 124,
+          "maximumAlpha": 1
+        },
+        "provenance": "PROMPTS.json#emblem-freeplay"
+      },
+      "pointCanvas": [
+        48,
+        48
+      ],
+      "intendedDisplayPoints": [
+        40,
+        48
+      ],
+      "anchor": {
+        "canvasCenter": [
+          24,
+          24
+        ],
+        "note": "Geometric registration; optical balance still requires native specimen review."
+      },
+      "exports": [
+        {
+          "path": "exports/emblems/emblem-freeplay@1x.png",
+          "scale": 1,
+          "width": 48,
+          "height": 48,
+          "colorMode": "RGBA8",
+          "profile": "sRGB",
+          "sha256": "db3ab6786ba804f9cd33e38bdeb067c88034fb35624576af8231d69b14d4e0be",
+          "encodedBytes": 2716,
+          "decodedRGBABytes": 9216,
+          "fitRectPixels": [
+            2,
+            2,
+            46,
+            45
+          ],
+          "alphaNonzeroBounds": [
+            2,
+            2,
+            46,
+            45
+          ],
+          "alphaAtLeast128Bounds": [
+            2,
+            4,
+            45,
+            44
+          ],
+          "outerTransparentPaddingPixels": [
+            2,
+            2,
+            3,
+            2
+          ],
+          "alphaWeightedCentroidPixels": [
+            24.3302,
+            24.5669
+          ],
+          "maximumAspectRoundingError": 0.0078
+        },
+        {
+          "path": "exports/emblems/emblem-freeplay@2x.png",
+          "scale": 2,
+          "width": 96,
+          "height": 96,
+          "colorMode": "RGBA8",
+          "profile": "sRGB",
+          "sha256": "1f05d8939e4f0819d7aa86f32b24d98e4a031eaacc45735cee55bfe3ab2cd1f1",
+          "encodedBytes": 7577,
+          "decodedRGBABytes": 36864,
+          "fitRectPixels": [
+            4,
+            5,
+            92,
+            90
+          ],
+          "alphaNonzeroBounds": [
+            4,
+            5,
+            92,
+            90
+          ],
+          "alphaAtLeast128Bounds": [
+            4,
+            7,
+            91,
+            89
+          ],
+          "outerTransparentPaddingPixels": [
+            5,
+            4,
+            6,
+            4
+          ],
+          "alphaWeightedCentroidPixels": [
+            48.5906,
+            49.5784
+          ],
+          "maximumAspectRoundingError": 0.0039
+        },
+        {
+          "path": "exports/emblems/emblem-freeplay@3x.png",
+          "scale": 3,
+          "width": 144,
+          "height": 144,
+          "colorMode": "RGBA8",
+          "profile": "sRGB",
+          "sha256": "0437cb4482267e03f3f46b2f7f457f8415bc12457031da1b6c8dc980d650c914",
+          "encodedBytes": 15145,
+          "decodedRGBABytes": 82944,
+          "fitRectPixels": [
+            6,
+            8,
+            138,
+            136
+          ],
+          "alphaNonzeroBounds": [
+            6,
+            8,
+            138,
+            136
+          ],
+          "alphaAtLeast128Bounds": [
+            7,
+            10,
+            137,
+            135
+          ],
+          "outerTransparentPaddingPixels": [
+            8,
+            6,
+            8,
+            6
+          ],
+          "alphaWeightedCentroidPixels": [
+            72.8749,
+            75.118
+          ],
+          "maximumAspectRoundingError": 0
+        }
+      ]
+    },
+    {
+      "id": "emblem-tutorial",
+      "purpose": "Tutorial constellation; aspect fit; separate native label.",
+      "source": {
+        "path": "masters/illustrations/emblem-tutorial.png",
+        "sha256": "31cca3331ab8aafe3ffaac42cafbed4c2e98417cfa9b559aafb4c5c2a41e8c80",
+        "width": 1254,
+        "height": 1254,
+        "channels": 4,
+        "colorSpace": "srgb",
+        "encodedBytes": 851288,
+        "alphaNonzeroBounds": [
+          0,
+          17,
+          1253,
+          1254
+        ],
+        "alphaAtLeast2Bounds": [
+          146,
+          71,
+          1166,
+          1165
+        ],
+        "alphaAtLeast128Bounds": [
+          164,
+          82,
+          1162,
+          1162
+        ],
+        "cropBounds": [
+          144,
+          69,
+          1168,
+          1167
+        ],
+        "discardedOutsideCrop": {
+          "pixelCount": 3184,
+          "maximumAlpha": 1
+        },
+        "provenance": "PROMPTS.json#emblem-tutorial"
+      },
+      "pointCanvas": [
+        48,
+        48
+      ],
+      "intendedDisplayPoints": [
+        40,
+        48
+      ],
+      "anchor": {
+        "canvasCenter": [
+          24,
+          24
+        ],
+        "note": "Geometric registration; optical balance still requires native specimen review."
+      },
+      "exports": [
+        {
+          "path": "exports/emblems/emblem-tutorial@1x.png",
+          "scale": 1,
+          "width": 48,
+          "height": 48,
+          "colorMode": "RGBA8",
+          "profile": "sRGB",
+          "sha256": "cfb9aa7872298d9cd333695291481ecb7c6c5e2b1117a07d308a794c45fc4237",
+          "encodedBytes": 3239,
+          "decodedRGBABytes": 9216,
+          "fitRectPixels": [
+            3,
+            2,
+            44,
+            46
+          ],
+          "alphaNonzeroBounds": [
+            3,
+            2,
+            44,
+            46
+          ],
+          "alphaAtLeast128Bounds": [
+            4,
+            3,
+            43,
+            45
+          ],
+          "outerTransparentPaddingPixels": [
+            2,
+            3,
+            2,
+            4
+          ],
+          "alphaWeightedCentroidPixels": [
+            26.2943,
+            23.843
+          ],
+          "maximumAspectRoundingError": 0.0008
+        },
+        {
+          "path": "exports/emblems/emblem-tutorial@2x.png",
+          "scale": 2,
+          "width": 96,
+          "height": 96,
+          "colorMode": "RGBA8",
+          "profile": "sRGB",
+          "sha256": "49d032c014fd2988c830830f345b856347140607cba5781e38165bb587b79628",
+          "encodedBytes": 9204,
+          "decodedRGBABytes": 36864,
+          "fitRectPixels": [
+            7,
+            4,
+            89,
+            92
+          ],
+          "alphaNonzeroBounds": [
+            7,
+            4,
+            89,
+            92
+          ],
+          "alphaAtLeast128Bounds": [
+            9,
+            5,
+            88,
+            91
+          ],
+          "outerTransparentPaddingPixels": [
+            4,
+            7,
+            4,
+            7
+          ],
+          "alphaWeightedCentroidPixels": [
+            53.6955,
+            47.5252
+          ],
+          "maximumAspectRoundingError": 0.0008
+        },
+        {
+          "path": "exports/emblems/emblem-tutorial@3x.png",
+          "scale": 3,
+          "width": 144,
+          "height": 144,
+          "colorMode": "RGBA8",
+          "profile": "sRGB",
+          "sha256": "dd73501404edf6ffce09f9c1bc5eb8a04606ea66676f1534bdce584ba85a47f9",
+          "encodedBytes": 18538,
+          "decodedRGBABytes": 82944,
+          "fitRectPixels": [
+            10,
+            6,
+            133,
+            138
+          ],
+          "alphaNonzeroBounds": [
+            10,
+            6,
+            133,
+            138
+          ],
+          "alphaAtLeast128Bounds": [
+            13,
+            8,
+            132,
+            137
+          ],
+          "outerTransparentPaddingPixels": [
+            6,
+            10,
+            6,
+            11
+          ],
+          "alphaWeightedCentroidPixels": [
+            80.0138,
+            71.2956
+          ],
+          "maximumAspectRoundingError": 0.0008
+        }
+      ]
+    },
+    {
+      "id": "button-action",
+      "purpose": "One horizontal action skin; 64-point fixed height, horizontal stretch only. 52-point compact is a uniform 52/64 scale before horizontal stretching.",
+      "source": {
+        "path": "masters/skins/button-action.png",
+        "sha256": "aaee60ea8e6fa8fdb7fb953d05af3183b57eaa9a4dc9bcae584a69849a19812f",
+        "width": 2172,
+        "height": 724,
+        "channels": 4,
+        "colorSpace": "srgb",
+        "encodedBytes": 1136254,
+        "alphaNonzeroBounds": [
+          37,
+          7,
+          2166,
+          724
+        ],
+        "alphaAtLeast2Bounds": [
+          40,
+          162,
+          2131,
+          531
+        ],
+        "alphaAtLeast128Bounds": [
+          43,
+          171,
+          2128,
+          526
+        ],
+        "cropBounds": [
+          38,
+          160,
+          2133,
+          533
+        ],
+        "discardedOutsideCrop": {
+          "pixelCount": 17847,
+          "maximumAlpha": 1
+        },
+        "provenance": "PROMPTS.json#button-action"
+      },
+      "pointCanvas": [
+        320,
+        64
+      ],
+      "intendedDisplayPoints": [
+        64
+      ],
+      "anchor": {
+        "canvasCenter": [
+          160,
+          32
+        ],
+        "note": "Geometric registration; optical balance still requires native specimen review."
+      },
+      "exports": [
+        {
+          "path": "exports/skins/button-action@1x.png",
+          "scale": 1,
+          "width": 320,
+          "height": 64,
+          "colorMode": "RGBA8",
+          "profile": "sRGB",
+          "sha256": "13cc93f51f834fe47e96f84f27c070159e709416a2288f66f7d6992ba3a3fba8",
+          "encodedBytes": 26707,
+          "decodedRGBABytes": 81920,
+          "fitRectPixels": [
+            2,
+            4,
+            318,
+            60
+          ],
+          "alphaNonzeroBounds": [
+            2,
+            4,
+            318,
+            60
+          ],
+          "alphaAtLeast128Bounds": [
+            3,
+            6,
+            317,
+            59
+          ],
+          "outerTransparentPaddingPixels": [
+            4,
+            2,
+            4,
+            2
+          ],
+          "alphaWeightedCentroidPixels": [
+            160.1732,
+            32.3657
+          ],
+          "maximumAspectRoundingError": 0.0047,
+          "fixedCapsPixels": [
+            0,
+            48,
+            0,
+            48
+          ],
+          "stretchRectPixels": [
+            48,
+            0,
+            272,
+            64
+          ],
+          "contentBoundsPixels": [
+            52,
+            16,
+            268,
+            48
+          ],
+          "pearlContrast": {
+            "text": "#F4ECD9",
+            "regionPixels": [
+              52,
+              16,
+              268,
+              48
+            ],
+            "minimumAlpha": 252,
+            "backdrops": {
+              "midnight": {
+                "backgroundRGB": [
+                  9,
+                  19,
+                  38
+                ],
+                "minimumRatio": 14.0666,
+                "worst": {
+                  "pixel": [
+                    53,
+                    16
+                  ],
+                  "compositedRGB": [
+                    11.9765,
+                    28.9216,
+                    65.7804
+                  ]
+                }
+              },
+              "brightCloud": {
+                "backgroundRGB": [
+                  237,
+                  229,
+                  201
+                ],
+                "minimumRatio": 13.8239,
+                "worst": {
+                  "pixel": [
+                    53,
+                    16
+                  ],
+                  "compositedRGB": [
+                    13.7647,
+                    30.5686,
+                    67.0588
+                  ]
+                }
+              },
+              "white": {
+                "backgroundRGB": [
+                  255,
+                  255,
+                  255
+                ],
+                "minimumRatio": 13.7881,
+                "worst": {
+                  "pixel": [
+                    53,
+                    16
+                  ],
+                  "compositedRGB": [
+                    13.9059,
+                    30.7725,
+                    67.4824
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "path": "exports/skins/button-action@2x.png",
+          "scale": 2,
+          "width": 640,
+          "height": 128,
+          "colorMode": "RGBA8",
+          "profile": "sRGB",
+          "sha256": "d645f3fa06443b8220e05ed4cf322dacbae0c988a176d40b1fa4073218b26150",
+          "encodedBytes": 102016,
+          "decodedRGBABytes": 327680,
+          "fitRectPixels": [
+            4,
+            7,
+            636,
+            120
+          ],
+          "alphaNonzeroBounds": [
+            4,
+            7,
+            636,
+            120
+          ],
+          "alphaAtLeast128Bounds": [
+            5,
+            10,
+            635,
+            118
+          ],
+          "outerTransparentPaddingPixels": [
+            7,
+            4,
+            8,
+            4
+          ],
+          "alphaWeightedCentroidPixels": [
+            320.3427,
+            64.244
+          ],
+          "maximumAspectRoundingError": 0.0042,
+          "fixedCapsPixels": [
+            0,
+            96,
+            0,
+            96
+          ],
+          "stretchRectPixels": [
+            96,
+            0,
+            544,
+            128
+          ],
+          "contentBoundsPixels": [
+            104,
+            32,
+            536,
+            96
+          ],
+          "pearlContrast": {
+            "text": "#F4ECD9",
+            "regionPixels": [
+              104,
+              32,
+              536,
+              96
+            ],
+            "minimumAlpha": 252,
+            "backdrops": {
+              "midnight": {
+                "backgroundRGB": [
+                  9,
+                  19,
+                  38
+                ],
+                "minimumRatio": 13.6606,
+                "worst": {
+                  "pixel": [
+                    107,
+                    32
+                  ],
+                  "compositedRGB": [
+                    11.9765,
+                    31.898,
+                    68.7569
+                  ]
+                }
+              },
+              "brightCloud": {
+                "backgroundRGB": [
+                  237,
+                  229,
+                  201
+                ],
+                "minimumRatio": 13.4139,
+                "worst": {
+                  "pixel": [
+                    107,
+                    32
+                  ],
+                  "compositedRGB": [
+                    13.7647,
+                    33.5451,
+                    70.0353
+                  ]
+                }
+              },
+              "white": {
+                "backgroundRGB": [
+                  255,
+                  255,
+                  255
+                ],
+                "minimumRatio": 13.3776,
+                "worst": {
+                  "pixel": [
+                    107,
+                    32
+                  ],
+                  "compositedRGB": [
+                    13.9059,
+                    33.749,
+                    70.4588
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "path": "exports/skins/button-action@3x.png",
+          "scale": 3,
+          "width": 960,
+          "height": 192,
+          "colorMode": "RGBA8",
+          "profile": "sRGB",
+          "sha256": "13860b4470785a06f6e337d449ab99e81b771bd00df2475d8b29622c6b79caad",
+          "encodedBytes": 230665,
+          "decodedRGBABytes": 737280,
+          "fitRectPixels": [
+            6,
+            11,
+            954,
+            180
+          ],
+          "alphaNonzeroBounds": [
+            6,
+            11,
+            954,
+            180
+          ],
+          "alphaAtLeast128Bounds": [
+            8,
+            16,
+            952,
+            177
+          ],
+          "outerTransparentPaddingPixels": [
+            11,
+            6,
+            12,
+            6
+          ],
+          "alphaWeightedCentroidPixels": [
+            480.5086,
+            96.6309
+          ],
+          "maximumAspectRoundingError": 0.0013,
+          "fixedCapsPixels": [
+            0,
+            144,
+            0,
+            144
+          ],
+          "stretchRectPixels": [
+            144,
+            0,
+            816,
+            192
+          ],
+          "contentBoundsPixels": [
+            156,
+            48,
+            804,
+            144
+          ],
+          "pearlContrast": {
+            "text": "#F4ECD9",
+            "regionPixels": [
+              156,
+              48,
+              804,
+              144
+            ],
+            "minimumAlpha": 252,
+            "backdrops": {
+              "midnight": {
+                "backgroundRGB": [
+                  9,
+                  19,
+                  38
+                ],
+                "minimumRatio": 13.4823,
+                "worst": {
+                  "pixel": [
+                    160,
+                    48
+                  ],
+                  "compositedRGB": [
+                    12.9686,
+                    32.8902,
+                    70.7412
+                  ]
+                }
+              },
+              "brightCloud": {
+                "backgroundRGB": [
+                  237,
+                  229,
+                  201
+                ],
+                "minimumRatio": 13.2342,
+                "worst": {
+                  "pixel": [
+                    160,
+                    48
+                  ],
+                  "compositedRGB": [
+                    14.7569,
+                    34.5373,
+                    72.0196
+                  ]
+                }
+              },
+              "white": {
+                "backgroundRGB": [
+                  255,
+                  255,
+                  255
+                ],
+                "minimumRatio": 13.1978,
+                "worst": {
+                  "pixel": [
+                    160,
+                    48
+                  ],
+                  "compositedRGB": [
+                    14.898,
+                    34.7412,
+                    72.4431
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ],
+      "slicing": {
+        "axis": "horizontal",
+        "fixedCapsPoints": [
+          0,
+          48,
+          0,
+          48
+        ],
+        "stretchRectPoints": [
+          48,
+          0,
+          272,
+          64
+        ],
+        "geometricMinimumPoints": [
+          120,
+          64
+        ],
+        "notes": "No vertical stretching: ornaments occupy the full-height fixed endcaps. Tall or multiline actions use panel-reading with native text reflow. Text and emblems may require width above the geometric minimum."
+      },
+      "contentInsetsPoints": [
+        16,
+        52,
+        16,
+        52
+      ]
+    },
+    {
+      "id": "panel-reading",
+      "purpose": "Reading surface, multiline action, pause and preference panel; stretch both axes.",
+      "source": {
+        "path": "masters/skins/panel-reading.png",
+        "sha256": "e6de9b9450712cda263a5041c9e107f479b1c645bf86c8fded9b47bd620d81fb",
+        "width": 1254,
+        "height": 1254,
+        "channels": 4,
+        "colorSpace": "srgb",
+        "encodedBytes": 1371386,
+        "alphaNonzeroBounds": [
+          0,
+          22,
+          1240,
+          1254
+        ],
+        "alphaAtLeast2Bounds": [
+          81,
+          97,
+          1172,
+          1158
+        ],
+        "alphaAtLeast128Bounds": [
+          92,
+          108,
+          1162,
+          1145
+        ],
+        "cropBounds": [
+          79,
+          95,
+          1174,
+          1160
+        ],
+        "discardedOutsideCrop": {
+          "pixelCount": 16442,
+          "maximumAlpha": 1
+        },
+        "provenance": "PROMPTS.json#panel-reading"
+      },
+      "pointCanvas": [
+        160,
+        160
+      ],
+      "intendedDisplayPoints": null,
+      "anchor": {
+        "canvasCenter": [
+          80,
+          80
+        ],
+        "note": "Geometric registration; optical balance still requires native specimen review."
+      },
+      "exports": [
+        {
+          "path": "exports/skins/panel-reading@1x.png",
+          "scale": 1,
+          "width": 160,
+          "height": 160,
+          "colorMode": "RGBA8",
+          "profile": "sRGB",
+          "sha256": "5d322bd5eb346ad007950f17d3deb437cd3e4456537ac4e71c05c4de59c4b6ab",
+          "encodedBytes": 21874,
+          "decodedRGBABytes": 102400,
+          "fitRectPixels": [
+            2,
+            4,
+            158,
+            156
+          ],
+          "alphaNonzeroBounds": [
+            2,
+            4,
+            158,
+            156
+          ],
+          "alphaAtLeast128Bounds": [
+            4,
+            6,
+            156,
+            154
+          ],
+          "outerTransparentPaddingPixels": [
+            4,
+            2,
+            4,
+            2
+          ],
+          "alphaWeightedCentroidPixels": [
+            80.0879,
+            79.8182
+          ],
+          "maximumAspectRoundingError": 0.0018,
+          "fixedCapsPixels": [
+            32,
+            32,
+            32,
+            32
+          ],
+          "stretchRectPixels": [
+            32,
+            32,
+            128,
+            128
+          ],
+          "contentBoundsPixels": [
+            32,
+            32,
+            128,
+            128
+          ],
+          "pearlContrast": {
+            "text": "#F4ECD9",
+            "regionPixels": [
+              32,
+              32,
+              128,
+              128
+            ],
+            "minimumAlpha": 251,
+            "backdrops": {
+              "midnight": {
+                "backgroundRGB": [
+                  9,
+                  19,
+                  38
+                ],
+                "minimumRatio": 14.4444,
+                "worst": {
+                  "pixel": [
+                    105,
+                    95
+                  ],
+                  "compositedRGB": [
+                    6.0235,
+                    25.9451,
+                    66.7725
+                  ]
+                }
+              },
+              "brightCloud": {
+                "backgroundRGB": [
+                  237,
+                  229,
+                  201
+                ],
+                "minimumRatio": 14.1245,
+                "worst": {
+                  "pixel": [
+                    90,
+                    110
+                  ],
+                  "compositedRGB": [
+                    8.7176,
+                    28.3882,
+                    67.5882
+                  ]
+                }
+              },
+              "white": {
+                "backgroundRGB": [
+                  255,
+                  255,
+                  255
+                ],
+                "minimumRatio": 14.0605,
+                "worst": {
+                  "pixel": [
+                    102,
+                    95
+                  ],
+                  "compositedRGB": [
+                    8.9216,
+                    28.6078,
+                    68.9647
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "path": "exports/skins/panel-reading@2x.png",
+          "scale": 2,
+          "width": 320,
+          "height": 320,
+          "colorMode": "RGBA8",
+          "profile": "sRGB",
+          "sha256": "985a40f3c858869645e51161d48850dca2f5caf6ff62ac45913962797490da1c",
+          "encodedBytes": 86028,
+          "decodedRGBABytes": 409600,
+          "fitRectPixels": [
+            4,
+            8,
+            316,
+            311
+          ],
+          "alphaNonzeroBounds": [
+            4,
+            8,
+            316,
+            311
+          ],
+          "alphaAtLeast128Bounds": [
+            8,
+            12,
+            313,
+            307
+          ],
+          "outerTransparentPaddingPixels": [
+            8,
+            4,
+            9,
+            4
+          ],
+          "alphaWeightedCentroidPixels": [
+            160.1723,
+            159.1682
+          ],
+          "maximumAspectRoundingError": 0.0015,
+          "fixedCapsPixels": [
+            64,
+            64,
+            64,
+            64
+          ],
+          "stretchRectPixels": [
+            64,
+            64,
+            256,
+            256
+          ],
+          "contentBoundsPixels": [
+            64,
+            64,
+            256,
+            256
+          ],
+          "pearlContrast": {
+            "text": "#F4ECD9",
+            "regionPixels": [
+              64,
+              64,
+              256,
+              256
+            ],
+            "minimumAlpha": 251,
+            "backdrops": {
+              "midnight": {
+                "backgroundRGB": [
+                  9,
+                  19,
+                  38
+                ],
+                "minimumRatio": 14.1791,
+                "worst": {
+                  "pixel": [
+                    210,
+                    190
+                  ],
+                  "compositedRGB": [
+                    8.0078,
+                    27.9294,
+                    67.7647
+                  ]
+                }
+              },
+              "brightCloud": {
+                "backgroundRGB": [
+                  237,
+                  229,
+                  201
+                ],
+                "minimumRatio": 13.9413,
+                "worst": {
+                  "pixel": [
+                    210,
+                    190
+                  ],
+                  "compositedRGB": [
+                    9.7961,
+                    29.5765,
+                    69.0431
+                  ]
+                }
+              },
+              "white": {
+                "backgroundRGB": [
+                  255,
+                  255,
+                  255
+                ],
+                "minimumRatio": 13.9057,
+                "worst": {
+                  "pixel": [
+                    210,
+                    190
+                  ],
+                  "compositedRGB": [
+                    9.9373,
+                    29.7804,
+                    69.4667
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "path": "exports/skins/panel-reading@3x.png",
+          "scale": 3,
+          "width": 480,
+          "height": 480,
+          "colorMode": "RGBA8",
+          "profile": "sRGB",
+          "sha256": "854344a34d55ed3017e609a19a6219a7e6ae7cef8b5622cbed8dc8359e4b9258",
+          "encodedBytes": 202353,
+          "decodedRGBABytes": 921600,
+          "fitRectPixels": [
+            6,
+            12,
+            474,
+            467
+          ],
+          "alphaNonzeroBounds": [
+            6,
+            12,
+            474,
+            467
+          ],
+          "alphaAtLeast128Bounds": [
+            12,
+            17,
+            469,
+            461
+          ],
+          "outerTransparentPaddingPixels": [
+            12,
+            6,
+            13,
+            6
+          ],
+          "alphaWeightedCentroidPixels": [
+            240.2656,
+            239.0298
+          ],
+          "maximumAspectRoundingError": 0.0004,
+          "fixedCapsPixels": [
+            96,
+            96,
+            96,
+            96
+          ],
+          "stretchRectPixels": [
+            96,
+            96,
+            384,
+            384
+          ],
+          "contentBoundsPixels": [
+            96,
+            96,
+            384,
+            384
+          ],
+          "pearlContrast": {
+            "text": "#F4ECD9",
+            "regionPixels": [
+              96,
+              96,
+              384,
+              384
+            ],
+            "minimumAlpha": 252,
+            "backdrops": {
+              "midnight": {
+                "backgroundRGB": [
+                  9,
+                  19,
+                  38
+                ],
+                "minimumRatio": 14.1791,
+                "worst": {
+                  "pixel": [
+                    319,
+                    284
+                  ],
+                  "compositedRGB": [
+                    8.0078,
+                    27.9294,
+                    67.7647
+                  ]
+                }
+              },
+              "brightCloud": {
+                "backgroundRGB": [
+                  237,
+                  229,
+                  201
+                ],
+                "minimumRatio": 13.9413,
+                "worst": {
+                  "pixel": [
+                    319,
+                    284
+                  ],
+                  "compositedRGB": [
+                    9.7961,
+                    29.5765,
+                    69.0431
+                  ]
+                }
+              },
+              "white": {
+                "backgroundRGB": [
+                  255,
+                  255,
+                  255
+                ],
+                "minimumRatio": 13.9057,
+                "worst": {
+                  "pixel": [
+                    319,
+                    284
+                  ],
+                  "compositedRGB": [
+                    9.9373,
+                    29.7804,
+                    69.4667
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ],
+      "slicing": {
+        "axis": "both",
+        "fixedCapsPoints": [
+          32,
+          32,
+          32,
+          32
+        ],
+        "stretchRectPoints": [
+          32,
+          32,
+          128,
+          128
+        ],
+        "geometricMinimumPoints": [
+          80,
+          80
+        ],
+        "notes": "Fixed corners contain all diamond fittings; native content determines actual minimum dimensions."
+      },
+      "contentInsetsPoints": [
+        32,
+        32,
+        32,
+        32
+      ]
+    },
+    {
+      "id": "utility-bezel",
+      "purpose": "Optional 32-point fitting around a 20-point glyph inside a native 44/45-point target. A 24-point glyph is unframed.",
+      "source": {
+        "path": "masters/skins/utility-bezel.png",
+        "sha256": "184154449d029487f03fdea7dd15b6aee00bb452ff7f4fbe3535e8980ae676ab",
+        "width": 1295,
+        "height": 1214,
+        "channels": 4,
+        "colorSpace": "srgb",
+        "encodedBytes": 970466,
+        "alphaNonzeroBounds": [
+          0,
+          18,
+          1234,
+          1196
+        ],
+        "alphaAtLeast2Bounds": [
+          231,
+          176,
+          1065,
+          998
+        ],
+        "alphaAtLeast128Bounds": [
+          236,
+          179,
+          1059,
+          992
+        ],
+        "cropBounds": [
+          229,
+          174,
+          1067,
+          1000
+        ],
+        "discardedOutsideCrop": {
+          "pixelCount": 5609,
+          "maximumAlpha": 1
+        },
+        "provenance": "PROMPTS.json#utility-bezel"
+      },
+      "pointCanvas": [
+        32,
+        32
+      ],
+      "intendedDisplayPoints": [
+        32
+      ],
+      "anchor": {
+        "canvasCenter": [
+          16,
+          16
+        ],
+        "note": "Geometric registration; optical balance still requires native specimen review."
+      },
+      "exports": [
+        {
+          "path": "exports/skins/utility-bezel@1x.png",
+          "scale": 1,
+          "width": 32,
+          "height": 32,
+          "colorMode": "RGBA8",
+          "profile": "sRGB",
+          "sha256": "71c0ce9121fc7c7a974e11d599f6a8761f9debcd0aa46a9be323035378a7b723",
+          "encodedBytes": 2576,
+          "decodedRGBABytes": 4096,
+          "fitRectPixels": [
+            1,
+            1,
+            31,
+            31
+          ],
+          "alphaNonzeroBounds": [
+            1,
+            1,
+            31,
+            31
+          ],
+          "alphaAtLeast128Bounds": [
+            1,
+            1,
+            31,
+            31
+          ],
+          "outerTransparentPaddingPixels": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "alphaWeightedCentroidPixels": [
+            15.9777,
+            15.9434
+          ],
+          "maximumAspectRoundingError": 0.0143,
+          "contentBoundsPixels": [
+            6,
+            6,
+            26,
+            26
+          ],
+          "pearlContrast": {
+            "text": "#F4ECD9",
+            "regionPixels": [
+              9,
+              9,
+              23,
+              23
+            ],
+            "minimumAlpha": 252,
+            "backdrops": {
+              "midnight": {
+                "backgroundRGB": [
+                  9,
+                  19,
+                  38
+                ],
+                "minimumRatio": 13.7508,
+                "worst": {
+                  "pixel": [
+                    9,
+                    9
+                  ],
+                  "compositedRGB": [
+                    10.9843,
+                    31.898,
+                    65.7804
+                  ]
+                }
+              },
+              "brightCloud": {
+                "backgroundRGB": [
+                  237,
+                  229,
+                  201
+                ],
+                "minimumRatio": 13.5039,
+                "worst": {
+                  "pixel": [
+                    9,
+                    9
+                  ],
+                  "compositedRGB": [
+                    12.7725,
+                    33.5451,
+                    67.0588
+                  ]
+                }
+              },
+              "white": {
+                "backgroundRGB": [
+                  255,
+                  255,
+                  255
+                ],
+                "minimumRatio": 13.4678,
+                "worst": {
+                  "pixel": [
+                    9,
+                    9
+                  ],
+                  "compositedRGB": [
+                    12.9137,
+                    33.749,
+                    67.4824
+                  ]
+                }
+              }
+            },
+            "scope": "Central quiet region, distinct from the 20-point glyph content envelope. Actual glyph-ink contrast is checked separately."
+          },
+          "glyphInkContrast": {
+            "glyphCanvasPoints": 20,
+            "placementInsetPoints": 6,
+            "unframedGlyphAlternativePoints": 24,
+            "samples": [
+              {
+                "glyph": "pause",
+                "minimumRatio": 14.4164,
+                "alphaThreshold": 128,
+                "worst": {
+                  "backdrop": "white",
+                  "pixel": [
+                    11,
+                    10
+                  ],
+                  "compositedRGB": [
+                    8.9451,
+                    27.7961,
+                    58.5529
+                  ]
+                }
+              },
+              {
+                "glyph": "settings",
+                "minimumRatio": 14.5482,
+                "alphaThreshold": 128,
+                "worst": {
+                  "backdrop": "white",
+                  "pixel": [
+                    12,
+                    10
+                  ],
+                  "compositedRGB": [
+                    8.9451,
+                    26.8039,
+                    57.5608
+                  ]
+                }
+              },
+              {
+                "glyph": "trace",
+                "minimumRatio": 14.7018,
+                "alphaThreshold": 128,
+                "worst": {
+                  "backdrop": "white",
+                  "pixel": [
+                    13,
+                    10
+                  ],
+                  "compositedRGB": [
+                    8.9451,
+                    25.8118,
+                    55.5765
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "path": "exports/skins/utility-bezel@2x.png",
+          "scale": 2,
+          "width": 64,
+          "height": 64,
+          "colorMode": "RGBA8",
+          "profile": "sRGB",
+          "sha256": "37e2086c997173d55c0fcfdd9ac0986176bcf7b45f159e95b11e302782eac2c7",
+          "encodedBytes": 7282,
+          "decodedRGBABytes": 16384,
+          "fitRectPixels": [
+            2,
+            2,
+            62,
+            61
+          ],
+          "alphaNonzeroBounds": [
+            2,
+            2,
+            62,
+            61
+          ],
+          "alphaAtLeast128Bounds": [
+            2,
+            2,
+            61,
+            60
+          ],
+          "outerTransparentPaddingPixels": [
+            2,
+            2,
+            3,
+            2
+          ],
+          "alphaWeightedCentroidPixels": [
+            31.9584,
+            31.3911
+          ],
+          "maximumAspectRoundingError": 0.0024,
+          "contentBoundsPixels": [
+            12,
+            12,
+            52,
+            52
+          ],
+          "pearlContrast": {
+            "text": "#F4ECD9",
+            "regionPixels": [
+              18,
+              18,
+              46,
+              46
+            ],
+            "minimumAlpha": 252,
+            "backdrops": {
+              "midnight": {
+                "backgroundRGB": [
+                  9,
+                  19,
+                  38
+                ],
+                "minimumRatio": 13.5735,
+                "worst": {
+                  "pixel": [
+                    18,
+                    18
+                  ],
+                  "compositedRGB": [
+                    11.9765,
+                    32.8902,
+                    67.7647
+                  ]
+                }
+              },
+              "brightCloud": {
+                "backgroundRGB": [
+                  237,
+                  229,
+                  201
+                ],
+                "minimumRatio": 13.325,
+                "worst": {
+                  "pixel": [
+                    18,
+                    18
+                  ],
+                  "compositedRGB": [
+                    13.7647,
+                    34.5373,
+                    69.0431
+                  ]
+                }
+              },
+              "white": {
+                "backgroundRGB": [
+                  255,
+                  255,
+                  255
+                ],
+                "minimumRatio": 13.2887,
+                "worst": {
+                  "pixel": [
+                    18,
+                    18
+                  ],
+                  "compositedRGB": [
+                    13.9059,
+                    34.7412,
+                    69.4667
+                  ]
+                }
+              }
+            },
+            "scope": "Central quiet region, distinct from the 20-point glyph content envelope. Actual glyph-ink contrast is checked separately."
+          },
+          "glyphInkContrast": {
+            "glyphCanvasPoints": 20,
+            "placementInsetPoints": 6,
+            "unframedGlyphAlternativePoints": 24,
+            "samples": [
+              {
+                "glyph": "pause",
+                "minimumRatio": 14.2215,
+                "alphaThreshold": 128,
+                "worst": {
+                  "backdrop": "white",
+                  "pixel": [
+                    25,
+                    19
+                  ],
+                  "compositedRGB": [
+                    10.9059,
+                    28.6941,
+                    61.3059
+                  ]
+                }
+              },
+              {
+                "glyph": "settings",
+                "minimumRatio": 14.44,
+                "alphaThreshold": 128,
+                "worst": {
+                  "backdrop": "white",
+                  "pixel": [
+                    26,
+                    19
+                  ],
+                  "compositedRGB": [
+                    8.9451,
+                    27.7961,
+                    57.5608
+                  ]
+                }
+              },
+              {
+                "glyph": "trace",
+                "minimumRatio": 14.6782,
+                "alphaThreshold": 128,
+                "worst": {
+                  "backdrop": "white",
+                  "pixel": [
+                    24,
+                    21
+                  ],
+                  "compositedRGB": [
+                    8.9451,
+                    25.8118,
+                    56.5686
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "path": "exports/skins/utility-bezel@3x.png",
+          "scale": 3,
+          "width": 96,
+          "height": 96,
+          "colorMode": "RGBA8",
+          "profile": "sRGB",
+          "sha256": "5f9ae30f4b08d2b8a1953363a571b72a7934436d04d75d310369153495441210",
+          "encodedBytes": 14574,
+          "decodedRGBABytes": 36864,
+          "fitRectPixels": [
+            3,
+            3,
+            93,
+            92
+          ],
+          "alphaNonzeroBounds": [
+            3,
+            3,
+            93,
+            92
+          ],
+          "alphaAtLeast128Bounds": [
+            4,
+            4,
+            92,
+            91
+          ],
+          "outerTransparentPaddingPixels": [
+            3,
+            3,
+            4,
+            3
+          ],
+          "alphaWeightedCentroidPixels": [
+            47.9354,
+            47.331
+          ],
+          "maximumAspectRoundingError": 0.0032,
+          "contentBoundsPixels": [
+            18,
+            18,
+            78,
+            78
+          ],
+          "pearlContrast": {
+            "text": "#F4ECD9",
+            "regionPixels": [
+              27,
+              27,
+              69,
+              69
+            ],
+            "minimumAlpha": 252,
+            "backdrops": {
+              "midnight": {
+                "backgroundRGB": [
+                  9,
+                  19,
+                  38
+                ],
+                "minimumRatio": 13.2407,
+                "worst": {
+                  "pixel": [
+                    27,
+                    27
+                  ],
+                  "compositedRGB": [
+                    13.9608,
+                    34.8745,
+                    70.7412
+                  ]
+                }
+              },
+              "brightCloud": {
+                "backgroundRGB": [
+                  237,
+                  229,
+                  201
+                ],
+                "minimumRatio": 12.9896,
+                "worst": {
+                  "pixel": [
+                    27,
+                    27
+                  ],
+                  "compositedRGB": [
+                    15.749,
+                    36.5216,
+                    72.0196
+                  ]
+                }
+              },
+              "white": {
+                "backgroundRGB": [
+                  255,
+                  255,
+                  255
+                ],
+                "minimumRatio": 12.9531,
+                "worst": {
+                  "pixel": [
+                    27,
+                    27
+                  ],
+                  "compositedRGB": [
+                    15.8902,
+                    36.7255,
+                    72.4431
+                  ]
+                }
+              }
+            },
+            "scope": "Central quiet region, distinct from the 20-point glyph content envelope. Actual glyph-ink contrast is checked separately."
+          },
+          "glyphInkContrast": {
+            "glyphCanvasPoints": 20,
+            "placementInsetPoints": 6,
+            "unframedGlyphAlternativePoints": 24,
+            "samples": [
+              {
+                "glyph": "pause",
+                "minimumRatio": 14.2201,
+                "alphaThreshold": 128,
+                "worst": {
+                  "backdrop": "white",
+                  "pixel": [
+                    36,
+                    29
+                  ],
+                  "compositedRGB": [
+                    9.9373,
+                    28.7882,
+                    61.5294
+                  ]
+                }
+              },
+              {
+                "glyph": "settings",
+                "minimumRatio": 14.2201,
+                "alphaThreshold": 128,
+                "worst": {
+                  "backdrop": "white",
+                  "pixel": [
+                    38,
+                    29
+                  ],
+                  "compositedRGB": [
+                    9.9373,
+                    28.7882,
+                    61.5294
+                  ]
+                }
+              },
+              {
+                "glyph": "trace",
+                "minimumRatio": 14.5482,
+                "alphaThreshold": 128,
+                "worst": {
+                  "backdrop": "white",
+                  "pixel": [
+                    40,
+                    31
+                  ],
+                  "compositedRGB": [
+                    8.9451,
+                    26.8039,
+                    57.5608
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "contentInsetsPoints": [
+        6,
+        6,
+        6,
+        6
+      ]
+    }
+  ],
+  "totals": {
+    "encodedBytes": 782875,
+    "decodedRGBABytes": 3024896,
+    "byDensity": {
+      "1": {
+        "encodedBytes": 60212,
+        "decodedRGBABytes": 216064
+      },
+      "2": {
+        "encodedBytes": 221759,
+        "decodedRGBABytes": 864256
+      },
+      "3": {
+        "encodedBytes": 500904,
+        "decodedRGBABytes": 1944576
+      }
+    }
+  },
+  "validation": {
+    "allSourcesDecode": true,
+    "sourceHashesMatchProvenance": true,
+    "allExportsDecode": true,
+    "transparentOuterEdges": true,
+    "pearlContrastMinimum": 4.5,
+    "nativeImport": "not run",
+    "nativeInteraction": "not run",
+    "nativePerformance": "not run",
+    "actualVoiceOver": "not run"
+  }
+}

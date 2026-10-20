@@ -1,0 +1,31 @@
+{
+  "runtime": "dev.818f578f8b",
+  "sourceSnapshot": "faaf5e1df883",
+  "device": "iPhone SE (3rd generation)",
+  "os": "iOS27.0 Simulator",
+  "configuration": "Debug",
+  "test": "SkyFlowInteractionTests/testWelcomeEntryBackgroundAndAnotherSky",
+  "motion": "System Reduce Motion off; calmEffects NO",
+  "rawMovie": "/tmp/starfall-observatory-native-motion.mp4",
+  "bytes": 30702684,
+  "sha256": "22fea0c57119df1f15d851c994eb550453d893f7343d8f503e984c722219565b",
+  "inspectedFrameSeconds": [
+    25,
+    28,
+    30,
+    32,
+    35,
+    38,
+    40,
+    45,
+    55
+  ],
+  "observed": [
+    "Entry fade",
+    "Deliberate background/foreground interruption",
+    "Falling stars and committed clear",
+    "Crystal Comet award outside playable rows",
+    "Menu presentation and readable controls"
+  ],
+  "limits": "Sampled frames plus passing interaction; no continuous-motion quality, physical comfort or frame-pacing measurement."
+}

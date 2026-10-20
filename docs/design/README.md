@@ -1,5 +1,7 @@
 # Design documents
 
+[Game UI system](GAME_UI_SYSTEM.md) owns the scenic three-mode home, authored native component family and quiet viewport-edge HUD, adopted for development in the normal app. Exact coverage and canonical delivery status are recorded in the [native evidence](../evidence/observatory-ui-native-2026-10-19/README.md); the [capture index](../evidence/observatory-ui-native-2026-10-19/captures.json) identifies inspected appearances. The atlas remains concept guidance and the source kit keeps its own export evidence.
+
 [Level-design kit](level-design-kit/README.md) is the current starting point for restoration-board art: native dimensions and bleed guides, camera and star-scale references, the reusable brief, and the Hearthstone research translated into production checks.
 
 Behavior proposals, production contracts and research supporting decisions.
