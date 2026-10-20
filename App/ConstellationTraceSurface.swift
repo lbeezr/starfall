@@ -39,6 +39,9 @@ struct ConstellationTraceSurface: UIViewRepresentable {
         private var holdDeadline: TimeInterval?
         private var latestSampleTime: TimeInterval?
         private var drawingCueStarted = false
+        private var oneFingerInstructions: String {
+            SkyCopy.oneFingerInstructions(drawingEnabled: input?.drawingEnabled ?? true)
+        }
 
         func updateInput(_ value: ConstellationTraceSurface) {
             if let old = input, old.generation != value.generation || old.size != value.size
@@ -93,13 +96,13 @@ struct ConstellationTraceSurface: UIViewRepresentable {
 
         private func beginContact(_ touches: Set<UITouch>, event: UIEvent?) {
             guard primary == nil, touches.count == 1, (event?.allTouches?.count ?? 1) == 1,
-                  let touch = touches.first else { cancelInput(reason: SkyCopy.text(.inputOneFinger)); return }
+                  let touch = touches.first else { cancelInput(reason: oneFingerInstructions); return }
             primary = touch
             beginInput(at: touch.location(in: self), timestamp: touch.timestamp)
         }
         private func moveContact(_ touches: Set<UITouch>, event: UIEvent?) {
             guard !blocked, let primary, touches.contains(primary) else { return }
-            guard (event?.allTouches?.count ?? 1) == 1 else { cancelInput(reason: SkyCopy.text(.inputOneFinger)); return }
+            guard (event?.allTouches?.count ?? 1) == 1 else { cancelInput(reason: oneFingerInstructions); return }
             // Preserve the event chronology: dropping early samples could erase
             // a pre-deadline excursion and turn a quick exchange into a hold.
             for touch in event?.coalescedTouches(for: primary) ?? [primary] {
@@ -109,7 +112,7 @@ struct ConstellationTraceSurface: UIViewRepresentable {
         }
         private func endContact(_ touches: Set<UITouch>, event: UIEvent?) {
             guard !blocked, let primary, touches.contains(primary) else { cancelInput(); return }
-            guard (event?.allTouches?.count ?? 1) == 1 else { cancelInput(reason: SkyCopy.text(.inputOneFinger)); return }
+            guard (event?.allTouches?.count ?? 1) == 1 else { cancelInput(reason: oneFingerInstructions); return }
             for touch in event?.coalescedTouches(for: primary) ?? [] {
                 guard !blocked else { break }
                 moveInput(to: touch.location(in: self), timestamp: touch.timestamp)

@@ -22,6 +22,14 @@ enum SkyCopy {
         return text(.a11yPatternsBoardSummary, values: ["showers": String(showers)])
     }
 
+    static func swapInstructions(manualClears: Bool) -> String {
+        text(manualClears ? .helpSwap : .helpPatternsSwap)
+    }
+
+    static func oneFingerInstructions(drawingEnabled: Bool) -> String {
+        text(drawingEnabled ? .inputOneFinger : .inputPatternsOneFinger)
+    }
+
     enum Key: String, CaseIterable, Sendable {
         case balanceGentleShort = "balance.gentleShort"
         case balanceSteadyShort = "balance.steadyShort"
@@ -127,6 +135,7 @@ enum SkyCopy {
         case helpCascadeChain = "help.cascadeChain"
         case helpPatternsTitle = "help.patternsTitle"
         case helpPatternsControls = "help.patternsControls"
+        case helpPatternsSwap = "help.patternsSwap"
         case helpPatternsRecipe = "help.patternsRecipe"
         case helpPatternsChallenge = "help.patternsChallenge"
         case helpPatternsRibbon = "help.patternsRibbon"
@@ -436,6 +445,7 @@ enum SkyCopy {
         case pieceOpal = "piece.opal"
         case inputInterrupted = "input.interrupted"
         case inputOneFinger = "input.oneFinger"
+        case inputPatternsOneFinger = "input.patternsOneFinger"
         case inputSameStar = "input.sameStar"
         case inputSwapEdge = "input.swapEdge"
         case inputBuffered = "input.buffered"
