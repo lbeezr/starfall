@@ -25,5 +25,15 @@
     "AppTests/SkyPieceTests.swift": "1a18841b365b36395ad99de525f2141e5565f798cdded4476b9034cfdf72d5cb",
     "Starfall.xcodeproj/project.pbxproj": "087fda8b8ae2546ef9fee59a1b5e512905ac82e447f8953b4ca1bf29ca88ec52"
   },
-  "snapshotID": "756c0353"
+  "snapshotID": "756c0353",
+  "runtimeBuildIDMeaning": "Computed runtime-input fingerprint from scripts/build_identity.py; not the simulator app Info.plist label.",
+  "simulatorAppBuildLabel": "dev.local",
+  "simulatorBuildLabelEvidence": "Both Debug and Release simulator Info.plists report StarfallBuildID=dev.local; xcodebuild commands omitted STARFALL_BUILD_ID.",
+  "publication": {
+    "pullRequest": "https://github.com/lbeezr/starfall/pull/190",
+    "publishedHead": "dd8364b02299eb4bc12f514742922609dacfe920",
+    "verifiedGitTree": "8f2535d33569ce77d63d6d59e93c5019956ea7cf",
+    "mergedMain": "c6e3a35af2f98112150b0fc7c6932e4eed479971",
+    "parity": "Published tree byte-identical to verified staged tree; recorded runtime/test file hashes are unchanged."
+  }
 }

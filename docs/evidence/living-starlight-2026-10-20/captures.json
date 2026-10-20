@@ -20,7 +20,9 @@
       "timestamp": 1792509931.042,
       "scope": "Seven families at 24/36/44 points on dark/light backgrounds, silhouette/grayscale views and ordinary/grown comparison.",
       "inspection": "Inspected by root and documentation reviewer: distinct forms, continuous interiors, no visible rim bleed in these stills; native/rest pairs visually agree.",
-      "limits": "Hosted SpriteKit stills, not continuous animation, complete scenery, physical-device or minimum-OS acceptance."
+      "limits": "Hosted SpriteKit stills, not continuous animation, complete scenery, physical-device or minimum-OS acceptance.",
+      "runtimeBuildIDMeaning": "Computed runtime-input fingerprint from scripts/build_identity.py; not the simulator app Info.plist label.",
+      "simulatorAppBuildLabel": "dev.local"
     },
     {
       "file": "dev-d94903b-wip-756c0353__native-forecast-parity__iphone-17e__native-host.png",
@@ -41,7 +43,9 @@
       "timestamp": 1792509931.449,
       "scope": "Native shader at rest on the left; cached forecast composite on the right, for all seven families.",
       "inspection": "Inspected by root and documentation reviewer: distinct forms, continuous interiors, no visible rim bleed in these stills; native/rest pairs visually agree.",
-      "limits": "Hosted SpriteKit stills, not continuous animation, complete scenery, physical-device or minimum-OS acceptance."
+      "limits": "Hosted SpriteKit stills, not continuous animation, complete scenery, physical-device or minimum-OS acceptance.",
+      "runtimeBuildIDMeaning": "Computed runtime-input fingerprint from scripts/build_identity.py; not the simulator app Info.plist label.",
+      "simulatorAppBuildLabel": "dev.local"
     },
     {
       "file": "dev-d94903b-wip-756c0353__frostfruit-dense-49__iphone-17e__normal-motion.png",
@@ -79,7 +83,11 @@
         "systemReduceMotion": false
       },
       "inspection": "Root and documentation reviewer inspected 49 pieces: five colored families visibly distinct against navy and bright clouds, clean spacing, one enlarged amber body with diffuse aura.",
-      "limits": "One native still and a deterministic fixture; no Dusk/Opal on this restoration board. Does not establish continuous animation, physical recognition, minimum OS or sustained GPU performance."
+      "limits": "One native still and a deterministic fixture; no Dusk/Opal on this restoration board. Does not establish continuous animation, physical recognition, minimum OS or sustained GPU performance.",
+      "runtimeBuildIDMeaning": "Computed runtime-input fingerprint from scripts/build_identity.py; not the simulator app Info.plist label.",
+      "simulatorAppBuildLabel": "dev.local"
     }
-  ]
+  ],
+  "runtimeBuildIDMeaning": "Computed runtime-input fingerprint from scripts/build_identity.py; not the simulator app Info.plist label.",
+  "documentationCorrection": "Metadata clarifies computed fingerprint versus simulator Info.plist label; original image bytes, timestamps, source snapshots and hashes are unchanged."
 }
