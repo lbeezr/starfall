@@ -1,0 +1,36 @@
+{
+  "runtime": "dev.e9657b05ce",
+  "seconds": [
+    1,
+    11
+  ],
+  "normal": {
+    "size": [
+      1640,
+      2360
+    ],
+    "meanAbsoluteChannelDifference": [
+      2.0797323274080197,
+      1.6326113579991732,
+      2.1755934787102107
+    ],
+    "changedPixelBounds": [
+      0,
+      0,
+      1640,
+      2360
+    ]
+  },
+  "quiet": {
+    "size": [
+      1640,
+      2360
+    ],
+    "meanAbsoluteChannelDifference": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "changedPixelBounds": null
+  }
+}

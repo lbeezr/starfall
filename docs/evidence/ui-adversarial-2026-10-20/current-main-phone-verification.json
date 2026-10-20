@@ -1,0 +1,118 @@
+{
+  "sourceRecord": "current-main-source.json",
+  "resultBundle": "current-main-phone.xcresult",
+  "log": "/tmp/starfall-map-current-main-phone.log",
+  "summary": {
+    "result": "Passed",
+    "passedTests": 146,
+    "totalTestCount": 146,
+    "failedTests": 0,
+    "skippedTests": 0,
+    "expectedFailures": 0
+  },
+  "classes": {
+    "WorldJourneyInteractionTests": {
+      "bundle": "StarfallUITests",
+      "total": 3,
+      "results": {
+        "Passed": 3
+      }
+    },
+    "WorldMapReviewInteractionTests": {
+      "bundle": "StarfallUITests",
+      "total": 1,
+      "results": {
+        "Passed": 1
+      }
+    },
+    "OfficialWorldArtworkTests": {
+      "bundle": "StarfallAppTests",
+      "total": 2,
+      "results": {
+        "Passed": 2
+      }
+    },
+    "ResponsiveInputTests": {
+      "bundle": "StarfallAppTests",
+      "total": 17,
+      "results": {
+        "Passed": 17
+      }
+    },
+    "SkyFlowStateTests": {
+      "bundle": "StarfallAppTests",
+      "total": 24,
+      "results": {
+        "Passed": 24
+      }
+    },
+    "SkySaveArchiveTests": {
+      "bundle": "StarfallAppTests",
+      "total": 19,
+      "results": {
+        "Passed": 19
+      }
+    },
+    "SkyTechniqueStoreTests": {
+      "bundle": "StarfallAppTests",
+      "total": 25,
+      "results": {
+        "Passed": 25
+      }
+    },
+    "TraceInputPolishTests": {
+      "bundle": "StarfallAppTests",
+      "total": 28,
+      "results": {
+        "Passed": 28
+      }
+    },
+    "WorldJourneyTests": {
+      "bundle": "StarfallAppTests",
+      "total": 10,
+      "results": {
+        "Passed": 10
+      }
+    },
+    "WorldMapLayoutTests": {
+      "bundle": "StarfallAppTests",
+      "total": 12,
+      "results": {
+        "Passed": 12
+      }
+    },
+    "WorldMapReviewFixtureTests": {
+      "bundle": "StarfallAppTests",
+      "total": 5,
+      "results": {
+        "Passed": 5
+      }
+    }
+  },
+  "hostedCount": 142,
+  "nativeUICount": 4,
+  "devicesAndConfigurations": [
+    {
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "02B7AF2E-1F1C-40F6-AA83-C67EA962B656",
+        "deviceName": "Starfall UI Compact 01a1563a",
+        "modelName": "iPhone SE (3rd generation)",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "expectedFailures": 0,
+      "failedTests": 0,
+      "passedTests": 146,
+      "skippedTests": 0,
+      "testPlanConfiguration": {
+        "configurationId": "1",
+        "configurationName": "Test Scheme Action"
+      }
+    }
+  ],
+  "runtimeWarnings": [],
+  "testFailures": [],
+  "scope": "Selected current-main integration checks; not full-device or actual VoiceOver acceptance."
+}

@@ -23,170 +23,306 @@ extension WorldLocation {
     }
 }
 
-/// Map and accessible list use the same identities and entry checks. Selection
-/// never replaces the saved round; the existing Entry ceremony owns Begin.
+/// Selection only inspects the journey. Entry owns Begin; visiting the map never
+/// replaces a retained round or changes which destinations are unlocked.
 struct WorldMapView: View {
     let journey: WorldJourney
     let quiet: Bool
     let recovered: Bool
+    let accessible: Bool
     let select: (WorldLocation) -> Void
     let enter: (StarfallChallenge) -> Void
     let resume: (() -> Void)?
     let learn: () -> Void
     let done: () -> Void
     @State private var list = false
-    @State private var marker: WorldLocation
     @State private var selectionRequest = 0
+    @State private var reservedHeights: [WorldMapReservedRegion: CGFloat] = [:]
+    @State private var worldOverflows = false
     @Environment(\.dynamicTypeSize) private var textSize
-    init(journey: WorldJourney, quiet: Bool, recovered: Bool = false, select: @escaping (WorldLocation) -> Void,
+
+    init(journey: WorldJourney, quiet: Bool, recovered: Bool = false, accessible: Bool = true,
+         select: @escaping (WorldLocation) -> Void,
          enter: @escaping (StarfallChallenge) -> Void, resume: (() -> Void)? = nil, learn: @escaping () -> Void, done: @escaping () -> Void) {
-        self.journey = journey; self.quiet = quiet; self.recovered = recovered; self.select = select
+        self.journey = journey; self.quiet = quiet; self.recovered = recovered; self.accessible = accessible; self.select = select
         self.enter = enter; self.resume = resume; self.learn = learn; self.done = done
-        _marker = State(initialValue: journey.canEnter(journey.selected) ? journey.selected : .firstLight)
     }
     private var selected: WorldLocation { journey.selected }
+
     var body: some View {
+        ZStack {
+            // Native scroll descendants can remain in the accessibility tree
+            // beneath a full-screen cover despite an ignored/hidden parent.
+            // Withdraw the interactive subtree; this owner retains Places mode
+            // and measurements, and the world restores the selected destination.
+            if accessible {
+                mapContent
+                    .accessibilityElement(children: .contain)
+                    .accessibilityIdentifier("world.page")
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background { WorldMapBackdrop(quiet: quiet).ignoresSafeArea() }
+        .onPreferenceChange(WorldMapReservedHeights.self) {
+            if accessible && !$0.isEmpty { reservedHeights = $0 }
+        }
+    }
+
+    private var mapContent: some View {
         GeometryReader { viewport in
+            // Preserve full-size names and native targets when there is not room
+            // for the illustrated route. The equivalent Places view is explicit.
+            let wideDestination = viewport.size.width >= 900 && viewport.size.width > viewport.size.height
+            // A stable footer reservation keeps overflow feedback from changing
+            // the viewport it measures or the Map/Places fit decision.
+            let hintHeight: CGFloat = 24
+            let availableWorldHeight = viewport.size.height - (reservedHeights[.navigation] ?? 0)
+                - (reservedHeights[.destination] ?? 0) - StarfallTheme.Spacing.small * 2 - hintHeight
+            let placesRequired = textSize >= .xxLarge || viewport.size.height < 600 || viewport.size.width < 350
+                || availableWorldHeight < WorldMapLayout.minimumViewportHeight
+            let showingPlaces = list || placesRequired
             VStack(spacing: 0) {
-                navigation
-                if list || textSize.isAccessibilitySize {
-                    ScrollViewReader { scroll in
-                        ScrollView {
-                            VStack(spacing: StarfallTheme.Spacing.section) {
-                                destination.id("selection")
-                                locations
-                            }.padding(.vertical)
-                        }
-                        .onChange(of: selectionRequest) {
-                            withAnimation(quiet ? nil : .easeOut(duration: 0.25)) { scroll.scrollTo("selection", anchor: .top) }
-                        }
-                    }
-                } else if viewport.size.width > viewport.size.height {
-                    HStack(spacing: 24) {
-                        painting
-                        ScrollView { destination }
-                            .frame(width: min(360, viewport.size.width * 0.4))
-                    }.padding(.horizontal, 24)
+                navigation(showingPlaces: showingPlaces, allowsMap: !placesRequired)
+                if showingPlaces {
+                    places(wide: wideDestination)
                 } else {
-                    painting
-                    destination.padding(.bottom, 12)
+                    world
+                    Color.clear
+                        .frame(height: hintHeight)
+                        .overlay {
+                            if worldOverflows {
+                                Text(SkyCopy.text(.worldExplore))
+                                    .font(StarfallTheme.Typography.skyCaption)
+                                    .foregroundStyle(StarfallTheme.Colors.textSecondary)
+                                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                    .background(StarfallTheme.Colors.skyTop.opacity(0.7))
+                                    .accessibilityIdentifier("world.explore")
+                            }
+                        }
+                        .allowsHitTesting(false)
+                    destination(wide: wideDestination).padding(.vertical, StarfallTheme.Spacing.small)
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
-        .background { SkyBackdrop().ignoresSafeArea() }
-        .accessibilityElement(children: .contain)
-        .accessibilityIdentifier("world.page")
-        .onChange(of: selected) { _, next in
-            if journey.canEnter(next) { withAnimation(quiet ? nil : .easeInOut(duration: 0.4)) { marker = next } }
-        }
     }
-    private var navigation: some View {
-        VStack(alignment: .leading, spacing: StarfallTheme.Spacing.small) {
-            if textSize.isAccessibilitySize { navigationTitle }
-            HStack(spacing: 12) {
-                Button(action: done) {
-                    ObservatoryIcon(.back)
-                }
-                .buttonStyle(StarfallGameButtonStyle(tint: StarfallTheme.Colors.textPrimary))
-                .accessibilityLabel(SkyCopy.text(.worldBack)).accessibilityIdentifier("world.done")
-                if !textSize.isAccessibilitySize { navigationTitle }
+
+    private func navigation(showingPlaces: Bool, allowsMap: Bool) -> some View {
+        VStack(alignment: .leading, spacing: StarfallTheme.Spacing.compact) {
+            if textSize.isAccessibilitySize { navigationTitle(showingPlaces: showingPlaces) }
+            HStack(spacing: StarfallTheme.Spacing.compact) {
+                Button(action: done) { ObservatoryIcon(.back) }
+                    .buttonStyle(StarfallUtilityButtonStyle())
+                    .accessibilityLabel(SkyCopy.text(.worldBack)).accessibilityIdentifier("world.done")
+                if !textSize.isAccessibilitySize { navigationTitle(showingPlaces: showingPlaces) }
                 Spacer(minLength: 0)
-                Button(action: { list.toggle() }) {
-                    ObservatoryIcon(list ? .story : .list)
+                if allowsMap {
+                    Button { list.toggle() } label: {
+                        HStack(spacing: StarfallTheme.Spacing.compact) {
+                            ObservatoryIcon(showingPlaces ? .story : .list, size: 18)
+                            Text(SkyCopy.text(showingPlaces ? .worldMap : .worldPlaces))
+                        }
+                    }
+                    .buttonStyle(StarfallGameButtonStyle(tint: StarfallTheme.Colors.textPrimary))
+                    .accessibilityLabel(SkyCopy.text(showingPlaces ? .worldMap : .worldPlaces))
+                    .accessibilityIdentifier("world.list")
                 }
-                .buttonStyle(StarfallGameButtonStyle(tint: StarfallTheme.Colors.textPrimary))
-                .accessibilityLabel(SkyCopy.text(list ? .worldMap : .worldPlaces))
-                .accessibilityIdentifier("world.list")
-                Button(action: learn) {
-                    ObservatoryIcon(.tutorial)
-                }
-                .buttonStyle(StarfallGameButtonStyle(tint: StarfallTheme.Colors.textPrimary))
-                .accessibilityLabel(SkyCopy.text(.practiceTitle)).accessibilityIdentifier("world.learn")
+                Button(action: learn) { ObservatoryIcon(.tutorial) }
+                    .buttonStyle(StarfallUtilityButtonStyle())
+                    .accessibilityLabel(SkyCopy.text(.practiceTitle)).accessibilityIdentifier("world.learn")
             }
         }
-        .padding(.horizontal, StarfallTheme.Spacing.page)
+        .padding(.horizontal, StarfallTheme.Spacing.small)
         .padding(.vertical, StarfallTheme.Spacing.compact)
-    }
-    private var navigationTitle: some View {
-        Text(SkyCopy.text(list || textSize.isAccessibilitySize ? .worldPlaces : .worldMap))
-            .font(StarfallTheme.Typography.title)
-            .foregroundStyle(StarfallTheme.Colors.textPrimary)
-            .accessibilityAddTraits(.isHeader)
-            .fixedSize(horizontal: false, vertical: true)
-    }
-    private var painting: some View {
-        GeometryReader { canvas in
-            WorldMapPainting(journey: journey, selected: selected, traveler: marker, quiet: quiet, select: choose)
-                .frame(width: min(canvas.size.width, canvas.size.height * 2 / 3),
-                       height: min(canvas.size.height, canvas.size.width * 3 / 2))
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(StarfallTheme.Colors.skyTop.opacity(0.55))
+        .background {
+            GeometryReader { geometry in
+                Color.clear.preference(key: WorldMapReservedHeights.self, value: [.navigation: geometry.size.height])
+            }
         }
     }
-    private var destination: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            if recovered { Text(SkyCopy.text(.worldRecovery)).font(.callout) }
-            selection
+
+    private func navigationTitle(showingPlaces: Bool) -> some View {
+        VStack(alignment: .leading, spacing: 0) {
+            Text(SkyCopy.text(showingPlaces ? .worldPlaces : .worldMap))
+                .font(StarfallTheme.Typography.title)
+                .foregroundStyle(StarfallTheme.Colors.textPrimary)
+                .accessibilityAddTraits(.isHeader)
+            Text(SkyCopy.text(.worldChoose))
+                .font(StarfallTheme.Typography.skyCaption)
+                .foregroundStyle(StarfallTheme.Colors.textSecondary)
+        }.fixedSize(horizontal: false, vertical: true)
+    }
+
+    private var world: some View {
+        GeometryReader { viewport in
+            ScrollViewReader { scroll in
+                ScrollView(.vertical) {
+                    WorldMapPainting(journey: journey, selected: selected, quiet: quiet, select: choose,
+                                     maximumNodeHeight: max(0, viewport.size.height - WorldMapLayout.targetViewportInset * 2))
+                        .frame(maxWidth: .infinity, minHeight: viewport.size.height)
+                        .background {
+                            GeometryReader { content in
+                                Color.clear.preference(key: WorldMapOverflow.self,
+                                                       value: content.size.height > viewport.size.height + 1)
+                            }
+                        }
+                }
+                .accessibilityIdentifier("world.canvas")
+                .onPreferenceChange(WorldMapOverflow.self) { worldOverflows = $0 }
+                .onAppear { scroll.scrollTo(selected.challenge == nil ? .firstLight : selected, anchor: .center) }
+                .onChange(of: selected) {
+                    guard selected.challenge != nil else { return }
+                    withAnimation(quiet ? nil : .easeOut(duration: 0.25)) {
+                        scroll.scrollTo(selected, anchor: .center)
+                    }
+                }
+                .onChange(of: viewport.size) {
+                    scroll.scrollTo(selected.challenge == nil ? .firstLight : selected, anchor: .center)
+                }
+            }
         }
-        .starfallPanel(inset: StarfallTheme.Spacing.large)
-        .frame(maxWidth: StarfallTheme.Layout.menuWidth, alignment: .leading)
-        .padding(.horizontal, 24).padding(.top, 12)
+    }
+
+    private func places(wide: Bool) -> some View {
+        ScrollViewReader { scroll in
+            ScrollView {
+                VStack(spacing: StarfallTheme.Spacing.small) {
+                    destination(wide: wide).id("selection")
+                    locations
+                }.padding(.vertical, StarfallTheme.Spacing.small)
+            }
+            .onChange(of: selectionRequest) {
+                withAnimation(quiet ? nil : .easeOut(duration: 0.25)) { scroll.scrollTo("selection", anchor: .top) }
+            }
+        }
+    }
+
+    private func destination(wide: Bool) -> some View {
+        let layout = wide
+            ? AnyLayout(HStackLayout(alignment: .center, spacing: StarfallTheme.Spacing.large))
+            : AnyLayout(VStackLayout(alignment: .leading, spacing: StarfallTheme.Spacing.small))
+        return layout {
+            destinationSummary.frame(maxWidth: .infinity, alignment: .leading)
+            if let challenge = selected.challenge, journey.canEnter(selected) {
+                destinationActions(challenge).frame(width: wide ? 340 : nil)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .topLeading)
+        .observatoryReadingPanel(inset: 24)
+        .frame(maxWidth: wide ? 900 : StarfallTheme.Layout.menuWidth)
+        .padding(.horizontal, StarfallTheme.Spacing.small)
         .frame(maxWidth: .infinity)
+        .background {
+            GeometryReader { geometry in
+                Color.clear.preference(key: WorldMapReservedHeights.self, value: [.destination: geometry.size.height])
+            }
+        }
     }
+
+    private var destinationSummary: some View {
+        VStack(alignment: .leading, spacing: StarfallTheme.Spacing.small) {
+            if recovered {
+                Text(SkyCopy.text(.worldRecovery)).font(StarfallTheme.Typography.supporting)
+                    .foregroundStyle(StarfallTheme.Colors.textSecondary)
+                    .accessibilityIdentifier("world.recovery")
+            }
+            Text(selected.title).font(StarfallTheme.Typography.title)
+                .foregroundStyle(StarfallTheme.Colors.textPrimary)
+                .accessibilityAddTraits(.isHeader).accessibilityIdentifier("world.selection")
+            Text(selected.status(in: journey)).font(StarfallTheme.Typography.supporting)
+                .foregroundStyle(StarfallTheme.Colors.textSecondary).accessibilityIdentifier("world.status")
+            if selected.challenge == nil {
+                Text(SkyCopy.text(.worldComing)).font(StarfallTheme.Typography.supporting)
+                    .foregroundStyle(StarfallTheme.Colors.textSecondary)
+            }
+        }
+        .fixedSize(horizontal: false, vertical: true)
+    }
+
+    @ViewBuilder private func destinationActions(_ challenge: StarfallChallenge) -> some View {
+        if let resume {
+            ViewThatFits(in: .horizontal) {
+                HStack(spacing: StarfallTheme.Spacing.small) {
+                    continueButton(resume)
+                    restartButton(challenge)
+                }.fixedSize(horizontal: true, vertical: false)
+                VStack(spacing: StarfallTheme.Spacing.small) {
+                    continueButton(resume)
+                    restartButton(challenge)
+                }
+            }
+        } else {
+            Button(SkyCopy.text(journey.completed.contains(selected) ? .worldRevisit : .worldVisit,
+                                values: ["place": selected.title])) { enter(challenge) }
+                .buttonStyle(StarfallButtonStyle(role: .primary, expands: true))
+                .accessibilityIdentifier("world.visit")
+        }
+    }
+
+    private func continueButton(_ resume: @escaping () -> Void) -> some View {
+        Button(SkyCopy.text(.worldContinue), action: resume)
+            .buttonStyle(StarfallButtonStyle(role: .primary, expands: true))
+            .accessibilityIdentifier("world.resume")
+    }
+
+    private func restartButton(_ challenge: StarfallChallenge) -> some View {
+        Button(SkyCopy.text(.worldRestart)) { enter(challenge) }
+            .buttonStyle(StarfallButtonStyle(role: .quiet))
+            .accessibilityIdentifier("world.visit")
+    }
+
     private var locations: some View {
-        VStack(spacing: 0) {
+        VStack(spacing: StarfallTheme.Spacing.compact) {
             ForEach(WorldLocation.allCases) { location in
                 Button { choose(location) } label: {
                     HStack(spacing: StarfallTheme.Spacing.medium) {
                         ObservatoryIcon(journey.completed.contains(location) ? .check : journey.canEnter(location) ? .story : .lock)
-                            .foregroundStyle(StarfallTheme.Ceremony.gold)
+                            .foregroundStyle(StarfallTheme.Colors.actionPrimary)
                         VStack(alignment: .leading, spacing: StarfallTheme.Spacing.compact) {
                             Text(location.title).font(StarfallTheme.Typography.skyHeading)
                                 .foregroundStyle(StarfallTheme.Colors.textPrimary)
                             Text(location.status(in: journey)).font(StarfallTheme.Typography.supporting)
                                 .foregroundStyle(StarfallTheme.Colors.textSecondary)
                         }
-                        Spacer(minLength: StarfallTheme.Spacing.small)
+                        Spacer(minLength: 0)
                         if selected == location { ObservatoryIcon(.check, size: 20) }
                     }
-                    .frame(minHeight: 54)
-                    .padding(StarfallTheme.Spacing.large)
-                    .background(selected == location ? StarfallTheme.Colors.surfacePressed.opacity(0.6) : .clear)
-                    .contentShape(Rectangle())
+                    .padding(.vertical, StarfallTheme.Spacing.medium)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .background(selected == location ? StarfallTheme.Colors.surfacePressed.opacity(0.6) : .clear,
+                                in: RoundedRectangle(cornerRadius: StarfallTheme.Radius.control))
                 }
-                .buttonStyle(.plain)
+                .buttonStyle(StarfallGameButtonStyle())
+                .accessibilityLabel(location.title).accessibilityValue(location.status(in: journey))
                 .accessibilityAddTraits(selected == location ? .isSelected : [])
                 .accessibilityIdentifier("world.place.\(location.id)")
-                Divider()
+                if location != WorldLocation.allCases.last { Divider() }
             }
         }
+        .observatoryReadingPanel()
         .frame(maxWidth: StarfallTheme.Layout.contentWidth)
-        .padding(.horizontal, StarfallTheme.Spacing.page)
+        .padding(.horizontal, StarfallTheme.Spacing.small)
         .frame(maxWidth: .infinity)
     }
+
     private func choose(_ location: WorldLocation) {
         select(location)
         selectionRequest += 1
     }
-    private var selection: some View {
-        VStack(alignment: .leading, spacing: StarfallTheme.Spacing.medium) {
-            Text(selected.title).font(.system(.title2, design: .serif, weight: .semibold)).foregroundStyle(StarfallTheme.Ceremony.gold).accessibilityAddTraits(.isHeader)
-                .accessibilityIdentifier("world.selection")
-            Text(selected.status(in: journey)).font(.subheadline).foregroundStyle(.secondary)
-                .accessibilityIdentifier("world.status")
-            if let challenge = selected.challenge, journey.canEnter(selected) {
-                if let resume {
-                    Button(SkyCopy.text(.actionContinue), action: resume)
-                        .buttonStyle(StarfallButtonStyle(role: .primary, expands: true))
-                        .accessibilityIdentifier("world.resume")
-                }
-                Button(SkyCopy.text(resume != nil ? .worldRestart : journey.completed.contains(selected) ? .worldRevisit : .worldVisit,
-                                    values: resume != nil ? [:] : ["place": selected.title])) { enter(challenge) }
-                    .buttonStyle(StarfallButtonStyle(role: resume == nil ? .primary : .quiet, expands: true))
-                    .accessibilityIdentifier("world.visit")
-            } else if selected.challenge == nil {
-                Text(SkyCopy.text(.worldComing))
-            }
-        }
+}
+
+private enum WorldMapReservedRegion: Hashable { case navigation, destination }
+private struct WorldMapReservedHeights: PreferenceKey {
+    static var defaultValue: [WorldMapReservedRegion: CGFloat] { [:] }
+    static func reduce(value: inout [WorldMapReservedRegion: CGFloat], nextValue: () -> [WorldMapReservedRegion: CGFloat]) {
+        value.merge(nextValue(), uniquingKeysWith: { _, next in next })
+    }
+}
+
+private struct WorldMapOverflow: PreferenceKey {
+    static var defaultValue: Bool { false }
+    static func reduce(value: inout Bool, nextValue: () -> Bool) {
+        value = value || nextValue()
     }
 }

@@ -1,0 +1,51 @@
+{
+  "sourceRecord": "current-main-source.json",
+  "resultBundle": "current-main-tablet.xcresult",
+  "log": "/tmp/starfall-map-current-main-tablet.log",
+  "result": "Passed",
+  "total": 2,
+  "passed": 2,
+  "failures": 0,
+  "skips": 0,
+  "expectedFailures": 0,
+  "tests": [
+    {
+      "identifier": "WorldJourneyInteractionTests/testMapMarkersUsePhysicalTargetsAndSelectLockedDestinations()",
+      "result": "Passed",
+      "durationSeconds": 75.9066219329834
+    },
+    {
+      "identifier": "WorldMapReviewInteractionTests/testSevenReviewStatesUseNormalMapAndExplicitEntryBoundary()",
+      "result": "Passed",
+      "durationSeconds": 154.39431703090668
+    }
+  ],
+  "classes": {
+    "WorldJourneyInteractionTests": 1,
+    "WorldMapReviewInteractionTests": 1
+  },
+  "devicesAndConfigurations": [
+    {
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "377B8820-20E2-413E-B64F-D9E4CEB86AF4",
+        "deviceName": "Starfall UI Tablet 01a1563a",
+        "modelName": "iPad Air 11-inch (M3)",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "expectedFailures": 0,
+      "failedTests": 0,
+      "passedTests": 2,
+      "skippedTests": 0,
+      "testPlanConfiguration": {
+        "configurationId": "1",
+        "configurationName": "Test Scheme Action"
+      }
+    }
+  ],
+  "runtimeWarnings": [],
+  "testFailures": [],
+  "scope": "Seven map states and physical marker selection at default text, including portrait/landscape. No recovery-largest test selected in this run. Final integrated visual acceptance remains pending the separate compact dialogue correction."
+}

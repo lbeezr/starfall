@@ -115,7 +115,7 @@ extension TraceInputPolishTests {
                 let oldTicket = surface.session.sequence
                 surface.moveInput(to:outward)
                 surface.endInput(at:outward)
-                surface.armDrawing(ticket:oldTicket,generation:7)
+                surface.armDrawing(ticket:oldTicket,generation:7,timestamp:ProcessInfo.processInfo.systemUptime + 1)
                 XCTAssertEqual(feedback,["That direction leaves the sky. Swipe inward."])
                 XCTAssertEqual(swaps,0); XCTAssertEqual(taps,0); XCTAssertEqual(draws,0)
                 surface.beginInput(at:origin)
@@ -145,7 +145,7 @@ extension TraceInputPolishTests {
                 let ticket = surface.session.sequence
                 surface.endInput(at:end)
                 surface.moveInput(to:center)
-                surface.armDrawing(ticket:ticket,generation:9)
+                surface.armDrawing(ticket:ticket,generation:9,timestamp:ProcessInfo.processInfo.systemUptime + 1)
                 XCTAssertEqual(swaps.count,1)
                 XCTAssertEqual(swaps.first?.0,source); XCTAssertEqual(swaps.first?.1,destination)
                 XCTAssertEqual(taps,0); XCTAssertEqual(draws,0)
@@ -511,7 +511,7 @@ extension TraceInputPolishTests {
         surface.moveInput(to:target)
         XCTAssertEqual(game.gem(at:Cell(0,1))?.id,before.gem(at:Cell(0,0))?.id, "Committed while contact is still down")
         XCTAssertNotNil(surface.session.origin)
-        surface.armDrawing(ticket:hold,generation:4)
+        surface.armDrawing(ticket:hold,generation:4,timestamp:ProcessInfo.processInfo.systemUptime + 1)
         surface.moveInput(to:mapping.viewPoint(Cell(0,5)))
         surface.endInput(at:target)
         XCTAssertEqual(swaps,1); XCTAssertEqual(draws,0); XCTAssertEqual(taps,0)
@@ -529,8 +529,9 @@ extension TraceInputPolishTests {
         XCTAssertEqual(draws,0)
         surface.cancelInput()
         surface.beginInput(at:origin)
-        surface.armDrawing(ticket:old,generation:1)
-        surface.armDrawing(ticket:surface.session.sequence,generation:0)
+        let elapsed = ProcessInfo.processInfo.systemUptime + 1
+        surface.armDrawing(ticket:old,generation:1,timestamp:elapsed)
+        surface.armDrawing(ticket:surface.session.sequence,generation:0,timestamp:elapsed)
         XCTAssertEqual(draws,0)
         let deadline = ContinuousClock.now + .seconds(2)
         while draws == 0 && ContinuousClock.now < deadline { try await Task.sleep(for:.milliseconds(20)) }
@@ -561,7 +562,7 @@ extension TraceInputPolishTests {
                 .init(size:size,enabled:enabled,generation:generation,traceStart:{ _ in Cell(0,0) },
                     tap:{ _ in XCTFail("Interrupted holds cannot tap") },begin:{ _ in drawings += 1 },move:{ _ in },end:{},cancel:{})
             }
-            surface.updateInput(input()); surface.beginInput(at:origin)
+            surface.updateInput(input()); surface.beginInput(at:origin,timestamp:100)
             let ticket = surface.session.sequence
             switch boundary {
             case "generation": surface.updateInput(input(generation:2))
@@ -570,9 +571,191 @@ extension TraceInputPolishTests {
             case "detach": surface.willMove(toWindow:nil)
             default: surface.cancelInput()
             }
-            surface.armDrawing(ticket:ticket,generation:1)
-            surface.endInput(at:origin)
+            surface.armDrawing(ticket:ticket,generation:1,timestamp:101)
+            surface.endInput(at:origin,timestamp:101)
             XCTAssertEqual(drawings,0,boundary)
+        }
+    }
+}
+
+extension TraceInputPolishTests {
+    @MainActor func testElapsedTouchSamplesTraceExactlyFiveWhenHoldTaskCannotRun() throws {
+        // This synchronous main-actor test never yields to the feedback task.
+        // Physical event time still establishes the 400 ms stationary hold.
+        for finalOnly in [false, true] {
+            let size = CGSize(width:390,height:844), mapping = LandingGeometry(size:size)
+            let surface = ConstellationTraceSurface.Surface(), trace = ConstellationTraceIntent()
+            var game = SkyTutorial.trace.game()
+            let sixthID = try XCTUnwrap(game.gem(at:Cell(0,5))?.id)
+            var starts = 0, commits = 0, swaps = 0, taps = 0
+            surface.updateInput(.init(size:size,enabled:true,generation:4,
+                traceStart:{ ConstellationTraceHitTesting.start(at:$0,mapping:mapping,game:game) },
+                tap:{ _ in taps += 1 },
+                begin:{ point in
+                    starts += 1
+                    _ = trace.begin(Cell(0,0),game:game,generation:4,enabled:true)
+                    trace.lastFinger = point
+                },
+                move:{ point in
+                    for cell in ConstellationTraceHitTesting.cells(from:trace.lastFinger ?? point,
+                        to:point,mapping:mapping,game:game) {
+                        _ = trace.visit(cell,ticket:trace.sequence,game:game,generation:4,enabled:true)
+                    }
+                    trace.lastFinger = point
+                },
+                end:{
+                    guard let result = trace.finish(ticket:trace.sequence,game:game,generation:4,enabled:true) else {
+                        XCTFail("Held native samples must produce a legal trace"); return
+                    }
+                    XCTAssertEqual(result.path,(0..<5).map { Cell(0,$0) })
+                    XCTAssertEqual(game.clearConstellation(result.path)?.collected,5)
+                    commits += 1
+                },
+                cancel:{ trace.cancel() },swapStart:{ _ in true },
+                swap:{ from,to,_ in swaps += 1; _ = game.nudge(from:from,to:to) },
+                cancelDrawing:{ trace.cancel() }))
+            let origin = mapping.viewPoint(Cell(0,0)), end = mapping.viewPoint(Cell(0,4))
+            surface.beginInput(at:origin,timestamp:100)
+            let ticket = surface.session.sequence
+            XCTAssertEqual(starts,0)
+            if !finalOnly { surface.moveInput(to:end,timestamp:100.4) }
+            surface.endInput(at:end,timestamp:100.4)
+            surface.armDrawing(ticket:ticket,generation:4,timestamp:101)
+            XCTAssertEqual(starts,1); XCTAssertEqual(commits,1)
+            XCTAssertEqual(swaps,0); XCTAssertEqual(taps,0)
+            XCTAssertEqual(game.score,5)
+            XCTAssertEqual(game.board.compactMap { $0 }.map(\.id),[sixthID])
+            XCTAssertNil(trace.snapshot)
+        }
+    }
+
+    @MainActor func testQueuedQuickMovementWithdrawsTimerCueWithoutReplacingContactTicket() throws {
+        for excursion in [false, true] {
+            let suite = "Starfall.EventTime.\(UUID())", defaults = UserDefaults(suiteName:suite)!
+            defer { defaults.removePersistentDomain(forName:suite) }
+            let clock = ManualRainClock(), presenter = FallingSkyRecorder()
+            let store = FallingSkyStore(defaults:defaults,arguments:["--starfalls-reset","--technique-review","--technique-example=trace"],
+                                        presenter:presenter,clock:clock)
+            store.setSuspended(false)
+            let interaction = SkyInteractionSession(), scene = store.scene
+            let size = CGSize(width:390,height:844), mapping = LandingGeometry(size:size)
+            let surface = ConstellationTraceSurface.Surface(), source = store.game
+            let origin = mapping.viewPoint(Cell(0,0)), target = mapping.viewPoint(Cell(0,1))
+            let generation = store.constellationInputGeneration
+            scene.render(source)
+            var swaps = 0, cueCancellations = 0, contacts = 0
+            var admittedTicket: UInt64?
+            surface.updateInput(.init(size:size,enabled:true,generation:generation,traceStart:{ _ in Cell(0,0) },
+                tap:{ _ in XCTFail("Quick movement cannot tap") },
+                begin:{ _ in
+                    _ = interaction.trace.begin(Cell(0,0),game:store.game,generation:generation,enabled:true)
+                    scene.showConstellationTrace([Cell(0,0)],ready:false)
+                },
+                move:{ _ in XCTFail("Pre-threshold movement cannot draw") },
+                end:{ XCTFail("A quick exchange cannot finish a trace") },
+                cancel:{ interaction.cancelContact(release:store.endConstellationHold); scene.clearConstellationTrace() },
+                contact:{ _ in
+                    contacts += 1
+                    return interaction.acquireHold(at:Cell(0,0),using:store.beginResponsiveContact)
+                },
+                swapStart:{ _ in true },
+                swap:{ from,to,epoch in
+                    XCTAssertEqual(interaction.holdTicket,admittedTicket)
+                    XCTAssertTrue(store.constellationTracing)
+                    XCTAssertNil(interaction.trace.snapshot,"Cue must be withdrawn before swap admission")
+                    XCTAssertNil(scene.childNode(withName:"//constellation.trace.thread"))
+                    XCTAssertTrue(store.requestInput(.swap(from,to),snapshot:store.game,generation:epoch))
+                    swaps += 1
+                },
+                cancelDrawing:{
+                    XCTAssertEqual(interaction.holdTicket,admittedTicket)
+                    XCTAssertTrue(store.constellationTracing)
+                    interaction.trace.cancel(); scene.clearConstellationTrace()
+                    cueCancellations += 1
+                }))
+            surface.beginInput(at:origin,timestamp:100)
+            admittedTicket = try XCTUnwrap(interaction.holdTicket)
+            let ticket = surface.session.sequence
+            surface.armDrawing(ticket:ticket,generation:generation,timestamp:100.4)
+            XCTAssertNotNil(interaction.trace.snapshot)
+            XCTAssertNotNil(scene.childNode(withName:"//constellation.trace.thread"))
+            if excursion {
+                surface.moveInput(to:CGPoint(x:origin.x+9,y:origin.y),timestamp:100.1)
+                XCTAssertNil(interaction.trace.snapshot)
+                XCTAssertEqual(interaction.holdTicket,admittedTicket)
+                XCTAssertTrue(store.constellationTracing)
+                surface.moveInput(to:origin,timestamp:100.2)
+            }
+            // A prior excursion still prohibits drawing after the deadline.
+            let movementTime = excursion ? 100.5 : 100.1
+            surface.moveInput(to:target,timestamp:movementTime)
+            surface.endInput(at:target,timestamp:movementTime)
+            surface.armDrawing(ticket:ticket,generation:generation,timestamp:101)
+            XCTAssertEqual(swaps,1); XCTAssertEqual(contacts,1); XCTAssertEqual(cueCancellations,1)
+            XCTAssertEqual(store.game.score,source.score)
+            XCTAssertEqual(store.game.gem(at:Cell(0,1))?.id,source.gem(at:Cell(0,0))?.id)
+            XCTAssertEqual(store.game.gem(at:Cell(0,0))?.id,source.gem(at:Cell(0,1))?.id)
+            XCTAssertNil(interaction.holdTicket); XCTAssertFalse(store.constellationTracing)
+            XCTAssertNil(interaction.trace.snapshot)
+            XCTAssertNil(scene.childNode(withName:"//constellation.trace.thread"))
+            XCTAssertNil(scene.childNode(withName:"//sky.input.drawing.armed"))
+        }
+    }
+
+    @MainActor func testEventTimesKeepQuickSwapThresholdAndIgnoreOlderMovement() {
+        let size = CGSize(width:390,height:844), mapping = LandingGeometry(size:size)
+        let origin = mapping.viewPoint(Cell(0,0)), target = mapping.viewPoint(Cell(0,1))
+        for elapsed in [0.299, 0.3, 0.4] {
+            let surface = ConstellationTraceSurface.Surface()
+            var swaps = 0, starts = 0, ends = 0, taps = 0
+            surface.updateInput(.init(size:size,enabled:true,generation:1,traceStart:{ _ in Cell(0,0) },
+                tap:{ _ in taps += 1 },begin:{ _ in starts += 1 },move:{ _ in },end:{ ends += 1 },cancel:{},
+                swapStart:{ _ in true },swap:{ _,_,_ in swaps += 1 }))
+            surface.beginInput(at:origin,timestamp:100)
+            surface.endInput(at:target,timestamp:100+elapsed)
+            XCTAssertEqual(swaps,elapsed < 0.3 ? 1 : 0)
+            XCTAssertEqual(starts,elapsed < 0.3 ? 0 : 1)
+            XCTAssertEqual(ends,elapsed < 0.3 ? 0 : 1)
+            XCTAssertEqual(taps,0)
+        }
+        let surface = ConstellationTraceSurface.Surface()
+        var starts = 0, ends = 0, taps = 0
+        surface.updateInput(.init(size:size,enabled:true,generation:1,traceStart:{ _ in Cell(0,0) },
+            tap:{ _ in taps += 1 },begin:{ _ in starts += 1 },move:{ _ in },end:{ ends += 1 },cancel:{},
+            swapStart:{ _ in true },swap:{ _,_,_ in XCTFail("An older sample cannot consume the live contact") }))
+        surface.beginInput(at:origin,timestamp:100)
+        surface.moveInput(to:CGPoint(x:origin.x+7,y:origin.y),timestamp:100.2)
+        surface.moveInput(to:target,timestamp:100.1) // Older coalesced sample: ignored.
+        surface.endInput(at:origin,timestamp:100.4)
+        XCTAssertEqual(starts,1); XCTAssertEqual(ends,1); XCTAssertEqual(taps,0,
+            "A held same-star release never falls back to a clear")
+    }
+
+    @MainActor func testInvalidEventTimesAndStaleFinalSamplesCancelWithoutLateActions() {
+        let size = CGSize(width:390,height:844), mapping = LandingGeometry(size:size)
+        let origin = mapping.viewPoint(Cell(0,0)), target = mapping.viewPoint(Cell(0,1))
+        for boundary in ["begin", "move", "end", "staleEnd"] {
+            for invalid in [TimeInterval.nan, .infinity, -.infinity] {
+                let surface = ConstellationTraceSurface.Surface()
+                var actions = 0
+                surface.updateInput(.init(size:size,enabled:true,generation:1,traceStart:{ _ in Cell(0,0) },
+                    tap:{ _ in actions += 1 },begin:{ _ in actions += 1 },move:{ _ in actions += 1 },
+                    end:{ actions += 1 },cancel:{},swapStart:{ _ in true },swap:{ _,_,_ in actions += 1 }))
+                surface.beginInput(at:origin,timestamp:boundary == "begin" ? invalid : 100)
+                let ticket = surface.session.sequence
+                if boundary == "move" { surface.moveInput(to:target,timestamp:invalid) }
+                if boundary == "staleEnd" {
+                    surface.moveInput(to:origin,timestamp:100.2)
+                    surface.endInput(at:target,timestamp:100.1)
+                } else {
+                    surface.endInput(at:target,timestamp:boundary == "end" ? invalid : 100.4)
+                }
+                surface.armDrawing(ticket:ticket,generation:1,timestamp:101)
+                XCTAssertEqual(actions,0,boundary)
+                surface.beginInput(at:origin,timestamp:102)
+                surface.endInput(at:origin,timestamp:102.1)
+                XCTAssertEqual(actions,1,"Cancellation must leave the next independent tap usable")
+            }
         }
     }
 }

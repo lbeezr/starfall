@@ -1,0 +1,40 @@
+{
+  "baseCommit": "ebaf1575a224bd547dbf529eedbf6e596e33b670",
+  "branch": "codex/full-page-story-map",
+  "stage": "final event-time input and covered tutorial follow-up",
+  "dirtyBuildInputs": [
+    {
+      "path": "App/ConstellationTraceSurface.swift",
+      "status": " M",
+      "sha256": "bd5053a7e50eb3638f8cf2c2d4fc621ebe5ebc2c4bd25856a8f39753fede5ea4"
+    },
+    {
+      "path": "App/FallingSkyView.swift",
+      "status": " M",
+      "sha256": "a535fcb66648c4938d612891d45dd4f283a87e72054c134b4b06d079285b98b1"
+    },
+    {
+      "path": "App/SkyTutorialView.swift",
+      "status": " M",
+      "sha256": "32aa1dd09ce73227d0735450c96461bdf8e5fbf9c66423d0a53854200371222c"
+    },
+    {
+      "path": "AppTests/TraceInputPolishTests.swift",
+      "status": " M",
+      "sha256": "1f87bcb3ff6328938716e6723cae533e4cf5f8524c96862a1deb2f6b523f2137"
+    },
+    {
+      "path": "UITests/WorldJourneyInteractionTests.swift",
+      "status": " M",
+      "sha256": "a14d3c5fd4b28133fcbf117c2276c941622aad2a77bf0eb84190cdef038be5d6"
+    }
+  ],
+  "configuration": "Debug arm64",
+  "toolchain": "Xcode 27.1 (27A9275)",
+  "simulatorOS": "iOS 27.0 (24A434)",
+  "macOS": "27.0.1",
+  "physicalDevice": false,
+  "actualVoiceOver": false,
+  "runtimeFingerprint": "dev.96f4131f5d",
+  "displayedBuildID": "dev.local"
+}

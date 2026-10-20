@@ -1,0 +1,98 @@
+{
+  "runtime": "dev.e9657b05ce",
+  "device": "377B8820-20E2-413E-B64F-D9E4CEB86AF4",
+  "state": "twoRepairs",
+  "scope": "Bounded Simulator process RSS/CPU observation, not GPU memory, sustained frame pacing or device profiling",
+  "observations": [
+    {
+      "mode": "normal",
+      "pid": 20243,
+      "launch": [
+        "xcrun",
+        "simctl",
+        "launch",
+        "--terminate-running-process",
+        "377B8820-20E2-413E-B64F-D9E4CEB86AF4",
+        "com.starfall.prototype",
+        "--starfalls-reset",
+        "--world-map-review",
+        "--world-map-state=twoRepairs",
+        "-calmEffects",
+        "NO"
+      ],
+      "movie": "/tmp/starfall-map-20261020/expanded-motion/map-normal-motion.mp4",
+      "samples": [
+        {
+          "seconds": 0,
+          "rssKiB": 359424,
+          "cpuPercent": 3.1
+        },
+        {
+          "seconds": 3,
+          "rssKiB": 295120,
+          "cpuPercent": 1.6
+        },
+        {
+          "seconds": 6,
+          "rssKiB": 293040,
+          "cpuPercent": 1.8
+        },
+        {
+          "seconds": 9,
+          "rssKiB": 292992,
+          "cpuPercent": 2.9
+        },
+        {
+          "seconds": 12,
+          "rssKiB": 292816,
+          "cpuPercent": 3.8
+        }
+      ]
+    },
+    {
+      "mode": "quiet",
+      "pid": 20907,
+      "launch": [
+        "xcrun",
+        "simctl",
+        "launch",
+        "--terminate-running-process",
+        "377B8820-20E2-413E-B64F-D9E4CEB86AF4",
+        "com.starfall.prototype",
+        "--starfalls-reset",
+        "--world-map-review",
+        "--world-map-state=twoRepairs",
+        "-calmEffects",
+        "YES"
+      ],
+      "movie": "/tmp/starfall-map-20261020/expanded-motion/map-quiet-motion.mp4",
+      "samples": [
+        {
+          "seconds": 0,
+          "rssKiB": 359568,
+          "cpuPercent": 0.0
+        },
+        {
+          "seconds": 3,
+          "rssKiB": 359024,
+          "cpuPercent": 0.0
+        },
+        {
+          "seconds": 6,
+          "rssKiB": 358976,
+          "cpuPercent": 0.0
+        },
+        {
+          "seconds": 9,
+          "rssKiB": 358832,
+          "cpuPercent": 0.0
+        },
+        {
+          "seconds": 12,
+          "rssKiB": 245696,
+          "cpuPercent": 0.0
+        }
+      ]
+    }
+  ]
+}

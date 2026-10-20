@@ -1,0 +1,25 @@
+{
+  "runtime": "dev.e9657b05ce",
+  "releaseBuild": "passed",
+  "mapAssetNames": [
+    "WorldMapCloud",
+    "WorldMapIslandFrostfruitDamaged",
+    "WorldMapIslandFrostfruitRestored",
+    "WorldMapIslandKiteDamaged",
+    "WorldMapIslandKiteRestored",
+    "WorldMapIslandLanternDamaged",
+    "WorldMapIslandLanternRestored",
+    "WorldMapIslandRibbonDamaged",
+    "WorldMapIslandRibbonRestored",
+    "WorldMapIslandSeedDamaged",
+    "WorldMapIslandSeedRestored",
+    "WorldMapIslandSilverDamaged",
+    "WorldMapIslandSilverRestored",
+    "WorldMapSky"
+  ],
+  "removedWholeMapAssetsAbsent": true,
+  "debugReviewStringsAbsent": true,
+  "sourceManifest": "expanded-source-e9657b05ce.json",
+  "sourceInputHashesStillMatch": true,
+  "configuration": "Release arm64 iOS Simulator"
+}

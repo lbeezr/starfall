@@ -15,8 +15,9 @@ import SwiftUI
     var body: some View {
         GeometryReader { viewport in
             ScrollView {
-                studioContent(maximumPreviewHeight: max(80, viewport.size.height - 2 * StarfallTheme.Spacing.large))
-                    .padding(StarfallTheme.Spacing.large)
+                // SkyMenuSurface owns the page insets. Give the shared preview
+                // its full content width and measured reading viewport.
+                studioContent(maximumPreviewHeight: max(80, viewport.size.height))
             }
             .accessibilityIdentifier("dialogue.studio.scroll")
         }

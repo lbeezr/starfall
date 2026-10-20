@@ -1,10 +1,18 @@
-# Painted world-map states
+# World-map production sources
 
-Two 1024 × 1536 registered paintings supply the normal app's overworld. The damaged plate is the baseline; saved completions reveal corresponding regions and outgoing roads from the repaired plate. Native veils conceal unreached details. There are no numbered badges or unfamiliar helper creatures. Runtime controls, names and status belong to `WorldMapView`; the art does not decide access.
+**Current work:** The [modular map](layered-2026-10-20/README.md) is adopted for development with [source-bound checks](../../../evidence/ui-adversarial-2026-10-20/IMPLEMENTATION.md). The approved concept guides materials and landmark identity. The [UI production workflow](../../UI_PRODUCTION.md) requires a native slice with independent states and responsive composition before expanding the family.
 
-<img src="world-damaged-v1.png" width="320" alt="Dim world of cold lanterns, torn bridges, closed buds and dry pools">
-<img src="world-restored-v1.png" width="320" alt="The same twelve landmarks with repaired architecture and returned light">
+The replacement separates sky/clouds, six independently placed islands and their repair states, connectors and native markers/card. `WorldMapArtwork` owns the content/registration catalogue; `WorldMapPainting` composes a read-only app snapshot. Existing Core/store owners retain access, completed repairs and persistence. All twelve identities remain in Places; six have no playable content.
 
-These are source paintings, not native captures. The [integration contract](../../../OFFICIAL_LOCATIONS_AND_TUTORIAL_PLAN.md) and [development evidence](../../../evidence/official-world-2026-10-19/README.md) own behavior and acceptance.
+## Rejected whole-map prototype
 
-Generated with the built-in image tool from the approved map after removing the alien helpers. The [generation record](generation.json) retains exact edit prompts, paths and SHA-256 hashes. Packaged copies are in `WorldMapDamaged.imageset` and `WorldMapRestored.imageset`. `WorldMapLayout` owns normalized landmark/road registration; future edits must keep both plates aligned and recheck the native completion masks on phone/tablet.
+The user rejected the [October 20 full-page pair](interactive-2026-10-20/README.md) as the production implementation. The plates and [generation record](interactive-2026-10-20/generation.json) remain historical provenance; the rejected whole-map runtime assets are removed.
+
+<img src="interactive-2026-10-20/world-damaged.png" width="240" alt="Rejected whole-map prototype showing five dormant landmarks in one fixed composition">
+<img src="interactive-2026-10-20/world-restored.png" width="240" alt="Rejected whole-map prototype showing five restored landmarks in the same fixed composition">
+
+*Historical prototype source paintings, not current renderer evidence. The broad composition was aligned by an image edit; exact pixel registration was not established.*
+
+## Historical twelve-landmark plates
+
+`world-damaged-v1.png`, `world-restored-v1.png` and their [original generation record](generation.json) are retained unchanged as the October 19 production source. They contain the earlier poster layout and baked title. The [original integration contract](../../../OFFICIAL_LOCATIONS_AND_TUTORIAL_PLAN.md) and [development evidence](../../../evidence/official-world-2026-10-19/README.md) preserve that implementation's source-bound results.

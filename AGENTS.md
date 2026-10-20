@@ -17,6 +17,8 @@ Before editing, inspect `git status --short`, the relevant folder README and loc
 
 For level artwork and restoration compositions, use the [level-design kit](docs/design/level-design-kit/README.md) and [level-design skill](.agents/skills/starfall-level-design/SKILL.md), including the camera, native layout/bleed templates and actual-star scale references.
 
+For screen, HUD and interactive-map production, use the [UI production skill](.agents/skills/starfall-ui-production/SKILL.md): establish component/state/asset contracts and prove one native slice before expanding the artwork family. Complete gameplay paintings retain the level-design contract.
+
 The user's primary gameplay inspiration is **Pokémon Puzzle League (Nintendo 64)**. When uncertain about mechanics, progression, difficulty, scoring, spectacle or multiplayer, consult the [reference and adaptation guide](docs/design/POKEMON_PUZZLE_LEAGUE_REFERENCE.md), verify its actual behavior and propose how Starfall can develop it further. Keep reference facts, proposed adaptations and implemented rules distinct.
 
 Future local-network versus and cooperative restoration between nearby iPhones/iPads are user-requested directions, evoking linked handhelds and couch play. Record them in design work; the current scope remains offline until a multiplayer implementation task. No account, backend or online matchmaking is implied.

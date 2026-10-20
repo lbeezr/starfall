@@ -12,6 +12,8 @@ Current decisions, design contracts, verification summaries and historical evide
 
 [Official locations and tutorial](OFFICIAL_LOCATIONS_AND_TUTORIAL_PLAN.md) documents the implemented painted map, local repairs and progression, retired nightscapes, shared board actions and real practice scenarios. [Development evidence](evidence/official-world-2026-10-19/README.md) records validation and remaining acceptance.
 
+[UI production](design/UI_PRODUCTION.md) connects approved mockups to reusable components, asset contracts and native evidence. The [modular map](design/world-01/production/layered-2026-10-20/README.md) replaces the rejected whole-map plates with independent island states and native controls. [Combined-source checks](evidence/ui-adversarial-2026-10-20/current-main-validation.json) and [map captures](evidence/ui-adversarial-2026-10-20/current-main-captures.json) retain `6f24b689` / `dev.c8ef40bcdc` after the living-light and authored Lantern/Ribbon merge. The [dialogue/Studio correction](evidence/ui-adversarial-2026-10-20/dialogue-fit-validation.json) completes development adoption at `9472691` / `dev.d4ba8a7698`, with [source-bound captures](evidence/ui-adversarial-2026-10-20/dialogue-fit-captures.json). [Implementation history](evidence/ui-adversarial-2026-10-20/IMPLEMENTATION.md) preserves earlier map/input evidence, original failures and focused corrections. Physical play, actual VoiceOver and installation remain separate acceptance.
+
 [Gesture delivery evidence](evidence/gesture-delivery-2026-10-18/README.md) records the five individual merges and canonical phone receipts.
 
 [Gesture quality](GESTURE_QUALITY.md) sequences immediate movement, rapid follow-ups, forgiving direction and clear held-drawing feedback as separate deliveries.

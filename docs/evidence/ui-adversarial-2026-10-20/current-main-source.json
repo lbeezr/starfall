@@ -1,0 +1,273 @@
+{
+  "baseCommit": "388d88609867bfdee41c387c467cb6c309b05df5",
+  "branch": "codex/full-page-story-map",
+  "stage": "integration with b811b85 authored story rules and living light",
+  "dirtyBuildInputs": [
+    {
+      "path": "App/Assets.xcassets/SkyPieceDusk.imageset/body.png",
+      "status": "M ",
+      "sha256": "5cf7e490524fb0f5a49d2a0686beda315451b23e1996ced160bcfcddbbb7bcee"
+    },
+    {
+      "path": "App/Assets.xcassets/SkyPieceNova.imageset/body.png",
+      "status": "M ",
+      "sha256": "7804653971e2e6754bf03c4f532fc97a5eb99066fc1e796a0bcd5d0da2904e73"
+    },
+    {
+      "path": "App/Assets.xcassets/SkyPieceOpal.imageset/body.png",
+      "status": "M ",
+      "sha256": "ec20dcbcaa9086e0a4c1118ee2682d32d893e346a98262a0d78d9a41905cd6ed"
+    },
+    {
+      "path": "App/Assets.xcassets/SkyPiecePip.imageset/body.png",
+      "status": "M ",
+      "sha256": "976fa99c826c20013a2cc706801542de69810ed6a48e5177cb9b021d9b63c93e"
+    },
+    {
+      "path": "App/Assets.xcassets/SkyPieceSpark.imageset/body.png",
+      "status": "M ",
+      "sha256": "78f42140529feff55ca74cda2eacdfa8a5ee89b7799f10ade36c67004ab8acd6"
+    },
+    {
+      "path": "App/Assets.xcassets/SkyPieceSunny.imageset/body.png",
+      "status": "M ",
+      "sha256": "f57f51dddc067ca6adc1abfadd6dcd681bc366f0b39279514ecddc7c3db9a631"
+    },
+    {
+      "path": "App/Assets.xcassets/SkyPieceTwinkle.imageset/body.png",
+      "status": "M ",
+      "sha256": "00d985f5c541f0250e5554d76d8a17c72139fe98dbfd27f8a724d0ab9f0e9d1d"
+    },
+    {
+      "path": "App/CriticalMassPresentation.swift",
+      "status": "M ",
+      "sha256": "a028c81947a3620a08f6029b1bd18a0f865a59d3c192d6c38b7a5c1f4c2571a0"
+    },
+    {
+      "path": "App/CrystalCelebrationArtwork.swift",
+      "status": "M ",
+      "sha256": "434d27450641e64ab9cf06181424efcf3b1d3fb3ec002788d28a1ee0878947ef"
+    },
+    {
+      "path": "App/DialogueScripts/observatory-dialogue.json",
+      "status": "M ",
+      "sha256": "f0ce8920ed042ffdd852f0a4b36da389f38b589d32fb426a6d34aa3bf8d22041"
+    },
+    {
+      "path": "App/DuskPresentation.swift",
+      "status": "M ",
+      "sha256": "d142c1a27c825cb259d8893174a52d6013ee1006645af153744e0d293d1c8daf"
+    },
+    {
+      "path": "App/FallingSkyHUD.swift",
+      "status": "M ",
+      "sha256": "3e18d4262426f27d81ae1b45bc1e0b6f18af826dcf7fcd1dc4cfcb1a63c3faf6"
+    },
+    {
+      "path": "App/FallingSkyMotion.swift",
+      "status": "M ",
+      "sha256": "581b07dc57d3508fd025a96d59d952a9148c377356a2cffd55cc160dc0d15a08"
+    },
+    {
+      "path": "App/FallingSkyScene.swift",
+      "status": "M ",
+      "sha256": "42fc75d50f3c392a2c9ef56e332a2363a73c1bd31de6ef127cbc6973621282d9"
+    },
+    {
+      "path": "App/FallingSkyStore.swift",
+      "status": "M ",
+      "sha256": "992685f4ee903f47bf3f904bcf4e928e376cd5af6da80054c2c99f545f0ae2c6"
+    },
+    {
+      "path": "App/FallingSkyView.swift",
+      "status": "M ",
+      "sha256": "1dee32f727a0544407731e037c24a0069dec9f14fd7ffa9152b9cc888bfa1fe6"
+    },
+    {
+      "path": "App/LivingLight.swift",
+      "status": "A ",
+      "sha256": "5f07b22795525cc850b001de239f2d8dc0ce0ecc26f7714885ba17bad37afa63"
+    },
+    {
+      "path": "App/RestorationPresentation.swift",
+      "status": "M ",
+      "sha256": "c0515c1250393ae03ca7bf76642551d8f1ba064c73762e5a38fb463fc31ab03e"
+    },
+    {
+      "path": "App/SkyCopy.swift",
+      "status": "M ",
+      "sha256": "d565279e68997a0659f4a47ce1ca26007f758a7fd30cbe13302612d1570de991"
+    },
+    {
+      "path": "App/SkyDialogueLibrary.swift",
+      "status": "M ",
+      "sha256": "e9e8f7e5331a0802b465189d5f2be0548598edd8f0dd7a0eacefdcd9a58629be"
+    },
+    {
+      "path": "App/SkyFlowCeremony.swift",
+      "status": "M ",
+      "sha256": "7d1ed2618b0f1256dba48c768444c1d292620b199b4033c36aecc912fe034088"
+    },
+    {
+      "path": "App/SkyFlowSnapshots.swift",
+      "status": "M ",
+      "sha256": "25020b9936e2be04226894dab5d5ff949a7e34a87445342acd038f7880dd0d1c"
+    },
+    {
+      "path": "App/SkyPiece.swift",
+      "status": "M ",
+      "sha256": "f7a4f5df8f53f82ff9af7633d9e4dfbfd313e2746a44ea1359fb544d59e258d5"
+    },
+    {
+      "path": "App/SkyPreferences.swift",
+      "status": "M ",
+      "sha256": "3ef49a8ed2335f0049769acca0700ddd64dfdc19c93c1eb369c5eb8f797b2e09"
+    },
+    {
+      "path": "App/SkySaveArchive.swift",
+      "status": "M ",
+      "sha256": "93ef2356dfa9c8988b61e99ce7d85c638d5e0aa3c1f8ad94a90dfae6d87e95e2"
+    },
+    {
+      "path": "App/SkyTechniqueIntent.swift",
+      "status": "M ",
+      "sha256": "66d7ff123f065aebf50f2f03bd7cfdbafd4ce3d7c7d858544c9cd55dadcdf8bd"
+    },
+    {
+      "path": "App/StarlightCelebration.swift",
+      "status": "M ",
+      "sha256": "a6f15ef446e5826fe36b468329c6533f3c296ff1c15ea1cd097cae45a6acc221"
+    },
+    {
+      "path": "App/WorldJourneyStore.swift",
+      "status": "M ",
+      "sha256": "4a6c9a573b200481ac0b87e2ca5f1482c18a71a2c2530e463102d1e5c15f640d"
+    },
+    {
+      "path": "App/WorldMapReviewFixture.swift",
+      "status": " M",
+      "sha256": "8caa012e7ffdf648e85f04b67be943a0cbc73e3ad521b53f95cd05ef4cbaa9e8"
+    },
+    {
+      "path": "AppTests/CriticalMassProductionTests.swift",
+      "status": "M ",
+      "sha256": "3ade8f70794368bf9c0dcdbd7a084a5b1a7ad81e64960a5b40735efe24342d73"
+    },
+    {
+      "path": "AppTests/CrystalCelebrationArtworkTests.swift",
+      "status": "M ",
+      "sha256": "7a43407b4c5ca604ffd367469ecd0c7f811e24b8b7184ff742116a2c7014cb90"
+    },
+    {
+      "path": "AppTests/DuskProductionTests.swift",
+      "status": "M ",
+      "sha256": "b169803737796eabb66f0183c9c35a39508579baf694b85a0668791b6aca3852"
+    },
+    {
+      "path": "AppTests/FallingSkyStoreTests.swift",
+      "status": "M ",
+      "sha256": "39855f33b3556296fbd9f30ec28a412ea15bd7effa0e792b9372da44e1cb4dc5"
+    },
+    {
+      "path": "AppTests/RestorationFlowTests.swift",
+      "status": "M ",
+      "sha256": "58cc787c53b545ac6eb43d661d1f35debd3b5cd00ac0fa1f31ddc60b99220de6"
+    },
+    {
+      "path": "AppTests/RestorationPresentationTests.swift",
+      "status": "M ",
+      "sha256": "608bd40f5ecbd49edf905bf793d842a44d8175406fd938ea23752f59e6cef2f6"
+    },
+    {
+      "path": "AppTests/SkyDialogueTests.swift",
+      "status": "M ",
+      "sha256": "b04077aa822f72f3c92aa170c72be69b9df9360a4b177aa41cbcf703677e8f2f"
+    },
+    {
+      "path": "AppTests/SkyFlowStateTests.swift",
+      "status": "M ",
+      "sha256": "13fec278960ef0d996364db852d9d365b2ee55966ac7837f7cf4fa635344158f"
+    },
+    {
+      "path": "AppTests/SkyPieceTests.swift",
+      "status": "M ",
+      "sha256": "1a18841b365b36395ad99de525f2141e5565f798cdded4476b9034cfdf72d5cb"
+    },
+    {
+      "path": "AppTests/SkySaveArchiveTests.swift",
+      "status": "M ",
+      "sha256": "120725aa834afb62dc6660264ebc0b07c169fab21519def8782930d2f7cd0076"
+    },
+    {
+      "path": "AppTests/SkyTechniqueStoreTests.swift",
+      "status": "M ",
+      "sha256": "965398fe20e4c9f399bfd26a9121f9de0e5ae68e9c57bbe8f44f5b13d39fdf96"
+    },
+    {
+      "path": "AppTests/StarlightCelebrationTests.swift",
+      "status": "M ",
+      "sha256": "746ab62d08463a2173a8b466936346298208a4dec32dbe221a74183c75c7f10d"
+    },
+    {
+      "path": "AppTests/WorldJourneyTests.swift",
+      "status": "M ",
+      "sha256": "df9e6a62df3672aa0028e8d0e34d2c0f76331b8c96a4d8080e196bfe9207299c"
+    },
+    {
+      "path": "AppTests/WorldMapReviewFixtureTests.swift",
+      "status": " M",
+      "sha256": "7f67035d8c3e00492a35300c42816c67707f1c8b0ac6d0e83baed829f49533a4"
+    },
+    {
+      "path": "Sources/StarfallCore/FallingSky.swift",
+      "status": "M ",
+      "sha256": "5088093f405c1c3f0cf56091917795e5ef24bf3d540f448bb4c135324b0fa430"
+    },
+    {
+      "path": "Sources/StarfallCore/StarfallChallenge.swift",
+      "status": "M ",
+      "sha256": "7fa0de782090e97b4934f7219d45114811a2f1ccfc258ed80b44f403cf765438"
+    },
+    {
+      "path": "Sources/StarfallCore/StarlightRestoration.swift",
+      "status": "M ",
+      "sha256": "66b48ac3dccde26b78a534b42241c8ba2da3a81ddee7e0779fb18fad9937accb"
+    },
+    {
+      "path": "Sources/StarfallCore/StoryChallenge.swift",
+      "status": "A ",
+      "sha256": "ff33d94f4dc58fd81fdd9350fb8cc067902afcefe700b7192b3516e20a23593b"
+    },
+    {
+      "path": "Starfall.xcodeproj/project.pbxproj",
+      "status": "UU",
+      "sha256": "7bbd036208f3d6d31a473de7460e3de575bd3693a5b967ad24f95c5ff929765f"
+    },
+    {
+      "path": "UITests/FallingSkyInteractionTests.swift",
+      "status": "M ",
+      "sha256": "ca69793c2ed8a5eb70a9c9795edac1ed546859c71b62860867bfd20a773e20dd"
+    },
+    {
+      "path": "UITests/ObservatoryInteractionTests.swift",
+      "status": "M ",
+      "sha256": "547226eaf3076cd65fb7caded7a795c82ed12e23420cb3c0455ce0e92980bab4"
+    },
+    {
+      "path": "UITests/SkyFlowInteractionTests.swift",
+      "status": "M ",
+      "sha256": "7ab59cc1ead66afd8f550b05761b99f67517af0f9567c7c1b062218ac1cef276"
+    },
+    {
+      "path": "UITests/WorldJourneyInteractionTests.swift",
+      "status": "M ",
+      "sha256": "b9dbee5d865584139a663a1d7e3bfb8aee5275c30fae37ca8573ec44c1a0e911"
+    }
+  ],
+  "configuration": "Debug arm64",
+  "toolchain": "Xcode 27.1 (27A9275)",
+  "simulatorOS": "iOS 27.0 (24A434)",
+  "macOS": "27.0.1",
+  "physicalDevice": false,
+  "actualVoiceOver": false
+}

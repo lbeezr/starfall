@@ -443,7 +443,8 @@ import StarfallCore
                                               contact: { beginBoardContact($0, size: geometry.size) },
                                               feedback: store.explainInputFailure,
                                               swapStart: { point in mapping.cell(at:point).map { store.game.canArrangeStars && store.game.gem(at:$0) != nil && store.canReceiveInput } ?? false },
-                                              swap: commitDirectSwap)
+                                              swap: commitDirectSwap,
+                                              cancelDrawing: { trace.cancel(); store.scene.clearConstellationTrace() })
                     }
                 }
 
@@ -603,7 +604,8 @@ import StarfallCore
     }
 
     private var worldMap: some View {
-        WorldMapView(journey: store.journey.journey, quiet: quietMotion, recovered: store.journey.recovered,
+        WorldMapView(journey: store.journey.journey, quiet: quietMotion || settings, recovered: store.journey.recovered,
+                         accessible: !settings,
                          select: { location in try? store.journey.select(location) },
                          enter: { challenge in
                              guard let location = WorldLocation(rawValue: challenge.rawValue),

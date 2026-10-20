@@ -38,6 +38,7 @@ struct SkyFlowState: Equatable {
     private(set) var entryID: UInt64?
     private(set) var handoff: SkyPlayHandoff?
     private var mapOrigin: SkyFlowScreen?
+    private var entryOrigin: SkyFlowScreen?
     private var generation: UInt64 = 0
 
     init(arguments: [String] = ProcessInfo.processInfo.arguments) {
@@ -75,9 +76,14 @@ struct SkyFlowState: Equatable {
             return stage(action == .replay ? .replay : .fresh)
         case .begin:
             guard screen == .entry, let request = entry, let entryID, expectedID == entryID else { return nil }
-            entry = nil; self.entryID = nil
+            entry = nil; self.entryID = nil; entryOrigin = nil; mapOrigin = nil
             beginHandoff(from: .entry, startsClock: true)
             return .began(request)
+        case .entryBack:
+            guard screen == .entry, let entryID, expectedID == entryID else { return nil }
+            screen = entryOrigin ?? .welcome
+            entry = nil; self.entryID = nil; entryOrigin = nil
+            return screen == .worldMap ? .worldMap : .home
         case .resume:
             guard screen == .welcome || screen == .worldMap, hasSavedSky else { return nil }
             let source = screen; mapOrigin = nil
@@ -85,7 +91,7 @@ struct SkyFlowState: Equatable {
             return .continued
         case .home:
             guard screen != .welcome else { return nil }
-            entry = nil; entryID = nil; handoff = nil; mapOrigin = nil; screen = .welcome
+            entry = nil; entryID = nil; entryOrigin = nil; handoff = nil; mapOrigin = nil; screen = .welcome
             return .home
         }
     }
@@ -119,7 +125,10 @@ struct SkyFlowState: Equatable {
     }
 
     private mutating func stage(_ request: SkyEntryRequest) -> SkyFlowEffect {
-        mapOrigin = nil
+        // A destination inspection returns to its map; that map still owns its
+        // original Home/play destination. Direct new/replay choices cancel Home.
+        entryOrigin = screen == .worldMap ? .worldMap : .welcome
+        if screen != .worldMap { mapOrigin = nil }
         generation &+= 1; entryID = generation
         entry = request; screen = .entry
         return .staged

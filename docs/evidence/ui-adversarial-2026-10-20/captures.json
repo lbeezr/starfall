@@ -1,0 +1,50 @@
+[
+  {
+    "file": "dev-d0dfcc1__world-map__iphone-se3__default-text.png",
+    "sourceCommit": "d0dfcc1062eb8c109ceded861d9d80110ebf7824",
+    "buildAffectingDirtyPaths": [],
+    "screen": "world-map",
+    "variant": "default-text",
+    "device": "iPhone SE (3rd generation)",
+    "os": "iOS 27.0 Simulator",
+    "configuration": "Debug",
+    "inspected": true,
+    "motion": "calmEffects NO; system motion not independently sampled in this capture",
+    "sha256": "4551d910c9285285f812bce581f83f7cfa101ae28500c22dd1d181040421ebf2",
+    "test": "WorldJourneyInteractionTests/testMapSeparatesLockedAndUnavailableAndEntryCanCancel()",
+    "attachment": "official-world-map-phone_0_9956CF18-2899-4670-9404-B694578864B3.png",
+    "timestamp": 1792498341.51
+  },
+  {
+    "file": "dev-d0dfcc1__tutorial-match-complete__iphone-se3__default-text.png",
+    "sourceCommit": "d0dfcc1062eb8c109ceded861d9d80110ebf7824",
+    "buildAffectingDirtyPaths": [],
+    "screen": "tutorial-match-complete",
+    "variant": "default-text",
+    "device": "iPhone SE (3rd generation)",
+    "os": "iOS 27.0 Simulator",
+    "configuration": "Debug",
+    "inspected": true,
+    "motion": "calmEffects NO; system motion not independently sampled in this capture",
+    "sha256": "bca8a50b138e5be53b283b754e7fd60836a97a3e5dcfef416370f04cae746a55",
+    "test": "WorldJourneyInteractionTests/testTutorialRealTapSwapTraceRetryAndExitPreserveRound()",
+    "attachment": "tutorial-match-native-complete_0_1416E1D2-DC08-4C7C-9E80-7F9FB8553D7C.png",
+    "timestamp": 1792498464.54
+  },
+  {
+    "file": "dev-d0dfcc1__world-places__iphone-se3__largest-text.png",
+    "sourceCommit": "d0dfcc1062eb8c109ceded861d9d80110ebf7824",
+    "buildAffectingDirtyPaths": [],
+    "screen": "world-places",
+    "variant": "largest-text",
+    "device": "iPhone SE (3rd generation)",
+    "os": "iOS 27.0 Simulator",
+    "configuration": "Debug",
+    "inspected": true,
+    "motion": "calmEffects YES (authored largest-text case)",
+    "sha256": "78330cd1609c6f94ccf87eb192893f779919f54c662c8ed100dcc700f93d724a",
+    "test": "WorldJourneyInteractionTests/testLargestTextMapAndPracticeSurviveBackground()",
+    "attachment": "world-largest-text-list_0_1F98E7A6-930C-4D00-BEAC-61967545B941.png",
+    "timestamp": 1792498294.856
+  }
+]

@@ -1,0 +1,21 @@
+{
+  "commit": "a6122816af7018aa1ee1b0b28498bf364d4693aa",
+  "runtimeFingerprint": "dev.96f4131f5d",
+  "runtimeExportMatchesTestedSource": true,
+  "testSourceHashesMatch": true,
+  "verifiedAgainst": [
+    "final-input-source.json",
+    "final-flow-source.json"
+  ],
+  "exportScope": [
+    "App",
+    "Sources",
+    "Config",
+    "Starfall.xcodeproj",
+    "Package.swift",
+    "AppTests",
+    "UITests"
+  ],
+  "testExecution": "Working-tree runs; exact runtime and changed test bytes compared to clean commit export. No clean-export native rerun.",
+  "remainingDirtyPaths": "Documentation and retained evidence only."
+}

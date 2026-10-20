@@ -1,0 +1,78 @@
+{
+  "source": "d0dfcc1062eb8c109ceded861d9d80110ebf7824",
+  "initialWorkingTree": "clean",
+  "buildAffectingDirtyPaths": [],
+  "changesByThisAgent": [],
+  "stage": "development adversarial audit, selected subset only",
+  "xcode": "27.1 (27A9275)",
+  "configuration": "Debug",
+  "architecture": "arm64",
+  "simulator": {
+    "name": "Starfall UI Compact 01a1563a",
+    "model": "iPhone SE (3rd generation)",
+    "udid": "02B7AF2E-1F1C-40F6-AA83-C67EA962B656",
+    "os": "iOS 27.0",
+    "osBuild": "24A434"
+  },
+  "command": [
+    "xcodebuild",
+    "-project",
+    "Starfall.xcodeproj",
+    "-scheme",
+    "Starfall",
+    "-configuration",
+    "Debug",
+    "-destination",
+    "platform=iOS Simulator,id=02B7AF2E-1F1C-40F6-AA83-C67EA962B656",
+    "-derivedDataPath",
+    "/tmp/starfall-ui-audit-20261020/DerivedData",
+    "-resultBundlePath",
+    "/tmp/starfall-ui-audit-20261020/native-arm64.xcresult",
+    "-parallel-testing-enabled",
+    "NO",
+    "-only-testing:StarfallUITests/WorldJourneyInteractionTests/testMapSeparatesLockedAndUnavailableAndEntryCanCancel",
+    "-only-testing:StarfallUITests/WorldJourneyInteractionTests/testLargestTextMapAndPracticeSurviveBackground",
+    "-only-testing:StarfallUITests/WorldJourneyInteractionTests/testTutorialRealTapSwapTraceRetryAndExitPreserveRound",
+    "-only-testing:StarfallUITests/SkyFlowInteractionTests/testWelcomeEntryBackgroundAndAnotherSky",
+    "-only-testing:StarfallUITests/SkyFlowInteractionTests/testWelcomePreferencesShareValuesWithPlayAndDoNotCreateASave",
+    "-only-testing:StarfallUITests/SkyFlowInteractionTests/testPendingFirstLightHelpUsesChallengeRulesAndPreservesEntry",
+    "ARCHS=arm64",
+    "ONLY_ACTIVE_ARCH=YES",
+    "test"
+  ],
+  "commandWorkingDirectory": "/Users/lbeezr/.codex/worktrees/ae39/Starfall",
+  "log": "/tmp/starfall-ui-audit-20261020/native-arm64.log",
+  "xcresult": "/tmp/starfall-ui-audit-20261020/native-arm64.xcresult",
+  "summary": "/tmp/starfall-ui-audit-20261020/summary.json",
+  "screenshotsManifest": "/tmp/starfall-ui-audit-20261020/attachments/manifest.json",
+  "counts": {
+    "selected": 6,
+    "passed": 6,
+    "failed": 0,
+    "skipped": 0
+  },
+  "initialBuildFailure": {
+    "reason": "app resolved x86_64 while package compiled arm64; corrected to existing repository CI ARCHS=arm64 ONLY_ACTIVE_ARCH=YES flags",
+    "log": "/tmp/starfall-ui-audit-20261020/native.log",
+    "xcresult": "/tmp/starfall-ui-audit-20261020/native.xcresult",
+    "testsExecuted": 0
+  },
+  "motion": "Existing tests unmodified. testWelcomeEntryBackgroundAndAnotherSky temporarily enforces normal system motion and restores original. Default tests set calmEffects NO. Largest-text test explicitly uses calmEffects YES as authored; no blanket motion reductions added.",
+  "limits": [
+    "No Release build or core suite run in this read-only subtask",
+    "No physical-device install",
+    "No actual VoiceOver",
+    "Still screenshots do not establish animation quality",
+    "Not all screens/states covered; only six selected existing native cases"
+  ],
+  "exploratoryProbe": {
+    "tool": "XcodeBuildMCP snapshot_ui/tap",
+    "setup": "Fresh launch --starfalls-reset --sky-flow-review -calmEffects NO; opening Simulator frontend was needed before taps navigated",
+    "observed": "Home Tutorial \u2192 Match and collect; experiment.cell.0.0 AX label Aqua four-point star, Spark, row 7, column 1.; initial viewport exposes board/Exit/score, guide and actions offscreen",
+    "notProbed": [
+      "Start sky then Retry",
+      "AX-size map/list toggle"
+    ],
+    "limitation": "Initial headless MCP tap reported success but did not navigate; after opening Simulator frontend navigation succeeded. No product failure inferred."
+  }
+}

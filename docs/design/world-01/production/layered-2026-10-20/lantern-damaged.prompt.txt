@@ -1,0 +1,5 @@
+Use case: precise-object-edit
+Asset type: dormant variant of the supplied transparent Lantern Landing map island.
+Edit target: supplied single island. Preserve its square canvas, elevated orthographic camera, island silhouette, timber platform perimeter, major crane position, dock attachment center, boat position and transparent background. This is a registered game-state variant, NOT a new composition.
+Change only repair state: the giant lantern and smaller lamps are unlit pale pearl glass; crane brass is gently tarnished; a few dock planks have narrow gaps and a loose plank; violet pennants are drooped and a little tattered; boat sail lowered/tattered in the same footprint; flowers are sparse; hanging crystals dull blue rather than shining. Show a neglected but inviting intact place, not ruin or horror. Maintain warm storybook material rendering and readable bold forms.
+No sky, clouds, stars, text, names, UI, pins, extra island, external bridge, ground plane or cast shadow. Preserve clean real transparency. Keep all major object positions and source registration unchanged.

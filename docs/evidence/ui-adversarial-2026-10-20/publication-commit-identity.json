@@ -1,0 +1,23 @@
+{
+  "commit": "9472691bddc12cc06d2a91a42a77b6b90a0928ce",
+  "runtimeFingerprint": "dev.d4ba8a7698",
+  "runtimeExportMatchesTestedSource": true,
+  "sourceAndTestHashesMatch": true,
+  "verifiedInputCount": 55,
+  "verifiedAgainst": [
+    "current-main-source.json",
+    "dialogue-studio-source.json"
+  ],
+  "coreTestsTree": "c82dd4c9ae8d4d6652c6ffdac1e5253091a07dc8",
+  "exportScope": [
+    "App",
+    "Sources",
+    "Config",
+    "Starfall.xcodeproj",
+    "Package.swift",
+    "AppTests",
+    "UITests",
+    "Tests"
+  ],
+  "testExecution": "Working-tree runs; clean commit export matches runtime fingerprint and all 55 incoming/changed app and test input hashes. Core test directory is clean and included in export. No clean-export native rerun."
+}

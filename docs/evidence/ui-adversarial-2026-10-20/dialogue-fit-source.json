@@ -1,0 +1,23 @@
+{
+  "baseCommit": "6f24b68901fe2e8e3711826ae6dc89271a7d6fc6",
+  "branch": "codex/full-page-story-map",
+  "stage": "compact dialogue follow-up after current-main integration",
+  "dirtyBuildInputs": [
+    {
+      "path": "App/SkyDialogueBubble.swift",
+      "status": " M",
+      "sha256": "0b063fd5ccf76cd446faabb39d67aaa1f091aab33a21a12c5366c87938cdcc93"
+    },
+    {
+      "path": "UITests/SkyDialogueInteractionTests.swift",
+      "status": " M",
+      "sha256": "0e26c127a551a7ab7f0c7eddefe4c3891d84610664399d9341ae7efaab7073e3"
+    }
+  ],
+  "configuration": "Debug arm64",
+  "toolchain": "Xcode 27.1 (27A9275)",
+  "simulatorOS": "iOS 27.0 (24A434)",
+  "macOS": "27.0.1",
+  "physicalDevice": false,
+  "actualVoiceOver": false
+}

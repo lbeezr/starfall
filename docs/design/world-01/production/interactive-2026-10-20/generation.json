@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-20",
+  "sourceCommit": "d0dfcc1062eb8c109ceded861d9d80110ebf7824",
+  "tool": "built-in image_gen (image_gen__imagegen)",
+  "method": "Restored scenery derived from approved concept; damaged image edited from restored source; binary copies only, no raster postprocessing",
+  "seed": null,
+  "seedNote": "No generation seed was exposed",
+  "status": "Packaged source artwork; native layout and repair transitions pending verification",
+  "attempts": [
+    {
+      "state": "restored",
+      "sourcePath": "/Users/lbeezr/.codex/generated_images/01a15934-640a-77f1-beac-382c3a8e2c90/exec-0166fc1d-733a-4ab0-a93d-718b994bc34e.png",
+      "toolInvocation": "functions.exec cell 16: tools.image_gen__imagegen",
+      "reference": {
+        "path": "docs/evidence/ui-adversarial-2026-10-20/map-concept-02.png",
+        "bytes": 2824918,
+        "sha256": "368131059426b690f37b7ecc2fd5b1e7d940dac505cd6dca581a6d88aed36126",
+        "dimensions": [
+          863,
+          1822
+        ]
+      },
+      "referenceRole": "User-approved full-page map composition; generated concept, not runtime",
+      "prompt": {
+        "path": "docs/design/world-01/production/interactive-2026-10-20/restored-prompt.txt",
+        "bytes": 2512,
+        "sha256": "ce27eb0936e38ea05179842a553ce7836a2b9526dc94cde68fcf2ce5ef361dfc"
+      },
+      "retained": {
+        "path": "docs/design/world-01/production/interactive-2026-10-20/world-restored.png",
+        "bytes": 3146304,
+        "sha256": "968e86c724625c4f2498b73b988d9d55d121a8b93740f1612082b74b758f4e94",
+        "dimensions": [
+          1024,
+          1536
+        ]
+      },
+      "packaged": {
+        "path": "App/Assets.xcassets/WorldMapRestored.imageset/world-restored.png",
+        "bytes": 3146304,
+        "sha256": "968e86c724625c4f2498b73b988d9d55d121a8b93740f1612082b74b758f4e94",
+        "dimensions": [
+          1024,
+          1536
+        ]
+      },
+      "copyValidation": "Original generated output, retained source and packaged PNG have identical bytes",
+      "rgba8DecodedBytes": 6291456
+    },
+    {
+      "state": "damaged",
+      "sourcePath": "/Users/lbeezr/.codex/generated_images/01a15934-640a-77f1-beac-382c3a8e2c90/exec-7b9e0f7b-2bf7-4993-a0d0-e0b00efb8e52.png",
+      "toolInvocation": "functions.exec cell 22: tools.image_gen__imagegen",
+      "reference": {
+        "path": "docs/design/world-01/production/interactive-2026-10-20/world-restored.png",
+        "bytes": 3146304,
+        "sha256": "968e86c724625c4f2498b73b988d9d55d121a8b93740f1612082b74b758f4e94",
+        "dimensions": [
+          1024,
+          1536
+        ]
+      },
+      "referenceRole": "Restored production source used for local dormant-state image edit",
+      "prompt": {
+        "path": "docs/design/world-01/production/interactive-2026-10-20/damaged-prompt.txt",
+        "bytes": 1631,
+        "sha256": "2311971be1ddff2543be5af262715f1a1f91f9c596d10e4000f9fdaa5cf6b093"
+      },
+      "retained": {
+        "path": "docs/design/world-01/production/interactive-2026-10-20/world-damaged.png",
+        "bytes": 3046070,
+        "sha256": "9a769fb8177aecab23ee60588095ff1ccab65b1e37d9d229daef03e2019fe7a6",
+        "dimensions": [
+          1024,
+          1536
+        ]
+      },
+      "packaged": {
+        "path": "App/Assets.xcassets/WorldMapDamaged.imageset/world-damaged.png",
+        "bytes": 3046070,
+        "sha256": "9a769fb8177aecab23ee60588095ff1ccab65b1e37d9d229daef03e2019fe7a6",
+        "dimensions": [
+          1024,
+          1536
+        ]
+      },
+      "copyValidation": "Original generated output, retained source and packaged PNG have identical bytes",
+      "rgba8DecodedBytes": 6291456
+    }
+  ],
+  "resourceBudget": {
+    "packagedEncodedBytes": 6192374,
+    "rgba8DecodedBytes": 12582912,
+    "excludes": [
+      "repair masks",
+      "backing surfaces",
+      "GPU copies",
+      "native marker and UI assets"
+    ]
+  },
+  "visualReview": {
+    "scope": "Both complete source plates inspected at 1024 x 1536; no native app inspection in this art-integration step",
+    "observed": [
+      "No painted names, pins, labels or information card",
+      "Five foreground location identities remain recognizable",
+      "Damaged state has a cold landing lantern, torn ribbon span, collapsed kite sails, dormant seed and dry pools",
+      "Broad landmark and cloud composition remains aligned"
+    ],
+    "limits": [
+      "Exact pixel registration is not established; local details differ after generation",
+      "Partial-completion masks and transitions must be inspected in the app",
+      "One portrait source pair is reused; separate native phone and tablet orientation/crop acceptance remains pending",
+      "Distant islands are atmosphere rather than detailed renderings of the seven future destination identities",
+      "No native interaction, motion, VoiceOver or physical-device acceptance is established by source art"
+    ]
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "baseCommit": "d0dfcc1062eb8c109ceded861d9d80110ebf7824",
+  "branch": "codex/full-page-story-map",
+  "stage": "development working tree",
+  "dirtyBuildInputs": [
+    {
+      "path": "App/Assets.xcassets/WorldMapDamaged.imageset/world-damaged.png",
+      "sha256": "9a769fb8177aecab23ee60588095ff1ccab65b1e37d9d229daef03e2019fe7a6"
+    },
+    {
+      "path": "App/Assets.xcassets/WorldMapRestored.imageset/world-restored.png",
+      "sha256": "968e86c724625c4f2498b73b988d9d55d121a8b93740f1612082b74b758f4e94"
+    },
+    {
+      "path": "App/DialogueScripts/observatory-dialogue.json",
+      "sha256": "ca615d88e5e15ebe97ed9016c445dd972d8abcbc438c39666c7ec56b01f0c61b"
+    },
+    {
+      "path": "App/README.md",
+      "sha256": "babe2dae85145cabb7f5eae716f6075c3c8b7a5e0bc1979ea8587b20de1f6155"
+    },
+    {
+      "path": "App/SkyCopy.swift",
+      "sha256": "759a14279a1a81c38e07cbc1f66e14f093ca66c4cdb4a77e6a470cfee0e1431b"
+    },
+    {
+      "path": "App/SkyFlowCeremony.swift",
+      "sha256": "7ec7a45a281b71dcca21c6754ca4b7e38169e82608345c5e4431b4ec252acc74"
+    },
+    {
+      "path": "App/SkyFlowState.swift",
+      "sha256": "6f2d8de0e674e16c8b1ab20b250c0c362930215df81d7707402b0423da54928c"
+    },
+    {
+      "path": "App/WorldMapMarker.swift",
+      "sha256": "841366d8c39ce697e93d796c51c75af32039f506bd0e29964014f1c9d5bc1d5c"
+    },
+    {
+      "path": "App/WorldMapPainting.swift",
+      "sha256": "0405e85f9922791e78556227bba16c159aa879cd4c8d471cdae74a63d8b9accd"
+    },
+    {
+      "path": "App/WorldMapView.swift",
+      "sha256": "daf233dca1c85a826d7ae1db05c89542b47781745659a6fad836d4cd02c6eab8"
+    },
+    {
+      "path": "AppTests/ObservatoryGeometryTests.swift",
+      "sha256": "438564aeb71d256738fbd68e44634af43221b58396d8ec3d2fc7b666a093f578"
+    },
+    {
+      "path": "AppTests/SkyFlowStateTests.swift",
+      "sha256": "7e734e1c865badf5a9b706d63d9e6895ab5a9ebe21bd8c2863abd753ed3dfcff"
+    },
+    {
+      "path": "AppTests/WorldJourneyTests.swift",
+      "sha256": "1955fd0477eb5d3548d3b155696ede48d34e20256c6718e8fad8f89fc2d6a95a"
+    },
+    {
+      "path": "Starfall.xcodeproj/project.pbxproj",
+      "sha256": "1706097c6ffed2b34090c5fb21c297a632e2ad7982ac87e0cd58c50f8484f5fb"
+    },
+    {
+      "path": "UITests/NativeSkyControls.swift",
+      "sha256": "979cb516a678316fabe4884ac80af926d0b242b0e332883f8d57562337b57999"
+    },
+    {
+      "path": "UITests/SkyFlowInteractionTests.swift",
+      "sha256": "41a62af03f96017e151d1c263c462741d4a30027d0ed8cd93a710d320fc8e6d7"
+    },
+    {
+      "path": "UITests/WorldJourneyInteractionTests.swift",
+      "sha256": "8e0729e959e40ac443996605da7e2d96397406b98466e50472c3c41090babf52"
+    }
+  ],
+  "macOS": "27.0.1",
+  "toolchain": "Xcode 27.1\nBuild version 27A9275",
+  "simulators": {
+    "compact": {
+      "id": "02B7AF2E-1F1C-40F6-AA83-C67EA962B656",
+      "model": "iPhone SE (3rd generation)",
+      "OS": "iOS 27.0 (24A434)"
+    },
+    "tablet": {
+      "id": "377B8820-20E2-413E-B64F-D9E4CEB86AF4",
+      "model": "iPad Air 11-inch (M3)",
+      "OS": "iOS 27.0 (24A434)"
+    }
+  },
+  "rawOutputRoot": "/tmp/starfall-map-20261020",
+  "physicalDevice": false,
+  "actualVoiceOver": false
+}

@@ -1,0 +1,258 @@
+{
+  "baseCommit": "386b2f8fad44d1f9c8379a00b03af6b10ca9861c",
+  "branch": "codex/full-page-story-map",
+  "stage": "Map geometry accepted; tutorial viewport surface and bounded recovery reading regression",
+  "dirtyBuildInputs": [
+    {
+      "path": "App/Assets.xcassets/WorldMapDamaged.imageset/Contents.json",
+      "status": "D ",
+      "sha256": null
+    },
+    {
+      "path": "App/Assets.xcassets/WorldMapDamaged.imageset/world-damaged.png",
+      "status": "D ",
+      "sha256": null
+    },
+    {
+      "path": "App/Assets.xcassets/WorldMapRestored.imageset/Contents.json",
+      "status": "D ",
+      "sha256": null
+    },
+    {
+      "path": "App/Assets.xcassets/WorldMapRestored.imageset/world-restored.png",
+      "status": "D ",
+      "sha256": null
+    },
+    {
+      "path": "App/DialogueScripts/observatory-dialogue.json",
+      "status": "M ",
+      "sha256": "655fb88f724d807a58abf260bf8affa5c17cb2a05d8febeb6b4622a7c5721f54"
+    },
+    {
+      "path": "App/FallingSkyView.swift",
+      "status": "M ",
+      "sha256": "438ef1e93f1444a0f816a1b4de9affb3d3c7aead1aba3facca5d5e14595455d7"
+    },
+    {
+      "path": "App/SkyCopy.swift",
+      "status": "M ",
+      "sha256": "9807ea320d0f669a0348f6a0a18cb38b2e7c28fc5b9ea4ce03e11d7c79f862b9"
+    },
+    {
+      "path": "App/SkyDefaults.swift",
+      "status": "M ",
+      "sha256": "807d668ce3bfd31487658c18f15b984b1628f6d2337678be53724419abe89d41"
+    },
+    {
+      "path": "App/SkyFlowCeremony.swift",
+      "status": "M ",
+      "sha256": "350b5811652eb0814f04fd55464bf88be4173499563595310fce200cd2ab217d"
+    },
+    {
+      "path": "App/SkyFlowState.swift",
+      "status": "M ",
+      "sha256": "6f2d8de0e674e16c8b1ab20b250c0c362930215df81d7707402b0423da54928c"
+    },
+    {
+      "path": "App/SkyTutorialView.swift",
+      "status": " M",
+      "sha256": "0a465f5fc51e670b1e95524f18370f4371ae9e3689f6bc3e90356e0ce1dcee23"
+    },
+    {
+      "path": "App/WorldMapPainting.swift",
+      "status": "MM",
+      "sha256": "294c03eddca3e6ea714f8664ea316bbeaf3e4a7a114345516de8747cccd3fedf"
+    },
+    {
+      "path": "App/WorldMapView.swift",
+      "status": "MM",
+      "sha256": "69bc68e2d896429e3957c8da8fc07af95d9a7c296068234820451d496fa14ab4"
+    },
+    {
+      "path": "AppTests/ObservatoryGeometryTests.swift",
+      "status": "MM",
+      "sha256": "ecd5b9624d549993f002dc77d7f6c9a7b9e7d481110c8b0ec4405716f7a85213"
+    },
+    {
+      "path": "AppTests/SkyFlowStateTests.swift",
+      "status": "M ",
+      "sha256": "7e734e1c865badf5a9b706d63d9e6895ab5a9ebe21bd8c2863abd753ed3dfcff"
+    },
+    {
+      "path": "AppTests/WorldJourneyTests.swift",
+      "status": "M ",
+      "sha256": "1955fd0477eb5d3548d3b155696ede48d34e20256c6718e8fad8f89fc2d6a95a"
+    },
+    {
+      "path": "Starfall.xcodeproj/project.pbxproj",
+      "status": "M ",
+      "sha256": "537d5e6f755354d251d77f699cdd73d48ce371705f30c0c944336b71f13f1f6f"
+    },
+    {
+      "path": "UITests/NativeSkyControls.swift",
+      "status": "MM",
+      "sha256": "3ee10657f55d856c51e0582deb399e611efab8d1004fd08e40f54722d6c7c007"
+    },
+    {
+      "path": "UITests/SkyFlowInteractionTests.swift",
+      "status": "M ",
+      "sha256": "a5d53d7452565beef7a8b5a891b337fa4fa0f479960b7aa85a4b08c20d6dcdfc"
+    },
+    {
+      "path": "UITests/WorldJourneyInteractionTests.swift",
+      "status": "MM",
+      "sha256": "39005f1a002683072a04085b8623c594c3625bc97a95d8387e1d89006b85be3d"
+    },
+    {
+      "path": "App/Assets.xcassets/WorldMapCloud.imageset/Contents.json",
+      "status": "??",
+      "sha256": "25b3bf0f9d2544b636914e046c1409ee0decbe11af96e1c2ae15ddc7351be620"
+    },
+    {
+      "path": "App/Assets.xcassets/WorldMapCloud.imageset/cloud.png",
+      "status": "??",
+      "sha256": "f04f2192d7a3d35fdf0296c1df75a740c75c37d15a92ee0c6e3a8e7531b8a3a9"
+    },
+    {
+      "path": "App/Assets.xcassets/WorldMapIslandKiteDamaged.imageset/Contents.json",
+      "status": "??",
+      "sha256": "b13363f700216b78ea95752022cf028027c86a485f62c88fd4c7613b64b5162d"
+    },
+    {
+      "path": "App/Assets.xcassets/WorldMapIslandKiteDamaged.imageset/kite-damaged.png",
+      "status": "??",
+      "sha256": "9e8fa25683a01bf27a27582525dfe7875fb884932e4d5f3cccc9f29a3c042935"
+    },
+    {
+      "path": "App/Assets.xcassets/WorldMapIslandKiteRestored.imageset/Contents.json",
+      "status": "??",
+      "sha256": "3d3bebe9bf5fd357b13d643245369f8b5848f6960e9cc3c59de49c0635e800cb"
+    },
+    {
+      "path": "App/Assets.xcassets/WorldMapIslandKiteRestored.imageset/kite-restored.png",
+      "status": "??",
+      "sha256": "1942eab97b8037bd660278fdced292403ff6dfe16e2b03a858229d091bc27781"
+    },
+    {
+      "path": "App/Assets.xcassets/WorldMapIslandLanternDamaged.imageset/Contents.json",
+      "status": "??",
+      "sha256": "2103b4bd05422cb5f10045ced9201ecf60470bf2157ce1720a22793f77405746"
+    },
+    {
+      "path": "App/Assets.xcassets/WorldMapIslandLanternDamaged.imageset/lantern-damaged.png",
+      "status": "??",
+      "sha256": "bdab4a6f76e22702398380de19d283d0bf8f662d6e9299a8457b3e093a0365a9"
+    },
+    {
+      "path": "App/Assets.xcassets/WorldMapIslandLanternRestored.imageset/Contents.json",
+      "status": "??",
+      "sha256": "1ab2c4d0df4e05dc097d5d5671c6ad68c53fe394ece2fa2dabd1e3ded1fd83d6"
+    },
+    {
+      "path": "App/Assets.xcassets/WorldMapIslandLanternRestored.imageset/lantern-restored.png",
+      "status": "??",
+      "sha256": "83539c10d57affd8599e1b3de0410957c75464366ac2e33810a06275816a6efa"
+    },
+    {
+      "path": "App/Assets.xcassets/WorldMapIslandRibbonDamaged.imageset/Contents.json",
+      "status": "??",
+      "sha256": "0e6fdd5dcc8424a6904e022362337b5821063e889450bba882f9b448694e944f"
+    },
+    {
+      "path": "App/Assets.xcassets/WorldMapIslandRibbonDamaged.imageset/ribbon-damaged.png",
+      "status": "??",
+      "sha256": "01ae1449f8ed8440aed7371550f371c87330002347ded0c31df20ec026acf16f"
+    },
+    {
+      "path": "App/Assets.xcassets/WorldMapIslandRibbonRestored.imageset/Contents.json",
+      "status": "??",
+      "sha256": "cb9706b4419e6e9845cb38e78b9c487f2d426deb6a4161f07c46aa81c64d694b"
+    },
+    {
+      "path": "App/Assets.xcassets/WorldMapIslandRibbonRestored.imageset/ribbon-restored.png",
+      "status": "??",
+      "sha256": "0de2cdfc17a5c1af030bf1b2361c9ef44442c59fead6d9127c936d11fbd3c3b6"
+    },
+    {
+      "path": "App/Assets.xcassets/WorldMapIslandSeedDamaged.imageset/Contents.json",
+      "status": "??",
+      "sha256": "7f3e0105bdf9d9ebf1cc053b6c550b840ac3f436b2240b119a539d2d247a309f"
+    },
+    {
+      "path": "App/Assets.xcassets/WorldMapIslandSeedDamaged.imageset/seed-damaged.png",
+      "status": "??",
+      "sha256": "f280c10aa01891647686aba55eb7fd3db68caf7c1d9662cfe6e4ceae189b5170"
+    },
+    {
+      "path": "App/Assets.xcassets/WorldMapIslandSeedRestored.imageset/Contents.json",
+      "status": "??",
+      "sha256": "98095915591ca7e9f322b8b51bfb41f5364978f512bc44800ce1690371757360"
+    },
+    {
+      "path": "App/Assets.xcassets/WorldMapIslandSeedRestored.imageset/seed-restored.png",
+      "status": "??",
+      "sha256": "02f0949dc2f05d192f25539544cd30385f654ec31303d201bd5805d16d1147f4"
+    },
+    {
+      "path": "App/Assets.xcassets/WorldMapIslandSilverDamaged.imageset/Contents.json",
+      "status": "??",
+      "sha256": "d17dc993ce4378e0aeffe003f98bc1f33f517ed23c88aa8f2705ff04051a8474"
+    },
+    {
+      "path": "App/Assets.xcassets/WorldMapIslandSilverDamaged.imageset/silver-damaged.png",
+      "status": "??",
+      "sha256": "26cc0080f82c13ea3ef7754cf0c975cae111c22f91769d39c212eeee2129799c"
+    },
+    {
+      "path": "App/Assets.xcassets/WorldMapIslandSilverRestored.imageset/Contents.json",
+      "status": "??",
+      "sha256": "ec92219959da25deefdce33a4dcf8a5a494a7376165b605a5ac81d7a8970c2dd"
+    },
+    {
+      "path": "App/Assets.xcassets/WorldMapIslandSilverRestored.imageset/silver-restored.png",
+      "status": "??",
+      "sha256": "db155bd43767dc205a8be7126376c9b0ee5fbf9643ae008b10dc51de7fd103ae"
+    },
+    {
+      "path": "App/Assets.xcassets/WorldMapSky.imageset/Contents.json",
+      "status": "??",
+      "sha256": "95e91530fbfbfe62e3086b382589eca13874808fe1e6489ea4c89d95cb14b3bb"
+    },
+    {
+      "path": "App/Assets.xcassets/WorldMapSky.imageset/sky.png",
+      "status": "??",
+      "sha256": "9ba6ec1e19c02a452d95b84e0ab0a90a3fea6847b80f1cc1fdbff1d128ebbac6"
+    },
+    {
+      "path": "App/WorldMapArtwork.swift",
+      "status": "??",
+      "sha256": "09ca1eb245c7751e42476adcc74ae2b0d8c3d5f55997f9d4ee4589fada050c34"
+    },
+    {
+      "path": "App/WorldMapMarker.swift",
+      "status": "??",
+      "sha256": "778f4007cf62deefe96c37cd2dbe18f035865d3d27e0667aa319a2491e0f8ab2"
+    },
+    {
+      "path": "App/WorldMapReviewFixture.swift",
+      "status": "??",
+      "sha256": "d9b64a901b2d894605133f2c98b2c78bf8c81a469bcaf75b35c41eeedc367078"
+    },
+    {
+      "path": "AppTests/WorldMapReviewFixtureTests.swift",
+      "status": "??",
+      "sha256": "eade63e88ef4ddc7f3918f64fc1cee15c40a78f3cf4a2f63811859aa21fb74cc"
+    },
+    {
+      "path": "UITests/WorldMapReviewInteractionTests.swift",
+      "status": "??",
+      "sha256": "2225f9b603ebfec8b69f3ed027b93b8bb682e580c57defea4d852a690a199dd1"
+    }
+  ],
+  "configuration": "Debug arm64",
+  "toolchain": "Xcode 27.1 (27A9275)",
+  "simulatorOS": "iOS 27.0 (24A434)",
+  "macOS": "27.0.1",
+  "physicalDevice": false,
+  "actualVoiceOver": false
+}

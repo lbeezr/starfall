@@ -1,0 +1,173 @@
+{
+  "validation": "dialogue-fit-validation.json",
+  "captures": [
+    {
+      "name": "dialogue-paused-open-readable-body",
+      "file": "dev-local-source-0cfffbde47__dialogue-paused-open-readable-body__iphone-se3.png",
+      "sha256": "28291eb0906c90b2f327ac4f86a680f3344a09a3665a0c8c3d8de3f30dc34df7",
+      "export": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "02B7AF2E-1F1C-40F6-AA83-C67EA962B656",
+        "deviceName": "Starfall UI Compact 01a1563a",
+        "exportedFileName": "95E867D9-1664-4B0B-AE28-EC7B758985CB.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "dialogue-paused-open-readable-body_0_B4F4DF9D-8DB7-49F8-A828-90F5C99EC815.png",
+        "timestamp": 1792513107.542
+      },
+      "source": "dialogue-fit-source.json",
+      "runtimeIdentity": "dev.0cfffbde47",
+      "deviceModel": "iPhone SE (3rd generation)",
+      "orientation": "portrait",
+      "textSize": "default",
+      "pixels": [
+        750,
+        1334
+      ],
+      "runtimeFingerprint": "dev.0cfffbde47",
+      "displayedBuildID": "dev.local",
+      "device": "iPhone SE3 / iOS27.0 Simulator"
+    },
+    {
+      "name": "story-lantern-three-thousand-native-clear",
+      "file": "dev-local-source-0cfffbde47__story-lantern-three-thousand-native-clear__iphone-se3.png",
+      "sha256": "fc94b09603e7045dc305278d8dc5085d9b2d6e81d50fd7fb14804cd621bdda37",
+      "export": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "02B7AF2E-1F1C-40F6-AA83-C67EA962B656",
+        "deviceName": "Starfall UI Compact 01a1563a",
+        "exportedFileName": "A4B5D51B-D508-4CA6-9509-FC08B01E9380.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "story-lantern-three-thousand-native-clear_0_62261B86-9C6D-420F-8D46-1E5EDE58ED0A.png",
+        "timestamp": 1792513145.377
+      },
+      "source": "dialogue-fit-source.json",
+      "runtimeIdentity": "dev.0cfffbde47",
+      "deviceModel": "iPhone SE (3rd generation)",
+      "orientation": "portrait",
+      "textSize": "default",
+      "pixels": [
+        750,
+        1334
+      ],
+      "runtimeFingerprint": "dev.0cfffbde47",
+      "displayedBuildID": "dev.local",
+      "device": "iPhone SE3 / iOS27.0 Simulator"
+    },
+    {
+      "name": "dialogue-largest-text-reading-beginning",
+      "file": "dev-local-source-0cfffbde47__dialogue-largest-text-reading-beginning__iphone-se3.png",
+      "sha256": "3739a44bc54c9ca7b0babe021248cdec75cfa0c34836a8f83be7ed095013410a",
+      "export": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "02B7AF2E-1F1C-40F6-AA83-C67EA962B656",
+        "deviceName": "Starfall UI Compact 01a1563a",
+        "exportedFileName": "38998B9E-A5F6-4490-94A9-9557E15B7242.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "dialogue-largest-text-reading-beginning_0_0597F365-1E91-4820-B7FD-87F91045C313.png",
+        "timestamp": 1792513068.347
+      },
+      "source": "dialogue-fit-source.json",
+      "runtimeIdentity": "dev.0cfffbde47",
+      "deviceModel": "iPhone SE (3rd generation)",
+      "orientation": "portrait",
+      "textSize": "accessibilityXXXL",
+      "pixels": [
+        750,
+        1334
+      ],
+      "runtimeFingerprint": "dev.0cfffbde47",
+      "displayedBuildID": "dev.local",
+      "device": "iPhone SE3 / iOS27.0 Simulator"
+    },
+    {
+      "name": "dialogue-largest-text-reading-end",
+      "file": "dev-local-source-0cfffbde47__dialogue-largest-text-reading-end__iphone-se3.png",
+      "sha256": "a9f9fb72149967e5c4a1a881fef5b3a3de9d80ecf49c470eb022ccb56eb384c5",
+      "export": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "02B7AF2E-1F1C-40F6-AA83-C67EA962B656",
+        "deviceName": "Starfall UI Compact 01a1563a",
+        "exportedFileName": "DF4A0246-166D-4024-BD1A-9D80EBF245B6.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "dialogue-largest-text-reading-end_0_113BD417-8654-4D07-9037-B11F38CAA326.png",
+        "timestamp": 1792513075.249
+      },
+      "source": "dialogue-fit-source.json",
+      "runtimeIdentity": "dev.0cfffbde47",
+      "deviceModel": "iPhone SE (3rd generation)",
+      "orientation": "portrait",
+      "textSize": "accessibilityXXXL",
+      "pixels": [
+        750,
+        1334
+      ],
+      "runtimeFingerprint": "dev.0cfffbde47",
+      "displayedBuildID": "dev.local",
+      "device": "iPhone SE3 / iOS27.0 Simulator"
+    },
+    {
+      "name": "dialogue-studio-largest-text-spark-reading-beginning",
+      "file": "dev-local-source-d4ba8a7698__dialogue-studio-largest-text-spark-reading-beginning__iphone-se3.png",
+      "sha256": "0e9284fab6e5365031c4168641c6c2094b396c1dc9b83558321cbcd31fd70441",
+      "export": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "02B7AF2E-1F1C-40F6-AA83-C67EA962B656",
+        "deviceName": "Starfall UI Compact 01a1563a",
+        "exportedFileName": "DFF316B6-D75D-442C-990D-38015C7CABA6.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "dialogue-studio-largest-text-spark-reading-beginning_0_5D30E514-C6FA-44AA-8D9E-78902939E1A7.png",
+        "timestamp": 1792513556.236
+      },
+      "source": "dialogue-studio-source.json",
+      "runtimeIdentity": "dev.d4ba8a7698",
+      "deviceModel": "iPhone SE (3rd generation)",
+      "orientation": "portrait",
+      "textSize": "accessibilityXXXL",
+      "pixels": [
+        750,
+        1334
+      ],
+      "runtimeFingerprint": "dev.d4ba8a7698",
+      "displayedBuildID": "dev.local",
+      "device": "iPhone SE3 / iOS27.0 Simulator"
+    },
+    {
+      "name": "dialogue-studio-largest-text-spark-reading-end",
+      "file": "dev-local-source-d4ba8a7698__dialogue-studio-largest-text-spark-reading-end__iphone-se3.png",
+      "sha256": "2b7765ef712db71950e7b4fe6a5bbd3761456e5f77e0207ec4be4380ce64e198",
+      "export": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "02B7AF2E-1F1C-40F6-AA83-C67EA962B656",
+        "deviceName": "Starfall UI Compact 01a1563a",
+        "exportedFileName": "A81197BD-317B-4E08-8A0D-D8F4B0208745.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "dialogue-studio-largest-text-spark-reading-end_0_74C60D82-3631-45C6-98B6-7F5F99AC0F8E.png",
+        "timestamp": 1792513562.103
+      },
+      "source": "dialogue-studio-source.json",
+      "runtimeIdentity": "dev.d4ba8a7698",
+      "deviceModel": "iPhone SE (3rd generation)",
+      "orientation": "portrait",
+      "textSize": "accessibilityXXXL",
+      "pixels": [
+        750,
+        1334
+      ],
+      "runtimeFingerprint": "dev.d4ba8a7698",
+      "displayedBuildID": "dev.local",
+      "device": "iPhone SE3 / iOS27.0 Simulator"
+    },
+    {
+      "name": "Intermediate Studio reader failure",
+      "file": "dev-local-source-0cfffbde47__studio-reader-26pt-failure__iphone-se3.png",
+      "runtimeFingerprint": "dev.0cfffbde47",
+      "displayedBuildID": "dev.local",
+      "sha256": "97fd9ad2394ecf762c268379eee7f6fdd8acd39de5325f2a4b8b1cb5a3163471",
+      "status": "Historical failure; final Studio correction verified separately"
+    }
+  ],
+  "inspection": "Compact gameplay body and final Studio first/end text inspected. Initial Studio26.5pt failure retained; final controls remain pinned and single-line.",
+  "limits": [
+    "Simulator stills; no physical-device, actual VoiceOver or animation claim."
+  ]
+}

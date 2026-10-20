@@ -1,0 +1,71 @@
+{
+  "stage": "development adopted",
+  "finalCommit": "9472691bddc12cc06d2a91a42a77b6b90a0928ce",
+  "finalRuntimeFingerprint": "dev.d4ba8a7698",
+  "displayedBuildID": "dev.local",
+  "source": "dialogue-studio-source.json",
+  "commitIdentity": "publication-commit-identity.json",
+  "core": {
+    "command": "swift test",
+    "passed": 197,
+    "failed": 0,
+    "log": "/tmp/starfall-map-dialogue-studio-core.log"
+  },
+  "cause": "Compact bubble reserved room for speaker heading and fixed actions before message body; aggregate accessibility representation hid this clipping from existence assertions. Studio added duplicate padding inside a measured host viewport, reducing reader width/height and wrapping Continue.",
+  "correction": "Shared constrained bubble starts with inline speaker/message; normal text reader sits beside pinned actions, accessibility text above pinned actions. Accessibility representation follows actual body. Studio uses host content insets and measured viewport. Native helper checks the result of its last permitted pan.",
+  "runs": [
+    {
+      "name": "dialogue-fit-phone",
+      "source": "dialogue-fit-source.json",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=02B7AF2E-1F1C-40F6-AA83-C67EA962B656\" -derivedDataPath /tmp/starfall-map-20261020/FinalInputDerivedData -resultBundlePath /tmp/starfall-map-20261020/dialogue-fit-phone.xcresult -parallel-testing-enabled NO -collect-test-diagnostics never \"-only-testing:StarfallAppTests/SkyDialogueTests\" \"-only-testing:StarfallUITests/SkyDialogueInteractionTests/testPausedGuideStartsCollapsedAndReopensWithoutHidingManualControls\" \"-only-testing:StarfallUITests/SkyDialogueInteractionTests/testBundledScriptSwitchesAllSpeakersAndKeepsPausedRound\" \"-only-testing:StarfallUITests/SkyDialogueInteractionTests/testLargestTextChatReflowsBelowBoardAndPreviewRemainsUsable\" \"-only-testing:StarfallUITests/WorldJourneyInteractionTests/testRevisedLanternEarnsThousandsAndRetainsScoreAcrossRelaunch\" ARCHS=arm64 ONLY_ACTIVE_ARCH=YES test",
+      "summary": "dialogue-fit-phone-summary.json",
+      "hostedPassed": 12,
+      "nativePassed": 3,
+      "failed": 1,
+      "skipped": 0,
+      "interpretation": "Compact body regression, default scripts and original Lantern clear passed; largest-text gameplay reading passed before Studio navigation helper failed after its final allowed pan."
+    },
+    {
+      "name": "dialogue-fit-scroll-phone",
+      "source": "dialogue-fit-scroll-source.json",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=02B7AF2E-1F1C-40F6-AA83-C67EA962B656\" -derivedDataPath /tmp/starfall-map-20261020/FinalInputDerivedData -resultBundlePath /tmp/starfall-map-20261020/dialogue-fit-scroll-phone.xcresult -parallel-testing-enabled NO -collect-test-diagnostics never \"-only-testing:StarfallUITests/SkyDialogueInteractionTests/testLargestTextChatReflowsBelowBoardAndPreviewRemainsUsable\" ARCHS=arm64 ONLY_ACTIVE_ARCH=YES test",
+      "summary": "dialogue-fit-scroll-phone-summary.json",
+      "nativePassed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "interpretation": "Exact final-pan predicate fixed without extra gestures. Test progressed to a real 26.5-point Studio reader failure: redundant nested insets wrapped Continue and starved text."
+    },
+    {
+      "name": "dialogue-studio-phone",
+      "source": "dialogue-studio-source.json",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=02B7AF2E-1F1C-40F6-AA83-C67EA962B656\" -derivedDataPath /tmp/starfall-map-20261020/FinalInputDerivedData -resultBundlePath /tmp/starfall-map-20261020/dialogue-studio-phone.xcresult -parallel-testing-enabled NO -collect-test-diagnostics never \"-only-testing:StarfallUITests/SkyDialogueInteractionTests/testBundledScriptSwitchesAllSpeakersAndKeepsPausedRound\" \"-only-testing:StarfallUITests/SkyDialogueInteractionTests/testLargestTextChatReflowsBelowBoardAndPreviewRemainsUsable\" ARCHS=arm64 ONLY_ACTIVE_ARCH=YES test",
+      "summary": "dialogue-studio-phone-summary.json",
+      "nativePassed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "interpretation": "Default script sequence and largest-text gameplay/Studio read-through passed; single-line equal-height Continue/Close remain fixed while text scrolls."
+    },
+    {
+      "name": "dialogue-studio-tablet",
+      "source": "dialogue-studio-source.json",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=377B8820-20E2-413E-B64F-D9E4CEB86AF4\" -derivedDataPath /tmp/starfall-map-20261020/FinalInputDerivedData -resultBundlePath /tmp/starfall-map-20261020/dialogue-studio-tablet.xcresult -parallel-testing-enabled NO -collect-test-diagnostics never \"-only-testing:StarfallUITests/SkyDialogueInteractionTests/testPausedGuideStartsCollapsedAndReopensWithoutHidingManualControls\" ARCHS=arm64 ONLY_ACTIVE_ARCH=YES test-without-building",
+      "summary": "dialogue-studio-tablet-summary.json",
+      "nativePassed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "interpretation": "Tablet reopened message exposes body text, preserves manual control targets and leaves committed board unchanged."
+    }
+  ],
+  "release": {
+    "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Release -destination \"generic/platform=iOS Simulator\" -derivedDataPath /tmp/starfall-map-20261020/ExpandedReleaseDerivedData ARCHS=arm64 ONLY_ACTIVE_ARCH=YES build",
+    "result": "passed",
+    "membership": "dialogue-studio-release-membership.json"
+  },
+  "visual": "dialogue-fit-captures.json",
+  "broaderIntegration": "current-main-validation.json",
+  "limits": [
+    "Source-bound selected development checks; original failed runs preserved, no aggregate full-matrix pass.",
+    "Actual VoiceOver, physical play/install, iOS17 runtime and sustained physical profiling were not run.",
+    "Gameplay bubble is unchanged after 0cff; final d4ba change removes Debug Studio insets only."
+  ]
+}

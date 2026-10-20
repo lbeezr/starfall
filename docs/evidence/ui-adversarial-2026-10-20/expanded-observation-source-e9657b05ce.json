@@ -1,0 +1,443 @@
+{
+  "baseCommit": "1319347ad131aef0d86bf983611541547da140bc",
+  "branch": "codex/full-page-story-map",
+  "stage": "Same six-destination app with one accessibility snapshot per visibility poll",
+  "dirtyBuildInputs": [
+    {
+      "path": "App/Assets.xcassets/FrostfruitOrchard000.imageset/Contents.json",
+      "status": "A ",
+      "sha256": "30cfacb4e2a36d4b66093823d5730c9a43a59608c1b09304caeefddafd5c6b3a"
+    },
+    {
+      "path": "App/Assets.xcassets/FrostfruitOrchard000.imageset/scene.png",
+      "status": "A ",
+      "sha256": "e064fa2b33e9ebb7d14088efc29788cd907b072ff20ad8eeb6a9b927f9edc997"
+    },
+    {
+      "path": "App/Assets.xcassets/FrostfruitOrchard025.imageset/Contents.json",
+      "status": "A ",
+      "sha256": "30cfacb4e2a36d4b66093823d5730c9a43a59608c1b09304caeefddafd5c6b3a"
+    },
+    {
+      "path": "App/Assets.xcassets/FrostfruitOrchard025.imageset/scene.png",
+      "status": "A ",
+      "sha256": "f681deafa5ce6f9f448ff7edfb7464b498505ab422d63d96d8ddb3035f9bd514"
+    },
+    {
+      "path": "App/Assets.xcassets/FrostfruitOrchard050.imageset/Contents.json",
+      "status": "A ",
+      "sha256": "30cfacb4e2a36d4b66093823d5730c9a43a59608c1b09304caeefddafd5c6b3a"
+    },
+    {
+      "path": "App/Assets.xcassets/FrostfruitOrchard050.imageset/scene.png",
+      "status": "A ",
+      "sha256": "235d1725ffde3a51c499b3c374b042448e4150975f0f478a00ac51f8bf170fed"
+    },
+    {
+      "path": "App/Assets.xcassets/FrostfruitOrchard075.imageset/Contents.json",
+      "status": "A ",
+      "sha256": "30cfacb4e2a36d4b66093823d5730c9a43a59608c1b09304caeefddafd5c6b3a"
+    },
+    {
+      "path": "App/Assets.xcassets/FrostfruitOrchard075.imageset/scene.png",
+      "status": "A ",
+      "sha256": "63af383164e995b0558acd0dc1afbf333324dbe7144f85f251a634d5b5f4b6b9"
+    },
+    {
+      "path": "App/Assets.xcassets/FrostfruitOrchard100.imageset/Contents.json",
+      "status": "A ",
+      "sha256": "30cfacb4e2a36d4b66093823d5730c9a43a59608c1b09304caeefddafd5c6b3a"
+    },
+    {
+      "path": "App/Assets.xcassets/FrostfruitOrchard100.imageset/scene.png",
+      "status": "A ",
+      "sha256": "c9610eaf29246b4b6a5aabeff18a3796a49c46f68784d1db8eeb194f28ec1f8b"
+    },
+    {
+      "path": "App/Assets.xcassets/FrostfruitOrchardTabletLandscape000.imageset/Contents.json",
+      "status": "A ",
+      "sha256": "30cfacb4e2a36d4b66093823d5730c9a43a59608c1b09304caeefddafd5c6b3a"
+    },
+    {
+      "path": "App/Assets.xcassets/FrostfruitOrchardTabletLandscape000.imageset/scene.png",
+      "status": "A ",
+      "sha256": "650a0fb4c636afbf4e8140ac84343e66fe9c0a02e314f4be266adb0e14c7aaef"
+    },
+    {
+      "path": "App/Assets.xcassets/FrostfruitOrchardTabletLandscape025.imageset/Contents.json",
+      "status": "A ",
+      "sha256": "30cfacb4e2a36d4b66093823d5730c9a43a59608c1b09304caeefddafd5c6b3a"
+    },
+    {
+      "path": "App/Assets.xcassets/FrostfruitOrchardTabletLandscape025.imageset/scene.png",
+      "status": "A ",
+      "sha256": "94334518be00820a68042e75e09f0f0f58d9a9e6b81f814b60eccf754a1759af"
+    },
+    {
+      "path": "App/Assets.xcassets/FrostfruitOrchardTabletLandscape050.imageset/Contents.json",
+      "status": "A ",
+      "sha256": "30cfacb4e2a36d4b66093823d5730c9a43a59608c1b09304caeefddafd5c6b3a"
+    },
+    {
+      "path": "App/Assets.xcassets/FrostfruitOrchardTabletLandscape050.imageset/scene.png",
+      "status": "A ",
+      "sha256": "4cc41c92b484e8000a23bfecf277314508166f4797b13c8d64292453d8ce7d21"
+    },
+    {
+      "path": "App/Assets.xcassets/FrostfruitOrchardTabletLandscape075.imageset/Contents.json",
+      "status": "A ",
+      "sha256": "30cfacb4e2a36d4b66093823d5730c9a43a59608c1b09304caeefddafd5c6b3a"
+    },
+    {
+      "path": "App/Assets.xcassets/FrostfruitOrchardTabletLandscape075.imageset/scene.png",
+      "status": "A ",
+      "sha256": "df95e5ddd6fe65c5cfcc8b60ff3388808dbd043b0014e42c22e00bec461bfe03"
+    },
+    {
+      "path": "App/Assets.xcassets/FrostfruitOrchardTabletLandscape100.imageset/Contents.json",
+      "status": "A ",
+      "sha256": "30cfacb4e2a36d4b66093823d5730c9a43a59608c1b09304caeefddafd5c6b3a"
+    },
+    {
+      "path": "App/Assets.xcassets/FrostfruitOrchardTabletLandscape100.imageset/scene.png",
+      "status": "A ",
+      "sha256": "cafd1cf24c2ebaa1fafb3173c36458b9da5d296cc37bdbe41f18270e923118e0"
+    },
+    {
+      "path": "App/Assets.xcassets/FrostfruitOrchardTabletPortrait000.imageset/Contents.json",
+      "status": "A ",
+      "sha256": "30cfacb4e2a36d4b66093823d5730c9a43a59608c1b09304caeefddafd5c6b3a"
+    },
+    {
+      "path": "App/Assets.xcassets/FrostfruitOrchardTabletPortrait000.imageset/scene.png",
+      "status": "A ",
+      "sha256": "eb39eb1d35c8b6ab561dc97b4f4272d9a0f0eb01ca5eea9c8fa4adf7dd705f1e"
+    },
+    {
+      "path": "App/Assets.xcassets/FrostfruitOrchardTabletPortrait025.imageset/Contents.json",
+      "status": "A ",
+      "sha256": "30cfacb4e2a36d4b66093823d5730c9a43a59608c1b09304caeefddafd5c6b3a"
+    },
+    {
+      "path": "App/Assets.xcassets/FrostfruitOrchardTabletPortrait025.imageset/scene.png",
+      "status": "A ",
+      "sha256": "ba1af73a69f6ca503cd393fe38d2dbbda0f85906b9b88cc74fcd333715bd0786"
+    },
+    {
+      "path": "App/Assets.xcassets/FrostfruitOrchardTabletPortrait050.imageset/Contents.json",
+      "status": "A ",
+      "sha256": "30cfacb4e2a36d4b66093823d5730c9a43a59608c1b09304caeefddafd5c6b3a"
+    },
+    {
+      "path": "App/Assets.xcassets/FrostfruitOrchardTabletPortrait050.imageset/scene.png",
+      "status": "A ",
+      "sha256": "69c8bc8034cf877d0fb583cfa4e232a2410d773ddc17c7c1f2f6528a58050b76"
+    },
+    {
+      "path": "App/Assets.xcassets/FrostfruitOrchardTabletPortrait075.imageset/Contents.json",
+      "status": "A ",
+      "sha256": "30cfacb4e2a36d4b66093823d5730c9a43a59608c1b09304caeefddafd5c6b3a"
+    },
+    {
+      "path": "App/Assets.xcassets/FrostfruitOrchardTabletPortrait075.imageset/scene.png",
+      "status": "A ",
+      "sha256": "4003a517efb5010e7eba0120e81d6d77c948179737f404579509736c8df6483b"
+    },
+    {
+      "path": "App/Assets.xcassets/FrostfruitOrchardTabletPortrait100.imageset/Contents.json",
+      "status": "A ",
+      "sha256": "30cfacb4e2a36d4b66093823d5730c9a43a59608c1b09304caeefddafd5c6b3a"
+    },
+    {
+      "path": "App/Assets.xcassets/FrostfruitOrchardTabletPortrait100.imageset/scene.png",
+      "status": "A ",
+      "sha256": "649f25b6f1db0dd28d9389bc7fabad3b523547258167a23337928b41cd7736e8"
+    },
+    {
+      "path": "App/Assets.xcassets/SkyPieceDusk.imageset/Contents.json",
+      "status": "A ",
+      "sha256": "bd5fe0cd7d564c4709a88048f8c8a62e9ddd9fefebdb4aa8c1e0cb438e7b0df3"
+    },
+    {
+      "path": "App/Assets.xcassets/SkyPieceDusk.imageset/body.png",
+      "status": "A ",
+      "sha256": "46de286aec68d91ab40269cb83668e30ad75a13f2fa3ed7c1c6f729a957bd134"
+    },
+    {
+      "path": "App/Assets.xcassets/SkyPieceNova.imageset/Contents.json",
+      "status": "A ",
+      "sha256": "bd5fe0cd7d564c4709a88048f8c8a62e9ddd9fefebdb4aa8c1e0cb438e7b0df3"
+    },
+    {
+      "path": "App/Assets.xcassets/SkyPieceNova.imageset/body.png",
+      "status": "A ",
+      "sha256": "8686dd622cc2ef5657e045211bf0afc9742a5ab6cd4446b157184307265ef2fa"
+    },
+    {
+      "path": "App/Assets.xcassets/SkyPieceOpal.imageset/Contents.json",
+      "status": "A ",
+      "sha256": "bd5fe0cd7d564c4709a88048f8c8a62e9ddd9fefebdb4aa8c1e0cb438e7b0df3"
+    },
+    {
+      "path": "App/Assets.xcassets/SkyPieceOpal.imageset/body.png",
+      "status": "A ",
+      "sha256": "9d85097013be940164cce734531a1c357b0f0ee2ee28e621baf9006995098baa"
+    },
+    {
+      "path": "App/Assets.xcassets/SkyPiecePip.imageset/Contents.json",
+      "status": "A ",
+      "sha256": "bd5fe0cd7d564c4709a88048f8c8a62e9ddd9fefebdb4aa8c1e0cb438e7b0df3"
+    },
+    {
+      "path": "App/Assets.xcassets/SkyPiecePip.imageset/body.png",
+      "status": "A ",
+      "sha256": "22a500fcb69bde908df04556b13481dd06b8b4a798d73a1e615e32ca8cac51a8"
+    },
+    {
+      "path": "App/Assets.xcassets/SkyPieceSpark.imageset/Contents.json",
+      "status": "A ",
+      "sha256": "bd5fe0cd7d564c4709a88048f8c8a62e9ddd9fefebdb4aa8c1e0cb438e7b0df3"
+    },
+    {
+      "path": "App/Assets.xcassets/SkyPieceSpark.imageset/body.png",
+      "status": "A ",
+      "sha256": "6940e41a6a4b25dc586b0e23be904eef6ad3be6660f017994fc68007d12e2e21"
+    },
+    {
+      "path": "App/Assets.xcassets/SkyPieceSunny.imageset/Contents.json",
+      "status": "A ",
+      "sha256": "bd5fe0cd7d564c4709a88048f8c8a62e9ddd9fefebdb4aa8c1e0cb438e7b0df3"
+    },
+    {
+      "path": "App/Assets.xcassets/SkyPieceSunny.imageset/body.png",
+      "status": "A ",
+      "sha256": "4fe7290281c35aff5f4c2ccda987771d7b079e48d2fe7b3b70515ed3791f5557"
+    },
+    {
+      "path": "App/Assets.xcassets/SkyPieceTwinkle.imageset/Contents.json",
+      "status": "A ",
+      "sha256": "bd5fe0cd7d564c4709a88048f8c8a62e9ddd9fefebdb4aa8c1e0cb438e7b0df3"
+    },
+    {
+      "path": "App/Assets.xcassets/SkyPieceTwinkle.imageset/body.png",
+      "status": "A ",
+      "sha256": "6712aa601a9a30c18ed9b0c084506b675e72f32303753056736107ca4c62c2da"
+    },
+    {
+      "path": "App/DialogueScripts/observatory-dialogue.json",
+      "status": "M ",
+      "sha256": "5b137ca045ba8e7feb08d78fb7aaef7a1d10fc68007cd2e8077a2c2e0ad89b74"
+    },
+    {
+      "path": "App/FallingSkyHUD.swift",
+      "status": "M ",
+      "sha256": "1b53bbfd2602a480cdf99b58a0a2d85e387d6171c78eb0aa129ec6b973d13a51"
+    },
+    {
+      "path": "App/FallingSkyMotion.swift",
+      "status": "M ",
+      "sha256": "608137f6a02b2e0e02d37d7c6d395619a0b99d4a5db951e6d3ead41f2917a8b3"
+    },
+    {
+      "path": "App/FallingSkyScene.swift",
+      "status": "M ",
+      "sha256": "f5116bfbcfd68bdd8c3aedf673cab5dac9b8a2b8e37faf07f4030d3b72da2977"
+    },
+    {
+      "path": "App/FallingSkyStore.swift",
+      "status": "M ",
+      "sha256": "9b51faca9b72f48f903ca9372e57572ad83e2563c054be74d35c6c9904f2ae92"
+    },
+    {
+      "path": "App/FallingSkyView.swift",
+      "status": "M ",
+      "sha256": "e22680e116165c184a0857f022c9d48f70f61cc22e0575fcb499e5cd027d9aff"
+    },
+    {
+      "path": "App/RestorationEnvironment.swift",
+      "status": "M ",
+      "sha256": "aa031661c1d98adc6266c6cbeb10554b4ad3113b48d8eaae41816c00fbd54a99"
+    },
+    {
+      "path": "App/RestorationPresentation.swift",
+      "status": "M ",
+      "sha256": "4f268b451c5cc1d9a2674368e0af1da8e10759c115935555b7920231715d1cd4"
+    },
+    {
+      "path": "App/SkyCopy.swift",
+      "status": "M ",
+      "sha256": "e0a7110bb9ac4d060eba81f79cb50b84da01aa0405d1aa0ef230d4a658374ecb"
+    },
+    {
+      "path": "App/SkyFlowCeremony.swift",
+      "status": "M ",
+      "sha256": "2c6406531cc3264a0abe3379e5c5c97e1a792550e5772ed2dbe13e5740dfbfdc"
+    },
+    {
+      "path": "App/SkyFlowState.swift",
+      "status": "M ",
+      "sha256": "9617c45ae9d112420dc3b8c6d8be82313448ae498644dbc978c08927c0f8eab9"
+    },
+    {
+      "path": "App/SkyPiece.swift",
+      "status": "A ",
+      "sha256": "7a12c8dc2cda52ef6765dcfdfb02ac9414ac3c4f9233aa049fb6273173b844cf"
+    },
+    {
+      "path": "App/SkyPreferences.swift",
+      "status": "M ",
+      "sha256": "b2efff521b55cdaf9edcc94bb3c09b95df094446db0a71fc76b8e4e5ade19f2f"
+    },
+    {
+      "path": "App/StarCast.swift",
+      "status": "M ",
+      "sha256": "da40b3e235e15d15ed51a23b2d568551b880ffa6fc76fc746694e45fe9037107"
+    },
+    {
+      "path": "App/StarfallTheme.swift",
+      "status": "M ",
+      "sha256": "a6eb98708f24cb4bde38a57057c0f45661da1c6176d48c519bb5e17651fd273f"
+    },
+    {
+      "path": "App/WorldJourneyStore.swift",
+      "status": "M ",
+      "sha256": "b6c3a5ba3fab005f79a0ce301e024cd986d6bad99e512621143c2d5c433bfbd9"
+    },
+    {
+      "path": "App/WorldMapArtwork.swift",
+      "status": " M",
+      "sha256": "86a2ede74969825a868abfa2c5873467dd7209abbad870f734f0fe3a2299d4d4"
+    },
+    {
+      "path": "App/WorldMapPainting.swift",
+      "status": " M",
+      "sha256": "ae960a0574cd83d10dd08a98750f16473559490d0b831a44e9b0c9c620349ea8"
+    },
+    {
+      "path": "App/WorldMapReviewFixture.swift",
+      "status": " M",
+      "sha256": "ccbccc2a79436e502268d2986f4011040af1ac9e52a7336dd01bdde8727609ae"
+    },
+    {
+      "path": "AppTests/ObservatoryGeometryTests.swift",
+      "status": " M",
+      "sha256": "61e3f8e842434d8b635ba16e7b2b5869c62e9660e555efdc0cc13c37760a7b77"
+    },
+    {
+      "path": "AppTests/RestorationFlowTests.swift",
+      "status": "M ",
+      "sha256": "923f5fd7e15f8d6b6dd87064eb645ea9eab417bf1d58f6236b20be4d76ffe11f"
+    },
+    {
+      "path": "AppTests/RestorationPresentationTests.swift",
+      "status": "M ",
+      "sha256": "42447eb4999b085fbe5e0bdce55f85bab394dceb1bb70ad5f74291f616e4f64e"
+    },
+    {
+      "path": "AppTests/SkyFlowStateTests.swift",
+      "status": "M ",
+      "sha256": "3981c4456af642098e6c696ad510f7060ba7ffcfbc65b631d049e0329195e685"
+    },
+    {
+      "path": "AppTests/SkyPieceTests.swift",
+      "status": "A ",
+      "sha256": "2fc5fa2de090633167928d5aad9ef3c8567ffc8dd415b10b8134a7a9ec149470"
+    },
+    {
+      "path": "AppTests/SkySaveArchiveTests.swift",
+      "status": "M ",
+      "sha256": "40296df181c33dd67c0371ea1effe8254f0ed298969ed2d3dc04eb4d58b98ca0"
+    },
+    {
+      "path": "AppTests/StarCastTests.swift",
+      "status": "M ",
+      "sha256": "1b96eb8e0dc4fcce116b81f628754c20a01d1981c87bec112060417175cccee1"
+    },
+    {
+      "path": "AppTests/WorldJourneyTests.swift",
+      "status": "M ",
+      "sha256": "bac7e0fffe9ebae11df8ad227d423279864ef8f3b4ba335c2f24feb0b70194e1"
+    },
+    {
+      "path": "AppTests/WorldMapReviewFixtureTests.swift",
+      "status": " M",
+      "sha256": "bd245bf10d7d1acc9459efd2be32d390ac5464a3ad2978eb365ae8490ed6dcd1"
+    },
+    {
+      "path": "Sources/StarfallCore/StarfallChallenge.swift",
+      "status": "M ",
+      "sha256": "e18822603b7bbd7503e232bbac21edeb912c6276e3f6a11775e72d83da148bab"
+    },
+    {
+      "path": "Sources/StarfallCore/WorldJourney.swift",
+      "status": "M ",
+      "sha256": "5cf0887beb4ab0fc74733eebbfbb84f0b6a21af9444641546cb799b180889036"
+    },
+    {
+      "path": "Starfall.xcodeproj/project.pbxproj",
+      "status": "M ",
+      "sha256": "875c2adf84ba233fd475d1a5ab33390121a8821fc8150aac9673330a2a20a073"
+    },
+    {
+      "path": "UITests/FrostfruitOrchardInteractionTests.swift",
+      "status": "A ",
+      "sha256": "15cd9519841ca7338bb62c462454500d923ea68cd47b380bd39a8632381d5796"
+    },
+    {
+      "path": "UITests/NativeSkyControls.swift",
+      "status": " M",
+      "sha256": "0bde7ee14bb373688d43ab3159305579dae24bb2bffeaffd932bda25a129d1a2"
+    },
+    {
+      "path": "UITests/ObservatoryInteractionTests.swift",
+      "status": "M ",
+      "sha256": "804020d4608e5014a9aedefd0137f2b97a44a2360528d0618ff15e3cf86009f5"
+    },
+    {
+      "path": "UITests/RestorationInteractionScenarios.swift",
+      "status": "M ",
+      "sha256": "dee033648cedc1aeae64d66b2bd227702693808049232df5661c02551cf818cf"
+    },
+    {
+      "path": "UITests/SilverPoolsInteractionTests.swift",
+      "status": "M ",
+      "sha256": "17f20310b0a60c07eebad05390e3c1b76432c5f7529b294011ed4a4d7e9a46ed"
+    },
+    {
+      "path": "UITests/WorldJourneyInteractionTests.swift",
+      "status": "M ",
+      "sha256": "3774799f8d6f4a9d61d719534a9e40feb745e5639868d38ce5bd49ef2fcdbeac"
+    },
+    {
+      "path": "UITests/WorldMapReviewInteractionTests.swift",
+      "status": " M",
+      "sha256": "6f7bca54d56e9f68fbf4a7e4948e9d5b3d8119599a32bc97625190b1e62f0532"
+    },
+    {
+      "path": "App/Assets.xcassets/WorldMapIslandFrostfruitDamaged.imageset/Contents.json",
+      "status": "??",
+      "sha256": "c5e669f7e3700aa6640073714d722b6a04dfdbf81704c78ef51a0289fb4a1a5f"
+    },
+    {
+      "path": "App/Assets.xcassets/WorldMapIslandFrostfruitDamaged.imageset/frostfruit-damaged.png",
+      "status": "??",
+      "sha256": "744fba87b64aa23d181592edb78ebe2ec6d0a10d01cef0139bc3709ebe5799f7"
+    },
+    {
+      "path": "App/Assets.xcassets/WorldMapIslandFrostfruitRestored.imageset/Contents.json",
+      "status": "??",
+      "sha256": "bb43c0661b6c982c61149dc0a5cc814f6c497a9f246c74d2cc40b21cb6f34335"
+    },
+    {
+      "path": "App/Assets.xcassets/WorldMapIslandFrostfruitRestored.imageset/frostfruit-restored.png",
+      "status": "??",
+      "sha256": "6a6143a55c4eeee860540ca28100f8bd78079bf41f98ecee836be73efb41c288"
+    }
+  ],
+  "configuration": "Debug arm64",
+  "toolchain": "Xcode 27.1 (27A9275)",
+  "simulatorOS": "iOS 27.0 (24A434)",
+  "macOS": "27.0.1",
+  "physicalDevice": false,
+  "actualVoiceOver": false
+}

@@ -58,6 +58,27 @@ final class WorldJourneyTests: XCTestCase {
         XCTAssertEqual(defaults.data(forKey: WorldJourneyStore.rejectedKey), bad)
         XCTAssertEqual(defaults.data(forKey: SkySaveArchive.key), bytes)
     }
+    @MainActor func testInspectingEveryDestinationPreservesRetainedRoundAndAccess() throws {
+        let defaults = defaults()
+        let game = ObservatoryReviewFixture.game(dense: false, score: 14, challenge: .firstLight)
+        try SkySaveArchive.save(game, to: defaults)
+        let roundBytes = try XCTUnwrap(defaults.data(forKey: SkySaveArchive.key))
+        let world = WorldJourneyStore(defaults: defaults)
+        for location in WorldLocation.allCases {
+            try world.select(location)
+            let restored = WorldJourneyStore(defaults: defaults)
+            XCTAssertEqual(world.journey.selected, location)
+            XCTAssertEqual(restored.journey.selected, location, "Selection remains meaningful after relaunch")
+            XCTAssertEqual(defaults.data(forKey: SkySaveArchive.key), roundBytes, location.rawValue)
+            XCTAssertEqual(SkySaveArchive.load(from: defaults), game)
+            XCTAssertTrue(restored.journey.completed.isEmpty)
+            XCTAssertFalse(restored.journey.legacyAccess)
+            for destination in WorldLocation.allCases {
+                XCTAssertEqual(restored.journey.canEnter(destination), destination == .firstLight,
+                               "Inspecting \(location.rawValue) must not unlock \(destination.rawValue)")
+            }
+        }
+    }
     @MainActor func testEveryTutorialUsesStoreActionsAndNeverWritesRoundOrWorld() throws {
         for chapter in SkyTutorial.allCases {
             let defaults = defaults(), presenter = FallingSkyRecorder(), clock = ManualRainClock()

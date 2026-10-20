@@ -1,0 +1,138 @@
+{
+  "scope": "Seven inspected native six-island map/Places captures. Original phone matrix has failures documented separately; these stills do not establish gesture, actual VoiceOver or physical-device acceptance. Later production edits are separately recorded.",
+  "captures": [
+    {
+      "file": "dev-e9657b05ce__map-fresh__iphone-se3__default.png",
+      "sha256": "0dd8bf0227d1fd4c5248e768acf6bb161b6945a0dee9268cdfeedc350a05bfd9",
+      "pixelSize": [
+        750,
+        1334
+      ],
+      "runtime": "dev.e9657b05ce",
+      "screen": "map-fresh",
+      "device": "iphone-se3",
+      "sizeOrOrientation": "default",
+      "deviceId": "02B7AF2E-1F1C-40F6-AA83-C67EA962B656",
+      "sourceRun": "expanded-phone.xcresult",
+      "sourceAttachment": "2F1C6A01-B2AF-49DC-93BF-6A0B269CC848.png",
+      "sourceTest": "WorldMapReviewInteractionTests/testSevenReviewStatesUseNormalMapAndExplicitEntryBoundary()",
+      "sourceName": "map-harness-fresh-portrait_0_9BD24180-D990-48F7-9562-C73F270E619A.png",
+      "sourceManifest": "expanded-source-e9657b05ce.json",
+      "inspected": true
+    },
+    {
+      "file": "dev-e9657b05ce__map-orchard-restored__iphone-se3__default.png",
+      "sha256": "fc952c269088ade819f5ff97e7cc2c56dbe2540cb16c5e2770c74c470d2c8502",
+      "pixelSize": [
+        750,
+        1334
+      ],
+      "runtime": "dev.e9657b05ce",
+      "screen": "map-orchard-restored",
+      "device": "iphone-se3",
+      "sizeOrOrientation": "default",
+      "deviceId": "02B7AF2E-1F1C-40F6-AA83-C67EA962B656",
+      "sourceRun": "expanded-phone.xcresult",
+      "sourceAttachment": "391A9DA1-902F-4E1B-A5FF-C18DCB765702.png",
+      "sourceTest": "WorldMapReviewInteractionTests/testSevenReviewStatesUseNormalMapAndExplicitEntryBoundary()",
+      "sourceName": "map-harness-allReady-portrait_0_0039C18A-D64C-4790-9918-C0565DD9EF64.png",
+      "sourceManifest": "expanded-source-e9657b05ce.json",
+      "inspected": true
+    },
+    {
+      "file": "dev-e9657b05ce__map-orchard-locked__iphone-se3__default.png",
+      "sha256": "d4158c3014d6531c04794a8f66ccfaaded5b00e48be09718f4a1260b93c36d71",
+      "pixelSize": [
+        750,
+        1334
+      ],
+      "runtime": "dev.e9657b05ce",
+      "screen": "map-orchard-locked",
+      "device": "iphone-se3",
+      "sizeOrOrientation": "default",
+      "deviceId": "02B7AF2E-1F1C-40F6-AA83-C67EA962B656",
+      "sourceRun": "expanded-phone.xcresult",
+      "sourceAttachment": "9D3C2DB1-D1D0-49C3-9893-7A90A59146EA.png",
+      "sourceTest": "WorldMapReviewInteractionTests/testSevenReviewStatesUseNormalMapAndExplicitEntryBoundary()",
+      "sourceName": "map-harness-locked-portrait_0_83942394-0DC7-40D6-AF3F-D46C9E5AE0B2.png",
+      "sourceManifest": "expanded-source-e9657b05ce.json",
+      "inspected": true
+    },
+    {
+      "file": "dev-e9657b05ce__map-recovery__iphone-se3__extra-large.png",
+      "sha256": "c11bca80cd00589875297ed9dcec59a82c385eb35c512e7d0852a8df178e33c5",
+      "pixelSize": [
+        750,
+        1334
+      ],
+      "runtime": "dev.e9657b05ce",
+      "screen": "map-recovery",
+      "device": "iphone-se3",
+      "sizeOrOrientation": "extra-large",
+      "deviceId": "29E78EAC-E600-4B9D-BAFD-047E6DC23A36",
+      "sourceRun": "expanded-traversal-phone.xcresult",
+      "sourceAttachment": "0135B53A-22E0-402A-9951-F763A568CE32.png",
+      "sourceTest": "WorldMapReviewInteractionTests/testRetainedAndRecoveryReviewsReflowWithoutChangingTheRound()",
+      "sourceName": "map-harness-recovery-extra-large-map_0_40B8D7AC-C776-4353-8B63-DD8A97AF1BD0.png",
+      "sourceManifest": "expanded-source-e9657b05ce.json",
+      "inspected": true
+    },
+    {
+      "file": "dev-e9657b05ce__map-all-restored__ipad-air11m3__portrait.png",
+      "sha256": "45ec343baa65123d05ea0ff7a42618846503592d71f1e1b69cb5b1d14b856972",
+      "pixelSize": [
+        1640,
+        2360
+      ],
+      "runtime": "dev.e9657b05ce",
+      "screen": "map-all-restored",
+      "device": "ipad-air11m3",
+      "sizeOrOrientation": "portrait",
+      "deviceId": "377B8820-20E2-413E-B64F-D9E4CEB86AF4",
+      "sourceRun": "expanded-tablet.xcresult",
+      "sourceAttachment": "9C77D040-0486-4581-9162-C35C4D3E54CD.png",
+      "sourceTest": "WorldMapReviewInteractionTests/testSevenReviewStatesUseNormalMapAndExplicitEntryBoundary()",
+      "sourceName": "map-harness-allReady-portrait_0_89275C0E-CB9D-4D30-A828-998196F09067.png",
+      "sourceManifest": "expanded-source-e9657b05ce.json",
+      "inspected": true
+    },
+    {
+      "file": "dev-e9657b05ce__map-two-repairs__ipad-air11m3__landscape.png",
+      "sha256": "96fa1d31ee7a6f677f58e2b9df5f11a7a9837a25858822343d2ed18d95b9113e",
+      "pixelSize": [
+        1640,
+        2360
+      ],
+      "runtime": "dev.e9657b05ce",
+      "screen": "map-two-repairs",
+      "device": "ipad-air11m3",
+      "sizeOrOrientation": "landscape",
+      "deviceId": "377B8820-20E2-413E-B64F-D9E4CEB86AF4",
+      "sourceRun": "expanded-tablet.xcresult",
+      "sourceAttachment": "4F89353C-61D8-4D5F-AB96-C437901CE59C.png",
+      "sourceTest": "WorldMapReviewInteractionTests/testSevenReviewStatesUseNormalMapAndExplicitEntryBoundary()",
+      "sourceName": "map-harness-two-repairs-landscape_0_18714F28-DBFE-4A91-A6E4-B0700194DD03.png",
+      "sourceManifest": "expanded-source-e9657b05ce.json",
+      "inspected": true
+    },
+    {
+      "file": "dev-e9657b05ce__map-recovery-places__ipad-air11m3__largest-text.png",
+      "sha256": "baa9e1a9d506547fd2d65149e088e4c55fd3dafac0c0c9da5530a7bcd76e6d62",
+      "pixelSize": [
+        1640,
+        2360
+      ],
+      "runtime": "dev.e9657b05ce",
+      "screen": "map-recovery-places",
+      "device": "ipad-air11m3",
+      "sizeOrOrientation": "largest-text",
+      "deviceId": "377B8820-20E2-413E-B64F-D9E4CEB86AF4",
+      "sourceRun": "expanded-tablet.xcresult",
+      "sourceAttachment": "4F09D72B-4563-481D-9C64-9C722C8CC3F4.png",
+      "sourceTest": "WorldMapReviewInteractionTests/testRetainedAndRecoveryReviewsReflowWithoutChangingTheRound()",
+      "sourceName": "map-harness-recovery-largest-text_0_0F1F3A29-932D-4479-A851-29926585F197.png",
+      "sourceManifest": "expanded-source-e9657b05ce.json",
+      "inspected": true
+    }
+  ]
+}

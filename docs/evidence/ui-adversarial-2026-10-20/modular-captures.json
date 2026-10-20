@@ -1,0 +1,163 @@
+[
+  {
+    "file": "dev-03eaf4e14d__map-fresh__iphone-se3__default.png",
+    "status": "Current map composition; later tutorial-only corrections recorded separately",
+    "caption": "Fresh journey: Lantern selected, destination action and scroll cue.",
+    "sourceFingerprint": "dev.03eaf4e14d",
+    "sourceManifest": "modular-source-03eaf4e14d.json",
+    "baseCommit": "386b2f8fad44d1f9c8379a00b03af6b10ca9861c",
+    "version": "0.1.0 (1)",
+    "configuration": "Debug arm64",
+    "device": "iphone-se3",
+    "os": "iOS 27.0 (24A434) Simulator",
+    "originalAttachment": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "02B7AF2E-1F1C-40F6-AA83-C67EA962B656",
+      "deviceName": "Starfall UI Compact 01a1563a",
+      "exportedFileName": "56C7F9E5-E13B-45A9-85EE-3B851D16DA58.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "map-harness-fresh-portrait_0_BBFAC86F-CB5E-42CE-A12B-3BD3811DFEAA.png",
+      "timestamp": 1792506888.275
+    },
+    "sha256": "5066a545c4c4f1747684545dd6c9b045ad0237f409c3dbfdaae5ea115168d407",
+    "inspection": "Independent map-assets agent inspected all retained native captures; root inspected representative composition and motion frames. No actual VoiceOver or physical-device acceptance."
+  },
+  {
+    "file": "dev-03eaf4e14d__map-locked__iphone-se3__default.png",
+    "status": "Current map composition; later tutorial-only corrections recorded separately",
+    "caption": "Locked Silver selection shows its prerequisite without an entry action.",
+    "sourceFingerprint": "dev.03eaf4e14d",
+    "sourceManifest": "modular-source-03eaf4e14d.json",
+    "baseCommit": "386b2f8fad44d1f9c8379a00b03af6b10ca9861c",
+    "version": "0.1.0 (1)",
+    "configuration": "Debug arm64",
+    "device": "iphone-se3",
+    "os": "iOS 27.0 (24A434) Simulator",
+    "originalAttachment": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "02B7AF2E-1F1C-40F6-AA83-C67EA962B656",
+      "deviceName": "Starfall UI Compact 01a1563a",
+      "exportedFileName": "B76745DB-B273-4979-A69D-C456312D27D4.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "map-harness-locked-portrait_0_B7E59989-8B5F-4269-85E9-E1D0BC506146.png",
+      "timestamp": 1792506953.796
+    },
+    "sha256": "7ee63ad9171118dd66b21f3f9bd767401a6cbf5a58ecbe086e0f3cffe2be1ef6",
+    "inspection": "Independent map-assets agent inspected all retained native captures; root inspected representative composition and motion frames. No actual VoiceOver or physical-device acceptance."
+  },
+  {
+    "file": "dev-03eaf4e14d__map-recovery__iphone-se3__extra-large.png",
+    "status": "Current map composition; later tutorial-only corrections recorded separately",
+    "caption": "Recovery at XL text: complete selected Ribbon control, recovery text and pinned action.",
+    "sourceFingerprint": "dev.03eaf4e14d",
+    "sourceManifest": "modular-source-03eaf4e14d.json",
+    "baseCommit": "386b2f8fad44d1f9c8379a00b03af6b10ca9861c",
+    "version": "0.1.0 (1)",
+    "configuration": "Debug arm64",
+    "device": "iphone-se3",
+    "os": "iOS 27.0 (24A434) Simulator",
+    "originalAttachment": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "02B7AF2E-1F1C-40F6-AA83-C67EA962B656",
+      "deviceName": "Starfall UI Compact 01a1563a",
+      "exportedFileName": "2308AF59-C473-4FE6-835C-BB94A5CDEDD9.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "map-harness-recovery-extra-large-map_0_7E7C9FBD-6787-4067-87E3-C226BEB7CB95.png",
+      "timestamp": 1792506835.011
+    },
+    "sha256": "713a0c8afb8d3ecc8038773a6e20938fe16cfafe0a56fded45b61e37be9000d7",
+    "inspection": "Independent map-assets agent inspected all retained native captures; root inspected representative composition and motion frames. No actual VoiceOver or physical-device acceptance."
+  },
+  {
+    "file": "dev-03eaf4e14d__map-two-repairs__ipad-air11m3__landscape.png",
+    "status": "Current map composition; later tutorial-only corrections recorded separately",
+    "caption": "Mixed repairs in landscape: all five islands and names, restored/ready/locked glyphs.",
+    "sourceFingerprint": "dev.03eaf4e14d",
+    "sourceManifest": "modular-source-03eaf4e14d.json",
+    "baseCommit": "386b2f8fad44d1f9c8379a00b03af6b10ca9861c",
+    "version": "0.1.0 (1)",
+    "configuration": "Debug arm64",
+    "device": "ipad-air11m3",
+    "os": "iOS 27.0 (24A434) Simulator",
+    "originalAttachment": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "377B8820-20E2-413E-B64F-D9E4CEB86AF4",
+      "deviceName": "Starfall UI Tablet 01a1563a",
+      "exportedFileName": "CB727A57-F566-4C68-8708-D39B7F6E7B23.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "map-harness-two-repairs-landscape_0_1D32CA02-C5A9-4995-BEB4-DD478B8C106F.png",
+      "timestamp": 1792506762.847
+    },
+    "sha256": "9f66590868d20feb70a338c7aa4793a196c8f2657bebfce731511fe152ea90de",
+    "inspection": "Independent map-assets agent inspected all retained native captures; root inspected representative composition and motion frames. No actual VoiceOver or physical-device acceptance."
+  },
+  {
+    "file": "dev-03eaf4e14d__map-all-restored__ipad-air11m3__portrait.png",
+    "status": "Current map composition; later tutorial-only corrections recorded separately",
+    "caption": "All five repaired; selected island is visible. Nonselected content can extend beyond the scrolling viewport.",
+    "sourceFingerprint": "dev.03eaf4e14d",
+    "sourceManifest": "modular-source-03eaf4e14d.json",
+    "baseCommit": "386b2f8fad44d1f9c8379a00b03af6b10ca9861c",
+    "version": "0.1.0 (1)",
+    "configuration": "Debug arm64",
+    "device": "ipad-air11m3",
+    "os": "iOS 27.0 (24A434) Simulator",
+    "originalAttachment": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "377B8820-20E2-413E-B64F-D9E4CEB86AF4",
+      "deviceName": "Starfall UI Tablet 01a1563a",
+      "exportedFileName": "FE5D52CB-AFAB-4B42-8C39-9C3354020CC8.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "map-harness-allFive-portrait_0_830717FC-CC01-420D-BAFD-D9E0DC546FAC.png",
+      "timestamp": 1792506786.639
+    },
+    "sha256": "2b04217b2c85b996413d91b44a68ef91afbb6fc65a0a78dbdb3d7111d3db61e0",
+    "inspection": "Independent map-assets agent inspected all retained native captures; root inspected representative composition and motion frames. No actual VoiceOver or physical-device acceptance."
+  },
+  {
+    "file": "dev-03eaf4e14d__map-recovery-places__ipad-air11m3__largest-text.png",
+    "status": "Current map composition; later tutorial-only corrections recorded separately",
+    "caption": "Largest-text Places reflows the recovery paragraph and action.",
+    "sourceFingerprint": "dev.03eaf4e14d",
+    "sourceManifest": "modular-source-03eaf4e14d.json",
+    "baseCommit": "386b2f8fad44d1f9c8379a00b03af6b10ca9861c",
+    "version": "0.1.0 (1)",
+    "configuration": "Debug arm64",
+    "device": "ipad-air11m3",
+    "os": "iOS 27.0 (24A434) Simulator",
+    "originalAttachment": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "377B8820-20E2-413E-B64F-D9E4CEB86AF4",
+      "deviceName": "Starfall UI Tablet 01a1563a",
+      "exportedFileName": "64EA571A-EA5E-4A5F-A1E1-F1982F426BDF.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "map-harness-recovery-largest-text_0_101697AB-AA85-404F-8E0F-4BC3684361C9.png",
+      "timestamp": 1792506717.325
+    },
+    "sha256": "8d6b4f1dd04407cc90ae52a17a6e3ebb61a958927f05f7deb42376727590b20f",
+    "inspection": "Independent map-assets agent inspected all retained native captures; root inspected representative composition and motion frames. No actual VoiceOver or physical-device acceptance."
+  },
+  {
+    "file": "dev-03eaf4e14d__map-two-repairs__iphone-se3__default.png",
+    "status": "Current map composition; later tutorial-only corrections recorded separately",
+    "caption": "Compact two-repair journey centers the selected Kite Harbor in the scrolling world.",
+    "sourceFingerprint": "dev.03eaf4e14d",
+    "sourceManifest": "modular-source-03eaf4e14d.json",
+    "baseCommit": "386b2f8fad44d1f9c8379a00b03af6b10ca9861c",
+    "version": "0.1.0 (1)",
+    "configuration": "Debug arm64",
+    "device": "iphone-se3",
+    "os": "iOS 27.0 (24A434) Simulator",
+    "originalAttachment": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "02B7AF2E-1F1C-40F6-AA83-C67EA962B656",
+      "deviceName": "Starfall UI Compact 01a1563a",
+      "exportedFileName": "26106331-9842-4101-B641-23807CB4ACCF.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "map-harness-twoRepairs-portrait_0_B4B2BCF1-D4F1-4978-8CC1-BD4025206E3B.png",
+      "timestamp": 1792506909.991
+    },
+    "sha256": "61ec9cb89b2ecc1e049c567791915ac907f9198241d36d6c2e81f0c13a5d6cc6",
+    "inspection": "Independent map-assets agent inspected all retained native captures; root inspected representative composition and motion frames. No actual VoiceOver or physical-device acceptance."
+  }
+]

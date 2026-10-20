@@ -1,12 +1,113 @@
 import XCTest
 
 extension XCUIApplication {
+    /// Observe the app's initial scroll position without correcting it for the test.
+    @MainActor func waitForVisibleWorldMapMarker(_ marker: XCUIElement, file: StaticString = #filePath, line: UInt = #line) {
+        let canvas = scrollViews["world.canvas"]
+        var lastObservation = "No visibility poll completed."
+        let visible = XCTNSPredicateExpectation(
+            predicate: NSPredicate { _, _ in
+                let started = ContinuousClock.now
+                let canvasExists = canvas.exists, markerExists = marker.exists
+                guard canvasExists, markerExists else {
+                    lastObservation = "canvasExists=\(canvasExists); markerExists=\(markerExists); "
+                        + "pollDuration=\(started.duration(to: ContinuousClock.now))"
+                    return false
+                }
+                // AX reads can be slow. Check one set of measured frames rather
+                // than requesting the same target again for each predicate term.
+                let viewport = self.frame.intersection(canvas.frame).insetBy(dx: 1, dy: 1)
+                let target = marker.frame
+                let hittable = marker.isHittable
+                lastObservation = "canvasExists=\(canvasExists); markerExists=\(markerExists); "
+                    + "target=\(target); viewport=\(viewport); hittable=\(hittable); "
+                    + "pollDuration=\(started.duration(to: ContinuousClock.now))"
+                return target.width >= 44 && target.height >= 44
+                    && viewport.contains(target) && hittable
+            }, object: nil).wait(timeout: 5)
+        XCTAssertTrue(visible, "The selected destination must be fully visible without test scrolling. "
+                      + lastObservation, file: file, line: line)
+    }
+
+    /// Scroll only the illustrated world, preserving the pinned destination card.
+    @MainActor func revealWorldMapMarker(_ marker: XCUIElement, file: StaticString = #filePath, line: UInt = #line) {
+        let canvas = scrollViews["world.canvas"]
+        XCTAssertTrue(canvas.waitForExistence(timeout: 5),
+                      "The illustrated world owns a dedicated scroll viewport", file: file, line: line)
+        XCTAssertTrue(marker.waitForExistence(timeout: 5), file: file, line: line)
+        var frames: [String] = []
+        func fail(_ message: String) {
+            XCTContext.runActivity(named: "Map target reachability frames") { activity in
+                let attachment = XCTAttachment(string: frames.joined(separator: "\n"))
+                attachment.name = "world-map-reveal-frames"
+                attachment.lifetime = .keepAlways
+                activity.add(attachment)
+            }
+            XCTFail(message, file: file, line: line)
+        }
+        let maximumGestures = 24
+        var gestureBudget = maximumGestures
+        // A longer world requires more travel. Fix the budget from its initial
+        // measured distance, and observe after every gesture including the last.
+        for attempt in 0...maximumGestures {
+            let viewport = frame.intersection(canvas.frame).insetBy(dx: 1, dy: 1)
+            let target = marker.frame
+            frames.append("Attempt \(attempt + 1): \(marker.identifier) target=\(target) viewport=\(viewport)")
+            guard viewport.width > 0, viewport.height > 0, viewport.height.isFinite,
+                  target.minY.isFinite, target.maxY.isFinite,
+                  target.width <= viewport.width, target.height <= viewport.height else {
+                fail("A complete destination must fit inside the visible map canvas"); return
+            }
+            if attempt == 0 {
+                let initialDistance = max(0, viewport.minY - target.minY, target.maxY - viewport.maxY)
+                // Allow for pan recognition within each 55%-viewport gesture,
+                // then reserve two gestures for the final edge alignment.
+                let effectiveTravel = max(1, viewport.height * 0.55 - 16)
+                let predictedGestures = (initialDistance / effectiveTravel).rounded(.up) + 2
+                gestureBudget = Int(min(CGFloat(maximumGestures), max(2, predictedGestures)))
+                frames.append("Traversal budget: initialDistance=\(initialDistance), viewportHeight=\(viewport.height), "
+                              + "effectiveTravel=\(effectiveTravel), predictedGestures=\(predictedGestures), "
+                              + "gestureBudget=\(gestureBudget), maximumGestures=\(maximumGestures)")
+            }
+            if viewport.contains(target) {
+                XCTAssertTrue(marker.isHittable, file: file, line: line)
+                XCTAssertGreaterThanOrEqual(marker.frame.width, 44, file: file, line: line)
+                XCTAssertGreaterThanOrEqual(marker.frame.height, 44, file: file, line: line)
+                return
+            }
+            guard attempt < gestureBudget else { break }
+            let upward = target.maxY > viewport.maxY
+            let distance = min(viewport.height * 0.55,
+                               // Native pan recognition consumes about 10pt
+                               // before scrolling starts; leave visible clearance.
+                               max(32, upward ? target.maxY - viewport.maxY + 16 : viewport.minY - target.minY + 16))
+            // Keep the held drag inside content. The trailing edge can grab
+            // iOS's scroll-indicator thumb instead of panning the world.
+            let start = coordinate(withNormalizedOffset: .zero).withOffset(CGVector(
+                dx: viewport.minX - frame.minX + viewport.width * 0.12,
+                dy: viewport.minY - frame.minY + viewport.height * (upward ? 0.75 : 0.25)))
+            start.press(forDuration: 0.05, thenDragTo: start.withOffset(CGVector(dx: 0, dy: upward ? -distance : distance)),
+                        withVelocity: .slow, thenHoldForDuration: 0.1)
+        }
+        frames.append("After final drag: target=\(marker.frame) viewport=\(frame.intersection(canvas.frame).insetBy(dx: 1, dy: 1))")
+        fail("The destination did not become fully visible after bounded scrolling inside world.canvas")
+    }
+
     /// Enter via the shipping world picker, preserving its explicit Begin ceremony.
     @MainActor func worldVisitControl(_ location: String) -> XCUIElement {
-        let map = skyMenuControl("sky.worldMap")
-        revealSkyControls([map]); map.tap()
-        XCTAssertTrue(buttons["world.list"].waitForExistence(timeout: 5))
-        if buttons["world.node.firstLight"].exists { buttons["world.list"].tap() }
+        if !otherElements["world.page"].exists {
+            let map = skyMenuControl("sky.worldMap")
+            revealSkyControls([map]); map.tap()
+        }
+        XCTAssertTrue(XCTNSPredicateExpectation(
+            predicate: NSPredicate { _, _ in
+                self.buttons["world.node.firstLight"].exists || self.buttons["world.place.firstLight"].exists
+            }, object: nil).wait(timeout: 5), "The world map must expose either native markers or its Places list")
+        if buttons["world.node.firstLight"].exists {
+            let list = buttons["world.list"]
+            XCTAssertTrue(list.waitForExistence(timeout: 5))
+            revealSkyControls([list]); list.tap()
+        }
         let place = buttons["world.place." + location]
         revealSkyMenuElement(place); revealSkyControls([place]); place.tap()
         let visit = buttons["world.visit"]

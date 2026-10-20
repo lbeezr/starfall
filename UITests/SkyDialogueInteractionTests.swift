@@ -81,7 +81,11 @@ final class SkyDialogueInteractionTests: XCTestCase {
                         thenDragTo: start.withOffset(CGVector(dx: 0, dy: up ? -distance : distance)),
                         withVelocity: .slow, thenHoldForDuration: 0.1)
         }
-        XCTFail("Studio controls did not become fully visible")
+        // The last allowed pan has not been inspected by the loop's next
+        // iteration. Check its result without adding another gesture or retry.
+        let finalBounds = controls.map(\.frame).reduce(CGRect.null) { $0.union($1) }
+        XCTAssertTrue(viewport.contains(finalBounds) && controls.allSatisfy(\.isHittable),
+                      "Studio controls did not become fully visible")
     }
 
     @MainActor private func revealText(_ text: XCUIElement, in app: XCUIApplication) {
@@ -198,6 +202,14 @@ final class SkyDialogueInteractionTests: XCTestCase {
         assertControls()
         let close = app.buttons["sky.dialogue.close"]
         XCTAssertTrue(close.isHittable)
+        let reading = app.scrollViews["sky.dialogue.reading"]
+        let viewport = reading.exists ? reading.frame.intersection(app.frame) : app.frame
+        let body = message.frame
+        XCTAssertGreaterThanOrEqual(body.minY, viewport.minY - 1)
+        XCTAssertGreaterThanOrEqual(body.intersection(viewport).height, min(20, body.height),
+                                   "Opening compact guidance must expose the message itself, not only its speaker heading")
+        XCTAssertGreaterThanOrEqual(close.frame.height, 44)
+        capture(app, "dialogue-paused-open-readable-body")
         close.tap()
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "exists == false"), object: message).wait(timeout: 3))
         XCTAssertTrue(reopen.isHittable)
