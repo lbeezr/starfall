@@ -1,0 +1,28 @@
+{
+  "status": "Installed and verified by canonical updater",
+  "timestampUTC": "2026-10-20T17:57:25.720321+00:00",
+  "command": "python3 scripts/device-update.py run",
+  "pullRequest": "https://github.com/lbeezr/starfall/pull/196",
+  "publishedHead": "614a055d408a6be0a8b82acf1f33bd3b9b5b6ee5",
+  "source": "d885d1f833eff850835d6d78d39be0092b39aaff",
+  "buildID": "dev.181bb2c16e",
+  "bundle": "com.starfall.prototype",
+  "bundleVersion": "1",
+  "verifiedTree": "f33265e44e9e03991ecec65074639ebac7505669",
+  "verifiedLocalCommit": "6617f32",
+  "cleanExportCoreTests": 213,
+  "cleanExportCoreFailures": 0,
+  "validation": {
+    "coreTests": "passed",
+    "signature": "verified",
+    "mainCIAtInstall": "pending"
+  },
+  "transport": "paired localNetwork; connected tunnel",
+  "installationReceiptSHA256": "756340c83a30cc97a31acf9b2e6c5d9a9c8e54a0818698b079a931f6c0ce177d",
+  "notes": [
+    "Canonical updater archived current main and verified signature plus actual installed application identity.",
+    "No fixture launch, reset or automatic launch was performed. Existing data remains in place.",
+    "Physical play, actual VoiceOver and human pacing remain unverified.",
+    "Documentation-only receipt follow-up does not change the runtime fingerprint."
+  ]
+}
