@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "status": "Combined development verification passed; publication and canonical installation pending",
+  "status": "Combined development verification passed; publication and canonical installation verified",
   "sourceCommit": "f7b5c7100ed163e9b342e735439fa1ba73acf90c",
   "runtimeFingerprint": "dev.8b80450f52",
   "sourceBoundary": "Baseline bede49c/dev.98b984fb29 contains final artwork, routing and saves. Final f7b5c71 changes only terminal ceremony ordering in App, plus visible-control UI checks and the kit source hash. Baseline native inputs remain valid for unchanged active artwork and rules. Final correction runs began with identical App bytes before/after the commit; compact compilation preceded the test-only shared menu-helper move. At that pre-integration boundary, remaining dirty paths were documentation/evidence only.",
@@ -139,7 +139,7 @@
     "Development subset, not full release-candidate native matrix",
     "Actual VoiceOver, physical gameplay, minimum-iOS17 execution and measured contrast not performed",
     "Offline reviewer logic checked; browser rendering unverified",
-    "Installation is separate and will be recorded in delivery.json after canonical updater verifies actual identity"
+    "Canonical installation is verified separately in delivery.json; this does not establish physical gameplay."
   ],
   "simulatorBuildLabel": "dev.local; runtime fingerprint computed from committed inputs independently",
   "nativeRuns": [
@@ -703,7 +703,9 @@
       "Two older cross-location preview UI checks were not repeated after integration; original passing results remain historical and the combined full hosted suite covers the unchanged state owner."
     ],
     "buildAffectingDirtyPaths": [],
-    "remainingWorkingTreeChanges": "Documentation, evidence index and unchanged native screenshot copies only; runtime fingerprint verified dev.bd94e46b80."
+    "remainingWorkingTreeChanges": "Documentation, evidence index and unchanged native screenshot copies only; runtime fingerprint verified dev.bd94e46b80.",
+    "delivery": "Published in PR #187; canonical installation verified as dev.bd94e46b80 from main 3f560e225036793604cdfd10ecf3d62b64aa7465. Main CI pending at installation; see delivery.json."
   },
-  "historicalScope": "Top-level source, checks and original visual review below describe pre-integration development. The integration record owns current combined native acceptance."
+  "historicalScope": "Top-level source, checks and original visual review below describe pre-integration development. The integration record owns current combined native acceptance.",
+  "deliveryReceipt": "delivery.json"
 }

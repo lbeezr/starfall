@@ -1,6 +1,8 @@
 # Frostfruit Orchard production evidence
 
-**Result:** Combined development checks passed; publication and installation pending · **Date:** October 20, 2026
+**Result:** Combined development checks passed; merged and installed on the original iPhone · **Date:** October 20, 2026
+
+Merged in [PR #187](https://github.com/lbeezr/starfall/pull/187); the [canonical receipt](delivery.json) verifies `dev.bd94e46b80` installed from main `3f560e2` in the original iPhone app. Main CI was pending at installation. Installation is separate from physical-play and actual VoiceOver acceptance.
 
 ## Combined Observatory integration
 
@@ -18,7 +20,7 @@ Fifty-one integrated native PNGs were inspected across phone, tablet and compact
 
 ![Integrated iPad landscape, dense 75% board](tablet-landscape-075-dense.png)
 
-**Next action:** Publish the combined verified batch, merge current main and use the canonical updater. Record the verified installation receipt only after delivery succeeds.
+**Next action:** Complete actual VoiceOver, measured contrast and physical-play acceptance at release-candidate review; verified installation does not establish those results.
 
 ## Pre-integration development evidence
 

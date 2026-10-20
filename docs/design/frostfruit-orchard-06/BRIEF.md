@@ -1,7 +1,7 @@
 # Bring winter back to life
 
 **Location:** Frostfruit Orchard · 06 · Wild Moons
-**Status:** Adopted for development; publication and installation pending · **Owner:** Current implementer · **Updated:** October 20, 2026
+**Status:** Development-verified and delivered · **Owner:** Current implementer · **Updated:** October 20, 2026
 **Starting source:** main `d0dfcc1`
 
 The selected compositions build a rich winter gathering orchard around the unchanged playable stars. Phone master 06, iPad portrait master 07 and iPad landscape master 03 passed the original native composition review before Observatory parity integration. Their unchanged paintings receive separate combined-source fit checks in the linked evidence. All fifteen packaged paintings are adopted. The local result reading surfaces are development-verified within the [source-bound evidence](../../evidence/frostfruit-orchard-2026-10-20/README.md), which owns combined-source native coverage at `6aee65e` / `dev.bd94e46b80` and retains earlier reviews as pre-integration history. The high central fruit cluster opens visibly at completion while snow and frost retain the place's cool identity.

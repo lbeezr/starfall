@@ -1,6 +1,8 @@
 # Frostfruit Orchard
 
-**Status:** Adopted for development; publication and installation pending · **Updated:** October 20, 2026
+**Status:** Development-verified and delivered · **Updated:** October 20, 2026
+
+Merged in [PR #187](https://github.com/lbeezr/starfall/pull/187); the [canonical receipt](../../evidence/frostfruit-orchard-2026-10-20/delivery.json) verifies `dev.bd94e46b80` installed from main `3f560e2` in the original iPhone app. Main CI was pending at installation. Installation is separate from physical-play and actual VoiceOver acceptance.
 
 Revive a winter gathering place. Light returns through the opal tree and its hanging glass fruit, then the sealed crown opens and releases luminous seeds. Fifteen adopted paintings provide five restoration states for bespoke iPhone, iPad portrait and iPad landscape compositions. Combined Observatory/Frostfruit inputs `6aee65e` / `dev.bd94e46b80` pass 342 hosted, 6 phone, 3 tablet and 2 compact-phone checks, plus Core and Release. The linked evidence separates those results and selected captures from pre-integration history.
 
@@ -26,4 +28,4 @@ The [asset manifest](production-assets.json) records original generated sources,
 
 [Prompt provenance](art-prompts.json) retains every attempt, exact prompt, reference role, original output path and hash, including rejected compositions and native-fit revisions. Its current-retention index identifies selected App assets and ignored local history under `artifacts/frostfruit-orchard/`; historical nested records preserve their original paths and review status. Duplicate raw paintings are excluded from Git. Original generated files remain untouched.
 
-The offline reviewer uses the shared restoration review engine and actual cast assets. Browser appearance is separate from native fit, interaction, animation and device evidence. The combined adaptive result layout, local reading surfaces and actions before decoration are development-verified within the linked evidence scope. Publication and canonical installation remain pending. Full release-candidate, actual VoiceOver, measured contrast and physical gameplay acceptance remain separate.
+The offline reviewer uses the shared restoration review engine and actual cast assets. Browser appearance is separate from native fit, interaction, animation and device evidence. The combined adaptive result layout, local reading surfaces and actions before decoration are development-verified within the linked evidence scope. Publication and canonical installation are verified. Full release-candidate, actual VoiceOver, measured contrast and physical gameplay acceptance remain separate.

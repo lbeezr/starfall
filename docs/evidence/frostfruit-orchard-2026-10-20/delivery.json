@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-20T14:22:45.625583+00:00",
+  "status": "Installed and verified on original phone",
+  "pullRequest": "https://github.com/lbeezr/starfall/pull/187",
+  "mergeCommit": "3f560e225036793604cdfd10ecf3d62b64aa7465",
+  "publishedHead": "6a7bfe648b651b9460b358be426213afb78396f9",
+  "publishedTree": "850622eab3990cb85a16dbd8d8001ddf22d25948",
+  "verifiedLocalTreeCommit": "f2df2b7041989d67b3a8c1cef2f15a3f4c5ad2ca",
+  "testedNativeSource": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+  "runtimeFingerprint": "dev.bd94e46b80",
+  "treeEquivalence": "Fetched published head and merged main trees exactly match the clean local publication tree; runtime/build inputs match tested combined source.",
+  "command": "python3 scripts/device-update.py run",
+  "canonicalUpdater": true,
+  "installedIdentityVerified": true,
+  "sourceExport": "Clean git archive of current main by the canonical updater",
+  "installed": {
+    "buildID": "dev.bd94e46b80",
+    "source": "3f560e225036793604cdfd10ecf3d62b64aa7465",
+    "bundle": "com.starfall.prototype",
+    "bundleVersion": "1",
+    "validation": {
+      "coreTests": "passed",
+      "signature": "verified",
+      "mainCIAtInstall": "pending"
+    }
+  },
+  "validation": {
+    "coreTests": "passed",
+    "coreCount": 185,
+    "coreFailures": 0,
+    "signature": "verified",
+    "mainCIAtInstall": "pending",
+    "phoneBuild": "passed",
+    "actualInstallationIdentity": "verified by OS inventory against installation result",
+    "playerDataReset": false,
+    "automaticLaunch": false
+  },
+  "limits": [
+    "Installation verification is not physical gameplay acceptance.",
+    "Actual VoiceOver, measured contrast and full RC remain unverified."
+  ],
+  "cloudRun": "https://github.com/lbeezr/starfall/actions/runs/39438210244"
+}
