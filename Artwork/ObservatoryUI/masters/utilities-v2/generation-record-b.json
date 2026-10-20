@@ -1,0 +1,469 @@
+{
+  "schema_version": 1,
+  "batch": "utilities-v2-b",
+  "date": "2026-10-20",
+  "mode": "built-in image generation; one separate generation call per asset",
+  "preservation": "Selected generated PNGs are copied byte-for-byte; no slicing, masking, recoloring, resizing, alpha modification or vector substitution.",
+  "references": [
+    {
+      "path": "/Users/lbeezr/.codex/generated_images/01a1563a-d0f0-7a12-9846-c5670b9fafa8/call_69337919f1d242068d5e56802f884f0c.png",
+      "role": "Visually inspected material study; prompt-described reference, not passed as image input.",
+      "sha256": "13e312f3c22233de7d6d5f3aff0bcf2382df83fdbaee1e654b371bc8862c6f46"
+    },
+    {
+      "path": "Artwork/ObservatoryUI/masters/illustrations/emblem-story.png",
+      "role": "Visually inspected material and lighting reference; prompt-described reference, not passed as image input.",
+      "sha256": "eb5191b091feca2836fb045b64a30a53de37d82fcf5e0655f8292dd31c3add0e"
+    }
+  ],
+  "entries": [
+    {
+      "name": "play",
+      "prompt": "Use case: stylized-concept. Asset type: production game UI utility icon for Starfall, isolated transparent PNG. Create ONE centered PLAY symbol: a bold right-pointing triangular arrow with subtly rounded corners, broad luminous ivory pearl-enamel front face and a restrained warm antique-brass beveled rim, a thin deep midnight-navy recessed edge giving crafted depth. Premium hand-painted 3D observatory instrument material; polished but not plastic, matching a jewel-like navy-and-brass lantern game emblem. Readable immediately at 24\u201332 display pixels. Face directly toward camera, orthographic, no perspective lean. Soft top-left light, small restrained specular highlights only on the object. The triangle fills about 75 percent of a square canvas with generous transparent margin on every side; center by visible mass. Actual transparency everywhere outside the icon. No circle, button tile, bezel or backing plate around it. No scene, floor, shadow beyond the silhouette, outer glow, sparkle, stars, text, letters, numerals, logo or watermark. One icon only; not a sheet or mockup.",
+      "tool": "image_gen.imagegen",
+      "transparent_background": true,
+      "source_path": "/Users/lbeezr/.codex/generated_images/01a15946-669e-73d2-a09b-fe0999b271e4/exec-9aa0ac98-5523-481f-8e16-decafb3c4f3d.png",
+      "destination_path": "Artwork/ObservatoryUI/masters/utilities-v2/play.png",
+      "visual_review": {
+        "inspected": true,
+        "silhouette": "One right-pointing triangle",
+        "ambiguities": [],
+        "notes": "Pearl front faces, warm brass bevel, navy recessed accents, transparent margins. No external button tile or surrounding glow."
+      },
+      "source_sha256": "201d99bf8bbeb6373e58a66c89e4267296c25674bdea2ccb222d7d9948ca2883",
+      "destination_sha256": "201d99bf8bbeb6373e58a66c89e4267296c25674bdea2ccb222d7d9948ca2883",
+      "png": {
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "bytes": 1040400,
+        "alpha_extrema": [
+          0,
+          255
+        ],
+        "alpha_bounds": [
+          0,
+          25,
+          1240,
+          1214
+        ],
+        "transparent_pixels": 1012646,
+        "alpha_threshold_bounds": {
+          "1": [
+            0,
+            25,
+            1240,
+            1214
+          ],
+          "8": [
+            184,
+            135,
+            1081,
+            1132
+          ],
+          "16": [
+            184,
+            135,
+            1081,
+            1132
+          ],
+          "64": [
+            185,
+            136,
+            1080,
+            1132
+          ],
+          "128": [
+            185,
+            136,
+            1080,
+            1131
+          ],
+          "255": [
+            193,
+            146,
+            1040,
+            1130
+          ]
+        },
+        "low_alpha_pixels_1_to_7": 10103
+      }
+    },
+    {
+      "name": "next",
+      "prompt": "Use case: stylized-concept. Asset type: production game UI utility icon for Starfall, isolated transparent PNG. Create ONE centered NEXT symbol: a single bold right-pointing chevron, like a wide > shape, with two thick straight arms, softly rounded end corners, and a clearly open left side. Broad luminous ivory pearl-enamel front face; restrained warm antique-brass beveled rim; thin deep midnight-navy recessed edge giving crafted depth. Premium hand-painted 3D observatory instrument material; polished but not plastic, matching a jewel-like navy-and-brass lantern game emblem. Readable immediately at 24\u201332 display pixels. Face directly toward camera, orthographic, no perspective lean. Soft top-left light, small restrained specular highlights only on the object. The chevron fills about 75 percent of a square canvas with generous transparent margin on every side; center by visible mass. Actual transparency everywhere outside and inside the open side of the icon. No full triangular play symbol, no stem, no second chevron. No circle, button tile, bezel or backing plate around it. No scene, floor, shadow beyond the silhouette, outer glow, sparkle, stars, text, letters, numerals, logo or watermark. One icon only; not a sheet or mockup.",
+      "tool": "image_gen.imagegen",
+      "transparent_background": true,
+      "source_path": "/Users/lbeezr/.codex/generated_images/01a15946-669e-73d2-a09b-fe0999b271e4/exec-a41f41b3-8f76-4ebd-a794-d74bd8493b94.png",
+      "destination_path": "Artwork/ObservatoryUI/masters/utilities-v2/next.png",
+      "visual_review": {
+        "inspected": true,
+        "silhouette": "One right-pointing open chevron",
+        "ambiguities": [],
+        "notes": "Pearl front faces, warm brass bevel, navy recessed accents, transparent margins. No external button tile or surrounding glow."
+      },
+      "source_sha256": "e46d6feec2f284b49ee75f74225e3b2a54023542632e7c873e1fe43ae69e8f2a",
+      "destination_sha256": "e46d6feec2f284b49ee75f74225e3b2a54023542632e7c873e1fe43ae69e8f2a",
+      "png": {
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "bytes": 663056,
+        "alpha_extrema": [
+          0,
+          255
+        ],
+        "alpha_bounds": [
+          39,
+          19,
+          1200,
+          1206
+        ],
+        "transparent_pixels": 1291213,
+        "alpha_threshold_bounds": {
+          "1": [
+            39,
+            19,
+            1200,
+            1206
+          ],
+          "8": [
+            319,
+            144,
+            956,
+            1118
+          ],
+          "16": [
+            319,
+            144,
+            956,
+            1118
+          ],
+          "64": [
+            319,
+            144,
+            956,
+            1117
+          ],
+          "128": [
+            320,
+            145,
+            955,
+            1117
+          ],
+          "255": [
+            320,
+            145,
+            954,
+            1116
+          ]
+        },
+        "low_alpha_pixels_1_to_7": 5532
+      }
+    },
+    {
+      "name": "replay",
+      "prompt": "Use case: stylized-concept. Asset type: production game UI utility icon for Starfall, isolated transparent PNG. Create ONE centered REPLAY symbol: a thick circular arrow curling COUNTERCLOCKWISE, with a broad unambiguous arrowhead near the upper-left pointing down-left along the circular path, a clean open gap before that arrowhead, and a large transparent circular center. Broad luminous ivory pearl-enamel front face; restrained warm antique-brass beveled rim; thin deep midnight-navy recessed edge giving crafted depth. Premium hand-painted 3D observatory instrument material; polished but not plastic, matching a jewel-like navy-and-brass lantern game emblem. Readable immediately at 24\u201332 display pixels. Face directly toward camera, orthographic, no perspective lean. Soft top-left light, small restrained specular highlights only on the object. The arrow fills about 75 percent of a square canvas with generous transparent margin on every side; center by visible mass. Actual transparency everywhere outside the arrow and in its large central hole. The entire ring is the arrow itself, with no separate circle around it. No button tile, bezel or backing plate. No clock hands, scene, floor, shadow beyond the silhouette, outer glow, sparkle, stars, text, letters, numerals, logo or watermark. One icon only; not a sheet or mockup.",
+      "tool": "image_gen.imagegen",
+      "transparent_background": true,
+      "source_path": "/Users/lbeezr/.codex/generated_images/01a15946-669e-73d2-a09b-fe0999b271e4/exec-0c18d0e6-4938-4a82-a4e1-be8a771b923d.png",
+      "destination_path": "Artwork/ObservatoryUI/masters/utilities-v2/replay.png",
+      "visual_review": {
+        "inspected": true,
+        "silhouette": "One counterclockwise circular arrow with transparent center",
+        "ambiguities": [],
+        "notes": "Pearl front faces, warm brass bevel, navy recessed accents, transparent margins. No external button tile or surrounding glow."
+      },
+      "source_sha256": "06f2e3b4ee6bd4c7418cd0e2dc1113fc14d0bdd8eb87061de5bc0044c776c49a",
+      "destination_sha256": "06f2e3b4ee6bd4c7418cd0e2dc1113fc14d0bdd8eb87061de5bc0044c776c49a",
+      "png": {
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "bytes": 1201161,
+        "alpha_extrema": [
+          0,
+          255
+        ],
+        "alpha_bounds": [
+          0,
+          69,
+          1190,
+          1131
+        ],
+        "transparent_pixels": 987342,
+        "alpha_threshold_bounds": {
+          "1": [
+            0,
+            69,
+            1190,
+            1131
+          ],
+          "8": [
+            129,
+            118,
+            1143,
+            1124
+          ],
+          "16": [
+            129,
+            118,
+            1143,
+            1124
+          ],
+          "64": [
+            130,
+            119,
+            1142,
+            1124
+          ],
+          "128": [
+            130,
+            119,
+            1142,
+            1123
+          ],
+          "255": [
+            131,
+            120,
+            1141,
+            1122
+          ]
+        },
+        "low_alpha_pixels_1_to_7": 14997
+      }
+    },
+    {
+      "name": "home",
+      "prompt": "Use case: stylized-concept. Asset type: production game UI utility icon for Starfall, isolated transparent PNG. Create ONE centered HOME symbol: a tiny observatory building reduced to an unmistakable bold house silhouette with a rounded observatory dome roof, a single short telescope slit in the dome, a square base with one arched navy doorway, no windows or extra objects. Broad luminous ivory pearl-enamel building walls, smooth deep midnight-navy dome with a restrained warm antique-brass roof rim and slender central brass seam, brass beveled outside edges. Premium hand-painted 3D observatory instrument material; polished but not plastic, matching a jewel-like navy-and-brass lantern game emblem. Rich crafted material but very simple broad shapes, readable immediately at 24\u201332 display pixels. Face directly toward camera, orthographic, no perspective lean; avoid realistic architectural detailing. Soft top-left light, small restrained specular highlights only on the object. The house fills about 75 percent of a square canvas with generous transparent margin on every side; center by visible mass. Actual transparency everywhere outside the building. No circle, button tile, bezel or backing plate around it. No platform, steps, chimney, grass, terrain, scene, floor, cast shadow, outer glow, sparkle, stars, text, letters, numerals, logo or watermark. One icon only; not a sheet or mockup.",
+      "tool": "image_gen.imagegen",
+      "transparent_background": true,
+      "source_path": "/Users/lbeezr/.codex/generated_images/01a15946-669e-73d2-a09b-fe0999b271e4/exec-f990750b-2e10-4e45-a8a8-27e1ee3dc641.png",
+      "destination_path": "Artwork/ObservatoryUI/masters/utilities-v2/home.png",
+      "visual_review": {
+        "inspected": true,
+        "silhouette": "Front-facing domed observatory house with an arched door",
+        "ambiguities": [],
+        "notes": "Pearl front faces, warm brass bevel, navy recessed accents, transparent margins. No external button tile or surrounding glow."
+      },
+      "source_sha256": "86efa394ef0b3e6454cb1993cf58f3ce1e84ad53e0442e9f902bf3b227407202",
+      "destination_sha256": "86efa394ef0b3e6454cb1993cf58f3ce1e84ad53e0442e9f902bf3b227407202",
+      "png": {
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "bytes": 1239657,
+        "alpha_extrema": [
+          0,
+          255
+        ],
+        "alpha_bounds": [
+          0,
+          0,
+          1236,
+          1254
+        ],
+        "transparent_pixels": 884829,
+        "alpha_threshold_bounds": {
+          "1": [
+            0,
+            0,
+            1236,
+            1254
+          ],
+          "8": [
+            196,
+            151,
+            1057,
+            1098
+          ],
+          "16": [
+            197,
+            151,
+            1057,
+            1098
+          ],
+          "64": [
+            198,
+            152,
+            1056,
+            1097
+          ],
+          "128": [
+            198,
+            152,
+            1056,
+            1096
+          ],
+          "255": [
+            212,
+            155,
+            1051,
+            1094
+          ]
+        },
+        "low_alpha_pixels_1_to_7": 14433
+      }
+    },
+    {
+      "name": "calm",
+      "prompt": "Use case: stylized-concept. Asset type: production game UI utility icon for Starfall, isolated transparent PNG. Create ONE centered CALM EFFECTS symbol: a single bold crescent moon, opening to the right, with gently tapering but not needle-thin upper and lower horns. Broad luminous ivory pearl-enamel front face; restrained warm antique-brass beveled outer and inner rim; thin deep midnight-navy recessed edge giving crafted depth. The silhouette must read as a quiet simple crescent immediately at 24\u201332 display pixels, with no human face and no surface ornaments. Premium hand-painted 3D observatory instrument material; polished but not plastic, matching a jewel-like navy-and-brass lantern game emblem. Face directly toward camera, orthographic, no perspective lean. Soft top-left light, small restrained specular highlights only on the object. The moon fills about 75 percent of a square canvas with generous transparent margin on every side; center by visible mass. Actual transparency everywhere outside the crescent and in the open bite of the moon. No circle, button tile, bezel or backing plate around it. No scene, floor, shadow beyond the silhouette, outer glow, sparkle, stars, cloud, text, letters, numerals, logo or watermark. One icon only; not a sheet or mockup.",
+      "tool": "image_gen.imagegen",
+      "transparent_background": true,
+      "source_path": "/Users/lbeezr/.codex/generated_images/01a15946-669e-73d2-a09b-fe0999b271e4/exec-f61db156-d701-433d-abdb-da729abfe938.png",
+      "destination_path": "Artwork/ObservatoryUI/masters/utilities-v2/calm.png",
+      "visual_review": {
+        "inspected": true,
+        "silhouette": "One crescent opening to the right",
+        "ambiguities": [],
+        "notes": "Pearl front faces, warm brass bevel, navy recessed accents, transparent margins. No external button tile or surrounding glow."
+      },
+      "source_sha256": "e69aa3c966621818a6a155ea01abc341c1ec7962d79d6bf47e04b55198faffbf",
+      "destination_sha256": "e69aa3c966621818a6a155ea01abc341c1ec7962d79d6bf47e04b55198faffbf",
+      "png": {
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "bytes": 986800,
+        "alpha_extrema": [
+          0,
+          255
+        ],
+        "alpha_bounds": [
+          0,
+          19,
+          1224,
+          1214
+        ],
+        "transparent_pixels": 1064894,
+        "alpha_threshold_bounds": {
+          "1": [
+            0,
+            19,
+            1224,
+            1214
+          ],
+          "8": [
+            158,
+            114,
+            1135,
+            1131
+          ],
+          "16": [
+            158,
+            115,
+            1134,
+            1131
+          ],
+          "64": [
+            158,
+            115,
+            1134,
+            1130
+          ],
+          "128": [
+            159,
+            116,
+            1133,
+            1130
+          ],
+          "255": [
+            161,
+            117,
+            1131,
+            1129
+          ]
+        },
+        "low_alpha_pixels_1_to_7": 11087
+      }
+    },
+    {
+      "name": "haptic",
+      "prompt": "Use case: stylized-concept. Asset type: production game UI utility icon for Starfall, isolated transparent PNG. Create ONE centered HAPTIC FEEDBACK symbol: a short upright pearl resonator crystal, a bold symmetrical faceted elongated hexagon with broad ivory pearl-enamel faces and restrained warm antique-brass beveled edges. One short gently curved vibration mark on each side, exactly TWO marks total, separate from the crystal with transparent gaps. The marks are thick ivory-pearl strokes with slim brass edges, symmetrically flanking the middle of the crystal; they do not form a circle or frame. A subtle deep midnight-navy recessed side facet gives crafted depth. Keep the central crystal and its two short vibration marks balanced as one clearly readable icon at 24\u201332 display pixels. Premium hand-painted 3D observatory instrument material; polished but not plastic, matching a jewel-like navy-and-brass lantern game emblem. Face directly toward camera, orthographic, no perspective lean. Soft top-left light, small restrained specular highlights only on the object. The entire icon including its two marks fills about 75 percent of a square canvas with generous transparent margin on every side. Actual transparency everywhere around the crystal and marks. No phone, bell, human hand, circle, button tile, bezel or backing plate. No scene, floor, shadow beyond the silhouettes, outer glow, sparkle, extra stars, text, letters, numerals, logo or watermark. One icon only; not a sheet or mockup.",
+      "tool": "image_gen.imagegen",
+      "transparent_background": true,
+      "source_path": "/Users/lbeezr/.codex/generated_images/01a15946-669e-73d2-a09b-fe0999b271e4/exec-09574134-90b9-4f3e-9a33-694fcb714db3.png",
+      "destination_path": "Artwork/ObservatoryUI/masters/utilities-v2/haptic.png",
+      "visual_review": {
+        "inspected": true,
+        "silhouette": "One pearl resonator crystal with exactly two separated vibration marks",
+        "ambiguities": [
+          "Bespoke haptic metaphor requires its native text label; it is not a universally standardized symbol."
+        ],
+        "notes": "Pearl front faces, warm brass bevel, navy recessed accents, transparent margins. No external button tile or surrounding glow."
+      },
+      "source_sha256": "d893ef816a223039d543c20cf0353d0db1362dcbc38a0aa2db81c1609b377872",
+      "destination_sha256": "d893ef816a223039d543c20cf0353d0db1362dcbc38a0aa2db81c1609b377872",
+      "png": {
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "bytes": 965767,
+        "alpha_extrema": [
+          0,
+          255
+        ],
+        "alpha_bounds": [
+          91,
+          27,
+          1240,
+          1230
+        ],
+        "transparent_pixels": 1123610,
+        "alpha_threshold_bounds": {
+          "1": [
+            91,
+            27,
+            1240,
+            1230
+          ],
+          "8": [
+            170,
+            123,
+            1084,
+            1124
+          ],
+          "16": [
+            171,
+            123,
+            1084,
+            1124
+          ],
+          "64": [
+            171,
+            124,
+            1083,
+            1124
+          ],
+          "128": [
+            172,
+            124,
+            1082,
+            1123
+          ],
+          "255": [
+            177,
+            125,
+            1082,
+            1122
+          ]
+        },
+        "low_alpha_pixels_1_to_7": 10960
+      }
+    }
+  ],
+  "technical_review": "Every selected output is RGBA with alpha extrema 0 and 255. Low-alpha residue (values 1\u20137) extends beyond the visible silhouettes; threshold-8 bounds are recorded for visual normalization. Masters remain byte-identical to generated originals.",
+  "validation_environment": "Bundled workspace Python with Pillow; system python3 lacked Pillow, so its inspection attempt stopped before copying or modifying any PNG."
+}

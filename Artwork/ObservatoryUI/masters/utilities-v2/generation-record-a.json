@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "generator": "Built-in ImageGen",
+  "assets": [
+    {
+      "key": "settings",
+      "prompt": "Use case: stylized-concept. Production UI icon for Starfall. Reference image is STYLE ONLY: match the study's SETTINGS icon, a compact six-tooth warm brass gear with a deep midnight-blue enamel center. Generate ONE isolated icon only, front-facing shallow 3D, elegant painterly game asset with crisp silhouette, subtle top-left warm specular highlight and navy recesses. Bold simple teeth, rich solid surfaces, extremely restrained texture that remains clear at 24 points. Center the whole gear in a square canvas, fill about 75% of the canvas with generous transparent margins, no cropping. Actual transparent background. No text, label, grid, tile, enclosing bezel, extra stars, particles, external shadow/cloud or halo. Do not reproduce the presentation board. Produce the standalone settings gear, coherent with the beautiful reference's brass and enamel.",
+      "source": "/Users/lbeezr/.codex/generated_images/01a1563a-d0f0-7a12-9846-c5670b9fafa8/exec-192b7c19-40bb-4286-ab30-2c055fcea9e4.png",
+      "master": "settings.png",
+      "sourceSHA256": "c62c1ef82c16cab9c541933e77ca4f158f7037498d3833f283de29c3e3b2f6bc"
+    },
+    {
+      "key": "pause",
+      "prompt": "Use case: stylized-concept. Production utility icon for Starfall. The attached board is STYLE REFERENCE ONLY. Generate ONE isolated icon: TWO separate solid vertical parallel pause bars. Warm pearl-enamel faces, shallow brass bevels. The negative gap is at least one bar-width. Both bars exactly equal height, square-rounded ends, no connection. Front-facing shallow 3D hand-painted game asset, restrained rich material, top-left warm light, subtle navy side shadows. Match the reference family. Center the complete icon on a square canvas, fill about75% with generous transparent margins. Actual transparent background. Design for24point display: simple bold silhouette, very little texture. No words, labels, grid, tile, enclosing bezel, extra stars, particles, halo or background. Do not recreate the board.",
+      "source": "/Users/lbeezr/.codex/generated_images/01a1563a-d0f0-7a12-9846-c5670b9fafa8/exec-5b928414-0df5-4b6b-8652-a7e0d3e31c46.png",
+      "master": "pause.png",
+      "sourceSHA256": "ba8897aed2bd649cb89a2aeb9a429e6619ebd9994ddd76c9d06541122141c308"
+    },
+    {
+      "key": "back",
+      "prompt": "Use case: stylized-concept. Production utility icon for Starfall. The attached board is STYLE REFERENCE ONLY. Generate ONE isolated icon: ONE bold left-pointing chevron. Warm pearl-enamel face, shallow brass bevel; clearly open V shape facing left, even-weight limbs, square-rounded ends. No arrow shaft, no circle. Front-facing shallow 3D hand-painted game asset, restrained rich material, top-left warm light, subtle navy side shadows. Match the reference family. Center the complete icon on a square canvas, fill about75% with generous transparent margins. Actual transparent background. Design for24point display: simple bold silhouette, very little texture. No words, labels, grid, tile, enclosing bezel, extra stars, particles, halo or background. Do not recreate the board.",
+      "source": "/Users/lbeezr/.codex/generated_images/01a1563a-d0f0-7a12-9846-c5670b9fafa8/exec-b232fe98-ed01-4118-b050-d5dbd1d545b3.png",
+      "master": "back.png",
+      "sourceSHA256": "73ce6122139654b941e7f83240d6f264819b029d84d0565d4fe11058726044ca"
+    },
+    {
+      "key": "sound",
+      "prompt": "Use case: stylized-concept. Production utility icon for Starfall. The attached board is STYLE REFERENCE ONLY. Generate ONE isolated icon: ONE compact speaker/horn icon with TWO clearly separated sound-wave arcs. Warm brass horn rim, deep midnight-blue enamel body, pearl-enamel sound arcs with fine brass edges. Simple readable sound silhouette, horn opening faces right. Front-facing shallow 3D hand-painted game asset, restrained rich material, top-left warm light, subtle navy recessed side shadows. Match reference family. Center complete icon in a square canvas, fill about75% with generous transparent margins. Actual transparent background. Design for24point display: bold clear silhouette, restrained texture. No text labels, grid, tile, enclosing bezel/circle, extra stars, particles, halo or background. Do not recreate the board.",
+      "source": "/Users/lbeezr/.codex/generated_images/01a1563a-d0f0-7a12-9846-c5670b9fafa8/exec-5e79ebf8-170d-4dbf-a430-46ca9169a075.png",
+      "master": "sound.png",
+      "sourceSHA256": "c44c698fc572e7e2118badaf5354562a68235feda6829c870301628766302883"
+    },
+    {
+      "key": "help",
+      "prompt": "Use case: stylized-concept. Production utility icon for Starfall. The attached board is STYLE REFERENCE ONLY. Generate ONE isolated icon: ONE bold question mark with a separate round dot, generous open counter. Warm pearl-enamel face, shallow brass beveled edge, readable punctuation shape. Front facing, only the question mark and its dot. Front-facing shallow 3D hand-painted game asset, restrained rich material, top-left warm light, subtle navy recessed side shadows. Match reference family. Center complete icon in a square canvas, fill about75% with generous transparent margins. Actual transparent background. Design for24point display: bold clear silhouette, restrained texture. No text labels, grid, tile, enclosing bezel/circle, extra stars, particles, halo or background. Do not recreate the board.",
+      "source": "/Users/lbeezr/.codex/generated_images/01a1563a-d0f0-7a12-9846-c5670b9fafa8/exec-cf79d903-0ade-48b5-8402-2b459bb02e52.png",
+      "master": "help.png",
+      "sourceSHA256": "8a67df4c22bdabaa564df77e573ac450841550eda93f2fcdc8675e11d1d0a5dd"
+    },
+    {
+      "key": "close",
+      "prompt": "Use case: stylized-concept. Production utility icon for Starfall. The attached board is STYLE REFERENCE ONLY. Generate ONE isolated icon: ONE bold balanced X, two crossing diagonal strokes of equal weight. Warm pearl-enamel face, shallow brass beveled edge, softly squared ends. Simple clean symmetrical silhouette. Front-facing shallow 3D hand-painted game asset, restrained rich material, top-left warm light, subtle navy recessed side shadows. Match reference family. Center complete icon in a square canvas, fill about75% with generous transparent margins. Actual transparent background. Design for24point display: bold clear silhouette, restrained texture. No text labels, grid, tile, enclosing bezel/circle, extra stars, particles, halo or background. Do not recreate the board.",
+      "source": "/Users/lbeezr/.codex/generated_images/01a1563a-d0f0-7a12-9846-c5670b9fafa8/exec-605b258a-a8c9-4ebb-86c8-014e6fdb1bbb.png",
+      "master": "close.png",
+      "sourceSHA256": "ee94fa0492c680ef84504f726f912d91275fb5d112a8c82f3f914ab3dff62873"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// Authored utility vectors. Controls own their names, values and hit regions;
+/// Rendered utility artwork. Controls own their names, values and hit regions;
 /// these images never become an extra accessibility element.
 enum ObservatoryGlyph: String, CaseIterable {
     case story, freePlay = "freeplay", tutorial, settings, back, next, play, pause
@@ -36,6 +36,7 @@ enum ObservatoryGlyph: String, CaseIterable {
 }
 
 struct ObservatoryIcon: View {
+    @Environment(\.isEnabled) private var enabled
     private let glyph: ObservatoryGlyph?
     private let systemName: String?
     let size: CGFloat
@@ -58,12 +59,14 @@ struct ObservatoryIcon: View {
         Group {
             if let glyph {
                 Image(decorative: glyph.assetName)
-                    .renderingMode(.template).resizable().scaledToFit()
+                    .renderingMode(.original).resizable().scaledToFit()
             } else if let systemName {
                 Image(systemName: systemName).resizable().scaledToFit()
             }
         }
         .frame(width: size, height: size)
+        .saturation(enabled ? 1 : 0.25)
+        .opacity(enabled ? 1 : 0.5)
         .accessibilityHidden(true)
         .allowsHitTesting(false)
     }
@@ -233,6 +236,38 @@ private struct ObservatoryReadingPanel: ViewModifier {
         content.padding(max(32, inset))
             .frame(minWidth: 80, minHeight: 80)
             .background { ObservatorySurface() }
+    }
+}
+
+/// The same authored enamel and fittings at half scale. Compact controls keep
+/// shallow edges; their content padding and native hit region remain independent.
+struct ObservatoryCompactSurface: View {
+    var pressed = false
+    var enabled = true
+    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
+    @Environment(\.colorSchemeContrast) private var contrast
+
+    var body: some View {
+        GeometryReader { geometry in
+            ZStack(alignment: .topLeading) {
+                if reduceTransparency || contrast == .increased {
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(StarfallTheme.Colors.surface).padding(3)
+                }
+                Image(decorative: ObservatorySkin.reading.assetName)
+                    .resizable(capInsets: ObservatorySkin.reading.capInsets, resizingMode: .stretch)
+                    .frame(width: geometry.size.width * 2, height: geometry.size.height * 2)
+                    .scaleEffect(0.5, anchor: .topLeading)
+                    .frame(width: geometry.size.width, height: geometry.size.height, alignment: .topLeading)
+                    .saturation(enabled ? 1 : 0.15)
+                    .brightness(enabled ? (pressed ? -0.12 : 0) : -0.10)
+                if contrast == .increased {
+                    RoundedRectangle(cornerRadius: 12)
+                        .strokeBorder(StarfallTheme.Colors.outline, lineWidth: 1.5).padding(3)
+                }
+            }
+        }
+        .allowsHitTesting(false).accessibilityHidden(true)
     }
 }
 

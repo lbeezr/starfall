@@ -186,18 +186,36 @@ final class StarlightCelebrationTests: XCTestCase {
                 clock: ManualRainClock())
             let window = UIWindow(windowScene: scene)
             window.frame = CGRect(x: 0, y: 0, width: 390, height: 844)
+            var observedAwardRegion: CGRect?
             let host = UIHostingController(rootView: FallingSkyView(store: store,
                 flow: SkyFlowState(arguments: ["--starfalls-reset", "--technique-review"]))
-                .environment(\.scenePhase, .active))
+                .environment(\.scenePhase, .active)
+                .overlayPreferenceValue(StarlightAnchors.self) { anchors in
+                    GeometryReader { geometry in
+                        if let board = anchors[.board], let header = anchors[.header] {
+                            let origin = geometry.frame(in: .global).origin
+                            let region = StarlightCelebrationOverlay.awardRegion(
+                                board: geometry[board], header: geometry[header], accessible: false)
+                                .offsetBy(dx: origin.x, dy: origin.y)
+                            Color.clear
+                                .onAppear { observedAwardRegion = region }
+                                .onChange(of: region) { _, value in observedAwardRegion = value }
+                        }
+                    }.allowsHitTesting(false)
+                })
             window.rootViewController = host; window.makeKeyAndVisible()
             defer { window.isHidden = true; window.rootViewController = nil; store.setSuspended(true); previous?.makeKey() }
             let readyDeadline = ContinuousClock.now + .seconds(3)
-            while (!store.sceneReady || store.suspended) && ContinuousClock.now < readyDeadline {
+            while (!store.sceneReady || store.suspended || observedAwardRegion?.isEmpty != false)
+                    && ContinuousClock.now < readyDeadline {
                 try await Task.sleep(for: .milliseconds(20))
             }
             XCTAssertTrue(store.sceneReady); XCTAssertFalse(store.suspended)
+            let awardRegion = try XCTUnwrap(observedAwardRegion)
+            XCTAssertFalse(awardRegion.isEmpty)
+            XCTAssertTrue(window.bounds.contains(awardRegion))
             let initial = windowImage(window)
-            let baseline = try awardInk(in: initial)
+            let baseline = try awardInk(in: initial, region: awardRegion)
             for action in 0..<(example == .relay ? 2 : 1) {
                 let oldTotal = store.game.score
                 switch example {
@@ -224,7 +242,9 @@ final class StarlightCelebrationTests: XCTestCase {
                 repeat {
                     await Task.yield()
                     let image = windowImage(window)
-                    if !captured, try awardInk(in: image) > baseline + 100 {
+                    XCTAssertEqual(observedAwardRegion, awardRegion,
+                                   "Compare award ink in the same measured region as the baseline")
+                    if !captured, try awardInk(in: image, region: awardRegion) > baseline + 100 {
                         let attachment = XCTAttachment(image: image)
                         attachment.name = "game-award-\(example.rawValue)-\(action)"
                         attachment.lifetime = .keepAlways; add(attachment); captured = true
@@ -318,12 +338,9 @@ final class StarlightCelebrationTests: XCTestCase {
         }
     }
 
-    private func awardInk(in image: UIImage) throws -> Int {
+    private func awardInk(in image: UIImage, region: CGRect) throws -> Int {
         let cg = try XCTUnwrap(image.cgImage)
-        // Inspect the protected band between the actual HUD and the first row.
-        let mapping = LandingGeometry(size: image.size)
-        let region = StarlightCelebrationOverlay.awardRegion(board: CGRect(origin:.zero,size:image.size),
-                                                             header:mapping.crownFrame,accessible:false)
+        // Resolve the same live anchors as the award, in window capture coordinates.
         let crop = try XCTUnwrap(cg.cropping(to: region.applying(CGAffineTransform(scaleX:image.scale,y:image.scale))))
         var pixels = [UInt8](repeating: 0, count: crop.width * crop.height * 4)
         let context = try XCTUnwrap(CGContext(data: &pixels, width: crop.width, height: crop.height,

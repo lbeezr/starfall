@@ -4,18 +4,19 @@ import XCTest
 @testable import Starfall
 
 final class ObservatoryArtworkTests: XCTestCase {
-    @MainActor func testEveryAuthoredGlyphLoadsAsRegisteredTemplate() throws {
+    @MainActor func testEveryRenderedGlyphLoadsAsRegisteredOriginalArtwork() throws {
         XCTAssertEqual(ObservatoryGlyph.allCases.count, 20)
         for glyph in ObservatoryGlyph.allCases {
             let image = try XCTUnwrap(UIImage(named: glyph.assetName), glyph.assetName)
             XCTAssertEqual(image.size, CGSize(width: 24, height: 24), glyph.assetName)
-            XCTAssertEqual(image.renderingMode, .alwaysTemplate, glyph.assetName)
+            XCTAssertEqual(image.renderingMode, .alwaysOriginal, glyph.assetName)
             try assertTransparentFrameAndVisibleInk(image, name: glyph.assetName)
         }
     }
 
     @MainActor func testRasterDensitySelectionPreservesPointRegistration() throws {
-        let assets = ObservatoryMode.allCases.map { ($0.assetName, CGSize(width: 48, height: 48)) }
+        let assets = ObservatoryGlyph.allCases.map { ($0.assetName, CGSize(width: 24, height: 24)) }
+            + ObservatoryMode.allCases.map { ($0.assetName, CGSize(width: 48, height: 48)) }
             + ObservatorySkin.allCases.map { ($0.assetName, $0.pointSize) }
         for (name, size) in assets {
             for scale in [CGFloat(1), 2, 3] {

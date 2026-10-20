@@ -584,6 +584,95 @@ final class SkyTechniqueStoreTests: XCTestCase {
     }
 }
 
+final class SkyTutorialPresentationTests: XCTestCase {
+    @MainActor func testInstructionsUseTheBoardsTopDownCoordinatesForEveryMethod() {
+        XCTAssertEqual(SkyTutorial.Action.tap(Cell(0, 0)).instruction,
+                       "Tap the star at row 7, column 1.")
+        XCTAssertEqual(SkyTutorial.Action.tap(Cell(6, 6)).instruction,
+                       "Tap the star at row 1, column 7.")
+        XCTAssertEqual(SkyTutorial.Action.swap(Cell(1, 1), Cell(2, 1)).instruction,
+                       "Swipe up from row 6, column 2.")
+        XCTAssertEqual(SkyTutorial.Action.trace([Cell(0, 0), Cell(1, 1), Cell(6, 6)]).instruction,
+                       "Hold, then draw: 7,1 → 6,2 → 1,7. Release to collect.")
+        XCTAssertEqual(SkyCopy.boardPosition(Cell(0, 0)).row, 7)
+        XCTAssertEqual(SkyCopy.boardPosition(Cell(6, 6)).column, 7)
+    }
+
+    @MainActor func testLessonControlsAppearOnlyAtTheStepThatTeachesThem() {
+        for chapter in [SkyTutorial.match, .grown, .exchange, .trace, .square] {
+            let run = SkyTutorialRun(chapter)
+            XCTAssertFalse(run.showsPauseControl, chapter.rawValue)
+            XCTAssertFalse(run.showsShowerControl, chapter.rawValue)
+        }
+
+        var run = SkyTutorialRun(.showers), game = SkyTutorial.showers.game()
+        XCTAssertTrue(run.showsShowerControl)
+        XCTAssertFalse(run.showsPauseControl)
+        advance(.shower, run: &run, game: &game)
+        XCTAssertFalse(run.showsShowerControl)
+        XCTAssertTrue(run.showsPauseControl)
+        advance(.resume, run: &run, game: &game)
+        XCTAssertFalse(run.showsShowerControl)
+        XCTAssertFalse(run.showsPauseControl, "The automatic arrival is observed without exposing an unrelated manual action")
+        advance(.automaticShower, run: &run, game: &game)
+        XCTAssertFalse(run.showsShowerControl)
+        XCTAssertTrue(run.showsPauseControl)
+        advance(.pause, run: &run, game: &game)
+        XCTAssertTrue(run.showsShowerControl)
+        XCTAssertFalse(run.showsPauseControl)
+        advance(.shower, run: &run, game: &game)
+        XCTAssertTrue(run.complete)
+        XCTAssertFalse(run.showsShowerControl)
+        XCTAssertFalse(run.showsPauseControl)
+
+        var room = SkyTutorialRun(.room), roomGame = SkyTutorial.room.game()
+        XCTAssertFalse(room.showsShowerControl, "Room must be made before calling the test shower")
+        advance(.tap(Cell(0, 0)), run: &room, game: &roomGame)
+        XCTAssertTrue(room.showsShowerControl)
+        XCTAssertFalse(room.showsPauseControl)
+
+        var failed = SkyTutorialRun(.match)
+        let matchGame = SkyTutorial.match.game()
+        failed.observe(.resume, before: matchGame, after: matchGame)
+        XCTAssertTrue(failed.needsRetry)
+        XCTAssertFalse(failed.showsPauseControl)
+        XCTAssertFalse(failed.showsShowerControl)
+    }
+
+    @MainActor func testSquarePromisesItsTapAndStrictTraceLessonsKeepTheirMethod() throws {
+        XCTAssertEqual(SkyTutorial.square.detail,
+                       "Swap the Aqua star into an exact square, then tap one of its four stars to collect it.")
+        var square = SkyTutorialRun(.square), game = SkyTutorial.square.game()
+        advance(try XCTUnwrap(square.next), run: &square, game: &game)
+        let tap = try XCTUnwrap(square.next), before = game
+        var drawn = game
+        let recipe = try XCTUnwrap(drawn.recipes.first { $0.shape == .square })
+        let trace = SkyTutorial.Action.trace(SkyTutorial.walk(recipe))
+        _ = trace.perform(in: &drawn)
+        var tapped = game
+        _ = tap.perform(in: &tapped)
+        XCTAssertEqual(drawn, tapped, "The board result can match while the taught input method remains distinct")
+        var wrongSquare = square
+        wrongSquare.observe(trace, before: before, after: drawn)
+        XCTAssertTrue(wrongSquare.needsRetry)
+        advance(tap, run: &square, game: &game)
+        XCTAssertTrue(square.complete)
+
+        var traceLesson = SkyTutorialRun(.trace), traceGame = SkyTutorial.trace.game()
+        let prior = traceGame
+        _ = SkyTutorial.Action.tap(Cell(0, 0)).perform(in: &traceGame)
+        traceLesson.observe(.tap(Cell(0, 0)), before: prior, after: traceGame)
+        XCTAssertTrue(traceLesson.needsRetry)
+    }
+
+    private func advance(_ action: SkyTutorial.Action, run: inout SkyTutorialRun, game: inout FallingSky) {
+        let before = game
+        _ = action.perform(in: &game)
+        run.observe(action, before: before, after: game)
+        XCTAssertFalse(run.needsRetry)
+    }
+}
+
 extension SkyTechniqueStoreTests {
     @MainActor func testUpwardEmptyExchangeAnimatesEvenWhenGravityReturnsToOrigin() async throws {
         XCTAssertFalse(UIAccessibility.isReduceMotionEnabled)

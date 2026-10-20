@@ -46,6 +46,7 @@ struct SkyDialogueBubble<Actions: View>: View {
             if scrolling {
                 ScrollView { introduction }
                     .scrollBounceBehavior(.basedOnSize)
+                    .accessibilityIdentifier("sky.dialogue.reading")
             } else { introduction }
             actions.fixedSize(horizontal: false, vertical: true)
         }
@@ -53,7 +54,7 @@ struct SkyDialogueBubble<Actions: View>: View {
 
     private var introduction: some View {
             HStack(alignment: .top, spacing: StarfallTheme.Spacing.small) {
-                if !textSize.isAccessibilitySize && !compact {
+                if !textSize.isAccessibilitySize {
                     SkyDialoguePortrait(speaker: line.speaker, side: StarfallTheme.Landing.portraitSide, embedded: true)
                 }
                 VStack(alignment: .leading, spacing: StarfallTheme.Spacing.compact) {
@@ -86,8 +87,7 @@ struct SkyDialoguePortrait: View {
             .padding(StarfallTheme.Spacing.compact)
             .frame(width: side, height: side)
             .background {
-                if !embedded { Circle().fill(StarfallTheme.Dialogue.surface)
-                    .overlay(Circle().stroke(StarfallTheme.Dialogue.brass.opacity(0.45), lineWidth: 1)) }
+                if !embedded { ObservatorySurface(skin: .utility) }
             }
             .accessibilityHidden(true)
     }
@@ -106,54 +106,108 @@ struct SkyDialoguePortrait: View {
     var embeddedInk = StarfallTheme.Colors.textPrimary
     @ViewBuilder let actions: Actions
     @Environment(\.accessibilityVoiceOverEnabled) private var voiceOver
+    @State private var pausedMessageVisible = false
+    @State private var pausedMessageDismissed = false
+    @State private var controlsHeight = StarfallTheme.Layout.preferenceTarget
     private var scriptPresented: Bool { session.visible && session.scriptID != nil }
     private var line: SkyDialogueLine? { scriptPresented ? session.line : pausedLine ?? session.line }
-    private var expanded: Bool { pausedLine != nil || session.visible }
+    private var expanded: Bool {
+        session.visible || pausedMessageVisible || (voiceOver && pausedLine != nil && !pausedMessageDismissed)
+    }
     private var timerKey: String { "\(session.revision)-\(active)-\(pausedLine != nil)-\(voiceOver)" }
+    private var showsControls: Bool { pausedLine != nil && !externalControls }
+    private var messageHeight: CGFloat? {
+        maximumHeight.map { max(80, $0 - (showsControls ? controlsHeight + StarfallTheme.Spacing.small : 0)) }
+    }
 
     var body: some View {
-        Group {
+        VStack(alignment: .leading, spacing: StarfallTheme.Spacing.small) {
             if let line {
                 if expanded {
-                    SkyDialogueBubble(line: line, maximumHeight: maximumHeight, compact: compact, embedded: embedded, embeddedInk: embeddedInk) {
+                    SkyDialogueBubble(line: line, maximumHeight: messageHeight, compact: compact, embedded: embedded, embeddedInk: embeddedInk) {
                         if pausedLine != nil && !scriptPresented {
-                            if !externalControls { actions }
                             if session.scriptID != nil, let retained = session.line {
                                 Button(SkyCopy.text(.actionReadMessage, values: ["speaker": retained.speaker.name])) { session.reopen() }
                                     .buttonStyle(StarfallButtonStyle(role: .quiet))
                                     .accessibilityIdentifier("sky.dialogue.reopen")
                             }
+                            Button(SkyCopy.text(.actionClose), action: close)
+                                .buttonStyle(StarfallButtonStyle(role: .quiet))
+                                .accessibilityIdentifier("sky.dialogue.close")
                         }
                         else if !externalControls && (session.hasNext || line.seconds == nil || voiceOver) {
-                            HStack {
-                                if session.hasNext {
-                                    Button(SkyCopy.text(.actionNextLine), action: next)
-                                        .accessibilityIdentifier("sky.dialogue.next")
-                                }
-                                Spacer(minLength: 0)
-                                Button(SkyCopy.text(.actionClose)) { session.dismiss() }
-                                    .accessibilityIdentifier("sky.dialogue.close")
-                            }
-                            .buttonStyle(StarfallButtonStyle(role: .quiet))
+                            scriptControls
                         }
                     }
-                } else {
-                    Button { session.reopen() } label: {
-                        SkyDialoguePortrait(speaker: line.speaker, side: StarfallTheme.Layout.minimumTarget, embedded: true)
+                }
+                if !expanded || showsControls {
+                    ViewThatFits(in: .horizontal) {
+                        HStack(spacing: StarfallTheme.Spacing.small) {
+                            if !expanded { portraitButton(line) }
+                            if showsControls { actions }
+                        }
+                        .fixedSize(horizontal: true, vertical: false)
+                        VStack(alignment: .leading, spacing: StarfallTheme.Spacing.small) {
+                            if !expanded { portraitButton(line) }
+                            if showsControls { actions }
+                        }
                     }
-                        .buttonStyle(StarfallGameButtonStyle())
-                        .accessibilityLabel(SkyCopy.text(.actionReadMessage, values: ["speaker": line.speaker.name]))
-                        .accessibilityIdentifier("sky.dialogue.reopen")
+                    .frame(maxWidth: .infinity, alignment: showsControls ? .center : .leading)
+                    .onGeometryChange(for: CGFloat.self) { $0.size.height } action: { controlsHeight = $0 }
                 }
             }
         }
+        .onChange(of: pausedLine?.id) {
+            pausedMessageVisible = false
+            pausedMessageDismissed = false
+        }
         .task(id: timerKey) {
-            guard active, pausedLine == nil, !voiceOver, session.visible, !session.hasNext,
+            guard active, !voiceOver, session.visible, !session.hasNext,
                   let seconds = session.line?.seconds else { return }
             let ticket = session.revision
             do { try await Task.sleep(for: .seconds(seconds)) } catch { return }
             guard !Task.isCancelled else { return }
             session.expire(revision: ticket)
         }
+    }
+
+    private var scriptControls: some View {
+        ViewThatFits(in: .horizontal) {
+            HStack(spacing: StarfallTheme.Spacing.small) { scriptButtons }
+                .fixedSize(horizontal: true, vertical: false)
+            VStack(alignment: .leading, spacing: StarfallTheme.Spacing.compact) { scriptButtons }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .buttonStyle(StarfallButtonStyle(role: .quiet, expands: true))
+    }
+
+    @ViewBuilder private var scriptButtons: some View {
+        if session.hasNext {
+            Button(SkyCopy.text(.actionNextLine), action: next)
+                .accessibilityIdentifier("sky.dialogue.next")
+        }
+        Button(SkyCopy.text(.actionClose), action: close)
+            .accessibilityIdentifier("sky.dialogue.close")
+    }
+
+    private func portraitButton(_ line: SkyDialogueLine) -> some View {
+        Button(action: reopen) {
+            SkyDialoguePortrait(speaker: line.speaker, side: StarfallTheme.Layout.minimumTarget)
+        }
+        .buttonStyle(StarfallGameButtonStyle())
+        .accessibilityLabel(SkyCopy.text(.actionReadMessage, values: ["speaker": line.speaker.name]))
+        .accessibilityIdentifier("sky.dialogue.reopen")
+    }
+
+    private func reopen() {
+        pausedMessageDismissed = false
+        if session.line != nil { session.reopen() }
+        else { pausedMessageVisible = true }
+    }
+
+    private func close() {
+        pausedMessageVisible = false
+        pausedMessageDismissed = true
+        session.dismiss()
     }
 }

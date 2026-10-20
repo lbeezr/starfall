@@ -1,5 +1,7 @@
 # Starfall
 
+**Observatory parity refinement (October 20):** The [current pass](docs/evidence/observatory-ui-parity-2026-10-20/README.md) aligns HUD, settings, tutorial and results with the approved atlas and replaces flat utility glyphs with rendered artwork. The normal app now uses slimmer edge controls, one authored menu frame and bounded reading panes. The linked record separates selected native checks and inspected screenshots from physical-play and actual VoiceOver acceptance.
+
 <img src="App/Assets.xcassets/AppIcon.appiconset/Starfall-1024.png" width="96" alt="Starfall icon: Spark tumbling above lavender clouds">
 
 A small, offline iOS falling-sky puzzle. Clear matching stars as showers fill the board, or collect 18 starlight to restore a place. Open sky remains the default; progress stays on this device. Five restoration locations are playable through the world map; seven more remain in production planning.

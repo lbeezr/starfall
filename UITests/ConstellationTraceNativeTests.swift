@@ -13,6 +13,12 @@ final class ConstellationTraceNativeTests: XCTestCase {
     @MainActor private func score(_ value:Int,_ app:XCUIApplication) {
         XCTAssertTrue(XCTNSPredicateExpectation(predicate:NSPredicate(format:"label == %@","\(value) starlight"),object:app.staticTexts["experiment.score"]).wait(timeout:6))
     }
+    @MainActor private func openInitialGuide(_ app: XCUIApplication) {
+        let reopen = app.buttons["sky.dialogue.reopen"]
+        app.revealSkyControls([reopen])
+        reopen.tap()
+        XCTAssertTrue(app.staticTexts["experiment.message"].waitForExistence(timeout: 5))
+    }
     @MainActor private func drag(_ app:XCUIApplication,from:(Int,Int),to:(Int,Int)) {
         let before = app.otherElements["experiment.board"].value as? String
         XCTAssertNotNil(before)
@@ -114,6 +120,7 @@ extension ConstellationTraceNativeTests {
     }
     @MainActor func testStormWarningCountRecoveryAndMenuSuspension() {
         let app = launch("stormWarning"); defer { app.terminate() }
+        openInitialGuide(app)
         let phase = app.descendants(matching: .any).matching(identifier: "experiment.message").firstMatch
         XCTAssertTrue(phase.waitForExistence(timeout: 5))
         XCTAssertTrue(phase.label.contains("1 lighter shower"))
@@ -160,6 +167,7 @@ extension ConstellationTraceNativeTests {
     }
     @MainActor func testLargestTextPhaseReflowsAndCeremoniesHideTheCue() {
         let app = launch("stormWarning", large: true); defer { app.terminate() }
+        openInitialGuide(app)
         let phase = app.descendants(matching: .any).matching(identifier: "experiment.message").firstMatch
         XCTAssertTrue(phase.waitForExistence(timeout: 5))
         for _ in 0..<5 where !phase.isHittable || phase.frame.maxY > app.frame.maxY - 44 { app.swipeUp() }
@@ -269,6 +277,7 @@ extension ConstellationTraceNativeTests {
     @MainActor func testAutomaticStormCountsRecoverWithoutManualShowersOrClears() {
         let app = launch("stormWarning"); defer { app.terminate() }
         score(22, app)
+        openInitialGuide(app)
         let phase = app.staticTexts["experiment.message"]
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label CONTAINS %@", "1 lighter shower"), object: phase).wait(timeout: 5))
         app.buttons["experiment.pause"].tap()

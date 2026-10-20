@@ -35,16 +35,11 @@ struct SkyScoreInstrument: View {
 
     var body: some View {
         HStack(spacing: StarfallTheme.Spacing.small) {
-            ObservatoryIcon(.story, size: 20)
-                .foregroundStyle(StarfallTheme.Dialogue.brass)
-            VStack(alignment: .leading, spacing: StarfallTheme.Spacing.compact) {
-                if let restorationLabel {
-                    Text(restorationLabel)
-                        .font(StarfallTheme.Typography.skyCaption)
-                        .foregroundStyle(StarfallTheme.Colors.textSecondary)
-                        .fixedSize(horizontal: false, vertical: true)
-                        .accessibilityIdentifier(restorationIdentifier ?? "sky.restoration")
-                }
+            Image(uiImage: StarCast.image(for: .colored(.amber)))
+                .resizable().scaledToFit().frame(width: 24, height: 24)
+                .accessibilityLabel(restorationLabel ?? "")
+                .accessibilityIdentifier(restorationIdentifier ?? "sky.score.symbol")
+                .accessibilityHidden(restorationLabel == nil)
                 Text(target.map { "\(score.formatted()) / \($0.formatted())" } ?? score.formatted())
                     .font(StarfallTheme.Typography.gameTitle)
                     .monospacedDigit()
@@ -54,7 +49,6 @@ struct SkyScoreInstrument: View {
                     } ?? SkyCopy.text(.welcomeScore, values: ["score": String(score)]))
                     .accessibilityIdentifier("experiment.score")
                     .accessibilityHint(hint)
-            }
         }
         .foregroundStyle(StarfallTheme.Colors.textPrimary)
         .shadow(color: StarfallTheme.Colors.skyTop, radius: 2)
@@ -175,13 +169,13 @@ struct SkyShowerCountdown: Equatable {
                     }
                 }
                 drawForecast(in: &drawing, miniatures: miniatures, progress: progress,
-                             spacing: 16 / (end.x - start.x), diameter: 14) { fraction in
+                             spacing: 18 / (end.x - start.x), diameter: 16) { fraction in
                     CGPoint(x: start.x + (end.x - start.x) * fraction, y: start.y)
                 }
             }
             .frame(width: island ? StarfallTheme.IslandTimer.width : width,
                    height: island ? StarfallTheme.IslandTimer.height : 28)
-            .opacity(countdown.paused ? 0.55 : 1)
+            .opacity(countdown.paused ? 0.85 : 1)
             .accessibilityElement(children: .ignore)
             .accessibilityLabel(countdown.paused ? SkyCopy.text(.statusPaused) : countdown.arriving ? SkyCopy.text(.statusArriving) : countdown.remaining <= 1.25 ? SkyCopy.text(.statusApproaching) : SkyCopy.text(.statusFlowing))
             .accessibilityValue(forecast.map {

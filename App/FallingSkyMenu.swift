@@ -24,7 +24,8 @@ struct FallingSkyMenu: View {
 
     var body: some View {
         NavigationStack {
-            SkyMenuSurface {
+            SkyMenuSurface(title: SkyCopy.text(.menuTitle), glyph: .pause, done: done,
+                           footerTitle: SkyCopy.text(.actionReturn)) {
                 SkyMenuSection(challenge?.locationTitle ?? SkyCopy.text(.flowOpen)) {
                     if !over {
                         Button(action: pause) {
@@ -33,94 +34,117 @@ struct FallingSkyMenu: View {
                                 Text(paused ? (turns == 0 ? SkyCopy.text(.actionStart) : SkyCopy.text(.actionResume)) : SkyCopy.text(.actionPause))
                             }
                         }
-                        .buttonStyle(StarfallButtonStyle(role: .primary, expands: true))
+                        .buttonStyle(StarfallButtonStyle(role: .compact, expands: true))
+                        .frame(minHeight: StarfallTheme.Layout.preferenceTarget)
                         .accessibilityIdentifier("experiment.pause")
                     }
-                    Button { restart(true) } label: { SkyMenuRow(SkyCopy.text(.actionReplay), glyph: .replay) }
-                        .buttonStyle(StarfallButtonStyle(role: .quiet))
-                        .accessibilityIdentifier("experiment.replay")
-                    Button { restart(false) } label: { SkyMenuRow(SkyCopy.text(.actionNew), glyph: .freePlay) }
-                        .buttonStyle(StarfallButtonStyle(role: .quiet))
-                        .accessibilityIdentifier("experiment.new")
+                    if textSize.isAccessibilitySize {
+                        VStack(spacing: StarfallTheme.Spacing.small) { roundActions }
+                    } else {
+                        HStack(spacing: StarfallTheme.Spacing.small) { roundActions }
+                    }
                     Text(SkyCopy.text(.a11yBoardSummary, values: ["showers": String(turns), "groups": String(groups)]))
                         .font(StarfallTheme.Typography.supporting)
                         .foregroundStyle(StarfallTheme.Colors.textSecondary)
                         .fixedSize(horizontal: false, vertical: true)
                         .accessibilityIdentifier("experiment.roundSummary")
                 }
-                SkyFeelSection(sound: $sound, haptics: $haptics, calm: $calm)
-                SkyMenuSection(SkyCopy.text(.menuExplore)) {
+                SkyMenuRule()
+                VStack(spacing: StarfallTheme.Spacing.compact) {
+                    NavigationLink {
+                        SkyPreferencesPage(sound: $sound, haptics: $haptics, calm: $calm,
+                                           context: helpContext, done: done, back: true)
+                    } label: {
+                        SkyMenuRow(SkyCopy.text(.menuSettings), glyph: .settings, disclosure: true)
+                    }
+                    .accessibilityIdentifier("experiment.preferences")
                     if challenge == nil {
-                        NavigationLink { SkyMenuSurface { balanceControls }.navigationTitle(SkyCopy.text(.menuBalance)).toolbar { dismissal } }
-                            label: { SkyMenuRow(SkyCopy.text(.menuBalance), glyph: .settings, disclosure: true) }
-                            .buttonStyle(StarfallButtonStyle(role: .quiet))
-                            .accessibilityIdentifier("experiment.balance")
+                        NavigationLink {
+                            SkyMenuSurface(title: SkyCopy.text(.menuBalance), glyph: .freePlay, done: done, back: true) {
+                                balanceControls
+                            }
+                        } label: {
+                            SkyMenuRow(SkyCopy.text(.menuBalance), glyph: .freePlay, disclosure: true)
+                        }
+                        .accessibilityIdentifier("experiment.balance")
                     }
                     Button(action: worldMap) { SkyMenuRow(SkyCopy.text(.worldTitle), glyph: .story, disclosure: true) }
-                        .buttonStyle(StarfallButtonStyle(role: .quiet))
                         .accessibilityIdentifier("sky.worldMap")
                     Button(action: learn) { SkyMenuRow(SkyCopy.text(.practiceTitle), glyph: .tutorial, disclosure: true) }
-                        .buttonStyle(StarfallButtonStyle(role: .quiet))
                         .accessibilityIdentifier("sky.learn")
-                    NavigationLink { SkyHowToPlay(context: helpContext, done: done).toolbar { dismissal } } label: { SkyMenuRow(SkyCopy.text(.menuHelp), glyph: .help, disclosure: true) }
-                        .buttonStyle(StarfallButtonStyle(role: .quiet))
-                        .accessibilityIdentifier("experiment.help")
+                    NavigationLink { SkyHowToPlay(context: helpContext, done: done) } label: {
+                        SkyMenuRow(SkyCopy.text(.menuHelp), glyph: .help, disclosure: true)
+                    }
+                    .accessibilityIdentifier("experiment.help")
                     Button(action: observatory) { SkyMenuRow(SkyCopy.text(.actionHome), glyph: .home) }
-                        .buttonStyle(StarfallButtonStyle(role: .quiet))
                         .accessibilityIdentifier("sky.home")
                 }
+                .buttonStyle(StarfallButtonStyle(role: .quiet, expands: true))
                 #if DEBUG
-                SkyMenuSection("Development") {
-                    NavigationLink { SkyDialogueStudio().toolbar { dismissal } }
-                        label: { SkyMenuRow("Dialogue studio", glyph: .list, disclosure: true) }
-                        .buttonStyle(StarfallButtonStyle(role: .quiet))
-                        .accessibilityIdentifier("dialogue.studio.open")
+                SkyMenuRule()
+                NavigationLink {
+                    SkyMenuSurface(title: "Dialogue studio", glyph: .list, done: done, back: true, scrollsContent: false) {
+                        SkyDialogueStudio()
+                    }
+                } label: {
+                    SkyMenuRow("Dialogue studio", glyph: .list, disclosure: true)
                 }
+                .buttonStyle(StarfallButtonStyle(role: .quiet, expands: true))
+                .accessibilityIdentifier("dialogue.studio.open")
                 #endif
                 Text(Bundle.main.object(forInfoDictionaryKey: "StarfallBuildID") as? String ?? "dev.local")
-                    .font(.caption).foregroundStyle(StarfallTheme.Colors.textSecondary)
+                    .font(StarfallTheme.Typography.skyCaption).foregroundStyle(StarfallTheme.Colors.textSecondary)
                     .accessibilityIdentifier("starfall.buildID")
             }
-            .navigationTitle(SkyCopy.text(.menuTitle)).navigationBarTitleDisplayMode(.inline)
-            .toolbar { dismissal }
         }
-        .tint(StarfallTheme.Colors.actionPrimary)
-        .preferredColorScheme(.dark)
-        .presentationBackground(StarfallTheme.Colors.skyTop)
-        .presentationDetents(textSize.isAccessibilitySize ? [.large] : [.medium, .large])
-        .presentationContentInteraction(.scrolls)
-        .presentationDragIndicator(.visible)
+        .skyMenuPresentation()
     }
 
-    private var dismissal: some ToolbarContent { SkyMenuDone(done: done) }
+    @ViewBuilder private var roundActions: some View {
+        Button { restart(true) } label: {
+            Label { Text(SkyCopy.text(.actionReplay)) } icon: { ObservatoryIcon(.replay, size: 18) }
+        }
+        .buttonStyle(StarfallButtonStyle(role: .compact, expands: true))
+        .frame(minHeight: StarfallTheme.Layout.preferenceTarget)
+        .accessibilityIdentifier("experiment.replay")
+        Button { restart(false) } label: {
+            Label { Text(SkyCopy.text(.actionNew)) } icon: { ObservatoryIcon(.freePlay, size: 18) }
+        }
+        .buttonStyle(StarfallButtonStyle(role: .compact, expands: true))
+        .frame(minHeight: StarfallTheme.Layout.preferenceTarget)
+        .accessibilityIdentifier("experiment.new")
+    }
 
     private var balanceControls: some View {
-        SkyMenuSection(SkyCopy.text(.balanceTitle)) {
-            VStack(alignment: .leading, spacing: StarfallTheme.Spacing.small) {
-                Text(SkyCopy.text(.balancePaceDescription))
-                Picker(SkyCopy.text(.balancePace), selection: Binding(get: { balance.pace }, set: { setBalance(StarfallBalance(pace: $0, darkStars: balance.darkStars)) })) {
-                    ForEach(StarfallBalance.Pace.allCases, id: \.self) { pace in
-                        Text(pace.title).tag(pace)
-                    }
-                }
-                .pickerStyle(.menu).labelsHidden().accessibilityIdentifier("experiment.pace")
-            }
+        VStack(alignment: .leading, spacing: StarfallTheme.Spacing.large) {
+            SkyMenuChoiceGroup(title: SkyCopy.text(.balancePace), options: StarfallBalance.Pace.allCases,
+                               selection: Binding(get: { balance.pace }, set: { setBalance(StarfallBalance(pace: $0, darkStars: balance.darkStars)) }),
+                               identifier: "experiment.pace", optionTitle: { $0.title }, optionID: { $0.interfaceID },
+                               shortTitle: { $0.shortTitle })
+            Text(balance.pace.title)
+                .font(StarfallTheme.Typography.supporting)
+                .foregroundStyle(StarfallTheme.Colors.textPrimary)
+                .accessibilityIdentifier("experiment.pace.summary")
+            Text(SkyCopy.text(.balancePaceDescription))
+                .font(StarfallTheme.Typography.supporting)
+                .foregroundStyle(StarfallTheme.Colors.textSecondary)
             if !helpContext.pocketedDusk {
-                VStack(alignment: .leading, spacing: StarfallTheme.Spacing.small) {
-                    Text(SkyCopy.text(.balanceDark))
-                    Picker(SkyCopy.text(.balanceDark), selection: Binding(get: { balance.darkStars }, set: { setBalance(StarfallBalance(pace: balance.pace, darkStars: $0)) })) {
-                        ForEach(StarfallBalance.DarkStarFrequency.allCases, id: \.self) { frequency in
-                            Text(frequency.title).tag(frequency)
-                        }
-                    }
-                    .pickerStyle(.menu).labelsHidden().accessibilityIdentifier("experiment.darkFrequency")
-                }
+                SkyMenuRule()
+                SkyMenuChoiceGroup(title: SkyCopy.text(.balanceDark), options: StarfallBalance.DarkStarFrequency.allCases,
+                                   selection: Binding(get: { balance.darkStars }, set: { setBalance(StarfallBalance(pace: balance.pace, darkStars: $0)) }),
+                                   identifier: "experiment.darkFrequency", optionTitle: { $0.title }, optionID: { $0.rawValue })
                 Text(balance.darkStars.detail)
+                    .font(StarfallTheme.Typography.supporting)
+                    .foregroundStyle(StarfallTheme.Colors.textSecondary)
                     .accessibilityIdentifier("experiment.balanceDetail")
             }
+            SkyMenuRule()
             Text(SkyCopy.text(.balanceExplanation))
+                .font(StarfallTheme.Typography.supporting)
+                .fixedSize(horizontal: false, vertical: true)
             Button(SkyCopy.text(.balanceReset)) { setBalance(StarfallBalance()) }
-                .buttonStyle(StarfallButtonStyle(role: .quiet))
+                .buttonStyle(StarfallButtonStyle(role: .quiet, expands: true))
+                .frame(minHeight: StarfallTheme.Layout.preferenceTarget)
                 .disabled(balance == StarfallBalance())
                 .accessibilityIdentifier("experiment.resetBalance")
         }
@@ -130,6 +154,20 @@ struct FallingSkyMenu: View {
 }
 
 private extension StarfallBalance.Pace {
+    var shortTitle: String {
+        switch self {
+        case .gentle: SkyCopy.text(.balanceGentleShort)
+        case .steady: SkyCopy.text(.balanceSteadyShort)
+        case .brisk: SkyCopy.text(.balanceBriskShort)
+        }
+    }
+    var interfaceID: String {
+        switch self {
+        case .gentle: "gentle"
+        case .steady: "steady"
+        case .brisk: "brisk"
+        }
+    }
     var title: String {
         switch self {
         case .gentle: SkyCopy.text(.balanceGentle)

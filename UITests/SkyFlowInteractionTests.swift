@@ -278,7 +278,8 @@ final class SkyFlowInteractionTests: XCTestCase {
         let app = launch(); defer { app.terminate() }
         app.worldVisitControl("firstLight").tap()
         tap("sky.preferences", app); tap("experiment.help", app)
-        XCTAssertTrue(app.navigationBars["How to play"].waitForExistence(timeout: 5))
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "How to play"),
+            object: app.staticTexts["sky.menu.title"]).wait(timeout: 5))
         let objective = app.staticTexts.containing(NSPredicate(format: "label BEGINSWITH %@", "Restore Lantern Landing with 18 starlight.")).firstMatch
         for _ in 0..<10 where !objective.exists || !objective.isHittable { app.swipeUp() }
         XCTAssertTrue(objective.exists); XCTAssertTrue(objective.isHittable)
@@ -308,17 +309,25 @@ final class SkyFlowInteractionTests: XCTestCase {
         let selected = original == "1" ? "0" : "1"
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == %@", selected), object: sound).wait(timeout: 3))
         tap("experiment.help", app)
-        XCTAssertTrue(app.navigationBars["How to play"].waitForExistence(timeout: 5))
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "How to play"),
+            object: app.staticTexts["sky.menu.title"]).wait(timeout: 5))
         capture(app, "welcome-help-before-begin")
         tap("experiment.done", app)
         XCTAssertFalse(app.buttons["sky.resume"].exists)
         app.worldVisitControl("firstLight").tap(); tap("sky.begin", app); pause(app)
         tap("experiment.settings", app)
+        tap("experiment.preferences", app)
+        XCTAssertTrue(sound.waitForExistence(timeout: 5))
         XCTAssertEqual(sound.value as? String, selected)
         app.revealSkyControls([sound])
         XCTAssertTrue(sound.isEnabled)
         XCTAssertTrue(sound.isHittable)
+        XCTAssertGreaterThanOrEqual(sound.frame.width, 44)
+        XCTAssertGreaterThanOrEqual(sound.frame.height, 44)
+        capture(app, "game-preferences-shared-values")
         sound.tap() // Restore the review preference; normal defaults were never used.
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == %@", original ?? ""), object: sound).wait(timeout: 3))
+        tap("sky.menu.back", app)
         tap("sky.home", app)
         XCTAssertTrue(app.staticTexts["sky.subtitle"].waitForExistence(timeout: 5))
         XCTAssertTrue(app.staticTexts["sky.subtitle"].label.contains("First Light"))

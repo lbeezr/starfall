@@ -18,7 +18,8 @@ final class SkyLessonInteractionTests: XCTestCase {
         // A partly exposed lazy row can be hittable while its tap lands outside
         // the visible sheet. Bring the whole target into the viewport first.
         app.revealSkyControls([button])
-        XCTAssertTrue(button.isHittable); XCTAssertTrue(button.isEnabled)
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true AND hittable == true"),
+                                                object: button).wait(timeout: 5), id)
         // Accessibility frames subtract floating-point coordinates; preserve the 44-point requirement.
         if !id.hasPrefix("experiment.cell.") { XCTAssertGreaterThanOrEqual(button.frame.height,44 - 1e-9, id) }
         button.tap()
@@ -43,6 +44,10 @@ final class SkyLessonInteractionTests: XCTestCase {
             // Lesson content can register before its animated navigation toolbar
             // accepts input. Wait for that readiness without suppressing motion.
             XCTAssertTrue(app.staticTexts["tutorial.title"].waitForExistence(timeout: 5))
+            if lesson == "square" {
+                XCTAssertEqual(app.staticTexts["tutorial.detail"].label,
+                               "Swap the Aqua star into an exact square, then tap one of its four stars to collect it.")
+            }
             capture(lesson+"-before")
             for score in gains {
                 if lesson == "square", score == 0 { swapSquare(app) }
@@ -86,5 +91,113 @@ final class SkyLessonInteractionTests: XCTestCase {
         press(app,"experiment.settings"); press(app,"tutorial.done")
         XCTAssertTrue(app.buttons["experiment.settings"].waitForExistence(timeout:5))
         XCTAssertEqual(app.staticTexts["experiment.score"].label,"0 starlight")
+    }
+
+    @MainActor func testGuideCoordinatesAndDisclosureMatchTheVisibleBoard() {
+        let app = openHelp()
+        defer { app.terminate() }
+        press(app, "tutorial.chapter.match")
+        XCTAssertTrue(app.staticTexts["tutorial.instruction"].waitForExistence(timeout: 5))
+        XCTAssertEqual(app.staticTexts["tutorial.instruction"].label, "Tap the star at row 7, column 1.")
+        XCTAssertTrue(app.buttons["experiment.cell.0.0"].label.contains("row 7, column 1"))
+        XCTAssertFalse(app.buttons["experiment.pause"].exists)
+        XCTAssertFalse(app.buttons["experiment.next"].exists)
+
+        let hint = app.buttons["tutorial.hint"]
+        XCTAssertEqual(hint.label, "Less")
+        XCTAssertTrue(app.staticTexts["tutorial.detail"].exists)
+        XCTAssertTrue(app.staticTexts["tutorial.coordinates"].label.contains("1 at the top"))
+        assertVisible(hint, in: app)
+        hint.tap()
+        XCTAssertEqual(hint.label, "Hint")
+        XCTAssertFalse(app.staticTexts["tutorial.detail"].exists)
+        XCTAssertFalse(app.staticTexts["tutorial.coordinates"].exists)
+        hint.tap()
+        XCTAssertEqual(hint.label, "Less")
+        XCTAssertTrue(app.staticTexts["tutorial.detail"].exists)
+        capture("tutorial-match-disclosure-open")
+
+        // Do not use the scroll helper: completion and progression must be
+        // discoverable in the same viewport as the completed native move.
+        let star = app.buttons["experiment.cell.0.0"]
+        assertVisible(star, in: app)
+        star.tap()
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "Chapter complete"),
+                                                object: app.staticTexts["tutorial.instruction"]).wait(timeout: 5))
+        assertVisible(app.staticTexts["tutorial.instruction"], in: app)
+        assertVisible(app.buttons["tutorial.retry"], in: app)
+        assertVisible(app.buttons["tutorial.next"], in: app)
+        XCTAssertFalse(app.buttons["experiment.pause"].exists)
+        XCTAssertFalse(app.buttons["experiment.next"].exists)
+        capture("tutorial-match-complete-with-visible-progression")
+        app.buttons["tutorial.next"].tap()
+        XCTAssertEqual(app.staticTexts["tutorial.title"].label, "Grown stars")
+        XCTAssertEqual(hint.label, "Less", "A new chapter starts with its detail visible")
+        press(app, "experiment.settings")
+
+        press(app, "tutorial.chapter.exchange")
+        XCTAssertEqual(app.staticTexts["tutorial.instruction"].label, "Swipe right from row 6, column 2.")
+        XCTAssertTrue(app.buttons["experiment.cell.1.1"].label.contains("row 6, column 2"))
+        XCTAssertFalse(app.buttons["experiment.pause"].exists)
+        XCTAssertFalse(app.buttons["experiment.next"].exists)
+        press(app, "experiment.settings")
+
+        press(app, "tutorial.chapter.trace")
+        XCTAssertEqual(app.staticTexts["tutorial.instruction"].label,
+                       "Hold, then draw: 7,1 → 7,2 → 7,3 → 7,4 → 7,5. Release to collect.")
+        for column in 0..<5 {
+            XCTAssertTrue(app.buttons["experiment.cell.0.\(column)"].label.contains("row 7, column \(column + 1)"))
+        }
+        XCTAssertFalse(app.buttons["experiment.pause"].exists)
+        XCTAssertFalse(app.buttons["experiment.next"].exists)
+        capture("tutorial-trace-top-down-coordinates")
+    }
+
+    @MainActor func testShowerLessonExposesOnlyItsCurrentControl() {
+        let app = openHelp()
+        defer { app.terminate() }
+        let boards = app.otherElements.matching(identifier: "experiment.board")
+        XCTAssertEqual(boards.count, 0, "The covered retained sky must withdraw its board accessibility summary")
+        press(app, "tutorial.chapter.showers")
+        XCTAssertTrue(app.staticTexts["tutorial.instruction"].waitForExistence(timeout: 5))
+        XCTAssertEqual(boards.count, 1, "Only the active practice board owns board accessibility")
+        XCTAssertEqual(app.staticTexts["tutorial.instruction"].label, "Tap Next shower.")
+        XCTAssertFalse(app.buttons["experiment.pause"].exists)
+        press(app, "experiment.next")
+        let pause = app.buttons["experiment.pause"]
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "exists == true AND enabled == true AND hittable == true"),
+                                                object: pause).wait(timeout: 5))
+        XCTAssertFalse(app.buttons["experiment.next"].exists)
+        pause.tap()
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "Tap Pause."),
+                                                object: app.staticTexts["tutorial.instruction"]).wait(timeout: 10))
+        XCTAssertFalse(app.buttons["experiment.next"].exists)
+        XCTAssertTrue((app.otherElements["experiment.board"].value as? String)?.hasPrefix("2 showers,") == true)
+        press(app, "experiment.pause")
+        XCTAssertEqual(app.staticTexts["tutorial.instruction"].label, "Tap Next shower.")
+        XCTAssertFalse(app.buttons["experiment.pause"].exists)
+        press(app, "experiment.next")
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "Chapter complete"),
+                                                object: app.staticTexts["tutorial.instruction"]).wait(timeout: 5))
+        XCTAssertFalse(app.buttons["experiment.pause"].exists)
+        XCTAssertFalse(app.buttons["experiment.next"].exists)
+        XCTAssertTrue((app.otherElements["experiment.board"].value as? String)?.hasPrefix("3 showers,") == true)
+        capture("tutorial-showers-complete-without-unrelated-controls")
+        press(app, "experiment.settings")
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "exists == false"),
+                                                object: app.staticTexts["tutorial.title"]).wait(timeout: 5))
+        XCTAssertEqual(boards.count, 0, "The index must not retain the dismissed practice board")
+        press(app, "tutorial.done")
+        XCTAssertTrue(app.buttons["experiment.settings"].waitForExistence(timeout: 5))
+        XCTAssertEqual(boards.count, 1, "The retained sky regains board accessibility when practice closes")
+        XCTAssertEqual(app.otherElements["experiment.board"].value as? String,
+                       "0 showers, 0 matching groups ready", "Practice must leave the retained round unchanged")
+    }
+
+    @MainActor private func assertVisible(_ element: XCUIElement, in app: XCUIApplication,
+                                         file: StaticString = #filePath, line: UInt = #line) {
+        XCTAssertTrue(element.isHittable, file: file, line: line)
+        XCTAssertTrue(app.frame.insetBy(dx: -1, dy: -1).contains(element.frame),
+                      "\(element.identifier) must fit in the current viewport", file: file, line: line)
     }
 }

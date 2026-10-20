@@ -9,7 +9,9 @@ final class PacingCueUITests: XCTestCase {
         XCTAssertTrue(app.buttons["experiment.settings"].waitForExistence(timeout:10))
         app.buttons["experiment.settings"].tap()
         app.skyMenuControl("experiment.balance").tap()
-        app.buttons["experiment.pace"].tap(); app.buttons["Gentle · 6 seconds"].tap()
+        let gentle = app.buttons["experiment.pace.gentle"]
+        app.revealSkyControls([gentle])
+        gentle.tap()
         app.buttons["experiment.done"].tap()
         let board = app.otherElements["experiment.board"], original = board.value as? String
         app.buttons["experiment.pause"].tap()
@@ -109,6 +111,7 @@ final class PacingCueUITests: XCTestCase {
         }
         let app = launch(largest: largest); defer { app.terminate() }
         app.buttons["experiment.settings"].tap()
+        app.skyMenuControl("experiment.preferences").tap()
         let calm = app.switches["experiment.calm"]
         app.revealSkyMenuElement(calm)
         if calm.value as? String == "1" { calm.coordinate(withNormalizedOffset: .init(dx: 0.9, dy: 0.5)).tap() }
@@ -170,8 +173,8 @@ final class PacingCueUITests: XCTestCase {
         let header = app.otherElements["sky.header"]
         if forecast.frame.height < 40 {
             XCTAssertTrue(header.frame.contains(forecast.frame), "Fallback forecast stays inside the header")
-            XCTAssertGreaterThanOrEqual(forecast.frame.minY, app.buttons["experiment.settings"].frame.maxY,
-                                        "Fallback forecast has its own row below the menu")
+            XCTAssertFalse(forecast.frame.intersects(app.buttons["experiment.settings"].frame),
+                           "The compact forecast and menu have separate space, whether on one row or two")
         } else {
             XCTAssertEqual(forecast.frame.width, 148, accuracy: 1)
             XCTAssertEqual(forecast.frame.height, 50, accuracy: 1)
