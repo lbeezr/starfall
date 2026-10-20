@@ -1,0 +1,22 @@
+{
+  "resultBundle": "/tmp/starfall-map-20261020/dialogue-fit-scroll-phone.xcresult",
+  "sourceRecord": "dialogue-fit-scroll-source.json",
+  "summary": "dialogue-fit-scroll-phone-summary.json",
+  "test": "SkyDialogueInteractionTests/testLargestTextChatReflowsBelowBoardAndPreviewRemainsUsable",
+  "result": "Failed",
+  "totalTestCount": 1,
+  "passedTests": 0,
+  "failedTests": 1,
+  "skippedTests": 0,
+  "nativeFailure": "XCTAssertGreaterThan failed: (26.5) is not greater than (44.0) - The reader must expose usable text space",
+  "measuredReaderViewportHeightPoints": 26.5,
+  "failureImage": {
+    "file": "dev-local-source-0cfffbde47__studio-reader-26pt-failure__iphone-se3.png",
+    "sha256": "97fd9ad2394ecf762c268379eee7f6fdd8acd39de5325f2a4b8b1cb5a3163471",
+    "video": "/tmp/starfall-map-20261020/dialogue-fit-scroll-phone-all-attachments/9D8030BE-9C63-4DA8-9F2C-9309B68A983B.mp4",
+    "extractedAtSeconds": 56
+  },
+  "visualFinding": "Continue visibly hyphenates across two lines (Contin- / ue); Close remains one line. The Spark body is clipped to a sliver above the tall actions. Removing duplicate Studio insets restores shared preview width and reader-height budget.",
+  "axLimit": "Exported UI snapshots inspected at failure contained only the root application frame; 26.5pt comes from the native test assertion, not an inferred screenshot measurement.",
+  "outcome": "Superseded by dialogue-studio-phone:2/2 passed; same original reader/action assertions retained."
+}

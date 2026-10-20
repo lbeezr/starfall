@@ -1,0 +1,70 @@
+{
+  "stage": "development adopted",
+  "runtimeFingerprint": "dev.96f4131f5d",
+  "displayedBuildID": "dev.local",
+  "baseCommit": "ebaf1575a224bd547dbf529eedbf6e596e33b670",
+  "sourceNotes": "Three production files changed after e965. Final SkyFlowStateTests roster update is test-only; final-input source binds phone/tablet, final-flow source adds that sixth dirty test input. Runtime unchanged across these three runs.",
+  "core": {
+    "command": "swift test",
+    "passed": 185,
+    "failed": 0,
+    "log": "/tmp/starfall-map-final-core-authorized.log",
+    "setupFailure": "Initial sandboxed invocation could not write compiler module cache; authorized invocation completed, no test retry or source change."
+  },
+  "runs": [
+    {
+      "run": "final-input-phone",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=02B7AF2E-1F1C-40F6-AA83-C67EA962B656\" -derivedDataPath /tmp/starfall-map-20261020/FinalInputDerivedData -resultBundlePath /tmp/starfall-map-20261020/final-input-phone.xcresult -parallel-testing-enabled NO -collect-test-diagnostics never \"-only-testing:StarfallAppTests/TraceInputPolishTests\" \"-only-testing:StarfallAppTests/ResponsiveInputTests\" \"-only-testing:StarfallAppTests/SkyTechniqueStoreTests\" \"-only-testing:StarfallAppTests/WorldMapLayoutTests\" \"-only-testing:StarfallUITests/WorldJourneyInteractionTests/testTutorialRealTapSwapTraceRetryAndExitPreserveRound\" \"-only-testing:StarfallUITests/WorldJourneyInteractionTests/testLargestTextMapAndPracticeSurviveBackground\" \"-only-testing:StarfallUITests/WorldJourneyInteractionTests/testLargestTextTutorialIndexScrollsAcrossPaintedPadding\" \"-only-testing:StarfallUITests/WorldMapReviewInteractionTests/testTutorialHidesCoveredMapAndPreservesSelectionAndRetainedRound\" \"-only-testing:StarfallUITests/ConstellationTraceNativeTests/testStationaryTouchHoldsShowerBeforeDragAndTapStillWorks\" \"-only-testing:StarfallUITests/ConstellationTraceNativeTests/testShortTraceAndOutsideReleaseCancelThenOrdinaryTapWorks\" \"-only-testing:StarfallUITests/SkyTechniqueInteractionTests/testFastSameColorStrokeSwapsOnceThenHoldDrawClearsOnlyFive\" \"-only-testing:StarfallUITests/SkyTechniqueInteractionTests/testHoldWithoutCompleteConstellationNeverFallsBackToSwapOrTap\" \"-only-testing:StarfallUITests/SkyTechniqueInteractionTests/testSystemReduceMotionPreservesHeldTraceAndRapidSwap\" ARCHS=arm64 ONLY_ACTIVE_ARCH=YES test",
+      "hostedPassed": 82,
+      "nativePassed": 9,
+      "failed": 0,
+      "skipped": 0,
+      "summary": "final-input-phone-summary.json",
+      "source": "final-input-source.json"
+    },
+    {
+      "run": "final-input-tablet",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=377B8820-20E2-413E-B64F-D9E4CEB86AF4\" -derivedDataPath /tmp/starfall-map-20261020/FinalInputDerivedData -resultBundlePath /tmp/starfall-map-20261020/final-input-tablet.xcresult -parallel-testing-enabled NO -collect-test-diagnostics never \"-only-testing:StarfallUITests/WorldJourneyInteractionTests/testTutorialRealTapSwapTraceRetryAndExitPreserveRound\" \"-only-testing:StarfallUITests/WorldJourneyInteractionTests/testLargestTextMapAndPracticeSurviveBackground\" ARCHS=arm64 ONLY_ACTIVE_ARCH=YES test-without-building",
+      "hostedPassed": 0,
+      "nativePassed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "summary": "final-input-tablet-summary.json",
+      "source": "final-input-source.json"
+    },
+    {
+      "run": "final-flow-hosted",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=02B7AF2E-1F1C-40F6-AA83-C67EA962B656\" -derivedDataPath /tmp/starfall-map-20261020/FinalInputDerivedData -resultBundlePath /tmp/starfall-map-20261020/final-flow-hosted.xcresult -parallel-testing-enabled NO -collect-test-diagnostics never \"-only-testing:StarfallAppTests/SkyFlowStateTests\" ARCHS=arm64 ONLY_ACTIVE_ARCH=YES test",
+      "hostedPassed": 24,
+      "nativePassed": 0,
+      "failed": 0,
+      "skipped": 0,
+      "summary": "final-flow-hosted-summary.json",
+      "source": "final-flow-source.json"
+    }
+  ],
+  "release": {
+    "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Release -destination \"generic/platform=iOS Simulator\" -derivedDataPath /tmp/starfall-map-20261020/ExpandedReleaseDerivedData ARCHS=arm64 ONLY_ACTIVE_ARCH=YES build",
+    "result": "passed",
+    "membership": "final-input-release.json"
+  },
+  "membership": {
+    "projectObjects": 269,
+    "newSourceAndTestMembers": 5,
+    "eachCompiledExactlyOnce": true
+  },
+  "visual": {
+    "inspected": "Three phone and three tablet practice/index captures; selected captures retained in final-input-captures.json. Default trace completion shows five collected and sixth remaining; returned chapter is visible in bounded menu panel. Largest-text practice remains scrollable; phone still does not show all prose/actions simultaneously.",
+    "map": "14 tablet and 22 phone six-island map/Places stills at e965 remain source-bound; only trace input/tutorial index changed afterward."
+  },
+  "review": "Independent input event/cancellation review and final map ownership/geometry/fixture/navigation review found no actionable production defects. Added Orchard to existing Entry Back hosted roster.",
+  "limits": [
+    "Selected development subset, not full RC matrix",
+    "Actual VoiceOver not run",
+    "Physical device play/install not run",
+    "Minimum supported iOS 17 runtime not run",
+    "Uncoached destination selection and sustained device performance remain future acceptance"
+  ],
+  "historicalFailureRetention": "Original expanded phone matrix remains 59/63 with four failures; separate corrected traversal and isolated runs each pass 3/3. No aggregated full-matrix pass is claimed.",
+  "commitIdentity": "final-commit-identity.json"
+}

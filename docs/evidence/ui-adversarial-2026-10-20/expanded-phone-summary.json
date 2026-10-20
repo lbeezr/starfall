@@ -1,0 +1,80 @@
+{
+  "devicesAndConfigurations" : [
+    {
+      "device" : {
+        "architecture" : "arm64",
+        "deviceId" : "02B7AF2E-1F1C-40F6-AA83-C67EA962B656",
+        "deviceName" : "Starfall UI Compact 01a1563a",
+        "modelName" : "iPhone SE (3rd generation)",
+        "osBuildNumber" : "24A434",
+        "osVersion" : "27.0",
+        "platform" : "iOS Simulator"
+      },
+      "expectedFailures" : 0,
+      "failedTests" : 4,
+      "passedTests" : 59,
+      "skippedTests" : 0,
+      "testPlanConfiguration" : {
+        "configurationId" : "1",
+        "configurationName" : "Test Scheme Action"
+      }
+    }
+  ],
+  "environmentDescription" : "Starfall · Built with macOS 27.0.1",
+  "expectedFailures" : 0,
+  "failedTests" : 4,
+  "finishTime" : 1792509496.731,
+  "passedTests" : 59,
+  "result" : "Failed",
+  "runtimeWarnings" : [
+
+  ],
+  "skippedTests" : 0,
+  "startTime" : 1792508331.928,
+  "statistics" : [
+
+  ],
+  "testFailures" : [
+    {
+      "failureText" : "failed - The destination did not become fully visible after bounded scrolling inside world.canvas",
+      "targetName" : "StarfallUITests",
+      "testIdentifier" : 2,
+      "testIdentifierString" : "WorldJourneyInteractionTests/testExtraLargeTextRetainedMapKeepsMarkersAndActionsReachable()",
+      "testIdentifierURL" : "test://com.apple.xcode/Starfall/StarfallUITests/WorldJourneyInteractionTests/testExtraLargeTextRetainedMapKeepsMarkersAndActionsReachable",
+      "testName" : "testExtraLargeTextRetainedMapKeepsMarkersAndActionsReachable()"
+    },
+    {
+      "failureText" : "XCTAssertTrue failed - The selected destination must be fully visible without test scrolling. Target: (55.5, 85.0, 300.0, 316.5); canvas: (0.0, 56.0, 375.0, 361.5)",
+      "targetName" : "StarfallUITests",
+      "testIdentifier" : 10,
+      "testIdentifierString" : "WorldMapReviewInteractionTests/testLanternLayerKeepsNativeTargetAcrossRepairStates()",
+      "testIdentifierURL" : "test://com.apple.xcode/Starfall/StarfallUITests/WorldMapReviewInteractionTests/testLanternLayerKeepsNativeTargetAcrossRepairStates",
+      "testName" : "testLanternLayerKeepsNativeTargetAcrossRepairStates()"
+    },
+    {
+      "failureText" : "XCTAssertTrue failed - The selected destination must be fully visible without test scrolling. Target: (58.5, 68.0, 294.0, 313.5); canvas: (0.0, 56.0, 375.0, 337.5)",
+      "targetName" : "StarfallUITests",
+      "testIdentifier" : 11,
+      "testIdentifierString" : "WorldMapReviewInteractionTests/testRetainedAndRecoveryReviewsReflowWithoutChangingTheRound()",
+      "testIdentifierURL" : "test://com.apple.xcode/Starfall/StarfallUITests/WorldMapReviewInteractionTests/testRetainedAndRecoveryReviewsReflowWithoutChangingTheRound",
+      "testName" : "testRetainedAndRecoveryReviewsReflowWithoutChangingTheRound()"
+    },
+    {
+      "failureText" : "XCTAssertTrue failed",
+      "targetName" : "StarfallUITests",
+      "testIdentifier" : 9,
+      "testIdentifierString" : "WorldJourneyInteractionTests/testTutorialRealTapSwapTraceRetryAndExitPreserveRound()",
+      "testIdentifierURL" : "test://com.apple.xcode/Starfall/StarfallUITests/WorldJourneyInteractionTests/testTutorialRealTapSwapTraceRetryAndExitPreserveRound",
+      "testName" : "testTutorialRealTapSwapTraceRetryAndExitPreserveRound()"
+    }
+  ],
+  "title" : "Test - Starfall",
+  "topInsights" : [
+    {
+      "category" : "Longest Test Runs",
+      "impact" : "74% of duration",
+      "text" : "1 longest test run with outlier durations exceeding 0.66s (three standard deviations)"
+    }
+  ],
+  "totalTestCount" : 63
+}

@@ -1,0 +1,66 @@
+{
+  "sourceRecord": "current-main-source.json",
+  "inspected": [
+    {
+      "name": "world-map-selected-locked-landscape",
+      "sha256": "65269ebe2448c6d7f06ab861da1adf2befb0b36e759345053f0a2d927d33bbfb",
+      "observation": "Tablet landscape selected Frostfruit complete; nonselected lower labels clipped at viewport edge with visible cue."
+    },
+    {
+      "name": "world-map-selected-locked-phone",
+      "sha256": "2ec8e6cc61a79f5b388973b83ecb66ce98aaeafee94ffa80a5d505d37b696978",
+      "observation": "Tablet portrait despite historical capture label. Selected Frostfruit and locked status complete."
+    },
+    {
+      "name": "map-harness-recovery-portrait",
+      "sha256": "b782f7b9061677eae2e699d30158d724446c3d94d2084cceef4b79a73e681e3f",
+      "observation": "Default-text recovery message, selected Ribbon and Visit action complete; nonselected upper islands clipped by scroll viewport with visible cue."
+    },
+    {
+      "name": "map-harness-retained-portrait",
+      "sha256": "1923006602f66b1cdc9f5476bd84defdd748f90e9cb73a4c7d080cb4d5f271a9",
+      "observation": "Selected Kite target complete; Continue and Start again both fully readable."
+    },
+    {
+      "name": "map-harness-unbuilt-portrait",
+      "sha256": "0a337bee61f2b23df229253e19bfb9eea84477c6e673607baaa46a0dc7267920",
+      "observation": "Sunwheel unavailable description is fully readable; no false selected island or Visit action."
+    },
+    {
+      "name": "map-harness-locked-portrait",
+      "sha256": "ba4a6734f287186acd667fc4137de7ee6132cfaaf092c4f7993f88e6efa1e08d",
+      "observation": "Selected locked Frostfruit remains inspectable; Restore Silver Pools first is readable and no Visit action is shown."
+    },
+    {
+      "name": "map-harness-allReady-portrait",
+      "sha256": "58e5ccf78fc798727e844212524b11b4fda403c5563a8b312ff7c7c82228e0d7",
+      "observation": "All six restored illustrations and check pins; selected Frostfruit and Revisit action complete. Unselected bottom nameplates are clipped at viewport edge with visible Scroll to explore cue."
+    },
+    {
+      "name": "map-harness-two-repairs-landscape",
+      "sha256": "f69492e9218ce041f78690fd84462fae3df5cbdb6b3a897ac8a6b370891e66f0",
+      "observation": "Three-column winding progression and horizontal destination summary/action fit; selected Kite complete."
+    },
+    {
+      "name": "map-harness-twoRepairs-portrait",
+      "sha256": "e1c8860e2de0a76219d19d91c42fa53cae41d58512feb3e5e4794ee5a1b34d67",
+      "observation": "Lantern/Ribbon restored independently, Kite selected/ready, later locations locked. Full selected target and destination action."
+    },
+    {
+      "name": "map-harness-fresh-portrait",
+      "sha256": "d831e08c5f9c7c7572c1fedad2a242edfe9f723860e00a11b985c808dc693f56",
+      "observation": "All six islands present. Selected Lantern artwork, pin, name, ready status and Visit action are complete."
+    }
+  ],
+  "newMapVisualFindings": [],
+  "retainedCaptureCount": 4,
+  "limits": [
+    "This run did not include recovery at largest text; the retained recovery image is default text.",
+    "Static Simulator captures only; no claim of animation, physical-device or actual VoiceOver acceptance.",
+    "This inspection preceded the compact dialogue correction; its final source-bound verification is in dialogue-fit-validation.json."
+  ],
+  "extractionNotes": [
+    "xcresulttool needed permission to populate its TestReport cache; export succeeded without any test rerun.",
+    "Unmodified tablet PNGs exceed the standard CI exporter 5 MB limit; this /tmp selection uses its same validation with a bounded 6 MB per-file budget. No repository script changed."
+  ]
+}

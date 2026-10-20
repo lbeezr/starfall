@@ -1,0 +1,63 @@
+{
+  "runtimeFingerprint": "dev.c8ef40bcdc",
+  "displayedBuildID": "dev.local",
+  "configuration": "Release arm64 iOS Simulator",
+  "bundle": "/tmp/starfall-map-20261020/ExpandedReleaseDerivedData/Build/Products/Release-iphonesimulator/Starfall.app",
+  "mapAssetCount": 14,
+  "mapAssetNames": [
+    "WorldMapCloud",
+    "WorldMapIslandFrostfruitDamaged",
+    "WorldMapIslandFrostfruitRestored",
+    "WorldMapIslandKiteDamaged",
+    "WorldMapIslandKiteRestored",
+    "WorldMapIslandLanternDamaged",
+    "WorldMapIslandLanternRestored",
+    "WorldMapIslandRibbonDamaged",
+    "WorldMapIslandRibbonRestored",
+    "WorldMapIslandSeedDamaged",
+    "WorldMapIslandSeedRestored",
+    "WorldMapIslandSilverDamaged",
+    "WorldMapIslandSilverRestored",
+    "WorldMapSky"
+  ],
+  "removedWholeMapAssetsAbsent": true,
+  "debugReviewArgumentsAndSaveMarkersAbsent": true,
+  "debugReviewStringsChecked": [
+    "--world-map-review",
+    "--world-map-state=",
+    "Starfall.WorldMapReview",
+    "unreadable world review save"
+  ],
+  "debugReviewImplementationSymbolsAbsent": true,
+  "debugCompilationFileNamesRetained": true,
+  "sourceManifest": "current-main-source.json",
+  "sourceManifestBaseCommit": "388d88609867bfdee41c387c467cb6c309b05df5",
+  "sourceInputHashCount": 52,
+  "sourceInputHashesStillMatch": true,
+  "sourceInputMismatches": [],
+  "projectObjectCount": 271,
+  "projectObjectIDsUnique": true,
+  "targetMembership": {
+    "WorldMapReviewFixtureTests.swift": [
+      "StarfallAppTests"
+    ],
+    "WorldMapReviewInteractionTests.swift": [
+      "StarfallUITests"
+    ],
+    "WorldMapMarker.swift": [
+      "Starfall"
+    ],
+    "WorldMapArtwork.swift": [
+      "Starfall"
+    ],
+    "WorldMapReviewFixture.swift": [
+      "Starfall"
+    ],
+    "LivingLight.swift": [
+      "Starfall"
+    ]
+  },
+  "assetsCarSHA256": "bf4baaaf9d736d5cbdd5b40ebca57ca356d1131248f69f89e9dde016a6a2fd87",
+  "executableSHA256": "9701b87efe9b3250da707ecf596bd43d300de0b1d93e99152931cd4556c92de0",
+  "limits": "Existing bundle inspected only. Displayed build ID remains dev.local; runtime fingerprint identifies current filesystem inputs. Current files match the pre-run dirty-input manifest. Release binary retains WorldMapReviewFixture.swift/.o compilation-file names but no fixture implementation symbols or admission/save marker strings. No rebuild, simulator action or physical-device check performed."
+}

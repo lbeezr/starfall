@@ -1,0 +1,31 @@
+{
+  "normal": {
+    "size": [
+      1640,
+      2360
+    ],
+    "meanAbsoluteChannelDifference": [
+      2.03886523356759,
+      1.6200369470855724,
+      2.1172209590739977
+    ],
+    "changedPixelBounds": [
+      0,
+      0,
+      1640,
+      2360
+    ]
+  },
+  "quiet": {
+    "size": [
+      1640,
+      2360
+    ],
+    "meanAbsoluteChannelDifference": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "changedPixelBounds": null
+  }
+}

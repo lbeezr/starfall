@@ -1,0 +1,125 @@
+{
+  "source": "current-main-source.json",
+  "commitIdentity": "current-main-commit-identity.json",
+  "captures": [
+    {
+      "name": "map-harness-fresh-portrait",
+      "file": "dev-local-source-c8ef40bcdc__map-harness-fresh-portrait__ipad-air11m3__default.png",
+      "sha256": "d831e08c5f9c7c7572c1fedad2a242edfe9f723860e00a11b985c808dc693f56",
+      "export": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "377B8820-20E2-413E-B64F-D9E4CEB86AF4",
+        "deviceName": "Starfall UI Tablet 01a1563a",
+        "exportedFileName": "4E3AFA24-2D4C-45CC-9030-FAA41EE89819.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "map-harness-fresh-portrait_0_C663D244-B9FA-4D4E-BB2A-2D73640D980A.png",
+        "timestamp": 1792512610.607
+      },
+      "device": "ipad-air11m3",
+      "displayedBuildID": "dev.local",
+      "runtimeFingerprint": "dev.c8ef40bcdc",
+      "textSize": "default",
+      "inspection": "Inspected; no new finding"
+    },
+    {
+      "name": "map-harness-two-repairs-landscape",
+      "file": "dev-local-source-c8ef40bcdc__map-harness-two-repairs-landscape__ipad-air11m3__default.png",
+      "sha256": "f69492e9218ce041f78690fd84462fae3df5cbdb6b3a897ac8a6b370891e66f0",
+      "export": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "377B8820-20E2-413E-B64F-D9E4CEB86AF4",
+        "deviceName": "Starfall UI Tablet 01a1563a",
+        "exportedFileName": "F8FD1F7C-C9BF-49BA-8793-3F47CB7A81AA.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "map-harness-two-repairs-landscape_0_4F4F96F5-C4B3-496B-B735-D59792A15156.png",
+        "timestamp": 1792512637.222
+      },
+      "device": "ipad-air11m3",
+      "displayedBuildID": "dev.local",
+      "runtimeFingerprint": "dev.c8ef40bcdc",
+      "textSize": "default",
+      "inspection": "Inspected; no new finding"
+    },
+    {
+      "name": "map-harness-allReady-portrait",
+      "file": "dev-local-source-c8ef40bcdc__map-harness-allReady-portrait__ipad-air11m3__default.png",
+      "sha256": "58e5ccf78fc798727e844212524b11b4fda403c5563a8b312ff7c7c82228e0d7",
+      "export": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "377B8820-20E2-413E-B64F-D9E4CEB86AF4",
+        "deviceName": "Starfall UI Tablet 01a1563a",
+        "exportedFileName": "1DC6AAF0-BC21-4666-9B58-99B31EAC7BFE.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "map-harness-allReady-portrait_0_6F938EF1-41D7-4E24-A1C4-055FA5BC3646.png",
+        "timestamp": 1792512661.802
+      },
+      "device": "ipad-air11m3",
+      "displayedBuildID": "dev.local",
+      "runtimeFingerprint": "dev.c8ef40bcdc",
+      "textSize": "default",
+      "inspection": "Inspected; no new finding"
+    },
+    {
+      "name": "map-harness-recovery-portrait",
+      "file": "dev-local-source-c8ef40bcdc__map-harness-recovery-portrait__ipad-air11m3__default.png",
+      "sha256": "b782f7b9061677eae2e699d30158d724446c3d94d2084cceef4b79a73e681e3f",
+      "export": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "377B8820-20E2-413E-B64F-D9E4CEB86AF4",
+        "deviceName": "Starfall UI Tablet 01a1563a",
+        "exportedFileName": "4C9F0F3F-DD1A-4B2C-A680-B6B69D0E6013.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "map-harness-recovery-portrait_0_02F190BE-0E2B-46BA-90D5-09067A3A954B.png",
+        "timestamp": 1792512740.788
+      },
+      "device": "ipad-air11m3",
+      "displayedBuildID": "dev.local",
+      "runtimeFingerprint": "dev.c8ef40bcdc",
+      "textSize": "default",
+      "inspection": "Inspected; no new finding"
+    },
+    {
+      "name": "story-lantern-entry-150000",
+      "file": "dev-local-source-c8ef40bcdc__story-lantern-entry-150000__iphone-se3__default.png",
+      "sha256": "74b1a2909b22cf7fc0bf75aee2feb36e9335d9ae63ea523d68b9c75ff0ce0fd9",
+      "export": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "02B7AF2E-1F1C-40F6-AA83-C67EA962B656",
+        "deviceName": "Starfall UI Compact 01a1563a",
+        "exportedFileName": "404C93E2-6CCF-4D16-BFA3-8227E10130A2.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "story-lantern-entry-150000_0_80F0738C-C675-428E-BAFF-5E484598D2FE.png",
+        "timestamp": 1792512222.218
+      },
+      "device": "iphone-se3",
+      "displayedBuildID": "dev.local",
+      "runtimeFingerprint": "dev.c8ef40bcdc",
+      "textSize": "default",
+      "inspection": "Inspected; no new finding"
+    },
+    {
+      "name": "story-lantern-three-thousand-native-clear",
+      "file": "dev-local-source-c8ef40bcdc__story-lantern-three-thousand-native-clear__iphone-se3__default.png",
+      "sha256": "454e176f9eef849df62a3aaf44172e32006813c17d92adb6be8dcd1903a7173c",
+      "export": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "02B7AF2E-1F1C-40F6-AA83-C67EA962B656",
+        "deviceName": "Starfall UI Compact 01a1563a",
+        "exportedFileName": "669A565A-16F1-43C1-BD97-EF1A2A4411CB.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "story-lantern-three-thousand-native-clear_0_0A216806-C1E3-4E7F-8AB1-438B0CDF9B2E.png",
+        "timestamp": 1792512239.501
+      },
+      "device": "iphone-se3",
+      "displayedBuildID": "dev.local",
+      "runtimeFingerprint": "dev.c8ef40bcdc",
+      "textSize": "default",
+      "inspection": "Known clipped dialogue defect; corrected by dialogue-fit follow-up"
+    }
+  ],
+  "limits": [
+    "Selected Simulator stills; not physical-device, animation, actual VoiceOver or full RC acceptance.",
+    "Tablet recovery capture uses default text; largest-text recovery remains in earlier source-bound evidence.",
+    "Compact Lantern clear records the discovered message clipping before dialogue-fit correction."
+  ]
+}

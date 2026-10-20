@@ -1,0 +1,18 @@
+{
+  "assets": [
+    "WorldMapCloud",
+    "WorldMapIslandKiteDamaged",
+    "WorldMapIslandKiteRestored",
+    "WorldMapIslandLanternDamaged",
+    "WorldMapIslandLanternRestored",
+    "WorldMapIslandRibbonDamaged",
+    "WorldMapIslandRibbonRestored",
+    "WorldMapIslandSeedDamaged",
+    "WorldMapIslandSeedRestored",
+    "WorldMapIslandSilverDamaged",
+    "WorldMapIslandSilverRestored",
+    "WorldMapSky"
+  ],
+  "debugReviewMarkersAbsent": true,
+  "releaseBuild": "/tmp/starfall-map-final-release.log"
+}

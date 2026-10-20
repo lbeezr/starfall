@@ -1,0 +1,44 @@
+{
+  "scope": "Native default-text practice completion and returned chapter index. Still captures do not establish VoiceOver speech or physical play.",
+  "captures": [
+    {
+      "file": "dev-local-source-96f4131f5d__tutorial-returned-trace-index__iphone-se3__default.png",
+      "sha256": "a7dac7ff137e06a003e2d0ec174b199a1781cc527f54fe924b260c21cfb385be",
+      "runtimeFingerprint": "dev.96f4131f5d",
+      "displayedBuildID": "dev.local",
+      "sourceManifest": "final-input-source.json",
+      "sourceRun": "final-input-phone.xcresult",
+      "sourceTest": "WorldJourneyInteractionTests/testTutorialRealTapSwapTraceRetryAndExitPreserveRound()",
+      "sourceAttachment": "0A399D20-6172-412B-BF52-5E3B591675C3.png",
+      "sourceName": "tutorial-returned-trace-index_0_408561C9-7F08-4B7D-B6E2-FBCDDBADA760.png",
+      "deviceId": "02B7AF2E-1F1C-40F6-AA83-C67EA962B656",
+      "inspected": true
+    },
+    {
+      "file": "dev-local-source-96f4131f5d__tutorial-trace-complete__iphone-se3__default.png",
+      "sha256": "4f49b5fc444edf3a201ace1f8dd7e1dd62dae6367aa79793a30a92dcc47404b0",
+      "runtimeFingerprint": "dev.96f4131f5d",
+      "displayedBuildID": "dev.local",
+      "sourceManifest": "final-input-source.json",
+      "sourceRun": "final-input-phone.xcresult",
+      "sourceTest": "WorldJourneyInteractionTests/testTutorialRealTapSwapTraceRetryAndExitPreserveRound()",
+      "sourceAttachment": "61340E64-E6D9-4DC0-AC47-F546EFA18381.png",
+      "sourceName": "tutorial-trace-native-complete_0_2518C941-A527-4F1E-9EED-DA0B3B01296E.png",
+      "deviceId": "02B7AF2E-1F1C-40F6-AA83-C67EA962B656",
+      "inspected": true
+    },
+    {
+      "file": "dev-local-source-96f4131f5d__tutorial-returned-trace-index__ipad-air11m3__default.png",
+      "sha256": "e35edb564f0bff75abca15e7b81f7b269207aee5234c719aae1ca947672f30ac",
+      "runtimeFingerprint": "dev.96f4131f5d",
+      "displayedBuildID": "dev.local",
+      "sourceManifest": "final-input-source.json",
+      "sourceRun": "final-input-tablet.xcresult",
+      "sourceTest": "WorldJourneyInteractionTests/testTutorialRealTapSwapTraceRetryAndExitPreserveRound()",
+      "sourceAttachment": "0982B29D-4235-4CCD-9A7E-5F78DF344752.png",
+      "sourceName": "tutorial-returned-trace-index_0_172201C9-1071-448B-A625-A78A7CC08849.png",
+      "deviceId": "377B8820-20E2-413E-B64F-D9E4CEB86AF4",
+      "inspected": true
+    }
+  ]
+}

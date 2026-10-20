@@ -1,0 +1,48 @@
+{
+  "stage": "current-main integration passed; compact-dialogue follow-up recorded separately",
+  "sourceCommit": "6f24b68901fe2e8e3711826ae6dc89271a7d6fc6",
+  "mergedMain": "b811b85c8e5e7d19539cee379fe330f4a4194415",
+  "runtimeFingerprint": "dev.c8ef40bcdc",
+  "displayedBuildID": "dev.local",
+  "source": "current-main-source.json",
+  "commitIdentity": "current-main-commit-identity.json",
+  "core": {
+    "command": "swift test",
+    "passed": 197,
+    "failed": 0,
+    "log": "/tmp/starfall-map-current-story-core.log"
+  },
+  "phone": {
+    "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=02B7AF2E-1F1C-40F6-AA83-C67EA962B656\" -derivedDataPath /tmp/starfall-map-20261020/FinalInputDerivedData -resultBundlePath /tmp/starfall-map-20261020/current-main-phone.xcresult -parallel-testing-enabled NO -collect-test-diagnostics never \"-only-testing:StarfallAppTests/TraceInputPolishTests\" \"-only-testing:StarfallAppTests/ResponsiveInputTests\" \"-only-testing:StarfallAppTests/SkyTechniqueStoreTests\" \"-only-testing:StarfallAppTests/WorldMapLayoutTests\" \"-only-testing:StarfallAppTests/OfficialWorldArtworkTests\" \"-only-testing:StarfallAppTests/WorldMapReviewFixtureTests\" \"-only-testing:StarfallAppTests/WorldJourneyTests\" \"-only-testing:StarfallAppTests/SkyFlowStateTests\" \"-only-testing:StarfallAppTests/SkySaveArchiveTests\" \"-only-testing:StarfallUITests/WorldJourneyInteractionTests/testRevisedLanternEarnsThousandsAndRetainsScoreAcrossRelaunch\" \"-only-testing:StarfallUITests/WorldJourneyInteractionTests/testRevisedRibbonSwapCreatesLargerClearWithLargestText\" \"-only-testing:StarfallUITests/WorldJourneyInteractionTests/testTutorialRealTapSwapTraceRetryAndExitPreserveRound\" \"-only-testing:StarfallUITests/WorldMapReviewInteractionTests/testTutorialHidesCoveredMapAndPreservesSelectionAndRetainedRound\" ARCHS=arm64 ONLY_ACTIVE_ARCH=YES test",
+    "hostedPassed": 142,
+    "nativePassed": 4,
+    "failed": 0,
+    "skipped": 0,
+    "verification": "current-main-phone-verification.json"
+  },
+  "tablet": {
+    "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=377B8820-20E2-413E-B64F-D9E4CEB86AF4\" -derivedDataPath /tmp/starfall-map-20261020/FinalInputDerivedData -resultBundlePath /tmp/starfall-map-20261020/current-main-tablet.xcresult -parallel-testing-enabled NO -collect-test-diagnostics never \"-only-testing:StarfallUITests/WorldJourneyInteractionTests/testMapMarkersUsePhysicalTargetsAndSelectLockedDestinations\" \"-only-testing:StarfallUITests/WorldMapReviewInteractionTests/testSevenReviewStatesUseNormalMapAndExplicitEntryBoundary\" ARCHS=arm64 ONLY_ACTIVE_ARCH=YES test-without-building",
+    "nativePassed": 2,
+    "failed": 0,
+    "skipped": 0,
+    "verification": "current-main-tablet-verification.json"
+  },
+  "release": {
+    "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Release -destination \"generic/platform=iOS Simulator\" -derivedDataPath /tmp/starfall-map-20261020/ExpandedReleaseDerivedData ARCHS=arm64 ONLY_ACTIVE_ARCH=YES build",
+    "result": "passed",
+    "membership": "current-main-release-membership.json"
+  },
+  "visual": {
+    "captures": "current-main-captures.json",
+    "mapReview": "current-main-map-visual-review.json",
+    "inspectedPhoneStills": 7,
+    "inspectedTabletStills": 10,
+    "finding": "Compact Lantern clear exposed a speaker-only dialogue panel. Shared bubble and actual-body accessibility geometry corrected afterward; see dialogue-fit-validation.json."
+  },
+  "limits": [
+    "Selected development coverage, not full RC matrix.",
+    "No actual VoiceOver, physical play/install or iOS17 runtime.",
+    "Sustained device profiling and uncoached map discovery remain separate.",
+    "Original failed matrices retain their source-specific results; no combined full-matrix pass is claimed."
+  ]
+}

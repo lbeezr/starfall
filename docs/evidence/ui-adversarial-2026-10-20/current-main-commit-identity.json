@@ -1,0 +1,19 @@
+{
+  "commit": "6f24b68901fe2e8e3711826ae6dc89271a7d6fc6",
+  "mergedMain": "b811b85c8e5e7d19539cee379fe330f4a4194415",
+  "runtimeFingerprint": "dev.c8ef40bcdc",
+  "runtimeExportMatchesTestedSource": true,
+  "sourceAndTestHashesMatch": true,
+  "verifiedAgainst": "current-main-source.json",
+  "verifiedInputCount": 52,
+  "exportScope": [
+    "App",
+    "Sources",
+    "Config",
+    "Starfall.xcodeproj",
+    "Package.swift",
+    "AppTests",
+    "UITests"
+  ],
+  "testExecution": "Working-tree native runs; clean commit export matched runtime fingerprint and all changed input hashes. No clean-export native rerun."
+}

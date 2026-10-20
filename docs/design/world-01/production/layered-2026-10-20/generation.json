@@ -1,0 +1,554 @@
+{
+  "status": "Six independent production island families; first five native-reviewed, Frostfruit expansion native verification pending",
+  "assets": [
+    {
+      "id": "lantern-restored",
+      "asset": "WorldMapIslandLanternRestored",
+      "source": "docs/design/world-01/production/layered-2026-10-20/lantern-restored.png",
+      "original": "/Users/lbeezr/.codex/generated_images/01a15934-640a-77f1-beac-382c3a8e2c90/exec-c78a0d46-9c2a-4f18-9a0b-47715a32d309.png",
+      "prompt": "lantern-restored.prompt.txt",
+      "tool": "built-in image_gen",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "bytes": 1905132,
+      "sha256": "83539c10d57affd8599e1b3de0410957c75464366ac2e33810a06275816a6efa",
+      "alphaBounds": [
+        0,
+        33,
+        1240,
+        1254
+      ],
+      "solidBounds": [
+        21,
+        71,
+        1232,
+        1178
+      ],
+      "registration": "Registered Lantern slice inspected on SE3 and iPad; full-family matrix recorded separately.",
+      "reference": "../interactive-2026-10-20/world-restored.png",
+      "referenceRole": "style and landmark identity",
+      "runtimePath": "App/Assets.xcassets/WorldMapIslandLanternRestored.imageset/lantern-restored.png",
+      "export": "byte-identical copy; no raster postprocessing"
+    },
+    {
+      "id": "lantern-damaged",
+      "asset": "WorldMapIslandLanternDamaged",
+      "source": "docs/design/world-01/production/layered-2026-10-20/lantern-damaged.png",
+      "original": "/Users/lbeezr/.codex/generated_images/01a15934-640a-77f1-beac-382c3a8e2c90/exec-5e7b1663-5557-47e3-973d-cc3716624bb0.png",
+      "prompt": "lantern-damaged.prompt.txt",
+      "tool": "built-in image_gen",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "bytes": 1988472,
+      "sha256": "bdab4a6f76e22702398380de19d283d0bf8f662d6e9299a8457b3e093a0365a9",
+      "alphaBounds": [
+        0,
+        41,
+        1240,
+        1254
+      ],
+      "solidBounds": [
+        31,
+        67,
+        1236,
+        1178
+      ],
+      "registration": "Registered Lantern slice inspected on SE3 and iPad; full-family matrix recorded separately.",
+      "reference": "lantern-restored.png",
+      "referenceRole": "registered state edit target",
+      "runtimePath": "App/Assets.xcassets/WorldMapIslandLanternDamaged.imageset/lantern-damaged.png",
+      "export": "byte-identical copy; no raster postprocessing"
+    },
+    {
+      "id": "sky",
+      "asset": "WorldMapSky",
+      "source": "docs/design/world-01/production/layered-2026-10-20/sky.png",
+      "original": "/Users/lbeezr/.codex/generated_images/01a15934-640a-77f1-beac-382c3a8e2c90/exec-3f3ab6e2-2870-4837-90c3-0498ddb4cd39.png",
+      "prompt": "sky.prompt.txt",
+      "tool": "built-in image_gen",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "bytes": 2497613,
+      "sha256": "9ba6ec1e19c02a452d95b84e0ab0a90a3fea6847b80f1cc1fdbff1d128ebbac6",
+      "reference": "../interactive-2026-10-20/world-restored.png",
+      "referenceRole": "style and landmark identity",
+      "runtimePath": "App/Assets.xcassets/WorldMapSky.imageset/sky.png",
+      "export": "byte-identical copy; no raster postprocessing"
+    },
+    {
+      "id": "cloud",
+      "asset": "WorldMapCloud",
+      "source": "docs/design/world-01/production/layered-2026-10-20/cloud.png",
+      "original": "/Users/lbeezr/.codex/generated_images/01a15934-640a-77f1-beac-382c3a8e2c90/exec-3a3893da-cd5d-4828-bcfd-582ce4942f00.png",
+      "prompt": "cloud.prompt.txt",
+      "tool": "built-in image_gen",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 1511183,
+      "sha256": "f04f2192d7a3d35fdf0296c1df75a740c75c37d15a92ee0c6e3a8e7531b8a3a9",
+      "alphaBounds": [
+        0,
+        0,
+        1526,
+        1024
+      ],
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "reference": "../interactive-2026-10-20/world-restored.png",
+      "referenceRole": "style and landmark identity",
+      "runtimePath": "App/Assets.xcassets/WorldMapCloud.imageset/cloud.png",
+      "export": "byte-identical copy; no raster postprocessing"
+    },
+    {
+      "id": "ribbon-restored",
+      "asset": "WorldMapIslandRibbonRestored",
+      "source": "docs/design/world-01/production/layered-2026-10-20/ribbon-restored.png",
+      "original": "/Users/lbeezr/.codex/generated_images/01a15934-640a-77f1-beac-382c3a8e2c90/exec-f4f078b2-40eb-4dae-8a00-9ff2ea52c357.png",
+      "prompt": "ribbon-restored.prompt.txt",
+      "tool": "built-in image_gen",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "bytes": 1909373,
+      "sha256": "0de2cdfc17a5c1af030bf1b2361c9ef44442c59fead6d9127c936d11fbd3c3b6",
+      "alphaBounds": [
+        0,
+        29,
+        1254,
+        1254
+      ],
+      "solidBounds": [
+        14,
+        33,
+        1245,
+        1211
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "cornerAlpha": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "reference": [
+        "lantern-restored.png",
+        "../interactive-2026-10-20/world-restored.png"
+      ],
+      "referenceRole": "camera/material family and landmark identity",
+      "runtimePath": "App/Assets.xcassets/WorldMapIslandRibbonRestored.imageset/ribbon-restored.png",
+      "export": "byte-identical copy; no raster postprocessing",
+      "submittedPrompt": "Use case: stylized-concept\nAsset type: ONE independent production 2D world-map island, restored state, genuinely transparent background.\nImage1 is the accepted standalone Lantern island: match its elevated orthographic three-quarter camera, warm upper-left light, pearl/brass/violet storybook miniature materials, crisp complete silhouette and level of detail. Image2 is the approved world concept: use only the specified landmark identity. Do not reproduce either entire reference.\nSquare canvas; same source composition scale and camera as Image1, all features contained, centered complete floating rocky island with hanging blue crystals. The island should read when displayed at220–270points wide. Intact complete perimeter; NO outgoing bridges beyond this one asset. Keep ample transparent margins around the entire silhouette/glows. The front-center landing terrace around normalized(.5,.65) should remain visually quiet for a separate native pin.\nNo sky, background, clouds, stars outside the island, ground plane, ground shadow, people, names, typography, UI, icons, labels or native selector. Real alpha, no painted checkerboard. \nSubject: Ribbon Crossing. One cohesive floating island consisting of two modest stone landing terraces joined INTERNALLY by a flowing violet ribbon footbridge with delicate gold star motifs and brass rails. A tall pearly stone-and-brass arch gate at the back-left; warm lamps and long violet pennants. The bridge spans a small cleft within this island's own silhouette. Internal bridge and both terraces belong wholly inside this cutout; no paths extend off-canvas. This is a ribbon bridge landmark, NOT a pool, harbor or lantern crane.\n",
+      "promptFileNote": "Trailing whitespace normalized in readable prompt file; submittedPrompt retains the original text."
+    },
+    {
+      "id": "kite-restored",
+      "asset": "WorldMapIslandKiteRestored",
+      "source": "docs/design/world-01/production/layered-2026-10-20/kite-restored.png",
+      "original": "/Users/lbeezr/.codex/generated_images/01a15934-640a-77f1-beac-382c3a8e2c90/exec-c6d4b155-fcc2-47d9-9e46-c13a72cc4d0a.png",
+      "prompt": "kite-restored.prompt.txt",
+      "tool": "built-in image_gen",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "bytes": 1843604,
+      "sha256": "1942eab97b8037bd660278fdced292403ff6dfe16e2b03a858229d091bc27781",
+      "alphaBounds": [
+        0,
+        19,
+        1248,
+        1254
+      ],
+      "solidBounds": [
+        22,
+        91,
+        1232,
+        1160
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "cornerAlpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "reference": [
+        "lantern-restored.png",
+        "../interactive-2026-10-20/world-restored.png"
+      ],
+      "referenceRole": "camera/material family and landmark identity",
+      "runtimePath": "App/Assets.xcassets/WorldMapIslandKiteRestored.imageset/kite-restored.png",
+      "export": "byte-identical copy; no raster postprocessing",
+      "submittedPrompt": "Use case: stylized-concept\nAsset type: ONE independent production 2D world-map island, restored state, genuinely transparent background.\nImage1 is the accepted standalone Lantern island: match its elevated orthographic three-quarter camera, warm upper-left light, pearl/brass/violet storybook miniature materials, crisp complete silhouette and level of detail. Image2 is the approved world concept: use only the specified landmark identity. Do not reproduce either entire reference.\nSquare canvas; same source composition scale and camera as Image1, all features contained, centered complete floating rocky island with hanging blue crystals. The island should read when displayed at220–270points wide. Intact complete perimeter; NO outgoing bridges beyond this one asset. Keep ample transparent margins around the entire silhouette/glows. The front-center landing terrace around normalized(.5,.65) should remain visually quiet for a separate native pin.\nNo sky, background, clouds, stars outside the island, ground plane, ground shadow, people, names, typography, UI, icons, labels or native selector. Real alpha, no painted checkerboard. \nSubject: Kite Harbor. One graceful oval stone-and-timber sky dock with two small floating-boat hulls resting in berths; bold triangular violet and blush sails with modest golden star emblems, thin brass rigging and a warm brass star-topped central mooring mast. Pearl paving, warm lamps, small green flowering vines and hanging blue crystals. Make the two sail silhouettes the recognizable landmark. Complete dock perimeter, no outbound walkway or bridge. This is a sailboat harbor, NOT the giant lantern crane or ribbon gate.\n",
+      "promptFileNote": "Trailing whitespace normalized in readable prompt file; submittedPrompt retains the original text."
+    },
+    {
+      "id": "seed-restored",
+      "asset": "WorldMapIslandSeedRestored",
+      "source": "docs/design/world-01/production/layered-2026-10-20/seed-restored.png",
+      "original": "/Users/lbeezr/.codex/generated_images/01a15934-640a-77f1-beac-382c3a8e2c90/exec-9ee8eede-a51b-419e-9451-a756621b3829.png",
+      "prompt": "seed-restored.prompt.txt",
+      "tool": "built-in image_gen",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "bytes": 2309070,
+      "sha256": "02f0949dc2f05d192f25539544cd30385f654ec31303d201bd5805d16d1147f4",
+      "alphaBounds": [
+        0,
+        3,
+        1253,
+        1254
+      ],
+      "solidBounds": [
+        17,
+        33,
+        1238,
+        1224
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "cornerAlpha": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "reference": [
+        "lantern-restored.png",
+        "../interactive-2026-10-20/world-restored.png"
+      ],
+      "referenceRole": "camera/material family and landmark identity",
+      "runtimePath": "App/Assets.xcassets/WorldMapIslandSeedRestored.imageset/seed-restored.png",
+      "export": "byte-identical copy; no raster postprocessing",
+      "submittedPrompt": "Use case: stylized-concept\nAsset type: ONE independent production 2D world-map island, restored state, genuinely transparent background.\nImage1 is the accepted standalone Lantern island: match its elevated orthographic three-quarter camera, warm upper-left light, pearl/brass/violet storybook miniature materials, crisp complete silhouette and level of detail. Image2 is the approved world concept: use only the specified landmark identity. Do not reproduce either entire reference.\nSquare canvas; same source composition scale and camera as Image1, all features contained, centered complete floating rocky island with hanging blue crystals. The island should read when displayed at220–270points wide. Intact complete perimeter; NO outgoing bridges beyond this one asset. Keep ample transparent margins around the entire silhouette/glows. The front-center landing terrace around normalized(.5,.65) should remain visually quiet for a separate native pin.\nNo sky, background, clouds, stars outside the island, ground plane, ground shadow, people, names, typography, UI, icons, labels or native selector. Real alpha, no painted checkerboard. \nSubject: Seed Moon. One round floating garden island with a large pearly moon-seed shell formed of petal-like cracked plates cradling a strong curling golden-green sprout with two broad leaves. Open shell revealing warm life inside, with moss, tiny flowers, pale stone garden path, small brass lanterns and crystal roots. Bold shell-and-sprout silhouette, front-center path kept clear. Complete garden island, no outbound bridge. This is a sprouting moon-seed garden, NOT a boat harbor, gate or pool.\n",
+      "promptFileNote": "Trailing whitespace normalized in readable prompt file; submittedPrompt retains the original text."
+    },
+    {
+      "id": "silver-restored",
+      "asset": "WorldMapIslandSilverRestored",
+      "source": "docs/design/world-01/production/layered-2026-10-20/silver-restored.png",
+      "original": "/Users/lbeezr/.codex/generated_images/01a15934-640a-77f1-beac-382c3a8e2c90/exec-9fc58130-4475-403a-9de5-6c1e4b7f19eb.png",
+      "prompt": "silver-restored.prompt.txt",
+      "tool": "built-in image_gen",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "bytes": 2472231,
+      "sha256": "db155bd43767dc205a8be7126376c9b0ee5fbf9643ae008b10dc51de7fd103ae",
+      "alphaBounds": [
+        0,
+        19,
+        1253,
+        1254
+      ],
+      "solidBounds": [
+        42,
+        35,
+        1216,
+        1204
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "cornerAlpha": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "reference": [
+        "lantern-restored.png",
+        "../interactive-2026-10-20/world-restored.png"
+      ],
+      "referenceRole": "camera/material family and landmark identity",
+      "runtimePath": "App/Assets.xcassets/WorldMapIslandSilverRestored.imageset/silver-restored.png",
+      "export": "byte-identical copy; no raster postprocessing",
+      "submittedPrompt": "Use case: stylized-concept\nAsset type: ONE independent production 2D world-map island, restored state, genuinely transparent background.\nImage1 is the accepted standalone Lantern island: match its elevated orthographic three-quarter camera, warm upper-left light, pearl/brass/violet storybook miniature materials, crisp complete silhouette and level of detail. Image2 is the approved world concept: use only the specified landmark identity. Do not reproduce either entire reference.\nSquare canvas; same source composition scale and camera as Image1, all features contained, centered complete floating rocky island with hanging blue crystals. The island should read when displayed at220–270points wide. Intact complete perimeter; NO outgoing bridges beyond this one asset. Keep ample transparent margins around the entire silhouette/glows. The front-center landing terrace around normalized(.5,.65) should remain visually quiet for a separate native pin.\nNo sky, background, clouds, stars outside the island, ground plane, ground shadow, people, names, typography, UI, icons, labels or native selector. Real alpha, no painted checkerboard. \nSubject: Silver Pools. One oval floating garden island with three graceful tiered white-pearl stone bowls, bright clear silver-blue water spilling from the upper bowl into lower pools. A delicate tall brass orbital arch curves over the back pool; restrained leafy tree, small white flowers, pale steps and warm brass lamps. Bold cascading bowl silhouette and calm luminous water; front-center path clear. Complete garden perimeter, no outbound bridge. This is a three-tier pool garden, NOT a harbor, seed shell or ribbon gate.\n",
+      "promptFileNote": "Trailing whitespace normalized in readable prompt file; submittedPrompt retains the original text."
+    },
+    {
+      "id": "ribbon-damaged",
+      "asset": "WorldMapIslandRibbonDamaged",
+      "source": "docs/design/world-01/production/layered-2026-10-20/ribbon-damaged.png",
+      "original": "/Users/lbeezr/.codex/generated_images/01a15934-640a-77f1-beac-382c3a8e2c90/exec-09b023e1-1462-4a85-a54f-8ee0b80539e5.png",
+      "prompt": "ribbon-damaged.prompt.txt",
+      "tool": "built-in image_gen",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "bytes": 2036513,
+      "sha256": "01ae1449f8ed8440aed7371550f371c87330002347ded0c31df20ec026acf16f",
+      "alphaBounds": [
+        0,
+        30,
+        1254,
+        1230
+      ],
+      "solidBounds": [
+        18,
+        33,
+        1245,
+        1211
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "cornerAlpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "reference": "ribbon-restored.png",
+      "referenceRole": "registered state edit target",
+      "runtimePath": "App/Assets.xcassets/WorldMapIslandRibbonDamaged.imageset/ribbon-damaged.png",
+      "export": "byte-identical copy; no raster postprocessing"
+    },
+    {
+      "id": "kite-damaged",
+      "asset": "WorldMapIslandKiteDamaged",
+      "source": "docs/design/world-01/production/layered-2026-10-20/kite-damaged.png",
+      "original": "/Users/lbeezr/.codex/generated_images/01a15934-640a-77f1-beac-382c3a8e2c90/exec-d0cfb8a2-6ca1-4b16-aefd-203304fe7b2d.png",
+      "prompt": "kite-damaged.prompt.txt",
+      "tool": "built-in image_gen",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "bytes": 1968250,
+      "sha256": "9e8fa25683a01bf27a27582525dfe7875fb884932e4d5f3cccc9f29a3c042935",
+      "alphaBounds": [
+        0,
+        15,
+        1240,
+        1254
+      ],
+      "solidBounds": [
+        19,
+        86,
+        1237,
+        1160
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "cornerAlpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "reference": "kite-restored.png",
+      "referenceRole": "registered state edit target",
+      "runtimePath": "App/Assets.xcassets/WorldMapIslandKiteDamaged.imageset/kite-damaged.png",
+      "export": "byte-identical copy; no raster postprocessing"
+    },
+    {
+      "id": "seed-damaged",
+      "asset": "WorldMapIslandSeedDamaged",
+      "source": "docs/design/world-01/production/layered-2026-10-20/seed-damaged.png",
+      "original": "/Users/lbeezr/.codex/generated_images/01a15934-640a-77f1-beac-382c3a8e2c90/exec-8dc003b4-b49a-4a52-85f4-1143a4004842.png",
+      "prompt": "seed-damaged.prompt.txt",
+      "tool": "built-in image_gen",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "bytes": 2265339,
+      "sha256": "f280c10aa01891647686aba55eb7fd3db68caf7c1d9662cfe6e4ceae189b5170",
+      "alphaBounds": [
+        0,
+        20,
+        1254,
+        1246
+      ],
+      "solidBounds": [
+        16,
+        33,
+        1242,
+        1225
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "cornerAlpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "reference": "seed-restored.png",
+      "referenceRole": "registered state edit target",
+      "runtimePath": "App/Assets.xcassets/WorldMapIslandSeedDamaged.imageset/seed-damaged.png",
+      "export": "byte-identical copy; no raster postprocessing"
+    },
+    {
+      "id": "silver-damaged",
+      "asset": "WorldMapIslandSilverDamaged",
+      "source": "docs/design/world-01/production/layered-2026-10-20/silver-damaged.png",
+      "original": "/Users/lbeezr/.codex/generated_images/01a15934-640a-77f1-beac-382c3a8e2c90/exec-2f9b42e9-219c-4f9a-af0a-6f42b7f1cc0d.png",
+      "prompt": "silver-damaged.prompt.txt",
+      "tool": "built-in image_gen",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "bytes": 2554519,
+      "sha256": "26cc0080f82c13ea3ef7754cf0c975cae111c22f91769d39c212eeee2129799c",
+      "alphaBounds": [
+        0,
+        27,
+        1240,
+        1212
+      ],
+      "solidBounds": [
+        37,
+        31,
+        1216,
+        1203
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "cornerAlpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "reference": "silver-restored.png",
+      "referenceRole": "registered state edit target",
+      "runtimePath": "App/Assets.xcassets/WorldMapIslandSilverDamaged.imageset/silver-damaged.png",
+      "export": "byte-identical copy; no raster postprocessing"
+    },
+    {
+      "id": "frostfruit-restored",
+      "asset": "WorldMapIslandFrostfruitRestored",
+      "source": "docs/design/world-01/production/layered-2026-10-20/frostfruit-restored.png",
+      "original": "/Users/lbeezr/.codex/generated_images/01a15943-b66d-7592-8c65-70773ad657c2/exec-97aa7ad6-05a5-41d0-9bcf-24bbf65e1263.png",
+      "prompt": "frostfruit-restored.prompt.txt",
+      "submittedPrompt": "Use case: stylized-concept\nAsset type: ONE independent production 2D world-map island, restored state, genuinely transparent background.\nImage 1 is the official Frostfruit Orchard level painting: use its orchard identity, spreading opal tree, snow, hanging glass-bell fruit, pale stone terraces, tending trays and resting bench. Image 2 is the accepted standalone Lantern island and Image 3 the accepted Ribbon island: match their elevated orthographic three-quarter camera, warm upper-left light, pearl/brass/violet storybook miniature materials, crisp complete silhouette and degree of detail. These are references only. Do not reproduce a full screen or the empty starfield in Image 1.\nCreate one cohesive, substantial floating winter orchard island on a square transparent canvas, ideally 1254x1254 to match the existing map family. Same source composition scale and camera as Image 2, with the entire island inside the canvas and clear transparent padding around every branch, glow and crystal. No perspective convergence, no horizon. Preserve a richly crafted connected place, recognizable when displayed at 220–270 points wide.\nSubject: Frostfruit Orchard. One spreading irregular opal-barked tree with a broad frosted blue-white crown rises from a snowy moonstone terrace. Five or six large hanging glass-bell fruits are the main identity: translucent blue-lilac bells around warm pearl-gold seed hearts. The high central fruit cluster is visibly OPEN, its glass lobes separated around a luminous heart. This final opening must be distinct in silhouette, not merely brighter. Preserve winter snow and cool foliage, with warm fine veins in bark and lit brass lanterns. A stone path joins a curved bench tucked between roots, a shallow collecting tray and one small seed basket. Add a few thick supported stone steps and blue crystal roots under the floating terrain. Use bold connected forms and restrained small details; no loose separate props.\nKeep the front-center path at normalized (.50,.68) visually quiet and open for a separate native map pin. The path ends at the island's own intact front edge; no outgoing bridge, stair fragment or neighboring terrain. All scene elements belong to this one complete island cutout.\nNo sky, background, clouds, stars outside the island, ground plane, ground shadow, people, names, typography, UI, icons, labels or native selector. Real alpha, no painted checkerboard. No cropping of tree crown, branches, glass fruit, terrain or hanging crystals.",
+      "tool": "built-in image_gen",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "bytes": 2780752,
+      "sha256": "6a6143a55c4eeee860540ca28100f8bd78079bf41f98ecee836be73efb41c288",
+      "alphaBounds": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "solidBounds": [
+        28,
+        32,
+        1245,
+        1218
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "cornerAlpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "attachmentAlpha": {
+        "marker": 250,
+        "leading": 252,
+        "trailing": 250,
+        "upper": 250,
+        "lower": 251
+      },
+      "runtimePath": "App/Assets.xcassets/WorldMapIslandFrostfruitRestored.imageset/frostfruit-restored.png",
+      "export": "byte-identical copy; no raster postprocessing",
+      "registration": "Source pair inspected with unchanged camera, terrain and front-path alignment; six-island native validation pending.",
+      "references": [
+        {
+          "path": "App/Assets.xcassets/FrostfruitOrchard100.imageset/scene.png",
+          "role": "official orchard identity and completed fruit state",
+          "gitRef": "d94903b",
+          "sha256": "c9610eaf29246b4b6a5aabeff18a3796a49c46f68784d1db8eeb194f28ec1f8b"
+        },
+        {
+          "path": "lantern-restored.png",
+          "role": "existing map camera, material rendering, source scale and transparent island construction"
+        },
+        {
+          "path": "ribbon-restored.png",
+          "role": "existing map camera, material rendering and connected terrain"
+        }
+      ]
+    },
+    {
+      "id": "frostfruit-damaged",
+      "asset": "WorldMapIslandFrostfruitDamaged",
+      "source": "docs/design/world-01/production/layered-2026-10-20/frostfruit-damaged.png",
+      "original": "/Users/lbeezr/.codex/generated_images/01a15943-b66d-7592-8c65-70773ad657c2/exec-f7398252-6160-4c55-ac83-bd3963c56457.png",
+      "prompt": "frostfruit-damaged.prompt.txt",
+      "submittedPrompt": "Use case: precise-object-edit\nAsset type: dormant, unrepaired variant of the supplied transparent Frostfruit Orchard map island.\nEdit target: the supplied single restored orchard island. Preserve EXACTLY its 1254x1254 square canvas, elevated orthographic camera, island scale, complete outer tree-and-terrain silhouette, trunk and branch positions, stone terrace and steps, bench, collecting trays, front-center clear path, transparent margins and crystal-root shapes. This is a registered game-state variant, not a new composition: no rotation, no recentering, no resizing, no additions outside the silhouette.\nChange only repair state. The hanging glass-bell fruit is opaque frosted blue-white glass with no glowing heart; close the central opened cluster into one sealed bell-shaped fruit within its current central footprint. Keep that same cluster's location and stem, but visibly remove the open petal gaps. Thick frost holds the luminous seeds quiet inside the fruit. The tree's warm branching veins and small brass lanterns are unlit. Collected seeds in the existing trays and basket are opaque, pale and dormant. Hanging crystal roots keep their same shapes but lose their emission.\nWinter remains beautiful and intact: retain clean soft blue-white snow, frosted leaves, opal bark and the substantial crafted terrace. Do not make the snow dirty or turn the place into ruins. Use cooler gently subdued pearl/lilac materials, tarnished brass and restrained wear while maintaining the same high-quality readable miniature rendering. No global fog or uniform gray overlay.\nNo sky, clouds, detached stars, background, opaque matte, floor or shadow plane, neighboring islands, UI, text, labels, markers, people or painted checkerboard. Preserve real transparency and all major object registration. Do not alter the front path where the app places its separate native pin.",
+      "tool": "built-in image_gen",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "bytes": 2810262,
+      "sha256": "744fba87b64aa23d181592edb78ebe2ec6d0a10d01cef0139bc3709ebe5799f7",
+      "alphaBounds": [
+        0,
+        0,
+        1254,
+        1228
+      ],
+      "solidBounds": [
+        26,
+        31,
+        1247,
+        1219
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "cornerAlpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "attachmentAlpha": {
+        "marker": 253,
+        "leading": 253,
+        "trailing": 253,
+        "upper": 253,
+        "lower": 253
+      },
+      "runtimePath": "App/Assets.xcassets/WorldMapIslandFrostfruitDamaged.imageset/frostfruit-damaged.png",
+      "export": "byte-identical copy; no raster postprocessing",
+      "registration": "Source pair inspected with unchanged camera, terrain and front-path alignment; six-island native validation pending.",
+      "reference": "frostfruit-restored.png",
+      "referenceRole": "registered state edit target"
+    }
+  ],
+  "sourceRgba8EstimateBytes": 88062288,
+  "measurementLimits": "Source pixel estimate only; excludes framework caches, compressed asset catalog, intermediate and GPU copies.",
+  "registrationOwner": "App/WorldMapArtwork.swift: measured pair-union alpha>=128 bounds and per-island optical pin/route anchors; native packaged-image tests check each attachment lies on terrain in both states."
+}

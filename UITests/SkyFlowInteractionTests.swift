@@ -198,7 +198,14 @@ final class SkyFlowInteractionTests: XCTestCase {
             else { tap(choice, app) }
             XCTAssertTrue(app.buttons["sky.begin"].waitForExistence(timeout: 5))
             XCTAssertFalse(app.buttons["experiment.cell.0.0"].exists)
-            tap("sky.home", app); tap("sky.resume", app)
+            tap("sky.home", app)
+            if choice == "sky.worldMap" {
+                XCTAssertTrue(app.staticTexts["world.selection"].waitForExistence(timeout: 5))
+                XCTAssertEqual(app.staticTexts["world.selection"].label, "Lantern Landing")
+                tap("world.done", app)
+            } else {
+                tap("sky.resume", app)
+            }
             assertRetained()
         }
         tap("experiment.settings", app); tap("sky.home", app)
@@ -290,6 +297,8 @@ final class SkyFlowInteractionTests: XCTestCase {
         XCTAssertFalse(app.buttons["experiment.next"].exists)
         captureEntry(app, "first-light-entry-after-help")
         tap("sky.home", app)
+        XCTAssertTrue(app.staticTexts["world.selection"].waitForExistence(timeout: 5))
+        XCTAssertEqual(app.staticTexts["world.selection"].label, "Lantern Landing")
         XCTAssertFalse(app.buttons["sky.resume"].exists, "Reading pending Help does not save or begin a round")
     }
 
@@ -397,6 +406,9 @@ final class SkyFlowInteractionTests: XCTestCase {
         app.worldVisitControl("firstLight").tap()
         captureEntry(app, "flow-largest-entry")
         tap("sky.home", app)
+        XCTAssertTrue(app.staticTexts["world.selection"].waitForExistence(timeout: 5))
+        XCTAssertEqual(app.staticTexts["world.selection"].label, "Lantern Landing")
+        XCTAssertFalse(app.buttons["world.list"].exists)
         XCTAssertFalse(app.buttons["sky.resume"].exists, "Canceling an unbegun round must not create a save")
         app.worldVisitControl("firstLight").tap()
         tap("sky.begin", app)

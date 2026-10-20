@@ -22,8 +22,8 @@ struct SkyDialogueBubble<Actions: View>: View {
     private var fittedContent: some View {
         Group {
             if let maximumHeight {
-                // Fit the complete message and actions first. Only the introduction
-                // scrolls when constrained, so native actions keep their full targets.
+                // Fit the complete introduction first. A constrained reader puts
+                // speech first and keeps native actions outside the scroll view.
                 ViewThatFits(in: .vertical) {
                     messageSurface(scrolling: false)
                         .fixedSize(horizontal: false, vertical: true)
@@ -41,15 +41,37 @@ struct SkyDialogueBubble<Actions: View>: View {
         else { messageContent(scrolling: scrolling).starfallPanel(inset: StarfallTheme.Spacing.medium) }
     }
 
-    private func messageContent(scrolling: Bool) -> some View {
-        VStack(alignment: .leading, spacing: StarfallTheme.Spacing.small) {
-            if scrolling {
-                ScrollView { introduction }
+    @ViewBuilder private func messageContent(scrolling: Bool) -> some View {
+        if scrolling {
+            // At ordinary text sizes a short viewport can fit a line alongside
+            // Close, but cannot fit a heading, line and Close stacked vertically.
+            // Accessibility layouts retain the taller reader above pinned actions.
+            let layout = textSize.isAccessibilitySize
+                ? AnyLayout(VStackLayout(alignment: .leading, spacing: StarfallTheme.Spacing.small))
+                : AnyLayout(HStackLayout(alignment: .top, spacing: StarfallTheme.Spacing.small))
+            layout {
+                ScrollView { compactIntroduction }
                     .scrollBounceBehavior(.basedOnSize)
                     .accessibilityIdentifier("sky.dialogue.reading")
-            } else { introduction }
-            actions.fixedSize(horizontal: false, vertical: true)
+                actions.fixedSize(horizontal: false, vertical: true)
+            }
+        } else {
+            VStack(alignment: .leading, spacing: StarfallTheme.Spacing.small) {
+                introduction
+                actions.fixedSize(horizontal: false, vertical: true)
+            }
         }
+    }
+
+    private var compactIntroduction: some View {
+        Text("\(Text(line.speaker.name).bold()). \(line.text)")
+            .font(StarfallTheme.Typography.supporting)
+            .foregroundStyle(embedded ? embeddedInk : StarfallTheme.Dialogue.ink)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .fixedSize(horizontal: false, vertical: true)
+            .accessibilityRepresentation {
+                Text(line.spokenText).accessibilityIdentifier(messageIdentifier)
+            }
     }
 
     private var introduction: some View {
@@ -68,11 +90,11 @@ struct SkyDialogueBubble<Actions: View>: View {
                         .font(StarfallTheme.Typography.supporting)
                         .foregroundStyle(embedded ? embeddedInk : StarfallTheme.Dialogue.ink)
                         .fixedSize(horizontal: false, vertical: true)
+                        .accessibilityRepresentation {
+                            Text(line.spokenText).accessibilityIdentifier(messageIdentifier)
+                        }
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
-            }
-            .accessibilityRepresentation {
-                Text(line.spokenText).accessibilityIdentifier(messageIdentifier)
             }
     }
 }

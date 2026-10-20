@@ -7,6 +7,7 @@ enum SkyFlowScreen: Equatable {
 
     static func initial(arguments: [String] = ProcessInfo.processInfo.arguments) -> Self {
         #if DEBUG
+        if WorldMapReviewFixture.requested(arguments: arguments) != nil { return .worldMap }
         // Preserve reset-only native board fixtures. Flow acceptance uses the real
         // welcome route with --sky-flow-review; ordinary Debug/Release opens Welcome.
         if arguments.contains("--starfalls-reset"), !arguments.contains("--sky-flow-review") { return .playing }
@@ -14,7 +15,7 @@ enum SkyFlowScreen: Equatable {
         return .welcome
     }
 }
-enum SkyFlowAction: Equatable { case start, firstLight, ribbonCrossing, kiteHarbor, seedMoon, silverPools, frostfruitOrchard, begin, resume, replay, another, home, preferences, worldMap, worldBack, tutorial }
+enum SkyFlowAction: Equatable { case start, firstLight, ribbonCrossing, kiteHarbor, seedMoon, silverPools, frostfruitOrchard, begin, entryBack, resume, replay, another, home, preferences, worldMap, worldBack, tutorial }
 
 @MainActor struct SkyFlowCeremony: View {
     let screen: SkyFlowScreen
@@ -234,9 +235,9 @@ enum SkyFlowAction: Equatable { case start, firstLight, ribbonCrossing, kiteHarb
 
     private var entryNavigation: some View {
         HStack {
-            Button { action(.home) } label: { ObservatoryIcon(.back) }
+            Button { action(.entryBack) } label: { ObservatoryIcon(.back) }
                 .buttonStyle(StarfallUtilityButtonStyle())
-                .accessibilityLabel(SkyCopy.text(.actionHome))
+                .accessibilityLabel(SkyCopy.text(.worldBack))
                 .accessibilityIdentifier("sky.home")
             Spacer(minLength: 0)
             preferencesUtility
@@ -495,8 +496,13 @@ extension FallingSkyStore {
     @MainActor static func forSkyFlowApp(arguments: [String] = ProcessInfo.processInfo.arguments) -> FallingSkyStore {
         let defaults = SkyDefaults.forApp(arguments: arguments)
         #if DEBUG
+        if let fixture = WorldMapReviewFixture.requested(arguments: arguments) {
+            let reviewDefaults = try! fixture.prepareIsolatedDefaults()
+            return FallingSkyStore(defaults: reviewDefaults, arguments: arguments.filter { $0 != "--starfalls-reset" })
+        }
         if arguments.contains("--sky-flow-review"),
            !arguments.contains("--technique-review"), !arguments.contains("--dialogue-review"),
+           !arguments.contains(WorldMapReviewFixture.marker),
            arguments.contains("--starfalls-reset") {
             // Fixture mutation belongs to store creation, never preference-domain selection.
             if arguments.contains("--save-rejection-review") {

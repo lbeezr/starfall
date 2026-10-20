@@ -18,6 +18,7 @@ struct ConstellationTraceSurface: UIViewRepresentable {
     var feedback: ((String) -> Void)? = nil
     var swapStart: ((CGPoint) -> Bool)? = nil
     var swap: ((Cell, Cell, UInt64) -> Void)? = nil
+    var cancelDrawing: (() -> Void)? = nil
 
     func makeUIView(context: Context) -> Surface {
         let view = Surface(); view.installCapture(); view.isMultipleTouchEnabled = true
@@ -34,6 +35,9 @@ struct ConstellationTraceSurface: UIViewRepresentable {
         private(set) var session = ConstellationTouchSession()
         private var blocked = false
         private var holdTask: Task<Void, Never>?
+        private var holdDeadline: TimeInterval?
+        private var latestSampleTime: TimeInterval?
+        private var drawingCueStarted = false
 
         func updateInput(_ value: ConstellationTraceSurface) {
             if let old = input, old.generation != value.generation || old.size != value.size || !value.enabled {
@@ -79,6 +83,7 @@ struct ConstellationTraceSurface: UIViewRepresentable {
             holdTask?.cancel(); holdTask = nil
             // Retire the local ticket before cancellation can reenter via UIKit/SwiftUI.
             primary = nil; session.cancel(); blocked = true
+            holdDeadline = nil; latestSampleTime = nil; drawingCueStarted = false
             capture.cancelCapture(); input?.cancel()
             if let reason { input?.feedback?(reason) }
         }
@@ -88,49 +93,88 @@ struct ConstellationTraceSurface: UIViewRepresentable {
             guard primary == nil, touches.count == 1, (event?.allTouches?.count ?? 1) == 1,
                   let touch = touches.first else { cancelInput(reason: SkyCopy.text(.inputOneFinger)); return }
             primary = touch
-            beginInput(at: touch.location(in: self))
+            beginInput(at: touch.location(in: self), timestamp: touch.timestamp)
         }
         private func moveContact(_ touches: Set<UITouch>, event: UIEvent?) {
             guard !blocked, let primary, touches.contains(primary) else { return }
             guard (event?.allTouches?.count ?? 1) == 1 else { cancelInput(reason: SkyCopy.text(.inputOneFinger)); return }
-            for touch in (event?.coalescedTouches(for: primary) ?? [primary]).suffix(64) {
+            // Preserve the event chronology: dropping early samples could erase
+            // a pre-deadline excursion and turn a quick exchange into a hold.
+            for touch in event?.coalescedTouches(for: primary) ?? [primary] {
                 guard !blocked else { break }
-                moveInput(to: touch.location(in: self))
+                moveInput(to: touch.location(in: self), timestamp: touch.timestamp)
             }
         }
         private func endContact(_ touches: Set<UITouch>, event: UIEvent?) {
             guard !blocked, let primary, touches.contains(primary) else { cancelInput(); return }
             guard (event?.allTouches?.count ?? 1) == 1 else { cancelInput(reason: SkyCopy.text(.inputOneFinger)); return }
-            endInput(at: primary.location(in: self))
+            for touch in event?.coalescedTouches(for: primary) ?? [] {
+                guard !blocked else { break }
+                moveInput(to: touch.location(in: self), timestamp: touch.timestamp)
+            }
+            endInput(at: primary.location(in: self), timestamp: primary.timestamp)
         }
 
         // These sample methods are the production adapter, also exercised without
         // constructing synthetic UITouch objects in hosted regression checks.
-        func beginInput(at origin: CGPoint) {
-            guard let input, input.enabled else { cancelInput(); return }
+        func beginInput(at origin: CGPoint, timestamp: TimeInterval = ProcessInfo.processInfo.systemUptime) {
+            let deadline = timestamp + SkyGestureTiming.drawingHoldDuration
+            guard let input, input.enabled, timestamp.isFinite, timestamp >= 0, deadline.isFinite,
+                  origin.x.isFinite, origin.y.isFinite else { cancelInput(); return }
             blocked = false
             guard session.begin(at: origin, traceEligible: input.traceStart(origin) != nil,
                                 swapEligible: input.swapStart?(origin) == true),
                   input.contact?(origin) != false else { cancelInput(); return }
+            guard !blocked, session.origin != nil else { return }
+            holdDeadline = deadline; latestSampleTime = timestamp; drawingCueStarted = false
             guard session.canHold else { return }
             let ticket = session.sequence, generation = input.generation
             holdTask = Task { @MainActor [weak self] in
-                do { try await Task.sleep(for: .milliseconds(ConstellationTouchSession.holdMilliseconds)) }
-                catch { return }
+                // UITouch timestamps and system uptime share the boot-relative
+                // clock. Task admission delay must not add another full hold.
+                let remaining = deadline - ProcessInfo.processInfo.systemUptime
+                if remaining > 0 {
+                    do { try await Task.sleep(for: .seconds(remaining)) }
+                    catch { return }
+                }
                 guard !Task.isCancelled else { return }
                 self?.armDrawing(ticket: ticket, generation: generation)
             }
         }
-        func armDrawing(ticket: UInt64, generation: UInt64) {
+        func armDrawing(ticket: UInt64, generation: UInt64,
+                        timestamp: TimeInterval = ProcessInfo.processInfo.systemUptime) {
             guard !blocked, let input, input.enabled, input.generation == generation,
-                  let origin = session.origin, session.armTrace(ticket: ticket) else { return }
+                  timestamp.isFinite, let deadline = holdDeadline, timestamp >= deadline,
+                  ticket == session.sequence, session.canHold, !drawingCueStarted,
+                  let origin = session.origin else { return }
+            // This stages feedback only. Queued samples still choose their action
+            // from event time, even if this callback ran before their delivery.
+            drawingCueStarted = true
             input.begin(origin)
         }
-        func moveInput(to point: CGPoint) {
-            guard !blocked, let input else { return }
+        @discardableResult
+        func moveInput(to point: CGPoint, timestamp: TimeInterval = ProcessInfo.processInfo.systemUptime) -> Bool {
+            guard !blocked, let input, let latestSampleTime else { return false }
+            guard timestamp.isFinite, point.x.isFinite, point.y.isFinite else { cancelInput(); return false }
+            guard timestamp >= latestSampleTime else { return false }
+            self.latestSampleTime = timestamp
+            let ticket = session.sequence
+            if let deadline = holdDeadline, timestamp >= deadline, session.canHold {
+                armDrawing(ticket: ticket, generation: input.generation, timestamp: timestamp)
+                guard !blocked, self.input?.generation == input.generation,
+                      session.armTrace(ticket: ticket) else { return false }
+            }
             let wasDrawing = session.isDrawing
             let event = session.move(to: point, mapping: LandingGeometry(size: input.size))
             if !session.canHold { holdTask?.cancel(); holdTask = nil }
+            if drawingCueStarted && !session.isDrawing && !session.canHold {
+                // Withdraw only the staged trace. The responsive contact keeps
+                // its existing clock ticket until the selected action finishes.
+                drawingCueStarted = false
+                input.cancelDrawing?()
+                guard !blocked, session.sequence == ticket,
+                      self.input?.generation == input.generation else { return false }
+            }
             switch event {
             case .swap(let from, let to):
                 // Session is consumed before committing: redraw, finger-up and old
@@ -142,13 +186,15 @@ struct ConstellationTraceSurface: UIViewRepresentable {
             case .cancel: cancelInput(reason: SkyCopy.text(wasDrawing ? .inputTraceOffBoard : .inputSameStar))
             case .none: break
             }
+            return true
         }
-        func endInput(at point: CGPoint) {
+        func endInput(at point: CGPoint, timestamp: TimeInterval = ProcessInfo.processInfo.systemUptime) {
             // A final-only sample follows exactly the same directional decision.
-            moveInput(to: point)
+            guard moveInput(to: point, timestamp: timestamp) else { cancelInput(); return }
             guard !blocked, let input else { return }
             holdTask?.cancel(); holdTask = nil; primary = nil
             let outcome = session.finish(at: point, mapping: LandingGeometry(size: input.size))
+            holdDeadline = nil; latestSampleTime = nil; drawingCueStarted = false
             switch outcome {
             case .trace: input.end()
             case .tap(let cell): input.cancel(); input.tap(cell)
@@ -224,7 +270,6 @@ struct ConstellationTouchSession {
     enum Event: Equatable { case none, trace, swap(Cell, Cell), blockedSwap, cancel }
     enum Outcome: Equatable { case none, tap(Cell), trace, cancel }
     private enum Mode { case idle, pending, drawing, consumed }
-    static let holdMilliseconds = SkyGestureTiming.drawingHoldMilliseconds
     static let holdSlop: CGFloat = 8
     static let tapSlop: CGFloat = 18
     private var mode = Mode.idle

@@ -5,6 +5,9 @@ import Foundation
 enum SkyDefaults {
     static func forApp(arguments: [String] = ProcessInfo.processInfo.arguments) -> UserDefaults {
         #if DEBUG
+        if arguments.contains(WorldMapReviewFixture.marker) {
+            return UserDefaults(suiteName: WorldMapReviewFixture.suiteName)!
+        }
         for (flag, suite) in [("--technique-review", "Starfall.TechniqueReview"),
                               ("--dialogue-review", "Starfall.DialogueReview"),
                               ("--sky-flow-review", "Starfall.SkyFlowReview")] {

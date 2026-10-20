@@ -1,0 +1,3 @@
+Use case: stylized-concept
+Asset type: one reusable transparent cloud sprite for Starfall layered map.
+Use supplied map only for soft lavender-blue cloud material and storybook lighting. Generate one wide horizontal, irregular, soft-edged cloud bank, isolated on genuinely transparent background. Soft volumetric puffs in periwinkle, slate blue, lavender with subtle pale pearl top edges. Body occupies central60%of a square canvas, ample fully transparent margins; opacity falls off gently at the edges. No background, sky, stars, islands, crystals, text, UI, border or ground shadow. No dark rectangle or painted checkerboard. This single cluster will be reused at different sizes/positions as a separate ambient layer; keep lighting neutral and no focal objects.

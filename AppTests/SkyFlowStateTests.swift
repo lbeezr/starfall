@@ -26,6 +26,52 @@ final class SkyFlowStateTests: XCTestCase {
         XCTAssertEqual(flow.handoff?.startsClock, false)
         XCTAssertNil(flow.entry)
     }
+
+    func testEntryBackReturnsToMapAndPreservesItsOriginalDestination() throws {
+        let destinations: [SkyFlowAction] = [.firstLight, .ribbonCrossing, .kiteHarbor, .seedMoon, .silverPools, .frostfruitOrchard]
+        for arguments in [[], ["--starfalls-reset"]] {
+            var flow = SkyFlowState(arguments: arguments)
+            let origin = flow.screen
+            XCTAssertEqual(flow.handle(.worldMap, hasSavedSky: true), .worldMap)
+            for destination in destinations {
+                XCTAssertEqual(flow.handle(destination, hasSavedSky: true), .staged)
+                let entryID = try XCTUnwrap(flow.entryID)
+                XCTAssertNil(flow.handle(.entryBack, hasSavedSky: true), "Unidentified callbacks cannot cancel Entry")
+                XCTAssertEqual(flow.handle(.entryBack, hasSavedSky: true, entryID: entryID), .worldMap)
+                XCTAssertEqual(flow.screen, .worldMap)
+                XCTAssertNil(flow.entry); XCTAssertNil(flow.entryID); XCTAssertNil(flow.handoff)
+                XCTAssertNil(flow.handle(.begin, hasSavedSky: true, entryID: entryID))
+                XCTAssertNil(flow.handle(.entryBack, hasSavedSky: true, entryID: entryID))
+            }
+            XCTAssertEqual(flow.handle(.worldBack, hasSavedSky: true), origin == .playing ? .continued : .home)
+            XCTAssertEqual(flow.screen, origin)
+            XCTAssertNil(flow.handoff, "Map cancellation does not start a replacement or restart the clock")
+        }
+    }
+
+    func testEntryBackRejectsOldEntryCallbacksAndCannotCancelABegunSky() throws {
+        var flow = SkyFlowState(arguments: [])
+        _ = flow.handle(.worldMap, hasSavedSky: false)
+        _ = flow.handle(.firstLight, hasSavedSky: false)
+        let oldID = try XCTUnwrap(flow.entryID)
+        XCTAssertEqual(flow.handle(.entryBack, hasSavedSky: false, entryID: oldID), .worldMap)
+        _ = flow.handle(.firstLight, hasSavedSky: false)
+        let currentID = try XCTUnwrap(flow.entryID)
+        XCTAssertNotEqual(currentID, oldID)
+        let staged = flow
+        XCTAssertNil(flow.handle(.entryBack, hasSavedSky: false, entryID: oldID))
+        XCTAssertNil(flow.handle(.begin, hasSavedSky: false, entryID: oldID))
+        XCTAssertEqual(flow, staged)
+        XCTAssertEqual(flow.handle(.begin, hasSavedSky: false, entryID: currentID), .began(.firstLight))
+        let handoff = flow
+        XCTAssertNil(flow.handle(.entryBack, hasSavedSky: false, entryID: currentID))
+        XCTAssertEqual(flow, handoff)
+        XCTAssertEqual(flow.handle(.home, hasSavedSky: true), .home)
+        XCTAssertEqual(flow.handle(.start, hasSavedSky: true), .staged)
+        XCTAssertEqual(flow.handle(.entryBack, hasSavedSky: true, entryID: flow.entryID), .home)
+        XCTAssertEqual(flow.screen, .welcome, "A later Free Play choice must not inherit a canceled map origin")
+    }
+
     @MainActor private func make(legacyClock: Bool = false) -> (FallingSkyStore, FallingSkyRecorder, ManualRainClock, UserDefaults) {
         let suite = "Starfall.Entry.\(UUID())"
         let defaults = UserDefaults(suiteName: suite)!
@@ -52,7 +98,7 @@ final class SkyFlowStateTests: XCTestCase {
                 XCTAssertEqual(flow.screen, .entry)
                 clock.advance(100)
                 XCTAssertNil(clock.deadline)
-                XCTAssertEqual(flow.handle(.home, hasSavedSky: true), .home)
+                XCTAssertEqual(flow.handle(.entryBack, hasSavedSky: true, entryID: flow.entryID), .home)
                 XCTAssertNil(flow.entry)
                 XCTAssertEqual(store.game, original)
                 XCTAssertEqual(defaults.data(forKey: FallingSkyStore.saveKey), core)
@@ -67,7 +113,7 @@ final class SkyFlowStateTests: XCTestCase {
         var flow = SkyFlowState(arguments: [])
         XCTAssertEqual(flow.handle(.start, hasSavedSky: false), .staged)
         XCTAssertEqual(flow.entry, .initial)
-        XCTAssertEqual(flow.handle(.home, hasSavedSky: false), .home)
+        XCTAssertEqual(flow.handle(.entryBack, hasSavedSky: false, entryID: flow.entryID), .home)
         clock.advance(100)
         XCTAssertFalse(store.hasSavedSky)
         XCTAssertNil(defaults.data(forKey: FallingSkyStore.saveKey))
@@ -84,7 +130,7 @@ final class SkyFlowStateTests: XCTestCase {
         let core = try XCTUnwrap(defaults.data(forKey: FallingSkyStore.saveKey))
         var flow = SkyFlowState(arguments: ["--starfalls-reset"])
         XCTAssertEqual(flow.handle(.replay, hasSavedSky: true), .staged)
-        XCTAssertEqual(flow.handle(.home, hasSavedSky: true), .home)
+        XCTAssertEqual(flow.handle(.entryBack, hasSavedSky: true, entryID: flow.entryID), .home)
         XCTAssertEqual(store.game, original)
         XCTAssertEqual(defaults.data(forKey: FallingSkyStore.saveKey), core)
     }

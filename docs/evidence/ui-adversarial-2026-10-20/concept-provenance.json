@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-20",
+  "sourceCommit": "d0dfcc1062eb8c109ceded861d9d80110ebf7824",
+  "tool": "built-in image_gen",
+  "prompts": [
+    "map-prompt.txt",
+    "map-correction-prompt.txt"
+  ],
+  "references": [
+    {
+      "path": "App/Assets.xcassets/WorldMapRestored.imageset/world-restored.png",
+      "sha256": "467febb84e34cac7da8a71db506def7bbd926e730fea51f2f6a2382fd2ce0a5d",
+      "role": "world identity reference"
+    },
+    {
+      "path": "docs/design/interface/observatory-game-ui-concept-2026-10-19.png",
+      "sha256": "8594e09b6124a9f78f81f56a19bdf1257ea6bceab9236e463425a822dceb6fd6",
+      "role": "approved interface material reference"
+    }
+  ],
+  "attempts": [
+    {
+      "file": "map-concept-01.png",
+      "dimensions": [
+        863,
+        1822
+      ],
+      "bytes": 2935770,
+      "sha256": "5b67fd44be8255c9d6688b4fb7c14abd5d9677b8fdc4b88e7ab03bf1f5d2a575",
+      "status": "superseded attempt; Ribbon and locked-state identity defects"
+    },
+    {
+      "file": "map-concept-02.png",
+      "dimensions": [
+        863,
+        1822
+      ],
+      "bytes": 2824918,
+      "sha256": "368131059426b690f37b7ecc2fd5b1e7d940dac505cd6dca581a6d88aed36126",
+      "status": "selected composition concept; not runtime"
+    }
+  ],
+  "limits": [
+    "Concept only, no production source registration or responsive native layout",
+    "No motion, target size or accessibility acceptance",
+    "Ready Kite Harbor terrain is illustrative, not verified unrestored state",
+    "All text/icons must remain native in production",
+    "Seven future locations are atmospheric placeholders, not new approved identities"
+  ]
+}
