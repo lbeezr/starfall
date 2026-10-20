@@ -1,6 +1,8 @@
 # Evidence index
 
-[Faceless gameplay pieces and family motion](gameplay-shards-2026-10-20/README.md) records the seven gameplay materials, single-body growth with a renderer aura, finite family responses and retained Crystal Glow story characters. Native material/spacing inspection, sampled normal motion and integration checks keep their exact source boundaries. Physical recognition, minimum-OS rendering and actual VoiceOver remain separate acceptance.
+[Living starlight native integration](living-starlight-2026-10-20/README.md) records seven shared family shaders, bounded inner-light responses and matching cached forecast materials at runtime `dev.e2b265734e`, snapshot `756c0353`. Core/build and focused hosted/UI checks pass; native small materials, a 49-piece board and sampled normal motion are inspected. The initial timing failure and unchanged-test comparison remain visible. Publication/canonical installation and physical/RC acceptance are separate.
+
+[Faceless gameplay pieces and family motion](gameplay-shards-2026-10-20/README.md) retains the preceding static-material evidence for seven gameplay materials, single-body growth with a renderer aura, finite family responses and retained Crystal Glow story characters. Native material/spacing inspection, sampled normal motion and integration checks keep their exact source boundaries. Physical recognition, minimum-OS rendering and actual VoiceOver remain separate acceptance.
 
 [Observatory UI parity refinement](observatory-ui-parity-2026-10-20/README.md) records the quieter HUD, shared settings frame, corrected tutorial/reading layout and rendered utility icons, with exact phone/compact/tablet results and failure history. [Ten inspected native stills](observatory-ui-parity-2026-10-20/captures.json) retain their runtime and source limits; motion, Release, final-source, publication and physical acceptance are recorded separately.
 

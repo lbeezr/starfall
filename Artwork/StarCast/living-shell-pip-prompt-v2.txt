@@ -1,0 +1,8 @@
+Use case: style-transfer. One transparent game sprite shell.
+Image 1 is the exact approved Pip body to preserve. Image 2 shows the approved membrane materials for this game.
+
+Change only the MATERIAL of image 1 into the translucent celestial membrane of image 2. Preserve image 1's exact outer silhouette, tilt, outline proportions and color identity. The previous trial widened the wedge too much, so do not widen or flatten this one. Its outer body is about 1.22 times as wide as tall: a tall chunky mint asymmetric wedge, broad nearly level base, summit to the upper left, short upper-right shoulder and slanted right edge. Use the actual attached image 1 outline, not a generic triangle.
+
+Remove the internal opaque triangular facets. Render a thin emerald/mint membrane with a readable closed rim, restrained pale upper-left rim light, two or three broad flowing curved edge refractions and saturated lower edge. Its large central field has only 10–25% alpha opacity, gently mint tinted, so the separate animated light placed BEHIND this layer remains visible. This is true partial alpha, not gray/checkerboard/white/black paint. No baked core light, hotspot or central white blob.
+
+Exactly one isolated complete shell, centered on a genuinely transparent square canvas with generous padding. Softly illustrated whimsical premium game art. No face, eyes, paired dots, literal insect, facets, loose droplets, outside halo, particles, labels, text, floor or cast shadow. Material transformation only; preserve image 1's outline.

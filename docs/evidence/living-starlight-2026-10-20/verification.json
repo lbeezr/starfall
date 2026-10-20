@@ -1,0 +1,308 @@
+{
+  "status": "Development verified; ready for publication; canonical delivery pending",
+  "scope": "Focused checks, not the complete hosted/UI/RC matrix",
+  "sourceRecord": "source.json",
+  "baseCommit": "d94903b69e864218ca2643ddc191676324f69654",
+  "snapshotID": "756c0353",
+  "runtimeBuildID": "dev.e2b265734e",
+  "environment": {
+    "configuration": "Debug and Release",
+    "device": "iPhone17e Simulator",
+    "simulatorID": "D65C5E40-734F-42BF-8F91-97E980ED19C2",
+    "OS": "iOS27.0",
+    "Xcode": "27.1 (27A9275)"
+  },
+  "checks": [
+    {
+      "name": "Core",
+      "command": [
+        "swift",
+        "test"
+      ],
+      "result": "passed",
+      "passed": 185,
+      "failed": 0,
+      "skipped": 0,
+      "log": "/tmp/starfall-living-core.log"
+    },
+    {
+      "name": "Debug test build",
+      "command": [
+        "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild",
+        "-project",
+        "Starfall.xcodeproj",
+        "-scheme",
+        "Starfall",
+        "-configuration",
+        "Debug",
+        "-destination",
+        "platform=iOS Simulator,id=D65C5E40-734F-42BF-8F91-97E980ED19C2",
+        "-derivedDataPath",
+        "/tmp/starfall-living-dd",
+        "ARCHS=arm64",
+        "ONLY_ACTIVE_ARCH=YES",
+        "CODE_SIGNING_ALLOWED=NO",
+        "build-for-testing"
+      ],
+      "result": "passed",
+      "log": "/tmp/starfall-living-shared-build.log",
+      "logSHA256": "6aac269c9805489ecbbe7aee5fce8aa80b648057f493efd5e27234a2c560f57a"
+    },
+    {
+      "name": "Release build",
+      "command": [
+        "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild",
+        "-project",
+        "Starfall.xcodeproj",
+        "-scheme",
+        "Starfall",
+        "-configuration",
+        "Release",
+        "-destination",
+        "generic/platform=iOS Simulator",
+        "-derivedDataPath",
+        "/tmp/starfall-living-release-dd",
+        "ARCHS=arm64",
+        "ONLY_ACTIVE_ARCH=YES",
+        "CODE_SIGNING_ALLOWED=NO",
+        "build"
+      ],
+      "result": "passed",
+      "log": "/tmp/starfall-living-shared-release.log",
+      "logSHA256": "f05079b8b0b28d904935b85d2384ca722054c0ffe9a13673df3d0ab42ccc0478"
+    },
+    {
+      "name": "Hosted tests",
+      "command": [
+        "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild",
+        "-project",
+        "Starfall.xcodeproj",
+        "-scheme",
+        "Starfall",
+        "-configuration",
+        "Debug",
+        "-destination",
+        "platform=iOS Simulator,id=D65C5E40-734F-42BF-8F91-97E980ED19C2",
+        "-derivedDataPath",
+        "/tmp/starfall-living-dd",
+        "-resultBundlePath",
+        "/tmp/starfall-living-shared-hosted.xcresult",
+        "ARCHS=arm64",
+        "ONLY_ACTIVE_ARCH=YES",
+        "CODE_SIGNING_ALLOWED=NO",
+        "-parallel-testing-enabled",
+        "NO",
+        "-collect-test-diagnostics",
+        "never",
+        "-only-testing:StarfallAppTests/SkyPieceTests",
+        "-only-testing:StarfallAppTests/StarCastTests",
+        "-only-testing:StarfallAppTests/CriticalMassProductionTests",
+        "-only-testing:StarfallAppTests/DuskProductionTests",
+        "-only-testing:StarfallAppTests/FallingSkyStoreTests/testRestartRejectsStaleTimerAndAnimationAndRestoreStartsPaused",
+        "-only-testing:StarfallAppTests/FallingSkyStoreTests/testCalmChangeSettlesCommittedBoardAndKeepsClock",
+        "-only-testing:StarfallAppTests/FallingSkyStoreTests/testPauseAndBackgroundFreezeRemainingTimeWithoutCatchUp",
+        "-only-testing:StarfallAppTests/NativeInputWindowTests/testRealSceneFreshSurvivalInputWindowsAcrossAutomaticStorm",
+        "test-without-building"
+      ],
+      "result": "passed",
+      "log": "/tmp/starfall-living-shared-hosted.log",
+      "logSHA256": "968dce2079f0f447fdea5b02233f3cc1a633a939e90b2e0c6fd20908971c62db",
+      "passed": 48,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "UI tests",
+      "command": [
+        "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild",
+        "-project",
+        "Starfall.xcodeproj",
+        "-scheme",
+        "Starfall",
+        "-configuration",
+        "Debug",
+        "-destination",
+        "platform=iOS Simulator,id=D65C5E40-734F-42BF-8F91-97E980ED19C2",
+        "-derivedDataPath",
+        "/tmp/starfall-living-dd",
+        "-resultBundlePath",
+        "/tmp/starfall-living-ui.xcresult",
+        "ARCHS=arm64",
+        "ONLY_ACTIVE_ARCH=YES",
+        "CODE_SIGNING_ALLOWED=NO",
+        "-parallel-testing-enabled",
+        "NO",
+        "-collect-test-diagnostics",
+        "never",
+        "-only-testing:StarfallUITests/SkyDialogueInteractionTests/testNormalMotionForecastCompletesSeveralAutomaticCycles",
+        "-only-testing:StarfallUITests/FallingSkyInteractionTests/testOpeningCascadeAllowsNativeClearBeforeLastWave",
+        "-only-testing:StarfallUITests/FrostfruitOrchardInteractionTests/testFrostfruitDenseRapidClearSurvivesSettingsAndBackground",
+        "-only-testing:StarfallUITests/FrostfruitOrchardInteractionTests/testFrostfruitDenseOverflowKeepsNamedReplayAndRestartsAtZero",
+        "-only-testing:StarfallUITests/FrostfruitOrchardInteractionTests/testFrostfruitLargestTextSystemReduceMotionWinKeepsResultActionsUsable",
+        "test-without-building"
+      ],
+      "result": "passed",
+      "log": "/tmp/starfall-living-ui.log",
+      "logSHA256": "30b08951559fb91765616406f025d55aef546b689595454e514de71a55141f92",
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "Repository hygiene",
+      "command": [
+        "python3",
+        "scripts/ci-hygiene.py"
+      ],
+      "result": "passed"
+    },
+    {
+      "name": "Whitespace",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "result": "passed"
+    },
+    {
+      "name": "Recorded normal-motion repeat",
+      "command": [
+        "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild",
+        "-project",
+        "Starfall.xcodeproj",
+        "-scheme",
+        "Starfall",
+        "-configuration",
+        "Debug",
+        "-destination",
+        "platform=iOS Simulator,id=D65C5E40-734F-42BF-8F91-97E980ED19C2",
+        "-derivedDataPath",
+        "/tmp/starfall-living-dd",
+        "-resultBundlePath",
+        "/tmp/starfall-living-motion.xcresult",
+        "ARCHS=arm64",
+        "ONLY_ACTIVE_ARCH=YES",
+        "CODE_SIGNING_ALLOWED=NO",
+        "-parallel-testing-enabled",
+        "NO",
+        "-collect-test-diagnostics",
+        "never",
+        "-only-testing:StarfallUITests/FrostfruitOrchardInteractionTests/testFrostfruitDenseRapidClearSurvivesSettingsAndBackground",
+        "test-without-building"
+      ],
+      "result": "passed",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "distinctNewCoverage": false,
+      "log": "/tmp/starfall-living-motion.log",
+      "logSHA256": "21f85790593097a33fd2ad5fdd668106bf392c401dee7ccf70376e5c63b0c81d"
+    }
+  ],
+  "priorAttempts": {
+    "initialCandidate": {
+      "passed": 47,
+      "failed": 1,
+      "skipped": 0,
+      "log": "/tmp/starfall-living-hosted.log",
+      "failedTest": "NativeInputWindowTests/testRealSceneFreshSurvivalInputWindowsAcrossAutomaticStorm",
+      "failure": "Shower 10 presentation took 4.408 seconds and left zero seconds before scheduled due; the other four windows passed."
+    },
+    "cleanBaseline": {
+      "source": "d94903b69e864218ca2643ddc191676324f69654",
+      "export": "/tmp/starfall-living-baseline-d94903b",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "unchangedTimingTestSHA256": "488d806335c6bcf39ea5c424f113ea690bf52243ff67d190899692afbd74b388"
+    },
+    "interpretation": "The initial candidate stall did not recur on clean baseline or shared-shader candidate. Sharing immutable family programs removes per-node shader creation; the original stall cause is not established by this comparison. Existing assertions, cadence and ready-window threshold remain unchanged."
+  },
+  "readyWindowThresholdSeconds": 0.5,
+  "readinessWindows": [
+    {
+      "shower": 9,
+      "baseline_presentation_s": 1.2729099583229981,
+      "baseline_ready_s": 1.7270562499761581,
+      "candidate_v1_presentation_s": 1.2478325416450389,
+      "candidate_v1_ready_s": 1.7521307917195372,
+      "shared_shader_presentation_s": 1.289126000017859,
+      "shared_shader_ready_s": 1.7107871666667052,
+      "shared_shader_observed_ready": true
+    },
+    {
+      "shower": 10,
+      "baseline_presentation_s": 1.2987765416619368,
+      "baseline_ready_s": 1.2011238749837503,
+      "candidate_v1_presentation_s": 4.408347874996252,
+      "candidate_v1_ready_s": 0,
+      "shared_shader_presentation_s": 1.273968999972567,
+      "shared_shader_ready_s": 1.225833666685503,
+      "shared_shader_observed_ready": true
+    },
+    {
+      "shower": 11,
+      "baseline_presentation_s": 1.3051826666924171,
+      "baseline_ready_s": 1.1947252916870639,
+      "candidate_v1_presentation_s": 1.265464249998331,
+      "candidate_v1_ready_s": 1.2344846250489354,
+      "shared_shader_presentation_s": 1.2873688333202153,
+      "shared_shader_ready_s": 1.2124211667105556,
+      "shared_shader_observed_ready": true
+    },
+    {
+      "shower": 12,
+      "baseline_presentation_s": 1.328951750008855,
+      "baseline_ready_s": 1.1709152499679476,
+      "candidate_v1_presentation_s": 1.2726401249528863,
+      "candidate_v1_ready_s": 1.2273035416728817,
+      "shared_shader_presentation_s": 1.2699658750207163,
+      "shared_shader_ready_s": 1.2297769582946785,
+      "shared_shader_observed_ready": true
+    },
+    {
+      "shower": 13,
+      "baseline_presentation_s": 1.1334118749946356,
+      "baseline_ready_s": 2.366495374997612,
+      "candidate_v1_presentation_s": 1.117703124997206,
+      "candidate_v1_ready_s": 2.3822519583045505,
+      "shared_shader_presentation_s": 1.122895291657187,
+      "shared_shader_ready_s": 2.3769990833243355,
+      "shared_shader_observed_ready": true
+    }
+  ],
+  "visualEvidence": "captures.json",
+  "publication": "pending",
+  "canonicalDelivery": "pending",
+  "physicalPlay": "not run; installation will not establish recognition or sustained performance",
+  "minimumIOS": "not run; existing iOS17 RC gate remains open",
+  "actualVoiceOver": "deferred to RC; not run on this development build",
+  "sampledVideoInspection": {
+    "path": "/tmp/starfall-living-dense-motion.mov",
+    "bytes": 76426948,
+    "sha256": "b1fa7afb789a55dc0ff1c647852c6a554fb43716ab60213f94c80589ca4d1d3e",
+    "sourceRecord": "source.json",
+    "test": "FrostfruitOrchardInteractionTests/testFrostfruitDenseRapidClearSurvivesSettingsAndBackground",
+    "recording": "Native Simulator simctl recordVideo during the same existing UI test",
+    "sampleRanges": [
+      {
+        "fromSeconds": 10,
+        "throughSeconds": 40,
+        "stepSeconds": 3
+      },
+      {
+        "fromSeconds": 26,
+        "throughSeconds": 29,
+        "stepSeconds": 0.15
+      }
+    ],
+    "reviewer": "Root implementer",
+    "observations": [
+      "Native clear around 27.8\u201328.1 seconds; fall/rebound settled by about 28.55 seconds.",
+      "Inner light remained inside varied silhouettes; unrelated pieces did not move continuously.",
+      "Five colored families remained visible on the full 49-piece board."
+    ],
+    "limits": "Sampled frames, not continuous frame-time profiling or physical play; all seven family responses separately exercised by hosted native actions. Raw video remains disposable."
+  }
+}

@@ -4,30 +4,9 @@ import StarfallCore
 
 // Bounded material transitions for committed Dusk influence.
 extension FallingSkyCharacter {
-    private static let drainShaderSource = """
-    void main() {
-        vec4 color = texture2D(u_texture, v_tex_coord);
-        float light = dot(color.rgb, vec3(0.2126, 0.7152, 0.0722));
-        vec2 d = vec2(0.009);
-        float neighbor = min(min(texture2D(u_texture, v_tex_coord + vec2(d.x, 0.0)).a,
-                                 texture2D(u_texture, v_tex_coord - vec2(d.x, 0.0)).a),
-                             min(texture2D(u_texture, v_tex_coord + vec2(0.0, d.y)).a,
-                                 texture2D(u_texture, v_tex_coord - vec2(0.0, d.y)).a));
-        float rim = smoothstep(0.08, 0.45, color.a - neighbor);
-        vec3 gray = vec3(light * 0.62 + color.a * 0.06);
-        vec3 drained = mix(gray, color.rgb, rim * 0.9);
-        gl_FragColor = vec4(mix(color.rgb, drained, u_drain), color.a) * v_color_mix;
-    }
-    """
-
     func setDrain(_ amount: Float) {
         setDrainDecoration(amount > 0)
-        if amount <= 0 { character.shader = nil; return }
-        if character.shader == nil {
-            let shader = SKShader(source: Self.drainShaderSource)
-            shader.uniforms = [SKUniform(name: "u_drain", float: amount)]
-            character.shader = shader
-        } else { character.shader?.uniformNamed("u_drain")?.floatValue = amount }
+        LivingLight.setDrain(amount, on: character)
     }
 
     func animateDrain(from start: Float, to end: Float) {

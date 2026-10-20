@@ -1,0 +1,158 @@
+{
+  "errors": [],
+  "wide": {
+    "width": 736,
+    "scroll": 736,
+    "client": 736
+  },
+  "families": [
+    {
+      "family": "Spark",
+      "bump": {
+        "family": "Spark",
+        "active": true,
+        "ready": true,
+        "core": {
+          "x": 0.12815151766450109,
+          "y": 0.05
+        },
+        "reducedMotion": false
+      },
+      "settled": {
+        "family": "Spark",
+        "active": false,
+        "ready": true,
+        "core": {
+          "x": 0.1,
+          "y": 0.05
+        },
+        "reducedMotion": false
+      }
+    },
+    {
+      "family": "Sunny",
+      "bump": {
+        "family": "Sunny",
+        "active": true,
+        "ready": true,
+        "core": {
+          "x": 0.04440885758947088,
+          "y": 0
+        },
+        "reducedMotion": false
+      },
+      "settled": {
+        "family": "Sunny",
+        "active": false,
+        "ready": true,
+        "core": {
+          "x": 0,
+          "y": 0
+        },
+        "reducedMotion": false
+      }
+    },
+    {
+      "family": "Dusk",
+      "bump": {
+        "family": "Dusk",
+        "active": true,
+        "ready": true,
+        "core": {
+          "x": 0.12334676270907564,
+          "y": 0.02
+        },
+        "reducedMotion": false
+      },
+      "settled": {
+        "family": "Dusk",
+        "active": false,
+        "ready": true,
+        "core": {
+          "x": 0.07,
+          "y": 0.02
+        },
+        "reducedMotion": false
+      }
+    },
+    {
+      "family": "Opal",
+      "bump": {
+        "family": "Opal",
+        "active": true,
+        "ready": true,
+        "core": {
+          "x": 0.04470367043842672,
+          "y": 0
+        },
+        "reducedMotion": false
+      },
+      "settled": {
+        "family": "Opal",
+        "active": false,
+        "ready": true,
+        "core": {
+          "x": 0,
+          "y": 0
+        },
+        "reducedMotion": false
+      }
+    }
+  ],
+  "narrow": {
+    "width": 320,
+    "scroll": 320,
+    "client": 320
+  },
+  "reducedDrop": {
+    "family": "Dusk",
+    "active": false,
+    "ready": true,
+    "core": {
+      "x": 0.07,
+      "y": 0.02
+    },
+    "reducedMotion": true
+  },
+  "reducedAttention": {
+    "family": "Dusk",
+    "active": false,
+    "ready": true,
+    "core": {
+      "x": 0.1,
+      "y": -0.045
+    },
+    "reducedMotion": true
+  },
+  "status": "browser concept only",
+  "baselineCommit": "d94903b69e864218ca2643ddc191676324f69654",
+  "dirtyBuildInputs": [],
+  "artifactSHA256": "c977ad511d20d9cd58823fe5251773b9f8963fc41ffddf3bb519b55756a44c7d",
+  "artifactBytes": 642485,
+  "browser": "local Google Chrome, headless Playwright, isolated disposable profile",
+  "command": "node /tmp/starfall-living-starlight-final-smoke.cjs",
+  "checkedWidths": [
+    320,
+    736
+  ],
+  "inspectedCaptures": [
+    "Spark rest and drop",
+    "Sunny rest",
+    "Opal rest",
+    "Dusk attention",
+    "Dusk 320px rest"
+  ],
+  "unverified": [
+    "native SpriteKit rendering",
+    "dense board contrast",
+    "physical iPhone feel",
+    "actual VoiceOver",
+    "character emotion or user preference"
+  ],
+  "repositoryChecks": [
+    "python3 scripts/ci-hygiene.py: pass",
+    "git diff --check: pass",
+    "local documentation links: pass",
+    "source/export SHA256: pass"
+  ]
+}

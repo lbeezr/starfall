@@ -1,0 +1,105 @@
+{
+  "status": "concept only; unbundled",
+  "generator": "built-in image_gen",
+  "source": "shells-v1.png",
+  "sourceSHA256": "21fcd5ab1d0b153ad15a8d2b5d47f9cae80d387e68fd19a42fc4425288457264",
+  "operations": "Region crop, alpha>=8 bounding box detection only, four-pixel crop padding, proportional Lanczos fit to 208px span on transparent 256px canvas. Original alpha preserved; no painted pixels or alpha normalization.",
+  "pieces": {
+    "Spark": {
+      "region": [
+        0,
+        0,
+        768,
+        530
+      ],
+      "cropWithinRegion": [
+        120,
+        42,
+        710,
+        519
+      ],
+      "fittedSize": [
+        208,
+        168
+      ],
+      "pasteAt": [
+        24,
+        44
+      ],
+      "output": "spark-shell-v1.png",
+      "sha256": "78f42140529feff55ca74cda2eacdfa8a5ee89b7799f10ade36c67004ab8acd6"
+    },
+    "Sunny": {
+      "region": [
+        768,
+        0,
+        1536,
+        530
+      ],
+      "cropWithinRegion": [
+        47,
+        38,
+        607,
+        521
+      ],
+      "fittedSize": [
+        208,
+        179
+      ],
+      "pasteAt": [
+        24,
+        38
+      ],
+      "output": "sunny-shell-v1.png",
+      "sha256": "f57f51dddc067ca6adc1abfadd6dcd681bc366f0b39279514ecddc7c3db9a631"
+    },
+    "Dusk": {
+      "region": [
+        0,
+        530,
+        768,
+        1024
+      ],
+      "cropWithinRegion": [
+        238,
+        0,
+        751,
+        463
+      ],
+      "fittedSize": [
+        208,
+        188
+      ],
+      "pasteAt": [
+        24,
+        34
+      ],
+      "output": "dusk-shell-v1.png",
+      "sha256": "5cf7e490524fb0f5a49d2a0686beda315451b23e1996ced160bcfcddbbb7bcee"
+    },
+    "Opal": {
+      "region": [
+        768,
+        530,
+        1536,
+        1024
+      ],
+      "cropWithinRegion": [
+        102,
+        12,
+        552,
+        457
+      ],
+      "fittedSize": [
+        208,
+        206
+      ],
+      "pasteAt": [
+        24,
+        25
+      ],
+      "output": "opal-shell-v1.png",
+      "sha256": "ec20dcbcaa9086e0a4c1118ee2682d32d893e346a98262a0d78d9a41905cd6ed"
+    }
+  }
+}

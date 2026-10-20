@@ -115,7 +115,7 @@ import StarfallCore
     private func renderSnapshot(_ game: FallingSky, preservingInput: Bool) {
         rendered = game
         if !preservingInput { constellationTrail.removeAllChildren(); showBufferedInput(nil) }
-        removeAllActions(); effects.removeAllChildren(); effects.removeAllActions()
+        removeAllActions(); cancelFlightPoses(); effects.removeAllChildren(); effects.removeAllActions()
         for node in nodes.values { node.setGrowthMotion(false); node.setPieceMotion(false) }
         pieces.removeAllChildren(); grid.removeAllChildren(); nodes.removeAll(); cellsByID.removeAll()
         animatingColumns.removeAll()
@@ -444,6 +444,9 @@ extension FallingSkyScene {
     func showContact(_ cell: Cell, drawingEligible: Bool = false) {
         clearConstellationTrace()
         constellationTrail.addChild(contactOutline(cell, ready: false))
+        if pieceMotionEnabled, let id = rendered?.gem(at: cell)?.id {
+            nodes[id]?.attend()
+        }
         guard drawingEligible, growthMotionEnabled else { return }
         let progress = SKNode()
         progress.name = "sky.input.hold.progress"; progress.position = point(cell)

@@ -1,0 +1,29 @@
+{
+  "baseCommit": "d94903b69e864218ca2643ddc191676324f69654",
+  "runtimeBuildID": "dev.e2b265734e",
+  "configuration": "Debug and Release",
+  "device": "iPhone17e Simulator",
+  "simulatorID": "D65C5E40-734F-42BF-8F91-97E980ED19C2",
+  "OS": "iOS27.0",
+  "Xcode": "27.1 (27A9275)",
+  "files": {
+    "App/Assets.xcassets/SkyPieceDusk.imageset/body.png": "5cf7e490524fb0f5a49d2a0686beda315451b23e1996ced160bcfcddbbb7bcee",
+    "App/Assets.xcassets/SkyPieceNova.imageset/body.png": "7804653971e2e6754bf03c4f532fc97a5eb99066fc1e796a0bcd5d0da2904e73",
+    "App/Assets.xcassets/SkyPieceOpal.imageset/body.png": "ec20dcbcaa9086e0a4c1118ee2682d32d893e346a98262a0d78d9a41905cd6ed",
+    "App/Assets.xcassets/SkyPiecePip.imageset/body.png": "976fa99c826c20013a2cc706801542de69810ed6a48e5177cb9b021d9b63c93e",
+    "App/Assets.xcassets/SkyPieceSpark.imageset/body.png": "78f42140529feff55ca74cda2eacdfa8a5ee89b7799f10ade36c67004ab8acd6",
+    "App/Assets.xcassets/SkyPieceSunny.imageset/body.png": "f57f51dddc067ca6adc1abfadd6dcd681bc366f0b39279514ecddc7c3db9a631",
+    "App/Assets.xcassets/SkyPieceTwinkle.imageset/body.png": "00d985f5c541f0250e5554d76d8a17c72139fe98dbfd27f8a724d0ab9f0e9d1d",
+    "App/CriticalMassPresentation.swift": "a028c81947a3620a08f6029b1bd18a0f865a59d3c192d6c38b7a5c1f4c2571a0",
+    "App/DuskPresentation.swift": "d142c1a27c825cb259d8893174a52d6013ee1006645af153744e0d293d1c8daf",
+    "App/FallingSkyMotion.swift": "581b07dc57d3508fd025a96d59d952a9148c377356a2cffd55cc160dc0d15a08",
+    "App/FallingSkyScene.swift": "42fc75d50f3c392a2c9ef56e332a2363a73c1bd31de6ef127cbc6973621282d9",
+    "App/LivingLight.swift": "5f07b22795525cc850b001de239f2d8dc0ce0ecc26f7714885ba17bad37afa63",
+    "App/SkyPiece.swift": "f7a4f5df8f53f82ff9af7633d9e4dfbfd313e2746a44ea1359fb544d59e258d5",
+    "AppTests/CriticalMassProductionTests.swift": "3ade8f70794368bf9c0dcdbd7a084a5b1a7ad81e64960a5b40735efe24342d73",
+    "AppTests/DuskProductionTests.swift": "9adfc095b0ec04178d8ecd8954fef59197904076d25f2d622f36d7903197a504",
+    "AppTests/SkyPieceTests.swift": "1a18841b365b36395ad99de525f2141e5565f798cdded4476b9034cfdf72d5cb",
+    "Starfall.xcodeproj/project.pbxproj": "087fda8b8ae2546ef9fee59a1b5e512905ac82e447f8953b4ca1bf29ca88ec52"
+  },
+  "snapshotID": "756c0353"
+}
