@@ -194,6 +194,15 @@
         "result": "New test fixture omitted required seed; corrected to FallingSky(seed: 42), no runtime change",
         "log": "/tmp/starfall-pattern-copy-polish-hosted.log"
       }
-    ]
+    ],
+    "publication": {
+      "localCommit": "77ec1488ca1ea01a9eb983cbf902518bde264bc2",
+      "publishedCommit": "7b8f74b98ae50498a09c457188b087fee8ebebee",
+      "mergeCommit": "3b01d71fd219589305ffca6343285b934fd9ab44",
+      "exactTree": "07268eadcb50af8cd7d96b1e6f7f3dc945d40f28",
+      "pullRequest": "https://github.com/lbeezr/starfall/pull/199",
+      "dirtyRuntimeDifferencesAtPublication": []
+    },
+    "deliveryReceipt": "delivery.json"
   }
 }
