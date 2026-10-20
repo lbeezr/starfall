@@ -1,6 +1,6 @@
 # Sunwheel Mill — current map integration
 
-**Result: Development verified; publication and canonical installation pending** · **Date:** October 20, 2026
+**Result: Development verified, merged and installed on the original phone** · **Date:** October 20, 2026
 
 Sunwheel Mill is the seventh playable restoration, reached after a committed Frostfruit Orchard repair. Its fifteen paintings cover five milestones in bespoke iPhone, iPad portrait and iPad landscape layouts. The current modular map also has two independent transparent Sunwheel sprites: damaged until its own committed repair, restored afterward. The seventh island retains the existing island scale and native button behavior; the map scrolls to accommodate the extra row.
 
@@ -51,4 +51,4 @@ Native stills and assertions establish the recorded appearance and interactions.
 
 The [static board reviewer](../../design/sunwheel-mill-07/board.html) uses authored piece shells rather than the native living-light shader. Native captures establish the integrated game appearance. The earlier incomplete full-occupancy master gate remains recorded as a process deviation; successful final checks do not rewrite that history.
 
-Publication, merged-source equivalence and installation on the original phone will be recorded separately through `scripts/device-update.py`. Installation does not imply a physical gameplay or VoiceOver test.
+Merged in [PR #194](https://github.com/lbeezr/starfall/pull/194). The [canonical delivery receipt](delivery.json) verifies `dev.6fa54c5e65` installed on the original iPhone from main `ec1d5d14b3cc803ceeebaf45079339a93af7eec2`, with Core tests and signature checks passed and actual installed identity verified. Player data was preserved; the updater did not launch the game. Main CI was pending at installation; physical play and actual VoiceOver remain separate.

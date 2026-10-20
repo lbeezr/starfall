@@ -1,8 +1,10 @@
 # Sunwheel Mill map island
 
-**Status:** Adopted for development; publication and installation pending · **Updated:** October 20, 2026
+**Status:** Adopted for development; publication and installation verified · **Updated:** October 20, 2026
 
 Two transparent map sprites extend the [modular world map](../../world-01/production/layered-2026-10-20/README.md) with Sunwheel as its seventh ready island. They are separate from the [fifteen gameplay paintings](../production-assets.json): the map represents committed repair as damaged/restored, while the playable board presents five restoration milestones.
+
+**Sunwheel delivery:** [PR #194](https://github.com/lbeezr/starfall/pull/194) is merged. The [canonical receipt](../../../evidence/sunwheel-mill-2026-10-20/delivery.json) verifies `dev.6fa54c5e65` installed from main `ec1d5d1` through `scripts/device-update.py`. The development checks retain their recorded sources; installation does not establish physical play, measured contrast or actual VoiceOver.
 
 Main `f4144ec` introduced the six-island renderer while Sunwheel was being verified. Merely registering the seventh challenge would leave it selectable only through Places. This pair supplies the missing painted island and native marker through the existing `WorldMapContent`, scene and selection owners. Frostfruit → Sunwheel uses the shared connection mapping. No new progression or renderer is introduced.
 
@@ -18,4 +20,4 @@ The existing renderer adds 8% logical clearance and keeps native minimum island/
 
 The pair adds **12,580,128 bytes** of RGBA8 source pixels (12.00 MiB); PNG files total **5,015,643 bytes**. This is source-image accounting, not measured resident memory or frame-time evidence. The existing renderer selects one state per island, with no new custom cache. Physical memory/performance remains a separate profiling gate before substantial catalogue expansion.
 
-The existing map components already passed their six-island native slice before this addition. [Latest map-integration verification](../../../evidence/sunwheel-mill-2026-10-20/MAP_INTEGRATION.md) at `49d54fc` / `dev.6fa54c5e65` records real selection/Entry/Back, Frostfruit's earned unlock, mixed repairs, compact/largest text and both tablet orientations. Its ten selected native tests and 53 inspected stills retain their exact scope; [original board evidence](../../../evidence/sunwheel-mill-2026-10-20/README.md) remains separate at `d057696`. Publication and canonical installation remain pending. Physical play, actual VoiceOver, measured contrast and performance remain separate acceptance.
+The existing map components already passed their six-island native slice before this addition. [Latest map-integration verification](../../../evidence/sunwheel-mill-2026-10-20/MAP_INTEGRATION.md) at `49d54fc` / `dev.6fa54c5e65` records real selection/Entry/Back, Frostfruit's earned unlock, mixed repairs, compact/largest text and both tablet orientations. Its ten selected native tests and 53 inspected stills retain their exact scope; [original board evidence](../../../evidence/sunwheel-mill-2026-10-20/README.md) remains separate at `d057696`. Publication and canonical installation are verified in the [delivery receipt](../../../evidence/sunwheel-mill-2026-10-20/delivery.json). Physical play, actual VoiceOver, measured contrast and performance remain separate acceptance.

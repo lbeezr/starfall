@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-20T17:23:17.375650+00:00",
+  "status": "Installed and verified on original phone",
+  "pullRequest": "https://github.com/lbeezr/starfall/pull/194",
+  "mergeCommit": "ec1d5d14b3cc803ceeebaf45079339a93af7eec2",
+  "publishedHead": "451798558e2e8e768d8a484b84a9e535fb70ffa7",
+  "publishedTree": "dcfeafbb1c221d1127356ac7d3cf89d0710c8387",
+  "verifiedLocalTreeCommit": "618cbcb6b0a2df45a997eac9fc28180843fa563d",
+  "testedNativeSource": "49d54fcab24984c73262849b853e23e8ecd93e3e",
+  "runtimeFingerprint": "dev.6fa54c5e65",
+  "treeEquivalence": "Fetched published head and merged main trees exactly match the clean local publication tree; archived runtime inputs and all 76 test files match the tested integration.",
+  "command": "python3 scripts/device-update.py run",
+  "canonicalUpdater": true,
+  "installedIdentityVerified": true,
+  "sourceExport": "Clean git archive of current main by the canonical updater",
+  "installed": {
+    "buildID": "dev.6fa54c5e65",
+    "source": "ec1d5d14b3cc803ceeebaf45079339a93af7eec2",
+    "bundle": "com.starfall.prototype",
+    "bundleVersion": "1",
+    "validation": {
+      "coreTests": "passed",
+      "signature": "verified",
+      "mainCIAtInstall": "pending"
+    }
+  },
+  "validation": {
+    "coreTests": "passed",
+    "coreCount": 199,
+    "coreFailures": 0,
+    "signature": "verified",
+    "mainCIAtInstall": "pending",
+    "phoneBuild": "passed",
+    "actualInstallationIdentity": "Verified by canonical updater OS inventory against installation result",
+    "playerDataReset": false,
+    "automaticLaunch": false,
+    "matchingTestSourceFiles": 76
+  },
+  "privateReceiptSHA256": {
+    "installed.json": "f0f9860fdc0ae9fd0640bc38c31bab892280e6b530f5a515c8c9ad78221cb2bb",
+    "installation.json": "5d04987d9a63caa8e130f4901e69574ee5aa38736ffcd152326bece4cf72567c",
+    "apps.json": "59a0dbe0925807fd4e78a22fc34fca70f2e8299386d776787aac421873e16424",
+    "build.log": "716c19b35864b52f6344fed07763b74eb914bd63042a430a4f2f7913f75bf07b",
+    "core-tests.log": "508b6a1f6cb1bfd440ce525f701a21397e0fd5846125e67d901b56dd5425e369"
+  },
+  "limits": [
+    "Verified installation does not establish physical gameplay acceptance.",
+    "Actual VoiceOver, measured contrast, minimum-iOS17 rendering and full RC remain separate.",
+    "Cloud CI state is recorded as observed; pending does not mean passed."
+  ],
+  "cloudRun": "https://github.com/lbeezr/starfall/actions/runs/39465126477",
+  "device": {
+    "family": "original configured iPhone",
+    "osVersion": "26.6.2",
+    "osBuild": "23G90",
+    "transport": "paired local Wi-Fi"
+  }
+}
