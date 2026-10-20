@@ -11,6 +11,7 @@ import StarfallCore
     private var nodes: [Int: FallingSkyCharacter] = [:]
     private var cellsByID: [Int: Cell] = [:]
     private var rendered: FallingSky?
+    private var openingPrepared = false
     private var animatingColumns: Set<Int> = []
     private let pieces = SKNode(), effects = SKNode(), grid = SKNode()
     private let constellationTrail = SKNode()
@@ -34,7 +35,10 @@ import StarfallCore
         reportReadiness()
     }
     override func didMove(to view: SKView) {
-        if let rendered { render(rendered) }
+        if let rendered {
+            if openingPrepared { prepareOpening(rendered) }
+            else { render(rendered) }
+        }
         reportReadiness()
     }
     override func willMove(from view: SKView) {
@@ -114,6 +118,7 @@ import StarfallCore
 
     private func renderSnapshot(_ game: FallingSky, preservingInput: Bool) {
         rendered = game
+        openingPrepared = false
         if !preservingInput { constellationTrail.removeAllChildren(); showBufferedInput(nil) }
         removeAllActions(); cancelFlightPoses(); effects.removeAllChildren(); effects.removeAllActions()
         for node in nodes.values { node.setGrowthMotion(false); node.setPieceMotion(false) }
@@ -166,6 +171,18 @@ import StarfallCore
 
     func animate(_ turn: FallingSkyTurn, from old: FallingSky,
                  to game: FallingSky, completion: @escaping () -> Void) {
+        animate(turn, from: old, to: game, phaseBegan: { _ in }, completion: completion)
+    }
+
+    func animate(_ turn: FallingSkyTurn, from old: FallingSky,
+                 to game: FallingSky, phaseBegan: @escaping (Int) -> Void,
+                 completion: @escaping () -> Void) {
+        if !turn.resolutionPhases.isEmpty {
+            precondition(animatingColumns.isEmpty, "Recipe resolution owns the whole board")
+            animateResolution(turn, from: old, to: game,
+                              phaseBegan: phaseBegan, completion: completion)
+            return
+        }
         if !turn.presentationPhases.isEmpty {
             precondition(animatingColumns.isEmpty, "Gravity presentation owns the whole board")
             animatePhases(turn, from: old, to: game, completion: completion); return
@@ -264,7 +281,25 @@ import StarfallCore
         } }
     }
 
-    private func receiver(for arrival: FallingSkyTurn.Arrival) -> FallingSkyCharacter? {
+    /// A visual arrival can describe either a committed shower or the reveal of
+    /// an already saved opening. Constructing one never changes the game.
+    private struct ArrivalPresentation {
+        let star: IncomingStar
+        let cell: Cell
+        let gem: StarfallGem
+        let grew: Bool
+
+        init(_ arrival: FallingSkyTurn.Arrival) {
+            star = arrival.star; cell = arrival.cell; gem = arrival.gem; grew = arrival.grew
+        }
+        init(gem: StarfallGem, cell: Cell) {
+            star = IncomingStar(id: gem.id, kind: gem.kind, column: cell.column,
+                                light: gem.isLight, gravity: gem.gravityKind)
+            self.cell = cell; self.gem = gem; grew = false
+        }
+    }
+
+    private func receiver(for arrival: ArrivalPresentation) -> FallingSkyCharacter? {
         if arrival.grew { return nodes[arrival.gem.id] }
         let direction = StarfallMotion.drift(for: arrival.star.id, column: arrival.cell.column) > 0 ? 1 : -1
         let side = Cell(arrival.cell.row, arrival.cell.column - direction)
@@ -282,15 +317,21 @@ import StarfallCore
 
     /// Both ordinary and gravity turns share full approach, stagger and contact.
     private func arrivalFlights(_ arrivals: [FallingSkyTurn.Arrival]) -> SKAction {
+        arrivalFlights(arrivals.map(ArrivalPresentation.init),
+                       duration: StarfallMotion.flightDuration, stagger: StarfallMotion.arrivalStagger)
+    }
+
+    private func arrivalFlights(_ arrivals: [ArrivalPresentation],
+                                duration: TimeInterval, stagger: TimeInterval) -> SKAction {
         .group(arrivals.enumerated().map { index, arrival in
-            .sequence([.wait(forDuration: Double(index) * StarfallMotion.arrivalStagger),
-                       .run { [weak self] in self?.sendStar(arrival) },
-                       .wait(forDuration: StarfallMotion.flightDuration),
+            .sequence([.wait(forDuration: Double(index) * stagger),
+                       .run { [weak self] in self?.sendStar(arrival, duration: duration) },
+                       .wait(forDuration: duration),
                        .run { [weak self] in self?.land(arrival) }])
         })
     }
 
-    private func sendStar(_ arrival: FallingSkyTurn.Arrival) {
+    private func sendStar(_ arrival: ArrivalPresentation, duration: TimeInterval) {
         let comet = SKNode()
         comet.name = "sky.flight.\(arrival.star.id)"
         let color = StarCast.Identity(arrival.star).color
@@ -333,14 +374,14 @@ import StarfallCore
             return CGPoint(x: anchor.x + drift * 0.08, y: anchor.y + combinedRadius * 0.97)
         }
         let flight = StarfallMotion.Flight(start: comet.position, destination: destination, contact: contact, step: step)
-        let fall = SKAction.customAction(withDuration: StarfallMotion.flightDuration) { node, elapsed in
-            node.position = flight.point(at: elapsed / CGFloat(StarfallMotion.flightDuration))
+        let fall = SKAction.customAction(withDuration: duration) { node, elapsed in
+            node.position = flight.point(at: elapsed / CGFloat(duration))
         }
         if let receiver, let receiverCell, let contact {
             let resistance = StarfallMotion.resistance(receiver.gem)
             let impulse = CGVector(dx: (contact.x > point(receiverCell).x ? -0.10 : 0.10) * resistance,
                                    dy: -0.035 * resistance)
-            comet.run(.sequence([.wait(forDuration: StarfallMotion.flightDuration * Double(StarfallMotion.contactFraction)),
+            comet.run(.sequence([.wait(forDuration: duration * Double(StarfallMotion.contactFraction)),
                                  .run { [weak self, weak receiver] in
                                      guard let self, let receiver else { return }
                                      receiver.acknowledge(from: contact, impulse: impulse, step: self.step)
@@ -359,16 +400,18 @@ import StarfallCore
                 return da == db ? a.0.gem.id < b.0.gem.id : da < db
             }.first?.0
             if let observer {
-                comet.run(.sequence([.wait(forDuration: StarfallMotion.receiverResponseDelay), .run { [weak observer] in
+                let responseDelay = duration * StarfallMotion.receiverResponseDelay / StarfallMotion.flightDuration
+                comet.run(.sequence([.wait(forDuration: responseDelay), .run { [weak observer] in
                     observer?.acknowledge(from: destination, impulse: .zero, step: flight.step)
                 }]))
             }
         }
-        tail.run(.sequence([.wait(forDuration: 0.34), .fadeOut(withDuration: 0.14)]))
+        tail.run(.sequence([.wait(forDuration: duration * 0.34 / StarfallMotion.flightDuration),
+                            .fadeOut(withDuration: duration * 0.14 / StarfallMotion.flightDuration)]))
         comet.run(.sequence([fall, .removeFromParent()]))
     }
 
-    private func land(_ arrival: FallingSkyTurn.Arrival) {
+    private func land(_ arrival: ArrivalPresentation) {
         // Scene actions and child actions can advance on adjacent frames. The
         // landing handoff owns removal, so one committed star has one visible body.
         effects.childNode(withName: "sky.flight.\(arrival.star.id)")?.removeFromParent()
@@ -389,6 +432,164 @@ import StarfallCore
               strength: arrival.gem.isDark ? 0.25 : arrival.grew ? 1 : 0.65)
         let drift = StarfallMotion.drift(for: arrival.star.id, column: arrival.cell.column) * step
         if pieceMotionEnabled { node.land(direction: drift < 0 ? -1 : 1, step: step) }
+    }
+}
+
+
+extension FallingSkyScene {
+    private enum ResolutionMotion {
+        static let pop: TimeInterval = 0.22
+        static let settle: TimeInterval = 0.20
+        static let readSettled: TimeInterval = 0.04
+        static let openingFlight: TimeInterval = 0.34
+        static let openingStagger: TimeInterval = 0.022
+    }
+
+    /// Stage the committed board before Entry hands over the playfield, without
+    /// exposing its resting stars for a frame before their reveal.
+    func prepareOpening(_ game: FallingSky) {
+        render(game)
+        for id in Array(nodes.keys) { takeCharacter(id)?.removeFromParent() }
+        cellsByID.removeAll()
+        grid.removeAllChildren()
+        openingPrepared = true
+    }
+
+    /// The Store calls this only for a newly begun/replayed round. A restored
+    /// board uses render(_:), so the saved opening is never earned or replayed.
+    func presentOpening(_ game: FallingSky, completion: @escaping () -> Void) {
+        prepareOpening(game)
+        guard view != nil, !reduceMotion, !UIAccessibility.isReduceMotionEnabled,
+              !UIAccessibility.isVoiceOverRunning else { render(game); completion(); return }
+        let arrivals = game.board.enumerated().compactMap { index, gem in
+            gem.map { ArrivalPresentation(gem: $0, cell: Cell(index / 7, index % 7)) }
+        }
+        guard !arrivals.isEmpty else { render(game); completion(); return }
+        openingPrepared = false
+        animatingColumns = Set(0..<7)
+        run(.sequence([
+            arrivalFlights(arrivals, duration: ResolutionMotion.openingFlight,
+                           stagger: ResolutionMotion.openingStagger),
+            .wait(forDuration: 0.25),
+            .run { [weak self] in
+                guard let self else { return }
+                self.render(game)
+                completion()
+            }
+        ]), withKey: "sky.opening")
+    }
+
+    private func animateResolution(_ turn: FallingSkyTurn, from old: FallingSky,
+                                   to game: FallingSky, phaseBegan: @escaping (Int) -> Void,
+                                   completion: @escaping () -> Void) {
+        render(old)
+        rendered = game
+        guard view != nil, !reduceMotion, !UIAccessibility.isReduceMotionEnabled,
+              !UIAccessibility.isVoiceOverRunning else { render(game); completion(); return }
+        guard let first = turn.resolutionPhases.first else { render(game); completion(); return }
+        animatingColumns = Set(0..<7)
+        var actions: [SKAction] = []
+        if let exchange = turn.exchange {
+            actions += [.run { [weak self] in
+                guard let self else { return }
+                for (source, destination) in [(exchange.from, exchange.to), (exchange.to, exchange.from)] {
+                    guard let gem = old.gem(at: source), let node = self.nodes[gem.id] else { continue }
+                    let slide = SKAction.move(to: self.point(destination),
+                                              duration: StarfallMotion.exchangeSlideDuration)
+                    slide.timingMode = .easeInEaseOut
+                    node.run(slide, withKey: "sky.exchange")
+                }
+            }, .wait(forDuration: StarfallMotion.exchangeSlideDuration),
+            .run { [weak self] in
+                self?.settleResolutionBoard(first.before, duration: ResolutionMotion.settle)
+            }, .wait(forDuration: ResolutionMotion.settle)]
+        } else if !turn.arrivals.isEmpty {
+            actions += [arrivalFlights(turn.arrivals), .wait(forDuration: StarfallMotion.landingDuration)]
+        }
+        for (index, phase) in turn.resolutionPhases.enumerated() {
+            actions += [
+                .run { [weak self] in
+                    guard let self else { return }
+                    self.popResolution(phase)
+                    phaseBegan(index)
+                },
+                .wait(forDuration: ResolutionMotion.pop),
+                .run { [weak self] in
+                    self?.settleResolutionBoard(phase.settled, duration: ResolutionMotion.settle)
+                },
+                .wait(forDuration: ResolutionMotion.settle + ResolutionMotion.readSettled)
+            ]
+        }
+        actions.append(.run { [weak self] in
+            guard let self else { return }
+            self.render(game)
+            completion()
+        })
+        run(.sequence(actions), withKey: "sky.resolution")
+    }
+
+    private func popResolution(_ phase: SkyResolutionPhase) {
+        // The preceding flight/fall is finished. Use Core's exact identities and
+        // cells even when a later phase reuses a cell cleared earlier.
+        settleResolutionBoard(phase.before, duration: 0)
+        for cell in phase.cleared {
+            guard let gem = phase.before[cell.row * 7 + cell.column],
+                  let node = takeCharacter(gem.id) else { continue }
+            cellsByID.removeValue(forKey: gem.id)
+            node.update(gem, expression: .clearing)
+            node.run(.sequence([
+                .scale(to: 0.91, duration: StarfallMotion.gatherDuration),
+                .group([.fadeOut(withDuration: 0.12), .scale(to: 1.2, duration: 0.12),
+                        .rotate(byAngle: 0.18, duration: 0.12)]),
+                .removeFromParent()
+            ]), withKey: "sky.recipe-pop")
+            run(.sequence([
+                .wait(forDuration: StarfallMotion.gatherDuration),
+                .run { [weak self] in
+                    guard let self else { return }
+                    self.light(at: self.point(cell), color: StarCast.Identity(gem).color,
+                               strength: phase.comboDepth > 1 ? 1 : 0.75)
+                }
+            ]))
+        }
+    }
+
+    /// Reconciles only presentation snapshots; it never constructs a game or
+    /// discovers matches. Deleted stars finish popping before survivors move.
+    private func settleResolutionBoard(_ board: [StarfallGem?], duration: TimeInterval) {
+        let targetIDs = Set(board.compactMap { $0?.id })
+        for id in Array(nodes.keys) where !targetIDs.contains(id) {
+            takeCharacter(id)?.removeFromParent()
+            cellsByID.removeValue(forKey: id)
+        }
+        for child in pieces.children {
+            if let character = child as? FallingSkyCharacter, !targetIDs.contains(character.gem.id) {
+                character.removeFromParent()
+            }
+        }
+        for (index, gem) in board.enumerated() {
+            guard let gem else { continue }
+            let cell = Cell(index / 7, index % 7)
+            let existing = nodes[gem.id]
+            let node = existing ?? makeNode(gem)
+            if existing == nil {
+                pieces.addChild(node)
+                nodes[gem.id] = node
+                node.position = point(cell)
+            } else if node.gem != gem {
+                node.update(gem, expression: gem.grown ? .grown : .idle)
+            }
+            node.removeAction(forKey: "sky.recipe-settle")
+            if duration == 0 {
+                node.position = point(cell)
+            } else if node.position != point(cell) {
+                let fall = SKAction.move(to: point(cell), duration: duration)
+                fall.timingMode = .easeIn
+                node.run(fall, withKey: "sky.recipe-settle")
+            }
+            node.zPosition = CGFloat(7 - cell.row)
+            cellsByID[gem.id] = cell
+        }
     }
 }
 

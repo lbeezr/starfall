@@ -1,53 +1,16 @@
 import Foundation
 
-/// Immutable receipt for one committed clear. Light remains the conserved ledger.
-public struct SkyScoreAward: Equatable, Sendable {
-    public let baseLight: Int
-    public let clearedStarCount: Int
-    public let bonus: Int
-    public let displayPoints: Int
+/// Authored definitions preserve every previously shipped revision.
+public struct StoryChallengeDefinition: Sendable {
+    public let challenge: StarfallChallenge
+    public let revision: Int
+    public static let currentRevision = 2
 
-    init(baseLight: Int, clearedStarCount: Int) {
-        self.baseLight = baseLight
-        self.clearedStarCount = clearedStarCount
-        bonus = max(0, clearedStarCount - 3) * 1_000
-        displayPoints = baseLight * 1_000 + bonus
-    }
-}
-
-/// A bounded histogram validates earned bonuses without an unbounded event log.
-struct StoryScoreLedger: Codable, Equatable, Sendable {
-    private(set) var clearCounts = Array(repeating: 0, count: 50)
-
-    mutating func record(stars: Int) {
-        precondition((2...49).contains(stars))
-        clearCounts[stars] += 1
-    }
-
-    var bonusUnits: Int {
-        guard clearCounts.count == 50, clearCounts.allSatisfy({ (0...1_000).contains($0) }) else { return Int.max }
-        return clearCounts.enumerated().reduce(0) { $0 + $1.element * max(0, $1.offset - 3) }
-    }
-
-    func isValid(light: Int, target: Int) -> Bool {
-        guard clearCounts.count == 50, clearCounts[0] == 0, clearCounts[1] == 0,
-              (0...(target / 1_000 + 98)).contains(light),
-              clearCounts.allSatisfy({ (0...light).contains($0) }) else { return false }
-        let stars = clearCounts.enumerated().reduce(0) { $0 + $1.offset * $1.element }
-        guard stars <= light, light <= stars * 2 else { return false }
-        // Before the last clear the target was unmet; one clear spends at most 49 grown stars.
-        return light + bonusUnits < target / 1_000 + 144
-    }
-}
-
-/// Revision 1 content for the first two repairs. Historical challenge IDs stay intact.
-struct StoryChallengeDefinition: Sendable {
-    let challenge: StarfallChallenge
-    static let revision = 1
-
-    init?(_ challenge: StarfallChallenge) {
-        guard challenge == .firstLight || challenge == .ribbonCrossing else { return nil }
+    public init?(_ challenge: StarfallChallenge, revision: Int = currentRevision) {
+        guard (1...Self.currentRevision).contains(revision),
+              challenge == .firstLight || challenge == .ribbonCrossing else { return nil }
         self.challenge = challenge
+        self.revision = revision
     }
 
     var seed: UInt64 { challenge == .firstLight ? 42 : 4_202 }
@@ -55,16 +18,30 @@ struct StoryChallengeDefinition: Sendable {
     var balance: StarfallBalance {
         .init(pace: challenge == .firstLight ? .gentle : .steady, darkStars: .none)
     }
+    var palette: [Jewel] {
+        if revision == 1 { return [.rose, .aqua, .amber, .violet, .mint] }
+        return challenge == .firstLight ? [.aqua, .rose, .violet] : [.aqua, .rose, .violet, .mint]
+    }
     var initialBoard: [StarfallGem?] {
         // Lantern offers two independent taps and an aqua top to keep for growth.
         // Ribbon offers a five-aqua cross-component trace, a useful vertical swap,
         // and an ordinary three-aqua clear with recoverable remaining ingredients.
-        let rows = challenge == .firstLight ? ["AAA.RRR", "AA....."] : ["ARAAA..", "RAR...."]
+        let rows: [String]
+        if revision == 1 {
+            rows = challenge == .firstLight ? ["AAA.RRR", "AA....."] : ["ARAAA..", "RAR...."]
+        } else {
+            // Both start recipe-free. The near-square at lower left can begin
+            // two causal phases in Lantern and three in Ribbon.
+            rows = challenge == .firstLight
+                ? ["AARVVRR", "ARAAVVV", "ARRAVRV", "ARA...."]
+                : ["AARARMM", "ARAAMMV", "ARAVRVV", "VRAV..."]
+        }
+        let kinds: [Character: Jewel] = ["A": .aqua, "R": .rose, "V": .violet, "M": .mint, "Y": .amber]
         var board: [StarfallGem?] = Array(repeating: nil, count: 49)
         var id = 0
         for (row, text) in rows.enumerated() {
             for (column, symbol) in text.enumerated() where symbol != "." {
-                board[row * 7 + column] = StarfallGem(id: id, kind: symbol == "A" ? .aqua : .rose)
+                board[row * 7 + column] = StarfallGem(id: id, kind: kinds[symbol]!)
                 id += 1
             }
         }
@@ -99,6 +76,7 @@ struct StoryChallengeDefinition: Sendable {
 
     func suppliedLight(after showers: Int) -> Int {
         precondition(showers >= 0 && showers < Int.max / 6)
+        if revision == 2 { return showers * 5 }
         let motifs = motifs
         return showers / motifs.count * motifs.reduce(0) { $0 + $1.1.count }
             + motifs.prefix(showers % motifs.count).reduce(0) { $0 + $1.1.count }
@@ -108,6 +86,7 @@ struct StoryChallengeDefinition: Sendable {
     /// Mirrored motifs and a rotated palette develop the same readable techniques.
     func shower(number: Int) -> [IncomingStar] {
         precondition(number > 0 && number < Int.max / 6)
+        if revision == 2 { return mixedShower(number: number) }
         let motifs = motifs
         let cycle = (number - 1) / motifs.count
         let motif = motifs[(number - 1) % motifs.count]
@@ -117,6 +96,25 @@ struct StoryChallengeDefinition: Sendable {
         return motif.1.enumerated().map { offset, column in
             IncomingStar(id: (number - 1) * FallingSky.maximumShowerSize + offset,
                          kind: color, column: cycle.isMultiple(of: 2) ? column : 6 - column)
+        }
+    }
+
+    /// Five mixed stars develop local near-squares and distant supports. Columns
+    /// rotate around the board; each 21-wave cycle mirrors and changes families.
+    /// This authored supply is independent of actions and never retargets a preview.
+    private func mixedShower(number: Int) -> [IncomingStar] {
+        let index = number - 1, cycle = index / 21, block = (index % 21) / 3
+        let palette = palette
+        let layouts: [[(Int, Int)]] = [
+            [(0, 0), (1, 0), (2, 1), (4, 2), (5, 2)],
+            [(0, 0), (1, 1), (2, 0), (4, 2), (5, 1)],
+            [(0, 0), (1, 0), (2, 1), (4, 1), (5, 2)]
+        ]
+        return layouts[index % 3].enumerated().map { offset, ingredient in
+            let column = (block * 2 + ingredient.0) % 7
+            return IncomingStar(id: index * FallingSky.maximumShowerSize + offset,
+                                kind: palette[(block + ingredient.1 + cycle) % palette.count],
+                                column: cycle.isMultiple(of: 2) ? column : 6 - column)
         }
     }
 }

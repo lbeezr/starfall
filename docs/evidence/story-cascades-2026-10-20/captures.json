@@ -1,0 +1,38 @@
+{
+  "status": "Inspected sampled normal-motion frames",
+  "baseCommit": "c31d890f95616d4c24cf31b3668885ca97c2f8d7",
+  "buildID": "dev.181bb2c16e",
+  "displayedBuildID": "dev.local",
+  "source": "Working tree; build-affecting input hashes are in verification.json",
+  "device": "iPhone 17e Simulator",
+  "os": "iOS 27.0",
+  "configuration": "Debug",
+  "motion": "normal; calmEffects NO",
+  "size": "390x844 samples of native 1170x2532 recording",
+  "recording": "/tmp/starfall-cascade-motion.mp4 (disposable)",
+  "frames": [
+    {
+      "path": "dev-181bb2c16e__lantern-opening-rain__iphone-17e__normal-motion.png",
+      "screen": "lantern-opening-rain",
+      "timeSeconds": 31.75,
+      "sha256": "09eaef9c9d474c860bc66d48d31b5870da022d9e0e9647ef6cc5dc512fd9be7f"
+    },
+    {
+      "path": "dev-181bb2c16e__lantern-opening-settled__iphone-17e__normal-motion.png",
+      "screen": "lantern-opening-settled",
+      "timeSeconds": 32.5,
+      "sha256": "435da64a89f058872197fd8479d0a7ba17a74671698e1eadde397928391a0abc"
+    },
+    {
+      "path": "dev-181bb2c16e__lantern-chain-two__iphone-17e__normal-motion.png",
+      "screen": "lantern-chain-two",
+      "timeSeconds": 44.25,
+      "sha256": "b71ebf77a38f2ca0db072ef6b5666676e1642cd79b83785fb789303ccd7972bf"
+    }
+  ],
+  "limits": [
+    "Sampled frames, not a frame-rate or physical comfort measurement",
+    "Largest-text quiet Ribbon capture separately inspected in XCTest output",
+    "No actual VoiceOver session"
+  ]
+}

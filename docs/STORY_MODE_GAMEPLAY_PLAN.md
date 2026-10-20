@@ -1,14 +1,14 @@
 # Give Story Mode distinct decisions
 
-**Status:** Lantern/Ribbon first slice development-verified; later locations and ratings remain proposed · **Owner:** Current implementer · **Updated:** October 20, 2026
+**Status:** Lantern/Ribbon revision 2 development verified; delivery pending. Later locations and ratings remain proposed · **Owner:** Current implementer · **Updated:** October 20, 2026
 
 Make Story Mode a progression from a welcoming introduction to expressive arcade mastery, guided by [Pokémon Puzzle League](design/POKEMON_PUZZLE_LEAGUE_REFERENCE.md). Give each location its own authored opening and supply, theatrical scores and celebrations, and optional completion stars. One star opens the next ready location. Keep automatic showers, pause and manual play; design for substantial rounds without a clock that prevents an earned finish.
 
-**Next action:** Playtest the versioned Lantern Landing/Ribbon Crossing pair, then evaluate repetition and useful setup frequency before extending the redesign. Six locations are currently ready; the later four retain their historical 18-light rules. The remaining target and mastery proposals below are starting hypotheses, not validated balance.
+**Next action:** Finish [revision 2 verification](evidence/story-cascades-2026-10-20/README.md), then play complete automatic and paused/manual runs to assess useful choices, recovery and waiting. The new pair has 24/25-star openings, five mixed incoming stars per shower and automatic square/cross cascades; six-/four-second cadence and 150,000/220,000 targets remain the baseline. Seven locations are ready; the later five retain their historical 18-light rules. The remaining target and mastery proposals below are starting hypotheses, not validated balance.
 
-## First implementation slice
+## Current first-pair revision
 
-The [October 20 implementation](evidence/story-first-pair-2026-10-20/README.md) adopts versioned new Lantern/Ribbon visits, 150,000/220,000 objectives, 1,000/2,000 base points and a bounded extra-star bonus. Five small stars now award 7,000, superseding the base-only example below for these two revised stages. Existing rounds and same-round replay retain their original definition. Three-star ratings, the other location briefs, extra rounds and multiplayer remain deferred. The new sixth location, Frostfruit Orchard, retains its separately shipped historical rules.
+The [revision 2 implementation](evidence/story-cascades-2026-10-20/README.md) follows the user-selected [automatic recipe direction](design/PUZZLE_PACING_RESEARCH.md). A rapid entrance reveals the committed opening on Begin/Replay, never again on resume. Lantern uses three colors and Ribbon four. Exact four-star squares and five-star crosses pop automatically after an action; survivors fall and may trigger another phase. Each phase earns its base and size award multiplied by its causal depth, capped at ×5 and reset for the next action. Verification is pending. The [revision 1 implementation](evidence/story-first-pair-2026-10-20/README.md) retains its original evidence; saved revision 1 rounds and replay keep explicit clears and size-only bonuses. Historical 18-light rounds also remain unchanged. Three-star ratings, later-location redesign, extra rounds and multiplayer are deferred.
 
 ## Longer rounds need more decisions
 
@@ -16,7 +16,7 @@ The original [progression research](design/MAHJONG_PROGRESSION.md#current-tranch
 
 The user has clarified that large numbers, dramatic celebrations and Pokémon Puzzle League's arcade energy are central to the intended experience. The earlier 60/90/120/150/180 proposal and its short duration budgets are superseded.
 
-Use **1,000 points per ordinary light unit and 2,000 for a grown star** as the base scoring scale. Before bonuses, three light units are worth **3,000**, five small stars **5,000**, and twelve light units **12,000**. Revised Lantern/Ribbon clears also add 1,000 for each actual star beyond three, so five small stars award **7,000**. Growth still stores two incoming units in one occupied cell. Do not multiply stored legacy scores or silently change their completed outcomes.
+Use **1,000 points per ordinary light unit and 2,000 for a grown star** as the base scoring scale. Before bonuses, three light units are worth **3,000**, five small stars **5,000**, and twelve light units **12,000**. Revised Lantern/Ribbon clears also add 1,000 for each actual star beyond three, so five small stars award **7,000** before any causal multiplier. Revision 2 multiplies that phase award by its depth, capped at ×5; a new action resets to ×1. Growth still stores two incoming units in one occupied cell. Do not multiply stored legacy scores or silently change their completed outcomes.
 
 Changing the score scale creates numerical spectacle. Increasing the underlying content and goal separately creates a longer round. The following table does both:
 
@@ -28,7 +28,7 @@ Changing the score scale creates numerical spectacle. Increasing the underlying 
 | Seed Moon | 360,000 | 360 | Roughly 6–8 minutes |
 | Silver Pools | 450,000 | 450 | Roughly 7–9 minutes |
 
-These point/time pairs have not been validated against new supply or human play. They are first-clear pacing targets, not minimum times or predictions from simulation. Start Lantern at the existing gentle six-second pace and the other four at steady four-second pace; compare the pair before adopting either setting. Fast recognition and manual showers may produce shorter rounds. Let skill shorten a clear.
+These point/time pairs have not been validated against new supply or human play. They are first-clear pacing hypotheses, not minimum times or predictions from simulation. The implemented Lantern six-second and Ribbon four-second cadence is the current baseline; user feedback reports too little activity. Neither those intervals nor the subsequent roughly two-second suggestion is a research-backed recommendation for the revision. [Competitive research](design/PUZZLE_PACING_RESEARCH.md) now sequences opening workload, supply composition and measured speed separately. Fast recognition and manual showers may produce shorter rounds. Let skill shorten a clear.
 
 Author enough meaningful play to fill each budget: a readable opening, changed situations, opportunities to recover and a final combination of skills. Avoid making duration mostly a wait for enough incoming light. Measure useful decisions, empty stretches and recognition as well as elapsed time. The existing five paintings continue to follow committed progress; at 150,000 the visual thresholds are 0/37,500/75,000/112,500/150,000. A large clear can skip a painting without delaying the win.
 
@@ -42,13 +42,15 @@ Classify celebrations by the underlying action and award tier, not by the new ra
 
 The earlier blanket preference for flat per-star rewards is reopened. Puzzle League's reference makes it worth testing whether a strong selected clear or a causal relay should earn an additional, bounded reward. Compare the scaled base score against one small earned-bonus candidate using existing actions. Only actual new clears/consumed ingredients can qualify; repeated swaps, selections and unrelated quick taps cannot farm a bonus. A causal relay can remain valid through a pause.
 
-The first slice selects the extra-star bonus described above; recalibrate targets and durations with that rule. Keep conserved star light and any earned bonus separately validatable inside Core while showing one clear player-facing score. An alternative pressure-relief reward belongs in a separate comparison; do not change bonuses and shower timing together and then attribute the result to either. Automatic cascades and causal-relay score bonuses remain unimplemented.
+The first slice selected the extra-star bonus described above; revision 2 also implements causal phase multipliers from ×1 through ×5. Recalibrate targets and durations with those rules. Conserved star light and earned bonuses remain separately validatable inside Core while presenting one score. An alternative pressure-relief reward remains deferred; the six-/four-second shower cadence is unchanged in this revision. Implementation does not establish balanced rewards or satisfying duration.
+
+**October 20 follow-up:** The user-selected automatic recipe loop is implemented for new Lantern/Ribbon revision 2, superseding the earlier preference that every follow-up remain manually activated. [Research](design/PUZZLE_PACING_RESEARCH.md#automatic-recipes-and-causal-combos-are-the-selected-direction) separates exact square/cross patterns from the broader ordinary tap rule. The old activation, banking and mastery proposals below must be re-evaluated against this loop; they are not requirements to preserve redundant input. A trace selects its initial clear, while consequential recipes can resolve automatically.
 
 The same committed clear receives the same score through a tap, trace or accessible action. A bonus for drawing an already tappable set would reward extra input rather than a better result. Check duplicate awards and splitting exploits before adopting any size/relay formula.
 
 ## Twelve places need an explicit content budget
 
-The first-five pacing targets total **28–35 minutes** of successful active play. For a one-round-per-place campaign, a provisional remaining-seven budget of 7–9, 8–10, 8–10, 8–10, 9–11, 9–12 and 10–14 minutes totals another 59–76. All twelve would therefore provide **87–111 minutes** before retries, reading, story or optional replay. This arithmetic is a scope estimate, not measured playtime. Frostfruit Orchard is now built with its historical rules; six locations remain unbuilt, and all seven places beyond the first-five briefs still need distinct gameplay proposals.
+The first-five pacing targets total **28–35 minutes** of successful active play. For a one-round-per-place campaign, a provisional remaining-seven budget of 7–9, 8–10, 8–10, 8–10, 9–11, 9–12 and 10–14 minutes totals another 59–76. All twelve would therefore provide **87–111 minutes** before retries, reading, story or optional replay. This arithmetic is a scope estimate, not measured playtime. Frostfruit Orchard and Sunwheel Mill are built with their historical rules; five locations remain unbuilt, and all seven places beyond the first-five briefs still need distinct gameplay proposals.
 
 That is a short campaign. Long late rounds also risk tiring repetition. For a several-hour journey, the recommended expansion is **three or four genuinely different repair rounds per location**, rather than twelve increasingly long score bars:
 

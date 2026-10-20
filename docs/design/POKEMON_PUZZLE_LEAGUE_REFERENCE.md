@@ -6,6 +6,8 @@ The user identifies **Pokémon Puzzle League for Nintendo 64** as Starfall's cor
 
 The desired experience includes arcade energy, impressive scores, expressive celebrations, skillful play and the social feeling of nearby handhelds or couch play. Lantern Landing should welcome new players while the wider game offers increasing mastery. [The current gameplay plan](../STORY_MODE_GAMEPLAY_PLAN.md) translates this direction into a bounded first comparison.
 
+The [competitive pacing research](PUZZLE_PACING_RESEARCH.md) follows the user's sparse-board feedback. It separates verified mechanics and derived rates from unvalidated tuning, accounts for Starfall's single-cell pieces, and records the requested approximately half-full opening presented as a rapid cascade. The user subsequently selected automatic recipe popping and causal cascades as the desired gameplay direction, identifying their payoff as central to their enjoyment of Puzzle League. That resolution change is not implemented.
+
 ## Verified reference behavior
 
 Primary sources inspected October 20:

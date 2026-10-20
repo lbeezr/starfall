@@ -594,6 +594,30 @@
       ]
     },
     {
+      "id": "guide.automatic-recipe",
+      "lines": [
+        {
+          "id": "guide.automatic-recipe.1",
+          "speaker": "pip",
+          "text": "Recipe popped! +{score} starlight. That made room.",
+          "priority": "routine",
+          "seconds": 6
+        }
+      ]
+    },
+    {
+      "id": "guide.cascade",
+      "lines": [
+        {
+          "id": "guide.cascade.1",
+          "speaker": "spark",
+          "text": "A {depth}-clear chain! +{score} starlight. Falling stars kept it going.",
+          "priority": "routine",
+          "seconds": 6
+        }
+      ]
+    },
+    {
       "id": "guide.input",
       "lines": [
         {
@@ -903,6 +927,72 @@
       ]
     },
     {
+      "id": "first-light.cascade.entry",
+      "lines": [
+        {
+          "id": "first-light.cascade.entry.1",
+          "speaker": "sunny",
+          "text": "Bring {target} starlight back to Lantern Landing. Tap matching families, or swipe to arrange them. Squares of 4 and crosses of 5 pop automatically; falling stars can make the next shape. Begin when you’re ready.",
+          "priority": "help"
+        }
+      ]
+    },
+    {
+      "id": "first-light.cascade.replay",
+      "lines": [
+        {
+          "id": "first-light.cascade.replay.1",
+          "speaker": "sunny",
+          "text": "Try the same Lantern Landing opening and collect {target} starlight. Squares and crosses pop automatically, and falling stars can build a chain. Your saved round stays until you tap Begin.",
+          "priority": "help"
+        }
+      ]
+    },
+    {
+      "id": "guide.first-light.cascade",
+      "lines": [
+        {
+          "id": "guide.first-light.cascade.1",
+          "speaker": "sunny",
+          "text": "Lantern Landing needs {target} starlight. Tap matching families to make room. Matching squares of 4 and crosses of 5 pop automatically, and falling stars can keep the chain going.",
+          "priority": "help"
+        }
+      ]
+    },
+    {
+      "id": "ribbon-crossing.cascade.entry",
+      "lines": [
+        {
+          "id": "ribbon-crossing.cascade.entry.1",
+          "speaker": "pip",
+          "text": "Reconnect Ribbon Crossing with {target} starlight. Swap stars into matching squares of 4 or crosses of 5 and watch them pop. Clear supporting stars so the survivors can form another shape and carry the chain further.",
+          "priority": "help"
+        }
+      ]
+    },
+    {
+      "id": "ribbon-crossing.cascade.replay",
+      "lines": [
+        {
+          "id": "ribbon-crossing.cascade.replay.1",
+          "speaker": "pip",
+          "text": "Try the same Ribbon Crossing opening and collect {target} starlight. Arrange a square or cross, then let falling stars set off the next shape. Your saved round stays until you tap Begin.",
+          "priority": "help"
+        }
+      ]
+    },
+    {
+      "id": "guide.ribbon-crossing.cascade",
+      "lines": [
+        {
+          "id": "guide.ribbon-crossing.cascade.1",
+          "speaker": "pip",
+          "text": "Ribbon Crossing needs {target} starlight. Matching squares and crosses pop automatically. Swap, tap or trace to set them up; falling survivors can create the next clear in the chain.",
+          "priority": "help"
+        }
+      ]
+    },
+    {
       "id": "guide.sunwheel-mill",
       "lines": [
         {
@@ -951,6 +1041,14 @@
     "help.storyIdentity": "Match by color, shape and character. Small stars earn 1,000 starlight; grown stars earn 2,000. Clearing more than three actual stars adds 1,000 for each extra star. Five small stars earn 7,000. Tapping and tracing the same stars earn the same amount.",
     "help.storyChallenge": "Restore Lantern Landing with {target} starlight. Gentle showers leave room to read the forecast, collect a matching family or keep a small top star for a matching arrival to grow. Swipe neighboring stars to arrange matches, tap groups or hold and draw selected traces. Finish before an arriving star has nowhere to land. There is no minimum time to win, and no Dusk, Opal Orbs or storms.",
     "help.storyRibbon": "Reconnect Ribbon Crossing with {target} starlight. Swipe neighboring stars to join a family, or hold and trace five matching stars across diagonals and one empty space. Choosing a smaller shape can leave useful stars for the next clear; clearing more than three stars earns a bonus. Steady showers bring the next choices. Finish before an arriving star has nowhere to land. There is no minimum time to win, and no Dusk, Opal Orbs or storms.",
+    "help.cascadeIdentity": "Match stars by color and shape. Small stars earn 1,000 starlight; grown stars earn 2,000. Clearing more than three actual stars adds 1,000 for each extra star. Five small stars earn 7,000 before any chain bonus.",
+    "help.cascadeChallenge": "Restore Lantern Landing with {target} starlight. Gentle showers leave room to read the forecast, collect matching families and try a swap. Matching squares of 4 and crosses of 5 pop automatically. Their falling survivors may set off another shape for a chain. Finish before an arriving star has nowhere to land. There is no minimum time to win, and no Dusk, Opal Orbs or storms.",
+    "help.cascadeRibbon": "Reconnect Ribbon Crossing with {target} starlight. Swap stars into matching squares of 4 or crosses of 5 to pop them automatically. Tap a family or trace a selected group so the remaining stars fall into the next shape. Consecutive clears in that reaction earn a growing chain bonus. Finish before an arriving star has nowhere to land. There is no minimum time to win, and no Dusk, Opal Orbs or storms.",
+    "help.cascadeTrace": "Hold a star until it glows, draw through 5 or more matching stars, then lift. Your trace chooses the first stars to clear; squares or crosses formed by falling stars also pop. Each step may touch the previous star or cross one empty space in a straight line, including diagonally. Another star blocks the gap.",
+    "help.cascadeBranch": "You can retrace your path to branch out. Each star counts once, even when grown. Leave the board to cancel.",
+    "help.cascadeOpening": "A new round rains in its opening stars together. Play begins once they settle, then the forecast shows each next shower. Continuing a saved round keeps its settled board.",
+    "help.cascadeRecipe": "A 2×2 square of 4 matching stars or a cross of 5 pops automatically after a swap, clear or shower. Overlapping shapes clear their shared stars once. Other touching matches wait for your tap.",
+    "help.cascadeChain": "Falling survivors can complete another recipe, which pops next. Each clear starts with its star value and size bonus. Within one chain, the first clear earns ×1, then ×2, ×3, ×4 and ×5 for every later clear. A new action starts again at ×1. No speed streak is required.",
     "practiceMatchTitle": "Match and collect",
     "practiceGrownTitle": "Grown stars",
     "practiceExchangeTitle": "Move in four directions",
@@ -1228,6 +1326,7 @@
     "celebration.square": "Square!",
     "celebration.cross": "Cross!",
     "celebration.relay": "{count}-clear relay!",
+    "celebration.cascade": "{count} CHAIN!",
     "a11y.position": "row {row}, column {column}",
     "a11y.empty": "Empty, {position}",
     "a11y.boardSummary": "{showers} showers, {groups} matching groups ready",

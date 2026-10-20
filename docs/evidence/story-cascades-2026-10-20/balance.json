@@ -1,0 +1,230 @@
+{
+  "date": "2026-10-20",
+  "status": "Verified deterministic Core policy outcomes; human balance remains open",
+  "scope": "Fresh revision-2 Lantern Landing and Ribbon Crossing; five-star fixed mixed supply, 24/25 occupied opening cells, 150000/220000 targets, causal multipliers 1 through 5.",
+  "source": {
+    "baseCommit": "c31d890f95616d4c24cf31b3668885ca97c2f8d7",
+    "checkout": "Working tree, not a clean published commit",
+    "modelBuildDirtyCorePaths": [
+      "Sources/StarfallCore/FallingSky.swift",
+      "Sources/StarfallCore/StarRecipe.swift",
+      "Sources/StarfallCore/StoryChallenge.swift",
+      "Sources/StarfallCore/SkyResolutionPhase.swift",
+      "Sources/StarfallCore/StoryScore.swift"
+    ],
+    "harness": "/tmp/StarfallCascadeModel/main.swift",
+    "harnessSHA256": "cb2affdb45bcae72b2831504d86664923076c34794ded0e1b4879bad4a0b3243",
+    "rawResults": "/tmp/StarfallCascadeModel/results.jsonl",
+    "rawResultsSHA256": "55589d7171f0e37e8ffd5979731f04825154afcf63358c1950d518012798c3d2",
+    "temporaryFiles": "Harness, executable and raw output are disposable; policy definitions and summarized results are retained here.",
+    "laterCoreChanges": "After this model executable was compiled, save validation added an early board-count guard, an allowed-family check and a minimum-light check for two-star clears. StoryChallenge extracted the unchanged palette values into a shared property; StarRecipe had comment indentation changes. The Core owner reports unchanged opening, supply, settling and award behavior, with current-source regression tests reproducing all four winning action/shower counts.",
+    "postModelInspection": {
+      "note": "These hashes identify the later inspected Core files, not the earlier compiled model executable.",
+      "sha256": {
+        "Sources/StarfallCore/FallingSky.swift": "62a264dce46711142949e1939822038a2876c06a778f530b99fc17b24db33f05",
+        "Sources/StarfallCore/StarRecipe.swift": "2b9fd5eb1a24cd6c7a5867cd911b2783018d09f3f0ea4ab6c015129a618849b6",
+        "Sources/StarfallCore/StoryChallenge.swift": "21042ee94c1a9eabbb7a2ee16ec0a95f6514803e0f581a750cd140be98881562",
+        "Sources/StarfallCore/SkyResolutionPhase.swift": "af9bda4d0267e1e36356a9378d5a150a677d770268d257f6f7e3fc6b4b28f6b4",
+        "Sources/StarfallCore/StoryScore.swift": "e2fca08e627d52b3fd1ac0529ba807f1c6434da89e6df418028a853e829e4181"
+      }
+    }
+  },
+  "execution": {
+    "platform": "macOS 27.0.1 (26A434), arm64",
+    "compiler": "Apple Swift 6.4 (swiftlang-6.4.0.34.1)",
+    "configuration": "Optimized host executable compiling production Core sources directly; no app, simulator or native presentation.",
+    "commands": [
+      "CLANG_MODULE_CACHE_PATH=/tmp/starfall-core-v2-clang xcrun swiftc -O -module-cache-path /tmp/starfall-core-v2-swift Sources/StarfallCore/*.swift /tmp/StarfallCascadeModel/main.swift -o /tmp/StarfallCascadeModel/model",
+      "/tmp/StarfallCascadeModel/model > /tmp/StarfallCascadeModel/results.jsonl"
+    ],
+    "bounds": {
+      "maximumShowers": 100,
+      "maximumPlayerActionsBetweenShowers": 50
+    },
+    "assertions": "Every applied player or shower transaction checks exact score delta, valid committed save and JSON round-trip equality; shower receipts preserve the announced forecast. Each final replay equals its original opening."
+  },
+  "policies": {
+    "idle": "Apply each shower without any player action.",
+    "tap": "Choose the ordinary legal group with the largest committed Core award; break equal-point ties by larger group count, then first enumeration. Repeat until no group remains.",
+    "eager": "Compare tap choices with all right/up adjacent occupied swaps that immediately award points, using the same point/count tie break. If no rewarding action exists, choose one adjacent occupied swap enabling the highest-award ordinary tap, then re-evaluate. Different identities with the same family and grown state are skipped. No empty-cell swaps, traces or forecast lookahead.",
+    "buffer": "Use the eager choice. Stop acting until the next shower if that choice is a tap or setup swap, occupied count is at most 16, and tallest column is below 6. Immediately rewarding swaps remain eligible. This threshold is a policy assumption, not an adaptive supply rule."
+  },
+  "measurements": {
+    "showers": "Committed shower count at the final win/loss, including the blocked shower for a loss.",
+    "actions": "Taps plus immediately rewarding recipe swaps plus non-rewarding setup swaps. Showers are excluded.",
+    "occupancy": "Occupied physical cells after the policy finishes its actions and before the next shower; each such boundary is sampled once. This is not time-weighted occupancy. A grown star still occupies one cell.",
+    "maxPreShowerHeight": "Tallest occupied column at sampled boundaries; this is not a within-animation height measurement.",
+    "phaseCounts": "Histogram of resolution-phase count for each player transaction, plus shower transactions with a nonempty resolution. Zero-phase entries are setup swaps; empty shower transactions are omitted.",
+    "score": "Exact displayed points, including size and causal-combo bonuses.",
+    "time": "No human elapsed time, reaction time, pauses or animation duration was modeled. Shower counts must not be presented as measured round durations."
+  },
+  "productionCoreResults": [
+    {
+      "autoShowerPoints": 0,
+      "challenge": "firstLight",
+      "maxPreShowerHeight": 7,
+      "meanPreShowerOccupancy": 31.8,
+      "minPreShowerOccupancy": 24,
+      "outcome": "lost",
+      "phaseCounts": {},
+      "policy": "idle",
+      "recipeSwaps": 0,
+      "score": 0,
+      "setups": 0,
+      "showers": 5,
+      "taps": 0,
+      "actions": 0
+    },
+    {
+      "autoShowerPoints": 0,
+      "challenge": "firstLight",
+      "maxPreShowerHeight": 7,
+      "meanPreShowerOccupancy": 7.667,
+      "minPreShowerOccupancy": 1,
+      "outcome": "lost",
+      "phaseCounts": {
+        "1": 27,
+        "2": 1
+      },
+      "policy": "tap",
+      "recipeSwaps": 0,
+      "score": 123000,
+      "setups": 0,
+      "showers": 21,
+      "taps": 28,
+      "actions": 28
+    },
+    {
+      "autoShowerPoints": 0,
+      "challenge": "firstLight",
+      "maxPreShowerHeight": 3,
+      "meanPreShowerOccupancy": 5.208,
+      "minPreShowerOccupancy": 3,
+      "outcome": "won",
+      "phaseCounts": {
+        "0": 13,
+        "1": 38,
+        "2": 1
+      },
+      "policy": "eager",
+      "recipeSwaps": 1,
+      "score": 150000,
+      "setups": 13,
+      "showers": 24,
+      "taps": 38,
+      "actions": 52
+    },
+    {
+      "autoShowerPoints": 0,
+      "challenge": "firstLight",
+      "maxPreShowerHeight": 5,
+      "meanPreShowerOccupancy": 13.381,
+      "minPreShowerOccupancy": 8,
+      "outcome": "won",
+      "phaseCounts": {
+        "0": 2,
+        "1": 19,
+        "2": 3
+      },
+      "policy": "buffer",
+      "recipeSwaps": 2,
+      "score": 154000,
+      "setups": 2,
+      "showers": 21,
+      "taps": 20,
+      "actions": 24
+    },
+    {
+      "autoShowerPoints": 0,
+      "challenge": "ribbonCrossing",
+      "maxPreShowerHeight": 7,
+      "meanPreShowerOccupancy": 32.8,
+      "minPreShowerOccupancy": 25,
+      "outcome": "lost",
+      "phaseCounts": {},
+      "policy": "idle",
+      "recipeSwaps": 0,
+      "score": 0,
+      "setups": 0,
+      "showers": 5,
+      "taps": 0,
+      "actions": 0
+    },
+    {
+      "autoShowerPoints": 0,
+      "challenge": "ribbonCrossing",
+      "maxPreShowerHeight": 7,
+      "meanPreShowerOccupancy": 13.909,
+      "minPreShowerOccupancy": 5,
+      "outcome": "lost",
+      "phaseCounts": {
+        "1": 28
+      },
+      "policy": "tap",
+      "recipeSwaps": 0,
+      "score": 104000,
+      "setups": 0,
+      "showers": 22,
+      "taps": 28,
+      "actions": 28
+    },
+    {
+      "autoShowerPoints": 0,
+      "challenge": "ribbonCrossing",
+      "maxPreShowerHeight": 5,
+      "meanPreShowerOccupancy": 7.222,
+      "minPreShowerOccupancy": 1,
+      "outcome": "won",
+      "phaseCounts": {
+        "0": 32,
+        "1": 55,
+        "3": 1
+      },
+      "policy": "eager",
+      "recipeSwaps": 3,
+      "score": 221000,
+      "setups": 32,
+      "showers": 36,
+      "taps": 53,
+      "actions": 88
+    },
+    {
+      "autoShowerPoints": 6000,
+      "challenge": "ribbonCrossing",
+      "maxPreShowerHeight": 5,
+      "meanPreShowerOccupancy": 13.515,
+      "minPreShowerOccupancy": 7,
+      "outcome": "won",
+      "phaseCounts": {
+        "0": 8,
+        "1": 36,
+        "2": 2,
+        "3": 1
+      },
+      "policy": "buffer",
+      "recipeSwaps": 5,
+      "score": 221000,
+      "setups": 8,
+      "showers": 33,
+      "taps": 33,
+      "actions": 46
+    }
+  ],
+  "independentPrototypeComparison": {
+    "engine": "A separate temporary Python reconstruction explored recipe-free openings and fixed mixed waves of 3, 5 and 6 stars before the production Core run.",
+    "status": "Design exploration only; its measurements are not substituted for the production Core results above.",
+    "decision": "Prototype five-star waves. They fit the existing maximum shower size and supported both winning policies in actual Core. Six stars would expand the rule/save contract and did not establish a sufficient density benefit in the independent exploration.",
+    "limits": "Three- and six-star variants were not adopted or executed by the production Core harness."
+  },
+  "findings": [
+    "All four eager/buffer runs win; both idle runs overflow on shower 5 at zero score. The fixed supply does not passively finish these openings.",
+    "Both tap-only runs lose before target. These examples establish recoverability with simple swaps, not that every casual strategy succeeds.",
+    "Buffer policies average about 13.4/13.5 occupied cells; eager policies average about 5.2/7.2. A half-full opening does not guarantee sustained half-full or quarter-full play.",
+    "The buffered Lantern run needs 24 actions and Ribbon 46; eager runs need 52 and 88. These are specific deterministic policies, not best-play bounds or measured player effort."
+  ],
+  "openAcceptance": [
+    "Human judgment of useful choices, waiting, difficulty and recoverable Lantern mistakes.",
+    "Native entry/cascade readability, input timing, sound, motion and accessibility evidence owned by the accompanying report.",
+    "Phone play and canonical installation are separate from these host-Core results."
+  ]
+}

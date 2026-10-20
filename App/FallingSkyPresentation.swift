@@ -4,7 +4,7 @@ extension FallingSkyTurn {
     /// Committed multi-phase collapses and historical orbits remain atomic.
     /// Ordinary falls and showers reserve only their changing columns.
     var changingColumns: Set<Int> {
-        if !presentationPhases.isEmpty { return Set(0..<7) }
+        if !presentationPhases.isEmpty || !resolutionPhases.isEmpty { return Set(0..<7) }
         return Set(cleared.map(\.column)).union(arrivals.map { $0.cell.column }).union(duskAffectedColumns).union(stellarAffectedColumns).union(exchange.map { [$0.from.column,$0.to.column] } ?? [])
     }
 }
@@ -43,6 +43,9 @@ struct SkyPresentationLedger {
     }
     func isLatest(_ ticket: Ticket) -> Bool {
         ticket.epoch == epoch && ticket.sequence == sequence
+    }
+    func isActive(_ ticket: Ticket) -> Bool {
+        ticket.epoch == epoch && entries.contains { $0.ticket == ticket }
     }
     mutating func invalidate() {
         epoch &+= 1

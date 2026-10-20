@@ -214,7 +214,7 @@ final class WorldJourneyTests: XCTestCase {
         try repaired.record(store.game)
         let envelope = try XCTUnwrap(JSONSerialization.jsonObject(with: XCTUnwrap(defaults.data(forKey: WorldJourneyStore.key))) as? [String: Any])
         XCTAssertEqual(envelope["version"] as? Int, 1)
-        XCTAssertEqual(SkySaveArchive.schemaVersion, 10)
+        XCTAssertEqual(SkySaveArchive.schemaVersion, 11)
         XCTAssertEqual(defaults.data(forKey: SkySaveArchive.key), committed)
         presenter.finish()
         store.beginEntry(.replay)
@@ -253,22 +253,50 @@ extension WorldJourneyTests {
         XCTAssertTrue(journey.completed.isEmpty)
         XCTAssertFalse(journey.canEnter(.ribbonCrossing))
     }
+
+    @MainActor func testV10AuthoredRoundDoesNotGrantPreWorldAccessWhenArchiveKeyAdvances() throws {
+        for challenge in [StarfallChallenge.firstLight, .ribbonCrossing] {
+            let defaults = defaults()
+            let definition = try XCTUnwrap(StoryChallengeDefinition(challenge, revision: 1))
+            let old = FallingSky(definition: definition)
+            let core = try JSONSerialization.jsonObject(with: JSONEncoder().encode(old))
+            let bytes = try JSONSerialization.data(withJSONObject: ["schemaVersion": 10, "game": core])
+            defaults.set(bytes, forKey: SkySaveArchive.storyKey)
+            // Older pre-world bytes cannot override a retained world-era round.
+            defaults.set(try JSONEncoder().encode(FallingSky(seed: 42, openingCascade: false)),
+                         forKey: SkySaveArchive.legacyKey)
+            let journey = WorldJourneyStore(defaults: defaults).journey
+            XCTAssertFalse(journey.legacyAccess)
+            XCTAssertTrue(journey.completed.isEmpty)
+            XCTAssertTrue(journey.canEnter(.firstLight))
+            XCTAssertFalse(journey.canEnter(.ribbonCrossing))
+            XCTAssertFalse(journey.canEnter(.silverPools))
+            XCTAssertEqual(defaults.data(forKey: SkySaveArchive.storyKey), bytes)
+            XCTAssertNil(defaults.object(forKey: SkySaveArchive.key))
+            XCTAssertNil(defaults.object(forKey: WorldJourneyStore.key))
+        }
+    }
 }
 
 extension WorldJourneyTests {
     @MainActor func testRevisedTraceSelectionReportsTheSameAwardAsCommit() throws {
-        let game = FallingSky.freshChallenge(.ribbonCrossing)
-        let path = [Cell(0, 0), Cell(1, 1), Cell(0, 2), Cell(0, 3), Cell(0, 4)]
-        let intent = ConstellationTraceIntent()
-        let ticket = try XCTUnwrap(intent.begin(path[0], game: game, generation: 1, enabled: true))
-        for cell in path.dropFirst() {
-            XCTAssertTrue(intent.visit(cell, ticket: ticket, game: game, generation: 1, enabled: true))
+        for revision in [1, 2] {
+            let definition = try XCTUnwrap(StoryChallengeDefinition(.ribbonCrossing, revision: revision))
+            let game = FallingSky(definition: definition)
+            let path = revision == 1
+                ? [Cell(0, 0), Cell(1, 1), Cell(0, 2), Cell(0, 3), Cell(0, 4)]
+                : [Cell(0, 3), Cell(1, 3), Cell(1, 2), Cell(2, 2), Cell(3, 2)]
+            let intent = ConstellationTraceIntent()
+            let ticket = try XCTUnwrap(intent.begin(path[0], game: game, generation: 1, enabled: true))
+            for cell in path.dropFirst() {
+                XCTAssertTrue(intent.visit(cell, ticket: ticket, game: game, generation: 1, enabled: true))
+            }
+            var committed = game
+            let turn = try XCTUnwrap(committed.clearConstellation(path))
+            XCTAssertEqual(intent.count, 5)
+            XCTAssertEqual(intent.value, 7_000)
+            XCTAssertEqual(intent.value, turn.displayAward)
+            XCTAssertEqual(game.displayScore, 0, "A selection never awards points")
         }
-        var committed = game
-        let turn = try XCTUnwrap(committed.clearConstellation(path))
-        XCTAssertEqual(intent.count, 5)
-        XCTAssertEqual(intent.value, 7_000)
-        XCTAssertEqual(intent.value, turn.displayAward)
-        XCTAssertEqual(game.displayScore, 0, "A selection never awards points")
     }
 }

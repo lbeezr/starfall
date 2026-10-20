@@ -1,7 +1,12 @@
 import XCTest
 @testable import StarfallCore
 
-final class StoryChallengeTests: XCTestCase {
+final class StoryRevisionOneTests: XCTestCase {
+    private func revisionOne(_ challenge: StarfallChallenge) -> FallingSky {
+        guard let definition = StoryChallengeDefinition(challenge, revision: 1) else { return FallingSky(challenge: challenge) }
+        return FallingSky(definition: definition)
+    }
+
     private func restored(_ game: FallingSky) throws -> FallingSky {
         try JSONDecoder().decode(FallingSky.self, from: JSONEncoder().encode(game))
     }
@@ -12,9 +17,9 @@ final class StoryChallengeTests: XCTestCase {
         return try JSONDecoder().decode(FallingSky.self, from: JSONSerialization.data(withJSONObject: fields))
     }
 
-    func testNewVisitsReviseOnlyFirstPairAndStartWithDistinctActualStars() throws {
-        let lantern = FallingSky.freshChallenge(.firstLight)
-        let ribbon = FallingSky.freshChallenge(.ribbonCrossing)
+    func testRetainedRevisionOneKeepsOriginalOpeningsAndObjectives() throws {
+        let lantern = revisionOne(.firstLight)
+        let ribbon = revisionOne(.ribbonCrossing)
         XCTAssertEqual(lantern.challengeRevision, 1)
         XCTAssertEqual(ribbon.challengeRevision, 1)
         XCTAssertEqual(lantern.displayTarget, 150_000)
@@ -36,12 +41,12 @@ final class StoryChallengeTests: XCTestCase {
             XCTAssertNil(game.forecastPhase)
         }
         for challenge in [StarfallChallenge.kiteHarbor, .seedMoon, .silverPools, .frostfruitOrchard, .sunwheelMill] {
-            XCTAssertEqual(FallingSky.freshChallenge(challenge), FallingSky(challenge: challenge))
+            XCTAssertEqual(revisionOne(challenge), FallingSky(challenge: challenge))
         }
     }
 
     func testLanternOffersIndependentClearOrBankForGrownHarvest() throws {
-        let opening = FallingSky.freshChallenge(.firstLight)
+        let opening = revisionOne(.firstLight)
         XCTAssertEqual(opening.legalGroups.count, 2)
         var immediate = opening, banked = opening
         let first = try XCTUnwrap(immediate.clear(Cell(0, 0)))
@@ -63,7 +68,7 @@ final class StoryChallengeTests: XCTestCase {
     }
 
     func testRibbonUsefulSwapTraceAndOrdinaryAlternativeHaveDifferentSurvivors() throws {
-        let opening = FallingSky.freshChallenge(.ribbonCrossing)
+        let opening = revisionOne(.ribbonCrossing)
         let path = [Cell(0, 0), Cell(1, 1), Cell(0, 2), Cell(0, 3), Cell(0, 4)]
         let selected = try XCTUnwrap(opening.constellationCells(along: path))
         XCTAssertEqual(selected.count, 5)
@@ -86,7 +91,7 @@ final class StoryChallengeTests: XCTestCase {
     }
 
     func testSameIngredientsHaveSameTapTraceAwardAndNoSelectionOrSwapIncome() throws {
-        let opening = FallingSky.freshChallenge(.firstLight)
+        let opening = revisionOne(.firstLight)
         let path = [Cell(0, 0), Cell(0, 1), Cell(0, 2), Cell(1, 1), Cell(1, 0)]
         var tapped = opening, traced = opening
         let a = try XCTUnwrap(tapped.clear(Cell(0, 0)))
@@ -124,7 +129,7 @@ final class StoryChallengeTests: XCTestCase {
     func testTapOnlyPoliciesCompleteBothRepairsAndRoundTripEveryCommittedStep() throws {
         for challenge in [StarfallChallenge.firstLight, .ribbonCrossing] {
             for largest in [false, true] {
-                var game = FallingSky.freshChallenge(challenge)
+                var game = revisionOne(challenge)
                 let opening = game
                 for _ in 0..<160 where !game.isOver {
                     while !game.isOver {
@@ -161,7 +166,7 @@ final class StoryChallengeTests: XCTestCase {
 
     func testRestoredDifferentActionsKeepForecastCadenceAndReplayExact() throws {
         for challenge in [StarfallChallenge.firstLight, .ribbonCrossing] {
-            var game = FallingSky.freshChallenge(challenge)
+            var game = revisionOne(challenge)
             for _ in 0..<18 where !game.isOver {
                 if let cell = game.legalGroups.first?.first { game.clear(cell) }
                 game.letStarsFall()
@@ -176,13 +181,13 @@ final class StoryChallengeTests: XCTestCase {
                 game.letStarsFall(); copy.letStarsFall()
                 XCTAssertEqual(copy, game)
             }
-            XCTAssertEqual(copy.replay(), FallingSky.freshChallenge(challenge))
+            XCTAssertEqual(copy.replay(), revisionOne(challenge))
         }
     }
 
     func testLanternAllowsMissedOpeningShowersAndClearingEveryThirdShower() throws {
         for (initialWait, frequency) in [(1, 1), (2, 1), (0, 3)] {
-            var game = FallingSky.freshChallenge(.firstLight)
+            var game = revisionOne(.firstLight)
             for _ in 0..<90 where !game.isOver {
                 if game.turns >= initialWait, game.turns.isMultiple(of: frequency) {
                     while !game.isOver, let cell = game.legalGroups.last?.first {
@@ -203,7 +208,7 @@ final class StoryChallengeTests: XCTestCase {
     }
 
     func testAuthoredSupplyRejectsForgedDuskAccountingAndChangedPreview() throws {
-        let game = FallingSky.freshChallenge(.firstLight)
+        let game = revisionOne(.firstLight)
         let darkAccounting = try changed(game) { fields in
             var board = fields["board"] as! [Any]
             board[8] = NSNull()
@@ -244,9 +249,10 @@ final class StoryChallengeTests: XCTestCase {
     }
 
     func testRejectsMissingMisplacedFutureAndUnboundedScoreStateWithoutOverflow() throws {
-        let game = FallingSky.freshChallenge(.firstLight)
+        let game = revisionOne(.firstLight)
         let mutations: [(inout [String: Any]) -> Void] = [
             { $0["savedChallengeRevision"] = 2 },
+            { $0["savedChallengeRevision"] = 3 },
             { $0["savedChallengeRevision"] = 0 },
             { $0.removeValue(forKey: "savedChallengeRevision") },
             { $0.removeValue(forKey: "storyScoreLedger") },
@@ -277,7 +283,7 @@ final class StoryChallengeTests: XCTestCase {
 
     func testIdleOverflowAndNewOpeningAccountingRemainValidAfterRestore() throws {
         for challenge in [StarfallChallenge.firstLight, .ribbonCrossing] {
-            var game = FallingSky.freshChallenge(challenge)
+            var game = revisionOne(challenge)
             for _ in 0..<80 where !game.isOver { game.letStarsFall() }
             XCTAssertEqual(game.outcome, .lost)
             XCTAssertEqual(game.displayScore, 0)
