@@ -28,9 +28,9 @@ final class CrystalCelebrationArtworkTests: XCTestCase {
 
     @MainActor func testExactAwardsCatalogueAndRepeatedGlyphLayout() throws {
         let family = try XCTUnwrap(CrystalCelebrationArtwork.shared.family)
-        for value in [1, 3, 12, 21, 111, 999999] {
+        for value in [1, 3, 12, 21, 111, 3000, 12000, 150000, 999999] {
             let run = try XCTUnwrap(family.award(value))
-            XCTAssertEqual(run.text, "+\(value)")
+            XCTAssertEqual(run.text, "+\(value.formatted())")
             XCTAssertEqual(run.letters.count, run.text.count)
             XCTAssertEqual(Set(run.letters.map(\.id)).count, run.letters.count)
             XCTAssertEqual(run.letters.map(\.pen), run.letters.map(\.pen).sorted())
@@ -52,6 +52,25 @@ final class CrystalCelebrationArtworkTests: XCTestCase {
         }
         XCTAssertNil(family.award(0)); XCTAssertNil(family.award(-1)); XCTAssertNil(family.award(Int.max))
         XCTAssertNil(family.run("café")); XCTAssertNil(family.run("☄️")); XCTAssertNil(family.run(String(repeating: "A", count: 41)))
+    }
+
+    @MainActor func testSixFigureScoreAndTargetReflowAtLargeTextWithoutShrinking() {
+        func size(_ score: Int, target: Int, width: CGFloat, textSize: DynamicTypeSize) -> CGSize {
+            let view = SkyScoreInstrument(score: score, target: target, hint: "")
+                .environment(\.dynamicTypeSize, textSize)
+            return UIHostingController(rootView: view).sizeThatFits(in: CGSize(width: width, height: 2_000))
+        }
+        for target in [150000, 220000] {
+            let regular = size(149000, target: target, width: 300, textSize: .large)
+            let accessible = size(149000, target: target, width: 300, textSize: .accessibility5)
+            let compact = size(219000, target: target, width: 240, textSize: .accessibility5)
+            XCTAssertLessThanOrEqual(regular.width, 301)
+            XCTAssertLessThanOrEqual(accessible.width, 301)
+            XCTAssertLessThanOrEqual(compact.width, 241)
+            XCTAssertGreaterThan(accessible.height, regular.height,
+                                 "Exact six-figure totals must wrap instead of shrinking their native text")
+            XCTAssertGreaterThanOrEqual(compact.height, accessible.height)
+        }
     }
 
     @MainActor func testMalformedOrIncompleteFamilyFallsBackAndCachesFailure() throws {

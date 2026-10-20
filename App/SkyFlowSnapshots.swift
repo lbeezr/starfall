@@ -2,9 +2,16 @@ import StarfallCore
 
 extension SkyEntryRequest {
     /// Explains the pending choice without reading or replacing the retained round.
-    func introduction(challenge: StarfallChallenge?) -> SkyDialogueLine {
+    func introduction(challenge: StarfallChallenge?, replayingRevision: Int = 0, replayingTarget: Int? = nil) -> SkyDialogueLine {
         let mode = challenge?.dialoguePrefix ?? "observatory"
-        return SkyDialogueLibrary.line(mode + (self == .replay ? ".replay" : ".entry"))
+        let revision = self == .replay ? replayingRevision
+            : challenge.map { FallingSky.freshChallenge($0).challengeRevision } ?? 0
+        let story = revision > 0 && (challenge == .firstLight || challenge == .ribbonCrossing)
+        let id = mode + (story ? ".story" : "") + (self == .replay ? ".replay" : ".entry")
+        let target = self == .replay ? replayingTarget
+            : challenge.flatMap { FallingSky.freshChallenge($0).displayTarget }
+        precondition(!story || target != nil, "A story replay needs its retained objective")
+        return SkyDialogueLibrary.line(id, values: story ? ["target": SkyCopy.score(target ?? 0)] : [:])
     }
 }
 
@@ -20,13 +27,13 @@ struct SkyResultSnapshot: Equatable {
         guard game.isOver else { return nil }
         won = game.outcome == .won
         challenge = game.challenge
-        score = game.score
-        target = game.challenge?.target
+        score = game.displayScore
+        target = game.displayTarget
         blockedColumn = game.blockedColumn
     }
 
     var scoreLabel: String {
-        target.map { SkyCopy.text(.resultChallengeScore, values: ["score": String(score), "target": String($0)]) } ?? SkyCopy.text(.resultScore, values: ["score": String(score)])
+        target.map { SkyCopy.text(.resultChallengeScore, values: ["score": SkyCopy.score(score), "target": SkyCopy.score($0)]) } ?? SkyCopy.text(.resultScore, values: ["score": SkyCopy.score(score)])
     }
     var reason: String {
         if won, let challenge { return challenge.resultReason }
@@ -42,12 +49,16 @@ struct SkyWelcomeSnapshot: Equatable {
     let hasSavedSky: Bool
     let ended: Bool
     let score: Int
+    let challengeRevision: Int
+    let target: Int?
     let summary: String?
     var canContinue: Bool { hasSavedSky && !ended }
     init(game: FallingSky, hasSavedSky: Bool, paused: Bool) {
-        self.hasSavedSky = hasSavedSky; ended = game.isOver; score = game.score
+        self.hasSavedSky = hasSavedSky; ended = game.isOver; score = game.displayScore
+        challengeRevision = game.challengeRevision
+        target = game.displayTarget
         let mode = game.challenge?.welcomeTitle ?? SkyCopy.text(.welcomeOpen)
-        let light = game.challenge.map { SkyCopy.text(.welcomeTarget, values: ["score": String(game.score), "target": String($0.target)]) } ?? SkyCopy.text(.welcomeScore, values: ["score": String(game.score)])
+        let light = game.displayTarget.map { SkyCopy.text(.welcomeTarget, values: ["score": SkyCopy.score(game.displayScore), "target": SkyCopy.score($0)]) } ?? SkyCopy.text(.welcomeScore, values: ["score": SkyCopy.score(game.displayScore)])
         let state = game.outcome == .won ? SkyCopy.text(.welcomeComplete) : ended ? SkyCopy.text(.welcomeFull) : paused ? SkyCopy.text(.welcomePaused) : SkyCopy.text(.welcomeRunning)
         summary = hasSavedSky ? SkyCopy.text(.welcomeSummary, values: ["mode": mode, "score": light, "state": state]) : nil
     }

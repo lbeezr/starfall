@@ -90,15 +90,16 @@ final class SkyFlowInteractionTests: XCTestCase {
         captureEntry(app, "flow-another-entry")
     }
     @MainActor func testFirstLightWinReplayAndFullSky() {
-        // Two bounded rounds (up to 50 + 40 native actions), then a persisted ending relaunch.
-        executionTimeAllowance = 240
+        // The longer authored opening needs about 105 actions; then replay to overflow.
+        // Both rounds remain bounded and must reach their original terminal outcomes.
+        executionTimeAllowance = 600
         requireNormalMotion()
         let app = launch(); defer { app.terminate() }
         app.worldVisitControl("firstLight").tap(); tap("sky.begin", app); pause(app)
         let next = app.buttons["experiment.next"], outcome = app.staticTexts["experiment.outcome"]
-        for _ in 0..<50 {
+        for _ in 0..<160 {
             if outcome.exists { break }
-            let legal = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND value MATCHES %@ AND enabled == true", "experiment.cell.", "([3-9]|[1-9][0-9]) toward a tap match")).firstMatch
+            let legal = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND value MATCHES %@ AND enabled == true", "experiment.cell.", "([3-9]|[1-9][0-9]) toward a tap match(; [0-9,]+ starlight if cleared)?")).firstMatch
             XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in outcome.exists || next.isEnabled }, object: nil).wait(timeout: 5),
                           "Paused round did not settle: state=\(app.state.rawValue), board=\(String(describing: app.otherElements["experiment.board"].value)), score=\(app.staticTexts["experiment.score"].label), outcome=\(outcome.exists), nextExists=\(next.exists), nextEnabled=\(next.isEnabled)")
             if outcome.exists { break }
@@ -123,7 +124,7 @@ final class SkyFlowInteractionTests: XCTestCase {
         XCTAssertEqual(outcome.label, "No room to land")
         XCTAssertTrue(app.staticTexts["experiment.score"].label.contains("had no room for the next star"))
         XCTAssertEqual(app.buttons["experiment.replay"].label, "Replay First Light")
-        XCTAssertTrue(app.staticTexts["experiment.score"].label.contains("of 18"))
+        XCTAssertTrue(app.staticTexts["experiment.score"].label.contains("of \(150_000.formatted(.number.grouping(.automatic)))"))
         capture(app, "flow-full")
         app.terminate(); app.launchArguments = ["--sky-flow-review"]; app.launch()
         tap("sky.resume", app)
@@ -280,7 +281,7 @@ final class SkyFlowInteractionTests: XCTestCase {
         tap("sky.preferences", app); tap("experiment.help", app)
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "How to play"),
             object: app.staticTexts["sky.menu.title"]).wait(timeout: 5))
-        let objective = app.staticTexts.containing(NSPredicate(format: "label BEGINSWITH %@", "Restore Lantern Landing with 18 starlight.")).firstMatch
+        let objective = app.staticTexts.containing(NSPredicate(format: "label BEGINSWITH %@", "Restore Lantern Landing with \(150_000.formatted(.number.grouping(.automatic))) starlight.")).firstMatch
         for _ in 0..<10 where !objective.exists || !objective.isHittable { app.swipeUp() }
         XCTAssertTrue(objective.exists); XCTAssertTrue(objective.isHittable)
         capture(app, "first-light-entry-help")

@@ -325,9 +325,10 @@ enum SkyFlowAction: Equatable { case start, firstLight, ribbonCrossing, kiteHarb
         case .welcome:
             SkyDialogueLibrary.line("ceremony.welcome", values: ["summary": welcome.summary ?? ""])
         case .entry:
-            (entry ?? .initial).introduction(challenge: challenge)
+            (entry ?? .initial).introduction(challenge: challenge, replayingRevision: welcome.challengeRevision,
+                                            replayingTarget: welcome.target)
         case .won, .full:
-            SkyDialogueLibrary.line(screen == .won ? "ceremony.result" : "ceremony.full", values: ["score": result?.scoreLabel ?? SkyCopy.text(.resultScore, values: ["score": String(welcome.score)]), "reason": result?.reason ?? ""])
+            SkyDialogueLibrary.line(screen == .won ? "ceremony.result" : "ceremony.full", values: ["score": result?.scoreLabel ?? SkyCopy.text(.resultScore, values: ["score": SkyCopy.score(welcome.score)]), "reason": result?.reason ?? ""])
         case .playing, .worldMap: SkyDialogueLibrary.line("guide.opening")
         }
     }

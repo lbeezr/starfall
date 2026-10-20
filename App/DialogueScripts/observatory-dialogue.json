@@ -828,9 +828,78 @@
           "priority": "help"
         }
       ]
+    },
+    {
+      "id": "first-light.story.entry",
+      "lines": [
+        {
+          "id": "first-light.story.entry.1",
+          "speaker": "sunny",
+          "text": "Bring {target} starlight back to Lantern Landing. Read the next gentle shower, collect a family, or leave a small top star ready to grow. Begin when you’re ready.",
+          "priority": "help"
+        }
+      ]
+    },
+    {
+      "id": "first-light.story.replay",
+      "lines": [
+        {
+          "id": "first-light.story.replay.1",
+          "speaker": "sunny",
+          "text": "Try the same First Light opening and restore Lantern Landing with {target} starlight. Your saved round stays until you tap Begin.",
+          "priority": "help"
+        }
+      ]
+    },
+    {
+      "id": "guide.first-light.story",
+      "lines": [
+        {
+          "id": "guide.first-light.story.1",
+          "speaker": "sunny",
+          "text": "Lantern Landing needs {target} starlight. Clear matching families, and watch the next shower for a chance to grow a small top star.",
+          "priority": "help"
+        }
+      ]
+    },
+    {
+      "id": "ribbon-crossing.story.entry",
+      "lines": [
+        {
+          "id": "ribbon-crossing.story.entry.1",
+          "speaker": "pip",
+          "text": "Reconnect Ribbon Crossing with {target} starlight. A swap can join a family; a held trace can reach matching stars diagonally or across one empty space. Choose which stars to collect and which to keep.",
+          "priority": "help"
+        }
+      ]
+    },
+    {
+      "id": "ribbon-crossing.story.replay",
+      "lines": [
+        {
+          "id": "ribbon-crossing.story.replay.1",
+          "speaker": "pip",
+          "text": "Try the same Ribbon Crossing opening and reconnect the path with {target} starlight. Your saved round stays until you tap Begin.",
+          "priority": "help"
+        }
+      ]
+    },
+    {
+      "id": "guide.ribbon-crossing.story",
+      "lines": [
+        {
+          "id": "guide.ribbon-crossing.story.1",
+          "speaker": "pip",
+          "text": "Ribbon Crossing needs {target} starlight. Swipe to bring stars together, or hold and draw through five matching stars. Only your traced stars clear.",
+          "priority": "help"
+        }
+      ]
     }
   ],
   "copy": {
+    "help.storyIdentity": "Match by color, shape and character. Small stars earn 1,000 starlight; grown stars earn 2,000. Clearing more than three actual stars adds 1,000 for each extra star. Five small stars earn 7,000. Tapping and tracing the same stars earn the same amount.",
+    "help.storyChallenge": "Restore Lantern Landing with {target} starlight. Gentle showers leave room to read the forecast, collect a matching family or keep a small top star for a matching arrival to grow. Swipe neighboring stars to arrange matches, tap groups or hold and draw selected traces. Finish before an arriving star has nowhere to land. There is no minimum time to win, and no Dusk, Opal Orbs or storms.",
+    "help.storyRibbon": "Reconnect Ribbon Crossing with {target} starlight. Swipe neighboring stars to join a family, or hold and trace five matching stars across diagonals and one empty space. Choosing a smaller shape can leave useful stars for the next clear; clearing more than three stars earns a bonus. Steady showers bring the next choices. Finish before an arriving star has nowhere to land. There is no minimum time to win, and no Dusk, Opal Orbs or storms.",
     "practiceMatchTitle": "Match and collect",
     "practiceGrownTitle": "Grown stars",
     "practiceExchangeTitle": "Move in four directions",
@@ -964,8 +1033,8 @@
     "menu.balance": "Sky settings",
     "menu.observatory": "Moonlit Observatory",
     "menu.explore": "Play & settings",
-    "menu.firstLight": "First Light · 18 starlight",
-    "menu.firstLightHint": "Restore Lantern Landing with 18 starlight. Preview the challenge before Begin.",
+    "menu.firstLight": "First Light · Lantern Landing",
+    "menu.firstLightHint": "Preview Lantern Landing’s objective and gentle showers before Begin.",
     "menu.hint": "Pause, settings and how to play",
     "preferences.title": "Sound & motion",
     "preferences.sound": "Sound",
@@ -1079,7 +1148,7 @@
     "help.pauseTitle": "Pause the showers",
     "help.pause": "Pause sky stops automatic showers. You can keep clearing or tap Next shower for one shower. Opening the menu or leaving the app suspends play. Missed showers do not build up.",
     "help.arrangeTitle": "Move stars and clear shapes",
-    "help.swap": "In Open sky, swipe a star left, right, up or down to swap with its neighbor immediately. Each swipe moves one space, whatever the colors. Moving into an empty space lets stars fall. Hold still first when you want to draw a constellation.",
+    "help.swap": "Swipe a star left, right, up or down to swap with its neighbor immediately. Each swipe moves one space, whatever the colors. Moving into an empty space lets stars fall. Hold still first when you want to draw a constellation.",
     "help.recipe": "A square uses exactly 4 matching stars; a cross uses 5. Trace the shape to clear only those stars. In Open Sky, an Opal Orb can join their color.",
     "help.relay": "Clearing supporting stars can drop others into a new shape. Clear that new shape to build a relay. Shapes wait until you clear them: there is no automatic chain reaction or score multiplier.",
     "help.challengeTitle": "First Light · Lantern Landing",
@@ -1171,8 +1240,8 @@
     "prop.rest": "At rest",
     "action.ribbonCrossing": "Try Ribbon Crossing",
     "action.replayRibbonCrossing": "Replay Ribbon Crossing",
-    "menu.ribbonCrossing": "Ribbon Crossing · 18 starlight",
-    "menu.ribbonCrossingHint": "Reconnect Ribbon Crossing with 18 starlight. Preview the challenge before Begin.",
+    "menu.ribbonCrossing": "Ribbon Crossing",
+    "menu.ribbonCrossingHint": "Preview Ribbon Crossing’s objective and connected-star setups before Begin.",
     "flow.ribbonCrossing": "RIBBON CROSSING",
     "flow.ribbonComplete": "CROSSING COMPLETE",
     "flow.ribbonWon": "Ribbon Crossing restored!",

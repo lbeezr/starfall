@@ -67,7 +67,7 @@ final class WorldJourneyInteractionTests: XCTestCase {
         tap("sky.worldMap", app); tap("world.visit", app); tap("sky.begin", app)
         XCTAssertTrue(app.buttons["experiment.settings"].waitForExistence(timeout: 5))
         tap("experiment.settings", app); tap("experiment.pause", app)
-        XCTAssertTrue(app.staticTexts["experiment.score"].label.contains("of 18"))
+        XCTAssertTrue(app.staticTexts["experiment.score"].label.contains("of 150,000"))
         capture("official-lantern-after-map-entry", app)
         let score = app.staticTexts["experiment.score"].label
         let board = app.otherElements["experiment.board"].value as? String
@@ -165,6 +165,53 @@ final class WorldJourneyInteractionTests: XCTestCase {
         XCTAssertEqual(app.buttons["world.node.firstLight"].value as? String, "Restored")
         XCTAssertEqual(app.buttons["world.node.ribbonCrossing"].value as? String, "Ready to restore")
         capture("world-repair-after-relaunch", app)
+    }
+
+    @MainActor func testRevisedLanternEarnsThousandsAndRetainsScoreAcrossRelaunch() {
+        let app = launch(); defer { app.terminate() }
+        app.worldVisitControl("firstLight").tap()
+        XCTAssertTrue(app.staticTexts["sky.subtitle"].label.contains("150,000"))
+        capture("story-lantern-entry-150000", app)
+        tap("sky.begin", app)
+        tap("experiment.settings", app); tap("experiment.pause", app)
+        XCTAssertTrue(app.staticTexts["experiment.score"].label.contains("of 150,000"))
+        tap("experiment.cell.0.4", app)
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "3,000 of 150,000 starlight collected"), object: app.staticTexts["experiment.score"]).wait(timeout: 5))
+        capture("story-lantern-three-thousand-native-clear", app)
+        let score = app.staticTexts["experiment.score"].label
+        let board = app.otherElements["experiment.board"].value as? String
+        XCUIDevice.shared.press(.home); app.activate()
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, score)
+        app.terminate(); app.launchArguments = ["--sky-flow-review", "-calmEffects", "NO"]; app.launch()
+        tap("sky.resume", app)
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, score)
+        XCTAssertEqual(app.otherElements["experiment.board"].value as? String, board)
+        XCTAssertTrue(app.buttons["experiment.next"].exists)
+    }
+
+    @MainActor func testRevisedRibbonSwapCreatesLargerClearWithLargestText() {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchArguments = ["--starfalls-reset", "--dialogue-review", "--world-legacy-review", "--sky-flow-review",
+                               "-calmEffects", "YES", "-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"]
+        app.launch(); defer { app.terminate() }
+        app.worldVisitControl("ribbonCrossing").tap()
+        XCTAssertTrue(app.staticTexts["sky.subtitle"].label.contains("220,000"))
+        capture("story-ribbon-entry-largest-text", app)
+        app.revealSkyControls([app.buttons["sky.begin"]])
+        capture("story-ribbon-entry-actions-largest-text", app)
+        tap("sky.begin", app)
+        tap("experiment.settings", app); tap("experiment.pause", app)
+        XCTAssertTrue(app.buttons["experiment.cell.0.2"].value.debugDescription.contains("3 toward a tap match"))
+        drag(app, from: (1,1), to: (0,1), drawing: false)
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "value CONTAINS %@ AND enabled == true", "5 toward a tap match"), object: app.buttons["experiment.cell.0.2"]).wait(timeout: 5))
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, "0 of 220,000 starlight collected")
+        tap("experiment.cell.0.2", app)
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "7,000 of 220,000 starlight collected"), object: app.staticTexts["experiment.score"]).wait(timeout: 5))
+        capture("story-ribbon-seven-thousand-largest-text", app)
+        tap("experiment.settings", app); tap("experiment.done", app)
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, "7,000 of 220,000 starlight collected")
+
     }
 
     @MainActor func testSilverWinningClearUnlocksFrostfruitAndPersistsItsMapEntry() {

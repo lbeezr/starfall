@@ -150,3 +150,34 @@ final class WorldJourneyTests: XCTestCase {
         }
     }
 }
+
+extension WorldJourneyTests {
+    @MainActor func testV9WorldEraRoundDoesNotGrantLegacyAccessWhenArchiveKeyAdvances() throws {
+        let defaults = defaults()
+        let old = FallingSky(challenge: .firstLight)
+        let core = try JSONSerialization.jsonObject(with: JSONEncoder().encode(old))
+        defaults.set(try JSONSerialization.data(withJSONObject: ["schemaVersion": 9, "game": core]), forKey: SkySaveArchive.worldKey)
+        let journey = WorldJourneyStore(defaults: defaults).journey
+        XCTAssertFalse(journey.legacyAccess)
+        XCTAssertTrue(journey.completed.isEmpty)
+        XCTAssertFalse(journey.canEnter(.ribbonCrossing))
+    }
+}
+
+extension WorldJourneyTests {
+    @MainActor func testRevisedTraceSelectionReportsTheSameAwardAsCommit() throws {
+        let game = FallingSky.freshChallenge(.ribbonCrossing)
+        let path = [Cell(0, 0), Cell(1, 1), Cell(0, 2), Cell(0, 3), Cell(0, 4)]
+        let intent = ConstellationTraceIntent()
+        let ticket = try XCTUnwrap(intent.begin(path[0], game: game, generation: 1, enabled: true))
+        for cell in path.dropFirst() {
+            XCTAssertTrue(intent.visit(cell, ticket: ticket, game: game, generation: 1, enabled: true))
+        }
+        var committed = game
+        let turn = try XCTUnwrap(committed.clearConstellation(path))
+        XCTAssertEqual(intent.count, 5)
+        XCTAssertEqual(intent.value, 7_000)
+        XCTAssertEqual(intent.value, turn.displayAward)
+        XCTAssertEqual(game.displayScore, 0, "A selection never awards points")
+    }
+}

@@ -6,8 +6,12 @@ struct StarlightCelebration: Equatable, Identifiable {
     enum Level: Equatable { case ordinary, brilliant, constellation, recipe(StarRecipe.Shape), relay(Int) }
     let id: UInt64
     let started: Date
+    /// Physical light drives presentation intensity; display points may include
+    /// the committed story scale and bonus without changing the effect budget.
     let collected: Int
+    let displayAward: Int
     let total: Int
+    var awardText: String { "+\(displayAward.formatted())" }
     let cells: [Cell]
     let path: [Cell]
     struct Contributor: Equatable {
@@ -69,6 +73,7 @@ struct StarlightCelebration: Equatable, Identifiable {
             .sorted { $0.row == $1.row ? $0.column < $1.column : $0.row < $1.row }
         guard !cells.isEmpty else { return nil }
         self.id = id; self.started = started; self.collected = turn.collected
+        self.displayAward = turn.displayAward
         self.total = total; self.cells = cells
         contributors = cells.compactMap { cell in
             old.gem(at: cell).map { Contributor(cell: cell, identity: $0.identity, reward: old.reward(of: [cell])) }
@@ -77,7 +82,10 @@ struct StarlightCelebration: Equatable, Identifiable {
         self.path = path.isEmpty ? (recipe?.presentationPath ?? []) : path
         if relayDepth > 1 { level = .relay(relayDepth) }
         else if let recipe { level = .recipe(recipe.shape) }
-        else { level = path.isEmpty ? (turn.collected >= 8 ? .brilliant : .ordinary) : .constellation }
+        else {
+            let largeClear = turn.collected >= 8 || (turn.award?.bonus ?? 0) > 0
+            level = path.isEmpty ? (largeClear ? .brilliant : .ordinary) : .constellation
+        }
     }
 }
 

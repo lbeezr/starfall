@@ -1,6 +1,6 @@
 import StarfallCore
 
-/// Selects the location's presentation without constructing or saving a replacement sky.
+/// Selects the location's presentation without committing or saving a replacement sky.
 /// Pending entry previews start unrestored; canceling reveals the committed round again.
 struct RestorationPresentation: Equatable {
     let challenge: StarfallChallenge
@@ -8,11 +8,43 @@ struct RestorationPresentation: Equatable {
 
     static func selected(game: FallingSky, entry: SkyEntryRequest?) -> Self? {
         if let entry {
-            guard let challenge = entry.selectedChallenge(replaying: game.challenge) else { return nil }
-            return Self(challenge: challenge, progress: StarlightRestoration(score: 0, target: challenge.target))
+            let preview = entry.previewGame(retaining: game)
+            guard let challenge = preview.challenge, let progress = preview.restoration else { return nil }
+            return Self(challenge: challenge, progress: progress)
         }
         guard let challenge = game.challenge, let progress = game.restoration else { return nil }
         return Self(challenge: challenge, progress: progress)
+    }
+}
+
+extension SkyEntryRequest {
+    /// One read-only rules preview for artwork, entry and help.
+    func previewGame(retaining game: FallingSky) -> FallingSky {
+        switch self {
+        case .initial: game
+        case .fresh: .freshSurvival(seed: game.seed, balance: game.balance)
+        case .replay: game.replay()
+        case .firstLight, .ribbonCrossing, .kiteHarbor, .seedMoon, .silverPools, .frostfruitOrchard:
+            .freshChallenge(selectedChallenge(replaying: nil)!)
+        }
+    }
+}
+
+extension FallingSky {
+    var challengeGuideLine: SkyDialogueLine? {
+        guard let challenge else { return nil }
+        let story = challengeRevision > 0 && (challenge == .firstLight || challenge == .ribbonCrossing)
+        return SkyDialogueLibrary.line("guide." + challenge.dialoguePrefix + (story ? ".story" : ""),
+                                       values: story ? ["target": SkyCopy.score(displayTarget ?? 0)] : [:])
+    }
+
+    var challengeHelpText: String? {
+        guard let challenge else { return nil }
+        if challengeRevision > 0, challenge == .firstLight || challenge == .ribbonCrossing {
+            return SkyCopy.text(challenge == .firstLight ? .helpStoryChallenge : .helpStoryRibbon,
+                                values: ["target": SkyCopy.score(displayTarget ?? 0)])
+        }
+        return challenge.helpText
     }
 }
 

@@ -141,6 +141,16 @@ final class DuskProductionTests: XCTestCase {
         defer {view.presentScene(nil);window.isHidden=true;prior?.makeKey()}
         let before=DuskFixture.imminent.game(rule: .patientFeeding);var after=before
         let turn=try XCTUnwrap(after.letStarsFall())
+        // Material-sheet work can precede this newly attached host. Establish
+        // its first frame before sampling the brief initial collapse phase.
+        scene.render(before)
+        var frameReady = false
+        scene.run(.run { frameReady = true }, withKey: "test.collapse-host-ready")
+        let readyDeadline = ContinuousClock.now + .seconds(2)
+        while !frameReady && ContinuousClock.now < readyDeadline {
+            try await Task.sleep(for: .milliseconds(5))
+        }
+        XCTAssertTrue(frameReady, "The collapse host must render before animation begins")
         var complete=false,sawHole=false,sawInfall=false,sawArrival=false
         scene.animate(turn,from:before,to:after){complete=true}
         let deadline=ContinuousClock.now + .seconds(5)

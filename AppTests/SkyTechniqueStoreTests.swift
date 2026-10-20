@@ -411,16 +411,34 @@ final class SkyTechniqueStoreTests: XCTestCase {
             presenter.finish(); store.setSuspended(true)
         }
     }
-    @MainActor func testNewActionsRejectStaleInputBusyColumnsAndFirstLight() throws {
-        let (store,presenter,_,_)=fixture("nudge")
-        let old=store.game,ticket=store.constellationInputGeneration
-        XCTAssertTrue(store.performTechnique(.nudge(Cell(1,2),Cell(1,1)),snapshot:old,generation:ticket))
-        let committed=store.game
-        XCTAssertFalse(store.performTechnique(.nudge(Cell(1,1),Cell(1,2)),snapshot:committed,generation:store.constellationInputGeneration))
-        XCTAssertFalse(store.performTechnique(.nudge(Cell(1,2),Cell(1,1)),snapshot:old,generation:ticket))
-        XCTAssertEqual(store.game,committed)
-        presenter.finish();store.startFirstLight()
-        XCTAssertFalse(store.performTechnique(.nudge(Cell(0,0),Cell(0,1)),snapshot:store.game,generation:store.constellationInputGeneration))
+    @MainActor func testTechniquesRespectBusyColumnsEmptyCellsAndRestartGeneration() throws {
+        let (store, presenter, _, _) = fixture("nudge")
+        defer { store.setSuspended(true) }
+        let old = store.game, ticket = store.constellationInputGeneration
+        XCTAssertTrue(store.performTechnique(.nudge(Cell(1, 2), Cell(1, 1)), snapshot: old, generation: ticket))
+        let committed = store.game
+        XCTAssertFalse(store.performTechnique(.nudge(Cell(1, 1), Cell(1, 2)),
+            snapshot: committed, generation: store.constellationInputGeneration))
+        XCTAssertFalse(store.performTechnique(.nudge(Cell(1, 2), Cell(1, 1)), snapshot: old, generation: ticket))
+        XCTAssertEqual(store.game, committed)
+        presenter.finish()
+        let beforeRestart = store.constellationInputGeneration
+        store.startFirstLight()
+        let opening = store.game, freshTicket = store.constellationInputGeneration
+        XCTAssertEqual(opening, FallingSky.freshChallenge(.firstLight))
+        XCTAssertNotEqual(freshTicket, beforeRestart)
+        XCTAssertFalse(store.performTechnique(.nudge(Cell(0, 0), Cell(0, 1)),
+            snapshot: opening, generation: beforeRestart), "A matching new snapshot cannot renew an old input ticket")
+        XCTAssertFalse(opening.canNudge(from: Cell(6, 5), to: Cell(6, 6)))
+        XCTAssertFalse(store.performTechnique(.nudge(Cell(6, 5), Cell(6, 6)),
+            snapshot: opening, generation: freshTicket), "Empty cells remain an invalid exchange")
+        XCTAssertEqual(store.game, opening)
+        var expected = opening
+        XCTAssertNotNil(expected.nudge(from: Cell(0, 0), to: Cell(0, 1)))
+        XCTAssertTrue(store.performTechnique(.nudge(Cell(0, 0), Cell(0, 1)),
+            snapshot: opening, generation: freshTicket))
+        XCTAssertEqual(store.game, expected, "The authored First Light opening supports the same legal exchange as Core")
+        presenter.finish()
     }
     @MainActor func testCurrentSaveNudgeKeepsDeadlineAndCommitsBeforeAnimation() throws {
         let suite="Starfall.TechniqueSave.\(UUID())",defaults=UserDefaults(suiteName:suite)!

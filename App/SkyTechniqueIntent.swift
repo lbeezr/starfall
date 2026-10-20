@@ -123,7 +123,7 @@ extension StarRecipe {
     private(set) var generation: UInt64 = 0
     private(set) var sequence: UInt64 = 0
     var count: Int { Set(path).count }
-    var value: Int { snapshot?.reward(of: Set(path)) ?? 0 }
+    var value: Int { snapshot?.displayReward(of: Set(path)) ?? 0 }
 
     @discardableResult func begin(_ cell: Cell, game: FallingSky, generation: UInt64, enabled: Bool) -> UInt64? {
         cancel()

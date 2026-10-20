@@ -346,11 +346,11 @@ import StarfallCore
         let quiet = quietMotion
         let celebrating = store.celebration != nil
         return
-            SkyScoreInstrument(score: store.game.score, target: store.game.challenge?.target,
+            SkyScoreInstrument(score: store.game.displayScore, target: store.game.displayTarget,
                                restorationLabel: restoration.map { $0.challenge.restorationLabel(progress: $0.progress) },
                                restorationIdentifier: restoration?.challenge.restorationIdentifier,
                                hint: SkyCopy.text(.a11yBoardHint, values: ["summary": boardSummary]))
-            .keyframeAnimator(initialValue: CGFloat(1), trigger: store.game.score) { content, scale in
+            .keyframeAnimator(initialValue: CGFloat(1), trigger: store.game.displayScore) { content, scale in
                 content.scaleEffect(quiet || !celebrating ? 1 : scale, anchor: .leading)
             } keyframes: { _ in
                 LinearKeyframe(1, duration: 0.58)
@@ -472,7 +472,7 @@ import StarfallCore
     private func cellButton(_ cell: Cell) -> some View {
         let group = store.game.group(at: cell)
         let value = store.game.value(of: group)
-        let reward = store.game.reward(of: group)
+        let reward = store.game.displayReward(of: group)
         let snapshot = store.game
         let generation = store.constellationInputGeneration
         return Button { tapBoardCell(cell) } label: {
@@ -482,7 +482,7 @@ import StarfallCore
         .accessibilityLabel(cellLabel(cell))
         .accessibilityValue(store.game.gem(at: cell)?.isLight == true
             ? (store.game.isDrained(at: cell) ? SkyCopy.text(.a11yOrbDrained) : SkyCopy.text(.a11yOrb))
-            : reward != value ? SkyCopy.text(.a11yGroupReward, values: ["value": String(value), "reward": String(reward)]) : SkyCopy.text(.a11yGroupValue, values: ["value": String(value)]))
+            : reward != value ? SkyCopy.text(.a11yGroupReward, values: ["value": String(value), "reward": reward.formatted()]) : SkyCopy.text(.a11yGroupValue, values: ["value": String(value)]))
         .accessibilityHint(store.game.gem(at: cell)?.gravityKind == .hole
             ? SkyCopy.text(.a11yHoleHint)
             : store.game.gem(at: cell)?.gravityKind == .magnet
@@ -722,8 +722,8 @@ private extension FallingSkyView {
         store.scene.showConstellationTrace(trace.path, ready: store.game.constellationCells(along:trace.path) != nil)
         if trace.count > 0 {
             let ready = store.game.constellationCells(along: trace.path) != nil
-            let value = store.game.reward(of: Set(trace.path))
-            store.showInputFeedback(ready ? SkyCopy.text(.inputTraceReady, values: ["count": String(trace.count), "score": String(value)]) : SkyCopy.text(.inputTraceProgress, values: ["count": String(trace.count)]))
+            let value = store.game.displayReward(of: Set(trace.path))
+            store.showInputFeedback(ready ? SkyCopy.text(.inputTraceReady, values: ["count": String(trace.count), "score": value.formatted()]) : SkyCopy.text(.inputTraceProgress, values: ["count": String(trace.count)]))
         }
     }
     func releaseConstellation() {

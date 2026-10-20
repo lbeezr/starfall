@@ -107,7 +107,7 @@ final class SkyDialogueTests: XCTestCase {
 
     func testCatalogRendersEveryBundledScriptAndRejectsAuthoringErrors() throws {
         let catalog = SkyDialogueLibrary.catalog
-        let samples = ["count": "4", "score": "18", "stars": "5", "dark": "Dark star", "growth": "A star grew", "arrival": "One star arrived", "detail": "A fixture", "release": "The hole releases its stars after 3 more showers.", "feeds": "5", "swallowed": "I swallowed 3 stars.", "shape": "Square", "depth": "2", "phase": "Storm: 3 heavy showers left.", "cadence": "Showers are closer together now.", "summary": "Paused", "reason": "First Light complete!", "context": "A storm is coming"]
+        let samples = ["count": "4", "score": "18", "target": "150,000", "stars": "5", "dark": "Dark star", "growth": "A star grew", "arrival": "One star arrived", "detail": "A fixture", "release": "The hole releases its stars after 3 more showers.", "feeds": "5", "swallowed": "I swallowed 3 stars.", "shape": "Square", "depth": "2", "phase": "Storm: 3 heavy showers left.", "cadence": "Showers are closer together now.", "summary": "Paused", "reason": "First Light complete!", "context": "A storm is coming"]
         for source in catalog.scripts {
             let values = samples.filter { key, _ in source.lines.contains { $0.text.contains("{\(key)}") } }
             let rendered = try catalog.script(source.id, values: values)

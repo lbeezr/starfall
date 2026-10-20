@@ -217,7 +217,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         guard canReceiveInput, ticket == constellationInputGeneration,
               holdTicket == constellationHold, count == 0 || holdTicket != nil else { return }
         let message = count > 0
-            ? SkyCopy.text(.inputTraceAnnouncement, values: ["count": String(count), "score": String(value), "status": SkyCopy.text(ready ? .inputTraceReleaseReady : game.supportsArrangingStars ? .inputTraceShort : .inputTraceChallengeShort)])
+            ? SkyCopy.text(.inputTraceAnnouncement, values: ["count": String(count), "score": value.formatted(), "status": SkyCopy.text(ready ? .inputTraceReleaseReady : game.supportsArrangingStars ? .inputTraceShort : .inputTraceChallengeShort)])
             : SkyCopy.text(.inputTraceCanceled)
         feedback.announce(message)
     }
@@ -346,7 +346,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         if tutorial == nil, !arguments.contains("--starfalls-reset"), case .loaded(let saved) = SkySaveArchive.inspect(from: defaults) {
             game = saved.removingGravity().adoptingFeedingDusk().disablingAutomaticAging().adoptingCurrentChallengeActions()
             hasSavedSky = true
-            guide(saved.outcome == .won ? (saved.challenge?.wonGuideID ?? "guide.won") : saved.isOver ? "guide.full" : "guide.restore", values: saved.isOver ? ["score": String(saved.score)] : [:])
+            guide(saved.outcome == .won ? (saved.challenge?.wonGuideID ?? "guide.won") : saved.isOver ? "guide.full" : "guide.restore", values: saved.isOver ? ["score": saved.displayScore.formatted()] : [:])
         } else {
             let argument = arguments.first { $0.hasPrefix("--starfalls-seed=") }
             let seed = argument.flatMap { UInt64($0.dropFirst("--starfalls-seed=".count)) } ?? 5
@@ -608,7 +608,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         cancelCelebration()
         celebrationSequence &+= 1
         guard let receipt = StarlightCelebration(id: celebrationSequence, turn: turn, from: old,
-            total: game.score, path: path, recipe: recipe, relayDepth: techniqueRelay.depth) else { return }
+            total: game.displayScore, path: path, recipe: recipe, relayDepth: techniqueRelay.depth) else { return }
         celebration = receipt
         feedback.collected(receipt.level, soundEnabled: soundEnabled, hapticsEnabled: hapticsEnabled,
                            reducedMotion: presenter.reduceMotion)
@@ -871,10 +871,11 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         #endif
         isPaused = true
         interruptPlay(reason: "challenge")
-        game = FallingSky(challenge: challenge)
+        game = FallingSky.freshChallenge(challenge)
         refreshCadence()
         remaining = showerInterval
-        dialogue.reset(); guide("guide." + challenge.dialoguePrefix)
+        dialogue.reset()
+        if let line = game.challengeGuideLine { guideLine = line }
         save(); presenter.render(game)
     }
 
