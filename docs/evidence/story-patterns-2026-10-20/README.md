@@ -1,6 +1,6 @@
 # Arrange patterns in Lantern and Ribbon
 
-**Verified development subset; publication and delivery pending.** The player rejected revision 2's readily tappable boards and confirmed automatic patterns only for these two locations. Revision 3 removes tap/trace activation and adds full seven-star rows and columns to the existing four-star square and five-star cross. All five ordinary families now use bounded shuffled supply. The 150,000/220,000 objectives remain reachable through arrangements; human difficulty remains open.
+**Verified development subset; published and installed on the original iPhone.** The player rejected revision 2's readily tappable boards and confirmed automatic patterns only for these two locations. Revision 3 removes tap/trace activation and adds full seven-star rows and columns to the existing four-star square and five-star cross. All five ordinary families now use bounded shuffled supply. The 150,000/220,000 objectives remain reachable through arrangements; human difficulty remains open.
 
 ## What failed and what must improve
 
@@ -31,4 +31,6 @@ With at most four actual swaps between showers, the model wins Lantern in 22 sho
 
 Native iPhone 17e Simulator, iOS 27.0, Debug working tree `dev.23ebbb8d8f`; sampled normal motion, with the app's generic `dev.local` label. [Capture index](captures.json) also retains the opening rain and largest-text quiet Ribbon result. This is visual/animation inspection, not frame-rate measurement or physical acceptance.
 
-The next phone session must assess comprehension, decision time, recoverability and practical line/cascade opportunities before extending this design. Actual VoiceOver, minimum iOS, physical-device performance and full RC remain separate gates. Canonical installation is recorded separately once completed.
+The next phone session must assess comprehension, decision time, recoverability and practical line/cascade opportunities before extending this design. Actual VoiceOver, minimum iOS, physical-device performance and full RC remain separate gates. [Canonical delivery](delivery.json) verifies `dev.23ebbb8d8f` installed from main `6ee82a95` after [PR #198](https://github.com/lbeezr/starfall/pull/198). The updater repeated all 225 Core tests on a clean main export, verified signing and checked the actual installed application over paired local Wi-Fi. Main CI was pending at installation. No launch or save reset was performed. Start a new Story Mode visit to select revision 3; Continue and Replay retain a saved round’s rules.
+
+A final guidance review found two remaining trace instructions in the automatic-only mode: the Arrange paragraph and multitouch feedback. The follow-up selects these strings through the existing control capability and retains historical instructions. Its checks are recorded separately in `guidanceFollowUp` in [verification.json](verification.json); earlier board captures and native flows keep their source identity.

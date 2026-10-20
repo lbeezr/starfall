@@ -4,6 +4,30 @@ import StarfallCore
 @testable import Starfall
 
 final class SkyDialogueTests: XCTestCase {
+    @MainActor func testSwapAndMultitouchInstructionsFollowTheSavedControlRules() throws {
+        for challenge in [StarfallChallenge.firstLight, .ribbonCrossing] {
+            for revision in 1...3 {
+                let game = FallingSky(definition: try XCTUnwrap(StoryChallengeDefinition(challenge, revision: revision)))
+                let swap = SkyCopy.swapInstructions(manualClears: SkyHelpContext(game: game).manualClears)
+                let contact = SkyCopy.oneFingerInstructions(drawingEnabled: game.supportsManualClears)
+                if revision == 3 {
+                    XCTAssertTrue(swap.contains("matching patterns pop"))
+                    XCTAssertFalse(swap.contains("constellation"))
+                    XCTAssertEqual(contact, "Use one finger to move a star.")
+                } else {
+                    XCTAssertEqual(swap, SkyCopy.text(.helpSwap))
+                    XCTAssertTrue(swap.contains("draw a constellation"))
+                    XCTAssertEqual(contact, "Use one finger to trace or move a star.")
+                }
+            }
+        }
+        let openSky = FallingSky(seed: 42)
+        XCTAssertEqual(SkyCopy.swapInstructions(manualClears: SkyHelpContext(game: openSky).manualClears),
+                       SkyCopy.text(.helpSwap))
+        XCTAssertEqual(SkyCopy.oneFingerInstructions(drawingEnabled: openSky.supportsManualClears),
+                       SkyCopy.text(.inputOneFinger))
+    }
+
     func testBoardAndMenuSummariesSupplyOnlyTheirModesPlaceholders() {
         XCTAssertEqual(SkyCopy.boardSummary(showers: 2, groups: 4, manualClears: true),
                        SkyCopy.text(.a11yBoardSummary, values: ["showers": "2", "groups": "4"]))

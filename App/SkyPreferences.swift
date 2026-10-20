@@ -181,7 +181,7 @@ struct SkyHowToPlay: View {
             }
             if context.arranging {
                 SkyMenuSection(SkyCopy.text(.helpArrangeTitle)) {
-                    Text(SkyCopy.text(.helpSwap))
+                    Text(SkyCopy.swapInstructions(manualClears: context.manualClears))
                     Text(SkyCopy.text(!context.manualClears ? .helpPatternsRecipe
                                       : context.automaticRecipes ? .helpCascadeRecipe : .helpRecipe))
                     Text(SkyCopy.text(context.automaticRecipes ? .helpCascadeChain : .helpRelay))

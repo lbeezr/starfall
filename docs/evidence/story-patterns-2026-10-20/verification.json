@@ -1,5 +1,5 @@
 {
-  "status": "Verified development subset; canonical publication and delivery pending",
+  "status": "Verified development subset; merged and installed by canonical updater",
   "baseCommit": "7a582d459feb9680351eaa647ca85d94e1410df1",
   "runtimeInputFingerprint": "dev.23ebbb8d8f",
   "buildAffectingDirtyPaths": [
@@ -109,7 +109,7 @@
   },
   "failureCorrection": {
     "cause": "Patterns summary permits only showers; both View and Menu supplied an extra groups argument. Strict SkyCopy catalogue validation trapped at Begin.",
-    "fix": "Shared SkyCopy.boardSummary chooses exactly the placeholders for the saved input capability; both consumers use it. Focused catalogue regression plus the same two physical UI flows pass.",
+    "fix": "Shared SkyCopy.boardSummary chooses exactly the placeholders for the saved input capability; both consumers use it. Focused catalogue regression plus the same two native Simulator UI flows pass.",
     "crashes": [
       {
         "file": "/Users/lbeezr/Library/Logs/DiagnosticReports/Starfall-2026-10-20-141232.ips",
@@ -131,5 +131,69 @@
     "Full-line rules are covered in Core; no full-line clear occurs in the two human-style native opening flows",
     "Sampled normal-motion frames and largest-text quiet flow inspected; no sustained performance measurement",
     "No actual VoiceOver, minimum-iOS or physical-play acceptance claimed"
-  ]
+  ],
+  "publication": {
+    "localCommit": "3b827d9fa84bfbaab06baab5fcd722c3367c6db7",
+    "publishedCommit": "c822bb1dfe8a922e5dbc343c8c29da7a7a34e19b",
+    "mergeCommit": "6ee82a9587c7855ebed6cf34108c395fa074f491",
+    "exactTree": "eea558fccbaff12c8a9db703285b9a8bd0c14afa",
+    "pullRequest": "https://github.com/lbeezr/starfall/pull/198",
+    "dirtyRuntimeDifferencesAtPublication": []
+  },
+  "deliveryReceipt": "delivery.json",
+  "guidanceFollowUp": {
+    "baseCommit": "6ee82a9587c7855ebed6cf34108c395fa074f491",
+    "runtimeInputFingerprint": "dev.e3878b33d4",
+    "cause": "The Arrange help section still included hold-to-draw guidance, and multitouch feedback still offered tracing in pattern-only rounds.",
+    "fix": "Both strings select through the existing manual-clears/drawing capability. Historical rounds and Open Sky retain their original instructions.",
+    "runtimePathSHA256": {
+      "App/ConstellationTraceSurface.swift": "17717dec2c00fa36e12692d7420c32baf83e07823eba5ce6f55a48ae1a2ef7cb",
+      "App/DialogueScripts/observatory-dialogue.json": "757c92fdc25b51c0ebfde7362829d0d3f5c3a9d2e0782042c14ffb6eb1a3490a",
+      "App/SkyCopy.swift": "d628df697f3d1933e523af7b37fdbfb22426cb7338f9cd4e4af9be25dbc61670",
+      "App/SkyPreferences.swift": "085422bc53ca6dd4f5a57e1b011b59f53852a8d17cbc93dcbaec22aea9a65451"
+    },
+    "core": {
+      "tests": 225,
+      "failures": 0,
+      "skips": 0,
+      "command": "CLANG_MODULE_CACHE_PATH=/tmp/starfall-core-v3-clang SWIFTPM_MODULECACHE_OVERRIDE=/tmp/starfall-core-v3-swift swift test --disable-sandbox --cache-path /tmp/starfall-core-v3-cache",
+      "log": "/tmp/starfall-pattern-copy-core.log",
+      "logSHA256": "84cf00d24b6c836bf1070862594dc8961db83673cf90ae26dff38cb0c9d1d84d"
+    },
+    "release": {
+      "result": "passed",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Release -destination \"platform=iOS Simulator,id=E739068A-AC67-424C-9430-1FE5578902FE\" -derivedDataPath /tmp/starfall-pattern-release ARCHS=arm64 ONLY_ACTIVE_ARCH=YES build",
+      "log": "/tmp/starfall-pattern-copy-release.log",
+      "logSHA256": "8bfe28424e8c15f33c6f3733db5e9a713f2378f96bbd65be92849f7a472e2553"
+    },
+    "hosted": {
+      "tests": 44,
+      "failures": 0,
+      "skips": 0,
+      "suites": [
+        "SkyDialogueTests",
+        "TraceInputPolishTests"
+      ],
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=E739068A-AC67-424C-9430-1FE5578902FE\" -derivedDataPath /tmp/starfall-pattern-native -resultBundlePath /tmp/starfall-pattern-copy-polish-hosted-2.xcresult -parallel-testing-enabled NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \"-only-testing:StarfallAppTests/SkyDialogueTests\" \"-only-testing:StarfallAppTests/TraceInputPolishTests\" test",
+      "log": "/tmp/starfall-pattern-copy-polish-hosted-2.log",
+      "logSHA256": "701e3a32c1e1718254cae68ff1f0ee3f83d718eadc8ed832a0523b02ff5e8897",
+      "configuration": "Debug",
+      "simulator": "iPhone 17e, iOS 27.0",
+      "result": "passed"
+    },
+    "limits": [
+      "Earlier native UI flows and board captures retain their original source fingerprint; the follow-up changes instruction copy only.",
+      "Physical play, actual VoiceOver and full RC remain unverified."
+    ],
+    "earlierAttempts": [
+      {
+        "result": "Tooling sandbox denied Simulator/cache access before build",
+        "log": "/tmp/starfall-pattern-copy-polish.log"
+      },
+      {
+        "result": "New test fixture omitted required seed; corrected to FallingSky(seed: 42), no runtime change",
+        "log": "/tmp/starfall-pattern-copy-polish-hosted.log"
+      }
+    ]
+  }
 }
