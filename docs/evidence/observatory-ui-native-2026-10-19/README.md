@@ -4,7 +4,7 @@
 
 The normal app adopts the Observatory interface: Story Mode, Free Play and Tutorial on Home; authored brass/nightglass controls; dedicated glyphs; edge-anchored gameplay instruments; compact bottom dialogue; and shared settings, map, tutorial, entry and result surfaces. Core rules, saved rounds, journey admission and the Crystal Comet celebration renderer retain their existing owners.
 
-**Delivery:** Merged through [PR #181](https://github.com/lbeezr/starfall/pull/181) as main `bbfb7ea4`. The canonical updater ran at 2026-10-20 01:28:55 UTC and reported **Waiting for the configured iPhone**. The new build is not installed; the previous `dev.ac5579652b` receipt remains. Connect and unlock the original phone, then run the canonical updater. [Publication and delivery receipt](publication.json).
+**Delivery:** Merged through [PR #181](https://github.com/lbeezr/starfall/pull/181). The canonical updater installed `dev.77015d0909` from main `0a7a841720574b3b7972e94f1cfbcc71ad75cdda` on the original iPhone over local Wi-Fi at 2026-10-20 01:54:31 UTC. All 184 Core tests, the signed Debug device build and actual installed-identity verification passed. No automatic game launch or save reset occurred. Physical play remains separate. [Publication and delivery receipt](publication.json).
 
 ## Source and scope
 
@@ -26,7 +26,7 @@ Xcode 27.1 (27A9275), macOS 27.0.1 arm64, iOS 27.0 Simulator. Debug interaction 
 | Visual | Nine retained native captures inspected: compact Home, Entry, clear feedback, scrolled largest-text settings/Entry, tablet paused play and landscape map, plus final compact large-text guide controls and 48-point preference rows. These identify their exact source epochs. |
 | Animation | Normal-motion SE Home → Entry → play → menu/background test passed. A recorded run's sampled frames show entrance, falling stars, clear feedback and sheet transitions. No continuous-motion quality or frame-pacing measurement is claimed. |
 | Actual VoiceOver | Not run; follows the existing RC cadence. Native accessibility labels, values, targets and large text are checked separately. |
-| Physical device | Canonical updater attempted; waiting for the configured phone. New installation is unverified. Physical play remains separate. |
+| Physical device | Canonical Wi-Fi installation verified on the original iPhone 16 Pro Max, iOS 26.6.2: `dev.77015d0909`. Physical play remains separate. |
 
 This is affected development coverage, not the full native UI matrix or RC acceptance. The existing plan reports 337 hosted and 143 development UI methods. `checks.json` retains exact selected commands, completed methods, failures and zero-skip counts; raw logs, result bundles and movies remain disposable under `/tmp`.
 
@@ -65,3 +65,11 @@ Physical contrast, thumb comfort, sustained device performance, minimum-iOS supp
 Local commit `0f30afad` and connected-GitHub commit `9aeac226` share tree `f30f153207bd06715f867d80398580a83030fd0f`. Merged main `bbfb7ea4` has that same tree. A clean local export matches runtime `dev.77015d0909` and all 84 recorded build/test paths. Commit metadata differs because the local Git client had no GitHub credentials; the authenticated connector uploaded each blob with SHA verification and reproduced the exact tree.
 
 The automatic [main workflow](https://github.com/lbeezr/starfall/actions/runs/39353615146) was in progress at this checkpoint. Its completion is not inferred from local results. No extra workflow was dispatched.
+
+## Wireless delivery follow-up
+
+The initial inventory saw the trusted original phone as `paired`, `localNetwork`, and `disconnected`. A read-only `xcrun devicectl device info details --device <configured-device> --timeout 45` established its existing tunnel; the next inventory reported `connected`. The canonical updater then fetched clean main, passed 184 Core tests, built and verified the signature, installed, and confirmed the OS-owned installation identity. The former waiting result remains in `publication.json` as `priorAttempt`.
+
+The installed main commit is the documentation follow-up to the UI merge. Its exact-source CI status is `missing`; the UI merge workflow was still `in_progress` when checked before delivery. This follows the established development delivery policy and does not claim full remote CI or RC acceptance.
+
+The updater correction is a separate tooling batch based on `0a7a841720574b3b7972e94f1cfbcc71ad75cdda`; build-affecting dirty paths: none. `scripts/device-update.py` now attempts the same bounded read-only query only for the configured paired physical device, then refreshes and validates its identity/connection. `python3 scripts/test_device_update.py` passes all 27 tests, including connected USB/Wi-Fi, missing/unpaired/simulated/other devices, failed reconnects and unchanged delivery guards. `python3 scripts/ci-hygiene.py` and `git diff --check` pass. The regression tests simulate connectivity states; the physical recovery above is separate actual Apple-operation evidence. No gameplay, save or runtime resource files changed.

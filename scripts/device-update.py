@@ -20,12 +20,12 @@ LABEL = 'com.starfall.device-updates'
 DEFAULT_STATE = Path.home() / 'Library/Application Support/Starfall Device Updates'
 
 
-def run(args, *, cwd=None, output=None):
+def run(args, *, cwd=None, output=None, timeout=1200):
     if output:
         with output.open('a') as log:
-            subprocess.run(args, cwd=cwd, stdout=log, stderr=subprocess.STDOUT, check=True, timeout=1200)
+            subprocess.run(args, cwd=cwd, stdout=log, stderr=subprocess.STDOUT, check=True, timeout=timeout)
         return ''
-    return subprocess.check_output(args, cwd=cwd, stderr=subprocess.STDOUT, text=True, timeout=1200).strip()
+    return subprocess.check_output(args, cwd=cwd, stderr=subprocess.STDOUT, text=True, timeout=timeout).strip()
 
 
 def atomic_json(path, value):
@@ -75,13 +75,30 @@ def ci_status(repository, revision):
 
 def connected(device, state):
     receipt = state / 'devices.json'
-    run(['xcrun', 'devicectl', 'list', 'devices', '--json-output', str(receipt)], output=state / 'device.log')
-    for item in json.loads(receipt.read_text())['result']['devices']:
-        ids = [item.get('identifier'), item.get('hardwareProperties', {}).get('udid')]
-        if (device in ids and item.get('hardwareProperties', {}).get('reality') == 'physical'
-                and item.get('connectionProperties', {}).get('tunnelState') == 'connected'):
-            return True
-    return False
+
+    def listed_device():
+        run(['xcrun', 'devicectl', 'list', 'devices', '--json-output', str(receipt)], output=state / 'device.log')
+        for item in json.loads(receipt.read_text())['result']['devices']:
+            hardware = item.get('hardwareProperties', {})
+            if device in [item.get('identifier'), hardware.get('udid')] and hardware.get('reality') == 'physical':
+                return item
+        return None
+
+    item = listed_device()
+    if item is None:
+        return False
+    connection = item.get('connectionProperties', {})
+    if connection.get('tunnelState') == 'connected':
+        return True
+    if connection.get('pairingState') != 'paired' or connection.get('tunnelState') != 'disconnected':
+        return False
+    # A trusted Wi-Fi phone can be discoverable before CoreDevice opens its tunnel.
+    # Query only this configured device, then require a fresh connected inventory.
+    run(['xcrun', 'devicectl', 'device', 'info', 'details', '--device', device, '--timeout', '45'],
+        output=state / 'device.log', timeout=60)
+    item = listed_device()
+    return (item is not None and item.get('connectionProperties', {}).get('pairingState') == 'paired'
+            and item.get('connectionProperties', {}).get('tunnelState') == 'connected')
 
 
 def app_installation(config, state):

@@ -16,6 +16,12 @@ spec = importlib.util.spec_from_file_location('device_update', Path(__file__).wi
 updater = importlib.util.module_from_spec(spec); spec.loader.exec_module(updater)
 
 
+def phone_entry(*, identifier='core-device', udid='phone', reality='physical',
+                pairing='paired', tunnel='disconnected', transport='localNetwork'):
+    return {'identifier': identifier, 'hardwareProperties': {'udid': udid, 'reality': reality},
+            'connectionProperties': {'pairingState': pairing, 'tunnelState': tunnel, 'transportType': transport}}
+
+
 class DeviceUpdateTests(unittest.TestCase):
     def test_reconfiguration_invalidates_only_device_and_signing_owned_metadata(self):
         with tempfile.TemporaryDirectory() as folder:
@@ -114,6 +120,76 @@ class DeviceUpdateTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as folder, patch.object(updater, 'connected', return_value=False), patch.object(updater, 'run') as command:
             self.assertIn('Waiting', updater.update({'device': 'phone'}, Path(folder)))
             command.assert_not_called()
+
+    def test_connected_phone_needs_no_probe_on_usb_or_wifi(self):
+        for transport in ['wired', 'localNetwork']:
+            for identity in ['phone', 'core-device']:
+                with self.subTest(transport=transport, identity=identity), tempfile.TemporaryDirectory() as folder:
+                    state = Path(folder)
+                    updater.atomic_json(state / 'devices.json', {'result': {'devices': [phone_entry(tunnel='connected', transport=transport)]}})
+                    with patch.object(updater, 'run') as command:
+                        self.assertTrue(updater.connected(identity, state))
+                    command.assert_called_once_with(['xcrun', 'devicectl', 'list', 'devices', '--json-output', str(state / 'devices.json')], output=state / 'device.log')
+
+    def test_paired_disconnected_phone_opens_one_bounded_tunnel_then_rechecks_identity(self):
+        with tempfile.TemporaryDirectory() as folder:
+            state = Path(folder); inventories = iter([
+                [phone_entry(udid='another-phone'), phone_entry()],
+                [phone_entry(udid='another-phone', tunnel='connected'), phone_entry(tunnel='connected')]])
+            def command(args, **kwargs):
+                if args[2:4] == ['list', 'devices']:
+                    updater.atomic_json(state / 'devices.json', {'result': {'devices': next(inventories)}})
+            with patch.object(updater, 'run', side_effect=command) as calls:
+                self.assertTrue(updater.connected('phone', state))
+            self.assertEqual(len(calls.call_args_list), 3)
+            self.assertEqual(calls.call_args_list[1].args[0], ['xcrun', 'devicectl', 'device', 'info', 'details', '--device', 'phone', '--timeout', '45'])
+            self.assertEqual(calls.call_args_list[1].kwargs, {'output': state / 'device.log', 'timeout': 60})
+            self.assertEqual(calls.call_args_list[0], calls.call_args_list[2])
+
+    def test_missing_unpaired_simulated_or_unknown_phone_is_never_probed(self):
+        for devices in [[], [phone_entry(udid='another-phone')], [phone_entry(reality='simulated')],
+                        [phone_entry(pairing='unpaired')], [phone_entry(pairing=None)],
+                        [phone_entry(tunnel='connecting')], [phone_entry(tunnel=None)]]:
+            with self.subTest(devices=devices), tempfile.TemporaryDirectory() as folder:
+                state = Path(folder)
+                updater.atomic_json(state / 'devices.json', {'result': {'devices': devices}})
+                with patch.object(updater, 'run') as command:
+                    self.assertFalse(updater.connected('phone', state))
+                self.assertEqual(command.call_count, 1)
+                self.assertEqual(command.call_args.args[0][2:4], ['list', 'devices'])
+
+    def test_successful_probe_still_requires_exact_paired_physical_connected_phone(self):
+        for refreshed in [[], [phone_entry()], [phone_entry(udid='another-phone', tunnel='connected')],
+                          [phone_entry(reality='simulated', tunnel='connected')],
+                          [phone_entry(pairing='unpaired', tunnel='connected')]]:
+            with self.subTest(refreshed=refreshed), tempfile.TemporaryDirectory() as folder:
+                state = Path(folder); inventories = iter([[phone_entry()], refreshed])
+                def command(args, **kwargs):
+                    if args[2:4] == ['list', 'devices']:
+                        updater.atomic_json(state / 'devices.json', {'result': {'devices': next(inventories)}})
+                with patch.object(updater, 'run', side_effect=command) as calls:
+                    self.assertIn('Waiting', updater.update({'device': 'phone'}, state))
+                self.assertEqual(len(calls.call_args_list), 3)
+                self.assertFalse(any('install' in call.args[0] or call.args[0][0] in ['git', 'swift', 'xcodebuild'] for call in calls.call_args_list))
+
+    def test_failed_or_timed_out_probe_preserves_receipt_and_does_not_fetch_build_or_install(self):
+        for failure in [subprocess.CalledProcessError(1, ['devicectl']), subprocess.TimeoutExpired(['devicectl'], 60)]:
+            with self.subTest(failure=type(failure).__name__), tempfile.TemporaryDirectory() as folder:
+                state = Path(folder); receipt = {'source': 'previous', 'buildID': 'dev.previous'}
+                updater.atomic_json(state / 'installed.json', receipt)
+                updater.atomic_json(state / 'devices.json', {'result': {'devices': [phone_entry()]}})
+                with patch.object(updater, 'run', side_effect=['', failure]) as calls:
+                    with self.assertRaises(type(failure)):
+                        updater.update({'device': 'phone'}, state)
+                self.assertEqual(len(calls.call_args_list), 2)
+                self.assertEqual(calls.call_args_list[1].args[0][2:5], ['device', 'info', 'details'])
+                self.assertEqual(json.loads((state / 'installed.json').read_text()), receipt)
+
+    def test_logged_probe_deadline_is_passed_to_subprocess(self):
+        with tempfile.TemporaryDirectory() as folder, patch.object(updater.subprocess, 'run') as command:
+            updater.run(['xcrun', 'devicectl', 'device', 'info', 'details'], output=Path(folder) / 'device.log', timeout=60)
+            self.assertEqual(command.call_args.kwargs['timeout'], 60)
+            self.assertTrue(command.call_args.kwargs['check'])
 
     def test_failed_install_retries_cached_build_without_marking_installed(self):
         self.exercise_install(fail_first=True)

@@ -11,7 +11,7 @@ Run `python3 scripts/ci-hygiene.py` and `git diff --check` from the root. See [a
 
 ## One-app iPhone updates
 
-`device-update.py` is a local macOS service, not an iPhone network feature. It fetches public GitHub main, checks exact-source CI, runs local core tests, signs with local Xcode, and updates regular Starfall in place. It never installs lab identities or launches/reset the game. See [build/testing policy](../docs/DEVELOPMENT_BUILDS.md). The Mac must be awake, logged in, with Xcode signing and a trusted connected iPhone.
+`device-update.py` is a local macOS service, not an iPhone network feature. It fetches public GitHub main, checks exact-source CI, runs local core tests, signs with local Xcode, and updates regular Starfall in place. It never installs lab identities or launches/reset the game. See [build/testing policy](../docs/DEVELOPMENT_BUILDS.md). The Mac must be awake, logged in, with Xcode signing and a trusted connected iPhone. USB and local Wi-Fi are supported. If the configured paired physical phone is discovered with an idle tunnel, the updater makes one bounded read-only device-details request and requires a fresh connected inventory before proceeding; it never pairs another device.
 
 ```sh
 python3 scripts/device-update.py configure --device <iPhone-UDID> --team <development-team>
