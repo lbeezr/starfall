@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1060" viewBox="0 0 1600 1060" role="img">
 <title>Starfall character and environmental prop scale reference</title>
-<desc>Technical authoring guide. Native rectangles exported from LandingGeometry; colored composition recommendations are not native acceptance evidence.</desc>
+<desc>Technical authoring guide. Board and cells are exported from LandingGeometry. UI edge markers are schematic responsibilities, not measured coverage. Colored composition recommendations are not native acceptance evidence.</desc>
 <rect x="0.0000" y="0.0000" width="1600.0000" height="1060.0000" fill="#101b2c" stroke="none" stroke-width="1"/>
 <text x="48.0000" y="36.0000" fill="#f5f6f7" font-family="Arial, sans-serif" font-size="39" font-weight="700" text-anchor="start" dominant-baseline="hanging">Use the actual star cast as your scale reference</text>
 <text x="48.0000" y="91.0000" fill="#bdcbd8" font-family="Arial, sans-serif" font-size="23" font-weight="400" text-anchor="start" dominant-baseline="hanging">Sunny&#x27;s original packaged body is embedded unchanged. This technical plate resizes only its displayed copy.</text>

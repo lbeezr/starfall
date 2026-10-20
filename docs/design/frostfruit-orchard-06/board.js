@@ -1,0 +1,1 @@
+window.STARFALL_RESTORATION_REVIEW = { locationID: 6, assetPrefix: 'FrostfruitOrchard', exportName: 'frostfruitOrchardBoardReview', stateNames: ['The fruit is silent', 'One fruit wakes', 'Light reaches the branches', 'One crown stays closed', 'The crown releases its seeds'] };

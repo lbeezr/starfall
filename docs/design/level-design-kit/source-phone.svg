@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="887" height="1774" viewBox="0 0 887 1774" role="img">
 <title>iPhone source artwork guide</title>
-<desc>Technical authoring guide. Native rectangles exported from LandingGeometry; colored composition recommendations are not native acceptance evidence.</desc>
+<desc>Technical authoring guide. Board and cells are exported from LandingGeometry. UI edge markers are schematic responsibilities, not measured coverage. Colored composition recommendations are not native acceptance evidence.</desc>
 <rect x="0.0000" y="0.0000" width="887.0000" height="1774.0000" fill="#101b2c" stroke="none" stroke-width="1"/>
 <rect x="0.0000" y="0.0000" width="887.0000" height="1774.0000" fill="#164a50" stroke="none" stroke-width="1"/>
 <rect x="46.8486" y="490.3486" width="793.3028" height="793.3028" fill="#987034" stroke="#ffd68a" stroke-width="2.9150234741784034"/>
@@ -103,17 +103,14 @@
 <polyline points="670.1579,507.3479 680.8827,532.2518 707.8817,534.7559 687.5109,552.6514 693.4725,579.1029 670.1579,565.2590 646.8434,579.1029 652.8050,552.6514 632.4342,534.7559 659.4332,532.2518 670.1579,507.3479" fill="none" stroke="#b58091" stroke-width="1.4575117370892017"/>
 <rect x="726.8224" y="490.3486" width="113.3290" height="113.3290" fill="none" stroke="#a56478" stroke-width="1.4575117370892017"/>
 <polyline points="783.4869,507.3479 794.2116,532.2518 821.2107,534.7559 800.8399,552.6514 806.8015,579.1029 783.4869,565.2590 760.1723,579.1029 766.1340,552.6514 745.7631,534.7559 772.7622,532.2518 783.4869,507.3479" fill="none" stroke="#b58091" stroke-width="1.4575117370892017"/>
-<rect x="59.3415" y="173.8603" width="768.3169" height="174.9014" fill="#523b79" stroke="#c7b1f8" stroke-width="2.0821596244131455"/>
-<text x="443.5000" y="244.6538" fill="#f5f6f7" font-family="Arial, sans-serif" font-size="29.150234741784036" font-weight="700" text-anchor="middle" dominant-baseline="hanging">HUD / score / menu</text>
-<rect x="71.8345" y="1308.6373" width="743.3310" height="266.5164" fill="#523b79" stroke="#c7b1f8" stroke-width="2.0821596244131455"/>
-<text x="443.5000" y="1425.2383" fill="#f5f6f7" font-family="Arial, sans-serif" font-size="29.150234741784036" font-weight="700" text-anchor="middle" dominant-baseline="hanging">Dialogue / guide</text>
-<rect x="71.8345" y="1591.8110" width="355.0082" height="108.2723" fill="#523b79" stroke="#c7b1f8" stroke-width="2.0821596244131455"/>
-<text x="249.3386" y="1631.3721" fill="#f5f6f7" font-family="Arial, sans-serif" font-size="24.985915492957744" font-weight="400" text-anchor="middle" dominant-baseline="hanging">Pause / resume</text>
-<rect x="460.1573" y="1591.8110" width="355.0082" height="108.2723" fill="#523b79" stroke="#c7b1f8" stroke-width="2.0821596244131455"/>
-<text x="637.6614" y="1631.3721" fill="#f5f6f7" font-family="Arial, sans-serif" font-size="24.985915492957744" font-weight="400" text-anchor="middle" dominant-baseline="hanging">Next shower</text>
+<polyline points="59.3415,176.9836 827.6585,176.9836" fill="none" stroke="#c7b1f8" stroke-width="4.164319248826291"/>
+<text x="443.5000" y="129.0939" fill="#c7b1f8" font-family="Arial, sans-serif" font-size="22.9037558685446" font-weight="700" text-anchor="middle" dominant-baseline="hanging">TOP HUD · inset and height vary</text>
+<polyline points="59.3415,1671.9742 827.6585,1671.9742" fill="none" stroke="#c7b1f8" stroke-width="4.164319248826291"/>
+<text x="443.5000" y="1690.7136" fill="#c7b1f8" font-family="Arial, sans-serif" font-size="22.9037558685446" font-weight="700" text-anchor="middle" dominant-baseline="hanging">BOTTOM GUIDE / ACTIONS · height varies</text>
+<text x="443.5000" y="1726.1103" fill="#c7b1f8" font-family="Arial, sans-serif" font-size="18.739436619718308" font-weight="400" text-anchor="middle" dominant-baseline="hanging">UI markers are schematic, not coverage bounds</text>
 <text x="443.5000" y="29.1502" fill="#f5f6f7" font-family="Arial, sans-serif" font-size="37.478873239436616" font-weight="700" text-anchor="middle" dominant-baseline="hanging">iPhone</text>
 <text x="443.5000" y="74.9577" fill="#f5f6f7" font-family="Arial, sans-serif" font-size="22.9037558685446" font-weight="400" text-anchor="middle" dominant-baseline="hanging">887 × 1774 art px · center-cover</text>
-<text x="443.5000" y="386.2406" fill="#49c7ba" font-family="Arial, sans-serif" font-size="29.150234741784036" font-weight="700" text-anchor="middle" dominant-baseline="hanging">Build rich connected world here</text>
+<text x="443.5000" y="245.1743" fill="#49c7ba" font-family="Arial, sans-serif" font-size="29.150234741784036" font-weight="700" text-anchor="middle" dominant-baseline="hanging">Build rich connected world here</text>
 <text x="443.5000" y="868.2606" fill="#f5f6f7" font-family="Arial, sans-serif" font-size="29.150234741784036" font-weight="700" text-anchor="middle" dominant-baseline="hanging">CONTRAST PRIORITY</text>
 <text x="443.5000" y="907.8216" fill="#f5f6f7" font-family="Arial, sans-serif" font-size="20.821596244131456" font-weight="400" text-anchor="middle" dominant-baseline="hanging">Continue the world; keep stars readable</text>
 <rect x="0.0000" y="0.0000" width="34.3556" height="1774.0000" fill="#304153" stroke="#d4dce6" stroke-width="1"/>

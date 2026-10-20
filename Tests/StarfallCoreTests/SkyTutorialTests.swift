@@ -60,11 +60,39 @@ final class SkyTutorialTests: XCTestCase {
             progress.record(game); progress.record(game)
             XCTAssertTrue(progress.completed.contains(location))
         }
-        XCTAssertEqual(progress.completed.count, 5)
-        XCTAssertFalse(progress.canEnter(.frostfruitOrchard))
+        XCTAssertEqual(progress.completed.count, 6)
+        XCTAssertTrue(progress.canEnter(.frostfruitOrchard))
+        XCTAssertFalse(progress.canEnter(.sunwheelMill))
         let legacy = WorldJourney(legacyAccess: true)
         XCTAssertTrue(legacy.canEnter(.silverPools)); XCTAssertTrue(legacy.completed.isEmpty)
+        XCTAssertFalse(legacy.canEnter(.frostfruitOrchard))
         XCTAssertFalse(legacy.canEnter(.hollowCrown))
         XCTAssertEqual(try JSONDecoder().decode(WorldJourney.self, from: JSONEncoder().encode(progress)), progress)
+    }
+
+    func testLegacyWorldArchivePreservesOnlyItsFiveOriginalLocationsUntilSilverIsRepaired() throws {
+        let bytes = Data(#"{"completed":[],"selected":"silverPools","legacyAccess":true}"#.utf8)
+        var progress = try JSONDecoder().decode(WorldJourney.self, from: bytes)
+        for location in [WorldLocation.firstLight, .ribbonCrossing, .kiteHarbor, .seedMoon, .silverPools] {
+            XCTAssertTrue(progress.canEnter(location))
+        }
+        XCTAssertFalse(progress.canEnter(.frostfruitOrchard))
+        XCTAssertEqual(progress.selected, .silverPools)
+        var silver = FallingSky(challenge: .silverPools)
+        progress.record(silver)
+        XCTAssertFalse(progress.canEnter(.frostfruitOrchard), "An unfinished round cannot unlock the new location")
+        for _ in 0..<100 where !silver.isOver {
+            if let cell = silver.legalGroups.first?.first { _ = silver.clear(cell) }
+            else { _ = silver.letStarsFall() }
+        }
+        XCTAssertEqual(silver.outcome, .won)
+        progress.record(silver)
+        XCTAssertEqual(progress.completed, [.silverPools])
+        XCTAssertEqual(progress.selected, .frostfruitOrchard)
+        XCTAssertTrue(progress.canEnter(.frostfruitOrchard))
+        XCTAssertFalse(progress.canEnter(.sunwheelMill))
+        let restored = try JSONDecoder().decode(WorldJourney.self, from: JSONEncoder().encode(progress))
+        XCTAssertEqual(restored, progress)
+        XCTAssertTrue(restored.canEnter(.frostfruitOrchard))
     }
 }

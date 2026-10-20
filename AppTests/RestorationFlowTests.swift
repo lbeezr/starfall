@@ -109,7 +109,9 @@ final class RestorationFlowTests: XCTestCase {
         LocationContract(challenge: .seedMoon, prefix: "seed", title: "Seed Moon",
                          guide: "guide.seed-won.1", result: "Seed Moon complete! The sleeping seed has grown into a glowing shelter."),
         LocationContract(challenge: .silverPools, prefix: "silver", title: "Silver Pools",
-                         guide: "guide.silver-won.1", result: "Silver Pools complete! One silver cascade now flows through every pool.")
+                         guide: "guide.silver-won.1", result: "Silver Pools complete! One silver cascade now flows through every pool."),
+        LocationContract(challenge: .frostfruitOrchard, prefix: "frostfruit", title: "Frostfruit Orchard",
+                         guide: "guide.frostfruit-won.1", result: "Frostfruit Orchard complete! The crown has opened and luminous seeds drift through the winter garden.")
     ]
 
     @MainActor func testEachWinningClearCommitsBeforeSettlementAndRestoresWithoutClock() throws {
@@ -148,6 +150,8 @@ final class RestorationFlowTests: XCTestCase {
 
     func testCopyAndHelpFollowSelectedIdentityForEntryReplayWinAndOverflow() throws {
         XCTAssertEqual(locations.map(\.challenge), StarfallChallenge.allCases)
+        XCTAssertEqual(StarfallChallenge.frostfruitOrchard.welcomeIdentifier, "sky.frostfruit-orchard")
+        XCTAssertEqual(StarfallChallenge.frostfruitOrchard.menuIdentifier, "experiment.frostfruit-orchard")
         XCTAssertEqual(StarfallChallenge.silverPools.welcomeIdentifier, "sky.silver-pools")
         XCTAssertEqual(StarfallChallenge.silverPools.menuIdentifier, "experiment.silver-pools")
         XCTAssertEqual(StarfallChallenge.seedMoon.welcomeIdentifier, "sky.seed-moon")
@@ -184,6 +188,7 @@ final class RestorationFlowTests: XCTestCase {
         }
         XCTAssertTrue(StarfallChallenge.kiteHarbor.helpText.hasPrefix("Raise Kite Harbor’s sails with 18 starlight."))
         XCTAssertTrue(StarfallChallenge.silverPools.helpText.hasPrefix("Restore Silver Pools with 18 starlight."))
+        XCTAssertTrue(StarfallChallenge.frostfruitOrchard.helpText.hasPrefix("Restore Frostfruit Orchard with 18 starlight."))
         XCTAssertTrue(StarfallChallenge.seedMoon.helpText.hasPrefix("Wake Seed Moon with 18 starlight."))
     }
 

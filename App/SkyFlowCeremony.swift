@@ -14,7 +14,7 @@ enum SkyFlowScreen: Equatable {
         return .welcome
     }
 }
-enum SkyFlowAction: Equatable { case start, firstLight, ribbonCrossing, kiteHarbor, seedMoon, silverPools, begin, resume, replay, another, home, preferences, worldMap, worldBack, tutorial }
+enum SkyFlowAction: Equatable { case start, firstLight, ribbonCrossing, kiteHarbor, seedMoon, silverPools, frostfruitOrchard, begin, resume, replay, another, home, preferences, worldMap, worldBack, tutorial }
 
 @MainActor struct SkyFlowCeremony: View {
     let screen: SkyFlowScreen
@@ -130,9 +130,9 @@ enum SkyFlowAction: Equatable { case start, firstLight, ribbonCrossing, kiteHarb
             if layout.isRestoredResult && !compact {
                 Color.clear.frame(height: layout.minimumTopSpace).accessibilityHidden(true)
             }
-            heading(compact: compact).accessibilityHidden(!active)
-            if !compact { decorativeCast }
+            heading().accessibilityHidden(!active)
             revealedActions
+            if !compact { decorativeCast }
         }
         .padding(StarfallTheme.Spacing.section)
         .frame(maxWidth: StarfallTheme.Layout.menuWidth)
@@ -248,16 +248,29 @@ enum SkyFlowAction: Equatable { case start, firstLight, ribbonCrossing, kiteHarb
     private var decorativeCast: some View {
         cast().frame(height: SkyCastFormation.height(terminal: terminal || screen == .entry)).clipped()
     }
+
+    /// Result copy stays readable over the retained board and bright scenery.
+    /// This fitted surface does not alter the painting or playable star layer.
+    @ViewBuilder private func terminalReadingSurface<Content: View>(@ViewBuilder content: () -> Content) -> some View {
+        if terminal {
+            content().starfallPanel(inset: StarfallTheme.Spacing.medium)
+        } else {
+            content()
+        }
+    }
+
     private var revealedActions: some View {
-        VStack(spacing: StarfallTheme.Spacing.large) {
-            Text(dialogueLine.text)
-                .font(StarfallTheme.Typography.supporting)
-                .foregroundStyle(StarfallTheme.Colors.textPrimary)
-                .multilineTextAlignment(.center)
-                .fixedSize(horizontal: false, vertical: true)
-                .accessibilityLabel(dialogueLine.spokenText)
-                .accessibilityIdentifier(terminal ? "experiment.score" : "sky.subtitle")
-            actions
+        terminalReadingSurface {
+            VStack(spacing: StarfallTheme.Spacing.large) {
+                Text(dialogueLine.text)
+                    .font(StarfallTheme.Typography.supporting)
+                    .foregroundStyle(StarfallTheme.Colors.textPrimary)
+                    .multilineTextAlignment(.center)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .accessibilityLabel(dialogueLine.spokenText)
+                    .accessibilityIdentifier(terminal ? "experiment.score" : "sky.subtitle")
+                actions
+            }
         }
             .padding(.horizontal, StarfallTheme.Spacing.small)
             .shadow(color: StarfallTheme.Colors.skyTop, radius: 5)
@@ -268,25 +281,25 @@ enum SkyFlowAction: Equatable { case start, firstLight, ribbonCrossing, kiteHarb
             .accessibilityHidden(!controls || !active)
     }
 
-    private func heading(compact: Bool = false) -> some View {
-        VStack(spacing: StarfallTheme.Spacing.medium) {
-            Text(kicker)
-                .font(StarfallTheme.Typography.skyCaption).tracking(2)
-                .foregroundStyle(StarfallTheme.Colors.actionPrimary)
-            Text(title)
-                .font(textSize.isAccessibilitySize ? StarfallTheme.Typography.title
-                    : StarfallTheme.Typography.display(size: terminal ? resultTitleSize : titleSize))
-                .foregroundStyle(StarfallTheme.Ceremony.gold)
-                .accessibilityAddTraits(.isHeader)
-                .accessibilityLabel(title)
-                .accessibilityIdentifier(terminal ? "experiment.outcome" : "sky.title")
-                .accessibilityValue(terminal ? "\(result?.scoreLabel ?? ""). \(screen == .full ? result?.reason ?? "" : "")" : "")
-                .accessibilityFocused($headingFocused)
-
+    private func heading() -> some View {
+        terminalReadingSurface {
+            VStack(spacing: StarfallTheme.Spacing.medium) {
+                Text(kicker)
+                    .font(StarfallTheme.Typography.skyCaption).tracking(2)
+                    .foregroundStyle(StarfallTheme.Colors.actionPrimary)
+                Text(title)
+                    .font(textSize.isAccessibilitySize ? StarfallTheme.Typography.title
+                        : StarfallTheme.Typography.display(size: terminal ? resultTitleSize : titleSize))
+                    .foregroundStyle(StarfallTheme.Ceremony.gold)
+                    .accessibilityAddTraits(.isHeader)
+                    .accessibilityLabel(title)
+                    .accessibilityIdentifier(terminal ? "experiment.outcome" : "sky.title")
+                    .accessibilityValue(terminal ? "\(result?.scoreLabel ?? ""). \(screen == .full ? result?.reason ?? "" : "")" : "")
+                    .accessibilityFocused($headingFocused)
+            }
+            .multilineTextAlignment(.center)
+            .shadow(color: StarfallTheme.Colors.skyTop, radius: 6)
         }
-        .multilineTextAlignment(.center)
-        .shadow(color: StarfallTheme.Colors.skyTop, radius: 6)
-        .padding(terminal && !compact ? StarfallTheme.Spacing.medium : 0)
     }
 
     private var kicker: String {

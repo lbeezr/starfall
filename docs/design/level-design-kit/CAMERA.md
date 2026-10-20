@@ -1,12 +1,12 @@
 # One camera for a connected world
 
-**Status:** Adopted working construction default for new compositions — v1 · **Owner:** current implementer · **Updated:** October 19, 2026
+**Status:** Adopted working construction default for new compositions — v1 · **Owner:** current implementer · **Updated:** October 20, 2026
 
 Use a high three-quarter overhead view with an orthographic-like projection, no visible horizon and no camera roll. Keep world X horizontal and world depth pointing up the image. This gives each place a readable floor, substantial edges and objects that stand on their supports. The native stars, seven columns and hit cells keep their existing screen-space geometry.
 
 **Working construction default:** 55° elevation above the horizontal ground plane, equivalent to 35° from vertical; yaw 0° and roll 0°. Use exact orthographic projection for the reference geometry and nearly parallel edges in the painting. These are authored starting values, not measurements of Blizzard's camera or a reconstruction of the approved Starfall paintings.
 
-**Next action:** Apply this default to one new completed composition, inspect it with the [layout guides](README.md) and native overlays, then derive its remaining states. Preserve the registered camera of existing painting families, including the current rich Silver Pools master; this guidance does not call for repainting them.
+**First application:** [Frostfruit Orchard](../frostfruit-orchard-06/README.md) used this guide for its three bespoke compositions, then revised them against native stars and controls before state derivation. Accepted fit is qualitative; it does not establish a measured 55° projection in generated paintings. Continue applying the [layout guides](README.md) and native review to each new composition. Preserve the registered camera of existing families, including rich Silver Pools; this guidance does not call for repainting them.
 
 ![55-degree orthographic construction reference showing a projected square and circular pool, a thick platform with an upright arch and stairs, and the camera's side elevation](camera-reference.png)
 

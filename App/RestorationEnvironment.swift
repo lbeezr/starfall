@@ -79,6 +79,7 @@ struct RestorationArtwork {
         case .kiteHarbor: location = "KiteHarbor"
         case .seedMoon: location = "SeedMoon"
         case .silverPools: location = "SilverPools"
+        case .frostfruitOrchard: location = "FrostfruitOrchard"
         }
         let suffix: String
         switch composition {
@@ -94,6 +95,9 @@ struct RestorationArtwork {
 
     func sourceSize(for milestone: StarlightRestoration.Milestone) -> CGSize {
         // Register generated pixels exactly; fitting never resamples the source files.
+        if challenge == .frostfruitOrchard && composition == .tabletPortrait && milestone == .threeQuarters {
+            return CGSize(width: 1086, height: 1449)
+        }
         if challenge == .silverPools && composition == .tabletLandscape {
             switch milestone {
             case .quarter, .half, .complete: return CGSize(width: 1447, height: 1087)
@@ -133,6 +137,13 @@ struct RestorationArtwork {
             case .phone: center = CGPoint(x: 0.326, y: 0.064); width = 0.045
             case .tabletPortrait: center = CGPoint(x: 0.254, y: 0.133); width = 0.045
             case .tabletLandscape: center = CGPoint(x: 0.092, y: 0.115); width = 0.03
+            }
+        case .frostfruitOrchard:
+            // The central crown receives light and opens at completion.
+            switch composition {
+            case .phone: center = CGPoint(x: 0.438, y: 0.190); width = 0.045
+            case .tabletPortrait: center = CGPoint(x: 0.396, y: 0.098); width = 0.04
+            case .tabletLandscape: center = CGPoint(x: 0.254, y: 0.235); width = 0.04
             }
         case .silverPools:
             switch composition {
@@ -177,6 +188,13 @@ struct RestorationArtwork {
             case .phone: return CGRect(x: 0.18, y: 0.035, width: 0.23, height: 0.175)
             case .tabletPortrait: return CGRect(x: 0.10, y: 0.015, width: 0.24, height: 0.23)
             case .tabletLandscape: return CGRect(x: 0.035, y: 0.025, width: 0.18, height: 0.28)
+            }
+        case .frostfruitOrchard:
+            // Protect the central crown’s closed/open seed-release beat.
+            switch composition {
+            case .phone: return CGRect(x: 0.34, y: 0.14, width: 0.20, height: 0.095)
+            case .tabletPortrait: return CGRect(x: 0.32, y: 0.045, width: 0.16, height: 0.11)
+            case .tabletLandscape: return CGRect(x: 0.20, y: 0.14, width: 0.11, height: 0.17)
             }
         case .silverPools:
             // The held droplet and released thread are the protected final beat;

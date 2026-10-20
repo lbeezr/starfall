@@ -784,6 +784,50 @@
           "priority": "help"
         }
       ]
+    },
+    {
+      "id": "guide.frostfruit-orchard",
+      "lines": [
+        {
+          "id": "guide.frostfruit-orchard.1",
+          "speaker": "sunny",
+          "text": "Restore Frostfruit Orchard with 18 starlight. Clear matching stars to light its glass fruit and open the central crown.",
+          "priority": "help"
+        }
+      ]
+    },
+    {
+      "id": "guide.frostfruit-won",
+      "lines": [
+        {
+          "id": "guide.frostfruit-won.1",
+          "speaker": "sunny",
+          "text": "Frostfruit Orchard complete! You collected {score} starlight. The crown has opened and luminous seeds drift through the winter garden!",
+          "priority": "outcome"
+        }
+      ]
+    },
+    {
+      "id": "frostfruit-orchard.entry",
+      "lines": [
+        {
+          "id": "frostfruit-orchard.entry.1",
+          "speaker": "sunny",
+          "text": "Murk took the light from Frostfruit Orchard. Collect 18 starlight to awaken its glass fruit and release luminous seeds before an arriving star runs out of room.",
+          "priority": "help"
+        }
+      ]
+    },
+    {
+      "id": "frostfruit-orchard.replay",
+      "lines": [
+        {
+          "id": "frostfruit-orchard.replay.1",
+          "speaker": "sunny",
+          "text": "Try the same Frostfruit Orchard opening and wake its winter garden with 18 starlight. Your saved round stays until you tap Begin.",
+          "priority": "help"
+        }
+      ]
     }
   ],
   "copy": {
@@ -1165,6 +1209,18 @@
     "silver.restoration": "Silver Pools, {percent}% restored",
     "result.silverWon": "Silver Pools complete! One silver cascade now flows through every pool.",
     "help.silverTitle": "Silver Pools · Restore flow",
-    "help.silver": "Restore Silver Pools with 18 starlight. Each clear fills the dry terraces, raises lily steps and reconnects the pools. Finish before an arriving star has nowhere to land. Swipe neighboring stars to arrange matches, tap groups or hold and draw selected traces and shape recipes. Showers arrive at a steady pace. This place has no Dusk, Opal Orbs or storms."
+    "help.silver": "Restore Silver Pools with 18 starlight. Each clear fills the dry terraces, raises lily steps and reconnects the pools. Finish before an arriving star has nowhere to land. Swipe neighboring stars to arrange matches, tap groups or hold and draw selected traces and shape recipes. Showers arrive at a steady pace. This place has no Dusk, Opal Orbs or storms.",
+    "action.frostfruitOrchard": "Try Frostfruit Orchard",
+    "action.replayFrostfruitOrchard": "Replay Frostfruit Orchard",
+    "menu.frostfruitOrchard": "Frostfruit Orchard · 18 starlight",
+    "menu.frostfruitOrchardHint": "Restore Frostfruit Orchard with 18 starlight. Preview the challenge before Begin.",
+    "flow.frostfruitOrchard": "FROSTFRUIT ORCHARD",
+    "flow.frostfruitComplete": "FROSTFRUIT ORCHARD COMPLETE",
+    "flow.frostfruitWon": "Frostfruit Orchard restored!",
+    "frostfruit.title": "Frostfruit Orchard",
+    "frostfruit.restoration": "Frostfruit Orchard, {percent}% restored",
+    "result.frostfruitWon": "Frostfruit Orchard complete! The crown has opened and luminous seeds drift through the winter garden.",
+    "help.frostfruitTitle": "Frostfruit Orchard · Wake the winter garden",
+    "help.frostfruit": "Restore Frostfruit Orchard with 18 starlight. Each clear lights its frosted branches and glass fruit. Finish to open the central crown and release luminous seeds before an arriving star has nowhere to land. Swipe neighboring stars to arrange matches, tap groups or hold and draw selected traces and shape recipes. Showers arrive at a steady pace. This place has no Dusk, Opal Orbs or storms."
   }
 }

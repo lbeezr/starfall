@@ -40,6 +40,10 @@ import StarfallCore
     #if DEBUG
     /// Reset-only native tests model an existing installation's access.
     func useLegacyReviewAccess() { journey = WorldJourney(legacyAccess: true) }
+
+    /// A validated completed review round earns access through the production rule.
+    /// Construction remains read-only; the isolated review save commits on activation.
+    func useReviewCompletion(_ game: FallingSky) { journey.record(game) }
     #endif
 
     /// Called after the round archive succeeds, before any result/travel animation.
