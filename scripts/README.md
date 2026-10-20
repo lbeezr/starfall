@@ -30,6 +30,15 @@ Build identity includes `Package.swift`, optional root/package-workspace resolut
 
 The updater queries the real app installation on every check. URL/version mismatch, a missing app or a legacy receipt triggers a verified current-main repair, including when source/runtime fingerprints are unchanged. It rejects non-descendant main, re-fetches before delivery, and verifies post-install identity before recording success. Device inventory failure defers the operation. See [delivery guards and their permission limit](../docs/DEVELOPMENT_BUILDS.md#reject-stale-delivery-and-detect-external-replacements). The first guarded run refreshes an old receipt through one verified reinstall; it never launches or resets the app. Tests include real Git ancestry plus mocked device/build/CI failures.
 
+### Wireless delivery check
+
+An unplugged phone can still receive the update over local Wi-Fi. Before reporting delivery blocked or asking for a cable:
+
+1. Read the original device identifier from the updater's local `config.json`. Inspect that physical device in a fresh `xcrun devicectl list devices --json-output <temporary-file>` result, including pairing, transport and tunnel state. Check the configured device only; do not scan the LAN or pair a different phone.
+2. For an authorized delivery, run `python3 scripts/device-update.py run`. The updater already makes one bounded read-only details request for a discovered paired device with a disconnected tunnel, then requires fresh connected inventory. A disconnected snapshot alone does not prove the phone is absent from local Wi-Fi.
+3. If diagnosing the connection separately, the equivalent read-only probe is `xcrun devicectl device info details --device <configured-device> --timeout 45`. Use it only for the existing paired physical phone, then refresh inventory. `localNetwork` with a connected tunnel confirms the wireless connection; installation still goes through the updater.
+4. If the phone remains unreachable, ask the user to unlock it and confirm it is on the same local Wi-Fi network as the Mac. Suggest a cable only when wireless reachability or pairing cannot be established. Report the observed connection result; report installation success only after the updater verifies the installed identity.
+
 ## Audio generation
 
 `generate-celebration-audio.py` reproduces the local celebration cues. See [runtime audio](../App/Audio/README.md) for regeneration and asset ownership.
