@@ -1,0 +1,3823 @@
+{
+  "schemaVersion": 1,
+  "topic": "Frostfruit Orchard native visual evidence",
+  "evidenceRole": "Integrated native evidence with historical pre-integration review metadata only",
+  "updated": "2026-10-20",
+  "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+  "runtimeFingerprint": "dev.bd94e46b80",
+  "simulatorBuildLabel": "dev.local",
+  "sourceBoundary": "All seven retained PNGs and 51 current pixel reviews bind to integrated App commit 6aee65e9954a930c61bc263c867b15c4aacc1619 (dev.bd94e46b80), which includes main 386b2f8/PR185. Later ac3f6d3 is a documentation-only merge receipt. Historical bede49c/f7b5c71 reviews are metadata only and do not establish current UI acceptance.",
+  "environment": {
+    "scheme": "Starfall",
+    "configuration": "Debug unless stated",
+    "xcode": "27.1 (27A9275)",
+    "macOS": "27.0.1",
+    "simulatorOS": "iOS 27.0 (24A434)",
+    "arch": "arm64",
+    "phone": "iPhone 17e",
+    "tablet": "iPad Air 11-inch (M3)",
+    "compact": "iPhone SE (3rd generation)"
+  },
+  "processing": "Unchanged Xcode-exported PNG bytes. No crop, compositing, resizing, re-encoding or EXIF orientation normalization.",
+  "runs": {
+    "compact-integrated": {
+      "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+      "runtimeFingerprint": "dev.bd94e46b80",
+      "summaryExport": "/private/tmp/frostfruit-compact-integrated-summary.json",
+      "summarySHA256": "bcaa611b0d7777f2629dc68b69664fb1c1b211c9ea44aa7f201a933168466dd3",
+      "manifest": "/private/tmp/frostfruit-compact-integrated-captures/manifest.json",
+      "manifestSHA256": "efc65e5fddadf20815692324cc8c49891226881bf102f2ccfe5a81aaf9b2a58a",
+      "devices": [
+        {
+          "architecture": "arm64",
+          "deviceId": "EA0F7A30-21E1-4995-93F5-C4A983F4A354",
+          "deviceName": "Starfall Landing Compact Acceptance",
+          "modelName": "iPhone SE (3rd generation)",
+          "osBuildNumber": "24A434",
+          "osVersion": "27.0",
+          "platform": "iOS Simulator"
+        }
+      ],
+      "result": {
+        "result": "Passed",
+        "totalTestCount": 2,
+        "passedTests": 2,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "expectedFailures": 0,
+        "startTime": 1792504803.139,
+        "finishTime": 1792505111.903
+      },
+      "testMethods": [
+        "FrostfruitOrchardInteractionTests/testFrostfruitWinningClearPersistsNamedResultAndReplayStartsAtZero()",
+        "SkyFlowInteractionTests/testFirstLightWinReplayAndFullSky()"
+      ]
+    },
+    "tablet-integrated": {
+      "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+      "runtimeFingerprint": "dev.bd94e46b80",
+      "summaryExport": "/private/tmp/frostfruit-tablet-integrated-summary.json",
+      "summarySHA256": "243262c50c6f47964c442ab2590e1acc15fd574adadd601c3a2d5f8b766c7198",
+      "manifest": "/private/tmp/frostfruit-tablet-integrated-captures/manifest.json",
+      "manifestSHA256": "fa22905056d5a35d3feb71606e1d19785db1aad629b1eecec5d487fadbf48322",
+      "devices": [
+        {
+          "architecture": "arm64",
+          "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+          "deviceName": "Starfall Landing Tablet Acceptance",
+          "modelName": "iPad Air 11-inch (M3)",
+          "osBuildNumber": "24A434",
+          "osVersion": "27.0",
+          "platform": "iOS Simulator"
+        }
+      ],
+      "result": {
+        "result": "Passed",
+        "totalTestCount": 3,
+        "passedTests": 3,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "expectedFailures": 0,
+        "startTime": 1792504800.55,
+        "finishTime": 1792505162.202
+      },
+      "testMethods": [
+        "FrostfruitOrchardInteractionTests/testTabletDenseFrostfruitCompletionKeepsNativeInput()",
+        "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "SilverPoolsInteractionTests/testTabletDenseSilverCompletionKeepsNativeInput()"
+      ]
+    },
+    "phone-integrated": {
+      "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+      "runtimeFingerprint": "dev.bd94e46b80",
+      "summaryExport": "/private/tmp/frostfruit-phone-integrated-summary.json",
+      "summarySHA256": "0e1c353c14cafdad61aeffceb5eb7781e94f79c246f088172de5f5d4574eb840",
+      "manifest": "/private/tmp/frostfruit-phone-integrated-captures/manifest.json",
+      "manifestSHA256": "d3e453985b80ed6a8dbeb3b75343b822739833997ba3e17e11085bd48be37c54",
+      "devices": [
+        {
+          "architecture": "arm64",
+          "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+          "deviceName": "Starfall Landing Acceptance",
+          "modelName": "iPhone 17e",
+          "osBuildNumber": "24A434",
+          "osVersion": "27.0",
+          "platform": "iOS Simulator"
+        }
+      ],
+      "result": {
+        "result": "Passed",
+        "totalTestCount": 6,
+        "passedTests": 6,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "expectedFailures": 0,
+        "startTime": 1792504951.78,
+        "finishTime": 1792505331.193
+      },
+      "testMethods": [
+        "FrostfruitOrchardInteractionTests/testFrostfruitDenseOverflowKeepsNamedReplayAndRestartsAtZero()",
+        "FrostfruitOrchardInteractionTests/testFrostfruitDenseRapidClearSurvivesSettingsAndBackground()",
+        "FrostfruitOrchardInteractionTests/testFrostfruitLargestTextSystemReduceMotionWinKeepsResultActionsUsable()",
+        "FrostfruitOrchardInteractionTests/testFrostfruitPhoneAllFiveStatesKeepNativeBoardFixed()",
+        "FrostfruitOrchardInteractionTests/testFrostfruitPreviewCancellationRetainsSilverUntilBegin()",
+        "FrostfruitOrchardInteractionTests/testFrostfruitWinningClearPersistsNamedResultAndReplayStartsAtZero()"
+      ]
+    }
+  },
+  "coverage": {
+    "reviewCounts": {
+      "compact-integrated": {
+        "exportedPNGCount": 8,
+        "visuallyReviewedPNGCount": 8
+      },
+      "tablet-integrated": {
+        "exportedPNGCount": 24,
+        "visuallyReviewedPNGCount": 24
+      },
+      "phone-integrated": {
+        "exportedPNGCount": 19,
+        "visuallyReviewedPNGCount": 19
+      }
+    },
+    "visuallyReviewedPNGCount": 51,
+    "reviewedAttachments": [
+      {
+        "run": "compact-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitWinningClearPersistsNamedResultAndReplayStartsAtZero()",
+        "attachmentName": "frostfruit-replay-reset-to-unrestored",
+        "exportedFileName": "6114C59F-D813-4F35-A588-CA78C0559F4D.png",
+        "sourceExport": "/private/tmp/frostfruit-compact-integrated-captures/6114C59F-D813-4F35-A588-CA78C0559F4D.png",
+        "timestamp": 1792504914.372,
+        "deviceId": "EA0F7A30-21E1-4995-93F5-C4A983F4A354",
+        "deviceName": "Starfall Landing Compact Acceptance",
+        "sha256": "ada52c6e8024a528f6f459dcc45b4dbb1e31956f1a8c5ba714c06a22b7353b82",
+        "bytes": 1955781,
+        "encodedPixels": [
+          750,
+          1334
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          750,
+          1334
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "compact-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitWinningClearPersistsNamedResultAndReplayStartsAtZero()",
+        "attachmentName": "frostfruit-restored-after-relaunch",
+        "exportedFileName": "593BF32C-861E-42C7-983F-5711FFC2E083.png",
+        "sourceExport": "/private/tmp/frostfruit-compact-integrated-captures/593BF32C-861E-42C7-983F-5711FFC2E083.png",
+        "timestamp": 1792504898.887,
+        "deviceId": "EA0F7A30-21E1-4995-93F5-C4A983F4A354",
+        "deviceName": "Starfall Landing Compact Acceptance",
+        "sha256": "6c1d10811c13775c0d64b2645f8c19c2d24583712e33285214f171da2e61d6b0",
+        "bytes": 1376296,
+        "encodedPixels": [
+          750,
+          1334
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          750,
+          1334
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "compact-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitWinningClearPersistsNamedResultAndReplayStartsAtZero()",
+        "attachmentName": "frostfruit-restored-after-native-winning-clear-normal-motion",
+        "exportedFileName": "5048636C-27AF-4B32-8B75-E790C2E1ED59.png",
+        "sourceExport": "/private/tmp/frostfruit-compact-integrated-captures/5048636C-27AF-4B32-8B75-E790C2E1ED59.png",
+        "timestamp": 1792504888.04,
+        "deviceId": "EA0F7A30-21E1-4995-93F5-C4A983F4A354",
+        "deviceName": "Starfall Landing Compact Acceptance",
+        "sha256": "c7c9667db3e0ce98754a5a5818a3dfee1b2f6786d821e80e4c0bf35721ae23b7",
+        "bytes": 1376191,
+        "encodedPixels": [
+          750,
+          1334
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          750,
+          1334
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "compact-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitWinningClearPersistsNamedResultAndReplayStartsAtZero()",
+        "attachmentName": "frostfruit-before-winning-clear-normal-motion",
+        "exportedFileName": "6F5633C4-FDC2-4BC5-B047-0C0794B062A6.png",
+        "sourceExport": "/private/tmp/frostfruit-compact-integrated-captures/6F5633C4-FDC2-4BC5-B047-0C0794B062A6.png",
+        "timestamp": 1792504881.604,
+        "deviceId": "EA0F7A30-21E1-4995-93F5-C4A983F4A354",
+        "deviceName": "Starfall Landing Compact Acceptance",
+        "sha256": "7f55de3636bb633707932611b1bc7d1a9ddab557d2189813d4c7e36e39e061aa",
+        "bytes": 1972675,
+        "encodedPixels": [
+          750,
+          1334
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          750,
+          1334
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "compact-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "SkyFlowInteractionTests/testFirstLightWinReplayAndFullSky()",
+        "attachmentName": "flow-fresh-after-full",
+        "exportedFileName": "8AA81622-05A9-41FE-9373-3D026A100D16.png",
+        "sourceExport": "/private/tmp/frostfruit-compact-integrated-captures/8AA81622-05A9-41FE-9373-3D026A100D16.png",
+        "timestamp": 1792505100.047,
+        "deviceId": "EA0F7A30-21E1-4995-93F5-C4A983F4A354",
+        "deviceName": "Starfall Landing Compact Acceptance",
+        "sha256": "15bc64bf6253049cd7ca620973539018cfc4303825a2d4182ad5f9fc25a19bcb",
+        "bytes": 1354630,
+        "encodedPixels": [
+          750,
+          1334
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          750,
+          1334
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "compact-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "SkyFlowInteractionTests/testFirstLightWinReplayAndFullSky()",
+        "attachmentName": "flow-full",
+        "exportedFileName": "413EB3C6-1FF7-4A8B-A4FA-45DF81C1A932.png",
+        "sourceExport": "/private/tmp/frostfruit-compact-integrated-captures/413EB3C6-1FF7-4A8B-A4FA-45DF81C1A932.png",
+        "timestamp": 1792505087.722,
+        "deviceId": "EA0F7A30-21E1-4995-93F5-C4A983F4A354",
+        "deviceName": "Starfall Landing Compact Acceptance",
+        "sha256": "c2d173d515fae4b10b7caf2500dc12c48d365b14f55ee6d141d3009a610e2fc1",
+        "bytes": 1182650,
+        "encodedPixels": [
+          750,
+          1334
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          750,
+          1334
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "compact-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "SkyFlowInteractionTests/testFirstLightWinReplayAndFullSky()",
+        "attachmentName": "flow-first-light-replay-explanation",
+        "exportedFileName": "3ACBE95A-D470-4087-BBED-DD8C4A181CAE.png",
+        "sourceExport": "/private/tmp/frostfruit-compact-integrated-captures/3ACBE95A-D470-4087-BBED-DD8C4A181CAE.png",
+        "timestamp": 1792505008.641,
+        "deviceId": "EA0F7A30-21E1-4995-93F5-C4A983F4A354",
+        "deviceName": "Starfall Landing Compact Acceptance",
+        "sha256": "38acea6f2241cc4597bfa451cc61d5e4f69fc90ca6db91ad8c6944da6fa8ef89",
+        "bytes": 1354967,
+        "encodedPixels": [
+          750,
+          1334
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          750,
+          1334
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "compact-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "SkyFlowInteractionTests/testFirstLightWinReplayAndFullSky()",
+        "attachmentName": "flow-win",
+        "exportedFileName": "FF6F7911-6713-4D6B-AB24-46DF16DE717D.png",
+        "sourceExport": "/private/tmp/frostfruit-compact-integrated-captures/FF6F7911-6713-4D6B-AB24-46DF16DE717D.png",
+        "timestamp": 1792505004.601,
+        "deviceId": "EA0F7A30-21E1-4995-93F5-C4A983F4A354",
+        "deviceName": "Starfall Landing Compact Acceptance",
+        "sha256": "9b1e9c3175f995e5a63eb123a521651562592931272597864769fcd936512f78",
+        "bytes": 1202246,
+        "encodedPixels": [
+          750,
+          1334
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          750,
+          1334
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "tablet-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletDenseFrostfruitCompletionKeepsNativeInput()",
+        "attachmentName": "frostfruit-tablet-portrait-100-after-native-win",
+        "exportedFileName": "EA1C02C5-57DC-4595-ADE4-ED13928E0C24.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-integrated-captures/EA1C02C5-57DC-4595-ADE4-ED13928E0C24.png",
+        "timestamp": 1792504906.173,
+        "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+        "deviceName": "Starfall Landing Tablet Acceptance",
+        "sha256": "54f2b4cb112edc1f3d39444e4f6c0083a14ca3e317e0bf38afd793906d975d5b",
+        "bytes": 5534093,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1640,
+          2360
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "tablet-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletDenseFrostfruitCompletionKeepsNativeInput()",
+        "attachmentName": "frostfruit-tablet-portrait-dense-075-before-native-win",
+        "exportedFileName": "D4709866-14E7-4D9F-87AF-293BAB23D660.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-integrated-captures/D4709866-14E7-4D9F-87AF-293BAB23D660.png",
+        "timestamp": 1792504901.009,
+        "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+        "deviceName": "Starfall Landing Tablet Acceptance",
+        "sha256": "646ef2d112260d2bb97b7e585bf024846e5804db5963377f3948ead7dfe019b1",
+        "bytes": 6344426,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1640,
+          2360
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "tablet-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletDenseFrostfruitCompletionKeepsNativeInput()",
+        "attachmentName": "frostfruit-tablet-landscape-100-after-native-win",
+        "exportedFileName": "998651D7-D904-4ADD-9215-FB4875940F6D.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-integrated-captures/998651D7-D904-4ADD-9215-FB4875940F6D.png",
+        "timestamp": 1792504890.399,
+        "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+        "deviceName": "Starfall Landing Tablet Acceptance",
+        "sha256": "e3a70933eaa87363f36486f6bdf36e11934fca20f8912b04757787e727f6544e",
+        "bytes": 5640260,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 8,
+        "displayPixels": [
+          2360,
+          1640
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "tablet-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletDenseFrostfruitCompletionKeepsNativeInput()",
+        "attachmentName": "frostfruit-tablet-landscape-dense-075-before-native-win",
+        "exportedFileName": "8463C2F0-EBEC-48FD-A480-9015B6E6D127.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-integrated-captures/8463C2F0-EBEC-48FD-A480-9015B6E6D127.png",
+        "timestamp": 1792504885.218,
+        "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+        "deviceName": "Starfall Landing Tablet Acceptance",
+        "sha256": "4be8a4957c53e080acc2b7029e0906c43ffc9b16a8318b01098f6cea903c1726",
+        "bytes": 6232801,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 8,
+        "displayPixels": [
+          2360,
+          1640
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "tablet-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "attachmentName": "frostfruit-tablet-landscape-final-result-action-visible",
+        "exportedFileName": "2E7F48D9-F4C7-4656-9A1A-A6BDB2F418D7.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-integrated-captures/2E7F48D9-F4C7-4656-9A1A-A6BDB2F418D7.png",
+        "timestamp": 1792505091.468,
+        "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+        "deviceName": "Starfall Landing Tablet Acceptance",
+        "sha256": "e68e208e592387fe2e6495e7630895e06ad773f872907cc47024c376391c46d9",
+        "bytes": 5608389,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 8,
+        "displayPixels": [
+          2360,
+          1640
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "tablet-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "attachmentName": "frostfruit-tablet-landscape-scene-100-score-18-normal-motion",
+        "exportedFileName": "DD01E0F1-63A3-419D-8D05-54F67D2A2E66.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-integrated-captures/DD01E0F1-63A3-419D-8D05-54F67D2A2E66.png",
+        "timestamp": 1792505089.861,
+        "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+        "deviceName": "Starfall Landing Tablet Acceptance",
+        "sha256": "e68e208e592387fe2e6495e7630895e06ad773f872907cc47024c376391c46d9",
+        "bytes": 5608389,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 8,
+        "displayPixels": [
+          2360,
+          1640
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "tablet-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "attachmentName": "frostfruit-tablet-landscape-scene-75-score-14-normal-motion",
+        "exportedFileName": "91705CED-CFAA-4D42-A0C3-FC6B4054D264.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-integrated-captures/91705CED-CFAA-4D42-A0C3-FC6B4054D264.png",
+        "timestamp": 1792505079.771,
+        "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+        "deviceName": "Starfall Landing Tablet Acceptance",
+        "sha256": "025d3db4a87ce0511973476cbc7e44dd137ccc57b3799656f2aa74a89b7a7a67",
+        "bytes": 6136131,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 8,
+        "displayPixels": [
+          2360,
+          1640
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "tablet-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "attachmentName": "frostfruit-tablet-landscape-scene-50-score-9-normal-motion",
+        "exportedFileName": "5F36CF5D-F12D-43C2-BCDB-6BB900D6B7EF.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-integrated-captures/5F36CF5D-F12D-43C2-BCDB-6BB900D6B7EF.png",
+        "timestamp": 1792505065.581,
+        "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+        "deviceName": "Starfall Landing Tablet Acceptance",
+        "sha256": "e1cba3d0a367d031a5027290d322049a3a6ae2ff9f65b613709428c0a9aa221e",
+        "bytes": 6040076,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 8,
+        "displayPixels": [
+          2360,
+          1640
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "tablet-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "attachmentName": "frostfruit-tablet-landscape-scene-25-score-5-normal-motion",
+        "exportedFileName": "5BA44E1C-7186-4A04-8D29-6C11FD33E5A4.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-integrated-captures/5BA44E1C-7186-4A04-8D29-6C11FD33E5A4.png",
+        "timestamp": 1792505054.936,
+        "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+        "deviceName": "Starfall Landing Tablet Acceptance",
+        "sha256": "1275aa218f0520d700cfadb5efa17a7425c7438715db6308421e068ca6004fa7",
+        "bytes": 6118907,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 8,
+        "displayPixels": [
+          2360,
+          1640
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "tablet-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "attachmentName": "frostfruit-tablet-landscape-scene-0-score-0-normal-motion",
+        "exportedFileName": "11C1C763-FB4E-42AC-B209-44BAD4FD4467.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-integrated-captures/11C1C763-FB4E-42AC-B209-44BAD4FD4467.png",
+        "timestamp": 1792505043.778,
+        "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+        "deviceName": "Starfall Landing Tablet Acceptance",
+        "sha256": "d264074a21b7167bf5f6f32625244bb912f4d3c47b3e720561dfe30545ef8d20",
+        "bytes": 6110135,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 8,
+        "displayPixels": [
+          2360,
+          1640
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "tablet-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "attachmentName": "frostfruit-tablet-portrait-scene-100-score-18-normal-motion",
+        "exportedFileName": "924F08E2-62A7-41E1-8384-ACFA4933BD42.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-integrated-captures/924F08E2-62A7-41E1-8384-ACFA4933BD42.png",
+        "timestamp": 1792505031.31,
+        "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+        "deviceName": "Starfall Landing Tablet Acceptance",
+        "sha256": "ace3065981a5f4e428b982ad7a007f70681d6b2ac9bd06ba279330044f927139",
+        "bytes": 5457544,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1640,
+          2360
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "tablet-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "attachmentName": "frostfruit-tablet-portrait-scene-75-score-14-normal-motion",
+        "exportedFileName": "E9BABD51-625E-4B23-9D1E-5186D2A95235.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-integrated-captures/E9BABD51-625E-4B23-9D1E-5186D2A95235.png",
+        "timestamp": 1792505021.227,
+        "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+        "deviceName": "Starfall Landing Tablet Acceptance",
+        "sha256": "cd3d84d0b0b500fd84cadd55879c97292e50b9f6deb6c71c97ef8c4851c9eab1",
+        "bytes": 6146296,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1640,
+          2360
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "tablet-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "attachmentName": "frostfruit-tablet-portrait-scene-50-score-9-normal-motion",
+        "exportedFileName": "6D0D7C64-81B2-4C79-9983-2E586ECF009E.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-integrated-captures/6D0D7C64-81B2-4C79-9983-2E586ECF009E.png",
+        "timestamp": 1792505010.897,
+        "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+        "deviceName": "Starfall Landing Tablet Acceptance",
+        "sha256": "492faa32601f0c737e5e041e6036731db1257e56549fd7005018f8530e4af57a",
+        "bytes": 6226259,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1640,
+          2360
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "tablet-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "attachmentName": "frostfruit-tablet-portrait-scene-25-score-5-normal-motion",
+        "exportedFileName": "CD9DF5A1-29FD-4128-BC63-60E460C6A4D3.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-integrated-captures/CD9DF5A1-29FD-4128-BC63-60E460C6A4D3.png",
+        "timestamp": 1792505000.375,
+        "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+        "deviceName": "Starfall Landing Tablet Acceptance",
+        "sha256": "333d9be73d569c3e2fd57f115ab96926b5389f6de8c37e3191c2305142ee8c6f",
+        "bytes": 6217879,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1640,
+          2360
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "tablet-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "attachmentName": "frostfruit-tablet-portrait-scene-0-score-0-normal-motion",
+        "exportedFileName": "7AF8331B-71C8-4222-BCDA-81A01D7B76AA.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-integrated-captures/7AF8331B-71C8-4222-BCDA-81A01D7B76AA.png",
+        "timestamp": 1792504988.873,
+        "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+        "deviceName": "Starfall Landing Tablet Acceptance",
+        "sha256": "1b0ce96124a03fd315c784bba79831229700effa9210d11f11752942ee0392a7",
+        "bytes": 6163010,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1640,
+          2360
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "tablet-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "attachmentName": "frostfruit-tablet-portrait-after-second-native-clear-normal-motion",
+        "exportedFileName": "593F48AB-876C-4368-BEDF-5D44D35AD462.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-integrated-captures/593F48AB-876C-4368-BEDF-5D44D35AD462.png",
+        "timestamp": 1792504973.45,
+        "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+        "deviceName": "Starfall Landing Tablet Acceptance",
+        "sha256": "1d53ace6848d4f2295b2e1df8e022ea7f42fc771c192d0595b5448bf801c436b",
+        "bytes": 5999248,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1640,
+          2360
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "tablet-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "attachmentName": "frostfruit-tablet-portrait-retained-after-landscape-clear-normal-motion",
+        "exportedFileName": "8E6C092E-383C-494C-8D5F-E3737CEA6309.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-integrated-captures/8E6C092E-383C-494C-8D5F-E3737CEA6309.png",
+        "timestamp": 1792504966.033,
+        "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+        "deviceName": "Starfall Landing Tablet Acceptance",
+        "sha256": "1908cbb9f28e1d94864321b9f0eb47dd157b0473b14a0b4f3c4024deb97bf311",
+        "bytes": 6198911,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1640,
+          2360
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "tablet-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "attachmentName": "frostfruit-tablet-landscape-after-native-clear-normal-motion",
+        "exportedFileName": "A408552E-712D-4A90-8B81-167CE39C0055.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-integrated-captures/A408552E-712D-4A90-8B81-167CE39C0055.png",
+        "timestamp": 1792504957.982,
+        "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+        "deviceName": "Starfall Landing Tablet Acceptance",
+        "sha256": "b3dc445d011292d05ba98cf34f5ab68092765a2bc2cd613639efe43bf8d59998",
+        "bytes": 5895910,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 8,
+        "displayPixels": [
+          2360,
+          1640
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "tablet-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "attachmentName": "frostfruit-tablet-landscape-retained-before-clear-normal-motion",
+        "exportedFileName": "75C88C77-6423-4860-A3D8-EB1E58E32028.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-integrated-captures/75C88C77-6423-4860-A3D8-EB1E58E32028.png",
+        "timestamp": 1792504950.757,
+        "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+        "deviceName": "Starfall Landing Tablet Acceptance",
+        "sha256": "20c3e0b61f8b828b6efbf08601293c67b1a968a99f619ba3b8844c467128f68d",
+        "bytes": 6119172,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 8,
+        "displayPixels": [
+          2360,
+          1640
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "tablet-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "attachmentName": "frostfruit-tablet-portrait-before-rotation-normal-motion",
+        "exportedFileName": "1E0A453F-D5FC-496C-9D6F-97E50E366F7C.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-integrated-captures/1E0A453F-D5FC-496C-9D6F-97E50E366F7C.png",
+        "timestamp": 1792504944.803,
+        "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+        "deviceName": "Starfall Landing Tablet Acceptance",
+        "sha256": "835fffcfbcfab9ba6fa006a4ba9a6b4fa3d9560453cfc39915b2fb10df1e6291",
+        "bytes": 6217730,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1640,
+          2360
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "tablet-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "SilverPoolsInteractionTests/testTabletDenseSilverCompletionKeepsNativeInput()",
+        "attachmentName": "silver-tablet-portrait-100-after-native-win",
+        "exportedFileName": "BC1A714D-E65C-4E02-80A5-F93AFA1C8452.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-integrated-captures/BC1A714D-E65C-4E02-80A5-F93AFA1C8452.png",
+        "timestamp": 1792505149.532,
+        "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+        "deviceName": "Starfall Landing Tablet Acceptance",
+        "sha256": "a823d74f62734142c6d75eafbcd0ac19fceb2b2713fe32220fde460fff10eb9b",
+        "bytes": 5328146,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1640,
+          2360
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "tablet-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "SilverPoolsInteractionTests/testTabletDenseSilverCompletionKeepsNativeInput()",
+        "attachmentName": "silver-tablet-portrait-dense-075-before-native-win",
+        "exportedFileName": "FA18DFCA-CD2B-4F32-BF5E-A5D4112D81BB.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-integrated-captures/FA18DFCA-CD2B-4F32-BF5E-A5D4112D81BB.png",
+        "timestamp": 1792505143.973,
+        "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+        "deviceName": "Starfall Landing Tablet Acceptance",
+        "sha256": "6aebd294d522acf0c422e8758f9fd71ab24058c85a5aa410805ad81ff798643e",
+        "bytes": 5913447,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1640,
+          2360
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "tablet-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "SilverPoolsInteractionTests/testTabletDenseSilverCompletionKeepsNativeInput()",
+        "attachmentName": "silver-tablet-landscape-100-after-native-win",
+        "exportedFileName": "0DC7FE68-B635-4D36-BF52-7768FEAFD68B.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-integrated-captures/0DC7FE68-B635-4D36-BF52-7768FEAFD68B.png",
+        "timestamp": 1792505133.52,
+        "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+        "deviceName": "Starfall Landing Tablet Acceptance",
+        "sha256": "c0310195bc44ee89b64dd392d4efcdbe83b823e52df37d391d31a6c299ceddb9",
+        "bytes": 5702586,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 8,
+        "displayPixels": [
+          2360,
+          1640
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "tablet-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "SilverPoolsInteractionTests/testTabletDenseSilverCompletionKeepsNativeInput()",
+        "attachmentName": "silver-tablet-landscape-dense-075-before-native-win",
+        "exportedFileName": "DB09D4B2-7035-434E-B5F1-1661ABB5A21D.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-integrated-captures/DB09D4B2-7035-434E-B5F1-1661ABB5A21D.png",
+        "timestamp": 1792505128.421,
+        "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+        "deviceName": "Starfall Landing Tablet Acceptance",
+        "sha256": "cfb0df8006d18af5fee52c60c453d6b5c0377af39c4cd45c38e5b83daf4e52a2",
+        "bytes": 6300495,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 8,
+        "displayPixels": [
+          2360,
+          1640
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "phone-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitDenseOverflowKeepsNamedReplayAndRestartsAtZero()",
+        "attachmentName": "frostfruit-dense-overflow-replay-reset-to-unrestored",
+        "exportedFileName": "3E384860-A5D0-4E61-9699-8F2A2DFEC1E7.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-integrated-captures/3E384860-A5D0-4E61-9699-8F2A2DFEC1E7.png",
+        "timestamp": 1792505021.114,
+        "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+        "deviceName": "Starfall Landing Acceptance",
+        "sha256": "afbd4b4ff7e3442426ac3ba2727711b75218f9134b6e6ed646fbeba3eb37c858",
+        "bytes": 4993978,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "phone-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitDenseOverflowKeepsNamedReplayAndRestartsAtZero()",
+        "attachmentName": "frostfruit-dense-native-overflow-zero-score-normal-motion",
+        "exportedFileName": "BFE8416E-C799-4BB2-9049-5DF1A857D325.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-integrated-captures/BFE8416E-C799-4BB2-9049-5DF1A857D325.png",
+        "timestamp": 1792505005.547,
+        "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+        "deviceName": "Starfall Landing Acceptance",
+        "sha256": "1f34410f12411788f5a74b780b7f0629ec6384340067432f4cfb7a4cb8b1e162",
+        "bytes": 3853610,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "phone-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitDenseOverflowKeepsNamedReplayAndRestartsAtZero()",
+        "attachmentName": "frostfruit-dense-before-native-next-shower-normal-motion",
+        "exportedFileName": "0AED3B0F-E753-4806-B3F1-EF21C8D5EB3D.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-integrated-captures/0AED3B0F-E753-4806-B3F1-EF21C8D5EB3D.png",
+        "timestamp": 1792504998.552,
+        "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+        "deviceName": "Starfall Landing Acceptance",
+        "sha256": "6058b5a20bc9cd0c5eb6b4caa49a6ec29f8909016f6d9684ef00188e2811e27e",
+        "bytes": 5136100,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "phone-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitDenseRapidClearSurvivesSettingsAndBackground()",
+        "attachmentName": "frostfruit-dense-retained-after-settings-background",
+        "exportedFileName": "E3595180-DA96-400E-B3A0-D18D75D90B8B.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-integrated-captures/E3595180-DA96-400E-B3A0-D18D75D90B8B.png",
+        "timestamp": 1792505070.091,
+        "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+        "deviceName": "Starfall Landing Acceptance",
+        "sha256": "8b6731990f3ba7eb03e1b7b4d578d2eb4c7d47b22235c6415a7806fb6a4b84e9",
+        "bytes": 5124497,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "phone-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitDenseRapidClearSurvivesSettingsAndBackground()",
+        "attachmentName": "frostfruit-dense-after-rapid-clear",
+        "exportedFileName": "A6E280F5-5A01-4FE8-9B85-FE4A59C2D2AA.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-integrated-captures/A6E280F5-5A01-4FE8-9B85-FE4A59C2D2AA.png",
+        "timestamp": 1792505058.107,
+        "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+        "deviceName": "Starfall Landing Acceptance",
+        "sha256": "370e5fa6766debf570822a07db66c73bfa833766346f5ae30dac1a78b97f0162",
+        "bytes": 4782233,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "phone-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitDenseRapidClearSurvivesSettingsAndBackground()",
+        "attachmentName": "frostfruit-dense-before-rapid-clear",
+        "exportedFileName": "77D4AAD8-A719-48CB-9BB3-218D1E463000.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-integrated-captures/77D4AAD8-A719-48CB-9BB3-218D1E463000.png",
+        "timestamp": 1792505055.077,
+        "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+        "deviceName": "Starfall Landing Acceptance",
+        "sha256": "3d5074c9d249b427b38d8b018f198543ae8c65b8ee195c9575d085295958b688",
+        "bytes": 5155354,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "phone-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitLargestTextSystemReduceMotionWinKeepsResultActionsUsable()",
+        "attachmentName": "frostfruit-largest-text-reduce-motion-restored",
+        "exportedFileName": "6132FA5A-EAC4-454E-B4D7-1506FF14D2DE.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-integrated-captures/6132FA5A-EAC4-454E-B4D7-1506FF14D2DE.png",
+        "timestamp": 1792505116.627,
+        "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+        "deviceName": "Starfall Landing Acceptance",
+        "sha256": "3a757e3ab1be634cc36f92b6a877af3e9a5c549704d3fecc3803e7bef923f122",
+        "bytes": 2458510,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "UICTContentSizeCategoryAccessibilityXXXL",
+        "motionSetting": "System Reduce Motion on; calmEffects NO",
+        "review": "Accessibility XXXL result inspected at Replay scroll position. Text and button readable; entire result is not expected to fit in one viewport."
+      },
+      {
+        "run": "phone-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitLargestTextSystemReduceMotionWinKeepsResultActionsUsable()",
+        "attachmentName": "frostfruit-largest-text-reduce-motion-before-clear",
+        "exportedFileName": "812B95AB-8064-4124-A120-B1A1EDFB4FB8.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-integrated-captures/812B95AB-8064-4124-A120-B1A1EDFB4FB8.png",
+        "timestamp": 1792505104.056,
+        "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+        "deviceName": "Starfall Landing Acceptance",
+        "sha256": "5aafca9e1f7957e1cd8b7c22284b52ad7765053af81744ab9eeca087ee769ee7",
+        "bytes": 4376665,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "UICTContentSizeCategoryAccessibilityXXXL",
+        "motionSetting": "System Reduce Motion on; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "phone-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitPhoneAllFiveStatesKeepNativeBoardFixed()",
+        "attachmentName": "frostfruit-phone-scene-100-score-18-normal-motion",
+        "exportedFileName": "F358A3F2-DB68-4790-ADC2-A3C0B1BCC788.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-integrated-captures/F358A3F2-DB68-4790-ADC2-A3C0B1BCC788.png",
+        "timestamp": 1792505182.127,
+        "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+        "deviceName": "Starfall Landing Acceptance",
+        "sha256": "fdaefb4b9a3cc3c0ce7568728c433de16c129616f1302fb0217c31fdad595e86",
+        "bytes": 3887223,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "phone-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitPhoneAllFiveStatesKeepNativeBoardFixed()",
+        "attachmentName": "frostfruit-phone-scene-75-score-14-normal-motion",
+        "exportedFileName": "5498E44D-F52A-40F6-B2F5-D94C3821973E.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-integrated-captures/5498E44D-F52A-40F6-B2F5-D94C3821973E.png",
+        "timestamp": 1792505176.464,
+        "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+        "deviceName": "Starfall Landing Acceptance",
+        "sha256": "4e6953d77b6bed1d0c0f160af1c9bc7bb112611bad93b044f68752fdcee53543",
+        "bytes": 5060661,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "phone-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitPhoneAllFiveStatesKeepNativeBoardFixed()",
+        "attachmentName": "frostfruit-phone-scene-50-score-9-normal-motion",
+        "exportedFileName": "100F9F32-B066-4BC6-80C1-52C91669B3F4.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-integrated-captures/100F9F32-B066-4BC6-80C1-52C91669B3F4.png",
+        "timestamp": 1792505168.062,
+        "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+        "deviceName": "Starfall Landing Acceptance",
+        "sha256": "2a508d606c056cfd8235afd8954f11464f73825de56c88bcd16d85e86660e1a7",
+        "bytes": 5080083,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "phone-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitPhoneAllFiveStatesKeepNativeBoardFixed()",
+        "attachmentName": "frostfruit-phone-scene-25-score-5-normal-motion",
+        "exportedFileName": "89DBAFA2-C015-49E8-9E7F-820CB1FD4BC5.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-integrated-captures/89DBAFA2-C015-49E8-9E7F-820CB1FD4BC5.png",
+        "timestamp": 1792505159.644,
+        "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+        "deviceName": "Starfall Landing Acceptance",
+        "sha256": "1c596caf68ff3df3c4892822a8e4c48450ce845dca617f7eb907052de2743323",
+        "bytes": 5050053,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "phone-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitPhoneAllFiveStatesKeepNativeBoardFixed()",
+        "attachmentName": "frostfruit-phone-scene-0-score-0-normal-motion",
+        "exportedFileName": "AAD0D0FE-64DF-47FF-9185-0E5A074BBF88.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-integrated-captures/AAD0D0FE-64DF-47FF-9185-0E5A074BBF88.png",
+        "timestamp": 1792505151.066,
+        "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+        "deviceName": "Starfall Landing Acceptance",
+        "sha256": "42febc5324fb5e7f91c384389add72f7714d49df36cfa9d7d0f9d1e0f1b35c82",
+        "bytes": 5057810,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "phone-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitPreviewCancellationRetainsSilverUntilBegin()",
+        "attachmentName": "frostfruit-begin-replaces-retained-silver-with-unrestored-location",
+        "exportedFileName": "8C906710-E674-4807-A5E2-59C2A7FB4885.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-integrated-captures/8C906710-E674-4807-A5E2-59C2A7FB4885.png",
+        "timestamp": 1792505260.246,
+        "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+        "deviceName": "Starfall Landing Acceptance",
+        "sha256": "bc69a79e654b59fe0b5f899583d0b84918b6e0694d0299f50c505642a0212b48",
+        "bytes": 4994089,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "phone-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitPreviewCancellationRetainsSilverUntilBegin()",
+        "attachmentName": "frostfruit-entry-over-retained-half-restored-silver",
+        "exportedFileName": "092DD83B-8AC1-4613-8CBD-190CD8AD1C25.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-integrated-captures/092DD83B-8AC1-4613-8CBD-190CD8AD1C25.png",
+        "timestamp": 1792505221.97,
+        "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+        "deviceName": "Starfall Landing Acceptance",
+        "sha256": "dea300c46861fbae880cf1866b8000a3d5f3e3599ba6f71466d7a885e2bdfba6",
+        "bytes": 4638118,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "phone-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitWinningClearPersistsNamedResultAndReplayStartsAtZero()",
+        "attachmentName": "frostfruit-replay-reset-to-unrestored",
+        "exportedFileName": "C808B744-5661-4468-AD0C-BD5B5252E343.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-integrated-captures/C808B744-5661-4468-AD0C-BD5B5252E343.png",
+        "timestamp": 1792505319.545,
+        "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+        "deviceName": "Starfall Landing Acceptance",
+        "sha256": "b6908370bf5fae9922125da005c699314bcdb26ec7b85f200c237662b4e10cc9",
+        "bytes": 4994033,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "phone-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitWinningClearPersistsNamedResultAndReplayStartsAtZero()",
+        "attachmentName": "frostfruit-restored-after-relaunch",
+        "exportedFileName": "49BD7FE2-3AB7-4069-8DC9-FD392531438D.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-integrated-captures/49BD7FE2-3AB7-4069-8DC9-FD392531438D.png",
+        "timestamp": 1792505304.447,
+        "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+        "deviceName": "Starfall Landing Acceptance",
+        "sha256": "b84fcd77eeb3fbbf678e2168906887e00b0d788b05bf5dbc783bcd53594d72d4",
+        "bytes": 3885404,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "phone-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitWinningClearPersistsNamedResultAndReplayStartsAtZero()",
+        "attachmentName": "frostfruit-restored-after-native-winning-clear-normal-motion",
+        "exportedFileName": "2433575D-1E88-4368-83F2-4DB8702AC3D3.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-integrated-captures/2433575D-1E88-4368-83F2-4DB8702AC3D3.png",
+        "timestamp": 1792505294.313,
+        "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+        "deviceName": "Starfall Landing Acceptance",
+        "sha256": "da37abb7edc955e431328f95cf80e3fa7d870264af178e52a7c96b4f85213c39",
+        "bytes": 3885182,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      },
+      {
+        "run": "phone-integrated",
+        "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+        "runtimeFingerprint": "dev.bd94e46b80",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitWinningClearPersistsNamedResultAndReplayStartsAtZero()",
+        "attachmentName": "frostfruit-before-winning-clear-normal-motion",
+        "exportedFileName": "658E1D93-B7D2-4FF0-97F7-725C8DA7DB18.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-integrated-captures/658E1D93-B7D2-4FF0-97F7-725C8DA7DB18.png",
+        "timestamp": 1792505288.25,
+        "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+        "deviceName": "Starfall Landing Acceptance",
+        "sha256": "1778b6c554f88f762d689ca75fac95f7cc244401eb6229f5f41c8d67de0e5145",
+        "bytes": 5060584,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected after main integration; no material visual issue found"
+      }
+    ],
+    "UIExecutions": {
+      "total": 11,
+      "passed": 11,
+      "failed": 0,
+      "skipped": 0,
+      "note": "6 phone +3 tablet +2 compact executions. The separate normal-motion native winning-test recording is documented by root in verification.json."
+    },
+    "visualFindings": "No material visual defect in all 51 integrated screenshots. Five phone and ten tablet authored states retain the intended restoration story; all dense-board faces remain distinguishable. Normal result panels include all four actions on phone, compact phone and both tablet orientations. Accessibility XXXL result remains scrollable with Replay readable. Silver shared-result regression captures are also legible."
+  },
+  "retained": [
+    {
+      "run": "phone-integrated",
+      "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+      "runtimeFingerprint": "dev.bd94e46b80",
+      "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitPhoneAllFiveStatesKeepNativeBoardFixed()",
+      "attachmentName": "frostfruit-phone-scene-0-score-0-normal-motion",
+      "exportedFileName": "AAD0D0FE-64DF-47FF-9185-0E5A074BBF88.png",
+      "sourceExport": "/private/tmp/frostfruit-phone-integrated-captures/AAD0D0FE-64DF-47FF-9185-0E5A074BBF88.png",
+      "timestamp": 1792505151.066,
+      "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+      "deviceName": "Starfall Landing Acceptance",
+      "sha256": "42febc5324fb5e7f91c384389add72f7714d49df36cfa9d7d0f9d1e0f1b35c82",
+      "bytes": 5057810,
+      "encodedPixels": [
+        1170,
+        2532
+      ],
+      "exifOrientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "textSetting": "Default; no preferred-size launch override",
+      "motionSetting": "Normal motion; calmEffects NO",
+      "review": "Actual PNG pixels inspected after main integration; no material visual issue found",
+      "file": "phone-000.png",
+      "caption": "Integrated phone 0%: dormant glass fruit, cold constructed lamps, actual stars and compact HUD.",
+      "status": "Integrated runtime evidence; original exported PNG bytes"
+    },
+    {
+      "run": "phone-integrated",
+      "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+      "runtimeFingerprint": "dev.bd94e46b80",
+      "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitPhoneAllFiveStatesKeepNativeBoardFixed()",
+      "attachmentName": "frostfruit-phone-scene-75-score-14-normal-motion",
+      "exportedFileName": "5498E44D-F52A-40F6-B2F5-D94C3821973E.png",
+      "sourceExport": "/private/tmp/frostfruit-phone-integrated-captures/5498E44D-F52A-40F6-B2F5-D94C3821973E.png",
+      "timestamp": 1792505176.464,
+      "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+      "deviceName": "Starfall Landing Acceptance",
+      "sha256": "4e6953d77b6bed1d0c0f160af1c9bc7bb112611bad93b044f68752fdcee53543",
+      "bytes": 5060661,
+      "encodedPixels": [
+        1170,
+        2532
+      ],
+      "exifOrientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "textSetting": "Default; no preferred-size launch override",
+      "motionSetting": "Normal motion; calmEffects NO",
+      "review": "Actual PNG pixels inspected after main integration; no material visual issue found",
+      "file": "phone-075.png",
+      "caption": "Integrated phone 75% authored state at 14/18: five ordinary fruit lit; central crown remains physically closed.",
+      "status": "Integrated runtime evidence; original exported PNG bytes"
+    },
+    {
+      "run": "phone-integrated",
+      "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+      "runtimeFingerprint": "dev.bd94e46b80",
+      "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitWinningClearPersistsNamedResultAndReplayStartsAtZero()",
+      "attachmentName": "frostfruit-restored-after-native-winning-clear-normal-motion",
+      "exportedFileName": "2433575D-1E88-4368-83F2-4DB8702AC3D3.png",
+      "sourceExport": "/private/tmp/frostfruit-phone-integrated-captures/2433575D-1E88-4368-83F2-4DB8702AC3D3.png",
+      "timestamp": 1792505294.313,
+      "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+      "deviceName": "Starfall Landing Acceptance",
+      "sha256": "da37abb7edc955e431328f95cf80e3fa7d870264af178e52a7c96b4f85213c39",
+      "bytes": 3885182,
+      "encodedPixels": [
+        1170,
+        2532
+      ],
+      "exifOrientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "textSetting": "Default; no preferred-size launch override",
+      "motionSetting": "Normal motion; calmEffects NO",
+      "review": "Actual PNG pixels inspected after main integration; no material visual issue found",
+      "file": "phone-native-win.png",
+      "caption": "Integrated phone native win: open crown and released seeds, complete readable result and all four actions.",
+      "status": "Integrated runtime evidence; original exported PNG bytes"
+    },
+    {
+      "run": "tablet-integrated",
+      "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+      "runtimeFingerprint": "dev.bd94e46b80",
+      "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletDenseFrostfruitCompletionKeepsNativeInput()",
+      "attachmentName": "frostfruit-tablet-portrait-dense-075-before-native-win",
+      "exportedFileName": "D4709866-14E7-4D9F-87AF-293BAB23D660.png",
+      "sourceExport": "/private/tmp/frostfruit-tablet-integrated-captures/D4709866-14E7-4D9F-87AF-293BAB23D660.png",
+      "timestamp": 1792504901.009,
+      "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+      "deviceName": "Starfall Landing Tablet Acceptance",
+      "sha256": "646ef2d112260d2bb97b7e585bf024846e5804db5963377f3948ead7dfe019b1",
+      "bytes": 6344426,
+      "encodedPixels": [
+        1640,
+        2360
+      ],
+      "exifOrientation": 1,
+      "displayPixels": [
+        1640,
+        2360
+      ],
+      "textSetting": "Default; no preferred-size launch override",
+      "motionSetting": "Normal motion; calmEffects NO",
+      "review": "Actual PNG pixels inspected after main integration; no material visual issue found",
+      "file": "tablet-portrait-075-dense.png",
+      "caption": "Integrated tablet portrait dense 75%: all 49 star faces distinguishable, closed crown and surroundings clear.",
+      "status": "Integrated runtime evidence; original exported PNG bytes"
+    },
+    {
+      "run": "tablet-integrated",
+      "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+      "runtimeFingerprint": "dev.bd94e46b80",
+      "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletDenseFrostfruitCompletionKeepsNativeInput()",
+      "attachmentName": "frostfruit-tablet-landscape-dense-075-before-native-win",
+      "exportedFileName": "8463C2F0-EBEC-48FD-A480-9015B6E6D127.png",
+      "sourceExport": "/private/tmp/frostfruit-tablet-integrated-captures/8463C2F0-EBEC-48FD-A480-9015B6E6D127.png",
+      "timestamp": 1792504885.218,
+      "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+      "deviceName": "Starfall Landing Tablet Acceptance",
+      "sha256": "4be8a4957c53e080acc2b7029e0906c43ffc9b16a8318b01098f6cea903c1726",
+      "bytes": 6232801,
+      "encodedPixels": [
+        1640,
+        2360
+      ],
+      "exifOrientation": 8,
+      "displayPixels": [
+        2360,
+        1640
+      ],
+      "textSetting": "Default; no preferred-size launch override",
+      "motionSetting": "Normal motion; calmEffects NO",
+      "review": "Actual PNG pixels inspected after main integration; no material visual issue found",
+      "file": "tablet-landscape-075-dense.png",
+      "caption": "Integrated tablet landscape dense 75%: all 49 star faces distinguishable; terrace and fruit remain clear of their faces.",
+      "status": "Integrated runtime evidence; original exported PNG bytes"
+    },
+    {
+      "run": "tablet-integrated",
+      "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+      "runtimeFingerprint": "dev.bd94e46b80",
+      "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletDenseFrostfruitCompletionKeepsNativeInput()",
+      "attachmentName": "frostfruit-tablet-landscape-100-after-native-win",
+      "exportedFileName": "998651D7-D904-4ADD-9215-FB4875940F6D.png",
+      "sourceExport": "/private/tmp/frostfruit-tablet-integrated-captures/998651D7-D904-4ADD-9215-FB4875940F6D.png",
+      "timestamp": 1792504890.399,
+      "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+      "deviceName": "Starfall Landing Tablet Acceptance",
+      "sha256": "e3a70933eaa87363f36486f6bdf36e11934fca20f8912b04757787e727f6544e",
+      "bytes": 5640260,
+      "encodedPixels": [
+        1640,
+        2360
+      ],
+      "exifOrientation": 8,
+      "displayPixels": [
+        2360,
+        1640
+      ],
+      "textSetting": "Default; no preferred-size launch override",
+      "motionSetting": "Normal motion; calmEffects NO",
+      "review": "Actual PNG pixels inspected after main integration; no material visual issue found",
+      "file": "tablet-landscape-native-win.png",
+      "caption": "Integrated tablet landscape native win: open crown, complete result text and all four actions including Back to Observatory inside the viewport.",
+      "status": "Integrated runtime evidence; original exported PNG bytes"
+    },
+    {
+      "run": "compact-integrated",
+      "sourceCommit": "6aee65e9954a930c61bc263c867b15c4aacc1619",
+      "runtimeFingerprint": "dev.bd94e46b80",
+      "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitWinningClearPersistsNamedResultAndReplayStartsAtZero()",
+      "attachmentName": "frostfruit-restored-after-native-winning-clear-normal-motion",
+      "exportedFileName": "5048636C-27AF-4B32-8B75-E790C2E1ED59.png",
+      "sourceExport": "/private/tmp/frostfruit-compact-integrated-captures/5048636C-27AF-4B32-8B75-E790C2E1ED59.png",
+      "timestamp": 1792504888.04,
+      "deviceId": "EA0F7A30-21E1-4995-93F5-C4A983F4A354",
+      "deviceName": "Starfall Landing Compact Acceptance",
+      "sha256": "c7c9667db3e0ce98754a5a5818a3dfee1b2f6786d821e80e4c0bf35721ae23b7",
+      "bytes": 1376191,
+      "encodedPixels": [
+        750,
+        1334
+      ],
+      "exifOrientation": 1,
+      "displayPixels": [
+        750,
+        1334
+      ],
+      "textSetting": "Default; no preferred-size launch override",
+      "motionSetting": "Normal motion; calmEffects NO",
+      "review": "Actual PNG pixels inspected after main integration; no material visual issue found",
+      "file": "compact-native-win.png",
+      "caption": "Integrated compact phone native win: complete Frostfruit result and all four actions, including Back to Observatory, fit in the viewport.",
+      "status": "Integrated runtime evidence; original exported PNG bytes"
+    }
+  ],
+  "limits": [
+    "Native screenshot review is not actual VoiceOver, physical-device play, measured contrast or animation performance validation.",
+    "Historical raw PNG exports are disposable; only their identification, hashes and review metadata are retained.",
+    "Static evidence does not establish animation smoothness. Root separately reviewed an integrated native-test motion recording; see verification.json.",
+    "Accessibility XXXL result evidence is a scroll position, not a claim that the entire ceremony fits on screen."
+  ],
+  "historicalReview": {
+    "status": "Historical pre-integration review; raw PNG exports remain disposable and are not retained by this index",
+    "sourceBoundary": "These captures precede integration of main 386b2f8 (PR185 HUD/menu/icons/adaptive ceremony work); they must not be represented as integrated current-source acceptance. Baseline captures bind to bede49c/dev.98b984fb29. Corrected captures bind to f7b5c71/dev.8b80450f52 App inputs. The App difference between those two source versions orders terminal actions before decorative cast; all fifteen artwork bytes and native board geometry are unchanged. Per-run exceptions are explicit.",
+    "reviewCounts": {
+      "phone-final": {
+        "exportedPNGCount": 27,
+        "visuallyReviewedPNGCount": 27
+      },
+      "tablet-final": {
+        "exportedPNGCount": 23,
+        "visuallyReviewedPNGCount": 23
+      },
+      "compact-correction": {
+        "exportedPNGCount": 8,
+        "visuallyReviewedPNGCount": 8
+      },
+      "tablet-correction": {
+        "exportedPNGCount": 16,
+        "visuallyReviewedPNGCount": 16
+      },
+      "phone-correction": {
+        "exportedPNGCount": 15,
+        "visuallyReviewedPNGCount": 10
+      }
+    },
+    "visuallyReviewedPNGCount": 84,
+    "reviewedAttachments": [
+      {
+        "run": "phone-final",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitDenseOverflowKeepsNamedReplayAndRestartsAtZero()",
+        "attachmentName": "frostfruit-dense-overflow-replay-reset-to-unrestored",
+        "exportedFileName": "07FA5CA2-19EB-4673-A9AA-365E83C01CA2.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-final-captures/07FA5CA2-19EB-4673-A9AA-365E83C01CA2.png",
+        "timestamp": 1792501957.703,
+        "sha256": "16f61b8ba061ab413159c1f9ab51248af80ea3e1be26af7d1314f6e3423fe541",
+        "bytes": 4187165,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "phone-final",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitDenseOverflowKeepsNamedReplayAndRestartsAtZero()",
+        "attachmentName": "frostfruit-dense-native-overflow-zero-score-normal-motion",
+        "exportedFileName": "A9D9F971-16AF-49BE-9FC8-983718D90F93.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-final-captures/A9D9F971-16AF-49BE-9FC8-983718D90F93.png",
+        "timestamp": 1792501942.226,
+        "sha256": "0341567b566a3fdacb8bda2755f5a16206efab506af95a7cb3cd2c6ea3632caa",
+        "bytes": 3511778,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "phone-final",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitDenseOverflowKeepsNamedReplayAndRestartsAtZero()",
+        "attachmentName": "frostfruit-dense-before-native-next-shower-normal-motion",
+        "exportedFileName": "69EE62DF-4E77-4F6B-A7D0-4A782671AD1A.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-final-captures/69EE62DF-4E77-4F6B-A7D0-4A782671AD1A.png",
+        "timestamp": 1792501935.155,
+        "sha256": "b4e27f813fe0075a45ebd1c5a6c39e3034c2310ae22b68ec0e773c3cfbef36ba",
+        "bytes": 4337659,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "phone-final",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitDenseRapidClearSurvivesSettingsAndBackground()",
+        "attachmentName": "frostfruit-dense-retained-after-settings-background",
+        "exportedFileName": "8DB09437-6131-42E9-8416-F29B9112EE04.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-final-captures/8DB09437-6131-42E9-8416-F29B9112EE04.png",
+        "timestamp": 1792502001.538,
+        "sha256": "8030ed17a75998a880a82d6446d6dffe4cddf43661a0d021cdcec9d656729c94",
+        "bytes": 4513735,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "phone-final",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitDenseRapidClearSurvivesSettingsAndBackground()",
+        "attachmentName": "frostfruit-dense-after-rapid-clear",
+        "exportedFileName": "5498BA18-F91D-487A-B025-BFAECCC7CA6F.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-final-captures/5498BA18-F91D-487A-B025-BFAECCC7CA6F.png",
+        "timestamp": 1792501989.726,
+        "sha256": "8030ed17a75998a880a82d6446d6dffe4cddf43661a0d021cdcec9d656729c94",
+        "bytes": 4513735,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "phone-final",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitDenseRapidClearSurvivesSettingsAndBackground()",
+        "attachmentName": "frostfruit-dense-before-rapid-clear",
+        "exportedFileName": "7F722986-58FB-4F55-8698-AADADA7279C9.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-final-captures/7F722986-58FB-4F55-8698-AADADA7279C9.png",
+        "timestamp": 1792501986.941,
+        "sha256": "6a5dada5438c7a24bd872ee253fe17d1cb41fc9d13373e45ea28c575b1c82f53",
+        "bytes": 4356946,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "phone-final",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitLargestTextSystemReduceMotionWinKeepsResultActionsUsable()",
+        "attachmentName": "frostfruit-largest-text-reduce-motion-restored",
+        "exportedFileName": "7559FE87-B436-4A82-BBBE-5FF484B5D008.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-final-captures/7559FE87-B436-4A82-BBBE-5FF484B5D008.png",
+        "timestamp": 1792502048.1,
+        "sha256": "5142046abbdc137ee4d3d9c43d50be9f4614dee0a3be48c0ea94ac530357fdf4",
+        "bytes": 2118838,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "UICTContentSizeCategoryAccessibilityXXXL",
+        "motionSetting": "System Reduce Motion on; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "phone-final",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitLargestTextSystemReduceMotionWinKeepsResultActionsUsable()",
+        "attachmentName": "frostfruit-largest-text-reduce-motion-before-clear",
+        "exportedFileName": "DBCD1CF6-E159-4DAB-A6D8-8FA737DA93AD.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-final-captures/DBCD1CF6-E159-4DAB-A6D8-8FA737DA93AD.png",
+        "timestamp": 1792502031.4,
+        "sha256": "0fd3d30f4df97917fc56d739a96580d24e9f64446b4b3a07d8afd764f4010e77",
+        "bytes": 3888025,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "UICTContentSizeCategoryAccessibilityXXXL",
+        "motionSetting": "System Reduce Motion on; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "phone-final",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitPhoneAllFiveStatesKeepNativeBoardFixed()",
+        "attachmentName": "frostfruit-phone-scene-100-score-18-normal-motion",
+        "exportedFileName": "71472B89-D843-43DE-860A-E4A3C5ABA9F0.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-final-captures/71472B89-D843-43DE-860A-E4A3C5ABA9F0.png",
+        "timestamp": 1792502109.607,
+        "sha256": "27da5b63ee7472e4685d2b905edd2739ba553ae52a3b82224429f549cad785fd",
+        "bytes": 3486472,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "phone-final",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitPhoneAllFiveStatesKeepNativeBoardFixed()",
+        "attachmentName": "frostfruit-phone-scene-75-score-14-normal-motion",
+        "exportedFileName": "33C4FCFB-9FED-467B-9B10-D7BE7E4BE75F.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-final-captures/33C4FCFB-9FED-467B-9B10-D7BE7E4BE75F.png",
+        "timestamp": 1792502103.617,
+        "sha256": "30ae4edb6e2f495a2dc6a9dd027951fa9c057f436ba640e057cd26a7b6474f43",
+        "bytes": 4259715,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "phone-final",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitPhoneAllFiveStatesKeepNativeBoardFixed()",
+        "attachmentName": "frostfruit-phone-scene-50-score-9-normal-motion",
+        "exportedFileName": "47D6C7D0-FCD7-4DD0-B67D-E20CA89A191C.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-final-captures/47D6C7D0-FCD7-4DD0-B67D-E20CA89A191C.png",
+        "timestamp": 1792502095.647,
+        "sha256": "f830a04ccf25fae16d951f43fd068e08d80986faa67a383d34e9ff99e4d0e6ca",
+        "bytes": 4279723,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "phone-final",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitPhoneAllFiveStatesKeepNativeBoardFixed()",
+        "attachmentName": "frostfruit-phone-scene-25-score-5-normal-motion",
+        "exportedFileName": "44556BB2-7501-48DD-AF9A-32591EF3590A.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-final-captures/44556BB2-7501-48DD-AF9A-32591EF3590A.png",
+        "timestamp": 1792502087.483,
+        "sha256": "17089e27d1a7f1483bf0b628b7a08521c46b8c4f3c19ec91f8fc700085ac418e",
+        "bytes": 4252217,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "phone-final",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitPhoneAllFiveStatesKeepNativeBoardFixed()",
+        "attachmentName": "frostfruit-phone-scene-0-score-0-normal-motion",
+        "exportedFileName": "BC19B4D9-B9F1-47FD-AA78-92E8A938205D.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-final-captures/BC19B4D9-B9F1-47FD-AA78-92E8A938205D.png",
+        "timestamp": 1792502079.517,
+        "sha256": "5f3ff39af8a3ba963fa8eabac57354183d6c65b871dcf28033f82b25d84a3041",
+        "bytes": 4260200,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "phone-final",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitPreviewCancellationRetainsKiteAndSeedUntilBegin()",
+        "attachmentName": "frostfruit-begin-replaces-retained-seed-with-unrestored-location",
+        "exportedFileName": "B60EBF3B-3153-4B43-A683-41A347098A80.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-final-captures/B60EBF3B-3153-4B43-A683-41A347098A80.png",
+        "timestamp": 1792502250.323,
+        "sha256": "e48fe94aedb78ead0c0abc93ed9910d36ea9bc5b6029340c7d01e5290256498d",
+        "bytes": 4187282,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "phone-final",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitPreviewCancellationRetainsKiteAndSeedUntilBegin()",
+        "attachmentName": "frostfruit-entry-over-retained-half-restored-seed",
+        "exportedFileName": "0FCE9B56-66D8-43E1-AC9C-6C1E92875CF5.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-final-captures/0FCE9B56-66D8-43E1-AC9C-6C1E92875CF5.png",
+        "timestamp": 1792502213.371,
+        "sha256": "fccdcff5a36f05e7dcc80d29752a59d1ed90fa7f2f0ad9f46b661df9019f1e25",
+        "bytes": 4631809,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "phone-final",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitPreviewCancellationRetainsKiteAndSeedUntilBegin()",
+        "attachmentName": "frostfruit-begin-replaces-retained-kite-with-unrestored-location",
+        "exportedFileName": "FC78F829-0B3A-4A8C-B153-3A9600215D5D.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-final-captures/FC78F829-0B3A-4A8C-B153-3A9600215D5D.png",
+        "timestamp": 1792502190.78,
+        "sha256": "edbc27db1a84e876b2afe78c587784dbf49c6cf360ce6bc0c6ac5f9610e4d6cb",
+        "bytes": 4187181,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "phone-final",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitPreviewCancellationRetainsKiteAndSeedUntilBegin()",
+        "attachmentName": "frostfruit-entry-over-retained-half-restored-kite",
+        "exportedFileName": "D00EDA18-1B68-488D-A0FB-4A213F617EBC.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-final-captures/D00EDA18-1B68-488D-A0FB-4A213F617EBC.png",
+        "timestamp": 1792502153.497,
+        "sha256": "fccdcff5a36f05e7dcc80d29752a59d1ed90fa7f2f0ad9f46b661df9019f1e25",
+        "bytes": 4631809,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "phone-final",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitPreviewCancellationRetainsLanternAndRibbonUntilBegin()",
+        "attachmentName": "frostfruit-begin-replaces-retained-ribbon-with-unrestored-location",
+        "exportedFileName": "A98A6B1A-E291-416A-BF4F-CAEBA7EC5324.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-final-captures/A98A6B1A-E291-416A-BF4F-CAEBA7EC5324.png",
+        "timestamp": 1792502393.539,
+        "sha256": "a87e907af39006a9d396ad8dacc942ff211f0f913f3fca6a03b7c34db3dcef59",
+        "bytes": 4187182,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "phone-final",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitPreviewCancellationRetainsLanternAndRibbonUntilBegin()",
+        "attachmentName": "frostfruit-entry-over-retained-half-restored-ribbon",
+        "exportedFileName": "A882F195-F276-4BD5-84D7-0BAF6DF43EA4.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-final-captures/A882F195-F276-4BD5-84D7-0BAF6DF43EA4.png",
+        "timestamp": 1792502357.329,
+        "sha256": "fccdcff5a36f05e7dcc80d29752a59d1ed90fa7f2f0ad9f46b661df9019f1e25",
+        "bytes": 4631809,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "phone-final",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitPreviewCancellationRetainsLanternAndRibbonUntilBegin()",
+        "attachmentName": "frostfruit-begin-replaces-retained-lantern-with-unrestored-location",
+        "exportedFileName": "5DA133B3-9C59-41EE-A5A9-30F7698FCAF2.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-final-captures/5DA133B3-9C59-41EE-A5A9-30F7698FCAF2.png",
+        "timestamp": 1792502334.126,
+        "sha256": "501a107a2557be946593c962167d10f8d79854d783bf1d580eabdf31227586ad",
+        "bytes": 4187162,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "phone-final",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitPreviewCancellationRetainsLanternAndRibbonUntilBegin()",
+        "attachmentName": "frostfruit-entry-over-retained-half-restored-lantern",
+        "exportedFileName": "0762031C-43B9-43B9-9747-9B45BF3C9C73.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-final-captures/0762031C-43B9-43B9-9747-9B45BF3C9C73.png",
+        "timestamp": 1792502296.802,
+        "sha256": "fccdcff5a36f05e7dcc80d29752a59d1ed90fa7f2f0ad9f46b661df9019f1e25",
+        "bytes": 4631809,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "phone-final",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitPreviewCancellationRetainsSilverUntilBegin()",
+        "attachmentName": "frostfruit-begin-replaces-retained-silver-with-unrestored-location",
+        "exportedFileName": "1C0843B3-F6C6-4AAF-8C2C-FF68E5B6A914.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-final-captures/1C0843B3-F6C6-4AAF-8C2C-FF68E5B6A914.png",
+        "timestamp": 1792502477.877,
+        "sha256": "d2a9d4911925cbf08dfd10e7b62116160cb83d283e2f0486b2b53ecf2f1985bc",
+        "bytes": 4187192,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "phone-final",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitPreviewCancellationRetainsSilverUntilBegin()",
+        "attachmentName": "frostfruit-entry-over-retained-half-restored-silver",
+        "exportedFileName": "5CF94C8B-3ECF-42E7-A5A7-AD671C5EB66F.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-final-captures/5CF94C8B-3ECF-42E7-A5A7-AD671C5EB66F.png",
+        "timestamp": 1792502440.828,
+        "sha256": "fccdcff5a36f05e7dcc80d29752a59d1ed90fa7f2f0ad9f46b661df9019f1e25",
+        "bytes": 4631809,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "phone-final",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitWinningClearPersistsNamedResultAndReplayStartsAtZero()",
+        "attachmentName": "frostfruit-replay-reset-to-unrestored",
+        "exportedFileName": "7C2174C2-088D-4E6E-B738-C56431F7B4A2.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-final-captures/7C2174C2-088D-4E6E-B738-C56431F7B4A2.png",
+        "timestamp": 1792502556.239,
+        "sha256": "0e4ba39a21c7c8ef86c7b3d30434504af8027ce261d8fe247bab2c5fb128192b",
+        "bytes": 4187443,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "phone-final",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitWinningClearPersistsNamedResultAndReplayStartsAtZero()",
+        "attachmentName": "frostfruit-restored-after-relaunch",
+        "exportedFileName": "E9AE8E6F-D22D-4E37-995E-28408FFCE049.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-final-captures/E9AE8E6F-D22D-4E37-995E-28408FFCE049.png",
+        "timestamp": 1792502538.44,
+        "sha256": "00fe870cb4005ca0cfbc1a76d9fb83672c0611e7fcb726efa6d679d514b919dd",
+        "bytes": 3471504,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "phone-final",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitWinningClearPersistsNamedResultAndReplayStartsAtZero()",
+        "attachmentName": "frostfruit-restored-after-native-winning-clear-normal-motion",
+        "exportedFileName": "CFC28D7B-F550-4B5F-838B-D7C03CCBC886.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-final-captures/CFC28D7B-F550-4B5F-838B-D7C03CCBC886.png",
+        "timestamp": 1792502526.631,
+        "sha256": "03b3360f8707388e6bb409c39a07020b23b30201172929087718b6c399505f6f",
+        "bytes": 3471376,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "phone-final",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitWinningClearPersistsNamedResultAndReplayStartsAtZero()",
+        "attachmentName": "frostfruit-before-winning-clear-normal-motion",
+        "exportedFileName": "8AB4A070-F7A7-4B82-91D9-1AABE3C7CC58.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-final-captures/8AB4A070-F7A7-4B82-91D9-1AABE3C7CC58.png",
+        "timestamp": 1792502519.212,
+        "sha256": "f72b8a896296e9605fb34b17db6dd03c3dcb951f71768a92f1e0288bd961e281",
+        "bytes": 4260698,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "tablet-final",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletDenseFrostfruitCompletionKeepsNativeInput()",
+        "attachmentName": "frostfruit-tablet-portrait-100-after-native-win",
+        "exportedFileName": "78EF6556-5E8D-4C63-93D5-8A0C992CEB67.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-final-captures/78EF6556-5E8D-4C63-93D5-8A0C992CEB67.png",
+        "timestamp": 1792502622.771,
+        "sha256": "97a56a7473fb3f5d08b65756fb26c01964717d23e3922d52929e2434276e39be",
+        "bytes": 5381613,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1640,
+          2360
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "tablet-final",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletDenseFrostfruitCompletionKeepsNativeInput()",
+        "attachmentName": "frostfruit-tablet-portrait-dense-075-before-native-win",
+        "exportedFileName": "D56F0633-0C4D-4827-AE3D-FE5CD6930EEC.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-final-captures/D56F0633-0C4D-4827-AE3D-FE5CD6930EEC.png",
+        "timestamp": 1792502606.809,
+        "sha256": "1303831986bb6e5362ff5351d9f9dcfddb4baeddc2e8fec187833ff03dcd2a3a",
+        "bytes": 5976968,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1640,
+          2360
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "tablet-final",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletDenseFrostfruitCompletionKeepsNativeInput()",
+        "attachmentName": "frostfruit-tablet-landscape-100-after-native-win",
+        "exportedFileName": "A51CD55A-D35E-4E03-804E-339A132B55D2.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-final-captures/A51CD55A-D35E-4E03-804E-339A132B55D2.png",
+        "timestamp": 1792502578.916,
+        "sha256": "cbca85de6128d40764094f9f4ec4a2e4db0bb135e9915e1d28c43a5e46bb8b8b",
+        "bytes": 5400822,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 8,
+        "displayPixels": [
+          2360,
+          1640
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "tablet-final",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletDenseFrostfruitCompletionKeepsNativeInput()",
+        "attachmentName": "frostfruit-tablet-landscape-dense-075-before-native-win",
+        "exportedFileName": "7730CB34-A2B2-44E9-B2EB-B0161D99EF84.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-final-captures/7730CB34-A2B2-44E9-B2EB-B0161D99EF84.png",
+        "timestamp": 1792502565.811,
+        "sha256": "a15cc4065d34137349da481ab3f30cc9a967c8ec645b1c7eba33b7cd446fafe4",
+        "bytes": 5928512,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 8,
+        "displayPixels": [
+          2360,
+          1640
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "tablet-final",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "attachmentName": "frostfruit-tablet-landscape-scene-100-score-18-normal-motion",
+        "exportedFileName": "D0DA7A7A-DF02-4811-A158-C27195A4F06B.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-final-captures/D0DA7A7A-DF02-4811-A158-C27195A4F06B.png",
+        "timestamp": 1792502817.01,
+        "sha256": "837a10887c55767aa9e2f81131c45ef75252ab273db38c78084fc925d7e72f63",
+        "bytes": 5353866,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 8,
+        "displayPixels": [
+          2360,
+          1640
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "tablet-final",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "attachmentName": "frostfruit-tablet-landscape-scene-75-score-14-normal-motion",
+        "exportedFileName": "97268D5C-89E6-4A50-BFC8-38C85158F31D.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-final-captures/97268D5C-89E6-4A50-BFC8-38C85158F31D.png",
+        "timestamp": 1792502807.787,
+        "sha256": "60324ab78dc73cf81ff3d0d5aca7c6710a1b99a2879334cb07ee070b3e668f96",
+        "bytes": 5832095,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 8,
+        "displayPixels": [
+          2360,
+          1640
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "tablet-final",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "attachmentName": "frostfruit-tablet-landscape-scene-50-score-9-normal-motion",
+        "exportedFileName": "D9E1C0A4-1780-4869-9435-20DB0EF560AB.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-final-captures/D9E1C0A4-1780-4869-9435-20DB0EF560AB.png",
+        "timestamp": 1792502797.738,
+        "sha256": "d78a0f39653bd4f101ab1dac8789d8b6db3b20379f18c46f08711063b96203b8",
+        "bytes": 5738435,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 8,
+        "displayPixels": [
+          2360,
+          1640
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "tablet-final",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "attachmentName": "frostfruit-tablet-landscape-scene-25-score-5-normal-motion",
+        "exportedFileName": "6A9F8097-D1F9-4F89-995D-46876774B58A.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-final-captures/6A9F8097-D1F9-4F89-995D-46876774B58A.png",
+        "timestamp": 1792502787.861,
+        "sha256": "ef08d05e8ba31e02730cffd94271cbfb06aafa37c10ec817c259b0b81518be32",
+        "bytes": 5812601,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 8,
+        "displayPixels": [
+          2360,
+          1640
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "tablet-final",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "attachmentName": "frostfruit-tablet-landscape-scene-0-score-0-normal-motion",
+        "exportedFileName": "4E0E16A4-D8A6-4B5C-90D5-32422E402594.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-final-captures/4E0E16A4-D8A6-4B5C-90D5-32422E402594.png",
+        "timestamp": 1792502777.886,
+        "sha256": "c2031a5a17cf17b9035798f372e10122ecf9eee12079dc1d43325271e76a0fad",
+        "bytes": 5803928,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 8,
+        "displayPixels": [
+          2360,
+          1640
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "tablet-final",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "attachmentName": "frostfruit-tablet-portrait-scene-100-score-18-normal-motion",
+        "exportedFileName": "855CC815-14E4-41B0-8606-F4941135110B.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-final-captures/855CC815-14E4-41B0-8606-F4941135110B.png",
+        "timestamp": 1792502767.273,
+        "sha256": "beb5dcbdb26ff958adb00cd5fc7e0f00f014a587dd082f280e8ba65a0d964465",
+        "bytes": 5241042,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1640,
+          2360
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "tablet-final",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "attachmentName": "frostfruit-tablet-portrait-scene-75-score-14-normal-motion",
+        "exportedFileName": "2AB69B18-AF6C-45DC-85E1-2C20B320FAAA.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-final-captures/2AB69B18-AF6C-45DC-85E1-2C20B320FAAA.png",
+        "timestamp": 1792502758.186,
+        "sha256": "887be5f244b420d6eb3214a81e4996bd74e7be18e8f35a60fcad1907dbd8416e",
+        "bytes": 5778910,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1640,
+          2360
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "tablet-final",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "attachmentName": "frostfruit-tablet-portrait-scene-50-score-9-normal-motion",
+        "exportedFileName": "0EF0CB1A-0543-4E2E-8544-B20D91EDE5E6.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-final-captures/0EF0CB1A-0543-4E2E-8544-B20D91EDE5E6.png",
+        "timestamp": 1792502746.771,
+        "sha256": "5dcf6d4bb551ac486cbd59583a41d71d0e16d13ba1ea365c484dfd2f60cdf096",
+        "bytes": 5853863,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1640,
+          2360
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "tablet-final",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "attachmentName": "frostfruit-tablet-portrait-scene-25-score-5-normal-motion",
+        "exportedFileName": "03E44F86-C883-48CF-A8DF-0E2D26A49BF9.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-final-captures/03E44F86-C883-48CF-A8DF-0E2D26A49BF9.png",
+        "timestamp": 1792502733.567,
+        "sha256": "17f95ec39eab836a8ec5fdbefefe9ecb444fd07bb685d2ded7379ce8d90eb6ad",
+        "bytes": 5842617,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1640,
+          2360
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "tablet-final",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "attachmentName": "frostfruit-tablet-portrait-scene-0-score-0-normal-motion",
+        "exportedFileName": "A81A1CDE-C21E-4348-A383-5146DD850382.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-final-captures/A81A1CDE-C21E-4348-A383-5146DD850382.png",
+        "timestamp": 1792502720.554,
+        "sha256": "3aaa611fd7ca01c9433631e16cceffa536fff33aca74f064463ad982c1eca036",
+        "bytes": 5793452,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1640,
+          2360
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "tablet-final",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "attachmentName": "frostfruit-tablet-portrait-after-second-native-clear-normal-motion",
+        "exportedFileName": "33164908-63B6-4501-955A-EE93EEE9ADAF.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-final-captures/33164908-63B6-4501-955A-EE93EEE9ADAF.png",
+        "timestamp": 1792502709.402,
+        "sha256": "2f1f8ace014565c43a3a27970a0063662fc199b8df0f18f07784d1dc42a16ff9",
+        "bytes": 5846997,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1640,
+          2360
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "tablet-final",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "attachmentName": "frostfruit-tablet-portrait-retained-after-landscape-clear-normal-motion",
+        "exportedFileName": "C18F15A8-C796-4853-A298-B139EEE1252F.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-final-captures/C18F15A8-C796-4853-A298-B139EEE1252F.png",
+        "timestamp": 1792502702.855,
+        "sha256": "e20ff89bc5fa1b7b4a991fb246320a72f01db3ecafbdf574eafbc00a65a12016",
+        "bytes": 5867965,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1640,
+          2360
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "tablet-final",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "attachmentName": "frostfruit-tablet-landscape-after-native-clear-normal-motion",
+        "exportedFileName": "8747B568-E9C4-449F-BE72-3C46319D4DEF.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-final-captures/8747B568-E9C4-449F-BE72-3C46319D4DEF.png",
+        "timestamp": 1792502697.392,
+        "sha256": "3b0e64acca65c7f88a1e15d34d624d39b996b48e7485bfcb66c30a5ef8272029",
+        "bytes": 5737018,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 8,
+        "displayPixels": [
+          2360,
+          1640
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "tablet-final",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "attachmentName": "frostfruit-tablet-landscape-retained-before-clear-normal-motion",
+        "exportedFileName": "931ECFF2-2E3B-43DC-84F4-3955D958F2C0.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-final-captures/931ECFF2-2E3B-43DC-84F4-3955D958F2C0.png",
+        "timestamp": 1792502690.979,
+        "sha256": "d1c7dc781b14b575e40cd71e597c98294d43f75b8c6bdd879741c473f81e7d2e",
+        "bytes": 5811142,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 8,
+        "displayPixels": [
+          2360,
+          1640
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "tablet-final",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "attachmentName": "frostfruit-tablet-portrait-before-rotation-normal-motion",
+        "exportedFileName": "769BCC3C-9EEE-4547-931D-410535A47C65.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-final-captures/769BCC3C-9EEE-4547-931D-410535A47C65.png",
+        "timestamp": 1792502685.54,
+        "sha256": "3cde3888149fb0f615026d1bfebc8235722fe619e9df8b08f17d8a07882ea384",
+        "bytes": 5842932,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1640,
+          2360
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "tablet-final",
+        "testIdentifier": "SilverPoolsInteractionTests/testTabletDenseSilverCompletionKeepsNativeInput()",
+        "attachmentName": "silver-tablet-portrait-100-after-native-win",
+        "exportedFileName": "9EDA5A2F-6F91-4F95-928F-8EA2670A7BEC.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-final-captures/9EDA5A2F-6F91-4F95-928F-8EA2670A7BEC.png",
+        "timestamp": 1792502879.712,
+        "sha256": "1c0312d3ac0b84fd25e0021689a6ff1e506e6d2ad0b7abcf915240dd8ee648f6",
+        "bytes": 5209268,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1640,
+          2360
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "tablet-final",
+        "testIdentifier": "SilverPoolsInteractionTests/testTabletDenseSilverCompletionKeepsNativeInput()",
+        "attachmentName": "silver-tablet-portrait-dense-075-before-native-win",
+        "exportedFileName": "8747C5F0-9C48-406B-8890-2C7355C485AE.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-final-captures/8747C5F0-9C48-406B-8890-2C7355C485AE.png",
+        "timestamp": 1792502874.538,
+        "sha256": "2e16f2088f0cd0950a7c0f1b0516511ae285c7b0ad0e37b9bcf8254db41a26a8",
+        "bytes": 5579634,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1640,
+          2360
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "tablet-final",
+        "testIdentifier": "SilverPoolsInteractionTests/testTabletDenseSilverCompletionKeepsNativeInput()",
+        "attachmentName": "silver-tablet-landscape-100-after-native-win",
+        "exportedFileName": "227D33A1-812E-49A5-9CF0-C2CF806CED75.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-final-captures/227D33A1-812E-49A5-9CF0-C2CF806CED75.png",
+        "timestamp": 1792502863.127,
+        "sha256": "20a75334e55fdc536f89927b71b2a707e8093ae602fff37ef8f10dd8c247cb8c",
+        "bytes": 5498964,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 8,
+        "displayPixels": [
+          2360,
+          1640
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "tablet-final",
+        "testIdentifier": "SilverPoolsInteractionTests/testTabletDenseSilverCompletionKeepsNativeInput()",
+        "attachmentName": "silver-tablet-landscape-dense-075-before-native-win",
+        "exportedFileName": "A2C7DBA7-56C9-40CC-814E-1FA617951D74.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-final-captures/A2C7DBA7-56C9-40CC-814E-1FA617951D74.png",
+        "timestamp": 1792502857.4,
+        "sha256": "32deded670cc8e43e2479088ae88deee38561fa0aa8d9f8762ed58b74d33b1d2",
+        "bytes": 6041784,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 8,
+        "displayPixels": [
+          2360,
+          1640
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "compact-correction",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitWinningClearPersistsNamedResultAndReplayStartsAtZero()",
+        "attachmentName": "frostfruit-replay-reset-to-unrestored",
+        "exportedFileName": "6CCD6AD8-0074-4257-9E81-3D75EA3104C2.png",
+        "sourceExport": "/private/tmp/frostfruit-compact-correction-captures/6CCD6AD8-0074-4257-9E81-3D75EA3104C2.png",
+        "timestamp": 1792503782.002,
+        "sha256": "00546579f758be954b215ceb92db8180ff0c1b84d8915d416216d86833e132d3",
+        "bytes": 1617523,
+        "encodedPixels": [
+          750,
+          1334
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          750,
+          1334
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "compact-correction",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitWinningClearPersistsNamedResultAndReplayStartsAtZero()",
+        "attachmentName": "frostfruit-restored-after-relaunch",
+        "exportedFileName": "566D120E-9234-4793-A8E8-D08E541DE121.png",
+        "sourceExport": "/private/tmp/frostfruit-compact-correction-captures/566D120E-9234-4793-A8E8-D08E541DE121.png",
+        "timestamp": 1792503767.216,
+        "sha256": "0f24f90fe79bee286125b0ea741ba588c6f9a0cab6b6860e0a02cad0e1a6977d",
+        "bytes": 1272028,
+        "encodedPixels": [
+          750,
+          1334
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          750,
+          1334
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "compact-correction",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitWinningClearPersistsNamedResultAndReplayStartsAtZero()",
+        "attachmentName": "frostfruit-restored-after-native-winning-clear-normal-motion",
+        "exportedFileName": "7BD8DDDF-F6F9-401E-8C6B-A050C0572DBD.png",
+        "sourceExport": "/private/tmp/frostfruit-compact-correction-captures/7BD8DDDF-F6F9-401E-8C6B-A050C0572DBD.png",
+        "timestamp": 1792503756.859,
+        "sha256": "2c72d748472d810d73db4c1acab51d83e4ed8601a0fc3030cdfa56977e38da0d",
+        "bytes": 1271871,
+        "encodedPixels": [
+          750,
+          1334
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          750,
+          1334
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "compact-correction",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitWinningClearPersistsNamedResultAndReplayStartsAtZero()",
+        "attachmentName": "frostfruit-before-winning-clear-normal-motion",
+        "exportedFileName": "1F61B5D9-487F-43FD-BC01-991AC0A196DF.png",
+        "sourceExport": "/private/tmp/frostfruit-compact-correction-captures/1F61B5D9-487F-43FD-BC01-991AC0A196DF.png",
+        "timestamp": 1792503750.683,
+        "sha256": "06d86a4c853aa3d6bc2eb2685961cc00f2cb7853a4ff17a6bfb5882c0e9287d1",
+        "bytes": 1589830,
+        "encodedPixels": [
+          750,
+          1334
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          750,
+          1334
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "compact-correction",
+        "testIdentifier": "SkyFlowInteractionTests/testFirstLightWinReplayAndFullSky()",
+        "attachmentName": "flow-fresh-after-full",
+        "exportedFileName": "DCB12BFC-A680-44B3-8624-EBBB679094AA.png",
+        "sourceExport": "/private/tmp/frostfruit-compact-correction-captures/DCB12BFC-A680-44B3-8624-EBBB679094AA.png",
+        "timestamp": 1792503957.55,
+        "sha256": "b9f86329a57fe7ff1fc97acae68f270376caf35cc40bc8b806c01da1657206fa",
+        "bytes": 1353499,
+        "encodedPixels": [
+          750,
+          1334
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          750,
+          1334
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "compact-correction",
+        "testIdentifier": "SkyFlowInteractionTests/testFirstLightWinReplayAndFullSky()",
+        "attachmentName": "flow-full",
+        "exportedFileName": "66F1A87E-97FB-4DC1-A731-BF7B8A11D629.png",
+        "sourceExport": "/private/tmp/frostfruit-compact-correction-captures/66F1A87E-97FB-4DC1-A731-BF7B8A11D629.png",
+        "timestamp": 1792503945.604,
+        "sha256": "0d52856bb7631f776cfcb65261fcfcd19c6ed0c78d32b1501747d3e04bd8b1c6",
+        "bytes": 1007775,
+        "encodedPixels": [
+          750,
+          1334
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          750,
+          1334
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "compact-correction",
+        "testIdentifier": "SkyFlowInteractionTests/testFirstLightWinReplayAndFullSky()",
+        "attachmentName": "flow-first-light-replay-explanation",
+        "exportedFileName": "E15E648F-8662-4EF8-AC72-8D3D31B43480.png",
+        "sourceExport": "/private/tmp/frostfruit-compact-correction-captures/E15E648F-8662-4EF8-AC72-8D3D31B43480.png",
+        "timestamp": 1792503873.771,
+        "sha256": "b56b728c9e89e00b661e93197c78971b4619724985be6dfd161053b70fa5f669",
+        "bytes": 1353648,
+        "encodedPixels": [
+          750,
+          1334
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          750,
+          1334
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "compact-correction",
+        "testIdentifier": "SkyFlowInteractionTests/testFirstLightWinReplayAndFullSky()",
+        "attachmentName": "flow-win",
+        "exportedFileName": "EC23936B-C43C-4BE5-A382-C0B39E5E723F.png",
+        "sourceExport": "/private/tmp/frostfruit-compact-correction-captures/EC23936B-C43C-4BE5-A382-C0B39E5E723F.png",
+        "timestamp": 1792503867.789,
+        "sha256": "f0fcd22e8ceeaeaa3ad54cac0629a42ce17780496417d81d341987e654dc48fd",
+        "bytes": 1068941,
+        "encodedPixels": [
+          750,
+          1334
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          750,
+          1334
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "tablet-correction",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "attachmentName": "frostfruit-tablet-landscape-final-result-action-visible",
+        "exportedFileName": "D63C7053-8487-48B9-89CC-C2D4CF44DFF8.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-correction-captures/D63C7053-8487-48B9-89CC-C2D4CF44DFF8.png",
+        "timestamp": 1792503975.213,
+        "sha256": "4c251cf8b5fa13343178b096292e4175c06cb135172013c59f4f5d34aa7511cb",
+        "bytes": 5294186,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 8,
+        "displayPixels": [
+          2360,
+          1640
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "tablet-correction",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "attachmentName": "frostfruit-tablet-landscape-scene-100-score-18-normal-motion",
+        "exportedFileName": "DD8910C7-DBE3-480F-AA6B-36F54DFF24C0.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-correction-captures/DD8910C7-DBE3-480F-AA6B-36F54DFF24C0.png",
+        "timestamp": 1792503973.716,
+        "sha256": "4c251cf8b5fa13343178b096292e4175c06cb135172013c59f4f5d34aa7511cb",
+        "bytes": 5294186,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 8,
+        "displayPixels": [
+          2360,
+          1640
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "tablet-correction",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "attachmentName": "frostfruit-tablet-landscape-scene-75-score-14-normal-motion",
+        "exportedFileName": "892B3629-5067-40DD-87D6-138C18EA168B.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-correction-captures/892B3629-5067-40DD-87D6-138C18EA168B.png",
+        "timestamp": 1792503963.635,
+        "sha256": "09d8f9486c280b416d38fbf0539af984df68d41205a2a4cf6d4af53a46d88b22",
+        "bytes": 5831758,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 8,
+        "displayPixels": [
+          2360,
+          1640
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "tablet-correction",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "attachmentName": "frostfruit-tablet-landscape-scene-50-score-9-normal-motion",
+        "exportedFileName": "5A9E8E16-AC81-4BF2-9214-05F5FF1B8748.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-correction-captures/5A9E8E16-AC81-4BF2-9214-05F5FF1B8748.png",
+        "timestamp": 1792503950.429,
+        "sha256": "4f5d8e94d6fde0328e92d02a1f74e2a6b3e0d4aa6e1d3b5cc2dd924af3bb84b0",
+        "bytes": 5738848,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 8,
+        "displayPixels": [
+          2360,
+          1640
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "tablet-correction",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "attachmentName": "frostfruit-tablet-landscape-scene-25-score-5-normal-motion",
+        "exportedFileName": "3E4C8379-3E45-469F-9EE7-D22C05A83A5E.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-correction-captures/3E4C8379-3E45-469F-9EE7-D22C05A83A5E.png",
+        "timestamp": 1792503940.053,
+        "sha256": "38c0d695972fc18f3a30823e63942ae71ad7e99ba3861812cded695d898e3cba",
+        "bytes": 5812370,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 8,
+        "displayPixels": [
+          2360,
+          1640
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "tablet-correction",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "attachmentName": "frostfruit-tablet-landscape-scene-0-score-0-normal-motion",
+        "exportedFileName": "84882FE2-2D18-4048-A820-0866C575FED9.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-correction-captures/84882FE2-2D18-4048-A820-0866C575FED9.png",
+        "timestamp": 1792503929.397,
+        "sha256": "58ca3d56e6263e796b4518aab97da63b55b4a1907581ae286803eed6d897032a",
+        "bytes": 5803522,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 8,
+        "displayPixels": [
+          2360,
+          1640
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "tablet-correction",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "attachmentName": "frostfruit-tablet-portrait-scene-100-score-18-normal-motion",
+        "exportedFileName": "A5BE7CA5-4650-4FB3-8B66-EFA13D0B096D.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-correction-captures/A5BE7CA5-4650-4FB3-8B66-EFA13D0B096D.png",
+        "timestamp": 1792503918.225,
+        "sha256": "4f04381028f434832ae6aeb76bcb4e6c84da3340a58691579f365952ddc2d612",
+        "bytes": 5199667,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1640,
+          2360
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "tablet-correction",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "attachmentName": "frostfruit-tablet-portrait-scene-75-score-14-normal-motion",
+        "exportedFileName": "41F61B9D-A951-4DF8-A857-C0E293AE0AF8.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-correction-captures/41F61B9D-A951-4DF8-A857-C0E293AE0AF8.png",
+        "timestamp": 1792503908.311,
+        "sha256": "a2ffaa264990bef569d3f0af5243add4aed2ce1942b7750145d63d406f585932",
+        "bytes": 5779238,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1640,
+          2360
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "tablet-correction",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "attachmentName": "frostfruit-tablet-portrait-scene-50-score-9-normal-motion",
+        "exportedFileName": "DFDC53EA-478C-4B9C-94D2-33900C25FEBB.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-correction-captures/DFDC53EA-478C-4B9C-94D2-33900C25FEBB.png",
+        "timestamp": 1792503897.225,
+        "sha256": "2c690bc80d0c0935124b9bfa00176e483d3135a6ce1a778cc9bc140233526a89",
+        "bytes": 5853855,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1640,
+          2360
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "tablet-correction",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "attachmentName": "frostfruit-tablet-portrait-scene-25-score-5-normal-motion",
+        "exportedFileName": "982EC97B-F9A6-4CB4-882B-C62256E3EEE9.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-correction-captures/982EC97B-F9A6-4CB4-882B-C62256E3EEE9.png",
+        "timestamp": 1792503886.325,
+        "sha256": "de338a77697bd603c5ac23b787e0a6e1ef1ed2551507c9e2d2f5fad6005e0f80",
+        "bytes": 5844493,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1640,
+          2360
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "tablet-correction",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "attachmentName": "frostfruit-tablet-portrait-scene-0-score-0-normal-motion",
+        "exportedFileName": "525E134F-26F5-45BF-BDE0-D08A79375CF1.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-correction-captures/525E134F-26F5-45BF-BDE0-D08A79375CF1.png",
+        "timestamp": 1792503874.342,
+        "sha256": "8d152b7669acce045077aa3fce2d8ff58bdbd82b48431404a7fe85e213d5701b",
+        "bytes": 5793631,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1640,
+          2360
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "tablet-correction",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "attachmentName": "frostfruit-tablet-portrait-after-second-native-clear-normal-motion",
+        "exportedFileName": "861AB578-BE73-471B-9AA5-B02E25C5F1FF.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-correction-captures/861AB578-BE73-471B-9AA5-B02E25C5F1FF.png",
+        "timestamp": 1792503861.304,
+        "sha256": "2f1f8ace014565c43a3a27970a0063662fc199b8df0f18f07784d1dc42a16ff9",
+        "bytes": 5846997,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1640,
+          2360
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "tablet-correction",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "attachmentName": "frostfruit-tablet-portrait-retained-after-landscape-clear-normal-motion",
+        "exportedFileName": "034A1AA0-BD31-436C-9617-AC8E8EF03650.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-correction-captures/034A1AA0-BD31-436C-9617-AC8E8EF03650.png",
+        "timestamp": 1792503854.524,
+        "sha256": "573d50b9bed285b4c0da03b9cb2823cc7b0e91a0c170d8f2deacc4e362b4a67d",
+        "bytes": 5866633,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1640,
+          2360
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "tablet-correction",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "attachmentName": "frostfruit-tablet-landscape-after-native-clear-normal-motion",
+        "exportedFileName": "198148D5-8E84-4920-A325-BD1191D40810.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-correction-captures/198148D5-8E84-4920-A325-BD1191D40810.png",
+        "timestamp": 1792503847.403,
+        "sha256": "3b0e64acca65c7f88a1e15d34d624d39b996b48e7485bfcb66c30a5ef8272029",
+        "bytes": 5737018,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 8,
+        "displayPixels": [
+          2360,
+          1640
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "tablet-correction",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "attachmentName": "frostfruit-tablet-landscape-retained-before-clear-normal-motion",
+        "exportedFileName": "1B736518-D561-4F9F-B8CD-27B8E9AEC14F.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-correction-captures/1B736518-D561-4F9F-B8CD-27B8E9AEC14F.png",
+        "timestamp": 1792503839.019,
+        "sha256": "6cfef0415196e016386a0a5586b4fee09e3dd90eaae8c323893f7ae2b1ac57ce",
+        "bytes": 5812600,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 8,
+        "displayPixels": [
+          2360,
+          1640
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "tablet-correction",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput()",
+        "attachmentName": "frostfruit-tablet-portrait-before-rotation-normal-motion",
+        "exportedFileName": "5FB94CA7-0415-4EC1-AAA1-0EA8EA4ED527.png",
+        "sourceExport": "/private/tmp/frostfruit-tablet-correction-captures/5FB94CA7-0415-4EC1-AAA1-0EA8EA4ED527.png",
+        "timestamp": 1792503832.778,
+        "sha256": "5bf2543cf2cb94477b0edb64f1f77081d9145645c5e39c072e979bb804953039",
+        "bytes": 5843287,
+        "encodedPixels": [
+          1640,
+          2360
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1640,
+          2360
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "phone-correction",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitDenseOverflowKeepsNamedReplayAndRestartsAtZero()",
+        "attachmentName": "frostfruit-dense-overflow-replay-reset-to-unrestored",
+        "exportedFileName": "E15661DD-C33B-469E-B535-87063B6F2388.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-correction-captures/E15661DD-C33B-469E-B535-87063B6F2388.png",
+        "timestamp": 1792503843.768,
+        "sha256": "7e8b2351b45580e7e803146565efce839469a9a79e96a76f2251c65d9d86d34d",
+        "bytes": 4187357,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "phone-correction",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitDenseOverflowKeepsNamedReplayAndRestartsAtZero()",
+        "attachmentName": "frostfruit-dense-native-overflow-zero-score-normal-motion",
+        "exportedFileName": "7CE5A2B7-65EE-4C7A-9A11-209DE502D413.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-correction-captures/7CE5A2B7-65EE-4C7A-9A11-209DE502D413.png",
+        "timestamp": 1792503826.654,
+        "sha256": "5374d814f2a759dbd23ae6b2cbf11f93e11d63abea6563677d97069e2c70703f",
+        "bytes": 3416002,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "phone-correction",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitDenseOverflowKeepsNamedReplayAndRestartsAtZero()",
+        "attachmentName": "frostfruit-dense-before-native-next-shower-normal-motion",
+        "exportedFileName": "D5EB7369-9F40-4072-AC75-97992F45AD9E.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-correction-captures/D5EB7369-9F40-4072-AC75-97992F45AD9E.png",
+        "timestamp": 1792503818.203,
+        "sha256": "629d4f68e18e3b15e61fba826f8b002a84673bb43c477338e1d0eddc4afa029c",
+        "bytes": 4337704,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "phone-correction",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitLargestTextSystemReduceMotionWinKeepsResultActionsUsable()",
+        "attachmentName": "frostfruit-largest-text-reduce-motion-restored",
+        "exportedFileName": "21EB09A4-5A58-424D-8DA2-2154CC8AD244.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-correction-captures/21EB09A4-5A58-424D-8DA2-2154CC8AD244.png",
+        "timestamp": 1792503899.042,
+        "sha256": "5142046abbdc137ee4d3d9c43d50be9f4614dee0a3be48c0ea94ac530357fdf4",
+        "bytes": 2118838,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "UICTContentSizeCategoryAccessibilityXXXL",
+        "motionSetting": "System Reduce Motion on; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "phone-correction",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitLargestTextSystemReduceMotionWinKeepsResultActionsUsable()",
+        "attachmentName": "frostfruit-largest-text-reduce-motion-before-clear",
+        "exportedFileName": "14812CCF-BF25-48A7-8067-4AA37913EEF0.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-correction-captures/14812CCF-BF25-48A7-8067-4AA37913EEF0.png",
+        "timestamp": 1792503880.853,
+        "sha256": "0fd3d30f4df97917fc56d739a96580d24e9f64446b4b3a07d8afd764f4010e77",
+        "bytes": 3888025,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "UICTContentSizeCategoryAccessibilityXXXL",
+        "motionSetting": "System Reduce Motion on; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "phone-correction",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitWinningClearPersistsNamedResultAndReplayStartsAtZero()",
+        "attachmentName": "frostfruit-replay-reset-to-unrestored",
+        "exportedFileName": "2647FE10-D17F-45C1-8578-FA6F7FF1561F.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-correction-captures/2647FE10-D17F-45C1-8578-FA6F7FF1561F.png",
+        "timestamp": 1792503967.723,
+        "sha256": "c19e9b84aa218d0fe885488901b0f094289b9c4d7b1ebd1ee56a50fa3bbed473",
+        "bytes": 4187237,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "phone-correction",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitWinningClearPersistsNamedResultAndReplayStartsAtZero()",
+        "attachmentName": "frostfruit-restored-after-relaunch",
+        "exportedFileName": "01C20487-8D36-46CC-BDB4-6248E57630FB.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-correction-captures/01C20487-8D36-46CC-BDB4-6248E57630FB.png",
+        "timestamp": 1792503951.211,
+        "sha256": "be227cf8e295b62e72ba3aa27d48c59836c9656e7971b5888c8966634cc630a7",
+        "bytes": 3410129,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "phone-correction",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitWinningClearPersistsNamedResultAndReplayStartsAtZero()",
+        "attachmentName": "frostfruit-restored-after-native-winning-clear-normal-motion",
+        "exportedFileName": "DB091464-2964-4133-9AB0-C07CBF998C14.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-correction-captures/DB091464-2964-4133-9AB0-C07CBF998C14.png",
+        "timestamp": 1792503940.806,
+        "sha256": "12bd31750aef5d56228e6ce3bd9a3e6953b9bdffa366339fd5ec6fefba04e0d2",
+        "bytes": 3409021,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "phone-correction",
+        "testIdentifier": "FrostfruitOrchardInteractionTests/testFrostfruitWinningClearPersistsNamedResultAndReplayStartsAtZero()",
+        "attachmentName": "frostfruit-before-winning-clear-normal-motion",
+        "exportedFileName": "272D7AD5-8A9E-4C9B-B648-7329960F70EC.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-correction-captures/272D7AD5-8A9E-4C9B-B648-7329960F70EC.png",
+        "timestamp": 1792503934.427,
+        "sha256": "1e253f512d13105f7145b297a1a6fef60cef4584c7446f0ad3f333da9263ecbb",
+        "bytes": 4258904,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Actual PNG pixels inspected; no material Frostfruit issue"
+      },
+      {
+        "run": "phone-correction",
+        "testIdentifier": "LandingPlaceInteractionTests/testAllWorldsKeepTheRoundAndCenteredCellsAcrossOrientations()",
+        "attachmentName": "Official-map-frostfruitOrchard-1",
+        "exportedFileName": "AB4E065F-AEAD-4E77-A2BF-D841A1CB9E88.png",
+        "sourceExport": "/private/tmp/frostfruit-phone-correction-captures/AB4E065F-AEAD-4E77-A2BF-D841A1CB9E88.png",
+        "timestamp": 1792504068.681,
+        "sha256": "c135c8d16c0f4e394dec7b9817daacbce314aab4e5cc4a8f763eda28b7773892",
+        "bytes": 3226324,
+        "encodedPixels": [
+          1170,
+          2532
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "textSetting": "Default; no preferred-size launch override",
+        "motionSetting": "Normal motion; calmEffects NO",
+        "review": "Retained Lantern/Dusk regression board inspected; attachment name refers to navigation step, not a map image. Not Frostfruit artwork evidence."
+      }
+    ],
+    "runs": {
+      "phone-final": {
+        "sourceCommit": "bede49c6eb9aab61645f42d82fb05af24908ab4d",
+        "runtimeFingerprint": "dev.98b984fb29",
+        "summaryExport": "/private/tmp/frostfruit-phone-final-summary.json",
+        "manifest": "/private/tmp/frostfruit-phone-final-captures/manifest.json",
+        "result": {
+          "result": "Passed",
+          "totalTestCount": 8,
+          "passedTests": 8,
+          "failedTests": 0,
+          "skippedTests": 0,
+          "expectedFailures": 0,
+          "startTime": 1792501905.578,
+          "finishTime": 1792502571.754
+        },
+        "devices": [
+          {
+            "architecture": "arm64",
+            "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+            "deviceName": "Starfall Landing Acceptance",
+            "modelName": "iPhone 17e",
+            "osBuildNumber": "24A434",
+            "osVersion": "27.0",
+            "platform": "iOS Simulator"
+          }
+        ],
+        "failures": [],
+        "summarySHA256": "24acaa67a527971bddecfab1800f552ef4facc32d6deebe3758c6dd498bb3d27"
+      },
+      "tablet-final": {
+        "sourceCommit": "bede49c6eb9aab61645f42d82fb05af24908ab4d",
+        "runtimeFingerprint": "dev.98b984fb29",
+        "summaryExport": "/private/tmp/frostfruit-tablet-final-summary.json",
+        "manifest": "/private/tmp/frostfruit-tablet-final-captures/manifest.json",
+        "result": {
+          "result": "Passed",
+          "totalTestCount": 3,
+          "passedTests": 3,
+          "failedTests": 0,
+          "skippedTests": 0,
+          "expectedFailures": 0,
+          "startTime": 1792502481.86,
+          "finishTime": 1792502893.315
+        },
+        "devices": [
+          {
+            "architecture": "arm64",
+            "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+            "deviceName": "Starfall Landing Tablet Acceptance",
+            "modelName": "iPad Air 11-inch (M3)",
+            "osBuildNumber": "24A434",
+            "osVersion": "27.0",
+            "platform": "iOS Simulator"
+          }
+        ],
+        "failures": [],
+        "summarySHA256": "881ea36693038b92b99ea7635b872d114635ea12bb429d62e411aff2db5b5ec5"
+      },
+      "phone-regressions": {
+        "sourceCommit": "bede49c6eb9aab61645f42d82fb05af24908ab4d",
+        "runtimeFingerprint": "dev.98b984fb29",
+        "summaryExport": "/private/tmp/frostfruit-phone-regressions-summary.json",
+        "manifest": "/private/tmp/frostfruit-phone-regressions-captures/manifest.json",
+        "result": {
+          "result": "Failed",
+          "totalTestCount": 10,
+          "passedTests": 9,
+          "failedTests": 1,
+          "skippedTests": 0,
+          "expectedFailures": 0,
+          "startTime": 1792502607.138,
+          "finishTime": 1792503331.284
+        },
+        "devices": [
+          {
+            "architecture": "arm64",
+            "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+            "deviceName": "Starfall Landing Acceptance",
+            "modelName": "iPhone 17e",
+            "osBuildNumber": "24A434",
+            "osVersion": "27.0",
+            "platform": "iOS Simulator"
+          }
+        ],
+        "failures": [
+          {
+            "failureText": "XCTAssertTrue failed",
+            "targetName": "StarfallUITests",
+            "testIdentifier": 1,
+            "testIdentifierString": "LandingPlaceInteractionTests/testAllWorldsKeepTheRoundAndCenteredCellsAcrossOrientations()",
+            "testIdentifierURL": "test://com.apple.xcode/Starfall/StarfallUITests/LandingPlaceInteractionTests/testAllWorldsKeepTheRoundAndCenteredCellsAcrossOrientations",
+            "testName": "testAllWorldsKeepTheRoundAndCenteredCellsAcrossOrientations()"
+          }
+        ],
+        "summarySHA256": "a72fccffc25e9486da4f33be8168b6a735adaa842c123d022b955c241cd87a72"
+      },
+      "compact-final": {
+        "sourceCommit": "bede49c6eb9aab61645f42d82fb05af24908ab4d",
+        "runtimeFingerprint": "dev.98b984fb29",
+        "summaryExport": "/private/tmp/frostfruit-compact-final-summary.json",
+        "manifest": "/private/tmp/frostfruit-compact-failure-captures/manifest.json",
+        "result": {
+          "result": "Failed",
+          "totalTestCount": 2,
+          "passedTests": 1,
+          "failedTests": 1,
+          "skippedTests": 0,
+          "expectedFailures": 0,
+          "startTime": 1792502981.979,
+          "finishTime": 1792503216.721
+        },
+        "devices": [
+          {
+            "architecture": "arm64",
+            "deviceId": "EA0F7A30-21E1-4995-93F5-C4A983F4A354",
+            "deviceName": "Starfall Landing Compact Acceptance",
+            "modelName": "iPhone SE (3rd generation)",
+            "osBuildNumber": "24A434",
+            "osVersion": "27.0",
+            "platform": "iOS Simulator"
+          }
+        ],
+        "failures": [
+          {
+            "failureText": "XCTAssertTrue failed - Result actions remain usable during the celebration",
+            "targetName": "StarfallUITests",
+            "testIdentifier": 2,
+            "testIdentifierString": "SkyFlowInteractionTests/testFirstLightWinReplayAndFullSky()",
+            "testIdentifierURL": "test://com.apple.xcode/Starfall/StarfallUITests/SkyFlowInteractionTests/testFirstLightWinReplayAndFullSky",
+            "testName": "testFirstLightWinReplayAndFullSky()"
+          }
+        ],
+        "summarySHA256": "618ecf09062c8ebce2c4cfe536f8168131118326065eb7ae3db5ea2b75e72316"
+      },
+      "compact-correction": {
+        "sourceCommit": "f7b5c7100ed163e9b342e735439fa1ba73acf90c",
+        "runtimeFingerprint": "dev.8b80450f52",
+        "summaryExport": "/private/tmp/frostfruit-compact-correction-summary.json",
+        "manifest": "/private/tmp/frostfruit-compact-correction-captures/manifest.json",
+        "result": {
+          "result": "Passed",
+          "totalTestCount": 2,
+          "passedTests": 2,
+          "failedTests": 0,
+          "skippedTests": 0,
+          "expectedFailures": 0,
+          "startTime": 1792503723.628,
+          "finishTime": 1792503971.249
+        },
+        "devices": [
+          {
+            "architecture": "arm64",
+            "deviceId": "EA0F7A30-21E1-4995-93F5-C4A983F4A354",
+            "deviceName": "Starfall Landing Compact Acceptance",
+            "modelName": "iPhone SE (3rd generation)",
+            "osBuildNumber": "24A434",
+            "osVersion": "27.0",
+            "platform": "iOS Simulator"
+          }
+        ],
+        "failures": [],
+        "summarySHA256": "07f099ab9a10557cf3e2210417a48209246ccd7a6e14119803d1438e6fff9340",
+        "sourceBoundary": "Final App/runtime inputs; compiled before the last shared tablet-test-helper one-line edit. No App, Core or artwork difference."
+      },
+      "phone-correction": {
+        "sourceCommit": "f7b5c7100ed163e9b342e735439fa1ba73acf90c",
+        "runtimeFingerprint": "dev.8b80450f52",
+        "summaryExport": "/private/tmp/frostfruit-phone-correction-summary.json",
+        "manifest": "/private/tmp/frostfruit-phone-correction-captures/manifest.json",
+        "result": {
+          "result": "Passed",
+          "totalTestCount": 4,
+          "passedTests": 4,
+          "failedTests": 0,
+          "skippedTests": 0,
+          "expectedFailures": 0,
+          "startTime": 1792503788.819,
+          "finishTime": 1792504075.585
+        },
+        "devices": [
+          {
+            "architecture": "arm64",
+            "deviceId": "21025903-D90D-4E30-BA74-45D3EFB2F5E4",
+            "deviceName": "Starfall Landing Acceptance",
+            "modelName": "iPhone 17e",
+            "osBuildNumber": "24A434",
+            "osVersion": "27.0",
+            "platform": "iOS Simulator"
+          }
+        ],
+        "failures": [],
+        "summarySHA256": "e1928780932953d02ff797a7a191288d3ee8b175931d9f834ba6db7542470c70"
+      },
+      "tablet-correction": {
+        "sourceCommit": "f7b5c7100ed163e9b342e735439fa1ba73acf90c",
+        "runtimeFingerprint": "dev.8b80450f52",
+        "summaryExport": null,
+        "manifest": "/private/tmp/frostfruit-tablet-correction-captures/manifest.json",
+        "result": {
+          "result": "Passed",
+          "totalTestCount": 1,
+          "passedTests": 1,
+          "failedTests": 0,
+          "skippedTests": 0
+        },
+        "resultSource": "verification.json nativeRuns: Corrected tablet rotation and final Home action; parent inspected xcresult via MCP",
+        "resultBundle": "test_sim_2026-10-20T13-43-08-711Z_pid96597_c77c5af5.xcresult",
+        "devices": [
+          {
+            "architecture": "arm64",
+            "deviceId": "4BA9208F-2CF6-45E6-BCB7-4DC93198295D",
+            "deviceName": "Starfall Landing Tablet Acceptance",
+            "modelName": "iPad Air 11-inch (M3)",
+            "osBuildNumber": "24A434",
+            "osVersion": "27.0",
+            "platform": "iOS Simulator"
+          }
+        ]
+      }
+    },
+    "baselineUIExecutions": {
+      "total": 23,
+      "passed": 21,
+      "failed": 2,
+      "skipped": 0,
+      "note": "8 phone + 3 tablet + 10 phone regressions + 2 compact. Executions, not distinct methods; later corrections are separate."
+    },
+    "correctionUIExecutions": {
+      "total": 7,
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0,
+      "note": "4 phone + 1 tablet + 2 compact. Normal-motion recording rerun is separately recorded in verification.json."
+    },
+    "resolvedFailures": [
+      {
+        "run": "phone-regressions",
+        "test": "LandingPlaceInteractionTests/testAllWorldsKeepTheRoundAndCenteredCellsAcrossOrientations",
+        "evidence": "world.list absent. Exported hierarchy: map row y390.4\u2013440.3 overlapped navigation bar y408.9\u2013460.7; recorded tap y395.383 hit sheet chrome.",
+        "cause": "Test helper treated partially hittable row as ready for physical input.",
+        "fix": "Shared skyMenuControl now calls existing revealSkyControls after lazy-row discovery. Fixtures, timeouts and assertions unchanged.",
+        "verification": "phone-correction original method passed; visits all six locations and preserves retained round/cell geometry."
+      },
+      {
+        "run": "compact-final",
+        "test": "SkyFlowInteractionTests/testFirstLightWinReplayAndFullSky",
+        "evidence": "Immediate Replay isHittable failed; exact71-second movie frame showed Replay below the viewport after decorative cast.",
+        "cause": "Terminal text backing and wrapped text left action ordering unsuitable for compact viewport.",
+        "fix": "Terminal results place actions before decorative cast using existing accessibility order; preserve readable panels, landmark clearance, text and touch targets.",
+        "verification": "compact-correction both tests pass, including unchanged immediateReplay assertion, native overflow and persisted relaunch. Phone4 and tablet1 corrected runs pass; screenshots inspected."
+      }
+    ],
+    "visualFindings": "No material Frostfruit composition or result-legibility defect in reviewed f7b5c71 captures. Baseline wide result extended below viewport; corrected landscape shows the complete action panel. Compact and Accessibility XXXL results legitimately scroll."
+  }
+}

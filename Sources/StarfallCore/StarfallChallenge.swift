@@ -1,6 +1,6 @@
 /// Authored round identities and rules. WorldJourney owns access separately.
 public enum StarfallChallenge: String, Codable, CaseIterable, Equatable, Sendable {
-    case firstLight, ribbonCrossing, kiteHarbor, seedMoon, silverPools
+    case firstLight, ribbonCrossing, kiteHarbor, seedMoon, silverPools, frostfruitOrchard
 
     public var title: String {
         switch self {
@@ -9,6 +9,7 @@ public enum StarfallChallenge: String, Codable, CaseIterable, Equatable, Sendabl
         case .kiteHarbor: "Kite Harbor"
         case .seedMoon: "Seed Moon"
         case .silverPools: "Silver Pools"
+        case .frostfruitOrchard: "Frostfruit Orchard"
         }
     }
     public var target: Int { 18 }

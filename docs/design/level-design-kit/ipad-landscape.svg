@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1024" height="768" viewBox="0 0 1024 768" role="img">
 <title>iPad landscape native geometry guide</title>
-<desc>Technical authoring guide. Native rectangles exported from LandingGeometry; colored composition recommendations are not native acceptance evidence.</desc>
+<desc>Technical authoring guide. Board and cells are exported from LandingGeometry. UI edge markers are schematic responsibilities, not measured coverage. Colored composition recommendations are not native acceptance evidence.</desc>
 <rect x="0.0000" y="0.0000" width="1024.0000" height="768.0000" fill="#101b2c" stroke="none" stroke-width="1"/>
 <rect x="0.0000" y="0.0000" width="1024.0000" height="768.0000" fill="#164a50" stroke="none" stroke-width="1"/>
 <rect x="338.0000" y="210.0000" width="348.0000" height="348.0000" fill="#987034" stroke="#ffd68a" stroke-width="1.4"/>
@@ -103,17 +103,14 @@
 <polyline points="611.4286,217.4571 616.1332,228.3818 627.9770,229.4802 619.0408,237.3305 621.6560,248.9340 611.4286,242.8611 601.2011,248.9340 603.8163,237.3305 594.8802,229.4802 606.7239,228.3818 611.4286,217.4571" fill="none" stroke="#b58091" stroke-width="0.7"/>
 <rect x="636.2857" y="210.0000" width="49.7143" height="49.7143" fill="none" stroke="#a56478" stroke-width="0.7"/>
 <polyline points="661.1429,217.4571 665.8475,228.3818 677.6912,229.4802 668.7551,237.3305 671.3703,248.9340 661.1429,242.8611 650.9154,248.9340 653.5306,237.3305 644.5945,229.4802 656.4382,228.3818 661.1429,217.4571" fill="none" stroke="#b58091" stroke-width="0.7"/>
-<rect x="344.0000" y="58.0000" width="336.0000" height="84.0000" fill="#523b79" stroke="#c7b1f8" stroke-width="1"/>
-<text x="512.0000" y="92.0000" fill="#f5f6f7" font-family="Arial, sans-serif" font-size="14" font-weight="700" text-anchor="middle" dominant-baseline="hanging">HUD / score / menu</text>
-<rect x="350.0000" y="570.0000" width="324.0000" height="128.0000" fill="#523b79" stroke="#c7b1f8" stroke-width="1"/>
-<text x="512.0000" y="626.0000" fill="#f5f6f7" font-family="Arial, sans-serif" font-size="14" font-weight="700" text-anchor="middle" dominant-baseline="hanging">Dialogue / guide</text>
-<rect x="350.0000" y="706.0000" width="154.0000" height="52.0000" fill="#523b79" stroke="#c7b1f8" stroke-width="1"/>
-<text x="427.0000" y="725.0000" fill="#f5f6f7" font-family="Arial, sans-serif" font-size="12" font-weight="400" text-anchor="middle" dominant-baseline="hanging">Pause / resume</text>
-<rect x="520.0000" y="706.0000" width="154.0000" height="52.0000" fill="#523b79" stroke="#c7b1f8" stroke-width="1"/>
-<text x="597.0000" y="725.0000" fill="#f5f6f7" font-family="Arial, sans-serif" font-size="12" font-weight="400" text-anchor="middle" dominant-baseline="hanging">Next shower</text>
+<polyline points="12.0000,85.0000 1012.0000,85.0000" fill="none" stroke="#c7b1f8" stroke-width="2"/>
+<text x="512.0000" y="62.0000" fill="#c7b1f8" font-family="Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle" dominant-baseline="hanging">TOP HUD · inset and height vary</text>
+<polyline points="12.0000,719.0000 1012.0000,719.0000" fill="none" stroke="#c7b1f8" stroke-width="2"/>
+<text x="512.0000" y="728.0000" fill="#c7b1f8" font-family="Arial, sans-serif" font-size="11" font-weight="700" text-anchor="middle" dominant-baseline="hanging">BOTTOM GUIDE / ACTIONS · height varies</text>
+<text x="512.0000" y="745.0000" fill="#c7b1f8" font-family="Arial, sans-serif" font-size="9" font-weight="400" text-anchor="middle" dominant-baseline="hanging">UI markers are schematic, not coverage bounds</text>
 <text x="512.0000" y="14.0000" fill="#f5f6f7" font-family="Arial, sans-serif" font-size="18" font-weight="700" text-anchor="middle" dominant-baseline="hanging">iPad landscape</text>
 <text x="512.0000" y="36.0000" fill="#f5f6f7" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="middle" dominant-baseline="hanging">1024 × 768 native pt</text>
-<text x="512.0000" y="160.0000" fill="#49c7ba" font-family="Arial, sans-serif" font-size="14" font-weight="700" text-anchor="middle" dominant-baseline="hanging">Build rich connected world here</text>
+<text x="512.0000" y="110.0000" fill="#49c7ba" font-family="Arial, sans-serif" font-size="14" font-weight="700" text-anchor="middle" dominant-baseline="hanging">Build rich connected world here</text>
 <text x="512.0000" y="375.0000" fill="#f5f6f7" font-family="Arial, sans-serif" font-size="14" font-weight="700" text-anchor="middle" dominant-baseline="hanging">CONTRAST PRIORITY</text>
 <text x="512.0000" y="394.0000" fill="#f5f6f7" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="middle" dominant-baseline="hanging">Continue the world; keep stars readable</text>
 </svg>

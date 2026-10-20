@@ -321,7 +321,8 @@ extension SkySaveArchiveTests {
     }
 
     @MainActor func testShippedV8ChallengesKeepExactBytesIdentityPreviewAndReplay() throws {
-        for challenge in StarfallChallenge.allCases {
+        // Freeze the historical inventory; new content is covered by the current-envelope test.
+        for challenge in [StarfallChallenge.firstLight, .ribbonCrossing, .kiteHarbor, .seedMoon, .silverPools] {
             let bytes = Data(String(decoding: preRibbonFirstLightV8, as: UTF8.self)
                 .replacingOccurrences(of: "\"challenge\":\"firstLight\"", with: "\"challenge\":\"\(challenge.rawValue)\"").utf8)
             let defaults = makeDefaults()

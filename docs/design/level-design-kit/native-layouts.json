@@ -1,41 +1,30 @@
 {
   "generationSourceSHA256": {
     "App/Assets.xcassets/StarCastSunny.imageset/body.png": "2791d9b7ff953be9d22859eef00d4fef2bb665f51f13f142a79fd866e72b5a6d",
+    "App/FallingSkyHUD.swift": "f55bbaabf97939a7d88ae9c06c1585cf9eaeeb8b3db1d93e47253f5ef53a61fc",
     "App/FallingSkyMotion.swift": "fca8ffe1b9396edccb397cad3ff891bbe1a8ad59f86d7d101a263e1a4569d1a9",
-    "App/FallingSkyView.swift": "0745b6f7540eb45afa0d98a281e3238600f90615b70c3409290a8f826b4c2fbe",
+    "App/FallingSkyView.swift": "cc773d18316b5054bed7948e46ef100225411916af442b5d81ac30bf7723bbdd",
     "App/LandingGeometry.swift": "4b5e3dff6d03dfa4ff2cdb92f1da403265153432e46c2d805222227de459040d",
-    "App/RestorationEnvironment.swift": "5fee7f9dc8a1c3b29183eacb68ecc5c8d20c3176300bff0c00199bc8ed10044f",
-    "App/SkyFlowCeremony.swift": "904716e18f649a7e8ad2d1b177358836b3043f1fc6d6aa337b70bfc65efa2208",
+    "App/ObservatoryArtwork.swift": "3307cdba2bdddc804be54aba02d5858befb9f73306b173ff9d11463c9ae977e5",
+    "App/RestorationEnvironment.swift": "aa031661c1d98adc6266c6cbeb10554b4ad3113b48d8eaae41816c00fbd54a99",
+    "App/SkyDialogueBubble.swift": "74907707d1e9eb72affd012f5aa74e3cc60349c7ab21bb39403e80fd0d2180a2",
+    "App/SkyFlowCeremony.swift": "757ea25e1e7a14b1bd4b42ddd311b870064a76356f8c18ef38e7825182998f79",
     "App/StarCast.swift": "049e611c99da7849c090aca2674938becbfae78895aae7e7045a1286df95177b",
-    "App/StarfallTheme.swift": "a97b7f71e836a0bd912164389ca9fbf72ffe6e102d65a5549271f469941aaf2e",
-    "scripts/export_level_layouts.swift": "f81692a941f1b8dab2e0a9493064279d638d5b3e89fb83a1433c15718a8ecfef",
-    "scripts/level-design-kit.py": "a74d071bd5bda688fe024f0471d2a7d7c0b72e55a1eb0c67af1c50013ddd0208"
+    "App/StarfallTheme.swift": "a5fe8c0455f83db9487a30e815db3cea266e253d4899d67e57aaeac42848f10f",
+    "scripts/export_level_layouts.swift": "21103274cd80c32678d65cd27ca6c1fcae03f860fe619f7cb8f8069ff301aa14",
+    "scripts/level-design-kit.py": "3745e861deb5dd6948e0fbd29ee2ee7a9d0d5ab897b1766ca53712a76930b548"
   },
   "geometryExport": {
     "command": "swiftc -module-cache-path <temporary-cache> -I <core-products> -L <core-products> -lStarfallCore App/LandingGeometry.swift scripts/export_level_layouts.swift -o <temporary-exporter>",
     "coreProducts": "/Users/lbeezr/.codex-workspaces/worktrees/ios-a412ced0-1da1-4bc5-8682-a9ef02f52407/Starfall/.build/out/Products/Debug",
-    "inputSHA256": "8758160641615d0542c1ca32e8d46ec7e018dd4a677ad645b5cfdaf4dc9cc9e1",
+    "inputSHA256": "2bff63844158d6b76afeb781fb328c6f109a2d4c3dcc05f37cf6660758802614",
     "method": "compiled-app-geometry",
     "sourceOwnership": "compiled-current-sources"
   },
-  "guideSchemaVersion": 2,
+  "guideSchemaVersion": 3,
   "layouts": [
     {
       "accessibleCanvasEnd": 636.5,
-      "actions": [
-        {
-          "height": 52,
-          "width": 170.5,
-          "x": 18,
-          "y": 764.5
-        },
-        {
-          "height": 52,
-          "width": 170.5,
-          "x": 204.5,
-          "y": 764.5
-        }
-      ],
       "board": {
         "height": 381,
         "width": 381,
@@ -535,39 +524,41 @@
           "row": 6
         }
       ],
-      "dialogue": {
-        "height": 128,
-        "width": 357,
-        "x": 18,
-        "y": 628.5
-      },
-      "header": {
-        "height": 84,
-        "width": 369,
-        "x": 12,
-        "y": 83.5
-      },
       "height": 852,
       "id": "phone",
       "largeHeader": false,
+      "legacyGeometryReservations": {
+        "actions": [
+          {
+            "height": 52,
+            "width": 170.5,
+            "x": 18,
+            "y": 764.5
+          },
+          {
+            "height": 52,
+            "width": 170.5,
+            "x": 204.5,
+            "y": 764.5
+          }
+        ],
+        "dialogue": {
+          "height": 128,
+          "width": 357,
+          "x": 18,
+          "y": 628.5
+        },
+        "header": {
+          "height": 84,
+          "width": 369,
+          "x": 12,
+          "y": 83.5
+        }
+      },
       "width": 393
     },
     {
       "accessibleCanvasEnd": 834,
-      "actions": [
-        {
-          "height": 52,
-          "width": 282,
-          "x": 94,
-          "y": 962
-        },
-        {
-          "height": 52,
-          "width": 282,
-          "x": 392,
-          "y": 962
-        }
-      ],
       "board": {
         "height": 604,
         "width": 604,
@@ -1067,39 +1058,41 @@
           "row": 6
         }
       ],
-      "dialogue": {
-        "height": 128,
-        "width": 580,
-        "x": 94,
-        "y": 826
-      },
-      "header": {
-        "height": 84,
-        "width": 592,
-        "x": 88,
-        "y": 58
-      },
       "height": 1024,
       "id": "ipad-portrait",
       "largeHeader": false,
+      "legacyGeometryReservations": {
+        "actions": [
+          {
+            "height": 52,
+            "width": 282,
+            "x": 94,
+            "y": 962
+          },
+          {
+            "height": 52,
+            "width": 282,
+            "x": 392,
+            "y": 962
+          }
+        ],
+        "dialogue": {
+          "height": 128,
+          "width": 580,
+          "x": 94,
+          "y": 826
+        },
+        "header": {
+          "height": 84,
+          "width": 592,
+          "x": 88,
+          "y": 58
+        }
+      },
       "width": 768
     },
     {
       "accessibleCanvasEnd": 578,
-      "actions": [
-        {
-          "height": 52,
-          "width": 154,
-          "x": 350,
-          "y": 706
-        },
-        {
-          "height": 52,
-          "width": 154,
-          "x": 520,
-          "y": 706
-        }
-      ],
       "board": {
         "height": 348,
         "width": 348,
@@ -1599,39 +1592,41 @@
           "row": 6
         }
       ],
-      "dialogue": {
-        "height": 128,
-        "width": 324,
-        "x": 350,
-        "y": 570
-      },
-      "header": {
-        "height": 84,
-        "width": 336,
-        "x": 344,
-        "y": 58
-      },
       "height": 768,
       "id": "ipad-landscape",
       "largeHeader": false,
+      "legacyGeometryReservations": {
+        "actions": [
+          {
+            "height": 52,
+            "width": 154,
+            "x": 350,
+            "y": 706
+          },
+          {
+            "height": 52,
+            "width": 154,
+            "x": 520,
+            "y": 706
+          }
+        ],
+        "dialogue": {
+          "height": 128,
+          "width": 324,
+          "x": 350,
+          "y": 570
+        },
+        "header": {
+          "height": 84,
+          "width": 336,
+          "x": 344,
+          "y": 58
+        }
+      },
       "width": 1024
     },
     {
       "accessibleCanvasEnd": 651.5,
-      "actions": [
-        {
-          "height": 52,
-          "width": 161.5,
-          "x": 18,
-          "y": 779.5
-        },
-        {
-          "height": 52,
-          "width": 161.5,
-          "x": 195.5,
-          "y": 779.5
-        }
-      ],
       "board": {
         "height": 363,
         "width": 363,
@@ -2131,39 +2126,41 @@
           "row": 6
         }
       ],
-      "dialogue": {
-        "height": 128,
-        "width": 339,
-        "x": 18,
-        "y": 643.5
-      },
-      "header": {
-        "height": 84,
-        "width": 351,
-        "x": 12,
-        "y": 116.5
-      },
       "height": 900,
       "id": "phone-expanded",
       "largeHeader": false,
+      "legacyGeometryReservations": {
+        "actions": [
+          {
+            "height": 52,
+            "width": 161.5,
+            "x": 18,
+            "y": 779.5
+          },
+          {
+            "height": 52,
+            "width": 161.5,
+            "x": 195.5,
+            "y": 779.5
+          }
+        ],
+        "dialogue": {
+          "height": 128,
+          "width": 339,
+          "x": 18,
+          "y": 643.5
+        },
+        "header": {
+          "height": 84,
+          "width": 351,
+          "x": 12,
+          "y": 116.5
+        }
+      },
       "width": 375
     },
     {
       "accessibleCanvasEnd": 902.5,
-      "actions": [
-        {
-          "height": 52,
-          "width": 170.5,
-          "x": 18,
-          "y": 938.5
-        },
-        {
-          "height": 52,
-          "width": 170.5,
-          "x": 204.5,
-          "y": 938.5
-        }
-      ],
       "board": {
         "height": 381,
         "width": 381,
@@ -2663,39 +2660,41 @@
           "row": 6
         }
       ],
-      "dialogue": {
-        "height": 128,
-        "width": 357,
-        "x": 18,
-        "y": 802.5
-      },
-      "header": {
-        "height": 248,
-        "width": 369,
-        "x": 12,
-        "y": 153.5
-      },
       "height": 1200,
       "id": "phone-accessibility",
       "largeHeader": true,
+      "legacyGeometryReservations": {
+        "actions": [
+          {
+            "height": 52,
+            "width": 170.5,
+            "x": 18,
+            "y": 938.5
+          },
+          {
+            "height": 52,
+            "width": 170.5,
+            "x": 204.5,
+            "y": 938.5
+          }
+        ],
+        "dialogue": {
+          "height": 128,
+          "width": 357,
+          "x": 18,
+          "y": 802.5
+        },
+        "header": {
+          "height": 248,
+          "width": 369,
+          "x": 12,
+          "y": 153.5
+        }
+      },
       "width": 393
     },
     {
       "accessibleCanvasEnd": 1022,
-      "actions": [
-        {
-          "height": 52,
-          "width": 290,
-          "x": 214,
-          "y": 1058
-        },
-        {
-          "height": 52,
-          "width": 290,
-          "x": 520,
-          "y": 1058
-        }
-      ],
       "board": {
         "height": 620,
         "width": 620,
@@ -3195,21 +3194,37 @@
           "row": 6
         }
       ],
-      "dialogue": {
-        "height": 128,
-        "width": 596,
-        "x": 214,
-        "y": 922
-      },
-      "header": {
-        "height": 248,
-        "width": 608,
-        "x": 208,
-        "y": 34
-      },
       "height": 1200,
       "id": "ipad-accessibility",
       "largeHeader": true,
+      "legacyGeometryReservations": {
+        "actions": [
+          {
+            "height": 52,
+            "width": 290,
+            "x": 214,
+            "y": 1058
+          },
+          {
+            "height": 52,
+            "width": 290,
+            "x": 520,
+            "y": 1058
+          }
+        ],
+        "dialogue": {
+          "height": 128,
+          "width": 596,
+          "x": 214,
+          "y": 922
+        },
+        "header": {
+          "height": 248,
+          "width": 608,
+          "x": 208,
+          "y": 34
+        }
+      },
       "width": 1024
     }
   ],
@@ -3217,8 +3232,9 @@
     "board": "Contrast priority, not a blank area, mask, crop or compositing seam",
     "bodyScaleStatus": "nominal normal/grown authored body; real alpha shape, texture padding and motion vary",
     "crop": "Hatched margins are cropped by the center-cover reference only. Do not place essential story details there; runtime uses focal-adjusted whole-image placement",
-    "expanded": "Expanded and accessibility canvases reflow/scroll; exported dialogue/action rectangles are geometry references, not the expanded-flow UI placement. Wide 1024\u00d71200 uses portrait restoration art",
+    "expanded": "Reading-heavy and accessibility layouts put the HUD above a scrolling board and the guide/actions after it. Legacy reservation rectangles do not describe this flow. Wide 1024\u00d71200 uses portrait restoration art",
     "landmark": "Place the completion landmark and recipient away from native cells, label allocations and result coverage",
+    "legacyGeometryReservations": "LandingGeometry crownFrame, communicationContentFrame and actionFrame values are retained only as unused geometry references. They do not locate the current HUD, dialogue or action controls and are not drawn as protected UI rectangles.",
     "nativeBodyWidthFractions": {
       "grown": 0.86,
       "normal": 0.7
@@ -3241,10 +3257,10 @@
     "result": "Central column up to 480 pt; height is content/Dynamic-Type dependent. Heading clearance uses the resolved scenery anchor and a 230 pt baseline; inspect actual result UI",
     "softBleedCellFraction": 0.15,
     "softBleedStatus": "provisional maximum inside the perimeter, not permission to cover faces or bright silhouettes",
-    "ui": "Exported allocation rectangles, not measured glyph outlines; restoration backings add 4 pt horizontally at HUD and up to 8 pt horizontally / 4 pt vertically around guide content",
+    "ui": "Violet viewport-edge markers are schematic, not measured coverage bounds. FallingSkyView places a ViewThatFits HUD at the safe top and a dynamically measured dialogue/action group at the safe bottom. Insets, text, forecast mode and Observatory skins affect actual coverage; inspect native captures.",
     "world": "Build a rich connected place; continuity, supporting structures and depth remain behind all overlays"
   },
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "sourcePanelMappings": {
     "ipad-landscape": {
       "imageOriginInNativePoints": {
@@ -3297,15 +3313,18 @@
   },
   "sourceSHA256": {
     "App/Assets.xcassets/StarCastSunny.imageset/body.png": "2791d9b7ff953be9d22859eef00d4fef2bb665f51f13f142a79fd866e72b5a6d",
+    "App/FallingSkyHUD.swift": "f55bbaabf97939a7d88ae9c06c1585cf9eaeeb8b3db1d93e47253f5ef53a61fc",
     "App/FallingSkyMotion.swift": "fca8ffe1b9396edccb397cad3ff891bbe1a8ad59f86d7d101a263e1a4569d1a9",
-    "App/FallingSkyView.swift": "0745b6f7540eb45afa0d98a281e3238600f90615b70c3409290a8f826b4c2fbe",
+    "App/FallingSkyView.swift": "cc773d18316b5054bed7948e46ef100225411916af442b5d81ac30bf7723bbdd",
     "App/LandingGeometry.swift": "4b5e3dff6d03dfa4ff2cdb92f1da403265153432e46c2d805222227de459040d",
-    "App/RestorationEnvironment.swift": "5fee7f9dc8a1c3b29183eacb68ecc5c8d20c3176300bff0c00199bc8ed10044f",
-    "App/SkyFlowCeremony.swift": "904716e18f649a7e8ad2d1b177358836b3043f1fc6d6aa337b70bfc65efa2208",
+    "App/ObservatoryArtwork.swift": "3307cdba2bdddc804be54aba02d5858befb9f73306b173ff9d11463c9ae977e5",
+    "App/RestorationEnvironment.swift": "aa031661c1d98adc6266c6cbeb10554b4ad3113b48d8eaae41816c00fbd54a99",
+    "App/SkyDialogueBubble.swift": "74907707d1e9eb72affd012f5aa74e3cc60349c7ab21bb39403e80fd0d2180a2",
+    "App/SkyFlowCeremony.swift": "757ea25e1e7a14b1bd4b42ddd311b870064a76356f8c18ef38e7825182998f79",
     "App/StarCast.swift": "049e611c99da7849c090aca2674938becbfae78895aae7e7045a1286df95177b",
-    "App/StarfallTheme.swift": "a97b7f71e836a0bd912164389ca9fbf72ffe6e102d65a5549271f469941aaf2e",
-    "scripts/export_level_layouts.swift": "f81692a941f1b8dab2e0a9493064279d638d5b3e89fb83a1433c15718a8ecfef",
-    "scripts/level-design-kit.py": "a74d071bd5bda688fe024f0471d2a7d7c0b72e55a1eb0c67af1c50013ddd0208"
+    "App/StarfallTheme.swift": "a5fe8c0455f83db9487a30e815db3cea266e253d4899d67e57aaeac42848f10f",
+    "scripts/export_level_layouts.swift": "21103274cd80c32678d65cd27ca6c1fcae03f860fe619f7cb8f8069ff301aa14",
+    "scripts/level-design-kit.py": "3745e861deb5dd6948e0fbd29ee2ee7a9d0d5ab897b1766ca53712a76930b548"
   },
   "status": "technical authoring guide; not native visual acceptance",
   "units": {

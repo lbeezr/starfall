@@ -1,15 +1,15 @@
 # Official locations, shared mechanics and a playable tutorial
 
-**Status:** Implemented; development-verified · **Owner:** Current implementer · **Updated:** October 19, 2026
+**Status:** Existing integration development-verified; sixth-location extension under development · **Owner:** Current implementer · **Updated:** October 20, 2026
 
-The normal app now opens on its start screen, where Play leads to the full-page World Map with saved progress. The five official locations can be chosen or revisited there; an unfinished selected location offers Continue without replacing its board. Open Sky and the current-sky shortcut remain secondary start-screen options. New journeys start with Lantern Landing; committed restoration wins reveal repaired landmarks and open the next ready place. All five locations support the current cardinal swaps, square/cross recipes and selected traces. Learn to Play uses the real board and input store, with 21 disposable chapters that also serve as deterministic regressions.
+The normal app opens on its Observatory home: Story Mode leads to the full-page World Map, alongside Free Play, Tutorial and a retained-round shortcut. Six ready official locations can be chosen or revisited there when unlocked; an unfinished selected location offers Continue without replacing its board. Frostfruit Orchard is adopted as the sixth ready location with fifteen paintings; publication and canonical installation remain pending. New journeys start with Lantern Landing; committed restoration wins reveal repaired landmarks and open the next ready place. All six registered challenges support the current cardinal swaps, square/cross recipes and selected traces. Tutorial uses the real board and input store, with 21 disposable chapters that also serve as deterministic regressions.
 
-This implements the user's authorized integration and subsequent direction: mysterious unreached places, no giant numbered badges, and a map that records repairs. The remaining seven locations are visible but unavailable until their production content is ready. The optional skippable intro video remains deferred; no video asset is added. No phone installation is part of this batch. [Verification and limits](evidence/official-world-2026-10-19/README.md) distinguish implementation from acceptance.
+This implements the user's authorized integration and subsequent direction: mysterious unreached places, no giant numbered badges, and a map that records repairs. The remaining six locations are visible but unavailable until their production content is ready. The optional skippable intro video remains deferred; no video asset is added. No phone installation was claimed by the original integration record. Its [verification and limits](evidence/official-world-2026-10-19/README.md) remain source-bound. The current [Frostfruit production plan](design/frostfruit-orchard-06/PRODUCTION_PLAN.md) owns the sixth-location extension through canonical delivery, which is pending.
 
 ## Observable acceptance
 
 - Welcome and the game menu have one World Map entry; no appended Try rows or old scenery selector.
-- The five ready places retain their artwork, saved identities, seed 42, 18-light objectives and cadence. Swaps work in new, resumed and replayed rounds.
+- The original five places retain their artwork and saved identities; the sixth adds three complete five-state art families. All six preserve seed 42, 18-light objectives and cadence. Swaps work in new, resumed and replayed rounds. All fifteen orchard paintings are adopted; [development evidence](evidence/frostfruit-orchard-2026-10-20/README.md) owns validation, separately from pending publication and installation.
 - Browsing and canceling Entry preserve the round. Begin alone replaces it. Completed locations stay replayable; unbuilt content cannot start.
 - The initial map is damaged and dim. Restoring a place reveals its repaired painting and onward road; unreached islands have a soft obscuring veil. The native Places list conveys the same status without relying on color.
 - Practice teaches production gestures and scoring setups without saving, earning world completion or replacing a live round. Retry, skip, backgrounding and exit reject stale input/clock callbacks.
@@ -20,7 +20,8 @@ This implements the user's authorized integration and subsequent direction: myst
 | Content | Integrated behavior |
 | --- | --- |
 | Lantern Landing (`firstLight`), Ribbon Crossing, Kite Harbor, Seed Moon, Silver Pools | Five ready restoration destinations, each with its existing complete art family |
-| Frostfruit Orchard, Sunwheel Mill, Bell Choir, Starferry Station, Aurora Falls, Petal Beacon, Hollow Crown | Authored route identities and map silhouettes; no entry until content registration and acceptance |
+| Frostfruit Orchard | Sixth ready destination with fifteen adopted paintings; requires a committed Silver Pools repair, including for legacy-access players. [Development evidence](evidence/frostfruit-orchard-2026-10-20/README.md) records validation; publication and installation remain pending. |
+| Sunwheel Mill, Bell Choir, Starferry Station, Aurora Falls, Petal Beacon, Hollow Crown | Six authored route identities and map silhouettes; no entry until content registration and acceptance |
 | Moonwake, Nebula Cradle, Shatterlight Reach, Night Garden, Ringdrift | Old selector, renderer and sixteen exclusively used packaged assets removed; source artwork and unique evidence retained as history |
 | Open Sky | Existing survival rules, with completed Lantern Landing scenery; scenery cannot award completion or impose an 18-point ending |
 | Classic puzzle, historical Dusk/gravity/aging | Retained save readers and Debug regression tooling; no new player routes |
@@ -65,7 +66,7 @@ A versioned challenge action capability now admits current gestures and recipes.
 
 Action support and star supply remain separate. These five gentle challenges retain their authored supply; Opal and storm lessons use modern Open Sky scenarios. Historical raw Core behavior remains testable. Future location-specific supply or balance changes require their own versioned design and seed/replay acceptance.
 
-World progress is a separate v1 envelope. A valid winning round is recorded after the round save succeeds and before presentation completion; replay cannot duplicate completion. Restoration of a saved win repairs an interrupted world write. Existing pre-v9 installations retain access to the five previously playable places without fabricated wins. New installs unlock ready successors sequentially. An unavailable successor remains unavailable even after its predecessor is restored.
+World progress is a separate v1 envelope. A valid winning round is recorded after the round save succeeds and before presentation completion; replay cannot duplicate completion. Restoration of a saved win repairs an interrupted world write. Existing pre-v9 installations retain access to the five previously playable places without fabricated wins. New installs unlock ready successors sequentially. Frostfruit Orchard also requires a Silver Pools repair for legacy-access players; adding it does not expand the original five-place migration allowance. An unavailable successor remains unavailable even after its predecessor is restored. The orchard batch keeps archive v9 and world envelope v1 unchanged.
 
 An invalid world envelope is preserved in a recovery slot before replacement; valid current-round completion can be recovered. Lost completion history cannot be inferred from a single non-winning round. The ordinary round archive and other preferences remain independent.
 
@@ -79,6 +80,6 @@ Tests replay all chapters through Core and the production store, asserting indep
 
 ## Remaining work
 
-The next content batch is Frostfruit Orchard, followed by the other six unbuilt locations, using the [level-design kit](design/level-design-kit/README.md). Registration requires artwork, rule identity and native acceptance; adding an enum case is not proof of readiness. Story scenes, generated travel clips and a finale remain design work. Human play should evaluate path mystery, repair readability and tutorial length before further visual or balance tuning.
+The [Frostfruit Orchard batch](design/frostfruit-orchard-06/PRODUCTION_PLAN.md) adopts all fifteen paintings and the sixth ready destination; [development evidence](evidence/frostfruit-orchard-2026-10-20/README.md) records validation, while publication and installation remain pending. Six later locations remain unbuilt. New compositions use the [level-design kit](design/level-design-kit/README.md). Registration requires artwork, rule identity and native acceptance; adding an enum case is not proof of readiness. Story scenes, generated travel clips and a finale remain design work. Human play should evaluate path mystery, repair readability and tutorial length before further visual or balance tuning.
 
 A future cleanup may parameterize the historical per-challenge flow action cases; the public map already routes through the single challenge callback. This batch preserves those tested ceremony adapters while changing save/action behavior.

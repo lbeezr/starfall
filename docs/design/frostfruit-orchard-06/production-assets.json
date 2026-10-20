@@ -1,0 +1,276 @@
+{
+  "status": "All fifteen paintings packaged byte-for-byte and adopted for development. Publication and canonical installation remain pending; exact native scope is recorded in ../../evidence/frostfruit-orchard-2026-10-20/README.md.",
+  "provenance": "art-prompts.json",
+  "processing": "Generated PNGs copied byte-for-byte without resampling, cropping, compositing or recoloring. Portrait75 remains1086x1449; native rendering registers actual image dimensions.",
+  "verification": {
+    "date": "2026-10-20",
+    "generationRecordsPreserved": 31,
+    "originalDocumentsPreserved": 4,
+    "packagedSourceByteMatches": 15,
+    "sourceSha256DimensionsBytesVerified": true,
+    "selectedSourceSha256DimensionsBytesVerified": true,
+    "gitBlobSHAIndependentlyVerifiedWithGitHashObject": true,
+    "originalDocumentSHA256Verified": true,
+    "referenceInputHashesVerified": 40,
+    "nativeValidation": "Combined input reference 6aee65e / dev.bd94e46b80, integrating Observatory main386b2f8, passes 342 hosted, 6 phone, 3 tablet and 2 compact-phone checks, plus Core and Release. Final scope and captures belong to ../../evidence/frostfruit-orchard-2026-10-20/README.md and verification.json. Publication and installation remain pending. Full RC, actual VoiceOver, measured contrast and physical gameplay are not claimed. Pre-integration record follows: Corrected native input reference f7b5c71 / runtime dev.8b80450f52; 40 affected hosted tests passed, 0 skipped. Baseline bede49c / dev.98b984fb29 passed 339 hosted tests, 185 Core tests and Release with zero warnings/errors. The full 339-test hosted suite was not rerun after the narrow action-order correction. Local terminal reading surfaces are development-verified. Final native counts, captures, configuration and limitations belong to ../../evidence/frostfruit-orchard-2026-10-20/README.md and verification.json. Publication and installation remain pending; full release-candidate, actual VoiceOver, measured contrast and physical gameplay acceptance are not claimed.",
+    "pendingPackagingAssets": [],
+    "missingSourcesOrReferences": []
+  },
+  "assets": [
+    {
+      "family": "phone",
+      "milestone": 0,
+      "asset": "App/Assets.xcassets/FrostfruitOrchard000.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a15935-1231-7ce1-863a-efe25c468647/exec-49fb8b99-d816-456b-ae08-e72a70afbf1d.png",
+      "sha256": "e064fa2b33e9ebb7d14088efc29788cd907b072ff20ad8eeb6a9b927f9edc997",
+      "pixels": [
+        887,
+        1774
+      ],
+      "bytes": 2969478,
+      "gitBlobSha": "acc94469782bc0407c2ebd0c4e4d3ffe9f0d074d",
+      "attempt": "phone-000-01",
+      "source_record": "art-prompts.json#/original_records/phone-art.json/attempts/9",
+      "packagingStatus": "packaged",
+      "selectionBasis": "Selected package SHA256 matches exactly one recorded family attempt; complete package and original PNG bytes are equal."
+    },
+    {
+      "family": "phone",
+      "milestone": 25,
+      "asset": "App/Assets.xcassets/FrostfruitOrchard025.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a15935-1231-7ce1-863a-efe25c468647/exec-19f4c3bc-9bb0-48ba-9734-52b9fb9bc20d.png",
+      "sha256": "f681deafa5ce6f9f448ff7edfb7464b498505ab422d63d96d8ddb3035f9bd514",
+      "pixels": [
+        887,
+        1774
+      ],
+      "bytes": 2968175,
+      "gitBlobSha": "6bd0342c34af16bb1fab905e4b0acbd04245f407",
+      "attempt": "phone-025-01",
+      "source_record": "art-prompts.json#/original_records/phone-art.json/attempts/8",
+      "packagingStatus": "packaged",
+      "selectionBasis": "Selected package SHA256 matches exactly one recorded family attempt; complete package and original PNG bytes are equal."
+    },
+    {
+      "family": "phone",
+      "milestone": 50,
+      "asset": "App/Assets.xcassets/FrostfruitOrchard050.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a15935-1231-7ce1-863a-efe25c468647/exec-d8ea9918-5c4c-4847-915e-5f7491b26b3c.png",
+      "sha256": "235d1725ffde3a51c499b3c374b042448e4150975f0f478a00ac51f8bf170fed",
+      "pixels": [
+        887,
+        1774
+      ],
+      "bytes": 2979570,
+      "gitBlobSha": "34a6238a2c7a913e3ae269e635720b2324b60136",
+      "attempt": "phone-050-01",
+      "source_record": "art-prompts.json#/original_records/phone-art.json/attempts/7",
+      "packagingStatus": "packaged",
+      "selectionBasis": "Selected package SHA256 matches exactly one recorded family attempt; complete package and original PNG bytes are equal."
+    },
+    {
+      "family": "phone",
+      "milestone": 75,
+      "asset": "App/Assets.xcassets/FrostfruitOrchard075.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a15935-1231-7ce1-863a-efe25c468647/exec-62e736ad-3d95-40c1-88ec-ec429377c5c5.png",
+      "sha256": "63af383164e995b0558acd0dc1afbf333324dbe7144f85f251a634d5b5f4b6b9",
+      "pixels": [
+        887,
+        1774
+      ],
+      "bytes": 2955141,
+      "gitBlobSha": "acbbaea62475d05c3e22e3f47e0108e2a29172f4",
+      "attempt": "phone-075-01",
+      "source_record": "art-prompts.json#/original_records/phone-art.json/attempts/6",
+      "packagingStatus": "packaged",
+      "selectionBasis": "Selected package SHA256 matches exactly one recorded family attempt; complete package and original PNG bytes are equal."
+    },
+    {
+      "family": "phone",
+      "milestone": 100,
+      "asset": "App/Assets.xcassets/FrostfruitOrchard100.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a15935-1231-7ce1-863a-efe25c468647/exec-3845197b-ec2c-4c8e-8f76-6546d4681fa7.png",
+      "sha256": "c9610eaf29246b4b6a5aabeff18a3796a49c46f68784d1db8eeb194f28ec1f8b",
+      "pixels": [
+        887,
+        1774
+      ],
+      "bytes": 2977713,
+      "gitBlobSha": "9dfd997d1c9c5d715f4514c39e22f57c2af50ac1",
+      "attempt": "phone-100-master-06",
+      "source_record": "art-prompts.json#/original_records/phone-art.json/attempts/5",
+      "packagingStatus": "packaged",
+      "selectionBasis": "Selected package SHA256 matches exactly one recorded family attempt; complete package and original PNG bytes are equal."
+    },
+    {
+      "family": "tabletPortrait",
+      "milestone": 0,
+      "asset": "App/Assets.xcassets/FrostfruitOrchardTabletPortrait000.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a15936-a49f-7360-8889-eb43cbe299eb/exec-60cfa81d-c6c9-4c10-89fd-219b4d01c848.png",
+      "sha256": "eb39eb1d35c8b6ab561dc97b4f4272d9a0f0eb01ca5eea9c8fa4adf7dd705f1e",
+      "pixels": [
+        1086,
+        1448
+      ],
+      "bytes": 2834480,
+      "gitBlobSha": "83eb9ed024a423c65ed2ffb9f15e71eab538c3e4",
+      "attempt": "portrait-000-01",
+      "source_record": "art-prompts.json#/original_records/portrait-art.json/attempts/10",
+      "packagingStatus": "packaged",
+      "selectionBasis": "Selected package SHA256 matches exactly one recorded family attempt; complete package and original PNG bytes are equal."
+    },
+    {
+      "family": "tabletPortrait",
+      "milestone": 25,
+      "asset": "App/Assets.xcassets/FrostfruitOrchardTabletPortrait025.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a15936-a49f-7360-8889-eb43cbe299eb/exec-84ff777e-4608-4569-8437-d6f6f339b90a.png",
+      "sha256": "ba1af73a69f6ca503cd393fe38d2dbbda0f85906b9b88cc74fcd333715bd0786",
+      "pixels": [
+        1086,
+        1448
+      ],
+      "bytes": 2871446,
+      "gitBlobSha": "48493d1bcb5a706e197514b9c5bd0aaf3ba99618",
+      "attempt": "portrait-025-01",
+      "source_record": "art-prompts.json#/original_records/portrait-art.json/attempts/9",
+      "packagingStatus": "packaged",
+      "selectionBasis": "Selected package SHA256 matches exactly one recorded family attempt; complete package and original PNG bytes are equal."
+    },
+    {
+      "family": "tabletPortrait",
+      "milestone": 50,
+      "asset": "App/Assets.xcassets/FrostfruitOrchardTabletPortrait050.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a15936-a49f-7360-8889-eb43cbe299eb/exec-b7bdb617-b52a-4df4-8a3a-ff6296575d43.png",
+      "sha256": "69c8bc8034cf877d0fb583cfa4e232a2410d773ddc17c7c1f2f6528a58050b76",
+      "pixels": [
+        1086,
+        1448
+      ],
+      "bytes": 2863560,
+      "gitBlobSha": "3ccc9bb86e347f4897faaf6b62a29895e0691030",
+      "attempt": "portrait-050-01",
+      "source_record": "art-prompts.json#/original_records/portrait-art.json/attempts/8",
+      "packagingStatus": "packaged",
+      "selectionBasis": "Selected package SHA256 matches exactly one recorded family attempt; complete package and original PNG bytes are equal."
+    },
+    {
+      "family": "tabletPortrait",
+      "milestone": 75,
+      "asset": "App/Assets.xcassets/FrostfruitOrchardTabletPortrait075.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a15936-a49f-7360-8889-eb43cbe299eb/exec-d44416d5-76a9-403d-9af3-71514b541838.png",
+      "sha256": "4003a517efb5010e7eba0120e81d6d77c948179737f404579509736c8df6483b",
+      "pixels": [
+        1086,
+        1449
+      ],
+      "bytes": 2799585,
+      "gitBlobSha": "d46354cf6cb4b39ede9cc4f5c9ae8438ad48e5f6",
+      "attempt": "portrait-075-01",
+      "source_record": "art-prompts.json#/original_records/portrait-art.json/attempts/7",
+      "packagingStatus": "packaged",
+      "selectionBasis": "Selected package SHA256 matches exactly one recorded family attempt; complete package and original PNG bytes are equal."
+    },
+    {
+      "family": "tabletPortrait",
+      "milestone": 100,
+      "asset": "App/Assets.xcassets/FrostfruitOrchardTabletPortrait100.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a15936-a49f-7360-8889-eb43cbe299eb/exec-b1db2d72-11f4-46e9-9e71-8b0caed8f8e9.png",
+      "sha256": "649f25b6f1db0dd28d9389bc7fabad3b523547258167a23337928b41cd7736e8",
+      "pixels": [
+        1086,
+        1448
+      ],
+      "bytes": 2841837,
+      "gitBlobSha": "9789a9f83491aeb676b486f1d79651a8c9f67cee",
+      "attempt": "portrait-100-master-07",
+      "source_record": "art-prompts.json#/original_records/portrait-art.json/attempts/6",
+      "packagingStatus": "packaged",
+      "selectionBasis": "Selected package SHA256 matches exactly one recorded family attempt; complete package and original PNG bytes are equal."
+    },
+    {
+      "family": "tabletLandscape",
+      "milestone": 0,
+      "asset": "App/Assets.xcassets/FrostfruitOrchardTabletLandscape000.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a15935-2d70-7583-ac63-ce3ba28f1490/exec-0301afdd-d766-408c-bfc0-944192da4b1b.png",
+      "sha256": "650a0fb4c636afbf4e8140ac84343e66fe9c0a02e314f4be266adb0e14c7aaef",
+      "pixels": [
+        1448,
+        1086
+      ],
+      "bytes": 2863910,
+      "gitBlobSha": "9fc099faac93ade6d7cc4fec7b874a2a09ba8a03",
+      "attempt": "landscape-000-02",
+      "source_record": "art-prompts.json#/original_records/landscape-art.json/attempts/7",
+      "packagingStatus": "packaged",
+      "selectionBasis": "Selected package SHA256 matches exactly one recorded family attempt; complete package and original PNG bytes are equal."
+    },
+    {
+      "family": "tabletLandscape",
+      "milestone": 25,
+      "asset": "App/Assets.xcassets/FrostfruitOrchardTabletLandscape025.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a15935-2d70-7583-ac63-ce3ba28f1490/exec-96e27091-398a-417b-8eba-fcc753050409.png",
+      "sha256": "94334518be00820a68042e75e09f0f0f58d9a9e6b81f814b60eccf754a1759af",
+      "pixels": [
+        1448,
+        1086
+      ],
+      "bytes": 2891408,
+      "gitBlobSha": "549f560df3c43f9ea322597a67db5dc6e279ca08",
+      "attempt": "landscape-025-02",
+      "source_record": "art-prompts.json#/original_records/landscape-art.json/attempts/8",
+      "packagingStatus": "packaged",
+      "selectionBasis": "Selected package SHA256 matches exactly one recorded family attempt; complete package and original PNG bytes are equal."
+    },
+    {
+      "family": "tabletLandscape",
+      "milestone": 50,
+      "asset": "App/Assets.xcassets/FrostfruitOrchardTabletLandscape050.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a15935-2d70-7583-ac63-ce3ba28f1490/exec-3c079a27-561e-4d43-ac6f-2c48a5a727ab.png",
+      "sha256": "4cc41c92b484e8000a23bfecf277314508166f4797b13c8d64292453d8ce7d21",
+      "pixels": [
+        1448,
+        1086
+      ],
+      "bytes": 2830302,
+      "gitBlobSha": "f54c9e8ac80428455e5be46176bb5a53986f8f8d",
+      "attempt": "landscape-050-02",
+      "source_record": "art-prompts.json#/original_records/landscape-art.json/attempts/9",
+      "packagingStatus": "packaged",
+      "selectionBasis": "Selected package SHA256 matches exactly one recorded family attempt; complete package and original PNG bytes are equal."
+    },
+    {
+      "family": "tabletLandscape",
+      "milestone": 75,
+      "asset": "App/Assets.xcassets/FrostfruitOrchardTabletLandscape075.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a15935-2d70-7583-ac63-ce3ba28f1490/exec-0ae8d068-66d6-4b5d-90b6-0ad34cc34b0f.png",
+      "sha256": "df95e5ddd6fe65c5cfcc8b60ff3388808dbd043b0014e42c22e00bec461bfe03",
+      "pixels": [
+        1448,
+        1086
+      ],
+      "bytes": 2887719,
+      "gitBlobSha": "e9759e57cd96b3a6292f86b8338b4a2aead90f67",
+      "attempt": "landscape-075-01",
+      "source_record": "art-prompts.json#/original_records/landscape-art.json/attempts/3",
+      "packagingStatus": "packaged",
+      "selectionBasis": "Selected package SHA256 matches exactly one recorded family attempt; complete package and original PNG bytes are equal."
+    },
+    {
+      "family": "tabletLandscape",
+      "milestone": 100,
+      "asset": "App/Assets.xcassets/FrostfruitOrchardTabletLandscape100.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a15935-2d70-7583-ac63-ce3ba28f1490/exec-e5422c3a-e59f-48cb-a66b-bbb3a688af0d.png",
+      "sha256": "cafd1cf24c2ebaa1fafb3173c36458b9da5d296cc37bdbe41f18270e923118e0",
+      "pixels": [
+        1448,
+        1086
+      ],
+      "bytes": 2954570,
+      "gitBlobSha": "d53e7b30b80e70624460ec7776e1b65287db423b",
+      "attempt": "landscape-master-03",
+      "source_record": "art-prompts.json#/original_records/landscape-art.json/attempts/2",
+      "packagingStatus": "packaged",
+      "selectionBasis": "Selected package SHA256 matches exactly one recorded family attempt; complete package and original PNG bytes are equal."
+    }
+  ]
+}

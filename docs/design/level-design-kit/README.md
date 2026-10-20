@@ -1,6 +1,6 @@
 # Build a place around the stars
 
-**Status:** Accepted art direction · **Updated:** October 19, 2026
+**Status:** Accepted art direction · **Updated:** October 20, 2026
 
 Each level should feel like a substantial, connected place: crafted terrain, useful paths, supporting structures and a clear restoration story. Lantern Landing and Ribbon Crossing set the visual standard. During Silver Pools production, the user rejected the increasingly sparse “small landmark on empty sky” approach and enthusiastically accepted the richer common garden. Preserve that richness while fitting the actual native board.
 
@@ -24,7 +24,7 @@ Start with the [reusable brief](BRIEF.md), the [layout overview](overview.png), 
 | --- | --- |
 | [Phone](phone.svg) | Reference phone composition, board, UI and crop regions |
 | [iPad portrait](ipad-portrait.svg) / [iPad landscape](ipad-landscape.svg) | Separately authored arrangements of the same place |
-| [Source phone](source-phone.svg) / [source iPad portrait](source-ipad-portrait.svg) / [source iPad landscape](source-ipad-landscape.svg) | Pixel-sized guides to attach to image-generation briefs; center-cover baseline with explicit crop limits |
+| [Source phone](source-phone.svg) / [source iPad portrait](source-ipad-portrait.svg) / [source iPad landscape](source-ipad-landscape.svg) | Pixel-sized guides to attach to image-generation briefs; center-cover baseline with explicit crop limits. Matching `source-*.png` files provide raster references. |
 | [Overview](overview.png) | Compare the three reference compositions together |
 | [Native layout values](native-layouts.json) | Exact dimensions and configuration behind the guides |
 | [Camera reference](CAMERA.md) | Consistent overhead vantage, projection, orientation and no visible horizon |
@@ -37,12 +37,16 @@ The guides are authoring overlays, never artwork to package. Their exact referen
 | **Teal** | Opportunity for rich scenery. It is not a mandatory box or an instruction to fill every pixel. |
 | **Amber** | Soft edge bleed: up to **0.15 cell** is a preliminary design budget to test, not an automatic allowance to hide stars or their cues. |
 | **Red** | Native board contrast takes priority. This area need not be blank; restrained continuous sky, water or material can remain readable behind pieces. |
-| **Violet** | HUD, dialogue and controls. Architecture may continue behind these surfaces, but do not place the only story-critical change there. |
+| **Violet edge markers** | HUD at the viewport top; dialogue and actions at the bottom. These schematic markers are **not measured coverage bounds**. Actual content, safe insets and text size determine their extent. Architecture may continue behind these surfaces, but do not place the only story-critical change there. |
 | **Hatching** | Viewport crop/inset exposure. Do not rely on detail in this region surviving every fit. |
 
 Use the actual star width, not the full cell square, as the visual ruler. The current small body's nominal diameter is about **0.70 cell**, and a grown body's about **0.86 cell**; texture padding and the growth aura extend farther. [FallingSkyMotion](../../../App/FallingSkyMotion.swift) and [StarCast](../../../App/StarCast.swift) own that presentation. Check both ordinary and grown stars when comparing a rail, flower, stream or important finish cue with the scale reference. These proportions are source facts, not permission to change star size.
 
 [LandingGeometry](../../../App/LandingGeometry.swift) owns the board and cell mapping. [FallingSkyView](../../../App/FallingSkyView.swift) can use expanded scrolling canvases for compact viewports and accessibility text. [RestorationEnvironment](../../../App/RestorationEnvironment.swift) fits each complete painting using its actual dimensions. Device orientation, canvas shape, safe insets and Dynamic Type can therefore change the visible crop and text arrangement. Exact values for one guide do not establish universal safe space. Bleed and prop-scale recommendations still need native visual and input checks.
+
+The current Observatory interface measures its HUD at the safe top and its guide/action group at the safe bottom; reading-heavy layouts place them outside the scrolling board. The exporter cannot measure those SwiftUI surfaces. Its `legacyGeometryReservations` preserve the older crown/dialogue/action values for reference only; they no longer appear as fixed UI rectangles in the guides. Inspect the actual HUD, reading panel and controls before assigning a protected restoration cue.
+
+The Frostfruit production refresh retains compiled `LandingGeometry` board/cell data and exact source-owner hashes. It exports source-sized phone and both tablet guides while marking current viewport-edge UI schematically. These generated guides establish geometry, not measured SwiftUI coverage or a mathematically exact projection in generated art. [Frostfruit evidence](../../evidence/frostfruit-orchard-2026-10-20/README.md) records the separate native checks; regenerate after owner changes.
 
 ## Produce one coherent restoration
 
@@ -72,7 +76,7 @@ The [Hearthstone study](../environments/hearthstone-study/README.md) supplies us
 
 **Historical external research — Blizzard and credited artists; inspected in the October 18 study.** The copied full-board references retain their [original sources and attribution](../environments/hearthstone-study/sources.json). They are documentation references, not licensed Starfall runtime assets or a brief to copy their characters and distinctive artwork. This kit applies the composition lessons to original Starfall places; it does not rewrite that historical study or claim its proposals shipped.
 
-**Seed Moon is a future candidate for a richer composition review.** The user's comparison motivates that follow-up; it does not authorize replacing its current shipped art during Silver Pools production. This kit also does not change rules, saves, native control roles or the [world atlas](../WORLD_ATLAS.md). The repository’s [level-design skill](../../../.agents/skills/starfall-level-design/SKILL.md) routes future location work through this kit.
+**Seed Moon is a future candidate for a richer composition review.** The user's comparison during Silver Pools production motivated that follow-up. Seed Moon's richer treatment remains deferred outside the Frostfruit batch; this kit does not itself replace its shipped art. This kit also does not change rules, saves, native control roles or the [world atlas](../WORLD_ATLAS.md). The repository’s [level-design skill](../../../.agents/skills/starfall-level-design/SKILL.md) routes future location work through this kit.
 
 ## Regenerate the guides
 

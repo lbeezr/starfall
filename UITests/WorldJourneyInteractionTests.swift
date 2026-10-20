@@ -54,6 +54,9 @@ final class WorldJourneyInteractionTests: XCTestCase {
         XCTAssertFalse(app.buttons["world.visit"].exists)
         tap("world.list", app)
         tap("world.place.frostfruitOrchard", app)
+        XCTAssertEqual(app.staticTexts["world.status"].label, "Restore Silver Pools first")
+        XCTAssertFalse(app.buttons["world.visit"].exists)
+        tap("world.place.sunwheelMill", app)
         XCTAssertEqual(app.staticTexts["world.status"].label, "Not yet available")
         XCTAssertFalse(app.buttons["world.visit"].exists)
         tap("world.place.firstLight", app); tap("world.visit", app)
@@ -125,9 +128,9 @@ final class WorldJourneyInteractionTests: XCTestCase {
         tap("tutorial.retry", app); capture("tutorial-largest-text-retry", app)
         tap("experiment.settings", app); tap("tutorial.done", app)
     }
-    @MainActor func testAllFiveLocationsAcceptFourDirectionSwapsAndClears() {
+    @MainActor func testAllReadyLocationsAcceptFourDirectionSwapsAndClears() {
         executionTimeAllowance = 300
-        for location in ["lantern", "ribbon", "kite", "seed", "silver"] {
+        for location in ["lantern", "ribbon", "kite", "seed", "silver", "frostfruit"] {
             let app = XCUIApplication()
             app.launchArguments = ["--starfalls-reset", "--dialogue-review", "--\(location)-restoration-review=0", "-calmEffects", "NO"]
             app.launch()
@@ -154,13 +157,46 @@ final class WorldJourneyInteractionTests: XCTestCase {
         tap("sky.worldMap", app)
         XCTAssertEqual(app.buttons["world.node.firstLight"].value as? String, "Restored")
         XCTAssertEqual(app.buttons["world.node.ribbonCrossing"].value as? String, "Ready to restore")
-        XCTAssertEqual(app.buttons["world.node.frostfruitOrchard"].value as? String, "Not yet available")
+        XCTAssertEqual(app.buttons["world.node.frostfruitOrchard"].value as? String, "Restore Silver Pools first")
+        XCTAssertEqual(app.buttons["world.node.sunwheelMill"].value as? String, "Not yet available")
         capture("world-lantern-repaired-path-revealed", app)
         app.terminate(); app.launchArguments = ["--dialogue-review"]; app.launch()
         tap("sky.worldMap", app)
         XCTAssertEqual(app.buttons["world.node.firstLight"].value as? String, "Restored")
         XCTAssertEqual(app.buttons["world.node.ribbonCrossing"].value as? String, "Ready to restore")
         capture("world-repair-after-relaunch", app)
+    }
+
+    @MainActor func testSilverWinningClearUnlocksFrostfruitAndPersistsItsMapEntry() {
+        let app = XCUIApplication()
+        app.launchArguments = ["--starfalls-reset", "--dialogue-review", "--silver-restoration-review=14", "-calmEffects", "NO"]
+        app.launch(); defer { app.terminate() }
+        XCTAssertTrue(app.buttons["experiment.cell.0.0"].waitForExistence(timeout: 10))
+        tap("experiment.settings", app); tap("sky.worldMap", app)
+        tap("world.node.frostfruitOrchard", app)
+        XCTAssertEqual(app.staticTexts["world.status"].label, "Restore Silver Pools first")
+        XCTAssertFalse(app.buttons["world.visit"].exists)
+        tap("world.done", app)
+        tap("experiment.cell.0.0", app)
+        XCTAssertTrue(app.staticTexts["experiment.outcome"].waitForExistence(timeout: 10))
+        tap("sky.worldMap", app)
+        XCTAssertEqual(app.staticTexts["world.selection"].label, "Frostfruit Orchard")
+        XCTAssertEqual(app.staticTexts["world.status"].label, "Ready to restore")
+        XCTAssertEqual(app.buttons["world.node.silverPools"].value as? String, "Restored")
+        XCTAssertEqual(app.buttons["world.node.sunwheelMill"].value as? String, "Not yet available")
+        capture("frostfruit-ready-after-silver-repair", app)
+        app.terminate(); app.launchArguments = ["--dialogue-review", "-calmEffects", "NO"]; app.launch()
+        tap("sky.worldMap", app)
+        XCTAssertEqual(app.staticTexts["world.selection"].label, "Frostfruit Orchard")
+        tap("world.visit", app)
+        XCTAssertTrue(app.buttons["sky.begin"].waitForExistence(timeout: 5))
+        XCTAssertEqual(app.staticTexts["sky.title"].label, "Frostfruit Orchard")
+        tap("sky.begin", app)
+        XCTAssertTrue(app.buttons["experiment.settings"].waitForExistence(timeout: 10))
+        tap("experiment.settings", app); tap("experiment.pause", app)
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, "0 of 18 starlight collected")
+        XCTAssertTrue(app.descendants(matching: .any)["frostfruit.restoration"].firstMatch.exists)
+        capture("frostfruit-entered-from-earned-map-unlock", app)
     }
 
 }

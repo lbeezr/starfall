@@ -15,6 +15,7 @@ final class WorldJourneyTests: XCTestCase {
         let store = FallingSkyStore(defaults: defaults, arguments: [], presenter: FallingSkyRecorder(), clock: ManualRainClock())
         XCTAssertTrue(store.journey.journey.legacyAccess)
         XCTAssertTrue(store.journey.journey.canEnter(.silverPools))
+        XCTAssertFalse(store.journey.journey.canEnter(.frostfruitOrchard))
         XCTAssertTrue(store.journey.journey.completed.isEmpty)
         XCTAssertNil(defaults.data(forKey: WorldJourneyStore.key))
         try store.journey.select(.seedMoon)
@@ -106,5 +107,46 @@ final class WorldJourneyTests: XCTestCase {
         store.setSuspended(false); rain()
         XCTAssertEqual(store.game, SkyTutorial.square.game())
         XCTAssertNil(clock.deadline); XCTAssertNil(defaults.data(forKey: SkySaveArchive.key))
+    }
+
+    @MainActor func testSilverRepairUnlocksFrostfruitAndItsCompletionPersistsWithoutUnlockingSunwheel() throws {
+        let defaults = defaults(), presenter = FallingSkyRecorder()
+        try SkySaveArchive.save(ObservatoryReviewFixture.game(dense: false, score: 14, challenge: .silverPools), to: defaults)
+        let silver = FallingSkyStore(defaults: defaults, arguments: [], presenter: presenter, clock: ManualRainClock())
+        XCTAssertFalse(silver.journey.journey.canEnter(.frostfruitOrchard))
+        silver.setSuspended(false); silver.clear(Cell(0, 0))
+        XCTAssertTrue(silver.busy)
+        XCTAssertEqual(silver.journey.journey.completed, [.silverPools])
+        XCTAssertTrue(silver.journey.journey.canEnter(.frostfruitOrchard))
+        XCTAssertEqual(silver.journey.journey.selected, .frostfruitOrchard)
+        XCTAssertTrue(WorldJourneyStore(defaults: defaults).journey.canEnter(.frostfruitOrchard))
+        presenter.finish()
+        try SkySaveArchive.save(ObservatoryReviewFixture.game(dense: false, score: 14, challenge: .frostfruitOrchard), to: defaults)
+        let orchard = FallingSkyStore(defaults: defaults, arguments: [], presenter: presenter, clock: ManualRainClock())
+        orchard.setSuspended(false); orchard.clear(Cell(0, 0))
+        XCTAssertEqual(orchard.game.outcome, .won)
+        let restored = WorldJourneyStore(defaults: defaults).journey
+        XCTAssertEqual(restored.completed, [.silverPools, .frostfruitOrchard])
+        XCTAssertEqual(restored.selected, .frostfruitOrchard)
+        XCTAssertFalse(restored.canEnter(.sunwheelMill))
+        XCTAssertEqual(try SkySaveArchive.decode(XCTUnwrap(defaults.data(forKey: SkySaveArchive.key))), orchard.game)
+    }
+
+    @MainActor func testEarnedSilverReviewRequiresResetDialogueAndOneValidRestorationSelection() throws {
+        let flag = "--world-silver-complete-review"
+        let valid = ["--starfalls-reset", "--dialogue-review", "--frostfruit-restoration-review=9", flag]
+        for arguments in [valid, [flag], ["--starfalls-reset", flag],
+                          ["--dialogue-review", "--frostfruit-restoration-review=9", flag],
+                          ["--starfalls-reset", "--dialogue-review", flag],
+                          ["--starfalls-reset", "--dialogue-review", "--frostfruit-restoration-review=19", flag],
+                          valid + ["--silver-restoration-review=9"]] {
+            let defaults = defaults()
+            let store = FallingSkyStore(defaults: defaults, arguments: arguments,
+                                        presenter: FallingSkyRecorder(), clock: ManualRainClock())
+            XCTAssertEqual(store.journey.journey.completed, arguments == valid ? [.silverPools] : [])
+            XCTAssertEqual(store.journey.journey.canEnter(.frostfruitOrchard), arguments == valid)
+            XCTAssertNil(defaults.data(forKey: WorldJourneyStore.key), "Review construction remains read-only")
+            XCTAssertNil(defaults.data(forKey: SkySaveArchive.key))
+        }
     }
 }

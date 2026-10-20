@@ -27,7 +27,9 @@ OUTPUT = ROOT / "docs/design/level-design-kit"
 SUNNY = ROOT / "App/Assets.xcassets/StarCastSunny.imageset/body.png"
 SOURCES = (
     "App/LandingGeometry.swift", "scripts/export_level_layouts.swift",
-    "App/FallingSkyView.swift", "App/RestorationEnvironment.swift",
+    "App/FallingSkyView.swift", "App/FallingSkyHUD.swift",
+    "App/SkyDialogueBubble.swift", "App/ObservatoryArtwork.swift",
+    "App/RestorationEnvironment.swift",
     "App/SkyFlowCeremony.swift", "App/StarfallTheme.swift",
     "App/FallingSkyMotion.swift", "App/StarCast.swift",
     "App/Assets.xcassets/StarCastSunny.imageset/body.png",
@@ -143,7 +145,7 @@ class Drawing:
         self.draw = ImageDraw.Draw(self.image)
         self.parts = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img">',
                       f"<title>{html.escape(title)}</title>",
-                      '<desc>Technical authoring guide. Native rectangles exported from LandingGeometry; colored composition recommendations are not native acceptance evidence.</desc>']
+                      '<desc>Technical authoring guide. Board and cells are exported from LandingGeometry. UI edge markers are schematic responsibilities, not measured coverage. Colored composition recommendations are not native acceptance evidence.</desc>']
         self.rectangle(rect(0, 0, width, height), PALETTE["page"])
 
     def rectangle(self, frame: dict, fill: str, stroke: str | None = None, line: float = 1):
@@ -215,23 +217,30 @@ def draw_layout(layout: dict, mapping: dict | None = None) -> Drawing:
         side = frame["width"] * BODY_FRACTIONS["grown" if grown else "normal"]
         canvas.star(frame["x"] + frame["width"] / 2, frame["y"] + frame["height"] / 2,
                     side, PALETTE["text"] if grown else "#b58091", (1.3 if grown else 0.7) * scale)
-    for key, label in (("header", "HUD / score / menu"), ("dialogue", "Dialogue / guide")):
-        frame = convert(layout[key])
-        canvas.rectangle(frame, PALETTE["ui"], PALETTE["uiLine"], scale)
-        canvas.text(frame["x"] + frame["width"] / 2, frame["y"] + frame["height"] / 2 - 8 * scale,
-                    label, 14 * scale, bold=True, anchor="center")
-    for index, native in enumerate(layout["actions"]):
-        frame = convert(native)
-        canvas.rectangle(frame, PALETTE["ui"], PALETTE["uiLine"], scale)
-        canvas.text(frame["x"] + frame["width"] / 2, frame["y"] + frame["height"] / 2 - 7 * scale,
-                    "Pause / resume" if index == 0 else "Next shower", 12 * scale, anchor="center")
+    # The current HUD and guide use measured SwiftUI content at viewport edges.
+    # LandingGeometry's former chrome rectangles are not their coverage. Use
+    # schematic markers rather than inventing safe insets or fixed text heights.
+    for y, label_y, label in (
+        (85, 62, "TOP HUD · inset and height vary"),
+        (layout["height"] - 49, layout["height"] - 40, "BOTTOM GUIDE / ACTIONS · height varies"),
+    ):
+        first = convert(rect(12, y, 0, 0))
+        last = convert(rect(layout["width"] - 12, y, 0, 0))
+        middle = convert(rect(layout["width"] / 2, label_y, 0, 0))
+        canvas.line([(first["x"], first["y"]), (last["x"], last["y"])],
+                    PALETTE["uiLine"], 2 * scale)
+        canvas.text(middle["x"], middle["y"], label, 11 * scale,
+                    color=PALETTE["uiLine"], bold=True, anchor="center")
+    point = convert(rect(layout["width"] / 2, layout["height"] - 23, 0, 0))
+    canvas.text(point["x"], point["y"], "UI markers are schematic, not coverage bounds", 9 * scale,
+                color=PALETTE["uiLine"], anchor="center")
     # Labels are authoring annotations, never an instruction to paint a gap.
     point = convert(rect(layout["width"] / 2, 14, 0, 0))
     canvas.text(point["x"], point["y"], title, 18 * scale, bold=True, anchor="center")
     units = f'{width} × {height} art px · center-cover' if mapping else f'{width} × {height} native pt'
     point = convert(rect(layout["width"] / 2, 36, 0, 0))
     canvas.text(point["x"], point["y"], units, 11 * scale, anchor="center")
-    point = convert(rect(layout["width"] / 2, layout["header"]["y"] + layout["header"]["height"] + 18, 0, 0))
+    point = convert(rect(layout["width"] / 2, max(110, layout["board"]["y"] / 2), 0, 0))
     canvas.text(point["x"], point["y"], "Build rich connected world here", 14 * scale,
                 color=PALETTE["worldLine"], bold=True, anchor="center")
     canvas.text(board["x"] + board["width"] / 2, board["y"] + board["height"] / 2 - 9 * scale,
@@ -267,7 +276,7 @@ def overview(layouts: dict[str, dict], panels: dict[str, Drawing]) -> Drawing:
         ("world", "CONNECTED WORLD", ["Layer architecture, terrain and paths.", "Teal is opportunity, not a fill quota."]),
         ("board", "CONTRAST PRIORITY", ["Keep faces and silhouettes distinct.", "Red does not mean blank or cut out."]),
         ("bleed", "SOFT EDGE BLEED", ["Up to 0.15 cell inside board edge.", "Provisional; never permission over faces."]),
-        ("ui", "NATIVE UI", ["HUD, dialogue and action allocations.", "Keep label contrast; no vital story detail."]),
+        ("ui", "VIEWPORT-EDGE UI", ["Markers show placement, not bounds.", "Measure actual HUD, guide and actions."]),
     ]
     for index, (color, title, lines) in enumerate(legends):
         x = 48 + index * 440
@@ -290,7 +299,7 @@ def overview(layouts: dict[str, dict], panels: dict[str, Drawing]) -> Drawing:
     canvas.line([(48, 1134), (1752, 1134)], PALETTE["muted"])
     notes = ["Protect one completion landmark and its light recipient from cells and UI; keep the rest of the world generous.",
              "Result UI uses a central column up to 480 pt wide. Its height and scenery clearance vary; check the actual result.",
-             "Expanded / accessibility layouts reflow and scroll. Six exact exports are in native-layouts.json; these three panels are normal play.",
+             "Expanded / accessibility UI reflows outside the scrolling board. Six geometry exports are in native-layouts.json.",
              "Artwork guides use center-cover baseline crops. Runtime focal adjustment can shift the whole painting; verify each registered asset."]
     for index, message in enumerate(notes):
         canvas.text(48, 1151 + index * 32, message, 21, PALETTE["muted"])
@@ -344,7 +353,9 @@ def main() -> None:
         panels[key] = draw_layout(layouts[key])
         panels[key].save_svg(args.output / f"{key}.svg")
         mappings[key] = source_mapping(layouts[key], width, height)
-        draw_layout(layouts[key], mappings[key]).save_svg(args.output / f"source-{key}.svg")
+        source_panel = draw_layout(layouts[key], mappings[key])
+        source_panel.save_svg(args.output / f"source-{key}.svg")
+        source_panel.image.save(args.output / f"source-{key}.png")
     overview(layouts, panels).image.save(args.output / "overview.png")
     plate = scale_reference()
     plate.save_svg(args.output / "scale-reference.svg")
@@ -352,7 +363,7 @@ def main() -> None:
     generation_hashes = {path: digest(ROOT / path) for path in SOURCES}
     source_hashes = (generation_hashes if provenance["method"] == "compiled-app-geometry"
                      else exported.get("sourceSHA256", {}))
-    report = {**exported, "guideSchemaVersion": 2, "status": "technical authoring guide; not native visual acceptance",
+    report = {**exported, "guideSchemaVersion": 3, "status": "technical authoring guide; not native visual acceptance",
               "geometryExport": provenance, "sourceSHA256": source_hashes,
               "generationSourceSHA256": generation_hashes,
               "units": {"nativeLayouts": "points", "sourcePanels": "artwork pixels", "origin": "top-left; positive y downward; Core row 0 is the bottom row"},
@@ -367,9 +378,10 @@ def main() -> None:
                   "world": "Build a rich connected place; continuity, supporting structures and depth remain behind all overlays",
                   "board": "Contrast priority, not a blank area, mask, crop or compositing seam",
                   "landmark": "Place the completion landmark and recipient away from native cells, label allocations and result coverage",
-                  "ui": "Exported allocation rectangles, not measured glyph outlines; restoration backings add 4 pt horizontally at HUD and up to 8 pt horizontally / 4 pt vertically around guide content",
+                  "ui": "Violet viewport-edge markers are schematic, not measured coverage bounds. FallingSkyView places a ViewThatFits HUD at the safe top and a dynamically measured dialogue/action group at the safe bottom. Insets, text, forecast mode and Observatory skins affect actual coverage; inspect native captures.",
+                  "legacyGeometryReservations": "LandingGeometry crownFrame, communicationContentFrame and actionFrame values are retained only as unused geometry references. They do not locate the current HUD, dialogue or action controls and are not drawn as protected UI rectangles.",
                   "result": "Central column up to 480 pt; height is content/Dynamic-Type dependent. Heading clearance uses the resolved scenery anchor and a 230 pt baseline; inspect actual result UI",
-                  "expanded": "Expanded and accessibility canvases reflow/scroll; exported dialogue/action rectangles are geometry references, not the expanded-flow UI placement. Wide 1024×1200 uses portrait restoration art",
+                  "expanded": "Reading-heavy and accessibility layouts put the HUD above a scrolling board and the guide/actions after it. Legacy reservation rectangles do not describe this flow. Wide 1024×1200 uses portrait restoration art",
                   "crop": "Hatched margins are cropped by the center-cover reference only. Do not place essential story details there; runtime uses focal-adjusted whole-image placement",
               }}
     (args.output / "native-layouts.json").write_text(json.dumps(report, indent=2, sort_keys=True) + "\n")

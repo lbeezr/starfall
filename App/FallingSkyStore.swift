@@ -375,6 +375,9 @@ enum SkyTerminalSpeech { case feedback, ceremony }
            let (challenge, value) = requestedReviews.first, let score = Int(value),
            (0...challenge.target).contains(score) {
             game = ObservatoryReviewFixture.game(dense: arguments.contains("--restoration-dense"), score: score, challenge: challenge)
+            if arguments.contains("--world-silver-complete-review") {
+                journey.useReviewCompletion(ObservatoryReviewFixture.game(dense: false, score: 18, challenge: .silverPools))
+            }
         }
         #endif
         #if DEBUG
@@ -804,6 +807,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         case .kiteHarbor: startChallenge(.kiteHarbor)
         case .seedMoon: startChallenge(.seedMoon)
         case .silverPools: startChallenge(.silverPools)
+        case .frostfruitOrchard: startChallenge(.frostfruitOrchard)
         }
     }
 

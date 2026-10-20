@@ -465,6 +465,7 @@ extension XCUIApplication {
     @MainActor func skyMenuControl(_ identifier: String) -> XCUIElement {
         let control = buttons[identifier]
         revealSkyMenuElement(control)
+        revealSkyControls([control])
         return control
     }
     @MainActor func revealSkyMenuElement(_ control: XCUIElement) {
@@ -511,17 +512,21 @@ extension ObservatoryInteractionTests {
     }
 }
 
-/// Five shipping worlds share the same native input surface and save contract.
+/// Shipping worlds share the same native input surface and save contract.
 final class LandingPlaceInteractionTests: XCTestCase {
-    private let places = ["firstLight","ribbonCrossing","kiteHarbor","seedMoon","silverPools"]
+    private let places: [RestorationInteractionScenarios.ReviewLocation] = [.lantern, .ribbon, .kite, .seed, .silver, .frostfruit]
 
-    @MainActor private func launch(place: String? = nil, large: Bool = false, score: Int = 0, calm: Bool = false) -> XCUIApplication {
+    @MainActor private func launch(place: RestorationInteractionScenarios.ReviewLocation? = nil, large: Bool = false, score: Int = 0, calm: Bool = false) -> XCUIApplication {
         continueAfterFailure = false
         let app = XCUIApplication()
-        app.launchArguments = ["--starfalls-reset","--observatory-review","--observatory-dense","-calmEffects",calm ? "YES":"NO"]
-        if let place { app.launchArguments += ["-landingPlace",place] }
+        if let place {
+            app.launchArguments = ["--starfalls-reset", "--dialogue-review", "--\(place.rawValue)-restoration-review=\(score)",
+                                   "--restoration-dense", "-calmEffects", calm ? "YES" : "NO"]
+        } else {
+            app.launchArguments = ["--starfalls-reset","--observatory-review","--observatory-dense","-calmEffects",calm ? "YES":"NO"]
+            if score > 0 { app.launchArguments += ["--night-score=\(score)"] }
+        }
         if large { app.launchArguments += ["-UIPreferredContentSizeCategoryName","UICTContentSizeCategoryAccessibilityXXXL"] }
-        if score > 0 { app.launchArguments += ["--night-score=\(score)"] }
         app.launch()
         XCTAssertTrue(app.buttons["experiment.settings"].waitForExistence(timeout:10))
         return app
@@ -552,7 +557,7 @@ final class LandingPlaceInteractionTests: XCTestCase {
             let board = app.otherElements["experiment.board"], score = app.staticTexts["experiment.score"]
             let original = board.value as? String
             for place in places {
-                select(place,app:app)
+                select(place.route,app:app)
                 XCTAssertEqual(board.value as? String,original)
                 XCTAssertEqual(score.label,"0 starlight")
                 let middle = app.buttons["experiment.cell.3.3"]
@@ -568,9 +573,9 @@ final class LandingPlaceInteractionTests: XCTestCase {
                 XCTAssertFalse(app.buttons["landing.telescope"].exists)
                 XCTAssertFalse(app.buttons["landing.lantern"].exists)
                 XCTAssertTrue(app.descendants(matching:.any)["experiment.arrivalCue"].exists)
-                capture("Official-map-\(place)-\(orientation.rawValue)")
+                capture("Official-map-\(place.route)-\(orientation.rawValue)")
             }
-            // Actual native coordinate dispatch at opposite corners, after scenery replacement.
+            // Actual native coordinate dispatch after map preview/cancellation.
             var total = 0
             for cell in ["6.6","0.0"] {
                 let button = app.buttons["experiment.cell."+cell]
@@ -621,11 +626,14 @@ final class LandingPlaceInteractionTests: XCTestCase {
     @MainActor func testQuietWorldsKeepNativeCornerClearOutcome() {
         for place in places {
             let app = launch(place:place,calm:true)
+            XCTAssertTrue(app.descendants(matching: .any)["\(place.rawValue).restoration"].firstMatch.exists)
+            XCTAssertEqual(app.staticTexts["experiment.score"].label, "0 of 18 starlight collected")
             let button = app.buttons["experiment.cell.0.0"]
             let points = Int((button.value as! String).split(separator:" ")[0])!
+            XCTAssertGreaterThanOrEqual(points, 3)
             button.coordinate(withNormalizedOffset:CGVector(dx:0.5,dy:0.5)).tap()
-            XCTAssertTrue(XCTNSPredicateExpectation(predicate:NSPredicate(format:"label == %@","\(points) starlight"),object:app.staticTexts["experiment.score"]).wait(timeout:5))
-            capture("Night-quiet-\(place)")
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate:NSPredicate(format:"label == %@","\(points) of 18 starlight collected"),object:app.staticTexts["experiment.score"]).wait(timeout:5))
+            capture("Restoration-quiet-\(place.route)")
             app.terminate()
         }
     }
