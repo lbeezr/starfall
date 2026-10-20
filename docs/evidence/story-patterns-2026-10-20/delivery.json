@@ -1,15 +1,15 @@
 {
   "status": "Installed and verified by canonical updater",
-  "timestampUTC": "2026-10-20T18:25:06.974919+00:00",
+  "timestampUTC": "2026-10-20T18:32:40.540521+00:00",
   "command": "python3 scripts/device-update.py run",
-  "pullRequest": "https://github.com/lbeezr/starfall/pull/198",
-  "publishedHead": "c822bb1dfe8a922e5dbc343c8c29da7a7a34e19b",
-  "source": "6ee82a9587c7855ebed6cf34108c395fa074f491",
-  "buildID": "dev.23ebbb8d8f",
+  "pullRequest": "https://github.com/lbeezr/starfall/pull/199",
+  "publishedHead": "7b8f74b98ae50498a09c457188b087fee8ebebee",
+  "source": "3b01d71fd219589305ffca6343285b934fd9ab44",
+  "buildID": "dev.e3878b33d4",
   "bundle": "com.starfall.prototype",
   "bundleVersion": "1",
-  "verifiedTree": "eea558fccbaff12c8a9db703285b9a8bd0c14afa",
-  "verifiedLocalCommit": "3b827d9fa84bfbaab06baab5fcd722c3367c6db7",
+  "verifiedTree": "07268eadcb50af8cd7d96b1e6f7f3dc945d40f28",
+  "verifiedLocalCommit": "77ec1488ca1ea01a9eb983cbf902518bde264bc2",
   "cleanExportCoreTests": 225,
   "cleanExportCoreFailures": 0,
   "validation": {
@@ -20,13 +20,42 @@
   "device": "Original paired iPhone 16 Pro Max",
   "os": "iOS 26.6.2 (23G90)",
   "transport": "paired localNetwork; connected tunnel",
-  "installationReceiptSHA256": "f6679252d6a9b65066c7d0b609cb05168f3867fb625958c8def66eabf4e404cd",
-  "cleanExportCoreLogSHA256": "15c3bc2cb4eead0339a937bbbd7cc80614378bfea90bc76306d556ce7fb48953",
-  "phoneBuildLogSHA256": "c3b0dbfb59b7fac4c5801e66684ef03afb4bbf70858e47ee0c6e9bff5f398bfd",
+  "installationReceiptSHA256": "12dec7694de686a42162fd51daf1103029d549de48b4c024270e0c7eac02f703",
+  "cleanExportCoreLogSHA256": "ccd42f16bac6d03ae2e74607a1a6cfa9c376a1449b49a89898482f340ee72b93",
+  "phoneBuildLogSHA256": "8815e64635ef5c89ab8ecc5d9c8b21ff07ad37b00277a548e3852c529e0a8ca1",
   "notes": [
     "Canonical updater archived current main and verified signature plus actual installed application identity.",
     "No fixture launch, reset or automatic launch was performed. Existing data remains in place.",
     "Physical play, actual VoiceOver and human pacing remain unverified.",
     "Documentation-only receipt follow-up does not change the runtime fingerprint."
-  ]
+  ],
+  "previousInstallation": {
+    "status": "Installed and verified by canonical updater",
+    "timestampUTC": "2026-10-20T18:25:06.974919+00:00",
+    "command": "python3 scripts/device-update.py run",
+    "pullRequest": "https://github.com/lbeezr/starfall/pull/198",
+    "publishedHead": "c822bb1dfe8a922e5dbc343c8c29da7a7a34e19b",
+    "source": "6ee82a9587c7855ebed6cf34108c395fa074f491",
+    "buildID": "dev.23ebbb8d8f",
+    "bundle": "com.starfall.prototype",
+    "bundleVersion": "1",
+    "verifiedTree": "eea558fccbaff12c8a9db703285b9a8bd0c14afa",
+    "verifiedLocalCommit": "3b827d9fa84bfbaab06baab5fcd722c3367c6db7",
+    "cleanExportCoreTests": 225,
+    "cleanExportCoreFailures": 0,
+    "validation": {
+      "coreTests": "passed",
+      "signature": "verified",
+      "mainCIAtInstall": "pending"
+    },
+    "device": "Original paired iPhone 16 Pro Max",
+    "os": "iOS 26.6.2 (23G90)",
+    "transport": "paired localNetwork; connected tunnel",
+    "installationReceiptSHA256": "f6679252d6a9b65066c7d0b609cb05168f3867fb625958c8def66eabf4e404cd",
+    "cleanExportCoreLogSHA256": "15c3bc2cb4eead0339a937bbbd7cc80614378bfea90bc76306d556ce7fb48953",
+    "phoneBuildLogSHA256": "c3b0dbfb59b7fac4c5801e66684ef03afb4bbf70858e47ee0c6e9bff5f398bfd",
+    "notes": [
+      "First verified revision 3 installation, before the instruction-copy correction. No fixture launch or data reset."
+    ]
+  }
 }

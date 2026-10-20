@@ -2,7 +2,7 @@
 
 [Documentation instructions](AGENTS.md) give the local working contract.
 
-[Story Mode gameplay plan](STORY_MODE_GAMEPLAY_PLAN.md) proposes distinct decisions, theatrical scores, optional mastery and a campaign content budget. [Lantern/Ribbon revision 3](evidence/story-patterns-2026-10-20/README.md) is development verified and installed as `dev.23ebbb8d8f`: automatic patterns only, full seven-star lines and mixed five-family supply. [Delivered revision 2](evidence/story-cascades-2026-10-20/README.md) retains its original evidence and save contract. Later redesign, ratings and multiplayer remain proposals.
+[Story Mode gameplay plan](STORY_MODE_GAMEPLAY_PLAN.md) proposes distinct decisions, theatrical scores, optional mastery and a campaign content budget. [Lantern/Ribbon revision 3](evidence/story-patterns-2026-10-20/README.md) is development verified and installed as `dev.e3878b33d4`: automatic patterns only, full seven-star lines and mixed five-family supply. [Delivered revision 2](evidence/story-cascades-2026-10-20/README.md) retains its original evidence and save contract. Later redesign, ratings and multiplayer remain proposals.
 
 [Competitive pacing research](design/PUZZLE_PACING_RESEARCH.md) records the sparse-board feedback and primary sources. Revision 3 retains 24/25 opening stars, five incoming stars per shower and the six-/four-second cadence while removing manual clears. Native verification, human balance and delivery remain separate acceptance. The [Pokémon Puzzle League guide](design/POKEMON_PUZZLE_LEAGUE_REFERENCE.md) retains the primary reference and future local versus/co-op direction.
 
