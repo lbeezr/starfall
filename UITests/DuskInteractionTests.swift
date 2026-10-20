@@ -19,12 +19,19 @@ final class DuskInteractionTests: XCTestCase {
         let attachment = XCTAttachment(screenshot: app.screenshot())
         attachment.name = name; attachment.lifetime = .keepAlways; add(attachment)
     }
+    @MainActor private func openInitialGuide(_ app: XCUIApplication) {
+        let reopen = app.buttons["sky.dialogue.reopen"]
+        app.revealSkyControls([reopen])
+        reopen.tap()
+        XCTAssertTrue(app.staticTexts["experiment.message"].waitForExistence(timeout: 5))
+    }
     @MainActor func testFiveFeedsCollapseAndRestoreCommittedResult() {
         let app = launch("unfed"); defer { app.terminate() }
         let dusk = app.buttons["experiment.cell.0.3"], next = app.buttons["experiment.next"]
         XCTAssertTrue(dusk.label.contains("fed 0 of 5 times"))
         XCTAssertFalse(app.staticTexts["dusk.cue"].exists)
         XCTAssertFalse(app.buttons["technique.arrange"].exists)
+        openInitialGuide(app)
         XCTAssertTrue(app.staticTexts["experiment.message"].label.contains("5 more showers with a touching star"))
         XCTAssertTrue(app.buttons["experiment.cell.0.2"].label.contains("drained by Dusk"))
         capture(app,"dusk-unfed")
@@ -89,6 +96,7 @@ final class DuskInteractionTests: XCTestCase {
         NativeSystemMotionSettings.set(true, on: motion); settings.terminate()
         let app = launch("imminent", extra: ["-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"])
         defer { app.terminate() }
+        openInitialGuide(app)
         let cue = app.staticTexts["experiment.message"], next = app.buttons["experiment.next"]
         for _ in 0..<5 { if cue.isHittable && cue.frame.maxY <= app.frame.maxY { break }; app.swipeUp() }
         XCTAssertTrue(cue.isHittable)

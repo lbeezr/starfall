@@ -20,18 +20,34 @@ final class ObservatoryInteractionTests: XCTestCase {
         let app = launch(); defer { app.terminate() }
         let menu = app.buttons["experiment.settings"]
         XCTAssertGreaterThanOrEqual(menu.frame.width, 44)
+        capture(app, "Celestial-HUD-collapsed")
+        let reopen = app.buttons["sky.dialogue.reopen"]
+        app.revealSkyControls([reopen])
+        reopen.tap()
+        XCTAssertTrue(app.staticTexts["experiment.message"].waitForExistence(timeout: 5))
         XCTAssertEqual(app.staticTexts["experiment.message"].label, "Sunny. Tap a matching group to clear it. Small stars count as 1; grown stars count as 2. You need a total of 3. Dusk will eat 4 stars after 5 more showers with a touching star.")
         let before = app.otherElements["experiment.board"].value as? String
         capture(app, "Celestial-HUD-welcome")
         menu.tap()
         XCTAssertFalse(app.buttons["experiment.cell.0.0"].exists)
+        let returnToSky = app.buttons["experiment.done"]
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+            returnToSky.exists && returnToSky.isHittable && app.frame.contains(returnToSky.frame)
+        }, object: nil).wait(timeout: 5))
         capture(app, "Celestial-menu")
         app.skyMenuControl("experiment.help").tap()
+        let title = app.staticTexts["sky.menu.title"]
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "How to play"), object: title).wait(timeout: 5))
         XCTAssertTrue(app.staticTexts["Tap a matching group"].waitForExistence(timeout: 5))
         capture(app, "Celestial-how-to-play")
-        app.navigationBars.buttons["Sky menu"].tap()
+        let back = app.buttons["sky.menu.back"]
+        XCTAssertTrue(back.waitForExistence(timeout: 5))
+        XCTAssertTrue(back.isHittable)
+        XCTAssertGreaterThanOrEqual(back.frame.width, 44)
+        XCTAssertGreaterThanOrEqual(back.frame.height, 44)
+        back.tap()
         app.skyMenuControl("experiment.balance").tap()
-        XCTAssertTrue(app.buttons["experiment.pace"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["experiment.pace.gentle"].waitForExistence(timeout: 5))
         capture(app, "Celestial-balance")
         app.buttons["experiment.done"].tap()
         XCTAssertEqual(app.otherElements["experiment.board"].value as? String, before)
@@ -51,8 +67,8 @@ final class ObservatoryInteractionTests: XCTestCase {
         XCTAssertNotNil(before)
         menu.tap()
         app.skyMenuControl("experiment.help").tap()
-        let navigation = app.navigationBars["How to play"]
-        XCTAssertTrue(navigation.waitForExistence(timeout: 5))
+        let title = app.staticTexts["sky.menu.title"]
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "How to play"), object: title).wait(timeout: 5))
         let last = app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@",
             "Restore Lantern Landing with 18 starlight.")).firstMatch
         var reachedEnd = false
@@ -62,7 +78,7 @@ final class ObservatoryInteractionTests: XCTestCase {
         let maximumReadingScrolls = app.frame.width < 420 ? 72 : 48
         for step in 0..<maximumReadingScrolls {
             XCTAssertEqual(app.state, .runningForeground)
-            XCTAssertTrue(navigation.exists, "Remain in help after every scroll")
+            XCTAssertEqual(title.label, "How to play", "Remain in help after every scroll")
             XCTAssertTrue(app.buttons["experiment.done"].isHittable)
             capture(app, String(format: "help-largest-step-%02d", step))
             if last.exists, last.isHittable, last.frame.maxY <= app.frame.maxY - 40 {
@@ -206,7 +222,7 @@ extension ObservatoryInteractionTests {
         try focus(app.buttons["experiment.settings"], expecting: "Sky menu"); activate()
         XCTAssertTrue(app.buttons["experiment.done"].waitForExistence(timeout: 5))
         XCTAssertFalse(app.buttons["experiment.cell.0.0"].exists)
-        try focus(app.buttons["experiment.done"], expecting: "Done"); activate()
+        try focus(app.buttons["experiment.done"], expecting: "Return to sky"); activate()
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
             ((try? vo.service.currentSpeech().utterance) ?? "").localizedCaseInsensitiveContains("Sky menu")
         }, object: nil).wait(timeout: 5))
@@ -477,7 +493,7 @@ extension ObservatoryInteractionTests {
         try vo.focus(phase, expecting: "Sunny")
         try vo.choose(sky.buttons["experiment.settings"], expecting: "Sky menu")
         XCTAssertTrue(sky.buttons["experiment.done"].waitForExistence(timeout: 5)); XCTAssertFalse(phase.exists)
-        try vo.choose(sky.buttons["experiment.done"], expecting: "Done")
+        try vo.choose(sky.buttons["experiment.done"], expecting: "Return to sky")
         XCTAssertTrue(phase.waitForExistence(timeout: 5))
         sky.terminate(); vo.resetFocus()
         sky.launchArguments = ["--starfalls-reset", "--constellation-fixture=stormWarning"]
@@ -588,7 +604,7 @@ final class LandingPlaceInteractionTests: XCTestCase {
                 let apron = app.buttons["experiment.cell.0.3"].frame.maxY + 24
                 // The header is fixed. Once the board has scrolled upward, use
                 // its visible empty apron instead of dragging over that header.
-                let startY = guide.frame.minY < app.frame.maxY-100
+                let startY = guide.exists && !guide.frame.isEmpty && guide.frame.minY < app.frame.maxY-100
                     ? min(app.frame.maxY-60,max(app.frame.midY,guide.frame.minY+60))
                     : apron < app.frame.maxY-40 ? apron
                     : app.buttons["experiment.cell.6.3"].frame.minY-16

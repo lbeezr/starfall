@@ -94,14 +94,28 @@ extension XCUIApplication {
     /// Read an inner fixed-height guide if present; a flowing guide instead moves
     /// with the page. Both must end above reachable actions without changing play.
     @MainActor func readSkyGuideToEnd(actions: [XCUIElement], file: StaticString = #filePath, line: UInt = #line) {
-        revealSkyControls(actions, file: file, line: line)
         let message = staticTexts["experiment.message"]
+        if !message.exists {
+            let reopen = buttons["sky.dialogue.reopen"]
+            revealSkyControls([reopen], file: file, line: line)
+            XCTAssertTrue(reopen.isEnabled, file: file, line: line)
+            reopen.tap()
+        }
+        guard message.waitForExistence(timeout: 5) else {
+            XCTFail("The guide must be open before reading its final line", file: file, line: line)
+            return
+        }
+        revealSkyControls(actions, file: file, line: line)
+        XCTAssertTrue(message.exists, "Revealing actions must retain the open guide", file: file, line: line)
         let inner = scrollViews.containing(.staticText, identifier: "experiment.message")
             .allElementsBoundByIndex.first { !$0.buttons["experiment.cell.0.0"].exists }
         if let inner {
             for _ in 0..<4 where message.frame.maxY > inner.frame.maxY + 1 { inner.swipeUp() }
             XCTAssertLessThanOrEqual(message.frame.maxY, inner.frame.maxY + 1, file: file, line: line)
         }
+        XCTAssertTrue(message.exists, file: file, line: line)
+        XCTAssertFalse(message.frame.isEmpty, file: file, line: line)
+        XCTAssertTrue(message.isHittable, "The guide's final line must remain visible", file: file, line: line)
         XCTAssertLessThanOrEqual(message.frame.maxY, actions.map(\.frame.minY).min()!, file: file, line: line)
         XCTAssertTrue(actions.allSatisfy(\.isHittable), file: file, line: line)
     }

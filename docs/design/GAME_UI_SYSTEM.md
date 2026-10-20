@@ -94,22 +94,22 @@ The adopted native family uses A. Continue to judge its identity and clarity at 
 
 - **Materials:** enamel body, lit enamel, brass edge, pressed brass, moonlight ink, subdued ink and opaque contrast fallback.
 - **Type:** existing wordmark for identity; native display/action typography for menus; clear native text and exact digits during play. Labels stay separate from artwork and support wrapping and Dynamic Type.
-- **Registered dimensions:** 20–24-point utility glyphs with at least 44-point targets (45 points for gameplay); 40-point home emblems; 52/64-point horizontal action skins. Tall labels switch to the reading skin and measured content with 32-point insets. Mode art stacks above labels at accessibility sizes; text never scales down to fit artwork.
+- **Registered dimensions:** 20–24-point rendered utilities with 48-point utility targets (45 points for gameplay actions); 40-point home emblems; 52/64-point horizontal action skins. Tall labels switch to the reading skin and measured content with 32-point insets. Mode art stacks above labels at accessibility sizes; text never scales down to fit artwork.
 - **Geometry:** distinguish visible silhouette, content bounds, stretch region and touch bounds. A small pause glyph retains a full target.
 
 ### 2. Authored production assets
 
-The concept sheet remains a reference. The native catalog packages twenty template vector glyphs, three illustrated mode emblems and three reusable skins from the retained masters. Complete screen paintings from the atlas and baked readable labels are not runtime controls.
+The concept sheet remains a reference. The native catalog packages twenty rendered original-color utility icons, three illustrated mode emblems and three reusable skins from the retained masters. The October 20 utility refinement replaces the former template PDF family at the same asset names; those SVG/PDF sources remain historical source-kit material. Complete screen paintings from the atlas and baked readable labels are not runtime controls.
 
 | Master | Production treatment | Use |
 | --- | --- | --- |
-| Dedicated SVG glyphs | Consistent 24-unit family, matched weight and optical alignment; template PDF renditions derived from retained SVG masters | Story lantern, Free Play comet, tutorial constellation, pause/play, settings, home/back, restart, sound, haptics, calm effects |
-| Mode emblems | More detailed lantern/comet/constellation artwork behind the corresponding glyph role | Home/story selection; HUD uses simpler glyphs |
+| Rendered utility icons | Transparent pearl/enamel/brass masters, deterministic 24-point registration and original-color 1×/2×/3× PNG renditions | Story lantern, Free Play comet, tutorial constellation, pause/play, settings, home/back, restart, sound, haptics, calm effects |
+| Mode emblems | Lantern/comet/constellation masters reused for their matching small utility roles | Home/story selection and labeled menu destinations |
 | Button/panel skins | Transparent enamel/brass artwork, fixed corners/end fittings and a stretchable middle | Shared actions and panels |
 | Material detail | Bounded texture/highlight layers, exported once | Static surfaces; no per-frame texture production |
 | Brand, scenery and cast | Existing masters and runtime owners | No alternate mascot or redesigned star bodies |
 
-Keep editable SVG masters with meaning, nominal size and alignment notes. Verify the chosen asset-catalog rendition in Debug and Release. Add no runtime SVG parser or external SDK. SwiftUI can supply simple geometry and state overlays; authored artwork supplies painted material detail where code-only approximations lose the approved character.
+Keep unchanged generated masters, exact prompts, source hashes and deterministic registration metadata. The utility exporter trims only documented faint alpha fringe before proportional downsampling; never slice a screen mock or stretch an icon. Retain the superseded SVG masters as history. Verify the chosen asset-catalog rendition in Debug and Release. Add no runtime SVG parser or external SDK. SwiftUI can supply simple geometry and state overlays; authored artwork supplies painted material detail where code-only approximations lose the approved character.
 
 Fixed corners prevent long labels from stretching a lantern or bevel. SwiftUI's [image cap insets](https://developer.apple.com/documentation/swiftui/image/resizable%28capinsets%3Aresizingmode%3A%29/) support this boundary. Keep ornamental caps outside label bounds and reduce decoration as text grows.
 
@@ -117,12 +117,14 @@ Fixed corners prevent long labels from stretching a lantern or bevel. SwiftUI's 
 
 | Component | Variants/states | Native owner |
 | --- | --- | --- |
-| Action button | Primary, secondary, quiet; resting, pressed, disabled, focused | `StarfallButtonStyle` |
-| Utility icon control | Spoken label; optional visible label in reading contexts | `StarfallGameButtonStyle`, `ObservatoryIcon` |
-| Instrument panel | Compact contrast surface and authored reading panel; large-text reflow | `StarfallTheme`, `ObservatorySurface`, `SkyMenuSurface` |
+| Action button | Primary, secondary, compact, quiet; resting, pressed, disabled, focused | `StarfallButtonStyle` |
+| Utility icon control | Rendered silhouette, pressed/disabled/focused states, spoken label; no extra visible bezel | `StarfallUtilityButtonStyle`, `ObservatoryIcon` |
+| Instrument panel | Half-scale compact fitting and full reading panel; fixed header/footer, scrolling body, large-text reflow | `StarfallTheme`, `ObservatorySurface`, `SkyMenuSurface` |
 | Preference toggle | On/off, pressed, disabled, focused; native label/value semantics | `ObservatoryToggleStyle`, `SkyPreferenceToggle`, `SkyFeelSection` |
 | Gameplay instruments | Exact score/goal, committed forecast and pause action | `FallingSkyHUD`, `SkyShowerTrail` |
 | Feedback surface | Brief active message, retained/reopened message, player-paced script, important outcome | `SkyDialogueOverlay`, `SkyDialogueBubble` |
+
+Settings, Help and balance share `SkyMenuSurface`. A transparent full-screen native modal retains focus/dismissal ownership while `SkyMenuPresentation` supplies the game scrim and panel height; no system sheet glass surrounds the authored instrument. The retained board withdraws its accessibility group, value and rotor while a modal covers it.
 
 Use real native buttons, toggles and navigation beneath the skins. SwiftUI supports [custom control styles](https://developer.apple.com/documentation/swiftui/view-styles) without creating a separate input system. Components receive values, bindings and narrow actions; they own no game store, save or timer.
 

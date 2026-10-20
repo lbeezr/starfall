@@ -1,19 +1,19 @@
 # Observatory UI production handoff
 
-**Status:** Native import and shared components adopted for development · **Source kit:** `cfd6ab7` · **Owner:** Current implementer · **Updated:** October 19, 2026
+**Status:** Shared family adopted for development; rendered utility catalog imported, native review separate · **Original kit:** `cfd6ab7` · **Owner:** Current implementer · **Updated:** October 20, 2026
 
-The native app uses three mode emblems, one shared action skin, one reading-panel skin and one compact utility bezel. Labels, interaction states and accessibility remain native. Primary, secondary and mode actions share the same button geometry and source bitmap. The [game UI system](../../docs/design/GAME_UI_SYSTEM.md) owns art direction and screen migration. The [atlas](../../docs/design/interface/atlas-2026-10-19/README.md) is a concept reference, not a source of sliced runtime artwork.
+The native app uses three mode emblems, twenty rendered utility icons, one action skin and one reading-panel skin. The original utility bezel remains a retained catalog resource; the shared utility control now presents the icon alone in a clear 48-point target. Labels, interaction states and accessibility remain native. Primary/mode actions share measured action geometry; secondary and compact actions share the compact reading surface. The [game UI system](../../docs/design/GAME_UI_SYSTEM.md) owns art direction and screen migration. The [atlas](../../docs/design/interface/atlas-2026-10-19/README.md) is a concept reference, not a source of sliced runtime artwork.
 
-The [raster manifest](raster-manifest.json) records actual source/export bounds, registration, hashes and slice regions. The [glyph manifest](glyph-manifest.json) records vector and template exports. These retain source/export status at production time; native import does not rewrite them. The registered action skin uses a wide source with fixed-height end fittings, so it stretches horizontally only. Native integration adds no font registration, preference keys or runtime dependency.
+The [raster manifest](raster-manifest.json) records emblem/skin registration, hashes and slice regions. The [rendered utility manifest](rendered-utility-manifest.json) records current PNG registration, provenance, crop, alpha and budgets; the [glyph manifest](glyph-manifest.json) retains historical vector/template export evidence. The registered action skin has fixed-height end fittings and stretches horizontally only. Native integration adds no font registration, preference keys, runtime importer or dependency.
 
 ## Keep the existing native owners
 
 | Concern | Existing owner | Handoff boundary |
 | --- | --- | --- |
 | Color, material, type, spacing and control roles | [StarfallTheme](../../App/StarfallTheme.swift) | Native serif display/action roles, pearl ink and enamel/brass colors; avoid screen-local style copies. |
-| Primary, secondary, quiet and ceremony actions | `StarfallButtonStyle` in `StarfallTheme`; `ObservatoryActionLayout` | Native `Button`, measured wrapping labels, enabled/focus semantics and full hit shape. One measured skin plus native material state changes. |
+| Primary, secondary, compact, quiet and ceremony actions | `StarfallButtonStyle` in `StarfallTheme`; `ObservatoryActionLayout` | Native `Button`, measured wrapping labels, enabled/focus semantics and full hit shape. Shared authored action/compact surfaces with native state changes. |
 | Glyphs, mode emblems and artwork registration | [ObservatoryArtwork](../../App/ObservatoryArtwork.swift) | `ObservatoryIcon`, `ObservatoryEmblem`, `ObservatoryModeLabel`, `ObservatorySkin` and passive `ObservatorySurface`; no game state or runtime SVG parsing. |
-| Small gameplay actions | `StarfallGameButtonStyle` in `StarfallTheme` | Preserve the existing 45-point minimum target. A 20–24-point glyph or 32-point bezel does not shrink it. |
+| Small gameplay actions | `StarfallUtilityButtonStyle` / `StarfallGameButtonStyle` in `StarfallTheme` | Utilities retain clear 48-point targets; text-bearing gameplay actions retain 45-point targets. The rendered icon does not shrink its hit region or acquire a default bezel. |
 | Passive reading surface | `StarfallPanelStyle` / `starfallPanel`; `observatoryReadingPanel` | Small native notices retain compact insets; full reading surfaces use the registered 32-point fittings. Neither owns input, accessibility grouping or clipping of content. |
 | Sound, Haptics and Calm effects | [SkyPreferences](../../App/SkyPreferences.swift), `SkyPreferenceToggle`, `SkyFeelSection`; `ObservatoryToggleStyle` | Existing bindings, native switch accessibility representation, thumb position/check cues and large-text reflow; no preference keys added. |
 | Score, next shower and pause | [FallingSkyHUD](../../App/FallingSkyHUD.swift), `SkyShowerTrail` | Keep exact values, existing countdown and forecast ownership. Skins never schedule or commit gameplay. |
@@ -23,11 +23,13 @@ Chrome anchors to the root viewport's safe edges. `LandingGeometry` continues to
 
 ## Native catalog contract
 
-`App/Assets.xcassets/ObservatoryUI` contains 26 image sets: twenty `ObservatoryGlyph…` PDF templates with `preserves-vector-representation`, and six original-color `ObservatoryEmblem…` / `ObservatoryButtonAction` / `ObservatoryPanelReading` / `ObservatoryUtilityBezel` sets with explicit 1×, 2× and 3× PNG entries. Each imported payload is byte-identical to its kit export. SVG masters and glyph PNG alternatives are not copied into the app.
+`App/Assets.xcassets/ObservatoryUI` contains 26 original-color image sets: twenty `ObservatoryGlyph…` utility sets and six `ObservatoryEmblem…` / `ObservatoryButtonAction` / `ObservatoryPanelReading` / `ObservatoryUtilityBezel` sets. Each has explicit 1×, 2× and 3× PNG entries, for 78 payloads. Every imported payload is byte-identical to its kit export. Historical SVG masters, PDFs and template PNG alternatives remain outside the app.
 
-Catalog `Contents.json` owns native names, density, template intent and vector preservation. `ObservatorySkin` owns point sizes and cap insets. Kit manifests own source/export identity and measurements; they do not describe compiled asset-catalog output or establish native acceptance. Artwork changes require new exports and registration checks before catalog replacement. Metadata-only app changes do not alter the original manifests or historical export evidence.
+Catalog `Contents.json` owns stable native names, density and original-color rendering intent. `ObservatoryIcon` uses original rendering; `ObservatorySkin` owns point sizes and cap insets. Kit manifests own source/export identity and measurements; they do not describe compiled catalog output or establish native acceptance. No runtime SVG parser, importer or raster generator is introduced. Artwork changes require new exports and registration checks before catalog replacement.
 
-The imported payload is 814,454 encoded bytes: 31,579 bytes of vector PDFs and 782,875 bytes of raster PNGs. Catalog JSON brings the source catalog to 822,467 bytes. Compiled catalog size, process memory and GPU storage require native measurement.
+The imported PNG payload is 1,023,964 encoded bytes: 241,089 utility bytes and 782,875 emblem/skin bytes. Catalog JSON adds 11,414 bytes. Compiled catalog size, process memory and GPU storage require native measurement.
+
+Utility masters are unchanged originals bound to exact prompts/source hashes in [their provenance record](masters/utilities-v2/PROMPTS.json). Seventeen are new individual ImageGen outputs; three reuse the original mode-emblem sources. [The exporter](build/README.md) validates the entire roster before publication and crops alpha ≥16 subject bounds plus four source pixels of bleed. Every retained crop pixel keeps its colors and alpha before normal proportional resampling. The manifest records the discarded faint fringe; historical source/export evidence is not overwritten.
 
 ## Asset roster and point-space registration
 
@@ -40,11 +42,12 @@ Use stable semantic IDs below, with separate source and export records. Original
 | `emblem-tutorial` | Connected constellation with a recognizable learning/discovery silhouette; no label or surrounding medallion | 144 × 144 px / 48 × 48 pt | Same box and optical weight as Story. Avoid tiny details needed to identify the action. |
 | `button-action` | Midnight enamel, fine brass, fixed corner/end fittings, uninterrupted label area | 960 × 192 px / 320 × 64 pt | Shared primary, secondary and mode skin; horizontal stretch at fixed height. |
 | `panel-reading` | Quiet enamel field, thin edge, corner-only fittings; no header, divider, portrait or close button baked in | 480 × 480 px / 160 × 160 pt | Pause, settings and reading surfaces; nine-slice in both axes. |
-| `utility-bezel` | Small simple rim with quiet center; no action glyph baked in | 96 × 96 px / 32 × 32 pt | Optional 32-point fitting around a 20-point glyph inside a full target; aspect fit, never nine-slice. Unframed utilities can use 24-point glyphs. |
+| Twenty rendered utilities | Pearl-enamel/brass controls and retained illustrated mode symbols | 72 × 72 px / 24 × 24 pt | Original color, aspect fit; 20-point content region with transparent padding. Native display currently 16–24 pt according to the call site. |
+| `utility-bezel` | Retained original rim; no action glyph baked in | 96 × 96 px / 32 × 32 pt | Historical optional fitting; not applied by the current shared utility control. |
 
-The three emblem labels remain `Story Mode`, `Free Play` and `Tutorial` in native text. Their utility equivalents come from the dedicated SVG family. Use emblems for major destinations and simple glyphs during play. Keep existing world art, wordmark, cast and Crystal Comet under their current owners; this package does not replace them.
+The three emblem labels remain `Story Mode`, `Free Play` and `Tutorial` in native text. Their utility equivalents reuse the illustrated masters at smaller registration. Keep existing world art, wordmark, cast and Crystal Comet under their current owners; this package does not replace them.
 
-The six 3× raster exports total 1,944,576 decoded RGBA bytes (about 1.85 MiB). All eighteen density exports total 3,024,896 decoded bytes (about 2.88 MiB), before renderer copies or GPU storage. The manifests record encoded sizes. These are calculable pixel-roster costs, not measured process memory.
+All twenty-six 3× selections total 2,359,296 decoded RGBA bytes. All 78 density files total 3,670,016 decoded bytes, before renderer copies or GPU storage. The manifests record encoded sizes. These are calculable pixel-roster costs, not measured process memory.
 
 ## Nine-slice and content boundaries
 
@@ -59,11 +62,11 @@ The registered caps preserve the generated fittings. Stretch specimens exercise 
 
 The reading panel uses nine-slice: corners stay fixed, top/bottom strips stretch horizontally, side strips stretch vertically, and the plain center stretches in both axes. The action skin uses full-height fixed ends and a horizontally stretched middle. Its side diamonds must never stretch vertically. Content bounds are independent of alpha bounds, and touch bounds are independent of both.
 
-The action's two fixed ends occupy 96 pt; the registered geometric floor is 120 × 64 pt before labels are considered. A compact action scales the entire 64-point artwork uniformly to 52 points, then stretches horizontally, preserving the scaled endcaps. Use at least 98 × 52 pt for that compact geometry, and more whenever text requires it. A tall or multiline action uses the reading-panel skin and grows with its content. The panel's registered geometric floor is 80 × 80 pt, while usable reading layouts require measured text plus the 32-point content insets. Do not shrink text to make a skin fit.
+The action's two fixed ends occupy 96 pt; the registered geometric floor is 120 × 64 pt before labels are considered. Its 52-point primary variant scales artwork uniformly before horizontal stretching. Secondary/compact roles use the shared half-scale reading-surface fittings with at least 48-point sheet targets. A tall primary action uses the full reading-panel skin and grows with its content. Full reading layouts require measured text plus the 32-point content insets. Do not shrink text to make a skin fit.
 
 `ObservatoryActionLayout` measures the native label and selects a 52- or 64-point action height; labels exceeding that envelope are remeasured with the reading panel's 32-point insets on every side. Mode emblems and titles stack vertically at accessibility text sizes. Geometry does not change between rest, press and disabled states.
 
-Every export has transparent outer padding; actual nonzero-alpha and alpha≥128 body boxes are recorded separately. The source crop uses alpha≥2 plus two source pixels. Only detached alpha=1 noise outside that crop is omitted; counts are recorded and source masters remain unchanged. Review over midnight, bright clouds and checkerboard, including the actual-size brass edge. The intended brass face is approximately 1 pt with localized highlights; source glow is not a rim measurement.
+Every export has transparent outer padding. The original emblem/skin recipe uses alpha≥2 plus two source pixels and records discarded alpha=1 noise. The rendered utility recipe uses alpha≥16 plus four source pixels and records the discarded fringe count, maximum and sum. Each manifest owns its actual crop and alpha bounds; source masters remain unchanged. Review the actual-size edge over midnight and bright scenery; source glow is not a rim measurement.
 
 ## State production: fixed art, native response
 
@@ -72,8 +75,8 @@ Keep one rest master per visual object. Independently generated pressed, selecte
 | State or role | Native treatment | Required invariant |
 | --- | --- | --- |
 | Primary / mode rest | Shared enamel/brass master with crisp pearl label; richer emblem only on mode actions | Fixed canvas, content alignment and target. No continuous shine. |
-| Secondary rest | Same registered master with a modest native brightness reduction behind the separate pearl label | No different silhouette or independent source generation. Label contrast is not reduced with the artwork. |
-| Quiet / gameplay utility | Native glyph; minimal backing only where needed for contrast, optionally the utility bezel | Do not wrap every HUD action in the home button skin. Full target stays intact. |
+| Secondary / compact rest | Shared compact reading-surface fittings behind a separate native label | No per-screen silhouette or independent state source. Label contrast is not reduced with the artwork. |
+| Quiet / gameplay utility | Original-color rendered icon in a clear native target; shared utility style has no bezel | Do not wrap every HUD action in the home button skin. Full target stays intact. |
 | Pressed | Immediate face darkening or subtle inset highlight; optional bounded light response | No target movement, label re-layout or geometry swap. Navigation is never delayed for decoration. |
 | Selected, where meaningful | Stable selection mark plus stronger edge/ink emphasis | Selection remains distinguishable in grayscale and without glow; a press is not selection. |
 | Disabled | Subdued native ink/rim and no activation response; retain the meaningful label and selected value if present | Native disabled semantics prevent activation. Do not dim the entire component until its label disappears. |
@@ -90,7 +93,9 @@ Any temporary visual face displacement must remain within a fixed target and con
 
 All readable button, panel and preference labels stay separate from painted skins. `StarfallTheme.Typography` uses native scalable serif display, heading and action roles, with functional body text and exact native digits. No custom font is registered. A new display face remains a separate font-production decision; a generated letter sheet is not a usable font. Preserve semantic scaling, wrapping, punctuation and supported-character fallback. Never outline whole labels into SVG merely to reproduce a mock.
 
-The dedicated glyph masters use a consistent 24-unit viewbox. Native utility display is 20–24 pt, with at least a 44 × 44 pt target; current gameplay controls retain 45 × 45 pt. Prefer an Xcode-supported, verified vector rendition without adding a runtime parser. Keep the source glyph and all derived exports registered to the same optical center. Symbols alone do not carry accessibility names: the native control supplies a meaningful action label and value when relevant.
+The current utility PNG family has consistent 24-point registration at 1×/2×/3×; the app uses original rendering rather than template tint. Existing call sites use 16–24-point artwork, while shared utility actions retain clear 48×48-point targets and text-bearing gameplay controls retain 45×45-point targets. Keep registration stable across density and state. Symbols alone do not carry accessibility names: the native control supplies a meaningful action label and value when relevant. Historical 24-unit SVGs/PDFs are retained source, not a runtime import path.
+
+The [small-size specimen](previews/rendered-utilities-small-sizes.png) was inspected independently of the [raw-source preview](previews/rendered-utilities-raw-sources.png). The mode symbols and Trace are finer than solid controls, and Back has a heavier face/rim than Next. These preserved source-art differences are native review limits, not export blockers. Check their balance in the actual HUD and settings before claiming device readability.
 
 Pearl display text must remain legible with its halo removed. HUD numbers use exact native values and stable digit widths. Body/explanation text uses the clear functional face. Crystal Comet remains the finite celebration voice with its [existing fallback contract](../CrystalComet/NATIVE.md); its raster alphabet is not a menu-font substitute. Proposed ordinary essential-text contrast is at least 4.5:1 against the worst actual backdrop behind the glyphs, including translucent surfaces composited over bright scenery.
 
@@ -120,6 +125,6 @@ The asset package's structural and visual specimen review cannot establish nativ
 
 ## Native adoption and evidence
 
-The source kit was reviewed against the accepted design at `cfd6ab7`. Native integration includes `ObservatoryArtwork`, shared theme/style changes, the 26 catalog sets and `ObservatoryArtworkTests`. The [native record](../../docs/evidence/observatory-ui-native-2026-10-19/README.md) and [capture index](../../docs/evidence/observatory-ui-native-2026-10-19/captures.json) identify exact native coverage and inspected appearances. The shared family is adopted for development; canonical delivery status is recorded in the native evidence. Debug/Release builds, hosted and interaction checks, inspected layouts, motion, actual VoiceOver and canonical device delivery remain distinct evidence categories.
+The original source kit was reviewed at `cfd6ab7`. Native integration includes `ObservatoryArtwork`, shared theme/style changes, 26 catalog sets and `ObservatoryArtworkTests`. The [original native record](../../docs/evidence/observatory-ui-native-2026-10-19/README.md) and [capture index](../../docs/evidence/observatory-ui-native-2026-10-19/captures.json) retain their exact earlier coverage. The [rendered utility record](RENDERED_UTILITIES.md) covers the October 20 PNG replacement’s provenance, offline checks and remaining native review. Debug/Release builds, hosted and interaction checks, inspected layouts, motion, actual VoiceOver and canonical device delivery remain distinct evidence categories.
 
 The completed source/export and browser checks remain in their original [source-bound evidence](../../docs/evidence/observatory-ui-kit-2026-10-19/README.md); they are not rewritten as native acceptance.

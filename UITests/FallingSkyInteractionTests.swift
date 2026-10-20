@@ -41,6 +41,16 @@ final class FallingSkyInteractionTests: XCTestCase {
         menu.tap()
     }
 
+    @MainActor private func openPreferences(_ app: XCUIApplication) {
+        openMenu(app)
+        let preferences = app.buttons["experiment.preferences"]
+        XCTAssertTrue(preferences.waitForExistence(timeout: 5))
+        app.revealSkyControls([preferences])
+        preferences.tap()
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "Settings & help"),
+            object: app.staticTexts["sky.menu.title"]).wait(timeout: 5))
+    }
+
     @MainActor private func resumeRestoredPaused(_ app: XCUIApplication) {
         let resume = app.buttons["sky.resume"]
         XCTAssertTrue(resume.waitForExistence(timeout: 10)); resume.tap()
@@ -107,7 +117,7 @@ final class FallingSkyInteractionTests: XCTestCase {
         }
         preferences.terminate()
         let app = launch(); defer { app.terminate() }
-        openMenu(app)
+        openPreferences(app)
         let calm = app.switches["experiment.calm"]
         app.revealSkyMenuElement(calm)
         XCTAssertTrue(calm.waitForExistence(timeout: 5))
@@ -281,7 +291,8 @@ final class FallingSkyInteractionTests: XCTestCase {
         app.launchArguments = ["--starfalls-reset", "-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"]
         app.launch(); defer { app.terminate() }
         let settings = app.buttons["experiment.settings"]
-        XCTAssertTrue(settings.waitForExistence(timeout: 10)); settings.tap()
+        XCTAssertTrue(settings.waitForExistence(timeout: 10))
+        openPreferences(app)
         for id in ["experiment.sound", "experiment.haptics", "experiment.calm"] {
             let control = app.switches[id]
             app.revealSkyMenuElement(control)
@@ -301,7 +312,8 @@ final class FallingSkyInteractionTests: XCTestCase {
         capture(app, "falling-sky-largest-text-game")
         app.terminate(); app.launchArguments = []; app.launch()
         resumeRestoredPaused(app)
-        XCTAssertTrue(settings.waitForExistence(timeout: 10)); settings.tap()
+        XCTAssertTrue(settings.waitForExistence(timeout: 10))
+        openPreferences(app)
         for id in ["experiment.sound", "experiment.haptics", "experiment.calm"] {
             let control = app.switches[id]
             app.revealSkyMenuElement(control)
@@ -367,7 +379,7 @@ final class FallingSkyInteractionTests: XCTestCase {
         app.buttons[clearID].doubleTap()
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label != %@", "0 starlight"), object: app.staticTexts["experiment.score"]).wait(timeout: 5))
         capture(app, "automatic-after-clear-paused")
-        openMenu(app)
+        openPreferences(app)
         let calm = app.switches["experiment.calm"]
         app.revealSkyMenuElement(calm)
         XCTAssertTrue(calm.waitForExistence(timeout: 5))
@@ -466,10 +478,30 @@ final class FallingSkyInteractionTests: XCTestCase {
         let freshBoard = app.otherElements["experiment.board"].value as? String
         openMenu(app)
         app.skyMenuControl("experiment.balance").tap()
-        let pace = app.buttons["experiment.pace"], frequency = app.buttons["experiment.darkFrequency"]
+        let pace = app.descendants(matching: .any).matching(identifier: "experiment.pace").firstMatch
+        let frequency = app.descendants(matching: .any).matching(identifier: "experiment.darkFrequency").firstMatch
+        let gentle = app.buttons["experiment.pace.gentle"]
+        let brisk = app.buttons["experiment.pace.brisk"]
+        let frequent = app.buttons["experiment.darkFrequency.frequent"]
+        let regular = app.buttons["experiment.darkFrequency.regular"]
+        @MainActor func selectChoice(_ choice: XCUIElement, title: String) {
+            XCTAssertTrue(choice.waitForExistence(timeout: 5))
+            XCTAssertEqual(choice.label, title)
+            app.revealSkyControls([choice])
+            let sizeBeforeSelection = choice.frame.size
+            XCTAssertGreaterThanOrEqual(sizeBeforeSelection.width, 48)
+            XCTAssertGreaterThanOrEqual(sizeBeforeSelection.height, 48)
+            choice.tap()
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "selected == true"), object: choice).wait(timeout: 5))
+            XCTAssertEqual(choice.frame.width, sizeBeforeSelection.width, accuracy: 0.5,
+                           "Selection changes the material, not the choice target width")
+            XCTAssertEqual(choice.frame.height, sizeBeforeSelection.height, accuracy: 0.5,
+                           "Selection changes the mark, not the choice target height")
+        }
         XCTAssertTrue(pace.waitForExistence(timeout: 5))
         XCTAssertFalse(frequency.exists, "Fresh survival deliberately has no Dusk arrival control")
-        pace.tap(); app.buttons["Gentle · 6 seconds"].tap()
+        XCTAssertFalse(frequent.exists)
+        selectChoice(gentle, title: "Gentle · 6 seconds")
         app.buttons["experiment.done"].tap()
         XCTAssertEqual(app.otherElements["experiment.board"].value as? String, freshBoard)
 
@@ -485,8 +517,9 @@ final class FallingSkyInteractionTests: XCTestCase {
         openMenu(app)
         app.skyMenuControl("experiment.balance").tap()
         XCTAssertTrue(pace.waitForExistence(timeout: 5))
-        pace.tap(); app.buttons["Gentle · 6 seconds"].tap()
-        frequency.tap(); app.buttons["Frequent"].tap()
+        XCTAssertTrue(frequency.waitForExistence(timeout: 5))
+        selectChoice(gentle, title: "Gentle · 6 seconds")
+        selectChoice(frequent, title: "Frequent")
         XCTAssertTrue(app.staticTexts["experiment.balanceDetail"].label.contains("2–3 showers"))
         capture(app, "balance-gentle-frequent-settings")
         app.buttons["experiment.done"].tap()
@@ -528,13 +561,21 @@ final class FallingSkyInteractionTests: XCTestCase {
         XCTAssertEqual(app.buttons["experiment.pause"].label, "Resume sky")
         openMenu(app)
         app.skyMenuControl("experiment.balance").tap()
-        XCTAssertTrue((pace.label + String(describing: pace.value)).contains("Gentle"))
-        XCTAssertTrue((frequency.label + String(describing: frequency.value)).contains("Frequent"))
-        app.buttons["experiment.resetBalance"].tap()
-        XCTAssertTrue((pace.label + String(describing: pace.value)).contains("Brisk"))
-        XCTAssertTrue((frequency.label + String(describing: frequency.value)).contains("Regular"))
-        pace.tap(); app.buttons["Brisk · changing pace"].tap()
-        frequency.tap(); app.buttons["None"].tap()
+        XCTAssertTrue(gentle.waitForExistence(timeout: 5))
+        XCTAssertEqual(gentle.label, "Gentle · 6 seconds")
+        XCTAssertTrue(gentle.isSelected, "Restored pace preserves the exact selected choice")
+        XCTAssertEqual(frequent.label, "Frequent")
+        XCTAssertTrue(frequent.isSelected, "Restored Dusk frequency preserves the exact selected choice")
+        let reset = app.buttons["experiment.resetBalance"]
+        app.revealSkyControls([reset]); reset.tap()
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "selected == true"), object: brisk).wait(timeout: 5))
+        XCTAssertEqual(brisk.label, "Brisk · changing pace")
+        XCTAssertTrue(regular.isSelected)
+        XCTAssertEqual(regular.label, "Regular")
+        XCTAssertFalse(gentle.isSelected)
+        XCTAssertFalse(frequent.isSelected)
+        selectChoice(brisk, title: "Brisk · changing pace")
+        selectChoice(app.buttons["experiment.darkFrequency.none"], title: "None")
         app.buttons["experiment.done"].tap()
         replayAndCallShowers(4)
         XCTAssertEqual(app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Dusk,")).count, 0)
@@ -598,6 +639,8 @@ extension FallingSkyInteractionTests {
         app.launchArguments = ["--starfalls-reset", "--dialogue-review", "--dusk-fixture=imminent"]
         app.launch()
         XCTAssertTrue(next.waitForExistence(timeout: 10))
+        app.buttons["sky.dialogue.reopen"].tap()
+        XCTAssertTrue(guide.waitForExistence(timeout: 5))
         XCTAssertTrue(guide.label.contains("turn gray and earn no starlight"))
         let dark = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Dusk,"))
         XCTAssertEqual(dark.count, 1)

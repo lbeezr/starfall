@@ -42,7 +42,7 @@ final class ResponsiveInputUITests: XCTestCase {
         score(0, app)
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label CONTAINS %@", "left the board"), object: status).wait(timeout: 3))
         app.buttons["experiment.settings"].tap(); app.buttons["experiment.done"].tap()
-        XCTAssertFalse(status.label.contains("left the board"))
+        XCTAssertTrue(!status.exists || !status.label.contains("left the board"))
         XCTAssertFalse(app.staticTexts["sky.inputStatus"].exists)
         app.buttons["experiment.cell.0.0"].tap(); score(0, app)
         XCTAssertTrue(app.buttons["experiment.next"].exists)

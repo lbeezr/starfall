@@ -185,10 +185,12 @@ enum StarfallTheme {
 /// A common action contract: native Button semantics, a full hit shape, wrapping
 /// Dynamic Type, and immediate material state changes without scale or motion.
 struct StarfallButtonStyle: ButtonStyle {
-    enum Role { case primary, ceremonyPrimary, secondary, quiet }
+    enum Role { case primary, ceremonyPrimary, secondary, compact, quiet }
 
     let role: Role
     var expands = false
+    /// Choices keep compact geometry in every state and reveal only the selected surface.
+    var showsCompactSurface = true
     @Environment(\.isEnabled) private var isEnabled
     @Environment(\.isFocused) private var isFocused
 
@@ -203,13 +205,26 @@ struct StarfallButtonStyle: ButtonStyle {
                            maxWidth: expands ? .infinity : nil,
                            minHeight: StarfallTheme.Layout.minimumTarget)
                     .background(configuration.isPressed && isEnabled ? StarfallTheme.Colors.surfacePressed : .clear, in: shape)
+            } else if role == .compact || role == .secondary {
+                configuration.label
+                    .fixedSize(horizontal: false, vertical: true)
+                    .padding(.horizontal, StarfallTheme.Spacing.medium)
+                    .padding(.vertical, StarfallTheme.Spacing.small)
+                    .frame(minWidth: StarfallTheme.Layout.preferenceTarget,
+                           maxWidth: expands ? .infinity : nil,
+                           minHeight: StarfallTheme.Layout.preferenceTarget)
+                    .background {
+                        if showsCompactSurface || configuration.isPressed && isEnabled {
+                            ObservatoryCompactSurface(pressed: configuration.isPressed && isEnabled, enabled: isEnabled)
+                        }
+                    }
             } else {
                 ObservatoryActionLayout(expands: expands) {
                     configuration.label.fixedSize(horizontal: false, vertical: true)
                 }
                 .background {
                     ObservatorySurface(skin: .action, pressed: configuration.isPressed && isEnabled,
-                                       enabled: isEnabled, subdued: role == .secondary)
+                                       enabled: isEnabled)
                 }
             }
         }
@@ -228,33 +243,39 @@ struct StarfallButtonStyle: ButtonStyle {
 
     private var foreground: Color {
         guard isEnabled else { return StarfallTheme.Colors.textDisabled }
-        return role == .quiet ? StarfallTheme.Colors.actionPrimary : StarfallTheme.Colors.textPrimary
+        return role == .quiet || (role == .compact && !showsCompactSurface)
+            ? StarfallTheme.Colors.actionPrimary : StarfallTheme.Colors.textPrimary
     }
 }
 
 private struct StarfallPanelStyle: ViewModifier {
     let inset: CGFloat
-    @Environment(\.colorSchemeContrast) private var contrast
 
     func body(content: Content) -> some View {
         content
             .padding(inset)
-            .background {
-                // Compact gameplay notices retain a small native surface. Full
-                // reading panels opt into the registered 32-point fittings.
-                if inset >= 32 {
-                    ObservatorySurface()
-                } else {
-                    RoundedRectangle(cornerRadius: StarfallTheme.Radius.control, style: .continuous)
-                        .fill(StarfallTheme.Colors.surface)
-                        .overlay {
-                            RoundedRectangle(cornerRadius: StarfallTheme.Radius.control, style: .continuous)
-                                .strokeBorder(StarfallTheme.Colors.outline,
-                                              lineWidth: contrast == .increased ? StarfallTheme.Layout.focusWidth : 1)
-                        }
-                        .allowsHitTesting(false).accessibilityHidden(true)
-                }
+            .background { ObservatoryCompactSurface() }
+    }
+}
+
+/// The rendered object is the visible control; the clear target remains generous.
+struct StarfallUtilityButtonStyle: ButtonStyle {
+    @Environment(\.isEnabled) private var isEnabled
+    @Environment(\.isFocused) private var isFocused
+
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .foregroundStyle(isEnabled ? StarfallTheme.Colors.textPrimary : StarfallTheme.Colors.textDisabled)
+            .frame(width: 24, height: 24)
+            .brightness(configuration.isPressed ? -0.14 : 0)
+            .scaleEffect(configuration.isPressed ? 0.92 : 1)
+            .shadow(color: .black.opacity(0.5), radius: 1.5, y: 1)
+            .frame(width: StarfallTheme.Layout.preferenceTarget, height: StarfallTheme.Layout.preferenceTarget)
+            .overlay {
+                if isFocused { Circle().strokeBorder(StarfallTheme.Colors.focus, lineWidth: 2).padding(4) }
             }
+            .contentShape(Rectangle())
+            .transaction { $0.animation = nil }
     }
 }
 

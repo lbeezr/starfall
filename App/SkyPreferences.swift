@@ -56,35 +56,65 @@ struct SkyWelcomePreferences: View {
     @Binding var calm: Bool
     let context: SkyHelpContext
     let done: () -> Void
-    @Environment(\.dynamicTypeSize) private var textSize
+
     var body: some View {
         NavigationStack {
-            SkyMenuSurface {
-                SkyFeelSection(sound: $sound, haptics: $haptics, calm: $calm)
-                NavigationLink { SkyHowToPlay(context: context, done: done).toolbar { SkyMenuDone(done: done) } }
-                    label: { SkyMenuRow(SkyCopy.text(.menuHelp), glyph: .help, disclosure: true) }
-                    .buttonStyle(StarfallButtonStyle(role: .quiet))
-                    .accessibilityIdentifier("experiment.help")
-            }
-            .navigationTitle(SkyCopy.text(.menuSettings)).navigationBarTitleDisplayMode(.inline)
-            .toolbar { SkyMenuDone(done: done) }
+            SkyPreferencesPage(sound: $sound, haptics: $haptics, calm: $calm,
+                               context: context, done: done)
         }
-        .tint(StarfallTheme.Colors.actionPrimary)
-        .preferredColorScheme(.dark)
-        .presentationBackground(StarfallTheme.Colors.skyTop)
-        .presentationDetents(textSize.isAccessibilitySize ? [.large] : [.medium, .large])
-        .presentationContentInteraction(.scrolls)
-        .presentationDragIndicator(.visible)
+        .skyMenuPresentation()
     }
 }
 
-struct SkyMenuDone: ToolbarContent {
+/// The same preference rows are used before play and from the paused menu.
+struct SkyPreferencesPage: View {
+    @Binding var sound: Bool
+    @Binding var haptics: Bool
+    @Binding var calm: Bool
+    let context: SkyHelpContext
     let done: () -> Void
-    var body: some ToolbarContent {
-        ToolbarItem(placement: .confirmationAction) {
-            Button(SkyCopy.text(.actionDone), action: done)
-                .font(StarfallTheme.Typography.action)
-                .accessibilityIdentifier("experiment.done")
+    var back = false
+
+    var body: some View {
+        SkyMenuSurface(title: SkyCopy.text(.menuSettings), glyph: .settings, done: done, back: back) {
+            SkyFeelSection(sound: $sound, haptics: $haptics, calm: $calm)
+            SkyMenuRule()
+            NavigationLink { SkyHowToPlay(context: context, done: done) } label: {
+                SkyMenuRow(SkyCopy.text(.menuHelp), glyph: .help, disclosure: true)
+            }
+            .buttonStyle(StarfallButtonStyle(role: .quiet, expands: true))
+            .accessibilityIdentifier("experiment.help")
+        }
+    }
+}
+
+/// Full-screen modal presentation owns focus and dismissal. The game owns its
+/// scrim and instrument geometry, avoiding the system sheet's extra glass frame.
+private struct SkyMenuPresentation: ViewModifier {
+    @Environment(\.dynamicTypeSize) private var textSize
+
+    func body(content: Content) -> some View {
+        GeometryReader { viewport in
+            content
+                .frame(height: textSize.isAccessibilitySize ? viewport.size.height : min(540, viewport.size.height))
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+        }
+        .background(Color.black.opacity(0.36).ignoresSafeArea())
+        .tint(StarfallTheme.Colors.actionPrimary)
+        .preferredColorScheme(.dark)
+        .statusBarHidden()
+        .presentationBackground(.clear)
+    }
+}
+
+extension View {
+    func skyMenuPresentation() -> some View { modifier(SkyMenuPresentation()) }
+
+    @ViewBuilder func skyMenuNavigationBackground() -> some View {
+        if #available(iOS 18.0, *) {
+            containerBackground(.clear, for: .navigation)
+        } else {
+            background(Color.clear)
         }
     }
 }
@@ -93,7 +123,7 @@ struct SkyHowToPlay: View {
     let context: SkyHelpContext
     let done: () -> Void
     var body: some View {
-        SkyMenuSurface {
+        SkyMenuSurface(title: SkyCopy.text(.menuHelp), glyph: .help, done: done, back: true) {
             SkyMenuSection(SkyCopy.text(.practiceTitle)) {
                 NavigationLink { SkyTutorialView(done: done) } label: {
                     SkyMenuRow(SkyCopy.text(.practiceTitle), glyph: .tutorial, disclosure: true)
@@ -154,7 +184,7 @@ struct SkyHowToPlay: View {
             SkyMenuSection(context.restorationChallenge?.helpTitle ?? SkyCopy.text(.helpChallengeTitle)) {
                 Text(context.restorationChallenge?.helpText ?? SkyCopy.text(.helpChallenge))
             }
-        }.navigationTitle(SkyCopy.text(.menuHelp))
+        }
     }
 }
 
@@ -178,26 +208,164 @@ struct SkyPreferenceToggle: View {
     }
 }
 
-/// One scrolling reading instrument shared by settings, help and balance.
-/// The system sheet owns its bottom anchoring and the navigation bar owns Done.
+/// One reading instrument shared by menu, preferences, help and balance.
+/// Header and dismissal stay reachable while only the body scrolls.
 struct SkyMenuSurface<Content: View>: View {
+    var title: String? = nil
+    var glyph: ObservatoryGlyph = .settings
+    var done: (() -> Void)? = nil
+    var back = false
+    var footerTitle: String? = nil
+    var scrollsContent = true
     @ViewBuilder let content: Content
+    @Environment(\.dismiss) private var dismiss
+    @Environment(\.dynamicTypeSize) private var textSize
 
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: StarfallTheme.Spacing.section) {
-                content
+        VStack(spacing: 0) {
+            if let title { header(title) }
+            if scrollsContent {
+                ScrollView { readingContent }
+                    .scrollBounceBehavior(.basedOnSize)
+            } else {
+                readingContent
             }
-            .font(StarfallTheme.Typography.body)
-            .foregroundStyle(StarfallTheme.Colors.textPrimary)
-            .frame(maxWidth: StarfallTheme.Layout.menuWidth, alignment: .leading)
-            .observatoryReadingPanel()
-            .padding(StarfallTheme.Spacing.small)
-            .frame(maxWidth: .infinity)
+            if let done {
+                VStack(spacing: StarfallTheme.Spacing.small) {
+                    SkyMenuRule()
+                    Button(footerTitle ?? SkyCopy.text(.actionDone), action: done)
+                        .buttonStyle(StarfallButtonStyle(role: .primary, expands: true))
+                        .frame(minHeight: StarfallTheme.Layout.preferenceTarget)
+                        .accessibilityIdentifier("experiment.done")
+                }
+                .padding(.horizontal, 32)
+                .padding(.top, StarfallTheme.Spacing.small)
+                .padding(.bottom, StarfallTheme.Spacing.section)
+            }
         }
-        .scrollBounceBehavior(.basedOnSize)
-        .background(StarfallTheme.Colors.skyTop)
-        .toolbarBackground(StarfallTheme.Colors.skyTop, for: .navigationBar)
+        .background { ObservatorySurface() }
+        .frame(maxWidth: StarfallTheme.Layout.menuWidth)
+        .padding(.horizontal, StarfallTheme.Spacing.small)
+        .padding(.top, StarfallTheme.Spacing.small)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+        .toolbar(.hidden, for: .navigationBar)
+        .skyMenuNavigationBackground()
+    }
+
+    private var readingContent: some View {
+        VStack(alignment: .leading, spacing: StarfallTheme.Spacing.large) {
+            content
+        }
+        .font(StarfallTheme.Typography.body)
+        .foregroundStyle(StarfallTheme.Colors.textPrimary)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.horizontal, 32)
+        .padding(.vertical, StarfallTheme.Spacing.medium)
+    }
+
+    private func header(_ title: String) -> some View {
+        VStack(spacing: StarfallTheme.Spacing.small) {
+            HStack(alignment: .center, spacing: StarfallTheme.Spacing.small) {
+                if back {
+                    Button { dismiss() } label: { ObservatoryIcon(.back, size: 20) }
+                        .buttonStyle(StarfallUtilityButtonStyle())
+                        .frame(minWidth: StarfallTheme.Layout.preferenceTarget,
+                               minHeight: StarfallTheme.Layout.preferenceTarget)
+                        .accessibilityLabel(SkyCopy.text(.worldBack))
+                        .accessibilityIdentifier("sky.menu.back")
+                } else {
+                    ObservatoryIcon(glyph, size: 24)
+                        .foregroundStyle(StarfallTheme.Ceremony.gold)
+                        .accessibilityHidden(true)
+                }
+                Text(title)
+                    .font(textSize.isAccessibilitySize ? StarfallTheme.Typography.skyHeading : StarfallTheme.Typography.title)
+                    .foregroundStyle(StarfallTheme.Colors.textPrimary)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .accessibilityAddTraits(.isHeader)
+                    .accessibilityIdentifier("sky.menu.title")
+                Spacer(minLength: 0)
+            }
+            SkyMenuRule()
+        }
+        .padding(.horizontal, 32)
+        .padding(.top, StarfallTheme.Spacing.section)
+        .padding(.bottom, StarfallTheme.Spacing.small)
+    }
+}
+
+/// An engraved separator, never an additional card or touch target.
+struct SkyMenuRule: View {
+    var body: some View {
+        Rectangle()
+            .fill(StarfallTheme.Colors.outline.opacity(0.55))
+            .frame(height: 1)
+            .accessibilityHidden(true)
+            .allowsHitTesting(false)
+    }
+}
+
+/// Selected choices remain visible and preserve native button semantics. Each
+/// selection writes through the caller's existing binding, never a local copy.
+struct SkyMenuChoiceGroup<Value: Hashable>: View {
+    let title: String
+    let options: [Value]
+    @Binding var selection: Value
+    let identifier: String
+    let optionTitle: (Value) -> String
+    let optionID: (Value) -> String
+    var shortTitle: ((Value) -> String)? = nil
+    @Environment(\.dynamicTypeSize) private var textSize
+    private var vertical: Bool { textSize.isAccessibilitySize || options.count > 3 }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: StarfallTheme.Spacing.small) {
+            Text(title)
+                .font(StarfallTheme.Typography.skyHeading)
+                .foregroundStyle(StarfallTheme.Ceremony.gold)
+                .accessibilityAddTraits(.isHeader)
+            Group {
+                if vertical {
+                    VStack(spacing: StarfallTheme.Spacing.small) { choices }
+                } else {
+                    HStack(alignment: .top, spacing: StarfallTheme.Spacing.small) { choices }
+                }
+            }
+            .accessibilityElement(children: .contain)
+            .accessibilityIdentifier(identifier)
+        }
+    }
+
+    private var choices: some View {
+        ForEach(options, id: \.self) { option in
+            Button { selection = option } label: {
+                Group {
+                    if vertical {
+                        HStack(spacing: StarfallTheme.Spacing.small) {
+                            choiceLabel(option)
+                            Spacer(minLength: 0)
+                        }
+                    } else {
+                        VStack(spacing: StarfallTheme.Spacing.compact) { choiceLabel(option) }
+                    }
+                }
+                .frame(maxWidth: .infinity)
+            }
+            .buttonStyle(StarfallButtonStyle(role: .compact, expands: true,
+                                            showsCompactSurface: selection == option))
+            .accessibilityLabel(optionTitle(option))
+            .accessibilityAddTraits(selection == option ? .isSelected : [])
+            .accessibilityIdentifier(identifier + "." + optionID(option))
+        }
+    }
+
+    @ViewBuilder private func choiceLabel(_ option: Value) -> some View {
+        ObservatoryIcon(.check, size: 16)
+            .foregroundStyle(StarfallTheme.Colors.textPrimary)
+            .opacity(selection == option ? 1 : 0)
+        Text(shortTitle?(option) ?? optionTitle(option))
+            .font(StarfallTheme.Typography.supporting)
+            .fixedSize(horizontal: false, vertical: true)
     }
 }
 
@@ -242,7 +410,7 @@ struct SkyMenuRow: View {
             Spacer(minLength: StarfallTheme.Spacing.small)
             if disclosure { ObservatoryIcon(.next, size: 16) }
         }
-        .frame(maxWidth: .infinity, minHeight: StarfallTheme.Layout.minimumTarget, alignment: .leading)
+        .frame(maxWidth: .infinity, minHeight: StarfallTheme.Layout.preferenceTarget, alignment: .leading)
         .multilineTextAlignment(.leading)
     }
 }

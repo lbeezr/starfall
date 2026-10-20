@@ -1,9 +1,18 @@
 import Foundation
+import StarfallCore
 
 /// English player copy from the same bundled catalogue as character dialogue.
 /// Stable typed keys prevent view/store typos; wording and templates stay in JSON.
 enum SkyCopy {
+    /// Core grows from the bottom; every player-facing coordinate reads top-down.
+    static func boardPosition(_ cell: Cell) -> (row: Int, column: Int) {
+        (FallingSky.side - cell.row, cell.column + 1)
+    }
+
     enum Key: String, CaseIterable, Sendable {
+        case balanceGentleShort = "balance.gentleShort"
+        case balanceSteadyShort = "balance.steadyShort"
+        case balanceBriskShort = "balance.briskShort"
         case practiceMatchTitle = "practiceMatchTitle"
         case practiceGrownTitle = "practiceGrownTitle"
         case practiceExchangeTitle = "practiceExchangeTitle"
@@ -128,6 +137,7 @@ enum SkyCopy {
         case actionBegin = "action.begin"
         case actionHome = "action.home"
         case actionDone = "action.done"
+        case actionReturn = "action.return"
         case actionCancel = "action.cancel"
         case actionClose = "action.close"
         case actionNextLine = "action.nextLine"

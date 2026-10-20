@@ -57,6 +57,8 @@ enum SkyFlowAction: Equatable { case start, firstLight, ribbonCrossing, kiteHarb
                 }
                 if screen == .welcome {
                     observatoryHome(height: geometry.size.height)
+                } else if terminal {
+                    resultPresentation(layout: layout)
                 } else {
                     VStack(spacing: 0) {
                         if screen == .entry { entryNavigation }
@@ -65,7 +67,7 @@ enum SkyFlowAction: Equatable { case start, firstLight, ribbonCrossing, kiteHarb
                                 if layout.isRestoredResult {
                                     Spacer(minLength: layout.minimumTopSpace)
                                 }
-                                heading.accessibilityHidden(!active)
+                                heading().accessibilityHidden(!active)
                                 if textSize.isAccessibilitySize {
                                     revealedActions
                                     decorativeCast
@@ -104,6 +106,37 @@ enum SkyFlowAction: Equatable { case start, firstLight, ribbonCrossing, kiteHarb
             guard !Task.isCancelled else { return }
             headingFocused = true
         }
+    }
+
+    /// Preserve the restored vista when it fits, then yield decorative space
+    /// before asking the player to scroll any full-sized result actions.
+    private func resultPresentation(layout: SkyCeremonyLayout) -> some View {
+        ViewThatFits(in: .vertical) {
+            resultContent(layout: layout, compact: false)
+                .fixedSize(horizontal: false, vertical: true)
+            resultContent(layout: layout, compact: true)
+                .fixedSize(horizontal: false, vertical: true)
+            ScrollView {
+                resultContent(layout: layout, compact: true)
+            }
+            .scrollBounceBehavior(.basedOnSize)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+        .safeAreaPadding(.bottom, StarfallTheme.Spacing.section)
+    }
+
+    private func resultContent(layout: SkyCeremonyLayout, compact: Bool) -> some View {
+        VStack(spacing: layout.spacing) {
+            if layout.isRestoredResult && !compact {
+                Color.clear.frame(height: layout.minimumTopSpace).accessibilityHidden(true)
+            }
+            heading(compact: compact).accessibilityHidden(!active)
+            if !compact { decorativeCast }
+            revealedActions
+        }
+        .padding(StarfallTheme.Spacing.section)
+        .frame(maxWidth: StarfallTheme.Layout.menuWidth)
+        .frame(maxWidth: .infinity)
     }
 
     /// Home is navigation in the world, not a character's dialogue bubble.
@@ -149,9 +182,17 @@ enum SkyFlowAction: Equatable { case start, firstLight, ribbonCrossing, kiteHarb
                     }
                     if let summary = welcome.summary {
                         VStack(spacing: StarfallTheme.Spacing.compact) {
-                            Button(SkyCopy.text(welcome.ended ? .actionViewLast : .actionContinue)) { action(.resume) }
-                                .buttonStyle(StarfallButtonStyle(role: .quiet, expands: true))
-                                .accessibilityIdentifier("sky.resume")
+                            Button { action(.resume) } label: {
+                                HStack(spacing: StarfallTheme.Spacing.small) {
+                                    ObservatoryIcon(welcome.ended ? .replay : .play, size: 20)
+                                    Text(SkyCopy.text(welcome.ended ? .actionViewLast : .actionContinue))
+                                        .fixedSize(horizontal: false, vertical: true)
+                                    Spacer(minLength: StarfallTheme.Spacing.small)
+                                    ObservatoryIcon(.next, size: 16)
+                                }
+                            }
+                            .buttonStyle(StarfallButtonStyle(role: .compact, expands: true))
+                            .accessibilityIdentifier("sky.resume")
                             Text(summary)
                                 .font(StarfallTheme.Typography.supporting)
                                 .foregroundStyle(StarfallTheme.Colors.textPrimary)
@@ -185,7 +226,7 @@ enum SkyFlowAction: Equatable { case start, firstLight, ribbonCrossing, kiteHarb
 
     private var preferencesUtility: some View {
         Button { action(.preferences) } label: { ObservatoryIcon(.settings) }
-            .buttonStyle(StarfallGameButtonStyle(tint: StarfallTheme.Colors.textPrimary))
+            .buttonStyle(StarfallUtilityButtonStyle())
             .accessibilityLabel(SkyCopy.text(.menuSettings))
             .accessibilityIdentifier("sky.preferences")
             .accessibilityFocused($preferencesFocused)
@@ -194,7 +235,7 @@ enum SkyFlowAction: Equatable { case start, firstLight, ribbonCrossing, kiteHarb
     private var entryNavigation: some View {
         HStack {
             Button { action(.home) } label: { ObservatoryIcon(.back) }
-                .buttonStyle(StarfallGameButtonStyle(tint: StarfallTheme.Colors.textPrimary))
+                .buttonStyle(StarfallUtilityButtonStyle())
                 .accessibilityLabel(SkyCopy.text(.actionHome))
                 .accessibilityIdentifier("sky.home")
             Spacer(minLength: 0)
@@ -227,7 +268,7 @@ enum SkyFlowAction: Equatable { case start, firstLight, ribbonCrossing, kiteHarb
             .accessibilityHidden(!controls || !active)
     }
 
-    private var heading: some View {
+    private func heading(compact: Bool = false) -> some View {
         VStack(spacing: StarfallTheme.Spacing.medium) {
             Text(kicker)
                 .font(StarfallTheme.Typography.skyCaption).tracking(2)
@@ -245,7 +286,7 @@ enum SkyFlowAction: Equatable { case start, firstLight, ribbonCrossing, kiteHarb
         }
         .multilineTextAlignment(.center)
         .shadow(color: StarfallTheme.Colors.skyTop, radius: 6)
-        .padding(terminal ? StarfallTheme.Spacing.medium : 0)
+        .padding(terminal && !compact ? StarfallTheme.Spacing.medium : 0)
     }
 
     private var kicker: String {
@@ -317,19 +358,50 @@ enum SkyFlowAction: Equatable { case start, firstLight, ribbonCrossing, kiteHarb
             case .entry:
                 flowButton(SkyCopy.text(.actionBegin), action: .begin, id: "sky.begin", primary: true)
             case .won, .full:
-                flowButton(SkyCopy.text(.worldReturn), action: .worldMap, id: "sky.worldMap", primary: true)
                 if screen == .won {
-                    flowButton(SkyCopy.text(.actionNew), action: .another, id: "experiment.new", primary: true)
-                    flowButton(challenge?.replayLabel ?? SkyCopy.text(.actionReplay), action: .replay, id: "experiment.replay")
+                    flowButton(SkyCopy.text(.worldReturn), action: .worldMap, id: "sky.worldMap", primary: true)
+                } else if let challenge {
+                    flowButton(challenge.replayLabel, action: .replay, id: "experiment.replay", primary: true)
                 } else {
-                    flowButton(challenge?.replayLabel ?? SkyCopy.text(.actionReplay), action: .replay, id: "experiment.replay", primary: true)
-                    flowButton(SkyCopy.text(.actionNew), action: .another, id: "experiment.new")
+                    flowButton(SkyCopy.text(.actionNew), action: .another, id: "experiment.new", primary: true)
+                }
+                ViewThatFits(in: .horizontal) {
+                    HStack(spacing: StarfallTheme.Spacing.small) {
+                        resultSecondaryActions
+                    }
+                    .fixedSize(horizontal: true, vertical: false)
+                    VStack(spacing: StarfallTheme.Spacing.small) {
+                        resultSecondaryActions
+                    }
                 }
                 flowButton(SkyCopy.text(.actionHome), action: .home, id: "sky.home")
             case .playing, .worldMap: EmptyView()
             }
         }
 
+    }
+    @ViewBuilder private var resultSecondaryActions: some View {
+        if screen == .won {
+            resultAction(SkyCopy.text(.actionNew), glyph: .freePlay, action: .another, id: "experiment.new")
+            resultAction(challenge?.replayLabel ?? SkyCopy.text(.actionReplay), glyph: .replay, action: .replay, id: "experiment.replay")
+        } else {
+            if challenge == nil {
+                resultAction(SkyCopy.text(.actionReplay), glyph: .replay, action: .replay, id: "experiment.replay")
+            } else {
+                resultAction(SkyCopy.text(.actionNew), glyph: .freePlay, action: .another, id: "experiment.new")
+            }
+            resultAction(SkyCopy.text(.worldReturn), glyph: .story, action: .worldMap, id: "sky.worldMap")
+        }
+    }
+    private func resultAction(_ label: String, glyph: ObservatoryGlyph, action choice: SkyFlowAction, id: String) -> some View {
+        Button { action(choice) } label: {
+            HStack(spacing: StarfallTheme.Spacing.small) {
+                ObservatoryIcon(glyph, size: 18)
+                Text(label).fixedSize(horizontal: false, vertical: true)
+            }
+        }
+        .buttonStyle(StarfallButtonStyle(role: .compact))
+        .accessibilityIdentifier(id)
     }
     private func flowButton(_ label: String, action choice: SkyFlowAction, id: String, primary: Bool = false) -> some View {
         Button(label) { action(choice) }

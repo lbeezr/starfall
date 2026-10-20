@@ -60,20 +60,31 @@ extension SkyTutorial {
 
 extension SkyTutorial.Action {
     var instruction: String {
-        func position(_ cell: Cell) -> String { SkyCopy.text(.practicePosition, values: ["row": String(cell.row + 1), "column": String(cell.column + 1)]) }
+        func position(_ cell: Cell) -> String {
+            let position = SkyCopy.boardPosition(cell)
+            return SkyCopy.text(.practicePosition, values: ["row": String(position.row), "column": String(position.column)])
+        }
         switch self {
         case .tap(let cell): return SkyCopy.text(.practiceTap, values: ["position": position(cell)])
         case .swap(let from, let to):
             let direction = to.row > from.row ? SkyCopy.text(.practiceUp) : to.row < from.row ? SkyCopy.text(.practiceDown) : to.column > from.column ? SkyCopy.text(.practiceRight) : SkyCopy.text(.practiceLeft)
             return SkyCopy.text(.practiceSwipe, values: ["direction": direction, "position": position(from)])
         case .trace(let path):
-            return SkyCopy.text(.practiceDraw, values: ["path": path.map { "\($0.row + 1),\($0.column + 1)" }.joined(separator: " → ")])
+            return SkyCopy.text(.practiceDraw, values: ["path": path.map {
+                let position = SkyCopy.boardPosition($0)
+                return "\(position.row),\(position.column)"
+            }.joined(separator: " → ")])
         case .shower: return SkyCopy.text(.practiceShower)
         case .automaticShower: return SkyCopy.text(.practiceAutomatic)
         case .pause: return SkyCopy.text(.practicePause)
         case .resume: return SkyCopy.text(.practiceResume)
         }
     }
+}
+
+extension SkyTutorialRun {
+    var showsPauseControl: Bool { next == .pause || next == .resume }
+    var showsShowerControl: Bool { next == .shower }
 }
 
 struct SkyTutorialView: View {
@@ -92,7 +103,7 @@ struct SkyTutorialView: View {
                     .fixedSize(horizontal: false, vertical: true)
                 Spacer(minLength: StarfallTheme.Spacing.small)
                 Button(SkyCopy.text(.actionDone), action: done)
-                    .buttonStyle(StarfallButtonStyle(role: .quiet))
+                    .buttonStyle(StarfallButtonStyle(role: .compact))
                     .accessibilityIdentifier("tutorial.done")
             }
             .padding(.horizontal, StarfallTheme.Spacing.page)
@@ -125,17 +136,18 @@ struct SkyTutorialView: View {
                                     ObservatoryIcon(.next, size: 20)
                                         .foregroundStyle(StarfallTheme.Colors.textSecondary)
                                 }
-                                .padding(.vertical, StarfallTheme.Spacing.large)
+                                .padding(.vertical, StarfallTheme.Spacing.small)
                                 .frame(minHeight: StarfallTheme.Layout.minimumTarget, alignment: .leading)
                                 .contentShape(Rectangle())
                             }
-                            .buttonStyle(.plain)
+                            .buttonStyle(StarfallButtonStyle(role: .quiet))
                             .accessibilityIdentifier("tutorial.chapter.\(lesson.id)")
                             Divider()
                         }
                     }
                 }
                 .frame(maxWidth: StarfallTheme.Layout.contentWidth, alignment: .leading)
+                .starfallPanel(inset: StarfallTheme.Spacing.medium)
                 .padding(StarfallTheme.Spacing.section)
                 .frame(maxWidth: .infinity)
             }
@@ -180,38 +192,68 @@ struct SkyTutorialGuide: View {
     let retry: () -> Void
     let next: (SkyTutorial) -> Void
     let exit: () -> Void
-    @State private var showDetail = false
+    @State private var showDetail = true
     var body: some View {
-        Group {
-            if constrained { ScrollView { content }.scrollBounceBehavior(.basedOnSize) }
-            else { content }
+        VStack(alignment: .leading, spacing: StarfallTheme.Spacing.small) {
+            if constrained {
+                ScrollView { reading }
+                    .scrollBounceBehavior(.basedOnSize)
+            } else {
+                reading
+            }
+            ViewThatFits(in: .horizontal) {
+                HStack { actions }.fixedSize(horizontal: true, vertical: false)
+                VStack(alignment: .leading) { actions }
+            }
+            .buttonStyle(StarfallButtonStyle(role: .compact))
         }
         .starfallPanel(inset: StarfallTheme.Spacing.medium)
         .foregroundStyle(StarfallTheme.Colors.textPrimary)
+        .onChange(of: run.chapter) { _, _ in showDetail = true }
     }
-    private var content: some View {
-            VStack(alignment: .leading, spacing: 8) {
-                Text(run.chapter.title).font(StarfallTheme.Typography.skyHeading).accessibilityAddTraits(.isHeader)
-                    .accessibilityIdentifier("tutorial.title")
-                Text(run.complete ? SkyCopy.text(.practiceComplete) : run.needsRetry ? SkyCopy.text(.practiceRetryMessage) : run.next?.instruction ?? "")
-                    .font(.subheadline).fixedSize(horizontal: false, vertical: true)
-                    .accessibilityIdentifier("tutorial.instruction")
-                if showDetail || run.step == 0 {
-                    Text(run.chapter.detail).font(.caption)
-                    Text(SkyCopy.text(.practiceCoordinates)).font(.caption)
+    private var reading: some View {
+            VStack(alignment: .leading, spacing: StarfallTheme.Spacing.small) {
+                HStack(alignment: .firstTextBaseline, spacing: StarfallTheme.Spacing.small) {
+                    ObservatoryIcon(run.chapter.interfaceGlyph, size: 18)
+                        .foregroundStyle(StarfallTheme.Dialogue.brass)
+                    Text(run.chapter.title)
+                        .font(StarfallTheme.Typography.skyHeading)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .accessibilityAddTraits(.isHeader)
+                        .accessibilityIdentifier("tutorial.title")
                 }
-                ViewThatFits(in: .horizontal) {
-                    HStack { actions }.fixedSize(horizontal: true, vertical: false)
-                    VStack(alignment: .leading) { actions }
-                }.buttonStyle(StarfallButtonStyle(role: .quiet))
+                Text(run.complete ? SkyCopy.text(.practiceComplete) : run.needsRetry ? SkyCopy.text(.practiceRetryMessage) : run.next?.instruction ?? "")
+                    .font(StarfallTheme.Typography.supporting).fixedSize(horizontal: false, vertical: true)
+                    .accessibilityIdentifier("tutorial.instruction")
+                if showDetail {
+                    Text(run.chapter.detail).font(StarfallTheme.Typography.skyCaption)
+                        .accessibilityIdentifier("tutorial.detail")
+                    Text(SkyCopy.text(.practiceCoordinates)).font(StarfallTheme.Typography.skyCaption)
+                        .accessibilityIdentifier("tutorial.coordinates")
+                }
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
     }
     @ViewBuilder private var actions: some View {
-        Button(SkyCopy.text(.practiceRetry), action: retry).accessibilityIdentifier("tutorial.retry")
-        Button(showDetail ? SkyCopy.text(.practiceLess) : SkyCopy.text(.practiceHint)) { showDetail.toggle() }.accessibilityIdentifier("tutorial.hint")
+        guideAction(SkyCopy.text(.practiceRetry), glyph: .replay, id: "tutorial.retry", action: retry)
+        guideAction(showDetail ? SkyCopy.text(.practiceLess) : SkyCopy.text(.practiceHint), glyph: .help, id: "tutorial.hint") {
+            showDetail.toggle()
+        }
         if let chapter = run.chapter.nextChapter {
-            Button(run.complete ? SkyCopy.text(.practiceNext) : SkyCopy.text(.practiceSkip)) { next(chapter) }
-                .accessibilityIdentifier("tutorial.next")
-        } else { Button(SkyCopy.text(.practiceFinish), action: exit).accessibilityIdentifier("tutorial.finish") }
+            guideAction(run.complete ? SkyCopy.text(.practiceNext) : SkyCopy.text(.practiceSkip), glyph: .next, id: "tutorial.next") {
+                next(chapter)
+            }
+        } else {
+            guideAction(SkyCopy.text(.practiceFinish), glyph: .check, id: "tutorial.finish", action: exit)
+        }
+    }
+    private func guideAction(_ title: String, glyph: ObservatoryGlyph, id: String, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            HStack(spacing: StarfallTheme.Spacing.compact) {
+                ObservatoryIcon(glyph, size: 16)
+                Text(title).fixedSize(horizontal: false, vertical: true)
+            }
+        }
+        .accessibilityIdentifier(id)
     }
 }

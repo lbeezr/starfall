@@ -1,0 +1,254 @@
+{
+  "date": "2026-10-20",
+  "status": "generated_masters_ready_for_deterministic_export_review",
+  "tool": "Built-in ImageGen",
+  "mode": "generate",
+  "transparentBackgroundRequested": true,
+  "generationPolicy": "One standalone icon per built-in ImageGen call. No paid provider, CLI fallback, SVG substitute, sheet slicing, or source image editing.",
+  "sourceRetention": "Generated outputs copied byte-for-byte; original generated files retained.",
+  "referencePolicy": "The following images were inspected for material direction. They were not sent as edit targets or supplied as tool image arguments; these are separate new assets.",
+  "inspectedReferences": [
+    {
+      "role": "Preview-only rendered-utility material study",
+      "path": "/Users/lbeezr/.codex/generated_images/01a1563a-d0f0-7a12-9846-c5670b9fafa8/call_69337919f1d242068d5e56802f884f0c.png",
+      "sha256": "13e312f3c22233de7d6d5f3aff0bcf2382df83fdbaee1e654b371bc8862c6f46"
+    },
+    {
+      "role": "Existing production Story emblem material reference",
+      "path": "Artwork/ObservatoryUI/masters/illustrations/emblem-story.png",
+      "sha256": "eb5191b091feca2836fb045b64a30a53de37d82fcf5e0655f8292dd31c3add0e"
+    }
+  ],
+  "assets": [
+    {
+      "id": "check",
+      "prompt": "Use case: stylized-concept.\nAsset type: one production raster utility icon for the Starfall iOS game, rendered as a tactile shallow 3D observatory object. This is one isolated icon, not a sheet or UI mockup.\nStyle: polished pearl enamel faces, restrained warm brass bevels and deep midnight navy edges or inset accents. Broad clean surfaces, crisp readable silhouette, minimal texture, subtle depth. Warm light from upper left, controlled soft highlight on the face, darker lower-right edge. Match a premium celestial game instrument, with the handcrafted enamel-and-brass character of a small observatory lantern.\nComposition: square image, perfectly centered, straight-on front view with no perspective tilt. Main silhouette occupies about 75 percent of the square at its largest dimension. Generous empty margins on all sides. The icon must read at 24\u201332 points.\nBackground: genuinely transparent alpha everywhere outside the icon. No painted background and no shadow plane.\nConstraints: only the one requested icon. No words, labels, letters, digits, watermark, tile, badge, enclosing circle, decorative outer frame, particles, stars in the background, sparks, luminous aura, glow halo, scene or backdrop. Do not reproduce a reference sheet or slice a mockup. Keep bevels restrained and shape bold.\nSubject: one bold checkmark / tick, made of a solid softly rounded pearl-enamel face with a narrow restrained brass bevel and a thin dark navy depth edge. Short left descending stroke joins the long rising right stroke into one connected unmistakable check silhouette. Keep the V-like elbow broad and the tips compact. No circle or enclosing object.",
+      "sourcePath": "/Users/lbeezr/.codex/generated_images/01a15938-b1cd-7603-b9ce-1656f102d84e/exec-3843cca8-8625-43d9-bf9a-0eca013233c8.png",
+      "masterPath": "Artwork/ObservatoryUI/masters/utilities-v2/check.png",
+      "transformations": [],
+      "visualInspection": {
+        "subjectCorrect": true,
+        "isolatedIcon": true,
+        "noTextOrEnclosingTile": true,
+        "pearlBrassNavyMaterial": true,
+        "normalisedSmallSizeReview": "pending export by parent"
+      },
+      "sha256": "25fe8a2d163a80141fa27bbaa5452afb49f1e1e187009cd39d2e59ab816c402e",
+      "sourceSHA256": "25fe8a2d163a80141fa27bbaa5452afb49f1e1e187009cd39d2e59ab816c402e",
+      "bytes": 725830,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha": {
+        "range": [
+          0,
+          255
+        ],
+        "boundsAnyAlpha": [
+          0,
+          55,
+          1230,
+          1182
+        ],
+        "boundsAlpha16": [
+          110,
+          212,
+          1170,
+          1088
+        ],
+        "fullyTransparentPixels": 1159841,
+        "pixelsAlpha240OrAbove": 398748,
+        "totalPixels": 1572516,
+        "cornersFullyTransparent": true,
+        "note": "Low-alpha fringe pixels extend beyond the visible subject; original master is unchanged. Deterministic export owns crop/normalization."
+      }
+    },
+    {
+      "id": "lock",
+      "prompt": "Use case: stylized-concept.\nAsset type: one production raster utility icon for the Starfall iOS game, rendered as a tactile shallow 3D observatory object. This is one isolated icon, not a sheet or UI mockup.\nStyle: polished pearl enamel faces, restrained warm brass bevels and deep midnight navy edges or inset accents. Broad clean surfaces, crisp readable silhouette, minimal texture, subtle depth. Warm light from upper left, controlled soft highlight on the face, darker lower-right edge. Match a premium celestial game instrument, with the handcrafted enamel-and-brass character of a small observatory lantern.\nComposition: square image, perfectly centered, straight-on front view with no perspective tilt. Main silhouette occupies about 75 percent of the square at its largest dimension. Generous empty margins on all sides. The icon must read at 24\u201332 points.\nBackground: genuinely transparent alpha everywhere outside the icon. No painted background and no shadow plane.\nConstraints: only the one requested icon. No words, labels, letters, digits, watermark, tile, badge, enclosing circle, decorative outer frame, particles, stars in the background, sparks, luminous aura, glow halo, scene or backdrop. Do not reproduce a reference sheet or slice a mockup. Keep bevels restrained and shape bold.\nSubject: one unmistakable closed padlock. A compact deep midnight-navy enamel lock body with subtly rounded corners and restrained brass rim; a thick warm-brass U-shaped shackle is visibly closed into the top of the body. Small simple pearl keyhole at center. Symmetrical front view, sturdy silhouette, strong negative opening inside the shackle. No extra ornaments or decorative stars.",
+      "sourcePath": "/Users/lbeezr/.codex/generated_images/01a15938-b1cd-7603-b9ce-1656f102d84e/exec-4f9b9758-1a0d-476f-9bf7-f4e108df7483.png",
+      "masterPath": "Artwork/ObservatoryUI/masters/utilities-v2/lock.png",
+      "transformations": [],
+      "visualInspection": {
+        "subjectCorrect": true,
+        "isolatedIcon": true,
+        "noTextOrEnclosingTile": true,
+        "pearlBrassNavyMaterial": true,
+        "normalisedSmallSizeReview": "pending export by parent"
+      },
+      "sha256": "b93723337707bca381a42c4ac1c9a9e906011bd3d1f3f1e2230e93f6fe57cf3c",
+      "sourceSHA256": "b93723337707bca381a42c4ac1c9a9e906011bd3d1f3f1e2230e93f6fe57cf3c",
+      "bytes": 1094418,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha": {
+        "range": [
+          0,
+          255
+        ],
+        "boundsAnyAlpha": [
+          0,
+          9,
+          1212,
+          1254
+        ],
+        "boundsAlpha16": [
+          209,
+          78,
+          1043,
+          1144
+        ],
+        "fullyTransparentPixels": 893745,
+        "pixelsAlpha240OrAbove": 645198,
+        "totalPixels": 1572516,
+        "cornersFullyTransparent": true,
+        "note": "Low-alpha fringe pixels extend beyond the visible subject; original master is unchanged. Deterministic export owns crop/normalization."
+      }
+    },
+    {
+      "id": "list",
+      "prompt": "Use case: stylized-concept.\nAsset type: one production raster utility icon for the Starfall iOS game, rendered as a tactile shallow 3D observatory object. This is one isolated icon, not a sheet or UI mockup.\nStyle: polished pearl enamel faces, restrained warm brass bevels and deep midnight navy edges or inset accents. Broad clean surfaces, crisp readable silhouette, minimal texture, subtle depth. Warm light from upper left, controlled soft highlight on the face, darker lower-right edge. Match a premium celestial game instrument, with the handcrafted enamel-and-brass character of a small observatory lantern.\nComposition: square image, perfectly centered, straight-on front view with no perspective tilt. Main silhouette occupies about 75 percent of the square at its largest dimension. Generous empty margins on all sides. The icon must read at 24\u201332 points.\nBackground: genuinely transparent alpha everywhere outside the icon. No painted background and no shadow plane.\nConstraints: only the one requested icon. No words, labels, letters, digits, watermark, tile, badge, enclosing circle, decorative outer frame, particles, stars in the background, sparks, luminous aura, glow halo, scene or backdrop. Do not reproduce a reference sheet or slice a mockup. Keep bevels restrained and shape bold.\nSubject: a simple list utility represented by exactly three separate equal-length solid pearl-enamel horizontal bars, evenly stacked with clear transparent gaps. Each bar has gently rounded ends, a very narrow warm-brass bevel and a thin navy depth edge. Bars occupy a compact square composition. No bullets, text, frame or extra marks.",
+      "sourcePath": "/Users/lbeezr/.codex/generated_images/01a15938-b1cd-7603-b9ce-1656f102d84e/exec-02fbb3ff-4335-4e3f-a224-5356bebc1b4c.png",
+      "masterPath": "Artwork/ObservatoryUI/masters/utilities-v2/list.png",
+      "transformations": [],
+      "visualInspection": {
+        "subjectCorrect": true,
+        "isolatedIcon": true,
+        "noTextOrEnclosingTile": true,
+        "pearlBrassNavyMaterial": true,
+        "normalisedSmallSizeReview": "pending export by parent"
+      },
+      "sha256": "30a49d8826e26a4763f90f885582b95eeac6c901e747212d304749b44736753b",
+      "sourceSHA256": "30a49d8826e26a4763f90f885582b95eeac6c901e747212d304749b44736753b",
+      "bytes": 645073,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha": {
+        "range": [
+          0,
+          255
+        ],
+        "boundsAnyAlpha": [
+          53,
+          102,
+          1204,
+          1234
+        ],
+        "boundsAlpha16": [
+          208,
+          317,
+          1046,
+          969
+        ],
+        "fullyTransparentPixels": 1111942,
+        "pixelsAlpha240OrAbove": 431048,
+        "totalPixels": 1572516,
+        "cornersFullyTransparent": true,
+        "note": "Low-alpha fringe pixels extend beyond the visible subject; original master is unchanged. Deterministic export owns crop/normalization."
+      }
+    },
+    {
+      "id": "direction",
+      "prompt": "Use case: stylized-concept.\nAsset type: one production raster utility icon for the Starfall iOS game, rendered as a tactile shallow 3D observatory object. This is one isolated icon, not a sheet or UI mockup.\nStyle: polished pearl enamel faces, restrained warm brass bevels and deep midnight navy edges or inset accents. Broad clean surfaces, crisp readable silhouette, minimal texture, subtle depth. Warm light from upper left, controlled soft highlight on the face, darker lower-right edge. Match a premium celestial game instrument, with the handcrafted enamel-and-brass character of a small observatory lantern.\nComposition: square image, perfectly centered, straight-on front view with no perspective tilt. Main silhouette occupies about 75 percent of the square at its largest dimension. Generous empty margins on all sides. The icon must read at 24\u201332 points.\nBackground: genuinely transparent alpha everywhere outside the icon. No painted background and no shadow plane.\nConstraints: only the one requested icon. No words, labels, letters, digits, watermark, tile, badge, enclosing circle, decorative outer frame, particles, stars in the background, sparks, luminous aura, glow halo, scene or backdrop. Do not reproduce a reference sheet or slice a mockup. Keep bevels restrained and shape bold.\nSubject: a four-direction movement icon. A small square navy crystal at center, with four solid pearl-enamel arrowheads pointing clearly outward to up, right, down and left. Each arrow has a short wide stem directed toward the central crystal, and a restrained narrow brass bevel. Symmetrical cardinal directions, strong triangular arrow tips, transparent negative gaps around the central crystal. Exactly four arrowheads. No diagonal arrows, letters, compass circle or decorative ring.",
+      "sourcePath": "/Users/lbeezr/.codex/generated_images/01a15938-b1cd-7603-b9ce-1656f102d84e/exec-41a02efb-0fd7-48ae-bcd2-79af62d4d33b.png",
+      "masterPath": "Artwork/ObservatoryUI/masters/utilities-v2/direction.png",
+      "transformations": [],
+      "visualInspection": {
+        "subjectCorrect": true,
+        "isolatedIcon": true,
+        "noTextOrEnclosingTile": true,
+        "pearlBrassNavyMaterial": true,
+        "normalisedSmallSizeReview": "pending export by parent"
+      },
+      "sha256": "0079b170301883468373fc9b841f84c26fdcbca63c48d3db107b6ff067b2c469",
+      "sourceSHA256": "0079b170301883468373fc9b841f84c26fdcbca63c48d3db107b6ff067b2c469",
+      "bytes": 851988,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha": {
+        "range": [
+          0,
+          255
+        ],
+        "boundsAnyAlpha": [
+          65,
+          39,
+          1244,
+          1230
+        ],
+        "boundsAlpha16": [
+          98,
+          92,
+          1155,
+          1155
+        ],
+        "fullyTransparentPixels": 1135032,
+        "pixelsAlpha240OrAbove": 412342,
+        "totalPixels": 1572516,
+        "cornersFullyTransparent": true,
+        "note": "Low-alpha fringe pixels extend beyond the visible subject; original master is unchanged. Deterministic export owns crop/normalization."
+      }
+    },
+    {
+      "id": "trace",
+      "prompt": "Use case: stylized-concept.\nAsset type: one production raster utility icon for the Starfall iOS game, rendered as a tactile shallow 3D observatory object. This is one isolated icon, not a sheet or UI mockup.\nStyle: polished pearl enamel faces, restrained warm brass bevels and deep midnight navy edges or inset accents. Broad clean surfaces, crisp readable silhouette, minimal texture, subtle depth. Warm light from upper left, controlled soft highlight on the face, darker lower-right edge. Match a premium celestial game instrument, with the handcrafted enamel-and-brass character of a small observatory lantern.\nComposition: square image, perfectly centered, straight-on front view with no perspective tilt. Main silhouette occupies about 75 percent of the square at its largest dimension. Generous empty margins on all sides. The icon must read at 24\u201332 points.\nBackground: genuinely transparent alpha everywhere outside the icon. No painted background and no shadow plane.\nConstraints: only the one requested icon. No words, labels, letters, digits, watermark, tile, badge, enclosing circle, decorative outer frame, particles, stars in the background, sparks, luminous aura, glow halo, scene or backdrop. Do not reproduce a reference sheet or slice a mockup. Keep bevels restrained and shape bold.\nSubject: an unmistakable tracing-path icon: exactly five small solid pearl/crystal points connected in order by one simple continuous smooth pearl luminous line with restrained brass edges. The line forms a clear open broad S-like curve, with two visibly distinct endpoints, not a closed loop. Five points total including both endpoints; make each point slightly larger than the connecting line and keep the line thick enough to read at small size. Shallow polished pearl faces, tiny navy depth edges, no sparkling rays or halo. No arrows, extra disconnected points, loop, letters or surrounding frame.",
+      "sourcePath": "/Users/lbeezr/.codex/generated_images/01a15938-b1cd-7603-b9ce-1656f102d84e/exec-5ae6029b-f1aa-4aab-b8e1-00ce1d22edbd.png",
+      "masterPath": "Artwork/ObservatoryUI/masters/utilities-v2/trace.png",
+      "transformations": [],
+      "visualInspection": {
+        "subjectCorrect": true,
+        "isolatedIcon": true,
+        "noTextOrEnclosingTile": true,
+        "pearlBrassNavyMaterial": true,
+        "normalisedSmallSizeReview": "pending export by parent"
+      },
+      "sha256": "17849548ec59619cb8e7806bbbcc4b7554ef968aab7f42dba86b3394bc9ce944",
+      "sourceSHA256": "17849548ec59619cb8e7806bbbcc4b7554ef968aab7f42dba86b3394bc9ce944",
+      "bytes": 495477,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha": {
+        "range": [
+          0,
+          255
+        ],
+        "boundsAnyAlpha": [
+          23,
+          53,
+          1232,
+          1254
+        ],
+        "boundsAlpha16": [
+          104,
+          106,
+          1150,
+          1153
+        ],
+        "fullyTransparentPixels": 1356546,
+        "pixelsAlpha240OrAbove": 198128,
+        "totalPixels": 1572516,
+        "cornersFullyTransparent": true,
+        "note": "Low-alpha fringe pixels extend beyond the visible subject; original master is unchanged. Deterministic export owns crop/normalization."
+      }
+    }
+  ],
+  "limits": [
+    "Raw masters are not app exports and are not integrated by this generation task.",
+    "Small-size readability and normalized crop/alpha cleanup belong to deterministic export review.",
+    "No native build, interaction, actual VoiceOver, motion or physical-device acceptance is claimed."
+  ]
+}

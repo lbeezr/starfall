@@ -1,0 +1,5597 @@
+{
+  "version": 1,
+  "family": "Observatory rendered utilities v2",
+  "generator": "Built-in ImageGen",
+  "provenance": {
+    "file": "masters/utilities-v2/PROMPTS.json",
+    "sha256": "da122f4def1d7e1b78e4789ceb0de90fa3ee7c8f8f049028c219c8569897b5d4",
+    "masterEncodedBytes": 17615451
+  },
+  "exporterSHA256": "af67c0a0ccd6ab93db65e9ba43f68f1296ddd0accad052553d978eaf19da40d6",
+  "normalization": {
+    "alphaBoundsThreshold": 16,
+    "sourceBleedPixels": 4,
+    "coordinates": "top-left; right and bottom exclusive",
+    "paddingOrder": [
+      "top",
+      "left",
+      "bottom",
+      "right"
+    ],
+    "kernel": "lanczos3",
+    "colorSpace": "sRGB",
+    "sourcePolicy": "Unchanged original RGBA masters",
+    "allowedOperations": [
+      "crop visible alpha bounds plus source bleed",
+      "proportional resize",
+      "transparent canvas registration"
+    ],
+    "cropPolicy": "Pixels outside the crop must have alpha below 16; report their count and maximum. Preserve every retained pixel before resampling.",
+    "nativeRenderingIntent": "original"
+  },
+  "budgets": {
+    "maximumMasterBytesEach": 33554432,
+    "maximumAllMasterBytes": 268435456,
+    "maximumExportBytesEach": 65536,
+    "maximumAllExportBytes": 1048576,
+    "decodedRGBABytesAllDensities": 645120,
+    "decodedRGBABytes3xSelection": 414720
+  },
+  "validation": {
+    "sourceHashes": "passed",
+    "completeRoster": 20,
+    "exports": 60,
+    "sourceVisibleFrames": "passed",
+    "exportAlphaFrames": "passed",
+    "pointRegistration": "passed",
+    "encodedBudget": "passed",
+    "nativeAppearance": "not established by export"
+  },
+  "assets": [
+    {
+      "key": "story",
+      "assetName": "ObservatoryGlyphStory",
+      "source": {
+        "master": "story.png",
+        "original": "/Users/lbeezr/.codex/generated_images/01a1563a-d0f0-7a12-9846-c5670b9fafa8/exec-30ad4067-190f-4180-be8f-e135d1bd6994.png",
+        "sha256": "eb5191b091feca2836fb045b64a30a53de37d82fcf5e0655f8292dd31c3add0e",
+        "encodedBytes": 903175,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "bounds": [
+            0,
+            37,
+            1230,
+            1244
+          ],
+          "visiblePixels": 393425,
+          "alphaCentroid": [
+            624.1078,
+            647.2336
+          ],
+          "padding": [
+            37,
+            0,
+            10,
+            24
+          ]
+        },
+        "alphaAt16": {
+          "bounds": [
+            267,
+            48,
+            982,
+            1206
+          ],
+          "visiblePixels": 383349,
+          "alphaCentroid": [
+            624.107,
+            647.2528
+          ],
+          "padding": [
+            48,
+            267,
+            48,
+            272
+          ]
+        },
+        "alphaAt128": {
+          "bounds": [
+            267,
+            48,
+            981,
+            1205
+          ],
+          "visiblePixels": 380773,
+          "alphaCentroid": [
+            624.1119,
+            647.3898
+          ],
+          "padding": [
+            48,
+            267,
+            49,
+            273
+          ]
+        },
+        "discardedOutsideCrop": {
+          "pixelCount": 1218,
+          "maximumAlpha": 1,
+          "alphaSum": 1218
+        }
+      },
+      "registration": {
+        "canvasPoints": [
+          24,
+          24
+        ],
+        "minimumPaddingPoints": 2,
+        "renderingIntent": "original",
+        "subjectAlphaThreshold": 16,
+        "sourceBleedPixels": 4,
+        "cropPixels": [
+          263,
+          44,
+          986,
+          1210
+        ],
+        "alignment": "center; odd pixel remainder goes right/bottom"
+      },
+      "exports": [
+        {
+          "filename": "story@1x.png",
+          "density": 1,
+          "dimensions": [
+            24,
+            24
+          ],
+          "sha256": "e6d35afc23fd54be21404aef5782a74898ef9f9b8cf9fc5d89daf21482f76ed2",
+          "encodedBytes": 1156,
+          "decodedRGBABytes": 2304,
+          "alpha": {
+            "bounds": [
+              6,
+              2,
+              18,
+              22
+            ],
+            "visiblePixels": 173,
+            "alphaCentroid": [
+              11.9931,
+              12.3531
+            ],
+            "padding": [
+              2,
+              6,
+              2,
+              6
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              6,
+              2,
+              18,
+              21
+            ],
+            "visiblePixels": 109,
+            "alphaCentroid": [
+              12.0031,
+              12.4602
+            ],
+            "padding": [
+              2,
+              6,
+              3,
+              6
+            ]
+          },
+          "fit": {
+            "scale": 0.0172,
+            "sizePixels": [
+              12,
+              20
+            ],
+            "originPixels": [
+              6,
+              2
+            ]
+          }
+        },
+        {
+          "filename": "story@2x.png",
+          "density": 2,
+          "dimensions": [
+            48,
+            48
+          ],
+          "sha256": "44b71e511d2c8292638804c2ed499f34a588e8d1008ab48c5172f9a1435fd38b",
+          "encodedBytes": 2729,
+          "decodedRGBABytes": 9216,
+          "alpha": {
+            "bounds": [
+              11,
+              4,
+              36,
+              44
+            ],
+            "visiblePixels": 596,
+            "alphaCentroid": [
+              23.4853,
+              24.6568
+            ],
+            "padding": [
+              4,
+              11,
+              4,
+              12
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              11,
+              4,
+              36,
+              44
+            ],
+            "visiblePixels": 459,
+            "alphaCentroid": [
+              23.4829,
+              24.7303
+            ],
+            "padding": [
+              4,
+              11,
+              4,
+              12
+            ]
+          },
+          "fit": {
+            "scale": 0.0343,
+            "sizePixels": [
+              25,
+              40
+            ],
+            "originPixels": [
+              11,
+              4
+            ]
+          }
+        },
+        {
+          "filename": "story@3x.png",
+          "density": 3,
+          "dimensions": [
+            72,
+            72
+          ],
+          "sha256": "9e42511ecd79945d42256cfbfda11969a3a987dd6b6323a0d87c39a319715aa9",
+          "encodedBytes": 5062,
+          "decodedRGBABytes": 20736,
+          "alpha": {
+            "bounds": [
+              17,
+              6,
+              54,
+              66
+            ],
+            "visiblePixels": 1251,
+            "alphaCentroid": [
+              35.4822,
+              37.042
+            ],
+            "padding": [
+              6,
+              17,
+              6,
+              18
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              17,
+              6,
+              54,
+              66
+            ],
+            "visiblePixels": 1002,
+            "alphaCentroid": [
+              35.4845,
+              37.1411
+            ],
+            "padding": [
+              6,
+              17,
+              6,
+              18
+            ]
+          },
+          "fit": {
+            "scale": 0.0515,
+            "sizePixels": [
+              37,
+              60
+            ],
+            "originPixels": [
+              17,
+              6
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "freeplay",
+      "assetName": "ObservatoryGlyphFreeplay",
+      "source": {
+        "master": "freeplay.png",
+        "original": "/Users/lbeezr/.codex/generated_images/01a1563a-d0f0-7a12-9846-c5670b9fafa8/exec-c09c9748-a09a-4d86-bf26-b569c0d03aaa.png",
+        "sha256": "782fbd262a60cfe1fb248703b77635252828caf594fe6f97ff5b42d6e69b5064",
+        "encodedBytes": 653705,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "bounds": [
+            31,
+            28,
+            1216,
+            1230
+          ],
+          "visiblePixels": 247324,
+          "alphaCentroid": [
+            647.0973,
+            627.1058
+          ],
+          "padding": [
+            28,
+            31,
+            24,
+            38
+          ]
+        },
+        "alphaAt16": {
+          "bounds": [
+            84,
+            62,
+            1196,
+            1140
+          ],
+          "visiblePixels": 224203,
+          "alphaCentroid": [
+            647.1798,
+            627.2045
+          ],
+          "padding": [
+            62,
+            84,
+            114,
+            58
+          ]
+        },
+        "alphaAt128": {
+          "bounds": [
+            84,
+            63,
+            1195,
+            1139
+          ],
+          "visiblePixels": 219804,
+          "alphaCentroid": [
+            647.6526,
+            627.6147
+          ],
+          "padding": [
+            63,
+            84,
+            115,
+            59
+          ]
+        },
+        "discardedOutsideCrop": {
+          "pixelCount": 133,
+          "maximumAlpha": 1,
+          "alphaSum": 133
+        }
+      },
+      "registration": {
+        "canvasPoints": [
+          24,
+          24
+        ],
+        "minimumPaddingPoints": 2,
+        "renderingIntent": "original",
+        "subjectAlphaThreshold": 16,
+        "sourceBleedPixels": 4,
+        "cropPixels": [
+          80,
+          58,
+          1200,
+          1144
+        ],
+        "alignment": "center; odd pixel remainder goes right/bottom"
+      },
+      "exports": [
+        {
+          "filename": "freeplay@1x.png",
+          "density": 1,
+          "dimensions": [
+            24,
+            24
+          ],
+          "sha256": "58b9bfda04c378f4d1bbb60303daeb75b6c24f11c5b079d905980bbf7717db24",
+          "encodedBytes": 1124,
+          "decodedRGBABytes": 2304,
+          "alpha": {
+            "bounds": [
+              2,
+              2,
+              22,
+              21
+            ],
+            "visiblePixels": 171,
+            "alphaCentroid": [
+              12.1534,
+              11.974
+            ],
+            "padding": [
+              2,
+              2,
+              3,
+              2
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              2,
+              4,
+              21,
+              20
+            ],
+            "visiblePixels": 72,
+            "alphaCentroid": [
+              12.3715,
+              12.1351
+            ],
+            "padding": [
+              4,
+              2,
+              4,
+              3
+            ]
+          },
+          "fit": {
+            "scale": 0.0179,
+            "sizePixels": [
+              20,
+              19
+            ],
+            "originPixels": [
+              2,
+              2
+            ]
+          }
+        },
+        {
+          "filename": "freeplay@2x.png",
+          "density": 2,
+          "dimensions": [
+            48,
+            48
+          ],
+          "sha256": "b9976e45155b27e56c97c556d5738b8ab52afaeaf193d639f27e0698dd87ab55",
+          "encodedBytes": 2411,
+          "decodedRGBABytes": 9216,
+          "alpha": {
+            "bounds": [
+              4,
+              4,
+              44,
+              43
+            ],
+            "visiblePixels": 506,
+            "alphaCentroid": [
+              24.2881,
+              24.4571
+            ],
+            "padding": [
+              4,
+              4,
+              5,
+              4
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              4,
+              6,
+              43,
+              42
+            ],
+            "visiblePixels": 276,
+            "alphaCentroid": [
+              24.5259,
+              24.6835
+            ],
+            "padding": [
+              6,
+              4,
+              6,
+              5
+            ]
+          },
+          "fit": {
+            "scale": 0.0357,
+            "sizePixels": [
+              40,
+              39
+            ],
+            "originPixels": [
+              4,
+              4
+            ]
+          }
+        },
+        {
+          "filename": "freeplay@3x.png",
+          "density": 3,
+          "dimensions": [
+            72,
+            72
+          ],
+          "sha256": "def536e9afbdb2585e6bc9cf5962c9f807e5e3f4eb151bfafd3c538beb8d0bd4",
+          "encodedBytes": 4169,
+          "decodedRGBABytes": 20736,
+          "alpha": {
+            "bounds": [
+              6,
+              7,
+              66,
+              65
+            ],
+            "visiblePixels": 982,
+            "alphaCentroid": [
+              36.3888,
+              37.4004
+            ],
+            "padding": [
+              7,
+              6,
+              7,
+              6
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              6,
+              9,
+              65,
+              64
+            ],
+            "visiblePixels": 626,
+            "alphaCentroid": [
+              36.6607,
+              37.6401
+            ],
+            "padding": [
+              9,
+              6,
+              8,
+              7
+            ]
+          },
+          "fit": {
+            "scale": 0.0536,
+            "sizePixels": [
+              60,
+              58
+            ],
+            "originPixels": [
+              6,
+              7
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "tutorial",
+      "assetName": "ObservatoryGlyphTutorial",
+      "source": {
+        "master": "tutorial.png",
+        "original": "/Users/lbeezr/.codex/generated_images/01a1563a-d0f0-7a12-9846-c5670b9fafa8/exec-cf37b3c1-b308-4ca4-be72-bd261ae752cd.png",
+        "sha256": "31cca3331ab8aafe3ffaac42cafbed4c2e98417cfa9b559aafb4c5c2a41e8c80",
+        "encodedBytes": 851288,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "bounds": [
+            0,
+            17,
+            1253,
+            1254
+          ],
+          "visiblePixels": 350930,
+          "alphaCentroid": [
+            726.9168,
+            611.8652
+          ],
+          "padding": [
+            17,
+            0,
+            0,
+            1
+          ]
+        },
+        "alphaAt16": {
+          "bounds": [
+            162,
+            81,
+            1163,
+            1163
+          ],
+          "visiblePixels": 247601,
+          "alphaCentroid": [
+            727.5313,
+            611.6666
+          ],
+          "padding": [
+            81,
+            162,
+            91,
+            91
+          ]
+        },
+        "alphaAt128": {
+          "bounds": [
+            164,
+            82,
+            1162,
+            1162
+          ],
+          "visiblePixels": 235292,
+          "alphaCentroid": [
+            728.7377,
+            611.1644
+          ],
+          "padding": [
+            82,
+            164,
+            92,
+            92
+          ]
+        },
+        "discardedOutsideCrop": {
+          "pixelCount": 4756,
+          "maximumAlpha": 4,
+          "alphaSum": 5404
+        }
+      },
+      "registration": {
+        "canvasPoints": [
+          24,
+          24
+        ],
+        "minimumPaddingPoints": 2,
+        "renderingIntent": "original",
+        "subjectAlphaThreshold": 16,
+        "sourceBleedPixels": 4,
+        "cropPixels": [
+          158,
+          77,
+          1167,
+          1167
+        ],
+        "alignment": "center; odd pixel remainder goes right/bottom"
+      },
+      "exports": [
+        {
+          "filename": "tutorial@1x.png",
+          "density": 1,
+          "dimensions": [
+            24,
+            24
+          ],
+          "sha256": "a20a0be485cc9cf3f1b135b480dafb7276c2e1ffcf259e89d86543d422830cc0",
+          "encodedBytes": 1325,
+          "decodedRGBABytes": 2304,
+          "alpha": {
+            "bounds": [
+              2,
+              2,
+              21,
+              22
+            ],
+            "visiblePixels": 231,
+            "alphaCentroid": [
+              12.6871,
+              11.843
+            ],
+            "padding": [
+              2,
+              2,
+              2,
+              3
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              3,
+              3,
+              20,
+              21
+            ],
+            "visiblePixels": 71,
+            "alphaCentroid": [
+              13.0614,
+              11.0873
+            ],
+            "padding": [
+              3,
+              3,
+              3,
+              4
+            ]
+          },
+          "fit": {
+            "scale": 0.0183,
+            "sizePixels": [
+              19,
+              20
+            ],
+            "originPixels": [
+              2,
+              2
+            ]
+          }
+        },
+        {
+          "filename": "tutorial@2x.png",
+          "density": 2,
+          "dimensions": [
+            48,
+            48
+          ],
+          "sha256": "f50b727f4c7e00ffcb185dd6b3085869718c20024e1bb748bc43d16a83235dd6",
+          "encodedBytes": 2898,
+          "decodedRGBABytes": 9216,
+          "alpha": {
+            "bounds": [
+              5,
+              4,
+              42,
+              44
+            ],
+            "visiblePixels": 665,
+            "alphaCentroid": [
+              25.845,
+              23.6976
+            ],
+            "padding": [
+              4,
+              5,
+              4,
+              6
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              6,
+              5,
+              41,
+              43
+            ],
+            "visiblePixels": 322,
+            "alphaCentroid": [
+              26.0866,
+              23.3544
+            ],
+            "padding": [
+              5,
+              6,
+              5,
+              7
+            ]
+          },
+          "fit": {
+            "scale": 0.0367,
+            "sizePixels": [
+              37,
+              40
+            ],
+            "originPixels": [
+              5,
+              4
+            ]
+          }
+        },
+        {
+          "filename": "tutorial@3x.png",
+          "density": 3,
+          "dimensions": [
+            72,
+            72
+          ],
+          "sha256": "3909611c135ec0501083d598d3ce57301845844ed06478c1ae12ca6301e5fd2e",
+          "encodedBytes": 5103,
+          "decodedRGBABytes": 20736,
+          "alpha": {
+            "bounds": [
+              8,
+              6,
+              64,
+              66
+            ],
+            "visiblePixels": 1284,
+            "alphaCentroid": [
+              39.5322,
+              35.4985
+            ],
+            "padding": [
+              6,
+              8,
+              6,
+              8
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              9,
+              7,
+              63,
+              65
+            ],
+            "visiblePixels": 717,
+            "alphaCentroid": [
+              39.9273,
+              35.1899
+            ],
+            "padding": [
+              7,
+              9,
+              7,
+              9
+            ]
+          },
+          "fit": {
+            "scale": 0.055,
+            "sizePixels": [
+              56,
+              60
+            ],
+            "originPixels": [
+              8,
+              6
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "settings",
+      "assetName": "ObservatoryGlyphSettings",
+      "source": {
+        "master": "settings.png",
+        "original": "/Users/lbeezr/.codex/generated_images/01a1563a-d0f0-7a12-9846-c5670b9fafa8/exec-192b7c19-40bb-4286-ab30-2c055fcea9e4.png",
+        "sha256": "c62c1ef82c16cab9c541933e77ca4f158f7037498d3833f283de29c3e3b2f6bc",
+        "encodedBytes": 1212400,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "bounds": [
+            0,
+            39,
+            1240,
+            1254
+          ],
+          "visiblePixels": 558998,
+          "alphaCentroid": [
+            624.4676,
+            625.3056
+          ],
+          "padding": [
+            39,
+            0,
+            0,
+            14
+          ]
+        },
+        "alphaAt16": {
+          "bounds": [
+            175,
+            175,
+            1074,
+            1072
+          ],
+          "visiblePixels": 550663,
+          "alphaCentroid": [
+            624.4692,
+            625.2996
+          ],
+          "padding": [
+            175,
+            175,
+            182,
+            180
+          ]
+        },
+        "alphaAt128": {
+          "bounds": [
+            176,
+            175,
+            1073,
+            1071
+          ],
+          "visiblePixels": 548245,
+          "alphaCentroid": [
+            624.4623,
+            625.3103
+          ],
+          "padding": [
+            175,
+            176,
+            183,
+            181
+          ]
+        },
+        "discardedOutsideCrop": {
+          "pixelCount": 625,
+          "maximumAlpha": 1,
+          "alphaSum": 625
+        }
+      },
+      "registration": {
+        "canvasPoints": [
+          24,
+          24
+        ],
+        "minimumPaddingPoints": 2,
+        "renderingIntent": "original",
+        "subjectAlphaThreshold": 16,
+        "sourceBleedPixels": 4,
+        "cropPixels": [
+          171,
+          171,
+          1078,
+          1076
+        ],
+        "alignment": "center; odd pixel remainder goes right/bottom"
+      },
+      "exports": [
+        {
+          "filename": "settings@1x.png",
+          "density": 1,
+          "dimensions": [
+            24,
+            24
+          ],
+          "sha256": "47c06acab8e853af68b90b1c4a9dae0a5caf2f0cee981a8a55bf615b368af7b0",
+          "encodedBytes": 1777,
+          "decodedRGBABytes": 2304,
+          "alpha": {
+            "bounds": [
+              2,
+              2,
+              22,
+              22
+            ],
+            "visiblePixels": 339,
+            "alphaCentroid": [
+              11.9963,
+              12.0344
+            ],
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              2,
+              2,
+              22,
+              22
+            ],
+            "visiblePixels": 272,
+            "alphaCentroid": [
+              11.998,
+              12.0373
+            ],
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ]
+          },
+          "fit": {
+            "scale": 0.0221,
+            "sizePixels": [
+              20,
+              20
+            ],
+            "originPixels": [
+              2,
+              2
+            ]
+          }
+        },
+        {
+          "filename": "settings@2x.png",
+          "density": 2,
+          "dimensions": [
+            48,
+            48
+          ],
+          "sha256": "d3454e66a9515e474b2c60728d93c7158a7b3a51a020f4ebf48d113137c98ac4",
+          "encodedBytes": 4945,
+          "decodedRGBABytes": 9216,
+          "alpha": {
+            "bounds": [
+              4,
+              4,
+              44,
+              44
+            ],
+            "visiblePixels": 1246,
+            "alphaCentroid": [
+              24.0004,
+              24.0761
+            ],
+            "padding": [
+              4,
+              4,
+              4,
+              4
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              4,
+              4,
+              44,
+              44
+            ],
+            "visiblePixels": 1076,
+            "alphaCentroid": [
+              23.9938,
+              24.0588
+            ],
+            "padding": [
+              4,
+              4,
+              4,
+              4
+            ]
+          },
+          "fit": {
+            "scale": 0.0441,
+            "sizePixels": [
+              40,
+              40
+            ],
+            "originPixels": [
+              4,
+              4
+            ]
+          }
+        },
+        {
+          "filename": "settings@3x.png",
+          "density": 3,
+          "dimensions": [
+            72,
+            72
+          ],
+          "sha256": "b769b7b28ce9d68d2a48e930e4a8e7f40efee519d304a2491c8dec7206fa41d2",
+          "encodedBytes": 9818,
+          "decodedRGBABytes": 20736,
+          "alpha": {
+            "bounds": [
+              6,
+              6,
+              66,
+              66
+            ],
+            "visiblePixels": 2690,
+            "alphaCentroid": [
+              35.9971,
+              36.1197
+            ],
+            "padding": [
+              6,
+              6,
+              6,
+              6
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              6,
+              6,
+              66,
+              66
+            ],
+            "visiblePixels": 2414,
+            "alphaCentroid": [
+              35.9948,
+              36.1133
+            ],
+            "padding": [
+              6,
+              6,
+              6,
+              6
+            ]
+          },
+          "fit": {
+            "scale": 0.0662,
+            "sizePixels": [
+              60,
+              60
+            ],
+            "originPixels": [
+              6,
+              6
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "back",
+      "assetName": "ObservatoryGlyphBack",
+      "source": {
+        "master": "back.png",
+        "original": "/Users/lbeezr/.codex/generated_images/01a1563a-d0f0-7a12-9846-c5670b9fafa8/exec-b232fe98-ed01-4118-b050-d5dbd1d545b3.png",
+        "sha256": "73ce6122139654b941e7f83240d6f264819b029d84d0565d4fe11058726044ca",
+        "encodedBytes": 600614,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "bounds": [
+            31,
+            175,
+            1182,
+            1230
+          ],
+          "visiblePixels": 309239,
+          "alphaCentroid": [
+            645.7741,
+            625.3588
+          ],
+          "padding": [
+            175,
+            31,
+            24,
+            72
+          ]
+        },
+        "alphaAt16": {
+          "bounds": [
+            304,
+            180,
+            925,
+            1064
+          ],
+          "visiblePixels": 303780,
+          "alphaCentroid": [
+            645.7719,
+            625.3601
+          ],
+          "padding": [
+            180,
+            304,
+            190,
+            329
+          ]
+        },
+        "alphaAt128": {
+          "bounds": [
+            305,
+            181,
+            924,
+            1064
+          ],
+          "visiblePixels": 302129,
+          "alphaCentroid": [
+            645.7169,
+            625.4141
+          ],
+          "padding": [
+            181,
+            305,
+            190,
+            330
+          ]
+        },
+        "discardedOutsideCrop": {
+          "pixelCount": 381,
+          "maximumAlpha": 2,
+          "alphaSum": 392
+        }
+      },
+      "registration": {
+        "canvasPoints": [
+          24,
+          24
+        ],
+        "minimumPaddingPoints": 2,
+        "renderingIntent": "original",
+        "subjectAlphaThreshold": 16,
+        "sourceBleedPixels": 4,
+        "cropPixels": [
+          300,
+          176,
+          929,
+          1068
+        ],
+        "alignment": "center; odd pixel remainder goes right/bottom"
+      },
+      "exports": [
+        {
+          "filename": "back@1x.png",
+          "density": 1,
+          "dimensions": [
+            24,
+            24
+          ],
+          "sha256": "783a2d95c24c8b9888c48d88f165ba0463c8afb92acbbbe431e445af6e82e93e",
+          "encodedBytes": 1261,
+          "decodedRGBABytes": 2304,
+          "alpha": {
+            "bounds": [
+              5,
+              2,
+              19,
+              22
+            ],
+            "visiblePixels": 205,
+            "alphaCentroid": [
+              12.6805,
+              12.056
+            ],
+            "padding": [
+              2,
+              5,
+              2,
+              5
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              5,
+              2,
+              19,
+              22
+            ],
+            "visiblePixels": 149,
+            "alphaCentroid": [
+              12.76,
+              12.075
+            ],
+            "padding": [
+              2,
+              5,
+              2,
+              5
+            ]
+          },
+          "fit": {
+            "scale": 0.0224,
+            "sizePixels": [
+              14,
+              20
+            ],
+            "originPixels": [
+              5,
+              2
+            ]
+          }
+        },
+        {
+          "filename": "back@2x.png",
+          "density": 2,
+          "dimensions": [
+            48,
+            48
+          ],
+          "sha256": "554df0d52d883eb0510d432de504ca0d631aa892f575d7168fdcb0d88f6d4474",
+          "encodedBytes": 3003,
+          "decodedRGBABytes": 9216,
+          "alpha": {
+            "bounds": [
+              10,
+              4,
+              38,
+              44
+            ],
+            "visiblePixels": 742,
+            "alphaCentroid": [
+              25.3789,
+              24.1409
+            ],
+            "padding": [
+              4,
+              10,
+              4,
+              10
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              10,
+              4,
+              38,
+              44
+            ],
+            "visiblePixels": 609,
+            "alphaCentroid": [
+              25.4334,
+              24.1367
+            ],
+            "padding": [
+              4,
+              10,
+              4,
+              10
+            ]
+          },
+          "fit": {
+            "scale": 0.0448,
+            "sizePixels": [
+              28,
+              40
+            ],
+            "originPixels": [
+              10,
+              4
+            ]
+          }
+        },
+        {
+          "filename": "back@3x.png",
+          "density": 3,
+          "dimensions": [
+            72,
+            72
+          ],
+          "sha256": "e6716dc418d3a4ee6d01f4c157433a6b8eb710103c670ee2e54431ae41fa900e",
+          "encodedBytes": 5709,
+          "decodedRGBABytes": 20736,
+          "alpha": {
+            "bounds": [
+              15,
+              6,
+              57,
+              66
+            ],
+            "visiblePixels": 1578,
+            "alphaCentroid": [
+              38.0914,
+              36.2257
+            ],
+            "padding": [
+              6,
+              15,
+              6,
+              15
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              15,
+              6,
+              57,
+              66
+            ],
+            "visiblePixels": 1364,
+            "alphaCentroid": [
+              38.0839,
+              36.1903
+            ],
+            "padding": [
+              6,
+              15,
+              6,
+              15
+            ]
+          },
+          "fit": {
+            "scale": 0.0673,
+            "sizePixels": [
+              42,
+              60
+            ],
+            "originPixels": [
+              15,
+              6
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "next",
+      "assetName": "ObservatoryGlyphNext",
+      "source": {
+        "master": "next.png",
+        "original": "/Users/lbeezr/.codex/generated_images/01a15946-669e-73d2-a09b-fe0999b271e4/exec-a41f41b3-8f76-4ebd-a794-d74bd8493b94.png",
+        "sha256": "e46d6feec2f284b49ee75f74225e3b2a54023542632e7c873e1fe43ae69e8f2a",
+        "encodedBytes": 663056,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "bounds": [
+            39,
+            19,
+            1200,
+            1206
+          ],
+          "visiblePixels": 281303,
+          "alphaCentroid": [
+            609.4023,
+            630.4891
+          ],
+          "padding": [
+            19,
+            39,
+            48,
+            54
+          ]
+        },
+        "alphaAt16": {
+          "bounds": [
+            319,
+            144,
+            956,
+            1118
+          ],
+          "visiblePixels": 275475,
+          "alphaCentroid": [
+            609.4074,
+            630.4889
+          ],
+          "padding": [
+            144,
+            319,
+            136,
+            298
+          ]
+        },
+        "alphaAt128": {
+          "bounds": [
+            320,
+            145,
+            955,
+            1117
+          ],
+          "visiblePixels": 273617,
+          "alphaCentroid": [
+            609.4562,
+            630.4981
+          ],
+          "padding": [
+            145,
+            320,
+            137,
+            299
+          ]
+        },
+        "discardedOutsideCrop": {
+          "pixelCount": 264,
+          "maximumAlpha": 1,
+          "alphaSum": 264
+        }
+      },
+      "registration": {
+        "canvasPoints": [
+          24,
+          24
+        ],
+        "minimumPaddingPoints": 2,
+        "renderingIntent": "original",
+        "subjectAlphaThreshold": 16,
+        "sourceBleedPixels": 4,
+        "cropPixels": [
+          315,
+          140,
+          960,
+          1122
+        ],
+        "alignment": "center; odd pixel remainder goes right/bottom"
+      },
+      "exports": [
+        {
+          "filename": "next@1x.png",
+          "density": 1,
+          "dimensions": [
+            24,
+            24
+          ],
+          "sha256": "b8f2f2569a6770082e9bd67d1b952f737456e667d21a25277d889e146c292cf8",
+          "encodedBytes": 1140,
+          "decodedRGBABytes": 2304,
+          "alpha": {
+            "bounds": [
+              5,
+              2,
+              18,
+              22
+            ],
+            "visiblePixels": 170,
+            "alphaCentroid": [
+              10.9307,
+              11.9837
+            ],
+            "padding": [
+              2,
+              5,
+              2,
+              6
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              5,
+              2,
+              18,
+              22
+            ],
+            "visiblePixels": 112,
+            "alphaCentroid": [
+              10.9777,
+              11.981
+            ],
+            "padding": [
+              2,
+              5,
+              2,
+              6
+            ]
+          },
+          "fit": {
+            "scale": 0.0204,
+            "sizePixels": [
+              13,
+              20
+            ],
+            "originPixels": [
+              5,
+              2
+            ]
+          }
+        },
+        {
+          "filename": "next@2x.png",
+          "density": 2,
+          "dimensions": [
+            48,
+            48
+          ],
+          "sha256": "89354884fa2f7711a6e6393e00061b33ed87bc6e3d2e561ab7caf675d807bd67",
+          "encodedBytes": 2642,
+          "decodedRGBABytes": 9216,
+          "alpha": {
+            "bounds": [
+              11,
+              4,
+              37,
+              44
+            ],
+            "visiblePixels": 590,
+            "alphaCentroid": [
+              22.8543,
+              23.9817
+            ],
+            "padding": [
+              4,
+              11,
+              4,
+              11
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              11,
+              4,
+              37,
+              44
+            ],
+            "visiblePixels": 449,
+            "alphaCentroid": [
+              22.9015,
+              23.9562
+            ],
+            "padding": [
+              4,
+              11,
+              4,
+              11
+            ]
+          },
+          "fit": {
+            "scale": 0.0407,
+            "sizePixels": [
+              26,
+              40
+            ],
+            "originPixels": [
+              11,
+              4
+            ]
+          }
+        },
+        {
+          "filename": "next@3x.png",
+          "density": 3,
+          "dimensions": [
+            72,
+            72
+          ],
+          "sha256": "62b9a164b46350edb04bf56e792146a3a6f01589c6b63e8719b7fe53dd1de9a0",
+          "encodedBytes": 4806,
+          "decodedRGBABytes": 20736,
+          "alpha": {
+            "bounds": [
+              16,
+              6,
+              55,
+              66
+            ],
+            "visiblePixels": 1241,
+            "alphaCentroid": [
+              33.8042,
+              35.9732
+            ],
+            "padding": [
+              6,
+              16,
+              6,
+              17
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              16,
+              6,
+              55,
+              66
+            ],
+            "visiblePixels": 1010,
+            "alphaCentroid": [
+              33.8175,
+              35.9443
+            ],
+            "padding": [
+              6,
+              16,
+              6,
+              17
+            ]
+          },
+          "fit": {
+            "scale": 0.0611,
+            "sizePixels": [
+              39,
+              60
+            ],
+            "originPixels": [
+              16,
+              6
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "play",
+      "assetName": "ObservatoryGlyphPlay",
+      "source": {
+        "master": "play.png",
+        "original": "/Users/lbeezr/.codex/generated_images/01a15946-669e-73d2-a09b-fe0999b271e4/exec-9aa0ac98-5523-481f-8e16-decafb3c4f3d.png",
+        "sha256": "201d99bf8bbeb6373e58a66c89e4267296c25674bdea2ccb222d7d9948ca2883",
+        "encodedBytes": 1040400,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "bounds": [
+            0,
+            25,
+            1240,
+            1214
+          ],
+          "visiblePixels": 559870,
+          "alphaCentroid": [
+            512.8736,
+            635.1443
+          ],
+          "padding": [
+            25,
+            0,
+            40,
+            14
+          ]
+        },
+        "alphaAt16": {
+          "bounds": [
+            184,
+            135,
+            1081,
+            1132
+          ],
+          "visiblePixels": 549254,
+          "alphaCentroid": [
+            512.8704,
+            635.1413
+          ],
+          "padding": [
+            135,
+            184,
+            122,
+            173
+          ]
+        },
+        "alphaAt128": {
+          "bounds": [
+            185,
+            136,
+            1080,
+            1131
+          ],
+          "visiblePixels": 546842,
+          "alphaCentroid": [
+            512.8452,
+            635.1312
+          ],
+          "padding": [
+            136,
+            185,
+            123,
+            174
+          ]
+        },
+        "discardedOutsideCrop": {
+          "pixelCount": 864,
+          "maximumAlpha": 1,
+          "alphaSum": 864
+        }
+      },
+      "registration": {
+        "canvasPoints": [
+          24,
+          24
+        ],
+        "minimumPaddingPoints": 2,
+        "renderingIntent": "original",
+        "subjectAlphaThreshold": 16,
+        "sourceBleedPixels": 4,
+        "cropPixels": [
+          180,
+          131,
+          1085,
+          1136
+        ],
+        "alignment": "center; odd pixel remainder goes right/bottom"
+      },
+      "exports": [
+        {
+          "filename": "play@1x.png",
+          "density": 1,
+          "dimensions": [
+            24,
+            24
+          ],
+          "sha256": "c6bd0728b1e147ec797e60de1b903f41f0822c695d2610c60d1611c057824373",
+          "encodedBytes": 1506,
+          "decodedRGBABytes": 2304,
+          "alpha": {
+            "bounds": [
+              3,
+              2,
+              21,
+              22
+            ],
+            "visiblePixels": 274,
+            "alphaCentroid": [
+              9.624,
+              12.0295
+            ],
+            "padding": [
+              2,
+              3,
+              2,
+              3
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              3,
+              2,
+              21,
+              22
+            ],
+            "visiblePixels": 219,
+            "alphaCentroid": [
+              9.5423,
+              12.0213
+            ],
+            "padding": [
+              2,
+              3,
+              2,
+              3
+            ]
+          },
+          "fit": {
+            "scale": 0.0199,
+            "sizePixels": [
+              18,
+              20
+            ],
+            "originPixels": [
+              3,
+              2
+            ]
+          }
+        },
+        {
+          "filename": "play@2x.png",
+          "density": 2,
+          "dimensions": [
+            48,
+            48
+          ],
+          "sha256": "0675ac7b6a20bfcc292895d094c57f4c31fac340ed63d4d01bb0ec3b1f24ce4b",
+          "encodedBytes": 3932,
+          "decodedRGBABytes": 9216,
+          "alpha": {
+            "bounds": [
+              6,
+              4,
+              42,
+              44
+            ],
+            "visiblePixels": 1001,
+            "alphaCentroid": [
+              19.244,
+              24.0649
+            ],
+            "padding": [
+              4,
+              6,
+              4,
+              6
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              6,
+              4,
+              42,
+              44
+            ],
+            "visiblePixels": 873,
+            "alphaCentroid": [
+              19.1703,
+              24.0581
+            ],
+            "padding": [
+              4,
+              6,
+              4,
+              6
+            ]
+          },
+          "fit": {
+            "scale": 0.0398,
+            "sizePixels": [
+              36,
+              40
+            ],
+            "originPixels": [
+              6,
+              4
+            ]
+          }
+        },
+        {
+          "filename": "play@3x.png",
+          "density": 3,
+          "dimensions": [
+            72,
+            72
+          ],
+          "sha256": "defa2c291dc0daf60f1da9cb156bd4b65c19c2eab15efcd5fb805f1c49b0e287",
+          "encodedBytes": 7607,
+          "decodedRGBABytes": 20736,
+          "alpha": {
+            "bounds": [
+              9,
+              6,
+              63,
+              66
+            ],
+            "visiblePixels": 2167,
+            "alphaCentroid": [
+              28.8664,
+              36.0975
+            ],
+            "padding": [
+              6,
+              9,
+              6,
+              9
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              9,
+              6,
+              63,
+              66
+            ],
+            "visiblePixels": 1962,
+            "alphaCentroid": [
+              28.7898,
+              36.0889
+            ],
+            "padding": [
+              6,
+              9,
+              6,
+              9
+            ]
+          },
+          "fit": {
+            "scale": 0.0597,
+            "sizePixels": [
+              54,
+              60
+            ],
+            "originPixels": [
+              9,
+              6
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "pause",
+      "assetName": "ObservatoryGlyphPause",
+      "source": {
+        "master": "pause.png",
+        "original": "/Users/lbeezr/.codex/generated_images/01a1563a-d0f0-7a12-9846-c5670b9fafa8/exec-5b928414-0df5-4b6b-8652-a7e0d3e31c46.png",
+        "sha256": "ba8897aed2bd649cb89a2aeb9a429e6619ebd9994ddd76c9d06541122141c308",
+        "encodedBytes": 573286,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "bounds": [
+            31,
+            39,
+            1238,
+            1240
+          ],
+          "visiblePixels": 369718,
+          "alphaCentroid": [
+            626.7765,
+            625.3539
+          ],
+          "padding": [
+            39,
+            31,
+            14,
+            16
+          ]
+        },
+        "alphaAt16": {
+          "bounds": [
+            315,
+            273,
+            938,
+            978
+          ],
+          "visiblePixels": 358666,
+          "alphaCentroid": [
+            626.7739,
+            625.3553
+          ],
+          "padding": [
+            273,
+            315,
+            276,
+            316
+          ]
+        },
+        "alphaAt128": {
+          "bounds": [
+            316,
+            273,
+            938,
+            977
+          ],
+          "visiblePixels": 356263,
+          "alphaCentroid": [
+            626.6547,
+            625.3513
+          ],
+          "padding": [
+            273,
+            316,
+            277,
+            316
+          ]
+        },
+        "discardedOutsideCrop": {
+          "pixelCount": 3169,
+          "maximumAlpha": 2,
+          "alphaSum": 3203
+        }
+      },
+      "registration": {
+        "canvasPoints": [
+          24,
+          24
+        ],
+        "minimumPaddingPoints": 2,
+        "renderingIntent": "original",
+        "subjectAlphaThreshold": 16,
+        "sourceBleedPixels": 4,
+        "cropPixels": [
+          311,
+          269,
+          942,
+          982
+        ],
+        "alignment": "center; odd pixel remainder goes right/bottom"
+      },
+      "exports": [
+        {
+          "filename": "pause@1x.png",
+          "density": 1,
+          "dimensions": [
+            24,
+            24
+          ],
+          "sha256": "41e0a40e9189924073d20d0eb30c636b6f63e9c5eb3ea2780677bbcf2867a6b4",
+          "encodedBytes": 1672,
+          "decodedRGBABytes": 2304,
+          "alpha": {
+            "bounds": [
+              3,
+              2,
+              21,
+              22
+            ],
+            "visiblePixels": 318,
+            "alphaCentroid": [
+              11.9905,
+              11.9923
+            ],
+            "padding": [
+              2,
+              3,
+              2,
+              3
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              3,
+              2,
+              21,
+              22
+            ],
+            "visiblePixels": 296,
+            "alphaCentroid": [
+              11.9931,
+              11.9922
+            ],
+            "padding": [
+              2,
+              3,
+              2,
+              3
+            ]
+          },
+          "fit": {
+            "scale": 0.0281,
+            "sizePixels": [
+              18,
+              20
+            ],
+            "originPixels": [
+              3,
+              2
+            ]
+          }
+        },
+        {
+          "filename": "pause@2x.png",
+          "density": 2,
+          "dimensions": [
+            48,
+            48
+          ],
+          "sha256": "323dff1af64b73dfdb998b59efdec5a258db0b9b104720e4f3b6debfe06ef5cd",
+          "encodedBytes": 4654,
+          "decodedRGBABytes": 9216,
+          "alpha": {
+            "bounds": [
+              6,
+              4,
+              41,
+              44
+            ],
+            "visiblePixels": 1283,
+            "alphaCentroid": [
+              23.5052,
+              23.9882
+            ],
+            "padding": [
+              4,
+              6,
+              4,
+              7
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              6,
+              4,
+              41,
+              44
+            ],
+            "visiblePixels": 1129,
+            "alphaCentroid": [
+              23.483,
+              23.9463
+            ],
+            "padding": [
+              4,
+              6,
+              4,
+              7
+            ]
+          },
+          "fit": {
+            "scale": 0.0561,
+            "sizePixels": [
+              35,
+              40
+            ],
+            "originPixels": [
+              6,
+              4
+            ]
+          }
+        },
+        {
+          "filename": "pause@3x.png",
+          "density": 3,
+          "dimensions": [
+            72,
+            72
+          ],
+          "sha256": "5e95ac464fa36e3ddd73d0fd88a9313937876b4886e14c5db22dba81a9770802",
+          "encodedBytes": 9207,
+          "decodedRGBABytes": 20736,
+          "alpha": {
+            "bounds": [
+              9,
+              6,
+              62,
+              66
+            ],
+            "visiblePixels": 2801,
+            "alphaCentroid": [
+              35.5167,
+              35.9884
+            ],
+            "padding": [
+              6,
+              9,
+              6,
+              10
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              9,
+              6,
+              62,
+              66
+            ],
+            "visiblePixels": 2582,
+            "alphaCentroid": [
+              35.5167,
+              35.9924
+            ],
+            "padding": [
+              6,
+              9,
+              6,
+              10
+            ]
+          },
+          "fit": {
+            "scale": 0.0842,
+            "sizePixels": [
+              53,
+              60
+            ],
+            "originPixels": [
+              9,
+              6
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "sound",
+      "assetName": "ObservatoryGlyphSound",
+      "source": {
+        "master": "sound.png",
+        "original": "/Users/lbeezr/.codex/generated_images/01a1563a-d0f0-7a12-9846-c5670b9fafa8/exec-5e79ebf8-170d-4dbf-a430-46ca9169a075.png",
+        "sha256": "c44c698fc572e7e2118badaf5354562a68235feda6829c870301628766302883",
+        "encodedBytes": 963023,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "bounds": [
+            25,
+            9,
+            1236,
+            1254
+          ],
+          "visiblePixels": 455009,
+          "alphaCentroid": [
+            660.0632,
+            641.7994
+          ],
+          "padding": [
+            9,
+            25,
+            0,
+            18
+          ]
+        },
+        "alphaAt16": {
+          "bounds": [
+            165,
+            225,
+            1116,
+            1044
+          ],
+          "visiblePixels": 444385,
+          "alphaCentroid": [
+            660.0397,
+            641.7997
+          ],
+          "padding": [
+            225,
+            165,
+            210,
+            138
+          ]
+        },
+        "alphaAt128": {
+          "bounds": [
+            166,
+            226,
+            1115,
+            1043
+          ],
+          "visiblePixels": 441025,
+          "alphaCentroid": [
+            659.8524,
+            641.7905
+          ],
+          "padding": [
+            226,
+            166,
+            211,
+            139
+          ]
+        },
+        "discardedOutsideCrop": {
+          "pixelCount": 542,
+          "maximumAlpha": 1,
+          "alphaSum": 542
+        }
+      },
+      "registration": {
+        "canvasPoints": [
+          24,
+          24
+        ],
+        "minimumPaddingPoints": 2,
+        "renderingIntent": "original",
+        "subjectAlphaThreshold": 16,
+        "sourceBleedPixels": 4,
+        "cropPixels": [
+          161,
+          221,
+          1120,
+          1048
+        ],
+        "alignment": "center; odd pixel remainder goes right/bottom"
+      },
+      "exports": [
+        {
+          "filename": "sound@1x.png",
+          "density": 1,
+          "dimensions": [
+            24,
+            24
+          ],
+          "sha256": "a4846934efad82f4a02261395b09c8f7f11bd5b6f24e9fc8d3fbd948cc8cd77f",
+          "encodedBytes": 1553,
+          "decodedRGBABytes": 2304,
+          "alpha": {
+            "bounds": [
+              2,
+              3,
+              22,
+              20
+            ],
+            "visiblePixels": 272,
+            "alphaCentroid": [
+              12.373,
+              11.645
+            ],
+            "padding": [
+              3,
+              2,
+              4,
+              2
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              2,
+              3,
+              22,
+              20
+            ],
+            "visiblePixels": 191,
+            "alphaCentroid": [
+              12.1961,
+              11.6512
+            ],
+            "padding": [
+              3,
+              2,
+              4,
+              2
+            ]
+          },
+          "fit": {
+            "scale": 0.0209,
+            "sizePixels": [
+              20,
+              17
+            ],
+            "originPixels": [
+              2,
+              3
+            ]
+          }
+        },
+        {
+          "filename": "sound@2x.png",
+          "density": 2,
+          "dimensions": [
+            48,
+            48
+          ],
+          "sha256": "efc5b47355735a77ffcde53d4d59d930fca65b613df265bdde46e0a543535320",
+          "encodedBytes": 4010,
+          "decodedRGBABytes": 9216,
+          "alpha": {
+            "bounds": [
+              4,
+              7,
+              44,
+              41
+            ],
+            "visiblePixels": 969,
+            "alphaCentroid": [
+              24.7914,
+              24.2989
+            ],
+            "padding": [
+              7,
+              4,
+              7,
+              4
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              4,
+              7,
+              44,
+              41
+            ],
+            "visiblePixels": 762,
+            "alphaCentroid": [
+              24.6453,
+              24.2831
+            ],
+            "padding": [
+              7,
+              4,
+              7,
+              4
+            ]
+          },
+          "fit": {
+            "scale": 0.0417,
+            "sizePixels": [
+              40,
+              34
+            ],
+            "originPixels": [
+              4,
+              7
+            ]
+          }
+        },
+        {
+          "filename": "sound@3x.png",
+          "density": 3,
+          "dimensions": [
+            72,
+            72
+          ],
+          "sha256": "ca6ed4bff6ba3d19e5e5bbd377d2494d26e36e149760539bc99292f2c405b4ca",
+          "encodedBytes": 7869,
+          "decodedRGBABytes": 20736,
+          "alpha": {
+            "bounds": [
+              6,
+              10,
+              66,
+              62
+            ],
+            "visiblePixels": 2078,
+            "alphaCentroid": [
+              37.2293,
+              36.4574
+            ],
+            "padding": [
+              10,
+              6,
+              10,
+              6
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              6,
+              10,
+              66,
+              62
+            ],
+            "visiblePixels": 1731,
+            "alphaCentroid": [
+              37.1119,
+              36.4741
+            ],
+            "padding": [
+              10,
+              6,
+              10,
+              6
+            ]
+          },
+          "fit": {
+            "scale": 0.0626,
+            "sizePixels": [
+              60,
+              52
+            ],
+            "originPixels": [
+              6,
+              10
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "haptic",
+      "assetName": "ObservatoryGlyphHaptic",
+      "source": {
+        "master": "haptic.png",
+        "original": "/Users/lbeezr/.codex/generated_images/01a15946-669e-73d2-a09b-fe0999b271e4/exec-09574134-90b9-4f3e-9a33-694fcb714db3.png",
+        "sha256": "d893ef816a223039d543c20cf0353d0db1362dcbc38a0aa2db81c1609b377872",
+        "encodedBytes": 965767,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "bounds": [
+            91,
+            27,
+            1240,
+            1230
+          ],
+          "visiblePixels": 448906,
+          "alphaCentroid": [
+            626.8959,
+            618.5668
+          ],
+          "padding": [
+            27,
+            91,
+            24,
+            14
+          ]
+        },
+        "alphaAt16": {
+          "bounds": [
+            171,
+            123,
+            1084,
+            1124
+          ],
+          "visiblePixels": 437107,
+          "alphaCentroid": [
+            626.9018,
+            618.566
+          ],
+          "padding": [
+            123,
+            171,
+            130,
+            170
+          ]
+        },
+        "alphaAt128": {
+          "bounds": [
+            172,
+            124,
+            1082,
+            1123
+          ],
+          "visiblePixels": 433747,
+          "alphaCentroid": [
+            626.8762,
+            618.5561
+          ],
+          "padding": [
+            124,
+            172,
+            131,
+            172
+          ]
+        },
+        "discardedOutsideCrop": {
+          "pixelCount": 195,
+          "maximumAlpha": 1,
+          "alphaSum": 195
+        }
+      },
+      "registration": {
+        "canvasPoints": [
+          24,
+          24
+        ],
+        "minimumPaddingPoints": 2,
+        "renderingIntent": "original",
+        "subjectAlphaThreshold": 16,
+        "sourceBleedPixels": 4,
+        "cropPixels": [
+          167,
+          119,
+          1088,
+          1128
+        ],
+        "alignment": "center; odd pixel remainder goes right/bottom"
+      },
+      "exports": [
+        {
+          "filename": "haptic@1x.png",
+          "density": 1,
+          "dimensions": [
+            24,
+            24
+          ],
+          "sha256": "4c815cf7bef1395477acc403da7d71c746d07b0900c916913ad047fdac589645",
+          "encodedBytes": 1502,
+          "decodedRGBABytes": 2304,
+          "alpha": {
+            "bounds": [
+              3,
+              2,
+              21,
+              22
+            ],
+            "visiblePixels": 257,
+            "alphaCentroid": [
+              11.9818,
+              11.9021
+            ],
+            "padding": [
+              2,
+              3,
+              2,
+              3
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              3,
+              2,
+              21,
+              22
+            ],
+            "visiblePixels": 159,
+            "alphaCentroid": [
+              11.9874,
+              11.9185
+            ],
+            "padding": [
+              2,
+              3,
+              2,
+              3
+            ]
+          },
+          "fit": {
+            "scale": 0.0198,
+            "sizePixels": [
+              18,
+              20
+            ],
+            "originPixels": [
+              3,
+              2
+            ]
+          }
+        },
+        {
+          "filename": "haptic@2x.png",
+          "density": 2,
+          "dimensions": [
+            48,
+            48
+          ],
+          "sha256": "d4372e8442475edae8c29e277cb2a1ce805f1b64865fff9e0b431fc681e20f24",
+          "encodedBytes": 3908,
+          "decodedRGBABytes": 9216,
+          "alpha": {
+            "bounds": [
+              5,
+              4,
+              42,
+              44
+            ],
+            "visiblePixels": 922,
+            "alphaCentroid": [
+              23.4812,
+              23.8066
+            ],
+            "padding": [
+              4,
+              5,
+              4,
+              6
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              5,
+              4,
+              42,
+              44
+            ],
+            "visiblePixels": 681,
+            "alphaCentroid": [
+              23.4993,
+              23.7642
+            ],
+            "padding": [
+              4,
+              5,
+              4,
+              6
+            ]
+          },
+          "fit": {
+            "scale": 0.0396,
+            "sizePixels": [
+              37,
+              40
+            ],
+            "originPixels": [
+              5,
+              4
+            ]
+          }
+        },
+        {
+          "filename": "haptic@3x.png",
+          "density": 3,
+          "dimensions": [
+            72,
+            72
+          ],
+          "sha256": "ac9333e12328736564f3659b096c19ed10a633a9ce6bf854c99ec54b1401b50a",
+          "encodedBytes": 7294,
+          "decodedRGBABytes": 20736,
+          "alpha": {
+            "bounds": [
+              8,
+              6,
+              63,
+              66
+            ],
+            "visiblePixels": 1918,
+            "alphaCentroid": [
+              35.4662,
+              35.7048
+            ],
+            "padding": [
+              6,
+              8,
+              6,
+              9
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              8,
+              6,
+              63,
+              66
+            ],
+            "visiblePixels": 1555,
+            "alphaCentroid": [
+              35.4774,
+              35.7146
+            ],
+            "padding": [
+              6,
+              8,
+              6,
+              9
+            ]
+          },
+          "fit": {
+            "scale": 0.0595,
+            "sizePixels": [
+              55,
+              60
+            ],
+            "originPixels": [
+              8,
+              6
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "calm",
+      "assetName": "ObservatoryGlyphCalm",
+      "source": {
+        "master": "calm.png",
+        "original": "/Users/lbeezr/.codex/generated_images/01a15946-669e-73d2-a09b-fe0999b271e4/exec-f61db156-d701-433d-abdb-da729abfe938.png",
+        "sha256": "e69aa3c966621818a6a155ea01abc341c1ec7962d79d6bf47e04b55198faffbf",
+        "encodedBytes": 986800,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "bounds": [
+            0,
+            19,
+            1224,
+            1214
+          ],
+          "visiblePixels": 507622,
+          "alphaCentroid": [
+            530.8194,
+            656.5768
+          ],
+          "padding": [
+            19,
+            0,
+            40,
+            30
+          ]
+        },
+        "alphaAt16": {
+          "bounds": [
+            158,
+            115,
+            1134,
+            1131
+          ],
+          "visiblePixels": 495848,
+          "alphaCentroid": [
+            530.7953,
+            656.5819
+          ],
+          "padding": [
+            115,
+            158,
+            123,
+            120
+          ]
+        },
+        "alphaAt128": {
+          "bounds": [
+            159,
+            116,
+            1133,
+            1130
+          ],
+          "visiblePixels": 492789,
+          "alphaCentroid": [
+            530.6444,
+            656.6354
+          ],
+          "padding": [
+            116,
+            159,
+            124,
+            121
+          ]
+        },
+        "discardedOutsideCrop": {
+          "pixelCount": 304,
+          "maximumAlpha": 1,
+          "alphaSum": 304
+        }
+      },
+      "registration": {
+        "canvasPoints": [
+          24,
+          24
+        ],
+        "minimumPaddingPoints": 2,
+        "renderingIntent": "original",
+        "subjectAlphaThreshold": 16,
+        "sourceBleedPixels": 4,
+        "cropPixels": [
+          154,
+          111,
+          1138,
+          1135
+        ],
+        "alignment": "center; odd pixel remainder goes right/bottom"
+      },
+      "exports": [
+        {
+          "filename": "calm@1x.png",
+          "density": 1,
+          "dimensions": [
+            24,
+            24
+          ],
+          "sha256": "859a28798bcc0269f6652485ebed533ec5c9c2804854a1c577861cc2846cd611",
+          "encodedBytes": 1524,
+          "decodedRGBABytes": 2304,
+          "alpha": {
+            "bounds": [
+              2,
+              2,
+              21,
+              22
+            ],
+            "visiblePixels": 270,
+            "alphaCentroid": [
+              9.2886,
+              12.6428
+            ],
+            "padding": [
+              2,
+              2,
+              2,
+              3
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              2,
+              2,
+              21,
+              22
+            ],
+            "visiblePixels": 188,
+            "alphaCentroid": [
+              9.1946,
+              12.6533
+            ],
+            "padding": [
+              2,
+              2,
+              2,
+              3
+            ]
+          },
+          "fit": {
+            "scale": 0.0195,
+            "sizePixels": [
+              19,
+              20
+            ],
+            "originPixels": [
+              2,
+              2
+            ]
+          }
+        },
+        {
+          "filename": "calm@2x.png",
+          "density": 2,
+          "dimensions": [
+            48,
+            48
+          ],
+          "sha256": "9712278156d76dda1307caf3a78f94025c4c4c9c4ed1b1f5733f004f5f309ec0",
+          "encodedBytes": 3868,
+          "decodedRGBABytes": 9216,
+          "alpha": {
+            "bounds": [
+              5,
+              4,
+              43,
+              44
+            ],
+            "visiblePixels": 945,
+            "alphaCentroid": [
+              19.5618,
+              25.3022
+            ],
+            "padding": [
+              4,
+              5,
+              4,
+              5
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              5,
+              4,
+              43,
+              44
+            ],
+            "visiblePixels": 744,
+            "alphaCentroid": [
+              19.4622,
+              25.3625
+            ],
+            "padding": [
+              4,
+              5,
+              4,
+              5
+            ]
+          },
+          "fit": {
+            "scale": 0.0391,
+            "sizePixels": [
+              38,
+              40
+            ],
+            "originPixels": [
+              5,
+              4
+            ]
+          }
+        },
+        {
+          "filename": "calm@3x.png",
+          "density": 3,
+          "dimensions": [
+            72,
+            72
+          ],
+          "sha256": "801632293610f31373233552954a1eb8c90391cc71834650cf5c34ba45e9e466",
+          "encodedBytes": 7450,
+          "decodedRGBABytes": 20736,
+          "alpha": {
+            "bounds": [
+              7,
+              6,
+              65,
+              66
+            ],
+            "visiblePixels": 2016,
+            "alphaCentroid": [
+              29.2179,
+              37.9632
+            ],
+            "padding": [
+              6,
+              7,
+              6,
+              7
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              7,
+              6,
+              65,
+              66
+            ],
+            "visiblePixels": 1704,
+            "alphaCentroid": [
+              29.0855,
+              38.0166
+            ],
+            "padding": [
+              6,
+              7,
+              6,
+              7
+            ]
+          },
+          "fit": {
+            "scale": 0.0586,
+            "sizePixels": [
+              58,
+              60
+            ],
+            "originPixels": [
+              7,
+              6
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "home",
+      "assetName": "ObservatoryGlyphHome",
+      "source": {
+        "master": "home.png",
+        "original": "/Users/lbeezr/.codex/generated_images/01a15946-669e-73d2-a09b-fe0999b271e4/exec-f990750b-2e10-4e45-a8a8-27e1ee3dc641.png",
+        "sha256": "86efa394ef0b3e6454cb1993cf58f3ce1e84ad53e0442e9f902bf3b227407202",
+        "encodedBytes": 1239657,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "bounds": [
+            0,
+            0,
+            1236,
+            1254
+          ],
+          "visiblePixels": 687687,
+          "alphaCentroid": [
+            628.3698,
+            674.1707
+          ],
+          "padding": [
+            0,
+            0,
+            0,
+            18
+          ]
+        },
+        "alphaAt16": {
+          "bounds": [
+            197,
+            151,
+            1057,
+            1098
+          ],
+          "visiblePixels": 672451,
+          "alphaCentroid": [
+            628.3712,
+            674.1615
+          ],
+          "padding": [
+            151,
+            197,
+            156,
+            197
+          ]
+        },
+        "alphaAt128": {
+          "bounds": [
+            198,
+            152,
+            1056,
+            1096
+          ],
+          "visiblePixels": 670157,
+          "alphaCentroid": [
+            628.3659,
+            674.1382
+          ],
+          "padding": [
+            152,
+            198,
+            158,
+            198
+          ]
+        },
+        "discardedOutsideCrop": {
+          "pixelCount": 4511,
+          "maximumAlpha": 2,
+          "alphaSum": 4573
+        }
+      },
+      "registration": {
+        "canvasPoints": [
+          24,
+          24
+        ],
+        "minimumPaddingPoints": 2,
+        "renderingIntent": "original",
+        "subjectAlphaThreshold": 16,
+        "sourceBleedPixels": 4,
+        "cropPixels": [
+          193,
+          147,
+          1061,
+          1102
+        ],
+        "alignment": "center; odd pixel remainder goes right/bottom"
+      },
+      "exports": [
+        {
+          "filename": "home@1x.png",
+          "density": 1,
+          "dimensions": [
+            24,
+            24
+          ],
+          "sha256": "14f351334e61bb1e8570c02a811fd7b988244b26fb39681dd822b24ea277bf3d",
+          "encodedBytes": 1783,
+          "decodedRGBABytes": 2304,
+          "alpha": {
+            "bounds": [
+              3,
+              2,
+              21,
+              22
+            ],
+            "visiblePixels": 335,
+            "alphaCentroid": [
+              12.0285,
+              13.0213
+            ],
+            "padding": [
+              2,
+              3,
+              2,
+              3
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              3,
+              2,
+              21,
+              22
+            ],
+            "visiblePixels": 287,
+            "alphaCentroid": [
+              12.0168,
+              13.056
+            ],
+            "padding": [
+              2,
+              3,
+              2,
+              3
+            ]
+          },
+          "fit": {
+            "scale": 0.0209,
+            "sizePixels": [
+              18,
+              20
+            ],
+            "originPixels": [
+              3,
+              2
+            ]
+          }
+        },
+        {
+          "filename": "home@2x.png",
+          "density": 2,
+          "dimensions": [
+            48,
+            48
+          ],
+          "sha256": "1846a326175c29380b0cc71ddc9ec02242b4e20cc3ae77c9dac286744edb54af",
+          "encodedBytes": 5105,
+          "decodedRGBABytes": 9216,
+          "alpha": {
+            "bounds": [
+              6,
+              4,
+              42,
+              44
+            ],
+            "visiblePixels": 1269,
+            "alphaCentroid": [
+              24.0577,
+              26.072
+            ],
+            "padding": [
+              4,
+              6,
+              4,
+              6
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              6,
+              4,
+              42,
+              44
+            ],
+            "visiblePixels": 1183,
+            "alphaCentroid": [
+              24.063,
+              26.0957
+            ],
+            "padding": [
+              4,
+              6,
+              4,
+              6
+            ]
+          },
+          "fit": {
+            "scale": 0.0419,
+            "sizePixels": [
+              36,
+              40
+            ],
+            "originPixels": [
+              6,
+              4
+            ]
+          }
+        },
+        {
+          "filename": "home@3x.png",
+          "density": 3,
+          "dimensions": [
+            72,
+            72
+          ],
+          "sha256": "ba0c20c05edfc3aef4e608e791692a10d0d3d0de2d5202ccb9e766e1c1536138",
+          "encodedBytes": 10460,
+          "decodedRGBABytes": 20736,
+          "alpha": {
+            "bounds": [
+              8,
+              6,
+              63,
+              66
+            ],
+            "visiblePixels": 2882,
+            "alphaCentroid": [
+              35.5881,
+              39.1118
+            ],
+            "padding": [
+              6,
+              8,
+              6,
+              9
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              8,
+              6,
+              63,
+              66
+            ],
+            "visiblePixels": 2677,
+            "alphaCentroid": [
+              35.5979,
+              39.124
+            ],
+            "padding": [
+              6,
+              8,
+              6,
+              9
+            ]
+          },
+          "fit": {
+            "scale": 0.0628,
+            "sizePixels": [
+              55,
+              60
+            ],
+            "originPixels": [
+              8,
+              6
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "replay",
+      "assetName": "ObservatoryGlyphReplay",
+      "source": {
+        "master": "replay.png",
+        "original": "/Users/lbeezr/.codex/generated_images/01a15946-669e-73d2-a09b-fe0999b271e4/exec-0c18d0e6-4938-4a82-a4e1-be8a771b923d.png",
+        "sha256": "06f2e3b4ee6bd4c7418cd0e2dc1113fc14d0bdd8eb87061de5bc0044c776c49a",
+        "encodedBytes": 1201161,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "bounds": [
+            0,
+            69,
+            1190,
+            1131
+          ],
+          "visiblePixels": 585174,
+          "alphaCentroid": [
+            646.297,
+            612.6378
+          ],
+          "padding": [
+            69,
+            0,
+            123,
+            64
+          ]
+        },
+        "alphaAt16": {
+          "bounds": [
+            129,
+            118,
+            1143,
+            1124
+          ],
+          "visiblePixels": 569390,
+          "alphaCentroid": [
+            646.3093,
+            612.6426
+          ],
+          "padding": [
+            118,
+            129,
+            130,
+            111
+          ]
+        },
+        "alphaAt128": {
+          "bounds": [
+            130,
+            119,
+            1142,
+            1123
+          ],
+          "visiblePixels": 565471,
+          "alphaCentroid": [
+            646.3789,
+            612.6635
+          ],
+          "padding": [
+            119,
+            130,
+            131,
+            112
+          ]
+        },
+        "discardedOutsideCrop": {
+          "pixelCount": 65,
+          "maximumAlpha": 1,
+          "alphaSum": 65
+        }
+      },
+      "registration": {
+        "canvasPoints": [
+          24,
+          24
+        ],
+        "minimumPaddingPoints": 2,
+        "renderingIntent": "original",
+        "subjectAlphaThreshold": 16,
+        "sourceBleedPixels": 4,
+        "cropPixels": [
+          125,
+          114,
+          1147,
+          1128
+        ],
+        "alignment": "center; odd pixel remainder goes right/bottom"
+      },
+      "exports": [
+        {
+          "filename": "replay@1x.png",
+          "density": 1,
+          "dimensions": [
+            24,
+            24
+          ],
+          "sha256": "b5c5c738f0f04565c70cc91f3124b5b8b4d36c911dba52b6dc742fe4a4a13f47",
+          "encodedBytes": 1747,
+          "decodedRGBABytes": 2304,
+          "alpha": {
+            "bounds": [
+              2,
+              2,
+              22,
+              22
+            ],
+            "visiblePixels": 329,
+            "alphaCentroid": [
+              12.2001,
+              11.8318
+            ],
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              2,
+              2,
+              22,
+              22
+            ],
+            "visiblePixels": 221,
+            "alphaCentroid": [
+              12.2567,
+              11.8409
+            ],
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ]
+          },
+          "fit": {
+            "scale": 0.0196,
+            "sizePixels": [
+              20,
+              20
+            ],
+            "originPixels": [
+              2,
+              2
+            ]
+          }
+        },
+        {
+          "filename": "replay@2x.png",
+          "density": 2,
+          "dimensions": [
+            48,
+            48
+          ],
+          "sha256": "bc12af111d407c929d1212f1b2ceca35c59ee10ea03032ffdea0962a98092559",
+          "encodedBytes": 4570,
+          "decodedRGBABytes": 9216,
+          "alpha": {
+            "bounds": [
+              4,
+              4,
+              44,
+              44
+            ],
+            "visiblePixels": 1131,
+            "alphaCentroid": [
+              24.3983,
+              23.6686
+            ],
+            "padding": [
+              4,
+              4,
+              4,
+              4
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              4,
+              4,
+              44,
+              44
+            ],
+            "visiblePixels": 877,
+            "alphaCentroid": [
+              24.4393,
+              23.673
+            ],
+            "padding": [
+              4,
+              4,
+              4,
+              4
+            ]
+          },
+          "fit": {
+            "scale": 0.0391,
+            "sizePixels": [
+              40,
+              40
+            ],
+            "originPixels": [
+              4,
+              4
+            ]
+          }
+        },
+        {
+          "filename": "replay@3x.png",
+          "density": 3,
+          "dimensions": [
+            72,
+            72
+          ],
+          "sha256": "7a5989de2db75a5dd9150f5d2fa78499f23efc3840e64a73562a8cd85418a7f4",
+          "encodedBytes": 8701,
+          "decodedRGBABytes": 20736,
+          "alpha": {
+            "bounds": [
+              6,
+              6,
+              66,
+              66
+            ],
+            "visiblePixels": 2402,
+            "alphaCentroid": [
+              36.598,
+              35.5056
+            ],
+            "padding": [
+              6,
+              6,
+              6,
+              6
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              6,
+              6,
+              66,
+              66
+            ],
+            "visiblePixels": 1970,
+            "alphaCentroid": [
+              36.6768,
+              35.5285
+            ],
+            "padding": [
+              6,
+              6,
+              6,
+              6
+            ]
+          },
+          "fit": {
+            "scale": 0.0587,
+            "sizePixels": [
+              60,
+              60
+            ],
+            "originPixels": [
+              6,
+              6
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "help",
+      "assetName": "ObservatoryGlyphHelp",
+      "source": {
+        "master": "help.png",
+        "original": "/Users/lbeezr/.codex/generated_images/01a1563a-d0f0-7a12-9846-c5670b9fafa8/exec-cf79d903-0ade-48b5-8402-2b459bb02e52.png",
+        "sha256": "8a67df4c22bdabaa564df77e573ac450841550eda93f2fcdc8675e11d1d0a5dd",
+        "encodedBytes": 816990,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "bounds": [
+            33,
+            19,
+            1224,
+            1236
+          ],
+          "visiblePixels": 416848,
+          "alphaCentroid": [
+            654.2293,
+            540.9849
+          ],
+          "padding": [
+            19,
+            33,
+            18,
+            30
+          ]
+        },
+        "alphaAt16": {
+          "bounds": [
+            244,
+            135,
+            1015,
+            1140
+          ],
+          "visiblePixels": 409479,
+          "alphaCentroid": [
+            654.2374,
+            540.969
+          ],
+          "padding": [
+            135,
+            244,
+            114,
+            239
+          ]
+        },
+        "alphaAt128": {
+          "bounds": [
+            245,
+            136,
+            1015,
+            1140
+          ],
+          "visiblePixels": 406907,
+          "alphaCentroid": [
+            654.2816,
+            540.8873
+          ],
+          "padding": [
+            136,
+            245,
+            114,
+            239
+          ]
+        },
+        "discardedOutsideCrop": {
+          "pixelCount": 209,
+          "maximumAlpha": 1,
+          "alphaSum": 209
+        }
+      },
+      "registration": {
+        "canvasPoints": [
+          24,
+          24
+        ],
+        "minimumPaddingPoints": 2,
+        "renderingIntent": "original",
+        "subjectAlphaThreshold": 16,
+        "sourceBleedPixels": 4,
+        "cropPixels": [
+          240,
+          131,
+          1019,
+          1144
+        ],
+        "alignment": "center; odd pixel remainder goes right/bottom"
+      },
+      "exports": [
+        {
+          "filename": "help@1x.png",
+          "density": 1,
+          "dimensions": [
+            24,
+            24
+          ],
+          "sha256": "e56e9165c76f89cb0bd00bd4e5ca8acf2f046555ea524fd41e0bb135b12ffa1e",
+          "encodedBytes": 1361,
+          "decodedRGBABytes": 2304,
+          "alpha": {
+            "bounds": [
+              4,
+              2,
+              19,
+              22
+            ],
+            "visiblePixels": 224,
+            "alphaCentroid": [
+              11.9649,
+              10.0911
+            ],
+            "padding": [
+              2,
+              4,
+              2,
+              5
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              4,
+              2,
+              19,
+              22
+            ],
+            "visiblePixels": 155,
+            "alphaCentroid": [
+              12.0196,
+              10.0664
+            ],
+            "padding": [
+              2,
+              4,
+              2,
+              5
+            ]
+          },
+          "fit": {
+            "scale": 0.0197,
+            "sizePixels": [
+              15,
+              20
+            ],
+            "originPixels": [
+              4,
+              2
+            ]
+          }
+        },
+        {
+          "filename": "help@2x.png",
+          "density": 2,
+          "dimensions": [
+            48,
+            48
+          ],
+          "sha256": "76b226f592f35813dea8e9808df59f380d294a552266a4ad11512a88d0565c78",
+          "encodedBytes": 3436,
+          "decodedRGBABytes": 9216,
+          "alpha": {
+            "bounds": [
+              8,
+              4,
+              39,
+              44
+            ],
+            "visiblePixels": 814,
+            "alphaCentroid": [
+              24.4813,
+              20.1905
+            ],
+            "padding": [
+              4,
+              8,
+              4,
+              9
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              8,
+              4,
+              39,
+              44
+            ],
+            "visiblePixels": 646,
+            "alphaCentroid": [
+              24.5124,
+              20.1198
+            ],
+            "padding": [
+              4,
+              8,
+              4,
+              9
+            ]
+          },
+          "fit": {
+            "scale": 0.0395,
+            "sizePixels": [
+              31,
+              40
+            ],
+            "originPixels": [
+              8,
+              4
+            ]
+          }
+        },
+        {
+          "filename": "help@3x.png",
+          "density": 3,
+          "dimensions": [
+            72,
+            72
+          ],
+          "sha256": "d39527098e01c9751e9afec326119b4f2b46e3b1ef6180557601328f325217d3",
+          "encodedBytes": 6424,
+          "decodedRGBABytes": 20736,
+          "alpha": {
+            "bounds": [
+              13,
+              6,
+              59,
+              66
+            ],
+            "visiblePixels": 1706,
+            "alphaCentroid": [
+              37.4644,
+              30.2785
+            ],
+            "padding": [
+              6,
+              13,
+              6,
+              13
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              13,
+              6,
+              59,
+              66
+            ],
+            "visiblePixels": 1428,
+            "alphaCentroid": [
+              37.4568,
+              30.2361
+            ],
+            "padding": [
+              6,
+              13,
+              6,
+              13
+            ]
+          },
+          "fit": {
+            "scale": 0.0592,
+            "sizePixels": [
+              46,
+              60
+            ],
+            "originPixels": [
+              13,
+              6
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "close",
+      "assetName": "ObservatoryGlyphClose",
+      "source": {
+        "master": "close.png",
+        "original": "/Users/lbeezr/.codex/generated_images/01a1563a-d0f0-7a12-9846-c5670b9fafa8/exec-605b258a-a8c9-4ebb-86c8-014e6fdb1bbb.png",
+        "sha256": "ee94fa0492c680ef84504f726f912d91275fb5d112a8c82f3f914ab3dff62873",
+        "encodedBytes": 1131343,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "bounds": [
+            0,
+            39,
+            1222,
+            1254
+          ],
+          "visiblePixels": 612592,
+          "alphaCentroid": [
+            621.2123,
+            645.7479
+          ],
+          "padding": [
+            39,
+            0,
+            0,
+            32
+          ]
+        },
+        "alphaAt16": {
+          "bounds": [
+            152,
+            187,
+            1093,
+            1097
+          ],
+          "visiblePixels": 604952,
+          "alphaCentroid": [
+            621.2111,
+            645.749
+          ],
+          "padding": [
+            187,
+            152,
+            157,
+            161
+          ]
+        },
+        "alphaAt128": {
+          "bounds": [
+            152,
+            187,
+            1092,
+            1096
+          ],
+          "visiblePixels": 602217,
+          "alphaCentroid": [
+            621.2146,
+            645.7434
+          ],
+          "padding": [
+            187,
+            152,
+            158,
+            162
+          ]
+        },
+        "discardedOutsideCrop": {
+          "pixelCount": 162,
+          "maximumAlpha": 1,
+          "alphaSum": 162
+        }
+      },
+      "registration": {
+        "canvasPoints": [
+          24,
+          24
+        ],
+        "minimumPaddingPoints": 2,
+        "renderingIntent": "original",
+        "subjectAlphaThreshold": 16,
+        "sourceBleedPixels": 4,
+        "cropPixels": [
+          148,
+          183,
+          1097,
+          1101
+        ],
+        "alignment": "center; odd pixel remainder goes right/bottom"
+      },
+      "exports": [
+        {
+          "filename": "close@1x.png",
+          "density": 1,
+          "dimensions": [
+            24,
+            24
+          ],
+          "sha256": "6915954a8a5b28f26ecd6bbba9bccdffa454bb376d34c78b675e3a69a50b29f5",
+          "encodedBytes": 1759,
+          "decodedRGBABytes": 2304,
+          "alpha": {
+            "bounds": [
+              2,
+              2,
+              22,
+              21
+            ],
+            "visiblePixels": 332,
+            "alphaCentroid": [
+              11.9643,
+              11.5648
+            ],
+            "padding": [
+              2,
+              2,
+              3,
+              2
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              2,
+              2,
+              22,
+              21
+            ],
+            "visiblePixels": 263,
+            "alphaCentroid": [
+              11.9544,
+              11.6098
+            ],
+            "padding": [
+              2,
+              2,
+              3,
+              2
+            ]
+          },
+          "fit": {
+            "scale": 0.0211,
+            "sizePixels": [
+              20,
+              19
+            ],
+            "originPixels": [
+              2,
+              2
+            ]
+          }
+        },
+        {
+          "filename": "close@2x.png",
+          "density": 2,
+          "dimensions": [
+            48,
+            48
+          ],
+          "sha256": "09f1bba4d3471c1d0c0e408a347dd15def14169f86b2958814d768a534e9e04b",
+          "encodedBytes": 4854,
+          "decodedRGBABytes": 9216,
+          "alpha": {
+            "bounds": [
+              4,
+              4,
+              44,
+              43
+            ],
+            "visiblePixels": 1264,
+            "alphaCentroid": [
+              23.944,
+              23.6595
+            ],
+            "padding": [
+              4,
+              4,
+              5,
+              4
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              4,
+              4,
+              44,
+              43
+            ],
+            "visiblePixels": 1072,
+            "alphaCentroid": [
+              23.9568,
+              23.6873
+            ],
+            "padding": [
+              4,
+              4,
+              5,
+              4
+            ]
+          },
+          "fit": {
+            "scale": 0.0421,
+            "sizePixels": [
+              40,
+              39
+            ],
+            "originPixels": [
+              4,
+              4
+            ]
+          }
+        },
+        {
+          "filename": "close@3x.png",
+          "density": 3,
+          "dimensions": [
+            72,
+            72
+          ],
+          "sha256": "7d4d06885c705a14cf4aa199760ad4b0836f00759d1671d061a51925fcf9bbf1",
+          "encodedBytes": 9423,
+          "decodedRGBABytes": 20736,
+          "alpha": {
+            "bounds": [
+              6,
+              7,
+              66,
+              65
+            ],
+            "visiblePixels": 2714,
+            "alphaCentroid": [
+              35.9216,
+              36.2319
+            ],
+            "padding": [
+              7,
+              6,
+              7,
+              6
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              6,
+              7,
+              66,
+              65
+            ],
+            "visiblePixels": 2400,
+            "alphaCentroid": [
+              35.9104,
+              36.2792
+            ],
+            "padding": [
+              7,
+              6,
+              7,
+              6
+            ]
+          },
+          "fit": {
+            "scale": 0.0632,
+            "sizePixels": [
+              60,
+              58
+            ],
+            "originPixels": [
+              6,
+              7
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "list",
+      "assetName": "ObservatoryGlyphList",
+      "source": {
+        "master": "list.png",
+        "original": "/Users/lbeezr/.codex/generated_images/01a15938-b1cd-7603-b9ce-1656f102d84e/exec-02fbb3ff-4335-4e3f-a224-5356bebc1b4c.png",
+        "sha256": "30a49d8826e26a4763f90f885582b95eeac6c901e747212d304749b44736753b",
+        "encodedBytes": 645073,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "bounds": [
+            53,
+            102,
+            1204,
+            1234
+          ],
+          "visiblePixels": 460574,
+          "alphaCentroid": [
+            627.3803,
+            642.55
+          ],
+          "padding": [
+            102,
+            53,
+            20,
+            50
+          ]
+        },
+        "alphaAt16": {
+          "bounds": [
+            208,
+            317,
+            1046,
+            969
+          ],
+          "visiblePixels": 440211,
+          "alphaCentroid": [
+            627.3788,
+            642.5576
+          ],
+          "padding": [
+            317,
+            208,
+            285,
+            208
+          ]
+        },
+        "alphaAt128": {
+          "bounds": [
+            209,
+            318,
+            1045,
+            968
+          ],
+          "visiblePixels": 435976,
+          "alphaCentroid": [
+            627.3777,
+            642.5891
+          ],
+          "padding": [
+            318,
+            209,
+            286,
+            209
+          ]
+        },
+        "discardedOutsideCrop": {
+          "pixelCount": 4704,
+          "maximumAlpha": 2,
+          "alphaSum": 4768
+        }
+      },
+      "registration": {
+        "canvasPoints": [
+          24,
+          24
+        ],
+        "minimumPaddingPoints": 2,
+        "renderingIntent": "original",
+        "subjectAlphaThreshold": 16,
+        "sourceBleedPixels": 4,
+        "cropPixels": [
+          204,
+          313,
+          1050,
+          973
+        ],
+        "alignment": "center; odd pixel remainder goes right/bottom"
+      },
+      "exports": [
+        {
+          "filename": "list@1x.png",
+          "density": 1,
+          "dimensions": [
+            24,
+            24
+          ],
+          "sha256": "cad0583dd043ae4441da63ec26fd98244cca863cc06370122fa0414b8f58c44d",
+          "encodedBytes": 1492,
+          "decodedRGBABytes": 2304,
+          "alpha": {
+            "bounds": [
+              2,
+              4,
+              22,
+              20
+            ],
+            "visiblePixels": 316,
+            "alphaCentroid": [
+              12.0034,
+              11.9889
+            ],
+            "padding": [
+              4,
+              2,
+              4,
+              2
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              2,
+              4,
+              22,
+              20
+            ],
+            "visiblePixels": 245,
+            "alphaCentroid": [
+              12.0216,
+              11.8625
+            ],
+            "padding": [
+              4,
+              2,
+              4,
+              2
+            ]
+          },
+          "fit": {
+            "scale": 0.0236,
+            "sizePixels": [
+              20,
+              16
+            ],
+            "originPixels": [
+              2,
+              4
+            ]
+          }
+        },
+        {
+          "filename": "list@2x.png",
+          "density": 2,
+          "dimensions": [
+            48,
+            48
+          ],
+          "sha256": "efc3d43387fc0c5dd53ab6dd986cb3b2c27700924f24d06c4061486f377d9e20",
+          "encodedBytes": 3313,
+          "decodedRGBABytes": 9216,
+          "alpha": {
+            "bounds": [
+              4,
+              8,
+              44,
+              39
+            ],
+            "visiblePixels": 1096,
+            "alphaCentroid": [
+              24.0154,
+              23.4748
+            ],
+            "padding": [
+              8,
+              4,
+              9,
+              4
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              4,
+              8,
+              44,
+              39
+            ],
+            "visiblePixels": 1009,
+            "alphaCentroid": [
+              24.0168,
+              23.4742
+            ],
+            "padding": [
+              8,
+              4,
+              9,
+              4
+            ]
+          },
+          "fit": {
+            "scale": 0.0473,
+            "sizePixels": [
+              40,
+              31
+            ],
+            "originPixels": [
+              4,
+              8
+            ]
+          }
+        },
+        {
+          "filename": "list@3x.png",
+          "density": 3,
+          "dimensions": [
+            72,
+            72
+          ],
+          "sha256": "146bd6c9e8c16db11e7cbbac828b52c357caadbd0ed70a2dcad0bab4bd50730d",
+          "encodedBytes": 6375,
+          "decodedRGBABytes": 20736,
+          "alpha": {
+            "bounds": [
+              6,
+              12,
+              66,
+              59
+            ],
+            "visiblePixels": 2521,
+            "alphaCentroid": [
+              36.0289,
+              35.4746
+            ],
+            "padding": [
+              12,
+              6,
+              13,
+              6
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              6,
+              12,
+              66,
+              59
+            ],
+            "visiblePixels": 2198,
+            "alphaCentroid": [
+              36.0536,
+              35.505
+            ],
+            "padding": [
+              12,
+              6,
+              13,
+              6
+            ]
+          },
+          "fit": {
+            "scale": 0.0709,
+            "sizePixels": [
+              60,
+              47
+            ],
+            "originPixels": [
+              6,
+              12
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "check",
+      "assetName": "ObservatoryGlyphCheck",
+      "source": {
+        "master": "check.png",
+        "original": "/Users/lbeezr/.codex/generated_images/01a15938-b1cd-7603-b9ce-1656f102d84e/exec-3843cca8-8625-43d9-bf9a-0eca013233c8.png",
+        "sha256": "25fe8a2d163a80141fa27bbaa5452afb49f1e1e187009cd39d2e59ab816c402e",
+        "encodedBytes": 725830,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "bounds": [
+            0,
+            55,
+            1230,
+            1182
+          ],
+          "visiblePixels": 412675,
+          "alphaCentroid": [
+            655.185,
+            662.2832
+          ],
+          "padding": [
+            55,
+            0,
+            72,
+            24
+          ]
+        },
+        "alphaAt16": {
+          "bounds": [
+            110,
+            212,
+            1170,
+            1088
+          ],
+          "visiblePixels": 403389,
+          "alphaCentroid": [
+            655.1771,
+            662.2954
+          ],
+          "padding": [
+            212,
+            110,
+            166,
+            84
+          ]
+        },
+        "alphaAt128": {
+          "bounds": [
+            111,
+            213,
+            1169,
+            1087
+          ],
+          "visiblePixels": 401141,
+          "alphaCentroid": [
+            655.1547,
+            662.3554
+          ],
+          "padding": [
+            213,
+            111,
+            167,
+            85
+          ]
+        },
+        "discardedOutsideCrop": {
+          "pixelCount": 430,
+          "maximumAlpha": 1,
+          "alphaSum": 430
+        }
+      },
+      "registration": {
+        "canvasPoints": [
+          24,
+          24
+        ],
+        "minimumPaddingPoints": 2,
+        "renderingIntent": "original",
+        "subjectAlphaThreshold": 16,
+        "sourceBleedPixels": 4,
+        "cropPixels": [
+          106,
+          208,
+          1174,
+          1092
+        ],
+        "alignment": "center; odd pixel remainder goes right/bottom"
+      },
+      "exports": [
+        {
+          "filename": "check@1x.png",
+          "density": 1,
+          "dimensions": [
+            24,
+            24
+          ],
+          "sha256": "4c288c012c6767817ccbd6ba6275cb869f10a9d0fbef81dd539c2ecf3d3560c6",
+          "encodedBytes": 1303,
+          "decodedRGBABytes": 2304,
+          "alpha": {
+            "bounds": [
+              2,
+              3,
+              22,
+              20
+            ],
+            "visiblePixels": 214,
+            "alphaCentroid": [
+              12.2868,
+              11.7266
+            ],
+            "padding": [
+              3,
+              2,
+              4,
+              2
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              2,
+              3,
+              22,
+              20
+            ],
+            "visiblePixels": 146,
+            "alphaCentroid": [
+              12.2377,
+              11.8375
+            ],
+            "padding": [
+              3,
+              2,
+              4,
+              2
+            ]
+          },
+          "fit": {
+            "scale": 0.0187,
+            "sizePixels": [
+              20,
+              17
+            ],
+            "originPixels": [
+              2,
+              3
+            ]
+          }
+        },
+        {
+          "filename": "check@2x.png",
+          "density": 2,
+          "dimensions": [
+            48,
+            48
+          ],
+          "sha256": "f6cda29d4d09f8deb4ba396f76f8c7e8edeacfabedb22f731c227de235ad2974",
+          "encodedBytes": 2937,
+          "decodedRGBABytes": 9216,
+          "alpha": {
+            "bounds": [
+              4,
+              7,
+              44,
+              40
+            ],
+            "visiblePixels": 706,
+            "alphaCentroid": [
+              24.5647,
+              23.9599
+            ],
+            "padding": [
+              7,
+              4,
+              8,
+              4
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              4,
+              7,
+              44,
+              40
+            ],
+            "visiblePixels": 559,
+            "alphaCentroid": [
+              24.6245,
+              23.9992
+            ],
+            "padding": [
+              7,
+              4,
+              8,
+              4
+            ]
+          },
+          "fit": {
+            "scale": 0.0375,
+            "sizePixels": [
+              40,
+              33
+            ],
+            "originPixels": [
+              4,
+              7
+            ]
+          }
+        },
+        {
+          "filename": "check@3x.png",
+          "density": 3,
+          "dimensions": [
+            72,
+            72
+          ],
+          "sha256": "277fd40251cd916427c0444f879f12e6b54c373b8bc6be9e6dc7a33006239f33",
+          "encodedBytes": 5357,
+          "decodedRGBABytes": 20736,
+          "alpha": {
+            "bounds": [
+              6,
+              11,
+              66,
+              61
+            ],
+            "visiblePixels": 1501,
+            "alphaCentroid": [
+              36.8457,
+              36.6985
+            ],
+            "padding": [
+              11,
+              6,
+              11,
+              6
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              6,
+              11,
+              66,
+              61
+            ],
+            "visiblePixels": 1268,
+            "alphaCentroid": [
+              36.8889,
+              36.6658
+            ],
+            "padding": [
+              11,
+              6,
+              11,
+              6
+            ]
+          },
+          "fit": {
+            "scale": 0.0562,
+            "sizePixels": [
+              60,
+              50
+            ],
+            "originPixels": [
+              6,
+              11
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "lock",
+      "assetName": "ObservatoryGlyphLock",
+      "source": {
+        "master": "lock.png",
+        "original": "/Users/lbeezr/.codex/generated_images/01a15938-b1cd-7603-b9ce-1656f102d84e/exec-4f9b9758-1a0d-476f-9bf7-f4e108df7483.png",
+        "sha256": "b93723337707bca381a42c4ac1c9a9e906011bd3d1f3f1e2230e93f6fe57cf3c",
+        "encodedBytes": 1094418,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "bounds": [
+            0,
+            9,
+            1212,
+            1254
+          ],
+          "visiblePixels": 678771,
+          "alphaCentroid": [
+            625.272,
+            704.9341
+          ],
+          "padding": [
+            9,
+            0,
+            0,
+            42
+          ]
+        },
+        "alphaAt16": {
+          "bounds": [
+            209,
+            78,
+            1043,
+            1144
+          ],
+          "visiblePixels": 653024,
+          "alphaCentroid": [
+            625.2663,
+            704.9623
+          ],
+          "padding": [
+            78,
+            209,
+            110,
+            211
+          ]
+        },
+        "alphaAt128": {
+          "bounds": [
+            210,
+            79,
+            1042,
+            1143
+          ],
+          "visiblePixels": 649222,
+          "alphaCentroid": [
+            625.2694,
+            705.0814
+          ],
+          "padding": [
+            79,
+            210,
+            111,
+            212
+          ]
+        },
+        "discardedOutsideCrop": {
+          "pixelCount": 6571,
+          "maximumAlpha": 2,
+          "alphaSum": 6614
+        }
+      },
+      "registration": {
+        "canvasPoints": [
+          24,
+          24
+        ],
+        "minimumPaddingPoints": 2,
+        "renderingIntent": "original",
+        "subjectAlphaThreshold": 16,
+        "sourceBleedPixels": 4,
+        "cropPixels": [
+          205,
+          74,
+          1047,
+          1148
+        ],
+        "alignment": "center; odd pixel remainder goes right/bottom"
+      },
+      "exports": [
+        {
+          "filename": "lock@1x.png",
+          "density": 1,
+          "dimensions": [
+            24,
+            24
+          ],
+          "sha256": "07d21bd6bd5651788bc781e7a5712681612511daf4436f05b17eda8a406ad7b0",
+          "encodedBytes": 1571,
+          "decodedRGBABytes": 2304,
+          "alpha": {
+            "bounds": [
+              4,
+              2,
+              20,
+              22
+            ],
+            "visiblePixels": 282,
+            "alphaCentroid": [
+              11.9696,
+              13.7233
+            ],
+            "padding": [
+              2,
+              4,
+              2,
+              4
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              4,
+              2,
+              20,
+              22
+            ],
+            "visiblePixels": 238,
+            "alphaCentroid": [
+              11.9755,
+              13.7889
+            ],
+            "padding": [
+              2,
+              4,
+              2,
+              4
+            ]
+          },
+          "fit": {
+            "scale": 0.0186,
+            "sizePixels": [
+              16,
+              20
+            ],
+            "originPixels": [
+              4,
+              2
+            ]
+          }
+        },
+        {
+          "filename": "lock@2x.png",
+          "density": 2,
+          "dimensions": [
+            48,
+            48
+          ],
+          "sha256": "015a1cd6078b365a0e56f27125be02a60cb0c870c596b20f54880eb9dec380a7",
+          "encodedBytes": 3985,
+          "decodedRGBABytes": 9216,
+          "alpha": {
+            "bounds": [
+              8,
+              4,
+              39,
+              44
+            ],
+            "visiblePixels": 1047,
+            "alphaCentroid": [
+              23.4636,
+              27.4705
+            ],
+            "padding": [
+              4,
+              8,
+              4,
+              9
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              8,
+              4,
+              39,
+              44
+            ],
+            "visiblePixels": 894,
+            "alphaCentroid": [
+              23.4524,
+              27.6651
+            ],
+            "padding": [
+              4,
+              8,
+              4,
+              9
+            ]
+          },
+          "fit": {
+            "scale": 0.0372,
+            "sizePixels": [
+              31,
+              40
+            ],
+            "originPixels": [
+              8,
+              4
+            ]
+          }
+        },
+        {
+          "filename": "lock@3x.png",
+          "density": 3,
+          "dimensions": [
+            72,
+            72
+          ],
+          "sha256": "16582938f0fb894aca5f29795e27861e75d97b723296677df94b0dcfb6922658",
+          "encodedBytes": 7551,
+          "decodedRGBABytes": 20736,
+          "alpha": {
+            "bounds": [
+              12,
+              6,
+              59,
+              66
+            ],
+            "visiblePixels": 2281,
+            "alphaCentroid": [
+              35.4564,
+              41.2332
+            ],
+            "padding": [
+              6,
+              12,
+              6,
+              13
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              12,
+              6,
+              59,
+              66
+            ],
+            "visiblePixels": 2045,
+            "alphaCentroid": [
+              35.443,
+              41.3912
+            ],
+            "padding": [
+              6,
+              12,
+              6,
+              13
+            ]
+          },
+          "fit": {
+            "scale": 0.0559,
+            "sizePixels": [
+              47,
+              60
+            ],
+            "originPixels": [
+              12,
+              6
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "direction",
+      "assetName": "ObservatoryGlyphDirection",
+      "source": {
+        "master": "direction.png",
+        "original": "/Users/lbeezr/.codex/generated_images/01a15938-b1cd-7603-b9ce-1656f102d84e/exec-41a02efb-0fd7-48ae-bcd2-79af62d4d33b.png",
+        "sha256": "0079b170301883468373fc9b841f84c26fdcbca63c48d3db107b6ff067b2c469",
+        "encodedBytes": 851988,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "bounds": [
+            65,
+            39,
+            1244,
+            1230
+          ],
+          "visiblePixels": 437484,
+          "alphaCentroid": [
+            626.1426,
+            628.9273
+          ],
+          "padding": [
+            39,
+            65,
+            24,
+            10
+          ]
+        },
+        "alphaAt16": {
+          "bounds": [
+            98,
+            92,
+            1155,
+            1155
+          ],
+          "visiblePixels": 419864,
+          "alphaCentroid": [
+            626.1427,
+            628.9293
+          ],
+          "padding": [
+            92,
+            98,
+            99,
+            99
+          ]
+        },
+        "alphaAt128": {
+          "bounds": [
+            99,
+            93,
+            1154,
+            1154
+          ],
+          "visiblePixels": 416312,
+          "alphaCentroid": [
+            626.1367,
+            628.9416
+          ],
+          "padding": [
+            93,
+            99,
+            100,
+            100
+          ]
+        },
+        "discardedOutsideCrop": {
+          "pixelCount": 69,
+          "maximumAlpha": 1,
+          "alphaSum": 69
+        }
+      },
+      "registration": {
+        "canvasPoints": [
+          24,
+          24
+        ],
+        "minimumPaddingPoints": 2,
+        "renderingIntent": "original",
+        "subjectAlphaThreshold": 16,
+        "sourceBleedPixels": 4,
+        "cropPixels": [
+          94,
+          88,
+          1159,
+          1159
+        ],
+        "alignment": "center; odd pixel remainder goes right/bottom"
+      },
+      "exports": [
+        {
+          "filename": "direction@1x.png",
+          "density": 1,
+          "dimensions": [
+            24,
+            24
+          ],
+          "sha256": "44bd894397ea2ac9891b044b4db0c3058e5a075559f3b9c8a376dee78e5c8098",
+          "encodedBytes": 1454,
+          "decodedRGBABytes": 2304,
+          "alpha": {
+            "bounds": [
+              2,
+              2,
+              22,
+              22
+            ],
+            "visiblePixels": 247,
+            "alphaCentroid": [
+              11.9934,
+              12.0961
+            ],
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              2,
+              2,
+              22,
+              22
+            ],
+            "visiblePixels": 148,
+            "alphaCentroid": [
+              11.9954,
+              12.061
+            ],
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ]
+          },
+          "fit": {
+            "scale": 0.0187,
+            "sizePixels": [
+              20,
+              20
+            ],
+            "originPixels": [
+              2,
+              2
+            ]
+          }
+        },
+        {
+          "filename": "direction@2x.png",
+          "density": 2,
+          "dimensions": [
+            48,
+            48
+          ],
+          "sha256": "1089acf206633502f4c67f26e76798534ee65b2080c84bef5498d25580515778",
+          "encodedBytes": 3519,
+          "decodedRGBABytes": 9216,
+          "alpha": {
+            "bounds": [
+              4,
+              4,
+              44,
+              44
+            ],
+            "visiblePixels": 840,
+            "alphaCentroid": [
+              23.9859,
+              24.2048
+            ],
+            "padding": [
+              4,
+              4,
+              4,
+              4
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              4,
+              4,
+              44,
+              44
+            ],
+            "visiblePixels": 582,
+            "alphaCentroid": [
+              23.993,
+              24.2223
+            ],
+            "padding": [
+              4,
+              4,
+              4,
+              4
+            ]
+          },
+          "fit": {
+            "scale": 0.0373,
+            "sizePixels": [
+              40,
+              40
+            ],
+            "originPixels": [
+              4,
+              4
+            ]
+          }
+        },
+        {
+          "filename": "direction@3x.png",
+          "density": 3,
+          "dimensions": [
+            72,
+            72
+          ],
+          "sha256": "b64e05ead082cc6dd1b74882783aaadb0acd604121ecc94801ffc021d38cea21",
+          "encodedBytes": 6406,
+          "decodedRGBABytes": 20736,
+          "alpha": {
+            "bounds": [
+              6,
+              6,
+              66,
+              66
+            ],
+            "visiblePixels": 1723,
+            "alphaCentroid": [
+              35.9799,
+              36.298
+            ],
+            "padding": [
+              6,
+              6,
+              6,
+              6
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              6,
+              6,
+              66,
+              66
+            ],
+            "visiblePixels": 1306,
+            "alphaCentroid": [
+              35.9641,
+              36.3315
+            ],
+            "padding": [
+              6,
+              6,
+              6,
+              6
+            ]
+          },
+          "fit": {
+            "scale": 0.056,
+            "sizePixels": [
+              60,
+              60
+            ],
+            "originPixels": [
+              6,
+              6
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "trace",
+      "assetName": "ObservatoryGlyphTrace",
+      "source": {
+        "master": "trace.png",
+        "original": "/Users/lbeezr/.codex/generated_images/01a15938-b1cd-7603-b9ce-1656f102d84e/exec-5ae6029b-f1aa-4aab-b8e1-00ce1d22edbd.png",
+        "sha256": "17849548ec59619cb8e7806bbbcc4b7554ef968aab7f42dba86b3394bc9ce944",
+        "encodedBytes": 495477,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "alpha": {
+          "bounds": [
+            23,
+            53,
+            1232,
+            1254
+          ],
+          "visiblePixels": 215970,
+          "alphaCentroid": [
+            638.7161,
+            652.3516
+          ],
+          "padding": [
+            53,
+            23,
+            0,
+            22
+          ]
+        },
+        "alphaAt16": {
+          "bounds": [
+            104,
+            106,
+            1150,
+            1153
+          ],
+          "visiblePixels": 204050,
+          "alphaCentroid": [
+            638.7099,
+            652.3626
+          ],
+          "padding": [
+            106,
+            104,
+            101,
+            104
+          ]
+        },
+        "alphaAt128": {
+          "bounds": [
+            104,
+            106,
+            1149,
+            1153
+          ],
+          "visiblePixels": 201100,
+          "alphaCentroid": [
+            638.7021,
+            652.4127
+          ],
+          "padding": [
+            106,
+            104,
+            101,
+            105
+          ]
+        },
+        "discardedOutsideCrop": {
+          "pixelCount": 347,
+          "maximumAlpha": 5,
+          "alphaSum": 429
+        }
+      },
+      "registration": {
+        "canvasPoints": [
+          24,
+          24
+        ],
+        "minimumPaddingPoints": 2,
+        "renderingIntent": "original",
+        "subjectAlphaThreshold": 16,
+        "sourceBleedPixels": 4,
+        "cropPixels": [
+          100,
+          102,
+          1154,
+          1157
+        ],
+        "alignment": "center; odd pixel remainder goes right/bottom"
+      },
+      "exports": [
+        {
+          "filename": "trace@1x.png",
+          "density": 1,
+          "dimensions": [
+            24,
+            24
+          ],
+          "sha256": "735d94d545f89da7c615be04ee2dfa080714309fa767736550087e023ff6064b",
+          "encodedBytes": 1103,
+          "decodedRGBABytes": 2304,
+          "alpha": {
+            "bounds": [
+              2,
+              2,
+              22,
+              22
+            ],
+            "visiblePixels": 167,
+            "alphaCentroid": [
+              12.2276,
+              12.4186
+            ],
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              2,
+              2,
+              22,
+              22
+            ],
+            "visiblePixels": 73,
+            "alphaCentroid": [
+              12.206,
+              12.4758
+            ],
+            "padding": [
+              2,
+              2,
+              2,
+              2
+            ]
+          },
+          "fit": {
+            "scale": 0.019,
+            "sizePixels": [
+              20,
+              20
+            ],
+            "originPixels": [
+              2,
+              2
+            ]
+          }
+        },
+        {
+          "filename": "trace@2x.png",
+          "density": 2,
+          "dimensions": [
+            48,
+            48
+          ],
+          "sha256": "a1a11ca1fba7bc7386df69d224868dcc66566231f31d30cfe216813376d86d74",
+          "encodedBytes": 2329,
+          "decodedRGBABytes": 9216,
+          "alpha": {
+            "bounds": [
+              4,
+              4,
+              44,
+              44
+            ],
+            "visiblePixels": 497,
+            "alphaCentroid": [
+              24.4534,
+              24.8531
+            ],
+            "padding": [
+              4,
+              4,
+              4,
+              4
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              4,
+              4,
+              44,
+              44
+            ],
+            "visiblePixels": 294,
+            "alphaCentroid": [
+              24.282,
+              25.078
+            ],
+            "padding": [
+              4,
+              4,
+              4,
+              4
+            ]
+          },
+          "fit": {
+            "scale": 0.0379,
+            "sizePixels": [
+              40,
+              40
+            ],
+            "originPixels": [
+              4,
+              4
+            ]
+          }
+        },
+        {
+          "filename": "trace@3x.png",
+          "density": 3,
+          "dimensions": [
+            72,
+            72
+          ],
+          "sha256": "86265f9e5178f83c30146741136043536ac91ec8c4a03e5f2463b7741c78c3ff",
+          "encodedBytes": 4137,
+          "decodedRGBABytes": 20736,
+          "alpha": {
+            "bounds": [
+              6,
+              6,
+              66,
+              66
+            ],
+            "visiblePixels": 975,
+            "alphaCentroid": [
+              36.6752,
+              37.294
+            ],
+            "padding": [
+              6,
+              6,
+              6,
+              6
+            ]
+          },
+          "alphaAt128": {
+            "bounds": [
+              6,
+              6,
+              66,
+              66
+            ],
+            "visiblePixels": 650,
+            "alphaCentroid": [
+              36.6017,
+              37.4435
+            ],
+            "padding": [
+              6,
+              6,
+              6,
+              6
+            ]
+          },
+          "fit": {
+            "scale": 0.0569,
+            "sizePixels": [
+              60,
+              60
+            ],
+            "originPixels": [
+              6,
+              6
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "totals": {
+    "encodedBytes": 241089,
+    "decodedRGBABytes": 645120,
+    "byDensity": {
+      "1": {
+        "encodedBytes": 29113,
+        "decodedRGBABytes": 46080
+      },
+      "2": {
+        "encodedBytes": 73048,
+        "decodedRGBABytes": 184320
+      },
+      "3": {
+        "encodedBytes": 138928,
+        "decodedRGBABytes": 414720
+      }
+    }
+  },
+  "previews": [
+    {
+      "filename": "rendered-utilities-small-sizes.png",
+      "dimensions": [
+        1000,
+        900
+      ],
+      "encodedBytes": 108122,
+      "sha256": "aa331bc8d809607845e2f1f170e2fc7760e93a0ce975d3599ea9a20ea7949f00",
+      "role": "Small-size export review at 20/24/28 reference points; not runtime"
+    },
+    {
+      "filename": "rendered-utilities-raw-sources.png",
+      "dimensions": [
+        1000,
+        1010
+      ],
+      "encodedBytes": 514624,
+      "sha256": "6c43345d71e5b25bf04498d0bf7e8edd002a0368a18f03388bcb6a8b6d9b395f",
+      "role": "Retained source-canvas review; not runtime"
+    }
+  ],
+  "toolchain": {
+    "node": "24.19.0",
+    "sharp": "0.35.5",
+    "vips": "8.18.7"
+  }
+}
