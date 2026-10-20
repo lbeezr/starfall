@@ -9,11 +9,24 @@ import StarfallCore
     func render(_ game: FallingSky)
     func animate(_ turn: FallingSkyTurn, from old: FallingSky,
                  to game: FallingSky, completion: @escaping () -> Void)
+    func animate(_ turn: FallingSkyTurn, from old: FallingSky, to game: FallingSky,
+                 phaseBegan: @escaping (Int) -> Void, completion: @escaping () -> Void)
+    func prepareOpening(_ game: FallingSky)
+    func presentOpening(_ game: FallingSky, completion: @escaping () -> Void)
     func showBufferedInput(_ action: SkyPlayerInput?)
 }
 
 extension FallingSkyPresenting {
     func showBufferedInput(_ action: SkyPlayerInput?) {}
+    func prepareOpening(_ game: FallingSky) { render(game) }
+    func presentOpening(_ game: FallingSky, completion: @escaping () -> Void) {
+        render(game); completion()
+    }
+    func animate(_ turn: FallingSkyTurn, from old: FallingSky, to game: FallingSky,
+                 phaseBegan: @escaping (Int) -> Void, completion: @escaping () -> Void) {
+        for index in turn.resolutionPhases.indices { phaseBegan(index) }
+        animate(turn, from: old, to: game, completion: completion)
+    }
 }
 
 /// One cancellable deadline; no repeating timer or catch-up queue.
@@ -87,7 +100,10 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     private(set) var saveFailed = false
     private(set) var rejectedSaveKey: String?
     private static let persistenceLog = Logger(subsystem: "com.starfall.prototype", category: "persistence")
-    var busy: Bool { presentations.busy }
+    var busy: Bool { presentations.busy || openingPresenting }
+    private(set) var openingPending = false
+    private(set) var openingPresenting = false
+    private var openingGeneration: UInt64 = 0
     private(set) var suspended = true
     private(set) var sceneReady = false
     private(set) var isPaused = true
@@ -177,7 +193,9 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     private var inputFeedback: InputFeedback?
     var inputMessage: String? { inputFeedback?.text }
     var pending: FallingSkyTurn? { presentations.pending }
-    var changingColumns: Set<Int> { presentations.changingColumns }
+    var changingColumns: Set<Int> {
+        openingPending || openingPresenting ? Set(0..<FallingSky.side) : presentations.changingColumns
+    }
 
     func showInputFeedback(_ text: String?) {
         inputFeedback = text.map { InputFeedback(text: $0, waitingColumns: nil) }
@@ -445,7 +463,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
               arriving: pending?.arrivals.isEmpty == false || rainDue)
     }
     var inputPolicy: SkyInputPolicy {
-        .init(suspended: suspended, gameOver: game.isOver, showerDue: rainDue,
+        .init(suspended: suspended || openingPending || openingPresenting, gameOver: game.isOver, showerDue: rainDue,
               changingColumns: changingColumns, presenting: busy)
     }
     var canClear: Bool { inputPolicy.wholeBoard.isReady }
@@ -601,6 +619,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
               let (next,turn) = readyTechnique(action) else { return false }
         let old = game
         game = next
+        if game.isOver { freezeClock() }
         if case .recipe(let recipe) = action { present(turn, from: old, recipe: recipe) }
         else { present(turn, from: old) }
         return true
@@ -612,6 +631,20 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         celebrationSequence &+= 1
         guard let receipt = StarlightCelebration(id: celebrationSequence, turn: turn, from: old,
             total: game.displayScore, path: path, recipe: recipe, relayDepth: techniqueRelay.depth) else { return }
+        publishCelebration(receipt)
+    }
+
+    private func celebratePhase(_ index: Int, turn: FallingSkyTurn, oldScore: Int) {
+        guard turn.resolutionPhases.indices.contains(index) else { return }
+        cancelCelebration()
+        celebrationSequence &+= 1
+        let cumulative = turn.resolutionPhases.prefix(index + 1).reduce(0) { $0 + $1.award.displayPoints }
+        let receipt = StarlightCelebration(id: celebrationSequence, phase: turn.resolutionPhases[index],
+            cumulativeAward: cumulative, total: oldScore + cumulative)
+        publishCelebration(receipt)
+    }
+
+    private func publishCelebration(_ receipt: StarlightCelebration) {
         celebration = receipt
         feedback.collected(receipt.level, soundEnabled: soundEnabled, hapticsEnabled: hapticsEnabled,
                            reducedMotion: presenter.reduceMotion)
@@ -665,7 +698,8 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         #if DEBUG
         guard !isTechniqueFixture else { return }
         #endif
-        guard !constellationTracing, bufferedInput == nil, !isPaused, !suspended, !game.isOver, deadline == nil, !rainDue else { return }
+        guard !openingPending, !openingPresenting, !constellationTracing, bufferedInput == nil,
+              !isPaused, !suspended, !game.isOver, deadline == nil, !rainDue else { return }
         rainGeneration &+= 1
         let ticket = rainGeneration
         deadline = clock.now + remaining
@@ -751,7 +785,10 @@ enum SkyTerminalSpeech { case feedback, ceremony }
             techniqueRelay.record(before:old,after:game,cleared:turn.cleared)
             techniqueResult = techniqueRelay.depth > 1 ? SkyCopy.text(.techniqueRelay, values: ["count": String(techniqueRelay.depth)]) : SkyCopy.text(.techniqueSupport)
         }
-        celebrate(turn, from: old, path: path, recipe: resolvedRecipe)
+        if turn.resolutionPhases.isEmpty { celebrate(turn, from: old, path: path, recipe: resolvedRecipe) }
+        else if presenter.reduceMotion {
+            celebratePhase(turn.resolutionPhases.count - 1, turn: turn, oldScore: old.displayScore)
+        } else { cancelCelebration() }
         let ticket = presentations.begin(turn)
         guideLine = SkyDialogueLibrary.result(for: turn, from: old, to: game,
             tracedCount: Set(path).count, recipe: resolvedRecipe, relayDepth: techniqueRelay.depth,
@@ -771,8 +808,20 @@ enum SkyTerminalSpeech { case feedback, ceremony }
             publishResult(spokenResult, interrupt: true, announces: true)
         }
         let dialogueRevision = dialogue.revision
-        presenter.animate(turn, from: old, to: game) { [weak self] in
+        var presentedPhase = presenter.reduceMotion
+        presenter.animate(turn, from: old, to: game, phaseBegan: { [weak self] index in
+            guard let self, self.presentations.isActive(ticket), self.presentations.isLatest(ticket),
+                  !self.suspended, !self.presenter.reduceMotion else { return }
+            presentedPhase = true
+            self.celebratePhase(index, turn: turn, oldScore: old.displayScore)
+        }) { [weak self] in
             guard let self, self.presentations.complete(ticket) else { return }
+            // The scene also honors system Reduce Motion/VoiceOver and may be
+            // detached. A quiet completion gets exactly one aggregate receipt.
+            if !presentedPhase, !turn.resolutionPhases.isEmpty,
+               self.presentations.isLatest(ticket), !self.suspended {
+                self.celebratePhase(turn.resolutionPhases.count - 1, turn: turn, oldScore: old.displayScore)
+            }
             if let columns = self.inputFeedback?.waitingColumns, columns.isDisjoint(with: self.changingColumns) {
                 self.showInputFeedback(nil)
             }
@@ -837,7 +886,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         refreshCadence()
         remaining = showerInterval
         dialogue.reset(); guide(sameSky ? "guide.replay" : "guide.new")
-        save(); presenter.render(game)
+        prepareRoundOpening()
     }
 
     #if DEBUG
@@ -880,7 +929,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         remaining = showerInterval
         dialogue.reset()
         if let line = game.challengeGuideLine { guideLine = line }
-        save(); presenter.render(game)
+        prepareRoundOpening()
     }
 
     func setBalance(_ balance: StarfallBalance) {
@@ -922,6 +971,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         else {
             // Persist the retained store's chosen sky before its clock can run.
             save()
+            presentPendingOpening()
             armClock()
         }
     }
@@ -936,6 +986,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     /// Callers choose pause/suspension and replacement state explicitly.
     private func interruptPlay(reason: String) {
         freezeClock()
+        openingPending = false
         settleInterruptedPresentation(reason: reason)
     }
 
@@ -951,10 +1002,38 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         defer { observeTiming(.state) }
         #endif
         invalidateInput(reason)
+        let interruptedOpening = openingPresenting
+        openingGeneration &+= 1
+        openingPresenting = false
         presentations.invalidate()
         cancelCelebration()
-        presenter.render(game)
+        if openingPending { presenter.prepareOpening(game) }
+        else { presenter.render(game) }
+        if interruptedOpening { armClock() }
         deliverRainIfReady()
+    }
+
+    /// The opening is already committed. Its rain is shown once on admission;
+    /// restoration and interruption always reveal that same saved arrangement.
+    private func prepareRoundOpening() {
+        openingPending = game.supportsAutomaticRecipes
+        save()
+        if openingPending { presenter.prepareOpening(game) }
+        else { presenter.render(game) }
+        if !suspended { presentPendingOpening() }
+    }
+
+    private func presentPendingOpening() {
+        guard openingPending, !suspended else { return }
+        openingPending = false
+        openingPresenting = true
+        openingGeneration &+= 1
+        let ticket = openingGeneration
+        presenter.presentOpening(game) { [weak self] in
+            guard let self, self.openingGeneration == ticket, self.openingPresenting else { return }
+            self.openingPresenting = false
+            self.armClock()
+        }
     }
 
     func dismissPersistenceNotice() { persistenceNotice = nil }

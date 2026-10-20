@@ -205,3 +205,7 @@ Embed the existing file where it helps a decision; link this page for the full c
 <img src="../../App/Assets.xcassets/StarCastHole.imageset/body.png" width="128" alt="Opaque dark gravity hole encircled by a luminous blue-gold accretion ribbon">
 
 **Packaged production artwork — October 17, 2026.** Built-in imagegen sources and exact prompts are retained in [StarCast artwork](../../Artwork/StarCast/README.md#magnetic-crystal-and-gravity-hole). The field supersedes the solid magnetic crystal; [runtime evidence](../evidence/gravity-art-2026-10-17/README.md) separately covers small-size materials, native play and full/reduced motion.
+
+## Lantern/Ribbon cascade revision
+
+[Inspected revision-two rain and chain samples](../evidence/story-cascades-2026-10-20/README.md) are current for the first-pair entry/clear sequence at runtime `dev.181bb2c16e`. The revision-one gameplay captures remain historical for replaced openings and clear rules; unchanged location paintings retain their original source-bound artwork evidence. Phone play and actual VoiceOver remain open.

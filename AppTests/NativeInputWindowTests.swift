@@ -221,6 +221,218 @@ final class NativeInputWindowTests: XCTestCase {
         XCTAssertEqual(visible, game.board.compactMap { $0 }.sorted { $0.id < $1.id })
     }
 
+    @MainActor func testFreshStoryOpeningRainsInAndSettlesExactSavedBoard() async throws {
+        try requireNormalMotion()
+        let scene = FallingSkyScene(size: CGSize(width: 390, height: 844))
+        let first = FallingSky.freshChallenge(.firstLight)
+        scene.prepareOpening(first)
+        let host = try SceneHost(scene: scene); defer { host.close() }
+        XCTAssertTrue(scene.children[1].children.isEmpty,
+                      "Attaching the prepared scene must not flash its resting opening")
+        for challenge in [StarfallChallenge.firstLight, .ribbonCrossing] {
+            let game = FallingSky.freshChallenge(challenge)
+            XCTAssertTrue(game.supportsAutomaticRecipes)
+            XCTAssertGreaterThan(game.occupiedCount, 20)
+            scene.prepareOpening(game)
+            XCTAssertTrue(scene.children[1].children.isEmpty)
+            try await awaitSceneFrame(scene)
+            var completions = 0, sawFlight = false, sawPartialLanding = false
+            scene.presentOpening(game) { completions += 1 }
+            let limit = ContinuousClock.now + .seconds(3)
+            while completions == 0 && ContinuousClock.now < limit {
+                let flights = scene.children[2].children.filter { $0.name?.hasPrefix("sky.flight.") == true }
+                let landed = scene.children[1].children.compactMap { $0 as? FallingSkyCharacter }
+                sawFlight = sawFlight || !flights.isEmpty
+                if !flights.isEmpty && !landed.isEmpty && landed.count < game.occupiedCount {
+                    if !sawPartialLanding { capture(scene, host: host, name: "\(challenge)-opening-rain") }
+                    sawPartialLanding = true
+                }
+                for gem in landed {
+                    XCTAssertNil(scene.childNode(withName: "//sky.flight.\(gem.gem.id)"),
+                                 "An opening star must have one visible body at landing")
+                }
+                try await Task.sleep(for: .milliseconds(12))
+            }
+            XCTAssertEqual(completions, 1)
+            XCTAssertTrue(sawFlight)
+            XCTAssertTrue(sawPartialLanding, "The half-board should arrive progressively, not appear at once")
+            assertBoard(game, in: scene)
+            XCTAssertFalse(scene.hasActions())
+            XCTAssertTrue(scene.children[2].children.isEmpty)
+            capture(scene, host: host, name: "\(challenge)-opening-settled")
+        }
+    }
+
+    @MainActor func testStoryOpeningReplacementAndQuietModeCancelUnfinishedRain() async throws {
+        try requireNormalMotion()
+        let game = FallingSky.freshChallenge(.firstLight)
+        let scene = FallingSkyScene(size: CGSize(width: 390, height: 844))
+        let host = try SceneHost(scene: scene); defer { host.close() }
+        try await awaitSceneFrame(scene)
+        var staleCompletions = 0
+        scene.presentOpening(game) { staleCompletions += 1 }
+        let appeared = ContinuousClock.now + .seconds(2)
+        while scene.children[2].children.isEmpty && ContinuousClock.now < appeared {
+            try await Task.sleep(for: .milliseconds(12))
+        }
+        XCTAssertFalse(scene.children[2].children.isEmpty)
+        scene.render(game)
+        assertBoard(game, in: scene)
+        let cancellationLimit = ContinuousClock.now + .milliseconds(1400)
+        while staleCompletions == 0 && ContinuousClock.now < cancellationLimit {
+            try await Task.sleep(for: .milliseconds(20))
+        }
+        XCTAssertEqual(staleCompletions, 0)
+        XCTAssertFalse(scene.hasActions())
+        XCTAssertTrue(scene.children[2].children.isEmpty)
+        scene.reduceMotion = true
+        var quietCompletions = 0
+        scene.presentOpening(game) { quietCompletions += 1 }
+        XCTAssertEqual(quietCompletions, 1)
+        assertBoard(game, in: scene)
+        XCTAssertFalse(scene.hasActions())
+        XCTAssertTrue(scene.children[2].children.isEmpty)
+    }
+
+    @MainActor func testRecipeCascadeShowsPopThenFallThenNextPop() async throws {
+        try requireNormalMotion()
+        let scene = FallingSkyScene(size: CGSize(width: 390, height: 844))
+        let host = try SceneHost(scene: scene); defer { host.close() }
+        for challenge in [StarfallChallenge.firstLight, .ribbonCrossing] {
+            let before = FallingSky.freshChallenge(challenge)
+            var after = before
+            let turn = try XCTUnwrap(after.nudge(from: Cell(1, 1), to: Cell(1, 2)))
+            XCTAssertGreaterThanOrEqual(turn.resolutionPhases.count, 2)
+            let first = turn.resolutionPhases[0], second = turn.resolutionPhases[1]
+            let falling = try XCTUnwrap(second.cleared.compactMap { cell -> (Int, Cell, Cell)? in
+                guard let gem = second.before[cell.row * 7 + cell.column],
+                      let prior = first.before.firstIndex(where: { $0?.id == gem.id }),
+                      prior != cell.row * 7 + cell.column else { return nil }
+                return (gem.id, Cell(prior / 7, prior % 7), cell)
+            }.first)
+            scene.render(before)
+            try await awaitSceneFrame(scene)
+            var phases: [Int] = [], completions = 0, sawFallingSurvivor = false
+            var positionAtSecondPop: CGPoint?
+            scene.animate(turn, from: before, to: after, phaseBegan: { index in
+                phases.append(index)
+                if index == 1 {
+                    positionAtSecondPop = scene.childNode(withName: "//sky.star.\(falling.0)")?.position
+                    for cell in first.cleared {
+                        if let id = first.before[cell.row * 7 + cell.column]?.id {
+                            XCTAssertNil(scene.childNode(withName: "//sky.star.\(id)"),
+                                         "The first pop must end before the second pop begins")
+                        }
+                    }
+                }
+            }, completion: { completions += 1 })
+            let limit = ContinuousClock.now + .seconds(5)
+            while completions == 0 && ContinuousClock.now < limit {
+                if phases == [0], let node = scene.childNode(withName: "//sky.star.\(falling.0)"),
+                   node.action(forKey: "sky.recipe-settle") != nil {
+                    let start = LandingGeometry(size: scene.size).scenePoint(falling.1)
+                    let end = LandingGeometry(size: scene.size).scenePoint(falling.2)
+                    if hypot(node.position.x - start.x, node.position.y - start.y) > 1,
+                       hypot(node.position.x - end.x, node.position.y - end.y) > 1 {
+                        if !sawFallingSurvivor { capture(scene, host: host, name: "\(challenge)-cascade-survivor-fall") }
+                        sawFallingSurvivor = true
+                    }
+                }
+                try await Task.sleep(for: .milliseconds(12))
+            }
+            XCTAssertEqual(completions, 1)
+            XCTAssertEqual(phases, Array(turn.resolutionPhases.indices))
+            XCTAssertTrue(sawFallingSurvivor)
+            let settled = LandingGeometry(size: scene.size).scenePoint(falling.2)
+            let observed = try XCTUnwrap(positionAtSecondPop)
+            XCTAssertEqual(observed.x, settled.x, accuracy: 0.01)
+            XCTAssertEqual(observed.y, settled.y, accuracy: 0.01,
+                           "A causal follow-up must start from the completed survivor fall")
+            assertBoard(after, in: scene)
+            XCTAssertFalse(scene.hasActions())
+            XCTAssertTrue(scene.children[2].children.isEmpty)
+        }
+    }
+
+    @MainActor func testRecipeCascadeReplacementAndQuietModeDiscardRemainingCallbacks() async throws {
+        try requireNormalMotion()
+        let before = FallingSky.freshChallenge(.ribbonCrossing)
+        var after = before
+        let turn = try XCTUnwrap(after.nudge(from: Cell(1, 1), to: Cell(1, 2)))
+        XCTAssertGreaterThanOrEqual(turn.resolutionPhases.count, 2)
+        let scene = FallingSkyScene(size: CGSize(width: 390, height: 844))
+        let host = try SceneHost(scene: scene); defer { host.close() }
+        scene.render(before)
+        try await awaitSceneFrame(scene)
+        var phases: [Int] = [], staleCompletions = 0
+        scene.animate(turn, from: before, to: after, phaseBegan: { phases.append($0) },
+                      completion: { staleCompletions += 1 })
+        let firstPopLimit = ContinuousClock.now + .seconds(2)
+        while phases.isEmpty && ContinuousClock.now < firstPopLimit {
+            try await Task.sleep(for: .milliseconds(12))
+        }
+        XCTAssertEqual(phases, [0])
+        scene.render(after)
+        let cancellationLimit = ContinuousClock.now + .seconds(2)
+        while staleCompletions == 0 && ContinuousClock.now < cancellationLimit {
+            try await Task.sleep(for: .milliseconds(20))
+        }
+        XCTAssertEqual(staleCompletions, 0)
+        XCTAssertEqual(phases, [0])
+        assertBoard(after, in: scene)
+        scene.reduceMotion = true
+        var quietCompletions = 0, quietPhases: [Int] = []
+        scene.animate(turn, from: before, to: after, phaseBegan: { quietPhases.append($0) },
+                      completion: { quietCompletions += 1 })
+        XCTAssertEqual(quietCompletions, 1)
+        XCTAssertTrue(quietPhases.isEmpty, "Quiet presentation keeps one aggregate receipt")
+        assertBoard(after, in: scene)
+        XCTAssertFalse(scene.hasActions())
+        XCTAssertTrue(scene.children[2].children.isEmpty)
+    }
+
+    @MainActor private func requireNormalMotion() throws {
+        guard !UIAccessibility.isReduceMotionEnabled && !UIAccessibility.isVoiceOverRunning else {
+            throw XCTSkip("Normal-motion presentation requires system quiet modes off")
+        }
+    }
+
+    @MainActor private func awaitSceneFrame(_ scene: FallingSkyScene) async throws {
+        var ready = false
+        scene.run(.run { ready = true }, withKey: "test.story-scene-ready")
+        let limit = ContinuousClock.now + .seconds(2)
+        while !ready && ContinuousClock.now < limit { try await Task.sleep(for: .milliseconds(5)) }
+        XCTAssertTrue(ready, "The native host must render before sampling brief animation phases")
+    }
+
+    @MainActor private func assertBoard(_ game: FallingSky, in scene: FallingSkyScene,
+                                       file: StaticString = #filePath, line: UInt = #line) {
+        let visible = scene.children[1].children.compactMap { $0 as? FallingSkyCharacter }
+        XCTAssertEqual(visible.map(\.gem).sorted { $0.id < $1.id },
+                       game.board.compactMap { $0 }.sorted { $0.id < $1.id }, file: file, line: line)
+        for (index, gem) in game.board.enumerated() {
+            guard let gem, let node = visible.first(where: { $0.gem.id == gem.id }) else { continue }
+            let expected = LandingGeometry(size: scene.size).scenePoint(Cell(index / 7, index % 7))
+            XCTAssertEqual(node.position.x, expected.x, accuracy: 0.01, file: file, line: line)
+            XCTAssertEqual(node.position.y, expected.y, accuracy: 0.01, file: file, line: line)
+        }
+    }
+
+    @MainActor private func capture(_ scene: FallingSkyScene, host: SceneHost, name: String) {
+        guard let texture = host.view.texture(from: scene) else {
+            XCTFail("The active native scene must provide a capture")
+            return
+        }
+        let format = UIGraphicsImageRendererFormat(); format.scale = 1; format.opaque = true
+        let image = UIGraphicsImageRenderer(size: host.view.bounds.size, format: format).image { context in
+            UIColor(red: 0.04, green: 0.055, blue: 0.12, alpha: 1).setFill()
+            context.fill(host.view.bounds)
+            UIImage(cgImage: texture.cgImage()).draw(in: host.view.bounds)
+        }
+        let attachment = XCTAttachment(image: image)
+        attachment.name = name; attachment.lifetime = .keepAlways; add(attachment)
+    }
+
     @MainActor private func measure(initial: FallingSky, through finalShower: Int, name: String) async throws -> [Window] {
         guard !UIAccessibility.isReduceMotionEnabled && !UIAccessibility.isVoiceOverRunning else {
             throw XCTSkip("Normal-motion timing requires Reduce Motion and VoiceOver off")

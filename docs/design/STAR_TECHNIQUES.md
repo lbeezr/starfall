@@ -2,6 +2,8 @@
 
 **Status:** Accepted; immediate four-direction input verification in progress · **Owner:** current implementer · **Updated:** October 18, 2026
 
+**October 20 direction change:** This document describes the currently implemented explicit-clear behavior. The user now selects [automatic recipe popping and causal cascades](PUZZLE_PACING_RESEARCH.md#automatic-recipes-and-causal-combos-are-the-selected-direction) for the next revision. Completed-recipe banking, overlapping selections and manual relays below must be re-evaluated; the new resolution rules and combo scoring are not yet implemented.
+
 Give single-cell stars a controllable setup move and exact recipes while preserving falling stars. In survival, swipe left, right, up or down to exchange neighbors immediately. Hold a star for 300 ms before drawing a constellation. Empty destinations are allowed: unsupported stars fall after the slide. A matching four-star square or five-star cross can be cleared without spending surrounding stars. The next clear remains a player decision.
 
 **Decision:** Keep these as ordinary board actions, with no charge, bonus multiplier, progression or automatic cascade. First Light retains its existing rules. [Original integration evidence](../evidence/technique-current-main-2026-10-18/README.md) retains its source; [gesture-only correction](../evidence/dialogue-only-hud-2026-10-18/README.md) tracks removal of Arrange.

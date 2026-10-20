@@ -72,7 +72,7 @@ extension ClearSoundPlaying {
         case .brilliant: take = 4
         case .constellation: take = 5
         case .recipe: take = 6
-        case .relay: take = 7
+        case .relay, .cascade: take = 7
         }
         _ = output.start(take: take)
     }

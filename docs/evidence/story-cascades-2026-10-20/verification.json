@@ -1,0 +1,132 @@
+{
+  "status": "Verified development subset; publication/installation pending",
+  "baseCommit": "c31d890f95616d4c24cf31b3668885ca97c2f8d7",
+  "mainBase": "5ae17f204f085861a681b7a9c5184efa0b97feef",
+  "configuration": "Debug/Release",
+  "environment": {
+    "xcode": "27.1 (27A9275)",
+    "swift": "6.4.0.34.1",
+    "host": "arm64 macOS 27",
+    "device": "iPhone 17e Simulator",
+    "simulatorID": "E739068A-AC67-424C-9430-1FE5578902FE",
+    "os": "iOS 27.0"
+  },
+  "runtimeInputFingerprint": "dev.181bb2c16e",
+  "buildAffectingDirtyPaths": [
+    "App/DialogueScripts/observatory-dialogue.json",
+    "App/FallingSkyPresentation.swift",
+    "App/FallingSkyScene.swift",
+    "App/FallingSkyStore.swift",
+    "App/QuietTuckPlayer.swift",
+    "App/RestorationPresentation.swift",
+    "App/SkyCopy.swift",
+    "App/SkyDialogueLibrary.swift",
+    "App/SkyFlowSnapshots.swift",
+    "App/SkyPreferences.swift",
+    "App/SkySaveArchive.swift",
+    "App/StarlightCelebration.swift",
+    "App/WorldJourneyStore.swift",
+    "Sources/StarfallCore/FallingSky.swift",
+    "Sources/StarfallCore/StarRecipe.swift",
+    "Sources/StarfallCore/StoryChallenge.swift",
+    "Sources/StarfallCore/SkyResolutionPhase.swift",
+    "Sources/StarfallCore/StoryScore.swift"
+  ],
+  "runtimePathSHA256": {
+    "App/DialogueScripts/observatory-dialogue.json": "0b06e5c8fb0cea16ec99112285080a6b045e530939588cd61b8e9158e45994ac",
+    "App/FallingSkyPresentation.swift": "8d68e511a5b354ac375fc6012d898b4adb75aa60d9dbc14b7a579f6f877799be",
+    "App/FallingSkyScene.swift": "ceb0399c4232bacc909a38d33db5c7ae5c469cefdc5ff123cee6eb7b4dc83579",
+    "App/FallingSkyStore.swift": "4e526b90020b98dd23e8663458d302ae0286816916e0f4281a07f993b2dbc50e",
+    "App/QuietTuckPlayer.swift": "1c6212b507170f99d237ea660ff3e9966f1a946f53aaebdb5622c32ca16687eb",
+    "App/RestorationPresentation.swift": "06d960ede8a8e1169150582375a6e7e449a873f1afcd21699f127b297e372298",
+    "App/SkyCopy.swift": "921bc418c505b6de9f343665762989485950755e8a51d39651bcf991db4ae64a",
+    "App/SkyDialogueLibrary.swift": "1fdff11e06e603b6a17ee3cb056ceaa8b70cf4818f36cba11151ef1091778e7f",
+    "App/SkyFlowSnapshots.swift": "663d7c423aa96c08851d98e1b9b7b17d81eaee8fd61fa5efc02f7b0d2637bb0f",
+    "App/SkyPreferences.swift": "ca4a75dcc0e09c404a2cb34bc0998b003029e8456684157322dee007123a2229",
+    "App/SkySaveArchive.swift": "ca8727209b87769d9a177f327933fa66dd6616d89db559a93302a85f1f1f9aa2",
+    "App/StarlightCelebration.swift": "42e37c9b586b657e80a27633a773b02e9c80c3c1d20f9d8b8725a76312f0ee7c",
+    "App/WorldJourneyStore.swift": "9c2c8c417934bf0787f237ed3558db5b545ed1cbc5d4afdf01f90e4a63514cd8",
+    "Sources/StarfallCore/FallingSky.swift": "62a264dce46711142949e1939822038a2876c06a778f530b99fc17b24db33f05",
+    "Sources/StarfallCore/SkyResolutionPhase.swift": "af9bda4d0267e1e36356a9378d5a150a677d770268d257f6f7e3fc6b4b28f6b4",
+    "Sources/StarfallCore/StarRecipe.swift": "2b9fd5eb1a24cd6c7a5867cd911b2783018d09f3f0ea4ab6c015129a618849b6",
+    "Sources/StarfallCore/StoryChallenge.swift": "21042ee94c1a9eabbb7a2ee16ec0a95f6514803e0f581a750cd140be98881562",
+    "Sources/StarfallCore/StoryScore.swift": "e2fca08e627d52b3fd1ac0529ba807f1c6434da89e6df418028a853e829e4181"
+  },
+  "core": {
+    "tests": 213,
+    "failures": 0,
+    "skips": 0,
+    "log": "/tmp/starfall-core-v2-all.log",
+    "command": "CLANG_MODULE_CACHE_PATH=/tmp/starfall-core-v2-clang SWIFTPM_MODULECACHE_OVERRIDE=/tmp/starfall-core-v2-swift swift test --disable-sandbox --cache-path /tmp/starfall-core-v2-cache",
+    "logSHA256": "6c12f729f0e99574240b607d1386f2d6389064b1fa06eef0876fc4d6837507f1"
+  },
+  "nativeRuns": [
+    {
+      "name": "initial",
+      "log": "/tmp/starfall-cascade-hosted-1.log",
+      "hostedExecuted": 124,
+      "uiExecuted": 0,
+      "result": "failed: retired first-clear policy plus unadapted version/trace expectations",
+      "skipMarkers": 0,
+      "logSHA256": "5681a50f665c7a14befe6c5147ba1c8621740ced93b934a4fe68eba537f0e284",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=E739068A-AC67-424C-9430-1FE5578902FE\" -derivedDataPath /tmp/starfall-cascade-native -resultBundlePath /tmp/starfall-cascade-hosted-1.xcresult -parallel-testing-enabled NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \"-only-testing:StarfallAppTests/FallingSkyStoreTests\" \"-only-testing:StarfallAppTests/SkySaveArchiveTests\" \"-only-testing:StarfallAppTests/WorldJourneyTests\" \"-only-testing:StarfallAppTests/StarlightCelebrationTests\" \"-only-testing:StarfallAppTests/SkyDialogueTests\" \"-only-testing:StarfallAppTests/NativeInputWindowTests\" test"
+    },
+    {
+      "name": "cascade",
+      "log": "/tmp/starfall-cascade-hosted-2.log",
+      "hostedExecuted": 131,
+      "uiExecuted": 2,
+      "result": "passed",
+      "skipMarkers": 0,
+      "logSHA256": "efadac2a10def00e54cea535b7e63992ca6f92e8241d8616d5abcd34f64b360d",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=E739068A-AC67-424C-9430-1FE5578902FE\" -derivedDataPath /tmp/starfall-cascade-native -resultBundlePath /tmp/starfall-cascade-hosted-2.xcresult -parallel-testing-enabled NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \"-only-testing:StarfallAppTests/FallingSkyStoreTests\" \"-only-testing:StarfallAppTests/SkySaveArchiveTests\" \"-only-testing:StarfallAppTests/WorldJourneyTests\" \"-only-testing:StarfallAppTests/StarlightCelebrationTests\" \"-only-testing:StarfallAppTests/SkyDialogueTests\" \"-only-testing:StarfallAppTests/NativeInputWindowTests\" \"-only-testing:StarfallUITests/WorldJourneyInteractionTests/testRevisedLanternEarnsThousandsAndRetainsScoreAcrossRelaunch\" \"-only-testing:StarfallUITests/WorldJourneyInteractionTests/testRevisedRibbonSwapCreatesLargerClearWithLargestText\" test"
+    },
+    {
+      "name": "consumers",
+      "log": "/tmp/starfall-cascade-final-native.log",
+      "hostedExecuted": 94,
+      "uiExecuted": 1,
+      "result": "one method failed (six assertions); owned xcodebuild terminated after completed test summaries stalled in teardown",
+      "skipMarkers": 0,
+      "logSHA256": "3d9e3354f9979214f9603c55de6113a3a3d97307e3fc712ef4ccef9c7bbb397e",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=E739068A-AC67-424C-9430-1FE5578902FE\" -derivedDataPath /tmp/starfall-cascade-native -resultBundlePath /tmp/starfall-cascade-final-native.xcresult -parallel-testing-enabled NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \"-only-testing:StarfallAppTests/RestorationFlowTests\" \"-only-testing:StarfallAppTests/RestorationPresentationTests\" \"-only-testing:StarfallAppTests/SkyFlowStateTests\" \"-only-testing:StarfallAppTests/SkyTechniqueStoreTests\" \"-only-testing:StarfallAppTests/WorldMapReviewFixtureTests\" \"-only-testing:StarfallAppTests/FallingSkyStoreTests/testChallengeCompletionStopsClockRestoresAndReplays\" \"-only-testing:StarfallAppTests/SkySaveArchiveTests\" \"-only-testing:StarfallUITests/WorldJourneyInteractionTests/testRevisedLanternEarnsThousandsAndRetainsScoreAcrossRelaunch\" test"
+    },
+    {
+      "name": "flow-correction",
+      "log": "/tmp/starfall-cascade-flow-fixed.log",
+      "hostedExecuted": 25,
+      "uiExecuted": 0,
+      "result": "passed",
+      "skipMarkers": 0,
+      "logSHA256": "02efa5b03068caf1018f5b8c2b671c91f582e97fc5c46ded875fe409c6f8e133",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=E739068A-AC67-424C-9430-1FE5578902FE\" -derivedDataPath /tmp/starfall-cascade-native -resultBundlePath /tmp/starfall-cascade-flow-fixed.xcresult -parallel-testing-enabled NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \"-only-testing:StarfallAppTests/SkyFlowStateTests\" \"-only-testing:StarfallAppTests/FallingSkyStoreTests/testChallengeCompletionStopsClockRestoresAndReplays\" test"
+    }
+  ],
+  "acceptedUniqueCounts": {
+    "hosted": 203,
+    "ui": 2,
+    "failures": 0,
+    "skips": 0
+  },
+  "failureCorrections": [
+    "Updated retained revision-one score tests to construct revision one explicitly. Current wins use real rewarding swaps/taps and a bounded one-swap setup, preserving win, save-before-animation, interruption and replay assertions.",
+    "World schema and trace tests now exercise revision-two and retained revision-one contracts.",
+    "Opening layout/motion cancellation now rearms an eligible shower deadline; scene-level quiet completion gets one aggregate receipt even without phase callbacks."
+  ],
+  "sourceDifferences": [
+    "The final current-source Core run adds strict two-star minimum light, board-count and palette validation plus terminal-shower coverage; no opening, supply, score or presentation behavior differs from the inspected native frames.",
+    "Final flow correction changes tests only; current app fingerprint remains dev.181bb2c16e."
+  ],
+  "limits": [
+    "Development subset, not full dev/RC matrix",
+    "Physical play/comfort, actual VoiceOver, minimum iOS and sustained performance not measured",
+    "Installation to be recorded separately; screenshots do not establish enjoyment"
+  ],
+  "builds": {
+    "Debug": "passed build-for-testing and current-source native test builds",
+    "Release": "passed",
+    "releaseLog": "/tmp/starfall-cascade-release.log",
+    "membership": "SkyResolutionPhase.swift and StoryScore.swift compiled into StarfallCore in Release; observatory-dialogue.json copied in the Release app; existing app/test target file membership retained"
+  },
+  "releaseCommand": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Release -destination \"platform=iOS Simulator,id=E739068A-AC67-424C-9430-1FE5578902FE\" -derivedDataPath /tmp/starfall-cascade-native ARCHS=arm64 ONLY_ACTIVE_ARCH=YES build"
+}

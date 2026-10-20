@@ -5,6 +5,35 @@ import StarfallCore
 @testable import Starfall
 
 final class StarlightCelebrationTests: XCTestCase {
+    @MainActor func testCausalReceiptsUseEachPhaseBoardAndGrowTheCommittedAward() throws {
+        var game = FallingSky.freshChallenge(.ribbonCrossing)
+        let turn = try XCTUnwrap(game.nudge(from: Cell(1, 1), to: Cell(1, 2)))
+        XCTAssertEqual(turn.resolutionPhases.count, 3)
+        var cumulative = 0
+        var previousEnergy = 0.0
+        for (index, phase) in turn.resolutionPhases.enumerated() {
+            cumulative += phase.award.displayPoints
+            let event = StarlightCelebration(id: UInt64(index), phase: phase,
+                                            cumulativeAward: cumulative, total: cumulative)
+            XCTAssertEqual(event.displayAward, cumulative)
+            XCTAssertEqual(event.contributors.map(\.reward).reduce(0, +), phase.award.baseLight)
+            XCTAssertEqual(Set(event.cells), phase.cleared)
+            for contributor in event.contributors {
+                XCTAssertEqual(contributor.identity, phase.before[contributor.cell.row * 7 + contributor.cell.column]?.identity)
+            }
+            XCTAssertLessThanOrEqual(event.packets.count, 6)
+            if index > 0 {
+                XCTAssertEqual(event.level, .cascade(index + 1))
+                XCTAssertEqual(event.title, "\(index + 1) CHAIN!")
+                XCTAssertTrue(event.isExceptional)
+                XCTAssertGreaterThan(event.energy, previousEnergy)
+            }
+            previousEnergy = event.energy
+        }
+        XCTAssertEqual(cumulative, 30_000)
+        XCTAssertEqual(cumulative, game.displayScore)
+    }
+
     func testEveryRestorationPacketArrivesBeforeTheWinningClearHandsOff() {
         let flight = StarlightCelebration.packetFlight(toRestoration: true)
         XCTAssertEqual(StarlightCelebration.maximumPackets, 6)
@@ -129,12 +158,12 @@ final class StarlightCelebrationTests: XCTestCase {
     }
 
     @MainActor func testOrdinaryAwardActuallyRendersAboveTheBoard() async throws {
-        var banked = FallingSky.freshChallenge(.firstLight)
+        var banked = FallingSky(definition: StoryChallengeDefinition(.firstLight, revision: 1)!)
         XCTAssertNotNil(banked.clear(Cell(0, 4)))
         XCTAssertNotNil(banked.letStarsFall())
         let scenarios: [(name: String, game: FallingSky, light: Int, points: Int)] = [
             ("ordinary-award-rendered", SkyTechniqueExample.rescue.game(), 3, 3),
-            ("story-7000", FallingSky.freshChallenge(.firstLight), 5, 7_000),
+            ("story-7000", FallingSky(definition: StoryChallengeDefinition(.firstLight, revision: 1)!), 5, 7_000),
             ("story-10000", banked, 8, 10_000)
         ]
         let scene = try XCTUnwrap(UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.first)
@@ -475,7 +504,7 @@ final class StarlightCelebrationTests: XCTestCase {
     }
 
     @MainActor func testStoryAwardsKeepExactPointsSeparateFromLightAndEffectIntensity() throws {
-        var game = FallingSky.freshChallenge(.firstLight)
+        var game = FallingSky(definition: StoryChallengeDefinition(.firstLight, revision: 1)!)
         let opening = game
         let ordinaryTurn = try XCTUnwrap(game.clear(Cell(0, 4)))
         let ordinary = try XCTUnwrap(StarlightCelebration(id: 1, turn: ordinaryTurn,
@@ -510,7 +539,7 @@ final class StarlightCelebrationTests: XCTestCase {
     }
 
     @MainActor func testStorySizeBonusHasACalloutWithoutInflatingParticleEnergyOrLegacyCategories() throws {
-        let opening = FallingSky.freshChallenge(.firstLight)
+        let opening = FallingSky(definition: StoryChallengeDefinition(.firstLight, revision: 1)!)
         var game = opening
         let turn = try XCTUnwrap(game.clear(Cell(0, 0)))
         let receipt = try XCTUnwrap(StarlightCelebration(id: 1, turn: turn,

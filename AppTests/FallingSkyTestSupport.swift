@@ -47,3 +47,39 @@ import StarfallCore
     func stopSounds() { stops += 1 }
 }
 
+
+/// Deterministic player for lifecycle/snapshot wins; production rules choose each result.
+func storyScoringChoice(_ game: FallingSky) -> (Cell, Cell?)? {
+    var best: (Cell, Cell?, Int, Int)?
+    func consider(_ from: Cell, _ to: Cell?, _ points: Int, _ count: Int) {
+        if best == nil || points > best!.2 || (points == best!.2 && count > best!.3) {
+            best = (from, to, points, count)
+        }
+    }
+    for group in game.legalGroups {
+        var next = game
+        let turn = next.clear(group[0])!
+        consider(group[0], nil, turn.displayAward, group.count)
+    }
+    for setup in [false, true] {
+        if setup && best != nil { break }
+        for row in 0..<7 { for column in 0..<7 {
+            let from = Cell(row, column)
+            guard let gem = game.gem(at: from) else { continue }
+            for to in [Cell(row, column + 1), Cell(row + 1, column)] {
+                guard let other = game.gem(at: to), gem.kind != other.kind || gem.grown != other.grown else { continue }
+                var next = game
+                guard let turn = next.nudge(from: from, to: to) else { continue }
+                if !setup, turn.displayAward > 0 {
+                    consider(from, to, turn.displayAward, turn.award!.clearedStarCount)
+                } else if setup {
+                    for group in next.legalGroups {
+                        var future = next
+                        consider(from, to, future.clear(group[0])!.displayAward, group.count)
+                    }
+                }
+            }
+        } }
+    }
+    return best.map { ($0.0, $0.1) }
+}

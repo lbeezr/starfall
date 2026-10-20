@@ -150,7 +150,7 @@ final class WorldMapReviewFixtureTests: XCTestCase {
             }
             store.beginEntry(request)
             XCTAssertEqual(store.game.challenge, challenge)
-            XCTAssertEqual(store.game.challengeRevision, 1)
+            XCTAssertEqual(store.game.challengeRevision, 2)
             XCTAssertEqual(store.game.displayTarget, target)
             XCTAssertEqual(store.game.displayScore, 0)
             XCTAssertTrue(store.game.isValidSave)

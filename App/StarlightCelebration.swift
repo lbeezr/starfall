@@ -3,7 +3,7 @@ import StarfallCore
 
 /// A receipt for an already committed clear. Never encoded or used to award points.
 struct StarlightCelebration: Equatable, Identifiable {
-    enum Level: Equatable { case ordinary, brilliant, constellation, recipe(StarRecipe.Shape), relay(Int) }
+    enum Level: Equatable { case ordinary, brilliant, constellation, recipe(StarRecipe.Shape), relay(Int), cascade(Int) }
     let id: UInt64
     let started: Date
     /// Physical light drives presentation intensity; display points may include
@@ -21,10 +21,15 @@ struct StarlightCelebration: Equatable, Identifiable {
     }
     let contributors: [Contributor]
     /// Award energy is continuous and bounded; categories still name real achievements.
-    var energy: Double { Self.energy(for: collected) }
+    var energy: Double {
+        let base = Self.energy(for: collected)
+        if case .cascade(let depth) = level { return min(1, base + Double(depth - 1) * 0.2) }
+        return base
+    }
     static func energy(for award: Int) -> Double { min(1, max(0, Double(award - 3) / 15)) }
     var isExceptional: Bool {
         if case .relay = level { return true }
+        if case .cascade = level { return true }
         return collected >= 8
     }
     static let maximumPackets = 6
@@ -63,7 +68,28 @@ struct StarlightCelebration: Equatable, Identifiable {
         case .constellation: SkyCopy.text(.celebrationConstellation)
         case .recipe(let shape): shape == .square ? SkyCopy.text(.celebrationSquare) : SkyCopy.text(.celebrationCross)
         case .relay(let depth): SkyCopy.text(.celebrationRelay, values: ["count": String(depth)])
+        case .cascade(let depth): SkyCopy.text(.celebrationCascade, values: ["count": String(depth)])
         }
+    }
+
+    /// Each receipt uses that phase's own board coordinates. The rising number is
+    /// the committed total for this cascade, never another award to the save.
+    init(id: UInt64, phase: SkyResolutionPhase, cumulativeAward: Int, total: Int, started: Date = .now) {
+        self.id = id
+        self.started = started
+        collected = phase.award.baseLight
+        displayAward = cumulativeAward
+        self.total = total
+        cells = phase.cleared.sorted { $0.row == $1.row ? $0.column < $1.column : $0.row < $1.row }
+        contributors = cells.compactMap { cell in
+            phase.before[cell.row * FallingSky.side + cell.column].map {
+                Contributor(cell: cell, identity: $0.identity, reward: $0.value)
+            }
+        }
+        path = phase.recipes.first?.presentationPath ?? []
+        if phase.comboDepth > 1 { level = .cascade(phase.comboDepth) }
+        else if let recipe = phase.recipes.first { level = .recipe(recipe.shape) }
+        else { level = phase.award.sizeBonus > 0 || collected >= 8 ? .brilliant : .ordinary }
     }
 
     init?(id: UInt64, turn: FallingSkyTurn, from old: FallingSky, total: Int,

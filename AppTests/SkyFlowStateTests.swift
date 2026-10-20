@@ -254,10 +254,15 @@ final class SkyFlowStateTests: XCTestCase {
         for interrupted in [false, true] {
             let (store, presenter, clock, defaults) = make()
             store.startFirstLight(); store.setSuspended(false)
-            // The authored first-clear policy takes 105 actions, including 56 showers.
+            // Current recipes require arranging as well as clearing; drive real
+            // actions and leave the winning presentation deliberately unfinished.
             for _ in 0..<160 where !store.game.isOver {
-                if let cell = store.game.legalGroups.first?.first { store.clear(cell) }
-                else { store.callShower() }
+                if let (from, to) = storyScoringChoice(store.game) {
+                    if let to {
+                        XCTAssertTrue(store.performTechnique(.nudge(from, to), snapshot: store.game,
+                                                             generation: store.constellationInputGeneration))
+                    } else { store.clear(from) }
+                } else { store.callShower() }
                 if !store.game.isOver { presenter.finish() }
             }
             XCTAssertEqual(store.game.outcome, .won)
@@ -419,8 +424,10 @@ final class SkyFlowStateTests: XCTestCase {
         for opening in openings {
             var game = opening
             for _ in 0..<256 where !game.isOver {
-                if let cell = game.legalGroups.first?.first { _ = game.clear(cell) }
-                else { _ = game.letStarsFall() }
+                if let (from, to) = storyScoringChoice(game) {
+                    if let to { _ = game.nudge(from: from, to: to) }
+                    else { _ = game.clear(from) }
+                } else { _ = game.letStarsFall() }
             }
             let result = try XCTUnwrap(SkyResultSnapshot(game: game))
             let target = try XCTUnwrap(game.displayTarget)

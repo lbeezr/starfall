@@ -2,7 +2,155 @@ import XCTest
 import StarfallCore
 @testable import Starfall
 
+@MainActor private final class CascadePresenter: FallingSkyPresenting {
+    var reduceMotion = false
+    var staged: FallingSky?
+    var rendered: FallingSky?
+    var openings: [() -> Void] = []
+    var phases: [(Int) -> Void] = []
+    var completions: [() -> Void] = []
+    func render(_ game: FallingSky) { rendered = game }
+    func prepareOpening(_ game: FallingSky) { staged = game }
+    func presentOpening(_ game: FallingSky, completion: @escaping () -> Void) {
+        openings.append(completion)
+    }
+    func animate(_ turn: FallingSkyTurn, from old: FallingSky, to game: FallingSky,
+                 completion: @escaping () -> Void) { completions.append(completion) }
+    func animate(_ turn: FallingSkyTurn, from old: FallingSky, to game: FallingSky,
+                 phaseBegan: @escaping (Int) -> Void, completion: @escaping () -> Void) {
+        phases.append(phaseBegan); completions.append(completion)
+    }
+}
+
 final class FallingSkyStoreTests: XCTestCase {
+    @MainActor func testSceneQuietCompletionWithoutPhaseCallbacksGetsOneAggregateReceipt() throws {
+        let suite = "Starfall.SystemQuietCascade.\(UUID())", defaults = UserDefaults(suiteName: suite)!
+        defer { defaults.removePersistentDomain(forName: suite) }
+        let presenter = CascadePresenter(), feedback = SkyFeedbackRecorder()
+        let store = FallingSkyStore(defaults: defaults, arguments: [], presenter: presenter,
+                                   clock: ManualRainClock(), feedback: feedback)
+        store.startFirstLight(); store.setSuspended(false); presenter.openings[0]()
+        XCTAssertTrue(store.performTechnique(.nudge(Cell(1,1), Cell(1,2)),
+                                            snapshot: store.game, generation: store.constellationInputGeneration))
+        presenter.completions[0]()
+        XCTAssertEqual(store.celebration?.displayAward, 15_000)
+        XCTAssertEqual(feedback.clears, 1)
+        presenter.completions[0](); presenter.phases[0](1)
+        XCTAssertEqual(feedback.clears, 1)
+        store.setSuspended(true)
+    }
+
+    @MainActor func testLayoutOrMotionInterruptionRearmsTheUnpausedOpeningClock() throws {
+        for motionChange in [false, true] {
+            let suite = "Starfall.OpeningSettle.\(UUID())", defaults = UserDefaults(suiteName: suite)!
+            defer { defaults.removePersistentDomain(forName: suite) }
+            let presenter = CascadePresenter(), clock = ManualRainClock()
+            let store = FallingSkyStore(defaults: defaults, arguments: [], presenter: presenter, clock: clock)
+            store.startFirstLight(); store.setSuspended(false); store.togglePause()
+            XCTAssertNil(clock.deadline)
+            if motionChange { store.setReducedMotion(true) }
+            else { store.settlePresentation(reason: "presentation") }
+            XCTAssertFalse(store.busy)
+            XCTAssertNotNil(clock.deadline)
+            let deadline = clock.deadline
+            presenter.openings[0]()
+            XCTAssertEqual(clock.deadline, deadline)
+            store.setSuspended(true)
+        }
+    }
+
+    @MainActor func testOpeningCommitsOnceAndHoldsClockAndInputUntilRainFinishes() throws {
+        let suite = "Starfall.CascadeOpening.\(UUID())", defaults = UserDefaults(suiteName: suite)!
+        defer { defaults.removePersistentDomain(forName: suite) }
+        let presenter = CascadePresenter(), clock = ManualRainClock()
+        let store = FallingSkyStore(defaults: defaults, arguments: [], presenter: presenter, clock: clock)
+        store.startFirstLight()
+        let opening = store.game
+        XCTAssertEqual(opening.board.compactMap { $0 }.count, 24)
+        XCTAssertEqual(opening.displayScore, 0)
+        XCTAssertEqual(presenter.staged, opening)
+        XCTAssertTrue(presenter.openings.isEmpty)
+        XCTAssertEqual(SkySaveArchive.load(from: defaults), opening)
+        store.setSuspended(false)
+        XCTAssertEqual(presenter.openings.count, 1)
+        XCTAssertTrue(store.busy)
+        XCTAssertEqual(store.changingColumns, Set(0..<7))
+        store.togglePause()
+        XCTAssertNil(clock.deadline)
+        store.callShower()
+        XCTAssertEqual(store.game, opening)
+        presenter.openings[0]()
+        XCTAssertFalse(store.busy)
+        XCTAssertNotNil(clock.deadline)
+        XCTAssertEqual(store.game, opening)
+        store.setSuspended(true); store.setSuspended(false)
+        XCTAssertEqual(presenter.openings.count, 1)
+        XCTAssertEqual(store.game, opening)
+        store.setSuspended(true)
+    }
+
+    @MainActor func testInterruptedOpeningAndCascadeRejectStaleCompletionsAndReceipts() throws {
+        let suite = "Starfall.CascadeInterruption.\(UUID())", defaults = UserDefaults(suiteName: suite)!
+        defer { defaults.removePersistentDomain(forName: suite) }
+        let presenter = CascadePresenter(), clock = ManualRainClock(), feedback = SkyFeedbackRecorder()
+        let store = FallingSkyStore(defaults: defaults, arguments: [], presenter: presenter, clock: clock, feedback: feedback)
+        store.startFirstLight(); store.setSuspended(false)
+        store.setSuspended(true)
+        presenter.openings[0]()
+        XCTAssertFalse(store.busy)
+        XCTAssertNil(clock.deadline)
+        store.setSuspended(false)
+        let before = store.game
+        XCTAssertTrue(store.performTechnique(.nudge(Cell(1,1), Cell(1,2)),
+                                            snapshot: before, generation: store.constellationInputGeneration))
+        XCTAssertTrue(store.busy)
+        XCTAssertEqual(store.game.displayScore, 15_000)
+        XCTAssertEqual(SkySaveArchive.load(from: defaults), store.game)
+        XCTAssertNil(store.celebration)
+        presenter.phases[0](0)
+        XCTAssertEqual(store.celebration?.displayAward, 5_000)
+        presenter.phases[0](1)
+        XCTAssertEqual(store.celebration?.displayAward, 15_000)
+        XCTAssertEqual(store.celebration?.level, .cascade(2))
+        XCTAssertEqual(feedback.clears, 2)
+        presenter.completions[0]()
+        XCTAssertFalse(store.busy)
+        presenter.phases[0](0)
+        XCTAssertEqual(feedback.clears, 2, "Completed presentations cannot emit another receipt")
+        store.startChallenge(.ribbonCrossing)
+        let replacement = store.game
+        presenter.phases[0](1); presenter.completions[0](); presenter.openings[0]()
+        XCTAssertEqual(store.game, replacement)
+        XCTAssertTrue(store.busy, "An old opening cannot finish a replacement opening")
+        XCTAssertNil(store.celebration)
+        XCTAssertNil(clock.deadline)
+        store.setSuspended(true)
+    }
+
+    @MainActor func testQuietCascadePublishesOneAggregateReceiptAndNeverReawardsOnResume() throws {
+        let suite = "Starfall.QuietCascade.\(UUID())", defaults = UserDefaults(suiteName: suite)!
+        defer { defaults.removePersistentDomain(forName: suite) }
+        let presenter = CascadePresenter(), feedback = SkyFeedbackRecorder()
+        presenter.reduceMotion = true
+        let store = FallingSkyStore(defaults: defaults, arguments: [], presenter: presenter,
+                                   clock: ManualRainClock(), feedback: feedback)
+        store.startChallenge(.ribbonCrossing); store.setSuspended(false)
+        presenter.openings[0]()
+        XCTAssertTrue(store.performTechnique(.nudge(Cell(1,1), Cell(1,2)),
+                                            snapshot: store.game, generation: store.constellationInputGeneration))
+        XCTAssertEqual(store.celebration?.displayAward, 30_000)
+        XCTAssertEqual(store.celebration?.level, .cascade(3))
+        XCTAssertEqual(feedback.clears, 1)
+        presenter.phases[0](0); presenter.phases[0](1); presenter.phases[0](2)
+        XCTAssertEqual(feedback.clears, 1)
+        let final = store.game
+        store.setSuspended(true); presenter.completions[0](); store.setSuspended(false)
+        XCTAssertEqual(store.game, final)
+        XCTAssertNil(store.celebration)
+        XCTAssertEqual(feedback.clears, 1)
+        store.setSuspended(true)
+    }
+
     #if DEBUG
     @MainActor func testObservatoryReviewUsesIsolatedGameAndPreferenceDefaults() throws {
         let suiteName = "Starfall.ObservatoryReview"
@@ -555,10 +703,16 @@ final class FallingSkyStoreTests: XCTestCase {
         XCTAssertEqual(initial.restoration?.milestone, .unrestored)
         XCTAssertNil(clock.deadline); XCTAssertTrue(store.isPaused)
         store.togglePause()
-        // Clear available groups between actual scheduled gentle showers.
+        // Use the current rules: take rewarding swaps as well as taps, and make
+        // a one-swap tap setup when no immediate scoring action remains.
         for _ in 0..<80 where !store.game.isOver {
-            while !store.game.isOver, let cell = store.game.legalGroups.first?.first {
-                store.clear(cell); presenter.finish()
+            for _ in 0..<50 where !store.game.isOver {
+                guard let (from, to) = storyScoringChoice(store.game) else { break }
+                if let to {
+                    XCTAssertTrue(store.performTechnique(.nudge(from, to), snapshot: store.game,
+                                                         generation: store.constellationInputGeneration))
+                } else { store.clear(from) }
+                presenter.finish()
             }
             if !store.game.isOver { clock.advance(store.showerInterval); presenter.finish() }
         }

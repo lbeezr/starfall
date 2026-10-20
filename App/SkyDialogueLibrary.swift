@@ -79,6 +79,17 @@ extension SkyDialogueLibrary {
         } else if !turn.duskCollapses.isEmpty {
             let count = Set(turn.duskCollapses.flatMap(\.consumed)).count
             result = line("guide.dusk-collapse", values: ["swallowed": SkyCopy.count(.eventEatenOne, .eventEatenMany, count)])
+        } else if turn.resolutionPhases.contains(where: { $0.kind == .recipe }) {
+            if turn.resolutionPhases.count > 1 {
+                result = line("guide.cascade", values: [
+                    "depth": String(turn.resolutionPhases.count),
+                    "score": game.displayAward(for: turn).formatted()
+                ])
+            } else {
+                result = line("guide.automatic-recipe", values: [
+                    "score": game.displayAward(for: turn).formatted()
+                ])
+            }
         } else if !turn.cleared.isEmpty {
             if turn.collected == 0 && turn.cleared.contains(where: { old.isDrained(at: $0) }) {
                 result = line("guide.gray-clear")
@@ -100,7 +111,7 @@ extension SkyDialogueLibrary {
         } else {
             result = line("guide.arrival", values: ["arrival": SkyCopy.count(.eventArrivalOne, .eventArrivalMany, turn.arrivals.count)])
         }
-        if !game.isOver {
+        if !game.isOver, turn.resolutionPhases.isEmpty {
             if turn.exchange != nil { result = line("guide.technique",values:["detail":techniqueResult]) }
             else if relayDepth > 1 && turn.collected > 0 { result = line("guide.relay", values: ["score": game.displayAward(for: turn).formatted(), "depth": String(relayDepth)]) }
         }
