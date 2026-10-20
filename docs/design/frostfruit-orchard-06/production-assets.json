@@ -1,5 +1,5 @@
 {
-  "status": "All fifteen paintings packaged byte-for-byte and adopted for development. Publication and canonical installation remain pending; exact native scope is recorded in ../../evidence/frostfruit-orchard-2026-10-20/README.md.",
+  "status": "All fifteen paintings packaged byte-for-byte, development-verified and delivered. Exact native scope is recorded in ../../evidence/frostfruit-orchard-2026-10-20/README.md; canonical publication and installation are verified in delivery.json.",
   "provenance": "art-prompts.json",
   "processing": "Generated PNGs copied byte-for-byte without resampling, cropping, compositing or recoloring. Portrait75 remains1086x1449; native rendering registers actual image dimensions.",
   "verification": {
@@ -12,7 +12,7 @@
     "gitBlobSHAIndependentlyVerifiedWithGitHashObject": true,
     "originalDocumentSHA256Verified": true,
     "referenceInputHashesVerified": 40,
-    "nativeValidation": "Combined input reference 6aee65e / dev.bd94e46b80, integrating Observatory main386b2f8, passes 342 hosted, 6 phone, 3 tablet and 2 compact-phone checks, plus Core and Release. Final scope and captures belong to ../../evidence/frostfruit-orchard-2026-10-20/README.md and verification.json. Publication and installation remain pending. Full RC, actual VoiceOver, measured contrast and physical gameplay are not claimed. Pre-integration record follows: Corrected native input reference f7b5c71 / runtime dev.8b80450f52; 40 affected hosted tests passed, 0 skipped. Baseline bede49c / dev.98b984fb29 passed 339 hosted tests, 185 Core tests and Release with zero warnings/errors. The full 339-test hosted suite was not rerun after the narrow action-order correction. Local terminal reading surfaces are development-verified. Final native counts, captures, configuration and limitations belong to ../../evidence/frostfruit-orchard-2026-10-20/README.md and verification.json. Publication and installation remain pending; full release-candidate, actual VoiceOver, measured contrast and physical gameplay acceptance are not claimed.",
+    "nativeValidation": "Combined input reference 6aee65e / dev.bd94e46b80, integrating Observatory main386b2f8, passes 342 hosted, 6 phone, 3 tablet and 2 compact-phone checks, plus Core and Release. Final scope and captures belong to ../../evidence/frostfruit-orchard-2026-10-20/README.md and verification.json. Publication and canonical installation are verified in ../../evidence/frostfruit-orchard-2026-10-20/delivery.json. Full RC, actual VoiceOver, measured contrast and physical gameplay are not claimed. Pre-integration record follows: Corrected native input reference f7b5c71 / runtime dev.8b80450f52; 40 affected hosted tests passed, 0 skipped. Baseline bede49c / dev.98b984fb29 passed 339 hosted tests, 185 Core tests and Release with zero warnings/errors. The full 339-test hosted suite was not rerun after the narrow action-order correction. Local terminal reading surfaces are development-verified. Final native counts, captures, configuration and limitations belong to ../../evidence/frostfruit-orchard-2026-10-20/README.md and verification.json. Publication and installation remain pending; full release-candidate, actual VoiceOver, measured contrast and physical gameplay acceptance are not claimed.",
     "pendingPackagingAssets": [],
     "missingSourcesOrReferences": []
   },
@@ -272,5 +272,11 @@
       "packagingStatus": "packaged",
       "selectionBasis": "Selected package SHA256 matches exactly one recorded family attempt; complete package and original PNG bytes are equal."
     }
-  ]
+  ],
+  "delivery": {
+    "receipt": "../../evidence/frostfruit-orchard-2026-10-20/delivery.json",
+    "pullRequest": "https://github.com/lbeezr/starfall/pull/187",
+    "sourceMain": "3f560e225036793604cdfd10ecf3d62b64aa7465",
+    "runtime": "dev.bd94e46b80"
+  }
 }
