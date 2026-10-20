@@ -1,0 +1,26 @@
+{
+  "source": "0f30afad918acb068eec4c73fff5b81f5fd31163",
+  "runtime": "dev.77015d0909",
+  "matchedBuildAndTestPaths": 84,
+  "snapshot": "dc0392d2430e",
+  "result": "exact exported runtime and all recorded build/test hashes match tested source",
+  "githubCommit": "9aeac226bd6f3222048dc775f0470a03d154c4f3",
+  "mergedMain": "bbfb7ea4d4eea83b544895e96898c4a7df4da9f0",
+  "tree": "f30f153207bd06715f867d80398580a83030fd0f",
+  "pullRequest": "https://github.com/lbeezr/starfall/pull/181",
+  "canonicalUpdate": {
+    "command": "python3 scripts/device-update.py run",
+    "checkedAtUTC": "2026-10-20T01:28:55.943069+00:00",
+    "status": "Waiting for the configured iPhone.",
+    "newBuildInstalled": false,
+    "previousReceiptBuild": "dev.ac5579652b",
+    "previousReceiptSource": "cfd6ab75af5408d74c4850dcecac2b2b50215b46"
+  },
+  "automaticCI": {
+    "url": "https://github.com/lbeezr/starfall/actions/runs/39353615146",
+    "source": "bbfb7ea4d4eea83b544895e96898c4a7df4da9f0",
+    "status": "in_progress",
+    "conclusion": null
+  },
+  "recordedAtUTC": "2026-10-20T01:29:54.511191+00:00"
+}

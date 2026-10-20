@@ -4,13 +4,13 @@
 
 The normal app adopts the Observatory interface: Story Mode, Free Play and Tutorial on Home; authored brass/nightglass controls; dedicated glyphs; edge-anchored gameplay instruments; compact bottom dialogue; and shared settings, map, tutorial, entry and result surfaces. Core rules, saved rounds, journey admission and the Crystal Comet celebration renderer retain their existing owners.
 
-**Delivery:** Merge and canonical current-main installation pending. A simulator build does not establish phone installation.
+**Delivery:** Merged through [PR #181](https://github.com/lbeezr/starfall/pull/181) as main `bbfb7ea4`. The canonical updater ran at 2026-10-20 01:28:55 UTC and reported **Waiting for the configured iPhone**. The new build is not installed; the previous `dev.ac5579652b` receipt remains. Connect and unlock the original phone, then run the canonical updater. [Publication and delivery receipt](publication.json).
 
 ## Source and scope
 
 [Design and acceptance](../../design/GAME_UI_SYSTEM.md) · [Artwork provenance](../../../Artwork/ObservatoryUI/README.md) · [Runtime/test input hashes](source.json) · [Checks and exact commands](checks.json) · [Capture index](captures.json).
 
-Base `cfd6ab75af5408d74c4850dcecac2b2b50215b46`; final runtime `dev.77015d0909`, final dirty build/test snapshot `dc0392d2430e`. Checks were run from the explicitly dirty working tree recorded in `source.json`. Publication must preserve those runtime bytes; documentation, evidence, `.gitattributes` and test-only changes do not alter the runtime fingerprint. No Core, save schema, RNG or progression rules changed.
+Base `cfd6ab75af5408d74c4850dcecac2b2b50215b46`; final runtime `dev.77015d0909`, final dirty build/test snapshot `dc0392d2430e`. Checks were run from the explicitly dirty working tree recorded in `source.json`. The clean local export and merged GitHub tree preserve those runtime bytes; documentation, evidence, `.gitattributes` and test-only changes do not alter the runtime fingerprint. No Core, save schema, RNG or progression rules changed.
 
 Xcode 27.1 (27A9275), macOS 27.0.1 arm64, iOS 27.0 Simulator. Debug interaction devices: iPhone 17e (`862714B3-4526-470F-85BB-7FB33EAA1E87`), iPhone SE (3rd generation, `02B7AF2E-1F1C-40F6-AA83-C67EA962B656`) and iPad Air 11-inch (M3, `377B8820-20E2-413E-B64F-D9E4CEB86AF4`). The Debug/Release builds use the shared `Starfall` scheme, arm64, signing disabled and isolated temporary DerivedData.
 
@@ -26,7 +26,7 @@ Xcode 27.1 (27A9275), macOS 27.0.1 arm64, iOS 27.0 Simulator. Debug interaction 
 | Visual | Nine retained native captures inspected: compact Home, Entry, clear feedback, scrolled largest-text settings/Entry, tablet paused play and landscape map, plus final compact large-text guide controls and 48-point preference rows. These identify their exact source epochs. |
 | Animation | Normal-motion SE Home → Entry → play → menu/background test passed. A recorded run's sampled frames show entrance, falling stars, clear feedback and sheet transitions. No continuous-motion quality or frame-pacing measurement is claimed. |
 | Actual VoiceOver | Not run; follows the existing RC cadence. Native accessibility labels, values, targets and large text are checked separately. |
-| Physical device | Not established by simulator evidence. Canonical updater receipt pending; physical play remains separate. |
+| Physical device | Canonical updater attempted; waiting for the configured phone. New installation is unverified. Physical play remains separate. |
 
 This is affected development coverage, not the full native UI matrix or RC acceptance. The existing plan reports 337 hosted and 143 development UI methods. `checks.json` retains exact selected commands, completed methods, failures and zero-skip counts; raw logs, result bundles and movies remain disposable under `/tmp`.
 
@@ -59,3 +59,9 @@ The [normal-motion record](motion.json), raw `/tmp/starfall-observatory-native-m
 The HUD follows viewport safe edges while the board retains `LandingGeometry`. Automatic play omits permanent manual-control slots; pause/manual guidance remains available below the board. Large text scrolls the board and guide beneath fixed edge controls. Tutorial practice retains save/progression isolation.
 
 Physical contrast, thumb comfort, sustained device performance, minimum-iOS support and actual VoiceOver remain distinct [engineering follow-ups](../../ENGINEERING.md#observatory-interface-physical-acceptance--october-19-2026). No App Store/RC acceptance is claimed. The only phone delivery path is `scripts/device-update.py run`, with current-main ancestry, Core checks, signing and actual installed-identity verification intact.
+
+## Publication checkpoint
+
+Local commit `0f30afad` and connected-GitHub commit `9aeac226` share tree `f30f153207bd06715f867d80398580a83030fd0f`. Merged main `bbfb7ea4` has that same tree. A clean local export matches runtime `dev.77015d0909` and all 84 recorded build/test paths. Commit metadata differs because the local Git client had no GitHub credentials; the authenticated connector uploaded each blob with SHA verification and reproduced the exact tree.
+
+The automatic [main workflow](https://github.com/lbeezr/starfall/actions/runs/39353615146) was in progress at this checkpoint. Its completion is not inferred from local results. No extra workflow was dispatched.
