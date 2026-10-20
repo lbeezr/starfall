@@ -1,5 +1,7 @@
 # Evidence index
 
+[Lantern/Ribbon automatic patterns](story-patterns-2026-10-20/README.md) records revision 3’s manual-clear retirement, full lines, five-family supply, model comparisons, native input and retained-save verification. It preserves the initial native entry crash and its correction separately from the passing runs.
+
 [Sunwheel Mill](sunwheel-mill-2026-10-20/README.md) records fifteen source-accepted paintings across three bespoke layouts, earned access after Frostfruit, and the closed-to-open outlet. Development verification passes at `d057696` / `dev.a15832d0fd`; earlier candidate checks retain their exact source boundaries. [Latest map-integration verification](sunwheel-mill-2026-10-20/MAP_INTEGRATION.md) separately passes at `49d54fc` / `dev.6fa54c5e65`, covering the seventh island, affected shared UI/routing and 53 selected inspected stills. Publication and canonical installation are verified in the [delivery receipt](sunwheel-mill-2026-10-20/delivery.json).
 
 **Sunwheel delivery:** [PR #194](https://github.com/lbeezr/starfall/pull/194) is merged. The [canonical receipt](sunwheel-mill-2026-10-20/delivery.json) verifies `dev.6fa54c5e65` installed from main `ec1d5d1` through `scripts/device-update.py`. The development checks retain their recorded sources; installation does not establish physical play, measured contrast or actual VoiceOver.

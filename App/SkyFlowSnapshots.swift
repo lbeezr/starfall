@@ -7,7 +7,7 @@ extension SkyEntryRequest {
         let revision = self == .replay ? replayingRevision
             : challenge.map { FallingSky.freshChallenge($0).challengeRevision } ?? 0
         let story = revision > 0 && (challenge == .firstLight || challenge == .ribbonCrossing)
-        let variant = story ? (revision == 2 ? ".cascade" : ".story") : ""
+        let variant = story ? (revision >= 3 ? ".patterns" : revision == 2 ? ".cascade" : ".story") : ""
         let id = mode + variant + (self == .replay ? ".replay" : ".entry")
         let target = self == .replay ? replayingTarget
             : challenge.flatMap { FallingSky.freshChallenge($0).displayTarget }

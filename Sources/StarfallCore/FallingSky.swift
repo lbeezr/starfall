@@ -160,8 +160,10 @@ public struct FallingSky: Codable, Equatable, Sendable {
         guard let challenge else { return nil }
         return StoryChallengeDefinition(challenge, revision: challengeRevision)
     }
-    /// Only the second authored Lantern/Ribbon revision resolves recipes automatically.
-    public var supportsAutomaticRecipes: Bool { storyDefinition?.revision == 2 }
+    /// Authored revisions two and three resolve recipes after committed settling.
+    public var supportsAutomaticRecipes: Bool { (storyDefinition?.revision ?? 0) >= 2 }
+    /// Revision three earns clears only by completing automatic board patterns.
+    public var supportsManualClears: Bool { challengeRevision != 3 }
     /// Player-facing points for this saved revision; `score` remains conserved light.
     public var displayScore: Int {
         guard challengeRevision != 0 else { return score }
@@ -174,6 +176,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
     public func displayAward(for turn: FallingSkyTurn) -> Int { turn.displayAward }
     /// Pure award preview. Callers still validate the selected action before committing.
     public func displayReward(of cells: Set<Cell>) -> Int {
+        guard supportsManualClears else { return 0 }
         guard storyDefinition != nil else { return reward(of: cells) }
         if supportsAutomaticRecipes {
             let actual = cells.filter { gem(at: $0) != nil }
@@ -270,7 +273,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
         challenge = definition.challenge
         savedChallengeActions = 1
         savedChallengeRevision = definition.revision
-        storyScoreLedger = StoryScoreLedger(automaticRecipes: definition.revision == 2)
+        storyScoreLedger = StoryScoreLedger(automaticRecipes: definition.revision >= 2)
         board = definition.initialBoard
         starsLanded = definition.initialLight
         random = SeededRandom(seed: definition.seed)
@@ -289,7 +292,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
         if let definition = storyDefinition {
             replay.board = definition.initialBoard
             replay.starsLanded = definition.initialLight
-            replay.storyScoreLedger = StoryScoreLedger(automaticRecipes: definition.revision == 2)
+            replay.storyScoreLedger = StoryScoreLedger(automaticRecipes: definition.revision >= 2)
         }
         replay.darkStarsCleared = 0
         replay.unscoredStarlight = duskRule != .legacy || hasPocketedDusk ? 0 : nil
@@ -414,6 +417,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
     }
 
     public var legalGroups: [[Cell]] {
+        guard supportsManualClears else { return [] }
         var seen: Set<Cell> = [], groups: [[Cell]] = []
         for row in 0..<Self.side { for column in 0..<Self.side {
             let cell = Cell(row, column)
@@ -439,7 +443,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
 
     /// Invalid clears never advance the forecast, score, turn counter, or RNG.
     @discardableResult public mutating func clear(_ cell: Cell) -> FallingSkyTurn? {
-        guard !isOver else { return nil }
+        guard supportsManualClears, !isOver else { return nil }
         let cells = group(at: cell)
         guard value(of: cells) >= 3 else { return nil }
         return clearCommitted(cells)
@@ -460,7 +464,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
     /// Shared prefix legality for live input and committed walks. The first
     /// colored star fixes the family even after the path crosses a white orb.
     public func isValidConstellationPrefix(_ path: [Cell]) -> Bool {
-        guard path.count <= 196, let first = path.first, let kind = gem(at: first)?.kind else { return false }
+        guard supportsManualClears, path.count <= 196, let first = path.first, let kind = gem(at: first)?.kind else { return false }
         var previous = first
         for cell in path {
             guard matchesFamily(kind, at: cell),
@@ -474,7 +478,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
     public func canStartConstellation(at cell: Cell) -> Bool {
         // Holding chooses drawing even before a complete constellation exists.
         // Completion still validates family, links and the selected distinct count.
-        !isOver && gem(at: cell)?.kind != nil
+        supportsManualClears && !isOver && gem(at: cell)?.kind != nil
     }
 
     public func constellationCells(along path: [Cell]) -> Set<Cell>? {
@@ -494,7 +498,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
     }
 
     @discardableResult public mutating func activate(_ recipe: StarRecipe) -> FallingSkyTurn? {
-        guard canArrangeStars, recipes.contains(recipe) else { return nil }
+        guard supportsManualClears, canArrangeStars, recipes.contains(recipe) else { return nil }
         return clearCommitted(Set(recipe.cells))
     }
 
@@ -503,7 +507,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
         let before = self
         board.swapAt(from.row * Self.side + from.column, to.row * Self.side + to.column)
         board = SkyBoardSettling.settle(board)
-        let phases = supportsAutomaticRecipes ? SkyRecipeResolution.resolve(board) : []
+        let phases = supportsAutomaticRecipes ? SkyRecipeResolution.resolve(board, includingLines: challengeRevision == 3) : []
         let award = commitResolution(phases)
         return .init(exchange:.init(from:from,to:to),stellarAffectedColumns: criticalMassChangedColumns(from: before),duskAffectedColumns:duskChangedColumns(from:before),
                      resolutionPhases: phases, award: award, cleared:[],collected:award?.baseLight ?? 0,settled:board,
@@ -589,7 +593,8 @@ public struct FallingSky: Codable, Equatable, Sendable {
         if let nextGravityID { self.nextGravityID = max(nextGravityID, starsLanded) }
         // An ordered arrival that overflows commits the existing loss. Only a
         // fully landed shower can begin recipe resolution and a new forecast.
-        let resolution = supportsAutomaticRecipes && blockedColumn == nil ? SkyRecipeResolution.resolve(board) : []
+        let resolution = supportsAutomaticRecipes && blockedColumn == nil
+            ? SkyRecipeResolution.resolve(board, includingLines: challengeRevision == 3) : []
         let award = commitResolution(resolution)
         if !isOver || (supportsAutomaticRecipes && blockedColumn == nil) { incoming = nextShower() }
         return .init(stellarCollapses: stellarCollapses,
@@ -688,6 +693,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
 
     // Trace eligibility is distinct from ordinary tap groups and generator relief.
     public func constellationGroup(at start: Cell) -> Set<Cell> {
+        guard supportsManualClears else { return [] }
         guard let kind = gem(at: start)?.kind else { return [] }
         var found: Set<Cell> = [start], pending = [start]
         while let cell = pending.popLast() {
@@ -702,7 +708,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
     }
 
     public var isValidSave: Bool {
-        guard board.count == 49, [nil, 1, 2].contains(savedChallengeRevision) else { return false }
+        guard board.count == 49, [nil, 1, 2, 3].contains(savedChallengeRevision) else { return false }
         if let definition = storyDefinition {
             guard challengeActionVersion == 1, seed == definition.seed, balance == definition.balance,
                   !hasOpeningCascade, generation == .legacy, duskRule == .legacy, darkStarsCleared == 0,
@@ -711,7 +717,8 @@ public struct FallingSky: Codable, Equatable, Sendable {
                                                   && $0?.gravityKind == nil && $0?.isLight != true) }),
                   incoming == definition.shower(number: blockedColumn == nil ? turns + 1 : max(1, turns)),
                   storyScoreLedger?.isValid(light: score, target: definition.target,
-                                           automaticRecipes: supportsAutomaticRecipes) == true else { return false }
+                                           automaticRecipes: supportsAutomaticRecipes,
+                                           manualClears: supportsManualClears) == true else { return false }
             if supportsAutomaticRecipes && blockedColumn == nil && !recipes.isEmpty { return false }
             let expectedLight = definition.initialLight + definition.suppliedLight(after: turns)
             if blockedColumn == nil {

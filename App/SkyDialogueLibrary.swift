@@ -96,7 +96,7 @@ extension SkyDialogueLibrary {
             } else if dissolved > 0 {
                 result = line("guide.dissolved", values: ["score": game.displayAward(for: turn).formatted(), "dark": game.duskRule != .legacy ? SkyCopy.count(.eventDusk, .eventDusks, dissolved) : SkyCopy.text(dissolved == 1 ? .eventDark : .eventDarks)])
             } else if let recipe {
-                result = line("guide.recipe", values: ["shape": SkyCopy.text(recipe.shape == .square ? .techniqueSquare : .techniqueCross), "score": game.displayAward(for: turn).formatted()])
+                result = line("guide.recipe", values: ["shape": recipe.title, "score": game.displayAward(for: turn).formatted()])
             } else if tracedCount > 0 {
                 result = line("guide.constellation", values: ["stars": String(tracedCount), "score": game.displayAward(for: turn).formatted()])
             } else { result = line("guide.clear", values: ["score": game.displayAward(for: turn).formatted()]) }

@@ -16,6 +16,7 @@ import StarfallCore
         self.defaults = defaults
         let saved = ignoreSaved ? nil : SkySaveArchive.load(from: defaults)
         let priorInstall = !ignoreSaved && defaults.object(forKey: SkySaveArchive.key) == nil
+            && defaults.object(forKey: SkySaveArchive.cascadeKey) == nil
             && defaults.object(forKey: SkySaveArchive.storyKey) == nil
             && defaults.object(forKey: SkySaveArchive.worldKey) == nil && saved != nil
         if !ignoreSaved, let raw = defaults.object(forKey: Self.key) {

@@ -4,28 +4,40 @@ import StarfallCore
 @testable import Starfall
 
 final class SkyDialogueTests: XCTestCase {
+    func testBoardAndMenuSummariesSupplyOnlyTheirModesPlaceholders() {
+        XCTAssertEqual(SkyCopy.boardSummary(showers: 2, groups: 4, manualClears: true),
+                       SkyCopy.text(.a11yBoardSummary, values: ["showers": "2", "groups": "4"]))
+        let patterns = SkyCopy.boardSummary(showers: 2, groups: 4, manualClears: false)
+        XCTAssertEqual(patterns, "2 showers. Arrange matching squares of 4, crosses of 5, or full lines of 7.")
+        XCTAssertFalse(patterns.contains("groups"))
+    }
+
     @MainActor func testCascadeEntryReplayAndHelpFollowTheSelectedSavedRevision() throws {
         for challenge in [StarfallChallenge.firstLight, .ribbonCrossing] {
             let old = FallingSky(definition: try XCTUnwrap(StoryChallengeDefinition(challenge, revision: 1)))
+            let cascade = FallingSky(definition: try XCTUnwrap(StoryChallengeDefinition(challenge, revision: 2)))
             let fresh = FallingSky.freshChallenge(challenge)
             let entry: SkyEntryRequest = challenge == .firstLight ? .firstLight : .ribbonCrossing
             let freshLine = entry.introduction(challenge: challenge,
                                               replayingRevision: old.challengeRevision,
                                               replayingTarget: old.displayTarget)
-            XCTAssertEqual(freshLine.id, challenge.dialoguePrefix + ".cascade.entry.1",
+            XCTAssertEqual(freshLine.id, challenge.dialoguePrefix + ".patterns.entry.1",
                            "A new visit chooses current rules even while an older round is retained")
             XCTAssertTrue(freshLine.text.contains(SkyCopy.score(try XCTUnwrap(fresh.displayTarget))))
             XCTAssertEqual(SkyHelpContext.selected(game: old, entry: entry), SkyHelpContext(game: fresh))
-            for game in [old, fresh] {
+            for game in [old, cascade, fresh] {
                 let replay = SkyEntryRequest.replay.introduction(challenge: challenge,
                     replayingRevision: game.challengeRevision, replayingTarget: game.displayTarget)
-                let variant = game.challengeRevision == 1 ? ".story" : ".cascade"
+                let variant = game.challengeRevision == 1 ? ".story" : game.challengeRevision == 2 ? ".cascade" : ".patterns"
                 XCTAssertEqual(replay.id, challenge.dialoguePrefix + variant + ".replay.1")
                 XCTAssertEqual(game.challengeGuideLine?.id, "guide." + challenge.dialoguePrefix + variant + ".1")
                 XCTAssertEqual(SkyHelpContext.selected(game: game, entry: .replay), SkyHelpContext(game: game))
-                XCTAssertEqual(SkyHelpContext(game: game).automaticRecipes, game.challengeRevision == 2)
+                XCTAssertEqual(SkyHelpContext(game: game).automaticRecipes, game.challengeRevision >= 2)
+                XCTAssertEqual(SkyHelpContext(game: game).manualClears, game.challengeRevision < 3)
             }
             XCTAssertTrue(fresh.challengeHelpText?.contains("automatically") == true)
+            XCTAssertTrue(fresh.challengeHelpText?.contains("7") == true)
+            XCTAssertTrue(cascade.challengeHelpText?.contains("automatically") == true)
             XCTAssertFalse(old.challengeHelpText?.contains("automatically") == true,
                            "A retained explicit-clear round must not promise automatic recipes")
         }
@@ -36,6 +48,7 @@ final class SkyDialogueTests: XCTestCase {
         XCTAssertTrue(SkyCopy.text(.helpCascadeTrace).contains("falling stars also pop"))
         XCTAssertTrue(SkyCopy.text(.helpTrace).contains("Only the stars you trace will clear"))
         XCTAssertEqual(SkyCopy.text(.celebrationCascade, values: ["count": "3"]), "3 CHAIN!")
+        XCTAssertEqual(SkyCopy.text(.celebrationLine), "Line!")
     }
 
     @MainActor func testAutomaticSwapChainsPublishAggregateAwardsInsteadOfGenericSwapCopy() throws {

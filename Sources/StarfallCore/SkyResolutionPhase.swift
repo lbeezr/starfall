@@ -27,13 +27,14 @@ public struct SkyResolutionPhase: Equatable, Sendable {
     }
 }
 
-/// Revision-two recipe resolution never introduces new stars or draws random values.
+/// Automatic recipe resolution never introduces new stars or draws random values.
 /// Every automatic phase spends at least four distinct stars, bounding an action
 /// (including a possible two-star grown manual clear) to twelve phases on 49 cells.
 enum SkyRecipeResolution {
     static let maximumPhases = 12
 
-    static func resolve(_ board: [StarfallGem?], manualClear: Set<Cell>? = nil) -> [SkyResolutionPhase] {
+    static func resolve(_ board: [StarfallGem?], manualClear: Set<Cell>? = nil,
+                        includingLines: Bool = false) -> [SkyResolutionPhase] {
         var phases: [SkyResolutionPhase] = []
         var current = board
         if let manualClear {
@@ -42,7 +43,7 @@ enum SkyRecipeResolution {
             current = phase.settled
         }
         while phases.count < maximumPhases {
-            let recipes = StarRecipe.find(in: current)
+            let recipes = StarRecipe.find(in: current, includingLines: includingLines)
             guard !recipes.isEmpty else { break }
             // Simultaneous overlapping recipes spend the union once. Unrelated
             // matching neighbors remain available for ordinary taps and traces.
@@ -52,7 +53,7 @@ enum SkyRecipeResolution {
             phases.append(phase)
             current = phase.settled
         }
-        assert(StarRecipe.find(in: current).isEmpty)
+        assert(StarRecipe.find(in: current, includingLines: includingLines).isEmpty)
         return phases
     }
 }

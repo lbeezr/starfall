@@ -1,0 +1,46 @@
+{
+  "status": "Current; inspected sampled native frames",
+  "buildID": "dev.23ebbb8d8f",
+  "displayedBuildID": "dev.local",
+  "baseCommit": "7a582d459feb9680351eaa647ca85d94e1410df1",
+  "source": "Working tree; runtime hashes in verification.json",
+  "device": "iPhone 17e Simulator",
+  "os": "iOS 27.0",
+  "configuration": "Debug",
+  "recording": "/tmp/starfall-pattern-motion.mp4 (disposable)",
+  "frames": [
+    {
+      "path": "dev-23ebbb8d8f__lantern-opening-rain__iphone-17e__normal-motion.png",
+      "seconds": 50.25,
+      "screen": "lantern-opening-rain",
+      "variant": "normal-motion",
+      "sha256": "6025617674c63378897e6203a3c945b6d4f1eff5e6866cdad7cd54826e57d2a9"
+    },
+    {
+      "path": "dev-23ebbb8d8f__lantern-opening-settled__iphone-17e__normal-motion.png",
+      "seconds": 51,
+      "screen": "lantern-opening-settled",
+      "variant": "normal-motion",
+      "sha256": "46a4c8ccbd282369dee6f5efab7ecd8a15095f07cd05e5cf6b9d5681ed517cde"
+    },
+    {
+      "path": "dev-23ebbb8d8f__lantern-two-chain__iphone-17e__normal-motion.png",
+      "seconds": 63.25,
+      "screen": "lantern-two-chain",
+      "variant": "normal-motion",
+      "sha256": "5f61ae6683001d0bfeb9aa8160ab7e3b6752f97f2aee2a07eb19d40b8ff0b8f2"
+    },
+    {
+      "path": "dev-23ebbb8d8f__ribbon-thirty-thousand__iphone-17e__largest-text-quiet.png",
+      "seconds": 114,
+      "screen": "ribbon-thirty-thousand",
+      "variant": "largest-text-quiet",
+      "sha256": "d7e8fc19714fbc4c38b56fc7fa93e37e92f663e92b2e28af8a6de5fa49c7113c"
+    }
+  ],
+  "limits": [
+    "Sampled animation only, no frame-rate or physical comfort measurement",
+    "Largest-text board uses the existing scrolling canvas; this frame does not show every cell",
+    "No actual VoiceOver session"
+  ]
+}

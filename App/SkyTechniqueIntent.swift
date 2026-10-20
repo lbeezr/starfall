@@ -71,11 +71,15 @@ struct SkyTechniqueRelay {
 
 /// Shared drawing order for an already validated recipe; it never resolves a recipe.
 extension StarRecipe {
+    var title: String {
+        SkyCopy.text(shape == .square ? .techniqueSquare : shape == .cross ? .techniqueCross : .techniqueLine)
+    }
     var presentationPath: [Cell] {
         let cells = cells
         switch shape {
         case .square: return [cells[0], cells[1], cells[3], cells[2], cells[0]]
         case .cross: return [cells[2], cells[0], cells[2], cells[1], cells[2], cells[3], cells[2], cells[4]]
+        case .line: return cells
         }
     }
 }

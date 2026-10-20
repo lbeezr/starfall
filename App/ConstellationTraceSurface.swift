@@ -19,6 +19,7 @@ struct ConstellationTraceSurface: UIViewRepresentable {
     var swapStart: ((CGPoint) -> Bool)? = nil
     var swap: ((Cell, Cell, UInt64) -> Void)? = nil
     var cancelDrawing: (() -> Void)? = nil
+    var drawingEnabled = true
 
     func makeUIView(context: Context) -> Surface {
         let view = Surface(); view.installCapture(); view.isMultipleTouchEnabled = true
@@ -40,7 +41,8 @@ struct ConstellationTraceSurface: UIViewRepresentable {
         private var drawingCueStarted = false
 
         func updateInput(_ value: ConstellationTraceSurface) {
-            if let old = input, old.generation != value.generation || old.size != value.size || !value.enabled {
+            if let old = input, old.generation != value.generation || old.size != value.size
+                || old.drawingEnabled != value.drawingEnabled || !value.enabled {
                 cancelInput()
             }
             input = value
@@ -123,7 +125,7 @@ struct ConstellationTraceSurface: UIViewRepresentable {
                   origin.x.isFinite, origin.y.isFinite else { cancelInput(); return }
             blocked = false
             guard session.begin(at: origin, traceEligible: input.traceStart(origin) != nil,
-                                swapEligible: input.swapStart?(origin) == true),
+                                swapEligible: input.swapStart?(origin) == true, drawingEnabled: input.drawingEnabled),
                   input.contact?(origin) != false else { cancelInput(); return }
             guard !blocked, session.origin != nil else { return }
             holdDeadline = deadline; latestSampleTime = timestamp; drawingCueStarted = false
@@ -275,20 +277,23 @@ struct ConstellationTouchSession {
     private var mode = Mode.idle
     private var traceEligible = false
     private var swapEligible = false
+    private var drawingEnabled = true
     private var maximumDistance: CGFloat = 0
     private(set) var sequence: UInt64 = 0
     private(set) var origin: CGPoint?
     var isDrawing: Bool { mode == .drawing }
-    var canHold: Bool { mode == .pending && (traceEligible || swapEligible) && maximumDistance <= Self.holdSlop }
+    var canHold: Bool { drawingEnabled && mode == .pending && (traceEligible || swapEligible) && maximumDistance <= Self.holdSlop }
 
     static func swapThreshold(_ cell: Cell, mapping: LandingGeometry) -> CGFloat {
         let frame = mapping.frame(cell)
         return min(18, max(12, min(frame.width, frame.height) * 0.25))
     }
-    mutating func begin(at point: CGPoint, traceEligible: Bool = true, swapEligible: Bool = false) -> Bool {
+    mutating func begin(at point: CGPoint, traceEligible: Bool = true, swapEligible: Bool = false,
+                        drawingEnabled: Bool = true) -> Bool {
         guard origin == nil else { cancel(); return false }
         sequence &+= 1; origin = point; mode = .pending; maximumDistance = 0
         self.traceEligible = traceEligible; self.swapEligible = swapEligible
+        self.drawingEnabled = drawingEnabled
         return true
     }
     mutating func armTrace(ticket: UInt64) -> Bool {

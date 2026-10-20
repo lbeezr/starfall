@@ -214,7 +214,7 @@ final class WorldJourneyTests: XCTestCase {
         try repaired.record(store.game)
         let envelope = try XCTUnwrap(JSONSerialization.jsonObject(with: XCTUnwrap(defaults.data(forKey: WorldJourneyStore.key))) as? [String: Any])
         XCTAssertEqual(envelope["version"] as? Int, 1)
-        XCTAssertEqual(SkySaveArchive.schemaVersion, 11)
+        XCTAssertEqual(SkySaveArchive.schemaVersion, 12)
         XCTAssertEqual(defaults.data(forKey: SkySaveArchive.key), committed)
         presenter.finish()
         store.beginEntry(.replay)
@@ -254,26 +254,28 @@ extension WorldJourneyTests {
         XCTAssertFalse(journey.canEnter(.ribbonCrossing))
     }
 
-    @MainActor func testV10AuthoredRoundDoesNotGrantPreWorldAccessWhenArchiveKeyAdvances() throws {
+    @MainActor func testRetainedAuthoredRoundDoesNotGrantPreWorldAccessWhenArchiveKeyAdvances() throws {
         for challenge in [StarfallChallenge.firstLight, .ribbonCrossing] {
-            let defaults = defaults()
-            let definition = try XCTUnwrap(StoryChallengeDefinition(challenge, revision: 1))
-            let old = FallingSky(definition: definition)
-            let core = try JSONSerialization.jsonObject(with: JSONEncoder().encode(old))
-            let bytes = try JSONSerialization.data(withJSONObject: ["schemaVersion": 10, "game": core])
-            defaults.set(bytes, forKey: SkySaveArchive.storyKey)
-            // Older pre-world bytes cannot override a retained world-era round.
-            defaults.set(try JSONEncoder().encode(FallingSky(seed: 42, openingCascade: false)),
-                         forKey: SkySaveArchive.legacyKey)
-            let journey = WorldJourneyStore(defaults: defaults).journey
-            XCTAssertFalse(journey.legacyAccess)
-            XCTAssertTrue(journey.completed.isEmpty)
-            XCTAssertTrue(journey.canEnter(.firstLight))
-            XCTAssertFalse(journey.canEnter(.ribbonCrossing))
-            XCTAssertFalse(journey.canEnter(.silverPools))
-            XCTAssertEqual(defaults.data(forKey: SkySaveArchive.storyKey), bytes)
-            XCTAssertNil(defaults.object(forKey: SkySaveArchive.key))
-            XCTAssertNil(defaults.object(forKey: WorldJourneyStore.key))
+            for (revision, version, key) in [(1, 10, SkySaveArchive.storyKey), (2, 11, SkySaveArchive.cascadeKey)] {
+                let defaults = defaults()
+                let definition = try XCTUnwrap(StoryChallengeDefinition(challenge, revision: revision))
+                let old = FallingSky(definition: definition)
+                let core = try JSONSerialization.jsonObject(with: JSONEncoder().encode(old))
+                let bytes = try JSONSerialization.data(withJSONObject: ["schemaVersion": version, "game": core])
+                defaults.set(bytes, forKey: key)
+                // Older pre-world bytes cannot override a retained world-era round.
+                defaults.set(try JSONEncoder().encode(FallingSky(seed: 42, openingCascade: false)),
+                             forKey: SkySaveArchive.legacyKey)
+                let journey = WorldJourneyStore(defaults: defaults).journey
+                XCTAssertFalse(journey.legacyAccess)
+                XCTAssertTrue(journey.completed.isEmpty)
+                XCTAssertTrue(journey.canEnter(.firstLight))
+                XCTAssertFalse(journey.canEnter(.ribbonCrossing))
+                XCTAssertFalse(journey.canEnter(.silverPools))
+                XCTAssertEqual(defaults.data(forKey: key), bytes)
+                XCTAssertNil(defaults.object(forKey: SkySaveArchive.key))
+                XCTAssertNil(defaults.object(forKey: WorldJourneyStore.key))
+            }
         }
     }
 }

@@ -69,14 +69,14 @@ final class StoryCascadePolicyTests: XCTestCase {
         return restored
     }
 
-    func testEagerAndBankingPoliciesWinBothCurrentDefinitionsWithExactRestoredReceipts() throws {
+    func testRevisionTwoEagerAndBankingPoliciesRetainExactRestoredReceipts() throws {
         for (challenge, buffer, expectedShowers, expectedActions, expectedScore) in [
             (StarfallChallenge.firstLight, false, 24, 52, 150_000),
             (.firstLight, true, 21, 24, 154_000),
             (.ribbonCrossing, false, 36, 88, 221_000),
             (.ribbonCrossing, true, 33, 46, 221_000)
         ] {
-            var game = FallingSky.freshChallenge(challenge)
+            var game = FallingSky(definition: StoryChallengeDefinition(challenge, revision: 2)!)
             let opening = game
             var actions = 0, showerIncome = 0
             while !game.isOver && game.turns < 70 {
@@ -118,9 +118,9 @@ final class StoryCascadePolicyTests: XCTestCase {
         }
     }
 
-    func testMixedSupplyUsesCommittedFiveStarForecastsAndRetainsCadence() throws {
+    func testRevisionTwoMixedSupplyUsesCommittedForecastsAndRetainsCadence() throws {
         for challenge in [StarfallChallenge.firstLight, .ribbonCrossing] {
-            let definition = StoryChallengeDefinition(challenge)!
+            let definition = StoryChallengeDefinition(challenge, revision: 2)!
             for shower in 1...84 {
                 let forecast = definition.shower(number: shower)
                 XCTAssertEqual(forecast.count, 5)
@@ -129,16 +129,16 @@ final class StoryCascadePolicyTests: XCTestCase {
                 XCTAssertEqual(definition.suppliedLight(after: shower), shower * 5)
                 XCTAssertEqual(Set(forecast.map(\.id)).count, 5)
             }
-            let game = FallingSky.freshChallenge(challenge)
+            let game = FallingSky(definition: definition)
             XCTAssertEqual(game.automaticShowerDelay, challenge == .firstLight ? 6 : 4)
             XCTAssertEqual(game.incoming, definition.shower(number: 1))
             XCTAssertEqual(try roundTrip(game).replay(), game)
         }
     }
 
-    func testIdleOverflowRetainsFullColumnPartialForecastAndTerminalReplay() throws {
+    func testRevisionTwoIdleOverflowRetainsFullColumnPartialForecastAndTerminalReplay() throws {
         for challenge in [StarfallChallenge.firstLight, .ribbonCrossing] {
-            var game = FallingSky.freshChallenge(challenge)
+            var game = FallingSky(definition: StoryChallengeDefinition(challenge, revision: 2)!)
             let opening = game
             var last: FallingSkyTurn?
             for _ in 0..<10 where !game.isOver {
@@ -159,4 +159,119 @@ final class StoryCascadePolicyTests: XCTestCase {
             XCTAssertEqual(game, ended)
         }
     }
+    /// Recorded from bounded square-building search, with at most four exchanges
+    /// between showers. These are production actions, not injected board states.
+    private func revisionThreeWitness(for challenge: StarfallChallenge) -> [[(Int, Int)]] {
+        if challenge == .firstLight {
+            return [
+            [(8, 9), (5, 12), (17, 18), (7, 8)],
+            [(1, 2), (7, 8), (17, 16), (0, 7)],
+            [(18, 19), (18, 17), (10, 17), (12, 13)],
+            [(11, 12), (9, 10), (4, 11), (11, 12)],
+            [(16, 17), (3, 4), (10, 11), (0, 1)],
+            [(15, 16), (28, 29), (1, 8), (15, 22)],
+            [(8, 9), (2, 3), (1, 2), (12, 11)],
+            [(5, 6), (4, 5), (16, 17), (19, 18)],
+            [(2, 3), (34, 33), (12, 19), (3, 4)],
+            [(0, 1), (4, 5), (7, 8), (1, 2)],
+            [(10, 11), (7, 8), (8, 9)],
+            [(18, 17), (15, 16), (1, 2), (3, 4)],
+            [(3, 2), (18, 17), (11, 10), (10, 9)],
+            [(33, 32), (12, 13), (34, 33), (26, 33)],
+            [(19, 26), (12, 19), (27, 34), (10, 11)],
+            [(4, 5), (34, 33)],
+            [(20, 19), (3, 10), (11, 12), (15, 16)],
+            [(2, 9), (7, 14), (7, 8), (35, 36)],
+            [(10, 11), (7, 8), (8, 9), (28, 29)],
+            [(28, 29)],
+            [(12, 19), (4, 5), (4, 11), (11, 18)],
+            [(5, 6), (6, 13), (10, 11), (12, 13)],
+            [(0, 1), (1, 8), (17, 16), (15, 16)],
+            ]
+        }
+        return [
+            [(8, 9), (11, 12), (18, 19), (5, 6)],
+            [(3, 10), (10, 11)],
+            [],
+            [(7, 8), (10, 11), (9, 10)],
+            [(21, 22), (14, 15), (17, 16), (10, 9)],
+            [(8, 9), (9, 10), (12, 19), (11, 12)],
+            [(26, 27), (26, 25), (19, 20), (34, 33)],
+            [(19, 20), (20, 27), (3, 4), (4, 5)],
+            [(5, 12), (4, 5), (1, 8), (1, 2)],
+            [(2, 3), (14, 15), (8, 15), (15, 22)],
+            [(3, 10), (3, 4), (7, 14), (1, 8)],
+            [(4, 3), (2, 3), (1, 2), (3, 4)],
+            [(2, 9), (7, 8), (8, 9), (26, 25)],
+            [(2, 3), (5, 6), (4, 5), (19, 26)],
+            [(13, 20), (20, 27), (23, 24), (3, 4)],
+            [(10, 11), (23, 22), (1, 2), (3, 4)],
+            [(2, 3), (24, 25), (13, 20), (20, 19)],
+            [(4, 11), (27, 26), (3, 10), (19, 18)],
+            [(5, 12), (9, 10), (13, 12), (12, 11)],
+            [(16, 17), (10, 11), (11, 12), (9, 10)],
+            [(0, 7), (7, 8)],
+            [(14, 15), (8, 15), (12, 11), (10, 11)],
+            [(9, 10), (8, 9), (9, 16), (8, 9)],
+            [(9, 10), (27, 26), (4, 11), (18, 19)],
+            [(27, 26), (26, 25), (9, 10), (11, 18)],
+            [(19, 18), (11, 10), (4, 5), (3, 4)],
+            [(15, 16), (9, 10), (3, 4)],
+            [(0, 1), (2, 3), (4, 5), (5, 6)],
+            [(4, 11), (4, 5)],
+            [(21, 22), (0, 1), (3, 4), (3, 10)],
+            [(10, 9), (11, 12), (6, 13), (20, 27)],
+            [(13, 20), (1, 2), (2, 3), (14, 15)],
+            [(0, 7), (7, 14)],
+        ]
+    }
+
+    func testRevisionThreeRecordedSwapPlansWinAndRestoreEveryCommittedAction() throws {
+        for (challenge, expectedShowers, expectedActions, expectedScore) in [
+            (StarfallChallenge.firstLight, 22, 86, 154_000),
+            (.ribbonCrossing, 32, 118, 220_000)
+        ] {
+            var game = FallingSky.freshChallenge(challenge)
+            XCTAssertEqual(game.challengeRevision, 3)
+            let opening = game
+            let witness = revisionThreeWitness(for: challenge)
+            var actionCount = 0
+            for (showersBefore, exchanges) in witness.enumerated() {
+                XCTAssertEqual(game.turns, showersBefore)
+                XCTAssertLessThanOrEqual(exchanges.count, 4)
+                for (fromIndex, toIndex) in exchanges {
+                    let from = Cell(fromIndex / 7, fromIndex % 7)
+                    let to = Cell(toIndex / 7, toIndex % 7)
+                    let before = game
+                    var restored = try roundTrip(game)
+                    let turn = try XCTUnwrap(game.nudge(from: from, to: to))
+                    let restoredTurn = try XCTUnwrap(restored.nudge(from: from, to: to))
+                    XCTAssertEqual(restoredTurn.resolutionPhases, turn.resolutionPhases)
+                    XCTAssertEqual(restored, game)
+                    XCTAssertEqual(game.incoming, before.incoming)
+                    XCTAssertEqual(game.turns, before.turns)
+                    XCTAssertEqual(game.displayScore, before.displayScore + turn.displayAward)
+                    XCTAssertTrue(turn.resolutionPhases.allSatisfy { $0.kind == .recipe })
+                    XCTAssertTrue(game.recipes.isEmpty)
+                    game = try roundTrip(game)
+                    actionCount += 1
+                }
+                if game.isOver {
+                    XCTAssertEqual(showersBefore, witness.count - 1)
+                    break
+                }
+                let forecast = game.incoming
+                let turn = try XCTUnwrap(game.letStarsFall())
+                XCTAssertEqual(turn.forecast, forecast)
+                game = try roundTrip(game)
+            }
+            XCTAssertEqual(game.outcome, .won)
+            XCTAssertEqual(game.turns, expectedShowers)
+            XCTAssertEqual(actionCount, expectedActions)
+            XCTAssertEqual(game.displayScore, expectedScore)
+            XCTAssertEqual(game.replay(), opening)
+        }
+    }
+
+
 }

@@ -10,6 +10,7 @@ struct SkyHelpContext: Equatable {
     let restorationHelp: String?
     let scaledPoints: Bool
     let automaticRecipes: Bool
+    let manualClears: Bool
     var challenge: Bool { restorationChallenge != nil }
     let arranging: Bool
     let openingCascade: Bool
@@ -24,6 +25,7 @@ struct SkyHelpContext: Equatable {
         restorationHelp = game.challengeHelpText
         scaledPoints = game.challengeRevision > 0
         automaticRecipes = game.supportsAutomaticRecipes
+        manualClears = game.supportsManualClears
         opalStorms = game.generation != .legacy
     }
 
@@ -128,9 +130,10 @@ struct SkyHowToPlay: View {
                 }
                     .buttonStyle(StarfallButtonStyle(role: .quiet))
                     .accessibilityIdentifier("sky.learn")
+                if !context.manualClears { Text(SkyCopy.text(.helpPracticeModes)) }
             }
-            SkyMenuSection(SkyCopy.text(.helpTapTitle)) {
-                Text(SkyCopy.text(.helpTap))
+            SkyMenuSection(SkyCopy.text(context.manualClears ? .helpTapTitle : .helpPatternsTitle)) {
+                Text(SkyCopy.text(context.manualClears ? .helpTap : .helpPatternsControls))
                 Text(SkyCopy.text(context.automaticRecipes ? .helpCascadeIdentity
                                   : context.scaledPoints ? .helpStoryIdentity : .helpIdentity))
             }
@@ -141,10 +144,12 @@ struct SkyHowToPlay: View {
                     Text(SkyCopy.text(.massHelpValue))
                 }
             }
-            SkyMenuSection(SkyCopy.text(.helpTraceTitle)) {
-                Text(SkyCopy.text(context.automaticRecipes ? .helpCascadeTrace : .helpTrace))
-                Text(SkyCopy.text(context.automaticRecipes ? .helpCascadeBranch : .helpBranch))
-                Text(SkyCopy.text(.helpAccessibleTrace))
+            if context.manualClears {
+                SkyMenuSection(SkyCopy.text(.helpTraceTitle)) {
+                    Text(SkyCopy.text(context.automaticRecipes ? .helpCascadeTrace : .helpTrace))
+                    Text(SkyCopy.text(context.automaticRecipes ? .helpCascadeBranch : .helpBranch))
+                    Text(SkyCopy.text(.helpAccessibleTrace))
+                }
             }
             SkyMenuSection(SkyCopy.text(.helpShowerTitle)) {
                 if context.automaticRecipes { Text(SkyCopy.text(.helpCascadeOpening)) }
@@ -177,7 +182,8 @@ struct SkyHowToPlay: View {
             if context.arranging {
                 SkyMenuSection(SkyCopy.text(.helpArrangeTitle)) {
                     Text(SkyCopy.text(.helpSwap))
-                    Text(SkyCopy.text(context.automaticRecipes ? .helpCascadeRecipe : .helpRecipe))
+                    Text(SkyCopy.text(!context.manualClears ? .helpPatternsRecipe
+                                      : context.automaticRecipes ? .helpCascadeRecipe : .helpRecipe))
                     Text(SkyCopy.text(context.automaticRecipes ? .helpCascadeChain : .helpRelay))
                 }
             }

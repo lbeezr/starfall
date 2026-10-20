@@ -2,6 +2,9 @@ import XCTest
 @testable import StarfallCore
 
 final class StoryCascadeTests: XCTestCase {
+    private func revisionTwo(_ challenge: StarfallChallenge) -> FallingSky {
+        FallingSky(definition: StoryChallengeDefinition(challenge, revision: 2)!)
+    }
     private func restored(_ game: FallingSky) throws -> FallingSky {
         try JSONDecoder().decode(FallingSky.self, from: JSONEncoder().encode(game))
     }
@@ -26,8 +29,8 @@ final class StoryCascadeTests: XCTestCase {
     }
 
     private func nearWinning(_ position: [StarfallGem?], showers: Int) throws -> FallingSky {
-        let opening = FallingSky.freshChallenge(.firstLight)
-        let definition = StoryChallengeDefinition(.firstLight)!
+        let opening = revisionTwo(.firstLight)
+        let definition = StoryChallengeDefinition(.firstLight, revision: 2)!
         let delivered = definition.initialLight + definition.suppliedLight(after: showers)
         XCTAssertEqual(delivered - position.compactMap { $0 }.reduce(0) { $0 + $1.value }, 147)
         let encodedBoard = try JSONSerialization.jsonObject(with: JSONEncoder().encode(position))
@@ -46,9 +49,9 @@ final class StoryCascadeTests: XCTestCase {
         }
     }
 
-    func testFreshPairHasMixedRecipeFreeOpeningsWhileOtherLocationsStayHistorical() throws {
+    func testRetainedPairHasMixedRecipeFreeOpeningsWhileOtherLocationsStayHistorical() throws {
         for (challenge, count) in [(StarfallChallenge.firstLight, 24), (.ribbonCrossing, 25)] {
-            let game = FallingSky.freshChallenge(challenge)
+            let game = revisionTwo(challenge)
             XCTAssertEqual(game.challengeRevision, 2)
             XCTAssertTrue(game.supportsAutomaticRecipes)
             XCTAssertEqual(game.occupiedCount, count)
@@ -71,7 +74,7 @@ final class StoryCascadeTests: XCTestCase {
     func testOpeningSwapCommitsCausalTwoAndThreePhaseReceiptsWithExactConservation() throws {
         for (challenge, amounts) in [(StarfallChallenge.firstLight, [5_000, 10_000]),
                                      (.ribbonCrossing, [5_000, 10_000, 15_000])] {
-            var game = FallingSky.freshChallenge(challenge)
+            var game = revisionTwo(challenge)
             let before = game
             let turn = try XCTUnwrap(game.nudge(from: Cell(1, 1), to: Cell(1, 2)))
             XCTAssertEqual(turn.resolutionPhases.map(\.award.displayPoints), amounts)
@@ -129,7 +132,7 @@ final class StoryCascadeTests: XCTestCase {
     }
 
     func testSelectiveTraceAndWholeTapShareReceiptWhenTheySpendSameIngredients() throws {
-        let opening = FallingSky.freshChallenge(.firstLight)
+        let opening = revisionTwo(.firstLight)
         let path = [Cell(3, 0), Cell(2, 0), Cell(1, 0), Cell(0, 0), Cell(0, 1)]
         XCTAssertEqual(Set(path), opening.group(at: Cell(0, 0)))
         var tapped = opening, traced = opening
@@ -169,9 +172,9 @@ final class StoryCascadeTests: XCTestCase {
     }
 
     func testTierValidationRejectsMissingForgedUnboundedAndUncausedAwards() throws {
-        let game = FallingSky.freshChallenge(.ribbonCrossing)
+        let game = revisionTwo(.ribbonCrossing)
         let mutations: [(inout [String: Any]) -> Void] = [
-            { $0["savedChallengeRevision"] = 3 },
+            { $0["savedChallengeRevision"] = 4 },
             { $0["savedChallengeRevision"] = 1 },
             { $0["score"] = Int.max },
             { $0["turns"] = Int.max },
@@ -223,7 +226,7 @@ final class StoryCascadeTests: XCTestCase {
     }
 
     func testWinningFirstPhaseFinishesItsCausalChainAndRestoresAsWon() throws {
-        let opening = FallingSky.freshChallenge(.firstLight)
+        let opening = revisionTwo(.firstLight)
         var position = opening.board
         for (offset, kind) in [Jewel.rose, .aqua, .rose].enumerated() {
             position[3 * 7 + 3 + offset] = .init(id: 24 + offset, kind: kind)
@@ -266,10 +269,10 @@ final class StoryCascadeTests: XCTestCase {
         XCTAssertEqual(turn.displayAward, 7_000)
         XCTAssertEqual(game.displayScore, 154_000)
         XCTAssertEqual(game.outcome, .won)
-        XCTAssertEqual(game.incoming, StoryChallengeDefinition(.firstLight)!.shower(number: 31))
+        XCTAssertEqual(game.incoming, StoryChallengeDefinition(.firstLight, revision: 2)!.shower(number: 31))
         XCTAssertNotEqual(game.incoming, before.incoming)
         XCTAssertTrue(game.isValidSave)
         XCTAssertEqual(try restored(game), game)
-        XCTAssertEqual(game.replay(), FallingSky.freshChallenge(.firstLight))
+        XCTAssertEqual(game.replay(), revisionTwo(.firstLight))
     }
 }

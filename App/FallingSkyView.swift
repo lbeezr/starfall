@@ -444,7 +444,8 @@ import StarfallCore
                                               feedback: store.explainInputFailure,
                                               swapStart: { point in mapping.cell(at:point).map { store.game.canArrangeStars && store.game.gem(at:$0) != nil && store.canReceiveInput } ?? false },
                                               swap: commitDirectSwap,
-                                              cancelDrawing: { trace.cancel(); store.scene.clearConstellationTrace() })
+                                              cancelDrawing: { trace.cancel(); store.scene.clearConstellationTrace() },
+                                              drawingEnabled: store.game.supportsManualClears)
                     }
                 }
 
@@ -455,11 +456,9 @@ import StarfallCore
             .accessibilityElement(children: boardAccessible ? .contain : .ignore)
             .accessibilityValue(boardAccessible ? boardSummary : "")
             .accessibilityIdentifier(boardAccessible ? "experiment.board" : "")
-            .accessibilityRotor(SkyCopy.text(.a11yMatchingGroups)) {
-                ForEach(boardAccessible ? store.game.legalGroups.compactMap(\.first) : [], id: \.self) { cell in
-                    AccessibilityRotorEntry(Text(cellLabel(cell)), id: cell, in: matchingGroups)
-                }
-            }
+            .modifier(MatchingGroupsRotor(enabled: boardAccessible && store.game.supportsManualClears,
+                                          cells: store.game.supportsManualClears ? store.game.legalGroups.compactMap(\.first) : [],
+                                          namespace: matchingGroups, label: cellLabel))
             .accessibilityHidden(!boardAccessible)
         }
     }
@@ -467,11 +466,12 @@ import StarfallCore
     private var boardAccessible: Bool { !settings && !showingCeremony }
 
     private var boardSummary: String {
-        SkyCopy.text(.a11yBoardSummary, values: ["showers": String(store.game.turns), "groups": String(store.game.legalGroups.count)])
+        SkyCopy.boardSummary(showers: store.game.turns, groups: store.game.legalGroups.count,
+                             manualClears: store.game.supportsManualClears)
     }
 
     private func cellButton(_ cell: Cell) -> some View {
-        let group = store.game.group(at: cell)
+        let group = store.game.supportsManualClears ? store.game.group(at: cell) : []
         let value = store.game.value(of: group)
         let reward = store.game.displayReward(of: group)
         let snapshot = store.game
@@ -481,10 +481,12 @@ import StarfallCore
         }
         .buttonStyle(.plain)
         .accessibilityLabel(cellLabel(cell))
-        .accessibilityValue(store.game.gem(at: cell)?.isLight == true
+        .accessibilityValue(!store.game.supportsManualClears ? SkyCopy.text(.a11yPatternsValue)
+            : store.game.gem(at: cell)?.isLight == true
             ? (store.game.isDrained(at: cell) ? SkyCopy.text(.a11yOrbDrained) : SkyCopy.text(.a11yOrb))
             : reward != value ? SkyCopy.text(.a11yGroupReward, values: ["value": String(value), "reward": reward.formatted()]) : SkyCopy.text(.a11yGroupValue, values: ["value": String(value)]))
-        .accessibilityHint(store.game.gem(at: cell)?.gravityKind == .hole
+        .accessibilityHint(!store.game.supportsManualClears ? SkyCopy.text(.a11yPatternsHint)
+            : store.game.gem(at: cell)?.gravityKind == .hole
             ? SkyCopy.text(.a11yHoleHint)
             : store.game.gem(at: cell)?.gravityKind == .magnet
             ? SkyCopy.text(.a11yFieldHint)
@@ -512,10 +514,12 @@ import StarfallCore
                     }
                 }
             }
+            if snapshot.supportsManualClears {
+                Button(SkyCopy.text(.actionTraceAdd)) { accessibleTrace(cell) }
+                Button(SkyCopy.text(.actionTraceRelease)) { releaseConstellation() }
+                Button(SkyCopy.text(.actionTraceCancel)) { cancelConstellation() }
+            }
         }
-        .accessibilityAction(named: Text(SkyCopy.text(.actionTraceAdd))) { accessibleTrace(cell) }
-        .accessibilityAction(named: Text(SkyCopy.text(.actionTraceRelease))) { releaseConstellation() }
-        .accessibilityAction(named: Text(SkyCopy.text(.actionTraceCancel))) { cancelConstellation() }
         .accessibilityRotorEntry(id: cell, in: matchingGroups)
         .disabled(!store.canReceiveInput)
     }
@@ -649,6 +653,25 @@ private struct ObservatoryCellShape: Shape {
         path.addLines(points)
         path.closeSubpath()
         return path
+    }
+}
+
+private struct MatchingGroupsRotor: ViewModifier {
+    let enabled: Bool
+    let cells: [Cell]
+    let namespace: Namespace.ID
+    let label: (Cell) -> String
+
+    @ViewBuilder func body(content: Content) -> some View {
+        if enabled {
+            content.accessibilityRotor(SkyCopy.text(.a11yMatchingGroups)) {
+                ForEach(cells, id: \.self) { cell in
+                    AccessibilityRotorEntry(Text(label(cell)), id: cell, in: namespace)
+                }
+            }
+        } else {
+            content
+        }
     }
 }
 

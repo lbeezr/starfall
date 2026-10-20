@@ -70,10 +70,11 @@ struct StoryScoreLedger: Codable, Equatable, Sendable {
         return size + cascadeTiers.enumerated().reduce(0) { $0 + $1.offset * ($1.element.light + $1.element.sizeUnits) }
     }
 
-    func isValid(light: Int, target: Int, automaticRecipes: Bool) -> Bool {
+    func isValid(light: Int, target: Int, automaticRecipes: Bool, manualClears: Bool = true) -> Bool {
         guard clearCounts.count == 50, clearCounts[0] == 0, clearCounts[1] == 0,
               (0...(target / 1_000 + 98)).contains(light),
               clearCounts.allSatisfy({ (0...light).contains($0) }) else { return false }
+        if !manualClears && (clearCounts[2] != 0 || clearCounts[3] != 0) { return false }
         let stars = clearCounts.enumerated().reduce(0) { $0 + $1.offset * $1.element }
         guard stars <= light, light <= stars * 2 else { return false }
         guard automaticRecipes else {
