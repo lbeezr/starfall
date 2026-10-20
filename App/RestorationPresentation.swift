@@ -34,13 +34,17 @@ extension FallingSky {
     var challengeGuideLine: SkyDialogueLine? {
         guard let challenge else { return nil }
         let story = challengeRevision > 0 && (challenge == .firstLight || challenge == .ribbonCrossing)
-        let variant = supportsAutomaticRecipes ? ".cascade" : story ? ".story" : ""
+        let variant = !supportsManualClears ? ".patterns" : supportsAutomaticRecipes ? ".cascade" : story ? ".story" : ""
         return SkyDialogueLibrary.line("guide." + challenge.dialoguePrefix + variant,
                                        values: story ? ["target": SkyCopy.score(displayTarget ?? 0)] : [:])
     }
 
     var challengeHelpText: String? {
         guard let challenge else { return nil }
+        if !supportsManualClears {
+            return SkyCopy.text(challenge == .firstLight ? .helpPatternsChallenge : .helpPatternsRibbon,
+                                values: ["target": SkyCopy.score(displayTarget ?? 0)])
+        }
         if supportsAutomaticRecipes {
             return SkyCopy.text(challenge == .firstLight ? .helpCascadeChallenge : .helpCascadeRibbon,
                                 values: ["target": SkyCopy.score(displayTarget ?? 0)])

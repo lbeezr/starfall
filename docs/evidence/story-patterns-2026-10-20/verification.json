@@ -1,0 +1,135 @@
+{
+  "status": "Verified development subset; canonical publication and delivery pending",
+  "baseCommit": "7a582d459feb9680351eaa647ca85d94e1410df1",
+  "runtimeInputFingerprint": "dev.23ebbb8d8f",
+  "buildAffectingDirtyPaths": [
+    "App/ConstellationTraceSurface.swift",
+    "App/DialogueScripts/observatory-dialogue.json",
+    "App/FallingSkyMenu.swift",
+    "App/FallingSkyStore.swift",
+    "App/FallingSkyView.swift",
+    "App/RestorationPresentation.swift",
+    "App/SkyCopy.swift",
+    "App/SkyDialogueLibrary.swift",
+    "App/SkyFlowSnapshots.swift",
+    "App/SkyPreferences.swift",
+    "App/SkySaveArchive.swift",
+    "App/SkyTechniqueIntent.swift",
+    "App/StarlightCelebration.swift",
+    "App/WorldJourneyStore.swift",
+    "Sources/StarfallCore/FallingSky.swift",
+    "Sources/StarfallCore/SkyResolutionPhase.swift",
+    "Sources/StarfallCore/SkyTutorial.swift",
+    "Sources/StarfallCore/StarRecipe.swift",
+    "Sources/StarfallCore/StoryChallenge.swift",
+    "Sources/StarfallCore/StoryScore.swift"
+  ],
+  "runtimePathSHA256": {
+    "App/ConstellationTraceSurface.swift": "eb9a947e58da7f3b97d90afe814414eeff7df1301cbf781ef5934525fae72e7c",
+    "App/DialogueScripts/observatory-dialogue.json": "411e8be0e62bab49f88a968c4c80e2f7a21de1e018fcd670192d82ddbb8b5afa",
+    "App/FallingSkyMenu.swift": "881d08b30060275f84f4e69946d0d95ba306f79101995d51352a17e3e77f344c",
+    "App/FallingSkyStore.swift": "236cecf3a73b2083c94449f124c51131292d8efe1abd1e8226074f86454163d8",
+    "App/FallingSkyView.swift": "96b19336a730e83cfc50a7f392de408db540827c3b50af8f7fe2a035dc3ab3b2",
+    "App/RestorationPresentation.swift": "8562454c1e024efaf7de3b038a42c53599d4d997966c4130a81d73fe74f90324",
+    "App/SkyCopy.swift": "74dac63812c69a632e782831f0a895609aa9bd2059bb5e10a28be97b1a7fb7e2",
+    "App/SkyDialogueLibrary.swift": "03136a0d37672f606f1f66a6b0f8104794014cddda41a47e83232d061dd0dcd2",
+    "App/SkyFlowSnapshots.swift": "d185be30daa03d3bf1b17cde0207de6935d3114584475bc00134af4a7bc3e622",
+    "App/SkyPreferences.swift": "a406b927025cea88b014ef2627a750da7893687f75cc015c9373d989c631b0c7",
+    "App/SkySaveArchive.swift": "20b76d037255f684d45bc9337c85d6e0872efbc1e36d2515e15e907514d50243",
+    "App/SkyTechniqueIntent.swift": "ecc16573d1f1468b2afcf464a2d1a2903a18cc96f587091d7b9cc8c600a64255",
+    "App/StarlightCelebration.swift": "2fefd7fb0a597331e516d2a20f62f32854d55a78e8a33a3b24a77822ae734212",
+    "App/WorldJourneyStore.swift": "6bdcdf07dd500d2f440fbaaf7fd6e3f92da9316d85be2ee89a650debc62c0067",
+    "Sources/StarfallCore/FallingSky.swift": "8f5e88324e3826871565618a00d3bd9f2b1fa51e57b62d8e9f54f4d54f05118b",
+    "Sources/StarfallCore/SkyResolutionPhase.swift": "403fa89cc38e0e53f93a5dc36e5e3197669d46c27f90a04eff5073fa2e4603b5",
+    "Sources/StarfallCore/SkyTutorial.swift": "84ed4ec2bb25b5ba914fcfc0a16d0d8eb19df0ebd3f5aa084ac288c9fefb8069",
+    "Sources/StarfallCore/StarRecipe.swift": "05b187fac286c89d303469491393f21d0f7f24a98db7c3979388d10ad1218fa0",
+    "Sources/StarfallCore/StoryChallenge.swift": "5c8df50c3cc7abb9f8bb5b9ac42f0b3f78b6a966c8e41f05f03becd6b2dcde7f",
+    "Sources/StarfallCore/StoryScore.swift": "704428ec8375b4cbaca8e84370f8e0c7915be62d8fbdf75da7addb2dd6904277"
+  },
+  "environment": {
+    "xcode": "Xcode 27.1\nBuild version 27A9275",
+    "swift": "6.4.0.34.1",
+    "host": "macOS-27.0.1-arm64-arm-64bit",
+    "simulator": "iPhone 17e",
+    "simulatorID": "E739068A-AC67-424C-9430-1FE5578902FE",
+    "os": "iOS 27.0"
+  },
+  "core": {
+    "tests": 225,
+    "failures": 0,
+    "skips": 0,
+    "command": "CLANG_MODULE_CACHE_PATH=/tmp/starfall-core-v3-clang SWIFTPM_MODULECACHE_OVERRIDE=/tmp/starfall-core-v3-swift swift test --disable-sandbox --cache-path /tmp/starfall-core-v3-cache",
+    "log": "/tmp/starfall-core-v3-all.log",
+    "logSHA256": "8a54d64b0bfcf6e64442caebb5543f032b539f96b3657821d66e97dd9f96a10e"
+  },
+  "nativeRuns": [
+    {
+      "name": "initial",
+      "log": "/tmp/starfall-pattern-native-1.log",
+      "logSHA256": "a87f52d80186eb781671c910c00a73e97114c52a6adfee516b6364093c58b1cd",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=E739068A-AC67-424C-9430-1FE5578902FE\" -derivedDataPath /tmp/starfall-pattern-native -resultBundlePath /tmp/starfall-pattern-native-1.xcresult -parallel-testing-enabled NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \"-only-testing:StarfallAppTests/SkySaveArchiveTests\" \"-only-testing:StarfallAppTests/WorldJourneyTests\" \"-only-testing:StarfallAppTests/SkyTechniqueStoreTests\" \"-only-testing:StarfallAppTests/TraceInputPolishTests\" \"-only-testing:StarfallAppTests/ResponsiveInputTests\" \"-only-testing:StarfallAppTests/SkyDialogueTests\" \"-only-testing:StarfallAppTests/StarlightCelebrationTests\" \"-only-testing:StarfallAppTests/NativeInputWindowTests\" \"-only-testing:StarfallAppTests/RestorationPresentationTests\" \"-only-testing:StarfallAppTests/WorldMapReviewFixtureTests\" \"-only-testing:StarfallUITests/WorldJourneyInteractionTests/testRevisedLanternEarnsThousandsAndRetainsScoreAcrossRelaunch\" \"-only-testing:StarfallUITests/WorldJourneyInteractionTests/testRevisedRibbonSwapCreatesLargerClearWithLargestText\" test",
+      "hosted": 172,
+      "ui": 2,
+      "result": "failed: both UI flows crashed at Begin; hosted checks passed on initial checkpoint",
+      "skipMarkers": 0
+    },
+    {
+      "name": "summary-correction",
+      "log": "/tmp/starfall-pattern-native-2.log",
+      "logSHA256": "ae3b881b630558e7dd58cbded7aaa024255bd8081a9edfb5f663ad1a1bd24da4",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=E739068A-AC67-424C-9430-1FE5578902FE\" -derivedDataPath /tmp/starfall-pattern-native -resultBundlePath /tmp/starfall-pattern-native-2.xcresult -parallel-testing-enabled NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \"-only-testing:StarfallAppTests/SkyDialogueTests\" \"-only-testing:StarfallAppTests/SkySaveArchiveTests\" \"-only-testing:StarfallAppTests/SkyTechniqueStoreTests\" \"-only-testing:StarfallUITests/WorldJourneyInteractionTests/testRevisedLanternEarnsThousandsAndRetainsScoreAcrossRelaunch\" \"-only-testing:StarfallUITests/WorldJourneyInteractionTests/testRevisedRibbonSwapCreatesLargerClearWithLargestText\" test",
+      "hosted": 66,
+      "ui": 2,
+      "result": "passed",
+      "skipMarkers": 0
+    },
+    {
+      "name": "final-hosted",
+      "log": "/tmp/starfall-pattern-final-hosted.log",
+      "logSHA256": "517db76fa3565a9e1c42d853b71c65217e4a24474d6c5bb73210501657ef899f",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=E739068A-AC67-424C-9430-1FE5578902FE\" -derivedDataPath /tmp/starfall-pattern-native -resultBundlePath /tmp/starfall-pattern-final-hosted.xcresult -parallel-testing-enabled NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \"-only-testing:StarfallAppTests/FallingSkyStoreTests\" \"-only-testing:StarfallAppTests/SkyFlowStateTests\" \"-only-testing:StarfallAppTests/RestorationFlowTests\" \"-only-testing:StarfallAppTests/SkySaveArchiveTests\" \"-only-testing:StarfallAppTests/WorldJourneyTests\" \"-only-testing:StarfallAppTests/SkyTechniqueStoreTests\" \"-only-testing:StarfallAppTests/TraceInputPolishTests\" \"-only-testing:StarfallAppTests/ResponsiveInputTests\" \"-only-testing:StarfallAppTests/SkyDialogueTests\" \"-only-testing:StarfallAppTests/StarlightCelebrationTests\" \"-only-testing:StarfallAppTests/NativeInputWindowTests\" \"-only-testing:StarfallAppTests/RestorationPresentationTests\" \"-only-testing:StarfallAppTests/WorldMapReviewFixtureTests\" test",
+      "hosted": 254,
+      "ui": 0,
+      "result": "passed",
+      "skipMarkers": 0
+    }
+  ],
+  "acceptedUniqueCounts": {
+    "hosted": 254,
+    "ui": 2,
+    "failures": 0,
+    "skips": 0
+  },
+  "builds": {
+    "Debug": "passed native test builds",
+    "Release": "passed",
+    "releaseCommand": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Release -destination \"platform=iOS Simulator,id=E739068A-AC67-424C-9430-1FE5578902FE\" -derivedDataPath /tmp/starfall-pattern-release ARCHS=arm64 ONLY_ACTIVE_ARCH=YES build",
+    "releaseLogSHA256": "b1495352e40ba42bf24399d415f0b778860e4dc20f1de257351450936efa35fc",
+    "membership": "Existing App/AppTests/UITests target files; new Core test discovered by SwiftPM; dialogue JSON copied in Debug and Release"
+  },
+  "failureCorrection": {
+    "cause": "Patterns summary permits only showers; both View and Menu supplied an extra groups argument. Strict SkyCopy catalogue validation trapped at Begin.",
+    "fix": "Shared SkyCopy.boardSummary chooses exactly the placeholders for the saved input capability; both consumers use it. Focused catalogue regression plus the same two physical UI flows pass.",
+    "crashes": [
+      {
+        "file": "/Users/lbeezr/Library/Logs/DiagnosticReports/Starfall-2026-10-20-141232.ips",
+        "sha256": "eab0f9e85e27b4db87bc391e260027931f68c1d857d23795216e93a2f29960c5"
+      },
+      {
+        "file": "/Users/lbeezr/Library/Logs/DiagnosticReports/Starfall-2026-10-20-141256.ips",
+        "sha256": "41e75de64a57bc298ca4fa06dfab6d81d08c2c712d12886ad33823c005c0677f"
+      }
+    ]
+  },
+  "sourceDifferences": [
+    "Initial native run preceded the final shuffled supply and summary fix; it is not current-source acceptance.",
+    "The passing UI run and Release build use the final runtime fingerprint. Final hosted checks additionally include the recorded playthrough helper.",
+    "Raw runtime hash manifest identifies the tested working tree; publication must compare its exact tree."
+  ],
+  "limits": [
+    "Selected development subset, not full dev/RC matrix",
+    "Full-line rules are covered in Core; no full-line clear occurs in the two human-style native opening flows",
+    "Sampled normal-motion frames and largest-text quiet flow inspected; no sustained performance measurement",
+    "No actual VoiceOver, minimum-iOS or physical-play acceptance claimed"
+  ]
+}

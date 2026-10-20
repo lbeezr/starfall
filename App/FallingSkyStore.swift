@@ -156,7 +156,8 @@ enum SkyTerminalSpeech { case feedback, ceremony }
 
     /// Only the owner may release a live hold; late callbacks cannot resume a newer touch.
     @discardableResult func beginConstellationHold(at cell: Cell? = nil) -> UInt64? {
-        beginContact(at: cell, allowingSettling: false)
+        guard game.supportsManualClears else { return nil }
+        return beginContact(at: cell, allowingSettling: false)
     }
     @discardableResult func beginResponsiveContact(at cell: Cell?) -> UInt64? {
         beginContact(at: cell, allowingSettling: true)
@@ -301,7 +302,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
               scheduledDeadline: deadline, rainDue: rainDue, busy: busy,
               paused: isPaused, suspended: suspended, canClear: canClear,
               canTap: canClear && !constellationTracing,
-              admittedTapGroups: constellationTracing ? 0 : game.legalGroups.filter { group in
+              admittedTapGroups: constellationTracing || !game.supportsManualClears ? 0 : game.legalGroups.filter { group in
                   group.first.map(canClear) ?? false
               }.count,
               canCallShower: !constellationTracing && !busy && !suspended && !game.isOver,
@@ -466,7 +467,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         .init(suspended: suspended || openingPending || openingPresenting, gameOver: game.isOver, showerDue: rainDue,
               changingColumns: changingColumns, presenting: busy)
     }
-    var canClear: Bool { inputPolicy.wholeBoard.isReady }
+    var canClear: Bool { game.supportsManualClears && inputPolicy.wholeBoard.isReady }
     var canReceiveInput: Bool { inputPolicy.receiving.isReady }
     func canContact(_ cell: Cell) -> Bool { inputPolicy.reserving([cell.column]).isReady }
 
@@ -481,7 +482,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         let columns = preview.clear(cell)?.changingColumns ?? [cell.column]
         return inputPolicy.reserving(columns)
     }
-    func canClear(_ cell: Cell) -> Bool { clearAvailability(cell).isReady }
+    func canClear(_ cell: Cell) -> Bool { game.supportsManualClears && clearAvailability(cell).isReady }
 
     func traceAvailability(_ path: [Cell]) -> SkyInputAvailability {
         guard inputPolicy.receiving.isReady else { return inputPolicy.receiving }
@@ -491,7 +492,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         let columns = preview.clearConstellation(path)?.changingColumns ?? Set(path.map(\.column))
         return inputPolicy.reserving(columns)
     }
-    func canTrace(_ path: [Cell]) -> Bool { traceAvailability(path).isReady }
+    func canTrace(_ path: [Cell]) -> Bool { game.supportsManualClears && traceAvailability(path).isReady }
 
     /// Physical and accessibility requests may wait briefly; direct commit APIs
     /// remain strict so stale callers never gain an implicit replay queue.
@@ -565,6 +566,12 @@ enum SkyTerminalSpeech { case feedback, ceremony }
 
     func clear(_ cell: Cell) {
         guard canReceiveInput, !constellationTracing else { return }
+        if !game.supportsManualClears {
+            guard canContact(cell) else { explainSettling(at: cell); return }
+            guide("guide.patterns-inspect", visible: true)
+            feedback.announce(guideLine.spokenText)
+            return
+        }
         guard canClear(cell) else { explainSettling(at: cell); return }
         showInputFeedback(nil)
         let old = game

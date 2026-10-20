@@ -66,7 +66,12 @@ struct StarlightCelebration: Equatable, Identifiable {
         case .ordinary: nil
         case .brilliant: SkyCopy.text(.celebrationBrilliant)
         case .constellation: SkyCopy.text(.celebrationConstellation)
-        case .recipe(let shape): shape == .square ? SkyCopy.text(.celebrationSquare) : SkyCopy.text(.celebrationCross)
+        case .recipe(let shape):
+            switch shape {
+            case .square: SkyCopy.text(.celebrationSquare)
+            case .cross: SkyCopy.text(.celebrationCross)
+            case .line: SkyCopy.text(.celebrationLine)
+            }
         case .relay(let depth): SkyCopy.text(.celebrationRelay, values: ["count": String(depth)])
         case .cascade(let depth): SkyCopy.text(.celebrationCascade, values: ["count": String(depth)])
         }

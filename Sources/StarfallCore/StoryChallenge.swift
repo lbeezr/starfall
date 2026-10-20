@@ -4,7 +4,7 @@ import Foundation
 public struct StoryChallengeDefinition: Sendable {
     public let challenge: StarfallChallenge
     public let revision: Int
-    public static let currentRevision = 2
+    public static let currentRevision = 3
 
     public init?(_ challenge: StarfallChallenge, revision: Int = currentRevision) {
         guard (1...Self.currentRevision).contains(revision),
@@ -20,21 +20,26 @@ public struct StoryChallengeDefinition: Sendable {
     }
     var palette: [Jewel] {
         if revision == 1 { return [.rose, .aqua, .amber, .violet, .mint] }
+        if revision == 3 { return [.aqua, .rose, .violet, .mint, .amber] }
         return challenge == .firstLight ? [.aqua, .rose, .violet] : [.aqua, .rose, .violet, .mint]
     }
     var initialBoard: [StarfallGem?] {
-        // Lantern offers two independent taps and an aqua top to keep for growth.
-        // Ribbon offers a five-aqua cross-component trace, a useful vertical swap,
-        // and an ordinary three-aqua clear with recoverable remaining ingredients.
         let rows: [String]
         if revision == 1 {
+            // Retain the original explicit-clear openings and all of their identities.
             rows = challenge == .firstLight ? ["AAA.RRR", "AA....."] : ["ARAAA..", "RAR...."]
-        } else {
+        } else if revision == 2 {
             // Both start recipe-free. The near-square at lower left can begin
             // two causal phases in Lantern and three in Ribbon.
             rows = challenge == .firstLight
                 ? ["AARVVRR", "ARAAVVV", "ARRAVRV", "ARA...."]
                 : ["AARARMM", "ARAAMMV", "ARAVRVV", "VRAV..."]
+        } else {
+            // Five families, no completed patterns, and three immediate recipe
+            // setups. The lower-left exchange earns a two-/three-phase cascade.
+            rows = challenge == .firstLight
+                ? ["AARVVMY", "ARAYMRM", "VRVAYMM", "YRY...."]
+                : ["AARMVYY", "ARAMYAY", "MRMVVYV", "VRMR..."]
         }
         let kinds: [Character: Jewel] = ["A": .aqua, "R": .rose, "V": .violet, "M": .mint, "Y": .amber]
         var board: [StarfallGem?] = Array(repeating: nil, count: 49)
@@ -76,7 +81,7 @@ public struct StoryChallengeDefinition: Sendable {
 
     func suppliedLight(after showers: Int) -> Int {
         precondition(showers >= 0 && showers < Int.max / 6)
-        if revision == 2 { return showers * 5 }
+        if revision >= 2 { return showers * 5 }
         let motifs = motifs
         return showers / motifs.count * motifs.reduce(0) { $0 + $1.1.count }
             + motifs.prefix(showers % motifs.count).reduce(0) { $0 + $1.1.count }
@@ -86,6 +91,7 @@ public struct StoryChallengeDefinition: Sendable {
     /// Mirrored motifs and a rotated palette develop the same readable techniques.
     func shower(number: Int) -> [IncomingStar] {
         precondition(number > 0 && number < Int.max / 6)
+        if revision == 3 { return shuffledShower(number: number) }
         if revision == 2 { return mixedShower(number: number) }
         let motifs = motifs
         let cycle = (number - 1) / motifs.count
@@ -116,5 +122,47 @@ public struct StoryChallengeDefinition: Sendable {
                                 kind: palette[(block + ingredient.1 + cycle) % palette.count],
                                 column: cycle.isMultiple(of: 2) ? column : 6 - column)
         }
+    }
+
+    /// Two of each family per ten arrivals; five arrivals per column every seven
+    /// showers. Independent seeded bags give finite droughts without consulting
+    /// the board, changing an announced forecast, or targeting the current board.
+    private func shuffledShower(number: Int) -> [IncomingStar] {
+        let index = number - 1, colorBlock = index / 2
+        let palette = palette
+        let bag = (0..<10).map { palette[($0 + colorBlock) % palette.count] }
+        // These salts freeze independent color/column streams for revision three;
+        // they select reproducible permutations, not difficulty or board relief.
+        var colorRandom = SeededRandom(seed: UInt64(colorBlock) &* 0x45d9f3b &+ seed)
+        var colors = shuffled(bag, using: &colorRandom)
+        for _ in 0..<50 {
+            if colors[0] != colors[1], colors[8] != colors[9] { break }
+            colors = shuffled(bag, using: &colorRandom)
+        }
+        // Distinct endpoints bound equal-family runs to two even across bags.
+        // This deterministic fallback preserves every bag's counts and the RNG bound.
+        if colors[0] == colors[1], let other = (2..<8).first(where: { colors[$0] != colors[0] }) {
+            colors.swapAt(1, other)
+        }
+        if colors[8] == colors[9], let other = (2..<8).first(where: { colors[$0] != colors[8] }) {
+            colors.swapAt(8, other)
+        }
+        let columnBlock = index / 7
+        var columnRandom = SeededRandom(seed: UInt64(columnBlock) &* 0x7fffffff &+ seed &- 1)
+        let columns = shuffled(Array(0..<7), using: &columnRandom)
+        return (0..<5).map { offset in
+            IncomingStar(id: index * FallingSky.maximumShowerSize + offset,
+                         kind: colors[(index % 2) * 5 + offset],
+                         column: columns[((index % 7) * 5 + offset) % 7])
+        }
+    }
+
+    /// Freeze the Fisher–Yates draw order for authored replay across Swift releases.
+    private func shuffled<Value>(_ values: [Value], using random: inout SeededRandom) -> [Value] {
+        var result = values
+        for index in stride(from: result.count - 1, through: 1, by: -1) {
+            result.swapAt(index, Int(random.next() % UInt64(index + 1)))
+        }
+        return result
     }
 }

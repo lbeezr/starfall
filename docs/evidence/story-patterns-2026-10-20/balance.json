@@ -1,0 +1,491 @@
+{
+  "date": "2026-10-20",
+  "status": "Production Core reachability and deterministic replay verified; human balance remains open",
+  "scope": {
+    "challenges": [
+      "firstLight",
+      "ribbonCrossing"
+    ],
+    "revision": 3,
+    "openingStars": [
+      24,
+      25
+    ],
+    "targets": [
+      150000,
+      220000
+    ],
+    "nominalShowerSeconds": [
+      6,
+      4
+    ],
+    "showerStars": 5,
+    "families": 5,
+    "manualTapAndTraceClears": false,
+    "automaticPatterns": [
+      "four-star square",
+      "five-star cross",
+      "seven-star row",
+      "seven-star column"
+    ]
+  },
+  "source": {
+    "baseCommit": "7a582d459feb9680351eaa647ca85d94e1410df1",
+    "kind": "Working tree, not a clean published commit",
+    "productionRuntimeDirtyFiles": {
+      "Sources/StarfallCore/FallingSky.swift": "8f5e88324e3826871565618a00d3bd9f2b1fa51e57b62d8e9f54f4d54f05118b",
+      "Sources/StarfallCore/SkyResolutionPhase.swift": "403fa89cc38e0e53f93a5dc36e5e3197669d46c27f90a04eff5073fa2e4603b5",
+      "Sources/StarfallCore/SkyTutorial.swift": "84ed4ec2bb25b5ba914fcfc0a16d0d8eb19df0ebd3f5aa084ac288c9fefb8069",
+      "Sources/StarfallCore/StarRecipe.swift": "05b187fac286c89d303469491393f21d0f7f24a98db7c3979388d10ad1218fa0",
+      "Sources/StarfallCore/StoryChallenge.swift": "317cd65e32b095c2143bfb2770b7da33504c3835784f1204be3e2b8d7450158e",
+      "Sources/StarfallCore/StoryScore.swift": "704428ec8375b4cbaca8e84370f8e0c7915be62d8fbdf75da7addb2dd6904277"
+    },
+    "snapshot": "/tmp/StarfallProductionMix/Core",
+    "snapshotManifestSHA256": "fe4f60cf75a8bafc359ba7f637591f499af1b049a23073820f644cb2cd339a5b",
+    "laterChanges": "After capture, StoryChallenge received a comment-only clarification. Captured hashes identify the model inputs; they do not claim identity with a later binary.",
+    "host": "macOS 27.0.1 (26A434), arm64; optimized Swift host executable, no app or simulator",
+    "productionHarness": {
+      "temporaryPath": "/tmp/StarfallProductionMix/main.swift",
+      "sha256": "0e2f3f0e78e59b838cfdc9742faaea5565dc4adb600a090df61ef048914c98fb",
+      "resultsSHA256": "093f9a5fc29f0bd5ffc1aa4cda0f8e8f6323ac1a53086a52452f98145b3855ee"
+    },
+    "naiveHarness": {
+      "temporaryPath": "/tmp/StarfallProductionMix/naive/main.swift",
+      "sha256": "e52ebeb2485848910bb2f26e7416fd02690ffea833396cd8d09c823a41192545",
+      "resultsSHA256": "0e990aaf3ae735ca2748c933ab8f7cb7e2147e74144c23b80515e880fcc5bffc"
+    },
+    "compileCommand": "CLANG_MODULE_CACHE_PATH=/tmp/starfall-mix-production-clang xcrun swiftc -O -module-cache-path /tmp/starfall-mix-production-swift /tmp/StarfallProductionMix/Core/*.swift /tmp/StarfallProductionMix/main.swift -o /tmp/StarfallProductionMix/model",
+    "runCommand": "/tmp/StarfallProductionMix/model > /tmp/StarfallProductionMix/results.jsonl",
+    "retention": "Temporary harnesses and raw results are disposable. Exact winning action witnesses and restore/replay checks are retained in Tests/StarfallCoreTests/StoryCascadePolicyTests.swift."
+  },
+  "method": {
+    "informed": "Enumerate legal occupied/empty adjacent exchanges; omit identity-equivalent or settled no-op exchanges. Prefer immediate recipe awards. Otherwise search up to six exchanges with beam width 24 and deduplicate color/growth board signatures. Rank frontier states by estimated distance to completing a square, then maximum column height. Stop at the first depth with a scoring path; prefer highest award, then most stars, then existing row/column enumeration order.",
+    "actionBudget": "At most four actual exchanges between showers. Truncate longer selected paths at that boundary and replan after the next shower. No taps, traces, injected stars, score edits or forecast lookahead. At most 100 showers.",
+    "validation": "Production runs validate committed saves after each exchange and shower. Retained witness tests additionally compare JSON-restored actions, receipts, forecast preservation, conserved light and replay.",
+    "naive": "Twenty policy seeds (1 through 20) per location. Uniform random choices among legal nontrivial exchanges, six attempts before each shower; no color or reward selection. This is a contrast policy, not a human-player model.",
+    "measurements": "Occupancy and immediate scoring options sampled at the opening and immediately after the first twenty showers, before policy actions. Search path lengths include paths truncated by the four-exchange budget. Recipe counts count discovered recipes, including overlapping shapes; cleared stars remain counted once. Resolution depth zero includes non-scoring exchanges/showers.",
+    "timeLimit": "No elapsed human, reaction, animation or decision time measured. Shower and action counts must not be reported as measured play duration. The four-exchange budget is a model constraint, not an enforced player limit."
+  },
+  "productionResults": [
+    {
+      "challenge": "firstLight",
+      "revision": 3,
+      "outcome": "won",
+      "showers": 22,
+      "exchanges": 86,
+      "setupExchanges": 59,
+      "scoringExchanges": 27,
+      "score": 154000,
+      "meanSetupPerScoringExchange": 2.185,
+      "meanFirst21Occupancy": 20.905,
+      "meanFirst21ImmediateScoringSwapChoices": 0.429,
+      "recipeInstances": {
+        "cross": 2,
+        "square": 26
+      },
+      "resolutionDepthCounts": {
+        "0": 81,
+        "1": 26,
+        "2": 1
+      },
+      "selectedSearchPathLengths": {
+        "1": 9,
+        "2": 5,
+        "3": 11,
+        "4": 6,
+        "5": 6,
+        "6": 2
+      }
+    },
+    {
+      "challenge": "ribbonCrossing",
+      "revision": 3,
+      "outcome": "won",
+      "showers": 32,
+      "exchanges": 118,
+      "setupExchanges": 83,
+      "scoringExchanges": 35,
+      "score": 220000,
+      "meanSetupPerScoringExchange": 2.371,
+      "meanFirst21Occupancy": 20.19,
+      "meanFirst21ImmediateScoringSwapChoices": 0.476,
+      "recipeInstances": {
+        "square": 37
+      },
+      "resolutionDepthCounts": {
+        "0": 115,
+        "1": 34,
+        "3": 1
+      },
+      "selectedSearchPathLengths": {
+        "1": 11,
+        "2": 10,
+        "3": 15,
+        "4": 11,
+        "5": 5,
+        "6": 1
+      }
+    }
+  ],
+  "productionNaiveComparison": [
+    {
+      "challenge": "firstLight",
+      "policy": "sixUniformRandomLegalNontrivialExchangesPerShower",
+      "runs": 20,
+      "policySeeds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "wins": 0,
+      "scoreRange": [
+        0,
+        17000
+      ],
+      "meanScore": 2850,
+      "showerRange": [
+        5,
+        9
+      ],
+      "meanShowers": 5.6,
+      "scoringExchanges": 9,
+      "totalExchanges": 672
+    },
+    {
+      "challenge": "firstLight",
+      "policy": "idle",
+      "outcome": "lost",
+      "showers": 5,
+      "score": 0
+    },
+    {
+      "challenge": "ribbonCrossing",
+      "policy": "sixUniformRandomLegalNontrivialExchangesPerShower",
+      "runs": 20,
+      "policySeeds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "wins": 0,
+      "scoreRange": [
+        0,
+        35000
+      ],
+      "meanScore": 7050,
+      "showerRange": [
+        4,
+        8
+      ],
+      "meanShowers": 5.7,
+      "scoringExchanges": 16,
+      "totalExchanges": 684
+    },
+    {
+      "challenge": "ribbonCrossing",
+      "policy": "idle",
+      "outcome": "lost",
+      "showers": 5,
+      "score": 0
+    }
+  ],
+  "surrogateRobustness": {
+    "kind": "Temporary Core reconstruction with five-family definitions and the same rule/supply algorithms; variant seeds are not shipped definitions. Only offset-zero results above were rerun against production Core.",
+    "harnessSHA256": "3a628c36be1f16ca64f3b8192a9f89416c5d5cd66c80fddf8cebc28e45b2bc40",
+    "resultsSHA256": "3ddf4cdf8b222472506d4992cd6599e3c361f953cd13dd3c1a8e65cb3e62d53e",
+    "seedOffsets": [
+      0,
+      104729,
+      209458,
+      314187,
+      418916,
+      523645,
+      628374,
+      733103
+    ],
+    "selection": "Offsets fixed before the sweep; no search for successful seeds. Both color and column seed salts receive the offset.",
+    "results": [
+      {
+        "challenge": "firstLight",
+        "runs": 8,
+        "wins": 8,
+        "showerRange": [
+          22,
+          24
+        ],
+        "exchangeRange": [
+          83,
+          93
+        ],
+        "aggregateSetupPerScoringExchange": 2.409
+      },
+      {
+        "challenge": "ribbonCrossing",
+        "runs": 8,
+        "wins": 8,
+        "showerRange": [
+          32,
+          34
+        ],
+        "exchangeRange": [
+          113,
+          126
+        ],
+        "aggregateSetupPerScoringExchange": 2.471
+      }
+    ],
+    "compactRunsColumns": [
+      "offset",
+      "challenge",
+      "showers",
+      "exchanges",
+      "setupExchanges",
+      "scoringExchanges",
+      "score"
+    ],
+    "compactRuns": [
+      [
+        0,
+        "firstLight",
+        22,
+        86,
+        59,
+        27,
+        154000
+      ],
+      [
+        0,
+        "ribbonCrossing",
+        32,
+        118,
+        83,
+        35,
+        220000
+      ],
+      [
+        104729,
+        "firstLight",
+        22,
+        88,
+        61,
+        27,
+        153000
+      ],
+      [
+        104729,
+        "ribbonCrossing",
+        33,
+        126,
+        93,
+        33,
+        220000
+      ],
+      [
+        209458,
+        "firstLight",
+        23,
+        93,
+        67,
+        26,
+        155000
+      ],
+      [
+        209458,
+        "ribbonCrossing",
+        34,
+        120,
+        85,
+        35,
+        226000
+      ],
+      [
+        314187,
+        "firstLight",
+        24,
+        92,
+        67,
+        25,
+        151000
+      ],
+      [
+        314187,
+        "ribbonCrossing",
+        33,
+        124,
+        88,
+        36,
+        221000
+      ],
+      [
+        418916,
+        "firstLight",
+        23,
+        91,
+        65,
+        26,
+        155000
+      ],
+      [
+        418916,
+        "ribbonCrossing",
+        32,
+        125,
+        91,
+        34,
+        220000
+      ],
+      [
+        523645,
+        "firstLight",
+        23,
+        92,
+        66,
+        26,
+        155000
+      ],
+      [
+        523645,
+        "ribbonCrossing",
+        33,
+        122,
+        87,
+        35,
+        222000
+      ],
+      [
+        628374,
+        "firstLight",
+        23,
+        84,
+        58,
+        26,
+        152000
+      ],
+      [
+        628374,
+        "ribbonCrossing",
+        33,
+        113,
+        78,
+        35,
+        221000
+      ],
+      [
+        733103,
+        "firstLight",
+        23,
+        83,
+        58,
+        25,
+        155000
+      ],
+      [
+        733103,
+        "ribbonCrossing",
+        32,
+        117,
+        82,
+        35,
+        221000
+      ]
+    ]
+  },
+  "surrogateAlternatives": {
+    "kind": "Temporary model comparisons; not additional production validations.",
+    "results": [
+      {
+        "challenge": "firstLight",
+        "uncappedBalanced": {
+          "exchanges": 101,
+          "showers": 22,
+          "meanFirst21Occupancy": 15.762
+        },
+        "fourExchangeBalanced": {
+          "exchanges": 86,
+          "showers": 22,
+          "meanFirst21Occupancy": 20.905
+        },
+        "fourExchangeSpatialPairs": {
+          "exchanges": 85,
+          "showers": 23,
+          "score": 154000,
+          "setupExchanges": 59,
+          "scoringExchanges": 26
+        },
+        "twoStepHorizon": {
+          "outcome": "lost",
+          "showers": 7,
+          "score": 20000
+        }
+      },
+      {
+        "challenge": "ribbonCrossing",
+        "uncappedBalanced": {
+          "exchanges": 147,
+          "showers": 31,
+          "meanFirst21Occupancy": 14.095
+        },
+        "fourExchangeBalanced": {
+          "exchanges": 118,
+          "showers": 32,
+          "meanFirst21Occupancy": 20.19
+        },
+        "fourExchangeSpatialPairs": {
+          "exchanges": 120,
+          "showers": 32,
+          "score": 222000,
+          "setupExchanges": 84,
+          "scoringExchanges": 36
+        },
+        "twoStepHorizon": {
+          "outcome": "lost",
+          "showers": 9,
+          "score": 50000
+        }
+      }
+    ],
+    "pairDecision": "Rejected extra pair placement: exact two-of-each ten-star packets placed duplicated families in seeded adjacent column pairs. It produced 85/120 exchanges versus 86/118 for simpler balanced bags, with no consistent gain.",
+    "uncappedDecision": "Clearing whenever a long plan exists thins the board and increases setup work. The four-exchange cap retained more ingredients and reduced total exchanges. This is evidence about the modeled policies, not a recommendation to force waiting.",
+    "shortHorizonLimit": "Failure of a two-exchange search does not prove an impossible board. Six-exchange construction succeeds; human readability and required planning remain open."
+  },
+  "openAcceptance": [
+    "Measure human comprehension and decision time in the next phone session before extending these rules to later locations.",
+    "Both base wins use squares; Lantern also creates two crosses. No seven-star line occurs in either winning witness, so these runs do not establish practical long-line usefulness.",
+    "Five-family construction still averages more than two setup exchanges per scoring move. Reachability does not establish that Lantern feels gentle.",
+    "Native interaction, animation, actual VoiceOver, publication and physical-device installation have separate evidence in the parent report."
+  ]
+}

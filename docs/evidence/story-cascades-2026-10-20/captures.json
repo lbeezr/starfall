@@ -1,5 +1,5 @@
 {
-  "status": "Inspected sampled normal-motion frames",
+  "status": "Historical revision 2; inspected sampled normal-motion frames",
   "baseCommit": "c31d890f95616d4c24cf31b3668885ca97c2f8d7",
   "buildID": "dev.181bb2c16e",
   "displayedBuildID": "dev.local",
@@ -34,5 +34,6 @@
     "Sampled frames, not a frame-rate or physical comfort measurement",
     "Largest-text quiet Ribbon capture separately inspected in XCTest output",
     "No actual VoiceOver session"
-  ]
+  ],
+  "supersededBy": "../story-patterns-2026-10-20/captures.json"
 }

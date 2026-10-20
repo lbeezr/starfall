@@ -14,6 +14,14 @@ enum SkyCopy {
         (FallingSky.side - cell.row, cell.column + 1)
     }
 
+    /// Each mode supplies exactly the placeholders its summary consumes.
+    static func boardSummary(showers: Int, groups: Int, manualClears: Bool) -> String {
+        if manualClears {
+            return text(.a11yBoardSummary, values: ["showers": String(showers), "groups": String(groups)])
+        }
+        return text(.a11yPatternsBoardSummary, values: ["showers": String(showers)])
+    }
+
     enum Key: String, CaseIterable, Sendable {
         case balanceGentleShort = "balance.gentleShort"
         case balanceSteadyShort = "balance.steadyShort"
@@ -117,6 +125,17 @@ enum SkyCopy {
         case helpCascadeOpening = "help.cascadeOpening"
         case helpCascadeRecipe = "help.cascadeRecipe"
         case helpCascadeChain = "help.cascadeChain"
+        case helpPatternsTitle = "help.patternsTitle"
+        case helpPatternsControls = "help.patternsControls"
+        case helpPatternsRecipe = "help.patternsRecipe"
+        case helpPatternsChallenge = "help.patternsChallenge"
+        case helpPatternsRibbon = "help.patternsRibbon"
+        case helpPracticeModes = "help.practiceModes"
+        case a11yPatternsBoardSummary = "a11y.patternsBoardSummary"
+        case a11yPatternsHint = "a11y.patternsHint"
+        case a11yPatternsValue = "a11y.patternsValue"
+        case techniqueLine = "technique.line"
+        case celebrationLine = "celebration.line"
 
         case saveRejectedTitle = "save.rejectedTitle"
         case saveRejectedMessage = "save.rejectedMessage"

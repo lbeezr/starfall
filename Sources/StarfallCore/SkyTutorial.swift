@@ -130,6 +130,7 @@ public enum SkyTutorial: String, CaseIterable, Sendable, Identifiable {
     }
 
     public static func walk(_ recipe: StarRecipe) -> [Cell] {
+        if recipe.shape == .line { return recipe.cells }
         let rows = recipe.cells.map(\.row), columns = recipe.cells.map(\.column)
         if recipe.shape == .square {
             let r = rows.min()!, c = columns.min()!

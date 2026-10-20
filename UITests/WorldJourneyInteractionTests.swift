@@ -458,6 +458,13 @@ final class WorldJourneyInteractionTests: XCTestCase {
         tap("sky.begin", app)
         tap("experiment.settings", app); tap("experiment.pause", app)
         XCTAssertTrue(app.staticTexts["experiment.score"].label.contains("of 150,000"))
+        let beforeTap = app.otherElements["experiment.board"].value as? String
+        let beforeScore = app.staticTexts["experiment.score"].label
+        let inspected = app.buttons["experiment.cell.0.0"]
+        XCTAssertEqual(inspected.value as? String, "Automatic pattern play")
+        inspected.coordinate(withNormalizedOffset: .init(dx: 0.5, dy: 0.5)).tap()
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, beforeScore)
+        XCTAssertEqual(app.otherElements["experiment.board"].value as? String, beforeTap)
         drag(app, from: (1,1), to: (1,2), drawing: false)
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "15,000 of 150,000 starlight collected"), object: app.staticTexts["experiment.score"]).wait(timeout: 5))
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: app.buttons["experiment.cell.0.0"]).wait(timeout: 5))
@@ -486,6 +493,13 @@ final class WorldJourneyInteractionTests: XCTestCase {
         capture("story-ribbon-entry-actions-largest-text", app)
         tap("sky.begin", app)
         tap("experiment.settings", app); tap("experiment.pause", app)
+        let beforeTap = app.otherElements["experiment.board"].value as? String
+        let beforeScore = app.staticTexts["experiment.score"].label
+        let inspected = app.buttons["experiment.cell.0.0"]
+        XCTAssertEqual(inspected.value as? String, "Automatic pattern play")
+        inspected.coordinate(withNormalizedOffset: .init(dx: 0.5, dy: 0.5)).tap()
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, beforeScore)
+        XCTAssertEqual(app.otherElements["experiment.board"].value as? String, beforeTap)
         drag(app, from: (1,1), to: (1,2), drawing: false)
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "30,000 of 220,000 starlight collected"), object: app.staticTexts["experiment.score"]).wait(timeout: 5))
         capture("story-ribbon-thirty-thousand-largest-text", app)

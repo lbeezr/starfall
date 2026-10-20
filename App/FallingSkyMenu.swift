@@ -43,7 +43,7 @@ struct FallingSkyMenu: View {
                     } else {
                         HStack(spacing: StarfallTheme.Spacing.small) { roundActions }
                     }
-                    Text(SkyCopy.text(.a11yBoardSummary, values: ["showers": String(turns), "groups": String(groups)]))
+                    Text(SkyCopy.boardSummary(showers: turns, groups: groups, manualClears: helpContext.manualClears))
                         .font(StarfallTheme.Typography.supporting)
                         .foregroundStyle(StarfallTheme.Colors.textSecondary)
                         .fixedSize(horizontal: false, vertical: true)

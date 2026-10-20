@@ -5,6 +5,96 @@ import StarfallCore
 @testable import Starfall
 
 final class SkyTechniqueStoreTests: XCTestCase {
+    @MainActor func testPatternRoundTapInspectsWithoutChangingSaveClockOrProgressAndSwapStillScores() throws {
+        for challenge in [StarfallChallenge.firstLight, .ribbonCrossing] {
+            let suite = "Starfall.PatternInput.\(UUID())"
+            let defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
+            defer { defaults.removePersistentDomain(forName: suite) }
+            let opening = FallingSky.freshChallenge(challenge)
+            defaults.set(try SkySaveArchive.encode(opening), forKey: SkySaveArchive.key)
+            let presenter = FallingSkyRecorder(), clock = ManualRainClock(), feedback = SkyFeedbackRecorder()
+            let store = FallingSkyStore(defaults: defaults, arguments: [], presenter: presenter,
+                                       clock: clock, feedback: feedback)
+            store.setSuspended(false)
+            if store.isPaused { store.togglePause() }
+            let bytes = defaults.data(forKey: SkySaveArchive.key)
+            let deadline = clock.deadline
+            let journey = store.journey.journey
+            let generation = store.constellationInputGeneration
+            XCTAssertFalse(store.canClear)
+            XCTAssertFalse(store.canClear(Cell(0, 0)))
+            XCTAssertFalse(store.canTrace([Cell(0, 0)]))
+            XCTAssertNil(store.beginConstellationHold(at: Cell(0, 0)))
+            XCTAssertFalse(store.timingSnapshot.canTap)
+            XCTAssertEqual(store.timingSnapshot.admittedTapGroups, 0)
+            XCTAssertFalse(store.requestTap(Cell(0, 0)), "Inspecting never reports a committed board action")
+            store.clearTracedConstellation([Cell(0, 0), Cell(0, 1), Cell(1, 0), Cell(2, 0), Cell(3, 0)],
+                                          snapshot: opening, generation: generation)
+            XCTAssertEqual(store.guideLine.id, "guide.patterns-inspect.1")
+            XCTAssertEqual(store.game, opening)
+            XCTAssertEqual(defaults.data(forKey: SkySaveArchive.key), bytes)
+            XCTAssertEqual(store.journey.journey, journey)
+            XCTAssertEqual(clock.deadline, deadline)
+            XCTAssertEqual(store.constellationInputGeneration, generation)
+            XCTAssertEqual(feedback.clears, 0)
+            XCTAssertTrue(presenter.completions.isEmpty)
+            XCTAssertTrue(store.requestInput(.swap(Cell(1, 1), Cell(1, 2)),
+                                             snapshot: opening, generation: generation))
+            XCTAssertEqual(store.game.displayScore, challenge == .firstLight ? 15_000 : 30_000)
+            XCTAssertEqual(SkySaveArchive.load(from: defaults), store.game)
+            presenter.finish()
+            store.setSuspended(true)
+        }
+    }
+
+    @MainActor func testRetainedRevisionTwoStillAcceptsOrdinaryTaps() throws {
+        let suite = "Starfall.RetainedTap.\(UUID())"
+        let defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
+        defer { defaults.removePersistentDomain(forName: suite) }
+        let old = FallingSky(definition: try XCTUnwrap(StoryChallengeDefinition(.firstLight, revision: 2)))
+        defaults.set(try SkySaveArchive.encode(old), forKey: SkySaveArchive.key)
+        let presenter = FallingSkyRecorder()
+        let store = FallingSkyStore(defaults: defaults, arguments: [], presenter: presenter, clock: ManualRainClock())
+        store.setSuspended(false)
+        XCTAssertTrue(store.canClear)
+        XCTAssertTrue(store.canTrace([Cell(0, 0)]))
+        var expected = old
+        XCTAssertNotNil(expected.clear(Cell(0, 0)))
+        XCTAssertTrue(store.requestTap(Cell(0, 0)))
+        XCTAssertEqual(store.game, expected)
+        XCTAssertGreaterThan(store.game.displayScore, 0)
+        presenter.finish()
+        store.setSuspended(true)
+    }
+
+    @MainActor func testPatternContactKeepsSwipeAfterHoldWithoutArmingDrawing() throws {
+        let game = FallingSky.freshChallenge(.firstLight)
+        let mapping = LandingGeometry(size: CGSize(width: 390, height: 844))
+        let from = Cell(1, 1), to = Cell(1, 2)
+        let origin = mapping.viewPoint(from)
+        XCTAssertNil(ConstellationTraceHitTesting.start(at: origin, mapping: mapping, game: game))
+        var contact = ConstellationTouchSession()
+        XCTAssertTrue(contact.begin(at: origin, traceEligible: false, swapEligible: true, drawingEnabled: false))
+        XCTAssertFalse(contact.canHold)
+        XCTAssertEqual(contact.move(to: mapping.viewPoint(to), mapping: mapping), .swap(from, to))
+        XCTAssertEqual(contact.finish(at: mapping.viewPoint(to), mapping: mapping), .none)
+
+        let surface = ConstellationTraceSurface.Surface()
+        var drawingCallbacks = 0, swaps: [SkyPlayerInput] = []
+        surface.updateInput(.init(size: mapping.size, enabled: true, generation: 1, traceStart: { _ in nil },
+            tap: { _ in XCTFail("A held swipe cannot become a tap") },
+            begin: { _ in drawingCallbacks += 1 }, move: { _ in drawingCallbacks += 1 },
+            end: { drawingCallbacks += 1 }, cancel: {}, swapStart: { _ in true },
+            swap: { from, to, _ in swaps.append(.swap(from, to)) }, drawingEnabled: false))
+        let time = ProcessInfo.processInfo.systemUptime
+        surface.beginInput(at: origin, timestamp: time)
+        surface.armDrawing(ticket: surface.session.sequence, generation: 1, timestamp: time + 1)
+        surface.moveInput(to: mapping.viewPoint(to), timestamp: time + 1)
+        surface.endInput(at: mapping.viewPoint(to), timestamp: time + 1.1)
+        XCTAssertEqual(drawingCallbacks, 0)
+        XCTAssertEqual(swaps, [.swap(from, to)])
+    }
+
     @MainActor func testDrawingArmingFeedbackRequiresContactAndRespectsPreferences() throws {
         let suite = "Starfall.HoldFeedback.\(UUID())", defaults = UserDefaults(suiteName:suite)!
         defer { defaults.removePersistentDomain(forName:suite) }

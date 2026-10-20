@@ -2,7 +2,7 @@ import Foundation
 
 /// A recipe identifies the actual ingredients, not a screen-space outline.
 public struct StarRecipe: Equatable, Sendable, Identifiable {
-    public enum Shape: String, Codable, CaseIterable, Sendable { case square, cross }
+    public enum Shape: String, Codable, CaseIterable, Sendable { case square, cross, line }
     public let shape: Shape
     public let cells: [Cell]
     public let starIDs: Set<Int>
@@ -10,8 +10,9 @@ public struct StarRecipe: Equatable, Sendable, Identifiable {
 }
 
 extension StarRecipe {
-    /// Bounded by 36 squares + 25 crosses on a 7×7 sky. Extra surrounding stars are not spent.
-    static func find(in board: [StarfallGem?]) -> [StarRecipe] {
+    /// Retained rules discover 36 squares and 25 crosses. Revision three also
+    /// checks seven complete rows and seven complete columns; growth never adds cells.
+    static func find(in board: [StarfallGem?], includingLines: Bool = false) -> [StarRecipe] {
         func gem(at cell: Cell) -> StarfallGem? {
             guard (0..<7).contains(cell.row), (0..<7).contains(cell.column) else { return nil }
             return board[cell.row * 7 + cell.column]
@@ -29,12 +30,18 @@ extension StarRecipe {
             let cross = [Cell(row-1, column), Cell(row, column-1), origin, Cell(row, column+1), Cell(row+1, column)]
             if let recipe = make(.cross, cells: cross) { result.append(recipe) }
         } }
+        if includingLines {
+            for index in 0..<7 {
+                if let row = make(.line, cells: (0..<7).map { Cell(index, $0) }) { result.append(row) }
+                if let column = make(.line, cells: (0..<7).map { Cell($0, index) }) { result.append(column) }
+            }
+        }
         return result
     }
 }
 
 extension FallingSky {
-    public var recipes: [StarRecipe] { StarRecipe.find(in: board) }
+    public var recipes: [StarRecipe] { StarRecipe.find(in: board, includingLines: challengeRevision == 3) }
 
     public func recipes(containing cell: Cell) -> [StarRecipe] { recipes.filter { $0.cells.contains(cell) } }
 
