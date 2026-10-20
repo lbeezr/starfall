@@ -9,18 +9,17 @@ import StarfallCore
     private let smallSize: CGSize
     private let growthCue = SKNode()
     private var growthMotionEnabled = false
+    private var pieceMotionEnabled = true
     private static let growthPulseKey = "sky.growth-pulse"
-    private static let responseKey = "sky.character-response"
 
     init(gem: StarfallGem, step: CGFloat) {
         self.gem = gem
-        character = JewelScene.makeStarCharacter(.init(gem), expression: gem.grown ? .grown : .idle,
-                                                  radius: step * 0.35)
+        character = SkyPiece.makeNode(for: .init(gem), radius: step * StarfallMotion.pieceRadius)
         smallSize = character.size
         super.init()
         name = "sky.star.\(gem.id)"
         addChild(character)
-        makeGrowthCue(identity: .init(gem), step: step)
+        makeGrowthCue(identity: .init(gem))
         update(gem, expression: gem.grown ? .grown : .idle)
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -28,56 +27,43 @@ import StarfallCore
     func update(_ gem: StarfallGem, expression: StarCast.Expression) {
         self.gem = gem
         character.removeAllActions()
-        character.position = .zero; character.zRotation = 0; character.setScale(1)
-        character.warpGeometry = nil
+        cancelLocalMotion()
         let growth = Self.bodyScale(for: gem)
         character.size = CGSize(width: smallSize.width * growth, height: smallSize.height * growth)
         showExpression(expression)
         growthCue.isHidden = gem.value != 2
+        if let aura = growthCue.children.first as? SKSpriteNode {
+            aura.color = StarCast.Identity(gem).color
+            aura.size = CGSize(width: character.size.width * 1.28, height: character.size.height * 1.28)
+        }
         refreshGrowthMotion()
     }
 
     static func bodyScale(for gem: StarfallGem) -> CGFloat {
-        gem.massStage >= 3 ? 1.34 : gem.grown ? 0.43 / 0.35 : gem.massStage == 2 ? 1.10 : 1
+        // massStage also includes the raw grown flag. Aging and collected value
+        // need separate gates so a special role cannot inherit a double-value size.
+        let age = !gem.isDark && gem.gravityKind == nil ? gem.stellarAge : 0
+        if age >= CriticalMassRule.showersPerStage * 2 { return 1.34 }
+        if gem.value == 2 { return StarfallMotion.grownPieceRadius / StarfallMotion.pieceRadius }
+        return age >= CriticalMassRule.showersPerStage ? 1.10 : 1
     }
 
     func setDrainDecoration(_ drained: Bool) {
         growthCue.alpha = drained ? 0.16 : 1
     }
 
-    /// Cached body alpha supplies the exact family silhouette. No extra materials. Only the outer aura may animate.
-    /// Attached to the character so contact responses and landing transforms carry the cue too.
-    private func makeGrowthCue(identity: StarCast.Identity, step: CGFloat) {
+    /// One cached soft light field, never a second copy of the piece or a value badge.
+    /// It follows the child artwork's finite bank/contact pose around the same pivot.
+    private func makeGrowthCue(identity: StarCast.Identity) {
         growthCue.name = "sky.growth-cue"
         character.addChild(growthCue)
-        let side = smallSize.width * 0.43 / 0.35
-        for (index, scale) in [CGFloat(1.22), 1.10].enumerated() {
-            let echo = SKSpriteNode(texture: StarCast.texture(for: identity, expression: .idle))
-            echo.name = index == 0 ? "sky.growth-aura" : "sky.growth-rim"
-            echo.size = CGSize(width: side * scale, height: side * scale)
-            echo.color = StarfallTheme.GrownStar.light; echo.colorBlendFactor = 1
-            echo.alpha = index == 0 ? StarfallTheme.GrownStar.auraAlpha : StarfallTheme.GrownStar.rimAlpha
-            echo.position = CGPoint(x: -step * 0.025, y: step * 0.035)
-            echo.zPosition = CGFloat(index - 2)
-            growthCue.addChild(echo)
-        }
-        // Two fixed diamond glints read as a double-value cue without color or motion alone.
-        for (index, offset) in [CGPoint(x: -0.29, y: 0.32), CGPoint(x: 0.28, y: 0.25)].enumerated() {
-            let radius = step * (index == 0 ? 0.085 : 0.06)
-            let path = CGMutablePath()
-            path.move(to: CGPoint(x: 0, y: radius))
-            path.addLine(to: CGPoint(x: radius * 0.4, y: 0))
-            path.addLine(to: CGPoint(x: 0, y: -radius))
-            path.addLine(to: CGPoint(x: -radius * 0.4, y: 0))
-            path.closeSubpath()
-            let glint = SKShapeNode(path: path)
-            glint.name = "sky.growth-glint"
-            glint.position = CGPoint(x: offset.x * step, y: offset.y * step)
-            glint.fillColor = StarfallTheme.GrownStar.light
-            glint.strokeColor = .white; glint.lineWidth = 0.5
-            glint.zPosition = 1
-            growthCue.addChild(glint)
-        }
+        let aura = SKSpriteNode(texture: SkyPieceMotion.auraTexture)
+        aura.name = "sky.growth-aura"
+        aura.color = identity.color; aura.colorBlendFactor = 1
+        aura.alpha = StarfallTheme.GrownStar.auraAlpha
+        // Piece roots occupy z=1...7; every aura stays behind every opaque body.
+        aura.blendMode = .add; aura.zPosition = -8
+        growthCue.addChild(aura)
     }
 
     func setGrowthMotion(_ enabled: Bool) {
@@ -107,46 +93,49 @@ import StarfallCore
         aura.run(.repeatForever(pulse), withKey: Self.growthPulseKey)
     }
 
-    /// A face change preserves the in-flight/contact deformation owned by this child.
+    /// Existing presentation callers may request expressions; gameplay pieces stay faceless.
+    /// A committed material refresh preserves the in-flight/contact deformation.
     func showExpression(_ expression: StarCast.Expression, facing: StarCast.Facing = .front) {
-        StarCast.setExpression(expression, for: .init(gem), on: character, facing: facing)
+        SkyPiece.setMaterial(for: .init(gem), on: character)
     }
 
+    func setPieceMotion(_ enabled: Bool) {
+        pieceMotionEnabled = enabled
+        if !enabled { cancelLocalMotion() }
+    }
+
+    func cancelLocalMotion() {
+        SkyPieceMotion.reset(character)
+    }
+
+    func land(direction: CGFloat, step: CGFloat) {
+        guard pieceMotionEnabled else { return }
+        SkyPieceMotion.land(character, identity: .init(gem), direction: direction,
+                            step: step, grown: gem.grown)
+    }
+
+    /// Retained for focused Opal presentation tooling.
     func softenLanding() {
-        guard gem.isLight else { return }
-        character.removeAction(forKey: Self.responseKey)
+        guard pieceMotionEnabled, gem.isLight else { return }
+        cancelLocalMotion()
         character.warpGeometry = OpalMotion.squashed
-        character.run(OpalMotion.rebound(), withKey: Self.responseKey)
+        character.run(OpalMotion.rebound(), withKey: SkyPieceMotion.responseKey)
     }
 
     /// Finite, local response. Replacing it resets the local anchor rather than accumulating kicks.
     func acknowledge(from source: CGPoint, impulse: CGVector, step: CGFloat) {
-        guard gem.gravityKind != .magnet else { return }
-        character.removeAction(forKey: Self.responseKey)
-        character.position = .zero; character.zRotation = 0
-        character.warpGeometry = gem.isLight ? OpalMotion.round : nil
-        let facing: StarCast.Facing = source.x < position.x ? .left : .right
-        let expression: StarCast.Expression = gem.grown ? .grown : .idle
-        showExpression(.landing, facing: facing)
-        let kick = SKAction.move(to: CGPoint(x: impulse.dx * step, y: impulse.dy * step), duration: 0.055)
-        kick.timingMode = .easeOut
-        let back = SKAction.move(to: .zero, duration: 0.19)
-        back.timingMode = .easeInEaseOut
-        let softness: SKAction = gem.isLight ? OpalMotion.contact() : .wait(forDuration: 0)
-        character.run(.sequence([
-            .group([softness, .sequence([kick, back]),
-                    .sequence([.rotate(toAngle: impulse.dx * 0.65, duration: 0.055),
-                               .rotate(toAngle: 0, duration: 0.19)])]),
-            .run { [weak self] in
-                guard let self else { return }
-                self.showExpression(expression)
-            }
-        ]), withKey: Self.responseKey)
+        guard pieceMotionEnabled, gem.gravityKind == nil else { return }
+        SkyPieceMotion.respond(character, identity: .init(gem), direction: source.x < position.x ? -1 : 1,
+                               impulse: impulse, step: step)
     }
 }
 
 /// Presentation in cell units; no RNG, rule, save, or clock ownership.
 enum StarfallMotion {
+    static let pieceRadius: CGFloat = 0.35
+    // About .90 cell-step visible extent: 1.314× the normal body, without overlapping neighbors.
+    // Literal 2× at the current normal size would occupy about 1.38 cells.
+    static let grownPieceRadius: CGFloat = 0.46
     static let arrivalStagger: TimeInterval = 0.09
     static let flightDuration: TimeInterval = 0.48
     static let contactFraction: CGFloat = 0.80
@@ -193,7 +182,6 @@ enum StarfallMotion {
         let direction: CGFloat = column == 0 ? 1 : column == 6 ? -1 : id.isMultiple(of: 2) ? 1 : -1
         return direction * (id.isMultiple(of: 3) ? 1.5 : 0.85)
     }
-    static func rebound(dark: Bool, grew: Bool) -> CGFloat { dark ? 0.045 : grew ? 0.09 : 0.18 }
     static func resistance(_ gem: StarfallGem) -> CGFloat { gem.isDark ? 0.30 : gem.grown ? 0.55 : 1 }
     static func ripple(distance: CGFloat, collected: Int, heavy: Bool) -> CGFloat {
         guard distance > 0, distance < 3 else { return 0 }
@@ -218,6 +206,180 @@ enum StarfallMotion {
         private func mix(_ a: CGPoint, _ b: CGPoint, _ t: CGFloat) -> CGPoint {
             CGPoint(x: a.x + (b.x-a.x)*t, y: a.y + (b.y-a.y)*t)
         }
+    }
+}
+
+/// Shallow yaw/pitch use prewarmed perspective meshes, not a simulated 3D body.
+/// All responses are finite child-art actions; the scene keeps committed cell movement.
+@MainActor enum SkyPieceMotion {
+    static let responseKey = "sky.character-response"
+    static let flightKey = "sky.piece-flight"
+
+    struct Profile: Equatable {
+        let flightRoll: CGFloat
+        let yaw: CGFloat
+        let pitch: CGFloat
+        let impactWidth: CGFloat
+        let impactHeight: CGFloat
+        let rebound: CGFloat
+        let response: CGFloat
+    }
+
+    static func profile(for identity: StarCast.Identity) -> Profile {
+        switch identity {
+        case .colored(.aqua):
+            .init(flightRoll: 0.40, yaw: 0.42, pitch: 0.24, impactWidth: 1.10, impactHeight: 0.84, rebound: 0.14, response: 0.95)
+        case .colored(.amber):
+            .init(flightRoll: 0.16, yaw: 0.30, pitch: 0.44, impactWidth: 1.09, impactHeight: 0.89, rebound: 0.065, response: 0.52)
+        case .colored(.mint):
+            .init(flightRoll: 0.28, yaw: 0.48, pitch: 0.26, impactWidth: 1.04, impactHeight: 0.94, rebound: 0.035, response: 0.70)
+        case .colored(.rose):
+            .init(flightRoll: 0.22, yaw: 0.22, pitch: 0.30, impactWidth: 1.04, impactHeight: 0.88, rebound: 0.12, response: 1)
+        case .colored(.violet):
+            .init(flightRoll: 0.12, yaw: 0.32, pitch: 0.14, impactWidth: 1.05, impactHeight: 0.94, rebound: 0.05, response: 0.65)
+        case .dusk:
+            .init(flightRoll: -0.20, yaw: -0.36, pitch: 0.20, impactWidth: 1.03, impactHeight: 0.92, rebound: 0.04, response: 0.45)
+        case .opal:
+            .init(flightRoll: 0.07, yaw: 0, pitch: 0, impactWidth: 1, impactHeight: 1, rebound: 0.12, response: 1)
+        case .magnet, .hole:
+            .init(flightRoll: 0, yaw: 0, pitch: 0, impactWidth: 1, impactHeight: 1, rebound: 0, response: 0)
+        }
+    }
+
+    private static let source: [SIMD2<Float>] = [
+        SIMD2(0, 0), SIMD2(1, 0), SIMD2(0, 1), SIMD2(1, 1)
+    ]
+
+    /// Pure corner projection is also the testable bound on the shallow 2.5D pose.
+    static func perspectiveVertices(yaw: CGFloat, pitch: CGFloat) -> [SIMD2<Float>] {
+        source.map { point in
+            let x = CGFloat(point.x) - 0.5, y = CGFloat(point.y) - 0.5
+            let depth = x * sin(yaw) + y * sin(pitch)
+            let perspective = 1 / (1 + depth * 0.55)
+            return SIMD2(Float(0.5 + x * cos(yaw) * perspective),
+                         Float(0.5 + y * cos(pitch) * perspective))
+        }
+    }
+
+    private static func mesh(yaw: CGFloat, pitch: CGFloat) -> SKWarpGeometryGrid {
+        SKWarpGeometryGrid(columns: 1, rows: 1, sourcePositions: source,
+                           destinationPositions: perspectiveVertices(yaw: yaw, pitch: pitch))
+    }
+
+    private struct Poses {
+        let left: SKWarpGeometryGrid
+        let right: SKWarpGeometryGrid
+        let impact: SKWarpGeometryGrid
+        let responseLeft: SKWarpGeometryGrid
+        let responseRight: SKWarpGeometryGrid
+    }
+    private static let round = mesh(yaw: 0, pitch: 0)
+    private static var poses: [StarCast.Identity: Poses] = [:]
+
+    private static func poses(for identity: StarCast.Identity) -> Poses {
+        if let cached = poses[identity] { return cached }
+        let profile = profile(for: identity)
+        let value = Poses(
+            left: mesh(yaw: -profile.yaw, pitch: profile.pitch),
+            right: mesh(yaw: profile.yaw, pitch: profile.pitch),
+            impact: mesh(yaw: 0, pitch: -profile.pitch * 0.7),
+            responseLeft: mesh(yaw: -profile.yaw * 0.5, pitch: profile.pitch * 0.3),
+            responseRight: mesh(yaw: profile.yaw * 0.5, pitch: profile.pitch * 0.3))
+        poses[identity] = value
+        return value
+    }
+
+    /// One 128px alpha field shared by every family; no art duplication, IO or drawing per frame.
+    static let auraTexture: SKTexture = {
+        let side: CGFloat = 128
+        let format = UIGraphicsImageRendererFormat()
+        format.scale = 1; format.opaque = false; format.preferredRange = .standard
+        let image = UIGraphicsImageRenderer(size: CGSize(width: side, height: side), format: format).image { context in
+            let colors = [UIColor.white.cgColor, UIColor.white.withAlphaComponent(0.50).cgColor,
+                          UIColor.white.withAlphaComponent(0).cgColor] as CFArray
+            let gradient = CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: colors,
+                                      locations: [0, 0.45, 1])!
+            context.cgContext.drawRadialGradient(gradient, startCenter: CGPoint(x: side / 2, y: side / 2),
+                startRadius: 0, endCenter: CGPoint(x: side / 2, y: side / 2), endRadius: side / 2, options: [])
+        }
+        let texture = SKTexture(image: image)
+        texture.filteringMode = .linear; texture.usesMipmaps = false
+        return texture
+    }()
+
+    static func prewarm() {
+        _ = auraTexture
+        for identity in StarCast.Identity.allCases { _ = poses(for: identity) }
+        OpalMotion.prewarm()
+    }
+
+    static func reset(_ node: SKSpriteNode) {
+        node.removeAction(forKey: responseKey); node.removeAction(forKey: flightKey)
+        restorePose(node)
+    }
+
+    private static func restorePose(_ node: SKSpriteNode) {
+        node.position = .zero; node.zRotation = 0; node.setScale(1); node.warpGeometry = nil
+    }
+
+    static func prepareFlight(_ node: SKSpriteNode, identity: StarCast.Identity, direction: CGFloat) {
+        reset(node)
+        guard identity != .magnet && identity != .hole else { return }
+        let profile = profile(for: identity), poses = poses(for: identity)
+        let roll = profile.flightRoll * direction
+        node.subdivisionLevels = 2
+        node.zRotation = -roll
+        node.warpGeometry = identity == .opal ? OpalMotion.falling : direction < 0 ? poses.left : poses.right
+        let shape: SKAction = identity == .opal ? .wait(forDuration: StarfallMotion.flightDuration)
+            : .sequence([.warp(to: direction < 0 ? poses.right : poses.left, duration: 0.28)!,
+                         .warp(to: round, duration: 0.20)!])
+        node.run(.sequence([.group([shape, .sequence([
+            .rotate(toAngle: roll * 0.35, duration: 0.29),
+            .rotate(toAngle: 0, duration: 0.19)
+        ])]), .run { [weak node] in if let node { restorePose(node) } }]), withKey: flightKey)
+    }
+
+    static func land(_ node: SKSpriteNode, identity: StarCast.Identity, direction: CGFloat,
+                     step: CGFloat, grown: Bool) {
+        reset(node)
+        guard identity != .magnet && identity != .hole else { return }
+        let profile = profile(for: identity), poses = poses(for: identity)
+        node.subdivisionLevels = 2
+        node.warpGeometry = identity == .opal ? OpalMotion.squashed : poses.impact
+        node.xScale = profile.impactWidth; node.yScale = profile.impactHeight
+        node.zRotation = profile.flightRoll * direction * 0.28
+        let rebound = profile.rebound * (grown ? 0.55 : 1) * step
+        let rise = SKAction.move(to: CGPoint(x: direction * rebound * 0.24, y: rebound), duration: 0.10)
+        rise.timingMode = .easeOut
+        let settle = SKAction.move(to: .zero, duration: 0.18); settle.timingMode = .easeInEaseOut
+        let shape: SKAction = identity == .opal ? OpalMotion.rebound() : .warp(to: round, duration: 0.28)!
+        let scale: SKAction = identity == .opal ? .wait(forDuration: 0)
+            : .sequence([.scaleX(to: 0.98, y: 1.03, duration: 0.10), .scaleX(to: 1, y: 1, duration: 0.18)])
+        node.run(.sequence([.group([
+            shape, .sequence([rise, settle]),
+            scale,
+            .sequence([.rotate(toAngle: -node.zRotation * 0.5, duration: 0.11), .rotate(toAngle: 0, duration: 0.17)])
+        ]), .run { [weak node] in if let node { restorePose(node) } }]), withKey: responseKey)
+    }
+
+    static func respond(_ node: SKSpriteNode, identity: StarCast.Identity, direction: CGFloat,
+                        impulse: CGVector, step: CGFloat) {
+        reset(node)
+        let profile = profile(for: identity), poses = poses(for: identity)
+        node.subdivisionLevels = 2
+        node.warpGeometry = identity == .opal ? OpalMotion.round : round
+        let kick = SKAction.move(to: CGPoint(x: impulse.dx * step * profile.response,
+                                             y: impulse.dy * step * profile.response), duration: 0.055)
+        kick.timingMode = .easeOut
+        let back = SKAction.move(to: .zero, duration: 0.19); back.timingMode = .easeInEaseOut
+        let shape: SKAction = identity == .opal ? OpalMotion.contact() : .sequence([
+            .warp(to: direction < 0 ? poses.responseLeft : poses.responseRight, duration: 0.055)!,
+            .warp(to: round, duration: 0.19)!
+        ])
+        let angle = (profile.flightRoll * direction * 0.25 + impulse.dx * 0.65) * profile.response
+        node.run(.sequence([.group([shape, .sequence([kick, back]),
+            .sequence([.rotate(toAngle: angle, duration: 0.055), .rotate(toAngle: 0, duration: 0.19)])
+        ]), .run { [weak node] in if let node { restorePose(node) } }]), withKey: responseKey)
     }
 }
 

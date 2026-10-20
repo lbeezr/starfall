@@ -8,6 +8,8 @@ Use a high three-quarter overhead view with an orthographic-like projection, no 
 
 **First application:** [Frostfruit Orchard](../frostfruit-orchard-06/README.md) used this guide for its three bespoke compositions, then revised them against native stars and controls before state derivation. Accepted fit is qualitative; it does not establish a measured 55° projection in generated paintings. Continue applying the [layout guides](README.md) and native review to each new composition. Preserve the registered camera of existing families, including rich Silver Pools; this guidance does not call for repainting them.
 
+**Body-specimen status: Needs refresh.** This camera construction and the source-bound Frostfruit board/layout guides remain applicable; the kit's `StarCastSunny` material and old grown-radius **0.43** specimen do not describe the adopted faceless pieces. Current nominal radii are **0.35 ordinary / 0.46 grown**, with grown visible extent about **0.903 cell spacing** after body registration. Follow the [production contract](../star-cast/README.md#motion-material-and-growth), [native shard specimens and motion evidence](../../evidence/gameplay-shards-2026-10-20/README.md) and the [kit's refresh action](README.md#regenerate-the-guides) before relying on body-scale overlays.
+
 ![55-degree orthographic construction reference showing a projected square and circular pool, a thick platform with an upright arch and stairs, and the camera's side elevation](camera-reference.png)
 
 **Construction reference — not game artwork or runtime evidence.** [Download the scalable SVG](camera-reference.svg). Its square floor is a measuring object, not a visible board proposal.
@@ -22,7 +24,7 @@ Use a high three-quarter overhead view with an orthographic-like projection, no 
 | Horizon | None in the artwork. Distant sky, clouds and peripheral terrain continue beyond the crop. The ground baseline in the plate's side diagram is a measurement guide. |
 | New device compositions | Phone, iPad portrait and iPad landscape share this vantage. Recompose paths, supports, near/far layers and crop for each format; do not tilt the camera to create space. |
 | Restoration states | Lock camera, scale, framing and terrain positions within each five-painting family. Change the authored restoration features. |
-| Gameplay | Native stars remain screen-facing billboards. No diamond rotation, projected cell grid, perspective scaling or moved hit cells. |
+| Gameplay | Native pieces retain screen-space board geometry. No diamond rotation, projected cell grid, perspective scaling of the board or moved hit cells. Finite yaw/pitch/roll of child artwork is presentation motion, not a change to the scene camera or native targets. |
 
 “Isometric” is too ambiguous for a production prompt here. This is an overhead illustration with a defined construction camera, not a requirement for the equal-axis, diamond-grid appearance often associated with isometric art.
 
@@ -62,6 +64,6 @@ Illustration may exaggerate a rim, widen a step or turn a small prop to expose i
 
 - Apply the working projection to one rich completed composition. Check its native overlays before deriving the other four states; keep the camera registered for those edits.
 - Inspect top/front/side faces, step rises and arch feet together. A local prop adjustment must retain a plausible shared ground plane and contact.
-- Review the real sparse/dense cast and native UI overlays in each device format. Camera consistency alone does not establish gameplay contrast or safe framing; those remain owned by the layout guides and native acceptance.
+- Review the real sparse/dense gameplay pieces and native UI overlays in each device format, including grown bodies and their auras. Camera consistency alone does not establish gameplay contrast or safe framing; those remain owned by the layout guides and native acceptance.
 
 This document and SVG change no app camera, rules, assets or runtime transforms. No new native or motion validation is claimed.

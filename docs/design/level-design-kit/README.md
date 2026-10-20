@@ -6,6 +6,8 @@ Each level should feel like a substantial, connected place: crafted terrain, use
 
 Start with the [reusable brief](BRIEF.md), the [layout overview](overview.png), [camera construction](CAMERA.md) and the references below. The templates describe particular native layouts; they do not certify every viewport, text size or painting. **Next action:** compose a rich restored master, inspect it against the appropriate geometry, then check it in the native app before deriving the remaining states.
 
+**Material and body-scale specimens: Needs refresh after shard adoption.** The compiled board/cell geometry and Frostfruit source-layout guides remain useful within their recorded source and viewport bounds. Their `StarCastSunny` specimen and old normal/grown body fractions are historical artwork/scale references. Use the [current piece contract](../star-cast/README.md#motion-material-and-growth) and [inspected native material/motion evidence](../../evidence/gameplay-shards-2026-10-20/README.md) for faceless gameplay pieces; this kit does not yet certify shard body scale.
+
 ## The visual standard
 
 <img src="../../../App/Assets.xcassets/LanternLanding100.imageset/scene.png" width="220" alt="Lantern Landing's substantial wooden deck connects to a path at the top right, with a closer bridge across the foreground">
@@ -16,7 +18,7 @@ Start with the [reusable brief](BRIEF.md), the [layout overview](overview.png), 
 - **Give the place a purpose.** A common garden shares water; a landing receives arrivals. Paths, ledges, mechanisms and planted beds should explain how the place works. Build supporting clusters around a few decisive subjects, with recognizable silhouettes and physical connections.
 - **Make material visible in the shape.** Thick stone rims, broad timber planks, stitched cloth and glass edges should differ in construction as well as color. Supports, contact shadows, joins and useful top/side faces give objects weight. Small detail supports the large forms.
 - **Frame through terrain and depth.** Continue paths beyond the crop and use nearer foreground structures to place the viewer within the world. Keep one coherent camera and continuous painting. The readable center may contain restrained texture; do not manufacture a blank rectangle, middle mask, fog divider or rigid decorative frame.
-- **Protect play through composition.** Put the sharpest scenic highlights and important silhouettes where they support the setting without obscuring star faces or matching groups. Shape and shade the architecture around native UI. Preserve its detail rather than globally shrinking the garden or the stars.
+- **Protect play through composition.** Put the sharpest scenic highlights and important silhouettes where they support the setting without obscuring gameplay silhouettes or matching groups. Shape and shade the architecture around native UI. Preserve its detail rather than globally shrinking the garden or the stars.
 
 ## Read the geometry, then judge the art
 
@@ -28,7 +30,7 @@ Start with the [reusable brief](BRIEF.md), the [layout overview](overview.png), 
 | [Overview](overview.png) | Compare the three reference compositions together |
 | [Native layout values](native-layouts.json) | Exact dimensions and configuration behind the guides |
 | [Camera reference](CAMERA.md) | Consistent overhead vantage, projection, orientation and no visible horizon |
-| [Star scale reference](scale-reference.svg) | Compare architecture and restoration details with the actual star scale |
+| [Star scale reference](scale-reference.svg) | **Needs refresh:** historical `StarCastSunny` specimen and old growth sizing; use the current native shard specimen linked above for body-scale judgments |
 
 The guides are authoring overlays, never artwork to package. Their exact reference geometry comes from the native layout contract; the color regions express different design priorities:
 
@@ -40,7 +42,7 @@ The guides are authoring overlays, never artwork to package. Their exact referen
 | **Violet edge markers** | HUD at the viewport top; dialogue and actions at the bottom. These schematic markers are **not measured coverage bounds**. Actual content, safe insets and text size determine their extent. Architecture may continue behind these surfaces, but do not place the only story-critical change there. |
 | **Hatching** | Viewport crop/inset exposure. Do not rely on detail in this region surviving every fit. |
 
-Use the actual star width, not the full cell square, as the visual ruler. The current small body's nominal diameter is about **0.70 cell**, and a grown body's about **0.86 cell**; texture padding and the growth aura extend farther. [FallingSkyMotion](../../../App/FallingSkyMotion.swift) and [StarCast](../../../App/StarCast.swift) own that presentation. Check both ordinary and grown stars when comparing a rail, flower, stream or important finish cue with the scale reference. These proportions are source facts, not permission to change star size.
+Use the actual piece width, not the full cell square, as the visual ruler. Current [FallingSkyMotion](../../../App/FallingSkyMotion.swift) uses nominal radii of **0.35 cell ordinary / 0.46 cell grown**, replacing the kit's old grown radius of **0.43**. Nominal diameters are therefore **0.70 / 0.92 cell**. [SkyPiece](../../../App/SkyPiece.swift) shares the 212-pixel registration contract with bodies spanning at most 208 pixels, giving visible maximum extents of approximately **0.687 / 0.903 cell**; the separate aura extends farther. The retained kit specimen still depicts `StarCastSunny` at **0.70 / 0.86** nominal diameters. Compare rails, flowers, streams and finish cues with the [actual native shard specimen](../../evidence/gameplay-shards-2026-10-20/dev-9e0732a__piece-materials__iphone-17e__native-host.png), then inspect ordinary and grown pieces in motion. These source facts do not authorize changing piece size.
 
 [LandingGeometry](../../../App/LandingGeometry.swift) owns the board and cell mapping. [FallingSkyView](../../../App/FallingSkyView.swift) can use expanded scrolling canvases for compact viewports and accessibility text. [RestorationEnvironment](../../../App/RestorationEnvironment.swift) fits each complete painting using its actual dimensions. Device orientation, canvas shape, safe insets and Dynamic Type can therefore change the visible crop and text arrangement. Exact values for one guide do not establish universal safe space. Bleed and prop-scale recommendations still need native visual and input checks.
 
@@ -62,7 +64,7 @@ A 0% place may be quiet, drained or dormant while retaining its crafted structur
 
 - [ ] At phone size, the image reads as a connected place with substantial architecture, purposeful supporting details and near/far depth.
 - [ ] Each format retains the same identity, material language and restoration story; the wide view is deliberately composed.
-- [ ] Sparse and full native boards keep all star faces, growth cues and matching groups readable; representative real taps use the unchanged cell mapping.
+- [ ] Sparse and full native boards keep all piece silhouettes, growth cues and matching groups readable; representative real taps use the unchanged cell mapping.
 - [ ] Default and largest supported text, compact scrolling, HUD, dialogue and result actions remain readable. No sole progress or finish cue is hidden by UI or crop.
 - [ ] All five states stay registered and build cumulatively. The 75% setup and 100% resolution are distinguishable without relying only on color.
 - [ ] The complete painting remains continuous. No mask, hard middle cut, flattened panel or reduced star size was introduced to make it fit.
@@ -79,6 +81,8 @@ The [Hearthstone study](../environments/hearthstone-study/README.md) supplies us
 **Seed Moon is a future candidate for a richer composition review.** The user's comparison during Silver Pools production motivated that follow-up. Seed Moon's richer treatment remains deferred outside the Frostfruit batch; this kit does not itself replace its shipped art. This kit also does not change rules, saves, native control roles or the [world atlas](../WORLD_ATLAS.md). The repository’s [level-design skill](../../../.agents/skills/starfall-level-design/SKILL.md) routes future location work through this kit.
 
 ## Regenerate the guides
+
+Before the next location relies on this kit's body-scale specimens, the current implementer must update the generator's `StarCastSunny` material and old **0.70 / 0.86** fractions to the production `SkyPiece` registration and motion-owned radius contract, regenerate the affected specimens/overlays, and inspect sparse/dense native boards with ordinary and grown pieces. Running the current generator alone reproduces the old body specimens. Camera construction and the existing Frostfruit geometry evidence retain their separate validity.
 
 Run `swift test` to build Core, then `python3 scripts/level-design-kit.py` from the repository root using an environment with Pillow. The generator compiles `App/LandingGeometry.swift` with the export adapter and records source hashes. `--layouts-json` accepts an explicit prior export for offline reproduction. It preserves any original `sourceSHA256` values and marks geometry ownership unverified; `generationSourceSHA256` describes only the files present while making the guides. Compile a fresh export before relying on its geometry for new art. SVG point-sized panels and `source-*.svg` artwork-pixel panels have separate coordinate systems. The latter show center-cover baseline crop exposure; final focal fitting must still be inspected in the app. Generated guide files are owned by this folder’s generator and need no individual folder front doors.
 

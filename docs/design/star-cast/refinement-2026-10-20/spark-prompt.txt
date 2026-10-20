@@ -1,0 +1,23 @@
+Use case: stylized-concept.
+Asset type: individual game-character expression and movement concept sheet, NOT a production sprite atlas or runtime evidence.
+Reference image: the supplied Starfall "Bigger, Brighter" cast and contrast study. Use ONLY Spark, the tall aqua four-point crystal at the far left, as character identity/material reference. Do not reproduce the lineup or the other characters.
+
+Create a polished landscape 1536x1024 or larger sheet with a midnight-navy background, restrained cream serif title "SPARK", smaller cream subtitle "Curious • Quick • Four-point aqua crystal", and a perfectly organized FOUR COLUMNS by FOUR ROWS layout of 16 isolated poses. Thin subtle horizontal dividers and clean small cream labels; generous empty gutters; no scenery, decorative motifs or extra illustrations. All 16 poses depict the SAME character with consistent four-point topology and broad crystal facets.
+
+Spark is a tall aqua crystal with exactly FOUR rays: one elongated top point, one elongated bottom point, and shorter left/right points. Front-view width is about 0.82 of height. Sapphire/aqua material, broad clean facets, quiet uncluttered face plane, upper-left pearl highlights and slightly deeper teal/indigo lower-right bevel shading. Fine luminous edges, no thick black outline. Soft expressive navy eyes with restrained blue reflections, small purposeful eyebrows and a simple mouth. Curious, observant, quick and a little delighted at discoveries. Keep facial proportions and facet layout consistent across all poses. No limbs or costumes.
+
+Precise composition: normal poses in rows 1, 2 and 4 are approximately 105 pixels tall on a 1536x1024 sheet. The grown poses in row 3 are approximately 210 pixels tall: literally TWICE the body height AND width of the ordinary front pose, not just a brighter copy and not two bodies. Allow row 3 more vertical space. One centered body per cell. Every tip, face and aura fully visible with generous margins; no overlaps between cells.
+
+ROW 1, labels left to right: "IDLE" / "LOOK LEFT" / "LOOK RIGHT" / "BLINK".
+IDLE: alert open eyes and a tiny delighted smile, poised vertically. LOOK LEFT and LOOK RIGHT: subtle real shallow yaw with near/far facet depth and eyes looking in the named direction; keep the four rays, not a flat image merely squashed. BLINK: BOTH eyes completely closed as clean relaxed curved eyelids, no visible iris or pupil.
+
+ROW 2, labels: "ANTICIPATE" / "FALL" / "CONTACT" / "REBOUND".
+ANTICIPATE: slight compacting, upward attentive gaze, interested eyebrows. FALL: visibly stretched vertically, streamlined body, excited open mouth and downward-focused eyes; exactly four rays. CONTACT: visibly compressed vertically and wider, curious surprised face; squash the existing four rays rather than add rays. REBOUND: lifted, lightly stretched and subtly tilted, relieved smile. Show readable differences between all four silhouettes, preserving the same crystal identity and facets.
+
+ROW 3, labels: "TWO LIGHTS FRONT" / "TWO LIGHTS LEFT" / "TWO LIGHTS RIGHT" / "QUIET GLOW".
+All four show the grown Spark: one body twice the ordinary dimensions, confident bright expression, and a centered diffuse circular/radial AQUA aura BEHIND the body that smoothly fades into the navy. Front and opposite shallow-yaw facings. QUIET GLOW has the same large body and a calm expression with a steady gentle aura. Aura is soft luminous air, not another star silhouette, not a hard ring and not a floor ellipse. The facet edges remain singular and crisp.
+
+ROW 4, labels: "JOY" / "SHARE LIGHT" / "DRIFT" / "REST".
+Return to ordinary-sized bodies. JOY: delighted closed smiling eyes and small open smile. SHARE LIGHT: warm purposeful smile, soft light gently leaving one lower ray as a short diffuse tapered glow, intact body. DRIFT: slight tilt and relaxed content gaze, gently departing, no speed scribbles. REST: calm closed eyes and tiny relaxed smile. No pose shatters, dissolves, cracks, explodes or loses a ray.
+
+AVOID: paired lights or dots on the torso, raised bumps, gems or badges on the chest, nipples, floating diamonds, sparkles, companion stars, duplicate outlines, offset body echoes, hard halo rings, floor shadows, feet, hands, limbs, costumes, numbers on bodies, extra points, visible eyes in BLINK, tiny unreadable labels, overbusy fractured facets, whitewashed faces, motion trails shaped like extra bodies, cropped tips, uneven grid, characters from other games.

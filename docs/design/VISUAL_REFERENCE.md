@@ -2,6 +2,8 @@
 
 **Selected UI reference:** The [Observatory parity refinement](../evidence/observatory-ui-parity-2026-10-20/README.md) follows the [game UI system](GAME_UI_SYSTEM.md) with a quieter HUD, one authored menu frame and rendered utility icons. Its [ten inspected native stills](../evidence/observatory-ui-parity-2026-10-20/captures.json) span `dev.e5980859cf`, `dev.93ae37d0b8`, `dev.beb612a874` and `dev.22a4a0f991`; source snapshots and subsequent changes are explicit. These samples do not certify every atlas state or the final source. Release, publication, motion and physical acceptance remain separate. The [initial native integration](../evidence/observatory-ui-native-2026-10-19/README.md) retains its own delivery history; replaced menu, HUD and reading-surface chrome is historical.
 
+**Gameplay artwork:** [Faceless pieces and family motion](../evidence/gameplay-shards-2026-10-20/README.md) documents seven distinct shard/orb forms in the forecast, flight and board. Traditional Crystal Glow characters remain in dialogue, map and ceremonies, coordinated by family color. Grown gameplay pieces use one enlarged body and one diffuse aura. The linked record owns exact sources and integration results; older faced-board captures retain their historical scope.
+
 **Current authoring guidance:** [Level-design kit](level-design-kit/README.md) preserves Lantern Landing / Ribbon Crossing’s substantial connected scenes, with native layout templates, camera and scale references. These are design overlays, not native evidence. Silver Pools is development-verified; its initial sparse direction was rejected and the richer garden approved.
 
 **Silver Pools:** The fifth optional challenge has [development evidence](../evidence/silver-pools-2026-10-19/README.md) for all fifteen native states, dense 49-star input, phone/tablet/compact interaction, largest text/system Reduce Motion, normal-motion finish and Release. Source `aabd673` (native-equivalent `84ae918`), runtime `dev.98f8ba82e6`. The early pool cue is muted beneath the phone/portrait HUD; lower white controls remain readable but cross brighter scenery. [PR #178](https://github.com/lbeezr/starfall/pull/178) is merged; the [canonical receipt](../evidence/silver-pools-2026-10-19/delivery.json) verifies installation of `dev.98f8ba82e6` from main `47ff6ba` at 20:00:30 UTC. Main CI was pending; physical play, measured contrast and actual VoiceOver remain separate.
@@ -20,9 +22,9 @@ The [approved scene kits](environments/scene-kits-07/README.md) and [painted nig
 
 **Status:** Reference · **Updated:** October 20, 2026
 
-Selected icon, screens and six-star cast, with links to their sources. **Source-bound references, not current-build certification:** check the linked source before drawing conclusions about current UI. Native composition and sampled normal motion are inspected for the nightscapes; actual VoiceOver, physical comfort and release acceptance remain separate checks. Follow [screenshot retention](../SCREENSHOTS.md) when replacing a visual.
+Selected icon, screens, gameplay pieces and story cast, with links to their sources. **Source-bound references, not current-build certification:** check the linked source before drawing conclusions about current UI. Native composition and sampled normal motion are inspected for the nightscapes; actual VoiceOver, physical comfort and release acceptance remain separate checks. Follow [screenshot retention](../SCREENSHOTS.md) when replacing a visual.
 
-[Icon](#adopted-app-icon) · [Current UI](#observatory-native-ui) · [Historical screens](#historical-welcome-and-entry) · [Cast](#current-crystal-glow-cast)
+[Icon](#adopted-app-icon) · [Current UI](#observatory-native-ui) · [Historical screens](#historical-welcome-and-entry) · [Gameplay pieces](#faceless-gameplay-pieces) · [Story cast](#current-crystal-glow-cast)
 
 **Environment redesign references:** The [five celestial homes](environments/celestial-worlds-04/README.md) propose a new astronomical setting roster around the crystal cast. They retain the accepted [living-worlds template](environments/living-worlds-03/README.md), whose earlier setting roster is superseded. The [Hearthstone study](environments/hearthstone-study/README.md) supplies the research. These are concept/reference artifacts, not runtime evidence or replacements for the source-bound captures below.
 
@@ -46,6 +48,8 @@ Status follows [the screenshot practice](../SCREENSHOTS.md). These legacy filena
 
 | Surface | Status | Selected evidence / next check |
 | --- | --- | --- |
+| Gameplay pieces | Current for inspected `9e0732a` phone materials, motion and dense board | [Shard evidence](../evidence/gameplay-shards-2026-10-20/README.md) and [capture sources/hashes](../evidence/gameplay-shards-2026-10-20/captures.json) separate native small-size materials, seven-family motion and grown-body spacing from integration checks. The [dense board](../evidence/gameplay-shards-2026-10-20/dev-9e0732a__dense-board__iphone-17e__default.png) includes historical Dusk/drained test states; fresh survival remains unchanged. Faces remain on story characters. Physical recognition, minimum-OS rendering and actual VoiceOver remain separate acceptance. |
+
 | Frostfruit Orchard | Current for sampled combined-source checks; earlier captures historical | [Development evidence](../evidence/frostfruit-orchard-2026-10-20/README.md) and [capture index](../evidence/frostfruit-orchard-2026-10-20/captures.json) separate combined Observatory/Frostfruit inputs `6aee65e` / `dev.bd94e46b80` from pre-integration `bede49c` / `f7b5c71` captures. The source paintings are unchanged; fresh checks own combined HUD, icons, menus and adaptive results. Actual VoiceOver, full RC and physical gameplay remain separate. |
 | Observatory UI | Needs refresh for final-source certification; inspected candidate samples retained | [Parity evidence](../evidence/observatory-ui-parity-2026-10-20/README.md) and [ten capture sources/hashes](../evidence/observatory-ui-parity-2026-10-20/captures.json) cover HUD, settings, tutorial, reading, result and tablet home at four recorded runtimes. Later changes, Help and unpictured variants require their own comparison. No still certifies motion or device acceptance. |
 | Home / welcome | Current for sampled tablet landscape composition; other variants need refresh | [Three-mode home](../evidence/observatory-ui-parity-2026-10-20/dev-beb612a874__home__ipad-air11__landscape.png), `dev.beb612a874`, base `d0dfcc1` plus recorded inputs, iPad Air 11-inch (M3) / iOS 27.0 Simulator. The captured `SkyFlowCeremony` source remains unchanged at this review; this does not certify later shared layout changes or phone variants. |
@@ -141,17 +145,23 @@ Status follows [the screenshot practice](../SCREENSHOTS.md). These legacy filena
 
 **Launch screen:** A static dark storyboard and opaque app root share a named color. [Batch 1 native launch recordings and limits](../evidence/screen-flow-polish-2026-10-17/README.md) show the tested phone sequences; the opening board above remains gameplay, not a splash capture.
 
+## Faceless gameplay pieces
+
+<img src="../evidence/gameplay-shards-2026-10-20/dev-9e0732a__piece-materials__iphone-17e__native-host.png" width="700" alt="Native seven-family gameplay material review at 24, 36 and 44 points on dark and light backgrounds, with silhouettes, grayscale and single-body growth comparisons">
+
+**Inspected native SpriteKit export — integrated source `9e0732a`, [source record](../evidence/gameplay-shards-2026-10-20/source.json), runtime `dev.local`, iPhone 17e / iOS 27.0 Simulator.** Seven faceless contours remain distinct at the sampled sizes. Dusk retains its violet contour on navy; Opal relies more on its pink/lilac rim against light ground. The bottom row compares ordinary and enlarged bodies with one soft aura; special roles retain their normal size. [Motion and verification evidence](../evidence/gameplay-shards-2026-10-20/README.md) separately records sampled finite actions, interruption cleanup, integration status and remaining device/accessibility acceptance.
+
 ## Current Crystal Glow cast
 
 <img src="../evidence/crystal-glow-integration-2026-10-17/materials.png" width="640" alt="Native Crystal Glow six-family cast export with large blue eyes, faceted bodies and four expressions">
 
-**Native renderer export — source `6cc9efd`, iPhone 17e / iOS 27.0.** The user approved the Crystal Glow masters; [integration evidence](../evidence/crystal-glow-integration-2026-10-17/README.md) separates final material/interaction/motion checks from baseline accessibility failures and unverified device acceptance. The older cast exports below remain historical references.
+**Retained story-character reference — native renderer export, source `6cc9efd`, iPhone 17e / iOS 27.0.** The user approved the Crystal Glow masters; these faced characters remain in dialogue, map and ceremonies. [Original integration evidence](../evidence/crystal-glow-integration-2026-10-17/README.md) retains its source-bound material/interaction/motion checks, baseline accessibility failures and unverified device acceptance. Its former gameplay routing is superseded by the faceless pieces above.
 
 ## Historical cast comparisons
 
 Crystal Glow supersedes the older body rendering. The [motion-candidate sheets](../evidence/star-cast-motion-2026-10-17/README.md) and [luminous revision](../evidence/star-cast-luminous-2026-10-17/README.md) remain historical comparison evidence; do not use them as the current cast reference. Their source and unresolved checks stay with those reports.
 
-The [production cast contract](star-cast/README.md) owns names and recognition cues; the [runtime factory](../../App/StarCast.swift) owns rendering. Normal stars are worth 1, grown stars 2, dark stars 0. A contact sheet shows poses; it cannot demonstrate falling or turning motion.
+The [production cast contract](star-cast/README.md) owns names and recognition cues. [StarCast](../../App/StarCast.swift) owns story materials; [SkyPiece](../../App/SkyPiece.swift) owns the faceless forecast, flight and board materials. Normal pieces are worth 1, grown pieces 2, dark pieces 0. A contact sheet shows poses; it cannot demonstrate falling or turning motion.
 
 ## Reuse these visuals
 

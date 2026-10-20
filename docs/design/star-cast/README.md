@@ -1,46 +1,45 @@
-# Starfall cast — production rendering contract
+# Starfall cast and gameplay pieces
 
-**Direction approved:** Crystal Glow, October 17, 2026. The user approved the [six character masters](crystal-glow/characters/README.md) and requested integration. Native acceptance is recorded separately in the [integration evidence](../../evidence/crystal-glow-integration-2026-10-17/README.md).
+**October 20 production pass — adopted for development.** The user approved [traditional characters paired with seven varied faceless pieces](characters-and-shards-2026-10-20/README.md). Gameplay uses the shard silhouettes; story, ceremony and the map keep their original face-bearing characters. The [motion contract](characters-and-shards-2026-10-20/MOTION.md) defines observable acceptance.
 
-The production renderer combines nine packaged transparent celestial cutouts with authored expressive faces. [StarCast.swift](../../../App/StarCast.swift) remains the shared owner for board, falling stars, HUD and previews. The [body production plate, exact prompt and packaging receipts](../../../Artwork/StarCast/README.md) make the raster inputs reproducible. Model/expression sheets are design masters, not loaded sprite atlases. No paid asset, external SDK or runtime image generation is used.
+![Approved characters and faceless pieces, including round white Opal](characters-and-shards-2026-10-20/pairing-v2-opal.png)
 
-| Saved kind | Character | Recognition and temperament |
+Concept reference. The [transparent production source and packaging receipts](../../../Artwork/StarCast/README.md) identify the actual runtime inputs; the reference board is not a gameplay capture.
+
+| Saved identity | Character | Faceless gameplay silhouette |
 | --- | --- | --- |
-| aqua | Spark | Tall four-point aqua crystal; curious open eyes |
-| amber | Sunny | Balanced five-point amber crystal; friendly face |
-| mint | Pip | Compact six-point mint crystal; raised eyebrow |
-| rose | Twinkle | Eight alternating rose rays; gentle brow |
-| violet | Nova | Wide four-point violet crystal; sleepy eyelids |
-| nil/dark | Dusk | Concave five-point dark crystal, lilac rim; mischievous brow |
+| aqua | Spark, curious four-point star | Swept comet with two fused trailing tapers |
+| amber | Sunny, friendly five-point star | Blunt irregular solar chunk |
+| mint | Pip, inquisitive six-point star | Asymmetric meteor wedge |
+| rose | Twinkle, gentle eight-ray star | Tall pinched diamond |
+| violet | Nova, relaxed wide four-point star | Broad low lens |
+| dark | Dusk, playful concave five-point star | Dark folded shard with opposing notches |
+| light | Opal, pearly round character | Smooth white opalescent orb |
 
-Names and point counts are presentation cues. Normal stars remain worth 1, grown stars 2 and dark stars 0. Core rules, RNG, saves and body sizes are unchanged. Grown board stars now carry a warm luminous double silhouette and two fixed diamond glints; [readability evidence](../../evidence/grown-star-readability-2026-10-17/README.md) records checks and limits. Existing VoiceOver descriptions retain color, shape, name, position and value. Dusk's grown expression is a reusable material slot, not a new rule.
+Normal colored pieces remain worth 1, grown colored pieces 2, Dusk 0 and Opal 1. Core rules, RNG, saved identities, matching and hit cells are unchanged. Current skies do not age automatically; retained Dusk/gravity rounds keep their existing behavior. Drained pieces retain their original-family edge and native family description while their center becomes gray.
 
-**Dusk update:** Matching weight remains 1/2, but touching stars/Opals become gray and score zero. A thin original-color edge and native shape/name preserve family recognition; grown glints remain. Three feeding marks, inward strokes and a growing halo/core communicate the bounded collapse. [Current Dusk contract](../DUSK_FEEDING.md).
+## Two artwork roles
 
-## Body, face and shadow ownership
+[SkyPiece.swift](../../../App/SkyPiece.swift) owns the faceless materials shared by forecast, airborne arrival and settled board. Seven `SkyPiece` image sets are cached once, with the existing Field and Hole sharing their original faceless textures. State changes reuse the same body image and preserve its pivot. Accessibility names describe the new silhouette and familiar family name.
 
-The offline packaging tool splits the transparent plate, keeps each body's largest connected alpha island, normalizes coverage and fits its existing proportions into a centered 256×256 canvas. Body extent is at most 208 pixels, inside the existing 212-pixel display-size contract. It removes stray disconnected glints rather than carrying neighboring cutout fragments into the game. No labels or ground shadows are packaged.
+[StarCast.swift](../../../App/StarCast.swift) retains the original Crystal Glow characters for story, ceremony and world-map use. Dialogue portraits retain their existing dedicated assets. The seven characters keep four expression slots and three shallow facings; Field and Hole share one material per object. Character expressions are not added to the gameplay pieces. The original [character masters](crystal-glow/characters/README.md) and [integration evidence](../../evidence/crystal-glow-integration-2026-10-17/README.md) remain source-bound references.
 
-The seven faced star identities have four expression slots (idle, landing, grown, clearing) and three facings (front, left, right). Large navy eyes have blue lower gradients, pupils and catchlights. Nova and Dusk retain distinct idle eyelids; eyebrows distinguish Pip and Twinkle. Landing is surprised, grown is open-eyed happy, clearing uses closed happy eyes. Source-atop composition changes color without changing body alpha, including translucent edge coverage.
+Offline packaging isolates each connected body, normalizes existing alpha coverage and fits its proportions into a 256×256 canvas, with a centered 128/128 pivot and maximum 208-pixel body span. No face, label, loose sparkle, ground shadow or aura is packaged in a gameplay body. Source-region extraction preserves Nova's wide tip; equal grid slicing would clip it. These are cutouts, not expression atlases.
 
-Partial turns remain shallow 2D presentation: horizontal compression and face offset around a stable 128/128 pivot. They are not a full 3D mesh, profile or rear rotation. Construction views and motion poses in the approved masters guide production; unsupported views are not added speculatively. Existing flight, squash/stretch, rebound, neighbor reactions, growth and clearing timing remain owned by the scene.
+## Motion, material and growth
 
-Ground shadows are separate scene nodes, with a dark compact contact core and softer wider pool. Existing clear/gravity/rebuild actions own their lifetime. Shadows do not determine rules or legal destinations. The shared Observatory projection continues to own scene, native hit and accessibility coordinates; no depth-based character scaling or board geometry change is introduced by this cast integration.
+The material has luminous facets, a bright upper bevel and a deeper colored lower edge. Shallow renderer meshes create yaw/pitch; finite rotation and local rebound create contact response. These are 2D presentation turns, not full 3D backs or moving-light simulation. Opal keeps its soft teardrop/squash meshes. The [family motion table](characters-and-shards-2026-10-20/MOTION.md#motion-direction) records the intended distinctions. Pieces return to a stable rest rather than continuously wobbling.
 
-The grown cue belongs to `FallingSkyCharacter`, attached beneath its sprite so local reactions and landing transforms carry the entire cue. Two tinted echoes reuse the cached idle texture's exact body alpha; two small diamond glints sit above the body. Four cue children are allocated once per character and hidden for ordinary/dark stars. Expression changes preserve the active pulse; render, clear and restart dispose of the cue with the character. Only the outer echo opacity breathes over 2.8 seconds (0.14–0.34), with a stable per-ID presentation phase across scene rebuilds. The rim, glints and body stay steady. One keyed SpriteKit action per grown star is canceled for Calm effects, Reduce Motion, VoiceOver, suspension, scene detachment and replacement; quiet mode restores alpha 0.24. No new texture cache, particles, timers or tasks are introduced. [Current-main pulse evidence](../../evidence/grown-star-readability-2026-10-17/PULSE.md).
+`FallingSkyCharacter` presents one body with a separate cached radial light field when grown. The previous offset body copies and paired diamond glints are removed. Growth scales the nominal radius from 0.35 to 0.46 cell spacing: approximately 1.31× linear size, with visible maximum extent around 0.90 spacing after texture padding. This deliberately keeps ordinary pieces readable and adjacent grown pieces separable; it is not literal double width. Aura strength may breathe in normal motion and stays static in quiet modes. Floating pieces have no floor shadows.
 
-## Bounded resources and lifecycle
+Stores still own committed outcomes, deadlines and persistence. Scene movement follows those outcomes. Only local child artwork responds to contact; its transform cannot select a cell, score or shower. Replacement and quiet-mode transitions cancel local actions and restore neutral transforms; scene teardown removes flight and growth effects.
 
-A main-actor material cache prewarms before the first shower: at most 86 UIImage/SKTexture pairs, each 256×256. Their base RGBA8 rasters total 22,544,384 bytes; nine cached source bodies add 2,359,296 nominal RGBA8 bytes. These are source-raster bounds, not total process/GPU memory measurements. Asset-catalog decoding and material drawing occur on cache creation, never per frame. No new particles, observers, tasks, frame callbacks or clocks are introduced.
+## Bounded resources
 
-`StarCast.setExpression` preserves sprite size and anchor. Stores still coordinate committed outcomes, persistence and interruption. Scene replacement, restart, backgrounding, menu dismissal, calm effects, system Reduce Motion and VoiceOver keep the existing presenter/generation contracts. Classic Debug jewel rendering keeps its existing crystal factory.
+The gameplay cache contains nine material references: seven new 256-pixel images plus two shared historical gravity materials. Seven new base RGBA8 images add 1,835,008 nominal bytes, plus one 128-pixel radial aura (65,536 bytes). The story material cache retains its existing upper bound of 86 UIImage/SKTexture pairs and nine original body sources. These are raster bounds, not measured total GPU/process memory. Decoding, image drawing and mesh construction happen outside per-frame paths. Finite SpriteKit actions reuse cached textures and meshes; no new game clock, observer or service is introduced.
 
-## Verification and historical references
+## Verification and history
 
-Run `swift test`, hosted `StarCastTests`, `FallingSkyStoreTests`, `ObservatoryGeometryTests`, affected `FallingSkyInteractionTests` and `ObservatoryInteractionTests`, plus Debug/Release simulator builds. Hosted exports include the actual runtime cast at 24/36/44-point sizes and twelve-frame sheets. Inspect native gameplay captures and full motion separately; a contact sheet cannot prove animation.
+Use the repository [verification matrix](../../ENGINEERING.md#verification-by-change). Hosted checks cover both artwork roles, actual packaged bodies, motion reset/cancellation and landing handoff. UI checks exercise the normal scene and shared native hit mapping; Debug/Release builds check target membership and resources. Inspected native captures and sampled normal animation remain distinct from actual VoiceOver and physical feel.
 
-The earlier [paper-like concept](approved-concept.png), [first integration](../../evidence/star-cast-2026-10-17/README.md), [luminous revision](../../evidence/star-cast-luminous-2026-10-17/README.md) and [motion revision](../../evidence/star-cast-motion-2026-10-17/README.md) remain historical evidence for their recorded source. Crystal Glow supersedes their body rendering, retaining the shared material, shape identity and animation contracts.
-
-## Production gravity objects
-
-Attraction Field and Hole use packaged generated cutouts through the same material loader. Their fixed faceless materials deliberately share one cache entry per object across all expression/facing requests; no arrow glyph or alternate renderer remains. The open field has translucent wisps and no solid center, star points, contact shadow or physical bounce. Its blue-gold light connects it visually with the hole’s accretion ribbon. Theme owns matching light colors; finite scene/child-art actions present convergence, formation and rotation without changing Core, saves or hit coordinates. [Sources/prompts/packaging](../../../Artwork/StarCast/README.md#magnetic-crystal-and-gravity-hole) and [native acceptance](../../evidence/gravity-art-2026-10-17/README.md) record the asset and runtime boundaries.
+The [October 20 expression review](refinement-2026-10-20/README.md), [three design directions](directions-2026-10-20/README.md) and [rejected whole-star study](whole-star-study-2026-10-20/README.md) retain the decision history. The original [paper-like concept](approved-concept.png), [first integration](../../evidence/star-cast-2026-10-17/README.md), [luminous revision](../../evidence/star-cast-luminous-2026-10-17/README.md) and [motion revision](../../evidence/star-cast-motion-2026-10-17/README.md) describe earlier sources. Earlier grown-cue screenshots and pulse evidence are historical for artwork after this pass.

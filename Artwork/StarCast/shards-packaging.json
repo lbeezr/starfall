@@ -1,0 +1,152 @@
+{
+  "generator": "built-in image_gen",
+  "sourceSHA256": "e81f2983a33c5e1914433265cc77e4c911a5493b8b707b630c2a061caf7033ec",
+  "promptSHA256": "730205cdd627cd47728ebb1ed4cd42f6640493cfca2fe5ee692d1a2f5d03425a",
+  "reference": "docs/design/star-cast/characters-and-shards-2026-10-20/pairing-v2-opal.png",
+  "referenceSHA256": "3e5b77ddf75ca5c3c20bc817e145d0dc29530ec6e7885d96d98a742f40e7d14c",
+  "canvas": [
+    256,
+    256
+  ],
+  "pivot": [
+    128,
+    128
+  ],
+  "maximumBodyExtent": 208,
+  "operations": "Crop source regions, keep largest alpha island, normalize alpha range, aspect-preserving fit. No repainting.",
+  "frames": {
+    "Spark": {
+      "sourceBounds": [
+        40,
+        76,
+        419,
+        422
+      ],
+      "bodySize": [
+        208,
+        190
+      ],
+      "sha256": "6940e41a6a4b25dc586b0e23be904eef6ad3be6660f017994fc68007d12e2e21",
+      "sourceRegion": [
+        0,
+        0,
+        450,
+        455
+      ]
+    },
+    "Sunny": {
+      "sourceBounds": [
+        21,
+        65,
+        393,
+        416
+      ],
+      "bodySize": [
+        208,
+        196
+      ],
+      "sha256": "4fe7290281c35aff5f4c2ccda987771d7b079e48d2fe7b3b70515ed3791f5557",
+      "sourceRegion": [
+        450,
+        0,
+        880,
+        455
+      ]
+    },
+    "Pip": {
+      "sourceBounds": [
+        19,
+        96,
+        395,
+        404
+      ],
+      "bodySize": [
+        208,
+        170
+      ],
+      "sha256": "22a500fcb69bde908df04556b13481dd06b8b4a798d73a1e615e32ca8cac51a8",
+      "sourceRegion": [
+        880,
+        0,
+        1320,
+        455
+      ]
+    },
+    "Twinkle": {
+      "sourceBounds": [
+        78,
+        34,
+        389,
+        441
+      ],
+      "bodySize": [
+        159,
+        208
+      ],
+      "sha256": "6712aa601a9a30c18ed9b0c084506b675e72f32303753056736107ca4c62c2da",
+      "sourceRegion": [
+        1320,
+        0,
+        1774,
+        465
+      ]
+    },
+    "Nova": {
+      "sourceBounds": [
+        33,
+        73,
+        458,
+        343
+      ],
+      "bodySize": [
+        208,
+        132
+      ],
+      "sha256": "8686dd622cc2ef5657e045211bf0afc9742a5ab6cd4446b157184307265ef2fa",
+      "sourceRegion": [
+        0,
+        465,
+        480,
+        887
+      ]
+    },
+    "Dusk": {
+      "sourceBounds": [
+        22,
+        18,
+        391,
+        392
+      ],
+      "bodySize": [
+        205,
+        208
+      ],
+      "sha256": "46de286aec68d91ab40269cb83668e30ad75a13f2fa3ed7c1c6f729a957bd134",
+      "sourceRegion": [
+        480,
+        455,
+        900,
+        887
+      ]
+    },
+    "Opal": {
+      "sourceBounds": [
+        24,
+        42,
+        368,
+        387
+      ],
+      "bodySize": [
+        207,
+        208
+      ],
+      "sha256": "9d85097013be940164cce734531a1c357b0f0ee2ee28e621baf9006995098baa",
+      "sourceRegion": [
+        900,
+        455,
+        1320,
+        887
+      ]
+    }
+  }
+}

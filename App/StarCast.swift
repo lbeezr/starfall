@@ -2,8 +2,9 @@ import UIKit
 import SpriteKit
 import StarfallCore
 
-/// Crystal Glow cutouts with authored expressions. Core Jewel raw values and saves stay unchanged.
-/// One material owner supplies SpriteKit and SwiftUI; no per-frame drawing or asset IO.
+/// Traditional Crystal Glow characters for story, ceremonies and the world map.
+/// Gameplay uses SkyPiece; Core Jewel raw values and saves stay unchanged.
+/// Cached materials supply SpriteKit and SwiftUI without per-frame drawing or asset IO.
 @MainActor enum StarCast {
     /// A presentation identity distinguishes the two colorless Core roles.
     enum Identity: Hashable, CaseIterable {

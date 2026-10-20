@@ -19,7 +19,7 @@ import StarfallCore
 
     override init(size: CGSize) {
         super.init(size: size)
-        StarCast.prewarm(); OpalMotion.prewarm()
+        SkyPiece.prewarm(); SkyPieceMotion.prewarm()
         scaleMode = .resizeFill; backgroundColor = .clear
         addChild(grid); addChild(pieces); addChild(effects)
         effects.zPosition = 20
@@ -38,7 +38,8 @@ import StarfallCore
         reportReadiness()
     }
     override func willMove(from view: SKView) {
-        for node in nodes.values { node.setGrowthMotion(false) }
+        for node in nodes.values { node.setGrowthMotion(false); node.setPieceMotion(false) }
+        cancelFlightPoses()
         onReadinessChanged?(false); onLayout?()
     }
 
@@ -55,22 +56,40 @@ import StarfallCore
     private func makeNode(_ gem: StarfallGem) -> FallingSkyCharacter {
         let node = FallingSkyCharacter(gem: gem, step: step)
         node.setGrowthMotion(growthMotionEnabled)
+        node.setPieceMotion(pieceMotionEnabled)
         return node
     }
 
-    private var growthMotionEnabled: Bool {
+    private var pieceMotionEnabled: Bool {
         decorativeMotionActive && !reduceMotion && !UIAccessibility.isReduceMotionEnabled
-            && !UIAccessibility.isVoiceOverRunning && rendered?.isOver != true
+            && !UIAccessibility.isVoiceOverRunning
+    }
+
+    private var growthMotionEnabled: Bool {
+        pieceMotionEnabled && rendered?.isOver != true
     }
 
     private func refreshGrowthMotion() {
-        for node in nodes.values { node.setGrowthMotion(growthMotionEnabled) }
+        for node in nodes.values {
+            node.setGrowthMotion(growthMotionEnabled)
+            node.setPieceMotion(pieceMotionEnabled)
+        }
+        if !pieceMotionEnabled { cancelFlightPoses() }
+    }
+
+    private func cancelFlightPoses() {
+        for flight in effects.children where flight.name?.hasPrefix("sky.flight.") == true {
+            for sprite in flight.children.compactMap({ $0 as? SKSpriteNode }) {
+                SkyPieceMotion.reset(sprite)
+            }
+        }
     }
 
     /// A removed character may still finish its exit animation; its idle decoration ends now.
     private func takeCharacter(_ id: Int) -> FallingSkyCharacter? {
         let node = nodes.removeValue(forKey: id)
         node?.setGrowthMotion(false)
+        node?.setPieceMotion(false)
         return node
     }
 
@@ -97,7 +116,7 @@ import StarfallCore
         rendered = game
         if !preservingInput { constellationTrail.removeAllChildren(); showBufferedInput(nil) }
         removeAllActions(); effects.removeAllChildren(); effects.removeAllActions()
-        for node in nodes.values { node.setGrowthMotion(false) }
+        for node in nodes.values { node.setGrowthMotion(false); node.setPieceMotion(false) }
         pieces.removeAllChildren(); grid.removeAllChildren(); nodes.removeAll(); cellsByID.removeAll()
         animatingColumns.removeAll()
         renderColumns(Set(0..<7), from: game)
@@ -234,13 +253,13 @@ import StarfallCore
             guard distance > 0, distance < step * 3 else { continue }
             let strength = StarfallMotion.ripple(distance: distance / step, collected: turn.collected,
                                                 heavy: gem.isDark || gem.grown) * step
-            let kick = CGPoint(x: origin.x + delta.x / distance * strength,
-                               y: origin.y + delta.y / distance * strength)
-            let outward = SKAction.move(to: kick, duration: 0.055)
-            outward.timingMode = .easeOut
-            let recover = SKAction.move(to: origin, duration: 0.11)
-            recover.timingMode = .easeInEaseOut
-            node.run(.sequence([.wait(forDuration: StarfallMotion.gatherDuration + Double(distance / step) * 0.025), outward, recover]),
+            let impulse = CGVector(dx: delta.x / distance * strength / step,
+                                   dy: delta.y / distance * strength / step)
+            let sourcePoint = point(source), spacing = step
+            node.run(.sequence([.wait(forDuration: StarfallMotion.gatherDuration + Double(distance / step) * 0.025),
+                                .run { [weak node] in
+                                    node?.acknowledge(from: sourcePoint, impulse: impulse, step: spacing)
+                                }]),
                      withKey: "sky.ripple")
         } }
     }
@@ -290,19 +309,12 @@ import StarfallCore
         halo.strokeColor = color.withAlphaComponent(arrival.star.isLight ? 0.10 : 0.5)
         halo.glowWidth = arrival.star.isLight ? 3 : 9
         comet.addChild(halo)
-        let traveler = JewelScene.makeStarCharacter(.init(arrival.star), expression: .landing, radius: step * 0.35)
-        if arrival.star.isLight {
-            traveler.subdivisionLevels = 2
-            traveler.warpGeometry = OpalMotion.falling
-        }
-        traveler.zRotation = arrival.star.id.isMultiple(of: 2) ? -0.12 : 0.12
-        traveler.run(.group([
-            StarCast.turnAction(for: .init(arrival.star), expression: .landing,
-                                toward: arrival.star.id.isMultiple(of: 2) ? .left : .right, duration: StarfallMotion.flightDuration),
-            .rotate(toAngle: 0, duration: StarfallMotion.flightDuration)
-        ]))
-        comet.addChild(traveler)
         let drift = StarfallMotion.drift(for: arrival.star.id, column: arrival.cell.column) * step
+        let traveler = SkyPiece.makeNode(for: .init(arrival.star), radius: step * StarfallMotion.pieceRadius)
+        if pieceMotionEnabled {
+            SkyPieceMotion.prepareFlight(traveler, identity: .init(arrival.star), direction: drift < 0 ? -1 : 1)
+        }
+        comet.addChild(traveler)
         comet.position = CGPoint(x: point(arrival.cell).x - drift, y: size.height + step)
         // Align the tail with the actual incoming vector.
         comet.zRotation = atan2(drift, comet.position.y - point(arrival.cell).y)
@@ -312,12 +324,13 @@ import StarfallCore
         let receiverCell = receiver.flatMap { cellsByID[$0.gem.id] }
         let contact: CGPoint? = receiverCell.map { cell in
             let anchor = point(cell)
-            if arrival.grew { return CGPoint(x: anchor.x - drift * 0.05, y: anchor.y + step * 0.70) }
+            let receiverRadius = StarfallMotion.pieceRadius * (receiver.map { FallingSkyCharacter.bodyScale(for: $0.gem) } ?? 1)
+            let combinedRadius = step * (StarfallMotion.pieceRadius + receiverRadius)
+            if arrival.grew { return CGPoint(x: anchor.x - drift * 0.05, y: anchor.y + combinedRadius) }
             if cell.row == arrival.cell.row {
-                let radius = step * (0.35 + (receiver?.gem.grown == true ? 0.43 : 0.35))
-                return CGPoint(x: anchor.x + (destination.x > anchor.x ? radius : -radius), y: anchor.y + step * 0.12)
+                return CGPoint(x: anchor.x + (destination.x > anchor.x ? combinedRadius : -combinedRadius), y: anchor.y + step * 0.12)
             }
-            return CGPoint(x: anchor.x + drift * 0.08, y: anchor.y + step * 0.68)
+            return CGPoint(x: anchor.x + drift * 0.08, y: anchor.y + combinedRadius * 0.97)
         }
         let flight = StarfallMotion.Flight(start: comet.position, destination: destination, contact: contact, step: step)
         let fall = SKAction.customAction(withDuration: StarfallMotion.flightDuration) { node, elapsed in
@@ -362,10 +375,6 @@ import StarfallCore
         let existing = nodes[arrival.gem.id]
         let node = existing ?? makeNode(arrival.gem)
         node.update(arrival.gem, expression: .landing)
-        node.run(.sequence([.wait(forDuration: 0.12), .run { [weak node] in
-            guard let node else { return }
-            node.showExpression(arrival.gem.grown ? .grown : .idle)
-        }]))
         let destination = point(arrival.cell)
         node.position = destination
         node.zPosition = CGFloat(7-arrival.cell.row)
@@ -378,21 +387,8 @@ import StarfallCore
         }
         light(at: destination, color: StarCast.Identity(arrival.star).color,
               strength: arrival.gem.isDark ? 0.25 : arrival.grew ? 1 : 0.65)
-        node.xScale = arrival.gem.isLight ? 1 : 1.13
-        node.yScale = arrival.gem.isLight ? 1 : 0.78
-        node.zRotation = arrival.gem.isLight ? 0 : arrival.gem.id.isMultiple(of: 2) ? -0.10 : 0.10
-        node.softenLanding()
-        let rebound = (arrival.gem.isLight ? 0.12 : StarfallMotion.rebound(dark: arrival.gem.isDark, grew: arrival.grew)) * step
         let drift = StarfallMotion.drift(for: arrival.star.id, column: arrival.cell.column) * step
-        let bounce = SKAction.move(to: CGPoint(x: destination.x + drift * 0.10, y: destination.y + rebound), duration: 0.10)
-        bounce.timingMode = .easeOut
-        let settle = SKAction.move(to: destination, duration: 0.18)
-        settle.timingMode = .easeInEaseOut
-        node.run(.group([
-            .sequence([bounce, settle]),
-            arrival.gem.isLight ? .wait(forDuration: 0) : .sequence([.scaleX(to: 0.94, y: 1.08, duration: 0.12), .scaleX(to: 1, y: 1, duration: 0.16)]),
-            .sequence([.rotate(toAngle: -node.zRotation * 0.6, duration: 0.12), .rotate(toAngle: 0, duration: 0.16)])
-        ]))
+        if pieceMotionEnabled { node.land(direction: drift < 0 ? -1 : 1, step: step) }
     }
 }
 

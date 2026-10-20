@@ -56,7 +56,7 @@ final class StarCastTests: XCTestCase {
         let root = try XCTUnwrap(scene.children[1].childNode(withName: "sky.star.\(gem.id)") as? FallingSkyCharacter)
         let cue = try XCTUnwrap(root.character.childNode(withName: "sky.growth-cue"))
         let aura = try XCTUnwrap(cue.childNode(withName: "sky.growth-aura"))
-        let rim = try XCTUnwrap(cue.childNode(withName: "sky.growth-rim"))
+        XCTAssertEqual(cue.children.count, 1, "Growth uses one radial aura, never another body or glints")
         let size = root.character.size
         var minimum = CGFloat(1), maximum = CGFloat(0)
         let deadline = ContinuousClock.now + .seconds(4)
@@ -64,8 +64,6 @@ final class StarCastTests: XCTestCase {
             minimum = min(minimum, aura.alpha); maximum = max(maximum, aura.alpha)
             XCTAssertGreaterThanOrEqual(aura.alpha, 0.139)
             XCTAssertLessThanOrEqual(aura.alpha, 0.341)
-            XCTAssertEqual(rim.alpha, StarfallTheme.GrownStar.rimAlpha, accuracy: 0.000001)
-            XCTAssertFalse(rim.hasActions())
             XCTAssertEqual(root.character.size, size)
             XCTAssertEqual(root.character.xScale, 1)
             XCTAssertEqual(root.character.zRotation, 0)
@@ -74,7 +72,7 @@ final class StarCastTests: XCTestCase {
         XCTAssertGreaterThan(maximum - minimum, 0.18, "A full-motion aura must visibly breathe")
         let action = try XCTUnwrap(aura.action(forKey: "sky.growth-pulse"))
         root.update(gem, expression: .landing)
-        XCTAssertTrue(aura.action(forKey: "sky.growth-pulse") === action, "Face changes must preserve pulse phase")
+        XCTAssertTrue(aura.action(forKey: "sky.growth-pulse") === action, "Material refresh must preserve pulse phase")
         scene.reduceMotion = true
         XCTAssertFalse(aura.hasActions())
         XCTAssertEqual(aura.alpha, StarfallTheme.GrownStar.auraAlpha, accuracy: 0.000001)
@@ -110,10 +108,28 @@ final class StarCastTests: XCTestCase {
             let cue = try XCTUnwrap(node.character.childNode(withName: "sky.growth-cue"))
             XCTAssertTrue(cue.isHidden)
             XCTAssertTrue(cue.children.allSatisfy { !$0.hasActions() })
+            let expected = SkyPiece.makeNode(for: .init(gem), radius: 45 * StarfallMotion.pieceRadius)
+            XCTAssertEqual(node.character.size, expected.size, "Special objects cannot imply a double-value body")
+        }
+        // Retained critical-mass saves have real stellar age, independently of a growth flag.
+        for fresh in [StarfallGem(id: 1, kind: .amber), StarfallGem(id: 2, kind: nil, light: true)] {
+            var previousWidth: CGFloat?
+            for age in [0, CriticalMassRule.showersPerStage, CriticalMassRule.showersPerStage * 2] {
+                var object = try XCTUnwrap(JSONSerialization.jsonObject(with: JSONEncoder().encode(fresh)) as? [String: Any])
+                if age > 0 { object["savedStellarAge"] = age }
+                let aged = try JSONDecoder().decode(StarfallGem.self, from: JSONSerialization.data(withJSONObject: object))
+                let root = FallingSkyCharacter(gem: aged, step: 45)
+                if let previousWidth {
+                    XCTAssertGreaterThan(root.character.size.width, previousWidth, "Historical age must still advance the body stage")
+                }
+                previousWidth = root.character.size.width
+                XCTAssertEqual(aged.value, 1, "Historical size does not award a second light")
+                XCTAssertTrue(try XCTUnwrap(root.character.childNode(withName: "sky.growth-cue")).isHidden)
+            }
         }
     }
 
-    @MainActor func testDoubleValueCueSurvivesExpressionsWithoutAccumulatingInQuietMode() throws {
+    @MainActor func testDoubleValueUsesOneLargerBodyAndOneAuraWithoutAccumulatingInQuietMode() throws {
         for step in [CGFloat(32), 45, 64] {
             for kind in Jewel.allCases.map(Optional.some) + [nil] {
                 let ordinary = StarfallGem(id: 1, kind: kind)
@@ -121,20 +137,27 @@ final class StarCastTests: XCTestCase {
                 let node = FallingSkyCharacter(gem: ordinary, step: step)
                 let cue = try XCTUnwrap(node.character.childNode(withName: "sky.growth-cue"))
                 XCTAssertTrue(cue.isHidden)
-                let echoes = cue.children.compactMap { $0 as? SKSpriteNode }
-                XCTAssertEqual(echoes.count, 2)
-                XCTAssertEqual(cue.children.filter { $0.name == "sky.growth-glint" }.count, 2)
+                let aura = try XCTUnwrap(cue.childNode(withName: "sky.growth-aura") as? SKSpriteNode)
+                XCTAssertEqual(cue.children.count, 1)
+                XCTAssertFalse(aura.texture === node.character.texture, "The aura must not be a duplicated silhouette")
+                let bodyTexture = node.character.texture
                 let normalSize = node.character.size
                 for _ in 0..<20 {
                     for expression in StarCast.Expression.allCases {
                         node.update(grown, expression: expression)
                         XCTAssertEqual(cue.isHidden, kind == nil, "Dark stars never imply double value")
-                        XCTAssertEqual(cue.children.count, 4)
+                        XCTAssertEqual(cue.children.count, 1)
+                        XCTAssertEqual(node.children.count, 1, "Growth keeps one piece body")
                         XCTAssertFalse(cue.hasActions())
                         XCTAssertTrue(cue.children.allSatisfy { !$0.hasActions() })
-                        XCTAssertTrue(echoes.allSatisfy { $0.size.width > node.character.size.width })
-                        // Includes the cached texture's transparent canvas padding.
-                        XCTAssertLessThan(node.calculateAccumulatedFrame().width, step * 1.35)
+                        XCTAssertTrue(node.character.texture === bodyTexture)
+                        if kind != nil {
+                            XCTAssertGreaterThan(node.character.size.width, normalSize.width)
+                            let visibleWidth = node.character.size.width * SkyPiece.silhouetteSide / CGFloat(SkyPiece.rasterSide)
+                            XCTAssertLessThan(visibleWidth, step, "The enlarged body must retain clearance between adjacent cells")
+                        } else {
+                            XCTAssertEqual(node.character.size, normalSize)
+                        }
                         XCTAssertEqual(node.position, .zero)
                     }
                 }
@@ -143,7 +166,7 @@ final class StarCastTests: XCTestCase {
                 XCTAssertEqual(node.character.size, normalSize)
             }
         }
-        XCTAssertEqual(StarCast.cachedMaterialCount, StarCast.maximumMaterials)
+        XCTAssertLessThanOrEqual(SkyPiece.cachedMaterialCount, SkyPiece.maximumMaterials)
     }
 
 
@@ -299,8 +322,10 @@ final class StarCastTests: XCTestCase {
     }
 
     @MainActor func testSkyReactionWeightsAndBounds() {
-        XCTAssertLessThan(StarfallMotion.rebound(dark: true, grew: false), StarfallMotion.rebound(dark: false, grew: true))
-        XCTAssertLessThan(StarfallMotion.rebound(dark: false, grew: true), StarfallMotion.rebound(dark: false, grew: false))
+        let sunny = SkyPieceMotion.profile(for: .colored(.amber)).rebound
+        XCTAssertLessThan(SkyPieceMotion.profile(for: .dusk).rebound, sunny)
+        XCTAssertLessThan(SkyPieceMotion.profile(for: .colored(.mint)).rebound, sunny)
+        XCTAssertLessThan(sunny, SkyPieceMotion.profile(for: .colored(.aqua)).rebound)
         for id in 0..<100 {
             XCTAssertGreaterThan(StarfallMotion.drift(for: id, column: 0), 0)
             XCTAssertLessThan(StarfallMotion.drift(for: id, column: 6), 0)
@@ -363,7 +388,7 @@ final class StarCastTests: XCTestCase {
         let deadline = ContinuousClock.now + .seconds(3)
         while !complete && ContinuousClock.now < deadline {
             sawOpalInFlight = sawOpalInFlight || scene.children[2].children.contains {
-                $0.children.contains { $0.name?.hasPrefix("star-cast.Opal.") == true }
+                $0.children.contains { $0.name == "sky-piece.Opal" }
             }
             let landedOpal = scene.children[1].children.contains { ($0 as? FallingSkyCharacter)?.gem.id == opal.id }
             let travelingOpal = scene.children[2].children.contains { $0.name == "sky.flight.\(incoming.id)" }
@@ -393,15 +418,15 @@ final class StarCastTests: XCTestCase {
         scene.render(restored)
         let root = try XCTUnwrap(scene.children[1].children.first { $0.name == "sky.star.\(opal.id)" } as? FallingSkyCharacter)
         XCTAssertNil(root.character.warpGeometry, "Committed restore must be round and free of transient deformation")
-        XCTAssertEqual(root.character.name, "star-cast.Opal.0")
-        XCTAssertTrue(root.character.texture === StarCast.texture(for: .opal, expression: .idle))
-        XCTAssertFalse(root.character.texture === StarCast.texture(for: .dusk, expression: .idle))
+        XCTAssertEqual(root.character.name, "sky-piece.Opal")
+        XCTAssertTrue(root.character.texture === SkyPiece.texture(for: .opal))
+        XCTAssertFalse(root.character.texture === SkyPiece.texture(for: .dusk))
         XCTAssertLessThan(root.character.frame.width, 60)
         let character = FallingSkyCharacter(gem: opal, step: 45)
         character.softenLanding()
         let squash = character.character.warpGeometry
         character.showExpression(.idle)
-        XCTAssertTrue(character.character.warpGeometry === squash, "Face changes must preserve the soft landing")
+        XCTAssertTrue(character.character.warpGeometry === squash, "Material refresh must preserve the soft landing")
         character.update(opal, expression: .idle)
         XCTAssertNil(character.character.warpGeometry); XCTAssertFalse(character.character.hasActions())
         scene.reduceMotion = true
@@ -484,27 +509,28 @@ final class StarCastTests: XCTestCase {
         }
     }
 
-    @MainActor func testFallingSkyUsesTheCompleteCastAndRepeatedRendersDoNotAccumulateNodes() {
+    @MainActor func testFallingSkyUsesFacelessPiecesAndRepeatedRendersDoNotAccumulateNodes() {
+        SkyPiece.prewarm()
         var game = FallingSky(seed: 5)
         for _ in 0..<16 where !game.isOver { _ = game.letStarsFall() }
         XCTAssertTrue(game.board.contains { $0?.isDark == true })
         let scene = FallingSkyScene(size: CGSize(width: 378, height: 560))
         func castNodes(_ node: SKNode) -> [SKNode] {
             node.children.flatMap { child in
-                (child.name?.hasPrefix("star-cast.") == true ? [child] : []) + castNodes(child)
+                (child.name?.hasPrefix("sky-piece.") == true ? [child] : []) + castNodes(child)
             }
         }
         for _ in 0..<30 {
             scene.render(game)
             let nodes = castNodes(scene)
             XCTAssertEqual(nodes.count, game.occupiedCount)
+            XCTAssertNil(scene.childNode(withName: "//star-cast.*"), "Story faces must not enter the gameplay board")
             let names = Set(nodes.compactMap(\.name))
             for gem in game.board.compactMap({ $0 }) {
-                let expression: StarCast.Expression = gem.grown ? .grown : .idle
-                XCTAssertTrue(names.contains("star-cast.\(StarCast.character(for: .init(gem)).name).\(expression.rawValue)"))
+                XCTAssertTrue(names.contains("sky-piece.\(StarCast.character(for: .init(gem)).name)"))
             }
         }
-        XCTAssertEqual(StarCast.cachedMaterialCount, StarCast.maximumMaterials)
+        XCTAssertEqual(SkyPiece.cachedMaterialCount, SkyPiece.maximumMaterials)
     }
 
     @MainActor func testExpressionChangesPreserveGeometryForEveryFamilyAndPose() {
@@ -549,8 +575,8 @@ final class StarCastTests: XCTestCase {
             try? await Task.sleep(for: .milliseconds(20))
             func inspect(_ parent: SKNode) {
                 for child in parent.children {
-                    if let sprite = child as? SKSpriteNode, sprite.name?.hasPrefix("star-cast.") == true {
-                        XCTAssertLessThan(sprite.frame.width, 70, "Expression swap must retain game-sized sprite geometry")
+                    if let sprite = child as? SKSpriteNode, sprite.name?.hasPrefix("sky-piece.") == true {
+                        XCTAssertLessThan(sprite.frame.width, 70, "Material refresh must retain game-sized sprite geometry")
                         XCTAssertLessThan(sprite.frame.height, 70)
                     }
                     inspect(child)
@@ -558,7 +584,7 @@ final class StarCastTests: XCTestCase {
             }
             inspect(scene)
             // The pieces layer contains only landed stars; travelers live in the effects layer.
-            if scene.children[1].children.contains(where: { $0.position.y > restingY + 1 }) {
+            if scene.children[1].children.contains(where: { (($0 as? FallingSkyCharacter)?.character.position.y ?? 0) > 1 }) {
                 observedRebound = true
             }
         }
@@ -568,6 +594,12 @@ final class StarCastTests: XCTestCase {
             XCTAssertEqual(node.position.y, restingY, accuracy: 0.01)
             XCTAssertEqual(node.xScale, 1, accuracy: 0.01)
             XCTAssertEqual(node.yScale, 1, accuracy: 0.01)
+            let art = try XCTUnwrap(node as? FallingSkyCharacter).character
+            XCTAssertEqual(art.position, .zero)
+            XCTAssertEqual(art.xScale, 1, accuracy: 0.01)
+            XCTAssertEqual(art.yScale, 1, accuracy: 0.01)
+            XCTAssertEqual(art.zRotation, 0, accuracy: 0.01)
+            XCTAssertNil(art.warpGeometry)
         }
         // Populate a reproducible neighborhood without depending on an animation to advance rules.
         for _ in 0..<4 { _ = game.letStarsFall() }
@@ -583,7 +615,10 @@ final class StarCastTests: XCTestCase {
         for _ in 0..<11 {
             try? await Task.sleep(for: .milliseconds(20))
             for node in scene.children[1].children where node.alpha == 1 {
-                if let origin = origins[ObjectIdentifier(node)], hypot(node.position.x - origin.x, node.position.y - origin.y) > 0.3 {
+                if let origin = origins[ObjectIdentifier(node)] {
+                    XCTAssertEqual(node.position, origin, "Contact response cannot move the committed parent before gravity")
+                }
+                if let art = (node as? FallingSkyCharacter)?.character, hypot(art.position.x, art.position.y) > 0.3 {
                     observedRipple = true
                 }
             }

@@ -8,6 +8,8 @@ A small, offline iOS falling-sky puzzle. Clear matching stars as showers fill th
 
 [Roadmap](docs/ROADMAP.md) · [Visual reference and cast](docs/design/VISUAL_REFERENCE.md) · [Playtest](docs/PLAYTEST-FALLING-SKY.md) · [Documentation map](docs/README.md)
 
+**Gameplay shard production pass — adopted for development:** [Seven faceless pieces and traditional characters](docs/design/star-cast/characters-and-shards-2026-10-20/README.md) share coordinated color families, including white Opal. Forecast, flight and board use the varied pieces; story keeps the familiar cast. [Finite family motion and a separate grown aura](docs/design/star-cast/characters-and-shards-2026-10-20/MOTION.md) replace identical reactions and copied-body growth decoration.
+
 **Observatory UI — adopted for development:** The normal app uses the [Observatory component system](docs/design/GAME_UI_SYSTEM.md) across its three-mode home, Entry/results, world/tutorial, gameplay and preferences. Story Mode, Free Play and Tutorial share authored emblems, controls and utility glyphs; gameplay instruments sit at the viewport edges. Exact coverage and canonical delivery status are recorded in the [native evidence](docs/evidence/observatory-ui-native-2026-10-19/README.md), with sampled appearances in the [capture index](docs/evidence/observatory-ui-native-2026-10-19/captures.json). The [screen/state atlas](docs/design/interface/atlas-2026-10-19/README.md) remains concept guidance, and the [asset kit](Artwork/ObservatoryUI/README.md) retains its separate source/export evidence.
 
 **Official world integration:** [Shared mechanics, the painted map and playable tutorial](docs/OFFICIAL_LOCATIONS_AND_TUTORIAL_PLAN.md) replace the old Try list. Registered restorations accept swaps and recipes. A new journey starts with Lantern Landing; repairing a place lights its map landmark and opens the next ready location. Existing players keep access to the five previously available places; Frostfruit Orchard requires a Silver Pools completion. [Development verification](docs/evidence/official-world-2026-10-19/README.md) records the original integration source and acceptance limits.
@@ -30,7 +32,7 @@ Player wording and character voices are authored in the [local copy catalogue](A
 
 ## How to play
 
-- **Clear a match:** Horizontally or vertically connected matching jewels must total at least 3 starlight. Normal jewels count as 1; large jewels with a luminous double silhouette and paired glints count as 2. Their soft aura gently pulses in normal motion. In retained Dusk rounds, clear beside Dusk to dissolve it early; gray neighbors still match and grow, but score zero until released.
+- **Clear a match:** Horizontally or vertically connected matching jewels must total at least 3 starlight. Normal jewels count as 1; larger jewels with a soft aura count as 2. Their soft aura gently pulses in normal motion. In retained Dusk rounds, clear beside Dusk to dissolve it early; gray neighbors still match and grow, but score zero until released.
 - **Keep playing:** Ready groups stay interactive while other columns settle. One recent tap or swap can wait briefly for its stars, with a visible outline/arrow acknowledgment. A new touch replaces that intention; changed boards and interruptions cancel it. Short ordinary finger drift stays a tap.
 - **Draw a constellation:** Hold a star until it glows, then draw through five or more matching stars, beside one another or across one empty space in a straight line, including diagonals, then lift. Only the stars you traced clear; retrace to branch. Drawing holds the next shower until release or cancellation.
 - **Arrange a setup:** In survival, swipe left, right, up or down to exchange neighbors immediately. Each touch moves one space regardless of color. Stars exchanged into space fall normally. Hold then trace exact four-star squares or five-star crosses; surrounding stars stay. Build the next recipe, then clear again for a deliberate relay. [Techniques](docs/design/STAR_TECHNIQUES.md).
@@ -78,7 +80,7 @@ Launch arguments (original puzzle testing):
 - `--reset-save`: removes the previous game save before starting normally
 - `--crystal-pilot`: Debug-only comparison with the original aqua pilot and procedural artwork for the other four kinds; Release ignores this argument
 
-The character star cast is enabled by default in Debug and Release. The original crystal family remains in the Debug classic puzzle. Neither needs a new pilot flag.
+The seven faceless gameplay pieces are enabled by default in Debug and Release; the original characters remain the story cast. The original crystal family remains in the Debug classic puzzle. Neither needs a new pilot flag.
 
 </details>
 
@@ -87,11 +89,11 @@ The character star cast is enabled by default in Debug and Release. The original
 [The adoption register](docs/EXPERIMENTS.md) distinguishes shipping gameplay from isolated trials. Falling sky and its physical reactions are adopted in both Debug and Release; supernova recoloring and alternate shower candidates remain outside the game.
 
 - **Rules and saves:** Pure deterministic core, Codable state and on-device saving after committed events. Replay or New sky resets the round.
-- **Native presentation:** SwiftUI screens/settings and a SpriteKit board; five expressive star families plus Dusk. The original Debug puzzle keeps its crystal artwork and procedural fallback.
-- **Bounded motion:** Clear fragments, downward settling, diagonal refill, angled arrivals, weighted rebounds and survivor ripples (stronger at 5+ starlight). These present committed outcomes. [Connected contact](docs/evidence/star-contact-2026-10-17/README.md) adds local weight transfer, brief neighbor looks, surface light and a quiet resting sky.
+- **Native presentation:** SwiftUI screens/settings and a SpriteKit board with seven faceless piece families; original expressive characters serve the story. The original Debug puzzle keeps its crystal artwork and procedural fallback.
+- **Bounded motion:** Clear fragments, downward settling, diagonal refill, angled arrivals, weighted rebounds and survivor ripples (stronger at 5+ starlight). These present committed outcomes. [Connected contact](docs/evidence/star-contact-2026-10-17/README.md) adds local weight transfer, finite neighbor reactions, surface light and a quiet resting sky.
 - **Feedback and accessibility:** A luminous drawn thread, brief star sparks and score popup; local sound/haptics on for new preferences (saved off is preserved; sound respects Silent Mode); Calm effects honors Reduce Motion. The VoiceOver alternative grid exposes row/column, jewel name and connected-group size.
 
-Falling-sky artwork comes from the shared, bounded [star-cast material factory](docs/design/star-cast/README.md), used by the board, comets and HUD. It combines packaged Crystal Glow cutouts with authored expressive faces in a fixed cache; no external runtime dependency is needed.
+The shared [gameplay material factory](docs/design/star-cast/README.md) supplies faceless shard cutouts to board, flight and HUD. A separate bounded character cache retains the original expressive cast for story and ceremony. Neither needs an external runtime dependency.
 
 <details>
 <summary>Classic crystal artwork and audio provenance</summary>
