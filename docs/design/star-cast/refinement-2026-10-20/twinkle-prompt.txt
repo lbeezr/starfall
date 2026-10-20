@@ -1,0 +1,37 @@
+Use case: stylized-concept
+Asset type: Starfall character expression and movement reference sheet, concept artwork, not a normalized runtime atlas.
+Primary request: Create one polished individual sheet for TWINKLE, the shy gentle rose crystal star with exactly eight alternating rays. Evolve the provided established character with cleaner consistency, distinct acting, quieter facets, believable luminosity, and meaningful movement key poses.
+Input image 1: revised Starfall Bigger, Brighter comparison plate. Use the Twinkle column as the current material and grown-state reference. The grown character is one visibly larger body surrounded by a diffuse rose aura, with no offset copy.
+Input image 2: Twinkle's earlier Crystal Glow individual sheet. Preserve her recognizable rose identity, eight alternating rays, gentle expressive face and shy temperament. This reference does not determine the new sheet layout or scale.
+Scene/backdrop: Clean midnight-blue presentation background, subtle and uniform, no scenery, floor, stars, decorative particles or contact shadows.
+Composition: Landscape 1536x1024 or larger, with elegant cream serif title "TWINKLE" and smaller subtitle "STATE & MOTION STUDY". Exactly sixteen separate poses in a clear four-column by four-row layout with generous space. Each pose has its exact cream label below. Fine quiet divider rules only. Allocate extra vertical space to row three so the visibly bigger bodies and their soft auras fit without clipping. Keep all other rows' bodies the same ordinary review size, except genuine squash and stretch deformation.
+Scale: ordinary neutral bodies about 110 pixels tall at a 1536x1024 canvas. Every body in row three about 220 pixels tall, approximately twice BOTH height and width of the ordinary idle body. Scale the whole single body and face coherently. The aura does not count toward body size. Do not add comparison miniatures, duplicate silhouettes or enlarged background copies.
+Silhouette: EXACTLY eight connected alternating crystal rays — four longer cardinal rays at top/right/bottom/left and four shorter diagonal rays. No added ninth point, no five-point default star, no six-point snowflake. The top and bottom rays remain slightly longer than the side rays, with a calm generous center for the face. Preserve all eight rays through shallow turns, squash and stretch.
+Material: Translucent rose-pink crystal, clean quiet central facial plane, restrained broad planes around the edge, convincing thickness. One coherent upper-left warm light, pale pearl-pink upper-left bevel, deeper raspberry lower-right bevel and softly shaded right/lower planes. All sixteen poses share the same broad facet construction, colors and eye proportions. No busy internal triangulation or facets crossing eyes or mouth.
+Face and personality: Twinkle is shy, attentive, gentle and quietly delighted, with soft asymmetrical brows and understated smiles. Expressive indigo eyes with restrained single catchlights. Her happiness remains tender rather than becoming an exuberant generic Sunny grin. Keep character identity when looking left/right. An actual blink fully closes BOTH eyes. No cheek spots, body dots, freckles, twin bright marks, protrusions, symbols or value badges.
+Row 1, exact labels and acting from left to right:
+"IDLE" — front-facing with a small tender smile, a subtly lifted inner brow and gentle attentive eyes.
+"LOOK LEFT" — shallow turn and gaze toward screen left, shy curious smile.
+"LOOK RIGHT" — shallow turn and gaze toward screen right, same identity and proportions.
+"BLINK" — front-facing, both eyes fully closed as simple eyelid arcs, peaceful tiny smile.
+Row 2, exact labels and acting:
+"ANTICIPATE" — small preparatory squash, cautiously curious expression, upper rays dip slightly.
+"FALL" — unmistakable vertical stretch with slight horizontal compression, eyes looking downward, tiny surprised mouth.
+"CONTACT" — unmistakable horizontal squash and vertical compression, bashful surprised face; maintain exactly eight connected alternating rays.
+"REBOUND" — elastic recovery slightly taller than idle, relieved small smile and modest tilt.
+Row 3, exact labels and acting:
+"TWO LIGHTS FRONT" — single approximately double-size front-facing Twinkle, quietly delighted open-eyed smile and clean diffuse radial rose aura.
+"TWO LIGHTS LEFT" — same double-size body, shallow turn toward screen left and warm attentive gaze.
+"TWO LIGHTS RIGHT" — same double-size body, shallow turn toward screen right.
+"QUIET GLOW" — same double-size body and steady diffuse rose aura, softly lowered eyelids and tiny peaceful smile.
+Row 4, exact labels and acting:
+"JOY" — ordinary body size, gentle closed-eye smile with a buoyant slight tilt, not a giant mouth.
+"SHARE LIGHT" — ordinary body size, tender generous expression, broad soft light radiating gently without discrete particles or objects.
+"DRIFT" — ordinary body size, graceful slight diagonal departure, peaceful soft eyes, body completely intact.
+"REST" — ordinary body size, tranquil upright pose, eyes fully closed and tiny content smile.
+Constraints: Every pose is the same Twinkle, exactly eight alternating rays. There are no limbs, clothes, accessories, bows, eyelashes newly added as a trait, crowns, floating diamonds, fragments, ghost bodies, value numerals, sharp outlined halos, duplicate outlines or floor shadows. Do not place any two decorative spots, internal lights or raised bumps on the body; only the eyes form a paired facial feature. Grown is conveyed solely by visibly greater single-body scale and diffuse family-colored light. Preserve the character intact during all departure poses; no shattering. Labels must be correct and readable. Refined, tender, luminous, coherent and suitable as a character animator's concept reference.
+
+--- TARGETED REVISION 1 ---
+Input: exec-b31b1710-ab2d-448a-ba86-fd6417b62b26.png
+Use case: precise-object-edit
+Edit only the scale relationship on this TWINKLE reference sheet. Keep the entire title, typography, labels, dividers, cell layout, background, color, facet design, exact expressions and pose directions unchanged. Keep every character in the third row exactly as large as it is now. Uniformly shrink each character and its associated aura in rows ONE, TWO and FOUR to 75 percent of its current width and height, around the center of its cell's artwork area. Preserve all squash/stretch ratios within those smaller bodies. This makes the third row's single grown bodies approximately twice the ordinary idle body's width and height; currently they are only about 1.5 times. Every cell still contains exactly one intact eight-ray rose Twinkle. No extra bodies, miniatures, marks, effects, props, shadows or changed text. The sole edit is smaller ordinary-row artwork while preserving all row-three artwork and every other detail.

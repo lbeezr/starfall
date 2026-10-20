@@ -1,0 +1,120 @@
+{
+  "scope": "Focused development checks, not a full matrix",
+  "checks": [
+    {
+      "command": "xcodebuild test -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination 'platform=iOS Simulator,id=D65C5E40-734F-42BF-8F91-97E980ED19C2' -derivedDataPath /tmp/starfall-shards-dd -resultBundlePath /tmp/starfall-shards-hosted-final.xcresult ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -only-testing:StarfallAppTests/SkyPieceTests -only-testing:StarfallAppTests/StarCastTests -only-testing:StarfallAppTests/DuskProductionTests -only-testing:StarfallAppTests/CriticalMassProductionTests -only-testing:StarfallAppTests/SkyDialogueTests -only-testing:StarfallAppTests/NativeInputWindowTests/testOverlapReplacementCancelsOldCompletionAndQuietPresentationMatches -only-testing:StarfallAppTests/NativeInputWindowTests/testIncomingFlightOverlapsRotationButLandsAfterIt > /tmp/starfall-shards-hosted-final.log 2>&1",
+      "source": "d0dfcc1 + snapshot 55943936e8ea",
+      "selection": [
+        "SkyPieceTests",
+        "StarCastTests",
+        "DuskProductionTests",
+        "CriticalMassProductionTests",
+        "SkyDialogueTests",
+        "NativeInputWindowTests/testOverlapReplacementCancelsOldCompletionAndQuietPresentationMatches",
+        "NativeInputWindowTests/testIncomingFlightOverlapsRotationButLandsAfterIt"
+      ],
+      "summary": {
+        "result": "Passed",
+        "totalTestCount": 56,
+        "passedTests": 56,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "startTime": 1792504592.801,
+        "finishTime": 1792504653.432,
+        "runtimeWarnings": []
+      }
+    },
+    {
+      "command": "xcodebuild test -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination 'platform=iOS Simulator,id=D65C5E40-734F-42BF-8F91-97E980ED19C2' -derivedDataPath /tmp/starfall-shards-dd -resultBundlePath /tmp/starfall-shards-ui.xcresult ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -only-testing:StarfallUITests/ObservatoryInteractionTests/testActualCastSparseDenseAndProjectedCornerTaps -only-testing:StarfallUITests/ObservatoryInteractionTests/testCastSettingsDismissalAndBackgroundPreserveBoard -only-testing:StarfallUITests/ConstellationTraceNativeTests/testNativeSwipeClearsChosenFiveAndLeavesSixth -only-testing:StarfallUITests/ConstellationTraceNativeTests/testOpalWhiteFirstIsFreeAndColoredTapSpendsSharedOrbs -only-testing:StarfallUITests/SkyDialogueInteractionTests/testBundledScriptSwitchesAllSpeakersAndKeepsPausedRound -only-testing:StarfallUITests/SkyDialogueInteractionTests/testNormalMotionForecastCompletesSeveralAutomaticCycles -only-testing:StarfallUITests/FallingSkyInteractionTests/testSystemReduceMotionKeepsManualPlayWorking -only-testing:StarfallUITests/FallingSkyInteractionTests/testFirstLightGoalCompletionRestoreReplayAndSurvival -only-testing:StarfallUITests/FallingSkyInteractionTests/testFirstLightCanOverflowWithoutCompletingGoal -only-testing:StarfallUITests/FallingSkyInteractionTests/testLargestTextSettingsFeedbackAndDismissal > /tmp/starfall-shards-ui.log 2>&1",
+      "source": "d0dfcc1 + initial working-tree inputs; app source matches snapshot 55943936e8ea",
+      "selection": [
+        "ObservatoryInteractionTests/testActualCastSparseDenseAndProjectedCornerTaps",
+        "ObservatoryInteractionTests/testCastSettingsDismissalAndBackgroundPreserveBoard",
+        "ConstellationTraceNativeTests/testNativeSwipeClearsChosenFiveAndLeavesSixth",
+        "ConstellationTraceNativeTests/testOpalWhiteFirstIsFreeAndColoredTapSpendsSharedOrbs",
+        "SkyDialogueInteractionTests/testBundledScriptSwitchesAllSpeakersAndKeepsPausedRound",
+        "SkyDialogueInteractionTests/testNormalMotionForecastCompletesSeveralAutomaticCycles",
+        "FallingSkyInteractionTests/testSystemReduceMotionKeepsManualPlayWorking",
+        "FallingSkyInteractionTests/testFirstLightGoalCompletionRestoreReplayAndSurvival",
+        "FallingSkyInteractionTests/testFirstLightCanOverflowWithoutCompletingGoal",
+        "FallingSkyInteractionTests/testLargestTextSettingsFeedbackAndDismissal"
+      ],
+      "summary": {
+        "result": "Passed",
+        "totalTestCount": 10,
+        "passedTests": 10,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "startTime": 1792504687.328,
+        "finishTime": 1792505169.933,
+        "runtimeWarnings": []
+      }
+    },
+    {
+      "command": "xcodebuild test -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination 'platform=iOS Simulator,id=D65C5E40-734F-42BF-8F91-97E980ED19C2' -derivedDataPath /tmp/starfall-shards-dd -resultBundlePath /tmp/starfall-shards-integrated-hosted.xcresult ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -only-testing:StarfallAppTests/SkyPieceTests -only-testing:StarfallAppTests/StarCastTests -only-testing:StarfallAppTests/DuskProductionTests -only-testing:StarfallAppTests/CriticalMassProductionTests -only-testing:StarfallAppTests/SkyDialogueTests -only-testing:StarfallAppTests/NativeInputWindowTests/testOverlapReplacementCancelsOldCompletionAndQuietPresentationMatches -only-testing:StarfallAppTests/NativeInputWindowTests/testIncomingFlightOverlapsRotationButLandsAfterIt -only-testing:StarfallAppTests/ObservatoryArtworkTests -only-testing:StarfallAppTests/StarlightCelebrationTests/testHeaderRegistrationPreservesNestedScoreBoardAndRestorationLight > /tmp/starfall-shards-integrated-hosted.log 2>&1",
+      "source": "9e0732a460fd469cbcaa9ef014078d3eb9d8ed0d",
+      "selection": [
+        "SkyPieceTests",
+        "StarCastTests",
+        "DuskProductionTests",
+        "CriticalMassProductionTests",
+        "SkyDialogueTests",
+        "NativeInputWindowTests/testOverlapReplacementCancelsOldCompletionAndQuietPresentationMatches",
+        "NativeInputWindowTests/testIncomingFlightOverlapsRotationButLandsAfterIt",
+        "ObservatoryArtworkTests",
+        "StarlightCelebrationTests/testHeaderRegistrationPreservesNestedScoreBoardAndRestorationLight"
+      ],
+      "summary": {
+        "result": "Passed",
+        "totalTestCount": 60,
+        "passedTests": 60,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "startTime": 1792505401.937,
+        "finishTime": 1792505496.128,
+        "runtimeWarnings": []
+      }
+    },
+    {
+      "command": "xcodebuild test -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination 'platform=iOS Simulator,id=D65C5E40-734F-42BF-8F91-97E980ED19C2' -derivedDataPath /tmp/starfall-shards-dd -resultBundlePath /tmp/starfall-shards-integrated-ui.xcresult ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -only-testing:StarfallUITests/ObservatoryInteractionTests/testActualCastSparseDenseAndProjectedCornerTaps -only-testing:StarfallUITests/ObservatoryInteractionTests/testCelestialHUDGuideAndMenuPagesKeepTheRound -only-testing:StarfallUITests/PacingCueUITests/testActiveForecastAndPhaseCueKeepSeparateSpace -only-testing:StarfallUITests/SkyDialogueInteractionTests/testNormalMotionForecastCompletesSeveralAutomaticCycles -only-testing:StarfallUITests/SkyLessonInteractionTests/testGuideCoordinatesAndDisclosureMatchTheVisibleBoard > /tmp/starfall-shards-integrated-ui.log 2>&1",
+      "source": "9e0732a460fd469cbcaa9ef014078d3eb9d8ed0d",
+      "selection": [
+        "ObservatoryInteractionTests/testActualCastSparseDenseAndProjectedCornerTaps",
+        "ObservatoryInteractionTests/testCelestialHUDGuideAndMenuPagesKeepTheRound",
+        "PacingCueUITests/testActiveForecastAndPhaseCueKeepSeparateSpace",
+        "SkyDialogueInteractionTests/testNormalMotionForecastCompletesSeveralAutomaticCycles",
+        "SkyLessonInteractionTests/testGuideCoordinatesAndDisclosureMatchTheVisibleBoard"
+      ],
+      "summary": {
+        "result": "Passed",
+        "totalTestCount": 5,
+        "passedTests": 5,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "startTime": 1792505522.93,
+        "finishTime": 1792505758.768,
+        "runtimeWarnings": []
+      }
+    },
+    {
+      "command": "swift test > /tmp/starfall-shards-integrated-core.log 2>&1",
+      "source": "9e0732a460fd469cbcaa9ef014078d3eb9d8ed0d",
+      "result": "184 passed, zero failures, 37.854 seconds. Initial run also 184 passed. Sandbox compiler-cache access initially denied; authorized rerun passed."
+    },
+    {
+      "command": "xcodebuild build -project Starfall.xcodeproj -scheme Starfall -configuration Release -destination 'platform=iOS Simulator,id=D65C5E40-734F-42BF-8F91-97E980ED19C2' -derivedDataPath /tmp/starfall-shards-dd ARCHS=arm64 ONLY_ACTIVE_ARCH=YES > /tmp/starfall-shards-integrated-release.log 2>&1",
+      "source": "9e0732a460fd469cbcaa9ef014078d3eb9d8ed0d",
+      "result": "BUILD SUCCEEDED; normal Release target, all seven packaged piece image sets."
+    },
+    {
+      "commands": [
+        "python3 scripts/ci-hygiene.py",
+        "git diff --check",
+        "git diff --cached --check",
+        "python3 scripts/native_test_plan.py --stage dev",
+        "/Users/lbeezr/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 tools/art-quality/package_star_cast.py --shards"
+      ],
+      "result": "Hygiene/whitespace pass during implementation; final staged pass recorded in README. Planner inventory:347 hosted,146 UI. Repackaging reproduces all existing output bytes."
+    }
+  ]
+}

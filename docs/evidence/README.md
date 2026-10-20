@@ -1,5 +1,7 @@
 # Evidence index
 
+[Faceless gameplay pieces and family motion](gameplay-shards-2026-10-20/README.md) records the seven gameplay materials, single-body growth with a renderer aura, finite family responses and retained Crystal Glow story characters. Native material/spacing inspection, sampled normal motion and integration checks keep their exact source boundaries. Physical recognition, minimum-OS rendering and actual VoiceOver remain separate acceptance.
+
 [Observatory UI parity refinement](observatory-ui-parity-2026-10-20/README.md) records the quieter HUD, shared settings frame, corrected tutorial/reading layout and rendered utility icons, with exact phone/compact/tablet results and failure history. [Ten inspected native stills](observatory-ui-parity-2026-10-20/captures.json) retain their runtime and source limits; motion, Release, final-source, publication and physical acceptance are recorded separately.
 
 [Observatory native UI integration](observatory-ui-native-2026-10-19/README.md) records the initial development adoption, source manifests, native checks and canonical delivery history. Its [capture index](observatory-ui-native-2026-10-19/captures.json) remains source-bound; replaced HUD, menus and reading-surface chrome are historical.

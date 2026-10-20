@@ -1,0 +1,13 @@
+Use case: precise-object-edit
+Edit target: the supplied Starfall six-silhouette concept board.
+Change ONLY the bottom dark grid. Preserve the title, six large characters, names, interpretation labels and solid-black silhouette row above exactly. Preserve all six character designs and their material; do not redesign faces, outlines or anatomy.
+Problem: the bottom currently groups each character in its own column of wide RECTANGULAR cells. That is an expression chart, not a mixed square-cell board comparison.
+Replacement: a small centered 6-column by 3-row grid of 18 genuine SQUARE cells, each cell about 94 pixels wide AND 94 pixels tall in this 1536x1024 image. The grid should occupy only about 564 pixels of total width, centered horizontally in the lower panel, with empty ivory margins left and right. Do not stretch it across the whole image. Keep the full original image dimensions. Subtle blue-gray cell backgrounds and thin muted grid lines, no ornate frame.
+Populate the 18 cells using precisely the same six designs from the hero row, all compact, one per square cell, centered, around 70 percent of the cell's width or height, equal apparent visual weight, ordinary state, no aura or overlap. Use their neutral friendly/focused faces. Each body including all tips fits within its square.
+Exact left-to-right order:
+Row 1: Pip, Sunny, Twinkle, Dusk, Spark, Nova.
+Row 2: Dusk, Twinkle, Nova, Spark, Sunny, Pip.
+Row 3: Nova, Spark, Pip, Sunny, Dusk, Twinkle.
+Keep Spark a swept aqua comet, Sunny a gold solar mass, Pip a mint irregular flat-sided meteor, Twinkle a rose tall four-ended glint, Nova a violet horizontal lens, Dusk a charcoal-indigo thick folded silhouette with opposing open notches. No ordinary five-point star substitutions. No new shapes, new expressions or extra character families.
+Footer directly below the small centered grid: "Mixed square cells · concept, not native gameplay".
+Important: top two thirds remain unchanged. No captions or decorations in the empty margins. The only intended correction is replacing the wrongly grouped rectangular expression chart with a small mixed board of actual square cells.

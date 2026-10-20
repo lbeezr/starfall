@@ -1,0 +1,358 @@
+import XCTest
+import UIKit
+import SpriteKit
+import StarfallCore
+@testable import Starfall
+
+final class SkyPieceTests: XCTestCase {
+    @MainActor private var families: [StarCast.Identity] {
+        Jewel.allCases.map(StarCast.Identity.colored) + [.dusk, .opal]
+    }
+
+    @MainActor private func gem(_ identity: StarCast.Identity, id: Int, grown: Bool = false) -> StarfallGem {
+        switch identity {
+        case .colored(let kind): StarfallGem(id: id, kind: kind, grown: grown)
+        case .opal: StarfallGem(id: id, kind: nil, light: true)
+        default: StarfallGem(id: id, kind: nil)
+        }
+    }
+
+    @MainActor func testGameplayUsesPackagedFacelessMaterialsAndPreservesStoryPortraits() throws {
+        SkyPiece.prewarm()
+        StarCast.prewarm()
+        XCTAssertEqual(SkyPiece.cachedMaterialCount, 9)
+        XCTAssertEqual(SkyPiece.maximumRasterBytes, 2_359_296)
+        for identity in families {
+            let name = StarCast.character(for: identity).name
+            let asset = try XCTUnwrap(UIImage(named: "SkyPiece" + name))
+            let gameplay = SkyPiece.image(for: identity)
+            XCTAssertEqual(try pixels(gameplay), try pixels(asset), "Gameplay must use the authored faceless body without composited expressions")
+            XCTAssertNotEqual(try pixels(gameplay), try pixels(StarCast.image(for: identity)), "Story and gameplay materials have separate roles")
+            let texture = SkyPiece.texture(for: identity)
+            let portrait = StarCast.texture(for: identity, expression: .idle)
+            for _ in 0..<30 {
+                let node = FallingSkyCharacter(gem: gem(identity, id: 1), step: 45)
+                for expression in StarCast.Expression.allCases {
+                    for facing in StarCast.Facing.allCases {
+                        node.showExpression(expression, facing: facing)
+                        XCTAssertTrue(node.character.texture === texture)
+                        XCTAssertEqual(node.character.name, "sky-piece." + name)
+                    }
+                }
+            }
+            XCTAssertTrue(StarCast.texture(for: identity, expression: .idle) === portrait)
+            XCTAssertFalse(texture === portrait)
+            XCTAssertEqual(texture.size(), CGSize(width: 256, height: 256))
+            XCTAssertEqual(texture.filteringMode, .linear)
+            XCTAssertFalse(texture.usesMipmaps)
+        }
+        for identity in [StarCast.Identity.magnet, .hole] {
+            XCTAssertTrue(SkyPiece.texture(for: identity) === StarCast.texture(for: identity, expression: .idle),
+                          "Retained faceless gravity objects share their existing material")
+        }
+        XCTAssertEqual(SkyPiece.cachedMaterialCount, SkyPiece.maximumMaterials)
+        XCTAssertEqual(StarCast.cachedMaterialCount, StarCast.maximumMaterials)
+    }
+
+    @MainActor func testGameplayBodiesKeepTransparentPaddingAndDistinctSmallSilhouettes() throws {
+        var silhouettes = Set<Data>()
+        for identity in families {
+            let image = SkyPiece.image(for: identity)
+            XCTAssertEqual(image.size, CGSize(width: 256, height: 256))
+            let rgba = try pixels(image)
+            let alpha = stride(from: 3, to: rgba.count, by: 4).map { rgba[$0] }
+            XCTAssertTrue(alpha.contains(255))
+            for y in 0..<256 { for x in 0..<256 where x < 18 || x >= 238 || y < 18 || y >= 238 {
+                XCTAssertEqual(alpha[y * 256 + x], 0, "Pieces need transparent clearance around every edge")
+            } }
+            let small = try pixels(image, side: 24)
+            silhouettes.insert(Data(stride(from: 3, to: small.count, by: 4).map { small[$0] >= 128 ? 255 : 0 }))
+        }
+        XCTAssertEqual(silhouettes.count, families.count, "All seven families must retain different silhouettes at the smallest review size")
+    }
+
+    @MainActor func testMaterialRefreshPreservesChildPoseAndResetRestoresIt() {
+        for identity in families {
+            let root = FallingSkyCharacter(gem: gem(identity, id: 1), step: 45)
+            let node = root.character
+            let neutralSize = node.size
+            node.anchorPoint = CGPoint(x: 0.4, y: 0.6)
+            node.position = CGPoint(x: 2, y: -3)
+            node.xScale = 0.83; node.yScale = 1.12; node.zRotation = 0.21
+            node.warpGeometry = OpalMotion.squashed
+            // SpriteKit stores transforms at Float precision and reports scaled size.
+            // Preserve its actual posed readbacks, then compare reset with the neutral size.
+            let size = node.size, warp = node.warpGeometry, anchor = node.anchorPoint
+            let position = node.position, xScale = node.xScale, yScale = node.yScale, rotation = node.zRotation
+            for expression in StarCast.Expression.allCases {
+                root.showExpression(expression)
+                XCTAssertEqual(node.size, size)
+                XCTAssertEqual(node.anchorPoint, anchor)
+                XCTAssertEqual(node.position, position)
+                XCTAssertEqual(node.xScale, xScale); XCTAssertEqual(node.yScale, yScale)
+                XCTAssertEqual(node.zRotation, rotation); XCTAssertTrue(node.warpGeometry === warp)
+            }
+            root.cancelLocalMotion()
+            assertStill(root)
+            XCTAssertEqual(node.size, neutralSize)
+            XCTAssertEqual(node.anchorPoint, anchor)
+        }
+    }
+
+    @MainActor func testFamilyPerspectiveProfilesAreDistinctAndStayWithinFiniteBounds() {
+        let profiles = families.map { SkyPieceMotion.profile(for: $0) }
+        for index in profiles.indices {
+            for other in profiles.indices where other > index {
+                XCTAssertNotEqual(profiles[index], profiles[other], "Family motion must not collapse to one shared response")
+            }
+            let profile = profiles[index]
+            for direction in [CGFloat(-1), 1] {
+                let corners = SkyPieceMotion.perspectiveVertices(yaw: direction * profile.yaw, pitch: profile.pitch)
+                XCTAssertEqual(corners.count, 4)
+                for corner in corners {
+                    XCTAssertTrue(corner.x.isFinite && corner.y.isFinite)
+                    XCTAssertGreaterThanOrEqual(corner.x, -0.15); XCTAssertLessThanOrEqual(corner.x, 1.15)
+                    XCTAssertGreaterThanOrEqual(corner.y, -0.15); XCTAssertLessThanOrEqual(corner.y, 1.15)
+                }
+                let horizontal = corners[1] - corners[0], vertical = corners[2] - corners[0]
+                XCTAssertGreaterThan(horizontal.x * vertical.y - horizontal.y * vertical.x, 0.5,
+                                     "A shallow pose must not fold or collapse the artwork")
+            }
+        }
+    }
+
+    @MainActor func testNativeGameplayReviewAtSmallSizesWithSilhouettesGrayAndGrownAura() throws {
+        let size = CGSize(width: 1008, height: 900)
+        let scene = SKScene(size: size)
+        scene.backgroundColor = UIColor(red: 0.06, green: 0.08, blue: 0.17, alpha: 1)
+        let view = SKView(frame: CGRect(origin: .zero, size: size))
+        view.presentScene(scene)
+        defer { view.presentScene(nil) }
+        let lightBand = SKSpriteNode(color: UIColor(white: 0.92, alpha: 1), size: CGSize(width: size.width, height: 140))
+        lightBand.position = CGPoint(x: size.width / 2, y: 570); scene.addChild(lightBand)
+        let silhouetteBand = SKSpriteNode(color: .white, size: CGSize(width: size.width, height: 140))
+        silhouetteBand.position = CGPoint(x: size.width / 2, y: 410); scene.addChild(silhouetteBand)
+        label("Native gameplay material • visible body sizes 24 / 36 / 44 pt", at: CGPoint(x: size.width / 2, y: 866), in: scene, size: 18)
+        let grayscale = SKShader(source: """
+        void main() {
+            vec4 color = texture2D(u_texture, v_tex_coord);
+            float gray = dot(color.rgb, vec3(0.2126, 0.7152, 0.0722));
+            gl_FragColor = vec4(vec3(gray), color.a);
+        }
+        """)
+        for (column, identity) in families.enumerated() {
+            let x = CGFloat(column) * 144
+            label(StarCast.character(for: identity).name, at: CGPoint(x: x + 72, y: 810), in: scene, size: 17)
+            for (row, y) in [CGFloat(730), 570, 410, 250].enumerated() {
+                for (index, side) in [CGFloat(24), 36, 44].enumerated() {
+                    let node = SkyPiece.makeNode(for: identity, radius: side / 2)
+                    node.position = CGPoint(x: x + 24 + CGFloat(index) * 46, y: y)
+                    if row == 2 { node.color = .black; node.colorBlendFactor = 1 }
+                    if row == 3 { node.shader = grayscale }
+                    scene.addChild(node)
+                }
+                label(["Dark sky", "Light sky", "Silhouette", "Grayscale"][row],
+                      at: CGPoint(x: x + 72, y: y + 48), in: scene, size: 11,
+                      color: row == 1 || row == 2 ? .darkGray : .white)
+            }
+            for (index, grown) in [false, true].enumerated() {
+                let root = FallingSkyCharacter(gem: gem(identity, id: column, grown: grown),
+                                              step: 44 / StarfallMotion.pieceRadius / 2)
+                root.position = CGPoint(x: x + 38 + CGFloat(index) * 68, y: 92)
+                root.setGrowthMotion(false); scene.addChild(root)
+            }
+            let caption = identity == .dusk || identity == .opal ? "Special · no growth" : "1 light     2 lights"
+            label(caption, at: CGPoint(x: x + 72, y: 152), in: scene, size: 11)
+        }
+        let texture = try XCTUnwrap(view.texture(from: scene, crop: CGRect(origin: .zero, size: size)))
+        attach(UIImage(cgImage: texture.cgImage()), name: "sky-piece-native-material-review")
+    }
+
+    @MainActor func testEveryFamilyHasFiniteNativeFlightLandingAndContactMotion() async throws {
+        guard !UIAccessibility.isReduceMotionEnabled && !UIAccessibility.isVoiceOverRunning else {
+            throw XCTSkip("All-family motion evidence requires normal system motion")
+        }
+        let size = CGSize(width: 420, height: 400)
+        let view = SKView(frame: CGRect(origin: .zero, size: size))
+        let owner = try XCTUnwrap(UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.first)
+        let prior = owner.windows.first(where: \.isKeyWindow), window = UIWindow(windowScene: owner)
+        let controller = UIViewController(); controller.view = view
+        window.rootViewController = controller; window.frame = view.frame; window.makeKeyAndVisible()
+        defer { view.presentScene(nil); window.isHidden = true; prior?.makeKey() }
+        let scene = SKScene(size: size)
+        scene.backgroundColor = UIColor(red: 0.06, green: 0.08, blue: 0.17, alpha: 1)
+        let roots = families.enumerated().map { index, identity in
+            let root = FallingSkyCharacter(gem: gem(identity, id: index), step: 56)
+            root.position = CGPoint(x: 32 + CGFloat(index) * 56, y: 270)
+            root.zPosition = CGFloat(index + 1)
+            scene.addChild(root)
+            label(StarCast.character(for: identity).name, at: CGPoint(x: root.position.x, y: 350), in: scene, size: 10)
+            return root
+        }
+        view.presentScene(scene)
+        var firstFrame = false
+        scene.run(.run { firstFrame = true }, withKey: "review.ready")
+        let readyDeadline = ContinuousClock.now + .seconds(2)
+        while !firstFrame && ContinuousClock.now < readyDeadline { try await Task.sleep(for: .milliseconds(16)) }
+        XCTAssertTrue(firstFrame, "The visible native host must start rendering before action sampling")
+        let phaseLabel = label("Flight", at: CGPoint(x: size.width / 2, y: 34), in: scene, size: 16)
+        var reviewFrames: [UIImage] = []
+        func capture(_ name: String) throws {
+            let texture = try XCTUnwrap(view.texture(from: scene, crop: CGRect(origin: .zero, size: size)))
+            let image = UIImage(cgImage: texture.cgImage())
+            attach(image, name: name)
+            if reviewFrames.count < 48 { reviewFrames.append(image) }
+        }
+        func sample(_ phase: String) async throws {
+            var observed = Set<Int>(), frame = 0
+            let deadline = ContinuousClock.now + .seconds(2)
+            repeat {
+                for (index, root) in roots.enumerated() {
+                    let art = root.character
+                    XCTAssertTrue(art.position.x.isFinite && art.position.y.isFinite && art.zRotation.isFinite)
+                    XCTAssertGreaterThan(art.xScale, 0.7); XCTAssertLessThan(art.xScale, 1.3)
+                    XCTAssertGreaterThan(art.yScale, 0.7); XCTAssertLessThan(art.yScale, 1.3)
+                    XCTAssertLessThan(hypot(art.position.x, art.position.y), 20)
+                    XCTAssertTrue(art.texture === SkyPiece.texture(for: families[index]))
+                    if abs(art.zRotation) > 0.005 || abs(art.xScale - 1) > 0.005
+                        || abs(art.yScale - 1) > 0.005 || hypot(art.position.x, art.position.y) > 0.1 {
+                        observed.insert(index)
+                    }
+                }
+                if frame.isMultiple(of: 3) {
+                    try capture("sky-piece-motion-\(phase)-\(String(format: "%03d", frame))")
+                }
+                frame += 1
+                try await Task.sleep(for: .milliseconds(20))
+            } while roots.contains(where: { $0.hasActions() || $0.character.hasActions() }) && ContinuousClock.now < deadline
+            XCTAssertEqual(observed.count, roots.count, "Every family must show a sampled \(phase) response")
+            XCTAssertTrue(roots.allSatisfy { !$0.hasActions() && !$0.character.hasActions() }, "\(phase) must finish within its finite budget")
+        }
+        try capture("sky-piece-motion-before")
+        for (index, root) in roots.enumerated() {
+            SkyPieceMotion.prepareFlight(root.character, identity: families[index], direction: index.isMultiple(of: 2) ? 1 : -1)
+            root.run(.moveTo(y: 170, duration: StarfallMotion.flightDuration), withKey: "review.flight")
+        }
+        try await sample("flight")
+        phaseLabel.text = "Landing"
+        for (index, root) in roots.enumerated() {
+            root.land(direction: index.isMultiple(of: 2) ? 1 : -1, step: 56)
+        }
+        try await sample("landing")
+        for root in roots { assertStill(root); XCTAssertEqual(root.position.y, 170, accuracy: 0.001) }
+        phaseLabel.text = "Contact"
+        for root in roots {
+            root.acknowledge(from: CGPoint(x: root.position.x - 10, y: root.position.y),
+                             impulse: CGVector(dx: 0.15, dy: -0.08), step: 56)
+        }
+        try await sample("contact")
+        phaseLabel.text = "Settled"
+        for root in roots { assertStill(root); XCTAssertEqual(root.position.y, 170, accuracy: 0.001) }
+        try capture("sky-piece-motion-settled")
+        phaseLabel.text = "Grown bodies · one cell apart"
+        for (index, root) in roots.enumerated() {
+            root.update(gem(families[index], id: index, grown: true), expression: .grown)
+            let aura = try XCTUnwrap(root.character.childNode(withName: "sky.growth-cue/sky.growth-aura"))
+            XCTAssertLessThan(root.zPosition + root.character.zPosition + (aura.parent?.zPosition ?? 0) + aura.zPosition, 1,
+                              "Even the highest-row aura must stay behind the lowest body")
+        }
+        try capture("sky-piece-motion-grown-before")
+        phaseLabel.text = "Grown landing"
+        for (index, root) in roots.enumerated() {
+            root.land(direction: index.isMultiple(of: 2) ? 1 : -1, step: 56)
+        }
+        try await sample("grown-landing")
+        for root in roots { assertStill(root); XCTAssertEqual(root.position.y, 170, accuracy: 0.001) }
+        phaseLabel.text = "Grown contact"
+        for root in roots {
+            root.acknowledge(from: CGPoint(x: root.position.x - 10, y: root.position.y),
+                             impulse: CGVector(dx: 0.15, dy: -0.08), step: 56)
+        }
+        try await sample("grown-contact")
+        phaseLabel.text = "Grown settled"
+        for root in roots { assertStill(root); XCTAssertEqual(root.position.y, 170, accuracy: 0.001) }
+        try capture("sky-piece-motion-grown-settled")
+        for root in roots {
+            for _ in 0..<5 { root.land(direction: 1, step: 56) }
+            root.setPieceMotion(false); assertStill(root)
+            root.land(direction: -1, step: 56)
+            root.acknowledge(from: .zero, impulse: CGVector(dx: 1, dy: 1), step: 56)
+            assertStill(root)
+            XCTAssertEqual(root.position.y, 170, accuracy: 0.001)
+        }
+        let format = UIGraphicsImageRendererFormat(); format.scale = 1
+        let thumbnail = CGSize(width: size.width / 2, height: size.height / 2)
+        let review = UIGraphicsImageRenderer(size: CGSize(width: thumbnail.width * 4,
+            height: CGFloat((reviewFrames.count + 3) / 4) * thumbnail.height), format: format).image { _ in
+            for (index, frame) in reviewFrames.enumerated() {
+                frame.draw(in: CGRect(x: CGFloat(index % 4) * thumbnail.width, y: CGFloat(index / 4) * thumbnail.height,
+                                      width: thumbnail.width, height: thumbnail.height))
+            }
+        }
+        attach(review, name: "sky-piece-native-motion-contact-sheet")
+    }
+
+    @MainActor func testQuietSuspensionReplacementAndDetachmentResetLocalArtwork() throws {
+        let view = SKView(frame: CGRect(x: 0, y: 0, width: 390, height: 844))
+        let scene = FallingSkyScene(size: view.bounds.size)
+        view.presentScene(scene)
+        defer { view.presentScene(nil) }
+        let game = ObservatoryReviewFixture.game(dense: false)
+        scene.render(game)
+        func roots() -> [FallingSkyCharacter] { scene.children[1].children.compactMap { $0 as? FallingSkyCharacter } }
+        func startResponse() {
+            for root in roots() { root.land(direction: 1, step: 45) }
+        }
+        startResponse()
+        scene.reduceMotion = true
+        for root in roots() { assertStill(root) }
+        scene.reduceMotion = false
+        startResponse()
+        scene.decorativeMotionActive = false
+        for root in roots() { assertStill(root) }
+        scene.decorativeMotionActive = true
+        startResponse()
+        let replaced = roots()
+        scene.render(game)
+        for root in replaced { assertStill(root) }
+        for root in roots() { assertStill(root) }
+        startResponse()
+        let detached = roots()
+        view.presentScene(nil)
+        for root in detached { assertStill(root) }
+        XCTAssertEqual(detached.map(\.gem).sorted { $0.id < $1.id },
+                       game.board.compactMap { $0 }.sorted { $0.id < $1.id },
+                       "Presentation cancellation must preserve committed identities")
+    }
+
+    @MainActor private func assertStill(_ root: FallingSkyCharacter, file: StaticString = #filePath, line: UInt = #line) {
+        let art = root.character
+        XCTAssertEqual(art.position, .zero, file: file, line: line)
+        XCTAssertEqual(art.xScale, 1, accuracy: 0.0001, file: file, line: line)
+        XCTAssertEqual(art.yScale, 1, accuracy: 0.0001, file: file, line: line)
+        XCTAssertEqual(art.zRotation, 0, accuracy: 0.0001, file: file, line: line)
+        XCTAssertNil(art.warpGeometry, file: file, line: line)
+        XCTAssertFalse(art.hasActions(), file: file, line: line)
+    }
+
+    @MainActor private func pixels(_ image: UIImage, side: Int = 256) throws -> [UInt8] {
+        var rgba = [UInt8](repeating: 0, count: side * side * 4)
+        let context = try XCTUnwrap(CGContext(data: &rgba, width: side, height: side, bitsPerComponent: 8,
+                                             bytesPerRow: side * 4, space: CGColorSpaceCreateDeviceRGB(),
+                                             bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue))
+        context.draw(try XCTUnwrap(image.cgImage), in: CGRect(x: 0, y: 0, width: side, height: side))
+        return rgba
+    }
+
+    @MainActor @discardableResult private func label(_ text: String, at position: CGPoint, in scene: SKScene,
+                                                     size: CGFloat, color: UIColor = .white) -> SKLabelNode {
+        let node = SKLabelNode(text: text)
+        node.fontName = "AvenirNext-Medium"; node.fontSize = size; node.fontColor = color
+        node.position = position; scene.addChild(node); return node
+    }
+
+    private func attach(_ image: UIImage, name: String) {
+        let attachment = XCTAttachment(image: image)
+        attachment.name = name; attachment.lifetime = .keepAlways; add(attachment)
+    }
+}

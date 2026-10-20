@@ -114,9 +114,9 @@ struct SkyShowerCountdown: Equatable {
     var forecast: [IncomingStar] = []
 
     var body: some View {
-        // Resolve the shared cast outside the frame closure; no artwork generation per frame.
+        // Resolve the same faceless pieces used in flight and on the board outside the frame closure.
         let miniatures = forecast.prefix(FallingSky.maximumShowerSize).map {
-            Image(uiImage: StarCast.image(for: .init($0)))
+            Image(uiImage: SkyPiece.image(for: .init($0)))
         }
         let countdown = readCountdown()
         if countdown.advancing {
@@ -179,7 +179,7 @@ struct SkyShowerCountdown: Equatable {
             .accessibilityElement(children: .ignore)
             .accessibilityLabel(countdown.paused ? SkyCopy.text(.statusPaused) : countdown.arriving ? SkyCopy.text(.statusArriving) : countdown.remaining <= 1.25 ? SkyCopy.text(.statusApproaching) : SkyCopy.text(.statusFlowing))
             .accessibilityValue(forecast.map {
-                StarCast.character(for: .init($0)).description
+                SkyPiece.description(for: .init($0))
             }.joined(separator: ", then "))
             .accessibilityIdentifier("experiment.arrivalCue")
     }

@@ -1,0 +1,47 @@
+{
+  "status": "approved-seven-family-character-and-faceless-piece-direction",
+  "date": "2026-10-20",
+  "sourceCommit": "d0dfcc1",
+  "generator": "Built-in OpenAI image_gen; no CLI fallback",
+  "transformations": "Selected concept copied byte-for-byte; no pixel postprocessing",
+  "runtimeChangedByConcept": false,
+  "assets": [
+    {
+      "file": "pairing-v2-opal.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "3e5b77ddf75ca5c3c20bc817e145d0dc29530ec6e7885d96d98a742f40e7d14c",
+      "selectedGeneratedSource": "/Users/lbeezr/.codex/generated_images/01a1593f-f12e-7fb1-80a7-9344aef2182a/exec-a30d98ca-af65-4fbe-bed2-dd4b6816129f.png",
+      "initialGeneratedSource": "/Users/lbeezr/.codex/generated_images/01a1593f-f12e-7fb1-80a7-9344aef2182a/exec-882d9fce-12f8-460d-9cb1-428de5a94b11.png",
+      "visuallyInspected": true
+    }
+  ],
+  "prompts": [
+    {
+      "file": "pairing-prompt.txt",
+      "sha256": "1612e629112ea39fec61d82cf280d331113390b115f41402c0385a3d4f4eacc6"
+    },
+    {
+      "file": "add-opal-prompt.txt",
+      "sha256": "1457552cbc91c0735d2ce7751dafc7bc622034ab4974cc10664593fd5bd18808"
+    }
+  ],
+  "referenceImages": [
+    {
+      "file": "docs/design/star-cast/crystal-glow/refinement.png",
+      "sha256": "10a65cf111cd97373034207cffb85808ae7c1e33de9a3f02308da73baf71c9b0"
+    },
+    {
+      "file": "docs/design/star-cast/directions-2026-10-20/celestial-silhouettes-v2.png",
+      "sha256": "c908da9a75307e3c0a245acf38b1c6b45018b9c2887f0444ec70f002d8e239ad"
+    },
+    {
+      "file": "docs/design/star-cast/refinement-2026-10-20/opal-sheet.png",
+      "sha256": "ba1da219386c7fc7e259ae7c717905f3a2543b07ce47a5a13658772824516914"
+    }
+  ],
+  "limits": [
+    "Concept board is not a normalized transparent atlas or native gameplay evidence.",
+    "User approved the direction and requested production sprite and motion adaptation; see MOTION.md."
+  ]
+}

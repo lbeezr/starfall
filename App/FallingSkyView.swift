@@ -540,7 +540,7 @@ import StarfallCore
             : store.game.isGrowthBlocked(at: cell) ? SkyCopy.text(.duskBlocked) : ""
         let mass = CriticalMassPresentation.consequence(game: store.game, cell: cell)
         let captive = store.game.orbit?.slots.contains(cell) == true ? SkyCopy.text(.a11yTrapped) : ""
-        return SkyCopy.text(.a11yStar, values: ["size": gem.grown ? SkyCopy.text(.a11yGrown) : "", "description": StarCast.character(for: .init(gem)).description, "position": position, "state": captive + shade + mass])
+        return SkyCopy.text(.a11yStar, values: ["size": gem.grown ? SkyCopy.text(.a11yGrown) : "", "description": SkyPiece.description(for: .init(gem)), "position": position, "state": captive + shade + mass])
     }
 
     private func updateSuspension() {

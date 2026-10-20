@@ -1,12 +1,12 @@
 # Crystal pixel review
 
-For the falling-sky cast, `package_star_cast.py` packages the approved transparent six-body plate into centered asset-catalog cutouts. See [StarCast source/receipts](../../Artwork/StarCast/README.md). Run with Python/Pillow; this is offline slicing and coverage normalization, not runtime artwork generation. The older atlas inspectors below continue to serve the Debug jewel renderer.
+For the falling-sky cast, `package_star_cast.py` packages approved transparent sources into centered asset-catalog cutouts. `--shards` produces seven faceless `SkyPiece` bodies from the approved October 20 plate, preserving the original `StarCast` character assets. Explicit source regions protect the broad lens from clipping. See [StarCast source/receipts](../../Artwork/StarCast/README.md). Run with Python/Pillow; this is offline slicing and coverage normalization, not runtime artwork generation. The older atlas inspectors below continue to serve the Debug jewel renderer.
 
 Local inspection of the five default gameplay atlases. This tool reads
 source PNGs and writes comparison sheets plus measurements; it never edits
 the asset catalog, runtime code, source artwork, or release configuration.
 
-Normal Debug and Release gameplay use the recreated five-kind v2 family from
+The original puzzle's Debug regression renderer uses the recreated five-kind v2 family from
 `Artwork/Crystals/v2/assets`. That sealed package contains newly authored Blender
 source, not recovered original source or alpha-identical v1 artwork. Runtime
 loading keeps all nine full canvases and the authored pivot, and falls back to

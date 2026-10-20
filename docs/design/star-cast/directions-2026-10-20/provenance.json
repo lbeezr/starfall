@@ -1,0 +1,98 @@
+{
+  "status": "historical-exploration-superseded-by-approved-character-piece-split",
+  "date": "2026-10-20",
+  "sourceCommit": "d0dfcc1",
+  "sourceWorkingTree": "Earlier October 20 cast review and artwork staged; this follow-up changes only documentation and unbundled concept assets.",
+  "generator": "Built-in OpenAI image_gen; no CLI fallback",
+  "transformations": "Selected images copied byte-for-byte; no pixel postprocessing.",
+  "runtimeChanged": false,
+  "assets": [
+    {
+      "file": "expressive-crystal.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2317647,
+      "sha256": "3551740ed9bbddfc1909b76922bd2b8b875da48dbe0cadc63ada9cf22e9f53bc",
+      "selectedGeneratedSource": "/Users/lbeezr/.codex/generated_images/01a1593f-f12e-7fb1-80a7-9344aef2182a/exec-32544cd7-51ff-4f52-bc6b-877eaaa46813.png",
+      "promptFile": "expressive-crystal-prompt.txt",
+      "promptSha256": "a18fd9058b4ac144d011fca9b06b1ba0617c17dbc430c5bf5741226ffe745e0b",
+      "visuallyInspected": true
+    },
+    {
+      "file": "moonstone-folk.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2211064,
+      "sha256": "203a99d0ae6af6d32ca3933caeeb5b75deef70def6fb23568d75e3e0d1b7e26d",
+      "selectedGeneratedSource": "/Users/lbeezr/.codex/generated_images/01a15940-7b3a-7d21-8618-b521d5c748a8/exec-3987611f-2fba-4433-82a4-05f8b46cbe11.png",
+      "promptFile": "moonstone-folk-prompt.txt",
+      "promptSha256": "40eedc015ddfb694f066e3fceceb0d22735ebae7e600ddeb4bc2a4558b6ecde4",
+      "visuallyInspected": true
+    },
+    {
+      "file": "orbiting-light.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2643909,
+      "sha256": "6aabd15aee88f1a96920ce8aba7a7f514361079c13b3de4bb4ab551382c2eb21",
+      "selectedGeneratedSource": "/Users/lbeezr/.codex/generated_images/01a15940-5e77-7dd1-9e9d-f1d51ff1a4ab/exec-c4146ae4-654c-45e4-a74a-b8380e9b3043.png",
+      "promptFile": "orbiting-light-prompt.txt",
+      "promptSha256": "559c833c7b1e3f989d904f2f9699ec96b9a84f32c657a07bee3844e36d3e9cd0",
+      "visuallyInspected": true
+    },
+    {
+      "file": "celestial-silhouettes-v2.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1851472,
+      "sha256": "c908da9a75307e3c0a245acf38b1c6b45018b9c2887f0444ec70f002d8e239ad",
+      "selectedGeneratedSource": "/Users/lbeezr/.codex/generated_images/01a1593f-f12e-7fb1-80a7-9344aef2182a/exec-98a3c9ea-6381-4715-ab1f-dd5514efdb91.png",
+      "promptFile": "celestial-silhouettes-prompt.txt",
+      "promptSha256": "7ac87df21c34816250890fc10056f546b870c7c1df0d3b173ad2c95771d8a89b",
+      "visuallyInspected": true,
+      "referenceImage": "expressive-crystal.png",
+      "additionalPrompts": [
+        {
+          "file": "celestial-spacing-repair-prompt.txt",
+          "sha256": "40b2e3c82153239d07561f20eefa47545fa6e90dbd11deacfeaa7c432ba9355b"
+        }
+      ]
+    }
+  ],
+  "referenceImages": [
+    {
+      "file": "docs/design/world-01/murk-v1.png",
+      "role": "Approved acting and painterly quality benchmark; anatomy not copied",
+      "sha256": "71097d894e9439ae1a1d11d49a4d93b2fb23faf19231174d90c9c913bf354e37"
+    },
+    {
+      "file": "docs/design/star-cast/crystal-glow/refinement.png",
+      "role": "Family recognition and palette reference; exact construction open to exploration",
+      "sha256": "10a65cf111cd97373034207cffb85808ae7c1e33de9a3f02308da73baf71c9b0"
+    }
+  ],
+  "revisions": [
+    {
+      "asset": "moonstone-folk.png",
+      "initialGeneratedSource": "/Users/lbeezr/.codex/generated_images/01a15940-7b3a-7d21-8618-b521d5c748a8/exec-0ae3d71a-8439-4c8c-96b6-058f6b9c829a.png",
+      "change": "One targeted material correction from busy glassy reflections to satin moonstone; full prompt history in moonstone-folk-prompt.txt"
+    },
+    {
+      "asset": "celestial-silhouettes-v2.png",
+      "initialGeneratedSource": "/Users/lbeezr/.codex/generated_images/01a1593f-f12e-7fb1-80a7-9344aef2182a/exec-a4cf041e-3600-43e7-be09-7a2bd6201949.png",
+      "change": "One targeted spacing correction: replace grouped expression columns with mixed families. Generated cell proportions remain approximate, not square native geometry."
+    }
+  ],
+  "limits": [
+    "Generated stills are not sprite atlases or runtime evidence.",
+    "Point counts, facial construction and anatomical continuity drift in places; see README review.",
+    "Orbiting Light omits Pip from its second story panel.",
+    "Native small-scale contrast, animation, interactions, VoiceOver and device behavior were not tested.",
+    "The new silhouette board is a concept, not a matched alpha-mask export.",
+    "Pip reads as a rock and Dusk as a jigsaw piece; neither silhouette is recommended as final.",
+    "The revised mixed grid remains wider per cell than tall, despite its generated square-cell caption. It is illustrative spacing, not a native geometry test."
+  ],
+  "userDirection": "User prefers Expressive Crystal material, rejects similar radial silhouettes, allows any silhouette that works as a game piece. Later shards/separate-cast alternative deferred until after current exploration. After viewing the new six-form lineup, the user favors its varied silhouettes as more satisfying and interesting than repeating classic stars.",
+  "supersededBy": "docs/design/star-cast/characters-and-shards-2026-10-20/README.md",
+  "laterDecision": "User retained varied silhouettes including the admired Dusk fold, removed gameplay faces, kept original character cast, and added round Opal. Earlier aesthetic reservations in this record describe the exploratory review, not the selected direction."
+}

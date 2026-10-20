@@ -1,0 +1,39 @@
+{
+  "status": "rejected-as-cast-direction",
+  "date": "2026-10-20",
+  "sourceCommit": "d0dfcc1",
+  "sourceWorkingTree": "Earlier October 20 art and documentation staged; this batch changes only documentation and unbundled concept assets.",
+  "generator": "Built-in OpenAI image_gen; no CLI fallback",
+  "transformations": "Copied byte-for-byte; no pixel postprocessing",
+  "runtimeChanged": false,
+  "assets": [
+    {
+      "file": "whole-stars-v1.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2114460,
+      "sha256": "02fdbc1db01d8182c07d7a15c23550f086306b0e9c73cfc6ebeda5bd2fdeefba",
+      "selectedGeneratedSource": "/Users/lbeezr/.codex/generated_images/01a1593f-f12e-7fb1-80a7-9344aef2182a/exec-e880f205-36bb-4028-8602-08705c710060.png",
+      "promptFile": "whole-stars-prompt.txt",
+      "promptSha256": "cd6cd859ecd0d65a57336ee242081a45b910abb6f801ce25a288dbf30fcbaced",
+      "visuallyInspected": true
+    }
+  ],
+  "referenceImages": [
+    {
+      "file": "docs/design/star-cast/directions-2026-10-20/celestial-silhouettes-v2.png",
+      "sha256": "c908da9a75307e3c0a245acf38b1c6b45018b9c2887f0444ec70f002d8e239ad"
+    },
+    {
+      "file": "docs/design/world-01/murk-v1.png",
+      "sha256": "71097d894e9439ae1a1d11d49a4d93b2fb23faf19231174d90c9c913bf354e37"
+    }
+  ],
+  "limits": [
+    "Concept artwork only; no literal fragment-to-parent geometric fit established.",
+    "Dusk gives the clearest structural relationship; other pairs need more deliberate anatomy.",
+    "No story origin, reassembly, upgrade, unlock or power mechanic selected.",
+    "No native rendering, gameplay, animation, accessibility or device validation."
+  ],
+  "decision": "User selected original traditional characters and faceless varied gameplay shards instead."
+}

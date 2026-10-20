@@ -1,0 +1,41 @@
+Use case: stylized-concept
+Asset type: Starfall character expression and movement reference sheet, concept artwork, not a normalized runtime atlas.
+Primary request: Create one polished individual sheet for SUNNY, the warm outgoing amber five-point crystal star. Evolve the provided established character with cleaner consistency, distinct acting, quieter facets, believable luminosity, and meaningful movement key poses.
+Input image 1: revised Starfall Bigger, Brighter comparison plate. Use the Sunny column and contrast-study Sunny as the current material and grown-state reference. The grown character is one visibly larger body surrounded by a diffuse amber aura, with no offset copy.
+Input image 2: Sunny's earlier Crystal Glow individual sheet. Preserve his recognizable five-point amber identity, friendly expressive face and warm temperament. This reference does not determine the new sheet layout or scale.
+Scene/backdrop: Clean midnight-blue presentation background, subtle and uniform, no scenery, floor, stars, decorative particles or contact shadows.
+Composition: Landscape 1536x1024 or larger, with elegant cream serif title "SUNNY" and smaller subtitle "STATE & MOTION STUDY". Exactly sixteen separate poses in a clear four-column by four-row layout with generous space. Each pose has its exact cream label below. Fine quiet divider rules only. Allocate extra vertical space to row three so the visibly bigger bodies and their soft auras fit without clipping. Keep all other rows' bodies the same ordinary review size, except genuine squash and stretch deformation.
+Scale: ordinary neutral bodies about 110 pixels tall at a 1536x1024 canvas. Every body in row three about 220 pixels tall, approximately twice BOTH height and width of the ordinary idle body. Scale the whole single body and face coherently. The aura does not count toward body size. Do not add comparison miniatures, duplicate silhouettes or enlarged background copies.
+Material: Translucent golden amber crystal, clean quiet central facial plane, restrained broad planes around the edge, convincing thickness. One coherent upper-left warm light, pale cream upper-left bevel, richer orange lower-right bevel and softly shaded right/lower planes. Keep the five points sharp but welcoming. All sixteen poses share the same broad facet construction, colors and eye proportions. No busy internal triangulation or facets crossing eyes or mouth.
+Face and personality: Sunny is outgoing, generous and warmly enthusiastic. Expressive indigo eyes with restrained single catchlights, subtle brows, small warm smiles that vary meaningfully with the action. Keep character identity when looking left/right. An actual blink fully closes BOTH eyes. No cheek spots, body dots, freckles, twin bright marks, protrusions, symbols or value badges.
+Row 1, exact labels and acting from left to right:
+"IDLE" — relaxed front-facing welcome, bright eyes and gentle open smile.
+"LOOK LEFT" — shallow turn and gaze toward screen left, friendly attentive smile.
+"LOOK RIGHT" — shallow turn and gaze toward screen right, same identity and proportions.
+"BLINK" — front-facing, both eyes fully closed as simple eyelid arcs, content smile.
+Row 2, exact labels and acting:
+"ANTICIPATE" — small preparatory squash, focused delighted face, upper points dip slightly.
+"FALL" — unmistakable vertical stretch with slight horizontal compression, eyes looking down with eager surprise.
+"CONTACT" — unmistakable horizontal squash and vertical compression, small surprised mouth; maintain exactly five connected star points.
+"REBOUND" — elastic recovery slightly taller than idle, happy relieved expression and modest tilt.
+Row 3, exact labels and acting:
+"TWO LIGHTS FRONT" — single approximately double-size front-facing Sunny, joyful open-eyed smile, clean diffuse radial amber aura.
+"TWO LIGHTS LEFT" — same double-size body, shallow turn toward screen left and excited friendly gaze.
+"TWO LIGHTS RIGHT" — same double-size body, shallow turn toward screen right.
+"QUIET GLOW" — same double-size body and steady diffuse amber aura, calm content eyes and quiet smile.
+Row 4, exact labels and acting:
+"JOY" — ordinary body size, delighted closed-eye smile with buoyant tilt.
+"SHARE LIGHT" — ordinary body size, warm generous expression, broad soft light radiating gently without discrete particles or objects.
+"DRIFT" — ordinary body size, graceful slight diagonal departure, peaceful soft eyes, body completely intact.
+"REST" — ordinary body size, tranquil neutral upright pose, eyes fully closed and tiny content smile.
+Constraints: Every pose is the same Sunny, exactly five star points. There are no limbs, clothes, accessories, crowns, new traits, floating diamonds, fragments, ghost bodies, value numerals, sharp outlined halos, duplicate outlines or floor shadows. Do not place any two decorative spots, internal lights or raised bumps on the body; only the eyes form a paired facial feature. Grown is conveyed solely by visibly greater single-body scale and diffuse family-colored light. Preserve the character intact during all departure poses; no shattering. Labels must be correct and readable. Refined, warm, luminous, coherent and suitable as a character animator's concept reference.
+
+--- TARGETED REVISION 1 ---
+Input: exec-9773653b-0c60-4d39-8f08-09b7f86482b2.png
+Use case: precise-object-edit
+Edit only the scale relationship on this SUNNY reference sheet. Keep the entire title, typography, labels, dividers, cell layout, background, color, facet design, exact expressions and pose directions unchanged. Keep every character in the third row exactly as large as it is now. Uniformly shrink each character and its associated aura in rows ONE, TWO and FOUR to 75 percent of its current width and height, around the center of its cell's artwork area. Preserve all squash/stretch ratios within those smaller bodies. This makes the third row's single grown bodies approximately twice the ordinary idle body's width and height; currently they are only about 1.5 times. Every cell still contains exactly one intact five-point amber Sunny. No extra bodies, miniatures, marks, effects, props, shadows or changed text. The sole edit is smaller ordinary-row artwork while preserving all row-three artwork and every other detail.
+
+--- TARGETED REVISION 2 ---
+Input: exec-a4bfa693-ddd8-4453-ab23-918f5593d919.png
+Use case: precise-object-edit
+Correct only the direction of the four left/right poses on this SUNNY reference sheet. In row ONE, swap the character artwork between the "LOOK LEFT" and "LOOK RIGHT" cells, keeping the text labels and dividers exactly where they are. In row THREE, swap the character artwork between "TWO LIGHTS LEFT" and "TWO LIGHTS RIGHT", again keeping labels and dividers in place. Preserve the existing painting orientation of each swapped character; this is a position swap, not a mirror flip, so the upper-left lighting remains correct. The cell labeled LEFT must show the face displaced and directed toward the viewer's screen left, and the cell labeled RIGHT must show the face displaced and directed toward the viewer's screen right. Keep every other pixel and design choice as close to unchanged as possible: all twelve other poses, artwork sizes, amber colors, broad crystal facets, body count, aura strength, expressions, background, all text and linework. Do not add any marks, copies, sparkles, accessories, limbs or shadows.

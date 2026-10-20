@@ -1,0 +1,134 @@
+{
+  "status": "concept-review-only",
+  "date": "2026-10-20",
+  "sourceCommit": "d0dfcc1",
+  "generator": "built-in OpenAI image_gen; no CLI fallback",
+  "transformations": "Selected outputs copied byte-for-byte. Targeted revisions used image_gen; no pixel postprocessing.",
+  "runtimeChanged": false,
+  "scaleWarning": "Illustrated sizes are approximate; renderer must set and validate exact scale.",
+  "auraWarning": "Painted auras illustrate appearance; production body cutouts must exclude the external aura.",
+  "assets": [
+    {
+      "file": "growth-aura-study.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1736645,
+      "sha256": "e37d7fe293becbcb635140138880f766b15fdf9cfb20f19aa820f60900e7519a",
+      "selectedGeneratedSource": "/Users/lbeezr/.codex/generated_images/01a1593f-f12e-7fb1-80a7-9344aef2182a/exec-38fb5412-1591-4a32-a96a-f93ef2178593.png",
+      "visuallyInspected": true
+    },
+    {
+      "file": "nova-sheet.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1687691,
+      "sha256": "a38c5bc70758e45cdbb8fd5daf4bd37c89c849b16482bc1763ecc896a52bb24c",
+      "selectedGeneratedSource": "/Users/lbeezr/.codex/generated_images/01a1593f-f12e-7fb1-80a7-9344aef2182a/exec-d474eed3-eb82-4435-812b-f7eb8b35f1cb.png",
+      "visuallyInspected": true
+    },
+    {
+      "file": "spark-sheet.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1669666,
+      "sha256": "1b2826f9f2d4103dbb069c0b854403a8ddc50b3b08c739f7bde816205b0c0f23",
+      "selectedGeneratedSource": "/Users/lbeezr/.codex/generated_images/01a15940-5e77-7dd1-9e9d-f1d51ff1a4ab/exec-6ace6c15-e65b-4f8c-bbdc-3818caaabcd2.png",
+      "visuallyInspected": true
+    },
+    {
+      "file": "pip-sheet.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1694611,
+      "sha256": "d3dcaffca31bdabb07fdace25f44548f16fba1d76db047c9f679843242b9b5de",
+      "selectedGeneratedSource": "/Users/lbeezr/.codex/generated_images/01a15940-5e77-7dd1-9e9d-f1d51ff1a4ab/exec-60ec4dca-028f-449e-a9b8-42416a20cd2a.png",
+      "visuallyInspected": true
+    },
+    {
+      "file": "sunny-sheet.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1688840,
+      "sha256": "7d8a540403aea4485db2a80b3fe4bc94cb2afc1fbf288e49821956e7c00c8cfd",
+      "selectedGeneratedSource": "/Users/lbeezr/.codex/generated_images/01a15940-7b3a-7d21-8618-b521d5c748a8/exec-08070c7a-b140-499e-8aea-9ddb05c8332a.png",
+      "visuallyInspected": true
+    },
+    {
+      "file": "twinkle-sheet.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1702631,
+      "sha256": "2e049ba8afbbf6bb9d0ed521b8b76cb993066f174de63392f09ec8a94b1e1b4d",
+      "selectedGeneratedSource": "/Users/lbeezr/.codex/generated_images/01a15940-7b3a-7d21-8618-b521d5c748a8/exec-1e2e80c1-eb5b-43b6-b4e0-62db53272f52.png",
+      "visuallyInspected": true
+    },
+    {
+      "file": "dusk-sheet.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1692231,
+      "sha256": "e7a365643555adacfd1fd5896903adb3d1ae315d201779ca8a2a44a76e361a19",
+      "selectedGeneratedSource": "/Users/lbeezr/.codex/generated_images/01a15946-c5cb-7683-beeb-29698f4d2cff/exec-1ba54890-0045-4d4f-ab43-c4ef0709974a.png",
+      "visuallyInspected": true
+    },
+    {
+      "file": "opal-sheet.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1601564,
+      "sha256": "ba1da219386c7fc7e259ae7c717905f3a2543b07ce47a5a13658772824516914",
+      "selectedGeneratedSource": "/Users/lbeezr/.codex/generated_images/01a15946-c5cb-7683-beeb-29698f4d2cff/exec-b6397268-7201-411d-8b06-3220a32ef286.png",
+      "visuallyInspected": true
+    }
+  ],
+  "prompts": [
+    {
+      "file": "dusk-prompt.txt",
+      "sha256": "ac83c708ade646f3d53ecba8df7d07764c31d8913639a0b33c3957b872296910"
+    },
+    {
+      "file": "growth-prompt.txt",
+      "sha256": "78aee5b39ce57584dd414bd64b0b9d1ffee4f5919802cb1e79c22f3b4d014ca7"
+    },
+    {
+      "file": "growth-title-correction-prompt.txt",
+      "sha256": "20a648d1cff23329438d2913cd8baefd67d665434210ed17a1da5767862c0bb7"
+    },
+    {
+      "file": "nova-prompt.txt",
+      "sha256": "c98a3f9f8c8066f6d062ef396899c6238422a8cc8c5d3ffec44a24293e60c1be"
+    },
+    {
+      "file": "nova-repair-prompt.txt",
+      "sha256": "338f383d20c0c3c682d35a0ce12d3c74902e9449f45ab02f1229968c81bab2a7"
+    },
+    {
+      "file": "opal-prompt.txt",
+      "sha256": "a673140cc6bec360767af9ac33983e9c26b64c9436597397c26820a31ad0b2b5"
+    },
+    {
+      "file": "pip-prompt.txt",
+      "sha256": "c46fb81129b94a03db7c721cf82981afac5a9df814126cb3cefcfa95a454020c"
+    },
+    {
+      "file": "pip-repair-prompt.txt",
+      "sha256": "7bce2e89e98fa615de8248ea0f4c2a12a0a35a6f9bf242102c9bd8802b56bbd2"
+    },
+    {
+      "file": "spark-prompt.txt",
+      "sha256": "dc2b33157a11ace27e20cd7a582713617209a6cd91740cb4e983af0576a94443"
+    },
+    {
+      "file": "spark-repair-prompt.txt",
+      "sha256": "8625a3362648add2e9c4e0616ab0c79777f54ed76ce17083ece33edc34fb9fb5"
+    },
+    {
+      "file": "sunny-prompt.txt",
+      "sha256": "741d70ba02ac097c307acc9b8b79e4e30f04ecced15b2f59a3094fdf6f30cf46"
+    },
+    {
+      "file": "twinkle-prompt.txt",
+      "sha256": "85e07b5c795689d3b0b565d01260eec83a65994f00ee9b7c4f13e547da9b2e79"
+    }
+  ]
+}

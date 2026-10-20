@@ -1,0 +1,233 @@
+{
+  "captures": [
+    {
+      "file": "dev-9e0732a__piece-materials__iphone-17e__native-host.png",
+      "sha256": "e15958184c9e053a3be51dcd1b7b9b64d4d6ffc71c818fe97376319bebd7aea7",
+      "sourceCommit": "9e0732a460fd469cbcaa9ef014078d3eb9d8ed0d",
+      "test": "SkyPieceTests/testNativeGameplayReviewAtSmallSizesWithSilhouettesGrayAndGrownAura()",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "D65C5E40-734F-42BF-8F91-97E980ED19C2",
+        "deviceName": "Starfall Crystal Glow QA",
+        "exportedFileName": "6B968D08-527B-4521-91D7-28D5B28B707A.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "sky-piece-native-material-review_0_91342CA7-B530-4304-A0BF-6CCD5DB935C6.png",
+        "timestamp": 1792505475.65
+      },
+      "status": "Inspected",
+      "limits": "Native renderer specimen at 24/36/44 points, not a full-game screenshot or physical-device proof."
+    },
+    {
+      "file": "dev-9e0732a__piece-motion-samples__iphone-17e__native-host.png",
+      "sha256": "b84d02c28240a7d23e7d92e193da5dfcb37c02c10c666d5c5edbbbfa70ceccaa",
+      "sourceCommit": "9e0732a460fd469cbcaa9ef014078d3eb9d8ed0d",
+      "test": "SkyPieceTests/testEveryFamilyHasFiniteNativeFlightLandingAndContactMotion()",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "D65C5E40-734F-42BF-8F91-97E980ED19C2",
+        "deviceName": "Starfall Crystal Glow QA",
+        "exportedFileName": "E6DEB521-0C62-452D-ACD6-AE2266CEEE36.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "sky-piece-native-motion-contact-sheet_0_174365E6-1F92-4F37-B9D6-4D4647A5A22B.png",
+        "timestamp": 1792505475.214
+      },
+      "status": "Inspected",
+      "limits": "Actual finite actions sampled in a visible SpriteKit host, including grown bodies one cell apart. Not full-game motion."
+    },
+    {
+      "file": "dev-9e0732a__piece-motion__iphone-17e__native-samples.gif",
+      "sha256": "d16de0730e031690104f6732db6a57001aabd152e58d6a02daefb3150706cb82",
+      "sourceCommit": "9e0732a460fd469cbcaa9ef014078d3eb9d8ed0d",
+      "status": "Inspected frames",
+      "test": "SkyPieceTests/testEveryFamilyHasFiniteNativeFlightLandingAndContactMotion()",
+      "transformation": "Chronological native PNG attachments, aspect-preserving downsample to 630x600 and GIF encoding. Actual attachment timing rounded to 10ms; review holds added at before/settled states. No interpolated or painted frames.",
+      "sourceFrames": [
+        {
+          "file": "2C5677C4-E957-456E-9B84-6B21D8F1B67F.png",
+          "sha256": "c3c4c4f77970472b928e4f61bec3319fdaddc134e248113f7670bbfee1162e5b",
+          "timestamp": 1792505473.224,
+          "durationMs": 500
+        },
+        {
+          "file": "9761D49D-CD48-4D57-AF35-EC9BE2B3AD7A.png",
+          "sha256": "5aa0489adaabcbc75b9d28a1637eb9059665686bb6931fc21fe70a53e46d595f",
+          "timestamp": 1792505473.267,
+          "durationMs": 110
+        },
+        {
+          "file": "91A710CE-ECB6-4670-B76F-4AD35B31D5A7.png",
+          "sha256": "eee30c0742d1fe22a731241844a2ea7ef37e5596920bbcfa7c7147a9f866fd6b",
+          "timestamp": 1792505473.38,
+          "durationMs": 110
+        },
+        {
+          "file": "45CA5484-44C4-4240-B4D6-B25FA53ED2E6.png",
+          "sha256": "d448946457d28ddad91afac0ad72ff2ab58eddaa3f9c9d96c7f11e67b7b41d13",
+          "timestamp": 1792505473.487,
+          "durationMs": 110
+        },
+        {
+          "file": "13E51AD5-8215-4FF9-BCDE-B11181A26D5D.png",
+          "sha256": "a12cd946d44ed1b483332713732361e0cbf1c84347ea4ea9726fb2eb56f8cacf",
+          "timestamp": 1792505473.594,
+          "durationMs": 110
+        },
+        {
+          "file": "C087D406-1194-473E-92DF-C15D6783F970.png",
+          "sha256": "cdf1093f663d23539a2f0d156df4369617172df0bac2dd447cee8cb96dee1ac4",
+          "timestamp": 1792505473.708,
+          "durationMs": 100
+        },
+        {
+          "file": "D162E644-DB53-4A36-B656-562649F8939C.png",
+          "sha256": "43590a0aadb49367098d4ba921580c138acede783522c37cc2e97e2fe9c151cb",
+          "timestamp": 1792505473.808,
+          "durationMs": 100
+        },
+        {
+          "file": "2A614C5A-C2BC-4A60-A892-8F5D7DAFEE2E.png",
+          "sha256": "ebe9a56f3f6327b898c788671f48ac21cc4a451fe975dae99061af9a52569dc7",
+          "timestamp": 1792505473.912,
+          "durationMs": 100
+        },
+        {
+          "file": "7405FB3A-3329-410D-A673-822B784B5D08.png",
+          "sha256": "c97c677dd2a2f4fed5ccb779267c359547f74f16c1ce4a570bda2fa60a3ec6be",
+          "timestamp": 1792505474.013,
+          "durationMs": 80
+        },
+        {
+          "file": "112029D4-B6DB-4A51-A97C-670C3CDACBF6.png",
+          "sha256": "ed4939815fbb39aebb0a13bd8497d2d7c589e5b9301f15e493a7b86dc2cddf9a",
+          "timestamp": 1792505474.094,
+          "durationMs": 100
+        },
+        {
+          "file": "F5FB55EB-8B8E-40A1-88F0-AD4727B0DAEC.png",
+          "sha256": "91b66b3905666d32440a0590ab386b791105b686e53fb9747ec683cbbd3edd15",
+          "timestamp": 1792505474.195,
+          "durationMs": 110
+        },
+        {
+          "file": "FEE27208-70CB-4CF8-BA6A-2E15EAEB78EB.png",
+          "sha256": "37b8b6bceda4ab6025071b8b33b4ea7597c33ffeb739274c6464a0e98df530f7",
+          "timestamp": 1792505474.3,
+          "durationMs": 90
+        },
+        {
+          "file": "00EF84F0-7974-4235-9F0F-D6525166F821.png",
+          "sha256": "faab40a3e9088a38193fa78ae69bab06192268c98329f8dec99a534ad8cfc747",
+          "timestamp": 1792505474.387,
+          "durationMs": 500
+        },
+        {
+          "file": "FBBF6841-795B-4654-95FE-8FEB72883FC3.png",
+          "sha256": "e0e5ed40489a5f2e3787b960aec9b3f4d6c5237a4bc2e8e0429898aa2e39dde8",
+          "timestamp": 1792505474.451,
+          "durationMs": 500
+        },
+        {
+          "file": "34A3B9AB-C9B3-48B3-94BC-137E621A2456.png",
+          "sha256": "b05028cd72b4c8392efaba4f8412377192433d76dac74d4b34ae469626cc80d5",
+          "timestamp": 1792505474.499,
+          "durationMs": 100
+        },
+        {
+          "file": "6B50F0CD-6967-4D94-9E23-A86D3CA989B9.png",
+          "sha256": "334262b7325771b9de202cc0cef6969805462b7412cbad8d37d8096589fc444a",
+          "timestamp": 1792505474.602,
+          "durationMs": 100
+        },
+        {
+          "file": "71B31C53-56B7-4861-B3A6-FF8E63939A6A.png",
+          "sha256": "f5682e9b41d021ce54bd7454eb3713e96c3a2cfd791f2b5a1954c4f7e49379b8",
+          "timestamp": 1792505474.706,
+          "durationMs": 100
+        },
+        {
+          "file": "0F497B1B-0E35-4FED-BE36-FA88557D272C.png",
+          "sha256": "5f5cb436b6f01f32787f7cfa27bb04fc24f1ec415286006307e3e179ebde0d95",
+          "timestamp": 1792505474.809,
+          "durationMs": 90
+        },
+        {
+          "file": "229E2E20-04D0-4C84-B242-5597826256B3.png",
+          "sha256": "7fcf471b0be6b5553a41e8dea90a7e8e210f7fff5216d0b6a657c36cfd637fc0",
+          "timestamp": 1792505474.899,
+          "durationMs": 110
+        },
+        {
+          "file": "8F3CB1B8-2245-4D6A-8C8D-C66C01D78DB4.png",
+          "sha256": "8c2ee16108bfcad31afcb4daae62a1a2ea6c3c26a3243a565ccd982c8f9fc679",
+          "timestamp": 1792505475.006,
+          "durationMs": 100
+        },
+        {
+          "file": "2097144E-DD99-48B5-BC3D-60863CEC11B3.png",
+          "sha256": "ebab98dc4eeb1998a6b9fcc66792467b1cac6760c6c146513fc5a8d3632b7185",
+          "timestamp": 1792505475.11,
+          "durationMs": 60
+        },
+        {
+          "file": "0BB6904A-CBE5-444F-8123-E318B6BC2ED1.png",
+          "sha256": "b3d1736d7832535f1b1cd2ee2a78ddbee4e31c6e03c75984633868f6d2f73698",
+          "timestamp": 1792505475.173,
+          "durationMs": 850
+        }
+      ],
+      "limits": "Sampled isolated SpriteKit host, not a continuous screen recording, full-game animation or physical-device feel."
+    },
+    {
+      "file": "dev-9e0732a__dense-board__iphone-17e__default.png",
+      "sha256": "0d0843f16083bacbbdb359db29acd0bf95c3add76e6c683dce8971cc3e229275",
+      "sourceCommit": "9e0732a460fd469cbcaa9ef014078d3eb9d8ed0d",
+      "test": "ObservatoryInteractionTests/testActualCastSparseDenseAndProjectedCornerTaps()",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "D65C5E40-734F-42BF-8F91-97E980ED19C2",
+        "deviceName": "Starfall Crystal Glow QA",
+        "exportedFileName": "BC432711-7171-4EB1-9A9F-F5A830AD2EFA.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "Observatory-real-cast-dense_0_00CBBF90-3FF3-42AA-8D4C-70D817567D12.png",
+        "timestamp": 1792505579.634
+      },
+      "status": "Inspected native screenshot",
+      "limits": "Reset-only native test fixture. Dense board retains historical Dusk, drained and grown cases; it does not depict fresh survival supply. Normal-motion behavior, physical feel and actual VoiceOver are separate evidence."
+    },
+    {
+      "file": "dev-9e0732a__tutorial-trace__iphone-17e__default.png",
+      "sha256": "d1651bf998d48dfac7cc9cf12070ac9608f516436fcf55d5000b4bccec8093c0",
+      "sourceCommit": "9e0732a460fd469cbcaa9ef014078d3eb9d8ed0d",
+      "test": "SkyLessonInteractionTests/testGuideCoordinatesAndDisclosureMatchTheVisibleBoard()",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "D65C5E40-734F-42BF-8F91-97E980ED19C2",
+        "deviceName": "Starfall Crystal Glow QA",
+        "exportedFileName": "8721A67E-257B-4A8F-A7DD-275E651FB5A6.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "tutorial-trace-top-down-coordinates_0_CEB89A6F-E9B4-439D-806F-AF6A6988317F.png",
+        "timestamp": 1792505757.214
+      },
+      "status": "Inspected native screenshot",
+      "limits": "Native practice board; no progression. Default iPhone text/size only."
+    },
+    {
+      "file": "dev-8672668__orchard-dense__iphone-17e__default.png",
+      "sourceCommit": "8672668294e63130a19480f52e46ced621f535db",
+      "sha256": "55709556d7f8fb6de190ebc162f3f04db4a940c0865c72b9d43a14f0947a2c0c",
+      "test": "FrostfruitOrchardInteractionTests/testFrostfruitDenseRapidClearSurvivesSettingsAndBackground()",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "D65C5E40-734F-42BF-8F91-97E980ED19C2",
+        "deviceName": "Starfall Crystal Glow QA",
+        "exportedFileName": "25097309-0F48-4A4B-BD26-54F50BDBFAC1.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "frostfruit-dense-before-rapid-clear_0_D0EAFCA6-8D37-4E8A-BE8A-039C4C7CF4EF.png",
+        "timestamp": 1792506368.401
+      },
+      "status": "Inspected",
+      "limits": "Native reset-only dense review fixture, default text; new Orchard painting with actual shards. Physical feel and actual VoiceOver remain unverified."
+    }
+  ],
+  "note": "The earlier working-tree material capture (snapshot 55943936e8ea) was byte-identical to the retained integrated material image; the duplicate was removed in this batch."
+}

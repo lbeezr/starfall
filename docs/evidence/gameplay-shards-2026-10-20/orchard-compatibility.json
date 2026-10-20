@@ -1,0 +1,45 @@
+{
+  "sourceCommit": "8672668294e63130a19480f52e46ced621f535db",
+  "upstreamMain": "3f560e225036793604cdfd10ecf3d62b64aa7465",
+  "buildAffectingDirtyPaths": {},
+  "environment": "Same Xcode27.1/iPhone17e/iOS27.0 as source.json",
+  "checks": [
+    {
+      "command": "xcodebuild test -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination 'platform=iOS Simulator,id=D65C5E40-734F-42BF-8F91-97E980ED19C2' -derivedDataPath /tmp/starfall-shards-dd -resultBundlePath /tmp/starfall-shards-orchard-hosted.xcresult ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -only-testing:StarfallAppTests/SkyPieceTests -only-testing:StarfallAppTests/RestorationPresentationTests -only-testing:StarfallAppTests/WorldJourneyTests -only-testing:StarfallAppTests/SkySaveArchiveTests -only-testing:StarfallAppTests/SkyDialogueTests > /tmp/starfall-shards-orchard-hosted.log 2>&1",
+      "summary": {
+        "result": "Passed",
+        "totalTestCount": 54,
+        "passedTests": 54,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "startTime": 1792506186.366,
+        "finishTime": 1792506239.503,
+        "runtimeWarnings": []
+      }
+    },
+    {
+      "command": "xcodebuild test -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination 'platform=iOS Simulator,id=D65C5E40-734F-42BF-8F91-97E980ED19C2' -derivedDataPath /tmp/starfall-shards-dd -resultBundlePath /tmp/starfall-shards-orchard-ui.xcresult ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -only-testing:StarfallUITests/FrostfruitOrchardInteractionTests/testFrostfruitDenseRapidClearSurvivesSettingsAndBackground -only-testing:StarfallUITests/FrostfruitOrchardInteractionTests/testFrostfruitWinningClearPersistsNamedResultAndReplayStartsAtZero > /tmp/starfall-shards-orchard-ui.log 2>&1",
+      "summary": {
+        "result": "Passed",
+        "totalTestCount": 2,
+        "passedTests": 2,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "startTime": 1792506316.72,
+        "finishTime": 1792506457.758,
+        "runtimeWarnings": []
+      }
+    },
+    {
+      "command": "swift test > /tmp/starfall-shards-orchard-core.log 2>&1",
+      "passed": 185,
+      "failed": 0,
+      "durationSeconds": 27.577
+    },
+    {
+      "command": "xcodebuild build -project Starfall.xcodeproj -scheme Starfall -configuration Release -destination 'platform=iOS Simulator,id=D65C5E40-734F-42BF-8F91-97E980ED19C2' -derivedDataPath /tmp/starfall-shards-dd ARCHS=arm64 ONLY_ACTIVE_ARCH=YES > /tmp/starfall-shards-orchard-release.log 2>&1",
+      "result": "BUILD SUCCEEDED"
+    }
+  ],
+  "limits": "Focused post-merge compatibility. No new tablet, minimum-OS, actual VoiceOver or physical-device check."
+}

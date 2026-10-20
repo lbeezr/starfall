@@ -1,0 +1,56 @@
+{
+  "baseCommit": "d0dfcc1062eb8c109ceded861d9d80110ebf7824",
+  "workingTreeSnapshot": "55943936e8ea",
+  "buildAffectingDirtyPaths": {
+    "App/Assets.xcassets/SkyPieceDusk.imageset/Contents.json": "bd5fe0cd7d564c4709a88048f8c8a62e9ddd9fefebdb4aa8c1e0cb438e7b0df3",
+    "App/Assets.xcassets/SkyPieceDusk.imageset/body.png": "46de286aec68d91ab40269cb83668e30ad75a13f2fa3ed7c1c6f729a957bd134",
+    "App/Assets.xcassets/SkyPieceNova.imageset/Contents.json": "bd5fe0cd7d564c4709a88048f8c8a62e9ddd9fefebdb4aa8c1e0cb438e7b0df3",
+    "App/Assets.xcassets/SkyPieceNova.imageset/body.png": "8686dd622cc2ef5657e045211bf0afc9742a5ab6cd4446b157184307265ef2fa",
+    "App/Assets.xcassets/SkyPieceOpal.imageset/Contents.json": "bd5fe0cd7d564c4709a88048f8c8a62e9ddd9fefebdb4aa8c1e0cb438e7b0df3",
+    "App/Assets.xcassets/SkyPieceOpal.imageset/body.png": "9d85097013be940164cce734531a1c357b0f0ee2ee28e621baf9006995098baa",
+    "App/Assets.xcassets/SkyPiecePip.imageset/Contents.json": "bd5fe0cd7d564c4709a88048f8c8a62e9ddd9fefebdb4aa8c1e0cb438e7b0df3",
+    "App/Assets.xcassets/SkyPiecePip.imageset/body.png": "22a500fcb69bde908df04556b13481dd06b8b4a798d73a1e615e32ca8cac51a8",
+    "App/Assets.xcassets/SkyPieceSpark.imageset/Contents.json": "bd5fe0cd7d564c4709a88048f8c8a62e9ddd9fefebdb4aa8c1e0cb438e7b0df3",
+    "App/Assets.xcassets/SkyPieceSpark.imageset/body.png": "6940e41a6a4b25dc586b0e23be904eef6ad3be6660f017994fc68007d12e2e21",
+    "App/Assets.xcassets/SkyPieceSunny.imageset/Contents.json": "bd5fe0cd7d564c4709a88048f8c8a62e9ddd9fefebdb4aa8c1e0cb438e7b0df3",
+    "App/Assets.xcassets/SkyPieceSunny.imageset/body.png": "4fe7290281c35aff5f4c2ccda987771d7b079e48d2fe7b3b70515ed3791f5557",
+    "App/Assets.xcassets/SkyPieceTwinkle.imageset/Contents.json": "bd5fe0cd7d564c4709a88048f8c8a62e9ddd9fefebdb4aa8c1e0cb438e7b0df3",
+    "App/Assets.xcassets/SkyPieceTwinkle.imageset/body.png": "6712aa601a9a30c18ed9b0c084506b675e72f32303753056736107ca4c62c2da",
+    "App/DialogueScripts/observatory-dialogue.json": "ad3bcb8b571ac4a6833032a7fca47e8dea83ad6392ef8ebaa6e8da0084992783",
+    "App/FallingSkyHUD.swift": "5a66dbbd823ac61c9e620d982899718e2389ac0a6ae1983deb0613113e4aa91a",
+    "App/FallingSkyMotion.swift": "608137f6a02b2e0e02d37d7c6d395619a0b99d4a5db951e6d3ead41f2917a8b3",
+    "App/FallingSkyScene.swift": "f5116bfbcfd68bdd8c3aedf673cab5dac9b8a2b8e37faf07f4030d3b72da2977",
+    "App/FallingSkyView.swift": "74644892516ff0abf1e470c05b930fb02f2b9c8e7848b3333e21e24781905c13",
+    "App/README.md": "4e90c68a552ae4b4a21d2f2247def282d20d28b5de26fecd996705e9c9bb023c",
+    "App/SkyCopy.swift": "bbe9f58e786c51ad5b5294d8948985fc761865f7a62794e7209dfcf944e49547",
+    "App/SkyPiece.swift": "7a12c8dc2cda52ef6765dcfdfb02ac9414ac3c4f9233aa049fb6273173b844cf",
+    "App/StarCast.swift": "da40b3e235e15d15ed51a23b2d568551b880ffa6fc76fc746694e45fe9037107",
+    "App/StarfallTheme.swift": "10b14b0b35d99b787b9566a42532796008f6f4c958cc070f1248ce4df4bfe21e",
+    "AppTests/SkyPieceTests.swift": "f7fb1b167c75a5ebb196f37b0c8d3ca7a21fddaacc1496f3fad8f15a3ffd0ed7",
+    "AppTests/StarCastTests.swift": "1b96eb8e0dc4fcce116b81f628754c20a01d1981c87bec112060417175cccee1",
+    "Starfall.xcodeproj/project.pbxproj": "84aa103d56e7a999a7441fc1b40f19fdefcd4768f14b2c52da9c5902a6c942cb"
+  },
+  "toolchain": "Xcode 27.1 (27A9275)",
+  "configuration": "Debug and Release; arm64 simulator",
+  "simulator": {
+    "name": "Starfall Crystal Glow QA",
+    "model": "iPhone 17e",
+    "os": "iOS 27.0",
+    "udid": "D65C5E40-734F-42BF-8F91-97E980ED19C2"
+  },
+  "note": "Working-tree evidence, not clean-commit or physical-device acceptance.",
+  "integratedValidation": {
+    "commit": "9e0732a460fd469cbcaa9ef014078d3eb9d8ed0d",
+    "upstreamMain": "cdd4113f632310d2621be6cc869671d86d042664",
+    "buildAffectingDirtyPaths": {},
+    "documentationOnlyEditsDuringRun": true,
+    "configuration": "Debug focused native tests; arm64 simulator; Release build recorded in checks.json",
+    "note": "Integrated app/test source committed before validation; later edits limited to documentation and evidence."
+  },
+  "finalCompatibility": {
+    "commit": "8672668294e63130a19480f52e46ced621f535db",
+    "upstreamMain": "3f560e225036793604cdfd10ecf3d62b64aa7465",
+    "buildAffectingDirtyPaths": {},
+    "record": "orchard-compatibility.json"
+  }
+}
