@@ -1,5 +1,7 @@
 # Evidence index
 
+[Live factory setup and workstream audit](factory-audit-2026-10-22/README.md) records 34 installed labels, native Project workflows, three independent read-only audits across all 29 streams and six prioritized iPhone/iPad issues. It separates source-confirmed test drift from unperformed physical/player acceptance and unknown staffing capacity.
+
 [Agent factory scaffold](agent-factory-2026-10-22/README.md) records offline graph/closure checks and instruction validation, with live GitHub/Project automation and throughput acceptance kept separate.
 
 [Lantern/Ribbon automatic patterns](story-patterns-2026-10-20/README.md) records revision 3’s manual-clear retirement, full lines, five-family supply, model comparisons, native input and retained-save verification. It preserves the initial native entry crash and its correction separately from the passing runs. [Canonical delivery](story-patterns-2026-10-20/delivery.json) verifies `dev.e3878b33d4` installed from main `3b01d71f` on the original iPhone.

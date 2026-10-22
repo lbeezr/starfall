@@ -1,6 +1,6 @@
 # Starfall roadmap
 
-**Development workflow — October 22:** The [factory scaffold](AGENT_FACTORY.md) adds bounded parallel delivery and native GitHub completion without new approval stages. Run the next three authorized multi-task batches as a measured trial before adding persistent orchestration; [implementation evidence](evidence/agent-factory-2026-10-22/README.md) separates local checks from live closure and throughput acceptance.
+**Development workflow — October 22:** The [factory](AGENT_FACTORY.md) now has 34 live labels and an automated private [iPhone/iPad Project](https://github.com/users/lbeezr/projects/1). The [first 29-stream audit](evidence/factory-audit-2026-10-22/README.md) creates six prioritized leaves, led by current Story regression coverage, player/touch observations, sustained device performance and minimum-OS release evidence. Authorized work proceeds through verification and merge without routine human sign-offs. Measure the next three implementation batches before adding persistent orchestration; this read-only audit does not prove faster delivery.
 
 **Coverage planning — October 22:** The [workstream/role map](GAME_WORKSTREAMS.md) supports iPhone/iPad-first ownership, capacity and acceptance review. Its comprehensive catalogue does not activate every AAA specialty or expand the product; Mac support remains a separate future discussion, nearby multiplayer is deferred, and current offline/monetization boundaries remain.
 

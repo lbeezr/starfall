@@ -2,7 +2,7 @@
 
 [Documentation instructions](AGENTS.md) give the local working contract.
 
-[Agent factory](AGENT_FACTORY.md) defines bounded research, disjoint task decomposition, parallel execution, continuous integration and native GitHub issue/Project closure. The scaffold is implemented; the three-batch throughput trial remains open.
+[Agent factory](AGENT_FACTORY.md) defines autonomous bounded research, disjoint task decomposition, parallel execution, continuous integration and native GitHub issue/Project closure. The [live setup and first workstream audit](evidence/factory-audit-2026-10-22/README.md) link the Project and prioritized iPhone/iPad tasks; the three-batch throughput trial remains open.
 
 [Workstreams and resource gaps](GAME_WORKSTREAMS.md) defines the iPhone/iPad-first tracking model and label vocabulary; the [complete role catalogue](GAME_ROLE_CATALOG.md) maps 292 responsibilities to 29 primary homes, including explicitly deferred/excluded specialties.
 

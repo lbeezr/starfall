@@ -1,10 +1,12 @@
 # A lightweight agent factory for Starfall
 
-**Status:** Implemented scaffold; throughput trial pending · **Owner:** Current coordinator · **Updated:** October 22, 2026
+**Status:** Live GitHub tracking; first workstream audit complete; throughput trial pending · **Owner:** Current coordinator · **Updated:** October 22, 2026
 
 Use one coordinator to research, plan, split work by ownership, dispatch independent slices, integrate each ready result and repeat. GitHub leaf issues are the durable task record; merging their closing PRs completes them. Start with at most three workers and reduce concurrency when review or native checks become the bottleneck. These are Starfall operating defaults, not research-proven optimal numbers.
 
 **Start:** Ask “Use `$starfall-factory` to deliver [bounded outcome].” The [repo skill](../.agents/skills/starfall-factory/SKILL.md) runs inside the existing agent session. It does not start a daemon. For a small fix, keep one agent and one PR.
+
+**Autonomy default:** Within the authorized outcome, the coordinator selects priorities, researches, creates or updates issues, decomposes, dispatches, verifies, repairs, merges complete slices and refills without asking for routine human approval. Plans and specialist reviews are working artifacts, not sign-off stages. Ask only for information or authority actually missing from the existing request. An unavailable device, player observation or external permission blocks only the acceptance that requires it; continue independent work and preserve honest evidence. Repository scope, actual failing checks and delivery authorization still apply.
 
 The [workstream/label contract](GAME_WORKSTREAMS.md) and [full role catalogue](GAME_ROLE_CATALOG.md) help find missing ownership, expertise and evidence before decomposition. iPhone and iPad are primary; Mac is deferred. Catalogue breadth does not increase the active worker budget or create new feature commitments.
 
@@ -55,11 +57,12 @@ Give workers only the relevant source context and links, not a transcript dump. 
 
 ## Completion follows GitHub
 
-The state flow is **Ready → Working → In review → Done**; Blocked is an annotation with a cause and next action. The issue's native open/closed state is authoritative. An optional Project mirrors it. A Markdown plan or JSON graph stores scope and dependencies, never a second persistent task-status database.
+The live [Starfall — iPhone & iPad Project](https://github.com/users/lbeezr/projects/1) uses **Todo → In Progress → Done**. Verification/rework happens within In Progress; there is no mandatory human-review column. Blocked work records a cause and next action in its issue. The issue's native open/closed state is authoritative. A Markdown plan or JSON graph stores scope and dependencies, never a second persistent task-status database.
 
 - Put a real `Closes #123` in the **PR description** for each fully resolved leaf issue. The number in a title, comment, branch name or a `Refs` line is insufficient for this contract. Use each closing keyword with its own issue number. Do not close a parent outcome from one partial child PR.
 - Target the repository's actual **default branch**. Closing keywords on PRs into feature/integration branches are ignored by GitHub. If stacking is unavoidable, put all fully resolved leaf closing references on the final default-branch PR and keep the issues open until then.
 - For a Project, inspect Workflows and enable **Item closed → Status: Done** and **Pull request merged → Status: Done**. GitHub documents these as defaults for new Projects; existing settings still need inspection. Use real issue cards; draft cards have no issue closure event. Make parent outcomes real issues too, and close them explicitly only after all acceptance is met.
+- The live Project automatically adds open Starfall issues, sets new/reopened cards to Todo and moves issues linked to a PR to In Progress. Its reverse **Auto-close issue** workflow is disabled: moving a card must not substitute for verified acceptance and default-branch merge closure. The board displays labels and sorts by Priority. Only Status and Priority need routine maintenance; other metadata can stay in the packet until a measured need justifies another field.
 - After merge, check the expected issues are **closed as completed**. A closed-unmerged PR, “not planned” issue or draft completion does not prove delivery. If closure is missing, verify the merged diff fulfills the issue and explicitly close that specific issue as completed with the merge evidence through the authorized GitHub tools. Do not bulk-close everything mentioned in a PR.
 - If the issue closed but its Project card stayed open, repair the Item closed workflow and reconcile that card once. Do not reopen/reclose an issue merely to generate events. Project edits and manual issue reconciliation still follow the user's authorized scope and available permissions.
 
@@ -115,7 +118,7 @@ Primary sources checked October 22, 2026. These findings inform the design; none
 | [Anthropic: Multi-agent research system](https://www.anthropic.com/research/multi-agent-research-system), June 13, 2025 — earlier research | Clear delegation contracts and bounded effort matter. Its research results and token costs are not coding throughput estimates. |
 | [GitHub: Link PRs to issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue) and [Project built-in automations](https://docs.github.com/en/issues/planning-and-tracking-with-projects/automating-your-project/using-the-built-in-automations) — current docs | Native default-branch merge closure can drive Done without maintaining another bot. |
 
-The available GitHub connector exposes repository/issue/PR operations but no Project workflow administration. No Project settings have been changed by adding this scaffold. The initial repository audit found no open issues and five recent merged PRs without closing references; that sample cannot establish the cause of earlier pileups.
+The available GitHub connector exposes repository/issue/PR operations but no label creation or Project workflow administration. The [live setup and first audit](evidence/factory-audit-2026-10-22/README.md) used the existing signed-in browser for those missing capabilities and the connector for issues/PRs. The initial scaffold audit found no open issues and five recent merged PRs without closing references; that sample cannot establish the cause of earlier pileups.
 
 ## Trial and revisit
 
