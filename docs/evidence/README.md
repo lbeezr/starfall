@@ -1,5 +1,7 @@
 # Evidence index
 
+[First autonomous execution batch](factory-audit-2026-10-22/EXECUTION.md) records four merged slices, one-to-two-second issue completion, native verification bottlenecks and the separate unresolved VoiceOver and Project-view findings. It makes no sustained-throughput or background-execution claim.
+
 [RC process ownership](rc-process-ownership-2026-10-22/README.md) records the active worker's late-write reproduction, shared bounded process-group runner and 30 passing tooling regressions. Native inventory smoke evidence is kept separate from simulated Apple commands and outstanding RC/device acceptance.
 
 [Current Story regression repair](story-regression-2026-10-22/README.md) records reproduced stale strategies, shared production-rule witnesses, five passing iPhone checks and 75 hosted plus three iPad checks. The actual-VoiceOver navigation failure is preserved with its separate open follow-up; this is development acceptance, not RC acceptance.
