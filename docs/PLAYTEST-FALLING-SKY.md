@@ -1,34 +1,40 @@
 # Falling-sky comparison playtest
 
-Use this for the current default game. The older PLAYTEST and first-playtest kit concern the original 70/18 puzzle.
+Use the current sections for ordinary Open Sky observation. For new Lantern Landing and Ribbon Crossing visits, use the [current Story observation packet](design/CURRENT_STORY_PLAYTEST.md); it owns the phone/iPad worksheet, opportunity counts and decision sheet. The older PLAYTEST and first-playtest kit concern the original Debug 70/18 puzzle. Dated comparison procedures below retain their historical rules and sources.
 
-## Current session: choices and control under stellar pressure
+## Current survival: choices and control during showers
 
-**Status: Ready to run; no participant results.** Use current main, a **New sky**, and the ordinary automatic game. [Fresh-survival adoption](evidence/calibration-critical-mass-2026-10-18/ADOPTION.md) selects the longer 3.0 / 2.5 / 3.5-second cycle after the opening. Existing saves and same-sky replay keep their recorded cadence. Current survival ages collectible stars toward implosion; the older Dusk/orbit comparisons below are historical. First Light remains a separate fixed objective.
+**Status: Observation guidance reconciled October 22, 2026; no new participant results.** Identify the installed build, choose **New sky** through the ordinary app and observe automatic play. [Fresh-survival cadence adoption](evidence/calibration-critical-mass-2026-10-18/ADOPTION.md) selects the 3.0 / 2.5 / 3.5-second cycle; saved rounds and same-sky replay retain their recorded cadence. The later [aging-disabled decision](evidence/aging-disabled-2026-10-18/README.md) disables automatic aging, purple warnings and implosions in fresh and restored critical-mass skies. Matching growth remains; fresh survival supplies no Dusk. Retained historical Dusk rounds keep their feeding rules and must be identified separately.
 
-**Recommendation:** keep the existing mechanics and baseline. Observe whether the player recognizes a useful choice and can execute it through showers, aging and celebrations. A faster score alone does not answer either question. Do not reset their retained round or install a feature checkout for this study.
+**Recommendation:** keep the existing mechanics and baseline. Observe whether the player recognizes a useful choice and can execute it through showers and celebrations. A faster score alone does not answer either question. Do not reset their retained round or install a feature checkout for this study.
 
-**Next action:** current implementer collects one source-bound ordinary-play observation, then chooses one bounded cue, contact, frequency or pacing follow-up, or keeps the baseline. Human observations are still missing; simulator drivers are separate evidence.
+**Next action:** current implementer collects a source-bound ordinary-play observation, then chooses one bounded cue, contact, frequency or pacing follow-up, or keeps the baseline. This document supplies no human observations; simulator drivers remain separate evidence. Current Story work follows [its prepared packet](design/CURRENT_STORY_PLAYTEST.md), whose existence does not complete the pending physical observations.
+
+Story visits use a different rule contract: new Lantern/Ribbon visits select revision 3 with **150,000/220,000-point goals and automatic patterns only**. Continue and Replay preserve the saved definition, including historical 18-light and revisions 1/2; revision 2 also uses large goals, so target alone cannot identify revision 3. The other five ready places retain their 18-light definitions. The [existing local world journey](OFFICIAL_LOCATIONS_AND_TUTORIAL_PLAN.md) records committed repairs and unlocks ready locations; Tutorial practice never earns progression. Do not interpret the historical single-challenge comparison below as the current campaign contract.
 
 ### Observe before explaining
 
-1. Record installed source/build, New sky versus retained/replay, seed if available, pace/dark settings, motion, sound, text size and device. A current checkout does not prove a current phone installation. Use the [canonical device updater](DEVELOPMENT_BUILDS.md) for any separately requested delivery.
-2. Let the player start automatic play without a recommended strategy. Observe a warning, heavy showers and recovery, or record loss/stop first. Keep pause and manual showers available. Record touch holds and coaching separately; holds suspend the single shower deadline and are not uninterrupted pressure exposure.
-3. Observe an ordinary clear and, if they occur naturally, a grown/Opal choice, purple-star response and large or recipe/relay celebration. Record which next choice was visible before the award and whether it remained recognizable afterward. An absent opportunity is **not observed**, not a failure or proof of scarcity.
-4. Ask about the player's intended choice only after the action or after an explicit pause. Keep prediction, actual action, missed input and interpretation separate. If a ready-looking contact does not score, retain location, timing, intervening showers and visible response; do not infer that an animation blocked it.
-5. After the round, ask what made a clear useful, what the purple warning meant, whether any effect hid or delayed their next choice, and whether they want another sky. Keep short exact answers and counterexamples. Simple clearing can be the preferred experience.
+1. Record installed source/build, New sky versus retained/replay, saved rules when known, seed if available, actual pace, motion, sound/haptics, text size, device/OS and input method. Record Dusk settings only when that retained round supports them. A current checkout does not prove a current phone installation. Use the [canonical device updater](DEVELOPMENT_BUILDS.md) for any separately requested delivery.
+2. Let the player start automatic play without a recommended strategy. Observe showers, changing column room and recovery, or record loss/stop first. Keep pause and manual showers available. Record touch holds and coaching separately; holds suspend the single shower deadline and are not uninterrupted pressure exposure.
+3. Observe an ordinary clear and, if they occur naturally, a grown/Opal choice and large or recipe/relay celebration. Record which next choice was visible before the award and whether it remained recognizable afterward. An absent opportunity is **not observed**, not a failure or proof of scarcity; purple aging responses are not expected in this baseline.
+4. Record a spontaneous prediction before the action if offered; ask about reasons afterward, or obtain a separately marked prediction during an explicit pause. An explanation after seeing the result is hindsight, not a prediction. Keep actual action, missed input and interpretation separate. If a ready-looking contact does not score, retain location, timing, intervening showers and visible response; do not infer that an animation blocked it.
+5. After the round, ask what made a clear useful, whether showers changed their choice, whether any effect hid or delayed their next choice, and whether they want another sky. Keep short exact answers and counterexamples. Simple clearing can be the preferred experience.
 
 | Acceptance question | Evidence to record |
 | --- | --- |
 | Is the current baseline actually being played? | Installed source/build, fresh/retained distinction, settings, device; unknown fields stay unknown |
 | Does the player understand a consequence of a choice? | Their explanation or paused prediction and the actual committed result; mark prompting |
 | Can that understood choice be carried out? | Actual gesture/result and any shower, hold, pause, visual obstruction or cancellation |
-| Are warnings and awards readable during repeated play? | Specific cue, next choice, duration only if measured, and observed effect on action |
-| Would they choose another round? | Voluntary replay/decline and reason, separately from score |
+| Are shower cues and awards readable during repeated play? | Specific cue, next choice, duration only if measured, and observed effect on action |
+| Would they choose another round? | Actual voluntary start/decline and reason, with available time and a completed-round opportunity separate from stated interest or continuing an unfinished sky |
 
-**Decision point:** address the first repeatable observed friction with one bounded change and a regression reproduction. If no friction is observed, retain the baseline and report sample limits. Do not add progression, tracking, hints or more mechanics to replace missing participant evidence. Actual VoiceOver is a separate RC check; physical gesture/haptic feel cannot be established by simulator assertions.
+**Decision point:** address the first repeatable observed friction with one bounded change and a regression reproduction. If no friction is observed, retain the baseline and report sample limits. Do not expand the existing progression, add tracking or invent more mechanics to replace missing participant evidence. Actual VoiceOver follows the existing RC policy; physical gesture/haptic feel cannot be established by simulator assertions.
 
-The [crowded native-host review](evidence/calibration-critical-mass-2026-10-18/AWARDS.md) shows one aqua survivor temporarily overlapped by Brilliant +8 while another match stays visible; maximum text uses a native award below the board. That paused sample motivates the repeated-play question without establishing a player problem. Earlier [Opal choice](evidence/opal-choice-study-2026-10-17/README.md) and [prepared native planning](evidence/current-opal-native-2026-10-17/README.md) records retain their original Dusk/orbit generation and cannot establish current-rule difficulty. Use historical fixtures only after ordinary play, explicitly labeled as coached demonstrations of that retained version.
+### Historical Dusk/Opal/orbit and award observations
+
+The [crowded native-host review](evidence/calibration-critical-mass-2026-10-18/AWARDS.md) recorded one aqua survivor temporarily overlapped by Brilliant +8. The later [board-clarity correction](evidence/board-clarity-2026-10-18/README.md) moves award lettering outside playable cells; the earlier paused sample is not a current overlap defect. Repeated-play recognition still requires its own observation.
+
+Earlier [Opal choice](evidence/opal-choice-study-2026-10-17/README.md) and [prepared native planning](evidence/current-opal-native-2026-10-17/README.md) retain their original Dusk/orbit generation. Opal still occurs in current survival, but those historical comparisons do not establish current-rule difficulty or authorize restoring retired gravity/aging. Any retained-version demonstration comes after ordinary play, explicitly labeled with source, rules and coaching; it cannot become an uncoached current observation.
 
 ## Separate pressure, understanding and replay
 
@@ -39,15 +45,15 @@ An [online experiment by Klimmt, Hartmann and Frey (2007)](https://journals.sage
 | Observation | What it can support | Next bounded response |
 | --- | --- | --- |
 | Player clears faster but names no changed choice | Pressure was noticed; strategic engagement is still unknown | Ask which moment felt deliberate after the round; do not automatically increase speed |
-| Player predicts a specific rearrangement, then the committed result agrees | A consequential choice was understood on that board | Record the prediction before the action and the actual result separately; avoid attributing an orbit benefit to Opal merely because it survives |
+| Player predicts a specific rearrangement, then the committed result agrees | A consequential choice was understood on that board | Record the prediction before the action and the actual result separately; identify the visible ingredients and survivors |
 | Player predicts correctly but cannot carry out the action | Understanding and execution differ | Investigate that input/window/readability reproduction before adding another mechanic |
 | Player executes a prepared example after explanation | The demonstrated sequence was reproducible | Label coaching and familiarity; this alone establishes neither discovery nor transfer |
 
-If the player voluntarily chooses another round after the first-round answer or prepared example, offer **New sky** as the optional transfer check. Record the new source/seed/settings and whether a similar principle is recognized on a different arrangement, without recommending a first clear or revealing arrivals. Keep pauses/holds explicit. If no comparable opportunity occurs, record **not observed**, not failed learning. If the player prefers same-sky replay, preserve that choice and record rehearsal rather than fresh-board transfer. Stop when they choose to stop; the protocol does not require another round.
+For survival, if the player voluntarily chooses another round after the first-round answer or prepared example, offer **New sky** as an optional transfer check. Record the actual source/seed/settings and whether a similar principle is recognized on a different arrangement, without recommending a first clear or revealing arrivals. Keep pauses/holds explicit. If no comparable opportunity occurs, record **not observed**, not failed learning. Same-sky replay is rehearsal, and a repeated authored Story opening is not a novel-board transfer test. Preserve the player's choice and stop when they choose to stop; the protocol does not require another round.
 
-Record voluntary replay/decline and the player's reason separately from score and demonstrated skill. Enjoying simple clears is a valid preference. One explained fresh-board choice and a voluntary replay are initial signals, not proof of long-term replayability or retention. Do not add tracking, progression or reward schedules to fill that evidence gap. At the decision point, choose one observed cue/input/frequency issue or retain the current rules; wait for an actual observation before selecting a candidate.
+Record voluntary replay/decline and the player's reason separately from score and demonstrated skill. Enjoying simple clears is a valid preference. One explained fresh-board choice and a voluntary replay are initial signals, not proof of long-term replayability or retention. Do not add tracking, expand progression or add reward schedules to fill that evidence gap. At the decision point, choose one observed cue/input/frequency issue or retain the current rules; wait for an actual observation before selecting a candidate.
 
-Use the matched-version protocol below only once an observed issue justifies a bounded candidate. Run two short rounds with the same balance and motion settings: current version, then one bounded candidate. Alternate version order across people where practical. Record version, seed when known, pace, dark frequency, automatic/manual play, device and accessibility settings. Do not add analytics or record identifying details.
+Use a matched-version comparison only once an observed issue justifies a bounded candidate. Run two short rounds with the same balance and motion settings: current version and one bounded candidate. Alternate version order across people where practical. Record version, round rules/revision, seed when known, pace, any applicable retained Dusk setting, automatic/manual play, device and accessibility settings. Keep these observations separate from the frozen historical lab procedures below. Do not add analytics or record identifying details.
 
 Before coaching, ask the player to start and explain what they think makes a clear. Observe their first legal clear, pauses, manual showers, invalid taps, and periods in which they say they are waiting. Record times only if actually measured. Do not treat a missed group as proof the board had no move.
 
@@ -56,16 +62,18 @@ After each round ask:
 - When did you first feel you could do something useful?
 - Was there a point where you chose between two clears? What mattered?
 - Did you deliberately wait, or did the game make you wait?
-- What did the dark star change? If the round ended, why?
+- What did the shower or grown star change? If a retained Dusk round is being studied, what did Dusk change? If the round ended, why?
 - Would you replay this version? Which version would you choose, and why?
 
-For VoiceOver, separately inspect spoken piece value/location, matching-group rotor, activation, pause/manual shower, and focus after Settings. A sighted accessibility-grid test is not this check.
+For VoiceOver, separately inspect the selected mode's actual spoken piece value/location, available actions, pause/manual shower and focus after Settings under the existing RC policy. Matching-group rotor/clear activation apply only to modes supporting manual clears; revision-3 Story uses Move actions. A sighted accessibility-grid test is not this check.
 
 Record short quotations, observed examples and missing observations. Keep simulator performance, bot policy scores and participant preferences separate. One preferred version is an initial signal, not a general balance conclusion. End with one bounded change or the specific evidence still needed.
 
 No participant observations have been collected for this protocol yet.
 
 ## Historical shower-variety comparison
+
+**Historical procedure:** The following October 17 lab comparisons preserve their source-bound questions and setups. They are not current player routes or instructions to create/install another lab app. Fresh current Open Sky and new Story visits use the current sections above.
 
 Use the matched **Sky Baseline**, **Shower Lab** (natural-only pairing), and **Pressure Lab** exports described in [the pressure evidence](evidence/pressure-showers-2026-10-17/README.md). All share the same frozen HUD/renderer. Comparing a frozen lab against newer production presentation would confound preference. Match pace, Dusk frequency, motion, sound/haptics, text size, device and automatic/manual mode. Keep normal saves separate.
 
@@ -85,8 +93,8 @@ Ask whether the warning, event count and recovery changed a useful choice; retai
 
 At the decision point, select one lab presentation, remove the redundant comparison, or name one bounded remaining question. Human preference and agent simulation stay separate; repeated sessions by the same agent retain familiarity and order effects. No production generation or save migration follows solely from HUD preference.
 
-## Survival versus First Light comparison
+## Historical survival versus 18-light First Light comparison
 
-First Light is available in the regular app. It starts a new round with a fixed seed, an 18-starlight goal and no dark stars; replay repeats it, while New sky returns to survival. Compare these as whole experiences first. A preference cannot be attributed to the goal alone because seed/configuration also differ from a default survival round.
+This comparison concerns the original fixed-seed, 18-starlight First Light, retained in [the original tranche evidence](evidence/falling-sky-tranche-2026-10-16/README.md). It had no dark stars; replay repeated its opening, while New sky returned to survival. Compare those historical versions as whole experiences: a preference cannot be attributed to the goal alone because seed/configuration also differed. The historical constructor and matching saved/replayed rounds remain supported, but an explicit new Lantern visit now selects the current authored definition. Current new first-pair visits use [the Story packet](design/CURRENT_STORY_PLAYTEST.md), not this 18-light comparison.
 
-Observe whether the player notices the goal before acting, recognizes the completed state, understands that showers stop, and chooses replay or New sky. Ask whether this feels like a satisfying short puzzle or merely the same survival round cut short. Do not claim a level system or persistent campaign progress from this single challenge. No observations have been collected yet.
+Its useful questions remain whether the player notices the goal before acting, recognizes completion and stopped showers, and chooses replay or survival; ask whether the bounded objective feels satisfying. The original single challenge alone did not establish a campaign. The current app separately implements [local repairs and progression](OFFICIAL_LOCATIONS_AND_TUTORIAL_PLAN.md), so that earlier limitation must not be read as an absence of today's world journey. No participant results for this historical comparison are supplied here.
