@@ -30,6 +30,12 @@ assignees: ""
 
 **Scope limits:** <!-- Important exclusions, frozen interface or unresolved question. -->
 
+**Discovery source:** <!-- If discovered during other work: origin issue, inspected source, observation versus hypothesis, concrete impact and why this is a separate outcome. Reuse an existing leaf when applicable. -->
+
+## Out-of-scope discoveries
+
+<!-- Workers return explicit none or compact finding packets to the coordinator without expanding their assignment. Coordinator preserves source/impact/next action in a comment here, then deduplicates and links a follow-up or records a deferral/revisit trigger. Discovery is not a human approval gate; see docs/AGENT_FACTORY.md. Delete this section when unused. -->
+
 ## Merge completion
 
 <!-- One leaf issue per independently mergeable outcome. The resolving PR description must contain Closes #<this issue> and target the default branch. A partial PR references the issue without closing it. Parent outcomes close only after all acceptance is met. See docs/AGENT_FACTORY.md. -->

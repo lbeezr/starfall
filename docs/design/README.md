@@ -1,5 +1,7 @@
 # Design documents
 
+[Current Story playtest](CURRENT_STORY_PLAYTEST.md) is the blank revision-3 Lantern/Ribbon observation packet for physical iPhone/iPad comprehension, setups, recovery and touch reliability. It preserves an uncoached baseline and opportunity/assistance denominators; preparation supplies no participant results and does not close #206.
+
 [Pokémon Puzzle League reference](POKEMON_PUZZLE_LEAGUE_REFERENCE.md) records the user's primary gameplay inspiration, verified source behavior and adaptation guidance for scoring, pressure, progression and future local versus/co-op.
 
 [Puzzle pacing research](PUZZLE_PACING_RESEARCH.md) compares Nintendo/SEGA guidance, Bejeweled, Candy Crush, Toon Blast and pinned Panel Attack source with our sparse first-pair supply. It records the selected automatic-recipe/cascade direction and approximately half-full opening revealed through a rapid entrance. Matching patterns, combo scoring and replacement cadence remain unvalidated.
