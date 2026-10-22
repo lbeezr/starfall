@@ -1,0 +1,7 @@
+{
+  "base": "db713bc0c242de5e2244495c41f05961c939b4ee",
+  "inputs": {
+    "UITests/FallingSkyInteractionTests.swift": "e00c8df3fca2bff846b5c8fe98d4bb6bf03466d74f43681a18a7d6ae7e04d7ba"
+  },
+  "snapshot": "dc997f39cf31"
+}
