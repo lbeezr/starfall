@@ -83,6 +83,8 @@ Choose the smallest durable correction that covers the demonstrated mechanism. A
 
 ## Working loop
 
+For requested factory/swarm or substantial parallel work, the [factory contract](AGENT_FACTORY.md) adds task ownership and bounded delegation around this loop. It reuses the checks below. The coordinator verifies GitHub issue closure after each merge and keeps Project state derived from that closure. At the third multi-task batch or a recurring queue/closure failure, review WIP, integration wait and stale-card evidence; reduce concurrency or repair the specific completion boundary before adding orchestration infrastructure. [Scaffold validation and gaps](evidence/agent-factory-2026-10-22/README.md) retain the current limits.
+
 1. Inspect `git status --short` and the change's boundary. Preserve other edits, especially Xcode project configuration. Identify whether a rule/save, lifecycle, rendering, layout, asset or build contract changes.
 2. Make the smallest complete change. Keep seeded rule decisions separate from presentation timing. Add focused behavioral regression coverage for a changed contract, not tests that repeat its implementation.
 3. Select checks using [verification by change](#verification-by-change). Run `python3 scripts/ci-hygiene.py` and `git diff --check` for every batch; Swift changes also need `swift test`, affected native hosted/UI checks and a simulator build. The shared Starfall scheme includes app tests; core package tests run separately. Use an installed simulator and a temporary DerivedData directory. The cloud script is for disposable runners, not a local machine: it selects, boots and shuts down a simulator and requires runner variables.

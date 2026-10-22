@@ -1,0 +1,21 @@
+---
+name: starfall-factory
+description: Run Starfall's bounded research, planning, disjoint task decomposition, parallel subagent execution and integration loop. Use for a requested agent factory/swarm or substantial parallel delivery; keep small fixes with one agent.
+---
+# Deliver a bounded outcome with parallel agents
+
+Resolve the repository root and read its instructions plus the affected local boundaries. Read [the factory contract](../../../docs/AGENT_FACTORY.md) for ownership, WIP and GitHub completion; use the existing [verification matrix](../../../docs/ENGINEERING.md#verification-by-change).
+
+When this workflow applies, use subagents for independent research or implementation tasks that materially help the authorized outcome. Keep one coordinator and up to three workers within the client's available slots. Workers do not fan out again. If the work is small or dependent, execute it locally. Do not create user-owned chats as internal subtasks or change personal agent/model settings.
+
+Research only the current uncertainty, then define observable acceptance in the issue or existing plan. Split work into independently mergeable slices with prerequisites, exclusive write paths, relevant checks and an expected return artifact. Reads can overlap; semantic contracts must be settled before dependents run. The coordinator owns shared indexes, Git operations in a shared directory, integration and completion. Use isolated worktrees for independent branch writers; subagents are not automatically isolated.
+
+Use [the workstream and role map](../../../docs/GAME_WORKSTREAMS.md) to identify the task's accountable home, required expertise and uncovered acceptance. iPhone/iPad are primary; Mac is deferred. Use one workstream and kind label per durable leaf, relevant platform labels and supporting roles in the packet. Do not create one task/agent per catalogue role or treat unassessed capacity as zero. Review actionable ownership, evidence and queue bottlenecks when refilling the batch.
+
+Dispatch ready tasks only. Include returned-but-unintegrated work in the WIP budget; stop dispatching when two results await integration. Reserve native simulators and other exclusive resources. Require workers to return actual changed paths, commit/tree, evidence, failed/missing acceptance and risks. Check the diff and run relevant integration checks before accepting the handoff. Integrate ready complete slices as they arrive, without waiting for the whole wave.
+
+Search for and reuse matching GitHub issues/PRs before creating them. Use one leaf issue per durable outcome. Put `Closes #…` for every fully resolved leaf in its default-branch PR description. Preserve parent outcomes until all acceptance is met. After merge confirm issues closed as completed and, when used, Project cards reached Done through Item closed automation. Reconcile only the specific verified issue/card within existing authorization. An agent return, green build or closed-unmerged PR does not complete the task.
+
+Refill available slots after integration; replan only affected tasks when findings change the contract. After two unsuccessful repair passes, revisit the reproduction or split rather than adding reviewers or approval stages. Continue useful independent work. At a context boundary leave the current outcome, source, task/issue/PR links, reservations, evidence, blockers and next ready action in the existing plan or issue. Stop when acceptance is fulfilled; new recurring/background execution requires its own user request.
+
+Use `python3 scripts/agent_factory.py plan <plan.json>` for an optional ownership/DAG preflight and ready suggestion. Use its `closure` command with a fresh GitHub snapshot to diagnose missing native closing links. The helper is read-only and cannot verify semantic independence, actual merge claims or Project settings. Follow the contract's three-batch trial; add no new required Actions checks, paid CI, mandatory human sign-offs or delivery behavior.

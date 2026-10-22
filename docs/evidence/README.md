@@ -1,5 +1,7 @@
 # Evidence index
 
+[Agent factory scaffold](agent-factory-2026-10-22/README.md) records offline graph/closure checks and instruction validation, with live GitHub/Project automation and throughput acceptance kept separate.
+
 [Lantern/Ribbon automatic patterns](story-patterns-2026-10-20/README.md) records revision 3’s manual-clear retirement, full lines, five-family supply, model comparisons, native input and retained-save verification. It preserves the initial native entry crash and its correction separately from the passing runs. [Canonical delivery](story-patterns-2026-10-20/delivery.json) verifies `dev.e3878b33d4` installed from main `3b01d71f` on the original iPhone.
 
 [Sunwheel Mill](sunwheel-mill-2026-10-20/README.md) records fifteen source-accepted paintings across three bespoke layouts, earned access after Frostfruit, and the closed-to-open outlet. Development verification passes at `d057696` / `dev.a15832d0fd`; earlier candidate checks retain their exact source boundaries. [Latest map-integration verification](sunwheel-mill-2026-10-20/MAP_INTEGRATION.md) separately passes at `49d54fc` / `dev.6fa54c5e65`, covering the seventh island, affected shared UI/routing and 53 selected inspected stills. Publication and canonical installation are verified in the [delivery receipt](sunwheel-mill-2026-10-20/delivery.json).

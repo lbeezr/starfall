@@ -2,6 +2,10 @@
 
 <!-- State the concrete problem and resulting behavior in 2–3 sentences. Include a before/after example when useful. Link the issue and authoritative plan/design; use Closes # only when this PR fully resolves it. -->
 
+## Task completion
+
+<!-- For tracked work, put a real Closes #123 line here for EACH fully resolved leaf issue. Target the repository default branch; feature-branch merges do not trigger keyword closure. Partial work uses Refs #123. Do not close a parent outcome from a partial child. Omit this section for untracked work. After merge verify issue closure; Project cards follow Item closed → Done. See docs/AGENT_FACTORY.md. -->
+
 ## Review focus and risks
 
 <!-- Name the important tradeoff, changed boundary, and any blocker or residual risk. For a bug, explain the cause, related paths examined, and why the fix addresses the mechanism. Small changes may use one sentence. -->
