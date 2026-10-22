@@ -1,5 +1,7 @@
 # Evidence index
 
+[Project processing diagnosis](project-processing-2026-10-22/README.md) records the enabled Done workflows, overlapping GitHub service incident, partial canonical-row recovery and incident-aware reconciliation change. #220 remains open for actual canonical visibility and automatic merge-to-Done acceptance; the fresh gameplay refill found no new ready leaf, and VoiceOver stays deferred.
+
 [Storm practice guidance](storm-practice-guidance-2026-10-22/README.md) records the hidden-column wording correction, rejected extra-action proposal, five actual arrival consequences, one native/19 hosted/225 Core passes, Release and an inspected default-text instruction. It also records the continuing batch's queue and Project reconciliation limits; VoiceOver stays deferred.
 
 [Restore-guide regression](restore-guide-regression-2026-10-22/README.md) classifies #226 as stale native navigation, records actual portrait reopening with exact preserved restore/board/score assertions, and retains 19 hosted plus two native passes. App behavior and deferred VoiceOver remain unchanged.

@@ -1,12 +1,12 @@
 # Track game-development coverage without multiplying task queues
 
-**Status:** 34 labels live; private Project automated; first coverage audit complete · **Updated:** October 22, 2026
+**Status:** 34 labels live; native Project workflows enabled, processing delayed; first coverage audit complete · **Updated:** October 22, 2026
 
 **Primary targets are iPhone and iPad, using the current iOS 17+ app.** Mac/Mac mini support is a deferred porting assessment. The goal is broad production coverage and a high quality bar, not a commitment to a different engine, a larger game, every AAA feature or hundreds of staff.
 
 The [catalogue](GAME_ROLE_CATALOG.md) covers **29 workstreams and 292 functional roles/specialisms** across the development lifecycle. Its [machine-readable source](../.github/game-workstreams.json) defines **34 available labels**, including 25 workstream labels. Four conditional streams remain visible in the inventory: nearby multiplayer is future work; online services, commerce and live-service analytics are excluded from the current product. A listed role is not automatically needed, staffed or authorized. Studio titles vary; this is a comprehensive responsibility inventory, not a universal list of every possible job title.
 
-**Next action:** Select ready work from the [prioritized audit](evidence/factory-audit-2026-10-22/README.md) through [the factory loop](AGENT_FACTORY.md). The [Starfall — iPhone & iPad Project](https://github.com/users/lbeezr/projects/1) automatically imports open repository issues, mirrors completion and reopening, and sorts cards by Priority. All 34 available labels are installed; existing labels are preserved. Do not open 292 role issues or 29 standing implementation queues merely to populate a board.
+**Next action:** Select ready work from the [prioritized audit](evidence/factory-audit-2026-10-22/README.md) through [the factory loop](AGENT_FACTORY.md). The [Starfall — iPhone & iPad Project](https://github.com/users/lbeezr/projects/1) is configured to import open repository issues, mirror completion and reopening, and sort cards by Priority. [#220's diagnosis](evidence/project-processing-2026-10-22/README.md) records correctly enabled completion workflows, an overlapping GitHub Projects incident and acceptance still outstanding; configuration alone does not establish timely processing. All 34 available labels are installed; existing labels are preserved. Do not open 292 role issues or 29 standing implementation queues merely to populate a board.
 
 ## Keep four things distinct
 
