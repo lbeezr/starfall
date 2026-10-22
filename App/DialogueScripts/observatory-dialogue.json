@@ -1218,6 +1218,7 @@
     "worldVisit": "Visit {place}",
     "worldReturn": "Return to world map",
     "practiceExit": "Exit practice",
+    "practiceExitHint": "Return to the tutorial chapter list",
     "save.rejectedTitle": "Saved sky unavailable",
     "save.rejectedMessage": "Your saved sky could not be opened. No older round has been loaded. When you begin a new sky, the unreadable save will be kept as a recovery copy.",
     "save.failedTitle": "Sky could not be saved",

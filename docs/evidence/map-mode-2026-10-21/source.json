@@ -1,0 +1,19 @@
+{
+  "base": "7a6dee86be1eacbec3b029a233df1684980119ce",
+  "snapshot": "da0057a7",
+  "dirtyBuildInputs": {
+    "App/FallingSkyView.swift": "8cdc149597220a0baf36a96f29d3b3f731e7805c7549ca6018a59d778b541548",
+    "App/WorldMapView.swift": "acaa0fe41c5339cd0764ff91f24891e7249cf160f65ebfe1b8f35831f9841b3f",
+    "App/SkyCopy.swift": "fa9cfdafb7e78b04c25e7b2565447bd53abe8ef4b57465ba7fc0facb481e4712",
+    "App/DialogueScripts/observatory-dialogue.json": "eaaec3354db440b45b032f667d148d6a4358ef9220b6966a533ced0f5a38023a",
+    "UITests/WorldMapReviewInteractionTests.swift": "e4d1169546d130bdd18e195011f261ce8e3f3fcaa72b82a781ef7a0b2d518a04"
+  },
+  "priorChanges": [
+    "App/SkyCopy.swift",
+    "App/DialogueScripts/observatory-dialogue.json",
+    "App/FallingSkyView.swift (Tutorial exit hint hunk)"
+  ],
+  "configuration": "Debug",
+  "toolchain": "Xcode 27.1 (27A9275)",
+  "simulator": "iPhone 17e / iOS 27.0 / A0300936-14CC-4B3A-9B09-55B88D1D7624"
+}

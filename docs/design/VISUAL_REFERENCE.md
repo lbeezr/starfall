@@ -38,6 +38,8 @@ Selected icon, screens, gameplay pieces and story cast, with links to their sour
 
 ## Observatory native UI
 
+**Current navigation return samples — October 21:** [Five inspected phone/tablet captures](../evidence/map-mode-2026-10-21/captures.json) at `7a6dee86` plus snapshot `da0057a7` show preserved Map/Places choices after canceling Entry and the mandatory largest-text Places fallback. [Native before/after evidence](../evidence/map-mode-2026-10-21/README.md) covers the navigation correction. Artwork and geometry are unchanged; earlier captures retain their source-bound appearance scope.
+
 | Paused sky | Compact settings |
 | --- | --- |
 | <img src="../evidence/observatory-ui-parity-2026-10-20/dev-e5980859cf__hud-collapsed__iphone-17e__default.png" width="240" alt="Native paused sky with an edge HUD, small reopen portrait and manual actions below the unobstructed stars"> | <img src="../evidence/observatory-ui-parity-2026-10-20/dev-93ae37d0b8__preferences__iphone-se3__default.png" width="240" alt="Native compact preferences with rendered utility icons, sound and motion controls in one navy frame and a fixed Done action"> |

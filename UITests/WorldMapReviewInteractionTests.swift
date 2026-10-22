@@ -118,6 +118,35 @@ final class WorldMapReviewInteractionTests: XCTestCase {
         }
     }
 
+    @MainActor func testPlacesModeSurvivesEntryCancellationAndHomeRoundTrip() {
+        XCUIDevice.shared.orientation = .portrait
+        defer { XCUIDevice.shared.orientation = .portrait }
+        let app = launch("retained")
+        defer { app.terminate() }
+        tap("world.list", app)
+        XCTAssertEqual(app.buttons["world.list"].label, "Map")
+        XCTAssertTrue(app.buttons["world.place.kiteHarbor"].isSelected)
+        tap("world.visit", app)
+        XCTAssertTrue(app.buttons["sky.begin"].waitForExistence(timeout: 5))
+        tap("sky.home", app)
+        XCTAssertTrue(app.otherElements["world.page"].waitForExistence(timeout: 5))
+        XCTAssertEqual(app.buttons["world.list"].label, "Map", "Cancel Entry must retain the chosen Places presentation")
+        XCTAssertTrue(app.buttons["world.place.kiteHarbor"].isSelected)
+        XCTAssertTrue(app.buttons["world.resume"].exists, "Cancel must preserve the retained round")
+        capture("map-places-after-entry-cancel", app)
+        tap("world.done", app)
+        tap("sky.worldMap", app)
+        XCTAssertEqual(app.buttons["world.list"].label, "Map", "Home round trips must also retain Places")
+        tap("world.list", app)
+        XCTAssertEqual(app.buttons["world.list"].label, "Places")
+        tap("world.visit", app)
+        XCTAssertTrue(app.buttons["sky.begin"].waitForExistence(timeout: 5))
+        tap("sky.home", app)
+        XCTAssertEqual(app.buttons["world.list"].label, "Places", "The illustrated Map choice must also survive Entry")
+        XCTAssertTrue(app.buttons["world.node.kiteHarbor"].isSelected)
+        capture("map-illustrated-after-entry-cancel", app)
+    }
+
     @MainActor func testLanternLayerKeepsNativeTargetAcrossRepairStates() {
         executionTimeAllowance = 120
         XCUIDevice.shared.orientation = .portrait

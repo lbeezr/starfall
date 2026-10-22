@@ -1,0 +1,107 @@
+[
+  {
+    "path": "dev-7a6dee86-wip-da0057a7__places__iphone-17e__largest-text.jpg",
+    "status": "Current",
+    "source": "source.json",
+    "test": "WorldJourneyInteractionTests/testLargestTextMapAndPracticeSurviveBackground()",
+    "attachment": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "A0300936-14CC-4B3A-9B09-55B88D1D7624",
+      "deviceName": "Starfall UI Parity 01a1563a",
+      "exportedFileName": "79AB6286-5054-4E76-9C4A-05814DA7B625.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "world-largest-text-list_0_CDBD9A12-5E6F-4B2B-B4A0-B982CCF06BF6.png",
+      "timestamp": 1792596722.135
+    },
+    "variant": "largest-text",
+    "motion": "calm fixture",
+    "derived": "JPEG quality 80, longest edge 1200; inspected full PNG first",
+    "sha256": "fe3158791ff3280ee1481bdda7aabf72fd4ae00c3a0083c17a99fc0676ba89b4",
+    "deviceModel": "iPhone 17e",
+    "os": "iOS 27.0 Simulator"
+  },
+  {
+    "path": "dev-7a6dee86-wip-da0057a7__map-return__iphone-17e__default-text.jpg",
+    "status": "Current",
+    "source": "source.json",
+    "test": "WorldMapReviewInteractionTests/testPlacesModeSurvivesEntryCancellationAndHomeRoundTrip()",
+    "attachment": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "A0300936-14CC-4B3A-9B09-55B88D1D7624",
+      "deviceName": "Starfall UI Parity 01a1563a",
+      "exportedFileName": "93A666F2-812C-4D96-BADD-B6C195B13899.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "map-illustrated-after-entry-cancel_0_23C2D263-7147-4A87-A008-06B147C83386.png",
+      "timestamp": 1792596796.059
+    },
+    "variant": "default-text",
+    "motion": "normal",
+    "derived": "JPEG quality 80, longest edge 1200; inspected full PNG first",
+    "sha256": "243e57384b410c9b38987a6ed09befa7d1aee56e36f32398d55effbc07b133e4",
+    "deviceModel": "iPhone 17e",
+    "os": "iOS 27.0 Simulator"
+  },
+  {
+    "path": "dev-7a6dee86-wip-da0057a7__places-return__iphone-17e__default-text.jpg",
+    "status": "Current",
+    "source": "source.json",
+    "test": "WorldMapReviewInteractionTests/testPlacesModeSurvivesEntryCancellationAndHomeRoundTrip()",
+    "attachment": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "A0300936-14CC-4B3A-9B09-55B88D1D7624",
+      "deviceName": "Starfall UI Parity 01a1563a",
+      "exportedFileName": "FCB0FDCE-0A56-41DF-96E0-7B8E87368E0B.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "map-places-after-entry-cancel_0_444CB271-CFBC-45BD-866C-6EC8A72B8195.png",
+      "timestamp": 1792596776.283
+    },
+    "variant": "default-text",
+    "motion": "normal",
+    "derived": "JPEG quality 80, longest edge 1200; inspected full PNG first",
+    "sha256": "a2da7a0e57585284e414a78ffa923f44314b2490502e90847f74536d32479873",
+    "deviceModel": "iPhone 17e",
+    "os": "iOS 27.0 Simulator"
+  },
+  {
+    "path": "dev-7a6dee86-wip-da0057a7__map-return__ipad-air-m3__default-text.jpg",
+    "status": "Current",
+    "source": "source.json",
+    "test": "WorldMapReviewInteractionTests/testPlacesModeSurvivesEntryCancellationAndHomeRoundTrip()",
+    "attachment": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "377B8820-20E2-413E-B64F-D9E4CEB86AF4",
+      "deviceName": "Starfall UI Tablet 01a1563a",
+      "exportedFileName": "82099A8A-E426-4E33-B659-6CAA6FA10B4D.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "map-illustrated-after-entry-cancel_0_0F134DEA-29FE-4633-B96F-3C18145B9C19.png",
+      "timestamp": 1792596945.746
+    },
+    "deviceModel": "iPad Air 11-inch (M3)",
+    "os": "iOS 27.0 Simulator",
+    "variant": "default-text",
+    "motion": "normal",
+    "derived": "JPEG quality 80, longest edge 1200; inspected full PNG first",
+    "sha256": "7547f2ac069d1343bc31b7a06632cb11f8a5901c6cad0f64c68a4564354106ec"
+  },
+  {
+    "path": "dev-7a6dee86-wip-da0057a7__places-return__ipad-air-m3__default-text.jpg",
+    "status": "Current",
+    "source": "source.json",
+    "test": "WorldMapReviewInteractionTests/testPlacesModeSurvivesEntryCancellationAndHomeRoundTrip()",
+    "attachment": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "377B8820-20E2-413E-B64F-D9E4CEB86AF4",
+      "deviceName": "Starfall UI Tablet 01a1563a",
+      "exportedFileName": "10622B80-33EA-403C-B339-4AB63CD7889A.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "map-places-after-entry-cancel_0_62F8CAFD-070F-4D57-B76C-46B36D75A4E4.png",
+      "timestamp": 1792596925.296
+    },
+    "deviceModel": "iPad Air 11-inch (M3)",
+    "os": "iOS 27.0 Simulator",
+    "variant": "default-text",
+    "motion": "normal",
+    "derived": "JPEG quality 80, longest edge 1200; inspected full PNG first",
+    "sha256": "b68d438d6e6ac8ac1072d4e00eae7dcf06e7990b39f769a3ce3558497c291056"
+  }
+]

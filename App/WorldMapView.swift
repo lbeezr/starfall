@@ -35,16 +35,16 @@ struct WorldMapView: View {
     let resume: (() -> Void)?
     let learn: () -> Void
     let done: () -> Void
-    @State private var list = false
+    @Binding private var list: Bool
     @State private var selectionRequest = 0
     @State private var reservedHeights: [WorldMapReservedRegion: CGFloat] = [:]
     @State private var worldOverflows = false
     @Environment(\.dynamicTypeSize) private var textSize
 
-    init(journey: WorldJourney, quiet: Bool, recovered: Bool = false, accessible: Bool = true,
+    init(journey: WorldJourney, list: Binding<Bool>, quiet: Bool, recovered: Bool = false, accessible: Bool = true,
          select: @escaping (WorldLocation) -> Void,
          enter: @escaping (StarfallChallenge) -> Void, resume: (() -> Void)? = nil, learn: @escaping () -> Void, done: @escaping () -> Void) {
-        self.journey = journey; self.quiet = quiet; self.recovered = recovered; self.accessible = accessible; self.select = select
+        self.journey = journey; _list = list; self.quiet = quiet; self.recovered = recovered; self.accessible = accessible; self.select = select
         self.enter = enter; self.resume = resume; self.learn = learn; self.done = done
     }
     private var selected: WorldLocation { journey.selected }
