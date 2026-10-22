@@ -412,6 +412,74 @@ final class WorldJourneyInteractionTests: XCTestCase {
         try checkTutorialScopeFromHomeAndStory(largest: true)
     }
 
+    @MainActor func testStormLessonDescribesFiveArrivalsAndPreservesSavedStory() throws {
+        executionTimeAllowance = 180
+        XCUIDevice.shared.orientation = .portrait
+        let app = launch()
+        defer { app.terminate(); XCUIDevice.shared.orientation = .portrait }
+        let visit = app.worldVisitControl("firstLight")
+        let destination = app.staticTexts["world.selection"].label
+        let status = app.staticTexts["world.status"].label
+        visit.tap(); tap("sky.begin", app)
+        tap("experiment.settings", app); tap("experiment.pause", app)
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"),
+                                                object: app.buttons["experiment.next"]).wait(timeout: 5))
+        let board = app.otherElements["experiment.board"]
+        let savedBoard = board.value as? String
+        let savedScore = app.staticTexts["experiment.score"].label
+        let savedCells = try visibleIdentities(board, prefix: "experiment.cell.")
+        XCTAssertNotNil(savedBoard)
+        XCTAssertEqual(savedCells.count, 49)
+        tap("experiment.settings", app); tap("sky.home", app)
+        let savedSummary = app.staticTexts["sky.subtitle"].label
+        tap("sky.learn", app); tap("tutorial.chapter.storm", app)
+        XCTAssertTrue(app.staticTexts["tutorial.title"].waitForExistence(timeout: 5))
+        XCTAssertEqual(app.staticTexts["tutorial.title"].label, "Read a storm forecast")
+        assertTutorialIndexCovered(app)
+        let detail = app.staticTexts["tutorial.detail"]
+        app.revealSkyControls([detail])
+        XCTAssertEqual(detail.label, "Open Sky storms bring five incoming stars. Tap Next shower to see them arrive.")
+        XCTAssertTrue(detail.isHittable)
+        XCTAssertTrue(app.frame.contains(detail.frame), "The complete instruction fits in the visible reading surface")
+        XCTAssertEqual(app.staticTexts["tutorial.instruction"].label, "Tap Next shower.")
+        XCTAssertTrue((board.value as? String)?.hasPrefix("9 showers,") == true)
+        let forecast = try XCTUnwrap(app.descendants(matching: .any)["experiment.arrivalCue"].firstMatch.value as? String)
+        XCTAssertEqual(forecast.components(separatedBy: ", then ").count, 5)
+        let before = try visibleIdentities(board, prefix: "experiment.cell.")
+        XCTAssertEqual(before.count, 49)
+        let occupiedBefore = before.filter { !$0.contains(":Empty,") }.count
+        let grownBefore = before.filter { $0.contains(":Grown ") }.count
+        capture("storm-lesson-five-star-guidance", app)
+        tap("experiment.next", app)
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "Chapter complete"),
+                                                object: app.staticTexts["tutorial.instruction"]).wait(timeout: 5))
+        XCTAssertTrue((board.value as? String)?.hasPrefix("10 showers,") == true)
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, "19 starlight")
+        let after = try visibleIdentities(board, prefix: "experiment.cell.")
+        XCTAssertEqual(after.count, 49)
+        let occupiedDelta = after.filter { !$0.contains(":Empty,") }.count - occupiedBefore
+        let grownDelta = after.filter { $0.contains(":Grown ") }.count - grownBefore
+        XCTAssertEqual(occupiedDelta, 3, "Three arrivals occupy new cells in this authored lesson")
+        XCTAssertEqual(grownDelta, 2, "Two matching arrivals grow their existing top stars")
+        XCTAssertEqual(occupiedDelta + grownDelta, 5, "All five announced stars have committed consequences")
+        capture("storm-lesson-five-arrivals-complete", app)
+        tap("experiment.settings", app)
+        assertReturnedChapterVisible("storm", app)
+        tap("tutorial.done", app)
+        XCTAssertTrue(app.buttons["sky.resume"].waitForExistence(timeout: 5))
+        XCTAssertEqual(app.staticTexts["sky.subtitle"].label, savedSummary)
+        tap("sky.resume", app)
+        XCTAssertTrue(app.buttons["experiment.settings"].waitForExistence(timeout: 5))
+        XCTAssertEqual(board.value as? String, savedBoard)
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, savedScore)
+        XCTAssertEqual(try visibleIdentities(board, prefix: "experiment.cell."), savedCells)
+        XCTAssertTrue(app.buttons["experiment.next"].isEnabled, "Practice preserves the ordinary round's pause choice")
+        tap("experiment.settings", app); tap("sky.worldMap", app)
+        XCTAssertTrue(app.staticTexts["world.selection"].waitForExistence(timeout: 5))
+        XCTAssertEqual(app.staticTexts["world.selection"].label, destination)
+        XCTAssertEqual(app.staticTexts["world.status"].label, status, "Practice cannot earn a world repair")
+    }
+
     @MainActor func testTutorialRealTapSwapTraceRetryAndExitPreserveRound() {
         let app = launch(); defer { app.terminate() }
         tap("sky.start", app); tap("sky.begin", app)

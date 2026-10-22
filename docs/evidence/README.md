@@ -1,5 +1,7 @@
 # Evidence index
 
+[Storm practice guidance](storm-practice-guidance-2026-10-22/README.md) records the hidden-column wording correction, rejected extra-action proposal, five actual arrival consequences, one native/19 hosted/225 Core passes, Release and an inspected default-text instruction. It also records the continuing batch's queue and Project reconciliation limits; VoiceOver stays deferred.
+
 [Restore-guide regression](restore-guide-regression-2026-10-22/README.md) classifies #226 as stale native navigation, records actual portrait reopening with exact preserved restore/board/score assertions, and retains 19 hosted plus two native passes. App behavior and deferred VoiceOver remain unchanged.
 
 [Tutorial scope and factory trial reflection](factory-tutorial-scope-2026-10-22/README.md) records the shared rule-family introduction, actual Home/Story/practice/return paths, 43 hosted and three native passes, default/AX3XL reading, Core/Release and source-bound captures. Normal input, save/world preservation and deferred VoiceOver remain distinct.
