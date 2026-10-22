@@ -1,5 +1,7 @@
 # Evidence index
 
+[Device readiness and observation preparation](device-readiness-2026-10-22/README.md) records installed runtimes/tooling, unprobed physical-phone reachability, missing iPad/minimum-OS resources and bounded performance/readability scenarios. It supplies no physical acceptance. The [current Story packet](../design/CURRENT_STORY_PLAYTEST.md) preserves an uncoached baseline with no participant results.
+
 [Live factory setup and workstream audit](factory-audit-2026-10-22/README.md) records 34 installed labels, native Project workflows, three independent read-only audits across all 29 streams and six prioritized iPhone/iPad issues. It separates source-confirmed test drift from unperformed physical/player acceptance and unknown staffing capacity.
 
 [Agent factory scaffold](agent-factory-2026-10-22/README.md) records offline graph/closure checks and instruction validation, with live GitHub/Project automation and throughput acceptance kept separate.

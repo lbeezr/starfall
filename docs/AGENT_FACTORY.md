@@ -31,6 +31,30 @@ Implemented guidance; this diagram is not evidence of a completed autonomous run
 5. **Integrate continuously.** Review a result as soon as it returns, run the [existing checks](ENGINEERING.md#verification-by-change), and merge a complete verified slice under the existing integration policy. Confirm current source and recheck affected interactions when another slice changes its assumptions. A worker's self-report alone is insufficient evidence. Do not wait for a whole wave or add an all-swarm approval barrier.
 6. **Reconcile and refill.** Confirm merge, issue closure and the project's Done state. Release resources and dispatch newly ready tasks. Carry forward a compact handoff at a context boundary. Stop on achieved acceptance or an actual external blocker; ordinary rework stays within the authorized goal.
 
+## Keep useful work discoverable
+
+During an authorized continuing run, count **actionable independent ready leaves**, excluding running work, returned work awaiting integration, device/player/external blockers and unresolved dependencies. When fewer than three remain, do one bounded discovery pass alongside independent execution. Three is a low-watermark trigger, not a quota or permission to increase WIP. A healthy queue may have fewer tasks when no valuable ready work exists.
+
+Inspect current failures and representative sibling paths, active ENGINEERING triggers, incomplete accepted outcomes, missing verification and the applicable workstream/role map. Search issues and open/recent PRs before creating anything; check whether newer evidence already resolved the apparent gap. Keep the pass to one focused uncertainty or about ten minutes, then return to delivery. Do not repeatedly re-audit the same blocked hardware or manufacture speculative features, cleanup or one-ticket-per-role queues.
+
+Create at most three evidenced follow-ups in one pass. Each needs its source/observation, expected player or engineering impact, one independently mergeable outcome, priority, primary stream/kind, required expertise, real prerequisites, write/resource ownership and relevant acceptance/checks. Label a source contradiction or untested concern as such; a bug needs a reproduction, while a bounded research task can establish whether a defect exists. Preparation can be its own leaf when independently useful; it must not close its parent's unperformed device/player acceptance. Continue selected work within existing authorization. If discovery produces only external dependencies, record the concrete next actions and do not pretend the queue is executable.
+
+## Capture discoveries without changing the assignment
+
+An active worker is a source of follow-up work. When it finds something worthwhile outside its reservation, **keep the current task bounded** and send a compact discovery packet to the coordinator. Report immediately if another worker could be affected; otherwise include it in the normal return. Never wait for a response unless the finding invalidates the current task's correctness or safety. Do not silently edit the new area, add a prerequisite or start another agent.
+
+| Discovery field | Minimum useful content |
+| --- | --- |
+| Origin | Current issue/task and inspected commit or dirty-input snapshot |
+| Finding | File/line, failing command or other source-bound observation; reproduction versus hypothesis |
+| Impact | The violated contract or concrete uncertainty and why resolving it matters |
+| Follow-up | Smallest suggested outcome, likely stream/roles, dependency and relevant check |
+| Current-task effect | Independent, or the precise reason this changes current acceptance |
+
+The coordinator is the single writer for shared GitHub task metadata. During the next return/refill reconciliation, preserve the packet in a **comment on the originating issue/PR**, then link an existing leaf, create a bounded deduplicated follow-up, or record a reason and revisit trigger for deferral. An urgent finding is triaged immediately. If tools are unavailable, retain it in the existing task handoff until it can be persisted. A chat message alone is not the durable inbox. Do not create another spreadsheet, central status file, mandatory review queue or human sign-off.
+
+Workers return a **Discoveries: none / linked packets** line even when no follow-up is warranted. The coordinator drains these packets before starting a broad discovery sweep. Useful discoveries feed the existing GitHub backlog; low-value or disproved ideas do not need permanent issues.
+
 The coordinator owns shared document indexes and final acceptance. Workers report necessary updates rather than all editing README, ROADMAP and ENGINEERING concurrently. A buildable vertical slice is preferable to separate implementation/test/documentation tickets that leave every issue half-complete.
 
 ## Bound work in progress
@@ -47,7 +71,7 @@ Use the [leaf issue template](../.github/ISSUE_TEMPLATE/task.md) when a durable 
 
 | Task packet | Return artifact |
 | --- | --- |
-| Outcome and acceptance | What changed and which criteria are met |
+| Outcome and acceptance | What changed and which criteria are met; discoveries or explicit none |
 | Prerequisites and frozen interface | Assumptions changed; dependencies still missing |
 | Exclusive write paths and reserved resources | Actual changed paths and source commit/tree |
 | Relevant checks and scope exclusions | Commands/results, failed or missing acceptance |
