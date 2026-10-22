@@ -1,6 +1,8 @@
 # A lightweight agent factory for Starfall
 
-**Status:** Live GitHub tracking; first workstream audit complete; throughput trial pending · **Owner:** Current coordinator · **Updated:** October 22, 2026
+**Status:** First execution batch recorded; issue closure verified; Project view visibility under investigation · **Owner:** Current coordinator · **Updated:** October 22, 2026
+
+The [first execution record](evidence/factory-audit-2026-10-22/EXECUTION.md) links four merged slices and their automatic issue-completion timestamps. Newer issue-side Project fields disagree with the canonical board's item visibility in [#220](https://github.com/lbeezr/starfall/issues/220); do not treat all board reconciliation as accepted. Sustained throughput gains remain unmeasured.
 
 Use one coordinator to research, plan, split work by ownership, dispatch independent slices, integrate each ready result and repeat. GitHub leaf issues are the durable task record; merging their closing PRs completes them. Start with at most three workers and reduce concurrency when review or native checks become the bottleneck. These are Starfall operating defaults, not research-proven optimal numbers.
 
