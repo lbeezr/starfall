@@ -1,5 +1,7 @@
 # Starfall roadmap
 
+**Game-factory research — October 22:** The [seven-game study](design/AI_GAME_FACTORY.md) inspects all 63 expanded prompt cards and integrates an experience brief and prompt kit into the factory. Creative work now connects player intention, consequence, feedback and a small native slice before expansion. Effectiveness remains a trial; current player/device acceptance stays with its existing owners. No gameplay, model, network or delivery change follows from the showcases.
+
 **Factory-discovered RC tooling correction — October 22:** [Process ownership evidence](evidence/rc-process-ownership-2026-10-22/README.md) verifies that timeout/interruption stops inherited RC helpers before failure evidence is finalized. The primary and RC runners share one owner, with real descendant cancellation checks and unchanged platform/count gates. Device updater work remains separate.
 
 **Factory execution — October 22:** The [current Story regression repair](evidence/story-regression-2026-10-22/README.md) verifies normal Lantern/Ribbon completion and lifecycle paths on iPhone, with hosted and iPad siblings. Actual VoiceOver remains open in [#217](https://github.com/lbeezr/starfall/issues/217) after a concrete navigation failure; [#215](https://github.com/lbeezr/starfall/issues/215) captures an active worker's independently reproduced RC timeout-ownership defect. Discoveries are feeding bounded follow-ups as verification proceeds.

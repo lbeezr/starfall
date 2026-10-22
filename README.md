@@ -16,6 +16,8 @@ A small, offline iOS falling-sky puzzle. Clear matching stars as showers fill th
 
 **Development workflow:** The [agent factory](docs/AGENT_FACTORY.md) runs bounded research, independent parallel tasks and continuous integration without routine human sign-offs. The [iPhone/iPad Project](https://github.com/users/lbeezr/projects/1) has automatic issue intake and completion; the [first workstream audit](docs/evidence/factory-audit-2026-10-22/README.md) supplies prioritized tasks. Invoke `$starfall-factory` for a substantial batch; small fixes stay with one agent. Throughput gains remain to be measured in the three-batch trial.
 
+The [game-factory study and prompt kit](docs/design/AI_GAME_FACTORY.md) add player intention, consequence and native playable slices to creative batches, drawing on seven OpenAI showcases. Published prompt/source limits are explicit; game-quality gains remain unmeasured.
+
 The [current Story test repair](docs/evidence/story-regression-2026-10-22/README.md) verifies normal Lantern/Ribbon full-round paths and retains the observed actual-VoiceOver failure as open follow-up work. This is scoped development evidence; physical-player and RC acceptance remain separate.
 
 [Workstreams and role coverage](docs/GAME_WORKSTREAMS.md) tracks production responsibilities and gaps for the primary iPhone/iPad targets. Mac support remains a future assessment.
