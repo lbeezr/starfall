@@ -676,13 +676,24 @@ extension FallingSkyInteractionTests {
         let resume = app.buttons["experiment.pause"]
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: resume).wait(timeout: 5))
         XCTAssertEqual(guide.label, summary)
+        let retainedBoard = app.otherElements["experiment.board"].value as? String
+        XCTAssertNotNil(retainedBoard)
         app.terminate(); app.launchArguments = ["--dialogue-review"]; app.launch()
         resumeRestoredPaused(app)
+        XCTAssertFalse(guide.exists, "Restored paused guidance starts collapsed, like other paused introductions")
+        XCTAssertEqual(app.otherElements["experiment.board"].value as? String, retainedBoard)
+        let reopen = app.buttons["sky.dialogue.reopen"]
+        app.revealSkyControls([reopen])
+        XCTAssertTrue(reopen.isEnabled && reopen.isHittable)
+        reopen.tap()
         XCTAssertTrue(guide.waitForExistence(timeout: 10))
         XCTAssertEqual(app.buttons["experiment.pause"].label, "Resume sky")
         XCTAssertEqual(guide.label, "Twinkle. Your sky is waiting. Automatic showers are paused until you tap Resume sky.")
         XCTAssertFalse(guide.label.contains("+"), "Transient text is not saved with the round")
         XCTAssertEqual(app.staticTexts["experiment.score"].label, "\(total) starlight")
+        XCTAssertEqual(app.otherElements["experiment.board"].value as? String, retainedBoard,
+                       "Reopening restore guidance cannot change the committed paused board")
+        capture(app, "paused-guide-production-restored-open")
     }
 
     @MainActor func testVoiceOverReadsPausedGrowthFeedback() throws {

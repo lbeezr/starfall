@@ -1,5 +1,7 @@
 # Starfall roadmap
 
+**Normal restore regression — October 22:** [#226's selected native correction](evidence/restore-guide-regression-2026-10-22/README.md) follows the intentional portrait-reopen interaction and retains exact restore/pause/score/board checks. The app is unchanged; actual VoiceOver stays deferred. Both preceding gameplay-clarity slices are merged in #230/#231.
+
 **Tutorial scope — adopted for development, October 22:** [Shared-index guidance](evidence/factory-tutorial-scope-2026-10-22/README.md) identifies Open Sky tap/trace controls and original 18-light restoration practice before chapter choice. Phone default/AX3XL and tablet AX3XL checks preserve the current Story round and all Places state. The existing #226 normal-input regression is separately classified for a bounded test correction; actual VoiceOver remains deferred.
 
 **Playable factory continuation — October 22:** [Fall-back move feedback](evidence/factory-move-feedback-2026-10-22/README.md) passes selected native phone/tablet and hosted checks and merged in #230, completing #228 automatically. The following [#229](https://github.com/lbeezr/starfall/issues/229) slice clarifies Tutorial's existing scope; no new arrangement practice or balance change is implied.

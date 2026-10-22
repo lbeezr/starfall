@@ -1,5 +1,7 @@
 # Evidence index
 
+[Restore-guide regression](restore-guide-regression-2026-10-22/README.md) classifies #226 as stale native navigation, records actual portrait reopening with exact preserved restore/board/score assertions, and retains 19 hosted plus two native passes. App behavior and deferred VoiceOver remain unchanged.
+
 [Tutorial scope and factory trial reflection](factory-tutorial-scope-2026-10-22/README.md) records the shared rule-family introduction, actual Home/Story/practice/return paths, 43 hosted and three native passes, default/AX3XL reading, Core/Release and source-bound captures. Normal input, save/world preservation and deferred VoiceOver remain distinct.
 
 [Settled-move feedback](factory-move-feedback-2026-10-22/README.md) records the native misleading-message reproduction, committed-board correction, 49 hosted and six selected phone/tablet UI passes, Core/Release checks, inspected default/largest-text captures and test-setup refinements. VoiceOver remains deferred.
