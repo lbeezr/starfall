@@ -11,6 +11,9 @@ import StarfallCore
     @State private var menu: SkyMenuDestination?
     private var settings: Bool { menu != nil }
     @State private var flow: SkyFlowState
+    // Map content is withdrawn during Entry/play; its presentation choice belongs
+    // to this navigation lifetime rather than the recreated map subtree.
+    @State private var worldMapList = false
     @State private var environmentGeneration = 0
     @State private var handoffLeaving = false
     @AccessibilityFocusState private var menuFocused: Bool
@@ -367,7 +370,8 @@ import StarfallCore
         }
             .buttonStyle(StarfallUtilityButtonStyle())
             .disabled(scenePhase != .active || store.suspended)
-            .accessibilityLabel(tutorialExit == nil ? SkyCopy.text(.menuTitle) : SkyCopy.text(.practiceExit)).accessibilityHint(SkyCopy.text(.menuHint))
+            .accessibilityLabel(tutorialExit == nil ? SkyCopy.text(.menuTitle) : SkyCopy.text(.practiceExit))
+            .accessibilityHint(SkyCopy.text(tutorialExit == nil ? .menuHint : .practiceExitHint))
             .accessibilityIdentifier("experiment.settings").accessibilityFocused($menuFocused)
     }
 
@@ -608,7 +612,7 @@ import StarfallCore
     }
 
     private var worldMap: some View {
-        WorldMapView(journey: store.journey.journey, quiet: quietMotion || settings, recovered: store.journey.recovered,
+        WorldMapView(journey: store.journey.journey, list: $worldMapList, quiet: quietMotion || settings, recovered: store.journey.recovered,
                          accessible: !settings,
                          select: { location in try? store.journey.select(location) },
                          enter: { challenge in
