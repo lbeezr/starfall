@@ -25,6 +25,8 @@ Future local-network versus and cooperative restoration between nearby iPhones/i
 
 For recurring work, load only the relevant repo skill: [verify](.agents/skills/starfall-verify/SKILL.md), [CI triage](.agents/skills/starfall-ci-triage/SKILL.md), or [bounded maintenance](.agents/skills/starfall-maintenance/SKILL.md). Skills reuse the contracts below; they add no approval gates or delivery authorization.
 
+For a requested agent factory/swarm or substantial parallel delivery, use the [factory skill](.agents/skills/starfall-factory/SKILL.md) and [execution contract](docs/AGENT_FACTORY.md). Delegate independent tasks with disjoint write ownership, bound running and unintegrated work, and integrate ready slices continuously. GitHub leaf issues close through default-branch PR closing references; confirm closure and Project Done state after merge. Small fixes stay with one agent; the workflow adds no approval stages or background execution.
+
 ## Ownership and durable fixes
 
 Core owns deterministic rules, seeded randomness and committed outcomes, with no UI imports. Stores coordinate input, clocks, persistence and feedback; scenes present committed turns. Never derive legality, score, saves or shower schedules from animation callbacks or node positions. Save committed core state and validate invariants before restore. Rule/RNG/schema changes require deterministic replay and old-save coverage; preserve previews and saved generation behavior or explicitly migrate/version them.

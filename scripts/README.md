@@ -8,6 +8,12 @@ Hygiene checks, native CI validation and app-icon export tooling.
 
 Run `python3 scripts/ci-hygiene.py` and `git diff --check` from the root. See [app icon export](README-app-icon.md) before regenerating branding; inspect `ci-simulator.sh` for its native environment requirements. The former icon SVG is historical.
 
+## Agent factory diagnostics
+
+`agent_factory.py` is an optional offline helper for the [factory workflow](../docs/AGENT_FACTORY.md#optional-offline-helper). `plan <file.json>` validates a task DAG and literal write reservations, then suggests ready work within active/resource limits. `closure <snapshot.json> --issue <number>` audits native GitHub closing links and merged issue states from the documented GraphQL snapshot; it does not inspect Project settings. Neither command dispatches agents, changes state or makes network requests. Run `python3 scripts/test_agent_factory.py` for graph, reservation, closure and CLI checks. This helper is not a required CI gate; the example plan and snapshot query are in the contract.
+
+`catalog .github/game-workstreams.json` validates the role/label inventory. `--format labels` exports only available label definitions; `--format markdown` regenerates `docs/GAME_ROLE_CATALOG.md`. [Workstream tracking](../docs/GAME_WORKSTREAMS.md) explains applicability and capacity gaps. The command never provisions GitHub labels or treats the broader catalogue as an active backlog.
+
 
 ## One-app iPhone updates
 

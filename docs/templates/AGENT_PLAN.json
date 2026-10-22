@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "outcome": "Illustrate independent tooling and guidance slices after one shared contract",
+  "tasks": [
+    {
+      "id": "contract",
+      "depends_on": [],
+      "writes": ["docs/AGENT_FACTORY.md"],
+      "acceptance": ["Ownership, completion and verification contracts are explicit"],
+      "checks": ["Review local links and repository constraints"]
+    },
+    {
+      "id": "tooling",
+      "depends_on": ["contract"],
+      "writes": ["scripts/agent_factory.py", "scripts/test_agent_factory.py"],
+      "acceptance": ["Offline diagnostics reject unsafe graphs and incomplete closure"],
+      "checks": ["python3 scripts/test_agent_factory.py"]
+    },
+    {
+      "id": "guidance",
+      "depends_on": ["contract"],
+      "writes": [".agents/skills/starfall-factory/", ".github/ISSUE_TEMPLATE/task.md", ".github/pull_request_template.md"],
+      "acceptance": ["Workers can find the bounded workflow and completion instructions"],
+      "checks": ["Validate skill frontmatter, links and representative decisions"]
+    }
+  ]
+}

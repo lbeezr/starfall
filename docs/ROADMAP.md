@@ -1,5 +1,9 @@
 # Starfall roadmap
 
+**Development workflow — October 22:** The [factory scaffold](AGENT_FACTORY.md) adds bounded parallel delivery and native GitHub completion without new approval stages. Run the next three authorized multi-task batches as a measured trial before adding persistent orchestration; [implementation evidence](evidence/agent-factory-2026-10-22/README.md) separates local checks from live closure and throughput acceptance.
+
+**Coverage planning — October 22:** The [workstream/role map](GAME_WORKSTREAMS.md) supports iPhone/iPad-first ownership, capacity and acceptance review. Its comprehensive catalogue does not activate every AAA specialty or expand the product; Mac support remains a separate future discussion, nearby multiplayer is deferred, and current offline/monetization boundaries remain.
+
 **Automatic patterns — revision 3 development verified and delivered, October 20:** New Lantern/Ribbon visits remove tap and trace activation. Four-star squares, five-star crosses and full seven-star rows/columns resolve automatically, then falling survivors can create another causal phase. Separate actions restart at ×1; chains cap at ×5. [Current evidence](evidence/story-patterns-2026-10-20/README.md) records acceptance separately from the [delivered revision 2](evidence/story-cascades-2026-10-20/README.md). Retained rounds keep their saved rules.
 
 **Lantern/Ribbon pacing — arrangement-only comparison, October 20:** The rapid 24/25-star entrances, six-/four-second cadence and 150,000/220,000 targets remain. Both locations use five ordinary families. Bounded shuffled supply replaces the repeating motif. Production-rule models reach both objectives through arrangements; all twenty indiscriminate-swap runs per location lose. Phone play must assess decision time and recovery. No minimum-time lock, ratings or multiplayer is added.
