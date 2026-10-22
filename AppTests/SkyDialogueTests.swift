@@ -105,6 +105,99 @@ final class SkyDialogueTests: XCTestCase {
         }
     }
 
+    @MainActor func testPatternGrowthFeedbackFollowsActualCurrentStoryShowers() throws {
+        for (challenge, showerCount) in [(StarfallChallenge.firstLight, 1), (.ribbonCrossing, 2)] {
+            var game = FallingSky.freshChallenge(challenge)
+            for _ in 1..<showerCount { _ = try XCTUnwrap(game.letStarsFall()) }
+            let old = game
+            let turn = try XCTUnwrap(game.letStarsFall())
+            XCTAssertEqual(game.turns, showerCount)
+            XCTAssertEqual(turn.arrivals.filter(\.grew).count, 1)
+            XCTAssertTrue(turn.resolutionPhases.isEmpty)
+            XCTAssertEqual(game.displayScore, 0)
+            XCTAssertFalse(game.supportsManualClears)
+            let result = SkyDialogueLibrary.result(for: turn, from: old, to: game,
+                tracedCount: 0, recipe: nil, relayDepth: 0, techniqueResult: "")
+            XCTAssertEqual(result.id, "guide.patterns-growth.1")
+            XCTAssertEqual(result.speaker, .spark)
+            XCTAssertEqual(result.priority, .routine)
+            XCTAssertNil(result.seconds, "Current Story growth guidance remains available for player-paced reading")
+            XCTAssertEqual(result.text, "Oh! A star grew. Grown stars carry twice the starlight, but each still counts as one star in a square, cross or full line.")
+            XCTAssertFalse(result.text.contains("tap match"))
+        }
+    }
+
+    @MainActor func testManualGrowthFeedbackPreservesOpenSkyAndRetainedStoryControls() throws {
+        var sources = [FallingSky.freshSurvival(seed: 5), FallingSky(challenge: .firstLight)]
+        for challenge in [StarfallChallenge.firstLight, .ribbonCrossing] {
+            for revision in 1...2 {
+                sources.append(FallingSky(definition: try XCTUnwrap(StoryChallengeDefinition(challenge, revision: revision))))
+            }
+        }
+        var sawMultipleGrowth = false
+        for source in sources {
+            var game = source
+            var growthResult: SkyDialogueLine?
+            for _ in 0..<16 where !game.isOver {
+                let old = game
+                let turn = try XCTUnwrap(game.letStarsFall())
+                let count = turn.arrivals.filter(\.grew).count
+                guard count > 0 else { continue }
+                XCTAssertTrue(game.supportsManualClears)
+                XCTAssertTrue(turn.resolutionPhases.isEmpty)
+                XCTAssertFalse(game.isOver)
+                sawMultipleGrowth = sawMultipleGrowth || count > 1
+                let result = SkyDialogueLibrary.result(for: turn, from: old, to: game,
+                    tracedCount: 0, recipe: nil, relayDepth: 0, techniqueResult: "")
+                XCTAssertEqual(result, SkyDialogueLibrary.line("guide.growth", values: [
+                    "growth": SkyCopy.count(.eventGrowthOne, .eventGrowthMany, count)
+                ]))
+                XCTAssertTrue(result.text.contains("count as 2 toward a tap match"))
+                growthResult = result
+                break
+            }
+            XCTAssertNotNil(growthResult, "The production round must reach growth: revision \(source.challengeRevision), challenge \(String(describing: source.challenge))")
+        }
+        XCTAssertTrue(sawMultipleGrowth, "Retained production showers also exercise plural growth")
+    }
+
+    @MainActor func testPatternGrowthPreservesManualPublicationAndQuietAutomaticShowers() throws {
+        for automatic in [false, true] {
+            for (challenge, showerCount) in [(StarfallChallenge.firstLight, 1), (.ribbonCrossing, 2)] {
+                let suite = "Starfall.PatternGrowth.\(UUID())"
+                let defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
+                defer { defaults.removePersistentDomain(forName: suite) }
+                defaults.set(try SkySaveArchive.encode(FallingSky.freshChallenge(challenge)), forKey: SkySaveArchive.key)
+                let presenter = FallingSkyRecorder(), feedback = SkyFeedbackRecorder(), clock = ManualRainClock()
+                let store = FallingSkyStore(defaults: defaults, arguments: [], presenter: presenter,
+                    clock: clock, feedback: feedback)
+                store.setSuspended(false)
+                if automatic { store.togglePause() }
+                feedback.announcements.removeAll()
+                for _ in 0..<showerCount {
+                    if automatic { clock.advance(store.showerInterval) }
+                    else { store.callShower() }
+                    presenter.finish()
+                }
+                XCTAssertEqual(store.game.turns, showerCount)
+                XCTAssertEqual(store.game.displayScore, 0)
+                XCTAssertEqual(store.guideLine.id, "guide.patterns-growth.1")
+                if automatic {
+                    XCTAssertTrue(feedback.announcements.isEmpty, "Ordinary automatic growth must not interrupt exploration speech")
+                    XCTAssertNotEqual(store.dialogue.line?.id, store.guideLine.id)
+                } else {
+                    XCTAssertEqual(store.dialogue.line, store.guideLine)
+                    XCTAssertEqual(feedback.announcements.last, store.guideLine.spokenText)
+                    XCTAssertEqual(feedback.announcements.count, showerCount)
+                }
+                let announcements = feedback.announcements
+                presenter.finish()
+                XCTAssertEqual(feedback.announcements, announcements, "Settlement must not repeat the growth result")
+                store.setSuspended(true)
+            }
+        }
+    }
+
     func testTypedInterfaceInventoryAndTemplatesRejectMissingExtraAndInjectedValues() throws {
         let catalog = SkyDialogueLibrary.catalog
         XCTAssertEqual(Set(try XCTUnwrap(catalog.copy).keys), Set(SkyCopy.Key.allCases.map(\.rawValue)))

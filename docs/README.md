@@ -1,5 +1,7 @@
 # Documentation map
 
+[Story growth clarity](evidence/factory-gameplay-2026-10-22/README.md) is the first gameplay slice using the game-factory brief: correct first-shower feedback, player-paced reading and source-bound phone/tablet evidence. It preserves the clean-main restore-guide failure as a separate follow-up and leaves human learning unmeasured.
+
 [Documentation instructions](AGENTS.md) give the local working contract.
 
 [Agent factory](AGENT_FACTORY.md) defines autonomous bounded research, disjoint task decomposition, parallel execution, continuous integration and native GitHub issue/Project closure. The [live setup and first workstream audit](evidence/factory-audit-2026-10-22/README.md) link the Project and prioritized iPhone/iPad tasks; the three-batch throughput trial remains open.

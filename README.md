@@ -1,5 +1,7 @@
 # Starfall
 
+**Story growth clarity — October 22:** Current Lantern/Ribbon guidance now explains that grown stars carry twice the starlight while occupying one place in an automatic pattern. The message allows player-paced reading. [Native evidence](docs/evidence/factory-gameplay-2026-10-22/README.md) records phone/tablet default and largest-text checks, retained-rule coverage and a separately reproduced baseline restore-guide failure.
+
 **Lantern/Ribbon revision 3 — development verified and delivered:** New visits use automatic patterns only: four-star squares, five-star crosses and full seven-star rows/columns. Taps and traces no longer activate clears. Half-full entrances, causal chains and **150,000/220,000** objectives remain. [Current evidence and limits](docs/evidence/story-patterns-2026-10-20/README.md) track rule, native and delivery acceptance separately. Retained rounds keep their saved rules.
 
 **Balance review:** The player rejected revision 2’s easy tap clears. Both locations now use all five ordinary families; constrained mixed supply passes arrangement-only reachability checks. [Competitive research](docs/design/PUZZLE_PACING_RESEARCH.md) informs the direction, while the next phone session must assess comprehension and recovery before extending it to other places. Mastery ratings and multiplayer remain deferred.

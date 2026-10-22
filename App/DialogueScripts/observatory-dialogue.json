@@ -151,6 +151,17 @@
       ]
     },
     {
+      "id": "guide.patterns-growth",
+      "lines": [
+        {
+          "id": "guide.patterns-growth.1",
+          "speaker": "spark",
+          "text": "Oh! {growth}. Grown stars carry twice the starlight, but each still counts as one star in a square, cross or full line.",
+          "priority": "routine"
+        }
+      ]
+    },
+    {
       "id": "guide.arrival",
       "lines": [
         {
