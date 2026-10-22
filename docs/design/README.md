@@ -1,5 +1,7 @@
 # Design documents
 
+[AI game-factory guidance](AI_GAME_FACTORY.md) studies all 63 prompt cards across seven OpenAI games, records reconstruction/source limits and adds an experience brief, playable-slice workflow and reusable prompts. Guidance is integrated; improvements to game quality and factory throughput remain unmeasured.
+
 [Current Story playtest](CURRENT_STORY_PLAYTEST.md) is the blank revision-3 Lantern/Ribbon observation packet for physical iPhone/iPad comprehension, setups, recovery and touch reliability. It preserves an uncoached baseline and opportunity/assistance denominators; preparation supplies no participant results and does not close #206.
 
 [Pokémon Puzzle League reference](POKEMON_PUZZLE_LEAGUE_REFERENCE.md) records the user's primary gameplay inspiration, verified source behavior and adaptation guidance for scoring, pressure, progression and future local versus/co-op.

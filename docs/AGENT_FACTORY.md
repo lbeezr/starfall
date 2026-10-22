@@ -10,6 +10,12 @@ Use one coordinator to research, plan, split work by ownership, dispatch indepen
 
 The [workstream/label contract](GAME_WORKSTREAMS.md) and [full role catalogue](GAME_ROLE_CATALOG.md) help find missing ownership, expertise and evidence before decomposition. iPhone and iPad are primary; Mac is deferred. Catalogue breadth does not increase the active worker budget or create new feature commitments.
 
+## Direct the player experience
+
+For gameplay, feel, interface and content work, use the [game-factory guidance and prompt kit](design/AI_GAME_FACTORY.md). Its seven-showcase study adds a concise experience brief to the existing packet: player promise; action/choice and consequence; readable feedback and controlling references; the smallest playable situation; and evidence that could reject the design. Use only fields that help the current decision. Small fixes and tooling work need no creative-production ceremony.
+
+Prove one integrated native slice before multiplying content, then refine the largest evidenced weakness within the authorized outcome. Shared evolving interactions can require serial work; independent research and settled-contract variations can run in parallel. The coordinator owns coherence without adding another approval stage. Mechanical solutions, screenshots and synthetic play do not establish human enjoyment. The study's prompts are largely reconstructed or unverified, and its methods remain a local trial rather than demonstrated throughput or game-quality gains.
+
 ## The loop
 
 ```mermaid
@@ -72,6 +78,7 @@ Use the [leaf issue template](../.github/ISSUE_TEMPLATE/task.md) when a durable 
 | Task packet | Return artifact |
 | --- | --- |
 | Outcome and acceptance | What changed and which criteria are met; discoveries or explicit none |
+| Relevant experience brief and contrasting play scenario | Observed player-visible result, counterexamples and unperformed human/device acceptance |
 | Prerequisites and frozen interface | Assumptions changed; dependencies still missing |
 | Exclusive write paths and reserved resources | Actual changed paths and source commit/tree |
 | Relevant checks and scope exclusions | Commands/results, failed or missing acceptance |

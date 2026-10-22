@@ -4,6 +4,8 @@
 
 [Agent factory](AGENT_FACTORY.md) defines autonomous bounded research, disjoint task decomposition, parallel execution, continuous integration and native GitHub issue/Project closure. The [live setup and first workstream audit](evidence/factory-audit-2026-10-22/README.md) link the Project and prioritized iPhone/iPad tasks; the three-batch throughput trial remains open.
 
+[Game-factory research and prompts](design/AI_GAME_FACTORY.md) add player promises, meaningful consequences and one native slice before content expansion. All 63 published cards across seven OpenAI games were inspected; prompt provenance and original-repository gaps limit the conclusions. The guidance's effectiveness remains unmeasured.
+
 [Workstreams and resource gaps](GAME_WORKSTREAMS.md) defines the iPhone/iPad-first tracking model and label vocabulary; the [complete role catalogue](GAME_ROLE_CATALOG.md) maps 292 responsibilities to 29 primary homes, including explicitly deferred/excluded specialties.
 
 The factory's [discovery/refill contract](AGENT_FACTORY.md#keep-useful-work-discoverable) captures worker findings and searches for useful work when the actionable queue is low. [Current Story observation preparation](design/CURRENT_STORY_PLAYTEST.md) and [device readiness](evidence/device-readiness-2026-10-22/README.md) advance the next tasks without claiming unperformed human/device acceptance.
