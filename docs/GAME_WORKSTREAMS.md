@@ -1,12 +1,12 @@
 # Track game-development coverage without multiplying task queues
 
-**Status:** Tracking design and validated catalogue; live labels/Project configuration not installed · **Updated:** October 22, 2026
+**Status:** 34 labels live; private Project automated; first coverage audit complete · **Updated:** October 22, 2026
 
 **Primary targets are iPhone and iPad, using the current iOS 17+ app.** Mac/Mac mini support is a deferred porting assessment. The goal is broad production coverage and a high quality bar, not a commitment to a different engine, a larger game, every AAA feature or hundreds of staff.
 
 The [catalogue](GAME_ROLE_CATALOG.md) covers **29 workstreams and 292 functional roles/specialisms** across the development lifecycle. Its [machine-readable source](../.github/game-workstreams.json) defines **34 available labels**, including 25 workstream labels. Four conditional streams remain visible in the inventory: nearby multiplayer is future work; online services, commerce and live-service analytics are excluded from the current product. A listed role is not automatically needed, staffed or authorized. Studio titles vary; this is a comprehensive responsibility inventory, not a universal list of every possible job title.
 
-**Next action:** For the next authorized batch, choose its primary workstream and required roles, identify owners/evidence gaps, then execute through [the factory loop](AGENT_FACTORY.md). Provision labels as real work needs them. Do not open 292 role issues or 29 standing implementation queues merely to populate a board.
+**Next action:** Select ready work from the [prioritized audit](evidence/factory-audit-2026-10-22/README.md) through [the factory loop](AGENT_FACTORY.md). The [Starfall — iPhone & iPad Project](https://github.com/users/lbeezr/projects/1) automatically imports open repository issues, mirrors completion and reopening, and sorts cards by Priority. All 34 available labels are installed; existing labels are preserved. Do not open 292 role issues or 29 standing implementation queues merely to populate a board.
 
 ## Keep four things distinct
 
@@ -42,12 +42,12 @@ Reuse or rename an existing equivalent label when adopting this vocabulary; sear
 
 Keep **Status, Priority, Phase, Milestone, Effort and Risk** as Project fields or existing milestone metadata, rather than creating combinatorial label families. Initial values can be:
 
-- Status: Ready, Working, In review, Done; blocked work carries its actual blocker/next action.
+- Status: Todo, In Progress, Done in the live Project; verification stays within In Progress. Blocked work carries its actual blocker/next action. No human approval column.
 - Priority: P0 urgent failure, P1 next outcome, P2 planned, P3 optional/deferred. Priority is separate from defect severity.
 - Phase: Discovery, Preproduction, Vertical slice, Production, Alpha, Beta/RC, Release, Maintenance. These describe work maturity, not permission gates.
 - Risk: Low, Medium, High, Unknown. Effort and available capacity are estimates with a date, unit and range; Unknown stays unknown.
 
-When no Project is configured, use a short issue packet and existing milestones instead of simulating every field with labels. The issue's native open/completed state remains authoritative, with [merge closure driving Done](AGENT_FACTORY.md#completion-follows-github). A label must never determine whether an issue auto-closes.
+The live Project starts with Status and P0–P3 Priority; Phase, Effort and Risk can stay in issue packets until they improve an actual decision. The issue's native open/completed state remains authoritative, with [merge closure driving Done](AGENT_FACTORY.md#completion-follows-github). A label must never determine whether an issue auto-closes. If a future Project is unavailable, use a short issue packet and existing milestones instead of simulating every field with labels.
 
 ## The coverage review
 
@@ -94,7 +94,7 @@ Apple's [WWDC26 performance session](https://developer.apple.com/videos/play/wwd
 
 ## Initial Starfall gap signals
 
-This is a prioritization starting point from existing evidence, not a staffing audit or a statement that the listed roles are absent:
+The [October 22 audit](evidence/factory-audit-2026-10-22/README.md) examines all 29 streams and links six prioritized leaves. It confirms these evidence gaps and a current-rule mismatch in older full-round native tests; it does not establish absent staff or measured underinvestment. The original starting signals remain useful context:
 
 | Signal | Workstreams to examine | Bounded next question |
 | --- | --- | --- |

@@ -14,7 +14,7 @@ A small, offline iOS falling-sky puzzle. Clear matching stars as showers fill th
 
 [Roadmap](docs/ROADMAP.md) · [Visual reference and cast](docs/design/VISUAL_REFERENCE.md) · [Playtest](docs/PLAYTEST-FALLING-SKY.md) · [Documentation map](docs/README.md)
 
-**Development workflow:** The [agent factory](docs/AGENT_FACTORY.md) provides bounded research, independent parallel tasks and continuous integration, with native GitHub issue/Project completion. Invoke `$starfall-factory` for a substantial batch; small fixes stay with one agent. Throughput gains remain to be measured in the three-batch trial.
+**Development workflow:** The [agent factory](docs/AGENT_FACTORY.md) runs bounded research, independent parallel tasks and continuous integration without routine human sign-offs. The [iPhone/iPad Project](https://github.com/users/lbeezr/projects/1) has automatic issue intake and completion; the [first workstream audit](docs/evidence/factory-audit-2026-10-22/README.md) supplies prioritized tasks. Invoke `$starfall-factory` for a substantial batch; small fixes stay with one agent. Throughput gains remain to be measured in the three-batch trial.
 
 [Workstreams and role coverage](docs/GAME_WORKSTREAMS.md) tracks production responsibilities and gaps for the primary iPhone/iPad targets. Mac support remains a future assessment.
 
