@@ -1,0 +1,16 @@
+{
+  "base": "bf09f946eb46f06c10ef086e3cba312ddcff9214",
+  "snapshot": "ff001f5ce36a",
+  "dirty_build_affecting_paths": [
+    "App/SkyDialogueLibrary.swift",
+    "App/DialogueScripts/observatory-dialogue.json"
+  ],
+  "sha256": {
+    "App/SkyDialogueLibrary.swift": "736937120df43e594ee46e11b90df472290458f866d35d1bbfabc460bc753230",
+    "App/DialogueScripts/observatory-dialogue.json": "3b7e8e1e68cd9b6196a6e7de935e6626862140527e87b7ea472e1e2b900f07c1",
+    "AppTests/SkyDialogueTests.swift": "82680e90224494fe39869a111bfe2d4eaa1dd32fa935e7592aa250849f2e9d02",
+    "UITests/SkyFlowInteractionTests.swift": "69f8f558249a2e44ab0f68c80024fd0574ec5013e16169e6463cef953760cd88"
+  },
+  "computed_build_identity": "dev.1299a00cca",
+  "simulator_displayed_build": "dev.local"
+}

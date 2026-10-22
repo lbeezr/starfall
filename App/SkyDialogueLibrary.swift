@@ -107,7 +107,9 @@ extension SkyDialogueLibrary {
         } else if turn.arrivals.contains(where: { $0.gem.gravityKind == .magnet }) {
             result = line("guide.magnet-arrival")
         } else if growth > 0 {
-            result = line(game.duskRule != .legacy && game.board.enumerated().contains(where: { game.isDrained(at: Cell($0.offset/7,$0.offset%7)) }) ? "guide.dusk-growth" : "guide.growth", values: ["growth": SkyCopy.count(.eventGrowthOne, .eventGrowthMany, growth)])
+            let growthGuide = game.supportsManualClears ? "guide.growth" : "guide.patterns-growth"
+            let id = game.duskRule != .legacy && game.board.enumerated().contains(where: { game.isDrained(at: Cell($0.offset/7,$0.offset%7)) }) ? "guide.dusk-growth" : growthGuide
+            result = line(id, values: ["growth": SkyCopy.count(.eventGrowthOne, .eventGrowthMany, growth)])
         } else {
             result = line("guide.arrival", values: ["arrival": SkyCopy.count(.eventArrivalOne, .eventArrivalMany, turn.arrivals.count)])
         }

@@ -1,5 +1,7 @@
 # Starfall roadmap
 
+**First game-factory slice — October 22:** Review selected the first-shower contradiction between current Story's automatic patterns and shared tap-match growth guidance. [The focused correction](evidence/factory-gameplay-2026-10-22/README.md) teaches one pattern place versus twice the starlight and permits player-paced reading. Selected phone/tablet/hosted checks pass; the existing restore-guide test fails on clean main and remains in [#226](https://github.com/lbeezr/starfall/issues/226). Observe comprehension in #206's next player session before claiming learning gains.
+
 **Game-factory research — October 22:** The [seven-game study](design/AI_GAME_FACTORY.md) inspects all 63 expanded prompt cards and integrates an experience brief and prompt kit into the factory. Creative work now connects player intention, consequence, feedback and a small native slice before expansion. Effectiveness remains a trial; current player/device acceptance stays with its existing owners. No gameplay, model, network or delivery change follows from the showcases.
 
 **Factory execution observation — October 22:** [Four independent slices](evidence/factory-audit-2026-10-22/EXECUTION.md) merged and their issues completed automatically within one or two seconds. Actual VoiceOver remains open in #217; #220 records missing newer cards in the canonical Project view despite persisted issue-side fields. Preserve these limits while continuing the bounded throughput trial.

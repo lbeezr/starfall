@@ -49,6 +49,54 @@ final class SkyFlowInteractionTests: XCTestCase {
         tap("experiment.settings", app); tap("experiment.pause", app)
         XCTAssertTrue(app.buttons["experiment.next"].waitForExistence(timeout: 5))
     }
+
+    @MainActor private func assertCurrentStoryGrowthGuidance(largest: Bool) {
+        let app = launch(largest: largest)
+        defer { app.terminate() }
+        tap("sky.worldMap", app)
+        tap("world.visit", app)
+        tap("sky.begin", app)
+        let menu = app.buttons["experiment.settings"]
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true AND hittable == true"),
+                                               object: menu).wait(timeout: 10))
+        pause(app)
+        let board = app.otherElements["experiment.board"]
+        XCTAssertTrue((board.value as? String)?.hasPrefix("0 showers") == true,
+                      "Pause the ordinary new visit before its first scheduled shower")
+        tap("experiment.next", app)
+        let message = app.staticTexts["experiment.message"]
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label CONTAINS %@", "A star grew"),
+                                               object: message).wait(timeout: 10))
+        capture(app, largest ? "story-growth-largest" : "story-growth-default")
+        if largest {
+            app.readSkyGuideToEnd(actions: [app.buttons["experiment.pause"], app.buttons["experiment.next"]])
+            capture(app, "story-growth-largest-read-through")
+        }
+        XCTAssertTrue(message.label.contains("twice the starlight"))
+        XCTAssertTrue(message.label.contains("counts as one star"))
+        XCTAssertFalse(message.label.contains("tap match"))
+        XCTAssertTrue(app.buttons["experiment.cell.3.0"].label.hasPrefix("Grown "))
+        XCTAssertEqual(app.staticTexts["experiment.score"].label,
+                       "0 of \(150_000.formatted()) starlight collected")
+        let retained = board.value as? String
+        tap("experiment.cell.3.0", app)
+        XCTAssertEqual(board.value as? String, retained, "Inspecting a grown star cannot clear it in current Story")
+        XCTAssertEqual(app.staticTexts["experiment.score"].label,
+                       "0 of \(150_000.formatted()) starlight collected")
+        app.revealSkyControls([app.buttons["experiment.pause"], app.buttons["experiment.next"]])
+        XCTAssertTrue(app.buttons["experiment.pause"].isHittable)
+        XCTAssertTrue(app.buttons["experiment.next"].isHittable)
+        capture(app, largest ? "story-inspect-largest-controls" : "story-inspect-default-controls")
+    }
+
+    @MainActor func testCurrentStoryGrowthGuidanceMatchesAutomaticPatterns() {
+        assertCurrentStoryGrowthGuidance(largest: false)
+    }
+
+    @MainActor func testLargestTextCurrentStoryGrowthGuidanceKeepsControlsUsable() {
+        assertCurrentStoryGrowthGuidance(largest: true)
+    }
+
     @MainActor func testWelcomeEntryBackgroundAndAnotherSky() {
         requireNormalMotion()
         let app = launch(); defer { app.terminate() }
