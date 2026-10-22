@@ -1,0 +1,161 @@
+{
+  "stage": "development",
+  "date": "2026-10-22",
+  "source": {
+    "base": "5166e6ec998e6c02ea540d169086c0c65c2f84c8",
+    "inputs": {
+      "AppTests/FallingSkyTestSupport.swift": "e779d918976e1c4602437c6fe654994796103b993c602c259fd1402b952eb12b",
+      "Starfall.xcodeproj/project.pbxproj": "72c4fab3896f5707a357a5173b555579574779816da8dbcd8ad6cb2bde972fdb",
+      "UITests/FallingSkyInteractionTests.swift": "e069a3ffe072d9ac45eb64c3a856df91d8a769646fa98294a56834d79766ca6a",
+      "UITests/NativeSkyControls.swift": "70846852c843a1fddaf32063b87f6f2597f6c214f9c65eade505357255c30e8b",
+      "UITests/ObservatoryInteractionTests.swift": "71310b72d262c9135dc0a636e54d1b0dddcece266c278ccd6967ae9d146813d2",
+      "UITests/SkyFlowInteractionTests.swift": "89cabafcad9c2b56a519a1c1257a36f2257a3d437261937c0f7f7cdb12a75fef",
+      "scripts/rc-platforms.py": "c74ad0926bb2110b00267e2fc555edfc6842c93dccb5c982987faea870869bfe",
+      "scripts/test_rc_platforms.py": "e3121846bf87e2b0eed9e4b2bd71972c6bc3c116f38011c12e5e8f1df6d8bbee",
+      "AppTests/StoryPatternPlan.swift": "0cbb2ea4241abaf50a67059c3dc37c3542f05e3296b653124a7fb5ebd6487db2"
+    },
+    "verification_base": "5554cd86d034ad3b9e5098c638f9c50dd19ce7ba"
+  },
+  "nativeCommands": {
+    "baseline-build-arm64": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -sdk iphonesimulator -destination \"platform=iOS Simulator,id=4103C352-DFC2-493E-A224-DE4CE3D50889\" -derivedDataPath /private/tmp/starfall-factory-205/baseline-dd -parallel-testing-enabled NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGN_IDENTITY=- CODE_SIGNING_ALLOWED=YES DEVELOPMENT_TEAM= CODE_SIGN_STYLE=Manual build-for-testing",
+    "baseline-tests": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=4103C352-DFC2-493E-A224-DE4CE3D50889\" -derivedDataPath /private/tmp/starfall-factory-205/baseline-dd -resultBundlePath /private/tmp/starfall-factory-205/baseline-tests.xcresult -parallel-testing-enabled NO -test-timeouts-enabled YES -default-test-execution-time-allowance 90 -maximum-test-execution-time-allowance 600 \"-only-testing:StarfallUITests/SkyFlowInteractionTests/testFirstLightWinReplayAndFullSky\" \"-only-testing:StarfallUITests/FallingSkyInteractionTests/testFirstLightGoalCompletionRestoreReplayAndSurvival\" test-without-building",
+    "ready-build": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -sdk iphonesimulator -destination \"platform=iOS Simulator,id=4103C352-DFC2-493E-A224-DE4CE3D50889\" -derivedDataPath /private/tmp/starfall-factory-205/fast-dd -parallel-testing-enabled NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGN_IDENTITY=- CODE_SIGNING_ALLOWED=YES DEVELOPMENT_TEAM= CODE_SIGN_STYLE=Manual build-for-testing",
+    "ready-phone": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=4103C352-DFC2-493E-A224-DE4CE3D50889\" -derivedDataPath /private/tmp/starfall-factory-205/fast-dd -resultBundlePath /private/tmp/starfall-factory-205/ready-phone.xcresult -parallel-testing-enabled NO -test-timeouts-enabled YES -default-test-execution-time-allowance 90 -maximum-test-execution-time-allowance 600 \"-only-testing:StarfallUITests/SkyFlowInteractionTests/testCurrentRibbonWinReplayAndFullSky\" \"-only-testing:StarfallUITests/FallingSkyInteractionTests/testFirstLightGoalCompletionRestoreReplayAndSurvival\" \"-only-testing:StarfallUITests/WorldJourneyInteractionTests/testRevisedLanternEarnsThousandsAndRetainsScoreAcrossRelaunch\" \"-only-testing:StarfallUITests/WorldJourneyInteractionTests/testRevisedRibbonSwapCreatesLargerClearWithLargestText\" \"-only-testing:StarfallUITests/LanternLandingInteractionTests/testNativeWinningClearPersistsRestorationAndReplayStartsAtZero\" test-without-building",
+    "hosted-tablet": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -xctestrun /private/tmp/starfall-factory-205/fast-dd/Build/Products/Starfall_iphonesimulator27.1-arm64.xctestrun -destination \"platform=iOS Simulator,id=027DFF2A-5E63-4A82-AACF-8360AD426F9B\" -resultBundlePath /private/tmp/starfall-factory-205/hosted-tablet.xcresult -parallel-testing-enabled NO -test-timeouts-enabled YES -default-test-execution-time-allowance 90 -maximum-test-execution-time-allowance 240 \"-only-testing:StarfallAppTests/FallingSkyStoreTests\" \"-only-testing:StarfallAppTests/SkyFlowStateTests\" \"-only-testing:StarfallUITests/WorldJourneyInteractionTests/testRevisedLanternEarnsThousandsAndRetainsScoreAcrossRelaunch\" \"-only-testing:StarfallUITests/WorldJourneyInteractionTests/testRevisedRibbonSwapCreatesLargerClearWithLargestText\" \"-only-testing:StarfallUITests/LanternLandingInteractionTests/testTabletRotationKeepsRestorationAndNativeInput\" test-without-building",
+    "release-build": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Release -sdk iphonesimulator -destination \"generic/platform=iOS Simulator\" -derivedDataPath /private/tmp/starfall-factory-205/release-dd ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGN_IDENTITY=- CODE_SIGNING_ALLOWED=YES DEVELOPMENT_TEAM= CODE_SIGN_STYLE=Manual build",
+    "targeted-voiceover": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -xctestrun /private/tmp/starfall-factory-205/fast-dd/Build/Products/Starfall_iphonesimulator27.1-arm64.xctestrun -destination \"platform=iOS Simulator,id=4103C352-DFC2-493E-A224-DE4CE3D50889\" -resultBundlePath /private/tmp/starfall-factory-205/targeted-voiceover.xcresult -parallel-testing-enabled NO -test-timeouts-enabled YES -default-test-execution-time-allowance 90 -maximum-test-execution-time-allowance 600 \"-only-testing:StarfallUITests/ObservatoryInteractionTests/testVoiceOverFullFirstLightRoundRestoreAndReplay\" test-without-building"
+  },
+  "stageReceipts": [
+    {
+      "stage": "baseline-build",
+      "startedUTC": "2026-10-22T14:56:34.417535+00:00",
+      "elapsedSeconds": 6.948,
+      "limitSeconds": 900.0,
+      "exitCode": 65,
+      "error": null
+    },
+    {
+      "stage": "baseline-build-arm64",
+      "startedUTC": "2026-10-22T14:57:09.943560+00:00",
+      "elapsedSeconds": 22.563,
+      "limitSeconds": 900.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "baseline-tests",
+      "startedUTC": "2026-10-22T14:59:15.365087+00:00",
+      "elapsedSeconds": 168.497,
+      "limitSeconds": 900.0,
+      "exitCode": 65,
+      "error": null
+    },
+    {
+      "stage": "candidate-build",
+      "startedUTC": "2026-10-22T15:04:45.561906+00:00",
+      "elapsedSeconds": 29.008,
+      "limitSeconds": 900.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "candidate-fast-build",
+      "startedUTC": "2026-10-22T15:16:25.670705+00:00",
+      "elapsedSeconds": 29.424,
+      "limitSeconds": 900.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "candidate-ready-build",
+      "startedUTC": "2026-10-22T15:20:01.090878+00:00",
+      "elapsedSeconds": 4.686,
+      "limitSeconds": 900.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "release-build",
+      "startedUTC": "2026-10-22T15:21:24.902839+00:00",
+      "elapsedSeconds": 27.848,
+      "limitSeconds": 900.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "candidate-phone-tests",
+      "startedUTC": "2026-10-22T15:05:42.651916+00:00",
+      "elapsedSeconds": 1200.022,
+      "limitSeconds": 1200.0,
+      "exitCode": 124,
+      "error": "Command '['xcodebuild', '-project', 'Starfall.xcodeproj', '-scheme', 'Starfall', '-configuration', 'Debug', '-destination', 'platform=iOS Simulator,id=4103C352-DFC2-493E-A224-DE4CE3D50889', '-derivedDataPath', '/private/tmp/starfall-factory-205/candidate-dd', '-resultBundlePath', '/private/tmp/starfall-factory-205/candidate-phone.xcresult', '-parallel-testing-enabled', 'NO', '-test-timeouts-enabled', 'YES', '-default-test-execution-time-allowance', '90', '-maximum-test-execution-time-allowance', '600', '-only-testing:StarfallUITests/SkyFlowInteractionTests/testCurrentRibbonWinReplayAndFullSky', '-only-testing:StarfallUITests/FallingSkyInteractionTests/testFirstLightGoalCompletionRestoreReplayAndSurvival', '-only-testing:StarfallUITests/FallingSkyInteractionTests/testFirstLightCanOverflowWithoutCompletingGoal', '-only-testing:StarfallUITests/WorldJourneyInteractionTests/testRevisedLanternSwapCreatesRelayAndRetainsItAcrossBackgroundRestore', '-only-testing:StarfallUITests/WorldJourneyInteractionTests/testRevisedRibbonSwapCreatesLargerClearWithLargestText', 'test-without-building']' timed out after 1200.0 seconds"
+    },
+    {
+      "stage": "hosted-tablet-tests",
+      "startedUTC": "2026-10-22T15:33:42.635873+00:00",
+      "elapsedSeconds": 296.355,
+      "limitSeconds": 900.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "ready-phone-tests",
+      "startedUTC": "2026-10-22T15:21:21.112569+00:00",
+      "elapsedSeconds": 1067.085,
+      "limitSeconds": 1200.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "targeted-voiceover",
+      "startedUTC": "2026-10-22T15:43:35.053678+00:00",
+      "elapsedSeconds": 174.896,
+      "limitSeconds": 900.0,
+      "exitCode": 143,
+      "error": null
+    }
+  ],
+  "acceptedNativeSummaries": {
+    "ready-phone": {
+      "total": 5,
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "exit": 0,
+      "validCompletedXCResult": true
+    },
+    "hosted-tablet": {
+      "total": 78,
+      "passed": 78,
+      "failed": 0,
+      "skipped": 0,
+      "exit": 0,
+      "validCompletedXCResult": true
+    }
+  },
+  "core": {
+    "command": "swift test",
+    "passed": 225,
+    "failed": 0
+  },
+  "tooling": {
+    "scripts/test_rc_platforms.py": 12,
+    "scripts/test_native_test_plan.py": 3
+  },
+  "actualVoiceOver": {
+    "status": "failed before arrangement inputs; incomplete result bundle",
+    "executed": 1,
+    "failed": 1,
+    "skipped": 0,
+    "durationSeconds": 34.307,
+    "spoken": "Sky menu Heading",
+    "expected": "World map",
+    "followup": "https://github.com/lbeezr/starfall/issues/217"
+  },
+  "rawEvidenceRoot": "/private/tmp/starfall-factory-205",
+  "limits": [
+    "Not a full development or RC matrix pass",
+    "No physical-device, minimum-OS or new animation-quality acceptance",
+    "Publication commit recorded on the closing PR; input hashes must match"
+  ]
+}

@@ -11,7 +11,7 @@ rc = importlib.util.module_from_spec(spec); spec.loader.exec_module(rc)
 
 MINIMUM_IOS_TESTS = [
     'StarfallUITests/SkyFlowInteractionTests/testWelcomeEntryBackgroundAndAnotherSky',
-    'StarfallUITests/SkyFlowInteractionTests/testFirstLightWinReplayAndFullSky',
+    'StarfallUITests/SkyFlowInteractionTests/testCurrentRibbonWinReplayAndFullSky',
     'StarfallUITests/FallingSkyInteractionTests/testSystemReduceMotionKeepsManualPlayWorking',
 ]
 TABLET_TESTS = [

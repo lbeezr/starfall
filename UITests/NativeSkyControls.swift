@@ -1,6 +1,75 @@
 import XCTest
 
 extension XCUIApplication {
+    /// Play the same production-rule witness validated by the hosted lifecycle tests.
+    /// XCTest sends physical swipes; it cannot mutate the game's score or archive.
+    @MainActor func completeStoryPattern(_ plan: StoryPatternPlan) {
+        completeStoryPattern(plan, exchange: { source, destination, _ in
+            // Most exchanges stay inside the already-visible board. Re-running
+            // scroll discovery adds two one-second existence waits per move.
+            // Keep the same native visibility/hit requirements, and scroll only
+            // when either complete target actually needs to be revealed.
+            let targets = source.frame.union(destination.frame)
+            if !self.frame.contains(targets) || !source.isHittable || !destination.isHittable {
+                self.revealSkyControls([source, destination])
+            }
+            XCTAssertTrue(source.isHittable && destination.isHittable)
+            source.coordinate(withNormalizedOffset: .init(dx: 0.5, dy: 0.5))
+                .press(forDuration: 0.05,
+                       thenDragTo: destination.coordinate(withNormalizedOffset: .init(dx: 0.5, dy: 0.5)),
+                       withVelocity: .fast, thenHoldForDuration: 0.05)
+        }, shower: {
+            let next = self.buttons["experiment.next"]
+            self.revealSkyControls([next]); next.tap()
+        })
+    }
+
+    /// Accessibility callers supply real VoiceOver action selection/activation.
+    /// Both input paths retain the exact exchange, shower and terminal assertions.
+    @MainActor func completeStoryPattern(_ plan: StoryPatternPlan,
+                                         exchange: (XCUIElement, XCUIElement, String) throws -> Void,
+                                         shower: () throws -> Void) rethrows {
+        let next = buttons["experiment.next"]
+        let board = otherElements["experiment.board"]
+        let outcome = staticTexts["experiment.outcome"]
+        var exchanged = 0, showers = 0
+        func settled() {
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+                outcome.exists || (next.exists && next.isEnabled)
+            }, object: nil).wait(timeout: 5),
+            "Story did not settle after \(exchanged) exchanges and \(showers) showers; "
+                + "board=\(String(describing: board.value)), score=\(self.staticTexts["experiment.score"].label)")
+        }
+        for (wave, moves) in plan.waves.enumerated() {
+            settled()
+            XCTAssertFalse(outcome.exists, "The witness must reach its actual final action")
+            XCTAssertEqual(Int((board.value as? String ?? "").split(separator: " ").first ?? ""), wave)
+            for move in moves {
+                settled()
+                let source = buttons[move.sourceIdentifier], destination = buttons[move.destinationIdentifier]
+                XCTAssertTrue(source.exists && destination.exists && source.isEnabled)
+                XCTAssertEqual(source.value as? String, "Automatic pattern play",
+                               "A current story witness must not fall back to historical tap matching")
+                try exchange(source, destination, move.accessibilityAction)
+                exchanged += 1
+            }
+            settled()
+            if outcome.exists { break }
+            try shower()
+            showers += 1
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+                outcome.exists || Int((board.value as? String ?? "").split(separator: " ").first ?? "") == showers
+            }, object: nil).wait(timeout: 5), "The explicit shower must commit exactly once")
+        }
+        XCTAssertTrue(outcome.waitForExistence(timeout: 5))
+        XCTAssertEqual(exchanged, plan.expectedExchanges)
+        XCTAssertEqual(showers, plan.expectedShowers)
+        let score = "\(plan.expectedScore.formatted()) of \(plan.target.formatted()) starlight collected"
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label CONTAINS %@", score),
+                                                object: staticTexts["experiment.score"]).wait(timeout: 5),
+                      "The terminal score must match the production-rule witness exactly")
+    }
+
     /// Observe the app's initial scroll position without correcting it for the test.
     @MainActor func waitForVisibleWorldMapMarker(_ marker: XCUIElement, file: StaticString = #filePath, line: UInt = #line) {
         let canvas = scrollViews["world.canvas"]
