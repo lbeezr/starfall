@@ -24,6 +24,7 @@ on:
       - 'scripts/rc-platforms.py'
       - 'scripts/test_rc_platforms.py'
       - 'scripts/simulator-command.py'
+      - 'scripts/owned_process.py'
       - 'scripts/simulator-lifecycle.sh'
       - 'scripts/test_simulator_lifecycle.py'
       - 'scripts/export_native_evidence.py'

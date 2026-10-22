@@ -1,5 +1,7 @@
 # Evidence index
 
+[RC process ownership](rc-process-ownership-2026-10-22/README.md) records the active worker's late-write reproduction, shared bounded process-group runner and 30 passing tooling regressions. Native inventory smoke evidence is kept separate from simulated Apple commands and outstanding RC/device acceptance.
+
 [Current Story regression repair](story-regression-2026-10-22/README.md) records reproduced stale strategies, shared production-rule witnesses, five passing iPhone checks and 75 hosted plus three iPad checks. The actual-VoiceOver navigation failure is preserved with its separate open follow-up; this is development acceptance, not RC acceptance.
 
 [Device readiness and observation preparation](device-readiness-2026-10-22/README.md) records installed runtimes/tooling, unprobed physical-phone reachability, missing iPad/minimum-OS resources and bounded performance/readability scenarios. It supplies no physical acceptance. The [current Story packet](../design/CURRENT_STORY_PLAYTEST.md) preserves an uncoached baseline with no participant results.

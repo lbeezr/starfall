@@ -8,10 +8,66 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
+
+from owned_process import run_owned
 
 SCRIPTS = Path(__file__).resolve().parent
 spec = importlib.util.spec_from_file_location('simulator_command', SCRIPTS / 'simulator-command.py')
 stage = importlib.util.module_from_spec(spec); spec.loader.exec_module(stage)
+
+
+class OwnedProcessTests(unittest.TestCase):
+    def test_output_and_nonzero_errors_preserve_subprocess_contract(self):
+        command = [sys.executable, '-c', 'import sys; print("output",flush=True); print("error",file=sys.stderr,flush=True); raise SystemExit(7)']
+        result = run_owned(command, timeout=5, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        self.assertEqual((result.args, result.returncode, result.stdout, result.stderr),
+                         (command, 7, b'output\n', b'error\n'))
+        with self.assertRaises(subprocess.CalledProcessError) as caught:
+            run_owned(command, timeout=5, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True)
+        self.assertEqual((caught.exception.returncode, caught.exception.output, caught.exception.stderr),
+                         (7, b'output\n', b'error\n'))
+
+    def test_timeout_preserves_partial_output_and_reaps_direct_child(self):
+        with tempfile.TemporaryDirectory() as directory:
+            pid_file = Path(directory) / 'child.pid'
+            command = [sys.executable, '-c', 'import os,sys,time; from pathlib import Path; Path(' + repr(str(pid_file)) + ').write_text(str(os.getpid())); print("partial",flush=True); print("partial error",file=sys.stderr,flush=True); time.sleep(30)']
+            with self.assertRaises(subprocess.TimeoutExpired) as caught:
+                run_owned(command, timeout=1, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            self.assertEqual(caught.exception.cmd, command)
+            self.assertEqual(caught.exception.output, b'partial\n')
+            self.assertEqual(caught.exception.stderr, b'partial error\n')
+            with self.assertRaises(ChildProcessError):
+                os.waitpid(int(pid_file.read_text()), os.WNOHANG)
+
+    def test_interruption_preserves_exception_and_reaps_owned_child(self):
+        with tempfile.TemporaryDirectory() as directory:
+            ready = Path(directory) / 'ready'
+            command = [sys.executable, '-c', 'import time; from pathlib import Path; Path(' + repr(str(ready)) + ').write_text("ready"); time.sleep(30)']
+            original_popen = subprocess.Popen
+            interruption = KeyboardInterrupt('fixture interruption')
+            children = []
+            def popen(*args, **kwargs):
+                child = original_popen(*args, **kwargs)
+                children.append(child)
+                communicate = child.communicate
+                def interrupt_once(*arguments, **options):
+                    import time
+                    deadline = time.monotonic() + 5
+                    while not ready.exists() and time.monotonic() < deadline:
+                        time.sleep(0.01)
+                    self.assertTrue(ready.exists(), 'The real child must start before cancellation')
+                    child.communicate = communicate
+                    raise interruption
+                child.communicate = interrupt_once
+                return child
+            with patch('owned_process.subprocess.Popen', side_effect=popen):
+                with self.assertRaises(KeyboardInterrupt) as caught:
+                    run_owned(command, timeout=10)
+            self.assertIs(caught.exception, interruption)
+            self.assertIsNotNone(children[0].returncode)
+            with self.assertRaises(ChildProcessError):
+                os.waitpid(children[0].pid, os.WNOHANG)
 
 
 class SimulatorCommandTests(unittest.TestCase):
@@ -71,7 +127,7 @@ class SimulatorOwnershipTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             (root / 'scripts').mkdir(); (root / 'artifacts').mkdir()
-            for name in ['simulator-command.py', 'simulator-lifecycle.sh']:
+            for name in ['simulator-command.py', 'simulator-lifecycle.sh', 'owned_process.py']:
                 shutil.copyfile(SCRIPTS / name, root / 'scripts' / name)
             fake = root / 'xcrun'
             fake.write_text('#!' + sys.executable + '\n' + '''import json, os, sys

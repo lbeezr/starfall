@@ -2,12 +2,12 @@
 import argparse
 import datetime
 import json
-import os
-import signal
 from pathlib import Path
 import subprocess
 import sys
 import time
+
+from owned_process import run_owned
 
 
 def execute(label, limit, command, receipt):
@@ -19,18 +19,8 @@ def execute(label, limit, command, receipt):
     error = None
     print(f'START simulator stage {label}; timeout={limit}s', file=sys.stderr, flush=True)
     try:
-        # simctl/xcrun may spawn helpers. A timeout owns the entire inherited
-        # process group, not only the wrapper whose PID we can directly wait for.
-        with subprocess.Popen(command, start_new_session=True) as process:
-            try:
-                status = process.wait(timeout=limit)
-            except subprocess.TimeoutExpired:
-                try:
-                    os.killpg(process.pid, signal.SIGKILL)
-                except ProcessLookupError:
-                    pass  # The group completed between timeout and cancellation.
-                process.wait()
-                raise
+        # The shared runner stops inherited helpers before returning failure.
+        status = run_owned(command, timeout=limit).returncode
         if status < 0:
             status = 128 - status
     except subprocess.TimeoutExpired as failure:
