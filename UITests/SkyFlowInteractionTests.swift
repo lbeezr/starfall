@@ -89,30 +89,23 @@ final class SkyFlowInteractionTests: XCTestCase {
         XCTAssertFalse(app.buttons["experiment.cell.0.0"].exists)
         captureEntry(app, "flow-another-entry")
     }
-    @MainActor func testFirstLightWinReplayAndFullSky() {
-        // The longer authored opening needs about 105 actions; then replay to overflow.
-        // Both rounds remain bounded and must reach their original terminal outcomes.
+    @MainActor func testCurrentRibbonWinReplayAndFullSky() {
+        // Current Ribbon needs 118 deliberate exchanges and 32 showers to win.
+        // Replay the same revision without arranging to retain the overflow boundary.
         executionTimeAllowance = 600
         requireNormalMotion()
-        let app = launch(); defer { app.terminate() }
-        app.worldVisitControl("firstLight").tap(); tap("sky.begin", app); pause(app)
+        let app = launch(review: ["--dialogue-review", "--world-legacy-review"]); defer { app.terminate() }
+        app.worldVisitControl("ribbonCrossing").tap(); tap("sky.begin", app); pause(app)
         let next = app.buttons["experiment.next"], outcome = app.staticTexts["experiment.outcome"]
-        for _ in 0..<160 {
-            if outcome.exists { break }
-            let legal = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND value MATCHES %@ AND enabled == true", "experiment.cell.", "([3-9]|[1-9][0-9]) toward a tap match(; [0-9,]+ starlight if cleared)?")).firstMatch
-            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in outcome.exists || next.isEnabled }, object: nil).wait(timeout: 5),
-                          "Paused round did not settle: state=\(app.state.rawValue), board=\(String(describing: app.otherElements["experiment.board"].value)), score=\(app.staticTexts["experiment.score"].label), outcome=\(outcome.exists), nextExists=\(next.exists), nextEnabled=\(next.isEnabled)")
-            if outcome.exists { break }
-            if legal.exists { legal.tap() } else { tap("experiment.next", app) }
-        }
-        XCTAssertEqual(outcome.label, "Lantern Landing restored!")
+        app.completeStoryPattern(.ribbon)
+        XCTAssertEqual(outcome.label, "Ribbon Crossing restored!")
         XCTAssertFalse(app.buttons["experiment.cell.0.0"].exists)
         XCTAssertTrue(app.buttons["experiment.replay"].isHittable, "Result actions remain usable during the celebration")
         capture(app, "flow-win")
         tap("experiment.replay", app)
-        XCTAssertEqual(app.staticTexts["sky.title"].label, "Lantern Landing")
-        XCTAssertTrue(app.staticTexts["sky.subtitle"].label.contains("same First Light opening"))
-        captureEntry(app, "flow-first-light-replay-explanation")
+        XCTAssertEqual(app.staticTexts["sky.title"].label, "Ribbon Crossing")
+        XCTAssertTrue(app.staticTexts["sky.subtitle"].label.contains("same Ribbon Crossing opening"))
+        captureEntry(app, "flow-ribbon-replay-explanation")
         tap("sky.begin", app); pause(app)
         for _ in 0..<40 {
             if outcome.exists { break }
@@ -123,10 +116,10 @@ final class SkyFlowInteractionTests: XCTestCase {
         XCTAssertTrue(outcome.waitForExistence(timeout: 5))
         XCTAssertEqual(outcome.label, "No room to land")
         XCTAssertTrue(app.staticTexts["experiment.score"].label.contains("had no room for the next star"))
-        XCTAssertEqual(app.buttons["experiment.replay"].label, "Replay First Light")
-        XCTAssertTrue(app.staticTexts["experiment.score"].label.contains("of \(150_000.formatted(.number.grouping(.automatic)))"))
+        XCTAssertEqual(app.buttons["experiment.replay"].label, "Replay Ribbon Crossing")
+        XCTAssertTrue(app.staticTexts["experiment.score"].label.contains("of \(220_000.formatted(.number.grouping(.automatic)))"))
         capture(app, "flow-full")
-        app.terminate(); app.launchArguments = ["--sky-flow-review"]; app.launch()
+        app.terminate(); app.launchArguments = ["--sky-flow-review", "--dialogue-review"]; app.launch()
         tap("sky.resume", app)
         XCTAssertTrue(outcome.waitForExistence(timeout: 5))
         XCTAssertEqual(outcome.label, "No room to land")

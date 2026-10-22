@@ -220,14 +220,7 @@ final class FallingSkyInteractionTests: XCTestCase {
         startFirstLight(app)
         let next = app.buttons["experiment.next"]
         let outcome = app.staticTexts["experiment.outcome"]
-        for _ in 0..<160 {
-            if outcome.exists { break }
-            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in outcome.exists || next.isEnabled }, object: nil).wait(timeout: 5))
-            if outcome.exists { break }
-            let legal = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND value MATCHES %@ AND enabled == true", "experiment.cell.", "([3-9]|[1-9][0-9]) toward a tap match(; [0-9,]+ starlight if cleared)?")).firstMatch
-            if legal.exists { legal.tap() }
-            else { reveal(next, in: app); next.tap() }
-        }
+        app.completeStoryPattern(.lantern)
         XCTAssertEqual(outcome.label, "Lantern Landing restored!")
         XCTAssertFalse(next.exists)
         XCTAssertTrue(app.buttons["experiment.replay"].isHittable)

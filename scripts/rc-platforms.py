@@ -12,7 +12,7 @@ from native_test_plan import TABLET_ONLY
 TESTS = {
     'minimum-ios': [
         'StarfallUITests/SkyFlowInteractionTests/testWelcomeEntryBackgroundAndAnotherSky',
-        'StarfallUITests/SkyFlowInteractionTests/testFirstLightWinReplayAndFullSky',
+        'StarfallUITests/SkyFlowInteractionTests/testCurrentRibbonWinReplayAndFullSky',
         'StarfallUITests/FallingSkyInteractionTests/testSystemReduceMotionKeepsManualPlayWorking'],
     'tablet': [*TABLET_ONLY.values(),
         'StarfallUITests/SkyFlowInteractionTests/testLargestTextWelcomeEntryAndBackRemainReachable',

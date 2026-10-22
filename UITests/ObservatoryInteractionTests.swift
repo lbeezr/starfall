@@ -318,25 +318,11 @@ extension ObservatoryInteractionTests {
         try vo.choose(app.buttons["experiment.pause"], expecting: "Pause sky")
         XCTAssertTrue(app.buttons["experiment.next"].waitForExistence(timeout: 5))
         let outcome = app.staticTexts["experiment.outcome"]
-        for _ in 0..<160 {
-            if outcome.exists { break }
-            let next = app.buttons["experiment.next"]
-            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: next).wait(timeout: 5))
-            let legal = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND value MATCHES %@ AND enabled == true", "experiment.cell.", "([3-9]|[1-9][0-9]) toward a tap match(; [0-9,]+ starlight if cleared)?")).firstMatch
-            if legal.exists {
-                let score = app.staticTexts["experiment.score"].label
-                try vo.choose(legal, expecting: legal.label)
-                XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
-                    app.staticTexts["experiment.score"].label != score
-                }, object: nil).wait(timeout: 5))
-            } else {
-                let before = app.otherElements["experiment.board"].value as? String
-                try vo.choose(next, expecting: "Next shower")
-                XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
-                    app.otherElements["experiment.board"].value as? String != before
-                }, object: nil).wait(timeout: 5))
-            }
-        }
+        try app.completeStoryPattern(.lantern, exchange: { source, _, action in
+            try vo.performCustomAction(action, on: source)
+        }, shower: {
+            try vo.choose(app.buttons["experiment.next"], expecting: "Next shower")
+        })
         XCTAssertEqual(outcome.label, "Lantern Landing restored!")
         try vo.focus(outcome, expecting: "Lantern Landing restored!")
         let score = app.staticTexts["experiment.score"].label
@@ -456,6 +442,34 @@ final class ObservatoryReviewSetupTests: XCTestCase {
     func choose(_ element: XCUIElement, expecting text: String) throws {
         try focus(element, expecting: text)
         activate()
+    }
+
+    func performCustomAction(_ action: String, on element: XCUIElement) throws {
+        try focus(element, expecting: element.label)
+        // VoiceOver's Actions rotor handles one-finger vertical flicks. Require
+        // the spoken action before activation: an ordinary gameplay drag is not
+        // an accessible move and cannot satisfy this scenario.
+        for _ in 0..<5 {
+            let previousSpeech = try service.currentSpeech().utterance
+            app.swipeUp()
+            var speech = ""
+            let selected = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+                speech = (try? self.service.currentSpeech().utterance) ?? ""
+                return speech != previousSpeech
+                    && (speech.localizedCaseInsensitiveContains("Move star")
+                        || speech.localizedCaseInsensitiveContains("Activate"))
+            }, object: nil).wait(timeout: 5)
+            transcript.append("Action: " + speech)
+            guard selected else {
+                XCTFail("VoiceOver did not speak the selected action: \(speech)")
+                return
+            }
+            if speech.localizedCaseInsensitiveContains(action) {
+                activate()
+                return
+            }
+        }
+        XCTFail("VoiceOver did not select custom action \(action): \(transcript.suffix(5))")
     }
 }
 #endif
