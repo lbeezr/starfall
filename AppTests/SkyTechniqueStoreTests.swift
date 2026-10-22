@@ -782,6 +782,103 @@ final class SkyTutorialPresentationTests: XCTestCase {
 }
 
 extension SkyTechniqueStoreTests {
+    @MainActor func testUnchangedExchangeExplainsGravityWithoutChangingStateClockOrSave() throws {
+        var survival = FallingSky.freshSurvival(seed: 5)
+        XCTAssertNotNil(survival.letStarsFall())
+        var games = [("Open Sky after first shower", survival)]
+        for challenge in [StarfallChallenge.firstLight, .ribbonCrossing] {
+            for revision in 1...3 {
+                games.append(("\(challenge.rawValue) revision \(revision)",
+                              FallingSky(definition: try XCTUnwrap(StoryChallengeDefinition(challenge, revision: revision)))))
+            }
+        }
+        for (mode, game) in games {
+            let suite = "Starfall.SettledExchange.\(UUID())"
+            let defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
+            defer { defaults.removePersistentDomain(forName: suite) }
+            defaults.set(try SkySaveArchive.encode(game), forKey: SkySaveArchive.key)
+            let presenter = FallingSkyRecorder(), clock = ManualRainClock(), feedback = SkyFeedbackRecorder()
+            let store = FallingSkyStore(defaults: defaults, arguments: [], presenter: presenter,
+                                       clock: clock, feedback: feedback)
+            store.setSuspended(false)
+            if store.isPaused { store.togglePause() }
+            let before = store.game
+            let source = try XCTUnwrap((0..<7).flatMap { column in (0..<6).map { Cell($0, column) } }.first { cell in
+                let above = Cell(cell.row + 1, cell.column)
+                guard before.gem(at: cell) != nil, before.gem(at: above) == nil else { return false }
+                var preview = before
+                return preview.nudge(from: cell, to: above) != nil && preview.board == before.board
+            }, "Expected an upward exchange that settles to the same board in \(mode)")
+            let destination = Cell(source.row + 1, source.column)
+            var expected = before
+            XCTAssertNotNil(expected.nudge(from: source, to: destination), mode)
+            XCTAssertEqual(expected.board, before.board, mode)
+            XCTAssertEqual(expected.displayScore, before.displayScore, mode)
+            XCTAssertEqual(expected.turns, before.turns, mode)
+            XCTAssertEqual(expected.incoming, before.incoming, mode)
+            let deadline = clock.deadline
+            let journey = store.journey.journey
+            XCTAssertTrue(store.requestInput(.swap(source, destination), snapshot: before,
+                                             generation: store.constellationInputGeneration))
+            XCTAssertTrue(store.busy, "An accepted exchange still presents its complete up-and-fall motion")
+            XCTAssertEqual(presenter.completions.count, 1)
+            XCTAssertEqual(store.game, expected, mode)
+            XCTAssertEqual(defaults.data(forKey: SkySaveArchive.key), try SkySaveArchive.encode(expected), mode)
+            XCTAssertEqual(store.journey.journey, journey)
+            XCTAssertEqual(clock.deadline, deadline)
+            XCTAssertEqual(store.guideLine.id, "guide.technique.1")
+            XCTAssertEqual(store.guideLine.text, "Gravity brought the star back. Try another direction.")
+            XCTAssertEqual(feedback.announcements.last, store.guideLine.spokenText)
+            let announcements = feedback.announcements
+            presenter.finish()
+            XCTAssertFalse(store.busy)
+            XCTAssertEqual(store.game, expected, mode)
+            XCTAssertEqual(clock.deadline, deadline)
+            XCTAssertEqual(feedback.announcements, announcements, "Settlement cannot repeat or replace the committed result")
+            XCTAssertEqual(store.guideLine.text, "Gravity brought the star back. Try another direction.")
+            store.setSuspended(true)
+        }
+    }
+
+    @MainActor func testChangedExchangeKeepsArrangementFeedbackAndScoringSwapKeepsChainResult() throws {
+        for challenge in [StarfallChallenge.firstLight, .ribbonCrossing] {
+            let suite = "Starfall.ChangedExchange.\(UUID())"
+            let defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
+            defer { defaults.removePersistentDomain(forName: suite) }
+            defaults.set(try SkySaveArchive.encode(FallingSky.freshChallenge(challenge)), forKey: SkySaveArchive.key)
+            let presenter = FallingSkyRecorder(), feedback = SkyFeedbackRecorder()
+            let store = FallingSkyStore(defaults: defaults, arguments: [], presenter: presenter,
+                                       clock: ManualRainClock(), feedback: feedback)
+            store.setSuspended(false)
+            let opening = store.game
+            let from = Cell(3, 0), to = Cell(3, 1)
+            var expected = opening
+            let setup = try XCTUnwrap(expected.nudge(from: from, to: to))
+            XCTAssertNotEqual(expected.board, opening.board)
+            XCTAssertEqual(setup.displayAward, 0)
+            XCTAssertTrue(store.requestInput(.swap(from, to), snapshot: opening,
+                                             generation: store.constellationInputGeneration))
+            XCTAssertEqual(store.game, expected)
+            XCTAssertEqual(store.guideLine.text, "Star moved. What can you line up?")
+            presenter.finish()
+            XCTAssertEqual(store.guideLine.text, "Star moved. What can you line up?")
+            XCTAssertTrue(store.requestInput(.swap(to, from), snapshot: expected,
+                                             generation: store.constellationInputGeneration))
+            presenter.finish()
+            XCTAssertEqual(store.game, opening)
+            XCTAssertTrue(store.requestInput(.swap(Cell(1, 1), Cell(1, 2)), snapshot: opening,
+                                             generation: store.constellationInputGeneration))
+            XCTAssertGreaterThan(store.game.displayScore, 0)
+            XCTAssertEqual(store.guideLine.id, "guide.cascade.1")
+            XCTAssertTrue(store.guideLine.text.contains(store.game.displayScore.formatted()))
+            XCTAssertFalse(store.guideLine.text.contains("Gravity brought"))
+            XCTAssertEqual(SkySaveArchive.load(from: defaults), store.game)
+            presenter.finish()
+            XCTAssertEqual(store.guideLine.id, "guide.cascade.1")
+            store.setSuspended(true)
+        }
+    }
+
     @MainActor func testUpwardEmptyExchangeAnimatesEvenWhenGravityReturnsToOrigin() async throws {
         XCTAssertFalse(UIAccessibility.isReduceMotionEnabled)
         let view = SKView(frame:.init(x:0,y:0,width:390,height:844))

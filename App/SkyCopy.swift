@@ -394,6 +394,7 @@ enum SkyCopy {
         case techniqueMoveDown = "technique.moveDown"
         case techniqueRecipeTitle = "technique.recipeTitle"
         case techniqueMoved = "technique.moved"
+        case techniqueSettledBack = "technique.settledBack"
         case techniqueRelay = "technique.relay"
         case techniqueSupport = "technique.support"
         case celebrationBrilliant = "celebration.brilliant"

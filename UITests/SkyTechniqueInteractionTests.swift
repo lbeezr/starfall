@@ -143,6 +143,44 @@ extension SkyTechniqueInteractionTests {
 }
 
 extension SkyTechniqueInteractionTests {
+    @MainActor func testUpwardFallBackExplainsGravityAndAllowsNextMove() {
+        verifyUpwardFallBack(large: false)
+    }
+
+    @MainActor func testLargestTextUpwardFallBackKeepsFeedbackReadable() {
+        verifyUpwardFallBack(large: true)
+    }
+
+    @MainActor private func verifyUpwardFallBack(large: Bool) {
+        let app = launch("trace", large: large); defer { app.terminate() }
+        let origin = app.buttons["experiment.cell.0.0"]
+        let originalLabel = origin.label
+        app.revealSkyControls([origin, app.buttons["experiment.cell.1.0"]])
+        drag(app, from: (0, 0), to: (1, 0), hold: 0)
+        let message = app.staticTexts["experiment.message"]
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@",
+            "Pip. Gravity brought the star back. Try another direction."), object: message).wait(timeout: 5))
+        app.revealSkyControls([message])
+        XCTAssertTrue(message.isHittable)
+        XCTAssertTrue(app.frame.contains(message.frame), "Read the complete explanation inside the viewport")
+        XCTAssertEqual(origin.label, originalLabel)
+        XCTAssertTrue(app.buttons["experiment.cell.1.0"].label.hasPrefix("Empty"))
+        score(0, app)
+        capture(app, large ? "gravity-fall-back-largest-text" : "gravity-fall-back")
+
+        // A different direction changes the settled arrangement and retains its own feedback.
+        app.revealSkyControls([app.buttons["experiment.cell.0.5"], app.buttons["experiment.cell.0.6"]])
+        drag(app, from: (0, 5), to: (0, 6), hold: 0)
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label CONTAINS %@",
+            "Star moved"), object: message).wait(timeout: 5))
+        XCTAssertTrue(app.buttons["experiment.cell.0.5"].label.hasPrefix("Empty"))
+        XCTAssertTrue(app.buttons["experiment.cell.0.6"].label.contains("Aqua"))
+        score(0, app)
+        app.revealSkyControls([origin, app.buttons["experiment.cell.0.4"]])
+        drag(app, from: (0, 0), to: (0, 4), draw: true)
+        score(5, app)
+    }
+
     @MainActor func testFourDirectionSwapsAndHeldDestinationNeverDrawOrRepeat() {
         let app = launch("nudge"); defer { app.terminate() }
         for (from,to,name) in [((1,2),(1,1),"Aqua"),((1,1),(1,2),"Aqua"),

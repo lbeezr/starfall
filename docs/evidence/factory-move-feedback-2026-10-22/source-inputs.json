@@ -1,0 +1,11 @@
+{
+  "base": "f07091c13069f3699cb7b65b8c81a32b4ecb05a8",
+  "inputs": {
+    "App/FallingSkyStore.swift": "57df5dd3f848c2e71a1a5e200965d9fcc8275d9e4887ffc45399c0a662281706",
+    "App/SkyCopy.swift": "51ddf52f4da0117632696ba45e6bd5b292c2ab20f852370032f1d23947634167",
+    "App/DialogueScripts/observatory-dialogue.json": "22a8d98343daa2c940f9fe244e38ef38c4d26fd358309397ff21b5b532e53eda",
+    "AppTests/SkyTechniqueStoreTests.swift": "07e9172f98baa6f0aa5cb2b430ebd94850d1c7b411b87a7e86e658104ec5eae6",
+    "UITests/SkyTechniqueInteractionTests.swift": "be49e8aa6c4f4d5da19b499b2121d031a14b9743ad69485addb53625e875b715"
+  },
+  "snapshot": "be34749f3481"
+}
