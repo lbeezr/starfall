@@ -267,6 +267,151 @@ final class WorldJourneyInteractionTests: XCTestCase {
         XCTAssertTrue(app.buttons["experiment.next"].exists, "The map keeps the retained round paused")
     }
 
+    /// Read the actual scroll surface, including the end of an introduction
+    /// taller than a largest-text phone viewport. A complete AX label is not
+    /// sufficient evidence that its final line can be brought on screen.
+    @MainActor private func readTutorialScope(_ app: XCUIApplication, captureName: String) {
+        let intro = app.staticTexts["tutorial.intro"]
+        XCTAssertTrue(intro.waitForExistence(timeout: 5))
+        XCTAssertTrue(intro.label.contains("Open Sky’s tap and trace controls"))
+        XCTAssertTrue(intro.label.contains("original 18-light restoration exercise"))
+        XCTAssertTrue(intro.label.contains("New Lantern Landing and Ribbon Crossing visits use swaps and automatic patterns"))
+        XCTAssertTrue(intro.label.contains("Your saved sky and world stay unchanged."))
+        let owners = app.scrollViews.containing(.staticText, identifier: intro.identifier)
+        XCTAssertEqual(owners.count, 1)
+        let scroll = owners.element(boundBy: 0)
+        let viewport = app.frame.intersection(scroll.frame).insetBy(dx: 1, dy: 1)
+        XCTAssertGreaterThan(viewport.height, 0)
+        XCTAssertGreaterThanOrEqual(intro.frame.minY, viewport.minY - 1,
+                                   "The rule explanation begins before any chapter choice")
+        XCTAssertLessThan(intro.frame.minY, viewport.maxY)
+        capture(captureName + "-start", app)
+        for _ in 0..<8 where intro.frame.maxY > viewport.maxY {
+            let distance = min(viewport.height * 0.45, max(32, intro.frame.maxY - viewport.maxY + 16))
+            let start = app.coordinate(withNormalizedOffset: .zero).withOffset(CGVector(
+                dx: viewport.minX - app.frame.minX + viewport.width * 0.12,
+                dy: viewport.minY - app.frame.minY + viewport.height * 0.75))
+            start.press(forDuration: 0.05, thenDragTo: start.withOffset(CGVector(dx: 0, dy: -distance)),
+                        withVelocity: .slow, thenHoldForDuration: 0.1)
+        }
+        XCTAssertLessThanOrEqual(intro.frame.maxY, viewport.maxY + 1,
+                                 "The full explanation must be readable with bounded scrolling")
+        XCTAssertGreaterThan(intro.frame.maxY, viewport.minY,
+                             "The final line stays in the visible reading viewport")
+        XCTAssertTrue(intro.isHittable)
+        let done = app.buttons["tutorial.done"]
+        XCTAssertTrue(done.isHittable, "Reading never moves the pinned Done action away")
+        XCTAssertTrue(app.frame.contains(done.frame))
+        XCTAssertGreaterThanOrEqual(done.frame.height, 44)
+        capture(captureName + "-end", app)
+    }
+
+    /// One immutable native snapshot keeps this preservation check independent
+    /// of query latency. It reads UI labels/values, never the app's save data.
+    @MainActor private func visibleIdentities(_ root: XCUIElement, prefix: String) throws -> [String] {
+        var identities: [String] = []
+        func visit(_ element: any XCUIElementSnapshot) {
+            if element.elementType == .button && element.identifier.hasPrefix(prefix) {
+                identities.append("\(element.identifier):\(element.label):\(element.value as? String ?? ""):selected=\(element.isSelected)")
+            }
+            element.children.forEach(visit)
+        }
+        visit(try root.snapshot())
+        return identities.sorted()
+    }
+
+    @MainActor private func checkTutorialScopeFromHomeAndStory(largest: Bool) throws {
+        executionTimeAllowance = 240
+        XCUIDevice.shared.orientation = .portrait
+        let app = launch(large: largest)
+        defer { app.terminate(); XCUIDevice.shared.orientation = .portrait }
+        let variant = largest ? "largest" : "default"
+        tap("sky.learn", app)
+        readTutorialScope(app, captureName: "tutorial-scope-home-" + variant)
+        if !largest {
+            tap("tutorial.chapter.match", app)
+            XCTAssertTrue(app.staticTexts["tutorial.title"].waitForExistence(timeout: 5))
+            assertTutorialIndexCovered(app)
+            tap("experiment.cell.0.0", app)
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "Chapter complete"),
+                                                    object: app.staticTexts["tutorial.instruction"]).wait(timeout: 5))
+            tap("experiment.settings", app)
+        }
+        tap("tutorial.done", app)
+        XCTAssertTrue(app.buttons["sky.worldMap"].waitForExistence(timeout: 5))
+        XCTAssertFalse(app.buttons["sky.resume"].exists, "Practice cannot create a saved round")
+
+        let visit = app.worldVisitControl("firstLight")
+        let journey = try visibleIdentities(app, prefix: "world.place.")
+        XCTAssertEqual(journey.count, 12)
+        visit.tap(); tap("sky.begin", app)
+        tap("experiment.settings", app); tap("experiment.pause", app)
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"),
+                                                object: app.buttons["experiment.next"]).wait(timeout: 5))
+        if !largest {
+            drag(app, from: (1,1), to: (1,2), drawing: false)
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "15,000 of 150,000 starlight collected"),
+                                                    object: app.staticTexts["experiment.score"]).wait(timeout: 5))
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"),
+                                                    object: app.buttons["experiment.next"]).wait(timeout: 5))
+        }
+        let board = app.otherElements["experiment.board"]
+        let committed = board.value as? String
+        let score = app.staticTexts["experiment.score"].label
+        let cells = try visibleIdentities(board, prefix: "experiment.cell.")
+        XCTAssertNotNil(committed)
+        XCTAssertEqual(cells.count, 49)
+        tap("experiment.settings", app); tap("sky.learn", app)
+        readTutorialScope(app, captureName: "tutorial-scope-story-" + variant)
+        if !largest {
+            tap("tutorial.chapter.trace", app)
+            XCTAssertTrue(app.staticTexts["tutorial.title"].waitForExistence(timeout: 5))
+            assertTutorialIndexCovered(app)
+            drag(app, from: (0,0), to: (0,4), drawing: true)
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "Chapter complete"),
+                                                    object: app.staticTexts["tutorial.instruction"]).wait(timeout: 5))
+            XCTAssertTrue(app.buttons["experiment.cell.0.5"].label.contains("Aqua"),
+                          "The existing trace still clears exactly the selected five")
+            tap("experiment.settings", app)
+            tap("tutorial.chapter.restoration", app)
+            XCTAssertTrue(app.staticTexts["tutorial.title"].waitForExistence(timeout: 5))
+            XCTAssertEqual(app.staticTexts["experiment.score"].label, "0 of 18 starlight collected")
+            XCTAssertEqual(app.staticTexts["tutorial.instruction"].label, "Tap Next shower.")
+            tap("experiment.next", app)
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "value BEGINSWITH %@", "1 showers"),
+                                                    object: app.otherElements["experiment.board"]).wait(timeout: 5))
+            tap("experiment.settings", app)
+        }
+        tap("tutorial.done", app)
+        XCTAssertTrue(app.buttons["experiment.settings"].waitForExistence(timeout: 5))
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, score)
+        XCTAssertEqual(board.value as? String, committed)
+        XCTAssertEqual(try visibleIdentities(board, prefix: "experiment.cell."), cells)
+        XCTAssertTrue(app.buttons["experiment.next"].isEnabled, "Return preserves the paused round")
+        capture("tutorial-returned-current-story-" + variant, app)
+        tap("experiment.settings", app); tap("sky.worldMap", app)
+        XCTAssertTrue(app.otherElements["world.page"].waitForExistence(timeout: 5))
+        // Map/Places is normally retained by FallingSkyView. Normalize the
+        // visible surface before comparing content, including mandatory Places.
+        if app.buttons["world.list"].exists && app.buttons["world.list"].label == "Places" {
+            tap("world.list", app)
+        }
+        XCTAssertTrue(app.buttons["world.place.firstLight"].waitForExistence(timeout: 5))
+        XCTAssertEqual(try visibleIdentities(app, prefix: "world.place."), journey,
+                       "Practice preserves selected destination, repairs and access")
+        tap("world.done", app)
+        XCTAssertEqual(board.value as? String, committed)
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, score)
+    }
+
+    @MainActor func testTutorialScopeFromHomeAndStoryPreservesRound() throws {
+        try checkTutorialScopeFromHomeAndStory(largest: false)
+    }
+
+    @MainActor func testLargestTextTutorialScopeFromHomeAndStoryPreservesRound() throws {
+        try checkTutorialScopeFromHomeAndStory(largest: true)
+    }
+
     @MainActor func testTutorialRealTapSwapTraceRetryAndExitPreserveRound() {
         let app = launch(); defer { app.terminate() }
         tap("sky.start", app); tap("sky.begin", app)

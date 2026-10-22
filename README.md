@@ -1,6 +1,6 @@
 # Starfall
 
-**Truthful move feedback — October 22:** A swipe that rises and falls back now explains gravity; a changed arrangement retains its movement message. [Selected phone/tablet verification](docs/evidence/factory-move-feedback-2026-10-22/README.md) preserves full motion, next input, rules and saves. VoiceOver remains deferred.
+**Playable clarity — October 22:** A swipe that rises and falls back now [explains gravity](docs/evidence/factory-move-feedback-2026-10-22/README.md). The [Tutorial introduction](docs/evidence/factory-tutorial-scope-2026-10-22/README.md) distinguishes its Open Sky/original-restoration practice from new Lantern/Ribbon automatic patterns before chapter choice. Selected phone/tablet checks preserve next input, active rounds and world progress. VoiceOver remains deferred.
 
 **Story growth clarity — October 22:** Current Lantern/Ribbon guidance now explains that grown stars carry twice the starlight while occupying one place in an automatic pattern. The message allows player-paced reading. [Native evidence](docs/evidence/factory-gameplay-2026-10-22/README.md) records phone/tablet default and largest-text checks, retained-rule coverage and a separately reproduced baseline restore-guide failure.
 
