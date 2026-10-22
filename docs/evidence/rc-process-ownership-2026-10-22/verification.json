@@ -1,0 +1,53 @@
+{
+  "base": "7f3a8b62975b2ef3314f3badea2308613f2208e2",
+  "inputs": {
+    "scripts/owned_process.py": "ee6c1cf592f047793d6b94e2549f9cb731ddc77b01160a48fa707aada57cf762",
+    "scripts/simulator-command.py": "d988b29d69552847999133477a671831b996efc704e9df6bbde560fb845b45aa",
+    "scripts/rc-platforms.py": "ccb1af29996dcb9db11ee575ae64ba2b4d0dfc7dc5b0ad62951c7eb2fb26ce9e",
+    "scripts/test_simulator_lifecycle.py": "3070f7adcbb57af5538d6ebd8bb4ec26c4710517c76e7a5662ccc6a0fad71fb2",
+    "scripts/test_rc_platforms.py": "cc6604fa6ca9c3daa7e655a4023bc65d2425aed178e9a9c2d7b7e8d85728f3e1",
+    "scripts/README.md": "c532c38387559ce20726ab96603aae1541e23f8743aec53f2895781e1d9d9839",
+    ".github/workflows/starfall-simulator.yml": "68cb184b0eed40cc722e4b450a09dce9bcd2da69a43e2b6ca1e88b4ba0bb9739"
+  },
+  "checks": [
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python3 scripts/test_rc_platforms.py",
+      "passed": 14,
+      "failed": 0
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python3 scripts/test_simulator_lifecycle.py",
+      "passed": 13,
+      "failed": 0
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python3 scripts/test_native_test_plan.py",
+      "passed": 3,
+      "failed": 0
+    }
+  ],
+  "nativeSmokeReceipts": [
+    {
+      "stage": "inventory",
+      "startedUTC": "2026-10-22T15:53:06.735912+00:00",
+      "elapsedSeconds": 0.357,
+      "limitSeconds": 30.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "release-owned-ipad",
+      "startedUTC": "2026-10-22T15:53:09.145111+00:00",
+      "elapsedSeconds": 0.132,
+      "limitSeconds": 30.0,
+      "exitCode": 149,
+      "error": null
+    }
+  ],
+  "limits": [
+    "Real Python cancellation, simulated Apple operations",
+    "Actual Apple inventory only; not RC native or device acceptance",
+    "Updater unchanged"
+  ],
+  "rawEvidenceRoot": "/private/tmp/starfall-factory-215"
+}

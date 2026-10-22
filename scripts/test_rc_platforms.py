@@ -111,6 +111,8 @@ class RCExecutionTests(unittest.TestCase):
                 kwargs['stdout'].write('x' * (rc.MAX_LOG_BYTES + 100))
                 if test_error: raise test_error
                 return subprocess.CompletedProcess(command, returncode)
+            if 'xcresulttool' in command:
+                return subprocess.CompletedProcess(command, 0, stdout=export())
             if 'shutdown' in command and cleanup_error: raise cleanup_error
             return subprocess.CompletedProcess(command, 0)
 
@@ -119,7 +121,7 @@ class RCExecutionTests(unittest.TestCase):
             count = len(TABLET_TESTS)
             return json.dumps(summary if summary is not None else dict(passedTests=count, totalTestCount=count, failedTests=0, skippedTests=0)).encode()
 
-        with patch.object(rc.subprocess, 'run', side_effect=run), patch.object(rc.subprocess, 'check_output', side_effect=export):
+        with patch.object(rc, 'run_owned', side_effect=run):
             error = None
             try: rc.run(selection, artifacts, temporary)
             except Exception as caught: error = caught
@@ -129,6 +131,63 @@ class RCExecutionTests(unittest.TestCase):
     def setUp(self):
         self.directory = tempfile.TemporaryDirectory()
         self.addCleanup(self.directory.cleanup)
+
+    def test_real_test_timeout_stops_descendant_log_writes_before_failure_retention(self):
+        import os
+        import sys
+        import time
+        from owned_process import run_owned
+        root = Path(self.directory.name)
+        artifacts = root / 'artifacts'; artifacts.mkdir()
+        temporary = root / 'temporary'; temporary.mkdir()
+        result = temporary / 'tablet.xcresult'
+        ready = root / 'descendant-ready'
+        late = root / 'late-output'
+        pid_file = root / 'test.pid'
+        child = 'import time; from pathlib import Path; Path(' + repr(str(ready)) + ').write_text("ready"); time.sleep(2); Path(' + repr(str(late)) + ').write_text("late"); print("late log output",flush=True)'
+        parent = 'import os,subprocess,sys,time; from pathlib import Path; Path(' + repr(str(pid_file)) + ').write_text(str(os.getpid())); p=Path(' + repr(str(result)) + '); p.mkdir(); (p/"partial").write_text("committed failure evidence"); subprocess.Popen([sys.executable,"-c",' + repr(child) + ']); time.sleep(30)'
+        command = [sys.executable, '-c', parent]
+        selection = dict(role='tablet', udid='fixture-only', state='Shutdown', tests=rc.TESTS['tablet'])
+        calls = []
+        def execute(selected, **kwargs):
+            calls.append(selected)
+            if selected == command:
+                return run_owned(selected, **{**kwargs, 'timeout': 1})
+            self.assertEqual(selected[0], 'xcrun')
+            if 'shutdown' in selected:
+                raise RuntimeError('fixture shutdown failure')
+            if 'xcresulttool' in selected:
+                return subprocess.CompletedProcess(selected, 0, stdout=b'{}')
+            return subprocess.CompletedProcess(selected, 0)
+        with patch.object(rc, 'test_command', return_value=command), patch.object(rc, 'run_owned', side_effect=execute):
+            with self.assertRaises(subprocess.TimeoutExpired):
+                rc.run(selection, artifacts, temporary)
+        self.assertTrue(ready.exists(), 'The real descendant must start before timeout')
+        with self.assertRaises(ChildProcessError):
+            os.waitpid(int(pid_file.read_text()), os.WNOHANG)
+        record = json.loads((artifacts / 'rc-tablet-execution.json').read_text())
+        self.assertEqual((record['status'], record['stage']), ('failed', 'tests'))
+        self.assertIn('timed out', record['primaryError'])
+        self.assertEqual(record['secondaryErrors'], ['shutdown: fixture shutdown failure'])
+        retained = artifacts / 'rc-tablet-failure.xcresult' / 'partial'
+        self.assertEqual(retained.read_text(), 'committed failure evidence')
+        log = artifacts / 'rc-tablet.log'
+        returned_log = log.read_bytes()
+        # This deliberate delayed sentinel detects escaped helpers after finalization.
+        time.sleep(2.2)
+        self.assertFalse(late.exists(), 'A timed-out RC command must not keep writing after return')
+        self.assertEqual(log.read_bytes(), returned_log)
+        self.assertEqual(retained.read_text(), 'committed failure evidence')
+
+    def test_interruption_is_recorded_as_primary_even_when_cleanup_fails(self):
+        interruption = KeyboardInterrupt('fixture cancellation')
+        with self.assertRaises(KeyboardInterrupt) as caught:
+            self.execute(test_error=interruption, cleanup_error=RuntimeError('fixture shutdown failure'))
+        self.assertIs(caught.exception, interruption)
+        record = json.loads((Path(self.directory.name) / 'artifacts/rc-tablet-execution.json').read_text())
+        self.assertEqual((record['status'], record['stage']), ('failed', 'tests'))
+        self.assertEqual(record['primaryError'], 'fixture cancellation')
+        self.assertEqual(record['secondaryErrors'], ['shutdown: fixture shutdown failure'])
 
     def test_timeout_survives_shutdown_timeout_and_partial_bundle_survives_temporary_cleanup(self):
         timeout = subprocess.TimeoutExpired(['xcodebuild'], 900)
@@ -188,7 +247,7 @@ class RCExecutionTests(unittest.TestCase):
             visited.append(temporary)
             self.assertTrue(temporary.exists())
             raise error
-        with patch('sys.argv', ['rc-platforms.py']), patch.object(rc.subprocess, 'check_output', return_value=json.dumps(RCPlatformsTests().inventory()).encode()), patch.object(rc, 'run', side_effect=fail):
+        with patch('sys.argv', ['rc-platforms.py']), patch.object(rc, 'run_owned', return_value=subprocess.CompletedProcess(['inventory'], 0, stdout=json.dumps(RCPlatformsTests().inventory()).encode())), patch.object(rc, 'run', side_effect=fail):
             with self.assertRaises(subprocess.TimeoutExpired) as caught: rc.main()
         self.assertIs(caught.exception, error)
         self.assertEqual(json.loads(Path('artifacts/rc-platform-plan.json').read_text())['status'], 'failed')

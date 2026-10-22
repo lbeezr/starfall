@@ -8,6 +8,7 @@ import subprocess
 import tempfile
 
 from native_test_plan import TABLET_ONLY
+from owned_process import run_owned
 
 TESTS = {
     'minimum-ios': [
@@ -96,27 +97,29 @@ def run(selection, artifacts, temporary):
     stage = 'boot'
     try:
         if booted_here:
-            subprocess.run(['xcrun', 'simctl', 'boot', selection['udid']], check=True, timeout=60)
-        subprocess.run(['xcrun', 'simctl', 'bootstatus', selection['udid'], '-b'], check=True, timeout=180)
+            run_owned(['xcrun', 'simctl', 'boot', selection['udid']], check=True, timeout=60)
+        run_owned(['xcrun', 'simctl', 'bootstatus', selection['udid'], '-b'], check=True, timeout=180)
         stage = 'tests'
         with log.open('w') as output:
-            execution = subprocess.run(test_command(selection, temporary / 'derived', result), stdout=output,
-                                       stderr=subprocess.STDOUT, check=False, timeout=900)
+            execution = run_owned(test_command(selection, temporary / 'derived', result), stdout=output,
+                                  stderr=subprocess.STDOUT, check=False, timeout=900)
         if execution.returncode:
             raise subprocess.CalledProcessError(execution.returncode, execution.args)
         stage = 'summary'
-        summary = json.loads(subprocess.check_output(
-            ['xcrun', 'xcresulttool', 'get', 'test-results', 'summary', '--path', str(result), '--compact'], timeout=60))
+        summary = json.loads(run_owned(
+            ['xcrun', 'xcresulttool', 'get', 'test-results', 'summary', '--path', str(result), '--compact'],
+            stdout=subprocess.PIPE, check=True, timeout=60).stdout)
         summary_path.write_text(json.dumps(summary, indent=2) + '\n')
         verify_summary(summary, len(selection['tests']))
-    except Exception as error:
+    except BaseException as error:
         primary = error
     finally:
         # Partial bundles may still export a summary after xcodebuild fails/times out.
         if primary is not None and summary is None and result.exists() and stage != 'summary':
             try:
-                summary = json.loads(subprocess.check_output(
-                    ['xcrun', 'xcresulttool', 'get', 'test-results', 'summary', '--path', str(result), '--compact'], timeout=60))
+                summary = json.loads(run_owned(
+                    ['xcrun', 'xcresulttool', 'get', 'test-results', 'summary', '--path', str(result), '--compact'],
+                    stdout=subprocess.PIPE, check=True, timeout=60).stdout)
                 summary_path.write_text(json.dumps(summary, indent=2) + '\n')
             except Exception as error:
                 secondary.append('partial summary: ' + str(error))
@@ -136,7 +139,7 @@ def run(selection, artifacts, temporary):
             secondary.append('log retention: ' + str(error))
         if booted_here:
             try:
-                subprocess.run(['xcrun', 'simctl', 'shutdown', selection['udid']], timeout=30, check=True)
+                run_owned(['xcrun', 'simctl', 'shutdown', selection['udid']], timeout=30, check=True)
             except Exception as error:
                 secondary.append('shutdown: ' + str(error))
                 if primary is None:
@@ -160,7 +163,8 @@ def main():
     parser.add_argument('--plan-only', action='store_true')
     args = parser.parse_args()
     artifacts = Path('artifacts'); artifacts.mkdir(exist_ok=True)
-    inventory = json.loads(subprocess.check_output(['xcrun', 'simctl', 'list', 'devices', 'available', '--json'], timeout=30))
+    inventory = json.loads(run_owned(['xcrun', 'simctl', 'list', 'devices', 'available', '--json'],
+                                    stdout=subprocess.PIPE, check=True, timeout=30).stdout)
     try:
         selections = select_platforms(inventory)
     except ValueError as error:
@@ -173,7 +177,7 @@ def main():
             with tempfile.TemporaryDirectory(prefix='starfall-rc-platforms-') as directory:
                 for selection in selections:
                     records.append(run(selection, artifacts, Path(directory)))
-        except Exception as error:
+        except BaseException as error:
             try:
                 (artifacts / 'rc-platform-plan.json').write_text(json.dumps(
                     {'status': 'failed', 'selections': selections, 'completed': records, 'error': str(error)}, indent=2) + '\n')
