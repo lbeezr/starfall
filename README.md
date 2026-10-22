@@ -2,6 +2,8 @@
 
 **Playable clarity — October 22:** A swipe that rises and falls back now [explains gravity](docs/evidence/factory-move-feedback-2026-10-22/README.md). The [Tutorial introduction](docs/evidence/factory-tutorial-scope-2026-10-22/README.md) distinguishes its Open Sky/original-restoration practice from new Lantern/Ribbon automatic patterns before chapter choice. Selected phone/tablet checks preserve next input, active rounds and world progress. VoiceOver remains deferred.
 
+The [storm practice instruction](docs/evidence/storm-practice-guidance-2026-10-22/README.md) now teaches its actual five-star Next shower action without asking players to read hidden landing columns. Its native journey preserves the retained Story round and world state.
+
 **Story growth clarity — October 22:** Current Lantern/Ribbon guidance now explains that grown stars carry twice the starlight while occupying one place in an automatic pattern. The message allows player-paced reading. [Native evidence](docs/evidence/factory-gameplay-2026-10-22/README.md) records phone/tablet default and largest-text checks, retained-rule coverage and a separately reproduced baseline restore-guide failure.
 
 **Lantern/Ribbon revision 3 — development verified and delivered:** New visits use automatic patterns only: four-star squares, five-star crosses and full seven-star rows/columns. Taps and traces no longer activate clears. Half-full entrances, causal chains and **150,000/220,000** objectives remain. [Current evidence and limits](docs/evidence/story-patterns-2026-10-20/README.md) track rule, native and delivery acceptance separately. Retained rounds keep their saved rules.

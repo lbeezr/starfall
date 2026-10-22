@@ -1,0 +1,8 @@
+{
+  "base": "a46a0f4871056c02d7cf09982e83f78a04f6f221",
+  "inputs": {
+    "App/DialogueScripts/observatory-dialogue.json": "613b40b7bb6811b67c65fb4ad993c9585e16d76126c80ce892eb00fce6e09d8c",
+    "UITests/WorldJourneyInteractionTests.swift": "704791391c86392cb86500b567e12b91660ee53e70a34c28e29e82f9a4a350c5"
+  },
+  "snapshot": "eb10a82d3ac4"
+}
