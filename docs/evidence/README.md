@@ -1,5 +1,7 @@
 # Evidence index
 
+[Settled-move feedback](factory-move-feedback-2026-10-22/README.md) records the native misleading-message reproduction, committed-board correction, 49 hosted and six selected phone/tablet UI passes, Core/Release checks, inspected default/largest-text captures and test-setup refinements. VoiceOver remains deferred.
+
 [First game-factory gameplay slice](factory-gameplay-2026-10-22/README.md) reproduces first-shower tap-match misinformation in current Story, corrects pattern/growth guidance and adopts player-paced reading after a native expiry failure. It records 225 Core, 66 selected hosted, four phone/tablet native checks and Release, with the older restore-guide failure reproduced on clean main and tracked separately in #226.
 
 [First autonomous execution batch](factory-audit-2026-10-22/EXECUTION.md) records four merged slices, one-to-two-second issue completion, native verification bottlenecks and the separate unresolved VoiceOver and Project-view findings. It makes no sustained-throughput or background-execution claim.

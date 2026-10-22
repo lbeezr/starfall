@@ -787,7 +787,8 @@ enum SkyTerminalSpeech { case feedback, ceremony }
             ? old.recipe(matching: selected) : nil)
         invalidateInput(isShower ? (announcesResult ? "manualShower" : "automaticShower") : "clear")
         if turn.exchange != nil {
-            techniqueRelay.reset(); techniqueResult = SkyCopy.text(.techniqueMoved)
+            techniqueRelay.reset()
+            techniqueResult = SkyCopy.text(old.board == game.board ? .techniqueSettledBack : .techniqueMoved)
         } else if !turn.cleared.isEmpty {
             techniqueRelay.record(before:old,after:game,cleared:turn.cleared)
             techniqueResult = techniqueRelay.depth > 1 ? SkyCopy.text(.techniqueRelay, values: ["count": String(techniqueRelay.depth)]) : SkyCopy.text(.techniqueSupport)

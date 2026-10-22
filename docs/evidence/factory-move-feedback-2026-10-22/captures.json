@@ -1,0 +1,28 @@
+[
+  {
+    "file": "dev-f07091c1-wip-be34749f3481__fall-back__iphone-17e__ax3xl.jpg",
+    "bytes": 248158,
+    "sha256": "38987146c6a6ff9ede3e63b28595077819e420b6f4843e1b43c735a3e293a016",
+    "original": "/private/tmp/starfall-factory-next-20261022/phone-final-attachments/874A6477-A2E4-42F8-A104-93F0CBFB94B5.png",
+    "originalSHA256": "96048a51b3d8b3266b30f49e35550924d12466be01738b6f4bf0689174213c2b",
+    "sourceSnapshot": "be34749f3481",
+    "device": "iPhone 17e Simulator",
+    "os": "iOS 27.0",
+    "text": "ax3xl",
+    "motion": "normal",
+    "conversion": "JPEG quality65; original dimensions preserved"
+  },
+  {
+    "file": "dev-f07091c1-wip-be34749f3481__fall-back__iphone-17e__default.jpg",
+    "bytes": 390132,
+    "sha256": "635485eaa9a78f743c182438ee150b5a062b14d653c651df8c0551ae66ddf699",
+    "original": "/private/tmp/starfall-factory-next-20261022/phone-final-attachments/87015062-1F27-429B-97AE-3AC9C534BDEF.png",
+    "originalSHA256": "aaa690dbbaf908c0e74ba20ad8b5f466703feb07ddc7b22c418bbd5e67fe3395",
+    "sourceSnapshot": "be34749f3481",
+    "device": "iPhone 17e Simulator",
+    "os": "iOS 27.0",
+    "text": "default",
+    "motion": "normal",
+    "conversion": "JPEG quality65; original dimensions preserved"
+  }
+]
