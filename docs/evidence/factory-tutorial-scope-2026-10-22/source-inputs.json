@@ -1,0 +1,9 @@
+{
+  "base": "7a825e4c957b650f70baa0518ee9afc55dee9a33",
+  "inputs": {
+    "App/SkyTutorialView.swift": "8ccd8afd1f3da77c21d1515b776726b5f311ed87c8f66eb948555bd526d3800c",
+    "App/DialogueScripts/observatory-dialogue.json": "3559413cdc32c5d6f7009415039fb83ac1ffa6efbfa0d997fe03e26851a8ffce",
+    "UITests/WorldJourneyInteractionTests.swift": "96e0bafd587a2fe0fb5248c08e78f999ab511a70d9f3498ae9fbcc5a614a3e77"
+  },
+  "snapshot": "514a81aa673a"
+}

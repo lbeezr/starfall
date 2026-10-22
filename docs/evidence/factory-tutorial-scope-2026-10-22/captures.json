@@ -1,0 +1,44 @@
+[
+  {
+    "file": "dev-7a825e4c-wip-514a81aa673a__tutorial-intro-end__iphone-17e__ax3xl.jpg",
+    "sha256": "3c15548585c076f9fec51c7a4b839c585f808522e99d872f2c5957b938a8312b",
+    "bytes": 271533,
+    "sourceSnapshot": "514a81aa673a",
+    "device": "iPhone 17e Simulator",
+    "OS": "iOS 27.0",
+    "text": "AX3XL",
+    "state": "end",
+    "motion": "normal",
+    "original": "/private/tmp/starfall-factory-next-20261022/tutorial-phone-attachments/E881A6E4-90F6-4F51-BB10-503446FBEF1B.png",
+    "originalSHA256": "908dcb78243e4389b62b144fa3bff814df8ef787e5318e0189b2fd5c469feb80",
+    "conversion": "JPEG quality65; original dimensions preserved"
+  },
+  {
+    "file": "dev-7a825e4c-wip-514a81aa673a__tutorial-intro-start__iphone-17e__ax3xl.jpg",
+    "sha256": "2604c9f109fe2e78aee3863c4795f58d17bcdb45871d922998fd3e1033799480",
+    "bytes": 250370,
+    "sourceSnapshot": "514a81aa673a",
+    "device": "iPhone 17e Simulator",
+    "OS": "iOS 27.0",
+    "text": "AX3XL",
+    "state": "start",
+    "motion": "normal",
+    "original": "/private/tmp/starfall-factory-next-20261022/tutorial-phone-attachments/45664FEB-77F9-41D1-B0BE-6D1EAC1DAA0D.png",
+    "originalSHA256": "1facba838c1cc0fe221ed3c1ac1b9a93011a750ba8367387980b159bdc9e2fc2",
+    "conversion": "JPEG quality65; original dimensions preserved"
+  },
+  {
+    "file": "dev-7a825e4c-wip-514a81aa673a__tutorial-intro__iphone-17e__default.jpg",
+    "sha256": "68a1ecd5f2739d9b44abf8b4a96c560283bd40cb1ff76886f3108451816d2779",
+    "bytes": 354074,
+    "sourceSnapshot": "514a81aa673a",
+    "device": "iPhone 17e Simulator",
+    "OS": "iOS 27.0",
+    "text": "default",
+    "state": "default",
+    "motion": "normal",
+    "original": "/private/tmp/starfall-factory-next-20261022/tutorial-phone-attachments/15A26BE9-00C3-4EBB-8F96-F5AF76F6B9D8.png",
+    "originalSHA256": "a35e1d95240769e3dfa96a9d4d12796b6197a7df07a566aab77f8c9413d0e8bd",
+    "conversion": "JPEG quality65; original dimensions preserved"
+  }
+]

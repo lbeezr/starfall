@@ -128,6 +128,7 @@ struct SkyTutorialView: View {
                                 .font(StarfallTheme.Typography.body)
                                 .foregroundStyle(StarfallTheme.Colors.textPrimary)
                                 .fixedSize(horizontal: false, vertical: true)
+                                .accessibilityIdentifier("tutorial.intro")
                         }
                         .padding(.vertical, StarfallTheme.Spacing.medium)
                         Text(SkyCopy.text(.practiceChapters))
