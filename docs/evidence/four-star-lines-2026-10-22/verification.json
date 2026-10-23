@@ -34,7 +34,7 @@
       "UITests/SkyFlowInteractionTests.swift": "a977ec24e93325caee28285e60f87616d3da820a64588fd9e2799d12974cec1a",
       "UITests/WorldJourneyInteractionTests.swift": "aa13c925bb8a85ff352776060ecd745b55e8693a6936881975fe39ec3c4d1cbc"
     },
-    "publication": "Implementation source ea2d020e24d79febdd94cded253eaa07a4ccf695; pending PR publication/merge.",
+    "publication": "PR #241 merged at cef551ac9db3ca9e037d77312e3d52623c443623; published head 8ea22c4d64b85a929a682e6d3ede991813bf65f4. Published tree 7f242b58f07583b7ad1fba6e44cb181226bd1a6a exactly matches local publication commit 9c8249e29f366791a2b600264d8a5cea1249c26b. Original capture source remains ea2d020e24d79febdd94cded253eaa07a4ccf695.",
     "equivalentCommittedSource": "ea2d020e24d79febdd94cded253eaa07a4ccf695"
   },
   "environment": {
@@ -159,7 +159,16 @@
   "documentation": {
     "hygiene": "passed",
     "diffCheck": "passed",
-    "localFileLinks": 1197,
-    "remaining": "Recheck after final evidence links are added."
+    "changedDocumentLocalFileLinks": 1247,
+    "remaining": "None in changed documents; all their local Markdown/image targets rechecked after delivery links.",
+    "broaderScan": "Three pre-existing source links to retired ObservatoryGeometry/ObservatoryEnvironment files remain in historical GRAVITY_MECHANICS.md and tools/environments/README.md. Those files are unchanged by this batch. The literal HTML example in WRITING.md is not a file reference. No new broken target found."
+  },
+  "delivery": {
+    "status": "Installed and verified",
+    "receipt": "delivery.json",
+    "source": "cef551ac9db3ca9e037d77312e3d52623c443623",
+    "runtimeBuildID": "dev.38fb093b7f",
+    "actualInstallationIdentityVerified": true,
+    "physicalEnjoyment": "Unmeasured"
   }
 }
