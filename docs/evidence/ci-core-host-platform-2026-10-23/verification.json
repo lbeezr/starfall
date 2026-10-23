@@ -1,0 +1,91 @@
+{
+  "status": "Reported host-compiler cause corrected locally; complete remote CI remains unverified before publication",
+  "failedRun": {
+    "id": 40020191057,
+    "attempt": 1,
+    "event": "push",
+    "job": 120642427731,
+    "source": "3e88bd9e6edd717ff5fd1de5eaf77f1eccb17f8a",
+    "url": "https://github.com/lbeezr/starfall/actions/runs/40020191057",
+    "phase": "Core host compilation before native builds/tests",
+    "environment": "ARM64 macOS26,Xcode26.6,Swift6.3.3"
+  },
+  "baseMain": "c6c726f5cd5b360b656fe7501b10cac4eae99108",
+  "compiledCommit": "229258698abf7b4dd5477af77a06a9eee16e8fab",
+  "buildAffectingDirtyInputs": {},
+  "publicationDifferences": "Only documentation/evidence follows compiled checkpoint; no changes to Core/app/test source, target membership, workflow or updater.",
+  "inputs": {
+    "Package.swift": "3d0eff92cb330f4053958fb53a03e5dbf1d786ae8f33f287d58d2902ba7293d5"
+  },
+  "platforms": {
+    "ios": "17.0",
+    "macos": "12.0"
+  },
+  "products": [
+    "StarfallCore"
+  ],
+  "localEnvironment": "macOS27.0.1,Xcode27.1(27A9275),Swift6.4,ARM64; iPhone17e Simulator iOS27.0(24A434)",
+  "checks": {
+    "originalLocalDefault": {
+      "passed": 336,
+      "failed": 0,
+      "meaning": "Newer local default does not reproduce older CI floor."
+    },
+    "typecheckMacOS1013": {
+      "exit": 1,
+      "availabilityErrors": 12,
+      "representative": "Sources/StarfallCore/FullBoardChoices.swift:20:49: error: 'Task' is only available in macOS 10.15 or newer"
+    },
+    "typecheckMacOS1015": {
+      "exit": 0,
+      "meaning": "API availability only; not accepted as final host floor."
+    },
+    "packageMacOS1015": {
+      "exit": 1,
+      "cause": "Current SDK supports deployment targets12.0\u201327.0.x; error occurs before tests."
+    },
+    "finalExplicitMacOS12": {
+      "passed": 336,
+      "failed": 0,
+      "skipped": 0,
+      "command": "swift test --triple arm64-apple-macosx12.0 --scratch-path /private/tmp/starfall-ci-host-platform-20261023/floor12 --jobs 2",
+      "testExecutableMinOS": "12.0",
+      "minOSVerification": "xcrun vtool -show-build <floor12>/out/Products/Debug/StarfallCoreTests.xctest/Contents/MacOS/StarfallCoreTests"
+    },
+    "finalNative": {
+      "result": "Passed",
+      "totalTestCount": 7,
+      "passedTests": 7,
+      "failedTests": 0,
+      "skippedTests": 0
+    },
+    "updaterBehavior": {
+      "passed": 27,
+      "failed": 0,
+      "command": "python3 scripts/test_device_update.py"
+    },
+    "buildSeconds": {
+      "initialDebug": 35.7,
+      "initialRelease": 34.9,
+      "finalDebug": 2.4,
+      "finalRelease": 5.5
+    },
+    "hygieneAndWhitespace": "Passed before publication",
+    "matrixInventoryOnly": {
+      "ui": 226,
+      "hosted": 554,
+      "fullMatrixPass": false
+    }
+  },
+  "nativeSelection": {
+    "hosted": "FullBoardChoicePresentationTests (6 tests)",
+    "ui": "FullBoardChoiceInteractionTests/testOptionalAlternativesPreserveRoundAndReturnToOrdinaryPlay",
+    "command": "python3 scripts/simulator-command.py --receipt <tmp>/stages.jsonl ci-host-final-native 240 xcodebuild -testProductsPath <immutable prepared products> -destination platform=iOS Simulator,id=DB9604E1-D7A8-4C75-BA25-E29243AEC02D -collect-test-diagnostics never -parallel-testing-enabled NO -only-testing:StarfallAppTests/FullBoardChoicePresentationTests -only-testing:StarfallUITests/FullBoardChoiceInteractionTests/testOptionalAlternativesPreserveRoundAndReturnToOrdinaryPlay -resultBundlePath <tmp>/final-native.xcresult test-without-building"
+  },
+  "limits": [
+    "The older remote Xcode26.6/Swift6.3.3 toolchain is not installed locally. A new complete automatic main matrix must establish remote health.",
+    "Manifest builds/tests at the declared minimum execute on macOS27, not physical macOS12 hardware.",
+    "No gameplay, RNG, save schema, cancellation, workflow coverage/trigger/timeout, assertion or signing/install gate changes.",
+    "Scoped native consumer checks are not full UI, visual, animation, VoiceOver, minimumiOS17 or physical-device acceptance."
+  ]
+}

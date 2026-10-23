@@ -133,7 +133,7 @@ xcodebuild -project Starfall.xcodeproj -scheme Starfall \
   -derivedDataPath DerivedData CODE_SIGNING_ALLOWED=NO build
 ```
 
-The local Swift package has no external dependencies. Core tests also run on Linux with Swift 5.9+. Xcode's app scheme does not contain the package tests: run `swift test` separately.
+The local Swift package has no external dependencies. Core tests also run on Linux with Swift 5.9+. The package's macOS test host explicitly requires macOS 12 for Swift concurrency and the supported SDK floor; the app remains iOS 17+. [CI host-platform correction](docs/evidence/ci-core-host-platform-2026-10-23/README.md). Xcode's app scheme does not contain the package tests: run `swift test` separately.
 
 <details>
 <summary>Debug puzzle and deterministic launch arguments</summary>

@@ -8,6 +8,8 @@ Deterministic rules, seeded randomness and committed save/outcome values, withou
 
 Run `swift test` from the repository root. Preserve replay and old-save invariants when rules, RNG or schema change; see [repository boundaries](../../AGENTS.md).
 
+The package explicitly requires macOS 12 for host builds/tests: cancellable choice analysis uses Swift concurrency, and the current SDK supports building at this minimum. The app remains iOS 17+; this host declaration adds no Mac app or product.
+
 `FallingSky.fullBoardRibbon()` selects Ribbon revision7: its own recipe-free49-star opening, seed4202 and220,000-point target reuse committed refill/scoring. Its square starts three clears made entirely from stars visible before the exchange; the line-first alternative leaves different survivors. Full18-/34-exchange witnesses establish consequences and reachability, not enjoyment.
 
 `FallingSky.fullBoardLantern()` explicitly selects Lantern revision6; normal falling-sky `freshChallenge` visits remain revision 4. Revision 6 changes two opening ingredients (star 29: Violet→Aqua; star 37: Mint→Rose) while retaining 49 ordinary stars, seed 42, the 150,000-point target and existing scoring/refill. Its basic square earns 15,000 across two causal phases; retained revision 5 still earns 66,000 and replays its exact definition. [Goal 4’s round-arc record](../../docs/evidence/depth-goal-04-full-board-round-arc-2026-10-23/README.md) separates deterministic consequences from unmeasured player preference.
