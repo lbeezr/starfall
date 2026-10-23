@@ -1,12 +1,14 @@
 # Evidence index
 
+[Later-chain mastery recovery](story-mastery-recovery-2026-10-23/README.md) proves a real 150,000-point Lantern win after an irreversible declined opening: 73 exchanges, 15 showers, natural growth and five later chains. One bounded planning family and independent every-action replay support the new version-bound regression. Runtime mastery remains proposed; human timing remains unmeasured.
+
 [Game-factory goal 9: safe returning](game-goal-09-safe-return-2026-10-23/README.md) verifies collapsed/reopened guidance, active versus paused reading, exact retained save/deadline and canceled replacement/result journeys with 14 hosted/five native passes.
 
 [Game-factory goal 8: sensory language](game-goal-08-sensory-language-2026-10-23/README.md) accepts the existing committed rising phrase and bounded visual/audio family after 18 hosted/three native checks, preserving mute/quiet/interruption and separating playback starts from human listening.
 
 [Game-factory goal 7: Ribbon identity](game-goal-07-ribbon-identity-2026-10-23/README.md) makes the existing tempo and survivor planning explicit, with reversible arrangement, three-clear opening, exact replay cancellation and a complete current-rule round.
 
-[Lantern mastery feasibility](story-mastery-feasibility-2026-10-22/README.md) proves joint grown-star/chain earning on one real winning route and a genuine declined opening. A narrow 74-distinct-path search found no later-chain completion; recoverability remains unproved. Two fixture-bound regressions, 241 Core checks and a generic simulator build pass; no gameplay or ratings change.
+[Lantern mastery feasibility](story-mastery-feasibility-2026-10-22/README.md) proves joint grown-star/chain earning on one real winning route and a genuine declined opening. Its narrow 74-distinct-path search found no later-chain completion; the subsequent [state-aware construction](story-mastery-recovery-2026-10-23/README.md) resolves that evidence gap. Two fixture-bound regressions, 241 Core checks and a generic simulator build pass; no gameplay or ratings change.
 
 [Game-factory goal 6: earned Lantern payoff](game-goal-06-lantern-payoff-2026-10-22/README.md) reviews all five sparse/full native milestones, retains the paintings and adds an immediate named onward destination with exact cancellation/restore boundaries.
 

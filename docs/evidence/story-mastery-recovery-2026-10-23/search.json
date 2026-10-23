@@ -1,0 +1,49 @@
+{
+  "configuration": {
+    "beamWidth": 8,
+    "forcedPrefix": [
+      1,
+      2
+    ],
+    "forcedPrefixCountsAsSwap": true,
+    "laterBRequiresPreActionShowers": 1,
+    "maxMonotonicSearchSeconds": 180,
+    "maxRawCoreSuccessorCalls": 100000,
+    "maxSwapsBetweenShowers": 6,
+    "partialPatternPotential": "for every 2x2 square and length-four horizontal/vertical window, each family contributes10 for count3 and2 for count2",
+    "ranking": "points +2000*A +8000*laterB -300*occupied -1200*sum(max(0,height-4)^2) +180*partialPatternPotential",
+    "showerHorizon": 40,
+    "stateIdentity": "SHA256(sorted complete Codable game + A + laterB + swapsSinceShower)",
+    "tieOrder": "higher rank; higher score; shorter path; lexicographic encoded-action path (from*49+to, shower2401)"
+  },
+  "counts": {
+    "accepted": 22949,
+    "duplicates": 26094,
+    "nonScoringSwaps": 46597,
+    "raw": 49043,
+    "rawLost": 0,
+    "rawPlaying": 49042,
+    "rawWon": 1,
+    "rejected": 0,
+    "scoredSwaps": 1604,
+    "showers": 842,
+    "swaps": 48201,
+    "uniqueLost": 0,
+    "uniquePlaying": 22948,
+    "uniqueWon": 1
+  },
+  "elapsedSeconds": 3.589709000021685,
+  "forcedPrefixCommits": 1,
+  "scope": "One frozen beam policy; positive existence witness, no completeness or human-performance claim.",
+  "stopReason": "qualified-win",
+  "visitedIncludingStart": 22950,
+  "winner": {
+    "A": true,
+    "laterB": true,
+    "outcome": "won",
+    "rank": 159520,
+    "score": 150000,
+    "showers": 15,
+    "swapsSinceShower": 3
+  }
+}
