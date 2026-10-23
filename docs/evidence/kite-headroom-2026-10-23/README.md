@@ -1,6 +1,6 @@
 # Kite Harbor: headroom or immediate points
 
-**Partially verified — October 23.** [#278](https://github.com/lbeezr/starfall/issues/278) gives explicit new Kite visits a complete revision-4 encounter: choose a smaller high-column clear or a larger low clear, recover, and restore the fleet at **17,000 points**. Historical Kite0 remains 18-light/manual. Core 249, affected hosted 103, three phone native tests, one earlier corrected automatic-shower test, one repaired tablet AX3XL/quiet test and arm64 Debug/Release pass. **Final phone automatic-clock acceptance remains unresolved: the latest shared-helper regression reached game but failed its first-shower expectation. The later direct phone automation session also could not start; merge acceptance remains pending, without attributing a game cause. Both owned simulators are shut down.**
+**Verified for scoped development — October 23.** [#278](https://github.com/lbeezr/starfall/issues/278) gives explicit new Kite visits a complete revision-4 encounter: choose a smaller high-column clear or a larger low clear, recover, and restore the fleet at **17,000 points**. Historical Kite0 remains 18-light/manual. Current integrated source `dev.556659fb9f` passes 249 Core,29affected material/collection hosted checks, the strict automatic-recovery phone case, the extended AX3XL quiet tablet Help/round/onward case and Debug/Release. Earlier 103 dialogue/flow/archive/journey and three phone comparison/history cases retain their exact earlier sources and unchanged relevant input bytes. Next: integrate Kite, then Seed #279.
 
 [Verification and source hashes](verification.json) record base `c496576bde4e89c1f20370054d3c96bfa2f90886` plus explicit working-tree inputs. **`dev.ac2d935006` is the computed app-input fingerprint; actual tested bundle `StarfallBuildID` is `dev.local`.** Capture filenames identify that source fingerprint, not an installed build stamp or clean published commit. Source, Debug and Release dialogue catalogue SHA-256 all equal `72d48054c9ef563d39977a9d4141f08d590230b8e740a4e31dbece8506024a00`.
 
@@ -32,7 +32,7 @@ The original phone points-first PNG, four phone JPEGs, six tablet PNGs and two p
 The [tablet onward frame](dev-ac2d935006__onward__ipad-pro11-m5__ax3xl-quiet.jpg) shows 18,000 of 17,000, Visit Seed Moon and Replay fully visible without shrinking text; lower Back to Observatory content extends below the viewport. Entry's full instruction and Begin were inspected in the temporary capture. The first XCTest Help capture showed only the Tutorial introduction. Later direct native reading closes that visual gap through overlapping location-specific captures below; it does not turn the interrupted XCTest extension into a pass.
 
 
-## Failures, limits and next action
+## Earlier failures and limits
 
 - Initial Debug invocation attempted x86_64 app compilation against an arm64 Core module and failed. Explicit `ARCHS=arm64 ONLY_ACTIVE_ARCH=YES` passed; no game-source correction was needed.
 - The new automatic test first expected onward to jump directly to Entry. It failed at that incorrect assertion after recovery/result. The corrected test follows the existing selected map→Visit→Entry path and passes; this was a test assumption, not a demonstrated recovery defect.
@@ -40,11 +40,11 @@ The [tablet onward frame](dev-ac2d935006__onward__ipad-pro11-m5__ax3xl-quiet.jpg
 
 The automatic test demonstrates one executable recovery window with cached native coordinates and real swipes. It does not establish uncoached recognition, enjoyment, human setup effort or physical touch comfort. No physical-device session, canonical phone delivery, actual VoiceOver or full release-candidate acceptance is claimed. [The ordinary player packet](../../design/CURRENT_STORY_PLAYTEST.md) remains the human-observation follow-up; it adds no gate to this independent gameplay slice.
 
-## Later direct reading and native capacity boundary
+## Earlier direct reading and native capacity boundary
 
 Direct XcodeBuildMCP interaction on the same built app completed the missing visual check: current Kite4 Replay Entry → Settings → Help → bounded scrolling → Done returned to the identical 17,000-point Replay Entry, without Begin. The overlapping [start](dev-ac2d935006__help-start__ipad-pro11-m5__ax3xl-quiet.jpg), [middle](dev-ac2d935006__help-middle__ipad-pro11-m5__ax3xl-quiet.jpg) and [end](dev-ac2d935006__help-end__ipad-pro11-m5__ax3xl-quiet.jpg) captures show every location-specific line at AX3XL and the reachable pinned Done control. This manual native inspection supplements the earlier passing tablet case; it is not a pass of the later interrupted XCTest extension.
 
-The host had18 booted simulators, with only one owned factory simulator active. Later XCTest calls stalled over40seconds and the tablet round overflowed before the test could pause. A direct phone alternative then failed to create a remote automation session. No unrelated simulator/process was stopped. The user-directed turn interruption orphaned the bounded tablet command; root terminated only its verified owned group47197. Both owned devices are now shut down. These observations explain why more identical native attempts would be unhelpful; they do not isolate the phone repeat's clock cause. Keep the feature unmerged until the remaining observation is resolved with strict acceptance. Prepared Seed/Silver work stays ready behind this integration boundary.
+The host had18 booted simulators, with only one owned factory simulator active. Later XCTest calls stalled over40seconds and the tablet round overflowed before the test could pause. A direct phone alternative then failed to create a remote automation session. No unrelated simulator/process was stopped. The user-directed turn interruption orphaned the bounded tablet command; root terminated only its verified owned group47197. Both owned devices are now shut down. At that checkpoint, more identical native attempts were unhelpful and merge remained blocked. These observations do not isolate the phone repeat's clock cause; the recovered-capacity and final-integration sections below record later progress.
 
 A bounded independent review inspected pause/menu dismissal, Store scheduling/admission and the failed video. At actual timestamps60.735s and64.318s the forecast had reached its end while the post-clear board remained visible; Resume had dismissed the menu. This establishes delayed or absent visible delivery, not a specific clock defect or a proven host cause. Existing hosted pause-remainder/readiness tests pass. The next check is exactly the existing `testCurrentKiteAutomaticShowerAllowsPointsFirstRecovery`: retain the ten-second/exactly-one-shower condition, ordinary motion, six recovery exchanges,18,000/17,000 result and earned Seed unlock. Do not relax assertions, change clocks speculatively or rerun unchanged while native automation remains unavailable.
 
@@ -53,3 +53,28 @@ Concurrent main PR #292 subsequently added the Lantern enamel dialogue treatment
 The combined-source generic arm64 Debug build-for-testing (43.534seconds) and Release build (13.932seconds) pass without booting a simulator. This supplies build/membership evidence for the new main integration; it does not resolve the pending native clock check or refresh the earlier visual source.
 
 The separate roadmap and Project recovery merged through PRs294/295 on main `a11ec868`. #220’s own canonical item automatically reached Done at13:19:35 UTC. These changes are documentation only; the combined runtime fingerprint remains `dev.4448f4efe8`. The three gameplay leaves are now durable on main while this runtime draft retains its final native acceptance boundary.
+
+
+## Recovered native capacity and ordered recovery
+
+At13:37 UTC, supported simulator inventory showed one unrelated device booted instead of the earlier18. The unchanged test now observed the automatic shower, but overflowed during recovery. Its original-resolution recording shows the first swipe buffered while arrivals were still landing; the next contact replaces that single intention. A first test repair waited for the existing “Next shower on its way” cue and asserted12,000 after the first clear. That clear passed, but the second shower interrupted the last recovery swipe; XCTest’s one-second predicate cadence spent part of the real recovery window.
+
+The final test reuses the existing100ms native condition helper with the same deadlines, observes the landing boundary and confirms the first clear before continuing. It passes **1 passed, zero failures/skips**,87.493method seconds /120.310tool seconds, on combined source `dev.4448f4efe8`. It retains exactly one ordinary automatic shower without Next, ordinary motion, all six physical recovery swipes,18,000/17,000 and actual earned Seed access. No production clock, buffering, motion, rules or saves changed. This validates the complete recovery without identifying the earlier missing-shower repeat’s cause. Failed runs remain separately recorded in verification.json.
+
+Main subsequently advanced through #296 (`612a369b`), changing collected-light appearance. Integration and refreshed source-bound native acceptance remain pending; the current tablet Help extension still has no passing completed run.
+
+
+## Final integrated development acceptance
+
+Clean input commit `a47e5ae80cb9d3f50f4dea1181d5d2c9876033bc` integrates main`612a369b` and its collection-light refinement. Computed runtime fingerprint **`dev.556659fb9f`** remains distinct from actual local bundle stamp `dev.local`. Later changes are evidence/docs only. The final 249 Core tests pass; Debug compilation succeeds in both supported native test runs and generic arm64 Release passes in 12.469 seconds. Catalogue hashes still match source and both bundles.
+
+On iPhone17e/iOS27.0, **30 passed, zero failures/skips** pass: one strict actual-clock case and 29material/collection hosted methods. The phone method takes 85.161 seconds and keeps the ten-second first-shower deadline, observed landing, six physical recovery exchanges, exact 18,000/17,000 and earned Seed. [The current result](dev-556659fb9f__automatic-recovery-result__iphone-17e__default-text.jpg) shows the restored fleet and all four actions fully visible. [Earned Seed Entry](dev-556659fb9f__earned-seed-entry__iphone-17e__default-text.jpg) correctly retains its existing 18-light objective.
+
+On iPadPro11M5/iOS27.0 at AX3XL/quiet, the **current extended** Help/round/onward test passes **1 passed, zero failures/skips**,183.997method seconds /223.851tool seconds. It completes heading/paragraph scroll assertions, returns through Done, finishes the real points-first encounter and reaches selected Seed then its Entry. All seven raw captures were inspected. Fresh heading/end captures are partial viewports, not an overlapping full-paragraph visual sequence; the earlier three manual full-reading captures stay bound to their original source. Main #296 changed collection drawing, not Help copy or its owner.
+
+The earlier absent-shower repeat remains recorded without an isolated cause. Later responsive runs establish current acceptance; no clock, buffer lifetime, rule, score, save or motion changes were made to obtain it. Human comprehension, planning comfort, enjoyment, physical testing and actual VoiceOver remain unperformed.
+
+
+| Current phone result | Current tablet Help ending (partial viewport) |
+| --- | --- |
+| <img src="dev-556659fb9f__automatic-recovery-result__iphone-17e__default-text.jpg" width="240" alt="The integrated Kite automatic-recovery win at18,000 of17,000, with all result actions visible." /> | <img src="dev-556659fb9f__help-end__ipad-pro11-m5__ax3xl-quiet.jpg" width="330" alt="Largest-text Kite Help rules ending and Done; paragraph beginning is above this viewport." /> |

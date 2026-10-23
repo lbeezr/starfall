@@ -450,11 +450,24 @@ extension KiteHarborInteractionTests {
                     destination.coordinate(withNormalizedOffset: .init(dx: 0.5, dy: 0.5)))
         }
         tap("experiment.settings", in: app); tap("experiment.pause", in: app)
-        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
-            (app.otherElements["experiment.board"].value as? String)?.hasPrefix("1 showers") == true
-        }, object: nil).wait(timeout: 10), "The ordinary automatic shower must arrive without Next")
-        for (from, to) in moves {
+        app.waitForSkyElement(matching: NSPredicate(format: "identifier == %@ AND value BEGINSWITH %@",
+            "experiment.board", "1 showers"), timeout: 10,
+            failure: "The ordinary automatic shower must arrive without Next")
+        // The count commits before the arriving stars finish their motion. A
+        // second contact replaces a buffered first move, so observe the existing
+        // finished-arrival cue before sending the ordered recovery exchanges.
+        app.waitForSkyElement(matching: NSPredicate(format: "identifier == %@ AND label == %@",
+            "experiment.arrivalCue", "Next shower on its way"), timeout: 5,
+            failure: "The first automatic shower must finish landing before recovery")
+        XCTAssertTrue((app.otherElements["experiment.board"].value as? String)?.hasPrefix("1 showers") == true)
+        for (index, move) in moves.enumerated() {
+            let (from, to) = move
             from.press(forDuration: 0.05, thenDragTo: to, withVelocity: .fast, thenHoldForDuration: 0.05)
+            if index == 0 {
+                app.waitForSkyElement(matching: NSPredicate(format: "identifier == %@ AND label == %@",
+                    "experiment.score", "12,000 of 17,000 starlight collected"), timeout: 5,
+                    failure: "The high-column recovery clear must commit before the next exchange")
+            }
         }
         XCTAssertTrue(app.staticTexts["experiment.outcome"].waitForExistence(timeout: 10))
         XCTAssertEqual(app.staticTexts["experiment.outcome"].label, "Kite Harbor restored!")

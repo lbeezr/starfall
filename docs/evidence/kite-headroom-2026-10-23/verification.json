@@ -1,5 +1,5 @@
 {
-  "status": "Prepared feature; earlier selected native passes retained; later automatic-clock repeat unresolved; no merge acceptance yet",
+  "status": "Verified for scoped development: current integrated Core, Debug/Release, automatic recovery and extended AX3XL tablet Help/round/onward pass",
   "issue": "https://github.com/lbeezr/starfall/issues/278",
   "date_utc": "2026-10-23",
   "source": {
@@ -374,7 +374,7 @@
     "note": "Inventory validation only; these are not executed test counts."
   },
   "capture_validation": {
-    "count": 6,
+    "count": 12,
     "all_original_and_final_hashes_verified": true,
     "same_dimensions_by_device": {
       "phone": [
@@ -390,13 +390,11 @@
     "writer_created_tablet_jpegs": 2
   },
   "not_claimed": [
-    "Final phone automatic-clock regression against changed shared helper; latest completed attempt failed shower expectation, root investigating.",
     "Uncoached human recognition, enjoyment, difficulty or comfortable recovery timing.",
     "Physical-device testing or canonical phone installation.",
     "Actual VoiceOver or complete RC acceptance.",
     "Full hosted/native matrix; selected tests only.",
-    "Published clean-commit acceptance; this is an identified dirty-source development build.",
-    "Full visual read-through of offscreen AX3XL Help; captured top only."
+    "Two current tablet Help viewports do not visually cover every paragraph line; earlier full manual reading retains its original source."
   ],
   "documentation_checks": {
     "local_link_targets": 917,
@@ -411,7 +409,7 @@
     "source": "booted-device-observation.json plus ps scoped load observation",
     "limits": "Contention observed; does not by itself prove a clock implementation cause. Unrelated simulators/processes not stopped. Both owned simulators shut down after direct checks."
   },
-  "next_action": "Resolve the final actual-clock observation using current source after native host capacity changes; retain strict assertions, freeze prepared Seed/Silver until Kite native acceptance and merge. Do not attribute the failed repeat to game code or host load without sufficient evidence.",
+  "next_action": "Merge verified Kite293 with Closes278, confirm native completed closure and canonical Done, then activate prepared Seed279 from fresh main.",
   "post_test_integration": {
     "main_commit": "678f7c7c0b49fcfef5cf66d88ef8767d132fcbb6",
     "main_pr": 292,
@@ -436,5 +434,125 @@
       295
     ],
     "scope": "Verified Project recovery/automatic own-card Done and independent next-gameplay roadmap. No compiled, test, resource or configuration inputs changed; combined fingerprint remains dev.4448f4efe8."
+  },
+  "capacity_recovery_2026_10_23": {
+    "observation": "Supported XcodeBuildMCP list_sims at13:37 UTC showed one unrelated booted simulator; both owned devices initially shutdown.",
+    "runtime_input_fingerprint": "dev.4448f4efe8",
+    "local_base": "502d58a78f8a27249d981484bf3d53e567170b34",
+    "test_hashes": {
+      "UITests/KiteHarborInteractionTests.swift": "402054b74371820f623cf3d5f9e8b9f8070e6afb070544229c9646d78f65d93c",
+      "UITests/NativeSkyControls.swift": "6563d02190a3a9279b75ba5d5951b32653fb49ec60d5c1827057ca94beb507f9"
+    },
+    "runs": [
+      {
+        "result_bundle": "native-clock-recovered-capacity.xcresult",
+        "result": "failed",
+        "wrapper_seconds": 113.362,
+        "method_seconds": 76.788,
+        "observation": "Automatic shower condition passed; first recovery move visibly buffered during arrival then superseded by next contact. Overflow instead of18,000 win."
+      },
+      {
+        "result_bundle": "native-clock-arrival-boundary.xcresult",
+        "result": "failed",
+        "wrapper_seconds": 143.445,
+        "method_seconds": 86.476,
+        "observation": "Added observed landing boundary and12,000 first-clear assertion passed; later second shower interrupted final swipe. Existing one-second XCTest condition cadence consumed recovery window."
+      },
+      {
+        "result_bundle": null,
+        "result": "compile failed; no native test executed",
+        "log": "test_sim_2026-10-23T13-52-31-807Z_pid51923_a1a811cd.log",
+        "observation": "Promoted existing helper required explicit file/line arguments; added conventional defaults."
+      },
+      {
+        "result_bundle": "native-clock-condition-poll.xcresult",
+        "result": "passed",
+        "wrapper_seconds": 120.31,
+        "method_seconds": 87.493,
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "observation": "Existing100ms condition helper retains10-second exactly-one-shower deadline; adds landing cue, same-one-shower and12,000 assertion. All6physical swipes,18,000/17,000 result and genuinely earned Seed remain. No clock, rule, motion or buffer change."
+      }
+    ],
+    "remaining": "Integrate newer main612a369b (#296 collection appearance) and refresh affected native acceptance; current extended tablet Help test not yet completed."
+  },
+  "final_integration": {
+    "clean_input_commit": "a47e5ae80cb9d3f50f4dea1181d5d2c9876033bc",
+    "clean_input_tree": "8f23dd80af0b0fe6b28121b78a2652c6f8b4cafc",
+    "integrated_main": "612a369b23b58b55007da4ff02abeaaf6ca82bb9",
+    "runtime_input_fingerprint": "dev.556659fb9f",
+    "actual_bundle_StarfallBuildID": "dev.local",
+    "later_differences": "Documentation and evidence captures only; runtime, configuration and test inputs unchanged.",
+    "input_sha256": {
+      "UITests/KiteHarborInteractionTests.swift": "402054b74371820f623cf3d5f9e8b9f8070e6afb070544229c9646d78f65d93c",
+      "UITests/NativeSkyControls.swift": "6563d02190a3a9279b75ba5d5951b32653fb49ec60d5c1827057ca94beb507f9",
+      "App/LivingLight.swift": "1281fee511eaa7562655858c3a1573465d933249aa7f8b5e854b2b79d0653f68",
+      "App/StarlightCelebration.swift": "678d06ed84aa09b31d76dc8d024f12aa3ae4be2d4ed5c3c9ee9d0efeed0498e5",
+      "App/DialogueScripts/observatory-dialogue.json": "72d48054c9ef563d39977a9d4141f08d590230b8e740a4e31dbece8506024a00"
+    },
+    "runs": [
+      {
+        "result_bundle": "native-clock-collection-integrated.xcresult",
+        "selection": [
+          "KiteHarborInteractionTests/testCurrentKiteAutomaticShowerAllowsPointsFirstRecovery",
+          "SkyPieceTests",
+          "StarlightCelebrationTests"
+        ],
+        "passed": 30,
+        "failed": 0,
+        "skipped": 0,
+        "tool_seconds": 177.987,
+        "native_method_seconds": 85.161,
+        "scope": "One ordinary automatic shower without Next, observed landing,6recovery swipes,18,000/17,000 and real earned Seed;29hosted material/collection methods."
+      },
+      {
+        "result_bundle": "native-tablet-collection-integrated.xcresult",
+        "selection": [
+          "KiteHarborInteractionTests/testCurrentKiteLargestQuietHelpAndEarnedOnward"
+        ],
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "tool_seconds": 223.851,
+        "method_seconds": 183.997,
+        "scope": "Current extended heading/paragraph scroll assertions, quiet AX3XL complete points-first round and selected Seed onward/Entry. Inspected7rawcaptures; retained heading/end screenshots are partial viewports, not a full paragraph visual sequence."
+      }
+    ],
+    "Core": {
+      "passed": 249,
+      "failed": 0,
+      "skipped": 0,
+      "test_seconds": 26.507,
+      "stage": {
+        "stage": "final-core-296",
+        "startedUTC": "2026-10-23T14:03:18.179334+00:00",
+        "elapsedSeconds": 80.74,
+        "limitSeconds": 240.0,
+        "exitCode": 0,
+        "error": null
+      },
+      "log": "final-core-296.log"
+    },
+    "Release": {
+      "result": "passed",
+      "stage": {
+        "stage": "final-release-296",
+        "startedUTC": "2026-10-23T14:03:18.286025+00:00",
+        "elapsedSeconds": 12.469,
+        "limitSeconds": 300.0,
+        "exitCode": 0,
+        "error": null
+      },
+      "log": "final-release-296.log"
+    },
+    "Debug": "Both supported test_sim invocations built current source successfully before testing.",
+    "prior_hosted_input_scope": "Earlier103dialogue/flow/archive/journey methods retain matching source/Core/catalogue bytes; #296 changes only LivingLight/StarlightCelebration, covered by29new integrated hosted methods.",
+    "remaining": "Uncoached player comfort/recognition, physical device, actual VoiceOver and RC remain separate; earlier missing-shower repeat cause unisolated.",
+    "catalogue_sha256": {
+      "source": "72d48054c9ef563d39977a9d4141f08d590230b8e740a4e31dbece8506024a00",
+      "Debug": "72d48054c9ef563d39977a9d4141f08d590230b8e740a4e31dbece8506024a00",
+      "Release": "72d48054c9ef563d39977a9d4141f08d590230b8e740a4e31dbece8506024a00"
+    }
   }
 }

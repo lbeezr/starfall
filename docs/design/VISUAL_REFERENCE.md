@@ -38,6 +38,8 @@ Selected icon, screens, gameplay pieces and story cast, with links to their sour
 
 ## Observatory native UI
 
+**Collection-light coherence — Current for the inspected material slice:** [Warm Lantern and cool Ribbon before/after clips and frames](../evidence/cohesion-goal-02-living-collection-2026-10-23/README.md), snapshot `787039fc3544` / `dev.d33057befd`, show pale packet centers with family surrounds. Ordinary/grown bodies and cached forecasts are unchanged. Earlier finite-flight colors are Historical; the record separates native frame inspection from continuous smoothness, physical play and human preference.
+
 **Current navigation return samples — October 21:** [Five inspected phone/tablet captures](../evidence/map-mode-2026-10-21/captures.json) at `7a6dee86` plus snapshot `da0057a7` show preserved Map/Places choices after canceling Entry and the mandatory largest-text Places fallback. [Native before/after evidence](../evidence/map-mode-2026-10-21/README.md) covers the navigation correction. Artwork and geometry are unchanged; earlier captures retain their source-bound appearance scope.
 
 | Paused sky | Compact settings |

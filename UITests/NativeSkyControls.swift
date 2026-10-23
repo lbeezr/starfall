@@ -199,8 +199,8 @@ extension XCUIApplication {
             failure: "Missing guide: \(text)", file: file, line: line)
     }
 
-    @MainActor private func waitForSkyElement(matching predicate: NSPredicate, timeout: TimeInterval,
-                                              failure: String, file: StaticString, line: UInt) {
+    @MainActor func waitForSkyElement(matching predicate: NSPredicate, timeout: TimeInterval,
+                                     failure: String, file: StaticString = #filePath, line: UInt = #line) {
         let matches = descendants(matching: .any).matching(predicate)
         let deadline = ContinuousClock.now + .seconds(timeout)
         repeat {

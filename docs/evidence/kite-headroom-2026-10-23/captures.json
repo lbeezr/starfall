@@ -1,13 +1,14 @@
 {
-  "status": "Inspected phone comparison, AX3XL quiet result and overlapping direct Kite Help reading",
+  "status": "Inspected earlier source-bound comparisons/direct Help, integrated phone recovery/onward and current partial tablet Help samples",
   "source_selection_receipt_sha256": "cbef1601ee433490986b5141a035727019c589fae8f5bf7442ef925fd4b80907",
   "conversion": "All retained images use PNG to JPEG quality70 with original dimensions; no crop or resize. Original sources remain temporary.",
-  "inspection": "Four phone JPEGs, tablet onward, and overlapping direct tablet Help start/middle/end inspected. Initial Help-top capture is superseded; its original remains in raw XCTest export.",
+  "inspection": "The first eight captures retain dev.ac2d935006 provenance; the next two are integrated dev.556659fb9f phone recovery and Seed Entry. All seven integrated tablet PNGs and two promoted same-dimension Help JPEGs were inspected. The current Help JPEGs are partial nonoverlapping heading/end viewports, not complete visual reading.",
   "limits": [
     "Stills do not establish animation chronology, human recognition, physical touch comfort or actual VoiceOver.",
-    "Phone images depict the original paused comparison, not the later actual-clock earned-unlock test.",
+    "The first four phone images depict the original paused comparison; the dev.556659fb9f result and earned Seed Entry depict the later integrated automatic-clock earned-unlock test.",
     "AX3XL onward and Replay targets are visible; lower Back to Observatory content extends below the viewport.",
-    "Direct Help captures are manual native interaction through XcodeBuildMCP from the already-built current Kite4 Replay Entry, not a pass of the interrupted later XCTest run."
+    "Direct Help captures are manual native interaction through XcodeBuildMCP from the already-built current Kite4 Replay Entry, not a pass of the interrupted later XCTest run.",
+    "Current dev.556659fb9f tablet Help captures are partial nonoverlapping viewports; heading/paragraph XCTest assertions pass, but these two stills do not establish complete current paragraph visual coverage."
   ],
   "captures": [
     {
@@ -225,6 +226,172 @@
       "actual_bundle_StarfallBuildID": "dev.local",
       "visual_inspected": true,
       "verified_no_resize": true
+    },
+    {
+      "name": "automatic-recovery-result",
+      "file": "dev-556659fb9f__automatic-recovery-result__iphone-17e__default-text.jpg",
+      "source_export": "D4FFA289-1017-4FAE-B700-A9DCEB5A2A40.png",
+      "original_sha256": "7584f3bf996f1411a99f98e192c50eb4604c02db0e611a308e358ecfd0fec01b",
+      "sha256": "fe603cfea693732c2ab17365e6f9f75e2560d124f0bd48dae87104d58aeaaf49",
+      "bytes": 526665,
+      "original_bytes": 3511697,
+      "original_dimensions": [
+        1170,
+        2532
+      ],
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "format": "PNG to JPEG quality70 via sips; no crop or resize; temporary source PNG unchanged",
+      "source_export_directory": "/private/tmp/starfall-next-encounters-20261023/collection-integrated-attachments",
+      "source_result_bundle": "native-clock-collection-integrated.xcresult",
+      "test": "KiteHarborInteractionTests/testCurrentKiteAutomaticShowerAllowsPointsFirstRecovery()",
+      "attachment_name": "kite-current-automatic-shower-recovery_0_7912664E-C146-4EBD-959B-4F7D852D461E.png",
+      "attachment_timestamp_utc": "2026-10-23T14:00:41.217000+00:00",
+      "device": "iPhone 17e",
+      "device_name": "Starfall Factory Goals iPhone",
+      "device_id": "64231AFE-4CDB-4B5A-B6D5-70CD7CEED324",
+      "os": "iOS 27.0 Simulator (24A434)",
+      "variant": "default text; normal effects; system Reduce Motion off; one ordinary automatic shower and six native recovery swipes",
+      "source_commit": "a47e5ae80cb9d3f50f4dea1181d5d2c9876033bc",
+      "integrated_main": "612a369b (#296)",
+      "source_input_fingerprint": "dev.556659fb9f",
+      "actual_bundle_StarfallBuildID": "dev.local",
+      "visual_inspected": true,
+      "observations": "18,000 of 17,000, restored fleet and all four result actions visible. Visit Seed Moon, New sky, Replay Kite Harbor and Back to Observatory fit without clipping.",
+      "verified_original_and_final_hashes": true,
+      "verified_no_resize": true,
+      "limits": [
+        "The source fingerprint identifies app inputs, not the installed Info.plist stamp.",
+        "The passing automatic-clock case supplies interaction evidence; these two stills alone do not prove timer cadence or motion.",
+        "No human play, physical-device acceptance, actual VoiceOver or canonical phone delivery is claimed."
+      ]
+    },
+    {
+      "name": "earned-seed-entry",
+      "file": "dev-556659fb9f__earned-seed-entry__iphone-17e__default-text.jpg",
+      "source_export": "0886ECD6-1161-40B9-BC7C-4B676FE421E0.png",
+      "original_sha256": "3fa9ab0a601f5ab98f8154da06cfec647bfcca99edc573d80fcd9c2b196440b6",
+      "sha256": "0741fb55040df0ec7012394de221009e4b8969e896f0c68375d6cce28e346caa",
+      "bytes": 468015,
+      "original_bytes": 3644471,
+      "original_dimensions": [
+        1170,
+        2532
+      ],
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "format": "PNG to JPEG quality70 via sips; no crop or resize; temporary source PNG unchanged",
+      "source_export_directory": "/private/tmp/starfall-next-encounters-20261023/collection-integrated-attachments",
+      "source_result_bundle": "native-clock-collection-integrated.xcresult",
+      "test": "KiteHarborInteractionTests/testCurrentKiteAutomaticShowerAllowsPointsFirstRecovery()",
+      "attachment_name": "kite-current-newly-unlocked-seed_0_2655D44A-5624-4C51-B21A-B9FBE882895F.png",
+      "attachment_timestamp_utc": "2026-10-23T14:00:50.818000+00:00",
+      "device": "iPhone 17e",
+      "device_name": "Starfall Factory Goals iPhone",
+      "device_id": "64231AFE-4CDB-4B5A-B6D5-70CD7CEED324",
+      "os": "iOS 27.0 Simulator (24A434)",
+      "variant": "default text; normal effects; system Reduce Motion off; one ordinary automatic shower and six native recovery swipes",
+      "source_commit": "a47e5ae80cb9d3f50f4dea1181d5d2c9876033bc",
+      "integrated_main": "612a369b (#296)",
+      "source_input_fingerprint": "dev.556659fb9f",
+      "actual_bundle_StarfallBuildID": "dev.local",
+      "visual_inspected": true,
+      "observations": "Earned Seed Moon Entry has a visible full existing 18-starlight objective and Begin. This is the existing Seed rule, not the separately planned #279 expansion.",
+      "verified_original_and_final_hashes": true,
+      "verified_no_resize": true,
+      "limits": [
+        "The source fingerprint identifies app inputs, not the installed Info.plist stamp.",
+        "The passing automatic-clock case supplies interaction evidence; these two stills alone do not prove timer cadence or motion.",
+        "No human play, physical-device acceptance, actual VoiceOver or canonical phone delivery is claimed."
+      ]
+    },
+    {
+      "name": "help-heading-partial",
+      "file": "dev-556659fb9f__help-heading-partial__ipad-pro11-m5__ax3xl-quiet.jpg",
+      "source_export": "C69D359B-985A-49E5-8431-3BD3661B516D.png",
+      "original_sha256": "936e115b9dc6fe48beb30034b3e5c3dba903d65706f2b76e42d424c32df71a51",
+      "sha256": "8e358b7729195e0676bc0780976af94cd97baba842ab52ed47f09205ee1be715",
+      "bytes": 620257,
+      "original_bytes": 3140161,
+      "original_dimensions": [
+        1668,
+        2420
+      ],
+      "dimensions": [
+        1668,
+        2420
+      ],
+      "format": "PNG to JPEG quality70 via sips; no crop or resize; temporary source PNG unchanged",
+      "source_export_directory": "/private/tmp/starfall-next-encounters-20261023/tablet-collection-integrated-attachments",
+      "source_result_bundle": "native-tablet-collection-integrated.xcresult",
+      "test": "KiteHarborInteractionTests/testCurrentKiteLargestQuietHelpAndEarnedOnward()",
+      "attachment_name": "kite-current-help-heading-largest_0_EEDE7C11-AF59-4A2A-BDA5-B7C8E81B2EA1.png",
+      "attachment_timestamp_utc": "2026-10-23T14:04:58.285000+00:00",
+      "device": "iPad Pro 11-inch (M5)",
+      "device_name": "Starfall Factory Goals iPad",
+      "device_id": "255E141F-D4D6-45DA-89FF-51436BF1BBA7",
+      "os": "iOS 27.0 Simulator (24A434)",
+      "variant": "AX3XL (UICTContentSizeCategoryAccessibilityXXXL); calmEffects YES; system Reduce Motion off",
+      "source_commit": "a47e5ae80cb9d3f50f4dea1181d5d2c9876033bc",
+      "integrated_main": "612a369b (#296)",
+      "source_input_fingerprint": "dev.556659fb9f",
+      "actual_bundle_StarfallBuildID": "dev.local",
+      "visual_inspected": true,
+      "observations": "Help shows preceding scoring text and only the first Kite Harbor heading line at the bottom, with Done visible. The rest of the heading and location paragraph beginning are outside this viewport.",
+      "verified_original_and_final_hashes": true,
+      "verified_no_resize": true,
+      "limits": [
+        "The two current Help captures are partial nonoverlapping viewports; together they do not visually cover the full location paragraph or its 17,000-point beginning.",
+        "Current XCTest heading and paragraph assertions passed; that interaction result is separate from full visual reading.",
+        "Earlier three dev.ac2d935006 direct manual Help captures retain their distinct full-reading provenance.",
+        "No physical-device session, human comprehension, actual VoiceOver or delivery acceptance is claimed."
+      ]
+    },
+    {
+      "name": "help-end",
+      "file": "dev-556659fb9f__help-end__ipad-pro11-m5__ax3xl-quiet.jpg",
+      "source_export": "1B885ADF-E012-41B4-831B-FCEA85DB7F70.png",
+      "original_sha256": "dd2ddb07048497f0b2b9b545cd69c4415a669d81b7defdd7bfc64add18a2692d",
+      "sha256": "7ba17f814d761ba0eb7d5fa180ca58ab54c79fc65cd0c0cffbf7d60d76f8ae8a",
+      "bytes": 637899,
+      "original_bytes": 3153424,
+      "original_dimensions": [
+        1668,
+        2420
+      ],
+      "dimensions": [
+        1668,
+        2420
+      ],
+      "format": "PNG to JPEG quality70 via sips; no crop or resize; temporary source PNG unchanged",
+      "source_export_directory": "/private/tmp/starfall-next-encounters-20261023/tablet-collection-integrated-attachments",
+      "source_result_bundle": "native-tablet-collection-integrated.xcresult",
+      "test": "KiteHarborInteractionTests/testCurrentKiteLargestQuietHelpAndEarnedOnward()",
+      "attachment_name": "kite-current-help-largest_0_7B9F71AD-C462-4232-83DF-FDE23C53B268.png",
+      "attachment_timestamp_utc": "2026-10-23T14:05:04.264000+00:00",
+      "device": "iPad Pro 11-inch (M5)",
+      "device_name": "Starfall Factory Goals iPad",
+      "device_id": "255E141F-D4D6-45DA-89FF-51436BF1BBA7",
+      "os": "iOS 27.0 Simulator (24A434)",
+      "variant": "AX3XL (UICTContentSizeCategoryAccessibilityXXXL); calmEffects YES; system Reduce Motion off",
+      "source_commit": "a47e5ae80cb9d3f50f4dea1181d5d2c9876033bc",
+      "integrated_main": "612a369b (#296)",
+      "source_input_fingerprint": "dev.556659fb9f",
+      "actual_bundle_StarfallBuildID": "dev.local",
+      "visual_inspected": true,
+      "observations": "Help starts mid-sentence at room; a larger clear below earns more immediately, continues through automatic patterns/arrival-space ending and keeps Done visible. The 17,000 target and beginning of the location paragraph are outside this viewport.",
+      "verified_original_and_final_hashes": true,
+      "verified_no_resize": true,
+      "limits": [
+        "The two current Help captures are partial nonoverlapping viewports; together they do not visually cover the full location paragraph or its 17,000-point beginning.",
+        "Current XCTest heading and paragraph assertions passed; that interaction result is separate from full visual reading.",
+        "Earlier three dev.ac2d935006 direct manual Help captures retain their distinct full-reading provenance.",
+        "No physical-device session, human comprehension, actual VoiceOver or delivery acceptance is claimed."
+      ]
     }
   ],
   "tablet_attachment_manifest_sha256": "bb0b634f3daf8ab05d0d7a092296f96c30674a0be67ff53c7ac8ecdda3a11fbc",
@@ -283,5 +450,156 @@
         2420
       ]
     }
-  ]
+  ],
+  "integrated_phone_batch": {
+    "source_commit": "a47e5ae80cb9d3f50f4dea1181d5d2c9876033bc",
+    "source_clean_at_run": "Coordinator reports clean local source at test run; capture author performed no Git operations.",
+    "integrated_main": "612a369b (#296)",
+    "input_fingerprint": "dev.556659fb9f",
+    "actual_bundle_StarfallBuildID": "dev.local",
+    "attachment_manifest_sha256": "2f5d24b6c6ae30ee0d47a95b1d4a664681951960d9f073442a375348bbad9810",
+    "coordinator_reported_result": {
+      "bundle": "native-clock-collection-integrated.xcresult",
+      "passed": 30,
+      "failed": 0,
+      "skipped": 0,
+      "selection": "1 native actual-clock Kite case plus 29 hosted tests"
+    },
+    "first_eight_capture_entries_preserved_sha256": "24c97bfa9040912905cf3ee08dcf1ca1dbe4ace77dd54d6c7c946dc89b14676e",
+    "first_eight_media_hashes_verified": true
+  },
+  "integrated_tablet_batch": {
+    "source_commit": "a47e5ae80cb9d3f50f4dea1181d5d2c9876033bc",
+    "source_clean_at_run": "Coordinator reports clean local source at test run; capture author performed no Git operations.",
+    "integrated_main": "612a369b (#296)",
+    "input_fingerprint": "dev.556659fb9f",
+    "actual_bundle_StarfallBuildID": "dev.local",
+    "attachment_manifest_sha256": "cc6ea9888332763ab454e4e6863e7400146b1ee5a2ccafcaa4f5d465db8e9f69",
+    "coordinator_reported_result": {
+      "bundle": "native-tablet-collection-integrated.xcresult",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "method_seconds": 183.997,
+      "tool_seconds": 223.851,
+      "selection": "KiteHarborInteractionTests/testCurrentKiteLargestQuietHelpAndEarnedOnward"
+    },
+    "raw_png_inspection": [
+      {
+        "file": "D0D4FFAF-37D1-4BCC-B8F0-CDC6C1246277.png",
+        "attachment_name": "kite-current-seed-entry-largest_0_69E33981-76C8-4F42-8774-BC54FDD90506.png",
+        "sha256": "7205d17f3d4cd5e91abb1e5346ed0278813dac9b0771788ee1182f803bcc71e1",
+        "bytes": 4157274,
+        "dimensions": [
+          1668,
+          2420
+        ],
+        "attachment_timestamp_utc": "2026-10-23T14:06:04.255000+00:00",
+        "device_id": "255E141F-D4D6-45DA-89FF-51436BF1BBA7",
+        "device_name": "Starfall Factory Goals iPad",
+        "test": "KiteHarborInteractionTests/testCurrentKiteLargestQuietHelpAndEarnedOnward()",
+        "visual_inspected": true,
+        "observations": "Earned Seed Entry shows its full existing 18-starlight objective and Begin at AX3XL; this is not the separately planned Seed expansion."
+      },
+      {
+        "file": "0B03A7BF-FE35-4192-B1A1-E7DB41E8CE4C.png",
+        "attachment_name": "kite-current-onward-largest_0_286B8F10-2F15-416C-A3DA-1E7D8C6F725D.png",
+        "sha256": "b73088d55bb563ee9fad1bc725c2ab5108a9c11c9e9fd1613e7eab7d0d5eb3b9",
+        "bytes": 4021445,
+        "dimensions": [
+          1668,
+          2420
+        ],
+        "attachment_timestamp_utc": "2026-10-23T14:05:57.172000+00:00",
+        "device_id": "255E141F-D4D6-45DA-89FF-51436BF1BBA7",
+        "device_name": "Starfall Factory Goals iPad",
+        "test": "KiteHarborInteractionTests/testCurrentKiteLargestQuietHelpAndEarnedOnward()",
+        "visual_inspected": true,
+        "observations": "Onward result repeats exact 18,000/17,000 and visible Visit Seed Moon, New sky and Replay; lower Back to Observatory remains outside the viewport."
+      },
+      {
+        "file": "DE0F8ACD-F5D3-4934-BFF5-F4C8C1632228.png",
+        "attachment_name": "kite-current-points-win_0_AF307E54-19FE-473D-9D0A-5751E0BAD702.png",
+        "sha256": "b73088d55bb563ee9fad1bc725c2ab5108a9c11c9e9fd1613e7eab7d0d5eb3b9",
+        "bytes": 4021445,
+        "dimensions": [
+          1668,
+          2420
+        ],
+        "attachment_timestamp_utc": "2026-10-23T14:05:54.775000+00:00",
+        "device_id": "255E141F-D4D6-45DA-89FF-51436BF1BBA7",
+        "device_name": "Starfall Factory Goals iPad",
+        "test": "KiteHarborInteractionTests/testCurrentKiteLargestQuietHelpAndEarnedOnward()",
+        "visual_inspected": true,
+        "observations": "Result shows restored sails and exact 18,000 of 17,000. Visit Seed Moon, New sky and Replay are visible at AX3XL; Back to Observatory extends below the viewport."
+      },
+      {
+        "file": "FEF13BA9-C3A2-4EFE-9FC9-1800BAC59C37.png",
+        "attachment_name": "kite-current-points-first_0_86B584CF-5516-42A7-9E41-75265FBEDA31.png",
+        "sha256": "5ddbb3a2bd7937c20c8a2f6848ebafd1a204122dbe66b61019e794d42f463c8c",
+        "bytes": 4763804,
+        "dimensions": [
+          1668,
+          2420
+        ],
+        "attachment_timestamp_utc": "2026-10-23T14:05:13.846000+00:00",
+        "device_id": "255E141F-D4D6-45DA-89FF-51436BF1BBA7",
+        "device_name": "Starfall Factory Goals iPad",
+        "test": "KiteHarborInteractionTests/testCurrentKiteLargestQuietHelpAndEarnedOnward()",
+        "visual_inspected": true,
+        "observations": "Points-first board shows 7,000/17,000 with +7,000, retained tall left columns and cleared low/right space. Bottom dialogue continues below this viewport."
+      },
+      {
+        "file": "1B885ADF-E012-41B4-831B-FCEA85DB7F70.png",
+        "attachment_name": "kite-current-help-largest_0_7B9F71AD-C462-4232-83DF-FDE23C53B268.png",
+        "sha256": "dd2ddb07048497f0b2b9b545cd69c4415a669d81b7defdd7bfc64add18a2692d",
+        "bytes": 3153424,
+        "dimensions": [
+          1668,
+          2420
+        ],
+        "attachment_timestamp_utc": "2026-10-23T14:05:04.264000+00:00",
+        "device_id": "255E141F-D4D6-45DA-89FF-51436BF1BBA7",
+        "device_name": "Starfall Factory Goals iPad",
+        "test": "KiteHarborInteractionTests/testCurrentKiteLargestQuietHelpAndEarnedOnward()",
+        "visual_inspected": true,
+        "observations": "Help starts mid-sentence at room; a larger clear below earns more immediately, continues through automatic patterns/arrival-space ending and keeps Done visible. The 17,000 target and beginning of the location paragraph are outside this viewport."
+      },
+      {
+        "file": "C69D359B-985A-49E5-8431-3BD3661B516D.png",
+        "attachment_name": "kite-current-help-heading-largest_0_EEDE7C11-AF59-4A2A-BDA5-B7C8E81B2EA1.png",
+        "sha256": "936e115b9dc6fe48beb30034b3e5c3dba903d65706f2b76e42d424c32df71a51",
+        "bytes": 3140161,
+        "dimensions": [
+          1668,
+          2420
+        ],
+        "attachment_timestamp_utc": "2026-10-23T14:04:58.285000+00:00",
+        "device_id": "255E141F-D4D6-45DA-89FF-51436BF1BBA7",
+        "device_name": "Starfall Factory Goals iPad",
+        "test": "KiteHarborInteractionTests/testCurrentKiteLargestQuietHelpAndEarnedOnward()",
+        "visual_inspected": true,
+        "observations": "Help shows preceding scoring text and only the first Kite Harbor heading line at the bottom, with Done visible. The rest of the heading and location paragraph beginning are outside this viewport."
+      },
+      {
+        "file": "19620B42-5F38-4B97-B6CD-279CB5E9BC34.png",
+        "attachment_name": "kite-current-entry-largest_0_9AA3E72A-C988-4857-BE06-3958C78DA731.png",
+        "sha256": "d35171de063b0a40d7c0c2ecac36fa23f2f982c9aa5061d1ecc7f38c01558bfa",
+        "bytes": 4402943,
+        "dimensions": [
+          1668,
+          2420
+        ],
+        "attachment_timestamp_utc": "2026-10-23T14:04:05.709000+00:00",
+        "device_id": "255E141F-D4D6-45DA-89FF-51436BF1BBA7",
+        "device_name": "Starfall Factory Goals iPad",
+        "test": "KiteHarborInteractionTests/testCurrentKiteLargestQuietHelpAndEarnedOnward()",
+        "visual_inspected": true,
+        "observations": "Current Kite Entry shows complete 17,000-point headroom-versus-points instruction, automatic pattern rules and Begin at AX3XL."
+      }
+    ],
+    "preserved_first_ten_entries": true,
+    "preserved_first_ten_media_hashes_verified": true,
+    "visual_limit": "Current heading/end PNGs and JPEGs omit the location paragraph beginning and 17,000 target; no full current Help visual read-through claim. Earlier full manual reading remains separately source bound."
+  }
 }
