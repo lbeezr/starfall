@@ -30,6 +30,7 @@ struct WorldMapView: View {
     let quiet: Bool
     let recovered: Bool
     let accessible: Bool
+    let goal: WorldMapGoalSnapshot?
     let select: (WorldLocation) -> Void
     let enter: (StarfallChallenge) -> Void
     let resume: (() -> Void)?
@@ -42,10 +43,11 @@ struct WorldMapView: View {
     @Environment(\.dynamicTypeSize) private var textSize
 
     init(journey: WorldJourney, list: Binding<Bool>, quiet: Bool, recovered: Bool = false, accessible: Bool = true,
+         goal: WorldMapGoalSnapshot? = nil,
          select: @escaping (WorldLocation) -> Void,
          enter: @escaping (StarfallChallenge) -> Void, resume: (() -> Void)? = nil, learn: @escaping () -> Void, done: @escaping () -> Void) {
         self.journey = journey; _list = list; self.quiet = quiet; self.recovered = recovered; self.accessible = accessible; self.select = select
-        self.enter = enter; self.resume = resume; self.learn = learn; self.done = done
+        self.enter = enter; self.resume = resume; self.learn = learn; self.done = done; self.goal = goal
     }
     private var selected: WorldLocation { journey.selected }
 
@@ -232,6 +234,16 @@ struct WorldMapView: View {
                 .accessibilityAddTraits(.isHeader).accessibilityIdentifier("world.selection")
             Text(selected.status(in: journey)).font(StarfallTheme.Typography.supporting)
                 .foregroundStyle(StarfallTheme.Colors.textSecondary).accessibilityIdentifier("world.status")
+            if let goal {
+                if let retained = goal.retainedLabel {
+                    Text(retained).font(StarfallTheme.Typography.supporting)
+                        .foregroundStyle(StarfallTheme.Colors.textPrimary)
+                        .accessibilityIdentifier("world.savedProgress")
+                }
+                Text(goal.newVisitLabel).font(StarfallTheme.Typography.supporting)
+                    .foregroundStyle(StarfallTheme.Colors.textSecondary)
+                    .accessibilityIdentifier("world.newVisitGoal")
+            }
             if selected.challenge == nil {
                 Text(SkyCopy.text(.worldComing)).font(StarfallTheme.Typography.supporting)
                     .foregroundStyle(StarfallTheme.Colors.textSecondary)

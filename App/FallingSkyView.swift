@@ -614,6 +614,8 @@ import StarfallCore
     private var worldMap: some View {
         WorldMapView(journey: store.journey.journey, list: $worldMapList, quiet: quietMotion || settings, recovered: store.journey.recovered,
                          accessible: !settings,
+                         goal: WorldMapGoalSnapshot(journey: store.journey.journey,
+                                                    retainedRound: store.hasSavedSky ? store.game : nil),
                          select: { location in try? store.journey.select(location) },
                          enter: { challenge in
                              guard let location = WorldLocation(rawValue: challenge.rawValue),

@@ -17,6 +17,32 @@ extension SkyEntryRequest {
     }
 }
 
+/// A selected destination's read-only goals. New visits use today's authored
+/// definition; only a matching unfinished saved round supplies retained progress.
+/// The map receives these values, never the game's mutation or save capabilities.
+struct WorldMapGoalSnapshot: Equatable {
+    let newVisitTarget: Int
+    let retainedProgress: StarlightRestoration?
+
+    init?(journey: WorldJourney, retainedRound: FallingSky?) {
+        guard let challenge = journey.selected.challenge, journey.canEnter(journey.selected),
+              let target = FallingSky.freshChallenge(challenge).displayTarget else { return nil }
+        newVisitTarget = target
+        retainedProgress = retainedRound.flatMap {
+            $0.challenge == challenge && !$0.isOver ? $0.restoration : nil
+        }
+    }
+
+    var newVisitLabel: String {
+        SkyCopy.text(.worldNewVisitGoal, values: ["target": SkyCopy.score(newVisitTarget)])
+    }
+    var retainedLabel: String? {
+        retainedProgress.map {
+            SkyCopy.text(.worldSavedProgress, values: ["score": SkyCopy.score($0.score), "target": SkyCopy.score($0.target)])
+        }
+    }
+}
+
 /// Committed values only: results remain explainable after process restoration.
 struct SkyResultSnapshot: Equatable {
     let won: Bool
