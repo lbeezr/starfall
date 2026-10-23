@@ -1,0 +1,513 @@
+{
+  "scope": "Selected working-tree development acceptance; no full matrix, perceptual listening, physical installation or actual VoiceOver acceptance",
+  "core": {
+    "passed": 236,
+    "failed": 0,
+    "skipped": 0
+  },
+  "stages": [
+    {
+      "stage": "core-tests",
+      "startedUTC": "2026-10-23T01:33:25.458553+00:00",
+      "elapsedSeconds": 31.292,
+      "limitSeconds": 240.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "boot-owned-phone",
+      "startedUTC": "2026-10-23T01:35:49.200442+00:00",
+      "elapsedSeconds": 0.715,
+      "limitSeconds": 60.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "owned-phone-ready",
+      "startedUTC": "2026-10-23T01:37:05.715713+00:00",
+      "elapsedSeconds": 0.317,
+      "limitSeconds": 90.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "debug-test-products",
+      "startedUTC": "2026-10-23T01:37:08.221680+00:00",
+      "elapsedSeconds": 9.595,
+      "limitSeconds": 300.0,
+      "exitCode": 65,
+      "error": null
+    },
+    {
+      "stage": "debug-arm64-test-products",
+      "startedUTC": "2026-10-23T01:38:30.763816+00:00",
+      "elapsedSeconds": 30.406,
+      "limitSeconds": 300.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "audio-native-tests",
+      "startedUTC": "2026-10-23T01:42:59.623814+00:00",
+      "elapsedSeconds": 1.204,
+      "limitSeconds": 900.0,
+      "exitCode": 74,
+      "error": null
+    },
+    {
+      "stage": "audio-native-tests-authorized",
+      "startedUTC": "2026-10-23T01:43:37.482185+00:00",
+      "elapsedSeconds": 506.477,
+      "limitSeconds": 900.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "shutdown-owned-phone",
+      "startedUTC": "2026-10-23T01:52:20.147240+00:00",
+      "elapsedSeconds": 2.393,
+      "limitSeconds": 60.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "release-arm64-build",
+      "startedUTC": "2026-10-23T01:52:32.002531+00:00",
+      "elapsedSeconds": 38.687,
+      "limitSeconds": 300.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "integrated-debug-products",
+      "startedUTC": "2026-10-23T01:55:20.498250+00:00",
+      "elapsedSeconds": 11.49,
+      "limitSeconds": 300.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "boot-integrated-phone",
+      "startedUTC": "2026-10-23T01:55:45.911878+00:00",
+      "elapsedSeconds": 0.726,
+      "limitSeconds": 60.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "integrated-phone-ready",
+      "startedUTC": "2026-10-23T01:55:57.788805+00:00",
+      "elapsedSeconds": 0.318,
+      "limitSeconds": 90.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "integrated-audio-native-tests",
+      "startedUTC": "2026-10-23T01:56:19.311575+00:00",
+      "elapsedSeconds": 106.178,
+      "limitSeconds": 300.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "shutdown-integrated-phone",
+      "startedUTC": "2026-10-23T01:58:18.283557+00:00",
+      "elapsedSeconds": 0.766,
+      "limitSeconds": 60.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "integrated-release-build",
+      "startedUTC": "2026-10-23T01:58:34.215672+00:00",
+      "elapsedSeconds": 12.416,
+      "limitSeconds": 300.0,
+      "exitCode": 0,
+      "error": null
+    }
+  ],
+  "bundles": {
+    "Debug": {
+      "count": 10,
+      "assets": [
+        {
+          "name": "sf_brilliant.wav",
+          "bytes": 65312,
+          "sha256": "b755f95fac23d9810346c6643758ec8464277382d10b2fc9e8d9d483d0fe5e3a",
+          "bundleEqualsSource": true
+        },
+        {
+          "name": "sf_cascade_2.wav",
+          "bytes": 37088,
+          "sha256": "948cde73547bc040078a49605af8afa4dbad34ba03b9accd7d365547d8d1c028",
+          "bundleEqualsSource": true
+        },
+        {
+          "name": "sf_cascade_3.wav",
+          "bytes": 37088,
+          "sha256": "a049d18ca052a1013f483aaf621dc3d1064f0d614fa570fe3404c58dc1a5a655",
+          "bundleEqualsSource": true
+        },
+        {
+          "name": "sf_constellation.wav",
+          "bytes": 65312,
+          "sha256": "a465dbd5584e8daee6c1a2fc3178b31cefefa909e96c5ca9a00e1e0a1beb3306",
+          "bundleEqualsSource": true
+        },
+        {
+          "name": "sf_quiet_tuck_01.mp3",
+          "bytes": 25946,
+          "sha256": "2574fe8949fdec73c9a32313b21141342259f0d56b88a34456f88dcb32deeebf",
+          "bundleEqualsSource": true
+        },
+        {
+          "name": "sf_quiet_tuck_02.mp3",
+          "bytes": 25946,
+          "sha256": "176e2613c3f3c61710b7f48d5aa0ceb49ce45c6ee99c01c50b2ffd5176a938cf",
+          "bundleEqualsSource": true
+        },
+        {
+          "name": "sf_quiet_tuck_03.mp3",
+          "bytes": 25946,
+          "sha256": "a7fd3e07a26b84d9d4d26db9069677fa33aa8dc7e4df9d212fee6c28ba4e5ef7",
+          "bundleEqualsSource": true
+        },
+        {
+          "name": "sf_quiet_tuck_04.mp3",
+          "bytes": 25946,
+          "sha256": "a3dd9f479aa10e19002f3b8756c6f98aa5a6aaffa71426ee5f8a6e8228b1431b",
+          "bundleEqualsSource": true
+        },
+        {
+          "name": "sf_recipe.wav",
+          "bytes": 37088,
+          "sha256": "972e83cb2fcdc84adf3a39f257cfd3748a87a9f8b7c02b9c98ad2806659e9f51",
+          "bundleEqualsSource": true
+        },
+        {
+          "name": "sf_relay.wav",
+          "bytes": 47672,
+          "sha256": "cb6a83d7109c684038b7503b3fdf542f9016757d1e6383ae182fc9a7236b73ee",
+          "bundleEqualsSource": true
+        }
+      ],
+      "source": "integratedSource in source-inputs.json"
+    },
+    "Release": {
+      "count": 10,
+      "assets": [
+        {
+          "name": "sf_brilliant.wav",
+          "bytes": 65312,
+          "sha256": "b755f95fac23d9810346c6643758ec8464277382d10b2fc9e8d9d483d0fe5e3a",
+          "bundleEqualsSource": true
+        },
+        {
+          "name": "sf_cascade_2.wav",
+          "bytes": 37088,
+          "sha256": "948cde73547bc040078a49605af8afa4dbad34ba03b9accd7d365547d8d1c028",
+          "bundleEqualsSource": true
+        },
+        {
+          "name": "sf_cascade_3.wav",
+          "bytes": 37088,
+          "sha256": "a049d18ca052a1013f483aaf621dc3d1064f0d614fa570fe3404c58dc1a5a655",
+          "bundleEqualsSource": true
+        },
+        {
+          "name": "sf_constellation.wav",
+          "bytes": 65312,
+          "sha256": "a465dbd5584e8daee6c1a2fc3178b31cefefa909e96c5ca9a00e1e0a1beb3306",
+          "bundleEqualsSource": true
+        },
+        {
+          "name": "sf_quiet_tuck_01.mp3",
+          "bytes": 25946,
+          "sha256": "2574fe8949fdec73c9a32313b21141342259f0d56b88a34456f88dcb32deeebf",
+          "bundleEqualsSource": true
+        },
+        {
+          "name": "sf_quiet_tuck_02.mp3",
+          "bytes": 25946,
+          "sha256": "176e2613c3f3c61710b7f48d5aa0ceb49ce45c6ee99c01c50b2ffd5176a938cf",
+          "bundleEqualsSource": true
+        },
+        {
+          "name": "sf_quiet_tuck_03.mp3",
+          "bytes": 25946,
+          "sha256": "a7fd3e07a26b84d9d4d26db9069677fa33aa8dc7e4df9d212fee6c28ba4e5ef7",
+          "bundleEqualsSource": true
+        },
+        {
+          "name": "sf_quiet_tuck_04.mp3",
+          "bytes": 25946,
+          "sha256": "a3dd9f479aa10e19002f3b8756c6f98aa5a6aaffa71426ee5f8a6e8228b1431b",
+          "bundleEqualsSource": true
+        },
+        {
+          "name": "sf_recipe.wav",
+          "bytes": 37088,
+          "sha256": "972e83cb2fcdc84adf3a39f257cfd3748a87a9f8b7c02b9c98ad2806659e9f51",
+          "bundleEqualsSource": true
+        },
+        {
+          "name": "sf_relay.wav",
+          "bytes": 47672,
+          "sha256": "cb6a83d7109c684038b7503b3fdf542f9016757d1e6383ae182fc9a7236b73ee",
+          "bundleEqualsSource": true
+        }
+      ],
+      "source": "integratedSource in source-inputs.json"
+    }
+  },
+  "membership": {
+    "resourceOwner": "Starfall existing Audio folder reference in PBXResourcesBuildPhase",
+    "newProjectEntries": false
+  },
+  "sourceFrozenAfterChecks": true,
+  "initialNativeSummary": {
+    "devicesAndConfigurations": [
+      {
+        "device": {
+          "architecture": "arm64",
+          "deviceId": "64231AFE-4CDB-4B5A-B6D5-70CD7CEED324",
+          "deviceName": "Starfall Factory Goals iPhone",
+          "modelName": "iPhone 17e",
+          "osBuildNumber": "24A434",
+          "osVersion": "27.0",
+          "platform": "iOS Simulator"
+        },
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "passedTests": 19,
+        "skippedTests": 0,
+        "testPlanConfiguration": {
+          "configurationId": "1",
+          "configurationName": "Test Scheme Action"
+        }
+      }
+    ],
+    "environmentDescription": "Starfall \u00b7 Built with macOS 27.0.1",
+    "expectedFailures": 0,
+    "failedTests": 0,
+    "finishTime": 1792720323.802,
+    "passedTests": 19,
+    "result": "Passed",
+    "runtimeWarnings": [],
+    "skippedTests": 0,
+    "startTime": 1792719818.406,
+    "statistics": [],
+    "testFailures": [],
+    "title": "Test - Starfall",
+    "topInsights": [
+      {
+        "category": "Longest Test Runs",
+        "impact": "50% of duration",
+        "text": "1 longest test run with outlier durations exceeding 3.18s (three standard deviations)"
+      }
+    ],
+    "totalTestCount": 19
+  },
+  "initialTestMethods": [
+    {
+      "selector": "StarfallUITests.SkyFlowInteractionTests/testCurrentRibbonWinReplayAndFullSky",
+      "seconds": 443.609
+    },
+    {
+      "selector": "StarfallUITests.WorldJourneyInteractionTests/testRevisedLanternEarnsThousandsAndRetainsScoreAcrossRelaunch",
+      "seconds": 46.173
+    },
+    {
+      "selector": "StarfallAppTests.NativeInputWindowTests/testRecipeCascadeReplacementAndQuietModeDiscardRemainingCallbacks",
+      "seconds": 2.631
+    },
+    {
+      "selector": "StarfallAppTests.NativeInputWindowTests/testRecipeCascadeShowsPopThenFallThenNextPop",
+      "seconds": 3.207
+    },
+    {
+      "selector": "StarfallAppTests.QuietTuckPlayerTests/testCascadePhraseCapsAtThirdAccentAndIndependentActionRestartsOpening",
+      "seconds": 0.001
+    },
+    {
+      "selector": "StarfallAppTests.QuietTuckPlayerTests/testCelebrationResourcesDecodeWithFiniteDuration",
+      "seconds": 0.007
+    },
+    {
+      "selector": "StarfallAppTests.QuietTuckPlayerTests/testCelebrationUsesOneDistinctVoiceAndPreservesOrdinaryRotation",
+      "seconds": 0.0
+    },
+    {
+      "selector": "StarfallAppTests.QuietTuckPlayerTests/testCurrentStoryPhaseAccentsKeepCommittedAwardsAndSoundPreferences",
+      "seconds": 0.096
+    },
+    {
+      "selector": "StarfallAppTests.QuietTuckPlayerTests/testFeedbackUsesOneSelectedContactForEveryOutcomeAndHonorsMute",
+      "seconds": 0.001
+    },
+    {
+      "selector": "StarfallAppTests.QuietTuckPlayerTests/testHeadphoneDisconnectAndInactivityStopWithoutReplaying",
+      "seconds": 0.001
+    },
+    {
+      "selector": "StarfallAppTests.QuietTuckPlayerTests/testInterruptedAndInactiveTapsAreDroppedWithoutReplay",
+      "seconds": 0.001
+    },
+    {
+      "selector": "StarfallAppTests.QuietTuckPlayerTests/testMissingResourcesFailSilently",
+      "seconds": 0.001
+    },
+    {
+      "selector": "StarfallAppTests.QuietTuckPlayerTests/testMuteInvalidatesQueuedAudioBeforeItCanStart",
+      "seconds": 0.001
+    },
+    {
+      "selector": "StarfallAppTests.QuietTuckPlayerTests/testMuteInvalidatesQueuedCascadeBeforeItCanStart",
+      "seconds": 0.0
+    },
+    {
+      "selector": "StarfallAppTests.QuietTuckPlayerTests/testQueuedCascadeAccentsDropSupersededAndCanceledPhrase",
+      "seconds": 0.171
+    },
+    {
+      "selector": "StarfallAppTests.QuietTuckPlayerTests/testRejectedPlaybackRequestDoesNotConsumeSelectedTake",
+      "seconds": 0.0
+    },
+    {
+      "selector": "StarfallAppTests.QuietTuckPlayerTests/testRotationSurvivesStopsAndNeverQueuesPlayback",
+      "seconds": 0.0
+    },
+    {
+      "selector": "StarfallAppTests.QuietTuckPlayerTests/testShippedFilesDecodeAndAllNativeCuesCanStart",
+      "seconds": 0.234
+    },
+    {
+      "selector": "StarfallAppTests.QuietTuckPlayerTests/testSlowAudioQueueDropsSupersededAndMutedRequests",
+      "seconds": 0.031
+    }
+  ],
+  "integratedNativeSummary": {
+    "devicesAndConfigurations": [
+      {
+        "device": {
+          "architecture": "arm64",
+          "deviceId": "64231AFE-4CDB-4B5A-B6D5-70CD7CEED324",
+          "deviceName": "Starfall Factory Goals iPhone",
+          "modelName": "iPhone 17e",
+          "osBuildNumber": "24A434",
+          "osVersion": "27.0",
+          "platform": "iOS Simulator"
+        },
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "passedTests": 19,
+        "skippedTests": 0,
+        "testPlanConfiguration": {
+          "configurationId": "1",
+          "configurationName": "Test Scheme Action"
+        }
+      }
+    ],
+    "environmentDescription": "Starfall \u00b7 Built with macOS 27.0.1",
+    "expectedFailures": 0,
+    "failedTests": 0,
+    "finishTime": 1792720685.434,
+    "passedTests": 19,
+    "result": "Passed",
+    "runtimeWarnings": [],
+    "skippedTests": 0,
+    "startTime": 1792720587.276,
+    "statistics": [],
+    "testFailures": [],
+    "title": "Test - Starfall",
+    "topInsights": [
+      {
+        "category": "Longest Test Runs",
+        "impact": "51% of duration",
+        "text": "1 longest test run with outlier durations exceeding 3.19s (three standard deviations)"
+      }
+    ],
+    "totalTestCount": 19
+  },
+  "integratedTestMethods": [
+    {
+      "selector": "StarfallUITests.SkyFlowInteractionTests/testShortStorySwipeExplainsHowToCompleteTheMove",
+      "seconds": 30.552
+    },
+    {
+      "selector": "StarfallUITests.WorldJourneyInteractionTests/testRevisedLanternEarnsThousandsAndRetainsScoreAcrossRelaunch",
+      "seconds": 46.878
+    },
+    {
+      "selector": "StarfallAppTests.NativeInputWindowTests/testRecipeCascadeReplacementAndQuietModeDiscardRemainingCallbacks",
+      "seconds": 2.608
+    },
+    {
+      "selector": "StarfallAppTests.NativeInputWindowTests/testRecipeCascadeShowsPopThenFallThenNextPop",
+      "seconds": 3.231
+    },
+    {
+      "selector": "StarfallAppTests.QuietTuckPlayerTests/testCascadePhraseCapsAtThirdAccentAndIndependentActionRestartsOpening",
+      "seconds": 0.001
+    },
+    {
+      "selector": "StarfallAppTests.QuietTuckPlayerTests/testCelebrationResourcesDecodeWithFiniteDuration",
+      "seconds": 0.007
+    },
+    {
+      "selector": "StarfallAppTests.QuietTuckPlayerTests/testCelebrationUsesOneDistinctVoiceAndPreservesOrdinaryRotation",
+      "seconds": 0.0
+    },
+    {
+      "selector": "StarfallAppTests.QuietTuckPlayerTests/testCurrentStoryPhaseAccentsKeepCommittedAwardsAndSoundPreferences",
+      "seconds": 0.097
+    },
+    {
+      "selector": "StarfallAppTests.QuietTuckPlayerTests/testFeedbackUsesOneSelectedContactForEveryOutcomeAndHonorsMute",
+      "seconds": 0.001
+    },
+    {
+      "selector": "StarfallAppTests.QuietTuckPlayerTests/testHeadphoneDisconnectAndInactivityStopWithoutReplaying",
+      "seconds": 0.0
+    },
+    {
+      "selector": "StarfallAppTests.QuietTuckPlayerTests/testInterruptedAndInactiveTapsAreDroppedWithoutReplay",
+      "seconds": 0.001
+    },
+    {
+      "selector": "StarfallAppTests.QuietTuckPlayerTests/testMissingResourcesFailSilently",
+      "seconds": 0.0
+    },
+    {
+      "selector": "StarfallAppTests.QuietTuckPlayerTests/testMuteInvalidatesQueuedAudioBeforeItCanStart",
+      "seconds": 0.001
+    },
+    {
+      "selector": "StarfallAppTests.QuietTuckPlayerTests/testMuteInvalidatesQueuedCascadeBeforeItCanStart",
+      "seconds": 0.001
+    },
+    {
+      "selector": "StarfallAppTests.QuietTuckPlayerTests/testQueuedCascadeAccentsDropSupersededAndCanceledPhrase",
+      "seconds": 0.108
+    },
+    {
+      "selector": "StarfallAppTests.QuietTuckPlayerTests/testRejectedPlaybackRequestDoesNotConsumeSelectedTake",
+      "seconds": 0.0
+    },
+    {
+      "selector": "StarfallAppTests.QuietTuckPlayerTests/testRotationSurvivesStopsAndNeverQueuesPlayback",
+      "seconds": 0.0
+    },
+    {
+      "selector": "StarfallAppTests.QuietTuckPlayerTests/testShippedFilesDecodeAndAllNativeCuesCanStart",
+      "seconds": 0.223
+    },
+    {
+      "selector": "StarfallAppTests.QuietTuckPlayerTests/testSlowAudioQueueDropsSupersededAndMutedRequests",
+      "seconds": 0.032
+    }
+  ],
+  "coreInputsUnchangedAfterIntegration": true,
+  "finalRuntimeFingerprint": "dev.9dd978825b"
+}

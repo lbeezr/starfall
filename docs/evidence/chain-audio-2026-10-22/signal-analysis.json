@@ -1,0 +1,232 @@
+{
+  "generator_sha256": "5b4b8c0bdfc80e796d3cd3bb02ee2d12fd9d3d2f2f9295e25a465cf988d10bf0",
+  "original_files_equal_base": {
+    "sf_brilliant.wav": true,
+    "sf_constellation.wav": true,
+    "sf_recipe.wav": true,
+    "sf_relay.wav": true,
+    "sf_quiet_tuck_01.mp3": true,
+    "sf_quiet_tuck_02.mp3": true,
+    "sf_quiet_tuck_03.mp3": true,
+    "sf_quiet_tuck_04.mp3": true
+  },
+  "all_six_wavs_reproduced_twice": true,
+  "signals": [
+    {
+      "name": "sf_brilliant.wav",
+      "bytes": 65312,
+      "sha256": "b755f95fac23d9810346c6643758ec8464277382d10b2fc9e8d9d483d0fe5e3a",
+      "channels": 1,
+      "sample_width": 2,
+      "rate": 44100,
+      "frames": 32634,
+      "duration_seconds": 0.74,
+      "peak": 11480,
+      "peak_dbfs": -9.110160937955264,
+      "rms_dbfs": -24.44545543464907,
+      "rail_samples": 0,
+      "first_sample": 0,
+      "last_sample": 0,
+      "reproduced_twice": true
+    },
+    {
+      "name": "sf_cascade_2.wav",
+      "bytes": 37088,
+      "sha256": "948cde73547bc040078a49605af8afa4dbad34ba03b9accd7d365547d8d1c028",
+      "channels": 1,
+      "sample_width": 2,
+      "rate": 44100,
+      "frames": 18522,
+      "duration_seconds": 0.42,
+      "peak": 16458,
+      "peak_dbfs": -5.981457539430898,
+      "rms_dbfs": -23.186169011453416,
+      "rail_samples": 0,
+      "first_sample": 0,
+      "last_sample": 0,
+      "reproduced_twice": true
+    },
+    {
+      "name": "sf_cascade_3.wav",
+      "bytes": 37088,
+      "sha256": "a049d18ca052a1013f483aaf621dc3d1064f0d614fa570fe3404c58dc1a5a655",
+      "channels": 1,
+      "sample_width": 2,
+      "rate": 44100,
+      "frames": 18522,
+      "duration_seconds": 0.42,
+      "peak": 15113,
+      "peak_dbfs": -6.721985052224606,
+      "rms_dbfs": -23.15378968291803,
+      "rail_samples": 0,
+      "first_sample": 0,
+      "last_sample": 0,
+      "reproduced_twice": true
+    },
+    {
+      "name": "sf_constellation.wav",
+      "bytes": 65312,
+      "sha256": "a465dbd5584e8daee6c1a2fc3178b31cefefa909e96c5ca9a00e1e0a1beb3306",
+      "channels": 1,
+      "sample_width": 2,
+      "rate": 44100,
+      "frames": 32634,
+      "duration_seconds": 0.74,
+      "peak": 11915,
+      "peak_dbfs": -8.78711776554486,
+      "rms_dbfs": -22.755175521092056,
+      "rail_samples": 0,
+      "first_sample": 0,
+      "last_sample": 0,
+      "reproduced_twice": true
+    },
+    {
+      "name": "sf_recipe.wav",
+      "bytes": 37088,
+      "sha256": "972e83cb2fcdc84adf3a39f257cfd3748a87a9f8b7c02b9c98ad2806659e9f51",
+      "channels": 1,
+      "sample_width": 2,
+      "rate": 44100,
+      "frames": 18522,
+      "duration_seconds": 0.42,
+      "peak": 11574,
+      "peak_dbfs": -9.039329138643796,
+      "rms_dbfs": -23.189485298907726,
+      "rail_samples": 0,
+      "first_sample": 0,
+      "last_sample": 0,
+      "reproduced_twice": true
+    },
+    {
+      "name": "sf_relay.wav",
+      "bytes": 47672,
+      "sha256": "cb6a83d7109c684038b7503b3fdf542f9016757d1e6383ae182fc9a7236b73ee",
+      "channels": 1,
+      "sample_width": 2,
+      "rate": 44100,
+      "frames": 23814,
+      "duration_seconds": 0.54,
+      "peak": 10188,
+      "peak_dbfs": -10.147219973362809,
+      "rms_dbfs": -23.144547076031287,
+      "rail_samples": 0,
+      "first_sample": 0,
+      "last_sample": 0,
+      "reproduced_twice": true
+    }
+  ],
+  "contour": [
+    {
+      "name": "sf_recipe.wav",
+      "lead_hz": [
+        659.25,
+        783.99
+      ],
+      "matches_expected": true,
+      "onsets_seconds": [
+        0,
+        0.1
+      ]
+    },
+    {
+      "name": "sf_cascade_2.wav",
+      "lead_hz": [
+        880.0,
+        1046.5
+      ],
+      "matches_expected": true,
+      "onsets_seconds": [
+        0,
+        0.1
+      ]
+    },
+    {
+      "name": "sf_cascade_3.wav",
+      "lead_hz": [
+        1174.66,
+        1318.51
+      ],
+      "matches_expected": true,
+      "onsets_seconds": [
+        0,
+        0.1
+      ]
+    }
+  ],
+  "spectral_crosscheck": [
+    {
+      "name": "sf_recipe.wav",
+      "windows": [
+        {
+          "window_seconds": [
+            0.02,
+            0.08
+          ],
+          "dominant_bright_frequency_hz": 659.2,
+          "expected_lead_hz": 659.25,
+          "error_hz": -0.05
+        },
+        {
+          "window_seconds": [
+            0.13,
+            0.21
+          ],
+          "dominant_bright_frequency_hz": 784.0,
+          "expected_lead_hz": 783.99,
+          "error_hz": 0.01
+        }
+      ]
+    },
+    {
+      "name": "sf_cascade_2.wav",
+      "windows": [
+        {
+          "window_seconds": [
+            0.02,
+            0.08
+          ],
+          "dominant_bright_frequency_hz": 880.0,
+          "expected_lead_hz": 880,
+          "error_hz": 0.0
+        },
+        {
+          "window_seconds": [
+            0.13,
+            0.21
+          ],
+          "dominant_bright_frequency_hz": 1046.5,
+          "expected_lead_hz": 1046.5,
+          "error_hz": 0.0
+        }
+      ]
+    },
+    {
+      "name": "sf_cascade_3.wav",
+      "windows": [
+        {
+          "window_seconds": [
+            0.02,
+            0.08
+          ],
+          "dominant_bright_frequency_hz": 1174.7,
+          "expected_lead_hz": 1174.66,
+          "error_hz": 0.04
+        },
+        {
+          "window_seconds": [
+            0.13,
+            0.21
+          ],
+          "dominant_bright_frequency_hz": 1318.5,
+          "expected_lead_hz": 1318.51,
+          "error_hz": -0.01
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Digital PCM peaks are 2.32-3.06 dB higher than recipe despite nearly equal RMS; no inference of equal perceived loudness.",
+    "No native playback/decode/build, physical listening, perceptual comfort or player preference established.",
+    "README level clarification owned by worker/coordinator; no repository edits by reviewer."
+  ]
+}

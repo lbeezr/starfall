@@ -72,7 +72,10 @@ extension ClearSoundPlaying {
         case .brilliant: take = 4
         case .constellation: take = 5
         case .recipe: take = 6
-        case .relay, .cascade: take = 7
+        case .relay: take = 7
+        // The receipt carries causal phase depth. No elapsed-time streak or
+        // remembered pitch can leak into the next independent action.
+        case .cascade(let depth): take = depth < 2 ? 6 : depth == 2 ? 8 : 9
         }
         _ = output.start(take: take)
     }
@@ -80,10 +83,11 @@ extension ClearSoundPlaying {
     func stop() { output.stop() }
 }
 
-/// Eight bounded local sources, one audible voice. Loading and session activation are lazy.
+/// Ten bounded local sources, one audible voice. Loading and session activation are lazy.
 @MainActor final class BundledTuckOutput: TuckAudioOutput {
     static let names = (1...4).map { String(format: "sf_quiet_tuck_%02d", $0) }
-    static let celebrationNames = ["sf_brilliant", "sf_constellation", "sf_recipe", "sf_relay"]
+    static let celebrationNames = ["sf_brilliant", "sf_constellation", "sf_recipe", "sf_relay",
+                                   "sf_cascade_2", "sf_cascade_3"]
     private let worker: TuckAudioWorker
     private let hasAllFiles: Bool
 

@@ -1,5 +1,7 @@
 # Evidence index
 
+[Rising Story-chain audio](chain-audio-2026-10-22/README.md) records committed phase routing, capped original cues, independent-action reset, native playback, real opening controls and Debug/Release membership. Source changes during integration and unmeasured physical listening remain explicit; the broader sensory-language outcome stays open.
+
 [Game-factory goal 2: movement trust](game-goal-02-movement-trust-2026-10-22/README.md) records the short boundary-release reproduction, correction, next-move/lifecycle contrasts and source-bound phone/tablet checks. It preserves the initial native assertion error separately from app behavior.
 
 [Game-factory goal 1: first-minute guidance](game-goal-01-first-minute-2026-10-22/README.md) retains the mode-specific objective/action through Begin and resume. It records 236 Core, 70 hosted and six selected phone/tablet native passes plus Debug/Release, actual source hashes and reading captures. Simulator resource refusal and the incomplete expected-failure baseline remain explicit; final candidate bundles complete with zero failures/skips.

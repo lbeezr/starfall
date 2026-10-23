@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Reproduce four original local celebration cues; no samples or external tools."""
+"""Reproduce six original local celebration cues; no samples or external tools."""
 from pathlib import Path
 import math
 import struct
@@ -42,3 +42,11 @@ if __name__ == "__main__":
     render("sf_relay.wav", [(0, 523.25, 0.22), (0.045, 659.25, 0.20),
                             (0.18, 783.99, 0.22), (0.225, 1046.5, 0.20),
                             (0.225, 1318.51, 0.06)], duration=0.54)
+
+    # Continue the existing recipe's E5-to-G5 resolution with A5-to-C6, then
+    # D6-to-E6. Higher causal depths reuse the final accent; gain and duration
+    # never rise with score, timing or depth. Existing synthesis stays unchanged.
+    render("sf_cascade_2.wav", [(0, 880.0, 0.24), (0, 1320.0, 0.12),
+                                (0.10, 1046.5, 0.22), (0.10, 1569.75, 0.10)], duration=0.42)
+    render("sf_cascade_3.wav", [(0, 1174.66, 0.24), (0, 1761.99, 0.12),
+                                (0.10, 1318.51, 0.22), (0.10, 1977.765, 0.10)], duration=0.42)
