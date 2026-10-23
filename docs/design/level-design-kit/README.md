@@ -79,7 +79,7 @@ The [Hearthstone study](../environments/hearthstone-study/README.md) supplies us
 
 **Historical external research — Blizzard and credited artists; inspected in the October 18 study.** The copied full-board references retain their [original sources and attribution](../environments/hearthstone-study/sources.json). They are documentation references, not licensed Starfall runtime assets or a brief to copy their characters and distinctive artwork. This kit applies the composition lessons to original Starfall places; it does not rewrite that historical study or claim its proposals shipped.
 
-**Seed Moon is a future candidate for a richer composition review.** The user's comparison during Silver Pools production motivated that follow-up. Seed Moon's richer treatment remains deferred outside the Frostfruit batch; this kit does not itself replace its shipped art. This kit also does not change rules, saves, native control roles or the [world atlas](../WORLD_ATLAS.md). The repository’s [level-design skill](../../../.agents/skills/starfall-level-design/SKILL.md) routes future location work through this kit.
+**Seed Moon’s richer composition is now reviewed in [cohesion goal 5](../../evidence/cohesion-goal-05-seed-place-2026-10-23/README.md).** Its connected mineral approach and near crescent replace the isolated compositions, with native sparse/full and three-family review. The kit supplies guides; the source-bound report owns adoption and its limits. This does not change rules, saves, native control roles or the [world atlas](../WORLD_ATLAS.md). The repository’s [level-design skill](../../../.agents/skills/starfall-level-design/SKILL.md) routes location work through this kit.
 
 ## Regenerate the guides
 

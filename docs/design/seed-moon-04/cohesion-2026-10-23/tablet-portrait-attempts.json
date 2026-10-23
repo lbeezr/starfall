@@ -1,0 +1,349 @@
+{
+  "schemaVersion": 1,
+  "task": "Goal5 #286 Seed Moon tablet portrait early-state derivation",
+  "date": "2026-10-23",
+  "method": "built-in image_gen precise-object edits; selected outputs copied byte-for-byte; no pixel editing or resizing",
+  "status": "source-art-selected-and-packaged-native-verification-pending",
+  "scope": {
+    "states": [
+      0,
+      25,
+      50
+    ],
+    "pixels": [
+      1086,
+      1448
+    ],
+    "maximumRepairAttemptsPerState": 2,
+    "nativeAcceptance": "Root-owned; not established by this source-art review"
+  },
+  "references": [
+    {
+      "path": "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-22a81550-33c6-45bb-b7c5-80e76ba9eb46.png",
+      "sha256": "9f38b83635a7e7610deb4c048d3c6c75598a525d716c39dd2a38d925c2e9d137",
+      "pixels": [
+        1086,
+        1448
+      ],
+      "bytes": 2534509,
+      "role": "accepted new100 edit target"
+    },
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/3667/Starfall/App/Assets.xcassets/SeedMoonTabletPortrait000.imageset/scene.png",
+      "sha256": "4773d215510d8e360e8cf772e860b467286b2da4f5e06b19b0f40f5e1ac2272d",
+      "pixels": [
+        1086,
+        1448
+      ],
+      "bytes": 2222291,
+      "role": "original 000 plant-state reference",
+      "immutableOriginalPath": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-6f351405-d0da-43df-bc3c-5d6730dfd800.png"
+    },
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/3667/Starfall/App/Assets.xcassets/SeedMoonTabletPortrait025.imageset/scene.png",
+      "sha256": "b450a2915622c103017bc8eeef020372c5e7f0a85300e32d13c6ab9a93ea4acf",
+      "pixels": [
+        1086,
+        1448
+      ],
+      "bytes": 2193087,
+      "role": "original 025 plant-state reference",
+      "immutableOriginalPath": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-0bb47f13-a938-4fc4-8aeb-01634abaefba.png"
+    },
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/3667/Starfall/App/Assets.xcassets/SeedMoonTabletPortrait050.imageset/scene.png",
+      "sha256": "e24980ed839a67222a1b5e6015dab530b7a4597dc6a1552c56b97493dc2fdfb8",
+      "pixels": [
+        1086,
+        1448
+      ],
+      "bytes": 2207129,
+      "role": "original 050 plant-state reference",
+      "immutableOriginalPath": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-8ce9d300-9842-4d2c-9137-2aa80dec1911.png"
+    },
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/3667/Starfall/App/Assets.xcassets/SeedMoonTabletPortrait100.imageset/scene.png",
+      "sha256": "9f38b83635a7e7610deb4c048d3c6c75598a525d716c39dd2a38d925c2e9d137",
+      "pixels": [
+        1086,
+        1448
+      ],
+      "bytes": 2534509,
+      "role": "current packaged new100, byte identity cross-check"
+    }
+  ],
+  "attempts": [
+    {
+      "id": "tabletPortrait000-attempt1",
+      "state": 0,
+      "kind": "initial",
+      "status": "rejected",
+      "prompt": "Use case: precise-object-edit.\nAsset type: Seed Moon tablet portrait 0% restoration painting, EXACT 1086×1448 pixels, opaque PNG.\nInput image 1 is the EDIT TARGET: the accepted new 100% connected-place master. Input image 2 is ONLY a PLANT/RESTORATION-STATE REFERENCE for 0%; do not borrow its old isolated terrain or background.\nPrimary request: Edit image 1 by changing only the main restoration plant and its local root illumination to the dormant 0% state shown in image 2. Remove the entire tall stem, large leaves, golden flower/canopy and buds above the pearl seed. Retain the same curled dormant pearl seed at its exact existing base position; its root seams are present but UNLIT, without warm or mint emitted light. No shoot, leaf pair, bud or canopy yet. The warm rim light from the fixed surrounding environment can remain, but the plant is not glowing.\nLOCK every non-restoration feature from image 1: exact camera, crop, source dimensions, shell outline/cracks/mineral surfaces, pearl and scoop positions, soil, connected tending approach and every step, thick stone supports, hanging vines and surrounding vegetation, close foreground crescent/path and all its stones/plants, sky/nebula/star positions, colors, and lighting outside the restoration plant/root region. Do not remove the new approach or foreground crescent. Keep all surviving details in the same screen positions. Restore the same natural starry sky only where the removed tall plant used to be.\nStyle: preserve image 1's polished tangible storybook painting, mineral weight and connected depth. One full continuous painting. No global brightness or saturation change, no shifted terrain, no new objects, characters, faces, jewels, UI, text, grid, masks, rectangular clearing or vignette. Return ONE complete painting at exactly 1086×1448; no contact sheet or added margin.",
+      "referencedImagePaths": [
+        "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-22a81550-33c6-45bb-b7c5-80e76ba9eb46.png",
+        "/Users/lbeezr/.codex/worktrees/3667/Starfall/App/Assets.xcassets/SeedMoonTabletPortrait000.imageset/scene.png"
+      ],
+      "transparentBackground": false,
+      "generated": {
+        "path": "/Users/lbeezr/.codex/generated_images/01a1646d-2aa8-7960-bad9-aea39f179736/exec-c5a7fcec-2177-4c90-9532-f0124d07bb93.png",
+        "sha256": "dc609ea4117a2188e1756442b8be90e4746fb1c15f8a06d2d843ced417b688cd",
+        "pixels": [
+          1086,
+          1449
+        ],
+        "bytes": 2486626
+      },
+      "sourceArtReview": {
+        "observed": "Dormant pearl/no tall shoot, bud or canopy; connected approach, thick supports, foreground crescent and broad sky retained by visual inspection.",
+        "decision": "Reject: generated height1449 differs from required1448. Original packaged asset unchanged.",
+        "limitations": "Source-art inspection only; exact pixel identity outside edited region and native fit not established."
+      },
+      "referenceSnapshots": [
+        {
+          "path": "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-22a81550-33c6-45bb-b7c5-80e76ba9eb46.png",
+          "sha256": "9f38b83635a7e7610deb4c048d3c6c75598a525d716c39dd2a38d925c2e9d137",
+          "pixels": [
+            1086,
+            1448
+          ],
+          "bytes": 2534509,
+          "role": "accepted new100 edit target"
+        },
+        {
+          "path": "/Users/lbeezr/.codex/worktrees/3667/Starfall/App/Assets.xcassets/SeedMoonTabletPortrait000.imageset/scene.png",
+          "sha256": "4773d215510d8e360e8cf772e860b467286b2da4f5e06b19b0f40f5e1ac2272d",
+          "pixels": [
+            1086,
+            1448
+          ],
+          "bytes": 2222291,
+          "role": "original 000 plant-state reference",
+          "immutableOriginalPath": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-6f351405-d0da-43df-bc3c-5d6730dfd800.png"
+        }
+      ]
+    },
+    {
+      "id": "tabletPortrait000-attempt2",
+      "state": 0,
+      "kind": "repair1",
+      "status": "selected-source-art",
+      "prompt": "Use case: precise-object-edit.\nAsset type: Seed Moon tablet portrait 0% restoration painting, EXACT 1086×1448 pixels, opaque PNG.\nInput image 1 is the EDIT TARGET: the accepted new 100% connected-place master. Input image 2 is ONLY a PLANT/RESTORATION-STATE REFERENCE for 0%; do not borrow its old isolated terrain or background.\nPrimary request: Edit image 1 by changing only the main restoration plant and its local root illumination to the dormant 0% state shown in image 2. Remove the entire tall stem, large leaves, golden flower/canopy and buds above the pearl seed. Retain the same curled dormant pearl seed at its exact existing base position; its root seams are present but UNLIT, without warm or mint emitted light. No shoot, leaf pair, bud or canopy yet. The warm rim light from the fixed surrounding environment can remain, but the plant is not glowing.\nLOCK every non-restoration feature from image 1: exact camera, crop, source dimensions, shell outline/cracks/mineral surfaces, pearl and scoop positions, soil, connected tending approach and every step, thick stone supports, hanging vines and surrounding vegetation, close foreground crescent/path and all its stones/plants, sky/nebula/star positions, colors, and lighting outside the restoration plant/root region. Do not remove the new approach or foreground crescent. Keep all surviving details in the same screen positions. Restore the same natural starry sky only where the removed tall plant used to be.\nStyle: preserve image 1's polished tangible storybook painting, mineral weight and connected depth. One full continuous painting. No global brightness or saturation change, no shifted terrain, no new objects, characters, faces, jewels, UI, text, grid, masks, rectangular clearing or vignette. Return ONE complete painting at exactly 1086×1448; no contact sheet or added margin.\nDIMENSION REPAIR REQUIREMENT: the previous attempt was rejected solely for producing 1086×1449. Both supplied source files are EXACTLY 1086 pixels wide by 1448 pixels high. Keep image 1's exact original 1086×1448 canvas and pixel registration. Do NOT add a row or border. Output height MUST be1448, not1449. This is the same fixed-camera painting, not a new aspect-ratio interpretation. Also retain genuinely unlit, subdued root seams at0%, without emitted mint highlights.",
+      "referencedImagePaths": [
+        "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-22a81550-33c6-45bb-b7c5-80e76ba9eb46.png",
+        "/Users/lbeezr/.codex/worktrees/3667/Starfall/App/Assets.xcassets/SeedMoonTabletPortrait000.imageset/scene.png"
+      ],
+      "transparentBackground": false,
+      "generated": {
+        "path": "/Users/lbeezr/.codex/generated_images/01a1646d-2aa8-7960-bad9-aea39f179736/exec-ad180c78-6080-4532-8829-520a0bcb00bf.png",
+        "sha256": "fe4d07f77e4bb76dac87921cc25c07f8121ef7f3deafb1d12531bd8e31b7c5a5",
+        "pixels": [
+          1086,
+          1448
+        ],
+        "bytes": 2474354
+      },
+      "sourceArtReview": {
+        "observed": "Exact1086×1448. Dormant pearl and subdued unlit root seams; tall stem, main leaves, bud and canopy removed. Connected approach, shell/pearl/scoop, thick support and continuous foreground crescent remain visually registered to accepted master.",
+        "decision": "Select for byte-identical packaging.",
+        "limitations": "Source-art review only. Generated image is not a guarantee of pixel-identical preservation outside the edited region; native state transitions, layout, motion and physical acceptance remain root-owned."
+      },
+      "packaging": {
+        "destination": "/Users/lbeezr/.codex/worktrees/3667/Starfall/App/Assets.xcassets/SeedMoonTabletPortrait000.imageset/scene.png",
+        "status": "copied-byte-for-byte"
+      },
+      "referenceSnapshots": [
+        {
+          "path": "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-22a81550-33c6-45bb-b7c5-80e76ba9eb46.png",
+          "sha256": "9f38b83635a7e7610deb4c048d3c6c75598a525d716c39dd2a38d925c2e9d137",
+          "pixels": [
+            1086,
+            1448
+          ],
+          "bytes": 2534509,
+          "role": "accepted new100 edit target"
+        },
+        {
+          "path": "/Users/lbeezr/.codex/worktrees/3667/Starfall/App/Assets.xcassets/SeedMoonTabletPortrait000.imageset/scene.png",
+          "sha256": "4773d215510d8e360e8cf772e860b467286b2da4f5e06b19b0f40f5e1ac2272d",
+          "pixels": [
+            1086,
+            1448
+          ],
+          "bytes": 2222291,
+          "role": "original 000 plant-state reference",
+          "immutableOriginalPath": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-6f351405-d0da-43df-bc3c-5d6730dfd800.png"
+        }
+      ]
+    },
+    {
+      "id": "tabletPortrait025-attempt1",
+      "state": 25,
+      "kind": "initial",
+      "status": "selected-source-art",
+      "prompt": "Use case: precise-object-edit.\nAsset type: Seed Moon tablet portrait25% restoration painting, EXACT1086×1448 pixels.\nInput image1 is the EDIT TARGET: the accepted new100% connected-place master. Input image2 is ONLY the PLANT/RESTORATION-STATE REFERENCE for25%; do not borrow its old isolated terrain or background.\nPrimary request: Change only the main restoration plant and its local root illumination in image1 to the25% state shown in image2. Remove the tall main stem, large leaves, golden flower/canopy and buds. Keep the same pearl/curled seed at its exact base position. The pearl has its first small warm inner light, and ONE short warm root tip begins to light in its existing seam. The rest of the root seams stay subdued, not a fully illuminated connected mint network. Still NO upright shoot, leaf pair, bud or canopy. This is only the first small sign of life, visibly between dormant000 and thin-shoot050.\nLOCK every non-restoration feature from image1: exact camera, crop and1086×1448 canvas; shell outline/cracks/mineral surfaces, pearl and scoop positions, soil, connected tending approach and every step, thick stone supports, hanging vines and surrounding vegetation, close foreground crescent/path and all its stones/plants, sky/nebula/star positions, colors and lighting outside the restoration plant/root region. Do not remove the new approach or foreground crescent. Keep surviving details in the same screen positions. Restore only the same natural starry sky where tall plant features are removed. Preserve image1's polished tangible storybook painting and connected depth. One full continuous painting; no global brightness or saturation change, shifted terrain, new objects, characters, faces, jewels, UI, text, grid, masks, clearing rectangle, vignette or added margin. Return one opaque PNG at EXACTLY1086 pixels wide×1448 pixels high, matching image1; do not output1449 rows.",
+      "referencedImagePaths": [
+        "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-22a81550-33c6-45bb-b7c5-80e76ba9eb46.png",
+        "/Users/lbeezr/.codex/worktrees/3667/Starfall/App/Assets.xcassets/SeedMoonTabletPortrait025.imageset/scene.png"
+      ],
+      "transparentBackground": false,
+      "generated": {
+        "path": "/Users/lbeezr/.codex/generated_images/01a1646d-2aa8-7960-bad9-aea39f179736/exec-8d20b6af-a052-4c24-af15-8e108898e953.png",
+        "sha256": "d0567ee9cea6aa2c907886bb80eed15930de584b53a9792ac891568be10d01cd",
+        "pixels": [
+          1086,
+          1448
+        ],
+        "bytes": 2472255
+      },
+      "sourceArtReview": {
+        "observed": "Exact1086×1448. Pearl has a small warm inner light and a short illuminated root curl at its base; no upright main shoot, leaf pair, bud or canopy. The first-light change remains local; connected approach, shell/scoop, surrounding greenery and close crescent remain visually registered.",
+        "decision": "Select for byte-identical packaging.",
+        "limitations": "The first warm root is a small cue, matching the original25% reference. Readability at native scale remains for root inspection; no native acceptance claimed."
+      },
+      "packaging": {
+        "destination": "/Users/lbeezr/.codex/worktrees/3667/Starfall/App/Assets.xcassets/SeedMoonTabletPortrait025.imageset/scene.png",
+        "status": "copied-byte-for-byte"
+      },
+      "referenceSnapshots": [
+        {
+          "path": "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-22a81550-33c6-45bb-b7c5-80e76ba9eb46.png",
+          "sha256": "9f38b83635a7e7610deb4c048d3c6c75598a525d716c39dd2a38d925c2e9d137",
+          "pixels": [
+            1086,
+            1448
+          ],
+          "bytes": 2534509,
+          "role": "accepted new100 edit target"
+        },
+        {
+          "path": "/Users/lbeezr/.codex/worktrees/3667/Starfall/App/Assets.xcassets/SeedMoonTabletPortrait025.imageset/scene.png",
+          "sha256": "b450a2915622c103017bc8eeef020372c5e7f0a85300e32d13c6ab9a93ea4acf",
+          "pixels": [
+            1086,
+            1448
+          ],
+          "bytes": 2193087,
+          "role": "original 025 plant-state reference",
+          "immutableOriginalPath": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-0bb47f13-a938-4fc4-8aeb-01634abaefba.png"
+        }
+      ]
+    },
+    {
+      "id": "tabletPortrait050-attempt1",
+      "state": 50,
+      "kind": "initial",
+      "status": "selected-source-art",
+      "prompt": "Use case: precise-object-edit.\nAsset type: Seed Moon tablet portrait50% restoration painting, EXACT1086×1448 pixels.\nInput image1 is the EDIT TARGET: the accepted new100% connected-place master. Input image2 is ONLY the PLANT/RESTORATION-STATE REFERENCE for50%; do not borrow its old isolated terrain or background.\nPrimary request: Change only the main restoration plant and its local root illumination in image1 to the50% state shown in image2. Replace the tall flowering plant with the ORIGINAL SLENDER MINT SHOOT from image2, rooted beside the same pearl at its exact base position. Match that reference's thin curving stem, modest height and two tiny pointed green leaf tips. Illuminate the existing connected root seams beneath the pearl in restrained mint, retaining the first warm pearl light. NO flower, NO bud, NO canopy and NO large broad leaves. This is the thin-shoot stage, visibly later than025 but clearly earlier than the leafy closed-bud075 state. Keep the persistent surrounding small plants/vines from image1; do not confuse them with the one main restoration shoot.\nLOCK every non-restoration feature from image1: exact camera, crop and1086×1448 canvas; shell outline/cracks/mineral surfaces, pearl and scoop positions, soil, connected tending approach and every step, thick stone supports, hanging vines and surrounding vegetation, close foreground crescent/path and all its stones/plants, sky/nebula/star positions, colors and lighting outside the restoration plant/root region. Do not remove the new approach or foreground crescent. Keep surviving details in the same screen positions. Restore only the same natural starry sky where tall plant features are removed. Preserve image1's polished tangible storybook painting and connected depth. One full continuous painting; no global brightness or saturation change, shifted terrain, new objects, characters, faces, jewels, UI, text, grid, masks, clearing rectangle, vignette or added margin. Return one opaque PNG at EXACTLY1086 pixels wide×1448 pixels high, matching image1; do not output1449 rows.",
+      "referencedImagePaths": [
+        "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-22a81550-33c6-45bb-b7c5-80e76ba9eb46.png",
+        "/Users/lbeezr/.codex/worktrees/3667/Starfall/App/Assets.xcassets/SeedMoonTabletPortrait050.imageset/scene.png"
+      ],
+      "transparentBackground": false,
+      "generated": {
+        "path": "/Users/lbeezr/.codex/generated_images/01a1646d-2aa8-7960-bad9-aea39f179736/exec-6e046e1a-0a02-4dce-b4ba-c4c47dffee68.png",
+        "sha256": "203b3451f539eca0af6a3421b66a9d76daa57f9b12bd474a55b0f3b8c5f0dadc",
+        "pixels": [
+          1086,
+          1448
+        ],
+        "bytes": 2471105
+      },
+      "sourceArtReview": {
+        "observed": "Exact1086×1448. Slender curling main shoot with two small green leaf tips matches the original50% growth stage; connected mint seams light beneath the warm pearl. No bud, flower, canopy or broad main leaves. Accepted approach/support/crescent topology and background remain visually registered.",
+        "decision": "Select for byte-identical packaging.",
+        "limitations": "Source-art review only. Native visibility, five-state crossfades, largest text, rotation, motion and physical acceptance remain root-owned."
+      },
+      "packaging": {
+        "destination": "/Users/lbeezr/.codex/worktrees/3667/Starfall/App/Assets.xcassets/SeedMoonTabletPortrait050.imageset/scene.png",
+        "status": "copied-byte-for-byte"
+      },
+      "referenceSnapshots": [
+        {
+          "path": "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-22a81550-33c6-45bb-b7c5-80e76ba9eb46.png",
+          "sha256": "9f38b83635a7e7610deb4c048d3c6c75598a525d716c39dd2a38d925c2e9d137",
+          "pixels": [
+            1086,
+            1448
+          ],
+          "bytes": 2534509,
+          "role": "accepted new100 edit target"
+        },
+        {
+          "path": "/Users/lbeezr/.codex/worktrees/3667/Starfall/App/Assets.xcassets/SeedMoonTabletPortrait050.imageset/scene.png",
+          "sha256": "e24980ed839a67222a1b5e6015dab530b7a4597dc6a1552c56b97493dc2fdfb8",
+          "pixels": [
+            1086,
+            1448
+          ],
+          "bytes": 2207129,
+          "role": "original 050 plant-state reference",
+          "immutableOriginalPath": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-8ce9d300-9842-4d2c-9137-2aa80dec1911.png"
+        }
+      ]
+    }
+  ],
+  "referenceSnapshotNote": "References record the exact input bytes before packaging. Original000/025/050 asset paths were later replaced by selected candidates; immutableOriginalPath identifies the prior generated source retained by October19 provenance.",
+  "selectedAssets": [
+    {
+      "family": "tabletPortrait",
+      "milestone": 0,
+      "state": 0,
+      "asset": "App/Assets.xcassets/SeedMoonTabletPortrait000.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a1646d-2aa8-7960-bad9-aea39f179736/exec-ad180c78-6080-4532-8829-520a0bcb00bf.png",
+      "sha256": "fe4d07f77e4bb76dac87921cc25c07f8121ef7f3deafb1d12531bd8e31b7c5a5",
+      "pixels": [
+        1086,
+        1448
+      ],
+      "bytes": 2474354,
+      "byteIdentical": true
+    },
+    {
+      "family": "tabletPortrait",
+      "milestone": 25,
+      "state": 25,
+      "asset": "App/Assets.xcassets/SeedMoonTabletPortrait025.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a1646d-2aa8-7960-bad9-aea39f179736/exec-8d20b6af-a052-4c24-af15-8e108898e953.png",
+      "sha256": "d0567ee9cea6aa2c907886bb80eed15930de584b53a9792ac891568be10d01cd",
+      "pixels": [
+        1086,
+        1448
+      ],
+      "bytes": 2472255,
+      "byteIdentical": true
+    },
+    {
+      "family": "tabletPortrait",
+      "milestone": 50,
+      "state": 50,
+      "asset": "App/Assets.xcassets/SeedMoonTabletPortrait050.imageset/scene.png",
+      "source": "/Users/lbeezr/.codex/generated_images/01a1646d-2aa8-7960-bad9-aea39f179736/exec-6e046e1a-0a02-4dce-b4ba-c4c47dffee68.png",
+      "sha256": "203b3451f539eca0af6a3421b66a9d76daa57f9b12bd474a55b0f3b8c5f0dadc",
+      "pixels": [
+        1086,
+        1448
+      ],
+      "bytes": 2471105,
+      "byteIdentical": true
+    }
+  ],
+  "summary": {
+    "attempts": 4,
+    "selected": 3,
+    "rejected": 1,
+    "repairsUsed": {
+      "000": 1,
+      "025": 0,
+      "050": 0
+    },
+    "unresolvedStates": [],
+    "preservedGeneratedOutputs": true,
+    "pixelEditsOrResizing": false,
+    "nativeAcceptanceClaimed": false,
+    "risks": [
+      "25% root/pearl change is intentionally small and requires native-scale review.",
+      "Visual registration is source-reviewed, not proof of pixel-identical background preservation.",
+      "Root owns the final production manifest and native acceptance."
+    ]
+  }
+}

@@ -107,8 +107,9 @@ struct RestorationArtwork {
         }
         if challenge == .seedMoon && composition == .tabletLandscape {
             switch milestone {
-            case .unrestored, .quarter, .half: return CGSize(width: 1446, height: 1087)
-            case .threeQuarters, .complete: return CGSize(width: 1447, height: 1087)
+            case .unrestored: return CGSize(width: 1445, height: 1088)
+            case .half: return CGSize(width: 1446, height: 1087)
+            case .quarter, .threeQuarters, .complete: return CGSize(width: 1447, height: 1087)
             }
         }
         switch composition {
