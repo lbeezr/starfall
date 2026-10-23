@@ -10,6 +10,7 @@ VOICEOVER_RC = {
         'testVoiceOverSpeechActivationPropsClearAndMenuFocus',
         'testVoiceOverLargestTextOverflowAndReplay',
         'testVoiceOverAutomaticRainMenuAndBackground',
+        'testVoiceOverCurrentStoryActionsAndRestore',
         'testVoiceOverFullFirstLightRoundRestoreAndReplay',
         'testVoiceOverOpalIdentityActivationAndStormCue'},
 }
