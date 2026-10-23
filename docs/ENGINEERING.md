@@ -553,3 +553,7 @@ After verified installation, corrected main run `39272769637` passed preflight b
 ## Observatory interface physical acceptance — October 19, 2026
 
 The [native interface evidence](evidence/observatory-ui-native-2026-10-19/README.md) separates source-bound simulator interaction, inspected layout and sampled normal-motion phases. The new edge HUD, authored controls and large-text layouts do not establish physical contrast, thumb comfort or sustained frame pacing. Trigger: the next physical play session after canonical delivery, or RC. Inspect bright scenery behind the edge instruments, repeated dense clears, readable bottom guidance and menu scrolling on the original phone; retain observations before tuning. Minimum-iOS and full actual VoiceOver remain the existing RC gates.
+
+## Seed Moon scenic HUD contrast review
+
+[Cohesion goal 5](evidence/cohesion-goal-05-seed-place-2026-10-23/README.md) visibly places brighter pale stone behind forecast/pause in default phone/tablet views. Glyphs remain identifiable and native controls pass, but contrast is lower than the old navy background. Trigger: goal 10 integrated HUD review. The new11,000-point score also extends over the phone50% shoot’s upper stem while remaining readable in the actual clear frames. Inspect shared score/forecast/utility backing on the bright Seed approach and dark Lantern/Ribbon skies at default/AX text; correct the shared presentation owner if needed, preserving targets and scenery. This is a visual review risk, not a reproduced input failure.

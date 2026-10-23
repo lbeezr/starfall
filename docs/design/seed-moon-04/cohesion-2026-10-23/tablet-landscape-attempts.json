@@ -1,0 +1,220 @@
+{
+  "schemaVersion": 1,
+  "family": "tabletLandscape",
+  "date": "2026-10-23",
+  "status": "All five landscape sources packaged; exact per-state dimensions registered; final native validation pending",
+  "requestedDimensions": {
+    "width": 1446,
+    "height": 1087
+  },
+  "maximumRepairsPerState": 2,
+  "scope": "000/025/050 plant-root variants of corrected high-route master; no native acceptance claimed",
+  "master": {
+    "path": "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-1a4665bc-eaa9-4fb2-aa50-7e75c243e2c5.png",
+    "sha256": "9dc3ac2bc6548b3b4e3d467c80c076eb4966d39065a5436be8cd30d723f4cd68",
+    "width": 1447,
+    "height": 1087,
+    "bytes": 2626267
+  },
+  "attempts": [
+    {
+      "id": "tabletLandscape000-a",
+      "state": "000",
+      "tool": "image_gen.imagegen",
+      "transparentBackground": false,
+      "prompt": "Use case: precise-object-edit. Production Seed Moon tablet-landscape restoration variant, opaque PNG. Image 1 is the EDIT TARGET and authoritative corrected 100% architecture/camera/lighting master. Image 2 is ONLY a reference for the pearl/plant/root restoration state; do not copy its isolated composition or empty architecture.\nOutput exactly 1446 x 1087 pixels, one pixel narrower than image 1. Keep the left-origin registration; do not rescale or recenter the scene. Preserve the master in every respect except the plant/root features specified below.\nMake the plant 0% restored: remove the completed flower, all flower petals, canopy leaves, stalk and emerging shoot above the pearl. Keep the original pearl seed in place, dormant and softly pearlescent rather than internally lit. Its existing roots are dry/dormant and unlit, with no mint emission or first glowing root tip. No shoot, bud or flower. Match only this plant/root condition from image 2.\nLOCKED INVARIANTS: Keep every corrected stone, stair, support and hanging vine of image 1 registered. The high staircase remains left of x455 until the upper band. For x478 through x1050, ALL stone/supports/hanging foliage stay ABOVE y265. Preserve quiet continuous sky in the board region x478..970, y297..790. Never bring back the rejected diagonal route through the board. Keep the existing mineral shell, pearl/light center at normalized (0.170, 0.355), scoop, shell rim, soil bed, peripheral small foliage, top high route, continuous foreground crescent, camera, scale, sky/nebula/stars/clouds, crop and overall brightness identical to image 1. Remove mature plant features cleanly into the same underlying sky, without a patch, fog mask or new object. Only local plant/root light may change; no global brightness or palette shift. No new decorations, architecture, UI, text, grid or characters.",
+      "references": [
+        {
+          "path": "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-1a4665bc-eaa9-4fb2-aa50-7e75c243e2c5.png",
+          "sha256": "9dc3ac2bc6548b3b4e3d467c80c076eb4966d39065a5436be8cd30d723f4cd68",
+          "width": 1447,
+          "height": 1087,
+          "bytes": 2626267,
+          "role": "edit target; corrected high-route architecture/camera/lighting"
+        },
+        {
+          "path": "/Users/lbeezr/.codex/worktrees/3667/Starfall/App/Assets.xcassets/SeedMoonTabletLandscape000.imageset/scene.png",
+          "sha256": "abd1c14a4cbd9b0f506aaafcc277077226fb1f804d8bc2a61e8e3cbdc4db08bc",
+          "width": 1446,
+          "height": 1087,
+          "bytes": 2284648,
+          "role": "plant/root state only"
+        }
+      ],
+      "status": "rejected; repair requested",
+      "generated": {
+        "path": "/Users/lbeezr/.codex/generated_images/01a16466-3901-7e00-b62c-adf0e2060e31/exec-6a9c8483-43af-4223-91a8-9f19bd775d92.png",
+        "width": 1446,
+        "height": 1088,
+        "bytes": 2527609,
+        "sha256": "ffca2b1fc97810fa7157279f4405e9d4ad91dc04cf0e6ac541da0e0b0282eefd"
+      },
+      "inspection": "Inspected generated output: flower and shoot removed, high route and foreground crescent retained; lower-left shell still carries mature connected mint glow. Dimensions also miss exact requirement.",
+      "decision": "rejected"
+    },
+    {
+      "id": "tabletLandscape025-a",
+      "state": "025",
+      "tool": "image_gen.imagegen",
+      "transparentBackground": false,
+      "prompt": "Use case: precise-object-edit. Production Seed Moon tablet-landscape restoration variant, opaque PNG. Image 1 is the EDIT TARGET and authoritative corrected 100% architecture/camera/lighting master. Image 2 is ONLY a reference for the pearl/plant/root restoration state; do not copy its isolated composition or empty architecture.\nOutput exactly 1446 x 1087 pixels, one pixel narrower than image 1. Keep the left-origin registration; do not rescale or recenter the scene. Preserve the master in every respect except the plant/root features specified below.\nMake the plant 25% restored: remove the completed flower, all flower petals, canopy leaves, stalk and emerging shoot above the pearl. Keep the pearl seed in place. Show just the first small warm mint-gold root tip returning light on the shell's front-left, as in image 2; other roots remain dormant/unlit. No shoot, bud or flower. Match only this plant/root condition from image 2.\nLOCKED INVARIANTS: Keep every corrected stone, stair, support and hanging vine of image 1 registered. The high staircase remains left of x455 until the upper band. For x478 through x1050, ALL stone/supports/hanging foliage stay ABOVE y265. Preserve quiet continuous sky in the board region x478..970, y297..790. Never bring back the rejected diagonal route through the board. Keep the existing mineral shell, pearl/light center at normalized (0.170, 0.355), scoop, shell rim, soil bed, peripheral small foliage, top high route, continuous foreground crescent, camera, scale, sky/nebula/stars/clouds, crop and overall brightness identical to image 1. Remove mature plant features cleanly into the same underlying sky, without a patch, fog mask or new object. Only local plant/root light may change; no global brightness or palette shift. No new decorations, architecture, UI, text, grid or characters.",
+      "references": [
+        {
+          "path": "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-1a4665bc-eaa9-4fb2-aa50-7e75c243e2c5.png",
+          "sha256": "9dc3ac2bc6548b3b4e3d467c80c076eb4966d39065a5436be8cd30d723f4cd68",
+          "width": 1447,
+          "height": 1087,
+          "bytes": 2626267,
+          "role": "edit target; corrected high-route architecture/camera/lighting"
+        },
+        {
+          "path": "/Users/lbeezr/.codex/worktrees/3667/Starfall/App/Assets.xcassets/SeedMoonTabletLandscape025.imageset/scene.png",
+          "sha256": "321a206c245c1eed8c10a7c565fd203e9cd4ef6d4afbd5e33f21817fcb11d1fe",
+          "width": 1446,
+          "height": 1087,
+          "bytes": 2221331,
+          "role": "plant/root state only"
+        }
+      ],
+      "status": "rejected; repair requested",
+      "generated": {
+        "path": "/Users/lbeezr/.codex/generated_images/01a16466-3901-7e00-b62c-adf0e2060e31/exec-b25cd07c-60f3-4b73-a92e-6df7694d3da9.png",
+        "width": 1447,
+        "height": 1087,
+        "bytes": 2556414,
+        "sha256": "3faf926cdbbe21707330e4ebc3c1d88ee44f8130c21d7f070f3600437b90ab24"
+      },
+      "inspection": "Inspected generated output: flower and shoot removed, high route and foreground crescent retained; lower-left shell still carries mature connected mint glow. Dimensions also miss exact requirement.",
+      "decision": "rejected"
+    },
+    {
+      "id": "tabletLandscape050-a",
+      "state": "050",
+      "tool": "image_gen.imagegen",
+      "transparentBackground": false,
+      "prompt": "Use case: precise-object-edit. Production Seed Moon tablet-landscape restoration variant, opaque PNG. Image 1 is the EDIT TARGET and authoritative corrected 100% architecture/camera/lighting master. Image 2 is ONLY a reference for the pearl/plant/root restoration state; do not copy its isolated composition or empty architecture.\nOutput exactly 1446 x 1087 pixels, one pixel narrower than image 1. Keep the left-origin registration; do not rescale or recenter the scene. Preserve the master in every respect except the plant/root features specified below.\nMake the plant 50% restored: replace the completed flower and large canopy with the original small curling mint shoot and its tiny first leaf above the pearl, matching the size, silhouette and placement in image 2. Keep the pearl seed in place and show the connected mint-lit roots on the shell's front-left. No bud, flower, large canopy or mature leaves. Match only this plant/root condition from image 2.\nLOCKED INVARIANTS: Keep every corrected stone, stair, support and hanging vine of image 1 registered. The high staircase remains left of x455 until the upper band. For x478 through x1050, ALL stone/supports/hanging foliage stay ABOVE y265. Preserve quiet continuous sky in the board region x478..970, y297..790. Never bring back the rejected diagonal route through the board. Keep the existing mineral shell, pearl/light center at normalized (0.170, 0.355), scoop, shell rim, soil bed, peripheral small foliage, top high route, continuous foreground crescent, camera, scale, sky/nebula/stars/clouds, crop and overall brightness identical to image 1. Remove mature plant features cleanly into the same underlying sky, without a patch, fog mask or new object. Only local plant/root light may change; no global brightness or palette shift. No new decorations, architecture, UI, text, grid or characters.",
+      "references": [
+        {
+          "path": "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-1a4665bc-eaa9-4fb2-aa50-7e75c243e2c5.png",
+          "sha256": "9dc3ac2bc6548b3b4e3d467c80c076eb4966d39065a5436be8cd30d723f4cd68",
+          "width": 1447,
+          "height": 1087,
+          "bytes": 2626267,
+          "role": "edit target; corrected high-route architecture/camera/lighting"
+        },
+        {
+          "path": "/Users/lbeezr/.codex/worktrees/3667/Starfall/App/Assets.xcassets/SeedMoonTabletLandscape050.imageset/scene.png",
+          "sha256": "e759c6fd2be63972ecb9b4f7d08bb2f29f95c8c1328a78431ed37f7b45cf26d0",
+          "width": 1446,
+          "height": 1087,
+          "bytes": 2291178,
+          "role": "plant/root state only"
+        }
+      ],
+      "status": "byte-identically packaged; native review pending",
+      "generated": {
+        "path": "/Users/lbeezr/.codex/generated_images/01a16466-3901-7e00-b62c-adf0e2060e31/exec-41571bf9-20b5-4830-9111-ecbc6087dc69.png",
+        "width": 1446,
+        "height": 1087,
+        "bytes": 2559862,
+        "sha256": "4eb0d674d6bbcd2d15ca9cd10bd7d2b1d68fceaa0f8a58e4a1f6aa8969604208"
+      },
+      "inspection": "Inspected generated output: original small curled shoot/tiny leaf, pearl and connected mint roots, no bud/flower. Corrected high route and foreground crescent retained; board region remains sky. Exact requested dimensions. Qualitative source-art inspection only.",
+      "decision": "selected",
+      "packagedPath": "/Users/lbeezr/.codex/worktrees/3667/Starfall/App/Assets.xcassets/SeedMoonTabletLandscape050.imageset/scene.png",
+      "packagedSha256": "4eb0d674d6bbcd2d15ca9cd10bd7d2b1d68fceaa0f8a58e4a1f6aa8969604208"
+    },
+    {
+      "id": "tabletLandscape000-b",
+      "state": "000",
+      "repairNumber": 1,
+      "tool": "image_gen.imagegen",
+      "transparentBackground": false,
+      "prompt": "Use case: precise-object-edit. Repair ONLY the root-light state and exact pixel dimensions of this Seed Moon tablet-landscape variant.\nImage 1 is the EDIT TARGET, a nearly correct earlier-state candidate. Image 2 is ONLY the original 000% plant/root condition reference. Preserve image 1's connected architecture and lighting, never copy image 2's missing routes.\nImage 1 is 1446 x 1088. Output MUST be exactly 1446 x 1087 pixels: remove only its final bottom pixel row, without rescaling, recentering or otherwise changing the crop.\nThe pearl must be dormant and cool pearlescent. There must be NO luminous root tip, NO luminous mint/green connected root network, NO shoot, bud or flower. Change the bright mint-green branching root lines on the shell's lower/front-left surface (approximately x140..300, y470..580) into dry, unlit grey-violet root/seam traces. Eliminate their green emission completely.\nThe existing bright branching mint paths on image 1's lower shell are precisely what must be corrected; do not preserve their glow. Image 2 shows how those roots look at this restoration state. Leave natural non-emissive green foliage alone. Preserve the shell silhouette, scoop, pearl center (0.170, 0.355), soil, every stair/stone/support/hanging vine, top high route, foreground crescent, camera, sky/nebula/clouds/stars and overall scene brightness. Only local root/pearl light changes. The staircase stays left of x455 until the upper band; all stone/supports/hanging foliage for x478..1050 remain above y265; x478..970, y297..790 remains quiet sky. No diagonal route, new objects, UI, text, characters, mature plant or global light/palette drift.",
+      "references": [
+        {
+          "path": "/Users/lbeezr/.codex/generated_images/01a16466-3901-7e00-b62c-adf0e2060e31/exec-6a9c8483-43af-4223-91a8-9f19bd775d92.png",
+          "width": 1446,
+          "height": 1088,
+          "bytes": 2527609,
+          "sha256": "ffca2b1fc97810fa7157279f4405e9d4ad91dc04cf0e6ac541da0e0b0282eefd",
+          "role": "edit target; rejected prior attempt retained for exact architecture and state-local repair"
+        },
+        {
+          "path": "/Users/lbeezr/.codex/worktrees/3667/Starfall/App/Assets.xcassets/SeedMoonTabletLandscape000.imageset/scene.png",
+          "sha256": "abd1c14a4cbd9b0f506aaafcc277077226fb1f804d8bc2a61e8e3cbdc4db08bc",
+          "width": 1446,
+          "height": 1087,
+          "bytes": 2284648,
+          "role": "plant/root state only"
+        }
+      ],
+      "status": "unintegrated; exact dimensions differ; root registration decision pending",
+      "generated": {
+        "path": "/Users/lbeezr/.codex/generated_images/01a16466-3901-7e00-b62c-adf0e2060e31/exec-a159380d-26f2-4751-9bfc-eb87d67ca8f0.png",
+        "width": 1445,
+        "height": 1088,
+        "bytes": 2532317,
+        "sha256": "0692d4f7044a74f811f4d3d4f78dea1eb808aa559cc59ae693f79b6b1dca541a"
+      },
+      "decision": "not packaged; visually suitable source candidate pending explicit registration/native review",
+      "inspection": "Inspected generated output: cool dormant pearl, no shoot/bud/flower, former lower-shell mint root network is unlit grey-violet. High route, shell/scoop and foreground crescent remain registered by qualitative source inspection; quiet board sky retained. Actual 1445x1088 misses requested 1446x1087.",
+      "stopReason": "Parent instructed no further dimension chasing after visually suitable second attempt; return exact native PNG unintegrated.",
+      "registrationDecision": {
+        "decision": "Selected exact generated bytes; native validation pending",
+        "reason": "Preserve the visually suitable authored state and register its actual pixel dimensions through the existing per-state sourceSize owner. No pixel resampling/cropping.",
+        "packagedPath": "App/Assets.xcassets/SeedMoonTabletLandscape000.imageset/scene.png",
+        "sha256": "0692d4f7044a74f811f4d3d4f78dea1eb808aa559cc59ae693f79b6b1dca541a"
+      }
+    },
+    {
+      "id": "tabletLandscape025-b",
+      "state": "025",
+      "repairNumber": 1,
+      "tool": "image_gen.imagegen",
+      "transparentBackground": false,
+      "prompt": "Use case: precise-object-edit. Repair ONLY the root-light state and exact pixel dimensions of this Seed Moon tablet-landscape variant.\nImage 1 is the EDIT TARGET, a nearly correct earlier-state candidate. Image 2 is ONLY the original 025% plant/root condition reference. Preserve image 1's connected architecture and lighting, never copy image 2's missing routes.\nImage 1 is 1447 x 1087. Output MUST be exactly 1446 x 1087 pixels: remove only its final rightmost pixel column, without rescaling, recentering or otherwise changing the crop.\nKeep ONLY the small first warm mint-gold root tip at the pearl bed (approximately x190..220, y430..455). All other root/seam paths on the shell's lower/front-left surface (approximately x140..300, y470..580) must be dormant, unlit grey-violet traces, with NO connected luminous mint network. No shoot, bud or flower.\nThe existing bright branching mint paths on image 1's lower shell are precisely what must be corrected; do not preserve their glow. Image 2 shows how those roots look at this restoration state. Leave natural non-emissive green foliage alone. Preserve the shell silhouette, scoop, pearl center (0.170, 0.355), soil, every stair/stone/support/hanging vine, top high route, foreground crescent, camera, sky/nebula/clouds/stars and overall scene brightness. Only local root/pearl light changes. The staircase stays left of x455 until the upper band; all stone/supports/hanging foliage for x478..1050 remain above y265; x478..970, y297..790 remains quiet sky. No diagonal route, new objects, UI, text, characters, mature plant or global light/palette drift.",
+      "references": [
+        {
+          "path": "/Users/lbeezr/.codex/generated_images/01a16466-3901-7e00-b62c-adf0e2060e31/exec-b25cd07c-60f3-4b73-a92e-6df7694d3da9.png",
+          "width": 1447,
+          "height": 1087,
+          "bytes": 2556414,
+          "sha256": "3faf926cdbbe21707330e4ebc3c1d88ee44f8130c21d7f070f3600437b90ab24",
+          "role": "edit target; rejected prior attempt retained for exact architecture and state-local repair"
+        },
+        {
+          "path": "/Users/lbeezr/.codex/worktrees/3667/Starfall/App/Assets.xcassets/SeedMoonTabletLandscape025.imageset/scene.png",
+          "sha256": "321a206c245c1eed8c10a7c565fd203e9cd4ef6d4afbd5e33f21817fcb11d1fe",
+          "width": 1446,
+          "height": 1087,
+          "bytes": 2221331,
+          "role": "plant/root state only"
+        }
+      ],
+      "status": "unintegrated; exact dimensions differ; root registration decision pending",
+      "generated": {
+        "path": "/Users/lbeezr/.codex/generated_images/01a16466-3901-7e00-b62c-adf0e2060e31/exec-a517dc61-f376-4134-9173-77b960441c8c.png",
+        "width": 1447,
+        "height": 1087,
+        "bytes": 2545947,
+        "sha256": "3d30378b8aae486b4afb81bd8bc2f488ef9a38440a30338788603c91225c6b45"
+      },
+      "decision": "not packaged; visually suitable source candidate pending explicit registration/native review",
+      "inspection": "Inspected generated output: pearl, first small root tip at bed, no shoot/bud/flower, lower-shell connected root network no longer emits mint light. High route, shell/scoop and foreground crescent remain registered by qualitative source inspection; quiet board sky retained. Actual 1447x1087 misses requested 1446x1087.",
+      "stopReason": "Parent instructed no further dimension chasing after visually suitable second attempt; return exact native PNG unintegrated.",
+      "registrationDecision": {
+        "decision": "Selected exact generated bytes; native validation pending",
+        "reason": "Preserve the visually suitable authored state and register its actual pixel dimensions through the existing per-state sourceSize owner. No pixel resampling/cropping.",
+        "packagedPath": "App/Assets.xcassets/SeedMoonTabletLandscape025.imageset/scene.png",
+        "sha256": "3d30378b8aae486b4afb81bd8bc2f488ef9a38440a30338788603c91225c6b45"
+      }
+    }
+  ],
+  "limits": [
+    "Five built-in imagegen calls total; one repair for 000 and one for 025, no additional dimension-only repairs.",
+    "No image resizing, cropping, pixel editing or transcoding performed by scripts; selected 050 copied byte-identically.",
+    "Source artwork inspected qualitatively; no native, motion, interaction, crop, sourceSize or physical-device acceptance claimed.",
+    "Original asset metadata remains in production-assets history; selected 000b/025b copied byte-identically with exact native sourceSize registration."
+  ]
+}
