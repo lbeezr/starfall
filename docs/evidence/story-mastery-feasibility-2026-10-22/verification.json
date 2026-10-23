@@ -1,0 +1,231 @@
+{
+  "base": "27252f6677f323d80206fe7837b59772dfcf4d2e",
+  "baseTree": "e049829a78125db1a526b0091e5a68d22bf83860",
+  "baselineUnchangedProductionBuildInputsBeforeIntegration": 546,
+  "changedSwiftPaths": [
+    "Tests/StarfallCoreTests/StoryFourStarLinePolicyTests.swift"
+  ],
+  "coreInputs": {
+    "Sources/StarfallCore/ConstellationFixture.swift": "9c8038dd4b51304f3c65dffc8f966bbe65fafa78b11d6ecdfd300895532cd253",
+    "Sources/StarfallCore/CriticalMassFixture.swift": "5ad27dffd95dd26171a107536190ae69a38f622169b50ea9a4d14df0a364d4f9",
+    "Sources/StarfallCore/CriticalMassRule.swift": "a9a059fde9cff9d6b0a1f86743eb7e82b83825d14776f82d81604c40fe436eba",
+    "Sources/StarfallCore/DuskFixture.swift": "9740935783394c05fdb591557c9ebdb15426228313f7245ed82ba87cf87dc26f",
+    "Sources/StarfallCore/DuskRules.swift": "76d3a62cbfa2da4674ebe3078d4e4b3c01282991fb151a21ca1c38c38beec8d6",
+    "Sources/StarfallCore/FallingSky.swift": "fb09bc8e6c4a19ad92c553490558a50281dcbf26e410aacdd8ec2a9f1a12335a",
+    "Sources/StarfallCore/Game.swift": "9ab2d57af8fe0ee804ce56e762eb5833a08ae5f39e8916ffaa0fe708d90e7086",
+    "Sources/StarfallCore/GravityFieldRules.swift": "71caa1ec007d068c7507dbeb883b5e7052ea58e84121182a30a8d267695007de",
+    "Sources/StarfallCore/GravityOpportunityFixture.swift": "fe410f41722d690eec3ac67472bf82e421912e772252fdf4ac41819f50c08e4a",
+    "Sources/StarfallCore/HistoricalGravityState.swift": "3f3e16e69efd5f856f06407795ef5288f7231e76b1df334925440f6ae5b573cc",
+    "Sources/StarfallCore/RefillMapping.swift": "608be41f40c945b18aba5512bac16b7c4de4eb8a2747d6fe54a895392b38e5f7",
+    "Sources/StarfallCore/SkyBoardSettling.swift": "56f8d3e773946ecac6843b5acadfdc2168b54259a8b9e581d9e34aefea7690a1",
+    "Sources/StarfallCore/SkyCadence.swift": "a01a1ab5fe50e7677bd2e1af75563a5bcc316e1828e921e7da2f572202b76b8c",
+    "Sources/StarfallCore/SkyGeneration.swift": "03d62817aaace9a7354cffb15e7735a98246ed9d75643f0e354fab2aeb2d2d97",
+    "Sources/StarfallCore/SkyLesson.swift": "5f8510e0beff4937da7382ece2d9fe6dc285581959a69eb8762d31482137fab9",
+    "Sources/StarfallCore/SkyPresentationPhase.swift": "8847dab4792f151c3fecae3747b39e71b820c02caf0f53559371111e6c9d1f82",
+    "Sources/StarfallCore/SkyResolutionPhase.swift": "47ac2381120e8316106f0fbdb00d32f973cc35f6f9cc80a0e9c2353672c0266a",
+    "Sources/StarfallCore/SkyTechniqueExample.swift": "75c38131723930f1e5884b8d9e87ea8c0cce975b81bddf9ef89212d627e77c26",
+    "Sources/StarfallCore/SkyTutorial.swift": "f65fac92e2eaa1d19c11aef8ff370368fe5512e7bec4f644c3356960ce6d5f57",
+    "Sources/StarfallCore/StarRecipe.swift": "bec0ea8692311d8b31bb2696696b67e3cae212d837638fc835b4ea30403c76e6",
+    "Sources/StarfallCore/StarfallBalance.swift": "32525ba2f346cf843863b1cb1cba8a2fab66d088b9dc7ac308867f1520c329ec",
+    "Sources/StarfallCore/StarfallChallenge.swift": "714330f1ed5fb52f07917a56ad88912df026b2341fb890e4d768a242049bbbd9",
+    "Sources/StarfallCore/StarlightRestoration.swift": "66b48ac3dccde26b78a534b42241c8ba2da3a81ddee7e0779fb18fad9937accb",
+    "Sources/StarfallCore/StoryChallenge.swift": "10b6cec86c821de48258a196d1f67d136c9647420350783cebe2b4494e0c3053",
+    "Sources/StarfallCore/StoryScore.swift": "704428ec8375b4cbaca8e84370f8e0c7915be62d8fbdf75da7addb2dd6904277",
+    "Sources/StarfallCore/WorldJourney.swift": "5cf0887beb4ab0fc74733eebbfbb84f0b6a21af9444641546cb799b180889036"
+  },
+  "documentationChecks": {
+    "localLinkTargets": 634,
+    "markdownFiles": 8,
+    "renderedDocumentInspection": false
+  },
+  "environment": {
+    "host": "macOS27.0.1 arm64",
+    "python": "3.9.6",
+    "swift": "6.4 (swiftlang-6.4.0.34.1)",
+    "xcode": "27.1 (27A9275)"
+  },
+  "finalHarnessBuild": {
+    "command": "swift build --package-path /private/tmp/starfall-mastery-20261023/project --scratch-path /private/tmp/starfall-mastery-20261023/verified-harness -c release --disable-sandbox",
+    "configuration": "Release",
+    "elapsedSeconds": 9.715,
+    "result": "passed",
+    "standardCompilerAccess": true
+  },
+  "finalHarnessExecution": {
+    "bestScore": 22000,
+    "jointAlternativeFound": false,
+    "result": "passed",
+    "searchCompletedAttempts": 256,
+    "searchElapsedSeconds": 0.1819819211959839,
+    "searchUniquePaths": 74
+  },
+  "fullCoreTests": {
+    "elapsedSeconds": 43.308,
+    "failed": 0,
+    "passed": 241,
+    "skipped": 0,
+    "testExecutionSeconds": 19.358
+  },
+  "genericDebugBuild": {
+    "destination": "generic/platform=iOS Simulator",
+    "elapsedSeconds": 21.728,
+    "result": "passed",
+    "sdk": "installed iOS Simulator SDK",
+    "simulatorBooted": false
+  },
+  "goldenActionsSHA256": "db119e42f04ea2a3329d94a296d272fa33b07a0061945f5ead98bbdd58055704",
+  "harnessSHA256": "c528a2ed654079d5f9c74ffa0c720a31e08b3128f6e5f1633710cb4c5e3b4fd0",
+  "integration": {
+    "base": "fba8d11bb60caf0db8b5b8d0f2dfc0ebe5d26ad5",
+    "coreAndPolicyInputsByteIdenticalToFullTests": true,
+    "genericDebugBuild": {
+      "elapsedSeconds": 7.3,
+      "error": null,
+      "exitCode": 0,
+      "limitSeconds": 600.0,
+      "stage": "mastery-integrated-debug",
+      "startedUTC": "2026-10-23T04:05:38.116845+00:00"
+    },
+    "note": "Shared documentation conflicts preserved both entries. Only upstream App/native inputs changed; research tests/Core remained identical, so full Core suite was not repeated.",
+    "productionChangesFromThisResearch": [],
+    "upstreamPR": 269
+  },
+  "originalPolicySHA256": "409c2ab4c763ce460112ce7485eb259f3e47fefcd0850d1b1ec257689dcd9a77",
+  "policySHA256": "a2d9d100051adcfbb76fc94474f21cae9461ae9c7932fa78f3dfc07b316ea5f4",
+  "receipts": [
+    {
+      "elapsedSeconds": 0.648,
+      "error": null,
+      "exitCode": 1,
+      "limitSeconds": 120.0,
+      "stage": "mastery-harness-build",
+      "startedUTC": "2026-10-23T03:52:27.895580+00:00"
+    },
+    {
+      "elapsedSeconds": 8.871,
+      "error": null,
+      "exitCode": 1,
+      "limitSeconds": 120.0,
+      "stage": "mastery-harness-build-local-cache",
+      "startedUTC": "2026-10-23T03:52:37.409816+00:00"
+    },
+    {
+      "elapsedSeconds": 2.155,
+      "error": null,
+      "exitCode": 1,
+      "limitSeconds": 120.0,
+      "stage": "mastery-harness-build-fixed",
+      "startedUTC": "2026-10-23T03:52:58.011990+00:00"
+    },
+    {
+      "elapsedSeconds": 2.71,
+      "error": null,
+      "exitCode": 1,
+      "limitSeconds": 60.0,
+      "stage": "mastery-search-build",
+      "startedUTC": "2026-10-23T03:55:46.927248+00:00"
+    },
+    {
+      "elapsedSeconds": 12.844,
+      "error": null,
+      "exitCode": 1,
+      "limitSeconds": 60.0,
+      "stage": "mastery-search-instrumentation-build",
+      "startedUTC": "2026-10-23T04:00:03.435151+00:00"
+    },
+    {
+      "elapsedSeconds": 0.146,
+      "error": null,
+      "exitCode": 0,
+      "limitSeconds": 45.0,
+      "stage": "mastery-golden-audit",
+      "startedUTC": "2026-10-23T03:53:10.120300+00:00"
+    },
+    {
+      "elapsedSeconds": 0.266,
+      "error": null,
+      "exitCode": 0,
+      "limitSeconds": 200.0,
+      "stage": "mastery-bounded-search",
+      "startedUTC": "2026-10-23T03:56:16.030743+00:00"
+    },
+    {
+      "elapsedSeconds": 0.318,
+      "error": null,
+      "exitCode": 0,
+      "limitSeconds": 200.0,
+      "stage": "mastery-search-identical-policy-instrumented",
+      "startedUTC": "2026-10-23T04:00:16.406850+00:00"
+    },
+    {
+      "elapsedSeconds": 10.161,
+      "error": null,
+      "exitCode": 0,
+      "limitSeconds": 120.0,
+      "stage": "mastery-focused-policy-resolver",
+      "startedUTC": "2026-10-23T03:57:44.261451+00:00"
+    },
+    {
+      "elapsedSeconds": 21.728,
+      "error": null,
+      "exitCode": 0,
+      "limitSeconds": 600.0,
+      "stage": "mastery-debug",
+      "startedUTC": "2026-10-23T03:50:42.826145+00:00"
+    },
+    {
+      "elapsedSeconds": 43.308,
+      "error": null,
+      "exitCode": 0,
+      "limitSeconds": 240.0,
+      "stage": "mastery-core-full",
+      "startedUTC": "2026-10-23T04:00:03.519673+00:00"
+    },
+    {
+      "elapsedSeconds": 9.715,
+      "error": null,
+      "exitCode": 0,
+      "limitSeconds": 180.0,
+      "stage": "mastery-harness-release-verified",
+      "startedUTC": "2026-10-23T04:01:22.009947+00:00"
+    },
+    {
+      "elapsedSeconds": 0.353,
+      "error": null,
+      "exitCode": 0,
+      "limitSeconds": 200.0,
+      "stage": "mastery-harness-verified-execution",
+      "startedUTC": "2026-10-23T04:04:21.048417+00:00"
+    },
+    {
+      "elapsedSeconds": 7.3,
+      "error": null,
+      "exitCode": 0,
+      "limitSeconds": 600.0,
+      "stage": "mastery-integrated-debug",
+      "startedUTC": "2026-10-23T04:05:38.116845+00:00"
+    }
+  ],
+  "temporaryFailures": [
+    {
+      "cause": "SwiftPM manifest module-cache write denied; standard library load failed.",
+      "stage": "initialHarnessBuild"
+    },
+    {
+      "cause": "Temporary harness compile error: nested closure shadowing; corrected before execution.",
+      "stage": "localCacheHarnessBuild"
+    },
+    {
+      "cause": "Compiled/linked binaries, but dsymutil sandbox operation denied; exit1 retained. These were not passing builds.",
+      "stage": "fixedReleaseAndSearchBuilds"
+    }
+  ],
+  "workerFocusedTests": {
+    "elapsedSeconds": 10.161,
+    "failed": 0,
+    "note": "Before coordinator added consecutive-depth, survivor-subset and growth-without-collection assertions.",
+    "passed": 13,
+    "policySHA256": "98ebc8ffe9dbf500c0a4efae807d0728f484fe6b63d7cd20145a94d3ee7fe910",
+    "skipped": 0
+  }
+}

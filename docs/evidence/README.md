@@ -1,5 +1,7 @@
 # Evidence index
 
+[Lantern mastery feasibility](story-mastery-feasibility-2026-10-22/README.md) proves joint grown-star/chain earning on one real winning route and a genuine declined opening. A narrow 74-distinct-path search found no later-chain completion; recoverability remains unproved. Two fixture-bound regressions, 241 Core checks and a generic simulator build pass; no gameplay or ratings change.
+
 [Game-factory goal 6: earned Lantern payoff](game-goal-06-lantern-payoff-2026-10-22/README.md) reviews all five sparse/full native milestones, retains the paintings and adds an immediate named onward destination with exact cancellation/restore boundaries.
 
 [Game-factory goal 5: pressure and recovery](game-goal-05-pressure-recovery-2026-10-22/README.md) compares real crowded/blocked states, exact recovery, quiet/large-text reading and active/paused expiry boundaries.

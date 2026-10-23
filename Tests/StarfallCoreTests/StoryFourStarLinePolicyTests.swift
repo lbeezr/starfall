@@ -136,4 +136,115 @@ final class StoryFourStarLinePolicyTests: XCTestCase {
             XCTAssertEqual(game.replay(), opening)
         }
     }
+
+    func testRecordedLanternWinningRouteCollectsNaturalGrownStarsAfterItsOpeningChain() throws {
+        var game = FallingSky.freshChallenge(.firstLight)
+        var actionIndex = 0
+        var grownActions: [Int] = [], chainActions: [Int] = []
+        var firstGrownIDs: [Int] = []
+        func inspect(_ turn: FallingSkyTurn, scoreBefore: Int, showersBefore: Int) {
+            var collectedGrown = false
+            for phase in turn.resolutionPhases {
+                XCTAssertEqual(phase.kind, .recipe)
+                let ingredients = phase.cleared.compactMap { phase.before[$0.row * 7 + $0.column] }
+                let grown = ingredients.filter {
+                    $0.grown && $0.kind != nil && !$0.isLight && $0.gravityKind == nil
+                }.map(\.id).sorted()
+                XCTAssertEqual(!grown.isEmpty, phase.award.baseLight > phase.award.clearedStarCount,
+                               "For this automatic-only colored-star route, physical surplus comes from collected growth")
+                XCTAssertTrue(Set(grown).isDisjoint(with: phase.settled.compactMap { $0?.id }))
+                if !grown.isEmpty {
+                    collectedGrown = true
+                    if grownActions.isEmpty {
+                        firstGrownIDs = grown
+                        XCTAssertEqual(showersBefore, 6)
+                        XCTAssertEqual(scoreBefore, 50_000)
+                        XCTAssertEqual(game.displayScore, 56_000)
+                    }
+                }
+            }
+            if collectedGrown { grownActions.append(actionIndex) }
+            if turn.resolutionPhases.count > 1 {
+                chainActions.append(actionIndex)
+                for (earlier, later) in zip(turn.resolutionPhases, turn.resolutionPhases.dropFirst()) {
+                    let earlierIDs = Set(earlier.cleared.compactMap { earlier.before[$0.row * 7 + $0.column]?.id })
+                    let laterIDs = Set(later.cleared.compactMap { later.before[$0.row * 7 + $0.column]?.id })
+                    XCTAssertEqual(later.before, earlier.settled)
+                    XCTAssertEqual(later.comboDepth, earlier.comboDepth + 1)
+                    XCTAssertFalse(earlierIDs.isEmpty || laterIDs.isEmpty)
+                    XCTAssertTrue(earlierIDs.isDisjoint(with: laterIDs))
+                    XCTAssertTrue(laterIDs.isSubset(of: Set(earlier.before.compactMap { $0?.id })),
+                                  "The later ingredients already survived in this same transaction")
+                    let moved = laterIDs.filter { id in
+                        earlier.before.firstIndex(where: { $0?.id == id })
+                            != later.before.firstIndex(where: { $0?.id == id })
+                    }
+                    XCTAssertFalse(moved.isEmpty, "Settling moves ingredients into the later recipe")
+                    for recipe in later.recipes {
+                        XCTAssertFalse(earlier.recipes.contains { $0.starIDs == recipe.starIDs },
+                                       "A simultaneous ready recipe is not a later survivor-created phase")
+                    }
+                }
+            }
+            if actionIndex == 1 {
+                XCTAssertEqual(turn.resolutionPhases.count, 1)
+                XCTAssertEqual(turn.displayAward, 5_000)
+                XCTAssertTrue(turn.resolutionPhases.allSatisfy {
+                    $0.award.baseLight == $0.award.clearedStarCount
+                }, "The neighboring independent line clear does not collect growth or extend the opening chain")
+            }
+            if actionIndex == 6 {
+                XCTAssertTrue(turn.resolutionPhases.isEmpty)
+                XCTAssertEqual(turn.arrivals.filter(\.grew).map { $0.gem.id }, [30])
+                XCTAssertTrue(game.board.contains { $0?.id == 30 && $0?.grown == true },
+                              "Growing a surviving star does not collect it or qualify goal A")
+            }
+            actionIndex += 1
+        }
+        let plan = witness(for: .firstLight)
+        for (showersBefore, exchanges) in plan.enumerated() {
+            for (from, to) in exchanges {
+                let score = game.displayScore
+                let turn = try XCTUnwrap(game.nudge(from: Cell(from / 7, from % 7), to: Cell(to / 7, to % 7)))
+                inspect(turn, scoreBefore: score, showersBefore: showersBefore)
+            }
+            if !game.isOver {
+                let score = game.displayScore
+                let turn = try XCTUnwrap(game.letStarsFall())
+                inspect(turn, scoreBefore: score, showersBefore: showersBefore)
+            }
+        }
+        XCTAssertEqual(game.outcome, .won)
+        XCTAssertEqual(game.displayScore, 151_000)
+        XCTAssertEqual(game.turns, 22)
+        XCTAssertEqual(grownActions, [22, 36, 40, 51, 55, 57, 76, 85, 91])
+        XCTAssertEqual(firstGrownIDs, [30])
+        XCTAssertEqual(chainActions, [0], "This recorded route does not prove a later chain after missing its opening")
+        let won = game
+        XCTAssertNil(game.nudge(from: Cell(0, 0), to: Cell(0, 1)))
+        XCTAssertNil(game.letStarsFall())
+        XCTAssertEqual(game, won, "Qualification cannot require a surplus action after the earned win")
+    }
+
+    func testLanternOpeningCanConsumeItsFollowUpWithoutTakingTheOpeningChain() throws {
+        let opening = FallingSky.freshChallenge(.firstLight)
+        XCTAssertTrue(opening.board.compactMap { $0 }.allSatisfy { !$0.grown },
+                      "Missing an opening chain is different from missing the first grown-star opportunity")
+        var chain = opening
+        let chainTurn = try XCTUnwrap(chain.nudge(from: Cell(1, 1), to: Cell(1, 2)))
+        XCTAssertEqual(chainTurn.resolutionPhases.count, 2)
+        let followUp = chainTurn.resolutionPhases[1]
+        let followUpIDs = Set(followUp.cleared.compactMap { followUp.before[$0.row * 7 + $0.column]?.id })
+        XCTAssertEqual(followUpIDs, [2, 8, 15, 22])
+        var declined = opening
+        let direct = try XCTUnwrap(declined.nudge(from: Cell(0, 1), to: Cell(0, 2)))
+        XCTAssertEqual(direct.resolutionPhases.count, 1)
+        XCTAssertEqual(direct.displayAward, 5_000)
+        let phase = try XCTUnwrap(direct.resolutionPhases.first)
+        XCTAssertEqual(Set(phase.cleared.compactMap { phase.before[$0.row * 7 + $0.column]?.id }), followUpIDs)
+        XCTAssertTrue(followUpIDs.isDisjoint(with: declined.board.compactMap { $0?.id }),
+                      "The alternative consumes the original follow-up; this is not moving and undoing the same opening")
+        XCTAssertEqual(try restored(declined), declined)
+        XCTAssertEqual(declined.outcome, .playing, "This local contrast makes no claim about an alternate complete win")
+    }
 }

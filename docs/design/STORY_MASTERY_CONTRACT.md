@@ -4,9 +4,9 @@
 
 Keep every earned repair a complete success, then offer two understandable accomplishments for replay. Recommend **collecting a grown star** and **making one automatic clear lead into another** for Lantern Landing's revision-4 rules. Record the best result from one completed run; never combine accomplishments from separate runs or make mastery a condition of access.
 
-This contract defines qualification, version identity and interruption behavior. It adds no runtime tracker, schema, ratings UI or claim about enjoyment. Current four-star lines remain a [phone trial](../evidence/four-star-lines-2026-10-22/README.md). Resolver examples establish mechanical capability; a real Story completion path, joint earning path and later opportunities remain runtime prerequisites.
+This contract defines qualification, version identity and interruption behavior. It adds no runtime tracker, schema, ratings UI or claim about enjoyment. Current four-star lines remain a [phone trial](../evidence/four-star-lines-2026-10-22/README.md). Resolver examples establish mechanical capability. [Production-route research](../evidence/story-mastery-feasibility-2026-10-22/README.md) now proves joint earning in one real revision-4 Lantern win, but later-chain recovery after declining its opening remains unproved.
 
-**Next action:** Prove those paths against the chosen content revision, then implement the smallest Core qualification/save slice before its native presentation. The design can proceed alongside [player observation #206](https://github.com/lbeezr/starfall/issues/206); no new human approval stage is introduced.
+**Next action:** Construct a later-chain winning route after the named declined opening; prove missed-first-growth recovery, ordinary completion alternatives and winning-action cases before the smallest Core qualification/save slice. The bounded plan-reuse search is exhausted, not evidence of impossibility. The design can proceed alongside [player observation #206](https://github.com/lbeezr/starfall/issues/206); no new human approval stage is introduced.
 
 ## The player promise
 
@@ -172,7 +172,7 @@ Source inspected at main **`93ae893a034ab30e48d3cf55d306d7d1567150f4`**, with ru
 
 | Remaining concern | Owner and resolving evidence |
 | --- | --- |
-| Natural joint feasibility and later useful opportunities on current Story supply are not established by the two resolver fixtures. | Core/level designer: the bounded source-faithful routes required above, including ordinary alternatives. If absent, revise proposed goals or version content before promising them. |
+| Joint earning is verified on one real Lantern v4 win; only its opening earns B. Later-chain winning recovery, missed-first-growth recovery and ordinary alternatives remain unproved. | Core/level designer: [the bounded research packet](../evidence/story-mastery-feasibility-2026-10-22/README.md) names an irreversible declined opening and the exhausted coordinate-plan search. Construct a state-aware later-chain completion route before promising recoverability; do not infer impossibility or change retained supply from this narrow negative result. |
 | The current four-star line trial may be retained, revised or removed. | Current trial owner: existing phone comparison; preserve v4 and choose a new content identity for incompatible changes. Re-prove only affected goal/content assumptions. |
 | The smallest validated ledger/enrollment representation and crash-safe pending receipt have not been selected or implemented. | Core/save implementer: explicit new-envelope contract, equivalence tests, old-save rejection cases and fault-injected independent best/repair recovery. Keep this out of `WorldJourney` completion semantics. |
 | A correct three-star system may still discourage an otherwise satisfying first clear or replay. | Game designer / user researcher: bounded native comparison and separately reported player observations; no solver or scripted gesture establishes motivation. |
