@@ -428,5 +428,13 @@
     },
     "acceptance": "Native results/captures above remain bound to pre-cohesion dev.ac2d935006; final combined native acceptance pending. Core, catalogue and hosted test input bytes unchanged.",
     "builds": "Both combined-source generic arm64 Debug build-for-testing43.534s and Release13.932s pass; no simulator booted."
+  },
+  "subsequent_documentation_only_main": {
+    "commit": "a11ec8680c1e3cf869e4612544ed6298737e8c33",
+    "merged_prs": [
+      294,
+      295
+    ],
+    "scope": "Verified Project recovery/automatic own-card Done and independent next-gameplay roadmap. No compiled, test, resource or configuration inputs changed; combined fingerprint remains dev.4448f4efe8."
   }
 }
