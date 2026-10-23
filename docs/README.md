@@ -1,6 +1,6 @@
 # Documentation map
 
-[Inspiration-led roadmap](ROADMAP.md) sequences a compelling first repair, seven distinct challenges, the full twelve-place journey and handheld release quality. It links the existing ten-goal queue and three ready design leaves for Kite, optional mastery and Bell Choir; future modes and nearby play remain proposals. The [previous roadmap snapshot](ROADMAP_HISTORY_2026-10-22.md) preserves source-bound integration history.
+[Inspiration-led roadmap](ROADMAP.md) sequences a compelling first repair, seven distinct challenges, the full twelve-place journey and handheld release quality. It links the existing ten-goal queue and design work for Kite, optional mastery and Bell Choir; future modes and nearby play remain proposals. The [previous roadmap snapshot](ROADMAP_HISTORY_2026-10-22.md) preserves source-bound integration history.
 
 [Four-star-line phone trial](evidence/four-star-lines-2026-10-22/README.md) implements the user-selected shorter straight match for new Lantern/Ribbon visits, preserves retained rules and records verification/delivery separately from human enjoyment.
 
