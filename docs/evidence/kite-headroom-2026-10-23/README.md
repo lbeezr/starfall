@@ -1,6 +1,6 @@
 # Kite Harbor: headroom or immediate points
 
-**Verified for scoped development — October 23.** [#278](https://github.com/lbeezr/starfall/issues/278) gives explicit new Kite visits a complete revision-4 encounter: choose a smaller high-column clear or a larger low clear, recover, and restore the fleet at **17,000 points**. Historical Kite0 remains 18-light/manual. Current integrated source `dev.556659fb9f` passes 249 Core,29affected material/collection hosted checks, the strict automatic-recovery phone case, the extended AX3XL quiet tablet Help/round/onward case and Debug/Release. Earlier 103 dialogue/flow/archive/journey and three phone comparison/history cases retain their exact earlier sources and unchanged relevant input bytes. Next: integrate Kite, then Seed #279.
+**Verified for scoped development — October 23.** [#278](https://github.com/lbeezr/starfall/issues/278) gives explicit new Kite visits a complete revision-4 encounter: choose a smaller high-column clear or a larger low clear, recover, and restore the fleet at **17,000 points**. Historical Kite0 remains 18-light/manual. Final HUD-integrated source `dev.dbc86ddbaf` passes the complete AX3XL quiet tablet case, four header/placement checks and Debug/Release. Matching Core inputs pass 249 tests; the preceding collection integration `dev.556659fb9f` passes 29 material checks and strict real-clock phone recovery. Earlier 103 dialogue/flow/archive/journey and three phone comparison/history cases retain their exact earlier sources and unchanged relevant input bytes. Next: integrate Kite, then Seed #279.
 
 [Verification and source hashes](verification.json) record base `c496576bde4e89c1f20370054d3c96bfa2f90886` plus explicit working-tree inputs. **`dev.ac2d935006` is the computed app-input fingerprint; actual tested bundle `StarfallBuildID` is `dev.local`.** Capture filenames identify that source fingerprint, not an installed build stamp or clean published commit. Source, Debug and Release dialogue catalogue SHA-256 all equal `72d48054c9ef563d39977a9d4141f08d590230b8e740a4e31dbece8506024a00`.
 
@@ -78,3 +78,15 @@ The earlier absent-shower repeat remains recorded without an isolated cause. Lat
 | Current phone result | Current tablet Help ending (partial viewport) |
 | --- | --- |
 | <img src="dev-556659fb9f__automatic-recovery-result__iphone-17e__default-text.jpg" width="240" alt="The integrated Kite automatic-recovery win at18,000 of17,000, with all result actions visible." /> | <img src="dev-556659fb9f__help-end__ipad-pro11-m5__ax3xl-quiet.jpg" width="330" alt="Largest-text Kite Help rules ending and Done; paragraph beginning is above this viewport." /> |
+
+
+## Subsequent HUD integration
+
+Main advanced through HUD PR #297 during publication. Its only runtime changes are `FallingSkyHUD` target emphasis and `FallingSkyView` explicit accessibility-size header stacking. The local merge preserves that work and both documentation records. Clean input `0b1d63f3` / **`dev.dbc86ddbaf`** passes **5 tests, zero failures/skips**: the current extended Kite tablet Help/round/onward case plus exact score reflow, award clearance and two forecast placement cases. The native method takes 173.773 seconds; the complete tool invocation takes 205.855 seconds. Debug compilation and generic arm64 Release (8.818 seconds) pass.
+
+All Core, stores/clocks, rule/save/copy/catalogue and test bytes match the preceding integration. Its 249 Core, 103 dialogue/flow/archive/journey, 29 material and ordinary-clock phone evidence stays source-bound and is reused for those unchanged owners. No new clock, buffering or gameplay change was introduced by this merge. Later branch differences are docs and an inspected HUD capture only.
+
+
+<img src="dev-dbc86ddbaf__points-first-hud__ipad-pro11-m5__ax3xl-quiet.jpg" width="360" alt="Final integrated Kite at7,000/17,000 and largest text: readable score, separate forecast row and distinct pause; lower dialogue continues below the viewport." />
+
+The final header capture retains native1668×2420 pixels. Exact score, forecast and pause remain readable; the lower dialogue extends beyond this viewport. It establishes this layout sample, not complete reading or motion.

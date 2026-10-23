@@ -1,8 +1,8 @@
 {
-  "status": "Inspected earlier source-bound comparisons/direct Help, integrated phone recovery/onward and current partial tablet Help samples",
+  "status": "Source-bound earlier comparisons/direct Help, integrated phone recovery, partial tablet Help and #297 points-first HUD sample inspected",
   "source_selection_receipt_sha256": "cbef1601ee433490986b5141a035727019c589fae8f5bf7442ef925fd4b80907",
   "conversion": "All retained images use PNG to JPEG quality70 with original dimensions; no crop or resize. Original sources remain temporary.",
-  "inspection": "The first eight captures retain dev.ac2d935006 provenance; the next two are integrated dev.556659fb9f phone recovery and Seed Entry. All seven integrated tablet PNGs and two promoted same-dimension Help JPEGs were inspected. The current Help JPEGs are partial nonoverlapping heading/end viewports, not complete visual reading.",
+  "inspection": "The first eight captures retain dev.ac2d935006 provenance; the next two are integrated dev.556659fb9f phone recovery and Seed Entry. All seven integrated tablet PNGs and two promoted same-dimension Help JPEGs were inspected. The current Help JPEGs are partial nonoverlapping heading/end viewports, not complete visual reading. One dev.dbc86ddbaf AX3XL quiet points-first PNG/JPEG additionally verifies the #297 HUD reflow; earlier12 captures retain their exact entries and bytes.",
   "limits": [
     "Stills do not establish animation chronology, human recognition, physical touch comfort or actual VoiceOver.",
     "The first four phone images depict the original paused comparison; the dev.556659fb9f result and earned Seed Entry depict the later integrated automatic-clock earned-unlock test.",
@@ -392,6 +392,48 @@
         "Earlier three dev.ac2d935006 direct manual Help captures retain their distinct full-reading provenance.",
         "No physical-device session, human comprehension, actual VoiceOver or delivery acceptance is claimed."
       ]
+    },
+    {
+      "name": "points-first-hud",
+      "file": "dev-dbc86ddbaf__points-first-hud__ipad-pro11-m5__ax3xl-quiet.jpg",
+      "source_export": "991A5598-BDD9-4D86-883E-CD3A5F958696.png",
+      "original_sha256": "22f323c8adb6908eedd8ad6d703b11ab29b0464fa83361c5957199f945749f13",
+      "sha256": "d05547abf1674b15e164eb36720e88996ac5a72ff81ecfe86e6d15aff0cffabf",
+      "bytes": 617677,
+      "original_bytes": 4736042,
+      "original_dimensions": [
+        1668,
+        2420
+      ],
+      "dimensions": [
+        1668,
+        2420
+      ],
+      "format": "PNG to JPEG quality70 via sips; no crop or resize; source PNG unchanged",
+      "source_export_directory": "/private/tmp/starfall-next-encounters-20261023/tablet-hud-integrated-attachments",
+      "source_result_bundle": "native-tablet-hud-integrated.xcresult",
+      "test": "KiteHarborInteractionTests/testCurrentKiteLargestQuietHelpAndEarnedOnward()",
+      "attachment_name": "kite-current-points-first_0_F0E8DE31-3A74-46D8-8285-F8AD7C8117DE.png",
+      "attachment_timestamp_utc": "2026-10-23T14:22:53.863000+00:00",
+      "device": "iPad Pro 11-inch (M5)",
+      "device_name": "Starfall Factory Goals iPad",
+      "device_id": "255E141F-D4D6-45DA-89FF-51436BF1BBA7",
+      "os": "iOS 27.0 Simulator (24A434)",
+      "variant": "AX3XL (UICTContentSizeCategoryAccessibilityXXXL); calmEffects YES; system Reduce Motion off",
+      "source_commit": "0b1d63f3dff73f2f82c59dbb860447d2fbe1531f",
+      "source_tree": "e820cea3",
+      "integrated_main_change": "#297 HUD hierarchy",
+      "source_input_fingerprint": "dev.dbc86ddbaf",
+      "actual_bundle_StarfallBuildID": "dev.local",
+      "visual_inspected": true,
+      "observations": "Header has legible 7,000 / 17,000 at AX3XL with clear score/target distinction, forecast on its own lower row and pause at upper right. Score and +7,000 award agree; tall left columns remain after points-first. The bottom Pip dialogue extends beyond this viewport.",
+      "verified_original_and_final_hashes": true,
+      "verified_no_resize": true,
+      "limits": [
+        "This is one inspected points-first HUD still, not complete dialogue/Help visual coverage or animation evidence.",
+        "Earlier12 captures remain bound to their recorded sources and are not renamed or overwritten.",
+        "No physical-device, human-comprehension, actual VoiceOver or delivery claim."
+      ]
     }
   ],
   "tablet_attachment_manifest_sha256": "bb0b634f3daf8ab05d0d7a092296f96c30674a0be67ff53c7ac8ecdda3a11fbc",
@@ -601,5 +643,26 @@
     "preserved_first_ten_entries": true,
     "preserved_first_ten_media_hashes_verified": true,
     "visual_limit": "Current heading/end PNGs and JPEGs omit the location paragraph beginning and 17,000 target; no full current Help visual read-through claim. Earlier full manual reading remains separately source bound."
+  },
+  "integrated_hud_tablet_batch": {
+    "source_commit": "0b1d63f3dff73f2f82c59dbb860447d2fbe1531f",
+    "source_tree": "e820cea3",
+    "source_clean_at_run": "Coordinator reports clean local source; capture author performed no Git operations.",
+    "integrated_main_change": "#297 HUD hierarchy",
+    "input_fingerprint": "dev.dbc86ddbaf",
+    "actual_bundle_StarfallBuildID": "dev.local",
+    "attachment_manifest_sha256": "3125c2bdc45741ae685805b9c7590206ba52a4094ec69a7e6ad97cb74525efb4",
+    "coordinator_reported_result": {
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "selection": "1 extended native tablet Help/round/onward plus4 targeted header/reflow hosted tests",
+      "ui_method_seconds": 173.773,
+      "tool_seconds": 205.855,
+      "release_build_seconds": 8.818,
+      "release_build_result": "passed"
+    },
+    "inspection_scope": "Only requested current points-first raw PNG and exported JPEG inspected; other HUD-integrated frames not re-audited. No expanded Help claim.",
+    "preserved_first_twelve_entries_and_media": true
   }
 }

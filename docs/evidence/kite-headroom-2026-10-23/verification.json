@@ -1,5 +1,5 @@
 {
-  "status": "Verified for scoped development: current integrated Core, Debug/Release, automatic recovery and extended AX3XL tablet Help/round/onward pass",
+  "status": "Verified scoped development including main297 HUD integration; complete current tablet round plus4header/placement checks and Release pass; preceding gameplay/source limits retained",
   "issue": "https://github.com/lbeezr/starfall/issues/278",
   "date_utc": "2026-10-23",
   "source": {
@@ -374,7 +374,7 @@
     "note": "Inventory validation only; these are not executed test counts."
   },
   "capture_validation": {
-    "count": 12,
+    "count": 13,
     "all_original_and_final_hashes_verified": true,
     "same_dimensions_by_device": {
       "phone": [
@@ -554,5 +554,47 @@
       "Debug": "72d48054c9ef563d39977a9d4141f08d590230b8e740a4e31dbece8506024a00",
       "Release": "72d48054c9ef563d39977a9d4141f08d590230b8e740a4e31dbece8506024a00"
     }
+  },
+  "final_hud_integration": {
+    "clean_input_commit": "0b1d63f3dff73f2f82c59dbb860447d2fbe1531f",
+    "clean_input_tree": "e820cea3ba11ba641636951ca0100077aa20f436",
+    "main_commit": "81826248a5a08f7a52ad36d7c13263ccb2502cd1",
+    "main_pr": 297,
+    "runtime_input_fingerprint": "dev.dbc86ddbaf",
+    "actual_bundle_StarfallBuildID": "dev.local",
+    "changed_runtime_paths": [
+      "App/FallingSkyHUD.swift",
+      "App/FallingSkyView.swift"
+    ],
+    "input_sha256": {
+      "App/FallingSkyHUD.swift": "d9a07205952aa31d66ee752dad7d0c459ec090f263f1563e4fc690bf73abba1c",
+      "App/FallingSkyView.swift": "330a38fc4ac1911a415a01f7d9c609275ba0ccea428fae7b1e77f56b9f314311",
+      "UITests/KiteHarborInteractionTests.swift": "402054b74371820f623cf3d5f9e8b9f8070e6afb070544229c9646d78f65d93c",
+      "UITests/NativeSkyControls.swift": "6563d02190a3a9279b75ba5d5951b32653fb49ec60d5c1827057ca94beb507f9"
+    },
+    "unchanged_scope": "All Core, stores/clocks, rule/save/copy/catalogue and test bytes match the preceding verified integration; only two header presentation files differ. Earlier249Core,103dialogue/flow/archive/journey,29material/collection and strict phone-clock results retain their recorded sources.",
+    "result_bundle": "native-tablet-hud-integrated.xcresult",
+    "passed": 5,
+    "failed": 0,
+    "skipped": 0,
+    "method_seconds": 173.773,
+    "tool_seconds": 205.855,
+    "selection": [
+      "KiteHarborInteractionTests/testCurrentKiteLargestQuietHelpAndEarnedOnward",
+      "CrystalCelebrationArtworkTests/testSixFigureScoreAndTargetReflowAtLargeTextWithoutShrinking",
+      "StarlightCelebrationTests/testAwardLetteringLeavesEveryPlayableRowClear",
+      "SkyShowerPlacementTests/testEveryResizedOrAccessibleCalibratedCanvasUsesHeaderFallback",
+      "SkyShowerPlacementTests/testOnlyCalibratedPortraitUsesCameraMargin"
+    ],
+    "Debug": "supported test_sim build passed before tests",
+    "Release": {
+      "stage": "final-release-297",
+      "startedUTC": "2026-10-23T14:22:41.716676+00:00",
+      "elapsedSeconds": 8.818,
+      "limitSeconds": 300.0,
+      "exitCode": 0,
+      "error": null
+    },
+    "later_differences": "Documentation and source-bound evidence image only; no runtime or test input changes."
   }
 }

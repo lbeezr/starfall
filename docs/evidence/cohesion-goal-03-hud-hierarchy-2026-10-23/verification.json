@@ -1,0 +1,247 @@
+{
+  "base_main": "612a369b23b58b55007da4ff02abeaaf6ca82bb9",
+  "build": "dev.21d62cc22f",
+  "dirty_inputs": {
+    "App/FallingSkyHUD.swift": "d9a07205952aa31d66ee752dad7d0c459ec090f263f1563e4fc690bf73abba1c",
+    "App/FallingSkyView.swift": "330a38fc4ac1911a415a01f7d9c609275ba0ccea428fae7b1e77f56b9f314311"
+  },
+  "snapshot_id": "19529984a3d0",
+  "status": "verified for scoped development adoption",
+  "baseline_build": "dev.d33057befd",
+  "baseline_source": "Goal2 compiled 678f7c7c + snapshot 787039fc3544; runtime inputs equal activation main 612a369b.",
+  "core": {
+    "passed": 242,
+    "failed": 0,
+    "skipped": 0,
+    "scope": "Same unchanged Core inputs throughout this UI-only batch."
+  },
+  "debug_build": "pass: final build-for-testing 5.3s",
+  "native_final": {
+    "phone": {
+      "result": "Passed",
+      "totalTestCount": 4,
+      "passedTests": 4,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792763850.712,
+      "finishTime": 1792764161.424,
+      "testFailures": []
+    },
+    "tablet": {
+      "result": "Passed",
+      "totalTestCount": 7,
+      "passedTests": 7,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792763855.428,
+      "finishTime": 1792764106.028,
+      "testFailures": []
+    },
+    "tablet_split": "4 hosted layout/placement and 3 native UI cases; phone 4 native UI cases."
+  },
+  "baseline_largest": {
+    "phone": {
+      "result": "Passed",
+      "totalTestCount": 2,
+      "passedTests": 2,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792763040.481,
+      "finishTime": 1792763289.783,
+      "testFailures": []
+    },
+    "tablet": {
+      "result": "Passed",
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792763158.734,
+      "finishTime": 1792763318.083,
+      "testFailures": []
+    }
+  },
+  "baseline_forecast": {
+    "phone": {
+      "result": "Failed",
+      "totalTestCount": 1,
+      "passedTests": 0,
+      "failedTests": 1,
+      "skippedTests": 0,
+      "startTime": 1792763685.127,
+      "finishTime": 1792763735.574,
+      "testFailures": [
+        {
+          "failureText": "XCTAssertGreaterThanOrEqual failed: (\"68.66666666666666\") is less than (\"106.66666666666667\") - The accessible forecast has its own row below the menu",
+          "targetName": "StarfallUITests",
+          "testIdentifier": 1,
+          "testIdentifierString": "ShowerForecastInteractionTests/testCadenceForecastMenuBackgroundAndSafeAreaFallback()",
+          "testIdentifierURL": "test://com.apple.xcode/Starfall/StarfallUITests/ShowerForecastInteractionTests/testCadenceForecastMenuBackgroundAndSafeAreaFallback",
+          "testName": "testCadenceForecastMenuBackgroundAndSafeAreaFallback()"
+        }
+      ]
+    },
+    "tablet": {
+      "result": "Failed",
+      "totalTestCount": 1,
+      "passedTests": 0,
+      "failedTests": 1,
+      "skippedTests": 0,
+      "startTime": 1792763634.971,
+      "finishTime": 1792763691.611,
+      "testFailures": [
+        {
+          "failureText": "XCTAssertGreaterThanOrEqual failed: (\"22.0\") is less than (\"60.0\") - The accessible forecast has its own row below the menu",
+          "targetName": "StarfallUITests",
+          "testIdentifier": 1,
+          "testIdentifierString": "ShowerForecastInteractionTests/testCadenceForecastMenuBackgroundAndSafeAreaFallback()",
+          "testIdentifierURL": "test://com.apple.xcode/Starfall/StarfallUITests/ShowerForecastInteractionTests/testCadenceForecastMenuBackgroundAndSafeAreaFallback",
+          "testName": "testCadenceForecastMenuBackgroundAndSafeAreaFallback()"
+        }
+      ]
+    }
+  },
+  "initial_candidate": {
+    "build": "dev.1315cb2ee3",
+    "snapshot_id": "1c7390a69ce8",
+    "source": "Only the final FallingSkyHUD.swift hash; FallingSkyView still baseline.",
+    "hosted": {
+      "result": "Passed",
+      "totalTestCount": 2,
+      "passedTests": 2,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792763095.788,
+      "finishTime": 1792763130.472,
+      "testFailures": []
+    },
+    "phone": {
+      "result": "Failed",
+      "totalTestCount": 4,
+      "passedTests": 3,
+      "failedTests": 1,
+      "skippedTests": 0,
+      "startTime": 1792763307.949,
+      "finishTime": 1792763636.882,
+      "testFailures": [
+        {
+          "failureText": "XCTAssertGreaterThanOrEqual failed: (\"68.66666666666666\") is less than (\"106.66666666666667\") - The accessible forecast has its own row below the menu",
+          "targetName": "StarfallUITests",
+          "testIdentifier": 1,
+          "testIdentifierString": "ShowerForecastInteractionTests/testCadenceForecastMenuBackgroundAndSafeAreaFallback()",
+          "testIdentifierURL": "test://com.apple.xcode/Starfall/StarfallUITests/ShowerForecastInteractionTests/testCadenceForecastMenuBackgroundAndSafeAreaFallback",
+          "testName": "testCadenceForecastMenuBackgroundAndSafeAreaFallback()"
+        }
+      ]
+    },
+    "tablet": {
+      "result": "Failed",
+      "totalTestCount": 2,
+      "passedTests": 1,
+      "failedTests": 1,
+      "skippedTests": 0,
+      "startTime": 1792763369.617,
+      "finishTime": 1792763509.171,
+      "testFailures": [
+        {
+          "failureText": "XCTAssertTrue failed",
+          "targetName": "StarfallUITests",
+          "testIdentifier": 1,
+          "testIdentifierString": "SkyFlowInteractionTests/testLargestTextRibbonIdentityKeepsChoiceAndReplayReadable()",
+          "testIdentifierURL": "test://com.apple.xcode/Starfall/StarfallUITests/SkyFlowInteractionTests/testLargestTextRibbonIdentityKeepsChoiceAndReplayReadable",
+          "testName": "testLargestTextRibbonIdentityKeepsChoiceAndReplayReadable()"
+        }
+      ]
+    }
+  },
+  "evidence_limits": [
+    "Selected development checks, not the full 200 UI / 441 hosted inventory.",
+    "Initial candidate forecast failed; reproduced on unchanged phone/tablet baselines and fixed at existing reflow owner without altering tests.",
+    "Initial candidate tablet AX3XL Ribbon failed in Settings before Starfall launched; captured General detail lacked Motion. Cause remains unisolated; final same case passed. ENGINEERING retains recurrence trigger.",
+    "XCTest automatic baseline recording cannot be opened by AVFoundation (-11832/-12431); excluded. Supplementary matched zero-score AX3XL stills come from actual prepared-product installs/launches on the dedicated phone simulator.",
+    "MCP screenshot preview was optimized to 800 pixels; native captures use simctl io screenshot.",
+    "Still comparisons show composition, not continuous motion or identical arrival/receipt ages. No motion timings changed.",
+    "No physical-device, minimum-OS, actual VoiceOver or human preference acceptance. No phone installation."
+  ],
+  "captures": "captures.json",
+  "bounded_stages": [
+    {
+      "stage": "goal03-before-largest-phone",
+      "startedUTC": "2026-10-23T13:44:00.012293+00:00",
+      "elapsedSeconds": 253.298,
+      "limitSeconds": 500.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "goal03-before-largest-tablet",
+      "startedUTC": "2026-10-23T13:45:57.329872+00:00",
+      "elapsedSeconds": 162.623,
+      "limitSeconds": 260.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "goal03-after-tablet",
+      "startedUTC": "2026-10-23T13:49:28.656390+00:00",
+      "elapsedSeconds": 141.854,
+      "limitSeconds": 450.0,
+      "exitCode": 65,
+      "error": null
+    },
+    {
+      "stage": "goal03-after-phone",
+      "startedUTC": "2026-10-23T13:48:25.081151+00:00",
+      "elapsedSeconds": 332.89,
+      "limitSeconds": 650.0,
+      "exitCode": 65,
+      "error": null
+    },
+    {
+      "stage": "goal03-before-forecast-tablet",
+      "startedUTC": "2026-10-23T13:53:53.726002+00:00",
+      "elapsedSeconds": 61.087,
+      "limitSeconds": 180.0,
+      "exitCode": 65,
+      "error": null
+    },
+    {
+      "stage": "goal03-before-forecast-phone",
+      "startedUTC": "2026-10-23T13:54:41.232248+00:00",
+      "elapsedSeconds": 57.494,
+      "limitSeconds": 180.0,
+      "exitCode": 65,
+      "error": null
+    },
+    {
+      "stage": "goal03-final-tablet",
+      "startedUTC": "2026-10-23T13:57:34.435239+00:00",
+      "elapsedSeconds": 254.802,
+      "limitSeconds": 650.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "goal03-final-phone",
+      "startedUTC": "2026-10-23T13:57:30.127456+00:00",
+      "elapsedSeconds": 314.457,
+      "limitSeconds": 650.0,
+      "exitCode": 0,
+      "error": null
+    }
+  ],
+  "core_command": "swift test --scratch-path /private/tmp/starfall-factory-gameplay-20261022/CoreBuild --jobs 2",
+  "manual_capture": {
+    "launchArgs": [
+      "--starfalls-reset",
+      "-UIPreferredContentSizeCategoryName",
+      "UICTContentSizeCategoryAccessibilityXXXL",
+      "-calmEffects",
+      "NO"
+    ],
+    "simulator": "DB9604E1-D7A8-4C75-BA25-E29243AEC02D",
+    "before_products": "build_sim_2026-10-23T13-13-05-684Z_pid51280_03922799.xctestproducts",
+    "after_products": "build_sim_2026-10-23T13-56-56-496Z_pid51280_3b6ae718.xctestproducts",
+    "method": "MCP install/launch/snapshot, then xcrun simctl io UDID screenshot native PNG; candidate restored afterward."
+  }
+}

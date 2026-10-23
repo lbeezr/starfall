@@ -265,20 +265,17 @@ import StarfallCore
 
     private func edgeHeader(island: Bool) -> some View {
         VStack(spacing: StarfallTheme.Spacing.compact) {
-            ViewThatFits(in: .horizontal) {
-                HStack(spacing: StarfallTheme.Spacing.small) {
-                    scoreLabel
-                    Spacer(minLength: StarfallTheme.Spacing.small)
-                    if !island { showerTrail(island: false) }
-                    skyMenuButton
-                }
-                VStack(spacing: StarfallTheme.Spacing.compact) {
-                    HStack(alignment: .top) {
+            if largeText {
+                stackedHeader(island: island)
+            } else {
+                ViewThatFits(in: .horizontal) {
+                    HStack(spacing: StarfallTheme.Spacing.small) {
                         scoreLabel
                         Spacer(minLength: StarfallTheme.Spacing.small)
+                        if !island { showerTrail(island: false) }
                         skyMenuButton
                     }
-                    if !island { showerTrail(island: false, width: 160) }
+                    stackedHeader(island: island)
                 }
             }
             if let pressure = store.pressureCue {
@@ -293,6 +290,17 @@ import StarfallCore
         .starlightAnchor(.header)
         .accessibilityElement(children: .contain)
         .accessibilityIdentifier("sky.header")
+    }
+
+    private func stackedHeader(island: Bool) -> some View {
+        VStack(spacing: StarfallTheme.Spacing.compact) {
+            HStack(alignment: .top) {
+                scoreLabel
+                Spacer(minLength: StarfallTheme.Spacing.small)
+                skyMenuButton
+            }
+            if !island { showerTrail(island: false, width: 160) }
+        }
     }
 
     @ViewBuilder private func guide(compact: Bool, maximumHeight: CGFloat? = nil, narrow: Bool = false, externalControls: Bool = false) -> some View {
