@@ -1,5 +1,7 @@
 # Starfall visual reference
 
+**Full Board advice — Current for the inspected slice:** [Depth goal 2](../evidence/depth-goal-02-visible-choices-2026-10-23/README.md) retains default phone patterns/revealed swipes and largest-text calm tablet setup guidance, source `0d77ee41` plus snapshot `139d051e3e2f` (bundle `dev.local`, app-equivalent `68a391e`). The fixed Back/Return and scrolling body share the existing menu surface. Other menu pages retain their separate evidence.
+
 **Mode-practice surfaces — selected references refreshed:** [The depth goal 1 record](../evidence/depth-goal-01-mode-discoveries-2026-10-23/README.md) owns the new Entry “Try this mode” action and optional mode-specific tutorial surfaces. [Four inspected captures](../evidence/depth-goal-01-mode-discoveries-2026-10-23/captures.json) cover current Entry, default ceiling/Full Board practice and the AX3XL tablet hint. Earlier Entry captures predate this action; use the source-bound record for parity and limits. Gameplay scenery/materials remain unchanged.
 
 **Lantern/Ribbon gameplay refresh:** New versioned visits and six-digit scoring have [source-bound native evidence](../evidence/story-first-pair-2026-10-20/README.md) at `eba7d4a` / `dev.22c1ff436d`, with test-only follow-up `92830c6`. Seven inspected captures cover default Lantern entry/play/win, largest-text Ribbon score/scrolled entry, and hosted 7,000/10,000 awards. Older small-score captures remain historical for those surfaces; compact/tablet variants and actual VoiceOver retain separate acceptance.

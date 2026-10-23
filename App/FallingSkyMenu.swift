@@ -9,6 +9,7 @@ struct FallingSkyMenu: View {
     let over: Bool
     let challenge: StarfallChallenge?
     let helpContext: SkyHelpContext
+    let choiceSnapshot: FallingSky?
     let balance: StarfallBalance
     @Binding var sound: Bool
     @Binding var haptics: Bool
@@ -21,6 +22,21 @@ struct FallingSkyMenu: View {
     let setBalance: (StarfallBalance) -> Void
     let done: () -> Void
     @Environment(\.dynamicTypeSize) private var textSize
+
+    init(paused: Bool, turns: Int, groups: Int, over: Bool, challenge: StarfallChallenge?,
+         helpContext: SkyHelpContext, choiceSnapshot: FallingSky? = nil, balance: StarfallBalance,
+         sound: Binding<Bool>, haptics: Binding<Bool>, calm: Binding<Bool>,
+         pause: @escaping () -> Void, restart: @escaping (Bool) -> Void,
+         worldMap: @escaping () -> Void, learn: @escaping () -> Void,
+         observatory: @escaping () -> Void, setBalance: @escaping (StarfallBalance) -> Void,
+         done: @escaping () -> Void) {
+        self.paused = paused; self.turns = turns; self.groups = groups; self.over = over
+        self.challenge = challenge; self.helpContext = helpContext; self.choiceSnapshot = choiceSnapshot
+        self.balance = balance
+        _sound = sound; _haptics = haptics; _calm = calm
+        self.pause = pause; self.restart = restart; self.worldMap = worldMap; self.learn = learn
+        self.observatory = observatory; self.setBalance = setBalance; self.done = done
+    }
 
     var body: some View {
         NavigationStack {
@@ -57,6 +73,14 @@ struct FallingSkyMenu: View {
                 }
                 SkyMenuRule()
                 VStack(spacing: StarfallTheme.Spacing.compact) {
+                    if let choiceSnapshot, SkyFullBoardChoiceAnalysis.supports(choiceSnapshot) {
+                        NavigationLink {
+                            SkyFullBoardChoicesView(game: choiceSnapshot, done: done)
+                        } label: {
+                            SkyMenuRow(SkyCopy.text(.fullBoardChoicesTitle), glyph: .help, disclosure: true)
+                        }
+                        .accessibilityIdentifier("fullBoard.choices.open")
+                    }
                     NavigationLink {
                         SkyPreferencesPage(sound: $sound, haptics: $haptics, calm: $calm,
                                            context: helpContext, done: done, back: true)
