@@ -15,13 +15,18 @@ enum SkyFlowScreen: Equatable {
         return .welcome
     }
 }
-enum SkyFlowAction: Equatable { case start, firstLight, ribbonCrossing, kiteHarbor, seedMoon, silverPools, frostfruitOrchard, sunwheelMill, begin, entryBack, resume, replay, another, home, preferences, worldMap, worldBack, tutorial }
+enum SkyFlowAction: Equatable {
+    case start, firstLight, ribbonCrossing, kiteHarbor, seedMoon, silverPools, frostfruitOrchard, sunwheelMill
+    case begin, entryBack, resume, replay, another, home, preferences, worldMap, worldBack, tutorial
+    case onward(WorldLocation)
+}
 
 @MainActor struct SkyFlowCeremony: View {
     let screen: SkyFlowScreen
     let challenge: StarfallChallenge?
     let entry: SkyEntryRequest?
     let result: SkyResultSnapshot?
+    let onward: SkyOnwardSnapshot?
     let welcome: SkyWelcomeSnapshot
     let active: Bool
     let quiet: Bool
@@ -374,7 +379,9 @@ enum SkyFlowAction: Equatable { case start, firstLight, ribbonCrossing, kiteHarb
                 flowButton(SkyCopy.text(.actionBegin), action: .begin, id: "sky.begin", primary: true)
             case .won, .full:
                 if screen == .won {
-                    flowButton(SkyCopy.text(.worldReturn), action: .worldMap, id: "sky.worldMap", primary: true)
+                    flowButton(onward?.label ?? SkyCopy.text(.worldReturn),
+                               action: onward.map { SkyFlowAction.onward($0.destination) } ?? .worldMap,
+                               id: "sky.worldMap", primary: true)
                 } else if let challenge {
                     flowButton(challenge.replayLabel, action: .replay, id: "experiment.replay", primary: true)
                 } else {

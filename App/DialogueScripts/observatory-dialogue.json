@@ -1234,6 +1234,7 @@
     "worldRevisit": "Revisit {place}",
     "worldVisit": "Visit {place}",
     "worldReturn": "Return to world map",
+    "worldVisitNext": "Visit {destination}",
     "practiceExit": "Exit practice",
     "practiceExitHint": "Return to the tutorial chapter list",
     "save.rejectedTitle": "Saved sky unavailable",

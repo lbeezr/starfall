@@ -1,0 +1,226 @@
+{
+  "base_main": "27252f6677f323d80206fe7837b59772dfcf4d2e",
+  "source": "45690ba6854db5aa9490ee58859d79447a953d5d",
+  "product_source": "8da83d9",
+  "build_identity": "dev.60afb687d3",
+  "sha256": {
+    "App/DialogueScripts/observatory-dialogue.json": "0e174b6f0481161c613823ef73287bf215a43ea51944afca2831cfd64ba369b0",
+    "App/FallingSkyView.swift": "7dbb4922bcdc4f746cb8e5cd9ffa3c39a9304de24d5647cdf329ce64b879ad79",
+    "App/SkyCopy.swift": "b2fe25bcbcdfdac7b411dced12e7006e381efb8792f01cd3a19bf905ab6c5bb4",
+    "App/SkyFlowCeremony.swift": "08bb73bf2c2c747d75d37dad37387eb2d5d0aa73fe1dd16a6e5c311b56799fd1",
+    "App/SkyFlowSnapshots.swift": "2a3f89f48329012a1ddb438674b5eb0cb24ea1386fbb7284e7e52a6934788ab6",
+    "App/SkyFlowState.swift": "25a19ec70b17684cc8a67896c777c4542f535b0eb665d425d65bedf6ff398172",
+    "AppTests/SkyFlowStateTests.swift": "ae36df80486832ca36f6f39cd7815fc19b9e4bab1b07242e1b81d31adb63e561",
+    "UITests/FallingSkyInteractionTests.swift": "33f4846c75959ac910061ea87eed22af292710f2a726192e785e70a04b9cf54d",
+    "UITests/LanternLandingInteractionTests.swift": "dfff9d56acfd9dedc4cbf117b44a6c882a0ab842fa127a5ebec102d18ca18849",
+    "UITests/WorldJourneyInteractionTests.swift": "7f18769dde4fc7fb57d5cd9b4f8d2aaa0d4e627c2d93de4624f3d0c12731949f"
+  },
+  "core": {
+    "passed": 239,
+    "failed": 0,
+    "skipped": 0
+  },
+  "results": {
+    "goal06-phone-audit": {
+      "result": "Passed",
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792725746.111,
+      "finishTime": 1792725861.107,
+      "failures": []
+    },
+    "goal06-tablet-audit": {
+      "result": "Passed",
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792725746.002,
+      "finishTime": 1792725947.081,
+      "failures": []
+    },
+    "goal06-earned-baseline": {
+      "result": "Passed",
+      "totalTestCount": 2,
+      "passedTests": 2,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792726107.659,
+      "finishTime": 1792726239.073,
+      "failures": []
+    },
+    "goal06-hosted": {
+      "result": "Passed",
+      "totalTestCount": 79,
+      "passedTests": 79,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792726621.059,
+      "finishTime": 1792726625.286,
+      "failures": []
+    },
+    "goal06-phone-onward-corrected": {
+      "result": "Passed",
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792726809.071,
+      "finishTime": 1792726898.885,
+      "failures": []
+    },
+    "goal06-tablet-onward": {
+      "result": "Passed",
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792726808.498,
+      "finishTime": 1792726900.554,
+      "failures": []
+    },
+    "goal06-current-lantern-round": {
+      "result": "Passed",
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792726942.815,
+      "finishTime": 1792727244.382,
+      "failures": []
+    },
+    "goal06-phone-largest-onward": {
+      "result": "Passed",
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792727298.973,
+      "finishTime": 1792727403.292,
+      "failures": []
+    }
+  },
+  "initial_failure": {
+    "result": "Failed",
+    "totalTestCount": 1,
+    "passedTests": 0,
+    "failedTests": 1,
+    "skippedTests": 0,
+    "startTime": 1792726626.181,
+    "finishTime": 1792726660.346,
+    "failures": [
+      "XCTAssertEqual failed: (\"Sunny. First Light complete! Lantern Landing is restored. 18 of 18 starlight collected. Nicely done!\") is not equal to (\"18 of 18 starlight collected\")"
+    ]
+  },
+  "builds": {
+    "Debug": "build-for-testing passed",
+    "Release": "normal scheme build passed"
+  },
+  "selectors": [
+    "LanternLandingInteractionTests/testLanternMilestonesAtSparseAndFullNativeScale",
+    "LanternLandingInteractionTests/testClearRestorationSurvivesSettingsBackgroundRelaunchAndEntryCancellation",
+    "LanternLandingInteractionTests/testNativeWinningClearPersistsRestorationAndReplayStartsAtZero",
+    "SkyFlowStateTests",
+    "WorldJourneyTests",
+    "RestorationFlowTests",
+    "SkyDialogueTests",
+    "WorldJourneyInteractionTests/testLanternRepairNamesRibbonAndPreservesTheWinUntilBegin",
+    "WorldJourneyInteractionTests/testLargestTextLanternRepairNamesRibbonAndPreservesTheWinUntilBegin",
+    "FallingSkyInteractionTests/testFirstLightGoalCompletionRestoreReplayAndSurvival"
+  ],
+  "native_matrix_inventory_only": {
+    "ui": 196,
+    "hosted": 441,
+    "note": "source inventory, not full-matrix acceptance"
+  },
+  "limits": [
+    "historical18-light art fixtures are separate from current150k completion",
+    "static visual review and exercised transitions do not establish continuous crossfade quality",
+    "no human comprehension/enjoyment, physical contrast/performance or actual VoiceOver claim"
+  ],
+  "captures": [
+    {
+      "path": "dev-60afb687d3__lantern__ipad-mini-a17-pro__ax3xl-onward.jpg",
+      "sha256": "f44dd8ef4d6925971e744453ebbf3f5dea0c7f5e867490e75e806b97e9ba9b5c",
+      "pixels": [
+        1488,
+        2266
+      ],
+      "source": "45690ba6854db5aa9490ee58859d79447a953d5d",
+      "variant": "AX3XL normal motion"
+    },
+    {
+      "path": "dev-60afb687d3__lantern__iphone-17e__ax3xl-onward.jpg",
+      "sha256": "8567b1fc631b0e1cca3cad3279cb50c2e2328cb469d39cda045dd8a308b825f1",
+      "pixels": [
+        1170,
+        2532
+      ],
+      "source": "45690ba6854db5aa9490ee58859d79447a953d5d",
+      "variant": "AX3XL normal motion"
+    },
+    {
+      "path": "dev-60afb687d3__lantern__iphone-17e__current-151000-ending.jpg",
+      "sha256": "ea58bf18293b8aa99cb0aadc077f9e14121d26c2169e287fa8b6f4214bb191ed",
+      "pixels": [
+        1170,
+        2532
+      ],
+      "source": "45690ba6854db5aa9490ee58859d79447a953d5d",
+      "variant": "default text normal motion"
+    },
+    {
+      "path": "dev-60afb687d3__lantern__iphone-17e__default-onward.jpg",
+      "sha256": "f1690232ca929bd2db1422406e93b3c852377dc1f334e5fe135bec640d4637e9",
+      "pixels": [
+        1170,
+        2532
+      ],
+      "source": "45690ba6854db5aa9490ee58859d79447a953d5d",
+      "variant": "default text normal motion"
+    },
+    {
+      "path": "dev-64151f9500__lantern__ipad-mini-a17-pro__portrait-dense49-50.jpg",
+      "sha256": "db77d5c7c6f0da9e4f02945fe03e236ed37fed833d8bc2f4908f2481b756ebfb",
+      "pixels": [
+        1488,
+        2266
+      ],
+      "source": "276b35b",
+      "variant": "default text normal motion"
+    },
+    {
+      "path": "dev-64151f9500__lantern__iphone-17e__dense49-75.jpg",
+      "sha256": "6b9ceb580503cfbecc4391b27e5199946a7753b99e210de8caa6c9666dae77d4",
+      "pixels": [
+        1170,
+        2532
+      ],
+      "source": "276b35b",
+      "variant": "default text normal motion"
+    },
+    {
+      "path": "dev-64151f9500__lantern__iphone-17e__earned-before-75.jpg",
+      "sha256": "dde6cc04be31a64a57030f745d5d0b3a65c918a74cd64d00d07a072c3dc9cf02",
+      "pixels": [
+        1170,
+        2532
+      ],
+      "source": "276b35b",
+      "variant": "default text normal motion"
+    },
+    {
+      "path": "dev-64151f9500__lantern__iphone-17e__earned-generic-ending.jpg",
+      "sha256": "580e43734b35f280c54196bcd656070298ba42c97c99a0939335d857e7f45780",
+      "pixels": [
+        1170,
+        2532
+      ],
+      "source": "276b35b",
+      "variant": "default text normal motion"
+    }
+  ],
+  "snapshot": "03e900fc3b7e"
+}

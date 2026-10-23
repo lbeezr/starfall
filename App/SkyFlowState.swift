@@ -51,6 +51,9 @@ struct SkyFlowState: Equatable {
     mutating func handle(_ action: SkyFlowAction, hasSavedSky: Bool, entryID expectedID: UInt64? = nil) -> SkyFlowEffect? {
         guard handoff == nil || action == .home else { return nil }
         switch action {
+        case .onward:
+            // Requires the committed result and selection write in openOnward.
+            return nil
         case .worldMap:
             guard screen != .worldMap, screen != .entry else { return nil }
             mapOrigin = screen; screen = .worldMap
@@ -96,6 +99,20 @@ struct SkyFlowState: Equatable {
             entry = nil; entryID = nil; entryOrigin = nil; handoff = nil; mapOrigin = nil; screen = .welcome
             return .home
         }
+    }
+
+    /// Revalidate the result when invoked. A failed selection cannot publish navigation.
+    mutating func openOnward(_ destination: WorldLocation, game: FallingSky, journey: WorldJourney,
+                             hasSavedSky: Bool, terminalReady: Bool, active: Bool, modal: Bool,
+                             select: (WorldLocation) throws -> Void) rethrows -> Bool {
+        guard active, !modal, terminalReady, hasSavedSky,
+              screen == .playing || screen == .won,
+              SkyOnwardSnapshot(game: game, journey: journey)?.destination == destination else { return false }
+        var next = self
+        guard next.handle(.worldMap, hasSavedSky: hasSavedSky) == .worldMap else { return false }
+        try select(destination)
+        self = next
+        return true
     }
 
     mutating func settleHandoff(_ id: UInt64) {
