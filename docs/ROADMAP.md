@@ -4,7 +4,7 @@
 
 Build a satisfying restoration adventure for **iPhone and iPad**: make a thoughtful arrangement, earn a readable cascade, bring a place back to life, then discover a different puzzle at the next stop. Pokémon Puzzle League is the primary gameplay inspiration. The OpenAI showcases inform authored journeys, sensory coherence and small integrated slices.
 
-**Next action:** Continue the existing [ten-goal experience queue #240](https://github.com/lbeezr/starfall/issues/240) in its recorded order, reusing [#236–#238](evidence/factory-goal-refill-2026-10-22/README.md). Prepare [Kite/curriculum #252](https://github.com/lbeezr/starfall/issues/252), [mastery #253](https://github.com/lbeezr/starfall/issues/253) and [Bell Choir/content budget #254](https://github.com/lbeezr/starfall/issues/254) independently. These three leaves deliver designs, not completed gameplay.
+**Next action:** Continue the existing [ten-goal experience queue #240](https://github.com/lbeezr/starfall/issues/240) in its recorded order, reusing [#236–#238](evidence/factory-goal-refill-2026-10-22/README.md). Prepare [Kite/curriculum #252](https://github.com/lbeezr/starfall/issues/252), [mastery #253](https://github.com/lbeezr/starfall/issues/253) independently. The [Bell Choir/content budget](design/BELL_CHOIR_AND_CAMPAIGN_BUDGET.md) is briefed; its artwork and runtime remain planned. These deliverables are designs, not completed gameplay.
 
 This is an outcome sequence, without calendar or playtime promises. The [previous roadmap](ROADMAP_HISTORY_2026-10-22.md) preserves its source-bound integration history and earlier proposals.
 
@@ -65,7 +65,7 @@ A new-play session, model win or automated completion cannot close [uncoached iP
 | **05 Silver Pools · Wild Moons** | Ready; historical rules | Choose the order that creates a deeper causal sequence; restore continuous flow. | Prove divergent exchanges and a later recovery/chain opportunity. |
 | **06 Frostfruit Orchard · Wild Moons** | Ready; historical rules | Proposed compression/recovery challenge; restore a living winter rhythm. | Author one contrasting encounter; preserve the cool seasonal identity. |
 | **07 Sunwheel Mill · Clockwork Belt** | Ready; historical rules | Combine earlier space/ingredient/sequence decisions; restore useful work and an open outlet. | Demonstrate synthesis rather than another unexplained target increase. |
-| **08 Bell Choir · Clockwork Belt** | **Unbuilt** | Proposed coordination of two useful pattern opportunities; restore a shared voice. | #254: three unequal chimes, unfinished large chime at 75%, one earned ensemble response. No rhythm/pitch minigame. |
+| **08 Bell Choir · Clockwork Belt** | **Unbuilt** | Proposed coordination of two useful pattern opportunities; restore a shared voice. | [Production brief](design/BELL_CHOIR_AND_CAMPAIGN_BUDGET.md): three unequal chimes, unfinished large chime at 75%, one earned ensemble response. No rhythm/pitch minigame. |
 | **09 Starferry Station · Clockwork Belt** | **Unbuilt** | Proposed preparation before committing a useful sequence; restore departure across distance. | After Bell's native lesson, brief one encounter and a short ferry payoff. |
 | **10 Aurora Falls · Night's Edge** | **Unbuilt** | Proposed continuity through linked consequences; restore one continuous aurora. | Witness a distinct chain problem before producing the next asset family. |
 | **11 Petal Beacon · Night's Edge** | **Unbuilt** | Proposed controlled release of a prepared opportunity; reveal a route onward. | Make the opening/beam reward readable without new hidden rules. |
@@ -73,7 +73,7 @@ A new-play session, model win or automated completion cannot close [uncoached iP
 
 [#252](https://github.com/lbeezr/starfall/issues/252) supplies the curriculum and first Kite brief. Every adopted encounter needs two meaningful legal plans, materially different consequences, an understandable recovery route and a complete native round. A deterministic witness establishes consequences/solvability, not difficulty or fun. Keep the later target/time figures in the older Story plan as hypotheses.
 
-[#254](https://github.com/lbeezr/starfall/issues/254) compares the **twelve-repair baseline** with optional multi-round chapters. Additional rounds must add a distinct decision, variation or capstone. Define round-versus-location completion and save identity before implementation; do not assume 36/48 rounds or several hours. Skilled play may finish promptly.
+[The campaign budget](design/BELL_CHOIR_AND_CAMPAIGN_BUDGET.md) compares the **twelve-repair baseline** with optional multi-round chapters. Additional rounds must add a distinct decision, variation or capstone. Define round-versus-location completion and save identity before implementation; do not assume 36/48 rounds or several hours. Skilled play may finish promptly.
 
 ## Replay depth and future modes
 
@@ -116,7 +116,7 @@ Use [29 workstreams / 292 responsibilities](GAME_ROLE_CATALOG.md) and the [label
 | Work to cover | Primary homes and supporting expertise | Current action / gap |
 | --- | --- | --- |
 | Rules, progression, authored decisions, replay | Game design, level design, gameplay engineering; puzzle designer, balance designer, save engineer, QA | #240, #252, #253; biggest product gap is distinct encounters beyond the first pair. |
-| World, cast, story and restoration payoff | Production, narrative, art direction, environment/character art, animation/VFX, audio, technical art | Seven ready identities; five unbuilt. #254 budgets the next complete slice; avoid parallel mass asset generation. |
+| World, cast, story and restoration payoff | Production, narrative, art direction, environment/character art, animation/VFX, audio, technical art | Seven ready identities; five unbuilt. [The Bell brief](design/BELL_CHOIR_AND_CAMPAIGN_BUDGET.md) budgets the next complete slice; avoid parallel mass asset generation. |
 | HUD, map, controls, teaching and sensory meaning | UI/UX, platform/input, audio, accessibility; HUD designer, interaction designer, UX writer, native QA | Reuse #236–#238/#242–#250; quiet, largest-text and non-color meaning remain part of applicable development checks. Actual VoiceOver is deferred. |
 | Player understanding and balance | User research, game design, QA; participants, researcher, touch specialist | #206 needs real phone/tablet observations; simulation cannot supply them. |
 | Sustained performance and platform compatibility | Performance, rendering, technical art, platform/input, QA | #207 physical budgets; #208 minimum iOS; #209 physical readability/cues. Simulator evidence does not close device acceptance. |

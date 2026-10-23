@@ -1,5 +1,7 @@
 # Design documents
 
+[Campaign budget and Bell Choir brief](BELL_CHOIR_AND_CAMPAIGN_BUDGET.md) keeps twelve repairs as the baseline and specifies the next unbuilt place's gameplay question, five restoration states, three compositions and native-first production sequence. It is a design deliverable; no Bell challenge, paintings or new campaign progression are implemented.
+
 [AI game-factory guidance](AI_GAME_FACTORY.md) studies all 63 prompt cards across seven OpenAI games, records reconstruction/source limits and adds an experience brief, playable-slice workflow and reusable prompts. Guidance is integrated; improvements to game quality and factory throughput remain unmeasured.
 
 [Current Story playtest](CURRENT_STORY_PLAYTEST.md) is the blank versioned Lantern/Ribbon observation packet, including the revision-4 four-line phone comparison for physical iPhone/iPad comprehension, setups, recovery and touch reliability. It preserves an uncoached baseline and opportunity/assistance denominators; preparation supplies no participant results and does not close #206.
