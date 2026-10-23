@@ -1,0 +1,137 @@
+{
+  "status": "Verified for scoped development adoption",
+  "activationMain": "68374968f158f51f72caeb9d9d0c74fd69f0c395",
+  "baselineCompiledCommit": "3b6838c1dfcc873c0e9c06d19aaf5488aad736b6",
+  "baselineParity": "App/Core/project/tests/Config identical to activation68374968; reused immutable prepared products.",
+  "firstSliceCleanCommit": "c69f47ab006fa635679df2405876da1c312c8c6b",
+  "integratedCleanCommit": "fb76f713946cb384d752b0ee10de316e8b1951e6",
+  "integratedMainBase": "5838139de82b1d2bc239f58fdeed577c37ffd8e4",
+  "buildAffectingDirtyInputs": {},
+  "onlyBuildInputs": {
+    "App/WorldMapArtwork.swift": "f8d573d5e7e8f12d486add96f719ef60a49f8530bd979bc40f4680be2f48ecf9",
+    "App/Assets.xcassets/WorldMapIslandRibbonDamaged.imageset/ribbon-damaged.png": "2729e2833fa0096036a9ef7e5f616f05b26fb095dc9a20ae5a47f83097f3822b"
+  },
+  "environment": "Xcode27.1(27A9275),Swift6.4,macOS27.0.1; Debug/Release arm64; iPhone17e/iPadminiA17Pro iOS27.0(24A434) Simulator",
+  "bundleLabel": "dev.local",
+  "core": {
+    "firstSlicePassed": 295,
+    "integratedPassed": 305,
+    "failed": 0,
+    "skipped": 0
+  },
+  "builds": {
+    "firstSliceDebugSeconds": 31.7,
+    "integratedDebugSeconds": 18.1,
+    "integratedReleaseSeconds": 43.6,
+    "firstSliceProducts": "build_sim_2026-10-23T17-51-19-171Z_pid51280_737fe991.xctestproducts",
+    "integratedProducts": "build_sim_2026-10-23T17-53-46-729Z_pid51280_6ccf3b75.xctestproducts"
+  },
+  "selectedChecks": {
+    "before-phone": {
+      "result": "Passed",
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0
+    },
+    "before-tablet": {
+      "result": "Passed",
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0
+    },
+    "after-phone": {
+      "result": "Passed",
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0
+    },
+    "hosted": {
+      "result": "Passed",
+      "totalTestCount": 19,
+      "passedTests": 19,
+      "failedTests": 0,
+      "skippedTests": 0
+    },
+    "after-tablet": {
+      "result": "Passed",
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0
+    },
+    "integrated-phone": {
+      "result": "Passed",
+      "totalTestCount": 2,
+      "passedTests": 2,
+      "failedTests": 0,
+      "skippedTests": 0
+    },
+    "integrated-hosted": {
+      "result": "Passed",
+      "totalTestCount": 19,
+      "passedTests": 19,
+      "failedTests": 0,
+      "skippedTests": 0
+    }
+  },
+  "matrixInventoryOnly": {
+    "ui": 219,
+    "hosted": 499,
+    "notFullMatrixPass": true
+  },
+  "releaseMembership": {
+    "islandRasters": 14,
+    "ribbonDamaged": {
+      "pixels": [
+        1254,
+        1254
+      ],
+      "opaque": false
+    },
+    "ribbonRestored": {
+      "pixels": [
+        1254,
+        1254
+      ],
+      "opaque": false
+    },
+    "newTargetMembers": 0
+  },
+  "productionScope": "One existing PNG plus measured alpha-union metadata; no changed renderer/navigation/input/Core/save/audio owners. Integrated main independently includes archivev15 and FullBoard revision6.",
+  "commands": [
+    "swift test --scratch-path /private/tmp/starfall-factory-gameplay-20261022/CoreBuild --jobs 2",
+    "XcodeBuildMCP build_sim(buildForTesting:true), Debug; set configuration Release, build_sim({})",
+    "python3 scripts/simulator-command.py --receipt <temp>/stages.jsonl <label> <240/270/360 seconds> xcodebuild -testProductsPath <immutable-products> -destination platform=iOS Simulator,id=<owned> -collect-test-diagnostics never -parallel-testing-enabled NO -only-testing:<selector> -resultBundlePath <unique>.xcresult test-without-building",
+    "xcrun xcresulttool get test-results summary --path <result> --format json",
+    "xcrun xcresulttool export attachments --path <result> --output-path <unique>",
+    "xcrun assetutil --info <Release.app>/Assets.car",
+    "python3 scripts/native_test_plan.py --stage dev",
+    "python3 scripts/ci-hygiene.py",
+    "git diff --check"
+  ],
+  "limits": [
+    "Legacy18 fixtures do not prove current150000/220000 reachability.",
+    "No new motion implementation; static map/journey evidence does not establish smoothness or audiovisual timing.",
+    "No physical install/play, actual VoiceOver, minimumiOS17, fullRC, measured contrast or human recognition/enjoyment evidence."
+  ],
+  "failedChecks": [],
+  "selectors": {
+    "phone": "WorldJourneyInteractionTests/testLanternRepairNamesRibbonAndPreservesTheWinUntilBegin",
+    "tablet": "WorldMapReviewInteractionTests/testSevenReviewStatesUseNormalMapAndExplicitEntryBoundary",
+    "integratedPhone": [
+      "WorldJourneyInteractionTests/testLargestTextLanternRepairNamesRibbonAndPreservesTheWinUntilBegin",
+      "RibbonCrossingInteractionTests/testRibbonWinningClearPersistsNamedResultAndReplayStartsAtZero"
+    ],
+    "hosted": [
+      "OfficialWorldArtworkTests",
+      "WorldMapLayoutTests",
+      "WorldMapReviewFixtureTests"
+    ]
+  },
+  "selectedExportInspection": "All nine actual JPEG exports inspected for orientation, source/state label and relevant painting; current paused opening visibly contains25 stars. Tablet raw audit reviewed separately.",
+  "tabletVisualReview": "All nine after-stills independently inspected against recovery baseline; retain. AllReady landscape omits Ribbon; portrait includes upper bridge only. Complete restored Ribbon shown in twoRepairs portrait/landscape.",
+  "finalDocumentationParity": "After fb76f713 only documentation/evidence changed; App/README is the only path under App/Core/project/test/Config diff."
+}

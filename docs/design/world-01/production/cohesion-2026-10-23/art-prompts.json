@@ -1,0 +1,98 @@
+{
+  "status": "Adopted for development; source-bound native and Release acceptance in docs/evidence/cohesion-goal-08-travel-identity-2026-10-23",
+  "goal": "https://github.com/lbeezr/starfall/issues/289",
+  "tool": "built-in image_gen",
+  "transparentBackground": true,
+  "prompt": "Use case: precise-object-edit.\nAsset type: ONE registered transparent damaged Ribbon Crossing world-map island, 1254×1254 RGBA.\n\nImage 1 is the ONLY edit target and is authoritative for the entire composition, exact canvas, camera, terrain, scale, placement, alpha silhouette, current dormant lighting and material. Image 2 is the corresponding RESTORED map island: use ONLY to understand matching construction and registration; do not copy its repaired bridge or lights. Image 3 is the existing damaged gameplay painting: use ONLY its restoration meaning—two separated frayed purple ribbon bridge ends. Do not copy its screen layout, sky, scale or camera.\n\nCorrect one visual-state inconsistency in image 1. Its violet footbridge currently spans continuously between the back-left arch terrace and front-right landing terrace. Break ONLY the midpoint of that bridge, approximately around (700,600) on the1254×1254 canvas, into TWO clearly separated ribbon ends. Leave a visible open cleft approximately100–140 source pixels along the bridge's travel direction, with modest frayed threads curling down from each existing purple cloth edge, like the damaged bridge in image 3. The gap must remain legible when the complete island is displayed around220–300points wide. Both halves must remain attached to their existing supported terraces; do not move either terrace or create detached fragments.\n\nAt that same break, terminate the crossing handrail/rope segments so no intact rail or cloth still connects across the gap. Preserve the existing nearby brass posts and lamps at their positions; only local connecting segments at the torn midpoint may break. Keep the existing violet cloth, gold edging and star motifs on the surviving halves. Do not add a barricade, new platform, rope bridge, replacement plank, extra post or a glowing effect. The visible opening must be true transparent alpha exposing the native sky beneath, not painted blue, black, checkerboard, mist or a new background.\n\nPreserve every other feature exactly in image 1: both rocky floating terrace bodies and hanging crystals, complete outer silhouette, back-left pearl/brass arch and crystal, pennants, sleeping foliage, cool weathered materials, dark lanterns, front-right open plaza, all perimeter supports and source boundaries. In particular leave source positions around native marker(.74,.66), route ports(.08,.36),(.95,.63),(.18,.28),(.75,.88) unchanged and supported by opaque terrain. No shifting, recentering, resizing, crop, new glow, added scenery outside the original silhouette, global relighting or unrelated repaint. No UI, text, markers, people, playable stars, sky, clouds, floor or shadow plane.\n\nOutput exactly1254×1254 PNG with genuine RGBA transparency and the existing transparent margins. Change only the small bridge midpoint and the immediately associated frayed cloth/rail ends; keep this recognizable as the same unlit damaged island.",
+  "output": {
+    "path": "App/Assets.xcassets/WorldMapIslandRibbonDamaged.imageset/ribbon-damaged.png",
+    "original": "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-80e6a2bd-59aa-4960-a14d-25c079ff3d8b.png",
+    "sha256": "2729e2833fa0096036a9ef7e5f616f05b26fb095dc9a20ae5a47f83097f3822b",
+    "pixels": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "bytes": 1911195,
+    "alpha128Bounds": [
+      16,
+      31,
+      1250,
+      1211
+    ],
+    "pairUnionAlpha128Bounds": [
+      14,
+      31,
+      1250,
+      1211
+    ],
+    "cornerAlpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "zeroAlphaPixels": 867708,
+    "attachmentAlpha": [
+      253,
+      253,
+      253,
+      253,
+      253
+    ],
+    "export": "Byte-identical generated PNG; no repaint, crop, rescale or raster postprocessing."
+  },
+  "references": [
+    {
+      "path": "docs/design/world-01/production/layered-2026-10-20/ribbon-damaged.png",
+      "sha256": "01ae1449f8ed8440aed7371550f371c87330002347ded0c31df20ec026acf16f",
+      "role": "Only edit target; existing dormant map camera, canvas, geometry, materials and unlit state."
+    },
+    {
+      "path": "App/Assets.xcassets/WorldMapIslandRibbonRestored.imageset/ribbon-restored.png",
+      "sha256": "0de2cdfc17a5c1af030bf1b2361c9ef44442c59fead6d9127c936d11fbd3c3b6",
+      "role": "Registered construction reference only; repaired bridge and lighting excluded."
+    },
+    {
+      "path": "App/Assets.xcassets/RibbonCrossing000.imageset/scene.png",
+      "sha256": "84d6a096707452018fa3eabc2050497b7417070b19cf9d73d0c16d311ace8f29",
+      "role": "Restoration meaning only: separated frayed purple bridge ends. Not camera/layout."
+    }
+  ],
+  "registration": {
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "canvasInset": 0.08,
+    "marker": [
+      0.74,
+      0.66
+    ],
+    "ports": [
+      [
+        0.08,
+        0.36
+      ],
+      [
+        0.95,
+        0.63
+      ],
+      [
+        0.18,
+        0.28
+      ],
+      [
+        0.75,
+        0.88
+      ]
+    ],
+    "note": "Measured pair body metadata updated, not renderer geometry. Outer alpha body differs by 2 top and 5 right source pixels; no pixel-identical exterior claim."
+  },
+  "previousSelection": {
+    "path": "docs/design/world-01/production/layered-2026-10-20/ribbon-damaged.png",
+    "sha256": "01ae1449f8ed8440aed7371550f371c87330002347ded0c31df20ec026acf16f",
+    "prompt": "docs/design/world-01/production/layered-2026-10-20/ribbon-damaged.prompt.txt",
+    "note": "Historical source and original generation entry retained unchanged."
+  }
+}

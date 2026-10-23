@@ -550,5 +550,13 @@
   ],
   "sourceRgba8EstimateBytes": 88062288,
   "measurementLimits": "Source pixel estimate only; excludes framework caches, compressed asset catalog, intermediate and GPU copies.",
-  "registrationOwner": "App/WorldMapArtwork.swift: measured pair-union alpha>=128 bounds and per-island optical pin/route anchors; native packaged-image tests check each attachment lies on terrain in both states."
+  "registrationOwner": "App/WorldMapArtwork.swift: measured pair-union alpha>=128 bounds and per-island optical pin/route anchors; native packaged-image tests check each attachment lies on terrain in both states.",
+  "currentRuntimeRevisions": {
+    "ribbon-damaged": {
+      "source": "App/Assets.xcassets/WorldMapIslandRibbonDamaged.imageset/ribbon-damaged.png",
+      "sha256": "2729e2833fa0096036a9ef7e5f616f05b26fb095dc9a20ae5a47f83097f3822b",
+      "provenance": "../cohesion-2026-10-23/art-prompts.json",
+      "note": "Original asset entry, source and prompt above remain historical provenance; this revision is the current runtime selection."
+    }
+  }
 }

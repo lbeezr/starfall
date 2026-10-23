@@ -2,7 +2,9 @@
 
 **Current work:** The [modular map](layered-2026-10-20/README.md) is adopted for development with [source-bound checks](../../../evidence/ui-adversarial-2026-10-20/IMPLEMENTATION.md). The approved concept guides materials and landmark identity. The [UI production workflow](../../UI_PRODUCTION.md) requires a native slice with independent states and responsive composition before expanding the family.
 
-The replacement separates sky/clouds, six independently placed islands and their repair states, connectors and native markers/card. `WorldMapArtwork` owns the content/registration catalogue; `WorldMapPainting` composes a read-only app snapshot. Existing Core/store owners retain access, completed repairs and persistence. All twelve identities remain in Places; six have no playable content.
+The replacement separates sky/clouds, seven independently placed islands and their repair states, connectors and native markers/card. `WorldMapArtwork` owns the content/registration catalogue; `WorldMapPainting` composes a read-only app snapshot. Existing Core/store owners retain access, completed repairs and persistence. All twelve identities remain in Places; five have no playable content.
+
+[Ribbon’s travel-identity revision](cohesion-2026-10-23/README.md) aligns its damaged bridge with Entry and gameplay. The original modular exports retain their historical provenance.
 
 ## Rejected whole-map prototype
 

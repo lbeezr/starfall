@@ -44,7 +44,7 @@ struct WorldMapContent: Equatable {
                    leading: CGPoint(x: 0.06, y: 0.56), trailing: CGPoint(x: 0.95, y: 0.56),
                    upper: CGPoint(x: 0.18, y: 0.37), lower: CGPoint(x: 0.53, y: 0.72)),
             island(.ribbonCrossing, name: "Ribbon", source: CGSize(width: 1254, height: 1254),
-                   body: CGRect(x: 14, y: 33, width: 1231, height: 1178),
+                   body: CGRect(x: 14, y: 31, width: 1236, height: 1180),
                    marker: CGPoint(x: 0.74, y: 0.66), // Front plaza, beyond the ribbon bridge.
                    leading: CGPoint(x: 0.08, y: 0.36), trailing: CGPoint(x: 0.95, y: 0.63),
                    upper: CGPoint(x: 0.18, y: 0.28), lower: CGPoint(x: 0.75, y: 0.88)),
