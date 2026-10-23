@@ -4,7 +4,7 @@
 
 Make Story Mode a progression from a welcoming introduction to expressive arcade mastery, guided by [Pokémon Puzzle League](design/POKEMON_PUZZLE_LEAGUE_REFERENCE.md). Give each location distinct decisions, theatrical scores and celebrations, with optional mastery proposed for replay. Current completed repairs open the next ready location; ratings are not implemented. Keep automatic showers, pause and manual advance; design substantial rounds without a clock that prevents an earned finish.
 
-**Next action:** Follow the [current roadmap](ROADMAP.md): continue the existing experience queue, observe the [four-star-line trial](evidence/four-star-lines-2026-10-22/README.md), and prepare the [Kite/curriculum](https://github.com/lbeezr/starfall/issues/252), [mastery contract](design/STORY_MASTERY_CONTRACT.md) and [Bell Choir/content budget](design/BELL_CHOIR_AND_CAMPAIGN_BUDGET.md). The later five ready places retain 18-light rules. Target/time estimates and manual-rule mastery examples below remain historical proposals, not ready current-pattern acceptance.
+**Next action:** Follow the [current roadmap](ROADMAP.md): continue the existing experience queue, observe the [four-star-line trial](evidence/four-star-lines-2026-10-22/README.md), and prepare the [Kite/curriculum](design/STORY_ENCOUNTER_CURRICULUM.md), [mastery contract](design/STORY_MASTERY_CONTRACT.md) and [Bell Choir/content budget](design/BELL_CHOIR_AND_CAMPAIGN_BUDGET.md). The later five ready places retain 18-light rules. Target/time estimates and manual-rule mastery examples below remain historical proposals, not ready current-pattern acceptance.
 
 ## Current first-pair revision
 
@@ -75,7 +75,7 @@ Both are intended future directions, not current implementation work. Keep the p
 
 ## The five location briefs
 
-**Historical manual-rule examples.** Their decision themes remain useful, but taps, selective traces and banking completed patterns cannot be copied into current automatic-pattern encounters. [#252](https://github.com/lbeezr/starfall/issues/252) develops a version-aware curriculum and witnessed Kite brief; the roadmap owns current sequencing.
+**Historical manual-rule examples.** Their decision themes remain useful, but taps, selective traces and banking completed patterns cannot be copied into current automatic-pattern encounters. [The encounter curriculum](design/STORY_ENCOUNTER_CURRICULUM.md) supplies a version-aware, source-witnessed Kite brief; the roadmap owns current sequencing.
 
 All encounters use current matching, growth, cardinal exchanges, selected traces, exact recipes, settling and deliberate follow-ups. They use ordinary colored stars and grown stars. The first pass adds no new piece, power, obstacle, aging, Dusk, currency or move limit. Opal and storm rules remain available in their existing contexts; they are unnecessary to establish this five-location curriculum.
 
