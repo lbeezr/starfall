@@ -137,6 +137,82 @@ final class SkyFlowInteractionTests: XCTestCase {
         verifyShortStorySwipe(largest: true)
     }
 
+    @MainActor private func verifyRibbonIdentity(largest: Bool) {
+        let app = launch(largest: largest, review: ["--dialogue-review", "--world-legacy-review"])
+        defer { app.terminate() }
+        app.worldVisitControl("ribbonCrossing").tap()
+        let subtitle = app.staticTexts["sky.subtitle"], begin = app.buttons["sky.begin"]
+        XCTAssertTrue(subtitle.label.contains("220,000"))
+        XCTAssertTrue(subtitle.label.contains("Showers arrive closer together than at Lantern Landing"))
+        capture(app, largest ? "ribbon-identity-entry-largest" : "ribbon-identity-entry-default")
+        app.revealSkyControls([begin])
+        XCTAssertLessThanOrEqual(subtitle.frame.maxY, begin.frame.minY)
+        XCTAssertGreaterThan(subtitle.frame.maxY, app.frame.minY + 44)
+        capture(app, largest ? "ribbon-identity-entry-end-largest" : "ribbon-identity-entry-end-default")
+        begin.tap()
+        let menu = app.buttons["experiment.settings"]
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true AND hittable == true"),
+                                               object: menu).wait(timeout: 10))
+        let message = app.staticTexts["experiment.message"]
+        XCTAssertTrue(message.label.contains("Showers arrive closer together here"))
+        XCTAssertTrue(message.label.contains("plan the survivors"))
+        // Sample the initial guidance, then freeze before long reading or input
+        // comparisons; current Ribbon has a real four-second shower clock.
+        capture(app, largest ? "ribbon-identity-start-largest" : "ribbon-identity-start-default")
+        menu.tap(); tap("experiment.pause", app)
+        let board = app.otherElements["experiment.board"], next = app.buttons["experiment.next"]
+        XCTAssertTrue((board.value as? String)?.hasPrefix("0 showers") == true)
+        @MainActor func settled() {
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: next).wait(timeout: 8))
+        }
+        @MainActor func cells() -> [String] {
+            let all = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@", "experiment.cell."))
+            XCTAssertEqual(all.count, 49)
+            return all.allElementsBoundByIndex.map { $0.label + "|" + ($0.value as? String ?? "") }
+        }
+        @MainActor func swap(_ from: (Int, Int), _ to: (Int, Int)) {
+            settled()
+            let source = app.buttons["experiment.cell.\(from.0).\(from.1)"], destination = app.buttons["experiment.cell.\(to.0).\(to.1)"]
+            app.revealSkyControls([source, destination])
+            source.coordinate(withNormalizedOffset: .init(dx: 0.5, dy: 0.5)).press(forDuration: 0.05,
+                thenDragTo: destination.coordinate(withNormalizedOffset: .init(dx: 0.5, dy: 0.5)),
+                withVelocity: .fast, thenHoldForDuration: 0)
+            settled()
+        }
+        let opening = cells()
+        swap((3, 0), (3, 1))
+        XCTAssertNotEqual(cells(), opening)
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, "0 of 220,000 starlight collected")
+        swap((3, 1), (3, 0))
+        XCTAssertEqual(cells(), opening, "The useful zero-score arrangement alternative can be reversed")
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, "0 of 220,000 starlight collected")
+        swap((1, 1), (1, 2))
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, "30,000 of 220,000 starlight collected")
+        XCTAssertTrue(message.label.contains("3-clear chain"))
+        XCTAssertTrue((board.value as? String)?.hasPrefix("0 showers") == true)
+        if largest { app.readSkyGuideToEnd(actions: [next]) }
+        capture(app, largest ? "ribbon-identity-chain-largest" : "ribbon-identity-chain-default")
+        let retained = cells()
+        tap("experiment.settings", app); app.skyMenuControl("experiment.replay").tap()
+        XCTAssertTrue(subtitle.label.contains("closer showers"))
+        XCTAssertTrue(subtitle.label.contains("220,000"))
+        XCTAssertTrue(subtitle.label.contains("same Ribbon Crossing opening"))
+        tap("sky.home", app); tap("sky.resume", app)
+        settled()
+        XCTAssertEqual(cells(), retained)
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, "30,000 of 220,000 starlight collected")
+    }
+
+    @MainActor func testRibbonIdentityExplainsTempoAndSupportsDeliberateOpeningChoices() {
+        requireNormalMotion()
+        verifyRibbonIdentity(largest: false)
+    }
+
+    @MainActor func testLargestTextRibbonIdentityKeepsChoiceAndReplayReadable() {
+        requireNormalMotion()
+        verifyRibbonIdentity(largest: true)
+    }
+
     @MainActor private func reachFullStoryColumn(largest: Bool = false, quiet: Bool = false) -> XCUIApplication {
         let app = launch(largest: largest, quiet: quiet)
         app.worldVisitControl("firstLight").tap(); tap("sky.begin", app)

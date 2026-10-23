@@ -1,0 +1,215 @@
+{
+  "base_main": "fba8d11bb60caf0db8b5b8d0f2dfc0ebe5d26ad5",
+  "integrated_main": "8298d6cdd2698c62e3bc4197f9fc534b6eb9f81f",
+  "source": "6065e06ad3abe60faa7a1b1312dd3ad031912326",
+  "product_source": "642bcc57",
+  "driver_source": "4218cc2ce1af9ecab10f221b72db9178ec479cc9",
+  "build_identity": "dev.a591c1b9bb",
+  "dirty_build_inputs": [],
+  "sha256": {
+    "App/DialogueScripts/observatory-dialogue.json": "7ea4b1f1e991713b9b8ca1af7898e293e9f1aa98747d12c156ed4570fa480008",
+    "AppTests/SkyDialogueTests.swift": "2244c56fb1bb32688c853ca64ab3209fdd46cc9f5f6dbcf84cd5a61ba67192cc",
+    "UITests/SkyFlowInteractionTests.swift": "e79ba936046882693cc77241bf0e1745c8ef35b80c2db3a778c6b6895706fadb"
+  },
+  "captures": [
+    {
+      "test": "SkyFlowInteractionTests/testLargestTextRibbonIdentityKeepsChoiceAndReplayReadable()",
+      "label": "ribbon-identity-chain-largest",
+      "raw_sha256": "dbf9847dba06aaeb4c4b7fee44d6a4f90009c86d2388cd24897accf505725ab2",
+      "source": "4218cc2ce1af9ecab10f221b72db9178ec479cc9",
+      "build": "dev.a591c1b9bb",
+      "device": "iPhone 17e",
+      "os": "iOS 27.0 (24A434)",
+      "text": "AX3XL",
+      "motion": "normal",
+      "inspected": true,
+      "retained": "dev-a591c1b9bb__ribbon__iphone-17e__chain-largest.jpg",
+      "retained_sha256": "ae469f216135e083b495459148cf9f67f65faffee7344b6e9da169803e0019a8"
+    },
+    {
+      "test": "SkyFlowInteractionTests/testLargestTextRibbonIdentityKeepsChoiceAndReplayReadable()",
+      "label": "ribbon-identity-start-largest",
+      "raw_sha256": "18e2eb53ee42dd096d2f50509fe9351ff90c85412bc6d9aadfaad74aa899a4c8",
+      "source": "4218cc2ce1af9ecab10f221b72db9178ec479cc9",
+      "build": "dev.a591c1b9bb",
+      "device": "iPhone 17e",
+      "os": "iOS 27.0 (24A434)",
+      "text": "AX3XL",
+      "motion": "normal",
+      "inspected": true
+    },
+    {
+      "test": "SkyFlowInteractionTests/testLargestTextRibbonIdentityKeepsChoiceAndReplayReadable()",
+      "label": "ribbon-identity-entry-end-largest",
+      "raw_sha256": "df483568c98c3bfecdf8beda297c367e97d2d189d134e4ab1426c5d030f40684",
+      "source": "4218cc2ce1af9ecab10f221b72db9178ec479cc9",
+      "build": "dev.a591c1b9bb",
+      "device": "iPhone 17e",
+      "os": "iOS 27.0 (24A434)",
+      "text": "AX3XL",
+      "motion": "normal",
+      "inspected": true,
+      "retained": "dev-a591c1b9bb__ribbon__iphone-17e__entry-end-largest.jpg",
+      "retained_sha256": "905dbde74c5d2c176b41d43b93a8cb4ae95b676cc21f9d773533a47b781d6e63"
+    },
+    {
+      "test": "SkyFlowInteractionTests/testLargestTextRibbonIdentityKeepsChoiceAndReplayReadable()",
+      "label": "ribbon-identity-entry-largest",
+      "raw_sha256": "0623aedea338fed1e988ccbb6469c743eb3aca44b9b65993e3cf6eab12afed77",
+      "source": "4218cc2ce1af9ecab10f221b72db9178ec479cc9",
+      "build": "dev.a591c1b9bb",
+      "device": "iPhone 17e",
+      "os": "iOS 27.0 (24A434)",
+      "text": "AX3XL",
+      "motion": "normal",
+      "inspected": true
+    },
+    {
+      "test": "SkyFlowInteractionTests/testRibbonIdentityExplainsTempoAndSupportsDeliberateOpeningChoices()",
+      "label": "ribbon-identity-chain-default",
+      "raw_sha256": "1035919011690d5f3a3b95c5df4891df50433a4b055cd7de34fdbfa3f2501c67",
+      "source": "4218cc2ce1af9ecab10f221b72db9178ec479cc9",
+      "build": "dev.a591c1b9bb",
+      "device": "iPhone 17e",
+      "os": "iOS 27.0 (24A434)",
+      "text": "default",
+      "motion": "normal",
+      "inspected": true,
+      "retained": "dev-a591c1b9bb__ribbon__iphone-17e__chain-default.jpg",
+      "retained_sha256": "5f39cf3f354e56dec97f1a2f70f4573aeb5d2a26b3478222cb5fa981a26ebc2e"
+    },
+    {
+      "test": "SkyFlowInteractionTests/testRibbonIdentityExplainsTempoAndSupportsDeliberateOpeningChoices()",
+      "label": "ribbon-identity-start-default",
+      "raw_sha256": "2714bb011d192a5da715f808444c30d675799a1dc6a902c363dedd30cf2c6463",
+      "source": "4218cc2ce1af9ecab10f221b72db9178ec479cc9",
+      "build": "dev.a591c1b9bb",
+      "device": "iPhone 17e",
+      "os": "iOS 27.0 (24A434)",
+      "text": "default",
+      "motion": "normal",
+      "inspected": true,
+      "retained": "dev-a591c1b9bb__ribbon__iphone-17e__start-default.jpg",
+      "retained_sha256": "38c416fa9df56a09e967d2ea30c964212cbf75ca7fd5e58863fd91dd1ce69767"
+    },
+    {
+      "test": "SkyFlowInteractionTests/testRibbonIdentityExplainsTempoAndSupportsDeliberateOpeningChoices()",
+      "label": "ribbon-identity-entry-end-default",
+      "raw_sha256": "23aeec19f1cc7a836c2c6042cd0b6494b10cf77898be7df44364754eabb1c831",
+      "source": "4218cc2ce1af9ecab10f221b72db9178ec479cc9",
+      "build": "dev.a591c1b9bb",
+      "device": "iPhone 17e",
+      "os": "iOS 27.0 (24A434)",
+      "text": "default",
+      "motion": "normal",
+      "inspected": true
+    },
+    {
+      "test": "SkyFlowInteractionTests/testRibbonIdentityExplainsTempoAndSupportsDeliberateOpeningChoices()",
+      "label": "ribbon-identity-entry-default",
+      "raw_sha256": "23aeec19f1cc7a836c2c6042cd0b6494b10cf77898be7df44364754eabb1c831",
+      "source": "4218cc2ce1af9ecab10f221b72db9178ec479cc9",
+      "build": "dev.a591c1b9bb",
+      "device": "iPhone 17e",
+      "os": "iOS 27.0 (24A434)",
+      "text": "default",
+      "motion": "normal",
+      "inspected": true,
+      "retained": "dev-a591c1b9bb__ribbon__iphone-17e__entry-default.jpg",
+      "retained_sha256": "ae579205403a0351d04f52685960fcc23ddfaf6a16f4daffe05aed9c5460a347"
+    },
+    {
+      "label": "actual prior Ribbon Entry",
+      "source": "45690ba6854db5aa9490ee58859d79447a953d5d",
+      "build": "dev.60afb687d3",
+      "device": "iPhone 17e",
+      "text": "default",
+      "motion": "normal",
+      "raw_sha256": "1681d78e9ff6901355ef31ff8418f3853fd26d9943c38118063e1c63affe8a88",
+      "retained": "dev-60afb687d3__ribbon__iphone-17e__entry-before.jpg",
+      "retained_sha256": "8d7d27bbbffdf5cebe6bfa44365eaced4021c7dc3a62a8bd1142313184d47d60",
+      "inspected": true
+    },
+    {
+      "label": "flow-full",
+      "test": "SkyFlowInteractionTests/testCurrentRibbonWinReplayAndFullSky()",
+      "source": "4218cc2ce1af9ecab10f221b72db9178ec479cc9",
+      "build": "dev.a591c1b9bb",
+      "device": "iPad mini (A17 Pro)",
+      "os": "iOS 27.0 (24A434)",
+      "text": "default",
+      "motion": "normal",
+      "raw_sha256": "aa6d15c3e64339fce12829f22d376aa339f74ac77592f03555753eb9a40c1a6d",
+      "inspected": true
+    },
+    {
+      "label": "flow-ribbon-replay-explanation",
+      "test": "SkyFlowInteractionTests/testCurrentRibbonWinReplayAndFullSky()",
+      "source": "4218cc2ce1af9ecab10f221b72db9178ec479cc9",
+      "build": "dev.a591c1b9bb",
+      "device": "iPad mini (A17 Pro)",
+      "os": "iOS 27.0 (24A434)",
+      "text": "default",
+      "motion": "normal",
+      "raw_sha256": "a585b36547ddc0b5233efd258395e5cf5afcd37b75af82acd475103f886f1ba9",
+      "inspected": true,
+      "retained": "dev-a591c1b9bb__ribbon__ipad-mini-a17-pro__flow-ribbon-replay-explanation.jpg",
+      "retained_sha256": "cad1f87bb1b2b57815c516eab81bd4c4acf203d51dd16ee93c08543a9348e03b"
+    },
+    {
+      "label": "flow-win",
+      "test": "SkyFlowInteractionTests/testCurrentRibbonWinReplayAndFullSky()",
+      "source": "4218cc2ce1af9ecab10f221b72db9178ec479cc9",
+      "build": "dev.a591c1b9bb",
+      "device": "iPad mini (A17 Pro)",
+      "os": "iOS 27.0 (24A434)",
+      "text": "default",
+      "motion": "normal",
+      "raw_sha256": "a8a7ee634afcbf1091190d684124a49a20131e1dbfd8c86bbea3b34a18978553",
+      "inspected": true,
+      "retained": "dev-a591c1b9bb__ribbon__ipad-mini-a17-pro__flow-win.jpg",
+      "retained_sha256": "3d235cee99e058c29b9b2db39cfed1d609a4373c5519bd88c356a7165242f0d3"
+    }
+  ],
+  "core": {
+    "passed": 241,
+    "failed": 0,
+    "skipped": 0
+  },
+  "results": {
+    "goal07-hosted": {
+      "result": "Passed",
+      "totalTestCount": 25,
+      "passedTests": 25,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792728410.646,
+      "finishTime": 1792728413.669,
+      "failures": []
+    },
+    "goal07-phone-identity": {
+      "result": "Passed",
+      "totalTestCount": 2,
+      "passedTests": 2,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792728444.777,
+      "finishTime": 1792728634.046,
+      "failures": []
+    },
+    "goal07-ribbon-round": {
+      "result": "Passed",
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792728424.636,
+      "finishTime": 1792728879.441,
+      "failures": []
+    }
+  },
+  "builds": {
+    "Debug": "pass",
+    "Release": "pass"
+  }
+}

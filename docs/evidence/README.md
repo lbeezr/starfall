@@ -1,5 +1,7 @@
 # Evidence index
 
+[Game-factory goal 7: Ribbon identity](game-goal-07-ribbon-identity-2026-10-23/README.md) makes the existing tempo and survivor planning explicit, with reversible arrangement, three-clear opening, exact replay cancellation and a complete current-rule round.
+
 [Lantern mastery feasibility](story-mastery-feasibility-2026-10-22/README.md) proves joint grown-star/chain earning on one real winning route and a genuine declined opening. A narrow 74-distinct-path search found no later-chain completion; recoverability remains unproved. Two fixture-bound regressions, 241 Core checks and a generic simulator build pass; no gameplay or ratings change.
 
 [Game-factory goal 6: earned Lantern payoff](game-goal-06-lantern-payoff-2026-10-22/README.md) reviews all five sparse/full native milestones, retains the paintings and adds an immediate named onward destination with exact cancellation/restore boundaries.
