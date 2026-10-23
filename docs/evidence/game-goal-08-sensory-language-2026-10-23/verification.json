@@ -1,0 +1,139 @@
+{
+  "source": "02a36e6748814d5fbf2ee29b5fb9b69b1a91c983",
+  "tested_driver": "4218cc2ce1af9ecab10f221b72db9178ec479cc9",
+  "build_identity": "dev.a591c1b9bb",
+  "dirty_build_inputs": [],
+  "runtime_trees": {
+    "App": "a61c0ac736f8d2630d7c84db5bba433a313a77ad",
+    "Sources": "0d26394bb15b0e2f24629a9d8d2ad03055f4f2ea",
+    "AppTests": "780e7e8c98df24b64139987e84f490070345be72",
+    "UITests": "a0351ef72596a781b3b0a0f05f1c53cf32bf270e",
+    "Config": "3a0c78b4b68dacbccd39b9168e491c52e3e08be5",
+    "Starfall.xcodeproj": "ac7548b201bd4a373f4e6b36687fce3ef909ada2"
+  },
+  "owner_reuse": [
+    {
+      "path": "App/QuietTuckPlayer.swift",
+      "sha256": "8a821f48e79f6994e04694f210ec0535b0aebe973723d30c4ccc310b09dd9e68",
+      "audio_main_identical": true,
+      "goal04_source_identical": true
+    },
+    {
+      "path": "App/GameFeedback.swift",
+      "sha256": "9cf51a4aa1de7dcb9760d1e2a6bcd5718c360efb5a366eb35d1033b604b98164",
+      "audio_main_identical": true,
+      "goal04_source_identical": true
+    },
+    {
+      "path": "App/StarlightCelebration.swift",
+      "sha256": "2fefd7fb0a597331e516d2a20f62f32854d55a78e8a33a3b24a77822ae734212",
+      "audio_main_identical": true,
+      "goal04_source_identical": true
+    },
+    {
+      "path": "App/FallingSkyScene.swift",
+      "sha256": "ceb0399c4232bacc909a38d33db5c7ae5c469cefdc5ff123cee6eb7b4dc83579",
+      "audio_main_identical": true,
+      "goal04_source_identical": true
+    },
+    {
+      "path": "App/FallingSkyMotion.swift",
+      "sha256": "581b07dc57d3508fd025a96d59d952a9148c377356a2cffd55cc160dc0d15a08",
+      "audio_main_identical": true,
+      "goal04_source_identical": true
+    },
+    {
+      "path": "App/SkyTrailMotion.swift",
+      "sha256": "9781714446568a172e3a01594962f467622ff4ca0a65765460eea8fca5fda0ad",
+      "audio_main_identical": true,
+      "goal04_source_identical": true
+    }
+  ],
+  "hosted_selectors": {
+    "QuietTuckPlayerTests": [
+      "testCelebrationUsesOneDistinctVoiceAndPreservesOrdinaryRotation",
+      "testCascadePhraseCapsAtThirdAccentAndIndependentActionRestartsOpening",
+      "testCurrentStoryPhaseAccentsKeepCommittedAwardsAndSoundPreferences",
+      "testCelebrationResourcesDecodeWithFiniteDuration",
+      "testShippedFilesDecodeAndAllNativeCuesCanStart",
+      "testInterruptedAndInactiveTapsAreDroppedWithoutReplay",
+      "testHeadphoneDisconnectAndInactivityStopWithoutReplaying",
+      "testQueuedCascadeAccentsDropSupersededAndCanceledPhrase",
+      "testMuteInvalidatesQueuedCascadeBeforeItCanStart"
+    ],
+    "FallingSkyStoreTests": [
+      "testFeedbackOnlyFiresForCommittedClearAndStopsOnMuteAndSuspend",
+      "testFeedbackDefaultsDoNotOverwriteExplicitMuteOrWriteDuringInitialization",
+      "testInterruptedOpeningAndCascadeRejectStaleCompletionsAndReceipts",
+      "testQuietCascadePublishesOneAggregateReceiptAndNeverReawardsOnResume"
+    ],
+    "StarlightCelebrationTests": [
+      "testCausalReceiptsUseEachPhaseBoardAndGrowTheCommittedAward",
+      "testLargeHarvestSamplesWholeGroupWithSixPacketsAndExactGrownWeight",
+      "testAwardEnergyIncreasesAndCapsWithoutChangingCategories"
+    ],
+    "NativeInputWindowTests": [
+      "testRecipeCascadeShowsPopThenFallThenNextPop",
+      "testRecipeCascadeReplacementAndQuietModeDiscardRemainingCallbacks"
+    ]
+  },
+  "native_selectors": [
+    "FallingSkyInteractionTests/testAutomaticRainThenPausedClearReplayAndSettings",
+    "FallingSkyInteractionTests/testLargestTextSettingsFeedbackAndDismissal",
+    "WorldJourneyInteractionTests/testCurrentStorySquarePracticeLetsThePlayerChooseAndPreservesTheirRound"
+  ],
+  "results": {
+    "goal08-hosted": {
+      "result": "Passed",
+      "totalTestCount": 18,
+      "passedTests": 18,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792729099.259,
+      "finishTime": 1792729108.604,
+      "failures": []
+    },
+    "goal08-open-sky": {
+      "result": "Passed",
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792729099.259,
+      "finishTime": 1792729167.713,
+      "failures": []
+    },
+    "goal08-phone-feedback": {
+      "result": "Passed",
+      "totalTestCount": 2,
+      "passedTests": 2,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792729150.725,
+      "finishTime": 1792729291.597,
+      "failures": []
+    }
+  },
+  "inherited_checks": {
+    "Core": {
+      "passed": 241,
+      "failed": 0,
+      "skipped": 0,
+      "evidence": "../game-goal-07-ribbon-identity-2026-10-23/verification.json"
+    },
+    "Debug": "same runtime inputs as Goal 7 pass",
+    "Release": "same runtime inputs as Goal 7 pass"
+  },
+  "capture": {
+    "retained": "dev-a591c1b9bb__open-sky__ipad-mini-a17-pro__ordinary-clear.jpg",
+    "source": "02a36e6748814d5fbf2ee29b5fb9b69b1a91c983",
+    "build": "dev.a591c1b9bb",
+    "device": "iPad mini (A17 Pro)",
+    "os": "iOS 27.0 (24A434)",
+    "text": "default",
+    "motion": "ordinary before later Calm change",
+    "raw_sha256": "7a5ff5f04e42d380396a60f6d8160c7a13a64edd7a21b70e9dc7f1725eaa2d05",
+    "retained_sha256": "05b4e65a9f980648f04c9f1a223715cf2116a26c9ffa284a053804ce3b537aa0",
+    "inspected": true
+  }
+}
