@@ -1,0 +1,290 @@
+{
+  "build": "dev.d33057befd",
+  "dirty_inputs": {
+    "App/LivingLight.swift": "1281fee511eaa7562655858c3a1573465d933249aa7f8b5e854b2b79d0653f68",
+    "App/StarlightCelebration.swift": "678d06ed84aa09b31d76dc8d024f12aa3ae4be2d4ed5c3c9ee9d0efeed0498e5"
+  },
+  "status": "verified for scoped development adoption",
+  "base_main": "678f7c7c0b49fcfef5cf66d88ef8767d132fcbb6",
+  "baseline_build": "dev.0b9dfde7bb",
+  "core": {
+    "passed": 242,
+    "failed": 0,
+    "skipped": 0
+  },
+  "debug_build": "pass",
+  "hosted": {
+    "result": "Passed",
+    "totalTestCount": 29,
+    "passedTests": 29,
+    "failedTests": 0,
+    "skippedTests": 0,
+    "startTime": 1792761233.789,
+    "finishTime": 1792761275.208,
+    "testFailures": []
+  },
+  "native_witnesses": {
+    "goal02-before-lantern-isolated": {
+      "summary": {
+        "result": "Passed",
+        "passedTests": 1,
+        "failedTests": 0,
+        "skippedTests": 0
+      },
+      "capture": {
+        "testExit": 0,
+        "videoExit": 0,
+        "trigger": "Find the \"experiment.cell.0.2\" Button",
+        "triggerElapsed": 71.741,
+        "recordingReadyElapsed": 71.957,
+        "elapsedSeconds": 88.128,
+        "movie": "/private/tmp/starfall-cohesion-20261023/goal02-before-lantern-isolated.mp4",
+        "command": [
+          "xcodebuild",
+          "-testProductsPath",
+          "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c35297cacc07/test-products/build_sim_2026-10-23T12-43-01-925Z_pid71269_df77de68.xctestproducts",
+          "-destination",
+          "platform=iOS Simulator,id=DB9604E1-D7A8-4C75-BA25-E29243AEC02D",
+          "-collect-test-diagnostics",
+          "never",
+          "-parallel-testing-enabled",
+          "NO",
+          "-only-testing:StarfallUITests/SkyFlowInteractionTests/testFullStoryColumnShowsPressureAndCommittedRecovery",
+          "-resultBundlePath",
+          "/private/tmp/starfall-cohesion-20261023/goal02-before-lantern-isolated.xcresult",
+          "test-without-building"
+        ],
+        "movie_sha256": "767a025b45afc860d0fff16adac032b516d9814387e5357cf0adb8df3fd6d74d"
+      }
+    },
+    "goal02-before-ribbon-flight": {
+      "summary": {
+        "result": "Passed",
+        "passedTests": 1,
+        "failedTests": 0,
+        "skippedTests": 0
+      },
+      "capture": {
+        "testExit": 0,
+        "videoExit": 0,
+        "trigger": "Press \"experiment.cell.1.1\" Button",
+        "triggerElapsed": 78.833,
+        "recordingReadyElapsed": 79.05,
+        "elapsedSeconds": 106.128,
+        "movie": "/private/tmp/starfall-cohesion-20261023/goal02-before-ribbon-flight.mp4",
+        "command": [
+          "xcodebuild",
+          "-testProductsPath",
+          "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c35297cacc07/test-products/build_sim_2026-10-23T12-43-01-925Z_pid71269_df77de68.xctestproducts",
+          "-destination",
+          "platform=iOS Simulator,id=E9575758-60A8-45C0-B2AB-91B73C8A8FDC",
+          "-collect-test-diagnostics",
+          "never",
+          "-parallel-testing-enabled",
+          "NO",
+          "-only-testing:StarfallUITests/SkyFlowInteractionTests/testRibbonIdentityExplainsTempoAndSupportsDeliberateOpeningChoices",
+          "-resultBundlePath",
+          "/private/tmp/starfall-cohesion-20261023/goal02-before-ribbon-flight.xcresult",
+          "test-without-building"
+        ],
+        "movie_sha256": "6ea098ef306e73860db9dc1cec0dba0772f6bbf06a7e1cea6c4214225355c705"
+      }
+    },
+    "goal02-after-lantern-flight": {
+      "summary": {
+        "result": "Passed",
+        "passedTests": 1,
+        "failedTests": 0,
+        "skippedTests": 0
+      },
+      "capture": {
+        "testExit": 0,
+        "videoExit": 0,
+        "trigger": "Waiting 5.0s for \"experiment.cell.0.1\" Button",
+        "triggerElapsed": 70.514,
+        "recordingReadyElapsed": 70.68,
+        "elapsedSeconds": 90.067,
+        "movie": "/private/tmp/starfall-cohesion-20261023/goal02-after-lantern-flight.mp4",
+        "command": [
+          "xcodebuild",
+          "-testProductsPath",
+          "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c35297cacc07/test-products/build_sim_2026-10-23T13-13-05-684Z_pid51280_03922799.xctestproducts",
+          "-destination",
+          "platform=iOS Simulator,id=DB9604E1-D7A8-4C75-BA25-E29243AEC02D",
+          "-collect-test-diagnostics",
+          "never",
+          "-parallel-testing-enabled",
+          "NO",
+          "-only-testing:StarfallUITests/SkyFlowInteractionTests/testFullStoryColumnShowsPressureAndCommittedRecovery",
+          "-resultBundlePath",
+          "/private/tmp/starfall-cohesion-20261023/goal02-after-lantern-flight.xcresult",
+          "test-without-building"
+        ],
+        "movie_sha256": "6d2297beb16fa5b817a5efe273dc65a1aad8c9b047af70de203bf700cb9a3b0e"
+      }
+    },
+    "goal02-after-ribbon-flight": {
+      "summary": {
+        "result": "Passed",
+        "passedTests": 1,
+        "failedTests": 0,
+        "skippedTests": 0
+      },
+      "capture": {
+        "testExit": 0,
+        "videoExit": 0,
+        "trigger": "Press \"experiment.cell.1.1\" Button",
+        "triggerElapsed": 72.72,
+        "recordingReadyElapsed": 72.94,
+        "elapsedSeconds": 99.737,
+        "movie": "/private/tmp/starfall-cohesion-20261023/goal02-after-ribbon-flight.mp4",
+        "command": [
+          "xcodebuild",
+          "-testProductsPath",
+          "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c35297cacc07/test-products/build_sim_2026-10-23T13-13-05-684Z_pid51280_03922799.xctestproducts",
+          "-destination",
+          "platform=iOS Simulator,id=E9575758-60A8-45C0-B2AB-91B73C8A8FDC",
+          "-collect-test-diagnostics",
+          "never",
+          "-parallel-testing-enabled",
+          "NO",
+          "-only-testing:StarfallUITests/SkyFlowInteractionTests/testRibbonIdentityExplainsTempoAndSupportsDeliberateOpeningChoices",
+          "-resultBundlePath",
+          "/private/tmp/starfall-cohesion-20261023/goal02-after-ribbon-flight.xcresult",
+          "test-without-building"
+        ],
+        "movie_sha256": "3bf36928700828e353cb54d43be43a9ef77cf2386a8056e752b9d9c0b9e34f90"
+      }
+    }
+  },
+  "snapshot_id": "787039fc3544",
+  "evidence_limits": [
+    "Four accepted matched-world recording runs represent two existing native cases, each before/after; not a full UI matrix.",
+    "Two initially overlapping baseline attempts failed; excluded.",
+    "Initial passing Ribbon phone movie covered setup rather than collection; excluded from material comparison.",
+    "Initial passing candidate Lantern movie had sparse frames across its short packet flight; recorder-warmed replacement used.",
+    "Frames show the same committed situations at approximate phases, not identical presentation ages or physical-device smoothness.",
+    "No human preference, physical display/performance, actual VoiceOver or phone installation."
+  ],
+  "commands": {
+    "core": "swift test --scratch-path /private/tmp/starfall-factory-gameplay-20261022/CoreBuild --jobs 2",
+    "hosted": "bounded xcodebuild -testProductsPath <candidate> -destination platform=iOS Simulator,id=E9575758-60A8-45C0-B2AB-91B73C8A8FDC -collect-test-diagnostics never -parallel-testing-enabled NO -only-testing:StarfallAppTests/StarlightCelebrationTests -only-testing:StarfallAppTests/SkyPieceTests -resultBundlePath <unique> test-without-building"
+  },
+  "environment": {
+    "configuration": "Debug",
+    "Xcode": "27.1 (27A9275)",
+    "Swift": "6.4",
+    "macOS": "27.0.1 arm64",
+    "simulatorOS": "iOS 27.0 (24A434)",
+    "Lantern": "iPhone 17e default text, normal motion",
+    "Ribbon": "iPad mini (A17 Pro) default text, normal motion"
+  },
+  "captures": [
+    {
+      "file": "dev-c496576b-wip-c0cb3a85494d__lantern-collection__iphone-17e__rose-before.jpg",
+      "raw_sha256": "5c988bd4a8179a038772dbe568e899c16450f46789e2f29d399354ede6b7510d",
+      "retained_sha256": "5c988bd4a8179a038772dbe568e899c16450f46789e2f29d399354ede6b7510d",
+      "movie_time_actual": 0.7466666666666666,
+      "device_or_window": "iphone-17e",
+      "inspected": true,
+      "text": "default",
+      "motion": "normal",
+      "native_pixels": true
+    },
+    {
+      "file": "dev-678f7c7c-wip-787039fc3544__lantern-collection__iphone-17e__rose-after.jpg",
+      "raw_sha256": "d0a1df4313aae8d5339e86d424ef6eef1e38427716a0dd4cb527dbfebad0c2fd",
+      "retained_sha256": "d0a1df4313aae8d5339e86d424ef6eef1e38427716a0dd4cb527dbfebad0c2fd",
+      "movie_time_actual": 3.15,
+      "device_or_window": "iphone-17e",
+      "inspected": true,
+      "text": "default",
+      "motion": "normal",
+      "native_pixels": true
+    },
+    {
+      "file": "dev-c496576b-wip-c0cb3a85494d__ribbon-collection__ipad-mini-a17-pro__aqua-before.jpg",
+      "raw_sha256": "ecd2fe79713b4352c2dc4790a4d6a8bedaca04d7ec0eaa5ecbf2778996b8dad9",
+      "retained_sha256": "ecd2fe79713b4352c2dc4790a4d6a8bedaca04d7ec0eaa5ecbf2778996b8dad9",
+      "movie_time_actual": 0.7416666666666667,
+      "device_or_window": "ipad-mini-a17-pro",
+      "inspected": true,
+      "text": "default",
+      "motion": "normal",
+      "native_pixels": true
+    },
+    {
+      "file": "dev-678f7c7c-wip-787039fc3544__ribbon-collection__ipad-mini-a17-pro__aqua-after.jpg",
+      "raw_sha256": "375d329977ce197ea13ba60dacffbf6b0d30584f58ed57c2df7dd542e36e93fd",
+      "retained_sha256": "375d329977ce197ea13ba60dacffbf6b0d30584f58ed57c2df7dd542e36e93fd",
+      "movie_time_actual": 0.7466666666666667,
+      "device_or_window": "ipad-mini-a17-pro",
+      "inspected": true,
+      "text": "default",
+      "motion": "normal",
+      "native_pixels": true
+    },
+    {
+      "file": "dev-678f7c7c-wip-787039fc3544__ribbon-collection__ipad-mini-a17-pro__mint-after.jpg",
+      "raw_sha256": "58b36cef4f6f759e6296dae8227989b72f4a2ad6c54be3a4c3b063805a47fc95",
+      "retained_sha256": "58b36cef4f6f759e6296dae8227989b72f4a2ad6c54be3a4c3b063805a47fc95",
+      "movie_time_actual": 1.7383333333333333,
+      "device_or_window": "ipad-mini-a17-pro",
+      "inspected": true,
+      "text": "default",
+      "motion": "normal",
+      "native_pixels": true
+    },
+    {
+      "file": "dev-678f7c7c-wip-787039fc3544__dense-grown-clear__native-host-430x932__default-after.jpg",
+      "raw_sha256": "4bc238707f01fad44f9fddb26bead1f839149702c5ac8691c833aa41fdaed2d7",
+      "retained_sha256": "22530b7288872fec57cc5fb6104dea7fd1a5025693f7e423c1f2225f98c9fdf6",
+      "movie_time_actual": null,
+      "device_or_window": "native-host-430x932",
+      "inspected": true,
+      "text": "default",
+      "motion": "normal",
+      "native_pixels": true
+    }
+  ],
+  "motion_clips": [
+    {
+      "file": "dev-c496576b-wip-c0cb3a85494d__lantern-collection__iphone-17e__before.mp4",
+      "sha256": "7cc4a2abec1ec9c9f8c1d7a2f3679bde83f06feb79078c5e18a11d02d406db9d",
+      "source_movie": "goal02-before-lantern-isolated.mp4",
+      "start_seconds": 0.25,
+      "duration_seconds": 1.55,
+      "export": "AVAssetExportPreset960x540; original speed; no interpolation; smaller preview, not native pixels",
+      "inspected_as": "timestamped native frame sequence; continuous smoothness not certified"
+    },
+    {
+      "file": "dev-678f7c7c-wip-787039fc3544__lantern-collection__iphone-17e__after.mp4",
+      "sha256": "983afe59ec1b4da69aa5fb6220e0b7646bf5c05420e5f6c1f8d7bd53db8c33c7",
+      "source_movie": "goal02-after-lantern-flight.mp4",
+      "start_seconds": 2.65,
+      "duration_seconds": 1.55,
+      "export": "AVAssetExportPreset960x540; original speed; no interpolation; smaller preview, not native pixels",
+      "inspected_as": "timestamped native frame sequence; continuous smoothness not certified"
+    },
+    {
+      "file": "dev-c496576b-wip-c0cb3a85494d__ribbon-chain__ipad-mini-a17-pro__before.mp4",
+      "sha256": "eb802b4e2d4324270eae39fe1f75381304841a6d817878b6dc070eee4dfe7121",
+      "source_movie": "goal02-before-ribbon-flight.mp4",
+      "start_seconds": 0.25,
+      "duration_seconds": 2.75,
+      "export": "AVAssetExportPreset960x540; original speed; no interpolation; smaller preview, not native pixels",
+      "inspected_as": "timestamped native frame sequence; continuous smoothness not certified"
+    },
+    {
+      "file": "dev-678f7c7c-wip-787039fc3544__ribbon-chain__ipad-mini-a17-pro__after.mp4",
+      "sha256": "c42b19f806e249024b8d9340caeb38ee62e454f190f719d40f1f2312dd1cff1e",
+      "source_movie": "goal02-after-ribbon-flight.mp4",
+      "start_seconds": 0.25,
+      "duration_seconds": 2.75,
+      "export": "AVAssetExportPreset960x540; original speed; no interpolation; smaller preview, not native pixels",
+      "inspected_as": "timestamped native frame sequence; continuous smoothness not certified"
+    }
+  ],
+  "publication_base": "a11ec8680c1e3cf869e4612544ed6298737e8c33",
+  "reconciliation": "Main advanced through documentation-only PRs #294/#295; preserved by rebase. Runtime inputs unchanged."
+}
