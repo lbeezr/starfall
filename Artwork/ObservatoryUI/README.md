@@ -1,6 +1,6 @@
 # Observatory Instruments UI kit
 
-**Status:** Native family adopted for development; rendered utility exports and offline specimens verified · **Original kit:** `cfd6ab7` · **Updated:** October 20, 2026
+**Status:** Native family adopted for development; rendered utility exports and offline specimens verified · **Original kit:** `cfd6ab7` · **Updated:** October 23, 2026
 
 A reusable Starfall interface family: three illustrated mode emblems, shared enamel/brass skins, and twenty full-color rendered utility icons. The source kit supports the accepted [game UI direction](../../docs/design/GAME_UI_SYSTEM.md). The [screen atlas](../../docs/design/interface/atlas-2026-10-19/README.md) remains the proposed composition reference.
 
@@ -43,7 +43,7 @@ Source generation and deterministic export are separate steps. Never derive runt
 ## Use the family consistently
 
 - **Mode emblems:** Home and major destinations, normally 40 points and at most 48. Their utility variants reuse the same illustrated masters at 24-point registration. Do not stretch an emblem or bake its label into it.
-- **Action skin:** Primary and mode actions use fixed-height ornamental ends with a flexible middle. Compact and secondary actions use the shared compact reading-panel treatment. Tall primary labels reflow into the reading-panel skin so side ornaments do not distort.
+- **Action surfaces:** Primary and mode actions use fixed-height ornamental ends with a flexible middle. Compact and secondary actions use the shared native `ObservatoryCompactActionSurface` enamel/brass face, distinct from the passive compact reading raster. Tall primary labels still reflow into the reading-panel skin so side ornaments do not distort.
 - **Reading panel:** Fixed corners, stretchable edge strips and center. Header, divider, portrait, controls and text remain independent.
 - **Utilities:** The rendered icon is the visible control in a clear 48-point target; the shared utility style adds no circular bezel. The original bezel asset remains retained and is not the default control wrapper. Text-bearing gameplay controls retain their 45-point minimum.
 - **States:** Apply registered material overlays, separate native ink and stable focus/selection marks. Do not generate a different silhouette for every button state. Disabled state must preserve labels and the selected value while preventing activation.
@@ -52,7 +52,9 @@ The native control remains the semantic and input owner. Decorative layers ignor
 
 ## Native ownership and import
 
-`ObservatoryIcon` renders utility PNGs in original color; `ObservatoryEmblem` and `ObservatoryModeLabel` compose the three home destinations with native text. `StarfallButtonStyle` retains semantic roles and measured action geometry; tall primary labels reflow into the reading-panel skin. `starfallPanel`, compact and secondary actions share the compact authored reading surface; full reading panels use the registered 32-point fittings. `StarfallUtilityButtonStyle` keeps clear 48-point targets and `StarfallGameButtonStyle` keeps 45-point text-action targets. `ObservatoryToggleStyle` provides visible position/check cues with a native switch accessibility representation.
+`ObservatoryIcon` renders utility PNGs in original color; `ObservatoryEmblem` and `ObservatoryModeLabel` compose the three home destinations with native text. `StarfallButtonStyle` retains semantic roles and measured action geometry; tall primary labels reflow into the reading-panel skin. Compact/secondary actions use the shared rounded native enamel/brass face with immediate press shading; `starfallPanel` retains the passive compact authored reading surface, and full reading panels use the registered 32-point fittings. Native label sizing, padding, full hit targets, selection and enabled/focus semantics are unchanged. `StarfallUtilityButtonStyle` keeps clear 48-point targets and `StarfallGameButtonStyle` keeps 45-point text-action targets. `ObservatoryToggleStyle` provides visible position/check cues with a native switch accessibility representation.
+
+The compact action face reuses theme colors and contact shadow without new raster assets or export changes. The [compact-action record](../../docs/evidence/cohesion-goal-04-compact-actions-2026-10-23/README.md) owns its source-bound native coverage and remaining visual, VoiceOver and physical acceptance; source state treatment alone does not establish disabled-state visual acceptance.
 
 Display and action labels use scalable native serif roles in `StarfallTheme`; body copy uses native functional text. No new font or font registration is included. Pearl ink is separate from artwork, and exact HUD digits remain native. Crystal Comet retains its existing celebration-only renderer and fallback contract.
 

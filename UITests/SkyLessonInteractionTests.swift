@@ -88,6 +88,11 @@ final class SkyLessonInteractionTests: XCTestCase {
         press(app,"experiment.cell.0.0")
         XCTAssertEqual(app.staticTexts["experiment.score"].label,"4 starlight")
         capture("square-largest-complete")
+        let hint = app.buttons["tutorial.hint"], next = app.buttons["tutorial.next"]
+        app.revealSkyControls([hint, next])
+        assertVisible(hint, in: app)
+        assertVisible(next, in: app)
+        capture("square-largest-compact-actions")
         press(app,"experiment.settings"); press(app,"tutorial.done")
         XCTAssertTrue(app.buttons["experiment.settings"].waitForExistence(timeout:5))
         XCTAssertEqual(app.staticTexts["experiment.score"].label,"0 starlight")
@@ -108,6 +113,14 @@ final class SkyLessonInteractionTests: XCTestCase {
         XCTAssertTrue(app.staticTexts["tutorial.detail"].exists)
         XCTAssertTrue(app.staticTexts["tutorial.coordinates"].label.contains("1 at the top"))
         assertVisible(hint, in: app)
+        capture("tutorial-compact-actions-idle")
+        let hintCenter = hint.coordinate(withNormalizedOffset: .init(dx: 0.5, dy: 0.5))
+        hintCenter.press(forDuration: 1,
+                         thenDragTo: hintCenter.withOffset(.init(dx: 0, dy: -160)),
+                         withVelocity: .slow, thenHoldForDuration: 0)
+        XCTAssertEqual(hint.label, "Less", "Releasing away from an action must cancel it")
+        XCTAssertTrue(app.staticTexts["tutorial.detail"].exists)
+        capture("tutorial-compact-actions-cancelled")
         hint.tap()
         XCTAssertEqual(hint.label, "Hint")
         XCTAssertFalse(app.staticTexts["tutorial.detail"].exists)

@@ -37,9 +37,11 @@ final class ObservatoryArtworkTests: XCTestCase {
     }
 
     @MainActor func testActionsGrowForLargeTextWithoutShrinkingTheirLabel() {
-        func size(_ title: String, textSize: DynamicTypeSize) -> CGSize {
+        func size(_ title: String, textSize: DynamicTypeSize,
+                  role: StarfallButtonStyle.Role = .primary, enabled: Bool = true) -> CGSize {
             let view = Button(title) { }
-                .buttonStyle(StarfallButtonStyle(role: .primary, expands: true))
+                .buttonStyle(StarfallButtonStyle(role: role, expands: true))
+                .disabled(!enabled)
                 .environment(\.dynamicTypeSize, textSize)
             return UIHostingController(rootView: view).sizeThatFits(in: CGSize(width: 240, height: 2_000))
         }
@@ -50,6 +52,60 @@ final class ObservatoryArtworkTests: XCTestCase {
         XCTAssertEqual(wrapped.width, 240, accuracy: 1)
         XCTAssertGreaterThanOrEqual(wrapped.height, 80)
         XCTAssertGreaterThan(wrapped.height, regular.height)
+
+        for role in [StarfallButtonStyle.Role.primary, .compact, .secondary] {
+            let ordinary = role == .primary ? regular : size("Resume", textSize: .large, role: role)
+            let accessible = size("Resume", textSize: .accessibility5, role: role)
+            let longTitle = "Continue exploring the Observatory"
+            let longAccessible = role == .primary ? wrapped : size(longTitle, textSize: .accessibility5, role: role)
+            XCTAssertGreaterThan(accessible.height, ordinary.height, "\(role) must honor larger text")
+            XCTAssertGreaterThan(longAccessible.height, accessible.height,
+                                 "\(role) must wrap a long label at the same text size")
+
+            let variants: [(String, DynamicTypeSize, CGSize)] = [
+                ("Resume", .large, ordinary),
+                ("Resume", .accessibility5, accessible),
+                (longTitle, .accessibility5, longAccessible)
+            ]
+            for (title, textSize, enabledSize) in variants {
+                let context = "\(role), \(textSize), \(title)"
+                XCTAssertEqual(enabledSize.width, 240, accuracy: 1, context)
+                XCTAssertGreaterThanOrEqual(enabledSize.height, 48, context)
+                XCTAssertEqual(size(title, textSize: textSize, role: role, enabled: false), enabledSize,
+                               "Disabling an action must preserve its geometry: \(context)")
+                if role != .primary {
+                    let pair = HStack(alignment: .top, spacing: 12) {
+                        ForEach([true, false], id: \.self) { enabled in
+                            VStack(spacing: 8) {
+                                Text(enabled ? "Enabled" : "Disabled")
+                                    .font(.system(size: 12, weight: .medium))
+                                    .foregroundStyle(StarfallTheme.Colors.textSecondary)
+                                Button(title) { }
+                                    .buttonStyle(StarfallButtonStyle(role: role, expands: true))
+                                    .disabled(!enabled)
+                            }
+                            .frame(width: 240)
+                        }
+                    }
+                    .padding(12)
+                    .background(StarfallTheme.Colors.skyTop)
+                    .environment(\.dynamicTypeSize, textSize)
+                    .environment(\.colorScheme, .dark)
+                    let renderer = ImageRenderer(content: pair)
+                    renderer.scale = 2
+                    guard let image = renderer.uiImage else {
+                        XCTFail("Could not render production action states: \(context)")
+                        continue
+                    }
+                    let attachment = XCTAttachment(image: image)
+                    let category = textSize == .large ? "default" : "AX5"
+                    let length = title == "Resume" ? "short" : "long"
+                    attachment.name = "observatory-action-\(role)-\(category)-\(length)-enabled-disabled"
+                    attachment.lifetime = .keepAlways
+                    add(attachment)
+                }
+            }
+        }
     }
 
     @MainActor private func assertTransparentFrameAndVisibleInk(_ image: UIImage, name: String) throws {

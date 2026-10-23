@@ -272,6 +272,46 @@ struct ObservatoryDialogueSurface: View {
     }
 }
 
+/// A shallow action face, separate from the passive reading-panel fittings.
+/// Native controls retain their content geometry, focus and press/cancel lifetime.
+struct ObservatoryCompactActionSurface: View {
+    var pressed = false
+    var enabled = true
+    @Environment(\.colorSchemeContrast) private var contrast
+
+    var body: some View {
+        let shape = RoundedRectangle(cornerRadius: StarfallTheme.Radius.control, style: .continuous)
+        let depressed = pressed && enabled
+        let top = enabled
+            ? (depressed ? StarfallTheme.Colors.skyTop : StarfallTheme.Colors.surfacePressed)
+            : StarfallTheme.Colors.actionDisabled
+        let bottom = enabled
+            ? (depressed ? StarfallTheme.Colors.surface : StarfallTheme.Colors.skyTop)
+            : StarfallTheme.Colors.actionDisabled
+        let upperRim = depressed ? StarfallTheme.Colors.skyTop
+            : (enabled ? StarfallTheme.Colors.actionPrimary.opacity(0.72) : StarfallTheme.Colors.outline.opacity(0.45))
+        let lowerRim = depressed ? StarfallTheme.Colors.outline.opacity(0.6) : StarfallTheme.Colors.skyTop
+        shape
+            // Opaque in every state, including reduced transparency.
+            .fill(LinearGradient(colors: [top, bottom], startPoint: .top, endPoint: .bottom))
+            .overlay {
+                shape.strokeBorder(LinearGradient(colors: contrast == .increased
+                    ? [StarfallTheme.Colors.outline, StarfallTheme.Colors.outline] : [upperRim, lowerRim],
+                    startPoint: .top, endPoint: .bottom), lineWidth: contrast == .increased ? 1.5 : 1)
+            }
+            .overlay {
+                shape.inset(by: 1.5).strokeBorder(LinearGradient(colors: [
+                    StarfallTheme.Colors.textPrimary.opacity(enabled && !depressed ? 0.10 : 0), .clear
+                ], startPoint: .top, endPoint: .bottom), lineWidth: 1)
+            }
+            .saturation(enabled ? 1 : 0.15)
+            .shadow(color: Color(StarfallTheme.Observatory.contactShadow).opacity(enabled ? 1 : 0),
+                    radius: depressed ? 0.5 : 3, y: depressed ? 0 : 2)
+            .allowsHitTesting(false)
+            .accessibilityHidden(true)
+    }
+}
+
 /// The same authored enamel and fittings at half scale. Compact controls keep
 /// shallow edges; their content padding and native hit region remain independent.
 struct ObservatoryCompactSurface: View {
