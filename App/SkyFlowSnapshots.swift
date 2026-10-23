@@ -3,6 +3,10 @@ import StarfallCore
 extension SkyEntryRequest {
     /// Explains the pending choice without reading or replacing the retained round.
     func introduction(challenge: StarfallChallenge?, replayingRevision: Int = 0, replayingTarget: Int? = nil) -> SkyDialogueLine {
+        if self == .fullBoardLantern || self == .replay && replayingRevision == 5 {
+            return SkyDialogueLibrary.line(self == .replay ? "full-board-lantern.replay" : "full-board-lantern.entry",
+                values: ["target": SkyCopy.score(self == .replay ? replayingTarget ?? 0 : FallingSky.fullBoardLantern().displayTarget ?? 0)])
+        }
         let mode = challenge?.dialoguePrefix ?? "observatory"
         let fresh = challenge.map { FallingSky.freshChallenge($0) }
         let selectedRules = self == .replay
@@ -104,9 +108,10 @@ struct SkyWelcomeSnapshot: Equatable {
         self.hasSavedSky = hasSavedSky; ended = game.isOver; score = game.displayScore
         challengeRevision = game.challengeRevision
         target = game.displayTarget
-        let mode = game.challenge?.welcomeTitle ?? SkyCopy.text(.welcomeOpen)
+        let mode = game.usesFullBoardRefill ? SkyCopy.text(.fullBoardWelcome) : game.challenge?.welcomeTitle ?? SkyCopy.text(.welcomeOpen)
         let light = game.displayTarget.map { SkyCopy.text(.welcomeTarget, values: ["score": SkyCopy.score(game.displayScore), "target": SkyCopy.score($0)]) } ?? SkyCopy.text(.welcomeScore, values: ["score": SkyCopy.score(game.displayScore)])
-        let state = game.outcome == .won ? SkyCopy.text(.welcomeComplete) : ended ? SkyCopy.text(.welcomeFull) : paused ? SkyCopy.text(.welcomePaused) : SkyCopy.text(.welcomeRunning)
+        let state = game.outcome == .won ? SkyCopy.text(.welcomeComplete) : ended ? SkyCopy.text(.welcomeFull)
+            : game.usesFullBoardRefill ? SkyCopy.text(.fullBoardPace) : paused ? SkyCopy.text(.welcomePaused) : SkyCopy.text(.welcomeRunning)
         summary = hasSavedSky ? SkyCopy.text(.welcomeSummary, values: ["mode": mode, "score": light, "state": state]) : nil
     }
 }

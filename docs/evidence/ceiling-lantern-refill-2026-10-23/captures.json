@@ -1,0 +1,113 @@
+{
+  "source": {
+    "source": "1f3f7423ec95dea7f7ce6937e25c29a10a573f33",
+    "runtimeIdentity": "dev.17fb71332a",
+    "dirtyBuildInputs": [],
+    "sourceHashes": {
+      "App/DialogueScripts/observatory-dialogue.json": "d35164c165ee8b0780992d8e81bf3cf8a764a757c001446038a289c7766459ba",
+      "App/FallingSkyMenu.swift": "38f75d6c5ed2f56e9e30adc2a419ad04504052b247978578610ee109292b799e",
+      "App/FallingSkyScene.swift": "eff0b2aa0a259d19519cfbe2c73a9ffad9edf48b8cc6b757a52c3611a15faae7",
+      "App/FallingSkyStore.swift": "0e832f02cd61475d5da6bc82c9a3376efd433e512a8918079e5949971bf18c31",
+      "App/FallingSkyView.swift": "a1bcaae18fedb21d629686ad1597a61ff33586cf3e0bd99539ec218ba98102a5",
+      "App/RestorationPresentation.swift": "004e0c81baa972d1e8a680193b2141d5f2d2a786a18c7d219ccaf7166d71c994",
+      "App/SkyCeilingOverlay.swift": "83acd7cc401317ce08839ac18e55813fa0f403d913e35fe423e80e82ebae8586",
+      "App/SkyCopy.swift": "a6cfcb07f23ccb1bde13e2f9b3e7e69c225756afe37fb2f97718257b1d681410",
+      "App/SkyDialogueLibrary.swift": "9c15237d39eba7cb16c0d01ccd42c08243298f5688ff4b3f857b4e77bae375f7",
+      "App/SkyFlowCeremony.swift": "a79560a0382073f42b78622ebe96c00f7deaf61d4214b072385425310c0958b8",
+      "App/SkyFlowSnapshots.swift": "0afa05219fe77e9e0acc2654f6df1f6afc84fa7fabc4541b91c66d4409b8800a",
+      "App/SkyFlowState.swift": "2d42a8e8f3e79a2ee36b58fad6c10b6007e92c9ec35ed519a564a5005a24d01a",
+      "App/SkyPreferences.swift": "ddae182f17c71fa8be398da874efd27a8b1e7d31e2b4fda09d327d09a5d6a728",
+      "App/SkySaveArchive.swift": "62e73c0345b3beb4624afec0fe3b38c5bd1d6e9a149c5c1f313ad0c4775be240",
+      "App/WorldJourneyStore.swift": "0ce5323c163f846c5a944276f69d42ed932b1d8ebc13a2d5372bd1487eed1b81",
+      "AppTests/FullBoardLanternTests.swift": "110e9fde58689796d52fcd918feda891f71a432091159b2381844d2435193a7b",
+      "AppTests/SkyCeilingOverlayTests.swift": "2365850462aa2b63ca4146c0be8350885855008bee167f4bd5632b3f097f1c51",
+      "AppTests/SkyDialogueTests.swift": "8fe2925658c1cda943f8ff96e5fe7f0ff398da4276d7b7f2599e506ac4863910",
+      "AppTests/SkyFlowStateTests.swift": "8ded75f03d684595a4561c1befac57e7349e06697a02ac02120b7f3b051b1ac7",
+      "AppTests/SkySaveArchiveTests.swift": "c51a1eccb6c7a52b8bbce162291817cb69a6fe234ff8a088400ef6f5edcc6844",
+      "AppTests/StoryPatternPlan.swift": "f5cbddbc8b091f4a9ebb3190444c312cace36dce972875579d8620acb9a74489",
+      "AppTests/WorldJourneyTests.swift": "b468d5f2e2ccdcca83d2ce6f042bd9b398f67ea30de73783cfc07738c8355f4e",
+      "Sources/StarfallCore/FallingSky.swift": "498d0c190b3f071984e72f538b03758629faf2e6f5e4158008ab015688677434",
+      "Sources/StarfallCore/FullBoardLantern.swift": "821415f398245628fcb2047d275a029bfbc9e3878beee6b9ec28ec162b51aaa6",
+      "Sources/StarfallCore/SkyResolutionPhase.swift": "4cd4854c1ec4951a12d99332dd08ed96a23907e1b0f09ac412c91570794af440",
+      "Sources/StarfallCore/StoryChallenge.swift": "f0624188b98279b6f6ab76eeb7717378644087c0b52bd57efefa3ffd202091d6",
+      "Sources/StarfallCore/StoryScore.swift": "82971c5fdbc143778cd70bf258a3dcb592467716eb678e0f4c4d2c5872952488",
+      "Starfall.xcodeproj/project.pbxproj": "7e39014b3c2ab3b2475e770f64619492fd75297a682fe4a8de28af1b14589420",
+      "Tests/StarfallCoreTests/FullBoardLanternTests.swift": "d2b37a20090fab56052b71caf48f5ede43c832f4318056670ac8d0de42ab5775",
+      "Tests/StarfallCoreTests/StoryCascadeTests.swift": "71403e33b6b6b2a91d7fd371223b4e36095461ad5ca9bdadc8f7dd277cbf69eb",
+      "Tests/StarfallCoreTests/StoryPatternTests.swift": "68f84da42b502b21fb81fe315efa4d7017eeba3c4af4a5ef67accc6e8ea60d52",
+      "UITests/FallingSkyInteractionTests.swift": "33f4846c75959ac910061ea87eed22af292710f2a726192e785e70a04b9cf54d",
+      "UITests/FullBoardLanternInteractionTests.swift": "8372e3c3ee8ea55cfea5eaecc6219576d67cae40fdafe2158a4785d9e481d62b",
+      "UITests/KiteHarborInteractionTests.swift": "9676b252154cf77c2f02e90873069dfb56cd9beeec28d8b9c4ae77047ac3fc4a",
+      "UITests/NativeSkyControls.swift": "70846852c843a1fddaf32063b87f6f2597f6c214f9c65eade505357255c30e8b",
+      "UITests/SkyFlowInteractionTests.swift": "9f34164a5cbb6c630d3b35bf2e2824e99096ad6d15050866c1f06ca71af7075b"
+    },
+    "dirtyTestInputs": {
+      "UITests/FullBoardLanternInteractionTests.swift": "8372e3c3ee8ea55cfea5eaecc6219576d67cae40fdafe2158a4785d9e481d62b",
+      "UITests/SkyFlowInteractionTests.swift": "9f34164a5cbb6c630d3b35bf2e2824e99096ad6d15050866c1f06ca71af7075b"
+    },
+    "snapshotID": "4e846183e8e8"
+  },
+  "captures": [
+    {
+      "path": "dev-1f3f742-wip-4e846183e8e8__sky-ceiling__ipad-mini-a17-pro__ax3xl-calm.jpg",
+      "status": "Current",
+      "screen": "sky-ceiling",
+      "device": "iPad mini (A17 Pro) Simulator",
+      "os": "iOS 27.0 (24A434)",
+      "text": "AX3XL",
+      "motion": "Calm effects",
+      "attachment": "pressure-full-largest_0_41AE5F35-33B2-4E01-ADD5-526660C61A50.png",
+      "timestamp": 1792766366.992,
+      "sha256": "0a8ee16f2065ae0684dc9303b4098b658ed4920115d4b2d1fb8361119ad7545b"
+    },
+    {
+      "path": "dev-1f3f742-wip-4e846183e8e8__lantern-full-board__ipad-mini-a17-pro__ax3xl-calm.jpg",
+      "status": "Current",
+      "screen": "lantern-full-board",
+      "device": "iPad mini (A17 Pro) Simulator",
+      "os": "iOS 27.0 (24A434)",
+      "text": "AX3XL",
+      "motion": "Calm effects",
+      "attachment": "full-board-largest-tablet-landscape-refill_0_1F625864-C383-4BCB-8942-962002EC2CFA.png",
+      "timestamp": 1792766281.57,
+      "sha256": "3d6d69f88e9701275e149aa22cc3ccab148f119a914853755a16d3868bd15afd"
+    },
+    {
+      "path": "dev-1f3f742-wip-4e846183e8e8__lantern-mode-choice__iphone-17e__default-normal.jpg",
+      "status": "Current",
+      "screen": "lantern-mode-choice",
+      "device": "iPhone 17e Simulator",
+      "os": "iOS 27.0 (24A434)",
+      "text": "default",
+      "motion": "normal; system Reduce Motion off",
+      "attachment": "full-board-default-choice_0_6537E90E-975B-4F4A-97F8-AEDA16A8C9C9.png",
+      "timestamp": 1792766462.826,
+      "sha256": "e28729bdbb0a9ff7950c058c4dc9c6989e7806962923050a6c3b4caf59eda184"
+    },
+    {
+      "path": "dev-1f3f742-wip-4e846183e8e8__lantern-full-board__iphone-17e__default-normal.jpg",
+      "status": "Current",
+      "screen": "lantern-full-board",
+      "device": "iPhone 17e Simulator",
+      "os": "iOS 27.0 (24A434)",
+      "text": "default",
+      "motion": "normal; system Reduce Motion off",
+      "attachment": "full-board-default-refill_0_D65352CC-5C50-4FCC-83AD-F60DC9DF9537.png",
+      "timestamp": 1792766476.565,
+      "sha256": "363840f9cc8e28da0413c25741489a35e9962a729d147d4983899a4f9288f433"
+    },
+    {
+      "path": "dev-1f3f742-wip-4e846183e8e8__sky-ceiling__iphone-17e__default-normal.jpg",
+      "status": "Current",
+      "screen": "sky-ceiling",
+      "device": "iPhone 17e Simulator",
+      "os": "iOS 27.0 (24A434)",
+      "text": "default",
+      "motion": "normal; system Reduce Motion off",
+      "attachment": "pressure-full-default_0_F72068A6-03B0-407E-BF73-F3657841FAB6.png",
+      "timestamp": 1792766630.447,
+      "sha256": "f317fe2d68e0eb651f75839bd227f806a9d39adf9761a20a5a6223a8a08aff32"
+    }
+  ],
+  "parityCheckedAgainst": "89ad295; relevant ceiling/Entry/HUD/scene owners unchanged by Kite merge"
+}

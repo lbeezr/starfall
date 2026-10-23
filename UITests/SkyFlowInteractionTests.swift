@@ -213,6 +213,39 @@ final class SkyFlowInteractionTests: XCTestCase {
         verifyRibbonIdentity(largest: true)
     }
 
+    @MainActor private func revealStoryCeiling(_ app: XCUIApplication) {
+        let topStar = app.buttons["experiment.cell.6.1"]
+        let ceiling = app.descendants(matching: .any).matching(identifier: "sky.ceiling").firstMatch
+        let header = app.descendants(matching: .any).matching(identifier: "sky.header").firstMatch
+        app.revealSkyControls([topStar])
+        let scroll = app.scrollViews.containing(.button, identifier: topStar.identifier).allElementsBoundByIndex
+            .min { $0.frame.width * $0.frame.height < $1.frame.width * $1.frame.height }
+        func visibleBoardViewport() -> CGRect {
+            let bounds = app.frame.intersection(scroll?.frame ?? app.frame)
+            let top = max(bounds.minY, header.exists ? header.frame.maxY + 4 : bounds.minY)
+            return CGRect(x: bounds.minX, y: top, width: bounds.width, height: max(0, bounds.maxY - top))
+        }
+        // Revealing the lower Next shower action can scroll the top boundary
+        // under the pinned header. Pan the non-playing edge until both actual
+        // top-row input and the complete ceiling strip share the visible viewport.
+        for _ in 0..<6 {
+            let viewport = visibleBoardViewport()
+            let target = ceiling.frame.union(topStar.frame)
+            if viewport.contains(target) { break }
+            let up = target.maxY > viewport.maxY
+            let distance = min(viewport.height * 0.45,
+                               max(24, up ? target.maxY - viewport.maxY + 8 : viewport.minY - target.minY + 8))
+            let surface = scroll ?? app
+            let start = surface.coordinate(withNormalizedOffset: .init(dx: 0.002, dy: up ? 0.75 : 0.25))
+            start.press(forDuration: 0.05, thenDragTo: start.withOffset(.init(dx: 0, dy: up ? -distance : distance)),
+                        withVelocity: .slow, thenHoldForDuration: 0.1)
+        }
+        let viewport = visibleBoardViewport()
+        XCTAssertTrue(viewport.contains(ceiling.frame), "The full ceiling must be visible below the pinned header: \(ceiling.frame), viewport \(viewport)")
+        XCTAssertTrue(viewport.contains(topStar.frame) && topStar.isHittable,
+                      "The complete top-row star must remain visible and accept physical input")
+    }
+
     @MainActor private func reachFullStoryColumn(largest: Bool = false, quiet: Bool = false) -> XCUIApplication {
         let app = launch(largest: largest, quiet: quiet)
         app.worldVisitControl("firstLight").tap(); tap("sky.begin", app)
@@ -229,11 +262,19 @@ final class SkyFlowInteractionTests: XCTestCase {
                 next.isEnabled && (board.value as? String)?.hasPrefix("\(wave) showers") == true
             }, object: nil).wait(timeout: 8), "Expected wave \(wave); observed \(String(describing: board.value))")
         }
-        capture(app, largest ? "pressure-full-largest" : "pressure-full-default")
         let pressure = app.staticTexts["sky.pressure"]
         XCTAssertTrue(pressure.waitForExistence(timeout: 3), "A full Story column must have a persistent native status")
         XCTAssertTrue(pressure.label.contains("Column 2 is full"))
         XCTAssertTrue(app.frame.contains(pressure.frame))
+        let ceiling = app.descendants(matching: .any).matching(identifier: "sky.ceiling").firstMatch
+        XCTAssertTrue(ceiling.waitForExistence(timeout: 3))
+        XCTAssertEqual(ceiling.label, "Sky ceiling")
+        XCTAssertTrue((ceiling.value as? String)?.contains("Column 2: full, at risk.") == true)
+        XCTAssertTrue((ceiling.value as? String)?.contains("Column 1: 1 space left.") == true)
+        XCTAssertLessThanOrEqual(ceiling.frame.maxY, app.buttons["experiment.cell.6.0"].frame.minY + 1,
+                                 "The passive ceiling description must not cover native star targets")
+        revealStoryCeiling(app)
+        capture(app, largest ? "pressure-full-largest" : "pressure-full-default")
         return app
     }
 
@@ -261,6 +302,10 @@ final class SkyFlowInteractionTests: XCTestCase {
         XCTAssertTrue(message.label.contains(5_000.formatted()))
         XCTAssertEqual(app.staticTexts["experiment.score"].label, "\(5_000.formatted()) of \(150_000.formatted()) starlight collected")
         XCTAssertFalse(pressure.exists)
+        let ceiling = app.descendants(matching: .any).matching(identifier: "sky.ceiling").firstMatch
+        XCTAssertTrue(XCTNSPredicateExpectation(
+            predicate: NSPredicate(format: "value CONTAINS %@", "Column 2: 4 spaces left."), object: ceiling).wait(timeout: 5))
+        XCTAssertFalse((ceiling.value as? String)?.contains("Column 2: full") == true)
         if largest {
             // A paused player may take longer than the active-play six-second receipt.
             let readingBegan = Date()
@@ -270,6 +315,7 @@ final class SkyFlowInteractionTests: XCTestCase {
             XCTAssertTrue(message.exists, "Deliberately paused reading must outlive the active-play receipt timer")
             app.readSkyGuideToEnd(actions: [app.buttons["experiment.next"]])
         }
+        revealStoryCeiling(app)
         capture(app, largest ? "pressure-recovered-largest" : "pressure-recovered-default")
         let next = app.buttons["experiment.next"]
         app.revealSkyControls([next]); next.tap()

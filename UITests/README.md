@@ -2,6 +2,8 @@
 
 XCTest flows exercising the app through native controls on Apple tooling.
 
+`FullBoardLanternInteractionTests` selects the normal Lantern Entry comparison, performs a fixed ten-exchange 150,000-point win, and checks native refill, settings/background, restore/replay, cancellation and switching back to Falling Sky. Its largest-text case also exchanges in both tablet orientations. The existing Story pressure/recovery cases check the ceiling's headroom descriptions and geometric alignment. Core/hosted witnesses remain separate from these physical gestures and from human enjoyment.
+
 `WorldJourneyInteractionTests.testFourStarLineFromFreshLanternClearsAutomaticallyAndRestores` follows a natural revision-4 square chain, four-star line and square through normal-motion native input and relaunch. Complete current Lantern/Ribbon paths use the shared `StoryPatternPlan`; retained seven-star rules have separate save/Core coverage.
 
 ## Start here

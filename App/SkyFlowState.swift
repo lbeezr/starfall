@@ -2,12 +2,12 @@ import Foundation
 import StarfallCore
 
 /// An uncommitted choice. Browsing Entry never constructs or saves a replacement game.
-enum SkyEntryRequest: Equatable, CaseIterable {
-    case initial, fresh, replay, firstLight, ribbonCrossing, kiteHarbor, seedMoon, silverPools, frostfruitOrchard, sunwheelMill
+enum SkyEntryRequest: Hashable, CaseIterable {
+    case initial, fresh, replay, firstLight, fullBoardLantern, ribbonCrossing, kiteHarbor, seedMoon, silverPools, frostfruitOrchard, sunwheelMill
 
     func selectedChallenge(replaying challenge: StarfallChallenge?) -> StarfallChallenge? {
         switch self {
-        case .firstLight: .firstLight
+        case .firstLight, .fullBoardLantern: .firstLight
         case .ribbonCrossing: .ribbonCrossing
         case .kiteHarbor: .kiteHarbor
         case .seedMoon: .seedMoon
@@ -69,7 +69,8 @@ struct SkyFlowState: Equatable {
         case .start:
             guard screen == .welcome else { return nil }
             return stage(hasSavedSky ? .fresh : .initial)
-        case .firstLight: return stageChallenge(.firstLight)
+        case .firstLight: return stageLantern(.firstLight, expectedID: expectedID)
+        case .fullBoardLantern: return stageLantern(.fullBoardLantern, expectedID: expectedID)
         case .ribbonCrossing: return stageChallenge(.ribbonCrossing)
         case .kiteHarbor: return stageChallenge(.kiteHarbor)
         case .seedMoon: return stageChallenge(.seedMoon)
@@ -141,6 +142,17 @@ struct SkyFlowState: Equatable {
     private mutating func stageChallenge(_ request: SkyEntryRequest) -> SkyFlowEffect? {
         guard screen != .entry else { return nil }
         return stage(request)
+    }
+
+    /// Only the visible Lantern comparison may revise an already staged visit.
+    /// A revision invalidates old Begin callbacks while retaining the map origin.
+    private mutating func stageLantern(_ request: SkyEntryRequest, expectedID: UInt64?) -> SkyFlowEffect? {
+        guard screen == .entry else { return stage(request) }
+        guard entry == .firstLight || entry == .fullBoardLantern,
+              entry != request, expectedID == entryID else { return nil }
+        generation &+= 1; entryID = generation
+        entry = request
+        return .staged
     }
 
     private mutating func stage(_ request: SkyEntryRequest) -> SkyFlowEffect {
