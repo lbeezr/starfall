@@ -28,6 +28,8 @@ Two additional normal-motion native cases exercise actual 25→50 and 75→100 p
 
 The known minor tablet fitting issue remains: one portrait main-dock fitting and one landscape post go lit25 → dark50 → lit75. The main lantern progresses cumulatively, with no observed primary cue hidden by UI/crop or full-star silhouettes. [Portrait 50%](dev-64151f9500__lantern__ipad-mini-a17-pro__portrait-dense49-50.jpg) preserves its context. Retain the paintings while fixing the higher-impact final handoff; the next tablet artwork revision must correct that fitting and compare all five states/crossfades, as recorded in [ENGINEERING](../../ENGINEERING.md).
 
+**October 23 preview erratum:** The linked `portrait-dense49-50` JPEG above contains21 stars despite its filename. The original raw49-star attachment is separately recorded in [milestone-audit.json](milestone-audit.json), SHA256 `2eeb16cae56764143d7186c71b573427cc8046ceb9605193af68bd942ab07075`, and visibly contains49 stars. The published preview supports fitting/painting inspection, not full-board readability. Image bytes and original manifests are preserved. The [later cohesion correction](../cohesion-goal-07-cumulative-light-2026-10-23/README.md) resolves those fittings with its own current-source native evidence.
+
 ## One existing action, truthful eligibility
 
 `SkyOnwardSnapshot` derives the immediate successor from a valid winning game and recorded local completion. The destination must have ready content, be enterable and unfinished. It ignores the browsed selection, never skips a completed/unbuilt successor, and says Visit rather than claiming a new unlock. Loss, Free Play, unrecorded repair, completed successor and Sunwheel→unbuilt Bell keep generic Map behavior.

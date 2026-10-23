@@ -1,0 +1,87 @@
+{
+  "activationMain": "7e712f318df0086a5d4216675c5742305dc4f99c",
+  "status": "Selected; scoped native development adoption verified",
+  "attempts": [
+    {
+      "id": "tabletPortrait050-a",
+      "tool": "image_gen.imagegen",
+      "transparentBackground": false,
+      "prompt": "Use case: precise-object-edit. Edit image1 ONLY, the opaque1086\u00d71448 Seed-independent Lantern Landing TABLET PORTRAIT 50% restoration painting. Image1 is authoritative for every pixel of composition, camera, geometry, current50% restoration state, sky and lighting. Images2/3 are ONLY references showing one existing illuminated fitting at25% and75%; do not copy their other state differences.\n\nCorrect one local continuity defect: the existing small four-point brass star fitting on the foremost-left post of the upper main dock, centered approximately(x164,y337) in this1086\u00d71448 canvas, is dark in image1 even though it was already lit at25%. Make that SAME inset four-point star emit warm amber light from inside its existing recess, matching the local25%/75% fitting emission and modest contact glow. Preserve its exact outline, size, coordinates, post, rope, cap and wooden support. This is the post at the front-left edge of the UPPER dock (roughly15% from left,23% from top), not the very large close foreground post near(x150,y1260). The nearby upper front-right star around(x306,y340) already glows: leave it unchanged. Do not add a new star or object.\n\nPreserve every other feature: all other existing light strengths, central main lantern and closed upper chamber, upright mast, hanging wick, rosewood planks/repair state, brass construction, gangway/path/supports, ropes, bunting, distant landing and telescope, foreground posts, nebula/stars/clouds, global brightness/palette, image boundaries and quiet central gameplay sky. Keep the same camera and absolutely no crop, scaling, spatial shift, repaint of unrelated regions, UI, letters, grid, cast or playable stars. Only the small existing target fitting and its immediate subtle amber light may change. Output exactly1086\u00d71448 pixels, opaque PNG, same registration.",
+      "references": [
+        {
+          "path": "App/Assets.xcassets/LanternLandingTabletPortrait050.imageset/scene.png",
+          "sha256": "f490ed30cb54866d62927892783042884a961564956c1cf075ec96f51793369b",
+          "role": "Edit target, activation main source"
+        },
+        {
+          "path": "App/Assets.xcassets/LanternLandingTabletPortrait025.imageset/scene.png",
+          "sha256": "92bdd0c66c71ef6499026f6c4f5921af76f222c8e50c90441a4246be39c642c2",
+          "role": "Target fitting illumination only, prior state"
+        },
+        {
+          "path": "App/Assets.xcassets/LanternLandingTabletPortrait075.imageset/scene.png",
+          "sha256": "7befccd69bb6d464340ae2f6627ca9711386dae93add2648a684b533b1251508",
+          "role": "Target fitting illumination only, later state"
+        }
+      ],
+      "generatedPath": "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-a512865b-505e-4bc1-b8a3-a9236e277de8.png",
+      "inspection": "Existing foremost-left upper-dock fitting emits amber; native full49 portrait inspected with normal effects enabled, paused historical9/18 fixture. Camera, supports, central sky and star readability retained qualitatively.",
+      "pixels": [
+        1086,
+        1448
+      ],
+      "sha256": "0c0abdb28e07c4edde21f09dc95a3af6a5e960524cefa0e10cf1846a9b64c6fb",
+      "bytes": 2297049,
+      "packagedPath": "App/Assets.xcassets/LanternLandingTabletPortrait050.imageset/scene.png",
+      "nativeDecision": "Retain: all five native states, actual sparse/full boards and normal clear/crossfade inspected in the source-bound acceptance record."
+    },
+    {
+      "id": "tabletLandscape050-a",
+      "tool": "image_gen.imagegen",
+      "transparentBackground": false,
+      "prompt": "Use case: precise-object-edit.\nEdit image 1 ONLY: the opaque 1448\u00d71086 Lantern Landing TABLET LANDSCAPE 50% restoration painting. Image 1 is authoritative for composition, camera, geometry, current 50% restoration state, sky and all lighting. Images 2 and 3 are reference ONLY for one existing small star fitting already illuminated at 25% and 75%.\n\nFix one local continuity error. On the left main dock, the short post immediately to the RIGHT of the large spherical main lantern has an inset four-point brass star centered approximately (356,475) in the 1448\u00d71086 canvas. This fitting is dark at 50% but already lit at 25%. Make that SAME existing inset four-point star emit warm amber light inside its existing outline, matching the 25%/75% reference's modest local contact glow. Preserve the exact fitting shape, size, position, cap, wooden post, rope, bunting and supporting deck. Do not add a new object. The next post farther right at approximately (423,562) already glows; leave it unchanged.\n\nPreserve everything else in image 1: current main lantern brightness and closed upper chamber, upright mast and hanging wick, original wood planks/repair stage, brass construction, paths and supports, bench, chest, ropes, bunting, right telescope landing and hanging lamp, large near foreground fittings, nebula/star/cloud shapes, global brightness and palette, quiet central gameplay sky and image boundaries. Do not copy different restoration states from the reference images. No crop, scale, spatial shift, unrelated repaint, added stars, UI, text, grid, cast, border or mask. Change only the existing target star and its immediate subtle amber emission. Output opaque PNG exactly 1448\u00d71086 pixels with the same registration.",
+      "references": [
+        {
+          "path": "App/Assets.xcassets/LanternLandingTabletLandscape050.imageset/scene.png",
+          "sha256": "6184fbbd24627dbd2c80cced2bda60337aced447d9ce1695a67d1c7b5c2bae43",
+          "role": "Edit target, activation main source"
+        },
+        {
+          "path": "App/Assets.xcassets/LanternLandingTabletLandscape025.imageset/scene.png",
+          "sha256": "7b5437071dc696d151905ab1bc958a1410d418f2db57d26a03205f14421c769d",
+          "role": "Target fitting illumination only, prior state"
+        },
+        {
+          "path": "App/Assets.xcassets/LanternLandingTabletLandscape075.imageset/scene.png",
+          "sha256": "112bac01f2b10a3dd7c74673bec05b660ab94d0313e5f83388b42cdb8b48529b",
+          "role": "Target fitting illumination only, later state"
+        }
+      ],
+      "generatedPath": "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-37c3235b-c91e-4795-a748-afa127ee7d35.png",
+      "inspection": "Target post immediately right of the main lantern now emits amber. Full source inspection retains camera, supports, existing50% lantern chamber, sky and other lighting qualitatively. Native pending.",
+      "packagedPath": "App/Assets.xcassets/LanternLandingTabletLandscape050.imageset/scene.png",
+      "pixels": [
+        1448,
+        1086
+      ],
+      "sha256": "a44ee4e2d5eea47e32d2f6d84bc755da41604581c2198b708f2d4cf6d86a333a",
+      "bytes": 2421129,
+      "nativeDecision": "Retain: all five native states, actual sparse/full boards and normal clear/crossfade inspected in the source-bound acceptance record."
+    }
+  ],
+  "portraitNativeSlice": {
+    "base": "7e712f318df0086a5d4216675c5742305dc4f99c",
+    "buildAffectingDirtyPaths": {
+      "App/Assets.xcassets/LanternLandingTabletPortrait050.imageset/scene.png": "0c0abdb28e07c4edde21f09dc95a3af6a5e960524cefa0e10cf1846a9b64c6fb"
+    },
+    "testProducts": "build_sim_2026-10-23T16-43-04-745Z_pid51280_2807edf1.xctestproducts",
+    "configuration": "Debug",
+    "localBuildLabel": "dev.local",
+    "device": "iPad mini (A17 Pro), iOS27.0 (24A434), portrait",
+    "fixture": "historical Lantern9/18; dense49 actual stars; normal effects; paused",
+    "capturePath": "/private/tmp/starfall-cohesion-20261023/goal07/candidate-portrait050-dense.png",
+    "captureSHA256": "0ab6439fd9ec1c98ddb5fa818ed8a32b2bd76594839db598bb0a910b6e968e89",
+    "acceptance": "Root inspected native pixels; provisional first-slice retention, not crossfade or physical acceptance"
+  },
+  "nativeAcceptance": "../../../evidence/cohesion-goal-07-cumulative-light-2026-10-23/README.md"
+}

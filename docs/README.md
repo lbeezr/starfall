@@ -1,5 +1,7 @@
 # Documentation map
 
+[Cumulative Lantern light](evidence/cohesion-goal-07-cumulative-light-2026-10-23/README.md) corrects two tablet midpoint fittings, with source-bound native state/full-board/transition evidence.
+
 [Gameplay-depth queue #303](https://github.com/lbeezr/starfall/issues/303) retains both Lantern modes and starts with four individually merged learning/choice/cascade/round-arc outcomes. [Goal 1 mode discoveries](evidence/depth-goal-01-mode-discoveries-2026-10-23/README.md) reuses real rules in optional, non-saving Entry/Help practice.
 
 [Goal 2 visible choices](evidence/depth-goal-02-visible-choices-2026-10-23/README.md) adds optional Full Board **Find a move** advice from the current visible stars: distinct immediate patterns or a short arrangement before a clear, with optional worked swipes and no round changes.

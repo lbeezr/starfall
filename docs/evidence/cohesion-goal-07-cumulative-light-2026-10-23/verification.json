@@ -1,0 +1,304 @@
+{
+  "status": "Verified for scoped development adoption",
+  "activationMain": "7e712f318df0086a5d4216675c5742305dc4f99c",
+  "testedCleanCommit": "76b52f23c25b2db965a116a553283de54ebe564a",
+  "mainBase": "ffdf28ee59eb08cf38754ae96beb6ceca58e8c62",
+  "buildAffectingDirtyInputs": {},
+  "baselineCompiledCommit": "365ca5e58917ec23db07081c064bced1e39b4f8f",
+  "baselineParity": "App source/resources, Core, project and tests match activation main7e712f31; App/README.md is the only diff under those directory filters.",
+  "independentIntegration": "Optional Full Board choices from PR318 preserved; historical Falling Sky scenarios exercise the same restoration renderer.",
+  "environment": "Xcode27.1(27A9275),Swift6.4,macOS27.0.1;Debug arm64;owned iPhone17e/iPadminiA17Pro iOS27.0(24A434) Simulator",
+  "localBuildPlistLabel": "dev.local",
+  "core": {
+    "passed": 280,
+    "failed": 0,
+    "skipped": 0
+  },
+  "builds": {
+    "debugSeconds": 28.7,
+    "releaseSeconds": 101.6,
+    "testProducts": "build_sim_2026-10-23T16-52-10-481Z_pid51280_fa7638cc.xctestproducts"
+  },
+  "checks": {
+    "hosted": {
+      "result": "Passed",
+      "totalTestCount": 12,
+      "passedTests": 12,
+      "failedTests": 0,
+      "skippedTests": 0
+    },
+    "tablet-milestones": {
+      "result": "Passed",
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0
+    },
+    "phone-quiet-win": {
+      "result": "Passed",
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0
+    },
+    "before-transition-tablet": {
+      "result": "Passed",
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0
+    },
+    "after-transition-tablet": {
+      "result": "Passed",
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0
+    },
+    "after-portrait-transition": {
+      "result": "Passed",
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0
+    }
+  },
+  "changedBuildInputs": {
+    "App/Assets.xcassets/LanternLandingTabletPortrait050.imageset/scene.png": "0c0abdb28e07c4edde21f09dc95a3af6a5e960524cefa0e10cf1846a9b64c6fb",
+    "App/Assets.xcassets/LanternLandingTabletLandscape050.imageset/scene.png": "a44ee4e2d5eea47e32d2f6d84bc755da41604581c2198b708f2d4cf6d86a333a"
+  },
+  "releaseRestorationRasterCount": 105,
+  "releaseEditedEntries": [
+    {
+      "Name": "LanternLandingTabletLandscape050",
+      "PixelWidth": 1448,
+      "PixelHeight": 1086,
+      "Opaque": true,
+      "SizeOnDisk": 2246657
+    },
+    {
+      "Name": "LanternLandingTabletPortrait050",
+      "PixelWidth": 1086,
+      "PixelHeight": 1448,
+      "Opaque": true,
+      "SizeOnDisk": 2082601
+    }
+  ],
+  "commands": [
+    "swift test --scratch-path /private/tmp/starfall-factory-gameplay-20261022/CoreBuild --jobs 2",
+    "XcodeBuildMCP build_sim(buildForTesting:true), Debug; session configuration Release then build_sim({})",
+    "python3 scripts/simulator-command.py --receipt <temporary>/stages.jsonl <label> <180/240/660 seconds> xcodebuild -testProductsPath <prepared-products> -destination platform=iOS Simulator,id=<owned-id> -collect-test-diagnostics never -parallel-testing-enabled NO -only-testing:<selector> -resultBundlePath <unique>.xcresult test-without-building",
+    "Matched recording commands/selectors are exact in captures.json captureReceipt.command",
+    "xcrun xcresulttool get test-results summary --path <result>",
+    "xcrun xcresulttool export attachments --path <result> --output-path <unique>",
+    "xcrun assetutil --info /private/tmp/starfall-factory-gameplay-20261022/DerivedData/Build/Products/Release-iphonesimulator/Starfall.app/Assets.car",
+    "python3 scripts/native_test_plan.py --stage dev",
+    "python3 scripts/ci-hygiene.py",
+    "git diff --check"
+  ],
+  "failuresAndInsufficientEvidence": [
+    "Initial baseline recording began after the crossfade; excluded as transition proof. Earlier lead-in recording replaces it.",
+    "Historical published portrait-dense49-50 JPEG shows21 stars despite filename; original raw49 capture remains valid and separately hashed."
+  ],
+  "limits": [
+    "Historical18-light fixtures sample shared artwork; not current150000-point reachability.",
+    "Normal effects enabled in paused scenarios;100% dimmed result is not active density.",
+    "No physical installation/play, actual VoiceOver, minimum-iOS17, full RC, measured contrast or human recognition/comfort evidence."
+  ],
+  "nativeMilestoneAudit": [
+    {
+      "name": "lantern-audit-tablet-landscape-dense49-score18-painting100_0_85F5CC27-84F7-4AEF-83CD-43C980D53410.png",
+      "sha256": "216078d00e846897a8586b05dfb62a7ce1032c1fdbb6dcb4dbae29e2fe9da540",
+      "timestamp": 1792774683.171,
+      "inspected": "Root selected representative states; independent native-still review inspected all20."
+    },
+    {
+      "name": "lantern-audit-tablet-landscape-dense49-score14-painting75_0_293BEAB5-4DA0-4182-8840-3BC072E51372.png",
+      "sha256": "b18218763f6dcccb5d16ac6904498b0b204a04e3a1e80bb7abda1442f829f1de",
+      "timestamp": 1792774676.355,
+      "inspected": "Root selected representative states; independent native-still review inspected all20."
+    },
+    {
+      "name": "lantern-audit-tablet-landscape-dense49-score9-painting50_0_69C59B1B-4B26-432E-853D-15A075BF6B7A.png",
+      "sha256": "8c736b25e50806f8a29416fe9263e8cda24f6a760bb5253b3c6cb4a8b36e56bf",
+      "timestamp": 1792774666.786,
+      "inspected": "Root selected representative states; independent native-still review inspected all20."
+    },
+    {
+      "name": "lantern-audit-tablet-landscape-dense49-score5-painting25_0_A6E4B733-732F-42ED-B6F9-F8EBFEF2C063.png",
+      "sha256": "02d38f41602958d23b08494336c5e8a15b1c86f5c3082d9f1591e31a7cf1dcfc",
+      "timestamp": 1792774656.952,
+      "inspected": "Root selected representative states; independent native-still review inspected all20."
+    },
+    {
+      "name": "lantern-audit-tablet-landscape-dense49-score0-painting0_0_707BA137-DA21-4DE2-8800-EC550CEAFA48.png",
+      "sha256": "fd61c1e785218df5c80756b7207480a4ea70c9d4ed52bb59c9a96b214a488943",
+      "timestamp": 1792774646.624,
+      "inspected": "Root selected representative states; independent native-still review inspected all20."
+    },
+    {
+      "name": "lantern-audit-tablet-landscape-sparse21-score18-painting100_0_41E91D63-6BD4-4B8F-A161-832BC46C82A8.png",
+      "sha256": "ee74976eb3e196ca036c925cfa28097c428b301e9da1cdfef937fe90ed5831a1",
+      "timestamp": 1792774637.255,
+      "inspected": "Root selected representative states; independent native-still review inspected all20."
+    },
+    {
+      "name": "lantern-audit-tablet-landscape-sparse21-score14-painting75_0_C3AA852C-2429-4A6C-8124-572823D0C3C9.png",
+      "sha256": "6d76ec17256f1408c79fc49314b427993098f0fc287527aecb4854a2983f46d2",
+      "timestamp": 1792774631.236,
+      "inspected": "Root selected representative states; independent native-still review inspected all20."
+    },
+    {
+      "name": "lantern-audit-tablet-landscape-sparse21-score9-painting50_0_71D2752E-05A8-4636-906D-F34D9C3DC632.png",
+      "sha256": "191ee5f4bb574b38a5399c7bf055455e741fc5c1d202475fad94ca6a7aceba5e",
+      "timestamp": 1792774622.6,
+      "inspected": "Root selected representative states; independent native-still review inspected all20."
+    },
+    {
+      "name": "lantern-audit-tablet-landscape-sparse21-score5-painting25_0_2E0AE283-5AEE-4236-AE51-0AC2E16A37BD.png",
+      "sha256": "80d39e74c0633ed305beb0474ed7ca826934df95d833b76f2d0730a2ef29f4fa",
+      "timestamp": 1792774613.598,
+      "inspected": "Root selected representative states; independent native-still review inspected all20."
+    },
+    {
+      "name": "lantern-audit-tablet-landscape-sparse21-score0-painting0_0_42032E55-B06A-433C-9546-D04C905DA8FF.png",
+      "sha256": "54914e371e6b47c71178731f43154d2bcb008a9f798b52d0a24e90ed0420d425",
+      "timestamp": 1792774604.045,
+      "inspected": "Root selected representative states; independent native-still review inspected all20."
+    },
+    {
+      "name": "lantern-audit-portrait-dense49-score18-painting100_0_24BDEC09-8A6A-4951-871A-C95B31C03291.png",
+      "sha256": "687497c727c4e69b1b6f10b0b9eddce2411ced53bfceba0df5ba4870beade1c2",
+      "timestamp": 1792774594.491,
+      "inspected": "Root selected representative states; independent native-still review inspected all20."
+    },
+    {
+      "name": "lantern-audit-portrait-dense49-score14-painting75_0_5DB402C4-E1C2-4178-B3AB-6B1959863EC9.png",
+      "sha256": "45beb48549ea6fc893e50de97375817e50abedaca009fd0600e4dc67460e3af1",
+      "timestamp": 1792774587.97,
+      "inspected": "Root selected representative states; independent native-still review inspected all20."
+    },
+    {
+      "name": "lantern-audit-portrait-dense49-score9-painting50_0_924DBAD7-9A5E-4F2F-87CC-63F445FF612F.png",
+      "sha256": "c7b823ef9984c056875f43b1c77936beb6a8a7344735ca71e135feef8907351c",
+      "timestamp": 1792774578.769,
+      "inspected": "Root selected representative states; independent native-still review inspected all20."
+    },
+    {
+      "name": "lantern-audit-portrait-dense49-score5-painting25_0_DEDD3726-0BAF-4BC8-ADCD-845D05AB0DD5.png",
+      "sha256": "d441ac098ce952c2cac79b1b489c52a85d43e7aa260be3ecaf711e240f97bc34",
+      "timestamp": 1792774568.45,
+      "inspected": "Root selected representative states; independent native-still review inspected all20."
+    },
+    {
+      "name": "lantern-audit-portrait-dense49-score0-painting0_0_75F8C9EE-E483-4D87-A5FA-50CAFBDB6F46.png",
+      "sha256": "0f498fb0b6eb59bdbd33386051041a83b91db562ce86bc9ea5c31ff9e4480457",
+      "timestamp": 1792774547.811,
+      "inspected": "Root selected representative states; independent native-still review inspected all20."
+    },
+    {
+      "name": "lantern-audit-portrait-sparse21-score18-painting100_0_83541696-3C83-421E-8D56-2AB64AEF0DEB.png",
+      "sha256": "8d3859583d3259ca011de27d356cbdd3c4e146facf896020d3db42e0b2bc950a",
+      "timestamp": 1792774533.464,
+      "inspected": "Root selected representative states; independent native-still review inspected all20."
+    },
+    {
+      "name": "lantern-audit-portrait-sparse21-score14-painting75_0_D421A8CD-9120-4986-A231-A3D103BD75E9.png",
+      "sha256": "92aa455d4c838bd3989a39615372814e816d7f8205f23a3504533f37d55a2664",
+      "timestamp": 1792774526.126,
+      "inspected": "Root selected representative states; independent native-still review inspected all20."
+    },
+    {
+      "name": "lantern-audit-portrait-sparse21-score9-painting50_0_F4A649F0-A5CB-4AE5-866C-674DEC63094F.png",
+      "sha256": "825c638fd326171739a2bc7d573eeca08ebcc26752710414ace4afed5a47a45c",
+      "timestamp": 1792774514.308,
+      "inspected": "Root selected representative states; independent native-still review inspected all20."
+    },
+    {
+      "name": "lantern-audit-portrait-sparse21-score5-painting25_0_325DDAE5-C367-4DCC-9D8D-AB7374F4078D.png",
+      "sha256": "cf8742b5115398ad6118ad2ff472c16b7a818bcfb82d26dd7c82e14aaef60245",
+      "timestamp": 1792774501.56,
+      "inspected": "Root selected representative states; independent native-still review inspected all20."
+    },
+    {
+      "name": "lantern-audit-portrait-sparse21-score0-painting0_0_1719B76D-5276-4496-9E2D-8F0EB34E8FF6.png",
+      "sha256": "6b886b2f69a08c251364e16d685deba00a778998380488a1979512b23997a959",
+      "timestamp": 1792774491.26,
+      "inspected": "Root selected representative states; independent native-still review inspected all20."
+    }
+  ],
+  "finalIntegration": {
+    "testedCleanCommit": "3b6838c1dfcc873c0e9c06d19aaf5488aad736b6",
+    "mainBase": "379f84106faf4a0271e7dd958941cab988f59e72",
+    "buildAffectingDirtyInputs": {},
+    "core": {
+      "passed": 295,
+      "failed": 0,
+      "skipped": 0
+    },
+    "checks": {
+      "hosted": {
+        "result": "Passed",
+        "totalTestCount": 12,
+        "passedTests": 12,
+        "failedTests": 0,
+        "skippedTests": 0
+      },
+      "tablet": {
+        "result": "Passed",
+        "totalTestCount": 1,
+        "passedTests": 1,
+        "failedTests": 0,
+        "skippedTests": 0
+      }
+    },
+    "debugBuildSeconds": 25.5,
+    "releaseBuildSeconds": 34.9,
+    "testProducts": "build_sim_2026-10-23T17-16-51-583Z_pid51280_cb6a97a8.xctestproducts",
+    "releaseRestorationRasterCount": 105,
+    "recordedSliceParity": {
+      "exactUnchangedPaths": [
+        "App/Assets.xcassets/LanternLandingTabletPortrait050.imageset/scene.png",
+        "App/Assets.xcassets/LanternLandingTabletLandscape050.imageset/scene.png",
+        "App/RestorationEnvironment.swift",
+        "App/LandingGeometry.swift",
+        "App/StarfallTheme.swift",
+        "App/StarlightCelebration.swift",
+        "UITests/LanternLandingInteractionTests.swift"
+      ],
+      "otherAppChanges": "Independent Silver selected-rule Help and tutorialEndingAfter argument preserve default normal-game rendering; final native rotation/real-clear run verifies integration."
+    },
+    "nativeCaptureChecks": [
+      {
+        "name": "lantern-tablet-portrait-after-second-native-clear-normal-motion_0_6CD065A7-879D-4511-9E49-C764CE3E1B5B.png",
+        "sha256": "5be3a1f40aca35884a34f627605e0caaeab9a7452403ddaa09a7a24f31675b7b",
+        "path": "/private/tmp/starfall-cohesion-20261023/goal07-integrated-tablet-attachments/4F634D5D-EE72-4775-81ED-50CDB20FEA95.png"
+      },
+      {
+        "name": "lantern-tablet-portrait-retained-after-landscape-clear-normal-motion_0_8E609886-B70F-4B53-92CB-5E98D16FAD4D.png",
+        "sha256": "2f787cab8eab8f0d55148e2872fd8d97076749094083bb6e94a675323ac6eccb",
+        "path": "/private/tmp/starfall-cohesion-20261023/goal07-integrated-tablet-attachments/8FACE9CB-19B8-496B-8F8D-6E304E10F94E.png"
+      },
+      {
+        "name": "lantern-tablet-landscape-after-native-clear-normal-motion_0_69C756D5-7B46-4F86-B035-2B550A58E52D.png",
+        "sha256": "0d42779077379eb620d80d9eeb310751efe107201369ed24bab4c43206f15195",
+        "path": "/private/tmp/starfall-cohesion-20261023/goal07-integrated-tablet-attachments/985EAEC1-EEEF-45EC-8190-5B5B0176EDF9.png"
+      },
+      {
+        "name": "lantern-tablet-landscape-retained-before-clear-normal-motion_0_34D4A117-2F9B-4E2C-99F4-6D527B0F9425.png",
+        "sha256": "76cd58d0e24da1b6aeb681d2f853b992fd2bf3d5552d595100ecd66f584bd6b0",
+        "path": "/private/tmp/starfall-cohesion-20261023/goal07-integrated-tablet-attachments/4A13FDDF-D147-4EB2-A84C-4A7BB3AE4552.png"
+      },
+      {
+        "name": "lantern-tablet-portrait-before-rotation-normal-motion_0_E206539C-E26C-4C7D-8567-8D6615706249.png",
+        "sha256": "2a5406b035b45cc9f2bf83c094235506802fa4621f283f849d66f8bd2eb55d6d",
+        "path": "/private/tmp/starfall-cohesion-20261023/goal07-integrated-tablet-attachments/487A0F40-EC4F-44DA-87A9-CB277A2C81BC.png"
+      }
+    ]
+  },
+  "publicationChecks": {
+    "hygiene": "Passed after explicit staging; repeated after final documentation commit",
+    "links": "1019 changed-document targets passed before final integration appendix",
+    "whitespace": "Passed; repeated before publication"
+  }
+}
