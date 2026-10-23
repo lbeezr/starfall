@@ -1,0 +1,13 @@
+{
+  "base_main": "45ee2c2dc8d2f071721c4e57b4feb0bf67191230",
+  "candidate_commit": "2c738d4ed2b064a1ec9624da41b82cfb4ef13d66",
+  "build_identity": "dev.3671aba5cf",
+  "sha256": {
+    "App/ConstellationTraceSurface.swift": "36ef6ada249c07445833c43776fce1e80a66524e5405e4882d15a5f00cd222eb",
+    "App/SkyCopy.swift": "46f5ff7cf999289ddb5979a1c8c7004177500655db9159c6cfb9e3a565de4762",
+    "App/DialogueScripts/observatory-dialogue.json": "131ccb65747c8b8c0cc9e5ee1923fbe0cf3c0cd9f2b4ea0dff6bc782af4565e6",
+    "AppTests/TraceInputPolishTests.swift": "75365f6632d8f4ef1f45192cf03546a34f307dbae0bb0a4f57f8e357ee2aa4a2",
+    "UITests/SkyFlowInteractionTests.swift": "d637eb62a32f7e7dc0dc158eaa297f4ec7b0fc08fb4ecf17f0bb8d0db287df3a"
+  },
+  "snapshot": "75cb5b40c3f2"
+}

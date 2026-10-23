@@ -86,6 +86,57 @@ final class SkyFlowInteractionTests: XCTestCase {
         assertStoryStartupGuidance(largest: true)
     }
 
+    @MainActor private func verifyShortStorySwipe(largest: Bool) {
+        let app = launch(largest: largest)
+        defer { app.terminate() }
+        tap("sky.worldMap", app); tap("world.visit", app); tap("sky.begin", app)
+        let menu = app.buttons["experiment.settings"]
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true AND hittable == true"),
+                                               object: menu).wait(timeout: 10))
+        tap("sky.dialogue.close", app); pause(app)
+        let board = app.otherElements["experiment.board"]
+        let original = board.value as? String
+        let score = app.staticTexts["experiment.score"].label
+        let source = app.buttons["experiment.cell.0.1"]
+        let neighbor = app.buttons["experiment.cell.0.2"]
+        app.revealSkyControls([source, neighbor])
+        let sourceLabel = source.label, neighborLabel = neighbor.label
+        let rim = source.coordinate(withNormalizedOffset: .init(dx: 1, dy: 0.5))
+        rim.withOffset(.init(dx: -1, dy: 0)).press(forDuration: 0.05,
+            thenDragTo: rim.withOffset(.init(dx: 1, dy: 0)), withVelocity: .fast, thenHoldForDuration: 0)
+        let message = app.staticTexts["experiment.message"]
+        capture(app, largest ? "short-story-swipe-largest" : "short-story-swipe")
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label CONTAINS %@",
+            "Swipe a little farther to move a star."), object: message).wait(timeout: 5))
+        XCTAssertEqual(board.value as? String, original)
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, score)
+        XCTAssertEqual(source.label, sourceLabel); XCTAssertEqual(neighbor.label, neighborLabel)
+        app.revealSkyControls([message])
+        XCTAssertTrue(app.frame.contains(message.frame)); XCTAssertTrue(message.isHittable)
+        capture(app, largest ? "short-story-swipe-feedback-largest" : "short-story-swipe-feedback")
+        let setupSource = app.buttons["experiment.cell.3.0"], setupDestination = app.buttons["experiment.cell.3.1"]
+        app.revealSkyControls([setupSource, setupDestination])
+        let sourceKind = String(setupSource.label.split(separator: ",")[0])
+        let destinationKind = String(setupDestination.label.split(separator: ",")[0])
+        XCTAssertNotEqual(sourceKind, destinationKind)
+        setupSource.coordinate(withNormalizedOffset: .init(dx: 0.5, dy: 0.5)).press(forDuration: 0.05,
+            thenDragTo: setupDestination.coordinate(withNormalizedOffset: .init(dx: 0.5, dy: 0.5)),
+            withVelocity: .fast, thenHoldForDuration: 0)
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label BEGINSWITH %@", destinationKind),
+                                               object: setupSource).wait(timeout: 5), "The next full swipe must still commit")
+        XCTAssertTrue(setupDestination.label.hasPrefix(sourceKind))
+        XCTAssertTrue(message.label.contains("Star moved"))
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, score)
+    }
+
+    @MainActor func testShortStorySwipeExplainsHowToCompleteTheMove() {
+        verifyShortStorySwipe(largest: false)
+    }
+
+    @MainActor func testLargestTextShortStorySwipeKeepsFeedbackReadable() {
+        verifyShortStorySwipe(largest: true)
+    }
+
     @MainActor private func assertCurrentStoryGrowthGuidance(largest: Bool) {
         let app = launch(largest: largest)
         defer { app.terminate() }

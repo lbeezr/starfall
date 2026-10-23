@@ -203,6 +203,9 @@ struct ConstellationTraceSurface: UIViewRepresentable {
             switch outcome {
             case .trace: input.end()
             case .tap(let cell): input.cancel(); input.tap(cell)
+            case .shortSwipe:
+                input.cancel()
+                input.feedback?(SkyCopy.text(.inputShortSwipe))
             case .cancel, .none: input.cancel()
             }
         }
@@ -273,7 +276,7 @@ struct ConstellationTraceSurface: UIViewRepresentable {
 /// select drawing while stationary; movement commits one directional exchange.
 struct ConstellationTouchSession {
     enum Event: Equatable { case none, trace, swap(Cell, Cell), blockedSwap, cancel }
-    enum Outcome: Equatable { case none, tap(Cell), trace, cancel }
+    enum Outcome: Equatable { case none, tap(Cell), trace, shortSwipe, cancel }
     private enum Mode { case idle, pending, drawing, consumed }
     static let holdSlop: CGFloat = 8
     static let tapSlop: CGFloat = 18
@@ -336,8 +339,13 @@ struct ConstellationTouchSession {
         switch mode {
         case .drawing: return mapping.cell(at: point) == nil ? .cancel : .trace
         case .pending:
-            guard maximumDistance <= Self.tapSlop, let cell = mapping.cell(at: origin),
-                  mapping.cell(at: point) == cell else { return .cancel }
+            guard let cell = mapping.cell(at: origin) else { return .cancel }
+            guard mapping.cell(at: point) == cell else {
+                // Only an admitted, unconsumed move needs this correction.
+                // Consumed swaps and retired contacts keep their own feedback.
+                return swapEligible && mapping.cell(at: point) != nil ? .shortSwipe : .cancel
+            }
+            guard maximumDistance <= Self.tapSlop else { return .cancel }
             return .tap(cell)
         case .consumed: return .none
         case .idle: return .cancel

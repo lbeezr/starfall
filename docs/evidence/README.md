@@ -1,5 +1,7 @@
 # Evidence index
 
+[Game-factory goal 2: movement trust](game-goal-02-movement-trust-2026-10-22/README.md) records the short boundary-release reproduction, correction, next-move/lifecycle contrasts and source-bound phone/tablet checks. It preserves the initial native assertion error separately from app behavior.
+
 [Game-factory goal 1: first-minute guidance](game-goal-01-first-minute-2026-10-22/README.md) retains the mode-specific objective/action through Begin and resume. It records 236 Core, 70 hosted and six selected phone/tablet native passes plus Debug/Release, actual source hashes and reading captures. Simulator resource refusal and the incomplete expected-failure baseline remain explicit; final candidate bundles complete with zero failures/skips.
 
 [Four-star-line trial](four-star-lines-2026-10-22/README.md) tracks the user-selected revision 4, unchanged other mechanics, retained seven-star saves, native verification and canonical phone installation. Development and physical-enjoyment evidence remain separate.
