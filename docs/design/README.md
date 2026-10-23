@@ -1,5 +1,7 @@
 # Design documents
 
+[Optional Story mastery contract](STORY_MASTERY_CONTRACT.md) defines current-pattern accomplishments, winning-action credit, versioned enrollment, best single-run records and interruption/rejection behavior. It is proposed semantics; real Story feasibility, persistence and native presentation remain implementation prerequisites.
+
 [Campaign budget and Bell Choir brief](BELL_CHOIR_AND_CAMPAIGN_BUDGET.md) keeps twelve repairs as the baseline and specifies the next unbuilt place's gameplay question, five restoration states, three compositions and native-first production sequence. It is a design deliverable; no Bell challenge, paintings or new campaign progression are implemented.
 
 [AI game-factory guidance](AI_GAME_FACTORY.md) studies all 63 prompt cards across seven OpenAI games, records reconstruction/source limits and adds an experience brief, playable-slice workflow and reusable prompts. Guidance is integrated; improvements to game quality and factory throughput remain unmeasured.
