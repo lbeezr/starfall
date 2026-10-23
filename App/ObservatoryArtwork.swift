@@ -239,6 +239,39 @@ private struct ObservatoryReadingPanel: ViewModifier {
     }
 }
 
+/// A shallow enamel speech instrument. The caller owns content insets and size;
+/// this passive background never clips the native reader or its actions.
+struct ObservatoryDialogueSurface: View {
+    @Environment(\.colorSchemeContrast) private var contrast
+
+    var body: some View {
+        let shape = RoundedRectangle(cornerRadius: StarfallTheme.Dialogue.corner, style: .continuous)
+        shape
+            // Opaque enamel supplies the same backing with reduced transparency.
+            .fill(LinearGradient(colors: [StarfallTheme.Dialogue.enamelHighlight,
+                                         StarfallTheme.Dialogue.surface,
+                                         StarfallTheme.Dialogue.enamelShade],
+                                 startPoint: .topLeading, endPoint: .bottomTrailing))
+            .overlay {
+                shape.strokeBorder(LinearGradient(stops: [
+                    .init(color: StarfallTheme.Dialogue.brass.opacity(contrast == .increased ? 1 : 0.8), location: 0),
+                    .init(color: StarfallTheme.Dialogue.rimShade, location: 0.45),
+                    .init(color: StarfallTheme.Dialogue.enamelShade, location: 1)
+                ], startPoint: .topLeading, endPoint: .bottomTrailing),
+                    lineWidth: contrast == .increased ? 1.5 : 1)
+            }
+            .overlay {
+                shape.inset(by: 1.5).strokeBorder(LinearGradient(colors: [
+                    StarfallTheme.Dialogue.ink.opacity(0.12), .clear, .clear
+                ], startPoint: .top, endPoint: .bottom), lineWidth: 1)
+            }
+            .shadow(color: StarfallTheme.Dialogue.contactShadow,
+                    radius: StarfallTheme.Dialogue.shadowRadius, y: StarfallTheme.Dialogue.shadowDrop)
+            .allowsHitTesting(false)
+            .accessibilityHidden(true)
+    }
+}
+
 /// The same authored enamel and fittings at half scale. Compact controls keep
 /// shallow edges; their content padding and native hit region remain independent.
 struct ObservatoryCompactSurface: View {

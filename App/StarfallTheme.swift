@@ -6,7 +6,13 @@ import UIKit
 enum StarfallTheme {
     enum Dialogue {
         static let surface = Colors.surface
+        static let enamelHighlight = Colors.surfacePressed
+        static let enamelShade = Colors.skyTop
         static let brass = Colors.actionPrimary
+        static let rimShade = Colors.outline
+        static let contactShadow = Color(Observatory.contactShadow)
+        static let shadowRadius: CGFloat = 5
+        static let shadowDrop: CGFloat = 3
         static let ink = Colors.textPrimary
         static let portraitSide: CGFloat = 64
         static let portraitOverlap: CGFloat = 16

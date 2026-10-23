@@ -263,6 +263,36 @@
       "result": "blocked",
       "tool": "XcodeBuildMCP snapshot_ui after owned-phone launch",
       "observation": "Timed out creating simulator remote automation session; no repeated probes; stopped app and shut down owned phone"
+    },
+    {
+      "name": "integrated-debug-build",
+      "result": "passed; combined source compile only",
+      "stage": {
+        "stage": "integrated-debug-build",
+        "startedUTC": "2026-10-23T13:12:39.041627+00:00",
+        "elapsedSeconds": 43.534,
+        "limitSeconds": 300.0,
+        "exitCode": 0,
+        "error": null
+      },
+      "log": "integrated-debug-build.log",
+      "runtime_fingerprint": "dev.4448f4efe8",
+      "native_acceptance": "pending"
+    },
+    {
+      "name": "integrated-release-build",
+      "result": "passed; combined source compile only",
+      "stage": {
+        "stage": "integrated-release-build",
+        "startedUTC": "2026-10-23T13:13:22.609702+00:00",
+        "elapsedSeconds": 13.932,
+        "limitSeconds": 300.0,
+        "exitCode": 0,
+        "error": null
+      },
+      "log": "integrated-release-build.log",
+      "runtime_fingerprint": "dev.4448f4efe8",
+      "native_acceptance": "pending"
     }
   ],
   "failures_and_corrections": [
@@ -381,5 +411,22 @@
     "source": "booted-device-observation.json plus ps scoped load observation",
     "limits": "Contention observed; does not by itself prove a clock implementation cause. Unrelated simulators/processes not stopped. Both owned simulators shut down after direct checks."
   },
-  "next_action": "Resolve the final actual-clock observation using current source after native host capacity changes; retain strict assertions, freeze prepared Seed/Silver until Kite native acceptance and merge. Do not attribute the failed repeat to game code or host load without sufficient evidence."
+  "next_action": "Resolve the final actual-clock observation using current source after native host capacity changes; retain strict assertions, freeze prepared Seed/Silver until Kite native acceptance and merge. Do not attribute the failed repeat to game code or host load without sufficient evidence.",
+  "post_test_integration": {
+    "main_commit": "678f7c7c0b49fcfef5cf66d88ef8767d132fcbb6",
+    "main_pr": 292,
+    "combined_computed_input_fingerprint": "dev.4448f4efe8",
+    "changed_production_paths": [
+      "App/ObservatoryArtwork.swift",
+      "App/SkyDialogueBubble.swift",
+      "App/StarfallTheme.swift"
+    ],
+    "sha256": {
+      "App/ObservatoryArtwork.swift": "27c444c22b18f6bf14aa1a6ec6f19e9cf1e5236bfd6ef080065a192856296ee0",
+      "App/SkyDialogueBubble.swift": "7837f9279e24ee52faba9c49782ea7deb610c418626211c127013e9a9d846113",
+      "App/StarfallTheme.swift": "a2ef520ceb7e81e607318df19887eac8671d298fed56abf27843ad90b4d02564"
+    },
+    "acceptance": "Native results/captures above remain bound to pre-cohesion dev.ac2d935006; final combined native acceptance pending. Core, catalogue and hosted test input bytes unchanged.",
+    "builds": "Both combined-source generic arm64 Debug build-for-testing43.534s and Release13.932s pass; no simulator booted."
+  }
 }

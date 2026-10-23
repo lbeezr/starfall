@@ -1,0 +1,193 @@
+{
+  "build": "dev.0b9dfde7bb",
+  "dirty_inputs": {
+    "App/ObservatoryArtwork.swift": "27c444c22b18f6bf14aa1a6ec6f19e9cf1e5236bfd6ef080065a192856296ee0",
+    "App/SkyDialogueBubble.swift": "7837f9279e24ee52faba9c49782ea7deb610c418626211c127013e9a9d846113",
+    "App/StarfallTheme.swift": "a2ef520ceb7e81e607318df19887eac8671d298fed56abf27843ad90b4d02564"
+  },
+  "status": "verified for scoped development adoption",
+  "date": "2026-10-23",
+  "base_main": "c496576bde4e89c1f20370054d3c96bfa2f90886",
+  "captured_displayed_build": "dev.local",
+  "baseline_build": "dev.976d4838a7",
+  "baseline_source": "c496576bde4e89c1f20370054d3c96bfa2f90886",
+  "tests": {
+    "goal01-candidate-phone": {
+      "result": "Passed",
+      "totalTestCount": 31,
+      "passedTests": 31,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792760081.241,
+      "finishTime": 1792760229.51,
+      "testFailures": []
+    },
+    "goal01-candidate-phone-largest": {
+      "result": "Passed",
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792760277.939,
+      "finishTime": 1792760366.295,
+      "testFailures": []
+    },
+    "goal01-candidate-tablet": {
+      "result": "Failed",
+      "totalTestCount": 3,
+      "passedTests": 2,
+      "failedTests": 1,
+      "skippedTests": 0,
+      "startTime": 1792760124.507,
+      "finishTime": 1792760274.436,
+      "testFailures": [
+        {
+          "failureText": "XCTAssertTrue failed - A paragraph taller than its space needs a bounded reading area",
+          "targetName": "StarfallUITests",
+          "testIdentifier": 1,
+          "testIdentifierString": "SkyDialogueInteractionTests/testLargestTextChatReflowsBelowBoardAndPreviewRemainsUsable()",
+          "testIdentifierURL": "test://com.apple.xcode/Starfall/StarfallUITests/SkyDialogueInteractionTests/testLargestTextChatReflowsBelowBoardAndPreviewRemainsUsable",
+          "testName": "testLargestTextChatReflowsBelowBoardAndPreviewRemainsUsable()"
+        }
+      ]
+    },
+    "goal01-baseline-tablet-reader": {
+      "result": "Failed",
+      "totalTestCount": 1,
+      "passedTests": 0,
+      "failedTests": 1,
+      "skippedTests": 0,
+      "startTime": 1792760301.955,
+      "finishTime": 1792760337.435,
+      "testFailures": [
+        {
+          "failureText": "XCTAssertTrue failed - A paragraph taller than its space needs a bounded reading area",
+          "targetName": "StarfallUITests",
+          "testIdentifier": 1,
+          "testIdentifierString": "SkyDialogueInteractionTests/testLargestTextChatReflowsBelowBoardAndPreviewRemainsUsable()",
+          "testIdentifierURL": "test://com.apple.xcode/Starfall/StarfallUITests/SkyDialogueInteractionTests/testLargestTextChatReflowsBelowBoardAndPreviewRemainsUsable",
+          "testName": "testLargestTextChatReflowsBelowBoardAndPreviewRemainsUsable()"
+        }
+      ]
+    }
+  },
+  "limits": [
+    "Actual VoiceOver, physical-device comfort and human art-direction preference not performed.",
+    "No new phone installation."
+  ],
+  "snapshot_id": "c0cb3a85494d",
+  "core": {
+    "passed": 242,
+    "failed": 0,
+    "skipped": 0
+  },
+  "debug_build": "passed",
+  "new_resources_or_membership": false,
+  "environment": {
+    "Xcode": "27.1 (27A9275)",
+    "Swift": "6.4",
+    "macOS": "27.0.1 arm64",
+    "simulatorOS": "iOS 27.0 (24A434)",
+    "configuration": "Debug"
+  },
+  "interpretation": "Candidate phone: 3 UI and 28 hosted pass; additional AX3XL phone reader passes. Tablet: both Story startup/quiet recovery pass; extra phone scrolling-stress case fails identically on clean baseline because the full paragraph fits without a bounded reader. Preserve the failed aggregate; no assertion changed or full-matrix pass claimed.",
+  "selectors": {
+    "phone": [
+      "SkyFlowInteractionTests/testStoryStartupExplainsTheActualPatternAction",
+      "SkyFlowInteractionTests/testFullStoryColumnShowsPressureAndCommittedRecovery",
+      "SkyDialogueInteractionTests/testPausedGuideStartsCollapsedAndReopensWithoutHidingManualControls",
+      "SkyDialogueTests",
+      "ObservatoryArtworkTests"
+    ],
+    "phone_largest": [
+      "SkyDialogueInteractionTests/testLargestTextChatReflowsBelowBoardAndPreviewRemainsUsable"
+    ],
+    "tablet": [
+      "SkyFlowInteractionTests/testLargestTextStoryStartupRemainsReadableUntilDismissed",
+      "SkyFlowInteractionTests/testLargestQuietStoryPressureAndRecoveryRemainReadable"
+    ],
+    "extra_baseline_and_candidate_tablet_failure": [
+      "SkyDialogueInteractionTests/testLargestTextChatReflowsBelowBoardAndPreviewRemainsUsable"
+    ]
+  },
+  "captures": [
+    {
+      "file": "dev-c496576b__lantern-start__iphone-17e__default-before.jpg",
+      "raw_sha256": "328baf438349934b0fcb86d4ef6358c4e6c7458c28c73cc9ddd8fcb944ccb78b",
+      "retained_sha256": "9f4bd34b692fff14346b7ba9973f587f2285c0db3493d3b988522e67095edc95",
+      "build": "dev.976d4838a7",
+      "compiled_base": "c496576bde4e89c1f20370054d3c96bfa2f90886",
+      "dirty_snapshot": null,
+      "device": "iphone-17e",
+      "text": "default",
+      "motion": "normal",
+      "inspected": true,
+      "encoding": "native pixels; JPEG quality 80; no crop or resize"
+    },
+    {
+      "file": "dev-c496576b-wip-c0cb3a85494d__lantern-start__iphone-17e__default-after.jpg",
+      "raw_sha256": "ab40a2a1bc6fb85b830f4dcd4d43642fed3ac435254f03a307bb02af90b359ba",
+      "retained_sha256": "6c142f69e4029858501aae31c5bb636d50bfa4f8bc8a4246150e346ec6f7cfdd",
+      "build": "dev.0b9dfde7bb",
+      "compiled_base": "c496576bde4e89c1f20370054d3c96bfa2f90886",
+      "dirty_snapshot": "c0cb3a85494d",
+      "device": "iphone-17e",
+      "text": "default",
+      "motion": "normal",
+      "inspected": true,
+      "encoding": "native pixels; JPEG quality 80; no crop or resize"
+    },
+    {
+      "file": "dev-c496576b__lantern-recovery__iphone-17e__default-before.jpg",
+      "raw_sha256": "9cf25c2ccc75ea189fc38c95ea1ed2ec2ff5e57a55bc04f1a55dac6b235f972e",
+      "retained_sha256": "4b14d7c6db0572791da8b920c0a685bf03e9ab061086e2ef20ba1c34b524a971",
+      "build": "dev.976d4838a7",
+      "compiled_base": "c496576bde4e89c1f20370054d3c96bfa2f90886",
+      "dirty_snapshot": null,
+      "device": "iphone-17e",
+      "text": "default",
+      "motion": "normal",
+      "inspected": true,
+      "encoding": "native pixels; JPEG quality 80; no crop or resize"
+    },
+    {
+      "file": "dev-c496576b-wip-c0cb3a85494d__lantern-recovery__iphone-17e__default-after.jpg",
+      "raw_sha256": "967486cee35615dcadda7f6aab8e2e546676b131ebeea7a9b76888b92f3f2bb1",
+      "retained_sha256": "4705fbe08214401778d5d92ac8c5dca2431f5ecb7be83883c7cbf79bffaa76f2",
+      "build": "dev.0b9dfde7bb",
+      "compiled_base": "c496576bde4e89c1f20370054d3c96bfa2f90886",
+      "dirty_snapshot": "c0cb3a85494d",
+      "device": "iphone-17e",
+      "text": "default",
+      "motion": "normal",
+      "inspected": true,
+      "encoding": "native pixels; JPEG quality 80; no crop or resize"
+    },
+    {
+      "file": "dev-c496576b-wip-c0cb3a85494d__lantern-recovery__ipad-mini-a17-pro__ax3xl-after.jpg",
+      "raw_sha256": "545f5a9cdea29f680c96adf7aa7ae7f9b807ba3b9416d08555473ac17decf123",
+      "retained_sha256": "93ea583323dea2bd446ba331789ec56022147ca217e174d05a5d8a7fa0084f91",
+      "build": "dev.0b9dfde7bb",
+      "compiled_base": "c496576bde4e89c1f20370054d3c96bfa2f90886",
+      "dirty_snapshot": "c0cb3a85494d",
+      "device": "ipad-mini-a17-pro",
+      "text": "AX3XL",
+      "motion": "calm",
+      "inspected": true,
+      "encoding": "native pixels; JPEG quality 80; no crop or resize"
+    },
+    {
+      "file": "dev-c496576b-wip-c0cb3a85494d__paused-guide-reading-end__iphone-17e__ax3xl-after.jpg",
+      "raw_sha256": "e499e9f290b57b8cd16c2e42f308398b63b255b2bc706e127cf0f7e1327480c4",
+      "retained_sha256": "3520f67aba3c29d7480353d2c9a097e8b2d7723e1cebb9d3acec01ccd16c1e85",
+      "build": "dev.0b9dfde7bb",
+      "compiled_base": "c496576bde4e89c1f20370054d3c96bfa2f90886",
+      "dirty_snapshot": "c0cb3a85494d",
+      "device": "iphone-17e",
+      "text": "AX3XL",
+      "motion": "normal",
+      "inspected": true,
+      "encoding": "native pixels; JPEG quality 80; no crop or resize"
+    }
+  ]
+}
