@@ -4,7 +4,7 @@
 
 Build a satisfying restoration adventure for **iPhone and iPad**: make a thoughtful arrangement, earn a readable cascade, bring a place back to life, then discover a different puzzle at the next stop. Pokémon Puzzle League is the primary gameplay inspiration. The OpenAI showcases inform authored journeys, sensory coherence and small integrated slices.
 
-**Next action:** Continue the existing [ten-goal experience queue #240](https://github.com/lbeezr/starfall/issues/240) in its recorded order, reusing [#236–#238](evidence/factory-goal-refill-2026-10-22/README.md). Prepare [Kite/curriculum #252](https://github.com/lbeezr/starfall/issues/252). The [mastery contract](design/STORY_MASTERY_CONTRACT.md) is defined; feasibility and runtime implementation remain planned. The [Bell Choir/content budget](design/BELL_CHOIR_AND_CAMPAIGN_BUDGET.md) is briefed; its artwork and runtime remain planned. These deliverables are designs, not completed gameplay.
+**Next action:** Continue the existing [ten-goal experience queue #240](https://github.com/lbeezr/starfall/issues/240) in its recorded order, reusing [#236–#238](evidence/factory-goal-refill-2026-10-22/README.md). The [seven-place curriculum/Kite brief](design/STORY_ENCOUNTER_CURRICULUM.md) is source-witnessed; native adoption remains planned. The [mastery contract](design/STORY_MASTERY_CONTRACT.md) is defined; feasibility and runtime implementation remain planned. The [Bell Choir/content budget](design/BELL_CHOIR_AND_CAMPAIGN_BUDGET.md) is briefed; its artwork and runtime remain planned. These deliverables are designs, not completed gameplay.
 
 This is an outcome sequence, without calendar or playtime promises. The [previous roadmap](ROADMAP_HISTORY_2026-10-22.md) preserves its source-bound integration history and earlier proposals.
 
@@ -60,7 +60,7 @@ A new-play session, model win or automated completion cannot close [uncoached iP
 | --- | --- | --- | --- |
 | **01 Lantern Landing · Soft Skies** | Ready; current automatic rules | Recognize a useful pattern; earn a welcoming light and gathering place. | Current first-minute/setup/transformation work; no new target assumed. |
 | **02 Ribbon Crossing · Soft Skies** | Ready; current automatic rules | Predict a survivor-created chain; reconnect neighbors. | #248 establishes contrast with Lantern; preserve alternatives and recovery. |
-| **03 Kite Harbor · Soft Skies** | Ready; historical 18-light rules | Choose headroom versus immediate points; let the fleet set out. | #252 briefs one witnessed, versioned encounter before implementation. |
+| **03 Kite Harbor · Soft Skies** | Ready; historical 18-light rules | Choose headroom versus immediate points; let the fleet set out. | [Encounter brief](design/STORY_ENCOUNTER_CURRICULUM.md) witnesses one proposed choice and recovery; versioned runtime/native adoption remains planned. |
 | **04 Seed Moon · Wild Moons** | Ready; historical rules | Position a useful grown ingredient for a later pattern versus spending it now; restore shelter. | Reuse Kite's versioned route. A completed automatic pattern cannot be banked awaiting a tap. |
 | **05 Silver Pools · Wild Moons** | Ready; historical rules | Choose the order that creates a deeper causal sequence; restore continuous flow. | Prove divergent exchanges and a later recovery/chain opportunity. |
 | **06 Frostfruit Orchard · Wild Moons** | Ready; historical rules | Proposed compression/recovery challenge; restore a living winter rhythm. | Author one contrasting encounter; preserve the cool seasonal identity. |
@@ -71,7 +71,7 @@ A new-play session, model win or automated completion cannot close [uncoached iP
 | **11 Petal Beacon · Night's Edge** | **Unbuilt** | Proposed controlled release of a prepared opportunity; reveal a route onward. | Make the opening/beam reward readable without new hidden rules. |
 | **12 Hollow Crown · Night's Edge** | **Unbuilt** | Proposed final synthesis of learned decisions; return circulating light to everyone. | Announced restoration objective is the finish. No surprise boss meter or final timed input. |
 
-[#252](https://github.com/lbeezr/starfall/issues/252) supplies the curriculum and first Kite brief. Every adopted encounter needs two meaningful legal plans, materially different consequences, an understandable recovery route and a complete native round. A deterministic witness establishes consequences/solvability, not difficulty or fun. Keep the later target/time figures in the older Story plan as hypotheses.
+[The curriculum and Kite brief](design/STORY_ENCOUNTER_CURRICULUM.md) supply the first source-witnessed encounter, with hypothetical-carrier and native/adoption limits explicit. Every adopted encounter needs two meaningful legal plans, materially different consequences, an understandable recovery route and a complete native round. A deterministic witness establishes consequences/solvability, not difficulty or fun. Keep the later target/time figures in the older Story plan as hypotheses.
 
 [The campaign budget](design/BELL_CHOIR_AND_CAMPAIGN_BUDGET.md) compares the **twelve-repair baseline** with optional multi-round chapters. Additional rounds must add a distinct decision, variation or capstone. Define round-versus-location completion and save identity before implementation; do not assume 36/48 rounds or several hours. Skilled play may finish promptly.
 
@@ -115,7 +115,7 @@ Use [29 workstreams / 292 responsibilities](GAME_ROLE_CATALOG.md) and the [label
 
 | Work to cover | Primary homes and supporting expertise | Current action / gap |
 | --- | --- | --- |
-| Rules, progression, authored decisions, replay | Game design, level design, gameplay engineering; puzzle designer, balance designer, save engineer, QA | #240, #252 and the [mastery contract](design/STORY_MASTERY_CONTRACT.md); biggest product gap is distinct encounters beyond the first pair. |
+| Rules, progression, authored decisions, replay | Game design, level design, gameplay engineering; puzzle designer, balance designer, save engineer, QA | #240, the [encounter curriculum](design/STORY_ENCOUNTER_CURRICULUM.md) and the [mastery contract](design/STORY_MASTERY_CONTRACT.md); biggest product gap is distinct encounters beyond the first pair. |
 | World, cast, story and restoration payoff | Production, narrative, art direction, environment/character art, animation/VFX, audio, technical art | Seven ready identities; five unbuilt. [The Bell brief](design/BELL_CHOIR_AND_CAMPAIGN_BUDGET.md) budgets the next complete slice; avoid parallel mass asset generation. |
 | HUD, map, controls, teaching and sensory meaning | UI/UX, platform/input, audio, accessibility; HUD designer, interaction designer, UX writer, native QA | Reuse #236–#238/#242–#250; quiet, largest-text and non-color meaning remain part of applicable development checks. Actual VoiceOver is deferred. |
 | Player understanding and balance | User research, game design, QA; participants, researcher, touch specialist | #206 needs real phone/tablet observations; simulation cannot supply them. |
