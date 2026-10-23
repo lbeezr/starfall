@@ -1,5 +1,7 @@
 # Starfall roadmap
 
+**Goal-driven production refill — October 22:** [Three selected enhancements](evidence/factory-goal-refill-2026-10-22/README.md) advance existing goals: a rising committed-chain phrase (#236), a named next restoration at a win (#237), and exact objectives/retained progress on Map/Places (#238). Their proposed player benefits are hypotheses; development can proceed without new balance rules, artwork or a player-study result. VoiceOver remains deferred. The factory now compares accepted goals with shipped behavior before declaring the queue empty.
+
 **Project completion diagnosis — October 22:** [#220's investigation](evidence/project-processing-2026-10-22/README.md) confirms native Done workflows are enabled and identifies an overlapping GitHub incident with queued Project updates. Preserve the workflows and issue authority; automatic canonical-card completion remains unverified. The fresh gameplay refill found no new ready leaf; actual player/device and minimum-runtime dependencies remain with their existing issues, and VoiceOver stays deferred.
 
 **Storm practice clarity — October 22:** [The existing one-action lesson](evidence/storm-practice-guidance-2026-10-22/README.md) now describes the five-star storm and Next shower, matching visible information. Core, hosted, normal native input and Release checks pass; forecast design and rules are unchanged. The bounded gameplay queue is now limited by its existing player/device evidence dependencies; VoiceOver remains deferred.

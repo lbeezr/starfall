@@ -1,5 +1,7 @@
 # Evidence index
 
+[Goal-driven factory refill](factory-goal-refill-2026-10-22/README.md) maps three useful enhancements to accepted arcade-feedback and local-journey goals, records current source gaps and independent ownership, and corrects defect-only queue discovery. It supplies planning/source evidence, not implemented-feature or human-benefit acceptance.
+
 [Project processing diagnosis](project-processing-2026-10-22/README.md) records the enabled Done workflows, overlapping GitHub service incident, partial canonical-row recovery and incident-aware reconciliation change. #220 remains open for actual canonical visibility and automatic merge-to-Done acceptance; the fresh gameplay refill found no new ready leaf, and VoiceOver stays deferred.
 
 [Storm practice guidance](storm-practice-guidance-2026-10-22/README.md) records the hidden-column wording correction, rejected extra-action proposal, five actual arrival consequences, one native/19 hosted/225 Core passes, Release and an inspected default-text instruction. It also records the continuing batch's queue and Project reconciliation limits; VoiceOver stays deferred.
