@@ -334,6 +334,84 @@ final class SkyFlowStateTests: XCTestCase {
         XCTAssertNil(flow.handle(.preferences, hasSavedSky: true))
     }
 
+    @MainActor func testWorldMapNewVisitGoalsUseEveryCurrentReadyDefinition() throws {
+        var journey = WorldJourney(legacyAccess: true)
+        for challenge in [StarfallChallenge.silverPools, .frostfruitOrchard] {
+            var win = ObservatoryReviewFixture.game(dense: false, score: 14, challenge: challenge)
+            XCTAssertNotNil(win.clear(Cell(0, 0)))
+            journey.record(win)
+        }
+        let targets: [(StarfallChallenge, Int)] = [
+            (.firstLight, 150_000), (.ribbonCrossing, 220_000), (.kiteHarbor, 18),
+            (.seedMoon, 18), (.silverPools, 18), (.frostfruitOrchard, 18), (.sunwheelMill, 18)
+        ]
+        for (challenge, target) in targets {
+            journey.select(try XCTUnwrap(WorldLocation(rawValue: challenge.rawValue)))
+            let goal = try XCTUnwrap(WorldMapGoalSnapshot(journey: journey, retainedRound: nil))
+            XCTAssertEqual(goal.newVisitTarget, target)
+            XCTAssertEqual(goal.newVisitLabel, "New visit objective: \(SkyCopy.score(target)) starlight.")
+            XCTAssertNil(goal.retainedProgress)
+            XCTAssertNil(goal.retainedLabel)
+        }
+    }
+
+    @MainActor func testWorldMapRetainedGoalsKeepHistoricalAndCurrentPointScales() throws {
+        let historical = ObservatoryReviewFixture.game(dense: false, score: 9, challenge: .firstLight)
+        var lantern = FallingSky.freshChallenge(.firstLight)
+        var ribbon = FallingSky.freshChallenge(.ribbonCrossing)
+        XCTAssertNotNil(lantern.nudge(from: Cell(1, 1), to: Cell(1, 2)))
+        XCTAssertNotNil(ribbon.nudge(from: Cell(1, 1), to: Cell(1, 2)))
+        for (game, score, retainedTarget, newTarget) in [
+            (historical, 9, 18, 150_000), (lantern, 15_000, 150_000, 150_000),
+            (ribbon, 30_000, 220_000, 220_000)
+        ] {
+            var journey = WorldJourney(legacyAccess: true)
+            let challenge = try XCTUnwrap(game.challenge)
+            journey.select(try XCTUnwrap(WorldLocation(rawValue: challenge.rawValue)))
+            let goal = try XCTUnwrap(WorldMapGoalSnapshot(journey: journey, retainedRound: game))
+            XCTAssertEqual(goal.retainedProgress, StarlightRestoration(score: score, target: retainedTarget))
+            XCTAssertEqual(goal.newVisitTarget, newTarget)
+            XCTAssertEqual(goal.retainedLabel,
+                           "Saved round: \(SkyCopy.score(score)) of \(SkyCopy.score(retainedTarget)) starlight.")
+            let restored = try JSONDecoder().decode(FallingSky.self, from: JSONEncoder().encode(game))
+            XCTAssertEqual(WorldMapGoalSnapshot(journey: journey, retainedRound: restored), goal,
+                           "Reading a restored round cannot substitute today's objective")
+        }
+    }
+
+    @MainActor func testWorldMapGoalsExcludeUnrelatedEndedAndAbsentRoundProgress() throws {
+        var journey = WorldJourney(legacyAccess: true)
+        let historical = ObservatoryReviewFixture.game(dense: false, score: 9, challenge: .firstLight)
+        journey.select(.ribbonCrossing)
+        let otherPlace = try XCTUnwrap(WorldMapGoalSnapshot(journey: journey, retainedRound: historical))
+        XCTAssertEqual(otherPlace.newVisitTarget, 220_000)
+        XCTAssertNil(otherPlace.retainedProgress, "Another destination's score must not follow map selection")
+        journey.select(.firstLight)
+        XCTAssertNil(try XCTUnwrap(WorldMapGoalSnapshot(journey: journey, retainedRound: nil)).retainedProgress)
+        XCTAssertNil(try XCTUnwrap(WorldMapGoalSnapshot(journey: journey, retainedRound: .freshSurvival(seed: 5))).retainedProgress)
+        var full = FallingSky.freshChallenge(.firstLight)
+        for _ in 0..<40 where !full.isOver { _ = full.letStarsFall() }
+        XCTAssertEqual(full.outcome, .lost)
+        XCTAssertNil(try XCTUnwrap(WorldMapGoalSnapshot(journey: journey, retainedRound: full)).retainedProgress)
+        var won = ObservatoryReviewFixture.game(dense: false, score: 14, challenge: .firstLight)
+        XCTAssertNotNil(won.clear(Cell(0, 0)))
+        journey.record(won); journey.select(.firstLight)
+        XCTAssertTrue(journey.completed.contains(.firstLight))
+        let completed = try XCTUnwrap(WorldMapGoalSnapshot(journey: journey, retainedRound: won))
+        XCTAssertNil(completed.retainedProgress, "A completed result must not advertise Continue progress")
+        XCTAssertEqual(completed.newVisitTarget, 150_000, "A restored place stays revisitable with current rules")
+    }
+
+    @MainActor func testWorldMapGoalsMakeNoPlayablePromiseForLockedOrUnbuiltPlaces() {
+        var journey = WorldJourney()
+        for location in [WorldLocation.ribbonCrossing, .frostfruitOrchard, .bellChoir, .hollowCrown] {
+            journey.select(location)
+            let round = location.challenge.map(FallingSky.freshChallenge)
+            XCTAssertFalse(journey.canEnter(location))
+            XCTAssertNil(WorldMapGoalSnapshot(journey: journey, retainedRound: round))
+        }
+    }
+
     func testWelcomeSummaryDistinguishesSavedModePauseAndCompletedSkies() {
         var game = FallingSky(challenge: .firstLight)
         let empty = SkyWelcomeSnapshot(game: game, hasSavedSky: false, paused: true)

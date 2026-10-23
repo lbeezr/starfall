@@ -1,0 +1,260 @@
+{
+  "scope": "Selected working-tree development acceptance; no full matrix, actual VoiceOver, physical installation or comprehension result",
+  "core": {
+    "passed": 239,
+    "failed": 0,
+    "skipped": 0
+  },
+  "runs": {
+    "phone": {
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "64231AFE-4CDB-4B5A-B6D5-70CD7CEED324",
+              "deviceName": "Starfall Factory Goals iPhone",
+              "modelName": "iPhone 17e",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "passedTests": 10,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "Starfall \u00b7 Built with macOS 27.0.1",
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "finishTime": 1792723809.5,
+        "passedTests": 10,
+        "result": "Passed",
+        "runtimeWarnings": [],
+        "skippedTests": 0,
+        "startTime": 1792723575.95,
+        "statistics": [],
+        "testFailures": [],
+        "title": "Test - Starfall",
+        "topInsights": [],
+        "totalTestCount": 10
+      },
+      "methods": [
+        {
+          "selector": "StarfallUITests/WorldJourneyInteractionTests/testExtraLargeTextRetainedMapKeepsMarkersAndActionsReachable",
+          "seconds": 105.442
+        },
+        {
+          "selector": "StarfallUITests/WorldJourneyInteractionTests/testMapAndPlacesGoalsPreserveCurrentStoryOnCancelAndContinue",
+          "seconds": 117.947
+        },
+        {
+          "selector": "StarfallAppTests/SkyDialogueTests/testCascadeEntryReplayAndHelpFollowTheSelectedSavedRevision",
+          "seconds": 0.006
+        },
+        {
+          "selector": "StarfallAppTests/SkyDialogueTests/testTypedInterfaceInventoryAndTemplatesRejectMissingExtraAndInjectedValues",
+          "seconds": 0.007
+        },
+        {
+          "selector": "StarfallAppTests/SkyFlowStateTests/testBrowsingAndCancelingEveryReplacementPreservesCommittedSave",
+          "seconds": 0.029
+        },
+        {
+          "selector": "StarfallAppTests/SkyFlowStateTests/testEntryObjectiveDescribesPendingChoiceInsteadOfRetainedRound",
+          "seconds": 0.0
+        },
+        {
+          "selector": "StarfallAppTests/SkyFlowStateTests/testWorldMapGoalsExcludeUnrelatedEndedAndAbsentRoundProgress",
+          "seconds": 0.008
+        },
+        {
+          "selector": "StarfallAppTests/SkyFlowStateTests/testWorldMapGoalsMakeNoPlayablePromiseForLockedOrUnbuiltPlaces",
+          "seconds": 0.001
+        },
+        {
+          "selector": "StarfallAppTests/SkyFlowStateTests/testWorldMapNewVisitGoalsUseEveryCurrentReadyDefinition",
+          "seconds": 0.001
+        },
+        {
+          "selector": "StarfallAppTests/SkyFlowStateTests/testWorldMapRetainedGoalsKeepHistoricalAndCurrentPointScales",
+          "seconds": 0.008
+        }
+      ]
+    },
+    "tablet": {
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "255E141F-D4D6-45DA-89FF-51436BF1BBA7",
+              "deviceName": "Starfall Factory Goals iPad",
+              "modelName": "iPad Pro 11-inch (M5)",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "passedTests": 1,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "Starfall \u00b7 Built with macOS 27.0.1",
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "finishTime": 1792723962.709,
+        "passedTests": 1,
+        "result": "Passed",
+        "runtimeWarnings": [],
+        "skippedTests": 0,
+        "startTime": 1792723895.104,
+        "statistics": [],
+        "testFailures": [],
+        "title": "Test - Starfall",
+        "topInsights": [],
+        "totalTestCount": 1
+      },
+      "methods": [
+        {
+          "selector": "StarfallUITests/WorldJourneyInteractionTests/testLargestTextPlacesGoalsKeepHistoricalObjectiveOnContinue",
+          "seconds": 56.899
+        }
+      ]
+    }
+  },
+  "stages": [
+    {
+      "stage": "core-tests",
+      "startedUTC": "2026-10-23T02:40:31.585421+00:00",
+      "elapsedSeconds": 32.697,
+      "limitSeconds": 240.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "boot-owned-phone",
+      "startedUTC": "2026-10-23T02:41:08.316722+00:00",
+      "elapsedSeconds": 0.49,
+      "limitSeconds": 60.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "owned-phone-ready",
+      "startedUTC": "2026-10-23T02:41:38.103679+00:00",
+      "elapsedSeconds": 0.621,
+      "limitSeconds": 90.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "debug-test-products",
+      "startedUTC": "2026-10-23T02:45:09.278011+00:00",
+      "elapsedSeconds": 37.563,
+      "limitSeconds": 300.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "phone-goals-tests",
+      "startedUTC": "2026-10-23T02:46:14.670371+00:00",
+      "elapsedSeconds": 234.996,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "shutdown-owned-phone",
+      "startedUTC": "2026-10-23T02:50:47.895355+00:00",
+      "elapsedSeconds": 3.754,
+      "limitSeconds": 60.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "boot-owned-tablet",
+      "startedUTC": "2026-10-23T02:51:05.978670+00:00",
+      "elapsedSeconds": 0.695,
+      "limitSeconds": 60.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "owned-tablet-ready",
+      "startedUTC": "2026-10-23T02:51:20.190524+00:00",
+      "elapsedSeconds": 0.376,
+      "limitSeconds": 90.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "tablet-historical-goals",
+      "startedUTC": "2026-10-23T02:51:33.688510+00:00",
+      "elapsedSeconds": 69.175,
+      "limitSeconds": 300.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "shutdown-owned-tablet",
+      "startedUTC": "2026-10-23T02:53:45.184337+00:00",
+      "elapsedSeconds": 0.577,
+      "limitSeconds": 60.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "release-build",
+      "startedUTC": "2026-10-23T02:54:15.216779+00:00",
+      "elapsedSeconds": 35.154,
+      "limitSeconds": 300.0,
+      "exitCode": 0,
+      "error": null
+    }
+  ],
+  "commands": {
+    "core": "swift test --scratch-path /private/tmp/starfall-map-goals-20261023/swift-build --jobs 2",
+    "phone": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination id=64231AFE-4CDB-4B5A-B6D5-70CD7CEED324 -derivedDataPath /private/tmp/starfall-map-goals-20261023/dd -resultBundlePath /private/tmp/starfall-map-goals-20261023/phone-goals.xcresult -parallel-testing-enabled NO -maximum-concurrent-test-simulator-destinations 1 -collect-test-diagnostics never \"-only-testing:StarfallAppTests/SkyFlowStateTests/testWorldMapNewVisitGoalsUseEveryCurrentReadyDefinition\" \"-only-testing:StarfallAppTests/SkyFlowStateTests/testWorldMapRetainedGoalsKeepHistoricalAndCurrentPointScales\" \"-only-testing:StarfallAppTests/SkyFlowStateTests/testWorldMapGoalsExcludeUnrelatedEndedAndAbsentRoundProgress\" \"-only-testing:StarfallAppTests/SkyFlowStateTests/testWorldMapGoalsMakeNoPlayablePromiseForLockedOrUnbuiltPlaces\" \"-only-testing:StarfallAppTests/SkyFlowStateTests/testBrowsingAndCancelingEveryReplacementPreservesCommittedSave\" \"-only-testing:StarfallAppTests/SkyFlowStateTests/testEntryObjectiveDescribesPendingChoiceInsteadOfRetainedRound\" \"-only-testing:StarfallAppTests/SkyDialogueTests/testTypedInterfaceInventoryAndTemplatesRejectMissingExtraAndInjectedValues\" \"-only-testing:StarfallAppTests/SkyDialogueTests/testCascadeEntryReplayAndHelpFollowTheSelectedSavedRevision\" \"-only-testing:StarfallUITests/WorldJourneyInteractionTests/testMapAndPlacesGoalsPreserveCurrentStoryOnCancelAndContinue\" \"-only-testing:StarfallUITests/WorldJourneyInteractionTests/testExtraLargeTextRetainedMapKeepsMarkersAndActionsReachable\" test-without-building ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGNING_ALLOWED=NO",
+    "tablet": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination id=255E141F-D4D6-45DA-89FF-51436BF1BBA7 -derivedDataPath /private/tmp/starfall-map-goals-20261023/dd -resultBundlePath /private/tmp/starfall-map-goals-20261023/tablet-goals.xcresult -parallel-testing-enabled NO -maximum-concurrent-test-simulator-destinations 1 -collect-test-diagnostics never \"-only-testing:StarfallUITests/WorldJourneyInteractionTests/testLargestTextPlacesGoalsKeepHistoricalObjectiveOnContinue\" test-without-building ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGNING_ALLOWED=NO",
+    "debug": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination id=64231AFE-4CDB-4B5A-B6D5-70CD7CEED324 -derivedDataPath /private/tmp/starfall-map-goals-20261023/dd -parallel-testing-enabled NO -maximum-concurrent-test-simulator-destinations 1 -jobs 2 build-for-testing ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGNING_ALLOWED=NO",
+    "release": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Release -destination \"generic/platform=iOS Simulator\" -derivedDataPath /private/tmp/starfall-map-goals-20261023/release-dd -jobs 2 build ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGNING_ALLOWED=NO"
+  },
+  "catalogue": {
+    "Debug": {
+      "sourceSHA256": "9176bda0ac065ab18c5610e11a012662fb8b6dd8de5d559056f1e0fd7225b3bc",
+      "bundleSHA256": "9176bda0ac065ab18c5610e11a012662fb8b6dd8de5d559056f1e0fd7225b3bc",
+      "equal": true,
+      "typedKeyCount": 449,
+      "bundlePath": "Starfall.app/observatory-dialogue.json"
+    },
+    "Release": {
+      "sourceSHA256": "9176bda0ac065ab18c5610e11a012662fb8b6dd8de5d559056f1e0fd7225b3bc",
+      "bundleSHA256": "9176bda0ac065ab18c5610e11a012662fb8b6dd8de5d559056f1e0fd7225b3bc",
+      "equal": true,
+      "typedKeyCount": 449,
+      "bundlePath": "Starfall.app/observatory-dialogue.json"
+    }
+  },
+  "sourceMembership": "All six modified Swift files retain existing source membership; Debug/Release compile and selected method counts verify it. No new target/project entry.",
+  "preparationNotes": [
+    "Initial resource inspection assumed a DialogueScripts subfolder. The actual individual Xcode resource and runtime loader use bundle root; inspecting those owners established the correct path, whose hashes match in both configurations. This was an inspection-path correction, not an app/build/test failure.",
+    "Local link checking found a pre-existing obsolete Lantern section anchor in the touched visual index; it now points to the actual Visual and motion evidence section. All958 targets then pass."
+  ],
+  "documentation": {
+    "localTargetsChecked": 958,
+    "markdownFiles": 9,
+    "renderedMarkdownInspected": false,
+    "checks": "hygiene and staged diff at integration"
+  }
+}

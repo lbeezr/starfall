@@ -87,6 +87,8 @@ No framework replacement, dependency addition, broad Swift migration or gameplay
 
 ## DRY and modularity
 
+`UITests/WorldJourneyInteractionTests.swift` reaches 1,125 lines with the two Map/Places goal journeys. Retain its shared private reveal/identity helpers for this bounded feature. At the next journey-test expansion, extract focused map/navigation test support and separate those cases from Tutorial/Story progression, preserving all assertions, source-counted methods and explicit target membership; avoid arbitrary line-based splitting.
+
 Use the DRY, dependency-boundary and roughly 1,200-line review rules in [AGENTS.md](../AGENTS.md) during each change. Extract around a responsibility with a clear owner and inputs, not a line-number range. A separate file alone does not decouple code: the extracted component should not reach back into unrelated mutable state. Introduce a protocol where substitution or an existing test boundary needs one; a focused value type or concrete helper is often sufficient. Shared behavior should have one owner without forcing unrelated features into a generic framework.
 
 Current app Swift files are below the size trigger. Rendering and native hit/accessibility cells already share `LandingGeometry`; duplicated mapping is not active debt. Dialogue selection, input sessions and presentation reservations now have focused owners. Review their actual dependencies before another extraction.

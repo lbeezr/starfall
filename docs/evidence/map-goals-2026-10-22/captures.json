@@ -1,0 +1,64 @@
+{
+  "sourceSnapshot": "07d5cea32c27",
+  "runtimeFingerprint": "dev.c9772c178b",
+  "simulatorBuildID": "dev.local",
+  "status": "Current for inspected selected Map/Places goal cards; not all map states or device acceptance",
+  "captures": [
+    {
+      "file": "dev-ae772448-wip-07d5cea32c27__world-map-retained__iphone-17e__default-text.jpg",
+      "sha256": "5aeece878ee314e0a10418bdd4da7cb5f1205390af912084dcdbf08c15643c62",
+      "bytes": 693673,
+      "sourceLabel": "world-goal-current-map-default",
+      "sourcePNG": "1BA71B08-B532-47AA-85B8-77648F467D3A.png",
+      "sourcePNGsha256": "8ea4d7efadb3efe16c0cd66ac89ab0e90f007de01c94e1e0e744938a053d5550",
+      "pixelWidth": 1170,
+      "pixelHeight": 2532,
+      "device": "iphone-17e",
+      "variant": "default-text",
+      "inspectedOriginal": true,
+      "conversion": "sips JPEG quality80; original dimensions retained"
+    },
+    {
+      "file": "dev-ae772448-wip-07d5cea32c27__places-retained__iphone-17e__default-text.jpg",
+      "sha256": "4c11b4ef4b35e94a83b63c53aafa495aeb1164b4c38fe8769f705d2a91be162e",
+      "bytes": 435903,
+      "sourceLabel": "world-goal-current-places-default",
+      "sourcePNG": "CEF98717-249E-4BAF-B34B-1342F94ABA99.png",
+      "sourcePNGsha256": "eaf4d02304bdf803c40b244ca03673158826b4ab26a2e64821fe7595d957e67e",
+      "pixelWidth": 1170,
+      "pixelHeight": 2532,
+      "device": "iphone-17e",
+      "variant": "default-text",
+      "inspectedOriginal": true,
+      "conversion": "sips JPEG quality80; original dimensions retained"
+    },
+    {
+      "file": "dev-ae772448-wip-07d5cea32c27__world-map-retained__iphone-17e__extra-large-text.jpg",
+      "sha256": "a63ee4e4633a9bd39c8dd6e1d05c2c7bb47c520d2580fdc9c23972e7a5151df4",
+      "bytes": 676535,
+      "sourceLabel": "world-extra-large-retained-card",
+      "sourcePNG": "07521447-8629-4B1B-88BA-FC34DB5E8A41.png",
+      "sourcePNGsha256": "794297f3a93d974e46eb36d5c319b20cd97817b17ec84beb1977453dbe02956b",
+      "pixelWidth": 1170,
+      "pixelHeight": 2532,
+      "device": "iphone-17e",
+      "variant": "extra-large-text",
+      "inspectedOriginal": true,
+      "conversion": "sips JPEG quality80; original dimensions retained"
+    },
+    {
+      "file": "dev-ae772448-wip-07d5cea32c27__places-historical__ipad-pro11-m5__ax3xl.jpg",
+      "sha256": "589e0c675d98af1ea8bacc19226eddbc57258ec7c107241844834db50a3ecdb3",
+      "bytes": 693944,
+      "sourceLabel": "world-goal-historical-largest",
+      "sourcePNG": "23A548FD-3A2E-4556-9A28-FFC5FE1C10ED.png",
+      "sourcePNGsha256": "3e48760fab3ff5ce347ecd965d57c4815fbfe71656f8e74bae771cb6ede03213",
+      "pixelWidth": 1668,
+      "pixelHeight": 2420,
+      "device": "ipad-pro11-m5",
+      "variant": "ax3xl",
+      "inspectedOriginal": true,
+      "conversion": "sips JPEG quality80; original dimensions retained"
+    }
+  ]
+}

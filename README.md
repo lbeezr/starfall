@@ -1,5 +1,7 @@
 # Starfall
 
+**Exact Map/Places goals — October 22:** Destination cards show the new-visit objective separately from the matching saved round's exact progress. Historical 9/18 and current point targets keep their own meaning; cancellation preserves the board. [Development checks and native cards](docs/evidence/map-goals-2026-10-22/README.md) cover default/XL phone and largest-text tablet.
+
 **Rising Story-chain audio — October 22:** Committed recipe/cascade phases now form a short rising phrase, capped at phase three. Two original local cues preserve one voice, mute/cancellation and historical sounds. [Development evidence](docs/evidence/chain-audio-2026-10-22/README.md) separates native playback/interaction checks from unmeasured physical listening and enjoyment.
 
 **First-minute guidance — queue goal 1:** Current Story now keeps its destination, saved objective and automatic-pattern instructions when play starts or resumes. [Source-bound checks](docs/evidence/game-goal-01-first-minute-2026-10-22/README.md) cover current four-star lines, retained/manual controls, phone/tablet reading and real clear/restore behavior. The remaining [ten-goal queue](https://github.com/lbeezr/starfall/issues/240) proceeds through separate main merges; human learning remains unmeasured.

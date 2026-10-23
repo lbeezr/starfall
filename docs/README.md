@@ -1,5 +1,7 @@
 # Documentation map
 
+[Exact Map/Places objectives](evidence/map-goals-2026-10-22/README.md) distinguish a new visit's current target from exact saved progress, with real navigation/save preservation and inspected default/XL phone plus largest-text tablet cards.
+
 [Rising Story-chain audio](evidence/chain-audio-2026-10-22/README.md) adds two reproducible original accents selected from committed phase depth, with bounded variation, native playback and preserved historical sounds. Physical listening remains unmeasured.
 
 [Inspiration-led roadmap](ROADMAP.md) sequences a compelling first repair, seven distinct challenges, the full twelve-place journey and handheld release quality. It links the existing ten-goal queue and design work for Kite, optional mastery and Bell Choir; future modes and nearby play remain proposals. The [previous roadmap snapshot](ROADMAP_HISTORY_2026-10-22.md) preserves source-bound integration history.

@@ -215,6 +215,143 @@ final class WorldJourneyInteractionTests: XCTestCase {
         XCTAssertEqual(app.otherElements["experiment.board"].value as? String, board)
     }
 
+    @MainActor private func assertWorldGoalCard(_ app: XCUIApplication, target: Int,
+                                                saved: String?, captureName: String) {
+        let objective = app.staticTexts["world.newVisitGoal"]
+        XCTAssertTrue(objective.waitForExistence(timeout: 5))
+        XCTAssertEqual(objective.label, "New visit objective: \(target.formatted()) starlight.")
+        var labels = [objective]
+        if let saved {
+            let progress = app.staticTexts["world.savedProgress"]
+            XCTAssertTrue(progress.waitForExistence(timeout: 5))
+            XCTAssertEqual(progress.label, saved)
+            labels.insert(progress, at: 0)
+        } else {
+            XCTAssertFalse(app.staticTexts["world.savedProgress"].exists)
+            XCTAssertFalse(app.buttons["world.resume"].exists)
+        }
+        let actions = saved == nil ? [app.buttons["world.visit"]]
+            : [app.buttons["world.resume"], app.buttons["world.visit"]]
+        let scroll = app.scrollViews.containing(.staticText, identifier: objective.identifier)
+            .allElementsBoundByIndex.min { $0.frame.width * $0.frame.height < $1.frame.width * $1.frame.height }
+        let viewport = scroll.map { app.frame.intersection($0.frame) } ?? app.frame
+        let bounds = (labels + actions).map(\.frame).reduce(CGRect.null) { $0.union($1) }
+        if bounds.height <= viewport.height {
+            app.revealSkyControls(labels + actions)
+            for label in labels {
+                XCTAssertTrue(label.isHittable)
+                XCTAssertTrue(viewport.contains(label.frame), "The complete goal line fits the native reading area")
+            }
+            capture(captureName, app)
+        } else {
+            // The same test can run on a largest-text phone: read complete lines
+            // serially through Places rather than shrinking text to fit a card.
+            for label in labels {
+                app.revealSkyControls([label])
+                XCTAssertTrue(label.isHittable)
+                XCTAssertTrue(viewport.contains(label.frame))
+                capture(captureName + "-" + label.identifier, app)
+            }
+            app.revealSkyControls(actions)
+            capture(captureName + "-actions", app)
+        }
+        for action in actions {
+            XCTAssertTrue(action.isEnabled && action.isHittable)
+            XCTAssertGreaterThanOrEqual(action.frame.height, 44)
+            XCTAssertGreaterThanOrEqual(action.frame.width, 44)
+        }
+    }
+
+    @MainActor func testMapAndPlacesGoalsPreserveCurrentStoryOnCancelAndContinue() throws {
+        executionTimeAllowance = 240
+        continueAfterFailure = false
+        XCUIDevice.shared.orientation = .portrait
+        let app = XCUIApplication()
+        app.launchArguments = ["--starfalls-reset", "--sky-flow-review", "--dialogue-review",
+                               "--world-legacy-review", "-calmEffects", "NO"]
+        app.launch(); defer { app.terminate(); XCUIDevice.shared.orientation = .portrait }
+        XCTAssertTrue(app.buttons["sky.worldMap"].waitForExistence(timeout: 10))
+        tap("sky.worldMap", app)
+        XCTAssertTrue(app.buttons["world.node.firstLight"].waitForExistence(timeout: 5))
+        assertWorldGoalCard(app, target: 150_000, saved: nil, captureName: "world-goal-ready-map-default")
+        tap("world.visit", app); tap("sky.begin", app)
+        tap("experiment.settings", app); tap("experiment.pause", app)
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"),
+                                                object: app.buttons["experiment.next"]).wait(timeout: 5))
+        drag(app, from: (1,1), to: (1,2), drawing: false)
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "15,000 of 150,000 starlight collected"),
+                                                object: app.staticTexts["experiment.score"]).wait(timeout: 5))
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"),
+                                                object: app.buttons["experiment.next"]).wait(timeout: 5))
+        let board = app.otherElements["experiment.board"]
+        let summary = board.value as? String
+        let cells = try visibleIdentities(board, prefix: "experiment.cell.")
+        XCTAssertNotNil(summary); XCTAssertEqual(cells.count, 49)
+        tap("experiment.settings", app); tap("sky.worldMap", app)
+        let saved = "Saved round: 15,000 of 150,000 starlight."
+        assertWorldGoalCard(app, target: 150_000, saved: saved, captureName: "world-goal-current-map-default")
+        tap("world.list", app)
+        assertWorldGoalCard(app, target: 150_000, saved: saved, captureName: "world-goal-current-places-default")
+        tap("world.place.ribbonCrossing", app)
+        assertWorldGoalCard(app, target: 220_000, saved: nil, captureName: "world-goal-other-ready-default")
+        tap("world.visit", app)
+        XCTAssertTrue(app.buttons["sky.begin"].waitForExistence(timeout: 5))
+        XCTAssertEqual(app.staticTexts["sky.title"].label, "Ribbon Crossing")
+        tap("sky.home", app)
+        XCTAssertEqual(app.staticTexts["world.selection"].label, "Ribbon Crossing")
+        XCTAssertFalse(app.staticTexts["world.savedProgress"].exists)
+        tap("world.place.bellChoir", app)
+        XCTAssertEqual(app.staticTexts["world.status"].label, "Not yet available")
+        XCTAssertFalse(app.staticTexts["world.newVisitGoal"].exists)
+        XCTAssertFalse(app.staticTexts["world.savedProgress"].exists)
+        XCTAssertFalse(app.buttons["world.visit"].exists)
+        tap("world.place.firstLight", app)
+        tap("world.visit", app)
+        XCTAssertTrue(app.buttons["sky.begin"].waitForExistence(timeout: 5))
+        tap("sky.preferences", app); tap("experiment.done", app)
+        tap("sky.home", app)
+        assertWorldGoalCard(app, target: 150_000, saved: saved, captureName: "world-goal-current-after-cancel-default")
+        tap("world.resume", app)
+        XCTAssertTrue(app.buttons["experiment.next"].waitForExistence(timeout: 5))
+        XCTAssertEqual(board.value as? String, summary)
+        XCTAssertEqual(try visibleIdentities(board, prefix: "experiment.cell."), cells)
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, "15,000 of 150,000 starlight collected")
+        XCTAssertTrue(app.buttons["experiment.next"].isEnabled)
+    }
+
+    @MainActor func testLargestTextPlacesGoalsKeepHistoricalObjectiveOnContinue() throws {
+        executionTimeAllowance = 180
+        continueAfterFailure = false
+        XCUIDevice.shared.orientation = .portrait
+        let app = XCUIApplication()
+        app.launchArguments = ["--starfalls-reset", "--dialogue-review", "--lantern-restoration-review=9",
+                               "-calmEffects", "NO", "-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"]
+        app.launch(); defer { app.terminate(); XCUIDevice.shared.orientation = .portrait }
+        XCTAssertTrue(app.buttons["experiment.next"].waitForExistence(timeout: 10))
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, "9 of 18 starlight collected")
+        let board = app.otherElements["experiment.board"]
+        let summary = board.value as? String
+        let cells = try visibleIdentities(board, prefix: "experiment.cell.")
+        XCTAssertNotNil(summary); XCTAssertEqual(cells.count, 49)
+        tap("experiment.settings", app); tap("sky.worldMap", app)
+        XCTAssertTrue(app.buttons["world.place.firstLight"].waitForExistence(timeout: 5))
+        XCTAssertFalse(app.buttons["world.list"].exists, "Largest text uses the equivalent native Places surface")
+        let saved = "Saved round: 9 of 18 starlight."
+        assertWorldGoalCard(app, target: 150_000, saved: saved, captureName: "world-goal-historical-largest")
+        tap("world.visit", app)
+        XCTAssertTrue(app.buttons["sky.begin"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["sky.subtitle"].label.contains("150,000"),
+                      "Start again stages the current new visit, distinct from the retained 18-light round")
+        tap("sky.home", app)
+        assertWorldGoalCard(app, target: 150_000, saved: saved, captureName: "world-goal-historical-after-cancel-largest")
+        tap("world.resume", app)
+        XCTAssertTrue(app.buttons["experiment.next"].waitForExistence(timeout: 5))
+        XCTAssertEqual(board.value as? String, summary)
+        XCTAssertEqual(try visibleIdentities(board, prefix: "experiment.cell."), cells)
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, "9 of 18 starlight collected")
+        XCTAssertTrue(app.buttons["experiment.next"].isEnabled)
+    }
+
     @MainActor func testExtraLargeTextRetainedMapKeepsMarkersAndActionsReachable() {
         continueAfterFailure = false
         XCUIDevice.shared.orientation = .portrait

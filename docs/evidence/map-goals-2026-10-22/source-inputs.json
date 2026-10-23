@@ -1,0 +1,38 @@
+{
+  "baseCommit": "ae7724487341b7c5596ce3f57c5d220f99d3324e",
+  "runtimeFingerprint": "dev.c9772c178b",
+  "simulatorBuildLabel": "dev.local",
+  "snapshot": "07d5cea32c27",
+  "changedInputs": {
+    "App/DialogueScripts/observatory-dialogue.json": {
+      "sha256": "9176bda0ac065ab18c5610e11a012662fb8b6dd8de5d559056f1e0fd7225b3bc",
+      "bytes": 67964
+    },
+    "App/FallingSkyView.swift": {
+      "sha256": "be8b0c7d127c7ec2747bf1b041ace0eefad4aa7c45708967fe4edf7ba627a476",
+      "bytes": 45070
+    },
+    "App/SkyCopy.swift": {
+      "sha256": "c4d7a6bde7d71599a2cdad0aed47b5483dd52467460db303369c2e4e60c106a6",
+      "bytes": 24195
+    },
+    "App/SkyFlowSnapshots.swift": {
+      "sha256": "5981c4b808c4d8602ce6b1adbb24bae53d3560812ed027762eb78bc31b119955",
+      "bytes": 4577
+    },
+    "App/WorldMapView.swift": {
+      "sha256": "bddd32603c137da0c29bb9474ec092aae4a12cae6e21066453e12dd3f8ac7517",
+      "bytes": 17257
+    },
+    "AppTests/SkyFlowStateTests.swift": {
+      "sha256": "8b016e3d9c06aec2e9688e1e93ebf5bf12a933be9587dbf5e02a25333250ed79",
+      "bytes": 33340
+    },
+    "UITests/WorldJourneyInteractionTests.swift": {
+      "sha256": "17bab4b563b567073c9392f12dd464e64f8899527ec94617efe06a586904ca77",
+      "bytes": 72674
+    }
+  },
+  "integrationBaseCommit": "daf00b93013345b28914393bf0e20c3788519ec7",
+  "integrationNote": "PR264 changed documentation/evidence only; app, Core, tests and seven frozen inputs remain byte-identical to native-tested source."
+}

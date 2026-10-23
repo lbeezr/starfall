@@ -1224,6 +1224,8 @@
     "worldChoose": "Choose a place",
     "worldExplore": "Scroll to explore",
     "worldContinue": "Continue",
+    "worldNewVisitGoal": "New visit objective: {target} starlight.",
+    "worldSavedProgress": "Saved round: {score} of {target} starlight.",
     "worldRestart": "Start again",
     "worldMap": "Map",
     "worldPlaces": "Places",
