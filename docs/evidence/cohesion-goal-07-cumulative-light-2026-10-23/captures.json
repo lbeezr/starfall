@@ -1,0 +1,282 @@
+[
+  {
+    "file": "dev-365ca5e5__lantern-50__ipad-mini-a17pro__portrait-before.jpg",
+    "source": "365ca5e58917ec23db07081c064bced1e39b4f8f",
+    "buildPlistLabel": "dev.local",
+    "variant": "normal effects; real5-to9clear;17 survivors; portrait",
+    "evidence": "native Simulator screenshot",
+    "sourcePNG": "/private/tmp/starfall-cohesion-20261023/goal07-before-tablet-attachments/483CE65A-E7DB-43BD-96EB-A52A9C645CC9.png",
+    "sourceSHA256": "6bcf4108b2a31d2409933d324326e0d274d73007dbf49c62500f78756247a272",
+    "sha256": "412c2d00aa2929cc438c1f5df662cb1277ed198b80db098d943e6f55b60cb053",
+    "pixels": [
+      1488,
+      2266
+    ],
+    "processing": "Native orientation applied from screenshot metadata; JPEG export only, no resize or crop.",
+    "rawStoredPixels": [
+      1488,
+      2266
+    ],
+    "rawOrientationTag": 1
+  },
+  {
+    "file": "dev-365ca5e5__lantern-50__ipad-mini-a17pro__landscape-before.jpg",
+    "source": "365ca5e58917ec23db07081c064bced1e39b4f8f",
+    "buildPlistLabel": "dev.local",
+    "variant": "normal effects; real5-to9clear;17 survivors; landscape",
+    "evidence": "native Simulator screenshot",
+    "sourcePNG": "/private/tmp/starfall-cohesion-20261023/goal07-before-tablet-attachments/0C73147B-AC49-4B6D-9A4F-FCA81EEB3AF5.png",
+    "sourceSHA256": "1c22615a4c81b1e9c0819e89ae05e790133e2b8412757b0f4666cc0cb676cf74",
+    "sha256": "3c6c82373e163c09a80f005a2b44e233c7a40a338b63214ca9905cc4d1412015",
+    "pixels": [
+      2266,
+      1488
+    ],
+    "processing": "Native orientation applied from screenshot metadata; JPEG export only, no resize or crop.",
+    "rawStoredPixels": [
+      1488,
+      2266
+    ],
+    "rawOrientationTag": 8
+  },
+  {
+    "file": "dev-76b52f23__lantern-50__ipad-mini-a17pro__portrait-after.jpg",
+    "source": "76b52f23c25b2db965a116a553283de54ebe564a",
+    "buildPlistLabel": "dev.local",
+    "variant": "same native scenario;17 survivors; portrait",
+    "evidence": "native Simulator screenshot",
+    "sourcePNG": "/private/tmp/starfall-cohesion-20261023/goal07-after-transition-tablet-attachments/6413008A-B279-4E27-A308-822A4384A0EE.png",
+    "sourceSHA256": "2f787cab8eab8f0d55148e2872fd8d97076749094083bb6e94a675323ac6eccb",
+    "sha256": "2420c0c02842f41e5cbdafb26cf43bf8da0e22a1641d071238760d619853145f",
+    "pixels": [
+      1488,
+      2266
+    ],
+    "processing": "Native orientation applied from screenshot metadata; JPEG export only, no resize or crop.",
+    "rawStoredPixels": [
+      1488,
+      2266
+    ],
+    "rawOrientationTag": 1
+  },
+  {
+    "file": "dev-76b52f23__lantern-50__ipad-mini-a17pro__landscape-after.jpg",
+    "source": "76b52f23c25b2db965a116a553283de54ebe564a",
+    "buildPlistLabel": "dev.local",
+    "variant": "same native scenario;17 survivors; landscape",
+    "evidence": "native Simulator screenshot",
+    "sourcePNG": "/private/tmp/starfall-cohesion-20261023/goal07-after-transition-tablet-attachments/6BDEA181-ABE2-4A6E-889A-F37394DE55CE.png",
+    "sourceSHA256": "0d42779077379eb620d80d9eeb310751efe107201369ed24bab4c43206f15195",
+    "sha256": "56b0059f923642bd7ebeca9def75fd3db481f79428aaff98271ad30019911db6",
+    "pixels": [
+      2266,
+      1488
+    ],
+    "processing": "Native orientation applied from screenshot metadata; JPEG export only, no resize or crop.",
+    "rawStoredPixels": [
+      1488,
+      2266
+    ],
+    "rawOrientationTag": 8
+  },
+  {
+    "file": "dev-76b52f23__lantern-50__ipad-mini-a17pro__portrait-active49.jpg",
+    "source": "76b52f23c25b2db965a116a553283de54ebe564a",
+    "buildPlistLabel": "dev.local",
+    "variant": "historical9/18 reset fixture;49 actual stars;normal effects enabled;paused",
+    "evidence": "native Simulator screenshot",
+    "sourcePNG": "/private/tmp/starfall-cohesion-20261023/goal07-tablet-milestones-attachments/DE9B7970-BEC0-4025-977D-1838E13E4004.png",
+    "sourceSHA256": "c7b823ef9984c056875f43b1c77936beb6a8a7344735ca71e135feef8907351c",
+    "sha256": "9a205b8feb1d933f48fdd42b075b12766677111febfc4000f18f11a7bf93838e",
+    "pixels": [
+      1488,
+      2266
+    ],
+    "processing": "Native orientation applied from screenshot metadata; JPEG export only, no resize or crop.",
+    "rawStoredPixels": [
+      1488,
+      2266
+    ],
+    "rawOrientationTag": 1
+  },
+  {
+    "file": "dev-76b52f23__lantern-50__ipad-mini-a17pro__landscape-active49.jpg",
+    "source": "76b52f23c25b2db965a116a553283de54ebe564a",
+    "buildPlistLabel": "dev.local",
+    "variant": "historical9/18 reset fixture;49 actual stars;normal effects enabled;paused",
+    "evidence": "native Simulator screenshot",
+    "sourcePNG": "/private/tmp/starfall-cohesion-20261023/goal07-tablet-milestones-attachments/BC4CECCE-A66D-4627-9F58-B8DDA9A13795.png",
+    "sourceSHA256": "8c736b25e50806f8a29416fe9263e8cda24f6a760bb5253b3c6cb4a8b36e56bf",
+    "sha256": "32d9ff496bad3b64bd8fff4b9ec648a368cc531464adf6abf96b6235af0ad8f8",
+    "pixels": [
+      2266,
+      1488
+    ],
+    "processing": "Native orientation applied from screenshot metadata; JPEG export only, no resize or crop.",
+    "rawStoredPixels": [
+      1488,
+      2266
+    ],
+    "rawOrientationTag": 8
+  },
+  {
+    "file": "dev-76b52f23__lantern-100__ipad-mini-a17pro__portrait-result.jpg",
+    "source": "76b52f23c25b2db965a116a553283de54ebe564a",
+    "buildPlistLabel": "dev.local",
+    "variant": "configured dense49 terminal fixture;dim withdrawn gameplay;not active-density evidence",
+    "evidence": "native Simulator screenshot",
+    "sourcePNG": "/private/tmp/starfall-cohesion-20261023/goal07-tablet-milestones-attachments/C185F3A2-A547-4D75-B391-5977DCB48F80.png",
+    "sourceSHA256": "687497c727c4e69b1b6f10b0b9eddce2411ced53bfceba0df5ba4870beade1c2",
+    "sha256": "c07a7bf47fcd0e0676240bf5005edcf436dfc55a29544d89565ce4fe3213d8da",
+    "pixels": [
+      1488,
+      2266
+    ],
+    "processing": "Native orientation applied from screenshot metadata; JPEG export only, no resize or crop.",
+    "rawStoredPixels": [
+      1488,
+      2266
+    ],
+    "rawOrientationTag": 1
+  },
+  {
+    "file": "dev-76b52f23__lantern-100__ipad-mini-a17pro__landscape-result.jpg",
+    "source": "76b52f23c25b2db965a116a553283de54ebe564a",
+    "buildPlistLabel": "dev.local",
+    "variant": "configured dense49 terminal fixture;dim withdrawn gameplay;not active-density evidence",
+    "evidence": "native Simulator screenshot",
+    "sourcePNG": "/private/tmp/starfall-cohesion-20261023/goal07-tablet-milestones-attachments/C2A3D9BB-B748-4DDF-9B7C-4EE404295BF8.png",
+    "sourceSHA256": "216078d00e846897a8586b05dfb62a7ce1032c1fdbb6dcb4dbae29e2fe9da540",
+    "sha256": "85804b7d91d25f70ccabfae6773fe9e0d0edcccd5a9890958fc7eb94d4ebe614",
+    "pixels": [
+      2266,
+      1488
+    ],
+    "processing": "Native orientation applied from screenshot metadata; JPEG export only, no resize or crop.",
+    "rawStoredPixels": [
+      1488,
+      2266
+    ],
+    "rawOrientationTag": 8
+  },
+  {
+    "file": "dev-365ca5e5__lantern-25-to-50__ipad-mini-a17pro__landscape-before.mp4",
+    "source": "365ca5e58917ec23db07081c064bced1e39b4f8f",
+    "buildPlistLabel": "dev.local",
+    "evidence": "native Simulator recording; normal effects; historical5-to9clear",
+    "rawMovie": "/private/tmp/starfall-cohesion-20261023/goal07-before-transition-tablet.mp4",
+    "rawSHA256": "10d106a35084d123afc4d338fa8fe2fc08d13f9790e6df5203f5949b77adaf2b",
+    "sha256": "95bd41bd5f57c1717d83e1b33e72995ad34cffda4044622fc920c7c2bf668101",
+    "processing": "AVFoundation normal-speed first5seconds, preset960x540 proportion-preserving export",
+    "captureReceipt": {
+      "testExit": 0,
+      "videoExit": 0,
+      "trigger": "enabled == 1 AND value CONTAINS \"4 toward a tap match\"",
+      "triggerElapsed": 44.015,
+      "recordingReadyElapsed": 44.286,
+      "elapsedSeconds": 73.083,
+      "movie": "/private/tmp/starfall-cohesion-20261023/goal07-before-transition-tablet.mp4",
+      "command": [
+        "xcodebuild",
+        "-testProductsPath",
+        "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c35297cacc07/test-products/build_sim_2026-10-23T16-26-12-006Z_pid51280_5f2f628b.xctestproducts",
+        "-destination",
+        "platform=iOS Simulator,id=E9575758-60A8-45C0-B2AB-91B73C8A8FDC",
+        "-collect-test-diagnostics",
+        "never",
+        "-parallel-testing-enabled",
+        "NO",
+        "-only-testing:StarfallUITests/LanternLandingInteractionTests/testTabletRotationKeepsRestorationAndNativeInput",
+        "-resultBundlePath",
+        "/private/tmp/starfall-cohesion-20261023/goal07-before-transition-tablet.xcresult",
+        "test-without-building"
+      ]
+    },
+    "inspectedRawFrameRequestsSeconds": [
+      0.3,
+      2.5,
+      3.5
+    ],
+    "limits": "Sampled frames include collection and whole-painting transition. Encoder ages differ; no continuous-smoothness or frame-rate claim."
+  },
+  {
+    "file": "dev-76b52f23__lantern-25-to-50__ipad-mini-a17pro__landscape-after.mp4",
+    "source": "76b52f23c25b2db965a116a553283de54ebe564a",
+    "buildPlistLabel": "dev.local",
+    "evidence": "native Simulator recording; normal effects; historical5-to9clear",
+    "rawMovie": "/private/tmp/starfall-cohesion-20261023/goal07-after-transition-tablet.mp4",
+    "rawSHA256": "c0ace3fb59581c3318bac9714272e9d7f1bc064697b211e21fdac6d6836f4df8",
+    "sha256": "5db855e9e4247bda2d9c5af29981e7c4f29319d6f9f7e704744faa058587f0a8",
+    "processing": "AVFoundation normal-speed first5seconds, preset960x540 proportion-preserving export",
+    "captureReceipt": {
+      "testExit": 0,
+      "videoExit": 0,
+      "trigger": "enabled == 1 AND value CONTAINS \"4 toward a tap match\"",
+      "triggerElapsed": 29.612,
+      "recordingReadyElapsed": 29.766,
+      "elapsedSeconds": 57.306,
+      "movie": "/private/tmp/starfall-cohesion-20261023/goal07-after-transition-tablet.mp4",
+      "command": [
+        "xcodebuild",
+        "-testProductsPath",
+        "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c35297cacc07/test-products/build_sim_2026-10-23T16-52-10-481Z_pid51280_fa7638cc.xctestproducts",
+        "-destination",
+        "platform=iOS Simulator,id=E9575758-60A8-45C0-B2AB-91B73C8A8FDC",
+        "-collect-test-diagnostics",
+        "never",
+        "-parallel-testing-enabled",
+        "NO",
+        "-only-testing:StarfallUITests/LanternLandingInteractionTests/testTabletRotationKeepsRestorationAndNativeInput",
+        "-resultBundlePath",
+        "/private/tmp/starfall-cohesion-20261023/goal07-after-transition-tablet.xcresult",
+        "test-without-building"
+      ]
+    },
+    "inspectedRawFrameRequestsSeconds": [
+      0.3,
+      2.5,
+      3.5
+    ],
+    "limits": "Sampled frames include collection and whole-painting transition. Encoder ages differ; no continuous-smoothness or frame-rate claim."
+  },
+  {
+    "file": "dev-76b52f23__lantern-25-to-50__ipad-mini-a17pro__portrait-after.mp4",
+    "source": "76b52f23c25b2db965a116a553283de54ebe564a",
+    "buildPlistLabel": "dev.local",
+    "evidence": "native Simulator recording; normal effects; historical5-to9clear",
+    "rawMovie": "/private/tmp/starfall-cohesion-20261023/goal07-after-portrait-transition.mp4",
+    "rawSHA256": "38bd476b6b53b0a592260cea5cb842c46d79c32f1830de528908116551ac472f",
+    "sha256": "e0e7604857cc6a945a8ce45b0ed829047d8e1c3e111f6187bb764c46099c98eb",
+    "processing": "AVFoundation normal-speed first5seconds, preset960x540 proportion-preserving export",
+    "captureReceipt": {
+      "testExit": 0,
+      "videoExit": 0,
+      "trigger": "enabled == 1 AND value CONTAINS \"4 toward a tap match\"",
+      "triggerElapsed": 22.213,
+      "recordingReadyElapsed": 22.37,
+      "elapsedSeconds": 72.951,
+      "movie": "/private/tmp/starfall-cohesion-20261023/goal07-after-portrait-transition.mp4",
+      "command": [
+        "xcodebuild",
+        "-testProductsPath",
+        "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c35297cacc07/test-products/build_sim_2026-10-23T16-52-10-481Z_pid51280_fa7638cc.xctestproducts",
+        "-destination",
+        "platform=iOS Simulator,id=E9575758-60A8-45C0-B2AB-91B73C8A8FDC",
+        "-collect-test-diagnostics",
+        "never",
+        "-parallel-testing-enabled",
+        "NO",
+        "-only-testing:StarfallUITests/LanternLandingInteractionTests/testClearRestorationSurvivesSettingsBackgroundRelaunchAndEntryCancellation",
+        "-resultBundlePath",
+        "/private/tmp/starfall-cohesion-20261023/goal07-after-portrait-transition.xcresult",
+        "test-without-building"
+      ]
+    },
+    "inspectedRawFrameRequestsSeconds": [
+      0.3,
+      2.5,
+      3.5
+    ],
+    "limits": "Sampled frames include collection and whole-painting transition. Encoder ages differ; no continuous-smoothness or frame-rate claim."
+  }
+]

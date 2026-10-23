@@ -1,5 +1,7 @@
 # Ship Lantern Landing in First Light
 
+**October 23 update:** The [cohesion record](../../evidence/cohesion-goal-07-cumulative-light-2026-10-23/README.md) supersedes this original delivery’s tablet fitting limitation and supplies actual49-star native coverage. The original source/delivery scope below remains historical; physical and RC acceptance remain separate.
+
 **Status:** Implemented, merged and delivered; development checks passed · **Owner:** Codex · **Updated:** 2026-10-19
 
 The approved overhead Lantern Landing board is implemented in the normal app's optional First Light challenge. Every committed clear restores the location; reaching the existing 18-starlight goal opens its lantern and completes the level. The user authorized implementation and phone delivery on October 19, then explicitly chose bespoke, consistent scenes for phone portrait, iPad portrait and iPad landscape. Wider views reveal other docks in the same zone. The user rejected the middle fade/cut line in the first native pass: the replacement renders continuous whole artwork.

@@ -82,13 +82,22 @@
       "family": "tabletPortrait",
       "milestone": 50,
       "asset": "App/Assets.xcassets/LanternLandingTabletPortrait050.imageset/scene.png",
-      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-4fd40083-bcd6-44f9-8580-ca070c91c15a.png",
-      "prompt": "tablet-prompts.json",
-      "sha256": "f490ed30cb54866d62927892783042884a961564956c1cf075ec96f51793369b",
+      "source": "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-a512865b-505e-4bc1-b8a3-a9236e277de8.png",
+      "prompt": "cohesion-2026-10-23/art-prompts.json",
+      "sha256": "0c0abdb28e07c4edde21f09dc95a3af6a5e960524cefa0e10cf1846a9b64c6fb",
       "pixels": [
         1086,
         1448
-      ]
+      ],
+      "previousSelection": {
+        "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-4fd40083-bcd6-44f9-8580-ca070c91c15a.png",
+        "prompt": "tablet-prompts.json",
+        "sha256": "f490ed30cb54866d62927892783042884a961564956c1cf075ec96f51793369b",
+        "pixels": [
+          1086,
+          1448
+        ]
+      }
     },
     {
       "family": "tabletPortrait",
@@ -142,13 +151,22 @@
       "family": "tabletLandscape",
       "milestone": 50,
       "asset": "App/Assets.xcassets/LanternLandingTabletLandscape050.imageset/scene.png",
-      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-efef5b7c-57f5-4d94-986d-0ccedec35b1e.png",
-      "prompt": "tablet-prompts.json",
-      "sha256": "6184fbbd24627dbd2c80cced2bda60337aced447d9ce1695a67d1c7b5c2bae43",
+      "source": "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-37c3235b-c91e-4795-a748-afa127ee7d35.png",
+      "prompt": "cohesion-2026-10-23/art-prompts.json",
+      "sha256": "a44ee4e2d5eea47e32d2f6d84bc755da41604581c2198b708f2d4cf6d86a333a",
       "pixels": [
         1448,
         1086
-      ]
+      ],
+      "previousSelection": {
+        "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-efef5b7c-57f5-4d94-986d-0ccedec35b1e.png",
+        "prompt": "tablet-prompts.json",
+        "sha256": "6184fbbd24627dbd2c80cced2bda60337aced447d9ce1695a67d1c7b5c2bae43",
+        "pixels": [
+          1448,
+          1086
+        ]
+      }
     },
     {
       "family": "tabletLandscape",
@@ -162,5 +180,13 @@
         1086
       ]
     }
-  ]
+  ],
+  "cohesion20261023": {
+    "status": "Tablet050 corrections development-verified; original delivery record remains historical",
+    "testedSource": "76b52f23c25b2db965a116a553283de54ebe564a",
+    "evidence": "../../evidence/cohesion-goal-07-cumulative-light-2026-10-23/README.md",
+    "provenance": "cohesion-2026-10-23/art-prompts.json",
+    "scope": "Only the existing upper main-dock fitting emission in each tablet050 painting. Other13 paintings and existing registration unchanged.",
+    "finalIntegratedSource": "3b6838c1dfcc873c0e9c06d19aaf5488aad736b6"
+  }
 }
