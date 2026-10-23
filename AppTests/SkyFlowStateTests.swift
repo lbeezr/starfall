@@ -493,7 +493,7 @@ final class SkyFlowStateTests: XCTestCase {
         }
         let targets: [(StarfallChallenge, Int)] = [
             (.firstLight, 150_000), (.ribbonCrossing, 220_000), (.kiteHarbor, 17_000),
-            (.seedMoon, 11_000), (.silverPools, 18), (.frostfruitOrchard, 18), (.sunwheelMill, 18)
+            (.seedMoon, 11_000), (.silverPools, 12_000), (.frostfruitOrchard, 18), (.sunwheelMill, 18)
         ]
         for (challenge, target) in targets {
             journey.select(try XCTUnwrap(WorldLocation(rawValue: challenge.rawValue)))
@@ -710,6 +710,80 @@ final class SkyFlowStateTests: XCTestCase {
         XCTAssertEqual(journey.selected, .silverPools)
         let completed = journey
         journey.record(seed)
+        XCTAssertEqual(journey, completed, "A restored winning round cannot duplicate progression")
+    }
+
+    @MainActor func testSilverPreviewAndCancelKeepHistoricalRoundUntilNewBegin() throws {
+        let (_, _, _, defaults) = make()
+        let historical = ObservatoryReviewFixture.game(dense: false, score: 9, challenge: .silverPools)
+        try SkySaveArchive.save(historical, to: defaults)
+        let presenter = FallingSkyRecorder(), clock = ManualRainClock()
+        let store = FallingSkyStore(defaults: defaults, arguments: [], presenter: presenter, clock: clock)
+        let archive = try XCTUnwrap(defaults.data(forKey: SkySaveArchive.key))
+        let journey = store.journey.journey
+        let worldBytes = defaults.data(forKey: WorldJourneyStore.key)
+        var selected = WorldJourney(legacyAccess: true); selected.select(.silverPools)
+        let goals = try XCTUnwrap(WorldMapGoalSnapshot(journey: selected, retainedRound: store.game))
+        XCTAssertEqual(goals.newVisitTarget, 12_000)
+        XCTAssertEqual(goals.retainedProgress, StarlightRestoration(score: 9, target: 18))
+        var flow = SkyFlowState(arguments: [])
+        XCTAssertEqual(flow.handle(.worldMap, hasSavedSky: true), .worldMap)
+        for _ in 0..<2 {
+            XCTAssertEqual(flow.handle(.silverPools, hasSavedSky: true), .staged)
+            let preview = try XCTUnwrap(RestorationPresentation.selected(game: store.game, entry: flow.entry))
+            XCTAssertEqual(preview.challenge, .silverPools)
+            XCTAssertEqual(preview.progress, StarlightRestoration(score: 0, target: 12_000))
+            XCTAssertEqual(store.game, historical)
+            XCTAssertEqual(defaults.data(forKey: SkySaveArchive.key), archive)
+            XCTAssertEqual(flow.handle(.entryBack, hasSavedSky: true, entryID: flow.entryID), .worldMap)
+        }
+        clock.advance(100)
+        XCTAssertNil(clock.deadline)
+        XCTAssertTrue(store.isPaused)
+        XCTAssertEqual(store.game, historical)
+        XCTAssertEqual(defaults.data(forKey: SkySaveArchive.key), archive)
+        XCTAssertEqual(store.journey.journey, journey)
+        XCTAssertEqual(defaults.data(forKey: WorldJourneyStore.key), worldBytes)
+        XCTAssertEqual(flow.handle(.silverPools, hasSavedSky: true), .staged)
+        XCTAssertEqual(flow.handle(.begin, hasSavedSky: true, entryID: flow.entryID), .began(.silverPools))
+        store.beginEntry(.silverPools)
+        XCTAssertEqual(store.game, FallingSky.freshChallenge(.silverPools))
+        XCTAssertEqual(store.game.challengeRevision, 4)
+        XCTAssertEqual(store.game.displayScore, 0)
+        XCTAssertEqual(store.game.occupiedCount, 24)
+        XCTAssertTrue(store.game.board.compactMap { $0 }.allSatisfy { !$0.grown })
+        XCTAssertEqual(store.game.displayTarget, 12_000)
+        XCTAssertEqual(try SkySaveArchive.decode(XCTUnwrap(defaults.data(forKey: SkySaveArchive.key))), store.game)
+        XCTAssertNotEqual(defaults.data(forKey: SkySaveArchive.key), archive)
+        XCTAssertEqual(store.journey.journey, journey, "Starting a new visit cannot earn a repair")
+        XCTAssertTrue(store.isPaused)
+        XCTAssertNil(clock.deadline)
+    }
+
+    @MainActor func testSilverRepairUnlocksFrostfruitOnlyAfterACommittedWin() throws {
+        var seed = ObservatoryReviewFixture.game(dense: false, score: 14, challenge: .seedMoon)
+        XCTAssertNotNil(seed.clear(Cell(0, 0)))
+        XCTAssertEqual(seed.outcome, .won)
+        var journey = WorldJourney(); journey.record(seed)
+        XCTAssertFalse(journey.legacyAccess)
+        XCTAssertTrue(journey.canEnter(.silverPools))
+        XCTAssertFalse(journey.canEnter(.frostfruitOrchard))
+        var silver = FallingSky.freshChallenge(.silverPools)
+        XCTAssertNotNil(silver.nudge(from: Cell(0, 2), to: Cell(1, 2)))
+        XCTAssertEqual(silver.displayScore, 7_000)
+        journey.record(silver)
+        XCTAssertFalse(journey.canEnter(.frostfruitOrchard), "The immediate clear is not a completed repair")
+        let final = try XCTUnwrap(silver.nudge(from: Cell(3, 2), to: Cell(3, 1)))
+        XCTAssertEqual(final.resolutionPhases.map(\.comboDepth), [1], "This separate action does not continue the first clear's chain")
+        XCTAssertTrue(silver.isValidSave)
+        XCTAssertEqual(silver.displayScore, 12_000)
+        XCTAssertEqual(silver.outcome, .won)
+        journey.record(silver)
+        XCTAssertTrue(journey.completed.contains(.silverPools))
+        XCTAssertTrue(journey.canEnter(.frostfruitOrchard))
+        XCTAssertEqual(journey.selected, .frostfruitOrchard)
+        let completed = journey
+        journey.record(silver)
         XCTAssertEqual(journey, completed, "A restored winning round cannot duplicate progression")
     }
 

@@ -1,0 +1,271 @@
+{
+  "status": "Source-bound inspected raw captures; retained JPEG review pending",
+  "conversion": "PNG to JPEG quality70, original dimensions; raw originals unchanged/hash-verified",
+  "limits": [
+    "Earlier phone source precedes passive Seed scenery integration; tablet source includes it.",
+    "Stills do not establish motion chronology, human understanding, physical touch or actual VoiceOver.",
+    "Help frames show the beginning and complete end; they are not a complete overlapping visual readthrough. Native scrolling/Done is separately tested."
+  ],
+  "captures": [
+    {
+      "file": "dev-acad49b2__entry__iphone-17e__default.jpg",
+      "test": "SilverPoolsInteractionTests/testCurrentSilverCausalChoicesRestoreReplayAndOverflow()",
+      "attachment_name": "silver-current-entry-default_0_E77B15B9-28A5-46A3-9326-DCCB201E096B.png",
+      "timestamp": 1792771559.675,
+      "device_id": "64231AFE-4CDB-4B5A-B6D5-70CD7CEED324",
+      "source_export": "/private/tmp/starfall-next-encounters-20261023/silver-phone-choices-attachments/32F9CD2B-DC0F-4E91-943B-CAEF931D5D3F.png",
+      "source_input_fingerprint": "dev.ddaff18f86",
+      "clean_input_commit": "acad49b2",
+      "actual_bundle_stamp": "dev.local",
+      "original_sha256": "3e7470c17575dc3b55552292fefbc35106aec486a058109c593914cb10e24f22",
+      "sha256": "669425204abb99966bbd36df440ab36e7ece8bccd15d4b3e264a8f643ee9c166",
+      "original_dimensions": [
+        1170,
+        2532
+      ],
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 747398,
+      "format": "JPEG quality70; original dimensions, no crop/resize",
+      "original_inspected": true,
+      "retained_inspected": true,
+      "observations": "Full12,000-point Entry explains support/falling survivor and separate alternative; Begin visible."
+    },
+    {
+      "file": "dev-acad49b2__opening__iphone-17e__default.jpg",
+      "test": "SilverPoolsInteractionTests/testCurrentSilverCausalChoicesRestoreReplayAndOverflow()",
+      "attachment_name": "silver-current-opening-default_0_9BAA34F6-C8D8-4AB5-89E4-EB6C9397D07D.png",
+      "timestamp": 1792771570.445,
+      "device_id": "64231AFE-4CDB-4B5A-B6D5-70CD7CEED324",
+      "source_export": "/private/tmp/starfall-next-encounters-20261023/silver-phone-choices-attachments/2DB007F7-D8DF-4375-80EA-F0FDEAC29D60.png",
+      "source_input_fingerprint": "dev.ddaff18f86",
+      "clean_input_commit": "acad49b2",
+      "actual_bundle_stamp": "dev.local",
+      "original_sha256": "da52417477250c50f8585137e208b96f14b6eedd4dd784702e613788f954a63c",
+      "sha256": "f0eeef70e8f3b7b6eb8903faf81ce0eb06ded5d1a7201988860f0fbb06e46eef",
+      "original_dimensions": [
+        1170,
+        2532
+      ],
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 839840,
+      "format": "JPEG quality70; original dimensions, no crop/resize",
+      "original_inspected": true,
+      "retained_inspected": true,
+      "observations": "Paused24-star recipe-free opening, no grown stars,0/12,000; second fresh branch."
+    },
+    {
+      "file": "dev-acad49b2__choice-restored__iphone-17e__default.jpg",
+      "test": "SilverPoolsInteractionTests/testCurrentSilverCausalChoicesRestoreReplayAndOverflow()",
+      "attachment_name": "silver-current-separate-choice-restored_0_4048930D-F3B1-408F-A800-5952E6857AF1.png",
+      "timestamp": 1792771598.401,
+      "device_id": "64231AFE-4CDB-4B5A-B6D5-70CD7CEED324",
+      "source_export": "/private/tmp/starfall-next-encounters-20261023/silver-phone-choices-attachments/AF07E78D-25DB-4D82-89C6-4673CD33C4D1.png",
+      "source_input_fingerprint": "dev.ddaff18f86",
+      "clean_input_commit": "acad49b2",
+      "actual_bundle_stamp": "dev.local",
+      "original_sha256": "17f7930a6b0199b9a2f1dff082d8d23afc3d50e8916c9f21ee9e4e80d150e2bd",
+      "sha256": "cf51377eebea7a4bea7d59c8573ce1268ee5d5af52ae3c27cc3d28965efd6085",
+      "original_dimensions": [
+        1170,
+        2532
+      ],
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 822937,
+      "format": "JPEG quality70; original dimensions, no crop/resize",
+      "original_inspected": true,
+      "retained_inspected": true,
+      "observations": "Restored immediate choice at7,000/12,000 with surviving board and ordinary paused controls."
+    },
+    {
+      "file": "dev-acad49b2__separate-win__iphone-17e__default.jpg",
+      "test": "SilverPoolsInteractionTests/testCurrentSilverCausalChoicesRestoreReplayAndOverflow()",
+      "attachment_name": "silver-current-separate-clears-win_0_CD73B9C2-1B8F-4795-B8B5-DE057DED4CD7.png",
+      "timestamp": 1792771606.917,
+      "device_id": "64231AFE-4CDB-4B5A-B6D5-70CD7CEED324",
+      "source_export": "/private/tmp/starfall-next-encounters-20261023/silver-phone-choices-attachments/4FE690B2-5799-4C5E-8DD6-F41CA3B8ED5F.png",
+      "source_input_fingerprint": "dev.ddaff18f86",
+      "clean_input_commit": "acad49b2",
+      "actual_bundle_stamp": "dev.local",
+      "original_sha256": "b926431f74d768fe0d21644cd6ec37844af11e4fa2b48427b3e90538c6ad512f",
+      "sha256": "16dd258ab9e16c724b5e47f02456a194fc30c9fbb5518b2111ca91081bb4cd83",
+      "original_dimensions": [
+        1170,
+        2532
+      ],
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 645450,
+      "format": "JPEG quality70; original dimensions, no crop/resize",
+      "original_inspected": true,
+      "retained_inspected": true,
+      "observations": "Two independent clears finish12,000/12,000, restored pools and Visit Frostfruit; not a chain."
+    },
+    {
+      "file": "dev-acad49b2__automatic-chain-win__iphone-17e__normal.jpg",
+      "test": "SilverPoolsInteractionTests/testCurrentSilverAutomaticShowerChainEarnsFrostfruit()",
+      "attachment_name": "silver-current-automatic-shower-earned-chain-win_0_6ABE1687-65EC-451E-BF85-031C0E19B671.png",
+      "timestamp": 1792771365.649,
+      "device_id": "64231AFE-4CDB-4B5A-B6D5-70CD7CEED324",
+      "source_export": "/private/tmp/starfall-next-encounters-20261023/silver-clock-attachments/948E6C33-9326-4AFC-A506-A3DA80426DA2.png",
+      "source_input_fingerprint": "dev.ddaff18f86",
+      "clean_input_commit": "acad49b2",
+      "actual_bundle_stamp": "dev.local",
+      "original_sha256": "eb4c6dec8a9d083552960ebd72705effa4971104dde413cf2a9dc70e0d102916",
+      "sha256": "4420b934260048daa904b4581a99c3f3da6d22fca14136e9d0bca83b1a0196d9",
+      "original_dimensions": [
+        1170,
+        2532
+      ],
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 646286,
+      "format": "JPEG quality70; original dimensions, no crop/resize",
+      "original_inspected": true,
+      "retained_inspected": true,
+      "observations": "19,000/12,000 restored Silver after one ordinary automatic shower, with earned Visit Frostfruit action. Still does not establish phase chronology."
+    },
+    {
+      "file": "dev-acad49b2__earned-frostfruit-entry__iphone-17e__default.jpg",
+      "test": "SilverPoolsInteractionTests/testCurrentSilverAutomaticShowerChainEarnsFrostfruit()",
+      "attachment_name": "silver-current-earned-frostfruit-entry_0_4E244DF1-FFC4-4833-8674-843337E1BFA5.png",
+      "timestamp": 1792771371.817,
+      "device_id": "64231AFE-4CDB-4B5A-B6D5-70CD7CEED324",
+      "source_export": "/private/tmp/starfall-next-encounters-20261023/silver-clock-attachments/109B723A-0BF4-46F1-B243-A80539FA508A.png",
+      "source_input_fingerprint": "dev.ddaff18f86",
+      "clean_input_commit": "acad49b2",
+      "actual_bundle_stamp": "dev.local",
+      "original_sha256": "dea300c46861fbae880cf1866b8000a3d5f3e3599ba6f71466d7a885e2bdfba6",
+      "sha256": "d7231230b97326119a0c90f8ee18852f388b088265682716d569d18ec1a2ac9a",
+      "original_dimensions": [
+        1170,
+        2532
+      ],
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 754159,
+      "format": "JPEG quality70; original dimensions, no crop/resize",
+      "original_inspected": true,
+      "retained_inspected": true,
+      "observations": "Genuinely earned Frostfruit Entry keeps its current18-light objective and Begin."
+    },
+    {
+      "file": "dev-0ecdfa33__opening__ipad-pro11-m5__ax3xl-quiet.jpg",
+      "test": "SilverPoolsInteractionTests/testCurrentSilverLargestQuietHelpAndOnward()",
+      "attachment_name": "silver-current-opening-largest_0_72BC8761-4EF5-4598-A2F0-DB3EDDB21A01.png",
+      "timestamp": 1792771947.247,
+      "device_id": "255E141F-D4D6-45DA-89FF-51436BF1BBA7",
+      "source_export": "/private/tmp/starfall-next-encounters-20261023/silver-tablet-attachments/014614DF-8357-4CE3-B63B-FFAB5601412A.png",
+      "source_input_fingerprint": "dev.85611977b9",
+      "clean_input_commit": "0ecdfa33",
+      "actual_bundle_stamp": "dev.local",
+      "original_sha256": "686aca14d44ea1dadf2d4c3f87e304d494b15669f96fa6ef9eab8cf196810d9f",
+      "sha256": "f844684372018c450b697a1b502ae961a9b8d5144a89a05379470b02ec1d76fa",
+      "original_dimensions": [
+        1668,
+        2420
+      ],
+      "dimensions": [
+        1668,
+        2420
+      ],
+      "bytes": 833850,
+      "format": "JPEG quality70; original dimensions, no crop/resize",
+      "original_inspected": true,
+      "retained_inspected": true,
+      "observations": "AX3XL quiet opening remains readable and retains24-star/0-of12k state."
+    },
+    {
+      "file": "dev-0ecdfa33__help-heading__ipad-pro11-m5__ax3xl-quiet.jpg",
+      "test": "SilverPoolsInteractionTests/testCurrentSilverLargestQuietHelpAndOnward()",
+      "attachment_name": "silver-current-help-heading-largest_0_6DEC0CCA-D427-45D9-8E09-F1E6E0056B36.png",
+      "timestamp": 1792771996.674,
+      "device_id": "255E141F-D4D6-45DA-89FF-51436BF1BBA7",
+      "source_export": "/private/tmp/starfall-next-encounters-20261023/silver-tablet-attachments/6AEEF451-2652-497C-BFF7-E88900912579.png",
+      "source_input_fingerprint": "dev.85611977b9",
+      "clean_input_commit": "0ecdfa33",
+      "actual_bundle_stamp": "dev.local",
+      "original_sha256": "c190c58c34a6fd6a197ee8aad856bd8d4427b3407af1fdc35827af419cc86087",
+      "sha256": "c102c805b1e10f6b535345e60a05e78e1d45633a4491dd85fac3a7f4ca4c9686",
+      "original_dimensions": [
+        1668,
+        2420
+      ],
+      "dimensions": [
+        1668,
+        2420
+      ],
+      "bytes": 674776,
+      "format": "JPEG quality70; original dimensions, no crop/resize",
+      "original_inspected": true,
+      "retained_inspected": true,
+      "observations": "Help heading and initial causal instructions at AX3XL; one sampled viewport, not full paragraph."
+    },
+    {
+      "file": "dev-0ecdfa33__help-end__ipad-pro11-m5__ax3xl-quiet.jpg",
+      "test": "SilverPoolsInteractionTests/testCurrentSilverLargestQuietHelpAndOnward()",
+      "attachment_name": "silver-current-help-end-largest_0_D8D9162A-B0FF-4BFE-BB22-8215B2CB3911.png",
+      "timestamp": 1792772003.946,
+      "device_id": "255E141F-D4D6-45DA-89FF-51436BF1BBA7",
+      "source_export": "/private/tmp/starfall-next-encounters-20261023/silver-tablet-attachments/EB0F488B-DB67-4DF3-BAF2-23276B8001C1.png",
+      "source_input_fingerprint": "dev.85611977b9",
+      "clean_input_commit": "0ecdfa33",
+      "actual_bundle_stamp": "dev.local",
+      "original_sha256": "62a9dd2f436c2892769efeb9dd5def24e2a863426985e278acaea9c2b37bc6c3",
+      "sha256": "96452c6d274f1e4c7757f4b0e506e8965789de02cadd5c9906de9a801ab01c35",
+      "original_dimensions": [
+        1668,
+        2420
+      ],
+      "dimensions": [
+        1668,
+        2420
+      ],
+      "bytes": 674298,
+      "format": "JPEG quality70; original dimensions, no crop/resize",
+      "original_inspected": true,
+      "retained_inspected": true,
+      "observations": "Final Help text including Other legal clears can finish too and fixed Done are visible. Middle sentence coverage is incomplete across retained views."
+    },
+    {
+      "file": "dev-0ecdfa33__separate-win__ipad-pro11-m5__ax3xl-quiet.jpg",
+      "test": "SilverPoolsInteractionTests/testCurrentSilverLargestQuietHelpAndOnward()",
+      "attachment_name": "silver-current-separate-clears-win_0_DB2872DA-A835-4332-8AD2-FEF0CB759792.png",
+      "timestamp": 1792772020.351,
+      "device_id": "255E141F-D4D6-45DA-89FF-51436BF1BBA7",
+      "source_export": "/private/tmp/starfall-next-encounters-20261023/silver-tablet-attachments/79A5AE8A-57BC-46FF-AAF5-09AE4D21F82F.png",
+      "source_input_fingerprint": "dev.85611977b9",
+      "clean_input_commit": "0ecdfa33",
+      "actual_bundle_stamp": "dev.local",
+      "original_sha256": "9c6d6c24872f9718ec04670b13b5a599e4327fa2754791c890eaaed42b3bc439",
+      "sha256": "296e5aa7f73c5c8d55a4e3b84fa403479d8a47b981a7d466640b367062d0eccf",
+      "original_dimensions": [
+        1668,
+        2420
+      ],
+      "dimensions": [
+        1668,
+        2420
+      ],
+      "bytes": 725550,
+      "format": "JPEG quality70; original dimensions, no crop/resize",
+      "original_inspected": true,
+      "retained_inspected": true,
+      "observations": "Quiet AX3XL result shows12,000/12,000 and complete Visit Frostfruit. Lower actions continue below view and native test reveals before use."
+    }
+  ]
+}

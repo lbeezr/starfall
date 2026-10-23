@@ -64,7 +64,7 @@ final class StoryCascadeTests: XCTestCase {
             XCTAssertEqual(try restored(game), game)
             XCTAssertEqual(game.replay(), game)
         }
-        for challenge in StarfallChallenge.allCases where ![.firstLight, .ribbonCrossing, .kiteHarbor, .seedMoon].contains(challenge) {
+        for challenge in StarfallChallenge.allCases where ![.firstLight, .ribbonCrossing, .kiteHarbor, .seedMoon, .silverPools].contains(challenge) {
             XCTAssertEqual(FallingSky.freshChallenge(challenge), FallingSky(challenge: challenge))
             XCTAssertFalse(FallingSky.freshChallenge(challenge).supportsAutomaticRecipes)
         }

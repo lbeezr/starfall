@@ -6,6 +6,8 @@
 
 [Cohesion goal5: connected Seed Moon](cohesion-goal-05-seed-place-2026-10-23/README.md) records the fifteen-painting environment refinement, exact generated provenance, native full-board and restoration checks, and current-Seed integration.
 
+[Silver causal-sequence encounter](silver-sequence-2026-10-23/README.md) records the complete 12,000-point definition, real survivor-created 19,000 chain versus separate clears, native/save/progression acceptance and recording limits.
+
 [Seed grown-ingredient encounter](seed-ingredient-2026-10-23/README.md) records the 11,000-point spend/preserve fork, versioned history, native recovery and exact verification limits.
 
 [Game-factory goal 10: coherent game](game-goal-10-coherent-game-2026-10-23/README.md) reproduces and corrects stale Tutorial Help, verifies exact four-mode/AX3XL returns, and links all ten independent development outcomes.
