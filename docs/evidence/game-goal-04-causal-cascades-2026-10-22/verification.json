@@ -1,0 +1,91 @@
+{
+  "source": "ae7724487341b7c5596ce3f57c5d220f99d3324e",
+  "inherited_hosted_source": "663c20cc6f8456d398361c032db3b7e224cc453d",
+  "build_identity": "dev.0587678fcf",
+  "sha256": {
+    "App/FallingSkyScene.swift": "ceb0399c4232bacc909a38d33db5c7ae5c469cefdc5ff123cee6eb7b4dc83579",
+    "App/FallingSkyStore.swift": "253a26c66e40a8d347f931f508a451deb7790e5bf7c49c4d935bb3d90b2d58fd",
+    "App/FallingSkyView.swift": "4379436c4221562c7e4bef7d53b559b03a8a0dacd179b163033acef13cc850bc",
+    "App/StarlightCelebration.swift": "2fefd7fb0a597331e516d2a20f62f32854d55a78e8a33a3b24a77822ae734212",
+    "App/QuietTuckPlayer.swift": "8a821f48e79f6994e04694f210ec0535b0aebe973723d30c4ccc310b09dd9e68",
+    "Sources/StarfallCore/SkyResolutionPhase.swift": "47ac2381120e8316106f0fbdb00d32f973cc35f6f9cc80a0e9c2353672c0266a",
+    "Sources/StarfallCore/StoryChallenge.swift": "10b6cec86c821de48258a196d1f67d136c9647420350783cebe2b4494e0c3053",
+    "AppTests/NativeInputWindowTests.swift": "dd240b5ef305da9fc5ee3a4f6518bdc4378e17123fae373d9a6980851652d438",
+    "AppTests/StarlightCelebrationTests.swift": "c7b81325856ebdf330885850c7dda2510c13b69abfcab8d11ddb637d19d26c33",
+    "AppTests/QuietTuckPlayerTests.swift": "d74ee34584971294f112dfef2f85b538ac03e378869b373c57cbbdb3740548e1",
+    "AppTests/FallingSkyStoreTests.swift": "96ae281170c284af356f7d55da37dc914e9bd809998541e13c978485ee14b929",
+    "UITests/WorldJourneyInteractionTests.swift": "69ebe5084beef96d59c6f94be8857d4ceabdf23af0b06c2125b32ec54ca00c65"
+  },
+  "normal": {
+    "result": "Passed",
+    "totalTestCount": 1,
+    "passedTests": 1,
+    "failedTests": 0,
+    "skippedTests": 0,
+    "startTime": 1792722261.697,
+    "finishTime": 1792722360.066
+  },
+  "quiet": {
+    "result": "Passed",
+    "totalTestCount": 1,
+    "passedTests": 1,
+    "failedTests": 0,
+    "skippedTests": 0,
+    "startTime": 1792722261.837,
+    "finishTime": 1792722397.569
+  },
+  "hosted_phases": {
+    "result": "Passed",
+    "totalTestCount": 6,
+    "passedTests": 6,
+    "failedTests": 0,
+    "skippedTests": 0,
+    "startTime": 1792721650.378,
+    "finishTime": 1792721660.077
+  },
+  "movie": {
+    "bytes": 112383774,
+    "sha256": "0db8bb14cfe24b95a33c6ba306b1c692697119c812d79f5021b1e2cd4036c709",
+    "duration_seconds": 124.93666666666667,
+    "receipt": {
+      "exitCode": 0,
+      "reason": "test completed",
+      "elapsedSeconds": 125.343
+    },
+    "retention": "disposable local recording; not in Git"
+  },
+  "captures": [
+    {
+      "path": "dev-0587678fcf__cascade__iphone-17e__first-pop.jpg",
+      "actual_movie_seconds": 76.39833333333333,
+      "sha256": "714bb591174a974ee14aceac605df7e355c80b9d1ec97d9545d9ed7c86afcbed",
+      "pixels": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "path": "dev-0587678fcf__cascade__iphone-17e__survivors.jpg",
+      "actual_movie_seconds": 76.65333333333334,
+      "sha256": "cecaa692e14dae68b5ed228106aba74464b1c018f5a7499b17eab21720973683",
+      "pixels": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "path": "dev-0587678fcf__cascade__iphone-17e__second-pop.jpg",
+      "actual_movie_seconds": 76.99333333333334,
+      "sha256": "48953c4c1966b9096eb05572ec56bca6f39a0a542229340851390c60b1b3a478",
+      "pixels": [
+        1170,
+        2532
+      ]
+    }
+  ],
+  "limits": [
+    "nine sampled video frames; not continuous playback inspection",
+    "no readable separate phase callout in the practice samples",
+    "no human comprehension/satisfaction or physical smoothness/listening claim"
+  ]
+}

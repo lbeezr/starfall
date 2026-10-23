@@ -1,5 +1,7 @@
 # Evidence index
 
+[Game-factory goal 4: causal cascade acceptance](game-goal-04-causal-cascades-2026-10-22/README.md) records a live normal/quiet production-rule witness, sampled native chronology, exact committed receipts and independent-action reset. Existing behavior satisfies the development goal; no product edit is manufactured and human comprehension remains open.
+
 [Game-factory goal 3: setup discovery](game-goal-03-setup-discovery-2026-10-22/README.md) records the optional current-Story square, hidden worked hint, real automatic follow-up and non-scoring alternative. Core/Store/native checks separate practice completion from the preserved saved round and world; human learning remains open.
 
 [Rising Story-chain audio](chain-audio-2026-10-22/README.md) records committed phase routing, capped original cues, independent-action reset, native playback, real opening controls and Debug/Release membership. Source changes during integration and unmeasured physical listening remain explicit; the broader sensory-language outcome stays open.
