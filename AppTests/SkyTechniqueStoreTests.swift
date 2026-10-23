@@ -6,11 +6,12 @@ import StarfallCore
 
 final class SkyTechniqueStoreTests: XCTestCase {
     @MainActor func testPatternRoundTapInspectsWithoutChangingSaveClockOrProgressAndSwapStillScores() throws {
-        for challenge in [StarfallChallenge.firstLight, .ribbonCrossing] {
+        for (challenge, revision) in [(StarfallChallenge.firstLight, 3), (.firstLight, 4),
+                                      (.ribbonCrossing, 3), (.ribbonCrossing, 4)] {
             let suite = "Starfall.PatternInput.\(UUID())"
             let defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
             defer { defaults.removePersistentDomain(forName: suite) }
-            let opening = FallingSky.freshChallenge(challenge)
+            let opening = FallingSky(definition: try XCTUnwrap(StoryChallengeDefinition(challenge, revision: revision)))
             defaults.set(try SkySaveArchive.encode(opening), forKey: SkySaveArchive.key)
             let presenter = FallingSkyRecorder(), clock = ManualRainClock(), feedback = SkyFeedbackRecorder()
             let store = FallingSkyStore(defaults: defaults, arguments: [], presenter: presenter,
@@ -31,6 +32,7 @@ final class SkyTechniqueStoreTests: XCTestCase {
             store.clearTracedConstellation([Cell(0, 0), Cell(0, 1), Cell(1, 0), Cell(2, 0), Cell(3, 0)],
                                           snapshot: opening, generation: generation)
             XCTAssertEqual(store.guideLine.id, "guide.patterns-inspect.1")
+            XCTAssertTrue(store.guideLine.text.contains(revision == 4 ? "straight lines of 4 or more" : "full lines of 7"))
             XCTAssertEqual(store.game, opening)
             XCTAssertEqual(defaults.data(forKey: SkySaveArchive.key), bytes)
             XCTAssertEqual(store.journey.journey, journey)

@@ -34,7 +34,7 @@ enum SkyRecipeResolution {
     static let maximumPhases = 12
 
     static func resolve(_ board: [StarfallGem?], manualClear: Set<Cell>? = nil,
-                        includingLines: Bool = false) -> [SkyResolutionPhase] {
+                        lineLength: Int? = nil) -> [SkyResolutionPhase] {
         var phases: [SkyResolutionPhase] = []
         var current = board
         if let manualClear {
@@ -43,7 +43,7 @@ enum SkyRecipeResolution {
             current = phase.settled
         }
         while phases.count < maximumPhases {
-            let recipes = StarRecipe.find(in: current, includingLines: includingLines)
+            let recipes = StarRecipe.find(in: current, lineLength: lineLength)
             guard !recipes.isEmpty else { break }
             // Simultaneous overlapping recipes spend the union once. Unrelated
             // matching neighbors remain available for ordinary taps and traces.
@@ -53,7 +53,7 @@ enum SkyRecipeResolution {
             phases.append(phase)
             current = phase.settled
         }
-        assert(StarRecipe.find(in: current, includingLines: includingLines).isEmpty)
+        assert(StarRecipe.find(in: current, lineLength: lineLength).isEmpty)
         return phases
     }
 }

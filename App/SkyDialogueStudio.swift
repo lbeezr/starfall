@@ -63,7 +63,7 @@ import SwiftUI
     }
     private func play() {
         // Example facts only. Player-facing wording still comes from the catalogue.
-        let defaults = ["score": "18", "dark": "Dusk", "growth": "A star grew", "arrival": "One star arrived",
+        let defaults = ["score": "18", "lines": SkyCopy.patternLines(4), "dark": "Dusk", "growth": "A star grew", "arrival": "One star arrived",
                         "stars": "5", "feeds": "5", "depth": "2", "shape": "Square",
                         "release": "The hole releases its stars after 3 more showers.",
                         "swallowed": "I swallowed 3 stars.", "phase": "Storm: 3 heavy showers left.",

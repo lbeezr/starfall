@@ -1,0 +1,842 @@
+{
+  "method": {
+    "sourceHead": "943862da8bf89ca86b8f1369c9536cac61cd2e4f",
+    "sourceGitStatusShort": "",
+    "variants": [
+      "seven current production Core",
+      "six changes only line recognition: six contiguous actual matching stars, maximal seven preferred; square/cross and union spending unchanged"
+    ],
+    "shippedSupplySeeds": {
+      "firstLight": 42,
+      "ribbonCrossing": 4202
+    },
+    "policySeeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "policies": [
+      "uniformRandom",
+      "immediateScoreElseRandom"
+    ],
+    "swapBudgetPerShower": 4,
+    "showerCap": 20,
+    "supplementalTrajectories": [
+      "idle on both fixed challenges",
+      "exact current retained winning witness on both challenges, 40-shower cap"
+    ],
+    "sampledStateDefinition": "Before each attempted policy exchange; idle once per shower. Observes all legal nontrivial H/V adjacent swaps, including occupied/empty swaps; omit changes that only permute equivalent color/growth identities or settle to the same color/growth board. Counts opportunities in every causal phase, not just first.",
+    "uniformRandom": "Uniform among enumerated nontrivial swaps; no reward preference.",
+    "immediateScoreElseRandom": "Highest immediate display award, then cleared stars; otherwise uniform random. No lookahead or six-/seven-line construction plan.",
+    "validations": "Nine controlled finder/resolution fixture cases per variant. After every actual exchange/shower: semantic save validity, exact JSON round-trip equality, conserved light. After every round: replay returns exact opening; exchange forecast/turn count preserved, shower consumes committed forecast.",
+    "limitations": [
+      "Policy seeds vary actions only; all runs reuse two exact shipped openings/supply streams.",
+      "Swaps/shower budget and no-scoring-state frequency are model quantities, not measured decision time, input capacity, waiting, difficulty or enjoyment.",
+      "No long-horizon search; zero lines cannot establish line inaccessibility or sufficient value of six.",
+      "Six temporary Core is an experiment using revision3 only in disposable exports; no production save migration or backward compatibility acceptance.",
+      "No app, native interaction, presentation, VoiceOver or physical-device checks."
+    ]
+  },
+  "sourceSHA256": {
+    "Sources/StarfallCore/ConstellationFixture.swift": "9c8038dd4b51304f3c65dffc8f966bbe65fafa78b11d6ecdfd300895532cd253",
+    "Sources/StarfallCore/CriticalMassFixture.swift": "5ad27dffd95dd26171a107536190ae69a38f622169b50ea9a4d14df0a364d4f9",
+    "Sources/StarfallCore/CriticalMassRule.swift": "a9a059fde9cff9d6b0a1f86743eb7e82b83825d14776f82d81604c40fe436eba",
+    "Sources/StarfallCore/DuskFixture.swift": "9740935783394c05fdb591557c9ebdb15426228313f7245ed82ba87cf87dc26f",
+    "Sources/StarfallCore/DuskRules.swift": "76d3a62cbfa2da4674ebe3078d4e4b3c01282991fb151a21ca1c38c38beec8d6",
+    "Sources/StarfallCore/FallingSky.swift": "8f5e88324e3826871565618a00d3bd9f2b1fa51e57b62d8e9f54f4d54f05118b",
+    "Sources/StarfallCore/Game.swift": "9ab2d57af8fe0ee804ce56e762eb5833a08ae5f39e8916ffaa0fe708d90e7086",
+    "Sources/StarfallCore/GravityFieldRules.swift": "71caa1ec007d068c7507dbeb883b5e7052ea58e84121182a30a8d267695007de",
+    "Sources/StarfallCore/GravityOpportunityFixture.swift": "fe410f41722d690eec3ac67472bf82e421912e772252fdf4ac41819f50c08e4a",
+    "Sources/StarfallCore/HistoricalGravityState.swift": "3f3e16e69efd5f856f06407795ef5288f7231e76b1df334925440f6ae5b573cc",
+    "Sources/StarfallCore/RefillMapping.swift": "608be41f40c945b18aba5512bac16b7c4de4eb8a2747d6fe54a895392b38e5f7",
+    "Sources/StarfallCore/SkyBoardSettling.swift": "56f8d3e773946ecac6843b5acadfdc2168b54259a8b9e581d9e34aefea7690a1",
+    "Sources/StarfallCore/SkyCadence.swift": "a01a1ab5fe50e7677bd2e1af75563a5bcc316e1828e921e7da2f572202b76b8c",
+    "Sources/StarfallCore/SkyGeneration.swift": "03d62817aaace9a7354cffb15e7735a98246ed9d75643f0e354fab2aeb2d2d97",
+    "Sources/StarfallCore/SkyLesson.swift": "5f8510e0beff4937da7382ece2d9fe6dc285581959a69eb8762d31482137fab9",
+    "Sources/StarfallCore/SkyPresentationPhase.swift": "8847dab4792f151c3fecae3747b39e71b820c02caf0f53559371111e6c9d1f82",
+    "Sources/StarfallCore/SkyResolutionPhase.swift": "403fa89cc38e0e53f93a5dc36e5e3197669d46c27f90a04eff5073fa2e4603b5",
+    "Sources/StarfallCore/SkyTechniqueExample.swift": "75c38131723930f1e5884b8d9e87ea8c0cce975b81bddf9ef89212d627e77c26",
+    "Sources/StarfallCore/SkyTutorial.swift": "84ed4ec2bb25b5ba914fcfc0a16d0d8eb19df0ebd3f5aa084ac288c9fefb8069",
+    "Sources/StarfallCore/StarRecipe.swift": "05b187fac286c89d303469491393f21d0f7f24a98db7c3979388d10ad1218fa0",
+    "Sources/StarfallCore/StarfallBalance.swift": "32525ba2f346cf843863b1cb1cba8a2fab66d088b9dc7ac308867f1520c329ec",
+    "Sources/StarfallCore/StarfallChallenge.swift": "714330f1ed5fb52f07917a56ad88912df026b2341fb890e4d768a242049bbbd9",
+    "Sources/StarfallCore/StarlightRestoration.swift": "66b48ac3dccde26b78a534b42241c8ba2da3a81ddee7e0779fb18fad9937accb",
+    "Sources/StarfallCore/StoryChallenge.swift": "5c8df50c3cc7abb9f8bb5b9ac42f0b3f78b6a966c8e41f05f03becd6b2dcde7f",
+    "Sources/StarfallCore/StoryScore.swift": "704428ec8375b4cbaca8e84370f8e0c7915be62d8fbdf75da7addb2dd6904277",
+    "Sources/StarfallCore/WorldJourney.swift": "5cf0887beb4ab0fc74733eebbfbb84f0b6a21af9444641546cb799b180889036"
+  },
+  "harnessSHA256": "eb5357b4fd23db0f1c6519d995f6d644ad2a809f91a3ffd0339d2fc8259bfb7c",
+  "variants": {
+    "seven": {
+      "fixtureChecksPassed": 9,
+      "runCount": 28,
+      "opening": [
+        {
+          "challenge": "firstLight",
+          "nontrivialSwaps": 31,
+          "recipeInstances": [
+            "square",
+            "square",
+            "square",
+            "square"
+          ],
+          "scoringAwards": [
+            5000,
+            5000,
+            15000
+          ],
+          "scoringSwaps": 3
+        },
+        {
+          "challenge": "ribbonCrossing",
+          "nontrivialSwaps": 31,
+          "recipeInstances": [
+            "square",
+            "square",
+            "square",
+            "square",
+            "square"
+          ],
+          "scoringAwards": [
+            5000,
+            5000,
+            30000
+          ],
+          "scoringSwaps": 3
+        }
+      ],
+      "groups": [
+        {
+          "challenge": "firstLight",
+          "policy": "uniformRandom",
+          "runs": 6,
+          "outcomes": {
+            "lost": 6
+          },
+          "scoreRange": [
+            0,
+            5000
+          ],
+          "meanScore": 2500,
+          "showerRange": [
+            5,
+            7
+          ],
+          "meanShowers": 5.666666666666667,
+          "totals": {
+            "showers": 34,
+            "swaps": 136,
+            "scoringSwaps": 3,
+            "setupSwaps": 133,
+            "sampledStates": 136,
+            "statesWithoutScoringSwap": 46,
+            "summedScoringSwapChoices": 138,
+            "statesWithScoringLineSwap": 0,
+            "phases": 3,
+            "chainActions": 0,
+            "checks": 170,
+            "scoringShowers": 0
+          },
+          "noScoringStateFraction": 0.3382352941176471,
+          "meanScoringSwapChoices": 1.0147058823529411,
+          "setupSwapsPerScoringSwap": 44.333333333333336,
+          "meanOccupancy": 33.35294117647059,
+          "recipeInstances": {
+            "square": 3
+          },
+          "lineSizes": {},
+          "showerRecipeInstances": {}
+        },
+        {
+          "challenge": "firstLight",
+          "policy": "immediateScoreElseRandom",
+          "runs": 6,
+          "outcomes": {
+            "lost": 6
+          },
+          "scoreRange": [
+            20000,
+            49000
+          ],
+          "meanScore": 32333.333333333332,
+          "showerRange": [
+            8,
+            12
+          ],
+          "meanShowers": 9.333333333333334,
+          "totals": {
+            "showers": 56,
+            "swaps": 224,
+            "scoringSwaps": 25,
+            "setupSwaps": 199,
+            "sampledStates": 224,
+            "statesWithoutScoringSwap": 199,
+            "summedScoringSwapChoices": 44,
+            "statesWithScoringLineSwap": 0,
+            "phases": 31,
+            "chainActions": 6,
+            "checks": 280,
+            "scoringShowers": 0
+          },
+          "noScoringStateFraction": 0.8883928571428571,
+          "meanScoringSwapChoices": 0.19642857142857142,
+          "setupSwapsPerScoringSwap": 7.96,
+          "meanOccupancy": 26.96875,
+          "recipeInstances": {
+            "square": 29,
+            "cross": 2
+          },
+          "lineSizes": {},
+          "showerRecipeInstances": {}
+        },
+        {
+          "challenge": "firstLight",
+          "policy": "idle",
+          "runs": 1,
+          "outcomes": {
+            "lost": 1
+          },
+          "scoreRange": [
+            0,
+            0
+          ],
+          "meanScore": 0,
+          "showerRange": [
+            5,
+            5
+          ],
+          "meanShowers": 5,
+          "totals": {
+            "showers": 5,
+            "swaps": 0,
+            "scoringSwaps": 0,
+            "setupSwaps": 0,
+            "sampledStates": 5,
+            "statesWithoutScoringSwap": 0,
+            "summedScoringSwapChoices": 15,
+            "statesWithScoringLineSwap": 0,
+            "phases": 0,
+            "chainActions": 0,
+            "checks": 5,
+            "scoringShowers": 0
+          },
+          "noScoringStateFraction": 0.0,
+          "meanScoringSwapChoices": 3.0,
+          "setupSwapsPerScoringSwap": null,
+          "meanOccupancy": 32.2,
+          "recipeInstances": {},
+          "lineSizes": {},
+          "showerRecipeInstances": {}
+        },
+        {
+          "challenge": "firstLight",
+          "policy": "retainedWinningWitness",
+          "runs": 1,
+          "outcomes": {
+            "won": 1
+          },
+          "scoreRange": [
+            154000,
+            154000
+          ],
+          "meanScore": 154000,
+          "showerRange": [
+            22,
+            22
+          ],
+          "meanShowers": 22,
+          "totals": {
+            "showers": 22,
+            "swaps": 86,
+            "scoringSwaps": 27,
+            "setupSwaps": 59,
+            "sampledStates": 86,
+            "statesWithoutScoringSwap": 59,
+            "summedScoringSwapChoices": 31,
+            "statesWithScoringLineSwap": 0,
+            "phases": 28,
+            "chainActions": 1,
+            "checks": 108,
+            "scoringShowers": 0
+          },
+          "noScoringStateFraction": 0.686046511627907,
+          "meanScoringSwapChoices": 0.36046511627906974,
+          "setupSwapsPerScoringSwap": 2.185185185185185,
+          "meanOccupancy": 19.22093023255814,
+          "recipeInstances": {
+            "cross": 2,
+            "square": 26
+          },
+          "lineSizes": {},
+          "showerRecipeInstances": {}
+        },
+        {
+          "challenge": "ribbonCrossing",
+          "policy": "uniformRandom",
+          "runs": 6,
+          "outcomes": {
+            "lost": 6
+          },
+          "scoreRange": [
+            0,
+            5000
+          ],
+          "meanScore": 1666.6666666666667,
+          "showerRange": [
+            5,
+            6
+          ],
+          "meanShowers": 5.166666666666667,
+          "totals": {
+            "showers": 31,
+            "swaps": 124,
+            "scoringSwaps": 2,
+            "setupSwaps": 122,
+            "sampledStates": 124,
+            "statesWithoutScoringSwap": 21,
+            "summedScoringSwapChoices": 170,
+            "statesWithScoringLineSwap": 0,
+            "phases": 2,
+            "chainActions": 0,
+            "checks": 155,
+            "scoringShowers": 0
+          },
+          "noScoringStateFraction": 0.1693548387096774,
+          "meanScoringSwapChoices": 1.3709677419354838,
+          "setupSwapsPerScoringSwap": 61.0,
+          "meanOccupancy": 33.193548387096776,
+          "recipeInstances": {
+            "square": 2
+          },
+          "lineSizes": {},
+          "showerRecipeInstances": {}
+        },
+        {
+          "challenge": "ribbonCrossing",
+          "policy": "immediateScoreElseRandom",
+          "runs": 6,
+          "outcomes": {
+            "lost": 6
+          },
+          "scoreRange": [
+            40000,
+            46000
+          ],
+          "meanScore": 43333.333333333336,
+          "showerRange": [
+            9,
+            11
+          ],
+          "meanShowers": 9.333333333333334,
+          "totals": {
+            "showers": 56,
+            "swaps": 224,
+            "scoringSwaps": 21,
+            "setupSwaps": 203,
+            "sampledStates": 224,
+            "statesWithoutScoringSwap": 203,
+            "summedScoringSwapChoices": 41,
+            "statesWithScoringLineSwap": 0,
+            "phases": 33,
+            "chainActions": 6,
+            "checks": 280,
+            "scoringShowers": 0
+          },
+          "noScoringStateFraction": 0.90625,
+          "meanScoringSwapChoices": 0.18303571428571427,
+          "setupSwapsPerScoringSwap": 9.666666666666666,
+          "meanOccupancy": 24.339285714285715,
+          "recipeInstances": {
+            "square": 33
+          },
+          "lineSizes": {},
+          "showerRecipeInstances": {}
+        },
+        {
+          "challenge": "ribbonCrossing",
+          "policy": "idle",
+          "runs": 1,
+          "outcomes": {
+            "lost": 1
+          },
+          "scoreRange": [
+            0,
+            0
+          ],
+          "meanScore": 0,
+          "showerRange": [
+            5,
+            5
+          ],
+          "meanShowers": 5,
+          "totals": {
+            "showers": 5,
+            "swaps": 0,
+            "scoringSwaps": 0,
+            "setupSwaps": 0,
+            "sampledStates": 5,
+            "statesWithoutScoringSwap": 0,
+            "summedScoringSwapChoices": 15,
+            "statesWithScoringLineSwap": 0,
+            "phases": 0,
+            "chainActions": 0,
+            "checks": 5,
+            "scoringShowers": 0
+          },
+          "noScoringStateFraction": 0.0,
+          "meanScoringSwapChoices": 3.0,
+          "setupSwapsPerScoringSwap": null,
+          "meanOccupancy": 34.2,
+          "recipeInstances": {},
+          "lineSizes": {},
+          "showerRecipeInstances": {}
+        },
+        {
+          "challenge": "ribbonCrossing",
+          "policy": "retainedWinningWitness",
+          "runs": 1,
+          "outcomes": {
+            "won": 1
+          },
+          "scoreRange": [
+            220000,
+            220000
+          ],
+          "meanScore": 220000,
+          "showerRange": [
+            32,
+            32
+          ],
+          "meanShowers": 32,
+          "totals": {
+            "showers": 32,
+            "swaps": 118,
+            "scoringSwaps": 35,
+            "setupSwaps": 83,
+            "sampledStates": 118,
+            "statesWithoutScoringSwap": 83,
+            "summedScoringSwapChoices": 38,
+            "statesWithScoringLineSwap": 0,
+            "phases": 37,
+            "chainActions": 1,
+            "checks": 150,
+            "scoringShowers": 0
+          },
+          "noScoringStateFraction": 0.7033898305084746,
+          "meanScoringSwapChoices": 0.3220338983050847,
+          "setupSwapsPerScoringSwap": 2.3714285714285714,
+          "meanOccupancy": 18.220338983050848,
+          "recipeInstances": {
+            "square": 37
+          },
+          "lineSizes": {},
+          "showerRecipeInstances": {}
+        }
+      ],
+      "resultsSHA256": "84f385985d376db3a9b79cca896c514404b8d6cc8e6f1f74bbf1000f5b05cb52",
+      "candidateStarRecipeSHA256": "05b187fac286c89d303469491393f21d0f7f24a98db7c3979388d10ad1218fa0"
+    },
+    "six": {
+      "fixtureChecksPassed": 9,
+      "runCount": 28,
+      "opening": [
+        {
+          "challenge": "firstLight",
+          "nontrivialSwaps": 31,
+          "recipeInstances": [
+            "square",
+            "square",
+            "square",
+            "square"
+          ],
+          "scoringAwards": [
+            5000,
+            5000,
+            15000
+          ],
+          "scoringSwaps": 3
+        },
+        {
+          "challenge": "ribbonCrossing",
+          "nontrivialSwaps": 31,
+          "recipeInstances": [
+            "square",
+            "square",
+            "square",
+            "square",
+            "square"
+          ],
+          "scoringAwards": [
+            5000,
+            5000,
+            30000
+          ],
+          "scoringSwaps": 3
+        }
+      ],
+      "groups": [
+        {
+          "challenge": "firstLight",
+          "policy": "uniformRandom",
+          "runs": 6,
+          "outcomes": {
+            "lost": 6
+          },
+          "scoreRange": [
+            0,
+            5000
+          ],
+          "meanScore": 2500,
+          "showerRange": [
+            5,
+            7
+          ],
+          "meanShowers": 5.666666666666667,
+          "totals": {
+            "showers": 34,
+            "swaps": 136,
+            "scoringSwaps": 3,
+            "setupSwaps": 133,
+            "sampledStates": 136,
+            "statesWithoutScoringSwap": 46,
+            "summedScoringSwapChoices": 138,
+            "statesWithScoringLineSwap": 0,
+            "phases": 3,
+            "chainActions": 0,
+            "checks": 170,
+            "scoringShowers": 0
+          },
+          "noScoringStateFraction": 0.3382352941176471,
+          "meanScoringSwapChoices": 1.0147058823529411,
+          "setupSwapsPerScoringSwap": 44.333333333333336,
+          "meanOccupancy": 33.35294117647059,
+          "recipeInstances": {
+            "square": 3
+          },
+          "lineSizes": {},
+          "showerRecipeInstances": {}
+        },
+        {
+          "challenge": "firstLight",
+          "policy": "immediateScoreElseRandom",
+          "runs": 6,
+          "outcomes": {
+            "lost": 6
+          },
+          "scoreRange": [
+            20000,
+            49000
+          ],
+          "meanScore": 32333.333333333332,
+          "showerRange": [
+            8,
+            12
+          ],
+          "meanShowers": 9.333333333333334,
+          "totals": {
+            "showers": 56,
+            "swaps": 224,
+            "scoringSwaps": 25,
+            "setupSwaps": 199,
+            "sampledStates": 224,
+            "statesWithoutScoringSwap": 199,
+            "summedScoringSwapChoices": 44,
+            "statesWithScoringLineSwap": 0,
+            "phases": 31,
+            "chainActions": 6,
+            "checks": 280,
+            "scoringShowers": 0
+          },
+          "noScoringStateFraction": 0.8883928571428571,
+          "meanScoringSwapChoices": 0.19642857142857142,
+          "setupSwapsPerScoringSwap": 7.96,
+          "meanOccupancy": 26.96875,
+          "recipeInstances": {
+            "square": 29,
+            "cross": 2
+          },
+          "lineSizes": {},
+          "showerRecipeInstances": {}
+        },
+        {
+          "challenge": "firstLight",
+          "policy": "idle",
+          "runs": 1,
+          "outcomes": {
+            "lost": 1
+          },
+          "scoreRange": [
+            0,
+            0
+          ],
+          "meanScore": 0,
+          "showerRange": [
+            5,
+            5
+          ],
+          "meanShowers": 5,
+          "totals": {
+            "showers": 5,
+            "swaps": 0,
+            "scoringSwaps": 0,
+            "setupSwaps": 0,
+            "sampledStates": 5,
+            "statesWithoutScoringSwap": 0,
+            "summedScoringSwapChoices": 15,
+            "statesWithScoringLineSwap": 0,
+            "phases": 0,
+            "chainActions": 0,
+            "checks": 5,
+            "scoringShowers": 0
+          },
+          "noScoringStateFraction": 0.0,
+          "meanScoringSwapChoices": 3.0,
+          "setupSwapsPerScoringSwap": null,
+          "meanOccupancy": 32.2,
+          "recipeInstances": {},
+          "lineSizes": {},
+          "showerRecipeInstances": {}
+        },
+        {
+          "challenge": "firstLight",
+          "policy": "retainedWinningWitness",
+          "runs": 1,
+          "outcomes": {
+            "won": 1
+          },
+          "scoreRange": [
+            154000,
+            154000
+          ],
+          "meanScore": 154000,
+          "showerRange": [
+            22,
+            22
+          ],
+          "meanShowers": 22,
+          "totals": {
+            "showers": 22,
+            "swaps": 86,
+            "scoringSwaps": 27,
+            "setupSwaps": 59,
+            "sampledStates": 86,
+            "statesWithoutScoringSwap": 59,
+            "summedScoringSwapChoices": 31,
+            "statesWithScoringLineSwap": 0,
+            "phases": 28,
+            "chainActions": 1,
+            "checks": 108,
+            "scoringShowers": 0
+          },
+          "noScoringStateFraction": 0.686046511627907,
+          "meanScoringSwapChoices": 0.36046511627906974,
+          "setupSwapsPerScoringSwap": 2.185185185185185,
+          "meanOccupancy": 19.22093023255814,
+          "recipeInstances": {
+            "cross": 2,
+            "square": 26
+          },
+          "lineSizes": {},
+          "showerRecipeInstances": {}
+        },
+        {
+          "challenge": "ribbonCrossing",
+          "policy": "uniformRandom",
+          "runs": 6,
+          "outcomes": {
+            "lost": 6
+          },
+          "scoreRange": [
+            0,
+            5000
+          ],
+          "meanScore": 1666.6666666666667,
+          "showerRange": [
+            5,
+            6
+          ],
+          "meanShowers": 5.166666666666667,
+          "totals": {
+            "showers": 31,
+            "swaps": 124,
+            "scoringSwaps": 2,
+            "setupSwaps": 122,
+            "sampledStates": 124,
+            "statesWithoutScoringSwap": 21,
+            "summedScoringSwapChoices": 170,
+            "statesWithScoringLineSwap": 0,
+            "phases": 2,
+            "chainActions": 0,
+            "checks": 155,
+            "scoringShowers": 0
+          },
+          "noScoringStateFraction": 0.1693548387096774,
+          "meanScoringSwapChoices": 1.3709677419354838,
+          "setupSwapsPerScoringSwap": 61.0,
+          "meanOccupancy": 33.193548387096776,
+          "recipeInstances": {
+            "square": 2
+          },
+          "lineSizes": {},
+          "showerRecipeInstances": {}
+        },
+        {
+          "challenge": "ribbonCrossing",
+          "policy": "immediateScoreElseRandom",
+          "runs": 6,
+          "outcomes": {
+            "lost": 6
+          },
+          "scoreRange": [
+            40000,
+            46000
+          ],
+          "meanScore": 43333.333333333336,
+          "showerRange": [
+            9,
+            11
+          ],
+          "meanShowers": 9.333333333333334,
+          "totals": {
+            "showers": 56,
+            "swaps": 224,
+            "scoringSwaps": 21,
+            "setupSwaps": 203,
+            "sampledStates": 224,
+            "statesWithoutScoringSwap": 203,
+            "summedScoringSwapChoices": 41,
+            "statesWithScoringLineSwap": 0,
+            "phases": 33,
+            "chainActions": 6,
+            "checks": 280,
+            "scoringShowers": 0
+          },
+          "noScoringStateFraction": 0.90625,
+          "meanScoringSwapChoices": 0.18303571428571427,
+          "setupSwapsPerScoringSwap": 9.666666666666666,
+          "meanOccupancy": 24.339285714285715,
+          "recipeInstances": {
+            "square": 33
+          },
+          "lineSizes": {},
+          "showerRecipeInstances": {}
+        },
+        {
+          "challenge": "ribbonCrossing",
+          "policy": "idle",
+          "runs": 1,
+          "outcomes": {
+            "lost": 1
+          },
+          "scoreRange": [
+            0,
+            0
+          ],
+          "meanScore": 0,
+          "showerRange": [
+            5,
+            5
+          ],
+          "meanShowers": 5,
+          "totals": {
+            "showers": 5,
+            "swaps": 0,
+            "scoringSwaps": 0,
+            "setupSwaps": 0,
+            "sampledStates": 5,
+            "statesWithoutScoringSwap": 0,
+            "summedScoringSwapChoices": 15,
+            "statesWithScoringLineSwap": 0,
+            "phases": 0,
+            "chainActions": 0,
+            "checks": 5,
+            "scoringShowers": 0
+          },
+          "noScoringStateFraction": 0.0,
+          "meanScoringSwapChoices": 3.0,
+          "setupSwapsPerScoringSwap": null,
+          "meanOccupancy": 34.2,
+          "recipeInstances": {},
+          "lineSizes": {},
+          "showerRecipeInstances": {}
+        },
+        {
+          "challenge": "ribbonCrossing",
+          "policy": "retainedWinningWitness",
+          "runs": 1,
+          "outcomes": {
+            "won": 1
+          },
+          "scoreRange": [
+            220000,
+            220000
+          ],
+          "meanScore": 220000,
+          "showerRange": [
+            32,
+            32
+          ],
+          "meanShowers": 32,
+          "totals": {
+            "showers": 32,
+            "swaps": 118,
+            "scoringSwaps": 35,
+            "setupSwaps": 83,
+            "sampledStates": 118,
+            "statesWithoutScoringSwap": 83,
+            "summedScoringSwapChoices": 38,
+            "statesWithScoringLineSwap": 0,
+            "phases": 37,
+            "chainActions": 1,
+            "checks": 150,
+            "scoringShowers": 0
+          },
+          "noScoringStateFraction": 0.7033898305084746,
+          "meanScoringSwapChoices": 0.3220338983050847,
+          "setupSwapsPerScoringSwap": 2.3714285714285714,
+          "meanOccupancy": 18.220338983050848,
+          "recipeInstances": {
+            "square": 37
+          },
+          "lineSizes": {},
+          "showerRecipeInstances": {}
+        }
+      ],
+      "resultsSHA256": "162ab7f7070f748f48f1a14249e4f52d2b72e3b7dc0916f419e9c1507de74b32",
+      "candidateStarRecipeSHA256": "bbb4739fde32b943edd262e5dd3380d691ff516eccbb5f85a06e7153c799d551"
+    }
+  },
+  "pairedDifferences": [],
+  "commands": [
+    "xcrun swiftc -O -module-cache-path /tmp/starfall-fun-audit-2026-10-22/module-cache /tmp/starfall-fun-audit-2026-10-22/{variant}/Core/*.swift /tmp/starfall-fun-audit-2026-10-22/main.swift -o /tmp/starfall-fun-audit-2026-10-22/{variant}/model",
+    "/tmp/starfall-fun-audit-2026-10-22/{variant}/model {variant} > /tmp/starfall-fun-audit-2026-10-22/{variant}/results.json"
+  ],
+  "environment": "Apple Swift version 6.4 (swiftlang-6.4.0.34.1 clang-2100.3.34.1)\nTarget: arm64-apple-macosx27.0.0",
+  "reproduction": {
+    "runner": "run.py",
+    "runnerSHA256": "62ce5ecf1a19a843a593b8a4b945effd9275934b39fe13686d251ca2c098e560",
+    "requires": [
+      "main.swift",
+      "source.json",
+      "exact Core bytes matching recorded manifest",
+      "Xcode Swift toolchain"
+    ],
+    "command": "python3 run.py --source-root /path/to/Starfall --output /tmp/new-starfall-line-study",
+    "sourceScope": "Runner verifies every copied Core file hash before compiling; only writes output directory, never source root.",
+    "verified": "Wrapper rerun at a fresh /tmp output reproduces exact results.json bytes for both variants."
+  },
+  "result": {
+    "trajectoriesPerVariant": 28,
+    "pairedMetricOrTerminalSignatureDifferences": 0,
+    "boundaryFixtureCasesPerVariant": 9,
+    "committedStateChecksPerVariant": 1153,
+    "sampledStateQueriesPerVariant": 922,
+    "sampledStatesWithScoringLineSwapPerVariant": 0,
+    "lineRecipesCommittedPerVariant": 0,
+    "showerRecipeClearsPerVariant": 0,
+    "interpretation": "This shallow-policy/witness sample never exercises six-line recognition. It identifies setup effort and few immediate rewards on the selected policies, and does not establish line inaccessibility, optimality, human difficulty or enjoyment."
+  }
+}

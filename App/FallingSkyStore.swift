@@ -568,7 +568,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         guard canReceiveInput, !constellationTracing else { return }
         if !game.supportsManualClears {
             guard canContact(cell) else { explainSettling(at: cell); return }
-            guide("guide.patterns-inspect", visible: true)
+            guide("guide.patterns-inspect", values: game.automaticPatternValues, visible: true)
             feedback.announce(guideLine.spokenText)
             return
         }

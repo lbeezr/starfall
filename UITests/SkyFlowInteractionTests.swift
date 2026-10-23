@@ -138,7 +138,7 @@ final class SkyFlowInteractionTests: XCTestCase {
         captureEntry(app, "flow-another-entry")
     }
     @MainActor func testCurrentRibbonWinReplayAndFullSky() {
-        // Current Ribbon needs 118 deliberate exchanges and 32 showers to win.
+        // The current four-star-line witness uses 98 exchanges and 32 showers to win.
         // Replay the same revision without arranging to retain the overflow boundary.
         executionTimeAllowance = 600
         requireNormalMotion()

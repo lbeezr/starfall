@@ -1,12 +1,16 @@
 # Starfall
 
+**Four-star-line phone trial — October 22:** New Lantern/Ribbon visits now select revision 4, with automatic straight runs of four or more and unchanged squares, crosses, growth, supply, scoring, targets and timing. Continue/Replay preserve the saved rule. [Development evidence](docs/evidence/four-star-lines-2026-10-22/README.md) passes 236 Core, 188 hosted and five selected native phone/tablet checks, plus Debug/Release; canonical phone delivery is pending.
+
+**Mechanics fun investigation — October 22:** The player identifies too much arranging before a satisfying clear. [Research and bounded seven/six/five/four comparisons](docs/evidence/mechanics-fun-2026-10-22/README.md) find four-star lines the strongest next playtest candidate: the simple policy needs about 40% fewer setup exchanges per scoring exchange in both locations. Six is not exercised naturally and five gives mixed results. The [short pilot](docs/design/CURRENT_STORY_PLAYTEST.md#a-five-minute-first-pilot) records enjoyment, control and actual decisions; shipped rules and saves are unchanged.
+
 **Playable clarity — October 22:** A swipe that rises and falls back now [explains gravity](docs/evidence/factory-move-feedback-2026-10-22/README.md). The [Tutorial introduction](docs/evidence/factory-tutorial-scope-2026-10-22/README.md) distinguishes its Open Sky/original-restoration practice from new Lantern/Ribbon automatic patterns before chapter choice. Selected phone/tablet checks preserve next input, active rounds and world progress. VoiceOver remains deferred.
 
 The [storm practice instruction](docs/evidence/storm-practice-guidance-2026-10-22/README.md) now teaches its actual five-star Next shower action without asking players to read hidden landing columns. Its native journey preserves the retained Story round and world state.
 
 **Story growth clarity — October 22:** Current Lantern/Ribbon guidance now explains that grown stars carry twice the starlight while occupying one place in an automatic pattern. The message allows player-paced reading. [Native evidence](docs/evidence/factory-gameplay-2026-10-22/README.md) records phone/tablet default and largest-text checks, retained-rule coverage and a separately reproduced baseline restore-guide failure.
 
-**Lantern/Ribbon revision 3 — development verified and delivered:** New visits use automatic patterns only: four-star squares, five-star crosses and full seven-star rows/columns. Taps and traces no longer activate clears. Half-full entrances, causal chains and **150,000/220,000** objectives remain. [Current evidence and limits](docs/evidence/story-patterns-2026-10-20/README.md) track rule, native and delivery acceptance separately. Retained rounds keep their saved rules.
+**Retained Lantern/Ribbon revision 3 — development verified and delivered:** These rounds use automatic patterns only: four-star squares, five-star crosses and full seven-star rows/columns. Taps and traces no longer activate clears. Half-full entrances, causal chains and **150,000/220,000** objectives remain. [Current evidence and limits](docs/evidence/story-patterns-2026-10-20/README.md) track rule, native and delivery acceptance separately. Retained rounds keep their saved rules.
 
 **Balance review:** The player rejected revision 2’s easy tap clears. Both locations now use all five ordinary families; constrained mixed supply passes arrangement-only reachability checks. [Competitive research](docs/design/PUZZLE_PACING_RESEARCH.md) informs the direction, while the next phone session must assess comprehension and recovery before extending it to other places. Mastery ratings and multiplayer remain deferred.
 
@@ -54,7 +58,7 @@ Player wording and character voices are authored in the [local copy catalogue](A
 
 ## How to play
 
-**New Lantern Landing and Ribbon Crossing visits:** Swipe neighboring stars to arrange a matching 2×2 square of four, a cross of five, or a full row or column of seven. Patterns clear automatically after a swap or shower; falling survivors can form another pattern and build a chain. Count actual stars, including each grown star once. Overlapping patterns clear each shared star once. Taps inspect without clearing, and traces do not activate clears. Reach 150,000/220,000 points before an arrival column fills.
+**New Lantern Landing and Ribbon Crossing visits:** Swipe neighboring stars to arrange a matching 2×2 square of four, a cross of five, or a straight horizontal/vertical run of four or more. Retained revision-3 rounds require seven for a straight line. Patterns clear automatically after a swap or shower; falling survivors can form another pattern and build a chain. Count actual stars, including each grown star once. Overlapping patterns clear each shared star once. Taps inspect without clearing, and traces do not activate clears. Reach 150,000/220,000 points before an arrival column fills.
 
 **Open Sky and the five later restoration locations:** Use the tap, trace and setup controls below. Tutorial practices Open Sky’s controls. Retained Lantern/Ribbon saves and replay keep their original rules; a new visit selects the automatic-pattern rules above.
 

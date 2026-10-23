@@ -160,10 +160,12 @@ public struct FallingSky: Codable, Equatable, Sendable {
         guard let challenge else { return nil }
         return StoryChallengeDefinition(challenge, revision: challengeRevision)
     }
-    /// Authored revisions two and three resolve recipes after committed settling.
+    /// Authored revisions two onward resolve recipes after committed settling.
     public var supportsAutomaticRecipes: Bool { (storyDefinition?.revision ?? 0) >= 2 }
-    /// Revision three earns clears only by completing automatic board patterns.
-    public var supportsManualClears: Bool { challengeRevision != 3 }
+    /// The saved round's actual-star threshold; retained rules may omit lines.
+    public var automaticLineLength: Int? { storyDefinition?.automaticLineLength }
+    /// Revisions three onward earn clears only by completing automatic board patterns.
+    public var supportsManualClears: Bool { challengeRevision < 3 }
     /// Player-facing points for this saved revision; `score` remains conserved light.
     public var displayScore: Int {
         guard challengeRevision != 0 else { return score }
@@ -507,7 +509,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
         let before = self
         board.swapAt(from.row * Self.side + from.column, to.row * Self.side + to.column)
         board = SkyBoardSettling.settle(board)
-        let phases = supportsAutomaticRecipes ? SkyRecipeResolution.resolve(board, includingLines: challengeRevision == 3) : []
+        let phases = supportsAutomaticRecipes ? SkyRecipeResolution.resolve(board, lineLength: automaticLineLength) : []
         let award = commitResolution(phases)
         return .init(exchange:.init(from:from,to:to),stellarAffectedColumns: criticalMassChangedColumns(from: before),duskAffectedColumns:duskChangedColumns(from:before),
                      resolutionPhases: phases, award: award, cleared:[],collected:award?.baseLight ?? 0,settled:board,
@@ -594,7 +596,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
         // An ordered arrival that overflows commits the existing loss. Only a
         // fully landed shower can begin recipe resolution and a new forecast.
         let resolution = supportsAutomaticRecipes && blockedColumn == nil
-            ? SkyRecipeResolution.resolve(board, includingLines: challengeRevision == 3) : []
+            ? SkyRecipeResolution.resolve(board, lineLength: automaticLineLength) : []
         let award = commitResolution(resolution)
         if !isOver || (supportsAutomaticRecipes && blockedColumn == nil) { incoming = nextShower() }
         return .init(stellarCollapses: stellarCollapses,
@@ -708,7 +710,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
     }
 
     public var isValidSave: Bool {
-        guard board.count == 49, [nil, 1, 2, 3].contains(savedChallengeRevision) else { return false }
+        guard board.count == 49, [nil, 1, 2, 3, 4].contains(savedChallengeRevision) else { return false }
         if let definition = storyDefinition {
             guard challengeActionVersion == 1, seed == definition.seed, balance == definition.balance,
                   !hasOpeningCascade, generation == .legacy, duskRule == .legacy, darkStarsCleared == 0,

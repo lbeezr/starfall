@@ -6,11 +6,11 @@ import StarfallCore
 final class SkyDialogueTests: XCTestCase {
     @MainActor func testSwapAndMultitouchInstructionsFollowTheSavedControlRules() throws {
         for challenge in [StarfallChallenge.firstLight, .ribbonCrossing] {
-            for revision in 1...3 {
+            for revision in 1...4 {
                 let game = FallingSky(definition: try XCTUnwrap(StoryChallengeDefinition(challenge, revision: revision)))
                 let swap = SkyCopy.swapInstructions(manualClears: SkyHelpContext(game: game).manualClears)
                 let contact = SkyCopy.oneFingerInstructions(drawingEnabled: game.supportsManualClears)
-                if revision == 3 {
+                if revision >= 3 {
                     XCTAssertTrue(swap.contains("matching patterns pop"))
                     XCTAssertFalse(swap.contains("constellation"))
                     XCTAssertEqual(contact, "Use one finger to move a star.")
@@ -29,17 +29,20 @@ final class SkyDialogueTests: XCTestCase {
     }
 
     func testBoardAndMenuSummariesSupplyOnlyTheirModesPlaceholders() {
-        XCTAssertEqual(SkyCopy.boardSummary(showers: 2, groups: 4, manualClears: true),
+        XCTAssertEqual(SkyCopy.boardSummary(showers: 2, groups: 4, manualClears: true, automaticLineLength: nil),
                        SkyCopy.text(.a11yBoardSummary, values: ["showers": "2", "groups": "4"]))
-        let patterns = SkyCopy.boardSummary(showers: 2, groups: 4, manualClears: false)
+        let patterns = SkyCopy.boardSummary(showers: 2, groups: 4, manualClears: false, automaticLineLength: 7)
         XCTAssertEqual(patterns, "2 showers. Arrange matching squares of 4, crosses of 5, or full lines of 7.")
         XCTAssertFalse(patterns.contains("groups"))
+        XCTAssertEqual(SkyCopy.boardSummary(showers: 2, groups: 4, manualClears: false, automaticLineLength: 4),
+                       "2 showers. Arrange matching squares of 4, crosses of 5, or straight lines of 4 or more.")
     }
 
     @MainActor func testCascadeEntryReplayAndHelpFollowTheSelectedSavedRevision() throws {
         for challenge in [StarfallChallenge.firstLight, .ribbonCrossing] {
             let old = FallingSky(definition: try XCTUnwrap(StoryChallengeDefinition(challenge, revision: 1)))
             let cascade = FallingSky(definition: try XCTUnwrap(StoryChallengeDefinition(challenge, revision: 2)))
+            let seven = FallingSky(definition: try XCTUnwrap(StoryChallengeDefinition(challenge, revision: 3)))
             let fresh = FallingSky.freshChallenge(challenge)
             let entry: SkyEntryRequest = challenge == .firstLight ? .firstLight : .ribbonCrossing
             let freshLine = entry.introduction(challenge: challenge,
@@ -49,7 +52,8 @@ final class SkyDialogueTests: XCTestCase {
                            "A new visit chooses current rules even while an older round is retained")
             XCTAssertTrue(freshLine.text.contains(SkyCopy.score(try XCTUnwrap(fresh.displayTarget))))
             XCTAssertEqual(SkyHelpContext.selected(game: old, entry: entry), SkyHelpContext(game: fresh))
-            for game in [old, cascade, fresh] {
+            XCTAssertTrue(freshLine.text.contains("straight lines of 4 or more"))
+            for game in [old, cascade, seven, fresh] {
                 let replay = SkyEntryRequest.replay.introduction(challenge: challenge,
                     replayingRevision: game.challengeRevision, replayingTarget: game.displayTarget)
                 let variant = game.challengeRevision == 1 ? ".story" : game.challengeRevision == 2 ? ".cascade" : ".patterns"
@@ -60,7 +64,14 @@ final class SkyDialogueTests: XCTestCase {
                 XCTAssertEqual(SkyHelpContext(game: game).manualClears, game.challengeRevision < 3)
             }
             XCTAssertTrue(fresh.challengeHelpText?.contains("automatically") == true)
-            XCTAssertTrue(fresh.challengeHelpText?.contains("7") == true)
+            XCTAssertTrue(fresh.challengeHelpText?.contains("straight lines of 4 or more") == true)
+            XCTAssertTrue(fresh.challengeGuideLine?.text.contains("straight lines of 4 or more") == true)
+            XCTAssertTrue(SkyHelpContext(game: fresh).recipeInstructions.contains("straight lines of 4 or more"))
+            XCTAssertEqual(SkyHelpContext(game: fresh).automaticLineLength, 4)
+            XCTAssertTrue(seven.challengeHelpText?.contains("full lines of 7") == true)
+            XCTAssertTrue(seven.challengeGuideLine?.text.contains("full lines of 7") == true)
+            XCTAssertTrue(SkyHelpContext(game: seven).recipeInstructions.contains("full lines of 7"))
+            XCTAssertEqual(SkyHelpContext(game: seven).automaticLineLength, 7)
             XCTAssertTrue(cascade.challengeHelpText?.contains("automatically") == true)
             XCTAssertFalse(old.challengeHelpText?.contains("automatically") == true,
                            "A retained explicit-clear round must not promise automatic recipes")
@@ -122,7 +133,7 @@ final class SkyDialogueTests: XCTestCase {
             XCTAssertEqual(result.speaker, .spark)
             XCTAssertEqual(result.priority, .routine)
             XCTAssertNil(result.seconds, "Current Story growth guidance remains available for player-paced reading")
-            XCTAssertEqual(result.text, "Oh! A star grew. Grown stars carry twice the starlight, but each still counts as one star in a square, cross or full line.")
+            XCTAssertEqual(result.text, "Oh! A star grew. Grown stars carry twice the starlight, but each still counts as one star in a square, cross or straight line.")
             XCTAssertFalse(result.text.contains("tap match"))
         }
     }
@@ -301,7 +312,7 @@ final class SkyDialogueTests: XCTestCase {
 
     func testCatalogRendersEveryBundledScriptAndRejectsAuthoringErrors() throws {
         let catalog = SkyDialogueLibrary.catalog
-        let samples = ["count": "4", "score": "18", "target": "150,000", "stars": "5", "dark": "Dark star", "growth": "A star grew", "arrival": "One star arrived", "detail": "A fixture", "release": "The hole releases its stars after 3 more showers.", "feeds": "5", "swallowed": "I swallowed 3 stars.", "shape": "Square", "depth": "2", "phase": "Storm: 3 heavy showers left.", "cadence": "Showers are closer together now.", "summary": "Paused", "reason": "First Light complete!", "context": "A storm is coming"]
+        let samples = ["count": "4", "score": "18", "target": "150,000", "lines": "straight lines of 4 or more", "stars": "5", "dark": "Dark star", "growth": "A star grew", "arrival": "One star arrived", "detail": "A fixture", "release": "The hole releases its stars after 3 more showers.", "feeds": "5", "swallowed": "I swallowed 3 stars.", "shape": "Square", "depth": "2", "phase": "Storm: 3 heavy showers left.", "cadence": "Showers are closer together now.", "summary": "Paused", "reason": "First Light complete!", "context": "A storm is coming"]
         for source in catalog.scripts {
             let values = samples.filter { key, _ in source.lines.contains { $0.text.contains("{\(key)}") } }
             let rendered = try catalog.script(source.id, values: values)

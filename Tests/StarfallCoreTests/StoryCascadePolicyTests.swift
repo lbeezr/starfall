@@ -231,7 +231,7 @@ final class StoryCascadePolicyTests: XCTestCase {
             (StarfallChallenge.firstLight, 22, 86, 154_000),
             (.ribbonCrossing, 32, 118, 220_000)
         ] {
-            var game = FallingSky.freshChallenge(challenge)
+            var game = FallingSky(definition: StoryChallengeDefinition(challenge, revision: 3)!)
             XCTAssertEqual(game.challengeRevision, 3)
             let opening = game
             let witness = revisionThreeWitness(for: challenge)

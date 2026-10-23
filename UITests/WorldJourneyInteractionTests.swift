@@ -693,6 +693,88 @@ final class WorldJourneyInteractionTests: XCTestCase {
         XCTAssertTrue(app.buttons["experiment.next"].exists)
     }
 
+    @MainActor func testFourStarLineFromFreshLanternClearsAutomaticallyAndRestores() throws {
+        executionTimeAllowance = 180
+        let (preferences, toggle) = NativeSystemMotionSettings.open()
+        let originalMotion = toggle.value as? String == "1"
+        NativeSystemMotionSettings.set(false, on: toggle)
+        preferences.terminate()
+        addTeardownBlock { @MainActor in
+            let (settings, restored) = NativeSystemMotionSettings.open()
+            NativeSystemMotionSettings.set(originalMotion, on: restored)
+            settings.terminate()
+        }
+        let app = launch()
+        defer { app.terminate() }
+        app.worldVisitControl("firstLight").tap()
+        XCTAssertTrue(app.staticTexts["sky.subtitle"].label.contains("straight lines of 4 or more"))
+        tap("sky.begin", app)
+        tap("experiment.settings", app); tap("experiment.pause", app)
+        let board = app.otherElements["experiment.board"]
+        let score = app.staticTexts["experiment.score"]
+        let next = app.buttons["experiment.next"]
+        func waitForScore(_ points: Int) {
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@",
+                "\(points.formatted()) of 150,000 starlight collected"), object: score).wait(timeout: 5))
+        }
+        func settled() {
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"),
+                                                   object: next).wait(timeout: 5))
+        }
+        func occupiedCount() -> Int {
+            app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND NOT label BEGINSWITH %@",
+                                              "experiment.cell.", "Empty,")).count
+        }
+        XCTAssertTrue((board.value as? String)?.hasPrefix("0 showers") == true)
+        XCTAssertTrue((board.value as? String)?.contains("straight lines of 4 or more") == true)
+
+        // The unchanged opening exchange still earns two automatic squares.
+        drag(app, from: (1, 1), to: (1, 2), drawing: false)
+        waitForScore(15_000); settled()
+        XCTAssertEqual(occupiedCount(), 16)
+        for column in [0, 2, 3, 4] {
+            XCTAssertTrue(app.buttons["experiment.cell.0.\(column)"].label.contains("Violet"))
+        }
+        XCTAssertTrue(app.buttons["experiment.cell.0.1"].label.hasPrefix("Empty,"))
+        let beforeLine = try visibleIdentities(board, prefix: "experiment.cell.")
+        tap("experiment.cell.0.0", app)
+        waitForScore(15_000)
+        XCTAssertEqual(try visibleIdentities(board, prefix: "experiment.cell."), beforeLine, "A tap still only inspects in current Story")
+        XCTAssertTrue(app.staticTexts["experiment.message"].label.contains("straight lines of 4 or more"))
+        capture("story-four-star-line-natural-gap-before-swap", app)
+
+        // Move one Violet into the gap: columns 1...4 form exactly four stars.
+        drag(app, from: (0, 0), to: (0, 1), drawing: false)
+        waitForScore(20_000); settled()
+        XCTAssertEqual(occupiedCount(), 12, "The automatic line spends four actual stars once")
+        XCTAssertNotEqual(try visibleIdentities(board, prefix: "experiment.cell."), beforeLine)
+        XCTAssertTrue((board.value as? String)?.hasPrefix("0 showers") == true)
+        capture("story-four-star-line-native-clear-normal-motion", app)
+
+        // Settled line presentation admits the next ordinary exchange.
+        let afterLine = try visibleIdentities(board, prefix: "experiment.cell.")
+        drag(app, from: (0, 5), to: (1, 5), drawing: false)
+        waitForScore(25_000); settled()
+        XCTAssertNotEqual(try visibleIdentities(board, prefix: "experiment.cell."), afterLine)
+        XCTAssertEqual(occupiedCount(), 8, "The next automatic square keeps its original four-star award")
+        let retained = try visibleIdentities(board, prefix: "experiment.cell.")
+        tap("experiment.settings", app); tap("experiment.done", app)
+        XCTAssertEqual(try visibleIdentities(board, prefix: "experiment.cell."), retained)
+        XCUIDevice.shared.press(.home); app.activate()
+        waitForScore(25_000)
+        XCTAssertEqual(try visibleIdentities(board, prefix: "experiment.cell."), retained)
+        app.terminate(); app.launchArguments = ["--sky-flow-review", "-calmEffects", "NO"]; app.launch()
+        tap("sky.resume", app)
+        waitForScore(25_000); settled()
+        XCTAssertEqual(try visibleIdentities(board, prefix: "experiment.cell."), retained, "Relaunch retains the committed four-star-line round")
+        XCTAssertTrue((board.value as? String)?.contains("straight lines of 4 or more") == true)
+        capture("story-four-star-line-retained-after-relaunch", app)
+        tap("experiment.next", app)
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+            (board.value as? String)?.hasPrefix("1 showers") == true
+        }, object: nil).wait(timeout: 5), "Restore admits the next explicit shower exactly once")
+    }
+
     @MainActor func testRevisedRibbonSwapCreatesLargerClearWithLargestText() {
         continueAfterFailure = false
         let app = XCUIApplication()

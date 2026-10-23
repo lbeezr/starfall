@@ -2,6 +2,8 @@
 
 Native tests for stores, presentation and materials that require Apple frameworks.
 
+`StoryPatternPlan` and `FallingSkyTestSupport` reconstruct revision-4 Lantern/Ribbon wins through production actions. Core retains separate revision-3 witnesses. Archive tests cover v13 writes, retained v12 seven-star Continue/Replay and historical envelope limits.
+
 ## Start here
 
 Use the Starfall Xcode scheme and the relevant test identifiers. Pure package tests do not execute this suite; retain source-bound native results.

@@ -15,11 +15,17 @@ enum SkyCopy {
     }
 
     /// Each mode supplies exactly the placeholders its summary consumes.
-    static func boardSummary(showers: Int, groups: Int, manualClears: Bool) -> String {
+    static func boardSummary(showers: Int, groups: Int, manualClears: Bool, automaticLineLength: Int?) -> String {
         if manualClears {
             return text(.a11yBoardSummary, values: ["showers": String(showers), "groups": String(groups)])
         }
-        return text(.a11yPatternsBoardSummary, values: ["showers": String(showers)])
+        guard let automaticLineLength else { preconditionFailure("Automatic pattern play needs its saved line rule") }
+        return text(.a11yPatternsBoardSummary, values: ["showers": String(showers), "lines": patternLines(automaticLineLength)])
+    }
+
+    static func patternLines(_ length: Int) -> String {
+        precondition(length == 4 || length == 7, "Unsupported automatic line rule")
+        return text(length == 4 ? .patternLinesFour : .patternLinesSeven)
     }
 
     static func swapInstructions(manualClears: Bool) -> String {
@@ -134,6 +140,8 @@ enum SkyCopy {
         case helpCascadeOpening = "help.cascadeOpening"
         case helpCascadeRecipe = "help.cascadeRecipe"
         case helpCascadeChain = "help.cascadeChain"
+        case patternLinesFour = "patterns.linesFour"
+        case patternLinesSeven = "patterns.linesSeven"
         case helpPatternsTitle = "help.patternsTitle"
         case helpPatternsControls = "help.patternsControls"
         case helpPatternsSwap = "help.patternsSwap"
