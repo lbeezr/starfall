@@ -86,6 +86,8 @@ final class FullBoardLanternInteractionTests: XCTestCase {
         XCTAssertEqual(ceiling(app).label, "Board top edge")
         XCTAssertEqual(ceiling(app).value as? String ?? "", "")
         XCTAssertFalse(app.staticTexts["sky.pressure"].exists)
+        XCTAssertFalse(app.descendants(matching: .any).matching(identifier: "sky.forecast.destinations").firstMatch.exists)
+        XCTAssertFalse(app.descendants(matching: .any).matching(identifier: "experiment.arrivalCue").firstMatch.exists)
         XCTAssertFalse(app.buttons["experiment.pause"].exists)
         XCTAssertFalse(app.buttons["experiment.next"].exists)
     }

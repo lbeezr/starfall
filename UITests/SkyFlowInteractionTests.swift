@@ -246,6 +246,20 @@ final class SkyFlowInteractionTests: XCTestCase {
                       "The complete top-row star must remain visible and accept physical input")
     }
 
+    @MainActor private func assertFifthForecast(_ app: XCUIApplication) {
+        let forecast = app.descendants(matching: .any).matching(identifier: "sky.forecast.destinations").firstMatch
+        XCTAssertTrue(forecast.waitForExistence(timeout: 5))
+        XCTAssertEqual(forecast.label, "Next columns")
+        let descriptions = (forecast.value as? String ?? "").components(separatedBy: ", then ")
+        XCTAssertEqual(descriptions.count, 5)
+        guard descriptions.count == 5 else { return }
+        for (description, column) in zip(descriptions, [7, 6, 1, 2, 4]) {
+            XCTAssertTrue(description.hasSuffix("column \(column)"), description)
+        }
+        XCTAssertTrue(descriptions[3].hasPrefix("Rose"), "The incoming Rose names full column 2")
+        XCTAssertTrue(app.frame.contains(forecast.frame), "Every destination must fit in the visible header")
+    }
+
     @MainActor private func reachFullStoryColumn(largest: Bool = false, quiet: Bool = false) -> XCUIApplication {
         let app = launch(largest: largest, quiet: quiet)
         app.worldVisitControl("firstLight").tap(); tap("sky.begin", app)
@@ -269,11 +283,16 @@ final class SkyFlowInteractionTests: XCTestCase {
         let ceiling = app.descendants(matching: .any).matching(identifier: "sky.ceiling").firstMatch
         XCTAssertTrue(ceiling.waitForExistence(timeout: 3))
         XCTAssertEqual(ceiling.label, "Sky ceiling")
+        if largest {
+            XCTAssertGreaterThan(ceiling.frame.height, 44,
+                                 "The ceiling description must include the complete scaled warning badges")
+        }
         XCTAssertTrue((ceiling.value as? String)?.contains("Column 2: full, at risk.") == true)
         XCTAssertTrue((ceiling.value as? String)?.contains("Column 1: 1 space left.") == true)
         XCTAssertLessThanOrEqual(ceiling.frame.maxY, app.buttons["experiment.cell.6.0"].frame.minY + 1,
                                  "The passive ceiling description must not cover native star targets")
         revealStoryCeiling(app)
+        assertFifthForecast(app)
         capture(app, largest ? "pressure-full-largest" : "pressure-full-default")
         return app
     }
@@ -290,6 +309,7 @@ final class SkyFlowInteractionTests: XCTestCase {
             XCTAssertTrue(pressure.waitForExistence(timeout: 5))
             XCTAssertTrue(pressure.label.contains("Column 2 is full"))
             XCTAssertTrue(app.buttons["experiment.next"].exists, "Restoring the crowded board stays paused")
+            assertFifthForecast(app)
         }
         let source = app.buttons["experiment.cell.0.1"], destination = app.buttons["experiment.cell.0.2"]
         app.revealSkyControls([source, destination])
@@ -316,6 +336,7 @@ final class SkyFlowInteractionTests: XCTestCase {
             app.readSkyGuideToEnd(actions: [app.buttons["experiment.next"]])
         }
         revealStoryCeiling(app)
+        assertFifthForecast(app)
         capture(app, largest ? "pressure-recovered-largest" : "pressure-recovered-default")
         let next = app.buttons["experiment.next"]
         app.revealSkyControls([next]); next.tap()
@@ -341,6 +362,7 @@ final class SkyFlowInteractionTests: XCTestCase {
         let outcome = app.staticTexts["experiment.outcome"]
         XCTAssertTrue(outcome.waitForExistence(timeout: 8)); XCTAssertEqual(outcome.label, "No room to land")
         XCTAssertFalse(app.staticTexts["sky.pressure"].exists)
+        XCTAssertFalse(app.descendants(matching: .any).matching(identifier: "sky.forecast.destinations").firstMatch.exists)
         capture(app, "pressure-idle-overflow")
     }
 

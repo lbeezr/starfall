@@ -1,0 +1,87 @@
+{
+  "runtime": "iOS27.0 (24A434) Simulator",
+  "snapshots": [
+    "source-first-slice.json",
+    "source-snapshot.json",
+    "source-integration.json"
+  ],
+  "captures": [
+    {
+      "file": "dev-47e633e__forecast-before__iphone-17e__default.jpg",
+      "sha256": "6434388c12973d52adb98ad4675a5540e39c21cfad70c7f7b57c2be9c7d64a5d",
+      "originalSHA256": "c43f1cf9c46c6989388087223136080bacfcec5ed0f75a03180d9ac69ba6fd30",
+      "source": "47e633e3",
+      "buildLabel": "dev.local",
+      "variant": "iPhone17e default normal motion",
+      "test": "SkyFlowInteractionTests/testFullStoryColumnShowsPressureAndCommittedRecovery()",
+      "timestamp": 1792779344.841,
+      "inspection": "Before: the full-column warning and family-only trail do not associate arrivals with columns.",
+      "status": "Current within the named source/slice"
+    },
+    {
+      "file": "dev-9027076__forecast-full-column2__iphone-17e__default.jpg",
+      "sha256": "9ad29f79607824f354c2bd465bcd03f31ceaf51150f5631a8b32570a146f88a1",
+      "originalSHA256": "f1fa4aff72faf60eb2883845c29a6789291dce137948565a9ae56aeeb45e063c",
+      "source": "9027076",
+      "buildLabel": "dev.local",
+      "variant": "iPhone17e default normal motion",
+      "test": "SkyFlowInteractionTests/testFullStoryColumnShowsPressureAndCommittedRecovery()",
+      "timestamp": 1792781151.444,
+      "inspection": "The announced Rose names column2 above the same full-column2 ceiling badge.",
+      "status": "Current within the named source/slice"
+    },
+    {
+      "file": "dev-9027076__forecast-recovered__iphone-17e__default.jpg",
+      "sha256": "ace75dfb7744250f09132f09bb5671b25cbe9e7b66e0b5bb7a7fbd3791b35896",
+      "originalSHA256": "05bb65d7539ee53f153a4c8c7ae960ba36a5d351f9565b36b0755577f9995cf6",
+      "source": "9027076",
+      "buildLabel": "dev.local",
+      "variant": "iPhone17e default normal motion",
+      "test": "SkyFlowInteractionTests/testFullStoryColumnShowsPressureAndCommittedRecovery()",
+      "timestamp": 1792781170.402,
+      "inspection": "The clear earns5000, opens four spaces in column2 and retains exactly the same forecast.",
+      "status": "Current within the named source/slice"
+    },
+    {
+      "file": "dev-d01ac54__forecast-whole-badges__ipad-mini-a17pro__ax3xl-calm.jpg",
+      "sha256": "17ebd6b3318042842d59cda37164355e94d9e854b8dfc11510a9f448322ac2f7",
+      "originalSHA256": "bef39df76ac97c5251a6974ad52322d83c2ab298d41329aa2c943c7df7d22cbb",
+      "source": "d01ac54 /1f7f91012bae",
+      "buildLabel": "dev.local",
+      "variant": "iPad mini A17Pro AX3XL Calm",
+      "test": "SkyFlowInteractionTests/testLargestQuietStoryPressureAndRecoveryRemainReadable()",
+      "timestamp": 1792780891.15,
+      "inspection": "Complete scaled badges and next-column row below the pinned header; earlier clipped export rejected.",
+      "status": "Current within the named source/slice"
+    },
+    {
+      "file": "dev-d01ac54__forecast-full-column2__iphone-se3__default.jpg",
+      "sha256": "1899cd21614c474477ef5a15d43a8dc51b9b941bc7cce6e1b590e518846d7d29",
+      "originalSHA256": "25903f6e347dea22c8571ac698ad73a2f7891943084284c3acd299bee219e23f",
+      "source": "d01ac54 /1f7f91012bae",
+      "buildLabel": "dev.local",
+      "variant": "iPhone SE3 default normal motion",
+      "test": "SkyFlowInteractionTests/testFullStoryColumnShowsPressureAndCommittedRecovery()",
+      "timestamp": 1792780889.663,
+      "inspection": "Five destination pairs, full ceiling, top star and paused actions remain visible on the compact phone.",
+      "status": "Current within the named source/slice"
+    },
+    {
+      "file": "dev-47e633e-wip-10321bc82370__blocked-column2__iphone-17e__default.jpg",
+      "sha256": "7fe2d1e06ed9981ceb03bacf8f04cf2a82e20b785c9ab11b152660c7a5b67b7b",
+      "originalSHA256": "65874a7e6b9ef29c631e0d6d6aa0b4b13556351b04d06790c7de8a484d53522a",
+      "source": "47e633e3 +10321bc82370",
+      "buildLabel": "dev.local",
+      "variant": "iPhone17e default normal motion",
+      "test": "SkyFlowInteractionTests/testIdleFullStoryColumnReachesTheActualBlockedArrival()",
+      "timestamp": 1792780483.418,
+      "inspection": "Declining the clear reaches the actual blocked arrival in column2; result offers Replay.",
+      "status": "Current within the named source/slice"
+    }
+  ],
+  "limits": [
+    "Before/after snapshots establish the selected header and complete warning appearance only.",
+    "Quiet d01ac54 tablet header/ceiling is unchanged by integrated packet-only rendering edits, which do not render a Canvas in Calm.",
+    "Actual VoiceOver, physical contrast/comfort, human recognition and continuous animation quality remain unmeasured."
+  ]
+}

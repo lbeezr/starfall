@@ -1,0 +1,13 @@
+{
+  "codeCommit": "9027076415bde6bc6b1708d725d3152e42c43e29",
+  "mainIntegrated": "7d70063bc3014207002555823ad2008375ec1f35",
+  "goal5CodeEquivalent": "d01ac54",
+  "firstSlice": "10321bc82370",
+  "finalGoal5InputSnapshot": "1f7f91012bae",
+  "sharedCompiledChangesSinceGoal5Checkpoint": [
+    "App/StarlightCelebration.swift",
+    "AppTests/StarlightCelebrationTests.swift"
+  ],
+  "sharedChangeScope": "StarlightCelebration protects score from packets; forecast, Core, save and header untouched. Quiet tablet has no packet Canvas. Integrated builds and focused/native checks recorded separately.",
+  "buildAffectingDirtyPaths": []
+}
