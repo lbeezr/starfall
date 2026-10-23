@@ -17,6 +17,7 @@ final class SkyTutorialTests: XCTestCase {
             }
             XCTAssertTrue(run.complete, chapter.rawValue)
             let expected: [SkyTutorial: (Int, Int, Int)] = [
+                .storySquare: (8,16,0),
                 .match: (3,1,0), .grown: (3,1,0), .exchange: (0,9,0), .emptySpace: (0,3,0),
                 .trace: (5,1,0), .diagonal: (5,20,0), .gap: (5,0,0), .branch: (5,4,0),
                 .square: (4,2,0), .cross: (5,4,0), .opal: (3,1,0), .relay: (8,0,0),
@@ -30,6 +31,101 @@ final class SkyTutorialTests: XCTestCase {
             XCTAssertEqual(game.turns, result.2, chapter.rawValue)
             if chapter == .restoration { XCTAssertEqual(game.outcome, .won) }
             if chapter == .storm { XCTAssertEqual(chapter.game().incoming.count, 5) }
+        }
+    }
+
+    func testStorySquareUsesCurrentOpeningAndResolvesItsActualSurvivorChain() throws {
+        let opening = SkyTutorial.storySquare.game()
+        XCTAssertEqual(SkyTutorial.allCases.first, .storySquare)
+        XCTAssertEqual(opening, FallingSky.freshChallenge(.firstLight))
+        XCTAssertFalse(SkyTutorial.storySquare.allowsClock)
+        XCTAssertFalse(opening.supportsManualClears)
+        XCTAssertEqual(opening.automaticLineLength, 4)
+        XCTAssertEqual(opening.occupiedCount, 24)
+        XCTAssertTrue(opening.recipes.isEmpty)
+
+        var game = opening, run = SkyTutorialRun(.storySquare)
+        let action = try XCTUnwrap(run.next)
+        XCTAssertEqual(action, .swap(Cell(1,2), Cell(1,1)))
+        let turn = try XCTUnwrap(action.perform(in: &game))
+        XCTAssertEqual(turn.resolutionPhases.map { $0.recipes.map(\.shape) }, [[.square], [.square]])
+        XCTAssertEqual(turn.resolutionPhases.map(\.comboDepth), [1, 2])
+        XCTAssertEqual(turn.resolutionPhases.map(\.award.displayPoints), [5_000, 10_000])
+        XCTAssertEqual(turn.resolutionPhases.map(\.cleared), [
+            Set([Cell(0,0), Cell(0,1), Cell(1,0), Cell(1,1)]),
+            Set([Cell(0,1), Cell(0,2), Cell(1,1), Cell(1,2)])
+        ])
+        let firstPhase = try XCTUnwrap(turn.resolutionPhases.first)
+        let secondPhase = try XCTUnwrap(turn.resolutionPhases.dropFirst().first)
+        XCTAssertEqual(secondPhase.before, firstPhase.settled)
+        XCTAssertEqual(turn.displayAward, 15_000)
+        XCTAssertTrue(turn.arrivals.isEmpty)
+        XCTAssertEqual(game.score, 8, "Physical starlight stays distinct from displayed chain points")
+        XCTAssertEqual(game.displayScore, 15_000)
+        XCTAssertEqual(game.occupiedCount, 16)
+        XCTAssertEqual(game.turns, 0)
+        XCTAssertEqual(game.starsLanded, opening.starsLanded)
+        XCTAssertEqual(game.incoming, opening.incoming)
+        let survivorIDs: [Int?] = [
+            14, nil, 16, 3, 4, 5, 6,
+            21, nil, 23, 10, 11, 12, 13,
+            nil, nil, nil, 17, 18, 19, 20
+        ] + Array(repeating: nil, count: 28)
+        XCTAssertEqual(game.board.map { $0?.id }, survivorIDs)
+        XCTAssertTrue(game.isValidSave)
+        XCTAssertFalse(game.isOver, "Completing practice is not completing a restoration round")
+
+        run.observe(action, before: opening, after: game)
+        XCTAssertTrue(run.complete)
+        XCTAssertFalse(run.needsRetry)
+        XCTAssertNil(run.next)
+    }
+
+    func testStorySquareNonScoringExchangeKeepsItsResultAndRetryRestoresOpening() throws {
+        let opening = SkyTutorial.storySquare.game()
+        var game = opening, run = SkyTutorialRun(.storySquare)
+        let alternative = SkyTutorial.Action.swap(Cell(3,0), Cell(3,1))
+        let turn = try XCTUnwrap(alternative.perform(in: &game))
+        XCTAssertNotEqual(game.board, opening.board)
+        XCTAssertEqual(game.score, 0)
+        XCTAssertEqual(game.displayScore, 0)
+        XCTAssertEqual(game.occupiedCount, 24)
+        XCTAssertTrue(turn.resolutionPhases.isEmpty)
+        XCTAssertEqual(turn.displayAward, 0)
+        XCTAssertEqual(game.turns, 0)
+        XCTAssertEqual(game.incoming, opening.incoming)
+
+        run.observe(alternative, before: opening, after: game)
+        XCTAssertTrue(run.needsRetry)
+        XCTAssertFalse(run.complete)
+        XCTAssertNil(run.next)
+
+        var retry = SkyTutorial.storySquare.game(), retriedRun = SkyTutorialRun(.storySquare)
+        XCTAssertEqual(retry, opening)
+        XCTAssertFalse(retriedRun.needsRetry)
+        XCTAssertEqual(retriedRun.step, 0)
+        let action = try XCTUnwrap(retriedRun.next)
+        let before = retry
+        let result = try XCTUnwrap(action.perform(in: &retry))
+        retriedRun.observe(action, before: before, after: retry)
+        XCTAssertTrue(retriedRun.complete)
+        XCTAssertEqual(result.resolutionPhases.map(\.award.displayPoints), [5_000, 10_000])
+        XCTAssertEqual(retry.score, 8)
+        XCTAssertEqual(retry.displayScore, 15_000)
+        XCTAssertEqual(retry.turns, 0)
+        XCTAssertEqual(retry.incoming, opening.incoming)
+    }
+
+    func testStorySquareTapsCannotClearOrCompleteTheSwapLesson() {
+        let opening = SkyTutorial.storySquare.game()
+        for cell in [Cell(0,0), Cell(1,2)] {
+            var game = opening, run = SkyTutorialRun(.storySquare)
+            let tap = SkyTutorial.Action.tap(cell)
+            XCTAssertNil(tap.perform(in: &game))
+            XCTAssertEqual(game, opening)
+            run.observe(tap, before: opening, after: game)
+            XCTAssertFalse(run.complete)
+            XCTAssertEqual(run.step, 0)
         }
     }
 

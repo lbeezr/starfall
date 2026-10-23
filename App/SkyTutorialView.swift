@@ -4,6 +4,7 @@ import StarfallCore
 extension SkyTutorial {
     var title: String {
         switch self {
+        case .storySquare: SkyCopy.text(.practiceStorySquareTitle)
         case .match: SkyCopy.text(.practiceMatchTitle)
         case .grown: SkyCopy.text(.practiceGrownTitle)
         case .exchange: SkyCopy.text(.practiceExchangeTitle)
@@ -29,6 +30,7 @@ extension SkyTutorial {
     }
     var detail: String {
         switch self {
+        case .storySquare: SkyCopy.text(.practiceStorySquareDetail)
         case .match: SkyCopy.text(.practiceMatchDetail)
         case .grown: SkyCopy.text(.practiceGrownDetail)
         case .exchange: SkyCopy.text(.practiceExchangeDetail)
@@ -56,6 +58,7 @@ extension SkyTutorial {
         guard let index = Self.allCases.firstIndex(of: self), index + 1 < Self.allCases.count else { return nil }
         return Self.allCases[index + 1]
     }
+    var showsDetailInitially: Bool { self != .storySquare }
 }
 
 extension SkyTutorial.Action {
@@ -85,6 +88,14 @@ extension SkyTutorial.Action {
 extension SkyTutorialRun {
     var showsPauseControl: Bool { next == .pause || next == .resume }
     var showsShowerControl: Bool { next == .shower }
+    func instruction(showingHint: Bool) -> String {
+        if complete {
+            return SkyCopy.text(chapter == .storySquare ? .practiceStorySquareComplete : .practiceComplete)
+        }
+        if needsRetry { return SkyCopy.text(.practiceRetryMessage) }
+        if chapter == .storySquare && !showingHint { return SkyCopy.text(.practiceStorySquarePrompt) }
+        return next?.instruction ?? ""
+    }
 }
 
 struct SkyTutorialView: View {
@@ -206,7 +217,7 @@ private extension SkyTutorial {
         case .trace, .diagonal, .gap, .branch, .square, .cross, .trim, .fork: .trace
         case .showers: .pause
         case .storm, .room: .freePlay
-        case .restoration: .story
+        case .storySquare, .restoration: .story
         default: .tutorial
         }
     }
@@ -233,7 +244,14 @@ struct SkyTutorialGuide: View {
     let retry: () -> Void
     let next: (SkyTutorial) -> Void
     let exit: () -> Void
-    @State private var showDetail = true
+    @State private var showDetail: Bool
+    init(run: SkyTutorialRun, constrained: Bool, retry: @escaping () -> Void,
+         next: @escaping (SkyTutorial) -> Void, exit: @escaping () -> Void) {
+        self.run = run; self.constrained = constrained
+        self.retry = retry; self.next = next; self.exit = exit
+        // Seed this mounted chapter's local disclosure; later chapters reset below.
+        _showDetail = State(initialValue: run.chapter.showsDetailInitially)
+    }
     var body: some View {
         VStack(alignment: .leading, spacing: StarfallTheme.Spacing.small) {
             if constrained {
@@ -250,7 +268,7 @@ struct SkyTutorialGuide: View {
         }
         .starfallPanel(inset: StarfallTheme.Spacing.medium)
         .foregroundStyle(StarfallTheme.Colors.textPrimary)
-        .onChange(of: run.chapter) { _, _ in showDetail = true }
+        .onChange(of: run.chapter) { _, chapter in showDetail = chapter.showsDetailInitially }
     }
     private var reading: some View {
             VStack(alignment: .leading, spacing: StarfallTheme.Spacing.small) {
@@ -263,7 +281,7 @@ struct SkyTutorialGuide: View {
                         .accessibilityAddTraits(.isHeader)
                         .accessibilityIdentifier("tutorial.title")
                 }
-                Text(run.complete ? SkyCopy.text(.practiceComplete) : run.needsRetry ? SkyCopy.text(.practiceRetryMessage) : run.next?.instruction ?? "")
+                Text(run.instruction(showingHint: showDetail))
                     .font(StarfallTheme.Typography.supporting).fixedSize(horizontal: false, vertical: true)
                     .accessibilityIdentifier("tutorial.instruction")
                 if showDetail {
@@ -276,7 +294,10 @@ struct SkyTutorialGuide: View {
             .frame(maxWidth: .infinity, alignment: .leading)
     }
     @ViewBuilder private var actions: some View {
-        guideAction(SkyCopy.text(.practiceRetry), glyph: .replay, id: "tutorial.retry", action: retry)
+        guideAction(SkyCopy.text(.practiceRetry), glyph: .replay, id: "tutorial.retry") {
+            if run.chapter == .storySquare { showDetail = false }
+            retry()
+        }
         guideAction(showDetail ? SkyCopy.text(.practiceLess) : SkyCopy.text(.practiceHint), glyph: .help, id: "tutorial.hint") {
             showDetail.toggle()
         }

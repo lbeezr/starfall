@@ -1,0 +1,109 @@
+{
+  "source_inputs": "source-inputs.json",
+  "core": {
+    "passed": 239,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 19.674
+  },
+  "hosted": 40,
+  "phone_ui": 3,
+  "tablet_ui": 2,
+  "phone": {
+    "result": "Passed",
+    "totalTestCount": 43,
+    "passedTests": 43,
+    "failedTests": 0,
+    "skippedTests": 0,
+    "startTime": 1792720914.137,
+    "finishTime": 1792721284.209
+  },
+  "tablet": {
+    "result": "Passed",
+    "totalTestCount": 2,
+    "passedTests": 2,
+    "failedTests": 0,
+    "skippedTests": 0,
+    "startTime": 1792720911.543,
+    "finishTime": 1792721083.598
+  },
+  "baseline": {
+    "result": "Passed",
+    "totalTestCount": 1,
+    "passedTests": 1,
+    "failedTests": 0,
+    "skippedTests": 0,
+    "startTime": 1792720539.97,
+    "finishTime": 1792720680.781
+  },
+  "debug": "passed",
+  "release": "passed",
+  "new_capture_limits": "Clue read-through and optional coordinate answer inspected at AX3XL; the additional hint detail continues in its existing inner scroll and was not captured at its final line.",
+  "captures": [
+    {
+      "path": "dev-384efe43c5__story-square__iphone-17e__default-clue.jpg",
+      "variant": "iPhone17e default clue",
+      "raw_sha256": "a55d484700ec92ed18acb7b77d5623649a1f4252b7971615889baea2a8cf0a9c",
+      "sha256": "d1bbbcb35a2bdbfa23746c5879826fbf3464661365aba6f433bddd9fd2a90918",
+      "bytes": 450351,
+      "source_snapshot": "9f588ce0b663",
+      "build_identity": "dev.384efe43c5",
+      "displayed_build": "dev.local",
+      "os": "iOS27.0 (24A434) Simulator",
+      "conversion": "JPEG quality88, original pixel dimensions"
+    },
+    {
+      "path": "dev-384efe43c5__story-square__iphone-17e__ax3xl-clue-end.jpg",
+      "variant": "iPhone17e AX3XL clue reading end",
+      "raw_sha256": "75c5fbde830ce6adfa34517d7e15f17cea125a05dbda6ba4ef5a22cdca6cf9a4",
+      "sha256": "1d1719fc93e1980d19d47ce7477643d09ea232eedc076b4a2423047303582193",
+      "bytes": 500172,
+      "source_snapshot": "9f588ce0b663",
+      "build_identity": "dev.384efe43c5",
+      "displayed_build": "dev.local",
+      "os": "iOS27.0 (24A434) Simulator",
+      "conversion": "JPEG quality88, original pixel dimensions"
+    },
+    {
+      "path": "dev-384efe43c5__story-square__ipad-mini-a17-pro__complete.jpg",
+      "variant": "iPad mini A17Pro default completion",
+      "raw_sha256": "d1e4cbd9d28b00a5d828930c52ce5046ae8d5cb0a9e342f40aa95072b047f63a",
+      "sha256": "55926d2e2fb7453757a887abe37bddd5cfc7d2e81caa935399518265ce68222b",
+      "bytes": 548496,
+      "source_snapshot": "9f588ce0b663",
+      "build_identity": "dev.384efe43c5",
+      "displayed_build": "dev.local",
+      "os": "iOS27.0 (24A434) Simulator",
+      "conversion": "JPEG quality88, original pixel dimensions"
+    }
+  ],
+  "integrated_source": {
+    "source": "663c20cc6f8456d398361c032db3b7e224cc453d",
+    "build_identity": "dev.0587678fcf",
+    "snapshot": "abe4d52cec97",
+    "phone": {
+      "result": "Passed",
+      "totalTestCount": 56,
+      "passedTests": 56,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792721650.319,
+      "finishTime": 1792721751.154
+    },
+    "tablet_hosted_phases": {
+      "result": "Passed",
+      "totalTestCount": 6,
+      "passedTests": 6,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792721650.378,
+      "finishTime": 1792721660.077
+    },
+    "hosted": 55,
+    "phone_ui": 1,
+    "additional_phase_hosted": 6,
+    "debug": "passed",
+    "release": "passed",
+    "core_reuse": "239 passing tests; Core/package source unchanged by main audio integration"
+  }
+}

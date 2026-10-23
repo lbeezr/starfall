@@ -412,6 +412,105 @@ final class WorldJourneyInteractionTests: XCTestCase {
         try checkTutorialScopeFromHomeAndStory(largest: true)
     }
 
+    @MainActor private func readStoryPracticeInstruction(_ app: XCUIApplication) {
+        let instruction = app.staticTexts["tutorial.instruction"], hint = app.buttons["tutorial.hint"]
+        app.revealSkyControls([hint])
+        let inner = app.scrollViews.containing(.staticText, identifier: instruction.identifier)
+            .allElementsBoundByIndex.first { !$0.buttons["experiment.cell.0.0"].exists }
+        if let inner {
+            for _ in 0..<6 where instruction.frame.maxY > inner.frame.maxY + 1 { inner.swipeUp() }
+            XCTAssertLessThanOrEqual(instruction.frame.maxY, inner.frame.maxY + 1)
+        }
+        XCTAssertTrue(instruction.isHittable)
+        XCTAssertLessThanOrEqual(instruction.frame.maxY, hint.frame.minY)
+    }
+
+    @MainActor private func checkStorySquarePractice(largest: Bool, calm: Bool) throws {
+        executionTimeAllowance = 240
+        let app = launch(large: largest, calm: calm)
+        defer { app.terminate() }
+        let visit = app.worldVisitControl("firstLight")
+        let journey = try visibleIdentities(app, prefix: "world.place.")
+        visit.tap(); tap("sky.begin", app)
+        tap("experiment.settings", app); tap("experiment.pause", app)
+        let board = app.otherElements["experiment.board"]
+        let retainedSummary = board.value as? String, retainedScore = app.staticTexts["experiment.score"].label
+        let retainedCells = try visibleIdentities(board, prefix: "experiment.cell.")
+        tap("experiment.settings", app); tap("sky.learn", app)
+        XCTAssertTrue(app.staticTexts["tutorial.intro"].label.contains("Start with a current Story square"))
+        tap("tutorial.chapter.storySquare", app)
+        XCTAssertTrue(app.staticTexts["tutorial.title"].waitForExistence(timeout: 5))
+        assertTutorialIndexCovered(app)
+        let instruction = app.staticTexts["tutorial.instruction"]
+        let clue = "Three Aqua corners wait at the lower left. Which swipe completes their square?"
+        XCTAssertEqual(instruction.label, clue)
+        XCTAssertEqual(app.buttons["tutorial.hint"].label, "Hint")
+        XCTAssertFalse(app.staticTexts["tutorial.detail"].exists)
+        XCTAssertFalse(app.staticTexts["tutorial.coordinates"].exists)
+        let opening = try visibleIdentities(board, prefix: "experiment.cell.")
+        let zero = "0 of 150,000 starlight collected"
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, zero)
+        capture(largest ? "story-square-clue-largest-start" : "story-square-clue", app)
+        readStoryPracticeInstruction(app)
+        if largest { capture("story-square-clue-largest-end", app) }
+        tap("experiment.cell.0.0", app)
+        XCTAssertEqual(instruction.label, clue, "Inspection cannot perform the lesson's decisive move")
+        XCTAssertEqual(try visibleIdentities(board, prefix: "experiment.cell."), opening)
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, zero)
+
+        drag(app, from: (3,0), to: (3,1), drawing: false)
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label CONTAINS %@", "That changed the setup"),
+                                                object: instruction).wait(timeout: 5))
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, zero)
+        XCTAssertNotEqual(try visibleIdentities(board, prefix: "experiment.cell."), opening)
+        tap("tutorial.retry", app)
+        XCTAssertEqual(try visibleIdentities(board, prefix: "experiment.cell."), opening)
+        XCTAssertEqual(instruction.label, clue)
+        XCUIDevice.shared.press(.home); app.activate()
+        XCTAssertTrue(app.buttons["tutorial.hint"].waitForExistence(timeout: 5))
+        if largest {
+            tap("tutorial.hint", app)
+            XCTAssertEqual(instruction.label, "Swipe left from row 6, column 3.")
+            XCTAssertTrue(app.staticTexts["tutorial.detail"].exists)
+            readStoryPracticeInstruction(app)
+            capture("story-square-worked-hint-largest", app)
+            tap("tutorial.retry", app)
+            XCTAssertEqual(instruction.label, clue)
+            XCTAssertEqual(app.buttons["tutorial.hint"].label, "Hint")
+            XCTAssertFalse(app.staticTexts["tutorial.detail"].exists)
+        }
+        drag(app, from: (1,2), to: (1,1), drawing: false)
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@",
+            "15,000 of 150,000 starlight collected"), object: app.staticTexts["experiment.score"]).wait(timeout: 5))
+        XCTAssertEqual(instruction.label, "Your square cleared. Falling stars made a second square.")
+        XCTAssertEqual(app.buttons.matching(NSPredicate(format:
+            "identifier BEGINSWITH %@ AND NOT (label BEGINSWITH %@)", "experiment.cell.", "Empty")).count, 16)
+        readStoryPracticeInstruction(app)
+        capture(largest ? "story-square-complete-largest" : "story-square-complete", app)
+        tap("experiment.settings", app)
+        assertReturnedChapterVisible("storySquare", app)
+        tap("tutorial.done", app)
+        XCTAssertEqual(board.value as? String, retainedSummary)
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, retainedScore)
+        XCTAssertEqual(try visibleIdentities(board, prefix: "experiment.cell."), retainedCells)
+        XCTAssertTrue(app.buttons["experiment.next"].isEnabled)
+        tap("experiment.settings", app); tap("sky.worldMap", app)
+        XCTAssertTrue(app.otherElements["world.page"].waitForExistence(timeout: 5))
+        if app.buttons["world.list"].exists && app.buttons["world.list"].label == "Places" {
+            tap("world.list", app)
+        }
+        XCTAssertTrue(app.buttons["world.place.firstLight"].waitForExistence(timeout: 5))
+        XCTAssertEqual(try visibleIdentities(app, prefix: "world.place."), journey)
+    }
+
+    @MainActor func testCurrentStorySquarePracticeLetsThePlayerChooseAndPreservesTheirRound() throws {
+        try checkStorySquarePractice(largest: false, calm: false)
+    }
+
+    @MainActor func testLargestTextCurrentStorySquarePracticeKeepsHintOptionalAndRoundSafe() throws {
+        try checkStorySquarePractice(largest: true, calm: true)
+    }
+
     @MainActor func testStormLessonDescribesFiveArrivalsAndPreservesSavedStory() throws {
         executionTimeAllowance = 180
         XCUIDevice.shared.orientation = .portrait

@@ -709,7 +709,7 @@ final class SkyTutorialPresentationTests: XCTestCase {
     }
 
     @MainActor func testLessonControlsAppearOnlyAtTheStepThatTeachesThem() {
-        for chapter in [SkyTutorial.match, .grown, .exchange, .trace, .square] {
+        for chapter in [SkyTutorial.storySquare, .match, .grown, .exchange, .trace, .square] {
             let run = SkyTutorialRun(chapter)
             XCTAssertFalse(run.showsPauseControl, chapter.rawValue)
             XCTAssertFalse(run.showsShowerControl, chapter.rawValue)
@@ -773,6 +773,44 @@ final class SkyTutorialPresentationTests: XCTestCase {
         _ = SkyTutorial.Action.tap(Cell(0, 0)).perform(in: &traceGame)
         traceLesson.observe(.tap(Cell(0, 0)), before: prior, after: traceGame)
         XCTAssertTrue(traceLesson.needsRetry)
+    }
+
+    @MainActor func testStorySquarePromptsDiscoveryBeforeRevealingTheCoordinateHint() throws {
+        XCTAssertEqual(SkyTutorial.allCases.first,.storySquare)
+        XCTAssertEqual(SkyTutorial.storySquare.nextChapter,.match)
+        XCTAssertEqual(SkyTutorial.storySquare.title,SkyCopy.text(.practiceStorySquareTitle))
+        XCTAssertEqual(SkyTutorial.storySquare.detail,SkyCopy.text(.practiceStorySquareDetail))
+        XCTAssertFalse(SkyTutorial.storySquare.showsDetailInitially)
+        var run = SkyTutorialRun(.storySquare), game = SkyTutorial.storySquare.game()
+        XCTAssertEqual(run.instruction(showingHint:false),SkyCopy.text(.practiceStorySquarePrompt))
+        let answer = try XCTUnwrap(run.next).instruction
+        XCTAssertNotEqual(run.instruction(showingHint:false),answer)
+        XCTAssertEqual(run.instruction(showingHint:true),answer)
+        XCTAssertEqual(answer,"Swipe left from row 6, column 3.")
+        advance(try XCTUnwrap(run.next),run:&run,game:&game)
+        XCTAssertEqual(game.displayScore,15_000)
+        XCTAssertEqual(run.instruction(showingHint:false),SkyCopy.text(.practiceStorySquareComplete))
+        XCTAssertEqual(run.instruction(showingHint:true),SkyCopy.text(.practiceStorySquareComplete))
+
+        var missed = SkyTutorialRun(.storySquare), changed = SkyTutorial.storySquare.game()
+        do {
+            let before = changed, action = SkyTutorial.Action.swap(Cell(3,0),Cell(3,1))
+            let turn = try XCTUnwrap(action.perform(in:&changed))
+            XCTAssertEqual(turn.displayAward,0)
+            missed.observe(action,before:before,after:changed)
+        }
+        XCTAssertTrue(missed.needsRetry)
+        XCTAssertEqual(missed.instruction(showingHint:false),SkyCopy.text(.practiceRetryMessage))
+        XCTAssertEqual(missed.instruction(showingHint:true),SkyCopy.text(.practiceRetryMessage))
+        let retried = SkyTutorialRun(.storySquare)
+        XCTAssertEqual(retried.instruction(showingHint:false),SkyCopy.text(.practiceStorySquarePrompt))
+        XCTAssertFalse(retried.chapter.showsDetailInitially)
+        for chapter in SkyTutorial.allCases where chapter != .storySquare {
+            let legacy = SkyTutorialRun(chapter)
+            XCTAssertTrue(chapter.showsDetailInitially,chapter.rawValue)
+            XCTAssertEqual(legacy.instruction(showingHint:false),legacy.next?.instruction ?? "",chapter.rawValue)
+            XCTAssertEqual(legacy.instruction(showingHint:true),legacy.next?.instruction ?? "",chapter.rawValue)
+        }
     }
 
     private func advance(_ action: SkyTutorial.Action, run: inout SkyTutorialRun, game: inout FallingSky) {
