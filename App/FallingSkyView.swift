@@ -5,6 +5,7 @@ import StarfallCore
 // Historical experiment.* accessibility IDs remain stable for automation and assistive clients.
 @MainActor struct FallingSkyView: View {
     private var tutorialExit: (() -> Void)?
+    private var tutorialEndingAfter: SkyTutorial?
     @State private var store: FallingSkyStore
     @State private var interaction = SkyInteractionSession()
     private var trace: ConstellationTraceIntent { interaction.trace }
@@ -31,7 +32,8 @@ import StarfallCore
         self.init(store: .forSkyFlowApp(), flow: SkyFlowState())
     }
 
-    init(store: FallingSkyStore, flow: SkyFlowState, tutorialExit: (() -> Void)? = nil) {
+    init(store: FallingSkyStore, flow: SkyFlowState, tutorialEndingAfter: SkyTutorial? = nil, tutorialExit: (() -> Void)? = nil) {
+        self.tutorialEndingAfter = tutorialEndingAfter
         self.tutorialExit = tutorialExit
         _store = State(initialValue: store)
         _flow = State(initialValue: flow)
@@ -319,7 +321,7 @@ import StarfallCore
         if let run = store.tutorial {
             VStack(spacing: StarfallTheme.Spacing.medium) {
                 let hasControls = run.showsPauseControl || run.showsShowerControl
-                SkyTutorialGuide(run: run, constrained: maximumHeight != nil, retry: { store.loadTutorial(run.chapter) },
+                SkyTutorialGuide(run: run, constrained: maximumHeight != nil, endingAfter: tutorialEndingAfter, retry: { store.loadTutorial(run.chapter) },
                                  next: { chapter in store.loadTutorial(chapter) }, exit: { tutorialExit?() })
                     .frame(height: maximumHeight.map {
                         max(128, $0 - (hasControls ? StarfallTheme.Layout.preferenceTarget + StarfallTheme.Spacing.medium : 0))

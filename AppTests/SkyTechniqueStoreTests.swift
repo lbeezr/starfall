@@ -805,7 +805,7 @@ final class SkyTutorialPresentationTests: XCTestCase {
         let retried = SkyTutorialRun(.storySquare)
         XCTAssertEqual(retried.instruction(showingHint:false),SkyCopy.text(.practiceStorySquarePrompt))
         XCTAssertFalse(retried.chapter.showsDetailInitially)
-        for chapter in SkyTutorial.allCases where ![.storySquare, .storyRoom, .fullBoardRefill].contains(chapter) {
+        for chapter in SkyTutorial.allCases where chapter.showsDetailInitially {
             let legacy = SkyTutorialRun(chapter)
             XCTAssertTrue(chapter.showsDetailInitially,chapter.rawValue)
             XCTAssertEqual(legacy.instruction(showingHint:false),legacy.next?.instruction ?? "",chapter.rawValue)

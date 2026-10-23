@@ -1,0 +1,29 @@
+[
+  {
+    "file": "dev-ffdf28e-wip-60e369301a55__survivor-chain__iphone-17e__default-text.jpg",
+    "status": "Current for inspected input snapshot",
+    "source": "ffdf28ee + snapshot60e369301a55; app-equivalent66c747d",
+    "bundleLabel": "dev.local",
+    "description": "A four-star square preserves the second line: 15,000 earned, 81,000 total. Native input has resumed; finite award decorations can remain.",
+    "sha256": "833337e3c78573924a34b9516c6202ac4d3576da91489c6e5f5c31641ab012f1",
+    "inspected": true
+  },
+  {
+    "file": "dev-ffdf28e-wip-60e369301a55__larger-clear__iphone-17e__default-text.jpg",
+    "status": "Current for inspected input snapshot",
+    "source": "ffdf28ee + snapshot60e369301a55; app-equivalent66c747d",
+    "bundleLabel": "dev.local",
+    "description": "Two simultaneous squares earn13,000,79,000total; Finish belongs only to the direct paired session.",
+    "sha256": "9bc1dc543b9360c4c9436c575561d0e1365dea542d2f59ea8c65fff1874b0295",
+    "inspected": true
+  },
+  {
+    "file": "dev-ffdf28e-wip-60e369301a55__comparison-reading-end__ipad-mini-a17pro__largest-text-calm.jpg",
+    "status": "Current for inspected input snapshot",
+    "source": "ffdf28ee + snapshot60e369301a55; app-equivalent66c747d",
+    "bundleLabel": "dev.local",
+    "description": "Complete large-text reading with fixed Retry/Hint/Finish; board was exercised before scrolling to this reading end.",
+    "sha256": "5051f6899a813540fd0b8b17c14aace2a548d9b45778668702e0eebac7686162",
+    "inspected": true
+  }
+]

@@ -4,7 +4,7 @@ import StarfallCore
 
 final class SkyModeDiscoveryPresentationTests: XCTestCase {
     @MainActor func testModeDiscoveriesKeepTheWorkedSwipeBehindTheHint() throws {
-        XCTAssertEqual(Array(SkyTutorial.allCases.prefix(4)), [.storySquare, .storyRoom, .fullBoardRefill, .match])
+        XCTAssertEqual(Array(SkyTutorial.allCases.prefix(5)), [.storySquare, .storyRoom, .fullBoardRefill, .fullBoardSurvivors, .fullBoardImmediate])
         XCTAssertEqual(SkyCopy.text(.practiceTryMode), "Try this mode")
         let discoveries: [(SkyTutorial, SkyCopy.Key, String)] = [
             (.storyRoom, .practiceStoryRoomPrompt, "Swipe right from row 7, column 2."),

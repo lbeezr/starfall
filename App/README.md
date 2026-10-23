@@ -10,6 +10,8 @@ Lantern Entry and mode-aware Help offer optional **Try this mode** practice. Fal
 
 An unfinished Full Board round offers **Find a move** in its menu. `SkyFullBoardChoicesView` analyzes an immutable snapshot away from the main actor, showing Core’s distinct immediate patterns or a two-exchange setup with optional top-down swipe instructions. Predictions cover the first visible pattern; later falls and refills remain part of ordinary play. Navigation cancellation reaches the scan and discards its result. The page has no move, save, score or supply capability, and both modes retain their current rules. [Goal 2 evidence](../docs/evidence/depth-goal-02-visible-choices-2026-10-23/README.md).
 
+**Compare clears** opens two disposable practice chapters from that advice page. The same real Full Board position lets the player try a smaller square whose visible survivors form a later line, then compare two larger simultaneous squares. Optional hints, Retry, Next and Finish use the existing tutorial owner; return preserves the live round and repairs. [Goal 3 evidence](../docs/evidence/depth-goal-03-survivor-cascades-2026-10-23/README.md) distinguishes the committed consequences from unmeasured learning.
+
 ## Start here
 
 Deterministic rules belong in [StarfallCore](../Sources/StarfallCore/README.md). Build the shared Starfall scheme and run affected hosted/UI checks after source changes. Asset catalogs are packaged data; their sets are documented by this folder, not individual READMEs.
