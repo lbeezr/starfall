@@ -131,6 +131,113 @@ final class WorldJourneyTests: XCTestCase {
         XCTAssertNil(clock.deadline); XCTAssertNil(defaults.data(forKey: SkySaveArchive.key))
     }
 
+    @MainActor func testCurrentStoryPracticeInspectionRetryAndCompletionPreserveSavedJourney() throws {
+        let defaults = defaults(), presenter = FallingSkyRecorder(), clock = ManualRainClock()
+        try SkySaveArchive.save(FallingSky.freshChallenge(.ribbonCrossing),to:defaults)
+        try WorldJourneyStore(defaults:defaults).select(.seedMoon)
+        let roundBytes = try XCTUnwrap(defaults.data(forKey:SkySaveArchive.key))
+        let worldBytes = try XCTUnwrap(defaults.data(forKey:WorldJourneyStore.key))
+        var writes = 0
+        let store = FallingSkyStore(defaults:defaults,arguments:[],presenter:presenter,clock:clock,
+                                   tutorial:.storySquare,archiveWriter:{ _,_ in writes += 1 })
+        store.setSuspended(false)
+        let opening = store.game
+        XCTAssertEqual(opening,FallingSky.freshChallenge(.firstLight))
+        XCTAssertEqual(opening.challengeRevision,4)
+        XCTAssertFalse(opening.supportsManualClears)
+        XCTAssertFalse(try XCTUnwrap(store.tutorial).showsShowerControl)
+        XCTAssertFalse(try XCTUnwrap(store.tutorial).showsPauseControl)
+        XCTAssertNil(clock.deadline)
+        XCTAssertFalse(store.requestTap(Cell(1,2)),"Inspecting a star cannot perform the taught exchange")
+        XCTAssertEqual(store.game,opening)
+        XCTAssertEqual(store.tutorial,SkyTutorialRun(.storySquare))
+        XCTAssertTrue(presenter.completions.isEmpty)
+
+        XCTAssertTrue(store.requestInput(.swap(Cell(3,0),Cell(3,1)),snapshot:store.game,
+                                        generation:store.constellationInputGeneration))
+        XCTAssertNotEqual(store.game.board,opening.board)
+        XCTAssertEqual(store.game.displayScore,0)
+        XCTAssertTrue(store.tutorial?.needsRetry == true)
+        XCTAssertFalse(store.tutorial?.complete ?? true)
+        let wrongCompletion = try XCTUnwrap(presenter.completions.last)
+        store.loadTutorial(.storySquare)
+        wrongCompletion()
+        XCTAssertEqual(store.game,opening,"Retry reconstructs the same current Story opening")
+        XCTAssertEqual(store.tutorial,SkyTutorialRun(.storySquare))
+        var expected = opening
+        let turn = try XCTUnwrap(expected.nudge(from:Cell(1,2),to:Cell(1,1)))
+        XCTAssertEqual(turn.resolutionPhases.count,2)
+        XCTAssertEqual(turn.displayAward,15_000)
+        XCTAssertTrue(store.requestInput(.swap(Cell(1,2),Cell(1,1)),snapshot:store.game,
+                                        generation:store.constellationInputGeneration))
+        XCTAssertEqual(store.game,expected)
+        XCTAssertEqual(store.game.displayScore,15_000)
+        XCTAssertTrue(store.tutorial?.complete == true)
+        XCTAssertEqual(store.game.outcome,.playing,"Practice completion is one setup, not a location repair")
+        presenter.finish()
+        clock.advance(100)
+        XCTAssertEqual(store.game,expected)
+        XCTAssertNil(clock.deadline)
+        store.loadTutorial(.match)
+        XCTAssertEqual(store.game,SkyTutorial.match.game())
+        store.loadTutorial(.storySquare)
+        XCTAssertEqual(store.game,opening)
+        XCTAssertEqual(store.tutorial?.step,0)
+        XCTAssertEqual(writes,0)
+        XCTAssertEqual(defaults.data(forKey:SkySaveArchive.key),roundBytes)
+        XCTAssertEqual(defaults.data(forKey:WorldJourneyStore.key),worldBytes)
+        XCTAssertTrue(store.journey.journey.completed.isEmpty)
+        store.setSuspended(true)
+    }
+
+    @MainActor func testCurrentStoryPracticeRetiresHeldBufferedAndPresentedWorkOnBackgroundAndRetry() throws {
+        for background in [false,true] {
+            let defaults = defaults(), presenter = FallingSkyRecorder(), clock = ManualRainClock()
+            try SkySaveArchive.save(FallingSky.freshSurvival(seed:91),to:defaults)
+            try WorldJourneyStore(defaults:defaults).select(.firstLight)
+            let roundBytes = defaults.data(forKey:SkySaveArchive.key), worldBytes = defaults.data(forKey:WorldJourneyStore.key)
+            let store = FallingSkyStore(defaults:defaults,arguments:[],presenter:presenter,clock:clock,tutorial:.storySquare)
+            store.setSuspended(false)
+            let opening = store.game
+            XCTAssertTrue(store.requestInput(.swap(Cell(3,0),Cell(3,1)),snapshot:opening,
+                                            generation:store.constellationInputGeneration))
+            let staleCompletion = try XCTUnwrap(presenter.completions.last)
+            let staleSnapshot = store.game, staleGeneration = store.constellationInputGeneration
+            let staleHold = try XCTUnwrap(store.beginResponsiveContact(at:Cell(1,2)))
+            let decisive = SkyPlayerInput.swap(Cell(1,2),Cell(1,1))
+            XCTAssertTrue(store.requestInput(decisive,snapshot:staleSnapshot,generation:staleGeneration))
+            XCTAssertNotNil(store.bufferedInput,"The pending setup shares a still-presenting column")
+            XCTAssertEqual(store.game,staleSnapshot)
+            if background { store.setSuspended(true) }
+            else { store.loadTutorial(.storySquare) }
+            let interrupted = store.game, interruptedRun = store.tutorial
+            XCTAssertNil(store.bufferedInput)
+            XCTAssertFalse(store.constellationTracing)
+            staleCompletion(); store.endConstellationHold(staleHold)
+            if background { store.setSuspended(false) }
+            XCTAssertFalse(store.requestInput(decisive,snapshot:staleSnapshot,generation:staleGeneration))
+            clock.advance(100)
+            XCTAssertEqual(store.game,interrupted)
+            XCTAssertEqual(store.tutorial,interruptedRun)
+            XCTAssertNil(clock.deadline)
+
+            store.loadTutorial(.storySquare)
+            XCTAssertEqual(store.game,opening)
+            let currentHold = try XCTUnwrap(store.beginResponsiveContact(at:Cell(1,2)))
+            store.endConstellationHold(staleHold)
+            XCTAssertTrue(store.constellationTracing,"An old release cannot retire the new practice contact")
+            store.endConstellationHold(currentHold)
+            XCTAssertTrue(store.requestInput(decisive,snapshot:store.game,generation:store.constellationInputGeneration))
+            presenter.finish()
+            XCTAssertEqual(store.game.displayScore,15_000)
+            XCTAssertTrue(store.tutorial?.complete == true)
+            XCTAssertEqual(defaults.data(forKey:SkySaveArchive.key),roundBytes)
+            XCTAssertEqual(defaults.data(forKey:WorldJourneyStore.key),worldBytes)
+            XCTAssertTrue(store.journey.journey.completed.isEmpty)
+            store.setSuspended(true)
+        }
+    }
+
     @MainActor func testSilverRepairUnlocksFrostfruitAndItsCompletionPersistsAndUnlocksSunwheel() throws {
         let defaults = defaults(), presenter = FallingSkyRecorder()
         try SkySaveArchive.save(ObservatoryReviewFixture.game(dense: false, score: 14, challenge: .silverPools), to: defaults)

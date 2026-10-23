@@ -1,0 +1,26 @@
+{
+  "base_main": "50734834b336de7a9c78479b07cddd0d6389cdba",
+  "candidate_commit": "663c20cc6f8456d398361c032db3b7e224cc453d",
+  "build_identity": "dev.0587678fcf",
+  "sha256": {
+    "App/DialogueScripts/observatory-dialogue.json": "cb423073009cd41545f1b89fcd9b6f09e53e1e0405cef8399d2f8043cf146801",
+    "App/SkyCopy.swift": "9174be26a7d0c2b358e7d64b1ea27e0181695742e3a697d9c8d7dcce2060b989",
+    "App/SkyTutorialView.swift": "89e44134cc171246ba86382ed7be1401cb957d494c39a9ec86d9e9effd5ca26f",
+    "AppTests/SkyTechniqueStoreTests.swift": "b79d33c06f03c8512809224ea07a88001b3141068a8282539d15b4402578a31a",
+    "AppTests/WorldJourneyTests.swift": "7a06ddd2e673a7244ce663d8985036b9b5971239d09e3915c8f2e61d39dff2f4",
+    "Sources/StarfallCore/SkyTutorial.swift": "f65fac92e2eaa1d19c11aef8ff370368fe5512e7bec4f644c3356960ce6d5f57",
+    "Tests/StarfallCoreTests/SkyTutorialTests.swift": "e0d39546c6bfef915be855bd2f4b32d3f814f68e18a381d9f85951b51df7fea2",
+    "UITests/WorldJourneyInteractionTests.swift": "69ebe5084beef96d59c6f94be8857d4ceabdf23af0b06c2125b32ec54ca00c65",
+    "App/QuietTuckPlayer.swift": "8a821f48e79f6994e04694f210ec0535b0aebe973723d30c4ccc310b09dd9e68",
+    "App/Audio/sf_cascade_2.wav": "948cde73547bc040078a49605af8afa4dbad34ba03b9accd7d365547d8d1c028",
+    "App/Audio/sf_cascade_3.wav": "a049d18ca052a1013f483aaf621dc3d1064f0d614fa570fe3404c58dc1a5a655",
+    "AppTests/QuietTuckPlayerTests.swift": "d74ee34584971294f112dfef2f85b538ac03e378869b373c57cbbdb3740548e1"
+  },
+  "snapshot": "abe4d52cec97",
+  "initial_source": {
+    "base_main": "086df43899a8940d28358710d98e4a190b6dba4d",
+    "candidate_commit": "ca8b758681f98f774aa7024be0d3ec745d3771ba",
+    "build_identity": "dev.384efe43c5",
+    "snapshot": "9f588ce0b663"
+  }
+}

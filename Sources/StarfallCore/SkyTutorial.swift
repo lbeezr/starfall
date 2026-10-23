@@ -3,6 +3,7 @@ import Foundation
 /// Authored, disposable practice. These boards deliberately have no archive
 /// contract; normal saves and journey completion never accept a tutorial session.
 public enum SkyTutorial: String, CaseIterable, Sendable, Identifiable {
+    case storySquare
     case match, grown, exchange, emptySpace, trace, diagonal, gap, branch
     case square, cross, opal, relay, trim, dropIn, bank, fork, doubleSetup
     case showers, storm, room, restoration
@@ -31,6 +32,7 @@ public enum SkyTutorial: String, CaseIterable, Sendable, Identifiable {
     public var allowsClock: Bool { self == .showers }
     public func game() -> FallingSky {
         switch self {
+        case .storySquare: return FallingSky.freshChallenge(.firstLight)
         case .square: return SkyLesson.square.game()
         case .cross, .branch: return SkyLesson.cross.game()
         case .opal: return SkyLesson.opal.game()
@@ -79,6 +81,7 @@ public enum SkyTutorial: String, CaseIterable, Sendable, Identifiable {
 
     public var actions: [Action] {
         switch self {
+        case .storySquare: return [.swap(Cell(1,2), Cell(1,1))]
         case .match, .grown: return [.tap(Cell(0,0))]
         case .exchange: return [.swap(Cell(1,1), Cell(1,2)), .swap(Cell(1,2), Cell(1,1)),
                                .swap(Cell(1,1), Cell(2,1)), .swap(Cell(2,1), Cell(1,1))]
