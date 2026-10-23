@@ -1,5 +1,7 @@
 # Starfall
 
+**Rising Story-chain audio — October 22:** Committed recipe/cascade phases now form a short rising phrase, capped at phase three. Two original local cues preserve one voice, mute/cancellation and historical sounds. [Development evidence](docs/evidence/chain-audio-2026-10-22/README.md) separates native playback/interaction checks from unmeasured physical listening and enjoyment.
+
 **First-minute guidance — queue goal 1:** Current Story now keeps its destination, saved objective and automatic-pattern instructions when play starts or resumes. [Source-bound checks](docs/evidence/game-goal-01-first-minute-2026-10-22/README.md) cover current four-star lines, retained/manual controls, phone/tablet reading and real clear/restore behavior. The remaining [ten-goal queue](https://github.com/lbeezr/starfall/issues/240) proceeds through separate main merges; human learning remains unmeasured.
 
 **Four-star-line phone trial — October 22:** New Lantern/Ribbon visits now select revision 4, with automatic straight runs of four or more and unchanged squares, crosses, growth, supply, scoring, targets and timing. Continue/Replay preserve the saved rule. [Development evidence](docs/evidence/four-star-lines-2026-10-22/README.md) passes 236 Core, 188 hosted and five selected native phone/tablet checks, plus Debug/Release; [canonical phone delivery](docs/evidence/four-star-lines-2026-10-22/delivery.json) verifies `dev.38fb093b7f` on the original iPhone.

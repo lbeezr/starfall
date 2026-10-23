@@ -1,0 +1,65 @@
+{
+  "initialSource": {
+    "baseCommit": "45ee2c2dc8d2f071721c4e57b4feb0bf67191230",
+    "runtimeFingerprint": "dev.3abf04f9e5",
+    "simulatorBundleBuildID": "dev.local",
+    "changedInputs": {
+      "App/Audio/README.md": {
+        "bytes": 2760,
+        "sha256": "8d03c2469fe1c8e9ce2aff79d153d1e05e97e69479668a304d7c312b20bd00cc"
+      },
+      "App/Audio/sf_cascade_2.wav": {
+        "bytes": 37088,
+        "sha256": "948cde73547bc040078a49605af8afa4dbad34ba03b9accd7d365547d8d1c028"
+      },
+      "App/Audio/sf_cascade_3.wav": {
+        "bytes": 37088,
+        "sha256": "a049d18ca052a1013f483aaf621dc3d1064f0d614fa570fe3404c58dc1a5a655"
+      },
+      "App/QuietTuckPlayer.swift": {
+        "bytes": 7660,
+        "sha256": "8a821f48e79f6994e04694f210ec0535b0aebe973723d30c4ccc310b09dd9e68"
+      },
+      "AppTests/QuietTuckPlayerTests.swift": {
+        "bytes": 15415,
+        "sha256": "d74ee34584971294f112dfef2f85b538ac03e378869b373c57cbbdb3740548e1"
+      },
+      "scripts/generate-celebration-audio.py": {
+        "bytes": 2647,
+        "sha256": "5b4b8c0bdfc80e796d3cd3bb02ee2d12fd9d3d2f2f9295e25a465cf988d10bf0"
+      }
+    }
+  },
+  "integratedSource": {
+    "baseCommit": "086df43899a8940d28358710d98e4a190b6dba4d",
+    "runtimeFingerprint": "dev.9dd978825b",
+    "simulatorBundleBuildID": "dev.local",
+    "changedInputs": {
+      "App/Audio/README.md": {
+        "bytes": 2760,
+        "sha256": "8d03c2469fe1c8e9ce2aff79d153d1e05e97e69479668a304d7c312b20bd00cc"
+      },
+      "App/Audio/sf_cascade_2.wav": {
+        "bytes": 37088,
+        "sha256": "948cde73547bc040078a49605af8afa4dbad34ba03b9accd7d365547d8d1c028"
+      },
+      "App/Audio/sf_cascade_3.wav": {
+        "bytes": 37088,
+        "sha256": "a049d18ca052a1013f483aaf621dc3d1064f0d614fa570fe3404c58dc1a5a655"
+      },
+      "App/QuietTuckPlayer.swift": {
+        "bytes": 7660,
+        "sha256": "8a821f48e79f6994e04694f210ec0535b0aebe973723d30c4ccc310b09dd9e68"
+      },
+      "AppTests/QuietTuckPlayerTests.swift": {
+        "bytes": 15415,
+        "sha256": "d74ee34584971294f112dfef2f85b538ac03e378869b373c57cbbdb3740548e1"
+      },
+      "scripts/generate-celebration-audio.py": {
+        "bytes": 2647,
+        "sha256": "5b4b8c0bdfc80e796d3cd3bb02ee2d12fd9d3d2f2f9295e25a465cf988d10bf0"
+      }
+    }
+  },
+  "ownedSixHashesUnchanged": true
+}

@@ -13,10 +13,89 @@ final class QuietTuckPlayerTests: XCTestCase {
     }
 
     @MainActor func testCelebrationResourcesDecodeWithFiniteDuration() throws {
-        for (name,duration) in zip(BundledTuckOutput.celebrationNames,[0.74,0.74,0.42,0.54]) {
+        XCTAssertEqual(BundledTuckOutput.celebrationNames.count, 6)
+        for (name,duration) in zip(BundledTuckOutput.celebrationNames,[0.74,0.74,0.42,0.54,0.42,0.42]) {
             let url = try XCTUnwrap(Bundle.main.url(forResource: name, withExtension: "wav", subdirectory: "Audio"))
             let decoded = try AVAudioPlayer(contentsOf: url)
             XCTAssertEqual(decoded.duration, duration, accuracy: 0.005)
+            XCTAssertEqual(decoded.numberOfChannels, 1)
+            XCTAssertEqual(decoded.format.sampleRate, 44_100)
+            XCTAssertLessThanOrEqual(try Data(contentsOf: url).count, 65_536,
+                                     "Each original PCM accent stays within its authored 64 KiB budget")
+        }
+    }
+
+    @MainActor func testCascadePhraseCapsAtThirdAccentAndIndependentActionRestartsOpening() {
+        let output = RecordingTuckOutput()
+        let player = QuietTuckPlayer(output: output, notifications: NotificationCenter(), isActive: { true })
+        player.play()
+        player.play(.recipe(.square)); player.play(.cascade(2)); player.play(.cascade(3))
+        player.play(.cascade(4)); player.play(.cascade(12))
+        player.play(.relay(2)); player.play(.relay(9))
+        player.play(.recipe(.cross)); player.play()
+        XCTAssertEqual(output.takes, [0, 6, 8, 9, 9, 9, 7, 7, 6, 1],
+                       "Only committed cascade depth changes the accent; legacy relays and ordinary rotation stay independent")
+        player.play(.cascade(1))
+        XCTAssertEqual(output.takes.last, 6, "A first-phase receipt uses the existing recipe opening")
+    }
+
+    @MainActor func testCurrentStoryPhaseAccentsKeepCommittedAwardsAndSoundPreferences() throws {
+        for challenge in [StarfallChallenge.firstLight, .ribbonCrossing] {
+            for quiet in [false, true] {
+                for enabled in [false, true] {
+                    let suite = "Starfall.ChainSound.\(UUID())"
+                    let defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
+                    defer { defaults.removePersistentDomain(forName: suite) }
+                    let opening = FallingSky.freshChallenge(challenge)
+                    defaults.set(try SkySaveArchive.encode(opening), forKey: SkySaveArchive.key)
+                    let output = RecordingTuckOutput()
+                    let player = QuietTuckPlayer(output: output, notifications: NotificationCenter(), isActive: { true })
+                    let presenter = FallingSkyRecorder(), clock = ManualRainClock()
+                    let store = FallingSkyStore(defaults: defaults, arguments: [], presenter: presenter,
+                                               clock: clock, feedback: GameFeedback(sound: player))
+                    store.soundEnabled = enabled; store.hapticsEnabled = false
+                    store.setReducedMotion(quiet); store.setSuspended(false)
+                    var expected = opening
+                    let turn = try XCTUnwrap(expected.nudge(from: Cell(1, 1), to: Cell(1, 2)))
+                    let depth = challenge == .firstLight ? 2 : 3
+                    XCTAssertEqual(turn.resolutionPhases.map(\.comboDepth), Array(1...depth))
+                    XCTAssertEqual(expected.displayScore, challenge == .firstLight ? 15_000 : 30_000)
+                    XCTAssertTrue(store.requestInput(.swap(Cell(1, 1), Cell(1, 2)), snapshot: opening,
+                                                     generation: store.constellationInputGeneration))
+                    XCTAssertEqual(store.game, expected)
+                    XCTAssertEqual(SkySaveArchive.load(from: defaults), expected)
+                    XCTAssertEqual(store.celebration?.displayAward, expected.displayScore)
+                    let phrase = depth == 2 ? [6, 8] : [6, 8, 9]
+                    let expectedTakes = enabled ? (quiet ? Array(phrase.suffix(1)) : phrase) : []
+                    XCTAssertEqual(output.takes, expectedTakes,
+                                   "Quiet presentation keeps its one aggregate receipt; muting drops all phase cues")
+                    let requests = output.takes
+                    presenter.finish(); presenter.finish()
+                    XCTAssertEqual(output.takes, requests, "Duplicate completion cannot replay a chain accent")
+                    XCTAssertEqual(store.game, expected)
+                    if challenge == .firstLight {
+                        let afterChain = expected
+                        let next = try XCTUnwrap(expected.nudge(from: Cell(0, 0), to: Cell(0, 1)))
+                        XCTAssertEqual(next.resolutionPhases.map(\.comboDepth), [1])
+                        XCTAssertEqual(next.resolutionPhases.first?.recipes.map(\.shape), [.line])
+                        XCTAssertEqual(next.displayAward, 5_000)
+                        XCTAssertEqual(expected.displayScore, 20_000)
+                        XCTAssertTrue(store.requestInput(.swap(Cell(0, 0), Cell(0, 1)), snapshot: afterChain,
+                                                         generation: store.constellationInputGeneration))
+                        XCTAssertEqual(store.game, expected)
+                        XCTAssertEqual(SkySaveArchive.load(from: defaults), expected)
+                        XCTAssertEqual(store.celebration?.displayAward, 5_000)
+                        let restartedPhrase = requests + (enabled ? [6] : [])
+                        XCTAssertEqual(output.takes, restartedPhrase,
+                                       "An unrelated committed line clear restarts the opening accent, including quiet presentation")
+                        presenter.finish(); presenter.finish()
+                        XCTAssertEqual(output.takes, restartedPhrase)
+                        XCTAssertEqual(store.game, expected)
+                    }
+                    XCTAssertNil(clock.deadline, "Audio never starts the paused shower clock")
+                    store.setSuspended(true)
+                }
+            }
         }
     }
 
@@ -39,17 +118,17 @@ final class QuietTuckPlayerTests: XCTestCase {
         player.play(); player.play(.recipe(.square))
         center.post(name: AVAudioSession.interruptionNotification, object: nil,
                     userInfo: [AVAudioSessionInterruptionTypeKey: AVAudioSession.InterruptionType.began.rawValue])
-        player.play(); player.play(.relay(2))
+        player.play(); player.play(.relay(2)); player.play(.cascade(2)); player.play(.cascade(3))
         XCTAssertEqual(output.takes, [0, 6])
         center.post(name: AVAudioSession.interruptionNotification, object: nil,
                     userInfo: [AVAudioSessionInterruptionTypeKey: AVAudioSession.InterruptionType.ended.rawValue])
         XCTAssertEqual(output.takes, [0, 6])
         active = false
-        player.play(); player.play(.relay(2))
+        player.play(); player.play(.relay(2)); player.play(.cascade(2)); player.play(.cascade(3))
         XCTAssertEqual(output.takes, [0, 6])
         active = true
-        player.play(); player.play(.relay(2))
-        XCTAssertEqual(output.takes, [0, 6, 1, 7])
+        player.play(); player.play(.relay(2)); player.play(.cascade(3))
+        XCTAssertEqual(output.takes, [0, 6, 1, 7, 9])
     }
 
     @MainActor func testHeadphoneDisconnectAndInactivityStopWithoutReplaying() async {
@@ -97,10 +176,12 @@ final class QuietTuckPlayerTests: XCTestCase {
             XCTAssertEqual(decoded.duration, 0.48, accuracy: 0.005)
             XCTAssertEqual(decoded.numberOfChannels, 2)
         }
-        let starts = (0..<8).map { expectation(description: "Native take \($0) starts") }
+        let cueCount = BundledTuckOutput.names.count + BundledTuckOutput.celebrationNames.count
+        XCTAssertEqual(cueCount, 10)
+        let starts = (0..<cueCount).map { expectation(description: "Native take \($0) starts") }
         let queue = DispatchQueue(label: "StarfallNativeAudioTest")
         let output = BundledTuckOutput(queue: queue, didStart: { starts[$0].fulfill() })
-        for take in 0..<8 {
+        for take in 0..<cueCount {
             XCTAssertTrue(output.start(take: take))
             await fulfillment(of: [starts[take]], timeout: 5)
         }
@@ -141,6 +222,42 @@ final class QuietTuckPlayerTests: XCTestCase {
         queue.suspend()
         XCTAssertTrue(output.start(take: 0))
         output.stop()
+        queue.async { drained.fulfill() }
+        queue.resume()
+        await fulfillment(of: [drained], timeout: 5)
+    }
+
+    @MainActor func testQueuedCascadeAccentsDropSupersededAndCanceledPhrase() async {
+        let queue = DispatchQueue(label: "StarfallCascadeReplacementTest")
+        let started = expectation(description: "Only the latest cascade accent starts")
+        started.assertForOverFulfill = true
+        let output = BundledTuckOutput(queue: queue, didStart: { take in
+            XCTAssertEqual(take, 9)
+            started.fulfill()
+        })
+        let player = QuietTuckPlayer(output: output, notifications: NotificationCenter(), isActive: { true })
+        queue.suspend()
+        player.play(.recipe(.square)); player.play(.cascade(2)); player.play(.cascade(3))
+        player.stop()
+        player.play(.cascade(2)); player.play(.cascade(12))
+        queue.resume()
+        await fulfillment(of: [started], timeout: 5)
+        player.stop()
+        let drained = expectation(description: "Cascade replacement work drains")
+        queue.async { drained.fulfill() }
+        await fulfillment(of: [drained], timeout: 5)
+    }
+
+    @MainActor func testMuteInvalidatesQueuedCascadeBeforeItCanStart() async {
+        let queue = DispatchQueue(label: "StarfallCascadeMuteTest")
+        let drained = expectation(description: "Muted cascade work drains")
+        let output = BundledTuckOutput(queue: queue, didStart: { _ in
+            XCTFail("A muted pending cascade must never start")
+        })
+        let player = QuietTuckPlayer(output: output, notifications: NotificationCenter(), isActive: { true })
+        queue.suspend()
+        player.play(.recipe(.cross)); player.play(.cascade(2)); player.play(.cascade(3))
+        player.stop()
         queue.async { drained.fulfill() }
         queue.resume()
         await fulfillment(of: [drained], timeout: 5)
