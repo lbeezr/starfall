@@ -1,5 +1,7 @@
 # Documentation map
 
+[Frostfruit’s pressure fork](evidence/depth-goal-07-frostfruit-pressure-2026-10-23/README.md) adds a complete growth-versus-reward encounter with recoverable announced pressure and retained historical rounds.
+
 [Goal6 Ribbon Full Board](evidence/depth-goal-06-ribbon-full-board-2026-10-23/README.md) adds a versioned survivor opening, two complete routes and location-preserving mode selection.
 
 [Final cohesion review](evidence/cohesion-goal-10-integrated-review-2026-10-23/README.md) carries ten individual visual outcomes forward and corrects clipped practice rewards through the existing measured overlay.

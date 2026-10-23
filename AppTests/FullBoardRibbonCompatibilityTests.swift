@@ -35,7 +35,7 @@ final class FullBoardRibbonCompatibilityTests: XCTestCase {
         ]
     }
 
-    @MainActor func testV16RibbonRestoresExactCommittedRefillContinuationAndSameRoundReplay() throws {
+    @MainActor func testCurrentRibbonRestoresExactCommittedRefillContinuationAndSameRoundReplay() throws {
         let opening = FallingSky.fullBoardRibbon()
         var game = opening
         let first = try XCTUnwrap(game.nudge(from: Cell(1, 1), to: Cell(1, 2)))
@@ -44,8 +44,8 @@ final class FullBoardRibbonCompatibilityTests: XCTestCase {
         XCTAssertEqual(game.occupiedCount, 49)
         let bytes = try SkySaveArchive.encode(game)
         let fields = try XCTUnwrap(JSONSerialization.jsonObject(with: bytes) as? [String: Any])
-        XCTAssertEqual(SkySaveArchive.key, "starfall.accumulation.v16")
-        XCTAssertEqual(fields["schemaVersion"] as? Int, 16)
+        XCTAssertEqual(SkySaveArchive.key, "starfall.accumulation.v17")
+        XCTAssertEqual(fields["schemaVersion"] as? Int, 17)
         XCTAssertEqual(try SkySaveArchive.decode(bytes), game)
         XCTAssertEqual(try SkySaveArchive.encode(SkySaveArchive.decode(bytes)), bytes)
 

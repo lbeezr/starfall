@@ -493,7 +493,7 @@ final class SkyFlowStateTests: XCTestCase {
         }
         let targets: [(StarfallChallenge, Int)] = [
             (.firstLight, 150_000), (.ribbonCrossing, 220_000), (.kiteHarbor, 17_000),
-            (.seedMoon, 11_000), (.silverPools, 12_000), (.frostfruitOrchard, 18), (.sunwheelMill, 18)
+            (.seedMoon, 11_000), (.silverPools, 12_000), (.frostfruitOrchard, 15_000), (.sunwheelMill, 18)
         ]
         for (challenge, target) in targets {
             journey.select(try XCTUnwrap(WorldLocation(rawValue: challenge.rawValue)))

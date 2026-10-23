@@ -79,7 +79,8 @@ extension FallingSky {
             case .kiteHarbor: key = .helpPatternsKite
             case .seedMoon: key = .helpPatternsSeed
             case .silverPools: key = .helpPatternsSilver
-            case .frostfruitOrchard, .sunwheelMill:
+            case .frostfruitOrchard: key = .helpPatternsFrostfruit
+            case .sunwheelMill:
                 preconditionFailure("Missing automatic-pattern help for this challenge")
             }
             return SkyCopy.text(key,

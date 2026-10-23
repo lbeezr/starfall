@@ -1,5 +1,7 @@
 # Starfall visual reference
 
+**Frostfruit pressure — Current for the inspected encounter slice:** [Depth goal 7](../evidence/depth-goal-07-frostfruit-pressure-2026-10-23/README.md) retains source-bound normal phone and AX3XL Calm tablet choices and earned results. Existing paintings are unchanged; earlier18-light scores and manual encounter instructions retain historical revision0 scope.
+
 [Ribbon Full Board comparison](../evidence/depth-goal-06-ribbon-full-board-2026-10-23/README.md) retains source-bound ordinary phone, largest-text tablet and integrated advice captures.
 
 **Measured practice awards — Current for the inspected slice:** [Cohesion goal 10](../evidence/cohesion-goal-10-integrated-review-2026-10-23/README.md) retains the full Square +5,000 and 2 CHAIN +15,000 from the actual lesson, native normal-speed comparison and three-size hosted renderings. First production source `0c65bc22`, integration source `f2ed225c`, bundle `dev.local`; prior captures keep their original source. Earlier clipped award placement is Historical. Small-window scrolling, long worked text and AX quiet visibility have separate interaction/capture scopes.
