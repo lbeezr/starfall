@@ -1,0 +1,121 @@
+{
+  "base_main": "b41a623c633d22dc9248e4fcdfc5bb505be1452f",
+  "local_source_commit": "8c52334e843f108e6d39e49424cfe60d5c5e601f",
+  "build": "dev.8895bb79c7",
+  "inputs": {
+    "App/ObservatoryArtwork.swift": "935b664469b36b26d187bb631d8ca25a8ef7eb8981b863a24a60039026b6dd73",
+    "App/StarfallTheme.swift": "f9a3047f4327813b9a2fbc6c09aa0ea230215ff5b4df03c24453c860cfe3caaf",
+    "AppTests/ObservatoryArtworkTests.swift": "a09740397295da7de2d475ad1a314225cf0deafad7eb2be4e9e7a2757d90cf81",
+    "UITests/SkyLessonInteractionTests.swift": "75936ab1a4de3ca1cf8160cba13c2cd0889da85610d6b7945dd860bc9306243e"
+  },
+  "dirty_inputs": {},
+  "snapshot_id": "5ec1475f041b",
+  "status": "Verified for scoped development adoption",
+  "baseline": {
+    "build": "dev.21d62cc22f",
+    "compiled_source": "612a369b + snapshot19529984a3d0; runtime-equivalent to activation main81826248",
+    "dirty_snapshot": "19529984a3d0"
+  },
+  "core": {
+    "passed": 249,
+    "failed": 0,
+    "skipped": 0,
+    "source": "8c52334e843f108e6d39e49424cfe60d5c5e601f"
+  },
+  "build_for_testing": {
+    "passed": true,
+    "seconds": 21.7,
+    "test_products": "build_sim_2026-10-23T14-39-28-035Z_pid51280_8e5c0541.xctestproducts"
+  },
+  "initial_source": {
+    "base_main": "81826248a5a08f7a52ad36d7c13263ccb2502cd1",
+    "build": "dev.7a0ac59281",
+    "dirty_inputs": {
+      "App/ObservatoryArtwork.swift": "935b664469b36b26d187bb631d8ca25a8ef7eb8981b863a24a60039026b6dd73",
+      "App/StarfallTheme.swift": "f9a3047f4327813b9a2fbc6c09aa0ea230215ff5b4df03c24453c860cfe3caaf",
+      "AppTests/ObservatoryArtworkTests.swift": "324fd03ae9dc313b8dba439ba21d1522990439b98bd7a47503f26b8f4eac9ebf",
+      "UITests/SkyLessonInteractionTests.swift": "fe13bd94b670616408a6a71e7a6b7228b0c2a7f847ee2f1de6f0823cdab117bc"
+    },
+    "snapshot_id": "5be0538bb9c6"
+  },
+  "phone_tests": [
+    "SkyLessonInteractionTests/testGuideCoordinatesAndDisclosureMatchTheVisibleBoard",
+    "SkyLessonInteractionTests/testLargestTextQuietExampleSurvivesBackgroundAndDismissal"
+  ],
+  "tablet_tests": [
+    "ObservatoryArtworkTests(3 hosted)",
+    "SkyLessonInteractionTests/testLargestTextQuietExampleSurvivesBackgroundAndDismissal",
+    "SkyFlowInteractionTests/testLargestTextWelcomeEntryAndBackRemainReachable"
+  ],
+  "inventory": {
+    "ui": 203,
+    "hosted": 446,
+    "selected_only": true
+  },
+  "physical": false,
+  "actual_voiceover": false,
+  "minimum_os": false,
+  "release_membership": "Inapplicable: no resource/routing/fixture/build configuration/membership changes in Goal4",
+  "phone": {
+    "result": "Passed",
+    "totalTestCount": 2,
+    "passedTests": 2,
+    "failedTests": 0,
+    "skippedTests": 0,
+    "startTime": 1792766417.598,
+    "finishTime": 1792766519.509,
+    "testFailures": []
+  },
+  "tablet": {
+    "result": "Passed",
+    "totalTestCount": 5,
+    "passedTests": 5,
+    "failedTests": 0,
+    "skippedTests": 0,
+    "startTime": 1792766420.667,
+    "finishTime": 1792766552.359,
+    "testFailures": []
+  },
+  "commands": [
+    "swift test --scratch-path /private/tmp/starfall-factory-gameplay-20261022/CoreBuild --jobs 2",
+    "XcodeBuildMCP build_sim(buildForTesting:true)",
+    "scripts/simulator-command.py --receipt stages.jsonl goal04-integrated-phone 360 xcodebuild -testProductsPath PREPARED -destination OWN_PHONE -collect-test-diagnostics never -parallel-testing-enabled NO [two exact selected cases] -resultBundlePath UNIQUE test-without-building",
+    "scripts/simulator-command.py --receipt stages.jsonl goal04-integrated-tablet 420 xcodebuild -testProductsPath PREPARED -destination OWN_TABLET -collect-test-diagnostics never -parallel-testing-enabled NO [three hosted/two UI selected cases] -resultBundlePath UNIQUE test-without-building",
+    "python3 scripts/ci-hygiene.py",
+    "git diff --check"
+  ],
+  "stages": [
+    {
+      "stage": "goal04-after-compact-native",
+      "startedUTC": "2026-10-23T14:30:49.261632+00:00",
+      "elapsedSeconds": 63.957,
+      "limitSeconds": 320.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "goal04-tablet",
+      "startedUTC": "2026-10-23T14:30:53.712302+00:00",
+      "elapsedSeconds": 127.382,
+      "limitSeconds": 480.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "goal04-integrated-phone",
+      "startedUTC": "2026-10-23T14:40:17.073987+00:00",
+      "elapsedSeconds": 102.658,
+      "limitSeconds": 360.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "goal04-integrated-tablet",
+      "startedUTC": "2026-10-23T14:40:20.162876+00:00",
+      "elapsedSeconds": 133.756,
+      "limitSeconds": 420.0,
+      "exitCode": 0,
+      "error": null
+    }
+  ]
+}

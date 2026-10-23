@@ -162,5 +162,23 @@
       "python3 scripts/ci-hygiene.py",
       "git diff --check"
     ]
+  },
+  "publicationIntegration": {
+    "source": "62e676e9d98d667a468f6007c692811f41b5ab4f",
+    "parentMain": "5b3efc62fc7f5c0568b5ba339d4d50b89c3f4547",
+    "runtimeIdentity": "dev.ca0677a92b",
+    "scope": "Inherited passive compact action backgrounds; native bounds, callbacks, rules, ceiling and refill rendering unchanged",
+    "hosted": {
+      "passed": 17,
+      "failed": 0,
+      "skipped": 0,
+      "suites": [
+        "FullBoardLanternTests",
+        "SkyCeilingOverlayTests",
+        "ObservatoryArtworkTests"
+      ]
+    },
+    "Debug": "passed build-for-testing",
+    "Release": "passed generic iOS Simulator"
   }
 }

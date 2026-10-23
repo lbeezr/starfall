@@ -44,7 +44,9 @@ These are inspected Simulator stills from `1f3f742` plus the two recorded native
 
 ## Verification and source integration
 
-Starting source `612a369` was clean. Integrated the accepted HUD change `81826248` as `1f3f742`, then the accepted Kite encounter `b41a623c` as **`89ad295`**. The final integration retains Kite revision 4/17,000 alongside Lantern revision 5 and the v14 archive. Final runtime fingerprint **`dev.4ce4ff3aca`**; [verification.json](verification.json) records changed-source hashes, counts, selectors and commands. Relevant ceiling, Entry, HUD, Store and Scene owners are unchanged by the Kite merge; source-bound stills retain their original names and provenance.
+Starting source `612a369` was clean. Integrated the accepted HUD change `81826248` as `1f3f742`, then the accepted Kite encounter `b41a623c` as **`89ad295`**. The final integration retains Kite revision 4/17,000 alongside Lantern revision 5 and the v14 archive. Kite-integration runtime fingerprint **`dev.4ce4ff3aca`**; [verification.json](verification.json) records changed-source hashes, counts, selectors and commands. Relevant ceiling, Entry, HUD, Store and Scene owners are unchanged by the Kite merge; source-bound stills retain their original names and provenance.
+
+Publication additionally inherits [compact-action styling #300](https://github.com/lbeezr/starfall/pull/300) from `5b3efc62`, integrated as `62e676e`, fingerprint **`dev.ca0677a92b`**. The change affects passive backgrounds only; dimensions, callbacks and this batch's rules/ceiling/refill rendering are unchanged. Debug/Release and 17 focused Full Board/ceiling/material hosted cases pass, zero failures/skips. Captures retain their actual earlier source; incidental compact-button backing follows that earlier appearance, while the ceiling and mode geometry remain representative.
 
 Environment: Xcode **27.1 (`27A9275`)**, Swift **6.4**, macOS **27.0.1** arm64. iOS **27.0 (`24A434`)** Simulators: iPhone 17e (`Starfall Mechanics Lab`), iPad mini (A17 Pro), iPhone SE (3rd generation) (`Starfall Parity Compact 01a1563a`).
 
