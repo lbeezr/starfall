@@ -2,7 +2,11 @@
 
 Native tests for stores, presentation and materials that require Apple frameworks.
 
-`StoryPatternPlan` and `FallingSkyTestSupport` reconstruct revision-4 Lantern/Ribbon wins through production actions. Core retains separate revision-3 witnesses. Archive tests cover v13 writes, retained v12 seven-star Continue/Replay and historical envelope limits.
+`StoryPatternPlan` and `FallingSkyTestSupport` reconstruct revision-4 Lantern/Ribbon wins through production actions. Core retains separate revision-3 witnesses. Archive tests cover v19 writes, retained unenrolled v3–v18 readers, seven-star/manual Continue/Replay and each historical envelope limit.
+
+`StoryMasteryPersistenceTests` covers exact-contract enrollment at Begin, absent old enrollment on Replay, whole-best first-tie/promotion semantics, strict proof and envelope rejection, independent world repair, and recovery/replacement after failed writes. `SkyMasteryPresentationTests` covers mode-specific Entry/progress/results and map bests from immutable Core values. Real Full Board HIGH10/LINE21 and Sky production routes establish integration; labeled invariant-valid aggregate fixtures cover rank combinations and no-union behavior without claiming naturally reachable histories. Tutorial/Debug exclusions and pre-v19 enrollment rejection remain explicit boundaries.
+
+Use the [mastery contract](../docs/design/STORY_MASTERY_CONTRACT.md) for semantics and [Goal 9 evidence](../docs/evidence/depth-goal-09-optional-mastery-2026-10-23/README.md) for executed hosted/native results. Core's 235-action qualification comparison does not establish player comprehension or enjoyment. Natural one-star, Sky single-goal and missed-first-grown recovery routes remain unproved; no hosted aggregate fixture closes those gaps.
 
 ## Start here
 

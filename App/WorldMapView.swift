@@ -31,6 +31,7 @@ struct WorldMapView: View {
     let recovered: Bool
     let accessible: Bool
     let goal: WorldMapGoalSnapshot?
+    let masteryRecords: [StoryMasteryRecord]
     let select: (WorldLocation) -> Void
     let enter: (StarfallChallenge) -> Void
     let resume: (() -> Void)?
@@ -43,11 +44,12 @@ struct WorldMapView: View {
     @Environment(\.dynamicTypeSize) private var textSize
 
     init(journey: WorldJourney, list: Binding<Bool>, quiet: Bool, recovered: Bool = false, accessible: Bool = true,
-         goal: WorldMapGoalSnapshot? = nil,
+         goal: WorldMapGoalSnapshot? = nil, masteryRecords: [StoryMasteryRecord] = [],
          select: @escaping (WorldLocation) -> Void,
          enter: @escaping (StarfallChallenge) -> Void, resume: (() -> Void)? = nil, learn: @escaping () -> Void, done: @escaping () -> Void) {
         self.journey = journey; _list = list; self.quiet = quiet; self.recovered = recovered; self.accessible = accessible; self.select = select
         self.enter = enter; self.resume = resume; self.learn = learn; self.done = done; self.goal = goal
+        self.masteryRecords = masteryRecords
     }
     private var selected: WorldLocation { journey.selected }
 
@@ -243,6 +245,13 @@ struct WorldMapView: View {
                 Text(goal.newVisitLabel).font(StarfallTheme.Typography.supporting)
                     .foregroundStyle(StarfallTheme.Colors.textSecondary)
                     .accessibilityIdentifier("world.newVisitGoal")
+            }
+            if selected == .firstLight, journey.completed.contains(selected) || !masteryRecords.isEmpty {
+                ForEach(SkyMasteryBestSnapshot.lantern(records: masteryRecords)) { best in
+                    Text(best.label).font(StarfallTheme.Typography.supporting)
+                        .foregroundStyle(StarfallTheme.Colors.textSecondary)
+                        .accessibilityIdentifier("world.mastery." + best.id)
+                }
             }
             if selected.challenge == nil {
                 Text(SkyCopy.text(.worldComing)).font(StarfallTheme.Typography.supporting)

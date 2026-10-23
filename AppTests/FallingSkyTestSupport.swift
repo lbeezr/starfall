@@ -137,3 +137,12 @@ private enum StoryPatternWitness {
     private static let lantern = record(.firstLight, plan: .lantern)
     private static let ribbon = record(.ribbonCrossing, plan: .ribbon)
 }
+
+/// Exact expected opening including the production Begin attempt identity.
+/// Historical/unenrolled comparisons keep their original byte-for-byte checks.
+func enrolledMasteryOpening(_ opening: FallingSky, matching actual: FallingSky) throws -> FallingSky {
+    var expected = opening
+    let enrollment = try XCTUnwrap(actual.masteryEnrollment)
+    XCTAssertTrue(expected.enrollMastery(runID: enrollment.runID))
+    return expected
+}

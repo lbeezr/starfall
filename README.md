@@ -1,5 +1,7 @@
 # Starfall
 
+[Optional Lantern mastery](docs/evidence/depth-goal-09-optional-mastery-2026-10-23/README.md) adds two accomplishments per mode and a best from one completed run. Every repair still unlocks the journey; old unenrolled Replay remains completion-only.
+
 [Sunwheel’s first capstone](docs/evidence/depth-goal-08-sunwheel-capstone-2026-10-23/README.md) combines room, a grown ingredient and visible-survivor sequencing through contrasting complete plans.
 
 [Frostfruit’s pressure fork](docs/evidence/depth-goal-07-frostfruit-pressure-2026-10-23/README.md) adds a complete growth-versus-reward encounter with recoverable announced pressure and retained historical rounds.

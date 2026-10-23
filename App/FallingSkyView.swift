@@ -184,6 +184,9 @@ import StarfallCore
                                         onward: endingReady && store.hasSavedSky
                                             ? SkyOnwardSnapshot(game: store.game, journey: store.journey.journey) : nil,
                                         welcome: SkyWelcomeSnapshot(game: store.game, hasSavedSky: store.hasSavedSky, paused: store.isPaused),
+                                        mastery: flow.entry.map {
+                                            SkyMasterySnapshot.entry(request: $0, retainedRound: store.game, bestRecords: store.mastery.records)
+                                        } ?? SkyMasterySnapshot.current(game: store.game, bestRecords: store.mastery.records, context: .result),
                                         active: scenePhase == .active && flow.handoff == nil && !settings, quiet: quietMotion, modal: settings,
                                         restoredSceneryBounds: anchors[.restorationScenery].map { geometry[$0] },
                                         action: { handleFlowAction($0, entryID: entryID) })
@@ -648,6 +651,7 @@ import StarfallCore
             menu = nil
             return
         }
+        let previousFlow = flow
         guard scenePhase == .active,
               let effect = flow.handle(action, hasSavedSky: store.hasSavedSky, entryID: entryID) else { return }
         switch effect {
@@ -666,7 +670,12 @@ import StarfallCore
             store.setSuspended(true)
         case .began(let request):
             store.setSuspended(true)
-            store.beginEntry(request)
+            guard store.beginEntry(request) else {
+                // Entry consumption is reversible when persistence retains the
+                // prior winning receipt for an explicit retry.
+                flow = previousFlow
+                return
+            }
             environmentGeneration += 1
         case .continued:
             // Returning to the board does not change the player's pause choice.
@@ -680,6 +689,7 @@ import StarfallCore
                          accessible: !settings,
                          goal: WorldMapGoalSnapshot(journey: store.journey.journey,
                                                     retainedRound: store.hasSavedSky ? store.game : nil),
+                           masteryRecords: store.mastery.records,
                          select: { location in try? store.journey.select(location) },
                          enter: { challenge in
                              guard let location = WorldLocation(rawValue: challenge.rawValue),
@@ -709,7 +719,9 @@ import StarfallCore
             FallingSkyMenu(paused: store.isPaused, turns: store.game.turns,
                            groups: store.game.legalGroups.count, over: store.game.isOver,
                            challenge: store.game.challenge, helpContext: .init(game: store.game),
-                           choiceSnapshot: store.game.usesFullBoardRefill ? store.game : nil, balance: store.game.balance,
+                           choiceSnapshot: store.game.usesFullBoardRefill ? store.game : nil,
+                           mastery: SkyMasterySnapshot.current(game: store.game, bestRecords: store.mastery.records, context: .progress),
+                           balance: store.game.balance,
                            sound: $store.soundEnabled, haptics: $store.hapticsEnabled, calm: $calmEffects,
                            pause: togglePauseFromMenu,
                            restart: { same in handleFlowAction(same ? .replay : .another) },

@@ -1897,6 +1897,26 @@
     "forecast.columnsHint": "Columns count from 1 at the left to 7 at the right.",
     "help.fullBoardRecipe": "Arrange a 2×2 square of 4 matching stars, a cross of 5, or a straight horizontal or vertical line of 4 or more. Patterns pop after a swap or refill. Overlapping patterns spend each shared star once.",
     "help.fullBoardIdentity": "Match stars by color and shape. Each star earns 1,000 starlight. Clearing more than three actual stars adds 1,000 for each extra star. Five stars earn 7,000 before any chain bonus.",
-    "help.fullBoardControls": "Swipe a star toward a neighbor to exchange them. Setup swaps are allowed even without a match. Matching patterns pop as soon as the stars settle. Tap a star for guidance. With VoiceOver, use its Move left, Move right, Move up or Move down action."
+    "help.fullBoardControls": "Swipe a star toward a neighbor to exchange them. Setup swaps are allowed even without a match. Matching patterns pop as soon as the stars settle. Tap a star for guidance. With VoiceOver, use its Move left, Move right, Move up or Move down action.",
+    "mastery.title": "Optional goals",
+    "mastery.resultTitle": "Your restoration",
+    "mastery.explanation": "Complete this repair for 1 star. Each optional goal adds 1 in the same run. Stars never gate the next place.",
+    "mastery.resultExplanation": "Your repair is complete. Optional stars never block the next place. Replay for another try; your best comes from one completed run.",
+    "mastery.grownGoal": "Collect grown light",
+    "mastery.grownDetail": "Collect a grown colored star in an automatic pattern.",
+    "mastery.cascadeGoal": "Make a chain",
+    "mastery.cascadeDetail": "Let one automatic clear lead to another in the same move or shower.",
+    "mastery.refillCascadeDetail": "Let one automatic clear lead to another as survivors fall and gaps refill.",
+    "mastery.largeClearGoal": "Clear 8 stars at once",
+    "mastery.largeClearDetail": "Clear at least 8 actual stars in one phase. Simultaneous patterns count together; each star counts once.",
+    "mastery.earned": "Earned this run",
+    "mastery.notYet": "Not yet this run",
+    "mastery.notEarned": "Not earned this run",
+    "mastery.rating": "{count} of 3 stars earned",
+    "mastery.best": "Best completed run: {count} of 3 stars from one completed run",
+    "mastery.modeBest": "{mode} best: {count} of 3 stars",
+    "mastery.modeNoResult": "{mode}: no result for these optional goals yet",
+    "mastery.saveFailedTitle": "Optional stars need saving",
+    "mastery.saveFailedMessage": "Your repair is saved. The optional best could not be saved yet. Try again before starting another round."
   }
 }
