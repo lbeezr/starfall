@@ -1,0 +1,29 @@
+[
+  {
+    "file": "dev-0d77ee4-wip-139d051e3e2f__options__iphone-17e__default-text.jpg",
+    "status": "Current for inspected input snapshot",
+    "source": "0d77ee41 + snapshot139d051e3e2f; app-equivalent68a391e",
+    "bundleLabel": "dev.local",
+    "description": "Options show their first visible patterns before revealing swipes.",
+    "sha256": "f1f04d1b58f284ce0c9d54b15a6cf66d68ebb944961937dbea2bccd5f6dd5c6c",
+    "inspected": true
+  },
+  {
+    "file": "dev-0d77ee4-wip-139d051e3e2f__revealed-swipes__iphone-17e__default-text.jpg",
+    "status": "Current for inspected input snapshot",
+    "source": "0d77ee41 + snapshot139d051e3e2f; app-equivalent68a391e",
+    "bundleLabel": "dev.local",
+    "description": "Two distinct patterns with optional revealed coordinates; later instructions scroll.",
+    "sha256": "887a6f0e432582b80e6f85b937accce4c6967da53914f683e4766d630163b3e5",
+    "inspected": true
+  },
+  {
+    "file": "dev-0d77ee4-wip-139d051e3e2f__setup-swipes__ipad-mini-a17pro__largest-text-calm.jpg",
+    "status": "Current for inspected input snapshot",
+    "source": "0d77ee41 + snapshot139d051e3e2f; app-equivalent68a391e",
+    "bundleLabel": "dev.local",
+    "description": "Both setup instructions read in the scrolling body; Back and Return stay fixed.",
+    "sha256": "44f451e9fa032be60d222763dd3346233768c400adcde190deeb074f688c78a5",
+    "inspected": true
+  }
+]

@@ -62,7 +62,7 @@ public struct FallingSkyTurn: Sendable {
         public let gem: StarfallGem
         public let grew: Bool
     }
-    public struct Exchange: Sendable {
+    public struct Exchange: Equatable, Sendable {
         public let from: Cell
         public let to: Cell
     }
