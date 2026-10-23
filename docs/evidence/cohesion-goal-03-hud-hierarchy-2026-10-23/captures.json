@@ -1,0 +1,242 @@
+[
+  {
+    "file": "dev-678f7c7c-wip-787039fc3544__lantern-pressure__iphone-17e__default-before.jpg",
+    "raw_source": "/private/tmp/starfall-cohesion-20261023/goal03-baseline-lantern-attachments/9054E458-0247-4864-BB26-C15A2E89835C.png",
+    "result_or_capture": "goal03-baseline-lantern",
+    "screen": "lantern-pressure",
+    "device": "iphone-17e",
+    "variant": "default",
+    "phase": "before",
+    "native_pixels": [
+      1170,
+      2532
+    ],
+    "raw_sha256": "a10936136523449374a35ce64cf0952eac4daa2ab21100556eb57a913cd295d7",
+    "retained_sha256": "493b1600c809c97f0c16459becbdd809d630aba3faeebc5f88b402f28580e613",
+    "inspected": true,
+    "configuration": "Debug",
+    "simulatorOS": "iOS 27.0 (24A434)",
+    "motion": "normal",
+    "phase_limit": "Same committed context; presentation/arrival ages may differ."
+  },
+  {
+    "file": "dev-612a369b-wip-19529984a3d0__lantern-pressure__iphone-17e__default-after.jpg",
+    "raw_source": "/private/tmp/starfall-cohesion-20261023/goal03-final-phone-attachments/C8EFB1D5-F254-4DF8-8A9E-52E056ED232C.png",
+    "result_or_capture": "goal03-final-phone",
+    "screen": "lantern-pressure",
+    "device": "iphone-17e",
+    "variant": "default",
+    "phase": "after",
+    "native_pixels": [
+      1170,
+      2532
+    ],
+    "raw_sha256": "ea63c0d49111d850ffc87a98c6b38cd56c3fe2d2bb65d702083f846ca42b2d09",
+    "retained_sha256": "4d80fafe2ea1191ceb7cf4c5f6267d9cf3e2f97789a1beedcd4e61892d610e0e",
+    "inspected": true,
+    "configuration": "Debug",
+    "simulatorOS": "iOS 27.0 (24A434)",
+    "motion": "normal",
+    "phase_limit": "Same committed context; presentation/arrival ages may differ."
+  },
+  {
+    "file": "dev-678f7c7c-wip-787039fc3544__ribbon-chain__iphone-17e__ax3xl-before.jpg",
+    "raw_source": "/private/tmp/starfall-cohesion-20261023/goal03-before-largest-phone-attachments/CEAF6808-04E5-4293-992E-B8B787FD0710.png",
+    "result_or_capture": "goal03-before-largest-phone",
+    "screen": "ribbon-chain",
+    "device": "iphone-17e",
+    "variant": "ax3xl",
+    "phase": "before",
+    "native_pixels": [
+      1170,
+      2532
+    ],
+    "raw_sha256": "29c9d712bfb476eb444069f6e34a000bea28f7134b0ec98317f0360a7a3117dc",
+    "retained_sha256": "37cc6cc2e84ba2b4b49e31e0719b508e4ab282773b74cc4dd682297af6631462",
+    "inspected": true,
+    "configuration": "Debug",
+    "simulatorOS": "iOS 27.0 (24A434)",
+    "motion": "normal",
+    "phase_limit": "Same committed context; presentation/arrival ages may differ."
+  },
+  {
+    "file": "dev-612a369b-wip-19529984a3d0__ribbon-chain__iphone-17e__ax3xl-after.jpg",
+    "raw_source": "/private/tmp/starfall-cohesion-20261023/goal03-final-phone-attachments/49171FCF-56A2-4DB3-BA40-A0A56BE81089.png",
+    "result_or_capture": "goal03-final-phone",
+    "screen": "ribbon-chain",
+    "device": "iphone-17e",
+    "variant": "ax3xl",
+    "phase": "after",
+    "native_pixels": [
+      1170,
+      2532
+    ],
+    "raw_sha256": "2e424bb4285f28322993f4929eca5609c76e9039471bad62afcabdae64623db1",
+    "retained_sha256": "3acd919b346a291be9c1bfc181d49811dee092249a724e9cf6046cdea5c4a904",
+    "inspected": true,
+    "configuration": "Debug",
+    "simulatorOS": "iOS 27.0 (24A434)",
+    "motion": "normal",
+    "phase_limit": "Same committed context; presentation/arrival ages may differ."
+  },
+  {
+    "file": "dev-678f7c7c-wip-787039fc3544__ribbon-opening__ipad-mini-a17-pro__default-before.jpg",
+    "raw_source": "/private/tmp/starfall-cohesion-20261023/goal03-baseline-ribbon-attachments/AC6382E0-3E66-433F-A264-E45EF4EE074F.png",
+    "result_or_capture": "goal03-baseline-ribbon",
+    "screen": "ribbon-opening",
+    "device": "ipad-mini-a17-pro",
+    "variant": "default",
+    "phase": "before",
+    "native_pixels": [
+      1488,
+      2266
+    ],
+    "raw_sha256": "5fa8bae42e0efbc4d40dd9cd9b6db0a165c339b3f05fb5fb61fe4eeb2c5b704d",
+    "retained_sha256": "ee7723815845ea7ce1a7d9158ca717ae61dd1399f9ca4b04c82c8bd2561cc406",
+    "inspected": true,
+    "configuration": "Debug",
+    "simulatorOS": "iOS 27.0 (24A434)",
+    "motion": "normal",
+    "phase_limit": "Same committed context; presentation/arrival ages may differ."
+  },
+  {
+    "file": "dev-612a369b-wip-19529984a3d0__ribbon-opening__ipad-mini-a17-pro__default-after.jpg",
+    "raw_source": "/private/tmp/starfall-cohesion-20261023/goal03-final-tablet-attachments/A6355D1D-479F-42AF-B37C-57945331FD48.png",
+    "result_or_capture": "goal03-final-tablet",
+    "screen": "ribbon-opening",
+    "device": "ipad-mini-a17-pro",
+    "variant": "default",
+    "phase": "after",
+    "native_pixels": [
+      1488,
+      2266
+    ],
+    "raw_sha256": "efb91f9b509903c9a29ffcd296853555f5e9d3edb6da795499da08bddb4e8f09",
+    "retained_sha256": "a4251e037851434ca7fe6427c63b470d0907a6e99a733bafe52c24844a8c3c84",
+    "inspected": true,
+    "configuration": "Debug",
+    "simulatorOS": "iOS 27.0 (24A434)",
+    "motion": "normal",
+    "phase_limit": "Same committed context; presentation/arrival ages may differ."
+  },
+  {
+    "file": "dev-678f7c7c-wip-787039fc3544__ribbon-chain__ipad-mini-a17-pro__default-before.jpg",
+    "raw_source": "/private/tmp/starfall-cohesion-20261023/goal03-baseline-ribbon-attachments/1A29E476-CC86-4EC3-AC8F-231C3A3ECCC0.png",
+    "result_or_capture": "goal03-baseline-ribbon",
+    "screen": "ribbon-chain",
+    "device": "ipad-mini-a17-pro",
+    "variant": "default",
+    "phase": "before",
+    "native_pixels": [
+      1488,
+      2266
+    ],
+    "raw_sha256": "d25b36ab1b00b9b2ef8ffc3b04bef1ddf908a9e2f8bcf39feef404a705686222",
+    "retained_sha256": "951a5731b125ef56642db0c8f94bbf2fee297073a4a8249aa837c304b8b1651a",
+    "inspected": true,
+    "configuration": "Debug",
+    "simulatorOS": "iOS 27.0 (24A434)",
+    "motion": "normal",
+    "phase_limit": "Same committed context; presentation/arrival ages may differ."
+  },
+  {
+    "file": "dev-612a369b-wip-19529984a3d0__ribbon-chain__ipad-mini-a17-pro__default-after.jpg",
+    "raw_source": "/private/tmp/starfall-cohesion-20261023/goal03-final-tablet-attachments/281A2B0F-075B-4FA4-9701-2093B685D57B.png",
+    "result_or_capture": "goal03-final-tablet",
+    "screen": "ribbon-chain",
+    "device": "ipad-mini-a17-pro",
+    "variant": "default",
+    "phase": "after",
+    "native_pixels": [
+      1488,
+      2266
+    ],
+    "raw_sha256": "9656b290de523c37dbbeef5a7605ad9b94b82b803e1391919ffa06007d3845a7",
+    "retained_sha256": "e5481039fc77c0609115fb60a9ddb7e07d7a8e492b7191255684306fdd82fa0f",
+    "inspected": true,
+    "configuration": "Debug",
+    "simulatorOS": "iOS 27.0 (24A434)",
+    "motion": "normal",
+    "phase_limit": "Same committed context; presentation/arrival ages may differ."
+  },
+  {
+    "file": "dev-678f7c7c-wip-787039fc3544__ribbon-opening__ipad-mini-a17-pro__ax3xl-before.jpg",
+    "raw_source": "/private/tmp/starfall-cohesion-20261023/goal03-before-largest-tablet-attachments/53308370-5EEE-43E8-9EE2-A2AA81078FFB.png",
+    "result_or_capture": "goal03-before-largest-tablet",
+    "screen": "ribbon-opening",
+    "device": "ipad-mini-a17-pro",
+    "variant": "ax3xl",
+    "phase": "before",
+    "native_pixels": [
+      1488,
+      2266
+    ],
+    "raw_sha256": "d567307ba4d166f8fd696f7234fe3d25485465a85720d9c9fa432c424eee5219",
+    "retained_sha256": "f117c513c4c9c0b718d197ccac1e764b5a6a115db6fb3aca10cc9b1bfefa2283",
+    "inspected": true,
+    "configuration": "Debug",
+    "simulatorOS": "iOS 27.0 (24A434)",
+    "motion": "normal",
+    "phase_limit": "Same committed context; presentation/arrival ages may differ."
+  },
+  {
+    "file": "dev-612a369b-wip-19529984a3d0__ribbon-opening__ipad-mini-a17-pro__ax3xl-after.jpg",
+    "raw_source": "/private/tmp/starfall-cohesion-20261023/goal03-final-tablet-attachments/4739B130-F0E1-46EB-969D-7904C512D2C5.png",
+    "result_or_capture": "goal03-final-tablet",
+    "screen": "ribbon-opening",
+    "device": "ipad-mini-a17-pro",
+    "variant": "ax3xl",
+    "phase": "after",
+    "native_pixels": [
+      1488,
+      2266
+    ],
+    "raw_sha256": "9fa51e912d12cef36010f301c66722f18c98edbb5990696567572455c9af1510",
+    "retained_sha256": "4f53239bf40eacdbefae9d4fb1fe64e3c5087ee103a6b6e301ac3a6da25e5df2",
+    "inspected": true,
+    "configuration": "Debug",
+    "simulatorOS": "iOS 27.0 (24A434)",
+    "motion": "normal",
+    "phase_limit": "Same committed context; presentation/arrival ages may differ."
+  },
+  {
+    "file": "dev-678f7c7c-wip-787039fc3544__open-sky-header__iphone-17e__ax3xl-before.jpg",
+    "raw_source": "/private/tmp/starfall-cohesion-20261023/goal03-before-forecast-phone-manual.png",
+    "result_or_capture": "manual prepared-product install/launch; same reset-only zero-score paused Open Sky",
+    "screen": "open-sky-header",
+    "device": "iphone-17e",
+    "variant": "ax3xl",
+    "phase": "before",
+    "native_pixels": [
+      1170,
+      2532
+    ],
+    "raw_sha256": "44763fc974437276be0dcd8bda991a5f835eb7281400c8648eb4fe2a8d64aa15",
+    "retained_sha256": "6c8000094d3c97e1d6f7ee4d759cd7236e0b78c1e5a688a5f0cd9a763fcfc245",
+    "inspected": true,
+    "configuration": "Debug",
+    "simulatorOS": "iOS 27.0 (24A434)",
+    "motion": "normal",
+    "phase_limit": "Same committed context; presentation/arrival ages may differ."
+  },
+  {
+    "file": "dev-612a369b-wip-19529984a3d0__open-sky-header__iphone-17e__ax3xl-after.jpg",
+    "raw_source": "/private/tmp/starfall-cohesion-20261023/goal03-after-forecast-phone-manual.png",
+    "result_or_capture": "manual prepared-product install/launch; same reset-only zero-score paused Open Sky",
+    "screen": "open-sky-header",
+    "device": "iphone-17e",
+    "variant": "ax3xl",
+    "phase": "after",
+    "native_pixels": [
+      1170,
+      2532
+    ],
+    "raw_sha256": "cc1f97781e9ab6de9f1113e39e8c4201a0376bc3ec3792cb5becbb92769462ab",
+    "retained_sha256": "2cd09305a999dca2c59a05e55eb847a9b715c959466a6349ac1a4e32d5a2d97c",
+    "inspected": true,
+    "configuration": "Debug",
+    "simulatorOS": "iOS 27.0 (24A434)",
+    "motion": "normal",
+    "phase_limit": "Same committed context; presentation/arrival ages may differ."
+  }
+]

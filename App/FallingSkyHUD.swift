@@ -72,10 +72,10 @@ struct SkyScoreInstrument: View {
             Group {
                 if let target {
                     ViewThatFits(in: .horizontal) {
-                        Text("\(score.formatted()) / \(target.formatted())").fixedSize()
+                        (Text("\(score.formatted()) ") + targetText(target)).fixedSize()
                         VStack(alignment: .leading, spacing: StarfallTheme.Spacing.compact) {
                             Text(score.formatted())
-                            Text("/ \(target.formatted())")
+                            targetText(target)
                         }
                         .fixedSize(horizontal: false, vertical: true)
                     }
@@ -100,6 +100,12 @@ struct SkyScoreInstrument: View {
         .frame(minHeight: StarfallTheme.Layout.minimumTarget)
         .starlightAnchor(.score)
         .allowsHitTesting(false)
+    }
+
+    private func targetText(_ target: Int) -> Text {
+        Text("/ \(target.formatted())")
+            .fontWeight(.regular)
+            .foregroundStyle(StarfallTheme.Colors.textSecondary)
     }
 }
 
