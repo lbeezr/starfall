@@ -243,7 +243,9 @@ struct StarlightCelebrationOverlay: View {
         let flight = StarlightCelebration.packetFlight(toRestoration: lightDestination != nil)
         for (index, contributor) in event.packets.enumerated() {
             let point = location(contributor.cell)
-            let tint = color(contributor)
+            let emission = LivingLight.emission(for: StarCast.Identity(contributor.identity))
+            let tint = Color(emission.family)
+            let center = Color(emission.center)
             let weight = Double(contributor.reward - 1) * 0.65
             let t = flight.progress(at: age, packetIndex: index)
             guard t > 0, t < 1 else { continue }
@@ -258,8 +260,8 @@ struct StarlightCelebrationOverlay: View {
             var glow = context
             glow.addFilter(.shadow(color: tint, radius: 4 + 5 * energy))
             glow.stroke(tail, with: .color(tint.opacity(0.3)), style: StrokeStyle(lineWidth: 7 + energy * 7 + weight, lineCap: .round))
-            glow.stroke(tail, with: .color(tint), style: StrokeStyle(lineWidth: 2 + energy * 3 + weight, lineCap: .round))
-            glint(in: &glow, at: along(t), radius: 3.5 + energy * 3 + weight, color: tint)
+            glow.stroke(tail, with: .color(center), style: StrokeStyle(lineWidth: 2 + energy * 3 + weight, lineCap: .round))
+            glint(in: &glow, at: along(t), radius: 3.5 + energy * 3 + weight, color: center)
         }
         if age > 0.58 {
             let t = min(1, (age - 0.58) / 0.65)

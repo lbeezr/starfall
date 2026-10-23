@@ -15,6 +15,27 @@ import UIKit
         let shader: SKShader
     }
 
+    struct Emission {
+        let family: UIColor
+        let center: UIColor
+    }
+
+    /// Finite effects share the body's colored surround and pale inner light.
+    /// Historical field objects retain their existing single-color emission.
+    static func emission(for identity: StarCast.Identity) -> Emission {
+        switch identity {
+        case .colored(_), .dusk, .opal:
+            let family = profile(identity)
+            return Emission(
+                family: UIColor(red: CGFloat(family.color.x), green: CGFloat(family.color.y),
+                                blue: CGFloat(family.color.z), alpha: 1),
+                center: UIColor(red: CGFloat(family.warmth.x), green: CGFloat(family.warmth.y),
+                                blue: CGFloat(family.warmth.z), alpha: 1))
+        case .magnet, .hole:
+            return Emission(family: identity.color, center: identity.color)
+        }
+    }
+
     private struct Profile {
         let center: SIMD2<Float>
         let color: SIMD3<Float>
