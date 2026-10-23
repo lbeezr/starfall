@@ -120,7 +120,7 @@ struct StarlightCelebration: Equatable, Identifiable {
     }
 }
 
-enum StarlightAnchor: Hashable { case board, score, header, restorationLight, restorationScenery }
+enum StarlightAnchor: Hashable { case board, score, header, award, restorationLight, restorationScenery }
 struct StarlightAnchors: PreferenceKey {
     static var defaultValue: [StarlightAnchor: Anchor<CGRect>] { [:] }
     static func reduce(value: inout [StarlightAnchor: Anchor<CGRect>], nextValue: () -> [StarlightAnchor: Anchor<CGRect>]) {
@@ -146,6 +146,7 @@ struct StarlightCelebrationOverlay: View {
     let header: CGRect
     let quiet: Bool
     var lightDestination: CGRect? = nil
+    var awardBounds: CGRect? = nil
     @Environment(\.dynamicTypeSize) private var textSize
 
     var body: some View {
@@ -154,7 +155,7 @@ struct StarlightCelebrationOverlay: View {
             let exit = min(1, max(0, (age - 1.08) / 0.32))
             let fade = quiet ? 1 : min(1, age / 0.07) * (1 - exit)
             let entrance = min(1, max(0, age - 0.04) / 0.22)
-            let region = Self.awardRegion(board: board, header: header, accessible: textSize.isAccessibilitySize)
+            let region = awardBounds ?? Self.awardRegion(board: board, header: header, accessible: textSize.isAccessibilitySize)
             ZStack(alignment: .topLeading) {
                 if !quiet {
                     Canvas { context, size in draw(in: &context, age: age, canvasSize: size) }

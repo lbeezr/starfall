@@ -79,7 +79,8 @@ import StarfallCore
                 if !settings, !showingCeremony, let receipt = store.celebration,
                    let board = anchors[.board], let score = anchors[.score], let header = anchors[.header] {
                     StarlightCelebrationOverlay(event: receipt, board: proxy[board], score: proxy[score], header: proxy[header], quiet: quietMotion,
-                                               lightDestination: anchors[.restorationLight].map { proxy[$0] })
+                                               lightDestination: anchors[.restorationLight].map { proxy[$0] },
+                                               awardBounds: anchors[.award].map { proxy[$0] })
                         .id(receipt.id)
                 }
             }.allowsHitTesting(false)
@@ -223,10 +224,16 @@ import StarfallCore
         let pressureClearance = store.pressureCue == nil ? 0 : StarfallTheme.Layout.minimumTarget
         let topClearance = SkyCeilingOverlay.topClearance
         let additionalCeilingSpace = max(0, topClearance - StarfallTheme.Spacing.medium)
-        let readingHeight = max(128, min(260, viewport.height * 0.42) - pressureClearance - additionalCeilingSpace)
+        let awardHeight = StarfallTheme.Celebration.practiceBandHeight
+        let readingHeight = max(128, min(260, viewport.height * 0.42) - pressureClearance - additionalCeilingSpace
+                                - awardHeight - StarfallTheme.Spacing.small)
         return VStack(spacing: StarfallTheme.Spacing.small) {
-            edgeHeader(island: false)
+            // Keep forecast reflow from moving the stars when the total grows.
+            edgeHeader(island: false, stacked: true)
                 .padding(.horizontal, StarfallTheme.Spacing.medium)
+            Color.clear.frame(height: awardHeight)
+                .starlightAnchor(.award)
+                .allowsHitTesting(false).accessibilityHidden(true)
             ScrollView {
                 board(expanded: true, landscape: false)
                     .frame(height: canvas.height)
@@ -271,9 +278,9 @@ import StarfallCore
         }
     }
 
-    private func edgeHeader(island: Bool) -> some View {
+    private func edgeHeader(island: Bool, stacked: Bool = false) -> some View {
         VStack(spacing: StarfallTheme.Spacing.compact) {
-            if largeText {
+            if largeText || stacked {
                 stackedHeader(island: island)
             } else {
                 ViewThatFits(in: .horizontal) {

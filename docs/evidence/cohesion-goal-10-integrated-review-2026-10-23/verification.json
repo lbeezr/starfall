@@ -1,0 +1,147 @@
+{
+  "status": "Verified for scoped development adoption",
+  "activationMain": "7d70063bc3014207002555823ad2008375ec1f35",
+  "integratedMain": "0280b6590441125ffbc36fb50e10cd6e82dc7473",
+  "baselineCompiledCommit": "a72d5414ea01c8f2120ee0700fdea9f70366b0c1",
+  "baselineParity": "All runtime inputs match activation main; test/docs changes only. Reused exact Goal9 after recording as Goal10 before.",
+  "firstProductionCommit": "0c65bc22ce2b9dedb97410e055e0c2d7849fb180",
+  "hostedAcceptedCommit": "3410e14aa973fb51c460feafcd8dcf221eed13ed",
+  "nativeTestCommit": "86a1348e6f28f798e01a2610e05efc0067d8baf6",
+  "integratedCompiledCommit": "f2ed225c17ae5cc3f7125b66c3bb7f6d19836d0d",
+  "buildAffectingDirtyInputs": {},
+  "otherWorkingTreeDifferences": "Untracked Goal10 evidence, then documentation/index changes only; runtime/test hashes below match clean compiled integration. Rebase retained earlier exact sources in this record.",
+  "changedInputs": {
+    "App/FallingSkyView.swift": "b55f0bd309315fd15fb0c8f2c9d4b7ce886e64d5b35e3f1dfd8461af40695d6d",
+    "App/StarfallTheme.swift": "673fbef435f3c051bfd416b5a21ac251323dc90cce2a76b3fccf33587075e06c",
+    "App/StarlightCelebration.swift": "2f6927234ff71a78a6b403aa00439aef851f1b91e56fbc8afa21b328c0f03bd6",
+    "AppTests/StarlightCelebrationTests.swift": "330893a74dee9aadf15e05a6db358a27bd46c8e76c2cb27ea6ae6f55bc31d945",
+    "UITests/WorldJourneyInteractionTests.swift": "bc881bc601b989cb130f45152de73bb5cad91e0ba9bbc976897adcdd16066e22"
+  },
+  "environment": "Xcode27.1(27A9275),Swift6.4,macOS27.0.1;Debug/Release arm64;iPhone17e/iPad mini A17Pro iOS27.0(24A434) Simulator;bundle dev.local",
+  "core": {
+    "first": 305,
+    "integration": 305,
+    "failed": 0,
+    "skipped": 0
+  },
+  "buildSeconds": {
+    "firstDebug": 17.5,
+    "hostedAcceptedDebug": 11.1,
+    "nativeTestDebug": 3.1,
+    "integrationDebug": 19.2,
+    "firstRelease": 10.4,
+    "integrationRelease": 16.1
+  },
+  "checks": {
+    "after-square": {
+      "result": "Passed",
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0
+    },
+    "hosted": {
+      "result": "Passed",
+      "totalTestCount": 37,
+      "passedTests": 37,
+      "failedTests": 0,
+      "skippedTests": 0
+    },
+    "current-routes": {
+      "result": "Passed",
+      "totalTestCount": 3,
+      "passedTests": 3,
+      "failedTests": 0,
+      "skippedTests": 0
+    },
+    "practice-boundaries": {
+      "result": "Passed",
+      "totalTestCount": 2,
+      "passedTests": 2,
+      "failedTests": 0,
+      "skippedTests": 0
+    },
+    "seed-current": {
+      "result": "Passed",
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0
+    },
+    "integrated-hosted": {
+      "result": "Passed",
+      "totalTestCount": 43,
+      "passedTests": 43,
+      "failedTests": 0,
+      "skippedTests": 0
+    },
+    "integrated-square": {
+      "result": "Passed",
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0
+    },
+    "integrated-boundaries": {
+      "result": "Passed",
+      "totalTestCount": 2,
+      "passedTests": 2,
+      "failedTests": 0,
+      "skippedTests": 0
+    },
+    "integrated-storm": {
+      "result": "Passed",
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0
+    }
+  },
+  "nativeSelection": "9 unique existing native cases across11 passing executions; initial slice and affected integration repeats are distinct, not an aggregate full-matrix pass.",
+  "upstreamIntegration": "PR326 adds a forecast destination row and semantic ceiling clearance while this goal is active. Rebased without conflicts, preserved its resources/membership. Reran43 hosted and4 affected native cases, Core, Debug/Release; final current-rule normal recording includes new row. Earlier Home/Lantern/Ribbon/Seed/AX review media retains its preceding source, not relabelled.",
+  "failuresAndCorrections": [
+    {
+      "stage": "First test compile",
+      "result": "Read-only accessibilityReduceMotion EnvironmentValues key rejected. Removed attempted override before committed test; normal motion remains asserted."
+    },
+    {
+      "stage": "goal10-practice-band",
+      "result": "1 test,17 assertion failures:14 offscreen row intersections plus3 empty phase-capture sets. No adoption claimed."
+    },
+    {
+      "stage": "goal10-practice-layout-diagnostic",
+      "result": "1 test,14 intersection failures. Corrected phase wait renders both awards at all3 sizes; attachments show scroll-clipped offscreen rows caused geometry assumptions."
+    },
+    {
+      "stage": "Accepted regression",
+      "result": "Inspect actual SKView scroll ancestor, assert board anchor matches actual canvas rect, award disjoint real viewport and all49 visible-cell intersections; wait through busy/receipt lifetime. Both exact awards must have new rendered ink. All22 celebration tests pass."
+    },
+    {
+      "stage": "goal10-practice-phone",
+      "result": "Wrong selected SkyFlowInteractionTests/testCurrentRibbonWinReplayAndFullSky was the98-exchange current-round witness, not intended historical check. Cancelled only verified owned Xcode PID68001 at362.65s, exit75; no acceptance claimed. Correct selectors run on final integration, all pass."
+    }
+  ],
+  "matrixInventoryOnly": {
+    "ui": 219,
+    "hosted": 513,
+    "fullMatrixPass": false
+  },
+  "limits": [
+    "No rules/RNG/schema/save/audio/haptic change; no asset or source file member added by Goal10.",
+    "The375x667 and768x1024 hosted windows are not separate hardware/minimumOS evidence. Small viewport scrolls the full native canvas.",
+    "HistoricalRibbon14\u219218 supports renderer/restore/Replay compatibility, not current220000 reachability. The cancelled full-round witness supplies no reachability acceptance.",
+    "Quiet AX3XL shows separately scrolled board/reading regions, not simultaneous whole-scene visibility.",
+    "No phone installation/physical play, actual listening/haptic comfort, VoiceOver, minimumiOS17, measured contrast/performance, fullRC or human enjoyment claim."
+  ],
+  "commands": [
+    "swift test --scratch-path /private/tmp/starfall-factory-gameplay-20261022/CoreBuild --jobs 2",
+    "XcodeBuildMCP build_sim(buildForTesting:true), Debug; Release build_sim({})",
+    "python3 scripts/simulator-command.py --receipt <temp>/stages.jsonl <label> <160/180/270/420> xcodebuild -testProductsPath <immutable prepared products> -destination platform=iOS Simulator,id=<owned> -collect-test-diagnostics never -parallel-testing-enabled NO -only-testing:<selected existing case/class> -resultBundlePath <unique>.xcresult test-without-building",
+    "Normal recording exact commands/readiness in captures.json",
+    "xcrun xcresulttool get test-results summary --path <result> --format json",
+    "xcrun xcresulttool export attachments --path <result> --output-path <unique>",
+    "python3 scripts/native_test_plan.py --stage dev",
+    "python3 scripts/ci-hygiene.py",
+    "git diff --check"
+  ]
+}
