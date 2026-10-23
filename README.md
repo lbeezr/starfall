@@ -1,5 +1,7 @@
 # Starfall
 
+**Ribbon’s next chapter — October 23:** Entry, startup and same-round Replay explain closer showers and planning falling survivors. [Native choices and complete-round review](docs/evidence/game-goal-07-ribbon-identity-2026-10-23/README.md) preserve the existing authored rules and distinguish reachability from human difficulty.
+
 [Story pressure and recovery](docs/evidence/game-goal-05-pressure-recovery-2026-10-22/README.md) names full columns outside dialogue and acknowledges space recovered by a real clear. Paused reading stays open until dismissal; active play keeps brief timed receipts.
 
 **Earned next destination — October 22:** A recorded repair names the next ready, unfinished place and opens its selected map card. Canceled visits retain the completed round until Begin. [Lantern payoff and milestone review](docs/evidence/game-goal-06-lantern-payoff-2026-10-22/README.md) retains current paintings and separates shared-renderer samples from current-rule completion.

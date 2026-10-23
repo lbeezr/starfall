@@ -53,15 +53,40 @@ final class SkyDialogueTests: XCTestCase {
             XCTAssertTrue(freshLine.text.contains(SkyCopy.score(try XCTUnwrap(fresh.displayTarget))))
             XCTAssertEqual(SkyHelpContext.selected(game: old, entry: entry), SkyHelpContext(game: fresh))
             XCTAssertTrue(freshLine.text.contains("straight lines of 4 or more"))
+            if challenge == .ribbonCrossing {
+                XCTAssertTrue(freshLine.text.contains("closer together than at Lantern Landing"))
+                XCTAssertTrue(freshLine.text.contains("Plan the falling survivors"))
+            }
             for game in [old, cascade, seven, fresh] {
                 let replay = SkyEntryRequest.replay.introduction(challenge: challenge,
                     replayingRevision: game.challengeRevision, replayingTarget: game.displayTarget)
                 let variant = game.challengeRevision == 1 ? ".story" : game.challengeRevision == 2 ? ".cascade" : ".patterns"
                 XCTAssertEqual(replay.id, challenge.dialoguePrefix + variant + ".replay.1")
                 XCTAssertEqual(game.challengeGuideLine?.id, "guide." + challenge.dialoguePrefix + variant + ".1")
+                XCTAssertTrue(replay.text.contains(SkyCopy.score(try XCTUnwrap(game.displayTarget))))
                 XCTAssertEqual(SkyHelpContext.selected(game: game, entry: .replay), SkyHelpContext(game: game))
                 XCTAssertEqual(SkyHelpContext(game: game).automaticRecipes, game.challengeRevision >= 2)
                 XCTAssertEqual(SkyHelpContext(game: game).manualClears, game.challengeRevision < 3)
+                if challenge == .ribbonCrossing {
+                    let guide = try XCTUnwrap(game.challengeGuideLine)
+                    if game.challengeRevision >= 3 {
+                        XCTAssertTrue(replay.text.contains("With closer showers, plan where the survivors fall"))
+                        XCTAssertTrue(replay.text.contains("Your saved round stays until you tap Begin"))
+                        XCTAssertTrue(guide.text.contains("Showers arrive closer together here"))
+                        XCTAssertTrue(guide.text.contains("plan the survivors so one pop sets up the next"))
+                        XCTAssertTrue(guide.text.contains(SkyCopy.score(try XCTUnwrap(game.displayTarget))))
+                        XCTAssertTrue(guide.text.contains(game.challengeRevision == 3
+                            ? "full lines of 7" : "straight lines of 4 or more"))
+                        for line in [freshLine, replay, guide] {
+                            XCTAssertEqual(line.speaker, .spark)
+                            XCTAssertEqual(line.priority, .help)
+                            XCTAssertNil(line.seconds)
+                        }
+                    } else {
+                        XCTAssertFalse(replay.text.contains("With closer showers"))
+                        XCTAssertFalse(guide.text.contains("Showers arrive closer together here"))
+                    }
+                }
             }
             XCTAssertTrue(fresh.challengeHelpText?.contains("automatically") == true)
             XCTAssertTrue(fresh.challengeHelpText?.contains("straight lines of 4 or more") == true)
@@ -79,6 +104,17 @@ final class SkyDialogueTests: XCTestCase {
         let historical = FallingSky(challenge: .firstLight)
         XCTAssertFalse(SkyHelpContext(game: historical).automaticRecipes)
         XCTAssertTrue(historical.challengeHelpText?.contains("18 starlight") == true)
+        let historicalRibbon = FallingSky(challenge: .ribbonCrossing)
+        let retainedRibbonReplay = SkyEntryRequest.replay.introduction(challenge: .ribbonCrossing,
+            replayingRevision: historicalRibbon.challengeRevision, replayingTarget: historicalRibbon.displayTarget)
+        XCTAssertEqual(retainedRibbonReplay.id, "ribbon-crossing.replay.1")
+        XCTAssertTrue(retainedRibbonReplay.text.contains("18 starlight"))
+        XCTAssertFalse(retainedRibbonReplay.text.contains("closer showers"))
+        let currentRibbonEntry = SkyEntryRequest.ribbonCrossing.introduction(challenge: .ribbonCrossing,
+            replayingRevision: historicalRibbon.challengeRevision, replayingTarget: historicalRibbon.displayTarget)
+        XCTAssertTrue(currentRibbonEntry.text.contains("220,000 starlight"),
+                      "A new Entry takes its target from the current definition, not the retained 18-light round")
+        XCTAssertFalse(currentRibbonEntry.text.contains("18 starlight"))
         XCTAssertTrue(SkyCopy.text(.helpCascadeTrace).contains("first stars to clear"))
         XCTAssertTrue(SkyCopy.text(.helpCascadeTrace).contains("falling stars also pop"))
         XCTAssertTrue(SkyCopy.text(.helpTrace).contains("Only the stars you trace will clear"))
@@ -106,6 +142,13 @@ final class SkyDialogueTests: XCTestCase {
             XCTAssertTrue(store.guideLine.text.contains(SkyCopy.score(try XCTUnwrap(opening.displayTarget))))
             XCTAssertTrue(store.guideLine.text.contains("Swipe"))
             XCTAssertTrue(store.guideLine.text.contains("pattern pops automatically"))
+            if challenge == .ribbonCrossing {
+                XCTAssertTrue(store.guideLine.text.contains("Showers arrive closer together here"))
+                XCTAssertTrue(store.guideLine.text.contains("plan the survivors so one pop sets up the next"))
+                XCTAssertEqual(store.guideLine.speaker, .spark)
+                XCTAssertEqual(store.guideLine.priority, .help)
+                XCTAssertNil(store.guideLine.seconds)
+            }
             XCTAssertEqual(clock.deadline, store.showerInterval)
 
             store.togglePause()
@@ -128,6 +171,11 @@ final class SkyDialogueTests: XCTestCase {
             XCTAssertEqual(restored.guideLine.id, "guide.restore.1", "Restore retains its intentional paused guidance")
             XCTAssertFalse(restored.openingPending)
             XCTAssertNil(restoredClock.deadline)
+            restored.togglePause()
+            XCTAssertFalse(restored.isPaused)
+            XCTAssertEqual(restored.guideLine, expected, "Continuing a saved pattern round restores its own instructions")
+            XCTAssertEqual(restored.game, opening)
+            XCTAssertEqual(restoredClock.deadline, restored.showerInterval)
             restored.setSuspended(true)
         }
     }
@@ -389,6 +437,20 @@ final class SkyDialogueTests: XCTestCase {
 
     func testCatalogRendersEveryBundledScriptAndRejectsAuthoringErrors() throws {
         let catalog = SkyDialogueLibrary.catalog
+        for (id, tokens) in [
+            ("ribbon-crossing.patterns.entry", Set(["target", "lines"])),
+            ("guide.ribbon-crossing.patterns", Set(["target", "lines"])),
+            ("ribbon-crossing.patterns.replay", Set(["target"]))
+        ] {
+            let script = try XCTUnwrap(catalog.scripts.first { $0.id == id })
+            XCTAssertEqual(script.lines.count, 1)
+            let line = try XCTUnwrap(script.lines.first)
+            XCTAssertEqual(line.id, id + ".1")
+            XCTAssertEqual(try SkyDialogueCatalog.placeholders(in: line.text), tokens)
+            XCTAssertEqual(line.speaker, .spark)
+            XCTAssertEqual(line.priority, .help)
+            XCTAssertNil(line.seconds, "Ribbon identity remains player-paced copy")
+        }
         let samples = ["count": "4", "score": "18", "target": "150,000", "lines": "straight lines of 4 or more", "stars": "5", "dark": "Dark star", "growth": "A star grew", "arrival": "One star arrived", "detail": "A fixture", "release": "The hole releases its stars after 3 more showers.", "feeds": "5", "swallowed": "I swallowed 3 stars.", "shape": "Square", "depth": "2", "phase": "Storm: 3 heavy showers left.", "cadence": "Showers are closer together now.", "summary": "Paused", "reason": "First Light complete!", "context": "A storm is coming", "columns": "2", "recovery": "Column 2 has room again."]
         for source in catalog.scripts {
             let values = samples.filter { key, _ in source.lines.contains { $0.text.contains("{\(key)}") } }
