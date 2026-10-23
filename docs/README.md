@@ -1,5 +1,7 @@
 # Documentation map
 
+[Seed Moon’s grown-ingredient encounter](evidence/seed-ingredient-2026-10-23/README.md) develops the seven-place curriculum into an 11,000-point fork while retaining historical saves and ordinary earned progression.
+
 [Next encounter sequence](ROADMAP.md#next-make-each-location-a-different-puzzle) implements Kite's headroom choice (#278), Seed's grown ingredient (#279) and Silver's causal sequence (#280) as complete iPhone/iPad rounds, with retained historical rules and separate native evidence.
 
 [Ten-goal experience review](evidence/game-goal-10-coherent-game-2026-10-23/README.md) links each individual merge, the final four-mode Help/Tutorial correction, retain/revise decisions and remaining human/physical questions.

@@ -13,7 +13,7 @@ public struct StoryChallengeDefinition: Sendable {
               revision != 5 || challenge == .firstLight else { return nil }
         switch challenge {
         case .firstLight, .ribbonCrossing: break
-        case .kiteHarbor:
+        case .kiteHarbor, .seedMoon:
             guard revision == 4 else { return nil }
         default: return nil
         }
@@ -23,7 +23,7 @@ public struct StoryChallengeDefinition: Sendable {
 
     var seed: UInt64 {
         switch challenge {
-        case .firstLight, .kiteHarbor: return 42
+        case .firstLight, .kiteHarbor, .seedMoon: return 42
         case .ribbonCrossing: return 4_202
         default: preconditionFailure("Unsupported authored challenge")
         }
@@ -40,12 +40,13 @@ public struct StoryChallengeDefinition: Sendable {
         case .firstLight: return 150_000
         case .ribbonCrossing: return 220_000
         case .kiteHarbor: return 17_000
+        case .seedMoon: return 11_000
         default: preconditionFailure("Unsupported authored challenge")
         }
     }
     var balance: StarfallBalance {
         switch challenge {
-        case .firstLight, .kiteHarbor: return .init(pace: .gentle, darkStars: .none)
+        case .firstLight, .kiteHarbor, .seedMoon: return .init(pace: .gentle, darkStars: .none)
         case .ribbonCrossing: return .init(pace: .steady, darkStars: .none)
         default: preconditionFailure("Unsupported authored challenge")
         }
@@ -65,6 +66,10 @@ public struct StoryChallengeDefinition: Sendable {
             // Choose high-column room or a larger low clear. Both choices keep
             // the same supply and can recover the remaining crowded column.
             rows = ["AVAARAA", "ARMYAMY", "RAVR...", "AM.....", "MY.....", "VR....."]
+        } else if challenge == .seedMoon {
+            // The grown aqua can join the immediate low line or be moved into
+            // a larger pattern. Both choices leave a short legal restoration.
+            rows = ["AAARAVY", "ARARAMV", "RMVARYM", ".....RA"]
         } else if revision == 1 {
             // Retain the original explicit-clear openings and all of their identities.
             rows = challenge == .firstLight ? ["AAA.RRR", "AA....."] : ["ARAAA..", "RAR...."]
@@ -87,7 +92,8 @@ public struct StoryChallengeDefinition: Sendable {
         var id = 0
         for (row, text) in rows.enumerated() {
             for (column, symbol) in text.enumerated() where symbol != "." {
-                board[row * 7 + column] = StarfallGem(id: id, kind: kinds[symbol]!)
+                board[row * 7 + column] = StarfallGem(id: id, kind: kinds[symbol]!,
+                                                    grown: challenge == .seedMoon && id == 1)
                 id += 1
             }
         }

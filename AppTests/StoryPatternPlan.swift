@@ -44,6 +44,14 @@ struct StoryPatternPlan: Sendable {
         [(15, 14), (36, 29), (29, 22), (4, 3), (3, 2), (2, 1)]
     ], expectedScore: 18_000, expectedShowers: 1, expectedExchanges: 7)
 
+    static let seedSpend = StoryPatternPlan(target: 11_000, moves: [
+        [(4, 3), (0, 1), (1, 8), (2, 9)]
+    ], expectedScore: 11_000, expectedShowers: 0, expectedExchanges: 4)
+
+    static let seedPreserve = StoryPatternPlan(target: 11_000, moves: [
+        [(1, 8), (17, 10), (1, 2), (2, 9), (7, 8)]
+    ], expectedScore: 13_000, expectedShowers: 0, expectedExchanges: 5)
+
     static let lantern = StoryPatternPlan(target: 150_000, moves: [
         [(8, 9), (0, 1), (5, 12), (0, 1)],
         [],
