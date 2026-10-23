@@ -1180,6 +1180,39 @@
       ]
     },
     {
+      "id": "sunwheel-mill.patterns.entry",
+      "lines": [
+        {
+          "id": "sunwheel-mill.patterns.entry.1",
+          "speaker": "sunny",
+          "text": "Restore Sunwheel Mill with {target} starlight. Spend the grown aqua in a vertical line for room, or clear rose supports to make a later aqua line and a chain. Read the forecast: the bigger reward leaves less room. Arrange squares of 4, crosses of 5, or {lines}. Patterns pop automatically. Your saved round stays until you tap Begin.",
+          "priority": "help"
+        }
+      ]
+    },
+    {
+      "id": "sunwheel-mill.patterns.replay",
+      "lines": [
+        {
+          "id": "sunwheel-mill.patterns.replay.1",
+          "speaker": "sunny",
+          "text": "Try the same Sunwheel Mill opening and collect {target} starlight. Spend the grown aqua for room, or let a falling survivor complete a chain with it. The same forecast still needs landing space. Your saved round stays until you tap Begin.",
+          "priority": "help"
+        }
+      ]
+    },
+    {
+      "id": "guide.sunwheel-mill.patterns",
+      "lines": [
+        {
+          "id": "guide.sunwheel-mill.patterns.1",
+          "speaker": "sunny",
+          "text": "Sunwheel Mill needs {target} starlight. A vertical aqua line opens the crowded column. Rose supports can instead release a visible aqua survivor into a line with the grown star for a chain. That leaves less headroom. Check the forecast. Swipe to arrange squares of 4, crosses of 5, or {lines}. Patterns pop automatically.",
+          "priority": "help"
+        }
+      ]
+    },
+    {
       "id": "first-light.patterns.entry",
       "lines": [
         {
@@ -1795,8 +1828,8 @@
     "help.frostfruit": "Restore Frostfruit Orchard with 18 starlight. Each clear lights its frosted branches and glass fruit. Finish to open the central crown and release luminous seeds before an arriving star has nowhere to land. Swipe neighboring stars to arrange matches, tap groups or hold and draw selected traces and shape recipes. Showers arrive at a steady pace. This place has no Dusk, Opal Orbs or storms.",
     "action.sunwheelMill": "Try Sunwheel Mill",
     "action.replaySunwheelMill": "Replay Sunwheel Mill",
-    "menu.sunwheelMill": "Sunwheel Mill · 18 starlight",
-    "menu.sunwheelMillHint": "Restore Sunwheel Mill with 18 starlight. Preview the challenge before Begin.",
+    "menu.sunwheelMill": "Sunwheel Mill",
+    "menu.sunwheelMillHint": "Choose room for arriving stars or preserve a grown survivor for a follow-up pattern. Preview Sunwheel Mill before Begin.",
     "flow.sunwheelMill": "SUNWHEEL MILL",
     "flow.sunwheelComplete": "THE MILL IS RESTORED",
     "flow.sunwheelWon": "Sunwheel Mill restored!",
@@ -1817,6 +1850,7 @@
     "help.patternsSeed": "Wake Seed Moon with {target} starlight. The grown aqua star holds two light units in one cell. In this opening, spending its four-star line earns 6,000 points; preserving it for the five-star line earns 8,000. The larger pattern collects another star and earns a size bonus. Waiting does not increase a grown star’s value. Arrange squares of 4, crosses of 5, or {lines}. Patterns pop automatically after swaps and showers. Other legal clears can finish the repair too.",
     "help.patternsSilver": "Restore Silver Pools with {target} starlight. In this opening, clearing the vertical rose support line earns 5,000 points. An aqua survivor falls four rows and completes a five-star line in the same action; that second phase earns 14,000 with the chain bonus, for 19,000 total. Taking the low aqua line first earns 7,000 and spends those follow-up ingredients; a later separate rose clear earns 5,000 and can finish the repair. Those separate actions are not a chain. Arrange squares of 4, crosses of 5, or {lines}. Patterns pop automatically after swaps and showers. Other legal clears can finish too.",
     "help.patternsFrostfruit": "Wake Frostfruit Orchard with {target} starlight. In this opening, swapping the exposed tops to match the first forecast lets arrivals grow in place, keeping room in the crowded columns. The tempting Violet square earns 5,000 immediately, but the first shower then fills the two left columns. Make room before the next announced shower. A grown top cannot grow again: matching its color does not guarantee a landing. Read each star and numbered column in the ordered forecast. Arrange squares of 4, crosses of 5, or {lines}. Patterns pop automatically after swaps and showers. Other legal routes can finish the repair too.",
+    "help.patternsSunwheel": "Restore Sunwheel Mill with {target} starlight. In this opening, the grown aqua holds two light units. Spending it in the vertical four-star line earns 6,000 and opens four spaces in the full left column. Clearing the rose supports instead earns 5,000, then a visible aqua survivor falls four rows into a five-star line containing the grown aqua. That second clear earns 16,000 with the chain bonus: 21,000 total in the same action. The larger reward opens only one space in the left column. Both routes keep the same ordered forecast. The first shower fits, but the next Rose blocks that column on the chain route unless you make room. Read incoming colors and numbered columns before the next shower. Arrange squares of 4, crosses of 5, or {lines}. Patterns pop automatically after swaps and showers. Other legal routes can finish the repair too.",
     "help.practiceModes": "Optional discoveries show how to make room below Falling Sky’s ceiling and follow Full Board’s clear, fall and refill. Tutorial also covers swaps and automatic patterns, Open Sky’s tap and trace controls and the original 18-light restoration exercise. Your saved sky and world stay unchanged.",
     "a11y.patternsBoardSummary": "{showers} showers. Arrange matching squares of 4, crosses of 5, or {lines}.",
     "a11y.patternsHint": "Activate for guidance. Use Move actions to arrange an automatic pattern.",

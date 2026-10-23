@@ -220,6 +220,7 @@ enum SkyCopy {
         case helpPatternsSeed = "help.patternsSeed"
         case helpPatternsSilver = "help.patternsSilver"
         case helpPatternsFrostfruit = "help.patternsFrostfruit"
+        case helpPatternsSunwheel = "help.patternsSunwheel"
         case helpPracticeModes = "help.practiceModes"
         case a11yPatternsBoardSummary = "a11y.patternsBoardSummary"
         case a11yPatternsHint = "a11y.patternsHint"

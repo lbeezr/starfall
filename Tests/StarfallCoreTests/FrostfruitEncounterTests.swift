@@ -69,7 +69,7 @@ final class FrostfruitEncounterTests: XCTestCase {
     func testNewVisitHasAnExplicitThirtyStarPressureEncounterWithoutChangingOtherVisits() throws {
         let game = FallingSky.freshChallenge(.frostfruitOrchard)
         XCTAssertEqual(StoryChallengeDefinition.currentRevision, 4)
-        XCTAssertEqual(StoryChallengeDefinition.maximumSupportedRevision, 8)
+        XCTAssertEqual(StoryChallengeDefinition.maximumSupportedRevision, 9)
         XCTAssertEqual(game.challenge, .frostfruitOrchard)
         XCTAssertEqual(game.challengeRevision, 8)
         XCTAssertEqual(game.displayTarget, 15_000)
@@ -101,7 +101,8 @@ final class FrostfruitEncounterTests: XCTestCase {
         for challenge in [StarfallChallenge.firstLight, .ribbonCrossing, .kiteHarbor, .seedMoon, .silverPools] {
             XCTAssertEqual(FallingSky.freshChallenge(challenge).challengeRevision, 4)
         }
-        XCTAssertEqual(FallingSky.freshChallenge(.sunwheelMill), FallingSky(challenge: .sunwheelMill))
+        XCTAssertEqual(FallingSky.freshChallenge(.sunwheelMill).challengeRevision, 9)
+        XCTAssertEqual(FallingSky(challenge: .sunwheelMill).challengeRevision, 0)
         XCTAssertEqual(FallingSky.fullBoardLantern().challengeRevision, 6)
         XCTAssertEqual(FallingSky.fullBoardRibbon().challengeRevision, 7)
     }

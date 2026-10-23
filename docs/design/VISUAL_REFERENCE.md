@@ -1,5 +1,7 @@
 # Starfall visual reference
 
+**Sunwheel capstone — Current for the inspected encounter slice:** [Depth goal 8](../evidence/depth-goal-08-sunwheel-capstone-2026-10-23/README.md) retains normal phone and AX3XL Calm tablet choices and three earned outcomes at516e16c / dev.local. Existing paintings remain unchanged; earlier manual18 encounter scores retain historical revision0 scope. Scrolling reading positions and award fade have explicit limits.
+
 **Frostfruit pressure — Current for the inspected encounter slice:** [Depth goal 7](../evidence/depth-goal-07-frostfruit-pressure-2026-10-23/README.md) retains source-bound normal phone and AX3XL Calm tablet choices and earned results. Existing paintings are unchanged; earlier18-light scores and manual encounter instructions retain historical revision0 scope.
 
 [Ribbon Full Board comparison](../evidence/depth-goal-06-ribbon-full-board-2026-10-23/README.md) retains source-bound ordinary phone, largest-text tablet and integrated advice captures.

@@ -52,7 +52,7 @@ final class FullBoardRoundArcTests: XCTestCase {
 
     func testNewFullBoardSelectsSixWhileSkyAndRetainedDefinitionsKeepTheirCapabilities() throws {
         XCTAssertEqual(StoryChallengeDefinition.currentRevision, 4)
-        XCTAssertEqual(StoryChallengeDefinition.maximumSupportedRevision, 8)
+        XCTAssertEqual(StoryChallengeDefinition.maximumSupportedRevision, 9)
         XCTAssertEqual(FallingSky.fullBoardLantern().challengeRevision, 6)
         XCTAssertTrue(FallingSky.fullBoardLantern().usesFullBoardRefill)
         XCTAssertEqual(FallingSky.fullBoardLantern(), FallingSky(definition: try XCTUnwrap(StoryChallengeDefinition(.firstLight, revision: 6))))
@@ -66,7 +66,7 @@ final class FullBoardRoundArcTests: XCTestCase {
                     XCTAssertNotEqual(challenge, .firstLight)
                 }
             }
-            XCTAssertNil(StoryChallengeDefinition(challenge, revision: 9))
+            XCTAssertNil(StoryChallengeDefinition(challenge, revision: 10))
         }
     }
 

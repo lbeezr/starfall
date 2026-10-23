@@ -321,7 +321,7 @@ final class WorldJourneyTests: XCTestCase {
         try repaired.record(store.game)
         let envelope = try XCTUnwrap(JSONSerialization.jsonObject(with: XCTUnwrap(defaults.data(forKey: WorldJourneyStore.key))) as? [String: Any])
         XCTAssertEqual(envelope["version"] as? Int, 1)
-        XCTAssertEqual(SkySaveArchive.schemaVersion, 17)
+        XCTAssertEqual(SkySaveArchive.schemaVersion, 18)
         XCTAssertEqual(defaults.data(forKey: SkySaveArchive.key), committed)
         presenter.finish()
         store.beginEntry(.replay)

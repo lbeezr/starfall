@@ -259,8 +259,9 @@ final class StoryPatternTests: XCTestCase {
             XCTAssertEqual(try restored(retained).replay(), retained)
             XCTAssertNotEqual(retained.replay(), current)
         }
-        for challenge in StarfallChallenge.allCases where ![.firstLight, .ribbonCrossing, .kiteHarbor, .seedMoon, .silverPools, .frostfruitOrchard].contains(challenge) {
-            XCTAssertTrue(FallingSky.freshChallenge(challenge).supportsManualClears)
+        for challenge in StarfallChallenge.allCases {
+            XCTAssertTrue(FallingSky(challenge: challenge).supportsManualClears)
+            XCTAssertFalse(FallingSky.freshChallenge(challenge).supportsManualClears)
         }
         XCTAssertTrue(FallingSky.freshSurvival(seed: 42).supportsManualClears)
     }

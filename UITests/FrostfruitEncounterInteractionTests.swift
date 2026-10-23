@@ -128,10 +128,10 @@ final class FrostfruitEncounterInteractionTests: RestorationInteractionScenarios
         app.revealSkyControls([begin])
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true AND hittable == true"),
                                                object: begin).wait(timeout: 5))
-        XCTAssertTrue(app.staticTexts["sky.subtitle"].label.contains("18 starlight"))
+        XCTAssertTrue(app.staticTexts["sky.subtitle"].label.contains("24,000 starlight"))
         capture(app,"depth07-normal-earned-sunwheel-entry")
         begin.tap(); pauseRunningSky(app)
-        waitScore(0,target:18,in:app)
+        waitScore(0,target:24_000,in:app)
     }
 
     @MainActor func testLargestQuietImmediateRecoveryAndIgnoredOpeningBothRepair() throws {

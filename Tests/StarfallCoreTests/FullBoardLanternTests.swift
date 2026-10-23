@@ -46,7 +46,7 @@ final class FullBoardLanternTests: XCTestCase {
         XCTAssertFalse(game.hasCriticalMass)
         XCTAssertEqual(try restored(game).replay(), game)
         XCTAssertEqual(StoryChallengeDefinition.currentRevision, 4)
-        XCTAssertEqual(StoryChallengeDefinition.maximumSupportedRevision, 8)
+        XCTAssertEqual(StoryChallengeDefinition.maximumSupportedRevision, 9)
         XCTAssertNil(StoryChallengeDefinition(.ribbonCrossing, revision: 5))
         XCTAssertNil(StoryChallengeDefinition(.firstLight, revision: 7))
         for challenge in StarfallChallenge.allCases {

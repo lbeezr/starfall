@@ -61,15 +61,16 @@ final class FullBoardRibbonTests: XCTestCase {
 
     func testDefinitionsAdmitOnlyTheirActuallyAuthoredChallengeRevisionPairs() {
         XCTAssertEqual(StoryChallengeDefinition.currentRevision, 4)
-        XCTAssertEqual(StoryChallengeDefinition.maximumSupportedRevision, 8)
+        XCTAssertEqual(StoryChallengeDefinition.maximumSupportedRevision, 9)
         for challenge in StarfallChallenge.allCases {
-            for revision in 1...7 {
+            for revision in 1...9 {
                 let expected: Bool
                 switch challenge {
                 case .firstLight: expected = revision <= 6
                 case .ribbonCrossing: expected = revision <= 4 || revision == 7
                 case .kiteHarbor, .seedMoon, .silverPools: expected = revision == 4
-                default: expected = false
+                case .frostfruitOrchard: expected = revision == 8
+                case .sunwheelMill: expected = revision == 9
                 }
                 let definition = StoryChallengeDefinition(challenge, revision: revision)
                 XCTAssertEqual(definition != nil, expected, "\(challenge) revision \(revision)")
@@ -79,7 +80,7 @@ final class FullBoardRibbonTests: XCTestCase {
                     XCTAssertEqual(definition.usesFullBoardRefill, refill)
                 }
             }
-            XCTAssertNil(StoryChallengeDefinition(challenge, revision: 9))
+            XCTAssertNil(StoryChallengeDefinition(challenge, revision: 10))
         }
         XCTAssertEqual(FallingSky.freshChallenge(.ribbonCrossing).challengeRevision, 4)
         XCTAssertFalse(FallingSky.freshChallenge(.ribbonCrossing).usesFullBoardRefill)

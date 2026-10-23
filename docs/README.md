@@ -1,5 +1,7 @@
 # Documentation map
 
+[Sunwheel capstone](evidence/depth-goal-08-sunwheel-capstone-2026-10-23/README.md) combines headroom, grown value and causal sequencing with complete alternatives and mistake recovery.
+
 [Frostfruit’s pressure fork](evidence/depth-goal-07-frostfruit-pressure-2026-10-23/README.md) adds a complete growth-versus-reward encounter with recoverable announced pressure and retained historical rounds.
 
 [Goal6 Ribbon Full Board](evidence/depth-goal-06-ribbon-full-board-2026-10-23/README.md) adds a versioned survivor opening, two complete routes and location-preserving mode selection.

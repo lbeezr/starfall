@@ -1,5 +1,7 @@
 # Evidence index
 
+[Sunwheel capstone](depth-goal-08-sunwheel-capstone-2026-10-23/README.md) records three complete plans, a shared grown ingredient, same-preview pressure, retained saves and native earned progression.
+
 [Frostfruit pressure](depth-goal-07-frostfruit-pressure-2026-10-23/README.md) records top-growth room, immediate points and complete recoveries under the same preview.
 
 [Ribbon Full Board comparison](depth-goal-06-ribbon-full-board-2026-10-23/README.md) records its distinct220,000-point routes, retained saves and native/readiness corrections.

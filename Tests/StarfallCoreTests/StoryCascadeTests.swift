@@ -49,7 +49,7 @@ final class StoryCascadeTests: XCTestCase {
         }
     }
 
-    func testRetainedPairHasMixedRecipeFreeOpeningsWhileOtherLocationsStayHistorical() throws {
+    func testRetainedPairHasMixedRecipeFreeOpeningsAndHistoricalConstructorsStayManual() throws {
         for (challenge, count) in [(StarfallChallenge.firstLight, 24), (.ribbonCrossing, 25)] {
             let game = revisionTwo(challenge)
             XCTAssertEqual(game.challengeRevision, 2)
@@ -64,9 +64,12 @@ final class StoryCascadeTests: XCTestCase {
             XCTAssertEqual(try restored(game), game)
             XCTAssertEqual(game.replay(), game)
         }
-        for challenge in StarfallChallenge.allCases where ![.firstLight, .ribbonCrossing, .kiteHarbor, .seedMoon, .silverPools, .frostfruitOrchard].contains(challenge) {
-            XCTAssertEqual(FallingSky.freshChallenge(challenge), FallingSky(challenge: challenge))
-            XCTAssertFalse(FallingSky.freshChallenge(challenge).supportsAutomaticRecipes)
+        for challenge in StarfallChallenge.allCases {
+            let historical = FallingSky(challenge: challenge)
+            XCTAssertEqual(historical.challengeRevision, 0)
+            XCTAssertFalse(historical.supportsAutomaticRecipes)
+            XCTAssertTrue(historical.supportsManualClears)
+            XCTAssertTrue(FallingSky.freshChallenge(challenge).supportsAutomaticRecipes)
         }
         XCTAssertFalse(FallingSky.freshSurvival(seed: 42).supportsAutomaticRecipes)
     }

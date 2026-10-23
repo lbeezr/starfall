@@ -268,7 +268,12 @@ public struct FallingSky: Codable, Equatable, Sendable {
 
     /// New visits select current authored content. Resume and replay never call this.
     public static func freshChallenge(_ challenge: StarfallChallenge) -> FallingSky {
-        let revision = challenge == .frostfruitOrchard ? 8 : StoryChallengeDefinition.currentRevision
+        let revision: Int
+        switch challenge {
+        case .frostfruitOrchard: revision = 8
+        case .sunwheelMill: revision = 9
+        default: revision = StoryChallengeDefinition.currentRevision
+        }
         guard let definition = StoryChallengeDefinition(challenge, revision: revision) else { return FallingSky(challenge: challenge) }
         return FallingSky(definition: definition)
     }
@@ -735,7 +740,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
     public var isValidSave: Bool {
         // Reject scalar corruption before deriving a shower number or doing
         // conservation arithmetic, for every retained and current ruleset.
-        guard board.count == 49, [nil, 1, 2, 3, 4, 5, 6, 7, 8].contains(savedChallengeRevision),
+        guard board.count == 49, [nil, 1, 2, 3, 4, 5, 6, 7, 8, 9].contains(savedChallengeRevision),
               turns >= 0, turns < Int.max / 6, score >= 0, starsLanded >= 0 else { return false }
         if let definition = storyDefinition {
             guard challengeActionVersion == 1, seed == definition.seed, balance == definition.balance,

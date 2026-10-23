@@ -90,7 +90,7 @@ final class FrostfruitEncounterPresentationTests: XCTestCase {
         XCTAssertEqual(FallingSky.fullBoardRibbon().challengeRevision, 7)
         XCTAssertTrue(FallingSky.fullBoardLantern().usesFullBoardRefill)
         XCTAssertTrue(FallingSky.fullBoardRibbon().usesFullBoardRefill)
-        let sunwheel = FallingSky.freshChallenge(.sunwheelMill)
+        let sunwheel = FallingSky(challenge: .sunwheelMill)
         XCTAssertEqual(sunwheel.challengeRevision, 0)
         XCTAssertTrue(sunwheel.supportsManualClears)
         XCTAssertTrue(sunwheel.challengeHelpText?.contains("18 starlight") == true)

@@ -6,7 +6,7 @@ public struct StoryChallengeDefinition: Sendable {
     public let revision: Int
     public static let currentRevision = 4
     /// Explicit encounter revisions develop independently of the original Story pair.
-    public static let maximumSupportedRevision = 8
+    public static let maximumSupportedRevision = 9
     public var usesFullBoardRefill: Bool {
         (challenge == .firstLight && (5...6).contains(revision))
             || (challenge == .ribbonCrossing && revision == 7)
@@ -23,7 +23,8 @@ public struct StoryChallengeDefinition: Sendable {
             guard revision == 4 else { return nil }
         case .frostfruitOrchard:
             guard revision == 8 else { return nil }
-        default: return nil
+        case .sunwheelMill:
+            guard revision == 9 else { return nil }
         }
         self.challenge = challenge
         self.revision = revision
@@ -31,15 +32,14 @@ public struct StoryChallengeDefinition: Sendable {
 
     var seed: UInt64 {
         switch challenge {
-        case .firstLight, .kiteHarbor, .seedMoon, .silverPools, .frostfruitOrchard: return 42
+        case .firstLight, .kiteHarbor, .seedMoon, .silverPools, .frostfruitOrchard, .sunwheelMill: return 42
         case .ribbonCrossing: return 4_202
-        default: preconditionFailure("Unsupported authored challenge")
         }
     }
     var automaticLineLength: Int? {
         switch revision {
         case 3: return 7
-        case 4, 5, 6, 7, 8: return 4
+        case 4, 5, 6, 7, 8, 9: return 4
         default: return nil
         }
     }
@@ -51,15 +51,14 @@ public struct StoryChallengeDefinition: Sendable {
         case .seedMoon: return 11_000
         case .silverPools: return 12_000
         case .frostfruitOrchard: return 15_000
-        default: preconditionFailure("Unsupported authored challenge")
+        case .sunwheelMill: return 24_000
         }
     }
     var balance: StarfallBalance {
         switch challenge {
-        case .firstLight, .kiteHarbor, .seedMoon, .silverPools, .frostfruitOrchard:
+        case .firstLight, .kiteHarbor, .seedMoon, .silverPools, .frostfruitOrchard, .sunwheelMill:
             return .init(pace: .gentle, darkStars: .none)
         case .ribbonCrossing: return .init(pace: .steady, darkStars: .none)
-        default: preconditionFailure("Unsupported authored challenge")
         }
     }
     var palette: [Jewel] {
@@ -96,6 +95,10 @@ public struct StoryChallengeDefinition: Sendable {
             // Match exposed caps to the announced shower to retain room in
             // the crowded columns, or take the separate immediate square.
             rows = ["AARAAMV", "VMARVVV", "MVRAVAV", "YRY.AR.", "VM.....", "AY....."]
+        } else if challenge == .sunwheelMill {
+            // The grown aqua can open the crowded column or join the lower
+            // line after its rose supports release a visible aqua survivor.
+            rows = ["AARAAMV", "AMARYRA", "RARA...", "AAR....", "MRA....", "V......", "M......"]
         } else if revision == 1 {
             // Retain the original explicit-clear openings and all of their identities.
             rows = challenge == .firstLight ? ["AAA.RRR", "AA....."] : ["ARAAA..", "RAR...."]
@@ -119,7 +122,8 @@ public struct StoryChallengeDefinition: Sendable {
         for (row, text) in rows.enumerated() {
             for (column, symbol) in text.enumerated() where symbol != "." {
                 board[row * 7 + column] = StarfallGem(id: id, kind: kinds[symbol]!,
-                                                    grown: challenge == .seedMoon && id == 1)
+                                                    grown: (challenge == .seedMoon && id == 1)
+                                                        || (challenge == .sunwheelMill && id == 0))
                 id += 1
             }
         }
