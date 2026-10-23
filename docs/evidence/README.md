@@ -1,5 +1,7 @@
 # Evidence index
 
+[Game-factory goal 5: pressure and recovery](game-goal-05-pressure-recovery-2026-10-22/README.md) compares real crowded/blocked states, exact recovery, quiet/large-text reading and active/paused expiry boundaries.
+
 [Exact Map/Places goals](map-goals-2026-10-22/README.md) records seven-definition and retained-objective checks, eight hosted/three native passes, Debug/Release catalogue identity and four inspected cards. Current point totals and historical 9/18 remain separate; canceled visits preserve exact saved state. Human comprehension and physical acceptance remain unmeasured.
 
 [Game-factory goal 4: causal cascade acceptance](game-goal-04-causal-cascades-2026-10-22/README.md) records a live normal/quiet production-rule witness, sampled native chronology, exact committed receipts and independent-action reset. Existing behavior satisfies the development goal; no product edit is manufactured and human comprehension remains open.

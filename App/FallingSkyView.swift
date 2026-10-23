@@ -262,20 +262,28 @@ import StarfallCore
     }
 
     private func edgeHeader(island: Bool) -> some View {
-        ViewThatFits(in: .horizontal) {
-            HStack(spacing: StarfallTheme.Spacing.small) {
-                scoreLabel
-                Spacer(minLength: StarfallTheme.Spacing.small)
-                if !island { showerTrail(island: false) }
-                skyMenuButton
-            }
-            VStack(spacing: StarfallTheme.Spacing.compact) {
-                HStack(alignment: .top) {
+        VStack(spacing: StarfallTheme.Spacing.compact) {
+            ViewThatFits(in: .horizontal) {
+                HStack(spacing: StarfallTheme.Spacing.small) {
                     scoreLabel
                     Spacer(minLength: StarfallTheme.Spacing.small)
+                    if !island { showerTrail(island: false) }
                     skyMenuButton
                 }
-                if !island { showerTrail(island: false, width: 160) }
+                VStack(spacing: StarfallTheme.Spacing.compact) {
+                    HStack(alignment: .top) {
+                        scoreLabel
+                        Spacer(minLength: StarfallTheme.Spacing.small)
+                        skyMenuButton
+                    }
+                    if !island { showerTrail(island: false, width: 160) }
+                }
+            }
+            if let pressure = store.pressureCue {
+                StarfallStatusText(text: pressure.text)
+                    .shadow(color: StarfallTheme.Colors.skyTop, radius: 2)
+                    .accessibilityIdentifier("sky.pressure")
+                    .allowsHitTesting(false)
             }
         }
         .frame(maxWidth: 620)

@@ -12,10 +12,10 @@ final class SkyFlowInteractionTests: XCTestCase {
         }
     }
 
-    @MainActor private func launch(largest: Bool = false, review: [String] = []) -> XCUIApplication {
+    @MainActor private func launch(largest: Bool = false, review: [String] = [], quiet: Bool = false) -> XCUIApplication {
         continueAfterFailure = false
         let app = XCUIApplication()
-        app.launchArguments = ["--starfalls-reset", "--sky-flow-review", "--starfalls-seed=5", "-calmEffects", "NO"]
+        app.launchArguments = ["--starfalls-reset", "--sky-flow-review", "--starfalls-seed=5", "-calmEffects", quiet ? "YES" : "NO"]
         app.launchArguments += review
         if largest { app.launchArguments += ["-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"] }
         app.launch()
@@ -135,6 +135,91 @@ final class SkyFlowInteractionTests: XCTestCase {
 
     @MainActor func testLargestTextShortStorySwipeKeepsFeedbackReadable() {
         verifyShortStorySwipe(largest: true)
+    }
+
+    @MainActor private func reachFullStoryColumn(largest: Bool = false, quiet: Bool = false) -> XCUIApplication {
+        let app = launch(largest: largest, quiet: quiet)
+        app.worldVisitControl("firstLight").tap(); tap("sky.begin", app)
+        let menu = app.buttons["experiment.settings"]
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true AND hittable == true"),
+                                               object: menu).wait(timeout: 10))
+        // Freeze the clock before reading the guide: quiet mode has no rain-in delay.
+        menu.tap(); tap("experiment.pause", app)
+        let next = app.buttons["experiment.next"], board = app.otherElements["experiment.board"]
+        XCTAssertTrue((board.value as? String)?.hasPrefix("0 showers") == true, "The pressure witness starts before any shower")
+        for wave in 1...4 {
+            app.revealSkyControls([next]); next.tap()
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+                next.isEnabled && (board.value as? String)?.hasPrefix("\(wave) showers") == true
+            }, object: nil).wait(timeout: 8), "Expected wave \(wave); observed \(String(describing: board.value))")
+        }
+        capture(app, largest ? "pressure-full-largest" : "pressure-full-default")
+        let pressure = app.staticTexts["sky.pressure"]
+        XCTAssertTrue(pressure.waitForExistence(timeout: 3), "A full Story column must have a persistent native status")
+        XCTAssertTrue(pressure.label.contains("Column 2 is full"))
+        XCTAssertTrue(app.frame.contains(pressure.frame))
+        return app
+    }
+
+    @MainActor private func verifyStoryRecovery(largest: Bool, quiet: Bool) {
+        let app = reachFullStoryColumn(largest: largest, quiet: quiet)
+        defer { app.terminate() }
+        let pressure = app.staticTexts["sky.pressure"], board = app.otherElements["experiment.board"]
+        if !largest {
+            let retained = board.value as? String
+            app.terminate(); app.launchArguments = ["--sky-flow-review", "-calmEffects", "NO"]; app.launch()
+            tap("sky.resume", app)
+            XCTAssertEqual(board.value as? String, retained)
+            XCTAssertTrue(pressure.waitForExistence(timeout: 5))
+            XCTAssertTrue(pressure.label.contains("Column 2 is full"))
+            XCTAssertTrue(app.buttons["experiment.next"].exists, "Restoring the crowded board stays paused")
+        }
+        let source = app.buttons["experiment.cell.0.1"], destination = app.buttons["experiment.cell.0.2"]
+        app.revealSkyControls([source, destination])
+        source.coordinate(withNormalizedOffset: .init(dx: 0.5, dy: 0.5)).press(forDuration: 0.05,
+            thenDragTo: destination.coordinate(withNormalizedOffset: .init(dx: 0.5, dy: 0.5)),
+            withVelocity: .fast, thenHoldForDuration: 0)
+        let message = app.staticTexts["experiment.message"]
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label CONTAINS %@", "Column 2 has room again"),
+                                               object: message).wait(timeout: 8))
+        XCTAssertTrue(message.label.contains(5_000.formatted()))
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, "\(5_000.formatted()) of \(150_000.formatted()) starlight collected")
+        XCTAssertFalse(pressure.exists)
+        if largest {
+            // A paused player may take longer than the active-play six-second receipt.
+            let readingBegan = Date()
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+                Date().timeIntervalSince(readingBegan) >= 7
+            }, object: nil).wait(timeout: 9))
+            XCTAssertTrue(message.exists, "Deliberately paused reading must outlive the active-play receipt timer")
+            app.readSkyGuideToEnd(actions: [app.buttons["experiment.next"]])
+        }
+        capture(app, largest ? "pressure-recovered-largest" : "pressure-recovered-default")
+        let next = app.buttons["experiment.next"]
+        app.revealSkyControls([next]); next.tap()
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+            next.isEnabled && (board.value as? String)?.hasPrefix("5 showers") == true
+        }, object: nil).wait(timeout: 8))
+        XCTAssertFalse(app.staticTexts["experiment.outcome"].exists, "The same next shower now fits after the real clear")
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, "\(5_000.formatted()) of \(150_000.formatted()) starlight collected")
+    }
+
+    @MainActor func testFullStoryColumnShowsPressureAndCommittedRecovery() {
+        requireNormalMotion()
+        verifyStoryRecovery(largest: false, quiet: false)
+    }
+
+    @MainActor func testLargestQuietStoryPressureAndRecoveryRemainReadable() {
+        verifyStoryRecovery(largest: true, quiet: true)
+    }
+
+    @MainActor func testIdleFullStoryColumnReachesTheActualBlockedArrival() {
+        let app = reachFullStoryColumn(); defer { app.terminate() }
+        tap("experiment.next", app)
+        let outcome = app.staticTexts["experiment.outcome"]
+        XCTAssertTrue(outcome.waitForExistence(timeout: 8)); XCTAssertEqual(outcome.label, "No room to land")
+        XCTAssertFalse(app.staticTexts["sky.pressure"].exists)
+        capture(app, "pressure-idle-overflow")
     }
 
     @MainActor private func assertCurrentStoryGrowthGuidance(largest: Bool) {

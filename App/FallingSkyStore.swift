@@ -453,6 +453,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     }
 
     var phaseCue: SkyPhaseCue? { SkyPhaseCue(game: game, pending: pending) }
+    var pressureCue: SkyPressureCue? { SkyPressureCue(game: game) }
     var forecast: [IncomingStar] { pending?.forecast ?? game.incoming }
     var showerInterval: TimeInterval { nextShowerCadence.delay }
     /// The renderer samples the scheduler's monotonic clock and frozen remainder.

@@ -25,6 +25,35 @@ struct SkyPhaseCue: Equatable {
     }
 }
 
+/// Occupied space is a committed board fact, not a prediction of the next landing.
+struct SkyPressureCue: Equatable {
+    let columns: [Int]
+    var text: String { Self.text(columns: columns, recovered: false) }
+
+    init?(game: FallingSky) {
+        guard !game.isOver, game.challenge != nil, !game.supportsManualClears else { return nil }
+        columns = (0..<FallingSky.side).filter {
+            SkyBoardSettling.height(game.board, column: $0) == FallingSky.side
+        }
+        guard !columns.isEmpty else { return nil }
+    }
+
+    static func recovery(from old: FallingSky, to game: FallingSky) -> String? {
+        guard let before = Self(game: old), !game.isOver,
+              game.challenge == old.challenge, game.challengeRevision == old.challengeRevision else { return nil }
+        let full = Self(game: game)?.columns ?? []
+        let recovered = before.columns.filter { !full.contains($0) }
+        return recovered.isEmpty ? nil : text(columns: recovered, recovered: true)
+    }
+
+    private static func text(columns: [Int], recovered: Bool) -> String {
+        let key: SkyCopy.Key = recovered
+            ? (columns.count == 1 ? .pressureRecoveredOne : .pressureRecoveredMany)
+            : (columns.count == 1 ? .pressureFullOne : .pressureFullMany)
+        return SkyCopy.text(key, values: ["columns": columns.map { String($0 + 1) }.joined(separator: ", ")])
+    }
+}
+
 /// Exact native values remain independent of decorative materials and animations.
 struct SkyScoreInstrument: View {
     let score: Int
