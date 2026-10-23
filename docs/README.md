@@ -1,5 +1,7 @@
 # Documentation map
 
+[Optional Lantern mastery](evidence/depth-goal-09-optional-mastery-2026-10-23/README.md) adds mode-appropriate accomplishments and independent best records while preserving ordinary repairs and retained saves.
+
 [Sunwheel capstone](evidence/depth-goal-08-sunwheel-capstone-2026-10-23/README.md) combines headroom, grown value and causal sequencing with complete alternatives and mistake recovery.
 
 [Frostfruit’s pressure fork](evidence/depth-goal-07-frostfruit-pressure-2026-10-23/README.md) adds a complete growth-versus-reward encounter with recoverable announced pressure and retained historical rounds.

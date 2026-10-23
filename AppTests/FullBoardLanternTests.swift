@@ -73,7 +73,7 @@ final class FullBoardLanternTests: XCTestCase {
             return XCTFail("Begin must commit the selected full board")
         }
         store.beginEntry(choice)
-        let opening = FallingSky.fullBoardLantern()
+        let opening = try enrolledMasteryOpening(.fullBoardLantern(), matching: store.game)
         XCTAssertEqual(store.game, opening)
         XCTAssertEqual(store.dialogue.line, opening.challengeGuideLine)
         XCTAssertEqual(SkySaveArchive.load(from: defaults), opening)
@@ -125,10 +125,11 @@ final class FullBoardLanternTests: XCTestCase {
         XCTAssertTrue(restoredPresenter.openings.isEmpty)
         XCTAssertNil(restoredClock.deadline)
         restored.beginEntry(.replay)
-        XCTAssertEqual(restored.game, before)
+        XCTAssertEqual(restored.game, try enrolledMasteryOpening(.fullBoardLantern(), matching: restored.game))
+        XCTAssertNotEqual(restored.game.masteryEnrollment?.runID, before.masteryEnrollment?.runID)
         XCTAssertTrue(restored.game.usesFullBoardRefill)
         restored.beginEntry(.firstLight)
-        XCTAssertEqual(restored.game, FallingSky.freshChallenge(.firstLight))
+        XCTAssertEqual(restored.game, try enrolledMasteryOpening(.freshChallenge(.firstLight), matching: restored.game))
         XCTAssertFalse(restored.game.usesFullBoardRefill)
         restored.setSuspended(true)
         store.setSuspended(true)
@@ -206,7 +207,7 @@ final class FullBoardLanternTests: XCTestCase {
         XCTAssertEqual(restored.game, opening)
         XCTAssertTrue(restored.journey.journey.completed.contains(.firstLight))
         restored.beginEntry(.firstLight)
-        XCTAssertEqual(restored.game, FallingSky.freshChallenge(.firstLight))
+        XCTAssertEqual(restored.game, try enrolledMasteryOpening(.freshChallenge(.firstLight), matching: restored.game))
         store.setSuspended(true)
     }
 

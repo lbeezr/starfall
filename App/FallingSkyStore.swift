@@ -91,6 +91,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
 @MainActor @Observable final class FallingSkyStore {
     private(set) var tutorial: SkyTutorialRun?
     let journey: WorldJourneyStore
+    let mastery: StoryMasteryStore
     var terminalSpeech: SkyTerminalSpeech = .feedback
     static let saveKey = SkySaveArchive.key
     private(set) var game: FallingSky
@@ -98,6 +99,8 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     private let archiveWriter: @MainActor (FallingSky, UserDefaults) throws -> Void
     private(set) var persistenceNotice: SkyPersistenceNotice?
     private(set) var saveFailed = false
+    private(set) var masterySaveFailed = false
+    private var lastSavedGame: FallingSky?
     private(set) var rejectedSaveKey: String?
     private static let persistenceLog = Logger(subsystem: "com.starfall.prototype", category: "persistence")
     var busy: Bool { presentations.busy || openingPresenting }
@@ -349,9 +352,12 @@ enum SkyTerminalSpeech { case feedback, ceremony }
          clock: (any FallingSkyRainScheduling)? = nil,
          feedback: (any FallingSkyFeedbackProviding)? = nil,
          tutorial: SkyTutorial? = nil,
-         archiveWriter: @escaping @MainActor (FallingSky, UserDefaults) throws -> Void = SkySaveArchive.save) {
+         archiveWriter: @escaping @MainActor (FallingSky, UserDefaults) throws -> Void = SkySaveArchive.save,
+         masteryWriter: @escaping @MainActor (Data, UserDefaults) throws -> Void = StoryMasteryStore.write) {
         self.defaults = defaults
         journey = WorldJourneyStore(defaults: defaults, ignoreSaved: tutorial != nil || arguments.contains("--starfalls-reset"))
+        mastery = StoryMasteryStore(defaults: defaults, ignoreSaved: tutorial != nil || arguments.contains("--starfalls-reset"),
+                                    writer: masteryWriter)
         self.tutorial = tutorial.map(SkyTutorialRun.init)
         self.archiveWriter = archiveWriter
         self.feedback = feedback ?? GameFeedback()
@@ -365,6 +371,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         if tutorial == nil, !arguments.contains("--starfalls-reset"), case .loaded(let saved) = SkySaveArchive.inspect(from: defaults) {
             game = saved.removingGravity().adoptingFeedingDusk().disablingAutomaticAging().adoptingCurrentChallengeActions()
             hasSavedSky = true
+            lastSavedGame = game
             guide(saved.outcome == .won ? (saved.challenge?.wonGuideID ?? "guide.won") : saved.isOver ? "guide.full"
                 : saved.fullBoardRestoreGuideID ?? "guide.restore",
                 values: saved.isOver ? ["score": saved.displayScore.formatted()] : [:],
@@ -869,13 +876,16 @@ enum SkyTerminalSpeech { case feedback, ceremony }
 
     /// Called only after Entry has consumed its pending choice. The round remains
     /// suspended until the view admits play; existing reset/save ownership stays here.
-    func beginEntry(_ request: SkyEntryRequest) {
+    @discardableResult func beginEntry(_ request: SkyEntryRequest) -> Bool {
+        guard request == .initial || canReplaceMasteryReceipt() else { return false }
         switch request {
         case .initial: break // Keep the established first-launch seed and preview.
         case .fresh: restart(sameSky: false)
         case .replay: restart(sameSky: true)
-        case .firstLight: startFirstLight()
-        case .fullBoardLantern: startFullBoardLantern()
+        case .firstLight, .fullBoardLantern:
+            var fresh = request == .firstLight ? FallingSky.freshChallenge(.firstLight) : FallingSky.fullBoardLantern()
+            _ = fresh.enrollMastery(runID: UUID())
+            beginChallenge(fresh)
         case .ribbonCrossing: startChallenge(.ribbonCrossing)
         case .fullBoardRibbon: startFullBoardRibbon()
         case .kiteHarbor: startChallenge(.kiteHarbor)
@@ -884,9 +894,11 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         case .frostfruitOrchard: startChallenge(.frostfruitOrchard)
         case .sunwheelMill: startChallenge(.sunwheelMill)
         }
+        return true
     }
 
     func restart(sameSky: Bool) {
+        guard canReplaceMasteryReceipt() else { return }
         #if DEBUG
         defer { observeTiming(.state) }
         #endif
@@ -899,7 +911,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         let replayAllowed = sameSky
         #endif
         if replayAllowed {
-            game = game.removingGravity().adoptingFeedingDusk().disablingAutomaticAging().adoptingCurrentChallengeActions().replay()
+            game = game.removingGravity().adoptingFeedingDusk().disablingAutomaticAging().adoptingCurrentChallengeActions().replay(masteryRunID: UUID())
         } else {
             // First Light's fixed balance belongs to that challenge, not the next normal sky.
             let balance = game.challenge == nil ? game.balance : StarfallBalance()
@@ -948,6 +960,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     }
 
     private func beginChallenge(_ fresh: FallingSky) {
+        guard canReplaceMasteryReceipt() else { return }
         #if DEBUG
         isTechniqueFixture = false
         #endif
@@ -1084,22 +1097,57 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         presenter.render(game)
     }
 
+    /// Keep the saved winner as the bounded retry receipt until its optional
+    /// best projection succeeds. New input must never discard that only proof.
+    private func canReplaceMasteryReceipt() -> Bool {
+        guard tutorial == nil, game.completedMasteryRun != nil else { return true }
+        if lastSavedGame != game {
+            save()
+            return lastSavedGame == game && !masterySaveFailed
+        }
+        do {
+            try mastery.record(game)
+            masterySaveFailed = false
+            if persistenceNotice == .masteryFailed { persistenceNotice = nil }
+            return true
+        } catch {
+            masterySaveFailed = true
+            persistenceNotice = .masteryFailed
+            return false
+        }
+    }
+
     private func save() {
         guard tutorial == nil else { return }
         #if DEBUG
         guard !isTechniqueFixture else { return }
         #endif
-        do {
-            try archiveWriter(game, defaults)
-            try journey.record(game)
-            hasSavedSky = true
-            saveFailed = false
-            if persistenceNotice == .failed { persistenceNotice = nil }
-        } catch {
-            // One acknowledgement per failure episode; success permits a later notice.
+        do { try archiveWriter(game, defaults) }
+        catch {
             if !saveFailed { persistenceNotice = .failed }
             saveFailed = true
             Self.persistenceLog.error("Sky archive encoding/validation failed; existing save retained")
+            return
+        }
+        lastSavedGame = game
+        hasSavedSky = true
+        // Both projections consume the durable round independently. Optional
+        // best failure cannot withhold a repair, or submit an unsaved win.
+        do {
+            try journey.record(game)
+            saveFailed = false
+            if persistenceNotice == .failed { persistenceNotice = nil }
+        } catch {
+            if !saveFailed { persistenceNotice = .failed }
+            saveFailed = true
+        }
+        do {
+            try mastery.record(game)
+            masterySaveFailed = false
+            if persistenceNotice == .masteryFailed { persistenceNotice = nil }
+        } catch {
+            if !masterySaveFailed && persistenceNotice == nil { persistenceNotice = .masteryFailed }
+            masterySaveFailed = true
         }
     }
 }

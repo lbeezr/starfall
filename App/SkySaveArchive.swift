@@ -4,7 +4,8 @@ import StarfallCore
 /// One persistence contract for committed skies. Legacy bytes remain untouched;
 /// a present but invalid current save never falls back to an older round.
 enum SkySaveArchive {
-    static let key = "starfall.accumulation.v18"
+    static let key = "starfall.accumulation.v19"
+    static let preMasteryKey = "starfall.accumulation.v18"
     static let frostfruitEncounterKey = "starfall.accumulation.v17"
     static let ribbonFullBoardKey = "starfall.accumulation.v16"
     static let revisedFullBoardKey = "starfall.accumulation.v15"
@@ -20,7 +21,7 @@ enum SkySaveArchive {
     static let gravityKey = "starfall.accumulation.v5"
     static let previousKey = "starfall.accumulation.v4"
     static let legacyKey = "starfall.accumulation.v3"
-    static let schemaVersion = 18
+    static let schemaVersion = 19
     /// One recovery slot; never used as an automatic fallback.
     static let rejectedKey = "starfall.accumulation.rejected"
 
@@ -54,12 +55,17 @@ enum SkySaveArchive {
 
     private static func decodeLegacy(_ data: Data) throws -> FallingSky {
         let game = try JSONDecoder().decode(FallingSky.self, from: data)
-        guard game.isValidSave, game.generation == .legacy, game.challengeRevision == 0, game.challengeActionVersion == 0 else { throw Failure.unsupportedOrInvalid }
+        guard isRetainedGame(game), game.generation == .legacy, game.challengeRevision == 0, game.challengeActionVersion == 0 else { throw Failure.unsupportedOrInvalid }
         return game
     }
 
+    /// Older envelopes cannot authorize enrollment, even for otherwise eligible content.
+    private static func isRetainedGame(_ game: FallingSky) -> Bool {
+        game.masteryEnrollment == nil && game.isValidSave
+    }
+
     @MainActor static func inspect(from defaults: UserDefaults) -> LoadResult {
-        let keys = [key, frostfruitEncounterKey, ribbonFullBoardKey, revisedFullBoardKey, fullBoardKey, fourLineKey, patternKey, cascadeKey, storyKey, worldKey, agingKey, patientFeedingKey, feedingKey, gravityKey, previousKey, legacyKey]
+        let keys = [key, preMasteryKey, frostfruitEncounterKey, ribbonFullBoardKey, revisedFullBoardKey, fullBoardKey, fourLineKey, patternKey, cascadeKey, storyKey, worldKey, agingKey, patientFeedingKey, feedingKey, gravityKey, previousKey, legacyKey]
         guard let source = keys.first(where: { defaults.object(forKey: $0) != nil }) else { return .missing }
         guard let game = load(from: defaults) else { return .rejected(sourceKey: source) }
         return .loaded(game)
@@ -80,73 +86,80 @@ enum SkySaveArchive {
             guard let data = defaults.data(forKey: key), let game = try? decode(data) else { return nil }
             return game
         }
+        if defaults.object(forKey: preMasteryKey) != nil {
+            guard let data = defaults.data(forKey: preMasteryKey),
+                  let envelope = try? JSONDecoder().decode(Envelope.self, from: data),
+                  envelope.schemaVersion == 18, isRetainedGame(envelope.game),
+                  (0...9).contains(envelope.game.challengeRevision) else { return nil }
+            return envelope.game
+        }
         if defaults.object(forKey: frostfruitEncounterKey) != nil {
             guard let data = defaults.data(forKey: frostfruitEncounterKey),
                   let envelope = try? JSONDecoder().decode(Envelope.self, from: data),
-                  envelope.schemaVersion == 17, envelope.game.isValidSave,
+                  envelope.schemaVersion == 17, isRetainedGame(envelope.game),
                   (0...8).contains(envelope.game.challengeRevision) else { return nil }
             return envelope.game
         }
         if defaults.object(forKey: ribbonFullBoardKey) != nil {
             guard let data = defaults.data(forKey: ribbonFullBoardKey),
                   let envelope = try? JSONDecoder().decode(Envelope.self, from: data),
-                  envelope.schemaVersion == 16, envelope.game.isValidSave,
+                  envelope.schemaVersion == 16, isRetainedGame(envelope.game),
                   (0...7).contains(envelope.game.challengeRevision) else { return nil }
             return envelope.game
         }
         if defaults.object(forKey: revisedFullBoardKey) != nil {
             guard let data = defaults.data(forKey: revisedFullBoardKey),
                   let envelope = try? JSONDecoder().decode(Envelope.self, from: data),
-                  envelope.schemaVersion == 15, envelope.game.isValidSave,
+                  envelope.schemaVersion == 15, isRetainedGame(envelope.game),
                   (0...6).contains(envelope.game.challengeRevision) else { return nil }
             return envelope.game
         }
         if defaults.object(forKey: fullBoardKey) != nil {
             guard let data = defaults.data(forKey: fullBoardKey),
                   let envelope = try? JSONDecoder().decode(Envelope.self, from: data),
-                  envelope.schemaVersion == 14, envelope.game.isValidSave,
+                  envelope.schemaVersion == 14, isRetainedGame(envelope.game),
                   (0...5).contains(envelope.game.challengeRevision) else { return nil }
             return envelope.game
         }
         if defaults.object(forKey: fourLineKey) != nil {
             guard let data = defaults.data(forKey: fourLineKey),
                   let envelope = try? JSONDecoder().decode(Envelope.self, from: data),
-                  envelope.schemaVersion == 13, envelope.game.isValidSave,
+                  envelope.schemaVersion == 13, isRetainedGame(envelope.game),
                   (0...4).contains(envelope.game.challengeRevision) else { return nil }
             return envelope.game
         }
         if defaults.object(forKey: patternKey) != nil {
             guard let data = defaults.data(forKey: patternKey),
                   let envelope = try? JSONDecoder().decode(Envelope.self, from: data),
-                  envelope.schemaVersion == 12, envelope.game.isValidSave,
+                  envelope.schemaVersion == 12, isRetainedGame(envelope.game),
                   (0...3).contains(envelope.game.challengeRevision) else { return nil }
             return envelope.game
         }
         if defaults.object(forKey: cascadeKey) != nil {
             guard let data = defaults.data(forKey: cascadeKey),
                   let envelope = try? JSONDecoder().decode(Envelope.self, from: data),
-                  envelope.schemaVersion == 11, envelope.game.isValidSave,
+                  envelope.schemaVersion == 11, isRetainedGame(envelope.game),
                   (0...2).contains(envelope.game.challengeRevision) else { return nil }
             return envelope.game
         }
         if defaults.object(forKey: storyKey) != nil {
             guard let data = defaults.data(forKey: storyKey),
                   let envelope = try? JSONDecoder().decode(Envelope.self, from: data),
-                  envelope.schemaVersion == 10, envelope.game.isValidSave,
+                  envelope.schemaVersion == 10, isRetainedGame(envelope.game),
                   (0...1).contains(envelope.game.challengeRevision) else { return nil }
             return envelope.game
         }
         if defaults.object(forKey: worldKey) != nil {
             guard let data = defaults.data(forKey: worldKey),
                   let envelope = try? JSONDecoder().decode(Envelope.self, from: data),
-                  envelope.schemaVersion == 9, envelope.game.isValidSave,
+                  envelope.schemaVersion == 9, isRetainedGame(envelope.game),
                   envelope.game.challengeRevision == 0 else { return nil }
             return envelope.game
         }
         if defaults.object(forKey: agingKey) != nil {
             guard let data = defaults.data(forKey: agingKey),
                   let envelope = try? JSONDecoder().decode(Envelope.self, from: data),
-                  envelope.schemaVersion == 8, envelope.game.isValidSave, envelope.game.challengeRevision == 0,
+                  envelope.schemaVersion == 8, isRetainedGame(envelope.game), envelope.game.challengeRevision == 0,
                   envelope.game.challengeActionVersion == 0 else { return nil }
             return envelope.game
         }
@@ -154,20 +167,20 @@ enum SkySaveArchive {
             guard let data = defaults.data(forKey: patientFeedingKey),
                   let envelope = try? JSONDecoder().decode(Envelope.self, from: data),
                   envelope.schemaVersion == 7,
-                  envelope.game.isValidSave, envelope.game.challengeRevision == 0, envelope.game.challengeActionVersion == 0, !envelope.game.hasPocketedDusk else { return nil }
+                  isRetainedGame(envelope.game), envelope.game.challengeRevision == 0, envelope.game.challengeActionVersion == 0, !envelope.game.hasPocketedDusk else { return nil }
             return envelope.game
         }
         if defaults.object(forKey: feedingKey) != nil {
             guard let data = defaults.data(forKey: feedingKey),
                   let envelope = try? JSONDecoder().decode(Envelope.self, from: data),
-                  envelope.schemaVersion == 6, envelope.game.isValidSave, envelope.game.challengeRevision == 0, envelope.game.challengeActionVersion == 0, !envelope.game.hasPocketedDusk,
+                  envelope.schemaVersion == 6, isRetainedGame(envelope.game), envelope.game.challengeRevision == 0, envelope.game.challengeActionVersion == 0, !envelope.game.hasPocketedDusk,
                   envelope.game.duskRule != .patientFeeding else { return nil }
             return envelope.game
         }
         if defaults.object(forKey: gravityKey) != nil {
             guard let data = defaults.data(forKey: gravityKey),
                   let envelope = try? JSONDecoder().decode(Envelope.self, from: data),
-                  envelope.schemaVersion == 5, envelope.game.isValidSave, envelope.game.challengeRevision == 0, envelope.game.challengeActionVersion == 0, !envelope.game.hasPocketedDusk else { return nil }
+                  envelope.schemaVersion == 5, isRetainedGame(envelope.game), envelope.game.challengeRevision == 0, envelope.game.challengeActionVersion == 0, !envelope.game.hasPocketedDusk else { return nil }
             return envelope.game
         }
         if defaults.object(forKey: previousKey) != nil {
@@ -175,7 +188,7 @@ enum SkySaveArchive {
                   let envelope = try? JSONDecoder().decode(Envelope.self, from: data),
                   envelope.schemaVersion == 4,
                   [.legacy, .opalStorms].contains(envelope.game.generation),
-                  envelope.game.isValidSave, envelope.game.challengeRevision == 0, envelope.game.challengeActionVersion == 0, !envelope.game.hasPocketedDusk else { return nil }
+                  isRetainedGame(envelope.game), envelope.game.challengeRevision == 0, envelope.game.challengeActionVersion == 0, !envelope.game.hasPocketedDusk else { return nil }
             return envelope.game
         }
         guard let data = defaults.data(forKey: legacyKey), let game = try? decodeLegacy(data) else { return nil }
@@ -184,9 +197,21 @@ enum SkySaveArchive {
 
 }
 
-/// Acknowledgement belongs to this session; neither notice is a restored round.
+/// Acknowledgement belongs to this session; a notice is not a restored round.
 enum SkyPersistenceNotice: Equatable {
-    case rejected, failed
-    var title: String { SkyCopy.text(self == .rejected ? .saveRejectedTitle : .saveFailedTitle) }
-    var message: String { SkyCopy.text(self == .rejected ? .saveRejectedMessage : .saveFailedMessage) }
+    case rejected, failed, masteryFailed
+    var title: String {
+        switch self {
+        case .rejected: SkyCopy.text(.saveRejectedTitle)
+        case .failed: SkyCopy.text(.saveFailedTitle)
+        case .masteryFailed: SkyCopy.text(.masterySaveFailedTitle)
+        }
+    }
+    var message: String {
+        switch self {
+        case .rejected: SkyCopy.text(.saveRejectedMessage)
+        case .failed: SkyCopy.text(.saveFailedMessage)
+        case .masteryFailed: SkyCopy.text(.masterySaveFailedMessage)
+        }
+    }
 }

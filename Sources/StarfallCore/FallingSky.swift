@@ -156,7 +156,26 @@ public struct FallingSky: Codable, Equatable, Sendable {
     private var savedChallengeRevision: Int?
     private var storyScoreLedger: StoryScoreLedger?
     private var fullBoardSupply: FullBoardSupply?
+    /// Missing in retained saves: same-round Replay remains completion-only.
+    public private(set) var masteryEnrollment: StoryMasteryEnrollment?
     public var challengeRevision: Int { savedChallengeRevision ?? 0 }
+
+    public var masteryProgress: StoryMasteryProgress? {
+        guard let enrollment = masteryEnrollment, isValidSave,
+              let earned = storyScoreLedger?.masteryGoals(for: enrollment.identity, light: score) else { return nil }
+        return StoryMasteryProgress(identity: enrollment.identity, earned: earned)
+    }
+
+    public var completedMasteryRun: StoryMasteryRecord? { StoryMasteryRecord(game: self) }
+
+    /// The app supplies an attempt identity only when committing a new visit.
+    /// Previews, practice and retained saves keep their absent enrollment.
+    @discardableResult public mutating func enrollMastery(runID: UUID) -> Bool {
+        guard masteryEnrollment == nil, isValidSave,
+              let identity = StoryMasteryIdentity.available(for: self), self == replay() else { return false }
+        masteryEnrollment = StoryMasteryEnrollment(identity: identity, runID: runID)
+        return true
+    }
     /// Explicit full-board definitions; ordinary Story visits retain their saved sky rules.
     public var usesFullBoardRefill: Bool { storyDefinition?.usesFullBoardRefill ?? false }
     private var storyDefinition: StoryChallengeDefinition? {
@@ -324,6 +343,16 @@ public struct FallingSky: Codable, Equatable, Sendable {
         replay.showersUntilDark = balance.darkStars.showerGap.map { $0.upperBound - 1 } ?? 0
         replay.incoming = replay.nextShower()
         return replay
+    }
+
+    /// Actual enrolled Replay starts a new attempt. The parameter cannot enroll
+    /// an older round; pure `replay()` retains the marker for read-only previews.
+    public func replay(masteryRunID: UUID) -> FallingSky {
+        var result = replay()
+        if let enrollment = masteryEnrollment {
+            result.masteryEnrollment = StoryMasteryEnrollment(identity: enrollment.identity, runID: masteryRunID)
+        }
+        return result
     }
 
     /// Retire gravity at the normal-play boundary, after validating a historical save.
@@ -742,6 +771,8 @@ public struct FallingSky: Codable, Equatable, Sendable {
         // conservation arithmetic, for every retained and current ruleset.
         guard board.count == 49, [nil, 1, 2, 3, 4, 5, 6, 7, 8, 9].contains(savedChallengeRevision),
               turns >= 0, turns < Int.max / 6, score >= 0, starsLanded >= 0 else { return false }
+        if let enrollment = masteryEnrollment,
+           enrollment.identity != StoryMasteryIdentity.available(for: self) { return false }
         if let definition = storyDefinition {
             guard challengeActionVersion == 1, seed == definition.seed, balance == definition.balance,
                   !hasOpeningCascade, generation == .legacy, duskRule == .legacy, darkStarsCleared == 0,

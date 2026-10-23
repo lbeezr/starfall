@@ -1,0 +1,144 @@
+{
+  "goal": 9,
+  "issue": 312,
+  "source": "a49ad72a8c07306ec06ca1e54558600f6ff5c390",
+  "nativeCodeCheckpoint": "fc42397603cc1ff5bd547da5a991545596cb54d8",
+  "integrationBase": "56fb4acdbbddb19d475f5be9e5f6eb8c8d216022",
+  "sourceBoundary": "Core full348 and Debug/Release rerun after main host-platform integration. The native/initial hosted checkpoint has identical App/Core Swift, resources, project membership and test sources. Intervening build input is only Package.swift declaring the macOS12 host minimum; no iOS platform/rules change. Documentation/evidence are subsequent differences.",
+  "rawRoot": "/private/tmp/starfall-depth-09-20261023",
+  "environment": {
+    "host": "macOS27.0.1 (26A434) arm64",
+    "xcode": "27.1 (27A9275)",
+    "swift": "6.4 (6.4.0.34.1)",
+    "sdk": "iPhoneSimulator27.1",
+    "runtime": "iOS27.0 (24A434)",
+    "appMinimum": "iOS17",
+    "coreHostMinimum": "macOS12"
+  },
+  "checks": {
+    "core": {
+      "result": "passed",
+      "executed": 348,
+      "failed": 0,
+      "skipped": 0,
+      "elapsedSeconds": 25.046,
+      "log": "core-integrated.log"
+    },
+    "focusedCore": {
+      "result": "passed",
+      "executed": 12,
+      "failed": 0,
+      "skipped": 0,
+      "log": "/private/tmp/starfall-mastery09-core-tests-final.log"
+    },
+    "initialHosted": {
+      "failedTests": 0,
+      "passedTests": 179,
+      "result": "Passed",
+      "skippedTests": 0,
+      "totalTestCount": 179
+    },
+    "hostedIntegrated": {
+      "failedTests": 0,
+      "passedTests": 181,
+      "result": "Passed",
+      "skippedTests": 0,
+      "totalTestCount": 181
+    },
+    "nativePhone": {
+      "failedTests": 0,
+      "passedTests": 1,
+      "result": "Passed",
+      "skippedTests": 0,
+      "totalTestCount": 1
+    },
+    "nativeTablet": {
+      "result": "Passed",
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0
+    },
+    "builds": [
+      {
+        "stage": "debug-app",
+        "startedUTC": "2026-10-23T23:10:00.744269+00:00",
+        "elapsedSeconds": 7.465,
+        "limitSeconds": 600.0,
+        "exitCode": 0,
+        "error": null
+      },
+      {
+        "stage": "release",
+        "startedUTC": "2026-10-23T23:10:37.146334+00:00",
+        "elapsedSeconds": 15.325,
+        "limitSeconds": 600.0,
+        "exitCode": 0,
+        "error": null
+      },
+      {
+        "stage": "debug-tests",
+        "startedUTC": "2026-10-23T23:11:40.189293+00:00",
+        "elapsedSeconds": 4.488,
+        "limitSeconds": 600.0,
+        "exitCode": 0,
+        "error": null
+      },
+      {
+        "stage": "debug-all-tests",
+        "startedUTC": "2026-10-23T23:11:55.300919+00:00",
+        "elapsedSeconds": 1.56,
+        "limitSeconds": 600.0,
+        "exitCode": 0,
+        "error": null
+      },
+      {
+        "stage": "release-integrated",
+        "startedUTC": "2026-10-23T23:15:35.032682+00:00",
+        "elapsedSeconds": 2.964,
+        "limitSeconds": 600.0,
+        "exitCode": 0,
+        "error": null
+      },
+      {
+        "stage": "debug-integrated",
+        "startedUTC": "2026-10-23T23:15:35.948581+00:00",
+        "elapsedSeconds": 4.713,
+        "limitSeconds": 600.0,
+        "exitCode": 0,
+        "error": null
+      }
+    ],
+    "hostedScope": "14 source-counted classes181cases, including the2catalogue boundaries; initial13matchedclasses179. Initial CLI also contained a nonexistent catalogue class selector; the integrated run replaces it with SkyDialogueCatalogBoundsTests. All actual expected counts match.",
+    "nativeScope": "Two named complete-round scenarios only. Full Board HIGH10 physical exchanges,156k repair, separate bests, relaunch and exact Replay. Sky shared75exchanges/22showers151k win, largest-text Calm, goals/best/relaunch/Replay.",
+    "inventory": "Native dev228; hosted572; this is selected acceptance, not the full matrix.",
+    "hygiene": "passed; rerun after final staging",
+    "whitespace": "passed; rerun after final staging",
+    "inspectedVisuals": "Eight original PNGs and exact selected JPEG exports inspected; captures.json records source, hashes and scroll/crop limits.",
+    "actualVoiceOver": "not run",
+    "physicalInstallation": "not run",
+    "minimumIOS17Runtime": "not run",
+    "continuousAnimationCertification": "not established by stills",
+    "humanRecognitionDifficultyAndMotivation": "unmeasured"
+  },
+  "limits": [
+    "Natural rank1 and distinct Sky single-goal wins not demonstrated; labeled invariant-valid aggregate fixtures establish accounting only.",
+    "Missed-first-grown recovery remains unproved; later-chain recovery is a real complete route.",
+    "Native persistence fault-alert retry is source/hosted tested, not native fault-injected."
+  ],
+  "initialFailures": [],
+  "integrationNotes": [
+    "Main advanced with PR346 macOS12 host declaration and PR347 queued identity goals. Both were preserved; only an ENGINEERING documentation-heading conflict required manual resolution.",
+    "All Core, hosted and native test runs passed on first execution. No failed acceptance runs or weakened assertions."
+  ],
+  "commands": {
+    "core": "CLANG_MODULE_CACHE_PATH=/private/tmp/starfall-depth02-clang SWIFTPM_MODULECACHE_OVERRIDE=/private/tmp/starfall-depth02-module swift test --scratch-path /private/tmp/starfall-depth02-core",
+    "native": "python3 scripts/simulator-command.py --receipt RAW/stages.jsonl <stage> <600..1050> xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination platform=iOS\\ Simulator,id=<owned simulator> -derivedDataPath /private/tmp/starfall-depth-06-20261023/DerivedData CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -parallel-testing-enabled NO -collect-test-diagnostics never -resultBundlePath RAW/<stage>.xcresult -only-testing:<selected identifiers> test-without-building",
+    "release": "Same bounded wrapper; Release, generic/platform=iOS Simulator, /private/tmp/starfall-depth-05-20261023/ReleaseData, build",
+    "static": [
+      "python3 scripts/ci-hygiene.py",
+      "git diff --check",
+      "python3 scripts/native_test_plan.py --stage dev"
+    ]
+  }
+}

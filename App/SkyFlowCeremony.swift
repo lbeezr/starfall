@@ -28,6 +28,7 @@ enum SkyFlowAction: Equatable {
     let result: SkyResultSnapshot?
     let onward: SkyOnwardSnapshot?
     let welcome: SkyWelcomeSnapshot
+    var mastery: SkyMasterySnapshot? = nil
     let active: Bool
     let quiet: Bool
     let modal: Bool
@@ -275,6 +276,9 @@ enum SkyFlowAction: Equatable {
                     .fixedSize(horizontal: false, vertical: true)
                     .accessibilityLabel(dialogueLine.spokenText)
                     .accessibilityIdentifier(terminal ? "experiment.score" : "sky.subtitle")
+                if let mastery, screen == .entry || screen == .won {
+                    SkyMasteryView(snapshot: mastery)
+                }
                 actions
             }
         }

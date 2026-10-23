@@ -50,6 +50,23 @@ struct StoryScoreLedger: Codable, Equatable, Sendable {
     var phaseCount: Int { clearCounts.reduce(0, +) }
     var actionCount: Int { cascadeTiers?.first?.count ?? phaseCount }
 
+    /// These aggregates are equivalent to committed phase predicates only for
+    /// the enrolled colored, automatic-only definitions named by the identity.
+    func masteryGoals(for identity: StoryMasteryIdentity, light: Int) -> Set<StoryMasteryGoal>? {
+        guard identity.isValid,
+              let definition = StoryChallengeDefinition(identity.challenge, revision: identity.contentRevision),
+              isValid(light: light, target: definition.target, automaticRecipes: true,
+                      manualClears: false, fullBoardRefill: definition.usesFullBoardRefill) else { return nil }
+        var earned: Set<StoryMasteryGoal> = []
+        let actualStars = clearCounts.enumerated().reduce(0) { $0 + $1.offset * $1.element }
+        if identity.goals.contains(.grownCollection), light > actualStars { earned.insert(.grownCollection) }
+        if cascadeTiers?.dropFirst().contains(where: { $0.count > 0 }) == true { earned.insert(.cascade) }
+        if identity.goals.contains(.largeClear), clearCounts.dropFirst(8).contains(where: { $0 > 0 }) {
+            earned.insert(.largeClear)
+        }
+        return earned
+    }
+
     init(automaticRecipes: Bool = false) {
         cascadeTiers = automaticRecipes ? Array(repeating: Tier(), count: 5) : nil
     }
