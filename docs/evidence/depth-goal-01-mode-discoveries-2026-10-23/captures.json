@@ -1,0 +1,60 @@
+{
+  "captures": [
+    {
+      "key": "entry",
+      "file": "dev-4b50ce3-wip-37309be455__entry-choice__iphone-17e__default.jpg",
+      "sha256": "d1f4fe633837dbb2fde2cee74124a1e2b8e7c2aa6cea39f177ad95c78bc1131e",
+      "source": "4b50ce3 + explicit working-tree inputs",
+      "runtimeIdentity": "dev.37309be455",
+      "device": "iphone-17e",
+      "variant": "default",
+      "provenance": "video frame10s",
+      "status": "Current",
+      "inspection": "Native still inspected; Entry choices/optional practice fit, ceiling markers fully visible, Full Board reached49 with finite award trails, or complete largest-text hint read.",
+      "parity": "Matches final goal1 UI inputs."
+    },
+    {
+      "key": "ceiling",
+      "file": "dev-4b50ce3-wip-37309be455__sky-ceiling-hint__iphone-17e__default.jpg",
+      "sha256": "d699e3cd1c96e36239abd20f9c8cf05c1e70522555e04cf564e9e66f2ee7025e",
+      "source": "4b50ce3 + explicit working-tree inputs",
+      "runtimeIdentity": "dev.37309be455",
+      "device": "iphone-17e",
+      "variant": "default",
+      "provenance": "ceiling-band-default.xcresult",
+      "status": "Current",
+      "inspection": "Native still inspected; Entry choices/optional practice fit, ceiling markers fully visible, Full Board reached49 with finite award trails, or complete largest-text hint read.",
+      "parity": "Matches final goal1 UI inputs."
+    },
+    {
+      "key": "refill",
+      "file": "dev-4b50ce3-wip-37309be455__full-refill-complete__iphone-17e__default.jpg",
+      "sha256": "e729e0181e40ef50ccf31e57b90d9b4e3605315c8ee2c404b4b1e11f8784eef9",
+      "source": "4b50ce3 + explicit working-tree inputs",
+      "runtimeIdentity": "dev.37309be455",
+      "device": "iphone-17e",
+      "variant": "default",
+      "provenance": "ceiling-band-default.xcresult",
+      "status": "Current",
+      "inspection": "Native still inspected; Entry choices/optional practice fit, ceiling markers fully visible, Full Board reached49 with finite award trails, or complete largest-text hint read.",
+      "parity": "Matches final goal1 UI inputs."
+    },
+    {
+      "key": "tablet",
+      "file": "dev-4b50ce3-wip-3d2cc47a31__full-hint__ipad-mini-a17pro__ax3xl-quiet.jpg",
+      "sha256": "9e79a54937456162a5256fd5ce7dda845036d6adeba43156575acebd2bce56e9",
+      "source": "4b50ce3 + explicit working-tree inputs",
+      "runtimeIdentity": "dev.3d2cc47a31",
+      "device": "ipad-mini-a17pro",
+      "variant": "ax3xl-quiet",
+      "provenance": "tablet.xcresult",
+      "status": "Current",
+      "inspection": "Native still inspected; Entry choices/optional practice fit, ceiling markers fully visible, Full Board reached49 with finite award trails, or complete largest-text hint read.",
+      "parity": "Tablet largest-text layout and Full Board hint are unchanged by later default-only crop and shorter Falling Sky completion text."
+    }
+  ],
+  "limits": [
+    "Stills cannot establish animation smoothness or actual VoiceOver.",
+    "Tablet reading frame is deliberately scrolled to the hint; gameplay is verified separately by real swipes."
+  ]
+}

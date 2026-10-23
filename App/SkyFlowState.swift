@@ -5,6 +5,14 @@ import StarfallCore
 enum SkyEntryRequest: Hashable, CaseIterable {
     case initial, fresh, replay, firstLight, fullBoardLantern, ribbonCrossing, kiteHarbor, seedMoon, silverPools, frostfruitOrchard, sunwheelMill
 
+    var practiceChapter: SkyTutorial? {
+        switch self {
+        case .firstLight: .storyRoom
+        case .fullBoardLantern: .fullBoardRefill
+        default: nil
+        }
+    }
+
     func selectedChallenge(replaying challenge: StarfallChallenge?) -> StarfallChallenge? {
         switch self {
         case .firstLight, .fullBoardLantern: .firstLight
@@ -22,6 +30,7 @@ enum SkyEntryRequest: Hashable, CaseIterable {
 
 enum SkyFlowEffect: Equatable {
     case staged, began(SkyEntryRequest), continued, home, preferences, worldMap, tutorial
+    case modePractice(SkyTutorial)
 }
 
 struct SkyPlayHandoff: Equatable {
@@ -63,6 +72,10 @@ struct SkyFlowState: Equatable {
             screen = mapOrigin ?? .welcome; mapOrigin = nil
             return screen == .playing ? .continued : .home
         case .tutorial: return .tutorial
+        case .modePractice:
+            guard screen == .entry, expectedID == entryID,
+                  let chapter = entry?.practiceChapter else { return nil }
+            return .modePractice(chapter)
         case .preferences:
             guard screen == .welcome || screen == .entry else { return nil }
             return .preferences

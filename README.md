@@ -1,6 +1,10 @@
 # Starfall
 
+**Gameplay depth — October 23:** The [ten-goal queue #303](https://github.com/lbeezr/starfall/issues/303) starts with four separate main merges while retaining Falling Sky and Full Board. [Mode discoveries](docs/evidence/depth-goal-01-mode-discoveries-2026-10-23/README.md) add optional Entry/Help practice using each mode’s real rules, with hidden hints, Retry and direct return to the retained round.
+
 **Lantern comparison — October 23:** Lantern Entry now offers **Falling Sky** and **Full Board**, an untimed 49-star board that refills clears and resolves cascades toward the same 150,000-point goal. Continue/Replay retain the chosen version. Accumulating skies gain a visible ceiling and numbered crowded-column markers. [Contract and verification](docs/evidence/ceiling-lantern-refill-2026-10-23/README.md) separate native/software evidence from the next player preference comparison.
+
+
 
 **Visual cohesion — October 23:** The [ten-goal queue](https://github.com/lbeezr/starfall/issues/281) uses one verified merge per goal. The [Lantern benchmark](docs/evidence/cohesion-goal-01-benchmark-2026-10-23/README.md), [collection light](docs/evidence/cohesion-goal-02-living-collection-2026-10-23/README.md), [HUD hierarchy](docs/evidence/cohesion-goal-03-hud-hierarchy-2026-10-23/README.md) and [compact-action finish](docs/evidence/cohesion-goal-04-compact-actions-2026-10-23/README.md) share the enamel, brass and living-light language. [Seed Moon’s connected scenery](docs/evidence/cohesion-goal-05-seed-place-2026-10-23/README.md) extends that standard across its fifteen paintings; goals 6–10 remain pending.
 

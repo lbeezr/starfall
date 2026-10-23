@@ -216,19 +216,25 @@ import StarfallCore
     private func tutorialPlayfield(viewport: CGSize) -> some View {
         let canvas = Self.readingCanvas(viewport: viewport, accessible: false).size
         let arena = LandingGeometry(size: canvas).arenaFrame
+        // The pressure row uses space above the board. Give it one control row
+        // from the reading shelf so the ceiling and top stars stay in view.
+        let pressureClearance = store.pressureCue == nil ? 0 : StarfallTheme.Layout.minimumTarget
+        let topClearance = SkyCeilingOverlay.topClearance
+        let additionalCeilingSpace = max(0, topClearance - StarfallTheme.Spacing.medium)
+        let readingHeight = max(128, min(260, viewport.height * 0.42) - pressureClearance - additionalCeilingSpace)
         return VStack(spacing: StarfallTheme.Spacing.small) {
             edgeHeader(island: false)
                 .padding(.horizontal, StarfallTheme.Spacing.medium)
             ScrollView {
                 board(expanded: true, landscape: false)
                     .frame(height: canvas.height)
-                    .offset(y: -max(0, arena.minY - StarfallTheme.Spacing.medium))
-                    .frame(height: arena.height + StarfallTheme.Spacing.medium * 2, alignment: .top)
+                    .offset(y: -max(0, arena.minY - topClearance))
+                    .frame(height: arena.height + topClearance + StarfallTheme.Spacing.medium, alignment: .top)
                     .clipped()
             }
             .defaultScrollAnchor(.bottom)
             .scrollBounceBehavior(.basedOnSize)
-            guide(compact: true, maximumHeight: min(260, viewport.height * 0.42))
+            guide(compact: true, maximumHeight: readingHeight)
                 .padding(.horizontal, StarfallTheme.Spacing.medium)
         }
         .padding(.vertical, StarfallTheme.Spacing.small)
@@ -636,6 +642,9 @@ import StarfallCore
         case .tutorial:
             menu = .tutorial
             return
+        case .modePractice(let chapter):
+            menu = .practice(chapter)
+            return
         case .preferences:
             menu = .welcome
             return
@@ -675,6 +684,9 @@ import StarfallCore
         switch destination {
         case .tutorial:
             SkyTutorialView(done: { menu = nil })
+                .skyMenuPresentation()
+        case .practice(let chapter):
+            SkyTutorialView(initial: chapter, returnsAfterLesson: true, done: { menu = nil })
                 .skyMenuPresentation()
         case .welcome:
             SkyWelcomePreferences(sound: $store.soundEnabled, haptics: $store.hapticsEnabled, calm: $calmEffects,
@@ -829,7 +841,8 @@ private extension FallingSkyView {
     }
 }
 
-private enum SkyMenuDestination: Identifiable {
+private enum SkyMenuDestination: Hashable, Identifiable {
     case game, welcome, tutorial
+    case practice(SkyTutorial)
     var id: Self { self }
 }

@@ -40,7 +40,7 @@ final class SkyDialogueTests: XCTestCase {
 
     @MainActor func testCascadeEntryReplayAndHelpFollowTheSelectedSavedRevision() throws {
         let practiceHelp = SkyCopy.text(.helpPracticeModes)
-        XCTAssertEqual(practiceHelp, "Tutorial starts with a current Story square using swaps and automatic patterns. Other chapters cover Open Sky’s tap and trace controls and the original 18-light restoration exercise. Your saved sky and world stay unchanged.")
+        XCTAssertEqual(practiceHelp, "Optional discoveries show how to make room below Falling Sky’s ceiling and follow Full Board’s clear, fall and refill. Tutorial also covers swaps and automatic patterns, Open Sky’s tap and trace controls and the original 18-light restoration exercise. Your saved sky and world stay unchanged.")
         let introduction = SkyCopy.text(.practiceIntro)
         XCTAssertTrue(introduction.hasPrefix("Start with a current Story square."))
         for text in [practiceHelp, introduction] {
