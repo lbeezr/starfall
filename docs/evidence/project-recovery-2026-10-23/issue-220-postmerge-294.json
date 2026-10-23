@@ -1,0 +1,49 @@
+{
+  "observedAtUTC": "2026-10-23T13:22:38.497Z",
+  "observation": "Read-only authenticated Chrome UI through CUA; canonical existing item refreshed once and allowed to hydrate.",
+  "projectURL": "https://github.com/users/lbeezr/projects/1",
+  "canonicalItemURL": "https://github.com/users/lbeezr/projects/1/views/1?pane=issue&itemId=280018905&issue=lbeezr%7Cstarfall%7C220",
+  "itemId": "280018905",
+  "issue": 220,
+  "currentIssueState": "Closed as completed",
+  "currentProjectStatus": "Done",
+  "linkedMergedPR": 294,
+  "mergedCommitReportedByCoordinator": "9ab7e5197302e25deec59b681307bf0db45e39d2",
+  "events": [
+    {
+      "context": "github-project-automation\nmoved this to Todo in  Starfall — iPhone & iPad",
+      "dateTime": "2026-10-22T16:11:35.000Z",
+      "label": "on Oct 22, 2026"
+    },
+    {
+      "context": "github-project-automation\nmoved this from Todo to In Progress in  Starfall — iPhone & iPad",
+      "dateTime": "2026-10-23T13:19:17.000Z",
+      "label": "on Oct 23, 2026"
+    },
+    {
+      "context": "lbeezr\nclosed this as completedin #294",
+      "dateTime": "2026-10-23T13:19:32.000Z",
+      "label": "on Oct 23, 2026"
+    },
+    {
+      "context": "github-project-automation\nmoved this from In Progress to Done in  Starfall — iPhone & iPad",
+      "dateTime": "2026-10-23T13:19:35.000Z",
+      "label": "on Oct 23, 2026"
+    }
+  ],
+  "timestampSource": "datetime attributes of rendered #issue-timeline elements, backed by visible actor/action text; no hidden API or networking",
+  "screenshot": {
+    "file": "2026-10-23__issue-220-auto-done-after-294__chrome.jpg",
+    "sha256": "09bb3d85f48f54ffd60cac83db48f670d33faecb5e0b1e14ca282996781144a7",
+    "bytes": 233656,
+    "format": "original CUA JPEG; no conversion or alteration",
+    "inspected": "Closed #220, merged #294 link, closure event, github-project-automation Todo→In Progress and In Progress→Done, and issue-side Project Status Done visible in the same frame"
+  },
+  "mutationsPerformed": [],
+  "limits": [
+    "Read-only postmerge observation; no manual Done, closure, membership change, workflow edit or trigger.",
+    "Same item identity bound to canonical URL and earlier preclosure capture/receipt.",
+    "Initial page shell/pane was stale until the one reload and hydration completed; no reconciliation action was needed.",
+    "This verifies the observed #220 transition; it does not establish universal future automation reliability."
+  ]
+}
