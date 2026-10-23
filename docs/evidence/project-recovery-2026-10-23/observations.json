@@ -1,0 +1,175 @@
+{
+  "observedUTC": "2026-10-23T13:12:19.320Z",
+  "source": "Authenticated Chrome UI through cua_repl; no HTTP/GraphQL/hidden browser state or credentials",
+  "projectURL": "https://github.com/users/lbeezr/projects/1",
+  "canonicalViewURL": "https://github.com/users/lbeezr/projects/1/views/1",
+  "result": "Current intake/view/automated-Done acceptance demonstrated retrospectively; issue220 awaits resolving docs PR and own-row postmerge verification",
+  "primaryCase": {
+    "issue": 238,
+    "projectItemId": "280445612",
+    "itemURL": "https://github.com/users/lbeezr/projects/1/views/1?pane=issue&itemId=280445612&issue=lbeezr%7Cstarfall%7C238",
+    "currentStatus": "Done",
+    "linkedMergedPR": 265,
+    "mergeCommit": "18252da8301af180fe7586f8ac989269febefa0b",
+    "mergeTarget": "main",
+    "mergeUTC": "2026-10-23T03:06:03Z",
+    "timeline": [
+      {
+        "context": "github-project-automation\nadded this to  Starfall \u2014 iPhone & iPad",
+        "dateTime": "2026-10-23T00:25:12.000Z",
+        "label": "on Oct 22, 2026"
+      },
+      {
+        "context": "github-project-automation\nmoved this to Todo in  Starfall \u2014 iPhone & iPad",
+        "dateTime": "2026-10-23T00:25:13.000Z",
+        "label": "on Oct 22, 2026"
+      },
+      {
+        "context": "github-project-automation\nmoved this from Todo to In Progress in  Starfall \u2014 iPhone & iPad",
+        "dateTime": "2026-10-23T03:05:23.000Z",
+        "label": "on Oct 22, 2026"
+      },
+      {
+        "context": "lbeezr\nclosed this as completedin #265",
+        "dateTime": "2026-10-23T03:06:04.000Z",
+        "label": "on Oct 22, 2026"
+      },
+      {
+        "context": "github-project-automation\nmoved this from In Progress to Done in  Starfall \u2014 iPhone & iPad",
+        "dateTime": "2026-10-23T03:06:06.000Z",
+        "label": "on Oct 22, 2026"
+      }
+    ],
+    "timestampsSource": "datetime attributes on rendered issue-timeline time elements; DOM-backed UI metadata, not an API response",
+    "prMergeUI": [
+      {
+        "context": "lbeezr\nmerged 1 commit into\nmain\nfrom\ncodex/world-map-goals",
+        "dateTime": "2026-10-23T03:06:03.000Z"
+      },
+      {
+        "context": "lbeezr merged commit 18252da into main ",
+        "dateTime": "2026-10-23T03:06:03Z"
+      }
+    ]
+  },
+  "newIntake": {
+    "issue": 278,
+    "projectItemId": "280936410",
+    "observedUTC": "2026-10-23T13:04:28.669Z",
+    "canonicalStatus": "Todo",
+    "issueState": "Open",
+    "itemURL": "https://github.com/users/lbeezr/projects/1/views/1?pane=issue&itemId=280936410&issue=lbeezr%7Cstarfall%7C278",
+    "timelineObserved": [
+      "github-project-automation added this to Starfall \u2014 iPhone & iPad",
+      "github-project-automation moved this to Todo"
+    ]
+  },
+  "supplementaryCases": [
+    {
+      "issue": 271,
+      "linkedMergedPR": 275,
+      "observedUTC": "2026-10-23T12:59:47.206Z",
+      "sourceURL": "https://github.com/lbeezr/starfall/issues/271",
+      "observed": "Closed/Merged275; canonical Project Status Done in issue metadata; timeline automation added\u2192Todo\u2192In Progress\u2192Done",
+      "limit": "Canonical card/item ID not extracted in this bounded pass"
+    },
+    {
+      "issue": 251,
+      "linkedMergedPR": 276,
+      "observedUTC": "2026-10-23T13:01:33.244Z",
+      "sourceURL": "https://github.com/lbeezr/starfall/issues/251",
+      "observed": "Closed/Merged276; canonical Project Status Done in issue metadata; timeline automation added\u2192Todo\u2192In Progress\u2192Done",
+      "limit": "Canonical card/item ID not extracted in this bounded pass"
+    }
+  ],
+  "previouslyMissingRows": {
+    "observedInUnfilteredCanonicalView": [
+      212,
+      213,
+      215,
+      217
+    ],
+    "statuses": {
+      "212": "Done",
+      "213": "Done",
+      "215": "Done",
+      "217": "In Progress"
+    },
+    "filter": "empty",
+    "grouping": "Status board"
+  },
+  "workflowInspection": {
+    "sourceURL": "https://github.com/users/lbeezr/projects/1/workflows",
+    "enabledCount": 7,
+    "autoAdd": {
+      "url": "https://github.com/users/lbeezr/projects/1/workflows/125469438",
+      "selectedRepositoryDisplayed": "starfall",
+      "filterDisplayed": "is:issue,pr is:issue is:open",
+      "enabled": true
+    },
+    "itemClosed": {
+      "url": "https://github.com/users/lbeezr/projects/1/workflows/125467505",
+      "sets": "Done"
+    },
+    "pullRequestMerged": {
+      "url": "https://github.com/users/lbeezr/projects/1/workflows/125467506",
+      "sets": "Done"
+    },
+    "mode": "Viewing mode; never clicked Edit or toggles"
+  },
+  "archive": {
+    "sourceURL": "https://github.com/users/lbeezr/projects/1/archive",
+    "observedUTC": "2026-10-23T13:12:16.691Z",
+    "visibleResult": "No archived items; There aren't any archived items"
+  },
+  "issue220BeforeMerge": {
+    "projectItemId": "280018905",
+    "observedUTC": "2026-10-23T13:09:50.044Z",
+    "issueState": "Open",
+    "projectStatus": "Todo",
+    "itemURL": "https://github.com/users/lbeezr/projects/1/views/1?pane=issue&itemId=280018905&issue=lbeezr%7Cstarfall%7C220",
+    "nextAction": "Root resolving default-main docs PR with Closes220; then observe completed issue and same280018905 Project row Done"
+  },
+  "nonMutations": [
+    "No issue close/reopen/comments",
+    "No membership/status/priority/workflow changes",
+    "Only temporary unsaved search filters; never clicked Save",
+    "No browser networking/credentials extraction",
+    "No repository changes outside authorized report folder"
+  ],
+  "limits": [
+    "Does not establish original discrepancy root cause or universal reliability",
+    "Does not claim every Project row was inventoried",
+    "Does not require future278merge;238 supplies actual same-identity retrospective cycle",
+    "No app/build/native/physical/VoiceOver acceptance follows from Project UI evidence"
+  ],
+  "captures": [
+    {
+      "file": "2026-10-23__issue-238-auto-done__chrome.jpg",
+      "capturedUTC": "2026-10-23T13:03:35.616Z",
+      "sha256": "f03765fe6b37303ac23cead6255e1a6593f95388e38b697a14ab60bc5e6f1b78",
+      "bytes": 206158,
+      "format": "Original browser JPEG; no conversion/cropping/resizing"
+    },
+    {
+      "file": "2026-10-23__issue-278-canonical-todo__chrome.jpg",
+      "capturedUTC": "2026-10-23T13:04:28.669Z",
+      "sha256": "b6fc655f7580f3f71b5a22d66d3275833ec0423ce49e368d8913b4aed59d3310",
+      "bytes": 79577,
+      "format": "Original browser JPEG; no conversion/cropping/resizing"
+    },
+    {
+      "file": "2026-10-23__issue-220-before-closure__chrome.jpg",
+      "capturedUTC": "2026-10-23T13:09:50.044Z",
+      "sha256": "ba8c611a074894110e21ca4b11f385f357c0d25b4edad1fd831ed60b10ef0404",
+      "bytes": 226901,
+      "format": "Original browser JPEG; no conversion/cropping/resizing"
+    }
+  ],
+  "documentationChecks": {
+    "jsonParsed": true,
+    "localLinksResolve": 3,
+    "captureFileHashesRecorded": 3,
+    "hygieneAndDiff": "root integration ownership"
+  }
+}
