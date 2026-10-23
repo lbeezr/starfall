@@ -18,6 +18,7 @@ final class SkyTutorialTests: XCTestCase {
             XCTAssertTrue(run.complete, chapter.rawValue)
             let expected: [SkyTutorial: (Int, Int, Int)] = [
                 .storySquare: (8,16,0), .storyRoom: (4,42,5), .fullBoardRefill: (18,49,1),
+                .fullBoardSurvivors: (26,49,3), .fullBoardImmediate: (26,49,3),
                 .match: (3,1,0), .grown: (3,1,0), .exchange: (0,9,0), .emptySpace: (0,3,0),
                 .trace: (5,1,0), .diagonal: (5,20,0), .gap: (5,0,0), .branch: (5,4,0),
                 .square: (4,2,0), .cross: (5,4,0), .opal: (3,1,0), .relay: (8,0,0),

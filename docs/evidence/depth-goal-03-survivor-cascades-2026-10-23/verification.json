@@ -1,0 +1,211 @@
+{
+  "source": "43913bf994fd26371e1407bae7191e5155850370",
+  "bundleLabel": "dev.local",
+  "environment": {
+    "xcode": "27.1 (27A9275)",
+    "runtime": "iOS27.0 (24A434)",
+    "phone": "A84C81F5-AE41-496A-97AE-E17C63E18D29 iPhone17e",
+    "tablet": "EDE6B5F3-53C9-4703-B3D8-E654BEFA22A0 iPad mini A17Pro"
+  },
+  "rawRoot": "/private/tmp/starfall-depth-03-20261023",
+  "checks": {
+    "coreBeforeSilver": {
+      "passed": 287,
+      "failed": 0,
+      "skipped": 0,
+      "log": "core.log"
+    },
+    "coreIntegrated": {
+      "passed": 295,
+      "failed": 0,
+      "skipped": 0,
+      "log": "core-integrated.log"
+    },
+    "hostedBeforeSilver": {
+      "passed": 115,
+      "failed": 0,
+      "skipped": 0,
+      "log": "hosted.log"
+    },
+    "hostedIntegrated": {
+      "passed": 149,
+      "failed": 0,
+      "skipped": 0,
+      "log": "hosted-integrated.log"
+    },
+    "nativePhone": {
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "log": "phone.log",
+      "source": "ffdf28ee + captureInputs; directcomparison+generalTutorial\u2192Match+exactretainedround"
+    },
+    "nativeTablet": {
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "log": "tablet.log",
+      "source": "samecaptureInputs; AX3XLCalm, bothchoices, Retry/background/exactround"
+    },
+    "buildDebug": "pass build-integrated.log",
+    "buildRelease": "pass release-integrated.log",
+    "membership": "plutil and native_test_plan dev pass",
+    "hygiene": "pass ci-hygiene.py / git diff --check"
+  },
+  "limitations": [
+    "Human learning/enjoyment not observed",
+    "Actual VoiceOver not run",
+    "Physical-device performance and minimum-iOS17 runtime not checked",
+    "No phone installation requested/performed"
+  ],
+  "activationSource": "ffdf28ee59eb08cf38754ae96beb6ceca58e8c62",
+  "captureSource": "ffdf28ee59eb08cf38754ae96beb6ceca58e8c62",
+  "captureSnapshot": "60e369301a55",
+  "captureInputs": {
+    "App/DialogueScripts/observatory-dialogue.json": "e26311422d8e17c17e7f0fc7c5cc4828c3204d295347cba25a0f201317ceae46",
+    "App/FallingSkyView.swift": "319613e2bdeb314a98a24b1055dbf030bf71e1509b6de03ae37da51694b569c8",
+    "App/README.md": "03f1082b4a11b0a70ebffe012b8e6a941b6524a7bd531b21635099637fdbd3e5",
+    "App/SkyCopy.swift": "d8d92941c32b2b6d0df2ff5e0d00b490a8a1600ac13951e3928f673baaeed554",
+    "App/SkyFullBoardChoicesView.swift": "d9cc1f3ff7bb1d022348042eee5ce60c045596e62ab3e17f855e741fe219af10",
+    "App/SkyTutorialView.swift": "c2fd4fc3f080c0575ef636b23f76880aefc2227c9b02bd27927bb8f5c5a5b992",
+    "AppTests/SkyTechniqueStoreTests.swift": "c7b91de900e17df02ba548d59cf97039396e45d9b1eaed10d89ceed2e255b918",
+    "AppTests/SkyTutorialPresentationTests.swift": "f595699e1c9a10f1bee517601a612ef16c0f952ea948bcf058a2713bd86f46b7",
+    "Sources/StarfallCore/README.md": "c9491cb22dcfebd4a0321cc22bbeb8f50ee5ef6e965ae9a0c390c410d99887e7",
+    "Sources/StarfallCore/SkyTutorial.swift": "0e0bd0f1472425253e57cd8db0c4f0288cff918ab46b0a557d5bf9b700bf4f7f",
+    "Starfall.xcodeproj/project.pbxproj": "7d10e80b572da5e273420cbb434f6d64546b261f8b6f94f45a0aeb7bf5b503ee",
+    "Tests/StarfallCoreTests/SkyTutorialTests.swift": "468751b46d9a88751f3c7ec3c39cf19ccaeb742b923734aedb47bac90927c3fa",
+    "AppTests/FullBoardCascadePracticePresentationTests.swift": "a7b25e58c55dd656c482c0906f28068d1b0fa600f230550b46498ca0640c007b",
+    "Tests/StarfallCoreTests/FullBoardCascadePracticeTests.swift": "74b9236411ccc3629de100928477ad0ad0ad3cc907bf600dbfe7e48c8fbcd739",
+    "UITests/FullBoardCascadePracticeInteractionTests.swift": "cce33152be41ec131a4c32dc9d8ff814e6237948ebee349496fbd5d04a970c79"
+  },
+  "integratedMain": "a5e352679770b594809ceec9ac34647860d30ef2",
+  "buildAffectingDirtyInputs": {},
+  "integrationParity": "Silver-only StoryChallenge branches and restoration/copy coverage integrated after captures. Comparison route, its ninecopyentries, lessonconstructor/actions and Lantern definition/phase/scoring branches are unchanged. Final combined Core/hosted/Debug/Release pass separately; captures are not relabeled as that newer source.",
+  "commands": {
+    "core": "env CLANG_MODULE_CACHE_PATH=/private/tmp/starfall-depth02-clang SWIFTPM_MODULECACHE_OVERRIDE=/private/tmp/starfall-depth02-module swift test --disable-sandbox --scratch-path /private/tmp/starfall-depth02-core",
+    "nativeBase": "python3 scripts/simulator-command.py --receipt /private/tmp/starfall-depth-03-20261023/stages.jsonl STAGE 600 xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination platform=iOS Simulator,id=DEVICE -derivedDataPath /private/tmp/starfall-depth-03-20261023/DerivedData CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES",
+    "buildDebug": "nativeBase + build-for-testing",
+    "buildRelease": "Release, generic/platform=iOS Simulator, ReleaseData + build",
+    "hostedIntegrated": "nativeBase phoneA84 + -parallel-testing-enabled NO -collect-test-diagnostics never test-without-building; only FullBoardCascadePracticePresentationTests,SkyModeDiscoveryPresentationTests,SkyTechniqueStoreTests,SkyTutorialPresentationTests,ModePracticeTests,SkyDialogueTests,FullBoardChoicePresentationTests,SkyFlowStateTests,SkySaveArchiveTests",
+    "phone": "nativeBase A84 + -parallel-testing-enabled NO -collect-test-diagnostics never -only-testing:StarfallUITests/FullBoardCascadePracticeInteractionTests/testNormalMotionComparisonShowsSurvivorsAndReturnsTheExactRound test-without-building",
+    "tablet": "nativeBase EDE6 + -parallel-testing-enabled NO -collect-test-diagnostics never -only-testing:StarfallUITests/FullBoardCascadePracticeInteractionTests/testLargestQuietComparisonRetainsBothChoicesAndBackgroundReturn test-without-building"
+  },
+  "initialFailures": [
+    {
+      "log": "/private/tmp/starfall-cascade-practice-tests.log",
+      "kind": "new test compile",
+      "cause": "Two missing tryannotations; corrected, focused20pass and full287/295pass. No assertion weakening."
+    }
+  ],
+  "reviewCorrections": [
+    "Scope directcomparison Finish to endingAfter, preserve general allCases navigation into Match. Hosted/native regressions added.",
+    "Wait for cell enabled readiness before input, terminate owned app in teardown.",
+    "Both branches spend eightstars bycount but DIFFERENT identities; hosted assertscount8 and differentIDs."
+  ],
+  "stages": [
+    {
+      "stage": "build-release",
+      "startedUTC": "2026-10-23T16:55:19.761289+00:00",
+      "elapsedSeconds": 45.262,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "build-debug",
+      "startedUTC": "2026-10-23T16:55:15.326582+00:00",
+      "elapsedSeconds": 75.552,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "build-scoped-navigation",
+      "startedUTC": "2026-10-23T17:02:36.126089+00:00",
+      "elapsedSeconds": 9.331,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "release-scoped-navigation",
+      "startedUTC": "2026-10-23T17:02:40.008503+00:00",
+      "elapsedSeconds": 6.916,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "build-native-regression",
+      "startedUTC": "2026-10-23T17:03:51.409703+00:00",
+      "elapsedSeconds": 2.606,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "hosted",
+      "startedUTC": "2026-10-23T17:04:22.720632+00:00",
+      "elapsedSeconds": 43.651,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "phone",
+      "startedUTC": "2026-10-23T17:04:18.714205+00:00",
+      "elapsedSeconds": 171.673,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "tablet",
+      "startedUTC": "2026-10-23T17:05:36.867099+00:00",
+      "elapsedSeconds": 142.014,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "build-integrated",
+      "startedUTC": "2026-10-23T17:07:51.817626+00:00",
+      "elapsedSeconds": 16.029,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "release-integrated",
+      "startedUTC": "2026-10-23T17:07:52.506664+00:00",
+      "elapsedSeconds": 19.82,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "export-phone",
+      "startedUTC": "2026-10-23T17:08:18.109353+00:00",
+      "elapsedSeconds": 0.185,
+      "limitSeconds": 120.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "export-tablet",
+      "startedUTC": "2026-10-23T17:09:52.135549+00:00",
+      "elapsedSeconds": 0.294,
+      "limitSeconds": 120.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "hosted-integrated",
+      "startedUTC": "2026-10-23T17:09:47.737828+00:00",
+      "elapsedSeconds": 29.025,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    }
+  ]
+}

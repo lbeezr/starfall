@@ -4,6 +4,7 @@ import Foundation
 /// contract; normal saves and journey completion never accept a tutorial session.
 public enum SkyTutorial: String, CaseIterable, Sendable, Identifiable {
     case storySquare, storyRoom, fullBoardRefill
+    case fullBoardSurvivors, fullBoardImmediate
     case match, grown, exchange, emptySpace, trace, diagonal, gap, branch
     case square, cross, opal, relay, trim, dropIn, bank, fork, doubleSetup
     case showers, storm, room, restoration
@@ -38,6 +39,11 @@ public enum SkyTutorial: String, CaseIterable, Sendable, Identifiable {
             for _ in 0..<4 { _ = sky.letStarsFall() }
             return sky
         case .fullBoardRefill: return FallingSky.fullBoardLantern()
+        case .fullBoardSurvivors, .fullBoardImmediate:
+            var sky = FallingSky.fullBoardLantern()
+            _ = sky.nudge(from: Cell(1,1), to: Cell(1,2))
+            _ = sky.nudge(from: Cell(0,1), to: Cell(0,2))
+            return sky
         case .square: return SkyLesson.square.game()
         case .cross, .branch: return SkyLesson.cross.game()
         case .opal: return SkyLesson.opal.game()
@@ -89,6 +95,8 @@ public enum SkyTutorial: String, CaseIterable, Sendable, Identifiable {
         case .storySquare: return [.swap(Cell(1,2), Cell(1,1))]
         case .storyRoom: return [.swap(Cell(0,1), Cell(0,2)), .shower]
         case .fullBoardRefill: return [.swap(Cell(1,1), Cell(1,2))]
+        case .fullBoardSurvivors: return [.swap(Cell(0,3), Cell(1,3))]
+        case .fullBoardImmediate: return [.swap(Cell(1,1), Cell(2,1))]
         case .match, .grown: return [.tap(Cell(0,0))]
         case .exchange: return [.swap(Cell(1,1), Cell(1,2)), .swap(Cell(1,2), Cell(1,1)),
                                .swap(Cell(1,1), Cell(2,1)), .swap(Cell(2,1), Cell(1,1))]

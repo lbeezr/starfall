@@ -4,6 +4,8 @@
 
 [Goal 2 visible choices](evidence/depth-goal-02-visible-choices-2026-10-23/README.md) adds optional Full Board **Find a move** advice from the current visible stars: distinct immediate patterns or a short arrangement before a clear, with optional worked swipes and no round changes.
 
+[Goal 3 survivor cascades](evidence/depth-goal-03-survivor-cascades-2026-10-23/README.md) adds **Compare clears** practice: preserve visible ingredients for a later line or spend more stars in one immediate clear. Both real-rule chapters preserve the saved round and world; learning and enjoyment remain for player observation.
+
 [Seed Moon’s grown-ingredient encounter](evidence/seed-ingredient-2026-10-23/README.md) develops the seven-place curriculum into an 11,000-point fork while retaining historical saves and ordinary earned progression.
 
 [Next encounter sequence](ROADMAP.md#next-make-each-location-a-different-puzzle) implements Kite's headroom choice (#278), Seed's grown ingredient (#279) and Silver's causal sequence (#280) as complete iPhone/iPad rounds, with retained historical rules and separate native evidence.

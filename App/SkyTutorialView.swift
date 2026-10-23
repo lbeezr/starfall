@@ -7,6 +7,8 @@ extension SkyTutorial {
         case .storySquare: SkyCopy.text(.practiceStorySquareTitle)
         case .storyRoom: SkyCopy.text(.practiceStoryRoomTitle)
         case .fullBoardRefill: SkyCopy.text(.practiceFullBoardRefillTitle)
+        case .fullBoardSurvivors: SkyCopy.text(.practiceFullBoardSurvivorsTitle)
+        case .fullBoardImmediate: SkyCopy.text(.practiceFullBoardImmediateTitle)
         case .match: SkyCopy.text(.practiceMatchTitle)
         case .grown: SkyCopy.text(.practiceGrownTitle)
         case .exchange: SkyCopy.text(.practiceExchangeTitle)
@@ -35,6 +37,8 @@ extension SkyTutorial {
         case .storySquare: SkyCopy.text(.practiceStorySquareDetail)
         case .storyRoom: SkyCopy.text(.practiceStoryRoomDetail)
         case .fullBoardRefill: SkyCopy.text(.practiceFullBoardRefillDetail)
+        case .fullBoardSurvivors: SkyCopy.text(.practiceFullBoardSurvivorsDetail)
+        case .fullBoardImmediate: SkyCopy.text(.practiceFullBoardImmediateDetail)
         case .match: SkyCopy.text(.practiceMatchDetail)
         case .grown: SkyCopy.text(.practiceGrownDetail)
         case .exchange: SkyCopy.text(.practiceExchangeDetail)
@@ -62,9 +66,12 @@ extension SkyTutorial {
         guard let index = Self.allCases.firstIndex(of: self), index + 1 < Self.allCases.count else { return nil }
         return Self.allCases[index + 1]
     }
+    func nextChapter(endingAfter terminal: Self?) -> Self? {
+        self == terminal ? nil : nextChapter
+    }
     var showsDetailInitially: Bool {
         switch self {
-        case .storySquare, .storyRoom, .fullBoardRefill: false
+        case .storySquare, .storyRoom, .fullBoardRefill, .fullBoardSurvivors, .fullBoardImmediate: false
         default: true
         }
     }
@@ -103,6 +110,8 @@ extension SkyTutorialRun {
             case .storySquare: .practiceStorySquareComplete
             case .storyRoom: .practiceStoryRoomComplete
             case .fullBoardRefill: .practiceFullBoardRefillComplete
+            case .fullBoardSurvivors: .practiceFullBoardSurvivorsComplete
+            case .fullBoardImmediate: .practiceFullBoardImmediateComplete
             default: .practiceComplete
             }
             return SkyCopy.text(key)
@@ -114,6 +123,8 @@ extension SkyTutorialRun {
             case .storyRoom:
                 return SkyCopy.text(step == 0 ? .practiceStoryRoomPrompt : .practiceStoryRoomAfterClear)
             case .fullBoardRefill: return SkyCopy.text(.practiceFullBoardRefillPrompt)
+            case .fullBoardSurvivors: return SkyCopy.text(.practiceFullBoardSurvivorsPrompt)
+            case .fullBoardImmediate: return SkyCopy.text(.practiceFullBoardImmediatePrompt)
             default: break
             }
         }
@@ -124,12 +135,15 @@ extension SkyTutorialRun {
 struct SkyTutorialView: View {
     let done: () -> Void
     let returnsAfterLesson: Bool
+    let endingAfter: SkyTutorial?
     @State private var chapter: SkyTutorial?
     @State private var lastOpenedChapter: SkyTutorial?
     @Environment(\.dynamicTypeSize) private var textSize
-    init(initial: SkyTutorial? = nil, returnsAfterLesson: Bool = false, done: @escaping () -> Void) {
+    init(initial: SkyTutorial? = nil, returnsAfterLesson: Bool = false,
+         endingAfter: SkyTutorial? = nil, done: @escaping () -> Void) {
         self.done = done
         self.returnsAfterLesson = returnsAfterLesson
+        self.endingAfter = endingAfter
         _chapter = State(initialValue: initial)
         _lastOpenedChapter = State(initialValue: initial)
     }
@@ -145,7 +159,7 @@ struct SkyTutorialView: View {
         .fullScreenCover(item: $chapter, onDismiss: {
             if returnsAfterLesson { done() }
         }) { lesson in
-            SkyTutorialPlayer(chapter: lesson) { lastChapter in
+            SkyTutorialPlayer(chapter: lesson, endingAfter: endingAfter) { lastChapter in
                 lastOpenedChapter = lastChapter
                 chapter = nil
             }
@@ -244,7 +258,7 @@ private extension SkyTutorial {
         case .trace, .diagonal, .gap, .branch, .square, .cross, .trim, .fork: .trace
         case .showers: .pause
         case .storm, .room: .freePlay
-        case .storySquare, .storyRoom, .fullBoardRefill, .restoration: .story
+        case .storySquare, .storyRoom, .fullBoardRefill, .fullBoardSurvivors, .fullBoardImmediate, .restoration: .story
         default: .tutorial
         }
     }
@@ -252,14 +266,15 @@ private extension SkyTutorial {
 
 private struct SkyTutorialPlayer: View {
     let chapter: SkyTutorial
+    let endingAfter: SkyTutorial?
     let exit: (SkyTutorial) -> Void
     @State private var store: FallingSkyStore
-    init(chapter: SkyTutorial, exit: @escaping (SkyTutorial) -> Void) {
-        self.chapter = chapter; self.exit = exit
+    init(chapter: SkyTutorial, endingAfter: SkyTutorial? = nil, exit: @escaping (SkyTutorial) -> Void) {
+        self.chapter = chapter; self.endingAfter = endingAfter; self.exit = exit
         _store = State(initialValue: FallingSkyStore(arguments: [], tutorial: chapter))
     }
     var body: some View {
-        FallingSkyView(store: store, flow: SkyFlowState(practice: chapter), tutorialExit: {
+        FallingSkyView(store: store, flow: SkyFlowState(practice: chapter), tutorialEndingAfter: endingAfter, tutorialExit: {
             exit(store.tutorial?.chapter ?? chapter)
         })
     }
@@ -268,13 +283,15 @@ private struct SkyTutorialPlayer: View {
 struct SkyTutorialGuide: View {
     let run: SkyTutorialRun
     let constrained: Bool
+    let endingAfter: SkyTutorial?
     let retry: () -> Void
     let next: (SkyTutorial) -> Void
     let exit: () -> Void
     @State private var showDetail: Bool
-    init(run: SkyTutorialRun, constrained: Bool, retry: @escaping () -> Void,
+    init(run: SkyTutorialRun, constrained: Bool, endingAfter: SkyTutorial? = nil, retry: @escaping () -> Void,
          next: @escaping (SkyTutorial) -> Void, exit: @escaping () -> Void) {
         self.run = run; self.constrained = constrained
+        self.endingAfter = endingAfter
         self.retry = retry; self.next = next; self.exit = exit
         // Seed this mounted chapter's local disclosure; later chapters reset below.
         _showDetail = State(initialValue: run.chapter.showsDetailInitially)
@@ -328,7 +345,7 @@ struct SkyTutorialGuide: View {
         guideAction(showDetail ? SkyCopy.text(.practiceLess) : SkyCopy.text(.practiceHint), glyph: .help, id: "tutorial.hint") {
             showDetail.toggle()
         }
-        if let chapter = run.chapter.nextChapter {
+        if let chapter = run.chapter.nextChapter(endingAfter: endingAfter) {
             guideAction(run.complete ? SkyCopy.text(.practiceNext) : SkyCopy.text(.practiceSkip), glyph: .next, id: "tutorial.next") {
                 next(chapter)
             }

@@ -56,6 +56,14 @@ struct SkyFullBoardChoicesView: View {
     var body: some View {
         SkyMenuSurface(title: SkyCopy.text(.fullBoardChoicesTitle), glyph: .help, done: done,
                        back: true, footerTitle: SkyCopy.text(.actionReturn)) {
+            NavigationLink {
+                SkyTutorialView(initial: .fullBoardSurvivors, returnsAfterLesson: true,
+                                endingAfter: .fullBoardImmediate, done: done)
+            } label: {
+                SkyMenuRow(SkyCopy.text(.fullBoardCompareClears), glyph: .tutorial, disclosure: true)
+            }
+            .buttonStyle(StarfallButtonStyle(role: .quiet, expands: true))
+            .accessibilityIdentifier("fullBoard.choices.practice")
             Text(SkyCopy.text(.fullBoardChoicesExplanation))
                 .fixedSize(horizontal: false, vertical: true)
                 .accessibilityIdentifier("fullBoard.choices.explanation")
