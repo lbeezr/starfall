@@ -1,0 +1,35 @@
+{
+  "status": "Installed and verified by canonical updater",
+  "timestampUTC": "2026-10-23T00:47:16.150830+00:00",
+  "command": "python3 scripts/device-update.py run",
+  "pullRequest": "https://github.com/lbeezr/starfall/pull/241",
+  "publishedHead": "8ea22c4d64b85a929a682e6d3ede991813bf65f4",
+  "source": "cef551ac9db3ca9e037d77312e3d52623c443623",
+  "buildID": "dev.38fb093b7f",
+  "bundle": "com.starfall.prototype",
+  "bundleVersion": "1",
+  "verifiedTree": "7f242b58f07583b7ad1fba6e44cb181226bd1a6a",
+  "equivalentLocalPublicationCommit": "9c8249e29f366791a2b600264d8a5cea1249c26b",
+  "cleanExportCoreTests": 236,
+  "cleanExportCoreFailures": 0,
+  "validation": {
+    "coreTests": "passed",
+    "signature": "verified",
+    "mainCIAtInstall": "pending"
+  },
+  "device": "Original paired iPhone 16 Pro Max",
+  "os": "iOS 26.6.2 (23G90)",
+  "transport": "paired localNetwork; connected tunnel",
+  "canonicalInstalledReceiptSHA256": "6954367b2991162ef33032e5520b9a27b5ea2e772d27693569b3b55d7f1c09ab",
+  "deviceInstallResponseSHA256": "154b93e5b29cf609219374a0b1eb6af2af24ad1634a2fd1b250eea77dcaee219",
+  "cleanExportCoreLogSHA256": "c6cc73637317f916eb6e7902cde15a6a96f9c88d9dd91aefadb1600cc0ca13ea",
+  "phoneBuildLogSHA256": "13dbe3ace613b9738d44387593e34b87b853b17e3ed7f9d783c383e00fa9089f",
+  "notes": [
+    "Canonical updater archived current main, passed all 236 Core tests and verified signature plus the OS-owned installed application identity.",
+    "The published tree exactly matches the verified local tree; all 28 changed build/test file hashes and three retained captures match their manifests.",
+    "No fixture launch, reset or automatic launch was performed. Existing data remains in place.",
+    "Start an explicit new Lantern Landing or Ribbon Crossing visit for four-star lines. Continue and same-round Replay retain their saved rules.",
+    "Physical enjoyment and actual VoiceOver remain unmeasured; simulator interaction and installation evidence are separate.",
+    "Documentation-only receipt follow-up does not change the runtime fingerprint."
+  ]
+}

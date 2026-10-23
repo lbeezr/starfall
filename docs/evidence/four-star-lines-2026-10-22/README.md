@@ -1,6 +1,6 @@
 # Four-star straight lines in Lantern and Ribbon
 
-**Status:** Development subset verified; canonical phone installation pending · **Owner:** Current implementer · **Date:** October 22, 2026
+**Status:** Development subset and canonical phone installation verified · **Owner:** Current implementer · **Date:** October 22, 2026
 
 The player asks to try four-star lines on the original phone while keeping the other mechanics fixed. New Lantern Landing and Ribbon Crossing visits select authored revision 4. Continue and same-round Replay retain their saved revision, including revision 3's seven-star lines.
 
@@ -32,7 +32,7 @@ The [verification record](verification.json) binds the changed build/test files 
 | Builds/membership | Debug test products and Release compile; no new App/test/resource membership. New Core tests are SwiftPM-discovered. |
 | Source/guard checks | Clean-export runtime parity, hygiene, diff and local file links pass; final evidence links will be rechecked. |
 | Actual VoiceOver / physical feel | Deferred to RC / unmeasured; this is the player's development trial. |
-| Phone installation | Pending canonical updater verification after merge. |
+| Phone installation | [Canonical receipt](delivery.json) verifies `dev.38fb093b7f` from main `cef551ac` on the original paired iPhone over local Wi-Fi. |
 
 The first hosted run passed 187 and failed one catalogue authoring test because its sample values omitted the new `lines` placeholder. Its sample map and the Studio preview default are corrected; strict missing/unused assertions remain. The full affected 188-test subset then passes.
 
@@ -47,3 +47,9 @@ Current Core witnesses win Lantern at 151,000 after 22 showers/75 exchanges and 
 | <img src="dev-ea2d020e__four-line-before__iphone-17e__normal-motion.png" width="220" alt="Four matching Violet stars separated by one empty position, with current four-star instructions and a 15,000-point score"> | <img src="dev-ea2d020e__four-line-clear__iphone-17e__normal-motion.png" width="220" alt="The four Violet stars have cleared and the score is 20,000, with unchanged survivor stars and controls"> | <img src="dev-ea2d020e__ribbon-entry__ipad-pro11m5__largest-text.png" width="220" alt="Complete four-star-line instructions at largest text, with a fully visible Begin control"> |
 
 Debug native stills: source `ea2d020e`, runtime-input fingerprint `dev.38fb093b7f`, simulator label `dev.local`; iPhone 17e and iPad Pro 11-inch (M5), iOS 27.0. [Exact originals and context](captures.json). Assertions separately verify actual swaps, the 5,000-point award and restore; stills do not establish motion quality or physical feel.
+
+## Publication and phone delivery
+
+[PR #241](https://github.com/lbeezr/starfall/pull/241) is merged. The connected GitHub publisher produced exactly the verified local tree; all 28 changed build/test hashes and three capture hashes match. The [canonical receipt](delivery.json) verifies the signed normal app installed from main `cef551ac` on the original iPhone 16 Pro Max, iOS 26.6.2, over paired local Wi-Fi. The updater reran all 236 Core tests and verified OS installation identity without launching the app or resetting data. Main CI was pending at installation; the required local Core/signature gates passed.
+
+Start a **new Lantern Landing or Ribbon Crossing visit** for the four-star rule. Continue and same-round Replay preserve the saved rule. Physical feel, enjoyment and actual VoiceOver remain separate from this installation evidence.
