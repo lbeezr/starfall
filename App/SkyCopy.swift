@@ -457,6 +457,7 @@ enum SkyCopy {
         case inputOneFinger = "input.oneFinger"
         case inputPatternsOneFinger = "input.patternsOneFinger"
         case inputSameStar = "input.sameStar"
+        case inputShortSwipe = "input.shortSwipe"
         case inputSwapEdge = "input.swapEdge"
         case inputBuffered = "input.buffered"
         case inputBufferExpired = "input.bufferExpired"

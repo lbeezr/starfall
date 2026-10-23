@@ -1463,6 +1463,7 @@
     "input.oneFinger": "Use one finger to trace or move a star.",
     "input.patternsOneFinger": "Use one finger to move a star.",
     "input.sameStar": "To tap, lift on the star you touched.",
+    "input.shortSwipe": "Swipe a little farther to move a star.",
     "input.swapEdge": "That direction leaves the sky. Swipe inward.",
     "input.buffered": "Move ready — finishing this motion.",
     "input.bufferExpired": "That move expired. Swipe or tap again.",

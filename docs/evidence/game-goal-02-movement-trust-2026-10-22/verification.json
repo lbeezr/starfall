@@ -1,0 +1,74 @@
+{
+  "source_inputs": "source-inputs.json",
+  "core": {
+    "passed": 236,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 18.836
+  },
+  "phone": {
+    "result": "Passed",
+    "totalTestCount": 88,
+    "passedTests": 88,
+    "failedTests": 0,
+    "skippedTests": 0,
+    "startTime": 1792719876.364,
+    "finishTime": 1792720005.797
+  },
+  "tablet": {
+    "result": "Passed",
+    "totalTestCount": 2,
+    "passedTests": 2,
+    "failedTests": 0,
+    "skippedTests": 0,
+    "startTime": 1792719876.374,
+    "finishTime": 1792719934.76
+  },
+  "hosted": 83,
+  "native_phone": 5,
+  "native_tablet": 2,
+  "debug": "passed",
+  "release": "passed",
+  "failures_preserved": {
+    "baseline_hosted": "1 failed method (16 parameter combinations), 3 passed; no skips",
+    "baseline_native": "1 failed new-message assertion; no skips",
+    "diagonal_baseline": "1 failed correction assertion; non-swappable sibling retained",
+    "candidate_attempt1": "82 hosted and3 native passed;2 new native methods failed wrong board-summary assertion",
+    "candidate_attempt2": "3 new native runs failed occupied-destination test assumption; tablet gravity-return sibling passed"
+  },
+  "captures": [
+    {
+      "path": "dev-0acb9d128e__story-short-swipe__iphone-17e__default-text.jpg",
+      "variant": "baseline main45ee2c2d, phone default",
+      "raw_sha256": "9855a315d7409e0af692e51471463101bddc158a37f9004f5ddab19862488ceb",
+      "sha256": "cba066e691844928cf7e3d8b6927a8b831253ec21225e12ef8e230b13144a7a6",
+      "bytes": 741766,
+      "conversion": "JPEG quality88; original pixel dimensions preserved",
+      "motion": "normal preference; paused via ordinary controls",
+      "os": "iOS27.0 (24A434) Simulator",
+      "displayed_build": "dev.local"
+    },
+    {
+      "path": "dev-3671aba5cf__story-short-swipe__iphone-17e__default-text.jpg",
+      "variant": "candidate phone default",
+      "raw_sha256": "47e1300746a3f1ee043a96d1227fc51e223371adecf4659e07e1868cd2098d5f",
+      "sha256": "34889e42a05977d46ed4e4c9a9ccb5b20759dbc8b87f07d2f0966fb75c1b3594",
+      "bytes": 721941,
+      "conversion": "JPEG quality88; original pixel dimensions preserved",
+      "motion": "normal preference; paused via ordinary controls",
+      "os": "iOS27.0 (24A434) Simulator",
+      "displayed_build": "dev.local"
+    },
+    {
+      "path": "dev-3671aba5cf__story-short-swipe__iphone-17e__ax3xl.jpg",
+      "variant": "candidate phone AX3XL",
+      "raw_sha256": "404319bfeec66c127744656748d1346112f606aa5165701d3474c34596d63226",
+      "sha256": "6ba14c65255f99d4f72b74f1bc32bb379768fc24250f900483ec1bb3b31b5f5e",
+      "bytes": 497086,
+      "conversion": "JPEG quality88; original pixel dimensions preserved",
+      "motion": "normal preference; paused via ordinary controls",
+      "os": "iOS27.0 (24A434) Simulator",
+      "displayed_build": "dev.local"
+    }
+  ]
+}
