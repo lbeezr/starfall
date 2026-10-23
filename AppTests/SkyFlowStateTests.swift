@@ -680,21 +680,59 @@ final class SkyFlowStateTests: XCTestCase {
 }
 
 extension SkyFlowStateTests {
-    func testHelpUsesCurrentOrPendingRulesWithoutCommittingEntry() {
+    func testHelpUsesCurrentOrPendingRulesWithoutCommittingEntry() throws {
         let retained = FallingSky(seed: 28).adoptingFeedingDusk()
         let fresh = FallingSky.freshSurvival(seed: 28)
         let challenge = FallingSky(challenge: .firstLight)
-        for game in [retained, fresh, challenge] {
+        var sources = [retained, fresh, challenge, FallingSky(challenge: .ribbonCrossing)]
+        for location in [StarfallChallenge.firstLight, .ribbonCrossing] {
+            for revision in 1...3 {
+                sources.append(FallingSky(definition: try XCTUnwrap(StoryChallengeDefinition(location, revision: revision))))
+            }
+            sources.append(FallingSky.freshChallenge(location))
+        }
+        for game in sources {
+            let saved = try SkySaveArchive.encode(game)
             for entry in [SkyEntryRequest?.none, .initial, .replay] {
-                XCTAssertEqual(SkyHelpContext.selected(game: game, entry: entry), SkyHelpContext(game: game))
+                let context = SkyHelpContext.selected(game: game, entry: entry)
+                XCTAssertEqual(context, SkyHelpContext(game: game))
+                XCTAssertEqual(context.manualClears, game.challenge == nil || game.challengeRevision < 3)
+                XCTAssertEqual(context.automaticRecipes, game.challenge != nil && game.challengeRevision >= 2)
+                XCTAssertEqual(context.automaticLineLength,
+                               game.challengeRevision == 3 ? 7 : game.challengeRevision == 4 ? 4 : nil)
             }
             let new = SkyHelpContext.selected(game: game, entry: .fresh)
             XCTAssertFalse(new.criticalMass); XCTAssertTrue(new.pocketedDusk); XCTAssertFalse(new.challenge); XCTAssertTrue(new.opalStorms)
-            let firstLight = SkyHelpContext.selected(game: game, entry: .firstLight)
-            XCTAssertTrue(firstLight.challenge); XCTAssertFalse(firstLight.criticalMass)
-            XCTAssertFalse(firstLight.openingCascade); XCTAssertFalse(firstLight.opalStorms)
-            XCTAssertTrue(firstLight.scaledPoints)
-            XCTAssertTrue(firstLight.restorationHelp?.contains(SkyCopy.score(150_000)) == true)
+            XCTAssertTrue(new.manualClears); XCTAssertFalse(new.automaticRecipes); XCTAssertNil(new.automaticLineLength)
+            for (request, location, target) in [
+                (SkyEntryRequest.firstLight, StarfallChallenge.firstLight, 150_000),
+                (.ribbonCrossing, .ribbonCrossing, 220_000)
+            ] {
+                var flow = SkyFlowState(arguments: [])
+                XCTAssertEqual(flow.handle(location.flowAction, hasSavedSky: true), .staged)
+                XCTAssertEqual(flow.entry, request)
+                let staged = flow
+                let selected = SkyHelpContext.selected(game: game, entry: flow.entry)
+                XCTAssertEqual(selected.restorationChallenge, location)
+                XCTAssertTrue(selected.challenge); XCTAssertFalse(selected.criticalMass)
+                XCTAssertFalse(selected.openingCascade); XCTAssertFalse(selected.opalStorms)
+                XCTAssertTrue(selected.scaledPoints)
+                XCTAssertFalse(selected.manualClears); XCTAssertTrue(selected.automaticRecipes)
+                XCTAssertEqual(selected.automaticLineLength, 4)
+                XCTAssertTrue(selected.restorationHelp?.contains(SkyCopy.score(target)) == true)
+                XCTAssertEqual(flow, staged, "Reading pending Help cannot commit or change the selected Entry")
+            }
+            var replay = SkyFlowState(arguments: [])
+            XCTAssertEqual(replay.handle(.resume, hasSavedSky: true), .continued)
+            let ticket = try XCTUnwrap(replay.handoff?.id)
+            replay.settleHandoff(ticket)
+            _ = replay.completeHandoff(ticket, ready: true, active: true, modal: false)
+            XCTAssertEqual(replay.handle(.replay, hasSavedSky: true), .staged)
+            XCTAssertEqual(replay.entry, .replay)
+            let stagedReplay = replay
+            XCTAssertEqual(SkyHelpContext.selected(game: game, entry: replay.entry), SkyHelpContext(game: game))
+            XCTAssertEqual(replay, stagedReplay, "Reading Replay Help retains the pending same-round choice")
+            XCTAssertEqual(try SkySaveArchive.encode(game), saved, "Help previews preserve the retained round")
         }
         XCTAssertFalse(SkyHelpContext(game: challenge).scaledPoints)
         XCTAssertTrue(SkyHelpContext(game: challenge).restorationHelp?.contains("18 starlight") == true)
@@ -703,10 +741,5 @@ extension SkyFlowStateTests {
         XCTAssertEqual(SkyHelpContext(game: challenge).lessons, [.square, .cross, .relay])
         let dusk = SkyHelpContext(game: retained)
         XCTAssertFalse(dusk.criticalMass); XCTAssertFalse(dusk.challenge); XCTAssertEqual(dusk.duskRule, .patientFeeding)
-        var flow = SkyFlowState(arguments: [])
-        _ = flow.handle(.firstLight, hasSavedSky: true)
-        let staged = flow
-        _ = SkyHelpContext.selected(game: retained, entry: flow.entry)
-        XCTAssertEqual(flow, staged)
     }
 }

@@ -1,0 +1,346 @@
+{
+  "base_main": "f65a9ecfce13d20441b113d8090e07c48741ad9c",
+  "baseline_source": "121106c1631b40d39418d8b6d89043c3056384d9",
+  "baseline_build": "dev.a591c1b9bb",
+  "source": "447320e7c053ef2f1d9dd8a74018c9b6fd89bb1f",
+  "build_identity": "dev.976d4838a7",
+  "dirty_build_inputs": [],
+  "sha256": {
+    "App/DialogueScripts/observatory-dialogue.json": "adb429c9ebc77d0c3e88fb993a92061c5b855beabfa9e0edda0902e6260b90f9",
+    "AppTests/SkyDialogueTests.swift": "8fe2925658c1cda943f8ff96e5fe7f0ff398da4276d7b7f2599e506ac4863910",
+    "AppTests/SkyFlowStateTests.swift": "8ded75f03d684595a4561c1befac57e7349e06697a02ac02120b7f3b051b1ac7",
+    "UITests/SkyFlowInteractionTests.swift": "5a32ae07ca29c37a340fb5ca3212d9d97378478abec61e77094383ae33883171"
+  },
+  "core": {
+    "passed": 242,
+    "failed": 0,
+    "skipped": 0,
+    "source": "fb5701db1772963520eeda1527a1d8bbc3c5fa72"
+  },
+  "builds": {
+    "Debug": "pass",
+    "Release": "pass",
+    "catalogue_hash_matches_both_bundles": true,
+    "project_resource_membership": "unchanged"
+  },
+  "results": {
+    "goal10-before": {
+      "result": "Failed",
+      "totalTestCount": 1,
+      "passedTests": 0,
+      "failedTests": 1,
+      "skippedTests": 0,
+      "startTime": 1792730149.577,
+      "finishTime": 1792730213.08,
+      "failures": [
+        {
+          "failureText": "XCTAssertEqual failed: (\"Tutorial practices Open Sky\u2019s tap and trace controls. These restoration rounds use automatic patterns and swaps.\") is not equal to (\"Tutorial starts with a current Story square using swaps and automatic patterns. Other chapters cover Open Sky\u2019s tap and trace controls and the original 18-light restoration exercise. Your saved sky and world stay unchanged.\")",
+          "targetName": "StarfallUITests",
+          "testIdentifier": 1,
+          "testIdentifierString": "SkyFlowInteractionTests/testHelpTutorialScopeAndReturnAcrossAllFourModes()",
+          "testIdentifierURL": "test://com.apple.xcode/Starfall/StarfallUITests/SkyFlowInteractionTests/testHelpTutorialScopeAndReturnAcrossAllFourModes",
+          "testName": "testHelpTutorialScopeAndReturnAcrossAllFourModes()"
+        }
+      ]
+    },
+    "goal10-hosted": {
+      "result": "Passed",
+      "totalTestCount": 73,
+      "passedTests": 73,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792730305.634,
+      "finishTime": 1792730309.416,
+      "failures": []
+    },
+    "goal10-tablet-largest": {
+      "result": "Passed",
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792730305.632,
+      "finishTime": 1792730394.963,
+      "failures": []
+    },
+    "goal10-four-modes": {
+      "result": "Passed",
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792730351.389,
+      "finishTime": 1792730580.05,
+      "failures": []
+    }
+  },
+  "native_selectors": [
+    "SkyFlowInteractionTests/testHelpTutorialScopeAndReturnAcrossAllFourModes",
+    "SkyFlowInteractionTests/testLargestTextHelpTutorialScopeAndReturn"
+  ],
+  "hosted_selectors": [
+    "SkyDialogueTests",
+    "SkyFlowStateTests",
+    "WorldJourneyTests"
+  ],
+  "inventory": {
+    "UI": 200,
+    "hosted": 441,
+    "full_matrix_pass": false
+  },
+  "captures": [
+    {
+      "label": "help-before",
+      "source": "121106c1631b40d39418d8b6d89043c3056384d9",
+      "build": "dev.a591c1b9bb",
+      "device": "iPhone 17e",
+      "text": "default",
+      "motion": "normal",
+      "os": "iOS 27.0 (24A434)",
+      "raw_sha256": "513862b8523cd27791e21264383e81a39ac85dceace39b2295fb80b6c3651b27",
+      "retained": "dev-a591c1b9bb__iphone-17e__help-before.jpg",
+      "retained_sha256": "60b76c715efb05a99835eb51a99069e0539252d2a4c8813de5815eff650bfb24",
+      "inspected": true
+    },
+    {
+      "label": "help-start-largest",
+      "source": "447320e7c053ef2f1d9dd8a74018c9b6fd89bb1f",
+      "build": "dev.976d4838a7",
+      "device": "iPad mini (A17 Pro)",
+      "text": "AX3XL",
+      "motion": "normal",
+      "os": "iOS 27.0 (24A434)",
+      "raw_sha256": "d4a80cdc2502b61ac3f89887352ede269eb597f25d6d7afbe1c4adfbe66422d0",
+      "retained": "dev-976d4838a7__ipad-mini-a17-pro__help-start-largest.jpg",
+      "retained_sha256": "54bb1439ce0ac3a1ceeafa531adfcbf88f1b83f4c3f90ecc68f1cc7025e1c7a8",
+      "inspected": true
+    },
+    {
+      "label": "help-end-largest",
+      "source": "447320e7c053ef2f1d9dd8a74018c9b6fd89bb1f",
+      "build": "dev.976d4838a7",
+      "device": "iPad mini (A17 Pro)",
+      "text": "AX3XL",
+      "motion": "normal",
+      "os": "iOS 27.0 (24A434)",
+      "raw_sha256": "12d86d3652211e2d71af0291cf730375ea8549d6e613b2179d41961f974fc812",
+      "retained": "dev-976d4838a7__ipad-mini-a17-pro__help-end-largest.jpg",
+      "retained_sha256": "e8fc7677cac15440b378f21ce92b1e6a75f019a9d7f68d0bf60a9edf06ca5c26",
+      "inspected": true
+    },
+    {
+      "label": "help-tutorial-return-historical-default",
+      "source": "447320e7c053ef2f1d9dd8a74018c9b6fd89bb1f",
+      "build": "dev.976d4838a7",
+      "device": "iPhone 17e",
+      "text": "default",
+      "motion": "normal",
+      "os": "iOS 27.0 (24A434)",
+      "raw_sha256": "704a93320f60400ac6c09459e16a3f2f126290bdaefee5de4d32501c9749ffa2",
+      "inspected": true,
+      "retained": "dev-976d4838a7__iphone-17e__help-tutorial-return-historical-default.jpg",
+      "retained_sha256": "aac108ea533ebe0c9c3ac8d42a3924b68eb805ebe08cb33618a1b2169e621eb1"
+    },
+    {
+      "label": "help-tutorial-return-open-sky-default",
+      "source": "447320e7c053ef2f1d9dd8a74018c9b6fd89bb1f",
+      "build": "dev.976d4838a7",
+      "device": "iPhone 17e",
+      "text": "default",
+      "motion": "normal",
+      "os": "iOS 27.0 (24A434)",
+      "raw_sha256": "28efe959ec36b811269305f4dc5b0d79b9a6d4f47bd29f9acd9572c545f7acdd",
+      "inspected": true
+    },
+    {
+      "label": "help-tutorial-return-ribbon-default",
+      "source": "447320e7c053ef2f1d9dd8a74018c9b6fd89bb1f",
+      "build": "dev.976d4838a7",
+      "device": "iPhone 17e",
+      "text": "default",
+      "motion": "normal",
+      "os": "iOS 27.0 (24A434)",
+      "raw_sha256": "3a591067efce0e897b52e87f38ff5ef704e34c412a775030cc06fa9f99fd73a6",
+      "inspected": true
+    },
+    {
+      "label": "help-tutorial-scope-ribbon-default",
+      "source": "447320e7c053ef2f1d9dd8a74018c9b6fd89bb1f",
+      "build": "dev.976d4838a7",
+      "device": "iPhone 17e",
+      "text": "default",
+      "motion": "normal",
+      "os": "iOS 27.0 (24A434)",
+      "raw_sha256": "faab32196c31332056f2b3fca5038fb081adb62875b2b07b1713920a84c6121c",
+      "inspected": true
+    },
+    {
+      "label": "help-tutorial-return-lantern-default",
+      "source": "447320e7c053ef2f1d9dd8a74018c9b6fd89bb1f",
+      "build": "dev.976d4838a7",
+      "device": "iPhone 17e",
+      "text": "default",
+      "motion": "normal",
+      "os": "iOS 27.0 (24A434)",
+      "raw_sha256": "4ff5c280abecb579f8b1c5c3b9dd2b0c3f4e54b7db24811a3b4649a15064bf7a",
+      "inspected": true
+    },
+    {
+      "label": "help-tutorial-scope-lantern-default",
+      "source": "447320e7c053ef2f1d9dd8a74018c9b6fd89bb1f",
+      "build": "dev.976d4838a7",
+      "device": "iPhone 17e",
+      "text": "default",
+      "motion": "normal",
+      "os": "iOS 27.0 (24A434)",
+      "raw_sha256": "e0e8472375fb443fd3ec2d65ae68923206e489535912189bc58b399e35500497",
+      "inspected": true,
+      "retained": "dev-976d4838a7__iphone-17e__help-tutorial-scope-lantern-default.jpg",
+      "retained_sha256": "038044367fe0611e29023388dc42c4881a13c5d406300abb262c5193ccb086b6"
+    },
+    {
+      "label": "help-tutorial-return-lantern-largest",
+      "source": "447320e7c053ef2f1d9dd8a74018c9b6fd89bb1f",
+      "build": "dev.976d4838a7",
+      "device": "iPad mini (A17 Pro)",
+      "text": "AX3XL",
+      "motion": "normal",
+      "os": "iOS 27.0 (24A434)",
+      "raw_sha256": "b52996cdcdcd4a5e38edcc699dd28414f3ae4c00526083ed579f3004a3212f8c",
+      "inspected": true
+    }
+  ],
+  "verified_prior_merges_and_completed_issues": [
+    {
+      "issue": 242,
+      "state": "closed",
+      "reason": "completed",
+      "url": "https://github.com/lbeezr/starfall/issues/242"
+    },
+    {
+      "issue": 243,
+      "state": "closed",
+      "reason": "completed",
+      "url": "https://github.com/lbeezr/starfall/issues/243"
+    },
+    {
+      "issue": 244,
+      "state": "closed",
+      "reason": "completed",
+      "url": "https://github.com/lbeezr/starfall/issues/244"
+    },
+    {
+      "issue": 245,
+      "state": "closed",
+      "reason": "completed",
+      "url": "https://github.com/lbeezr/starfall/issues/245"
+    },
+    {
+      "issue": 246,
+      "state": "closed",
+      "reason": "completed",
+      "url": "https://github.com/lbeezr/starfall/issues/246"
+    },
+    {
+      "issue": 247,
+      "state": "closed",
+      "reason": "completed",
+      "url": "https://github.com/lbeezr/starfall/issues/247"
+    },
+    {
+      "issue": 248,
+      "state": "closed",
+      "reason": "completed",
+      "url": "https://github.com/lbeezr/starfall/issues/248"
+    },
+    {
+      "issue": 249,
+      "state": "closed",
+      "reason": "completed",
+      "url": "https://github.com/lbeezr/starfall/issues/249"
+    },
+    {
+      "issue": 250,
+      "state": "closed",
+      "reason": "completed",
+      "url": "https://github.com/lbeezr/starfall/issues/250"
+    },
+    {
+      "pr": 260,
+      "merged": true,
+      "base": "main",
+      "merge": "45ee2c2dc8d2f071721c4e57b4feb0bf67191230",
+      "url": "https://github.com/lbeezr/starfall/pull/260"
+    },
+    {
+      "pr": 261,
+      "merged": true,
+      "base": "main",
+      "merge": "086df43899a8940d28358710d98e4a190b6dba4d",
+      "url": "https://github.com/lbeezr/starfall/pull/261"
+    },
+    {
+      "pr": 263,
+      "merged": true,
+      "base": "main",
+      "merge": "ae7724487341b7c5596ce3f57c5d220f99d3324e",
+      "url": "https://github.com/lbeezr/starfall/pull/263"
+    },
+    {
+      "pr": 264,
+      "merged": true,
+      "base": "main",
+      "merge": "daf00b93013345b28914393bf0e20c3788519ec7",
+      "url": "https://github.com/lbeezr/starfall/pull/264"
+    },
+    {
+      "pr": 267,
+      "merged": true,
+      "base": "main",
+      "merge": "27252f6677f323d80206fe7837b59772dfcf4d2e",
+      "url": "https://github.com/lbeezr/starfall/pull/267"
+    },
+    {
+      "pr": 269,
+      "merged": true,
+      "base": "main",
+      "merge": "fba8d11bb60caf0db8b5b8d0f2dfc0ebe5d26ad5",
+      "url": "https://github.com/lbeezr/starfall/pull/269"
+    },
+    {
+      "pr": 272,
+      "merged": true,
+      "base": "main",
+      "merge": "02a36e6748814d5fbf2ee29b5fb9b69b1a91c983",
+      "url": "https://github.com/lbeezr/starfall/pull/272"
+    },
+    {
+      "pr": 273,
+      "merged": true,
+      "base": "main",
+      "merge": "fc0867e51873d9efeb4003c4d0cfa4997f957365",
+      "url": "https://github.com/lbeezr/starfall/pull/273"
+    },
+    {
+      "pr": 274,
+      "merged": true,
+      "base": "main",
+      "merge": "f65a9ecfce13d20441b113d8090e07c48741ad9c",
+      "url": "https://github.com/lbeezr/starfall/pull/274"
+    }
+  ],
+  "publication_base_main": "e8e4bb231705f24369a4efc0e3c0058977a8ce62",
+  "integration_source": "fb5701db1772963520eeda1527a1d8bbc3c5fa72",
+  "initial_core": {
+    "passed": 241,
+    "failed": 0,
+    "skipped": 0,
+    "source": "447320e7c053ef2f1d9dd8a74018c9b6fd89bb1f"
+  },
+  "integration_note": "PR275 adds research, documentation and one Core regression; app/Core library/hosted/native/config/project inputs equal the tested447320e source. Two documentation conflicts resolved preserving both completed queue and incoming mastery-recovery facts.",
+  "local_checks": {
+    "hygiene": "pass",
+    "diff": "pass",
+    "local_links": 732
+  }
+}

@@ -39,6 +39,27 @@ final class SkyDialogueTests: XCTestCase {
     }
 
     @MainActor func testCascadeEntryReplayAndHelpFollowTheSelectedSavedRevision() throws {
+        let practiceHelp = SkyCopy.text(.helpPracticeModes)
+        XCTAssertEqual(practiceHelp, "Tutorial starts with a current Story square using swaps and automatic patterns. Other chapters cover Open Sky’s tap and trace controls and the original 18-light restoration exercise. Your saved sky and world stay unchanged.")
+        let introduction = SkyCopy.text(.practiceIntro)
+        XCTAssertTrue(introduction.hasPrefix("Start with a current Story square."))
+        for text in [practiceHelp, introduction] {
+            for scope in ["swaps and automatic patterns", "Open Sky’s tap and trace controls",
+                          "original 18-light restoration exercise", "Your saved sky and world stay unchanged."] {
+                XCTAssertTrue(text.contains(scope), scope)
+            }
+        }
+        let firstChapter = try XCTUnwrap(SkyTutorial.allCases.first)
+        XCTAssertEqual(firstChapter, .storySquare)
+        var practice = firstChapter.game()
+        XCTAssertEqual(practice, FallingSky.freshChallenge(.firstLight))
+        XCTAssertFalse(practice.supportsManualClears)
+        let firstAction = try XCTUnwrap(firstChapter.actions.first)
+        let practiceTurn = try XCTUnwrap(firstAction.perform(in: &practice))
+        XCTAssertNotNil(practiceTurn.exchange, "The advertised first lesson uses a swap")
+        XCTAssertFalse(practiceTurn.resolutionPhases.isEmpty, "The first swap pops its patterns automatically")
+        XCTAssertGreaterThan(practice.displayScore, 0)
+
         for challenge in [StarfallChallenge.firstLight, .ribbonCrossing] {
             let old = FallingSky(definition: try XCTUnwrap(StoryChallengeDefinition(challenge, revision: 1)))
             let cascade = FallingSky(definition: try XCTUnwrap(StoryChallengeDefinition(challenge, revision: 2)))

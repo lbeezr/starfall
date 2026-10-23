@@ -1,5 +1,7 @@
 # Documentation map
 
+[Ten-goal experience review](evidence/game-goal-10-coherent-game-2026-10-23/README.md) links each individual merge, the final four-mode Help/Tutorial correction, retain/revise decisions and remaining human/physical questions.
+
 [Exact Map/Places objectives](evidence/map-goals-2026-10-22/README.md) distinguish a new visit's current target from exact saved progress, with real navigation/save preservation and inspected default/XL phone plus largest-text tablet cards.
 
 [Rising Story-chain audio](evidence/chain-audio-2026-10-22/README.md) adds two reproducible original accents selected from committed phase depth, with bounded variation, native playback and preserved historical sounds. Physical listening remains unmeasured.
