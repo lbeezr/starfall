@@ -38,7 +38,11 @@ struct SkyDialogueBubble<Actions: View>: View {
 
     @ViewBuilder private func messageSurface(scrolling: Bool) -> some View {
         if embedded { messageContent(scrolling: scrolling) }
-        else { messageContent(scrolling: scrolling).starfallPanel(inset: StarfallTheme.Spacing.medium) }
+        else {
+            messageContent(scrolling: scrolling)
+                .padding(StarfallTheme.Spacing.medium)
+                .background { ObservatoryDialogueSurface() }
+        }
     }
 
     @ViewBuilder private func messageContent(scrolling: Bool) -> some View {
