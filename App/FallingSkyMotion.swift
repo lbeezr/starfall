@@ -331,21 +331,25 @@ enum StarfallMotion {
         node.position = .zero; node.zRotation = 0; node.setScale(1); node.warpGeometry = nil
     }
 
-    static func prepareFlight(_ node: SKSpriteNode, identity: StarCast.Identity, direction: CGFloat) {
+    static func prepareFlight(_ node: SKSpriteNode, identity: StarCast.Identity, direction: CGFloat,
+                              duration: TimeInterval = StarfallMotion.flightDuration) {
         reset(node)
         guard identity != .magnet && identity != .hole else { return }
-        LivingLight.prepareFlight(node, identity: identity, direction: direction)
+        LivingLight.prepareFlight(node, identity: identity, direction: direction, duration: duration)
         let profile = profile(for: identity), poses = poses(for: identity)
         let roll = profile.flightRoll * direction
+        // Opening rain has a shorter approach. Finish the same local bank and
+        // light response at its own landing, without delaying committed travel.
+        let timingScale = duration / StarfallMotion.flightDuration
         node.subdivisionLevels = 2
         node.zRotation = -roll
         node.warpGeometry = identity == .opal ? OpalMotion.falling : direction < 0 ? poses.left : poses.right
-        let shape: SKAction = identity == .opal ? .wait(forDuration: StarfallMotion.flightDuration)
-            : .sequence([.warp(to: direction < 0 ? poses.right : poses.left, duration: 0.28)!,
-                         .warp(to: round, duration: 0.20)!])
+        let shape: SKAction = identity == .opal ? .wait(forDuration: duration)
+            : .sequence([.warp(to: direction < 0 ? poses.right : poses.left, duration: 0.28 * timingScale)!,
+                         .warp(to: round, duration: 0.20 * timingScale)!])
         node.run(.sequence([.group([shape, .sequence([
-            .rotate(toAngle: roll * 0.35, duration: 0.29),
-            .rotate(toAngle: 0, duration: 0.19)
+            .rotate(toAngle: roll * 0.35, duration: 0.29 * timingScale),
+            .rotate(toAngle: 0, duration: 0.19 * timingScale)
         ])]), .run { [weak node] in if let node { restorePose(node) } }]), withKey: flightKey)
     }
 

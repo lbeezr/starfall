@@ -1,0 +1,207 @@
+{
+  "status": "Verified for scoped development adoption",
+  "activation_main": "495d4062fc4bc3644365fda2465c906f96a20f39",
+  "final_main_base": "0d77ee41801cce750600a0415c2f5eac1edccd46",
+  "tested_integrated_clean_commit": "365ca5e58917ec23db07081c064bced1e39b4f8f",
+  "build_affecting_dirty_inputs": {},
+  "final_build_plist_label": "dev.local",
+  "inputs": {
+    "App/FallingSkyScene.swift": "06125e491853d5320669920a638632e176526ad37c6cd371e9cabbb15d63607f",
+    "App/FallingSkyMotion.swift": "9eafa7f05484ff6a09c02c9252fa4d996f86c5db7af70f764bc341de3d842fe2",
+    "App/LivingLight.swift": "c7c275b68047462de0b8d6a9096211948589b6b10b0d2be5744439365b3097f2",
+    "AppTests/SkyPieceTests.swift": "8de1ed17614a724de9d1ccf97cd205c5c587f166403cb17a2218350dd5592b90"
+  },
+  "recorded_candidate": "882ac0d06010242ad09b9bc71804e9a5b461eb84",
+  "component_capture_commit": "8e10ce7a5210ad054c48d8eec14a8903924f441b",
+  "integrated_production_and_test_parity_with_component_source": true,
+  "baseline_compiled_source": "cf4f4007108c40bc41bb33b17f77d6331820af86; runtime-equivalent motion inputs at activation main495d4062",
+  "core_initial": {
+    "passed": 268,
+    "failed": 0,
+    "skipped": 0
+  },
+  "core_integrated": {
+    "passed": 272,
+    "failed": 0,
+    "skipped": 0
+  },
+  "debug_build_seconds": [
+    5.7,
+    3.0,
+    18.8
+  ],
+  "checks": {
+    "before-ribbon": {
+      "result": "Passed",
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "testFailures": []
+    },
+    "after-ribbon": {
+      "result": "Passed",
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "testFailures": []
+    },
+    "hosted": {
+      "result": "Passed",
+      "totalTestCount": 7,
+      "passedTests": 7,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "testFailures": []
+    },
+    "tablet-ax": {
+      "result": "Passed",
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "testFailures": []
+    },
+    "integrated-hosted": {
+      "result": "Passed",
+      "totalTestCount": 7,
+      "passedTests": 7,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "testFailures": []
+    },
+    "integrated-phone": {
+      "result": "Passed",
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "testFailures": []
+    }
+  },
+  "component_capture_check": {
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 14.0,
+    "case": "SkyPieceTests/testEveryFamilyHasFiniteNativeFlightLandingAndContactMotion"
+  },
+  "native_inventory": {
+    "UI": 211,
+    "hosted": 472,
+    "selected_only": true
+  },
+  "recording_receipts": {
+    "before": {
+      "testExit": 0,
+      "videoExit": 0,
+      "trigger": "Tap \"sky.begin\" Button",
+      "triggerElapsed": 44.272,
+      "recordingReadyElapsed": 45.135,
+      "elapsedSeconds": 122.756,
+      "movie": "/private/tmp/starfall-cohesion-20261023/goal06-before-ribbon.mp4",
+      "command": [
+        "xcodebuild",
+        "-testProductsPath",
+        "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c35297cacc07/test-products/build_sim_2026-10-23T15-54-51-255Z_pid51280_45ddd772.xctestproducts",
+        "-destination",
+        "platform=iOS Simulator,id=DB9604E1-D7A8-4C75-BA25-E29243AEC02D",
+        "-collect-test-diagnostics",
+        "never",
+        "-parallel-testing-enabled",
+        "NO",
+        "-only-testing:StarfallUITests/SkyFlowInteractionTests/testRibbonIdentityExplainsTempoAndSupportsDeliberateOpeningChoices",
+        "-resultBundlePath",
+        "/private/tmp/starfall-cohesion-20261023/goal06-before-ribbon.xcresult",
+        "test-without-building"
+      ]
+    },
+    "after": {
+      "testExit": 0,
+      "videoExit": 0,
+      "trigger": "Tap \"sky.begin\" Button",
+      "triggerElapsed": 48.822,
+      "recordingReadyElapsed": 49.133,
+      "elapsedSeconds": 100.761,
+      "movie": "/private/tmp/starfall-cohesion-20261023/goal06-after-ribbon.mp4",
+      "command": [
+        "xcodebuild",
+        "-testProductsPath",
+        "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c35297cacc07/test-products/build_sim_2026-10-23T16-19-12-184Z_pid51280_f0de0db7.xctestproducts",
+        "-destination",
+        "platform=iOS Simulator,id=DB9604E1-D7A8-4C75-BA25-E29243AEC02D",
+        "-collect-test-diagnostics",
+        "never",
+        "-parallel-testing-enabled",
+        "NO",
+        "-only-testing:StarfallUITests/SkyFlowInteractionTests/testRibbonIdentityExplainsTempoAndSupportsDeliberateOpeningChoices",
+        "-resultBundlePath",
+        "/private/tmp/starfall-cohesion-20261023/goal06-after-ribbon.xcresult",
+        "test-without-building"
+      ]
+    }
+  },
+  "stages": [
+    {
+      "stage": "goal06-hosted",
+      "startedUTC": "2026-10-23T16:19:53.268013+00:00",
+      "elapsedSeconds": 44.907,
+      "limitSeconds": 300.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "goal06-tablet-ax",
+      "startedUTC": "2026-10-23T16:24:11.230091+00:00",
+      "elapsedSeconds": 120.718,
+      "limitSeconds": 240.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "goal06-integrated-hosted",
+      "startedUTC": "2026-10-23T16:27:21.697733+00:00",
+      "elapsedSeconds": 36.824,
+      "limitSeconds": 240.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "goal06-integrated-phone",
+      "startedUTC": "2026-10-23T16:27:21.657191+00:00",
+      "elapsedSeconds": 84.853,
+      "limitSeconds": 240.0,
+      "exitCode": 0,
+      "error": null
+    }
+  ],
+  "commands": [
+    "swift test --scratch-path /private/tmp/starfall-factory-gameplay-20261022/CoreBuild --jobs 2",
+    "XcodeBuildMCP build_sim(buildForTesting:true)",
+    "XcodeBuildMCP test_sim(testProductsPath:PREPARED, -only-testing:StarfallAppTests/SkyPieceTests/testEveryFamilyHasFiniteNativeFlightLandingAndContactMotion)",
+    "scripts/simulator-command.py --receipt stages.jsonl LABEL BOUND xcodebuild -testProductsPath PREPARED -destination OWN -collect-test-diagnostics never -parallel-testing-enabled NO [exact selected cases from stages] -resultBundlePath UNIQUE test-without-building",
+    "level-design-kit.py --core-products CoreBuild/out/Products/Debug",
+    "python3 scripts/ci-hygiene.py",
+    "git diff --check"
+  ],
+  "environment": {
+    "toolchain": "Xcode27.1(27A9275), Swift6.4, macOS27.0.1",
+    "configuration": "Debug arm64",
+    "simulators": [
+      "iPhone17e DB9604E1-D7A8-4C75-BA25-E29243AEC02D",
+      "iPadmini A17Pro E9575758-60A8-45C0-B2AB-91B73C8A8FDC"
+    ],
+    "OS": "iOS27.0(24A434)"
+  },
+  "limits": {
+    "physical_device": false,
+    "actual_voiceover": false,
+    "minimum_OS": false,
+    "full_RC_matrix": false,
+    "continuous_smoothness": false,
+    "release_membership": "Not required for own existing-Swift timing-only diff; independent main routing has separate upstream acceptance",
+    "supplemental_chain_observer": "Rejected: observer attached after stale gesture marker; resulting SpringBoard clip excluded; full native sequence assertions pass"
+  },
+  "hygiene": "Pass after staging; links after docs commit"
+}
