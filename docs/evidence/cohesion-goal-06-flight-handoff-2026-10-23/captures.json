@@ -1,0 +1,55 @@
+[
+  {
+    "file": "dev-8e10ce7a__flight-boundary__native-host__mismatched-control.jpg",
+    "sha256": "573ea5c3d4a5abecdf74e8e0410f4aff60270f2c892edda8001b1c7ff83ae752",
+    "source": "8e10ce7a5210ad054c48d8eec14a8903924f441b",
+    "evidence": "Native SpriteKit component host,420x400pt; rendered by actual SKView, not full-app capture",
+    "sourcePNG": "/private/tmp/starfall-cohesion-20261023/goal06-final-component-attachments/A939F80A-B470-4ACA-95BE-57D995308E18.png",
+    "sourceSHA256": "b7043137f39da778fdcd5a3f32836c8d3ed2de5993180af5e90e99ad57b9a980",
+    "pixels": [
+      1260,
+      1200
+    ],
+    "processing": "JPEG only; native rendered dimensions retained"
+  },
+  {
+    "file": "dev-8e10ce7a__flight-boundary__native-host__short-settled.jpg",
+    "sha256": "a0db822cc00ffddcf53f9cfa8f0510909252b3b7635bfc7ff502632e09271c31",
+    "source": "8e10ce7a5210ad054c48d8eec14a8903924f441b",
+    "evidence": "Native SpriteKit component host,420x400pt; rendered by actual SKView, not full-app capture",
+    "sourcePNG": "/private/tmp/starfall-cohesion-20261023/goal06-final-component-attachments/35D4B925-A31A-4EA4-A9FD-9A5EF0CE9EF4.png",
+    "sourceSHA256": "77e10232acf6f7e92429c51f414511bc7a397130727f3e8b4a623e52d866931b",
+    "pixels": [
+      1260,
+      1200
+    ],
+    "processing": "JPEG only; native rendered dimensions retained"
+  },
+  {
+    "file": "dev-8e10ce7a__flight-boundary__native-host__ordinary-settled.jpg",
+    "sha256": "5487adf5b278d19000dea8260fa1a4aadb1cb7484977e6631b71acdfac4fb129",
+    "source": "8e10ce7a5210ad054c48d8eec14a8903924f441b",
+    "evidence": "Native SpriteKit component host,420x400pt; rendered by actual SKView, not full-app capture",
+    "sourcePNG": "/private/tmp/starfall-cohesion-20261023/goal06-final-component-attachments/859882FF-400C-4F5F-A24D-DB139F2D5ADC.png",
+    "sourceSHA256": "525866d4199c6b2ae2523194be59904f9be65d306839b816383ded99bd32f38b",
+    "pixels": [
+      1260,
+      1200
+    ],
+    "processing": "JPEG only; native rendered dimensions retained"
+  },
+  {
+    "file": "dev-cf4f4007__ribbon-opening__iphone-17e__before.mp4",
+    "sha256": "05cf00c5e6dee6183f16ebb4a68ee467481283bc7ec79b2492b3f1f3bd9a5f53",
+    "source": "cf4f4007108c40bc41bb33b17f77d6331820af86",
+    "evidence": "Actual normal-game native recording",
+    "processing": "AVFoundation960x540 preset, first3seconds, normal speed; original1170x2532 recording temporary"
+  },
+  {
+    "file": "dev-882ac0d0__ribbon-opening__iphone-17e__after.mp4",
+    "sha256": "813645933017fbc8f441818e3cbac5c0b4a0ecce3f6a37fbde0992d9bde23477",
+    "source": "882ac0d06010242ad09b9bc71804e9a5b461eb84",
+    "evidence": "Actual normal-game native recording",
+    "processing": "AVFoundation960x540 preset, first3seconds, normal speed; original1170x2532 recording temporary"
+  }
+]

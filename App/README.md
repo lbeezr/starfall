@@ -165,3 +165,5 @@ Trace readiness feedback validates the actual path, snapshot, generation and hel
 Replay entry receives only its pending choice; the result headline describes a blocked arrival while the committed snapshot owns the exact column and score. [Acceptance](../docs/evidence/ending-replay-2026-10-19/README.md).
 
 Seed Moon’s fifteen [connected-place paintings](../docs/evidence/cohesion-goal-05-seed-place-2026-10-23/README.md) retain the pearl, shell and five plant states. `RestorationArtwork.sourceSize(for:)` registers each exact generated raster; landscape 0 is1445×1088,50 is1446×1087 and25/75/100 are1447×1087. Board geometry and committed restoration ownership are unchanged.
+
+[Opening flight handoffs](../docs/evidence/cohesion-goal-06-flight-handoff-2026-10-23/README.md) pass the actual approach duration from `sendStar` through `SkyPieceMotion` and `LivingLight`. Rapid 0.34-second openings finish the same normalized body/light response before landing; default 0.48-second flights keep their existing timing. Travel, contact, landing and next-input budgets stay unchanged.
