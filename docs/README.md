@@ -1,5 +1,7 @@
 # Documentation map
 
+[Next encounter sequence](ROADMAP.md#next-make-each-location-a-different-puzzle) implements Kite's headroom choice (#278), Seed's grown ingredient (#279) and Silver's causal sequence (#280) as complete iPhone/iPad rounds, with retained historical rules and separate native evidence.
+
 [Ten-goal experience review](evidence/game-goal-10-coherent-game-2026-10-23/README.md) links each individual merge, the final four-mode Help/Tutorial correction, retain/revise decisions and remaining human/physical questions.
 
 [Exact Map/Places objectives](evidence/map-goals-2026-10-22/README.md) distinguish a new visit's current target from exact saved progress, with real navigation/save preservation and inspected default/XL phone plus largest-text tablet cards.
