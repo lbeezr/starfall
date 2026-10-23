@@ -2,6 +2,10 @@ import XCTest
 @testable import StarfallCore
 
 final class FullBoardLanternTests: XCTestCase {
+    private func revisionFive() -> FallingSky {
+        FallingSky(definition: StoryChallengeDefinition(.firstLight, revision: 5)!)
+    }
+
     private func restored(_ game: FallingSky) throws -> FallingSky {
         let copy = try JSONDecoder().decode(FallingSky.self, from: JSONEncoder().encode(game))
         XCTAssertEqual(copy, game)
@@ -27,7 +31,7 @@ final class FullBoardLanternTests: XCTestCase {
     }
 
     func testExplicitComparisonKeepsCurrentAndHistoricalSkyDefinitionsSeparate() throws {
-        let game = FallingSky.fullBoardLantern()
+        let game = revisionFive()
         XCTAssertTrue(game.usesFullBoardRefill)
         XCTAssertEqual(game.challenge, .firstLight)
         XCTAssertEqual(game.challengeRevision, 5)
@@ -42,9 +46,9 @@ final class FullBoardLanternTests: XCTestCase {
         XCTAssertFalse(game.hasCriticalMass)
         XCTAssertEqual(try restored(game).replay(), game)
         XCTAssertEqual(StoryChallengeDefinition.currentRevision, 4)
-        XCTAssertEqual(StoryChallengeDefinition.maximumSupportedRevision, 5)
+        XCTAssertEqual(StoryChallengeDefinition.maximumSupportedRevision, 6)
         XCTAssertNil(StoryChallengeDefinition(.ribbonCrossing, revision: 5))
-        XCTAssertNil(StoryChallengeDefinition(.firstLight, revision: 6))
+        XCTAssertNil(StoryChallengeDefinition(.firstLight, revision: 7))
         for challenge in StarfallChallenge.allCases {
             XCTAssertFalse(FallingSky.freshChallenge(challenge).usesFullBoardRefill)
             XCTAssertFalse(FallingSky(challenge: challenge).usesFullBoardRefill)
@@ -52,7 +56,7 @@ final class FullBoardLanternTests: XCTestCase {
     }
 
     func testComparisonIgnoresShowersManualClearsAndInvalidExchangesWithoutMutation() {
-        var game = FallingSky.fullBoardLantern()
+        var game = revisionFive()
         let original = game
         for _ in 0..<20 { XCTAssertNil(game.letStarsFall()) }
         XCTAssertNil(game.clear(Cell(0, 0)))
@@ -63,7 +67,7 @@ final class FullBoardLanternTests: XCTestCase {
     }
 
     func testSetupAndSameFamilyExchangesKeepAFullBoardAndCountOnlyCommittedMoves() throws {
-        var game = FallingSky.fullBoardLantern()
+        var game = revisionFive()
         let original = game
         let turn = try XCTUnwrap(game.nudge(from: Cell(0, 0), to: Cell(0, 1)))
         XCTAssertTrue(turn.resolutionPhases.isEmpty)
@@ -89,7 +93,7 @@ final class FullBoardLanternTests: XCTestCase {
     }
 
     func testOpeningSquareCommitsClearSettleRefillAndActualCascades() throws {
-        var game = FallingSky.fullBoardLantern()
+        var game = revisionFive()
         let opening = game
         var copy = try restored(game)
         let turn = try XCTUnwrap(game.nudge(from: Cell(1, 1), to: Cell(1, 2)))
@@ -138,7 +142,7 @@ final class FullBoardLanternTests: XCTestCase {
     }
 
     func testEveryOpeningExchangeRestoresItsExactRefillReceiptsAndStableBoard() throws {
-        let opening = FallingSky.fullBoardLantern()
+        let opening = revisionFive()
         for (from, to) in exchanges {
             var game = opening, copy = try restored(opening)
             let turn = try XCTUnwrap(game.nudge(from: from, to: to))
@@ -153,7 +157,7 @@ final class FullBoardLanternTests: XCTestCase {
     }
 
     func testBoundedStabilizationAwardsEverySurvivorPhaseAndPreservesTheSurvivors() throws {
-        let opening = FallingSky.fullBoardLantern()
+        let opening = revisionFive()
         var board = opening.board
         board.swapAt(8, 9)
         var random = SeededRandom(seed: opening.seed), nextID = 49
@@ -174,7 +178,7 @@ final class FullBoardLanternTests: XCTestCase {
     }
 
     func testStabilizationStillAwardsARecipeMadeEntirelyByTheLastOrdinaryRefill() throws {
-        var board = FallingSky.fullBoardLantern().board
+        var board = revisionFive().board
         board.swapAt(8, 9)
         // This supply's first four stars are rose, completing the top-left
         // square after the initiating square's survivors settle.
@@ -207,7 +211,7 @@ final class FullBoardLanternTests: XCTestCase {
     }
 
     func testComparisonSaveRejectsMissingForgedOrForeignSupplyAndRNG() throws {
-        var played = FallingSky.fullBoardLantern()
+        var played = revisionFive()
         _ = played.nudge(from: Cell(1, 1), to: Cell(1, 2))
         let mutations: [(inout [String: Any]) -> Void] = [
             { $0.removeValue(forKey: "fullBoardSupply") },
@@ -223,7 +227,7 @@ final class FullBoardLanternTests: XCTestCase {
             { $0["incoming"] = [["id": 0, "column": 0, "kind": 0]] },
             { $0["blockedColumn"] = 0 },
             { $0["savedChallengeRevision"] = 4 },
-            { $0["savedChallengeRevision"] = 6 },
+            { $0["savedChallengeRevision"] = 7 },
             { $0["challenge"] = "ribbonCrossing" },
             { fields in var board = fields["board"] as! [[String: Any]]; board[0]["grown"] = true; fields["board"] = board },
             { fields in var board = fields["board"] as! [[String: Any]]; board[0]["id"] = board[1]["id"]; fields["board"] = board },
@@ -241,7 +245,7 @@ final class FullBoardLanternTests: XCTestCase {
     }
 
     func testCorruptedScalarBoundsRejectBeforeShowerAndSupplyDerivation() throws {
-        for game in [FallingSky.fullBoardLantern(), FallingSky.freshChallenge(.firstLight),
+        for game in [revisionFive(), FallingSky.freshChallenge(.firstLight),
                      FallingSky(challenge: .firstLight), FallingSky.freshSurvival(seed: 42)] {
             for value in [Int.min, -1, Int.max] {
                 XCTAssertFalse(try changed(game) { $0["turns"] = value }.isValidSave)
@@ -253,7 +257,7 @@ final class FullBoardLanternTests: XCTestCase {
     }
 
     func testFixedTenMoveWinRestoresEveryRefillAndReplaysTheSameVariant() throws {
-        let opening = FallingSky.fullBoardLantern()
+        let opening = revisionFive()
         var game = opening
         let witness = [(8, 9), (3, 10), (5, 12), (33, 40), (24, 31),
                        (22, 23), (23, 24), (28, 29), (36, 37), (32, 39)]

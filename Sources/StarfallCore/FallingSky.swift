@@ -158,7 +158,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
     private var fullBoardSupply: FullBoardSupply?
     public var challengeRevision: Int { savedChallengeRevision ?? 0 }
     /// Explicit Lantern comparison; ordinary Story visits retain their saved sky rules.
-    public var usesFullBoardRefill: Bool { challenge == .firstLight && challengeRevision == 5 }
+    public var usesFullBoardRefill: Bool { storyDefinition?.usesFullBoardRefill ?? false }
     private var storyDefinition: StoryChallengeDefinition? {
         guard let challenge else { return nil }
         return StoryChallengeDefinition(challenge, revision: challengeRevision)
@@ -273,7 +273,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
     }
 
     public static func fullBoardLantern() -> FallingSky {
-        FallingSky(definition: StoryChallengeDefinition(.firstLight, revision: 5)!)
+        FallingSky(definition: StoryChallengeDefinition(.firstLight, revision: 6)!)
     }
 
     /// Reconstruct a specific shipped definition; normal new visits use `freshChallenge`.
@@ -283,7 +283,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
         savedChallengeActions = 1
         savedChallengeRevision = definition.revision
         storyScoreLedger = StoryScoreLedger(automaticRecipes: definition.revision >= 2)
-        fullBoardSupply = definition.revision == 5 ? FullBoardSupply() : nil
+        fullBoardSupply = definition.usesFullBoardRefill ? FullBoardSupply() : nil
         board = definition.initialBoard
         starsLanded = definition.initialLight
         random = SeededRandom(seed: definition.seed)
@@ -730,7 +730,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
     public var isValidSave: Bool {
         // Reject scalar corruption before deriving a shower number or doing
         // conservation arithmetic, for every retained and current ruleset.
-        guard board.count == 49, [nil, 1, 2, 3, 4, 5].contains(savedChallengeRevision),
+        guard board.count == 49, [nil, 1, 2, 3, 4, 5, 6].contains(savedChallengeRevision),
               turns >= 0, turns < Int.max / 6, score >= 0, starsLanded >= 0 else { return false }
         if let definition = storyDefinition {
             guard challengeActionVersion == 1, seed == definition.seed, balance == definition.balance,

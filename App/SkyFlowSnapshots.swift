@@ -3,14 +3,15 @@ import StarfallCore
 extension SkyEntryRequest {
     /// Explains the pending choice without reading or replacing the retained round.
     func introduction(challenge: StarfallChallenge?, replayingRevision: Int = 0, replayingTarget: Int? = nil) -> SkyDialogueLine {
-        if self == .fullBoardLantern || self == .replay && replayingRevision == 5 {
+        let retainedDefinition = challenge.flatMap { StoryChallengeDefinition($0, revision: replayingRevision) }
+        if self == .fullBoardLantern || self == .replay && retainedDefinition?.usesFullBoardRefill == true {
             return SkyDialogueLibrary.line(self == .replay ? "full-board-lantern.replay" : "full-board-lantern.entry",
                 values: ["target": SkyCopy.score(self == .replay ? replayingTarget ?? 0 : FallingSky.fullBoardLantern().displayTarget ?? 0)])
         }
         let mode = challenge?.dialoguePrefix ?? "observatory"
         let fresh = challenge.map { FallingSky.freshChallenge($0) }
         let selectedRules = self == .replay
-            ? challenge.flatMap { StoryChallengeDefinition($0, revision: replayingRevision) }.map { FallingSky(definition: $0) }
+            ? retainedDefinition.map { FallingSky(definition: $0) }
             : fresh
         let story = (selectedRules?.challengeRevision ?? 0) > 0
         let variant = story ? (selectedRules?.supportsManualClears == false ? ".patterns"

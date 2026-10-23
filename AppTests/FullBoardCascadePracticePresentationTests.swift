@@ -4,7 +4,7 @@ import StarfallCore
 
 final class FullBoardCascadePracticePresentationTests: XCTestCase {
     @MainActor func testComparisonStartsAtTheSameRealArrangementAndBothModesStayAvailable() throws {
-        var expected = FallingSky.fullBoardLantern()
+        var expected = FallingSky(definition: StoryChallengeDefinition(.firstLight, revision: 5)!)
         _ = try XCTUnwrap(expected.nudge(from: Cell(1, 1), to: Cell(1, 2)))
         _ = try XCTUnwrap(expected.nudge(from: Cell(0, 1), to: Cell(0, 2)))
         XCTAssertEqual(expected.displayScore, 66_000)

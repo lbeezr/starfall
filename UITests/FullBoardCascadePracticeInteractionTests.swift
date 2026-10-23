@@ -70,7 +70,7 @@ final class FullBoardCascadePracticeInteractionTests: XCTestCase {
     @MainActor private func compare(largest: Bool) throws {
         let app = launch(largest: largest)
         defer { app.terminate() }
-        drag(8, 9, score: 66_000, app)
+        drag(8, 9, score: 15_000, app)
         let retained = try cells(app)
         tap("experiment.settings", app)
         tap("fullBoard.choices.open", app)
@@ -107,7 +107,7 @@ final class FullBoardCascadePracticeInteractionTests: XCTestCase {
         tap("tutorial.finish", app)
         XCTAssertTrue(app.buttons["experiment.settings"].waitForExistence(timeout: 10))
         XCTAssertFalse(title.exists)
-        XCTAssertEqual(app.staticTexts["experiment.score"].label, "66,000 of 150,000 starlight collected")
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, "15,000 of 150,000 starlight collected")
         XCTAssertEqual(try cells(app), retained, "Disposable comparisons must not play or archive the retained round")
         if !largest {
             tap("experiment.settings", app)

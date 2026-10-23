@@ -178,8 +178,11 @@ final class FullBoardLanternTests: XCTestCase {
 
     @MainActor func testProductionFullBoardWinEarnsLanternRepairAndRestoreKeepsTheMode() throws {
         let defaults = defaults(), presenter = FallingSkyRecorder(), clock = ManualRainClock()
+        let opening = FallingSky(definition: try XCTUnwrap(StoryChallengeDefinition(.firstLight, revision: 5)))
+        try SkySaveArchive.save(opening, to: defaults)
         let store = FallingSkyStore(defaults: defaults, arguments: [], presenter: presenter, clock: clock)
-        store.startFullBoardLantern(); store.setSuspended(false)
+        store.setSuspended(false)
+        XCTAssertEqual(store.game, opening, "The original complete-round witness retains revision 5")
         XCTAssertFalse(store.journey.journey.completed.contains(.firstLight))
         let witness = [(8, 9), (3, 10), (5, 12), (33, 40), (24, 31),
                        (22, 23), (23, 24), (28, 29), (36, 37), (32, 39)]
@@ -200,7 +203,7 @@ final class FullBoardLanternTests: XCTestCase {
         XCTAssertTrue(restored.game.usesFullBoardRefill)
         XCTAssertTrue(restored.journey.journey.completed.contains(.firstLight))
         restored.beginEntry(.replay)
-        XCTAssertEqual(restored.game, FallingSky.fullBoardLantern())
+        XCTAssertEqual(restored.game, opening)
         XCTAssertTrue(restored.journey.journey.completed.contains(.firstLight))
         restored.beginEntry(.firstLight)
         XCTAssertEqual(restored.game, FallingSky.freshChallenge(.firstLight))
@@ -228,7 +231,7 @@ final class FullBoardLanternTests: XCTestCase {
     }
 
     @MainActor func testFullBoardRevisionCannotEnterHistoricalEnvelopesAndInvalidCurrentBlocksV13() throws {
-        let game = FallingSky.fullBoardLantern()
+        let game = FallingSky(definition: try XCTUnwrap(StoryChallengeDefinition(.firstLight, revision: 5)))
         let core = try JSONSerialization.jsonObject(with: JSONEncoder().encode(game))
         for (key, version) in [(SkySaveArchive.fourLineKey, 13), (SkySaveArchive.patternKey, 12),
                                (SkySaveArchive.cascadeKey, 11), (SkySaveArchive.storyKey, 10),

@@ -89,7 +89,7 @@ final class ModePracticeInteractionTests: XCTestCase {
         XCTAssertFalse(app.staticTexts["tutorial.detail"].exists)
         XCUIDevice.shared.press(.home); app.activate()
         if full {
-            drag(8, 9, app); score(66_000, app)
+            drag(8, 9, app); score(15_000, app)
             let blocked = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND enabled == false", "experiment.cell."))
             XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in blocked.count == 0 }, object: nil).wait(timeout: 10),
                           "Inspect the refill after every column has finished presenting")
@@ -120,7 +120,7 @@ final class ModePracticeInteractionTests: XCTestCase {
         defer { app.terminate() }
         app.worldVisitControl("firstLight").tap()
         tap("sky.lanternMode.fullBoard", app); tap("sky.begin", app)
-        score(0, app); drag(8, 9, app); score(66_000, app)
+        score(0, app); drag(8, 9, app); score(15_000, app)
         let saved = try cells(app), summary = app.otherElements["experiment.board"].value as? String
         tap("experiment.settings", app); tap("sky.worldMap", app)
         app.worldVisitControl("firstLight").tap()
@@ -129,7 +129,7 @@ final class ModePracticeInteractionTests: XCTestCase {
         tap("sky.lanternMode.fallingSky", app)
         try practice(false, app, prefix: "mode-practice-sky-default")
         tap("sky.home", app); tap("world.done", app)
-        score(66_000, app)
+        score(15_000, app)
         XCTAssertEqual(try cells(app), saved)
         XCTAssertEqual(app.otherElements["experiment.board"].value as? String, summary)
         XCTAssertFalse(app.buttons["experiment.next"].exists)

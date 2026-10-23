@@ -4,7 +4,7 @@ import StarfallCore
 
 final class FullBoardChoicePresentationTests: XCTestCase {
     @MainActor func testPostOpeningOptionsDescribeDifferentFirstPatternsAndTopDownSwipes() throws {
-        var game = FallingSky.fullBoardLantern()
+        var game = legacyFullBoard()
         try play(8, 9, in: &game)
         let choices = game.fullBoardChoices()
         XCTAssertEqual(choices.count, 2)
@@ -22,7 +22,7 @@ final class FullBoardChoicePresentationTests: XCTestCase {
     }
 
     @MainActor func testAwkwardBoardDescribesTheArrangementAndClearInOrder() throws {
-        var game = FallingSky.fullBoardLantern()
+        var game = legacyFullBoard()
         for move in [(8, 9), (3, 10), (5, 12), (33, 40), (24, 31)] {
             try play(move.0, move.1, in: &game)
         }
@@ -59,7 +59,7 @@ final class FullBoardChoicePresentationTests: XCTestCase {
     }
 
     @MainActor func testOnlyAnUnfinishedFullBoardSnapshotOffersTheRoute() throws {
-        var fullBoard = FallingSky.fullBoardLantern()
+        var fullBoard = legacyFullBoard()
         XCTAssertTrue(SkyFullBoardChoiceAnalysis.supports(fullBoard))
         XCTAssertFalse(SkyFullBoardChoiceAnalysis.supports(FallingSky.freshSurvival(seed: 42)))
         for challenge in StarfallChallenge.allCases {
@@ -74,7 +74,7 @@ final class FullBoardChoicePresentationTests: XCTestCase {
     }
 
     @MainActor func testDetachedAnalysisKeepsTheSnapshotAndCanceledRequestDoesNotPublishAnEmptyResult() async throws {
-        var game = FallingSky.fullBoardLantern()
+        var game = legacyFullBoard()
         try play(8, 9, in: &game)
         let before = game
         let result = await SkyFullBoardChoiceAnalysis.load(game)
@@ -85,6 +85,29 @@ final class FullBoardChoicePresentationTests: XCTestCase {
         let abandoned = await cancelled.value
         XCTAssertNil(abandoned, "A canceled page must discard advice rather than announce no short plan")
         XCTAssertEqual(game, before)
+    }
+
+    @MainActor func testCurrentFullBoardAdviceUsesTheActualFirstPatternWithoutChangingItsRound() throws {
+        let game = FallingSky.fullBoardLantern()
+        XCTAssertEqual(game.challengeRevision, 6)
+        XCTAssertTrue(SkyFullBoardChoiceAnalysis.supports(game))
+        let before = game
+        let choice = try XCTUnwrap(game.fullBoardChoices().first)
+        let presentation = SkyFullBoardChoicePresentation(choice: choice)
+        XCTAssertFalse(presentation.pattern.isEmpty)
+        XCTAssertEqual(presentation.instructions.count, choice.exchanges.count)
+        var played = game
+        var last: FallingSkyTurn?
+        for exchange in choice.exchanges {
+            last = try XCTUnwrap(played.nudge(from: exchange.from, to: exchange.to))
+        }
+        XCTAssertEqual(last?.resolutionPhases.first?.recipes, choice.recipes)
+        XCTAssertEqual(game, before)
+        XCTAssertTrue(played.isValidSave)
+    }
+
+    private func legacyFullBoard() -> FallingSky {
+        FallingSky(definition: StoryChallengeDefinition(.firstLight, revision: 5)!)
     }
 
     private func play(_ from: Int, _ to: Int, in game: inout FallingSky) throws {
