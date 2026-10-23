@@ -1,6 +1,6 @@
 # Design documents
 
-[Seven-place curriculum and Kite encounter](STORY_ENCOUNTER_CURRICULUM.md) specifies a source-witnessed headroom-versus-points choice, fixed supply and recovery under current automatic patterns. The hypothetical carrier is not a shipped Kite definition; native play, full-round tuning and old-save integration remain future acceptance.
+[Seven-place decision curriculum](STORY_ENCOUNTER_CURRICULUM.md) connects adopted Kite/Seed encounters and the adopted Silver sequencing slice with the remaining Frostfruit/Sunwheel questions. Its original Kite carrier remains authoring history; current native/save acceptance is recorded separately for each adopted encounter. Human comprehension, comfort and balance remain unmeasured.
 
 [Optional Story mastery contract](STORY_MASTERY_CONTRACT.md) defines current-pattern accomplishments, winning-action credit, versioned enrollment, best single-run records and interruption/rejection behavior. It is proposed semantics. [A real joint win](../evidence/story-mastery-feasibility-2026-10-22/README.md) and [later-chain win after declining the opening](../evidence/story-mastery-recovery-2026-10-23/README.md) are verified. Missed-first-grown recovery, remaining qualification/ledger cases, persistence and native presentation stay unproved.
 

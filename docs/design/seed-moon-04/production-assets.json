@@ -1,239 +1,537 @@
 {
-  "status": "All fifteen selected paintings are packaged and byte-verified; native milestone review complete.",
-  "provenance": "art-prompts.json",
-  "processing": "Selected generated PNGs copied byte-for-byte without pixel edits; each packaged painting matches its recorded generated source. Whole-image fitting belongs to the native renderer.",
+  "status": "Fifteen cohesion paintings packaged, byte-verified and adopted for scoped development; native final-source evidence recorded.",
+  "provenance": "cohesion-2026-10-23/art-prompts.json",
+  "cohesionProvenance": [
+    {
+      "record": "cohesion-2026-10-23/art-prompts.json",
+      "selectedAttemptIds": [
+        "phone000-a",
+        "phone025-b",
+        "phone050-a",
+        "phone075-a",
+        "phone100-a",
+        "tabletPortrait075-a",
+        "tabletPortrait100-a",
+        "tabletLandscape075-a",
+        "tabletLandscape100-b"
+      ],
+      "preservedAttempts": 11
+    },
+    {
+      "record": "cohesion-2026-10-23/tablet-portrait-attempts.json",
+      "selectedAttemptIds": [
+        "tabletPortrait000-attempt2",
+        "tabletPortrait025-attempt1",
+        "tabletPortrait050-attempt1"
+      ],
+      "preservedAttempts": 4
+    },
+    {
+      "record": "cohesion-2026-10-23/tablet-landscape-attempts.json",
+      "selectedAttemptIds": [
+        "tabletLandscape000-b",
+        "tabletLandscape025-b",
+        "tabletLandscape050-a"
+      ],
+      "preservedAttempts": 5
+    }
+  ],
+  "processing": "Selected built-in ImageGen PNG outputs copied byte-for-byte without pixel edits, resizing or cropping. Whole-image fitting and exact per-state dimension registration belong to the native renderer. Prior selected entries, including nested superseded corrections, remain unchanged under each supersededSource.",
   "verification": {
-    "date": "2026-10-19",
-    "generationRecordsPreserved": 20,
+    "date": "2026-10-23",
+    "cohesionGenerationRecordsPreserved": 20,
+    "historicalGenerationRecordsPreserved": 20,
     "packagedSourceByteMatches": 15,
     "sourceSha256DimensionsBytesVerified": true,
-    "nativeValidation": "Native review covers all fifteen states; phone050 correction in b77a100 passed header clearance and 49-star dense input at runtime dev.545382e6f6. See the separate acceptance evidence for source attribution and limits.",
     "selectedSourceSha256DimensionsBytesVerified": true,
-    "pendingPackagingAssets": []
+    "gitBlobShaMethod": "SHA-1 of the canonical Git blob header plus selected source bytes, computed locally without Git commands.",
+    "nativeValidation": "Final clean sourcef7487ebd:12 hosted,4 phone and1 tablet native checks pass with zero failures/skips; all15 scenes inspected and75% active49-star views covered in3families.100% is a dimmed result. See docs/evidence/cohesion-goal-05-seed-place-2026-10-23/README.md for evidence and limits.",
+    "pendingPackagingAssets": [],
+    "laterMainIntegration": "Clean cf4f4007 on main dd69da9e:268 Core,12 hosted,2 phone plus1 tablet native pass; Debug/Release and15 exact catalog dimensions/source hashes verified. Current Seed4 rules and historical18-light coverage remain distinct."
   },
+  "history": [
+    {
+      "supersededOn": "2026-10-23",
+      "reason": "Replaced by connected-place cohesion family; original status and verification remain source-bound historical records.",
+      "status": "All fifteen selected paintings are packaged and byte-verified; native milestone review complete.",
+      "provenance": "art-prompts.json",
+      "processing": "Selected generated PNGs copied byte-for-byte without pixel edits; each packaged painting matches its recorded generated source. Whole-image fitting belongs to the native renderer.",
+      "verification": {
+        "date": "2026-10-19",
+        "generationRecordsPreserved": 20,
+        "packagedSourceByteMatches": 15,
+        "sourceSha256DimensionsBytesVerified": true,
+        "nativeValidation": "Native review covers all fifteen states; phone050 correction in b77a100 passed header clearance and 49-star dense input at runtime dev.545382e6f6. See the separate acceptance evidence for source attribution and limits.",
+        "selectedSourceSha256DimensionsBytesVerified": true,
+        "pendingPackagingAssets": []
+      }
+    }
+  ],
   "assets": [
     {
       "family": "phone",
       "milestone": 0,
       "asset": "App/Assets.xcassets/SeedMoon000.imageset/scene.png",
-      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-c93d5415-bb54-4eff-9975-69e8d8eb8a44.png",
-      "sha256": "bca2a69a10a98d610b26530f6ccf838c3392a80c2aaef0da6111be3a64f744c0",
+      "source": "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-8c5280e7-9d3b-4bb1-bc3c-922f7fd09204.png",
+      "sha256": "95e551a8cfc9d54e1e4eeb5fae35f101cb5410725880c2b53529d0b0c68b7d7e",
       "pixels": [
         887,
         1774
       ],
-      "bytes": 2287967,
-      "gitBlobSha": "a7c48f85233df016c648416cd362bb223a04fe32",
-      "source_record": "art-prompts.json#/original_records/phone-art-provenance.json/variants/2"
+      "bytes": 2522447,
+      "gitBlobSha": "e48e79ce03ea1fdd646288c8fbd09a4321e9fcc4",
+      "source_record": "cohesion-2026-10-23/art-prompts.json#/attempts/7",
+      "source_attempt_id": "phone000-a",
+      "packagingStatus": "packaged-byte-identically; final native acceptance pending",
+      "supersededSource": {
+        "family": "phone",
+        "milestone": 0,
+        "asset": "App/Assets.xcassets/SeedMoon000.imageset/scene.png",
+        "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-c93d5415-bb54-4eff-9975-69e8d8eb8a44.png",
+        "sha256": "bca2a69a10a98d610b26530f6ccf838c3392a80c2aaef0da6111be3a64f744c0",
+        "pixels": [
+          887,
+          1774
+        ],
+        "bytes": 2287967,
+        "gitBlobSha": "a7c48f85233df016c648416cd362bb223a04fe32",
+        "source_record": "art-prompts.json#/original_records/phone-art-provenance.json/variants/2"
+      }
     },
     {
       "family": "phone",
       "milestone": 25,
       "asset": "App/Assets.xcassets/SeedMoon025.imageset/scene.png",
-      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-17d40c59-5080-41aa-8001-1adcb996abde.png",
-      "sha256": "30400d7134ebe2c6851b0de550b0942f65a66725a2d1e1a2882fd3f49d923e95",
+      "source": "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-60474135-3f26-4769-b2ab-d2d36fb4e6ef.png",
+      "sha256": "95433a2596583dbc77a5d78e2aa824737d9b8530ba95488c784a30c8a63a87d7",
       "pixels": [
         887,
         1774
       ],
-      "bytes": 2278829,
-      "gitBlobSha": "99b277cd1234220e0ee7ee06b85a3327effc5271",
-      "source_record": "art-prompts.json#/original_records/phone-art-provenance.json/variants/3"
+      "bytes": 2515878,
+      "gitBlobSha": "91250dba250c4d7f42d8ac7926ec1511ba8e7fbd",
+      "source_record": "cohesion-2026-10-23/art-prompts.json#/attempts/10",
+      "source_attempt_id": "phone025-b",
+      "packagingStatus": "packaged-byte-identically; final native acceptance pending",
+      "supersededSource": {
+        "family": "phone",
+        "milestone": 25,
+        "asset": "App/Assets.xcassets/SeedMoon025.imageset/scene.png",
+        "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-17d40c59-5080-41aa-8001-1adcb996abde.png",
+        "sha256": "30400d7134ebe2c6851b0de550b0942f65a66725a2d1e1a2882fd3f49d923e95",
+        "pixels": [
+          887,
+          1774
+        ],
+        "bytes": 2278829,
+        "gitBlobSha": "99b277cd1234220e0ee7ee06b85a3327effc5271",
+        "source_record": "art-prompts.json#/original_records/phone-art-provenance.json/variants/3"
+      }
     },
     {
       "family": "phone",
       "milestone": 50,
       "asset": "App/Assets.xcassets/SeedMoon050.imageset/scene.png",
-      "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-afb53f0c-ae25-4326-80ea-66cc4eea85ed.png",
-      "sha256": "8e9f7ef6f514be75b23f96767cedff3dc28f245594b244016ff55ddbdc0a2e64",
+      "source": "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-fe1dc518-cd2f-4f09-b77f-6071b7c41247.png",
+      "sha256": "475ba43d79193f969c76008d86b75922135ab023fc2471df5a38018ca252cd6e",
       "pixels": [
         887,
         1774
       ],
-      "bytes": 2222422,
-      "gitBlobSha": "5e92ae4267dcf102d801db6e91ed3e8a6619d86c",
-      "source_record": "art-prompts.json#/subsequent_corrections/0/record",
-      "packagingStatus": "packaged",
-      "packagedCommit": "b77a1003f5d22b9da67d5d4c54f3515481d45ea3",
+      "bytes": 2541470,
+      "gitBlobSha": "28bceaf0663b5f8251900825ea723de4a9e4b6b0",
+      "source_record": "cohesion-2026-10-23/art-prompts.json#/attempts/9",
+      "source_attempt_id": "phone050-a",
+      "packagingStatus": "packaged-byte-identically; final native acceptance pending",
       "supersededSource": {
-        "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-2af4d94e-6d61-4eaf-beff-2e88d4acfe2e.png",
-        "sha256": "ecf19395dace8039f82889672860fdd285c6f16baebdb28250d14c0e9b9bd8e5",
+        "family": "phone",
+        "milestone": 50,
+        "asset": "App/Assets.xcassets/SeedMoon050.imageset/scene.png",
+        "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-afb53f0c-ae25-4326-80ea-66cc4eea85ed.png",
+        "sha256": "8e9f7ef6f514be75b23f96767cedff3dc28f245594b244016ff55ddbdc0a2e64",
         "pixels": [
           887,
           1774
         ],
-        "bytes": 2271182,
-        "gitBlobSha": "6f571d6184f0200f54ca36e59edb0951a335878e",
-        "source_record": "art-prompts.json#/original_records/phone-art-provenance.json/variants/4"
+        "bytes": 2222422,
+        "gitBlobSha": "5e92ae4267dcf102d801db6e91ed3e8a6619d86c",
+        "source_record": "art-prompts.json#/subsequent_corrections/0/record",
+        "packagingStatus": "packaged",
+        "packagedCommit": "b77a1003f5d22b9da67d5d4c54f3515481d45ea3",
+        "supersededSource": {
+          "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-2af4d94e-6d61-4eaf-beff-2e88d4acfe2e.png",
+          "sha256": "ecf19395dace8039f82889672860fdd285c6f16baebdb28250d14c0e9b9bd8e5",
+          "pixels": [
+            887,
+            1774
+          ],
+          "bytes": 2271182,
+          "gitBlobSha": "6f571d6184f0200f54ca36e59edb0951a335878e",
+          "source_record": "art-prompts.json#/original_records/phone-art-provenance.json/variants/4"
+        }
       }
     },
     {
       "family": "phone",
       "milestone": 75,
       "asset": "App/Assets.xcassets/SeedMoon075.imageset/scene.png",
-      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-037f9d21-58f3-4309-aa6e-7c9d56121bbe.png",
-      "sha256": "ddf3d320ac13304a167ce54f63e15ae5ec0864ca06e638556db46fff8a2ae13f",
+      "source": "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-07ac7b99-6989-4575-a4ca-28a657771058.png",
+      "sha256": "d3578dd8b16c938f994e2bf2b387bd873e8f56e3765c2ae7e9f8fccc6d0fd4cd",
       "pixels": [
         887,
         1774
       ],
-      "bytes": 2277677,
-      "gitBlobSha": "6b329c774fe88af7e8c093154384f41abcd5527a",
-      "source_record": "art-prompts.json#/original_records/phone-art-provenance.json/variants/5"
+      "bytes": 2521172,
+      "gitBlobSha": "fad579c934968bb907d5c76ddef60f1a7387f935",
+      "source_record": "cohesion-2026-10-23/art-prompts.json#/attempts/1",
+      "source_attempt_id": "phone075-a",
+      "packagingStatus": "packaged-byte-identically; final native acceptance pending",
+      "supersededSource": {
+        "family": "phone",
+        "milestone": 75,
+        "asset": "App/Assets.xcassets/SeedMoon075.imageset/scene.png",
+        "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-037f9d21-58f3-4309-aa6e-7c9d56121bbe.png",
+        "sha256": "ddf3d320ac13304a167ce54f63e15ae5ec0864ca06e638556db46fff8a2ae13f",
+        "pixels": [
+          887,
+          1774
+        ],
+        "bytes": 2277677,
+        "gitBlobSha": "6b329c774fe88af7e8c093154384f41abcd5527a",
+        "source_record": "art-prompts.json#/original_records/phone-art-provenance.json/variants/5"
+      }
     },
     {
       "family": "phone",
       "milestone": 100,
       "asset": "App/Assets.xcassets/SeedMoon100.imageset/scene.png",
-      "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-05b41ef2-2cbe-4f48-b211-4fd3511adea1.png",
-      "sha256": "cd7f6b7c948c26bfb624ad2b2d2afce44316ce31521cd56cf774fe84810c2936",
+      "source": "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-755eb1c3-f763-4592-966b-31353d373858.png",
+      "sha256": "60c2b7b00c45050f53fc310536de0c511a049f1eb10168bcc421765b559c2f5a",
       "pixels": [
         887,
         1774
       ],
-      "bytes": 2196527,
-      "gitBlobSha": "eab7c7fa48067afbc53b78f7d5e84d7702ddc52b",
-      "source_record": "art-prompts.json#/original_records/phone-art-provenance.json/variants/6"
+      "bytes": 2555783,
+      "gitBlobSha": "a4dbf48f3e94a450e24a6a36e5acb934f2f68b3d",
+      "source_record": "cohesion-2026-10-23/art-prompts.json#/attempts/0",
+      "source_attempt_id": "phone100-a",
+      "packagingStatus": "packaged-byte-identically; final native acceptance pending",
+      "supersededSource": {
+        "family": "phone",
+        "milestone": 100,
+        "asset": "App/Assets.xcassets/SeedMoon100.imageset/scene.png",
+        "source": "/Users/lbeezr/.codex/generated_images/01a151ea-b9e5-7823-a16a-2b113ad96956/exec-05b41ef2-2cbe-4f48-b211-4fd3511adea1.png",
+        "sha256": "cd7f6b7c948c26bfb624ad2b2d2afce44316ce31521cd56cf774fe84810c2936",
+        "pixels": [
+          887,
+          1774
+        ],
+        "bytes": 2196527,
+        "gitBlobSha": "eab7c7fa48067afbc53b78f7d5e84d7702ddc52b",
+        "source_record": "art-prompts.json#/original_records/phone-art-provenance.json/variants/6"
+      }
     },
     {
       "family": "tabletPortrait",
       "milestone": 0,
       "asset": "App/Assets.xcassets/SeedMoonTabletPortrait000.imageset/scene.png",
-      "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-6f351405-d0da-43df-bc3c-5d6730dfd800.png",
-      "sha256": "4773d215510d8e360e8cf772e860b467286b2da4f5e06b19b0f40f5e1ac2272d",
+      "source": "/Users/lbeezr/.codex/generated_images/01a1646d-2aa8-7960-bad9-aea39f179736/exec-ad180c78-6080-4532-8829-520a0bcb00bf.png",
+      "sha256": "fe4d07f77e4bb76dac87921cc25c07f8121ef7f3deafb1d12531bd8e31b7c5a5",
       "pixels": [
         1086,
         1448
       ],
-      "bytes": 2222291,
-      "gitBlobSha": "313abddccca026af5aed5f10129348356de0ebd3",
-      "source_record": "art-prompts.json#/original_records/tablet-art-provenance.json/generations/6"
+      "bytes": 2474354,
+      "gitBlobSha": "3b267c1daa305bc1a51a60f53a0fafdeb1ad503b",
+      "source_record": "cohesion-2026-10-23/tablet-portrait-attempts.json#/attempts/1",
+      "source_attempt_id": "tabletPortrait000-attempt2",
+      "packagingStatus": "packaged-byte-identically; final native acceptance pending",
+      "supersededSource": {
+        "family": "tabletPortrait",
+        "milestone": 0,
+        "asset": "App/Assets.xcassets/SeedMoonTabletPortrait000.imageset/scene.png",
+        "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-6f351405-d0da-43df-bc3c-5d6730dfd800.png",
+        "sha256": "4773d215510d8e360e8cf772e860b467286b2da4f5e06b19b0f40f5e1ac2272d",
+        "pixels": [
+          1086,
+          1448
+        ],
+        "bytes": 2222291,
+        "gitBlobSha": "313abddccca026af5aed5f10129348356de0ebd3",
+        "source_record": "art-prompts.json#/original_records/tablet-art-provenance.json/generations/6"
+      }
     },
     {
       "family": "tabletPortrait",
       "milestone": 25,
       "asset": "App/Assets.xcassets/SeedMoonTabletPortrait025.imageset/scene.png",
-      "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-0bb47f13-a938-4fc4-8aeb-01634abaefba.png",
-      "sha256": "b450a2915622c103017bc8eeef020372c5e7f0a85300e32d13c6ab9a93ea4acf",
+      "source": "/Users/lbeezr/.codex/generated_images/01a1646d-2aa8-7960-bad9-aea39f179736/exec-8d20b6af-a052-4c24-af15-8e108898e953.png",
+      "sha256": "d0567ee9cea6aa2c907886bb80eed15930de584b53a9792ac891568be10d01cd",
       "pixels": [
         1086,
         1448
       ],
-      "bytes": 2193087,
-      "gitBlobSha": "daf983bc10e1eedd2c473379d6894c2cce6b42b8",
-      "source_record": "art-prompts.json#/original_records/tablet-art-provenance.json/generations/10"
+      "bytes": 2472255,
+      "gitBlobSha": "461e45f7f473075f05e02cca28421f2e8c4bd4d6",
+      "source_record": "cohesion-2026-10-23/tablet-portrait-attempts.json#/attempts/2",
+      "source_attempt_id": "tabletPortrait025-attempt1",
+      "packagingStatus": "packaged-byte-identically; final native acceptance pending",
+      "supersededSource": {
+        "family": "tabletPortrait",
+        "milestone": 25,
+        "asset": "App/Assets.xcassets/SeedMoonTabletPortrait025.imageset/scene.png",
+        "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-0bb47f13-a938-4fc4-8aeb-01634abaefba.png",
+        "sha256": "b450a2915622c103017bc8eeef020372c5e7f0a85300e32d13c6ab9a93ea4acf",
+        "pixels": [
+          1086,
+          1448
+        ],
+        "bytes": 2193087,
+        "gitBlobSha": "daf983bc10e1eedd2c473379d6894c2cce6b42b8",
+        "source_record": "art-prompts.json#/original_records/tablet-art-provenance.json/generations/10"
+      }
     },
     {
       "family": "tabletPortrait",
       "milestone": 50,
       "asset": "App/Assets.xcassets/SeedMoonTabletPortrait050.imageset/scene.png",
-      "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-8ce9d300-9842-4d2c-9137-2aa80dec1911.png",
-      "sha256": "e24980ed839a67222a1b5e6015dab530b7a4597dc6a1552c56b97493dc2fdfb8",
+      "source": "/Users/lbeezr/.codex/generated_images/01a1646d-2aa8-7960-bad9-aea39f179736/exec-6e046e1a-0a02-4dce-b4ba-c4c47dffee68.png",
+      "sha256": "203b3451f539eca0af6a3421b66a9d76daa57f9b12bd474a55b0f3b8c5f0dadc",
       "pixels": [
         1086,
         1448
       ],
-      "bytes": 2207129,
-      "gitBlobSha": "ca4f0552183fb28771f397f29f32c6d5bc314382",
-      "source_record": "art-prompts.json#/original_records/tablet-art-provenance.json/generations/11"
+      "bytes": 2471105,
+      "gitBlobSha": "7bd71c85c4358937182aaea35705dc235bc52bb2",
+      "source_record": "cohesion-2026-10-23/tablet-portrait-attempts.json#/attempts/3",
+      "source_attempt_id": "tabletPortrait050-attempt1",
+      "packagingStatus": "packaged-byte-identically; final native acceptance pending",
+      "supersededSource": {
+        "family": "tabletPortrait",
+        "milestone": 50,
+        "asset": "App/Assets.xcassets/SeedMoonTabletPortrait050.imageset/scene.png",
+        "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-8ce9d300-9842-4d2c-9137-2aa80dec1911.png",
+        "sha256": "e24980ed839a67222a1b5e6015dab530b7a4597dc6a1552c56b97493dc2fdfb8",
+        "pixels": [
+          1086,
+          1448
+        ],
+        "bytes": 2207129,
+        "gitBlobSha": "ca4f0552183fb28771f397f29f32c6d5bc314382",
+        "source_record": "art-prompts.json#/original_records/tablet-art-provenance.json/generations/11"
+      }
     },
     {
       "family": "tabletPortrait",
       "milestone": 75,
       "asset": "App/Assets.xcassets/SeedMoonTabletPortrait075.imageset/scene.png",
-      "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-1c9cabf5-8948-4361-aeaa-6e3f4b0178d9.png",
-      "sha256": "da20d8baaf16487396709e98313c98084b4443fb23058a524fbc5990bb16cf9a",
+      "source": "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-44f941ab-0456-4c1e-9fa5-9a5acb8239ff.png",
+      "sha256": "c36835874b8a4fe02713ce7da19066da4985722c552639bd0ba476199820f22c",
       "pixels": [
         1086,
         1448
       ],
-      "bytes": 2197470,
-      "gitBlobSha": "ce3bb95105615b1f9f778f7f39ddbbb32b7d6ebe",
-      "source_record": "art-prompts.json#/original_records/tablet-art-provenance.json/generations/7"
+      "bytes": 2475972,
+      "gitBlobSha": "779cbeff8ed2794bd6f5d077f0a3f77f0e5caa4e",
+      "source_record": "cohesion-2026-10-23/art-prompts.json#/attempts/5",
+      "source_attempt_id": "tabletPortrait075-a",
+      "packagingStatus": "packaged-byte-identically; final native acceptance pending",
+      "supersededSource": {
+        "family": "tabletPortrait",
+        "milestone": 75,
+        "asset": "App/Assets.xcassets/SeedMoonTabletPortrait075.imageset/scene.png",
+        "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-1c9cabf5-8948-4361-aeaa-6e3f4b0178d9.png",
+        "sha256": "da20d8baaf16487396709e98313c98084b4443fb23058a524fbc5990bb16cf9a",
+        "pixels": [
+          1086,
+          1448
+        ],
+        "bytes": 2197470,
+        "gitBlobSha": "ce3bb95105615b1f9f778f7f39ddbbb32b7d6ebe",
+        "source_record": "art-prompts.json#/original_records/tablet-art-provenance.json/generations/7"
+      }
     },
     {
       "family": "tabletPortrait",
       "milestone": 100,
       "asset": "App/Assets.xcassets/SeedMoonTabletPortrait100.imageset/scene.png",
-      "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-e815384d-c0f8-4d8a-b078-4463a17a25cc.png",
-      "sha256": "c0c3fec2cfcbc389d5539f843ddc9609868d89378627cb68b4081fef5db84a8b",
+      "source": "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-22a81550-33c6-45bb-b7c5-80e76ba9eb46.png",
+      "sha256": "9f38b83635a7e7610deb4c048d3c6c75598a525d716c39dd2a38d925c2e9d137",
       "pixels": [
         1086,
         1448
       ],
-      "bytes": 2244503,
-      "gitBlobSha": "2440b0ae1573dffe076b8ada4e80869f11d600ff",
-      "source_record": "art-prompts.json#/original_records/tablet-art-provenance.json/generations/3"
+      "bytes": 2534509,
+      "gitBlobSha": "988759eb1d2984ddc958b7ad84a3ba8593a8113a",
+      "source_record": "cohesion-2026-10-23/art-prompts.json#/attempts/2",
+      "source_attempt_id": "tabletPortrait100-a",
+      "packagingStatus": "packaged-byte-identically; final native acceptance pending",
+      "supersededSource": {
+        "family": "tabletPortrait",
+        "milestone": 100,
+        "asset": "App/Assets.xcassets/SeedMoonTabletPortrait100.imageset/scene.png",
+        "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-e815384d-c0f8-4d8a-b078-4463a17a25cc.png",
+        "sha256": "c0c3fec2cfcbc389d5539f843ddc9609868d89378627cb68b4081fef5db84a8b",
+        "pixels": [
+          1086,
+          1448
+        ],
+        "bytes": 2244503,
+        "gitBlobSha": "2440b0ae1573dffe076b8ada4e80869f11d600ff",
+        "source_record": "art-prompts.json#/original_records/tablet-art-provenance.json/generations/3"
+      }
     },
     {
       "family": "tabletLandscape",
       "milestone": 0,
       "asset": "App/Assets.xcassets/SeedMoonTabletLandscape000.imageset/scene.png",
-      "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-803bb5f7-9960-4a8b-96ed-1d2c059de1ef.png",
-      "sha256": "abd1c14a4cbd9b0f506aaafcc277077226fb1f804d8bc2a61e8e3cbdc4db08bc",
+      "source": "/Users/lbeezr/.codex/generated_images/01a16466-3901-7e00-b62c-adf0e2060e31/exec-a159380d-26f2-4751-9bfc-eb87d67ca8f0.png",
+      "sha256": "0692d4f7044a74f811f4d3d4f78dea1eb808aa559cc59ae693f79b6b1dca541a",
       "pixels": [
-        1446,
-        1087
+        1445,
+        1088
       ],
-      "bytes": 2284648,
-      "gitBlobSha": "dd46dbe28761f6055ffa245265efd41622ef9c5a",
-      "source_record": "art-prompts.json#/original_records/tablet-art-provenance.json/generations/5"
+      "bytes": 2532317,
+      "gitBlobSha": "61fa3e5b2e934abd181f928dc36711a5d639686e",
+      "source_record": "cohesion-2026-10-23/tablet-landscape-attempts.json#/attempts/3",
+      "source_attempt_id": "tabletLandscape000-b",
+      "packagingStatus": "packaged-byte-identically; final native acceptance pending",
+      "supersededSource": {
+        "family": "tabletLandscape",
+        "milestone": 0,
+        "asset": "App/Assets.xcassets/SeedMoonTabletLandscape000.imageset/scene.png",
+        "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-803bb5f7-9960-4a8b-96ed-1d2c059de1ef.png",
+        "sha256": "abd1c14a4cbd9b0f506aaafcc277077226fb1f804d8bc2a61e8e3cbdc4db08bc",
+        "pixels": [
+          1446,
+          1087
+        ],
+        "bytes": 2284648,
+        "gitBlobSha": "dd46dbe28761f6055ffa245265efd41622ef9c5a",
+        "source_record": "art-prompts.json#/original_records/tablet-art-provenance.json/generations/5"
+      },
+      "registrationNote": "Selected generated pixels are preserved without resampling or cropping. Their actual per-state dimensions are registered by RestorationArtwork.sourceSize; final native fit and transition acceptance remain pending."
     },
     {
       "family": "tabletLandscape",
       "milestone": 25,
       "asset": "App/Assets.xcassets/SeedMoonTabletLandscape025.imageset/scene.png",
-      "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-8101b2ea-f158-4ba9-a6a2-3c42c7328a3a.png",
-      "sha256": "321a206c245c1eed8c10a7c565fd203e9cd4ef6d4afbd5e33f21817fcb11d1fe",
+      "source": "/Users/lbeezr/.codex/generated_images/01a16466-3901-7e00-b62c-adf0e2060e31/exec-a517dc61-f376-4134-9173-77b960441c8c.png",
+      "sha256": "3d30378b8aae486b4afb81bd8bc2f488ef9a38440a30338788603c91225c6b45",
       "pixels": [
-        1446,
+        1447,
         1087
       ],
-      "bytes": 2221331,
-      "gitBlobSha": "107f3b9fc0f9ee262f2d3f5dcee189a37ba8f5e8",
-      "source_record": "art-prompts.json#/original_records/tablet-art-provenance.json/generations/9"
+      "bytes": 2545947,
+      "gitBlobSha": "6be39be9f920ce41547dd9f90a71ec62c3524bdb",
+      "source_record": "cohesion-2026-10-23/tablet-landscape-attempts.json#/attempts/4",
+      "source_attempt_id": "tabletLandscape025-b",
+      "packagingStatus": "packaged-byte-identically; final native acceptance pending",
+      "supersededSource": {
+        "family": "tabletLandscape",
+        "milestone": 25,
+        "asset": "App/Assets.xcassets/SeedMoonTabletLandscape025.imageset/scene.png",
+        "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-8101b2ea-f158-4ba9-a6a2-3c42c7328a3a.png",
+        "sha256": "321a206c245c1eed8c10a7c565fd203e9cd4ef6d4afbd5e33f21817fcb11d1fe",
+        "pixels": [
+          1446,
+          1087
+        ],
+        "bytes": 2221331,
+        "gitBlobSha": "107f3b9fc0f9ee262f2d3f5dcee189a37ba8f5e8",
+        "source_record": "art-prompts.json#/original_records/tablet-art-provenance.json/generations/9"
+      },
+      "registrationNote": "Selected generated pixels are preserved without resampling or cropping. Their actual per-state dimensions are registered by RestorationArtwork.sourceSize; final native fit and transition acceptance remain pending."
     },
     {
       "family": "tabletLandscape",
       "milestone": 50,
       "asset": "App/Assets.xcassets/SeedMoonTabletLandscape050.imageset/scene.png",
-      "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-bd5c3ecc-f5db-489c-8803-60630d5b0e49.png",
-      "sha256": "e759c6fd2be63972ecb9b4f7d08bb2f29f95c8c1328a78431ed37f7b45cf26d0",
+      "source": "/Users/lbeezr/.codex/generated_images/01a16466-3901-7e00-b62c-adf0e2060e31/exec-41571bf9-20b5-4830-9111-ecbc6087dc69.png",
+      "sha256": "4eb0d674d6bbcd2d15ca9cd10bd7d2b1d68fceaa0f8a58e4a1f6aa8969604208",
       "pixels": [
         1446,
         1087
       ],
-      "bytes": 2291178,
-      "gitBlobSha": "44b74bd0595fb90e8b3df7979913b832aba1d429",
-      "source_record": "art-prompts.json#/original_records/tablet-art-provenance.json/generations/8"
+      "bytes": 2559862,
+      "gitBlobSha": "e8af4353249a0816a4fd562f61fe3cdd2a4d3960",
+      "source_record": "cohesion-2026-10-23/tablet-landscape-attempts.json#/attempts/2",
+      "source_attempt_id": "tabletLandscape050-a",
+      "packagingStatus": "packaged-byte-identically; final native acceptance pending",
+      "supersededSource": {
+        "family": "tabletLandscape",
+        "milestone": 50,
+        "asset": "App/Assets.xcassets/SeedMoonTabletLandscape050.imageset/scene.png",
+        "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-bd5c3ecc-f5db-489c-8803-60630d5b0e49.png",
+        "sha256": "e759c6fd2be63972ecb9b4f7d08bb2f29f95c8c1328a78431ed37f7b45cf26d0",
+        "pixels": [
+          1446,
+          1087
+        ],
+        "bytes": 2291178,
+        "gitBlobSha": "44b74bd0595fb90e8b3df7979913b832aba1d429",
+        "source_record": "art-prompts.json#/original_records/tablet-art-provenance.json/generations/8"
+      }
     },
     {
       "family": "tabletLandscape",
       "milestone": 75,
       "asset": "App/Assets.xcassets/SeedMoonTabletLandscape075.imageset/scene.png",
-      "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-e0e2a537-d6c1-4629-a55e-d9f1358ed15d.png",
-      "sha256": "2bafd042f9d202914bd5aa83f32139b560c0620e363abaf0f22b8e16025773d8",
+      "source": "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-53dd21bc-8824-4134-a73a-821191db6466.png",
+      "sha256": "31ab2300c5c1278e0115e743f7c421fa9787315bea361ace0430128c9b6ba90d",
       "pixels": [
         1447,
         1087
       ],
-      "bytes": 2309965,
-      "gitBlobSha": "4dac5e4e737b543265e576b8a3a9da2202f7d1cd",
-      "source_record": "art-prompts.json#/original_records/tablet-art-provenance.json/generations/4"
+      "bytes": 2531128,
+      "gitBlobSha": "f3c6ba856e069f9549fdd48c48857962f97aef5d",
+      "source_record": "cohesion-2026-10-23/art-prompts.json#/attempts/6",
+      "source_attempt_id": "tabletLandscape075-a",
+      "packagingStatus": "packaged-byte-identically; final native acceptance pending",
+      "supersededSource": {
+        "family": "tabletLandscape",
+        "milestone": 75,
+        "asset": "App/Assets.xcassets/SeedMoonTabletLandscape075.imageset/scene.png",
+        "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-e0e2a537-d6c1-4629-a55e-d9f1358ed15d.png",
+        "sha256": "2bafd042f9d202914bd5aa83f32139b560c0620e363abaf0f22b8e16025773d8",
+        "pixels": [
+          1447,
+          1087
+        ],
+        "bytes": 2309965,
+        "gitBlobSha": "4dac5e4e737b543265e576b8a3a9da2202f7d1cd",
+        "source_record": "art-prompts.json#/original_records/tablet-art-provenance.json/generations/4"
+      }
     },
     {
       "family": "tabletLandscape",
       "milestone": 100,
       "asset": "App/Assets.xcassets/SeedMoonTabletLandscape100.imageset/scene.png",
-      "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-24bd8291-0e5a-4a9a-bb53-aa3424a1803c.png",
-      "sha256": "382b53fc405e98c07cff121e84ca39a483e0cc27fd63109b934f16cd5bf6235c",
+      "source": "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-1a4665bc-eaa9-4fb2-aa50-7e75c243e2c5.png",
+      "sha256": "9dc3ac2bc6548b3b4e3d467c80c076eb4966d39065a5436be8cd30d723f4cd68",
       "pixels": [
         1447,
         1087
       ],
-      "bytes": 2442891,
-      "gitBlobSha": "c20c2d1fc36b8d7f66157b3eaa43d05697aac2b4",
-      "source_record": "art-prompts.json#/original_records/tablet-art-provenance.json/generations/2"
+      "bytes": 2626267,
+      "gitBlobSha": "1f4d246bb3ecc912c74cd18417605e366950906e",
+      "source_record": "cohesion-2026-10-23/art-prompts.json#/attempts/4",
+      "source_attempt_id": "tabletLandscape100-b",
+      "packagingStatus": "packaged-byte-identically; final native acceptance pending",
+      "supersededSource": {
+        "family": "tabletLandscape",
+        "milestone": 100,
+        "asset": "App/Assets.xcassets/SeedMoonTabletLandscape100.imageset/scene.png",
+        "source": "/Users/lbeezr/.codex/generated_images/01a1545c-40f0-7f03-93cb-a46881a362fd/exec-24bd8291-0e5a-4a9a-bb53-aa3424a1803c.png",
+        "sha256": "382b53fc405e98c07cff121e84ca39a483e0cc27fd63109b934f16cd5bf6235c",
+        "pixels": [
+          1447,
+          1087
+        ],
+        "bytes": 2442891,
+        "gitBlobSha": "c20c2d1fc36b8d7f66157b3eaa43d05697aac2b4",
+        "source_record": "art-prompts.json#/original_records/tablet-art-provenance.json/generations/2"
+      }
     }
   ]
 }

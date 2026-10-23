@@ -1,0 +1,302 @@
+{
+  "status": "Development-verified; ready for merge",
+  "input_commit": "acad49b2867ef3caf5807d191ff53f76c582e9f7",
+  "input_tree": "3e061ca124d1ee35e7a7ff98b5f9fc99315431fe",
+  "fingerprint": "dev.ddaff18f86",
+  "actual_bundle_stamp": "dev.local",
+  "build_affecting_dirty_paths": [],
+  "documentation_dirty_paths": [
+    "AGENTS.md",
+    "App/README.md",
+    "README.md",
+    "Sources/StarfallCore/README.md",
+    "docs/ENGINEERING.md",
+    "docs/EXPERIMENTS.md",
+    "docs/ROADMAP.md",
+    "docs/design/STORY_ENCOUNTER_CURRICULUM.md"
+  ],
+  "input_hashes": {
+    "App/DialogueScripts/observatory-dialogue.json": "58a2a7c01b49ded24e0b88001d06bd0bf0acf4d31327cfd8f13792a8d6594a42",
+    "App/RestorationPresentation.swift": "c29d0e287c71c41cd92e6c4c59e9605e755676f7263f9117a5c07c3b88919b76",
+    "App/SkyCopy.swift": "f98f46cb4a752b8093916a6ea81e2f1191aa1a12f72e5bcb3a837bd7ff190311",
+    "AppTests/SkyDialogueTests.swift": "8eb7c066b3da9f9cfe1ddd964ebef2e23debe75e0fe5e5a71b7c67d240403d9e",
+    "AppTests/SkyFlowStateTests.swift": "2fd0440e107fddb8f6cd1dd0cfd9172b93d740ac91370c04c56eeb8512cb34eb",
+    "AppTests/SkySaveArchiveTests.swift": "dd464d4a29794c6bdb4c3b2bf6ec997e7ece65f8e49b9cd7b442e7b642c3acde",
+    "AppTests/StoryPatternPlan.swift": "4d31754bc15485ac779dd14f633daad0422ea4790adef179e6d6bbb861b63e6e",
+    "Sources/StarfallCore/StoryChallenge.swift": "567f456af2d348d5bd1614a2a54a3cf16cc2f2b5c3a1ea2f9a0fb7802bbd4d7b",
+    "Tests/StarfallCoreTests/KiteEncounterTests.swift": "4e7f6660a3b6a4939bf7e4b0544a18ab1028fdac30361a38d59f5af094add789",
+    "Tests/StarfallCoreTests/SeedEncounterTests.swift": "131f4295ca53cf30579772424112e3c07ac13f26c94dadfb4843400845f0b4de",
+    "Tests/StarfallCoreTests/SilverEncounterTests.swift": "20416e99cddb623b7753b2ec4a113ed7f7cb82c9473ab5fff41f4a0ebc565900",
+    "Tests/StarfallCoreTests/StoryCascadeTests.swift": "11c3cde584aa3e51f87a6777dc1e57bd08d20aae2f8e6e86e6c702e78ddb793b",
+    "Tests/StarfallCoreTests/StoryPatternTests.swift": "745c8dbb48b9fdfcc03b3a69fbc59b58bdbba25a96278d9ee6c3dac469ca403f",
+    "UITests/SeedMoonInteractionTests.swift": "e002f49d650106ab455a2b97af2299963e5c573f678b85b6ffde8672cba67f59",
+    "UITests/SilverPoolsInteractionTests.swift": "445de5d1ea81037b5effd77b9f42fc2d6ef61f2585f939389e5fffb2f9090d98",
+    "UITests/FallingSkyInteractionTests.swift": "fef4ce2741670a2927e5f21a67bd239361183ac24f3b5437b570482ca8bbaadf"
+  },
+  "core": {
+    "command": "CLANG_MODULE_CACHE_PATH=/private/tmp/starfall-next-encounters-20261023/SilverCore/clang-cache SWIFT_MODULECACHE_PATH=/private/tmp/starfall-next-encounters-20261023/SilverCore/swift-cache swift test --jobs 2 --disable-sandbox --scratch-path /private/tmp/starfall-next-encounters-20261023/SilverCore/build --cache-path /private/tmp/starfall-next-encounters-20261023/SilverCore/cache --config-path /private/tmp/starfall-next-encounters-20261023/SilverCore/config --security-path /private/tmp/starfall-next-encounters-20261023/SilverCore/security",
+    "tests": {
+      "executed": 276,
+      "failures": 0,
+      "per_class": {
+        "ConstellationGapCoreTests": 3,
+        "CriticalMassTests": 12,
+        "DuskFeedingTests": 10,
+        "DuskPlanningCompatibilityTests": 1,
+        "FallingSkyPacingTests": 5,
+        "FallingSkyTests": 31,
+        "FullBoardLanternTests": 11,
+        "GameTests": 20,
+        "GravityOpportunityTests": 5,
+        "GravityRetirementTests": 6,
+        "GravityTests": 18,
+        "KiteEncounterTests": 7,
+        "RefillMappingTests": 7,
+        "SeedEncounterTests": 8,
+        "SilverEncounterTests": 8,
+        "SkyCadenceTests": 9,
+        "SkyGenerationTests": 6,
+        "SkyLessonTests": 3,
+        "SkyTutorialTests": 9,
+        "StarRecipeTests": 20,
+        "StarfallChallengeTests": 8,
+        "StarlightRestorationTests": 5,
+        "StoryCascadePolicyTests": 4,
+        "StoryCascadeTests": 11,
+        "StoryFourStarLinePolicyTests": 3,
+        "StoryFourStarLineTests": 10,
+        "StoryMasteryRecoveryWitnessTests": 1,
+        "StoryPatternTests": 11,
+        "StoryRevisionOneTests": 12,
+        "WhiteConnectorTests": 12
+      },
+      "skipped": 0,
+      "xctest_duration_seconds": 19.196
+    },
+    "package_inputs_unchanged_during_test": true,
+    "idle_overflow": {
+      "challenge": "silverPools",
+      "fixedShowerCallsIncludingDecodedCopies": 8,
+      "outcome": "lost",
+      "revision": 4,
+      "showers": 4,
+      "steps": [
+        {
+          "arrivals": 5,
+          "blockedColumn": -1,
+          "displayAward": 0,
+          "displayScore": 0,
+          "heights": [
+            6,
+            6,
+            5,
+            4,
+            3,
+            3,
+            2
+          ],
+          "occupiedCount": 29,
+          "phaseCount": 0,
+          "physicalScore": 0,
+          "shower": 1,
+          "validSave": true
+        },
+        {
+          "arrivals": 5,
+          "blockedColumn": -1,
+          "displayAward": 0,
+          "displayScore": 0,
+          "heights": [
+            7,
+            7,
+            6,
+            4,
+            3,
+            4,
+            3
+          ],
+          "occupiedCount": 34,
+          "phaseCount": 0,
+          "physicalScore": 0,
+          "shower": 2,
+          "validSave": true
+        },
+        {
+          "arrivals": 5,
+          "blockedColumn": -1,
+          "displayAward": 0,
+          "displayScore": 0,
+          "heights": [
+            7,
+            7,
+            7,
+            5,
+            4,
+            5,
+            3
+          ],
+          "occupiedCount": 38,
+          "phaseCount": 0,
+          "physicalScore": 0,
+          "shower": 3,
+          "validSave": true
+        },
+        {
+          "arrivals": 0,
+          "blockedColumn": 0,
+          "displayAward": 0,
+          "displayScore": 0,
+          "heights": [
+            7,
+            7,
+            7,
+            5,
+            4,
+            5,
+            3
+          ],
+          "occupiedCount": 38,
+          "phaseCount": 0,
+          "physicalScore": 0,
+          "shower": 4,
+          "validSave": true
+        }
+      ],
+      "target": 12000,
+      "validSave": true
+    },
+    "environment": {
+      "os": "ProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434",
+      "swift": "Apple Swift version 6.4 (swiftlang-6.4.0.34.1 clang-2100.3.34.1)\nTarget: arm64-apple-macosx27.0.0"
+    }
+  },
+  "catalogue": {
+    "catalogue_copy_keys": 478,
+    "scripts": 110,
+    "line_ids": 115,
+    "preserved_existing_scripts": 107
+  },
+  "environment": {
+    "xcode": "27.1",
+    "runtime": "iOS 27.0 (24A434)",
+    "phone": "64231AFE-4CDB-4B5A-B6D5-70CD7CEED324",
+    "tablet": "255E141F-D4D6-45DA-89FF-51436BF1BBA7",
+    "max_owned_booted": 1
+  },
+  "runs": {
+    "first_build": {
+      "source": "1f669016",
+      "result": "Build failed; no tests ran",
+      "cause": "New hosted test used nonexistent SkyResolutionPhase.depth; corrected to actual comboDepth; no production change"
+    },
+    "hosted_and_settings": {
+      "source": "ada4481b",
+      "bundle": "silver-phone-clock-corrected.xcresult",
+      "passed_hosted": 133,
+      "failed_native": 1,
+      "skipped": 0,
+      "tool_seconds": 66.85,
+      "cause": "Native Settings preparation selected iPad coordinate-touch workaround on a phone because the phone also exposes sidebar collection ID; Motion never opened. No gameplay started."
+    },
+    "clock_corrected": {
+      "source": "acad49b2",
+      "bundle": "silver-phone-clock-settings-fixed.xcresult",
+      "passed_native": 1,
+      "failed": 0,
+      "skipped": 0,
+      "tool_seconds": 184.521,
+      "native_seconds": 149.99,
+      "scope": "Genuinely earned Kite and Seed, Silver4 Entry12k, one ordinary automatic shower without Next or extra pause during Silver recovery, 19k chain win, earned Frostfruit Entry18. System Reduce Motion off; ordinary effects."
+    },
+    "choices_and_history": {
+      "source": "acad49b2",
+      "bundle": "silver-phone-choices-history.xcresult",
+      "passed_native": 2,
+      "failed": 0,
+      "skipped": 0,
+      "connector": "Timed out300s; underlying runner completed303.856s and xcresult confirms both pass",
+      "native_seconds": 250.463,
+      "scope": "Both full Silver choices, 7k board/choice process restore,12k result restore, same-round Replay12k, ordinary fourth-shower overflow0; historical Silver0 14\u219218 win, restore and Replay0/18"
+    },
+    "tablet_scenery_integrated": {
+      "source": "0ecdfa338fed93febad93287784cabc02249dc30",
+      "fingerprint": "dev.85611977b9",
+      "bundle": "silver-tablet-scenery-integrated.xcresult",
+      "passed_native": 1,
+      "passed_hosted": 12,
+      "failed": 0,
+      "skipped": 0,
+      "tool_seconds": 209.486,
+      "scope": "AX3XL, calmEffectsYES, real system Reduce Motion off; Silver12k Entry/opening, Help labels/scrolling/Done,7k+5k completion and onward Frostfruit. All12 RestorationPresentationTests validate integrated scenery registration/selection/layout."
+    },
+    "phone_scenery_boundaries": {
+      "source": "0ecdfa338fed93febad93287784cabc02249dc30",
+      "fingerprint": "dev.85611977b9",
+      "bundle": "silver-phone-scenery-boundaries.xcresult",
+      "passed_native": 3,
+      "failed": 0,
+      "skipped": 0,
+      "connector": "Timed out300s; underlying runner completed455.057s and xcresult confirms three passes",
+      "scope": "Current Seed ordinary-clock recovery earns Silver12k Entry; Silver preview/cancel retains historical Lantern/Ribbon/Kite/Seed9-of18 boards and pause/save until Begin, then newSilver0-of12k"
+    },
+    "final_automatic_clock": {
+      "source": "0ecdfa338fed93febad93287784cabc02249dc30",
+      "fingerprint": "dev.85611977b9",
+      "bundle": "silver-phone-final-motion.xcresult",
+      "passed_native": 1,
+      "failed": 0,
+      "skipped": 0,
+      "tool_seconds": 179.147,
+      "native_seconds": 154.63,
+      "scope": "Same strict genuine earned chain path on final integrated source; no Next/extra pause during Silver recovery"
+    }
+  },
+  "limits": [
+    "No physical-device probes/install, uncoached human comprehension/comfort/enjoyment, minimum-iOS17 or actual VoiceOver acceptance.",
+    "The chain is a rewarded planning solution; its measured score/headroom advantage does not establish balanced alternatives.",
+    "No new scoring, clock, schema, RNG, assets or mode; no required sequence/shower/time gate.",
+    "Temporary video first sandbox decode lacked macOS codec service; authorized local decode succeeded; this is not a game failure.",
+    "Tablet Help captures include complete final too. but do not visually cover one interior phrase between middle/end frames; native label/scrolling/Done acceptance passed. Entry Begin and lower result actions require ordinary scrolling and were revealed before use."
+  ],
+  "integration": {
+    "head": "0ecdfa338fed93febad93287784cabc02249dc30",
+    "tree": "30a10a73193eff7c652c718bf72df809d6bf2751",
+    "fingerprint": "dev.85611977b9",
+    "dirty": "",
+    "integration": "origin/main495d4062 / PR314; Seed15 paintings and precise landscape pixel dimensions only; Core, rules, store, clocks, catalogue, hosted/native test inputs unchanged from prior passed source",
+    "core_inputs_byte_identical": true,
+    "hosted_inputs_byte_identical": true,
+    "core_input_files_compared": 59,
+    "core_input_differences": []
+  },
+  "release": {
+    "initial_seconds": 74.761,
+    "integrated_seconds": 16.381,
+    "log": "silver-release-scenery-integrated.log",
+    "passed": true,
+    "catalogue_sha256_source_debug_release": "58a2a7c01b49ded24e0b88001d06bd0bf0acf4d31327cfd8f13792a8d6594a42"
+  },
+  "native_totals": {
+    "distinct_methods_passed": 7,
+    "passing_executions": 8,
+    "skips_on_passing_runs": 0,
+    "earlier_failed_native_setup": 1
+  },
+  "recording_review": {
+    "first_file": "silver-clock-settings-fixed.mp4",
+    "first_sha256": "f9026ea40d85203b212d8efe54920166be74de12152d6f5cc6f2110a324d5850",
+    "first_limit": "No moov index; no frame could be decoded; cause unestablished",
+    "final_file": "silver-final-motion-valid.mp4",
+    "final_sha256": "0664454974a57989496a29dcaf56ce6b0704a56250f979308ce54d30498c19f7",
+    "final_limit": "Stopped by supported record tool after exact native win-capture log while test still running; final ftyp/extended-mdat/moov parse covers whole file. AVFoundation -11832/-12431 cannot decode frames; passthrough avconvert start118/duration6 succeeds but excerpt also cannot be frame-decoded. No chronology/quality inference.",
+    "conclusion": "No additional unchanged retries; ordinary-effects interaction and committed mechanics established separately."
+  },
+  "final_static_checks": {
+    "hygiene": "pass",
+    "diff_check": "pass",
+    "local_link_targets": 888,
+    "retained_images": 10,
+    "retained_hashes_dimensions_readability": "pass",
+    "membership": "Existing App/hosted/UI target paths retained; new SilverEncounterTests auto-discovered by SwiftPM. No project/scheme/configuration change. Debug/native and Release packaged current478-key catalogue with identical hash."
+  }
+}

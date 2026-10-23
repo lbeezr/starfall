@@ -1,0 +1,354 @@
+[
+  {
+    "file": "dev-5b3efc62__seed-75__iphone-17e__dense49-before.jpg",
+    "source": "5b3efc62 / dev.8895bb79c7",
+    "variant": "default text, normal motion enabled, active paused49",
+    "evidence": "native Simulator screenshot",
+    "sourcePNG": "/private/tmp/starfall-cohesion-20261023/goal05/before-phone075-dense.png",
+    "sourceSHA256": "41cf91189e475fb78521bfad0d24466b52203f8601d74bcddd071c6e5e12094d",
+    "sha256": "91aa5c4d2ea0d4bcaa767a1330f36ff6f798474eb51ed9d38a5c2bb4314e58c8",
+    "pixels": [
+      1170,
+      2532
+    ],
+    "processing": "JPEG export only; original native pixel dimensions preserved"
+  },
+  {
+    "file": "dev-5b3efc62-wip-17b99a521911__seed-75__iphone-17e__dense49-after.jpg",
+    "source": "5b3efc62 +17b99a521911 / dev.b705fa64cd",
+    "variant": "same baseline code; only75/100 paintings changed; active paused49",
+    "evidence": "native Simulator screenshot",
+    "sourcePNG": "/private/tmp/starfall-cohesion-20261023/goal05/candidate-phone075-dense.png",
+    "sourceSHA256": "3b7a95b605c6aa0175b1a561280fef3951ab9c4bd55ca562ff1ab5cf8e2d700b",
+    "sha256": "b70bdcdd2ea76e5ce867ec7f4fb75c65b639325eb49184aa41bd9de103ca4e2e",
+    "pixels": [
+      1170,
+      2532
+    ],
+    "processing": "JPEG export only; original native pixel dimensions preserved"
+  },
+  {
+    "file": "dev-f7487ebd__seed-000__iphone-17e__dense49.jpg",
+    "source": "f7487ebdad8292f833c6361f76c2d048c44eb674 / plist dev.local",
+    "variant": "default text; active paused49 before100;100 result with withdrawn dim stars",
+    "evidence": "native Simulator screenshot",
+    "sourcePNG": "/private/tmp/starfall-cohesion-20261023/goal05/final-phone000-dense.png",
+    "sourceSHA256": "d0c5fbb5c7a5c748d89395bf88758bd5902d9b94368c5c0f4768b0ae0304a14c",
+    "sha256": "980ea2ace1047273fab4077707b3606da261b601b040c01c0575e1707a9f53dc",
+    "pixels": [
+      1170,
+      2532
+    ],
+    "processing": "JPEG export only; original native pixel dimensions preserved"
+  },
+  {
+    "file": "dev-f7487ebd__seed-025__iphone-17e__dense49.jpg",
+    "source": "f7487ebdad8292f833c6361f76c2d048c44eb674 / plist dev.local",
+    "variant": "default text; active paused49 before100;100 result with withdrawn dim stars",
+    "evidence": "native Simulator screenshot",
+    "sourcePNG": "/private/tmp/starfall-cohesion-20261023/goal05/final-phone025-dense.png",
+    "sourceSHA256": "d24ecf4f7237c95564c8486db1ff29e0b025165e18380d4bb02135b8443285ac",
+    "sha256": "e9254135db94fa4936aec838468f40c10506d9b5987cc71a96de5a9543691a39",
+    "pixels": [
+      1170,
+      2532
+    ],
+    "processing": "JPEG export only; original native pixel dimensions preserved"
+  },
+  {
+    "file": "dev-f7487ebd__seed-050__iphone-17e__dense49.jpg",
+    "source": "f7487ebdad8292f833c6361f76c2d048c44eb674 / plist dev.local",
+    "variant": "default text; active paused49 before100;100 result with withdrawn dim stars",
+    "evidence": "native Simulator screenshot",
+    "sourcePNG": "/private/tmp/starfall-cohesion-20261023/goal05/final-phone050-dense.png",
+    "sourceSHA256": "7af7442bf2fc2887874cb7f39c5caedc6b64f863545c88c5a2c4c438112cf920",
+    "sha256": "c3773c7e5b73a2167d9dba92093ab7326d95de6d96b2968b837b0a715bc393ae",
+    "pixels": [
+      1170,
+      2532
+    ],
+    "processing": "JPEG export only; original native pixel dimensions preserved"
+  },
+  {
+    "file": "dev-f7487ebd__seed-075__iphone-17e__dense49.jpg",
+    "source": "f7487ebdad8292f833c6361f76c2d048c44eb674 / plist dev.local",
+    "variant": "default text; active paused49 before100;100 result with withdrawn dim stars",
+    "evidence": "native Simulator screenshot",
+    "sourcePNG": "/private/tmp/starfall-cohesion-20261023/goal05/final-phone075-dense.png",
+    "sourceSHA256": "c20aef09f01b8c5f7430487c48d9c5643a6fd7ba6701b3e4d76e58548bc8a804",
+    "sha256": "ba2e79f3cdf7165567e5e07c311eb1dfe7f24f1537cb911c037d6a5113b700c4",
+    "pixels": [
+      1170,
+      2532
+    ],
+    "processing": "JPEG export only; original native pixel dimensions preserved"
+  },
+  {
+    "file": "dev-f7487ebd__seed-100__iphone-17e__dense49.jpg",
+    "source": "f7487ebdad8292f833c6361f76c2d048c44eb674 / plist dev.local",
+    "variant": "default text; active paused49 before100;100 result with withdrawn dim stars",
+    "evidence": "native Simulator screenshot",
+    "sourcePNG": "/private/tmp/starfall-cohesion-20261023/goal05/final-phone100-dense.png",
+    "sourceSHA256": "3aedf8d82d03099187eca83f23cdc455496542dffd0977ab146edf0abe32f493",
+    "sha256": "2400fca1f74612effadf5004865f068827bfb397e2f156589e65a8b6ee44ec88",
+    "pixels": [
+      1170,
+      2532
+    ],
+    "processing": "JPEG export only; original native pixel dimensions preserved"
+  },
+  {
+    "file": "dev-f7487ebd__seed-100__ipad-mini-a17-pro__portrait-sparse.jpg",
+    "source": "f7487ebdad8292f833c6361f76c2d048c44eb674 / plist dev.local",
+    "variant": "default text; native milestone fixture21 actual stars;100 dimmed result",
+    "evidence": "native Simulator screenshot",
+    "sourcePNG": "/private/tmp/starfall-cohesion-20261023/goal05-final-tablet-attachments/1BE23BCA-75E3-4C04-AC21-34926D1C391F.png",
+    "sourceSHA256": "86b78e5ca148268277d6594066e2ebdab7bb127980beb604aa06f94f4a98f4ca",
+    "sha256": "f80071947db065c667513dfdb2b82b9dfafa01123f1c80848703f3d9a4c871c4",
+    "pixels": [
+      1488,
+      2266
+    ],
+    "processing": "JPEG export only; original native pixel dimensions preserved"
+  },
+  {
+    "file": "dev-f7487ebd__seed-075__ipad-mini-a17-pro__portrait-sparse.jpg",
+    "source": "f7487ebdad8292f833c6361f76c2d048c44eb674 / plist dev.local",
+    "variant": "default text; native milestone fixture21 actual stars;100 dimmed result",
+    "evidence": "native Simulator screenshot",
+    "sourcePNG": "/private/tmp/starfall-cohesion-20261023/goal05-final-tablet-attachments/5442062D-CCBB-4676-B714-1C0F538F0999.png",
+    "sourceSHA256": "b09e56b7af6940afa61de5f4b9b726de7aae9960f682ba294f65a129bbbda779",
+    "sha256": "c60d18d384e7cd0804ea1d6a3e70f9798e2d9c812900f808168cac70d619c991",
+    "pixels": [
+      1488,
+      2266
+    ],
+    "processing": "JPEG export only; original native pixel dimensions preserved"
+  },
+  {
+    "file": "dev-f7487ebd__seed-050__ipad-mini-a17-pro__portrait-sparse.jpg",
+    "source": "f7487ebdad8292f833c6361f76c2d048c44eb674 / plist dev.local",
+    "variant": "default text; native milestone fixture21 actual stars;100 dimmed result",
+    "evidence": "native Simulator screenshot",
+    "sourcePNG": "/private/tmp/starfall-cohesion-20261023/goal05-final-tablet-attachments/59D8A5DE-F5A6-41C3-9D5A-4D65C0BA8231.png",
+    "sourceSHA256": "20a930adadcf44b692ca548081e5d46b6c0b877374bb85fd0c90088976284a64",
+    "sha256": "07ff8df0e1bbd180b3bab9774414fec1446720d64bc89434f2c4fd1ce02b6d3a",
+    "pixels": [
+      1488,
+      2266
+    ],
+    "processing": "JPEG export only; original native pixel dimensions preserved"
+  },
+  {
+    "file": "dev-f7487ebd__seed-025__ipad-mini-a17-pro__portrait-sparse.jpg",
+    "source": "f7487ebdad8292f833c6361f76c2d048c44eb674 / plist dev.local",
+    "variant": "default text; native milestone fixture21 actual stars;100 dimmed result",
+    "evidence": "native Simulator screenshot",
+    "sourcePNG": "/private/tmp/starfall-cohesion-20261023/goal05-final-tablet-attachments/AD00624E-68F4-4E5C-BC7A-5046DF71E6FA.png",
+    "sourceSHA256": "d27373a1ceac111808fcffea85e9571e80ba71b13869fe22eee83f6df6b8051f",
+    "sha256": "d9e93a388394bb070718a6ec3818cd981183d09bac3492c5586d471701c270ac",
+    "pixels": [
+      1488,
+      2266
+    ],
+    "processing": "JPEG export only; original native pixel dimensions preserved"
+  },
+  {
+    "file": "dev-f7487ebd__seed-000__ipad-mini-a17-pro__portrait-sparse.jpg",
+    "source": "f7487ebdad8292f833c6361f76c2d048c44eb674 / plist dev.local",
+    "variant": "default text; native milestone fixture21 actual stars;100 dimmed result",
+    "evidence": "native Simulator screenshot",
+    "sourcePNG": "/private/tmp/starfall-cohesion-20261023/goal05-final-tablet-attachments/816EBD60-C78A-4A59-AEEF-60F5CFBC157F.png",
+    "sourceSHA256": "0eeb3548207f0f7667bdd115eb90874c8fb7646ce4f2c73bcc601d9490bc24a3",
+    "sha256": "48f1016f2769418b613275ddc6d111f3e84d7eef70accdbd51143708f7ed78a7",
+    "pixels": [
+      1488,
+      2266
+    ],
+    "processing": "JPEG export only; original native pixel dimensions preserved"
+  },
+  {
+    "file": "dev-f7487ebd__seed-075__ipad-mini-a17-pro__portrait-dense49.jpg",
+    "source": "f7487ebdad8292f833c6361f76c2d048c44eb674 / plist dev.local",
+    "variant": "default text, normal motion enabled, active paused49",
+    "evidence": "native Simulator screenshot",
+    "sourcePNG": "/private/tmp/starfall-cohesion-20261023/goal05/final-tabletPortrait075-dense.png",
+    "sourceSHA256": "232c54cada099f158f77ce8c28b6bedf89b7e2105bffd358cdbaa525922de1f9",
+    "sha256": "afa92407dcae946afbedf05e0a1f010dee51544e7e96312a5a9326ab51f63918",
+    "pixels": [
+      1488,
+      2266
+    ],
+    "processing": "JPEG export only; original native pixel dimensions preserved"
+  },
+  {
+    "file": "dev-f7487ebd__seed-100__ipad-mini-a17-pro__landscape-sparse.jpg",
+    "source": "f7487ebdad8292f833c6361f76c2d048c44eb674 / plist dev.local",
+    "variant": "default text; native milestone fixture21 actual stars;100 dimmed result",
+    "evidence": "native Simulator screenshot",
+    "sourcePNG": "/private/tmp/starfall-cohesion-20261023/goal05-final-tablet-attachments/D4BA6ADF-81C9-4E61-863A-8AEBBC2C3C08.png",
+    "sourceSHA256": "fb9a72ec2e626d73a8e8d149951b9e9a1a8b8575fe86846c71c75061e6804b3e",
+    "sha256": "44fe09804e3811d57444688b37523e113ee247f3d2cfd29faad08e10702cebaf",
+    "pixels": [
+      1488,
+      2266
+    ],
+    "processing": "JPEG export only; original native pixel dimensions preserved"
+  },
+  {
+    "file": "dev-f7487ebd__seed-075__ipad-mini-a17-pro__landscape-sparse.jpg",
+    "source": "f7487ebdad8292f833c6361f76c2d048c44eb674 / plist dev.local",
+    "variant": "default text; native milestone fixture21 actual stars;100 dimmed result",
+    "evidence": "native Simulator screenshot",
+    "sourcePNG": "/private/tmp/starfall-cohesion-20261023/goal05-final-tablet-attachments/2A205BA2-F576-4446-9603-FCC4D5C09400.png",
+    "sourceSHA256": "79e211662210888231ff7daba9d3bdd417c4426572c0caee778fd796c55c83a2",
+    "sha256": "31f05a47b916fbd8348882a4e6db827d380f2556e06fe020d4a57e1b0bb044a3",
+    "pixels": [
+      1488,
+      2266
+    ],
+    "processing": "JPEG export only; original native pixel dimensions preserved"
+  },
+  {
+    "file": "dev-f7487ebd__seed-050__ipad-mini-a17-pro__landscape-sparse.jpg",
+    "source": "f7487ebdad8292f833c6361f76c2d048c44eb674 / plist dev.local",
+    "variant": "default text; native milestone fixture21 actual stars;100 dimmed result",
+    "evidence": "native Simulator screenshot",
+    "sourcePNG": "/private/tmp/starfall-cohesion-20261023/goal05-final-tablet-attachments/125F376C-4B38-4555-B2FA-1FB61EC49FA4.png",
+    "sourceSHA256": "c44955ec41015c0ab350941ebf78517fe6acb4405c9612d20fb399c5507a255b",
+    "sha256": "7d9a0f1fbffbebfcc285d97451c445678633bfea671bdc8c19e1c87849476f22",
+    "pixels": [
+      1488,
+      2266
+    ],
+    "processing": "JPEG export only; original native pixel dimensions preserved"
+  },
+  {
+    "file": "dev-f7487ebd__seed-025__ipad-mini-a17-pro__landscape-sparse.jpg",
+    "source": "f7487ebdad8292f833c6361f76c2d048c44eb674 / plist dev.local",
+    "variant": "default text; native milestone fixture21 actual stars;100 dimmed result",
+    "evidence": "native Simulator screenshot",
+    "sourcePNG": "/private/tmp/starfall-cohesion-20261023/goal05-final-tablet-attachments/750E2FA4-43BF-400D-AB27-708676905735.png",
+    "sourceSHA256": "0e77844fb6e40af6366ebfd16ec3982ee930118f3dcae10464be90e0c4b4f4e2",
+    "sha256": "220224b6a3aea7da77f0ac0cc83f7c091da753ccc7337608cd1fa3f93f6fce18",
+    "pixels": [
+      1488,
+      2266
+    ],
+    "processing": "JPEG export only; original native pixel dimensions preserved"
+  },
+  {
+    "file": "dev-f7487ebd__seed-000__ipad-mini-a17-pro__landscape-sparse.jpg",
+    "source": "f7487ebdad8292f833c6361f76c2d048c44eb674 / plist dev.local",
+    "variant": "default text; native milestone fixture21 actual stars;100 dimmed result",
+    "evidence": "native Simulator screenshot",
+    "sourcePNG": "/private/tmp/starfall-cohesion-20261023/goal05-final-tablet-attachments/E4EE59D2-22DD-4122-9B2A-E8944FA1AA68.png",
+    "sourceSHA256": "53ebef1b90939b67542da80cd3fefce2a7a71a918e6c4f0556e3824ec90027ed",
+    "sha256": "ec22ae84a1b0f6a4860d3276e62ab31de1c1fec0f61180835796aa54523f3d3f",
+    "pixels": [
+      1488,
+      2266
+    ],
+    "processing": "JPEG export only; original native pixel dimensions preserved"
+  },
+  {
+    "file": "dev-f7487ebd__seed-075__ipad-mini-a17-pro__landscape-dense49.jpg",
+    "source": "f7487ebdad8292f833c6361f76c2d048c44eb674 / plist dev.local",
+    "variant": "default text, normal motion enabled, active paused49",
+    "evidence": "native Simulator screenshot",
+    "sourcePNG": "/private/tmp/starfall-cohesion-20261023/goal05/final-tabletLandscape075-dense.png",
+    "sourceSHA256": "636f152195127edd7ba6e8a552d2c1ca72ae5ec22ff947147a0e46a1999bb060",
+    "sha256": "1278ba9889acc4194d4429ee6d4d55651f2e98335a4497f5e638f227a1a8e45b",
+    "pixels": [
+      2266,
+      1488
+    ],
+    "processing": "JPEG export only; original native pixel dimensions preserved"
+  },
+  {
+    "file": "dev-f7487ebd__seed-result__iphone-17e__ax3xl-reduce-motion.jpg",
+    "source": "f7487ebdad8292f833c6361f76c2d048c44eb674 / plist dev.local",
+    "variant": "actual system Reduce Motion, AX3XL; result scrolled to Replay",
+    "evidence": "native Simulator screenshot",
+    "sourcePNG": "/private/tmp/starfall-cohesion-20261023/goal05-final-phone-boundaries-attachments/892D65E6-9349-409D-81DC-B6963622C1A5.png",
+    "sourceSHA256": "e72710c648471a8629a46a7fa17f7e4316a1097510b8cd6b49f4a32d3e898381",
+    "sha256": "c5cbb74eb4cb6209f4884ccdd55ce95b8ea73d9fe264126bca31e44848c3f022",
+    "pixels": [
+      1170,
+      2532
+    ],
+    "processing": "JPEG export only; original native pixel dimensions preserved"
+  },
+  {
+    "file": "dev-f7487ebd__seed-finale__iphone-17e__after.mp4",
+    "sha256": "f6e62ee9d290d5102da8151b1c663682f40009f076462c18e8d23b16f2c26761",
+    "source": "f7487ebdad8292f833c6361f76c2d048c44eb674 / plist dev.local",
+    "evidence": "native normal-motion recording",
+    "processing": "AVFoundation960x540 preset, first4seconds at normal speed, original native recordings remain temporary",
+    "seconds": 4
+  },
+  {
+    "file": "dev-5b3efc62__seed-finale__iphone-17e__before.mp4",
+    "sha256": "45ecac2b499f3a0a54734576d49f23393257fb42ffd062422dc8f104ef618402",
+    "source": "5b3efc62 / dev.8895bb79c7",
+    "evidence": "native normal-motion recording",
+    "processing": "AVFoundation960x540 preset, first4seconds at normal speed, original native recordings remain temporary",
+    "seconds": 4
+  },
+  {
+    "file": "dev-cf4f4007__seed-grown-opening__iphone-17e__default.jpg",
+    "sha256": "da20ba4edd9c32758cbb2a0185e927956184ea6a8c57ba2aca0e4ca12086f320",
+    "source": "cf4f4007108c40bc41bb33b17f77d6331820af86 / plist dev.local",
+    "evidence": "native Simulator screenshot",
+    "variant": "default",
+    "sourcePNG": "/private/tmp/starfall-cohesion-20261023/goal05-seed4-phone-attachments/C991C228-EB6D-4ED9-B535-DAF991298B76.png",
+    "sourceSHA256": "5b6fcde178f9167009261613bbea26fa86531253e47c24ff445cd17b64cdb704",
+    "pixels": [
+      1170,
+      2532
+    ],
+    "processing": "Native pixels retained; JPEG export only"
+  },
+  {
+    "file": "dev-cf4f4007__seed-six-thousand__iphone-17e__normal-clear.jpg",
+    "sha256": "e7aae9e0dd46cc1f5a86104284b97e183488f7f2e60a201a63b7e8d4d2f03179",
+    "source": "cf4f4007108c40bc41bb33b17f77d6331820af86 / plist dev.local",
+    "evidence": "native Simulator screenshot",
+    "variant": "normal-clear",
+    "sourcePNG": "/private/tmp/starfall-cohesion-20261023/goal05-seed4-phone-attachments/2D7934A3-12CB-483E-94D9-23C803B176E3.png",
+    "sourceSHA256": "7b7652dd10604223f1cf2aa7230f6b416b2d213c6f43789e82d84ec08b38cd6d",
+    "pixels": [
+      1170,
+      2532
+    ],
+    "processing": "Native pixels retained; JPEG export only"
+  },
+  {
+    "file": "dev-cf4f4007__seed-eight-thousand__iphone-17e__normal-clear.jpg",
+    "sha256": "d8741d27b28b0d0f9f59191b5c4f7a8f325188910c9c64c0ae8000be7aed3fc1",
+    "source": "cf4f4007108c40bc41bb33b17f77d6331820af86 / plist dev.local",
+    "evidence": "native Simulator screenshot",
+    "variant": "normal-clear",
+    "sourcePNG": "/private/tmp/starfall-cohesion-20261023/goal05-seed4-phone-attachments/F926F3AA-A6DD-42B3-AB0B-BDEC5C4E6869.png",
+    "sourceSHA256": "5bb413df54017d74617de8e18104fd9146eaa800158a23763c159baf7e81dec1",
+    "pixels": [
+      1170,
+      2532
+    ],
+    "processing": "Native pixels retained; JPEG export only"
+  },
+  {
+    "file": "dev-cf4f4007__seed-eight-thousand__ipad-mini-a17-pro__landscape-ax3xl-quiet.jpg",
+    "sha256": "80ce24cca8548992b4e4bb04870504e6e9c3b3c9e23afddb984b63d4679305ae",
+    "source": "cf4f4007108c40bc41bb33b17f77d6331820af86 / plist dev.local",
+    "evidence": "native Simulator screenshot",
+    "variant": "landscape-ax3xl-quiet",
+    "sourcePNG": "/private/tmp/starfall-cohesion-20261023/goal05-seed4-tablet-attachments/A76B99DF-4ECF-49F4-8372-CCDE9EBAD122.png",
+    "sourceSHA256": "d2a0b1e1bec60ef2f16f540b66b90da790eb9042e53906167f05bd5a5dc202b3",
+    "pixels": [
+      1488,
+      2266
+    ],
+    "processing": "Native pixels retained; JPEG export only"
+  }
+]

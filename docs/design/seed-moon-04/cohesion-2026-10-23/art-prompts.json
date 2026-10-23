@@ -1,0 +1,310 @@
+{
+  "title": "Seed Moon cohesion refinement",
+  "tool": "Built-in image_gen",
+  "activationMain": "5b3efc62fc7f5c0568b5ba339d4d50b89c3f4547",
+  "status": "Selected fifteen-painting family adopted for scoped development at clean source f7487ebd; see finalEvidence. Individual attempt notes preserve earlier source/native decisions.",
+  "attempts": [
+    {
+      "id": "phone100-a",
+      "family": "phone",
+      "milestone": 100,
+      "prompt": "Edit target: the first image, Seed Moon's completed PHONE painting. Keep its exact 887\u00d71774 portrait canvas, existing high overhead camera, framing, moon-shell scale/position, pearl seed at normalized(0.301,0.214), gold-green stem, mint leaves and open ivory-gold shelter canopy. Preserve those recognizable forms and their coordinates. Supporting reference 2 is only the freshly compiled native layout guide: NEVER paint its grid, stars, colors, text or outlines. Reference3 Lantern Landing supplies connected-terrain richness and craft/depth, not its wooden dock design.\n\nGoal: Seed Moon should feel like a small tended place joined to a wider celestial garden, instead of a single floating shell. Make a restrained but substantial original extension: add an ivory mineral tending ledge physically joined to the shell's lower/back rim, with broad worn top stones, believable thick curved supporting strata, root joins and grounded contact shadows. Let a short stepped ledge continue through the upper-right crop, in the upper scenic area, so the garden has an approach. Preserve the scoop and bowl in their current places. Repeat the same pale mineral construction as a close foreground crescent across the lower edge, joining the current foreground fragments into one coherent near ledge; include a small quiet nook and a few rooted leaf clusters, with no inhabitants. Keep outer routes visibly continuing beyond the crop. Keep the existing midnight/teal/violet continuous celestial background and its quiet values; center remains fully continuous sky, no blank rectangle/mask/vignette divider. The active star area corresponds approximately to x48..839,y491..1283: keep new sharp scenic highlights, ledges and detail outside that area, with only soft subdued edge bleed. Do not enlarge the shell or lower the canopy/seed. Never change camera or shift/resize existing landmarks to make room. Restore richness in the upper and lower scenic areas, not via busy decoration behind gameplay. This is completed100% with open canopy, mint roots softly illuminated, pearl less bright than gameplay stars. No characters, collectible objects, signs, text, letters, UI, grid, playable stars, new lamps or new mechanism. Preserve one continuous painterly polished game painting; no transparency. Output exactly887\u00d71774 if supported.",
+      "references": [
+        {
+          "path": "/Users/lbeezr/.codex/worktrees/3667/Starfall/App/Assets.xcassets/SeedMoon100.imageset/scene.png",
+          "sha256": "cd7f6b7c948c26bfb624ad2b2d2afce44316ce31521cd56cf774fe84810c2936",
+          "role": "Edit target (activation main original100; hash is original-phone100 retained in temp and Git5b3efc62)"
+        },
+        {
+          "path": "/Users/lbeezr/.codex/worktrees/3667/Starfall/docs/design/level-design-kit/source-phone.png",
+          "sha256": "d61ad58f5ed34bf09b7e74b9aaff0b5860c7f04586772e0287ded52e6c9bf003",
+          "role": "Native compiled layout guide, never artwork"
+        },
+        {
+          "path": "/Users/lbeezr/.codex/worktrees/3667/Starfall/App/Assets.xcassets/LanternLanding100.imageset/scene.png",
+          "sha256": "e7806e535dbd1d769c744c976aab08fbf3d4ca38a652239f28fa229dda72d8dd",
+          "role": "Connected-terrain material/depth reference, never copy dock"
+        }
+      ],
+      "generatedPath": "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-755eb1c3-f763-4592-966b-31353d373858.png",
+      "status": "Phone paired native slice retained provisionally: master100 result sparse/dense;75 active49 stars; actual14\u219218 win/restore/replay passes. Full family/final-source acceptance pending.",
+      "sha256": "60c2b7b00c45050f53fc310536de0c511a049f1eb10168bcc421765b559c2f5a",
+      "pixels": [
+        887,
+        1774
+      ],
+      "bytes": 2555783
+    },
+    {
+      "id": "phone075-a",
+      "family": "phone",
+      "milestone": 75,
+      "prompt": "Edit target image1, the completed Seed Moon phone painting, into its75% restoration state. Image2 is the old75% plant-state reference ONLY; retain image1's new connected stone approach, stone supports, foreground crescent, vegetation placement, sky and exact887\u00d71774 canvas. Lock camera, all architecture, background, shell, pearl at(0.301,0.214), scoop/bowl, source crop and every position. Change ONLY the central plant: replace the open ivory-gold flower with the single CLOSED upright golden bud shown in image2, keep the two mint leaves and stem in the same original positions and scale; prior root illumination remains. The narrow bud tip is near x278,y65, stem anchored to same seed, never lower the tip into the native HUD. It must read as nearly restored with a visibly unopened bud, not an open flower. The final100% image1 canopy will open from this bud. Preserve new terrain and all edges exactly so a whole-image crossfade will not move the garden. No new objects, no brightness sweep, no characters/stars/grid/UI/text, no transparency. Output exactly887\u00d71774.",
+      "references": [
+        {
+          "path": "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-755eb1c3-f763-4592-966b-31353d373858.png",
+          "sha256": "60c2b7b00c45050f53fc310536de0c511a049f1eb10168bcc421765b559c2f5a",
+          "role": "Edit target, new100master"
+        },
+        {
+          "path": "/Users/lbeezr/.codex/worktrees/3667/Starfall/App/Assets.xcassets/SeedMoon075.imageset/scene.png",
+          "sha256": "ddf3d320ac13304a167ce54f63e15ae5ec0864ca06e638556db46fff8a2ae13f",
+          "role": "Original75 plant state only; source at main5b3efc62"
+        }
+      ],
+      "generatedPath": "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-07ac7b99-6989-4575-a4ca-28a657771058.png",
+      "status": "Phone paired native slice retained provisionally: master100 result sparse/dense;75 active49 stars; actual14\u219218 win/restore/replay passes. Full family/final-source acceptance pending.",
+      "sha256": "d3578dd8b16c938f994e2bf2b387bd873e8f56e3765c2ae7e9f8fccc6d0fd4cd",
+      "pixels": [
+        887,
+        1774
+      ],
+      "bytes": 2521172
+    },
+    {
+      "id": "tabletPortrait100-a",
+      "family": "tabletPortrait",
+      "milestone": 100,
+      "prompt": "Edit target image1: Seed Moon completed TABLET PORTRAIT painting. Preserve exact1086\u00d71448 pixels, original overhead camera, framing, pearl/shell/canopy/scoop positions and scale. Image2 is the accepted phone connected-place MATERIAL/ARCHITECTURE reference, not a new crop: carry its ivory mineral ledge, thick rooted supporting strata, warm worn top stones, mint-root joins, small vegetation clusters and close crescent into this separate portrait layout. Image3 is a native composition GUIDE only; never paint its grid, stars, text, colors or edges. Make the old isolated upper-left shell physically join an ivory tending approach across the upper scenic strip, rising gently to an off-frame upper-right continuation. Keep the main shell about x72..340,y175..375, pearl at its original center around(202,235), and canopy aroundx210,y75. Keep the visible lower-left mint root seam at normalized(0.160,0.214) unchanged as light recipient. Preserve the recognizable open gold-ivory canopy shelter and moon-shell identity, no enlarged/recentered landmark. The upper approach should have a broad supported top and meaningful scale, not tiny disconnected decorations. Join lower foreground mineral fragments into a coherent close crescent tending/rest ledge below the play area, continuing through the crop at both sides, matching image2 material. Keep the original continuous midnight-teal-violet celestial sky and quiet field; no blank rectangular hole, mask or fog divider. Board contrast priority aboutx116..970,y298..1150: keep new sharp highlights, scenic silhouettes and architecture outside that area except soft subdued edge bleed. Keep the seed, canopy and shell lighting softer than gameplay-star highlights. No characters, text, UI, grid, playable stars, signs, new lamps/mechanisms. Whole continuous painterly polished game painting; no transparency; outputexact1086\u00d71448.",
+      "references": [
+        {
+          "path": "/Users/lbeezr/.codex/worktrees/3667/Starfall/App/Assets.xcassets/SeedMoonTabletPortrait100.imageset/scene.png",
+          "sha256": "c0c3fec2cfcbc389d5539f843ddc9609868d89378627cb68b4081fef5db84a8b",
+          "role": "Edit target, original100 at main5b3efc62"
+        },
+        {
+          "path": "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-755eb1c3-f763-4592-966b-31353d373858.png",
+          "sha256": "60c2b7b00c45050f53fc310536de0c511a049f1eb10168bcc421765b559c2f5a",
+          "role": "Phone material/connected-place reference"
+        },
+        {
+          "path": "/Users/lbeezr/.codex/worktrees/3667/Starfall/docs/design/level-design-kit/source-ipad-portrait.png",
+          "sha256": "6639c634900720791761b8cafa6ed62de33241ca68df96cc942d0019c086c25d",
+          "role": "Compiled layout guide; never artwork"
+        }
+      ],
+      "generatedPath": "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-22a81550-33c6-45bb-b7c5-80e76ba9eb46.png",
+      "sha256": "9f38b83635a7e7610deb4c048d3c6c75598a525d716c39dd2a38d925c2e9d137",
+      "pixels": [
+        1086,
+        1448
+      ],
+      "bytes": 2534509,
+      "status": "Candidate; native fit pending"
+    },
+    {
+      "id": "tabletLandscape100-a",
+      "family": "tabletLandscape",
+      "milestone": 100,
+      "prompt": "Edit target image1: Seed Moon completed TABLET LANDSCAPE painting. Preserve exact1447\u00d71087 pixels, original overhead camera, framing, shell/pearl/canopy/scoop positions and scale. Image2 is the accepted phone connected-place MATERIAL/ARCHITECTURE reference, not a new crop: use its ivory mineral ledges, broad worn top stones, believable thick supporting strata, mint-root joins and close foreground crescent. Image3 is a schematic native composition GUIDE only; never paint its grid, stars, text, colors or edges. Its1448\u00d71086 schematic must not resize the target1447\u00d71087. Preserve main shell at left roughlyx46..450,y290..610, pearl around normalized(0.170,0.355), open shelter canopy and two mint leaves, plus scoop/bowl. Add a substantial supported tending approach physically joined to the shell's rear rim that rises into the upper scenic band and continues through the upper-right crop; broad top stones and connecting steps must share the target's camera. Use the generous upper and side scenic space for purposeful grounded terrain, keep the important top faces high enough to leave the board clear. Join the existing lower foreground mineral fragments into a close continuous crescent tending/rest ledge beneath the playfield, exiting the side crops; vegetation remains sparse purposeful small clusters. Preserve continuous midnight/teal/violet celestial sky. Native board contrast priorityx478..970,y297..790: leave this middle area quiet continuous sky and keep new sharp scenic highlights/silhouettes/architecture outside it, no blank rectangle/mask/fog divider. Keep whole-camera registration, pearl light destination and original final canopy shape unchanged; no shrinking or enlarging the landmark. Native HUD overlays topedge: keep its area subdued, no only-progress detail there. No characters, text, UI, grid, playable stars, signs, lamps/new mechanism. One continuous painterly polished game painting, no transparency. Outputexact1447\u00d71087.",
+      "references": [
+        {
+          "path": "/Users/lbeezr/.codex/worktrees/3667/Starfall/App/Assets.xcassets/SeedMoonTabletLandscape100.imageset/scene.png",
+          "sha256": "382b53fc405e98c07cff121e84ca39a483e0cc27fd63109b934f16cd5bf6235c",
+          "role": "Edit target, original100 at main5b3efc62"
+        },
+        {
+          "path": "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-755eb1c3-f763-4592-966b-31353d373858.png",
+          "sha256": "60c2b7b00c45050f53fc310536de0c511a049f1eb10168bcc421765b559c2f5a",
+          "role": "Phone material/connected-place reference"
+        },
+        {
+          "path": "/Users/lbeezr/.codex/worktrees/3667/Starfall/docs/design/level-design-kit/source-ipad-landscape.png",
+          "sha256": "102d0c7e066c611521f46d36c29ab3fea1db0f002ecfa32f4b73f2d64cbb5f92",
+          "role": "Compiled layout guide; never artwork"
+        }
+      ],
+      "generatedPath": "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-10b3c1e7-ef62-44c0-b333-5bdd923eb15f.png",
+      "sha256": "dabd4d53a5e05a4e76245d763fabe0636ddf4d32d49f89e8f43ee9b3c9c8262f",
+      "pixels": [
+        1447,
+        1087
+      ],
+      "bytes": 2746968,
+      "status": "Rejected after native landscape100 dense fit: diagonal stone approach/hanging foliage crossed the first gameplay rows. Preserve source and native witness; revise route into upper scenic band before deriving family."
+    },
+    {
+      "id": "tabletLandscape100-b",
+      "family": "tabletLandscape",
+      "milestone": 100,
+      "prompt": "Edit target image1, the new Seed Moon TABLET LANDSCAPE completed painting, exact1447\u00d71087. Fix ONLY the connected approach route's placement: native inspection shows its current diagonal lower edge and hanging foliage behind the top gameplay rows. Preserve the shell/pearl/scoop/open canopy at left EXACTLY, the whole sky texture, foreground crescent, camera, framing, colors and every other pixel as closely as possible. Do not shrink the garden, stars or shell. Image2 is the current native geometry guide, NEVER artwork: its center rectanglex478..970,y297..790 is the gameplay contrast region. Reroute the connecting ledge: keep its shell connection entirely left ofx455 while it climbs toward the upper band, then turn across the top. For allx478..1050, ALL solid stone, thick supporting strata and hanging vines of this approach must be ABOVEy265; byx1050 the route may exit through the top/right crop. Show a believable short stair connection beside the shell's rear rim (left ofx455), then a broad supported mineral path across the generous upper band. Keep the rich broad top stones, thick ivory mineral sides, purposeful root/leaf joins and original overhead perspective; let the sky below the path remain the original dark celestial painting. The shell remains supported by this path and connected to wider garden, not isolated or a miniature. No scenic slabs/vines crossingx478..970 belowy280. Keep the close foreground crescent exactly at the bottom; no blank center mask, rectangular cutout, fog wall or new frame. Final open gold-white flower and pearl seed unchanged. No UI, playable stars, text, characters or new objects. Exact1447\u00d71087 output, opaque continuous painting.",
+      "generatedPath": "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-1a4665bc-eaa9-4fb2-aa50-7e75c243e2c5.png",
+      "references": [
+        {
+          "path": "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-10b3c1e7-ef62-44c0-b333-5bdd923eb15f.png",
+          "sha256": "dabd4d53a5e05a4e76245d763fabe0636ddf4d32d49f89e8f43ee9b3c9c8262f",
+          "role": "Edit target"
+        },
+        {
+          "path": "/Users/lbeezr/.codex/worktrees/3667/Starfall/docs/design/level-design-kit/source-ipad-landscape.png",
+          "sha256": "102d0c7e066c611521f46d36c29ab3fea1db0f002ecfa32f4b73f2d64cbb5f92",
+          "role": "Geometry guide"
+        }
+      ],
+      "sha256": "9dc3ac2bc6548b3b4e3d467c80c076eb4966d39065a5436be8cd30d723f4cd68",
+      "pixels": [
+        1447,
+        1087
+      ],
+      "bytes": 2626267,
+      "status": "Candidate paired native slice pending"
+    },
+    {
+      "id": "tabletPortrait075-a",
+      "family": "tabletPortrait",
+      "milestone": 75,
+      "prompt": "Edit targetimage1 into Seed Moon's75% TABLET PORTRAIT state, exact1086\u00d71448. Image2 is the original75% plant-state reference only. Keep image1 new connected ivory approach, supporting strata, vegetation and foreground crescent EXACTLY registered, plus all original shell, pearl, scoop, sky, camera and crop. Change ONLY open flower into image2's single CLOSED upright golden bud and its original two mint leaves/curved stem in the SAME positions and scale. Keep previous mint root illumination and visible root-seam light recipient at normalized(0.160,0.214). Original bud is nearx207,y55; do not move the plant downward or enlarge it. Image1's open flower must not remain; final100 opens from this closed bud. No new objects or brightness sweep, no UI/text/stars/grid/characters. Whole continuous opaque painting; exact1086\u00d71448.",
+      "generatedPath": "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-44f941ab-0456-4c1e-9fa5-9a5acb8239ff.png",
+      "references": [
+        {
+          "path": "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-22a81550-33c6-45bb-b7c5-80e76ba9eb46.png",
+          "sha256": "9f38b83635a7e7610deb4c048d3c6c75598a525d716c39dd2a38d925c2e9d137",
+          "role": "Edit target"
+        },
+        {
+          "path": "/Users/lbeezr/.codex/worktrees/3667/Starfall/App/Assets.xcassets/SeedMoonTabletPortrait075.imageset/scene.png",
+          "sha256": "da20d8baaf16487396709e98313c98084b4443fb23058a524fbc5990bb16cf9a",
+          "role": "Original plant-state reference at main5b3efc62"
+        }
+      ],
+      "sha256": "c36835874b8a4fe02713ce7da19066da4985722c552639bd0ba476199820f22c",
+      "pixels": [
+        1086,
+        1448
+      ],
+      "bytes": 2475972,
+      "status": "Candidate paired native slice pending"
+    },
+    {
+      "id": "tabletLandscape075-a",
+      "family": "tabletLandscape",
+      "milestone": 75,
+      "prompt": "Edit targetimage1 into Seed Moon's75% TABLET LANDSCAPE state, exact1447\u00d71087. Image2 is the original75% plant-state reference only. Keep image1's corrected HIGH connected ivory approach and its stair beside the shell, all thick strata/foreground crescent/vegetation/sky/camera/crop EXACTLY registered. Do not move any path/stone/vine toward the central gameplay area. Change ONLY the open flower to image2's CLOSED upright golden bud, preserving the existing mint leaves/curved stem, original shell, pearl seed at normalized(0.170,0.355), scoop, lighting and proportions. Original bud is aroundx252,y155; keep original height and shape, no new flower. Final100 opens from this closed bud. Preserve prior root illumination, no global brightness change/new objects. No UI/text/stars/grid/characters, no transparency. Whole continuous painting, exact1447\u00d71087.",
+      "generatedPath": "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-53dd21bc-8824-4134-a73a-821191db6466.png",
+      "references": [
+        {
+          "path": "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-1a4665bc-eaa9-4fb2-aa50-7e75c243e2c5.png",
+          "sha256": "9dc3ac2bc6548b3b4e3d467c80c076eb4966d39065a5436be8cd30d723f4cd68",
+          "role": "Edit target"
+        },
+        {
+          "path": "/Users/lbeezr/.codex/worktrees/3667/Starfall/App/Assets.xcassets/SeedMoonTabletLandscape075.imageset/scene.png",
+          "sha256": "2bafd042f9d202914bd5aa83f32139b560c0620e363abaf0f22b8e16025773d8",
+          "role": "Original plant-state reference at main5b3efc62"
+        }
+      ],
+      "sha256": "31ab2300c5c1278e0115e743f7c421fa9787315bea361ace0430128c9b6ba90d",
+      "pixels": [
+        1447,
+        1087
+      ],
+      "bytes": 2531128,
+      "status": "Candidate paired native slice pending"
+    },
+    {
+      "id": "phone000-a",
+      "family": "phone",
+      "milestone": 0,
+      "prompt": "Edit target image1, the NEW connected Seed Moon phone100 painting, into its0% restoration state. Image2 is the ORIGINAL matching-stage PLANT-STATE reference only. Keep exact887\u00d71774 canvas and lock image1's new connected tending approach, thick mineral support strata, close foreground crescent, small vegetation clusters, shell silhouette, pearl position(0.301,0.214), scoop/bowl, camera, framing, crop, celestial sky texture and palette. Change ONLY the central restoration plant/root features: The pearl seed is dormant and curled at exactly its current base. Remove the complete tall central stem, large mint leaves and flower entirely, matching image2's dormant state. Keep the shell, scoop/bowl and low planted vegetation; mineral root seams are present but unlit. No shoot or bud. All surrounding terrain and sky must stay registered across whole-image crossfades; do not introduce an overall brightness change, new object, different path/camera, mask or cleared center. Preserve the approach's placement and the quiet boardfield. No characters, UI/text, playable stars or grid. Whole continuous polished painted game scene, opaque, exact887\u00d71774 output.",
+      "generatedPath": "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-8c5280e7-9d3b-4bb1-bc3c-922f7fd09204.png",
+      "references": [
+        {
+          "path": "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-755eb1c3-f763-4592-966b-31353d373858.png",
+          "sha256": "60c2b7b00c45050f53fc310536de0c511a049f1eb10168bcc421765b559c2f5a",
+          "role": "New100 edit target"
+        },
+        {
+          "path": "/Users/lbeezr/.codex/worktrees/3667/Starfall/App/Assets.xcassets/SeedMoon000.imageset/scene.png",
+          "sha256": "bca2a69a10a98d610b26530f6ccf838c3392a80c2aaef0da6111be3a64f744c0",
+          "role": "Original state reference at main5b3efc62"
+        }
+      ],
+      "sha256": "95e551a8cfc9d54e1e4eeb5fae35f101cb5410725880c2b53529d0b0c68b7d7e",
+      "pixels": [
+        887,
+        1774
+      ],
+      "bytes": 2522447,
+      "status": "Source inspected, selected provisionally; full native family acceptance pending"
+    },
+    {
+      "id": "phone025-a",
+      "family": "phone",
+      "milestone": 25,
+      "prompt": "Edit target image1, the NEW connected Seed Moon phone100 painting, into its25% restoration state. Image2 is the ORIGINAL matching-stage PLANT-STATE reference only. Keep exact887\u00d71774 canvas and lock image1's new connected tending approach, thick mineral support strata, close foreground crescent, small vegetation clusters, shell silhouette, pearl position(0.301,0.214), scoop/bowl, camera, framing, crop, celestial sky texture and palette. Change ONLY the central restoration plant/root features: Match image2's quarter-stage plant: still NO central shoot, leaves, bud or flower; retain the dormant pearl at exactly the base, with the first gentle warm root tip and pearl warmth. Previous shell and planted low vegetation remain; only that first small local return of light. Do not light every mineral seam. All surrounding terrain and sky must stay registered across whole-image crossfades; do not introduce an overall brightness change, new object, different path/camera, mask or cleared center. Preserve the approach's placement and the quiet boardfield. No characters, UI/text, playable stars or grid. Whole continuous polished painted game scene, opaque, exact887\u00d71774 output.",
+      "generatedPath": "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-5f4dcb41-466a-4d6b-a573-4fc194046099.png",
+      "references": [
+        {
+          "path": "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-755eb1c3-f763-4592-966b-31353d373858.png",
+          "sha256": "60c2b7b00c45050f53fc310536de0c511a049f1eb10168bcc421765b559c2f5a",
+          "role": "New100 edit target"
+        },
+        {
+          "path": "/Users/lbeezr/.codex/worktrees/3667/Starfall/App/Assets.xcassets/SeedMoon025.imageset/scene.png",
+          "sha256": "30400d7134ebe2c6851b0de550b0942f65a66725a2d1e1a2882fd3f49d923e95",
+          "role": "Original state reference at main5b3efc62"
+        }
+      ],
+      "sha256": "8bb95e1eb1854eb329e344b03fe30068234b744c67e7fd03a4b2a4ebd82ff88f",
+      "pixels": [
+        887,
+        1774
+      ],
+      "bytes": 2504723,
+      "status": "Rejected for premature broad mint root emission on main shell; revise to first small warm root tip before full family acceptance."
+    },
+    {
+      "id": "phone050-a",
+      "family": "phone",
+      "milestone": 50,
+      "prompt": "Edit target image1, the NEW connected Seed Moon phone100 painting, into its50% restoration state. Image2 is the ORIGINAL matching-stage PLANT-STATE reference only. Keep exact887\u00d71774 canvas and lock image1's new connected tending approach, thick mineral support strata, close foreground crescent, small vegetation clusters, shell silhouette, pearl position(0.301,0.214), scoop/bowl, camera, framing, crop, celestial sky texture and palette. Change ONLY the central restoration plant/root features: Match image2's half-stage plant exactly: one thin small mint shoot rises from the pearl, plus connected softly lit mint root seams; no tall mature stem, bud, flower or large canopy leaves. Preserve this original shoot's upper placement for HUD clearance. Keep pearl and original low vegetation. All surrounding terrain and sky must stay registered across whole-image crossfades; do not introduce an overall brightness change, new object, different path/camera, mask or cleared center. Preserve the approach's placement and the quiet boardfield. No characters, UI/text, playable stars or grid. Whole continuous polished painted game scene, opaque, exact887\u00d71774 output.",
+      "generatedPath": "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-fe1dc518-cd2f-4f09-b77f-6071b7c41247.png",
+      "references": [
+        {
+          "path": "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-755eb1c3-f763-4592-966b-31353d373858.png",
+          "sha256": "60c2b7b00c45050f53fc310536de0c511a049f1eb10168bcc421765b559c2f5a",
+          "role": "New100 edit target"
+        },
+        {
+          "path": "/Users/lbeezr/.codex/worktrees/3667/Starfall/App/Assets.xcassets/SeedMoon050.imageset/scene.png",
+          "sha256": "8e9f7ef6f514be75b23f96767cedff3dc28f245594b244016ff55ddbdc0a2e64",
+          "role": "Original state reference at main5b3efc62"
+        }
+      ],
+      "sha256": "475ba43d79193f969c76008d86b75922135ab023fc2471df5a38018ca252cd6e",
+      "pixels": [
+        887,
+        1774
+      ],
+      "bytes": 2541470,
+      "status": "Source inspected, selected provisionally; full native family acceptance pending"
+    },
+    {
+      "id": "phone025-b",
+      "family": "phone",
+      "milestone": 25,
+      "prompt": "Edit targetimage1, the NEW connected Seed Moon25% phone painting. Fix ONLY premature mint emission in the moon's root seams. This is25%, the FIRST return of light, not50%: keep pearl gently warm and show ONE short warm root tip, but remove the broad cyan/green glow across the shell's lower hemisphere (roughlyx0..520,y450..660). Root cracks must remain physically present as quiet grey-green mineral seams with no lit outline except one small root tip near the pearl. Image2 is the old25 state reference for restrained root lighting only. Keep image1 exact887\u00d71774 canvas, all connected ivory approach/strata/foreground crescent/vegetation/sky/crop/camera/shell/scoop/pearl positions EXACTLY registered. Do not change the constant decorative foreground mineral seams or background; only the central moon's restoration roots. No shoot, bud, flower, mature stem or large leaves. Keep dormant seed and its small original curled base. No global brightness shift, new objects, UI/text/stars/grid/characters. Continuous opaque painting, exact887\u00d71774.",
+      "generatedPath": "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-60474135-3f26-4769-b2ab-d2d36fb4e6ef.png",
+      "references": [
+        {
+          "path": "/Users/lbeezr/.codex/generated_images/01a16465-6bc5-7471-9f94-119d1508ce29/exec-5f4dcb41-466a-4d6b-a573-4fc194046099.png",
+          "sha256": "8bb95e1eb1854eb329e344b03fe30068234b744c67e7fd03a4b2a4ebd82ff88f",
+          "role": "Edit target"
+        },
+        {
+          "path": "/private/tmp/starfall-cohesion-20261023/goal05/original-phone025.png",
+          "sha256": "30400d7134ebe2c6851b0de550b0942f65a66725a2d1e1a2882fd3f49d923e95",
+          "role": "Original25 local root-lighting reference at main5b3efc62"
+        }
+      ],
+      "sha256": "95433a2596583dbc77a5d78e2aa824737d9b8530ba95488c784a30c8a63a87d7",
+      "pixels": [
+        887,
+        1774
+      ],
+      "bytes": 2515878,
+      "status": "Source inspected: quiet unlit central root seams retain only a small local warm return, selected provisionally; full native family acceptance pending"
+    }
+  ],
+  "finalEvidence": "../../../evidence/cohesion-goal-05-seed-place-2026-10-23/README.md"
+}

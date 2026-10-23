@@ -1,0 +1,331 @@
+{
+  "status": "Verified for scoped development adoption",
+  "date": "2026-10-23",
+  "activation_main": "5b3efc62fc7f5c0568b5ba339d4d50b89c3f4547",
+  "integrated_main": "6f8fc7a0879e3feb2c56d0107e51b1e3c9f9656b",
+  "tested_clean_commit": "f7487ebdad8292f833c6361f76c2d048c44eb674",
+  "tested_build_dirty_inputs": {},
+  "final_plist_build_id": "dev.local",
+  "prepared_products": "build_sim_2026-10-23T15-37-48-973Z_pid51280_ec65d5e9.xctestproducts",
+  "core": {
+    "passed": 260,
+    "failed": 0,
+    "skipped": 0
+  },
+  "debug_build_seconds": 28.8,
+  "release_build_seconds": 45.6,
+  "tablet": {
+    "result": "Passed",
+    "totalTestCount": 13,
+    "passedTests": 13,
+    "failedTests": 0,
+    "skippedTests": 0,
+    "startTime": 1792769945.92,
+    "finishTime": 1792770127.288,
+    "testFailures": []
+  },
+  "phone_boundaries": {
+    "result": "Passed",
+    "totalTestCount": 3,
+    "passedTests": 3,
+    "failedTests": 0,
+    "skippedTests": 0,
+    "startTime": 1792770026.081,
+    "finishTime": 1792770349.174,
+    "testFailures": []
+  },
+  "winning_recording": {
+    "testExit": 0,
+    "videoExit": 0,
+    "trigger": "Tap \"experiment.cell.0.0\" Button",
+    "triggerElapsed": 36.854,
+    "recordingReadyElapsed": 37.068,
+    "elapsedSeconds": 79.384,
+    "movie": "/private/tmp/starfall-cohesion-20261023/goal05-final-winning.mp4",
+    "command": [
+      "xcodebuild",
+      "-testProductsPath",
+      "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c35297cacc07/test-products/build_sim_2026-10-23T15-37-48-973Z_pid51280_ec65d5e9.xctestproducts",
+      "-destination",
+      "platform=iOS Simulator,id=DB9604E1-D7A8-4C75-BA25-E29243AEC02D",
+      "-collect-test-diagnostics",
+      "never",
+      "-parallel-testing-enabled",
+      "NO",
+      "-only-testing:StarfallUITests/SeedMoonInteractionTests/testSeedWinningClearPersistsNamedResultAndReplayStartsAtZero",
+      "-resultBundlePath",
+      "/private/tmp/starfall-cohesion-20261023/goal05-final-winning.xcresult",
+      "test-without-building"
+    ]
+  },
+  "environment": {
+    "configuration": "Debug and Release / arm64",
+    "toolchain": "Xcode27.1(27A9275), Swift6.4, macOS27.0.1",
+    "phone": "iPhone17e / iOS27.0(24A434) Simulator DB9604E1-D7A8-4C75-BA25-E29243AEC02D",
+    "tablet": "iPad mini A17Pro / iOS27.0(24A434) Simulator E9575758-60A8-45C0-B2AB-91B73C8A8FDC"
+  },
+  "release_seed_renditions": 15,
+  "release_catalog_bytes": 290200456,
+  "hosted_total_restoration_rasters": 105,
+  "native_inventory": {
+    "UI": 206,
+    "hosted": 460,
+    "selected_only": true
+  },
+  "production_inputs": {
+    "App/RestorationEnvironment.swift": "342d32277520dd32950bbe7023ecdcf4f26f5eff812928d8c1aaa556082fe99d"
+  },
+  "limits": [
+    "No physical installation/play, actual VoiceOver, minimum iOS17 run, full RC matrix or human preference measurement.",
+    "Normal recordings inspected via sampled frames: chronology and crossfade, no continuous smoothness claim.",
+    "100% captures show the terminal result with withdrawn dim stars; active density uses75% and other preterminal fixtures.",
+    "Before/final tablet views differ also by independently merged SkyCeilingOverlay; isolated phone75 pair uses same baseline code.",
+    "Native compact phone-landscape not rerun; hosted fill checks cover844x393 canvas.",
+    "Bright stonework lowers forecast/pause contrast; icons remain identifiable; revisit integrated HUD in Goal10."
+  ],
+  "selected_sources": [
+    {
+      "family": "phone",
+      "milestone": 0,
+      "asset": "App/Assets.xcassets/SeedMoon000.imageset/scene.png",
+      "sha256": "95e551a8cfc9d54e1e4eeb5fae35f101cb5410725880c2b53529d0b0c68b7d7e",
+      "pixels": [
+        887,
+        1774
+      ],
+      "bytes": 2522447
+    },
+    {
+      "family": "phone",
+      "milestone": 25,
+      "asset": "App/Assets.xcassets/SeedMoon025.imageset/scene.png",
+      "sha256": "95433a2596583dbc77a5d78e2aa824737d9b8530ba95488c784a30c8a63a87d7",
+      "pixels": [
+        887,
+        1774
+      ],
+      "bytes": 2515878
+    },
+    {
+      "family": "phone",
+      "milestone": 50,
+      "asset": "App/Assets.xcassets/SeedMoon050.imageset/scene.png",
+      "sha256": "475ba43d79193f969c76008d86b75922135ab023fc2471df5a38018ca252cd6e",
+      "pixels": [
+        887,
+        1774
+      ],
+      "bytes": 2541470
+    },
+    {
+      "family": "phone",
+      "milestone": 75,
+      "asset": "App/Assets.xcassets/SeedMoon075.imageset/scene.png",
+      "sha256": "d3578dd8b16c938f994e2bf2b387bd873e8f56e3765c2ae7e9f8fccc6d0fd4cd",
+      "pixels": [
+        887,
+        1774
+      ],
+      "bytes": 2521172
+    },
+    {
+      "family": "phone",
+      "milestone": 100,
+      "asset": "App/Assets.xcassets/SeedMoon100.imageset/scene.png",
+      "sha256": "60c2b7b00c45050f53fc310536de0c511a049f1eb10168bcc421765b559c2f5a",
+      "pixels": [
+        887,
+        1774
+      ],
+      "bytes": 2555783
+    },
+    {
+      "family": "tabletPortrait",
+      "milestone": 0,
+      "asset": "App/Assets.xcassets/SeedMoonTabletPortrait000.imageset/scene.png",
+      "sha256": "fe4d07f77e4bb76dac87921cc25c07f8121ef7f3deafb1d12531bd8e31b7c5a5",
+      "pixels": [
+        1086,
+        1448
+      ],
+      "bytes": 2474354
+    },
+    {
+      "family": "tabletPortrait",
+      "milestone": 25,
+      "asset": "App/Assets.xcassets/SeedMoonTabletPortrait025.imageset/scene.png",
+      "sha256": "d0567ee9cea6aa2c907886bb80eed15930de584b53a9792ac891568be10d01cd",
+      "pixels": [
+        1086,
+        1448
+      ],
+      "bytes": 2472255
+    },
+    {
+      "family": "tabletPortrait",
+      "milestone": 50,
+      "asset": "App/Assets.xcassets/SeedMoonTabletPortrait050.imageset/scene.png",
+      "sha256": "203b3451f539eca0af6a3421b66a9d76daa57f9b12bd474a55b0f3b8c5f0dadc",
+      "pixels": [
+        1086,
+        1448
+      ],
+      "bytes": 2471105
+    },
+    {
+      "family": "tabletPortrait",
+      "milestone": 75,
+      "asset": "App/Assets.xcassets/SeedMoonTabletPortrait075.imageset/scene.png",
+      "sha256": "c36835874b8a4fe02713ce7da19066da4985722c552639bd0ba476199820f22c",
+      "pixels": [
+        1086,
+        1448
+      ],
+      "bytes": 2475972
+    },
+    {
+      "family": "tabletPortrait",
+      "milestone": 100,
+      "asset": "App/Assets.xcassets/SeedMoonTabletPortrait100.imageset/scene.png",
+      "sha256": "9f38b83635a7e7610deb4c048d3c6c75598a525d716c39dd2a38d925c2e9d137",
+      "pixels": [
+        1086,
+        1448
+      ],
+      "bytes": 2534509
+    },
+    {
+      "family": "tabletLandscape",
+      "milestone": 0,
+      "asset": "App/Assets.xcassets/SeedMoonTabletLandscape000.imageset/scene.png",
+      "sha256": "0692d4f7044a74f811f4d3d4f78dea1eb808aa559cc59ae693f79b6b1dca541a",
+      "pixels": [
+        1445,
+        1088
+      ],
+      "bytes": 2532317
+    },
+    {
+      "family": "tabletLandscape",
+      "milestone": 25,
+      "asset": "App/Assets.xcassets/SeedMoonTabletLandscape025.imageset/scene.png",
+      "sha256": "3d30378b8aae486b4afb81bd8bc2f488ef9a38440a30338788603c91225c6b45",
+      "pixels": [
+        1447,
+        1087
+      ],
+      "bytes": 2545947
+    },
+    {
+      "family": "tabletLandscape",
+      "milestone": 50,
+      "asset": "App/Assets.xcassets/SeedMoonTabletLandscape050.imageset/scene.png",
+      "sha256": "4eb0d674d6bbcd2d15ca9cd10bd7d2b1d68fceaa0f8a58e4a1f6aa8969604208",
+      "pixels": [
+        1446,
+        1087
+      ],
+      "bytes": 2559862
+    },
+    {
+      "family": "tabletLandscape",
+      "milestone": 75,
+      "asset": "App/Assets.xcassets/SeedMoonTabletLandscape075.imageset/scene.png",
+      "sha256": "31ab2300c5c1278e0115e743f7c421fa9787315bea361ace0430128c9b6ba90d",
+      "pixels": [
+        1447,
+        1087
+      ],
+      "bytes": 2531128
+    },
+    {
+      "family": "tabletLandscape",
+      "milestone": 100,
+      "asset": "App/Assets.xcassets/SeedMoonTabletLandscape100.imageset/scene.png",
+      "sha256": "9dc3ac2bc6548b3b4e3d467c80c076eb4966d39065a5436be8cd30d723f4cd68",
+      "pixels": [
+        1447,
+        1087
+      ],
+      "bytes": 2626267
+    }
+  ],
+  "commands": [
+    "swift test --scratch-path /private/tmp/starfall-factory-gameplay-20261022/CoreBuild --jobs2",
+    "XcodeBuildMCP build_sim(buildForTesting:true), Debug",
+    "XcodeBuildMCP build_sim({}), Release",
+    "scripts/simulator-command.py --receipt stages.jsonl goal05-final-tablet420 xcodebuild -testProductsPath PREPARED -destination OWN_TABLET -collect-test-diagnostics never -parallel-testing-enabled NO -only-testing:StarfallAppTests/RestorationPresentationTests -only-testing:StarfallUITests/SeedMoonInteractionTests/testTabletRotationKeepsSeedRestorationAndNativeInput -resultBundlePath UNIQUE test-without-building",
+    "scripts/simulator-command.py --receipt stages.jsonl goal05-final-phone-boundaries420 xcodebuild -testProductsPath PREPARED -destination OWN_PHONE [three exact Seed native boundary cases] -resultBundlePath UNIQUE test-without-building",
+    "xcrun assetutil --info Release/Starfall.app/Assets.car",
+    "level-design-kit.py --core-products CoreBuild/out/Products/Debug",
+    "python3 scripts/ci-hygiene.py",
+    "git diff --check"
+  ],
+  "stages": [
+    {
+      "stage": "goal05-final-tablet",
+      "startedUTC": "2026-10-23T15:39:04.998115+00:00",
+      "elapsedSeconds": 182.358,
+      "limitSeconds": 420.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "goal05-final-phone-boundaries",
+      "startedUTC": "2026-10-23T15:40:25.316136+00:00",
+      "elapsedSeconds": 323.942,
+      "limitSeconds": 420.0,
+      "exitCode": 0,
+      "error": null
+    }
+  ],
+  "hygiene": {
+    "passed": true,
+    "diff_check": true,
+    "local_links_passed_before_final_append": 864
+  },
+  "later_main_integration": {
+    "base_main": "dd69da9e68b7469a7c1270ed289de7e78684437b",
+    "tested_clean_commit": "cf4f4007108c40bc41bb33b17f77d6331820af86",
+    "build_dirty_inputs": {},
+    "build_id": "dev.local",
+    "debug_seconds": 25.6,
+    "release_seconds": 37.9,
+    "core": {
+      "passed": 268,
+      "failed": 0,
+      "skipped": 0
+    },
+    "phone": {
+      "result": "Passed",
+      "totalTestCount": 2,
+      "passedTests": 2,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "testFailures": []
+    },
+    "tablet_hosted_and_UI": {
+      "result": "Passed",
+      "totalTestCount": 13,
+      "passedTests": 13,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "testFailures": []
+    },
+    "prepared_products": "build_sim_2026-10-23T15-54-51-255Z_pid51280_45ddd772.xctestproducts",
+    "release_15_renditions_and_source_hashes_match": true,
+    "native_inventory": {
+      "UI": 209,
+      "hosted": 465
+    },
+    "tablet_orientation": "landscape1133x744; AX3XL scrolling canvas",
+    "production_art_and_sourceSize": "Unchanged hashes from f7487ebd checkpoint; Seed4 rules/catalogue preserved from independently merged PR302",
+    "commands": [
+      "swift test --scratch-path /private/tmp/starfall-factory-gameplay-20261022/CoreBuild --jobs 2",
+      "XcodeBuildMCP Debug build_sim(buildForTesting:true), Release build_sim({})",
+      "scripts/simulator-command.py goal05-seed4-phone420: CurrentSeedChoicesRestoreReplayAndOverflow plus legacy winning clear",
+      "scripts/simulator-command.py goal05-seed4-tablet360: RestorationPresentationTests plus CurrentSeedLargestQuietHelpAndOnward",
+      "xcrun assetutil --info Release/Starfall.app/Assets.car"
+    ]
+  }
+}
