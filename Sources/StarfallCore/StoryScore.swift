@@ -47,6 +47,8 @@ struct StoryScoreLedger: Codable, Equatable, Sendable {
 
     private(set) var clearCounts = Array(repeating: 0, count: 50)
     private var cascadeTiers: [Tier]?
+    var phaseCount: Int { clearCounts.reduce(0, +) }
+    var actionCount: Int { cascadeTiers?.first?.count ?? phaseCount }
 
     init(automaticRecipes: Bool = false) {
         cascadeTiers = automaticRecipes ? Array(repeating: Tier(), count: 5) : nil
@@ -70,13 +72,16 @@ struct StoryScoreLedger: Codable, Equatable, Sendable {
         return size + cascadeTiers.enumerated().reduce(0) { $0 + $1.offset * ($1.element.light + $1.element.sizeUnits) }
     }
 
-    func isValid(light: Int, target: Int, automaticRecipes: Bool, manualClears: Bool = true) -> Bool {
+    func isValid(light: Int, target: Int, automaticRecipes: Bool, manualClears: Bool = true,
+                 fullBoardRefill: Bool = false) -> Bool {
+        let maximumLight = fullBoardRefill ? FullBoardLanternResolution.maximumTransactionLight : 98
         guard clearCounts.count == 50, clearCounts[0] == 0, clearCounts[1] == 0,
-              (0...(target / 1_000 + 98)).contains(light),
+              (0...(target / 1_000 + maximumLight)).contains(light),
               clearCounts.allSatisfy({ (0...light).contains($0) }) else { return false }
         if !manualClears && (clearCounts[2] != 0 || clearCounts[3] != 0) { return false }
         let stars = clearCounts.enumerated().reduce(0) { $0 + $1.offset * $1.element }
         guard stars <= light, light <= stars * 2 else { return false }
+        if fullBoardRefill && stars != light { return false }
         guard automaticRecipes else {
             return cascadeTiers == nil && light + bonusUnits < target / 1_000 + 144
         }
@@ -92,11 +97,13 @@ struct StoryScoreLedger: Codable, Equatable, Sendable {
                 // Only automatic recipes continue a transaction: at least four
                 // stars. Tiers 2–4 need a preceding phase; tier 5 holds depths 5–12.
                 guard tier.clearCounts[2] == 0, tier.clearCounts[3] == 0,
-                      tier.count <= tiers[index - 1].count * (index == 4 ? 8 : 1) else { return false }
+                      tier.count <= tiers[index - 1].count * (index == 4
+                        ? (fullBoardRefill ? FullBoardLanternResolution.maximumPhases - 4 : 8) : 1) else { return false }
             }
         }
         // Before the last transaction the objective was unmet. At most 49 grown
         // stars and 46 size units can be spent, each at a multiplier no higher than 5.
-        return light + bonusUnits < target / 1_000 + 720
+        let maximumUnits = fullBoardRefill ? (49 + 46) * 5 * (FullBoardLanternResolution.maximumRefillingPhases + 1) : 720
+        return light + bonusUnits < target / 1_000 + maximumUnits
     }
 }

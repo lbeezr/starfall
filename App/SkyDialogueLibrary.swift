@@ -122,7 +122,7 @@ extension SkyDialogueLibrary {
         } else if !game.isOver, turn.presentationPhases.contains(where: { $0.event == .release }) {
             result = line("guide.release")
         }
-        if turn.collected > 0, !turn.resolutionPhases.isEmpty,
+        if !game.usesFullBoardRefill, turn.collected > 0, !turn.resolutionPhases.isEmpty,
            let recovery = SkyPressureCue.recovery(from: old, to: game) {
             result = SkyDialogueLine(id: result.id, speaker: result.speaker,
                 text: SkyCopy.text(.pressureResult, values: ["detail": result.text, "recovery": recovery]),

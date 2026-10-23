@@ -17,7 +17,7 @@
     "UITests/SeedMoonInteractionTests.swift": "0c8461b126c5a1abb2b9508f00d664528c8dd4165df414b813475b3ffccb0283",
     "Tests/StarfallCoreTests/SeedEncounterTests.swift": "2778e02753fa0a47287bd8fcde34a3d0778f4a701ee76958641343cf1830fde9"
   },
-  "status": "in progress",
+  "status": "Verified development on final combined main source; ready for merge",
   "core": {
     "passed": 257,
     "failed": 0,
@@ -42,8 +42,10 @@
   },
   "actual_bundle_stamp": "dev.local",
   "limits": [
-    "No uncoached player, physical device, minimum-iOS17 or actual VoiceOver evidence",
-    "Native and final integration not yet accepted"
+    "Human recognition, enjoyment, physical play, minimum-iOS17, actualVoiceOver and canonical physical installation not performed",
+    "Earlier native clock/hosted/Core runs remain bound to their original sources; combined-source native/Debug/Release refresh covers the specific passive-art integration",
+    "No new clock, buffer, scoring, schema or rule change from test observation fixes",
+    "First compact-action screenshots precede the later ceiling overlay; final8bc0ebf6 source captures and native passes refresh its actual rendered/interactive integration."
   ],
   "native_and_hosted": {
     "initial": {
@@ -80,6 +82,32 @@
       "tool_seconds": 239.334,
       "test_seconds": 193.148,
       "boundary": "Loop inspected outcome before asynchronous terminal presentation, then waited only for a Next control removed at loss. Corrected to accept either ready Next or terminal outcome, matching existing Kite behavior. Loss assertion and original five-second condition retained."
+    },
+    "choices_terminal_corrected": {
+      "result": "1 passed/0 failed/0 skipped",
+      "tool_seconds": 192.827,
+      "test_seconds": 172.381,
+      "bundle": "seed-phone-choices-terminal.xcresult",
+      "clean_input_commit": "8dcc4570",
+      "production_input": "dev.a7fb00d69e"
+    },
+    "phone_preview_integrated": {
+      "result": "4 passed/0 failed/0 skipped",
+      "hosted": 3,
+      "native": 1,
+      "tool_seconds": 243.974,
+      "test_seconds": 213.746,
+      "bundle": "seed-phone-preview-compact-integrated.xcresult",
+      "production_input": "dev.596d285373"
+    },
+    "tablet_integrated": {
+      "result": "1 passed/0 failed/0 skipped",
+      "tool_seconds": 210.045,
+      "test_seconds": 158.751,
+      "bundle": "seed-tablet-compact-integrated.xcresult",
+      "production_input": "dev.596d285373",
+      "variant": "AX3XL, calmEffects YES, systemReduceMotion false",
+      "visual": "Full Help read over three overlapping viewports; initial grown ingredient, Entry, complete13,000-point round and reachable onward. Lower result actions extend below the captured viewport."
     }
   },
   "release": {
@@ -94,5 +122,197 @@
     "UITests/SeedMoonInteractionTests.swift": "26401bd635050e6b31b4108e9d330215ee9e721c1a653feea39083c80d014d7f",
     "UITests/RestorationInteractionScenarios.swift": "37b65e1515298f94b1f0839b697c65f0cdcd8c78166b5b45889d5fcd529e23fd",
     "AppTests/StoryPatternPlan.swift": "bd98b468ca1dde4fceee09a8d2dfa6c777182446b7a31306b4243903c3fc758c"
+  },
+  "integrated_source": {
+    "clean_input_commit": "26124268e928316951dc4900f941c09b5451c1b9",
+    "tree": "4943fb89e999b75a586015e884066b93b0991bc6",
+    "fingerprint": "dev.596d285373",
+    "main_integration": "5b3efc62fc7f5c0568b5ba339d4d50b89c3f4547 / PR300 compact action material",
+    "changed_runtime_owners": [
+      "App/ObservatoryArtwork.swift",
+      "App/StarfallTheme.swift"
+    ],
+    "unchanged_owner_scope": "Core/rule/score/RNG/save/store/clock/catalogue and four selected hosted suites byte-identical; prior results retain their source; clock not rerun merely for passive material."
+  },
+  "release_integrated": {
+    "result": "passed",
+    "wrapper_seconds": 14.925,
+    "log": "seed-release-compact-integrated.log"
+  },
+  "captures": {
+    "count": 12,
+    "bytes": 6991073,
+    "index": "captures.json",
+    "format": "JPEG70 at original dimensions, raw hashes retained"
+  },
+  "discoveries": [
+    "Historical preview helper expected18 for explicit fresh Seed; corrected to11,000 while retained9/18 assertions remain. Both resulting native boundaries pass.",
+    "Roadmap/visual index still called mergedKite prepared; reconciled the existing owners instead of opening a duplicate task."
+  ],
+  "commands": {
+    "core": [
+      "python3",
+      "scripts/simulator-command.py",
+      "--receipt",
+      "TMP/stages.jsonl",
+      "seed-full-core-authorized",
+      "300",
+      "swift",
+      "test",
+      "--scratch-path",
+      "TMP/SeedCore",
+      "--jobs",
+      "2"
+    ],
+    "native": [
+      "XcodeBuildMCP test_sim",
+      "-jobs",
+      "2",
+      "-parallel-testing-enabled",
+      "NO",
+      "-collect-test-diagnostics",
+      "never",
+      "ARCHS=arm64",
+      "ONLY_ACTIVE_ARCH=YES",
+      "CODE_SIGNING_ALLOWED=NO",
+      "exact selected methods and bounded allowances in named result bundles"
+    ],
+    "release": [
+      "xcodebuild",
+      "-project",
+      "Starfall.xcodeproj",
+      "-scheme",
+      "Starfall",
+      "-configuration",
+      "Release",
+      "-sdk",
+      "iphonesimulator",
+      "-destination",
+      "generic/platform=iOS Simulator",
+      "-derivedDataPath",
+      "TMP/Release",
+      "-jobs",
+      "2",
+      "ARCHS=arm64",
+      "ONLY_ACTIVE_ARCH=YES",
+      "CODE_SIGNING_ALLOWED=NO",
+      "build"
+    ],
+    "raw": "/private/tmp/starfall-next-encounters-20261023"
+  },
+  "hygiene": {
+    "ci_hygiene": "pass",
+    "diff_check": "pass",
+    "local_link_targets": 1063,
+    "missing": 0,
+    "capture_hash_dimension_checks": 12
+  },
+  "final_integration": {
+    "source": "8bc0ebf667910f4e262e60c06c5b4bb7ac17b9b0",
+    "tree": "05e84c4890671a6f5373f427f81ab794df09e1a2",
+    "runtime_fingerprint": "dev.495b77cd3c",
+    "actual_bundle_stamp": "dev.local",
+    "main": "6f8fc7a0879e3feb2c56d0107e51b1e3c9f9656b / PR301 optional Lantern5, archive14, ceiling",
+    "production_merge_repairs": "none; preserve both incoming feature and Seed4",
+    "core": {
+      "command": "CLANG_MODULE_CACHE_PATH=/private/tmp/starfall-next-encounters-20261023/SeedFullBoardCore/clang-cache SWIFT_MODULECACHE_PATH=/private/tmp/starfall-next-encounters-20261023/SeedFullBoardCore/swift-cache swift test --jobs 2 --disable-sandbox --scratch-path /private/tmp/starfall-next-encounters-20261023/SeedFullBoardCore/build --cache-path /private/tmp/starfall-next-encounters-20261023/SeedFullBoardCore/cache --config-path /private/tmp/starfall-next-encounters-20261023/SeedFullBoardCore/config --security-path /private/tmp/starfall-next-encounters-20261023/SeedFullBoardCore/security",
+      "discoveries": "none",
+      "exit_code": 0,
+      "finished_utc": "2026-10-23T15:21:12.041403+00:00",
+      "integration_correction": "none; Core auto-merge correct; incoming StoryPattern unknown-revision test already updated to maximumSupportedRevision+1",
+      "limits": [
+        "No native or simulator work by this worker; root owns integration evidence."
+      ],
+      "log": "/private/tmp/starfall-next-encounters-20261023/SeedFullBoardCore/full-core.log",
+      "owned_source_hashes": {
+        "Sources/StarfallCore/StoryChallenge.swift": "48888944a7432277aaea1e2cf91e4169a58ba1d3648e8c011a0ce59030d54e38",
+        "Tests/StarfallCoreTests/KiteEncounterTests.swift": "a011678c24a3385da40f83e7f800cf2b2e3a28cd7edbeac2e1e876d410b6edd9",
+        "Tests/StarfallCoreTests/SeedEncounterTests.swift": "2778e02753fa0a47287bd8fcde34a3d0778f4a701ee76958641343cf1830fde9",
+        "Tests/StarfallCoreTests/StoryCascadeTests.swift": "98c9b096a408c22cc04e62da40ac5c6fa0869feb2ea2072b9fd5fc4ce8a82e7f",
+        "Tests/StarfallCoreTests/StoryPatternTests.swift": "4ce4ea327287017a53d2d938767ecb95753e33cccc8c4635bf2a86218750219a"
+      },
+      "package_inputs_unchanged_during_test": true,
+      "result": "pass",
+      "review": {
+        "freeze_utc": "2026-10-23T15:19:49.860999+00:00",
+        "head": "937abef09959d12ab1b2ddecc4b9db17675cc28d",
+        "merge_head": "6f8fc7a0879e3feb2c56d0107e51b1e3c9f9656b",
+        "review": "Core auto-merge preserves Lantern5 explicit-only/maxSupported5 and currentRevision4 with Seed4-only/11000. Existing Seed/Kite rejected5 is location-specific. Incoming unknown Lantern test uses maximumSupportedRevision+1.",
+        "source_changes_made_by_worker": [],
+        "swift_input_count": 57
+      },
+      "tests": {
+        "executed": 268,
+        "failures": 0,
+        "per_class": {
+          "ConstellationGapCoreTests": 3,
+          "CriticalMassTests": 12,
+          "DuskFeedingTests": 10,
+          "DuskPlanningCompatibilityTests": 1,
+          "FallingSkyPacingTests": 5,
+          "FallingSkyTests": 31,
+          "FullBoardLanternTests": 11,
+          "GameTests": 20,
+          "GravityOpportunityTests": 5,
+          "GravityRetirementTests": 6,
+          "GravityTests": 18,
+          "KiteEncounterTests": 7,
+          "RefillMappingTests": 7,
+          "SeedEncounterTests": 8,
+          "SkyCadenceTests": 9,
+          "SkyGenerationTests": 6,
+          "SkyLessonTests": 3,
+          "SkyTutorialTests": 9,
+          "StarRecipeTests": 20,
+          "StarfallChallengeTests": 8,
+          "StarlightRestorationTests": 5,
+          "StoryCascadePolicyTests": 4,
+          "StoryCascadeTests": 11,
+          "StoryFourStarLinePolicyTests": 3,
+          "StoryFourStarLineTests": 10,
+          "StoryMasteryRecoveryWitnessTests": 1,
+          "StoryPatternTests": 11,
+          "StoryRevisionOneTests": 12,
+          "WhiteConnectorTests": 12
+        },
+        "skipped": 0,
+        "xctest_duration_seconds": 19.136
+      },
+      "worker_edits": []
+    },
+    "catalogue": {
+      "keys": 477,
+      "scripts": 107,
+      "line_ids": 112,
+      "sha256_source_debug_release": "fb4e29e8a8570f9e9cc6830fe6754433803be4bf42a4cf674d8a6f901db33f13",
+      "static_receipt": "/private/tmp/starfall-next-encounters-20261023/seed-app-combined/validation.json"
+    },
+    "phone": {
+      "passed": 129,
+      "hosted": 128,
+      "native": 1,
+      "failed": 0,
+      "skipped": 0,
+      "tool_seconds": 195.263,
+      "native_seconds": 132.344,
+      "bundle": "seed-phone-fullboard-integrated.xcresult",
+      "witness": "exactlyone actual automatic shower after zero-score grown-aqua setup; four recovery swipes,14,000/11,000 Seed win and genuine earnedSilver Entry; no Next or extra pause during recovery"
+    },
+    "tablet": {
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "tool_seconds": 194.163,
+      "native_seconds": 153.338,
+      "bundle": "seed-tablet-fullboard-integrated.xcresult",
+      "variant": "AX3XL quiet, normal system motion; full Help/13,000-point finish/onward",
+      "visual_limit": "All key instructions inspected across overlapping viewports; the trailing optional word too remains below final captured viewport. Whole native label exists and scrolling is available; no UI defect established."
+    },
+    "release": {
+      "result": "passed",
+      "wrapper_seconds": 69.946,
+      "log": "seed-release-fullboard-integrated.log"
+    },
+    "build_inputs_after_test": "only documentation/capture receipts will change before publication"
   }
 }

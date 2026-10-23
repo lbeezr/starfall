@@ -15,7 +15,10 @@ enum SkyCopy {
     }
 
     /// Each mode supplies exactly the placeholders its summary consumes.
-    static func boardSummary(showers: Int, groups: Int, manualClears: Bool, automaticLineLength: Int?) -> String {
+    static func boardSummary(showers: Int, groups: Int, manualClears: Bool, automaticLineLength: Int?, fullBoard: Bool = false) -> String {
+        if fullBoard {
+            return text(.a11yFullBoardSummary, values: ["moves": String(showers)])
+        }
         if manualClears {
             return text(.a11yBoardSummary, values: ["showers": String(showers), "groups": String(groups)])
         }
@@ -37,6 +40,26 @@ enum SkyCopy {
     }
 
     enum Key: String, CaseIterable, Sendable {
+        case lanternModeChoice = "lantern.modeChoice"
+        case fallingSkyMode = "lantern.fallingSkyMode"
+        case fullBoardMode = "lantern.fullBoardMode"
+        case fullBoardWelcome = "lantern.fullBoardWelcome"
+        case fullBoardPace = "lantern.fullBoardPace"
+        case fullBoardRefill = "lantern.fullBoardRefill"
+        case helpFullBoardTitle = "help.fullBoardTitle"
+        case helpFullBoardRecipe = "help.fullBoardRecipe"
+        case helpFullBoardIdentity = "help.fullBoardIdentity"
+        case helpFullBoardControls = "help.fullBoardControls"
+        case helpFullBoardRefill = "help.fullBoardRefill"
+        case helpFullBoardChallenge = "help.fullBoardChallenge"
+        case helpFullBoardMenu = "help.fullBoardMenu"
+        case a11yFullBoardSummary = "a11y.fullBoardSummary"
+        case ceilingLabel = "ceiling.label"
+        case ceilingBoardEdge = "ceiling.boardEdge"
+        case ceilingHeadroomOne = "ceiling.headroomOne"
+        case ceilingHeadroomMany = "ceiling.headroomMany"
+        case ceilingHeadroomFull = "ceiling.headroomFull"
+        case ceilingHint = "ceiling.hint"
         case balanceGentleShort = "balance.gentleShort"
         case balanceSteadyShort = "balance.steadyShort"
         case balanceBriskShort = "balance.briskShort"

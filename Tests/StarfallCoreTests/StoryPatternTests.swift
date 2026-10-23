@@ -249,9 +249,9 @@ final class StoryPatternTests: XCTestCase {
             XCTAssertFalse(ledger.isValid(light: 3, target: 150_000, automaticRecipes: true, manualClears: false))
         }
         let current = FallingSky.freshChallenge(.firstLight)
-        let unknown = try changed(current) { $0["savedChallengeRevision"] = 5 }
+        let unknown = try changed(current) { $0["savedChallengeRevision"] = StoryChallengeDefinition.maximumSupportedRevision + 1 }
         XCTAssertFalse(unknown.isValidSave)
-        XCTAssertNil(StoryChallengeDefinition(.firstLight, revision: 5))
+        XCTAssertNil(StoryChallengeDefinition(.firstLight, revision: StoryChallengeDefinition.maximumSupportedRevision + 1))
         for revision in [1, 2] {
             let retained = FallingSky(definition: StoryChallengeDefinition(.firstLight, revision: revision)!)
             XCTAssertTrue(retained.supportsManualClears)

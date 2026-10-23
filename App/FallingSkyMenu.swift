@@ -27,7 +27,12 @@ struct FallingSkyMenu: View {
             SkyMenuSurface(title: SkyCopy.text(.menuTitle), glyph: .pause, done: done,
                            footerTitle: SkyCopy.text(.actionReturn)) {
                 SkyMenuSection(challenge?.locationTitle ?? SkyCopy.text(.flowOpen)) {
-                    if !over {
+                    if helpContext.fullBoard {
+                        Text(SkyCopy.text(.fullBoardMode))
+                            .font(StarfallTheme.Typography.skyHeading)
+                        Text(SkyCopy.text(.fullBoardPace))
+                    }
+                    if !over && !helpContext.fullBoard {
                         Button(action: pause) {
                             HStack(spacing: StarfallTheme.Spacing.small) {
                                 ObservatoryIcon(paused ? .play : .pause, size: 20)
@@ -43,7 +48,8 @@ struct FallingSkyMenu: View {
                     } else {
                         HStack(spacing: StarfallTheme.Spacing.small) { roundActions }
                     }
-                    Text(SkyCopy.boardSummary(showers: turns, groups: groups, manualClears: helpContext.manualClears, automaticLineLength: helpContext.automaticLineLength))
+                    Text(SkyCopy.boardSummary(showers: turns, groups: groups, manualClears: helpContext.manualClears,
+                                             automaticLineLength: helpContext.automaticLineLength, fullBoard: helpContext.fullBoard))
                         .font(StarfallTheme.Typography.supporting)
                         .foregroundStyle(StarfallTheme.Colors.textSecondary)
                         .fixedSize(horizontal: false, vertical: true)

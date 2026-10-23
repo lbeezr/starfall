@@ -5,9 +5,12 @@ public struct StoryChallengeDefinition: Sendable {
     public let challenge: StarfallChallenge
     public let revision: Int
     public static let currentRevision = 4
+    /// Revision five is an explicit Lantern comparison; normal new visits stay on four.
+    public static let maximumSupportedRevision = 5
 
     public init?(_ challenge: StarfallChallenge, revision: Int = currentRevision) {
-        guard (1...Self.currentRevision).contains(revision) else { return nil }
+        guard (1...Self.maximumSupportedRevision).contains(revision),
+              revision != 5 || challenge == .firstLight else { return nil }
         switch challenge {
         case .firstLight, .ribbonCrossing: break
         case .kiteHarbor, .seedMoon:
@@ -28,7 +31,7 @@ public struct StoryChallengeDefinition: Sendable {
     var automaticLineLength: Int? {
         switch revision {
         case 3: return 7
-        case 4: return 4
+        case 4, 5: return 4
         default: return nil
         }
     }
@@ -55,7 +58,11 @@ public struct StoryChallengeDefinition: Sendable {
     }
     var initialBoard: [StarfallGem?] {
         let rows: [String]
-        if challenge == .kiteHarbor {
+        if revision == 5 {
+            // Recipe-free, five-family full board. The same lower-left exchange
+            // as the sky opening starts a square with visible follow-up activity.
+            rows = ["AARVVMY", "ARAYMRM", "VRVAYMM", "YRYMMMR", "YVRYYYM", "VAMVMYA", "MAAVRMV"]
+        } else if challenge == .kiteHarbor {
             // Choose high-column room or a larger low clear. Both choices keep
             // the same supply and can recover the remaining crowded column.
             rows = ["AVAARAA", "ARMYAMY", "RAVR...", "AM.....", "MY.....", "VR....."]
@@ -121,6 +128,7 @@ public struct StoryChallengeDefinition: Sendable {
 
     func suppliedLight(after showers: Int) -> Int {
         precondition(showers >= 0 && showers < Int.max / 6)
+        if revision == 5 { return 0 }
         if revision >= 2 { return showers * 5 }
         let motifs = motifs
         return showers / motifs.count * motifs.reduce(0) { $0 + $1.1.count }
@@ -131,6 +139,7 @@ public struct StoryChallengeDefinition: Sendable {
     /// Mirrored motifs and a rotated palette develop the same readable techniques.
     func shower(number: Int) -> [IncomingStar] {
         precondition(number > 0 && number < Int.max / 6)
+        if revision == 5 { return [] }
         if revision >= 3 { return shuffledShower(number: number) }
         if revision == 2 { return mixedShower(number: number) }
         let motifs = motifs

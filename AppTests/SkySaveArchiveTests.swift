@@ -483,7 +483,7 @@ extension SkySaveArchiveTests {
             store.setSuspended(false)
             let migrated = try XCTUnwrap(defaults.data(forKey: SkySaveArchive.key))
             let envelope = try XCTUnwrap(JSONSerialization.jsonObject(with: migrated) as? [String: Any])
-            XCTAssertEqual(envelope["schemaVersion"] as? Int, 13)
+            XCTAssertEqual(envelope["schemaVersion"] as? Int, SkySaveArchive.schemaVersion)
             XCTAssertEqual(try SkySaveArchive.decode(migrated), old)
             XCTAssertEqual(defaults.data(forKey: SkySaveArchive.storyKey), bytes)
 

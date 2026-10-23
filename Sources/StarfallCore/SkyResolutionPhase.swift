@@ -7,12 +7,17 @@ public struct SkyResolutionPhase: Equatable, Sendable {
     public let cleared: Set<Cell>
     public let recipes: [StarRecipe]
     public let settled: [StarfallGem?]
+    /// New supply after surviving stars settle. Historical phases have no arrivals.
+    public let refillArrivals: [FallingSkyTurn.Arrival]
+    /// Full refill snapshot before the next causal clear; historical phases equal `settled`.
+    public let refilled: [StarfallGem?]
     public let award: SkyScoreAward
     /// Causal clear number within this action, starting at one; never a timed streak.
     public let comboDepth: Int
 
     init(kind: Kind, before: [StarfallGem?], cleared: Set<Cell>,
-         recipes: [StarRecipe] = [], comboDepth: Int) {
+         recipes: [StarRecipe] = [], comboDepth: Int,
+         refillArrivals: [FallingSkyTurn.Arrival] = [], refilled: [StarfallGem?]? = nil) {
         self.kind = kind
         self.before = before
         self.cleared = cleared
@@ -24,6 +29,8 @@ public struct SkyResolutionPhase: Equatable, Sendable {
         var remaining = before
         for cell in cleared { remaining[cell.row * FallingSky.side + cell.column] = nil }
         settled = SkyBoardSettling.settle(remaining)
+        self.refillArrivals = refillArrivals
+        self.refilled = refilled ?? settled
     }
 }
 

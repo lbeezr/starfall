@@ -4,7 +4,8 @@ import StarfallCore
 /// One persistence contract for committed skies. Legacy bytes remain untouched;
 /// a present but invalid current save never falls back to an older round.
 enum SkySaveArchive {
-    static let key = "starfall.accumulation.v13"
+    static let key = "starfall.accumulation.v14"
+    static let fourLineKey = "starfall.accumulation.v13"
     static let patternKey = "starfall.accumulation.v12"
     static let cascadeKey = "starfall.accumulation.v11"
     static let storyKey = "starfall.accumulation.v10"
@@ -15,7 +16,7 @@ enum SkySaveArchive {
     static let gravityKey = "starfall.accumulation.v5"
     static let previousKey = "starfall.accumulation.v4"
     static let legacyKey = "starfall.accumulation.v3"
-    static let schemaVersion = 13
+    static let schemaVersion = 14
     /// One recovery slot; never used as an automatic fallback.
     static let rejectedKey = "starfall.accumulation.rejected"
 
@@ -54,7 +55,7 @@ enum SkySaveArchive {
     }
 
     @MainActor static func inspect(from defaults: UserDefaults) -> LoadResult {
-        let keys = [key, patternKey, cascadeKey, storyKey, worldKey, agingKey, patientFeedingKey, feedingKey, gravityKey, previousKey, legacyKey]
+        let keys = [key, fourLineKey, patternKey, cascadeKey, storyKey, worldKey, agingKey, patientFeedingKey, feedingKey, gravityKey, previousKey, legacyKey]
         guard let source = keys.first(where: { defaults.object(forKey: $0) != nil }) else { return .missing }
         guard let game = load(from: defaults) else { return .rejected(sourceKey: source) }
         return .loaded(game)
@@ -74,6 +75,13 @@ enum SkySaveArchive {
         if defaults.object(forKey: key) != nil {
             guard let data = defaults.data(forKey: key), let game = try? decode(data) else { return nil }
             return game
+        }
+        if defaults.object(forKey: fourLineKey) != nil {
+            guard let data = defaults.data(forKey: fourLineKey),
+                  let envelope = try? JSONDecoder().decode(Envelope.self, from: data),
+                  envelope.schemaVersion == 13, envelope.game.isValidSave,
+                  (0...4).contains(envelope.game.challengeRevision) else { return nil }
+            return envelope.game
         }
         if defaults.object(forKey: patternKey) != nil {
             guard let data = defaults.data(forKey: patternKey),

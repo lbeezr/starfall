@@ -365,7 +365,10 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         if tutorial == nil, !arguments.contains("--starfalls-reset"), case .loaded(let saved) = SkySaveArchive.inspect(from: defaults) {
             game = saved.removingGravity().adoptingFeedingDusk().disablingAutomaticAging().adoptingCurrentChallengeActions()
             hasSavedSky = true
-            guide(saved.outcome == .won ? (saved.challenge?.wonGuideID ?? "guide.won") : saved.isOver ? "guide.full" : "guide.restore", values: saved.isOver ? ["score": saved.displayScore.formatted()] : [:])
+            guide(saved.outcome == .won ? (saved.challenge?.wonGuideID ?? "guide.won") : saved.isOver ? "guide.full"
+                : saved.usesFullBoardRefill ? "guide.full-board-restore" : "guide.restore",
+                values: saved.isOver ? ["score": saved.displayScore.formatted()] : [:],
+                visible: saved.usesFullBoardRefill && !saved.isOver)
         } else {
             let argument = arguments.first { $0.hasPrefix("--starfalls-seed=") }
             let seed = argument.flatMap { UInt64($0.dropFirst("--starfalls-seed=".count)) } ?? 5
@@ -453,8 +456,8 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     }
 
     var phaseCue: SkyPhaseCue? { SkyPhaseCue(game: game, pending: pending) }
-    var pressureCue: SkyPressureCue? { SkyPressureCue(game: game) }
-    var forecast: [IncomingStar] { pending?.forecast ?? game.incoming }
+    var pressureCue: SkyPressureCue? { game.usesFullBoardRefill ? nil : SkyPressureCue(game: game) }
+    var forecast: [IncomingStar] { game.usesFullBoardRefill ? [] : pending?.forecast ?? game.incoming }
     var showerInterval: TimeInterval { nextShowerCadence.delay }
     /// The renderer samples the scheduler's monotonic clock and frozen remainder.
     /// It cannot schedule, resume or commit rain through this value boundary.
@@ -674,7 +677,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         #if DEBUG
         guard !isTechniqueFixture else { return }
         #endif
-        guard !constellationTracing, !busy, !suspended, !game.isOver else { return }
+        guard !game.usesFullBoardRefill, !constellationTracing, !busy, !suspended, !game.isOver else { return }
         freezeClock()
         remaining = showerInterval
         commitShower(announcesResult: true)
@@ -685,7 +688,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         defer { observeTiming(.state) }
         #endif
         invalidateInput("pause")
-        guard !suspended, !game.isOver else { return }
+        guard !game.usesFullBoardRefill, !suspended, !game.isOver else { return }
         let before = game
         isPaused.toggle()
         self.tutorial?.observe(isPaused ? .pause : .resume, before: before, after: game)
@@ -702,6 +705,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     }
 
     private func armClock() {
+        guard !game.usesFullBoardRefill else { return }
         if let tutorial {
             guard tutorial.chapter.allowsClock, !tutorial.complete, !tutorial.needsRetry,
                   tutorial.next != .pause else { return }
@@ -751,7 +755,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     }
 
     private func deliverRainIfReady() {
-        guard rainDue, !busy, !constellationTracing, bufferedInput == nil, !suspended, !isPaused, !game.isOver else { return }
+        guard !game.usesFullBoardRefill, rainDue, !busy, !constellationTracing, bufferedInput == nil, !suspended, !isPaused, !game.isOver else { return }
         let dueDeadline = deadline
         rainDue = false
         deadline = nil
@@ -759,6 +763,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     }
 
     private func commitShower(announcesResult: Bool, scheduledDeadline: TimeInterval? = nil) {
+        guard !game.usesFullBoardRefill else { return }
         let old = game
         let previousCadence = nextShowerCadence
         guard let turn = game.letStarsFall() else { return }
@@ -867,6 +872,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         case .fresh: restart(sameSky: false)
         case .replay: restart(sameSky: true)
         case .firstLight: startFirstLight()
+        case .fullBoardLantern: startFullBoardLantern()
         case .ribbonCrossing: startChallenge(.ribbonCrossing)
         case .kiteHarbor: startChallenge(.kiteHarbor)
         case .seedMoon: startChallenge(.seedMoon)
@@ -897,7 +903,11 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         }
         refreshCadence()
         remaining = showerInterval
-        dialogue.reset(); guide(sameSky ? "guide.replay" : "guide.new")
+        dialogue.reset()
+        if game.usesFullBoardRefill, let line = game.challengeGuideLine {
+            guideLine = line; dialogue.show(line)
+        }
+        else { guide(sameSky ? "guide.replay" : "guide.new") }
         prepareRoundOpening()
     }
 
@@ -926,8 +936,13 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     #endif
 
     func startFirstLight() { startChallenge(.firstLight) }
+    func startFullBoardLantern() { beginChallenge(FallingSky.fullBoardLantern()) }
 
     func startChallenge(_ challenge: StarfallChallenge) {
+        beginChallenge(FallingSky.freshChallenge(challenge))
+    }
+
+    private func beginChallenge(_ fresh: FallingSky) {
         #if DEBUG
         isTechniqueFixture = false
         #endif
@@ -936,11 +951,14 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         #endif
         isPaused = true
         interruptPlay(reason: "challenge")
-        game = FallingSky.freshChallenge(challenge)
+        game = fresh
         refreshCadence()
         remaining = showerInterval
         dialogue.reset()
-        if let line = game.challengeGuideLine { guideLine = line }
+        if let line = game.challengeGuideLine {
+            guideLine = line
+            if game.usesFullBoardRefill { dialogue.show(line) }
+        }
         prepareRoundOpening()
     }
 

@@ -12,6 +12,7 @@ struct SkyHelpContext: Equatable {
     let automaticRecipes: Bool
     let manualClears: Bool
     let automaticLineLength: Int?
+    let fullBoard: Bool
     var challenge: Bool { restorationChallenge != nil }
     let arranging: Bool
     let openingCascade: Bool
@@ -28,10 +29,12 @@ struct SkyHelpContext: Equatable {
         automaticRecipes = game.supportsAutomaticRecipes
         manualClears = game.supportsManualClears
         automaticLineLength = game.automaticLineLength
+        fullBoard = game.usesFullBoardRefill
         opalStorms = game.generation != .legacy
     }
 
     var recipeInstructions: String {
+        if fullBoard { return SkyCopy.text(.helpFullBoardRecipe) }
         if let automaticLineLength {
             return SkyCopy.text(.helpPatternsRecipe, values: ["lines": SkyCopy.patternLines(automaticLineLength)])
         }
@@ -142,8 +145,8 @@ struct SkyHowToPlay: View {
                 if !context.manualClears { Text(SkyCopy.text(.helpPracticeModes)) }
             }
             SkyMenuSection(SkyCopy.text(context.manualClears ? .helpTapTitle : .helpPatternsTitle)) {
-                Text(SkyCopy.text(context.manualClears ? .helpTap : .helpPatternsControls))
-                Text(SkyCopy.text(context.automaticRecipes ? .helpCascadeIdentity
+                Text(SkyCopy.text(context.fullBoard ? .helpFullBoardControls : context.manualClears ? .helpTap : .helpPatternsControls))
+                Text(SkyCopy.text(context.fullBoard ? .helpFullBoardIdentity : context.automaticRecipes ? .helpCascadeIdentity
                                   : context.scaledPoints ? .helpStoryIdentity : .helpIdentity))
             }
             if context.criticalMass {
@@ -160,11 +163,17 @@ struct SkyHowToPlay: View {
                     Text(SkyCopy.text(.helpAccessibleTrace))
                 }
             }
-            SkyMenuSection(SkyCopy.text(.helpShowerTitle)) {
-                if context.automaticRecipes { Text(SkyCopy.text(.helpCascadeOpening)) }
-                else if context.openingCascade { Text(SkyCopy.text(.helpOpening)) }
-                Text(SkyCopy.text(.helpForecast))
-                Text(SkyCopy.text(.helpGrowth))
+            if context.fullBoard {
+                SkyMenuSection(SkyCopy.text(.helpFullBoardTitle)) {
+                    Text(SkyCopy.text(.helpFullBoardRefill))
+                }
+            } else {
+                SkyMenuSection(SkyCopy.text(.helpShowerTitle)) {
+                    if context.automaticRecipes { Text(SkyCopy.text(.helpCascadeOpening)) }
+                    else if context.openingCascade { Text(SkyCopy.text(.helpOpening)) }
+                    Text(SkyCopy.text(.helpForecast))
+                    Text(SkyCopy.text(.helpGrowth))
+                }
             }
             if context.opalStorms {
                 SkyMenuSection(SkyCopy.text(.helpOpalTitle)) {
@@ -185,8 +194,14 @@ struct SkyHowToPlay: View {
                     }
                 }
             }
-            SkyMenuSection(SkyCopy.text(.helpPauseTitle)) {
-                Text(SkyCopy.text(.helpPause))
+            if context.fullBoard {
+                SkyMenuSection(SkyCopy.text(.menuTitle)) {
+                    Text(SkyCopy.text(.helpFullBoardMenu))
+                }
+            } else {
+                SkyMenuSection(SkyCopy.text(.helpPauseTitle)) {
+                    Text(SkyCopy.text(.helpPause))
+                }
             }
             if context.arranging {
                 SkyMenuSection(SkyCopy.text(.helpArrangeTitle)) {

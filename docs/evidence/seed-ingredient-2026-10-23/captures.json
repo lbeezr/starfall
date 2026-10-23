@@ -1,0 +1,348 @@
+{
+  "status": "12 inspected source-bound development captures; final8bc0ebf6 source refreshes ceiling integration",
+  "conversion": "PNG\u2192JPEG quality70, original dimensions; no crop/resize. Raw PNGs remain temporary and hash-verified unchanged.",
+  "limits": [
+    "Each capture retains its actual source; earlier passing clock images do not independently certify the later compact-action visual source.",
+    "The current integrated Entry/opening and tablet captures refresh visual/input acceptance; Core/store/clock/copy bytes stay unchanged across compact-action integration.",
+    "No physical-device, human-recognition/enjoyment, minimum-OS or actualVoiceOver acceptance."
+  ],
+  "captures": [
+    {
+      "name": "automatic-recovery-result",
+      "file": "dev-fb3ff776__automatic-recovery-result__iphone-17e__default-text.jpg",
+      "capture_set": "passing-clock",
+      "source_export": "5EFAD6CF-8560-4119-A5C7-B19506705A3F.png",
+      "source_export_directory": "/private/tmp/starfall-next-encounters-20261023/seed-phone-clock-corrected-attachments",
+      "source_result_bundle": "/private/tmp/starfall-next-encounters-20261023/seed-phone-clock-corrected.xcresult",
+      "test": "SeedMoonInteractionTests/testCurrentSeedAutomaticShowerRecoveryEarnsSilver()",
+      "attachment_name": "seed-current-automatic-shower-earned-win_0_D8CEE4CB-781A-4F99-AB0F-371929671320.png",
+      "attachment_timestamp_utc": "2026-10-23T14:55:15.152000+00:00",
+      "device_id": "64231AFE-4CDB-4B5A-B6D5-70CD7CEED324",
+      "device_name": "Starfall Factory Goals iPhone",
+      "configuration": "Test Scheme Action",
+      "variant": "default text; calmEffects NO; system Reduce Motion off; Simulator",
+      "original_sha256": "82c9b1a9f765b559f516fb8941cb51e95d851e2d9ef5b8bfcbd1b122cce71c77",
+      "sha256": "4fa50b1b315055008024576edad09a9ff3ebe1503f10a6b9b718f184a8808643",
+      "original_bytes": 3297480,
+      "bytes": 467508,
+      "original_dimensions": [
+        1170,
+        2532
+      ],
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "format": "JPEG quality70 via sips; original dimensions; no crop/resize",
+      "source_input_fingerprint": "dev.a7fb00d69e",
+      "raw_visual_inspected": true,
+      "retained_visual_inspected": true,
+      "verified_original_unchanged": true,
+      "verified_no_resize": true,
+      "observations": "Result visibly shows Seed Moon restored, exact14,000 of11,000, restored flower/shelter and all four actions: Visit Silver Pools, New sky, Replay Seed Moon and Back to Observatory.",
+      "clean_input_commit": "fb3ff776"
+    },
+    {
+      "name": "earned-silver-entry",
+      "file": "dev-fb3ff776__earned-silver-entry__iphone-17e__default-text.jpg",
+      "capture_set": "passing-clock",
+      "source_export": "FCF99DB1-B84F-4430-8109-C57ED3831695.png",
+      "source_export_directory": "/private/tmp/starfall-next-encounters-20261023/seed-phone-clock-corrected-attachments",
+      "source_result_bundle": "/private/tmp/starfall-next-encounters-20261023/seed-phone-clock-corrected.xcresult",
+      "test": "SeedMoonInteractionTests/testCurrentSeedAutomaticShowerRecoveryEarnsSilver()",
+      "attachment_name": "seed-current-earned-silver-entry_0_6B644EAF-AED4-49FA-A97C-274CB54F943F.png",
+      "attachment_timestamp_utc": "2026-10-23T14:55:21.517000+00:00",
+      "device_id": "64231AFE-4CDB-4B5A-B6D5-70CD7CEED324",
+      "device_name": "Starfall Factory Goals iPhone",
+      "configuration": "Test Scheme Action",
+      "variant": "default text; calmEffects NO; system Reduce Motion off; Simulator",
+      "original_sha256": "8e264118d9e7def4ecfa6e42ac89c2a0573c67dca74351cda6a751f9bac7f523",
+      "sha256": "e1edd48d426ed043dc8957d7f0dcf1e512a95e06f173a24470f253e52791de58",
+      "original_bytes": 4533145,
+      "bytes": 703492,
+      "original_dimensions": [
+        1170,
+        2532
+      ],
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "format": "JPEG quality70 via sips; original dimensions; no crop/resize",
+      "source_input_fingerprint": "dev.a7fb00d69e",
+      "raw_visual_inspected": true,
+      "retained_visual_inspected": true,
+      "verified_original_unchanged": true,
+      "verified_no_resize": true,
+      "observations": "Silver Pools Entry shows its full existing18-starlight objective and Begin. This is the current historical Silver rule, not the planned #280 automatic-pattern expansion.",
+      "clean_input_commit": "fb3ff776"
+    },
+    {
+      "file": "dev-26124268__seed-entry__iphone-17e__default-text.jpg",
+      "source_export": "/private/tmp/starfall-next-encounters-20261023/seed-phone-preview-compact-integrated-attachments/2AE27229-0932-4FD5-AF55-2E8CADB15CB6.png",
+      "test": "SeedMoonInteractionTests/testSeedPreviewCancellationRetainsAllThreeExistingLocationsUntilBegin()",
+      "attachment_name": "seed-entry-over-retained-half-restored-kite_0_412BF50F-C3B5-4047-8CD4-73BE9A445EFC.png",
+      "timestamp": 1792768091.948,
+      "device_id": "64231AFE-4CDB-4B5A-B6D5-70CD7CEED324",
+      "source_input_fingerprint": "dev.596d285373",
+      "clean_input_commit": "26124268",
+      "actual_bundle_stamp": "dev.local",
+      "original_sha256": "7577a060eee98475eda4dc32065986ee0b9001e67d70cfc3d374ac4da3df4642",
+      "sha256": "f87a5252dbfef75045d7ec096033b8fe88024bf074e3ed166223530b9b1ab734",
+      "original_dimensions": [
+        1170,
+        2532
+      ],
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 505638,
+      "format": "JPEG quality70, original dimensions; no crop/resize",
+      "visual_inspected": true,
+      "observations": "Whole11,000-point ingredient choice and automatic-pattern guidance fit above Begin; preview retains a historical Kite round until Begin."
+    },
+    {
+      "file": "dev-26124268__grown-opening__iphone-17e__default-text.jpg",
+      "source_export": "/private/tmp/starfall-next-encounters-20261023/seed-phone-preview-compact-integrated-attachments/6F9D0CB3-0CAA-4425-B129-F567CF968CC6.png",
+      "test": "SeedMoonInteractionTests/testSeedPreviewCancellationRetainsAllThreeExistingLocationsUntilBegin()",
+      "attachment_name": "seed-begin-replaces-retained-kite-with-unrestored-location_0_58861673-7118-4694-B99F-C6A5E731428E.png",
+      "timestamp": 1792768134.809,
+      "device_id": "64231AFE-4CDB-4B5A-B6D5-70CD7CEED324",
+      "source_input_fingerprint": "dev.596d285373",
+      "clean_input_commit": "26124268",
+      "actual_bundle_stamp": "dev.local",
+      "original_sha256": "2f1e34d08a2bd33df135a48f247547627b912b7a1bb5bcd4fe01fd3154b493e1",
+      "sha256": "1e213b70a665a8a33101fb5625a138433d9cf892fc11844d2c726e4b8789f4dc",
+      "original_dimensions": [
+        1170,
+        2532
+      ],
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 543776,
+      "format": "JPEG quality70, original dimensions; no crop/resize",
+      "visual_inspected": true,
+      "observations": "Paused23-star opening shows0/11,000, larger haloed aqua at row0column1, forecast and normal native buttons. This is a still, not uncoached recognition or motion evidence."
+    },
+    {
+      "file": "dev-26124268__help-heading__ipad-pro11-m5__ax3xl-quiet.jpg",
+      "source_export": "/private/tmp/starfall-next-encounters-20261023/seed-tablet-compact-integrated-attachments/C283A04A-1453-4404-94B4-075F4C0FE9B4.png",
+      "test": "SeedMoonInteractionTests/testCurrentSeedLargestQuietHelpAndOnward()",
+      "attachment_name": "seed-current-help-heading-largest_0_D5700AE8-9D16-4B63-831F-FD130ADF1E22.png",
+      "timestamp": 1792768319.798,
+      "device_id": "255E141F-D4D6-45DA-89FF-51436BF1BBA7",
+      "source_input_fingerprint": "dev.596d285373",
+      "clean_input_commit": "26124268",
+      "actual_bundle_stamp": "dev.local",
+      "original_sha256": "8ca0a14a010f1feae9ae79fbc7506abc35c66d0b2b9bbde2293b63a7462e3748",
+      "sha256": "8315accfdc9df2ae429145f46d534714b4e6b321c6c7bb3422ca39b90c30f7cf",
+      "original_dimensions": [
+        1668,
+        2420
+      ],
+      "dimensions": [
+        1668,
+        2420
+      ],
+      "bytes": 567479,
+      "format": "JPEG quality70, original dimensions; no crop/resize",
+      "visual_inspected": true,
+      "observations": "First overlapping Help viewport shows the full Seed heading,11,000 target and two-light ingredient explanation; lower text continues."
+    },
+    {
+      "file": "dev-26124268__help-middle__ipad-pro11-m5__ax3xl-quiet.jpg",
+      "source_export": "/private/tmp/starfall-next-encounters-20261023/seed-tablet-compact-integrated-attachments/A30471FA-A907-4D95-8761-85F3271A49A2.png",
+      "test": "SeedMoonInteractionTests/testCurrentSeedLargestQuietHelpAndOnward()",
+      "attachment_name": "seed-current-help-middle-largest_0_8604D62E-1147-4F39-9705-EB6810D57612.png",
+      "timestamp": 1792768322.667,
+      "device_id": "255E141F-D4D6-45DA-89FF-51436BF1BBA7",
+      "source_input_fingerprint": "dev.596d285373",
+      "clean_input_commit": "26124268",
+      "actual_bundle_stamp": "dev.local",
+      "original_sha256": "3b92e62d9dc7d6909c660d7f299b33a639f20a20966b45c3ea4055d3c677faaf",
+      "sha256": "1b0d5380a8fc65a2536a08afa69bbf7f57475971c1cdfc3669ba3bbe1f48eee8",
+      "original_dimensions": [
+        1668,
+        2420
+      ],
+      "dimensions": [
+        1668,
+        2420
+      ],
+      "bytes": 583569,
+      "format": "JPEG quality70, original dimensions; no crop/resize",
+      "visual_inspected": true,
+      "observations": "Overlaps the first viewport and shows complete6,000/8,000 comparison, extra star and size bonus; the waiting-value sentence continues."
+    },
+    {
+      "file": "dev-26124268__help-end__ipad-pro11-m5__ax3xl-quiet.jpg",
+      "source_export": "/private/tmp/starfall-next-encounters-20261023/seed-tablet-compact-integrated-attachments/235B3EE2-6ABF-4E63-8B63-DFACAB27B15B.png",
+      "test": "SeedMoonInteractionTests/testCurrentSeedLargestQuietHelpAndOnward()",
+      "attachment_name": "seed-current-help-end-largest_0_9CD3D850-8E33-4C33-AAAE-30B0EF6DB9A9.png",
+      "timestamp": 1792768326.376,
+      "device_id": "255E141F-D4D6-45DA-89FF-51436BF1BBA7",
+      "source_input_fingerprint": "dev.596d285373",
+      "clean_input_commit": "26124268",
+      "actual_bundle_stamp": "dev.local",
+      "original_sha256": "bccc3d00c293ab8c7c5d84289f4f660cfc732f14c00c1ac5187f117ede07de27",
+      "sha256": "e14ecb0db33be1d19a76b0c94cd4a0aa303934297fbfe9894e52dbf8f3258698",
+      "original_dimensions": [
+        1668,
+        2420
+      ],
+      "dimensions": [
+        1668,
+        2420
+      ],
+      "bytes": 581860,
+      "format": "JPEG quality70, original dimensions; no crop/resize",
+      "visual_inspected": true,
+      "observations": "Overlaps the middle viewport; shows waiting does not increase grown value, all automatic recipes and other legal finishes. Done stays reachable."
+    },
+    {
+      "file": "dev-26124268__grown-opening__ipad-pro11-m5__ax3xl-quiet.jpg",
+      "source_export": "/private/tmp/starfall-next-encounters-20261023/seed-tablet-compact-integrated-attachments/130B172B-DED5-4EEB-A61D-4F1AF888061E.png",
+      "test": "SeedMoonInteractionTests/testCurrentSeedLargestQuietHelpAndOnward()",
+      "attachment_name": "seed-current-grown-opening-largest_0_30947377-4E45-4876-B9FC-5B0533733104.png",
+      "timestamp": 1792768268.161,
+      "device_id": "255E141F-D4D6-45DA-89FF-51436BF1BBA7",
+      "source_input_fingerprint": "dev.596d285373",
+      "clean_input_commit": "26124268",
+      "actual_bundle_stamp": "dev.local",
+      "original_sha256": "c93b0ff29ca3e13952caa35505216b13d455588de2f9074405c78da1fec958a1",
+      "sha256": "0fbff2cfe33685559797692a2f79f06ecd74a6724db40f5eec4464396661b295",
+      "original_dimensions": [
+        1668,
+        2420
+      ],
+      "dimensions": [
+        1668,
+        2420
+      ],
+      "bytes": 628174,
+      "format": "JPEG quality70, original dimensions; no crop/resize",
+      "visual_inspected": true,
+      "observations": "Quiet AX3XL23-star opening retains a distinctly larger/haloed aqua,11,000 goal, forecast and reachable native buttons. Not an uncoached-recognition claim."
+    },
+    {
+      "file": "dev-26124268__preserve-result__ipad-pro11-m5__ax3xl-quiet.jpg",
+      "source_export": "/private/tmp/starfall-next-encounters-20261023/seed-tablet-compact-integrated-attachments/C83719A9-C558-4207-ADE2-C3C39930B71F.png",
+      "test": "SeedMoonInteractionTests/testCurrentSeedLargestQuietHelpAndOnward()",
+      "attachment_name": "seed-current-preserve-win_0_4931D7A9-12A9-4EBA-8353-611BF6699CBC.png",
+      "timestamp": 1792768356.847,
+      "device_id": "255E141F-D4D6-45DA-89FF-51436BF1BBA7",
+      "source_input_fingerprint": "dev.596d285373",
+      "clean_input_commit": "26124268",
+      "actual_bundle_stamp": "dev.local",
+      "original_sha256": "32291e8e9b3306b391d14ef11880b046d096b40877e23e505d0b8a385e2f14cb",
+      "sha256": "95b61c081e89ec41e110fabf51a668fda204024a03685bdf12d57ce4d6102e7a",
+      "original_dimensions": [
+        1668,
+        2420
+      ],
+      "dimensions": [
+        1668,
+        2420
+      ],
+      "bytes": 609310,
+      "format": "JPEG quality70, original dimensions; no crop/resize",
+      "visual_inspected": true,
+      "observations": "13,000/11,000 and restored shelter are readable with VisitSilver. Newsky and part of Replay extend below this viewport; the native scenario reveals actions before onward use."
+    },
+    {
+      "file": "dev-26124268__seed-entry__ipad-pro11-m5__ax3xl-quiet.jpg",
+      "source_export": "/private/tmp/starfall-next-encounters-20261023/seed-tablet-compact-integrated-attachments/2E2A2089-A146-4678-99A4-4D02CE4694A2.png",
+      "test": "SeedMoonInteractionTests/testCurrentSeedLargestQuietHelpAndOnward()",
+      "attachment_name": "seed-current-entry-largest_0_09983054-07F1-4584-986B-5265825B16F7.png",
+      "timestamp": 1792768252.329,
+      "device_id": "255E141F-D4D6-45DA-89FF-51436BF1BBA7",
+      "source_input_fingerprint": "dev.596d285373",
+      "clean_input_commit": "26124268",
+      "actual_bundle_stamp": "dev.local",
+      "original_sha256": "4d28076ea51cb514d6eb81893311612dac70d2690ef46f5895452e7e1253374f",
+      "sha256": "2fadc75ff1941a335475d7fa3bef413ff66dd037be50d634e795eebc6dd64eb2",
+      "original_dimensions": [
+        1668,
+        2420
+      ],
+      "dimensions": [
+        1668,
+        2420
+      ],
+      "bytes": 701936,
+      "format": "JPEG quality70, original dimensions; no crop/resize",
+      "visual_inspected": true,
+      "observations": "Full selected11,000-point ingredient guidance and Begin at AX3XL; ordinary scrolling/reading remains available."
+    },
+    {
+      "file": "dev-8bc0ebf6__automatic-recovery-result__iphone-17e__default-text.jpg",
+      "source_export": "/private/tmp/starfall-next-encounters-20261023/seed-phone-fullboard-integrated-attachments/ACEB5FD1-6239-4F88-9153-42EBF76B953B.png",
+      "original_sha256": "89a653a07dc31351c3b3110aafaa808f1752b6217bcb6380fdc8856323dbbfae",
+      "sha256": "d8a8eeb85d7b61c6c7dce03c36a46cb9fda59209d38dae2314c3ee0d76d4025b",
+      "original_bytes": 3274703,
+      "bytes": 463793,
+      "original_dimensions": [
+        1170,
+        2532
+      ],
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "source_result_bundle": "/private/tmp/starfall-next-encounters-20261023/seed-phone-fullboard-integrated.xcresult",
+      "test": "SeedMoonInteractionTests/testCurrentSeedAutomaticShowerRecoveryEarnsSilver()",
+      "attachment_name": "seed-current-automatic-shower-earned-win_0_541F8864-2683-4777-9879-0263E19BA1D5.png",
+      "attachment_timestamp_utc": "2026-10-23T15:26:51.266000+00:00",
+      "device_name": "Starfall Factory Goals iPhone",
+      "device_id": "64231AFE-4CDB-4B5A-B6D5-70CD7CEED324",
+      "os": "iOS27.0 Simulator (24A434)",
+      "variant": "default text; calmEffects NO; system Reduce Motion off",
+      "source_commit": "8bc0ebf667910f4e262e60c06c5b4bb7ac17b9b0",
+      "source_input_fingerprint": "dev.495b77cd3c",
+      "raw_visual_inspected": true,
+      "retained_visual_inspected": true,
+      "verified_original_unchanged": true,
+      "verified_no_resize": true,
+      "observations": "Phone result shows14,000 of11,000, full restored flower/shelter and all4 actions readable. New sky and Replay use integrated rounded styling. No ceiling line crosses result content."
+    },
+    {
+      "file": "dev-8bc0ebf6__grown-opening__ipad-pro11-m5__ax3xl-quiet.jpg",
+      "source_export": "/private/tmp/starfall-next-encounters-20261023/seed-tablet-fullboard-integrated-attachments/2F05E59B-0471-4B74-BD52-077EEE1AE795.png",
+      "original_sha256": "fbdcff121192176bfc0ce5dd525bf4c512006e24c8b0e58c66d4b6ec705dc950",
+      "sha256": "122eb5e5cd4e7857f0afdb623223f5357784e229032e1827619f171a1c826780",
+      "original_bytes": 4653698,
+      "bytes": 634538,
+      "original_dimensions": [
+        1668,
+        2420
+      ],
+      "dimensions": [
+        1668,
+        2420
+      ],
+      "source_result_bundle": "/private/tmp/starfall-next-encounters-20261023/seed-tablet-fullboard-integrated.xcresult",
+      "test": "SeedMoonInteractionTests/testCurrentSeedLargestQuietHelpAndOnward()",
+      "attachment_name": "seed-current-grown-opening-largest_0_5289319A-4B63-49F8-AFC7-D9DF5EE72456.png",
+      "attachment_timestamp_utc": "2026-10-23T15:29:26.454000+00:00",
+      "device_name": "Starfall Factory Goals iPad",
+      "device_id": "255E141F-D4D6-45DA-89FF-51436BF1BBA7",
+      "os": "iOS27.0 Simulator (24A434)",
+      "variant": "AX3XL; calmEffects YES; system Reduce Motion off",
+      "source_commit": "8bc0ebf667910f4e262e60c06c5b4bb7ac17b9b0",
+      "source_input_fingerprint": "dev.495b77cd3c",
+      "raw_visual_inspected": true,
+      "retained_visual_inspected": true,
+      "verified_original_unchanged": true,
+      "verified_no_resize": true,
+      "observations": "Paused0/11,000 opening shows the grown aqua at bottom row,column1 with visibly larger body/halo. Thin ceiling line spans the seven columns above occupied rows without covering stars. Header, forecast and Start sky/Next shower remain readable."
+    }
+  ],
+  "final_visual_limits": [
+    "No native/browser/Git/GitHub commands, simulator interactions, repository writes or fanout by reviewer.",
+    "Stills do not establish animation chronology, actual cadence, human comprehension/comfort, physical play, actual VoiceOver or delivery.",
+    "Development filename identifies the supplied source commit; runtime fingerprint is recorded separately. App Info.plist stamp was not inspected in this review."
+  ]
+}
