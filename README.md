@@ -12,6 +12,8 @@
 
 **Exact Map/Places goals — October 22:** Destination cards show the new-visit objective separately from the matching saved round's exact progress. Historical 9/18 and current point targets keep their own meaning; cancellation preserves the board. [Development checks and native cards](docs/evidence/map-goals-2026-10-22/README.md) cover default/XL phone and largest-text tablet.
 
+**Seed ingredient choice — October 23:** New Seed visits offer an 11,000-point choice: spend the grown aqua star in a smaller line now, or preserve it for a larger pattern. Complete native routes, interruption/Replay and earned onward travel use existing rules and paintings. [Development evidence](docs/evidence/seed-ingredient-2026-10-23/README.md) separates tested consequences from unmeasured human recognition and comfort.
+
 **Kite headroom encounter — October 23:** New Kite visits offer a 17,000-point choice between a smaller high clear and a larger low award. Both native paths can restore the fleet; saved historical rounds retain their rules. [Development evidence](docs/evidence/kite-headroom-2026-10-23/README.md) separates ordinary-clock recovery and phone/tablet checks from unmeasured human play.
 
 **Rising Story-chain audio — October 22:** Committed recipe/cascade phases now form a short rising phrase, capped at phase three. Two original local cues preserve one voice, mute/cancellation and historical sounds. [Development evidence](docs/evidence/chain-audio-2026-10-22/README.md) separates native playback/interaction checks from unmeasured physical listening and enjoyment.

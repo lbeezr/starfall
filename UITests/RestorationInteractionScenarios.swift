@@ -68,13 +68,13 @@ class RestorationInteractionScenarios: XCTestCase {
         button.tap()
     }
 
-    @MainActor func assertRestoration(_ percent: Int, score: Int, location selected: ReviewLocation? = nil, in app: XCUIApplication) {
+    @MainActor func assertRestoration(_ percent: Int, score: Int, location selected: ReviewLocation? = nil, target: Int = 18, in app: XCUIApplication) {
         let location = selected ?? self.location
         let restoration = app.descendants(matching: .any)["\(location.rawValue).restoration"].firstMatch
         XCTAssertTrue(restoration.waitForExistence(timeout: 5))
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "\(location.title), \(percent)% restored"),
                                                object: restoration).wait(timeout: 5))
-        XCTAssertEqual(app.staticTexts["experiment.score"].label, "\(score) of 18 starlight collected")
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, "\(score.formatted()) of \(target.formatted()) starlight collected")
     }
 
     @MainActor func capture(_ app: XCUIApplication, _ name: String) {
@@ -192,7 +192,7 @@ class RestorationInteractionScenarios: XCTestCase {
         capture(app, "\(self.location.rawValue)-dense-overflow-replay-reset-to-unrestored")
     }
 
-    @MainActor func exercisePreviewCancellationRetainsLocationsUntilBegin(_ previous: [ReviewLocation]) {
+    @MainActor func exercisePreviewCancellationRetainsLocationsUntilBegin(_ previous: [ReviewLocation], newVisitTarget: Int = 18) {
         executionTimeAllowance = 300
         setSystemMotion(reduced: false)
         for location in previous {
@@ -207,7 +207,7 @@ class RestorationInteractionScenarios: XCTestCase {
             app.worldVisitControl(self.location.route).tap()
             XCTAssertTrue(app.buttons["sky.begin"].waitForExistence(timeout: 5))
             XCTAssertEqual(app.staticTexts["sky.title"].label, self.location.title)
-            XCTAssertTrue(app.staticTexts["sky.subtitle"].label.contains("18 starlight"))
+            XCTAssertTrue(app.staticTexts["sky.subtitle"].label.contains("\(newVisitTarget.formatted()) starlight"))
             XCTAssertFalse(app.buttons["experiment.cell.0.0"].exists)
             capture(app, "\(self.location.rawValue)-entry-over-retained-half-restored-\(location.rawValue)")
             tap("sky.home", in: app)
@@ -226,7 +226,7 @@ class RestorationInteractionScenarios: XCTestCase {
             XCTAssertEqual(app.staticTexts["sky.title"].label, self.location.title)
             tap("sky.begin", in: app)
             pauseRunningSky(app)
-            assertRestoration(0, score: 0, in: app)
+            assertRestoration(0, score: 0, target: newVisitTarget, in: app)
             XCTAssertFalse(app.descendants(matching: .any)["\(location.rawValue).restoration"].firstMatch.exists)
             capture(app, "\(self.location.rawValue)-begin-replaces-retained-\(location.rawValue)-with-unrestored-location")
         }

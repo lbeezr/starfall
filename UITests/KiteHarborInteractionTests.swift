@@ -412,7 +412,7 @@ extension KiteHarborInteractionTests {
         tap("world.visit", in: app)
         XCTAssertTrue(app.buttons["sky.begin"].waitForExistence(timeout: 5))
         XCTAssertEqual(app.staticTexts["sky.title"].label, "Seed Moon")
-        XCTAssertTrue(app.staticTexts["sky.subtitle"].label.contains("18 starlight"))
+        XCTAssertTrue(app.staticTexts["sky.subtitle"].label.contains("11,000 starlight"))
         capture(app, "kite-current-seed-entry-largest")
     }
 

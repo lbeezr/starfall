@@ -1,0 +1,98 @@
+{
+  "head": "b41a623c633d22dc9248e4fcdfc5bb505be1452f",
+  "fingerprint": "dev.a7fb00d69e",
+  "files": {
+    "App/DialogueScripts/observatory-dialogue.json": "45e823b680782466923943f7433926bb6f5d775f414e9746f4df018780eabced",
+    "App/RestorationPresentation.swift": "50350389b9b5c439de0fbbcdbd1e2208aaa8ab22cab253b9507bddec3bb03cbe",
+    "App/SkyCopy.swift": "d6a59dc17d3687eafbdf624c883e05bb8212638fff1cd098f6307646be71de09",
+    "AppTests/SkyDialogueTests.swift": "847687b0421b905579ef6167fd9d93a31d2b18cfc37ee43c2399d08cbd4e2c43",
+    "AppTests/SkyFlowStateTests.swift": "a6b48c1caa4b1f71555fa2243ecc44949d7aeb89a7275c81d69419ed398f29c1",
+    "AppTests/SkySaveArchiveTests.swift": "c6af8858100cc77399d122b4577e70c08511048a26621adb3371592375b2028e",
+    "AppTests/StoryPatternPlan.swift": "bd98b468ca1dde4fceee09a8d2dfa6c777182446b7a31306b4243903c3fc758c",
+    "Sources/StarfallCore/StoryChallenge.swift": "9cdff6bf39b2cb769a390e3920fc2b9ace4c5ca52902bd8dec217d13c054ba77",
+    "Tests/StarfallCoreTests/KiteEncounterTests.swift": "a011678c24a3385da40f83e7f800cf2b2e3a28cd7edbeac2e1e876d410b6edd9",
+    "Tests/StarfallCoreTests/StoryCascadeTests.swift": "98c9b096a408c22cc04e62da40ac5c6fa0869feb2ea2072b9fd5fc4ce8a82e7f",
+    "Tests/StarfallCoreTests/StoryPatternTests.swift": "749a68527cf4ca3cd8353ce47f17c52deb45f83eddd36ec63edaca31b689dbb1",
+    "UITests/KiteHarborInteractionTests.swift": "59ae1d188769bdacd0d10955f728199ef9308ea41d1bc123270483e396b66b3f",
+    "UITests/SeedMoonInteractionTests.swift": "0c8461b126c5a1abb2b9508f00d664528c8dd4165df414b813475b3ffccb0283",
+    "Tests/StarfallCoreTests/SeedEncounterTests.swift": "2778e02753fa0a47287bd8fcde34a3d0778f4a701ee76958641343cf1830fde9"
+  },
+  "status": "in progress",
+  "core": {
+    "passed": 257,
+    "failed": 0,
+    "skipped": 0,
+    "test_seconds": 17.526,
+    "wrapper_seconds": 36.992,
+    "log": "seed-full-core-authorized.log"
+  },
+  "catalogue": {
+    "keys": 457,
+    "scripts": 103,
+    "line_ids": 108,
+    "old_scripts_unchanged": 100,
+    "sha256_source_debug_release": "45e823b680782466923943f7433926bb6f5d775f414e9746f4df018780eabced"
+  },
+  "environment": {
+    "xcode": "27.1",
+    "runtime": "iOS 27.0 (24A434)",
+    "phone": "64231AFE-4CDB-4B5A-B6D5-70CD7CEED324",
+    "tablet": "255E141F-D4D6-45DA-89FF-51436BF1BBA7",
+    "max_owned_booted": 1
+  },
+  "actual_bundle_stamp": "dev.local",
+  "limits": [
+    "No uncoached player, physical device, minimum-iOS17 or actual VoiceOver evidence",
+    "Native and final integration not yet accepted"
+  ],
+  "native_and_hosted": {
+    "initial": {
+      "result": "109 passed/2 failed/0 skipped; connector timeout300s, owned xcodebuild completed339.921s",
+      "bundle": "seed-phone-first.xcresult",
+      "passed_hosted": 108,
+      "passed_historical_native": 1,
+      "failed_native": [
+        "automatic recovery at terminal score observation",
+        "choices at restored terminal score observation"
+      ],
+      "production_input": "dev.a7fb00d69e",
+      "test_boundary": "The ceremony accessibility label is speaker plus reason plus exact score plus closing sentence; the initial helper expected the bare live-HUD score."
+    },
+    "clock_corrected": {
+      "result": "1 passed/0 failed/0 skipped",
+      "tool_seconds": 149.458,
+      "test_seconds": 125.374,
+      "bundle": "seed-phone-clock-corrected.xcresult",
+      "clean_input_commit": "fb3ff776",
+      "production_input": "dev.a7fb00d69e",
+      "asserted": [
+        "Silver locked before earning Kite and Seed",
+        "Kite18,000/17,000 via ordinary inputs",
+        "Seed grown aqua moved withzero score",
+        "one actual automatic shower, no Next or extra pause during four recovery swipes",
+        "Seed14,000/11,000 win",
+        "earned Silver ready and18-light Entry"
+      ]
+    },
+    "choices_label_corrected": {
+      "result": "failed at fifth-shower terminal transition after both complete choices, restore and Replay assertions passed",
+      "bundle": "seed-phone-choices-corrected.xcresult",
+      "tool_seconds": 239.334,
+      "test_seconds": 193.148,
+      "boundary": "Loop inspected outcome before asynchronous terminal presentation, then waited only for a Next control removed at loss. Corrected to accept either ready Next or terminal outcome, matching existing Kite behavior. Loss assertion and original five-second condition retained."
+    }
+  },
+  "release": {
+    "result": "passed",
+    "wrapper_seconds": 41.445,
+    "log": "seed-release.log",
+    "configuration": "Release generic iOS Simulator arm64 jobs2 CODE_SIGNING_ALLOWED=NO"
+  },
+  "test_observation_corrections_do_not_change_runtime": true,
+  "current_candidate_commit": "cd249ad39bdec5fceade30824a55812d354de916",
+  "native_test_source_sha256": {
+    "UITests/SeedMoonInteractionTests.swift": "26401bd635050e6b31b4108e9d330215ee9e721c1a653feea39083c80d014d7f",
+    "UITests/RestorationInteractionScenarios.swift": "37b65e1515298f94b1f0839b697c65f0cdcd8c78166b5b45889d5fcd529e23fd",
+    "AppTests/StoryPatternPlan.swift": "bd98b468ca1dde4fceee09a8d2dfa6c777182446b7a31306b4243903c3fc758c"
+  }
+}

@@ -1,5 +1,7 @@
 # Evidence index
 
+[Seed grown-ingredient encounter](seed-ingredient-2026-10-23/README.md) records the 11,000-point spend/preserve fork, versioned history, native recovery and exact verification limits.
+
 [Game-factory goal 10: coherent game](game-goal-10-coherent-game-2026-10-23/README.md) reproduces and corrects stale Tutorial Help, verifies exact four-mode/AX3XL returns, and links all ten independent development outcomes.
 
 [Later-chain mastery recovery](story-mastery-recovery-2026-10-23/README.md) proves a real 150,000-point Lantern win after an irreversible declined opening: 73 exchanges, 15 showers, natural growth and five later chains. One bounded planning family and independent every-action replay support the new version-bound regression. Runtime mastery remains proposed; human timing remains unmeasured.
