@@ -1,5 +1,7 @@
 # Evidence index
 
+[Game-factory goal 6: earned Lantern payoff](game-goal-06-lantern-payoff-2026-10-22/README.md) reviews all five sparse/full native milestones, retains the paintings and adds an immediate named onward destination with exact cancellation/restore boundaries.
+
 [Game-factory goal 5: pressure and recovery](game-goal-05-pressure-recovery-2026-10-22/README.md) compares real crowded/blocked states, exact recovery, quiet/large-text reading and active/paused expiry boundaries.
 
 [Exact Map/Places goals](map-goals-2026-10-22/README.md) records seven-definition and retained-objective checks, eight hosted/three native passes, Debug/Release catalogue identity and four inspected cards. Current point totals and historical 9/18 remain separate; canceled visits preserve exact saved state. Human comprehension and physical acceptance remain unmeasured.

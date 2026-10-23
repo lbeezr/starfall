@@ -334,6 +334,156 @@ final class SkyFlowStateTests: XCTestCase {
         XCTAssertNil(flow.handle(.preferences, hasSavedSky: true))
     }
 
+    @MainActor func testOnwardSnapshotRequiresRecordedWinAndNamesOnlyItsImmediateReadySuccessor() throws {
+        for legacy in [false, true] {
+            for location in WorldLocation.allCases where location.challenge != nil {
+                var win = ObservatoryReviewFixture.game(dense: false, score: 14, challenge: location.challenge)
+                XCTAssertNotNil(win.clear(Cell(0, 0)))
+                XCTAssertEqual(win.outcome, .won)
+                var journey = WorldJourney(legacyAccess: legacy)
+                XCTAssertNil(SkyOnwardSnapshot(game: win, journey: journey), "An unrecorded repair cannot offer onward travel")
+                journey.record(win)
+                journey.select(.hollowCrown)
+                let next = WorldLocation.allCases.dropFirst(location.number).first
+                let onward = SkyOnwardSnapshot(game: win, journey: journey)
+                XCTAssertEqual(onward?.destination, next.flatMap { $0.challenge == nil ? nil : $0 })
+                if let onward {
+                    XCTAssertEqual(onward.label, "Visit \(onward.destination.title)")
+                    let restored = try JSONDecoder().decode(FallingSky.self, from: JSONEncoder().encode(win))
+                    journey.record(restored)
+                    XCTAssertEqual(SkyOnwardSnapshot(game: restored, journey: journey), onward,
+                                   "Restored and repeated wins ignore the browsed selection")
+                    var successorWin = ObservatoryReviewFixture.game(dense: false, score: 14, challenge: onward.destination.challenge)
+                    XCTAssertNotNil(successorWin.clear(Cell(0, 0)))
+                    journey.record(successorWin)
+                    XCTAssertNil(SkyOnwardSnapshot(game: win, journey: journey), "Never skip an already restored successor")
+                } else {
+                    XCTAssertEqual(location, .sunwheelMill, "Unbuilt Bell Choir retains the generic map path")
+                }
+            }
+        }
+    }
+
+    @MainActor func testOnwardSnapshotRejectsPlayingLostFreePlayAndInvalidWinningSkies() throws {
+        var win = ObservatoryReviewFixture.game(dense: false, score: 14, challenge: .firstLight)
+        XCTAssertNotNil(win.clear(Cell(0, 0)))
+        var journey = WorldJourney(); journey.record(win)
+        var lost = FallingSky.freshChallenge(.firstLight)
+        for _ in 0..<40 where !lost.isOver { _ = lost.letStarsFall() }
+        XCTAssertEqual(lost.outcome, .lost)
+        for game in [FallingSky.freshChallenge(.firstLight), .freshSurvival(seed: 5), lost] {
+            XCTAssertNil(SkyOnwardSnapshot(game: game, journey: journey))
+        }
+        var fields = try XCTUnwrap(JSONSerialization.jsonObject(with: JSONEncoder().encode(win)) as? [String: Any])
+        fields["starsLanded"] = 0
+        let invalid = try JSONDecoder().decode(FallingSky.self, from: JSONSerialization.data(withJSONObject: fields))
+        XCTAssertFalse(invalid.isValidSave)
+        XCTAssertEqual(invalid.outcome, .won)
+        XCTAssertNil(SkyOnwardSnapshot(game: invalid, journey: journey))
+    }
+
+    @MainActor private func makeOnwardWin() throws -> (FallingSkyStore, FallingSkyRecorder, ManualRainClock, UserDefaults) {
+        let (_, _, _, defaults) = make()
+        try SkySaveArchive.save(ObservatoryReviewFixture.game(dense: false, score: 14, challenge: .firstLight), to: defaults)
+        let presenter = FallingSkyRecorder(), clock = ManualRainClock()
+        let store = FallingSkyStore(defaults: defaults, arguments: [], presenter: presenter, clock: clock)
+        store.setSuspended(false); store.clear(Cell(0, 0)); presenter.finish(); store.setSuspended(true)
+        XCTAssertEqual(store.game.outcome, .won)
+        return (store, presenter, clock, defaults)
+    }
+
+    @MainActor func testOnwardRejectsStaleCoveredUnsettledAndDuplicateIntentsWithoutWrites() throws {
+        let (store, _, _, defaults) = try makeOnwardWin()
+        let round = store.game, archive = defaults.data(forKey: SkySaveArchive.key)
+        let journey = store.journey.journey, journeyBytes = defaults.data(forKey: WorldJourneyStore.key)
+        for (saved, ready, active, modal, destination) in [
+            (false, true, true, false, WorldLocation.ribbonCrossing),
+            (true, false, true, false, .ribbonCrossing), (true, true, false, false, .ribbonCrossing),
+            (true, true, true, true, .ribbonCrossing), (true, true, true, false, .kiteHarbor)
+        ] {
+            var flow = SkyFlowState(arguments: ["--starfalls-reset"])
+            let before = flow
+            XCTAssertFalse(flow.openOnward(destination, game: round, journey: journey, hasSavedSky: saved,
+                                          terminalReady: ready, active: active, modal: modal,
+                                          select: { _ in XCTFail("Rejected intent must not write selection") }))
+            XCTAssertEqual(flow, before)
+        }
+        var staleJourney = journey
+        var successor = ObservatoryReviewFixture.game(dense: false, score: 14, challenge: .ribbonCrossing)
+        XCTAssertNotNil(successor.clear(Cell(0, 0))); staleJourney.record(successor)
+        var playing = SkyFlowState(arguments: ["--starfalls-reset"])
+        XCTAssertFalse(playing.openOnward(.ribbonCrossing, game: round, journey: staleJourney, hasSavedSky: true,
+                                         terminalReady: true, active: true, modal: false,
+                                         select: { _ in XCTFail("A stale offer must be recomputed") }))
+        var map = playing; _ = map.handle(.worldMap, hasSavedSky: true)
+        var entry = map; _ = entry.handle(.ribbonCrossing, hasSavedSky: true)
+        var handoff = SkyFlowState(arguments: [])
+        _ = handoff.handle(.firstLight, hasSavedSky: true)
+        _ = handoff.handle(.begin, hasSavedSky: true, entryID: handoff.entryID)
+        for var flow in [SkyFlowState(arguments: []), map, entry, handoff] {
+            let before = flow
+            XCTAssertFalse(flow.openOnward(.ribbonCrossing, game: round, journey: journey, hasSavedSky: true,
+                                          terminalReady: true, active: true, modal: false,
+                                          select: { _ in XCTFail("Covered/duplicate intent must not write") }))
+            XCTAssertNil(flow.handle(.onward(.ribbonCrossing), hasSavedSky: true), "Unvalidated intents cannot bypass admission")
+            XCTAssertEqual(flow, before)
+        }
+        XCTAssertEqual(store.game, round); XCTAssertEqual(store.journey.journey, journey)
+        XCTAssertEqual(defaults.data(forKey: SkySaveArchive.key), archive)
+        XCTAssertEqual(defaults.data(forKey: WorldJourneyStore.key), journeyBytes)
+    }
+
+    @MainActor func testOnwardSelectionFailureDoesNotPublishFlowOrChangeTheRound() throws {
+        enum SelectionFailure: Error { case failed }
+        let (store, _, clock, defaults) = try makeOnwardWin()
+        var flow = SkyFlowState(arguments: ["--starfalls-reset"])
+        let before = flow, round = store.game, journey = store.journey.journey
+        let archive = defaults.data(forKey: SkySaveArchive.key), journeyBytes = defaults.data(forKey: WorldJourneyStore.key)
+        var attempts = 0
+        XCTAssertThrowsError(try flow.openOnward(.ribbonCrossing, game: round, journey: journey, hasSavedSky: true,
+                                                terminalReady: true, active: true, modal: false, select: { _ in
+            attempts += 1
+            throw SelectionFailure.failed
+        }))
+        XCTAssertEqual(attempts, 1); XCTAssertEqual(flow, before)
+        XCTAssertEqual(store.game, round); XCTAssertEqual(store.journey.journey, journey)
+        XCTAssertEqual(defaults.data(forKey: SkySaveArchive.key), archive)
+        XCTAssertEqual(defaults.data(forKey: WorldJourneyStore.key), journeyBytes)
+        XCTAssertNil(clock.deadline)
+    }
+
+    @MainActor func testOnwardMapEntryCancellationRetainsTheWonRoundUntilBegin() throws {
+        let (store, _, clock, defaults) = try makeOnwardWin()
+        let round = store.game, archive = defaults.data(forKey: SkySaveArchive.key)
+        // A prior browser selection must not decide the named continuation.
+        try store.journey.select(.silverPools)
+        var flow = SkyFlowState(arguments: ["--starfalls-reset"])
+        XCTAssertTrue(try flow.openOnward(.ribbonCrossing, game: store.game, journey: store.journey.journey,
+                                         hasSavedSky: store.hasSavedSky, terminalReady: !store.busy,
+                                         active: true, modal: false, select: store.journey.select))
+        XCTAssertEqual(flow.screen, .worldMap); XCTAssertEqual(store.journey.journey.selected, .ribbonCrossing)
+        XCTAssertEqual(flow.handle(.ribbonCrossing, hasSavedSky: true), .staged)
+        let entryID = try XCTUnwrap(flow.entryID)
+        XCTAssertEqual(flow.handle(.entryBack, hasSavedSky: true, entryID: entryID), .worldMap)
+        XCTAssertEqual(flow.handle(.worldBack, hasSavedSky: true), .continued)
+        XCTAssertEqual(flow.screen, .playing); XCTAssertNil(flow.handoff)
+        clock.advance(100)
+        XCTAssertEqual(store.game, round); XCTAssertEqual(defaults.data(forKey: SkySaveArchive.key), archive)
+        XCTAssertNil(clock.deadline)
+        let restored = FallingSkyStore(defaults: defaults, arguments: [], presenter: FallingSkyRecorder(), clock: ManualRainClock())
+        XCTAssertEqual(restored.game, round)
+        XCTAssertEqual(SkyOnwardSnapshot(game: restored.game, journey: restored.journey.journey)?.destination, .ribbonCrossing)
+        XCTAssertTrue(try flow.openOnward(.ribbonCrossing, game: store.game, journey: store.journey.journey,
+                                         hasSavedSky: true, terminalReady: true, active: true, modal: false,
+                                         select: store.journey.select))
+        _ = flow.handle(.ribbonCrossing, hasSavedSky: true)
+        XCTAssertEqual(store.game, round); XCTAssertEqual(defaults.data(forKey: SkySaveArchive.key), archive)
+        XCTAssertEqual(flow.handle(.begin, hasSavedSky: true, entryID: flow.entryID), .began(.ribbonCrossing))
+        store.beginEntry(.ribbonCrossing)
+        XCTAssertEqual(store.game, FallingSky.freshChallenge(.ribbonCrossing))
+        XCTAssertNotEqual(defaults.data(forKey: SkySaveArchive.key), archive)
+    }
+
     @MainActor func testWorldMapNewVisitGoalsUseEveryCurrentReadyDefinition() throws {
         var journey = WorldJourney(legacyAccess: true)
         for challenge in [StarfallChallenge.silverPools, .frostfruitOrchard] {
@@ -517,6 +667,10 @@ final class SkyFlowStateTests: XCTestCase {
             XCTAssertEqual(result.reason, game.challenge?.resultReason)
             let restored = try JSONDecoder().decode(FallingSky.self, from: JSONEncoder().encode(game))
             XCTAssertEqual(SkyResultSnapshot(game: restored), result)
+            var journey = WorldJourney(); journey.record(game); journey.select(.hollowCrown)
+            let onward = try XCTUnwrap(SkyOnwardSnapshot(game: game, journey: journey))
+            XCTAssertEqual(onward.destination, game.challenge == .firstLight ? .ribbonCrossing : .kiteHarbor)
+            XCTAssertEqual(SkyOnwardSnapshot(game: restored, journey: journey), onward)
             let welcome = SkyWelcomeSnapshot(game: restored, hasSavedSky: true, paused: true)
             XCTAssertEqual(welcome.score, result.score)
             XCTAssertEqual(welcome.target, result.target)

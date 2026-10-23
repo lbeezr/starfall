@@ -132,6 +132,7 @@ enum SkyCopy {
         case worldRevisit = "worldRevisit"
         case worldVisit = "worldVisit"
         case worldReturn = "worldReturn"
+        case worldVisitNext
         case practiceExit = "practiceExit"
         case practiceExitHint = "practiceExitHint"
         case helpStoryIdentity = "help.storyIdentity"

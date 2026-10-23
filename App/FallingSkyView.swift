@@ -178,6 +178,8 @@ import StarfallCore
                                         challenge: entryChallenge,
                                         entry: flow.entry,
                                         result: endingReady ? SkyResultSnapshot(game: store.game) : nil,
+                                        onward: endingReady && store.hasSavedSky
+                                            ? SkyOnwardSnapshot(game: store.game, journey: store.journey.journey) : nil,
                                         welcome: SkyWelcomeSnapshot(game: store.game, hasSavedSky: store.hasSavedSky, paused: store.isPaused),
                                         active: scenePhase == .active && flow.handoff == nil && !settings, quiet: quietMotion, modal: settings,
                                         restoredSceneryBounds: anchors[.restorationScenery].map { geometry[$0] },
@@ -595,6 +597,16 @@ import StarfallCore
     }
 
     private func handleFlowAction(_ action: SkyFlowAction, entryID: UInt64? = nil) {
+        if case .onward(let destination) = action {
+            guard (try? flow.openOnward(destination, game: store.game, journey: store.journey.journey,
+                                       hasSavedSky: store.hasSavedSky, terminalReady: endingReady,
+                                       active: scenePhase == .active,
+                                       modal: settings || store.persistenceNotice != nil,
+                                       select: store.journey.select)) == true else { return }
+            store.setSuspended(true)
+            menu = nil
+            return
+        }
         guard scenePhase == .active,
               let effect = flow.handle(action, hasSavedSky: store.hasSavedSky, entryID: entryID) else { return }
         switch effect {

@@ -1,0 +1,205 @@
+{
+  "source": "276b35b03f063bd4a15fec039f69b905a5d2892a",
+  "production_main": "27252f6677f323d80206fe7837b59772dfcf4d2e",
+  "build_identity": "dev.64151f9500",
+  "fixtures": "historical revision0,18light; sparse21/full49stars with1grown; terminal100dimmed and noninteractive",
+  "captures": [
+    {
+      "name": "lantern-audit-portrait-dense49-score18-painting100",
+      "device": "iPhone17e",
+      "raw_sha256": "7d0a8de85d088a5836f966a68367df7a75bb22db51e94d38e5b868333081212a",
+      "timestamp": 1792725849.371
+    },
+    {
+      "name": "lantern-audit-portrait-dense49-score14-painting75",
+      "device": "iPhone17e",
+      "raw_sha256": "2ed1e30a9f1f6103021333c06b945d88c4df4f61100d8f9f69a2b7858a8111e1",
+      "timestamp": 1792725842.822
+    },
+    {
+      "name": "lantern-audit-portrait-dense49-score9-painting50",
+      "device": "iPhone17e",
+      "raw_sha256": "b1d5e8b1e32593f37e5472b9b7d1a8d57bf01c12c5b6bdfe2797de952fde0bfa",
+      "timestamp": 1792725833.09
+    },
+    {
+      "name": "lantern-audit-portrait-dense49-score5-painting25",
+      "device": "iPhone17e",
+      "raw_sha256": "74edd23c11ad6fc3d26a9d8eb42e7be88b1d4013abddb082100595e52ca6d601",
+      "timestamp": 1792725823.795
+    },
+    {
+      "name": "lantern-audit-portrait-dense49-score0-painting0",
+      "device": "iPhone17e",
+      "raw_sha256": "ae2cc119b3e7b61a7d85724283d9178b322374471b240d1130556c1f6afd4544",
+      "timestamp": 1792725814.227
+    },
+    {
+      "name": "lantern-audit-portrait-sparse21-score18-painting100",
+      "device": "iPhone17e",
+      "raw_sha256": "1a9d73b640c333a5f9c7e38f060cba5af5d636b167a0e17f9855f0afbc8985cb",
+      "timestamp": 1792725804.565
+    },
+    {
+      "name": "lantern-audit-portrait-sparse21-score14-painting75",
+      "device": "iPhone17e",
+      "raw_sha256": "ea22198403e757c7e0f45ec1e6060184f5059f700e14bed33f7f722b0327333f",
+      "timestamp": 1792725798.417
+    },
+    {
+      "name": "lantern-audit-portrait-sparse21-score9-painting50",
+      "device": "iPhone17e",
+      "raw_sha256": "aa21bec873a5023d20ad63481455032093de55652d97ac26d0e40d651425210f",
+      "timestamp": 1792725789.477
+    },
+    {
+      "name": "lantern-audit-portrait-sparse21-score5-painting25",
+      "device": "iPhone17e",
+      "raw_sha256": "79a1c209eb839103b6ec15125f3ad9217af3e0bab16fe465bc245a8e89a3d233",
+      "timestamp": 1792725780.587
+    },
+    {
+      "name": "lantern-audit-portrait-sparse21-score0-painting0",
+      "device": "iPhone17e",
+      "raw_sha256": "3f742267cd729ce18e9fc06ef37480d80cb2caf1fc4eef909b15c495e478a1c1",
+      "timestamp": 1792725771.357
+    },
+    {
+      "name": "lantern-audit-tablet-landscape-dense49-score18-painting100",
+      "device": "iPad mini(A17Pro)",
+      "raw_sha256": "6ddd3572923b8e5bbf0c5b95e69c2566623f6fbb0b28c620878d9dec8943e372",
+      "timestamp": 1792725934.774
+    },
+    {
+      "name": "lantern-audit-tablet-landscape-dense49-score14-painting75",
+      "device": "iPad mini(A17Pro)",
+      "raw_sha256": "fef2d90f4ea49b8f0d2a0bb04f608d69c3bc16456e1fd682908bba835e71fbb0",
+      "timestamp": 1792725928.406
+    },
+    {
+      "name": "lantern-audit-tablet-landscape-dense49-score9-painting50",
+      "device": "iPad mini(A17Pro)",
+      "raw_sha256": "35861550f6e87337d471fcabc75325582470c8e0cbf782ecd5a537ba5a65686e",
+      "timestamp": 1792725919.153
+    },
+    {
+      "name": "lantern-audit-tablet-landscape-dense49-score5-painting25",
+      "device": "iPad mini(A17Pro)",
+      "raw_sha256": "21a315ad6c99b0ad611d79865d1ca2cf3c2bcba105ba75d70a7064ba3b3e9cdd",
+      "timestamp": 1792725909.966
+    },
+    {
+      "name": "lantern-audit-tablet-landscape-dense49-score0-painting0",
+      "device": "iPad mini(A17Pro)",
+      "raw_sha256": "3fa34814a11ea18d9c7039d860e10338c50790b23d42296a28589c903569a57f",
+      "timestamp": 1792725900.798
+    },
+    {
+      "name": "lantern-audit-tablet-landscape-sparse21-score18-painting100",
+      "device": "iPad mini(A17Pro)",
+      "raw_sha256": "1448c5f8e0915c2ebfafab0113017069de02979681457c281319949f16aebe8b",
+      "timestamp": 1792725891.555
+    },
+    {
+      "name": "lantern-audit-tablet-landscape-sparse21-score14-painting75",
+      "device": "iPad mini(A17Pro)",
+      "raw_sha256": "a49ef4d36a2752d8a2885d1632edae0a4d1b249d711ee333464ef8f31882254c",
+      "timestamp": 1792725885.469
+    },
+    {
+      "name": "lantern-audit-tablet-landscape-sparse21-score9-painting50",
+      "device": "iPad mini(A17Pro)",
+      "raw_sha256": "807a4f0342ab23e3d943fe0ea17d9da3df4fc60cefd046ce7cdf1a17e4bd1e24",
+      "timestamp": 1792725876.663
+    },
+    {
+      "name": "lantern-audit-tablet-landscape-sparse21-score5-painting25",
+      "device": "iPad mini(A17Pro)",
+      "raw_sha256": "74e81317051fd6f9bb38bbdc5efd2073e4f85bd673c726bc3c2303f1ee2a9a47",
+      "timestamp": 1792725867.972
+    },
+    {
+      "name": "lantern-audit-tablet-landscape-sparse21-score0-painting0",
+      "device": "iPad mini(A17Pro)",
+      "raw_sha256": "b7ad9b5ef16d0aafe9947d661b3556a8b20f221e61ce2be6849d8ae324a636d3",
+      "timestamp": 1792725859.263
+    },
+    {
+      "name": "lantern-audit-portrait-dense49-score18-painting100",
+      "device": "iPad mini(A17Pro)",
+      "raw_sha256": "e7ffdb5b93d1bc60bcbde5222666d7f2368a92497344d45c26c3a772c4dead97",
+      "timestamp": 1792725849.666
+    },
+    {
+      "name": "lantern-audit-portrait-dense49-score14-painting75",
+      "device": "iPad mini(A17Pro)",
+      "raw_sha256": "ace3e1ac53b0e87a9f5bf3b420ce4b00160c5794114bb108610553e4cc37e507",
+      "timestamp": 1792725842.999
+    },
+    {
+      "name": "lantern-audit-portrait-dense49-score9-painting50",
+      "device": "iPad mini(A17Pro)",
+      "raw_sha256": "2eeb16cae56764143d7186c71b573427cc8046ceb9605193af68bd942ab07075",
+      "timestamp": 1792725833.437
+    },
+    {
+      "name": "lantern-audit-portrait-dense49-score5-painting25",
+      "device": "iPad mini(A17Pro)",
+      "raw_sha256": "a597724c9fd75b6a58ca5736a3a01e3417030846ce6c16f2b1be834c34d40d55",
+      "timestamp": 1792725823.923
+    },
+    {
+      "name": "lantern-audit-portrait-dense49-score0-painting0",
+      "device": "iPad mini(A17Pro)",
+      "raw_sha256": "30c7cd633221b8821734eae274646d604425536cedf815e4d628e2c032ded988",
+      "timestamp": 1792725814.376
+    },
+    {
+      "name": "lantern-audit-portrait-sparse21-score18-painting100",
+      "device": "iPad mini(A17Pro)",
+      "raw_sha256": "4e6cc9c2801580e4478e78e88e96eb1c817c542ae8b830136dec62909921de2b",
+      "timestamp": 1792725804.625
+    },
+    {
+      "name": "lantern-audit-portrait-sparse21-score14-painting75",
+      "device": "iPad mini(A17Pro)",
+      "raw_sha256": "6207586860990f5b22ae2d48b7a04157702c8c657dac69449680068c0d02688f",
+      "timestamp": 1792725798.445
+    },
+    {
+      "name": "lantern-audit-portrait-sparse21-score9-painting50",
+      "device": "iPad mini(A17Pro)",
+      "raw_sha256": "6a764c33af9162ef1ed58f310463737d85e6d7e94bfb9589f7171f4ac40151f3",
+      "timestamp": 1792725789.469
+    },
+    {
+      "name": "lantern-audit-portrait-sparse21-score5-painting25",
+      "device": "iPad mini(A17Pro)",
+      "raw_sha256": "5a1b7e16b1fb3d03253dc49598515c4adfa98284d1e8300fbb415d7648e67073",
+      "timestamp": 1792725780.614
+    },
+    {
+      "name": "lantern-audit-portrait-sparse21-score0-painting0",
+      "device": "iPad mini(A17Pro)",
+      "raw_sha256": "f27066d203892f7cb0d7347a4f98dba9d2bc68219532b7fecc2435bc65569feb",
+      "timestamp": 1792725771.426
+    }
+  ],
+  "artwork_sha256": {
+    "App/Assets.xcassets/LanternLanding000.imageset/scene.png": "4988b409b96087c51328195f017e3da5386ff208a05ac0e2ea95e8568a755df5",
+    "App/Assets.xcassets/LanternLanding025.imageset/scene.png": "4f2eee3efbcc4efbf5a668f1caccc1a98fc06470f586c437d7f9179ae0c2d55e",
+    "App/Assets.xcassets/LanternLanding050.imageset/scene.png": "ba7256f32bf15f8d83cf87eb096702ff552aaee59648f24ff94454e15e574991",
+    "App/Assets.xcassets/LanternLanding075.imageset/scene.png": "9c813651bee9bb8480ec32469cac136fcbe281ef4b2f783cbc0c32f7363dde85",
+    "App/Assets.xcassets/LanternLanding100.imageset/scene.png": "e7806e535dbd1d769c744c976aab08fbf3d4ca38a652239f28fa229dda72d8dd",
+    "App/Assets.xcassets/LanternLandingTabletLandscape000.imageset/scene.png": "6eed632490ea3f9bfd72981deab82b34eeb954c9c63f53621ff2f10b1b47a44d",
+    "App/Assets.xcassets/LanternLandingTabletLandscape025.imageset/scene.png": "7b5437071dc696d151905ab1bc958a1410d418f2db57d26a03205f14421c769d",
+    "App/Assets.xcassets/LanternLandingTabletLandscape050.imageset/scene.png": "6184fbbd24627dbd2c80cced2bda60337aced447d9ce1695a67d1c7b5c2bae43",
+    "App/Assets.xcassets/LanternLandingTabletLandscape075.imageset/scene.png": "112bac01f2b10a3dd7c74673bec05b660ab94d0313e5f83388b42cdb8b48529b",
+    "App/Assets.xcassets/LanternLandingTabletLandscape100.imageset/scene.png": "f148a05cf4f2956335112f25b777de0aaa69a5379a81882c929a8f12674be1c6",
+    "App/Assets.xcassets/LanternLandingTabletPortrait000.imageset/scene.png": "52fe574f64c46202d8787a78451b1e586270277ccf8d09c67bf97f2a6b4a4a66",
+    "App/Assets.xcassets/LanternLandingTabletPortrait025.imageset/scene.png": "92bdd0c66c71ef6499026f6c4f5921af76f222c8e50c90441a4246be39c642c2",
+    "App/Assets.xcassets/LanternLandingTabletPortrait050.imageset/scene.png": "f490ed30cb54866d62927892783042884a961564956c1cf075ec96f51793369b",
+    "App/Assets.xcassets/LanternLandingTabletPortrait075.imageset/scene.png": "7befccd69bb6d464340ae2f6627ca9711386dae93add2648a684b533b1251508",
+    "App/Assets.xcassets/LanternLandingTabletPortrait100.imageset/scene.png": "266da45162db39b13693456c7be7eb675950e5c93a26ee0de1e93dd3664a4c17"
+  }
+}

@@ -875,6 +875,79 @@ final class WorldJourneyInteractionTests: XCTestCase {
             app.terminate()
         }
     }
+    @MainActor private func checkNamedOnwardAfterLanternRepair(largestText: Bool) {
+        continueAfterFailure = false
+        executionTimeAllowance = 240
+        let (preferences, reduce) = NativeSystemMotionSettings.open()
+        let originalMotion = reduce.value as? String == "1"
+        NativeSystemMotionSettings.set(false, on: reduce); preferences.terminate()
+        addTeardownBlock { @MainActor in
+            let (settings, toggle) = NativeSystemMotionSettings.open()
+            NativeSystemMotionSettings.set(originalMotion, on: toggle); settings.terminate()
+        }
+        let app = XCUIApplication()
+        let text = largestText ? ["-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"] : []
+        app.launchArguments = ["--starfalls-reset", "--dialogue-review", "--lantern-restoration-review=14", "-calmEffects", "NO"] + text
+        app.launch(); defer { app.terminate() }
+        XCTAssertTrue(app.buttons["experiment.cell.0.0"].waitForExistence(timeout: 10))
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, "14 of 18 starlight collected")
+        tap("experiment.cell.0.0", app)
+        let outcome = app.staticTexts["experiment.outcome"]
+        XCTAssertTrue(outcome.waitForExistence(timeout: 10))
+        XCTAssertEqual(outcome.label, "Lantern Landing restored!")
+        let score = "Sunny. First Light complete! Lantern Landing is restored. 18 of 18 starlight collected. Nicely done!"
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, score)
+        let suffix = largestText ? "largest-text" : "default-text"
+        let onward = app.buttons["sky.worldMap"]
+        app.revealSkyControls([onward])
+        XCTAssertEqual(onward.label, "Visit Ribbon Crossing")
+        XCTAssertTrue(app.frame.contains(onward.frame)); XCTAssertGreaterThanOrEqual(onward.frame.height, 44)
+        capture("lantern-earned-named-onward-\(suffix)", app)
+        tap("sky.worldMap", app)
+        XCTAssertEqual(app.staticTexts["world.selection"].label, "Ribbon Crossing")
+        XCTAssertEqual(app.staticTexts["world.status"].label, "Ready to restore")
+        assertWorldGoalCard(app, target: 220_000, saved: nil, captureName: "lantern-onward-ribbon-card-\(suffix)")
+        tap("world.visit", app)
+        XCTAssertEqual(app.staticTexts["sky.title"].label, "Ribbon Crossing")
+        XCTAssertTrue(app.staticTexts["sky.subtitle"].label.contains("220,000"))
+        XCTAssertFalse(app.buttons["experiment.cell.0.0"].exists)
+        tap("sky.home", app)
+        XCTAssertEqual(app.staticTexts["world.selection"].label, "Ribbon Crossing")
+        tap("world.done", app)
+        XCTAssertTrue(outcome.waitForExistence(timeout: 5))
+        XCTAssertEqual(outcome.label, "Lantern Landing restored!")
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, score)
+        XCTAssertEqual(onward.label, "Visit Ribbon Crossing")
+        capture("lantern-onward-cancel-retains-repair-\(suffix)", app)
+        app.terminate(); app.launchArguments = ["--dialogue-review", "-calmEffects", "NO"] + text; app.launch()
+        tap("sky.resume", app)
+        XCTAssertTrue(outcome.waitForExistence(timeout: 10))
+        XCTAssertEqual(outcome.label, "Lantern Landing restored!")
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, score)
+        XCTAssertEqual(onward.label, "Visit Ribbon Crossing")
+        tap("sky.worldMap", app)
+        XCTAssertEqual(app.staticTexts["world.selection"].label, "Ribbon Crossing")
+        tap("world.visit", app)
+        XCTAssertEqual(app.staticTexts["sky.title"].label, "Ribbon Crossing")
+        XCTAssertFalse(app.buttons["experiment.cell.0.0"].exists)
+        app.revealSkyControls([app.buttons["sky.begin"]])
+        capture("lantern-onward-restored-entry-before-begin-\(suffix)", app)
+        tap("sky.begin", app)
+        XCTAssertTrue(app.buttons["experiment.settings"].waitForExistence(timeout: 10))
+        tap("experiment.settings", app); tap("experiment.pause", app)
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, "0 of 220,000 starlight collected")
+        XCTAssertEqual(app.buttons["experiment.cell.0.0"].value as? String, "Automatic pattern play")
+        XCTAssertFalse(outcome.exists)
+    }
+
+    @MainActor func testLanternRepairNamesRibbonAndPreservesTheWinUntilBegin() {
+        checkNamedOnwardAfterLanternRepair(largestText: false)
+    }
+
+    @MainActor func testLargestTextLanternRepairNamesRibbonAndPreservesTheWinUntilBegin() {
+        checkNamedOnwardAfterLanternRepair(largestText: true)
+    }
+
     @MainActor func testRepairLightsMapAndPersistsWithoutUnlockingUnbuiltPlaces() {
         let app = XCUIApplication()
         app.launchArguments = ["--starfalls-reset", "--dialogue-review", "--lantern-restoration-review=14", "-calmEffects", "NO"]

@@ -222,6 +222,7 @@ final class FallingSkyInteractionTests: XCTestCase {
         let outcome = app.staticTexts["experiment.outcome"]
         app.completeStoryPattern(.lantern)
         XCTAssertEqual(outcome.label, "Lantern Landing restored!")
+        XCTAssertEqual(app.buttons["sky.worldMap"].label, "Visit Ribbon Crossing")
         XCTAssertFalse(next.exists)
         XCTAssertTrue(app.buttons["experiment.replay"].isHittable)
         XCTAssertTrue(app.buttons["experiment.new"].isHittable)
@@ -230,6 +231,7 @@ final class FallingSkyInteractionTests: XCTestCase {
         XCTAssertTrue(app.buttons["sky.resume"].waitForExistence(timeout: 10)); app.buttons["sky.resume"].tap()
         XCTAssertTrue(outcome.waitForExistence(timeout: 10))
         XCTAssertEqual(outcome.label, "Lantern Landing restored!")
+        XCTAssertEqual(app.buttons["sky.worldMap"].label, "Visit Ribbon Crossing")
         XCTAssertFalse(next.exists)
         let replay = app.buttons["experiment.replay"]
         if !replay.exists { openMenu(app) }; reveal(replay, in: app); replay.tap()

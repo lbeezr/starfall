@@ -15,11 +15,12 @@ final class LanternLandingInteractionTests: XCTestCase {
         }
     }
 
-    @MainActor private func launch(score: Int, largestText: Bool = false) -> XCUIApplication {
+    @MainActor private func launch(score: Int, largestText: Bool = false, dense: Bool = false) -> XCUIApplication {
         continueAfterFailure = false
         let app = XCUIApplication()
         app.launchArguments = ["--starfalls-reset", "--dialogue-review",
                                "--lantern-restoration-review=\(score)", "-calmEffects", "NO"]
+        if dense { app.launchArguments.append("--restoration-dense") }
         if largestText {
             app.launchArguments += ["-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"]
         }
@@ -91,6 +92,47 @@ final class LanternLandingInteractionTests: XCTestCase {
             }
             capture(app, "lantern-scene-\(milestone)-score-\(score)-normal-motion")
             app.terminate()
+        }
+    }
+
+    @MainActor private func inspectMilestones(dense: Bool, orientation: UIDeviceOrientation, family: String, baseline: inout [String: CGRect]) {
+        XCUIDevice.shared.orientation = orientation
+        for (score, percent, milestone) in [(0, 0, 0), (5, 28, 25), (9, 50, 50), (14, 78, 75), (18, 100, 100)] {
+            let app = launch(score: score, dense: dense)
+            if score < 18 {
+                assertRestoration(percent, score: score, in: app)
+                let cells = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@", "experiment.cell."))
+                XCTAssertEqual(cells.count, 49)
+                let empty = cells.matching(NSPredicate(format: "label BEGINSWITH %@", "Empty,")).count
+                XCTAssertEqual(49 - empty, dense ? 49 : 21, "Count actual stars separately from native cell targets")
+                for identifier in ["experiment.cell.0.0", "experiment.cell.0.6", "experiment.cell.3.3", "experiment.cell.6.0", "experiment.cell.6.6"] {
+                    let cell = app.buttons[identifier]
+                    XCTAssertTrue(cell.exists && cell.isEnabled)
+                    if score == 0 && !dense { baseline[identifier] = cell.frame }
+                    else { XCTAssertEqual(cell.frame, baseline[identifier], "Painting progress cannot move native cells") }
+                }
+                XCTAssertTrue(app.buttons["experiment.settings"].isHittable)
+            } else {
+                XCTAssertEqual(app.staticTexts["experiment.outcome"].label, "Lantern Landing restored!")
+                XCTAssertFalse(app.buttons["experiment.cell.0.0"].exists, "The terminal ceremony owns accessibility")
+                XCTAssertTrue(app.buttons["experiment.replay"].isHittable)
+            }
+            capture(app, "lantern-audit-\(family)-\(dense ? "dense49" : "sparse21")-score\(score)-painting\(milestone)")
+            app.terminate()
+        }
+    }
+
+    @MainActor func testLanternMilestonesAtSparseAndFullNativeScale() {
+        executionTimeAllowance = 600
+        setSystemMotion(reduced: false)
+        defer { XCUIDevice.shared.orientation = .portrait }
+        let orientations: [UIDeviceOrientation] = UIDevice.current.userInterfaceIdiom == .pad ? [.portrait, .landscapeLeft] : [.portrait]
+        for orientation in orientations {
+            var baseline: [String: CGRect] = [:]
+            for dense in [false, true] {
+                inspectMilestones(dense: dense, orientation: orientation,
+                    family: orientation == .portrait ? "portrait" : "tablet-landscape", baseline: &baseline)
+            }
         }
     }
 

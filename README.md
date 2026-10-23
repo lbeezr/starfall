@@ -2,6 +2,8 @@
 
 [Story pressure and recovery](docs/evidence/game-goal-05-pressure-recovery-2026-10-22/README.md) names full columns outside dialogue and acknowledges space recovered by a real clear. Paused reading stays open until dismissal; active play keeps brief timed receipts.
 
+**Earned next destination — October 22:** A recorded repair names the next ready, unfinished place and opens its selected map card. Canceled visits retain the completed round until Begin. [Lantern payoff and milestone review](docs/evidence/game-goal-06-lantern-payoff-2026-10-22/README.md) retains current paintings and separates shared-renderer samples from current-rule completion.
+
 **Exact Map/Places goals — October 22:** Destination cards show the new-visit objective separately from the matching saved round's exact progress. Historical 9/18 and current point targets keep their own meaning; cancellation preserves the board. [Development checks and native cards](docs/evidence/map-goals-2026-10-22/README.md) cover default/XL phone and largest-text tablet.
 
 **Rising Story-chain audio — October 22:** Committed recipe/cascade phases now form a short rising phrase, capped at phase three. Two original local cues preserve one voice, mute/cancellation and historical sounds. [Development evidence](docs/evidence/chain-audio-2026-10-22/README.md) separates native playback/interaction checks from unmeasured physical listening and enjoyment.

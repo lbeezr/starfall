@@ -43,6 +43,22 @@ struct WorldMapGoalSnapshot: Equatable {
     }
 }
 
+/// The immediate road onward from an earned repair, independent of map browsing.
+struct SkyOnwardSnapshot: Equatable {
+    let destination: WorldLocation
+
+    init?(game: FallingSky, journey: WorldJourney) {
+        guard game.isValidSave, game.outcome == .won, let challenge = game.challenge,
+              let location = WorldLocation(rawValue: challenge.rawValue),
+              journey.completed.contains(location),
+              let next = WorldLocation.allCases.dropFirst(location.number).first,
+              next.challenge != nil, journey.canEnter(next), !journey.completed.contains(next) else { return nil }
+        destination = next
+    }
+
+    var label: String { SkyCopy.text(.worldVisitNext, values: ["destination": destination.title]) }
+}
+
 /// Committed values only: results remain explainable after process restoration.
 struct SkyResultSnapshot: Equatable {
     let won: Bool
