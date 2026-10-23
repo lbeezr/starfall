@@ -80,8 +80,7 @@ extension FallingSky {
             case .seedMoon: key = .helpPatternsSeed
             case .silverPools: key = .helpPatternsSilver
             case .frostfruitOrchard: key = .helpPatternsFrostfruit
-            case .sunwheelMill:
-                preconditionFailure("Missing automatic-pattern help for this challenge")
+            case .sunwheelMill: key = .helpPatternsSunwheel
             }
             return SkyCopy.text(key,
                                 values: automaticPatternValues.merging(["target": SkyCopy.score(displayTarget ?? 0)]) { _, new in new })

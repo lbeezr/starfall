@@ -44,8 +44,8 @@ final class FullBoardRibbonCompatibilityTests: XCTestCase {
         XCTAssertEqual(game.occupiedCount, 49)
         let bytes = try SkySaveArchive.encode(game)
         let fields = try XCTUnwrap(JSONSerialization.jsonObject(with: bytes) as? [String: Any])
-        XCTAssertEqual(SkySaveArchive.key, "starfall.accumulation.v17")
-        XCTAssertEqual(fields["schemaVersion"] as? Int, 17)
+        XCTAssertEqual(SkySaveArchive.key, "starfall.accumulation.v18")
+        XCTAssertEqual(fields["schemaVersion"] as? Int, 18)
         XCTAssertEqual(try SkySaveArchive.decode(bytes), game)
         XCTAssertEqual(try SkySaveArchive.encode(SkySaveArchive.decode(bytes)), bytes)
 
