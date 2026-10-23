@@ -1,12 +1,12 @@
 # Teach the factory to improve a playable experience
 
-**Status:** Research complete; guidance integrated; effectiveness unmeasured · **Owner:** Current coordinator · **Updated:** October 22, 2026
+**Status:** Applied in ordered goal queues; effectiveness unmeasured · **Owner:** Current coordinator · **Updated:** October 23, 2026
 
 Give every creative batch a clear player promise, a meaningful action and consequence, and a small playable scenario that can challenge the design. Starfall's [factory](../AGENT_FACTORY.md) already coordinates ownership, parallel work, integration and closure. This guidance adds game direction to those task packets. It reuses the existing [UI production](UI_PRODUCTION.md), [level-design](level-design-kit/README.md), [experiment](../EXPERIMENTS.md) and [verification](../ENGINEERING.md#verification-by-change) contracts.
 
 The study covers all **63 expanded build-process cards across seven OpenAI showcases**. Most are reconstructions or have unestablished provenance. They suggest useful techniques; they do not demonstrate an autonomous swarm, optimal prompts, enjoyable results or improved throughput. No attributable original public repository was found in the bounded search, and no showcase game was played or built for this study.
 
-**Next application:** Use the experience brief below in the next authorized creative batch. Current Lantern/Ribbon [physical observations](CURRENT_STORY_PLAYTEST.md) remain the prerequisite for evidence-based balance conclusions. This research changes guidance, not gameplay.
+**Next application:** Carry this method into the remaining authorized [cohesion goals](https://github.com/lbeezr/starfall/issues/281), using the compounding prompts below. Current Lantern/Ribbon [physical observations](CURRENT_STORY_PLAYTEST.md) remain the prerequisite for evidence-based balance conclusions. This guidance does not itself change gameplay.
 
 ## What the published prompts actually establish
 
@@ -81,6 +81,18 @@ flowchart LR
 
 **Critique and repair within the outcome.** After integration, identify the largest remaining evidenced weakness and correct its responsible owner. Compare the same scenario before and after, preserving counterexamples. Keep source, UI, animation, actual VoiceOver, physical play and sustained performance claims separate. An agent's simulated play is useful for hypotheses and coverage, not a substitute for uncoached human experience.
 
+## Let ordered goals compound
+
+The user's working model is a spiral: each pass revisits the whole experience with the previous passes underneath it. Use an authorized goal stack to carry accepted improvements forward. Each goal should have one observable player outcome, the earlier strengths it must retain or reuse, and a playable comparison that can reject the proposed improvement. Keep those details in the existing packet; no additional template or review stage is needed.
+
+At activation, inspect latest main and the relevant earlier results. Preserve the queued outcome while adapting its implementation to the game that now exists. A stronger scene may reveal weak HUD contrast; a finished animation may expose a mismatched handoff. Choose the current evidenced seam within that outcome. If the request requires a visible production change, a report alone cannot close it. Merge and verify each dependent goal before starting the next implementation; independent read-ahead still follows the existing ownership and WIP limits.
+
+**Review relationships as well as individual parts.** Select the relevant continuity invariant: earned details persist within one restoration, map and Entry preserve place identity while distinguishing a restored world from a fresh visit, coupled flight responses use their owning movement's actual duration, or shared HUD information reads over both bright and dark scenery. Compare a changed state with a contrasting or unchanged sibling. This directs the existing native-slice check; it does not require another full-game matrix for every small change.
+
+**Feed learning back into the responsible owner.** Trace a recurring weakness to its rule, component, asset family, lifecycle boundary or instruction. Reuse and correct that owner, then inspect representative callers before adding another implementation. Promote a lesson into applicable guidance when it would change a future decision; revise or replace stale instructions instead of accumulating duplicate rules. Keep structural refactors separate from rule/save changes where practical. Broader discoveries retain their own bounded outcome and authorization.
+
+The spiral describes how learning compounds, while each authorized queue retains a concrete finish. Stop when its outcomes are delivered; further iterations do not imply a scheduler or unlimited new work. The [completed first stack](https://github.com/lbeezr/starfall/issues/240) and [cohesion stack](https://github.com/lbeezr/starfall/issues/281) establish individual delivery history. [Flight timing](../evidence/cohesion-goal-06-flight-handoff-2026-10-23/README.md), [cumulative dock light](../evidence/cohesion-goal-07-cumulative-light-2026-10-23/README.md) and [scenery/HUD contrast](../evidence/cohesion-goal-05-seed-place-2026-10-23/README.md) illustrate specific findings. These are development observations, without a controlled comparison proving better enjoyment or throughput.
+
 ## Reusable prompts
 
 These are newly authored Starfall prompts. Replace brackets with the actual task; they are not quotations from the showcases and do not authorize their own execution.
@@ -107,6 +119,25 @@ Return the changed source, source-bound evidence, what improved, what failed
 or remains unknown, and the retain/revise/remove decision. Human feel and
 device acceptance need their actual evidence. Stop at the requested acceptance;
 record discoveries through the existing factory contract.
+```
+
+### Execute an authorized goal stack
+
+```text
+Deliver these ordered player outcomes: [authorized goals].
+For each dependent goal, begin from latest main after its predecessor's merge.
+Identify what earlier work contributes, what must remain true, and the current
+gap within this outcome. Adapt the implementation to current evidence.
+
+Reuse the responsible shared owner and check its relevant callers. Prove one
+native slice before expanding a family. Compare the same playable situation
+before/after and a contrasting state; preserve rules, saves, input and earlier
+accepted strengths. Verify the applicable checks and merge individually.
+
+After each merge, confirm completion and reassess the next goal. Feed reusable
+lessons into their existing code or guidance owner; record broader discoveries
+without silently expanding this queue. Report observed improvements and
+remaining human/device evidence honestly. Stop when these outcomes are met.
 ```
 
 ### Investigate a player complaint
@@ -165,6 +196,8 @@ At the third batch, or an earlier repeated failure, keep, simplify or revise the
 
 ## Scope and validation record
 
+### Original research validation — October 22
+
 Prepared from clean source `0214cf09b61fd9bf13bb6d37e9dd40aea97a6040`. Acceptance for this research/instruction batch: inspect all seven supplied showcases including expanded prompts and provenance; report repository search limits; distinguish facts and proposals; add discoverable, appropriately scoped guidance and reusable prompts; verify instructions and local links. Temporary HTML and decoded data remain outside the repository. No source code, build configuration, app resource or dependency changes are part of this batch.
 
 Working-tree validation on macOS 27.0.1 (`26A434`), arm64, Python 3.9.6:
@@ -173,5 +206,11 @@ Working-tree validation on macOS 27.0.1 (`26A434`), arm64, Python 3.9.6:
 - Local Markdown target check: 644 targets across the nine changed Markdown files, all present. The seven decoded card inventories independently total 63 cards and 63 prompt objects.
 - `PYTHONPATH=/private/tmp/starfall-skill-validation-deps python3 /Users/lbeezr/.codex/skills/.system/skill-creator/scripts/quick_validate.py .agents/skills/starfall-factory`: passed. The initial invocation lacked PyYAML; a temporary dependency resolved that without changing project dependencies.
 - Independent read-only decision exercise: cascade feedback, a spelling correction, retained-save replay divergence and showcase-evidence interpretation all kept appropriate scope and evidence boundaries. This checks instruction decisions, not runtime task execution or improved game quality.
+
+### Compounding-goal refinement — October 23
+
+The user requested recursive improvement, alignment and reuse, and endorsed queued goals as a spiral building on previous work. [#320](https://github.com/lbeezr/starfall/issues/320) refines four existing guidance files from main `c83529942bc25a361369b1ab7ea95d44bc9dc461`: this guide, screenshot practice and the factory/verify skills. No app, resource, configuration or personal setting changes belong to this slice. It preserves the separate ten-goal cohesion queue and its individual merges.
+
+Both changed skills pass the skill-creator `quick_validate.py` with the existing temporary PyYAML dependency; hygiene and whitespace pass. Local links are checked after the final documentation commit. An independent read-only decision exercise preserves intentional restored-map/fresh-visit differences, selects the actual damaged-thumbnail seam, checks current callers before repeating the already-fixed flight-duration work, repairs only insufficient capture/exports while retaining valid tests, and keeps a README spelling correction with one owner. No scope/fan-out/delivery regression was found. These are instruction decisions, not executed new gameplay acceptance or a controlled effectiveness study. Native/Core/Release runs are inapplicable to this documentation-only change and are not counted from the separate artwork work.
 
 The nine dirty paths are this study, the factory contract and skill/skill README, root/documentation/design READMEs, ROADMAP and EXPERIMENTS. All changes are Markdown; there are no build-affecting dirty inputs. No publication or installation is claimed. App tests/builds are inapplicable under the documentation-only verification matrix. Markdown/Mermaid rendering, native gameplay, physical feel and showcase performance were not inspected.

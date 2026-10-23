@@ -40,6 +40,12 @@ These are naming examples, not claims that those releases or captures exist.
 
 Never name a capture `latest`, `final` or `current`; the index owns selection and status. Never overwrite a different build's evidence with the same filename. New captures follow this convention; do not rename historical payloads, change manifests or invent missing release metadata merely for consistency. Packaged artwork and generated XCTest attachment names remain under their existing boundaries; give an exported frame its canonical name when selecting it for durable documentation.
 
+## Prepare and inspect the comparison
+
+For a visual or motion change, choose the existing native scenario, pre-state and meaningful trigger before capturing a family. Start fast-event recordings with enough lead-in and confirm recording readiness; a log saying an action began does not prove the recorder included it. Inspect a short sample before repeating a larger sweep. If the capture missed the event, correct that capture and rerun the affected scenario while retaining the other valid results.
+
+Inspect the exact selected exports before publication, as well as their raw source. Confirm orientation, crop, state labels, playback speed and source/hash association survive conversion. Count actual visible game objects or use the corresponding occupancy assertion; 49 cell targets do not prove 49 stars. A dimmed terminal board is a result context, separate from active-density evidence. Correct misleading derived exports before adoption. For an already published error, add a source-bound erratum that distinguishes the incorrect preview from any valid raw evidence; preserve historical bytes and manifests.
+
 ## Cleanup with each visual change
 
 1. Keep raw captures, recordings and test exports in ignored `artifacts/` or temporary storage. Retain only the frames needed to explain a decision, regression or acceptance result under `docs/evidence/`, with a source/build and capture context.
