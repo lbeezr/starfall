@@ -50,6 +50,42 @@ final class SkyFlowInteractionTests: XCTestCase {
         XCTAssertTrue(app.buttons["experiment.next"].waitForExistence(timeout: 5))
     }
 
+    @MainActor private func assertStoryStartupGuidance(largest: Bool) {
+        let app = launch(largest: largest)
+        defer { app.terminate() }
+        tap("sky.worldMap", app); tap("world.visit", app); tap("sky.begin", app)
+        let menu = app.buttons["experiment.settings"]
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true AND hittable == true"),
+                                               object: menu).wait(timeout: 10))
+        let message = app.staticTexts["experiment.message"]
+        XCTAssertTrue(message.waitForExistence(timeout: 5))
+        capture(app, largest ? "story-start-largest" : "story-start-default")
+        XCTAssertTrue(message.label.contains("150,000 starlight"))
+        XCTAssertTrue(message.label.contains("Swipe to arrange"))
+        XCTAssertTrue(message.label.contains("pattern pops automatically"))
+        if largest {
+            app.readSkyGuideToEnd(actions: [app.buttons["sky.dialogue.close"]])
+            capture(app, "story-start-largest-read-through")
+        }
+        tap("sky.dialogue.close", app)
+        pause(app)
+        let board = app.otherElements["experiment.board"]
+        let retained = board.value as? String
+        let score = app.staticTexts["experiment.score"].label
+        let star = app.buttons["experiment.cell.0.0"]
+        app.revealSkyControls([star]); star.tap()
+        XCTAssertEqual(board.value as? String, retained, "Inspection cannot activate an automatic pattern")
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, score)
+    }
+
+    @MainActor func testStoryStartupExplainsTheActualPatternAction() {
+        assertStoryStartupGuidance(largest: false)
+    }
+
+    @MainActor func testLargestTextStoryStartupRemainsReadableUntilDismissed() {
+        assertStoryStartupGuidance(largest: true)
+    }
+
     @MainActor private func assertCurrentStoryGrowthGuidance(largest: Bool) {
         let app = launch(largest: largest)
         defer { app.terminate() }

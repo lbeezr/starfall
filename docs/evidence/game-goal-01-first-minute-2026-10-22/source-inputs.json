@@ -1,0 +1,11 @@
+{
+  "base_main": "93ae893a034ab30e48d3cf55d306d7d1567150f4",
+  "candidate_commit": "ef1b94af2e515e42327026f360fb1615ab2e20fe",
+  "build_identity": "dev.0acb9d128e",
+  "sha256": {
+    "App/FallingSkyStore.swift": "253a26c66e40a8d347f931f508a451deb7790e5bf7c49c4d935bb3d90b2d58fd",
+    "AppTests/SkyDialogueTests.swift": "065fb1813a0028d99f287ff53ffb3e6c2cdfef69cd4a43ca00a42722958b4364",
+    "UITests/SkyFlowInteractionTests.swift": "9ac67095250ac27517ef15ec61cead96fc2cdc9a08c3e35ff169c630aea7c038"
+  },
+  "snapshot": "b6da26761e94"
+}
