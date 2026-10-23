@@ -368,6 +368,84 @@ final class StarlightCelebrationTests: XCTestCase {
 
     /// Current-rule history, full SpriteKit presentation, no alternate rules or quiet effects.
     /// Attachments support visual review; assertions alone do not establish readability.
+    @MainActor func testRealPracticeAwardBandSurvivesGrowingScoreWithoutMovingStars() async throws {
+        let scene = try XCTUnwrap(UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.first)
+        let previous = scene.windows.first(where: \.isKeyWindow)
+        for size in [CGSize(width: 375, height: 667), CGSize(width: 390, height: 844), CGSize(width: 768, height: 1024)] {
+            let suite = "Starfall.PracticeAward.\(UUID())", defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
+            defer { defaults.removePersistentDomain(forName: suite) }
+            defaults.set(false, forKey: "soundEnabled")
+            let store = FallingSkyStore(defaults: defaults, arguments: [], clock: ManualRainClock(), tutorial: .storySquare)
+            let window = UIWindow(windowScene: scene)
+            window.frame = CGRect(origin: .zero, size: size)
+            var observed: [StarlightAnchor: CGRect] = [:]
+            let host = UIHostingController(rootView: FallingSkyView(store: store, flow: SkyFlowState(practice: .storySquare))
+                .environment(\.scenePhase, .active)
+                .environment(\.dynamicTypeSize, .large)
+                .overlayPreferenceValue(StarlightAnchors.self) { anchors in
+                    GeometryReader { geometry in
+                        let origin = geometry.frame(in: .global).origin
+                        let rects = anchors.mapValues { geometry[$0].offsetBy(dx: origin.x, dy: origin.y) }
+                        Color.clear.onAppear { observed = rects }
+                            .onChange(of: rects) { _, value in observed = value }
+                    }.allowsHitTesting(false)
+                })
+            window.rootViewController = host; window.makeKeyAndVisible()
+            defer { window.isHidden = true; window.rootViewController = nil; store.setSuspended(true); previous?.makeKey() }
+            let ready = ContinuousClock.now + .seconds(3)
+            while (!store.sceneReady || store.suspended || observed[.award] == nil) && ContinuousClock.now < ready {
+                try await Task.sleep(for: .milliseconds(20))
+            }
+            XCTAssertTrue(store.sceneReady); XCTAssertFalse(store.suspended); XCTAssertFalse(store.scene.reduceMotion)
+            let award = try XCTUnwrap(observed[.award]), header = try XCTUnwrap(observed[.header])
+            let board = try XCTUnwrap(observed[.board])
+            let layout = XCTAttachment(string: "window=\(window.bounds); award=\(award); header=\(header); board=\(board); scene=\(store.scene.size)")
+            layout.name = "practice-layout-\(Int(size.width))x\(Int(size.height))"
+            layout.lifetime = .keepAlways; add(layout)
+            XCTAssertGreaterThanOrEqual(award.height, 56, "Reserve room for readable title and exact award")
+            XCTAssertTrue(window.bounds.contains(award)); XCTAssertFalse(award.intersects(header))
+            let canvas = try XCTUnwrap(store.scene.view)
+            var ancestor: UIView? = canvas
+            while ancestor != nil && !(ancestor is UIScrollView) { ancestor = ancestor?.superview }
+            let scroll = try XCTUnwrap(ancestor as? UIScrollView)
+            let viewport = window.convert(scroll.bounds, from: scroll)
+            XCTAssertFalse(award.intersects(viewport), "The actual clipped star viewport stays below the receipt")
+            XCTAssertEqual(board, window.convert(canvas.bounds, from: canvas))
+            let mapping = LandingGeometry(size: board.size)
+            for row in 0..<7 {
+                for column in 0..<7 {
+                    // The smallest window scrolls the full native canvas. Its
+                    // clipped, offscreen rows cannot draw over the award band.
+                    let visibleCell = mapping.frame(Cell(row, column))
+                        .offsetBy(dx: board.minX, dy: board.minY).intersection(viewport)
+                    XCTAssertFalse(award.intersects(visibleCell))
+                }
+            }
+            let baselineInk = try awardInk(in: windowImage(window), region: award)
+            XCTAssertTrue(store.requestInput(.swap(Cell(1, 2), Cell(1, 1)), snapshot: store.game,
+                                            generation: store.constellationInputGeneration))
+            XCTAssertEqual(store.game.displayScore, 15_000); XCTAssertEqual(store.game.occupiedCount, 16)
+            var captured: Set<Int> = []
+            let end = ContinuousClock.now + .seconds(3)
+            repeat {
+                await Task.yield()
+                XCTAssertEqual(observed[.award], award, "Receipt space remains stable through the six-digit score header")
+                XCTAssertEqual(observed[.board], board, "The committed total cannot move the native star mapping")
+                if let event = store.celebration, !captured.contains(event.displayAward) {
+                    let image = windowImage(window)
+                    if try awardInk(in: image, region: award) > baselineInk + 100 {
+                        let attachment = XCTAttachment(image: image)
+                        attachment.name = "practice-award-\(Int(size.width))x\(Int(size.height))-\(event.displayAward)"
+                        attachment.lifetime = .keepAlways; add(attachment); captured.insert(event.displayAward)
+                    }
+                }
+                try await Task.sleep(for: .milliseconds(20))
+            } while (store.busy || store.celebration != nil || captured.isEmpty) && ContinuousClock.now < end
+            XCTAssertEqual(captured, [5_000, 15_000], "Both actual phases must visibly render in the measured practice row")
+            XCTAssertNil(store.celebration)
+        }
+    }
+
     @MainActor func testCrowdedCurrentSkyAwardsAtCompactLargeAndMaximumText() async throws {
         var game = FallingSky.freshSurvival(seed: 28)
         // With automatic aging retired, the old 29-shower history is terminal.

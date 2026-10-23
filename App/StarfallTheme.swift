@@ -21,6 +21,8 @@ enum StarfallTheme {
     enum Celebration {
         static let titleCapHeight: CGFloat = 50
         static let minimumGlyphCapHeight: CGFloat = 24
+        // Two readable crystal lines plus the existing label/clip clearance.
+        static let practiceBandHeight = minimumGlyphCapHeight * 2 + Spacing.large
     }
     enum Colors {
         static let launchBackground = Color("LaunchBackground")

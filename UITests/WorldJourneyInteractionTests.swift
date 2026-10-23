@@ -588,6 +588,14 @@ final class WorldJourneyInteractionTests: XCTestCase {
         let zero = "0 of 150,000 starlight collected"
         XCTAssertEqual(app.staticTexts["experiment.score"].label, zero)
         capture(largest ? "story-square-clue-largest-start" : "story-square-clue", app)
+        if !largest {
+            let top = app.buttons["experiment.cell.6.0"]
+            app.revealSkyControls([top])
+            XCTAssertTrue(top.isHittable && app.frame.contains(top.frame),
+                          "The practice scroll must still expose the complete top-row target")
+            XCTAssertGreaterThanOrEqual(top.frame.minY, app.otherElements["sky.header"].frame.maxY)
+            capture("story-square-top-row-reachable", app)
+        }
         readStoryPracticeInstruction(app)
         if largest { capture("story-square-clue-largest-end", app) }
         tap("experiment.cell.0.0", app)

@@ -1,0 +1,321 @@
+{
+  "selected": [
+    {
+      "file": "dev-0c65bc22__square-award__iphone-17e__normal.jpg",
+      "compiledSource": "0c65bc22",
+      "raw": "/private/tmp/starfall-cohesion-20261023/goal10-after-square-frames/frame-7.400.jpg",
+      "rawSHA256": "c636298ac05c4c5d091c3ac06baaebefd2048b8c5b93178b4e60bd4340f78fc1",
+      "rawStoredPixels": [
+        1170,
+        2532
+      ],
+      "rawOrientation": 1,
+      "pixels": [
+        1170,
+        2532
+      ],
+      "sha256": "8f94a3aa98705279304da278de4d56964967d7e418e32e56c936048df1ebc08f",
+      "export": "Orientation normalized; no crop/resize; JPEG quality82. Video-derived JPEG frames recompressed once."
+    },
+    {
+      "file": "dev-0c65bc22__chain-award__iphone-17e__normal.jpg",
+      "compiledSource": "0c65bc22",
+      "raw": "/private/tmp/starfall-cohesion-20261023/goal10-after-square-frames/frame-7.800.jpg",
+      "rawSHA256": "aec70e3515a5c528b2b9965cc6e9fb517b87ee82ebac1d5100a3b24121f829fe",
+      "rawStoredPixels": [
+        1170,
+        2532
+      ],
+      "rawOrientation": 1,
+      "pixels": [
+        1170,
+        2532
+      ],
+      "sha256": "502fdf0b85524d8078fc9fe0d836825b907a6ea74000b20a5146381c216ae120",
+      "export": "Orientation normalized; no crop/resize; JPEG quality82. Video-derived JPEG frames recompressed once."
+    },
+    {
+      "file": "dev-0c65bc22__chain-bloom__iphone-17e__normal.jpg",
+      "compiledSource": "0c65bc22",
+      "raw": "/private/tmp/starfall-cohesion-20261023/goal10-after-square-frames/frame-8.200.jpg",
+      "rawSHA256": "0461128fbbb53397671e80cb3a0e6617d9f723b23ea19eb7b4b520f6cd0c5f2a",
+      "rawStoredPixels": [
+        1170,
+        2532
+      ],
+      "rawOrientation": 1,
+      "pixels": [
+        1170,
+        2532
+      ],
+      "sha256": "7d6bdf95f094ca85b3fee62a6754e28cc24aa1f84c971b35f4c438366d20ec23",
+      "export": "Orientation normalized; no crop/resize; JPEG quality82. Video-derived JPEG frames recompressed once."
+    },
+    {
+      "file": "dev-3410e14__chain-award__375x667-window__hosted-normal.jpg",
+      "compiledSource": "3410e14",
+      "raw": "/private/tmp/starfall-cohesion-20261023/goal10-hosted-attachments/7A7CCB15-B15A-40AF-9294-0A5A882B2CBA.png",
+      "rawSHA256": "4b4c05eb4f4783e49f03373f84b875e9e18d848862db7594bfb2a8e0f1ec2290",
+      "rawStoredPixels": [
+        750,
+        1334
+      ],
+      "rawOrientation": 1,
+      "pixels": [
+        750,
+        1334
+      ],
+      "sha256": "5fe804cd97a1b1e43facfcc0a6cc2f7cd784c992e6b68fa21ba81cedc8d01a8a",
+      "export": "Orientation normalized; no crop/resize; JPEG quality82."
+    },
+    {
+      "file": "dev-3410e14__chain-award__768x1024-window__hosted-normal.jpg",
+      "compiledSource": "3410e14",
+      "raw": "/private/tmp/starfall-cohesion-20261023/goal10-hosted-attachments/C937F873-182B-4BCF-A066-232A7A20506A.png",
+      "rawSHA256": "db1f612a234b1d1ccf03990db7a83aad88958375c01866c6c7ec6c04aadcfceb",
+      "rawStoredPixels": [
+        1536,
+        2048
+      ],
+      "rawOrientation": 1,
+      "pixels": [
+        1536,
+        2048
+      ],
+      "sha256": "e882f0f26ac7e20f57a6cdeef1008da21c0e79d4e8747d946f64fab78bff6000",
+      "export": "Orientation normalized; no crop/resize; JPEG quality82."
+    },
+    {
+      "file": "dev-3410e14__home__iphone-17e__normal.jpg",
+      "compiledSource": "3410e14",
+      "raw": "/private/tmp/starfall-cohesion-20261023/goal10-current-routes-attachments/C64674BE-6B8F-4E75-8D76-CA3BB8C8168B.png",
+      "rawSHA256": "5d28441eb2a21c54bbb7780fa1c2fef3c65fb5e69ac8bc531ed2ea741ce9827e",
+      "rawStoredPixels": [
+        1170,
+        2532
+      ],
+      "rawOrientation": 1,
+      "pixels": [
+        1170,
+        2532
+      ],
+      "sha256": "93ee69f4854cb38a9d05bda6e502b9a6c1dd7e75d64fcb9a59aabf80b42a646f",
+      "export": "Orientation normalized; no crop/resize; JPEG quality82."
+    },
+    {
+      "file": "dev-3410e14__lantern-line__iphone-17e__normal.jpg",
+      "compiledSource": "3410e14",
+      "raw": "/private/tmp/starfall-cohesion-20261023/goal10-current-routes-attachments/F8DD902D-C201-45B8-8182-65F662F9301C.png",
+      "rawSHA256": "1523d71af0f77045a7dfc43fac6efbb6d288691134bf4f5d5618e7b8986d4ccc",
+      "rawStoredPixels": [
+        1170,
+        2532
+      ],
+      "rawOrientation": 1,
+      "pixels": [
+        1170,
+        2532
+      ],
+      "sha256": "3914c4fdf85c465577a43555b6d44a8ac8d4adccfd519031f3c427c9e3d4315a",
+      "export": "Orientation normalized; no crop/resize; JPEG quality82."
+    },
+    {
+      "file": "dev-3410e14__ribbon-chain__iphone-17e__normal.jpg",
+      "compiledSource": "3410e14",
+      "raw": "/private/tmp/starfall-cohesion-20261023/goal10-current-routes-attachments/92A12DB0-1989-4B18-92B4-682EE3074D6C.png",
+      "rawSHA256": "697160b038628bf9cc8bf19c745217add4b7d3433b35bac455f0842aa207bd9c",
+      "rawStoredPixels": [
+        1170,
+        2532
+      ],
+      "rawOrientation": 1,
+      "pixels": [
+        1170,
+        2532
+      ],
+      "sha256": "c1ef5ad76c3f9bd6bc3024c5cdc5975842e76d08bcf4fe81b4b76bd27ccd6f1b",
+      "export": "Orientation normalized; no crop/resize; JPEG quality82."
+    },
+    {
+      "file": "dev-3410e14__practice-complete__ipad-mini-a17pro__ax3xl-calm.jpg",
+      "compiledSource": "3410e14",
+      "raw": "/private/tmp/starfall-cohesion-20261023/goal10-practice-boundaries-attachments/C58F940E-26D0-4A40-9FA3-C5E750249D08.png",
+      "rawSHA256": "510b9d9cbb14a22e97147112ce9a353758ceddc26147865fee69cd886a4cb5ca",
+      "rawStoredPixels": [
+        1488,
+        2266
+      ],
+      "rawOrientation": 1,
+      "pixels": [
+        1488,
+        2266
+      ],
+      "sha256": "a7829b5dc5adf9d8ba9c45f3595a25793fc84fe6098cad4a19abfecdccebf8d9",
+      "export": "Orientation normalized; no crop/resize; JPEG quality82."
+    },
+    {
+      "file": "dev-f2ed225c__chain-award__iphone-17e__normal.jpg",
+      "compiledSource": "f2ed225c",
+      "raw": "/private/tmp/starfall-cohesion-20261023/goal10-integrated-square-frames/frame-7.800.jpg",
+      "rawSHA256": "730db8d57fbb42e8b5e7e5614aba051a69bc6385e61ec480a99aef5cbcb735eb",
+      "rawStoredPixels": [
+        1170,
+        2532
+      ],
+      "rawOrientation": 1,
+      "pixels": [
+        1170,
+        2532
+      ],
+      "sha256": "ea95d10b4c7ec33acc5794c87326b0a7fc82ae2a82745d520f6829fb6d8cec6c",
+      "export": "Orientation normalized; no crop/resize; JPEG quality82.",
+      "scope": "Seed86a1348 predates upstream forecast326; integrated f2ed225c includes that forecast."
+    },
+    {
+      "file": "dev-f2ed225c__practice-top-row__iphone-17e__normal.jpg",
+      "compiledSource": "f2ed225c",
+      "raw": "/private/tmp/starfall-cohesion-20261023/goal10-integrated-square-attachments/29D75B33-DC78-4B65-9D04-17844EF245D6.png",
+      "rawSHA256": "73a52f28038788b983ab10f4971b3062a4e257365256e952ba3b8c873abed55a",
+      "rawStoredPixels": [
+        1170,
+        2532
+      ],
+      "rawOrientation": 1,
+      "pixels": [
+        1170,
+        2532
+      ],
+      "sha256": "2ce7fc4dc40ed6273a3e165b2605092821b9e632a1abd3ced7338e8c71aea156",
+      "export": "Orientation normalized; no crop/resize; JPEG quality82.",
+      "scope": "Seed86a1348 predates upstream forecast326; integrated f2ed225c includes that forecast."
+    },
+    {
+      "file": "dev-f2ed225c__chain-award__375x667-window__hosted-normal.jpg",
+      "compiledSource": "f2ed225c",
+      "raw": "/private/tmp/starfall-cohesion-20261023/goal10-integrated-hosted-attachments/3063CF4D-DAE2-459C-A7BC-A945ADAA33EA.png",
+      "rawSHA256": "33b1bace3983c81f0bd495b0c007400e629b82d6ff9da8d3890b10952b6c5e24",
+      "rawStoredPixels": [
+        750,
+        1334
+      ],
+      "rawOrientation": 1,
+      "pixels": [
+        750,
+        1334
+      ],
+      "sha256": "05b7275693f1ecc147e9debb450b054f420ae460b4266b31a6fd29bdbb9f1aa8",
+      "export": "Orientation normalized; no crop/resize; JPEG quality82.",
+      "scope": "Seed86a1348 predates upstream forecast326; integrated f2ed225c includes that forecast."
+    },
+    {
+      "file": "dev-86a1348__seed-active-clear__ipad-mini-a17pro__normal.jpg",
+      "compiledSource": "86a1348",
+      "raw": "/private/tmp/starfall-cohesion-20261023/goal10-seed-current-attachments/C24F28EA-5F10-4744-8F94-E8A116568F99.png",
+      "rawSHA256": "6ab80841e98dbadbbd3d80bb5965048145eb0e652004a105da27aaf4545abc3a",
+      "rawStoredPixels": [
+        1488,
+        2266
+      ],
+      "rawOrientation": 1,
+      "pixels": [
+        1488,
+        2266
+      ],
+      "sha256": "c8090678a731d038abdfa5509bf81654ae67bd05396a004ee5793c78db9489ca",
+      "export": "Orientation normalized; no crop/resize; JPEG quality82.",
+      "scope": "Seed86a1348 predates upstream forecast326; integrated f2ed225c includes that forecast."
+    }
+  ],
+  "clip": {
+    "file": "dev-0c65bc22__square-chain__iphone-17e__normal.mp4",
+    "sha256": "561128a03e8f0f131b6d40b5ab3cf9a9d26d3a190404c327163ecc1bdeb5ae5b",
+    "originalSHA256": "685352e0b4c9b0ca79481746338cef8c1ccba44757fba65962736e1abd64ea57",
+    "startSeconds": 5.5,
+    "durationSeconds": 4.2,
+    "export": "AVFoundation normal speed preset960x540, preserves portrait aspect; no audio proof.",
+    "captureReceipt": {
+      "testExit": 0,
+      "videoExit": 0,
+      "trigger": "Tap \"tutorial.retry\" Button",
+      "triggerElapsed": 64.943,
+      "recordingReadyElapsed": 65.237,
+      "elapsedSeconds": 98.609,
+      "movie": "/private/tmp/starfall-cohesion-20261023/goal10-after-square.mp4",
+      "command": [
+        "xcodebuild",
+        "-testProductsPath",
+        "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c35297cacc07/test-products/build_sim_2026-10-23T18-40-41-132Z_pid51280_16eb2a21.xctestproducts",
+        "-destination",
+        "platform=iOS Simulator,id=DB9604E1-D7A8-4C75-BA25-E29243AEC02D",
+        "-collect-test-diagnostics",
+        "never",
+        "-parallel-testing-enabled",
+        "NO",
+        "-only-testing:StarfallUITests/WorldJourneyInteractionTests/testCurrentStorySquarePracticeLetsThePlayerChooseAndPreservesTheirRound",
+        "-resultBundlePath",
+        "/private/tmp/starfall-cohesion-20261023/goal10-after-square.xcresult",
+        "test-without-building"
+      ]
+    }
+  },
+  "before": {
+    "compiledSource": "a72d5414ea01c8f2120ee0700fdea9f70366b0c1",
+    "parity": "All runtime inputs match activation main7d70063b; later differences are tests/docs only.",
+    "still": "../cohesion-goal-09-score-focus-2026-10-23/dev-a72d541__rose-arrival__iphone-17e__after.jpg",
+    "clip": "../cohesion-goal-09-score-focus-2026-10-23/dev-a72d541__square-chain__iphone-17e__after.mp4",
+    "record": "../cohesion-goal-09-score-focus-2026-10-23/captures.json"
+  },
+  "actualFrameTimes": {
+    "goal10-after-square-times.txt": "durationSeconds=9.793333333333333\nframe-0.000.jpg actual=0.0 pixels=1170x2532\nframe-6.000.jpg actual=5.988333333333333 pixels=1170x2532\nframe-6.500.jpg actual=6.498333333333333 pixels=1170x2532\nframe-7.000.jpg actual=6.973333333333334 pixels=1170x2532\nframe-7.400.jpg actual=7.391666666666667 pixels=1170x2532\nframe-7.800.jpg actual=7.773333333333333 pixels=1170x2532\nframe-8.200.jpg actual=8.171666666666667 pixels=1170x2532\nframe-8.600.jpg actual=8.588333333333333 pixels=1170x2532\nframe-9.000.jpg actual=9.0 pixels=1170x2532\nframe-9.400.jpg actual=9.391666666666667 pixels=1170x2532\n",
+    "goal10-selected-clip-times.txt": "durationSeconds=4.2\nframe-0.400.jpg actual=0.4 pixels=444x960\nframe-1.500.jpg actual=1.4733333333333334 pixels=444x960\nframe-1.900.jpg actual=1.8916666666666666 pixels=444x960\nframe-2.300.jpg actual=2.2733333333333334 pixels=444x960\nframe-2.700.jpg actual=2.671666666666667 pixels=444x960\nframe-3.400.jpg actual=3.3983333333333334 pixels=444x960\n",
+    "goal10-integrated-square-times.txt": "durationSeconds=9.925\nframe-7.400.jpg actual=7.36 pixels=1170x2532\nframe-7.800.jpg actual=7.7716666666666665 pixels=1170x2532\nframe-8.200.jpg actual=8.188333333333333 pixels=1170x2532\n",
+    "goal10-integrated-clip-times.txt": "durationSeconds=4.2\nframe-0.400.jpg actual=0.3883333333333333 pixels=444x960\nframe-1.500.jpg actual=1.5 pixels=444x960\nframe-1.900.jpg actual=1.86 pixels=444x960\nframe-2.300.jpg actual=2.2716666666666665 pixels=444x960\nframe-2.700.jpg actual=2.6883333333333335 pixels=444x960\nframe-3.400.jpg actual=3.3983333333333334 pixels=444x960\n"
+  },
+  "limits": [
+    "Before/after show the same actual current-rule two-clear gesture, with slightly different animation ages; not a pixel-identical timing comparison.",
+    "375x667 and768x1024 are hosted windows on the owned tablet simulator, not additional hardware or minimumOS evidence.",
+    "The smallest window scrolls the unchanged full native canvas; clipped offscreen rows are excluded from visible-cell overlap checks.",
+    "Finite frames do not establish continuous smoothness, human timing preference or physical comfort."
+  ],
+  "integratedClip": {
+    "file": "dev-f2ed225c__square-chain__iphone-17e__normal.mp4",
+    "sha256": "341d0aff89c8d1a66d4f4efcb9a2584981fa69ea45e2b35e81d529e8c609254c",
+    "originalSHA256": "d33820e53be7789a25ff6de671de7948355b954b49ab6e154b03fb19867b15c5",
+    "startSeconds": 5.5,
+    "durationSeconds": 4.2,
+    "export": "Normal speed AVFoundation preset960x540, preserves portrait aspect; no audio proof.",
+    "captureReceipt": {
+      "testExit": 0,
+      "videoExit": 0,
+      "trigger": "Tap \"tutorial.retry\" Button",
+      "triggerElapsed": 65.107,
+      "recordingReadyElapsed": 65.276,
+      "elapsedSeconds": 98.951,
+      "movie": "/private/tmp/starfall-cohesion-20261023/goal10-integrated-square.mp4",
+      "command": [
+        "xcodebuild",
+        "-testProductsPath",
+        "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c35297cacc07/test-products/build_sim_2026-10-23T19-00-51-520Z_pid51280_6e3b2d41.xctestproducts",
+        "-destination",
+        "platform=iOS Simulator,id=DB9604E1-D7A8-4C75-BA25-E29243AEC02D",
+        "-collect-test-diagnostics",
+        "never",
+        "-parallel-testing-enabled",
+        "NO",
+        "-only-testing:StarfallUITests/WorldJourneyInteractionTests/testCurrentStorySquarePracticeLetsThePlayerChooseAndPreservesTheirRound",
+        "-resultBundlePath",
+        "/private/tmp/starfall-cohesion-20261023/goal10-integrated-square.xcresult",
+        "test-without-building"
+      ]
+    }
+  },
+  "inspection": {
+    "root": "Both exact retained after clips sampled at6ages each; original after full-resolution keyframes and final integrated375 hosted rendering inspected.",
+    "independentReviewer": "All13 exact selected JPEGs,11 current-route raw PNGs,8 practice-boundary raw PNGs,11 currentSeed raw PNGs,10 integrated mode/history/Storm raw PNGs; earlier nine READMEs and available capture indexes. Earlier evidence retains its original source, not a fresh full-matrix claim.",
+    "scopeNotes": [
+      "AX3XL completion shows scrolled guide, not simultaneous full board.",
+      "Mode hint frames do not display complete inner-scroll worked detail or intermediate Next shower; passing actions and the separate long Storm lesson carry those boundaries.",
+      "CurrentSeed active clear samples dormant/shoot/open states; not an independent closed-bud audit."
+    ]
+  }
+}
