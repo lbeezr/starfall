@@ -157,7 +157,7 @@ struct StarlightCelebrationOverlay: View {
             let region = Self.awardRegion(board: board, header: header, accessible: textSize.isAccessibilitySize)
             ZStack(alignment: .topLeading) {
                 if !quiet {
-                    Canvas { context, _ in draw(in: &context, age: age) }
+                    Canvas { context, size in draw(in: &context, age: age, canvasSize: size) }
                 }
                 CrystalCelebrationLabel(event: event, tint: accent, width: region.width - 12,
                                         height: region.height - 8, showsTitle: !textSize.isAccessibilitySize,
@@ -202,7 +202,7 @@ struct StarlightCelebrationOverlay: View {
         return CGPoint(x: local.x + board.minX, y: local.y + board.minY)
     }
 
-    private func draw(in context: inout GraphicsContext, age: Double) {
+    private func draw(in context: inout GraphicsContext, age: Double, canvasSize: CGSize) {
         guard age < StarlightCelebration.duration else { return }
         let points = event.cells.map(location)
         let origin = CGPoint(x: points.map(\.x).reduce(0, +) / CGFloat(points.count),
@@ -237,32 +237,7 @@ struct StarlightCelebrationOverlay: View {
                 pulse.stroke(outline, with: .color(.white), style: StrokeStyle(lineWidth: 2.5, lineCap: .round, lineJoin: .round))
             }
         }
-        // Six packets maximum. All represent one committed award, not individual points.
-        let target = lightDestination ?? score
-        let destination = CGPoint(x: target.midX, y: target.midY)
-        let flight = StarlightCelebration.packetFlight(toRestoration: lightDestination != nil)
-        for (index, contributor) in event.packets.enumerated() {
-            let point = location(contributor.cell)
-            let emission = LivingLight.emission(for: StarCast.Identity(contributor.identity))
-            let tint = Color(emission.family)
-            let center = Color(emission.center)
-            let weight = Double(contributor.reward - 1) * 0.65
-            let t = flight.progress(at: age, packetIndex: index)
-            guard t > 0, t < 1 else { continue }
-            let control = CGPoint(x: point.x - board.width * 0.18, y: destination.y + (point.y - destination.y) * 0.35)
-            func along(_ progress: Double) -> CGPoint {
-                let u = 1 - progress
-                return CGPoint(x: u*u*point.x + 2*u*progress*control.x + progress*progress*destination.x,
-                               y: u*u*point.y + 2*u*progress*control.y + progress*progress*destination.y)
-            }
-            var tail = Path()
-            tail.addLines((0...12).map { along(max(0, t - 0.22 + Double($0) / 12 * 0.22)) })
-            var glow = context
-            glow.addFilter(.shadow(color: tint, radius: 4 + 5 * energy))
-            glow.stroke(tail, with: .color(tint.opacity(0.3)), style: StrokeStyle(lineWidth: 7 + energy * 7 + weight, lineCap: .round))
-            glow.stroke(tail, with: .color(center), style: StrokeStyle(lineWidth: 2 + energy * 3 + weight, lineCap: .round))
-            glint(in: &glow, at: along(t), radius: 3.5 + energy * 3 + weight, color: center)
-        }
+        drawPackets(in: &context, age: age, canvasSize: canvasSize)
         if age > 0.58 {
             let t = min(1, (age - 0.58) / 0.65)
             var bloom = context
@@ -271,6 +246,48 @@ struct StarlightCelebrationOverlay: View {
             let bounds = score.insetBy(dx: -8 - 5*t, dy: -3 - 3*t)
             bloom.stroke(Path(roundedRect: bounds, cornerRadius: 18), with: .color(accent), lineWidth: 1.5 + energy * 2)
             glint(in: &bloom, at: CGPoint(x: score.maxX + 8, y: score.minY), radius: 5, color: accent)
+        }
+    }
+
+    /// The same packet pass serves the live Canvas and fixed-age raster checks.
+    func drawPackets(in context: inout GraphicsContext, age: Double, canvasSize: CGSize) {
+        let energy = event.energy
+        // Six packets maximum. All represent one committed award, not individual points.
+        let target = lightDestination ?? score
+        let destination = CGPoint(x: target.midX, y: target.midY)
+        let flight = StarlightCelebration.packetFlight(toRestoration: lightDestination != nil)
+        // Clip the composited light, including its shadow, outside the measured
+        // score instrument. Paths and arrivals stay unchanged; the separate
+        // arrival bloom still acknowledges collection around the instrument.
+        var packets = context
+        if !score.isEmpty, !score.isNull, !score.isInfinite {
+            var visible = Path(CGRect(origin: .zero, size: canvasSize))
+            visible.addRect(score.insetBy(dx: -4, dy: -4))
+            packets.clip(to: visible, style: FillStyle(eoFill: true))
+        }
+        packets.drawLayer { layer in
+            for (index, contributor) in event.packets.enumerated() {
+                let point = location(contributor.cell)
+                let emission = LivingLight.emission(for: StarCast.Identity(contributor.identity))
+                let tint = Color(emission.family)
+                let center = Color(emission.center)
+                let weight = Double(contributor.reward - 1) * 0.65
+                let t = flight.progress(at: age, packetIndex: index)
+                guard t > 0, t < 1 else { continue }
+                let control = CGPoint(x: point.x - board.width * 0.18, y: destination.y + (point.y - destination.y) * 0.35)
+                func along(_ progress: Double) -> CGPoint {
+                    let u = 1 - progress
+                    return CGPoint(x: u*u*point.x + 2*u*progress*control.x + progress*progress*destination.x,
+                                   y: u*u*point.y + 2*u*progress*control.y + progress*progress*destination.y)
+                }
+                var tail = Path()
+                tail.addLines((0...12).map { along(max(0, t - 0.22 + Double($0) / 12 * 0.22)) })
+                var glow = layer
+                glow.addFilter(.shadow(color: tint, radius: 4 + 5 * energy))
+                glow.stroke(tail, with: .color(tint.opacity(0.3)), style: StrokeStyle(lineWidth: 7 + energy * 7 + weight, lineCap: .round))
+                glow.stroke(tail, with: .color(center), style: StrokeStyle(lineWidth: 2 + energy * 3 + weight, lineCap: .round))
+                glint(in: &glow, at: along(t), radius: 3.5 + energy * 3 + weight, color: center)
+            }
         }
     }
 

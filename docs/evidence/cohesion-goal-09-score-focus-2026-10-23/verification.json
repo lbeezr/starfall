@@ -1,0 +1,124 @@
+{
+  "status": "Verified for scoped development adoption",
+  "activationMain": "47e633e32469306d4e8afae47b3146292e086a69",
+  "baselineCompiledCommit": "fb76f713946cb384d752b0ee10de316e8b1951e6",
+  "baselineParity": "Only App/README differs under App/Core/project/tests/Config against activation main; immutable prepared products reused.",
+  "redCleanCommit": "e4c65f3feb00a93dc20ea14c631b3203a728ec27",
+  "testedCleanCommit": "a72d5414ea01c8f2120ee0700fdea9f70366b0c1",
+  "buildAffectingDirtyInputs": {},
+  "changedBuildInputs": {
+    "App/StarlightCelebration.swift": "a664a929e77c76d245427e4ce484e596958ce22cf8ea751c0fee302fa6902567",
+    "AppTests/StarlightCelebrationTests.swift": "6d57a918d5cff6f180684094fb358eb6acf1ac20e24642e7c7440ae212beab1e"
+  },
+  "environment": "Xcode27.1(27A9275),Swift6.4,macOS27.0.1;Debug/Release arm64;iPhone17e/iPadminiA17Pro iOS27.0(24A434) Simulator;bundle dev.local",
+  "core": {
+    "passed": 305,
+    "failed": 0,
+    "skipped": 0
+  },
+  "buildSeconds": {
+    "redDebug": 34,
+    "candidateDebug": 3.2,
+    "candidateRelease": 19.3
+  },
+  "checks": {
+    "red-packets": {
+      "result": "Failed",
+      "totalTestCount": 1,
+      "passedTests": 0,
+      "failedTests": 1,
+      "skippedTests": 0
+    },
+    "green-packets": {
+      "result": "Passed",
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0
+    },
+    "before-square": {
+      "result": "Passed",
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0
+    },
+    "after-square": {
+      "result": "Passed",
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0
+    },
+    "hosted": {
+      "result": "Passed",
+      "totalTestCount": 36,
+      "passedTests": 36,
+      "failedTests": 0,
+      "skippedTests": 0
+    },
+    "quiet-tablet": {
+      "result": "Passed",
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0
+    },
+    "after-ribbon": {
+      "result": "Passed",
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0
+    }
+  },
+  "redEvidence": {
+    "testCount": 1,
+    "assertionFailures": 5,
+    "scorePixelsAbove2": [
+      2680,
+      2255,
+      6087,
+      15761,
+      3165
+    ],
+    "outsideInkGatePassed": true,
+    "purpose": "Same real packet drawing pass sampled at six fixed ages; score and restoration destinations. Test genuinely fails before clip and passes after without weakened assertions."
+  },
+  "limits": [
+    "Synthetic fixed-age raster checks isolate packet ink/shadow; native comparison separately verifies ordinary scene.",
+    "No Core/rules/save/audio/haptic/layout/artwork change. Six packet budget, trajectories, phase/flight times and separate arrival bloom preserved. One bounded composite layer added per receipt.",
+    "HistoricalRibbon14→18 fixture samples shared presentation, not current220000 reachability.",
+    "No actual listening, haptic comfort, physical performance/install, VoiceOver, minimumiOS17 or fullRC claim."
+  ],
+  "remainingDiscovery": "Compact normal Story-square practice header reflow leaves +15000 lettering clipped. Separate Goal10 outcome; existing award assertions unchanged.",
+  "matrixInventoryOnly": {
+    "ui": 219,
+    "hosted": 500,
+    "fullMatrixPass": false
+  },
+  "commands": [
+    "swift test --scratch-path /private/tmp/starfall-factory-gameplay-20261022/CoreBuild --jobs 2",
+    "XcodeBuildMCP build_sim(buildForTesting:true),Debug;Release build_sim({})",
+    "python3 scripts/simulator-command.py --receipt <temp>/stages.jsonl <label> <120/240/270> xcodebuild -testProductsPath <prepared> -destination platform=iOS Simulator,id=<owned> -collect-test-diagnostics never -parallel-testing-enabled NO -only-testing:<selector> -resultBundlePath <unique>.xcresult test-without-building",
+    "Exact motion scenario commands and capture readiness are in captures.json",
+    "xcrun xcresulttool get test-results summary --path <result> --format json",
+    "xcrun xcresulttool export attachments --path <result> --output-path <unique>",
+    "python3 scripts/native_test_plan.py --stage dev",
+    "python3 scripts/ci-hygiene.py",
+    "git diff --check"
+  ],
+  "selectors": {
+    "hosted": [
+      "StarlightCelebrationTests",
+      "QuietTuckPlayerTests"
+    ],
+    "native": [
+      "WorldJourneyInteractionTests/testCurrentStorySquarePracticeLetsThePlayerChooseAndPreservesTheirRound",
+      "WorldJourneyInteractionTests/testLargestTextCurrentStorySquarePracticeKeepsHintOptionalAndRoundSafe",
+      "RibbonCrossingInteractionTests/testRibbonWinningClearPersistsNamedResultAndReplayStartsAtZero"
+    ]
+  },
+  "independentMediaReview": "All ten retained-clip frame exports reviewed: matching practice prestate, Aqua, Rose, arrival bloom, settled sequence. Upright; candidate retains packet light outside instrument with no sampled premature disappearance. Equal timestamps are not exactly phase-aligned. Quiet JPEG and Ribbon2.5/4.0 contrasts retain their stated scope; no new discoveries.",
+  "selectedJPEGInspection": "All six exact selected JPEG exports inspected for source/state/orientation and visible outcome."
+}

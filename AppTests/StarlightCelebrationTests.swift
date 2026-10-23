@@ -34,6 +34,63 @@ final class StarlightCelebrationTests: XCTestCase {
         XCTAssertEqual(cumulative, game.displayScore)
     }
 
+    @MainActor func testPacketInkAndShadowLeaveTheScoreReadableAtBothDestinations() async throws {
+        var game = FallingSky.freshChallenge(.ribbonCrossing)
+        let turn = try XCTUnwrap(game.nudge(from: Cell(1, 1), to: Cell(1, 2)))
+        let phase = turn.resolutionPhases[1]
+        let receipt = StarlightCelebration(id: 1, phase: phase, cumulativeAward: 15_000, total: 15_000)
+        let scene = try XCTUnwrap(UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.first)
+        let previous = scene.windows.first(where: \.isKeyWindow)
+        let window = UIWindow(windowScene: scene)
+        window.frame = CGRect(x: 0, y: 0, width: 390, height: 844)
+        let host = UIHostingController(rootView: AnyView(Color.black))
+        window.rootViewController = host; window.makeKeyAndVisible()
+        defer { window.isHidden = true; window.rootViewController = nil; previous?.makeKey() }
+
+        let destinations: [(score: CGRect, light: CGRect?, ages: [Double])] = [
+            (CGRect(x: 80, y: 100, width: 210, height: 48), nil, [0.55, 0.61, 0.68]),
+            (CGRect(x: 65, y: 150, width: 240, height: 65), CGRect(x: 160, y: 20, width: 30, height: 30), [0.27, 0.34, 0.39])
+        ]
+        for (index, destination) in destinations.enumerated() {
+            for age in destination.ages {
+                let overlay = StarlightCelebrationOverlay(event: receipt, board: window.bounds,
+                    score: destination.score, header: .zero, quiet: false, lightDestination: destination.light)
+                host.rootView = AnyView(Canvas { context, size in
+                    overlay.drawPackets(in: &context, age: age, canvasSize: size)
+                }.background(Color.black).ignoresSafeArea().id("\(index)-\(age)"))
+                var image: UIImage?
+                var totalInk = 0
+                let deadline = ContinuousClock.now + .milliseconds(900)
+                repeat {
+                    await Task.yield(); host.view.layoutIfNeeded()
+                    image = windowImage(window)
+                    totalInk = try packetInk(in: XCTUnwrap(image), region: window.bounds)
+                    if totalInk < 25 { try await Task.sleep(for: .milliseconds(20)) }
+                } while totalInk < 25 && ContinuousClock.now < deadline
+                let rendered = try XCTUnwrap(image)
+                XCTAssertGreaterThan(totalInk, 25, "The packet flight must still render outside the score")
+                XCTAssertEqual(try packetInk(in: rendered, region: destination.score), 0,
+                    "Packet heads, tails and shadow must not paint over the measured score at age\(age)")
+                let attachment = XCTAttachment(image: rendered)
+                attachment.name = "packet-score-exclusion-\(index)-\(age)"
+                attachment.lifetime = .keepAlways; add(attachment)
+            }
+        }
+    }
+
+    private func packetInk(in image: UIImage, region: CGRect) throws -> Int {
+        let cg = try XCTUnwrap(image.cgImage)
+        let crop = try XCTUnwrap(cg.cropping(to: region.applying(CGAffineTransform(scaleX: image.scale, y: image.scale))))
+        var pixels = [UInt8](repeating: 0, count: crop.width * crop.height * 4)
+        let context = try XCTUnwrap(CGContext(data: &pixels, width: crop.width, height: crop.height,
+            bitsPerComponent: 8, bytesPerRow: crop.width * 4, space: CGColorSpaceCreateDeviceRGB(),
+            bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue))
+        context.draw(crop, in: CGRect(x: 0, y: 0, width: crop.width, height: crop.height))
+        return stride(from: 0, to: pixels.count, by: 4).filter {
+            max(pixels[$0], pixels[$0 + 1], pixels[$0 + 2]) > 2
+        }.count
+    }
+
     func testEveryRestorationPacketArrivesBeforeTheWinningClearHandsOff() {
         let flight = StarlightCelebration.packetFlight(toRestoration: true)
         XCTAssertEqual(StarlightCelebration.maximumPackets, 6)
