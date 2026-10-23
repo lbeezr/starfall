@@ -1,0 +1,99 @@
+{
+  "source": "fc0867e51873d9efeb4003c4d0cfa4997f957365",
+  "build_identity": "dev.a591c1b9bb",
+  "dirty_build_inputs": [],
+  "runtime_trees": {
+    "App": "a61c0ac736f8d2630d7c84db5bba433a313a77ad",
+    "Sources": "0d26394bb15b0e2f24629a9d8d2ad03055f4f2ea",
+    "AppTests": "780e7e8c98df24b64139987e84f490070345be72",
+    "UITests": "a0351ef72596a781b3b0a0f05f1c53cf32bf270e",
+    "Config": "3a0c78b4b68dacbccd39b9168e491c52e3e08be5",
+    "Starfall.xcodeproj": "ac7548b201bd4a373f4e6b36687fce3ef909ada2"
+  },
+  "hosted_selectors": {
+    "SkyFlowStateTests": [
+      "testContinueRetainsPauseChoiceAndClockRemainder",
+      "testBrowsingAndCancelingEveryReplacementPreservesCommittedSave",
+      "testOnwardMapEntryCancellationRetainsTheWonRoundUntilBegin",
+      "testHelpUsesCurrentOrPendingRulesWithoutCommittingEntry",
+      "testWorldMapRetainedGoalsKeepHistoricalAndCurrentPointScales"
+    ],
+    "FallingSkyStoreTests": [
+      "testPauseAndBackgroundFreezeRemainingTimeWithoutCatchUp",
+      "testRestartRejectsStaleTimerAndAnimationAndRestoreStartsPaused",
+      "testDialogueDoesNotMutateRoundSaveOrDeadlineAndRestartDiscardsIt"
+    ],
+    "SkyDialogueTests": [
+      "testCascadeEntryReplayAndHelpFollowTheSelectedSavedRevision",
+      "testCurrentStoryStartupKeepsItsObjectiveAndAutomaticPatternGuidance",
+      "testManualSkyStartupAndResumeRetainTheirExistingGuidance",
+      "testExpiryRejectsStaleCallbacksAfterNewMessageReopenAndReset",
+      "testStoryPressurePreservesAutomaticGuidanceAndRestoresWithoutRecoverySpeech",
+      "testNewerHelpSurvivesPlayerAndShowerCompletionWithoutDuplicateSpeech"
+    ]
+  },
+  "native_selectors": [
+    "FallingSkyInteractionTests/testPausedGuideReportsGrowthDarkOutcomesAndRestore",
+    "SkyDialogueInteractionTests/testActiveMessageCanBeReopenedWithoutStoppingAutomaticShowers",
+    "SkyDialogueInteractionTests/testPausedGuideStartsCollapsedAndReopensWithoutHidingManualControls",
+    "SkyFlowInteractionTests/testEntryCancellationAndTerminationRetainThePlayedSky",
+    "SkyFlowInteractionTests/testLargestEndingReplayRetainsResultAcrossBackgroundAndCancel"
+  ],
+  "results": {
+    "goal09-hosted": {
+      "result": "Passed",
+      "totalTestCount": 14,
+      "passedTests": 14,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792729469.393,
+      "finishTime": 1792729472.321,
+      "failures": []
+    },
+    "goal09-phone-return": {
+      "result": "Passed",
+      "totalTestCount": 2,
+      "passedTests": 2,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792729522.206,
+      "finishTime": 1792729628.357,
+      "failures": []
+    },
+    "goal09-tablet-return": {
+      "result": "Passed",
+      "totalTestCount": 3,
+      "passedTests": 3,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792729472.577,
+      "finishTime": 1792729596.017,
+      "failures": []
+    }
+  },
+  "inherited_checks": {
+    "core": {
+      "passed": 241,
+      "failed": 0,
+      "skipped": 0
+    },
+    "builds": [
+      "Goal7 Debug",
+      "Goal7 Release"
+    ],
+    "source": "02a36e6748814d5fbf2ee29b5fb9b69b1a91c983",
+    "same_runtime_trees": true
+  },
+  "capture": {
+    "source": "fc0867e51873d9efeb4003c4d0cfa4997f957365",
+    "build": "dev.a591c1b9bb",
+    "device": "iPhone 17e",
+    "text": "default",
+    "os": "iOS 27.0 (24A434)",
+    "label": "paused-guide-production-restored-open",
+    "raw_sha256": "4b4af03cd0b0168f0cc7103c443163586d17da1d1ceb459b31b955367898a41e",
+    "retained": "dev-a591c1b9bb__retained-sky__iphone-17e__restore-guide-open.jpg",
+    "retained_sha256": "6051ffdfb6d964d003d61c0d1c82fe37cd2222c2b355fe34c6216ff241f4bb71",
+    "inspected": true
+  }
+}

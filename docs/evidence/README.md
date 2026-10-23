@@ -1,5 +1,7 @@
 # Evidence index
 
+[Game-factory goal 9: safe returning](game-goal-09-safe-return-2026-10-23/README.md) verifies collapsed/reopened guidance, active versus paused reading, exact retained save/deadline and canceled replacement/result journeys with 14 hosted/five native passes.
+
 [Game-factory goal 8: sensory language](game-goal-08-sensory-language-2026-10-23/README.md) accepts the existing committed rising phrase and bounded visual/audio family after 18 hosted/three native checks, preserving mute/quiet/interruption and separating playback starts from human listening.
 
 [Game-factory goal 7: Ribbon identity](game-goal-07-ribbon-identity-2026-10-23/README.md) makes the existing tempo and survivor planning explicit, with reversible arrangement, three-clear opening, exact replay cancellation and a complete current-rule round.
