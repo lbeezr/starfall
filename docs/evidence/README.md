@@ -1,5 +1,7 @@
 # Evidence index
 
+[Game-factory goal 8: sensory language](game-goal-08-sensory-language-2026-10-23/README.md) accepts the existing committed rising phrase and bounded visual/audio family after 18 hosted/three native checks, preserving mute/quiet/interruption and separating playback starts from human listening.
+
 [Game-factory goal 7: Ribbon identity](game-goal-07-ribbon-identity-2026-10-23/README.md) makes the existing tempo and survivor planning explicit, with reversible arrangement, three-clear opening, exact replay cancellation and a complete current-rule round.
 
 [Lantern mastery feasibility](story-mastery-feasibility-2026-10-22/README.md) proves joint grown-star/chain earning on one real winning route and a genuine declined opening. A narrow 74-distinct-path search found no later-chain completion; recoverability remains unproved. Two fixture-bound regressions, 241 Core checks and a generic simulator build pass; no gameplay or ratings change.
