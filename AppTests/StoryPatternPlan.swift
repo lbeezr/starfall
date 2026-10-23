@@ -52,6 +52,14 @@ struct StoryPatternPlan: Sendable {
         [(1, 8), (17, 10), (1, 2), (2, 9), (7, 8)]
     ], expectedScore: 13_000, expectedShowers: 0, expectedExchanges: 5)
 
+    static let silverChain = StoryPatternPlan(target: 12_000, moves: [
+        [(9, 10)]
+    ], expectedScore: 19_000, expectedShowers: 0, expectedExchanges: 1)
+
+    static let silverImmediate = StoryPatternPlan(target: 12_000, moves: [
+        [(2, 9), (23, 22)]
+    ], expectedScore: 12_000, expectedShowers: 0, expectedExchanges: 2)
+
     static let lantern = StoryPatternPlan(target: 150_000, moves: [
         [(8, 9), (0, 1), (5, 12), (0, 1)],
         [],

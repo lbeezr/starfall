@@ -245,8 +245,63 @@ final class SkyDialogueTests: XCTestCase {
         XCTAssertFalse(StarfallChallenge.seedMoon.menuHint.contains("18 starlight"))
     }
 
+    @MainActor func testSilverEntryReplayAndHelpDescribeTheCausalFallingSurvivor() throws {
+        let historical = FallingSky(challenge: .silverPools)
+        let fresh = FallingSky.freshChallenge(.silverPools)
+        let retainedBytes = try SkySaveArchive.encode(historical)
+        XCTAssertEqual(fresh.challengeRevision, 4)
+        XCTAssertEqual(fresh.displayTarget, 12_000)
+        XCTAssertEqual(fresh.displayScore, 0)
+        XCTAssertEqual(fresh.occupiedCount, 24)
+        XCTAssertTrue(fresh.board.compactMap { $0 }.allSatisfy { !$0.grown })
+        let entry = SkyEntryRequest.silverPools.introduction(challenge: .silverPools,
+            replayingRevision: historical.challengeRevision, replayingTarget: historical.displayTarget)
+        let replay = SkyEntryRequest.replay.introduction(challenge: .silverPools,
+            replayingRevision: fresh.challengeRevision, replayingTarget: fresh.displayTarget)
+        let guide = try XCTUnwrap(fresh.challengeGuideLine)
+        let help = try XCTUnwrap(fresh.challengeHelpText)
+        XCTAssertEqual(entry.id, "silver-pools.patterns.entry.1")
+        XCTAssertEqual(replay.id, "silver-pools.patterns.replay.1")
+        XCTAssertEqual(guide.id, "guide.silver-pools.patterns.1")
+        for text in [entry.text, replay.text, guide.text, help] {
+            XCTAssertTrue(text.contains("12,000 starlight"))
+            XCTAssertTrue(text.contains("support"))
+            XCTAssertTrue(text.contains("aqua"))
+            XCTAssertTrue(text.contains("chain"))
+            XCTAssertFalse(text.contains("18 starlight"))
+            XCTAssertFalse(text.contains("Seed Moon"))
+        }
+        for text in [entry.text, guide.text, help] {
+            XCTAssertTrue(text.contains("straight lines of 4 or more"))
+            XCTAssertTrue(text.contains("automatically"))
+        }
+        XCTAssertTrue(help.contains("falls four rows"))
+        XCTAssertTrue(help.contains("same action"))
+        for award in ["5,000", "7,000", "14,000", "19,000"] { XCTAssertTrue(help.contains(award)) }
+        XCTAssertTrue(help.contains("Those separate actions are not a chain"))
+        XCTAssertTrue(help.contains("Other legal clears can finish too"))
+        XCTAssertTrue(replay.text.contains("Your saved round stays until you tap Begin"))
+        XCTAssertEqual(SkyHelpContext.selected(game: historical, entry: .silverPools), SkyHelpContext(game: fresh))
+        XCTAssertEqual(SkyHelpContext.selected(game: historical, entry: .replay), SkyHelpContext(game: historical))
+        XCTAssertFalse(SkyHelpContext(game: fresh).manualClears)
+        XCTAssertEqual(SkyHelpContext(game: fresh).automaticLineLength, 4)
+        let oldReplay = SkyEntryRequest.replay.introduction(challenge: .silverPools,
+            replayingRevision: historical.challengeRevision, replayingTarget: historical.displayTarget)
+        XCTAssertEqual(oldReplay.id, "silver-pools.replay.1")
+        XCTAssertEqual(historical.challengeGuideLine?.id, "guide.silver-pools.1")
+        for text in [oldReplay.text, try XCTUnwrap(historical.challengeGuideLine).text,
+                     try XCTUnwrap(historical.challengeHelpText)] {
+            XCTAssertTrue(text.contains("18 starlight"))
+            XCTAssertFalse(text.contains("automatically"))
+        }
+        XCTAssertTrue(SkyHelpContext(game: historical).manualClears)
+        XCTAssertEqual(try SkySaveArchive.encode(historical), retainedBytes)
+        XCTAssertFalse(StarfallChallenge.silverPools.menuLabel.contains("18 starlight"))
+        XCTAssertFalse(StarfallChallenge.silverPools.menuHint.contains("18 starlight"))
+    }
+
     @MainActor func testCurrentStoryStartupKeepsItsObjectiveAndAutomaticPatternGuidance() throws {
-        for challenge in [StarfallChallenge.firstLight, .ribbonCrossing, .kiteHarbor, .seedMoon] {
+        for challenge in [StarfallChallenge.firstLight, .ribbonCrossing, .kiteHarbor, .seedMoon, .silverPools] {
             let suite = "Starfall.StoryStartupGuide.\(UUID())"
             let defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
             defer { defaults.removePersistentDomain(forName: suite) }

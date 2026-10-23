@@ -605,7 +605,8 @@ enum NativeSystemMotionSettings {
             // Settings' iPad sidebar can expose a Button whose AX activation
             // leaves General selected. Touch its visible row; retain the native
             // button action for the phone's single-pane Settings list.
-            if preferences.collectionViews["com.apple.settings.sidebar.collectionView"].exists {
+            if UIDevice.current.userInterfaceIdiom == .pad
+                && preferences.collectionViews["com.apple.settings.sidebar.collectionView"].exists {
                 accessibility.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
             } else {
                 accessibility.tap()

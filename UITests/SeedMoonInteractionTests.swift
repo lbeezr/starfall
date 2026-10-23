@@ -197,7 +197,7 @@ extension SeedMoonInteractionTests {
         tap("world.visit", in: app)
         XCTAssertTrue(app.buttons["sky.begin"].waitForExistence(timeout: 5))
         XCTAssertEqual(app.staticTexts["sky.title"].label, "Silver Pools")
-        XCTAssertTrue(app.staticTexts["sky.subtitle"].label.contains("18 starlight"))
+        XCTAssertTrue(app.staticTexts["sky.subtitle"].label.contains("12,000 starlight"))
         capture(app, "seed-current-earned-silver-entry")
     }
 

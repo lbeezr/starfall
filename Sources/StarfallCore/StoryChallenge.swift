@@ -13,7 +13,7 @@ public struct StoryChallengeDefinition: Sendable {
               revision != 5 || challenge == .firstLight else { return nil }
         switch challenge {
         case .firstLight, .ribbonCrossing: break
-        case .kiteHarbor, .seedMoon:
+        case .kiteHarbor, .seedMoon, .silverPools:
             guard revision == 4 else { return nil }
         default: return nil
         }
@@ -23,7 +23,7 @@ public struct StoryChallengeDefinition: Sendable {
 
     var seed: UInt64 {
         switch challenge {
-        case .firstLight, .kiteHarbor, .seedMoon: return 42
+        case .firstLight, .kiteHarbor, .seedMoon, .silverPools: return 42
         case .ribbonCrossing: return 4_202
         default: preconditionFailure("Unsupported authored challenge")
         }
@@ -41,12 +41,13 @@ public struct StoryChallengeDefinition: Sendable {
         case .ribbonCrossing: return 220_000
         case .kiteHarbor: return 17_000
         case .seedMoon: return 11_000
+        case .silverPools: return 12_000
         default: preconditionFailure("Unsupported authored challenge")
         }
     }
     var balance: StarfallBalance {
         switch challenge {
-        case .firstLight, .kiteHarbor, .seedMoon: return .init(pace: .gentle, darkStars: .none)
+        case .firstLight, .kiteHarbor, .seedMoon, .silverPools: return .init(pace: .gentle, darkStars: .none)
         case .ribbonCrossing: return .init(pace: .steady, darkStars: .none)
         default: preconditionFailure("Unsupported authored challenge")
         }
@@ -70,6 +71,10 @@ public struct StoryChallengeDefinition: Sendable {
             // The grown aqua can join the immediate low line or be moved into
             // a larger pattern. Both choices leave a short legal restoration.
             rows = ["AAARAVY", "ARARAMV", "RMVARYM", ".....RA"]
+        } else if challenge == .silverPools {
+            // Clearing the rose support drops an aqua into the lower line.
+            // Taking that line first leaves a separate rose-line recovery.
+            rows = ["AARAAMV", "VMARYRA", "MVRA...", "YAR....", "MRA...."]
         } else if revision == 1 {
             // Retain the original explicit-clear openings and all of their identities.
             rows = challenge == .firstLight ? ["AAA.RRR", "AA....."] : ["ARAAA..", "RAR...."]
