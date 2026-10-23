@@ -1,0 +1,454 @@
+{
+  "status": "All nine selected JPEG exports inspected; all nine candidate raw tablet stills independently inspected.",
+  "environment": "Debug dev.local; iPhone17e/iPadminiA17Pro iOS27.0(24A434) Simulator",
+  "normalEffects": true,
+  "notes": [
+    "Normal journey tests explicitly set system Reduce Motion false. Tablet static review uses -calmEffects NO; stills make no motion claim.",
+    "Legacy18-light win fixtures prove shared art/journey; current220000 Begin and restored0 opening separately verified.",
+    "AX3XL Entry image is the scrolled reading end, not the complete page."
+  ],
+  "selected": [
+    {
+      "file": "dev-3b6838c1__ribbon-map__iphone-17e__before.jpg",
+      "sourceCommitAbbrev": "3b6838c1",
+      "raw": "/private/tmp/starfall-cohesion-20261023/goal08-before-phone-attachments/F32E71C8-2078-4F2F-8DBE-CA677FA1844E.png",
+      "rawSHA256": "cbf93d98c9d5eaa4118c3ee2076fb7a45143c20bfb92ea39ceb348beb89548ce",
+      "rawStoredPixels": [
+        1170,
+        2532
+      ],
+      "rawOrientationTag": 1,
+      "orientedPixels": [
+        1170,
+        2532
+      ],
+      "sha256": "1c054a04ae62b7de28717ce64807f5c9aeca4a17f59a13f894f958b92c1b799a",
+      "export": "Orientation-normalized JPEG quality82; no crop or resize.",
+      "scenario": "goal08-before-phone",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "DB9604E1-D7A8-4C75-BA25-E29243AEC02D",
+        "deviceName": "Starfall Cohesion Phone 01a16465",
+        "exportedFileName": "F32E71C8-2078-4F2F-8DBE-CA677FA1844E.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "lantern-onward-ribbon-card-default-text_0_40DCEDDB-CFBF-460E-8C2B-A16AC9C0EAD8.png",
+        "timestamp": 1792777377.928
+      },
+      "test": "WorldJourneyInteractionTests/testLanternRepairNamesRibbonAndPreservesTheWinUntilBegin()"
+    },
+    {
+      "file": "dev-c69f47ab__ribbon-map__iphone-17e__after.jpg",
+      "sourceCommitAbbrev": "c69f47ab",
+      "raw": "/private/tmp/starfall-cohesion-20261023/goal08-after-phone-attachments/ED771420-7211-45C4-8745-8EC9939526DC.png",
+      "rawSHA256": "bf7037e605fa7a5be3547448e53fce903e29adf81825a7e117037fe1a6eab164",
+      "rawStoredPixels": [
+        1170,
+        2532
+      ],
+      "rawOrientationTag": 1,
+      "orientedPixels": [
+        1170,
+        2532
+      ],
+      "sha256": "f945aefe7dc8c710bfd393e826dc09e6a81ed87bb8d4ac417bcc1c7777ffe474",
+      "export": "Orientation-normalized JPEG quality82; no crop or resize.",
+      "scenario": "goal08-after-phone",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "DB9604E1-D7A8-4C75-BA25-E29243AEC02D",
+        "deviceName": "Starfall Cohesion Phone 01a16465",
+        "exportedFileName": "ED771420-7211-45C4-8745-8EC9939526DC.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "lantern-onward-ribbon-card-default-text_0_D3015E9E-1E32-44F2-853E-967D167C599C.png",
+        "timestamp": 1792777962.389
+      },
+      "test": "WorldJourneyInteractionTests/testLanternRepairNamesRibbonAndPreservesTheWinUntilBegin()"
+    },
+    {
+      "file": "dev-c69f47ab__ribbon-entry__iphone-17e__default.jpg",
+      "sourceCommitAbbrev": "c69f47ab",
+      "raw": "/private/tmp/starfall-cohesion-20261023/goal08-after-phone-attachments/A777461B-BED1-4F70-8A79-15878BC4CC85.png",
+      "rawSHA256": "1076a90b3e4fd1a4eb1069d605e928c645b89c9cb791c9a7ecab4754dd3f6261",
+      "rawStoredPixels": [
+        1170,
+        2532
+      ],
+      "rawOrientationTag": 1,
+      "orientedPixels": [
+        1170,
+        2532
+      ],
+      "sha256": "b64d16bf477b8b255af116f4e6d7e47fafeb839c4d86c79827aa4e927e881239",
+      "export": "Orientation-normalized JPEG quality82; no crop or resize.",
+      "scenario": "goal08-after-phone",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "DB9604E1-D7A8-4C75-BA25-E29243AEC02D",
+        "deviceName": "Starfall Cohesion Phone 01a16465",
+        "exportedFileName": "A777461B-BED1-4F70-8A79-15878BC4CC85.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "lantern-onward-restored-entry-before-begin-default-text_0_92BA8754-6BCE-49AB-815E-A2A636F3A243.png",
+        "timestamp": 1792777993.414
+      },
+      "test": "WorldJourneyInteractionTests/testLanternRepairNamesRibbonAndPreservesTheWinUntilBegin()"
+    },
+    {
+      "file": "dev-c69f47ab__lantern-return__iphone-17e__cancel-retains-result.jpg",
+      "sourceCommitAbbrev": "c69f47ab",
+      "raw": "/private/tmp/starfall-cohesion-20261023/goal08-after-phone-attachments/901025C6-B5F1-4D0D-8308-A66CF6661104.png",
+      "rawSHA256": "305a98d95120b9530805719770c921b980dd892e88b9db1a2b6871f1d9630d16",
+      "rawStoredPixels": [
+        1170,
+        2532
+      ],
+      "rawOrientationTag": 1,
+      "orientedPixels": [
+        1170,
+        2532
+      ],
+      "sha256": "547f1bf9152ed4e7c0ddcdb6c48787d07affc1c9d5bd21a7692af02d2d4ec9a1",
+      "export": "Orientation-normalized JPEG quality82; no crop or resize.",
+      "scenario": "goal08-after-phone",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "DB9604E1-D7A8-4C75-BA25-E29243AEC02D",
+        "deviceName": "Starfall Cohesion Phone 01a16465",
+        "exportedFileName": "901025C6-B5F1-4D0D-8308-A66CF6661104.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "lantern-onward-cancel-retains-repair-default-text_0_98C55E0C-D82B-4C31-BB3F-7F7B8A232315.png",
+        "timestamp": 1792777975.497
+      },
+      "test": "WorldJourneyInteractionTests/testLanternRepairNamesRibbonAndPreservesTheWinUntilBegin()"
+    },
+    {
+      "file": "dev-fb76f713__map-recovery__ipad-mini-a17pro__portrait.jpg",
+      "sourceCommitAbbrev": "fb76f713",
+      "raw": "/private/tmp/starfall-cohesion-20261023/goal08-after-tablet-attachments/7256E8A1-DBEA-4AE5-8AEC-30B3344F5C01.png",
+      "rawSHA256": "6a350b4c88aefe7b2df4340d271d14ee58e0888875b2eb6601afaf762f4db14b",
+      "rawStoredPixels": [
+        1488,
+        2266
+      ],
+      "rawOrientationTag": 1,
+      "orientedPixels": [
+        1488,
+        2266
+      ],
+      "sha256": "e49f118a4b77aa48ee6d516bc65e67c2ba169638cab33d621e64f6d0823e6bbc",
+      "export": "Orientation-normalized JPEG quality82; no crop or resize.",
+      "scenario": "goal08-after-tablet",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "E9575758-60A8-45C0-B2AB-91B73C8A8FDC",
+        "deviceName": "Starfall Cohesion Tablet 01a16465",
+        "exportedFileName": "7256E8A1-DBEA-4AE5-8AEC-30B3344F5C01.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "map-harness-recovery-portrait_0_C8805F60-8937-4E45-9AFF-BD51DEA9D2A0.png",
+        "timestamp": 1792778214.281
+      },
+      "test": "WorldMapReviewInteractionTests/testSevenReviewStatesUseNormalMapAndExplicitEntryBoundary()"
+    },
+    {
+      "file": "dev-fb76f713__map-two-repairs__ipad-mini-a17pro__landscape.jpg",
+      "sourceCommitAbbrev": "fb76f713",
+      "raw": "/private/tmp/starfall-cohesion-20261023/goal08-after-tablet-attachments/077C8129-97E2-40B8-984E-84F669A4CE7F.png",
+      "rawSHA256": "dff7102d64ea70905dfabcbf809c3e959cc1e892268499780b43a56a82233aee",
+      "rawStoredPixels": [
+        1488,
+        2266
+      ],
+      "rawOrientationTag": 8,
+      "orientedPixels": [
+        2266,
+        1488
+      ],
+      "sha256": "8935c93e374a177c79dccc9b6235eec969dc9b6244b5e4ab2db8f1e70e08a4da",
+      "export": "Orientation-normalized JPEG quality82; no crop or resize.",
+      "scenario": "goal08-after-tablet",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "E9575758-60A8-45C0-B2AB-91B73C8A8FDC",
+        "deviceName": "Starfall Cohesion Tablet 01a16465",
+        "exportedFileName": "077C8129-97E2-40B8-984E-84F669A4CE7F.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "map-harness-two-repairs-landscape_0_4DE56F5B-E8B8-4B11-9453-E0892AB532FC.png",
+        "timestamp": 1792778106.044
+      },
+      "test": "WorldMapReviewInteractionTests/testSevenReviewStatesUseNormalMapAndExplicitEntryBoundary()"
+    },
+    {
+      "file": "dev-fb76f713__ribbon-result__iphone-17e__historical-18.jpg",
+      "sourceCommitAbbrev": "fb76f713",
+      "raw": "/private/tmp/starfall-cohesion-20261023/goal08-integrated-phone-attachments/049BAF2E-DBA8-4240-9EE5-FEF0893F415A.png",
+      "rawSHA256": "808084e5b4dec9656f51d07e50688c1f4db71cc9fefab91f30d64028175e6ca6",
+      "rawStoredPixels": [
+        1170,
+        2532
+      ],
+      "rawOrientationTag": 1,
+      "orientedPixels": [
+        1170,
+        2532
+      ],
+      "sha256": "2838a11d10c38280247f639039f5797e1d818dd53ba38f2cc94b9c2b5ef433ff",
+      "export": "Orientation-normalized JPEG quality82; no crop or resize.",
+      "scenario": "goal08-integrated-phone",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "DB9604E1-D7A8-4C75-BA25-E29243AEC02D",
+        "deviceName": "Starfall Cohesion Phone 01a16465",
+        "exportedFileName": "049BAF2E-DBA8-4240-9EE5-FEF0893F415A.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "ribbon-restored-after-native-winning-clear-normal-motion_0_4607D07E-EF21-4BAB-A134-4CCB6C5FF4D6.png",
+        "timestamp": 1792778115.099
+      },
+      "test": "RibbonCrossingInteractionTests/testRibbonWinningClearPersistsNamedResultAndReplayStartsAtZero()"
+    },
+    {
+      "file": "dev-fb76f713__ribbon-entry__iphone-17e__ax3xl-reading-end.jpg",
+      "sourceCommitAbbrev": "fb76f713",
+      "raw": "/private/tmp/starfall-cohesion-20261023/goal08-integrated-phone-attachments/276AC364-E0A7-4767-8696-1E23A87E5E2F.png",
+      "rawSHA256": "c1739796604b4270dcd13b6076f000858d677d836ba3536d193481f3f1e82114",
+      "rawStoredPixels": [
+        1170,
+        2532
+      ],
+      "rawOrientationTag": 1,
+      "orientedPixels": [
+        1170,
+        2532
+      ],
+      "sha256": "8ba1726c30fb8251408aeb24bcbd05f8a5b3d3568e816915af073b277343dfd3",
+      "export": "Orientation-normalized JPEG quality82; no crop or resize.",
+      "scenario": "goal08-integrated-phone",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "DB9604E1-D7A8-4C75-BA25-E29243AEC02D",
+        "deviceName": "Starfall Cohesion Phone 01a16465",
+        "exportedFileName": "276AC364-E0A7-4767-8696-1E23A87E5E2F.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "lantern-onward-restored-entry-before-begin-largest-text_0_09E73842-7AAB-4F2F-B24F-9ECDE32F9F68.png",
+        "timestamp": 1792778232.895
+      },
+      "test": "WorldJourneyInteractionTests/testLargestTextLanternRepairNamesRibbonAndPreservesTheWinUntilBegin()"
+    },
+    {
+      "file": "dev-fb76f713__ribbon-opening__iphone-17e__current-0-of-220k-paused.jpg",
+      "sourceCommitAbbrev": "fb76f713",
+      "raw": "/private/tmp/starfall-cohesion-20261023/goal08-current-ribbon-opening.png",
+      "rawSHA256": "41541d6af75c4aa4279d7eaba34aad6d0da2271e4bbaff736e4e76bd07f305ad",
+      "rawStoredPixels": [
+        1170,
+        2532
+      ],
+      "rawOrientationTag": 1,
+      "orientedPixels": [
+        1170,
+        2532
+      ],
+      "sha256": "e438b797742875b117df828209cbab7c988474790f4de6bde5e1f4d990317053",
+      "export": "Orientation-normalized JPEG quality82; no crop or resize.",
+      "scenario": "Manual relaunch --dialogue-review; actual Continue tap; 0/220000 paused current Ribbon; 25 stars."
+    }
+  ],
+  "tabletAudit": [
+    {
+      "label": "goal08-before-tablet",
+      "source": "3b6838c1",
+      "name": "map-harness-recovery-portrait_0_26AB3B0A-DDD3-41BB-A048-E0A019F210AE.png",
+      "sha256": "4ad6bacfca9c05c286358c9bb2ac4c98da894367ae8ac0f61bdf70dca4fe8e98",
+      "storedPixels": [
+        1488,
+        2266
+      ],
+      "orientation": 1
+    },
+    {
+      "label": "goal08-before-tablet",
+      "source": "3b6838c1",
+      "name": "map-harness-retained-portrait_0_79C68230-23EE-42FF-8B6D-41B4C2243EFB.png",
+      "sha256": "51d5a0223e7dc3e1d59d9756342197495aa675b4b552458fad7b9f0601a519a6",
+      "storedPixels": [
+        1488,
+        2266
+      ],
+      "orientation": 1
+    },
+    {
+      "label": "goal08-before-tablet",
+      "source": "3b6838c1",
+      "name": "map-harness-unbuilt-portrait_0_0410B442-EDC2-4C08-8FF3-66C7CC7ACD9D.png",
+      "sha256": "3446f46375cad69abb5775fe3ff9e645c5f59e883193a9a39a74117edab8e0eb",
+      "storedPixels": [
+        1488,
+        2266
+      ],
+      "orientation": 1
+    },
+    {
+      "label": "goal08-before-tablet",
+      "source": "3b6838c1",
+      "name": "map-harness-locked-portrait_0_7B941F58-0AD3-496A-958B-5896389656AD.png",
+      "sha256": "6bb7dba548c902ca40b02f306fecfa290641774afb757e733164ace5fcf9b531",
+      "storedPixels": [
+        1488,
+        2266
+      ],
+      "orientation": 1
+    },
+    {
+      "label": "goal08-before-tablet",
+      "source": "3b6838c1",
+      "name": "map-harness-allReady-landscape_0_8ECE2226-5A7C-49D6-98CC-69ECB8217AFD.png",
+      "sha256": "c68d1094ef3048ba792a96fd135b1ed20318d7e8674fa6006a8ba78d6f8f243f",
+      "storedPixels": [
+        1488,
+        2266
+      ],
+      "orientation": 8
+    },
+    {
+      "label": "goal08-before-tablet",
+      "source": "3b6838c1",
+      "name": "map-harness-allReady-portrait_0_339E9A4F-BC41-482D-B979-2ED4DF523D39.png",
+      "sha256": "634c76e51c6f15fb4d03bafe33efd9eba3c779b58782740579e9cec71dfdea51",
+      "storedPixels": [
+        1488,
+        2266
+      ],
+      "orientation": 1
+    },
+    {
+      "label": "goal08-before-tablet",
+      "source": "3b6838c1",
+      "name": "map-harness-two-repairs-landscape_0_3080A520-7580-45F7-91CA-657C28D37843.png",
+      "sha256": "51cb698b7bce5016422a4a27c9e97532e7875b505fb876a5bc5f49ab7f4b7968",
+      "storedPixels": [
+        1488,
+        2266
+      ],
+      "orientation": 8
+    },
+    {
+      "label": "goal08-before-tablet",
+      "source": "3b6838c1",
+      "name": "map-harness-twoRepairs-portrait_0_6F7670B4-5663-4358-8F45-FBCA1540EB60.png",
+      "sha256": "74e9073305a96d50434933de672172192934ca2494b82ccf2bbaaec5b4b78a1a",
+      "storedPixels": [
+        1488,
+        2266
+      ],
+      "orientation": 1
+    },
+    {
+      "label": "goal08-before-tablet",
+      "source": "3b6838c1",
+      "name": "map-harness-fresh-portrait_0_71C65B85-39CB-43AF-94D1-3893D330EDD5.png",
+      "sha256": "53d4b094600d5698efd7f04ba061cd7f730371bb6d9944dc9e91fe9b134a3bfc",
+      "storedPixels": [
+        1488,
+        2266
+      ],
+      "orientation": 1
+    },
+    {
+      "label": "goal08-after-tablet",
+      "source": "fb76f713",
+      "name": "map-harness-recovery-portrait_0_C8805F60-8937-4E45-9AFF-BD51DEA9D2A0.png",
+      "sha256": "6a350b4c88aefe7b2df4340d271d14ee58e0888875b2eb6601afaf762f4db14b",
+      "storedPixels": [
+        1488,
+        2266
+      ],
+      "orientation": 1
+    },
+    {
+      "label": "goal08-after-tablet",
+      "source": "fb76f713",
+      "name": "map-harness-retained-portrait_0_FEF73A25-0178-4F6F-B3AB-2E4C3B2A5CFA.png",
+      "sha256": "6d8867482a25d971c5d2e45defb4d7efa1e9e100cbd14fa3d25097bc8cc781dc",
+      "storedPixels": [
+        1488,
+        2266
+      ],
+      "orientation": 1
+    },
+    {
+      "label": "goal08-after-tablet",
+      "source": "fb76f713",
+      "name": "map-harness-unbuilt-portrait_0_323C30CA-E6E2-490A-972D-C0F3A8EF2165.png",
+      "sha256": "595ab6ece091852feef70496a66fb9a58552070f7bc17c1f3aebb3aada551a58",
+      "storedPixels": [
+        1488,
+        2266
+      ],
+      "orientation": 1
+    },
+    {
+      "label": "goal08-after-tablet",
+      "source": "fb76f713",
+      "name": "map-harness-locked-portrait_0_D57D88BC-A437-47D3-95DC-DCD86A965FB1.png",
+      "sha256": "64e2103396bad41993e47153c67105e2222291776657fce75ddaf8c3a7210ef2",
+      "storedPixels": [
+        1488,
+        2266
+      ],
+      "orientation": 1
+    },
+    {
+      "label": "goal08-after-tablet",
+      "source": "fb76f713",
+      "name": "map-harness-allReady-landscape_0_3F2EFF3E-DD0A-4A21-8CA0-1AABE88ED0BC.png",
+      "sha256": "e678a0f6434f7bfa38e3b0c023b134d99440f92c951ca0e945a738baecab48ff",
+      "storedPixels": [
+        1488,
+        2266
+      ],
+      "orientation": 8
+    },
+    {
+      "label": "goal08-after-tablet",
+      "source": "fb76f713",
+      "name": "map-harness-allReady-portrait_0_945F020A-ED4D-4368-A212-FDEDA486903B.png",
+      "sha256": "3688b4dd0582e7789ec0448d95b43aced69a81bb8766f9c50a45035931c0d322",
+      "storedPixels": [
+        1488,
+        2266
+      ],
+      "orientation": 1
+    },
+    {
+      "label": "goal08-after-tablet",
+      "source": "fb76f713",
+      "name": "map-harness-two-repairs-landscape_0_4DE56F5B-E8B8-4B11-9453-E0892AB532FC.png",
+      "sha256": "dff7102d64ea70905dfabcbf809c3e959cc1e892268499780b43a56a82233aee",
+      "storedPixels": [
+        1488,
+        2266
+      ],
+      "orientation": 8
+    },
+    {
+      "label": "goal08-after-tablet",
+      "source": "fb76f713",
+      "name": "map-harness-twoRepairs-portrait_0_6138F75A-4200-4B2D-9148-D76A22064A10.png",
+      "sha256": "ab11d7af234332bb5eec869f5af644c603335e482b354e37eda2c96c06403ce5",
+      "storedPixels": [
+        1488,
+        2266
+      ],
+      "orientation": 1
+    },
+    {
+      "label": "goal08-after-tablet",
+      "source": "fb76f713",
+      "name": "map-harness-fresh-portrait_0_96AE0687-732F-408C-8842-97799A2982EC.png",
+      "sha256": "8bc751224ac91000a5185d78098242c6ca86a4a17f250cce3051a875888ba3b4",
+      "storedPixels": [
+        1488,
+        2266
+      ],
+      "orientation": 1
+    }
+  ]
+}

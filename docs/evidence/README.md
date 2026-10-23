@@ -1,5 +1,7 @@
 # Evidence index
 
+[Cohesion goal 8: place identity through travel](cohesion-goal-08-travel-identity-2026-10-23/README.md) makes Ribbon’s damaged map bridge agree with Entry and play, preserving canceled visits and exact saved return.
+
 [Depth goal 4: Full Board round arc](depth-goal-04-full-board-round-arc-2026-10-23/README.md) changes two new-visit opening ingredients, preserves exact historical rounds and verifies contrasting full-round continuations. Both modes remain available.
 
 [Cohesion goal 7: cumulative Lantern light](cohesion-goal-07-cumulative-light-2026-10-23/README.md) preserves the two tablet midpoint fittings, with actual sparse/full state review and normal transitions.
