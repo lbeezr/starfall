@@ -1,0 +1,21 @@
+{
+  "baseCommit": "47e633e32469306d4e8afae47b3146292e086a69",
+  "changedCompiledAndAuthoringInputs": {
+    "App/DialogueScripts/dialogue.schema.json": "ac9bff00cbb6ced14d8c801ec893031c7293d8de4cb03438fd4ad54f7f16cf8e",
+    "App/DialogueScripts/observatory-dialogue.json": "1ef4f8dd25f45efcc72d3caceb44689a744ba0763039dfcc5635939aa5c89022",
+    "App/FallingSkyHUD.swift": "ef8db1db25ce35f9de1c3b7c027893ef7c76d692df1b7382bad0522376a73e3a",
+    "App/FallingSkyView.swift": "854b7086d8d075393a90faae16fedd8421a066477b8c57a6d7a77ce7b1d64987",
+    "App/SkyCeilingOverlay.swift": "8fae9f61afbbc86794d3789c6e651867a96519580baaa07a5ca379dfe6942446",
+    "App/SkyCopy.swift": "8cfcdc9a0fd14e9cf5c625b25fd01a16b0d3a882760ec9f90079b3acf02e6517",
+    "App/SkyDialogue.swift": "e58e283f27ba244444c06ae515842dfcdbb1a1d8f16e5fbb50580f0376f769ad",
+    "Starfall.xcodeproj/project.pbxproj": "73949840bee1b8bd9ed0b65207c8d917027a62ea995543ed516442eae5260778",
+    "UITests/FullBoardLanternInteractionTests.swift": "3ffea49019db8bc4e6d2dc1fe432d0fd3d0a485dd5e01c09dae0895c5ba8793f",
+    "UITests/SkyFlowInteractionTests.swift": "f56598f897456402563cf818b3807fae98409a06ba06361f411f764d075f3705",
+    "App/SkyForecastDestinations.swift": "0f033677760b064519162bfdb67c8106c2ea63299f22ebb09739a28a77556dd4",
+    "AppTests/SkyDialogueCatalogBoundsTests.swift": "dd5cfc230431a320932af874b59162c7ecc24620c910b6f162f66f340c36902d",
+    "AppTests/SkyForecastDestinationsTests.swift": "4ffab2e8fe45a4b74e293c42fb71e6b98d7c4ae99e248fd660284d35e0757877",
+    "AppTests/SkyForecastRecoveryTests.swift": "d5303da94d21fa71dfede390cb78d77316c59e1daf3508b09cc194bb0a2512c1"
+  },
+  "snapshot": "1f7f91012bae",
+  "note": "Finalscaledceilingbounds; editor dialogue.schema.json is authoring-only. Earlier full511hosted/source10321 retained; finalfocused/nativechecks separatelybound."
+}

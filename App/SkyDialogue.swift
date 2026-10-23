@@ -37,6 +37,9 @@ struct SkyDialogueScript: Codable, Equatable, Identifiable, Sendable {
 
 /// Small bundled authoring format. No rule conditions, timers or save state live in content.
 struct SkyDialogueCatalog: Decodable, Sendable {
+    /// Interface copy shares this catalogue with dialogue. Keep content bounded
+    /// while accommodating the shipped inventory and the queued encounter work.
+    static let maximumCopyEntries = 1_024
     let schemaVersion: Int
     let scripts: [SkyDialogueScript]
     /// Optional when decoding old authoring fixtures; required by the shipped library.
@@ -64,7 +67,7 @@ struct SkyDialogueCatalog: Decodable, Sendable {
             }
         }
         if let copy = catalog.copy {
-            guard copy.count <= 512 else { throw ContentError.invalidCatalog }
+            guard copy.count <= maximumCopyEntries else { throw ContentError.invalidCatalog }
             for (key, text) in copy {
                 guard !key.isEmpty, !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
                       text.count <= 1_600 else { throw ContentError.invalidCatalog }

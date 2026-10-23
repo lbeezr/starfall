@@ -229,9 +229,7 @@ struct SkyShowerCountdown: Equatable {
             .opacity(countdown.paused ? 0.85 : 1)
             .accessibilityElement(children: .ignore)
             .accessibilityLabel(countdown.paused ? SkyCopy.text(.statusPaused) : countdown.arriving ? SkyCopy.text(.statusArriving) : countdown.remaining <= 1.25 ? SkyCopy.text(.statusApproaching) : SkyCopy.text(.statusFlowing))
-            .accessibilityValue(forecast.map {
-                SkyPiece.description(for: .init($0))
-            }.joined(separator: ", then "))
+            .accessibilityValue(SkyForecastSnapshot(forecast: forecast).accessibilityValue)
             .accessibilityIdentifier("experiment.arrivalCue")
     }
 

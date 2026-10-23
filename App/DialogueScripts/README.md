@@ -10,7 +10,7 @@ The regular Falling Sky app uses one bundled English catalogue: [observatory-dia
 
 Edit a value under `copy`, preserving its key and `{tokens}`. For example, `action.new` is shared by the welcome, menu and result screens. Full sentence templates allow values to move without rebuilding a sentence in Swift. Separate one/many templates handle counted phrases. Counts come from Core, including the retained Dusk rule's three/five feeds and orbit duration.
 
-A new interface message needs a `SkyCopy.Key` case and matching JSON entry; an existing message needs only a wording edit. Pass through `SkyCopy.text(.resultBlocked, values: ["column": String(column + 1)])`. Add focused tests when introducing a new condition or changing which event speaks. The current format is English-only; adding other languages needs an explicit localization design, not another dictionary pasted into a view.
+The catalogue admits at most 1,024 copy entries of at most 1,600 characters each; the editor schema and runtime share that bounded capacity. `SkyDialogueCatalogBoundsTests` checks capacity and rejection, and `SkyDialogueTests` checks the actual shipped inventory. A new interface message needs a `SkyCopy.Key` case and matching JSON entry; an existing message needs only a wording edit. Pass through `SkyCopy.text(.resultBlocked, values: ["column": String(column + 1)])`. Add focused tests when introducing a new condition or changing which event speaks. The current format is English-only; adding other languages needs an explicit localization design, not another dictionary pasted into a view.
 
 ## Keep the cast recognizable
 

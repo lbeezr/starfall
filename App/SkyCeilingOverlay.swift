@@ -57,11 +57,17 @@ struct SkyCeilingSnapshot: Equatable {
 /// with the stars and native cells, and owns no input, clock, animation or rule.
 struct SkyCeilingOverlay: View {
     static let topClearance: CGFloat = 44
+    /// The semantic boundary includes the complete scaled badge and its outer
+    /// stroke, so reading layouts can reveal it below their pinned header.
+    static func requiredTopClearance(markerHeight: CGFloat) -> CGFloat {
+        max(topClearance, markerHeight + 12)
+    }
     let game: FallingSky
     let mapping: LandingGeometry
 
     var body: some View {
         if let snapshot = SkyCeilingSnapshot(game: game, mapping: mapping) {
+            let clearance = Self.requiredTopClearance(markerHeight: markerHeight)
             ZStack(alignment: .topLeading) {
                 ceiling(snapshot)
                     .stroke(StarfallTheme.Colors.skyTop.opacity(0.94),
@@ -77,8 +83,8 @@ struct SkyCeilingOverlay: View {
                         .accessibilityHidden(true)
                 }
                 Color.clear
-                    .frame(width: snapshot.arena.width, height: Self.topClearance)
-                    .position(x: snapshot.arena.midX, y: snapshot.arena.minY - Self.topClearance / 2)
+                    .frame(width: snapshot.arena.width, height: clearance)
+                    .position(x: snapshot.arena.midX, y: snapshot.arena.minY - clearance / 2)
                     .accessibilityElement(children: .ignore)
                     .accessibilityLabel(SkyCopy.text(snapshot.showsPressure ? .ceilingLabel : .ceilingBoardEdge))
                     .accessibilityValue(snapshot.showsPressure

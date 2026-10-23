@@ -292,6 +292,10 @@ import StarfallCore
                     .accessibilityIdentifier("lantern.mode")
                     .allowsHitTesting(false)
             }
+            if !store.game.isOver && !store.game.usesFullBoardRefill && !store.forecast.isEmpty {
+                SkyForecastDestinations(forecast: store.forecast, arriving: store.showerCountdown.arriving)
+                    .shadow(color: StarfallTheme.Colors.skyTop, radius: 2)
+            }
             if let pressure = store.pressureCue {
                 StarfallStatusText(text: pressure.text)
                     .shadow(color: StarfallTheme.Colors.skyTop, radius: 2)

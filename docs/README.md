@@ -1,5 +1,7 @@
 # Documentation map
 
+[Goal 5’s forecast columns](evidence/depth-goal-05-forecast-columns-2026-10-23/README.md) connects announced star families and destination numbers with the existing ceiling and ordinary recovery/loss, without changing rules or saves.
+
 [Cumulative Lantern light](evidence/cohesion-goal-07-cumulative-light-2026-10-23/README.md) corrects two tablet midpoint fittings, with source-bound native state/full-board/transition evidence.
 
 [Gameplay-depth queue #303](https://github.com/lbeezr/starfall/issues/303) retains both Lantern modes and starts with four individually merged learning/choice/cascade/round-arc outcomes. [Goal 1 mode discoveries](evidence/depth-goal-01-mode-discoveries-2026-10-23/README.md) reuses real rules in optional, non-saving Entry/Help practice.
