@@ -3,7 +3,35 @@ import StarfallCore
 
 /// An uncommitted choice. Browsing Entry never constructs or saves a replacement game.
 enum SkyEntryRequest: Hashable, CaseIterable {
-    case initial, fresh, replay, firstLight, fullBoardLantern, ribbonCrossing, kiteHarbor, seedMoon, silverPools, frostfruitOrchard, sunwheelMill
+    case initial, fresh, replay, firstLight, fullBoardLantern, ribbonCrossing, fullBoardRibbon, kiteHarbor, seedMoon, silverPools, frostfruitOrchard, sunwheelMill
+
+    var modeChallenge: StarfallChallenge? {
+        switch self {
+        case .firstLight, .fullBoardLantern: .firstLight
+        case .ribbonCrossing, .fullBoardRibbon: .ribbonCrossing
+        default: nil
+        }
+    }
+
+    var modeChoices: [Self] {
+        switch modeChallenge {
+        case .firstLight: [.firstLight, .fullBoardLantern]
+        case .ribbonCrossing: [.ribbonCrossing, .fullBoardRibbon]
+        default: []
+        }
+    }
+
+    var isFullBoardEntry: Bool { self == .fullBoardLantern || self == .fullBoardRibbon }
+
+    var modeAction: SkyFlowAction? {
+        switch self {
+        case .firstLight: .firstLight
+        case .fullBoardLantern: .fullBoardLantern
+        case .ribbonCrossing: .ribbonCrossing
+        case .fullBoardRibbon: .fullBoardRibbon
+        default: nil
+        }
+    }
 
     var practiceChapter: SkyTutorial? {
         switch self {
@@ -16,7 +44,7 @@ enum SkyEntryRequest: Hashable, CaseIterable {
     func selectedChallenge(replaying challenge: StarfallChallenge?) -> StarfallChallenge? {
         switch self {
         case .firstLight, .fullBoardLantern: .firstLight
-        case .ribbonCrossing: .ribbonCrossing
+        case .ribbonCrossing, .fullBoardRibbon: .ribbonCrossing
         case .kiteHarbor: .kiteHarbor
         case .seedMoon: .seedMoon
         case .silverPools: .silverPools
@@ -82,9 +110,10 @@ struct SkyFlowState: Equatable {
         case .start:
             guard screen == .welcome else { return nil }
             return stage(hasSavedSky ? .fresh : .initial)
-        case .firstLight: return stageLantern(.firstLight, expectedID: expectedID)
-        case .fullBoardLantern: return stageLantern(.fullBoardLantern, expectedID: expectedID)
-        case .ribbonCrossing: return stageChallenge(.ribbonCrossing)
+        case .firstLight: return stageMode(.firstLight, expectedID: expectedID)
+        case .fullBoardLantern: return stageMode(.fullBoardLantern, expectedID: expectedID)
+        case .ribbonCrossing: return stageMode(.ribbonCrossing, expectedID: expectedID)
+        case .fullBoardRibbon: return stageMode(.fullBoardRibbon, expectedID: expectedID)
         case .kiteHarbor: return stageChallenge(.kiteHarbor)
         case .seedMoon: return stageChallenge(.seedMoon)
         case .silverPools: return stageChallenge(.silverPools)
@@ -157,11 +186,11 @@ struct SkyFlowState: Equatable {
         return stage(request)
     }
 
-    /// Only the visible Lantern comparison may revise an already staged visit.
+    /// Only modes belonging to the visible location may revise a staged visit.
     /// A revision invalidates old Begin callbacks while retaining the map origin.
-    private mutating func stageLantern(_ request: SkyEntryRequest, expectedID: UInt64?) -> SkyFlowEffect? {
+    private mutating func stageMode(_ request: SkyEntryRequest, expectedID: UInt64?) -> SkyFlowEffect? {
         guard screen == .entry else { return stage(request) }
-        guard entry == .firstLight || entry == .fullBoardLantern,
+        guard let location = request.modeChallenge, entry?.modeChallenge == location,
               entry != request, expectedID == entryID else { return nil }
         generation &+= 1; entryID = generation
         entry = request

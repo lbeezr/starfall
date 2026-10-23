@@ -567,3 +567,14 @@ The [native interface evidence](evidence/observatory-ui-native-2026-10-19/README
 ## Seed Moon scenic HUD contrast review
 
 [Cohesion goal 5](evidence/cohesion-goal-05-seed-place-2026-10-23/README.md) visibly places brighter pale stone behind forecast/pause in default phone/tablet views. Glyphs remain identifiable and native controls pass, but contrast is lower than the old navy background. Trigger: goal 10 integrated HUD review. The new11,000-point score also extends over the phone50% shoot’s upper stem while remaining readable in the actual clear frames. Inspect shared score/forecast/utility backing on the bright Seed approach and dark Lantern/Ribbon skies at default/AX text; correct the shared presentation owner if needed, preserving targets and scenery. This is a visual review risk, not a reproduced input failure.
+
+
+### Ribbon Full Board integration boundary — October23
+
+Goal6 extends definition admission and constructor/catalogue mappings only. FallingSky and FallingSkyStore retain existing committed-action/lifecycle owners; no scoring/refill/clock algorithm was added. Preserve the existing extraction trigger before the next resolution or Store-lifecycle expansion; verify Core replays, hosted/native cancellation and target membership when extracting. Store is1,105lines (+2 narrow mapping lines). Ribbon-specific practice stays unavailable until authored against Ribbon7. Revisit with goal9/mastery or an observed comprehension gap, verifying disposable practice cannot archive or repair.
+
+
+Goal6 native readiness correction: committed score plus enabled cells cannot prove a Full Board cascade is visually complete because cells accept a0.65-second responsive buffer. The board summary now exposes existing busy/settling state, and both Full Board helpers wait for it to clear. A five-phase Ribbon transaction exposed this at179k. Do not replace this condition with fixed sleeps or gesture retries. The initial concurrent full hosted run also exposed the existing scene-host timing boundary; two isolated unchanged methods pass. Preserve its surface-availability follow-up and run time-sensitive renderer checks without another active simulator playback.
+
+
+Goal6 integration also found a practice-test preference leak: the isolated Store suite was not injected into the hosted FallingSkyView, so retained standard Calm state forced aggregate feedback. The host now uses defaultAppStorage with its own Calm=false suite, preserving every normal-motion/phase assertion and player preferences. The serial broad run separately hit the existing Crystal first-frame IOSurface capture boundary; preserve that failure and its focused follow-up, without weakening pixel-equality checks or claiming full-suite stability.

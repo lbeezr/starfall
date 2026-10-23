@@ -4,9 +4,16 @@ extension SkyEntryRequest {
     /// Explains the pending choice without reading or replacing the retained round.
     func introduction(challenge: StarfallChallenge?, replayingRevision: Int = 0, replayingTarget: Int? = nil) -> SkyDialogueLine {
         let retainedDefinition = challenge.flatMap { StoryChallengeDefinition($0, revision: replayingRevision) }
-        if self == .fullBoardLantern || self == .replay && retainedDefinition?.usesFullBoardRefill == true {
-            return SkyDialogueLibrary.line(self == .replay ? "full-board-lantern.replay" : "full-board-lantern.entry",
-                values: ["target": SkyCopy.score(self == .replay ? replayingTarget ?? 0 : FallingSky.fullBoardLantern().displayTarget ?? 0)])
+        let fullBoardRules: FallingSky?
+        switch self {
+        case .fullBoardLantern: fullBoardRules = .fullBoardLantern()
+        case .fullBoardRibbon: fullBoardRules = .fullBoardRibbon()
+        case .replay: fullBoardRules = retainedDefinition.map { FallingSky(definition: $0) }
+        default: fullBoardRules = nil
+        }
+        if let prefix = fullBoardRules?.fullBoardDialoguePrefix {
+            return SkyDialogueLibrary.line(prefix + (self == .replay ? ".replay" : ".entry"),
+                values: ["target": SkyCopy.score(self == .replay ? replayingTarget ?? 0 : fullBoardRules?.displayTarget ?? 0)])
         }
         let mode = challenge?.dialoguePrefix ?? "observatory"
         let fresh = challenge.map { FallingSky.freshChallenge($0) }
@@ -109,7 +116,7 @@ struct SkyWelcomeSnapshot: Equatable {
         self.hasSavedSky = hasSavedSky; ended = game.isOver; score = game.displayScore
         challengeRevision = game.challengeRevision
         target = game.displayTarget
-        let mode = game.usesFullBoardRefill ? SkyCopy.text(.fullBoardWelcome) : game.challenge?.welcomeTitle ?? SkyCopy.text(.welcomeOpen)
+        let mode = game.fullBoardWelcomeTitle ?? game.challenge?.welcomeTitle ?? SkyCopy.text(.welcomeOpen)
         let light = game.displayTarget.map { SkyCopy.text(.welcomeTarget, values: ["score": SkyCopy.score(game.displayScore), "target": SkyCopy.score($0)]) } ?? SkyCopy.text(.welcomeScore, values: ["score": SkyCopy.score(game.displayScore)])
         let state = game.outcome == .won ? SkyCopy.text(.welcomeComplete) : ended ? SkyCopy.text(.welcomeFull)
             : game.usesFullBoardRefill ? SkyCopy.text(.fullBoardPace) : paused ? SkyCopy.text(.welcomePaused) : SkyCopy.text(.welcomeRunning)

@@ -6,14 +6,19 @@ public struct StoryChallengeDefinition: Sendable {
     public let revision: Int
     public static let currentRevision = 4
     /// Full Board develops independently; ordinary new Story visits stay on four.
-    public static let maximumSupportedRevision = 6
-    public var usesFullBoardRefill: Bool { challenge == .firstLight && (5...6).contains(revision) }
+    public static let maximumSupportedRevision = 7
+    public var usesFullBoardRefill: Bool {
+        (challenge == .firstLight && (5...6).contains(revision))
+            || (challenge == .ribbonCrossing && revision == 7)
+    }
 
     public init?(_ challenge: StarfallChallenge, revision: Int = currentRevision) {
-        guard (1...Self.maximumSupportedRevision).contains(revision),
-              revision < 5 || challenge == .firstLight else { return nil }
+        guard (1...Self.maximumSupportedRevision).contains(revision) else { return nil }
         switch challenge {
-        case .firstLight, .ribbonCrossing: break
+        case .firstLight:
+            guard revision <= 6 else { return nil }
+        case .ribbonCrossing:
+            guard revision <= 4 || revision == 7 else { return nil }
         case .kiteHarbor, .seedMoon, .silverPools:
             guard revision == 4 else { return nil }
         default: return nil
@@ -32,7 +37,7 @@ public struct StoryChallengeDefinition: Sendable {
     var automaticLineLength: Int? {
         switch revision {
         case 3: return 7
-        case 4, 5, 6: return 4
+        case 4, 5, 6, 7: return 4
         default: return nil
         }
     }
@@ -60,7 +65,11 @@ public struct StoryChallengeDefinition: Sendable {
     }
     var initialBoard: [StarfallGem?] {
         let rows: [String]
-        if usesFullBoardRefill {
+        if challenge == .ribbonCrossing && usesFullBoardRefill {
+            // The lower Ribbon motif releases visible survivors in sequence;
+            // the upper ingredients leave different exchanges after each clear.
+            rows = ["AARMVYY", "ARAMYAY", "MRMVVYV", "VRMRAMY", "YAMRVMA", "RVYAMRV", "MYAVRYM"]
+        } else if usesFullBoardRefill {
             // Recipe-free, five-family full board. The same lower-left exchange
             // starts a survivor chain. Six changes two upper ingredients so the
             // welcome leaves more of the unchanged objective for later choices.

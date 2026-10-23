@@ -25,6 +25,7 @@ extension SkyEntryRequest {
         case .fresh: .freshSurvival(seed: game.seed, balance: game.balance)
         case .replay: game.replay()
         case .fullBoardLantern: .fullBoardLantern()
+        case .fullBoardRibbon: .fullBoardRibbon()
         case .firstLight, .ribbonCrossing, .kiteHarbor, .seedMoon, .silverPools, .frostfruitOrchard, .sunwheelMill:
             .freshChallenge(selectedChallenge(replaying: nil)!)
         }
@@ -32,6 +33,21 @@ extension SkyEntryRequest {
 }
 
 extension FallingSky {
+    var fullBoardDialoguePrefix: String? {
+        guard usesFullBoardRefill else { return nil }
+        return challenge == .ribbonCrossing ? "full-board-ribbon" : "full-board-lantern"
+    }
+
+    var fullBoardRestoreGuideID: String? {
+        guard usesFullBoardRefill else { return nil }
+        return challenge == .ribbonCrossing ? "guide.full-board-ribbon-restore" : "guide.full-board-restore"
+    }
+
+    var fullBoardWelcomeTitle: String? {
+        guard usesFullBoardRefill else { return nil }
+        return SkyCopy.text(challenge == .ribbonCrossing ? .ribbonFullBoardWelcome : .fullBoardWelcome)
+    }
+
     var automaticPatternValues: [String: String] {
         guard let automaticLineLength else { return [:] }
         return ["lines": SkyCopy.patternLines(automaticLineLength)]
@@ -39,8 +55,8 @@ extension FallingSky {
 
     var challengeGuideLine: SkyDialogueLine? {
         guard let challenge else { return nil }
-        if usesFullBoardRefill {
-            return SkyDialogueLibrary.line("guide.full-board-lantern", values: ["target": SkyCopy.score(displayTarget ?? 0)])
+        if let prefix = fullBoardDialoguePrefix {
+            return SkyDialogueLibrary.line("guide." + prefix, values: ["target": SkyCopy.score(displayTarget ?? 0)])
         }
         let story = StoryChallengeDefinition(challenge, revision: challengeRevision) != nil
         let variant = !supportsManualClears ? ".patterns" : supportsAutomaticRecipes ? ".cascade" : story ? ".story" : ""
@@ -52,7 +68,8 @@ extension FallingSky {
     var challengeHelpText: String? {
         guard let challenge else { return nil }
         if usesFullBoardRefill {
-            return SkyCopy.text(.helpFullBoardChallenge, values: ["target": SkyCopy.score(displayTarget ?? 0)])
+            return SkyCopy.text(challenge == .ribbonCrossing ? .helpFullBoardRibbonChallenge : .helpFullBoardChallenge,
+                                values: ["target": SkyCopy.score(displayTarget ?? 0)])
         }
         if !supportsManualClears {
             let key: SkyCopy.Key

@@ -1,0 +1,334 @@
+{
+  "core": {
+    "source": "00684da77ce0b19eaaa869e9e399c0e1302ee6ca",
+    "count": 315,
+    "failures": 0,
+    "skips": 0,
+    "command": "CLANG_MODULE_CACHE_PATH=/private/tmp/starfall-depth02-clang SWIFTPM_MODULECACHE_OVERRIDE=/private/tmp/starfall-depth02-module swift test --scratch-path /private/tmp/starfall-depth02-core",
+    "runtime": "18.842s",
+    "scope": "All Core tests. No Core changes after this source."
+  },
+  "hostedAndNative": {
+    "hosted": {
+      "passedTests": 523,
+      "failedTests": 2,
+      "skippedTests": 0,
+      "totalTestCount": 525
+    },
+    "phone": {
+      "passedTests": 0,
+      "failedTests": 1,
+      "skippedTests": 0,
+      "totalTestCount": 1
+    },
+    "tablet": {
+      "passedTests": 0,
+      "failedTests": 1,
+      "skippedTests": 0,
+      "totalTestCount": 1
+    },
+    "hosted-isolated": {
+      "passedTests": 2,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "totalTestCount": 2
+    },
+    "settled-phone": {
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "totalTestCount": 1
+    },
+    "settled-tablet": {
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "totalTestCount": 1
+    },
+    "integrated-advice": {
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "totalTestCount": 1
+    },
+    "integrated-hosted-serial": {
+      "passedTests": 524,
+      "failedTests": 2,
+      "skippedTests": 0,
+      "totalTestCount": 526
+    },
+    "affected-hosted": {
+      "passedTests": 73,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "totalTestCount": 73
+    }
+  },
+  "buildCommands": {
+    "affected-hosted": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=A84C81F5-AE41-496A-97AE-E17C63E18D29\" -derivedDataPath /private/tmp/starfall-depth-06-20261023/DerivedData CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -parallel-testing-enabled NO -collect-test-diagnostics never -resultBundlePath /private/tmp/starfall-depth-06-20261023/affected-hosted.xcresult \"-only-testing:StarfallAppTests/StarlightCelebrationTests\" \"-only-testing:StarfallAppTests/CrystalCelebrationArtworkTests\" \"-only-testing:StarfallAppTests/FullBoardRibbonCompatibilityTests\" \"-only-testing:StarfallAppTests/FullBoardRibbonPresentationTests\" \"-only-testing:StarfallAppTests/FullBoardRevisionSixCompatibilityTests\" \"-only-testing:StarfallAppTests/FullBoardLanternTests\" \"-only-testing:StarfallAppTests/WorldJourneyTests\" test-without-building",
+    "corrected-debug": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=A84C81F5-AE41-496A-97AE-E17C63E18D29\" -derivedDataPath /private/tmp/starfall-depth-05-20261023/DerivedData CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES build-for-testing",
+    "debug": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=A84C81F5-AE41-496A-97AE-E17C63E18D29\" -derivedDataPath /private/tmp/starfall-depth-06-20261023/DerivedData CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES build-for-testing",
+    "fixture-debug": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=A84C81F5-AE41-496A-97AE-E17C63E18D29\" -derivedDataPath /private/tmp/starfall-depth-06-20261023/DerivedData CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES build-for-testing",
+    "hosted-isolated": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=EDE6B5F3-53C9-4703-B3D8-E654BEFA22A0\" -derivedDataPath /private/tmp/starfall-depth-06-20261023/DerivedData CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -parallel-testing-enabled NO -collect-test-diagnostics never -resultBundlePath /private/tmp/starfall-depth-06-20261023/hosted-isolated.xcresult \"-only-testing:StarfallAppTests/NativeInputWindowTests/testFreshStoryOpeningRainsInAndSettlesExactSavedBoard\" \"-only-testing:StarfallAppTests/NativeInputWindowTests/testIncomingFlightOverlapsRotationButLandsAfterIt\" test-without-building",
+    "hosted": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=EDE6B5F3-53C9-4703-B3D8-E654BEFA22A0\" -derivedDataPath /private/tmp/starfall-depth-06-20261023/DerivedData CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -parallel-testing-enabled NO -collect-test-diagnostics never -resultBundlePath /private/tmp/starfall-depth-06-20261023/hosted.xcresult \"-only-testing:StarfallAppTests\" test-without-building",
+    "integrated-advice": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=EDE6B5F3-53C9-4703-B3D8-E654BEFA22A0\" -derivedDataPath /private/tmp/starfall-depth-06-20261023/DerivedData CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -parallel-testing-enabled NO -collect-test-diagnostics never -resultBundlePath /private/tmp/starfall-depth-06-20261023/integrated-advice.xcresult \"-only-testing:StarfallUITests/FullBoardRibbonInteractionTests/testIntegratedRibbonAdvicePreservesItsSettledRound\" test-without-building",
+    "integrated-debug": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=A84C81F5-AE41-496A-97AE-E17C63E18D29\" -derivedDataPath /private/tmp/starfall-depth-06-20261023/DerivedData CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES build-for-testing",
+    "integrated-hosted-serial": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=EDE6B5F3-53C9-4703-B3D8-E654BEFA22A0\" -derivedDataPath /private/tmp/starfall-depth-06-20261023/DerivedData CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -parallel-testing-enabled NO -collect-test-diagnostics never -resultBundlePath /private/tmp/starfall-depth-06-20261023/integrated-hosted-serial.xcresult \"-only-testing:StarfallAppTests\" test-without-building",
+    "integrated-release": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Release -destination \"generic/platform=iOS Simulator\" -derivedDataPath /private/tmp/starfall-depth-05-20261023/ReleaseData CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES build",
+    "phone": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=A84C81F5-AE41-496A-97AE-E17C63E18D29\" -derivedDataPath /private/tmp/starfall-depth-06-20261023/DerivedData CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -parallel-testing-enabled NO -collect-test-diagnostics never -resultBundlePath /private/tmp/starfall-depth-06-20261023/phone.xcresult \"-only-testing:StarfallUITests/FullBoardRibbonInteractionTests/testNormalMotionSurvivorRoundCancellationRestoreWinAndReplay\" test-without-building",
+    "release": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Release -destination \"generic/platform=iOS Simulator\" -derivedDataPath /private/tmp/starfall-depth-05-20261023/ReleaseData CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES build",
+    "settled-debug": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=A84C81F5-AE41-496A-97AE-E17C63E18D29\" -derivedDataPath /private/tmp/starfall-depth-05-20261023/DerivedData CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES build-for-testing",
+    "settled-phone": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=A84C81F5-AE41-496A-97AE-E17C63E18D29\" -derivedDataPath /private/tmp/starfall-depth-05-20261023/DerivedData CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -parallel-testing-enabled NO -collect-test-diagnostics never -resultBundlePath /private/tmp/starfall-depth-06-20261023/settled-phone.xcresult \"-only-testing:StarfallUITests/FullBoardRibbonInteractionTests/testNormalMotionSurvivorRoundCancellationRestoreWinAndReplay\" test-without-building",
+    "settled-release": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Release -destination \"generic/platform=iOS Simulator\" -derivedDataPath /private/tmp/starfall-depth-05-20261023/ReleaseData CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES build",
+    "settled-tablet": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=EDE6B5F3-53C9-4703-B3D8-E654BEFA22A0\" -derivedDataPath /private/tmp/starfall-depth-05-20261023/DerivedData CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -parallel-testing-enabled NO -collect-test-diagnostics never -resultBundlePath /private/tmp/starfall-depth-06-20261023/settled-tablet.xcresult \"-only-testing:StarfallUITests/FullBoardRibbonInteractionTests/testLargestQuietLineFirstRoundRotationAndWin\" test-without-building",
+    "tablet": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=EDE6B5F3-53C9-4703-B3D8-E654BEFA22A0\" -derivedDataPath /private/tmp/starfall-depth-06-20261023/DerivedData CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -parallel-testing-enabled NO -collect-test-diagnostics never -resultBundlePath /private/tmp/starfall-depth-06-20261023/tablet.xcresult \"-only-testing:StarfallUITests/FullBoardRibbonInteractionTests/testLargestQuietLineFirstRoundRotationAndWin\" test-without-building"
+  },
+  "stages": [
+    {
+      "stage": "debug",
+      "startedUTC": "2026-10-23T19:10:33.720174+00:00",
+      "elapsedSeconds": 24.259,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "release",
+      "startedUTC": "2026-10-23T19:11:26.085286+00:00",
+      "elapsedSeconds": 44.359,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "hosted",
+      "startedUTC": "2026-10-23T19:11:22.953183+00:00",
+      "elapsedSeconds": 190.472,
+      "limitSeconds": 900.0,
+      "exitCode": 65,
+      "error": null
+    },
+    {
+      "stage": "phone",
+      "startedUTC": "2026-10-23T19:11:19.831877+00:00",
+      "elapsedSeconds": 260.511,
+      "limitSeconds": 900.0,
+      "exitCode": 65,
+      "error": null
+    },
+    {
+      "stage": "export-phone",
+      "startedUTC": "2026-10-23T19:16:16.301461+00:00",
+      "elapsedSeconds": 0.566,
+      "limitSeconds": 120.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "hosted-isolated",
+      "startedUTC": "2026-10-23T19:16:12.235258+00:00",
+      "elapsedSeconds": 28.043,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "tablet",
+      "startedUTC": "2026-10-23T19:18:06.348987+00:00",
+      "elapsedSeconds": 266.925,
+      "limitSeconds": 900.0,
+      "exitCode": 65,
+      "error": null
+    },
+    {
+      "stage": "settled-debug",
+      "startedUTC": "2026-10-23T19:22:53.685552+00:00",
+      "elapsedSeconds": 11.034,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "export-tablet",
+      "startedUTC": "2026-10-23T19:23:06.171985+00:00",
+      "elapsedSeconds": 0.486,
+      "limitSeconds": 120.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "corrected-debug",
+      "startedUTC": "2026-10-23T19:23:51.229125+00:00",
+      "elapsedSeconds": 2.619,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "settled-release",
+      "startedUTC": "2026-10-23T19:24:36.964993+00:00",
+      "elapsedSeconds": 29.888,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "integrated-debug",
+      "startedUTC": "2026-10-23T19:28:19.434952+00:00",
+      "elapsedSeconds": 9.52,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "integrated-release",
+      "startedUTC": "2026-10-23T19:28:52.790047+00:00",
+      "elapsedSeconds": 7.324,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "settled-tablet",
+      "startedUTC": "2026-10-23T19:24:32.011347+00:00",
+      "elapsedSeconds": 323.895,
+      "limitSeconds": 900.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "settled-phone",
+      "startedUTC": "2026-10-23T19:24:28.754694+00:00",
+      "elapsedSeconds": 354.517,
+      "limitSeconds": 900.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "export-settled-phone",
+      "startedUTC": "2026-10-23T19:30:34.845543+00:00",
+      "elapsedSeconds": 0.654,
+      "limitSeconds": 120.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "export-settled-tablet",
+      "startedUTC": "2026-10-23T19:30:38.976717+00:00",
+      "elapsedSeconds": 1.839,
+      "limitSeconds": 120.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "integrated-advice",
+      "startedUTC": "2026-10-23T19:30:30.420052+00:00",
+      "elapsedSeconds": 79.476,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "export-advice",
+      "startedUTC": "2026-10-23T19:32:30.875349+00:00",
+      "elapsedSeconds": 0.335,
+      "limitSeconds": 120.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "integrated-hosted-serial",
+      "startedUTC": "2026-10-23T19:32:27.133807+00:00",
+      "elapsedSeconds": 169.879,
+      "limitSeconds": 900.0,
+      "exitCode": 65,
+      "error": null
+    },
+    {
+      "stage": "fixture-debug",
+      "startedUTC": "2026-10-23T19:38:15.187138+00:00",
+      "elapsedSeconds": 6.058,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "affected-hosted",
+      "startedUTC": "2026-10-23T19:38:49.215261+00:00",
+      "elapsedSeconds": 63.883,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    }
+  ],
+  "sources": {
+    "initial": "00684da77ce0b19eaaa869e9e399c0e1302ee6ca",
+    "completeNativeRounds": "57d4e3cb96506e32e4435ae463f922e1cdbb9faa",
+    "integratedRuntime": "9ab386fab795a0e669717505b8de9cf0f49e8ba7",
+    "finalHostedFixture": "8d087dce038cf1a0d2837839423d3c42796f0da6",
+    "integratedMain": "eb93e14203eb324281076814ee4b480a1cb71186",
+    "differences": "57d4e3c complete rounds precede practice-only visual main integration. Integrated runtime9ab386f passed Ribbon advice/native. 8d087dc adds only hosted preference-fixture isolation; App/Core/project inputs are identical to9ab386f. Later dirty paths are documentation/evidence only.",
+    "buildAffectingDirtyPathsAtFinalAcceptance": [],
+    "initialWorkingTreeInputs": "Core and initial Debug used the working-tree files later checkpointed as00684da. Full-hosted/native commands then used its frozen products; later source edits did not change those products. See per-run binary source and explicit integration boundaries.",
+    "initialCoreDirtyPaths": [
+      "Sources/StarfallCore/FallingSky.swift",
+      "Sources/StarfallCore/FullBoardLantern.swift",
+      "Sources/StarfallCore/README.md",
+      "Sources/StarfallCore/StoryChallenge.swift",
+      "Tests/StarfallCoreTests/FullBoardLanternTests.swift",
+      "Tests/StarfallCoreTests/FullBoardRibbonTests.swift",
+      "Tests/StarfallCoreTests/FullBoardRoundArcTests.swift"
+    ],
+    "initialNativeDirtyPaths": [
+      "App/DialogueScripts/observatory-dialogue.json",
+      "App/FallingSkyStore.swift",
+      "App/FallingSkyView.swift",
+      "App/RestorationPresentation.swift",
+      "App/SkyCopy.swift",
+      "App/SkyFlowCeremony.swift",
+      "App/SkyFlowSnapshots.swift",
+      "App/SkyFlowState.swift",
+      "App/SkyFullBoardChoicesView.swift",
+      "App/SkyPreferences.swift",
+      "App/SkySaveArchive.swift",
+      "App/WorldJourneyStore.swift",
+      "AppTests/FullBoardRevisionSixCompatibilityTests.swift",
+      "AppTests/FullBoardRibbonCompatibilityTests.swift",
+      "AppTests/FullBoardRibbonPresentationTests.swift",
+      "AppTests/WorldJourneyTests.swift",
+      "Sources/StarfallCore/FallingSky.swift",
+      "Sources/StarfallCore/FullBoardLantern.swift",
+      "Sources/StarfallCore/StoryChallenge.swift",
+      "Starfall.xcodeproj/project.pbxproj",
+      "UITests/FullBoardRibbonInteractionTests.swift"
+    ]
+  },
+  "environment": {
+    "Xcode": "27.1 (27A9275)",
+    "Swift": "6.4",
+    "SDK": "iPhoneSimulator27.1",
+    "runtime": "iOS27.0 (24A434)",
+    "host": "macOS27.0.1 ARM64",
+    "configuration": "Debug and Release ARM64 simulator; signing disabled",
+    "phone": "A84C81F5-AE41-496A-97AE-E17C63E18D29 iPhone17e normal motion",
+    "tablet": "EDE6B5F3-53C9-4703-B3D8-E654BEFA22A0 iPad mini A17Pro AX3XL Calm/default Calm"
+  },
+  "inventory": "Native dev matrix: StarfallUITests=222, StarfallAppTests=526",
+  "hygiene": "PASS: tracked-file hygiene and core UI-import guard. Native validation is separate.",
+  "diffCheck": "passed",
+  "membership": "Native plan/hygiene and Debug/Release compile all explicit new PBX entries. Core XCTest discovery includes ten new Ribbon cases.",
+  "authoring": {
+    "geometries": 1,
+    "successors": 3496,
+    "seconds": 0.162,
+    "limits": "60000successors or120seconds; stopped after two complete paths"
+  },
+  "limitations": [
+    "Broad hosted runs were not all green; original failures and selected corrections are separate.",
+    "Crystal first-frame IOSurface capture was transient and passed focused with unchanged pixel assertions; full-suite stability remains under existing surface-availability follow-up.",
+    "No human preference/difficulty, physical-device, actual VoiceOver or minimumiOS17 runtime acceptance.",
+    "Normal-motion native behavior and inspected stills do not establish continuous animation quality.",
+    "No phone installation or scheduler."
+  ],
+  "rawRoot": "/private/tmp/starfall-depth-06-20261023"
+}

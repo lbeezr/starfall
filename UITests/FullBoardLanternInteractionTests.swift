@@ -98,6 +98,7 @@ final class FullBoardLanternInteractionTests: XCTestCase {
         let blocked = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND enabled == false", "experiment.cell."))
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
             board.exists && (board.value as? String)?.hasPrefix("Exchanges: \(exchanges). Full Board.") == true
+                && (board.value as? String)?.contains("Stars settling") == false
                 && app.staticTexts["experiment.score"].label == expected
                 && app.buttons["experiment.cell.0.0"].isEnabled && blocked.count == 0
         }, object: nil).wait(timeout: 10),

@@ -1,3 +1,5 @@
+[Ribbon Full Board](docs/evidence/depth-goal-06-ribbon-full-board-2026-10-23/README.md) adds a distinct untimed220,000-point comparison while preserving both Lantern modes and Ribbon Falling Sky.
+
 # Starfall
 
 **Forecast columns — October 23:** [Depth goal 5](docs/evidence/depth-goal-05-forecast-columns-2026-10-23/README.md) pairs the next shower’s stars with their destination numbers, connecting the announced supply to the visible ceiling. A real clear opens column 2 for the unchanged next shower; missing that recovery reaches the actual blocked arrival. Both modes and saved Replay remain available.

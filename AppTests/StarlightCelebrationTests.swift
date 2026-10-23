@@ -375,11 +375,13 @@ final class StarlightCelebrationTests: XCTestCase {
             let suite = "Starfall.PracticeAward.\(UUID())", defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
             defer { defaults.removePersistentDomain(forName: suite) }
             defaults.set(false, forKey: "soundEnabled")
+            defaults.set(false, forKey: "calmEffects")
             let store = FallingSkyStore(defaults: defaults, arguments: [], clock: ManualRainClock(), tutorial: .storySquare)
             let window = UIWindow(windowScene: scene)
             window.frame = CGRect(origin: .zero, size: size)
             var observed: [StarlightAnchor: CGRect] = [:]
             let host = UIHostingController(rootView: FallingSkyView(store: store, flow: SkyFlowState(practice: .storySquare))
+                .defaultAppStorage(defaults)
                 .environment(\.scenePhase, .active)
                 .environment(\.dynamicTypeSize, .large)
                 .overlayPreferenceValue(StarlightAnchors.self) { anchors in

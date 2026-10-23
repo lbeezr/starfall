@@ -366,7 +366,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
             game = saved.removingGravity().adoptingFeedingDusk().disablingAutomaticAging().adoptingCurrentChallengeActions()
             hasSavedSky = true
             guide(saved.outcome == .won ? (saved.challenge?.wonGuideID ?? "guide.won") : saved.isOver ? "guide.full"
-                : saved.usesFullBoardRefill ? "guide.full-board-restore" : "guide.restore",
+                : saved.fullBoardRestoreGuideID ?? "guide.restore",
                 values: saved.isOver ? ["score": saved.displayScore.formatted()] : [:],
                 visible: saved.usesFullBoardRefill && !saved.isOver)
         } else {
@@ -877,6 +877,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         case .firstLight: startFirstLight()
         case .fullBoardLantern: startFullBoardLantern()
         case .ribbonCrossing: startChallenge(.ribbonCrossing)
+        case .fullBoardRibbon: startFullBoardRibbon()
         case .kiteHarbor: startChallenge(.kiteHarbor)
         case .seedMoon: startChallenge(.seedMoon)
         case .silverPools: startChallenge(.silverPools)
@@ -940,6 +941,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
 
     func startFirstLight() { startChallenge(.firstLight) }
     func startFullBoardLantern() { beginChallenge(FallingSky.fullBoardLantern()) }
+    func startFullBoardRibbon() { beginChallenge(FallingSky.fullBoardRibbon()) }
 
     func startChallenge(_ challenge: StarfallChallenge) {
         beginChallenge(FallingSky.freshChallenge(challenge))

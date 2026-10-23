@@ -1266,6 +1266,50 @@
           "priority": "help"
         }
       ]
+    },
+    {
+      "id": "full-board-ribbon.entry",
+      "lines": [
+        {
+          "id": "full-board-ribbon.entry.1",
+          "speaker": "spark",
+          "text": "Reconnect Ribbon Crossing with {target} starlight on a full board. Choose which stars to clear and which survivors to keep for a follow-up pattern. Each pop refills the spaces and may continue the chain. Setup moves are welcome. No timed showers or ceiling loss. Your saved round stays until you tap Begin.",
+          "priority": "help"
+        }
+      ]
+    },
+    {
+      "id": "full-board-ribbon.replay",
+      "lines": [
+        {
+          "id": "full-board-ribbon.replay.1",
+          "speaker": "spark",
+          "text": "Try the same Full Board Ribbon Crossing opening and refill sequence, and collect {target} starlight. Plan what survives each clear to build the next pattern. Your saved round stays until you tap Begin.",
+          "priority": "help"
+        }
+      ]
+    },
+    {
+      "id": "guide.full-board-ribbon",
+      "lines": [
+        {
+          "id": "guide.full-board-ribbon.1",
+          "speaker": "spark",
+          "text": "Ribbon Crossing needs {target} starlight. Arrange matching squares of 4, crosses of 5, or straight lines of 4 or more. Plan where the survivors fall: stars you keep can complete another pattern. New stars refill each pop. Take your time; there are no timed showers.",
+          "priority": "help"
+        }
+      ]
+    },
+    {
+      "id": "guide.full-board-ribbon-restore",
+      "lines": [
+        {
+          "id": "guide.full-board-ribbon-restore.1",
+          "speaker": "twinkle",
+          "text": "Your Full Board Ribbon Crossing round is waiting. Keep useful survivors as clears refill the board and build chains. Take your time; there are no timed showers.",
+          "priority": "help"
+        }
+      ]
     }
   ],
   "copy": {
@@ -1746,6 +1790,7 @@
     "technique.line": "Line",
     "celebration.line": "Line!",
     "lantern.modeChoice": "Choose your Lantern board",
+    "ribbon.modeChoice": "Choose your Ribbon board",
     "fullBoard.choicesTitle": "Find a move",
     "fullBoard.choicesExplanation": "Find a first pattern among the stars visible now. Survivors and refills can continue the reaction. This leaves your round unchanged.",
     "fullBoard.choicesLoading": "Looking at the visible stars…",
@@ -1761,12 +1806,15 @@
     "lantern.fallingSkyMode": "Falling Sky",
     "lantern.fullBoardMode": "Full Board",
     "lantern.fullBoardWelcome": "Lantern Landing · Full Board",
+    "ribbon.fullBoardWelcome": "Ribbon Crossing · Full Board",
     "lantern.fullBoardPace": "Play at your own pace · no timed showers",
     "lantern.fullBoardRefill": "Full Board · clears refill and cascade",
     "help.fullBoardTitle": "A board that refills",
     "help.fullBoardRefill": "Full Board starts with 49 stars. Swipe neighboring stars in any direction to arrange matching squares of 4, crosses of 5, or straight lines of 4 or more. Setup swaps are allowed. After each pop, survivors fall and new stars fill the spaces; a new pattern continues the chain. Every star counts once. There is no star growth, timed shower, or ceiling loss in this comparison.",
     "help.fullBoardChallenge": "Restore Lantern Landing with {target} starlight in Full Board. Build patterns with swaps, then watch the empty spaces refill and the next patterns pop. Chains earn the same increasing bonus as Falling Sky. Take as many setup moves as you need; this comparison has no move limit. Both Lantern boards can earn the repair.",
+    "help.fullBoardRibbonChallenge": "Reconnect Ribbon Crossing with {target} starlight in Full Board. Choose a clear that keeps useful stars for the next pattern. Falling survivors and refills can continue the reaction and earn an increasing chain bonus. Take as many setup moves as you need; this comparison has no move limit. Both Ribbon boards can earn the repair.",
     "help.fullBoardMenu": "Opening the menu or leaving the app suspends input and settles the committed move. Continue keeps this Full Board round; Replay keeps its starting board and refill rules. Return to Lantern Landing on the World Map to choose Falling Sky or Full Board for a new visit.",
+    "help.fullBoardRibbonMenu": "Opening the menu or leaving the app suspends input and settles the committed move. Continue keeps this Full Board round; Replay keeps its starting board and refill rules. Return to Ribbon Crossing on the World Map to choose Falling Sky or Full Board for a new visit.",
     "a11y.fullBoardSummary": "Exchanges: {moves}. Full Board. Arrange matching squares of 4, crosses of 5, or straight lines of 4 or more. Clears refill automatically. No timed showers.",
     "ceiling.label": "Sky ceiling",
     "ceiling.boardEdge": "Board top edge",

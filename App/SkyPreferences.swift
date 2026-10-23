@@ -44,9 +44,13 @@ struct SkyHelpContext: Equatable {
     var lessons: [SkyLesson] { !arranging ? [] : SkyLesson.allCases.filter { $0 != .opal || opalStorms } }
 
     var practiceChapter: SkyTutorial? {
-        if fullBoard { return .fullBoardRefill }
+        if fullBoard && restorationChallenge == .firstLight { return .fullBoardRefill }
         if restorationChallenge == .firstLight && automaticLineLength == 4 { return .storyRoom }
         return nil
+    }
+
+    var fullBoardMenuInstructions: String {
+        SkyCopy.text(restorationChallenge == .ribbonCrossing ? .helpFullBoardRibbonMenu : .helpFullBoardMenu)
     }
 
     static func selected(game: FallingSky, entry: SkyEntryRequest?) -> Self {
@@ -211,7 +215,7 @@ struct SkyHowToPlay: View {
             }
             if context.fullBoard {
                 SkyMenuSection(SkyCopy.text(.menuTitle)) {
-                    Text(SkyCopy.text(.helpFullBoardMenu))
+                    Text(context.fullBoardMenuInstructions)
                 }
             } else {
                 SkyMenuSection(SkyCopy.text(.helpPauseTitle)) {
