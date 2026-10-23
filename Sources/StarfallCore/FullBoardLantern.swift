@@ -9,9 +9,10 @@ struct FullBoardSupply: Codable, Equatable, Sendable {
         refillingPhases += phases.filter { !$0.refillArrivals.isEmpty }.count
     }
 
-    func isValid(score: Int, turns: Int, ledger: StoryScoreLedger, random: SeededRandom, seed: UInt64) -> Bool {
-        guard suppliedStars == score, suppliedStars >= 0,
-              suppliedStars <= 150 + FullBoardLanternResolution.maximumTransactionLight,
+    func isValid(score: Int, turns: Int, ledger: StoryScoreLedger, random: SeededRandom, seed: UInt64,
+                 target: Int) -> Bool {
+        guard target > 0, suppliedStars == score, suppliedStars >= 0,
+              suppliedStars <= target / 1_000 + FullBoardLanternResolution.maximumTransactionLight,
               refillingPhases >= 0, refillingPhases <= suppliedStars / 4,
               refillingPhases >= ledger.actionCount, refillingPhases <= ledger.phaseCount,
               ledger.actionCount <= turns else { return false }

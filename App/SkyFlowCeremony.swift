@@ -16,7 +16,7 @@ enum SkyFlowScreen: Equatable {
     }
 }
 enum SkyFlowAction: Equatable {
-    case start, firstLight, fullBoardLantern, ribbonCrossing, kiteHarbor, seedMoon, silverPools, frostfruitOrchard, sunwheelMill
+    case start, firstLight, fullBoardLantern, ribbonCrossing, fullBoardRibbon, kiteHarbor, seedMoon, silverPools, frostfruitOrchard, sunwheelMill
     case begin, entryBack, resume, replay, another, home, preferences, worldMap, worldBack, tutorial, modePractice
     case onward(WorldLocation)
 }
@@ -376,8 +376,8 @@ enum SkyFlowAction: Equatable {
             case .welcome:
                 EmptyView()
             case .entry:
-                if entry == .firstLight || entry == .fullBoardLantern {
-                    lanternModeChoices
+                if let entry, !entry.modeChoices.isEmpty {
+                    modeChoices(entry)
                 }
                 flowButton(SkyCopy.text(.actionBegin), action: .begin, id: "sky.begin", primary: true)
                 if entry?.practiceChapter != nil {
@@ -409,25 +409,25 @@ enum SkyFlowAction: Equatable {
 
     }
 
-    private var lanternModeChoices: some View {
-        SkyMenuChoiceGroup<SkyEntryRequest>(title: SkyCopy.text(.lanternModeChoice),
-            options: [.firstLight, .fullBoardLantern], selection: lanternModeSelection,
-            identifier: "sky.lanternMode", optionTitle: lanternModeTitle, optionID: lanternModeID)
+    private func modeChoices(_ selected: SkyEntryRequest) -> some View {
+        let ribbon = selected.modeChallenge == .ribbonCrossing
+        return SkyMenuChoiceGroup<SkyEntryRequest>(title: SkyCopy.text(ribbon ? .ribbonModeChoice : .lanternModeChoice),
+            options: selected.modeChoices, selection: modeSelection(selected),
+            identifier: ribbon ? "sky.ribbonMode" : "sky.lanternMode", optionTitle: modeTitle, optionID: modeID)
     }
 
-    private var lanternModeSelection: Binding<SkyEntryRequest> {
-        Binding(get: { entry ?? .firstLight }, set: { choice in
-            let flowAction: SkyFlowAction = choice == .fullBoardLantern ? .fullBoardLantern : .firstLight
-            action(flowAction)
+    private func modeSelection(_ selected: SkyEntryRequest) -> Binding<SkyEntryRequest> {
+        Binding(get: { entry ?? selected }, set: { choice in
+            if let flowAction = choice.modeAction { action(flowAction) }
         })
     }
 
-    private func lanternModeTitle(_ choice: SkyEntryRequest) -> String {
-        SkyCopy.text(choice == .fullBoardLantern ? .fullBoardMode : .fallingSkyMode)
+    private func modeTitle(_ choice: SkyEntryRequest) -> String {
+        SkyCopy.text(choice.isFullBoardEntry ? .fullBoardMode : .fallingSkyMode)
     }
 
-    private func lanternModeID(_ choice: SkyEntryRequest) -> String {
-        choice == .fullBoardLantern ? "fullBoard" : "fallingSky"
+    private func modeID(_ choice: SkyEntryRequest) -> String {
+        choice.isFullBoardEntry ? "fullBoard" : "fallingSky"
     }
     @ViewBuilder private var resultSecondaryActions: some View {
         if screen == .won {

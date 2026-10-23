@@ -157,7 +157,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
     private var storyScoreLedger: StoryScoreLedger?
     private var fullBoardSupply: FullBoardSupply?
     public var challengeRevision: Int { savedChallengeRevision ?? 0 }
-    /// Explicit Lantern comparison; ordinary Story visits retain their saved sky rules.
+    /// Explicit full-board definitions; ordinary Story visits retain their saved sky rules.
     public var usesFullBoardRefill: Bool { storyDefinition?.usesFullBoardRefill ?? false }
     private var storyDefinition: StoryChallengeDefinition? {
         guard let challenge else { return nil }
@@ -274,6 +274,10 @@ public struct FallingSky: Codable, Equatable, Sendable {
 
     public static func fullBoardLantern() -> FallingSky {
         FallingSky(definition: StoryChallengeDefinition(.firstLight, revision: 6)!)
+    }
+
+    public static func fullBoardRibbon() -> FallingSky {
+        FallingSky(definition: StoryChallengeDefinition(.ribbonCrossing, revision: 7)!)
     }
 
     /// Reconstruct a specific shipped definition; normal new visits use `freshChallenge`.
@@ -730,7 +734,7 @@ public struct FallingSky: Codable, Equatable, Sendable {
     public var isValidSave: Bool {
         // Reject scalar corruption before deriving a shower number or doing
         // conservation arithmetic, for every retained and current ruleset.
-        guard board.count == 49, [nil, 1, 2, 3, 4, 5, 6].contains(savedChallengeRevision),
+        guard board.count == 49, [nil, 1, 2, 3, 4, 5, 6, 7].contains(savedChallengeRevision),
               turns >= 0, turns < Int.max / 6, score >= 0, starsLanded >= 0 else { return false }
         if let definition = storyDefinition {
             guard challengeActionVersion == 1, seed == definition.seed, balance == definition.balance,
@@ -749,7 +753,8 @@ public struct FallingSky: Codable, Equatable, Sendable {
                       blockedColumn == nil, occupiedCount == 49,
                       board.allSatisfy({ $0?.grown == false }),
                       starsLanded == 49 + score,
-                      supply.isValid(score: score, turns: turns, ledger: ledger, random: random, seed: seed) else { return false }
+                      supply.isValid(score: score, turns: turns, ledger: ledger, random: random,
+                                     seed: seed, target: definition.target) else { return false }
             } else {
                 guard fullBoardSupply == nil else { return false }
                 let expectedLight = definition.initialLight + definition.suppliedLight(after: turns)

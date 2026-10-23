@@ -41,9 +41,11 @@ enum SkyCopy {
 
     enum Key: String, CaseIterable, Sendable {
         case lanternModeChoice = "lantern.modeChoice"
+        case ribbonModeChoice = "ribbon.modeChoice"
         case fallingSkyMode = "lantern.fallingSkyMode"
         case fullBoardMode = "lantern.fullBoardMode"
         case fullBoardWelcome = "lantern.fullBoardWelcome"
+        case ribbonFullBoardWelcome = "ribbon.fullBoardWelcome"
         case fullBoardPace = "lantern.fullBoardPace"
         case fullBoardRefill = "lantern.fullBoardRefill"
         case fullBoardChoicesTitle = "fullBoard.choicesTitle"
@@ -64,7 +66,9 @@ enum SkyCopy {
         case helpFullBoardControls = "help.fullBoardControls"
         case helpFullBoardRefill = "help.fullBoardRefill"
         case helpFullBoardChallenge = "help.fullBoardChallenge"
+        case helpFullBoardRibbonChallenge = "help.fullBoardRibbonChallenge"
         case helpFullBoardMenu = "help.fullBoardMenu"
+        case helpFullBoardRibbonMenu = "help.fullBoardRibbonMenu"
         case a11yFullBoardSummary = "a11y.fullBoardSummary"
         case ceilingLabel = "ceiling.label"
         case ceilingBoardEdge = "ceiling.boardEdge"

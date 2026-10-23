@@ -1,5 +1,7 @@
 # Starfall visual reference
 
+[Ribbon Full Board comparison](../evidence/depth-goal-06-ribbon-full-board-2026-10-23/README.md) retains source-bound ordinary phone, largest-text tablet and integrated advice captures.
+
 **Measured practice awards — Current for the inspected slice:** [Cohesion goal 10](../evidence/cohesion-goal-10-integrated-review-2026-10-23/README.md) retains the full Square +5,000 and 2 CHAIN +15,000 from the actual lesson, native normal-speed comparison and three-size hosted renderings. First production source `0c65bc22`, integration source `f2ed225c`, bundle `dev.local`; prior captures keep their original source. Earlier clipped award placement is Historical. Small-window scrolling, long worked text and AX quiet visibility have separate interaction/capture scopes.
 
 **Forecast columns and whole ceiling warnings — Current for the inspected slice:** [Depth goal 5](../evidence/depth-goal-05-forecast-columns-2026-10-23/README.md) adds ordered family/destination pairs beside the existing trail. Clean code `9027076` includes current score-focus integration; `d01ac54` retains compact and complete AX3XL Calm warning samples. The clear opens column 2 for the unchanged next shower; the contrasting actual loss names column 2. Earlier header captures are Historical for the added forecast row; old ceiling geometry remains unchanged. Sources, initial failures and visual limits stay explicit.

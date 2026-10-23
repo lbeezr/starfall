@@ -1,0 +1,114 @@
+{
+  "captures": [
+    {
+      "file": "src-57d4e3c__opening__iphone17e-normal.jpg",
+      "source": "57d4e3c",
+      "run": "settled-phone",
+      "attachment": "BA98AC58-1203-45C4-9FE1-77232C41143F.png",
+      "sha256": "9420630c4377519019e3cea6f709b6aa93724181194cde74396b9e05ef659da9",
+      "state": "opening",
+      "deviceVariant": "iphone17e-normal",
+      "inspected": true,
+      "status": "Current for the unchanged live-round layout; before practice-only main integration",
+      "limits": "Scrollable ceremony captures show the identified reading position; not all text at once. Stills do not establish animation quality."
+    },
+    {
+      "file": "src-57d4e3c__five-phase-settled-179k__iphone17e-normal.jpg",
+      "source": "57d4e3c",
+      "run": "settled-phone",
+      "attachment": "76C6B118-4F97-440F-8CF3-19F00E22CA7A.png",
+      "sha256": "82c862116b3445461b0a64df4b27292f63006b774c9a2e9a1088cdaf181dbb7c",
+      "state": "five-phase-settled-179k",
+      "deviceVariant": "iphone17e-normal",
+      "inspected": true,
+      "status": "Current for the unchanged live-round layout; before practice-only main integration",
+      "limits": "Scrollable ceremony captures show the identified reading position; not all text at once. Stills do not establish animation quality."
+    },
+    {
+      "file": "src-57d4e3c__survivor-win-229k__iphone17e-normal.jpg",
+      "source": "57d4e3c",
+      "run": "settled-phone",
+      "attachment": "41C6851F-4EED-4D66-BF10-CB25B0D265CC.png",
+      "sha256": "a0e4ec21cab5f96a3827d3fc69dd9388a92727ebf550ef97c51b783fdd703364",
+      "state": "survivor-win-229k",
+      "deviceVariant": "iphone17e-normal",
+      "inspected": true,
+      "status": "Current for the unchanged live-round layout; before practice-only main integration",
+      "limits": "Scrollable ceremony captures show the identified reading position; not all text at once. Stills do not establish animation quality."
+    },
+    {
+      "file": "src-57d4e3c__new-falling-sky__iphone17e-normal.jpg",
+      "source": "57d4e3c",
+      "run": "settled-phone",
+      "attachment": "790CCF1C-8BF6-4C22-A957-E40015A13465.png",
+      "sha256": "8582e6f6f9eb0f97bdaddf4c7672fd54fecc6d868ec91b7eb470f741a7ce8d2d",
+      "state": "new-falling-sky",
+      "deviceVariant": "iphone17e-normal",
+      "inspected": true,
+      "status": "Current for the unchanged live-round layout; before practice-only main integration",
+      "limits": "Scrollable ceremony captures show the identified reading position; not all text at once. Stills do not establish animation quality."
+    },
+    {
+      "file": "src-57d4e3c__mode-choice-scrolled__ipad-mini-ax3xl-calm.jpg",
+      "source": "57d4e3c",
+      "run": "settled-tablet",
+      "attachment": "0B0AD1F5-B033-4275-8AE5-B776CDEE175D.png",
+      "sha256": "8412f204abf28e973cf0d2ecda89e0bf3758bb52a9e40f293be643150f1e8228",
+      "state": "mode-choice-scrolled",
+      "deviceVariant": "ipad-mini-ax3xl-calm",
+      "inspected": true,
+      "status": "Current for the unchanged live-round layout; before practice-only main integration",
+      "limits": "Scrollable ceremony captures show the identified reading position; not all text at once. Stills do not establish animation quality."
+    },
+    {
+      "file": "src-57d4e3c__middle-120k-landscape__ipad-mini-ax3xl-calm.jpg",
+      "source": "57d4e3c",
+      "run": "settled-tablet",
+      "attachment": "3DDC3D02-B5E2-476D-861E-ADFFEA5CAB85.png",
+      "sha256": "c60592fb7aeb49ab749e2cf1b485ce78e758ff6341e40ab324837a8ea012edbb",
+      "state": "middle-120k-landscape",
+      "deviceVariant": "ipad-mini-ax3xl-calm",
+      "inspected": true,
+      "status": "Current for the unchanged live-round layout; before practice-only main integration",
+      "limits": "Scrollable ceremony captures show the identified reading position; not all text at once. Stills do not establish animation quality."
+    },
+    {
+      "file": "src-57d4e3c__result-replay-scrolled-223k__ipad-mini-ax3xl-calm.jpg",
+      "source": "57d4e3c",
+      "run": "settled-tablet",
+      "attachment": "F4FA60EA-B67B-435C-9152-CE89130516B0.png",
+      "sha256": "e1f42e90759901cc9f3704df856716c50aff4cb85ee622bff32337a0f9666a91",
+      "state": "result-replay-scrolled-223k",
+      "deviceVariant": "ipad-mini-ax3xl-calm",
+      "inspected": true,
+      "status": "Current for the unchanged live-round layout; before practice-only main integration",
+      "limits": "Scrollable ceremony captures show the identified reading position; not all text at once. Stills do not establish animation quality."
+    },
+    {
+      "file": "src-9ab386f__integrated-settled-survivors-30k__ipad-mini-default-calm.jpg",
+      "source": "9ab386f",
+      "run": "integrated-advice",
+      "attachment": "A154F174-9421-44C7-A2DE-E9AB35B142AD.png",
+      "sha256": "03b672adc4f39f047bc985ca8fa42aed71819db8fca107fabac0c52cbfadd909",
+      "state": "integrated-settled-survivors-30k",
+      "deviceVariant": "iPad mini A17Pro/default text/Calm",
+      "inspected": true,
+      "status": "Current integrated source",
+      "limits": "Advice is a scrollable reading position; stills do not establish animation quality."
+    },
+    {
+      "file": "src-9ab386f__integrated-own-visible-choices__ipad-mini-default-calm.jpg",
+      "source": "9ab386f",
+      "run": "integrated-advice",
+      "attachment": "E2B04EE2-96FB-402A-BFD6-12D8EF167AE4.png",
+      "sha256": "35ebdac78fec3f72f8cbdd6ce7bcc005e0206491639d06e7a6e104c4da1cee4a",
+      "state": "integrated-own-visible-choices",
+      "deviceVariant": "iPad mini A17Pro/default text/Calm",
+      "inspected": true,
+      "status": "Current integrated source",
+      "limits": "Advice is a scrollable reading position; stills do not establish animation quality."
+    }
+  ],
+  "rawRoot": "/private/tmp/starfall-depth-06-20261023",
+  "candidateAndRejectedEvidence": "Initial normal-move readiness failure and tablet terminal-label expectation failure are retained in raw results and explained in README."
+}

@@ -1,5 +1,7 @@
 # Evidence index
 
+[Ribbon Full Board comparison](depth-goal-06-ribbon-full-board-2026-10-23/README.md) records its distinct220,000-point routes, retained saves and native/readiness corrections.
+
 [Final cohesion review](cohesion-goal-10-integrated-review-2026-10-23/README.md) carries ten individual visual outcomes forward and corrects clipped practice rewards through the existing measured overlay.
 
 [Depth goal 5: forecast columns](depth-goal-05-forecast-columns-2026-10-23/README.md) presents ordered destination numbers, actual recovery/loss and unchanged pending/saved forecasts. Initial catalogue-capacity failures and corrected checks remain explicit.

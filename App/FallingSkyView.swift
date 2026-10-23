@@ -293,10 +293,10 @@ import StarfallCore
                     stackedHeader(island: island)
                 }
             }
-            if store.game.challenge == .firstLight {
+            if store.game.challenge == .firstLight || store.game.challenge == .ribbonCrossing {
                 StarfallStatusText(text: SkyCopy.text(store.game.usesFullBoardRefill ? .fullBoardRefill : .fallingSkyMode))
                     .shadow(color: StarfallTheme.Colors.skyTop, radius: 2)
-                    .accessibilityIdentifier("lantern.mode")
+                    .accessibilityIdentifier(store.game.challenge == .ribbonCrossing ? "ribbon.mode" : "lantern.mode")
                     .allowsHitTesting(false)
             }
             if !store.game.isOver && !store.game.usesFullBoardRefill && !store.forecast.isEmpty {
@@ -519,9 +519,10 @@ import StarfallCore
     private var boardAccessible: Bool { !settings && !showingCeremony }
 
     private var boardSummary: String {
-        SkyCopy.boardSummary(showers: store.game.turns, groups: store.game.legalGroups.count,
+        let summary = SkyCopy.boardSummary(showers: store.game.turns, groups: store.game.legalGroups.count,
                              manualClears: store.game.supportsManualClears, automaticLineLength: store.game.automaticLineLength,
                              fullBoard: store.game.usesFullBoardRefill)
+        return store.busy ? summary + " " + SkyCopy.text(.statusSettling) : summary
     }
 
     private func cellButton(_ cell: Cell) -> some View {

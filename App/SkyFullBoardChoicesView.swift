@@ -52,18 +52,21 @@ struct SkyFullBoardChoicesView: View {
     let done: () -> Void
     @State private var choices: [FullBoardChoice]?
     @State private var revealed: Set<Int> = []
+    var offersPractice: Bool { game.usesFullBoardRefill && game.challenge == .firstLight }
 
     var body: some View {
         SkyMenuSurface(title: SkyCopy.text(.fullBoardChoicesTitle), glyph: .help, done: done,
                        back: true, footerTitle: SkyCopy.text(.actionReturn)) {
-            NavigationLink {
-                SkyTutorialView(initial: .fullBoardSurvivors, returnsAfterLesson: true,
-                                endingAfter: .fullBoardImmediate, done: done)
-            } label: {
-                SkyMenuRow(SkyCopy.text(.fullBoardCompareClears), glyph: .tutorial, disclosure: true)
+            if offersPractice {
+                NavigationLink {
+                    SkyTutorialView(initial: .fullBoardSurvivors, returnsAfterLesson: true,
+                                    endingAfter: .fullBoardImmediate, done: done)
+                } label: {
+                    SkyMenuRow(SkyCopy.text(.fullBoardCompareClears), glyph: .tutorial, disclosure: true)
+                }
+                .buttonStyle(StarfallButtonStyle(role: .quiet, expands: true))
+                .accessibilityIdentifier("fullBoard.choices.practice")
             }
-            .buttonStyle(StarfallButtonStyle(role: .quiet, expands: true))
-            .accessibilityIdentifier("fullBoard.choices.practice")
             Text(SkyCopy.text(.fullBoardChoicesExplanation))
                 .fixedSize(horizontal: false, vertical: true)
                 .accessibilityIdentifier("fullBoard.choices.explanation")

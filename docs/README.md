@@ -1,5 +1,7 @@
 # Documentation map
 
+[Goal6 Ribbon Full Board](evidence/depth-goal-06-ribbon-full-board-2026-10-23/README.md) adds a versioned survivor opening, two complete routes and location-preserving mode selection.
+
 [Final cohesion review](evidence/cohesion-goal-10-integrated-review-2026-10-23/README.md) carries ten individual visual outcomes forward and corrects clipped practice rewards through the existing measured overlay.
 
 [Goal 5’s forecast columns](evidence/depth-goal-05-forecast-columns-2026-10-23/README.md) connects announced star families and destination numbers with the existing ceiling and ordinary recovery/loss, without changing rules or saves.
