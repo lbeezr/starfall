@@ -264,8 +264,12 @@ final class KiteEncounterTests: XCTestCase {
             let invalid = try JSONDecoder().decode(FallingSky.self, from: JSONSerialization.data(withJSONObject: fields))
             XCTAssertFalse(invalid.isValidSave)
         }
-        for challenge in [StarfallChallenge.frostfruitOrchard, .sunwheelMill] {
-            XCTAssertEqual(FallingSky.freshChallenge(challenge), FallingSky(challenge: challenge))
+        for (challenge, revision) in [(StarfallChallenge.frostfruitOrchard, 8), (.sunwheelMill, 0)] {
+            XCTAssertEqual(FallingSky.freshChallenge(challenge).challengeRevision, revision)
+            XCTAssertEqual(FallingSky(challenge: challenge).challengeRevision, 0)
+            if revision == 0 {
+                XCTAssertEqual(FallingSky.freshChallenge(challenge), FallingSky(challenge: challenge))
+            }
         }
     }
 }

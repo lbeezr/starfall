@@ -74,7 +74,7 @@ final class FullBoardRevisionSixCompatibilityTests: XCTestCase {
         XCTAssertTrue(game.isValidSave)
         let bytes = try SkySaveArchive.encode(game)
         let fields = try XCTUnwrap(JSONSerialization.jsonObject(with: bytes) as? [String: Any])
-        XCTAssertEqual(fields["schemaVersion"] as? Int, 16)
+        XCTAssertEqual(fields["schemaVersion"] as? Int, 17)
         XCTAssertEqual(try SkySaveArchive.decode(bytes), game)
         XCTAssertEqual(try SkySaveArchive.encode(SkySaveArchive.decode(bytes)), bytes)
         let defaults = defaults()

@@ -1,0 +1,353 @@
+{
+  "goal": "https://github.com/lbeezr/starfall/issues/310",
+  "queue": "https://github.com/lbeezr/starfall/issues/303",
+  "status": "Verified development slice; human/physical/VoiceOver acceptance separate",
+  "date": "2026-10-23",
+  "source": {
+    "runtimeCommit": "0f1cdf91263cdc0c40d4feb393dabcacdd30583e",
+    "testedRuntimeDirtyInputs": [],
+    "subsequentKnownDirtyInputs": [
+      "AGENTS.md",
+      "App/README.md",
+      "README.md",
+      "Sources/StarfallCore/README.md",
+      "docs/ENGINEERING.md",
+      "docs/EXPERIMENTS.md",
+      "docs/README.md",
+      "docs/ROADMAP.md",
+      "docs/evidence/depth-goal-07-frostfruit-pressure-2026-10-23/"
+    ],
+    "dirtyInputScope": "Documentation/evidence only after runtime0f1cdf9; subsequent compiled changes only the new native test at5adeec8/0f0b406.",
+    "finalSourceSnapshot": "Final clean documentation/evidence commit records exact publication tree; runtime and native test sources above are unchanged.",
+    "nativeTestCorrectionCommit": "0f0b406dafeb9e360b046c0976df6abe7c4da99b"
+  },
+  "environment": {
+    "host": "macOS 27.0.1 (26A434), arm64",
+    "xcode": "27.1 (27A9275)",
+    "swift": "Apple Swift 6.4 (swiftlang-6.4.0.34.1)",
+    "sdk": "iPhoneSimulator27.1",
+    "runtime": "iOS 27.0 (24A434)",
+    "deploymentTarget": "17.0 compilation; minimum-iOS runtime not exercised",
+    "configuration": "Starfall scheme; Debug/Release arm64 simulator; CODE_SIGNING_ALLOWED=NO; ONLY_ACTIVE_ARCH=YES",
+    "phone": "A84C81F5-AE41-496A-97AE-E17C63E18D29; iPhone 17e; normal motion",
+    "tablet": "EDE6B5F3-53C9-4703-B3D8-E654BEFA22A0; iPad mini A17 Pro; native AX3XL Calm",
+    "hostedDestination": "EDE6B5F3-53C9-4703-B3D8-E654BEFA22A0",
+    "buildPathNote": "Actual commands reuse goal-06 DerivedData and goal-05 ReleaseData; these directory names do not identify tested source."
+  },
+  "rawRoot": "/private/tmp/starfall-depth-07-20261023",
+  "checks": {
+    "coreFinal": {
+      "result": "passed",
+      "executed": 325,
+      "failures": 0,
+      "skipped": 0,
+      "log": "core-final.log"
+    },
+    "focusedCoreFinal": {
+      "result": "passed",
+      "executed": 10,
+      "failures": 0,
+      "log": "/private/tmp/starfall-frostfruit8-core-tests.log"
+    },
+    "debug": {
+      "result": "passed",
+      "log": "debug.log"
+    },
+    "release": {
+      "result": "passed",
+      "log": "release.log"
+    },
+    "hostedAffected": {
+      "result": "passed",
+      "executed": 127,
+      "failures": 0,
+      "skipped": 0,
+      "log": "hosted.log",
+      "bundle": "hosted.xcresult",
+      "scope": "Nine selected test classes; not the entire 540-case hosted matrix"
+    },
+    "tabletNative": {
+      "result": "passed",
+      "executed": 1,
+      "failures": 0,
+      "skipped": 0,
+      "log": "tablet.log",
+      "bundle": "tablet.xcresult",
+      "case": "testLargestQuietImmediateRecoveryAndIgnoredOpeningBothRepair"
+    },
+    "phoneInitial": {
+      "result": "failed",
+      "executed": 1,
+      "failures": 1,
+      "log": "phone.log",
+      "bundle": "phone.xcresult",
+      "case": "testNormalGrowthRoomAutomaticShowerRestoreRepairReplayAndSunwheelAccess",
+      "failure": "XCTAssertTrue at original UITests/FrostfruitEncounterInteractionTests.swift:126; immediate sky.begin.exists after the earned Sunwheel title",
+      "coverageReached": "Actual Silver4 win and Frostfruit entry; automatic first shower/grown caps; background and exact committed restore; second-shower fit; 18k repair; Replay; earned Sunwheel entry title",
+      "cause": "Correct Begin ID checked before0.36s ceremony action reveal. Test uses bounded visibility/hittability; production unchanged."
+    },
+    "hygiene": {
+      "result": "passed",
+      "log": "hygiene.log"
+    },
+    "nativeInventory": {
+      "result": "generated",
+      "uiCases": 224,
+      "hostedCases": 540,
+      "log": "native-plan.txt"
+    },
+    "membershipAndWhitespace": "Explicit PBX membership Debug/Release builds and staged hygiene/diff checks pass.",
+    "candidateVisualInspection": "Six original PNGs and exact selected JPEG exports inspected; sourcebound captures.json records hashes and scrolled-view limits.",
+    "animation": "no continuous-smoothness or physical-performance claim",
+    "actualVoiceOver": "not run",
+    "physicalInstallation": "not run",
+    "humanRecognitionDifficultyAndEnjoyment": "unmeasured",
+    "phoneFinal": {
+      "result": "passed",
+      "executed": 1,
+      "failures": 0,
+      "skipped": 0,
+      "log": "phone-paused.log",
+      "bundle": "phone-paused.xcresult",
+      "source": "0f0b406dafeb9e360b046c0976df6abe7c4da99b",
+      "scope": "Whole normal-motion earned Silver\u2192Frostfruit repair/restore/Replay\u2192Sunwheel Entry and actual Begin, paused0-of18"
+    }
+  },
+  "initialFailures": [
+    {
+      "stage": "focused Core iteration",
+      "result": "bad test assumption corrected",
+      "detail": "Changing unused RNG state was incorrectly expected to invalidate the authored supply. Test corrected without changing production validation.",
+      "evidence": "Worker/coordinator handoff; retained focused log records the final 10-test pass, not the initial failure transcript.",
+      "executed": 10,
+      "reportedFailures": 1
+    },
+    {
+      "stage": "first complete Core run",
+      "executed": 325,
+      "reportedFailures": 6,
+      "log": "core.log",
+      "detail": "Stale historical-location/revision expectations in KiteEncounterTests, SeedEncounterTests, SilverEncounterTests, StoryCascadeTests and StoryPatternTests. Corrected retained-history constructors and explicit version bounds; final run passed."
+    },
+    {
+      "stage": "first native phone run",
+      "executed": 1,
+      "reportedFailures": 1,
+      "log": "phone.log",
+      "detail": "Begin checked about0.03s into deliberate0.36s action reveal. Corrected bounded native condition at5adeec8; no production change."
+    },
+    {
+      "stage": "phone-final at5adeec8",
+      "executed": 1,
+      "reportedFailures": 1,
+      "log": "phone-final.log",
+      "detail": "Revealed Sunwheel Entry and Begin passed. Added start assertion reused a helper requiring paused Next while this new round was running. Existing pauseRunningSky setup restored at0f0b406; production unchanged."
+    }
+  ],
+  "commands": {
+    "core": "CLANG_MODULE_CACHE_PATH=/private/tmp/starfall-depth02-clang SWIFTPM_MODULECACHE_OVERRIDE=/private/tmp/starfall-depth02-module swift test --scratch-path /private/tmp/starfall-depth02-core",
+    "focusedCore": "env CLANG_MODULE_CACHE_PATH=/private/tmp/starfall-frostfruit8-clang SWIFTPM_MODULECACHE_OVERRIDE=/private/tmp/starfall-frostfruit8-module swift test --disable-sandbox --scratch-path /private/tmp/starfall-frostfruit8-core-20261023 --filter FrostfruitEncounterTests > /private/tmp/starfall-frostfruit8-core-tests.log 2>&1",
+    "debug": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=A84C81F5-AE41-496A-97AE-E17C63E18D29\" -derivedDataPath /private/tmp/starfall-depth-06-20261023/DerivedData CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES build-for-testing",
+    "release": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Release -destination \"generic/platform=iOS Simulator\" -derivedDataPath /private/tmp/starfall-depth-05-20261023/ReleaseData CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES build",
+    "hosted": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=EDE6B5F3-53C9-4703-B3D8-E654BEFA22A0\" -derivedDataPath /private/tmp/starfall-depth-06-20261023/DerivedData CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -parallel-testing-enabled NO -collect-test-diagnostics never -resultBundlePath /private/tmp/starfall-depth-07-20261023/hosted.xcresult \"-only-testing:StarfallAppTests/FrostfruitEncounterCompatibilityTests\" \"-only-testing:StarfallAppTests/FrostfruitEncounterPresentationTests\" \"-only-testing:StarfallAppTests/WorldJourneyTests\" \"-only-testing:StarfallAppTests/SkyFlowStateTests\" \"-only-testing:StarfallAppTests/SkySaveArchiveTests\" \"-only-testing:StarfallAppTests/RestorationFlowTests\" \"-only-testing:StarfallAppTests/FullBoardRibbonCompatibilityTests\" \"-only-testing:StarfallAppTests/FullBoardRevisionSixCompatibilityTests\" \"-only-testing:StarfallAppTests/FullBoardLanternTests\" test-without-building",
+    "phone": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=A84C81F5-AE41-496A-97AE-E17C63E18D29\" -derivedDataPath /private/tmp/starfall-depth-06-20261023/DerivedData CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -parallel-testing-enabled NO -collect-test-diagnostics never -resultBundlePath /private/tmp/starfall-depth-07-20261023/phone.xcresult \"-only-testing:StarfallUITests/FrostfruitEncounterInteractionTests/testNormalGrowthRoomAutomaticShowerRestoreRepairReplayAndSunwheelAccess\" test-without-building",
+    "tablet": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=EDE6B5F3-53C9-4703-B3D8-E654BEFA22A0\" -derivedDataPath /private/tmp/starfall-depth-06-20261023/DerivedData CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -parallel-testing-enabled NO -collect-test-diagnostics never -resultBundlePath /private/tmp/starfall-depth-07-20261023/tablet.xcresult \"-only-testing:StarfallUITests/FrostfruitEncounterInteractionTests/testLargestQuietImmediateRecoveryAndIgnoredOpeningBothRepair\" test-without-building",
+    "hygiene": "python3 scripts/ci-hygiene.py",
+    "nativePlan": "python3 scripts/native_test_plan.py --stage dev",
+    "phonePaused": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=A84C81F5-AE41-496A-97AE-E17C63E18D29\" -derivedDataPath /private/tmp/starfall-depth-06-20261023/DerivedData CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -parallel-testing-enabled NO -collect-test-diagnostics never -resultBundlePath /private/tmp/starfall-depth-07-20261023/phone-paused.xcresult \"-only-testing:StarfallUITests/FrostfruitEncounterInteractionTests/testNormalGrowthRoomAutomaticShowerRestoreRepairReplayAndSunwheelAccess\" test-without-building"
+  },
+  "boundedStageReceipts": [
+    {
+      "stage": "debug",
+      "startedUTC": "2026-10-23T19:54:40.497639+00:00",
+      "elapsedSeconds": 10.508,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "hosted",
+      "startedUTC": "2026-10-23T19:56:44.173075+00:00",
+      "elapsedSeconds": 48.13,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "release",
+      "startedUTC": "2026-10-23T19:56:49.236279+00:00",
+      "elapsedSeconds": 50.289,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "phone",
+      "startedUTC": "2026-10-23T19:56:39.189686+00:00",
+      "elapsedSeconds": 199.748,
+      "limitSeconds": 900.0,
+      "exitCode": 65,
+      "error": null
+    },
+    {
+      "stage": "tablet",
+      "startedUTC": "2026-10-23T19:59:37.296182+00:00",
+      "elapsedSeconds": 157.634,
+      "limitSeconds": 900.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "export-phone",
+      "startedUTC": "2026-10-23T20:02:35.257110+00:00",
+      "elapsedSeconds": 0.425,
+      "limitSeconds": 120.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "export-tablet",
+      "startedUTC": "2026-10-23T20:02:59.518675+00:00",
+      "elapsedSeconds": 0.21,
+      "limitSeconds": 120.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "debug-test-correction",
+      "startedUTC": "2026-10-23T20:04:09.847795+00:00",
+      "elapsedSeconds": 3.944,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "phone-final",
+      "startedUTC": "2026-10-23T20:04:42.822259+00:00",
+      "elapsedSeconds": 192.937,
+      "limitSeconds": 600.0,
+      "exitCode": 65,
+      "error": null
+    },
+    {
+      "stage": "export-phone-final",
+      "startedUTC": "2026-10-23T20:08:31.096057+00:00",
+      "elapsedSeconds": 0.323,
+      "limitSeconds": 120.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "debug-paused-entry",
+      "startedUTC": "2026-10-23T20:09:02.339038+00:00",
+      "elapsedSeconds": 3.418,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "phone-paused",
+      "startedUTC": "2026-10-23T20:09:21.483159+00:00",
+      "elapsedSeconds": 188.519,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    }
+  ],
+  "roundContract": {
+    "definition": "Frostfruit8 only; 30 ordinary nongrown opening stars; seed42; gentle authored five-family supply; target15000",
+    "fullBoard": false,
+    "historicalFrostfruit": "revision0 manual18 Continue and same-round Replay unchanged",
+    "archive": "v17 writer; v16 schema16/revision<=7; v15<=6; v14<=5; prior readers unchanged",
+    "world": "envelope1; unfinished rounds earn no repair; actual Frostfruit win unlocks Sunwheel",
+    "otherModes": "Lantern5/6 and Ribbon7 Full Board; ordinary other current Story4 retained"
+  },
+  "fixedRoutes": {
+    "safe": {
+      "actions": [
+        [
+          35,
+          36
+        ],
+        [],
+        [],
+        [
+          20,
+          19
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          3,
+          10
+        ]
+      ],
+      "scores": [
+        0,
+        0,
+        0,
+        6000,
+        13000,
+        18000
+      ],
+      "result": "won; two showers"
+    },
+    "immediate": {
+      "actions": [
+        [
+          20,
+          19
+        ],
+        [],
+        [
+          2,
+          9
+        ],
+        [
+          3,
+          10
+        ]
+      ],
+      "scores": [
+        5000,
+        5000,
+        12000,
+        17000
+      ],
+      "result": "won; one shower"
+    },
+    "ignoredOpening": {
+      "actions": [
+        [],
+        [
+          20,
+          19
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          3,
+          10
+        ]
+      ],
+      "scores": [
+        0,
+        5000,
+        12000,
+        17000
+      ],
+      "result": "same final committed state as immediate"
+    },
+    "sameSecondPreview": "Incoming IDs5..9: Amber@3,Violet@7,Violet@6,Rose@1,Mint@2, using player-facing columns. Prepared accepts all5; untreated immediate commits first3 then blocks Rose in column1; 2\u21929 recovery preserves preview and makes room.",
+    "authorReceipt": "/private/tmp/starfall-frostfruit8-author.txt; one frozen actual candidate, fixed transcript verification; no additional search",
+    "priorCarrier": "Historical optional24-star Lantern carrier is not adopted runtime evidence."
+  },
+  "limitations": [
+    "No continuous animation/smoothness, actual VoiceOver, physical device, minimum-iOS runtime or human enjoyment acceptance is claimed.",
+    "First phone states represent valid reached gameplay assertions; original whole-case failures remain recorded."
+  ]
+}

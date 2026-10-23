@@ -578,3 +578,8 @@ Goal6 native readiness correction: committed score plus enabled cells cannot pro
 
 
 Goal6 integration also found a practice-test preference leak: the isolated Store suite was not injected into the hosted FallingSkyView, so retained standard Calm state forced aggregate feedback. The host now uses defaultAppStorage with its own Calm=false suite, preserving every normal-motion/phase assertion and player preferences. The serial broad run separately hit the existing Crystal first-frame IOSurface capture boundary; preserve that failure and its focused follow-up, without weakening pixel-equality checks or claiming full-suite stability.
+
+
+### Frostfruit revision 8 integration — October 23
+
+The Core constructor/catalogue and version admission change; resolution and Store lifecycle stay intact. The touched FallingSky file retains its cohesive extraction trigger before algorithm expansion. Authoring required 17 fixed actions, with no further search of the insufficient 24-star carrier. Fresh-visit expectations now distinguish historical Frostfruit0 from current8; retained Replay and full 18-light wins remain checked. Unknown-revision tests advance to9 while foreign8 stays rejected. Ordinary authored supply ignores unused saved RNG state; tests verify identical future previews/actions without inventing a stricter historical validation rule.
