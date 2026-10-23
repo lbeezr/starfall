@@ -4,6 +4,24 @@ import StarfallCore
 #if DEBUG
 // Explicit reset-only Debug review sample; absent from Release initialization.
 @MainActor enum ObservatoryReviewFixture {
+    /// Retained production rules for native Continue/Replay checks. No board or
+    /// archive injection: ordinary activation and player actions own persistence.
+    static func fullBoardV5(arguments: [String]) -> FallingSky? {
+        let marker = "--full-board-v5-review"
+        guard arguments.contains("--starfalls-reset"), arguments.contains("--dialogue-review"),
+              arguments.filter({ $0 == marker }).count == 1 else { return nil }
+        let conflictingMarkers = ["--observatory-review", "--technique-review", "--sky-flow-review",
+                                  WorldMapReviewFixture.marker, "--world-legacy-review",
+                                  "--world-silver-complete-review", "--world-frostfruit-complete-review",
+                                  "--critical-mass-review"]
+        let conflictingPrefixes = StarfallChallenge.allCases.map(\.restorationReviewArgumentPrefix)
+            + ["--constellation-fixture=", "--technique-example=", "--gravity-fixture=", "--dusk-fixture="]
+        guard !arguments.contains(where: { argument in
+            conflictingMarkers.contains(argument) || conflictingPrefixes.contains(where: argument.hasPrefix)
+        }) else { return nil }
+        return FallingSky(definition: StoryChallengeDefinition(.firstLight, revision: 5)!)
+    }
+
     static func game(dense: Bool, score: Int = 0, challenge: StarfallChallenge? = nil) -> FallingSky {
         let base = challenge.map(FallingSky.init(challenge:)) ?? FallingSky(seed: 5)
         var object = try! JSONSerialization.jsonObject(with: JSONEncoder().encode(base)) as! [String: Any]

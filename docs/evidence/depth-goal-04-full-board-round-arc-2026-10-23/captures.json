@@ -1,0 +1,122 @@
+{
+  "sourceSnapshots": [
+    "source-preintegration.json",
+    "source-integrated.json"
+  ],
+  "runtime": "iOS27.0 (24A434) Simulator",
+  "rawRoot": "/private/tmp/starfall-depth-04-20261023",
+  "captures": [
+    {
+      "file": "dev-cb55318__round-won-156k__iphone-17e__normal-motion.jpg",
+      "sha256": "ef1b84fdbf4c8b6c26deba19130180ecbc19575c6e740595029bf3bc89f30c8a",
+      "source": "cb55318",
+      "bundleLabel": "dev.local",
+      "variant": "iPhone17e default text; normal motion/full effects",
+      "test": "FullBoardLanternInteractionTests/testNormalMotionFullBoardRefillRestoreWinAndReplay()",
+      "timestamp": 1792777302.386,
+      "originalSHA256": "f8370dd1e2787502dc1b8cbbec8d1b06f10fb1d9eea93c26581e8cb999bf2eac",
+      "inspection": "Lantern restored at an earned 156,000 points; onward and Replay actions fit.",
+      "status": "Current within named version and source"
+    },
+    {
+      "file": "dev-cb55318__restored-34k__ipad-mini-a17pro__ax3xl-calm.jpg",
+      "sha256": "6e659303e478dd12ac8d807e8752cc081b7bd47f7c654f2b20682d74ac2fa59b",
+      "source": "cb55318",
+      "bundleLabel": "dev.local",
+      "variant": "iPad mini A17Pro AX3XL Calm",
+      "test": "FullBoardLanternInteractionTests/testLargestQuietFullBoardChoiceSwapRotationAndRestore()",
+      "timestamp": 1792777263.073,
+      "originalSHA256": "b29f7d784fc217b108c0e2c70830cd0c4d4d4ea07091037d40606dcc707259df",
+      "inspection": "All49 pieces and34,000-point progress retained after rotation and restore.",
+      "status": "Current within named version and source"
+    },
+    {
+      "file": "dev-379f841-wip-59bd8bc4c2af__retained-v5-replay__ipad-mini-a17pro__default.jpg",
+      "sha256": "148137a5954aea8d142a46c8b106e637ea7cadafbe09e3034cb9e233ebce4a04",
+      "source": "379f841+59bd8bc4c2af",
+      "bundleLabel": "dev.local",
+      "variant": "iPad mini A17Pro default text Calm",
+      "test": "FullBoardLanternInteractionTests/testRetainedV5ContinueReplayAndExplicitNewVisitKeepTheirOwnDefinitions()",
+      "timestamp": 1792776944.103,
+      "originalSHA256": "f4ff6ae680e7736724562654ac50c752f6226cd70833d901776a2879153325ff",
+      "inspection": "Retained-v5 Replay produces the original66,000-point welcome; newer visits use6.",
+      "status": "Current within named version and source"
+    },
+    {
+      "file": "dev-cb55318__winning-cascade-160s__iphone-17e__normal-motion.jpg",
+      "sha256": "a668925a7c08ccb2c151f798be0a2e6b91ac98e3bccd3783ceef5290010457a4",
+      "source": "cb55318",
+      "bundleLabel": "dev.local",
+      "variant": "iPhone17e normal motion/full effects",
+      "video": "normal-round.mp4 disposable rawRoot",
+      "videoSeconds": 160,
+      "inspection": "Sampled final cascade: committed156,000 score; cross/line visual phases and falling survivors before result. No continuous-smoothness claim.",
+      "status": "Current sampled chronology"
+    },
+    {
+      "file": "dev-cb55318__winning-cascade-164s__iphone-17e__normal-motion.jpg",
+      "sha256": "454c7cfb152086a42b1a54954e634bca146451a72f19b2b2c8879653f14f1529",
+      "source": "cb55318",
+      "bundleLabel": "dev.local",
+      "variant": "iPhone17e normal motion/full effects",
+      "video": "normal-round.mp4 disposable rawRoot",
+      "videoSeconds": 164,
+      "inspection": "Sampled final cascade: committed156,000 score; cross/line visual phases and falling survivors before result. No continuous-smoothness claim.",
+      "status": "Current sampled chronology"
+    },
+    {
+      "file": "dev-cb55318__optional-advice__iphone-17e__default.jpg",
+      "sha256": "4b5782798025b1576da4b465f4780815cb992f1b79cdfca81313650d50d5fc89",
+      "source": "cb55318",
+      "bundleLabel": "dev.local",
+      "variant": "iPhone17e default text normal motion",
+      "test": "FullBoardChoiceInteractionTests/testOptionalAlternativesPreserveRoundAndReturnToOrdinaryPlay()",
+      "timestamp": 1792777435.593,
+      "originalSHA256": "150a7b0a3616e443e8178f2d8e4b5e1cdaf4d98c41c2add1bf74723f7b512325",
+      "inspection": "Find a move contains Compare clears, an optional four-star line and fixed Return; lower choices scroll.",
+      "status": "Current within inspected viewport"
+    },
+    {
+      "file": "dev-cb55318__current-refill-practice__iphone-17e__default.jpg",
+      "sha256": "cdbc3a94782d111a27230961476787773f2a21118545599f6f5a06eb88d4e7cd",
+      "source": "cb55318",
+      "bundleLabel": "dev.local",
+      "variant": "iPhone17e default text normal motion",
+      "test": "ModePracticeInteractionTests/testBothEntryDiscoveriesPreserveSelectedModeAndRetainedFullBoard()",
+      "timestamp": 1792777681.888,
+      "originalSHA256": "2e277e980f22c36b196ccb38d99255360c3d23c48bee7e29aa23358a08ac9eef",
+      "inspection": "Current-v6 basic practice earns15,000, returns49stars and keeps Retry/Hint/Next readable.",
+      "status": "Current within inspected viewport"
+    },
+    {
+      "file": "dev-cb55318__switched-to-falling-sky__iphone-17e__default.jpg",
+      "sha256": "da1144adf942daa47fa36255f2990852bbca9d71adfadf02c063f393e8293474",
+      "source": "cb55318",
+      "bundleLabel": "dev.local",
+      "variant": "iPhone17e default text normal motion",
+      "test": "FullBoardLanternInteractionTests/testLanternModeCancellationPreservesFullBoardUntilFallingSkyBegins()",
+      "timestamp": 1792777607.323,
+      "originalSHA256": "2afd0d7cac7bbdcacc0622dab6cf7b629fc37eef1c5a334e9c857576d14c96c5",
+      "inspection": "Actual Begin switches to Falling Sky with accumulating board, ceiling, Start sky and Next shower.",
+      "status": "Current within inspected viewport"
+    }
+  ],
+  "motion": {
+    "video": "normal-round.mp4",
+    "sha256": "419b3eedbd54a78380e883e21b7b1b8128222ca5aaf64551cb2463a7b08bc12f",
+    "durationSeconds": 197.69666666666666,
+    "sampledSeconds": [
+      86,
+      89,
+      160,
+      164,
+      170,
+      190
+    ],
+    "observed": "Opening/refill and final cascade followed by the completed result; later sample is system Settings teardown. Samples only; no continuous playback/performance claim."
+  },
+  "limitations": [
+    "Native tablet landscape screenshot export is partial despite passing49-cell/rotation assertions; retained portrait samples do not certify landscape fit.",
+    "No actual VoiceOver, physical-device comfort, measured contrast or human enjoyment evidence."
+  ]
+}

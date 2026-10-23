@@ -2,6 +2,10 @@ import XCTest
 @testable import StarfallCore
 
 final class FullBoardChoiceTests: XCTestCase {
+    private func revisionFive() -> FallingSky {
+        FallingSky(definition: StoryChallengeDefinition(.firstLight, revision: 5)!)
+    }
+
     private func exchange(_ from: Int, _ to: Int) -> FallingSkyTurn.Exchange {
         .init(from: Cell(from / 7, from % 7), to: Cell(to / 7, to % 7))
     }
@@ -12,7 +16,7 @@ final class FullBoardChoiceTests: XCTestCase {
     }
 
     private func afterOpening() throws -> FallingSky {
-        var game = FallingSky.fullBoardLantern()
+        var game = revisionFive()
         try play(8, 9, in: &game)
         XCTAssertEqual(game.displayScore, 66_000)
         return game
@@ -45,7 +49,7 @@ final class FullBoardChoiceTests: XCTestCase {
     }
 
     func testOpeningOffersDifferentVisiblePatternsAndEverySuggestedClearIsReal() throws {
-        let opening = FallingSky.fullBoardLantern()
+        let opening = revisionFive()
         let choices = opening.fullBoardChoices()
         XCTAssertEqual(choices.count, 2)
         XCTAssertEqual(choices[0].exchanges, [exchange(1, 2)])
@@ -113,7 +117,7 @@ final class FullBoardChoiceTests: XCTestCase {
     }
 
     func testAdviceLeavesEncodedStateRandomContinuationAndReplayUnchanged() throws {
-        for game in [FallingSky.fullBoardLantern(), try afterOpening(), try awkwardBoard()] {
+        for game in [revisionFive(), try afterOpening(), try awkwardBoard()] {
             let before = try encoded(game)
             let restored = try JSONDecoder().decode(FallingSky.self, from: before)
             let choices = game.fullBoardChoices()
@@ -121,7 +125,7 @@ final class FullBoardChoiceTests: XCTestCase {
             XCTAssertEqual(choices, restored.fullBoardChoices())
             XCTAssertEqual(try encoded(game), before)
             XCTAssertEqual(game, restored)
-            XCTAssertEqual(game.replay(), FallingSky.fullBoardLantern())
+            XCTAssertEqual(game.replay(), revisionFive())
             var queried = game, control = restored
             let move = try XCTUnwrap(choices.first?.exchanges.first)
             let actual = try XCTUnwrap(queried.nudge(from: move.from, to: move.to))
@@ -149,7 +153,7 @@ final class FullBoardChoiceTests: XCTestCase {
              [66_000, 71_000, 94_000, 109_000, 116_000, 123_000, 132_000, 137_000, 142_000, 155_000])
         ]
         for (route, scores) in routes {
-            var game = FallingSky.fullBoardLantern()
+            var game = revisionFive()
             for (index, move) in route.enumerated() {
                 let before = game
                 XCTAssertFalse(game.fullBoardChoices().isEmpty)
@@ -164,7 +168,7 @@ final class FullBoardChoiceTests: XCTestCase {
             XCTAssertTrue(game.fullBoardChoices().isEmpty)
             let restored = try JSONDecoder().decode(FallingSky.self, from: encoded(game))
             XCTAssertEqual(restored, game)
-            XCTAssertEqual(restored.replay(), FallingSky.fullBoardLantern())
+            XCTAssertEqual(restored.replay(), revisionFive())
             XCTAssertTrue(restored.fullBoardChoices().isEmpty)
         }
     }
@@ -172,7 +176,7 @@ final class FullBoardChoiceTests: XCTestCase {
     func testNoShortPlanIsAnEmptyResultWithoutRewritingTheBoard() throws {
         // Synthetic valid carrier for the bounded-search boundary, not a
         // claimed reachable opening. No four-star recipe is within two swaps.
-        let original = FallingSky.fullBoardLantern()
+        let original = revisionFive()
         var fields = try XCTUnwrap(JSONSerialization.jsonObject(with: encoded(original)) as? [String: Any])
         var board = try XCTUnwrap(fields["board"] as? [[String: Any]])
         for index in board.indices {
@@ -189,7 +193,7 @@ final class FullBoardChoiceTests: XCTestCase {
     }
 
     func testCancelledAnalysisReturnsNoAdvice() async {
-        let game = FallingSky.fullBoardLantern()
+        let game = revisionFive()
         let task = Task.detached {
             withUnsafeCurrentTask { $0?.cancel() }
             return game.fullBoardChoices()

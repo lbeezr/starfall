@@ -2,7 +2,7 @@ import XCTest
 import UIKit
 
 final class FullBoardChoiceInteractionTests: XCTestCase {
-    @MainActor private func launch(largest: Bool = false) -> XCUIApplication {
+    @MainActor private func launch(largest: Bool = false, legacy: Bool = false) -> XCUIApplication {
         continueAfterFailure = false
         if !largest {
             let (preferences, reduce) = NativeSystemMotionSettings.open()
@@ -16,12 +16,16 @@ final class FullBoardChoiceInteractionTests: XCTestCase {
             }
         }
         let app = XCUIApplication()
-        app.launchArguments = ["--sky-flow-review", "--starfalls-reset", "-calmEffects", largest ? "YES" : "NO"]
+        app.launchArguments = legacy
+            ? ["--starfalls-reset", "--dialogue-review", "--full-board-v5-review", "-calmEffects", "YES"]
+            : ["--sky-flow-review", "--starfalls-reset", "-calmEffects", largest ? "YES" : "NO"]
         if largest { app.launchArguments += ["-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"] }
         app.launch()
-        app.worldVisitControl("firstLight").tap()
-        tap("sky.lanternMode.fullBoard", app)
-        tap("sky.begin", app)
+        if !legacy {
+            app.worldVisitControl("firstLight").tap()
+            tap("sky.lanternMode.fullBoard", app)
+            tap("sky.begin", app)
+        }
         XCTAssertTrue(app.buttons["experiment.cell.0.0"].waitForExistence(timeout: 10))
         return app
     }
@@ -39,7 +43,7 @@ final class FullBoardChoiceInteractionTests: XCTestCase {
         let source = app.buttons["experiment.cell.\(from / 7).\(from % 7)"]
         let target = app.buttons["experiment.cell.\(to / 7).\(to % 7)"]
         app.revealSkyControls([source, target])
-        XCTAssertTrue(source.isEnabled && target.isEnabled)
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in source.isEnabled && target.isEnabled }, object: nil).wait(timeout: 10))
         source.coordinate(withNormalizedOffset: .init(dx: 0.5, dy: 0.5))
             .press(forDuration: 0.05, thenDragTo: target.coordinate(withNormalizedOffset: .init(dx: 0.5, dy: 0.5)),
                    withVelocity: .fast, thenHoldForDuration: 0.05)
@@ -69,13 +73,14 @@ final class FullBoardChoiceInteractionTests: XCTestCase {
 
     @MainActor func testOptionalAlternativesPreserveRoundAndReturnToOrdinaryPlay() throws {
         let app = launch()
-        drag(8, 9, score: 66_000, app)
+        defer { app.terminate() }
+        drag(8, 9, score: 15_000, app)
         let before = try cells(app)
         tap("experiment.settings", app)
         tap("fullBoard.choices.open", app)
         XCTAssertTrue(app.staticTexts["fullBoard.choices.pattern.1"].waitForExistence(timeout: 10))
-        XCTAssertEqual(app.staticTexts["fullBoard.choices.pattern.0"].label, "Square · 4 stars in the first clear")
-        XCTAssertEqual(app.staticTexts["fullBoard.choices.pattern.1"].label, "Line · 4 stars in the first clear")
+        XCTAssertEqual(app.staticTexts["fullBoard.choices.pattern.0"].label, "Line · 4 stars in the first clear")
+        XCTAssertEqual(app.staticTexts["fullBoard.choices.pattern.1"].label, "Square · 4 stars in the first clear")
         XCTAssertFalse(app.staticTexts["fullBoard.choices.step.0.0"].exists)
         capture("depth02-default-phone-visible-options", app)
         tap("sky.menu.back", app)
@@ -83,18 +88,18 @@ final class FullBoardChoiceInteractionTests: XCTestCase {
         XCTAssertTrue(app.staticTexts["fullBoard.choices.pattern.1"].waitForExistence(timeout: 10))
         XCTAssertFalse(app.staticTexts["fullBoard.choices.step.0.0"].exists)
         tap("fullBoard.choices.reveal.0", app)
-        XCTAssertEqual(app.staticTexts["fullBoard.choices.step.0.0"].label, "1. Swipe up from row 7, column 4.")
+        XCTAssertEqual(app.staticTexts["fullBoard.choices.step.0.0"].label, "1. Swipe right from row 7, column 1.")
         tap("fullBoard.choices.reveal.1", app)
-        XCTAssertEqual(app.staticTexts["fullBoard.choices.step.1.0"].label, "1. Swipe right from row 5, column 2.")
+        XCTAssertEqual(app.staticTexts["fullBoard.choices.step.1.0"].label, "1. Swipe up from row 7, column 6.")
         capture("depth02-default-phone-revealed-options", app)
         tap("experiment.done", app)
         XCTAssertEqual(try cells(app), before)
-        drag(3, 10, score: 81_000, app)
+        drag(0, 1, score: 30_000, app)
         tap("experiment.settings", app)
         tap("sky.home", app)
         tap("sky.resume", app)
         XCTAssertTrue(app.staticTexts["experiment.score"].waitForExistence(timeout: 10))
-        XCTAssertEqual(app.staticTexts["experiment.score"].label, "81,000 of 150,000 starlight collected")
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, "30,000 of 150,000 starlight collected")
         tap("experiment.settings", app)
         tap("sky.home", app)
         app.worldVisitControl("firstLight").tap()
@@ -102,8 +107,9 @@ final class FullBoardChoiceInteractionTests: XCTestCase {
         tap("sky.lanternMode.fullBoard", app)
     }
 
-    @MainActor func testLargestTextSetupAdviceSurvivesBackgroundAndDoesNotPlayForYou() throws {
-        let app = launch(largest: true)
+    @MainActor func testLargestTextRetainedV5SetupAdviceSurvivesBackgroundAndDoesNotPlayForYou() throws {
+        let app = launch(largest: true, legacy: true)
+        defer { app.terminate() }
         for move in [(8, 9, 66_000), (3, 10, 81_000), (5, 12, 86_000), (33, 40, 91_000), (24, 31, 106_000)] {
             drag(move.0, move.1, score: move.2, app)
         }

@@ -1,0 +1,32 @@
+{
+  "base_commit": "379f84106faf4a0271e7dd958941cab988f59e72",
+  "description": "Goal4 pre-integration compiled inputs for Core305, hosted499, tablet3 and Debug/Release. Changed source hashes; docs excluded.",
+  "files": {
+    "App/FallingSkyStore.swift": "4eadba6a0a82bce5acd714dde232f26494c40f0cd79835ee024510b7ec7ef4ff",
+    "App/ObservatoryReviewFixture.swift": "3145675935ec75d61ad2390196057a09644b44b42ab9d6d110159d41ab685a78",
+    "App/SkyFlowSnapshots.swift": "ec3102d524b7aa0491bea80883328f6e880090ce491ea99b98a556db2b75d17d",
+    "App/SkySaveArchive.swift": "6d40c6b5f447c8a8fdb7f3306e6ca5d272f47977d691b78eab1bf06800b0b6ca",
+    "App/WorldJourneyStore.swift": "e6b84913fca9b7395e2af37771ae6fae8fa86774fb2ae19aa63269911fe4d589",
+    "AppTests/FullBoardCascadePracticePresentationTests.swift": "d5f7b2d9217f9a28315a2d1efe19a1c06d9a7c433583e15914730534c178d433",
+    "AppTests/FullBoardChoicePresentationTests.swift": "f8b75fb3dd2e2f4c82b72f4c6468d6b789b8fd5acb34801e65dfee57fe7e6c95",
+    "AppTests/FullBoardLanternTests.swift": "f313655ac72decc834c71e16b796d2d2c838e60c46287bcfc54286c3a2776ccd",
+    "AppTests/SkyTutorialPresentationTests.swift": "03982a98871cadc2e24cb2eb077fdfed4b533a5c9c9c9f928ba415e93a5a5ad5",
+    "AppTests/WorldJourneyTests.swift": "9b4071aae1acd98c748c742df350f080ce6f022d786b7860cb04ba142f75e92c",
+    "Sources/StarfallCore/FallingSky.swift": "ded44c659e43c57a430c4cd11e7d4e361c151ab4d9398820b52a44f18cd05c5a",
+    "Sources/StarfallCore/SkyTutorial.swift": "40fab8a3625af3c95b7dbef732a683ab1cc77744d446b567d5724e399181cf22",
+    "Sources/StarfallCore/StoryChallenge.swift": "21459013fc2a4bcc73f9a414c21f6f8fa0cb1440c1cf46030a35b6bda78bdfee",
+    "Starfall.xcodeproj/project.pbxproj": "d95ebd1a69e181f7388e382bdae658ec1c7935c8a585b49dd5a3c3ec26b4a7fd",
+    "Tests/StarfallCoreTests/FullBoardCascadePracticeTests.swift": "e883e437dd23b898d19536f432e9d90cdb8375875685c03e038da32b284442f7",
+    "Tests/StarfallCoreTests/FullBoardChoiceTests.swift": "1ca9f79f4ef0b115fa1388ed433fb4b58afa556b1953dc928c934c52997b734e",
+    "Tests/StarfallCoreTests/FullBoardLanternTests.swift": "fbf5b9c23ec1ef9599e7dc8005b0ea99e440f19f873f0305249c1483bc074c50",
+    "Tests/StarfallCoreTests/SkyTutorialTests.swift": "1150592ed9cc08a4b3369575d7479e88615d6a1beaf3d0c326d893b7de181ecf",
+    "UITests/FullBoardCascadePracticeInteractionTests.swift": "687ee846e7eeb8703a99a884e33b96f24704a314f95535598b85ff70c4d5c492",
+    "UITests/FullBoardChoiceInteractionTests.swift": "fb060a9ee111c40b27eba8cb4f4d7b05f94e5a9cea7cd6ed3c96f662e31f2576",
+    "UITests/FullBoardLanternInteractionTests.swift": "45e835aaf5df84b22556d06f38ec0e905446d2f148b823d6662a9d5573db8d10",
+    "UITests/ModePracticeInteractionTests.swift": "5d730184171da7659d8d7c719afc05584be95cff14bebab46f8fd20915dab93f",
+    "AppTests/FullBoardLegacyReviewFixtureTests.swift": "2272d977dc0301ad634bb97ba90579bec804900cd98ba39cbc35b42bf5b42a4f",
+    "AppTests/FullBoardRevisionSixCompatibilityTests.swift": "b99307ba5be0c71b694a0aaf92eb9ba0dceb67e31e33ecd4e3064e80ff418dee",
+    "Tests/StarfallCoreTests/FullBoardRoundArcTests.swift": "c2be7b0df8598d659a5109c7a56ed869c6425709a7554582f6f84db320ef3df5"
+  },
+  "id": "59bd8bc4c2af"
+}

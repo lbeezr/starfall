@@ -1,0 +1,12 @@
+{
+  "integrated_commit": "cb55318ffda93ce9af83eb250e5d40d451e45b1a",
+  "integrated_tree": "b5af7e66892816e21eb5fffab2a0c5ddada61fe9",
+  "main_integration": "68374968f158f51f72caeb9d9d0c74fd69f0c395",
+  "preintegration_id": "59bd8bc4c2af",
+  "compiled_code_unchanged_from_preintegration": true,
+  "integrated_build_changes": [
+    "App/Assets.xcassets/LanternLandingTabletLandscape050.imageset/scene.png",
+    "App/Assets.xcassets/LanternLandingTabletPortrait050.imageset/scene.png"
+  ],
+  "dirty_source_paths": []
+}

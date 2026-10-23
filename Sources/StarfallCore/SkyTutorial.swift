@@ -40,7 +40,9 @@ public enum SkyTutorial: String, CaseIterable, Sendable, Identifiable {
             return sky
         case .fullBoardRefill: return FallingSky.fullBoardLantern()
         case .fullBoardSurvivors, .fullBoardImmediate:
-            var sky = FallingSky.fullBoardLantern()
+            // This authored comparison retains its exact visible ingredients
+            // when later new-visit openings develop the ordinary Full Board.
+            var sky = FallingSky(definition: StoryChallengeDefinition(.firstLight, revision: 5)!)
             _ = sky.nudge(from: Cell(1,1), to: Cell(1,2))
             _ = sky.nudge(from: Cell(0,1), to: Cell(0,2))
             return sky

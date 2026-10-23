@@ -6,7 +6,9 @@
 
 [Goal 2 visible choices](evidence/depth-goal-02-visible-choices-2026-10-23/README.md) adds optional Full Board **Find a move** advice from the current visible stars: distinct immediate patterns or a short arrangement before a clear, with optional worked swipes and no round changes.
 
-[Goal 3 survivor cascades](evidence/depth-goal-03-survivor-cascades-2026-10-23/README.md) adds **Compare clears** practice: preserve visible ingredients for a later line or spend more stars in one immediate clear. Both real-rule chapters preserve the saved round and world; learning and enjoyment remain for player observation.
+[Goal 3 survivor cascades](evidence/depth-goal-03-survivor-cascades-2026-10-23/README.md) adds **Compare clears** practice: preserve visible ingredients for a later line or spend more stars in one immediate clear. Both real-rule chapters explicitly retain revision-5 history and preserve the saved round and world; learning and enjoyment remain for player observation.
+
+[Goal 4’s Full Board round arc](evidence/depth-goal-04-full-board-round-arc-2026-10-23/README.md) revises two opening ingredients for explicit new revision-6 visits. The basic square earns 15,000; later choices retain different immediate and continuing consequences toward the unchanged 150,000-point goal. Saved revision-5 rounds and Replay remain exact, and the basic refill lesson follows current revision 6.
 
 [Seed Moon’s grown-ingredient encounter](evidence/seed-ingredient-2026-10-23/README.md) develops the seven-place curriculum into an 11,000-point fork while retaining historical saves and ordinary earned progression.
 

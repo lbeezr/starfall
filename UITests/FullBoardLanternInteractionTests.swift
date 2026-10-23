@@ -5,9 +5,9 @@ import UIKit
 /// No app state, archive bytes, scores or board contents are injected by this suite.
 final class FullBoardLanternInteractionTests: XCTestCase {
     private let winningMoves: [(from: Int, to: Int, score: Int)] = [
-        (8, 9, 66_000), (3, 10, 81_000), (5, 12, 86_000), (33, 40, 91_000),
-        (24, 31, 106_000), (22, 23, 106_000), (23, 24, 121_000),
-        (28, 29, 140_000), (36, 37, 145_000), (32, 39, 150_000)
+        (27, 34, 42_000), (1, 2, 47_000), (31, 32, 54_000), (12, 13, 63_000),
+        (16, 17, 78_000), (8, 9, 83_000), (11, 12, 88_000),
+        (29, 30, 93_000), (29, 36, 98_000), (9, 16, 156_000)
     ]
 
     @MainActor private func requireNormalMotion() {
@@ -93,10 +93,11 @@ final class FullBoardLanternInteractionTests: XCTestCase {
     @MainActor private func waitForRound(_ app: XCUIApplication, exchanges: Int, score: Int) {
         let expected = "\(score.formatted()) of \(150_000.formatted()) starlight collected"
         let board = app.otherElements["experiment.board"]
+        let blocked = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@ AND enabled == false", "experiment.cell."))
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
             board.exists && (board.value as? String)?.hasPrefix("Exchanges: \(exchanges). Full Board.") == true
                 && app.staticTexts["experiment.score"].label == expected
-                && app.buttons["experiment.cell.0.0"].isEnabled
+                && app.buttons["experiment.cell.0.0"].isEnabled && blocked.count == 0
         }, object: nil).wait(timeout: 10),
         "Expected exchange \(exchanges), score \(score); observed \(String(describing: board.value))")
     }
@@ -120,7 +121,7 @@ final class FullBoardLanternInteractionTests: XCTestCase {
         let source = app.buttons["experiment.cell.\(from / 7).\(from % 7)"]
         let target = app.buttons["experiment.cell.\(to / 7).\(to % 7)"]
         app.revealSkyControls([source, target])
-        XCTAssertTrue(source.isEnabled && target.isEnabled)
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in source.isEnabled && target.isEnabled }, object: nil).wait(timeout: 10))
         source.coordinate(withNormalizedOffset: .init(dx: 0.5, dy: 0.5))
             .press(forDuration: 0.05,
                    thenDragTo: target.coordinate(withNormalizedOffset: .init(dx: 0.5, dy: 0.5)),
@@ -145,7 +146,7 @@ final class FullBoardLanternInteractionTests: XCTestCase {
         chooseFullBoard(app, captureName: "full-board-default-choice")
         let opening = try cells(app)
         capture(app, "full-board-default-opening")
-        exchange(8, 9, score: 66_000, count: 1, in: app)
+        exchange(27, 34, score: 42_000, count: 1, in: app)
         let retained = try cells(app)
         XCTAssertNotEqual(retained, opening, "The real opening square clears and refills")
         capture(app, "full-board-default-refill")
@@ -155,10 +156,10 @@ final class FullBoardLanternInteractionTests: XCTestCase {
         XCTAssertFalse(app.buttons["experiment.next"].exists)
         tap("experiment.done", app)
         XCUIDevice.shared.press(.home); app.activate()
-        waitForRound(app, exchanges: 1, score: 66_000)
+        waitForRound(app, exchanges: 1, score: 42_000)
         XCTAssertEqual(try cells(app), retained)
         restore(app)
-        waitForRound(app, exchanges: 1, score: 66_000)
+        waitForRound(app, exchanges: 1, score: 42_000)
         XCTAssertEqual(try cells(app), retained)
         capture(app, "full-board-default-restored")
 
@@ -169,7 +170,7 @@ final class FullBoardLanternInteractionTests: XCTestCase {
         let outcome = app.staticTexts["experiment.outcome"]
         XCTAssertTrue(outcome.waitForExistence(timeout: 12))
         XCTAssertEqual(outcome.label, "Lantern Landing restored!")
-        XCTAssertTrue(app.staticTexts["experiment.score"].label.contains("150,000 of 150,000 starlight collected"))
+        XCTAssertTrue(app.staticTexts["experiment.score"].label.contains("156,000 of 150,000 starlight collected"))
         capture(app, "full-board-default-won")
         tap("experiment.replay", app)
         XCTAssertTrue(app.staticTexts["sky.subtitle"].label.contains("Full Board"))
@@ -177,7 +178,7 @@ final class FullBoardLanternInteractionTests: XCTestCase {
         tap("sky.begin", app)
         waitForRound(app, exchanges: 0, score: 0)
         XCTAssertEqual(try cells(app), opening)
-        exchange(8, 9, score: 66_000, count: 1, in: app)
+        exchange(27, 34, score: 42_000, count: 1, in: app)
         XCTAssertEqual(try cells(app), retained)
         capture(app, "full-board-default-replayed-refill")
     }
@@ -186,7 +187,7 @@ final class FullBoardLanternInteractionTests: XCTestCase {
         let app = launch(quiet: true)
         defer { app.terminate() }
         chooseFullBoard(app, captureName: "full-board-switch-choice")
-        exchange(8, 9, score: 66_000, count: 1, in: app)
+        exchange(8, 9, score: 15_000, count: 1, in: app)
         let retained = try cells(app)
         tap("experiment.settings", app)
         app.worldVisitControl("firstLight").tap()
@@ -195,7 +196,7 @@ final class FullBoardLanternInteractionTests: XCTestCase {
         XCTAssertTrue(app.buttons["sky.lanternMode.fallingSky"].isSelected)
         tap("sky.home", app)
         tap("world.resume", app)
-        waitForRound(app, exchanges: 1, score: 66_000)
+        waitForRound(app, exchanges: 1, score: 15_000)
         XCTAssertEqual(try cells(app), retained)
         XCTAssertTrue(app.staticTexts["lantern.mode"].label.contains("Full Board"))
 
@@ -221,8 +222,8 @@ final class FullBoardLanternInteractionTests: XCTestCase {
         let app = launch(largest: true, quiet: true)
         defer { app.terminate(); XCUIDevice.shared.orientation = .portrait }
         chooseFullBoard(app, captureName: "full-board-largest-choice")
-        exchange(8, 9, score: 66_000, count: 1, in: app)
-        var count = 1, score = 66_000
+        exchange(8, 9, score: 15_000, count: 1, in: app)
+        var count = 1, score = 15_000
         capture(app, "full-board-largest-portrait-refill")
         if UIDevice.current.userInterfaceIdiom == .pad {
             XCUIDevice.shared.orientation = .landscapeLeft
@@ -230,8 +231,8 @@ final class FullBoardLanternInteractionTests: XCTestCase {
                 app.frame.width > app.frame.height
             }, object: nil).wait(timeout: 8))
             waitForRound(app, exchanges: count, score: score)
-            exchange(3, 10, score: 81_000, count: 2, in: app)
-            count = 2; score = 81_000
+            exchange(27, 34, score: 34_000, count: 2, in: app)
+            count = 2; score = 34_000
             capture(app, "full-board-largest-tablet-landscape-refill")
             XCUIDevice.shared.orientation = .portrait
             XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
@@ -254,4 +255,43 @@ final class FullBoardLanternInteractionTests: XCTestCase {
         XCTAssertEqual(ceiling(app).label, "Board top edge")
         capture(app, "full-board-largest-restored")
     }
+
+    @MainActor func testRetainedV5ContinueReplayAndExplicitNewVisitKeepTheirOwnDefinitions() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchArguments = ["--starfalls-reset", "--dialogue-review", "--full-board-v5-review", "-calmEffects", "YES"]
+        app.launch()
+        defer { app.terminate() }
+        waitForRound(app, exchanges: 0, score: 0)
+        let opening = try cells(app)
+        exchange(8, 9, score: 66_000, count: 1, in: app)
+        let retained = try cells(app)
+        app.terminate()
+        app.launchArguments = ["--dialogue-review", "-calmEffects", "YES"]
+        app.launch()
+        XCTAssertTrue(app.buttons["sky.resume"].waitForExistence(timeout: 10))
+        XCTAssertTrue(app.staticTexts["sky.subtitle"].label.contains("Full Board"))
+        tap("sky.resume", app)
+        waitForRound(app, exchanges: 1, score: 66_000)
+        XCTAssertEqual(try cells(app), retained)
+        tap("experiment.settings", app)
+        tap("experiment.replay", app)
+        XCTAssertTrue(app.staticTexts["sky.subtitle"].label.contains("Full Board"))
+        XCTAssertFalse(app.buttons["sky.lanternMode.fallingSky"].exists)
+        tap("sky.begin", app)
+        waitForRound(app, exchanges: 0, score: 0)
+        XCTAssertEqual(try cells(app), opening)
+        exchange(8, 9, score: 66_000, count: 1, in: app)
+        XCTAssertEqual(try cells(app), retained)
+        capture(app, "depth04-retained-v5-replay")
+        tap("experiment.settings", app)
+        app.worldVisitControl("firstLight").tap()
+        tap("sky.lanternMode.fullBoard", app)
+        tap("sky.begin", app)
+        waitForRound(app, exchanges: 0, score: 0)
+        XCTAssertNotEqual(try cells(app), opening, "Explicit new visits select the new authored opening")
+        exchange(8, 9, score: 15_000, count: 1, in: app)
+        capture(app, "depth04-explicit-new-v6-after-retained-v5")
+    }
+
 }

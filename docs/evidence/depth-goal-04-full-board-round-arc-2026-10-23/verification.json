@@ -1,0 +1,612 @@
+{
+  "goal": 307,
+  "queue": 303,
+  "status": "verified_development_with_human_physical_and_voiceover_limits",
+  "source": {
+    "baseCommit": "379f84106faf4a0271e7dd958941cab988f59e72",
+    "kind": "preintegration_working_tree_then_clean_integrated_code",
+    "preintegrationSnapshotFile": "source-preintegration.json",
+    "preintegrationSnapshotID": "59bd8bc4c2af",
+    "changedCompiledPaths": 25,
+    "integratedSnapshotFile": "source-integrated.json",
+    "integratedCommit": "cb55318ffda93ce9af83eb250e5d40d451e45b1a",
+    "integratedMain": "68374968f158f51f72caeb9d9d0c74fd69f0c395",
+    "compiledCodeUnchanged": true,
+    "integratedBuildChanges": [
+      "App/Assets.xcassets/LanternLandingTabletLandscape050.imageset/scene.png",
+      "App/Assets.xcassets/LanternLandingTabletPortrait050.imageset/scene.png"
+    ],
+    "publishedCommitAcceptance": "Publication must preserve the cb55318 compiled tree; subsequent evidence/index-only edits have no compiled differences.",
+    "snapshotFile": "source-preintegration.json",
+    "snapshotStatus": "complete_25_changed_compiled_inputs_sha256_59bd8bc4c2af"
+  },
+  "bundleLabel": "dev.local",
+  "environment": {
+    "host": "macOS 27.0.1 arm64",
+    "xcode": "27.1",
+    "xcodeBuild": "27A9275",
+    "sdk": "iphonesimulator27.1",
+    "deploymentTarget": "17.0",
+    "simulatorRuntime": "iOS 27.0 (24A434)",
+    "hostedPhone": "A84C81F5-AE41-496A-97AE-E17C63E18D29 iPhone 17e",
+    "nativeTablet": "EDE6B5F3-53C9-4703-B3D8-E654BEFA22A0 iPad mini A17 Pro"
+  },
+  "rawRoot": "/private/tmp/starfall-depth-04-20261023",
+  "knownChangedProductionInputs": [
+    "Sources/StarfallCore/StoryChallenge.swift",
+    "Sources/StarfallCore/FallingSky.swift",
+    "Sources/StarfallCore/SkyTutorial.swift",
+    "App/SkySaveArchive.swift",
+    "App/WorldJourneyStore.swift",
+    "App/SkyFlowSnapshots.swift",
+    "App/ObservatoryReviewFixture.swift",
+    "App/FallingSkyStore.swift",
+    "Starfall.xcodeproj/project.pbxproj"
+  ],
+  "knownChangedProductionInputsNote": "Complete changed compiled input hashes are in source-preintegration.json; source-integrated.json records clean-code integration parity.",
+  "checks": {
+    "core": {
+      "status": "passed",
+      "passed": 305,
+      "failed": 0,
+      "skipped": 0,
+      "log": "core.log",
+      "exactCommand": "CLANG_MODULE_CACHE_PATH=/private/tmp/starfall-depth02-clang SWIFTPM_MODULECACHE_OVERRIDE=/private/tmp/starfall-depth02-module swift test --scratch-path /private/tmp/starfall-depth02-core"
+    },
+    "debugBuild": {
+      "status": "passed",
+      "configuration": "Debug",
+      "action": "build-for-testing",
+      "log": "build-debug.log"
+    },
+    "releaseBuild": {
+      "status": "passed",
+      "configuration": "Release",
+      "action": "build",
+      "log": "build-release.log"
+    },
+    "hostedAll": {
+      "status": "passed",
+      "passed": 499,
+      "failed": 0,
+      "skipped": 0,
+      "log": "hosted-all.log",
+      "resultBundle": "hosted-all.xcresult"
+    },
+    "nativeTablet": {
+      "status": "passed",
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "log": "tablet.log",
+      "resultBundle": "tablet.xcresult",
+      "tests": [
+        "StarfallUITests/FullBoardChoiceInteractionTests/testLargestTextRetainedV5SetupAdviceSurvivesBackgroundAndDoesNotPlayForYou",
+        "StarfallUITests/FullBoardLanternInteractionTests/testLargestQuietFullBoardChoiceSwapRotationAndRestore",
+        "StarfallUITests/FullBoardLanternInteractionTests/testRetainedV5ContinueReplayAndExplicitNewVisitKeepTheirOwnDefinitions"
+      ]
+    },
+    "nativePhone": {
+      "status": "passed",
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "logs": [
+        "phone-normal.log",
+        "phone-modes.log"
+      ],
+      "resultBundles": [
+        "phone-normal.xcresult",
+        "phone-modes.xcresult"
+      ],
+      "source": "cb55318",
+      "tests": [
+        "StarfallUITests/FullBoardLanternInteractionTests/testNormalMotionFullBoardRefillRestoreWinAndReplay",
+        "StarfallUITests/FullBoardLanternInteractionTests/testLanternModeCancellationPreservesFullBoardUntilFallingSkyBegins",
+        "StarfallUITests/FullBoardChoiceInteractionTests/testOptionalAlternativesPreserveRoundAndReturnToOrdinaryPlay",
+        "StarfallUITests/ModePracticeInteractionTests/testBothEntryDiscoveriesPreserveSelectedModeAndRetainedFullBoard"
+      ]
+    },
+    "latestMainIntegration": {
+      "status": "passed",
+      "source": "cb55318ffda93ce9af83eb250e5d40d451e45b1a",
+      "main": "68374968f158f51f72caeb9d9d0c74fd69f0c395",
+      "parity": "All compiled code/test/membership hashes equal preintegration59bd. Main only changes2tablet050images plus docs/skills; integratedDebug/Release and tablet journey pass. Core305/hosted499 evidence retains prior source."
+    },
+    "membershipAndReleaseFixtureAbsence": {
+      "status": "passed",
+      "results": [
+        "plutil project valid",
+        "native dev plan219UI/499hosted;2newhostedfiles present in sources phase",
+        "Release binary contains no --full-board-v5-review marker"
+      ]
+    },
+    "hygieneAndDiffCheck": {
+      "status": "passed",
+      "commands": [
+        "python3 scripts/ci-hygiene.py",
+        "git diff --check"
+      ]
+    },
+    "inspectedVisualSamples": {
+      "status": "inspected",
+      "captureIndex": "captures.json"
+    },
+    "continuousAnimationReview": {
+      "status": "sampled_frames_only",
+      "recording": "normal-round.mp4 disposable rawRoot",
+      "frames": [
+        86,
+        89,
+        160,
+        164,
+        170,
+        190
+      ],
+      "observed": "Final cross/line sequence, falling survivors and completed result; no continuous-smoothness or performance claim."
+    },
+    "nativeTabletIntegrated": {
+      "status": "passed",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "source": "cb55318",
+      "log": "tablet-integrated.log",
+      "tests": [
+        "StarfallUITests/FullBoardLanternInteractionTests/testLargestQuietFullBoardChoiceSwapRotationAndRestore"
+      ]
+    }
+  },
+  "commands": {
+    "build-debug": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=A84C81F5-AE41-496A-97AE-E17C63E18D29\" -derivedDataPath /private/tmp/starfall-depth-04-20261023/DerivedData CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES build-for-testing",
+    "build-release": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Release -destination \"generic/platform=iOS Simulator\" -derivedDataPath /private/tmp/starfall-depth-04-20261023/ReleaseData CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES build",
+    "hosted-all": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=A84C81F5-AE41-496A-97AE-E17C63E18D29\" -derivedDataPath /private/tmp/starfall-depth-04-20261023/DerivedData CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -parallel-testing-enabled NO -collect-test-diagnostics never -resultBundlePath /private/tmp/starfall-depth-04-20261023/hosted-all.xcresult \"-only-testing:StarfallAppTests\" test-without-building",
+    "tablet": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=EDE6B5F3-53C9-4703-B3D8-E654BEFA22A0\" -derivedDataPath /private/tmp/starfall-depth-04-20261023/DerivedData CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -parallel-testing-enabled NO -collect-test-diagnostics never -resultBundlePath /private/tmp/starfall-depth-04-20261023/tablet.xcresult \"-only-testing:StarfallUITests/FullBoardChoiceInteractionTests/testLargestTextRetainedV5SetupAdviceSurvivesBackgroundAndDoesNotPlayForYou\" \"-only-testing:StarfallUITests/FullBoardLanternInteractionTests/testLargestQuietFullBoardChoiceSwapRotationAndRestore\" \"-only-testing:StarfallUITests/FullBoardLanternInteractionTests/testRetainedV5ContinueReplayAndExplicitNewVisitKeepTheirOwnDefinitions\" test-without-building",
+    "membership": "python3 scripts/native_test_plan.py --stage dev; plutil -lint Starfall.xcodeproj/project.pbxproj; inspect PBXSourcesBuildPhase entries for both new AppTests",
+    "releaseFixture": "Python assertion: b\"--full-board-v5-review\" not in Path(\"/private/tmp/starfall-depth-04-20261023/ReleaseData/Build/Products/Release-iphonesimulator/Starfall.app/Starfall\").read_bytes()",
+    "integrated-debug": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=A84C81F5-AE41-496A-97AE-E17C63E18D29\" -derivedDataPath /private/tmp/starfall-depth-04-20261023/DerivedData CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES build-for-testing",
+    "integrated-release": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Release -destination \"generic/platform=iOS Simulator\" -derivedDataPath /private/tmp/starfall-depth-04-20261023/ReleaseData CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES build",
+    "phone-normal": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=A84C81F5-AE41-496A-97AE-E17C63E18D29\" -derivedDataPath /private/tmp/starfall-depth-04-20261023/DerivedData CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -parallel-testing-enabled NO -collect-test-diagnostics never -resultBundlePath /private/tmp/starfall-depth-04-20261023/phone-normal.xcresult \"-only-testing:StarfallUITests/FullBoardLanternInteractionTests/testNormalMotionFullBoardRefillRestoreWinAndReplay\" test-without-building",
+    "phone-modes": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=A84C81F5-AE41-496A-97AE-E17C63E18D29\" -derivedDataPath /private/tmp/starfall-depth-04-20261023/DerivedData CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -parallel-testing-enabled NO -collect-test-diagnostics never -resultBundlePath /private/tmp/starfall-depth-04-20261023/phone-modes.xcresult \"-only-testing:StarfallUITests/FullBoardLanternInteractionTests/testLanternModeCancellationPreservesFullBoardUntilFallingSkyBegins\" \"-only-testing:StarfallUITests/FullBoardChoiceInteractionTests/testOptionalAlternativesPreserveRoundAndReturnToOrdinaryPlay\" \"-only-testing:StarfallUITests/ModePracticeInteractionTests/testBothEntryDiscoveriesPreserveSelectedModeAndRetainedFullBoard\" test-without-building",
+    "tablet-integrated": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=EDE6B5F3-53C9-4703-B3D8-E654BEFA22A0\" -derivedDataPath /private/tmp/starfall-depth-04-20261023/DerivedData CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -parallel-testing-enabled NO -collect-test-diagnostics never -resultBundlePath /private/tmp/starfall-depth-04-20261023/tablet-integrated.xcresult \"-only-testing:StarfallUITests/FullBoardLanternInteractionTests/testLargestQuietFullBoardChoiceSwapRotationAndRestore\" test-without-building"
+  },
+  "boundedStageReceipts": [
+    {
+      "stage": "build-release",
+      "startedUTC": "2026-10-23T17:29:01.650976+00:00",
+      "elapsedSeconds": 34.744,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "build-debug",
+      "startedUTC": "2026-10-23T17:29:01.757963+00:00",
+      "elapsedSeconds": 35.125,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "hosted-all",
+      "startedUTC": "2026-10-23T17:31:31.298814+00:00",
+      "elapsedSeconds": 180.498,
+      "limitSeconds": 900.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "tablet",
+      "startedUTC": "2026-10-23T17:31:31.296610+00:00",
+      "elapsedSeconds": 292.398,
+      "limitSeconds": 900.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "export-tablet",
+      "startedUTC": "2026-10-23T17:37:51.442493+00:00",
+      "elapsedSeconds": 0.762,
+      "limitSeconds": 120.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "integrated-debug",
+      "startedUTC": "2026-10-23T17:37:51.767919+00:00",
+      "elapsedSeconds": 27.878,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "integrated-release",
+      "startedUTC": "2026-10-23T17:37:51.141897+00:00",
+      "elapsedSeconds": 30.114,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "tablet-integrated",
+      "startedUTC": "2026-10-23T17:38:55.258160+00:00",
+      "elapsedSeconds": 131.039,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "export-tablet-integrated",
+      "startedUTC": "2026-10-23T17:41:30.372312+00:00",
+      "elapsedSeconds": 0.139,
+      "limitSeconds": 120.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "phone-normal",
+      "startedUTC": "2026-10-23T17:38:53.985056+00:00",
+      "elapsedSeconds": 203.295,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "record-normal",
+      "startedUTC": "2026-10-23T17:38:51.069372+00:00",
+      "elapsedSeconds": 231.769,
+      "limitSeconds": 300.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "export-phone-normal",
+      "startedUTC": "2026-10-23T17:42:45.774477+00:00",
+      "elapsedSeconds": 0.412,
+      "limitSeconds": 120.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "sample-normal",
+      "startedUTC": "2026-10-23T17:43:17.422918+00:00",
+      "elapsedSeconds": 1.619,
+      "limitSeconds": 120.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "phone-modes",
+      "startedUTC": "2026-10-23T17:42:42.585945+00:00",
+      "elapsedSeconds": 376.152,
+      "limitSeconds": 900.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "export-phone-modes",
+      "startedUTC": "2026-10-23T17:49:22.695447+00:00",
+      "elapsedSeconds": 0.453,
+      "limitSeconds": 120.0,
+      "exitCode": 0,
+      "error": null
+    }
+  ],
+  "roundContract": {
+    "newFullBoardRevision": 6,
+    "retainedFullBoardRevision": 5,
+    "fallingSkyRevision": 4,
+    "openingChangedStars": [
+      {
+        "id": 29,
+        "from": "violet",
+        "to": "aqua"
+      },
+      {
+        "id": 37,
+        "from": "mint",
+        "to": "rose"
+      }
+    ],
+    "occupiedStars": 49,
+    "seed": 42,
+    "target": 150000,
+    "unchanged": [
+      "ordinary families and identities except the two kinds",
+      "pattern legality",
+      "score formula",
+      "refill algorithm and stabilization bound",
+      "unlimited untimed setup",
+      "immediate earned winning outcomes"
+    ],
+    "basicOpening": {
+      "exchange": [
+        8,
+        9
+      ],
+      "revision6Award": 15000,
+      "revision6PhaseAwards": [
+        5000,
+        10000
+      ],
+      "revision5Award": 66000
+    },
+    "practice": {
+      "basicFullBoardRefill": "current_revision6",
+      "survivorAndImmediateComparison": "explicit_revision5"
+    },
+    "archive": {
+      "writes": 15,
+      "retained14MaximumAuthoredRevision": 5,
+      "earlierReaders": "preserved_validated",
+      "worldEnvelope": 1
+    }
+  },
+  "witnesses": {
+    "indexNotation": "zero-based bottom-up board index = row * 7 + column",
+    "highRoute": {
+      "moves": [
+        [
+          27,
+          34
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          31,
+          32
+        ],
+        [
+          12,
+          13
+        ],
+        [
+          16,
+          17
+        ],
+        [
+          8,
+          9
+        ],
+        [
+          11,
+          12
+        ],
+        [
+          29,
+          30
+        ],
+        [
+          29,
+          36
+        ],
+        [
+          9,
+          16
+        ]
+      ],
+      "scores": [
+        42000,
+        47000,
+        54000,
+        63000,
+        78000,
+        83000,
+        88000,
+        93000,
+        98000,
+        156000
+      ],
+      "turns": 10,
+      "physicalLight": 77,
+      "outcome": "won"
+    },
+    "lineRoute": {
+      "moves": [
+        [
+          1,
+          2
+        ],
+        [
+          27,
+          34
+        ],
+        [
+          5,
+          12
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          16,
+          17
+        ],
+        [
+          24,
+          31
+        ],
+        [
+          25,
+          32
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          7,
+          14
+        ],
+        [
+          37,
+          44
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          33,
+          34
+        ],
+        [
+          18,
+          19
+        ],
+        [
+          16,
+          17
+        ],
+        [
+          18,
+          25
+        ],
+        [
+          18,
+          19
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          4,
+          11
+        ],
+        [
+          32,
+          33
+        ]
+      ],
+      "scores": [
+        27000,
+        46000,
+        61000,
+        66000,
+        71000,
+        76000,
+        91000,
+        91000,
+        96000,
+        101000,
+        108000,
+        108000,
+        113000,
+        118000,
+        123000,
+        128000,
+        133000,
+        138000,
+        138000,
+        143000,
+        150000
+      ],
+      "turns": 21,
+      "physicalLight": 95,
+      "outcome": "won"
+    },
+    "middleAt76000": {
+      "line": {
+        "move": [
+          4,
+          5
+        ],
+        "award": 5000,
+        "readyScoringExchangesAfter": 3
+      },
+      "crossAndLine": {
+        "move": [
+          33,
+          40
+        ],
+        "award": 9000,
+        "readyScoringExchangesAfter": 0,
+        "twoExchangeSetupAvailable": true
+      }
+    },
+    "setupAt94000": {
+      "setupMove": [
+        4,
+        11
+      ],
+      "setupAward": 0,
+      "clearMove": [
+        5,
+        6
+      ],
+      "clearAward": 5000,
+      "resultScore": 99000
+    },
+    "finishAt98000": {
+      "smallSquare": {
+        "move": [
+          3,
+          10
+        ],
+        "award": 5000,
+        "resultScore": 103000,
+        "outcome": "playing",
+        "readyScoringExchangesAfter": 9
+      },
+      "winningReaction": {
+        "move": [
+          9,
+          16
+        ],
+        "firstPatterns": [
+          "cross",
+          "line",
+          "line"
+        ],
+        "phaseAwards": [
+          17000,
+          26000,
+          15000
+        ],
+        "clearedPerPhase": [
+          10,
+          8,
+          4
+        ],
+        "totalAward": 58000,
+        "resultScore": 156000,
+        "outcome": "won"
+      }
+    }
+  },
+  "retainedFixture": {
+    "configuration": "Debug_only",
+    "requiredArguments": [
+      "--starfalls-reset",
+      "--dialogue-review",
+      "--full-board-v5-review"
+    ],
+    "initialState": "unplayed_production_revision5_opening",
+    "persistence": "ordinary_activation_and_player_actions_in_existing_DialogueReview_domain",
+    "resumeArguments": [
+      "--dialogue-review"
+    ],
+    "noClaim": "native_v5_round_persistence_is_not_separate_native_v14_envelope_migration_evidence"
+  },
+  "limitations": [
+    "Core305, hosted499 and tablet3 ran on base379f8410 plus snapshot59bd8bc4c2af; integrated compiled source is identical but two Lantern tablet050 images changed.",
+    "Fixed routes establish reachability and committed consequences, not player difficulty, learning, enjoyment or broad policy optimality.",
+    "Some legal policies reach narrow boards requiring setup; the broad reference route is not every route.",
+    "Actual VoiceOver, minimum-iOS17 runtime and physical-device performance were not checked.",
+    "No physical phone installation is claimed.",
+    "Sampled video frames establish selected chronology only; no continuous playback/smoothness claim.",
+    "Initial tablet landscape screenshot export was partial; retained portrait images do not certify landscape fit. Passing rotation/49-cell native assertions are separate."
+  ]
+}

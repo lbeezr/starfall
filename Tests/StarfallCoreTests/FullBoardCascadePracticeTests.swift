@@ -17,7 +17,7 @@ final class FullBoardCascadePracticeTests: XCTestCase {
     }
 
     func testChaptersStartAtTheSameActualFullBoardHistory() throws {
-        var expected = FallingSky.fullBoardLantern()
+        var expected = FallingSky(definition: StoryChallengeDefinition(.firstLight, revision: 5)!)
         let opening = try XCTUnwrap(expected.nudge(from: Cell(1,1), to: Cell(1,2)))
         XCTAssertEqual(opening.displayAward, 66_000)
         let arrangement = try XCTUnwrap(expected.nudge(from: Cell(0,1), to: Cell(0,2)))
@@ -173,7 +173,7 @@ final class FullBoardCascadePracticeTests: XCTestCase {
             XCTAssertEqual(game.score, physicalLight)
             let restored = try JSONDecoder().decode(FallingSky.self, from: JSONEncoder().encode(game))
             XCTAssertEqual(restored, game)
-            XCTAssertEqual(restored.replay(), FallingSky.fullBoardLantern())
+            XCTAssertEqual(restored.replay(), FallingSky(definition: StoryChallengeDefinition(.firstLight, revision: 5)!))
             XCTAssertNil(game.nudge(from: Cell(0,0), to: Cell(0,1)))
             XCTAssertNil(game.letStarsFall())
         }

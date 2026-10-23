@@ -1,5 +1,7 @@
 # Evidence index
 
+[Depth goal 4: Full Board round arc](depth-goal-04-full-board-round-arc-2026-10-23/README.md) changes two new-visit opening ingredients, preserves exact historical rounds and verifies contrasting full-round continuations. Both modes remain available.
+
 [Cohesion goal 7: cumulative Lantern light](cohesion-goal-07-cumulative-light-2026-10-23/README.md) preserves the two tablet midpoint fittings, with actual sparse/full state review and normal transitions.
 
 [Cohesion goal 6: flight handoff](cohesion-goal-06-flight-handoff-2026-10-23/README.md) aligns opening body/light response with actual landing while preserving ordinary flight and input budgets.

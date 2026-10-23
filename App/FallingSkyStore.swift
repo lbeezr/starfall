@@ -380,6 +380,9 @@ enum SkyTerminalSpeech { case feedback, ceremony }
             }
         }
         #if DEBUG
+        if let retained = ObservatoryReviewFixture.fullBoardV5(arguments: arguments) {
+            game = retained
+        }
         if arguments.contains("--starfalls-reset"), arguments.contains("--dialogue-review"), arguments.contains("--world-legacy-review") {
             journey.useLegacyReviewAccess()
         }

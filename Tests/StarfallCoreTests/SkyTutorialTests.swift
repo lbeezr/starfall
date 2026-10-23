@@ -17,7 +17,7 @@ final class SkyTutorialTests: XCTestCase {
             }
             XCTAssertTrue(run.complete, chapter.rawValue)
             let expected: [SkyTutorial: (Int, Int, Int)] = [
-                .storySquare: (8,16,0), .storyRoom: (4,42,5), .fullBoardRefill: (18,49,1),
+                .storySquare: (8,16,0), .storyRoom: (4,42,5), .fullBoardRefill: (8,49,1),
                 .fullBoardSurvivors: (26,49,3), .fullBoardImmediate: (26,49,3),
                 .match: (3,1,0), .grown: (3,1,0), .exchange: (0,9,0), .emptySpace: (0,3,0),
                 .trace: (5,1,0), .diagonal: (5,20,0), .gap: (5,0,0), .branch: (5,4,0),
@@ -195,8 +195,8 @@ final class SkyTutorialTests: XCTestCase {
         XCTAssertEqual(action, .swap(Cell(1,1), Cell(1,2)))
         let turn = try XCTUnwrap(action.perform(in: &game))
         run.observe(action, before: opening, after: game)
-        XCTAssertEqual(turn.resolutionPhases.map(\.award.displayPoints), [5_000, 10_000, 51_000])
-        XCTAssertEqual(turn.resolutionPhases.map(\.comboDepth), [1, 2, 3])
+        XCTAssertEqual(turn.resolutionPhases.map(\.award.displayPoints), [5_000, 10_000])
+        XCTAssertEqual(turn.resolutionPhases.map(\.comboDepth), [1, 2])
         for phase in turn.resolutionPhases {
             XCTAssertEqual(phase.refillArrivals.count, phase.cleared.count)
             XCTAssertEqual(phase.refilled.compactMap { $0 }.count, 49)
@@ -210,7 +210,7 @@ final class SkyTutorialTests: XCTestCase {
             XCTAssertEqual(later.before, earlier.refilled)
         }
         XCTAssertEqual(game.board, turn.resolutionPhases.last?.refilled)
-        XCTAssertEqual(game.displayScore, 66_000)
+        XCTAssertEqual(game.displayScore, 15_000)
         XCTAssertEqual(game.occupiedCount, 49)
         XCTAssertEqual(game.turns, 1)
         XCTAssertEqual(game.outcome, .playing, "Discovery completion does not repair the location")
