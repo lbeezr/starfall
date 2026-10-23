@@ -1,14 +1,14 @@
 # Give Story Mode distinct decisions
 
-**Status:** Lantern/Ribbon revision 3 development verified after player feedback on delivered revision 2. Later locations and ratings remain proposed · **Owner:** Current implementer · **Updated:** October 20, 2026
+**Status:** Lantern/Ribbon revision-4 four-line trial development-verified and installed. Later encounters and ratings remain proposed · **Owner:** Current implementer · **Updated:** October 22, 2026
 
-Make Story Mode a progression from a welcoming introduction to expressive arcade mastery, guided by [Pokémon Puzzle League](design/POKEMON_PUZZLE_LEAGUE_REFERENCE.md). Give each location its own authored opening and supply, theatrical scores and celebrations, and optional completion stars. One star opens the next ready location. Keep automatic showers, pause and manual play; design for substantial rounds without a clock that prevents an earned finish.
+Make Story Mode a progression from a welcoming introduction to expressive arcade mastery, guided by [Pokémon Puzzle League](design/POKEMON_PUZZLE_LEAGUE_REFERENCE.md). Give each location distinct decisions, theatrical scores and celebrations, with optional mastery proposed for replay. Current completed repairs open the next ready location; ratings are not implemented. Keep automatic showers, pause and manual advance; design substantial rounds without a clock that prevents an earned finish.
 
-**Next action:** Deliver the [arrangement-only revision](evidence/story-patterns-2026-10-20/README.md), then test complete rounds on the phone for useful choices and recovery. Taps and traces no longer activate stars in new Lantern/Ribbon visits; squares, crosses and full seven-star lines clear automatically. Retain the six-/four-second cadence and 150,000/220,000 targets while measuring setup work. The later five ready locations keep historical 18-light rules. Remaining target and mastery proposals below are hypotheses.
+**Next action:** Follow the [current roadmap](ROADMAP.md): continue the existing experience queue, observe the [four-star-line trial](evidence/four-star-lines-2026-10-22/README.md), and prepare the [Kite/curriculum](https://github.com/lbeezr/starfall/issues/252), [mastery contract](https://github.com/lbeezr/starfall/issues/253) and [Bell Choir/content budget](https://github.com/lbeezr/starfall/issues/254). The later five ready places retain 18-light rules. Target/time estimates and manual-rule mastery examples below remain historical proposals, not ready current-pattern acceptance.
 
 ## Current first-pair revision
 
-Revision 3 supersedes the easy tap-clear balance after physical-player feedback. Both openings use all five ordinary families and offer three rewarding exchanges, including a two-phase Lantern chain and three-phase Ribbon chain. Automatic clears require a four-star square, five-star cross or full seven-star row/column; grown light never substitutes for missing cells. Their phased awards and rapid entrances reuse revision 2’s committed presentation. The [revision 2 record](evidence/story-cascades-2026-10-20/README.md) remains historical; old saves and replay keep their original actions, supply and scoring. Ratings, later-location redesign and multiplayer remain deferred.
+New visits select revision 4: automatic four-star squares, five-star crosses and maximal contiguous straight runs of at least four matching stars. Grown light still occupies one pattern cell. Openings, five-family supply, six-/four-second showers, causal awards and 150,000/220,000 targets are unchanged. [Development checks and canonical installation](evidence/four-star-lines-2026-10-22/README.md) are verified; human preference remains open. [Revision 3](evidence/story-patterns-2026-10-20/README.md) keeps seven-star lines in retained rounds; [revision 2](evidence/story-cascades-2026-10-20/README.md) retains its original actions. Continue and same-round replay preserve the saved definition. Ratings, later-location redesign and multiplayer remain proposals.
 
 ## Longer rounds need more decisions
 
@@ -75,6 +75,8 @@ Both are intended future directions, not current implementation work. Keep the p
 
 ## The five location briefs
 
+**Historical manual-rule examples.** Their decision themes remain useful, but taps, selective traces and banking completed patterns cannot be copied into current automatic-pattern encounters. [#252](https://github.com/lbeezr/starfall/issues/252) develops a version-aware curriculum and witnessed Kite brief; the roadmap owns current sequencing.
+
 All encounters use current matching, growth, cardinal exchanges, selected traces, exact recipes, settling and deliberate follow-ups. They use ordinary colored stars and grown stars. The first pass adds no new piece, power, obstacle, aging, Dusk, currency or move limit. Opal and storm rules remain available in their existing contexts; they are unnecessary to establish this five-location curriculum.
 
 Author openings and a versioned deterministic sequence of legal arrivals. Reuse useful scenario ideas from the tutorial, but let the player choose different valid solutions. Never reset the board between beats, teleport pieces, alter an already announced shower or require the tutorial's exact action sequence.
@@ -107,7 +109,7 @@ One star is a complete success: full restoration, normal ending and access to th
 
 Show both goals before Begin and in the pause menu. Keep the main HUD focused on restoration; acknowledge an accomplishment briefly without covering the board. After Lantern's first completion, explain the optional replay challenge gently. Goals may be earned incidentally on the first attempt; no replay is mandatory.
 
-The following are concrete candidate conditions to validate with their authored boards. Each goal earns at most one star; one action may satisfy both.
+The following are historical manual-rule candidate conditions. [#253](https://github.com/lbeezr/starfall/issues/253) must define feasible current-pattern goals and versioned records before ratings implementation. Each proposed goal earns at most one star; one action may satisfy both.
 
 | Location | Accomplishment A | Accomplishment B |
 | --- | --- | --- |
@@ -168,7 +170,7 @@ Core owns all qualifications and the final award. Evaluate the target-crossing a
 ## Acceptance and calibration
 
 - [ ] Every stage has a reproducible completion path, two differing meaningful choices and recoverable alternatives. Check paths beyond one solved seed/script, including neighboring action orders and a missed opportunity.
-- [ ] Lantern remains finishable with ordinary matching. A player's first repair does not depend on optional goals, a recipe, a reflex deadline or a perfect input sequence.
+- [ ] Lantern remains approachable through its actual saved pattern rules. A player's first repair does not depend on optional mastery, a reflex deadline or a perfect input sequence.
 - [ ] Each accomplishment has at least one verified earning path and rejection cases for superficially similar but unrelated actions. Check duplicate events, the winning clear and interruption/restore between causal steps.
 - [ ] Human observation separates discovery from coached reproduction. Ask what changed between locations, why a particular clear helped and whether the player wants another location or optional replay.
 - [ ] Observe several first-time players, starting with a small formative group of roughly five. Record confusion, idle stretches, recovery and active-play duration manually; no analytics or identifying data. This is a revision aid, not a statistical enjoyment claim.

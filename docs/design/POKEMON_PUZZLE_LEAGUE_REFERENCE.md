@@ -1,12 +1,12 @@
 # Pokémon Puzzle League is the primary gameplay reference
 
-**Status:** User-selected design reference; first Lantern/Ribbon adaptation development-verified; human balance review remains open, later adaptations proposed · **Owner:** Current implementer · **Updated:** October 20, 2026
+**Status:** User-selected design reference; current first-pair trial development-verified and installed; human balance review remains open, later adaptations proposed · **Owner:** Current implementer · **Updated:** October 22, 2026
 
 The user identifies **Pokémon Puzzle League for Nintendo 64** as Starfall's core inspiration. When mechanics, progression, difficulty, rewards or multiplayer direction are uncertain, inspect what that game does, explain why it may work, and propose a deliberate adaptation for Starfall. Treat its design as a starting point to develop further.
 
 The desired experience includes arcade energy, impressive scores, expressive celebrations, skillful play and the social feeling of nearby handhelds or couch play. Lantern Landing should welcome new players while the wider game offers increasing mastery. [The current gameplay plan](../STORY_MODE_GAMEPLAY_PLAN.md) translates this direction into a bounded first comparison.
 
-The [competitive pacing research](PUZZLE_PACING_RESEARCH.md) follows the user's sparse-board feedback. It separates verified mechanics and derived rates from unvalidated tuning, accounts for Starfall's single-cell pieces, and records the requested approximately half-full opening presented as a rapid cascade. The user subsequently selected automatic recipe popping and causal cascades as the desired gameplay direction, identifying their payoff as central to their enjoyment of Puzzle League. That resolution change is not implemented.
+The [competitive pacing research](PUZZLE_PACING_RESEARCH.md) follows the user's sparse-board feedback. It separates verified mechanics and derived rates from unvalidated tuning, accounts for Starfall's single-cell pieces, and records the requested approximately half-full opening presented as a rapid cascade. Automatic patterns and causal phases are implemented for new Lantern/Ribbon visits. The [current revision-4 trial](../evidence/four-star-lines-2026-10-22/README.md) changes straight runs to four or more matching stars while retaining squares, crosses and other tuning; saved revision-3 rounds retain seven-star lines. Development verification and installation do not establish human preference. The [roadmap](../ROADMAP.md) sequences the next adaptations.
 
 ## Verified reference behavior
 
@@ -34,11 +34,11 @@ The following are Starfall design inferences and proposals, not claims about Nin
 
 ## Adapt deliberately to Starfall
 
-Starfall currently has falling supply, taps that clear connected groups, four-direction exchanges, exact traced sets, growth and deliberate follow-ups. Its actions are not identical to Puzzle League's. Preserve what works while testing the important difference.
+Starfall has falling supply, four-direction exchanges and growth. Open Sky and historical challenge rules also use connected-group taps and exact traced sets; new Lantern/Ribbon visits resolve automatic patterns and survivor-created phases. Its actions are not identical to Puzzle League's. Preserve each mode's actual contract while testing the important difference.
 
-Do not silently replace the current game with automatic match resolution, chain windows, attacks, a different board or a competitive rule set. A proposed change should identify the useful player decision, its consequences, and the smallest comparison that could establish an improvement.
+Future changes to resolution, chain windows, attacks, board shape or competitive rules need an explicit versioned task. Identify the useful player decision, its consequences and the smallest comparison that could establish an improvement. Preserve retained definitions and same-round replay.
 
-For an earned-score trial, preserve physical light accounting and validate any extra award separately. Identical committed results receive identical points through tap, trace and accessible input. A bonus cannot be farmed through repeated gestures, restoration of a save or replayed animation. Check that splitting a clear does not exploit a repeatedly granted size bonus. Calibrate content targets after selecting the scoring rule.
+Current authored first-pair rounds already separate physical light from earned size/phase bonuses. Preserve that accounting in future trials. Equivalent committed results within one rule version receive identical awards through every supported input method. A bonus cannot be farmed through repeated gestures, restoration of a save or replayed animation. Check that splitting a clear does not exploit a repeatedly granted size bonus. Calibrate content targets after selecting the scoring rule.
 
 For presentation, use Starfall's own cast, art, music and restoration identity. Build intensity through anticipation, impact, collection and resolution, retaining legible survivors and responsive input. Quiet presentation should carry the same information and earned result.
 
