@@ -214,9 +214,10 @@ import UIKit
         ]), withKey: actionKey)
     }
 
-    static func prepareFlight(_ node: SKSpriteNode, identity: StarCast.Identity, direction: CGFloat) {
+    static func prepareFlight(_ node: SKSpriteNode, identity: StarCast.Identity, direction: CGFloat,
+                              duration: TimeInterval = StarfallMotion.flightDuration) {
         let response = profile(identity).response, sign = Float(direction)
-        animate(node, duration: StarfallMotion.flightDuration) { t in
+        animate(node, duration: duration) { t in
             let trail = sin(t * .pi)
             return SIMD4(-sign * 0.035 * trail * response, 0.085 * trail * response,
                          1 - 0.12 * trail, 1 + 0.24 * trail)

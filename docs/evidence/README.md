@@ -1,5 +1,9 @@
 # Evidence index
 
+[Cohesion goal 6: flight handoff](cohesion-goal-06-flight-handoff-2026-10-23/README.md) aligns opening body/light response with actual landing while preserving ordinary flight and input budgets.
+
+[Depth goal 1: mode discoveries](depth-goal-01-mode-discoveries-2026-10-23/README.md) adds optional production-rule practice for Falling Sky recovery and Full Board refill, preserving either saved mode and the generic tutorial.
+
 [Cohesion goal5: connected Seed Moon](cohesion-goal-05-seed-place-2026-10-23/README.md) records the fifteen-painting environment refinement, exact generated provenance, native full-board and restoration checks, and current-Seed integration.
 
 [Silver causal-sequence encounter](silver-sequence-2026-10-23/README.md) records the complete 12,000-point definition, real survivor-created 19,000 chain versus separate clears, native/save/progression acceptance and recording limits.

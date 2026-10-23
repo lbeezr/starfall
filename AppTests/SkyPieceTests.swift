@@ -279,10 +279,16 @@ final class SkyPieceTests: XCTestCase {
             attach(image, name: name)
             if reviewFrames.count < 48 { reviewFrames.append(image) }
         }
+        var controlArrivalReady = false, capturedControlArrival = false
         func sample(_ phase: String, movesBody: Bool = true) async throws {
             var observed = Set<Int>(), observedLight = Set<Int>(), frame = 0
             let deadline = ContinuousClock.now + .seconds(2)
             repeat {
+                if controlArrivalReady {
+                    try capture("sky-piece-motion-mismatched-legacy-duration-control-arrival")
+                    for root in roots { root.cancelLocalMotion(); assertStill(root) }
+                    controlArrivalReady = false; capturedControlArrival = true
+                }
                 assertStill(restingNeighbor)
                 for (index, root) in roots.enumerated() {
                     let art = root.character
@@ -308,7 +314,7 @@ final class SkyPieceTests: XCTestCase {
                         XCTAssertNil(art.warpGeometry, "Attention moves internal light, not the playable body")
                     }
                 }
-                if frame.isMultiple(of: 3) {
+                if frame.isMultiple(of: 3) && phase != "legacy-duration-control" {
                     try capture("sky-piece-motion-\(phase)-\(String(format: "%03d", frame))")
                 }
                 frame += 1
@@ -320,11 +326,53 @@ final class SkyPieceTests: XCTestCase {
             XCTAssertTrue(roots.allSatisfy { !$0.hasActions() && !$0.character.hasActions() }, "\(phase) must finish within its finite budget")
         }
         try capture("sky-piece-motion-before")
-        for (index, root) in roots.enumerated() {
-            SkyPieceMotion.prepareFlight(root.character, identity: families[index], direction: index.isMultiple(of: 2) ? 1 : -1)
-            root.run(.moveTo(y: 170, duration: StarfallMotion.flightDuration), withKey: "review.flight")
+        for (phase, duration) in [("legacy-duration-control", 0.34),
+                                  ("flight", StarfallMotion.flightDuration), ("opening-flight", 0.34)] {
+            let mismatched = phase == "legacy-duration-control"
+            phaseLabel.text = mismatched ? "Mismatched legacy-duration control"
+                : phase == "flight" ? "Flight" : "Short opening flight"
+            var arrivals = Set<Int>(), arrivalChecks = Set<Int>()
+            // Allow 50 ms (three 60 Hz frames) for child cleanup after the parent arrives.
+            // SpriteKit time keeps this boundary tied to actual travel, not test polling.
+            let frameTolerance: TimeInterval = 3.0 / 60
+            for (index, root) in roots.enumerated() {
+                root.position.y = 270
+                let direction: CGFloat = index.isMultiple(of: 2) ? 1 : -1
+                if phase == "flight" || mismatched {
+                    SkyPieceMotion.prepareFlight(root.character, identity: families[index], direction: direction)
+                } else {
+                    SkyPieceMotion.prepareFlight(root.character, identity: families[index], direction: direction,
+                                                 duration: duration)
+                }
+                root.run(.sequence([
+                    .moveTo(y: 170, duration: duration),
+                    .run { arrivals.insert(index) },
+                    .wait(forDuration: frameTolerance),
+                    .run { [weak root] in
+                        guard let root else { return }
+                        if mismatched {
+                            let art = root.character, light = LivingLight.offset(on: art)
+                            XCTAssertGreaterThan(hypot(light.x, light.y), 0.0001,
+                                "The unchanged ordinary-duration control still carries light response after short travel")
+                            XCTAssertTrue(art.warpGeometry != nil || abs(art.zRotation) > 0.005
+                                || abs(art.xScale - 1) > 0.005 || abs(art.yScale - 1) > 0.005,
+                                "The control must expose a measured unfinished body pose")
+                        } else {
+                            self.assertStill(root)
+                        }
+                        XCTAssertEqual(root.position.y, 170, accuracy: 0.001,
+                                       "\(phase) must settle at its actual arrival destination")
+                        arrivalChecks.insert(index)
+                        if mismatched && arrivalChecks.count == roots.count { controlArrivalReady = true }
+                    }
+                ]), withKey: "review.flight")
+            }
+            try await sample(phase)
+            XCTAssertEqual(arrivals.count, roots.count, "Every family must finish its \(phase) travel")
+            XCTAssertEqual(arrivalChecks, arrivals, "Every \(phase) arrival must check body and light settling")
+            if mismatched { XCTAssertTrue(capturedControlArrival, "Capture and reset the bounded native component control") }
+            else { try capture("sky-piece-motion-\(phase)-arrival-settled") }
         }
-        try await sample("flight")
         phaseLabel.text = "Landing"
         for (index, root) in roots.enumerated() {
             root.land(direction: index.isMultiple(of: 2) ? 1 : -1, step: 56)

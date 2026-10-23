@@ -17,7 +17,7 @@ final class SkyTutorialTests: XCTestCase {
             }
             XCTAssertTrue(run.complete, chapter.rawValue)
             let expected: [SkyTutorial: (Int, Int, Int)] = [
-                .storySquare: (8,16,0),
+                .storySquare: (8,16,0), .storyRoom: (4,42,5), .fullBoardRefill: (18,49,1),
                 .match: (3,1,0), .grown: (3,1,0), .exchange: (0,9,0), .emptySpace: (0,3,0),
                 .trace: (5,1,0), .diagonal: (5,20,0), .gap: (5,0,0), .branch: (5,4,0),
                 .square: (4,2,0), .cross: (5,4,0), .opal: (3,1,0), .relay: (8,0,0),
@@ -126,6 +126,131 @@ final class SkyTutorialTests: XCTestCase {
             run.observe(tap, before: opening, after: game)
             XCTAssertFalse(run.complete)
             XCTAssertEqual(run.step, 0)
+        }
+    }
+
+    func testStoryRoomRecoversTheCurrentLanternColumnBeforeReceivingItsSameShower() throws {
+        let chapter = SkyTutorial.storyRoom, opening = chapter.game()
+        var production = FallingSky.freshChallenge(.firstLight)
+        for _ in 0..<4 { _ = try XCTUnwrap(production.letStarsFall()) }
+        XCTAssertEqual(opening, production)
+        XCTAssertFalse(chapter.allowsClock)
+        XCTAssertFalse(opening.supportsManualClears)
+        XCTAssertEqual(opening.challengeRevision, 4)
+        XCTAssertEqual(opening.occupiedCount, 41)
+        XCTAssertEqual((0..<7).filter { opening.gem(at: Cell($0, 1)) != nil }.count, 7)
+
+        var game = opening, run = SkyTutorialRun(chapter)
+        let recovery = try XCTUnwrap(run.next)
+        XCTAssertEqual(recovery, .swap(Cell(0,1), Cell(0,2)))
+        let clear = try XCTUnwrap(recovery.perform(in: &game))
+        run.observe(recovery, before: opening, after: game)
+        XCTAssertEqual(clear.resolutionPhases.map(\.award.displayPoints), [5_000])
+        XCTAssertTrue(clear.resolutionPhases.flatMap(\.refillArrivals).isEmpty)
+        XCTAssertEqual(game.incoming, opening.incoming, "The clear preserves the shower the player must receive")
+        XCTAssertEqual(game.occupiedCount, 37)
+        XCTAssertEqual((0..<7).filter { game.gem(at: Cell($0, 1)) != nil }.count, 3)
+        XCTAssertEqual(run.step, 1)
+        XCTAssertEqual(run.next, .shower)
+        XCTAssertFalse(run.complete, "The player still chooses to receive the announced shower")
+
+        let recovered = game, shower = try XCTUnwrap(run.next)
+        let arrival = try XCTUnwrap(shower.perform(in: &game))
+        run.observe(shower, before: recovered, after: game)
+        XCTAssertNil(arrival.blockedColumn)
+        XCTAssertEqual(arrival.arrivals.map(\.star), opening.incoming)
+        XCTAssertEqual(game.displayScore, 5_000)
+        XCTAssertEqual(game.occupiedCount, 42)
+        XCTAssertEqual(game.turns, 5)
+        XCTAssertEqual(game.outcome, .playing)
+        XCTAssertTrue(game.isValidSave)
+        XCTAssertTrue(run.complete)
+        XCTAssertFalse(run.needsRetry)
+    }
+
+    func testStoryRoomDecliningRecoveryBlocksTheSameFifthShower() throws {
+        let opening = SkyTutorial.storyRoom.game()
+        var game = opening, run = SkyTutorialRun(.storyRoom)
+        let turn = try XCTUnwrap(SkyTutorial.Action.shower.perform(in: &game))
+        run.observe(.shower, before: opening, after: game)
+        XCTAssertEqual(turn.blockedColumn, 1)
+        XCTAssertEqual(game.blockedColumn, 1)
+        XCTAssertTrue(game.isOver)
+        XCTAssertEqual(game.displayScore, 0)
+        XCTAssertTrue(game.isValidSave)
+        XCTAssertFalse(run.complete)
+        XCTAssertTrue(run.needsRetry)
+        XCTAssertEqual(SkyTutorial.storyRoom.game(), opening)
+    }
+
+    func testFullBoardDiscoveryUsesItsActualClearFallRefillAndCausalContinuation() throws {
+        let chapter = SkyTutorial.fullBoardRefill, opening = chapter.game()
+        XCTAssertEqual(opening, FallingSky.fullBoardLantern())
+        XCTAssertFalse(chapter.allowsClock)
+        XCTAssertFalse(opening.supportsManualClears)
+        XCTAssertEqual(opening.occupiedCount, 49)
+        var game = opening, run = SkyTutorialRun(chapter)
+        let action = try XCTUnwrap(run.next)
+        XCTAssertEqual(action, .swap(Cell(1,1), Cell(1,2)))
+        let turn = try XCTUnwrap(action.perform(in: &game))
+        run.observe(action, before: opening, after: game)
+        XCTAssertEqual(turn.resolutionPhases.map(\.award.displayPoints), [5_000, 10_000, 51_000])
+        XCTAssertEqual(turn.resolutionPhases.map(\.comboDepth), [1, 2, 3])
+        for phase in turn.resolutionPhases {
+            XCTAssertEqual(phase.refillArrivals.count, phase.cleared.count)
+            XCTAssertEqual(phase.refilled.compactMap { $0 }.count, 49)
+            XCTAssertLessThan(phase.settled.compactMap { $0 }.count, 49)
+            XCTAssertTrue(phase.refillArrivals.allSatisfy { $0.gem.id >= 49 })
+        }
+        let first = try XCTUnwrap(turn.resolutionPhases.first)
+        let survivor = try XCTUnwrap(first.before[14])
+        XCTAssertEqual(first.settled[0]?.id, survivor.id, "A surviving star falls into the cleared square before refill")
+        for (earlier, later) in zip(turn.resolutionPhases, turn.resolutionPhases.dropFirst()) {
+            XCTAssertEqual(later.before, earlier.refilled)
+        }
+        XCTAssertEqual(game.board, turn.resolutionPhases.last?.refilled)
+        XCTAssertEqual(game.displayScore, 66_000)
+        XCTAssertEqual(game.occupiedCount, 49)
+        XCTAssertEqual(game.turns, 1)
+        XCTAssertEqual(game.outcome, .playing, "Discovery completion does not repair the location")
+        XCTAssertTrue(game.isValidSave)
+        XCTAssertTrue(run.complete)
+        XCTAssertFalse(run.needsRetry)
+    }
+
+    func testModeDiscoveriesRejectUnproductiveOrInvalidActionsAndRetryExactly() throws {
+        for chapter in [SkyTutorial.storyRoom, .fullBoardRefill] {
+            let opening = chapter.game()
+            var game = opening, run = SkyTutorialRun(chapter)
+            let setup = SkyTutorial.Action.swap(Cell(0,0), Cell(0,1))
+            let turn = try XCTUnwrap(setup.perform(in: &game))
+            XCTAssertTrue(turn.resolutionPhases.isEmpty)
+            XCTAssertNotEqual(game.board, opening.board)
+            XCTAssertEqual(game.displayScore, 0)
+            run.observe(setup, before: opening, after: game)
+            XCTAssertFalse(run.complete)
+            XCTAssertTrue(run.needsRetry)
+
+            for invalid in [SkyTutorial.Action.tap(Cell(0,0)), .swap(Cell(0,0), Cell(1,1))] {
+                var untouched = opening, invalidRun = SkyTutorialRun(chapter)
+                XCTAssertNil(invalid.perform(in: &untouched))
+                XCTAssertEqual(untouched, opening)
+                invalidRun.observe(invalid, before: opening, after: untouched)
+                XCTAssertFalse(invalidRun.complete)
+                XCTAssertEqual(invalidRun.step, 0)
+            }
+
+            game = chapter.game(); run = SkyTutorialRun(chapter)
+            XCTAssertEqual(game, opening)
+            XCTAssertFalse(run.needsRetry)
+            XCTAssertEqual(run.step, 0)
+            for action in chapter.actions {
+                let before = game
+                XCTAssertNotNil(action.perform(in: &game))
+                run.observe(action, before: before, after: game)
+            }
+            XCTAssertTrue(run.complete)
+            XCTAssertFalse(run.needsRetry)
         }
     }
 

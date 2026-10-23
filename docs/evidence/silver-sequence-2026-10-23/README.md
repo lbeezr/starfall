@@ -16,7 +16,7 @@ The quiet AX3XL iPad case reads/scans Help, uses Done, completes both independen
 
 ## Verification and adoption
 
-[Verification](verification.json) records source hashes, commands, counts and failures. Raw outputs remain disposable under `/private/tmp/starfall-next-encounters-20261023/`. Initial clean compiled input is `acad49b2867ef3caf5807d191ff53f76c582e9f7`. Final clean combined input is `0ecdfa338fed93febad93287784cabc02249dc30`, tree `30a10a73193eff7c652c718bf72df809d6bf2751`, computed `dev.85611977b9`. All 59 Core/package/test input hashes and affected hosted-test bytes stayed identical across the passive Seed-art integration.
+[Verification](verification.json) records source hashes, commands, counts and failures. Raw outputs remain disposable under `/private/tmp/starfall-next-encounters-20261023/`. Initial clean compiled input is `acad49b2867ef3caf5807d191ff53f76c582e9f7`. First clean combined input is `0ecdfa338fed93febad93287784cabc02249dc30`, tree `30a10a73193eff7c652c718bf72df809d6bf2751`, computed `dev.85611977b9`. All 59 Core/package/test input hashes and affected hosted-test bytes stayed identical across the passive Seed-art integration.
 
 | Check | Result and scope |
 | --- | --- |
@@ -28,7 +28,7 @@ The quiet AX3XL iPad case reads/scans Help, uses Done, completes both independen
 | Tablet | AX3XL quiet Help/Done, opening, separate 7,000 + 5,000 finish and Frostfruit onward pass with ordinary system motion. |
 | Builds/resources | Debug/native builds and Release pass on combined source. Catalogue has 478 keys / 110 scripts / 115 unique line IDs; all 107 previous scripts preserved. Source/Debug/Release dialogue SHA-256 matches. Existing targets/scheme retained; no product asset family added. |
 
-Seven distinct native methods pass in eight executions, zero skips on passing runs. Adopt the bounded encounter for development. Revisit recognition, setup cost and preference through actual player observation; do not impose that study as a gate for unrelated work. Frostfruit remains its existing historical encounter until the separate ordered [#310](https://github.com/lbeezr/starfall/issues/310) runtime slice.
+Seven distinct native methods pass in ten executions, zero skips on passing runs. Adopt the bounded encounter for development. Revisit recognition, setup cost and preference through actual player observation; do not impose that study as a gate for unrelated work. Frostfruit remains its existing historical encounter until the separate ordered [#310](https://github.com/lbeezr/starfall/issues/310) runtime slice.
 
 ## Failed checks and limits
 
@@ -39,3 +39,20 @@ The connector timed out at 300 seconds on two longer batches. Their owned runner
 An early whole-test recording lacked a finalized movie index. A second recording was explicitly stopped at the win capture while the native run remained active; it has a movie index, and passthrough excerpt export succeeds, but macOS frame extraction cannot decode it. Detailed frame-by-frame causal-motion review is unavailable; no animation fault or host-contention cause is inferred. Ordinary-effects native completion and Core's committed causal phases are verified separately. Originals and errors retain exact hashes in verification; no further unchanged recording retries were made.
 
 Uncoached recognition, touch comfort, enjoyment, physical-device, minimum-iOS17 and actual VoiceOver acceptance are not performed here. No physical phone was probed or installed; VoiceOver stays deferred.
+
+## Final integration with optional mode discoveries
+
+Main #316 arrived while Silver was publishing. The merge preserves its optional Lantern/Full Board discoveries, tutorial layout, ceiling clearance, input/return behavior, persistence and project membership. The two textual conflicts kept both Silver Help and the newer practice Help, plus both roadmap sequences. Latest clean compiled input is `37aa5747ff686338aaffe58eb66bccf05ed20e48`, tree `0525fcb6dba6031879348cadb2fcd4e095766a54`, computed `dev.9333725eea`; actual bundles remain `dev.local`.
+
+Full Core now passes **280**, including all 13 tutorial checks. **174 affected hosted** tests pass across phone170 and tablet4; the latter explicitly selects the four new `SkyModeDiscoveryPresentationTests`, distinct from the seven historical `SkyTutorialPresentationTests`. The real automatic-clock phone route and AX3XL quiet tablet Help/full-round/onward both pass on this combined source. Release passes in 73.855 seconds. Strict content is **488 keys / 110 scripts / 115 line IDs**; source/Debug/Release catalogue hashes match. All 16 source inputs recorded by #316 are preserved: 13 exact, three matching when only Silver additions are removed in memory. No production integration correction was required.
+
+Two additionally inspected original-resolution captures refresh the final phone19k/12k result and tablet0/12k opening. Their exact timestamps, source/raw/retained hashes and limits are in verification. Earlier pictures retain their original source and do not independently certify this later integration. Detailed recorded-motion and human/physical/VoiceOver limits above remain unchanged.
+
+
+## Final current-main integration: 42b6ff43
+
+Main advanced through #317 (actual-duration flight handoffs) and #318 (optional visible Full Board choices). Clean input `42b6ff4329cf02e1d9b384a8dcbb09a8df6b4bac`, tree `a9a4641f690a48c3b7bd1ece24354dd4186edf08`, computed `dev.b4eac280c4`, actual test bundles `dev.local`, retains all Silver behavior and both main changes. Only the experiment/roadmap paragraphs conflicted; both streams were preserved. Documentation-only corrections after that input update root Silver adoption and remove a stale claim that movie frame decoding succeeded.
+
+All **288 Core tests** and **188 affected hosted tests** pass with zero failures/skips. The hosted batch adds the five Full Board choice and nine SkyPiece cases to the earlier 174 selectors; actual per-suite counts are retained in verification.json. The strict ordinary-clock phone case passes again (166.745 seconds native, 247.380 seconds whole tool batch), genuinely earning Kite, Seed, Silver and Frostfruit access. The AX3XL quiet iPad Help/full-round/onward case also passes on this source. Seven distinct native methods now have twelve passing executions across the explicitly recorded source integrations. Earlier source-specific results/captures remain earlier evidence.
+
+Release arm64 generic Simulator passes in 17.088 seconds. Its first sandboxed invocation stopped at dependency resolution because existing caches and simulator services were inaccessible; the authorized same command passed with unchanged source. Catalogue source, Debug and Release hashes agree at `613ce0eeb6c125af27263fa795925cb89895f04c6f1e9ca6f75024c8def42f3c` (499 keys, 110 scripts, 115 line IDs). Current-source raw phone win/Frostfruit and tablet opening captures were inspected; verification.json records their exact attachment identities/hashes. The twelve retained JPEGs keep their original source labels. This adds no independent movie-frame, human, physical-device, minimum-OS or actual VoiceOver evidence.

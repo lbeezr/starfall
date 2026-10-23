@@ -353,7 +353,8 @@ import StarfallCore
         let drift = StarfallMotion.drift(for: arrival.star.id, column: arrival.cell.column) * step
         let traveler = SkyPiece.makeNode(for: .init(arrival.star), radius: step * StarfallMotion.pieceRadius)
         if pieceMotionEnabled {
-            SkyPieceMotion.prepareFlight(traveler, identity: .init(arrival.star), direction: drift < 0 ? -1 : 1)
+            SkyPieceMotion.prepareFlight(traveler, identity: .init(arrival.star), direction: drift < 0 ? -1 : 1,
+                                         duration: duration)
         }
         comet.addChild(traveler)
         comet.position = CGPoint(x: point(arrival.cell).x - drift, y: size.height + step)

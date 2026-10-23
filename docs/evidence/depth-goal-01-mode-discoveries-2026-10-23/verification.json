@@ -1,0 +1,142 @@
+{
+  "activation": "6f8fc7a0879e3feb2c56d0107e51b1e3c9f9656b",
+  "integratedMain": "dd69da9e",
+  "localSource": "4b50ce3 + named UI changes",
+  "runtimeIdentity": "dev.37309be455",
+  "buildAffectingInputs": {
+    "App/DialogueScripts/observatory-dialogue.json": "17ff9697823546a10f34b6faa9fc71e8a4bc59944ce314c9990a880b0730bb26",
+    "App/FallingSkyView.swift": "48946cc4cdf3a16bc733f3bc2c611347244e9648b081d369a00d84da92c4a098",
+    "App/SkyCeilingOverlay.swift": "a528696467796fbbfcd363f979da8b03fe75e1f0944d45b53923ef56fcb97863",
+    "App/SkyCopy.swift": "a72ad0254d3b437f062e7e525accabbf109126f31106bd39d6f68edac4b27faa",
+    "App/SkyFlowCeremony.swift": "628c83a7752c8fde066e6695432ec4bc0fd8034789a264a3a8e397f2b4eebf6e",
+    "App/SkyFlowState.swift": "48f1adf9c652adf8f7d1f9d666c818b1759db38947dc846d9ce4da5fb2192edc",
+    "App/SkyPreferences.swift": "428088830f9be318c265f84ef3034b4c9e11823d3de6a638c6fc2bb2bf462212",
+    "App/SkyTutorialView.swift": "6731bed30c8fff8d01742f18c60b9544202eacd90c1433e141bf477c203e48fb",
+    "AppTests/ModePracticeTests.swift": "3626f6e8d592c1421932fee6635c5eb8a737018a52975efc1ad7440ac57c2484",
+    "AppTests/SkyDialogueTests.swift": "c517fa909843b6bf63f42231c9de7b68fcd3724ccf925c2283322b48cc306baf",
+    "AppTests/SkyTechniqueStoreTests.swift": "2eff26a4dabbdf867b10fe505908146c0f75de3164b9bfc52f64c05812e9e586",
+    "AppTests/SkyTutorialPresentationTests.swift": "f5f00893e486833d27e837b36e39e11efcd24994cc133d5dbed1a33a0e5b28df",
+    "Sources/StarfallCore/SkyTutorial.swift": "b8cfd6a7133a29eb5d6bf708261e64c410ef19f0a7a649a7a2df37ba1ff3bdc8",
+    "Starfall.xcodeproj/project.pbxproj": "61b9e2a8c84de460e67c6e9d89ebcca6e7111f470ad6bd679cb44bb903fdc874",
+    "Tests/StarfallCoreTests/SkyTutorialTests.swift": "08e4836b129d43a3802c7b02ed29c457815158a80eb252b10b492ea0b08fd002",
+    "UITests/ModePracticeInteractionTests.swift": "d534e5699f2f5b0e98813dbd1a6a0616f3c80ca691b1dcba54f55d2c4ba190ca"
+  },
+  "environment": {
+    "os": "macOS27.0.1 arm64",
+    "xcode": "27.1 27A9275",
+    "runtime": "iOS27.0 24A434",
+    "phone": "A84C81F5-AE41-496A-97AE-E17C63E18D29 / iPhone17e",
+    "tablet": "EDE6B5F3-53C9-4703-B3D8-E654BEFA22A0 / iPad mini A17Pro"
+  },
+  "checks": {
+    "core": {
+      "passed": 272,
+      "failed": 0,
+      "skipped": 0,
+      "log": "core-integrated.log"
+    },
+    "hostedIntegrated": {
+      "passed": 159,
+      "failed": 0,
+      "skipped": 0,
+      "log": "hosted-integrated.log"
+    },
+    "hostedFinalUI": {
+      "passed": 11,
+      "failed": 0,
+      "skipped": 0,
+      "log": "band-hosted.log"
+    },
+    "nativeInitialPhone": {
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "log": "native-phone.log"
+    },
+    "nativeLargestTablet": {
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "log": "tablet.log"
+    },
+    "nativeFinalDefault": {
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "log": "ceiling-band-default.log"
+    },
+    "debug": "ceiling-band-build.log passed",
+    "release": "band-release.log passed",
+    "hygiene": "passed",
+    "diff": "passed"
+  },
+  "priorAttempts": [
+    {
+      "log": "debug-build.log",
+      "result": "Architecture-mixed x86 consumer could not import arm64 module; installed arm64 Debug/Release builds pass."
+    },
+    {
+      "log": "hosted.log",
+      "tests": 127,
+      "failures": 1,
+      "cause": "New test read manual-cleared field; fixed to assert four committed phase-cleared stars."
+    },
+    {
+      "log": "default-final.log",
+      "tests": 1,
+      "failures": 1,
+      "cause": "New regression found ceiling band starting at100 below header126.33; corrected responsible crop using shared44point clearance, kept assertion."
+    },
+    {
+      "log": "default-recording.log",
+      "result": "First recorder reached240second owner bound (exit124); replaced by independently bounded150second normal SIGINT finalization, exit0."
+    },
+    {
+      "log": "extract-motion.log",
+      "result": "Sandbox media decode failed; native access exported frames successfully."
+    }
+  ],
+  "motion": {
+    "record": "bounded-practice.mp4",
+    "sha256": "09c9c44c58e9535078bbda4d8adafebbceb0bc83f92fa0f6e212b52b59b0f755",
+    "wallSeconds": 150,
+    "mediaDurationSeconds": 128.7083333333,
+    "sampledSeconds": [
+      10,
+      30,
+      55,
+      80
+    ],
+    "result": "Entry/action/practice/return states inspected in normal-motion recording; continuous smoothness unmeasured."
+  },
+  "commands": {
+    "core": "env CLANG_MODULE_CACHE_PATH=/private/tmp/starfall-goal1-core-clang SWIFTPM_MODULECACHE_OVERRIDE=/private/tmp/starfall-goal1-core-module swift test --disable-sandbox --scratch-path /private/tmp/starfall-goal1-core-20261023",
+    "native": "python3 scripts/simulator-command.py --receipt /private/tmp/starfall-depth-01-20261023/stages.jsonl <stage> <limit> xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination platform=iOS Simulator,id=<reservedID> -derivedDataPath /private/tmp/starfall-depth-01-20261023/DerivedData CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -parallel-testing-enabled NO -collect-test-diagnostics never -resultBundlePath <unique>.xcresult -only-testing:<source-named selectors> test-without-building"
+  },
+  "limits": [
+    "Human learning/enjoyment unmeasured",
+    "No actual VoiceOver",
+    "No iOS17 runtime",
+    "No physical performance",
+    "No phone installation"
+  ],
+  "publicationIntegration": {
+    "source": "e292d55d8b8cb9d1c3d046da57c8b53053d7d267",
+    "main": "495d4062",
+    "runtimeIdentity": "dev.bda38dfdb6",
+    "delta": "Independent accepted Seed-only environment/15 paintings plus indexes. Lantern/tutorial rules, layout, copy and assets unchanged.",
+    "core": {
+      "passed": 272,
+      "failed": 0,
+      "skipped": 0
+    },
+    "debug": "publication-debug.log passed",
+    "release": "publication-release.log passed",
+    "hosted": {
+      "passed": 11,
+      "failed": 0,
+      "skipped": 0,
+      "log": "publication-hosted.log"
+    }
+  }
+}

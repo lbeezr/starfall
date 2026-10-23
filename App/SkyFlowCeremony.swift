@@ -17,7 +17,7 @@ enum SkyFlowScreen: Equatable {
 }
 enum SkyFlowAction: Equatable {
     case start, firstLight, fullBoardLantern, ribbonCrossing, kiteHarbor, seedMoon, silverPools, frostfruitOrchard, sunwheelMill
-    case begin, entryBack, resume, replay, another, home, preferences, worldMap, worldBack, tutorial
+    case begin, entryBack, resume, replay, another, home, preferences, worldMap, worldBack, tutorial, modePractice
     case onward(WorldLocation)
 }
 
@@ -380,6 +380,9 @@ enum SkyFlowAction: Equatable {
                     lanternModeChoices
                 }
                 flowButton(SkyCopy.text(.actionBegin), action: .begin, id: "sky.begin", primary: true)
+                if entry?.practiceChapter != nil {
+                    flowButton(SkyCopy.text(.practiceTryMode), action: .modePractice, id: "sky.practiceMode")
+                }
             case .won, .full:
                 if screen == .won {
                     flowButton(onward?.label ?? SkyCopy.text(.worldReturn),

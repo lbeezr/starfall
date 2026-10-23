@@ -1,0 +1,288 @@
+{
+  "source": "fa66a8d461869918cd1f1fe2825572efeb00508b",
+  "bundleLabel": "dev.local",
+  "environment": {
+    "xcode": "27.1 (27A9275)",
+    "runtime": "iOS27.0 (24A434)",
+    "phone": "A84C81F5-AE41-496A-97AE-E17C63E18D29 iPhone17e",
+    "tablet": "EDE6B5F3-53C9-4703-B3D8-E654BEFA22A0 iPad mini A17Pro"
+  },
+  "rawRoot": "/private/tmp/starfall-depth-02-20261023",
+  "checks": {
+    "coreIntegrated": {
+      "passed": 280,
+      "failed": 0,
+      "skipped": 0,
+      "log": "core-integrated.log"
+    },
+    "hostedIntegrated": {
+      "passed": 91,
+      "failed": 0,
+      "skipped": 0,
+      "log": "hosted-integrated.log"
+    },
+    "tabletLargestCalm": {
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "log": "tablet-corrected.log",
+      "source": "0d77ee41 + captureInputs; advice files identical after flight integration"
+    },
+    "phoneNormalIntegrated": {
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "log": "phone-integrated.log",
+      "source": "fa66a8d + listed native-test dirty input",
+      "covers": "optional reveal; Back/reopen; unchanged49cell IDs; actual square81k; Home/Continue81k; tap both Entry modes after revealing them"
+    },
+    "buildDebug": "pass build-entry-check.log",
+    "buildRelease": "pass release-integrated.log",
+    "membership": "plutil lint and native_test_plan.py dev pass (213 UI,477 hosted source methods)",
+    "localLinks": "950 targets exist",
+    "hygiene": "pass"
+  },
+  "limitations": [
+    "Human learning/enjoyment not observed",
+    "Actual VoiceOver not run",
+    "Physical-device performance and minimum-iOS17 runtime not checked",
+    "No phone installation requested/performed"
+  ],
+  "captureSource": "68a391e",
+  "captureInputs": {
+    "App/DialogueScripts/observatory-dialogue.json": "06b0b21aaffb1fcf71e54277f708ef2e809df2e0f7efb4fda7321af28c5ea87a",
+    "App/FallingSkyMenu.swift": "28654587c92b44c3e7a3ef723f97795c4f556abd4760558da9b487d97c8f318f",
+    "App/FallingSkyView.swift": "34debd75f982dbd78ad8a7668bfaef899465b748af3808eb040eba28797ddeaf",
+    "App/README.md": "6652c4faea8e34f74b549004d9284d479d9fbe78bbefce6cc31aa02ea2c5a76a",
+    "App/SkyCopy.swift": "33352a845e4a4cf29a997e82fde138bb5a7ed2d79d6155c0ad46891640b6d441",
+    "App/SkyFullBoardChoicesView.swift": "655bae0fd0df16f0b7c7f34179295b72857fcf21481aa8f7a68151b999330c97",
+    "AppTests/FullBoardChoicePresentationTests.swift": "07ac5d63eeff7575a887e64fa3335f444e21ed8ee4e8863cd850f71278c37cc6",
+    "Sources/StarfallCore/FallingSky.swift": "373a587ba90011cdcb7da95a988a79201a6e618c33a53f512f7e2daa9d6212c5",
+    "Sources/StarfallCore/FullBoardChoices.swift": "b05f06b90bbb33583ebc9a8e1ae5c339086d30cab1aa7e6c8686c42973fbe24d",
+    "Sources/StarfallCore/README.md": "a0cc9ec0ab7c1c25ed2acc8ba3762a00c2103baed61e1b5b4aa8f3a9dcd1ddab",
+    "Starfall.xcodeproj/project.pbxproj": "4a36f60d668b6b19ce989930c58dfb16e1b8b1abb498793d796dbae305671cd2",
+    "Tests/StarfallCoreTests/FullBoardChoiceTests.swift": "c404314a88b5651c6300ef2b7efeb9b7782878af7b4f4a95201b76b4b19f07be",
+    "UITests/FullBoardChoiceInteractionTests.swift": "619d95a344e1ce92709ded1f984111ee9791f58de059f68d9c5e37d53e0a7bca"
+  },
+  "captureSnapshot": "139d051e3e2f",
+  "integratedMain": "7e712f318df0086a5d4216675c5742305dc4f99c",
+  "buildAffectingDirtyInputs": {
+    "UITests/FullBoardChoiceInteractionTests.swift": "ba8e0e07fe97068d3fe0543bcd67c7a159019fd05b0a2bb3d88c3f2a0baba85a"
+  },
+  "initialFailures": [
+    {
+      "log": "hosted.log",
+      "tests": 82,
+      "failures": 1,
+      "cause": "Stale new copy assertion after pattern below\u2192this pattern; corrected exact sentence assertion."
+    },
+    {
+      "log": "tablet.log",
+      "tests": 1,
+      "failures": 1,
+      "cause": "Page/section identifiers replaced descendant identifiers. Native hierarchy reproduced; removed both container IDs."
+    },
+    {
+      "log": "phone.log",
+      "tests": 2,
+      "failures": 2,
+      "cause": "Same page/section descendant identifier defect."
+    },
+    {
+      "log": "phone-corrected.log",
+      "tests": 1,
+      "failures": 1,
+      "cause": "Advice/reopen/Continue passed. Final added Entry exists assertion did not reveal the scrolled mode controls. Replace with bounded scrolling and real taps of both modes."
+    },
+    {
+      "log": "/private/tmp/starfall-depth-choice-core-tests.log",
+      "tests": 8,
+      "failures": 1,
+      "cause": "New synthetic no-plan fixture omitted encoded grown; preserved original gem fields, final8 focused tests pass."
+    }
+  ],
+  "commands": {
+    "core": "env CLANG_MODULE_CACHE_PATH=/private/tmp/starfall-depth02-clang SWIFTPM_MODULECACHE_OVERRIDE=/private/tmp/starfall-depth02-module swift test --disable-sandbox --scratch-path /private/tmp/starfall-depth02-core",
+    "debug": "python3 scripts/simulator-command.py --receipt /private/tmp/starfall-depth-02-20261023/stages.jsonl build-entry-check 600 xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination platform=iOS\\ Simulator,id=A84C81F5-AE41-496A-97AE-E17C63E18D29 -derivedDataPath /private/tmp/starfall-depth-02-20261023/DerivedData CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES build-for-testing",
+    "release": "same bounded wrapper, Release generic/platform=iOS Simulator, ReleaseData, build; CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES",
+    "hosted": "same Debug consumer, tablet EDE6B5F3-53C9-4703-B3D8-E654BEFA22A0; -parallel-testing-enabled NO -collect-test-diagnostics never test-without-building; FullBoardChoicePresentationTests,FullBoardLanternTests,SkyDialogueTests,ModePracticeTests,SkyFlowStateTests,SkyPieceTests",
+    "nativePhone": "same Debug consumer, phone A84; test-without-building -only-testing:StarfallUITests/FullBoardChoiceInteractionTests/testOptionalAlternativesPreserveRoundAndReturnToOrdinaryPlay, normal system motion and effects",
+    "nativeTablet": "same Debug consumer, tablet EDE6; test-without-building -only-testing:StarfallUITests/FullBoardChoiceInteractionTests/testLargestTextSetupAdviceSurvivesBackgroundAndDoesNotPlayForYou, AX3XL Calm effects",
+    "hygiene": [
+      "python3 scripts/ci-hygiene.py",
+      "git diff --check",
+      "plutil -lint Starfall.xcodeproj/project.pbxproj",
+      "python3 scripts/native_test_plan.py --stage dev"
+    ]
+  },
+  "stages": [
+    {
+      "stage": "build-debug",
+      "startedUTC": "2026-10-23T16:32:19.392533+00:00",
+      "elapsedSeconds": 24.794,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "build-debug-final",
+      "startedUTC": "2026-10-23T16:33:09.001134+00:00",
+      "elapsedSeconds": 2.123,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "build-release",
+      "startedUTC": "2026-10-23T16:33:11.980380+00:00",
+      "elapsedSeconds": 21.119,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "hosted",
+      "startedUTC": "2026-10-23T16:33:30.522086+00:00",
+      "elapsedSeconds": 33.497,
+      "limitSeconds": 600.0,
+      "exitCode": 65,
+      "error": null
+    },
+    {
+      "stage": "build-hosted-copy",
+      "startedUTC": "2026-10-23T16:34:31.630585+00:00",
+      "elapsedSeconds": 4.801,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "tablet",
+      "startedUTC": "2026-10-23T16:34:00.428163+00:00",
+      "elapsedSeconds": 106.285,
+      "limitSeconds": 600.0,
+      "exitCode": 65,
+      "error": null
+    },
+    {
+      "stage": "tablet-export",
+      "startedUTC": "2026-10-23T16:35:57.943749+00:00",
+      "elapsedSeconds": 0.202,
+      "limitSeconds": 120.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "release-identifiers",
+      "startedUTC": "2026-10-23T16:36:41.448004+00:00",
+      "elapsedSeconds": 20.993,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "build-identifiers",
+      "startedUTC": "2026-10-23T16:36:37.548426+00:00",
+      "elapsedSeconds": 25.532,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "hosted-corrected",
+      "startedUTC": "2026-10-23T16:37:13.577832+00:00",
+      "elapsedSeconds": 39.107,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "phone",
+      "startedUTC": "2026-10-23T16:34:49.600839+00:00",
+      "elapsedSeconds": 199.983,
+      "limitSeconds": 600.0,
+      "exitCode": 65,
+      "error": null
+    },
+    {
+      "stage": "build-native-final",
+      "startedUTC": "2026-10-23T16:38:15.167424+00:00",
+      "elapsedSeconds": 6.519,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "tablet-corrected",
+      "startedUTC": "2026-10-23T16:38:34.999878+00:00",
+      "elapsedSeconds": 155.472,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "phone-corrected",
+      "startedUTC": "2026-10-23T16:38:31.923615+00:00",
+      "elapsedSeconds": 180.241,
+      "limitSeconds": 600.0,
+      "exitCode": 65,
+      "error": null
+    },
+    {
+      "stage": "export-tablet-corrected",
+      "startedUTC": "2026-10-23T16:41:47.704676+00:00",
+      "elapsedSeconds": 0.29,
+      "limitSeconds": 120.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "export-phone-corrected",
+      "startedUTC": "2026-10-23T16:41:48.203400+00:00",
+      "elapsedSeconds": 0.342,
+      "limitSeconds": 120.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "release-integrated",
+      "startedUTC": "2026-10-23T16:41:44.483281+00:00",
+      "elapsedSeconds": 9.354,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "build-integrated",
+      "startedUTC": "2026-10-23T16:41:41.455826+00:00",
+      "elapsedSeconds": 12.408,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "build-entry-check",
+      "startedUTC": "2026-10-23T16:43:02.742840+00:00",
+      "elapsedSeconds": 5.579,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "hosted-integrated",
+      "startedUTC": "2026-10-23T16:44:00.961811+00:00",
+      "elapsedSeconds": 63.922,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "phone-integrated",
+      "startedUTC": "2026-10-23T16:43:56.920467+00:00",
+      "elapsedSeconds": 182.555,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    }
+  ]
+}

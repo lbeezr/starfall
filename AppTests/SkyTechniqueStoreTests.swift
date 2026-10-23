@@ -777,7 +777,7 @@ final class SkyTutorialPresentationTests: XCTestCase {
 
     @MainActor func testStorySquarePromptsDiscoveryBeforeRevealingTheCoordinateHint() throws {
         XCTAssertEqual(SkyTutorial.allCases.first,.storySquare)
-        XCTAssertEqual(SkyTutorial.storySquare.nextChapter,.match)
+        XCTAssertEqual(SkyTutorial.storySquare.nextChapter,.storyRoom)
         XCTAssertEqual(SkyTutorial.storySquare.title,SkyCopy.text(.practiceStorySquareTitle))
         XCTAssertEqual(SkyTutorial.storySquare.detail,SkyCopy.text(.practiceStorySquareDetail))
         XCTAssertFalse(SkyTutorial.storySquare.showsDetailInitially)
@@ -805,7 +805,7 @@ final class SkyTutorialPresentationTests: XCTestCase {
         let retried = SkyTutorialRun(.storySquare)
         XCTAssertEqual(retried.instruction(showingHint:false),SkyCopy.text(.practiceStorySquarePrompt))
         XCTAssertFalse(retried.chapter.showsDetailInitially)
-        for chapter in SkyTutorial.allCases where chapter != .storySquare {
+        for chapter in SkyTutorial.allCases where ![.storySquare, .storyRoom, .fullBoardRefill].contains(chapter) {
             let legacy = SkyTutorialRun(chapter)
             XCTAssertTrue(chapter.showsDetailInitially,chapter.rawValue)
             XCTAssertEqual(legacy.instruction(showingHint:false),legacy.next?.instruction ?? "",chapter.rawValue)

@@ -56,6 +56,7 @@ struct SkyCeilingSnapshot: Equatable {
 /// Scenery never supplies this boundary. This passive layer shares its geometry
 /// with the stars and native cells, and owns no input, clock, animation or rule.
 struct SkyCeilingOverlay: View {
+    static let topClearance: CGFloat = 44
     let game: FallingSky
     let mapping: LandingGeometry
 
@@ -76,8 +77,8 @@ struct SkyCeilingOverlay: View {
                         .accessibilityHidden(true)
                 }
                 Color.clear
-                    .frame(width: snapshot.arena.width, height: 44)
-                    .position(x: snapshot.arena.midX, y: snapshot.arena.minY - 22)
+                    .frame(width: snapshot.arena.width, height: Self.topClearance)
+                    .position(x: snapshot.arena.midX, y: snapshot.arena.minY - Self.topClearance / 2)
                     .accessibilityElement(children: .ignore)
                     .accessibilityLabel(SkyCopy.text(snapshot.showsPressure ? .ceilingLabel : .ceilingBoardEdge))
                     .accessibilityValue(snapshot.showsPressure
