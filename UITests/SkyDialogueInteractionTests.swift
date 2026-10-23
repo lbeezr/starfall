@@ -354,6 +354,16 @@ final class SkyDialogueInteractionTests: XCTestCase {
         let message = app.staticTexts["experiment.message"]
         XCTAssertTrue(message.waitForExistence(timeout: 3))
         capture(app, "dialogue-active")
+        // Startup instructions are player-paced. Exercise expiry with a real
+        // timed result instead of assuming those instructions will disappear.
+        app.buttons["sky.dialogue.close"].tap()
+        let source = app.buttons["experiment.cell.1.2"], destination = app.buttons["experiment.cell.1.1"]
+        XCTAssertTrue(source.isHittable && destination.isHittable)
+        source.coordinate(withNormalizedOffset: .init(dx: 0.5, dy: 0.5)).press(forDuration: 0.05,
+            thenDragTo: destination.coordinate(withNormalizedOffset: .init(dx: 0.5, dy: 0.5)),
+            withVelocity: .fast, thenHoldForDuration: 0)
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label CONTAINS %@", "+15,000"),
+                                               object: message).wait(timeout: 3))
         let reopen = app.buttons["sky.dialogue.reopen"]
         XCTAssertTrue(reopen.waitForExistence(timeout: 10))
         let board = app.otherElements["experiment.board"]

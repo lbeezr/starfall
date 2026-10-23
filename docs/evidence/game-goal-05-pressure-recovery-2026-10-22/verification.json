@@ -1,0 +1,175 @@
+{
+  "base_main": "18252da8301af180fe7586f8ac989269febefa0b",
+  "integrated_source": "01c1a329a221567b5a5ee017992c9738d64fe910",
+  "build_identity": "dev.64151f9500",
+  "sha256": {
+    "App/DialogueScripts/observatory-dialogue.json": "4810371d5485bb7c75cb27062f4536564825df42193b526bf9503ec6659cc7b3",
+    "App/FallingSkyHUD.swift": "1ab1dc6db5857233d99aef0dd9816e3ab6eb7863af2a504b40bf94ff8ded45da",
+    "App/FallingSkyStore.swift": "57e05a73dfab8867a9cd0c89c788350b74f1bf03d0115f9403ffcf8a64af94e2",
+    "App/FallingSkyView.swift": "ba2bce880fc09e3178aba214aabf347026d0c19488577db08d35e6eaa5f05fb0",
+    "App/SkyCopy.swift": "ab00e088117d1c0859b9ba5d9f290ff9ea113161aa936255c13040bfa3c6d424",
+    "App/SkyDialogueBubble.swift": "ad5845947bb7e89c85cdb8c8035d1fd22e84a3c20f6701abcdb35eaff61bf34a",
+    "App/SkyDialogueLibrary.swift": "3fd406e44fe8f0f789683b553f6966842969380935c9d5d29bc1eacf36e4b0a8",
+    "AppTests/SkyDialogueTests.swift": "74c4523d670ba43c927c37f4900d24ccae2bdc02540d4bc2d3faf5a621dce456",
+    "UITests/SkyDialogueInteractionTests.swift": "11967f8c92f62cbc577dd432e755a50870ed35b5ed6026e3b7fbfaddb29b7168",
+    "UITests/SkyFlowInteractionTests.swift": "71783290c61d251cf2c6a8ac5cff5cbf8da58f96f16b76e2a3d896f31b20e7d8"
+  },
+  "core": {
+    "passed": 239,
+    "failed": 0,
+    "skipped": 0,
+    "production_Core_identical_to_initial_pass": true
+  },
+  "initial_source": "0198894",
+  "initial_build_identity": "dev.88af345dea",
+  "initial_results": {
+    "goal05-final-hosted": {
+      "result": "Passed",
+      "totalTestCount": 47,
+      "passedTests": 47,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792724857.001,
+      "finishTime": 1792724886.003,
+      "failures": []
+    },
+    "goal05-final-phone": {
+      "result": "Passed",
+      "totalTestCount": 4,
+      "passedTests": 4,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792724857.003,
+      "finishTime": 1792725026.292,
+      "failures": []
+    },
+    "goal05-final-tablet": {
+      "result": "Passed",
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792724932.537,
+      "finishTime": 1792724994.851,
+      "failures": []
+    }
+  },
+  "comparison_failures": {
+    "goal05-baseline-pressure": {
+      "result": "Failed",
+      "totalTestCount": 1,
+      "passedTests": 0,
+      "failedTests": 1,
+      "skippedTests": 0,
+      "startTime": 1792723894.284,
+      "finishTime": 1792723972.678,
+      "failures": [
+        "XCTAssertTrue failed - A full Story column must have a persistent native status"
+      ]
+    },
+    "goal05-tablet-quiet": {
+      "result": "Failed",
+      "totalTestCount": 1,
+      "passedTests": 0,
+      "failedTests": 1,
+      "skippedTests": 0,
+      "startTime": 1792724242.36,
+      "finishTime": 1792724283.802,
+      "failures": [
+        "XCTAssertTrue failed"
+      ]
+    },
+    "goal05-tablet-corrected": {
+      "result": "Failed",
+      "totalTestCount": 1,
+      "passedTests": 0,
+      "failedTests": 1,
+      "skippedTests": 0,
+      "startTime": 1792724502.759,
+      "finishTime": 1792724553.794,
+      "failures": [
+        "XCTAssertTrue failed - Revealing actions must retain the open guide"
+      ]
+    }
+  },
+  "limits": [
+    "selected development checks only",
+    "no actual VoiceOver, physical-device play, human difficulty/comprehension or sustained performance claim"
+  ],
+  "snapshot": "74fe250ee978",
+  "integrated_results": {
+    "goal05-integrated-hosted": {
+      "result": "Passed",
+      "totalTestCount": 75,
+      "passedTests": 75,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792725152.818,
+      "finishTime": 1792725183.727
+    },
+    "goal05-integrated-phone": {
+      "result": "Passed",
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792725152.878,
+      "finishTime": 1792725232.364
+    },
+    "goal05-integrated-tablet": {
+      "result": "Passed",
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792725235.391,
+      "finishTime": 1792725294.202
+    }
+  },
+  "selectors": [
+    "StarfallAppTests/SkyDialogueTests",
+    "StarfallAppTests/StarlightCelebrationTests",
+    "StarfallAppTests/SkyFlowStateTests",
+    "StarfallAppTests/NativeInputWindowTests/testRecipeCascadeShowsPopThenFallThenNextPop",
+    "StarfallAppTests/NativeInputWindowTests/testRecipeCascadeReplacementAndQuietModeDiscardRemainingCallbacks",
+    "StarfallUITests/SkyFlowInteractionTests/testFullStoryColumnShowsPressureAndCommittedRecovery",
+    "StarfallUITests/SkyFlowInteractionTests/testIdleFullStoryColumnReachesTheActualBlockedArrival",
+    "StarfallUITests/SkyFlowInteractionTests/testLargestQuietStoryPressureAndRecoveryRemainReadable",
+    "StarfallUITests/SkyDialogueInteractionTests/testActiveMessageCanBeReopenedWithoutStoppingAutomaticShowers",
+    "StarfallUITests/SkyDialogueInteractionTests/testPausedGuideStartsCollapsedAndReopensWithoutHidingManualControls"
+  ],
+  "builds": {
+    "Debug": "build-for-testing passed on integrated source",
+    "Release": "build passed on integrated source"
+  },
+  "preparation_failures": [
+    "First baseline build exit66: temporary export lacked project; corrected git archive export then built unchanged main successfully. No test executed in failed preparation."
+  ],
+  "captures": [
+    {
+      "path": "dev-0587678fcf__pressure__iphone-17e__before-full.jpg",
+      "sha256": "da94bdcd8e5d41adcf2b50f416fa0c896e040a66c421c0ec15cb868c1f25ccca",
+      "source": "daf00b93",
+      "variant": "default text normal motion"
+    },
+    {
+      "path": "dev-64151f9500__pressure__ipad-mini-a17-pro__ax3xl-recovery-end.jpg",
+      "sha256": "68f691e1586e856685a8c2b7ca4eee00fac08b8549be24e991692062ecb9084a",
+      "source": "01c1a329a221567b5a5ee017992c9738d64fe910",
+      "variant": "AX3XL Calm"
+    },
+    {
+      "path": "dev-64151f9500__pressure__iphone-17e__full.jpg",
+      "sha256": "3bca9c95b58494e36868183afef005696521753984c6a97947fb0619232e1a52",
+      "source": "01c1a329a221567b5a5ee017992c9738d64fe910",
+      "variant": "default text normal motion"
+    },
+    {
+      "path": "dev-64151f9500__pressure__iphone-17e__recovered.jpg",
+      "sha256": "810749a7d508d446a7406229451b40199b04c1e925a6561cbe20a8bad6ad3b7e",
+      "source": "01c1a329a221567b5a5ee017992c9738d64fe910",
+      "variant": "default text normal motion"
+    }
+  ],
+  "inherited_reading_inputs_identical_after_map_integration": true
+}

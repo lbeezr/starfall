@@ -184,7 +184,7 @@ struct SkyDialoguePortrait: View {
             pausedMessageDismissed = false
         }
         .task(id: timerKey) {
-            guard active, !voiceOver, session.visible, !session.hasNext,
+            guard active, pausedLine == nil, !voiceOver, session.visible, !session.hasNext,
                   let seconds = session.line?.seconds else { return }
             let ticket = session.revision
             do { try await Task.sleep(for: .seconds(seconds)) } catch { return }

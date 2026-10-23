@@ -210,6 +210,8 @@ final class SkyDialogueTests: XCTestCase {
             XCTAssertNil(result.seconds, "Current Story growth guidance remains available for player-paced reading")
             XCTAssertEqual(result.text, "Oh! A star grew. Grown stars carry twice the starlight, but each still counts as one star in a square, cross or straight line.")
             XCTAssertFalse(result.text.contains("tap match"))
+            XCTAssertNil(SkyPressureCue(game: game))
+            XCTAssertFalse(result.text.contains("room again"), "Growth alone is not a recovery clear")
         }
     }
 
@@ -387,7 +389,7 @@ final class SkyDialogueTests: XCTestCase {
 
     func testCatalogRendersEveryBundledScriptAndRejectsAuthoringErrors() throws {
         let catalog = SkyDialogueLibrary.catalog
-        let samples = ["count": "4", "score": "18", "target": "150,000", "lines": "straight lines of 4 or more", "stars": "5", "dark": "Dark star", "growth": "A star grew", "arrival": "One star arrived", "detail": "A fixture", "release": "The hole releases its stars after 3 more showers.", "feeds": "5", "swallowed": "I swallowed 3 stars.", "shape": "Square", "depth": "2", "phase": "Storm: 3 heavy showers left.", "cadence": "Showers are closer together now.", "summary": "Paused", "reason": "First Light complete!", "context": "A storm is coming"]
+        let samples = ["count": "4", "score": "18", "target": "150,000", "lines": "straight lines of 4 or more", "stars": "5", "dark": "Dark star", "growth": "A star grew", "arrival": "One star arrived", "detail": "A fixture", "release": "The hole releases its stars after 3 more showers.", "feeds": "5", "swallowed": "I swallowed 3 stars.", "shape": "Square", "depth": "2", "phase": "Storm: 3 heavy showers left.", "cadence": "Showers are closer together now.", "summary": "Paused", "reason": "First Light complete!", "context": "A storm is coming", "columns": "2", "recovery": "Column 2 has room again."]
         for source in catalog.scripts {
             let values = samples.filter { key, _ in source.lines.contains { $0.text.contains("{\(key)}") } }
             let rendered = try catalog.script(source.id, values: values)
@@ -508,6 +510,164 @@ final class SkyDialogueTests: XCTestCase {
                     }
                 }
             }
+        }
+    }
+}
+
+extension SkyDialogueTests {
+    func testFullColumnCanAcceptGrowthWithoutARecoveryClear() throws {
+        var game = FallingSky.freshSurvival(seed: 14)
+        for _ in 0..<18 { _ = try XCTUnwrap(game.letStarsFall()) }
+        let old = game
+        XCTAssertFalse(old.isOver)
+        XCTAssertEqual(SkyBoardSettling.height(old.board, column: 0), 7)
+        let turn = try XCTUnwrap(game.letStarsFall())
+        XCTAssertTrue(turn.arrivals.contains { $0.grew && $0.cell == Cell(6, 0) })
+        XCTAssertNil(turn.blockedColumn)
+        XCTAssertFalse(game.isOver, "A full column is not a guaranteed loss")
+        XCTAssertEqual(game.occupiedCount, old.occupiedCount)
+        XCTAssertEqual(SkyBoardSettling.height(game.board, column: 0), 7)
+        XCTAssertNil(SkyPressureCue(game: game), "Open Sky retains its own feedback")
+        let result = SkyDialogueLibrary.result(for: turn, from: old, to: game,
+            tracedCount: 0, recipe: nil, relayDepth: 0, techniqueResult: "")
+        XCTAssertEqual(result.id, "guide.growth.1")
+        XCTAssertFalse(result.text.contains("room again"))
+    }
+
+    func testStoryPressureTracksFullColumnsAndACommittedRecovery() throws {
+        var game = FallingSky.freshChallenge(.firstLight)
+        XCTAssertNil(SkyPressureCue(game: game))
+        for _ in 0..<4 { _ = try XCTUnwrap(game.letStarsFall()) }
+        XCTAssertEqual((0..<7).map { SkyBoardSettling.height(game.board, column: $0) }, [6, 7, 6, 6, 6, 6, 4])
+        XCTAssertEqual(SkyPressureCue(game: game)?.columns, [1])
+        XCTAssertEqual(SkyPressureCue(game: game)?.text, "Column 2 is full.")
+        XCTAssertEqual(game.displayScore, 0)
+
+        var idle = game
+        let blocked = try XCTUnwrap(idle.letStarsFall())
+        XCTAssertEqual(blocked.blockedColumn, 1)
+        XCTAssertTrue(idle.isOver)
+        XCTAssertNil(SkyPressureCue(game: idle), "Terminal copy retains ownership of an actual loss")
+
+        let old = game, forecast = game.incoming
+        let turn = try XCTUnwrap(game.nudge(from: Cell(0, 1), to: Cell(0, 2)))
+        XCTAssertEqual(turn.resolutionPhases.count, 1)
+        XCTAssertEqual(game.displayAward(for: turn), 5_000)
+        XCTAssertEqual(game.incoming, forecast)
+        XCTAssertEqual(game.turns, 4)
+        XCTAssertEqual(SkyBoardSettling.height(game.board, column: 1), 3)
+        XCTAssertNil(SkyPressureCue(game: game))
+        let result = SkyDialogueLibrary.result(for: turn, from: old, to: game,
+            tracedCount: 0, recipe: nil, relayDepth: 0, techniqueResult: "")
+        let original = SkyDialogueLibrary.line("guide.automatic-recipe", values: ["score": "5,000"])
+        XCTAssertEqual(result.id, original.id)
+        XCTAssertEqual(result.speaker, original.speaker)
+        XCTAssertEqual(result.priority, original.priority)
+        XCTAssertEqual(result.seconds, original.seconds)
+        XCTAssertEqual(result.text, original.text + " Column 2 has room again.")
+        XCTAssertTrue(result.isValid)
+
+        _ = try XCTUnwrap(game.letStarsFall())
+        XCTAssertFalse(game.isOver, "The same fifth shower fits after the committed clear")
+        XCTAssertEqual((0..<7).map { SkyBoardSettling.height(game.board, column: $0) }, [7, 4, 6, 7, 6, 7, 5])
+        XCTAssertEqual(SkyPressureCue(game: game)?.text, "Columns 1, 4, 6 are full.")
+    }
+
+    func testStoryPressureUsesAllFullColumnsAndRetainsManualRuleBoundaries() throws {
+        var ribbon = FallingSky.freshChallenge(.ribbonCrossing)
+        for _ in 0..<4 { _ = try XCTUnwrap(ribbon.letStarsFall()) }
+        XCTAssertEqual(SkyPressureCue(game: ribbon)?.columns, [0, 1, 3])
+        XCTAssertEqual(SkyPressureCue(game: ribbon)?.text, "Columns 1, 2, 4 are full.")
+        let old = ribbon
+        let turn = try XCTUnwrap(ribbon.nudge(from: Cell(1, 1), to: Cell(1, 2)))
+        XCTAssertNil(SkyPressureCue(game: ribbon))
+        XCTAssertEqual(ribbon.displayAward(for: turn), 50_000)
+        let result = SkyDialogueLibrary.result(for: turn, from: old, to: ribbon,
+            tracedCount: 0, recipe: nil, relayDepth: 0, techniqueResult: "")
+        let original = SkyDialogueLibrary.line(turn.resolutionPhases.count > 1 ? "guide.cascade" : "guide.automatic-recipe",
+            values: turn.resolutionPhases.count > 1
+                ? ["depth": String(turn.resolutionPhases.count), "score": "50,000"] : ["score": "50,000"])
+        XCTAssertEqual(result.text, original.text + " Columns 1, 2, 4 have room again.")
+        XCTAssertEqual(result.id, original.id)
+        XCTAssertEqual(result.speaker, original.speaker)
+        XCTAssertEqual(result.priority, original.priority)
+        XCTAssertEqual(result.seconds, original.seconds)
+
+        var retained = FallingSky(definition: try XCTUnwrap(StoryChallengeDefinition(.firstLight, revision: 3)))
+        for _ in 0..<4 { _ = try XCTUnwrap(retained.letStarsFall()) }
+        XCTAssertEqual(SkyPressureCue(game: retained)?.text, "Column 2 is full.")
+
+        var manual = [FallingSky.freshSurvival(seed: 5), FallingSky(challenge: .firstLight)]
+        for challenge in [StarfallChallenge.firstLight, .ribbonCrossing] {
+            for revision in 1...2 {
+                manual.append(FallingSky(definition: try XCTUnwrap(StoryChallengeDefinition(challenge, revision: revision))))
+            }
+        }
+        var witnessedFullManualColumn = false
+        for var source in manual {
+            for _ in 0..<16 where !source.isOver {
+                _ = try XCTUnwrap(source.letStarsFall())
+                witnessedFullManualColumn = witnessedFullManualColumn || (!source.isOver && (0..<7).contains {
+                    SkyBoardSettling.height(source.board, column: $0) == 7
+                })
+                XCTAssertNil(SkyPressureCue(game: source), "Manual modes keep their existing guidance")
+            }
+        }
+        XCTAssertTrue(witnessedFullManualColumn)
+    }
+
+    @MainActor func testStoryPressurePreservesAutomaticGuidanceAndRestoresWithoutRecoverySpeech() throws {
+        for quiet in [false, true] {
+            let suite = "Starfall.StoryPressure.\(UUID())"
+            let defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
+            defer { defaults.removePersistentDomain(forName: suite) }
+            let presenter = FallingSkyRecorder(), feedback = SkyFeedbackRecorder(), clock = ManualRainClock()
+            presenter.reduceMotion = quiet
+            let store = FallingSkyStore(defaults: defaults, arguments: [], presenter: presenter,
+                clock: clock, feedback: feedback)
+            store.startChallenge(.firstLight)
+            store.setSuspended(false)
+            store.togglePause()
+            let instructions = store.dialogue.line
+            feedback.announcements.removeAll()
+            for _ in 0..<4 { clock.advance(store.showerInterval); presenter.finish() }
+            XCTAssertEqual(store.game.turns, 4)
+            XCTAssertEqual(store.pressureCue?.text, "Column 2 is full.")
+            XCTAssertEqual(store.dialogue.line, instructions, "Pressure never displaces the player-paced objective and action")
+            XCTAssertTrue(feedback.announcements.isEmpty)
+            let full = store.game
+            store.setSuspended(true)
+            clock.advance(30)
+            XCTAssertEqual(store.game, full)
+            XCTAssertEqual(store.pressureCue?.columns, [1])
+
+            let restoredClock = ManualRainClock()
+            let restored = FallingSkyStore(defaults: defaults, arguments: [],
+                presenter: FallingSkyRecorder(), clock: restoredClock, feedback: SkyFeedbackRecorder())
+            restored.setSuspended(false)
+            XCTAssertEqual(restored.game, full)
+            XCTAssertEqual(restored.pressureCue?.text, "Column 2 is full.")
+            XCTAssertTrue(restored.isPaused)
+            XCTAssertNil(restoredClock.deadline)
+            XCTAssertEqual(restored.guideLine.id, "guide.restore.1")
+            XCTAssertFalse(restored.guideLine.text.contains("room again"))
+            restored.setSuspended(true)
+
+            store.setSuspended(false)
+            XCTAssertTrue(store.performTechnique(.nudge(Cell(0, 1), Cell(0, 2)),
+                snapshot: store.game, generation: store.constellationInputGeneration))
+            XCTAssertEqual(store.game.displayScore, 5_000)
+            XCTAssertNil(store.pressureCue)
+            XCTAssertTrue(store.guideLine.text.hasSuffix("Column 2 has room again."))
+            XCTAssertEqual(feedback.announcements.last, store.guideLine.spokenText)
+            let saved = try XCTUnwrap(defaults.data(forKey: SkySaveArchive.key))
+            XCTAssertEqual(try SkySaveArchive.decode(saved), store.game, "The recovered board commits before presentation finishes")
+            let announcements = feedback.announcements, revision = store.dialogue.revision
+            presenter.finish(); presenter.finish()
+            XCTAssertEqual(store.celebration?.displayAward, 5_000)
+            XCTAssertEqual(feedback.announcements, announcements)
+            XCTAssertEqual(store.dialogue.revision, revision)
+            store.setSuspended(true)
         }
     }
 }

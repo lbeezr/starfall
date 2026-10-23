@@ -494,6 +494,8 @@ All touched runtime owners remain below 900 lines after integration. `UITests/Fa
 
 The mini landscape regression exposed a second coordinate-boundary error: compact layout selection used safe-area height while rendering used the full canvas. Source `08af480` classifies the full height and keeps the 744-point mini in its centered layout. The exact native five-world/orientation regression passes; compact phones and accessibility sizes retain an explicit scrolling canvas. Recheck this invariant when changing safe-area handling.
 
+**October 22 — pressure status boundary:** Goal 5 adds only a computed `pressureCue` to the roughly 1,079-line Store; the value/copy remain in HUD/dialogue owners. Keep its existing lifecycle intact in this presentation slice. The next Store clock/input/publication ownership change should extract a cohesive capability separately and rerun lifecycle/membership checks. No save, rule or scheduler state is added.
+
 ## Protected award readability — October 18, 2026
 
 [Board clarity](evidence/board-clarity-2026-10-18/README.md) corrects the central-lettering survivor overlap recorded above. Every award category uses one projected region outside playable rows, including its motion/glow; compact decorative lettering falls back to readable native type. The regression examines all cells and four canvas sizes; current normal-motion crowded captures cover default/maximum text. Trails and clear particles remain unchanged. Trigger: the next physical fast-play review or any new distraction report. Check repeated dense clears, small-phone recognition and real device frame pacing; screenshots and Store admission do not establish comfort. Full actual VoiceOver remains the RC gate.
