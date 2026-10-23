@@ -1,5 +1,7 @@
 # Starfall
 
+**Visual cohesion — October 23:** The [Lantern benchmark](docs/evidence/cohesion-goal-01-benchmark-2026-10-23/README.md) gives dialogue shallow enamel depth and a restrained warm rim while preserving reading space and controls. It starts the [new ten-goal cohesion queue](https://github.com/lbeezr/starfall/issues/281), with one verified merge per goal; later goals remain pending.
+
 **Ten-goal experience review — October 23:** The [stacked development review](docs/evidence/game-goal-10-coherent-game-2026-10-23/README.md) links the individual merges for clearer first play, movement/setup feedback, pressure/recovery, earned onward travel, Ribbon identity and safe returning. Help now matches the actual Story-first Tutorial; four-mode and largest-text journeys preserve exact rounds. Human enjoyment and learning remain for hands-on play.
 
 **Ribbon’s next chapter — October 23:** Entry, startup and same-round Replay explain closer showers and planning falling survivors. [Native choices and complete-round review](docs/evidence/game-goal-07-ribbon-identity-2026-10-23/README.md) preserve the existing authored rules and distinguish reachability from human difficulty.
