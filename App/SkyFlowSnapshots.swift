@@ -5,9 +5,12 @@ extension SkyEntryRequest {
     func introduction(challenge: StarfallChallenge?, replayingRevision: Int = 0, replayingTarget: Int? = nil) -> SkyDialogueLine {
         let mode = challenge?.dialoguePrefix ?? "observatory"
         let fresh = challenge.map { FallingSky.freshChallenge($0) }
-        let revision = self == .replay ? replayingRevision : fresh?.challengeRevision ?? 0
-        let story = revision > 0 && (challenge == .firstLight || challenge == .ribbonCrossing)
-        let variant = story ? (revision >= 3 ? ".patterns" : revision == 2 ? ".cascade" : ".story") : ""
+        let selectedRules = self == .replay
+            ? challenge.flatMap { StoryChallengeDefinition($0, revision: replayingRevision) }.map { FallingSky(definition: $0) }
+            : fresh
+        let story = (selectedRules?.challengeRevision ?? 0) > 0
+        let variant = story ? (selectedRules?.supportsManualClears == false ? ".patterns"
+            : selectedRules?.supportsAutomaticRecipes == true ? ".cascade" : ".story") : ""
         let id = mode + variant + (self == .replay ? ".replay" : ".entry")
         let target = self == .replay ? replayingTarget : fresh?.displayTarget
         precondition(!story || target != nil, "A story replay needs its retained objective")

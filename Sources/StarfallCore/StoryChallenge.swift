@@ -7,13 +7,24 @@ public struct StoryChallengeDefinition: Sendable {
     public static let currentRevision = 4
 
     public init?(_ challenge: StarfallChallenge, revision: Int = currentRevision) {
-        guard (1...Self.currentRevision).contains(revision),
-              challenge == .firstLight || challenge == .ribbonCrossing else { return nil }
+        guard (1...Self.currentRevision).contains(revision) else { return nil }
+        switch challenge {
+        case .firstLight, .ribbonCrossing: break
+        case .kiteHarbor:
+            guard revision == 4 else { return nil }
+        default: return nil
+        }
         self.challenge = challenge
         self.revision = revision
     }
 
-    var seed: UInt64 { challenge == .firstLight ? 42 : 4_202 }
+    var seed: UInt64 {
+        switch challenge {
+        case .firstLight, .kiteHarbor: return 42
+        case .ribbonCrossing: return 4_202
+        default: preconditionFailure("Unsupported authored challenge")
+        }
+    }
     var automaticLineLength: Int? {
         switch revision {
         case 3: return 7
@@ -21,9 +32,20 @@ public struct StoryChallengeDefinition: Sendable {
         default: return nil
         }
     }
-    var target: Int { challenge == .firstLight ? 150_000 : 220_000 }
+    var target: Int {
+        switch challenge {
+        case .firstLight: return 150_000
+        case .ribbonCrossing: return 220_000
+        case .kiteHarbor: return 17_000
+        default: preconditionFailure("Unsupported authored challenge")
+        }
+    }
     var balance: StarfallBalance {
-        .init(pace: challenge == .firstLight ? .gentle : .steady, darkStars: .none)
+        switch challenge {
+        case .firstLight, .kiteHarbor: return .init(pace: .gentle, darkStars: .none)
+        case .ribbonCrossing: return .init(pace: .steady, darkStars: .none)
+        default: preconditionFailure("Unsupported authored challenge")
+        }
     }
     var palette: [Jewel] {
         if revision == 1 { return [.rose, .aqua, .amber, .violet, .mint] }
@@ -32,7 +54,11 @@ public struct StoryChallengeDefinition: Sendable {
     }
     var initialBoard: [StarfallGem?] {
         let rows: [String]
-        if revision == 1 {
+        if challenge == .kiteHarbor {
+            // Choose high-column room or a larger low clear. Both choices keep
+            // the same supply and can recover the remaining crowded column.
+            rows = ["AVAARAA", "ARMYAMY", "RAVR...", "AM.....", "MY.....", "VR....."]
+        } else if revision == 1 {
             // Retain the original explicit-clear openings and all of their identities.
             rows = challenge == .firstLight ? ["AAA.RRR", "AA....."] : ["ARAAA..", "RAR...."]
         } else if revision == 2 {

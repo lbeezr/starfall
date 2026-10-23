@@ -38,7 +38,7 @@ extension FallingSky {
 
     var challengeGuideLine: SkyDialogueLine? {
         guard let challenge else { return nil }
-        let story = challengeRevision > 0 && (challenge == .firstLight || challenge == .ribbonCrossing)
+        let story = StoryChallengeDefinition(challenge, revision: challengeRevision) != nil
         let variant = !supportsManualClears ? ".patterns" : supportsAutomaticRecipes ? ".cascade" : story ? ".story" : ""
         var values = story ? ["target": SkyCopy.score(displayTarget ?? 0)] : [:]
         values.merge(automaticPatternValues) { _, new in new }
@@ -48,14 +48,22 @@ extension FallingSky {
     var challengeHelpText: String? {
         guard let challenge else { return nil }
         if !supportsManualClears {
-            return SkyCopy.text(challenge == .firstLight ? .helpPatternsChallenge : .helpPatternsRibbon,
+            let key: SkyCopy.Key
+            switch challenge {
+            case .firstLight: key = .helpPatternsChallenge
+            case .ribbonCrossing: key = .helpPatternsRibbon
+            case .kiteHarbor: key = .helpPatternsKite
+            case .seedMoon, .silverPools, .frostfruitOrchard, .sunwheelMill:
+                preconditionFailure("Missing automatic-pattern help for this challenge")
+            }
+            return SkyCopy.text(key,
                                 values: automaticPatternValues.merging(["target": SkyCopy.score(displayTarget ?? 0)]) { _, new in new })
         }
         if supportsAutomaticRecipes {
             return SkyCopy.text(challenge == .firstLight ? .helpCascadeChallenge : .helpCascadeRibbon,
                                 values: ["target": SkyCopy.score(displayTarget ?? 0)])
         }
-        if challengeRevision > 0, challenge == .firstLight || challenge == .ribbonCrossing {
+        if StoryChallengeDefinition(challenge, revision: challengeRevision) != nil {
             return SkyCopy.text(challenge == .firstLight ? .helpStoryChallenge : .helpStoryRibbon,
                                 values: ["target": SkyCopy.score(displayTarget ?? 0)])
         }

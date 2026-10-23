@@ -154,6 +154,7 @@ enum SkyCopy {
         case helpPatternsRecipe = "help.patternsRecipe"
         case helpPatternsChallenge = "help.patternsChallenge"
         case helpPatternsRibbon = "help.patternsRibbon"
+        case helpPatternsKite = "help.patternsKite"
         case helpPracticeModes = "help.practiceModes"
         case a11yPatternsBoardSummary = "a11y.patternsBoardSummary"
         case a11yPatternsHint = "a11y.patternsHint"

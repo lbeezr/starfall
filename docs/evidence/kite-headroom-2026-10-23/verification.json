@@ -1,0 +1,385 @@
+{
+  "status": "Prepared feature; earlier selected native passes retained; later automatic-clock repeat unresolved; no merge acceptance yet",
+  "issue": "https://github.com/lbeezr/starfall/issues/278",
+  "date_utc": "2026-10-23",
+  "source": {
+    "base": "c496576bde4e89c1f20370054d3c96bfa2f90886",
+    "computed_input_fingerprint": "dev.ac2d935006",
+    "actual_tested_bundle_StarfallBuildID": "dev.local",
+    "identity_note": "dev.ac2d935006 identifies computed app input content, not a clean commit or installed bundle stamp. Native-only test changes do not change this app fingerprint.",
+    "original_build_dirty_paths": [
+      "App/DialogueScripts/observatory-dialogue.json",
+      "App/RestorationPresentation.swift",
+      "App/SkyCopy.swift",
+      "App/SkyFlowSnapshots.swift",
+      "AppTests/SkyDialogueTests.swift",
+      "AppTests/SkyFlowStateTests.swift",
+      "AppTests/SkySaveArchiveTests.swift",
+      "AppTests/StoryPatternPlan.swift",
+      "Sources/StarfallCore/StoryChallenge.swift",
+      "Tests/StarfallCoreTests/StoryCascadeTests.swift",
+      "Tests/StarfallCoreTests/StoryPatternTests.swift",
+      "UITests/KiteHarborInteractionTests.swift",
+      "docs/README.md",
+      "docs/ROADMAP.md",
+      "Tests/StarfallCoreTests/KiteEncounterTests.swift"
+    ],
+    "original_build_sha256": {
+      "App/DialogueScripts/observatory-dialogue.json": "72d48054c9ef563d39977a9d4141f08d590230b8e740a4e31dbece8506024a00",
+      "App/RestorationPresentation.swift": "80e28a4822b4a151c950b158eaef8c0a517b4619bc429ae32753d52c4f4314a7",
+      "App/SkyCopy.swift": "7f00e70f1ee22238636867be4bc7d62ad9639a75593a9fc7f2f8fcdae26bd17d",
+      "App/SkyFlowSnapshots.swift": "293735bd5d606f279771d231f3001b95d467e48b71e2e9344938d72bdb2d97b7",
+      "AppTests/SkyDialogueTests.swift": "6969e8f171b65c2acb16d102375ced7faeacaec29044ed073affa1a013e8a028",
+      "AppTests/SkyFlowStateTests.swift": "900eecdf466fabc460372054019c6872a305782cd2df192231df656b3434fd8e",
+      "AppTests/SkySaveArchiveTests.swift": "0f42e8c95e345bc2748b30b46b01c3e0de8334ac9e9b628ff399dce86fdeec12",
+      "AppTests/StoryPatternPlan.swift": "d9c686bc32e4a254c58b5bda3baed97f8fe73df6c4cd88518b70892c269a4d96",
+      "Sources/StarfallCore/StoryChallenge.swift": "e6df0502d5edbcf8144d0297fd653b124b5b4a9e70a1a8f1e876a4a7273dca51",
+      "Tests/StarfallCoreTests/StoryCascadeTests.swift": "c18195a83120261ed9d8c26d0e7706b0d3726c582fc8cea38281095be9a0116d",
+      "Tests/StarfallCoreTests/StoryPatternTests.swift": "3d7fa7376fd065f19e6578c69106b35fbeb47bdd82dcf983034b71ba0e6a5d35",
+      "UITests/KiteHarborInteractionTests.swift": "5478003154604208eaf78f569a2486de9f41c0d39fb78486cfaa0f1353866e60",
+      "docs/README.md": "875df7263dac61aa34021e1169997759d3bfa32f247b012603853c0c23136f1a",
+      "docs/ROADMAP.md": "55fc117b5432aeb4db09608dab63329d57b4c03f828c7ea2d6ed100cfa4bf083",
+      "Tests/StarfallCoreTests/KiteEncounterTests.swift": "5fb887e7398d09fdf4c0e0e9bd3cc6747ad0f34b4c63a7216ccb49af5e662f64"
+    },
+    "native_revision_2": {
+      "sha256": "bba7460a69baab30a5e29f5bf5d016bfdd198a898bc1795951ad82d669c05d48",
+      "reason": "Add actual-clock/two-repair scenario and follow selected-map onward route before Entry."
+    },
+    "scope": "Original production inputs and affected hosted/Core inputs still match recorded hashes. Later native changes add/correct actual-clock route and repair iPad Settings helper; docs/index updates are not app changes.",
+    "shared_settings_helper": {
+      "path": "UITests/FallingSkyInteractionTests.swift",
+      "ipad_pass_sha256": "1f403771bac910e64088e7f222040cebfbf9045fb5339acdfc4d638d0d0a1935",
+      "current_conditional_helper_sha256": "d52f173c8a70eeb933268c0923455204ce45b2f346cbd54f10723668ec9e1cbe",
+      "provenance": "Initial iPad AX activation left General selected. Stable Accessibility identifier + row-center coordinate + bounded Motion pane wait passed on iPad. Universal coordinate failed on phone before game. Conditional repair uses coordinate only for actual iPad Settings sidebar collection, otherwise native button.tap; subsequent phone reached game but shower expectation failed.",
+      "app_production_bytes_changed": false
+    },
+    "final_native_sha256": {
+      "UITests/KiteHarborInteractionTests.swift": "1a205a9b52235e9f78462aa70cfb725b9de6e374db812c9d60f93d123d44b553",
+      "UITests/FallingSkyInteractionTests.swift": "d52f173c8a70eeb933268c0923455204ce45b2f346cbd54f10723668ec9e1cbe"
+    }
+  },
+  "environment": {
+    "host": "macOS27.0.1 arm64",
+    "toolchain": "Xcode27 (27A9275), iPhoneSimulator SDK27.1 (24A94232)",
+    "phone": {
+      "model": "iPhone17e",
+      "udid": "64231AFE-4CDB-4B5A-B6D5-70CD7CEED324",
+      "os": "iOS27.0 (24A434)"
+    },
+    "tablet": {
+      "model": "iPad Pro11-inch M5",
+      "udid": "255E141F-D4D6-45DA-89FF-51436BF1BBA7",
+      "os": "iOS27.0 Simulator",
+      "status": "selected AX3XL quiet test passed on recorded helper source"
+    }
+  },
+  "temporary_evidence_root": "/private/tmp/starfall-next-encounters-20261023",
+  "checks": [
+    {
+      "name": "Core",
+      "result": "passed",
+      "tests": 249,
+      "failed": 0,
+      "log": "full-core.log",
+      "stage": {
+        "stage": "full-core",
+        "startedUTC": "2026-10-23T12:04:50.257678+00:00",
+        "elapsedSeconds": 45.42,
+        "limitSeconds": 300.0,
+        "exitCode": 0,
+        "error": null
+      },
+      "command": "swift test; exact option argv not printed in retained Core log"
+    },
+    {
+      "name": "Debug arm64 build-for-testing",
+      "result": "passed",
+      "log": "debug-arm64-build.log",
+      "stage": {
+        "stage": "debug-arm64-build",
+        "startedUTC": "2026-10-23T12:06:04.833646+00:00",
+        "elapsedSeconds": 34.684,
+        "limitSeconds": 600.0,
+        "exitCode": 0,
+        "error": null
+      },
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -sdk iphonesimulator -destination id=64231AFE-4CDB-4B5A-B6D5-70CD7CEED324 -derivedDataPath /private/tmp/starfall-next-encounters-20261023/Debug -jobs 2 -parallel-testing-enabled NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGNING_ALLOWED=NO build-for-testing"
+    },
+    {
+      "name": "Release arm64 build",
+      "result": "passed",
+      "log": "release-build.log",
+      "stage": {
+        "stage": "release-arm64-build",
+        "startedUTC": "2026-10-23T12:07:22.957998+00:00",
+        "elapsedSeconds": 34.483,
+        "limitSeconds": 600.0,
+        "exitCode": 0,
+        "error": null
+      },
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Release -sdk iphonesimulator -destination \"generic/platform=iOS Simulator\" -derivedDataPath /private/tmp/starfall-next-encounters-20261023/Release -jobs 2 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGNING_ALLOWED=NO build"
+    },
+    {
+      "name": "Affected hosted",
+      "summary": {
+        "result": "Passed",
+        "totalTestCount": 103,
+        "passedTests": 103,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "expectedFailures": 0
+      },
+      "stage": {
+        "stage": "hosted-kite",
+        "startedUTC": "2026-10-23T12:07:07.566127+00:00",
+        "elapsedSeconds": 12.026,
+        "limitSeconds": 300.0,
+        "exitCode": 0,
+        "error": null
+      },
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination id=64231AFE-4CDB-4B5A-B6D5-70CD7CEED324 -derivedDataPath /private/tmp/starfall-next-encounters-20261023/Debug -resultBundlePath /private/tmp/starfall-next-encounters-20261023/hosted-kite.xcresult -parallel-testing-enabled NO -collect-test-diagnostics never \"-only-testing:StarfallAppTests/SkyDialogueTests\" \"-only-testing:StarfallAppTests/SkyFlowStateTests\" \"-only-testing:StarfallAppTests/SkySaveArchiveTests\" \"-only-testing:StarfallAppTests/WorldJourneyTests\" ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGNING_ALLOWED=NO test-without-building",
+      "selection": [
+        "SkyDialogueTests",
+        "SkyFlowStateTests",
+        "SkySaveArchiveTests",
+        "WorldJourneyTests"
+      ]
+    },
+    {
+      "name": "Phone branch/history/Begin boundary",
+      "summary": {
+        "result": "Passed",
+        "totalTestCount": 3,
+        "passedTests": 3,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "expectedFailures": 0
+      },
+      "stage": {
+        "stage": "native-phone",
+        "startedUTC": "2026-10-23T12:08:03.795608+00:00",
+        "elapsedSeconds": 431.197,
+        "limitSeconds": 900.0,
+        "exitCode": 0,
+        "error": null
+      },
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination id=64231AFE-4CDB-4B5A-B6D5-70CD7CEED324 -derivedDataPath /private/tmp/starfall-next-encounters-20261023/Debug -resultBundlePath /private/tmp/starfall-next-encounters-20261023/native-phone.xcresult -parallel-testing-enabled NO -collect-test-diagnostics never \"-only-testing:StarfallUITests/KiteHarborInteractionTests/testCurrentKiteChoicesFinishRestoreReplayAndOverflow\" \"-only-testing:StarfallUITests/KiteHarborInteractionTests/testKiteWinningClearPersistsNamedResultAndReplayStartsAtZero\" \"-only-testing:StarfallUITests/KiteHarborInteractionTests/testKitePreviewCancellationRetainsBothExistingLocationsUntilBegin\" ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGNING_ALLOWED=NO test-without-building",
+      "test_input": "original Kite native SHA5478003154604208eaf78f569a2486de9f41c0d39fb78486cfaa0f1353866e60"
+    },
+    {
+      "name": "Corrected actual-clock earned-unlock",
+      "summary": {
+        "result": "Passed",
+        "totalTestCount": 1,
+        "passedTests": 1,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "expectedFailures": 0
+      },
+      "stage": {
+        "stage": "native-automatic-corrected",
+        "startedUTC": "2026-10-23T12:19:57.165072+00:00",
+        "elapsedSeconds": 92.313,
+        "limitSeconds": 240.0,
+        "exitCode": 0,
+        "error": null
+      },
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination id=64231AFE-4CDB-4B5A-B6D5-70CD7CEED324 -derivedDataPath /private/tmp/starfall-next-encounters-20261023/Debug -resultBundlePath /private/tmp/starfall-next-encounters-20261023/native-automatic-corrected.xcresult -parallel-testing-enabled NO -collect-test-diagnostics never \"-only-testing:StarfallUITests/KiteHarborInteractionTests/testCurrentKiteAutomaticShowerAllowsPointsFirstRecovery\" ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGNING_ALLOWED=NO test-without-building",
+      "test_input": "corrected Kite native SHAbba7460a69baab30a5e29f5bf5d016bfdd198a898bc1795951ad82d669c05d48",
+      "scope": "Real first automatic shower then six ordinary recovery swipes;18,000 immediate win; Seed locked before win and ready afterward through selected map then explicit world.visit."
+    },
+    {
+      "name": "Tablet largest-text quiet/help/onward",
+      "result": "passed",
+      "prior_attempt": "native-tablet.xcresult failed in system Settings before game launch",
+      "helper_build": {
+        "stage": "settings-helper-build",
+        "startedUTC": "2026-10-23T12:31:44.770421+00:00",
+        "elapsedSeconds": 35.651,
+        "limitSeconds": 240.0,
+        "exitCode": 0,
+        "error": null
+      },
+      "prior_command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination id=255E141F-D4D6-45DA-89FF-51436BF1BBA7 -derivedDataPath /private/tmp/starfall-next-encounters-20261023/Debug -resultBundlePath /private/tmp/starfall-next-encounters-20261023/native-tablet.xcresult -parallel-testing-enabled NO -collect-test-diagnostics never \"-only-testing:StarfallUITests/KiteHarborInteractionTests/testCurrentKiteLargestQuietHelpAndEarnedOnward\" ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGNING_ALLOWED=NO test-without-building",
+      "summary": {
+        "result": "Passed",
+        "totalTestCount": 1,
+        "passedTests": 1,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "expectedFailures": 0
+      },
+      "stage": {
+        "stage": "native-tablet-settings-repair",
+        "startedUTC": "2026-10-23T12:32:40.258617+00:00",
+        "elapsedSeconds": 296.515,
+        "limitSeconds": 420.0,
+        "exitCode": 0,
+        "error": null
+      },
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -sdk iphonesimulator -destination id=255E141F-D4D6-45DA-89FF-51436BF1BBA7 -derivedDataPath /private/tmp/starfall-next-encounters-20261023/Debug -resultBundlePath /private/tmp/starfall-next-encounters-20261023/native-tablet-settings-repair.xcresult -parallel-testing-enabled NO -collect-test-diagnostics never \"-only-testing:StarfallUITests/KiteHarborInteractionTests/testCurrentKiteLargestQuietHelpAndEarnedOnward\" ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGNING_ALLOWED=NO test-without-building",
+      "method_seconds": 239.611,
+      "scope": "Real points-first finish at AX3XL quiet; selected Entry/Help assertions, result/onward reachability and Seed Entry. Help screenshot shows top only, not offscreen Kite paragraph.",
+      "helper_sha256": "1f403771bac910e64088e7f222040cebfbf9045fb5339acdfc4d638d0d0a1935"
+    },
+    {
+      "name": "Final phone automatic-clock regression after shared helper repair",
+      "result": "unresolved",
+      "latest_completed_attempt": "native-phone-single-pane",
+      "stage": {
+        "stage": "native-phone-single-pane",
+        "startedUTC": "2026-10-23T12:40:54.803149+00:00",
+        "elapsedSeconds": 98.383,
+        "limitSeconds": 260.0,
+        "exitCode": 65,
+        "error": null
+      },
+      "method_seconds": 90.253,
+      "failure": "Ordinary automatic shower must arrive without Next; reached game, failed first-shower expectation. Cause not established. Root investigating."
+    },
+    {
+      "name": "Direct largest-text Kite Help reading",
+      "result": "passed manual native inspection",
+      "device": "255E141F-D4D6-45DA-89FF-51436BF1BBA7",
+      "tool": "XcodeBuildMCP native launch/snapshot/tap/swipe; simctl original-resolution screenshots",
+      "date_utc": "2026-10-23",
+      "route": "Retained terminal Kite4 \u2192 Replay Entry \u2192 Settings \u2192 Help \u2192 bounded native scrolling \u2192 Done \u2192 identical Replay Entry/17,000 prose; Begin not invoked",
+      "captures": [
+        "tablet-help-direct-start.png",
+        "tablet-help-direct-middle.png",
+        "tablet-help-direct-end.png"
+      ],
+      "limits": "Not XCTest; inspected overlapping viewports establish complete visible location explanation and reachable Done, not motion, learning or a clock pass"
+    },
+    {
+      "name": "Later tablet Help XCTest extension",
+      "result": "interrupted; no pass claimed",
+      "log": "native-tablet-help-reading.log",
+      "receipt": "interruption.json",
+      "observation": "Native calls stalled for over40seconds; last retained game later showed0of17,000 Roundover before test could pause; user turn interruption orphaned xcodebuild47197, root terminated only that verified owned group"
+    },
+    {
+      "name": "Direct phone automation alternative",
+      "result": "blocked",
+      "tool": "XcodeBuildMCP snapshot_ui after owned-phone launch",
+      "observation": "Timed out creating simulator remote automation session; no repeated probes; stopped app and shut down owned phone"
+    }
+  ],
+  "failures_and_corrections": [
+    {
+      "stage": "debug-build",
+      "result": "failed exit65",
+      "elapsed_seconds": 10.902,
+      "classification": "Initial architecture invocation compiled app x86_64 against an arm64-only StarfallCore module. Explicit ARCHS=arm64 ONLY_ACTIVE_ARCH=YES corrected invocation; no game source fix.",
+      "log": "debug-build.log"
+    },
+    {
+      "stage": "native-automatic",
+      "summary": {
+        "result": "Failed",
+        "totalTestCount": 1,
+        "passedTests": 0,
+        "failedTests": 1,
+        "skippedTests": 0,
+        "expectedFailures": 0
+      },
+      "classification": "New test incorrectly expected onward to open Entry directly; actual selected-map route requires world.visit. Failure at sky.begin expectation came after recovery/result, not an app recovery failure. Test corrected to assert selected Seed map/status then visit.",
+      "log": "native-automatic.log"
+    },
+    {
+      "stage": "native-tablet",
+      "result": "one selected test failed; two assertions; exit65",
+      "classification": "AX button activation left General selected before game launch. Shared helper stable Accessibility identifier + visible row-center coordinate + bounded Motion-hittable pane assertion fixed iPad navigation. Helper build35.651s; repaired iPad passed1/0fail/0skip,239.611method/296.515wrapper seconds. No app production change.",
+      "log": "native-tablet.log"
+    },
+    {
+      "stage": "native-phone-helper-regression",
+      "result": "failed before game",
+      "stage_receipt": {
+        "stage": "native-phone-helper-regression",
+        "startedUTC": "2026-10-23T12:38:57.593509+00:00",
+        "elapsedSeconds": 29.33,
+        "limitSeconds": 260.0,
+        "exitCode": 65,
+        "error": null
+      },
+      "method_seconds": 14.441,
+      "classification": "Universal Settings coordinate tap left phone on Settings list; Accessibility/Motion pane not reached. Corrected to use coordinate only when the actual iPad sidebar collection exists; preserve native button.tap on phone.",
+      "log": "native-phone-helper-regression.log"
+    },
+    {
+      "stage": "native-phone-single-pane",
+      "result": "failed after reaching game",
+      "stage_receipt": {
+        "stage": "native-phone-single-pane",
+        "startedUTC": "2026-10-23T12:40:54.803149+00:00",
+        "elapsedSeconds": 98.383,
+        "limitSeconds": 260.0,
+        "exitCode": 65,
+        "error": null
+      },
+      "method_seconds": 90.253,
+      "classification": "Conditional Settings repair reached Starfall, but automatic shower expectation failed at KiteHarborInteractionTests.swift:444. App versus test timing cause is unestablished; root owns investigation.",
+      "log": "native-phone-single-pane.log"
+    }
+  ],
+  "catalogue_source_sha256": "72d48054c9ef563d39977a9d4141f08d590230b8e740a4e31dbece8506024a00",
+  "bundles": {
+    "Debug": {
+      "StarfallBuildID": "dev.local",
+      "catalogue_sha256": "72d48054c9ef563d39977a9d4141f08d590230b8e740a4e31dbece8506024a00",
+      "matches_source_catalogue": true,
+      "executable_sha256_at_evidence_inspection": "74d7efc6d750a97cd0fcc71792ebac7a4790b98f550d7f4af9415ab603bfa0a7"
+    },
+    "Release": {
+      "StarfallBuildID": "dev.local",
+      "catalogue_sha256": "72d48054c9ef563d39977a9d4141f08d590230b8e740a4e31dbece8506024a00",
+      "matches_source_catalogue": true,
+      "executable_sha256_at_evidence_inspection": "d46ce0833661e92bd9a96c7665241e83c74d2ec3458b90cef52f66f55ee11510"
+    }
+  },
+  "native_inventory": {
+    "original": "StarfallUITests202; StarfallAppTests446",
+    "after_added_automatic_test": "StarfallUITests203; StarfallAppTests446",
+    "note": "Inventory validation only; these are not executed test counts."
+  },
+  "capture_validation": {
+    "count": 6,
+    "all_original_and_final_hashes_verified": true,
+    "same_dimensions_by_device": {
+      "phone": [
+        1170,
+        2532
+      ],
+      "tablet": [
+        1668,
+        2420
+      ]
+    },
+    "writer_modified_existing_media": false,
+    "writer_created_tablet_jpegs": 2
+  },
+  "not_claimed": [
+    "Final phone automatic-clock regression against changed shared helper; latest completed attempt failed shower expectation, root investigating.",
+    "Uncoached human recognition, enjoyment, difficulty or comfortable recovery timing.",
+    "Physical-device testing or canonical phone installation.",
+    "Actual VoiceOver or complete RC acceptance.",
+    "Full hosted/native matrix; selected tests only.",
+    "Published clean-commit acceptance; this is an identified dirty-source development build.",
+    "Full visual read-through of offscreen AX3XL Help; captured top only."
+  ],
+  "documentation_checks": {
+    "local_link_targets": 917,
+    "missing": 0,
+    "hygiene": "passed before staging; repeat after explicit staging",
+    "diff_check": "passed; repeat before commit"
+  },
+  "host_capacity_observation": {
+    "booted_simulators": 18,
+    "factory_owned_booted": 1,
+    "time_utc": "2026-10-23T12:50Z",
+    "source": "booted-device-observation.json plus ps scoped load observation",
+    "limits": "Contention observed; does not by itself prove a clock implementation cause. Unrelated simulators/processes not stopped. Both owned simulators shut down after direct checks."
+  },
+  "next_action": "Resolve the final actual-clock observation using current source after native host capacity changes; retain strict assertions, freeze prepared Seed/Silver until Kite native acceptance and merge. Do not attribute the failed repeat to game code or host load without sufficient evidence."
+}

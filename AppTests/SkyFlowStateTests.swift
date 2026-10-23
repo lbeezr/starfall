@@ -492,7 +492,7 @@ final class SkyFlowStateTests: XCTestCase {
             journey.record(win)
         }
         let targets: [(StarfallChallenge, Int)] = [
-            (.firstLight, 150_000), (.ribbonCrossing, 220_000), (.kiteHarbor, 18),
+            (.firstLight, 150_000), (.ribbonCrossing, 220_000), (.kiteHarbor, 17_000),
             (.seedMoon, 18), (.silverPools, 18), (.frostfruitOrchard, 18), (.sunwheelMill, 18)
         ]
         for (challenge, target) in targets {
@@ -560,6 +560,81 @@ final class SkyFlowStateTests: XCTestCase {
             XCTAssertFalse(journey.canEnter(location))
             XCTAssertNil(WorldMapGoalSnapshot(journey: journey, retainedRound: round))
         }
+    }
+
+    @MainActor func testKitePreviewAndCancelKeepHistoricalRoundUntilNewBegin() throws {
+        let (_, _, _, defaults) = make()
+        let historical = ObservatoryReviewFixture.game(dense: false, score: 9, challenge: .kiteHarbor)
+        try SkySaveArchive.save(historical, to: defaults)
+        let presenter = FallingSkyRecorder(), clock = ManualRainClock()
+        let store = FallingSkyStore(defaults: defaults, arguments: [], presenter: presenter, clock: clock)
+        let archive = try XCTUnwrap(defaults.data(forKey: SkySaveArchive.key))
+        let journey = store.journey.journey
+        let worldBytes = defaults.data(forKey: WorldJourneyStore.key)
+        var selected = WorldJourney(legacyAccess: true); selected.select(.kiteHarbor)
+        let goals = try XCTUnwrap(WorldMapGoalSnapshot(journey: selected, retainedRound: store.game))
+        XCTAssertEqual(goals.newVisitTarget, 17_000)
+        XCTAssertEqual(goals.retainedProgress, StarlightRestoration(score: 9, target: 18))
+        var flow = SkyFlowState(arguments: [])
+        XCTAssertEqual(flow.handle(.worldMap, hasSavedSky: true), .worldMap)
+        for _ in 0..<2 {
+            XCTAssertEqual(flow.handle(.kiteHarbor, hasSavedSky: true), .staged)
+            let preview = try XCTUnwrap(RestorationPresentation.selected(game: store.game, entry: flow.entry))
+            XCTAssertEqual(preview.challenge, .kiteHarbor)
+            XCTAssertEqual(preview.progress, StarlightRestoration(score: 0, target: 17_000))
+            XCTAssertEqual(store.game, historical)
+            XCTAssertEqual(defaults.data(forKey: SkySaveArchive.key), archive)
+            XCTAssertEqual(flow.handle(.entryBack, hasSavedSky: true, entryID: flow.entryID), .worldMap)
+        }
+        clock.advance(100)
+        XCTAssertNil(clock.deadline)
+        XCTAssertTrue(store.isPaused)
+        XCTAssertEqual(store.game, historical)
+        XCTAssertEqual(defaults.data(forKey: SkySaveArchive.key), archive)
+        XCTAssertEqual(store.journey.journey, journey)
+        XCTAssertEqual(defaults.data(forKey: WorldJourneyStore.key), worldBytes)
+        XCTAssertEqual(flow.handle(.kiteHarbor, hasSavedSky: true), .staged)
+        XCTAssertEqual(flow.handle(.begin, hasSavedSky: true, entryID: flow.entryID), .began(.kiteHarbor))
+        store.beginEntry(.kiteHarbor)
+        XCTAssertEqual(store.game, FallingSky.freshChallenge(.kiteHarbor))
+        XCTAssertEqual(store.game.challengeRevision, 4)
+        XCTAssertEqual(store.game.displayTarget, 17_000)
+        XCTAssertEqual(try SkySaveArchive.decode(XCTUnwrap(defaults.data(forKey: SkySaveArchive.key))), store.game)
+        XCTAssertNotEqual(defaults.data(forKey: SkySaveArchive.key), archive)
+        XCTAssertEqual(store.journey.journey, journey, "Starting a new visit cannot earn a repair")
+        XCTAssertTrue(store.isPaused)
+        XCTAssertNil(clock.deadline)
+    }
+
+    @MainActor func testKiteRepairUnlocksSeedOnlyAfterACommittedWin() throws {
+        var ribbon = ObservatoryReviewFixture.game(dense: false, score: 14, challenge: .ribbonCrossing)
+        XCTAssertNotNil(ribbon.clear(Cell(0, 0)))
+        XCTAssertEqual(ribbon.outcome, .won)
+        var journey = WorldJourney(); journey.record(ribbon)
+        XCTAssertFalse(journey.legacyAccess)
+        XCTAssertTrue(journey.canEnter(.kiteHarbor))
+        XCTAssertFalse(journey.canEnter(.seedMoon))
+        var kite = FallingSky.freshChallenge(.kiteHarbor)
+        XCTAssertNotNil(kite.nudge(from: Cell(2, 1), to: Cell(2, 0)))
+        journey.record(kite)
+        XCTAssertFalse(journey.canEnter(.seedMoon), "A useful opening clear is not a completed repair")
+        XCTAssertNotNil(kite.letStarsFall())
+        XCTAssertNotNil(kite.nudge(from: Cell(0, 4), to: Cell(1, 4)))
+        for (from, to) in [(Cell(5, 1), Cell(4, 1)), (Cell(4, 1), Cell(3, 1)),
+                           (Cell(0, 4), Cell(0, 3)), (Cell(0, 3), Cell(0, 2)),
+                           (Cell(0, 2), Cell(0, 1))] {
+            XCTAssertNotNil(kite.nudge(from: from, to: to))
+            XCTAssertTrue(kite.isValidSave)
+        }
+        XCTAssertEqual(kite.displayScore, 17_000)
+        XCTAssertEqual(kite.outcome, .won)
+        journey.record(kite)
+        XCTAssertTrue(journey.completed.contains(.kiteHarbor))
+        XCTAssertTrue(journey.canEnter(.seedMoon))
+        XCTAssertEqual(journey.selected, .seedMoon)
+        let completed = journey
+        journey.record(kite)
+        XCTAssertEqual(journey, completed, "A restored winning round cannot duplicate progression")
     }
 
     func testWelcomeSummaryDistinguishesSavedModePauseAndCompletedSkies() {

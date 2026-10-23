@@ -1,0 +1,287 @@
+{
+  "status": "Inspected phone comparison, AX3XL quiet result and overlapping direct Kite Help reading",
+  "source_selection_receipt_sha256": "cbef1601ee433490986b5141a035727019c589fae8f5bf7442ef925fd4b80907",
+  "conversion": "All retained images use PNG to JPEG quality70 with original dimensions; no crop or resize. Original sources remain temporary.",
+  "inspection": "Four phone JPEGs, tablet onward, and overlapping direct tablet Help start/middle/end inspected. Initial Help-top capture is superseded; its original remains in raw XCTest export.",
+  "limits": [
+    "Stills do not establish animation chronology, human recognition, physical touch comfort or actual VoiceOver.",
+    "Phone images depict the original paused comparison, not the later actual-clock earned-unlock test.",
+    "AX3XL onward and Replay targets are visible; lower Back to Observatory content extends below the viewport.",
+    "Direct Help captures are manual native interaction through XcodeBuildMCP from the already-built current Kite4 Replay Entry, not a pass of the interrupted later XCTest run."
+  ],
+  "captures": [
+    {
+      "name": "entry-default",
+      "file": "dev-ac2d935006__iphone-17e__entry-default.jpg",
+      "source_export": "5E479754-E387-4FCC-96A9-CA4B7E0FEB1B.png",
+      "original_sha256": "52fd2299b7cfafc21fe7befee4fd2ce652a328968795bc55e372e35e400b3fb4",
+      "sha256": "51365fe88c2bac7f15ce1c8d9ed3a1a67c24ce733f023af0603e98f2ef7e841a",
+      "bytes": 513021,
+      "format": "JPEG quality70, original dimensions; source PNG unchanged in temporary export",
+      "original_dimensions": [
+        1170,
+        2532
+      ],
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "original_bytes": 3696370,
+      "source_export_directory": "/private/tmp/starfall-next-encounters-20261023/phone-attachments",
+      "source_result_bundle": "native-phone.xcresult",
+      "test": "KiteHarborInteractionTests/testCurrentKiteChoicesFinishRestoreReplayAndOverflow",
+      "device": "iPhone17e",
+      "os": "iOS27.0 Simulator (24A434)",
+      "variant": "default text; normal effects/system Reduce Motion off; explicit pause/Next for branch comparison",
+      "source_input_fingerprint": "dev.ac2d935006",
+      "actual_bundle_StarfallBuildID": "dev.local",
+      "visual_inspected": true,
+      "observations": "17,000 objective, headroom/points explanation, automatic pattern controls and Begin visible.",
+      "verified_original_and_final_hashes": true,
+      "verified_no_resize": true
+    },
+    {
+      "name": "space-first",
+      "file": "dev-ac2d935006__iphone-17e__space-first.jpg",
+      "source_export": "9FEF8D0E-697A-40DD-8BE4-5D66D7690094.png",
+      "original_sha256": "a6e0af69b0831bec16afdb6491cfdc807f0f0633fdf8eca16c5afd8aa37344bd",
+      "sha256": "bf77b468c4009b3ecb906b478e7b5f4cca8efab348eb047807dcc405a8fa8383",
+      "bytes": 571336,
+      "format": "JPEG quality70, original dimensions; source PNG unchanged in temporary export",
+      "original_dimensions": [
+        1170,
+        2532
+      ],
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "original_bytes": 3810405,
+      "source_export_directory": "/private/tmp/starfall-next-encounters-20261023/phone-attachments",
+      "source_result_bundle": "native-phone.xcresult",
+      "test": "KiteHarborInteractionTests/testCurrentKiteChoicesFinishRestoreReplayAndOverflow",
+      "device": "iPhone17e",
+      "os": "iOS27.0 Simulator (24A434)",
+      "variant": "default text; normal effects/system Reduce Motion off; explicit pause/Next for branch comparison",
+      "source_input_fingerprint": "dev.ac2d935006",
+      "actual_bundle_StarfallBuildID": "dev.local",
+      "visual_inspected": true,
+      "observations": "5,000/17,000 and Line +5,000 agree; left column has visibly more headroom while the adjacent column stays tall.",
+      "verified_original_and_final_hashes": true,
+      "verified_no_resize": true
+    },
+    {
+      "name": "points-first",
+      "file": "dev-ac2d935006__iphone-17e__points-first.jpg",
+      "source_export": "64627C3F-6158-419B-AF5C-B1CEA3BFDE7C.png",
+      "original_sha256": "e839aed40cd47a7438c49079ff44357977fc14836f2d4631af83228d7852ed47",
+      "sha256": "a0a1e93ad9536b93c812d3aa8ab18a0e4e403c8118ca6a68dead99dd0603d438",
+      "bytes": 565719,
+      "format": "JPEG quality70, original dimensions; source PNG unchanged in temporary export",
+      "original_dimensions": [
+        1170,
+        2532
+      ],
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "original_bytes": 3826001,
+      "source_export_directory": "/private/tmp/starfall-next-encounters-20261023/phone-attachments",
+      "source_result_bundle": "native-phone.xcresult",
+      "test": "KiteHarborInteractionTests/testCurrentKiteChoicesFinishRestoreReplayAndOverflow",
+      "device": "iPhone17e",
+      "os": "iOS27.0 Simulator (24A434)",
+      "variant": "default text; normal effects/system Reduce Motion off; explicit pause/Next for branch comparison",
+      "source_input_fingerprint": "dev.ac2d935006",
+      "actual_bundle_StarfallBuildID": "dev.local",
+      "visual_inspected": true,
+      "observations": "7,000/17,000 and Line +7,000 agree; two tall left columns remain, with the lower clear opening room across the right.",
+      "verified_original_and_final_hashes": true,
+      "verified_no_resize": true
+    },
+    {
+      "name": "points-win",
+      "file": "dev-ac2d935006__iphone-17e__points-win.jpg",
+      "source_export": "B89E87A2-2305-4335-B4A2-829317AE50BF.png",
+      "original_sha256": "17271d37b1b71d8b391ab1d425d25bef8db165330d659803de20c7299fb2e92f",
+      "sha256": "d3b5e1e880ef2ce42b0416233492a37f059eb6ac15e2e39028a8fcacaa6e6997",
+      "bytes": 526180,
+      "format": "JPEG quality70, original dimensions; source PNG unchanged in temporary export",
+      "original_dimensions": [
+        1170,
+        2532
+      ],
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "original_bytes": 3510959,
+      "source_export_directory": "/private/tmp/starfall-next-encounters-20261023/phone-attachments",
+      "source_result_bundle": "native-phone.xcresult",
+      "test": "KiteHarborInteractionTests/testCurrentKiteChoicesFinishRestoreReplayAndOverflow",
+      "device": "iPhone17e",
+      "os": "iOS27.0 Simulator (24A434)",
+      "variant": "default text; normal effects/system Reduce Motion off; explicit pause/Next for branch comparison",
+      "source_input_fingerprint": "dev.ac2d935006",
+      "actual_bundle_StarfallBuildID": "dev.local",
+      "visual_inspected": true,
+      "observations": "Restored fleet, exact18,000 of17,000, Visit Seed Moon and Replay controls visible.",
+      "verified_original_and_final_hashes": true,
+      "verified_no_resize": true
+    },
+    {
+      "name": "onward",
+      "file": "dev-ac2d935006__onward__ipad-pro11-m5__ax3xl-quiet.jpg",
+      "source_export": "A3079BB9-906B-490D-B009-5CDFE59E99F6.png",
+      "original_sha256": "b73088d55bb563ee9fad1bc725c2ab5108a9c11c9e9fd1613e7eab7d0d5eb3b9",
+      "sha256": "eea61ad0075eda0b4ab2c4d656cbf2510b81dbd032c0f0d2cbd53dfcf7e9d328",
+      "bytes": 651297,
+      "original_bytes": 4021445,
+      "original_dimensions": [
+        1668,
+        2420
+      ],
+      "dimensions": [
+        1668,
+        2420
+      ],
+      "format": "JPEG quality70 via sips; original dimensions; PNG unchanged",
+      "source_export_directory": "/private/tmp/starfall-next-encounters-20261023/tablet-attachments",
+      "source_result_bundle": "native-tablet-settings-repair.xcresult",
+      "test": "KiteHarborInteractionTests/testCurrentKiteLargestQuietHelpAndEarnedOnward",
+      "device": "iPad Pro 11-inch (M5)",
+      "os": "iOS27.0 Simulator (24A434)",
+      "variant": "AX3XL (UICTContentSizeCategoryAccessibilityXXXL), calmEffects YES, system Reduce Motion off",
+      "source_input_fingerprint": "dev.ac2d935006",
+      "actual_bundle_StarfallBuildID": "dev.local",
+      "visual_inspected": true,
+      "observations": "Exact18,000 of17,000 result, Visit Seed Moon and Replay fully visible at AX3XL quiet; Back to Observatory starts below viewport.",
+      "verified_original_and_final_hashes": true,
+      "verified_no_resize": true
+    },
+    {
+      "file": "dev-ac2d935006__help-start__ipad-pro11-m5__ax3xl-quiet.jpg",
+      "original": "/private/tmp/starfall-next-encounters-20261023/tablet-help-direct-start.png",
+      "original_sha256": "e66d7094634bedc6f6d643232ec8bbe08cab9c4ae49c563ad568ceb2dd527856",
+      "sha256": "fff0b774fa1ed7636b1065602fa89add16ae9b550538f5f8fa9bb54fccc0b0f3",
+      "bytes": 572635,
+      "dimensions": [
+        1668,
+        2420
+      ],
+      "format": "PNG to JPEG quality70, original dimensions, no cropping",
+      "source": "Direct XcodeBuildMCP native Replay Entry \u2192 Settings \u2192 Help, bounded physical scrolling; not XCTest",
+      "inspection": "Inspected complete overlapping location text and reachable Done; no truncation asserted for a single long paragraph viewport",
+      "name": "help-start",
+      "device": "iPad Pro11 M5",
+      "os": "iOS27.0 Simulator (24A434)",
+      "variant": "AX3XL; calm effects YES; current Kite4 Replay Entry Help",
+      "source_input_fingerprint": "dev.ac2d935006",
+      "actual_bundle_StarfallBuildID": "dev.local",
+      "visual_inspected": true,
+      "verified_no_resize": true
+    },
+    {
+      "file": "dev-ac2d935006__help-middle__ipad-pro11-m5__ax3xl-quiet.jpg",
+      "original": "/private/tmp/starfall-next-encounters-20261023/tablet-help-direct-middle.png",
+      "original_sha256": "25fa8bac58a972e37f7279cb4b0905f17a86037ea9d4d6a985ceefc18084515f",
+      "sha256": "47b75fb414a82ff640be0f589fd39becc13e501aa53f1e65c71320ba3c6f83a0",
+      "bytes": 590036,
+      "dimensions": [
+        1668,
+        2420
+      ],
+      "format": "PNG to JPEG quality70, original dimensions, no cropping",
+      "source": "Direct XcodeBuildMCP native Replay Entry \u2192 Settings \u2192 Help, bounded physical scrolling; not XCTest",
+      "inspection": "Inspected complete overlapping location text and reachable Done; no truncation asserted for a single long paragraph viewport",
+      "name": "help-middle",
+      "device": "iPad Pro11 M5",
+      "os": "iOS27.0 Simulator (24A434)",
+      "variant": "AX3XL; calm effects YES; current Kite4 Replay Entry Help",
+      "source_input_fingerprint": "dev.ac2d935006",
+      "actual_bundle_StarfallBuildID": "dev.local",
+      "visual_inspected": true,
+      "verified_no_resize": true
+    },
+    {
+      "file": "dev-ac2d935006__help-end__ipad-pro11-m5__ax3xl-quiet.jpg",
+      "original": "/private/tmp/starfall-next-encounters-20261023/tablet-help-direct-end.png",
+      "original_sha256": "c0428c59f0a04e160071d884305af0e72cd189e03dc62bedf4d280724d4d0448",
+      "sha256": "b9b9d6f6e1e7d8746d18b7421ac3f645c55af7c03c2756eb0bc026a3d0dcc99c",
+      "bytes": 587137,
+      "dimensions": [
+        1668,
+        2420
+      ],
+      "format": "PNG to JPEG quality70, original dimensions, no cropping",
+      "source": "Direct XcodeBuildMCP native Replay Entry \u2192 Settings \u2192 Help, bounded physical scrolling; not XCTest",
+      "inspection": "Inspected complete overlapping location text and reachable Done; no truncation asserted for a single long paragraph viewport",
+      "name": "help-end",
+      "device": "iPad Pro11 M5",
+      "os": "iOS27.0 Simulator (24A434)",
+      "variant": "AX3XL; calm effects YES; current Kite4 Replay Entry Help",
+      "source_input_fingerprint": "dev.ac2d935006",
+      "actual_bundle_StarfallBuildID": "dev.local",
+      "visual_inspected": true,
+      "verified_no_resize": true
+    }
+  ],
+  "tablet_attachment_manifest_sha256": "bb0b634f3daf8ab05d0d7a092296f96c30674a0be67ff53c7ac8ecdda3a11fbc",
+  "inspected_temporary_tablet_frames": [
+    {
+      "name": "kite-current-seed-entry-largest_0_3B8FA977-712B-48F3-88C3-1526C23E6DA2.png",
+      "source_export": "20364C9C-0221-4FD0-9140-2DD0872C3DC8.png",
+      "sha256": "7205d17f3d4cd5e91abb1e5346ed0278813dac9b0771788ee1182f803bcc71e1",
+      "dimensions": [
+        1668,
+        2420
+      ]
+    },
+    {
+      "name": "kite-current-onward-largest_0_940EF307-7851-4302-B129-CE2C3F8B84AA.png",
+      "source_export": "A3079BB9-906B-490D-B009-5CDFE59E99F6.png",
+      "sha256": "b73088d55bb563ee9fad1bc725c2ab5108a9c11c9e9fd1613e7eab7d0d5eb3b9",
+      "dimensions": [
+        1668,
+        2420
+      ]
+    },
+    {
+      "name": "kite-current-points-win_0_8EE75224-59B2-4C2E-8C22-5E5FEE541CD6.png",
+      "source_export": "7039F247-7D2E-44EF-A51C-854D23BB923D.png",
+      "sha256": "b73088d55bb563ee9fad1bc725c2ab5108a9c11c9e9fd1613e7eab7d0d5eb3b9",
+      "dimensions": [
+        1668,
+        2420
+      ]
+    },
+    {
+      "name": "kite-current-points-first_0_11865DB6-32FE-44FF-92C5-E68368C0258E.png",
+      "source_export": "C22CA8B9-299C-41AC-837A-D8B993E662E7.png",
+      "sha256": "dec0b77f63cfe4a348ad15bf3dc8aa7c17364bc56a0a74b110fb2c68c604330c",
+      "dimensions": [
+        1668,
+        2420
+      ]
+    },
+    {
+      "name": "kite-current-help-largest_0_F9B9EFFC-DE08-460A-A930-580A6D44C764.png",
+      "source_export": "CA1BBB48-5328-40AD-9FFF-5D0B67F63963.png",
+      "sha256": "6b9b483ebd9d07a86533c7477b311cce2a19612696d196534450a888987bc33a",
+      "dimensions": [
+        1668,
+        2420
+      ]
+    },
+    {
+      "name": "kite-current-entry-largest_0_B2DC7234-5366-40A7-9CAD-30FC7C4A1A64.png",
+      "source_export": "56A1AABC-CAA4-4161-80B9-6663F7BDE11F.png",
+      "sha256": "d35171de063b0a40d7c0c2ecac36fa23f2f982c9aa5061d1ecc7f38c01558bfa",
+      "dimensions": [
+        1668,
+        2420
+      ]
+    }
+  ]
+}
