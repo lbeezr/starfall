@@ -1,0 +1,217 @@
+{
+  "selected": [
+    {
+      "file": "dev-fb76f713__rose-arrival__iphone-17e__before.jpg",
+      "source": "fb76f713",
+      "raw": "/private/tmp/starfall-cohesion-20261023/goal09-before-square-detail/frame-7.800.jpg",
+      "rawSHA256": "a5202055ea60c9970906923f78745cc6baad61053b817510af88665d7f4640ea",
+      "rawStoredPixels": [
+        1170,
+        2532
+      ],
+      "rawOrientation": 1,
+      "pixels": [
+        1170,
+        2532
+      ],
+      "sha256": "fe327ca14ba23350b64ed758439285a4c9a98e18c204310ba93ad8180857d7ea",
+      "export": "Orientation normalized; no crop/resize; JPEG quality82. Video-derived JPEG frames recompressed once for evidence."
+    },
+    {
+      "file": "dev-a72d541__rose-arrival__iphone-17e__after.jpg",
+      "source": "a72d541",
+      "raw": "/private/tmp/starfall-cohesion-20261023/goal09-after-square-frames/frame-7.800.jpg",
+      "rawSHA256": "7a369f8f58169b6dd1c518796b4d3ce653d1a1450f58ab5238e34ccd62a4dcd5",
+      "rawStoredPixels": [
+        1170,
+        2532
+      ],
+      "rawOrientation": 1,
+      "pixels": [
+        1170,
+        2532
+      ],
+      "sha256": "6398152e6780b9d00761dd9452fbe67f0eade165af5694cdfc1b8f4c4ffd034e",
+      "export": "Orientation normalized; no crop/resize; JPEG quality82. Video-derived JPEG frames recompressed once for evidence."
+    },
+    {
+      "file": "dev-a72d541__score-bloom__iphone-17e__after.jpg",
+      "source": "a72d541",
+      "raw": "/private/tmp/starfall-cohesion-20261023/goal09-after-square-frames/frame-8.200.jpg",
+      "rawSHA256": "7f21aba4f4faba6e369023e0e0a030a0d514b1f5cb4c71b7223569e35d6d3afd",
+      "rawStoredPixels": [
+        1170,
+        2532
+      ],
+      "rawOrientation": 1,
+      "pixels": [
+        1170,
+        2532
+      ],
+      "sha256": "5a29a35bc36e4d8abac40853b6c5e471e0fb7be3a0a269532a2afa90fb25b0fa",
+      "export": "Orientation normalized; no crop/resize; JPEG quality82. Video-derived JPEG frames recompressed once for evidence."
+    },
+    {
+      "file": "dev-a72d541__square-complete__ipad-mini-a17pro__ax3xl-calm.jpg",
+      "source": "a72d541",
+      "raw": "/private/tmp/starfall-cohesion-20261023/goal09-quiet-tablet-attachments/A2552E8E-FCF7-4B43-B4DF-1B8597192BD9.png",
+      "rawSHA256": "e3120af4f69e0e1add4175d13d2feb69133943580b583004da5236ed4204c64b",
+      "rawStoredPixels": [
+        1488,
+        2266
+      ],
+      "rawOrientation": 1,
+      "pixels": [
+        1488,
+        2266
+      ],
+      "sha256": "0c22fb7ef531b5787aa58d321e6e105cc3214c7770f3e7ea5291df7cc49c3405",
+      "export": "Orientation normalized; no crop/resize; JPEG quality82. Video-derived JPEG frames recompressed once for evidence."
+    },
+    {
+      "file": "dev-a72d541__ribbon-packets__iphone-17e__historical-18.jpg",
+      "source": "a72d541",
+      "raw": "/private/tmp/starfall-cohesion-20261023/goal09-after-ribbon-frames/frame-2.500.jpg",
+      "rawSHA256": "0da3a391b9c51c5c44bac00c242232cb6d582c7d6f81a0bfde638197845363b8",
+      "rawStoredPixels": [
+        1170,
+        2532
+      ],
+      "rawOrientation": 1,
+      "pixels": [
+        1170,
+        2532
+      ],
+      "sha256": "265c6b9bb9a487a4905cdd88516a9b6f5815398f16d328f22bd2a8d51b2d7602",
+      "export": "Orientation normalized; no crop/resize; JPEG quality82. Video-derived JPEG frames recompressed once for evidence."
+    },
+    {
+      "file": "dev-a72d541__ribbon-result__iphone-17e__historical-18.jpg",
+      "source": "a72d541",
+      "raw": "/private/tmp/starfall-cohesion-20261023/goal09-after-ribbon-attachments/22454557-44A4-4D5B-BD60-6EF345412400.png",
+      "rawSHA256": "b17a87116b08c543fbaf0daa2a8c5a2b2c174b55a1a52db9a5ae20a1f13048a2",
+      "rawStoredPixels": [
+        1170,
+        2532
+      ],
+      "rawOrientation": 1,
+      "pixels": [
+        1170,
+        2532
+      ],
+      "sha256": "caefbd855854d8ef051f0f59e4c86c2d28ecf879167db9aeee4f99f1277c26b9",
+      "export": "Orientation normalized; no crop/resize; JPEG quality82. Video-derived JPEG frames recompressed once for evidence."
+    }
+  ],
+  "clips": [
+    {
+      "file": "dev-fb76f713__square-chain__iphone-17e__before.mp4",
+      "sha256": "e4ed388415f0b8f2a672f1af570186387a7bf42bdaa1ddfb005567a9b6c2a095",
+      "originalSHA256": "d3664e7df09574aff5dd530ae25faeaefd4c7a30ebf8df18f5e857b97e6b29d1",
+      "startSeconds": 5.5,
+      "durationSeconds": 4.2,
+      "export": "AVFoundation normal speed preset960x540; portrait output preserves aspect; no audio proof.",
+      "captureReceipt": {
+        "testExit": 0,
+        "videoExit": 0,
+        "trigger": "Tap \"tutorial.retry\" Button",
+        "triggerElapsed": 66.899,
+        "recordingReadyElapsed": 67.173,
+        "elapsedSeconds": 100.01,
+        "movie": "/private/tmp/starfall-cohesion-20261023/goal09-before-square.mp4",
+        "command": [
+          "xcodebuild",
+          "-testProductsPath",
+          "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c35297cacc07/test-products/build_sim_2026-10-23T17-53-46-729Z_pid51280_6ccf3b75.xctestproducts",
+          "-destination",
+          "platform=iOS Simulator,id=DB9604E1-D7A8-4C75-BA25-E29243AEC02D",
+          "-collect-test-diagnostics",
+          "never",
+          "-parallel-testing-enabled",
+          "NO",
+          "-only-testing:StarfallUITests/WorldJourneyInteractionTests/testCurrentStorySquarePracticeLetsThePlayerChooseAndPreservesTheirRound",
+          "-resultBundlePath",
+          "/private/tmp/starfall-cohesion-20261023/goal09-before-square.xcresult",
+          "test-without-building"
+        ]
+      }
+    },
+    {
+      "file": "dev-a72d541__square-chain__iphone-17e__after.mp4",
+      "sha256": "ecb51588b0f3df649993f7efd53939e36c13c4ae86d721d07a6baa0dc98a4489",
+      "originalSHA256": "ee3fcc8f0b70769f875d520cad0838c038a292af05fe613f2b435671000e68d6",
+      "startSeconds": 5.5,
+      "durationSeconds": 4.2,
+      "export": "AVFoundation normal speed preset960x540; portrait output preserves aspect; no audio proof.",
+      "captureReceipt": {
+        "testExit": 0,
+        "videoExit": 0,
+        "trigger": "Tap \"tutorial.retry\" Button",
+        "triggerElapsed": 60.457,
+        "recordingReadyElapsed": 60.623,
+        "elapsedSeconds": 94.048,
+        "movie": "/private/tmp/starfall-cohesion-20261023/goal09-after-square.mp4",
+        "command": [
+          "xcodebuild",
+          "-testProductsPath",
+          "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c35297cacc07/test-products/build_sim_2026-10-23T18-17-01-588Z_pid51280_a1c302ac.xctestproducts",
+          "-destination",
+          "platform=iOS Simulator,id=DB9604E1-D7A8-4C75-BA25-E29243AEC02D",
+          "-collect-test-diagnostics",
+          "never",
+          "-parallel-testing-enabled",
+          "NO",
+          "-only-testing:StarfallUITests/WorldJourneyInteractionTests/testCurrentStorySquarePracticeLetsThePlayerChooseAndPreservesTheirRound",
+          "-resultBundlePath",
+          "/private/tmp/starfall-cohesion-20261023/goal09-after-square.xcresult",
+          "test-without-building"
+        ]
+      }
+    },
+    {
+      "file": "dev-a72d541__ribbon-repair__iphone-17e__normal.mp4",
+      "sha256": "ba26fcf6dc5ba3607eade28be344c5c91b2776f9b5f4efcbf6f06d1eb50831ca",
+      "originalSHA256": "883d7fac3d622b67055eea8b72c83382948a9a0332fdae8f3ae099922498c890",
+      "startSeconds": 0.8,
+      "durationSeconds": 4.5,
+      "export": "AVFoundation normal speed preset960x540; portrait output preserves aspect; no audio proof.",
+      "captureReceipt": {
+        "testExit": 0,
+        "videoExit": 0,
+        "trigger": "4 toward a tap match",
+        "triggerElapsed": 21.655,
+        "recordingReadyElapsed": 21.82,
+        "elapsedSeconds": 64.126,
+        "movie": "/private/tmp/starfall-cohesion-20261023/goal09-after-ribbon.mp4",
+        "command": [
+          "xcodebuild",
+          "-testProductsPath",
+          "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-c35297cacc07/test-products/build_sim_2026-10-23T18-17-01-588Z_pid51280_a1c302ac.xctestproducts",
+          "-destination",
+          "platform=iOS Simulator,id=DB9604E1-D7A8-4C75-BA25-E29243AEC02D",
+          "-collect-test-diagnostics",
+          "never",
+          "-parallel-testing-enabled",
+          "NO",
+          "-only-testing:StarfallUITests/RibbonCrossingInteractionTests/testRibbonWinningClearPersistsNamedResultAndReplayStartsAtZero",
+          "-resultBundlePath",
+          "/private/tmp/starfall-cohesion-20261023/goal09-after-ribbon.xcresult",
+          "test-without-building"
+        ]
+      }
+    }
+  ],
+  "frameTimes": {
+    "goal09-before-square-detail-times.txt": "durationSeconds=9.813333333333333\nframe-7.400.jpg actual=7.378333333333333 pixels=1170x2532\nframe-7.600.jpg actual=7.495 pixels=1170x2532\nframe-7.800.jpg actual=7.748333333333333 pixels=1170x2532\nframe-8.000.jpg actual=8.0 pixels=1170x2532\nframe-8.200.jpg actual=8.198333333333334 pixels=1170x2532\nframe-8.400.jpg actual=8.398333333333333 pixels=1170x2532\nframe-8.600.jpg actual=8.596666666666666 pixels=1170x2532\nframe-8.800.jpg actual=8.8 pixels=1170x2532\n",
+    "goal09-after-square-times.txt": "durationSeconds=9.858333333333333\nframe-0.000.jpg actual=0.0 pixels=1170x2532\nframe-5.500.jpg actual=5.5 pixels=1170x2532\nframe-6.000.jpg actual=6.0 pixels=1170x2532\nframe-6.500.jpg actual=6.486666666666666 pixels=1170x2532\nframe-7.000.jpg actual=6.988333333333333 pixels=1170x2532\nframe-7.200.jpg actual=7.2 pixels=1170x2532\nframe-7.400.jpg actual=7.4 pixels=1170x2532\nframe-7.600.jpg actual=7.6 pixels=1170x2532\nframe-7.800.jpg actual=7.71 pixels=1170x2532\nframe-8.000.jpg actual=7.998333333333333 pixels=1170x2532\nframe-8.200.jpg actual=8.198333333333334 pixels=1170x2532\nframe-8.400.jpg actual=8.4 pixels=1170x2532\nframe-8.600.jpg actual=8.58 pixels=1170x2532\nframe-8.800.jpg actual=8.685 pixels=1170x2532\nframe-9.000.jpg actual=8.998333333333333 pixels=1170x2532\nframe-9.200.jpg actual=9.198333333333334 pixels=1170x2532\n",
+    "goal09-selected-before-times.txt": "durationSeconds=4.2\nframe-0.400.jpg actual=0.4 pixels=444x960\nframe-1.500.jpg actual=1.4983333333333333 pixels=444x960\nframe-2.300.jpg actual=2.2483333333333335 pixels=444x960\nframe-2.700.jpg actual=2.6983333333333333 pixels=444x960\nframe-3.400.jpg actual=3.3983333333333334 pixels=444x960\n",
+    "goal09-selected-after-times.txt": "durationSeconds=4.2\nframe-0.400.jpg actual=0.4 pixels=444x960\nframe-1.500.jpg actual=1.4883333333333333 pixels=444x960\nframe-2.300.jpg actual=2.21 pixels=444x960\nframe-2.700.jpg actual=2.6983333333333333 pixels=444x960\nframe-3.400.jpg actual=3.3983333333333334 pixels=444x960\n",
+    "goal09-after-ribbon-times.txt": "durationSeconds=9.928333333333333\nframe-0.000.jpg actual=0.0 pixels=1170x2532\nframe-0.500.jpg actual=0.485 pixels=1170x2532\nframe-1.000.jpg actual=0.9866666666666667 pixels=1170x2532\nframe-1.500.jpg actual=1.49 pixels=1170x2532\nframe-2.000.jpg actual=1.99 pixels=1170x2532\nframe-2.500.jpg actual=2.4916666666666667 pixels=1170x2532\nframe-3.000.jpg actual=2.7333333333333334 pixels=1170x2532\nframe-4.000.jpg actual=4.0 pixels=1170x2532\n"
+  },
+  "limits": [
+    "Same native scenario; sampled Rose-arrival frames differ slightly in phase age. Not a pixel-identical timing comparison.",
+    "Native recordings and finite frame inspection establish observed sequence, not continuous smoothness or physical frame rate.",
+    "Quiet AX3XL image is a scrolled completion viewport.",
+    "Practice award lettering remains clipped in normal compact layout; Goal10 owns that separate measured-layout correction."
+  ]
+}

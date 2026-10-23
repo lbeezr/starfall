@@ -1,5 +1,7 @@
 # Evidence index
 
+[Cohesion goal 9: collection score priority](cohesion-goal-09-score-focus-2026-10-23/README.md) keeps packet heads, tails and shadows outside the measured score, with actual before/after motion, a failing-then-passing raster regression and quiet/restoration contrasts.
+
 [Cohesion goal 8: place identity through travel](cohesion-goal-08-travel-identity-2026-10-23/README.md) makes Ribbon’s damaged map bridge agree with Entry and play, preserving canceled visits and exact saved return.
 
 [Depth goal 4: Full Board round arc](depth-goal-04-full-board-round-arc-2026-10-23/README.md) changes two new-visit opening ingredients, preserves exact historical rounds and verifies contrasting full-round continuations. Both modes remain available.
