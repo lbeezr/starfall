@@ -86,6 +86,81 @@ final class SkyDialogueTests: XCTestCase {
         XCTAssertEqual(SkyCopy.text(.celebrationLine), "Line!")
     }
 
+    @MainActor func testCurrentStoryStartupKeepsItsObjectiveAndAutomaticPatternGuidance() throws {
+        for challenge in [StarfallChallenge.firstLight, .ribbonCrossing] {
+            let suite = "Starfall.StoryStartupGuide.\(UUID())"
+            let defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
+            defer { defaults.removePersistentDomain(forName: suite) }
+            let clock = ManualRainClock()
+            let store = FallingSkyStore(defaults: defaults, arguments: [],
+                presenter: FallingSkyRecorder(), clock: clock, feedback: SkyFeedbackRecorder())
+            store.startChallenge(challenge)
+            let opening = store.game
+            let expected = try XCTUnwrap(opening.challengeGuideLine)
+            store.setSuspended(false)
+            store.togglePause() // The ordinary Begin handoff admits play and starts showers.
+            XCTAssertFalse(store.isPaused)
+            XCTAssertEqual(store.game, opening, "Admission must not consume an opening shower")
+            XCTAssertEqual(store.guideLine, expected)
+            XCTAssertEqual(store.dialogue.line, expected)
+            XCTAssertTrue(store.guideLine.text.contains(SkyCopy.score(try XCTUnwrap(opening.displayTarget))))
+            XCTAssertTrue(store.guideLine.text.contains("Swipe"))
+            XCTAssertTrue(store.guideLine.text.contains("pattern pops automatically"))
+            XCTAssertEqual(clock.deadline, store.showerInterval)
+
+            store.togglePause()
+            XCTAssertTrue(store.isPaused)
+            XCTAssertEqual(store.guideLine.id, "guide.paused.1")
+            XCTAssertEqual(store.game, opening)
+            XCTAssertNil(clock.deadline)
+            store.togglePause()
+            XCTAssertFalse(store.isPaused)
+            XCTAssertEqual(store.guideLine, expected, "Resuming the same pattern round keeps its own instructions")
+            XCTAssertEqual(store.game, opening)
+            store.setSuspended(true)
+
+            let restoredClock = ManualRainClock()
+            let restored = FallingSkyStore(defaults: defaults, arguments: [],
+                presenter: FallingSkyRecorder(), clock: restoredClock, feedback: SkyFeedbackRecorder())
+            restored.setSuspended(false)
+            XCTAssertEqual(restored.game, opening)
+            XCTAssertTrue(restored.isPaused)
+            XCTAssertEqual(restored.guideLine.id, "guide.restore.1", "Restore retains its intentional paused guidance")
+            XCTAssertFalse(restored.openingPending)
+            XCTAssertNil(restoredClock.deadline)
+            restored.setSuspended(true)
+        }
+    }
+
+    @MainActor func testManualSkyStartupAndResumeRetainTheirExistingGuidance() throws {
+        var sources = [FallingSky.freshSurvival(seed: 5), FallingSky(challenge: .firstLight)]
+        for challenge in [StarfallChallenge.firstLight, .ribbonCrossing] {
+            for revision in 1...2 {
+                sources.append(FallingSky(definition: try XCTUnwrap(StoryChallengeDefinition(challenge, revision: revision))))
+            }
+        }
+        for source in sources {
+            let suite = "Starfall.ManualStartupGuide.\(UUID())"
+            let defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
+            defer { defaults.removePersistentDomain(forName: suite) }
+            defaults.set(try SkySaveArchive.encode(source), forKey: SkySaveArchive.key)
+            let store = FallingSkyStore(defaults: defaults, arguments: [],
+                presenter: FallingSkyRecorder(), clock: ManualRainClock(), feedback: SkyFeedbackRecorder())
+            store.setSuspended(false)
+            XCTAssertTrue(store.game.supportsManualClears)
+            store.togglePause()
+            XCTAssertEqual(store.guideLine, SkyDialogueLibrary.line("guide.started"))
+            XCTAssertFalse(store.isPaused)
+            XCTAssertEqual(store.game, source)
+            store.togglePause()
+            XCTAssertEqual(store.guideLine.id, "guide.paused.1")
+            store.togglePause()
+            XCTAssertEqual(store.guideLine, SkyDialogueLibrary.line("guide.started"))
+            XCTAssertEqual(store.game, source)
+            store.setSuspended(true)
+        }
+    }
+
     @MainActor func testAutomaticSwapChainsPublishAggregateAwardsInsteadOfGenericSwapCopy() throws {
         for (challenge, depth, points) in [
             (StarfallChallenge.firstLight, 2, 15_000),

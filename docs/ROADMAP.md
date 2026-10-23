@@ -6,6 +6,8 @@ Build a satisfying restoration adventure for **iPhone and iPad**: make a thought
 
 **Next action:** Continue the existing [ten-goal experience queue #240](https://github.com/lbeezr/starfall/issues/240) in its recorded order, reusing [#236–#238](evidence/factory-goal-refill-2026-10-22/README.md). Prepare [Kite/curriculum #252](https://github.com/lbeezr/starfall/issues/252), [mastery #253](https://github.com/lbeezr/starfall/issues/253) independently. The [Bell Choir/content budget](design/BELL_CHOIR_AND_CAMPAIGN_BUDGET.md) is briefed; its artwork and runtime remain planned. These deliverables are designs, not completed gameplay.
 
+[Goal 1's first-minute slice](evidence/game-goal-01-first-minute-2026-10-22/README.md) keeps the actual saved-round pattern guide through Begin/resume, with current-rule phone/tablet and retained-mode checks. Native reading and correct state transitions are verified; player comprehension still needs #206's actual observations. GitHub remains the ordered queue/completion record.
+
 This is an outcome sequence, without calendar or playtime promises. The [previous roadmap](ROADMAP_HISTORY_2026-10-22.md) preserves its source-bound integration history and earlier proposals.
 
 ## What exists today

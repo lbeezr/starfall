@@ -1,0 +1,140 @@
+{
+  "source_inputs": "source-inputs.json",
+  "core": {
+    "passed": 236,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 20.2
+  },
+  "phone": {
+    "devicesAndConfigurations": [
+      {
+        "device": {
+          "architecture": "arm64",
+          "deviceId": "4103C352-DFC2-493E-A224-DE4CE3D50889",
+          "deviceName": "iPhone 17e",
+          "modelName": "iPhone 17e",
+          "osBuildNumber": "24A434",
+          "osVersion": "27.0",
+          "platform": "iOS Simulator"
+        },
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "passedTests": 73,
+        "skippedTests": 0,
+        "testPlanConfiguration": {
+          "configurationId": "1",
+          "configurationName": "Test Scheme Action"
+        }
+      }
+    ],
+    "environmentDescription": "Starfall \u00b7 Built with macOS 27.0.1",
+    "expectedFailures": 0,
+    "failedTests": 0,
+    "finishTime": 1792717539.688,
+    "passedTests": 73,
+    "result": "Passed",
+    "runtimeWarnings": [],
+    "skippedTests": 0,
+    "startTime": 1792717453.541,
+    "statistics": [],
+    "testFailures": [],
+    "title": "Test - Starfall",
+    "topInsights": [
+      {
+        "category": "Longest Test Runs",
+        "impact": "56% of duration",
+        "text": "2 longest test runs with outlier durations exceeding 0.23s (three standard deviations)"
+      }
+    ],
+    "totalTestCount": 73
+  },
+  "tablet": {
+    "devicesAndConfigurations": [
+      {
+        "device": {
+          "architecture": "arm64",
+          "deviceId": "EDE6B5F3-53C9-4703-B3D8-E654BEFA22A0",
+          "deviceName": "iPad mini (A17 Pro)",
+          "modelName": "iPad mini (A17 Pro)",
+          "osBuildNumber": "24A434",
+          "osVersion": "27.0",
+          "platform": "iOS Simulator"
+        },
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "passedTests": 3,
+        "skippedTests": 0,
+        "testPlanConfiguration": {
+          "configurationId": "1",
+          "configurationName": "Test Scheme Action"
+        }
+      }
+    ],
+    "environmentDescription": "Starfall \u00b7 Built with macOS 27.0.1",
+    "expectedFailures": 0,
+    "failedTests": 0,
+    "finishTime": 1792717782.083,
+    "passedTests": 3,
+    "result": "Passed",
+    "runtimeWarnings": [],
+    "skippedTests": 0,
+    "startTime": 1792717621.604,
+    "statistics": [],
+    "testFailures": [],
+    "title": "Test - Starfall",
+    "topInsights": [],
+    "totalTestCount": 3
+  },
+  "release": {
+    "status": "passed",
+    "command_log": "goal01-current-main-release.log"
+  },
+  "captures": [
+    {
+      "path": "dev-93ae893a-wip-b6da26761e94__story-start__iphone-17e__default-text.jpg",
+      "device": "iPhone 17e",
+      "os": "iOS 27.0 (24A434) Simulator",
+      "state": "default-text",
+      "source_attachment": "03980BE0-85E6-4129-9354-D4B2D4181901.png",
+      "source_sha256": "db38d2e69e4bed6517ca395b3448d78c140e60c4992754cb4c05f5d00103d27f",
+      "sha256": "f3d240b73557442945d4ee9202d40b5df13234d286625133008a89c0a3e86b2e",
+      "snapshot": "b6da26761e94",
+      "computed_build_identity": "dev.0acb9d128e",
+      "displayed_build": "dev.local",
+      "conversion": "JPEG quality88, original pixel dimensions retained",
+      "status": "Current for sampled startup guide at recorded source",
+      "limits": "Phone default is the initial bounded reading viewport, with the final survivor hint below it; AX3XL shows the reading end after scrolling. Native input/counts are reported separately."
+    },
+    {
+      "path": "dev-93ae893a-wip-b6da26761e94__story-start__iphone-17e__ax3xl-reading-end.jpg",
+      "device": "iPhone 17e",
+      "os": "iOS 27.0 (24A434) Simulator",
+      "state": "ax3xl-reading-end",
+      "source_attachment": "656BA2D8-1D77-4321-AF25-02C5A9757B83.png",
+      "source_sha256": "75d5c2ab5551172927cb404efac9377b881861aa76b1b593b060680f10cb75a8",
+      "sha256": "d427403bc9ae617844141278be4c50616861bdd1ef6b501b5d82570594f1e5b4",
+      "snapshot": "b6da26761e94",
+      "computed_build_identity": "dev.0acb9d128e",
+      "displayed_build": "dev.local",
+      "conversion": "JPEG quality88, original pixel dimensions retained",
+      "status": "Current for sampled startup guide at recorded source",
+      "limits": "Phone default is the initial bounded reading viewport, with the final survivor hint below it; AX3XL shows the reading end after scrolling. Native input/counts are reported separately."
+    },
+    {
+      "path": "dev-93ae893a-wip-b6da26761e94__story-start__ipad-mini-a17-pro__default-text.jpg",
+      "device": "iPad mini (A17 Pro)",
+      "os": "iOS 27.0 (24A434) Simulator",
+      "state": "default-text",
+      "source_attachment": "BAD4B184-AA9C-4A74-BBB3-0EA9EA13CB29.png",
+      "source_sha256": "136ce640372d2ade241e393c84e81476d5cd7a7030d5f3c7b3bcc66f1ef939dc",
+      "sha256": "ceaa1daf53870804b87a91b742430456697cefc8f3c9e1db2b07787b82346787",
+      "snapshot": "b6da26761e94",
+      "computed_build_identity": "dev.0acb9d128e",
+      "displayed_build": "dev.local",
+      "conversion": "JPEG quality88, original pixel dimensions retained",
+      "status": "Current for sampled startup guide at recorded source",
+      "limits": "Phone default is the initial bounded reading viewport, with the final survivor hint below it; AX3XL shows the reading end after scrolling. Native input/counts are reported separately."
+    }
+  ]
+}

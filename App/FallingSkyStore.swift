@@ -692,7 +692,10 @@ enum SkyTerminalSpeech { case feedback, ceremony }
             interruptPlay(reason: "pause")
             dialogue.reset(); guide("guide.paused")
         } else {
-            dialogue.reset(); guide("guide.started"); dialogue.show(pausedGuideLine)
+            dialogue.reset()
+            if !game.supportsManualClears, let line = game.challengeGuideLine { guideLine = line }
+            else { guide("guide.started") }
+            dialogue.show(pausedGuideLine)
             armClock()
         }
     }
