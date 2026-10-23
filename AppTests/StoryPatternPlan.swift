@@ -34,6 +34,16 @@ struct StoryPatternPlan: Sendable {
         self.expectedExchanges = expectedExchanges
     }
 
+    static let kiteSpace = StoryPatternPlan(target: 17_000, moves: [
+        [(15, 14)],
+        [(4, 11), (36, 29), (29, 22), (4, 3), (3, 2), (2, 1)]
+    ], expectedScore: 17_000, expectedShowers: 1, expectedExchanges: 7)
+
+    static let kitePoints = StoryPatternPlan(target: 17_000, moves: [
+        [(4, 11)],
+        [(15, 14), (36, 29), (29, 22), (4, 3), (3, 2), (2, 1)]
+    ], expectedScore: 18_000, expectedShowers: 1, expectedExchanges: 7)
+
     static let lantern = StoryPatternPlan(target: 150_000, moves: [
         [(8, 9), (0, 1), (5, 12), (0, 1)],
         [],

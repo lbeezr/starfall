@@ -662,6 +662,81 @@ extension SkySaveArchiveTests {
         }
     }
 
+    @MainActor func testKiteCurrentAndHistoricalRoundsKeepTheirOwnArchiveAndReplay() throws {
+        let opening = FallingSky.freshChallenge(.kiteHarbor)
+        var current = opening
+        XCTAssertNotNil(current.nudge(from: Cell(2, 1), to: Cell(2, 0)))
+        XCTAssertEqual(current.displayScore, 5_000)
+        let historical = ObservatoryReviewFixture.game(dense: false, score: 9, challenge: .kiteHarbor)
+        for (game, replay, target, revision) in [
+            (historical, FallingSky(challenge: .kiteHarbor), 18, 0), (current, opening, 17_000, 4)
+        ] {
+            let defaults = makeDefaults()
+            let bytes = try SkySaveArchive.encode(game)
+            XCTAssertEqual(try SkySaveArchive.decode(bytes), game)
+            XCTAssertEqual(try SkySaveArchive.encode(SkySaveArchive.decode(bytes)), bytes)
+            XCTAssertEqual(try SkySaveArchive.decode(bytes).replay(), replay)
+            defaults.set(bytes, forKey: SkySaveArchive.key)
+            let clock = ManualRainClock()
+            let store = FallingSkyStore(defaults: defaults, arguments: [],
+                presenter: FallingSkyRecorder(), clock: clock)
+            XCTAssertEqual(store.game, game)
+            XCTAssertEqual(store.game.displayTarget, target)
+            XCTAssertEqual(store.game.challengeRevision, revision)
+            XCTAssertTrue(store.isPaused)
+            XCTAssertEqual(defaults.data(forKey: SkySaveArchive.key), bytes, "Initialization is read-only")
+            store.setSuspended(false)
+            XCTAssertEqual(defaults.data(forKey: SkySaveArchive.key), bytes)
+            XCTAssertNil(clock.deadline)
+            store.beginEntry(.replay)
+            XCTAssertEqual(store.game, replay)
+            XCTAssertEqual(store.game.displayTarget, target)
+            XCTAssertEqual(store.game.challengeRevision, revision)
+            XCTAssertEqual(try SkySaveArchive.decode(XCTUnwrap(defaults.data(forKey: SkySaveArchive.key))), replay)
+            store.setSuspended(true)
+        }
+    }
+
+    @MainActor func testKiteRevisionFourRejectsOlderEnvelopesAndUnsupportedHistoricalClaims() throws {
+        let current = FallingSky.freshChallenge(.kiteHarbor)
+        XCTAssertEqual(current.challengeRevision, 4)
+        let core = try JSONSerialization.jsonObject(with: JSONEncoder().encode(current))
+        let legacy = try JSONEncoder().encode(FallingSky(seed: 42, openingCascade: false))
+        for (key, version) in [(SkySaveArchive.patternKey, 12), (SkySaveArchive.cascadeKey, 11),
+                               (SkySaveArchive.storyKey, 10), (SkySaveArchive.worldKey, 9),
+                               (SkySaveArchive.agingKey, 8), (SkySaveArchive.patientFeedingKey, 7),
+                               (SkySaveArchive.feedingKey, 6), (SkySaveArchive.gravityKey, 5),
+                               (SkySaveArchive.previousKey, 4)] {
+            let defaults = makeDefaults()
+            let bytes = try JSONSerialization.data(withJSONObject: ["schemaVersion": version, "game": core])
+            defaults.set(legacy, forKey: SkySaveArchive.legacyKey)
+            defaults.set(bytes, forKey: key)
+            XCTAssertNil(SkySaveArchive.load(from: defaults))
+            guard case .rejected(let source) = SkySaveArchive.inspect(from: defaults) else {
+                return XCTFail("Kite revision four must not load from \(key)")
+            }
+            XCTAssertEqual(source, key)
+            XCTAssertEqual(defaults.data(forKey: key), bytes)
+            XCTAssertEqual(defaults.data(forKey: SkySaveArchive.legacyKey), legacy)
+            XCTAssertNil(defaults.object(forKey: SkySaveArchive.key))
+        }
+        for revision in 1...3 {
+            XCTAssertNil(StoryChallengeDefinition(.kiteHarbor, revision: revision))
+            var envelope = try XCTUnwrap(JSONSerialization.jsonObject(with: SkySaveArchive.encode(current)) as? [String: Any])
+            var game = try XCTUnwrap(envelope["game"] as? [String: Any])
+            game["savedChallengeRevision"] = revision
+            envelope["game"] = game
+            let bytes = try JSONSerialization.data(withJSONObject: envelope)
+            XCTAssertThrowsError(try SkySaveArchive.decode(bytes))
+            let defaults = makeDefaults()
+            defaults.set(legacy, forKey: SkySaveArchive.legacyKey)
+            defaults.set(bytes, forKey: SkySaveArchive.key)
+            XCTAssertNil(SkySaveArchive.load(from: defaults), "An invalid Kite claim cannot fall back to older play")
+            XCTAssertEqual(defaults.data(forKey: SkySaveArchive.key), bytes)
+            XCTAssertEqual(defaults.data(forKey: SkySaveArchive.legacyKey), legacy)
+        }
+    }
+
     @MainActor func testInvalidV13BlocksV11AndInvalidV11BlocksOlderFallback() throws {
         let old = FallingSky(definition: try XCTUnwrap(StoryChallengeDefinition(.firstLight, revision: 2)))
         let core = try JSONSerialization.jsonObject(with: JSONEncoder().encode(old))

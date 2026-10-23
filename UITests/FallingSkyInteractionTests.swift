@@ -598,11 +598,21 @@ enum NativeSystemMotionSettings {
         preferences.launch()
         let reduce = preferences.switches["Reduce Motion"]
         if !reduce.exists {
-            let accessibility = preferences.buttons["Accessibility"]
+            let identified = preferences.buttons["com.apple.settings.accessibility"]
+            let accessibility = identified.exists ? identified : preferences.buttons["Accessibility"]
             for _ in 0..<4 where !accessibility.isHittable { preferences.swipeUp() }
-            XCTAssertTrue(accessibility.isHittable); accessibility.tap()
+            XCTAssertTrue(accessibility.isHittable)
+            // Settings' iPad sidebar can expose a Button whose AX activation
+            // leaves General selected. Touch its visible row; retain the native
+            // button action for the phone's single-pane Settings list.
+            if preferences.collectionViews["com.apple.settings.sidebar.collectionView"].exists {
+                accessibility.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+            } else {
+                accessibility.tap()
+            }
             let motion = preferences.buttons["Motion"].firstMatch
-            XCTAssertTrue(motion.waitForExistence(timeout: 5)); motion.tap()
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "hittable == true"), object: motion).wait(timeout: 5))
+            motion.tap()
         }
         XCTAssertTrue(reduce.waitForExistence(timeout: 5))
         return (preferences, reduce)

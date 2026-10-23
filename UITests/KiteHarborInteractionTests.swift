@@ -48,12 +48,13 @@ final class KiteHarborInteractionTests: XCTestCase {
         button.tap()
     }
 
-    @MainActor private func assertRestoration(_ percent: Int, score: Int, location: ReviewLocation = .kite, in app: XCUIApplication) {
+    @MainActor private func assertRestoration(_ percent: Int, score: Int, location: ReviewLocation = .kite,
+                                            target: Int = 18, in app: XCUIApplication) {
         let restoration = app.descendants(matching: .any)["\(location.rawValue).restoration"].firstMatch
         XCTAssertTrue(restoration.waitForExistence(timeout: 5))
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "\(location.title), \(percent)% restored"),
                                                object: restoration).wait(timeout: 5))
-        XCTAssertEqual(app.staticTexts["experiment.score"].label, "\(score) of 18 starlight collected")
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, "\(score.formatted()) of \(target.formatted()) starlight collected")
     }
 
     @MainActor private func capture(_ app: XCUIApplication, _ name: String) {
@@ -134,7 +135,7 @@ final class KiteHarborInteractionTests: XCTestCase {
             app.worldVisitControl("kiteHarbor").tap()
             XCTAssertTrue(app.buttons["sky.begin"].waitForExistence(timeout: 5))
             XCTAssertEqual(app.staticTexts["sky.title"].label, "Kite Harbor")
-            XCTAssertTrue(app.staticTexts["sky.subtitle"].label.contains("18 starlight"))
+            XCTAssertTrue(app.staticTexts["sky.subtitle"].label.contains("17,000 starlight"))
             XCTAssertFalse(app.buttons["experiment.cell.0.0"].exists)
             capture(app, "kite-entry-over-retained-half-restored-\(location.rawValue)")
             tap("sky.home", in: app)
@@ -153,7 +154,7 @@ final class KiteHarborInteractionTests: XCTestCase {
             XCTAssertEqual(app.staticTexts["sky.title"].label, "Kite Harbor")
             tap("sky.begin", in: app)
             pauseRunningSky(app)
-            assertRestoration(0, score: 0, in: app)
+            assertRestoration(0, score: 0, target: 17_000, in: app)
             XCTAssertFalse(app.descendants(matching: .any)["\(location.rawValue).restoration"].firstMatch.exists)
             capture(app, "kite-begin-replaces-retained-\(location.rawValue)-with-unrestored-harbor")
         }
@@ -276,5 +277,210 @@ final class KiteHarborInteractionTests: XCTestCase {
                 capture(sample, "kite-tablet-\(view)-scene-\(milestone)-score-\(score)-normal-motion")
             }
         }
+    }
+}
+
+extension KiteHarborInteractionTests {
+    @MainActor private func freshEncounter(largest: Bool = false, quiet: Bool = false) -> XCUIApplication {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchArguments = ["--starfalls-reset", "--sky-flow-review", "--dialogue-review", "--world-legacy-review",
+                               "-calmEffects", quiet ? "YES" : "NO"]
+        if largest {
+            app.launchArguments += ["-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"]
+        }
+        app.launch()
+        app.worldVisitControl("kiteHarbor").tap()
+        XCTAssertTrue(app.buttons["sky.begin"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["sky.subtitle"].label.contains("17,000 starlight"))
+        XCTAssertFalse(app.staticTexts["sky.subtitle"].label.contains("18 starlight"))
+        app.revealSkyControls([app.buttons["sky.begin"]])
+        capture(app, largest ? "kite-current-entry-largest" : "kite-current-entry-default")
+        tap("sky.begin", in: app)
+        pauseRunningSky(app)
+        assertRestoration(0, score: 0, target: 17_000, in: app)
+        return app
+    }
+
+    @MainActor private func playEncounter(_ plan: StoryPatternPlan, app: XCUIApplication,
+                                         restoreAfterFirstChoice: Bool = false) {
+        var exchanges = 0
+        app.completeStoryPattern(plan, exchange: { source, destination, _ in
+            app.revealSkyControls([source, destination])
+            XCTAssertTrue(source.isHittable && destination.isHittable)
+            source.coordinate(withNormalizedOffset: .init(dx: 0.5, dy: 0.5)).press(forDuration: 0.05,
+                thenDragTo: destination.coordinate(withNormalizedOffset: .init(dx: 0.5, dy: 0.5)),
+                withVelocity: .fast, thenHoldForDuration: 0.05)
+            exchanges += 1
+            if exchanges == 1 {
+                let firstScore = plan.expectedScore == 17_000 ? 5_000 : 7_000
+                let score = "\(firstScore.formatted()) of \(17_000.formatted()) starlight collected"
+                XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", score),
+                    object: app.staticTexts["experiment.score"]).wait(timeout: 5))
+                capture(app, firstScore == 5_000 ? "kite-current-space-first" : "kite-current-points-first")
+                if restoreAfterFirstChoice {
+                    let retained = app.otherElements["experiment.board"].value as? String
+                    XCTAssertNotNil(retained)
+                    XCUIDevice.shared.press(.home); app.activate()
+                    XCTAssertEqual(app.otherElements["experiment.board"].value as? String, retained)
+                    app.terminate()
+                    app.launchArguments = ["--sky-flow-review", "--dialogue-review", "-calmEffects", "NO"]
+                    app.launch()
+                    tap("sky.resume", in: app)
+                    XCTAssertTrue(app.buttons["experiment.next"].waitForExistence(timeout: 5))
+                    XCTAssertEqual(app.otherElements["experiment.board"].value as? String, retained)
+                    XCTAssertEqual(app.staticTexts["experiment.score"].label, score)
+                    capture(app, "kite-current-restored-points-choice")
+                }
+            }
+        }, shower: {
+            tap("experiment.next", in: app)
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label CONTAINS %@", "full"),
+                object: app.staticTexts["sky.pressure"]).wait(timeout: 5))
+        })
+        XCTAssertEqual(app.staticTexts["experiment.outcome"].label, "Kite Harbor restored!")
+        XCTAssertEqual(app.buttons["sky.worldMap"].label, "Visit Seed Moon")
+        XCTAssertFalse(app.buttons["experiment.next"].exists)
+        capture(app, plan.expectedScore == 17_000 ? "kite-current-space-win" : "kite-current-points-win")
+    }
+
+    @MainActor func testCurrentKiteChoicesFinishRestoreReplayAndOverflow() {
+        executionTimeAllowance = 360
+        setSystemMotion(reduced: false)
+        for pointsFirst in [false, true] {
+            let app = freshEncounter()
+            defer { app.terminate() }
+            playEncounter(pointsFirst ? .kitePoints : .kiteSpace, app: app,
+                          restoreAfterFirstChoice: pointsFirst)
+            if pointsFirst {
+                app.terminate(); app.launchArguments = ["--sky-flow-review", "--dialogue-review"]; app.launch()
+                tap("sky.resume", in: app)
+                XCTAssertTrue(app.staticTexts["experiment.outcome"].waitForExistence(timeout: 5))
+                XCTAssertTrue(app.staticTexts["experiment.score"].label.contains("18,000 of 17,000"))
+                tap("experiment.replay", in: app)
+                XCTAssertTrue(app.staticTexts["sky.subtitle"].label.contains("same Kite Harbor opening"))
+                XCTAssertTrue(app.staticTexts["sky.subtitle"].label.contains("17,000 starlight"))
+                tap("sky.begin", in: app); pauseRunningSky(app)
+                assertRestoration(0, score: 0, target: 17_000, in: app)
+                for _ in 0..<12 where !app.staticTexts["experiment.outcome"].exists {
+                    let next = app.buttons["experiment.next"]
+                    XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+                        app.staticTexts["experiment.outcome"].exists || next.isEnabled
+                    }, object: nil).wait(timeout: 5))
+                    if !app.staticTexts["experiment.outcome"].exists { tap("experiment.next", in: app) }
+                }
+                XCTAssertTrue(app.staticTexts["experiment.outcome"].waitForExistence(timeout: 5))
+                XCTAssertEqual(app.staticTexts["experiment.outcome"].label, "No room to land")
+                capture(app, "kite-current-overflow")
+            }
+        }
+    }
+
+    @MainActor func testCurrentKiteLargestQuietHelpAndEarnedOnward() {
+        executionTimeAllowance = 360
+        setSystemMotion(reduced: false)
+        let app = freshEncounter(largest: true, quiet: true)
+        defer { app.terminate() }
+        tap("experiment.settings", in: app)
+        app.skyMenuControl("experiment.help").tap()
+        let explanation = app.staticTexts.containing(NSPredicate(format: "label CONTAINS %@ AND label CONTAINS %@",
+            "Kite Harbor", "17,000")).firstMatch
+        XCTAssertTrue(explanation.waitForExistence(timeout: 5))
+        XCTAssertFalse(explanation.label.contains("Ribbon Crossing"))
+        XCTAssertFalse(explanation.label.contains("tap groups"))
+        let heading = app.staticTexts["Kite Harbor · Raise the sails"]
+        for _ in 0..<36 where !heading.isHittable || heading.frame.maxY > app.frame.maxY - 80 {
+            app.swipeUp()
+        }
+        XCTAssertTrue(heading.isHittable)
+        capture(app, "kite-current-help-heading-largest")
+        for _ in 0..<12 where explanation.frame.maxY > app.frame.maxY - 80 { app.swipeUp() }
+        XCTAssertLessThanOrEqual(explanation.frame.maxY, app.frame.maxY - 80)
+        XCTAssertGreaterThan(explanation.frame.maxY, app.frame.minY + 80)
+        XCTAssertTrue(explanation.isHittable)
+        capture(app, "kite-current-help-largest")
+        tap("Done", in: app)
+        playEncounter(.kitePoints, app: app)
+        let onward = app.buttons["sky.worldMap"]
+        app.revealSkyControls([onward, app.buttons["experiment.replay"]])
+        XCTAssertGreaterThanOrEqual(onward.frame.height, 44)
+        XCTAssertTrue(onward.isHittable)
+        capture(app, "kite-current-onward-largest")
+        tap("sky.worldMap", in: app)
+        XCTAssertTrue(app.staticTexts["world.selection"].waitForExistence(timeout: 5))
+        XCTAssertEqual(app.staticTexts["world.selection"].label, "Seed Moon")
+        tap("world.visit", in: app)
+        XCTAssertTrue(app.buttons["sky.begin"].waitForExistence(timeout: 5))
+        XCTAssertEqual(app.staticTexts["sky.title"].label, "Seed Moon")
+        XCTAssertTrue(app.staticTexts["sky.subtitle"].label.contains("18 starlight"))
+        capture(app, "kite-current-seed-entry-largest")
+    }
+
+    @MainActor func testCurrentKiteAutomaticShowerAllowsPointsFirstRecovery() {
+        executionTimeAllowance = 180
+        setSystemMotion(reduced: false)
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchArguments = ["--starfalls-reset", "--world-map-review", "--world-map-state=twoRepairs",
+                               "--dialogue-review", "-calmEffects", "NO"]
+        app.launch()
+        defer { app.terminate() }
+        let seed = app.buttons["world.node.seedMoon"]
+        app.revealWorldMapMarker(seed); seed.tap()
+        XCTAssertEqual(app.staticTexts["world.status"].label, "Restore Kite Harbor first")
+        XCTAssertFalse(app.buttons["world.visit"].exists)
+        let kite = app.buttons["world.node.kiteHarbor"]
+        app.revealWorldMapMarker(kite); kite.tap()
+        tap("world.visit", in: app); tap("sky.begin", in: app); pauseRunningSky(app)
+        let first = app.buttons["experiment.cell.0.4"], firstDestination = app.buttons["experiment.cell.1.4"]
+        app.revealSkyControls([first, firstDestination])
+        first.coordinate(withNormalizedOffset: .init(dx: 0.5, dy: 0.5)).press(forDuration: 0.05,
+            thenDragTo: firstDestination.coordinate(withNormalizedOffset: .init(dx: 0.5, dy: 0.5)),
+            withVelocity: .fast, thenHoldForDuration: 0.05)
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@",
+            "7,000 of 17,000 starlight collected"), object: app.staticTexts["experiment.score"]).wait(timeout: 5))
+        if app.buttons["sky.dialogue.close"].exists { tap("sky.dialogue.close", in: app) }
+        // Resolve ordinary native coordinates before resuming the actual clock.
+        // XCTest lookup overhead is not a player's planning or gesture time.
+        let moves = [(15, 14), (36, 29), (29, 22), (4, 3), (3, 2), (2, 1)].map { from, to in
+            let source = app.buttons["experiment.cell.\(from / 7).\(from % 7)"]
+            let destination = app.buttons["experiment.cell.\(to / 7).\(to % 7)"]
+            XCTAssertTrue(source.isHittable && destination.isHittable)
+            return (source.coordinate(withNormalizedOffset: .init(dx: 0.5, dy: 0.5)),
+                    destination.coordinate(withNormalizedOffset: .init(dx: 0.5, dy: 0.5)))
+        }
+        tap("experiment.settings", in: app); tap("experiment.pause", in: app)
+        app.waitForSkyElement(matching: NSPredicate(format: "identifier == %@ AND value BEGINSWITH %@",
+            "experiment.board", "1 showers"), timeout: 10,
+            failure: "The ordinary automatic shower must arrive without Next")
+        // The count commits before the arriving stars finish their motion. A
+        // second contact replaces a buffered first move, so observe the existing
+        // finished-arrival cue before sending the ordered recovery exchanges.
+        app.waitForSkyElement(matching: NSPredicate(format: "identifier == %@ AND label == %@",
+            "experiment.arrivalCue", "Next shower on its way"), timeout: 5,
+            failure: "The first automatic shower must finish landing before recovery")
+        XCTAssertTrue((app.otherElements["experiment.board"].value as? String)?.hasPrefix("1 showers") == true)
+        for (index, move) in moves.enumerated() {
+            let (from, to) = move
+            from.press(forDuration: 0.05, thenDragTo: to, withVelocity: .fast, thenHoldForDuration: 0.05)
+            if index == 0 {
+                app.waitForSkyElement(matching: NSPredicate(format: "identifier == %@ AND label == %@",
+                    "experiment.score", "12,000 of 17,000 starlight collected"), timeout: 5,
+                    failure: "The high-column recovery clear must commit before the next exchange")
+            }
+        }
+        XCTAssertTrue(app.staticTexts["experiment.outcome"].waitForExistence(timeout: 10))
+        XCTAssertEqual(app.staticTexts["experiment.outcome"].label, "Kite Harbor restored!")
+        XCTAssertTrue(app.staticTexts["experiment.score"].label.contains("18,000 of 17,000"))
+        XCTAssertEqual(app.buttons["sky.worldMap"].label, "Visit Seed Moon")
+        capture(app, "kite-current-automatic-shower-recovery")
+        tap("sky.worldMap", in: app)
+        XCTAssertTrue(app.staticTexts["world.selection"].waitForExistence(timeout: 5))
+        XCTAssertEqual(app.staticTexts["world.selection"].label, "Seed Moon")
+        XCTAssertEqual(app.staticTexts["world.status"].label, "Ready to restore")
+        tap("world.visit", in: app)
+        XCTAssertTrue(app.buttons["sky.begin"].waitForExistence(timeout: 5))
+        XCTAssertEqual(app.staticTexts["sky.title"].label, "Seed Moon")
+        capture(app, "kite-current-newly-unlocked-seed")
     }
 }

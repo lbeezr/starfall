@@ -143,8 +143,54 @@ final class SkyDialogueTests: XCTestCase {
         XCTAssertEqual(SkyCopy.text(.celebrationLine), "Line!")
     }
 
+    @MainActor func testKiteEntryReplayAndHelpUseTheSelectedRules() throws {
+        let historical = FallingSky(challenge: .kiteHarbor)
+        let fresh = FallingSky.freshChallenge(.kiteHarbor)
+        let retainedBytes = try SkySaveArchive.encode(historical)
+        XCTAssertEqual(fresh.challengeRevision, 4)
+        XCTAssertEqual(fresh.displayTarget, 17_000)
+        let entry = SkyEntryRequest.kiteHarbor.introduction(challenge: .kiteHarbor,
+            replayingRevision: historical.challengeRevision, replayingTarget: historical.displayTarget)
+        let replay = SkyEntryRequest.replay.introduction(challenge: .kiteHarbor,
+            replayingRevision: fresh.challengeRevision, replayingTarget: fresh.displayTarget)
+        let guide = try XCTUnwrap(fresh.challengeGuideLine)
+        let help = try XCTUnwrap(fresh.challengeHelpText)
+        XCTAssertEqual(entry.id, "kite-harbor.patterns.entry.1")
+        XCTAssertEqual(replay.id, "kite-harbor.patterns.replay.1")
+        XCTAssertEqual(guide.id, "guide.kite-harbor.patterns.1")
+        for text in [entry.text, replay.text, guide.text, help] {
+            XCTAssertTrue(text.contains("17,000 starlight"))
+            XCTAssertTrue(text.contains("crowded column"))
+            XCTAssertTrue(text.contains("below"))
+            XCTAssertFalse(text.contains("18 starlight"))
+            XCTAssertFalse(text.contains("Ribbon Crossing"))
+        }
+        for text in [entry.text, guide.text, help] {
+            XCTAssertTrue(text.contains("straight lines of 4 or more"))
+            XCTAssertTrue(text.contains("automatically"))
+        }
+        XCTAssertTrue(replay.text.contains("Your saved round stays until you tap Begin"))
+        XCTAssertEqual(SkyHelpContext.selected(game: historical, entry: .kiteHarbor), SkyHelpContext(game: fresh))
+        XCTAssertEqual(SkyHelpContext.selected(game: historical, entry: .replay), SkyHelpContext(game: historical))
+        XCTAssertFalse(SkyHelpContext(game: fresh).manualClears)
+        XCTAssertEqual(SkyHelpContext(game: fresh).automaticLineLength, 4)
+        let oldReplay = SkyEntryRequest.replay.introduction(challenge: .kiteHarbor,
+            replayingRevision: historical.challengeRevision, replayingTarget: historical.displayTarget)
+        XCTAssertEqual(oldReplay.id, "kite-harbor.replay.1")
+        XCTAssertEqual(historical.challengeGuideLine?.id, "guide.kite-harbor.1")
+        for text in [oldReplay.text, try XCTUnwrap(historical.challengeGuideLine).text,
+                     try XCTUnwrap(historical.challengeHelpText)] {
+            XCTAssertTrue(text.contains("18 starlight"))
+            XCTAssertFalse(text.contains("automatically"))
+        }
+        XCTAssertTrue(SkyHelpContext(game: historical).manualClears)
+        XCTAssertEqual(try SkySaveArchive.encode(historical), retainedBytes)
+        XCTAssertFalse(StarfallChallenge.kiteHarbor.menuLabel.contains("18 starlight"))
+        XCTAssertFalse(StarfallChallenge.kiteHarbor.menuHint.contains("18 starlight"))
+    }
+
     @MainActor func testCurrentStoryStartupKeepsItsObjectiveAndAutomaticPatternGuidance() throws {
-        for challenge in [StarfallChallenge.firstLight, .ribbonCrossing] {
+        for challenge in [StarfallChallenge.firstLight, .ribbonCrossing, .kiteHarbor] {
             let suite = "Starfall.StoryStartupGuide.\(UUID())"
             let defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
             defer { defaults.removePersistentDomain(forName: suite) }

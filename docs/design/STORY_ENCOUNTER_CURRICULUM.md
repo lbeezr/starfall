@@ -1,8 +1,10 @@
 # Give each ready place a different decision
 
-**Status:** Proposed curriculum and Kite encounter; production-Core consequences witnessed, no runtime adoption · **Owner:** Current implementer · **Updated:** October 23, 2026 UTC · [Design leaf #252](https://github.com/lbeezr/starfall/issues/252)
+**Status:** Curriculum retained; Kite prepared through #278; final native acceptance pending · **Owner:** Current implementer · **Updated:** October 23, 2026 UTC · [Design leaf #252](https://github.com/lbeezr/starfall/issues/252)
 
-Kite should ask whether to open useful room high in the sky or take a larger award below. The 24-star candidate below proves that distinction under the current four-star-line resolver, including recovery after choosing points first. It does not establish difficulty, enjoyment, input time or a new whole-location target. The next deliverable is one versioned native Kite comparison, followed by a retain/revise/remove decision before producing more encounters.
+**Selected follow-through:** [#278](https://github.com/lbeezr/starfall/issues/278) now selects 17,000 points as the complete compact Kite4 encounter and implements the versioned normal-app route. The original authoring witness and its carrier limits below remain source-bound; [current development acceptance](../evidence/kite-headroom-2026-10-23/README.md) verifies both native finishes, ordinary-clock recovery and phone/tablet reading. Seed #279 and Silver #280 are separate complete runtime leaves.
+
+Kite should ask whether to open useful room high in the sky or take a larger award below. The 24-star candidate below proves that distinction under the current four-star-line resolver, including recovery after choosing points first. It does not establish difficulty, enjoyment, input time or a new whole-location target. The versioned native comparison has earlier passes; a later clock repeat remains unresolved before merge; #279/#280 extend the next distinct encounters. Human recognition and comfort still need observation.
 
 This develops the [current roadmap](../ROADMAP.md) and the decision themes in the [Story plan](../STORY_MODE_GAMEPLAY_PLAN.md). It uses existing materials, exchanges, automatic patterns, growth, settling and local progression. No new power, obstacle, timing gate, artwork family or multiplayer is proposed here.
 
