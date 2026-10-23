@@ -1,0 +1,183 @@
+{
+  "environment": "Debug iOS27.0(24A434) Simulator; Xcode27.1(27A9275), Swift6.4, macOS27.0.1arm64",
+  "captures": [
+    {
+      "file": "dev-612a369b-wip-19529984a3d0__tutorial-actions__iphone-17e__default-before.jpg",
+      "sha256": "720f72661e237f77312e3606ec82b5048740c39ed19136147d36bcb16bc904fe",
+      "bytes": 341720,
+      "pixels": [
+        1170,
+        2532
+      ],
+      "raw_source": "/private/tmp/starfall-cohesion-20261023/goal04-before-tutorial-idle.png",
+      "raw_sha256": "947da146df29fd8e544373cd755436cb4ff074f605b9e60e57acaca5841e1844",
+      "kind": "Native normal-app screenshot",
+      "source": {
+        "build": "dev.21d62cc22f",
+        "compiled_source": "612a369b + snapshot19529984a3d0; runtime-equivalent to activation main81826248",
+        "dirty_snapshot": "19529984a3d0"
+      },
+      "variant": "21d prepared install; same reset seed64 Match chapter; default text, Calm off",
+      "status": "Inspected"
+    },
+    {
+      "file": "dev-8c52334e__tutorial-actions__iphone-17e__default-after.jpg",
+      "sha256": "7ec9770e488f6160d0b353fe941bdb5aecfbebb0ad65f9eba66eec0e8f8d910c",
+      "bytes": 338848,
+      "pixels": [
+        1170,
+        2532
+      ],
+      "raw_source": "/private/tmp/starfall-cohesion-20261023/goal04-integrated-phone-attachments/DE0621A9-7260-4775-A7CB-E9BAE082203A.png",
+      "raw_sha256": "4762593bef82d900137b332f494602f2fb89e74791e029f8a4bf1f4069b1c780",
+      "kind": "Native XCTest screenshot",
+      "source": {
+        "build": "dev.8895bb79c7",
+        "commit": "8c52334e843f108e6d39e49424cfe60d5c5e601f",
+        "dirty_inputs": {}
+      },
+      "variant": "same Match chapter; default text, Calm off",
+      "status": "Inspected"
+    },
+    {
+      "file": "dev-81826248-wip-5be0538bb9c6__tutorial-actions__iphone-17e__held-press.jpg",
+      "sha256": "e117dae88f677bdea5dd7c2b8effc60b99f5366c2af4ea406cd23172bcd6d7af",
+      "bytes": 298215,
+      "pixels": [
+        1170,
+        2532
+      ],
+      "raw_source": "/private/tmp/starfall-cohesion-20261023/goal04-after-frames/frame-0.200.jpg",
+      "raw_sha256": "a4709d03eb1ba94469c98cc181f642fc2ba7884ee848aa45ec6d902211e5080b",
+      "kind": "Native recording frame",
+      "source": {
+        "base_main": "81826248a5a08f7a52ad36d7c13263ccb2502cd1",
+        "build": "dev.7a0ac59281",
+        "dirty_inputs": {
+          "App/ObservatoryArtwork.swift": "935b664469b36b26d187bb631d8ca25a8ef7eb8981b863a24a60039026b6dd73",
+          "App/StarfallTheme.swift": "f9a3047f4327813b9a2fbc6c09aa0ea230215ff5b4df03c24453c860cfe3caaf",
+          "AppTests/ObservatoryArtworkTests.swift": "324fd03ae9dc313b8dba439ba21d1522990439b98bd7a47503f26b8f4eac9ebf",
+          "UITests/SkyLessonInteractionTests.swift": "fe13bd94b670616408a6a71e7a6b7228b0c2a7f847ee2f1de6f0823cdab117bc"
+        },
+        "snapshot_id": "5be0538bb9c6"
+      },
+      "variant": "0.190s into9.392s recording; Hint held; default text, Calm off",
+      "status": "Inspected"
+    },
+    {
+      "file": "dev-8c52334e__tutorial-actions__iphone-17e__cancelled.jpg",
+      "sha256": "7ec9770e488f6160d0b353fe941bdb5aecfbebb0ad65f9eba66eec0e8f8d910c",
+      "bytes": 338848,
+      "pixels": [
+        1170,
+        2532
+      ],
+      "raw_source": "/private/tmp/starfall-cohesion-20261023/goal04-integrated-phone-attachments/AE39620A-E38F-4250-9D1E-E5C91041187F.png",
+      "raw_sha256": "4762593bef82d900137b332f494602f2fb89e74791e029f8a4bf1f4069b1c780",
+      "kind": "Native XCTest screenshot",
+      "source": {
+        "build": "dev.8895bb79c7",
+        "commit": "8c52334e843f108e6d39e49424cfe60d5c5e601f",
+        "dirty_inputs": {}
+      },
+      "variant": "release160pt upward leaves Less/detail visible",
+      "status": "Inspected"
+    },
+    {
+      "file": "dev-8c52334e__tutorial-actions__iphone-17e__ax3xl.jpg",
+      "sha256": "9cb40ee35f89abc2b5cc0469415511726c8d58623f5656207ff133475f987bba",
+      "bytes": 381926,
+      "pixels": [
+        1170,
+        2532
+      ],
+      "raw_source": "/private/tmp/starfall-cohesion-20261023/goal04-integrated-phone-attachments/C9B37591-E72B-42E0-A2A6-71B660652774.png",
+      "raw_sha256": "c10df49a836f4840286c1858805ad503757050f5a57dc755cd58e2fac359ba54",
+      "kind": "Native XCTest screenshot",
+      "source": {
+        "build": "dev.8895bb79c7",
+        "commit": "8c52334e843f108e6d39e49424cfe60d5c5e601f",
+        "dirty_inputs": {}
+      },
+      "variant": "real square completion; scrolled to actions; AX3XL, Calm on",
+      "status": "Inspected"
+    },
+    {
+      "file": "dev-8c52334e__tutorial-actions__ipad-mini-a17-pro__ax3xl.jpg",
+      "sha256": "a83d02d6a40f4d03eec8b94d47907a2cc8ddcf013fb1d247c1ec2cdc6e1c5011",
+      "bytes": 477763,
+      "pixels": [
+        1488,
+        2266
+      ],
+      "raw_source": "/private/tmp/starfall-cohesion-20261023/goal04-integrated-tablet-attachments/8D87CC47-7D43-4C51-9FA9-A363168A98DE.png",
+      "raw_sha256": "da68129d9b77e897471cb91a11b76fad2f4d4eb5717121d3899d835815ea3ceb",
+      "kind": "Native XCTest screenshot",
+      "source": {
+        "build": "dev.8895bb79c7",
+        "commit": "8c52334e843f108e6d39e49424cfe60d5c5e601f",
+        "dirty_inputs": {}
+      },
+      "variant": "real square completion; scrolled to actions; AX3XL, Calm on",
+      "status": "Inspected"
+    },
+    {
+      "file": "dev-8c52334e__action-states__native-host__default-short.jpg",
+      "sha256": "aa54ec08af41edfef45eb7525eefbe4ec137e925a2efe184d371e2b20c0177a4",
+      "bytes": 20649,
+      "pixels": [
+        1032,
+        189
+      ],
+      "raw_source": "/private/tmp/starfall-cohesion-20261023/goal04-integrated-tablet-attachments/E4B6F873-FE45-415F-9CAB-E9D774CC075F.png",
+      "raw_sha256": "d68e1a55e93ab2d572b75912aa255094ca345935e25b7a619b1b587091eef894",
+      "kind": "Native production-component render; not full-app interaction",
+      "source": {
+        "build": "dev.8895bb79c7",
+        "commit": "8c52334e843f108e6d39e49424cfe60d5c5e601f",
+        "dirty_inputs": {}
+      },
+      "variant": "default Resume;240pt enabled/disabled pair,2x render",
+      "status": "Inspected"
+    },
+    {
+      "file": "dev-8c52334e__action-states__native-host__ax5-long.jpg",
+      "sha256": "9f68f00b78bec87919dfdcbec895c213ad9ddb67bc1bb51d1280e097dcb1d411",
+      "bytes": 129205,
+      "pixels": [
+        1032,
+        872
+      ],
+      "raw_source": "/private/tmp/starfall-cohesion-20261023/goal04-integrated-tablet-attachments/E8F93CD7-2CA4-42FF-BD82-B351CC08AEDD.png",
+      "raw_sha256": "f3c05e2499a354bc267f111ec1d159cdd514e2d461f0b644ba623150c236d38a",
+      "kind": "Native production-component render; not full-app interaction",
+      "source": {
+        "build": "dev.8895bb79c7",
+        "commit": "8c52334e843f108e6d39e49424cfe60d5c5e601f",
+        "dirty_inputs": {}
+      },
+      "variant": "AX5 Continue exploring the Observatory;240pt enabled/disabled pair,2x render",
+      "status": "Inspected"
+    },
+    {
+      "file": "dev-81826248-wip-5be0538bb9c6__tutorial-actions__iphone-17e__press-cancel.mp4",
+      "sha256": "dac9469530691849f42c676c1cb47c6dc29967c44f9feecf8d9665962172601c",
+      "bytes": 5550470,
+      "kind": "Native simctl recording; normal speed",
+      "source": {
+        "base_main": "81826248a5a08f7a52ad36d7c13263ccb2502cd1",
+        "build": "dev.7a0ac59281",
+        "dirty_inputs": {
+          "App/ObservatoryArtwork.swift": "935b664469b36b26d187bb631d8ca25a8ef7eb8981b863a24a60039026b6dd73",
+          "App/StarfallTheme.swift": "f9a3047f4327813b9a2fbc6c09aa0ea230215ff5b4df03c24453c860cfe3caaf",
+          "AppTests/ObservatoryArtworkTests.swift": "324fd03ae9dc313b8dba439ba21d1522990439b98bd7a47503f26b8f4eac9ebf",
+          "UITests/SkyLessonInteractionTests.swift": "fe13bd94b670616408a6a71e7a6b7228b0c2a7f847ee2f1de6f0823cdab117bc"
+        },
+        "snapshot_id": "5be0538bb9c6"
+      },
+      "seconds": 9.3916666667,
+      "status": "Sampled native frames inspected",
+      "limits": "State chronology and held material; not continuous smoothness or matched before/after gesture timing."
+    }
+  ]
+}

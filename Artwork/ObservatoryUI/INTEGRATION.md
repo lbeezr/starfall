@@ -1,8 +1,8 @@
 # Observatory UI production handoff
 
-**Status:** Shared family adopted for development; rendered utility catalog imported, native review separate · **Original kit:** `cfd6ab7` · **Owner:** Current implementer · **Updated:** October 20, 2026
+**Status:** Shared family adopted for development; rendered utility catalog imported, native review separate · **Original kit:** `cfd6ab7` · **Owner:** Current implementer · **Updated:** October 23, 2026
 
-The native app uses three mode emblems, twenty rendered utility icons, one action skin and one reading-panel skin. The original utility bezel remains a retained catalog resource; the shared utility control now presents the icon alone in a clear 48-point target. Labels, interaction states and accessibility remain native. Primary/mode actions share measured action geometry; secondary and compact actions share the compact reading surface. The [game UI system](../../docs/design/GAME_UI_SYSTEM.md) owns art direction and screen migration. The [atlas](../../docs/design/interface/atlas-2026-10-19/README.md) is a concept reference, not a source of sliced runtime artwork.
+The native app uses three mode emblems, twenty rendered utility icons, one action skin and one reading-panel skin. The original utility bezel remains a retained catalog resource; the shared utility control now presents the icon alone in a clear 48-point target. Labels, interaction states and accessibility remain native. Primary/mode actions share measured action geometry; secondary and compact actions use the native `ObservatoryCompactActionSurface` enamel/brass face, separate from the passive compact reading raster retained by `starfallPanel`. The [game UI system](../../docs/design/GAME_UI_SYSTEM.md) owns art direction and screen migration. The [atlas](../../docs/design/interface/atlas-2026-10-19/README.md) is a concept reference, not a source of sliced runtime artwork.
 
 The [raster manifest](raster-manifest.json) records emblem/skin registration, hashes and slice regions. The [rendered utility manifest](rendered-utility-manifest.json) records current PNG registration, provenance, crop, alpha and budgets; the [glyph manifest](glyph-manifest.json) retains historical vector/template export evidence. The registered action skin has fixed-height end fittings and stretches horizontally only. Native integration adds no font registration, preference keys, runtime importer or dependency.
 
@@ -11,7 +11,7 @@ The [raster manifest](raster-manifest.json) records emblem/skin registration, ha
 | Concern | Existing owner | Handoff boundary |
 | --- | --- | --- |
 | Color, material, type, spacing and control roles | [StarfallTheme](../../App/StarfallTheme.swift) | Native serif display/action roles, pearl ink and enamel/brass colors; avoid screen-local style copies. |
-| Primary, secondary, compact, quiet and ceremony actions | `StarfallButtonStyle` in `StarfallTheme`; `ObservatoryActionLayout` | Native `Button`, measured wrapping labels, enabled/focus semantics and full hit shape. Shared authored action/compact surfaces with native state changes. |
+| Primary, secondary, compact, quiet and ceremony actions | `StarfallButtonStyle` in `StarfallTheme`; `ObservatoryActionLayout`; `ObservatoryCompactActionSurface` | Native `Button`, measured wrapping labels, enabled/focus semantics and full hit shape. Primary actions retain the authored skin; compact/secondary actions own a shared native enamel/brass face with material state changes. |
 | Glyphs, mode emblems and artwork registration | [ObservatoryArtwork](../../App/ObservatoryArtwork.swift) | `ObservatoryIcon`, `ObservatoryEmblem`, `ObservatoryModeLabel`, `ObservatorySkin` and passive `ObservatorySurface`; no game state or runtime SVG parsing. |
 | Small gameplay actions | `StarfallUtilityButtonStyle` / `StarfallGameButtonStyle` in `StarfallTheme` | Utilities retain clear 48-point targets; text-bearing gameplay actions retain 45-point targets. The rendered icon does not shrink its hit region or acquire a default bezel. |
 | Passive reading surface | `StarfallPanelStyle` / `starfallPanel`; `observatoryReadingPanel` | Small native notices retain compact insets; full reading surfaces use the registered 32-point fittings. Neither owns input, accessibility grouping or clipping of content. |
@@ -40,7 +40,7 @@ Use stable semantic IDs below, with separate source and export records. Original
 | `emblem-story` | Lantern with restrained warm crystal light; no label or surrounding medallion | 144 × 144 px / 48 × 48 pt | Home at 40 pt; 48 pt maximum. Aspect fit, never nine-slice. |
 | `emblem-freeplay` | Comet with a clear head and restrained trail; no label or surrounding medallion | 144 × 144 px / 48 × 48 pt | Same box and optical weight as Story; preserve the directional silhouette. |
 | `emblem-tutorial` | Connected constellation with a recognizable learning/discovery silhouette; no label or surrounding medallion | 144 × 144 px / 48 × 48 pt | Same box and optical weight as Story. Avoid tiny details needed to identify the action. |
-| `button-action` | Midnight enamel, fine brass, fixed corner/end fittings, uninterrupted label area | 960 × 192 px / 320 × 64 pt | Shared primary, secondary and mode skin; horizontal stretch at fixed height. |
+| `button-action` | Midnight enamel, fine brass, fixed corner/end fittings, uninterrupted label area | 960 × 192 px / 320 × 64 pt | Shared primary and mode skin; horizontal stretch at fixed height. Compact/secondary actions use their native face. |
 | `panel-reading` | Quiet enamel field, thin edge, corner-only fittings; no header, divider, portrait or close button baked in | 480 × 480 px / 160 × 160 pt | Pause, settings and reading surfaces; nine-slice in both axes. |
 | Twenty rendered utilities | Pearl-enamel/brass controls and retained illustrated mode symbols | 72 × 72 px / 24 × 24 pt | Original color, aspect fit; 20-point content region with transparent padding. Native display currently 16–24 pt according to the call site. |
 | `utility-bezel` | Retained original rim; no action glyph baked in | 96 × 96 px / 32 × 32 pt | Historical optional fitting; not applied by the current shared utility control. |
@@ -62,7 +62,7 @@ The registered caps preserve the generated fittings. Stretch specimens exercise 
 
 The reading panel uses nine-slice: corners stay fixed, top/bottom strips stretch horizontally, side strips stretch vertically, and the plain center stretches in both axes. The action skin uses full-height fixed ends and a horizontally stretched middle. Its side diamonds must never stretch vertically. Content bounds are independent of alpha bounds, and touch bounds are independent of both.
 
-The action's two fixed ends occupy 96 pt; the registered geometric floor is 120 × 64 pt before labels are considered. Its 52-point primary variant scales artwork uniformly before horizontal stretching. Secondary/compact roles use the shared half-scale reading-surface fittings with at least 48-point sheet targets. A tall primary action uses the full reading-panel skin and grows with its content. Full reading layouts require measured text plus the 32-point content insets. Do not shrink text to make a skin fit.
+The action's two fixed ends occupy 96 pt; the registered geometric floor is 120 × 64 pt before labels are considered. Its 52-point primary variant scales artwork uniformly before horizontal stretching. Secondary/compact roles use a native enamel face with a 16-point corner radius, unchanged 12-point horizontal and 8-point vertical label padding and at least 48-point sheet targets. This face has no raster caps; the passive compact reading surface retains its half-scale fittings. A tall primary action uses the full reading-panel skin and grows with its content. Full reading layouts require measured text plus the 32-point content insets. Do not shrink text to make a skin fit.
 
 `ObservatoryActionLayout` measures the native label and selects a 52- or 64-point action height; labels exceeding that envelope are remeasured with the reading panel's 32-point insets on every side. Mode emblems and titles stack vertically at accessibility text sizes. Geometry does not change between rest, press and disabled states.
 
@@ -75,7 +75,7 @@ Keep one rest master per visual object. Independently generated pressed, selecte
 | State or role | Native treatment | Required invariant |
 | --- | --- | --- |
 | Primary / mode rest | Shared enamel/brass master with crisp pearl label; richer emblem only on mode actions | Fixed canvas, content alignment and target. No continuous shine. |
-| Secondary / compact rest | Shared compact reading-surface fittings behind a separate native label | No per-screen silhouette or independent state source. Label contrast is not reduced with the artwork. |
+| Secondary / compact rest | Shared native rounded enamel face with a shallow warm upper rim and contact shadow behind a separate native label | Existing label geometry, full target and conditional selected surface remain unchanged. No per-screen silhouette or independent state source. |
 | Quiet / gameplay utility | Original-color rendered icon in a clear native target; shared utility style has no bezel | Do not wrap every HUD action in the home button skin. Full target stays intact. |
 | Pressed | Immediate face darkening or subtle inset highlight; optional bounded light response | No target movement, label re-layout or geometry swap. Navigation is never delayed for decoration. |
 | Selected, where meaningful | Stable selection mark plus stronger edge/ink emphasis | Selection remains distinguishable in grayscale and without glow; a press is not selection. |
@@ -86,6 +86,8 @@ Keep one rest master per visual object. Independently generated pressed, selecte
 | Calm effects / Reduce Motion | Settled material and immediate state changes; omit decorative movement | Honor existing settings/system state; preserve committed outcomes and inputs. |
 
 Compose states predictably: disabled suppresses press/activation; selected meaning remains visible; focus adds a non-layout-changing indicator. Review selected+pressed, selected+disabled and focused+selected as well as isolated states. Utility labels and toggle state descriptions remain native. Decorative raster layers are hidden from accessibility and ignore hit testing.
+
+`ObservatoryCompactActionSurface` reuses existing theme colors and contact shadow. Pressing darkens its opaque face and flattens the rim/shadow immediately; disabled treatment flattens and desaturates the face while the native control supplies subdued ink and prevents activation. The style preserves label sizing, padding, expansion, hit shape, focus stroke and the conditional surface for selected choices. These are source contracts, not disabled-state visual or full accessibility acceptance. No new raster, runtime state or framework is added.
 
 Any temporary visual face displacement must remain within a fixed target and content allocation. Start with material-only pressing in the specimen; add motion only if actual native review demonstrates an improvement. Existing sound/haptic owners remain authoritative and must not emit twice for a single action. Do not introduce a shader, audio engine, runtime SVG parser or texture generator for this handoff.
 
@@ -113,7 +115,7 @@ The existing [art-quality tools](../../tools/art-quality/README.md) validate spe
 | --- | --- |
 | Roster/provenance | Exactly the declared six raster roles plus the separately declared glyph family; all files decode; source/export hashes match; no baked labels, screenshots or unexplained state variants. |
 | Registration | Manifest pixel dimensions and 3× point interpretation match each export; alpha padding and optical anchors are recorded; all masks/derived variants share registration. |
-| Stretch | Render compact button at 120 × 52 pt, fixed-height action at 160 × 64, 240 × 64 and 320 × 64 pt; tall action uses panel-reading at 320 × 100 pt. Render panel at 160 × 160, 320 × 240 and 480 × 400 pt. Corners keep their shape/scale, fittings are never sliced, and edges show no gaps, seams or focal texture stretching. |
+| Stretch | Render scaled primary action at 120 × 52 pt, fixed-height action at 160 × 64, 240 × 64 and 320 × 64 pt; tall action uses panel-reading at 320 × 100 pt. Render panel at 160 × 160, 320 × 240 and 480 × 400 pt. Corners keep their shape/scale, fittings are never sliced, and edges show no gaps, seams or focal texture stretching. |
 | Content | `Story Mode`, `Free Play`, `Tutorial`, `Settings`, `Resume`, a two-line long label, and exact `18 / 18` and `1,024` samples fit without touching fittings. Larger text grows/reflows controls; no clipping or forced shrinking. |
 | Silhouette/scale | Emblems remain distinguishable at 40 and 48 pt; utility glyphs at 20 and 24 pt; bezel at 32 pt. Inspect dark sky, bright clouds, grayscale and glow-off specimens. |
 | State consistency | Required combinations preserve identical component bounds and optical alignment; every enabled press responds; disabled controls cannot activate; selection and toggle values are understandable without hue alone. |
@@ -126,5 +128,7 @@ The asset package's structural and visual specimen review cannot establish nativ
 ## Native adoption and evidence
 
 The original source kit was reviewed at `cfd6ab7`. Native integration includes `ObservatoryArtwork`, shared theme/style changes, 26 catalog sets and `ObservatoryArtworkTests`. The [original native record](../../docs/evidence/observatory-ui-native-2026-10-19/README.md) and [capture index](../../docs/evidence/observatory-ui-native-2026-10-19/captures.json) retain their exact earlier coverage. The [rendered utility record](RENDERED_UTILITIES.md) covers the October 20 PNG replacement’s provenance, offline checks and remaining native review. Debug/Release builds, hosted and interaction checks, inspected layouts, motion, actual VoiceOver and canonical device delivery remain distinct evidence categories.
+
+The [compact-action record](../../docs/evidence/cohesion-goal-04-compact-actions-2026-10-23/README.md) owns the October 23 action-face refinement's source-bound native coverage and remaining visual, VoiceOver and physical acceptance. The unchanged export specimens do not show this native face.
 
 The completed source/export and browser checks remain in their original [source-bound evidence](../../docs/evidence/observatory-ui-kit-2026-10-19/README.md); they are not rewritten as native acceptance.

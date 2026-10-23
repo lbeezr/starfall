@@ -38,6 +38,8 @@ Selected icon, screens, gameplay pieces and story cast, with links to their sour
 
 ## Observatory native UI
 
+**Compact-action craftsmanship — Current for the inspected slice:** [Native Match before/after, held press/cancel and largest-text controls](../evidence/cohesion-goal-04-compact-actions-2026-10-23/README.md), clean source `8c52334e` / `dev.8895bb79c7`, distinguish rounded action enamel from passive reading fittings. Disabled/long-label specimens are native component renders, separately labeled. Earlier compact action chrome is Historical; primary/utility skins retain their prior source-bound limits.
+
 **HUD hierarchy — Current for the inspected composition slice:** [Phone/tablet default and AX3XL before/after stills](../evidence/cohesion-goal-03-hud-hierarchy-2026-10-23/README.md), snapshot `19529984a3d0` / `dev.21d62cc22f`, distinguish primary earned totals from supporting targets and give accessibility-size forecast its own row. Earlier header hierarchy is Historical; stills do not certify motion or physical reading.
 
 **Collection-light coherence — Current for the inspected material slice:** [Warm Lantern and cool Ribbon before/after clips and frames](../evidence/cohesion-goal-02-living-collection-2026-10-23/README.md), snapshot `787039fc3544` / `dev.d33057befd`, show pale packet centers with family surrounds. Ordinary/grown bodies and cached forecasts are unchanged. Earlier finite-flight colors are Historical; the record separates native frame inspection from continuous smoothness, physical play and human preference.

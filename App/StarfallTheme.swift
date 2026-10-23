@@ -219,7 +219,7 @@ struct StarfallButtonStyle: ButtonStyle {
                            minHeight: StarfallTheme.Layout.preferenceTarget)
                     .background {
                         if showsCompactSurface || configuration.isPressed && isEnabled {
-                            ObservatoryCompactSurface(pressed: configuration.isPressed && isEnabled, enabled: isEnabled)
+                            ObservatoryCompactActionSurface(pressed: configuration.isPressed && isEnabled, enabled: isEnabled)
                         }
                     }
             } else {
