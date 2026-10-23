@@ -214,7 +214,7 @@ final class WorldJourneyTests: XCTestCase {
         try repaired.record(store.game)
         let envelope = try XCTUnwrap(JSONSerialization.jsonObject(with: XCTUnwrap(defaults.data(forKey: WorldJourneyStore.key))) as? [String: Any])
         XCTAssertEqual(envelope["version"] as? Int, 1)
-        XCTAssertEqual(SkySaveArchive.schemaVersion, 12)
+        XCTAssertEqual(SkySaveArchive.schemaVersion, 13)
         XCTAssertEqual(defaults.data(forKey: SkySaveArchive.key), committed)
         presenter.finish()
         store.beginEntry(.replay)
@@ -256,7 +256,8 @@ extension WorldJourneyTests {
 
     @MainActor func testRetainedAuthoredRoundDoesNotGrantPreWorldAccessWhenArchiveKeyAdvances() throws {
         for challenge in [StarfallChallenge.firstLight, .ribbonCrossing] {
-            for (revision, version, key) in [(1, 10, SkySaveArchive.storyKey), (2, 11, SkySaveArchive.cascadeKey)] {
+            for (revision, version, key) in [(1, 10, SkySaveArchive.storyKey), (2, 11, SkySaveArchive.cascadeKey),
+                                              (3, 12, SkySaveArchive.patternKey)] {
                 let defaults = defaults()
                 let definition = try XCTUnwrap(StoryChallengeDefinition(challenge, revision: revision))
                 let old = FallingSky(definition: definition)

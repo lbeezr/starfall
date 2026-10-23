@@ -87,7 +87,7 @@ func storyScoringChoice(_ game: FallingSky) -> (Cell, Cell?)? {
 }
 
 
-/// Recorded revision-three playthroughs keep lifecycle tests cheap and deterministic.
+/// Recorded revision-four playthroughs keep lifecycle tests cheap and deterministic.
 /// Every snapshot is reconstructed with production swaps/showers, never injected state.
 /// A choice is returned only at its exact witnessed prefix; nil requests the next shower.
 private enum StoryPatternWitness {
@@ -96,7 +96,7 @@ private enum StoryPatternWitness {
         let action: (Cell, Cell)?
     }
     static func choice(for game: FallingSky) -> (Cell, Cell?)? {
-        guard game.challengeRevision == 3 else { return nil }
+        guard game.challengeRevision == 4 else { return nil }
         let waves = game.challenge == .firstLight ? lantern : ribbon
         guard waves.indices.contains(game.turns),
               let step = waves[game.turns].first(where: { $0.before == game }),
@@ -104,7 +104,7 @@ private enum StoryPatternWitness {
         return (action.0, action.1)
     }
     private static func record(_ challenge: StarfallChallenge, plan: StoryPatternPlan) -> [[Step]] {
-        var game = FallingSky(definition: StoryChallengeDefinition(challenge, revision: 3)!)
+        var game = FallingSky(definition: StoryChallengeDefinition(challenge, revision: 4)!)
         var waves: [[Step]] = []
         var exchangeCount = 0
         XCTAssertEqual(game.displayTarget, plan.target)

@@ -31,19 +31,25 @@ extension SkyEntryRequest {
 }
 
 extension FallingSky {
+    var automaticPatternValues: [String: String] {
+        guard let automaticLineLength else { return [:] }
+        return ["lines": SkyCopy.patternLines(automaticLineLength)]
+    }
+
     var challengeGuideLine: SkyDialogueLine? {
         guard let challenge else { return nil }
         let story = challengeRevision > 0 && (challenge == .firstLight || challenge == .ribbonCrossing)
         let variant = !supportsManualClears ? ".patterns" : supportsAutomaticRecipes ? ".cascade" : story ? ".story" : ""
-        return SkyDialogueLibrary.line("guide." + challenge.dialoguePrefix + variant,
-                                       values: story ? ["target": SkyCopy.score(displayTarget ?? 0)] : [:])
+        var values = story ? ["target": SkyCopy.score(displayTarget ?? 0)] : [:]
+        values.merge(automaticPatternValues) { _, new in new }
+        return SkyDialogueLibrary.line("guide." + challenge.dialoguePrefix + variant, values: values)
     }
 
     var challengeHelpText: String? {
         guard let challenge else { return nil }
         if !supportsManualClears {
             return SkyCopy.text(challenge == .firstLight ? .helpPatternsChallenge : .helpPatternsRibbon,
-                                values: ["target": SkyCopy.score(displayTarget ?? 0)])
+                                values: automaticPatternValues.merging(["target": SkyCopy.score(displayTarget ?? 0)]) { _, new in new })
         }
         if supportsAutomaticRecipes {
             return SkyCopy.text(challenge == .firstLight ? .helpCascadeChallenge : .helpCascadeRibbon,

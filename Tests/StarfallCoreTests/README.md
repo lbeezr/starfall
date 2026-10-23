@@ -6,6 +6,8 @@ Deterministic behavior, save validation and replay checks for StarfallCore.
 
 Run `swift test` from the repository root. Use focused fixtures for changed behavior and preserve old-save coverage. These results do not establish native or visual acceptance.
 
+`StoryFourStarLineTests` checks the revision-4 Lantern/Ribbon trial: maximal four-through-seven-star lines at every offset, gaps/diagonals/growth boundaries, overlap accounting, cascades, committed swaps/showers, partial overflow and saved-rule validation. It compares 140 announced showers against revision 3 and preserves historical replay rules. `StoryFourStarLinePolicyTests` restores every action in complete bounded four-star plans; `StoryCascadePolicyTests` retains the exact revision-2/3 witnesses. These establish deterministic reachability, not human difficulty or fun.
+
 `FallingSkyPacingTests` compares new and historical cadence across 200 seeds, including first-wave clearing, save round trips and unchanged seeded arrivals.
 
 `SkyCadenceTests` covers timing versions, legacy restore/replay, balance and First Light.

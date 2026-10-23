@@ -1,0 +1,41 @@
+{
+  "status": "Inspected",
+  "source": "ea2d020e24d79febdd94cded253eaa07a4ccf695",
+  "runtimeInputFingerprint": "dev.38fb093b7f",
+  "simulatorLabel": "dev.local",
+  "configuration": "Debug",
+  "os": "iOS27.0 Simulator",
+  "phoneText": "default",
+  "tabletText": "AccessibilityXXXL",
+  "motion": "Full motion enabled for the four-line test; app calmEffectsNO; systemmotion restored by teardown.",
+  "limit": "Still appearances and native state transitions; no video/frame-rate/physicalcomfort or VoiceOver claim.",
+  "captures": [
+    {
+      "file": "dev-ea2d020e__four-line-before__iphone-17e__normal-motion.png",
+      "state": "four-line-before",
+      "simulator": "iphone-17e",
+      "variant": "normal-motion",
+      "sha256": "3a59b629de1577ee26dba3ea280c6944ed41916e4a8c4cf40b056c31986b35ec",
+      "bytes": 3512218,
+      "originalAttachmentName": "story-four-star-line-natural-gap-before-swap.png"
+    },
+    {
+      "file": "dev-ea2d020e__four-line-clear__iphone-17e__normal-motion.png",
+      "state": "four-line-clear",
+      "simulator": "iphone-17e",
+      "variant": "normal-motion",
+      "sha256": "f2e3c9fcd9f91968bd2a4f89683aa83fd70ed6ffbec475babef398ce81246c09",
+      "bytes": 3460412,
+      "originalAttachmentName": "story-four-star-line-native-clear-normal-motion.png"
+    },
+    {
+      "file": "dev-ea2d020e__ribbon-entry__ipad-pro11m5__largest-text.png",
+      "state": "ribbon-entry",
+      "simulator": "ipad-pro11m5",
+      "variant": "largest-text",
+      "sha256": "0d6c098331d2920c403d4eaf0e8e83ae160aeafa6653c43afb87309aeba4e01c",
+      "bytes": 4380688,
+      "originalAttachmentName": "story-ribbon-entry-actions-largest-text.png"
+    }
+  ]
+}

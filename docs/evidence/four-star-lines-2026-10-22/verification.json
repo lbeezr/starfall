@@ -1,0 +1,165 @@
+{
+  "stage": "development",
+  "date": "2026-10-22",
+  "source": {
+    "base": "8e5cb6b52d709b204cbbefdb3005586b18e40534",
+    "runtimeBuildID": "dev.38fb093b7f",
+    "changedBuildAndTestHashes": {
+      "App/DialogueScripts/observatory-dialogue.json": "874797855c5354cba38d26f409be75cac62c036070d1d248ec04d1876692e17b",
+      "App/FallingSkyMenu.swift": "a037915d1ab0f322e3455c59fc47f27af753fad894e97d6dccbd3ce944297afa",
+      "App/FallingSkyStore.swift": "7e1791d3faa2fa01e310be5acfe26eff71ac3d10c16f071ac83ac7521444a6b4",
+      "App/FallingSkyView.swift": "4379436c4221562c7e4bef7d53b559b03a8a0dacd179b163033acef13cc850bc",
+      "App/RestorationPresentation.swift": "7096ea6cf676657d94c969a982eae2262cabbc30548a111ecb85fa3fadace609",
+      "App/SkyCopy.swift": "87ccd657e73a83ecd5b62da65272b29c911afa28e83bfdfb9b974c9280cb0aec",
+      "App/SkyDialogueStudio.swift": "29b9efe53edfe82fa0d5515a7d1a9f8ba2b72588a47cbbdfa70fcb4cb0ffcea6",
+      "App/SkyFlowSnapshots.swift": "898bf9d452b9cf4f3be11f33b95a1560a520a42af6defbc092e76e28c4d0eab0",
+      "App/SkyPreferences.swift": "30d72acee0f6901d593b0bbcd5f91884aaa5256c6c0e62444f01458d994a40ba",
+      "App/SkySaveArchive.swift": "6efbb66e55484adf9b956065f02bd3f81c4c2be841f761b1e70c96062ec12e05",
+      "App/WorldJourneyStore.swift": "326088baccb1e8cac1792781c73c769af2cb4a16e30784aa3bd1e11f6461e002",
+      "AppTests/FallingSkyTestSupport.swift": "3dc68fcc7bf522b9d2536b382af3d34cd650cf2e6b687929f3c3d01c74fa327c",
+      "AppTests/SkyDialogueTests.swift": "d8239d83e832a544728b26fd68368c0f25bb62235bf574299a6ab4e7e74c7a12",
+      "AppTests/SkySaveArchiveTests.swift": "f7354845a4dd832e7d42089fc43db36bb0a921552da5cff255727a093c0aa837",
+      "AppTests/SkyTechniqueStoreTests.swift": "5a9ede95dc03dd808017aa5aa3371f9c966ecd561109b520b44160186cb3444c",
+      "AppTests/StoryPatternPlan.swift": "f5cbddbc8b091f4a9ebb3190444c312cace36dce972875579d8620acb9a74489",
+      "AppTests/WorldJourneyTests.swift": "138bf6fcf97fcc9c79db0c72b42433e1a92d17434670682ec541dbb17ec6ec54",
+      "AppTests/WorldMapReviewFixtureTests.swift": "8d2cf5dcf43b2d939c25aa49791dc1ac5d57cdfd72b43f4206fc745b339df4be",
+      "Sources/StarfallCore/FallingSky.swift": "fb09bc8e6c4a19ad92c553490558a50281dcbf26e410aacdd8ec2a9f1a12335a",
+      "Sources/StarfallCore/SkyResolutionPhase.swift": "47ac2381120e8316106f0fbdb00d32f973cc35f6f9cc80a0e9c2353672c0266a",
+      "Sources/StarfallCore/StarRecipe.swift": "bec0ea8692311d8b31bb2696696b67e3cae212d837638fc835b4ea30403c76e6",
+      "Sources/StarfallCore/StoryChallenge.swift": "10b6cec86c821de48258a196d1f67d136c9647420350783cebe2b4494e0c3053",
+      "Tests/StarfallCoreTests/StoryCascadePolicyTests.swift": "38051d05957e888d03056bcacea6581c476d681c6298606513a3f02c6288f23f",
+      "Tests/StarfallCoreTests/StoryFourStarLinePolicyTests.swift": "409c2ab4c763ce460112ce7485eb259f3e47fefcd0850d1b1ec257689dcd9a77",
+      "Tests/StarfallCoreTests/StoryFourStarLineTests.swift": "aa47ff3c9367bb8e30abe1ca8c39668888e390e752eb9e44536506aea84488b7",
+      "Tests/StarfallCoreTests/StoryPatternTests.swift": "dcaabf622745e57c38c8930db4cb794125d5daf6f87843e4636eba5db4eb5fab",
+      "UITests/SkyFlowInteractionTests.swift": "a977ec24e93325caee28285e60f87616d3da820a64588fd9e2799d12974cec1a",
+      "UITests/WorldJourneyInteractionTests.swift": "aa13c925bb8a85ff352776060ecd745b55e8693a6936881975fe39ec3c4d1cbc"
+    },
+    "publication": "Implementation source ea2d020e24d79febdd94cded253eaa07a4ccf695; pending PR publication/merge.",
+    "equivalentCommittedSource": "ea2d020e24d79febdd94cded253eaa07a4ccf695"
+  },
+  "environment": {
+    "host": "macOS 27.0.1 arm64",
+    "xcode": "27.1 (27A9275)",
+    "swift": "6.4",
+    "phoneSimulator": "iPhone 17e / iOS 27.0",
+    "tabletSimulator": "iPad Pro 11-inch (M5) / iOS 27.0"
+  },
+  "core": {
+    "command": "env CLANG_MODULE_CACHE_PATH=/tmp/starfall-four-line-clang SWIFTPM_MODULECACHE_OVERRIDE=/tmp/starfall-four-line-module swift test --disable-sandbox",
+    "passed": 236,
+    "failed": 0,
+    "log": "/tmp/starfall-four-line-swift-test.log",
+    "coverage": "All Core tests; maximal runs4\u20137/everyoffset,three/gap/diagonal/grown/overlap,cascades,rev3 retained rules/replay,rev4 complete witnesses with restored action parity,140 unchanged authored showers per location."
+  },
+  "debugBuild": {
+    "tool": "XcodeBuildMCP build_sim(buildForTesting:true)",
+    "configuration": "Debug",
+    "arch": "arm64",
+    "summary": {
+      "status": "SUCCEEDED",
+      "durationMs": 6744,
+      "target": "simulator"
+    }
+  },
+  "hosted": {
+    "tool": "XcodeBuildMCP test_sim prepared products",
+    "selectors": [
+      "StarfallAppTests/FallingSkyStoreTests",
+      "StarfallAppTests/SkyFlowStateTests",
+      "StarfallAppTests/RestorationFlowTests",
+      "StarfallAppTests/RestorationPresentationTests",
+      "StarfallAppTests/SkySaveArchiveTests",
+      "StarfallAppTests/SkyDialogueTests",
+      "StarfallAppTests/SkyTechniqueStoreTests",
+      "StarfallAppTests/SkyTutorialPresentationTests",
+      "StarfallAppTests/WorldJourneyTests",
+      "StarfallAppTests/WorldMapReviewFixtureTests"
+    ],
+    "expectedCount": 188,
+    "summary": {
+      "status": "SUCCEEDED",
+      "durationMs": 11359,
+      "counts": {
+        "passed": 188,
+        "failed": 0,
+        "skipped": 0
+      },
+      "target": "simulator"
+    },
+    "resultBundle": "/tmp/starfall-four-lines-2026-10-22/hosted-corrected.xcresult"
+  },
+  "release": {
+    "tool": "XcodeBuildMCP build_sim",
+    "configuration": "Release",
+    "arch": "arm64",
+    "summary": {
+      "status": "SUCCEEDED",
+      "durationMs": 31486,
+      "target": "simulator"
+    }
+  },
+  "phone": {
+    "status": "passed original XCTest run",
+    "selectors": [
+      "StarfallUITests/WorldJourneyInteractionTests/testFourStarLineFromFreshLanternClearsAutomaticallyAndRestores",
+      "StarfallUITests/FallingSkyInteractionTests/testFirstLightGoalCompletionRestoreReplayAndSurvival",
+      "StarfallUITests/SkyFlowInteractionTests/testCurrentRibbonWinReplayAndFullSky"
+    ],
+    "expectedCount": 3,
+    "summary": {
+      "result": "Passed",
+      "totalTestCount": 3,
+      "passedTests": 3,
+      "failedTests": 0,
+      "skippedTests": 0
+    },
+    "resultBundle": "/tmp/starfall-four-lines-2026-10-22/phone.xcresult",
+    "transport": "MCP tools/call timed out after300s; original xcodebuild completed successfully. Recovered original finalxcresult directly with exact3passes,0failures,0skips. No duplicate run."
+  },
+  "tablet": {
+    "status": "passed original XCTest run",
+    "selectors": [
+      "StarfallUITests/WorldJourneyInteractionTests/testFourStarLineFromFreshLanternClearsAutomaticallyAndRestores",
+      "StarfallUITests/WorldJourneyInteractionTests/testRevisedRibbonSwapCreatesLargerClearWithLargestText"
+    ],
+    "expectedCount": 2,
+    "summary": {
+      "result": "Passed",
+      "totalTestCount": 2,
+      "passedTests": 2,
+      "failedTests": 0,
+      "skippedTests": 0
+    },
+    "resultBundle": "/tmp/starfall-four-lines-2026-10-22/tablet.xcresult",
+    "transport": "XcodeBuildMCP tools/call timed out after300s; original xcodebuild continued and completed. Original finalxcresult was recovered directly with xcresulttool, with exact counts and zero skips."
+  },
+  "priorFailure": {
+    "hostedPassed": 187,
+    "hostedFailed": 1,
+    "hostedSkipped": 0,
+    "test": "SkyDialogueTests/testCatalogRendersEveryBundledScriptAndRejectsAuthoringErrors",
+    "cause": "Authoring-test sample values omitted newly required lines placeholder. Added value and current-rule Studio preview default; strict missing/unused assertions preserved. Corrected188-test run passes.",
+    "resultBundle": "/tmp/starfall-four-lines-2026-10-22/hosted.xcresult"
+  },
+  "membership": "All changed App/AppTests/UITests sources/resources already belong to their existing targets. New Core test files are discovered by SwiftPM. Xcode project and shared scheme unchanged.",
+  "voiceOver": "Deferred to RC; not run on this development build.",
+  "physicalEnjoyment": "Unmeasured; next phone session evaluates the authorized trial.",
+  "guardrails": "No changes to supplied stars, forecasts, timing, score/chain constants, targets, growth, squares/crosses, Open Sky or later-location rules.",
+  "visualInspection": {
+    "tablet": "Inspected original four-Violet pre-swap and post-clear screenshots plus largest-text Ribbon Entry. Four stars spent once, score15k\u219220k, readable complete4+ guidance, full Begin target. Board/scenery/materials unchanged. Before/after originals exceed5MBretentioncap and remain disposable; bounded largest-text Entry original selected for retention.",
+    "phone": "Inspected original before/after phone captures: four Violet stars with one gap, then swap clears four once and raises15k\u219220k; complete4+guide, full controls, no new board overlap.",
+    "animation": "Normal-motion interaction assertions, no inspected video or measured frame rate.",
+    "retained": "Two inspected original phone before/after frames and one largest-text iPad Entry frame; original bytes/hashes in captures.json."
+  },
+  "cleanExport": {
+    "runtimeBuildID": "dev.38fb093b7f",
+    "matchesTestedRuntimeInputs": true,
+    "method": "git archive of the integrated source, recompute scripts/build_identity.py runtime fingerprint; all build/test hashes retained above."
+  },
+  "documentation": {
+    "hygiene": "passed",
+    "diffCheck": "passed",
+    "localFileLinks": 1197,
+    "remaining": "Recheck after final evidence links are added."
+  }
+}

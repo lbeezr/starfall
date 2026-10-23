@@ -150,7 +150,7 @@ final class WorldMapReviewFixtureTests: XCTestCase {
             }
             store.beginEntry(request)
             XCTAssertEqual(store.game.challenge, challenge)
-            XCTAssertEqual(store.game.challengeRevision, 3)
+            XCTAssertEqual(store.game.challengeRevision, 4)
             XCTAssertEqual(store.game.displayTarget, target)
             XCTAssertEqual(store.game.displayScore, 0)
             XCTAssertTrue(store.game.isValidSave)
@@ -165,7 +165,7 @@ final class WorldMapReviewFixtureTests: XCTestCase {
     @MainActor func testReviewPreparationPlayAndPreferenceWritesNeverTouchOrdinaryDefaults() throws {
         let review = preserveReviewDomain()
         let ordinary = UserDefaults.standard
-        let keys = [SkySaveArchive.key, SkySaveArchive.worldKey, WorldJourneyStore.key, SkySaveArchive.rejectedKey,
+        let keys = [SkySaveArchive.key, SkySaveArchive.patternKey, SkySaveArchive.worldKey, WorldJourneyStore.key, SkySaveArchive.rejectedKey,
                     WorldJourneyStore.rejectedKey, "soundEnabled", "starfall.haptics", "calmEffects"]
         let before = keys.map { ordinary.object(forKey: $0) as? NSObject }
         let arguments = ["--starfalls-reset", WorldMapReviewFixture.marker, "--world-map-state=retained"]

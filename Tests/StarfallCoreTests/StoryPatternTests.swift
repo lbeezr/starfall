@@ -27,7 +27,7 @@ final class StoryPatternTests: XCTestCase {
 
     private func position(_ board: [StarfallGem?], score: Int, ledger: StoryScoreLedger,
                           showers: Int = 0) throws -> FallingSky {
-        let definition = StoryChallengeDefinition(.firstLight)!
+        let definition = StoryChallengeDefinition(.firstLight, revision: 3)!
         return try changed(FallingSky(definition: definition)) {
             $0["board"] = try JSONSerialization.jsonObject(with: JSONEncoder().encode(board))
             $0["score"] = score
@@ -38,11 +38,12 @@ final class StoryPatternTests: XCTestCase {
         }
     }
 
-    func testCurrentPairUsesFiveFamiliesAndThreeDeliberateOpeningSwaps() throws {
+    func testCurrentAndRetainedPairUseFiveFamiliesAndDeliberateOpeningSwaps() throws {
+        for revision in [3, 4] {
         for (challenge, count, chain) in [(StarfallChallenge.firstLight, 24, [5_000, 10_000]),
                                          (.ribbonCrossing, 25, [5_000, 10_000, 15_000])] {
-            let game = FallingSky.freshChallenge(challenge)
-            XCTAssertEqual(game.challengeRevision, 3)
+            let game = FallingSky(definition: StoryChallengeDefinition(challenge, revision: revision)!)
+            XCTAssertEqual(game.challengeRevision, revision)
             XCTAssertFalse(game.supportsManualClears)
             XCTAssertTrue(game.supportsAutomaticRecipes)
             XCTAssertEqual(game.occupiedCount, count)
@@ -62,7 +63,7 @@ final class StoryPatternTests: XCTestCase {
                     if let turn = copy.nudge(from: a, to: b), turn.displayAward > 0 { scoringSwaps += 1 }
                 }
             } }
-            XCTAssertEqual(scoringSwaps, 3)
+            XCTAssertEqual(scoringSwaps, revision == 3 ? 3 : 4)
             var played = game
             let turn = try XCTUnwrap(played.nudge(from: Cell(1, 1), to: Cell(1, 2)))
             XCTAssertEqual(turn.resolutionPhases.map(\.award.displayPoints), chain)
@@ -72,6 +73,7 @@ final class StoryPatternTests: XCTestCase {
             XCTAssertEqual(played.score + played.board.compactMap { $0 }.reduce(0) { $0 + $1.value }, played.starsLanded)
             XCTAssertTrue(played.isValidSave)
             XCTAssertEqual(try restored(played), played)
+        }
         }
     }
 
@@ -98,7 +100,7 @@ final class StoryPatternTests: XCTestCase {
     func testFullRowsAndColumnsNeedSevenActualStarsAndStayVersioned() {
         for position in [board(["AAAAAAA"]), board(Array(repeating: "A......", count: 7))] {
             XCTAssertTrue(StarRecipe.find(in: position).isEmpty)
-            let phases = SkyRecipeResolution.resolve(position, includingLines: true)
+            let phases = SkyRecipeResolution.resolve(position, lineLength: 7)
             XCTAssertEqual(phases.count, 1)
             XCTAssertEqual(phases.first?.recipes.map(\.shape), [.line])
             XCTAssertEqual(phases.first?.cleared.count, 7)
@@ -109,22 +111,22 @@ final class StoryPatternTests: XCTestCase {
         for position in [board(["AAAAAA."], grown: true),
                          board(Array(repeating: "A......", count: 6), grown: true),
                          board(["AAAAAAR"]), board(["AAA.AAA"])] {
-            XCTAssertTrue(SkyRecipeResolution.resolve(position, includingLines: true).isEmpty)
+            XCTAssertTrue(SkyRecipeResolution.resolve(position, lineLength: 7).isEmpty)
         }
-        let grown = SkyRecipeResolution.resolve(board(["AAAAAAA"], grown: true), includingLines: true)
+        let grown = SkyRecipeResolution.resolve(board(["AAAAAAA"], grown: true), lineLength: 7)
         XCTAssertEqual(grown.first?.award.clearedStarCount, 7)
         XCTAssertEqual(grown.first?.award.baseLight, 14)
         XCTAssertEqual(grown.first?.award.displayPoints, 18_000)
     }
 
     func testOverlappingLinesAndSquareSpendTheDistinctUnionOnce() throws {
-        let squareAndRow = SkyRecipeResolution.resolve(board(["AAAAAAA", "AA....."]), includingLines: true)
+        let squareAndRow = SkyRecipeResolution.resolve(board(["AAAAAAA", "AA....."]), lineLength: 7)
         XCTAssertEqual(squareAndRow.count, 1)
         XCTAssertEqual(Set(try XCTUnwrap(squareAndRow.first).recipes.map(\.shape)), [.line, .square])
         XCTAssertEqual(squareAndRow.first?.cleared.count, 9)
         XCTAssertEqual(squareAndRow.first?.award.displayPoints, 15_000)
         let rows = ["AAAAAAA"] + Array(repeating: "A......", count: 6)
-        let intersecting = SkyRecipeResolution.resolve(board(rows), includingLines: true)
+        let intersecting = SkyRecipeResolution.resolve(board(rows), lineLength: 7)
         XCTAssertEqual(intersecting.count, 1)
         XCTAssertEqual(intersecting.first?.recipes.count, 2)
         XCTAssertEqual(intersecting.first?.cleared.count, 13)
@@ -134,7 +136,7 @@ final class StoryPatternTests: XCTestCase {
 
     func testFallingSurvivorsCanCompleteFullLineAtCausalDepthTwo() {
         let position = board(["RRAAAAA", "RR.....", "AA....."])
-        let phases = SkyRecipeResolution.resolve(position, includingLines: true)
+        let phases = SkyRecipeResolution.resolve(position, lineLength: 7)
         XCTAssertEqual(phases.map(\.comboDepth), [1, 2])
         XCTAssertEqual(phases.map { $0.recipes.map(\.shape) }, [[.square], [.line]])
         XCTAssertEqual(phases.map(\.award.displayPoints), [5_000, 22_000])
@@ -148,7 +150,7 @@ final class StoryPatternTests: XCTestCase {
         let position = board(["AAAAAAR", "......A"])
         var ledger = StoryScoreLedger(automaticRecipes: true)
         for _ in 0..<4 { ledger.record(SkyScoreAward(baseLight: 4, clearedStarCount: 4)) }
-        var game = try changed(FallingSky.freshChallenge(.firstLight)) {
+        var game = try changed(FallingSky(definition: StoryChallengeDefinition(.firstLight, revision: 3)!)) {
             $0["board"] = try JSONSerialization.jsonObject(with: JSONEncoder().encode(position))
             $0["score"] = 16
             $0["storyScoreLedger"] = try JSONSerialization.jsonObject(with: JSONEncoder().encode(ledger))
@@ -168,7 +170,7 @@ final class StoryPatternTests: XCTestCase {
     }
 
     func testSeventhArrivalAboveGrownColumnResolvesBeforeTheNextShower() throws {
-        let fresh = FallingSky.freshChallenge(.firstLight)
+        let fresh = FallingSky(definition: StoryChallengeDefinition(.firstLight, revision: 3)!)
         let first = try XCTUnwrap(fresh.incoming.first)
         XCTAssertEqual(Set(fresh.incoming.map(\.column)).count, 5)
         var board = Array<StarfallGem?>(repeating: nil, count: 49)
@@ -192,7 +194,7 @@ final class StoryPatternTests: XCTestCase {
     }
 
     func testLaterOverflowPreservesPartialShowerWithoutResolvingEarlierLine() throws {
-        let fresh = FallingSky.freshChallenge(.firstLight)
+        let fresh = FallingSky(definition: StoryChallengeDefinition(.firstLight, revision: 3)!)
         let first = fresh.incoming[0], blocked = fresh.incoming[1]
         XCTAssertNotEqual(first.column, blocked.column)
         let otherKinds = Jewel.allCases.filter { $0 != first.kind }
@@ -236,7 +238,7 @@ final class StoryPatternTests: XCTestCase {
         XCTAssertNil(copy.nudge(from: Cell(0, 6), to: Cell(0, 5)))
         XCTAssertNil(copy.clear(Cell(0, 6)))
         XCTAssertEqual(copy, game)
-        XCTAssertEqual(copy.replay(), FallingSky.freshChallenge(.firstLight))
+        XCTAssertEqual(copy.replay(), FallingSky(definition: StoryChallengeDefinition(.firstLight, revision: 3)!))
     }
 
     func testRevisionThreeRejectsManualSizeReceiptsAndUnknownRevisions() throws {
@@ -247,9 +249,9 @@ final class StoryPatternTests: XCTestCase {
             XCTAssertFalse(ledger.isValid(light: 3, target: 150_000, automaticRecipes: true, manualClears: false))
         }
         let current = FallingSky.freshChallenge(.firstLight)
-        let unknown = try changed(current) { $0["savedChallengeRevision"] = 4 }
+        let unknown = try changed(current) { $0["savedChallengeRevision"] = 5 }
         XCTAssertFalse(unknown.isValidSave)
-        XCTAssertNil(StoryChallengeDefinition(.firstLight, revision: 4))
+        XCTAssertNil(StoryChallengeDefinition(.firstLight, revision: 5))
         for revision in [1, 2] {
             let retained = FallingSky(definition: StoryChallengeDefinition(.firstLight, revision: revision)!)
             XCTAssertTrue(retained.supportsManualClears)

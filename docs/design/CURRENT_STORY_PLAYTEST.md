@@ -1,10 +1,20 @@
 # Observe Lantern and Ribbon before tuning again
 
-**Status:** Ready preparation; no people observed or results collected · **Owner:** Current coordinator · **Prepared:** October 22, 2026
+**Status:** Ready preparation; no people observed or results collected · **Owner:** Current coordinator · **Updated:** October 22, 2026
 
 Use this blank moderator packet for [issue #206](https://github.com/lbeezr/starfall/issues/206). Observe whether people understand current Story controls, build useful patterns and recover from mistakes on **physical iPhone and iPad**. Keep the first play uncoached. This packet can merge independently; #206 remains open until actual observations and a source-bound decision report exist. The remaining dependency is a willing player, a moderator and identified builds on both devices. No human sign-off is added to ordinary development.
 
 The [revision-3 evidence](../evidence/story-patterns-2026-10-20/README.md) establishes deterministic reachability, not human difficulty or enjoyment. Its winning model paths require substantial setup and use no full lines. The [historical 70/18 protocol](FIRST_PLAYTEST_PROTOCOL.md) stays unchanged; its rules and results schema do not apply here.
+
+**October 22 player feedback:** The user identifies “Too much arranging before a satisfying clear” as the main frustration and questions seven-star lines. The [mechanics investigation](../evidence/mechanics-fun-2026-10-22/README.md) compares seven/six/five/four in disposable Core copies. Four is the strongest next native candidate for reducing modeled setup effort; six alone was not exercised naturally. The user subsequently selected four for a phone trial; [revision-4 implementation and delivery](../evidence/four-star-lines-2026-10-22/README.md) retain their own evidence. The packet still contains no observed sessions.
+
+## A five-minute first pilot
+
+Use the build/round identification below, then allow about three minutes of natural Lantern play and two minutes of discussion, extending only if the player wants. Keep the first play uncoached. Record one intended setup and its actual number of exchanges when observable, a satisfying or frustrating moment, and what the player chooses to do next. Ask for informal enjoyment and sense-of-control ratings separately, each 1–5, with a concrete moment explaining each answer. These are local descriptive prompts, not a validated scale or a population estimate.
+
+Distinguish thinking through a desired setup from searching without a plan, unwanted waiting and unsuccessful intended input. A setup exchange that earns no immediate points can still be satisfying. Record an actual recovery episode only if one occurs. Do not force a completed round to fit five minutes, or classify continuing an unfinished round as replay.
+
+For the proposed current/four native comparison, identify both builds/definition revisions and use comparable short exposures on the same device/settings. Alternate order across people and retain familiarity effects. Four means at least four contiguous occupied matching cells on the same 7×7 board, with longer runs still valid. Keep squares/crosses, opening, supply, growth, objectives, score constants and cadence fixed. Count natural line opportunities before interpreting line non-use; a prepared near-line example belongs after natural play and cannot establish opportunity frequency. No native candidate is supplied by this packet. Six/five can be separate treatments, never pooled as the same candidate. Use the investigation's keep/revise/remove criteria at the existing pilot checkpoint; candidate development needs no additional human approval.
 
 ## Identify the actual round
 
@@ -23,11 +33,11 @@ Prepare one record per visit. Use anonymous person IDs and unique visit IDs; reu
 | Text size / system Reduce Motion / calm effects / sound / haptics / VoiceOver | __________ |
 | Setting changes, help, interruption or missing context during this visit | __________ |
 
-Repository HEAD is not installed-build evidence. New Lantern/Ribbon visits select revision 3; **Continue and Replay preserve the saved definition**. Revision 2 uses the same large targets, so the target alone does not identify revision 3. Verify the installed source and explicit new-visit path plus automatic-pattern guidance; record uncertainty rather than assigning a revision. Exclude unidentified/historical visits from revision-3 conclusions and retain their notes separately. Do not inspect private saves or add instrumentation just to fill a blank.
+Repository HEAD is not installed-build evidence. New Lantern/Ribbon visits select revision 4 in the four-line trial; **Continue and Replay preserve the saved definition**, including revision 3 seven-star lines. Revisions 2–4 use the same large targets, so the target alone does not identify the rule. Verify the installed source and explicit new-visit path plus automatic-pattern guidance; record uncertainty rather than assigning a revision. Keep identified revision-3 and revision-4 visits in separate cohorts; exclude unidentified visits from current-rule conclusions and retain their notes separately. Do not inspect private saves or add instrumentation just to fill a blank.
 
 Let the player choose a new visit through the ordinary app and explain that Begin replaces the retained round; browsing/canceling preserves it. Never reset progress or bypass unavailable content to obtain a sample. Follow [canonical delivery](../../scripts/README.md#one-app-iphone-updates) if a separately authorized phone update is needed. Record access/build limitations rather than treating them as player failures.
 
-**Moderator rule reference; do not read before the baseline:** Lantern targets **150,000**, Ribbon **220,000**. Current new visits use automatic showers at the authored six-/four-second cadence. Four-direction neighboring exchanges arrange matching **2×2 squares of four, crosses of five, or full seven-star rows/columns**. Each grown star occupies one cell for a pattern. Patterns clear automatically after a swap or shower; falling survivors can trigger another causal phase. Separate moves start new chains. Taps and held traces cannot spend stars or score. Pause/manual shower controls remain available. These locations have no Opal, Dusk or storm supply. Use the actual identified build's wording and rules if they differ; stop pooling its observations with this baseline.
+**Moderator rule reference; do not read before the baseline:** Lantern targets **150,000**, Ribbon **220,000**. Current new visits use automatic showers at the authored six-/four-second cadence. Four-direction neighboring exchanges arrange matching **2×2 squares of four, crosses of five, or straight runs of four or more** in revision 4; retained revision 3 requires full seven-star rows/columns. Each grown star occupies one cell for a pattern. Patterns clear automatically after a swap or shower; falling survivors can trigger another causal phase. Separate moves start new chains. Taps and held traces cannot spend stars or score. Pause/manual shower controls remain available. These locations have no Opal, Dusk or storm supply. Use the actual identified build's wording and rules if they differ; stop pooling its observations with this baseline.
 
 ## Watch before teaching
 
@@ -86,7 +96,7 @@ Review after the first bounded pilot of up to three distinct people with phone a
 
 **Blank decision:** Tested sources/devices __________; distinct people/visits and exclusions __________; supporting observations and counterexamples __________; retain / one bounded correction / more evidence __________; expected visible improvement and comparison __________; owner and next action __________; adopt/revise/remove point __________; remaining physical/iPad/accessibility/performance limits __________.
 
-Do not tune gameplay or mark #206 complete from this preparation. Its completion report needs actual physical observations on the identified phone/tablet cohorts, missing acceptance explicitly stated, and an evidence-backed next decision. Full actual VoiceOver, minimum-iOS support and sustained device profiling retain their [existing stage policy](../DEVELOPMENT_BUILDS.md); this small study does not replace them.
+This packet supplies no tuning verdict and does not complete #206. The four-star-line implementation is separately authorized by the user, not inferred from these blank observations. Its completion report needs actual physical observations on the identified phone/tablet cohorts, missing acceptance explicitly stated, and an evidence-backed next decision. Full actual VoiceOver, minimum-iOS support and sustained device profiling retain their [existing stage policy](../DEVELOPMENT_BUILDS.md); this small study does not replace them.
 
 ## Preparation provenance
 

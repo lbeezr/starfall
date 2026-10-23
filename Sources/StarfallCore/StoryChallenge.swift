@@ -4,7 +4,7 @@ import Foundation
 public struct StoryChallengeDefinition: Sendable {
     public let challenge: StarfallChallenge
     public let revision: Int
-    public static let currentRevision = 3
+    public static let currentRevision = 4
 
     public init?(_ challenge: StarfallChallenge, revision: Int = currentRevision) {
         guard (1...Self.currentRevision).contains(revision),
@@ -14,13 +14,20 @@ public struct StoryChallengeDefinition: Sendable {
     }
 
     var seed: UInt64 { challenge == .firstLight ? 42 : 4_202 }
+    var automaticLineLength: Int? {
+        switch revision {
+        case 3: return 7
+        case 4: return 4
+        default: return nil
+        }
+    }
     var target: Int { challenge == .firstLight ? 150_000 : 220_000 }
     var balance: StarfallBalance {
         .init(pace: challenge == .firstLight ? .gentle : .steady, darkStars: .none)
     }
     var palette: [Jewel] {
         if revision == 1 { return [.rose, .aqua, .amber, .violet, .mint] }
-        if revision == 3 { return [.aqua, .rose, .violet, .mint, .amber] }
+        if revision >= 3 { return [.aqua, .rose, .violet, .mint, .amber] }
         return challenge == .firstLight ? [.aqua, .rose, .violet] : [.aqua, .rose, .violet, .mint]
     }
     var initialBoard: [StarfallGem?] {
@@ -35,8 +42,9 @@ public struct StoryChallengeDefinition: Sendable {
                 ? ["AARVVRR", "ARAAVVV", "ARRAVRV", "ARA...."]
                 : ["AARARMM", "ARAAMMV", "ARAVRVV", "VRAV..."]
         } else {
-            // Five families, no completed patterns, and three immediate recipe
-            // setups. The lower-left exchange earns a two-/three-phase cascade.
+            // Preserve the five-family revision-three openings. The lower-left
+            // exchange earns a two-/three-phase cascade; revision four adds a
+            // short-line opportunity without changing a single opening star.
             rows = challenge == .firstLight
                 ? ["AARVVMY", "ARAYMRM", "VRVAYMM", "YRY...."]
                 : ["AARMVYY", "ARAMYAY", "MRMVVYV", "VRMR..."]
@@ -91,7 +99,7 @@ public struct StoryChallengeDefinition: Sendable {
     /// Mirrored motifs and a rotated palette develop the same readable techniques.
     func shower(number: Int) -> [IncomingStar] {
         precondition(number > 0 && number < Int.max / 6)
-        if revision == 3 { return shuffledShower(number: number) }
+        if revision >= 3 { return shuffledShower(number: number) }
         if revision == 2 { return mixedShower(number: number) }
         let motifs = motifs
         let cycle = (number - 1) / motifs.count

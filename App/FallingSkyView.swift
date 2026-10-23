@@ -471,7 +471,7 @@ import StarfallCore
 
     private var boardSummary: String {
         SkyCopy.boardSummary(showers: store.game.turns, groups: store.game.legalGroups.count,
-                             manualClears: store.game.supportsManualClears)
+                             manualClears: store.game.supportsManualClears, automaticLineLength: store.game.automaticLineLength)
     }
 
     private func cellButton(_ cell: Cell) -> some View {

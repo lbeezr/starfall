@@ -11,6 +11,7 @@ struct SkyHelpContext: Equatable {
     let scaledPoints: Bool
     let automaticRecipes: Bool
     let manualClears: Bool
+    let automaticLineLength: Int?
     var challenge: Bool { restorationChallenge != nil }
     let arranging: Bool
     let openingCascade: Bool
@@ -26,7 +27,15 @@ struct SkyHelpContext: Equatable {
         scaledPoints = game.challengeRevision > 0
         automaticRecipes = game.supportsAutomaticRecipes
         manualClears = game.supportsManualClears
+        automaticLineLength = game.automaticLineLength
         opalStorms = game.generation != .legacy
+    }
+
+    var recipeInstructions: String {
+        if let automaticLineLength {
+            return SkyCopy.text(.helpPatternsRecipe, values: ["lines": SkyCopy.patternLines(automaticLineLength)])
+        }
+        return SkyCopy.text(automaticRecipes ? .helpCascadeRecipe : .helpRecipe)
     }
 
     var lessons: [SkyLesson] { !arranging ? [] : SkyLesson.allCases.filter { $0 != .opal || opalStorms } }
@@ -182,8 +191,7 @@ struct SkyHowToPlay: View {
             if context.arranging {
                 SkyMenuSection(SkyCopy.text(.helpArrangeTitle)) {
                     Text(SkyCopy.swapInstructions(manualClears: context.manualClears))
-                    Text(SkyCopy.text(!context.manualClears ? .helpPatternsRecipe
-                                      : context.automaticRecipes ? .helpCascadeRecipe : .helpRecipe))
+                    Text(context.recipeInstructions)
                     Text(SkyCopy.text(context.automaticRecipes ? .helpCascadeChain : .helpRelay))
                 }
             }

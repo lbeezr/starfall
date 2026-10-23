@@ -10,9 +10,9 @@ public struct StarRecipe: Equatable, Sendable, Identifiable {
 }
 
 extension StarRecipe {
-    /// Retained rules discover 36 squares and 25 crosses. Revision three also
-    /// checks seven complete rows and seven complete columns; growth never adds cells.
-    static func find(in board: [StarfallGem?], includingLines: Bool = false) -> [StarRecipe] {
+    /// Discover exact squares/crosses and, when enabled, maximal contiguous
+    /// horizontal/vertical runs. Growth never adds cells to a pattern.
+    static func find(in board: [StarfallGem?], lineLength: Int? = nil) -> [StarRecipe] {
         func gem(at cell: Cell) -> StarfallGem? {
             guard (0..<7).contains(cell.row), (0..<7).contains(cell.column) else { return nil }
             return board[cell.row * 7 + cell.column]
@@ -30,10 +30,29 @@ extension StarRecipe {
             let cross = [Cell(row-1, column), Cell(row, column-1), origin, Cell(row, column+1), Cell(row+1, column)]
             if let recipe = make(.cross, cells: cross) { result.append(recipe) }
         } }
-        if includingLines {
+        if let lineLength {
+            precondition((4...7).contains(lineLength))
+            func appendLines(_ cells: [Cell]) {
+                for kind in Jewel.allCases {
+                    var run: [Cell] = []
+                    func appendRun() {
+                        if run.count >= lineLength, run.contains(where: { gem(at: $0)?.kind == kind }),
+                           let recipe = make(.line, cells: run) { result.append(recipe) }
+                    }
+                    for cell in cells {
+                        if gem(at: cell)?.kind == kind || gem(at: cell)?.isLight == true {
+                            run.append(cell)
+                        } else {
+                            appendRun()
+                            run.removeAll(keepingCapacity: true)
+                        }
+                    }
+                    appendRun()
+                }
+            }
             for index in 0..<7 {
-                if let row = make(.line, cells: (0..<7).map { Cell(index, $0) }) { result.append(row) }
-                if let column = make(.line, cells: (0..<7).map { Cell($0, index) }) { result.append(column) }
+                appendLines((0..<7).map { Cell(index, $0) })
+                appendLines((0..<7).map { Cell($0, index) })
             }
         }
         return result
@@ -41,7 +60,7 @@ extension StarRecipe {
 }
 
 extension FallingSky {
-    public var recipes: [StarRecipe] { StarRecipe.find(in: board, includingLines: challengeRevision == 3) }
+    public var recipes: [StarRecipe] { StarRecipe.find(in: board, lineLength: automaticLineLength) }
 
     public func recipes(containing cell: Cell) -> [StarRecipe] { recipes.filter { $0.cells.contains(cell) } }
 

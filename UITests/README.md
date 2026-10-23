@@ -2,6 +2,8 @@
 
 XCTest flows exercising the app through native controls on Apple tooling.
 
+`WorldJourneyInteractionTests.testFourStarLineFromFreshLanternClearsAutomaticallyAndRestores` follows a natural revision-4 square chain, four-star line and square through normal-motion native input and relaunch. Complete current Lantern/Ribbon paths use the shared `StoryPatternPlan`; retained seven-star rules have separate save/Core coverage.
+
 ## Start here
 
 Run relevant flows through the Starfall scheme. Keep bounded condition-based waits and isolated test saves. Report actual VoiceOver and full-motion observations separately from automation.
