@@ -1156,6 +1156,50 @@
           "priority": "help"
         }
       ]
+    },
+    {
+      "id": "full-board-lantern.entry",
+      "lines": [
+        {
+          "id": "full-board-lantern.entry.1",
+          "speaker": "spark",
+          "text": "Restore Lantern Landing with {target} starlight on a full board. Swipe stars into matching patterns; each pop brings new stars and can continue the chain. Setup moves are welcome. No timed showers or ceiling loss. Your saved round stays until you tap Begin.",
+          "priority": "help"
+        }
+      ]
+    },
+    {
+      "id": "full-board-lantern.replay",
+      "lines": [
+        {
+          "id": "full-board-lantern.replay.1",
+          "speaker": "spark",
+          "text": "Try the same Full Board Lantern opening and refill sequence, and collect {target} starlight. Take your time arranging patterns and chains. Your saved round stays until you tap Begin.",
+          "priority": "help"
+        }
+      ]
+    },
+    {
+      "id": "guide.full-board-lantern",
+      "lines": [
+        {
+          "id": "guide.full-board-lantern.1",
+          "speaker": "spark",
+          "text": "Lantern Landing needs {target} starlight. Arrange matching squares of 4, crosses of 5, or straight lines of 4 or more. New stars refill every pop and may continue the chain. Take your time; there are no timed showers.",
+          "priority": "help"
+        }
+      ]
+    },
+    {
+      "id": "guide.full-board-restore",
+      "lines": [
+        {
+          "id": "guide.full-board-restore.1",
+          "speaker": "twinkle",
+          "text": "Your Full Board Lantern round is waiting. Clear patterns to refill the board and build chains. Take your time; there are no timed showers.",
+          "priority": "help"
+        }
+      ]
     }
   ],
   "copy": {
@@ -1614,6 +1658,26 @@
     "a11y.patternsHint": "Activate for guidance. Use Move actions to arrange an automatic pattern.",
     "a11y.patternsValue": "Automatic pattern play",
     "technique.line": "Line",
-    "celebration.line": "Line!"
+    "celebration.line": "Line!",
+    "lantern.modeChoice": "Choose your Lantern board",
+    "lantern.fallingSkyMode": "Falling Sky",
+    "lantern.fullBoardMode": "Full Board",
+    "lantern.fullBoardWelcome": "Lantern Landing · Full Board",
+    "lantern.fullBoardPace": "Play at your own pace · no timed showers",
+    "lantern.fullBoardRefill": "Full Board · clears refill and cascade",
+    "help.fullBoardTitle": "A board that refills",
+    "help.fullBoardRefill": "Full Board starts with 49 stars. Swipe neighboring stars in any direction to arrange matching squares of 4, crosses of 5, or straight lines of 4 or more. Setup swaps are allowed. After each pop, survivors fall and new stars fill the spaces; a new pattern continues the chain. Every star counts once. There is no star growth, timed shower, or ceiling loss in this comparison.",
+    "help.fullBoardChallenge": "Restore Lantern Landing with {target} starlight in Full Board. Build patterns with swaps, then watch the empty spaces refill and the next patterns pop. Chains earn the same increasing bonus as Falling Sky. Take as many setup moves as you need; this comparison has no move limit. Both Lantern boards can earn the repair.",
+    "help.fullBoardMenu": "Opening the menu or leaving the app suspends input and settles the committed move. Continue keeps this Full Board round; Replay keeps its starting board and refill rules. Return to Lantern Landing on the World Map to choose Falling Sky or Full Board for a new visit.",
+    "a11y.fullBoardSummary": "Exchanges: {moves}. Full Board. Arrange matching squares of 4, crosses of 5, or straight lines of 4 or more. Clears refill automatically. No timed showers.",
+    "ceiling.label": "Sky ceiling",
+    "ceiling.boardEdge": "Board top edge",
+    "ceiling.headroomOne": "Column {column}: 1 space left.",
+    "ceiling.headroomMany": "Column {column}: {spaces} spaces left.",
+    "ceiling.headroomFull": "Column {column}: full, at risk.",
+    "ceiling.hint": "An arriving star needs room unless it can grow the top star.",
+    "help.fullBoardRecipe": "Arrange a 2×2 square of 4 matching stars, a cross of 5, or a straight horizontal or vertical line of 4 or more. Patterns pop after a swap or refill. Overlapping patterns spend each shared star once.",
+    "help.fullBoardIdentity": "Match stars by color and shape. Each star earns 1,000 starlight. Clearing more than three actual stars adds 1,000 for each extra star. Five stars earn 7,000 before any chain bonus.",
+    "help.fullBoardControls": "Swipe a star toward a neighbor to exchange them. Setup swaps are allowed even without a match. Matching patterns pop as soon as the stars settle. Tap a star for guidance. With VoiceOver, use its Move left, Move right, Move up or Move down action."
   }
 }

@@ -519,6 +519,12 @@ extension FallingSkyScene {
                 },
                 .wait(forDuration: ResolutionMotion.settle + ResolutionMotion.readSettled)
             ]
+            if !phase.refillArrivals.isEmpty {
+                actions += [arrivalFlights(phase.refillArrivals),
+                    .wait(forDuration: StarfallMotion.landingDuration),
+                    .run { [weak self] in self?.settleResolutionBoard(phase.refilled, duration: 0) },
+                    .wait(forDuration: ResolutionMotion.readSettled)]
+            }
         }
         actions.append(.run { [weak self] in
             guard let self else { return }

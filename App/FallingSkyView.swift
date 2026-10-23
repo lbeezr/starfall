@@ -56,7 +56,7 @@ import StarfallCore
     }
 
     private func usesIslandTimer(size: CGSize, topInset: CGFloat) -> Bool {
-        SkyShowerPlacement.usesIsland(hardware: SkyShowerPlacement.hardware, size: size,
+        !store.game.usesFullBoardRefill && SkyShowerPlacement.usesIsland(hardware: SkyShowerPlacement.hardware, size: size,
                                      topInset: topInset, accessible: largeText || voiceOver)
     }
 
@@ -278,6 +278,12 @@ import StarfallCore
                     stackedHeader(island: island)
                 }
             }
+            if store.game.challenge == .firstLight {
+                StarfallStatusText(text: SkyCopy.text(store.game.usesFullBoardRefill ? .fullBoardRefill : .fallingSkyMode))
+                    .shadow(color: StarfallTheme.Colors.skyTop, radius: 2)
+                    .accessibilityIdentifier("lantern.mode")
+                    .allowsHitTesting(false)
+            }
             if let pressure = store.pressureCue {
                 StarfallStatusText(text: pressure.text)
                     .shadow(color: StarfallTheme.Colors.skyTop, radius: 2)
@@ -331,7 +337,7 @@ import StarfallCore
                                active: scenePhase == .active && !settings && !showingCeremony,
                                next: store.nextDialogue, maximumHeight: maximumHeight, compact: narrow,
                                embedded: false, externalControls: externalControls, embeddedInk: StarfallTheme.Colors.textPrimary) {
-                if store.isPaused && !externalControls {
+                if store.isPaused && !externalControls && !store.game.usesFullBoardRefill {
                     ViewThatFits(in: .horizontal) {
                         HStack(spacing: StarfallTheme.Spacing.small) { pauseControl; showerControl }
                             .fixedSize(horizontal: true, vertical: false)
@@ -393,9 +399,11 @@ import StarfallCore
             .accessibilityIdentifier("experiment.settings").accessibilityFocused($menuFocused)
     }
 
-    private func showerTrail(island: Bool, width: CGFloat = StarfallTheme.Layout.showerTrailWidth) -> some View {
-        SkyShowerTrail(readCountdown: { store.showerCountdown },
-                       quiet: quietMotion, island: island, width: width, forecast: store.forecast)
+    @ViewBuilder private func showerTrail(island: Bool, width: CGFloat = StarfallTheme.Layout.showerTrailWidth) -> some View {
+        if !store.game.usesFullBoardRefill {
+            SkyShowerTrail(readCountdown: { store.showerCountdown },
+                           quiet: quietMotion, island: island, width: width, forecast: store.forecast)
+        }
     }
 
     /// A full-screen menu can detach the scene. Apply the player's pause choice
@@ -429,6 +437,10 @@ import StarfallCore
                         .animation(quietMotion ? nil : .easeOut(duration: StarfallTheme.Ceremony.handoffDuration), value: boardVisible)
                         .allowsHitTesting(false).accessibilityHidden(true)
                     let mapping = LandingGeometry(size: geometry.size)
+                    if boardVisible && !endingReady {
+                        SkyCeilingOverlay(game: store.game, mapping: mapping)
+                            .accessibilityHidden(settings || showingCeremony)
+                    }
                     if endingReady, let column = store.game.blockedColumn {
                         Path { path in
                             path.addLines(mapping.columnPolygon(column)); path.closeSubpath()
@@ -489,7 +501,8 @@ import StarfallCore
 
     private var boardSummary: String {
         SkyCopy.boardSummary(showers: store.game.turns, groups: store.game.legalGroups.count,
-                             manualClears: store.game.supportsManualClears, automaticLineLength: store.game.automaticLineLength)
+                             manualClears: store.game.supportsManualClears, automaticLineLength: store.game.automaticLineLength,
+                             fullBoard: store.game.usesFullBoardRefill)
     }
 
     private func cellButton(_ cell: Cell) -> some View {

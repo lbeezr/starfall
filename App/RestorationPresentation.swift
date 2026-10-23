@@ -24,6 +24,7 @@ extension SkyEntryRequest {
         case .initial: game
         case .fresh: .freshSurvival(seed: game.seed, balance: game.balance)
         case .replay: game.replay()
+        case .fullBoardLantern: .fullBoardLantern()
         case .firstLight, .ribbonCrossing, .kiteHarbor, .seedMoon, .silverPools, .frostfruitOrchard, .sunwheelMill:
             .freshChallenge(selectedChallenge(replaying: nil)!)
         }
@@ -38,6 +39,9 @@ extension FallingSky {
 
     var challengeGuideLine: SkyDialogueLine? {
         guard let challenge else { return nil }
+        if usesFullBoardRefill {
+            return SkyDialogueLibrary.line("guide.full-board-lantern", values: ["target": SkyCopy.score(displayTarget ?? 0)])
+        }
         let story = StoryChallengeDefinition(challenge, revision: challengeRevision) != nil
         let variant = !supportsManualClears ? ".patterns" : supportsAutomaticRecipes ? ".cascade" : story ? ".story" : ""
         var values = story ? ["target": SkyCopy.score(displayTarget ?? 0)] : [:]
@@ -47,6 +51,9 @@ extension FallingSky {
 
     var challengeHelpText: String? {
         guard let challenge else { return nil }
+        if usesFullBoardRefill {
+            return SkyCopy.text(.helpFullBoardChallenge, values: ["target": SkyCopy.score(displayTarget ?? 0)])
+        }
         if !supportsManualClears {
             let key: SkyCopy.Key
             switch challenge {
