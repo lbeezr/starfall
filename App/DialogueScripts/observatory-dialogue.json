@@ -1575,7 +1575,7 @@
     "help.patternsRecipe": "Arrange a 2×2 square of 4 matching stars, a cross of 5, or {lines} matching stars. Lines run horizontally or vertically. Each pattern counts actual stars, including each grown star once. Patterns pop automatically after a swap or shower. Overlapping patterns spend each shared star once.",
     "help.patternsChallenge": "Restore Lantern Landing with {target} starlight. Read the forecast and swipe stars into matching squares of 4, crosses of 5, or {lines}. Patterns pop automatically; falling survivors can make the next pattern and build a chain. Gentle showers leave room to try a setup. Finish before an arriving star has nowhere to land.",
     "help.patternsRibbon": "Reconnect Ribbon Crossing with {target} starlight. Arrange matching squares of 4, crosses of 5, or {lines}. Patterns pop automatically. Plan the falling survivors so one automatic pop sets off another. Chains earn a growing bonus. Keep room for the announced shower and finish before an arriving star has nowhere to land.",
-    "help.practiceModes": "Tutorial practices Open Sky’s tap and trace controls. These restoration rounds use automatic patterns and swaps.",
+    "help.practiceModes": "Tutorial starts with a current Story square using swaps and automatic patterns. Other chapters cover Open Sky’s tap and trace controls and the original 18-light restoration exercise. Your saved sky and world stay unchanged.",
     "a11y.patternsBoardSummary": "{showers} showers. Arrange matching squares of 4, crosses of 5, or {lines}.",
     "a11y.patternsHint": "Activate for guidance. Use Move actions to arrange an automatic pattern.",
     "a11y.patternsValue": "Automatic pattern play",

@@ -1,6 +1,12 @@
 # Starfall: the quiet-tuck sound world
 
-16 October 2026. The user selected **all four quiet-tuck takes (06–09)** as the starting palette and asked us to explore the wider world around them. This is the current creative direction, refining the [game Bible's](../STARFALL_GAME_BIBLE.md) quiet wonder, tactile delight and gentle concentration. Earlier glass-led briefs remain exploration history.
+16 October 2026. The user selected **all four quiet-tuck takes (06–09)** as the starting palette and asked us to explore the wider world around them. This established the creative direction, refining the [game Bible's](../STARFALL_GAME_BIBLE.md) quiet wonder, tactile delight and gentle concentration. Earlier glass-led briefs remain exploration history.
+
+## Current gameplay contract — October 23
+
+The [runtime audio catalogue](../../../App/Audio/README.md) and [Goal 8 acceptance](../../evidence/game-goal-08-sensory-language-2026-10-23/README.md) supersede the original pilot policy below. Falling Sky defaults sound on while preserving explicit mute. Ordinary clears rotate the four selected contacts; exceptional categories use their existing single bounded voice. Current Story recipes open the accepted rising phrase, then committed causal depths two and three select two accents; deeper phases cap at the third. The next independent action restarts the opening. Quiet presentation retains one aggregate receipt instead of replaying omitted phase cues.
+
+Movement, arrivals and canceled input do not earn a collection sound. Audio never changes score, saves, clocks or input admission. Mute, inactivity, route interruption and stale-work cancellation retain one owner; VoiceOver announcements suppress competing playback. No music or continuous tension layer is adopted. Source/native starts verify the software contract; contour recognition, physical balance and repeated-play comfort remain for the next ordinary player session.
 
 ## The center of the world
 
@@ -8,11 +14,11 @@
 
 The four selected files are the reference for every extension. “Felt,” “wood” and “ceramic” describe useful acoustic qualities—damping, body and a small attack—not new literal game materials. The jewels still release starlight. The original prompt's D4 is an intention, not a measured pitch or a requirement to retune these sounds.
 
-## Start with what we have
+## Original four-contact pilot — historical
 
-Use the [four preserved originals](selected/README.md) as alternate contacts for one committed clear. Retain all four; the user did not ask for a single winner. In the first native pilot, rotate 01 → 02 → 03 → 04 in the feedback layer, independently of gameplay randomness, jewel kind and group size. One action gets one sound. No individual shard, refill or canceled preview adds a second contact.
+Use the [four preserved originals](selected/README.md) as alternate contacts for one committed clear. Retain all four; the user did not ask for a single winner. The first native pilot rotated 01 → 02 → 03 → 04 in the feedback layer, independently of gameplay randomness, jewel kind and group size. That pilot used one sound per action. Current committed multi-phase Story clears follow the bounded phrase above; individual shards, refill and canceled previews still add no contact.
 
-Initially, every valid group—including the final clear of a win or loss—uses this family. The result UI and VoiceOver communicate the outcome. This lets the selected material establish the game before introducing an unselected bright win phrase or a second sound for landing. Gentle sound remains optional and off by default. The originals are preserved and exact copies are now bundled for the [requested gameplay integration](INTEGRATION.md).
+Initially, every valid group—including the final clear of a win or loss—used this family. The result UI and VoiceOver communicated the outcome. This established the material before the later accepted exceptional/causal-phase cues. That pilot kept sound optional and off by default; current Falling Sky uses the explicit preference contract above. The originals are preserved and exact copies are now bundled for the [requested gameplay integration](INTEGRATION.md).
 
 ## Expand outward
 
@@ -27,11 +33,11 @@ Initially, every valid group—including the final clear of a win or loss—uses
 
 The expansion changes the sense of space before adding more activity. Action sounds stay close; music sits farther away. A little sustain may open the world, but constant shimmer, glittering bells and high glass overtones would undo the chosen character. A theme can be recognizable through its contour and pauses. It does not need vocals or a grand cadence.
 
-The puzzle supplies the rhythm. Nothing ticks, accelerates or grows louder near the goal or last move. Five jewel kinds share this material identity. Consecutive turns remain independent: no combo ladder, cascade sound or multiplier cue. Invalid input, recovery, menu actions and restart remain quiet.
+The puzzle supplies the rhythm. Nothing ticks, accelerates or grows louder near the goal or last move. Five jewel kinds share this material identity. The original pilot prohibited a combo ladder, cascade sound or multiplier cue. The later accepted causal phrase follows committed phases without a remembered timed streak; consecutive independent turns still restart it. Invalid input, recovery, menu actions and restart remain quiet.
 
-## Next bounded exploration
+## Earlier expansion briefs — proposals, not current work
 
-First establish the four selected contacts in native context, with perceived levels matched gently and their envelopes preserved. Then explore **one fuller contact, one completion resolution and one music sketch**. Keep the selected originals alongside every comparison so each extension has an audible reference. The theme follows once a musical texture works; it is not a prerequisite for the effects pilot.
+The original sequence was to establish the four selected contacts in native context, with perceived levels matched gently and their envelopes preserved, then explore **one fuller contact, one completion resolution and one music sketch**. Keep the selected originals alongside every comparison so each extension has an audible reference. The theme follows once a musical texture works; it is not a prerequisite for the effects pilot.
 
 Draft briefs for a later authorized generation pass:
 

@@ -571,6 +571,106 @@ final class SkyFlowInteractionTests: XCTestCase {
         XCTAssertTrue(app.buttons["experiment.next"].waitForExistence(timeout: 5))
     }
 
+    @MainActor private func verifyHelpTutorialReturn(round: String, largest: Bool = false) {
+        let app: XCUIApplication
+        if round == "historical" {
+            app = XCUIApplication()
+            app.launchArguments = ["--starfalls-reset", "--dialogue-review", "--lantern-restoration-review=5", "-calmEffects", "NO"]
+            app.launch()
+            XCTAssertTrue(app.buttons["experiment.next"].waitForExistence(timeout: 10))
+            tap("experiment.cell.0.0", app)
+            XCTAssertEqual(app.staticTexts["experiment.score"].label, "9 of 18 starlight collected")
+            app.terminate()
+            app.launchArguments = ["--dialogue-review", "-calmEffects", "NO"]
+            app.launch(); tap("sky.resume", app)
+            XCTAssertEqual(app.staticTexts["experiment.score"].label, "9 of 18 starlight collected")
+        } else {
+            app = launch(largest: largest, review: ["--dialogue-review", "--world-legacy-review"])
+            if round == "open-sky" { tap("sky.start", app) }
+            else { app.worldVisitControl(round == "lantern" ? "firstLight" : "ribbonCrossing").tap() }
+            tap("sky.begin", app); pause(app)
+            let next = app.buttons["experiment.next"]
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: next).wait(timeout: 10))
+            if round == "open-sky" { tap("experiment.next", app) }
+            else {
+                let source = app.buttons["experiment.cell.1.2"], destination = app.buttons["experiment.cell.1.1"]
+                app.revealSkyControls([source, destination])
+                source.coordinate(withNormalizedOffset: .init(dx: 0.5, dy: 0.5)).press(forDuration: 0.05,
+                    thenDragTo: destination.coordinate(withNormalizedOffset: .init(dx: 0.5, dy: 0.5)),
+                    withVelocity: .fast, thenHoldForDuration: 0)
+                XCTAssertEqual(app.staticTexts["experiment.score"].label, round == "lantern"
+                    ? "15,000 of 150,000 starlight collected" : "30,000 of 220,000 starlight collected")
+            }
+        }
+        defer { app.terminate() }
+        let next = app.buttons["experiment.next"]
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: next).wait(timeout: 8))
+        @MainActor func cells() -> [String] {
+            let targets = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@", "experiment.cell."))
+            XCTAssertEqual(targets.count, 49)
+            return targets.allElementsBoundByIndex.map { $0.identifier + "|" + $0.label + "|" + ($0.value as? String ?? "") }
+        }
+        let retained = cells(), score = app.staticTexts["experiment.score"].label
+        let summary = app.otherElements["experiment.board"].value as? String
+        tap("experiment.settings", app); app.skyMenuControl("experiment.help").tap()
+        let scope = app.staticTexts.containing(NSPredicate(format: "label BEGINSWITH %@", "Tutorial ")).firstMatch
+        let automatic = round == "lantern" || round == "ribbon"
+        XCTAssertEqual(scope.exists, automatic, "Only automatic-pattern Help needs this rule-scope note")
+        let variant = round + (largest ? "-largest" : "-default")
+        if automatic {
+            capture(app, "help-tutorial-scope-" + variant)
+            XCTAssertEqual(scope.label, "Tutorial starts with a current Story square using swaps and automatic patterns. Other chapters cover Open Sky’s tap and trace controls and the original 18-light restoration exercise. Your saved sky and world stay unchanged.")
+            if largest {
+                // Read the final line of this long Form paragraph, then return
+                // to its preceding Tutorial link without shrinking the text.
+                for _ in 0..<12 where scope.frame.maxY > app.frame.maxY - 44 { app.swipeUp() }
+                XCTAssertLessThanOrEqual(scope.frame.maxY, app.frame.maxY - 44)
+                XCTAssertGreaterThan(scope.frame.maxY, app.frame.minY + 44)
+                XCTAssertTrue(scope.isHittable)
+                capture(app, "help-tutorial-scope-reading-end-" + variant)
+            }
+        }
+        let learn = app.buttons["sky.learn"]
+        for _ in 0..<12 where !learn.isHittable { app.swipeDown() }
+        app.revealSkyControls([learn]); learn.tap()
+        let intro = app.staticTexts["tutorial.intro"]
+        XCTAssertTrue(intro.waitForExistence(timeout: 5))
+        XCTAssertTrue(intro.label.hasPrefix("Start with a current Story square."))
+        tap("tutorial.chapter.storySquare", app)
+        XCTAssertTrue(app.buttons["tutorial.hint"].waitForExistence(timeout: 5))
+        let practiceSource = app.buttons["experiment.cell.1.2"], practiceDestination = app.buttons["experiment.cell.1.1"]
+        app.revealSkyControls([practiceSource, practiceDestination])
+        practiceSource.coordinate(withNormalizedOffset: .init(dx: 0.5, dy: 0.5)).press(forDuration: 0.05,
+            thenDragTo: practiceDestination.coordinate(withNormalizedOffset: .init(dx: 0.5, dy: 0.5)),
+            withVelocity: .fast, thenHoldForDuration: 0)
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@",
+            "15,000 of 150,000 starlight collected"), object: app.staticTexts["experiment.score"]).wait(timeout: 5))
+        XCTAssertEqual(app.staticTexts["tutorial.instruction"].label, "Your square cleared. Falling stars made a second square.")
+        tap("experiment.settings", app); tap("tutorial.done", app)
+        XCTAssertTrue(next.waitForExistence(timeout: 5))
+        XCTAssertTrue(next.isEnabled)
+        XCTAssertEqual(cells(), retained, "Practice cannot replace or alter any committed star")
+        XCTAssertEqual(app.staticTexts["experiment.score"].label, score)
+        XCTAssertEqual(app.otherElements["experiment.board"].value as? String, summary)
+        capture(app, "help-tutorial-return-" + variant)
+    }
+
+    @MainActor func testHelpTutorialScopeAndReturnAcrossAllFourModes() {
+        executionTimeAllowance = 480
+        continueAfterFailure = false
+        requireNormalMotion()
+        for round in ["lantern", "ribbon", "open-sky", "historical"] {
+            verifyHelpTutorialReturn(round: round)
+        }
+    }
+
+    @MainActor func testLargestTextHelpTutorialScopeAndReturn() {
+        executionTimeAllowance = 240
+        continueAfterFailure = false
+        requireNormalMotion()
+        verifyHelpTutorialReturn(round: "lantern", largest: true)
+    }
+
     @MainActor func testPendingFirstLightHelpUsesChallengeRulesAndPreservesEntry() {
         let app = launch(); defer { app.terminate() }
         app.worldVisitControl("firstLight").tap()

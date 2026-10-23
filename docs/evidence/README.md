@@ -1,5 +1,7 @@
 # Evidence index
 
+[Game-factory goal 10: coherent game](game-goal-10-coherent-game-2026-10-23/README.md) reproduces and corrects stale Tutorial Help, verifies exact four-mode/AX3XL returns, and links all ten independent development outcomes.
+
 [Later-chain mastery recovery](story-mastery-recovery-2026-10-23/README.md) proves a real 150,000-point Lantern win after an irreversible declined opening: 73 exchanges, 15 showers, natural growth and five later chains. One bounded planning family and independent every-action replay support the new version-bound regression. Runtime mastery remains proposed; human timing remains unmeasured.
 
 [Game-factory goal 9: safe returning](game-goal-09-safe-return-2026-10-23/README.md) verifies collapsed/reopened guidance, active versus paused reading, exact retained save/deadline and canceled replacement/result journeys with 14 hosted/five native passes.
