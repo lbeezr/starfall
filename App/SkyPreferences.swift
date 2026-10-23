@@ -43,6 +43,12 @@ struct SkyHelpContext: Equatable {
 
     var lessons: [SkyLesson] { !arranging ? [] : SkyLesson.allCases.filter { $0 != .opal || opalStorms } }
 
+    var practiceChapter: SkyTutorial? {
+        if fullBoard { return .fullBoardRefill }
+        if restorationChallenge == .firstLight && automaticLineLength == 4 { return .storyRoom }
+        return nil
+    }
+
     static func selected(game: FallingSky, entry: SkyEntryRequest?) -> Self {
         .init(game: entry?.previewGame(retaining: game) ?? game)
     }
@@ -137,6 +143,15 @@ struct SkyHowToPlay: View {
     var body: some View {
         SkyMenuSurface(title: SkyCopy.text(.menuHelp), glyph: .help, done: done, back: true) {
             SkyMenuSection(SkyCopy.text(.practiceTitle)) {
+                if let chapter = context.practiceChapter {
+                    NavigationLink {
+                        SkyTutorialView(initial: chapter, returnsAfterLesson: true, done: done)
+                    } label: {
+                        SkyMenuRow(SkyCopy.text(.practiceTryMode), glyph: .tutorial, disclosure: true)
+                    }
+                    .buttonStyle(StarfallButtonStyle(role: .quiet))
+                    .accessibilityIdentifier("sky.practiceMode")
+                }
                 NavigationLink { SkyTutorialView(done: done) } label: {
                     SkyMenuRow(SkyCopy.text(.practiceTitle), glyph: .tutorial, disclosure: true)
                 }

@@ -1,5 +1,7 @@
 # Documentation map
 
+[Gameplay-depth queue #303](https://github.com/lbeezr/starfall/issues/303) retains both Lantern modes and starts with four individually merged learning/choice/cascade/round-arc outcomes. [Goal 1 mode discoveries](evidence/depth-goal-01-mode-discoveries-2026-10-23/README.md) reuses real rules in optional, non-saving Entry/Help practice.
+
 [Seed Moon’s grown-ingredient encounter](evidence/seed-ingredient-2026-10-23/README.md) develops the seven-place curriculum into an 11,000-point fork while retaining historical saves and ordinary earned progression.
 
 [Next encounter sequence](ROADMAP.md#next-make-each-location-a-different-puzzle) implements Kite's headroom choice (#278), Seed's grown ingredient (#279) and Silver's causal sequence (#280) as complete iPhone/iPad rounds, with retained historical rules and separate native evidence.

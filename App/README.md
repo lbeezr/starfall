@@ -6,6 +6,8 @@ SwiftUI screens, main-actor stores and SpriteKit presentation for the native gam
 
 Lantern Entry offers **Falling Sky** and the explicit **Full Board** comparison. Full Board refills committed clear phases, has no shower clock or overflow warning, and retains its own Continue/Replay rules. `SkyCeilingOverlay` uses the shared board geometry for the persistent top edge and numbered near/full-column warnings in accumulating modes. [Comparison contract and evidence](../docs/evidence/ceiling-lantern-refill-2026-10-23/README.md) owns the bounded player trial. `SkySaveArchive` writes v14 and preserves validated v13 and earlier readers.
 
+Lantern Entry and mode-aware Help offer optional **Try this mode** practice. Falling Sky teaches a real ceiling recovery followed by the same next shower; Full Board teaches clear/fall/refill. Hints remain optional, Retry reconstructs the practice opening, and exit returns directly without replacing the selected Entry or saved round. The general Tutorial index remains available. [Goal 1 evidence](../docs/evidence/depth-goal-01-mode-discoveries-2026-10-23/README.md).
+
 ## Start here
 
 Deterministic rules belong in [StarfallCore](../Sources/StarfallCore/README.md). Build the shared Starfall scheme and run affected hosted/UI checks after source changes. Asset catalogs are packaged data; their sets are documented by this folder, not individual READMEs.
