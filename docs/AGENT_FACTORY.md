@@ -1,8 +1,8 @@
 # A lightweight agent factory for Starfall
 
-**Status:** Issue closure verified; Project processing delayed during an active GitHub incident · **Owner:** Current coordinator · **Updated:** October 22, 2026
+**Status:** Issue closure verified; canonical Project visibility/Done proof remains open after incident resolution · **Owner:** Current coordinator · **Updated:** October 22, 2026
 
-The [first execution record](evidence/factory-audit-2026-10-22/EXECUTION.md) links four merged slices and their automatic issue-completion timestamps. Newer issue-side Project fields disagree with the canonical board's item visibility in [#220](https://github.com/lbeezr/starfall/issues/220); do not treat all board reconciliation as accepted. Sustained throughput gains remain unmeasured.
+The [first execution record](evidence/factory-audit-2026-10-22/EXECUTION.md) links four merged slices and their automatic issue-completion timestamps. Earlier issue-side Project fields disagreed with the canonical board's item visibility in [#220](https://github.com/lbeezr/starfall/issues/220). GitHub [resolved the incident](https://www.githubstatus.com/incidents/wq8305lppdc2) at October 23, 02:30 UTC; service resolution does not prove this private Project's canonical visibility or automatic Done. After recovery, [PR #265](https://github.com/lbeezr/starfall/pull/265) merged at 03:06:03 UTC and #238 auto-closed completed at 03:06:04 UTC without manual closure/Done. The direct canonical new-leaf/Done observation is still pending; unavailable observation alone establishes neither failed nor recovered projection. Sustained throughput gains remain unmeasured.
 
 Use one coordinator to research, plan, split work by ownership, dispatch independent slices, integrate each ready result and repeat. GitHub leaf issues are the durable task record; merging their closing PRs completes them. Start with at most three workers and reduce concurrency when review or native checks become the bottleneck. These are Starfall operating defaults, not research-proven optimal numbers.
 
