@@ -2,7 +2,7 @@
 
 The current receipt and native guide now distinguish actual stars/light from base points, size and causal bonuses. A static **Last clear** block preserves every committed phase at an ending without delaying the result controls. [Decision6/#366](https://github.com/lbeezr/starfall/issues/366) builds on ingredient inspection, announced occupancy, headroom and the accepted identity receipts. Core accounting remains authoritative; no rule, score, RNG, clock, archive19 or asset changes ship.
 
-**Recorded acceptance:**352 Core,157 affected hosted and two whole final-source native methods pass with zero failures/skips. Debug build-for-testing, generic Release,581-key/121-script catalogue, seven exact source memberships, three planner checks and hygiene/diff pass. Seven original-resolution exports were independently inspected: five native screens and two explicitly hosted component renders. This selected scope is not a full current Apple matrix.
+**Recorded acceptance:** 352 Core, 157 affected hosted and two whole final-source native methods pass with zero failures/skips. Debug build-for-testing, generic Release, 581-key/121-script catalogue, seven exact source memberships, three planner checks and hygiene/diff pass. Seven original-resolution exports were independently inspected: five native screens and two explicitly hosted component renders. This selected scope is not a full current Apple matrix.
 
 ## Source and ownership
 
