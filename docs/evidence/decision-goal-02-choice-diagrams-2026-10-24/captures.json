@@ -1,0 +1,101 @@
+[
+  {
+    "name": "line-before",
+    "file": "dev-4f553d4b34__line-before__iphone-17e__normal.jpg",
+    "source": "88a20b65e06569a31e7c4341eed5fed4f90a9bd5",
+    "runtime": "dev.4f553d4b34",
+    "raw": "/private/tmp/starfall-decision-02-20261024/phone-attachments/B1ADDEA9-22C4-455B-9511-E51B3065274B.png",
+    "sha256": "834f572857d1992c7a9ebf8f330bca7524f8ee8400b6f5375d4b49cf2d0638fd",
+    "bytes": 588411,
+    "timestamp": 1792841471.598,
+    "inspection": "passed: independent original-resolution static review; interaction and motion are separate"
+  },
+  {
+    "name": "line-first-pattern",
+    "file": "dev-4f553d4b34__line-first-pattern__iphone-17e__normal.jpg",
+    "source": "88a20b65e06569a31e7c4341eed5fed4f90a9bd5",
+    "runtime": "dev.4f553d4b34",
+    "raw": "/private/tmp/starfall-decision-02-20261024/phone-attachments/0C5E03E1-114C-4EC6-A5DD-5B2DAF85214D.png",
+    "sha256": "5ea23fa06318695e7d9298aed52a7f0c122e86438f6159ddef9e8608094d776a",
+    "bytes": 596817,
+    "timestamp": 1792841485.713,
+    "inspection": "passed: independent original-resolution static review; interaction and motion are separate"
+  },
+  {
+    "name": "square-first-pattern",
+    "file": "dev-4f553d4b34__square-first-pattern__iphone-17e__normal.jpg",
+    "source": "88a20b65e06569a31e7c4341eed5fed4f90a9bd5",
+    "runtime": "dev.4f553d4b34",
+    "raw": "/private/tmp/starfall-decision-02-20261024/phone-attachments/4997D4F6-7F77-4252-BD36-E7120763323E.png",
+    "sha256": "428352c23e0db08984a5335fa132e15b7aef25166453e050029e5e96c0d5bbe7",
+    "bytes": 596603,
+    "timestamp": 1792841519.858,
+    "inspection": "passed: independent original-resolution static review; interaction and motion are separate"
+  },
+  {
+    "name": "real-selected-clear",
+    "file": "dev-4f553d4b34__real-selected-clear__iphone-17e__normal.jpg",
+    "source": "88a20b65e06569a31e7c4341eed5fed4f90a9bd5",
+    "runtime": "dev.4f553d4b34",
+    "raw": "/private/tmp/starfall-decision-02-20261024/phone-attachments/E1F66F85-1B1C-447E-A575-FC2E06C59475.png",
+    "sha256": "9c20d620055e4f814d3820bd50a049f6a3f1d97daa4921f98a51a8568c6674a2",
+    "bytes": 773138,
+    "timestamp": 1792841573.239,
+    "inspection": "passed: independent original-resolution static review; interaction and motion are separate"
+  },
+  {
+    "name": "actual-calm-on",
+    "file": "dev-4f553d4b34__actual-calm-on__ipad-pro11__ax3xl-calm.jpg",
+    "source": "88a20b65e06569a31e7c4341eed5fed4f90a9bd5",
+    "runtime": "dev.4f553d4b34",
+    "raw": "/private/tmp/starfall-decision-02-20261024/tablet-attachments/4FB4BAA4-9F61-415A-B8E8-0CA81E90E24B.png",
+    "sha256": "cc3e76891c7a9b1b8aa731ea521ccb9fafbdcbb4fc951a57bbb417db64d10596",
+    "bytes": 654469,
+    "timestamp": 1792841726.739,
+    "inspection": "passed: independent original-resolution static review; interaction and motion are separate"
+  },
+  {
+    "name": "setup-before-first",
+    "file": "dev-4f553d4b34__setup-before-first__ipad-pro11__ax3xl-calm.jpg",
+    "source": "88a20b65e06569a31e7c4341eed5fed4f90a9bd5",
+    "runtime": "dev.4f553d4b34",
+    "raw": "/private/tmp/starfall-decision-02-20261024/tablet-attachments/0A45CE94-DE6A-432C-80B2-0E2D27981B60.png",
+    "sha256": "3cc835bb94edbc908d68230fac034ce80adfd568b56b685bfe181db4eafdafc0",
+    "bytes": 835760,
+    "timestamp": 1792841798.066,
+    "inspection": "passed: independent original-resolution static review; interaction and motion are separate"
+  },
+  {
+    "name": "setup-before-second",
+    "file": "dev-4f553d4b34__setup-before-second__ipad-pro11__ax3xl-calm.jpg",
+    "source": "88a20b65e06569a31e7c4341eed5fed4f90a9bd5",
+    "runtime": "dev.4f553d4b34",
+    "raw": "/private/tmp/starfall-decision-02-20261024/tablet-attachments/E08784BA-98BA-4B38-81FE-DFFE9D30C9E3.png",
+    "sha256": "800b39f8a74a3f9cf9a4a828c533a6c13b107481413bfaab3387426d7647498e",
+    "bytes": 774665,
+    "timestamp": 1792841812.539,
+    "inspection": "passed: independent original-resolution static review; interaction and motion are separate"
+  },
+  {
+    "name": "setup-first-pattern",
+    "file": "dev-4f553d4b34__setup-first-pattern__ipad-pro11__ax3xl-calm.jpg",
+    "source": "88a20b65e06569a31e7c4341eed5fed4f90a9bd5",
+    "runtime": "dev.4f553d4b34",
+    "raw": "/private/tmp/starfall-decision-02-20261024/tablet-attachments/270AEA2B-0989-4C01-8E80-CBCFB17E5BB0.png",
+    "sha256": "3e11254392fbb0d3dc26c3ca99f496914e18a52efaa36a2961a5586fe32c6fb2",
+    "bytes": 779428,
+    "timestamp": 1792841821.845,
+    "inspection": "passed: independent original-resolution static review; interaction and motion are separate"
+  },
+  {
+    "name": "real-following-clear",
+    "file": "dev-4f553d4b34__real-following-clear__ipad-pro11__ax3xl-calm.jpg",
+    "source": "88a20b65e06569a31e7c4341eed5fed4f90a9bd5",
+    "runtime": "dev.4f553d4b34",
+    "raw": "/private/tmp/starfall-decision-02-20261024/tablet-attachments/B1B7B5A4-330A-4612-9B34-DF19E39113E7.png",
+    "sha256": "5a750a35e1039b7b1045460250b8b0be26c930ef4574865b1a33ee26f23237c3",
+    "bytes": 914326,
+    "timestamp": 1792841888.098,
+    "inspection": "passed: independent original-resolution static review; interaction and motion are separate"
+  }
+]

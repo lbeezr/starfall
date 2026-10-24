@@ -1,5 +1,7 @@
 # Hosted app tests
 
+`FullBoardChoiceDiagramTests` compares source/setup/final frames with real pre-clear Core receipts, preserving every actual ingredient and separate overlapping recipe. It covers current Lantern6/Ribbon7 and retained Lantern5, encoded state/next refill, stale/invalid/ended inputs and top-down bounded geometry. [Decision goal2](../docs/evidence/decision-goal-02-choice-diagrams-2026-10-24/README.md) records seven new and57 selected hosted passes separately from native acceptance.
+
 `StoryIngredientInspectionTests` checks actual Seed ingredient movement, exact live deadline/save/world/mastery preservation, current/retained pattern thresholds, Full Board and manual tap/trace siblings. [Decision goal1 evidence](../docs/evidence/decision-goal-01-ingredient-inspection-2026-10-24/README.md) records the selected118 hosted passes separately from native interaction.
 
 `IdentityJourneyTests` verifies mode promises, Open Sky omission of restoration Help, exact current/retained Story Help and the selected context boundary. Together with affected dialogue/flow/return/mode/catalogue tests, [identity goal10](../docs/evidence/identity-goal-10-coherent-return-2026-10-24/README.md) records 87 selected hosted passes. No gameplay or save owner changes.
